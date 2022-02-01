@@ -78,142 +78,312 @@ public class QQARSession
   extends AbstractSession
   implements Camera.PreviewCallback, ARRenderManagerCallBack, SensorTrackManager.ARSensorTrackCallback, ARCloudControl.ARCloudControlCallback, AREngineCallbackFromUI, ARLocalControl.ARLocalRecogCallback, ARMarkerResourceManager.ARMarkerResourceCallback
 {
-  private static QQARSession jdField_a_of_type_ComTencentMobileqqArModelQQARSession;
-  public static boolean a = false;
-  private static boolean jdField_e_of_type_Boolean = true;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = null;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge = null;
-  private ARTransferDoorLogicManager jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager;
-  private SensorTrackManager jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager = null;
-  private ARCommonConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = null;
-  ARScanStarFaceConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo = null;
-  public ArCloudConfigInfo a;
-  private ArConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = null;
-  private ARCloudControl jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl = null;
-  private ARCloudRecogResult jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = null;
-  private AREngineCallback jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback = null;
-  public ARLocalControl a;
-  private ARLocalFaceRecogResult jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-  private ARLocalMarkerRecogResult jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-  private ARMIGObjectClassifyResult jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
-  private ARMarkerResourceManager jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager = null;
-  private UniformGLRenderManager jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = null;
-  private String jdField_a_of_type_JavaLangString = "0";
-  private ArrayList<ArCloudConfigInfo> jdField_a_of_type_JavaUtilArrayList = null;
-  private final long jdField_b_of_type_Long = 1L;
-  ArCloudConfigInfo jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  private ARLocalFaceRecogResult jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-  private ARLocalMarkerRecogResult jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-  private ArrayList<Runnable> jdField_b_of_type_JavaUtilArrayList = null;
-  public boolean b;
-  private final long jdField_c_of_type_Long = 2179L;
-  private ArCloudConfigInfo jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  public boolean c;
-  private long jdField_d_of_type_Long = 0L;
-  private ArCloudConfigInfo jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  boolean jdField_d_of_type_Boolean = false;
-  int jdField_e_of_type_Int;
-  private long jdField_e_of_type_Long = 0L;
-  private int jdField_f_of_type_Int = 5;
-  private long jdField_f_of_type_Long = 0L;
-  private final boolean jdField_f_of_type_Boolean = true;
-  private int jdField_g_of_type_Int = 5;
-  private long jdField_g_of_type_Long = 0L;
-  private boolean jdField_g_of_type_Boolean = false;
-  private int jdField_h_of_type_Int = 5;
-  private long jdField_h_of_type_Long = 0L;
-  private boolean jdField_h_of_type_Boolean = false;
-  private int jdField_i_of_type_Int = 5;
-  private long jdField_i_of_type_Long = 0L;
-  private boolean jdField_i_of_type_Boolean = false;
-  private int jdField_j_of_type_Int = 5;
-  private long jdField_j_of_type_Long = 0L;
-  private volatile boolean jdField_j_of_type_Boolean;
-  private int jdField_k_of_type_Int = 5;
-  private long jdField_k_of_type_Long = 0L;
-  private boolean jdField_k_of_type_Boolean = false;
-  private int jdField_l_of_type_Int = 0;
-  private long jdField_l_of_type_Long = 0L;
-  private boolean jdField_l_of_type_Boolean = false;
-  private int jdField_m_of_type_Int = 0;
-  private long jdField_m_of_type_Long = 0L;
-  private boolean jdField_m_of_type_Boolean = true;
-  private int jdField_n_of_type_Int = 0;
-  private long jdField_n_of_type_Long = 0L;
-  private boolean jdField_n_of_type_Boolean = false;
-  private int jdField_o_of_type_Int = 0;
-  private long jdField_o_of_type_Long = 0L;
-  private boolean jdField_o_of_type_Boolean = false;
-  private int jdField_p_of_type_Int = 17;
-  private long jdField_p_of_type_Long = 0L;
-  private boolean jdField_p_of_type_Boolean = false;
-  private int jdField_q_of_type_Int = 0;
-  private long jdField_q_of_type_Long = 0L;
-  private volatile boolean jdField_q_of_type_Boolean = false;
-  private int jdField_r_of_type_Int = 0;
-  private long jdField_r_of_type_Long = 0L;
-  private boolean jdField_r_of_type_Boolean = false;
-  private int jdField_s_of_type_Int = 0;
-  private long jdField_s_of_type_Long;
-  private boolean jdField_s_of_type_Boolean;
-  private volatile int jdField_t_of_type_Int = 0;
-  private long jdField_t_of_type_Long = 0L;
-  private boolean jdField_t_of_type_Boolean;
-  private long jdField_u_of_type_Long = 0L;
-  private boolean jdField_u_of_type_Boolean = true;
-  private long jdField_v_of_type_Long = 0L;
-  private boolean jdField_v_of_type_Boolean = true;
-  private boolean w = true;
-  private boolean x;
+  public static boolean g = false;
+  private static QQARSession q;
+  private static boolean r = true;
+  private ArConfigInfo A = null;
+  private AREngineCallback B = null;
+  private boolean C = false;
+  private long D = 0L;
+  private long E = 0L;
+  private boolean F = false;
+  private long G = 0L;
+  private long H = 0L;
+  private int I = 5;
+  private int J = 5;
+  private int K = 5;
+  private int L = 5;
+  private int M = 5;
+  private int N = 5;
+  private SensorTrackManager O = null;
+  private boolean P = true;
+  private ARNativeBridge Q = null;
+  private UniformGLRenderManager R = null;
+  private ARCloudControl S = null;
+  private ARMarkerResourceManager T = null;
+  private ArrayList<ArCloudConfigInfo> U = null;
+  private HandlerThread V = null;
+  private Handler W = null;
+  private Object X = new Object();
+  private int Y = 0;
+  private int Z = 0;
+  private long aA = 0L;
+  private long aB = 0L;
+  private int aC = 0;
+  private long aD = 0L;
+  private long aE = 0L;
+  private boolean aF;
+  private boolean aG;
+  private boolean aH = true;
+  private boolean aI = true;
+  private boolean aJ = true;
+  private long aK;
+  private boolean aL;
+  private String aM = "0";
+  private ARTransferDoorLogicManager aN;
+  private long aO = 0L;
+  private int aP = 0;
+  private long aQ = 0L;
+  private long aR = 0L;
+  private volatile int aS = 0;
+  private int aa = 0;
+  private int ab = 0;
+  private int ac = 17;
+  private Runnable ad = null;
+  private ArrayList<Runnable> ae = null;
+  private ARLocalMarkerRecogResult af = null;
+  private ARLocalMarkerRecogResult ag = null;
+  private ARLocalFaceRecogResult ah = null;
+  private ARLocalFaceRecogResult ai = null;
+  private ARCloudRecogResult aj = null;
+  private boolean ak = false;
+  private boolean al = false;
+  private ARMIGObjectClassifyResult am = null;
+  private boolean an = false;
+  private volatile boolean ao = false;
+  private long ap = 0L;
+  private ArCloudConfigInfo aq = null;
+  private ArCloudConfigInfo ar = null;
+  private long as = 0L;
+  private long at = 0L;
+  private long au = 0L;
+  private long av = 0L;
+  private boolean aw = false;
+  private long ax = 0L;
+  private long ay = 0L;
+  private int az = 0;
+  public ARLocalControl h = null;
+  public ArCloudConfigInfo i = null;
+  public boolean j = true;
+  public boolean k = false;
+  public long l = 4096L;
+  ARScanStarFaceConfigInfo m = null;
+  boolean n = false;
+  ArCloudConfigInfo o;
+  int p;
+  private final boolean s = true;
+  private final long t = 1L;
+  private final long u = 2179L;
+  private boolean v = false;
+  private boolean w = false;
+  private boolean x = false;
+  private volatile boolean y;
+  private ARCommonConfigInfo z = null;
   
   public QQARSession()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl = null;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 4096L;
-    this.jdField_b_of_type_Int = 1;
-    jdField_e_of_type_Boolean = false;
+    this.b = 1;
+    r = false;
     CameraProxy.a().b(this);
   }
   
-  private void A()
+  private boolean H()
   {
-    if (this.jdField_t_of_type_Int != 1) {
-      return;
+    QLog.i("AREngine_QQARSession", 2, "startRenderManager.");
+    UniformGLRenderManager localUniformGLRenderManager = this.R;
+    if (localUniformGLRenderManager != null)
+    {
+      localUniformGLRenderManager.a(0, this.Q);
+      this.R.a(8, this.aN);
+      return true;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
-    if (localObject != null) {
-      ((ARLocalControl)localObject).c();
+    return false;
+  }
+  
+  private boolean I()
+  {
+    QLog.i("AREngine_QQARSession", 2, "startLocalRecog.");
+    ARLocalControl localARLocalControl = this.h;
+    boolean bool = false;
+    if (localARLocalControl != null)
+    {
+      if (!localARLocalControl.a(this.e, this.G, this.aa, this.ab, this.A, this.U, this.m, this)) {
+        return false;
+      }
+      bool = this.h.a();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager;
-    if (localObject != null) {
-      ((ARTransferDoorLogicManager)localObject).d();
+    return bool;
+  }
+  
+  private boolean J()
+  {
+    QLog.i("AREngine_QQARSession", 2, "startCloudRecog.");
+    ARCloudControl localARCloudControl = this.S;
+    if (localARCloudControl != null)
+    {
+      localARCloudControl.a(this.aa, this.ab, this.ac);
+      this.S.c();
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean K()
+  {
+    QLog.i("AREngine_QQARSession", 2, "stopLocalRecog.");
+    ARLocalControl localARLocalControl = this.h;
+    if (localARLocalControl != null) {
+      localARLocalControl.b();
+    }
+    return true;
+  }
+  
+  private boolean L()
+  {
+    QLog.i("AREngine_QQARSession", 2, "stopCloudRecog.");
+    ARCloudControl localARCloudControl = this.S;
+    if (localARCloudControl != null) {
+      localARCloudControl.f();
+    }
+    return true;
+  }
+  
+  private void M()
+  {
+    QLog.d("AREngine_QQARSession", 1, "pauseCloudRecog.");
+    ARCloudControl localARCloudControl = this.S;
+    if (localARCloudControl != null) {
+      localARCloudControl.e();
     }
   }
   
-  private void B()
+  private void N()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    QLog.d("AREngine_QQARSession", 1, "resumeCloudRecog.");
+    if (this.aC == 0) {
+      this.aD = 0L;
+    }
+    this.aj = null;
+    this.ak = false;
+    ARCloudControl localARCloudControl = this.S;
+    if (localARCloudControl != null) {
+      localARCloudControl.d();
+    }
+  }
+  
+  private void O()
+  {
+    ??? = this.O;
+    if (??? != null)
     {
-      if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_b_of_type_JavaUtilArrayList != null))
+      ((SensorTrackManager)???).f();
+      this.O = null;
+    }
+    ??? = this.h;
+    if (??? != null)
+    {
+      ((ARLocalControl)???).c();
+      this.h = null;
+    }
+    ??? = this.S;
+    if (??? != null)
+    {
+      ((ARCloudControl)???).g();
+      this.S = null;
+    }
+    ??? = this.T;
+    if (??? != null)
+    {
+      ((ARMarkerResourceManager)???).d();
+      this.T = null;
+    }
+    if (this.R != null) {
+      this.R = null;
+    }
+    this.Q = null;
+    this.k = false;
+    this.aS = 0;
+    synchronized (this.X)
+    {
+      if (this.V != null)
+      {
+        if (this.W != null) {
+          this.W.removeCallbacksAndMessages(null);
+        }
+        this.W = null;
+        if (Build.VERSION.SDK_INT >= 18) {
+          this.V.quitSafely();
+        }
+        this.V = null;
+        this.ae = null;
+      }
+      return;
+    }
+  }
+  
+  private void P()
+  {
+    QLog.i("AREngine_QQARSession", 1, "onProcessCloudMarkerRecogResultComplete.");
+    if (!ARRecognition.b(this.z.recognitions, 1L)) {
+      a(1L);
+    }
+    R();
+    this.aF = false;
+  }
+  
+  private void Q()
+  {
+    QLog.i("AREngine_QQARSession", 1, "onProcessCloudFaceRecogResultComplete.");
+    if (ARRecognition.b(this.z.recognitions, 1L)) {
+      b(1L);
+    }
+    R();
+    this.aG = false;
+  }
+  
+  private void R()
+  {
+    QLog.i("AREngine_QQARSession", 1, "processCloudRecogResult end.");
+    N();
+  }
+  
+  private void S()
+  {
+    QLog.i("AREngine_QQARSession", 1, "stopSensorTrack.");
+    this.aw = false;
+    SensorTrackManager localSensorTrackManager = this.O;
+    if (localSensorTrackManager != null) {
+      localSensorTrackManager.e();
+    }
+  }
+  
+  private boolean T()
+  {
+    return false;
+  }
+  
+  private void U()
+  {
+    if (this.aS != 1) {
+      return;
+    }
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((ARLocalControl)localObject).d();
+    }
+    localObject = this.aN;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).e();
+    }
+  }
+  
+  private void V()
+  {
+    synchronized (this.X)
+    {
+      if ((this.W != null) && (this.ae != null))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("removeAllTask. task count = ");
-        localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.size());
+        localStringBuilder.append(this.ae.size());
         QLog.i("AREngine_QQARSession", 1, localStringBuilder.toString());
         int i1 = 0;
-        while (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
+        while (i1 < this.ae.size())
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)this.jdField_b_of_type_JavaUtilArrayList.get(i1));
+          this.W.removeCallbacks((Runnable)this.ae.get(i1));
           i1 += 1;
         }
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        this.ae.clear();
       }
       return;
     }
@@ -230,29 +400,29 @@ public class QQARSession
     }
     Object localObject1;
     Object localObject3;
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 0)
+    if (paramArCloudConfigInfo.e == 0)
     {
       localObject1 = ARResouceDir.b(paramArCloudConfigInfo);
       localObject2 = ARResouceDir.c(paramArCloudConfigInfo);
       localObject3 = ARResouceDir.d(paramArCloudConfigInfo);
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (new File((String)localObject1).exists()) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (new File((String)localObject2).exists()))
       {
-        ArCloudConfigInfo.ARVideoLayout localARVideoLayout = ARVideoUtil.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.e);
-        paramArCloudConfigInfo = new GeneralARResourceInfo(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, (String)localObject2, (String)localObject1, (String)localObject3, localARVideoLayout, paramInt, paramFloat1, paramFloat2, paramFloat3);
-        paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
+        ArCloudConfigInfo.ARVideoLayout localARVideoLayout = ARVideoUtil.b(paramArCloudConfigInfo.k.g);
+        paramArCloudConfigInfo = new GeneralARResourceInfo(paramArCloudConfigInfo.j.a, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, (String)localObject2, (String)localObject1, (String)localObject3, localARVideoLayout, paramInt, paramFloat1, paramFloat2, paramFloat3);
+        paramArCloudConfigInfo.c = paramLong;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getARRenderResourceInfo. key = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.a);
         ((StringBuilder)localObject1).append(", arType = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.b);
         ((StringBuilder)localObject1).append(", trackMode = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_Int);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.d);
         ((StringBuilder)localObject1).append(", resPath = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.c);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.j);
         ((StringBuilder)localObject1).append(", luaPath = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.i);
         ((StringBuilder)localObject1).append(", musicPath = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_d_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.k);
         ((StringBuilder)localObject1).append(", recogType = ");
         ((StringBuilder)localObject1).append(paramLong);
         QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject1).toString());
@@ -261,12 +431,12 @@ public class QQARSession
       QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. resource path empty or file not exist.");
       return null;
     }
-    int i1 = paramArCloudConfigInfo.jdField_d_of_type_Int;
+    int i1 = paramArCloudConfigInfo.e;
     boolean bool1 = false;
     int i2;
-    if ((i1 != 2) && (paramArCloudConfigInfo.jdField_d_of_type_Int != 3))
+    if ((i1 != 2) && (paramArCloudConfigInfo.e != 3))
     {
-      if (paramArCloudConfigInfo.jdField_d_of_type_Int == 4)
+      if (paramArCloudConfigInfo.e == 4)
       {
         localObject1 = new ARTarget(paramArCloudConfigInfo);
         i2 = ARVideoUtil.a((ARTarget)localObject1);
@@ -274,25 +444,25 @@ public class QQARSession
         if (i2 == 0) {
           i1 = 2147483647;
         }
-        localObject1 = ARVideoUtil.a((ARTarget)localObject1);
+        localObject1 = ARVideoUtil.b((ARTarget)localObject1);
         i2 = ((Integer)((Pair)localObject1).first).intValue();
         localObject3 = (KeyingParams)((Pair)localObject1).second;
         if (!paramArCloudConfigInfo.d())
         {
-          if (((paramBoolean) && ((paramLong == 2L) || (paramLong == 2048L))) || ((paramLong == 1L) && (paramArCloudConfigInfo.c == 2))) {
-            localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int, paramArCloudConfigInfo.j());
+          if (((paramBoolean) && ((paramLong == 2L) || (paramLong == 2048L))) || ((paramLong == 1L) && (paramArCloudConfigInfo.d == 2))) {
+            localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).d, UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c, paramArCloudConfigInfo.j());
           } else {
-            localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int);
+            localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).d, UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c);
           }
         }
         else {
           localObject1 = null;
         }
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).b);
         ((StringBuilder)localObject2).append("|");
-        ((StringBuilder)localObject2).append(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_d_of_type_JavaLangString);
-        localObject2 = AROnlineVideoUtil.a(((StringBuilder)localObject2).toString());
+        ((StringBuilder)localObject2).append(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).i);
+        localObject2 = AROnlineVideoUtil.b(((StringBuilder)localObject2).toString());
         long l1;
         if (localObject2 != null)
         {
@@ -305,27 +475,27 @@ public class QQARSession
           l1 = 0L;
         }
         paramBoolean = ARVideoUtil.a();
-        paramArCloudConfigInfo = new OnlineVideoARRenderableInfo(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, i2, (KeyingParams)localObject3, (ArCloudConfigInfo.ARVideoLayout)localObject1, (String)localObject2, l1, paramBoolean, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
-        paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
+        paramArCloudConfigInfo = new OnlineVideoARRenderableInfo(paramArCloudConfigInfo.j.a, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, i2, (KeyingParams)localObject3, (ArCloudConfigInfo.ARVideoLayout)localObject1, (String)localObject2, l1, paramBoolean, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
+        paramArCloudConfigInfo.c = paramLong;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getARRenderResourceInfo. key = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.a);
         ((StringBuilder)localObject1).append(", arType = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.b);
         ((StringBuilder)localObject1).append(", trackMode = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_Int);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.d);
         ((StringBuilder)localObject1).append(", renderType = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.i);
         ((StringBuilder)localObject1).append(", keyingParams = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.n);
         ((StringBuilder)localObject1).append(", videoUrl = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.j);
         ((StringBuilder)localObject1).append(", videoSize = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.k);
         ((StringBuilder)localObject1).append(", layout = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.o);
         ((StringBuilder)localObject1).append(", isSoftDecode = ");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.l);
         ((StringBuilder)localObject1).append(", videoPlayCount = ");
         ((StringBuilder)localObject1).append(i1);
         ((StringBuilder)localObject1).append(", recogType = ");
@@ -333,67 +503,67 @@ public class QQARSession
         QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject1).toString());
         return paramArCloudConfigInfo;
       }
-      if (paramArCloudConfigInfo.jdField_d_of_type_Int == 5)
+      if (paramArCloudConfigInfo.e == 5)
       {
         if (ARVideoUtil.a())
         {
-          localObject1 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject1 = paramArCloudConfigInfo.i.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
-            if ((localObject2 != null) && ((((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 2) || (((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 3)))
+            if ((localObject2 != null) && ((((ArVideoResourceInfo)localObject2).h == 2) || (((ArVideoResourceInfo)localObject2).h == 3)))
             {
               QLog.i("AREngine_QQARSession", 1, "getMultiFragmentAnimARResourceInfo failed. isRubbishDeviceNeedsSoftwareDecode.");
               return null;
             }
           }
         }
-        paramArCloudConfigInfo = new MultiFragmentAnimARResourceInfo(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
-        paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
+        paramArCloudConfigInfo = new MultiFragmentAnimARResourceInfo(paramArCloudConfigInfo.f, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
+        paramArCloudConfigInfo.c = paramLong;
         return paramArCloudConfigInfo;
       }
-      if (paramArCloudConfigInfo.jdField_d_of_type_Int == 100)
+      if (paramArCloudConfigInfo.e == 100)
       {
         localObject1 = ARResouceDir.a(paramArCloudConfigInfo);
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (new File((String)localObject1).exists()))
         {
-          paramArCloudConfigInfo = new Interactive3DResourceInfo(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, 1, "", (String)localObject1, "", paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
+          paramArCloudConfigInfo = new Interactive3DResourceInfo(paramArCloudConfigInfo.j.a, paramArCloudConfigInfo.e, 1, "", (String)localObject1, "", paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("getARRenderResourceInfo. key = ");
-          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.a);
           ((StringBuilder)localObject1).append(", resType = ");
-          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.b);
           ((StringBuilder)localObject1).append(", resPath = ");
-          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.c);
+          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.k);
           ((StringBuilder)localObject1).append(", luaPath = ");
-          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.j);
           ((StringBuilder)localObject1).append(", musicPath = ");
-          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_d_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(paramArCloudConfigInfo.l);
           QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject1).toString());
           return paramArCloudConfigInfo;
         }
         QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. resource path empty or file not exist.");
         return null;
       }
-      if (paramArCloudConfigInfo.jdField_d_of_type_Int == 7)
+      if (paramArCloudConfigInfo.e == 7)
       {
         localObject1 = ARResouceDir.c(paramArCloudConfigInfo);
         localObject2 = ARResouceDir.b(paramArCloudConfigInfo);
-        return new GreetingCardResourceInfo(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2);
+        return new GreetingCardResourceInfo(paramArCloudConfigInfo.f, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2);
       }
-      if (paramArCloudConfigInfo.jdField_d_of_type_Int == 8)
+      if (paramArCloudConfigInfo.e == 8)
       {
         localObject1 = ARResouceDir.b(paramArCloudConfigInfo);
-        localObject2 = ARResouceDir.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString);
-        localObject3 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaUtilArrayList;
-        boolean bool2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Boolean;
+        localObject2 = ARResouceDir.a(paramArCloudConfigInfo.r.h);
+        localObject3 = paramArCloudConfigInfo.r.j;
+        boolean bool2 = paramArCloudConfigInfo.r.a;
         paramBoolean = bool1;
-        if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_Int == 1) {
+        if (paramArCloudConfigInfo.r.c == 1) {
           paramBoolean = true;
         }
-        i1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_d_of_type_Int;
-        i2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c;
-        return new ARTransferResourceInfo(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2, (ArrayList)localObject3, Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean), i1, i2);
+        i1 = paramArCloudConfigInfo.r.e;
+        i2 = paramArCloudConfigInfo.r.d;
+        return new ARTransferResourceInfo(paramArCloudConfigInfo.f, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2, (ArrayList)localObject3, Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean), i1, i2);
       }
       return null;
     }
@@ -416,37 +586,37 @@ public class QQARSession
       if (i2 == 0) {
         i1 = 2147483647;
       }
-      localObject1 = ARVideoUtil.a((ARTarget)localObject1);
+      localObject1 = ARVideoUtil.b((ARTarget)localObject1);
       i2 = ((Integer)((Pair)localObject1).first).intValue();
       localObject3 = (KeyingParams)((Pair)localObject1).second;
       if (!paramArCloudConfigInfo.d())
       {
-        if (((paramBoolean) && ((paramLong == 2L) || (paramLong == 2048L))) || ((paramLong == 1L) && (paramArCloudConfigInfo.c == 2))) {
-          localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int, paramArCloudConfigInfo.j());
+        if (((paramBoolean) && ((paramLong == 2L) || (paramLong == 2048L))) || ((paramLong == 1L) && (paramArCloudConfigInfo.d == 2))) {
+          localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).d, UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c, paramArCloudConfigInfo.j());
         } else {
-          localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int);
+          localObject1 = ARVideoUtil.a(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).d, UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c);
         }
       }
       else {
         localObject1 = null;
       }
-      paramArCloudConfigInfo = new NormalVideoARResourceInfo(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.c, i2, (KeyingParams)localObject3, (ArCloudConfigInfo.ARVideoLayout)localObject1, (String)localObject2, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
+      paramArCloudConfigInfo = new NormalVideoARResourceInfo(paramArCloudConfigInfo.j.a, paramArCloudConfigInfo.e, paramArCloudConfigInfo.d, i2, (KeyingParams)localObject3, (ArCloudConfigInfo.ARVideoLayout)localObject1, (String)localObject2, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
+      paramArCloudConfigInfo.c = paramLong;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getARRenderResourceInfo. key = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.a);
       ((StringBuilder)localObject1).append(", arType = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.b);
       ((StringBuilder)localObject1).append(", trackMode = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_Int);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.d);
       ((StringBuilder)localObject1).append(", renderType = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.i);
       ((StringBuilder)localObject1).append(", keyingParams = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.l);
       ((StringBuilder)localObject1).append(", videoPath = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.j);
       ((StringBuilder)localObject1).append(", layout = ");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.m);
       ((StringBuilder)localObject1).append(", videoPlayCount = ");
       ((StringBuilder)localObject1).append(i1);
       ((StringBuilder)localObject1).append(", recogType = ");
@@ -458,19 +628,11 @@ public class QQARSession
     return null;
   }
   
-  public static QQARSession a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqArModelQQARSession == null) {
-      jdField_a_of_type_ComTencentMobileqqArModelQQARSession = new QQARSession();
-    }
-    return jdField_a_of_type_ComTencentMobileqqArModelQQARSession;
-  }
-  
   private void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity)
   {
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.a == 2))
     {
-      AREngineCallback localAREngineCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+      AREngineCallback localAREngineCallback = this.B;
       if (localAREngineCallback != null) {
         localAREngineCallback.a(paramARCloudLBSLocationCheckResult, paramArLBSActivity);
       }
@@ -480,71 +642,71 @@ public class QQARSession
   private void a(ARCloudMarkerRecogResult paramARCloudMarkerRecogResult)
   {
     QLog.i("AREngine_QQARSession", 1, "processCloudMarkerRecogResult start.");
-    this.jdField_n_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.10(this);
-    if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudMarkerRecogResult, this, false, this.jdField_a_of_type_JavaLangString))
+    this.ak = true;
+    this.ad = new QQARSession.10(this);
+    if (!this.T.a(paramARCloudMarkerRecogResult, this, false, this.aM))
     {
       QLog.i("AREngine_QQARSession", 1, "processCloudMarkerRecogResult end. download preprocess failed.");
-      this.jdField_n_of_type_Boolean = false;
-      w();
+      this.ak = false;
+      P();
       return;
     }
-    a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    a(this.ad, 30000L);
   }
   
   private void a(ARCloudObjectClassifyResult paramARCloudObjectClassifyResult)
   {
     QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult start.");
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.11(this);
-    if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudObjectClassifyResult, this, false, this.jdField_a_of_type_JavaLangString))
+    this.ad = new QQARSession.11(this);
+    if (!this.T.a(paramARCloudObjectClassifyResult, this, false, this.aM))
     {
       QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult end. download preprocess failed.");
-      o();
+      B();
       return;
     }
     QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult post task for handle timeout");
-    a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    a(this.ad, 30000L);
   }
   
   private void a(ARCloudRecogRspFaceResult paramARCloudRecogRspFaceResult)
   {
     QLog.i("AREngine_QQARSession", 1, "processCloudFaceRecogResult start.");
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(paramARCloudRecogRspFaceResult);
+    this.h.a(paramARCloudRecogRspFaceResult);
     b(4L);
-    this.jdField_t_of_type_Boolean = true;
+    this.aG = true;
     QLog.i("AREngine_QQARSession", 1, "processCloudFaceRecogResult end.");
   }
   
   private void a(ARCloudSceneRecogResult paramARCloudSceneRecogResult)
   {
     QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult start.");
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.13(this);
-    if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudSceneRecogResult, this, false, this.jdField_a_of_type_JavaLangString))
+    this.ad = new QQARSession.13(this);
+    if (!this.T.a(paramARCloudSceneRecogResult, this, false, this.aM))
     {
       QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult end. download preprocess failed.");
-      q();
+      D();
       return;
     }
     QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult post task for handle timeout");
-    a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    a(this.ad, 30000L);
   }
   
   private void a(ARLocalFaceRecogResult paramARLocalFaceRecogResult1, ARLocalFaceRecogResult paramARLocalFaceRecogResult2)
   {
-    if ((QLog.isColorLevel()) && (ARLocalFaceRecog.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (ARLocalFaceRecog.a))
     {
       paramARLocalFaceRecogResult2 = new StringBuilder();
       paramARLocalFaceRecogResult2.append("ARFaceTest processLocalFaceRecogResult. curLocalFaceRecogResult = ");
       paramARLocalFaceRecogResult2.append(paramARLocalFaceRecogResult1);
       QLog.d("AREngine_QQARSession", 2, paramARLocalFaceRecogResult2.toString());
     }
-    paramARLocalFaceRecogResult2 = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    paramARLocalFaceRecogResult2 = this.R;
     if (paramARLocalFaceRecogResult2 != null) {
-      paramARLocalFaceRecogResult2.b(paramARLocalFaceRecogResult1.jdField_a_of_type_Long);
+      paramARLocalFaceRecogResult2.b(paramARLocalFaceRecogResult1.a);
     }
-    paramARLocalFaceRecogResult2 = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    paramARLocalFaceRecogResult2 = this.R;
     if (paramARLocalFaceRecogResult2 != null) {
-      paramARLocalFaceRecogResult2.a();
+      paramARLocalFaceRecogResult2.b();
     }
     a(null, paramARLocalFaceRecogResult1);
   }
@@ -552,99 +714,69 @@ public class QQARSession
   private void a(ARLocalGestureCircleRecogResult paramARLocalGestureCircleRecogResult)
   {
     QLog.i("AREngine_QQARSession", 1, "processLocalGestureCircleRecogResult");
-    ARTransferDoorLogicManager localARTransferDoorLogicManager = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager;
+    ARTransferDoorLogicManager localARTransferDoorLogicManager = this.aN;
     if (localARTransferDoorLogicManager != null) {
-      localARTransferDoorLogicManager.a(paramARLocalGestureCircleRecogResult, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int, this.jdField_l_of_type_Int, this.jdField_m_of_type_Int);
+      localARTransferDoorLogicManager.a(paramARLocalGestureCircleRecogResult, this.aa, this.ab, this.Y, this.Z);
     }
   }
   
   private void a(ARLocalMarkerRecogResult paramARLocalMarkerRecogResult1, ARLocalMarkerRecogResult paramARLocalMarkerRecogResult2)
   {
-    if (paramARLocalMarkerRecogResult1.jdField_a_of_type_Int != 2)
+    if (paramARLocalMarkerRecogResult1.b != 2)
     {
-      if (paramARLocalMarkerRecogResult1.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f())
+      if (paramARLocalMarkerRecogResult1.i.f())
       {
-        paramARLocalMarkerRecogResult2 = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+        paramARLocalMarkerRecogResult2 = this.R;
         if (paramARLocalMarkerRecogResult2 != null) {
-          paramARLocalMarkerRecogResult2.b(paramARLocalMarkerRecogResult1.jdField_a_of_type_Long);
+          paramARLocalMarkerRecogResult2.b(paramARLocalMarkerRecogResult1.a);
         }
-        paramARLocalMarkerRecogResult2 = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+        paramARLocalMarkerRecogResult2 = this.R;
         if (paramARLocalMarkerRecogResult2 != null) {
-          paramARLocalMarkerRecogResult2.a();
+          paramARLocalMarkerRecogResult2.b();
         }
-        this.jdField_k_of_type_Long = 0L;
-        this.jdField_l_of_type_Long = 0L;
-        if (paramARLocalMarkerRecogResult1.jdField_a_of_type_Int == 0) {
-          a(1L, paramARLocalMarkerRecogResult1.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramARLocalMarkerRecogResult1.jdField_b_of_type_Int, paramARLocalMarkerRecogResult1.jdField_a_of_type_Float, paramARLocalMarkerRecogResult1.jdField_b_of_type_Float, paramARLocalMarkerRecogResult1.c);
+        this.au = 0L;
+        this.av = 0L;
+        if (paramARLocalMarkerRecogResult1.b == 0) {
+          a(1L, paramARLocalMarkerRecogResult1.i, paramARLocalMarkerRecogResult1.d, paramARLocalMarkerRecogResult1.e, paramARLocalMarkerRecogResult1.f, paramARLocalMarkerRecogResult1.g);
         }
-        a(new ARRenderMarkerTrackInfo(paramARLocalMarkerRecogResult1.jdField_b_of_type_Int, paramARLocalMarkerRecogResult1.jdField_a_of_type_Float, paramARLocalMarkerRecogResult1.jdField_b_of_type_Float, paramARLocalMarkerRecogResult1.c, paramARLocalMarkerRecogResult1.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int)));
-        this.jdField_s_of_type_Boolean = true;
+        a(new ARRenderMarkerTrackInfo(paramARLocalMarkerRecogResult1.d, paramARLocalMarkerRecogResult1.e, paramARLocalMarkerRecogResult1.f, paramARLocalMarkerRecogResult1.g, paramARLocalMarkerRecogResult1.h, this.h.a(this.Y, this.Z)));
+        this.aF = true;
       }
     }
     else
     {
-      if ((paramARLocalMarkerRecogResult2 != null) && (paramARLocalMarkerRecogResult2.jdField_a_of_type_Int != 2)) {
-        this.jdField_k_of_type_Long = System.currentTimeMillis();
+      if ((paramARLocalMarkerRecogResult2 != null) && (paramARLocalMarkerRecogResult2.b != 2)) {
+        this.au = System.currentTimeMillis();
       }
-      this.jdField_l_of_type_Long = System.currentTimeMillis();
-      if (this.jdField_k_of_type_Long > 0L)
+      this.av = System.currentTimeMillis();
+      if (this.au > 0L)
       {
-        if (e())
+        if (z())
         {
           paramARLocalMarkerRecogResult2 = new float[16];
-          a(new ARRenderMarkerTrackInfo(paramARLocalMarkerRecogResult1.jdField_b_of_type_Int, 0.0F, 0.0F, 0.0F, paramARLocalMarkerRecogResult2, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int)));
+          a(new ARRenderMarkerTrackInfo(paramARLocalMarkerRecogResult1.d, 0.0F, 0.0F, 0.0F, paramARLocalMarkerRecogResult2, this.h.a(this.Y, this.Z)));
         }
-        if (this.jdField_l_of_type_Long - this.jdField_k_of_type_Long > 1500L)
+        if (this.av - this.au > 1500L)
         {
-          this.jdField_k_of_type_Long = 0L;
+          this.au = 0L;
           ARVideoRecordUIControllerImpl.a().b(1);
-          m();
+          x();
         }
       }
     }
-  }
-  
-  private void a(ARMIGObjectClassifyResult paramARMIGObjectClassifyResult)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult start.");
-    if (paramARMIGObjectClassifyResult.a() == -1)
-    {
-      p();
-      return;
-    }
-    if (paramARMIGObjectClassifyResult.a() == 1)
-    {
-      b(paramARMIGObjectClassifyResult);
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult;
-    int i1;
-    if ((localObject != null) && (paramARMIGObjectClassifyResult.a((ARMIGObjectClassifyResult)localObject))) {
-      i1 = 0;
-    } else {
-      i1 = 1;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if ((localObject != null) && (i1 != 0))
-    {
-      ((ARCloudControl)localObject).b(true);
-      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal setCompareSameSceneFlag.");
-      return;
-    }
-    b(paramARMIGObjectClassifyResult);
   }
   
   public static void a(Runnable paramRunnable)
   {
-    if (b() != null) {
-      b().c(paramRunnable);
+    if (q() != null) {
+      q().c(paramRunnable);
     }
   }
   
   public static void a(Runnable paramRunnable, long paramLong)
   {
-    if (b() != null) {
-      b().c(paramRunnable, paramLong);
+    if (q() != null) {
+      q().c(paramRunnable, paramLong);
     }
   }
   
@@ -658,127 +790,133 @@ public class QQARSession
     ((StringBuilder)localObject2).append("startModelRender. recogType = ");
     ((StringBuilder)localObject2).append(paramLong);
     ((StringBuilder)localObject2).append(", key = ");
-    ((StringBuilder)localObject2).append(((ARRenderResourceInfo)localObject1).jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(((ARRenderResourceInfo)localObject1).a);
     ((StringBuilder)localObject2).append(", resType = ");
-    ((StringBuilder)localObject2).append(((ARRenderResourceInfo)localObject1).jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append(((ARRenderResourceInfo)localObject1).b);
     QLog.d("AREngine_QQARSession", 1, ((StringBuilder)localObject2).toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager != null)
+    if (this.R != null)
     {
-      this.jdField_h_of_type_Long = paramLong;
-      this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      localObject2 = a(this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, false, paramLong, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      if ((localObject2 != null) && (((ARRenderResourceInfo)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(((ARRenderResourceInfo)localObject1).jdField_a_of_type_JavaLangString))) {
+      this.ap = paramLong;
+      this.aq = paramArCloudConfigInfo;
+      localObject2 = a(this.ar, false, paramLong, paramInt, paramFloat1, paramFloat2, paramFloat3);
+      if ((localObject2 != null) && (((ARRenderResourceInfo)localObject2).a.equalsIgnoreCase(((ARRenderResourceInfo)localObject1).a))) {
         return true;
       }
-      if ((localObject2 != null) && (!((ARRenderResourceInfo)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(((ARRenderResourceInfo)localObject1).jdField_a_of_type_JavaLangString)))
+      if ((localObject2 != null) && (!((ARRenderResourceInfo)localObject2).a.equalsIgnoreCase(((ARRenderResourceInfo)localObject1).a)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.d();
-        this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a((ARRenderResourceInfo)localObject1);
+        this.R.j();
+        this.R.a((ARRenderResourceInfo)localObject1);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a((ARRenderResourceInfo)localObject1);
+        this.R.a((ARRenderResourceInfo)localObject1);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      localObject1 = this.R;
       if (localObject1 != null) {
-        ((UniformGLRenderManager)localObject1).a();
+        ((UniformGLRenderManager)localObject1).b();
       }
-      CameraProxy.a().a();
-      if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback != null))
+      CameraProxy.a().b();
+      if ((this.v) && (this.a == 2) && (this.B != null))
       {
         if ((!paramArCloudConfigInfo.a()) && (paramArCloudConfigInfo.f())) {
           ARVideoRecordUIControllerImpl.a().a(3);
         }
         paramArCloudConfigInfo = new ARTarget(paramArCloudConfigInfo);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(paramLong, true, paramArCloudConfigInfo);
+        this.B.a(paramLong, true, paramArCloudConfigInfo);
       }
-      this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-      if (this.jdField_q_of_type_Int == 0)
+      this.ar = this.aq;
+      if (this.az == 0)
       {
-        this.jdField_p_of_type_Long = System.currentTimeMillis();
-        this.jdField_q_of_type_Int = ((int)(this.jdField_p_of_type_Long - this.jdField_o_of_type_Long));
+        this.aB = System.currentTimeMillis();
+        this.az = ((int)(this.aB - this.aA));
       }
-      if ((this.jdField_r_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult != null))
+      if ((this.aC == 0) && (this.aj != null))
       {
-        this.jdField_r_of_type_Long = System.currentTimeMillis();
-        this.jdField_r_of_type_Int = ((int)(this.jdField_r_of_type_Long - this.jdField_q_of_type_Long));
+        this.aE = System.currentTimeMillis();
+        this.aC = ((int)(this.aE - this.aD));
       }
     }
     return true;
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("startSensorTrack. isForExternalTrack = ");
-    ((StringBuilder)localObject).append(paramBoolean);
-    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    this.jdField_r_of_type_Boolean = paramBoolean;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager;
-    if (localObject != null) {
-      ((SensorTrackManager)localObject).a();
-    }
-    return true;
-  }
-  
-  public static QQARSession b()
-  {
-    return jdField_a_of_type_ComTencentMobileqqArModelQQARSession;
   }
   
   private void b(ARMIGObjectClassifyResult paramARMIGObjectClassifyResult)
   {
-    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal start.");
-    if (paramARMIGObjectClassifyResult.a() == 1)
+    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult start.");
+    if (paramARMIGObjectClassifyResult.b() == -1)
     {
-      ReportController.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "1", "", "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null) {
-        e(false);
-      }
-      this.jdField_a_of_type_JavaLangRunnable = new QQARSession.12(this);
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARMIGObjectClassifyResult, this, false, this.jdField_a_of_type_JavaLangString))
-      {
-        QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult end. download preprocess failed.");
-        p();
-        return;
-      }
-      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult post task for handle timeout");
-      a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+      C();
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "0", "", "", "");
-    ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult localARMigObjectClassifyExternalRenderResult = paramARMIGObjectClassifyResult.a();
-    if (localARMigObjectClassifyExternalRenderResult != null)
+    if (paramARMIGObjectClassifyResult.b() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = paramARMIGObjectClassifyResult;
-      a(null, localARMigObjectClassifyExternalRenderResult);
-      u();
+      c(paramARMIGObjectClassifyResult);
+      return;
     }
-    if ((localARMigObjectClassifyExternalRenderResult == null) || (!localARMigObjectClassifyExternalRenderResult.jdField_a_of_type_Boolean)) {
-      p();
+    Object localObject = this.am;
+    int i1;
+    if ((localObject != null) && (paramARMIGObjectClassifyResult.a((ARMIGObjectClassifyResult)localObject))) {
+      i1 = 0;
+    } else {
+      i1 = 1;
     }
+    localObject = this.S;
+    if ((localObject != null) && (i1 != 0))
+    {
+      ((ARCloudControl)localObject).b(true);
+      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal setCompareSameSceneFlag.");
+      return;
+    }
+    c(paramARMIGObjectClassifyResult);
   }
   
   public static void b(Runnable paramRunnable)
   {
-    if (b() != null) {
-      b().d(paramRunnable);
+    if (q() != null) {
+      q().d(paramRunnable);
     }
   }
   
-  public static boolean b()
+  private void c(ARMIGObjectClassifyResult paramARMIGObjectClassifyResult)
   {
-    return jdField_e_of_type_Boolean;
+    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal start.");
+    if (paramARMIGObjectClassifyResult.b() == 1)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "1", "", "", "");
+      if (this.am != null) {
+        e(false);
+      }
+      this.ad = new QQARSession.12(this);
+      if (!this.T.a(paramARMIGObjectClassifyResult, this, false, this.aM))
+      {
+        QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult end. download preprocess failed.");
+        C();
+        return;
+      }
+      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult post task for handle timeout");
+      a(this.ad, 30000L);
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "0", "", "", "");
+    ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult localARMigObjectClassifyExternalRenderResult = paramARMIGObjectClassifyResult.h();
+    if (localARMigObjectClassifyExternalRenderResult != null)
+    {
+      this.am = paramARMIGObjectClassifyResult;
+      a(null, localARMigObjectClassifyExternalRenderResult);
+      N();
+    }
+    if ((localARMigObjectClassifyExternalRenderResult == null) || (!localARMigObjectClassifyExternalRenderResult.b)) {
+      C();
+    }
   }
   
   private void c(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.X)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (this.W != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramRunnable);
+        this.W.post(paramRunnable);
+        this.ae.add(paramRunnable);
       }
       return;
     }
@@ -786,12 +924,12 @@ public class QQARSession
   
   private void c(Runnable paramRunnable, long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.X)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (this.W != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramRunnable);
+        this.W.postDelayed(paramRunnable, paramLong);
+        this.ae.add(paramRunnable);
       }
       return;
     }
@@ -801,22 +939,22 @@ public class QQARSession
   {
     int i1;
     label127:
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.X)
     {
-      if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_b_of_type_JavaUtilArrayList != null))
+      if ((this.W != null) && (this.ae != null))
       {
         i1 = 0;
-        if (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
+        if (i1 < this.ae.size())
         {
-          if (!paramRunnable.equals(this.jdField_b_of_type_JavaUtilArrayList.get(i1))) {
+          if (!paramRunnable.equals(this.ae.get(i1))) {
             break label127;
           }
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("removeTask. task = ");
-          localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.get(i1));
+          localStringBuilder.append(this.ae.get(i1));
           QLog.i("AREngine_QQARSession", 1, localStringBuilder.toString());
-          this.jdField_b_of_type_JavaUtilArrayList.remove(i1);
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+          this.ae.remove(i1);
+          this.W.removeCallbacks(paramRunnable);
         }
       }
       return;
@@ -825,9 +963,9 @@ public class QQARSession
   
   private void d(boolean paramBoolean)
   {
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.a == 2))
     {
-      AREngineCallback localAREngineCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+      AREngineCallback localAREngineCallback = this.B;
       if (localAREngineCallback != null) {
         localAREngineCallback.b(paramBoolean);
       }
@@ -838,22 +976,22 @@ public class QQARSession
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_Int = 2;
+      this.a = 2;
     }
     else
     {
-      this.jdField_a_of_type_Int = 5;
-      this.jdField_h_of_type_Boolean = false;
+      this.a = 5;
+      this.w = false;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("start end. mCurEngineState = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     QLog.d("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onStartComplete. retCode = ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+    localObject = this.B;
     if (localObject != null) {
       ((AREngineCallback)localObject).a(paramInt);
     }
@@ -861,14 +999,14 @@ public class QQARSession
   
   private void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
-    ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ARMigObjectClassifyExternalRenderResult.jdField_b_of_type_Boolean = paramBoolean;
-    a(null, ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ARMigObjectClassifyExternalRenderResult);
+    this.am = null;
+    ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult.a.c = paramBoolean;
+    a(null, ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult.a);
   }
   
   private void e(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
+    long l2 = System.currentTimeMillis() - this.aK;
     long l1;
     if (l2 >= 1000L) {
       l1 = 0L;
@@ -877,12 +1015,12 @@ public class QQARSession
     }
     QLog.i("AREngine_QQARSession", 1, String.format("onARObjectClassifyDownloadComplete result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
     a(new QQARSession.16(this, paramBoolean, paramArCloudConfigInfo), l1);
-    this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+    this.o = null;
   }
   
   private void f(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
+    long l2 = System.currentTimeMillis() - this.aK;
     long l1;
     if (l2 >= 1000L) {
       l1 = 0L;
@@ -891,275 +1029,219 @@ public class QQARSession
     }
     QLog.i("AREngine_QQARSession", 1, String.format("onARSceneRecogDownloadCompleteInteral result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
     a(new QQARSession.18(this, paramBoolean, paramArCloudConfigInfo), l1);
-    this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+    this.o = null;
   }
   
-  private boolean g()
+  private boolean f(boolean paramBoolean)
   {
-    QLog.i("AREngine_QQARSession", 2, "startRenderManager.");
-    UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-    if (localUniformGLRenderManager != null)
-    {
-      localUniformGLRenderManager.a(0, this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge);
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(8, this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager);
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean h()
-  {
-    QLog.i("AREngine_QQARSession", 2, "startLocalRecog.");
-    ARLocalControl localARLocalControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
-    boolean bool = false;
-    if (localARLocalControl != null)
-    {
-      if (!localARLocalControl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_f_of_type_Long, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this)) {
-        return false;
-      }
-      bool = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a();
-    }
-    return bool;
-  }
-  
-  private boolean i()
-  {
-    QLog.i("AREngine_QQARSession", 2, "startCloudRecog.");
-    ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (localARCloudControl != null)
-    {
-      localARCloudControl.a(this.jdField_n_of_type_Int, this.jdField_o_of_type_Int, this.jdField_p_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.b();
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean j()
-  {
-    QLog.i("AREngine_QQARSession", 2, "stopLocalRecog.");
-    ARLocalControl localARLocalControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
-    if (localARLocalControl != null) {
-      localARLocalControl.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startSensorTrack. isForExternalTrack = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
+    this.aw = paramBoolean;
+    localObject = this.O;
+    if (localObject != null) {
+      ((SensorTrackManager)localObject).b();
     }
     return true;
   }
   
-  public static void k()
+  public static QQARSession p()
   {
-    jdField_a_of_type_ComTencentMobileqqArModelQQARSession = null;
-    jdField_e_of_type_Boolean = true;
+    if (q == null) {
+      q = new QQARSession();
+    }
+    return q;
   }
   
-  private boolean k()
+  public static QQARSession q()
   {
-    QLog.i("AREngine_QQARSession", 2, "stopCloudRecog.");
-    ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (localARCloudControl != null) {
-      localARCloudControl.e();
+    return q;
+  }
+  
+  public static void r()
+  {
+    q = null;
+    r = true;
+  }
+  
+  public static boolean s()
+  {
+    return r;
+  }
+  
+  public static void t()
+  {
+    if (q() != null) {
+      q().V();
     }
+  }
+  
+  public boolean A()
+  {
+    QLog.i("AREngine_QQARSession", 1, "stopInternal.");
+    this.n = true;
+    S();
+    K();
+    L();
+    this.af = null;
+    this.ag = null;
+    this.ah = null;
+    this.ai = null;
+    this.aj = null;
+    this.ak = false;
+    this.ap = 0L;
+    this.aq = null;
+    this.ar = null;
+    this.as = 0L;
+    this.at = 0L;
+    this.au = 0L;
+    this.av = 0L;
+    this.aw = false;
+    this.n = false;
+    this.ax = 0L;
+    this.ay = 0L;
     return true;
   }
   
-  public static void l()
+  public void B()
   {
-    if (b() != null) {
-      b().B();
-    }
-  }
-  
-  private boolean l()
-  {
-    return false;
-  }
-  
-  private void t()
-  {
-    QLog.d("AREngine_QQARSession", 1, "pauseCloudRecog.");
-    ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (localARCloudControl != null) {
-      localARCloudControl.d();
-    }
-  }
-  
-  private void u()
-  {
-    QLog.d("AREngine_QQARSession", 1, "resumeCloudRecog.");
-    if (this.jdField_r_of_type_Int == 0) {
-      this.jdField_q_of_type_Long = 0L;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = null;
-    this.jdField_n_of_type_Boolean = false;
-    ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (localARCloudControl != null) {
-      localARCloudControl.c();
-    }
-  }
-  
-  private void v()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager;
-    if (??? != null)
-    {
-      ((SensorTrackManager)???).e();
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager = null;
-    }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
-    if (??? != null)
-    {
-      ((ARLocalControl)???).b();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl = null;
-    }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (??? != null)
-    {
-      ((ARCloudControl)???).f();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl = null;
-    }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager;
-    if (??? != null)
-    {
-      ((ARMarkerResourceManager)???).c();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager = null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_t_of_type_Int = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-      {
-        if (this.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        this.jdField_a_of_type_AndroidOsHandler = null;
-        if (Build.VERSION.SDK_INT >= 18) {
-          this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-        }
-        this.jdField_a_of_type_AndroidOsHandlerThread = null;
-        this.jdField_b_of_type_JavaUtilArrayList = null;
-      }
-      return;
-    }
-  }
-  
-  private void w()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudMarkerRecogResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      a(1L);
-    }
-    y();
-    this.jdField_s_of_type_Boolean = false;
-  }
-  
-  private void x()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudFaceRecogResultComplete.");
-    if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
+    QLog.i("AREngine_QQARSession", 1, "onProcessCloudObjectClassifyResultComplete.");
+    if (ARRecognition.b(this.z.recognitions, 1L)) {
       b(1L);
     }
-    y();
-    this.jdField_t_of_type_Boolean = false;
+    R();
   }
   
-  private void y()
+  public void C()
   {
-    QLog.i("AREngine_QQARSession", 1, "processCloudRecogResult end.");
-    u();
+    QLog.i("AREngine_QQARSession", 1, "onProcessMigCloudObjectClassifyResultComplete.");
+    if (ARRecognition.b(this.z.recognitions, 1L))
+    {
+      b(1L);
+      this.an = false;
+    }
+    this.am = null;
+    R();
   }
   
-  private void z()
+  public void D()
   {
-    QLog.i("AREngine_QQARSession", 1, "stopSensorTrack.");
-    this.jdField_r_of_type_Boolean = false;
-    SensorTrackManager localSensorTrackManager = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager;
-    if (localSensorTrackManager != null) {
-      localSensorTrackManager.d();
+    QLog.i("AREngine_QQARSession", 1, "onProcessCloudSceneRecogResultComplete.");
+    if (ARRecognition.b(this.z.recognitions, 1L)) {
+      b(1L);
+    }
+    R();
+  }
+  
+  public void E()
+  {
+    QLog.d("AREngine_QQARSession", 1, "engine notifyRenderReady ");
+    ArCloudConfigInfo localArCloudConfigInfo = this.o;
+    if (localArCloudConfigInfo == null) {
+      return;
+    }
+    if ((localArCloudConfigInfo.m != null) && (this.o.m.b) && (this.o.m.a) && (!TextUtils.isEmpty(this.o.m.c)))
+    {
+      int i1 = this.p;
+      if (i1 == 1)
+      {
+        d(true, this.o);
+        return;
+      }
+      if (i1 == 2) {
+        e(true, this.o);
+      }
     }
   }
   
-  public int a()
+  public ArrayList<String> F()
   {
-    a(new QQARSession.1(this));
-    return 0;
+    ARCloudControl localARCloudControl = this.S;
+    if (localARCloudControl != null) {
+      return localARCloudControl.j();
+    }
+    return null;
+  }
+  
+  public void G()
+  {
+    QLog.d("AREngine_QQARSession", 1, String.format("CloseAREngineRecoglizeFunction  ", new Object[0]));
+    a(new QQARSession.27(this));
   }
   
   public int a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, ARCommonConfigInfo paramARCommonConfigInfo, ArConfigInfo paramArConfigInfo, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, AREngineCallback paramAREngineCallback, Activity paramActivity, ARTransferDoorLogicManager paramARTransferDoorLogicManager, UniformGLRenderManager paramUniformGLRenderManager)
   {
-    QLog.d("AREngine_QQARSession", 1, String.format("initAR isEnableARCloudFromSettings=%s isEnableARCloudFromH5=%s isTestMode=%s commonConfig=%s markerConfig=%s faceConfig=%s arEngineCallback=%s mIsArInited=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean4), paramARCommonConfigInfo, paramArConfigInfo, paramARScanStarFaceConfigInfo, paramAREngineCallback, Boolean.valueOf(this.jdField_h_of_type_Boolean) }));
-    if (this.jdField_h_of_type_Boolean) {
+    QLog.d("AREngine_QQARSession", 1, String.format("initAR isEnableARCloudFromSettings=%s isEnableARCloudFromH5=%s isTestMode=%s commonConfig=%s markerConfig=%s faceConfig=%s arEngineCallback=%s mIsArInited=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean4), paramARCommonConfigInfo, paramArConfigInfo, paramARScanStarFaceConfigInfo, paramAREngineCallback, Boolean.valueOf(this.w) }));
+    if (this.w) {
       return 0;
     }
     if (paramARCommonConfigInfo == null)
     {
-      this.jdField_h_of_type_Boolean = false;
+      this.w = false;
       QLog.i("AREngine_QQARSession", 1, "initAR fail! commonConfig is null.");
       if (paramAREngineCallback != null) {
         paramAREngineCallback.a(3);
       }
       return 3;
     }
-    jdField_a_of_type_Boolean = paramBoolean4;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = paramArConfigInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo = paramARScanStarFaceConfigInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback = paramAREngineCallback;
-    this.jdField_k_of_type_Boolean = paramARCommonConfigInfo.isEnableARCloud();
-    this.jdField_d_of_type_Long = ARRecognition.b(paramARCommonConfigInfo.recognitions);
-    this.jdField_e_of_type_Long = ARRecognition.a(paramARCommonConfigInfo.recognitions);
-    this.jdField_l_of_type_Boolean = this.jdField_k_of_type_Boolean;
+    g = paramBoolean4;
+    this.z = paramARCommonConfigInfo;
+    this.A = paramArConfigInfo;
+    this.m = paramARScanStarFaceConfigInfo;
+    this.B = paramAREngineCallback;
+    this.C = paramARCommonConfigInfo.isEnableARCloud();
+    this.D = ARRecognition.b(paramARCommonConfigInfo.recognitions);
+    this.E = ARRecognition.a(paramARCommonConfigInfo.recognitions);
+    this.F = this.C;
     if (!paramBoolean2) {
-      this.jdField_l_of_type_Boolean = false;
+      this.F = false;
     }
     if (paramBoolean1) {
-      this.jdField_l_of_type_Boolean = true;
+      this.F = true;
     }
     if (paramBoolean3)
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_l_of_type_Boolean = false;
-      this.jdField_f_of_type_Long = 4096L;
+      this.k = true;
+      this.F = false;
+      this.G = 4096L;
     }
     else
     {
-      this.jdField_f_of_type_Long = (this.jdField_d_of_type_Long & 1L);
+      this.G = (this.D & 1L);
     }
-    this.jdField_g_of_type_Long = (this.jdField_e_of_type_Long & 0x883);
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions != null)
+    this.H = (this.E & 0x883);
+    if (this.z.recognitions != null)
     {
       int i2;
-      for (int i1 = 0; i1 < this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.size(); i1 = i2 + 1)
+      for (int i1 = 0; i1 < this.z.recognitions.size(); i1 = i2 + 1)
       {
-        long l1 = 1 << (int)((ARRecognition)this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.get(i1)).jdField_a_of_type_Long;
+        long l1 = 1 << (int)((ARRecognition)this.z.recognitions.get(i1)).a;
         i2 = i1;
-        if ((this.jdField_f_of_type_Long & l1) == 0L)
+        if ((this.G & l1) == 0L)
         {
           i2 = i1;
-          if ((this.jdField_g_of_type_Long & l1) == 0L)
+          if ((this.H & l1) == 0L)
           {
-            this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.remove(i1);
+            this.z.recognitions.remove(i1);
             i2 = i1 - 1;
           }
         }
       }
     }
-    this.jdField_f_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L);
-    this.jdField_g_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2L);
-    this.jdField_h_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 4L);
-    this.jdField_i_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 64L);
-    this.jdField_j_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 128L);
-    this.jdField_k_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2048L);
+    this.I = ARRecognition.a(this.z.recognitions, 1L);
+    this.J = ARRecognition.a(this.z.recognitions, 2L);
+    this.K = ARRecognition.a(this.z.recognitions, 4L);
+    this.L = ARRecognition.a(this.z.recognitions, 64L);
+    this.M = ARRecognition.a(this.z.recognitions, 128L);
+    this.N = ARRecognition.a(this.z.recognitions, 2048L);
     paramARCommonConfigInfo = new StringBuilder();
     paramARCommonConfigInfo.append("initAR mIsEnableARCloudFromConfig=");
-    paramARCommonConfigInfo.append(this.jdField_k_of_type_Boolean);
+    paramARCommonConfigInfo.append(this.C);
     paramARCommonConfigInfo.append(" mLocalRecogTypeFromConfig=");
-    paramARCommonConfigInfo.append(this.jdField_d_of_type_Long);
+    paramARCommonConfigInfo.append(this.D);
     paramARCommonConfigInfo.append(" mCloudRecogTypeFromConfig=");
-    paramARCommonConfigInfo.append(this.jdField_e_of_type_Long);
+    paramARCommonConfigInfo.append(this.E);
     paramARCommonConfigInfo.append(" mIsEnableARCloudFromClientSupport=");
     paramARCommonConfigInfo.append(true);
     paramARCommonConfigInfo.append(" mLocalRecogTypeFromClientSupport=");
@@ -1167,47 +1249,47 @@ public class QQARSession
     paramARCommonConfigInfo.append(" mCloudRecogTypeFromClientSupport=");
     paramARCommonConfigInfo.append(2179L);
     paramARCommonConfigInfo.append(" mIsEnableARCloud=");
-    paramARCommonConfigInfo.append(this.jdField_l_of_type_Boolean);
+    paramARCommonConfigInfo.append(this.F);
     paramARCommonConfigInfo.append(" mLocalRecogType=");
-    paramARCommonConfigInfo.append(this.jdField_f_of_type_Long);
+    paramARCommonConfigInfo.append(this.G);
     paramARCommonConfigInfo.append(" mCloudRecogType=");
-    paramARCommonConfigInfo.append(this.jdField_g_of_type_Long);
+    paramARCommonConfigInfo.append(this.H);
     paramARCommonConfigInfo.append(" mMarkerRecogPriority=");
-    paramARCommonConfigInfo.append(this.jdField_f_of_type_Int);
+    paramARCommonConfigInfo.append(this.I);
     paramARCommonConfigInfo.append(" mObjectClassifyPriority=");
-    paramARCommonConfigInfo.append(this.jdField_g_of_type_Int);
+    paramARCommonConfigInfo.append(this.J);
     paramARCommonConfigInfo.append(" mFaceRecogPriority=");
-    paramARCommonConfigInfo.append(this.jdField_h_of_type_Int);
+    paramARCommonConfigInfo.append(this.K);
     paramARCommonConfigInfo.append(" mPreOcrRecogPriority=");
-    paramARCommonConfigInfo.append(this.jdField_i_of_type_Int);
+    paramARCommonConfigInfo.append(this.L);
     paramARCommonConfigInfo.append(" mSceneRecogPriority=");
-    paramARCommonConfigInfo.append(this.jdField_k_of_type_Int);
+    paramARCommonConfigInfo.append(this.N);
     QLog.i("AREngine_QQARSession", 1, paramARCommonConfigInfo.toString());
     paramARCommonConfigInfo = new StringBuilder();
     paramARCommonConfigInfo.append("Build.MODEL = ");
     paramARCommonConfigInfo.append(Build.MODEL);
     QLog.i("AREngine_QQARSession", 1, paramARCommonConfigInfo.toString());
-    this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager = paramUniformGLRenderManager;
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager = paramARTransferDoorLogicManager;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager = new ARMarkerResourceManager(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext);
-    paramARCommonConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    this.R = paramUniformGLRenderManager;
+    this.aN = paramARTransferDoorLogicManager;
+    this.T = new ARMarkerResourceManager(this.f, this.e);
+    paramARCommonConfigInfo = this.z;
     if ((paramARCommonConfigInfo != null) && (paramARCommonConfigInfo.aRCloudCacheExpireTime > 0L)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.aRCloudCacheExpireTime * 60L * 1000L, jdField_a_of_type_Boolean);
+      this.T.a(this.z.aRCloudCacheExpireTime * 60L * 1000L, g);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(86400000L, jdField_a_of_type_Boolean);
+      this.T.a(86400000L, g);
     }
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a();
-    if ((this.jdField_f_of_type_Long != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl == null)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl = new ARLocalControl();
+    this.U = this.T.b();
+    if ((this.G != 0L) && (this.h == null)) {
+      this.h = new ARLocalControl();
     }
-    if ((this.jdField_l_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl == null))
+    if ((this.F) && (this.S == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl = new ARCloudControl();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramActivity, 900000000, 900000000, 0, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo))
+      this.S = new ARCloudControl();
+      if (!this.S.a(this, this.f, paramActivity, 900000000, 900000000, 0, this.z))
       {
         QLog.i("AREngine_QQARSession", 1, "initAR fail! ARCloud init ar so fail.");
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl = null;
-        this.jdField_h_of_type_Boolean = false;
+        this.S = null;
+        this.w = false;
         if (paramAREngineCallback != null)
         {
           paramAREngineCallback.a(8);
@@ -1216,23 +1298,9 @@ public class QQARSession
         return 8;
       }
     }
-    this.jdField_h_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    this.w = true;
+    this.a = 0;
     return 0;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.mARCloudUploadDelayTime;
-  }
-  
-  public ArrayList<String> a()
-  {
-    ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-    if (localARCloudControl != null) {
-      return localARCloudControl.a();
-    }
-    return null;
   }
   
   public void a()
@@ -1249,9 +1317,9 @@ public class QQARSession
     ((StringBuilder)localObject).append("onARMarkerAllDownloadProgress. progress = ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.a == 2))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+      localObject = this.B;
       if (localObject != null) {
         ((AREngineCallback)localObject).a(2, paramInt);
       }
@@ -1260,7 +1328,7 @@ public class QQARSession
   
   public void a(int paramInt, ARCloudRecogResult paramARCloudRecogResult)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.k)
     {
       QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete mIsForbiddenLocalMarkAndCloudRecg:do nothing but return ");
       return;
@@ -1271,67 +1339,67 @@ public class QQARSession
     ((StringBuilder)localObject).append(", recogResult = ");
     ((StringBuilder)localObject).append(paramARCloudRecogResult);
     ((StringBuilder)localObject).append(":time is:");
-    ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_t_of_type_Long);
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - this.aO);
     QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    this.jdField_t_of_type_Long = System.currentTimeMillis();
-    if ((paramInt == 0) && (this.w))
+    this.aO = System.currentTimeMillis();
+    if ((paramInt == 0) && (this.aJ))
     {
-      this.w = false;
+      this.aJ = false;
       ReportController.b(null, "dc00898", "", "", "0X80085AE", "0X80085AE", 0, 0, "", "", "", "");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult == null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null))
+    if ((this.aj == null) || (this.am != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult;
-      if ((localObject == null) || (((ARLocalMarkerRecogResult)localObject).jdField_a_of_type_Int == 2))
+      localObject = this.af;
+      if ((localObject == null) || (((ARLocalMarkerRecogResult)localObject).b == 2))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult;
-        if (((localObject == null) || (((ARLocalFaceRecogResult)localObject).jdField_a_of_type_JavaUtilArrayList.size() <= 0)) && (!e())) {
+        localObject = this.ah;
+        if (((localObject == null) || (((ARLocalFaceRecogResult)localObject).c.size() <= 0)) && (!z())) {
           break label334;
         }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult == null))
+    if ((this.aj != null) && (this.am == null))
     {
       QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurCloudRecogResult != null.");
     }
     else
     {
-      paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult;
-      if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.jdField_a_of_type_Int != 2))
+      paramARCloudRecogResult = this.af;
+      if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.b != 2))
       {
         QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurLocalMarkerRecogResult.state != ARConstants.AR_TRACK_STATE_LOST.");
       }
       else
       {
-        paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult;
-        if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        paramARCloudRecogResult = this.ah;
+        if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.c.size() > 0)) {
           QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurLocalFaceRecogResult.faceDatas.size() > 0.");
-        } else if (e()) {
+        } else if (z()) {
           QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. isModelRenderStarted().");
         }
       }
     }
-    paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+    paramARCloudRecogResult = this.S;
     if (paramARCloudRecogResult != null) {
       paramARCloudRecogResult.a(true);
     }
     return;
     label334:
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult == null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null)) {
+    if ((this.aj == null) && (this.am != null)) {
       QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. deal mCurMIGObjectClassifyResult sucess");
-    } else if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null)) {
+    } else if ((this.aj != null) && (this.am != null)) {
       QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. deal mCurMIGObjectClassifyResult error happen");
     }
     int i1;
     boolean bool1;
     if ((paramInt == 0) && (paramARCloudRecogResult != null))
     {
-      if ((!ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult)) && (!ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult)) && (!ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult)) && (!ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult)) && (!ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult))) {
+      if ((!ARCloudMarkerRecogResult.a(paramARCloudRecogResult.d)) && (!ARCloudObjectClassifyResult.a(paramARCloudRecogResult.e)) && (!ARMIGObjectClassifyResult.a(paramARCloudRecogResult.j)) && (!ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.f)) && (!ARCloudSceneRecogResult.a(paramARCloudRecogResult.k))) {
         i1 = 0;
       } else {
         i1 = 1;
       }
-      boolean bool2 = ARCloudPreOcrResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult);
+      boolean bool2 = ARCloudPreOcrResult.a(paramARCloudRecogResult.h);
       paramInt = i1;
       if (bool2)
       {
@@ -1339,7 +1407,7 @@ public class QQARSession
         if (i1 != 0)
         {
           paramInt = i1;
-          if (ARRecognition.a(paramARCloudRecogResult, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 64L))
+          if (ARRecognition.a(paramARCloudRecogResult, this.z.recognitions, 64L))
           {
             QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard other recog result as OCR preRecog has high priority");
             paramInt = 0;
@@ -1352,40 +1420,40 @@ public class QQARSession
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onARCloudUploadImgComplete result:  marker{success: ");
-        localStringBuilder.append(ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult));
+        localStringBuilder.append(ARCloudMarkerRecogResult.a(paramARCloudRecogResult.d));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_f_of_type_Int);
+        localStringBuilder.append(this.I);
         localStringBuilder.append("}");
         localStringBuilder.append("  object{success: ");
-        localStringBuilder.append(ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult));
+        localStringBuilder.append(ARCloudObjectClassifyResult.a(paramARCloudRecogResult.e));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_g_of_type_Int);
+        localStringBuilder.append(this.J);
         localStringBuilder.append("}");
         localStringBuilder.append("  face{success: ");
-        localStringBuilder.append(ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult));
+        localStringBuilder.append(ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.f));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_h_of_type_Int);
+        localStringBuilder.append(this.K);
         localStringBuilder.append("}");
         localStringBuilder.append("  pre ocr{success: ");
-        localStringBuilder.append(ARCloudPreOcrResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult));
+        localStringBuilder.append(ARCloudPreOcrResult.a(paramARCloudRecogResult.h));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_i_of_type_Int);
+        localStringBuilder.append(this.L);
         localStringBuilder.append("}");
         localStringBuilder.append(" \n mig-object{success: ");
-        localStringBuilder.append(ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult));
+        localStringBuilder.append(ARMIGObjectClassifyResult.a(paramARCloudRecogResult.j));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_j_of_type_Int);
+        localStringBuilder.append(this.M);
         localStringBuilder.append("}name:");
-        if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null) {
-          localObject = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.toString();
+        if (paramARCloudRecogResult.j != null) {
+          localObject = paramARCloudRecogResult.j.toString();
         } else {
           localObject = "";
         }
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("  scene{success: ");
-        localStringBuilder.append(ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult));
+        localStringBuilder.append(ARCloudSceneRecogResult.a(paramARCloudRecogResult.k));
         localStringBuilder.append(", priority: ");
-        localStringBuilder.append(this.jdField_k_of_type_Int);
+        localStringBuilder.append(this.N);
         localStringBuilder.append("}");
         QLog.i("AREngine_QQARSession", 2, localStringBuilder.toString());
         i1 = paramInt;
@@ -1397,36 +1465,36 @@ public class QQARSession
       i1 = 0;
       bool1 = false;
     }
-    if ((i1 != 0) && (!this.x))
+    if ((i1 != 0) && (!this.aL))
     {
       QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete first recognize success.");
-      this.x = true;
+      this.aL = true;
     }
     if ((bool1) && (i1 == 0))
     {
-      this.jdField_o_of_type_Boolean = true;
+      this.al = true;
       a(new QQARSession.5(this));
     }
-    else if ((!bool1) && (this.jdField_o_of_type_Boolean))
+    else if ((!bool1) && (this.al))
     {
-      this.jdField_o_of_type_Boolean = false;
+      this.al = false;
       a(new QQARSession.6(this));
     }
     if (i1 == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null)
+      if (this.am != null)
       {
         e(true);
-        if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (!this.jdField_q_of_type_Boolean)) {
-          p();
+        if ((this.v) && (this.a == 2) && (!this.ao)) {
+          C();
         }
       }
-      if ((!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) && ((this.jdField_f_of_type_Long & 1L) != 0L))
+      if ((!ARRecognition.b(this.z.recognitions, 1L)) && ((this.G & 1L) != 0L))
       {
-        t();
+        M();
         b(1L);
       }
-      paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+      paramARCloudRecogResult = this.S;
       if (paramARCloudRecogResult != null) {
         paramARCloudRecogResult.a(true);
       }
@@ -1435,11 +1503,11 @@ public class QQARSession
     }
     if (i1 != 0)
     {
-      localObject = ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult);
-      if ((ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult)) && (((ARCloudLBSLocationCheckResult)localObject).jdField_a_of_type_Int != 1))
+      localObject = ARCloudRecogResult.b(this.z.recognitions, paramARCloudRecogResult);
+      if ((ARCloudRecogResult.a(this.z.recognitions, paramARCloudRecogResult)) && (((ARCloudLBSLocationCheckResult)localObject).a != 1))
       {
-        a(new QQARSession.7(this, (ARCloudLBSLocationCheckResult)localObject, ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult)));
-        paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+        a(new QQARSession.7(this, (ARCloudLBSLocationCheckResult)localObject, ARCloudRecogResult.c(this.z.recognitions, paramARCloudRecogResult)));
+        paramARCloudRecogResult = this.S;
         if (paramARCloudRecogResult != null) {
           paramARCloudRecogResult.a(true);
         }
@@ -1447,11 +1515,11 @@ public class QQARSession
         return;
       }
     }
-    t();
-    this.jdField_i_of_type_Long = 0L;
-    this.jdField_j_of_type_Long = 0L;
+    M();
+    this.as = 0L;
+    this.at = 0L;
     a(new QQARSession.8(this, paramARCloudRecogResult));
-    paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+    paramARCloudRecogResult = this.S;
     if (paramARCloudRecogResult != null) {
       paramARCloudRecogResult.a(true);
     }
@@ -1463,7 +1531,7 @@ public class QQARSession
     ((StringBuilder)localObject).append("pauseLocalRecog. recogType = ");
     ((StringBuilder)localObject).append(paramLong);
     QLog.d("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
+    localObject = this.h;
     if (localObject != null) {
       ((ARLocalControl)localObject).a(paramLong);
     }
@@ -1476,9 +1544,9 @@ public class QQARSession
   
   public void a(long paramLong, ARLocalRecogResultBase paramARLocalRecogResultBase)
   {
-    if (this.jdField_t_of_type_Int == 1)
+    if (this.aS == 1)
     {
-      if (paramARLocalRecogResultBase.jdField_b_of_type_Long != 4096L) {
+      if (paramARLocalRecogResultBase.j != 4096L) {
         return;
       }
       a((ARLocalGestureCircleRecogResult)paramARLocalRecogResultBase);
@@ -1486,10 +1554,10 @@ public class QQARSession
     }
     ARLocalRecogResult localARLocalRecogResult = new ARLocalRecogResult();
     if ((1L & paramLong) != 0L) {
-      localARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = ((ARLocalMarkerRecogResult)paramARLocalRecogResultBase);
+      localARLocalRecogResult.b = ((ARLocalMarkerRecogResult)paramARLocalRecogResultBase);
     }
     if ((paramLong & 0x4) != 0L) {
-      localARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = ((ARLocalFaceRecogResult)paramARLocalRecogResultBase);
+      localARLocalRecogResult.c = ((ARLocalFaceRecogResult)paramARLocalRecogResultBase);
     }
     a(localARLocalRecogResult, null);
   }
@@ -1498,21 +1566,21 @@ public class QQARSession
   {
     super.a(???, paramAppInterface);
     System.currentTimeMillis();
-    QLog.d("AREngine_QQARSession", 1, String.format("init context=%s appInterface=%s mIsInited=%s", new Object[] { ???, paramAppInterface, Boolean.valueOf(this.jdField_g_of_type_Boolean) }));
-    if (this.jdField_g_of_type_Boolean) {
+    QLog.d("AREngine_QQARSession", 1, String.format("init context=%s appInterface=%s mIsInited=%s", new Object[] { ???, paramAppInterface, Boolean.valueOf(this.v) }));
+    if (this.v) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager = new SensorTrackManager();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.O = new SensorTrackManager();
+    synchronized (this.X)
     {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      if (this.V == null)
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("AREngineThread", 0);
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        this.V = ThreadManager.newFreeHandlerThread("AREngineThread", 0);
+        this.V.start();
+        this.W = new Handler(this.V.getLooper());
+        this.ae = new ArrayList();
       }
-      this.jdField_g_of_type_Boolean = true;
+      this.v = true;
       return;
     }
   }
@@ -1524,45 +1592,45 @@ public class QQARSession
   
   public void a(ARRenderTrackInfo paramARRenderTrackInfo, ARLocalRecogResultBase paramARLocalRecogResultBase)
   {
-    if ((paramARLocalRecogResultBase != null) && (paramARLocalRecogResultBase.jdField_b_of_type_Long == 4L))
+    if ((paramARLocalRecogResultBase != null) && (paramARLocalRecogResultBase.j == 4L))
     {
-      if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+      if ((this.v) && (this.a == 2))
       {
-        paramARRenderTrackInfo = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+        paramARRenderTrackInfo = this.B;
         if (paramARRenderTrackInfo != null) {
-          paramARRenderTrackInfo.a(paramARLocalRecogResultBase.jdField_b_of_type_Long, 0, null, paramARLocalRecogResultBase);
+          paramARRenderTrackInfo.a(paramARLocalRecogResultBase.j, 0, null, paramARLocalRecogResultBase);
         }
       }
     }
-    else if ((paramARLocalRecogResultBase != null) && (paramARLocalRecogResultBase.jdField_b_of_type_Long == 128L))
+    else if ((paramARLocalRecogResultBase != null) && (paramARLocalRecogResultBase.j == 128L))
     {
-      if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+      if ((this.v) && (this.a == 2))
       {
-        paramARRenderTrackInfo = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+        paramARRenderTrackInfo = this.B;
         if (paramARRenderTrackInfo != null) {
-          paramARRenderTrackInfo.a(paramARLocalRecogResultBase.jdField_b_of_type_Long, 0, null, paramARLocalRecogResultBase);
+          paramARRenderTrackInfo.a(paramARLocalRecogResultBase.j, 0, null, paramARLocalRecogResultBase);
         }
       }
     }
-    else if (this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null)
+    else if (this.aq != null)
     {
-      paramARLocalRecogResultBase = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      paramARLocalRecogResultBase = this.R;
       if (paramARLocalRecogResultBase != null) {
-        paramARLocalRecogResultBase.a();
+        paramARLocalRecogResultBase.b();
       }
-      if ((this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()) && (this.jdField_r_of_type_Boolean))
+      if ((this.aq.g()) && (this.aw))
       {
-        if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+        if ((this.v) && (this.a == 2))
         {
-          paramARLocalRecogResultBase = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+          paramARLocalRecogResultBase = this.B;
           if (paramARLocalRecogResultBase != null) {
-            paramARLocalRecogResultBase.a(this.jdField_h_of_type_Long, this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c, paramARRenderTrackInfo, null);
+            paramARLocalRecogResultBase.a(this.ap, this.aq.d, paramARRenderTrackInfo, null);
           }
         }
       }
       else
       {
-        paramARLocalRecogResultBase = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+        paramARLocalRecogResultBase = this.R;
         if (paramARLocalRecogResultBase != null) {
           paramARLocalRecogResultBase.a(paramARRenderTrackInfo);
         }
@@ -1570,7 +1638,7 @@ public class QQARSession
     }
     else
     {
-      paramARLocalRecogResultBase = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      paramARLocalRecogResultBase = this.R;
       if (paramARLocalRecogResultBase != null) {
         paramARLocalRecogResultBase.a(paramARRenderTrackInfo);
       }
@@ -1599,32 +1667,32 @@ public class QQARSession
   {
     try
     {
-      if ((!this.jdField_g_of_type_Boolean) || (this.jdField_a_of_type_Int != 2)) {
+      if ((!this.v) || (this.a != 2)) {
         break label1847;
       }
       if (paramARLocalRecogResult != null)
       {
-        if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult;
+        if (paramARLocalRecogResult.b != null) {
+          this.af = paramARLocalRecogResult.b;
         }
-        if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult;
+        if (paramARLocalRecogResult.c != null) {
+          this.ah = paramARLocalRecogResult.c;
         }
       }
       if (paramARCloudRecogResult != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = paramARCloudRecogResult;
+        this.aj = paramARCloudRecogResult;
       }
-      if ((this.jdField_f_of_type_Long == 0L) || (this.jdField_g_of_type_Long == 0L)) {
+      if ((this.G == 0L) || (this.H == 0L)) {
         break label1596;
       }
-      if ((paramARLocalRecogResult != null) && (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult != null))
+      if ((paramARLocalRecogResult != null) && (paramARLocalRecogResult.b != null))
       {
-        i1 = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int;
+        i1 = paramARLocalRecogResult.b.b;
         if (i1 == 0)
         {
           try
           {
-            ReportController.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_JavaLangString, "1", "", "");
+            ReportController.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, paramARLocalRecogResult.b.i.f, "1", "", "");
           }
           catch (Exception paramARCloudRecogResult)
           {
@@ -1633,10 +1701,10 @@ public class QQARSession
             ((StringBuilder)localObject).append(paramARCloudRecogResult.getMessage());
             QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
           }
-          if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-            t();
+          if (ARRecognition.b(this.z.recognitions, 1L)) {
+            M();
           }
-          paramARCloudRecogResult = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+          paramARCloudRecogResult = paramARLocalRecogResult.b.i;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("localRecogResult. isNeedInternalRender = ");
           ((StringBuilder)localObject).append(paramARCloudRecogResult.f());
@@ -1645,28 +1713,28 @@ public class QQARSession
           ((StringBuilder)localObject).append(", isNeedWaitUserOperation = ");
           ((StringBuilder)localObject).append(paramARCloudRecogResult.h());
           QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-          if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(1L, new ARTarget(paramARCloudRecogResult));
+          if ((this.v) && (this.a == 2) && (this.B != null)) {
+            this.B.a(1L, new ARTarget(paramARCloudRecogResult));
           }
           if (!paramARCloudRecogResult.d())
           {
             if (paramARCloudRecogResult.f())
             {
               a(1L);
-              a(1L, paramARCloudRecogResult, paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_b_of_type_Int, paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Float, paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_b_of_type_Float, paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.c);
+              a(1L, paramARCloudRecogResult, paramARLocalRecogResult.b.d, paramARLocalRecogResult.b.e, paramARLocalRecogResult.b.f, paramARLocalRecogResult.b.g);
               if (paramARCloudRecogResult.j()) {
-                a(false);
+                f(false);
               }
             }
             else if ((!paramARCloudRecogResult.h()) && (!paramARCloudRecogResult.g()))
             {
-              w();
+              P();
             }
             else if (paramARCloudRecogResult.g())
             {
               a(1L);
               if (paramARCloudRecogResult.j()) {
-                a(true);
+                f(true);
               }
             }
           }
@@ -1674,46 +1742,46 @@ public class QQARSession
           {
             a(1L);
             if (paramARCloudRecogResult.j()) {
-              a(true);
+              f(true);
             }
           }
         }
-        if ((paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int != 2) && (!paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())) {
+        if ((paramARLocalRecogResult.b.b != 2) && (!paramARLocalRecogResult.b.i.d())) {
           break label1774;
         }
-        a(paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult, this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult);
-        if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int != 2)
+        a(paramARLocalRecogResult.b, this.ag);
+        if (paramARLocalRecogResult.b.b != 2)
         {
-          this.jdField_i_of_type_Long = 0L;
-          this.jdField_j_of_type_Long = 0L;
+          this.as = 0L;
+          this.at = 0L;
           break label1774;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult != null) && (this.jdField_n_of_type_Boolean))
+        if ((this.aj != null) && (this.ak))
         {
-          this.jdField_i_of_type_Long = 0L;
-          this.jdField_j_of_type_Long = 0L;
+          this.as = 0L;
+          this.at = 0L;
           break label1774;
         }
-        if (this.jdField_i_of_type_Long == 0L) {
-          this.jdField_i_of_type_Long = System.currentTimeMillis();
+        if (this.as == 0L) {
+          this.as = System.currentTimeMillis();
         }
-        this.jdField_j_of_type_Long = System.currentTimeMillis();
-        if ((this.jdField_i_of_type_Long <= 0L) || (this.jdField_j_of_type_Long - this.jdField_i_of_type_Long <= 1500L)) {
+        this.at = System.currentTimeMillis();
+        if ((this.as <= 0L) || (this.at - this.as <= 1500L)) {
           break label1774;
         }
-        this.jdField_i_of_type_Long = -1L;
-        w();
+        this.as = -1L;
+        P();
         break label1774;
       }
-      if ((paramARLocalRecogResult == null) || (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult == null)) {
+      if ((paramARLocalRecogResult == null) || (paramARLocalRecogResult.c == null)) {
         break label1067;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult, this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult);
-      i1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult.jdField_a_of_type_JavaUtilArrayList.size();
+      a(this.ah, this.ai);
+      i1 = this.ah.c.size();
       if (i1 <= 0) {
         break label1861;
       }
-      paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramARCloudRecogResult = this.ah.c.iterator();
       bool1 = false;
       for (;;)
       {
@@ -1721,7 +1789,7 @@ public class QQARSession
         if (!paramARCloudRecogResult.hasNext()) {
           break;
         }
-        if (!((DrawView2.FaceData)paramARCloudRecogResult.next()).jdField_e_of_type_Boolean) {
+        if (!((DrawView2.FaceData)paramARCloudRecogResult.next()).r) {
           bool1 = true;
         }
       }
@@ -1749,7 +1817,7 @@ public class QQARSession
         if (l1 != 0L) {}
       }
     }
-    if ((QLog.isColorLevel()) && (ARLocalFaceRecog.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (ARLocalFaceRecog.a))
     {
       paramARCloudRecogResult = new StringBuilder();
       paramARCloudRecogResult.append("[ScanStarFace]onARRecogComplete faceDataSize = ");
@@ -1762,7 +1830,7 @@ public class QQARSession
     {
       try
       {
-        ReportController.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, String.valueOf(((DrawView2.FaceData)paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int), "3", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X80081DE", "0X80081DE", 0, 0, String.valueOf(((DrawView2.FaceData)paramARLocalRecogResult.c.c.get(0)).f), "3", "", "");
       }
       catch (Exception paramARCloudRecogResult)
       {
@@ -1771,8 +1839,8 @@ public class QQARSession
         ((StringBuilder)localObject).append(paramARCloudRecogResult.getMessage());
         QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
       }
-      this.jdField_m_of_type_Long = 0L;
-      this.jdField_n_of_type_Long = 0L;
+      this.ax = 0L;
+      this.ay = 0L;
     }
     else
     {
@@ -1780,11 +1848,11 @@ public class QQARSession
       if (ARLocalFaceRecog.a()) {
         l1 = 4500L;
       }
-      if (this.jdField_m_of_type_Long == 0L) {
-        this.jdField_m_of_type_Long = System.currentTimeMillis();
+      if (this.ax == 0L) {
+        this.ax = System.currentTimeMillis();
       }
-      this.jdField_n_of_type_Long = System.currentTimeMillis();
-      if ((this.jdField_m_of_type_Long > 0L) && (this.jdField_n_of_type_Long - this.jdField_m_of_type_Long > l1))
+      this.ay = System.currentTimeMillis();
+      if ((this.ax > 0L) && (this.ay - this.ax > l1))
       {
         if (QLog.isColorLevel())
         {
@@ -1794,88 +1862,88 @@ public class QQARSession
           QLog.d("AREngine_QQARSession", 2, paramARCloudRecogResult.toString());
         }
         a(4L);
-        this.jdField_m_of_type_Long = -1L;
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult.jdField_a_of_type_Boolean = true;
-        a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult, this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-        this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-        x();
+        this.ax = -1L;
+        this.ah.b = true;
+        a(this.ah, this.ai);
+        this.ah = null;
+        this.ai = null;
+        Q();
         break label1774;
         if (paramARCloudRecogResult != null)
         {
-          localObject = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult);
-          l1 = ((ARRecognition.RecognitionResult)localObject).jdField_a_of_type_Long;
-          bool1 = ((ARRecognition.RecognitionResult)localObject).jdField_a_of_type_Boolean;
-          bool2 = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, l1);
-          if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult == null) || (l1 == 128L)) {
+          localObject = ARRecognition.a(this.z.recognitions, paramARCloudRecogResult);
+          l1 = ((ARRecognition.RecognitionResult)localObject).a;
+          bool1 = ((ARRecognition.RecognitionResult)localObject).b;
+          bool2 = ARRecognition.b(this.z.recognitions, l1);
+          if ((this.am == null) || (l1 == 128L)) {
             break label1867;
           }
           e(false);
-          if (!this.jdField_p_of_type_Boolean) {
+          if (!this.an) {
             break label1867;
           }
           b(1L);
-          this.jdField_p_of_type_Boolean = false;
+          this.an = false;
           break label1867;
           if (l1 == 4L)
           {
             if (bool2)
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+              a(paramARCloudRecogResult.f);
             }
-            else if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 8L, 1L))
+            else if (ARRecognition.a(this.z.recognitions, 8L, 1L))
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+              a(paramARCloudRecogResult.f);
             }
-            else if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult == null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int == 2))
+            else if ((this.af == null) || (this.af.b == 2))
             {
               a(1L);
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
+              a(paramARCloudRecogResult.f);
             }
           }
           else if (l1 == 2L)
           {
             if (bool2)
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+              a(paramARCloudRecogResult.e);
             }
-            else if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2L, 1L))
+            else if (ARRecognition.a(this.z.recognitions, 2L, 1L))
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+              a(paramARCloudRecogResult.e);
             }
-            else if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult == null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int == 2))
+            else if ((this.af == null) || (this.af.b == 2))
             {
               a(1L);
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
+              a(paramARCloudRecogResult.e);
             }
           }
           else if (l1 == 128L)
           {
             if (bool2)
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+              b(paramARCloudRecogResult.j);
             }
             else
             {
-              if (this.jdField_q_of_type_Boolean)
+              if (this.ao)
               {
-                if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null) {
+                if (this.am != null) {
                   e(false);
                 }
-                if (this.jdField_p_of_type_Boolean) {
-                  this.jdField_p_of_type_Boolean = false;
+                if (this.an) {
+                  this.an = false;
                 }
                 return;
               }
-              if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 128L, 1L))
+              if (ARRecognition.a(this.z.recognitions, 128L, 1L))
               {
-                a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+                b(paramARCloudRecogResult.j);
               }
-              else if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult == null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int == 2))
+              else if ((this.af == null) || (this.af.b == 2))
               {
                 a(1L);
-                this.jdField_p_of_type_Boolean = true;
-                a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
+                this.an = true;
+                b(paramARCloudRecogResult.j);
               }
             }
           }
@@ -1883,60 +1951,60 @@ public class QQARSession
           {
             if (bool2)
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+              a(paramARCloudRecogResult.d);
             }
             else
             {
               if (bool1) {
                 b(1L);
               }
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+              a(paramARCloudRecogResult.d);
             }
           }
           else if (l1 == 2048L) {
             if (bool2)
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+              a(paramARCloudRecogResult.k);
             }
-            else if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2048L, 1L))
+            else if (ARRecognition.a(this.z.recognitions, 2048L, 1L))
             {
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+              a(paramARCloudRecogResult.k);
             }
-            else if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult == null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_Int == 2))
+            else if ((this.af == null) || (this.af.b == 2))
             {
               a(1L);
-              a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+              a(paramARCloudRecogResult.k);
               break label1774;
-              l1 = this.jdField_f_of_type_Long;
+              l1 = this.G;
               if (l1 != 0L)
               {
                 if (paramARLocalRecogResult == null) {
                   return;
                 }
-                if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult != null) {
-                  a(paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult, this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult);
-                } else if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult != null) {
-                  a(paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult, this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult);
+                if (paramARLocalRecogResult.b != null) {
+                  a(paramARLocalRecogResult.b, this.ag);
+                } else if (paramARLocalRecogResult.c != null) {
+                  a(paramARLocalRecogResult.c, this.ai);
                 }
               }
               else
               {
-                l1 = this.jdField_g_of_type_Long;
+                l1 = this.H;
                 if (l1 != 0L)
                 {
                   if (paramARCloudRecogResult == null) {
                     return;
                   }
-                  if (ARCloudObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult)) {
-                    a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
-                  } else if (ARMIGObjectClassifyResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult)) {
-                    a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult);
-                  } else if (ARCloudMarkerRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult)) {
-                    w();
-                  } else if (ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult)) {
-                    x();
-                  } else if (ARCloudSceneRecogResult.a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult)) {
-                    a(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
+                  if (ARCloudObjectClassifyResult.a(paramARCloudRecogResult.e)) {
+                    a(paramARCloudRecogResult.e);
+                  } else if (ARMIGObjectClassifyResult.a(paramARCloudRecogResult.j)) {
+                    b(paramARCloudRecogResult.j);
+                  } else if (ARCloudMarkerRecogResult.a(paramARCloudRecogResult.d)) {
+                    P();
+                  } else if (ARCloudRecogRspFaceResult.a(paramARCloudRecogResult.f)) {
+                    Q();
+                  } else if (ARCloudSceneRecogResult.a(paramARCloudRecogResult.k)) {
+                    a(paramARCloudRecogResult.k);
                   }
                 }
               }
@@ -1946,18 +2014,18 @@ public class QQARSession
       }
     }
     if (paramARLocalRecogResult != null) {
-      if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult != null)
+      if (paramARLocalRecogResult.b != null)
       {
-        this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult;
-        if ((paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null) && (!paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d()))
+        this.ag = paramARLocalRecogResult.b;
+        if ((paramARLocalRecogResult.b.i != null) && (!paramARLocalRecogResult.b.i.d()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-          this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
+          this.af = null;
+          this.ag = null;
         }
       }
-      else if (paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult != null)
+      else if (paramARLocalRecogResult.c != null)
       {
-        this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = paramARLocalRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult;
+        this.ai = paramARLocalRecogResult.c;
       }
     }
     return;
@@ -1988,16 +2056,16 @@ public class QQARSession
       localStringBuilder.append("onARCloudSelectImageComplete. result = ");
       localStringBuilder.append(paramBoolean);
       QLog.i("AREngine_QQARSession", 1, localStringBuilder.toString());
-      if (this.jdField_q_of_type_Long == 0L) {
-        this.jdField_q_of_type_Long = System.currentTimeMillis();
+      if (this.aD == 0L) {
+        this.aD = System.currentTimeMillis();
       }
-      if (this.jdField_u_of_type_Long > 0L)
+      if (this.aQ > 0L)
       {
-        long l1 = System.currentTimeMillis() - this.jdField_u_of_type_Long;
+        long l1 = System.currentTimeMillis() - this.aQ;
         if (l1 > 0L) {
-          this.jdField_v_of_type_Long += l1;
+          this.aR += l1;
         }
-        this.jdField_u_of_type_Long = 0L;
+        this.aQ = 0L;
       }
     }
   }
@@ -2010,17 +2078,17 @@ public class QQARSession
     paramArCloudConfigInfo.append(" type  ");
     paramArCloudConfigInfo.append(paramInt);
     QLog.i("AREngine_QQARSession", 1, paramArCloudConfigInfo.toString());
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int != 2)) {}
+    if ((this.v) && (this.a != 2)) {}
   }
   
   public void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
     QLog.i("AREngine_QQARSession", 1, String.format("onARMarkerAllDownloadComplete result=%s config=%s", new Object[] { Boolean.valueOf(paramBoolean), paramArCloudConfigInfo }));
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
+    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.b) && (paramArCloudConfigInfo.m.a) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.c)) && (!paramArCloudConfigInfo.f()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_e_of_type_Int = 1;
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+      this.B.a(0, paramArCloudConfigInfo.m.c);
+      this.p = 1;
+      this.o = paramArCloudConfigInfo;
       return;
     }
     d(paramBoolean, paramArCloudConfigInfo);
@@ -2028,20 +2096,15 @@ public class QQARSession
   
   public void a(float[] paramArrayOfFloat)
   {
-    UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+    UniformGLRenderManager localUniformGLRenderManager = this.R;
     if (localUniformGLRenderManager != null) {
       localUniformGLRenderManager.a(0, paramArrayOfFloat);
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(ARMIGObjectClassifyResult paramARMIGObjectClassifyResult)
   {
-    ARMIGObjectClassifyResult localARMIGObjectClassifyResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult;
+    ARMIGObjectClassifyResult localARMIGObjectClassifyResult = this.am;
     if (localARMIGObjectClassifyResult != null) {
       return localARMIGObjectClassifyResult.a(paramARMIGObjectClassifyResult) ^ true;
     }
@@ -2050,7 +2113,7 @@ public class QQARSession
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.a == 2)
     {
       onPreviewFrame(paramArrayOfByte, null);
       return true;
@@ -2058,26 +2121,18 @@ public class QQARSession
     return false;
   }
   
-  public long b()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof ScanTorchActivity)) {
-      return ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).a();
-    }
-    return 0L;
-  }
-  
   public void b()
   {
-    if (this.jdField_u_of_type_Long == 0L) {
-      this.jdField_u_of_type_Long = System.currentTimeMillis();
+    if (this.aQ == 0L) {
+      this.aQ = System.currentTimeMillis();
     }
   }
   
   public void b(int paramInt)
   {
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.a == 2))
     {
-      AREngineCallback localAREngineCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+      AREngineCallback localAREngineCallback = this.B;
       if (localAREngineCallback != null) {
         localAREngineCallback.a(2, paramInt);
       }
@@ -2090,31 +2145,31 @@ public class QQARSession
     localStringBuilder.append("resumeLocalRecog. recogType = ");
     localStringBuilder.append(paramLong);
     QLog.d("AREngine_QQARSession", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl != null)
+    if (this.h != null)
     {
       if ((1L & paramLong) != 0L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-        this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-        this.jdField_i_of_type_Long = 0L;
-        this.jdField_j_of_type_Long = 0L;
-        this.jdField_k_of_type_Long = 0L;
-        this.jdField_l_of_type_Long = 0L;
+        this.af = null;
+        this.ag = null;
+        this.as = 0L;
+        this.at = 0L;
+        this.au = 0L;
+        this.av = 0L;
       }
       if ((0x4 & paramLong) != 0L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-        this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-        this.jdField_m_of_type_Long = 0L;
-        this.jdField_n_of_type_Long = 0L;
+        this.ah = null;
+        this.ai = null;
+        this.ax = 0L;
+        this.ay = 0L;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.b(paramLong);
+      this.h.d(paramLong);
     }
   }
   
   public void b(Runnable paramRunnable, long paramLong)
   {
-    if ((this.jdField_h_of_type_Boolean) && (this.jdField_a_of_type_Int == 2)) {
+    if ((this.w) && (this.a == 2)) {
       a(paramRunnable, paramLong);
     }
   }
@@ -2136,93 +2191,36 @@ public class QQARSession
     localStringBuilder.append("onARCloudPretreatComplete. result = ");
     localStringBuilder.append(paramBoolean);
     QLog.i("AREngine_QQARSession", 1, localStringBuilder.toString());
-    if ((paramBoolean) && (this.jdField_v_of_type_Boolean))
+    if ((paramBoolean) && (this.aI))
     {
-      this.jdField_v_of_type_Boolean = false;
+      this.aI = false;
       ReportController.b(null, "dc00898", "", "", "0X80085AD", "0X80085AD", 0, 0, "", "", "", "");
     }
   }
   
   public void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
+    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.b) && (paramArCloudConfigInfo.m.a) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.c)) && (!paramArCloudConfigInfo.f()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      this.jdField_e_of_type_Int = 2;
+      this.B.a(0, paramArCloudConfigInfo.m.c);
+      this.o = paramArCloudConfigInfo;
+      this.p = 2;
       return;
     }
     e(paramBoolean, paramArCloudConfigInfo);
   }
   
-  public int c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("start startInternal. mCurEngineState = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    QLog.d("AREngine_QQARSession", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_Int == 0) && (CameraProxy.a().b()))
-    {
-      this.jdField_q_of_type_Int = 0;
-      this.jdField_o_of_type_Long = System.currentTimeMillis();
-      this.jdField_p_of_type_Long = 0L;
-      this.jdField_r_of_type_Int = 0;
-      this.jdField_q_of_type_Long = 0L;
-      this.jdField_r_of_type_Long = 0L;
-      this.jdField_n_of_type_Int = CameraProxy.a().a();
-      this.jdField_o_of_type_Int = CameraProxy.a().b();
-      this.jdField_p_of_type_Int = CameraProxy.a().c();
-      this.jdField_m_of_type_Int = UniformGLRenderManagerImpl.jdField_b_of_type_Int;
-      this.jdField_l_of_type_Int = UniformGLRenderManagerImpl.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = new ARNativeBridge();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.isLoadSoSuccess())
-      {
-        QLog.d("AREngine_QQARSession", 1, "startAR internal fail");
-        this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = null;
-        this.jdField_h_of_type_Boolean = false;
-        e(6);
-        return 6;
-      }
-      g();
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager.a(this.jdField_a_of_type_AndroidContentContext, this);
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl != null) && (!h()))
-      {
-        e(7);
-        return 7;
-      }
-      if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L))
-      {
-        a(5L);
-      }
-      else
-      {
-        a(4L);
-        b(1L);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl != null) && (!i()))
-      {
-        e(3);
-        return 3;
-      }
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(this);
-      e(0);
-      return 0;
-    }
-    return -1;
-  }
-  
   public void c()
   {
     QLog.i("AREngine_QQARSession", 1, "onARCloudUploadStart.");
-    this.jdField_s_of_type_Int += 1;
+    this.aP += 1;
   }
   
   public void c(int paramInt)
   {
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.a == 2))
     {
-      AREngineCallback localAREngineCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+      AREngineCallback localAREngineCallback = this.B;
       if (localAREngineCallback != null) {
         localAREngineCallback.a(2, paramInt);
       }
@@ -2242,46 +2240,28 @@ public class QQARSession
   
   public void c(boolean paramBoolean)
   {
-    ARCloudRecogResult localARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult;
-    if ((localARCloudRecogResult != null) && (localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null)) {
+    ARCloudRecogResult localARCloudRecogResult = this.aj;
+    if ((localARCloudRecogResult != null) && (localARCloudRecogResult.j != null)) {
       a(new QQARSession.9(this, paramBoolean));
     }
   }
   
   public void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
+    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.b) && (paramArCloudConfigInfo.m.a) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.c)) && (!paramArCloudConfigInfo.f()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      this.jdField_e_of_type_Int = 2;
+      this.B.a(0, paramArCloudConfigInfo.m.c);
+      this.o = paramArCloudConfigInfo;
+      this.p = 2;
       return;
     }
     f(paramBoolean, paramArCloudConfigInfo);
   }
   
-  public boolean c()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public void d()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARMarkerAllDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
-    {
-      AREngineCallback localAREngineCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
-      if (localAREngineCallback != null) {
-        localAREngineCallback.a(0, 4);
-      }
-    }
-  }
-  
   public void d(int paramInt)
   {
     QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus on workMode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    if ((paramInt == 1) && (this.jdField_t_of_type_Int != paramInt)) {
+    if ((paramInt == 1) && (this.aS != paramInt)) {
       a(new QQARSession.28(this));
     }
   }
@@ -2299,7 +2279,7 @@ public class QQARSession
   
   public void d(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
+    long l2 = System.currentTimeMillis() - this.aK;
     long l1;
     if (l2 >= 1000L) {
       l1 = 0L;
@@ -2312,92 +2292,92 @@ public class QQARSession
   
   public boolean d()
   {
-    return this.jdField_h_of_type_Boolean;
+    return false;
   }
   
-  public void e()
+  public long e()
   {
-    QLog.i("AREngine_QQARSession", 1, "onARObjectClassifyDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new QQARSession.15(this));
+    return this.z.mARCloudUploadDelayTime;
   }
   
-  public boolean e()
+  public long f()
   {
-    return this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null;
-  }
-  
-  public void f()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARSceneRecogDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new QQARSession.17(this));
-  }
-  
-  public boolean f()
-  {
-    QLog.i("AREngine_QQARSession", 1, "stopInternal.");
-    this.jdField_d_of_type_Boolean = true;
-    z();
-    j();
-    k();
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-    this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-    this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = null;
-    this.jdField_n_of_type_Boolean = false;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_i_of_type_Long = 0L;
-    this.jdField_j_of_type_Long = 0L;
-    this.jdField_k_of_type_Long = 0L;
-    this.jdField_l_of_type_Long = 0L;
-    this.jdField_r_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_m_of_type_Long = 0L;
-    this.jdField_n_of_type_Long = 0L;
-    return true;
+    if ((this.e instanceof ScanTorchActivity)) {
+      return ((ScanTorchActivity)this.e).getTimeActivityVisible();
+    }
+    return 0L;
   }
   
   public void g()
   {
+    QLog.i("AREngine_QQARSession", 1, "onARMarkerAllDownloadStart.");
+    this.aK = System.currentTimeMillis();
+    if ((this.v) && (this.a == 2))
+    {
+      AREngineCallback localAREngineCallback = this.B;
+      if (localAREngineCallback != null) {
+        localAREngineCallback.a(0, 4);
+      }
+    }
+  }
+  
+  public void h()
+  {
+    QLog.i("AREngine_QQARSession", 1, "onARObjectClassifyDownloadStart.");
+    this.aK = System.currentTimeMillis();
+    a(new QQARSession.15(this));
+  }
+  
+  public void i()
+  {
+    QLog.i("AREngine_QQARSession", 1, "onARSceneRecogDownloadStart.");
+    this.aK = System.currentTimeMillis();
+    a(new QQARSession.17(this));
+  }
+  
+  public int j()
+  {
+    a(new QQARSession.1(this));
+    return 0;
+  }
+  
+  public void k()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARengine status resume now start. + mCurrentSessionStatus:=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     QLog.d("AREngine_QQARSession", 1, localStringBuilder.toString());
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 4) && (this.jdField_a_of_type_Int != 5))
+    if ((this.v) && (this.a != 0) && (this.a != 4) && (this.a != 5))
     {
-      if (this.jdField_a_of_type_Int == 2) {
+      if (this.a == 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(this);
-      a(this.jdField_r_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-      this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult = null;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-      this.jdField_b_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult = null;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = null;
-      this.jdField_n_of_type_Boolean = false;
-      this.jdField_q_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
-      this.jdField_p_of_type_Boolean = false;
-      this.jdField_h_of_type_Long = 0L;
-      this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-      this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-      this.jdField_i_of_type_Long = 0L;
-      this.jdField_j_of_type_Long = 0L;
-      this.jdField_k_of_type_Long = 0L;
-      this.jdField_l_of_type_Long = 0L;
-      this.jdField_r_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_m_of_type_Long = 0L;
-      this.jdField_n_of_type_Long = 0L;
-      if ((!this.jdField_c_of_type_Boolean) && (this.jdField_t_of_type_Int != 1))
+      this.R.a(this);
+      f(this.aw);
+      this.af = null;
+      this.ag = null;
+      this.ah = null;
+      this.ai = null;
+      this.aj = null;
+      this.ak = false;
+      this.ao = false;
+      this.am = null;
+      this.an = false;
+      this.ap = 0L;
+      this.aq = null;
+      this.ar = null;
+      this.as = 0L;
+      this.at = 0L;
+      this.au = 0L;
+      this.av = 0L;
+      this.aw = false;
+      this.n = false;
+      this.ax = 0L;
+      this.ay = 0L;
+      if ((!this.k) && (this.aS != 1))
       {
-        u();
-        if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L))
+        N();
+        if (!ARRecognition.b(this.z.recognitions, 1L))
         {
           a(5L);
         }
@@ -2406,32 +2386,32 @@ public class QQARSession
           a(4L);
           b(1L);
         }
-        this.jdField_j_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = 2;
+        this.y = true;
+        this.a = 2;
         QLog.d("AREngine_QQARSession", 1, "ARengine status resume now end.");
         return;
       }
       b(4096L);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(true, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int);
-      this.jdField_j_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 2;
+      this.h.a(true, this.aa, this.ab);
+      this.y = true;
+      this.a = 2;
     }
   }
   
-  public void h()
+  public void m()
   {
     QLog.i("AREngine_QQARSession", 1, "ARengine status  pause. now ");
-    if (this.jdField_g_of_type_Boolean)
+    if (this.v)
     {
-      if (this.jdField_a_of_type_Int != 2) {
+      if (this.a != 2) {
         return;
       }
-      z();
-      m();
-      t();
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
+      S();
+      x();
+      M();
+      Object localObject = this.h;
       boolean bool;
-      if ((localObject != null) && (!((ARLocalControl)localObject).a(4L))) {
+      if ((localObject != null) && (!((ARLocalControl)localObject).b(4L))) {
         bool = true;
       } else {
         bool = false;
@@ -2439,236 +2419,251 @@ public class QQARSession
       a(5L);
       if (bool)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback;
+        localObject = this.B;
         if (localObject != null) {
           ((AREngineCallback)localObject).a(bool);
         }
       }
-      this.jdField_q_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null) {
+      this.ao = true;
+      if (this.am != null) {
         e(true);
       }
-      this.jdField_t_of_type_Boolean = false;
-      A();
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl != null) && (this.jdField_t_of_type_Int == 1))
+      this.aG = false;
+      U();
+      if ((this.h != null) && (this.aS == 1))
       {
         a(4096L);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(false, this.jdField_n_of_type_Int, this.jdField_o_of_type_Int);
+        this.h.a(false, this.aa, this.ab);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager;
+      localObject = this.T;
       if (localObject != null) {
-        ((ARMarkerResourceManager)localObject).b();
+        ((ARMarkerResourceManager)localObject).c();
       }
-      this.jdField_j_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(null);
+      this.y = false;
+      this.a = 3;
+      this.R.a(null);
     }
   }
   
-  public void i()
+  public void n()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("stop start. mCurEngineState = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == 5) {
+    if (this.a == 5) {
       return;
     }
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_d_of_type_Boolean = false;
-    localObject = this.jdField_a_of_type_JavaLangRunnable;
+    this.a = 4;
+    this.n = false;
+    localObject = this.ad;
     if (localObject != null)
     {
       b((Runnable)localObject);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.ad = null;
     }
-    l();
+    t();
     a(new QQARSession.3(this));
   }
   
-  public void j()
+  public void o()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uninit start. mIsInited = ");
-    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append(this.v);
     QLog.i("AREngine_QQARSession", 1, localStringBuilder.toString());
-    if (!this.jdField_g_of_type_Boolean) {
+    if (!this.v) {
       return;
     }
     CameraProxy.a().c(this);
     a(new QQARSession.4(this));
   }
   
-  public void m()
-  {
-    QLog.d("AREngine_QQARSession", 1, "stopModelRender.");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-    if ((localObject != null) && (this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null))
-    {
-      ((UniformGLRenderManager)localObject).d();
-      if (CameraProxy.a().b()) {
-        CameraProxy.a().a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int);
-      }
-      if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback != null) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4)))
-      {
-        localObject = new ARTarget(this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngineCallback.a(this.jdField_h_of_type_Long, false, (ARTarget)localObject);
-      }
-    }
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  }
-  
-  public void n()
-  {
-    QLog.d("AREngine_QQARSession", 1, "stopModelRenderOnly.");
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
-    {
-      UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-      if (localUniformGLRenderManager != null) {
-        localUniformGLRenderManager.d();
-      }
-    }
-  }
-  
-  public void o()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudObjectClassifyResultComplete.");
-    if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      b(1L);
-    }
-    y();
-  }
-  
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if ((this.jdField_g_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager != null)) {
-      if ((this.jdField_h_of_type_Boolean) && (this.jdField_a_of_type_Int == 2))
+    if ((this.v) && (this.R != null)) {
+      if ((this.w) && (this.a == 2))
       {
-        paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-        paramCamera.a(paramCamera.a() + 1L);
-        paramCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl;
-        if ((paramCamera != null) && ((!paramCamera.a(1L)) || (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(4L)) || (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(4096L))) && (!l()))
+        paramCamera = this.R;
+        paramCamera.a(paramCamera.k() + 1L);
+        paramCamera = this.h;
+        if ((paramCamera != null) && ((!paramCamera.b(1L)) || (!this.h.b(4L)) || (!this.h.b(4096L))) && (!T()))
         {
-          if ((this.jdField_t_of_type_Int == 0) || ((this.jdField_t_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.a() == 0) && (this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorLogicManager.b()))) {
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager.a(), paramArrayOfByte);
+          if ((this.aS == 0) || ((this.aS == 1) && (this.aN.i() == 0) && (this.aN.f()))) {
+            this.h.a(this.R.k(), paramArrayOfByte);
           }
-          if (this.jdField_c_of_type_Boolean)
+          if (this.k)
           {
-            paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-            paramCamera.b(paramCamera.a());
-            paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+            paramCamera = this.R;
+            paramCamera.b(paramCamera.k());
+            paramCamera = this.R;
             if (paramCamera != null) {
-              paramCamera.a();
+              paramCamera.b();
             }
           }
           else
           {
-            if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(1L))
+            if (!this.h.b(1L))
             {
-              paramCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecogResult;
-              if ((paramCamera != null) && (paramCamera.jdField_a_of_type_Int == 2)) {}
+              paramCamera = this.af;
+              if ((paramCamera != null) && (paramCamera.b == 2)) {}
             }
-            else if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(4L))
+            else if (!this.h.b(4L))
             {
-              paramCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecogResult;
-              if ((paramCamera != null) && (paramCamera.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
+              paramCamera = this.ah;
+              if ((paramCamera != null) && (paramCamera.c.size() == 0)) {}
             }
             else
             {
-              if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a(4L)) || (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.b(4L))) {
+              if ((this.h.b(4L)) || (!this.h.c(4L))) {
                 break label345;
               }
             }
-            paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-            paramCamera.b(paramCamera.a());
-            paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+            paramCamera = this.R;
+            paramCamera.b(paramCamera.k());
+            paramCamera = this.R;
             if (paramCamera != null) {
-              paramCamera.a();
+              paramCamera.b();
             }
           }
         }
         else
         {
-          paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-          paramCamera.b(paramCamera.a());
-          paramCamera = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+          paramCamera = this.R;
+          paramCamera.b(paramCamera.k());
+          paramCamera = this.R;
           if (paramCamera != null) {
-            paramCamera.a();
+            paramCamera.b();
           }
         }
         label345:
-        paramCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+        paramCamera = this.S;
         if (paramCamera != null) {
           paramCamera.a(paramArrayOfByte);
         }
       }
       else
       {
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-        paramArrayOfByte.a(paramArrayOfByte.a() + 1L);
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-        paramArrayOfByte.b(paramArrayOfByte.a());
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+        paramArrayOfByte = this.R;
+        paramArrayOfByte.a(paramArrayOfByte.k() + 1L);
+        paramArrayOfByte = this.R;
+        paramArrayOfByte.b(paramArrayOfByte.k());
+        paramArrayOfByte = this.R;
         if (paramArrayOfByte != null) {
-          paramArrayOfByte.a();
+          paramArrayOfByte.b();
         }
       }
     }
   }
   
-  public void p()
+  public boolean u()
   {
-    QLog.i("AREngine_QQARSession", 1, "onProcessMigCloudObjectClassifyResultComplete.");
-    if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L))
-    {
-      b(1L);
-      this.jdField_p_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
-    y();
+    return this.v;
   }
   
-  public void q()
+  public boolean v()
   {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudSceneRecogResultComplete.");
-    if (ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      b(1L);
-    }
-    y();
+    return this.w;
   }
   
-  public void r()
+  public int w()
   {
-    QLog.d("AREngine_QQARSession", 1, "engine notifyRenderReady ");
-    ArCloudConfigInfo localArCloudConfigInfo = this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-    if (localArCloudConfigInfo == null) {
-      return;
-    }
-    if ((localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start startInternal. mCurEngineState = ");
+    localStringBuilder.append(this.a);
+    QLog.d("AREngine_QQARSession", 1, localStringBuilder.toString());
+    if ((this.a == 0) && (CameraProxy.a().g()))
     {
-      int i1 = this.jdField_e_of_type_Int;
-      if (i1 == 1)
+      this.az = 0;
+      this.aA = System.currentTimeMillis();
+      this.aB = 0L;
+      this.aC = 0;
+      this.aD = 0L;
+      this.aE = 0L;
+      this.aa = CameraProxy.a().h();
+      this.ab = CameraProxy.a().i();
+      this.ac = CameraProxy.a().j();
+      this.Z = UniformGLRenderManagerImpl.c;
+      this.Y = UniformGLRenderManagerImpl.b;
+      this.Q = new ARNativeBridge();
+      if (!this.Q.isLoadSoSuccess())
       {
-        d(true, this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-        return;
+        QLog.d("AREngine_QQARSession", 1, "startAR internal fail");
+        this.Q = null;
+        this.w = false;
+        e(6);
+        return 6;
       }
-      if (i1 == 2) {
-        e(true, this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      H();
+      this.O.a(this.e, this);
+      if ((this.h != null) && (!I()))
+      {
+        e(7);
+        return 7;
+      }
+      if (!ARRecognition.b(this.z.recognitions, 1L))
+      {
+        a(5L);
+      }
+      else
+      {
+        a(4L);
+        b(1L);
+      }
+      if ((this.S != null) && (!J()))
+      {
+        e(3);
+        return 3;
+      }
+      this.a = 2;
+      this.R.a(this);
+      e(0);
+      return 0;
+    }
+    return -1;
+  }
+  
+  public void x()
+  {
+    QLog.d("AREngine_QQARSession", 1, "stopModelRender.");
+    Object localObject = this.R;
+    if ((localObject != null) && (this.aq != null))
+    {
+      ((UniformGLRenderManager)localObject).j();
+      if (CameraProxy.a().g()) {
+        CameraProxy.a().a(this.Y, this.Z);
+      }
+      if ((this.v) && (this.B != null) && ((this.a == 2) || (this.a == 4)))
+      {
+        localObject = new ARTarget(this.aq);
+        this.B.a(this.ap, false, (ARTarget)localObject);
+      }
+    }
+    this.ap = 0L;
+    this.aq = null;
+    this.ar = null;
+  }
+  
+  public void y()
+  {
+    QLog.d("AREngine_QQARSession", 1, "stopModelRenderOnly.");
+    if ((this.v) && (this.a == 2))
+    {
+      UniformGLRenderManager localUniformGLRenderManager = this.R;
+      if (localUniformGLRenderManager != null) {
+        localUniformGLRenderManager.j();
       }
     }
   }
   
-  public void s()
+  public boolean z()
   {
-    QLog.d("AREngine_QQARSession", 1, String.format("CloseAREngineRecoglizeFunction  ", new Object[0]));
-    a(new QQARSession.27(this));
+    return this.aq != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession
  * JD-Core Version:    0.7.0.1
  */

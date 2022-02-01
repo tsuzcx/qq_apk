@@ -90,25 +90,25 @@ import mqq.os.MqqHandler;
 public class VideoBroadcastReceiver
   extends BroadcastReceiver
 {
-  static VideoBroadcastReceiver jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver;
   public static String a = "VideoBroadCastReceiver";
-  INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngineListener = new VideoBroadcastReceiver.4(this);
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = null;
-  boolean jdField_a_of_type_Boolean = false;
+  static VideoBroadcastReceiver b;
+  boolean c = false;
+  MqqHandler d = null;
+  INetEngineListener e = new VideoBroadcastReceiver.4(this);
+  private WeakReference<QQAppInterface> f = null;
   
   VideoBroadcastReceiver(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_MqqOsMqqHandler = new VideoBroadcastReceiver.MyHandler(Looper.getMainLooper(), this);
+    this.f = new WeakReference(paramQQAppInterface);
+    this.d = new VideoBroadcastReceiver.MyHandler(Looper.getMainLooper(), this);
   }
   
   public static QQCustomDialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
     if (GesturePWDUtils.isAppOnForegroundByTasks(paramContext, 0)) {
-      return PopupDialog.a(paramContext, 230, paramString1, paramString2, 2131690728, 2131694583, paramOnClickListener, null);
+      return PopupDialog.a(paramContext, 230, paramString1, paramString2, 2131887648, 2131892267, paramOnClickListener, null);
     }
-    paramString1 = DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131690728, 2131694583, paramOnClickListener, null);
+    paramString1 = DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131887648, 2131892267, paramOnClickListener, null);
     if (Build.VERSION.SDK_INT >= 26) {
       paramString1.getWindow().setType(2038);
     } else {
@@ -119,7 +119,7 @@ public class VideoBroadcastReceiver
       if (Settings.canDrawOverlays(paramContext)) {
         paramString1.show();
       } else {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "can not DrawOverlays showAlertDialog()!!");
+        QLog.d(a, 1, "can not DrawOverlays showAlertDialog()!!");
       }
     }
     else {
@@ -132,15 +132,15 @@ public class VideoBroadcastReceiver
   {
     try
     {
-      if ((jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver != null) && (jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver.jdField_a_of_type_Boolean))
+      if ((b != null) && (b.c))
       {
-        QQAppInterface localQQAppInterface = (QQAppInterface)jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver.jdField_a_of_type_JavaLangRefWeakReference.get();
+        QQAppInterface localQQAppInterface = (QQAppInterface)b.f.get();
         if (localQQAppInterface != null) {
-          localQQAppInterface.getApp().unregisterReceiver(jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver);
+          localQQAppInterface.getApp().unregisterReceiver(b);
         }
-        jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver.jdField_a_of_type_Boolean = false;
-        jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver.jdField_a_of_type_JavaLangRefWeakReference = null;
-        jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver = null;
+        b.c = false;
+        b.f = null;
+        b = null;
       }
       return;
     }
@@ -149,7 +149,7 @@ public class VideoBroadcastReceiver
   
   private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.f.get();
     if (localQQAppInterface == null) {
       return;
     }
@@ -171,7 +171,7 @@ public class VideoBroadcastReceiver
       paramString2.isread = true;
       paramString2.issend = 1;
       paramString2.istroop = paramInt2;
-      paramString2.time = MessageCache.a();
+      paramString2.time = MessageCache.c();
       QavMsgNotificationUtil.a(localQQAppInterface, 1, true, true, paramString2);
       return;
     }
@@ -209,9 +209,9 @@ public class VideoBroadcastReceiver
   {
     int i = paramIntent.getIntExtra("SmallScreenState", 0);
     paramIntent = paramIntent.getStringExtra("uin");
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_SMALL_SCREEN_STATE, smallScreenState[");
       localStringBuilder.append(i);
@@ -222,9 +222,9 @@ public class VideoBroadcastReceiver
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    paramQQAppInterface.getAVNotifyCenter().b(paramLong, i);
+    paramQQAppInterface.getAVNotifyCenter().d(paramLong, i);
     if (!TextUtils.isEmpty(paramIntent)) {
-      paramQQAppInterface.getAVNotifyCenter().b(paramIntent);
+      paramQQAppInterface.getAVNotifyCenter().l(paramIntent);
     }
   }
   
@@ -236,7 +236,7 @@ public class VideoBroadcastReceiver
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TYPE_DOUBLE_MEETING_INVITE_DESTORY-->RelationType = ");
       localStringBuilder.append(i);
@@ -264,161 +264,161 @@ public class VideoBroadcastReceiver
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 107	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
+    //   3: getstatic 111	com/tencent/mobileqq/app/VideoBroadcastReceiver:b	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
     //   6: ifnonnull +14 -> 20
     //   9: new 2	com/tencent/mobileqq/app/VideoBroadcastReceiver
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 355	com/tencent/mobileqq/app/VideoBroadcastReceiver:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   17: putstatic 107	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
+    //   14: invokespecial 358	com/tencent/mobileqq/app/VideoBroadcastReceiver:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   17: putstatic 111	com/tencent/mobileqq/app/VideoBroadcastReceiver:b	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
     //   20: ldc 2
     //   22: monitorexit
-    //   23: new 357	android/content/IntentFilter
+    //   23: new 360	android/content/IntentFilter
     //   26: dup
-    //   27: invokespecial 358	android/content/IntentFilter:<init>	()V
+    //   27: invokespecial 361	android/content/IntentFilter:<init>	()V
     //   30: astore_1
     //   31: aload_1
-    //   32: ldc_w 360
-    //   35: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   32: ldc_w 363
+    //   35: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   38: aload_1
-    //   39: ldc_w 365
-    //   42: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   39: ldc_w 368
+    //   42: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   45: aload_1
-    //   46: ldc_w 367
-    //   49: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   46: ldc_w 370
+    //   49: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   52: aload_1
-    //   53: ldc_w 369
-    //   56: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   53: ldc_w 372
+    //   56: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   59: aload_1
-    //   60: ldc_w 371
-    //   63: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   60: ldc_w 374
+    //   63: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   66: aload_1
-    //   67: ldc_w 373
-    //   70: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   67: ldc_w 376
+    //   70: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   73: aload_1
-    //   74: ldc_w 375
-    //   77: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   74: ldc_w 378
+    //   77: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   80: aload_1
-    //   81: ldc_w 377
-    //   84: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   81: ldc_w 380
+    //   84: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   87: aload_1
-    //   88: ldc_w 379
-    //   91: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   88: ldc_w 382
+    //   91: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   94: aload_1
-    //   95: ldc_w 381
-    //   98: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   95: ldc_w 384
+    //   98: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   101: aload_1
-    //   102: ldc_w 383
-    //   105: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   102: ldc_w 386
+    //   105: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   108: aload_1
-    //   109: ldc_w 385
-    //   112: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   109: ldc_w 388
+    //   112: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   115: aload_1
-    //   116: ldc_w 387
-    //   119: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   116: ldc_w 390
+    //   119: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   122: aload_1
-    //   123: ldc_w 389
-    //   126: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   123: ldc_w 392
+    //   126: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   129: aload_1
-    //   130: ldc_w 391
-    //   133: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   130: ldc_w 394
+    //   133: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   136: aload_1
-    //   137: ldc_w 393
-    //   140: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   137: ldc_w 396
+    //   140: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   143: aload_1
-    //   144: ldc_w 395
-    //   147: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   144: ldc_w 398
+    //   147: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   150: aload_1
-    //   151: ldc_w 397
-    //   154: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   151: ldc_w 400
+    //   154: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   157: aload_1
-    //   158: ldc_w 399
-    //   161: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   158: ldc_w 402
+    //   161: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   164: aload_1
-    //   165: ldc_w 401
-    //   168: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   165: ldc_w 404
+    //   168: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   171: aload_1
-    //   172: ldc_w 403
-    //   175: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   172: ldc_w 406
+    //   175: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   178: aload_1
-    //   179: ldc_w 405
-    //   182: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   179: ldc_w 408
+    //   182: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   185: aload_1
-    //   186: ldc_w 407
-    //   189: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   186: ldc_w 410
+    //   189: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   192: aload_1
-    //   193: ldc_w 409
-    //   196: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   193: ldc_w 412
+    //   196: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   199: aload_1
-    //   200: ldc_w 411
-    //   203: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   200: ldc_w 414
+    //   203: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   206: aload_1
-    //   207: ldc_w 413
-    //   210: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   207: ldc_w 416
+    //   210: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   213: aload_1
-    //   214: ldc_w 415
-    //   217: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   214: ldc_w 418
+    //   217: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   220: aload_1
-    //   221: ldc_w 417
-    //   224: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   221: ldc_w 420
+    //   224: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   227: aload_1
-    //   228: ldc_w 419
-    //   231: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   228: ldc_w 422
+    //   231: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   234: aload_1
-    //   235: ldc_w 421
-    //   238: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   235: ldc_w 424
+    //   238: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   241: aload_1
-    //   242: ldc_w 423
-    //   245: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   242: ldc_w 426
+    //   245: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   248: aload_1
-    //   249: ldc_w 425
-    //   252: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   249: ldc_w 428
+    //   252: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   255: aload_1
-    //   256: ldc_w 427
-    //   259: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   256: ldc_w 430
+    //   259: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   262: aload_1
-    //   263: ldc_w 429
-    //   266: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   263: ldc_w 432
+    //   266: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   269: aload_1
-    //   270: ldc_w 431
-    //   273: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   270: ldc_w 434
+    //   273: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   276: aload_1
-    //   277: ldc_w 433
-    //   280: invokevirtual 363	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   277: ldc_w 436
+    //   280: invokevirtual 366	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   283: aload_0
-    //   284: invokevirtual 117	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   287: getstatic 107	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
+    //   284: invokevirtual 121	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   287: getstatic 111	com/tencent/mobileqq/app/VideoBroadcastReceiver:b	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
     //   290: aload_1
-    //   291: ldc_w 435
+    //   291: ldc_w 438
     //   294: aconst_null
-    //   295: invokevirtual 439	com/tencent/qphone/base/util/BaseApplication:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
+    //   295: invokevirtual 442	com/tencent/qphone/base/util/BaseApplication:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
     //   298: pop
-    //   299: getstatic 107	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
+    //   299: getstatic 111	com/tencent/mobileqq/app/VideoBroadcastReceiver:b	Lcom/tencent/mobileqq/app/VideoBroadcastReceiver;
     //   302: iconst_1
-    //   303: putfield 25	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_Boolean	Z
+    //   303: putfield 30	com/tencent/mobileqq/app/VideoBroadcastReceiver:c	Z
     //   306: return
     //   307: astore_0
-    //   308: invokestatic 333	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   308: invokestatic 336	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   311: ifeq +38 -> 349
-    //   314: getstatic 96	com/tencent/mobileqq/app/VideoBroadcastReceiver:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   314: getstatic 101	com/tencent/mobileqq/app/VideoBroadcastReceiver:a	Ljava/lang/String;
     //   317: astore_1
-    //   318: new 284	java/lang/StringBuilder
+    //   318: new 286	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 285	java/lang/StringBuilder:<init>	()V
+    //   322: invokespecial 287	java/lang/StringBuilder:<init>	()V
     //   325: astore_2
     //   326: aload_2
-    //   327: ldc_w 441
-    //   330: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   327: ldc_w 444
+    //   330: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   333: pop
     //   334: aload_2
     //   335: aload_0
-    //   336: invokevirtual 444	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   336: invokevirtual 447	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   339: pop
     //   340: aload_1
     //   341: iconst_2
     //   342: aload_2
-    //   343: invokevirtual 306	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   346: invokestatic 447	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   343: invokevirtual 308	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   346: invokestatic 449	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   349: return
     //   350: astore_0
     //   351: ldc 2
@@ -444,7 +444,7 @@ public class VideoBroadcastReceiver
     if (paramQQAppInterface != null) {}
     try
     {
-      paramQQAppInterface.a().a(paramString1, paramInt1).isSystemCall = 0;
+      paramQQAppInterface.a().c(paramString1, paramInt1).isSystemCall = 0;
       label28:
       if ((paramInt2 != 2) && (paramInt2 != 3) && (paramInt1 != 25))
       {
@@ -476,14 +476,14 @@ public class VideoBroadcastReceiver
   
   private void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, long paramLong1, long paramLong2, int paramInt2, long paramLong3, long paramLong4, SharedPreferences paramSharedPreferences, int paramInt3, boolean paramBoolean)
   {
-    int i = paramSharedPreferences.getInt(VideoConstants.c, 0) + 1;
-    boolean bool2 = paramSharedPreferences.getBoolean(VideoConstants.l, false);
+    int i = paramSharedPreferences.getInt(VideoConstants.k, 0) + 1;
+    boolean bool2 = paramSharedPreferences.getBoolean(VideoConstants.t, false);
     long l = 0L;
     if ((i == 1) && (!bool2))
     {
       l = paramSharedPreferences.getLong("qav_score_msg_uniseq", 0L);
       if (l != 0L) {
-        paramQQAppInterface.getMessageFacade().b(paramString, paramInt1, l);
+        paramQQAppInterface.getMessageFacade().h(paramString, paramInt1, l);
       }
     }
     boolean bool1;
@@ -496,7 +496,7 @@ public class VideoBroadcastReceiver
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onVideoChatEnd, scoreCount[");
       localStringBuilder.append(i);
@@ -517,34 +517,34 @@ public class VideoBroadcastReceiver
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("{\n");
-      ((StringBuilder)localObject).append(VideoConstants.d);
+      ((StringBuilder)localObject).append(VideoConstants.l);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramLong1);
       ((StringBuilder)localObject).append(",\n");
-      ((StringBuilder)localObject).append(VideoConstants.e);
+      ((StringBuilder)localObject).append(VideoConstants.m);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramLong2);
       ((StringBuilder)localObject).append(",\n");
-      ((StringBuilder)localObject).append(VideoConstants.f);
+      ((StringBuilder)localObject).append(VideoConstants.n);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append(",\n");
-      ((StringBuilder)localObject).append(VideoConstants.i);
+      ((StringBuilder)localObject).append(VideoConstants.q);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramLong3);
       ((StringBuilder)localObject).append(",\n");
-      ((StringBuilder)localObject).append(VideoConstants.j);
+      ((StringBuilder)localObject).append(VideoConstants.r);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramLong4);
       ((StringBuilder)localObject).append(",\n");
-      ((StringBuilder)localObject).append(VideoConstants.k);
+      ((StringBuilder)localObject).append(VideoConstants.s);
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("\n}");
       ScoreManager.a(((StringBuilder)localObject).toString());
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("addTipsVideoMsg beginTime: ");
         localStringBuilder.append(paramLong1);
@@ -562,11 +562,11 @@ public class VideoBroadcastReceiver
       }
       VideoMsgTools.a(paramQQAppInterface, paramInt1, 61, true, paramString, null);
       paramQQAppInterface = paramSharedPreferences.edit();
-      paramString = VideoConstants.l;
+      paramString = VideoConstants.t;
       paramInt1 = 0;
       paramQQAppInterface.putBoolean(paramString, false).commit();
     }
-    paramSharedPreferences.edit().putInt(VideoConstants.c, paramInt1).commit();
+    paramSharedPreferences.edit().putInt(VideoConstants.k, paramInt1).commit();
   }
   
   private void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4)
@@ -596,7 +596,7 @@ public class VideoBroadcastReceiver
       return;
     }
     paramString3 = (QCallFacade)paramQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
-    if ((!paramQQAppInterface.getAVNotifyCenter().d(paramString2)) && (paramString3 != null))
+    if ((!paramQQAppInterface.getAVNotifyCenter().i(paramString2)) && (paramString3 != null))
     {
       if ((paramInt2 != 2) && (paramInt2 != 3) && (paramInt1 != 25)) {
         a(paramQQAppInterface, paramString1, paramInt1, paramString2, paramLong1, paramLong2, paramLong3, paramInt3, paramLong4, paramLong5, paramString3);
@@ -607,7 +607,7 @@ public class VideoBroadcastReceiver
       paramIntent = paramIntent.getStringExtra("mp_ext_params");
       if (paramString1 != null)
       {
-        VideoMsgTools.a(paramQQAppInterface, "https://iyouxi3.vip.qq.com/ams3.0.php?", paramString1, paramIntent, this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngineListener);
+        VideoMsgTools.a(paramQQAppInterface, "https://iyouxi3.vip.qq.com/ams3.0.php?", paramString1, paramIntent, this.e);
         return;
       }
     }
@@ -627,14 +627,14 @@ public class VideoBroadcastReceiver
     } else {
       bool1 = false;
     }
-    if (QQAudioHelper.a(17) == 1)
+    if (QQAudioHelper.b(17) == 1)
     {
-      QQAudioHelper.a(HardCodeUtil.a(2131715863));
+      QQAudioHelper.a(HardCodeUtil.a(2131913320));
       bool2 = true;
     }
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onVideoChatEnd, scoreSwitch[");
       localStringBuilder.append(i);
@@ -658,20 +658,20 @@ public class VideoBroadcastReceiver
   
   private boolean a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    if (QAVConfigUtils.e())
+    if (QAVConfigUtils.g())
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "only SupportLocalDavBubbleMessage ");
+        QLog.d(a, 2, "only SupportLocalDavBubbleMessage ");
       }
       return true;
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramInt1 == 0) && (!paramString1.equals(paramQQAppInterface.getCurrentAccountUin())))
     {
       paramQQAppInterface = VideoMsgTools.a(paramQQAppInterface.getApp(), paramInt2, paramInt1, paramBoolean, paramString3);
-      return (TextUtils.isEmpty(paramQQAppInterface)) || (!paramQQAppInterface.contains(paramContext.getString(2131720243)));
+      return (TextUtils.isEmpty(paramQQAppInterface)) || (!paramQQAppInterface.contains(paramContext.getString(2131917877)));
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "only support double talk");
+      QLog.d(a, 2, "only support double talk");
     }
     return true;
   }
@@ -759,7 +759,7 @@ public class VideoBroadcastReceiver
   private void c(Intent paramIntent, QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "TYPE_DOUBLE_MEETING_MEMBER_JOIN");
+      QLog.d(a, 2, "TYPE_DOUBLE_MEETING_MEMBER_JOIN");
     }
     int i = paramIntent.getIntExtra("relationType", 0);
     long l1 = paramIntent.getLongExtra("relationId", 0L);
@@ -793,7 +793,7 @@ public class VideoBroadcastReceiver
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "TYPE_GAUDIO_OTHER_ADD_PSTN_MEMBERS --> no data");
+        QLog.e(a, 2, "TYPE_GAUDIO_OTHER_ADD_PSTN_MEMBERS --> no data");
       }
       return;
     }
@@ -801,7 +801,7 @@ public class VideoBroadcastReceiver
     paramIntent = PstnUtils.a((ArrayList)localObject);
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("TYPE_GAUDIO_OTHER_ADD_PSTN_MEMBERS --> JsonObject = ");
       localStringBuilder.append(paramIntent);
@@ -822,14 +822,14 @@ public class VideoBroadcastReceiver
   {
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.b(paramIntent.getStringExtra("relationId"), paramIntent.getStringExtra("inviterUin"));
+      paramQQAppInterface.k(paramIntent.getStringExtra("relationId"), paramIntent.getStringExtra("inviterUin"));
     }
   }
   
   private void f(Intent paramIntent, QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addMemberFromC2C");
+      QLog.d(a, 2, "addMemberFromC2C");
     }
     VideoMsgTools.a(paramQQAppInterface, paramIntent.getStringExtra("peerUin"), paramIntent.getIntExtra("supportUinType", 3000));
   }
@@ -850,11 +850,11 @@ public class VideoBroadcastReceiver
   private void h(Intent paramIntent, QQAppInterface paramQQAppInterface)
   {
     int i = paramIntent.getIntExtra("callId", 0);
-    if ((i > 0) && (VipFunCallUtil.a()))
+    if ((i > 0) && (VipFunCallUtil.b()))
     {
       paramIntent = VasUtil.a().getFunCallManager();
       if (paramIntent != null) {
-        paramIntent.startDownload(i, VipFunCallUtil.a(), false, 0);
+        paramIntent.startDownload(i, VipFunCallUtil.c(), false, 0);
       }
     }
   }
@@ -862,10 +862,10 @@ public class VideoBroadcastReceiver
   private void i(Intent paramIntent, QQAppInterface paramQQAppInterface)
   {
     int i = paramIntent.getIntExtra("comming_ring_down_key", 0);
-    if ((i > 0) && (VipFunCallUtil.a()))
+    if ((i > 0) && (VipFunCallUtil.b()))
     {
       ((ColorRingManager)paramQQAppInterface.getManager(QQManagerFactory.COLOR_RING_MANAGER)).a(i, 3, false, 0, "comering");
-      int j = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+      int j = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
       paramIntent = new StringBuilder();
       paramIntent.append("");
       paramIntent.append(j);
@@ -916,20 +916,20 @@ public class VideoBroadcastReceiver
     int i = paramIntent.getIntExtra("type", 20);
     boolean bool = paramIntent.getBooleanExtra("isStart", false);
     int j = paramIntent.getIntExtra("MultiAVType", 0);
-    if ((QQAudioHelper.c()) || (i == 22) || (i == 23) || (i == 25))
+    if ((QQAudioHelper.f()) || (i == 22) || (i == 23) || (i == 25))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append(".onMultiMsgV2Q");
       QQAudioHelper.a(((StringBuilder)localObject).toString(), paramIntent.getExtras());
     }
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)this.f.get();
     if (localObject == null) {
       return;
     }
     if (QLog.isDevelopLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMultiMsgV2Q, type[");
       localStringBuilder.append(i);
@@ -998,7 +998,7 @@ public class VideoBroadcastReceiver
   void a(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "ACTION_ADD_VIDEO_MSG");
+      QLog.d(a, 2, "ACTION_ADD_VIDEO_MSG");
     }
     int j = paramIntent.getIntExtra("uinType", 0);
     int k = paramIntent.getIntExtra("msgType", 5);
@@ -1014,13 +1014,13 @@ public class VideoBroadcastReceiver
     boolean bool1 = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
     if (QLog.isColorLevel())
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_ADD_VIDEO_MSG selfUin = ");
       localStringBuilder.append(str3);
       QLog.d((String)localObject2, 2, localStringBuilder.toString());
     }
-    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (QQAppInterface)this.f.get();
     if (localObject2 != null)
     {
       if ((k == 0) && (!TextUtils.equals(str3, ((QQAppInterface)localObject2).getCurrentAccountUin()))) {
@@ -1029,8 +1029,8 @@ public class VideoBroadcastReceiver
       int i;
       if (((k == 2) || (k == 24)) && (localObject1 == null) && (QQUtils.a(((QQAppInterface)localObject2).getApp())))
       {
-        boolean bool5 = SettingCloneUtil.readValue(((QQAppInterface)localObject2).getApp(), ((QQAppInterface)localObject2).getCurrentAccountUin(), ((QQAppInterface)localObject2).getApp().getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
-        boolean bool6 = SettingCloneUtil.readValue(((QQAppInterface)localObject2).getApp(), ((QQAppInterface)localObject2).getCurrentAccountUin(), ((QQAppInterface)localObject2).getApp().getString(2131718400), "qqsetting_notify_showcontent_key", true);
+        boolean bool5 = SettingCloneUtil.readValue(((QQAppInterface)localObject2).getApp(), ((QQAppInterface)localObject2).getCurrentAccountUin(), ((QQAppInterface)localObject2).getApp().getString(2131891413), "qqsetting_lock_screen_whenexit_key", true);
+        boolean bool6 = SettingCloneUtil.readValue(((QQAppInterface)localObject2).getApp(), ((QQAppInterface)localObject2).getCurrentAccountUin(), ((QQAppInterface)localObject2).getApp().getString(2131915892), "qqsetting_notify_showcontent_key", true);
         a((QQAppInterface)localObject2, bool5, bool6);
         if ((bool5) && (bool6)) {
           i = 1;
@@ -1052,7 +1052,7 @@ public class VideoBroadcastReceiver
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addVideoMsgWithAvtype");
+        QLog.d(a, 2, "addVideoMsgWithAvtype");
       }
       if ((!bool1) && (!a(paramContext, (QQAppInterface)localObject2, j, k, str1, str2, bool3, (String)localObject1))) {
         bool1 = false;
@@ -1064,7 +1064,7 @@ public class VideoBroadcastReceiver
       }
       if (QLog.isColorLevel())
       {
-        paramContext = jdField_a_of_type_JavaLangString;
+        paramContext = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("addVideoMsgWithAvtype end with enable:=");
         ((StringBuilder)localObject1).append(bool1);
@@ -1085,7 +1085,7 @@ public class VideoBroadcastReceiver
   void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "VideoConstants.ACTION_GAUDIO_TROOP_CARD");
+      QLog.d(a, 2, "VideoConstants.ACTION_GAUDIO_TROOP_CARD");
     }
     String str2 = paramIntent.getStringExtra("troopUin");
     String str1 = paramIntent.getStringExtra("memberUin");
@@ -1098,7 +1098,7 @@ public class VideoBroadcastReceiver
         ProfileUtils.openProfileCard(paramContext, paramQQAppInterface);
         return;
       }
-      if (((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str1))
+      if (((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(str1))
       {
         paramIntent = new AllInOne(str1, 1);
         paramIntent.nickname = ContactUtils.a(paramQQAppInterface, str1, 0);
@@ -1126,7 +1126,7 @@ public class VideoBroadcastReceiver
     boolean bool1 = paramIntent.getBooleanExtra("openClass", false);
     if (QLog.isColorLevel())
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       paramIntent = new StringBuilder();
       paramIntent.append("TYPE_GAUDIO_ROOM_DESTROY-->relationid=");
       paramIntent.append(l);
@@ -1145,7 +1145,7 @@ public class VideoBroadcastReceiver
     if ((!bool1) && (m == 1) && (paramInt == 2))
     {
       paramContext = paramQQAppInterface.getAVNotifyCenter().a(l, paramInt);
-      if ((paramContext != null) && (paramContext.d == 2) && (paramContext.e == 4)) {
+      if ((paramContext != null) && (paramContext.f == 2) && (paramContext.g == 4)) {
         bool1 = bool2;
       }
     }
@@ -1168,7 +1168,7 @@ public class VideoBroadcastReceiver
       k = -1;
     }
     paramContext.a(9, l, paramInt, i, j, k, 25, 0);
-    if (paramQQAppInterface.getAVNotifyCenter().a(m, l) > 0L)
+    if (paramQQAppInterface.getAVNotifyCenter().c(m, l) > 0L)
     {
       paramQQAppInterface.getAVNotifyCenter().a(13, m, l, null, 0L);
       VideoMsgTools.a(paramQQAppInterface, m, 14, false, String.valueOf(l), paramQQAppInterface.getCurrentAccountUin(), false, null, false, paramInt, new Object[0]);
@@ -1176,7 +1176,7 @@ public class VideoBroadcastReceiver
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "MultiRoomMemberNum is 0");
+      QLog.w(a, 2, "MultiRoomMemberNum is 0");
     }
   }
   
@@ -1191,8 +1191,8 @@ public class VideoBroadcastReceiver
     {
       paramQQAppInterface.getAVNotifyCenter().a(i, Long.valueOf(l1), true);
       paramQQAppInterface.getAVNotifyCenter().a(9, i, l1, 3);
-      paramQQAppInterface.getAVNotifyCenter().a(i, l1);
-      paramQQAppInterface.getAVNotifyCenter().b(12, l1, paramInt2);
+      paramQQAppInterface.getAVNotifyCenter().b(i, l1);
+      paramQQAppInterface.getAVNotifyCenter().c(12, l1, paramInt2);
       if (j == 1)
       {
         paramQQAppInterface.getAVNotifyCenter().a(i, l1, true, false);
@@ -1202,7 +1202,7 @@ public class VideoBroadcastReceiver
         paramQQAppInterface.getAVNotifyCenter().a(i, l1, false, false);
         paramQQAppInterface.getAVNotifyCenter().b(true);
       }
-      paramContext = paramQQAppInterface.getProxyManager().a();
+      paramContext = paramQQAppInterface.getProxyManager().g();
       if (paramContext != null)
       {
         paramIntent = String.valueOf(l1);
@@ -1211,22 +1211,22 @@ public class VideoBroadcastReceiver
           if (paramInt2 == 1)
           {
             TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-            if ((localTroopManager != null) && (localTroopManager.b(paramIntent) != null))
+            if ((localTroopManager != null) && (localTroopManager.f(paramIntent) != null))
             {
-              paramIntent = paramContext.a(paramIntent, paramInt2);
+              paramIntent = paramContext.b(paramIntent, paramInt2);
               if (paramIntent != null)
               {
-                paramIntent.lastmsgtime = MessageCache.a();
+                paramIntent.lastmsgtime = MessageCache.c();
                 paramContext.b(paramIntent);
               }
             }
           }
           else
           {
-            paramIntent = paramContext.a(paramIntent, paramInt2);
+            paramIntent = paramContext.b(paramIntent, paramInt2);
             if (paramIntent != null)
             {
-              paramIntent.lastmsgtime = MessageCache.a();
+              paramIntent.lastmsgtime = MessageCache.c();
               paramContext.b(paramIntent);
             }
           }
@@ -1239,7 +1239,7 @@ public class VideoBroadcastReceiver
           paramContext.a(l1, l2, true, -1L, paramBoolean);
         }
       }
-      if ((paramQQAppInterface.getAVNotifyCenter().b() == l1) && (paramQQAppInterface.getAVNotifyCenter().b() >= 4) && (paramQQAppInterface.getAVNotifyCenter().f()))
+      if ((paramQQAppInterface.getAVNotifyCenter().g() == l1) && (paramQQAppInterface.getAVNotifyCenter().j() >= 4) && (paramQQAppInterface.getAVNotifyCenter().p()))
       {
         paramQQAppInterface.getAVNotifyCenter().b(true);
         paramQQAppInterface.getAVNotifyCenter().d(true);
@@ -1248,7 +1248,7 @@ public class VideoBroadcastReceiver
     else
     {
       long l3 = l1;
-      if ((paramQQAppInterface.getAVNotifyCenter().b() == l3) && (paramQQAppInterface.getAVNotifyCenter().f()))
+      if ((paramQQAppInterface.getAVNotifyCenter().g() == l3) && (paramQQAppInterface.getAVNotifyCenter().p()))
       {
         paramQQAppInterface.getAVNotifyCenter().a(i, l3, false, false);
         paramQQAppInterface.getAVNotifyCenter().b(true);
@@ -1258,7 +1258,7 @@ public class VideoBroadcastReceiver
     paramQQAppInterface.getAVNotifyCenter().a(paramInt1, i, l1, l2);
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      paramQQAppInterface = a;
       paramContext = new StringBuilder();
       paramContext.append("member join discussId: ");
       paramContext.append(l1);
@@ -1292,18 +1292,18 @@ public class VideoBroadcastReceiver
     if (paramInt1 != 1008) {}
     try
     {
-      if ((!UinTypeUtil.a(paramString1, paramInt1)) && (UinTypeUtil.h(paramInt1)) && (!paramQQAppInterface.getConversationFacade().b(paramString1, paramInt1))) {
+      if ((!UinTypeUtil.c(paramString1, paramInt1)) && (UinTypeUtil.j(paramInt1)) && (!paramQQAppInterface.getConversationFacade().o(paramString1, paramInt1))) {
         return;
       }
       if ((paramInt2 != 2) && (paramInt2 != 3) && (paramInt1 != 25) && (!paramBoolean3))
       {
-        paramQQAppInterface = paramQQAppInterface.getProxyManager().a();
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramString1, paramInt1) == null) && (!TextUtils.isEmpty(paramString1)) && (paramString1.length() > 2))
+        paramQQAppInterface = paramQQAppInterface.getProxyManager().g();
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.c(paramString1, paramInt1) == null) && (!TextUtils.isEmpty(paramString1)) && (paramString1.length() > 2))
         {
-          paramString1 = paramQQAppInterface.a(paramString1, paramInt1);
+          paramString1 = paramQQAppInterface.b(paramString1, paramInt1);
           if (paramString1 != null)
           {
-            paramString1.lastmsgtime = MessageCache.a();
+            paramString1.lastmsgtime = MessageCache.c();
             paramQQAppInterface.b(paramString1);
           }
         }
@@ -1333,7 +1333,7 @@ public class VideoBroadcastReceiver
         return false;
       }
       AVNotifyCenter.VideoRoomInfo localVideoRoomInfo = paramQQAppInterface.getAVNotifyCenter().a(l, 2);
-      if ((localVideoRoomInfo != null) && (localVideoRoomInfo.a > 0) && (paramInt == 13)) {
+      if ((localVideoRoomInfo != null) && (localVideoRoomInfo.c > 0) && (paramInt == 13)) {
         return false;
       }
       if (paramQQAppInterface != null)
@@ -1341,7 +1341,7 @@ public class VideoBroadcastReceiver
         paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         if (paramQQAppInterface != null)
         {
-          paramQQAppInterface = paramQQAppInterface.b(paramString);
+          paramQQAppInterface = paramQQAppInterface.f(paramString);
           if (paramQQAppInterface == null) {
             return false;
           }
@@ -1416,7 +1416,7 @@ public class VideoBroadcastReceiver
     }
     if (l == 0L)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "onStartVideoDoubleMeeting, uin is 0.");
+      QLog.i(a, 2, "onStartVideoDoubleMeeting, uin is 0.");
       return;
     }
     boolean bool1 = paramIntent.getBooleanExtra("isReceiver", false);
@@ -1425,7 +1425,7 @@ public class VideoBroadcastReceiver
     Object localObject;
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ACTION_START_DOUBLE_VIDEO_MEETING uinType: ");
       ((StringBuilder)localObject).append(i);
@@ -1437,7 +1437,7 @@ public class VideoBroadcastReceiver
       ((StringBuilder)localObject).append(bool3);
       QLog.d(paramIntent, 2, ((StringBuilder)localObject).toString());
     }
-    paramIntent = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramIntent = (QQAppInterface)this.f.get();
     if (paramIntent == null) {
       return;
     }
@@ -1460,16 +1460,16 @@ public class VideoBroadcastReceiver
       }
       try
       {
-        if ((!UinTypeUtil.a(paramContext, i)) && (UinTypeUtil.h(i)) && (!paramIntent.getConversationFacade().b(paramContext, i))) {
+        if ((!UinTypeUtil.c(paramContext, i)) && (UinTypeUtil.j(i)) && (!paramIntent.getConversationFacade().o(paramContext, i))) {
           return;
         }
-        paramIntent = paramIntent.getProxyManager().a();
-        if ((paramIntent != null) && (paramIntent.b(paramContext, i) == null) && (!TextUtils.isEmpty(paramContext)))
+        paramIntent = paramIntent.getProxyManager().g();
+        if ((paramIntent != null) && (paramIntent.c(paramContext, i) == null) && (!TextUtils.isEmpty(paramContext)))
         {
-          paramContext = paramIntent.a(paramContext, i);
+          paramContext = paramIntent.b(paramContext, i);
           if (paramContext != null)
           {
-            paramContext.lastmsgtime = MessageCache.a();
+            paramContext.lastmsgtime = MessageCache.c();
             paramIntent.b(paramContext);
             return;
           }
@@ -1479,7 +1479,7 @@ public class VideoBroadcastReceiver
       {
         if (QLog.isColorLevel())
         {
-          paramIntent = jdField_a_of_type_JavaLangString;
+          paramIntent = a;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("Recent User Proxy Error-->e=");
           ((StringBuilder)localObject).append(paramContext.getMessage());
@@ -1496,11 +1496,11 @@ public class VideoBroadcastReceiver
     if ((l != 0L) && (paramContext != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "<qav printer> message send: cmd[0x211, 0xb]");
+        QLog.d(a, 2, "<qav printer> message send: cmd[0x211, 0xb]");
       }
       paramQQAppInterface = (VideoC2CHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QAV_C2C_HANDLER);
       paramQQAppInterface.b = paramContext;
-      paramQQAppInterface.a = l;
+      paramQQAppInterface.c = l;
       paramQQAppInterface.a();
     }
   }
@@ -1516,7 +1516,7 @@ public class VideoBroadcastReceiver
       long l3 = paramIntent.getLongExtra("time", 0L);
       paramQQAppInterface.getAVNotifyCenter().a(9, i, l2, 0);
       paramQQAppInterface.getAVNotifyCenter().a(i, Long.valueOf(l2), false);
-      paramQQAppInterface.getAVNotifyCenter().a(i, l2, paramInt2);
+      paramQQAppInterface.getAVNotifyCenter().b(i, l2, paramInt2);
       paramQQAppInterface.getAVNotifyCenter().a(9, i, l2, 0);
       paramQQAppInterface.getAVNotifyCenter().b(false);
       if (i != 1)
@@ -1534,7 +1534,7 @@ public class VideoBroadcastReceiver
     paramQQAppInterface.getAVNotifyCenter().a(paramInt1, i, l2, l1);
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      paramQQAppInterface = a;
       paramContext = new StringBuilder();
       paramContext.append("member quit discussId: ");
       paramContext.append(l2);
@@ -1627,7 +1627,7 @@ public class VideoBroadcastReceiver
       }
       if (QLog.isColorLevel())
       {
-        str1 = jdField_a_of_type_JavaLangString;
+        str1 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onStartVideoChat, double meeting. peer[");
         localStringBuilder.append(paramContext);
@@ -1639,7 +1639,7 @@ public class VideoBroadcastReceiver
       k = 0;
       bool1 = true;
     }
-    if (QQAudioHelper.c()) {
+    if (QQAudioHelper.f()) {
       QQAudioHelper.a("onStartVideoChat[VideoConstants.ACTION_START_VIDEO_CHAT]", paramIntent.getExtras(), true);
     }
     if (k == -1) {
@@ -1652,7 +1652,7 @@ public class VideoBroadcastReceiver
     else if (l < 100L) {
       return;
     }
-    paramIntent = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramIntent = (QQAppInterface)this.f.get();
     if (paramIntent == null) {
       return;
     }
@@ -1664,7 +1664,7 @@ public class VideoBroadcastReceiver
       paramIntent.getAVNotifyCenter().d(true);
       paramIntent.getAVNotifyCenter().b(true);
     }
-    else if ((bool4) && (!paramIntent.getAVNotifyCenter().e()))
+    else if ((bool4) && (!paramIntent.getAVNotifyCenter().o()))
     {
       paramIntent.getAVNotifyCenter().b(true);
     }
@@ -1699,7 +1699,7 @@ public class VideoBroadcastReceiver
     {
       if (QLog.isColorLevel())
       {
-        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+        paramQQAppInterface = a;
         paramContext = new StringBuilder();
         paramContext.append("ACTION_DEAL_INVITE_TO_ENTER_GROUP_VEDIO, inviterUin:");
         paramContext.append(l);
@@ -1716,7 +1716,7 @@ public class VideoBroadcastReceiver
       paramIntent = new StringBuilder();
       paramIntent.append(l);
       paramIntent.append("");
-      paramQQAppInterface.b(paramContext, paramIntent.toString());
+      paramQQAppInterface.k(paramContext, paramIntent.toString());
     }
   }
   
@@ -1755,7 +1755,7 @@ public class VideoBroadcastReceiver
     }
     else if (paramString.equals("tencent.video.v2q.ACTION_NOTIFY_AUDIO_HAS_BEEN_REQUEST_FOCUSED"))
     {
-      ((IDynamicNowManager)paramQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).b();
+      ((IDynamicNowManager)paramQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).e();
     }
     else if (paramString.equals("tencent.video.v2q.AddMembersToGroup"))
     {
@@ -1766,7 +1766,7 @@ public class VideoBroadcastReceiver
       if (!"tencent.video.v2q.checkPtuRes".equals(paramString)) {
         break label260;
       }
-      paramQQAppInterface = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramQQAppInterface = this.f;
       if (paramQQAppInterface == null) {
         paramQQAppInterface = null;
       } else {
@@ -1793,11 +1793,11 @@ public class VideoBroadcastReceiver
     boolean bool2 = paramIntent.getBooleanExtra("isSystemCalling", false);
     int m = paramIntent.getIntExtra("relationType", 0);
     long l2 = paramIntent.getLongExtra("relationId", 0L);
-    long l3 = paramIntent.getLongExtra(VideoConstants.d, 0L);
-    long l4 = paramIntent.getLongExtra(VideoConstants.e, 0L);
-    int n = paramIntent.getIntExtra(VideoConstants.f, 0);
-    long l5 = paramIntent.getLongExtra(VideoConstants.i, 0L);
-    long l6 = paramIntent.getLongExtra(VideoConstants.j, 0L);
+    long l3 = paramIntent.getLongExtra(VideoConstants.l, 0L);
+    long l4 = paramIntent.getLongExtra(VideoConstants.m, 0L);
+    int n = paramIntent.getIntExtra(VideoConstants.n, 0);
+    long l5 = paramIntent.getLongExtra(VideoConstants.q, 0L);
+    long l6 = paramIntent.getLongExtra(VideoConstants.r, 0L);
     long l7 = paramIntent.getLongExtra("score_connect_duration", 0L);
     paramIntent.getIntExtra("sessionType", 0);
     Object localObject1;
@@ -1810,7 +1810,7 @@ public class VideoBroadcastReceiver
       }
       l1 = l2;
       if (l2 == 0L) {
-        l1 = AVUtil.a((String)localObject1);
+        l1 = AVUtil.c((String)localObject1);
       }
       bool1 = true;
     }
@@ -1819,20 +1819,20 @@ public class VideoBroadcastReceiver
       l1 = l2;
       localObject1 = localObject2;
     }
-    if (QQAudioHelper.c()) {
+    if (QQAudioHelper.f()) {
       QQAudioHelper.a("onVideoChatEnd[VideoConstants.ACTION_STOP_VIDEO_CHAT]", paramIntent.getExtras(), true);
     }
     if (i == 26) {
       localObject1 = str1;
     }
-    localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject2 = (QQAppInterface)this.f.get();
     if (localObject2 == null) {
       return;
     }
     ((QQAppInterface)localObject2).getAVNotifyCenter().a(false);
     if ((k != 4) && (k != 6) && (k != 1))
     {
-      if ((k == 0) && ((((QQAppInterface)localObject2).getAVNotifyCenter().e() == 3) || (((QQAppInterface)localObject2).getAVNotifyCenter().e() == 4)))
+      if ((k == 0) && ((((QQAppInterface)localObject2).getAVNotifyCenter().t() == 3) || (((QQAppInterface)localObject2).getAVNotifyCenter().t() == 4)))
       {
         ((QQAppInterface)localObject2).getAVNotifyCenter().a(i, (String)localObject1, str1, false);
         ((QQAppInterface)localObject2).getAVNotifyCenter().a(8, (String)localObject1, 0);
@@ -1863,7 +1863,7 @@ public class VideoBroadcastReceiver
           String str4 = paramIntent.getStringExtra("actId");
           String str5 = paramIntent.getStringExtra("mp_ext_params");
           if (str4 != null) {
-            VideoMsgTools.a((QQAppInterface)localObject2, "https://iyouxi3.vip.qq.com/ams3.0.php?", str4, str5, this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngineListener);
+            VideoMsgTools.a((QQAppInterface)localObject2, "https://iyouxi3.vip.qq.com/ams3.0.php?", str4, str5, this.e);
           }
         }
       }
@@ -1891,7 +1891,7 @@ public class VideoBroadcastReceiver
     long l = paramIntent.getLongExtra("roomId", 0L);
     String str = paramIntent.getStringExtra("peerUin");
     boolean bool = paramIntent.getBooleanExtra("isReceiver", false);
-    paramContext = jdField_a_of_type_JavaLangString;
+    paramContext = a;
     paramIntent = new StringBuilder();
     paramIntent.append("onAnotherTerminal ACTION_VIDEO_ANOTHER_CHATING uinType: ");
     paramIntent.append(j);
@@ -1904,21 +1904,21 @@ public class VideoBroadcastReceiver
     paramIntent.append(",sessionType:");
     paramIntent.append(i);
     QLog.d(paramContext, 1, paramIntent.toString());
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.f.get();
     if (localQQAppInterface == null)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "onAnotherTerminal app is null");
+      QLog.d(a, 1, "onAnotherTerminal app is null");
       return;
     }
     paramContext = (FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((paramContext != null) && (!paramContext.b(str)) && (i != 0))
+    if ((paramContext != null) && (!paramContext.n(str)) && (i != 0))
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "onAnotherTerminal other terminal chating with not friend ,ignore");
+      QLog.d(a, 1, "onAnotherTerminal other terminal chating with not friend ,ignore");
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       paramIntent = new StringBuilder();
       paramIntent.append("other terminal chating with: ");
       paramIntent.append(str);
@@ -1932,14 +1932,14 @@ public class VideoBroadcastReceiver
     Object localObject;
     if (i == 0)
     {
-      paramContext = localQQAppInterface.getAVNotifyCenter().b(l);
-      str = jdField_a_of_type_JavaLangString;
+      paramContext = localQQAppInterface.getAVNotifyCenter().i(l);
+      str = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onAnotherTerminal roomId reset peerUin=");
       ((StringBuilder)localObject).append(paramContext);
       QLog.i(str, 1, ((StringBuilder)localObject).toString());
-      localQQAppInterface.getAVNotifyCenter().a(paramContext);
-      if ((paramIntent != null) && (!TextUtils.isEmpty(paramContext)) && (j != 1) && (paramIntent.a(paramContext, j) == 7)) {
+      localQQAppInterface.getAVNotifyCenter().h(paramContext);
+      if ((paramIntent != null) && (!TextUtils.isEmpty(paramContext)) && (j != 1) && (paramIntent.b(paramContext, j) == 7)) {
         paramIntent.a(paramContext, j, 0);
       }
     }
@@ -1949,9 +1949,9 @@ public class VideoBroadcastReceiver
       localObject = localQQAppInterface.getProxyManager();
       paramContext = null;
       if (localObject != null) {
-        paramContext = ((ProxyManager)localObject).a();
+        paramContext = ((ProxyManager)localObject).g();
       }
-      if ((paramContext != null) && (paramContext.b(str, 0) == null) && (!bool))
+      if ((paramContext != null) && (paramContext.c(str, 0) == null) && (!bool))
       {
         if (i == 2) {
           bool = true;
@@ -1967,7 +1967,7 @@ public class VideoBroadcastReceiver
         if (paramIntent != null)
         {
           paramContext = str;
-          if (paramIntent.a(str, j) != 6)
+          if (paramIntent.b(str, j) != 6)
           {
             paramIntent.a(str, j, 7);
             paramContext = str;
@@ -1988,7 +1988,7 @@ public class VideoBroadcastReceiver
     boolean bool = paramIntent.getBooleanExtra("isDiyMsg", false);
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_MSG_REPLY uinType: ");
       localStringBuilder.append(i);
@@ -2009,7 +2009,7 @@ public class VideoBroadcastReceiver
       paramIntent = AIOUtils.a(new Intent(paramContext, SplashActivity.class), new int[] { 2 });
       paramIntent.putExtra("uintype", i);
       paramIntent.putExtra("uinname", (String)localObject);
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (QQAppInterface)this.f.get();
       if (localObject == null) {
         return;
       }
@@ -2021,7 +2021,7 @@ public class VideoBroadcastReceiver
       else if (i == 1000)
       {
         paramIntent.putExtra("uin", str1);
-        paramContext = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).b(str2);
+        paramContext = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).f(str2);
         paramIntent.putExtra("troop_uin", paramContext.troopcode);
         paramIntent.putExtra("troop_code", paramContext.troopuin);
         paramContext = paramIntent;
@@ -2053,7 +2053,7 @@ public class VideoBroadcastReceiver
     paramIntent = new Message();
     paramIntent.what = 0;
     paramIntent.obj = new Object[] { Integer.valueOf(i), localObject, str2, str1, paramContext, str3 };
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramIntent, 300L);
+    this.d.sendMessageDelayed(paramIntent, 300L);
   }
   
   void g(Context paramContext, Intent paramIntent)
@@ -2065,7 +2065,7 @@ public class VideoBroadcastReceiver
     String str1 = paramIntent.getStringExtra("extraUin");
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_MSG_LEAVE uinType: ");
       localStringBuilder.append(i);
@@ -2082,7 +2082,7 @@ public class VideoBroadcastReceiver
     paramIntent = AIOUtils.a(new Intent(paramContext, SplashActivity.class), new int[] { 2 });
     paramIntent.putExtra("uintype", i);
     paramIntent.putExtra("uinname", (String)localObject);
-    localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject = (QQAppInterface)this.f.get();
     if (localObject == null) {
       return;
     }
@@ -2094,12 +2094,12 @@ public class VideoBroadcastReceiver
     else if (i == 1000)
     {
       paramIntent.putExtra("uin", str2);
-      paramContext = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).b(str1);
+      paramContext = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).f(str1);
       if (paramContext == null)
       {
         if (QLog.isColorLevel())
         {
-          paramContext = jdField_a_of_type_JavaLangString;
+          paramContext = a;
           paramIntent = new StringBuilder();
           paramIntent.append("findTroopInfo fail ,uin : ");
           paramIntent.append(str1);
@@ -2140,7 +2140,7 @@ public class VideoBroadcastReceiver
     paramIntent = new Message();
     paramIntent.what = 4;
     paramIntent.obj = new Object[] { paramContext };
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramIntent, 300L);
+    this.d.sendMessageDelayed(paramIntent, 300L);
   }
   
   void h(Context paramContext, Intent paramIntent)
@@ -2148,13 +2148,13 @@ public class VideoBroadcastReceiver
     long l = paramIntent.getLongExtra("size", 0L);
     if (QLog.isColorLevel())
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       paramIntent = new StringBuilder();
       paramIntent.append("ACTION_VIDEO_FLOW_SIZE: ");
       paramIntent.append(l);
       QLog.d(paramContext, 2, paramIntent.toString());
     }
-    if ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {}
+    if ((QQAppInterface)this.f.get() == null) {}
   }
   
   void i(Context paramContext, Intent paramIntent)
@@ -2163,7 +2163,7 @@ public class VideoBroadcastReceiver
     paramContext = paramIntent.getStringExtra("peerUin");
     String str = paramIntent.getStringExtra("extraUin");
     paramIntent = paramIntent.getByteArrayExtra("sig");
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.f.get();
     if (localQQAppInterface == null) {
       return;
     }
@@ -2203,7 +2203,7 @@ public class VideoBroadcastReceiver
       }
     }
     if ((n == 0) && (l2 == 0L)) {}
-    for (long l1 = AVUtil.a(paramContext);; l1 = AVUtil.a(paramContext))
+    for (long l1 = AVUtil.c(paramContext);; l1 = AVUtil.c(paramContext))
     {
       break;
       l1 = l2;
@@ -2217,7 +2217,7 @@ public class VideoBroadcastReceiver
     }
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("VideoConstants.ACTION_START_VIDEO_AVSWITCH relationType[");
       ((StringBuilder)localObject).append(n);
@@ -2234,7 +2234,7 @@ public class VideoBroadcastReceiver
       ((StringBuilder)localObject).append("]");
       QLog.d(paramIntent, 2, ((StringBuilder)localObject).toString());
     }
-    paramIntent = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramIntent = (QQAppInterface)this.f.get();
     if (paramIntent == null) {
       return;
     }
@@ -2245,7 +2245,7 @@ public class VideoBroadcastReceiver
       paramIntent.getAVNotifyCenter().a(28, m, paramContext, null);
       if (QLog.isDevelopLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onAvSwitch, SessionType[");
         localStringBuilder.append(k);
@@ -2265,7 +2265,7 @@ public class VideoBroadcastReceiver
   void k(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "VideoConstants.ACTION_CALLING_DIALOG");
+      QLog.d(a, 2, "VideoConstants.ACTION_CALLING_DIALOG");
     }
     boolean bool1 = paramIntent.getBooleanExtra("isAudio", false);
     String str1 = paramIntent.getStringExtra("friendUin");
@@ -2273,30 +2273,30 @@ public class VideoBroadcastReceiver
     int k = paramIntent.getIntExtra("type", 0);
     String str2 = paramIntent.getStringExtra("senderUin");
     boolean bool2 = paramIntent.getBooleanExtra("isSender", false);
-    paramIntent = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramIntent = (QQAppInterface)this.f.get();
     if (paramIntent == null) {
       return;
     }
-    String str3 = paramIntent.getApp().getString(2131695447);
+    String str3 = paramIntent.getApp().getString(2131893195);
     BaseApplication localBaseApplication = paramIntent.getApp();
     int i;
     if (bool1) {
-      i = 2131695444;
+      i = 2131893192;
     } else {
-      i = 2131695448;
+      i = 2131893196;
     }
     paramContext = a(paramContext, str3, localBaseApplication.getString(i), new VideoBroadcastReceiver.1(this, paramIntent, j, k, bool1, str1, str2, bool2));
     DataReport.a(paramIntent.isBackgroundPause, bool1);
     paramIntent = new Message();
     paramIntent.what = 1;
     paramIntent.obj = new Object[] { paramContext, Integer.valueOf(j), Boolean.valueOf(bool1), str1, str2, Boolean.valueOf(bool2) };
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramIntent, 10000L);
+    this.d.sendMessageDelayed(paramIntent, 10000L);
   }
   
   void l(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "VideoConstants.ACTION_CALLING_DIALOG_MULTI");
+      QLog.d(a, 2, "VideoConstants.ACTION_CALLING_DIALOG_MULTI");
     }
     String str1 = String.valueOf(paramIntent.getLongExtra("friendUin", 0L));
     String str2 = String.valueOf(paramIntent.getLongExtra("relationId", 0L));
@@ -2304,11 +2304,11 @@ public class VideoBroadcastReceiver
     int j = paramIntent.getIntExtra("type", 0);
     String str3 = paramIntent.getStringExtra("realSenderUin");
     String str4 = paramIntent.getStringExtra("peerUin");
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.f.get();
     if (localQQAppInterface == null) {
       return;
     }
-    String str5 = localQQAppInterface.getApp().getString(2131695447);
+    String str5 = localQQAppInterface.getApp().getString(2131893195);
     if (i == 3000) {
       paramIntent = ContactUtils.a(localQQAppInterface, str2, str1);
     } else if (i == 1) {
@@ -2316,14 +2316,14 @@ public class VideoBroadcastReceiver
     } else {
       paramIntent = ContactUtils.d(localQQAppInterface, str1);
     }
-    paramIntent = String.format(localQQAppInterface.getApp().getString(2131695446), new Object[] { paramIntent });
+    paramIntent = String.format(localQQAppInterface.getApp().getString(2131893194), new Object[] { paramIntent });
     DataReport.e(false, true);
     paramContext = a(paramContext, str5, paramIntent, new VideoBroadcastReceiver.2(this, i, localQQAppInterface, j, str2, str1, str4, str3));
     DataReport.c(localQQAppInterface.isBackgroundPause);
     paramIntent = new Message();
     paramIntent.what = 2;
     paramIntent.obj = new Object[] { paramContext, Integer.valueOf(i), Integer.valueOf(j), str2, str1, str4, str3 };
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramIntent, 10000L);
+    this.d.sendMessageDelayed(paramIntent, 10000L);
   }
   
   void m(Context paramContext, Intent paramIntent)
@@ -2334,7 +2334,7 @@ public class VideoBroadcastReceiver
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_RANDOM_UPDATE_CHAT_INFO uin:");
       localStringBuilder.append(paramContext);
@@ -2346,7 +2346,7 @@ public class VideoBroadcastReceiver
     }
     if (!TextUtils.isEmpty(paramContext))
     {
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (QQAppInterface)this.f.get();
       if (localObject == null) {
         return;
       }
@@ -2357,9 +2357,9 @@ public class VideoBroadcastReceiver
   void n(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "EarlyDownload trigger AV so EarlyDownload");
+      QLog.w(a, 2, "EarlyDownload trigger AV so EarlyDownload");
     }
-    paramContext = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramContext = (QQAppInterface)this.f.get();
     if (paramContext == null) {
       return;
     }
@@ -2375,25 +2375,25 @@ public class VideoBroadcastReceiver
   
   void o(Context paramContext, Intent paramIntent)
   {
-    paramContext = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramContext = (QQAppInterface)this.f.get();
     if (paramContext == null) {
       return;
     }
-    paramIntent = paramContext.getApp().getString(2131695712);
-    String str = paramContext.getApp().getString(2131695691);
-    paramContext = DialogUtil.a(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131690728, 2131695618, new VideoBroadcastReceiver.3(this), null);
+    paramIntent = paramContext.getApp().getString(2131893471);
+    String str = paramContext.getApp().getString(2131893450);
+    paramContext = DialogUtil.a(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131887648, 2131893377, new VideoBroadcastReceiver.3(this), null);
     paramContext.getWindow().setType(2003);
     paramContext.show();
     paramIntent = new Message();
     paramIntent.what = 3;
     paramIntent.obj = new Object[] { paramContext };
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramIntent, 5000L);
+    this.d.sendMessageDelayed(paramIntent, 5000L);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     String str = paramIntent.getAction();
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("onReceive, action[");
     ((StringBuilder)localObject2).append(str);
@@ -2401,7 +2401,7 @@ public class VideoBroadcastReceiver
     ((StringBuilder)localObject2).append(SeqUtil.a(paramIntent));
     ((StringBuilder)localObject2).append("]");
     QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    localObject1 = this.f;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
@@ -2430,7 +2430,7 @@ public class VideoBroadcastReceiver
         }
         if ((!bool1) && (QLog.isDevelopLevel()))
         {
-          paramContext = jdField_a_of_type_JavaLangString;
+          paramContext = a;
           paramIntent = new StringBuilder();
           paramIntent.append("onReceive, no deal action[");
           paramIntent.append(str);
@@ -2439,7 +2439,7 @@ public class VideoBroadcastReceiver
         }
         return;
       }
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onReceive broadcast from wrong package:");
       ((StringBuilder)localObject1).append(paramIntent.getPackage());
@@ -2451,7 +2451,7 @@ public class VideoBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VideoBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

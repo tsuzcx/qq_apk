@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/base/BasePublishArticlePage;", "Lcom/tencent/tkd/topicsdk/framework/BasePage;", "Lcom/tencent/tkd/topicsdk/publisharticle/base/BasePublishArticleContract$IPublishArticleView;", "Lcom/tencent/tkd/weibo/richEditText/EditObjectListener;", "()V", "addRichEditObjectFailed", "", "editObject", "Lcom/tencent/tkd/weibo/bean/EditObject;", "extraInfo", "Lorg/json/JSONObject;", "handlePublishErrCode", "errCode", "", "articleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "hasInternet", "", "onRichEditObjectChanged", "isAdd", "type", "Lcom/tencent/tkd/weibo/bean/EditObject$EditObjectType;", "id", "", "openCoverSelectPageForResult", "item", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "callback", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "Lkotlin/ParameterName;", "name", "data", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/base/BasePublishArticlePage;", "Lcom/tencent/tkd/topicsdk/framework/BasePage;", "Lcom/tencent/tkd/topicsdk/publisharticle/base/BasePublishArticleContract$IPublishArticleView;", "Lcom/tencent/tkd/weibo/richEditText/EditObjectListener;", "()V", "addRichEditObjectFailed", "", "editObject", "Lcom/tencent/tkd/weibo/bean/EditObject;", "extraInfo", "Lorg/json/JSONObject;", "handlePublishErrCode", "errCode", "", "articleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "hasInternet", "", "onRichEditObjectChanged", "isAdd", "type", "Lcom/tencent/tkd/weibo/bean/EditObject$EditObjectType;", "id", "", "openCoverSelectPageForResult", "item", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "coverRatio", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "Lkotlin/ParameterName;", "name", "data", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public abstract class BasePublishArticlePage
   extends BasePage
   implements BasePublishArticleContract.IPublishArticleView, EditObjectListener
@@ -33,15 +33,15 @@ public abstract class BasePublishArticlePage
   public void a(int paramInt, @NotNull PublishArticleInfo paramPublishArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "articleInfo");
-    Activity localActivity = a();
+    Activity localActivity = b();
     if (localActivity != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localActivity, "activity ?: return");
       if (paramInt == 0)
       {
         localActivity.setResult(-1);
-        TopicSDKHelperKt.a().a(localActivity, paramPublishArticleInfo);
-        c();
+        TopicSDKHelperKt.c().a(localActivity, paramPublishArticleInfo);
+        l();
         return;
       }
       paramPublishArticleInfo = paramPublishArticleInfo.getPublishScene();
@@ -49,11 +49,11 @@ public abstract class BasePublishArticlePage
     }
   }
   
-  public void a(@NotNull DisplayItem paramDisplayItem, @NotNull Function1<? super CoverSelectData, Unit> paramFunction1)
+  public void a(@NotNull DisplayItem paramDisplayItem, float paramFloat, @NotNull Function1<? super CoverSelectData, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramDisplayItem, "item");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
-    Activity localActivity = a();
+    Activity localActivity = b();
     if (localActivity != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localActivity, "activity ?: return");
@@ -67,7 +67,10 @@ public abstract class BasePublishArticlePage
         return;
       }
       paramDisplayItem = CoverSelectData.Companion.a(paramDisplayItem);
-      TopicSDKHelperKt.a().a(localActivity, paramDisplayItem, (Function1)new BasePublishArticlePage.openCoverSelectPageForResult.1(paramFunction1));
+      if (paramFloat > 0) {
+        paramDisplayItem.setCoverRatio(paramFloat);
+      }
+      TopicSDKHelperKt.c().a(localActivity, paramDisplayItem, (Function1)new BasePublishArticlePage.openCoverSelectPageForResult.1(paramFunction1));
     }
   }
   
@@ -83,9 +86,9 @@ public abstract class BasePublishArticlePage
     BasePublishArticleReportUtils.a.a(paramBoolean, paramString, paramEditObjectType, paramJSONObject);
   }
   
-  public boolean d()
+  public boolean dO_()
   {
-    Activity localActivity = a();
+    Activity localActivity = b();
     if (localActivity != null)
     {
       Intrinsics.checkExpressionValueIsNotNull(localActivity, "activity ?: return false");
@@ -96,7 +99,7 @@ public abstract class BasePublishArticlePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.base.BasePublishArticlePage
  * JD-Core Version:    0.7.0.1
  */

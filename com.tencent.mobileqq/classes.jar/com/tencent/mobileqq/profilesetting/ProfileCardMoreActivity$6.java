@@ -1,77 +1,47 @@
 package com.tencent.mobileqq.profilesetting;
 
-import com.tencent.mobileqq.app.ShieldListObserver;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.guild.api.IGuildInfoUtilsApi;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
-import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import com.tencent.mobileqq.qqguildsdk.callback.IResultWithSecurityCallback;
+import com.tencent.mobileqq.qqguildsdk.data.IGProSecurityResult;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class ProfileCardMoreActivity$6
-  extends ShieldListObserver
+  implements IResultWithSecurityCallback
 {
   ProfileCardMoreActivity$6(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void a(int paramInt, String paramString, IGProSecurityResult paramIGProSecurityResult)
   {
-    if (this.a.a == null) {
+    this.a.k();
+    QLog.e("IphoneTitleBarActivity", 1, new Object[] { "onRemoveGuildResult item_remove_group result:", this.a.E, ", errMsg:", paramString });
+    if ((paramInt == 0) && (((IGuildInfoUtilsApi)QRoute.api(IGuildInfoUtilsApi.class)).checkSecurityValid(paramIGProSecurityResult)))
+    {
+      this.a.notifyUser(2131915679, 2);
+      if (this.a.E == null) {
+        this.a.E = new Intent();
+      }
+      this.a.E.putExtra("guild_user_allow_admin", false);
+      paramString = this.a;
+      paramString.setResult(-1, paramString.E);
+      if (this.a.b.extras.getInt("guild_open_robot_type") == 1)
+      {
+        ProfileCardMoreActivity.a(this.a, false);
+        return;
+      }
+      this.a.finish();
       return;
     }
-    String str = this.a.a.uin;
-    if (ProfilePAUtils.isPaTypeStrangerInContact(this.a.a)) {
-      str = this.a.a();
-    }
-    int i;
-    if (paramList == null) {
-      i = 0;
-    } else {
-      i = paramList.size();
-    }
-    int k = 0;
-    int j = 0;
-    while ((k == 0) && (j < i))
-    {
-      if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-        k = 1;
-      }
-      j += 1;
-    }
-    if (k != 0) {
-      this.a.a(paramBoolean, false);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.uin;
-    if (ProfilePAUtils.isPaTypeStrangerInContact(this.a.a)) {
-      str = this.a.a();
-    }
-    int k = 0;
-    int i;
-    if (paramList == null) {
-      i = 0;
-    } else {
-      i = paramList.size();
-    }
-    int j = 0;
-    while ((k == 0) && (j < i))
-    {
-      if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-        k = 1;
-      }
-      j += 1;
-    }
-    if (k != 0) {
-      this.a.a(paramBoolean, true);
-    }
+    ((IGuildInfoUtilsApi)QRoute.api(IGuildInfoUtilsApi.class)).toastErrorAndSecurity(BaseApplication.getContext(), paramInt, BaseApplication.getContext().getString(2131915678), paramIGProSecurityResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.6
  * JD-Core Version:    0.7.0.1
  */

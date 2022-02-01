@@ -10,7 +10,7 @@ class PTSJSCLoader$1
   
   public void run()
   {
-    if (!PTSSwitchManager.a.a())
+    if (!PTSSwitchManager.a.b())
     {
       QLog.i("PTSJSCLoader", 1, "[init], ptsJSCEnabled is false.");
       return;
@@ -20,7 +20,7 @@ class PTSJSCLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSJSCLoader.1
  * JD-Core Version:    0.7.0.1
  */

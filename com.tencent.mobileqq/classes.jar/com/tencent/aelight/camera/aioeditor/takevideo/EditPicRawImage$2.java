@@ -13,14 +13,14 @@ class EditPicRawImage$2
     int j = this.this$0.a.getHeight();
     if ((this.a) && (i > 0) && (j > 0))
     {
-      EditPicRawImage.a(this.this$0);
+      EditPicRawImage.c(this.this$0);
       this.this$0.a(i, j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicRawImage.2
  * JD-Core Version:    0.7.0.1
  */

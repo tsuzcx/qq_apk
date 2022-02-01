@@ -13,21 +13,21 @@ import com.tencent.mobileqq.widget.SquareImageView;
 public class NetSearchTemplateFriendUpdatesView
   extends NetSearchTemplateBaseView
 {
-  public FrameLayout a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public int b;
-  public LinearLayout b;
-  public TextView b;
-  public URLImageView b;
-  public ImageView c;
+  public URLImageView A;
+  public TextView B;
+  public URLImageView C;
+  public TextView D;
+  public int E;
+  public ImageView a;
+  public ImageView b;
   public TextView c;
-  public SquareImageView c;
-  public ImageView d;
-  public ImageView f;
-  public TextView h;
+  public LinearLayout d;
+  public SquareImageView n;
+  public ImageView o;
+  public FrameLayout p;
+  public RelativeLayout q;
+  public LinearLayout y;
+  public TextView z;
   
   public NetSearchTemplateFriendUpdatesView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -37,27 +37,27 @@ public class NetSearchTemplateFriendUpdatesView
   protected void a()
   {
     super.a();
-    View localView = a(this.jdField_a_of_type_Int);
-    this.d = ((ImageView)localView.findViewById(2131365295));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378309));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372733));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131377628));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368557));
-    this.f = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369731));
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366002));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366016));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376005));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131381336));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131381338));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364956));
-    this.h = ((TextView)localView.findViewById(2131364986));
+    View localView = b(this.m);
+    this.b = ((ImageView)localView.findViewById(2131431472));
+    this.a = ((ImageView)localView.findViewById(2131435219));
+    this.c = ((TextView)localView.findViewById(2131446828));
+    this.d = ((LinearLayout)localView.findViewById(2131440280));
+    this.p = ((FrameLayout)localView.findViewById(2131446037));
+    this.n = ((SquareImageView)this.p.findViewById(2131435463));
+    this.o = ((ImageView)this.p.findViewById(2131436849));
+    this.E = this.d.getChildCount();
+    this.y = ((LinearLayout)localView.findViewById(2131432273));
+    this.q = ((RelativeLayout)localView.findViewById(2131432287));
+    this.z = ((TextView)localView.findViewById(2131444205));
+    this.A = ((URLImageView)localView.findViewById(2131450388));
+    this.B = ((TextView)localView.findViewById(2131450390));
+    this.C = ((URLImageView)localView.findViewById(2131431082));
+    this.D = ((TextView)localView.findViewById(2131431117));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateFriendUpdatesView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,8 @@ class PublicAccountH5AbilityPluginImpl$26
   
   public void run()
   {
-    Object localObject1 = ImageUtil.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    Object localObject1 = ImageUtil.a(this.this$0.mRuntime.d(), this.a, this.b);
+    Object localObject2 = this.c;
     int i;
     if ((localObject2 != null) && (((QQProgressDialog)localObject2).isShowing())) {
       i = 1;
@@ -36,19 +36,19 @@ class PublicAccountH5AbilityPluginImpl$26
         try
         {
           localObject2 = BitmapFactory.decodeFile((String)localObject1);
-          if (!WXShareHelper.a().a()) {
-            i = 2131720478;
-          } else if (!WXShareHelper.a().b()) {
-            i = 2131720479;
+          if (!WXShareHelper.a().b()) {
+            i = 2131918154;
+          } else if (!WXShareHelper.a().c()) {
+            i = 2131918155;
           } else {
             i = -1;
           }
           if (i != -1)
           {
             QRUtils.a(0, i);
-            localObject1 = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowserImpl.class);
+            localObject1 = new Intent(this.this$0.mRuntime.d(), PublicAccountBrowserImpl.class);
             ((Intent)localObject1).putExtra("url", "https://weixin.qq.com/download");
-            this.this$0.mRuntime.a().startActivity((Intent)localObject1);
+            this.this$0.mRuntime.d().startActivity((Intent)localObject1);
             return;
           }
           WXShareHelper.a().a((String)localObject1, (Bitmap)localObject2, 1, true);
@@ -60,13 +60,13 @@ class PublicAccountH5AbilityPluginImpl$26
           return;
         }
       }
-      QRUtils.a(1, 2131695240);
+      QRUtils.a(1, 2131892974);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.26
  * JD-Core Version:    0.7.0.1
  */

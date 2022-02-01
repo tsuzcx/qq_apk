@@ -1,7 +1,6 @@
 package com.tencent.viola.ui.view.overscroll;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -10,9 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+import com.tencent.viola.ui.view.D8SafeAnimatorListener;
 
 public class AbsOverScrollDecorator$BounceBackState
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, AbsOverScrollDecorator.IDecoratorState
+  extends D8SafeAnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener, AbsOverScrollDecorator.IDecoratorState
 {
   protected final AbsOverScrollDecorator.AnimationAttributes mAnimAttributes;
   protected final Interpolator mBounceBackInterpolator = new DecelerateInterpolator();
@@ -104,7 +105,7 @@ public class AbsOverScrollDecorator$BounceBackState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.AbsOverScrollDecorator.BounceBackState
  * JD-Core Version:    0.7.0.1
  */

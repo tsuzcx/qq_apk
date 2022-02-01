@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:paddingBottom="@dimen/a02" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/baw" android:paddingTop="@dimen/bay" android:paddingBottom="@dimen/bav" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_gravity="center" android:id="@id/jfb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>
+    <include layout="@layout/cyu" />
+    <include layout="@layout/cyv" />
+    <ViewStub android:id="@id/pet" android:layout="@layout/cyw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/peu" android:layout="@layout/cyy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

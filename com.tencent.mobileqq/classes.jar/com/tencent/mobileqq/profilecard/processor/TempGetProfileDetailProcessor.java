@@ -171,7 +171,7 @@ public class TempGetProfileDetailProcessor
                 paramShort1 = paramByteBuffer.getShort();
                 paramBundle = (MessageRoamManager)((QQAppInterface)this.appRuntime).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
                 if (paramBundle != null) {
-                  paramBundle.d(paramShort1);
+                  paramBundle.e(paramShort1);
                 }
               }
             }
@@ -182,7 +182,7 @@ public class TempGetProfileDetailProcessor
             }
           }
           else if (paramByteBuffer.getShort() == 1) {
-            NearbyManagerHelper.a((QQAppInterface)this.appRuntime).d();
+            NearbyManagerHelper.a((QQAppInterface)this.appRuntime).e();
           }
         }
         else
@@ -197,7 +197,7 @@ public class TempGetProfileDetailProcessor
       else
       {
         paramShort1 = paramByteBuffer.getShort();
-        ((SmartDeviceProxyMgr)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).b(paramShort1);
+        ((SmartDeviceProxyMgr)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).c(paramShort1);
       }
     }
     else
@@ -307,7 +307,7 @@ public class TempGetProfileDetailProcessor
           if (paramShort1 > 0) {
             bool1 = true;
           }
-          HotChatManager.a(paramBundle, bool1);
+          HotChatManager.b(paramBundle, bool1);
         }
       }
       else
@@ -369,7 +369,7 @@ public class TempGetProfileDetailProcessor
       } else {
         bool1 = false;
       }
-      boolean bool2 = paramBundle.a;
+      boolean bool2 = paramBundle.c;
       if (bool1 != bool2)
       {
         paramBundle.a((QQAppInterface)this.appRuntime, bool1);
@@ -430,8 +430,8 @@ public class TempGetProfileDetailProcessor
         bool2 = false;
       }
       ((ISttManagerApi)QRoute.api(ISttManagerApi.class)).initAutoToTextSwitch((QQAppInterface)this.appRuntime);
-      paramBundle = QVipAutoPttProcessor.c();
-      bool3 = VasUtil.a(this.appRuntime).getVipStatus().isSVip();
+      paramBundle = QVipAutoPttProcessor.e();
+      bool3 = VasUtil.b(this.appRuntime).getVipStatus().isSVip();
       bool1 = bool2;
       if (paramBundle.a > 1)
       {
@@ -449,7 +449,7 @@ public class TempGetProfileDetailProcessor
       bool2 = bool1;
       if (bool1)
       {
-        paramCard = (PttAutoChangeBean)QConfigManager.a().a(442);
+        paramCard = (PttAutoChangeBean)QConfigManager.b().b(442);
         bool2 = bool1;
         if (paramCard != null)
         {
@@ -475,17 +475,17 @@ public class TempGetProfileDetailProcessor
       ((StringBuilder)localObject).append(this.appRuntime.getCurrentAccountUin());
       localObject = ((StringBuilder)localObject).toString();
       SharedPreferences.Editor localEditor = this.appRuntime.getApp().getSharedPreferences("check_update_sp_key", 0).edit();
-      bool1 = PttConstants.c;
-      long l = PttConstants.a;
+      bool1 = PttConstants.f;
+      long l = PttConstants.g;
       if (bool2)
       {
         if (!bool1)
         {
           localEditor.putLong(paramByteBuffer, paramLong);
-          PttConstants.a = paramLong;
+          PttConstants.g = paramLong;
         }
         localEditor.putBoolean((String)localObject, true);
-        PttConstants.d = true;
+        PttConstants.h = true;
       }
       else
       {
@@ -493,7 +493,7 @@ public class TempGetProfileDetailProcessor
       }
       localEditor.putBoolean(paramCard, bool2);
       localEditor.apply();
-      PttConstants.c = bool2;
+      PttConstants.f = bool2;
       paramCard = new StringBuilder();
       paramCard.append("handleGetDetailInfo autoToText onLine:");
       paramCard.append(bool2);
@@ -549,7 +549,7 @@ public class TempGetProfileDetailProcessor
     if (paramShort2 != 0) {
       bool1 = true;
     }
-    TencentDocPref.b(paramBundle, String.valueOf(paramLong), bool1);
+    TencentDocPref.c(paramBundle, String.valueOf(paramLong), bool1);
   }
   
   private void handleGetDetailInfoInner8(Bundle paramBundle, long paramLong, Card paramCard, short paramShort1, short paramShort2, ByteBuffer paramByteBuffer, StudyModeManager.ModeFlag paramModeFlag)
@@ -1014,7 +1014,7 @@ public class TempGetProfileDetailProcessor
         paramCard.append(" handleGetIsQidianMaster is qidianmaster");
         QLog.i("Q.profilecard.", 1, paramCard.toString());
         paramCard = paramBundle.a(String.valueOf(paramLong));
-        paramByteBuffer = paramBundle.a(String.valueOf(paramLong));
+        paramByteBuffer = paramBundle.c(String.valueOf(paramLong));
         if ((paramCard == null) || (paramByteBuffer == null)) {
           paramBundle.b(this.appRuntime.getApp().getBaseContext(), this.qiDianMasterAccountType);
         }
@@ -1157,11 +1157,11 @@ public class TempGetProfileDetailProcessor
     {
       FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)this.appRuntime).getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramCard.allowCalInteractive) {
-        localFriendsManager.q = 1;
+        localFriendsManager.r = 1;
       } else {
-        localFriendsManager.q = 0;
+        localFriendsManager.r = 0;
       }
-      this.appRuntime.getApp().getSharedPreferences(this.appRuntime.getCurrentAccountUin(), 0).edit().putInt("hotDisableInteractive", localFriendsManager.q).commit();
+      this.appRuntime.getApp().getSharedPreferences(this.appRuntime.getCurrentAccountUin(), 0).edit().putInt("hotDisableInteractive", localFriendsManager.r).commit();
       localCardHandler.notifyUI(70, paramBoolean, Boolean.valueOf(paramCard.allowCalInteractive));
     }
     if (paramBundle.getBoolean("isGetBabyQSwitch")) {
@@ -1231,7 +1231,7 @@ public class TempGetProfileDetailProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.processor.TempGetProfileDetailProcessor
  * JD-Core Version:    0.7.0.1
  */

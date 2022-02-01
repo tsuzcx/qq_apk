@@ -10,7 +10,7 @@ class VoiceTextSttProcessController$1
   
   public void onNetMobile2None()
   {
-    VoiceTextSttProcessController.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
+    VoiceTextSttProcessController.b(this.a).post(new VoiceTextSttProcessController.1.1(this));
   }
   
   public void onNetMobile2Wifi(String paramString) {}
@@ -23,12 +23,12 @@ class VoiceTextSttProcessController$1
   
   public void onNetWifi2None()
   {
-    VoiceTextSttProcessController.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
+    VoiceTextSttProcessController.b(this.a).post(new VoiceTextSttProcessController.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1
  * JD-Core Version:    0.7.0.1
  */

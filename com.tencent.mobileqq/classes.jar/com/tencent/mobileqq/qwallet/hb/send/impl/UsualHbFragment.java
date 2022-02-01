@@ -17,6 +17,7 @@ import com.tencent.mobileqq.qqpay.ui.R.id;
 import com.tencent.mobileqq.qqpay.ui.R.layout;
 import com.tencent.mobileqq.qqpay.ui.R.string;
 import com.tencent.mobileqq.qwallet.hb.HbInfo.BundleInfo;
+import com.tencent.mobileqq.qwallet.hb.aio.impl.QWalletRedPkgUtils;
 import com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinInfo;
 import com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic;
 import com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.SendHbLogic;
@@ -32,89 +33,78 @@ public class UsualHbFragment
   extends BaseHbUIFragment
   implements View.OnClickListener
 {
-  private static final List<Integer> jdField_a_of_type_JavaUtilList = new UsualHbFragment.1();
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HbSkinLogic jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic;
+  private static final List<Integer> r = new UsualHbFragment.1();
+  private TextView o;
+  private LinearLayout p;
+  private HbSkinLogic q;
   
-  private void d()
+  private void l()
   {
-    if (!b()) {
+    if (!i()) {
       return;
     }
-    int i = QwUtils.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-    String str = QwUtils.a(String.valueOf(a()));
+    int i = QwUtils.a(this.c.getText().toString(), 1);
+    String str = QwUtils.b(String.valueOf(g()));
     if (TextUtils.isEmpty(str))
     {
-      QQToast.a(getActivity(), R.string.h, 0).a();
+      QQToast.makeText(getActivity(), R.string.h, 0).show();
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo, c(), i, str, "hongbao.wrap.go");
-    Object localObject2 = this.c.getText().toString();
+    a(this.m, k(), i, str, "hongbao.wrap.go");
+    Object localObject2 = this.l.getText().toString();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      if (TextUtils.isEmpty(this.c.getHint())) {
+      if (TextUtils.isEmpty(this.l.getHint())) {
         localObject1 = getResources().getString(R.string.L);
       } else {
-        localObject1 = this.c.getHint().toString();
+        localObject1 = this.l.getHint().toString();
       }
     }
-    int j = c();
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getMapPacketExtra();
+    int j = k();
+    localObject2 = this.f.getMapPacketExtra();
     ((Map)localObject2).put("channel", String.valueOf(j));
     ((Map)localObject2).put("type", "1");
     ((Map)localObject2).put("wishing", localObject1);
-    ((Map)localObject2).put("bus_type", this.jdField_a_of_type_AndroidOsBundle.getString("bus_type"));
+    ((Map)localObject2).put("bus_type", this.e.getString("bus_type"));
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(i);
     ((StringBuilder)localObject1).append("");
     ((Map)localObject2).put("total_num", ((StringBuilder)localObject1).toString());
     ((Map)localObject2).put("total_amount", str);
     if (512 == j) {
-      ((Map)localObject2).put("feeds_sid", this.jdField_a_of_type_AndroidOsBundle.getString("feedsid"));
+      ((Map)localObject2).put("feeds_sid", this.e.getString("feedsid"));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a())
+    if (this.q.d())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(HbSkinInfo.c);
+      ((StringBuilder)localObject1).append(HbSkinInfo.d);
       ((Map)localObject2).put("skin_id", ((StringBuilder)localObject1).toString());
     }
     else
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a());
+      ((StringBuilder)localObject1).append(this.q.e());
       ((Map)localObject2).put("skin_id", ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplSendHbLogic.a((Map)localObject2);
-    ReportUtils.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "redpack.paybtn.click", null, this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo.panel_name);
-  }
-  
-  protected float a()
-  {
-    float f = QwUtils.a(this.b.getText().toString());
-    if (QwUtils.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo.bus_type, 1) == 1) {
-      return QwUtils.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 0) * f;
-    }
-    return f;
-  }
-  
-  protected String a()
-  {
-    return HardCodeUtil.a(R.string.di);
+    this.h.a((Map)localObject2);
+    ReportUtils.a(this.g, "redpack.paybtn.click", null, this.m.panel_name);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     QLog.i("UsualHbFragment", 2, "init view...");
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getHbSkinLogic();
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(R.id.f));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(R.id.cv);
-    if (String.valueOf(2).equals(this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo.bus_type))
+    this.q = this.f.getHbSkinLogic();
+    this.b.setOnClickListener(this);
+    this.o = ((TextView)this.a.findViewById(R.id.k));
+    this.o.setOnClickListener(this);
+    if (QWalletRedPkgUtils.a(this.m.recv_type)) {
+      this.a.findViewById(R.id.bn).setVisibility(8);
+    }
+    paramBundle = (TextView)this.a.findViewById(R.id.cL);
+    if (String.valueOf(2).equals(this.m.bus_type))
     {
       paramBundle.setText(R.string.G);
       return;
@@ -122,20 +112,15 @@ public class UsualHbFragment
     paramBundle.setText(R.string.H);
   }
   
-  public int b()
+  public void c()
   {
-    return R.layout.r;
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(this.jdField_a_of_type_Int)))
+    super.c();
+    if (r.contains(Integer.valueOf(this.i)))
     {
-      Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("skin_id", "");
+      Object localObject = this.e.getString("skin_id", "");
       int i;
-      if (StringUtil.a((String)localObject)) {
-        i = this.jdField_a_of_type_AndroidOsBundle.getInt("skin_id", -1);
+      if (StringUtil.isEmpty((String)localObject)) {
+        i = this.e.getInt("skin_id", -1);
       } else {
         i = QwUtils.a(localObject, -1);
       }
@@ -143,63 +128,82 @@ public class UsualHbFragment
       ((StringBuilder)localObject).append("init data skin id: ");
       ((StringBuilder)localObject).append(i);
       QLog.i("UsualHbFragment", 2, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic;
-      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(R.id.I);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = localLinearLayout;
+      localObject = this.q;
+      LinearLayout localLinearLayout = (LinearLayout)this.a.findViewById(R.id.N);
+      this.p = localLinearLayout;
       ((HbSkinLogic)localObject).a(localLinearLayout);
-      ((ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent()).setVisibility(0);
+      ((ViewGroup)this.p.getParent()).setVisibility(0);
       if (-1 != i) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a(i);
+        this.q.a(i);
       }
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a(new UsualHbFragment.2(this));
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a(this.jdField_a_of_type_AndroidOsBundle);
+      this.q.a(new UsualHbFragment.2(this));
+      this.q.a(this.e);
     }
   }
   
-  public int c()
+  protected String d()
   {
-    if ((jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(this.jdField_a_of_type_Int))) && (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a() == -2)) {
+    return HardCodeUtil.a(R.string.dl);
+  }
+  
+  protected float g()
+  {
+    float f = QwUtils.a(this.d.getText().toString());
+    if (QwUtils.a(this.m.bus_type, 1) == 1) {
+      return QwUtils.a(this.c.getText().toString(), 0) * f;
+    }
+    return f;
+  }
+  
+  public int j()
+  {
+    return R.layout.u;
+  }
+  
+  public int k()
+  {
+    if ((r.contains(Integer.valueOf(this.i))) && (this.q.e() == -2)) {
       return 8;
     }
-    return this.jdField_a_of_type_Int;
+    return this.i;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.u)
+    if (i == R.id.z)
     {
-      d();
+      l();
       return;
     }
-    if (i == R.id.f)
+    if (i == R.id.k)
     {
       a("hongbao.wrap.vip", "");
-      if (512 == this.jdField_a_of_type_Int)
+      if (512 == this.i)
       {
         paramView = new StringBuilder();
         paramView.append("https://h5.qzone.qq.com/redpacket/skin/index?_proxy=1&_wv=16777219&feedsid=");
-        paramView.append(this.jdField_a_of_type_AndroidOsBundle.getString("feedsid"));
+        paramView.append(this.e.getString("feedsid"));
         a(paramView.toString());
         return;
       }
-      a(((IIndividualRedPacket)((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getAppRuntime()).getRuntimeService(IIndividualRedPacket.class)).getMallURL(3));
+      a(((IIndividualRedPacket)((BaseQQAppInterface)this.f.getAppRuntime()).getRuntimeService(IIndividualRedPacket.class)).getMallURL(3));
     }
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(this.jdField_a_of_type_Int))) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    if (r.contains(Integer.valueOf(this.i))) {
+      this.q.a(this.p);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(this.jdField_a_of_type_Int))) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic.c();
+    if (r.contains(Integer.valueOf(this.i))) {
+      this.q.c();
     }
   }
   
@@ -208,7 +212,7 @@ public class UsualHbFragment
     super.setUserVisibleHint(paramBoolean);
     if (paramBoolean)
     {
-      if (String.valueOf(2).equals(this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo.bus_type))
+      if (String.valueOf(2).equals(this.m.bus_type))
       {
         a("hongbao.wrap.random", "");
         return;
@@ -219,7 +223,7 @@ public class UsualHbFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.UsualHbFragment
  * JD-Core Version:    0.7.0.1
  */

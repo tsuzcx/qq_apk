@@ -29,36 +29,36 @@ class AccountDetailGroupListContainer$10
     if (paramPaConfigInfo == null) {
       return;
     }
-    String str = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
+    String str = paramPaConfigInfo.h;
     Object localObject = str;
     if (str == null) {
       localObject = "";
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.jdField_a_of_type_JavaLangString, "0X8005A28", "0X8005A28", 0, 0, (String)localObject, "", "", "", false);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.a.b, "P_CliOper", "Pb_account_lifeservice", this.a.g, "0X8005A28", "0X8005A28", 0, 0, (String)localObject, "", "", "", false);
     if (paramPaConfigInfo.a == 3)
     {
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 7)
+      if (paramPaConfigInfo.e == 7)
       {
-        if (!TextUtils.isEmpty(paramPaConfigInfo.g))
+        if (!TextUtils.isEmpty(paramPaConfigInfo.m))
         {
-          if (TextUtils.isEmpty(paramPaConfigInfo.f)) {
+          if (TextUtils.isEmpty(paramPaConfigInfo.l)) {
             return;
           }
-          if (TextUtils.isEmpty(paramPaConfigInfo.b)) {
+          if (TextUtils.isEmpty(paramPaConfigInfo.c)) {
             return;
           }
-          localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
-          ((Intent)localObject).putExtra("lat", paramPaConfigInfo.g);
-          ((Intent)localObject).putExtra("lon", paramPaConfigInfo.f);
-          ((Intent)localObject).putExtra("loc", paramPaConfigInfo.b);
-          ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
+          localObject = new Intent((Context)this.a.a.get(), QQMapActivity.class);
+          ((Intent)localObject).putExtra("lat", paramPaConfigInfo.m);
+          ((Intent)localObject).putExtra("lon", paramPaConfigInfo.l);
+          ((Intent)localObject).putExtra("loc", paramPaConfigInfo.c);
+          ((BaseActivity)this.a.a.get()).startActivity((Intent)localObject);
           return;
         }
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 8)
+      if (paramPaConfigInfo.e == 8)
       {
-        paramPaConfigInfo = paramPaConfigInfo.h;
+        paramPaConfigInfo = paramPaConfigInfo.n;
         if (!TextUtils.isEmpty(paramPaConfigInfo))
         {
           paramPaConfigInfo = paramPaConfigInfo.trim();
@@ -70,50 +70,50 @@ class AccountDetailGroupListContainer$10
         }
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 13) {
+      if (paramPaConfigInfo.e == 13) {
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 11)
+      if (paramPaConfigInfo.e == 11)
       {
         paramPaConfigInfo = new Intent();
-        paramPaConfigInfo.putExtra("from", this.a.jdField_a_of_type_JavaLangRefWeakReference.getClass().getName());
-        RouteUtils.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramPaConfigInfo, "/qrscan/scanner");
+        paramPaConfigInfo.putExtra("from", this.a.a.getClass().getName());
+        RouteUtils.a((Context)this.a.a.get(), paramPaConfigInfo, "/qrscan/scanner");
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 16) {
+      if (paramPaConfigInfo.e == 16) {
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 20)
+      if (paramPaConfigInfo.e == 20)
       {
         AccountDetailGroupListContainer.a(this.a);
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 2)
+      if (paramPaConfigInfo.e == 2)
       {
-        ShareActionSheet.b((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary), 1, AccountDetailGroupListContainer.a(this.a));
+        ShareActionSheet.b((Activity)this.a.a.get(), new ShareActionSheet.Detail(this.a.g, this.a.f.name, this.a.f.summary), 1, AccountDetailGroupListContainer.b(this.a));
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 17)
+      if (paramPaConfigInfo.e == 17)
       {
-        ShareActionSheet.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary), 1, AccountDetailGroupListContainer.a(this.a));
+        ShareActionSheet.a((BaseActivity)this.a.a.get(), new ShareActionSheet.Detail(this.a.g, this.a.f.name, this.a.f.summary), 1, AccountDetailGroupListContainer.b(this.a));
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 19)
+      if (paramPaConfigInfo.e == 19)
       {
-        ShareActionSheet.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary), 1, AccountDetailGroupListContainer.a(this.a), 9);
+        ShareActionSheet.a((BaseActivity)this.a.a.get(), new ShareActionSheet.Detail(this.a.g, this.a.f.name, this.a.f.summary), 1, AccountDetailGroupListContainer.b(this.a), 9);
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 18)
+      if (paramPaConfigInfo.e == 18)
       {
-        ShareActionSheet.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary), 1, AccountDetailGroupListContainer.a(this.a), 10);
+        ShareActionSheet.a((BaseActivity)this.a.a.get(), new ShareActionSheet.Detail(this.a.g, this.a.f.name, this.a.f.summary), 1, AccountDetailGroupListContainer.b(this.a), 10);
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 21) {
+      if (paramPaConfigInfo.e == 21) {
         return;
       }
-      if (paramPaConfigInfo.jdField_c_of_type_Int == 22)
+      if (paramPaConfigInfo.e == 22)
       {
-        paramPaConfigInfo = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
+        paramPaConfigInfo = paramPaConfigInfo.h;
         AccountDetailGroupListContainer.c(this.a, paramPaConfigInfo);
         return;
       }
@@ -121,21 +121,21 @@ class AccountDetailGroupListContainer$10
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("unhandled event_id: ");
-        ((StringBuilder)localObject).append(paramPaConfigInfo.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(paramPaConfigInfo.e);
         QLog.d("AccountDetailGroupListContainer", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
     if (paramPaConfigInfo.a == 1)
     {
-      paramPaConfigInfo = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
+      paramPaConfigInfo = paramPaConfigInfo.h;
       AccountDetailGroupListContainer.c(this.a, paramPaConfigInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.10
  * JD-Core Version:    0.7.0.1
  */

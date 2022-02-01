@@ -49,7 +49,7 @@ public abstract class BaseEmotionAdapter
     this.emotionType = paramInt3;
     this.callback = paramEmoticonCallback;
     this.recycleViewMap = new ConcurrentHashMap();
-    this.emoticonTextColor = this.mContext.getResources().getColor(2131166554);
+    this.emoticonTextColor = this.mContext.getResources().getColor(2131167474);
     this.density = this.mContext.getResources().getDisplayMetrics().density;
   }
   
@@ -79,7 +79,7 @@ public abstract class BaseEmotionAdapter
             if ((localView instanceof EmoticonPanelLinearLayout)) {
               ((EmoticonPanelLinearLayout)localView).setCallBack(null);
             }
-            Integer localInteger = (Integer)localView.getTag(2131378201);
+            Integer localInteger = (Integer)localView.getTag(2131446719);
             if (EmotionPanelViewPool.widthPixels == localInteger.intValue()) {
               EmotionPanelViewPool.getInstance().release(j, localView);
             }
@@ -164,7 +164,7 @@ public abstract class BaseEmotionAdapter
       localStringBuilder.append(paramInt);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    paramView.setTag(2131378201, Integer.valueOf(this.widthPixels));
+    paramView.setTag(2131446719, Integer.valueOf(this.widthPixels));
     Object localObject = (ArrayList)this.recycleViewMap.get(Integer.valueOf(paramInt));
     if (localObject == null)
     {
@@ -193,7 +193,7 @@ public abstract class BaseEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BaseEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

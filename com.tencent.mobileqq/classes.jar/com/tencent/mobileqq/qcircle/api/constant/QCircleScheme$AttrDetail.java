@@ -17,12 +17,10 @@ public class QCircleScheme$AttrDetail
   public static final String TAG_NAME = "tagname";
   public static final String UIN = "uin";
   public static final String WITHOUT_RECOM = "without_recom";
-  
-  public QCircleScheme$AttrDetail(QCircleScheme paramQCircleScheme) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleScheme.AttrDetail
  * JD-Core Version:    0.7.0.1
  */

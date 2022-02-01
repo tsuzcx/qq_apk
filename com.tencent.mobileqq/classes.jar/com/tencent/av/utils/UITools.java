@@ -17,22 +17,10 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class UITools
   extends AVCoreUtil
 {
-  public static int a;
-  public static final UITools.MyViewAlphaOnTouchListener a;
-  public static boolean a;
-  public static int b = -1;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAvUtilsUITools$MyViewAlphaOnTouchListener = new UITools.MyViewAlphaOnTouchListener();
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = -1;
-  }
-  
-  public static float a(Context paramContext)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).getScreenDensity(paramContext);
-  }
+  public static final UITools.MyViewAlphaOnTouchListener a = new UITools.MyViewAlphaOnTouchListener();
+  public static boolean b = true;
+  public static int c = -1;
+  public static int d = -1;
   
   public static float a(Context paramContext, float paramFloat)
   {
@@ -94,24 +82,9 @@ public class UITools
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).getTimeDesc(paramString);
   }
   
-  public static void a()
-  {
-    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).recordHasShowSVIPDialog();
-  }
-  
-  public static void a(int paramInt)
-  {
-    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).disableShowTips(paramInt);
-  }
-  
   public static void a(Activity paramActivity)
   {
     ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).openPermissionActivity(paramActivity);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).clearSpeakerStatus(paramContext);
   }
   
   @TargetApi(11)
@@ -130,19 +103,9 @@ public class UITools
     ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).setAccText(paramView, paramString, paramInt);
   }
   
-  public static void a(AppInterface paramAppInterface)
-  {
-    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).setFirstTimeShowUserGuideForFace(paramAppInterface);
-  }
-  
   public static void a(String paramString1, String paramString2)
   {
     ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).avLog(paramString1, paramString2);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).clearPressSpeakerGuiderFlag(paramBoolean);
   }
   
   public static boolean a()
@@ -150,44 +113,9 @@ public class UITools
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).hasSmartBar();
   }
   
-  public static boolean a(int paramInt)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isEnableShowTips(paramInt);
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).gotoSetting(paramActivity);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isVIPPayProcessExist(paramContext);
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isFirstTimeShowUserGuideForFace(paramAppInterface);
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).equals(paramString1, paramString2);
-  }
-  
   public static boolean a(boolean paramBoolean)
   {
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).getPressSpeakerGuiderFlag(paramBoolean);
-  }
-  
-  public static String[] a(String paramString)
-  {
-    int i = paramString.indexOf(':');
-    int j = paramString.lastIndexOf(':');
-    if ((i >= 0) && (j >= 0)) {
-      return paramString.substring(i - 2, j + 3).split(":");
-    }
-    return null;
   }
   
   public static float b(Context paramContext, float paramFloat)
@@ -205,9 +133,44 @@ public class UITools
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).getScreenHeight(paramContext);
   }
   
+  public static void b(AppInterface paramAppInterface)
+  {
+    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).setFirstTimeShowUserGuideForFace(paramAppInterface);
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).clearPressSpeakerGuiderFlag(paramBoolean);
+  }
+  
   public static boolean b()
   {
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isNeedShowSVIPDialog();
+  }
+  
+  public static boolean b(Activity paramActivity)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).gotoSetting(paramActivity);
+  }
+  
+  public static boolean b(String paramString1, String paramString2)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).equals(paramString1, paramString2);
+  }
+  
+  public static String[] b(String paramString)
+  {
+    int i = paramString.indexOf(':');
+    int j = paramString.lastIndexOf(':');
+    if ((i >= 0) && (j >= 0)) {
+      return paramString.substring(i - 2, j + 3).split(":");
+    }
+    return null;
+  }
+  
+  public static float c(Context paramContext)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).getScreenDensity(paramContext);
   }
   
   public static int c(int paramInt)
@@ -215,9 +178,39 @@ public class UITools
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).avRelationType2UinType(paramInt);
   }
   
+  public static void c()
+  {
+    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).recordHasShowSVIPDialog();
+  }
+  
+  public static boolean c(AppInterface paramAppInterface)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isFirstTimeShowUserGuideForFace(paramAppInterface);
+  }
+  
   public static int d(int paramInt)
   {
     return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).avRalationType2DAVRelationType(paramInt);
+  }
+  
+  public static void d(Context paramContext)
+  {
+    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).clearSpeakerStatus(paramContext);
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isEnableShowTips(paramInt);
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    return ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).isVIPPayProcessExist(paramContext);
+  }
+  
+  public static void f(int paramInt)
+  {
+    ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).disableShowTips(paramInt);
   }
 }
 

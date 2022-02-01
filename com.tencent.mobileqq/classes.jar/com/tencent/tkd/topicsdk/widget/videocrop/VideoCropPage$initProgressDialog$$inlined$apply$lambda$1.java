@@ -14,13 +14,13 @@ final class VideoCropPage$initProgressDialog$$inlined$apply$lambda$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    VideoCropPage.a(this.a).c();
+    VideoCropPage.b(this.a).f();
     ThreadManagerKt.a((Function0)VideoCropPage.initProgressDialog.1.1.1.INSTANCE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.initProgressDialog..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

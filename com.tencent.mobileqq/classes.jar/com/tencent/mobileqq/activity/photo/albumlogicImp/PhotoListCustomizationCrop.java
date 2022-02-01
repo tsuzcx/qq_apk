@@ -31,28 +31,28 @@ public class PhotoListCustomizationCrop
   {
     AlbumUtil.a();
     String str = paramLocalMediaInfo.path;
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent();
-    localIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName);
-    localIntent.putExtra("ALBUM_ID", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId);
+    Intent localIntent = this.c.getIntent();
+    localIntent.putExtra("ALBUM_NAME", this.e.albumName);
+    localIntent.putExtra("ALBUM_ID", this.e.albumId);
     localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.e.selectedPhotoList);
     localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", str);
     localIntent.putExtra("media_info", paramLocalMediaInfo);
     if (localIntent.getBooleanExtra("PhotoConst.MULTI_PREVIEW_IN_SINGLE_MODE", false))
     {
-      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mediaPathsList);
+      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.e.mediaPathsList);
       localIntent.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramLocalMediaInfo.position);
     }
     paramInt = localIntent.getIntExtra("Business_Origin", 0);
     if ((100 != paramInt) && (102 != paramInt) && (103 != paramInt))
     {
-      localIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, PhotoCropActivity.class);
+      localIntent.setClass(this.c, PhotoCropActivity.class);
     }
     else
     {
       if (100 == paramInt)
       {
-        int i = ProfileCardUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity);
+        int i = ProfileCardUtil.b(this.c);
         localIntent.putExtra("PhotoConst.CLIP_WIDTH", i);
         localIntent.putExtra("PhotoConst.CLIP_HEIGHT", i);
         localIntent.putExtra("PhotoConst.TARGET_WIDTH", 1080);
@@ -65,22 +65,22 @@ public class PhotoListCustomizationCrop
         localIntent.putExtra("PhotoConst.TARGET_WIDTH", 640);
         localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 640);
       }
-      localIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, PhotoCropForPortraitActivity.class);
+      localIntent.setClass(this.c, PhotoCropForPortraitActivity.class);
       localIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getShapeOfBusi(paramInt));
     }
-    QQAlbumUtils.a(localIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId, str, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListData.q);
-    localIntent.putExtra("PHOTOLIST_START_POSITION", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.findFirstVisibleItemPosition());
+    QQAlbumUtils.a(localIntent, this.e.albumId, str, this.b.N);
+    localIntent.putExtra("PHOTOLIST_START_POSITION", this.h.m.findFirstVisibleItemPosition());
     localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
     localIntent.putExtra("PhotoConst.SOURCE_FROM", "FROM_SELECT_PHOTO");
     localIntent.addFlags(603979776);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.startActivity(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
-    AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, true, true);
+    this.c.startActivity(localIntent);
+    this.c.finish();
+    AlbumUtil.anim(this.c, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationCrop
  * JD-Core Version:    0.7.0.1
  */

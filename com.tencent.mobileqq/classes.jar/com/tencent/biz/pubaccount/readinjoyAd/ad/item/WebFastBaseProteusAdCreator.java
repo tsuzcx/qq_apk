@@ -26,46 +26,31 @@ import org.json.JSONObject;
 public class WebFastBaseProteusAdCreator
   implements IStateChangeListener, ItemCreator
 {
-  private View jdField_a_of_type_AndroidViewView;
   protected VafContext a;
-  private RIJAdDownloadViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJAdDownloadViewBase;
-  protected BaseItemViewHolder a;
-  protected BaseData a;
-  protected WeakReference<Context> a;
-  
-  public WebFastBaseProteusAdCreator()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder = null;
-  }
-  
-  public int a(BaseData paramBaseData)
-  {
-    return 0;
-  }
+  protected WeakReference<Context> b = null;
+  protected BaseItemViewHolder c = null;
+  protected BaseData d;
+  private View e;
+  private RIJAdDownloadViewBase f;
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder;
-    if (paramViewGroup != null) {
-      return paramViewGroup;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).initAdapterProteus(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+      this.a = new ReadInjoyContext();
+      this.a.setContext(paramContext);
+      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).initAdapterProteus(this.a, "native_article");
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    if (this.b == null) {
+      this.b = new WeakReference(paramContext);
     }
     ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
     try
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
-      paramViewGroup = ((Container)this.jdField_a_of_type_AndroidViewView).getVirtualView();
-      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).bindDynamicValue(paramViewGroup, localProteusItemData.a.getViewBean());
-      paramViewGroup = localProteusItemData.c.toString();
+      this.e = this.a.getViewFactory().inflate(this.a, localProteusItemData.bd);
+      paramViewGroup = ((Container)this.e).getVirtualView();
+      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).bindDynamicValue(paramViewGroup, localProteusItemData.bd.getViewBean());
+      paramViewGroup = localProteusItemData.bb.toString();
     }
     catch (Exception paramViewGroup)
     {
@@ -75,12 +60,12 @@ public class WebFastBaseProteusAdCreator
       paramViewGroup = localStringBuilder.toString();
     }
     boolean bool = false;
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidViewView = new View(paramContext);
+      this.e = new View(paramContext);
       bool = true;
     }
-    this.jdField_a_of_type_AndroidViewView.setTag(paramBaseData);
+    this.e.setTag(paramBaseData);
     paramContext = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
     paramBaseData = new StringBuilder();
     paramBaseData.append("createViewHolder viewIsNull=");
@@ -88,15 +73,15 @@ public class WebFastBaseProteusAdCreator
     paramBaseData.append("  proteusData=");
     paramBaseData.append(paramViewGroup);
     paramContext.d("WebFastBaseProteusAdCreator", paramBaseData.toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder = a(this.jdField_a_of_type_AndroidViewView, localProteusItemData);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJAdDownloadViewBase == null)
+    this.c = a(this.e, localProteusItemData);
+    if (this.f == null)
     {
-      paramContext = this.jdField_a_of_type_AndroidViewView;
+      paramContext = this.e;
       if (((paramContext instanceof Container)) && (((Container)paramContext).getVirtualView() != null)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJAdDownloadViewBase = ((RIJAdDownloadViewBase)((Container)this.jdField_a_of_type_AndroidViewView).getVirtualView().findViewBaseByName("id_view_AdDownloadView"));
+        this.f = ((RIJAdDownloadViewBase)((Container)this.e).getVirtualView().findViewBaseByName("id_view_AdDownloadView"));
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder;
+    return this.c;
   }
   
   protected BaseItemViewHolder a(View paramView, BaseData paramBaseData)
@@ -113,14 +98,19 @@ public class WebFastBaseProteusAdCreator
     return false;
   }
   
+  public int b(BaseData paramBaseData)
+  {
+    return 0;
+  }
+  
   public void b()
   {
     ((IRIJFastWebRecommendAdService)QRoute.api(IRIJFastWebRecommendAdService.class)).onResume();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder;
+    Object localObject2 = this.c;
     if ((localObject2 instanceof WebFastBaseProteusItemHolder))
     {
       Object localObject1 = null;
-      localObject2 = ((BaseItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView;
+      localObject2 = ((BaseItemViewHolder)localObject2).f;
       if ((localObject2 instanceof Container)) {
         localObject1 = (Container)localObject2;
       }
@@ -130,18 +120,18 @@ public class WebFastBaseProteusAdCreator
       if (((Container)localObject1).getVirtualView() == null) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJAdDownloadViewBase;
+      localObject1 = this.f;
       if (localObject1 != null) {
-        ((RIJAdDownloadViewBase)localObject1).a();
+        ((RIJAdDownloadViewBase)localObject1).b();
       }
     }
   }
   
   public void c()
   {
-    RIJAdDownloadViewBase localRIJAdDownloadViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJAdDownloadViewBase;
+    RIJAdDownloadViewBase localRIJAdDownloadViewBase = this.f;
     if (localRIJAdDownloadViewBase != null) {
-      localRIJAdDownloadViewBase.b();
+      localRIJAdDownloadViewBase.c();
     }
   }
   
@@ -154,7 +144,7 @@ public class WebFastBaseProteusAdCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastBaseProteusAdCreator
  * JD-Core Version:    0.7.0.1
  */

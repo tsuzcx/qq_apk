@@ -10,7 +10,7 @@ class MedalGuideView$3
   
   public void run()
   {
-    ReportController.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.e, 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X80088E9", "0X80088E9", this.this$0.F, 0, "", "", "", "");
   }
 }
 

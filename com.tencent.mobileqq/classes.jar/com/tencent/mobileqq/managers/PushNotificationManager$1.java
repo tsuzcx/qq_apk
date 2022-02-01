@@ -12,7 +12,7 @@ class PushNotificationManager$1
   
   public void run()
   {
-    PushNotificationManager.a(this.this$0, (QConfPushBean)QConfigManager.a().a(390));
+    PushNotificationManager.a(this.this$0, (QConfPushBean)QConfigManager.b().b(390));
     MsgNotifyPushDialog.a(this.a);
   }
 }

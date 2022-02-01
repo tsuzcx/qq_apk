@@ -28,19 +28,19 @@ import java.util.Set;
 
 public class OnlineFileSessionCenter
 {
-  private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new OnlineFileSessionCenter.2(this);
-  private OnlineFileSessionCenter.UploadProgressMakeEvtPump jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump = null;
-  LinkedHashMap<Long, OnlineFileSessionWorker> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private LinkedHashMap<String, LinkedHashMap<Long, OnlineFileSessionCenter.HandleInfoBeforeRequest>> b = new LinkedHashMap();
+  QQAppInterface a;
+  LinkedHashMap<Long, OnlineFileSessionWorker> b = new LinkedHashMap();
+  Handler c = null;
+  private BroadcastReceiver d;
+  private FMObserver e = new OnlineFileSessionCenter.2(this);
+  private OnlineFileSessionCenter.UploadProgressMakeEvtPump f = null;
+  private LinkedHashMap<String, LinkedHashMap<Long, OnlineFileSessionCenter.HandleInfoBeforeRequest>> g = new LinkedHashMap();
+  private long h = 0L;
   
   public OnlineFileSessionCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    this.a = paramQQAppInterface;
+    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.e);
     try
     {
       ThreadManager.executeOnSubThread(new OnlineFileSessionCenter.1(this, paramQQAppInterface));
@@ -56,24 +56,24 @@ public class OnlineFileSessionCenter
   
   OnlineFileSessionWorker a(long paramLong)
   {
-    Object localObject2 = (OnlineFileSessionWorker)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
+    Object localObject2 = (OnlineFileSessionWorker)this.b.get(Long.valueOf(paramLong));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
+      FileManagerEntity localFileManagerEntity = this.a.getFileManagerDataCenter().a(paramLong);
       localObject1 = localObject2;
       if (localFileManagerEntity != null)
       {
-        localObject1 = new OnlineFileSessionWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
+        localObject1 = new OnlineFileSessionWorker(this.a, localFileManagerEntity.nSessionId);
         ((OnlineFileSessionWorker)localObject1).a(localFileManagerEntity);
         try
         {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), localObject1);
+          this.b.put(Long.valueOf(paramLong), localObject1);
         }
         finally {}
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong))
+    if (this.a.getFileManagerDataCenter().d(paramLong))
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("OLfilesession[");
@@ -82,13 +82,13 @@ public class OnlineFileSessionCenter
       QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
       if (localOnlineFileSessionWorker != null)
       {
-        localOnlineFileSessionWorker.n();
-        c(paramLong);
+        localOnlineFileSessionWorker.r();
+        e(paramLong);
       }
       return null;
     }
     if (localOnlineFileSessionWorker != null) {
-      localOnlineFileSessionWorker.k();
+      localOnlineFileSessionWorker.o();
     }
     b();
     return localOnlineFileSessionWorker;
@@ -102,11 +102,11 @@ public class OnlineFileSessionCenter
       if (paramLong <= 0L) {
         return null;
       }
-      Object localObject2 = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
+      Object localObject2 = this.b.values().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject1 = (OnlineFileSessionWorker)((Iterator)localObject2).next();
-        if ((localObject1 != null) && (((OnlineFileSessionWorker)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (paramString.equalsIgnoreCase(((OnlineFileSessionWorker)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin)) && (paramLong == ((OnlineFileSessionWorker)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOLfileSessionId)) {
+        if ((localObject1 != null) && (((OnlineFileSessionWorker)localObject1).c != null) && (paramString.equalsIgnoreCase(((OnlineFileSessionWorker)localObject1).c.peerUin)) && (paramLong == ((OnlineFileSessionWorker)localObject1).c.nOLfileSessionId)) {
           break label98;
         }
       }
@@ -114,17 +114,17 @@ public class OnlineFileSessionCenter
       label98:
       if (localObject1 == null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString, paramLong);
+        localObject2 = this.a.getFileManagerDataCenter().a(paramString, paramLong);
         paramLong = l;
         paramString = (String)localObject1;
         if (localObject2 != null)
         {
           paramLong = ((FileManagerEntity)localObject2).nSessionId;
-          paramString = new OnlineFileSessionWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject2).nSessionId);
+          paramString = new OnlineFileSessionWorker(this.a, ((FileManagerEntity)localObject2).nSessionId);
           paramString.a((FileManagerEntity)localObject2);
           try
           {
-            this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), paramString);
+            this.b.put(Long.valueOf(paramLong), paramString);
           }
           finally {}
         }
@@ -133,13 +133,13 @@ public class OnlineFileSessionCenter
       {
         paramLong = l;
         paramString = (String)localObject1;
-        if (((OnlineFileSessionWorker)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+        if (((OnlineFileSessionWorker)localObject1).c != null)
         {
-          paramLong = ((OnlineFileSessionWorker)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
+          paramLong = ((OnlineFileSessionWorker)localObject1).c.nSessionId;
           paramString = (String)localObject1;
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong))
+      if (this.a.getFileManagerDataCenter().d(paramLong))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("OLfilesession[");
@@ -148,13 +148,13 @@ public class OnlineFileSessionCenter
         QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
         if (paramString != null)
         {
-          paramString.n();
-          c(paramLong);
+          paramString.r();
+          e(paramLong);
         }
         return null;
       }
       if (paramString != null) {
-        paramString.k();
+        paramString.o();
       }
       b();
       return paramString;
@@ -165,13 +165,13 @@ public class OnlineFileSessionCenter
   public void a()
   {
     c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
-      ((OnlineFileSessionWorker)((Map.Entry)localObject).getValue()).n();
+      ((OnlineFileSessionWorker)((Map.Entry)localObject).getValue()).r();
       long l = ((Long)((Map.Entry)localObject).getKey()).longValue();
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+      int i = this.b.size();
       localIterator.remove();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("OLfilesession[");
@@ -179,7 +179,7 @@ public class OnlineFileSessionCenter
       ((StringBuilder)localObject).append("]. stop. and remove the worker..[");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" - ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+      ((StringBuilder)localObject).append(this.b.size());
       ((StringBuilder)localObject).append("]");
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
@@ -187,13 +187,13 @@ public class OnlineFileSessionCenter
   
   void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       OnlineFileSessionWorker localOnlineFileSessionWorker = (OnlineFileSessionWorker)((Map.Entry)localObject).getValue();
       localOnlineFileSessionWorker.b(paramInt);
-      if (localOnlineFileSessionWorker.c())
+      if (localOnlineFileSessionWorker.g())
       {
         long l = ((Long)((Map.Entry)localObject).getKey()).longValue();
         localIterator.remove();
@@ -205,72 +205,6 @@ public class OnlineFileSessionCenter
       }
     }
     a();
-  }
-  
-  public void a(long paramLong)
-  {
-    if (0L == paramLong)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("] PauseTrans sessionid error.return");
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      return;
-    }
-    Object localObject = a(paramLong);
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("]. not find worker.PauseTrans");
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      return;
-    }
-    ((OnlineFileSessionWorker)localObject).f();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OLfilesession[");
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append("] had be deleted by user. stop it");
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, localStringBuilder.toString());
-      ((OnlineFileSessionWorker)localObject).n();
-    }
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      c(paramLong);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((paramString != null) && (paramLong > 0L))
-    {
-      Object localObject = a(paramString, paramLong);
-      if (localObject == null)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("OLfilesession[");
-        ((StringBuilder)localObject).append(paramLong);
-        ((StringBuilder)localObject).append("]. not find worker.onSenderCancelUpload");
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString, paramLong)) {
-          a(paramString, paramLong, new OnlineFileSessionCenter.HandleInfoBeforeRequest(this, 10));
-        }
-        return;
-      }
-      ((OnlineFileSessionWorker)localObject).e();
-      if (((OnlineFileSessionWorker)localObject).c()) {
-        c(((OnlineFileSessionWorker)localObject).jdField_a_of_type_Long);
-      }
-      return;
-    }
-    paramString = new StringBuilder();
-    paramString.append("OLfilesession[");
-    paramString.append(paramLong);
-    paramString.append("] onSenderCancelUpload sessionid error.return");
-    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
   }
   
   public void a(String paramString, long paramLong, int paramInt)
@@ -285,14 +219,14 @@ public class OnlineFileSessionCenter
         ((StringBuilder)localObject).append(paramLong);
         ((StringBuilder)localObject).append("]. not find worker.onFileRequestBeHandledByPC");
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString, paramLong)) {
+        if (!this.a.getFileManagerDataCenter().b(paramString, paramLong)) {
           a(paramString, paramLong, new OnlineFileSessionCenter.HandleInfoBeforeRequest(this, paramInt));
         }
         return;
       }
       ((OnlineFileSessionWorker)localObject).a(paramInt);
-      if (((OnlineFileSessionWorker)localObject).c()) {
-        c(((OnlineFileSessionWorker)localObject).jdField_a_of_type_Long);
+      if (((OnlineFileSessionWorker)localObject).g()) {
+        e(((OnlineFileSessionWorker)localObject).b);
       }
       return;
     }
@@ -318,8 +252,8 @@ public class OnlineFileSessionCenter
         return;
       }
       paramString.a(paramInt1, paramInt2);
-      if (paramString.c()) {
-        c(paramString.jdField_a_of_type_Long);
+      if (paramString.g()) {
+        e(paramString.b);
       }
       return;
     }
@@ -342,18 +276,18 @@ public class OnlineFileSessionCenter
         ((StringBuilder)localObject).append(paramLong);
         ((StringBuilder)localObject).append("]. not find worker.onSenderUploadException");
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, paramLong))
+        if (!this.a.getFileManagerDataCenter().b(paramString1, paramLong))
         {
           localObject = new OnlineFileSessionCenter.HandleInfoBeforeRequest(this, 12);
-          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).jdField_b_of_type_Int = paramInt;
-          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).jdField_a_of_type_JavaLangString = paramString2;
+          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).c = paramInt;
+          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).d = paramString2;
           a(paramString1, paramLong, (OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject);
         }
         return;
       }
       ((OnlineFileSessionWorker)localObject).a(paramInt, paramString2);
-      if (((OnlineFileSessionWorker)localObject).c()) {
-        c(((OnlineFileSessionWorker)localObject).jdField_a_of_type_Long);
+      if (((OnlineFileSessionWorker)localObject).g()) {
+        e(((OnlineFileSessionWorker)localObject).b);
       }
       return;
     }
@@ -376,12 +310,12 @@ public class OnlineFileSessionCenter
         ((StringBuilder)localObject).append(paramLong1);
         ((StringBuilder)localObject).append("]. not find worker.onSenderUploadCompleted");
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, paramLong1))
+        if (!this.a.getFileManagerDataCenter().b(paramString1, paramLong1))
         {
           localObject = new OnlineFileSessionCenter.HandleInfoBeforeRequest(this, 11);
-          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).jdField_b_of_type_Int = paramInt;
-          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).jdField_a_of_type_JavaLangString = paramString2;
-          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).jdField_b_of_type_Long = paramLong2;
+          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).c = paramInt;
+          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).d = paramString2;
+          ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject).e = paramLong2;
           a(paramString1, paramLong1, (OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject);
         }
         return;
@@ -394,8 +328,8 @@ public class OnlineFileSessionCenter
         paramString1.append("] upload competed. but onlineworker handle failed!!!!");
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString1.toString());
       }
-      if (((OnlineFileSessionWorker)localObject).c()) {
-        c(((OnlineFileSessionWorker)localObject).jdField_a_of_type_Long);
+      if (((OnlineFileSessionWorker)localObject).g()) {
+        e(((OnlineFileSessionWorker)localObject).b);
       }
       return;
     }
@@ -417,20 +351,20 @@ public class OnlineFileSessionCenter
       ((StringBuilder)localObject).append("OLfilesession[");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("]  cacheHandleBeforeRequest handleType:");
-      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.a);
       ((StringBuilder)localObject).append(" info_1:");
-      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.c);
       ((StringBuilder)localObject).append(" info_2:");
-      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.d);
       ((StringBuilder)localObject).append(" info_3:");
-      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(paramHandleInfoBeforeRequest.e);
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      localObject = (LinkedHashMap)this.b.get(paramString);
+      localObject = (LinkedHashMap)this.g.get(paramString);
       if (localObject == null)
       {
         localObject = new LinkedHashMap();
         ((LinkedHashMap)localObject).put(Long.valueOf(paramLong), paramHandleInfoBeforeRequest);
-        this.b.put(paramString, localObject);
+        this.g.put(paramString, localObject);
         return;
       }
       ((LinkedHashMap)localObject).put(Long.valueOf(paramLong), paramHandleInfoBeforeRequest);
@@ -452,8 +386,8 @@ public class OnlineFileSessionCenter
         return;
       }
       paramString.a(paramBoolean);
-      if (paramString.c()) {
-        c(paramString.jdField_a_of_type_Long);
+      if (paramString.g()) {
+        e(paramString.b);
       }
       return;
     }
@@ -471,47 +405,47 @@ public class OnlineFileSessionCenter
       QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession. request come,but session = null");
       return;
     }
-    if (0L == paramOnlineFileSessionInfo.jdField_b_of_type_Long)
+    if (0L == paramOnlineFileSessionInfo.c)
     {
       paramString1 = new StringBuilder();
       paramString1.append("OLfilesession[");
-      paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+      paramString1.append(paramOnlineFileSessionInfo.c);
       paramString1.append("]  onFileRequestCome sessionid error.return");
       QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString1.toString());
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long) != null)
+    if (this.a.getFileManagerDataCenter().a(paramString1, paramOnlineFileSessionInfo.c) != null)
     {
       paramString1 = new StringBuilder();
       paramString1.append("OLfilesession[");
-      paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+      paramString1.append(paramOnlineFileSessionInfo.c);
       paramString1.append("] request come filename:");
-      paramString1.append(paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString);
+      paramString1.append(paramOnlineFileSessionInfo.a);
       paramString1.append(", but is repeat session and return");
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, paramString1.toString());
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long))
+    if (this.a.getFileManagerDataCenter().b(paramString1, paramOnlineFileSessionInfo.c))
     {
       paramString1 = new StringBuilder();
       paramString1.append("OLfilesession[");
-      paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+      paramString1.append(paramOnlineFileSessionInfo.c);
       paramString1.append("] request come filename:");
-      paramString1.append(paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString);
+      paramString1.append(paramOnlineFileSessionInfo.a);
       paramString1.append("but it had be deleted by user");
       QLog.w("OnlineFileSessionCenter<FileAssistant>", 1, paramString1.toString());
       return;
     }
-    String str = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString, 0, null), paramOnlineFileSessionInfo.jdField_a_of_type_Long, 0, false, null);
+    String str = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.a.getAccount(), paramOnlineFileSessionInfo.a, 0, null), paramOnlineFileSessionInfo.b, 0, false, null);
     long l = MessageRecordFactory.a(-1000).uniseq;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l, paramString1, 0);
+    FileManagerEntity localFileManagerEntity = this.a.getFileManagerDataCenter().b(l, paramString1, 0);
     localFileManagerEntity.uniseq = l;
-    localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localFileManagerEntity.selfUin = this.a.getAccount();
     localFileManagerEntity.setCloudType(0);
-    localFileManagerEntity.fileName = paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString;
-    localFileManagerEntity.fileSize = paramOnlineFileSessionInfo.jdField_a_of_type_Long;
+    localFileManagerEntity.fileName = paramOnlineFileSessionInfo.a;
+    localFileManagerEntity.fileSize = paramOnlineFileSessionInfo.b;
     localFileManagerEntity.nOpType = -1;
-    localFileManagerEntity.peerNick = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, null, 0);
+    localFileManagerEntity.peerNick = FileManagerUtil.a(this.a, paramString1, null, 0);
     localFileManagerEntity.peerType = 0;
     localFileManagerEntity.peerUin = paramString1;
     localFileManagerEntity.srvTime = (1000L * paramLong1);
@@ -520,44 +454,44 @@ public class OnlineFileSessionCenter
     localFileManagerEntity.isReaded = paramBoolean;
     localFileManagerEntity.bSend = false;
     localFileManagerEntity.nFileType = -1;
-    localFileManagerEntity.nOLfileSessionId = paramOnlineFileSessionInfo.jdField_b_of_type_Long;
+    localFileManagerEntity.nOLfileSessionId = paramOnlineFileSessionInfo.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OLfilesession[");
-    localStringBuilder.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+    localStringBuilder.append(paramOnlineFileSessionInfo.c);
     localStringBuilder.append("] - nSessionId[");
     localStringBuilder.append(localFileManagerEntity.nSessionId);
     localStringBuilder.append("] request come filename:");
-    localStringBuilder.append(paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramOnlineFileSessionInfo.a);
     QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, paramString2, false, paramOnlineFileSessionInfo.jdField_a_of_type_JavaLangString, paramOnlineFileSessionInfo.jdField_a_of_type_Long, false, 0, str, paramShort, l, localFileManagerEntity.nSessionId, paramLong2, paramLong1, paramInt);
+    this.a.getFileManagerProxy().a(localFileManagerEntity);
+    this.a.getFileManagerDataCenter().a(localFileManagerEntity);
+    this.a.getFileManagerDataCenter().a(paramString1, paramString2, false, paramOnlineFileSessionInfo.a, paramOnlineFileSessionInfo.b, false, 0, str, paramShort, l, localFileManagerEntity.nSessionId, paramLong2, paramLong1, paramInt);
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
       paramString2.append("File Coming:");
-      paramString2.append(FileManagerUtil.a(localFileManagerEntity));
+      paramString2.append(FileManagerUtil.c(localFileManagerEntity));
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(l, localFileManagerEntity.nSessionId, paramString1, 0, 17, null, 0, null);
-    if (!paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.handleReceivedMessage(1, true, true);
+    this.a.getFileManagerNotifyCenter().a(l, localFileManagerEntity.nSessionId, paramString1, 0, 17, null, 0, null);
+    if (!paramString1.equals(this.a.getMessageFacade().l())) {
+      this.a.handleReceivedMessage(1, true, true);
     }
-    paramString2 = new OnlineFileSessionWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId);
+    paramString2 = new OnlineFileSessionWorker(this.a, localFileManagerEntity.nSessionId);
     paramString2.a(localFileManagerEntity);
     try
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(localFileManagerEntity.nSessionId), paramString2);
-      paramString2.k();
-      if (paramString2.c())
+      this.b.put(Long.valueOf(localFileManagerEntity.nSessionId), paramString2);
+      paramString2.o();
+      if (paramString2.g())
       {
-        c(localFileManagerEntity.nSessionId);
+        e(localFileManagerEntity.nSessionId);
       }
-      else if (a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long))
+      else if (e(paramString1, paramOnlineFileSessionInfo.c))
       {
         paramString1 = new StringBuilder();
         paramString1.append("OLfilesession[");
-        paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+        paramString1.append(paramOnlineFileSessionInfo.c);
         paramString1.append("] had be handled before request come");
         QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, paramString1.toString());
         return;
@@ -568,7 +502,89 @@ public class OnlineFileSessionCenter
     finally {}
   }
   
-  public boolean a(long paramLong)
+  void b()
+  {
+    if (this.c == null) {
+      this.c = new OnlineFileSessionCenter.4(this, Looper.getMainLooper());
+    }
+    if (this.f == null)
+    {
+      this.f = new OnlineFileSessionCenter.UploadProgressMakeEvtPump(this, null);
+      this.f.a();
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] start progress make pump thread!!!");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession onNeworkChanged set failed");
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new OnlineFileSessionCenter.3(this, paramInt));
+      return;
+    }
+    a(paramInt);
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    if ((paramString != null) && (paramLong > 0L))
+    {
+      Object localObject = a(paramString, paramLong);
+      if (localObject == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("OLfilesession[");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append("]. not find worker.onSenderCancelUpload");
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        if (!this.a.getFileManagerDataCenter().b(paramString, paramLong)) {
+          a(paramString, paramLong, new OnlineFileSessionCenter.HandleInfoBeforeRequest(this, 10));
+        }
+        return;
+      }
+      ((OnlineFileSessionWorker)localObject).i();
+      if (((OnlineFileSessionWorker)localObject).g()) {
+        e(((OnlineFileSessionWorker)localObject).b);
+      }
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("OLfilesession[");
+    paramString.append(paramLong);
+    paramString.append("] onSenderCancelUpload sessionid error.return");
+    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+  }
+  
+  public void b(String paramString, long paramLong, boolean paramBoolean)
+  {
+    if ((paramString != null) && (paramLong > 0L))
+    {
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("OLfilesession[");
+        paramString.append(paramLong);
+        paramString.append("]. not find worker.onAskSenderUpProgressResult");
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+        return;
+      }
+      paramString.b(paramBoolean);
+      if (paramString.g()) {
+        e(paramString.b);
+      }
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("OLfilesession[");
+    paramString.append(paramLong);
+    paramString.append("] onAskSenderUpProgressResult sessionid error.return");
+    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+  }
+  
+  public boolean b(long paramLong)
   {
     if (0L == paramLong)
     {
@@ -591,15 +607,206 @@ public class OnlineFileSessionCenter
     }
     FileManagerReporter.FileAssistantReportData localFileAssistantReportData = new FileManagerReporter.FileAssistantReportData();
     localFileAssistantReportData.b = "recv_file_online";
-    FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localFileAssistantReportData);
-    boolean bool = ((OnlineFileSessionWorker)localObject).d();
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      c(paramLong);
+    FileManagerReporter.a(this.a.getCurrentAccountUin(), localFileAssistantReportData);
+    boolean bool = ((OnlineFileSessionWorker)localObject).h();
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      e(paramLong);
     }
     return bool;
   }
   
-  boolean a(String paramString, long paramLong)
+  void c()
+  {
+    OnlineFileSessionCenter.UploadProgressMakeEvtPump localUploadProgressMakeEvtPump = this.f;
+    if (localUploadProgressMakeEvtPump != null)
+    {
+      localUploadProgressMakeEvtPump.b();
+      this.f = null;
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] stop progress make pump thread!!!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (0L == paramLong)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] PauseTrans sessionid error.return");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    Object localObject = a(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]. not find worker.PauseTrans");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ((OnlineFileSessionWorker)localObject).j();
+    if (this.a.getFileManagerDataCenter().d(paramLong))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OLfilesession[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("] had be deleted by user. stop it");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, localStringBuilder.toString());
+      ((OnlineFileSessionWorker)localObject).r();
+    }
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      e(paramLong);
+    }
+  }
+  
+  public void c(String paramString, long paramLong)
+  {
+    if ((paramString != null) && (paramLong > 0L))
+    {
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("OLfilesession[");
+        paramString.append(paramLong);
+        paramString.append("]. not find worker.onSenderReplayComeOnRecv");
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+        return;
+      }
+      paramString.m();
+      if (paramString.g()) {
+        e(paramString.b);
+      }
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("OLfilesession[");
+    paramString.append(paramLong);
+    paramString.append("] onSenderReplayComeOnRecv sessionid error.return");
+    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+  }
+  
+  void d()
+  {
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      OnlineFileSessionWorker localOnlineFileSessionWorker = (OnlineFileSessionWorker)((Map.Entry)localObject).getValue();
+      localOnlineFileSessionWorker.b(l1);
+      if (localOnlineFileSessionWorker.g())
+      {
+        long l2 = ((Long)((Map.Entry)localObject).getKey()).longValue();
+        int i = this.b.size();
+        localIterator.remove();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("OLfilesession[");
+        ((StringBuilder)localObject).append(l2);
+        ((StringBuilder)localObject).append("]. remove the worker..[");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" - ");
+        ((StringBuilder)localObject).append(this.b.size());
+        ((StringBuilder)localObject).append("]");
+        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      }
+    }
+    if (this.b.size() == 0) {
+      c();
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (0L == paramLong)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] ResumeTrans sessionid error.return");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    Object localObject = a(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OLfilesession[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]. not find worker.ResumeTrans");
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ((OnlineFileSessionWorker)localObject).k();
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      e(paramLong);
+    }
+  }
+  
+  public void d(String paramString, long paramLong)
+  {
+    if ((paramString != null) && (paramLong > 0L))
+    {
+      paramString = a(paramString, paramLong);
+      if (paramString == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("OLfilesession[");
+        paramString.append(paramLong);
+        paramString.append("]. not find worker.onAskUpProgressAndSessionInvaid");
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+        return;
+      }
+      paramString.q();
+      if (paramString.g()) {
+        e(paramString.b);
+      }
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("OLfilesession[");
+    paramString.append(paramLong);
+    paramString.append("] onAskUpProgressAndSessionInvaid sessionid error.return");
+    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
+  }
+  
+  public void e()
+  {
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  clearHistory. session center stop. . .");
+    a();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      if ((localQQAppInterface.getApp() != null) && (this.d != null))
+      {
+        this.a.getApp().unregisterReceiver(this.d);
+        this.d = null;
+      }
+      if ((this.a.getFileManagerNotifyCenter() != null) && (this.e != null)) {
+        this.a.getFileManagerNotifyCenter().deleteObserver(this.e);
+      }
+    }
+  }
+  
+  void e(long paramLong)
+  {
+    try
+    {
+      this.b.remove(Long.valueOf(paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OLfilesession[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]. remove the worker");
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, localStringBuilder.toString());
+      return;
+    }
+    finally {}
+  }
+  
+  boolean e(String paramString, long paramLong)
   {
     boolean bool3 = false;
     boolean bool2 = false;
@@ -609,7 +816,7 @@ public class OnlineFileSessionCenter
       if (paramLong <= 0L) {
         return false;
       }
-      Object localObject1 = (LinkedHashMap)this.b.get(paramString);
+      Object localObject1 = (LinkedHashMap)this.g.get(paramString);
       Object localObject2;
       Object localObject3;
       if (localObject1 != null)
@@ -621,15 +828,15 @@ public class OnlineFileSessionCenter
           ((StringBuilder)localObject3).append("OLfilesession[");
           ((StringBuilder)localObject3).append(paramLong);
           ((StringBuilder)localObject3).append("]  isBeHandledBeforeRequest handleType:");
-          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_Int);
+          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).a);
           ((StringBuilder)localObject3).append(" info_1:");
-          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_b_of_type_Int);
+          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).c);
           ((StringBuilder)localObject3).append(" info_2:");
-          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).d);
           ((StringBuilder)localObject3).append(" info_3:");
-          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_b_of_type_Long);
+          ((StringBuilder)localObject3).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).e);
           QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject3).toString());
-          int i = ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_Int;
+          int i = ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).a;
           if ((i != 1) && (i != 2) && (i != 3) && (i != 4) && (i != 5)) {}
           switch (i)
           {
@@ -637,15 +844,15 @@ public class OnlineFileSessionCenter
             bool2 = bool1;
             break;
           case 12: 
-            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_b_of_type_Int, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_JavaLangString);
+            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).c, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).d);
             break;
           case 11: 
-            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_b_of_type_Int, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_JavaLangString, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_b_of_type_Long);
+            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).c, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).d, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).e);
             break;
           case 10: 
-            a(paramString, paramLong);
+            b(paramString, paramLong);
             break;
-            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).jdField_a_of_type_Int);
+            a(paramString, paramLong, ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject2).a);
           }
           bool2 = true;
           ((LinkedHashMap)localObject1).remove(Long.valueOf(paramLong));
@@ -653,7 +860,7 @@ public class OnlineFileSessionCenter
           if (((LinkedHashMap)localObject1).size() != 0) {
             break label355;
           }
-          this.b.remove(paramString);
+          this.g.remove(paramString);
           bool1 = bool2;
           break label355;
         }
@@ -662,16 +869,16 @@ public class OnlineFileSessionCenter
       label355:
       localObject1 = "OLfilesession[";
       paramString = " info_3:";
-      paramLong = MessageCache.a();
+      paramLong = MessageCache.c();
       bool2 = bool1;
-      if (paramLong - this.jdField_a_of_type_Long >= 3600L)
+      if (paramLong - this.h >= 3600L)
       {
         QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  isBeHandledBeforeRequest handleType. start clear something");
-        this.jdField_a_of_type_Long = paramLong;
+        this.h = paramLong;
         bool2 = bool1;
-        if (this.b.size() > 0)
+        if (this.g.size() > 0)
         {
-          Iterator localIterator = this.b.entrySet().iterator();
+          Iterator localIterator = this.g.entrySet().iterator();
           for (;;)
           {
             bool2 = bool1;
@@ -689,19 +896,19 @@ public class OnlineFileSessionCenter
                 l = ((Long)((Map.Entry)localObject4).getKey()).longValue();
                 if (localObject3 != null)
                 {
-                  if (paramLong - ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).jdField_a_of_type_Long >= 7200L)
+                  if (paramLong - ((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).b >= 7200L)
                   {
                     localObject4 = new StringBuilder();
                     ((StringBuilder)localObject4).append((String)localObject1);
                     ((StringBuilder)localObject4).append(l);
                     ((StringBuilder)localObject4).append("]  isBeHandledBeforeRequest and clear it.handleType:");
-                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).jdField_a_of_type_Int);
+                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).a);
                     ((StringBuilder)localObject4).append(" info_1:");
-                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).jdField_b_of_type_Int);
+                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).c);
                     ((StringBuilder)localObject4).append(" info_2:");
-                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).jdField_a_of_type_JavaLangString);
+                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).d);
                     ((StringBuilder)localObject4).append(paramString);
-                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).jdField_b_of_type_Long);
+                    ((StringBuilder)localObject4).append(((OnlineFileSessionCenter.HandleInfoBeforeRequest)localObject3).e);
                     QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject4).toString());
                     ((Iterator)localObject2).remove();
                   }
@@ -741,230 +948,23 @@ public class OnlineFileSessionCenter
     return bool2;
   }
   
-  void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new OnlineFileSessionCenter.4(this, Looper.getMainLooper());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump = new OnlineFileSessionCenter.UploadProgressMakeEvtPump(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump.a();
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] start progress make pump thread!!!");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession onNeworkChanged set failed");
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new OnlineFileSessionCenter.3(this, paramInt));
-      return;
-    }
-    a(paramInt);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (0L == paramLong)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("] ResumeTrans sessionid error.return");
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      return;
-    }
-    Object localObject = a(paramLong);
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("]. not find worker.ResumeTrans");
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      return;
-    }
-    ((OnlineFileSessionWorker)localObject).g();
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      c(paramLong);
-    }
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    if ((paramString != null) && (paramLong > 0L))
-    {
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
-      {
-        paramString = new StringBuilder();
-        paramString.append("OLfilesession[");
-        paramString.append(paramLong);
-        paramString.append("]. not find worker.onSenderReplayComeOnRecv");
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-        return;
-      }
-      paramString.i();
-      if (paramString.c()) {
-        c(paramString.jdField_a_of_type_Long);
-      }
-      return;
-    }
-    paramString = new StringBuilder();
-    paramString.append("OLfilesession[");
-    paramString.append(paramLong);
-    paramString.append("] onSenderReplayComeOnRecv sessionid error.return");
-    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-  }
-  
-  public void b(String paramString, long paramLong, boolean paramBoolean)
-  {
-    if ((paramString != null) && (paramLong > 0L))
-    {
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
-      {
-        paramString = new StringBuilder();
-        paramString.append("OLfilesession[");
-        paramString.append(paramLong);
-        paramString.append("]. not find worker.onAskSenderUpProgressResult");
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-        return;
-      }
-      paramString.b(paramBoolean);
-      if (paramString.c()) {
-        c(paramString.jdField_a_of_type_Long);
-      }
-      return;
-    }
-    paramString = new StringBuilder();
-    paramString.append("OLfilesession[");
-    paramString.append(paramLong);
-    paramString.append("] onAskSenderUpProgressResult sessionid error.return");
-    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-  }
-  
-  void c()
-  {
-    OnlineFileSessionCenter.UploadProgressMakeEvtPump localUploadProgressMakeEvtPump = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump;
-    if (localUploadProgressMakeEvtPump != null)
-    {
-      localUploadProgressMakeEvtPump.b();
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter$UploadProgressMakeEvtPump = null;
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] stop progress make pump thread!!!");
-    }
-  }
-  
-  void c(long paramLong)
+  public void f(long paramLong)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OLfilesession[");
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append("]. remove the worker");
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, localStringBuilder.toString());
-      return;
-    }
-    finally {}
-  }
-  
-  public void c(String paramString, long paramLong)
-  {
-    if ((paramString != null) && (paramLong > 0L))
-    {
-      paramString = a(paramString, paramLong);
-      if (paramString == null)
-      {
-        paramString = new StringBuilder();
-        paramString.append("OLfilesession[");
-        paramString.append(paramLong);
-        paramString.append("]. not find worker.onAskUpProgressAndSessionInvaid");
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-        return;
-      }
-      paramString.m();
-      if (paramString.c()) {
-        c(paramString.jdField_a_of_type_Long);
-      }
-      return;
-    }
-    paramString = new StringBuilder();
-    paramString.append("OLfilesession[");
-    paramString.append(paramLong);
-    paramString.append("] onAskUpProgressAndSessionInvaid sessionid error.return");
-    QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, paramString.toString());
-  }
-  
-  void d()
-  {
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      OnlineFileSessionWorker localOnlineFileSessionWorker = (OnlineFileSessionWorker)((Map.Entry)localObject).getValue();
-      localOnlineFileSessionWorker.b(l1);
-      if (localOnlineFileSessionWorker.c())
-      {
-        long l2 = ((Long)((Map.Entry)localObject).getKey()).longValue();
-        int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-        localIterator.remove();
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("OLfilesession[");
-        ((StringBuilder)localObject).append(l2);
-        ((StringBuilder)localObject).append("]. remove the worker..[");
-        ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(" - ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-        ((StringBuilder)localObject).append("]");
-        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      }
-    }
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0) {
-      c();
-    }
-  }
-  
-  public void d(long paramLong)
-  {
-    try
-    {
-      OnlineFileSessionWorker localOnlineFileSessionWorker = (OnlineFileSessionWorker)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
+      OnlineFileSessionWorker localOnlineFileSessionWorker = (OnlineFileSessionWorker)this.b.get(Long.valueOf(paramLong));
       if (localOnlineFileSessionWorker != null) {
-        localOnlineFileSessionWorker.n();
+        localOnlineFileSessionWorker.r();
       }
-      c(paramLong);
+      e(paramLong);
       return;
     }
     finally {}
-  }
-  
-  public void e()
-  {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  clearHistory. session center stop. . .");
-    a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface != null)
-    {
-      if ((localQQAppInterface.getApp() != null) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter() != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ class QfileLocalFilePicTabView$3
   
   public void run()
   {
-    QfileLocalFilePicTabView.a(this.this$0);
-    this.this$0.f();
+    QfileLocalFilePicTabView.b(this.this$0);
+    this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.Base64;
+import com.tencent.mtt.hippy.adapter.font.HippyFontScaleAdapter;
 import com.tencent.mtt.hippy.utils.ContextHolder;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import java.io.File;
@@ -17,7 +18,7 @@ public class TypeFaceUtil
   private static final String FONTS_PATH = "fonts/";
   private static final String[] FONT_EXTENSIONS = { ".ttf", ".otf" };
   private static final String TAG = "TypeFaceUtil";
-  private static Map<String, Typeface> mFontCache = new HashMap();
+  private static final Map<String, Typeface> mFontCache = new HashMap();
   
   public static Typeface addTypeface(String paramString1, String paramString2, int paramInt)
   {
@@ -66,7 +67,7 @@ public class TypeFaceUtil
     return paramString1;
   }
   
-  public static void apply(Paint paramPaint, int paramInt1, int paramInt2, String paramString)
+  public static void apply(Paint paramPaint, int paramInt1, int paramInt2, String paramString, HippyFontScaleAdapter paramHippyFontScaleAdapter)
   {
     Typeface localTypeface = paramPaint.getTypeface();
     int k = 0;
@@ -105,7 +106,7 @@ public class TypeFaceUtil
     }
     if (paramString != null)
     {
-      paramString = getTypeface(paramString, paramInt2);
+      paramString = getTypeface(paramString, paramInt2, paramHippyFontScaleAdapter);
     }
     else
     {
@@ -131,33 +132,65 @@ public class TypeFaceUtil
     return (Typeface)mFontCache.get(paramString) != null;
   }
   
-  private static Typeface createTypeface(String paramString, int paramInt)
+  private static Typeface createTypeface(String paramString, int paramInt, HippyFontScaleAdapter paramHippyFontScaleAdapter)
   {
     String str = EXTENSIONS[paramInt];
     String[] arrayOfString = FONT_EXTENSIONS;
     int j = arrayOfString.length;
+    Object localObject1 = null;
     int i = 0;
     while (i < j)
     {
-      Object localObject = arrayOfString[i];
+      Object localObject2 = arrayOfString[i];
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("fonts/");
       localStringBuilder.append(paramString);
       localStringBuilder.append(str);
-      localStringBuilder.append((String)localObject);
-      localObject = localStringBuilder.toString();
+      localStringBuilder.append((String)localObject2);
+      localObject2 = localStringBuilder.toString();
       try
       {
-        localObject = Typeface.createFromAsset(ContextHolder.getAppContext().getAssets(), (String)localObject);
-        return localObject;
+        localObject2 = Typeface.createFromAsset(ContextHolder.getAppContext().getAssets(), (String)localObject2);
+        localObject1 = localObject2;
       }
-      catch (RuntimeException localRuntimeException)
+      catch (Exception localException)
       {
-        localRuntimeException.printStackTrace();
-        i += 1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createTypeface: ");
+        localStringBuilder.append(localException.getMessage());
+        LogUtils.e("TypeFaceUtil", localStringBuilder.toString());
+      }
+      i += 1;
+    }
+    Object localObject3 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject3 = localObject1;
+      if (paramHippyFontScaleAdapter != null)
+      {
+        paramHippyFontScaleAdapter = paramHippyFontScaleAdapter.getCustomFontFilePath(paramString, paramInt);
+        localObject3 = localObject1;
+        if (!TextUtils.isEmpty(paramHippyFontScaleAdapter)) {
+          try
+          {
+            localObject3 = Typeface.createFromFile(paramHippyFontScaleAdapter);
+          }
+          catch (Exception paramHippyFontScaleAdapter)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("createTypeface: ");
+            ((StringBuilder)localObject3).append(paramHippyFontScaleAdapter.getMessage());
+            LogUtils.e("TypeFaceUtil", ((StringBuilder)localObject3).toString());
+            localObject3 = localObject1;
+          }
+        }
       }
     }
-    return Typeface.create(paramString, paramInt);
+    paramHippyFontScaleAdapter = (HippyFontScaleAdapter)localObject3;
+    if (localObject3 == null) {
+      paramHippyFontScaleAdapter = Typeface.create(paramString, paramInt);
+    }
+    return paramHippyFontScaleAdapter;
   }
   
   private static void deleteFontFile(String paramString)
@@ -198,7 +231,7 @@ public class TypeFaceUtil
     return Base64.decode((String)localObject, 0);
   }
   
-  public static Typeface getTypeface(String paramString, int paramInt)
+  public static Typeface getTypeface(String paramString, int paramInt, HippyFontScaleAdapter paramHippyFontScaleAdapter)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString);
@@ -206,15 +239,11 @@ public class TypeFaceUtil
     String str = ((StringBuilder)localObject).toString();
     Typeface localTypeface = (Typeface)mFontCache.get(str);
     localObject = localTypeface;
-    if (localTypeface == null)
-    {
-      paramString = createTypeface(paramString, paramInt);
-      localObject = paramString;
-      if (paramString != null)
-      {
-        mFontCache.put(str, paramString);
-        localObject = paramString;
-      }
+    if (localTypeface == null) {
+      localObject = createTypeface(paramString, paramInt, paramHippyFontScaleAdapter);
+    }
+    if (localObject != null) {
+      mFontCache.put(str, localObject);
     }
     return localObject;
   }
@@ -223,10 +252,10 @@ public class TypeFaceUtil
   private static void saveFontFile(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 158	java/io/File
+    //   0: new 178	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 160	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_2
     //   9: aconst_null
     //   10: astore_3
@@ -234,21 +263,21 @@ public class TypeFaceUtil
     //   12: astore 4
     //   14: aconst_null
     //   15: astore_0
-    //   16: new 209	java/io/BufferedOutputStream
+    //   16: new 226	java/io/BufferedOutputStream
     //   19: dup
-    //   20: new 211	java/io/FileOutputStream
+    //   20: new 228	java/io/FileOutputStream
     //   23: dup
     //   24: aload_2
-    //   25: invokespecial 214	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   28: invokespecial 217	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   25: invokespecial 231	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 234	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   31: astore_2
     //   32: aload_2
     //   33: aload_1
-    //   34: invokevirtual 221	java/io/BufferedOutputStream:write	([B)V
+    //   34: invokevirtual 238	java/io/BufferedOutputStream:write	([B)V
     //   37: aload_2
-    //   38: invokevirtual 224	java/io/BufferedOutputStream:flush	()V
+    //   38: invokevirtual 241	java/io/BufferedOutputStream:flush	()V
     //   41: aload_2
-    //   42: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   42: invokevirtual 244	java/io/BufferedOutputStream:close	()V
     //   45: return
     //   46: astore_0
     //   47: aload_2
@@ -278,11 +307,11 @@ public class TypeFaceUtil
     //   79: aload_1
     //   80: astore_0
     //   81: aload_2
-    //   82: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   82: invokevirtual 245	java/io/IOException:printStackTrace	()V
     //   85: aload_1
     //   86: ifnull +32 -> 118
     //   89: aload_1
-    //   90: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   90: invokevirtual 244	java/io/BufferedOutputStream:close	()V
     //   93: return
     //   94: astore_2
     //   95: aload 4
@@ -290,24 +319,24 @@ public class TypeFaceUtil
     //   98: aload_1
     //   99: astore_0
     //   100: aload_2
-    //   101: invokevirtual 229	java/io/FileNotFoundException:printStackTrace	()V
+    //   101: invokevirtual 246	java/io/FileNotFoundException:printStackTrace	()V
     //   104: aload_1
     //   105: ifnull +13 -> 118
     //   108: aload_1
-    //   109: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   109: invokevirtual 244	java/io/BufferedOutputStream:close	()V
     //   112: return
     //   113: astore_0
     //   114: aload_0
-    //   115: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   115: invokevirtual 245	java/io/IOException:printStackTrace	()V
     //   118: return
     //   119: aload_1
     //   120: ifnull +15 -> 135
     //   123: aload_1
-    //   124: invokevirtual 227	java/io/BufferedOutputStream:close	()V
+    //   124: invokevirtual 244	java/io/BufferedOutputStream:close	()V
     //   127: goto +8 -> 135
     //   130: astore_1
     //   131: aload_1
-    //   132: invokevirtual 228	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 245	java/io/IOException:printStackTrace	()V
     //   135: aload_0
     //   136: athrow
     // Local variable table:
@@ -338,7 +367,7 @@ public class TypeFaceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TypeFaceUtil
  * JD-Core Version:    0.7.0.1
  */

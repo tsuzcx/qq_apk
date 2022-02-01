@@ -14,7 +14,7 @@ class LiteTcpConnection$ReadRunnable
     while (LiteTcpConnection.a(this.this$0).get()) {
       try
       {
-        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.this$0);
+        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.b(this.this$0);
         if (localMsfSocketInputBuffer == null) {
           return;
         }
@@ -26,7 +26,7 @@ class LiteTcpConnection$ReadRunnable
         if (!LiteTcpConnection.a(this.this$0).get()) {
           return;
         }
-        LiteTcpConnection.a(this.this$0).a(localMsfSocketInputBuffer);
+        LiteTcpConnection.c(this.this$0).a(localMsfSocketInputBuffer);
         localMsfSocketInputBuffer.reset();
       }
       catch (Exception localException)
@@ -46,7 +46,7 @@ class LiteTcpConnection$ReadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.LiteTcpConnection.ReadRunnable
  * JD-Core Version:    0.7.0.1
  */

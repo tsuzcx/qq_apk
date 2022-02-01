@@ -14,18 +14,18 @@ class WyDownloader$6
   
   public Void a(ThreadPool.JobContext paramJobContext)
   {
-    paramJobContext = (DownloadJobContext)WyDownloader.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadWyDownloader).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext != null) && (!paramJobContext.d())) {
-      WyDownloader.b(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadWyDownloader).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
+    paramJobContext = (DownloadJobContext)WyDownloader.b(this.c).get(this.a);
+    if ((paramJobContext != null) && (!paramJobContext.g())) {
+      WyDownloader.c(this.c).sendReq(this.b);
     } else {
-      WyDownloader.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadWyDownloader, this.jdField_a_of_type_JavaLangLong.longValue());
+      WyDownloader.a(this.c, this.a.longValue());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.WyDownloader.6
  * JD-Core Version:    0.7.0.1
  */

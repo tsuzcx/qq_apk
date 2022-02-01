@@ -18,40 +18,40 @@ import com.tencent.qphone.base.util.QLog;
 public class CallingStateMonitor
   implements PhoneStatusMonitor.PhoneStatusListener
 {
-  private static CallingStateMonitor jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  private IQQServiceForAV jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
-  private PhoneStatusMonitor jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = null;
-  private CallingStateMonitor.CallingStateListener jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor$CallingStateListener = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static CallingStateMonitor a;
+  private Context b = null;
+  private CallingStateMonitor.CallingStateListener c = null;
+  private boolean d = false;
+  private PhoneStatusMonitor e = null;
+  private BroadcastReceiver f = null;
+  private ServiceConnection g = null;
+  private IQQServiceForAV h = null;
   
   public static CallingStateMonitor a()
   {
-    if (jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor == null) {
-          jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor = new CallingStateMonitor();
+        if (a == null) {
+          a = new CallingStateMonitor();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor;
+    return a;
   }
   
-  private void d()
+  private void g()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new CallingStateMonitor.2(this);
+    if (this.f == null) {
+      this.f = new CallingStateMonitor.2(this);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
     localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      this.b.registerReceiver(this.f, localIntentFilter);
       return;
     }
     catch (Throwable localThrowable)
@@ -60,67 +60,43 @@ public class CallingStateMonitor
     }
   }
   
-  private void e()
+  private void h()
   {
-    BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    BroadcastReceiver localBroadcastReceiver = this.f;
     if (localBroadcastReceiver != null)
     {
       try
       {
-        this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(localBroadcastReceiver);
+        this.b.unregisterReceiver(localBroadcastReceiver);
       }
       catch (Throwable localThrowable)
       {
         QLog.i("CallingStateMonitor", 2, "unregisterVideoChatReceiver", localThrowable);
       }
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      this.f = null;
     }
   }
   
-  private void f()
+  private void i()
   {
     if (QLog.isColorLevel()) {
       QLog.i("CallingStateMonitor", 2, "bindQQServiceForAV");
     }
-    if (this.jdField_a_of_type_AndroidContentServiceConnection == null) {
-      this.jdField_a_of_type_AndroidContentServiceConnection = new CallingStateMonitor.3(this);
+    if (this.g == null) {
+      this.g = new CallingStateMonitor.3(this);
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getQQServiceForAVClass());
-    this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    Intent localIntent = new Intent(this.b, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getQQServiceForAVClass());
+    this.b.bindService(localIntent, this.g, 1);
   }
   
-  private void g()
+  private void j()
   {
-    ServiceConnection localServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+    ServiceConnection localServiceConnection = this.g;
     if (localServiceConnection != null)
     {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(localServiceConnection);
-      this.jdField_a_of_type_AndroidContentServiceConnection = null;
+      this.b.unbindService(localServiceConnection);
+      this.g = null;
     }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("destroy, init[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("CallingStateMonitor", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor;
-    if (localObject != null)
-    {
-      ((PhoneStatusMonitor)localObject).a();
-      this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = null;
-    }
-    e();
-    g();
-    this.jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor$CallingStateListener = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor = null;
   }
   
   public void a(Context paramContext, boolean paramBoolean)
@@ -129,45 +105,69 @@ public class CallingStateMonitor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setup, init[");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("], bBindQQServiceForAV[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("]");
       QLog.i("CallingStateMonitor", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      this.b = paramContext;
       new Handler(Looper.getMainLooper()).post(new CallingStateMonitor.1(this));
-      d();
+      g();
       if (paramBoolean) {
-        f();
+        i();
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
     }
   }
   
   public void a(CallingStateMonitor.CallingStateListener paramCallingStateListener)
   {
-    this.jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor$CallingStateListener = paramCallingStateListener;
+    this.c = paramCallingStateListener;
   }
   
   public void a(boolean paramBoolean)
   {
     AVLog.c("CallingStateMonitor", String.format("onPhoneCallingStateChanged isCalling=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    CallingStateMonitor.CallingStateListener localCallingStateListener = this.jdField_a_of_type_ComTencentQavMonitorCallingStateMonitor$CallingStateListener;
+    CallingStateMonitor.CallingStateListener localCallingStateListener = this.c;
     if (localCallingStateListener != null) {
       localCallingStateListener.d(paramBoolean);
     }
   }
   
-  public boolean a()
+  public void b()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("destroy, init[");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("CallingStateMonitor", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      ((PhoneStatusMonitor)localObject).a();
+      this.e = null;
+    }
+    h();
+    j();
+    this.c = null;
+    this.b = null;
+    this.d = false;
+    a = null;
+  }
+  
+  public boolean c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
+      if (this.h != null)
       {
-        boolean bool = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.e();
+        boolean bool = this.h.n();
         return bool;
       }
     }
@@ -178,27 +178,16 @@ public class CallingStateMonitor
     return false;
   }
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CallingStateMonitor", 2, "clearTillEnd");
-    }
-    PhoneStatusMonitor localPhoneStatusMonitor = this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor;
-    if (localPhoneStatusMonitor != null) {
-      localPhoneStatusMonitor.d();
-    }
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor != null) {
-        return this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor.a();
+      if (this.e != null) {
+        return this.e.c();
       }
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
+      if (this.h != null)
       {
-        boolean bool = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.f();
+        boolean bool = this.h.o();
         return bool;
       }
     }
@@ -209,17 +198,28 @@ public class CallingStateMonitor
     return false;
   }
   
-  public void c()
+  public void e()
   {
-    PhoneStatusMonitor localPhoneStatusMonitor = this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor;
-    if ((localPhoneStatusMonitor != null) && (localPhoneStatusMonitor.a())) {
+    if (QLog.isColorLevel()) {
+      QLog.i("CallingStateMonitor", 2, "clearTillEnd");
+    }
+    PhoneStatusMonitor localPhoneStatusMonitor = this.e;
+    if (localPhoneStatusMonitor != null) {
       localPhoneStatusMonitor.e();
+    }
+  }
+  
+  public void f()
+  {
+    PhoneStatusMonitor localPhoneStatusMonitor = this.e;
+    if ((localPhoneStatusMonitor != null) && (localPhoneStatusMonitor.c())) {
+      localPhoneStatusMonitor.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.monitor.CallingStateMonitor
  * JD-Core Version:    0.7.0.1
  */

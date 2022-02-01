@@ -11,22 +11,22 @@ class AIOShareHelperImpl$5$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.this$0.dismissLoading();
+    this.b.this$0.dismissLoading();
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str = this.b.a.b();
+    Bitmap localBitmap = this.a;
     int i;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.jdField_a_of_type_Int == 9) {
+    if (this.b.c == 9) {
       i = 0;
     } else {
       i = 1;
     }
-    localWXShareHelper.a(str, localBitmap, i, false, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.jdField_a_of_type_JavaLangString);
+    localWXShareHelper.a(str, localBitmap, i, false, this.b.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

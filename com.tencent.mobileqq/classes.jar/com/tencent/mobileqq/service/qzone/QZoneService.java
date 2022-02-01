@@ -42,7 +42,7 @@ public class QZoneService
   {
     paramUniPacket.setEncodeName("utf8");
     paramUniPacket.put("version", Integer.valueOf(1091030));
-    paramUniPacket.put("Q-UA", AppSetting.e());
+    paramUniPacket.put("Q-UA", AppSetting.g());
     paramUniPacket.put("rupt", Boolean.valueOf(false));
   }
   
@@ -244,7 +244,7 @@ public class QZoneService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneService
  * JD-Core Version:    0.7.0.1
  */

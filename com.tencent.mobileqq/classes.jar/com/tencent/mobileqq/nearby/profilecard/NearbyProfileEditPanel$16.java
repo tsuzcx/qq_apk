@@ -1,39 +1,29 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.graphics.Rect;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 class NearbyProfileEditPanel$16
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   NearbyProfileEditPanel$16(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
-    if (i <= 0) {
+    if (this.a.J.size() >= NearbyProfileCardConstants.a)
+    {
+      QQToast.makeText(this.a.F, 0, this.a.F.getResources().getString(2131892083), 0).show();
       return;
     }
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
-    if ((localObject != null) && ((localObject instanceof EditText)) && (((View)localObject).getParent() != null))
-    {
-      int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
-      int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
-    }
+    NearbyProfileEditPanel.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.16
  * JD-Core Version:    0.7.0.1
  */

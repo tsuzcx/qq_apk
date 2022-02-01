@@ -65,23 +65,23 @@ public class LogUploadUtil
     //   41: dup
     //   42: aload_1
     //   43: invokespecial 74	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   46: astore_1
+    //   46: astore_2
     //   47: new 76	java/util/zip/ZipOutputStream
     //   50: dup
     //   51: new 78	java/util/zip/CheckedOutputStream
     //   54: dup
-    //   55: aload_1
+    //   55: aload_2
     //   56: new 80	java/util/zip/CRC32
     //   59: dup
     //   60: invokespecial 81	java/util/zip/CRC32:<init>	()V
     //   63: invokespecial 84	java/util/zip/CheckedOutputStream:<init>	(Ljava/io/OutputStream;Ljava/util/zip/Checksum;)V
     //   66: invokespecial 87	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   69: astore_2
+    //   69: astore_1
     //   70: aload 4
-    //   72: aload_2
+    //   72: aload_1
     //   73: ldc 89
     //   75: invokestatic 91	com/tencent/mobileqq/intervideo/now/LogUploadUtil:a	(Ljava/io/File;Ljava/util/zip/ZipOutputStream;Ljava/lang/String;)V
-    //   78: aload_2
+    //   78: aload_1
     //   79: invokevirtual 94	java/util/zip/ZipOutputStream:close	()V
     //   82: iconst_0
     //   83: ifeq +11 -> 94
@@ -94,23 +94,23 @@ public class LogUploadUtil
     //   96: goto +14 -> 110
     //   99: astore_0
     //   100: aconst_null
-    //   101: astore_2
+    //   101: astore_1
     //   102: goto +8 -> 110
     //   105: astore_0
     //   106: aconst_null
-    //   107: astore_1
+    //   107: astore_2
     //   108: aconst_null
-    //   109: astore_2
-    //   110: aload_2
+    //   109: astore_1
+    //   110: aload_1
     //   111: ifnull +12 -> 123
-    //   114: aload_2
+    //   114: aload_1
     //   115: invokevirtual 94	java/util/zip/ZipOutputStream:close	()V
     //   118: aload_3
-    //   119: astore_1
+    //   119: astore_2
     //   120: goto +3 -> 123
-    //   123: aload_1
+    //   123: aload_2
     //   124: ifnull +7 -> 131
-    //   127: aload_1
+    //   127: aload_2
     //   128: invokevirtual 98	java/io/FileOutputStream:close	()V
     //   131: aload_0
     //   132: athrow
@@ -138,8 +138,8 @@ public class LogUploadUtil
     //   start	length	slot	name	signature
     //   0	170	0	paramString1	String
     //   0	170	1	paramString2	String
-    //   69	46	2	localZipOutputStream	ZipOutputStream
-    //   37	82	3	localObject	Object
+    //   46	82	2	localObject1	Object
+    //   37	82	3	localObject2	Object
     //   17	54	4	localFile	File
     // Exception table:
     //   from	to	target	type
@@ -254,7 +254,7 @@ public class LogUploadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.LogUploadUtil
  * JD-Core Version:    0.7.0.1
  */

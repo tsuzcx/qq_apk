@@ -22,7 +22,7 @@ class TroopChatPie$8
       }
       if (QLog.isColorLevel())
       {
-        paramString = this.a.b;
+        paramString = this.a.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onSetGenralSettingsTroopFilter: isSuc = ");
         localStringBuilder.append(paramBoolean);
@@ -41,14 +41,14 @@ class TroopChatPie$8
         if (paramMap.size() == 0) {
           return;
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume())
+        if (this.a.f.isResume())
         {
           if (paramBoolean)
           {
-            QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131719976), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+            QQToast.makeText(this.a.d.getApp(), 2, this.a.f.getString(2131917581), 0).show(this.a.f.getTitleBarHeight());
             return;
           }
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131719975), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+          QQToast.makeText(this.a.d.getApp(), 1, this.a.f.getString(2131917580), 0).show(this.a.f.getTitleBarHeight());
         }
       }
     }
@@ -56,7 +56,7 @@ class TroopChatPie$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.8
  * JD-Core Version:    0.7.0.1
  */

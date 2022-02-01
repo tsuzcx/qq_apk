@@ -11,13 +11,13 @@ class QQFileTempUtilsImpl$1
   public void a(int paramInt)
   {
     if (paramInt == 2) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+      this.a.onClick(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileTempUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

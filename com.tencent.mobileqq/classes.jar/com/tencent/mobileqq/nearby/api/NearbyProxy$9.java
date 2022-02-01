@@ -25,7 +25,7 @@ final class NearbyProxy$9
   public void run()
   {
     Object localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = ((FriendsManager)localObject2).b(this.a.getCurrentAccountUin());
+    Object localObject1 = ((FriendsManager)localObject2).g(this.a.getCurrentAccountUin());
     if ((localObject1 != null) && (((Card)localObject1).iVoteIncrement > 0))
     {
       ((Card)localObject1).iVoteIncrement = 0;
@@ -64,7 +64,7 @@ final class NearbyProxy$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyProxy.9
  * JD-Core Version:    0.7.0.1
  */

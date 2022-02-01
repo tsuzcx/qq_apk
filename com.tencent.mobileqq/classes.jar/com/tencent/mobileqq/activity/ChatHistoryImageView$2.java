@@ -19,7 +19,7 @@ class ChatHistoryImageView$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onImageListLoad]: ");
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      localObject = this.a;
       if (localObject == null) {
         localObject = "null";
       } else {
@@ -29,24 +29,24 @@ class ChatHistoryImageView$2
       QLog.d("ChatHistoryImageView", 2, localStringBuilder.toString());
     }
     long l = SystemClock.uptimeMillis();
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b();
+    if ((this.a != null) && (!this.this$0.d.a(this.a, this.b))) {
+      this.this$0.d.h();
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() == 0) {
-      this.this$0.b.setVisibility(0);
+    if (this.this$0.d.a() == 0) {
+      this.this$0.i.setVisibility(0);
     } else {
-      this.this$0.b.setVisibility(4);
+      this.this$0.i.setVisibility(4);
     }
-    if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a(false)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
+    if (!this.this$0.l.b(false)) {
+      this.this$0.l.notifyDataSetChanged();
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
+    if (this.this$0.e != null)
     {
       localObject = this.this$0;
-      ((ChatHistoryImageView)localObject).a(((ChatHistoryImageView)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
+      ((ChatHistoryImageView)localObject).a(((ChatHistoryImageView)localObject).e, false);
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack.a();
+    if (this.this$0.B != null) {
+      this.this$0.B.b();
     }
     if (QLog.isColorLevel())
     {
@@ -59,7 +59,7 @@ class ChatHistoryImageView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.2
  * JD-Core Version:    0.7.0.1
  */

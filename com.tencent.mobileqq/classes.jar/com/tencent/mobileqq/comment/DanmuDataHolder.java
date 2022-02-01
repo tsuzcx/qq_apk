@@ -11,39 +11,37 @@ import mqq.app.MobileQQ;
 
 public class DanmuDataHolder
 {
-  private static DanmuDataHolder jdField_a_of_type_ComTencentMobileqqCommentDanmuDataHolder;
-  public int a;
-  public Paint a;
-  private LruCache<String, DanmuDataHolder.CacheHolder> jdField_a_of_type_AndroidUtilLruCache;
-  private DanmuDataServlet jdField_a_of_type_ComTencentMobileqqCommentDanmuDataServlet = null;
+  private static DanmuDataHolder e;
+  public Paint a = null;
+  public int b = ViewUtils.dip2px(150.0F);
+  private LruCache<String, DanmuDataHolder.CacheHolder> c;
+  private DanmuDataServlet d = null;
   
   private DanmuDataHolder()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_Int = ViewUtils.a(150.0F);
-    if (this.jdField_a_of_type_AndroidUtilLruCache == null) {
-      this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(10485760);
+    if (this.c == null) {
+      this.c = new LruCache(10485760);
     }
     if (MobileQQ.sProcessId == 1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataServlet == null) {
-        this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataServlet = new DanmuDataServlet();
+      if (this.d == null) {
+        this.d = new DanmuDataServlet();
       }
-      b();
+      c();
     }
   }
   
   public static DanmuDataHolder a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqCommentDanmuDataHolder == null) {
-      jdField_a_of_type_ComTencentMobileqqCommentDanmuDataHolder = new DanmuDataHolder();
+    if (e == null) {
+      e = new DanmuDataHolder();
     }
-    return jdField_a_of_type_ComTencentMobileqqCommentDanmuDataHolder;
+    return e;
   }
   
   public DanmuDataHolder.CacheHolder a(String paramString)
   {
-    return (DanmuDataHolder.CacheHolder)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    return (DanmuDataHolder.CacheHolder)this.c.get(paramString);
   }
   
   public String a(long paramLong1, long paramLong2)
@@ -52,11 +50,6 @@ public class DanmuDataHolder
     localStringBuilder.append(String.valueOf(paramLong1));
     localStringBuilder.append(paramLong2);
     return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
   }
   
   public void a(DanmuDataContext paramDanmuDataContext, DanmuDataIPCClient.DanmuPullCallback paramDanmuPullCallback)
@@ -68,10 +61,10 @@ public class DanmuDataHolder
       localObject = localCacheHolder;
       if (localCacheHolder == null)
       {
-        localObject = new DanmuDataHolder.CacheHolder(this).a(paramDanmuDataContext).d(0).e(0).a(paramDanmuPullCallback).a();
+        localObject = new DanmuDataHolder.CacheHolder(this).a(paramDanmuDataContext).d(0).e(0).a(paramDanmuPullCallback).b();
         QLog.d("DanmuDataHolder", 2, "request start, reqHolder is null, create it");
       }
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataServlet.a((DanmuDataHolder.CacheHolder)localObject);
+      this.d.a((DanmuDataHolder.CacheHolder)localObject);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -81,7 +74,7 @@ public class DanmuDataHolder
   
   public void a(String paramString, DanmuDataHolder.CacheHolder paramCacheHolder)
   {
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, paramCacheHolder);
+    this.c.put(paramString, paramCacheHolder);
   }
   
   public DanmuDataHolder.CacheHolder b(String paramString)
@@ -93,14 +86,19 @@ public class DanmuDataHolder
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(MobileQQ.getContext()).inflate(2131562762, null).findViewById(2131364910)).getPaint();
+    this.c.evictAll();
+  }
+  
+  public void c()
+  {
+    if (this.a == null) {
+      this.a = ((TextView)LayoutInflater.from(MobileQQ.getContext()).inflate(2131629204, null).findViewById(2131431033)).getPaint();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataHolder
  * JD-Core Version:    0.7.0.1
  */

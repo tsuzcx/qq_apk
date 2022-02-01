@@ -22,38 +22,38 @@ class DoodleEditView$2
     if ((paramZoomItem instanceof FaceLayer.FaceItem))
     {
       FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)paramZoomItem;
-      if (localFaceItem.b)
+      if (localFaceItem.s)
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b())) {
-          paramZoomItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a();
+        if ((this.a.h != null) && (this.a.h.c())) {
+          paramZoomItem = this.a.l.getDynamicFaceLayer();
         } else {
-          paramZoomItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a();
+          paramZoomItem = this.a.l.getFaceLayer();
         }
-        paramZoomItem.b.remove(localFaceItem);
+        paramZoomItem.r.remove(localFaceItem);
       }
       else
       {
-        if ((localFaceItem.h == 1) && ((this.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.b()))) {
-          paramZoomItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a();
+        if ((localFaceItem.y == 1) && ((this.a.h == null) || (this.a.h.c()))) {
+          paramZoomItem = this.a.l.getDynamicFaceLayer();
         } else {
-          paramZoomItem = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a();
+          paramZoomItem = this.a.l.getFaceLayer();
         }
-        paramZoomItem = (List)paramZoomItem.a.get(localFaceItem.d);
+        paramZoomItem = (List)paramZoomItem.q.get(localFaceItem.n);
         if (paramZoomItem != null) {
-          paramZoomItem.remove(localFaceItem.e);
+          paramZoomItem.remove(localFaceItem.o);
         }
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.d();
+      this.a.a.i();
     }
     else if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.d();
+      this.a.a.i();
     }
     else
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer.d();
+      this.a.a.i();
     }
-    this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.q();
+    this.a.l.u();
   }
   
   public void a(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2)
@@ -61,7 +61,7 @@ class DoodleEditView$2
     if (paramZoomItem == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.e()) {
+    if (this.a.l.z()) {
       return;
     }
     if ((paramZoomItem instanceof TextLayer.TextItem))
@@ -78,7 +78,7 @@ class DoodleEditView$2
   {
     if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      paramZoomItem = ((TextLayer.TextItem)paramZoomItem).a;
+      paramZoomItem = ((TextLayer.TextItem)paramZoomItem).c;
       if (paramZoomItem != null)
       {
         int i = paramInt2;
@@ -102,26 +102,26 @@ class DoodleEditView$2
               paramInt1 = paramInt2;
             }
             paramZoomItem.a(paramInt1, true);
-            this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(paramZoomItem, paramInt1, 2);
+            this.a.l.a(paramZoomItem, paramInt1, 2);
             return;
           }
           paramZoomItem.a(paramInt1, true);
           if (paramInt1 == -1) {
             paramInt1 = j;
           }
-          this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(paramZoomItem, paramInt1, 1);
+          this.a.l.a(paramZoomItem, paramInt1, 1);
           return;
         }
-        paramZoomItem.a();
-        paramZoomItem.a(-1, this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a, false, 3000, 500, null);
+        paramZoomItem.o();
+        paramZoomItem.a(-1, this.a.l.w, false, 3000, 500, null);
       }
     }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout != null) {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+    if (this.a.l != null) {
+      this.a.l.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
     }
   }
   
@@ -130,12 +130,12 @@ class DoodleEditView$2
     if (paramZoomItem == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.e()) {}
+    if (this.a.l.z()) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleEditView.2
  * JD-Core Version:    0.7.0.1
  */

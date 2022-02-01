@@ -3,12 +3,10 @@ package com.tencent.mobileqq.kandian.biz.reward;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
@@ -23,25 +21,20 @@ import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/reward/RIJRewardTaskRemoteRepo;", "", "()V", "reportTaskCompleted", "", "rowKey", "", "type", "", "reportTaskProgressCallback", "Lcom/tencent/mobileqq/kandian/biz/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "Companion", "IReportTaskProgressCallback", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJRewardTaskRemoteRepo
 {
-  public static final RIJRewardTaskRemoteRepo.Companion a;
-  private static volatile RIJRewardTaskRemoteRepo a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTaskRemoteRepo$Companion = new RIJRewardTaskRemoteRepo.Companion(null);
-  }
+  public static final RIJRewardTaskRemoteRepo.Companion a = new RIJRewardTaskRemoteRepo.Companion(null);
+  private static volatile RIJRewardTaskRemoteRepo b;
   
   @JvmStatic
   @NotNull
   public static final RIJRewardTaskRemoteRepo b()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJRewardTaskRemoteRepo$Companion.a();
+    return a.a();
   }
   
   public final void a(@NotNull String paramString, int paramInt, @Nullable RIJRewardTaskRemoteRepo.IReportTaskProgressCallback paramIReportTaskProgressCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    long l1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    long l1 = RIJQQAppInterfaceUtil.c();
     long l2 = NetConnInfoCenter.getServerTimeMillis();
     paramString = RIJQQAppInterfaceUtil.a();
     Object localObject = new oidb_cmd0xed4.MetaData();
@@ -63,7 +56,7 @@ public final class RIJRewardTaskRemoteRepo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskRemoteRepo
  * JD-Core Version:    0.7.0.1
  */

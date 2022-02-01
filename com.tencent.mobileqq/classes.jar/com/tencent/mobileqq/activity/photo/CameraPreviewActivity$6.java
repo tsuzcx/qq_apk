@@ -10,12 +10,12 @@ class CameraPreviewActivity$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
+    this.a.d = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

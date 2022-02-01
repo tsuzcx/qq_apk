@@ -27,7 +27,7 @@ public class DatalineFileBubbleDownloadHandler
     super(paramQQAppInterface, paramContext);
   }
   
-  private DataLineMsgRecord a(ChatMessage paramChatMessage)
+  private DataLineMsgRecord c(ChatMessage paramChatMessage)
   {
     if (paramChatMessage == null) {
       return null;
@@ -35,7 +35,7 @@ public class DatalineFileBubbleDownloadHandler
     paramChatMessage = (MessageForDLFile)paramChatMessage;
     int i = paramChatMessage.deviceType;
     long l = paramChatMessage.associatedId;
-    paramChatMessage = this.a.getMessageFacade().a(i);
+    paramChatMessage = this.b.getMessageFacade().d(i);
     if (paramChatMessage == null) {
       return null;
     }
@@ -48,7 +48,7 @@ public class DatalineFileBubbleDownloadHandler
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v;
     }
     return null;
   }
@@ -66,11 +66,11 @@ public class DatalineFileBubbleDownloadHandler
     if (paramInt == -1) {
       return;
     }
-    paramView = a(paramChatMessage);
+    paramView = c(paramChatMessage);
     if (paramView == null) {
       return;
     }
-    paramViewHolder = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    paramViewHolder = (DataLineHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if (paramInt == 0)
     {
       paramViewHolder.a(paramView.groupId, paramView.sessionid, false);
@@ -80,7 +80,7 @@ public class DatalineFileBubbleDownloadHandler
     {
       paramChatMessage = new ArrayList();
       paramChatMessage.add(Long.valueOf(paramView.sessionid));
-      paramViewHolder.a(paramChatMessage);
+      paramViewHolder.b(paramChatMessage);
     }
   }
   
@@ -90,7 +90,7 @@ public class DatalineFileBubbleDownloadHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v = paramCircleFileStateView;
     }
   }
   
@@ -101,11 +101,11 @@ public class DatalineFileBubbleDownloadHandler
     if (paramChatMessage == null) {
       return false;
     }
-    paramChatMessage = a(paramChatMessage);
+    paramChatMessage = c(paramChatMessage);
     if (paramChatMessage == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramChatMessage.filename);
+    int i = FileManagerUtil.c(paramChatMessage.filename);
     if (i != 0)
     {
       if (i == 2) {
@@ -119,7 +119,7 @@ public class DatalineFileBubbleDownloadHandler
       }
       bool1 = bool2;
       if (bool2) {
-        bool1 = FileUtil.a(paramChatMessage.path) ^ true;
+        bool1 = FileUtil.b(paramChatMessage.path) ^ true;
       }
     }
     return bool1;
@@ -130,11 +130,11 @@ public class DatalineFileBubbleDownloadHandler
     if (paramChatMessage == null) {
       return false;
     }
-    paramChatMessage = a(paramChatMessage);
+    paramChatMessage = c(paramChatMessage);
     if (paramChatMessage == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramChatMessage.filename);
+    int i = FileManagerUtil.c(paramChatMessage.filename);
     if (i != 0)
     {
       if (i == 2) {
@@ -147,7 +147,7 @@ public class DatalineFileBubbleDownloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.DatalineFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

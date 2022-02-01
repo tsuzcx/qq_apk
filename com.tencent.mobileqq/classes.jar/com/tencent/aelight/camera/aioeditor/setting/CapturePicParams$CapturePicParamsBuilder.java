@@ -5,51 +5,51 @@ import dov.com.qq.im.ae.current.SessionWrap;
 
 public class CapturePicParams$CapturePicParamsBuilder
 {
-  public int a;
-  private SessionWrap jdField_a_of_type_DovComQqImAeCurrentSessionWrap;
-  private String jdField_a_of_type_JavaLangString;
   public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d;
+  public int b;
+  private SessionWrap c;
+  private String d;
   private int e;
   private int f;
+  private boolean g;
+  private int h;
+  private int i;
+  private String j;
+  private int k;
   
   public CapturePicParams$CapturePicParamsBuilder(int paramInt)
   {
-    int i = 1;
-    this.c = 1;
-    this.jdField_b_of_type_Boolean = true;
-    this.d = 11;
-    this.f = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    int m = 1;
+    this.f = 1;
+    this.g = true;
+    this.h = 11;
+    this.k = 0;
+    this.a = true;
+    this.b = 0;
     if (paramInt == 2) {
-      i = 0;
+      m = 0;
     }
-    this.jdField_b_of_type_Int = i;
+    this.e = m;
   }
   
   public CapturePicParamsBuilder a(int paramInt)
   {
-    this.c = paramInt;
+    this.f = paramInt;
     return this;
   }
   
   public CapturePicParamsBuilder a(SessionWrap paramSessionWrap)
   {
-    this.jdField_a_of_type_DovComQqImAeCurrentSessionWrap = paramSessionWrap;
+    this.c = paramSessionWrap;
     if (paramSessionWrap != null) {
-      this.d = AIOShortVideoUtil.a(paramSessionWrap.jdField_a_of_type_Int);
+      this.h = AIOShortVideoUtil.a(paramSessionWrap.c);
     }
     return this;
   }
   
   public CapturePicParamsBuilder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     return this;
   }
   
@@ -60,13 +60,13 @@ public class CapturePicParams$CapturePicParamsBuilder
   
   public CapturePicParamsBuilder b(int paramInt)
   {
-    this.f = paramInt;
+    this.k = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.setting.CapturePicParams.CapturePicParamsBuilder
  * JD-Core Version:    0.7.0.1
  */

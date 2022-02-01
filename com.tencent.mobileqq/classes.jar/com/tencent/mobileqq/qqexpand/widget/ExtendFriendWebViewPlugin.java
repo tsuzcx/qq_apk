@@ -40,19 +40,19 @@ public class ExtendFriendWebViewPlugin
       ((Bundle)localObject1).putInt("idx", j);
       if (QLog.isColorLevel())
       {
-        str = this.TAG;
+        str = this.mTAG;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onNotifyUpdateSchoolInfo result=");
         ((StringBuilder)localObject2).append(paramString);
         QLog.i(str, 2, ((StringBuilder)localObject2).toString());
       }
       QIPCClientHelper.getInstance().getClient().callServer("ExtendFriendQIPCModule", "notifyUpdateSchoolInfo", (Bundle)localObject1);
-      RemoteHandleManager.getInstance().getSender().updateSchoolinfo((Bundle)localObject1, this.mRuntime.a().getCurrentAccountUin());
+      RemoteHandleManager.getInstance().getSender().updateSchoolinfo((Bundle)localObject1, this.mRuntime.b().getCurrentAccountUin());
       return;
     }
     catch (JSONException paramString)
     {
-      QLog.i(this.TAG, 1, "onNotifyUpdateSchoolInfo exception", paramString);
+      QLog.i(this.mTAG, 1, "onNotifyUpdateSchoolInfo exception", paramString);
     }
   }
   
@@ -70,7 +70,7 @@ public class ExtendFriendWebViewPlugin
           paramString.putBoolean("key_result", bool);
           if (QLog.isColorLevel())
           {
-            String str = this.TAG;
+            String str = this.mTAG;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("onNotifyCampusFriendCertificateResult result=");
             localStringBuilder.append(i);
@@ -82,7 +82,7 @@ public class ExtendFriendWebViewPlugin
       }
       catch (JSONException paramString)
       {
-        QLog.i(this.TAG, 1, "onNotifyCampusFriendCertificateResult exception", paramString);
+        QLog.i(this.mTAG, 1, "onNotifyCampusFriendCertificateResult exception", paramString);
         return;
       }
       boolean bool = false;
@@ -103,7 +103,7 @@ public class ExtendFriendWebViewPlugin
           paramString.putBoolean("key_result", bool);
           if (QLog.isColorLevel())
           {
-            String str = this.TAG;
+            String str = this.mTAG;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("onNotifyUploadSutudentIDResult result=");
             localStringBuilder.append(i);
@@ -115,7 +115,7 @@ public class ExtendFriendWebViewPlugin
       }
       catch (JSONException paramString)
       {
-        QLog.i(this.TAG, 1, "onNotifyUploadSutudentIDResult exception", paramString);
+        QLog.i(this.mTAG, 1, "onNotifyUploadSutudentIDResult exception", paramString);
         return;
       }
       boolean bool = false;
@@ -126,7 +126,7 @@ public class ExtendFriendWebViewPlugin
   {
     if (QLog.isColorLevel())
     {
-      paramJsBridgeListener = this.TAG;
+      paramJsBridgeListener = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleJsRequest url is: ");
       localStringBuilder.append(paramString1);
@@ -143,7 +143,7 @@ public class ExtendFriendWebViewPlugin
     }
     if ("answerResult".equals(paramString3))
     {
-      paramJsBridgeListener = this.mRuntime.a().getCurrentAccountUin();
+      paramJsBridgeListener = this.mRuntime.b().getCurrentAccountUin();
       if (!TextUtils.isEmpty(paramJsBridgeListener)) {
         ((IExpandQuestionUtils)QRoute.api(IExpandQuestionUtils.class)).setAnswerQuestionFlag(paramJsBridgeListener, false);
       }
@@ -154,10 +154,10 @@ public class ExtendFriendWebViewPlugin
       if (paramVarArgs.length >= 1)
       {
         b(paramVarArgs[0]);
-        RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyCampusFriendCertificateResult", this.mRuntime.a().getCurrentAccountUin());
+        RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyCampusFriendCertificateResult", this.mRuntime.b().getCurrentAccountUin());
         return true;
       }
-      QLog.i(this.TAG, 1, "NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT arg error");
+      QLog.i(this.mTAG, 1, "NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT arg error");
       return true;
     }
     if ("notifyUploadSutudentIDResult".equals(paramString3))
@@ -165,10 +165,10 @@ public class ExtendFriendWebViewPlugin
       if (paramVarArgs.length >= 1)
       {
         c(paramVarArgs[0]);
-        RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyUploadSutudentIDResult", this.mRuntime.a().getCurrentAccountUin());
+        RemoteHandleManager.getInstance().getSender().updateSchoolCertificate(paramVarArgs[0], "notifyUploadSutudentIDResult", this.mRuntime.b().getCurrentAccountUin());
         return true;
       }
-      QLog.i(this.TAG, 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
+      QLog.i(this.mTAG, 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
       return true;
     }
     if ("notifyUpdateSchoolInfo".equals(paramString3))
@@ -178,7 +178,7 @@ public class ExtendFriendWebViewPlugin
         a(paramVarArgs[0]);
         return true;
       }
-      QLog.i(this.TAG, 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
+      QLog.i(this.mTAG, 1, "ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT arg error");
       return true;
     }
     return false;
@@ -186,7 +186,7 @@ public class ExtendFriendWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

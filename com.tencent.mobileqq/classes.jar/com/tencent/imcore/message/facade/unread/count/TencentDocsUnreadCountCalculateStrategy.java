@@ -18,7 +18,7 @@ class TencentDocsUnreadCountCalculateStrategy
 {
   public int a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, StringBuilder paramStringBuilder)
   {
-    if ((((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).isTencentDocsAssistantEnable(paramQQAppInterface)) && (paramQQAppInterface.getConversationFacade().b(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004)))
+    if ((((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).isTencentDocsAssistantEnable(paramQQAppInterface)) && (paramQQAppInterface.getConversationFacade().o(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004)))
     {
       paramQQAppInterface = ((TroopRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(46, false);
       int i;
@@ -35,7 +35,7 @@ class TencentDocsUnreadCountCalculateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.count.TencentDocsUnreadCountCalculateStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ class HomeWorkTroopSelectorFragment$HwTroopAdapter$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$MyPair.a).troopuin.equals(HomeWorkTroopSelectorFragment.HwTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$HwTroopAdapter)))) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment$MyPair.b = Boolean.valueOf(paramBoolean);
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.a.a).troopuin.equals(HomeWorkTroopSelectorFragment.HwTroopAdapter.a(this.b)))) {
+      this.a.b = Boolean.valueOf(paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.HwTroopAdapter.1
  * JD-Core Version:    0.7.0.1
  */

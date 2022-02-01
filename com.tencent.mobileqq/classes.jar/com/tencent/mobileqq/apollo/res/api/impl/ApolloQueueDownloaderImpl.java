@@ -38,9 +38,9 @@ public class ApolloQueueDownloaderImpl
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (!localDownloadTask.a())
+          if (!localDownloadTask.c())
           {
-            localDownloadTask.a();
+            localDownloadTask.d();
             return localDownloadTask;
           }
         }
@@ -76,7 +76,7 @@ public class ApolloQueueDownloaderImpl
           {
             localObject2 = (DownloadTask)paramString.next();
             ((DownloadTask)localObject2).a(true);
-            ((DownloadTask)localObject2).j();
+            ((DownloadTask)localObject2).r();
           }
           this.downloadQueue.clear();
         }
@@ -87,9 +87,9 @@ public class ApolloQueueDownloaderImpl
           while (((Iterator)localObject2).hasNext())
           {
             DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
-            if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+            if (paramString.equals(localDownloadTask.b))
             {
-              if (!localDownloadTask.a())
+              if (!localDownloadTask.c())
               {
                 ((Iterator)localObject2).remove();
                 localArrayList.add(localDownloadTask);
@@ -97,10 +97,10 @@ public class ApolloQueueDownloaderImpl
               else
               {
                 localDownloadTask.a(true);
-                localDownloadTask.j();
+                localDownloadTask.r();
               }
             }
-            else if ((localDownloadTask.b()) && (!localDownloadTask.a()))
+            else if ((localDownloadTask.f()) && (!localDownloadTask.c()))
             {
               ((Iterator)localObject2).remove();
               localArrayList.add(localDownloadTask);
@@ -139,28 +139,28 @@ public class ApolloQueueDownloaderImpl
           }
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
           bool1 = bool2;
-          if (localDownloadTask.d > 0L)
+          if (localDownloadTask.u > 0L)
           {
             long l = System.currentTimeMillis() / 1000L;
             bool1 = bool2;
-            if (!localDownloadTask.a())
+            if (!localDownloadTask.c())
             {
               bool1 = bool2;
-              if (l > localDownloadTask.c + localDownloadTask.d) {
+              if (l > localDownloadTask.t + localDownloadTask.u) {
                 bool1 = true;
               }
             }
           }
-          if ((localDownloadTask.b()) || (bool1))
+          if ((localDownloadTask.f()) || (bool1))
           {
             localIterator.remove();
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("remove task[");
-              localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(localDownloadTask.b);
               localStringBuilder.append("], isCancal=");
-              localStringBuilder.append(localDownloadTask.b());
+              localStringBuilder.append(localDownloadTask.f());
               localStringBuilder.append(", timeOut=");
               localStringBuilder.append(bool1);
               QLog.d("[cmshow]ApolloQueue_Downloader", 2, localStringBuilder.toString());
@@ -211,7 +211,7 @@ public class ApolloQueueDownloaderImpl
         while (((Iterator)localObject2).hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
-          if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+          if (paramString.equals(localDownloadTask.b))
           {
             if (QLog.isColorLevel())
             {
@@ -275,8 +275,8 @@ public class ApolloQueueDownloaderImpl
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.i();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.q();
           }
         }
         return;
@@ -315,8 +315,8 @@ public class ApolloQueueDownloaderImpl
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.g();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.o();
           }
         }
         return;
@@ -338,8 +338,8 @@ public class ApolloQueueDownloaderImpl
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.h();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.p();
           }
         }
         return;
@@ -362,7 +362,7 @@ public class ApolloQueueDownloaderImpl
           localStringBuilder.append(paramDownloadTask);
           QLog.d("[cmshow]ApolloQueue_Downloader", 2, localStringBuilder.toString());
         }
-        paramDownloadTask.j();
+        paramDownloadTask.r();
         this.downloadQueue.remove(paramDownloadTask);
       }
       return;
@@ -374,19 +374,19 @@ public class ApolloQueueDownloaderImpl
   {
     if (DownloaderFactory.a(paramDownloadTask))
     {
-      if (getTask(paramDownloadTask.jdField_a_of_type_JavaLangString) == paramDownloadTask) {
+      if (getTask(paramDownloadTask.b) == paramDownloadTask) {
         return;
       }
-      DownloadTask localDownloadTask = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      DownloadTask localDownloadTask = getTask(paramDownloadTask.b);
       if (localDownloadTask != null)
       {
-        if ((localDownloadTask != null) && (localDownloadTask.s))
+        if ((localDownloadTask != null) && (localDownloadTask.T))
         {
           paramDownloadTask.a(???);
           paramDownloadTask.a(paramBundle);
           ??? = BaseApplicationImpl.getApplication().getRuntime();
-          if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-            paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+          if ((??? != null) && (paramDownloadTask.S.b < 0L)) {
+            paramDownloadTask.S.b = ???.getLongAccountUin();
           }
           localDownloadTask.a(paramDownloadTask);
         }
@@ -394,29 +394,29 @@ public class ApolloQueueDownloaderImpl
       }
       paramDownloadTask.a(???);
       paramDownloadTask.a(paramBundle);
-      paramDownloadTask.g = 3;
+      paramDownloadTask.R = 3;
       ??? = BaseApplicationImpl.getApplication().getRuntime();
-      if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-        paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+      if ((??? != null) && (paramDownloadTask.S.b < 0L)) {
+        paramDownloadTask.S.b = ???.getLongAccountUin();
       }
       synchronized (this.downloadQueue)
       {
-        paramBundle = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        paramBundle = getTask(paramDownloadTask.b);
         if (paramBundle == null)
         {
-          paramDownloadTask.c = ((int)(System.currentTimeMillis() / 1000L));
-          if (paramDownloadTask.b) {
+          paramDownloadTask.t = ((int)(System.currentTimeMillis() / 1000L));
+          if (paramDownloadTask.m) {
             this.downloadQueue.addFirst(paramDownloadTask);
           } else {
             this.downloadQueue.addLast(paramDownloadTask);
           }
         }
-        else if ((paramDownloadTask.b) && (!paramBundle.a()) && (this.downloadQueue.remove(paramBundle)))
+        else if ((paramDownloadTask.m) && (!paramBundle.c()) && (this.downloadQueue.remove(paramBundle)))
         {
           this.downloadQueue.addFirst(paramBundle);
         }
-        if ((paramDownloadTask.jdField_a_of_type_JavaUtilList != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilList.size() != 0)) {
-          ??? = (String)paramDownloadTask.jdField_a_of_type_JavaUtilList.get(0);
+        if ((paramDownloadTask.f != null) && (paramDownloadTask.f.size() != 0)) {
+          ??? = (String)paramDownloadTask.f.get(0);
         } else {
           ??? = null;
         }
@@ -424,7 +424,7 @@ public class ApolloQueueDownloaderImpl
         {
           paramBundle = new StringBuilder();
           paramBundle.append("startDownload | task=");
-          paramBundle.append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+          paramBundle.append(paramDownloadTask.b);
           QLog.d("[cmshow]ApolloQueue_Downloader", 2, new Object[] { paramBundle.toString(), ", url:", ??? });
         }
         doTask();
@@ -445,13 +445,13 @@ public class ApolloQueueDownloaderImpl
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
           localStringBuilder.append("key=");
-          localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
-          if ((localDownloadTask.jdField_a_of_type_JavaUtilList != null) && (localDownloadTask.jdField_a_of_type_JavaUtilList.size() > 0))
+          localStringBuilder.append(localDownloadTask.b);
+          if ((localDownloadTask.f != null) && (localDownloadTask.f.size() > 0))
           {
             localStringBuilder.append(",size=");
-            localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaUtilList.size());
+            localStringBuilder.append(localDownloadTask.f.size());
             localStringBuilder.append(",url=");
-            localStringBuilder.append((String)localDownloadTask.jdField_a_of_type_JavaUtilList.get(0));
+            localStringBuilder.append((String)localDownloadTask.f.get(0));
           }
           localStringBuilder.append(";");
         }
@@ -465,7 +465,7 @@ public class ApolloQueueDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.ApolloQueueDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

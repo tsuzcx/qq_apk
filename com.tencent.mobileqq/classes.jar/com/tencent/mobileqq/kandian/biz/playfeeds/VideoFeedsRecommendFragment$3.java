@@ -14,28 +14,28 @@ import java.util.Arrays;
 class VideoFeedsRecommendFragment$3
   implements View.OnLayoutChangeListener
 {
-  private int jdField_a_of_type_Int;
+  private int c;
   
   VideoFeedsRecommendFragment$3(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, Configuration paramConfiguration) {}
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).getHeight() != this.jdField_a_of_type_Int) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment) != null))
+    if ((VideoFeedsRecommendFragment.b(this.b).getHeight() != this.c) && (VideoFeedsRecommendFragment.c(this.b) != null) && (VideoFeedsRecommendFragment.d(this.b) != null))
     {
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment));
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).c();
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).c();
-      if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).b()) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment) != null)) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).a.d(true);
+      VideoFeedsRecommendFragment.d(this.b).a(VideoFeedsRecommendFragment.c(this.b), VideoFeedsRecommendFragment.e(this.b));
+      VideoFeedsRecommendFragment.c(this.b).e();
+      VideoFeedsRecommendFragment.f(this.b).b();
+      if ((VideoFeedsRecommendFragment.f(this.b).k()) && (VideoFeedsRecommendFragment.g(this.b) != null)) {
+        VideoFeedsRecommendFragment.g(this.b).aA.e(true);
       }
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).a(this.jdField_a_of_type_AndroidContentResConfiguration);
+      if (VideoFeedsRecommendFragment.h(this.b) != null) {
+        VideoFeedsRecommendFragment.h(this.b).a(this.a);
       }
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("onConfigurationChanged onLayoutChange: ");
-        paramView.append(Arrays.toString(VideoFeedsHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment.getBaseActivity())));
+        paramView.append(Arrays.toString(VideoFeedsHelper.c(this.b.getBaseActivity())));
         QLog.d("VideoFeedsRecommendFragment", 2, paramView.toString());
       }
     }
@@ -43,15 +43,15 @@ class VideoFeedsRecommendFragment$3
     {
       paramView = new StringBuilder();
       paramView.append("onConfigurationChanged onLayoutChange: screen size unchanged ");
-      paramView.append(Arrays.toString(VideoFeedsHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment.getBaseActivity())));
+      paramView.append(Arrays.toString(VideoFeedsHelper.c(this.b.getBaseActivity())));
       QLog.d("VideoFeedsRecommendFragment", 2, paramView.toString());
     }
-    this.jdField_a_of_type_Int = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).getHeight();
+    this.c = VideoFeedsRecommendFragment.b(this.b).getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.3
  * JD-Core Version:    0.7.0.1
  */

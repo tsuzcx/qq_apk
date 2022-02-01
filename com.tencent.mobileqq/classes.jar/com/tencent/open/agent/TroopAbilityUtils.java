@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.guild.api.IGuildOpenApi;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class TroopAbilityUtils
 {
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent, boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onThirdAppJoinAppFinished activity is null: ");
@@ -31,40 +33,39 @@ public class TroopAbilityUtils
       if (!paramIntent.getBoolean("fromThirdAppByOpenSDK")) {
         return;
       }
-      String str1 = paramIntent.getString("appid");
+      localObject = paramIntent.getString("appid");
       paramIntent.getString("app_name");
-      String str2 = paramIntent.getString("pkg_name");
+      String str = paramIntent.getString("pkg_name");
       int i = paramIntent.getInt("action");
-      localObject = "bindGroup";
-      if (i == 1) {
-        paramIntent = HardCodeUtil.a(2131714906);
-      }
-      for (;;)
+      if (i == 1) {}
+      for (paramQQAppInterface = HardCodeUtil.a(2131912404);; paramQQAppInterface = HardCodeUtil.a(2131912405))
       {
-        break;
-        if (i == 2)
-        {
-          paramIntent = HardCodeUtil.a(2131714907);
-        }
-        else
-        {
-          if (i != 3) {
-            return;
-          }
-          paramIntent = HardCodeUtil.a(2131714918);
-          localObject = "joinGroup";
+        paramIntent = "bindGroup";
+        break label159;
+        if (i != 2) {
+          break;
         }
       }
-      if (paramActivity.isFinishing()) {
+      if (i == 3)
+      {
+        paramQQAppInterface = HardCodeUtil.a(2131912416);
+        paramIntent = "joinGroup";
+        label159:
+        if (paramActivity.isFinishing()) {
+          return;
+        }
+        ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, (String)localObject, paramIntent, str, paramQQAppInterface), 300L);
         return;
       }
-      ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, str1, (String)localObject, str2, paramIntent), 300L);
+      if (i == 4) {
+        ((IGuildOpenApi)paramQQAppInterface.getRuntimeService(IGuildOpenApi.class, "")).handleTroopBackToAppDialog(paramActivity, paramIntent);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityUtils
  * JD-Core Version:    0.7.0.1
  */

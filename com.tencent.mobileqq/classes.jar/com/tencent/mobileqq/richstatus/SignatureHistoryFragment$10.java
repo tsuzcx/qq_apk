@@ -9,7 +9,7 @@ class SignatureHistoryFragment$10
   
   public void a(String paramString)
   {
-    if (SignatureHistoryFragment.b(this.a)) {
+    if (SignatureHistoryFragment.k(this.a)) {
       return;
     }
     SignatureHistoryFragment.a(this.a, paramString);
@@ -17,7 +17,7 @@ class SignatureHistoryFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.10
  * JD-Core Version:    0.7.0.1
  */

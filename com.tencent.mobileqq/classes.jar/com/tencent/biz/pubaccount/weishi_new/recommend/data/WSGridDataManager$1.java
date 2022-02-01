@@ -15,7 +15,7 @@ class WSGridDataManager$1
   
   protected WSGridDataManager.WSGridRspModel a(WSRequest<stSimpleGetFeedListRsp> paramWSRequest, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSGridDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataManager, paramstSimpleGetFeedListRsp, paramRspHeaderBean, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    return WSGridDataManager.a(this.g, paramstSimpleGetFeedListRsp, paramRspHeaderBean, this.a, this.b, this.c);
   }
   
   public void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -23,32 +23,32 @@ class WSGridDataManager$1
   public void a(WSGridDataManager.WSGridRspModel paramWSGridRspModel)
   {
     super.a(paramWSGridRspModel);
-    WSGridDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataManager, paramWSGridRspModel.a());
+    WSGridDataManager.a(this.g, paramWSGridRspModel.b());
     if ((paramWSGridRspModel.a() != null) && (paramWSGridRspModel.a().size() > 0))
     {
-      IWSGridRspListener localIWSGridRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener;
+      IWSGridRspListener localIWSGridRspListener = this.d;
       if (localIWSGridRspListener != null) {
-        localIWSGridRspListener.a(WSGridDataManager.WSGridRspModel.a(paramWSGridRspModel), this.jdField_a_of_type_Boolean, this.b, this.c, this.jdField_a_of_type_Long);
+        localIWSGridRspListener.a(WSGridDataManager.WSGridRspModel.a(paramWSGridRspModel), this.a, this.b, this.e, this.f);
       }
     }
     else
     {
-      b(new WSServiceErrorInfo(0, HardCodeUtil.a(2131716480)));
+      b(new WSServiceErrorInfo(0, HardCodeUtil.a(2131913913)));
     }
   }
   
   public void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    IWSGridRspListener localIWSGridRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener;
+    IWSGridRspListener localIWSGridRspListener = this.d;
     if (localIWSGridRspListener != null) {
-      localIWSGridRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), this.jdField_a_of_type_Boolean, this.b);
+      localIWSGridRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager.1
  * JD-Core Version:    0.7.0.1
  */

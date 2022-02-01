@@ -21,7 +21,7 @@ public class TroopStoryUtil
     if ((paramQQAppInterface != null) && (a(paramString)))
     {
       TroopStoryManager localTroopStoryManager = (TroopStoryManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_STORY_MANAGER);
-      String str = a(paramString);
+      String str = b(paramString);
       paramString = localTroopStoryManager.a(paramString);
       if (paramString != null) {
         return paramQQAppInterface.getMessageFacade().d(str, 1, paramString.longValue());
@@ -73,18 +73,6 @@ public class TroopStoryUtil
     return localStringBuilder.toString().toLowerCase();
   }
   
-  public static String a(String paramString)
-  {
-    if (a(paramString))
-    {
-      paramString = paramString.split("_");
-      if (paramString.length > 2) {
-        return paramString[1];
-      }
-    }
-    return null;
-  }
-  
   public static void a(MessageForTroopStory paramMessageForTroopStory, Bundle paramBundle)
   {
     paramBundle.putInt("forward_type", 32);
@@ -104,12 +92,24 @@ public class TroopStoryUtil
   
   public static boolean a(int paramInt, MessageRecord paramMessageRecord)
   {
-    return (QQStoryManager.i()) && (paramInt == 1) && ((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).busiType == 1);
+    return (QQStoryManager.o()) && (paramInt == 1) && ((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).busiType == 1);
   }
   
   public static boolean a(String paramString)
   {
     return (paramString != null) && (paramString.startsWith("gs_"));
+  }
+  
+  public static String b(String paramString)
+  {
+    if (a(paramString))
+    {
+      paramString = paramString.split("_");
+      if (paramString.length > 2) {
+        return paramString[1];
+      }
+    }
+    return null;
   }
 }
 

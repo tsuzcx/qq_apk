@@ -32,23 +32,19 @@ import java.util.Set;
 public class MemoryDataPuller
   implements IEventReceiver
 {
-  protected INetPageLoader a;
-  protected MemoryDataPuller.GetCollectListEventReceiver a;
-  protected Map<String, BatchHandlerListPuller> a;
-  protected Set<String> a;
-  protected boolean a;
-  protected String b;
-  protected boolean b;
   protected String c;
+  protected String d;
+  protected INetPageLoader e;
+  protected Map<String, BatchHandlerListPuller> f = new HashMap();
+  protected MemoryDataPuller.GetCollectListEventReceiver g;
+  protected boolean h = false;
+  protected boolean i = false;
+  protected Set<String> j = new HashSet();
   
   public MemoryDataPuller(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   protected BatchNetHandler a(String paramString, List<String> paramList)
@@ -58,64 +54,7 @@ public class MemoryDataPuller
   
   protected INetPageLoader a()
   {
-    return new DateCollectionListPageLoader(this.jdField_b_of_type_JavaLangString, this.c);
-  }
-  
-  public DateCollectionListPageLoader.GetCollectionListEvent a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    long l = System.currentTimeMillis();
-    Object localObject2 = (MemoryManager)SuperManager.a(19);
-    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject2).a(DateCollectionListPageLoader.a(this.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1)) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    Object localObject3 = this.jdField_b_of_type_JavaLangString;
-    Object localObject1 = null;
-    localObject3 = ((MemoryManager)localObject2).a((String)localObject3, null, 10L);
-    localObject2 = new DateCollectionListPageLoader.GetCollectionListEvent(this.c, new ErrorMessage());
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_b_of_type_Boolean = true;
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).c = true;
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).e = true;
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = false;
-    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_JavaUtilList = ((List)localObject3);
-    if (((List)localObject3).size() > 0) {
-      localObject1 = (VideoCollectionItem)((List)localObject3).get(((List)localObject3).size() - 1);
-    }
-    if (localObject1 == null)
-    {
-      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
-    }
-    else if ((localMemoryInfoEntry != null) && (((VideoCollectionItem)localObject1).dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
-    {
-      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Boolean = true;
-    }
-    else
-    {
-      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = false;
-    }
-    a((List)localObject3, false);
-    if (((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean) {
-      localObject1 = "true";
-    } else {
-      localObject1 = "false";
-    }
-    SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis() - l) });
-    return localObject2;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller$GetCollectListEventReceiver = new MemoryDataPuller.GetCollectListEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller$GetCollectListEventReceiver);
+    return new DateCollectionListPageLoader(this.c, this.d);
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem)
@@ -125,13 +64,13 @@ public class MemoryDataPuller
   
   public void a(String paramString)
   {
-    BatchHandlerListPuller localBatchHandlerListPuller = (BatchHandlerListPuller)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    BatchHandlerListPuller localBatchHandlerListPuller = (BatchHandlerListPuller)this.f.get(paramString);
     if (localBatchHandlerListPuller == null)
     {
       SLog.d("Q.qqstory.memories:MemoryDataPuller", String.format("cannot fount pageLoader , which collectionId is %s", new Object[] { paramString }));
       return;
     }
-    if ((!localBatchHandlerListPuller.b()) && (!localBatchHandlerListPuller.a())) {
+    if ((!localBatchHandlerListPuller.d()) && (!localBatchHandlerListPuller.c())) {
       localBatchHandlerListPuller.b();
     }
   }
@@ -141,16 +80,16 @@ public class MemoryDataPuller
     if (paramList.size() == 0) {
       return;
     }
-    int i = 0;
+    int k = 0;
     SLog.d("Q.qqstory.memories:MemoryDataPuller", "start update view count : %s", new Object[] { paramList });
-    while (i < paramList.size())
+    while (k < paramList.size())
     {
-      int j = Math.min(paramList.size(), i + 20);
-      if (i >= j) {
+      int m = Math.min(paramList.size(), k + 20);
+      if (k >= m) {
         return;
       }
-      Object localObject = paramList.subList(i, j);
-      UpdateCollectionViewCountHandler localUpdateCollectionViewCountHandler = new UpdateCollectionViewCountHandler(this.jdField_b_of_type_JavaLangString);
+      Object localObject = paramList.subList(k, m);
+      UpdateCollectionViewCountHandler localUpdateCollectionViewCountHandler = new UpdateCollectionViewCountHandler(this.c);
       ArrayList localArrayList = new ArrayList();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -165,13 +104,13 @@ public class MemoryDataPuller
       }
       localUpdateCollectionViewCountHandler.a(localArrayList);
       localUpdateCollectionViewCountHandler.a();
-      i = j;
+      k = m;
     }
   }
   
   public void a(List<VideoCollectionItem> paramList, boolean paramBoolean)
   {
-    if (!QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
+    if (!QQStoryContext.a().b(this.c)) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -179,7 +118,7 @@ public class MemoryDataPuller
     while (paramList.hasNext())
     {
       VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)paramList.next();
-      if ((localVideoCollectionItem.collectionType == 1) && ((this.jdField_a_of_type_JavaUtilSet.add(localVideoCollectionItem.key)) || (paramBoolean))) {
+      if ((localVideoCollectionItem.collectionType == 1) && ((this.j.add(localVideoCollectionItem.key)) || (paramBoolean))) {
         localArrayList.add(localVideoCollectionItem.key);
       }
     }
@@ -188,13 +127,10 @@ public class MemoryDataPuller
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller$GetCollectListEventReceiver != null)
-    {
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller$GetCollectListEventReceiver);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller$GetCollectListEventReceiver = null;
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.h = true;
+    this.e = a();
+    this.g = new MemoryDataPuller.GetCollectListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.g);
   }
   
   public void b(String paramString)
@@ -204,7 +140,7 @@ public class MemoryDataPuller
   
   public void b(List<String> paramList, boolean paramBoolean)
   {
-    if (!QQStoryContext.a().a(this.jdField_b_of_type_JavaLangString)) {
+    if (!QQStoryContext.a().b(this.c)) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -212,7 +148,7 @@ public class MemoryDataPuller
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      if ((VideoCollectionEntry.getCollectionType(str) == 1) && ((this.jdField_a_of_type_JavaUtilSet.add(str)) || (paramBoolean))) {
+      if ((VideoCollectionEntry.getCollectionType(str) == 1) && ((this.j.add(str)) || (paramBoolean))) {
         localArrayList.add(str);
       }
     }
@@ -221,19 +157,79 @@ public class MemoryDataPuller
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.h = false;
+    if (this.g != null)
+    {
+      StoryDispatcher.a().unRegisterSubscriber(this.g);
+      this.g = null;
+    }
+    this.f.clear();
+  }
+  
+  public DateCollectionListPageLoader.GetCollectionListEvent d()
+  {
+    this.i = false;
+    long l = System.currentTimeMillis();
+    Object localObject2 = (MemoryManager)SuperManager.a(19);
+    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject2).c(DateCollectionListPageLoader.b(this.c));
+    boolean bool;
+    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject3 = this.c;
+    Object localObject1 = null;
+    localObject3 = ((MemoryManager)localObject2).a((String)localObject3, null, 10L);
+    localObject2 = new DateCollectionListPageLoader.GetCollectionListEvent(this.d, new ErrorMessage());
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).j = this.c;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).b = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).c = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).h = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).a = false;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).e = ((List)localObject3);
+    if (((List)localObject3).size() > 0) {
+      localObject1 = (VideoCollectionItem)((List)localObject3).get(((List)localObject3).size() - 1);
+    }
+    if (localObject1 == null)
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).a = true;
+      this.i = true;
+    }
+    else if ((localMemoryInfoEntry != null) && (((VideoCollectionItem)localObject1).dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).a = bool;
+      this.i = true;
+    }
+    else
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).a = false;
+    }
+    a((List)localObject3, false);
+    if (((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).a) {
+      localObject1 = "true";
+    } else {
+      localObject1 = "false";
+    }
+    SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis() - l) });
+    return localObject2;
+  }
+  
+  public void e()
+  {
+    this.i = false;
     Bosses.get().postJob(new MemoryDataPuller.1(this, "Q.qqstory.memories:MemoryDataPuller"));
   }
   
-  public void d()
+  public void f()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader.a(null, 0);
+    this.i = false;
+    this.e.a(null, 0);
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.h;
   }
 }
 

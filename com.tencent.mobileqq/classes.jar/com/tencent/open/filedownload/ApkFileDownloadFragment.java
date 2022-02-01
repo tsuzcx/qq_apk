@@ -33,19 +33,19 @@ import org.json.JSONObject;
 public class ApkFileDownloadFragment
   extends IphoneTitleBarFragment
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private ApkFileDownloadFragment.PageType jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType;
-  private TaskInfo jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-  private NormalDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton;
-  private SafeDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton;
-  private WhiteListDownloadButton jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TaskInfo jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
+  private ImageView a;
+  private TextView b;
   private TextView c;
+  private NormalDownloadButton d;
+  private SafeDownloadButton e;
+  private WhiteListDownloadButton f;
+  private TextView g;
+  private boolean h;
+  private TaskInfo i;
+  private TaskInfo j;
+  private ApkFileDownloadFragment.PageType k;
+  private BaseActivity l;
+  private String m;
   
   private <T extends View> T a(int paramInt)
   {
@@ -56,86 +56,73 @@ public class ApkFileDownloadFragment
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(">specialCode ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f);
+    localStringBuilder.append(this.i.f);
     localStringBuilder.append("|");
     localStringBuilder.append(NetworkUtil.isNetworkAvailable(getBaseActivity()));
     localStringBuilder.append("|");
     localStringBuilder.append(NetworkUtil.isWifiConnected(getBaseActivity()));
     LogUtility.b("ApkFileDownloadFragment_", localStringBuilder.toString());
-    if ((this.jdField_a_of_type_Boolean) && (TextUtils.equals(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f, "com.tencent.weishi")) && (NetworkUtil.isNetworkAvailable(getBaseActivity())) && (NetworkUtil.isWifiConnected(getBaseActivity()))) {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.a(true, true);
+    if ((this.h) && (TextUtils.equals(this.i.f, "com.tencent.weishi")) && (NetworkUtil.isNetworkAvailable(getBaseActivity())) && (NetworkUtil.isWifiConnected(getBaseActivity()))) {
+      this.f.a(true, true);
     }
   }
   
   private void a(TaskInfo paramTaskInfo)
   {
-    CommonUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramTaskInfo.g);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTaskInfo.h);
-    if (paramTaskInfo.jdField_a_of_type_Long <= 0L)
+    CommonUtils.a(this.a, paramTaskInfo.g);
+    this.b.setText(paramTaskInfo.i);
+    if (paramTaskInfo.h <= 0L)
     {
       DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(paramTaskInfo.e);
       if (localDownloadInfo != null) {
-        paramTaskInfo.jdField_a_of_type_Long = localDownloadInfo.c;
+        paramTaskInfo.h = localDownloadInfo.E;
       }
     }
-    if (paramTaskInfo.jdField_a_of_type_Long > 0L)
+    if (paramTaskInfo.h > 0L)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(NewUpgradeDialog.a((float)paramTaskInfo.jdField_a_of_type_Long, true, 2));
+      this.c.setVisibility(0);
+      this.c.setText(NewUpgradeDialog.a((float)paramTaskInfo.h, true, 2));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.c.setVisibility(8);
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setVisibility(0);
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.a(paramBoolean, true);
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.d();
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setVisibility(8);
-    this.c.setVisibility(4);
+    this.d.setVisibility(0);
+    this.d.a(paramBoolean, true);
+    this.e.d();
+    this.e.setVisibility(8);
+    this.g.setVisibility(4);
     QQAppInterface localQQAppInterface = getBaseActivity().app;
     String str;
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {
+    if (this.i.i == null) {
       str = "";
     } else {
-      str = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+      str = this.i.i;
     }
     ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC5", "0X8009AC5", 0, 0, "", "", str, "");
   }
   
-  private boolean a()
-  {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.getVisibility() == 0) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
   private void b()
   {
-    AppCenterReporter.a(AppExposureDataBuilder.a().k(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_b_of_type_JavaLangString).j("0").l("0").m(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
-    boolean bool = this.jdField_a_of_type_Boolean;
+    AppCenterReporter.a(AppExposureDataBuilder.a().l(this.k.e).k("0").m("0").n(this.k.d).b(this.i.i).c(this.i.f).h(this.i.e));
+    boolean bool = this.h;
     String str = "";
     if (bool)
     {
       localQQAppInterface = getBaseActivity().app;
-      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h != null) {
-        str = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+      if (this.i.i != null) {
+        str = this.i.i;
       }
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC3", "0X8009AC3", 0, 0, "", "", str, "");
       return;
     }
     QQAppInterface localQQAppInterface = getBaseActivity().app;
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h != null) {
-      str = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+    if (this.i.i != null) {
+      str = this.i.i;
     }
     ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC2", "0X8009AC2", 0, 0, "", "", str, "");
   }
@@ -145,28 +132,28 @@ public class ApkFileDownloadFragment
     Object localObject1 = getArguments();
     if (localObject1 == null)
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131700501));
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      ToastUtil.a().a(HardCodeUtil.a(2131898532));
+      this.l.finish();
       return;
     }
-    this.jdField_a_of_type_Boolean = ((Bundle)localObject1).getBoolean("param_in_white_list", false);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType = ApkFileDownloadFragment.PageType.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType;
+    this.h = ((Bundle)localObject1).getBoolean("param_in_white_list", false);
+    if (this.h) {
+      this.k = ApkFileDownloadFragment.PageType.a;
     } else if (CommonUtils.a()) {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType = ApkFileDownloadFragment.PageType.jdField_b_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType;
+      this.k = ApkFileDownloadFragment.PageType.b;
     } else {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType = ApkFileDownloadFragment.PageType.c;
+      this.k = ApkFileDownloadFragment.PageType.c;
     }
     Object localObject2 = ((Bundle)localObject1).getString("param_ext_info");
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo = new TaskInfo();
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.d = this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e = ((Bundle)localObject1).getString("param_url");
+    this.i = new TaskInfo();
+    this.i.a = this.k.e;
+    this.i.d = this.k.d;
+    this.i.e = ((Bundle)localObject1).getString("param_url");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RealUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e);
+    localStringBuilder.append(this.i.e);
     LogUtility.b("ApkFileDownloadFragment_", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long = ((Bundle)localObject1).getLong("_filesize");
+    this.i.h = ((Bundle)localObject1).getLong("_filesize");
     try
     {
       if (!TextUtils.isEmpty((CharSequence)localObject2))
@@ -176,101 +163,114 @@ public class ApkFileDownloadFragment
         localStringBuilder.append((String)localObject2);
         LogUtility.b("ApkFileDownloadFragment_", localStringBuilder.toString());
         localObject2 = new JSONObject((String)localObject2);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e)) {
-          this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e = ((JSONObject)localObject2).optString("url");
+        if (TextUtils.isEmpty(this.i.e)) {
+          this.i.e = ((JSONObject)localObject2).optString("url");
         }
-        this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.g = ((JSONObject)localObject2).optString("app_icon");
-        this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h = ((JSONObject)localObject2).optString("app_name");
-        if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long <= 0L) {
-          this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long = ((JSONObject)localObject2).optLong("app_filesize");
+        this.i.g = ((JSONObject)localObject2).optString("app_icon");
+        this.i.i = ((JSONObject)localObject2).optString("app_name");
+        if (this.i.h <= 0L) {
+          this.i.h = ((JSONObject)localObject2).optLong("app_filesize");
         }
-        this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f = ((JSONObject)localObject2).optString("packagename");
+        this.i.f = ((JSONObject)localObject2).optString("packagename");
       }
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e))
+    if (TextUtils.isEmpty(this.i.e))
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131700498));
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      ToastUtil.a().a(HardCodeUtil.a(2131898530));
+      this.l.finish();
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h))
+    if (TextUtils.isEmpty(this.i.i))
     {
-      TaskInfo localTaskInfo = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-      localTaskInfo.h = CommonUtils.a(localTaskInfo.e);
+      TaskInfo localTaskInfo = this.i;
+      localTaskInfo.i = CommonUtils.a(localTaskInfo.e);
     }
-    this.jdField_a_of_type_JavaLangString = ((Bundle)localObject1).getString("big_brother_source_key");
+    this.m = ((Bundle)localObject1).getString("big_brother_source_key");
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("mPageType:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType);
+    ((StringBuilder)localObject1).append(this.k);
     ((StringBuilder)localObject1).append("\nTaskInfo:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo);
+    ((StringBuilder)localObject1).append(this.i);
     ((StringBuilder)localObject1).append("\nmSource:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.m);
     LogUtility.b("ApkFileDownloadFragment_", ((StringBuilder)localObject1).toString());
   }
   
   private void d()
   {
-    this.leftView.setText(HardCodeUtil.a(2131700499));
+    this.leftView.setText(HardCodeUtil.a(2131901576));
     this.leftView.setOnClickListener(new ApkFileDownloadFragment.1(this));
-    setTitle(HardCodeUtil.a(2131700503));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131368450));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380061));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131380060));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton = ((NormalDownloadButton)a(2131363989));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton = ((SafeDownloadButton)a(2131364045));
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton = ((WhiteListDownloadButton)a(2131364107));
-    this.c = ((TextView)a(2131380077));
+    setTitle(HardCodeUtil.a(2131898534));
+    this.a = ((ImageView)a(2131435346));
+    this.b = ((TextView)a(2131448974));
+    this.c = ((TextView)a(2131448973));
+    this.d = ((NormalDownloadButton)a(2131429946));
+    this.e = ((SafeDownloadButton)a(2131430003));
+    this.f = ((WhiteListDownloadButton)a(2131430073));
+    this.g = ((TextView)a(2131448990));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setSource(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setSource(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setSource(this.jdField_a_of_type_JavaLangString);
+    this.e.setSource(this.m);
+    this.f.setSource(this.m);
+    this.d.setSource(this.m);
     TaskInfo localTaskInfo;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setVisibility(0);
-      localTaskInfo = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-      localTaskInfo.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton.setApkInfo(localTaskInfo);
-      this.c.setVisibility(8);
+      this.f.setVisibility(0);
+      localTaskInfo = this.i;
+      localTaskInfo.b = "3";
+      this.f.setApkInfo(localTaskInfo);
+      this.g.setVisibility(8);
     }
     else
     {
-      this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo = TaskInfo.a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo);
-      localTaskInfo = this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
+      this.j = TaskInfo.a(this.i);
+      localTaskInfo = this.j;
       localTaskInfo.e = "https://a.app.qq.com/o/myapp-down?g_f=1005234";
       localTaskInfo.f = "com.tencent.android.qqdownloader";
-      localTaskInfo.h = HardCodeUtil.a(2131700495);
-      this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setVisibility(8);
-      localTaskInfo = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-      localTaskInfo.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setOriApkInfo(localTaskInfo);
-      localTaskInfo = this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
-      localTaskInfo.jdField_b_of_type_JavaLangString = "3";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setApkInfo(localTaskInfo);
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.setEventCallback(new ApkFileDownloadFragment.2(this));
-      localTaskInfo = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo;
-      localTaskInfo.jdField_b_of_type_JavaLangString = "4";
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setApkInfo(localTaskInfo);
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.setEventCallback(new ApkFileDownloadFragment.3(this));
-      this.c.setText(HardCodeUtil.a(2131700504));
-      this.c.setOnClickListener(new ApkFileDownloadFragment.4(this));
+      localTaskInfo.i = HardCodeUtil.a(2131898527);
+      this.j.h = 0L;
+      this.e.setVisibility(8);
+      localTaskInfo = this.i;
+      localTaskInfo.b = "3";
+      this.e.setOriApkInfo(localTaskInfo);
+      localTaskInfo = this.j;
+      localTaskInfo.b = "3";
+      this.e.setApkInfo(localTaskInfo);
+      this.e.setEventCallback(new ApkFileDownloadFragment.2(this));
+      localTaskInfo = this.i;
+      localTaskInfo.b = "4";
+      this.d.setApkInfo(localTaskInfo);
+      this.d.setEventCallback(new ApkFileDownloadFragment.3(this));
+      this.g.setText(HardCodeUtil.a(2131898535));
+      this.g.setOnClickListener(new ApkFileDownloadFragment.4(this));
     }
-    a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo);
+    a(this.i);
+  }
+  
+  private boolean f()
+  {
+    boolean bool2 = this.h;
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    if (this.d.getVisibility() == 0) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
-    QAppCenterPluginProxyActivityTools.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    this.l = getBaseActivity();
+    QAppCenterPluginProxyActivityTools.a(this.l);
     c();
     d();
     e();
@@ -280,33 +280,33 @@ public class ApkFileDownloadFragment
   
   protected int getContentLayoutId()
   {
-    return 2131559646;
+    return 2131625675;
   }
   
   public boolean onBackEvent()
   {
-    if (a())
+    if (f())
     {
-      AppCenterReporter.b(ClickDataBuilder.a().a("301").k(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
-      this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton.b(false, true);
+      AppCenterReporter.b(ClickDataBuilder.a().a("301").l(this.k.e).k("2").m("0").n(this.k.d).b(this.i.i).c(this.i.f).h(this.i.e));
+      this.d.b(false, true);
       return true;
     }
-    AppCenterReporter.b(ClickDataBuilder.a().a("200").k(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_b_of_type_JavaLangString).j("2").l("0").m(this.jdField_a_of_type_ComTencentOpenFiledownloadApkFileDownloadFragment$PageType.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+    AppCenterReporter.b(ClickDataBuilder.a().a("200").l(this.k.e).k("2").m("0").n(this.k.d).b(this.i.i).c(this.i.f).h(this.i.e));
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
     LogUtility.b("ApkFileDownloadFragment_", "[onDestroy]");
-    Object localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadUiNormalDownloadButton;
+    Object localObject = this.d;
     if (localObject != null) {
       ((NormalDownloadButton)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadUiWhiteListDownloadButton;
+    localObject = this.f;
     if (localObject != null) {
       ((WhiteListDownloadButton)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton;
+    localObject = this.e;
     if (localObject != null) {
       ((SafeDownloadButton)localObject).c();
     }
@@ -316,13 +316,13 @@ public class ApkFileDownloadFragment
   public void onResume()
   {
     LogUtility.b("ApkFileDownloadFragment_", "[onResume]");
-    this.jdField_a_of_type_ComTencentOpenFiledownloadUiSafeDownloadButton.j();
+    this.e.j();
     super.onResume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ApkFileDownloadFragment
  * JD-Core Version:    0.7.0.1
  */

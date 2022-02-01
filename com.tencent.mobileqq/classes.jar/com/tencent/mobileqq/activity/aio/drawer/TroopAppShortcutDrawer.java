@@ -19,8 +19,8 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopAppShortcutDrawer
   extends BaseChatDrawer
 {
-  private TroopAppShortcutContainer jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
-  private boolean jdField_a_of_type_Boolean = false;
+  private TroopAppShortcutContainer h;
+  private boolean i = false;
   
   public TroopAppShortcutDrawer(BaseChatPie paramBaseChatPie)
   {
@@ -29,114 +29,114 @@ public class TroopAppShortcutDrawer
   
   private void a(String paramString)
   {
-    if (((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramString)) {
+    if (((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).Z(paramString)) {
       c(false);
     }
   }
   
-  private void m()
+  private void p()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    TroopAppShortcutHelper localTroopAppShortcutHelper = (TroopAppShortcutHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(55);
+    this.i = true;
+    TroopAppShortcutHelper localTroopAppShortcutHelper = (TroopAppShortcutHelper)this.e.q(55);
     if (localTroopAppShortcutHelper != null) {
       localTroopAppShortcutHelper.e();
     }
-    TroopAppShortcutNavBar.e();
-  }
-  
-  protected View a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = new TroopAppShortcutDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), 1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
-    return this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
+    TroopAppShortcutNavBar.h();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) && (a())) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a(paramInt1, paramInt2, paramIntent);
+    if ((this.h != null) && (d())) {
+      this.h.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void b()
+  protected View b()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b());
+    this.h = new TroopAppShortcutDrawer.1(this, this.a, this.b, this.c, this.e.ah, this.e.ae(), 1);
+    this.h.a();
+    return this.h.a();
   }
   
-  public boolean b()
+  public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer != null) && (a()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer.a();
-      return true;
-    }
-    return false;
+    a(this.e.ae());
   }
   
   public void c(int paramInt)
   {
-    TroopAppShortcutContainer localTroopAppShortcutContainer = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.h;
     if (localTroopAppShortcutContainer != null) {
       localTroopAppShortcutContainer.a(paramInt);
     }
   }
   
-  public void f()
+  public boolean h()
   {
-    super.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
+    if ((this.h != null) && (d()))
+    {
+      this.h.i();
+      return true;
     }
-    TroopAppShortcutContainer localTroopAppShortcutContainer = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
-    if (localTroopAppShortcutContainer != null) {
-      localTroopAppShortcutContainer.a();
-    }
-    m();
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened", new Object[0]));
-    }
-    TroopAppShortcutContainer localTroopAppShortcutContainer = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
-    if (localTroopAppShortcutContainer != null) {
-      localTroopAppShortcutContainer.b();
-    }
+    return false;
   }
   
   public void i()
   {
     super.i();
     if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
+    }
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.h;
+    if (localTroopAppShortcutContainer != null) {
+      localTroopAppShortcutContainer.b();
+    }
+    p();
+  }
+  
+  public void k()
+  {
+    super.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened", new Object[0]));
+    }
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.h;
+    if (localTroopAppShortcutContainer != null) {
+      localTroopAppShortcutContainer.c();
+    }
+  }
+  
+  public void l()
+  {
+    super.l();
+    if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, String.format("onDrawerClosed", new Object[0]));
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
+    Object localObject1 = this.h;
     if (localObject1 != null) {
-      ((TroopAppShortcutContainer)localObject1).c();
+      ((TroopAppShortcutContainer)localObject1).d();
     }
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a == null) || (!TroopAppShortcutUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a)))) {
+      if ((this.e == null) || (this.e.ah == null) || (!TroopAppShortcutUtils.a(this.a, Long.parseLong(this.e.ah.b)))) {
         break label180;
       }
-      localObject1 = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
-      Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      localObject1 = (TroopShortcutBarHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+      Object localObject2 = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
       if (localObject2 == null) {
         return;
       }
-      localObject2 = ((TroopManager)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a);
+      localObject2 = ((TroopManager)localObject2).f(this.e.ah.b);
       if (localObject2 == null) {
         return;
       }
       if (localObject1 == null) {
         break label180;
       }
-      ((TroopShortcutBarHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a), (int)((TroopInfo)localObject2).dwGroupClassExt, null);
+      ((TroopShortcutBarHandler)localObject1).a(Long.parseLong(this.e.ah.b), (int)((TroopInfo)localObject2).dwGroupClassExt, null);
       return;
     }
     catch (Exception localException)
@@ -150,19 +150,19 @@ public class TroopAppShortcutDrawer
     label180:
   }
   
-  public void k()
+  public void n()
   {
-    TroopAppShortcutContainer localTroopAppShortcutContainer = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
+    TroopAppShortcutContainer localTroopAppShortcutContainer = this.h;
     if (localTroopAppShortcutContainer != null)
     {
-      localTroopAppShortcutContainer.g();
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = null;
+      localTroopAppShortcutContainer.j();
+      this.h = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.TroopAppShortcutDrawer
  * JD-Core Version:    0.7.0.1
  */

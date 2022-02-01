@@ -74,9 +74,9 @@ public class WebViewJumpUtils
           i = 1;
         }
         if ((i == 0) && (paramWebViewProvider.length() > 1)) {
-          localIntent.putExtra("banner_wording", String.format(HardCodeUtil.a(2131716373), new Object[] { localCustomWebView.getTitle() }));
+          localIntent.putExtra("banner_wording", String.format(HardCodeUtil.a(2131913813), new Object[] { localCustomWebView.getTitle() }));
         } else {
-          localIntent.putExtra("banner_wording", HardCodeUtil.a(2131716374));
+          localIntent.putExtra("banner_wording", HardCodeUtil.a(2131913814));
         }
       }
       if (paramBundle.containsKey("banner_businessCategory"))
@@ -140,30 +140,6 @@ public class WebViewJumpUtils
     paramIntent.putExtra("banner_webViewUrl", localStringBuilder.toString());
   }
   
-  public static final void a(Bundle paramBundle, WebViewProvider paramWebViewProvider)
-  {
-    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)paramWebViewProvider.getComponentProvider().a(2);
-    if (localSwiftBrowserUIStyleHandler == null) {
-      return;
-    }
-    if ((localSwiftBrowserUIStyleHandler.a.G) && (paramBundle != null))
-    {
-      paramBundle = a(paramBundle, paramWebViewProvider);
-      if (paramBundle != null) {
-        paramWebViewProvider.getHostActivity().startActivity(paramBundle);
-      }
-    }
-    else
-    {
-      QLog.e("WebLog_WebViewFragment", 1, "WebViewSwitchAio goToConversation call from illegal url or bundle is null, ignore.");
-    }
-  }
-  
-  public static void a(WebViewProvider paramWebViewProvider)
-  {
-    a(a(paramWebViewProvider), paramWebViewProvider);
-  }
-  
   public static void a(String paramString1, int paramInt, String paramString2, String paramString3, WebViewProvider paramWebViewProvider)
   {
     Object localObject = new StringBuilder();
@@ -186,7 +162,7 @@ public class WebViewJumpUtils
     Bundle localBundle2 = new Bundle();
     localObject = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      localObject = HardCodeUtil.a(2131716370);
+      localObject = HardCodeUtil.a(2131913810);
     }
     localBundle2.putString("tips", (String)localObject);
     localBundle2.putString("iconURL", paramString2);
@@ -204,10 +180,34 @@ public class WebViewJumpUtils
     paramString1.putExtra("fragment_id", 1);
     paramWebViewProvider.getHostActivity().startActivity(paramString1);
   }
+  
+  public static final void b(Bundle paramBundle, WebViewProvider paramWebViewProvider)
+  {
+    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)paramWebViewProvider.getComponentProvider().a(2);
+    if (localSwiftBrowserUIStyleHandler == null) {
+      return;
+    }
+    if ((localSwiftBrowserUIStyleHandler.f.S) && (paramBundle != null))
+    {
+      paramBundle = a(paramBundle, paramWebViewProvider);
+      if (paramBundle != null) {
+        paramWebViewProvider.getHostActivity().startActivity(paramBundle);
+      }
+    }
+    else
+    {
+      QLog.e("WebLog_WebViewFragment", 1, "WebViewSwitchAio goToConversation call from illegal url or bundle is null, ignore.");
+    }
+  }
+  
+  public static void b(WebViewProvider paramWebViewProvider)
+  {
+    b(a(paramWebViewProvider), paramWebViewProvider);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.WebViewJumpUtils
  * JD-Core Version:    0.7.0.1
  */

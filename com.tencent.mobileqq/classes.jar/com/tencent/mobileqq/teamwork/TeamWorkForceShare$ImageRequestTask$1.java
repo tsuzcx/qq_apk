@@ -17,7 +17,7 @@ class TeamWorkForceShare$ImageRequestTask$1
   
   public void onFileDownloadFailed(int paramInt)
   {
-    String str = TeamWorkForceShare.a();
+    String str = TeamWorkForceShare.d();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("download failed, code = ");
     localStringBuilder.append(paramInt);
@@ -29,7 +29,7 @@ class TeamWorkForceShare$ImageRequestTask$1
   
   public void onFileDownloadStarted()
   {
-    String str = TeamWorkForceShare.a();
+    String str = TeamWorkForceShare.d();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start download, url = ");
     localStringBuilder.append(TeamWorkForceShare.ImageRequestTask.a(this.a));
@@ -38,7 +38,7 @@ class TeamWorkForceShare$ImageRequestTask$1
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    String str = TeamWorkForceShare.a();
+    String str = TeamWorkForceShare.d();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("download success, size = ");
     localStringBuilder.append(paramLong);
@@ -52,7 +52,7 @@ class TeamWorkForceShare$ImageRequestTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask.1
  * JD-Core Version:    0.7.0.1
  */

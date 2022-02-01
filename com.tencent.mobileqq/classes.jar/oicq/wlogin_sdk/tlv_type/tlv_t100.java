@@ -6,7 +6,7 @@ public class tlv_t100
   extends tlv_t
 {
   int _db_buf_ver = 1;
-  int _sso_ver = 17;
+  int _sso_ver = 18;
   int _t100_body_len = 22;
   
   public tlv_t100()
@@ -31,7 +31,7 @@ public class tlv_t100
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t100
  * JD-Core Version:    0.7.0.1
  */

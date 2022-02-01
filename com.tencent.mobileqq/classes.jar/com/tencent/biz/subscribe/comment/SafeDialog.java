@@ -7,23 +7,23 @@ import java.lang.ref.WeakReference;
 public class SafeDialog
   extends BaseDialog
 {
-  protected WeakReference<Context> a;
+  protected WeakReference<Context> c;
   
   public SafeDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.a = new WeakReference(paramContext);
+    this.c = new WeakReference(paramContext);
   }
   
-  public boolean a()
+  public boolean g()
   {
-    Context localContext = (Context)this.a.get();
+    Context localContext = (Context)this.c.get();
     return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
   }
   
   public void show()
   {
-    if (a()) {
+    if (g()) {
       return;
     }
     super.show();

@@ -9,11 +9,11 @@ class OnlineVideoARRenderable$2
   
   public void run()
   {
-    if (OnlineVideoARRenderable.a(this.this$0)) {
+    if (OnlineVideoARRenderable.c(this.this$0)) {
       try
       {
-        OnlineVideoARRenderable.a(this.this$0).updateTexImage();
-        OnlineVideoARRenderable.a(this.this$0).getTransformMatrix(OnlineVideoARRenderable.a(this.this$0));
+        OnlineVideoARRenderable.d(this.this$0).updateTexImage();
+        OnlineVideoARRenderable.d(this.this$0).getTransformMatrix(OnlineVideoARRenderable.e(this.this$0));
         return;
       }
       catch (Exception localException)
@@ -25,7 +25,7 @@ class OnlineVideoARRenderable$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.2
  * JD-Core Version:    0.7.0.1
  */

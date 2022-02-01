@@ -12,18 +12,18 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class WeishiGridTwoItemViewHolder
   extends ViewHolder
 {
-  public TextView a;
   public KandianUrlImageView a;
-  public AbsBaseArticleInfo a;
   public TextView b;
-  public KandianUrlImageView b;
-  public AbsBaseArticleInfo b;
   public TextView c;
   public TextView d;
   public TextView e;
-  public TextView f;
+  public KandianUrlImageView f;
   public TextView g;
   public TextView h;
+  public TextView i;
+  public TextView j;
+  public AbsBaseArticleInfo k;
+  public AbsBaseArticleInfo l;
   
   public WeishiGridTwoItemViewHolder(Context paramContext, VideoHandler paramVideoHandler)
   {
@@ -32,24 +32,24 @@ public class WeishiGridTwoItemViewHolder
   
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560391, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367807));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369969));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369974));
-    this.c = ((TextView)paramViewGroup.findViewById(2131369944));
-    this.d = ((TextView)paramViewGroup.findViewById(2131369968));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367809));
-    this.e = ((TextView)paramViewGroup.findViewById(2131376583));
-    this.f = ((TextView)paramViewGroup.findViewById(2131376589));
-    this.g = ((TextView)paramViewGroup.findViewById(2131376563));
-    this.h = ((TextView)paramViewGroup.findViewById(2131376582));
+    paramViewGroup = LayoutInflater.from(this.N).inflate(2131626437, paramViewGroup, false);
+    this.a = ((KandianUrlImageView)paramViewGroup.findViewById(2131434382));
+    this.b = ((TextView)paramViewGroup.findViewById(2131437119));
+    this.c = ((TextView)paramViewGroup.findViewById(2131437125));
+    this.d = ((TextView)paramViewGroup.findViewById(2131437093));
+    this.e = ((TextView)paramViewGroup.findViewById(2131437118));
+    this.f = ((KandianUrlImageView)paramViewGroup.findViewById(2131434384));
+    this.g = ((TextView)paramViewGroup.findViewById(2131444838));
+    this.h = ((TextView)paramViewGroup.findViewById(2131444845));
+    this.i = ((TextView)paramViewGroup.findViewById(2131444816));
+    this.j = ((TextView)paramViewGroup.findViewById(2131444837));
     paramViewGroup.setTag(this);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.viewholder.WeishiGridTwoItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

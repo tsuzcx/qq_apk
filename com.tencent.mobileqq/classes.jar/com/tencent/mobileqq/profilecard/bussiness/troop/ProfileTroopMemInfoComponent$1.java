@@ -93,9 +93,9 @@ class ProfileTroopMemInfoComponent$1
           ((ProfileCardInfo)ProfileTroopMemInfoComponent.access$900(this.this$0)).troopShowMoreBtn = true;
           if ((paramObject.result == 260) && (paramObject.memberRole == 0))
           {
-            QQToast.a(ProfileTroopMemInfoComponent.access$1000(this.this$0), 1, HardCodeUtil.a(2131705005), 0).a();
+            QQToast.makeText(ProfileTroopMemInfoComponent.access$1000(this.this$0), 1, HardCodeUtil.a(2131902896), 0).show();
             ((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1100(this.this$0)).troopMemberCard = paramObject;
-            if (!((TroopManager)localObject).m(((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1200(this.this$0)).troopUin))
+            if (!((TroopManager)localObject).Z(((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1200(this.this$0)).troopUin))
             {
               ((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1300(this.this$0)).isTroopMemberCard = false;
               ProfileTroopMemInfoComponent.access$1400(this.this$0);
@@ -106,7 +106,7 @@ class ProfileTroopMemInfoComponent$1
           }
           if ((paramObject.titleId == 0) && (localObject != null))
           {
-            localObject = ((TroopManager)localObject).b(((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1600(this.this$0)).troopUin, ((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1700(this.this$0)).allInOne.uin);
+            localObject = ((TroopManager)localObject).g(((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1600(this.this$0)).troopUin, ((ProfileCardInfo)ProfileTroopMemInfoComponent.access$1700(this.this$0)).allInOne.uin);
             if (localObject != null)
             {
               paramObject.titleId = ((TroopMemberInfo)localObject).level;
@@ -169,7 +169,7 @@ class ProfileTroopMemInfoComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent.1
  * JD-Core Version:    0.7.0.1
  */

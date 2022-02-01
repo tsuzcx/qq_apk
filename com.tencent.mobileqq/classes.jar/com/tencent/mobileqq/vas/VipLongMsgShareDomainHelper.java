@@ -10,27 +10,27 @@ import org.json.JSONObject;
 
 public class VipLongMsgShareDomainHelper
 {
-  private static VipLongMsgShareDomainHelper jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private static VipLongMsgShareDomainHelper c;
+  private List<String> a = new CopyOnWriteArrayList();
   private List<String> b = new CopyOnWriteArrayList();
   
   public VipLongMsgShareDomainHelper()
   {
-    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
+    this.a.add("vip.qq.com");
   }
   
   public static VipLongMsgShareDomainHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper = new VipLongMsgShareDomainHelper();
+        if (c == null) {
+          c = new VipLongMsgShareDomainHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqVasVipLongMsgShareDomainHelper;
+    return c;
   }
   
   public void a(JSONArray paramJSONArray)
@@ -74,7 +74,7 @@ public class VipLongMsgShareDomainHelper
     Object localObject2 = this.b;
     Object localObject1 = localObject2;
     if (((List)localObject2).isEmpty()) {
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      localObject1 = this.a;
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -89,7 +89,7 @@ public class VipLongMsgShareDomainHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipLongMsgShareDomainHelper
  * JD-Core Version:    0.7.0.1
  */

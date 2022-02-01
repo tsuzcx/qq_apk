@@ -18,6 +18,7 @@ import com.tencent.qqmini.sdk.launcher.action.EngineChannel;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IPage;
 import com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
@@ -99,6 +100,20 @@ public class AppUIProxy
     MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, getMiniAppInfo());
   }
   
+  protected boolean isAbleToShowAd()
+  {
+    return this.hasCompletedLoading ^ true;
+  }
+  
+  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramActivity, paramInt1, paramInt2, paramIntent);
+    paramActivity = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (paramActivity != null) {
+      paramActivity.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
   public void onAttachActivity(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
     super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);
@@ -127,6 +142,24 @@ public class AppUIProxy
       super.onIntentUpdate(paramIntent);
       return;
       Object localObject = null;
+    }
+  }
+  
+  public void onMiniStart()
+  {
+    super.onMiniStart();
+    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (localAdProxy != null) {
+      localAdProxy.onActivityStart();
+    }
+  }
+  
+  public void onMiniStop()
+  {
+    super.onMiniStop();
+    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (localAdProxy != null) {
+      localAdProxy.onActivityStop();
     }
   }
   
@@ -297,7 +330,7 @@ public class AppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppUIProxy
  * JD-Core Version:    0.7.0.1
  */

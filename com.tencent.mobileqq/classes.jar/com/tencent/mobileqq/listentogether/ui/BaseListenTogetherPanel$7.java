@@ -17,22 +17,22 @@ class BaseListenTogetherPanel$7
   {
     try
     {
-      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131560935, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
+      View localView = ((LayoutInflater)this.this$0.b.getSystemService("layout_inflater")).inflate(2131627276, this.this$0.c, false);
       localView.measure(0, 0);
-      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
-      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.this$0.f = new PopupWindow(localView);
+      this.this$0.f.setHeight(-2);
+      this.this$0.f.setWidth(-2);
+      this.this$0.f.setOutsideTouchable(true);
       localView.setOnClickListener(new BaseListenTogetherPanel.7.1(this));
       int i;
-      if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null) {
-        i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+      if (this.this$0.c != null) {
+        i = this.this$0.c.getWidth();
       } else {
-        i = ViewUtils.a();
+        i = ViewUtils.getScreenWidth();
       }
       int j = localView.getMeasuredWidth();
-      int k = ViewUtils.a(52.0F);
-      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout, i - j - k, 0);
+      int k = ViewUtils.dip2px(52.0F);
+      this.this$0.f.showAsDropDown(this.this$0.d, i - j - k, 0);
       return;
     }
     catch (Exception localException)
@@ -43,7 +43,7 @@ class BaseListenTogetherPanel$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.7
  * JD-Core Version:    0.7.0.1
  */

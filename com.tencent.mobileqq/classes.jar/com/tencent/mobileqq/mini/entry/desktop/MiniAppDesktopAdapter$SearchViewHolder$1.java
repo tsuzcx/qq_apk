@@ -65,7 +65,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
         QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
       }
     }
-    paramView = HardCodeUtil.a(2131706829);
+    paramView = HardCodeUtil.a(2131904677);
     if (MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText() != null) {
       paramView = MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText().toString();
     }
@@ -77,7 +77,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.SearchViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

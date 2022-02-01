@@ -12,7 +12,7 @@ class AVGameControlUIImpl$3
   
   public void a()
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.3.4(this));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.3.4(this));
   }
   
   public void a(long paramLong) {}
@@ -21,18 +21,18 @@ class AVGameControlUIImpl$3
   
   public void b(long paramLong)
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.3.3(this, paramLong));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.3.3(this, paramLong));
   }
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.3.1(this));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.3.1(this));
     AVGameQualityCameraReportUtil.a(paramBoolean);
   }
   
   public void c(long paramLong, boolean paramBoolean)
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.3.2(this));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.3.2(this));
   }
 }
 

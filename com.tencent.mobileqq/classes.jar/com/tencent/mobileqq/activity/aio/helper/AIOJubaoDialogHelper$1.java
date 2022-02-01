@@ -16,13 +16,13 @@ class AIOJubaoDialogHelper$1
   public void onClick(View paramView)
   {
     AIOJubaoDialogHelper.a(this.a).dismissDialog(230);
-    NewReportPlugin.a(AIOJubaoDialogHelper.a(this.a), AIOJubaoDialogHelper.a(this.a).jdField_a_of_type_Int, AIOJubaoDialogHelper.a(this.a).jdField_a_of_type_JavaLangString, AIOJubaoDialogHelper.a(this.a).getAccount());
+    NewReportPlugin.a(AIOJubaoDialogHelper.a(this.a), AIOJubaoDialogHelper.b(this.a).a, AIOJubaoDialogHelper.b(this.a).b, AIOJubaoDialogHelper.c(this.a).getAccount());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper.1
  * JD-Core Version:    0.7.0.1
  */

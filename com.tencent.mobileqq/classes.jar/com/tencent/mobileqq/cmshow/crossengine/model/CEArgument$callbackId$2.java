@@ -17,12 +17,12 @@ final class CEArgument$callbackId$2
   
   public final int invoke()
   {
-    return this.this$0.a().optInt("callbackId", -1);
+    return this.this$0.d().optInt("callbackId", -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.model.CEArgument.callbackId.2
  * JD-Core Version:    0.7.0.1
  */

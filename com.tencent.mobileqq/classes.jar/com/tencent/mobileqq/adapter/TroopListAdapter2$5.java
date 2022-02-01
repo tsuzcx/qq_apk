@@ -17,20 +17,20 @@ class TroopListAdapter2$5
     if ((localObject instanceof TroopListAdapter2.TroopListViewItemTag))
     {
       localObject = (TroopListAdapter2.TroopListViewItemTag)localObject;
-      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, ((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_Int);
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).h != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).h.b != null)) {
+        this.a.b.a(((TroopListAdapter2.TroopListViewItemTag)localObject).h.b, ((TroopListAdapter2.TroopListViewItemTag)localObject).h.a);
       }
-      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).h != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).h.c != null)) {
+        this.a.b.a(((TroopListAdapter2.TroopListViewItemTag)localObject).h.c);
       }
-      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
+      new ReportTask(this.a.e).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.5
  * JD-Core Version:    0.7.0.1
  */

@@ -26,47 +26,47 @@ class AddFriendVerifyActivity$3
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.s != null)
     {
       this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+      this.a.s.hideSoftInputFromWindow(AddFriendVerifyActivity.e(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.e(this.a).clearFocus();
     }
-    if (this.a.b != 0) {
+    if (this.a.B != 0) {
       ReportController.b(null, "dc00898", "", "", "0X800B5B3", "0X800B5B3", 0, 0, "", "", "", "");
     }
-    Object localObject = AddFriendVerifyActivity.a(this.a).getText().toString();
+    Object localObject = AddFriendVerifyActivity.e(this.a).getText().toString();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       if (!this.a.isFinishing())
       {
         localObject = new QQAnonymousDialog(this.a);
-        ((QQAnonymousDialog)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700072));
-        ((QQAnonymousDialog)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846359);
+        ((QQAnonymousDialog)localObject).c.setText(HardCodeUtil.a(2131898117));
+        ((QQAnonymousDialog)localObject).b.setImageResource(2130847832);
         ((QQAnonymousDialog)localObject).a();
       }
     }
     else if (((String)localObject).length() > 90)
     {
-      localObject = new ReportDialog(this.a, 2131756189);
-      ((Dialog)localObject).setContentView(2131562765);
-      ((TextView)((Dialog)localObject).findViewById(2131365644)).setText(this.a.getString(2131691105));
-      ((ProgressBar)((Dialog)localObject).findViewById(2131367113)).setVisibility(8);
-      ((ImageView)((Dialog)localObject).findViewById(2131380236)).setImageResource(2130839590);
+      localObject = new ReportDialog(this.a, 2131953338);
+      ((Dialog)localObject).setContentView(2131629210);
+      ((TextView)((Dialog)localObject).findViewById(2131431876)).setText(this.a.getString(2131888051));
+      ((ProgressBar)((Dialog)localObject).findViewById(2131433567)).setVisibility(8);
+      ((ImageView)((Dialog)localObject).findViewById(2131449154)).setImageResource(2130840055);
       ((Dialog)localObject).show();
     }
     else
     {
       localObject = this.a;
-      ((AddFriendVerifyActivity)localObject).a(AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject).getText().toString(), true);
+      ((AddFriendVerifyActivity)localObject).a(AddFriendVerifyActivity.e((AddFriendVerifyActivity)localObject).getText().toString(), true);
       if (NetworkUtil.isNetSupport(this.a))
       {
         localObject = this.a;
-        AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject, AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), 2000);
+        AddFriendVerifyActivity.a((AddFriendVerifyActivity)localObject, AddFriendVerifyActivity.d((AddFriendVerifyActivity)localObject), AddFriendVerifyActivity.e(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), 2000);
       }
       else
       {
-        QQToast.a(this.a, 1, 2131694424, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, 2131892104, 0).show(this.a.getTitleBarHeight());
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -74,7 +74,7 @@ class AddFriendVerifyActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -55,14 +55,14 @@ class ClassificationSearchActivity$13
     localEntityManager.persist((Entity)localObject2);
     ((List)localObject1).add(0, localObject2);
     localEntityManager.close();
-    localObject2 = this.this$0.a.obtainMessage(1);
+    localObject2 = this.this$0.A.obtainMessage(1);
     ((Message)localObject2).obj = localObject1;
-    this.this$0.a.sendMessage((Message)localObject2);
+    this.this$0.A.sendMessage((Message)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.13
  * JD-Core Version:    0.7.0.1
  */

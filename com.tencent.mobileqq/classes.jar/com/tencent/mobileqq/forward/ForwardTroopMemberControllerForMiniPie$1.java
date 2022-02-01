@@ -22,7 +22,7 @@ class ForwardTroopMemberControllerForMiniPie$1
   
   public void run()
   {
-    Object localObject1 = ((DiscussionManager)ForwardTroopMemberControllerForMiniPie.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a);
+    Object localObject1 = ((DiscussionManager)ForwardTroopMemberControllerForMiniPie.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
@@ -54,7 +54,7 @@ class ForwardTroopMemberControllerForMiniPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.1
  * JD-Core Version:    0.7.0.1
  */

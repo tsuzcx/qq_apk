@@ -10,7 +10,7 @@ class EditVideoPartManager$8
   
   public void run()
   {
-    if (this.this$0.a.a() != 14)
+    if (this.this$0.I.h() != 14)
     {
       String str = this.a.getStringExtra("key_video_save_path");
       EditVideoPartManager.a(this.this$0, str);
@@ -19,7 +19,7 @@ class EditVideoPartManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPartManager.8
  * JD-Core Version:    0.7.0.1
  */

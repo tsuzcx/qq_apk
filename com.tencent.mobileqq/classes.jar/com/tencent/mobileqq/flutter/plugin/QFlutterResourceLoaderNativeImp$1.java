@@ -15,12 +15,12 @@ class QFlutterResourceLoaderNativeImp$1
   public void run()
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     Object localObject = QFlutterResourceLoaderNativeImp.c.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidContentResResources.getColorStateList(((Integer)QFlutterResourceLoaderNativeImp.c.get(str)).intValue()));
+      this.a.add(this.b.getColorStateList(((Integer)QFlutterResourceLoaderNativeImp.c.get(str)).intValue()));
     }
     if (QLog.isColorLevel())
     {
@@ -33,7 +33,7 @@ class QFlutterResourceLoaderNativeImp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterResourceLoaderNativeImp.1
  * JD-Core Version:    0.7.0.1
  */

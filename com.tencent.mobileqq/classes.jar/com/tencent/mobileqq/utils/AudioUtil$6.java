@@ -9,12 +9,12 @@ final class AudioUtil$6
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer.release();
-    AudioUtil.a = null;
+    AudioUtil.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.6
  * JD-Core Version:    0.7.0.1
  */

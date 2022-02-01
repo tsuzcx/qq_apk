@@ -11,9 +11,9 @@ class AVGameShareJoinRoomAction$2
   
   public void run()
   {
-    if ((this.this$0.a instanceof Activity))
+    if ((this.this$0.b instanceof Activity))
     {
-      this.jdField_a_of_type_ComTencentAvgameBusinessApiIAvGameManager.joinAvGameRoom((Activity)this.this$0.a, 1, this.jdField_a_of_type_JavaLangString, this.b);
+      this.a.joinAvGameRoom((Activity)this.this$0.b, 1, this.b, this.c);
       return;
     }
     QLog.e("AVGameShareJoinRoomAction", 2, "directJoinRoom context not instance of activity");
@@ -21,7 +21,7 @@ class AVGameShareJoinRoomAction$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameShareJoinRoomAction.2
  * JD-Core Version:    0.7.0.1
  */

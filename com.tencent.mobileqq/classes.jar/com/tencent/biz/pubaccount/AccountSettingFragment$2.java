@@ -15,14 +15,14 @@ class AccountSettingFragment$2
     {
       AccountSettingFragment.a(this.a, new PublicAccountDetailImpl(paramProfileDataRsp));
       paramProfileDataRsp = this.a;
-      AccountSettingFragment.a(paramProfileDataRsp, AccountSettingFragment.a(paramProfileDataRsp));
-      AccountSettingFragment.b(this.a);
+      AccountSettingFragment.b(paramProfileDataRsp, AccountSettingFragment.b(paramProfileDataRsp));
+      AccountSettingFragment.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

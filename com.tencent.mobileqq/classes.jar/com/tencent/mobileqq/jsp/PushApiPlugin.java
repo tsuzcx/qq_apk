@@ -12,9 +12,9 @@ import org.json.JSONObject;
 public class PushApiPlugin
   extends WebViewPlugin
 {
-  WebPushClient.WebPushCallback jdField_a_of_type_ComTencentBizApiproxyWebPushClient$WebPushCallback = new PushApiPlugin.1(this);
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  String jdField_a_of_type_JavaLangString;
+  TroopMemberApiClient a;
+  String b;
+  WebPushClient.WebPushCallback c = new PushApiPlugin.1(this);
   
   public PushApiPlugin()
   {
@@ -31,8 +31,8 @@ public class PushApiPlugin
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().a(i, this.jdField_a_of_type_ComTencentBizApiproxyWebPushClient$WebPushCallback);
+          this.b = paramJsBridgeListener.optString("callback");
+          this.a.c().a(i, this.c);
           if (!QLog.isColorLevel()) {
             break label303;
           }
@@ -51,7 +51,7 @@ public class PushApiPlugin
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().a(i);
+          this.a.c().a(i);
           if (QLog.isColorLevel())
           {
             QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
@@ -74,25 +74,25 @@ public class PushApiPlugin
   protected void onCreate()
   {
     super.onCreate();
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+      this.a = TroopMemberApiClient.a();
+      this.a.e();
     }
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    TroopMemberApiClient localTroopMemberApiClient = this.a;
     if (localTroopMemberApiClient != null) {
-      localTroopMemberApiClient.b();
+      localTroopMemberApiClient.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.PushApiPlugin
  * JD-Core Version:    0.7.0.1
  */

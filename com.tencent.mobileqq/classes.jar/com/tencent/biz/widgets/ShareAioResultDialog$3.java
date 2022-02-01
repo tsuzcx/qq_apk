@@ -10,17 +10,17 @@ class ShareAioResultDialog$3
 {
   public void onClick(View paramView)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 1);
+      localOnClickListener.onClick(this.b, 1);
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
+    this.b.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ShareAioResultDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ public class c
     // Byte code:
     //   0: aload_0
     //   1: getfield 25	com/tencent/liteav/basic/license/c:b	Landroid/content/Context;
-    //   4: invokestatic 55	com/tencent/liteav/basic/util/c:a	(Landroid/content/Context;)Z
+    //   4: invokestatic 55	com/tencent/liteav/basic/util/d:a	(Landroid/content/Context;)Z
     //   7: istore 4
     //   9: iconst_0
     //   10: istore_2
@@ -248,7 +248,7 @@ public class c
     //   452: return
     //   453: aload_0
     //   454: getfield 150	com/tencent/liteav/basic/license/c:g	J
-    //   457: invokestatic 158	com/tencent/liteav/basic/util/c:a	(J)Z
+    //   457: invokestatic 158	com/tencent/liteav/basic/util/d:a	(J)Z
     //   460: ifne +65 -> 525
     //   463: aload_0
     //   464: getfield 33	com/tencent/liteav/basic/license/c:f	Lcom/tencent/liteav/basic/license/b;
@@ -693,7 +693,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.license.c
  * JD-Core Version:    0.7.0.1
  */

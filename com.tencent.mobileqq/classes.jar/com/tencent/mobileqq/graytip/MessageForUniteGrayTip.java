@@ -79,7 +79,7 @@ public class MessageForUniteGrayTip
   private String getSummaryForUniteGrayTip(String paramString)
   {
     Object localObject1 = new StringBuilder();
-    Object localObject2 = this.tipParam.a();
+    Object localObject2 = this.tipParam.b();
     int i = 0;
     while (i < paramString.length())
     {
@@ -178,16 +178,16 @@ public class MessageForUniteGrayTip
         try
         {
           this.tipParam = new UniteGrayTipParam((String)localObject4, (String)localObject5, str1, i, n, j, l);
-          this.tipParam.jdField_d_of_type_JavaLangString = str2;
-          this.tipParam.jdField_d_of_type_Int = k;
-          this.tipParam.jdField_b_of_type_ArrayOfInt = ((int[])localObject1);
+          this.tipParam.p = str2;
+          this.tipParam.n = k;
+          this.tipParam.o = ((int[])localObject1);
           this.tipParam.a((ArrayList)localObject3);
           localObject1 = this.tipParam;
           if (m != 1) {
             break label784;
           }
           bool = true;
-          ((UniteGrayTipParam)localObject1).f = bool;
+          ((UniteGrayTipParam)localObject1).q = bool;
           this.msg = str1;
           localObject1 = (UniteGrayTip.BusinessData)localUniteGrayTipMsg.business_data.get();
           if (localObject1 == null) {
@@ -245,9 +245,9 @@ public class MessageForUniteGrayTip
   public SpannableStringBuilder getHightlightMsgText(AppRuntime paramAppRuntime, Context paramContext, boolean paramBoolean, Drawable.Callback paramCallback)
   {
     Object localObject1 = this.tipParam;
-    if ((localObject1 != null) && (((UniteGrayTipParam)localObject1).a() != null) && (!this.tipParam.a().isEmpty()))
+    if ((localObject1 != null) && (((UniteGrayTipParam)localObject1).b() != null) && (!this.tipParam.b().isEmpty()))
     {
-      localObject1 = this.tipParam.a();
+      localObject1 = this.tipParam.b();
       Collections.sort((List)localObject1, new MessageForUniteGrayTip.1(this));
       this.tipParam.a((ArrayList)localObject1);
       StringBuilder localStringBuilder2 = new StringBuilder(256);
@@ -362,7 +362,7 @@ public class MessageForUniteGrayTip
       if (m != 0)
       {
         this.msg = ((String)localObject1);
-        this.tipParam.jdField_c_of_type_JavaLangString = ((String)localObject1);
+        this.tipParam.g = ((String)localObject1);
       }
       return ((IMessageForGrayTips)paramAppRuntime.getRuntimeService(IMessageForGrayTips.class, str1)).getSpannableStringBuilder(this, paramContext, paramBoolean, paramCallback, (String)localObject1);
     }
@@ -373,7 +373,7 @@ public class MessageForUniteGrayTip
   {
     String str = this.msg;
     UniteGrayTipParam localUniteGrayTipParam = this.tipParam;
-    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.jdField_b_of_type_Int == 655397) && (str != null)) {
+    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.i == 655397) && (str != null)) {
       return getSummaryForUniteGrayTip(str);
     }
     return super.getSummaryMsg();
@@ -383,7 +383,7 @@ public class MessageForUniteGrayTip
   {
     if ((paramUniteGrayTipParam != null) && (paramUniteGrayTipParam.a()))
     {
-      init(paramAppRuntime.getAccount(), paramUniteGrayTipParam.jdField_a_of_type_JavaLangString, paramUniteGrayTipParam.jdField_b_of_type_JavaLangString, paramUniteGrayTipParam.jdField_c_of_type_JavaLangString, paramUniteGrayTipParam.jdField_a_of_type_Long, paramUniteGrayTipParam.jdField_c_of_type_Int, paramUniteGrayTipParam.jdField_a_of_type_Int, paramUniteGrayTipParam.jdField_a_of_type_Long);
+      init(paramAppRuntime.getAccount(), paramUniteGrayTipParam.e, paramUniteGrayTipParam.f, paramUniteGrayTipParam.g, paramUniteGrayTipParam.j, paramUniteGrayTipParam.k, paramUniteGrayTipParam.h, paramUniteGrayTipParam.j);
       this.mIsParsed = true;
       this.isread = true;
       this.tipParam = paramUniteGrayTipParam;
@@ -400,9 +400,9 @@ public class MessageForUniteGrayTip
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("msgtype: ");
-        paramAppRuntime.append(paramUniteGrayTipParam.jdField_c_of_type_Int);
+        paramAppRuntime.append(paramUniteGrayTipParam.k);
         paramAppRuntime.append(" id: ");
-        paramAppRuntime.append(paramUniteGrayTipParam.jdField_b_of_type_Int);
+        paramAppRuntime.append(paramUniteGrayTipParam.i);
         paramAppRuntime = paramAppRuntime.toString();
       }
       paramUniteGrayTipParam = new StringBuilder();
@@ -415,11 +415,11 @@ public class MessageForUniteGrayTip
   public boolean needShowTimeStamp()
   {
     UniteGrayTipParam localUniteGrayTipParam = this.tipParam;
-    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.jdField_b_of_type_Int == 656395)) {
+    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.i == 656395)) {
       return false;
     }
     localUniteGrayTipParam = this.tipParam;
-    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.jdField_b_of_type_Int == 656396)) {
+    if ((localUniteGrayTipParam != null) && (localUniteGrayTipParam.i == 656396)) {
       return false;
     }
     return super.needShowTimeStamp();
@@ -455,7 +455,7 @@ public class MessageForUniteGrayTip
     UniteGrayTipParam localUniteGrayTipParam = this.tipParam;
     if (localUniteGrayTipParam != null)
     {
-      localUniteGrayTipParam.jdField_c_of_type_JavaLangString = paramString;
+      localUniteGrayTipParam.g = paramString;
       prewrite();
       ((IMessageFacade)paramAppRuntime.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(this.frienduin, this.istroop, this.uniseq, this.msgData);
     }
@@ -469,7 +469,7 @@ public class MessageForUniteGrayTip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.MessageForUniteGrayTip
  * JD-Core Version:    0.7.0.1
  */

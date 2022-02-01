@@ -127,20 +127,18 @@ public class TMAssistantCallYYB_V1
   
   public long addDownloadTaskFromAuthorize(String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("url = ");
-    ((StringBuilder)localObject).append(paramString);
-    ab.c("TMAssistantCallYYB_V1", ((StringBuilder)localObject).toString());
-    localObject = super.formatEncryptUrl(paramString);
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 + 300000L;
-    long l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, (String)localObject, l1, l2, 0, null);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("result = ");
-    ((StringBuilder)localObject).append(l3);
-    ab.c("TMAssistantCallYYB_V1", ((StringBuilder)localObject).toString());
-    GlobalUtil.setClipboardCMD(this.mContext, paramString, l1, l2);
-    return l3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url = ");
+    localStringBuilder.append(paramString);
+    ab.c("TMAssistantCallYYB_V1", localStringBuilder.toString());
+    paramString = super.formatEncryptUrl(paramString);
+    long l = System.currentTimeMillis();
+    l = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, paramString, l, l + 300000L, 0, null);
+    paramString = new StringBuilder();
+    paramString.append("result = ");
+    paramString.append(l);
+    ab.c("TMAssistantCallYYB_V1", paramString.toString());
+    return l;
   }
   
   public long addDownloadTaskFromTaskList(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2)
@@ -191,7 +189,7 @@ public class TMAssistantCallYYB_V1
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 224	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
+    //   1: getfield 230	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
     //   4: ifnull +826 -> 830
     //   7: aload_1
     //   8: ifnull +803 -> 811
@@ -212,8 +210,8 @@ public class TMAssistantCallYYB_V1
     //   39: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   42: invokestatic 66	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: aload_0
-    //   46: getfield 224	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
-    //   49: invokevirtual 278	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   46: getfield 230	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
+    //   49: invokevirtual 274	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   52: astore 15
     //   54: aconst_null
     //   55: astore 12
@@ -228,7 +226,7 @@ public class TMAssistantCallYYB_V1
     //   72: aload 12
     //   74: astore 11
     //   76: aload_1
-    //   77: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   77: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
     //   80: astore 17
     //   82: iconst_0
     //   83: istore_3
@@ -237,9 +235,9 @@ public class TMAssistantCallYYB_V1
     //   88: aload 15
     //   90: aload 16
     //   92: aconst_null
-    //   93: ldc_w 283
+    //   93: ldc_w 279
     //   96: iconst_3
-    //   97: anewarray 285	java/lang/String
+    //   97: anewarray 281	java/lang/String
     //   100: dup
     //   101: iconst_0
     //   102: aload 17
@@ -247,53 +245,53 @@ public class TMAssistantCallYYB_V1
     //   105: dup
     //   106: iconst_1
     //   107: aload_1
-    //   108: getfield 288	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
-    //   111: invokestatic 292	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   108: getfield 284	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
+    //   111: invokestatic 288	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   114: aastore
     //   115: dup
     //   116: iconst_2
     //   117: aload_1
-    //   118: getfield 295	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:channelId	Ljava/lang/String;
+    //   118: getfield 291	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:channelId	Ljava/lang/String;
     //   121: aastore
     //   122: aconst_null
-    //   123: invokevirtual 301	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   123: invokevirtual 297	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   126: astore 12
     //   128: new 72	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   135: astore 11
     //   137: aload 11
-    //   139: ldc_w 303
+    //   139: ldc_w 299
     //   142: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload 11
     //   148: aload_1
-    //   149: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   149: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
     //   152: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload 11
-    //   158: ldc_w 305
+    //   158: ldc_w 301
     //   161: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 11
     //   167: aload_1
-    //   168: getfield 288	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
-    //   171: invokestatic 292	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   168: getfield 284	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
+    //   171: invokestatic 288	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   174: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload 11
-    //   180: ldc_w 307
+    //   180: ldc_w 303
     //   183: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: pop
     //   187: aload 11
     //   189: aload_1
-    //   190: getfield 295	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:channelId	Ljava/lang/String;
+    //   190: getfield 291	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:channelId	Ljava/lang/String;
     //   193: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: pop
     //   197: ldc 15
     //   199: aload 11
     //   201: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 309	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   204: invokestatic 305	com/tencent/tmassistantbase/util/ab:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   207: aload 14
     //   209: astore 11
     //   211: aload 12
@@ -301,19 +299,19 @@ public class TMAssistantCallYYB_V1
     //   216: aload 14
     //   218: astore 11
     //   220: aload 12
-    //   222: invokeinterface 314 1 0
+    //   222: invokeinterface 310 1 0
     //   227: ifeq +442 -> 669
     //   230: new 72	java/lang/StringBuilder
     //   233: dup
     //   234: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   237: astore 11
     //   239: aload 11
-    //   241: ldc_w 316
+    //   241: ldc_w 312
     //   244: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: pop
     //   248: aload 11
     //   250: aload_1
-    //   251: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   251: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
     //   254: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: pop
     //   258: ldc 15
@@ -322,56 +320,56 @@ public class TMAssistantCallYYB_V1
     //   265: invokestatic 66	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   268: aload 12
     //   270: aload 12
-    //   272: ldc_w 318
-    //   275: invokeinterface 322 2 0
-    //   280: invokeinterface 326 2 0
+    //   272: ldc_w 314
+    //   275: invokeinterface 318 2 0
+    //   280: invokeinterface 322 2 0
     //   285: lstore 4
     //   287: aload 12
     //   289: aload 12
-    //   291: ldc_w 328
-    //   294: invokeinterface 322 2 0
-    //   299: invokeinterface 331 2 0
-    //   304: invokestatic 335	com/tencent/tmassistantbase/util/GlobalUtil:String2List	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   291: ldc_w 324
+    //   294: invokeinterface 318 2 0
+    //   299: invokeinterface 327 2 0
+    //   304: invokestatic 331	com/tencent/tmassistantbase/util/GlobalUtil:String2List	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   307: iconst_0
-    //   308: invokevirtual 341	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   311: checkcast 285	java/lang/String
+    //   308: invokevirtual 337	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   311: checkcast 281	java/lang/String
     //   314: astore 11
     //   316: aload 12
     //   318: aload 12
-    //   320: ldc_w 343
-    //   323: invokeinterface 322 2 0
-    //   328: invokeinterface 331 2 0
+    //   320: ldc_w 339
+    //   323: invokeinterface 318 2 0
+    //   328: invokeinterface 327 2 0
     //   333: astore 13
     //   335: aload 12
     //   337: aload 12
-    //   339: ldc_w 345
-    //   342: invokeinterface 322 2 0
-    //   347: invokeinterface 326 2 0
+    //   339: ldc_w 341
+    //   342: invokeinterface 318 2 0
+    //   347: invokeinterface 322 2 0
     //   352: lstore 6
     //   354: aload 12
     //   356: aload 12
-    //   358: ldc_w 347
-    //   361: invokeinterface 322 2 0
-    //   366: invokeinterface 326 2 0
+    //   358: ldc_w 343
+    //   361: invokeinterface 318 2 0
+    //   366: invokeinterface 322 2 0
     //   371: lstore 8
     //   373: aload 12
     //   375: aload 12
-    //   377: ldc_w 349
-    //   380: invokeinterface 322 2 0
-    //   385: invokeinterface 353 2 0
-    //   390: invokestatic 356	com/tencent/tmassistantbase/util/GlobalUtil:assistantState2SDKState	(I)I
+    //   377: ldc_w 345
+    //   380: invokeinterface 318 2 0
+    //   385: invokeinterface 349 2 0
+    //   390: invokestatic 352	com/tencent/tmassistantbase/util/GlobalUtil:assistantState2SDKState	(I)I
     //   393: istore_2
     //   394: new 72	java/lang/StringBuilder
     //   397: dup
     //   398: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   401: astore 14
     //   403: aload 14
-    //   405: ldc_w 358
+    //   405: ldc_w 354
     //   408: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   411: pop
     //   412: aload 14
     //   414: iload_2
-    //   415: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   415: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   418: pop
     //   419: ldc 15
     //   421: aload 14
@@ -382,57 +380,57 @@ public class TMAssistantCallYYB_V1
     //   431: if_icmpne +30 -> 461
     //   434: aload_0
     //   435: aload 13
-    //   437: invokespecial 363	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:isFileExist	(Ljava/lang/String;)Z
+    //   437: invokespecial 359	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:isFileExist	(Ljava/lang/String;)Z
     //   440: istore 10
     //   442: iload 10
     //   444: ifne +17 -> 461
     //   447: aload 12
     //   449: ifnull +10 -> 459
     //   452: aload 12
-    //   454: invokeinterface 366 1 0
+    //   454: invokeinterface 362 1 0
     //   459: aconst_null
     //   460: areturn
-    //   461: new 368	com/tencent/tmassistantsdk/TMAssistantCallYYBTaskInfo
+    //   461: new 364	com/tencent/tmassistantsdk/TMAssistantCallYYBTaskInfo
     //   464: dup
     //   465: aload 11
     //   467: aload 13
     //   469: iload_2
     //   470: lload 6
     //   472: lload 8
-    //   474: ldc_w 370
-    //   477: invokespecial 373	com/tencent/tmassistantsdk/TMAssistantCallYYBTaskInfo:<init>	(Ljava/lang/String;Ljava/lang/String;IJJLjava/lang/String;)V
+    //   474: ldc_w 366
+    //   477: invokespecial 369	com/tencent/tmassistantsdk/TMAssistantCallYYBTaskInfo:<init>	(Ljava/lang/String;Ljava/lang/String;IJJLjava/lang/String;)V
     //   480: astore 13
     //   482: aload_0
     //   483: getfield 39	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mDownloadParams	Ljava/util/Map;
     //   486: ifnull +168 -> 654
     //   489: aload_0
     //   490: getfield 39	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mDownloadParams	Ljava/util/Map;
-    //   493: invokeinterface 377 1 0
-    //   498: invokeinterface 383 1 0
+    //   493: invokeinterface 373 1 0
+    //   498: invokeinterface 379 1 0
     //   503: astore 11
     //   505: iload_3
     //   506: istore_2
     //   507: aload 11
-    //   509: invokeinterface 388 1 0
+    //   509: invokeinterface 384 1 0
     //   514: ifeq +57 -> 571
     //   517: aload 11
-    //   519: invokeinterface 392 1 0
-    //   524: checkcast 394	java/util/Map$Entry
-    //   527: invokeinterface 397 1 0
+    //   519: invokeinterface 388 1 0
+    //   524: checkcast 390	java/util/Map$Entry
+    //   527: invokeinterface 393 1 0
     //   532: checkcast 170	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct
     //   535: astore 14
     //   537: aload 14
     //   539: ifnull -34 -> 505
     //   542: aload 14
-    //   544: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   544: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
     //   547: aload_1
-    //   548: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
-    //   551: invokevirtual 401	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   548: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   551: invokevirtual 397	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   554: ifeq -49 -> 505
     //   557: aload 14
-    //   559: getfield 288	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
+    //   559: getfield 284	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
     //   562: aload_1
-    //   563: getfield 288	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
+    //   563: getfield 284	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskVersion	I
     //   566: if_icmpne -61 -> 505
     //   569: iconst_1
     //   570: istore_2
@@ -443,12 +441,12 @@ public class TMAssistantCallYYB_V1
     //   579: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   582: astore 11
     //   584: aload 11
-    //   586: ldc_w 316
+    //   586: ldc_w 312
     //   589: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   592: pop
     //   593: aload 11
     //   595: aload_1
-    //   596: getfield 281	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
+    //   596: getfield 277	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskPackageName	Ljava/lang/String;
     //   599: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   602: pop
     //   603: ldc 15
@@ -460,8 +458,8 @@ public class TMAssistantCallYYB_V1
     //   619: astore 11
     //   621: aload_1
     //   622: lload 4
-    //   624: invokestatic 404	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   627: putfield 407	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskApkId	Ljava/lang/String;
+    //   624: invokestatic 400	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   627: putfield 403	com/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct:taskApkId	Ljava/lang/String;
     //   630: aload_0
     //   631: getfield 39	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mDownloadParams	Ljava/util/Map;
     //   634: aload 11
@@ -470,10 +468,10 @@ public class TMAssistantCallYYB_V1
     //   642: pop
     //   643: aload_0
     //   644: aload_0
-    //   645: getfield 224	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
+    //   645: getfield 230	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:mContext	Landroid/content/Context;
     //   648: aload_1
     //   649: aload 11
-    //   651: invokespecial 409	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:relateToQQDownloader	(Landroid/content/Context;Lcom/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct;Ljava/lang/String;)V
+    //   651: invokespecial 405	com/tencent/tmassistantsdk/TMAssistantCallYYB_V1:relateToQQDownloader	(Landroid/content/Context;Lcom/tencent/tmassistantsdk/TMAssistantCallYYBParamStruct;Ljava/lang/String;)V
     //   654: aload 13
     //   656: astore 11
     //   658: goto +11 -> 669
@@ -486,7 +484,7 @@ public class TMAssistantCallYYB_V1
     //   672: aload 12
     //   674: ifnull +86 -> 760
     //   677: aload 12
-    //   679: invokeinterface 366 1 0
+    //   679: invokeinterface 362 1 0
     //   684: aload 11
     //   686: astore_1
     //   687: goto +73 -> 760
@@ -512,23 +510,23 @@ public class TMAssistantCallYYB_V1
     //   725: aload 12
     //   727: astore 11
     //   729: aload 13
-    //   731: invokevirtual 412	java/lang/Exception:printStackTrace	()V
+    //   731: invokevirtual 408	java/lang/Exception:printStackTrace	()V
     //   734: aload 12
     //   736: astore 11
     //   738: ldc 15
-    //   740: ldc_w 414
+    //   740: ldc_w 410
     //   743: aload 13
-    //   745: invokestatic 417	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   745: invokestatic 413	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   748: aload 12
     //   750: ifnull +10 -> 760
     //   753: aload 12
-    //   755: invokeinterface 366 1 0
+    //   755: invokeinterface 362 1 0
     //   760: new 72	java/lang/StringBuilder
     //   763: dup
     //   764: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   767: astore 11
     //   769: aload 11
-    //   771: ldc_w 419
+    //   771: ldc_w 415
     //   774: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   777: pop
     //   778: aload 11
@@ -544,24 +542,24 @@ public class TMAssistantCallYYB_V1
     //   797: aload 11
     //   799: ifnull +10 -> 809
     //   802: aload 11
-    //   804: invokeinterface 366 1 0
+    //   804: invokeinterface 362 1 0
     //   809: aload_1
     //   810: athrow
     //   811: ldc 15
-    //   813: ldc_w 421
-    //   816: invokestatic 424	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   819: new 274	java/lang/Exception
+    //   813: ldc_w 417
+    //   816: invokestatic 420	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   819: new 270	java/lang/Exception
     //   822: dup
-    //   823: ldc_w 426
-    //   826: invokespecial 427	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   823: ldc_w 422
+    //   826: invokespecial 423	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   829: athrow
     //   830: ldc 15
-    //   832: ldc_w 429
-    //   835: invokestatic 424	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   838: new 274	java/lang/Exception
+    //   832: ldc_w 425
+    //   835: invokestatic 420	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   838: new 270	java/lang/Exception
     //   841: dup
-    //   842: ldc_w 431
-    //   845: invokespecial 427	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   842: ldc_w 427
+    //   845: invokespecial 423	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   848: astore_1
     //   849: goto +5 -> 854
     //   852: aload_1
@@ -840,7 +838,7 @@ public class TMAssistantCallYYB_V1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.TMAssistantCallYYB_V1
  * JD-Core Version:    0.7.0.1
  */

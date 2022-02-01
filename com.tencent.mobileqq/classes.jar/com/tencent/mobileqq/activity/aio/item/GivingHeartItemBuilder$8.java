@@ -23,20 +23,20 @@ class GivingHeartItemBuilder$8
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    GivingHeartItemBuilder.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.b == GivingHeartItemBuilder.b()) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) && (!GivingHeartItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(0);
+    GivingHeartItemBuilder.y = false;
+    this.a.c.setVisibility(8);
+    this.a.b.setVisibility(0);
+    this.a.d.clearAnimation();
+    this.a.d.setVisibility(8);
+    if ((!this.b.isSend()) && (this.a.l == GivingHeartItemBuilder.h()) && (!(this.c.e instanceof ChatHistoryActivity)) && (!GivingHeartItemBuilder.a(this.b))) {
+      this.a.g.setVisibility(0);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b);
+    if (!this.b.isPlayed) {
+      this.b.setPlayed(this.c.w);
     }
-    if ((!PokeItemHelper.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId)) && ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b).a() ^ true)))
+    if ((!PokeItemHelper.a("fullscreen", this.b.subId)) && ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.c.w).a() ^ true)))
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, "vas_poke", false);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.c.w, "vas_poke", false);
       if (QLog.isColorLevel()) {
         QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
       }
@@ -46,25 +46,25 @@ class GivingHeartItemBuilder$8
   public void onAnimationStart(Animator paramAnimator)
   {
     super.onAnimationStart(paramAnimator);
-    GivingHeartItemBuilder.f = true;
+    GivingHeartItemBuilder.y = true;
     if (PokeItemHelper.a()) {
-      HapticManager.a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId), 2);
+      HapticManager.b().a(String.valueOf(this.b.subId), 2);
     }
-    PokeItemAnimationManager.a().a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+    PokeItemAnimationManager.c().a(7, this.b.subId, this.b.isSend());
+    if (this.c.z.isAnimating()) {
+      this.c.z.endAnimation();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
+    if (this.b.isSend()) {
+      this.c.A.setEnableXCoordinateMirrored(false);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
+      this.c.A.setEnableXCoordinateMirrored(true);
     }
-    PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
+    PokeItemHelper.a(this.c.w, this.c.e, this.c.z, null, this.b.subId, "view_aio");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

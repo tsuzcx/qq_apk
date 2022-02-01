@@ -1,6 +1,7 @@
 package com.tencent.av.business.manager;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import com.tencent.av.business.manager.pendant.ItemBase;
 import com.tencent.qphone.base.util.QLog;
@@ -9,24 +10,25 @@ import java.lang.ref.WeakReference;
 class EffectConfigBase$MyHander<T extends ItemBase>
   extends Handler
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<EffectConfigBase<T>> jdField_a_of_type_JavaLangRefWeakReference;
+  final String a;
+  WeakReference<EffectConfigBase<T>> b;
   
   EffectConfigBase$MyHander(String paramString, EffectConfigBase<T> paramEffectConfigBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEffectConfigBase);
+    super(Looper.getMainLooper());
+    this.a = paramString;
+    this.b = new WeakReference(paramEffectConfigBase);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = this.b.get();
     boolean bool = true;
     Object localObject2;
     long l;
     if (localObject1 != null)
     {
-      localObject1 = (EffectConfigBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (EffectConfigBase)this.b.get();
       int i = paramMessage.what;
       if (i != 0)
       {
@@ -50,23 +52,23 @@ class EffectConfigBase$MyHander<T extends ItemBase>
       }
       localObject2 = (ItemBase)paramMessage.obj;
       l = paramMessage.arg1;
-      bool = EffectConfigBase.a((EffectConfigBase)localObject1, (ItemBase)localObject2, ((EffectConfigBase)localObject1).jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase);
-      paramMessage = this.jdField_a_of_type_JavaLangString;
+      bool = EffectConfigBase.a((EffectConfigBase)localObject1, (ItemBase)localObject2, ((EffectConfigBase)localObject1).d);
+      paramMessage = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MSG_ON_ITEM_SELECT_CHANGED, seq[");
       localStringBuilder.append(l);
       localStringBuilder.append("], isEqual[");
       localStringBuilder.append(bool);
       localStringBuilder.append("], count_MSG[");
-      localStringBuilder.append(((EffectConfigBase)localObject1).jdField_a_of_type_Int);
+      localStringBuilder.append(((EffectConfigBase)localObject1).j);
       localStringBuilder.append("], \nitem[");
       localStringBuilder.append(localObject2);
       localStringBuilder.append("], \ncur[");
-      localStringBuilder.append(((EffectConfigBase)localObject1).jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase);
+      localStringBuilder.append(((EffectConfigBase)localObject1).d);
       localStringBuilder.append("]");
       QLog.w(paramMessage, 1, localStringBuilder.toString());
-      if (((EffectConfigBase)localObject1).jdField_a_of_type_Int >= 0) {
-        ((EffectConfigBase)localObject1).jdField_a_of_type_Int -= 1;
+      if (((EffectConfigBase)localObject1).j >= 0) {
+        ((EffectConfigBase)localObject1).j -= 1;
       }
       if (bool) {
         EffectConfigBase.a((EffectConfigBase)localObject1, l, (ItemBase)localObject2);
@@ -78,7 +80,7 @@ class EffectConfigBase$MyHander<T extends ItemBase>
       if (paramMessage.what == 0) {
         l = paramMessage.arg1;
       }
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("handleMessage, had destroy, msg[");
       ((StringBuilder)localObject2).append(paramMessage.what);

@@ -18,7 +18,9 @@ public class DefaultRouteInitializer
     register("/base/connectface/legacy", "com.tencent.mobileqq.activity.QQIdentiferLegacyActivity");
     register("/qwallet/tenpay/full", "com.qwallet.temp.impl.QWalletFullWindowActivity");
     register("/business/shortvideoplay", "com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity");
+    register("/base/activity/AddFriendActivity", "com.tencent.mobileqq.activity.AddFriendActivity");
     register("/base/subAccount/ug", "com.tencent.mobileqq.activity.SubAccountUgActivity");
+    register("/base/safe/devRenameActivity", "com.tencent.mobileqq.activity.AuthDevRenameActivity");
     register("/base/browser", "com.tencent.mobileqq.activity.QQBrowserActivity");
     register("/gvideo/plugin/installer", "cooperation.groupvideo.GVideoPluginInstallerActivity");
     register("/expand/activity", "com.tencent.mobileqq.qqexpand.fragment.ExpandPublicFragmentActivity");
@@ -29,6 +31,7 @@ public class DefaultRouteInitializer
     register("/base/register/registerPhoneNumber", "com.tencent.mobileqq.activity.RegisterPhoneNumActivity");
     register("/base/activity/FavEmosmManageActivity", "com.tencent.mobileqq.activity.FavEmosmManageActivity");
     register("/base/selectMember", "com.tencent.mobileqq.selectmember.SelectMemberActivity");
+    register("/base/activity/ScanTorchActivity", "com.tencent.mobileqq.olympic.activity.ScanTorchActivity");
     register("/nearby/msgbox/list", "com.tencent.mobileqq.dating.MsgBoxListActivity");
     register("/nearby/choose/interesttag", "com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity");
     register("/base/activity/QQGamePubAccountActivity", "com.tencent.mobileqq.activity.QQGamePubAccountActivity");
@@ -39,8 +42,8 @@ public class DefaultRouteInitializer
     register("/base/install", "com.tencent.mobileqq.activity.InstallActivity");
     register("/qwallet/redpacket/sendhb", "com.tencent.mobileqq.qwallet.hb.send.impl.SendHbActivity");
     register("/base/activity/GameCenterActivity", "com.tencent.gamecenter.activities.GameCenterActivity");
-    register("/qwallet/transaction", "com.tencent.mobileqq.qwallet.transaction.impl.TransactionActivity");
     register("/share/toqq/activity", "com.tencent.mobileqq.intervideo.now.ShareToQQActivity");
+    register("/qwallet/transaction", "com.tencent.mobileqq.qwallet.transaction.impl.TransactionActivity");
     register("/base/login/authDevVerifyCode", "com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity");
     register("/base/connectface/identity", "com.tencent.mobileqq.activity.QQIdentiferActivity");
     register("/nearby/gameroom/invite", "com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity");
@@ -49,7 +52,6 @@ public class DefaultRouteInitializer
     register("/qrscan/scanner", "com.tencent.mobileqq.qrscan.activity.ScannerActivity");
     register("/base/login", "com.tencent.mobileqq.activity.LoginActivity");
     register("/base/switchAccount", "com.tencent.open.agent.SwitchAccountActivity");
-    register("/base/safe/authDevUgActivity", "com.tencent.mobileqq.activity.AuthDevUgActivity");
     register("/nearby/profile/pic/browser", "com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity");
     register("/base/qqmap", "com.tencent.mobileqq.activity.QQMapActivity");
     register("/base/activity/editInfoActivity", "com.tencent.mobileqq.troop.activity.editinfo.EditInfoActivity");
@@ -84,7 +86,7 @@ public class DefaultRouteInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.generated.DefaultRouteInitializer
  * JD-Core Version:    0.7.0.1
  */

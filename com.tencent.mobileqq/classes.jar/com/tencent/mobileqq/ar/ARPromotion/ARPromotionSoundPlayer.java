@@ -15,27 +15,27 @@ import java.util.Set;
 public class ARPromotionSoundPlayer
   implements SoundPool.OnLoadCompleteListener
 {
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(10, 3, 0);
-  private Map<String, ARPromotionSoundPlayer.ARSoundModel> jdField_a_of_type_JavaUtilMap = new HashMap(10);
-  private boolean jdField_a_of_type_Boolean = false;
+  private SoundPool a = new SoundPool(10, 3, 0);
   private boolean b = false;
+  private boolean c = false;
+  private Map<String, ARPromotionSoundPlayer.ARSoundModel> d = new HashMap(10);
   
   public ARPromotionSoundPlayer()
   {
-    this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(this);
+    this.a.setOnLoadCompleteListener(this);
   }
   
   private void b()
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      Iterator localIterator = this.d.entrySet().iterator();
       while (localIterator.hasNext())
       {
         ARPromotionSoundPlayer.ARSoundModel localARSoundModel = (ARPromotionSoundPlayer.ARSoundModel)((Map.Entry)localIterator.next()).getValue();
         if ((localARSoundModel != null) && (localARSoundModel.c()))
         {
-          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localARSoundModel.a);
+          this.a.pause(localARSoundModel.a);
           localARSoundModel.c = 2;
         }
       }
@@ -65,7 +65,7 @@ public class ARPromotionSoundPlayer
       ((StringBuilder)localObject).append(paramString);
       QLog.d("ARPromotionSoundPlayer", 2, ((StringBuilder)localObject).toString());
     }
-    this.b = false;
+    this.c = false;
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
@@ -80,14 +80,14 @@ public class ARPromotionSoundPlayer
       }
       return;
     }
-    if (this.b) {
+    if (this.c) {
       return;
     }
     int i;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+    if (this.d.containsKey(paramString))
     {
       b();
-      paramString = (ARPromotionSoundPlayer.ARSoundModel)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (ARPromotionSoundPlayer.ARSoundModel)this.d.get(paramString);
       if (paramString != null)
       {
         if (QLog.isColorLevel())
@@ -97,12 +97,12 @@ public class ARPromotionSoundPlayer
           ((StringBuilder)localObject).append(paramString.c);
           QLog.d("ARPromotionSoundPlayer", 2, ((StringBuilder)localObject).toString());
         }
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.b)
         {
           int j;
           if (paramString.b())
           {
-            localObject = this.jdField_a_of_type_AndroidMediaSoundPool;
+            localObject = this.a;
             j = paramString.b;
             if (paramBoolean) {
               i = -1;
@@ -113,7 +113,7 @@ public class ARPromotionSoundPlayer
           }
           else if (paramString.c())
           {
-            localObject = this.jdField_a_of_type_AndroidMediaSoundPool;
+            localObject = this.a;
             j = paramString.b;
             if (paramBoolean) {
               i = -1;
@@ -133,8 +133,8 @@ public class ARPromotionSoundPlayer
       if (QLog.isColorLevel()) {
         QLog.d("ARPromotionSoundPlayer", 2, "playSound not contains resPath, load");
       }
-      i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, new ARPromotionSoundPlayer.ARSoundModel(this, i, 3));
+      i = this.a.load(paramString, 1);
+      this.d.put(paramString, new ARPromotionSoundPlayer.ARSoundModel(this, i, 3));
     }
   }
   
@@ -153,7 +153,7 @@ public class ARPromotionSoundPlayer
     if (paramInt2 == 0) {
       try
       {
-        localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        localObject = this.d.entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
           ARPromotionSoundPlayer.ARSoundModel localARSoundModel = (ARPromotionSoundPlayer.ARSoundModel)((Map.Entry)((Iterator)localObject).next()).getValue();
@@ -166,7 +166,7 @@ public class ARPromotionSoundPlayer
             }
             if (localARSoundModel.c())
             {
-              if (!this.jdField_a_of_type_Boolean)
+              if (!this.b)
               {
                 localARSoundModel.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
                 return;
@@ -189,7 +189,7 @@ public class ARPromotionSoundPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+package com.tencent.qcircle.tavcut.session;
+
+import com.tencent.qcircle.tavcut.session.config.SessionConfig;
+
+class TAVCutSession$1
+  implements Runnable
+{
+  TAVCutSession$1(TAVCutSession paramTAVCutSession, SessionConfig paramSessionConfig) {}
+  
+  public void run()
+  {
+    this.this$0.sessionConfig = this.val$sessionConfig;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+ * Qualified Name:     com.tencent.qcircle.tavcut.session.TAVCutSession.1
+ * JD-Core Version:    0.7.0.1
+ */

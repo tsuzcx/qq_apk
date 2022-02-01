@@ -10,24 +10,24 @@ class CameraCaptureView$8
   
   public void run()
   {
-    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.d)) {
-      this.this$0.a.put(CameraCaptureView.CaptureParam.d, new RenderBuffer(this.a, this.b, 33984));
+    if (!this.this$0.H.containsKey(CameraCaptureView.CaptureParam.l)) {
+      this.this$0.H.put(CameraCaptureView.CaptureParam.l, new RenderBuffer(this.a, this.b, 33984));
     }
-    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.e)) {
-      this.this$0.a.put(CameraCaptureView.CaptureParam.e, new RenderBuffer(this.this$0.f, this.this$0.g, 33984));
+    if (!this.this$0.H.containsKey(CameraCaptureView.CaptureParam.m)) {
+      this.this$0.H.put(CameraCaptureView.CaptureParam.m, new RenderBuffer(this.this$0.g, this.this$0.h, 33984));
     }
-    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.f)) {
-      this.this$0.a.put(CameraCaptureView.CaptureParam.f, new RenderBuffer(this.c, this.d, 33984));
+    if (!this.this$0.H.containsKey(CameraCaptureView.CaptureParam.n)) {
+      this.this$0.H.put(CameraCaptureView.CaptureParam.n, new RenderBuffer(this.c, this.d, 33984));
     }
-    if (!this.this$0.a.containsKey(CameraCaptureView.CaptureParam.g)) {
-      this.this$0.a.put(CameraCaptureView.CaptureParam.g, new RenderBuffer(this.this$0.h, this.this$0.i, 33984));
+    if (!this.this$0.H.containsKey(CameraCaptureView.CaptureParam.o)) {
+      this.this$0.H.put(CameraCaptureView.CaptureParam.o, new RenderBuffer(this.this$0.i, this.this$0.j, 33984));
     }
     this.this$0.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.8
  * JD-Core Version:    0.7.0.1
  */

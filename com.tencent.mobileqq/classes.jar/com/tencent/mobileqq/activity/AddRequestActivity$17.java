@@ -11,13 +11,13 @@ class AddRequestActivity$17
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.l(this.a).dismiss();
     AddRequestActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.17
  * JD-Core Version:    0.7.0.1
  */

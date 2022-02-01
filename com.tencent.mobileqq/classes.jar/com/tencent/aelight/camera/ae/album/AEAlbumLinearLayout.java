@@ -15,17 +15,17 @@ public class AEAlbumLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private View jdField_a_of_type_AndroidViewView;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private AEAlbumLinearLayout.ScrollListener jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
+  private View a;
+  private View b;
   private int c;
   private int d;
   private int e;
+  private ValueAnimator f;
+  private Interpolator g;
+  private boolean h;
+  private int i;
+  private int j;
+  private AEAlbumLinearLayout.ScrollListener k;
   
   public AEAlbumLinearLayout(Context paramContext)
   {
@@ -45,46 +45,46 @@ public class AEAlbumLinearLayout
     //   1: aload_1
     //   2: aload_2
     //   3: iload_3
-    //   4: invokespecial 31	android/widget/LinearLayout:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   4: invokespecial 37	android/widget/LinearLayout:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   7: aload_0
     //   8: iconst_0
-    //   9: putfield 33	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:d	I
+    //   9: putfield 39	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:i	I
     //   12: aload_0
     //   13: iconst_0
-    //   14: putfield 35	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:e	I
+    //   14: putfield 41	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:j	I
     //   17: aload_1
     //   18: aload_2
-    //   19: getstatic 40	com/tencent/aelight/camera/impl/R$styleable:a	[I
-    //   22: invokevirtual 46	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   19: getstatic 46	com/tencent/aelight/camera/impl/R$styleable:a	[I
+    //   22: invokevirtual 52	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
     //   25: astore_1
     //   26: aload_0
     //   27: aload_1
     //   28: iconst_0
     //   29: iconst_0
-    //   30: invokevirtual 52	android/content/res/TypedArray:getDimensionPixelSize	(II)I
-    //   33: putfield 54	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:jdField_a_of_type_Int	I
+    //   30: invokevirtual 58	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   33: putfield 60	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:c	I
     //   36: aload_1
-    //   37: invokevirtual 58	android/content/res/TypedArray:recycle	()V
+    //   37: invokevirtual 64	android/content/res/TypedArray:recycle	()V
     //   40: goto +19 -> 59
     //   43: astore_2
     //   44: goto +32 -> 76
     //   47: astore_2
-    //   48: ldc 60
-    //   50: ldc 62
+    //   48: ldc 66
+    //   50: ldc 68
     //   52: aload_2
-    //   53: invokestatic 67	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   53: invokestatic 73	com/tencent/aelight/camera/log/AEQLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   56: goto -20 -> 36
     //   59: aload_0
     //   60: iconst_1
-    //   61: invokevirtual 71	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:setOrientation	(I)V
+    //   61: invokevirtual 77	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:setOrientation	(I)V
     //   64: aload_0
-    //   65: new 73	android/view/animation/AccelerateDecelerateInterpolator
+    //   65: new 79	android/view/animation/AccelerateDecelerateInterpolator
     //   68: dup
-    //   69: invokespecial 75	android/view/animation/AccelerateDecelerateInterpolator:<init>	()V
-    //   72: putfield 77	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:jdField_a_of_type_AndroidViewAnimationInterpolator	Landroid/view/animation/Interpolator;
+    //   69: invokespecial 81	android/view/animation/AccelerateDecelerateInterpolator:<init>	()V
+    //   72: putfield 83	com/tencent/aelight/camera/ae/album/AEAlbumLinearLayout:g	Landroid/view/animation/Interpolator;
     //   75: return
     //   76: aload_1
-    //   77: invokevirtual 58	android/content/res/TypedArray:recycle	()V
+    //   77: invokevirtual 64	android/content/res/TypedArray:recycle	()V
     //   80: goto +5 -> 85
     //   83: aload_2
     //   84: athrow
@@ -102,81 +102,76 @@ public class AEAlbumLinearLayout
     //   26	36	47	java/lang/Exception
   }
   
-  private float a()
-  {
-    return getScrollY() * 1.0F / this.c;
-  }
-  
   private boolean a(int paramInt)
   {
     if (paramInt == 1) {
-      return b();
+      return d();
     }
     if (paramInt == 2) {
-      return a();
+      return c();
     }
     return false;
   }
   
-  private void c()
+  private void e()
   {
-    int i = this.c / 2;
-    if ((getScrollY() > 0) && (getScrollY() < i))
+    int m = this.e / 2;
+    if ((getScrollY() > 0) && (getScrollY() < m))
     {
       b();
       return;
     }
-    if ((i <= getScrollY()) && (getScrollY() < this.c)) {
+    if ((m <= getScrollY()) && (getScrollY() < this.e)) {
       a();
     }
   }
   
-  private void d()
+  private void f()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.f;
     if (localValueAnimator == null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new AEAlbumLinearLayout.1(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new AEAlbumLinearLayout.2(this));
+      this.f = new ValueAnimator();
+      this.f.setInterpolator(this.g);
+      this.f.addUpdateListener(new AEAlbumLinearLayout.1(this));
+      this.f.addListener(new AEAlbumLinearLayout.2(this));
       return;
     }
     localValueAnimator.cancel();
   }
   
+  private float g()
+  {
+    return getScrollY() * 1.0F / this.e;
+  }
+  
   public void a()
   {
     AEQLog.a("AEAlbumLinearLayout", "[collapsePreviewContainer]");
-    int i = getScrollY();
-    int j = this.c;
-    if (i >= j)
+    int m = getScrollY();
+    int n = this.e;
+    if (m >= n)
     {
       AEQLog.a("AEAlbumLinearLayout", "[collapsePreviewContainer], already collapsed");
       return;
     }
-    this.e = 1;
-    i = j - getScrollY();
-    j = (int)(i * 1.0F / this.c * 275.0F);
+    this.j = 1;
+    m = n - getScrollY();
+    n = (int)(m * 1.0F / this.e * 275.0F);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[collapsePreviewContainer], dy=");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(m);
     ((StringBuilder)localObject).append(", duration=");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(n);
     AEQLog.a("AEAlbumLinearLayout", ((StringBuilder)localObject).toString());
-    d();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), this.c });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
+    f();
+    this.f.setIntValues(new int[] { getScrollY(), this.e });
+    this.f.setDuration(n);
+    this.f.start();
+    localObject = this.k;
     if (localObject != null) {
       ((AEAlbumLinearLayout.ScrollListener)localObject).a(false);
     }
-  }
-  
-  public boolean a()
-  {
-    return getScrollY() == 0;
   }
   
   public void b()
@@ -187,28 +182,33 @@ public class AEAlbumLinearLayout
       AEQLog.a("AEAlbumLinearLayout", "[expandPreviewContainer], already expanded");
       return;
     }
-    this.e = 2;
-    int i = -getScrollY();
-    int j = (int)(getScrollY() * 1.0F / this.c * 275.0F);
+    this.j = 2;
+    int m = -getScrollY();
+    int n = (int)(getScrollY() * 1.0F / this.e * 275.0F);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[expandPreviewContainer], dy=");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(m);
     ((StringBuilder)localObject).append(", duration=");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(n);
     AEQLog.a("AEAlbumLinearLayout", ((StringBuilder)localObject).toString());
-    d();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { getScrollY(), 0 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(j);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
+    f();
+    this.f.setIntValues(new int[] { getScrollY(), 0 });
+    this.f.setDuration(n);
+    this.f.start();
+    localObject = this.k;
     if (localObject != null) {
       ((AEAlbumLinearLayout.ScrollListener)localObject).a(true);
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return getScrollY() == this.c;
+    return getScrollY() == 0;
+  }
+  
+  public boolean d()
+  {
+    return getScrollY() == this.e;
   }
   
   public int getNestedScrollAxes()
@@ -220,22 +220,22 @@ public class AEAlbumLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidViewView = getChildAt(0);
-    this.jdField_b_of_type_AndroidViewView = getChildAt(1);
+    this.a = getChildAt(0);
+    this.b = getChildAt(1);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    paramInt1 = this.jdField_b_of_type_Int;
-    paramInt2 = this.jdField_a_of_type_Int;
+    this.d = this.a.getMeasuredHeight();
+    paramInt1 = this.d;
+    paramInt2 = this.c;
     if ((paramInt1 < paramInt2) || (paramInt2 == 0)) {
-      this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int / 3);
+      this.c = (this.d / 3);
     }
-    this.c = (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidViewView.getLayoutParams().height = (getMeasuredHeight() - this.jdField_a_of_type_Int);
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + this.jdField_b_of_type_AndroidViewView.getMeasuredHeight());
+    this.e = (this.d - this.c);
+    this.b.getLayoutParams().height = (getMeasuredHeight() - this.c);
+    setMeasuredDimension(getMeasuredWidth(), this.a.getMeasuredHeight() + this.b.getMeasuredHeight());
   }
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -259,12 +259,12 @@ public class AEAlbumLinearLayout
     paramView.append(", velocityY=");
     paramView.append(paramFloat2);
     AEQLog.a("AEAlbumLinearLayout", paramView.toString());
-    if ((paramFloat2 > 0.0F) && (getScrollY() < this.c))
+    if ((paramFloat2 > 0.0F) && (getScrollY() < this.e))
     {
       a();
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.h;
   }
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
@@ -275,38 +275,38 @@ public class AEAlbumLinearLayout
     localStringBuilder.append(", scrollY=");
     localStringBuilder.append(getScrollY());
     AEQLog.a("AEAlbumLinearLayout", localStringBuilder.toString());
-    int j = 1;
-    if ((paramInt2 > 0) && (getScrollY() < this.c)) {
+    int n = 1;
+    if ((paramInt2 > 0) && (getScrollY() < this.e)) {
       paramInt1 = 1;
     } else {
       paramInt1 = 0;
     }
-    int i;
+    int m;
     if ((paramInt2 < 0) && (getScrollY() > 0) && (!ViewCompat.canScrollVertically(paramView, -1))) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if ((paramInt1 != 0) || (i != 0))
+    if ((paramInt1 != 0) || (m != 0))
     {
       if (paramInt1 != 0) {
-        paramInt2 = Math.min(paramInt2, this.c - getScrollY());
+        paramInt2 = Math.min(paramInt2, this.e - getScrollY());
       } else {
         paramInt2 = Math.max(paramInt2, -getScrollY());
       }
       scrollBy(0, paramInt2);
       paramArrayOfInt[1] = paramInt2;
       if (paramInt1 != 0) {
-        paramInt1 = j;
+        paramInt1 = n;
       } else {
         paramInt1 = 2;
       }
-      this.d = paramInt1;
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
+      this.i = paramInt1;
+      paramView = this.k;
       if (paramView != null)
       {
-        paramView.a(this.d);
-        this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener.b(a());
+        paramView.a(this.i);
+        this.k.b(g());
       }
     }
   }
@@ -324,9 +324,9 @@ public class AEAlbumLinearLayout
     localStringBuilder.append(paramInt4);
     AEQLog.a("AEAlbumLinearLayout", localStringBuilder.toString());
     super.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
+    paramView = this.k;
     if (paramView != null) {
-      paramView.b(a());
+      paramView.b(g());
     }
   }
   
@@ -355,28 +355,28 @@ public class AEAlbumLinearLayout
     localStringBuilder.append(getScrollY());
     AEQLog.a("AEAlbumLinearLayout", localStringBuilder.toString());
     super.onStopNestedScroll(paramView);
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.h) {
+      e();
     } else {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
     }
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener;
+    paramView = this.k;
     if (paramView != null)
     {
-      int i = this.d;
-      paramView.a(i, a(i));
+      int m = this.i;
+      paramView.a(m, a(m));
     }
-    this.d = 0;
+    this.i = 0;
   }
   
   public void setScrollListener(@Nullable AEAlbumLinearLayout.ScrollListener paramScrollListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAEAlbumLinearLayout$ScrollListener = paramScrollListener;
+    this.k = paramScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.AEAlbumLinearLayout
  * JD-Core Version:    0.7.0.1
  */

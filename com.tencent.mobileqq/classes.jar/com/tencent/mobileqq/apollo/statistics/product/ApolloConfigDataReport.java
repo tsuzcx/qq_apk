@@ -1,8 +1,12 @@
 package com.tencent.mobileqq.apollo.statistics.product;
 
+import android.content.SharedPreferences;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.listener.Download403Callback;
+import com.tencent.mobileqq.apollo.utils.ApolloResDownloaderUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
@@ -11,21 +15,25 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.HashSet;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ApolloConfigDataReport
 {
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static JSONObject a;
   private static HashSet<String> b;
   private static HashSet<String> c;
+  private static HashSet<String> d;
   
   private static String a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
   {
@@ -55,40 +63,24 @@ public class ApolloConfigDataReport
   
   public static HashSet<String> a()
   {
-    if (b == null) {
+    if (c == null) {
       ThreadManager.excute(new ApolloConfigDataReport.2(), 64, null, true);
     }
-    return b;
-  }
-  
-  public static void a()
-  {
-    HashSet localHashSet = jdField_a_of_type_JavaUtilHashSet;
-    if (localHashSet != null) {
-      localHashSet.clear();
-    }
-    localHashSet = b;
-    if (localHashSet != null) {
-      localHashSet.clear();
-    }
-    localHashSet = c;
-    if (localHashSet != null) {
-      localHashSet.clear();
-    }
+    return c;
   }
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    c();
+    f();
     b(paramAppRuntime);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    if (((paramAppRuntime == null) || (!(paramAppRuntime instanceof QQAppInterface))) && (jdField_a_of_type_JavaUtilHashSet == null)) {
+    if (((paramAppRuntime == null) || (!(paramAppRuntime instanceof QQAppInterface))) && (b == null)) {
       ThreadManager.excute(new ApolloConfigDataReport.4(), 64, null, true);
     }
-    paramAppRuntime = jdField_a_of_type_JavaUtilHashSet;
+    paramAppRuntime = b;
     if ((paramAppRuntime != null) && (paramAppRuntime.contains(paramString3))) {
       try
       {
@@ -101,7 +93,7 @@ public class ApolloConfigDataReport
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
         paramString1 = new WebSSOAgent.UniSsoServerReq();
         paramString1.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -132,10 +124,10 @@ public class ApolloConfigDataReport
   
   public static HashSet<String> b()
   {
-    if (c == null) {
+    if (d == null) {
       ThreadManager.excute(new ApolloConfigDataReport.3(), 64, null, true);
     }
-    return c;
+    return d;
   }
   
   private static HashSet<String> b(int paramInt, JSONObject paramJSONObject)
@@ -210,7 +202,79 @@ public class ApolloConfigDataReport
     }
   }
   
-  private static JSONObject b()
+  public static void b(AppRuntime paramAppRuntime)
+  {
+    if (!NetworkUtil.isNetworkAvailable(null)) {
+      return;
+    }
+    ThreadManager.excute(new ApolloConfigDataReport.1(paramAppRuntime), 128, null, true);
+  }
+  
+  private static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, Download403Callback paramDownload403Callback)
+  {
+    if ((paramAppRuntime != null) && (!TextUtils.isEmpty(paramString1)))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      DownloaderInterface localDownloaderInterface = ApolloResDownloaderUtil.a(paramAppRuntime);
+      if (localDownloaderInterface == null) {
+        return;
+      }
+      if (localDownloaderInterface.getTask(paramString1) != null) {
+        return;
+      }
+      File localFile = new File(paramString2);
+      paramString2 = new DownloadTask(paramString1, localFile);
+      if (localFile.exists())
+      {
+        SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("apollo_sp", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("_lastModifiedTime");
+        paramString2.I = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+        long l = localSharedPreferences.getLong(paramString1, 0L);
+        if (localFile.lastModified() != l) {
+          paramString2.G = true;
+        }
+      }
+      paramString2.N = true;
+      paramString2.D = true;
+      paramString2.J = true;
+      paramString2.T = false;
+      paramString2.L = "apollo_res";
+      paramString2.Q = true;
+      paramString2.P = true;
+      paramString1 = new Bundle();
+      localDownloaderInterface.startDownload(paramString2, new ApolloConfigDataReport.Download403Listener(paramAppRuntime, paramDownload403Callback), paramString1);
+    }
+  }
+  
+  public static void c()
+  {
+    HashSet localHashSet = b;
+    if (localHashSet != null) {
+      localHashSet.clear();
+    }
+    localHashSet = c;
+    if (localHashSet != null) {
+      localHashSet.clear();
+    }
+    localHashSet = d;
+    if (localHashSet != null) {
+      localHashSet.clear();
+    }
+  }
+  
+  private static void f()
+  {
+    a = g();
+    b = b(a);
+    c = b(1, a);
+    d = b(2, a);
+  }
+  
+  private static JSONObject g()
   {
     Object localObject = FileUtils.readFile("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/apollo_report_config.json");
     if (localObject == null)
@@ -236,26 +300,10 @@ public class ApolloConfigDataReport
     }
     return null;
   }
-  
-  public static void b(AppRuntime paramAppRuntime)
-  {
-    if (!NetworkUtil.isNetworkAvailable(null)) {
-      return;
-    }
-    ThreadManager.excute(new ApolloConfigDataReport.1(paramAppRuntime), 128, null, true);
-  }
-  
-  private static void c()
-  {
-    jdField_a_of_type_OrgJsonJSONObject = b();
-    jdField_a_of_type_JavaUtilHashSet = b(jdField_a_of_type_OrgJsonJSONObject);
-    b = b(1, jdField_a_of_type_OrgJsonJSONObject);
-    c = b(2, jdField_a_of_type_OrgJsonJSONObject);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloConfigDataReport
  * JD-Core Version:    0.7.0.1
  */

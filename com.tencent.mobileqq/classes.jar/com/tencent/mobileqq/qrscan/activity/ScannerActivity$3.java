@@ -10,16 +10,16 @@ class ScannerActivity$3
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrscanActivityScannerActivity.doLaunchAr();
+    this.b.doLaunchAr();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("launchAr time end: ");
-    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    localStringBuilder.append(System.currentTimeMillis() - this.a);
     QLog.d("IQRScanConst_ScannerActivity", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.ScannerActivity.3
  * JD-Core Version:    0.7.0.1
  */

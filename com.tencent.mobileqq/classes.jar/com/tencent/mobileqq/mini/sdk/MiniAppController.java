@@ -23,6 +23,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
@@ -35,6 +36,7 @@ import com.tencent.mobileqq.mini.appbrand.ui.InternalAppBrandUI;
 import com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.mini.launch.MiniAppStartUtils;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
@@ -195,7 +197,7 @@ public class MiniAppController
     if (QLog.isColorLevel()) {
       QLog.e("MiniAppController", 2, paramString);
     }
-    VACDReportUtil.a("no_catch_crash", "MiniAppStat", "MiniAppCrashReport", "NoCatch", null, 88889, paramString);
+    VACDReportUtil.b("no_catch_crash", "MiniAppStat", "MiniAppCrashReport", "NoCatch", null, 88889, paramString);
   }
   
   private static boolean isArkBattleUrl(String paramString, LaunchParam paramLaunchParam)
@@ -233,6 +235,11 @@ public class MiniAppController
   
   public static void launchMiniAppByAppInfo(Activity paramActivity, MiniAppInfo paramMiniAppInfo, LaunchParam paramLaunchParam)
   {
+    launchMiniAppByAppInfo(paramActivity, paramMiniAppInfo, paramLaunchParam, null);
+  }
+  
+  public static void launchMiniAppByAppInfo(Activity paramActivity, MiniAppInfo paramMiniAppInfo, LaunchParam paramLaunchParam, ResultReceiver paramResultReceiver)
+  {
     MiniAppConfig localMiniAppConfig = new MiniAppConfig(paramMiniAppInfo);
     localMiniAppConfig.launchParam = paramLaunchParam;
     localMiniAppConfig.launchParam.miniAppId = paramMiniAppInfo.appId;
@@ -249,7 +256,7 @@ public class MiniAppController
       localStringBuilder.append(paramMiniAppInfo.reportData);
       paramLaunchParam.reportData = localStringBuilder.toString();
     }
-    startApp(paramActivity, localMiniAppConfig, null);
+    startApp(paramActivity, localMiniAppConfig, paramResultReceiver);
   }
   
   private static void launchMiniAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -286,7 +293,7 @@ public class MiniAppController
       paramLaunchParam.fromBackToMiniApp = 1;
       localIntent.putExtra("mini_launch_param", paramLaunchParam);
     }
-    localIntent.putExtra("mini_receiver", new MiniAppController.9(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
+    localIntent.putExtra("mini_receiver", new MiniAppController.10(new Handler(Looper.getMainLooper()), paramMiniAppLaunchListener));
     localIntent.putExtra("public_fragment_window_feature", 1);
     if (paramContext != null)
     {
@@ -299,6 +306,11 @@ public class MiniAppController
         ((Activity)paramContext).overridePendingTransition(0, 0);
       }
     }
+  }
+  
+  public static void preDownloadPkg(String paramString1, String paramString2, IMiniCallback paramIMiniCallback)
+  {
+    AppBrandProxy.g().preDownloadPkg(paramString1, paramString2, paramIMiniCallback);
   }
   
   public static void preloadMiniProcess()
@@ -336,7 +348,7 @@ public class MiniAppController
       localObject = new JSONObject();
       ((JSONObject)localObject).put("miniAppId", paramString1);
       ((JSONObject)localObject).put("page", paramString2);
-      VACDReportUtil.a(((JSONObject)localObject).toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
+      VACDReportUtil.b(((JSONObject)localObject).toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
       return;
     }
     catch (Throwable paramString1) {}
@@ -345,7 +357,7 @@ public class MiniAppController
   public static void startApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, ResultReceiver paramResultReceiver)
   {
     AppBrandProxy.g().startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
-    ThreadManager.excute(new MiniAppController.8(), 16, null, true);
+    ThreadManager.excute(new MiniAppController.9(), 16, null, true);
   }
   
   public static void startAppByAppid(Context paramContext, String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -401,22 +413,22 @@ public class MiniAppController
   
   public static void startAppByLink(Context paramContext, String paramString, int paramInt, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("startAppByLink link:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" linkType:");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("  param:");
-    localStringBuilder.append(paramLaunchParam);
-    QLog.i("MiniAppController", 1, localStringBuilder.toString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startAppByLink link:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" linkType:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("  param:");
+    ((StringBuilder)localObject).append(paramLaunchParam);
+    QLog.i("MiniAppController", 1, ((StringBuilder)localObject).toString());
     if (BaseActivity.sTopActivity != null)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("cur Activity:");
-      localStringBuilder.append(BaseActivity.sTopActivity.getActivityName());
-      localStringBuilder.append("  class :");
-      localStringBuilder.append(BaseActivity.sTopActivity.getLocalClassName());
-      QLog.d("MiniAppController", 1, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cur Activity:");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getActivityName());
+      ((StringBuilder)localObject).append("  class :");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getLocalClassName());
+      QLog.d("MiniAppController", 1, ((StringBuilder)localObject).toString());
     }
     if (!NetworkUtil.isNetworkAvailable(paramContext))
     {
@@ -440,6 +452,17 @@ public class MiniAppController
       AppBrandTask.runTaskOnUiThread(new MiniAppController.7(paramContext));
       return;
     }
+    if (paramLaunchParam != null) {
+      localObject = String.valueOf(paramLaunchParam.scene);
+    } else {
+      localObject = "";
+    }
+    if (MiniAppStartUtils.shouldInterceptStartMiniApp(paramString, (String)localObject))
+    {
+      QLog.i("MiniAppController", 1, "study mode, can not start by link");
+      ThreadManagerV2.getUIHandlerV2().post(new MiniAppController.8());
+      return;
+    }
     launchMiniAppByLink(paramContext, paramString, paramInt, paramLaunchParam, paramMiniAppLaunchListener);
   }
   
@@ -447,7 +470,7 @@ public class MiniAppController
   {
     AbsStructMsg localAbsStructMsg = paramMessageForStructing.structingMsg;
     if ((paramMessageForStructing.structingMsg != null) && ("micro_app".equals(localAbsStructMsg.mMsg_A_ActionData))) {
-      ThreadManager.excute(new MiniAppController.10(localAbsStructMsg.mMsgActionData), 16, null, false);
+      ThreadManager.excute(new MiniAppController.11(localAbsStructMsg.mMsgActionData), 16, null, false);
     }
   }
   
@@ -565,7 +588,7 @@ public class MiniAppController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController
  * JD-Core Version:    0.7.0.1
  */

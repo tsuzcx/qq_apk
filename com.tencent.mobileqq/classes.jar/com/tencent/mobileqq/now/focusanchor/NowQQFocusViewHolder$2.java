@@ -16,8 +16,8 @@ class NowQQFocusViewHolder$2
   
   public void a(View paramView, int paramInt)
   {
-    paramView = (NowQQLiveAnchorInfo)FocusLiveStreamDataManager.a().a().get(paramInt);
-    NowRoomUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a(), 60010);
+    paramView = (NowQQLiveAnchorInfo)FocusLiveStreamDataManager.a().c().get(paramInt);
+    NowRoomUtil.a(this.a, paramView.c(), paramView.b(), 60010);
     NowQQLiveDataReport.a(String.valueOf(paramView.a()), paramInt);
   }
   
@@ -25,7 +25,7 @@ class NowQQFocusViewHolder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.NowQQFocusViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

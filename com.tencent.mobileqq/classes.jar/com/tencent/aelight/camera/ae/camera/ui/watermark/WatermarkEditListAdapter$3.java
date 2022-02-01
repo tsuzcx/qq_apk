@@ -18,27 +18,27 @@ class WatermarkEditListAdapter$3
   
   public void onClick(View paramView)
   {
-    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).getWindowToken(), 0);
-    WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).setTextColor(-1);
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter;
+    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(WatermarkEditListAdapter.a(this.c).getWindowToken(), 0);
+    WatermarkEditListAdapter.a(this.c).setTextColor(-1);
+    paramView = this.c;
     WatermarkEditListAdapter.a(paramView, WatermarkEditListAdapter.a(paramView));
-    WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.a);
-    if (AECameraEntryManager.k(WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).getIntent())) {
-      WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).setTextColor(WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).getResources().getColor(2063925310));
+    WatermarkEditListAdapter.b(this.c, this.a.a);
+    if (AECameraEntryManager.o(WatermarkEditListAdapter.c(this.c).getIntent())) {
+      WatermarkEditListAdapter.a(this.c).setTextColor(WatermarkEditListAdapter.c(this.c).getResources().getColor(2063794238));
     } else {
-      WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).setTextColor(WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).getResources().getColor(2063925311));
+      WatermarkEditListAdapter.a(this.c).setTextColor(WatermarkEditListAdapter.c(this.c).getResources().getColor(2063794239));
     }
-    WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_OrgLightBeanWMElement);
-    if (WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter) != null)
+    WatermarkEditListAdapter.a(this.c, this.b);
+    if (WatermarkEditListAdapter.b(this.c) != null)
     {
-      paramView = WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_OrgLightBeanWMElement.getInnerValue());
-      WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter).a(paramView);
+      paramView = WatermarkEditListAdapter.a(this.c, this.b.getInnerValue());
+      WatermarkEditListAdapter.b(this.c).a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

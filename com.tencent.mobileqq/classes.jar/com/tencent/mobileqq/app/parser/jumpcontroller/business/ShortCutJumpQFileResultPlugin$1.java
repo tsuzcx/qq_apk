@@ -10,12 +10,12 @@ final class ShortCutJumpQFileResultPlugin$1
   
   public void run()
   {
-    JumpActivityHelper.b(this.a);
+    JumpActivityHelper.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.jumpcontroller.business.ShortCutJumpQFileResultPlugin.1
  * JD-Core Version:    0.7.0.1
  */

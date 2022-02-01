@@ -8,20 +8,20 @@ public class ProteusSettingUtil
 {
   static {}
   
-  public static void a() {}
-  
   public static boolean a()
   {
     return ProteusSettingConstant.a;
   }
   
-  public static void b()
+  public static void b() {}
+  
+  public static void c()
   {
-    c();
     d();
+    e();
   }
   
-  private static void c()
+  private static void d()
   {
     StringCommon.registerId("cmd_dislike_click", 1001);
     StringCommon.registerId("cmd_like_click", 1002);
@@ -111,6 +111,9 @@ public class ProteusSettingUtil
     StringCommon.registerId("cmd_guide_dismiss_clicked", 1097);
     StringCommon.registerId("cmd_url_click_partner_header_report", 1098);
     StringCommon.registerId("cmd_family_comment_icon_click", 1157);
+    StringCommon.registerId("cmd_native_inner_ad_price_click", 1093);
+    StringCommon.registerId("cmd_native_inner_default_label_click", 1093);
+    StringCommon.registerId("cmd_native_inner_ad_sale_price_click", 1093);
     StringCommon.registerId("cmd_native_detail_ad_triple_pic_click", 1105);
     StringCommon.registerId("cmd_share_click", 1158);
     StringCommon.registerId("cmd_write_comment_click", 1159);
@@ -144,6 +147,8 @@ public class ProteusSettingUtil
     StringCommon.registerId("cmd_ad_education_teacher_name_click", 1201);
     StringCommon.registerId("cmd_ad_live_expand_close_click", 1121);
     StringCommon.registerId("cmd_ad_live_expand_small_close_click", 1122);
+    StringCommon.registerId("left_warning_event_recommend", 1131);
+    StringCommon.registerId("right_warning_event_recommend", 1132);
     StringCommon.registerId("cmd_ad_small_game_more_click", 1120);
     StringCommon.registerId("cmd_ad_small_game1_click", 1113);
     StringCommon.registerId("cmd_ad_small_game2_click", 1114);
@@ -166,10 +171,9 @@ public class ProteusSettingUtil
     StringCommon.registerId("ad_pk_root_click", 1110);
     StringCommon.registerId("ad_pk_btn_left_click", 1111);
     StringCommon.registerId("ad_pk_btn_right_click", 1112);
-    StringCommon.registerId("cmd_ad_tag_click", 1182);
-    StringCommon.registerId("ad_time_area_click", 1183);
     StringCommon.registerId("ad_name_click_in_comment", 1184);
     StringCommon.registerId("ad_item_click_in_comment", 1185);
+    StringCommon.registerId("cmd_ad_tag_click", 1182);
     StringCommon.registerId("cmd_overscroll_jump_action", 1128);
     StringCommon.registerId("cmd_url_click_left_card_report", 1131);
     StringCommon.registerId("cmd_url_click_right_card_report", 1132);
@@ -235,160 +239,164 @@ public class ProteusSettingUtil
     StringCommon.registerId("cmd_pack_follow_click", 1204);
   }
   
-  private static void d()
+  private static void e()
   {
-    ImageCommon.registerDrawable("mengceng.png", 2130841844);
-    ImageCommon.registerDrawable("pa_video_play.png", 2130843373);
-    ImageCommon.registerDrawable("rij_play_icon", 2130843373);
-    ImageCommon.registerDrawable("qq_readinjoy_gallery_count", 2130846090);
-    ImageCommon.registerDrawable("ReadInJoy/qq_readinjoy_gallery_count.png", 2130846090);
-    ImageCommon.registerDrawable("public_account_video_profile", 2130843121);
-    ImageCommon.registerDrawable("public_account_small_video_mengceng", 2130841821);
-    ImageCommon.registerDrawable("like_normal", 2130846613);
-    ImageCommon.registerDrawable("like_active", 2130846610);
-    ImageCommon.registerDrawable("comment", 2130846608);
-    ImageCommon.registerDrawable("comment_active", 2130846608);
-    ImageCommon.registerDrawable("biu_icon", 2130842852);
-    ImageCommon.registerDrawable("share_icon", 2130843116);
-    ImageCommon.registerDrawable("biu_icon_active", 2130842852);
-    ImageCommon.registerDrawable("green_v.png", 2130842994);
-    ImageCommon.registerDrawable("feeds_dislike", 2130843162);
-    ImageCommon.registerDrawable("topic_pre_image", 2130843022);
-    ImageCommon.registerDrawable("topic_arrow_image", 2130843139);
-    ImageCommon.registerDrawable("small_video_play_icon", 2130843121);
-    ImageCommon.registerDrawable("readinjoy_star_postmark.png", 2130849798);
-    ImageCommon.registerDrawable("qqreadinjoy_kandian_down_arrow.png", 2130846609);
-    ImageCommon.registerDrawable("Base_Blue", 2130842843);
-    ImageCommon.registerDrawable("Base_Grey", 2130842844);
-    ImageCommon.registerDrawable("NativeArticleHeaderFollowed", 2130843001);
-    ImageCommon.registerDrawable("follow_info_avator_mask", 2130842839);
-    ImageCommon.registerDrawable("NativeArticleHeaderUnfollowed", 2130843157);
-    ImageCommon.registerDrawable("plus", 2130843074);
-    ImageCommon.registerDrawable("1pixel", 2130842795);
-    ImageCommon.registerDrawable("feedback_more", 2130842980);
-    ImageCommon.registerDrawable("free_netflow_icon", 2130843002);
-    ImageCommon.registerDrawable("img_book_right", 2130842857);
-    ImageCommon.registerDrawable("readinjoy_right_arrow.png", 2130849759);
-    ImageCommon.registerDrawable("social_header_fold", 2130843082);
-    ImageCommon.registerDrawable("readinjoy_privacy_vis_some.png", 2130843170);
-    ImageCommon.registerDrawable("readinjoy_privacy_vis_self.png", 2130843044);
-    ImageCommon.registerDrawable("rij_collection_arrow", 2130849760);
-    ImageCommon.registerDrawable("feeds_dislike_grey", 2130849687);
-    ImageCommon.registerDrawable("rij_comment_3dot", 2130841710);
-    ImageCommon.registerDrawable("rij_comment_type_choose", 2130849661);
-    ImageCommon.registerDrawable("readinjoy_comment_type_choose_highlight", 2130849662);
-    ImageCommon.registerDrawable("rij_icon_notify", 2130849702);
-    ImageCommon.registerDrawable("rij_comment_v", 2130849663);
-    ImageCommon.registerDrawable("rij_comment_avatar_borders", 2130849645);
-    ImageCommon.registerDrawable("comment_gray", 2130843188);
-    ImageCommon.registerDrawable("like_normal_gray", 2130843042);
-    ImageCommon.registerDrawable("like_active_gray", 2130846610);
-    ImageCommon.registerDrawable("biu_icon_gray", 2130843183);
-    ImageCommon.registerDrawable("pa_video_more_feeds_maintab", 2130841849);
-    ImageCommon.registerDrawable("native_ad_download", 2130840122);
-    ImageCommon.registerDrawable("native_ad_open", 2130840124);
-    ImageCommon.registerDrawable("default_comment_avatar", 2130841788);
-    ImageCommon.registerDrawable("awsome_postmark", 2130841755);
-    ImageCommon.registerDrawable("video_play_icon", 2130843291);
-    ImageCommon.registerDrawable("ReadInJoy/small_video_play_icon.png", 2130843121);
-    ImageCommon.registerResource("ReadInJoy/Mask.png", 2130849706);
-    ImageCommon.registerDrawable("feeds_native_detail_ad", 2130843058);
-    ImageCommon.registerDrawable("feeds_native_detail_ad_arrow", 2130843174);
-    ImageCommon.registerDrawable("feeds_native_mask", 2130843174);
-    ImageCommon.registerResource("right_arrow_white", 2130843092);
-    ImageCommon.registerResource("weather_refresh_white", 2130843327);
-    ImageCommon.registerResource("ReadInJoy/brief_content_icon.png", 2130842858);
-    ImageCommon.registerDrawable("mengceng_60.png", 2130841839);
-    ImageCommon.registerDrawable("readinjoy_comment_guide_close", 2130849651);
-    ImageCommon.registerDrawable("readinjoy_comment_guide_big_bg", 2130849650);
-    ImageCommon.registerDrawable("share_close.png", 2130840344);
-    ImageCommon.registerDrawable("ReadInJoy/ic_share.png", 2130841690);
-    ImageCommon.registerDrawable("rij_multi_video_column_arrow", 2130849707);
-    ImageCommon.registerDrawable("rij_multi_video_column_play", 2130843373);
-    ImageCommon.registerDrawable("rij_multi_video_column_play_s", 2130849709);
-    ImageCommon.registerDrawable("ReadInJoy/small_video_play_icon.png", 2130849709);
-    ImageCommon.registerDrawable("edge_drag_arrow_black", 2130843403);
-    ImageCommon.registerDrawable("edge_drag_arrow_white", 2130843404);
-    ImageCommon.registerDrawable("NativeArticleCollectionEnable", 2130841716);
-    ImageCommon.registerDrawable("NativeArticleCollectionDisable", 2130841731);
-    ImageCommon.registerDrawable("NativeArticleLikeEnable", 2130841739);
-    ImageCommon.registerDrawable("NativeArticleLikeDisable", 2130841733);
-    ImageCommon.registerDrawable("NativeArticleShare_gray", 2130843060);
-    ImageCommon.registerDrawable("NativeArticleDislike_gray", 2130841719);
-    ImageCommon.registerDrawable("NativeArticleWriteComment", 2130843335);
-    ImageCommon.registerDrawable("NativeArticleComment", 2130841717);
-    ImageCommon.registerDrawable("NativeArticleBiu", 2130841714);
-    ImageCommon.registerDrawable("biu_comment_icon", 2130842849);
-    ImageCommon.registerDrawable("share_bottom_icon", 2130843115);
-    ImageCommon.registerDrawable("NoCoinIcon", 2130841730);
-    ImageCommon.registerDrawable("CoinIcon", 2130841715);
-    ImageCommon.registerDrawable("iconarrow", 2130843095);
-    ImageCommon.registerDrawable("msg_bg_card", 2130842772);
-    ImageCommon.registerDrawable("video_feed_bottom_controller_bg", 2130841844);
-    ImageCommon.registerDrawable("ReadInJoy/video_play_icon.png", 2130843190);
-    ImageCommon.registerDrawable("NativeArticleHasBiu", 2130841725);
-    ImageCommon.registerDrawable("NativeArticleBiu", 2130841714);
-    ImageCommon.registerDrawable("poly_topic", 2130843141);
-    ImageCommon.registerDrawable("poly_gallery", 2130846090);
-    ImageCommon.registerDrawable("poly_article", 2130842831);
-    ImageCommon.registerDrawable("ReadInJoy/rij_play_icon.png", 2130843373);
-    ImageCommon.registerDrawable("video_audio_mute", 2130843178);
-    ImageCommon.registerDrawable("video_audio_speak", 2130843179);
-    ImageCommon.registerDrawable("biu_comment", 2130841761);
-    ImageCommon.registerDrawable("biu_comment_like_normal", 2130842851);
-    ImageCommon.registerDrawable("biu_comment_like_active", 2130842850);
-    ImageCommon.registerDrawable("readinjoy_column_icon", 2130849642);
-    ImageCommon.registerDrawable("readinjoy_column_arrow", 2130842889);
-    ImageCommon.registerDrawable("readinjoy_column_icon_white", 2130849643);
-    ImageCommon.registerDrawable("more_image_icon.png", 2130843047);
-    ImageCommon.registerDrawable("column_icon.png", 2130842891);
-    ImageCommon.registerDrawable("column_arrow.png", 2130842889);
-    ImageCommon.registerDrawable("rij_play_icon.png", 2130843373);
-    ImageCommon.registerDrawable("rij_hot_comment_title_icon", 2130849699);
-    ImageCommon.registerDrawable("rij_new_comment_title_icon", 2130849710);
-    ImageCommon.registerDrawable("rij_comment_menu_hot_icon", 2130849654);
-    ImageCommon.registerDrawable("rij_comment_menu_new_icon", 2130849655);
-    ImageCommon.registerDrawable("rij_comment_sticky_icon", 2130849660);
-    ImageCommon.registerDrawable("article_no_img", 2130846091);
-    ImageCommon.registerDrawable("rij_commentBiu_backgroundColor", 2130849646);
-    ImageCommon.registerDrawable("social_bottom_style_a_share", 2130841822);
-    ImageCommon.registerDrawable("social_bottom_style_a_comment", 2130841823);
-    ImageCommon.registerDrawable("dislike_img", 2130843162);
-    ImageCommon.registerDrawable("social_bottom_style_a_like_active", 2130841826);
-    ImageCommon.registerDrawable("social_bottom_style_a_like", 2130841825);
-    ImageCommon.registerDrawable("watch_later", 2130841807);
-    ImageCommon.registerDrawable("watch_later_active", 2130841808);
-    ImageCommon.registerDrawable("watch_later_white", 2130841810);
-    ImageCommon.registerDrawable("watch_later_active_white", 2130841809);
-    ImageCommon.registerDrawable("follow_bg", 2130849922);
-    ImageCommon.registerDrawable("unfollow_bg", 2130849923);
-    ImageCommon.registerDrawable("dislike_right_bottom", 2130849677);
-    ImageCommon.registerDrawable("dislike_x", 2130849678);
-    ImageCommon.registerDrawable("unfollow_bg", 2130849688);
-    ImageCommon.registerDrawable("follow_bg", 2130849692);
-    ImageCommon.registerDrawable("follow_bg_white", 2130849693);
-    ImageCommon.registerDrawable("readinjoy_ad_small_game", 2130849613);
-    ImageCommon.registerDrawable("readinjoy_comment_author_tag", 2130849644);
-    ImageCommon.registerDrawable("readinjoy_comment_follow_tag", 2130849649);
-    ImageCommon.registerDrawable("left_top_round_corner", 2130843039);
-    ImageCommon.registerDrawable("left_bottom_round_corner", 2130843037);
-    ImageCommon.registerDrawable("right_top_round_corner", 2130843096);
-    ImageCommon.registerDrawable("right_bottom_round_corner", 2130843093);
-    ImageCommon.registerDrawable("feeds_dislike_light", 2130843163);
-    ImageCommon.registerDrawable("comment_icon_white", 2130842901);
-    ImageCommon.registerDrawable("rij_hot_search_arrow", 2130849924);
-    ImageCommon.registerDrawable("rij_comment_topic_icon", 2130842928);
-    ImageCommon.registerDrawable("rij_play_small_icon", 2130849925);
-    ImageCommon.registerDrawable("ReadInJoy/rij_video_top_right_play_icon.png", 2130843316);
-    ImageCommon.registerDrawable("left_top_round_corner_grey", 2130843040);
-    ImageCommon.registerDrawable("left_bottom_round_corner_grey", 2130843038);
-    ImageCommon.registerDrawable("right_top_round_corner_grey", 2130843097);
-    ImageCommon.registerDrawable("right_bottom_round_corner_grey", 2130843094);
+    ImageCommon.registerDrawable("mengceng.png", 2130842761);
+    ImageCommon.registerDrawable("pa_video_play.png", 2130844327);
+    ImageCommon.registerDrawable("rij_play_icon", 2130844327);
+    ImageCommon.registerDrawable("qq_readinjoy_gallery_count", 2130847560);
+    ImageCommon.registerDrawable("ReadInJoy/qq_readinjoy_gallery_count.png", 2130847560);
+    ImageCommon.registerDrawable("public_account_video_profile", 2130844076);
+    ImageCommon.registerDrawable("public_account_small_video_mengceng", 2130842738);
+    ImageCommon.registerDrawable("like_normal", 2130848165);
+    ImageCommon.registerDrawable("like_active", 2130848162);
+    ImageCommon.registerDrawable("comment", 2130848160);
+    ImageCommon.registerDrawable("comment_active", 2130848160);
+    ImageCommon.registerDrawable("biu_icon", 2130843808);
+    ImageCommon.registerDrawable("share_icon", 2130844071);
+    ImageCommon.registerDrawable("biu_icon_active", 2130843808);
+    ImageCommon.registerDrawable("green_v.png", 2130843950);
+    ImageCommon.registerDrawable("feeds_dislike", 2130844116);
+    ImageCommon.registerDrawable("topic_pre_image", 2130843978);
+    ImageCommon.registerDrawable("topic_arrow_image", 2130844094);
+    ImageCommon.registerDrawable("small_video_play_icon", 2130844076);
+    ImageCommon.registerDrawable("readinjoy_star_postmark.png", 2130851503);
+    ImageCommon.registerDrawable("qqreadinjoy_kandian_down_arrow.png", 2130848161);
+    ImageCommon.registerDrawable("Base_Blue", 2130843799);
+    ImageCommon.registerDrawable("Base_Grey", 2130843800);
+    ImageCommon.registerDrawable("NativeArticleHeaderFollowed", 2130843957);
+    ImageCommon.registerDrawable("follow_info_avator_mask", 2130843795);
+    ImageCommon.registerDrawable("NativeArticleHeaderUnfollowed", 2130844111);
+    ImageCommon.registerDrawable("plus", 2130844029);
+    ImageCommon.registerDrawable("1pixel", 2130843749);
+    ImageCommon.registerDrawable("feedback_more", 2130843936);
+    ImageCommon.registerDrawable("free_netflow_icon", 2130843958);
+    ImageCommon.registerDrawable("img_book_right", 2130843813);
+    ImageCommon.registerDrawable("readinjoy_right_arrow.png", 2130851468);
+    ImageCommon.registerDrawable("social_header_fold", 2130844037);
+    ImageCommon.registerDrawable("readinjoy_privacy_vis_some.png", 2130844124);
+    ImageCommon.registerDrawable("readinjoy_privacy_vis_self.png", 2130843999);
+    ImageCommon.registerDrawable("rij_collection_arrow", 2130851469);
+    ImageCommon.registerDrawable("feeds_dislike_grey", 2130851392);
+    ImageCommon.registerDrawable("rij_comment_3dot", 2130842625);
+    ImageCommon.registerDrawable("rij_comment_type_choose", 2130851366);
+    ImageCommon.registerDrawable("readinjoy_comment_type_choose_highlight", 2130851367);
+    ImageCommon.registerDrawable("rij_icon_notify", 2130851408);
+    ImageCommon.registerDrawable("rij_comment_v", 2130851368);
+    ImageCommon.registerDrawable("rij_comment_avatar_borders", 2130851350);
+    ImageCommon.registerDrawable("comment_gray", 2130844142);
+    ImageCommon.registerDrawable("like_normal_gray", 2130843998);
+    ImageCommon.registerDrawable("like_active_gray", 2130848162);
+    ImageCommon.registerDrawable("biu_icon_gray", 2130844137);
+    ImageCommon.registerDrawable("pa_video_more_feeds_maintab", 2130842766);
+    ImageCommon.registerDrawable("native_ad_download", 2130840347);
+    ImageCommon.registerDrawable("native_ad_open", 2130840349);
+    ImageCommon.registerDrawable("default_comment_avatar", 2130842705);
+    ImageCommon.registerDrawable("awsome_postmark", 2130842672);
+    ImageCommon.registerDrawable("video_play_icon", 2130844245);
+    ImageCommon.registerDrawable("ReadInJoy/small_video_play_icon.png", 2130844076);
+    ImageCommon.registerResource("ReadInJoy/Mask.png", 2130851415);
+    ImageCommon.registerDrawable("feeds_native_detail_ad", 2130844013);
+    ImageCommon.registerDrawable("feeds_native_detail_ad_arrow", 2130844128);
+    ImageCommon.registerDrawable("feeds_native_mask", 2130844128);
+    ImageCommon.registerResource("right_arrow_white", 2130844047);
+    ImageCommon.registerResource("weather_refresh_white", 2130844281);
+    ImageCommon.registerResource("ReadInJoy/brief_content_icon.png", 2130843814);
+    ImageCommon.registerDrawable("mengceng_60.png", 2130842756);
+    ImageCommon.registerDrawable("readinjoy_comment_guide_close", 2130851356);
+    ImageCommon.registerDrawable("readinjoy_comment_guide_big_bg", 2130851355);
+    ImageCommon.registerDrawable("share_close.png", 2130841084);
+    ImageCommon.registerDrawable("ReadInJoy/ic_share.png", 2130842605);
+    ImageCommon.registerDrawable("rij_multi_video_column_arrow", 2130851416);
+    ImageCommon.registerDrawable("rij_multi_video_column_play", 2130844327);
+    ImageCommon.registerDrawable("rij_multi_video_column_play_s", 2130851418);
+    ImageCommon.registerDrawable("ReadInJoy/small_video_play_icon.png", 2130851418);
+    ImageCommon.registerDrawable("edge_drag_arrow_black", 2130844357);
+    ImageCommon.registerDrawable("edge_drag_arrow_white", 2130844358);
+    ImageCommon.registerDrawable("NativeArticleCollectionEnable", 2130842632);
+    ImageCommon.registerDrawable("NativeArticleCollectionDisable", 2130842648);
+    ImageCommon.registerDrawable("NativeArticleLikeEnable", 2130842656);
+    ImageCommon.registerDrawable("NativeArticleLikeDisable", 2130842650);
+    ImageCommon.registerDrawable("NativeArticleShare_gray", 2130844015);
+    ImageCommon.registerDrawable("NativeArticleDislike_gray", 2130842636);
+    ImageCommon.registerDrawable("NativeArticleWriteComment", 2130844289);
+    ImageCommon.registerDrawable("NativeArticleComment", 2130842633);
+    ImageCommon.registerDrawable("NativeArticleBiu", 2130842630);
+    ImageCommon.registerDrawable("biu_comment_icon", 2130843805);
+    ImageCommon.registerDrawable("share_bottom_icon", 2130844070);
+    ImageCommon.registerDrawable("NoCoinIcon", 2130842647);
+    ImageCommon.registerDrawable("CoinIcon", 2130842631);
+    ImageCommon.registerDrawable("community_tabl_icon", 2130842634);
+    ImageCommon.registerDrawable("iconarrow", 2130844050);
+    ImageCommon.registerDrawable("msg_bg_card", 2130843725);
+    ImageCommon.registerDrawable("video_feed_bottom_controller_bg", 2130842761);
+    ImageCommon.registerDrawable("ReadInJoy/video_play_icon.png", 2130844144);
+    ImageCommon.registerDrawable("NativeArticleHasBiu", 2130842642);
+    ImageCommon.registerDrawable("NativeArticleBiu", 2130842630);
+    ImageCommon.registerDrawable("poly_topic", 2130844096);
+    ImageCommon.registerDrawable("poly_gallery", 2130847560);
+    ImageCommon.registerDrawable("poly_article", 2130843787);
+    ImageCommon.registerDrawable("ReadInJoy/rij_play_icon.png", 2130844327);
+    ImageCommon.registerDrawable("video_audio_mute", 2130844132);
+    ImageCommon.registerDrawable("video_audio_speak", 2130844133);
+    ImageCommon.registerDrawable("biu_comment", 2130842678);
+    ImageCommon.registerDrawable("biu_comment_like_normal", 2130843807);
+    ImageCommon.registerDrawable("biu_comment_like_active", 2130843806);
+    ImageCommon.registerDrawable("readinjoy_column_icon", 2130851347);
+    ImageCommon.registerDrawable("readinjoy_column_arrow", 2130843845);
+    ImageCommon.registerDrawable("readinjoy_column_icon_white", 2130851348);
+    ImageCommon.registerDrawable("more_image_icon.png", 2130844002);
+    ImageCommon.registerDrawable("column_icon.png", 2130843847);
+    ImageCommon.registerDrawable("column_arrow.png", 2130843845);
+    ImageCommon.registerDrawable("rij_play_icon.png", 2130844327);
+    ImageCommon.registerDrawable("rij_hot_comment_title_icon", 2130851405);
+    ImageCommon.registerDrawable("rij_new_comment_title_icon", 2130851419);
+    ImageCommon.registerDrawable("rij_comment_menu_hot_icon", 2130851359);
+    ImageCommon.registerDrawable("rij_comment_menu_new_icon", 2130851360);
+    ImageCommon.registerDrawable("rij_comment_sticky_icon", 2130851365);
+    ImageCommon.registerDrawable("article_no_img", 2130847561);
+    ImageCommon.registerDrawable("rij_commentBiu_backgroundColor", 2130851351);
+    ImageCommon.registerDrawable("social_bottom_style_a_share", 2130842739);
+    ImageCommon.registerDrawable("social_bottom_style_a_comment", 2130842740);
+    ImageCommon.registerDrawable("dislike_img", 2130844116);
+    ImageCommon.registerDrawable("social_bottom_style_a_like_active", 2130842743);
+    ImageCommon.registerDrawable("social_bottom_style_a_like", 2130842742);
+    ImageCommon.registerDrawable("watch_later", 2130842724);
+    ImageCommon.registerDrawable("watch_later_active", 2130842725);
+    ImageCommon.registerDrawable("watch_later_white", 2130842727);
+    ImageCommon.registerDrawable("watch_later_active_white", 2130842726);
+    ImageCommon.registerDrawable("follow_bg", 2130851651);
+    ImageCommon.registerDrawable("unfollow_bg", 2130851652);
+    ImageCommon.registerDrawable("dislike_right_bottom", 2130851382);
+    ImageCommon.registerDrawable("dislike_x", 2130851383);
+    ImageCommon.registerDrawable("unfollow_bg", 2130851393);
+    ImageCommon.registerDrawable("follow_bg", 2130851397);
+    ImageCommon.registerDrawable("follow_bg_white", 2130851398);
+    ImageCommon.registerDrawable("readinjoy_ad_small_game", 2130851318);
+    ImageCommon.registerDrawable("readinjoy_comment_author_tag", 2130851349);
+    ImageCommon.registerDrawable("readinjoy_comment_follow_tag", 2130851354);
+    ImageCommon.registerDrawable("left_top_round_corner", 2130843995);
+    ImageCommon.registerDrawable("left_bottom_round_corner", 2130843993);
+    ImageCommon.registerDrawable("right_top_round_corner", 2130844051);
+    ImageCommon.registerDrawable("right_bottom_round_corner", 2130844048);
+    ImageCommon.registerDrawable("feeds_dislike_light", 2130844117);
+    ImageCommon.registerDrawable("comment_icon_white", 2130843857);
+    ImageCommon.registerDrawable("rij_hot_search_arrow", 2130851653);
+    ImageCommon.registerDrawable("rij_comment_topic_icon", 2130843884);
+    ImageCommon.registerDrawable("rij_play_small_icon", 2130851660);
+    ImageCommon.registerDrawable("ReadInJoy/rij_video_top_right_play_icon.png", 2130844270);
+    ImageCommon.registerDrawable("left_top_round_corner_grey", 2130843996);
+    ImageCommon.registerDrawable("left_bottom_round_corner_grey", 2130843994);
+    ImageCommon.registerDrawable("right_top_round_corner_grey", 2130844052);
+    ImageCommon.registerDrawable("right_bottom_round_corner_grey", 2130844049);
+    ImageCommon.registerDrawable("rij_ad_tag_author", 2130851650);
+    ImageCommon.registerDrawable("rij_jd_tag_img", 2130851658);
+    ImageCommon.registerDrawable("rij_pdd_tag_img", 2130851659);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusSettingUtil
  * JD-Core Version:    0.7.0.1
  */

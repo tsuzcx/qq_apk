@@ -13,12 +13,12 @@ class DeviceMsgChatPie$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    DeviceMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
+    DeviceMsgChatPie.a(this.c.d, this.c.ah.b, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.5
  * JD-Core Version:    0.7.0.1
  */

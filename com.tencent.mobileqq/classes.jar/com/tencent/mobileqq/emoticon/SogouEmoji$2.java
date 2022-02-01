@@ -13,14 +13,14 @@ class SogouEmoji$2
   {
     if ((paramEmoticon != null) && (paramEmoticon.hasEncryptKey()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(paramEmoticon);
+      this.c.a(paramEmoticon);
       if (QLog.isColorLevel()) {
         QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      this.c.a(Integer.toString(this.a), this.b, true);
       if (QLog.isColorLevel()) {
         QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
       }
@@ -29,7 +29,7 @@ class SogouEmoji$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji.2
  * JD-Core Version:    0.7.0.1
  */

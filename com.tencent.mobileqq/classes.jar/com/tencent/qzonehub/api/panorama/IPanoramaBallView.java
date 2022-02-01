@@ -10,8 +10,8 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public abstract interface IPanoramaBallView
   extends QRouteApi
 {
-  public static final int HEIGHT = ViewUtils.b(32.0F);
-  public static final int WIDTH = ViewUtils.b(32.0F);
+  public static final int HEIGHT = ViewUtils.dpToPx(32.0F);
+  public static final int WIDTH = ViewUtils.dpToPx(32.0F);
   
   public abstract int getMoveDegreeX(View paramView);
   
@@ -25,7 +25,7 @@ public abstract interface IPanoramaBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qzonehub.api.panorama.IPanoramaBallView
  * JD-Core Version:    0.7.0.1
  */

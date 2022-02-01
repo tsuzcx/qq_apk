@@ -46,11 +46,11 @@ public class QFileColorNoteLauncher
   {
     String str;
     if (paramInt == 1) {
-      str = paramContext.getString(2131692403);
+      str = paramContext.getString(2131889391);
     } else {
       str = "";
     }
-    QQToast.a(paramContext, 0, str, 0).a();
+    QQToast.makeText(paramContext, 0, str, 0).show();
   }
   
   private void a(Context paramContext, ColorNote paramColorNote)
@@ -107,7 +107,7 @@ public class QFileColorNoteLauncher
         a(paramContext, 1);
         return;
       }
-      if (paramColorNote.b == 12)
+      if (paramColorNote.e == 12)
       {
         a(paramContext, 1);
         return;
@@ -142,7 +142,7 @@ public class QFileColorNoteLauncher
         return;
       }
       int i = QFileUtils.a(paramColorNote.getSubType());
-      paramColorNote = new CommonFileBrowserParams((QQAppInterface)localObject, paramContext, FileManagerUtil.a(FileInfo.a(str)), 10000);
+      paramColorNote = new CommonFileBrowserParams((QQAppInterface)localObject, paramContext, FileManagerUtil.a(FileInfo.e(str)), 10000);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("file_color_note_subType", i);
       paramColorNote.a((Bundle)localObject);
@@ -169,7 +169,7 @@ public class QFileColorNoteLauncher
     {
       long l = new JSONObject(paramColorNote).getLong("file_color_note_uniSeq");
       int i = DataLineMsgRecord.getDevTypeBySeId(l);
-      paramColorNote = localQQAppInterface.getMessageFacade().a(i).a(l);
+      paramColorNote = localQQAppInterface.getMessageFacade().d(i).a(l);
       if (paramColorNote != null)
       {
         paramContext = new FileBrowserCreator(paramContext, new DatalineFileBrowserParams(localQQAppInterface, paramContext, FileManagerUtil.a(paramColorNote)));
@@ -200,20 +200,20 @@ public class QFileColorNoteLauncher
       long l = localJSONObject.getLong("file_color_note_sessionId");
       paramColorNote = ((QQAppInterface)localObject).getFileManagerDataCenter().a(l);
       WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-      localWeiYunFileInfo.jdField_b_of_type_Long = localJSONObject.getLong("file_color_note_cloud_lastTime");
-      localWeiYunFileInfo.jdField_a_of_type_Long = localJSONObject.getLong("file_color_note_fileSize");
-      localWeiYunFileInfo.jdField_a_of_type_Int = localJSONObject.getInt("file_color_note_cloud_srcType");
-      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_fileId");
-      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_dirKey");
+      localWeiYunFileInfo.e = localJSONObject.getLong("file_color_note_cloud_lastTime");
+      localWeiYunFileInfo.d = localJSONObject.getLong("file_color_note_fileSize");
+      localWeiYunFileInfo.f = localJSONObject.getInt("file_color_note_cloud_srcType");
+      localWeiYunFileInfo.a = localJSONObject.getString("file_color_note_cloud_fileId");
+      localWeiYunFileInfo.b = localJSONObject.getString("file_color_note_cloud_dirKey");
       localWeiYunFileInfo.c = localJSONObject.getString("file_color_note_fileName");
       if (localJSONObject.has("file_color_note_cloud_encodeUrl")) {
-        localWeiYunFileInfo.e = localJSONObject.getString("file_color_note_cloud_encodeUrl");
+        localWeiYunFileInfo.i = localJSONObject.getString("file_color_note_cloud_encodeUrl");
       }
       if (localJSONObject.has("file_color_note_cloud_")) {
-        localWeiYunFileInfo.i = localJSONObject.getString("file_color_note_cloud_");
+        localWeiYunFileInfo.m = localJSONObject.getString("file_color_note_cloud_");
       }
       if (localJSONObject.has("file_color_note_cloud_")) {
-        localWeiYunFileInfo.j = localJSONObject.getString("file_color_note_cloud_");
+        localWeiYunFileInfo.n = localJSONObject.getString("file_color_note_cloud_");
       }
       localObject = new WeiYunFileBrowserParams((QQAppInterface)localObject, paramContext, localWeiYunFileInfo);
       ((WeiYunFileBrowserParams)localObject).a(paramColorNote);
@@ -288,7 +288,7 @@ public class QFileColorNoteLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.QFileColorNoteLauncher
  * JD-Core Version:    0.7.0.1
  */

@@ -34,54 +34,49 @@ import java.util.Set;
 public class AppletsSettingFragment
   extends IphoneTitleBarFragment
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AppletsSettingFragment.1(this);
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  AppletsFolderManager jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager;
-  private AppletsListAdapter jdField_a_of_type_ComTencentMobileqqAdapterAppletsListAdapter;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AppletsObserver jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver = new AppletsSettingFragment.3(this);
-  private AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
-  private AppletsSettingFragment.OnChangeSwitchListener jdField_a_of_type_ComTencentMobileqqFragmentAppletsSettingFragment$OnChangeSwitchListener = new AppletsSettingFragment.4(this);
-  private CustomHandler jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler;
-  protected QQCustomDialog a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Switch jdField_a_of_type_ComTencentWidgetSwitch;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AppletsSettingFragment.2(this);
-  private HashMap<String, AppletItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private TextView b;
-  private TextView c;
-  
-  public AppletsSettingFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  }
+  AppletsFolderManager a;
+  protected QQCustomDialog b = null;
+  private XListView c;
+  private AppletsListAdapter d;
+  private QQAppInterface e;
+  private RelativeLayout f;
+  private TextView g;
+  private Switch h;
+  private TextView i;
+  private TextView j;
+  private AppletItem k;
+  private HashMap<String, AppletItem> l = new HashMap();
+  private QQProgressDialog m;
+  private boolean n;
+  private CustomHandler o;
+  private View.OnClickListener p = new AppletsSettingFragment.1(this);
+  private Runnable q = new AppletsSettingFragment.2(this);
+  private AppletsObserver r = new AppletsSettingFragment.3(this);
+  private AppletsSettingFragment.OnChangeSwitchListener s = new AppletsSettingFragment.4(this);
   
   private String a(AppletItem paramAppletItem)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramAppletItem.a());
     localStringBuilder.append("&");
-    localStringBuilder.append(paramAppletItem.a());
+    localStringBuilder.append(paramAppletItem.d());
     return localStringBuilder.toString();
   }
   
   private void a(List<AppletItem> paramList)
   {
-    AppletsListAdapter localAppletsListAdapter = this.jdField_a_of_type_ComTencentMobileqqAdapterAppletsListAdapter;
+    AppletsListAdapter localAppletsListAdapter = this.d;
     if (localAppletsListAdapter != null) {
       localAppletsListAdapter.a(paramList);
     }
-    if (this.c != null)
+    if (this.j != null)
     {
       if ((paramList != null) && (paramList.size() >= 1))
       {
-        this.c.setVisibility(0);
+        this.j.setVisibility(0);
         return;
       }
-      this.c.setVisibility(8);
+      this.j.setVisibility(8);
     }
   }
   
@@ -97,41 +92,41 @@ public class AppletsSettingFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler = new CustomHandler(Looper.getMainLooper(), null);
+    this.o = new CustomHandler(Looper.getMainLooper(), null);
     if (this.leftView != null) {
       this.leftView.setText("");
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131362874));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131362873));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839433);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131362868));
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.mContentView.findViewById(2131362867));
-    this.b = ((TextView)this.mContentView.findViewById(2131362866));
-    this.c = ((TextView)this.mContentView.findViewById(2131362865));
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqAdapterAppletsListAdapter == null)
+    this.c = ((XListView)this.mContentView.findViewById(2131428672));
+    this.c.setDivider(null);
+    this.c.setVerticalScrollBarEnabled(false);
+    this.f = ((RelativeLayout)this.mContentView.findViewById(2131428671));
+    this.f.setBackgroundResource(2130839622);
+    this.g = ((TextView)this.mContentView.findViewById(2131428666));
+    this.h = ((Switch)this.mContentView.findViewById(2131428665));
+    this.i = ((TextView)this.mContentView.findViewById(2131428664));
+    this.j = ((TextView)this.mContentView.findViewById(2131428663));
+    this.j.setVisibility(8);
+    this.h.setOnClickListener(this.p);
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterAppletsListAdapter = new AppletsListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqFragmentAppletsSettingFragment$OnChangeSwitchListener);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterAppletsListAdapter);
+      this.d = new AppletsListAdapter(this.e, getBaseActivity(), this.s);
+      this.c.setAdapter(this.d);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.m == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131690103);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(true);
+      this.m = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
+      this.m.c(2131886997);
+      this.m.setCanceledOnTouchOutside(true);
     }
   }
   
   private void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.l.entrySet().iterator();
     while (localIterator.hasNext())
     {
       AppletItem localAppletItem = (AppletItem)((Map.Entry)localIterator.next()).getValue();
-      if ((localAppletItem != null) && (localAppletItem.b() == 1)) {
+      if ((localAppletItem != null) && (localAppletItem.e() == 1)) {
         localIterator.remove();
       }
     }
@@ -139,25 +134,25 @@ public class AppletsSettingFragment
   
   protected void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (!((QQCustomDialog)localObject).isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.b.show();
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(getBaseActivity(), 230);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager.a();
+    this.b = DialogUtil.a(getBaseActivity(), 230);
+    localObject = this.a.e();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage((CharSequence)localObject);
+      this.b.setMessage((CharSequence)localObject);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131690108);
+      this.b.setMessage(2131887002);
     }
     localObject = new AppletsSettingFragment.5(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131691064, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.b.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+    this.b.setPositiveButton(2131888010, (DialogInterface.OnClickListener)localObject);
+    this.b.show();
   }
   
   public void a(int paramInt)
@@ -167,17 +162,17 @@ public class AppletsSettingFragment
   
   public void a(boolean paramBoolean)
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.m;
     if (localQQProgressDialog != null)
     {
       if ((paramBoolean) && (!localQQProgressDialog.isShowing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+        this.m.show();
+        this.o.postDelayed(this.q, 500L);
         return;
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((!paramBoolean) && (this.m.isShowing())) {
+        this.m.dismiss();
       }
     }
   }
@@ -186,43 +181,43 @@ public class AppletsSettingFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
+      this.e = ((QQAppInterface)getBaseActivity().getAppRuntime());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager = ((AppletsFolderManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER));
+    this.e.addObserver(this.r);
+    this.a = ((AppletsFolderManager)this.e.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER));
     c();
     b();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561432;
+    return 2131627788;
   }
   
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getBaseActivity().getString(2131690107));
+    setTitle(getBaseActivity().getString(2131887001));
     return localView;
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler;
+    Object localObject = this.o;
     if (localObject != null) {
-      ((CustomHandler)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      ((CustomHandler)localObject).removeCallbacks(this.q);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = this.e;
     if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppletsAppletsObserver);
+      ((QQAppInterface)localObject).removeObserver(this.r);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.e = null;
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.AppletsSettingFragment
  * JD-Core Version:    0.7.0.1
  */

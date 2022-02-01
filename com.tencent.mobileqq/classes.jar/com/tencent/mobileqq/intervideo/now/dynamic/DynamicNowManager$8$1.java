@@ -15,25 +15,25 @@ class DynamicNowManager$8$1
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver$IBusinessInitFinish.a();
+    this.a.a();
   }
   
   public void a(JSONObject paramJSONObject)
   {
     super.a(paramJSONObject);
     paramJSONObject = new BizLoginRequest();
-    paramJSONObject.jdField_a_of_type_JavaLangString = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$8.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$8.jdField_a_of_type_AndroidOsBundle);
-    paramJSONObject.jdField_a_of_type_Int = 8;
-    paramJSONObject.g = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$8.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a();
-    paramJSONObject.f = DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$8.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).b();
-    paramJSONObject.b = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager$8.jdField_a_of_type_JavaLangString;
+    paramJSONObject.a = DynamicNowManager.a(this.b.c).b(this.b.a);
+    paramJSONObject.b = 8;
+    paramJSONObject.i = DynamicNowManager.d(this.b.c).c();
+    paramJSONObject.h = DynamicNowManager.d(this.b.c).d();
+    paramJSONObject.c = this.b.b;
     LiteLiveSDKFactory.a().a(paramJSONObject);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver$IBusinessInitFinish.a();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.8.1
  * JD-Core Version:    0.7.0.1
  */

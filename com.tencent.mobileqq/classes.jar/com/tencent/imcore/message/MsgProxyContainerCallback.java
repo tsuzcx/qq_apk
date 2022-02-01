@@ -11,6 +11,7 @@ import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.guild.message.db.GuildMsgProxy;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.StatisticCollector.ReportContext;
@@ -50,8 +51,8 @@ public class MsgProxyContainerCallback
     ((StringBuilder)localObject1).append(Arrays.toString(paramArrayOfClass));
     ((StringBuilder)localObject1).append("]");
     QLog.d("MsgProxyContainerCallback", 1, ((StringBuilder)localObject1).toString());
-    AppRuntime localAppRuntime = paramBaseMsgProxy.a();
-    BaseProxyManager localBaseProxyManager = paramBaseMsgProxy.a();
+    AppRuntime localAppRuntime = paramBaseMsgProxy.b();
+    BaseProxyManager localBaseProxyManager = paramBaseMsgProxy.c();
     MsgPool localMsgPool = paramBaseMsgProxy.a();
     int i = paramArrayOfClass.length;
     localObject1 = paramBaseMsgProxy;
@@ -116,7 +117,7 @@ public class MsgProxyContainerCallback
       localStringBuilder.append(paramBaseMsgProxy.toString());
       localStringBuilder.append(", ");
       if ((paramBaseMsgProxy instanceof MsgProxyWrapper)) {
-        paramBaseMsgProxy = ((MsgProxyWrapper)paramBaseMsgProxy).a();
+        paramBaseMsgProxy = ((MsgProxyWrapper)paramBaseMsgProxy).i();
       } else {
         paramBaseMsgProxy = null;
       }
@@ -130,15 +131,19 @@ public class MsgProxyContainerCallback
   
   public BaseMsgProxy a(int paramInt, MsgProxyContainer paramMsgProxyContainer)
   {
-    AppRuntime localAppRuntime = paramMsgProxyContainer.a();
-    BaseProxyManager localBaseProxyManager = paramMsgProxyContainer.a();
-    MsgPool localMsgPool = paramMsgProxyContainer.a();
+    AppRuntime localAppRuntime = paramMsgProxyContainer.b();
+    BaseProxyManager localBaseProxyManager = paramMsgProxyContainer.c();
+    MsgPool localMsgPool = paramMsgProxyContainer.d();
     if ((paramInt != 1) && (paramInt != 1026) && (paramInt != 3000))
     {
-      if ((paramInt != 1033) && (paramInt != 1034)) {
-        return a(paramInt, paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
+      if (paramInt != 10014)
+      {
+        if ((paramInt != 1033) && (paramInt != 1034)) {
+          return a(paramInt, paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
+        }
+        return a(paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
       }
-      return a(paramMsgProxyContainer, localAppRuntime, localBaseProxyManager, localMsgPool);
+      return a(new GuildMsgProxy(localAppRuntime, localBaseProxyManager, localMsgPool), new Class[] { ChatMessageMsgProxy.class });
     }
     return a(new TroopAndDiscMsgProxy(localAppRuntime, localBaseProxyManager, localMsgPool), new Class[] { ChatMessageMsgProxy.class });
   }
@@ -146,7 +151,7 @@ public class MsgProxyContainerCallback
   public List<MsgProxyContainer.SessionKey> a(MsgProxyContainer paramMsgProxyContainer)
   {
     ArrayList localArrayList = new ArrayList();
-    paramMsgProxyContainer = ((ProxyManager)paramMsgProxyContainer.a().getManager(QQManagerFactory.PROXY_MANAGER)).a().a(true).iterator();
+    paramMsgProxyContainer = ((ProxyManager)paramMsgProxyContainer.b().getManager(QQManagerFactory.PROXY_MANAGER)).g().a(true).iterator();
     while (paramMsgProxyContainer.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramMsgProxyContainer.next();
@@ -158,13 +163,8 @@ public class MsgProxyContainerCallback
   public void a(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer)
   {
     if ((paramSessionKey.a() == 0) && (AppConstants.TROOP_SYSTEM_MSG_UIN.equals(paramSessionKey.a))) {
-      GroupSystemMsgController.a().a(paramMsgProxyContainer.a().getEntityManagerFactory().createEntityManager());
+      GroupSystemMsgController.a().a(paramMsgProxyContainer.b().getEntityManagerFactory().createEntityManager());
     }
-  }
-  
-  public void a(MsgProxyContainer paramMsgProxyContainer)
-  {
-    a();
   }
   
   public void b(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer)
@@ -173,16 +173,22 @@ public class MsgProxyContainerCallback
     localReportContext.mainthreadTag = 0;
     localReportContext.opttypeTag = "select";
     localReportContext.optsceneTag = "launch";
-    MsgProxyCallback.a(paramMsgProxyContainer.a(), paramSessionKey.a, paramSessionKey.a(), localReportContext, paramLong);
+    MsgProxyCallback.a(paramMsgProxyContainer.b(), paramSessionKey.a, paramSessionKey.a(), localReportContext, paramLong);
   }
   
   public void b(MsgProxyContainer paramMsgProxyContainer)
+  {
+    a();
+  }
+  
+  public void c(MsgProxyContainer paramMsgProxyContainer)
   {
     long l = System.currentTimeMillis();
     paramMsgProxyContainer.a(0);
     paramMsgProxyContainer.a(1);
     paramMsgProxyContainer.a(3000);
     paramMsgProxyContainer.a(1026);
+    paramMsgProxyContainer.a(10014);
     paramMsgProxyContainer.a(1033);
     paramMsgProxyContainer.a(1034);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -196,7 +202,7 @@ public class MsgProxyContainerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyContainerCallback
  * JD-Core Version:    0.7.0.1
  */

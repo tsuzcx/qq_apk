@@ -20,14 +20,14 @@ class TroopObserversHelper$1
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+      paramString = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString);
       TroopObserversHelper.a(this.a, paramString);
     }
   }
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((TroopObserversHelper.a(this.a).a.equals(paramString1)) && (TroopObserversHelper.a(this.a).getCurrentAccountUin().equals(paramString2)) && (paramInt1 == 1) && (paramInt2 == 0))
+    if ((TroopObserversHelper.b(this.a).b.equals(paramString1)) && (TroopObserversHelper.a(this.a).getCurrentAccountUin().equals(paramString2)) && (paramInt1 == 1) && (paramInt2 == 0))
     {
       if (QLog.isColorLevel())
       {
@@ -39,28 +39,28 @@ class TroopObserversHelper$1
         localStringBuilder.append(",");
         localStringBuilder.append(paramString2);
         localStringBuilder.append(",");
-        localStringBuilder.append(TroopObserversHelper.a(this.a));
+        localStringBuilder.append(TroopObserversHelper.c(this.a));
         QLog.d(".troop.closeRcvMsgTmp", 2, localStringBuilder.toString());
       }
       if (paramBoolean)
       {
-        TroopObserversHelper.a(this.a).getMessageFacade().a(TroopObserversHelper.a(this.a).a);
+        TroopObserversHelper.a(this.a).getMessageFacade().c(TroopObserversHelper.b(this.a).b);
         ReportController.b(TroopObserversHelper.a(this.a), "P_CliOper", "Grp_AIO", "", "AIOchat", "Get_history", 0, 0, paramString1, "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d(".troop.closeRcvMsgTmp", 2, "onOIDB0XA80_0_Ret: pullRecentGroupMsg");
         }
       }
-      else if (TroopObserversHelper.a(this.a) > 0)
+      else if (TroopObserversHelper.c(this.a) > 0)
       {
-        TroopObserversHelper.a(this.a).n(1);
-        TroopObserversHelper.b(this.a);
+        TroopObserversHelper.d(this.a).u(1);
+        TroopObserversHelper.e(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.1
  * JD-Core Version:    0.7.0.1
  */

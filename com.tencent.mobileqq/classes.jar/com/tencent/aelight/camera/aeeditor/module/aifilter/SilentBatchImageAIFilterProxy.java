@@ -13,22 +13,27 @@ import mqq.os.MqqHandler;
 public class SilentBatchImageAIFilterProxy
   extends AIFilterProxyBase
 {
-  private List<String> c;
-  private List<AEEditorImageInfo> d;
+  AEEditorAIFilterManager.AIFilterObserver d = new SilentBatchImageAIFilterProxy.1(this);
+  private List<String> e;
+  private List<AEEditorImageInfo> f;
+  private BatchImageAIFilterResult g = new BatchImageAIFilterResult();
+  private AEEditorAIFilterManager.SilentResultCallBack h;
   
-  public SilentBatchImageAIFilterProxy(@NonNull List<String> paramList, @NonNull List<AEEditorImageInfo> paramList1)
+  public SilentBatchImageAIFilterProxy(@NonNull List<String> paramList, @NonNull List<AEEditorImageInfo> paramList1, AEEditorAIFilterManager.SilentResultCallBack paramSilentResultCallBack)
   {
     if (paramList.size() > 3)
     {
-      this.c = paramList.subList(0, 3);
-      this.d = paramList1.subList(0, 3);
+      this.e = paramList.subList(0, 3);
+      this.f = paramList1.subList(0, 3);
     }
     else
     {
-      this.c = new LinkedList(paramList);
-      this.d = new LinkedList(paramList1);
+      this.e = new LinkedList(paramList);
+      this.f = new LinkedList(paramList1);
     }
-    this.jdField_a_of_type_Int = this.c.size();
+    this.h = paramSilentResultCallBack;
+    this.a = this.e.size();
+    a(this.d);
   }
   
   private SingleImageAIFilterResult b(AIFilterResponse paramAIFilterResponse)
@@ -37,15 +42,15 @@ public class SilentBatchImageAIFilterProxy
     ArrayList localArrayList = new ArrayList();
     if (paramAIFilterResponse == null)
     {
-      localSingleImageAIFilterResult.jdField_a_of_type_Boolean = true;
+      localSingleImageAIFilterResult.a = true;
       AEQLog.a("SilentBatchImageAIFilterProxy", "[buildImageResult] exception");
       paramAIFilterResponse = localArrayList;
     }
     else
     {
-      paramAIFilterResponse = paramAIFilterResponse.jdField_a_of_type_JavaUtilList;
+      paramAIFilterResponse = paramAIFilterResponse.b;
     }
-    localSingleImageAIFilterResult.jdField_a_of_type_JavaUtilList = paramAIFilterResponse;
+    localSingleImageAIFilterResult.c = paramAIFilterResponse;
     return localSingleImageAIFilterResult;
   }
   
@@ -55,7 +60,7 @@ public class SilentBatchImageAIFilterProxy
     int j = 0;
     int k = 0;
     if ((paramList != null) && (paramList.size() != 0)) {
-      if (paramList.size() != this.b.size())
+      if (paramList.size() != this.c.size())
       {
         AEQLog.d("SilentBatchImageAIFilterProxy", "batch image responseList size not match image size");
       }
@@ -70,23 +75,23 @@ public class SilentBatchImageAIFilterProxy
     if (i != 0)
     {
       i = k;
-      while (i < this.jdField_a_of_type_Int)
+      while (i < this.a)
       {
         paramList = b(null);
-        paramList.jdField_a_of_type_Boolean = true;
-        localBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.add(paramList);
+        paramList.a = true;
+        localBatchImageAIFilterResult.b.add(paramList);
         i += 1;
       }
-      localBatchImageAIFilterResult.jdField_a_of_type_Boolean = true;
+      localBatchImageAIFilterResult.a = true;
       return localBatchImageAIFilterResult;
     }
-    while (j < this.jdField_a_of_type_Int)
+    while (j < this.a)
     {
       Object localObject = (AIFilterResponse)paramList.get(j);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.add(this.b.get(j));
+      this.b.clear();
+      this.b.add(this.c.get(j));
       localObject = b((AIFilterResponse)localObject);
-      localBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.add(localObject);
+      localBatchImageAIFilterResult.b.add(localObject);
       j += 1;
     }
     return localBatchImageAIFilterResult;
@@ -94,17 +99,27 @@ public class SilentBatchImageAIFilterProxy
   
   protected void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
   {
-    ThreadManager.getSubThreadHandler().post(new SilentBatchImageAIFilterProxy.1(this, paramContext, paramAIFilterProxyCallback));
+    ThreadManager.getSubThreadHandler().post(new SilentBatchImageAIFilterProxy.2(this, paramContext, paramAIFilterProxyCallback));
   }
   
   public boolean a()
   {
     return false;
   }
+  
+  public AEEditorAIFilterManager.AIFilterObserver c()
+  {
+    return this.d;
+  }
+  
+  public BatchImageAIFilterResult f()
+  {
+    return this.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.SilentBatchImageAIFilterProxy
  * JD-Core Version:    0.7.0.1
  */

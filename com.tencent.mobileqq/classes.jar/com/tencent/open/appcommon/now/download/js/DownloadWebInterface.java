@@ -50,7 +50,7 @@ public class DownloadWebInterface
     } else if ((paramActivity instanceof BaseActivity)) {
       paramWebView = (AppInterface)((BaseActivity)paramActivity).getAppRuntime();
     }
-    DownloadManager.a().a(paramWebView);
+    DownloadManager.b().a(paramWebView);
     H5JSCallbackManager.a().a(this);
     LogUtility.c(this.TAG, "init out");
   }
@@ -69,7 +69,7 @@ public class DownloadWebInterface
     LogUtility.c(this.TAG, "destroy");
     H5JSCallbackManager.a().b(this);
     if (UpdateManager.a()) {
-      UpdateManager.a().b(this.listener);
+      UpdateManager.b().b(this.listener);
     }
     DownloadCenterImpl.a().b(DownloadCallbackWebImpl.a());
   }
@@ -268,7 +268,7 @@ public class DownloadWebInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadWebInterface
  * JD-Core Version:    0.7.0.1
  */

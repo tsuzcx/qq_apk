@@ -13,18 +13,8 @@ import org.json.JSONObject;
 public final class DynamicAvatarConfBean$DynamicAvatarConfig
   implements IQStorageSafable<String>
 {
-  public static final DynamicAvatarConfBean.DynamicAvatarConfig.Companion a;
-  private boolean a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqConfigBusinessAvatarDynamicAvatarConfBean$DynamicAvatarConfig$Companion = new DynamicAvatarConfBean.DynamicAvatarConfig.Companion(null);
-  }
-  
-  public DynamicAvatarConfBean$DynamicAvatarConfig()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public static final DynamicAvatarConfBean.DynamicAvatarConfig.Companion a = new DynamicAvatarConfBean.DynamicAvatarConfig.Companion(null);
+  private boolean b = true;
   
   public void a(@Nullable String paramString)
   {
@@ -35,10 +25,10 @@ public final class DynamicAvatarConfBean$DynamicAvatarConfig
     }
     try
     {
-      this.jdField_a_of_type_Boolean = new JSONObject(paramString).optBoolean("is_support_dynamic_avatar", true);
+      this.b = new JSONObject(paramString).optBoolean("is_support_dynamic_avatar", true);
       paramString = new StringBuilder();
       paramString.append("dynamic avatar config parse ok, isSupportDynamicAvatar is ");
-      paramString.append(this.jdField_a_of_type_Boolean);
+      paramString.append(this.b);
       QLog.i("DynamicAvatarConfBean", 2, paramString.toString());
       return;
     }
@@ -50,7 +40,7 @@ public final class DynamicAvatarConfBean$DynamicAvatarConfig
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   @NotNull
@@ -58,13 +48,13 @@ public final class DynamicAvatarConfBean$DynamicAvatarConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isSupportDynamicAvatar is ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfBean.DynamicAvatarConfig
  * JD-Core Version:    0.7.0.1
  */

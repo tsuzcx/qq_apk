@@ -22,16 +22,16 @@ class QidianProfileCardActivity$19
       localStringBuilder.append(" | type: ");
       localStringBuilder.append(paramBmqqAccountType);
       localStringBuilder.append(" | cardInfo.allinone.uin: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin);
+      localStringBuilder.append(this.a.e.allInOne.uin);
       QLog.d("QidianProfileCardActivity", 2, localStringBuilder.toString());
     }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin)))
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.e != null) && (this.a.e.allInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.e.allInOne.uin)))
     {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1)
+      this.a.m = paramBmqqAccountType.getAccountType();
+      this.a.c();
+      if (this.a.m == 1)
       {
-        this.a.jdField_a_of_type_ComTencentQidianQidianManager.b(this.a, paramBmqqAccountType);
+        this.a.s.b(this.a, paramBmqqAccountType);
         return;
       }
       this.a.a();
@@ -40,7 +40,7 @@ class QidianProfileCardActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.19
  * JD-Core Version:    0.7.0.1
  */

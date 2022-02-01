@@ -14,14 +14,7 @@ class BackgroundListenerAdapter
     this.a = paramIBackgroundListener;
   }
   
-  public void G_()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ExpandPluginPreloadManager", 4, "guard: onApplicationForeground()");
-    }
-  }
-  
-  public void H_()
+  public void onApplicationBackground()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("ExpandPluginPreloadManager", 4, "guard: onApplicationBackground()");
@@ -29,37 +22,44 @@ class BackgroundListenerAdapter
     this.a.c();
   }
   
-  public void a(long paramLong)
+  public void onApplicationForeground()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ExpandPluginPreloadManager", 4, "guard: onApplicationForeground()");
+    }
+  }
+  
+  public void onBackgroundTimeTick(long paramLong)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onBackgroundTimeTick()", Long.valueOf(paramLong) });
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void onBackgroundUnguardTimeTick(long paramLong)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onScreensStateChanged()", Boolean.valueOf(paramBoolean) });
+      QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onBackgroundUnguardTimeTick()", Long.valueOf(paramLong) });
     }
   }
   
-  public void b(long paramLong)
+  public void onLiteTimeTick(long paramLong)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onLiteTimeTick()", Long.valueOf(paramLong) });
     }
   }
   
-  public void c(long paramLong)
+  public void onScreensStateChanged(boolean paramBoolean)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onBackgroundUnguardTimeTick()", Long.valueOf(paramLong) });
+      QLog.d("ExpandPluginPreloadManager", 4, new Object[] { "guard: onScreensStateChanged()", Boolean.valueOf(paramBoolean) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.preload.BackgroundListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

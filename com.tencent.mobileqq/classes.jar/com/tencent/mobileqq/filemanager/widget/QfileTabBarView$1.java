@@ -15,16 +15,16 @@ class QfileTabBarView$1
   
   public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (this.a.a(paramInt2) == null) {
+    if (this.a.b(paramInt2) == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setSelected(true);
-    this.a.b(paramInt2);
-    if (this.a.jdField_a_of_type_Boolean) {}
+    this.a.f.setSelected(true);
+    this.a.c(paramInt2);
+    if (this.a.d) {}
     try
     {
-      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
+      SharedPreferences.Editor localEditor = this.a.i.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      localEditor.putInt("last_select_tab_view", ((Integer)this.a.m.get(Integer.valueOf(paramInt2))).intValue());
       localEditor.commit();
       return;
     }
@@ -33,7 +33,7 @@ class QfileTabBarView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileTabBarView.1
  * JD-Core Version:    0.7.0.1
  */

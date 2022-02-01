@@ -6,7 +6,6 @@ import android.annotation.TargetApi;
 public class PathPoint
 {
   public float a;
-  public int a;
   public float b;
   public float c = 0.0F;
   public float d = 1.0F;
@@ -14,6 +13,7 @@ public class PathPoint
   public float f;
   public float g;
   public float h;
+  public int i;
   
   public PathPoint(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
@@ -21,15 +21,15 @@ public class PathPoint
     this.f = paramFloat2;
     this.g = paramFloat3;
     this.h = paramFloat4;
-    this.jdField_a_of_type_Float = paramFloat5;
+    this.a = paramFloat5;
     this.b = paramFloat6;
-    this.jdField_a_of_type_Int = 2;
+    this.i = 2;
   }
   
   public PathPoint(int paramInt, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
+    this.i = paramInt;
+    this.a = paramFloat1;
     this.b = paramFloat2;
   }
   
@@ -50,7 +50,7 @@ public class PathPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.PathPoint
  * JD-Core Version:    0.7.0.1
  */

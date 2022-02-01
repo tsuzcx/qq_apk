@@ -10,12 +10,12 @@ class EmotionInputDetector$6
   public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     if (paramBoolean) {
-      if (this.a.c()) {
+      if (this.a.g()) {
+        this.a.h();
+      } else if (this.a.f()) {
         this.a.c();
-      } else if (this.a.b()) {
-        this.a.b();
-      } else if (EmotionInputDetector.a(this.a) != null) {
-        EmotionInputDetector.a(this.a).a(paramMotionEvent);
+      } else if (EmotionInputDetector.e(this.a) != null) {
+        EmotionInputDetector.e(this.a).a(paramMotionEvent);
       }
     }
     return false;

@@ -13,33 +13,33 @@ class ListenTogetherOverlayFragment$3
 {
   ListenTogetherOverlayFragment$3(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, LyricsController paramLyricsController) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    ListenTogetherOverlayFragment.b(this.c).dismiss();
+    if (this.a)
     {
       if (paramInt != 0)
       {
         if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.h();
+          this.b.i();
         }
       }
       else {
-        ListenTogetherUtils.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().e, this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().b);
+        ListenTogetherUtils.a(ListenTogetherOverlayFragment.a(this.c), this.b.l().m, this.b.l().n);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.h();
+      this.b.i();
     }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    this.b.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.c).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.c).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment.3
  * JD-Core Version:    0.7.0.1
  */

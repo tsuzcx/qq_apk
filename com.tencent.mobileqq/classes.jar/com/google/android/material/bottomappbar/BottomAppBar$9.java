@@ -12,15 +12,15 @@ class BottomAppBar$9
   public void onAnimationStart(Animator paramAnimator)
   {
     this.a.a.onAnimationStart(paramAnimator);
-    paramAnimator = BottomAppBar.a(this.a);
+    paramAnimator = BottomAppBar.q(this.a);
     if (paramAnimator != null) {
-      paramAnimator.setTranslationX(BottomAppBar.a(this.a));
+      paramAnimator.setTranslationX(BottomAppBar.r(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.9
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ final class BlessSelectMemberActivity$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (this.a) {
+      ((Activity)this.b).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.7
  * JD-Core Version:    0.7.0.1
  */

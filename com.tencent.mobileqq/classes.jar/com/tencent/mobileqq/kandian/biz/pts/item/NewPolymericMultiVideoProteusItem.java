@@ -26,10 +26,10 @@ public class NewPolymericMultiVideoProteusItem
   {
     Object localObject = paramAbsBaseArticleInfo.mNewPolymericInfo;
     HashMap localHashMap = new HashMap();
-    localObject = (NewPolymericInfo.PackArticleInfo)((NewPolymericInfo)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
-    localHashMap.put("rowkey", ((NewPolymericInfo.PackArticleInfo)localObject).jdField_g_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(((NewPolymericInfo.PackArticleInfo)localObject).k)) {
-      localHashMap.put("jump_report_info", ((NewPolymericInfo.PackArticleInfo)localObject).k);
+    localObject = (NewPolymericInfo.PackArticleInfo)((NewPolymericInfo)localObject).p.get(paramInt);
+    localHashMap.put("rowkey", ((NewPolymericInfo.PackArticleInfo)localObject).l);
+    if (!TextUtils.isEmpty(((NewPolymericInfo.PackArticleInfo)localObject).y)) {
+      localHashMap.put("jump_report_info", ((NewPolymericInfo.PackArticleInfo)localObject).y);
     }
     RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, "0X8007625", "0X8007625", (int)paramAbsBaseArticleInfo.mChannelID, localHashMap);
   }
@@ -56,11 +56,11 @@ public class NewPolymericMultiVideoProteusItem
       JSONArray localJSONArray = new JSONArray();
       NewPolymericInfo localNewPolymericInfo = paramAbsBaseArticleInfo.mNewPolymericInfo;
       localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
-      localJSONObject1.put("common_header_text", localNewPolymericInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject1.put("topic_header_big_icon_url", localNewPolymericInfo.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("topic_header_small_icon_url", localNewPolymericInfo.e);
-      localJSONObject1.put("topic_header_desc_text", localNewPolymericInfo.jdField_c_of_type_JavaLangString);
-      paramInt = localNewPolymericInfo.jdField_b_of_type_Int;
+      localJSONObject1.put("common_header_text", localNewPolymericInfo.f);
+      localJSONObject1.put("topic_header_big_icon_url", localNewPolymericInfo.e);
+      localJSONObject1.put("topic_header_small_icon_url", localNewPolymericInfo.i);
+      localJSONObject1.put("topic_header_desc_text", localNewPolymericInfo.g);
+      paramInt = localNewPolymericInfo.j;
       if (paramInt != 2)
       {
         if (paramInt != 3) {
@@ -72,7 +72,7 @@ public class NewPolymericMultiVideoProteusItem
       else {
         localJSONObject1.put("common_header_visibility", "1");
       }
-      paramInt = localNewPolymericInfo.jdField_c_of_type_Int;
+      paramInt = localNewPolymericInfo.k;
       String str1;
       String str2;
       if (paramInt != 2)
@@ -94,28 +94,28 @@ public class NewPolymericMultiVideoProteusItem
         str2 = "146";
       }
       paramInt = 0;
-      while (paramInt < localNewPolymericInfo.jdField_a_of_type_JavaUtilList.size())
+      while (paramInt < localNewPolymericInfo.p.size())
       {
-        NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)localNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(paramInt);
+        NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)localNewPolymericInfo.p.get(paramInt);
         if (localPackArticleInfo != null)
         {
           JSONObject localJSONObject2 = new JSONObject();
           localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
           localJSONObject2.put("videoWidth", str2);
           localJSONObject2.put("videoHeight", str1);
-          localJSONObject2.put("video_cover_url", localPackArticleInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject2.put("video_title_text", localPackArticleInfo.jdField_a_of_type_JavaLangString);
-          localJSONObject2.put("play_count_text", localPackArticleInfo.j);
+          localJSONObject2.put("video_cover_url", localPackArticleInfo.d);
+          localJSONObject2.put("video_title_text", localPackArticleInfo.b);
+          localJSONObject2.put("play_count_text", localPackArticleInfo.w);
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(localPackArticleInfo.jdField_g_of_type_Int);
+          localStringBuilder.append(localPackArticleInfo.x);
           localStringBuilder.append("评论");
           localJSONObject2.put("comment_count_text", localStringBuilder.toString());
-          localJSONObject2.put("rowkey", localPackArticleInfo.jdField_g_of_type_JavaLangString);
+          localJSONObject2.put("rowkey", localPackArticleInfo.l);
           localJSONArray.put(paramInt, localJSONObject2);
         }
         paramInt += 1;
       }
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo == null) {
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.m == null) {
         localJSONObject1.put("canScroll", "0");
       } else {
         localJSONObject1.put("canScroll", "1");
@@ -130,7 +130,7 @@ public class NewPolymericMultiVideoProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if (localAbsBaseArticleInfo == null) {
       return;
     }
@@ -159,7 +159,7 @@ public class NewPolymericMultiVideoProteusItem
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(str))
     {
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
       bool1 = bool2;
       if ("cmd_video_set_card_click".equals(str))
       {
@@ -172,7 +172,7 @@ public class NewPolymericMultiVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NewPolymericMultiVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

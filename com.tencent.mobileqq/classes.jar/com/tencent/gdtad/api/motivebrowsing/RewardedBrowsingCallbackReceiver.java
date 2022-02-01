@@ -15,14 +15,9 @@ import org.jetbrains.annotations.Nullable;
 public final class RewardedBrowsingCallbackReceiver
   extends BroadcastReceiver
 {
-  public static final RewardedBrowsingCallbackReceiver.Companion a;
-  private final WeakReference<RewardedVideoAdPlugin> a;
-  private final WeakReference<AdProxyImpl> b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadApiMotivebrowsingRewardedBrowsingCallbackReceiver$Companion = new RewardedBrowsingCallbackReceiver.Companion(null);
-  }
+  public static final RewardedBrowsingCallbackReceiver.Companion a = new RewardedBrowsingCallbackReceiver.Companion(null);
+  private final WeakReference<RewardedVideoAdPlugin> b;
+  private final WeakReference<AdProxyImpl> c;
   
   public RewardedBrowsingCallbackReceiver()
   {
@@ -31,8 +26,8 @@ public final class RewardedBrowsingCallbackReceiver
   
   public RewardedBrowsingCallbackReceiver(@Nullable RewardedVideoAdPlugin paramRewardedVideoAdPlugin, @Nullable AdProxyImpl paramAdProxyImpl)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramRewardedVideoAdPlugin);
-    this.b = new WeakReference(paramAdProxyImpl);
+    this.b = new WeakReference(paramRewardedVideoAdPlugin);
+    this.c = new WeakReference(paramAdProxyImpl);
   }
   
   public void onReceive(@Nullable Context paramContext, @Nullable Intent paramIntent)
@@ -42,7 +37,7 @@ public final class RewardedBrowsingCallbackReceiver
     }
     if ((paramIntent != null) && (TextUtils.equals((CharSequence)paramIntent.getAction(), (CharSequence)"AD_PROXY_ACTION_MOTIVE_BROWSING_END")))
     {
-      paramContext = (AdProxyImpl)this.b.get();
+      paramContext = (AdProxyImpl)this.c.get();
       if (paramContext != null) {
         paramContext.a(paramIntent);
       }
@@ -51,7 +46,7 @@ public final class RewardedBrowsingCallbackReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.gdtad.api.motivebrowsing.RewardedBrowsingCallbackReceiver
  * JD-Core Version:    0.7.0.1
  */

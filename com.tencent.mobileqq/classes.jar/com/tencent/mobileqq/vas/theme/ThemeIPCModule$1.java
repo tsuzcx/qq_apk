@@ -14,7 +14,7 @@ class ThemeIPCModule$1
   {
     try
     {
-      this.val$remote.doSwitch(paramThemeLocator.a(), paramThemeLocator.d());
+      this.val$remote.doSwitch(paramThemeLocator.d(), paramThemeLocator.g());
       return true;
     }
     catch (RemoteException paramThemeLocator)
@@ -52,7 +52,7 @@ class ThemeIPCModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.ThemeIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

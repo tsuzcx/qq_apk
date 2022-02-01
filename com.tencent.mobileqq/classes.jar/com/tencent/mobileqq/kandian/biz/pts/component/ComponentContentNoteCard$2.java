@@ -10,12 +10,12 @@ class ComponentContentNoteCard$2
   
   public void onClick(View paramView)
   {
-    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
+    ComponentContentNoteCard.b(this.a).onClick(ComponentContentNoteCard.b(this.a).b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentNoteCard.2
  * JD-Core Version:    0.7.0.1
  */

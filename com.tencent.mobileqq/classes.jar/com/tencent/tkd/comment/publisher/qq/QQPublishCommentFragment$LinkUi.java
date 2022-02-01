@@ -17,7 +17,6 @@ import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView;
 import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView.OnLinkDeleteLinstener;
 import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 class QQPublishCommentFragment$LinkUi
@@ -25,18 +24,18 @@ class QQPublishCommentFragment$LinkUi
 {
   private int linkCount;
   private final TkdCommentLinkView vCommentLink;
-  final View vCommentLinkDivider;
+  private final View vCommentLinkDivider;
   private final FrameLayout vCommentLinkLayout;
   private final ImageView vLinkBtn;
   
   QQPublishCommentFragment$LinkUi(QQPublishCommentFragment paramQQPublishCommentFragment, Dialog paramDialog)
   {
-    this.vLinkBtn = ((ImageView)paramDialog.findViewById(R.id.x));
+    this.vLinkBtn = ((ImageView)paramDialog.findViewById(R.id.o));
     this.vLinkBtn.setOnClickListener(this);
-    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(R.id.z));
-    this.vCommentLinkDivider = paramDialog.findViewById(R.id.y);
+    this.vCommentLinkLayout = ((FrameLayout)paramDialog.findViewById(R.id.q));
+    this.vCommentLinkDivider = paramDialog.findViewById(R.id.p);
     this.vCommentLinkLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(R.id.l));
+    this.vCommentLink = ((TkdCommentLinkView)paramDialog.findViewById(R.id.c));
     this.vCommentLink.setLinkDeleteLinstener(this);
     this.vCommentLink.urlImageBridge = paramQQPublishCommentFragment.urlImageBridge;
   }
@@ -53,35 +52,16 @@ class QQPublishCommentFragment$LinkUi
     localView.setVisibility(i);
   }
   
-  private String getLinkR5Data()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("os", 1);
-      localJSONObject.put("entry", this.this$0.reportBridge.getEntry());
-      localJSONObject.put("comment_level", this.this$0.reportBridge.getCommentLevel());
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localJSONObject.toString();
-  }
-  
   private void openLink()
   {
     this.this$0.viewBridge.openLink(this.vCommentLinkLayout);
-    QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
-    QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, QQPublishCommentFragment.access$1300(localQQPublishCommentFragment), "0X800B085", "0X800B085", "", "", "", getLinkR5Data());
+    this.this$0.reportBridge.reportOpenLink();
   }
   
   private void reportDeleteLinkIfNeed(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > paramInt2)
-    {
-      QQPublishCommentFragment localQQPublishCommentFragment = this.this$0;
-      QQPublishCommentFragment.access$1400(localQQPublishCommentFragment, QQPublishCommentFragment.access$1300(localQQPublishCommentFragment), "0X800B086", "0X800B086", "", "", "", getLinkR5Data());
+    if (paramInt1 > paramInt2) {
+      this.this$0.reportBridge.reportDeleteLink();
     }
   }
   
@@ -142,7 +122,7 @@ class QQPublishCommentFragment$LinkUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment.LinkUi
  * JD-Core Version:    0.7.0.1
  */

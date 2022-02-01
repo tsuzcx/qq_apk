@@ -20,7 +20,7 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
   public void onResp(NetResp paramNetResp)
   {
     InformationFacePackage.Item localItem = (InformationFacePackage.Item)paramNetResp.mReq.getUserData();
-    String str = localItem.e;
+    String str = localItem.g;
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -42,7 +42,7 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("QIMInformationPasterManager", 1, ((StringBuilder)localObject2).toString());
       localObject2 = FileUtils.calcMd5((String)localObject1);
-      if ((localItem.f != null) && (localItem.f.equalsIgnoreCase((String)localObject2)))
+      if ((localItem.h != null) && (localItem.h.equalsIgnoreCase((String)localObject2)))
       {
         bool1 = QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).c(localItem);
       }
@@ -54,7 +54,7 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("info paster res md5 error, res md5:");
-          ((StringBuilder)localObject1).append(localItem.f);
+          ((StringBuilder)localObject1).append(localItem.h);
           ((StringBuilder)localObject1).append(",file md5:");
           ((StringBuilder)localObject1).append((String)localObject2);
           QLog.d("QIMInformationPasterManager", 2, ((StringBuilder)localObject1).toString());
@@ -71,7 +71,7 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
       ((StringBuilder)localObject1).append(bool1);
       QLog.d("QIMInformationPasterManager", 2, ((StringBuilder)localObject1).toString());
     }
-    paramNetResp = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).get(str)).iterator();
+    paramNetResp = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.b(this.a).get(str)).iterator();
     while (paramNetResp.hasNext())
     {
       localObject1 = (WeakReference)paramNetResp.next();
@@ -79,16 +79,16 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
         ((QIMInformationPasterManager.IInformationPasterResDownloaderCallback)((WeakReference)localObject1).get()).a(bool1, str, localItem);
       }
     }
-    QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).remove(str);
+    QIMInformationPasterManager.InformationPasterResDownloader.b(this.a).remove(str);
   }
   
   public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
   {
-    String str = ((InformationFacePackage.Item)???.getUserData()).e;
+    String str = ((InformationFacePackage.Item)???.getUserData()).g;
     float f = (float)(paramLong1 * 100L / paramLong2);
-    synchronized (QIMInformationPasterManager.InformationPasterResDownloader.a(this.a))
+    synchronized (QIMInformationPasterManager.InformationPasterResDownloader.b(this.a))
     {
-      Iterator localIterator = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).get(str)).iterator();
+      Iterator localIterator = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.b(this.a).get(str)).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -106,7 +106,7 @@ class QIMInformationPasterManager$InformationPasterResDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader.1
  * JD-Core Version:    0.7.0.1
  */

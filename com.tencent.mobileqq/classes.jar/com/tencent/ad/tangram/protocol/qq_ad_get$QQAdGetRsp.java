@@ -5,6 +5,7 @@ public final class qq_ad_get$QQAdGetRsp
   public String busi_cookie;
   public String debug_info;
   public String gdt_cookie;
+  public String ip_ping_url;
   public String msg;
   public qq_ad_get.QQAdGetRsp.PosAdInfo[] pos_ads_info;
   public int ret = 0;

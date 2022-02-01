@@ -1,88 +1,113 @@
 package com.tencent.avbiz;
 
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
 import mqq.util.WeakReference;
 
 class AVBizQQProcessModule
   implements IModule, IModule.FocusChangeListener
 {
-  private static String jdField_a_of_type_JavaLangString = "AVBizQQProcessModule";
-  private WeakReference<IModule.FocusChangeListener> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(null);
-  private final String b;
+  private static final String TAG = "AVBizQQProcessModule";
+  private WeakReference<IModule.FocusChangeListener> mListenerWeakRef = new WeakReference(null);
+  private final String mName;
   
   AVBizQQProcessModule(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.b = paramString;
+    this.mName = paramString;
   }
   
-  public String a()
+  public void abandonAVFocus()
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module abandonAVFocus, name[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("]");
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    AVBizPriorityManager.getInstance().abandonAVFocus(this.mName);
+  }
+  
+  public String checkAVFocus()
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module checkAVFocus, name[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("]");
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    return AVBizPriorityManager.getInstance().checkAVFocus(this.mName);
+  }
+  
+  public HashMap<Long, String> getFocusBusiness()
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module getFocusBusiness, name[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("]");
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    return AVBizPriorityManager.getInstance().getFocusBusiness();
+  }
+  
+  public HashSet<String> getInQueueBusiness()
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("module getFocusBusiness, name[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("]");
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    return AVBizPriorityManager.getInstance().getInQueueBusiness();
+  }
+  
+  public void onFocusGain()
+  {
+    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.mListenerWeakRef.get();
+    if (localFocusChangeListener != null) {
+      localFocusChangeListener.onFocusGain();
+    }
+  }
+  
+  public void onFocusLoss()
+  {
+    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.mListenerWeakRef.get();
+    if (localFocusChangeListener != null) {
+      localFocusChangeListener.onFocusLoss();
+    }
+  }
+  
+  public String requestAVFocus()
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("module requestAVFocus, name[");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.mName);
       localStringBuilder.append("], processName[");
       localStringBuilder.append("com.tencent.mobileqq");
       localStringBuilder.append("]");
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    return AVBizPriorityManager.a().a(this.b, "com.tencent.mobileqq");
+    return AVBizPriorityManager.getInstance().requestAVFocus(this.mName, "com.tencent.mobileqq");
   }
   
-  public void a()
+  public void setListener(IModule.FocusChangeListener paramFocusChangeListener)
   {
-    if (QLog.isColorLevel())
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("module abandonAVFocus, name[");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append("]");
-      QLog.i(str, 2, localStringBuilder.toString());
-    }
-    AVBizPriorityManager.a().a(this.b);
-  }
-  
-  public void a(IModule.FocusChangeListener paramFocusChangeListener)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramFocusChangeListener);
-  }
-  
-  public String b()
-  {
-    if (QLog.isColorLevel())
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("module checkAVFocus, name[");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append("]");
-      QLog.i(str, 2, localStringBuilder.toString());
-    }
-    return AVBizPriorityManager.a().a(this.b);
-  }
-  
-  public void b()
-  {
-    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localFocusChangeListener != null) {
-      localFocusChangeListener.b();
-    }
-  }
-  
-  public void c()
-  {
-    IModule.FocusChangeListener localFocusChangeListener = (IModule.FocusChangeListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localFocusChangeListener != null) {
-      localFocusChangeListener.c();
-    }
+    this.mListenerWeakRef = new WeakReference(paramFocusChangeListener);
   }
 }
 

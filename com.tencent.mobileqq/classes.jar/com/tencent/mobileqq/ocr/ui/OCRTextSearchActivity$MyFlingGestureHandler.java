@@ -17,8 +17,8 @@ public class OCRTextSearchActivity$MyFlingGestureHandler
   public void a(boolean paramBoolean)
   {
     this.a = paramBoolean;
-    if (!b()) {
-      a();
+    if (!isWrapped()) {
+      wrap();
     }
     this.mTopLayout.setInterceptTouchFlag(paramBoolean);
   }
@@ -32,7 +32,7 @@ public class OCRTextSearchActivity$MyFlingGestureHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity.MyFlingGestureHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class AVGameControlUIImpl$2$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {
+    if (this.d.a.d()) {
       return;
     }
-    long l1 = QQAudioHelper.b();
-    long l2 = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin();
-    long l3 = this.jdField_a_of_type_Long;
+    long l1 = QQAudioHelper.d();
+    long l2 = this.d.a.g.getLongAccountUin();
+    long l3 = this.a;
     boolean bool = false;
     int i;
     if (l2 == l3) {
@@ -26,14 +26,14 @@ class AVGameControlUIImpl$2$4
     } else {
       i = 0;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_Long == this.jdField_a_of_type_Long))
+    if ((this.b) && (this.d.a.p == this.a))
     {
-      Object localObject = AVGameBusinessCtrl.b().a();
+      Object localObject = AVGameBusinessCtrl.b().j();
       if (localObject != null) {
-        bool = ((AVGameSession)localObject).a(this.jdField_a_of_type_Long, true);
+        bool = ((AVGameSession)localObject).a(this.a, true);
       }
       if (bool) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_Long = 0L;
+        this.d.a.p = 0L;
       }
       if (QLog.isDevelopLevel())
       {
@@ -41,28 +41,28 @@ class AVGameControlUIImpl$2$4
         ((StringBuilder)localObject).append("onMemberVideoInOrOut, ret[");
         ((StringBuilder)localObject).append(bool);
         ((StringBuilder)localObject).append("], uin[");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append("]");
         QLog.i("AVGameControlUIImpl", 4, ((StringBuilder)localObject).toString());
       }
     }
     if (i != 0)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onMemberVideoInOrOut", l1);
+        this.d.a.h.a("onMemberVideoInOrOut", l1);
         return;
       }
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onMemberVideoInOrOut", l1);
+      this.d.a.h.b("onMemberVideoInOrOut", l1);
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.c();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onMemberVideoInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+      this.d.a.e();
+      this.d.a.h.a("onMemberVideoInOrOut", l1, Long.toString(this.a), this.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onMemberVideoInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+    this.d.a.h.b("onMemberVideoInOrOut", l1, Long.toString(this.a), this.c);
   }
 }
 

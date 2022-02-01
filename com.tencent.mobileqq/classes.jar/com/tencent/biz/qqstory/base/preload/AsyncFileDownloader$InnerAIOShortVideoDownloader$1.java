@@ -19,33 +19,33 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader$1
   public void a(int paramInt, ShortVideoResult paramShortVideoResult)
   {
     DownloadTask localDownloadTask;
-    if (paramShortVideoResult.jdField_a_of_type_Int == 0)
+    if (paramShortVideoResult.a == 0)
     {
-      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.jdField_a_of_type_JavaLangObject;
-      localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.d;
+      localDownloadTask = (DownloadTask)this.b.a.d.remove(this.a);
       if (localDownloadTask != null) {
-        if (new File(paramShortVideoResult.b).exists())
+        if (new File(paramShortVideoResult.e).exists())
         {
-          localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-          if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
-            localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(0, "onDownload"));
+          localDownloadTask.q = (System.currentTimeMillis() - localDownloadTask.p);
+          if (localDownloadTask.m != null) {
+            localDownloadTask.m.a(localDownloadTask, new ErrorMessage(0, "onDownload"));
           }
         }
         else
         {
-          SLog.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+          SLog.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.a });
         }
       }
     }
     else
     {
-      SLog.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramShortVideoResult.jdField_a_of_type_Int) });
-      localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      SLog.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.a, String.valueOf(paramShortVideoResult.a) });
+      localDownloadTask = (DownloadTask)this.b.a.d.remove(this.a);
       if (localDownloadTask != null)
       {
-        localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-        if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
-          localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(paramShortVideoResult.jdField_a_of_type_Int, "onFailed"));
+        localDownloadTask.q = (System.currentTimeMillis() - localDownloadTask.p);
+        if (localDownloadTask.m != null) {
+          localDownloadTask.m.a(localDownloadTask, new ErrorMessage(paramShortVideoResult.a, "onFailed"));
         }
       }
     }
@@ -57,7 +57,7 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerAIOShortVideoDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import mqq.observer.BusinessObserver;
 public class CheckForwardObserver
   implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private final SparseArray<WeakReference<OnCheckShareListener>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private int a;
+  private final SparseArray<WeakReference<OnCheckShareListener>> b = new SparseArray();
   
   private void a(boolean paramBoolean, Bundle paramBundle)
   {
@@ -17,16 +17,16 @@ public class CheckForwardObserver
     if (paramBundle != null)
     {
       i = paramBundle.getInt("req_id");
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      synchronized (this.b)
       {
-        localObject2 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        localObject2 = (WeakReference)this.b.get(i);
         if (localObject2 != null)
         {
           localObject2 = (OnCheckShareListener)((WeakReference)localObject2).get();
           localObject1 = localObject2;
           if (localObject2 == null)
           {
-            this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+            this.b.delete(i);
             return;
           }
         }
@@ -49,13 +49,13 @@ public class CheckForwardObserver
   
   int a(OnCheckShareListener paramOnCheckShareListener)
   {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    synchronized (this.b)
     {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
+      SparseArray localSparseArray2 = this.b;
+      int i = this.a + 1;
+      this.a = i;
       localSparseArray2.append(i, new WeakReference(paramOnCheckShareListener));
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
       return i;
     }
   }
@@ -70,7 +70,7 @@ public class CheckForwardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.sso.CheckForwardObserver
  * JD-Core Version:    0.7.0.1
  */

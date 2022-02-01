@@ -14,7 +14,7 @@ import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
 public class ExtraBiuBriefInfo
 {
   public ArrayList<ExtraBiuBriefInfo.BiuBriefInfoItem> a;
-  articlesummary.AggregatedList a;
+  articlesummary.AggregatedList b;
   
   public static ExtraBiuBriefInfo a(articlesummary.AggregatedList paramAggregatedList)
   {
@@ -22,26 +22,26 @@ public class ExtraBiuBriefInfo
     {
       ExtraBiuBriefInfo localExtraBiuBriefInfo = new ExtraBiuBriefInfo();
       Object localObject = paramAggregatedList.rpt_article_summary.get();
-      localExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject).size());
-      localExtraBiuBriefInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList = paramAggregatedList;
+      localExtraBiuBriefInfo.a = new ArrayList(((List)localObject).size());
+      localExtraBiuBriefInfo.b = paramAggregatedList;
       paramAggregatedList = ((List)localObject).iterator();
       while (paramAggregatedList.hasNext())
       {
         localObject = (articlesummary.ArticleSummary)paramAggregatedList.next();
         articlesummary.FeedsInfo localFeedsInfo = (articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject).msg_feeds_info.get();
         ExtraBiuBriefInfo.BiuBriefInfoItem localBiuBriefInfoItem = new ExtraBiuBriefInfo.BiuBriefInfoItem();
-        localBiuBriefInfoItem.jdField_a_of_type_Long = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
-        localBiuBriefInfoItem.jdField_b_of_type_Long = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
+        localBiuBriefInfoItem.a = ((articlesummary.ArticleSummary)localObject).msg_feeds_info.msg_social_feeds_info.uint64_feeds_id.get();
+        localBiuBriefInfoItem.c = ((articlesummary.ArticleSummary)localObject).uint64_algorithm_id.get();
         if (localFeedsInfo.feeds_type.has()) {
-          localBiuBriefInfoItem.jdField_a_of_type_Int = localFeedsInfo.feeds_type.get();
+          localBiuBriefInfoItem.b = localFeedsInfo.feeds_type.get();
         }
         if (((articlesummary.ArticleSummary)localObject).uint32_strategy_id.has()) {
-          localBiuBriefInfoItem.jdField_b_of_type_Int = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
+          localBiuBriefInfoItem.d = ((articlesummary.ArticleSummary)localObject).uint32_strategy_id.get();
         }
         if (((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.has()) {
-          localBiuBriefInfoItem.c = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
+          localBiuBriefInfoItem.e = ((articlesummary.ArticleSummary)localObject).uint64_recommend_seq.get();
         }
-        localExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList.add(localBiuBriefInfoItem);
+        localExtraBiuBriefInfo.a.add(localBiuBriefInfoItem);
       }
       return localExtraBiuBriefInfo;
     }
@@ -50,12 +50,12 @@ public class ExtraBiuBriefInfo
   
   public byte[] a()
   {
-    return ((articlesummary.AggregatedList)this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$AggregatedList.get()).toByteArray();
+    return ((articlesummary.AggregatedList)this.b.get()).toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ExtraBiuBriefInfo
  * JD-Core Version:    0.7.0.1
  */

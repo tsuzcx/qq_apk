@@ -17,11 +17,11 @@ class NewTroopContactView$7
       if (paramKeyEvent.getAction() == 0)
       {
         paramView = this.a;
-        paramView.jdField_a_of_type_Boolean = TextUtils.isEmpty(paramView.jdField_a_of_type_AndroidWidgetEditText.getText());
+        paramView.g = TextUtils.isEmpty(paramView.f.getText());
       }
-      else if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
+      else if ((paramKeyEvent.getAction() == 1) && (this.a.g))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView$GridViewAdapter.a();
+        this.a.p.a();
       }
     }
     return false;
@@ -29,7 +29,7 @@ class NewTroopContactView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ class StoryPromoteTaskManager$1
     if (paramErrorMessage.errorCode == 15000)
     {
       SLog.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramGetPromoteTaskResponse);
-      this.a.jdField_a_of_type_Long = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
+      this.a.f = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
       return;
     }
     if (paramErrorMessage.isFail())
@@ -36,25 +36,25 @@ class StoryPromoteTaskManager$1
       SLog.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramGetPromoteTaskResponse });
       return;
     }
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.e) {
       return;
     }
-    this.a.jdField_a_of_type_JavaLangString = paramGetPromoteTaskResponse.a.bytes_cookie.get().toStringUtf8();
-    this.a.jdField_a_of_type_Long = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
-    this.a.a();
+    this.a.b = paramGetPromoteTaskResponse.a.bytes_cookie.get().toStringUtf8();
+    this.a.f = paramGetPromoteTaskResponse.a.uint64_expire_time.get();
+    this.a.c();
     this.a.a(paramGetPromoteTaskResponse.a);
     paramGetPromoteTaskRequest = paramGetPromoteTaskResponse.a.bytes_global_promote_url.get().toStringUtf8();
     if (!TextUtils.isEmpty(paramGetPromoteTaskRequest))
     {
-      ((StoryConfigManager)SuperManager.a(10)).b("key_story_player_promote_url", paramGetPromoteTaskRequest);
-      this.a.b = paramGetPromoteTaskRequest;
+      ((StoryConfigManager)SuperManager.a(10)).d("key_story_player_promote_url", paramGetPromoteTaskRequest);
+      this.a.g = paramGetPromoteTaskRequest;
     }
     this.a.a("onCmdRespond()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryPromoteTaskManager.1
  * JD-Core Version:    0.7.0.1
  */

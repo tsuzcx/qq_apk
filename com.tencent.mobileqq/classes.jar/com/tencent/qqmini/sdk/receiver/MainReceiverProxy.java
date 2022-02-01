@@ -65,12 +65,14 @@ public class MainReceiverProxy
       MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 605, "1");
       if ((GameWnsUtils.gameEnable()) && (GameWnsUtils.enablePreloadGameBaseLib()))
       {
-        paramIntent = paramIntent.getExtras();
-        paramContext = paramIntent;
-        if (paramIntent == null) {
+        localObject = paramIntent.getExtras();
+        paramContext = (Context)localObject;
+        if (localObject == null) {
           paramContext = new Bundle();
         }
         paramContext.putString("mini_key_preload_type", "preload_game");
+        paramContext.putLong("time_start_broadcast", paramIntent.getLongExtra("time_start_broadcast", 0L));
+        paramContext.putLong("time_broadcast_receive", System.currentTimeMillis());
         AppRuntimeLoaderManager.g().preloadRuntime(paramContext);
         paramContext = new Bundle();
         paramContext.putString("mini_key_preload_type", "preload_game");
@@ -82,7 +84,7 @@ public class MainReceiverProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.receiver.MainReceiverProxy
  * JD-Core Version:    0.7.0.1
  */

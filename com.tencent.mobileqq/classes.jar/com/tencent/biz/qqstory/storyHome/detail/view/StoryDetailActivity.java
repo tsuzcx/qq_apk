@@ -15,25 +15,25 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class StoryDetailActivity
   extends QQStoryBaseActivity
 {
-  private int jdField_a_of_type_Int;
-  private StoryDetailFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  private String a;
+  private int b;
+  private boolean c;
   private int d;
+  private String e;
+  private int f;
+  private int g;
+  private StoryDetailFragment h;
   
   private void a()
   {
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("feed_id");
-    this.jdField_a_of_type_Int = localIntent.getIntExtra("source", 210);
-    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("should_up_keyboard", false);
-    this.jdField_b_of_type_Int = localIntent.getIntExtra("focus_comment_id", -1);
-    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("focus_video_id");
-    this.d = localIntent.getIntExtra("play_source", 0);
-    this.c = localIntent.getIntExtra("commentLike_category", 0);
+    this.a = localIntent.getStringExtra("feed_id");
+    this.b = localIntent.getIntExtra("source", 210);
+    this.c = localIntent.getBooleanExtra("should_up_keyboard", false);
+    this.d = localIntent.getIntExtra("focus_comment_id", -1);
+    this.e = localIntent.getStringExtra("focus_video_id");
+    this.g = localIntent.getIntExtra("play_source", 0);
+    this.f = localIntent.getIntExtra("commentLike_category", 0);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2)
@@ -79,11 +79,11 @@ public class StoryDetailActivity
   
   private void b()
   {
-    setContentView(2131561636);
-    this.leftView.setText(2131690706);
+    setContentView(2131628015);
+    this.leftView.setText(2131887625);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131365132, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    this.h = StoryDetailFragment.a(this.a, this.b, this.c, this.d, this.e, this.g, this.f);
+    localFragmentTransaction.replace(2131431280, this.h);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -98,7 +98,7 @@ public class StoryDetailActivity
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.h.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)

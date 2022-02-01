@@ -13,8 +13,8 @@ import java.util.List;
 public class RingView
   extends View
 {
-  protected RectF a;
-  protected List<RingView.DrawInfo> a;
+  protected RectF o = new RectF();
+  protected List<RingView.DrawInfo> p = new ArrayList();
   
   public RingView(Context paramContext)
   {
@@ -24,8 +24,6 @@ public class RingView
   public RingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   protected static void a()
@@ -41,10 +39,10 @@ public class RingView
     
     if (paramDrawInfo != null)
     {
-      if (!this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty()) {
-        paramDrawInfo.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      if (!this.o.isEmpty()) {
+        paramDrawInfo.a((int)this.o.centerX(), (int)this.o.centerY(), (int)this.o.height() / 2);
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramDrawInfo);
+      this.p.add(paramDrawInfo);
       return;
     }
     throw new NullPointerException("drawInfo should not be NULL");
@@ -54,11 +52,11 @@ public class RingView
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.p.iterator();
     while (localIterator.hasNext())
     {
       RingView.DrawInfo localDrawInfo = (RingView.DrawInfo)localIterator.next();
-      localDrawInfo.a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      localDrawInfo.a((int)this.o.centerX(), (int)this.o.centerY(), (int)this.o.height() / 2);
       localDrawInfo.a(paramCanvas);
     }
     paramCanvas.restore();
@@ -78,14 +76,14 @@ public class RingView
     paramInt3 = Math.min(i, paramInt4);
     paramInt2 += (i - paramInt3) / 2;
     paramInt1 += (paramInt4 - paramInt3) / 2;
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    Object localObject = this.o;
     ((RectF)localObject).left = paramInt2;
     ((RectF)localObject).right = (paramInt2 + paramInt3);
     ((RectF)localObject).top = paramInt1;
     ((RectF)localObject).bottom = (paramInt3 + paramInt1);
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.p.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((RingView.DrawInfo)((Iterator)localObject).next()).a((int)this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2);
+      ((RingView.DrawInfo)((Iterator)localObject).next()).a((int)this.o.centerX(), (int)this.o.centerY(), (int)this.o.height() / 2);
     }
   }
 }

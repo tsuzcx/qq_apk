@@ -14,22 +14,22 @@ import org.json.JSONObject;
 public class NowLiveJsPlugin
   extends BaseJsPlugin
 {
-  private int jdField_a_of_type_Int;
-  private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  final ITroopMemberApiClientApi.Callback jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = new NowLiveJsPlugin.1(this);
+  final ITroopMemberApiClientApi.Callback a = new NowLiveJsPlugin.1(this);
+  private TroopMemberApiClient b;
+  private int c;
   
   private void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NowLiveJsPlugin", 2, "NowLiveJsPlugin | preload()");
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g(this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback);
+      this.b = TroopMemberApiClient.a();
+      this.b.e();
+      this.b.i(this.a);
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(null);
+    this.b.a(null);
   }
   
   public void onDestroy()
@@ -37,9 +37,9 @@ public class NowLiveJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("NowLiveJsPlugin", 2, "NowLiveNativePlugin | onDestroy()");
     }
-    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    TroopMemberApiClient localTroopMemberApiClient = this.b;
     if (localTroopMemberApiClient != null) {
-      localTroopMemberApiClient.g();
+      localTroopMemberApiClient.k();
     }
   }
   
@@ -94,7 +94,7 @@ public class NowLiveJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.NowLiveJsPlugin
  * JD-Core Version:    0.7.0.1
  */

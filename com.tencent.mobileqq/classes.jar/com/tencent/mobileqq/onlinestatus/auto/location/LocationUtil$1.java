@@ -32,23 +32,23 @@ final class LocationUtil$1
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[status][util] getPoiWithLatLng invoked success. latLng : ");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+            localStringBuilder.append(this.a);
             localStringBuilder.append(" poi_size : ");
             localStringBuilder.append(paramBaseObject.result.pois.size());
             QLog.d("LocationHelper", 2, localStringBuilder.toString());
           }
-          paramBaseObject = new PoiCache.PoiItem(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, paramBaseObject.result.pois);
+          paramBaseObject = new PoiCache.PoiItem(this.a, paramBaseObject.result.ad_info, paramBaseObject.result.pois);
           try
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationPoiCache != null) {
-              this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationPoiCache.a(paramBaseObject);
+            if (this.b != null) {
+              this.b.a(paramBaseObject);
             }
           }
           catch (Throwable localThrowable)
           {
             QLog.e("LocationHelper", 1, "putPoiCacheError", localThrowable);
           }
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnGetPoiWithLatLngListener.a(paramBaseObject);
+          this.c.a(paramBaseObject);
           return;
         }
         catch (Throwable paramBaseObject)
@@ -65,19 +65,19 @@ final class LocationUtil$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][util] getPoiWithLatLng invoked fail. latLng : ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" errorCode : ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" errorMsg : ");
       localStringBuilder.append(paramString);
       QLog.e("LocationHelper", 2, paramThrowable, new Object[] { localStringBuilder.toString() });
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnGetPoiWithLatLngListener.a(null);
+    this.c.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationUtil.1
  * JD-Core Version:    0.7.0.1
  */

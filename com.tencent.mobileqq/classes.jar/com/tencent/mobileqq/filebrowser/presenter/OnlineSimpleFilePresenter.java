@@ -21,10 +21,10 @@ public class OnlineSimpleFilePresenter
   {
     if (paramInt != 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692474));
+      this.b.d(this.f.getString(2131889462));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692473));
+    this.b.d(this.f.getString(2131889461));
   }
   
   private void b(int paramInt)
@@ -44,15 +44,15 @@ public class OnlineSimpleFilePresenter
         }
         break;
       case 11: 
-        c(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d());
+        c(this.d.g());
         return;
       case 10: 
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.c(false);
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(false);
-        this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131694603));
+        this.b.c(false);
+        this.b.b(false);
+        this.b.d(this.f.getString(2131892287));
         return;
       case 9: 
-        d(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d());
+        d(this.d.g());
       }
     }
   }
@@ -74,17 +74,17 @@ public class OnlineSimpleFilePresenter
       break;
     case 8: 
     case 9: 
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131694603));
+      this.b.d(this.f.getString(2131892287));
       break;
     case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131694602));
+      this.b.d(this.f.getString(2131892286));
       break;
     case 5: 
     case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131694599));
+      this.b.d(this.f.getString(2131892283));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.e(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(false);
+    this.b.e(true);
+    this.b.b(false);
   }
   
   private void d(int paramInt)
@@ -106,15 +106,15 @@ public class OnlineSimpleFilePresenter
     case 10: 
     case 11: 
     case 12: 
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131694598));
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(false);
+      this.b.d(this.f.getString(2131892282));
+      this.b.b(false);
     }
   }
   
-  private void j()
+  private void i()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b();
-    a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a());
+    int i = this.d.e();
+    a(this.d.d());
     b(i);
   }
   
@@ -124,28 +124,28 @@ public class OnlineSimpleFilePresenter
     if (QLog.isColorLevel()) {
       QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = online simple");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.h(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a()));
-    j();
+    this.b.h(FileUtil.a(this.d.b()));
+    i();
   }
   
   public void e()
   {
-    p();
-    j();
+    q();
+    i();
   }
   
   protected void f()
   {
     super.f();
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d();
+    int i = this.d.g();
     if ((i == 8) || (i == 9) || (i == 5) || (i == 7) || (i == 12) || (i == 6) || (i == 16)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(false);
+      this.b.b(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.OnlineSimpleFilePresenter
  * JD-Core Version:    0.7.0.1
  */

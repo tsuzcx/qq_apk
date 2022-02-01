@@ -15,22 +15,6 @@ import org.json.JSONObject;
 
 public class IdentityUtils
 {
-  private static Context a(Dialog paramDialog)
-  {
-    if (paramDialog == null) {
-      return null;
-    }
-    Context localContext = paramDialog.getContext();
-    if ((localContext instanceof Activity)) {
-      return localContext;
-    }
-    paramDialog = localContext;
-    if ((localContext instanceof ContextThemeWrapper)) {
-      paramDialog = ((ContextThemeWrapper)localContext).getBaseContext();
-    }
-    return paramDialog;
-  }
-  
   public static QQCustomDialog a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     return DialogUtil.a(paramContext, paramString4, paramString3, paramString1, paramString2, paramBoolean, 5, paramOnClickListener1, paramOnClickListener2);
@@ -85,20 +69,11 @@ public class IdentityUtils
         return false;
       }
       bool1 = bool2;
-      if (a(paramDialog) == paramActivity) {
+      if (b(paramDialog) == paramActivity) {
         bool1 = true;
       }
     }
     return bool1;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = (Boolean)a("force", paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return paramString.booleanValue();
   }
   
   public static boolean a(String paramString, long paramLong)
@@ -125,10 +100,35 @@ public class IdentityUtils
     }
     return false;
   }
+  
+  private static Context b(Dialog paramDialog)
+  {
+    if (paramDialog == null) {
+      return null;
+    }
+    Context localContext = paramDialog.getContext();
+    if ((localContext instanceof Activity)) {
+      return localContext;
+    }
+    paramDialog = localContext;
+    if ((localContext instanceof ContextThemeWrapper)) {
+      paramDialog = ((ContextThemeWrapper)localContext).getBaseContext();
+    }
+    return paramDialog;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    paramString = (Boolean)a("force", paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.booleanValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.IdentityUtils
  * JD-Core Version:    0.7.0.1
  */

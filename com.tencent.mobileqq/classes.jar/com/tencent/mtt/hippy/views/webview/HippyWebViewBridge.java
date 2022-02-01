@@ -4,7 +4,7 @@ import android.webkit.JavascriptInterface;
 
 class HippyWebViewBridge
 {
-  private HippyWebView hippyView;
+  private final HippyWebView hippyView;
   
   public HippyWebViewBridge(HippyWebView paramHippyWebView)
   {
@@ -22,7 +22,7 @@ class HippyWebViewBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.webview.HippyWebViewBridge
  * JD-Core Version:    0.7.0.1
  */

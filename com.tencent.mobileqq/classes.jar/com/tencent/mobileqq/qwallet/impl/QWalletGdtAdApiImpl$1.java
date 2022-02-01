@@ -25,39 +25,39 @@ class QWalletGdtAdApiImpl$1
   {
     try
     {
-      QWalletGdtAdApiImpl.access$002(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, null);
+      QWalletGdtAdApiImpl.access$002(this.d, null);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("reqAds onResponse :");
         localStringBuilder.append(paramGdtAdLoader);
         localStringBuilder.append(",cost:");
-        localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long);
+        localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis() - this.a);
         QLog.i("QWalletGdtAdApi", 2, localStringBuilder.toString());
       }
-      if ((paramGdtAdLoader != null) && (paramGdtAdLoader.a() != null) && (paramGdtAdLoader.a().a != null) && (paramGdtAdLoader.a().a.ret.has()) && (paramGdtAdLoader.a().a.ret.get() == 0))
+      if ((paramGdtAdLoader != null) && (paramGdtAdLoader.a() != null) && (paramGdtAdLoader.a().b != null) && (paramGdtAdLoader.a().b.ret.has()) && (paramGdtAdLoader.a().b.ret.get() == 0))
       {
-        paramGdtAdLoader = paramGdtAdLoader.a().a;
+        paramGdtAdLoader = paramGdtAdLoader.a().b;
         if ((paramGdtAdLoader.pos_ads_info.has()) && (paramGdtAdLoader.pos_ads_info.size() > 0) && (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.pos_ads_info.get(0)).ret.has()) && (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.pos_ads_info.get(0)).ret.get() == 0) && (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.pos_ads_info.get(0)).ads_info.has()))
         {
-          if ((!QWalletGdtAdApiImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl)) && (QWalletGdtAdApiImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl) == 1))
+          if ((!QWalletGdtAdApiImpl.access$200(this.d)) && (QWalletGdtAdApiImpl.access$300(this.d) == 1))
           {
             if (QLog.isColorLevel()) {
               QLog.i("QWalletGdtAdApi", 2, "reqAds onResponse but mPvFlag is 1,will not display ad");
             }
-            this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl.checkReportTailPlaceShow();
+            this.d.checkReportTailPlaceShow();
             return;
           }
-          QWalletGdtAdApiImpl.access$402(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.pos_ads_info.get(0)).ads_info.get(0)));
-          QWalletGdtAdApiImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, this.jdField_a_of_type_ComQwalletTempIBaseChatPieProxy);
-          if (QWalletGdtAdApiImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl)) {
-            ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QWalletGdtAdApiImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl));
+          QWalletGdtAdApiImpl.access$402(this.d, new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAdLoader.pos_ads_info.get(0)).ads_info.get(0)));
+          QWalletGdtAdApiImpl.access$500(this.d, this.b);
+          if (QWalletGdtAdApiImpl.access$600(this.d)) {
+            ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).preLoadAfterAdLoaded(this.c, QWalletGdtAdApiImpl.access$400(this.d));
           }
           if (QLog.isColorLevel())
           {
             paramGdtAdLoader = new StringBuilder();
             paramGdtAdLoader.append("reqAds onResponse : notifyDataSetChanged,mHasTailMsg:");
-            paramGdtAdLoader.append(QWalletGdtAdApiImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl));
+            paramGdtAdLoader.append(QWalletGdtAdApiImpl.access$600(this.d));
             QLog.i("QWalletGdtAdApi", 2, paramGdtAdLoader.toString());
           }
         }
@@ -66,13 +66,13 @@ class QWalletGdtAdApiImpl$1
           if (QLog.isColorLevel()) {
             QLog.i("QWalletGdtAdApi", 2, "reqAds onResponse : getAdInfo is null");
           }
-          this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl.checkReportTailPlaceShow();
+          this.d.checkReportTailPlaceShow();
         }
       }
       else
       {
-        QWalletGdtAdApiImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, paramGdtAdLoader);
-        this.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl.checkReportTailPlaceShow();
+        QWalletGdtAdApiImpl.access$100(this.d, paramGdtAdLoader);
+        this.d.checkReportTailPlaceShow();
         return;
       }
     }
@@ -84,7 +84,7 @@ class QWalletGdtAdApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletGdtAdApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

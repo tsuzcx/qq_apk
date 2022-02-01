@@ -11,31 +11,16 @@ public class AEVideoStoryStateViewModel
   private MutableLiveData<Boolean> c = new MutableLiveData();
   private MutableLiveData<Boolean> d = new MutableLiveData();
   private MutableLiveData<Boolean> e = new MutableLiveData();
+  private MutableLiveData<Boolean> f = new MutableLiveData();
   
   public MutableLiveData<Boolean> a()
   {
     return this.a;
   }
   
-  public boolean a()
-  {
-    if (this.b.getValue() != null) {
-      return ((Boolean)this.b.getValue()).booleanValue();
-    }
-    return false;
-  }
-  
   public MutableLiveData<Boolean> b()
   {
     return this.b;
-  }
-  
-  public boolean b()
-  {
-    if (this.c.getValue() != null) {
-      return ((Boolean)this.c.getValue()).booleanValue();
-    }
-    return false;
   }
   
   public MutableLiveData<Boolean> c()
@@ -52,10 +37,31 @@ public class AEVideoStoryStateViewModel
   {
     return this.e;
   }
+  
+  public MutableLiveData<Boolean> f()
+  {
+    return this.f;
+  }
+  
+  public boolean g()
+  {
+    if (this.b.getValue() != null) {
+      return ((Boolean)this.b.getValue()).booleanValue();
+    }
+    return false;
+  }
+  
+  public boolean h()
+  {
+    if (this.c.getValue() != null) {
+      return ((Boolean)this.c.getValue()).booleanValue();
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.part.AEVideoStoryStateViewModel
  * JD-Core Version:    0.7.0.1
  */

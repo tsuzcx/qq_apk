@@ -17,13 +17,13 @@ class MyAppApi$4
     paramContext.append(paramIntent);
     LogUtility.c("MyAppApi", paramContext.toString());
     if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.h();
+      this.a.o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.4
  * JD-Core Version:    0.7.0.1
  */

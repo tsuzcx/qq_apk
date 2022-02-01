@@ -25,6 +25,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.common.app.AppInterface;
@@ -121,6 +122,7 @@ public class ProfileTitleContainer
   private boolean mIsFromArkBabyQ;
   private TextView mLeftTextView;
   private PullToZoomHeaderListView mListView;
+  private LinearLayout mProfileCardTitleBar;
   private ImageView mRightImageView;
   private TextView mRightTextView;
   private RedTouch mRightViewRedTouch;
@@ -248,8 +250,8 @@ public class ProfileTitleContainer
       try
       {
         Object localObject1 = this.mActivity.getResources();
-        Object localObject2 = BitmapFactory.decodeResource((Resources)localObject1, 2130850447);
-        Bitmap localBitmap = BitmapFactory.decodeResource((Resources)localObject1, 2130850451);
+        Object localObject2 = BitmapFactory.decodeResource((Resources)localObject1, 2130852243);
+        Bitmap localBitmap = BitmapFactory.decodeResource((Resources)localObject1, 2130852247);
         localObject2 = new NinePatchDrawable((Resources)localObject1, (Bitmap)localObject2, ((Bitmap)localObject2).getNinePatchChunk(), new Rect(), null);
         localObject1 = new NinePatchDrawable((Resources)localObject1, localBitmap, localBitmap.getNinePatchChunk(), new Rect(), null);
         this.mBackDrawable = new StateListDrawable();
@@ -281,9 +283,9 @@ public class ProfileTitleContainer
   {
     VasDiyData localVasDiyData = (VasDiyData)((ProfileCardInfo)this.mData).getBusinessInfo(VasDiyData.class);
     if ((localVasDiyData != null) && (localVasDiyData.getTitleStyle() == 0)) {
-      return 2131166742;
+      return 2131167662;
     }
-    return 2131166597;
+    return 2131167517;
   }
   
   private void handleHideContact(IPhoneContactService paramIPhoneContactService, boolean paramBoolean)
@@ -307,8 +309,8 @@ public class ProfileTitleContainer
       ReportController.b(localAppInterface, "CliOper", "", "", paramIPhoneContactService, str, 0, 0, "", "", "", "");
       return;
     }
-    paramIPhoneContactService = HardCodeUtil.a(2131705000);
-    QQToast.a(this.mActivity, 1, paramIPhoneContactService, 1000).a();
+    paramIPhoneContactService = HardCodeUtil.a(2131902891);
+    QQToast.makeText(this.mActivity, 1, paramIPhoneContactService, 1000).show();
   }
   
   private void handleRecommendContact()
@@ -354,8 +356,8 @@ public class ProfileTitleContainer
       ReportController.b(this.mApp, "CliOper", "", "", "0X8007168", "0X8007168", 0, 0, "", "", "", "");
       return;
     }
-    Object localObject1 = HardCodeUtil.a(2131705015);
-    QQToast.a(this.mActivity, 1, (CharSequence)localObject1, 1000).a();
+    Object localObject1 = HardCodeUtil.a(2131902906);
+    QQToast.makeText(this.mActivity, 1, (CharSequence)localObject1, 1000).show();
   }
   
   private void handleRecommendContactActivityResult(Intent paramIntent)
@@ -365,7 +367,7 @@ public class ProfileTitleContainer
     }
     Intent localIntent = new Intent(this.mActivity, SplashActivity.class);
     AIOUtils.a(localIntent, null);
-    paramIntent.putExtra("selfSet_leftViewText", this.mActivity.getString(2131719442));
+    paramIntent.putExtra("selfSet_leftViewText", this.mActivity.getString(2131917002));
     localIntent.putExtras(new Bundle(paramIntent.getExtras()));
     paramIntent = ForwardUtils.a(localIntent);
     ForwardUtils.a(this.mQQAppInterface, this.mActivity, paramIntent, localIntent);
@@ -412,16 +414,18 @@ public class ProfileTitleContainer
   {
     if (this.mViewContainer != null)
     {
-      this.mActivity.getLayoutInflater().inflate(2131561389, (ViewGroup)this.mViewContainer);
-      this.mImmersiveTitleBar = ((ImmersiveTitleBar2)((FrameLayout)this.mViewContainer).findViewById(2131378881));
-      this.mLeftTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131369202));
-      this.mCenterTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131369249));
-      this.mRightTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131369233));
-      this.mRightImageView = ((ImageView)((FrameLayout)this.mViewContainer).findViewById(2131369216));
+      this.mActivity.getLayoutInflater().inflate(2131627745, (ViewGroup)this.mViewContainer);
+      this.mImmersiveTitleBar = ((ImmersiveTitleBar2)((FrameLayout)this.mViewContainer).findViewById(2131447582));
+      this.mLeftTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131436180));
+      this.mCenterTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131436227));
+      this.mRightTextView = ((TextView)((FrameLayout)this.mViewContainer).findViewById(2131436211));
+      this.mRightImageView = ((ImageView)((FrameLayout)this.mViewContainer).findViewById(2131436194));
+      this.mProfileCardTitleBar = ((LinearLayout)((FrameLayout)this.mViewContainer).findViewById(2131440700));
+      this.mProfileCardTitleBar.setClickable(true);
       Resources localResources = this.mActivity.getResources();
       DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
-      int i = localResources.getDimensionPixelSize(2131299168);
-      this.mFadeInOutLine = (localResources.getDimensionPixelSize(2131297613) - i - (int)(localDisplayMetrics.density * 66.0F));
+      int i = localResources.getDimensionPixelSize(2131299920);
+      this.mFadeInOutLine = (localResources.getDimensionPixelSize(2131298277) - i - (int)(localDisplayMetrics.density * 66.0F));
       this.mFadeInAnimation = new AlphaAnimation(0.0F, 1.0F);
       this.mFadeInAnimation.setDuration(300L);
       this.mFadeInAnimation.setInterpolator(this.mActivity, 17432581);
@@ -441,7 +445,7 @@ public class ProfileTitleContainer
       if (paramQQAppInterface == null) {
         paramQQAppInterface = null;
       } else {
-        paramQQAppInterface = paramQQAppInterface.a(paramProfileCardInfo.allInOne.uin);
+        paramQQAppInterface = paramQQAppInterface.b(paramProfileCardInfo.allInOne.uin);
       }
       if ((paramQQAppInterface != null) && (paramQQAppInterface.gathtertype == 1)) {
         return true;
@@ -473,8 +477,8 @@ public class ProfileTitleContainer
     Intent localIntent = new Intent(this.mActivity, ProfileCardMoreActivity.class);
     BusinessCard localBusinessCard = BusinessCardUtils.a(this.mQQAppInterface, (ProfileCardInfo)this.mData);
     localIntent = ProfileCardUtil.a(localIntent, ((ProfileCardInfo)this.mData).allInOne.uin, this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne, localBusinessCard);
-    if ((((ProfileCardInfo)this.mData).profileName != null) && (((ProfileCardInfo)this.mData).profileName.a.size() > 0)) {
-      localIntent.putExtra("SHARE_NICK_NAME", ((MQQName)((ProfileCardInfo)this.mData).profileName.a.get(0)).a);
+    if ((((ProfileCardInfo)this.mData).profileName != null) && (((ProfileCardInfo)this.mData).profileName.b.size() > 0)) {
+      localIntent.putExtra("SHARE_NICK_NAME", ((MQQName)((ProfileCardInfo)this.mData).profileName.b.get(0)).b);
     }
     if ((((ProfileCardInfo)this.mData).card != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).card.addSrcName))) {
       localIntent.putExtra("cur_add_source", ((ProfileCardInfo)this.mData).card.addSrcName);
@@ -489,9 +493,9 @@ public class ProfileTitleContainer
   
   private void openQRCode()
   {
-    String str1 = this.mActivity.getString(2131716714);
+    String str1 = this.mActivity.getString(2131914184);
     String str2 = this.mApp.getCurrentAccountUin();
-    String str3 = ContactUtils.e(this.mQQAppInterface, str2);
+    String str3 = ContactUtils.f(this.mQQAppInterface, str2);
     Intent localIntent = new Intent(this.mActivity, QRDisplayActivity.class);
     localIntent.putExtra("title", str1);
     localIntent.putExtra("uin", str2);
@@ -508,7 +512,7 @@ public class ProfileTitleContainer
     int i = 0;
     ((ReportTask)localObject1).a(new String[] { localObject2 }).a();
     localObject1 = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    localObject2 = ((TroopManager)localObject1).b(((ProfileCardInfo)this.mData).troopUin);
+    localObject2 = ((TroopManager)localObject1).f(((ProfileCardInfo)this.mData).troopUin);
     if (localObject2 != null)
     {
       checkAndUpdateTroopInfo((TroopInfo)localObject2, (ProfileCardInfo)this.mData);
@@ -522,18 +526,18 @@ public class ProfileTitleContainer
       Object localObject3 = this.mApp;
       localObject2 = "";
       localIntent.putExtra("hwCard", ((IBizTroopMemberInfoService)((AppInterface)localObject3).getRuntimeService(IBizTroopMemberInfoService.class, "")).getHWTroopMemberCard(((ProfileCardInfo)this.mData).troopUin, ((ProfileCardInfo)this.mData).card.uin));
-      localIntent.putExtra("qidian_private_troop", ((TroopManager)localObject1).m(((ProfileCardInfo)this.mData).troopUin));
+      localIntent.putExtra("qidian_private_troop", ((TroopManager)localObject1).Z(((ProfileCardInfo)this.mData).troopUin));
       localIntent.putExtra("AllInOne", ((ProfileCardInfo)this.mData).allInOne);
       localIntent.putExtra("detailProfileUrl", ProfileCardUtil.a(this.mQQAppInterface, this.mActivity, (ProfileCardInfo)this.mData));
-      localIntent.putExtra("qidianshowUin", QidianManager.b(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin));
+      localIntent.putExtra("qidianshowUin", QidianManager.d(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin));
       if (TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.nickname)) {
-        ((ProfileCardInfo)this.mData).allInOne.nickname = ContactUtils.e(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin);
+        ((ProfileCardInfo)this.mData).allInOne.nickname = ContactUtils.f(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin);
       }
       localObject3 = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      boolean bool2 = ((FriendsManager)localObject3).b(((ProfileCardInfo)this.mData).allInOne.uin);
+      boolean bool2 = ((FriendsManager)localObject3).n(((ProfileCardInfo)this.mData).allInOne.uin);
       localIntent.putExtra("isFriend", bool2);
-      localIntent.putExtra("isQidianMaster", ((QidianManager)this.mApp.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(((ProfileCardInfo)this.mData).allInOne.uin));
-      Friends localFriends = ((FriendsManager)localObject3).b(((ProfileCardInfo)this.mData).allInOne.uin);
+      localIntent.putExtra("isQidianMaster", ((QidianManager)this.mApp.getManager(QQManagerFactory.QIDIAN_MANAGER)).m(((ProfileCardInfo)this.mData).allInOne.uin));
+      Friends localFriends = ((FriendsManager)localObject3).c(((ProfileCardInfo)this.mData).allInOne.uin);
       boolean bool1;
       if (localFriends != null)
       {
@@ -543,7 +547,7 @@ public class ProfileTitleContainer
           localIntent.putExtra("key_remark", localFriends.remark);
           localIntent.putExtra("key_group_id", localFriends.groupid);
           localIntent.putExtra("key_current_nick", ContactUtils.d(this.mQQAppInterface, this.mApp.getCurrentAccountUin()));
-          localObject1 = ((FriendsManager)localObject3).a(String.valueOf(localFriends.groupid));
+          localObject1 = ((FriendsManager)localObject3).u(String.valueOf(localFriends.groupid));
           if (localObject1 == null) {
             localObject1 = "";
           } else {
@@ -551,10 +555,10 @@ public class ProfileTitleContainer
           }
           localIntent.putExtra("key_group_name", (String)localObject1);
           localIntent.putExtra("key_not_disturb", FriendsStatusUtil.a(((ProfileCardInfo)this.mData).allInOne.uin, this.mQQAppInterface));
-          localIntent.putExtra("key_is_shield", ((FriendsManager)localObject3).e(((ProfileCardInfo)this.mData).allInOne.uin));
+          localIntent.putExtra("key_is_shield", ((FriendsManager)localObject3).w(((ProfileCardInfo)this.mData).allInOne.uin));
           localIntent.putExtra("key_type_gather", localFriends.gathtertype);
-          localIntent.putExtra("key_is_has_interaction", MutualMarkDataCenter.a(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin, true));
-          localObject1 = ((FriendsManager)localObject3).a(((ProfileCardInfo)this.mData).allInOne.uin);
+          localIntent.putExtra("key_is_has_interaction", MutualMarkDataCenter.b(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin, true));
+          localObject1 = ((FriendsManager)localObject3).y(((ProfileCardInfo)this.mData).allInOne.uin);
           if ((localObject1 != null) && (((SpecialCareInfo)localObject1).globalSwitch != 0)) {
             bool1 = true;
           } else {
@@ -564,8 +568,8 @@ public class ProfileTitleContainer
         }
       }
       localIntent.putExtra("businessCard", BusinessCardUtils.a(this.mQQAppInterface, (ProfileCardInfo)this.mData));
-      if ((((ProfileCardInfo)this.mData).profileName != null) && (((ProfileCardInfo)this.mData).profileName.a.size() > 0)) {
-        localIntent.putExtra("SHARE_NICK_NAME", ((MQQName)((ProfileCardInfo)this.mData).profileName.a.get(0)).a);
+      if ((((ProfileCardInfo)this.mData).profileName != null) && (((ProfileCardInfo)this.mData).profileName.b.size() > 0)) {
+        localIntent.putExtra("SHARE_NICK_NAME", ((MQQName)((ProfileCardInfo)this.mData).profileName.b.get(0)).b);
       }
       if ((((ProfileCardInfo)this.mData).card != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).card.addSrcName))) {
         localIntent.putExtra("cur_add_source", ((ProfileCardInfo)this.mData).card.addSrcName);
@@ -583,12 +587,12 @@ public class ProfileTitleContainer
       if (bool2)
       {
         localIntent.putExtra("friend_intimate_open", FriendIntimateRelationshipHelper.a(this.mApp.getCurrentUin()));
-        localIntent.putExtra("friend_intimate_bind_url", FriendIntimateRelationshipHelper.a(((ProfileCardInfo)this.mData).allInOne.uin));
+        localIntent.putExtra("friend_intimate_bind_url", FriendIntimateRelationshipHelper.b(((ProfileCardInfo)this.mData).allInOne.uin));
         localObject1 = MutualMarkDataCenter.a(this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin, true);
         if (localObject1 != null)
         {
           paramView = IntimateUtil.a(this.mActivity, ((MutualMarkForDisplayInfo)localObject1).a);
-          i = ((MutualMarkForDisplayInfo)localObject1).c;
+          i = ((MutualMarkForDisplayInfo)localObject1).q;
           bool1 = ((MutualMarkForDisplayInfo)localObject1).b();
         }
         else
@@ -603,7 +607,7 @@ public class ProfileTitleContainer
       localIntent.putExtra("isMsgShielded", isMsgShielded(this.mQQAppInterface, (ProfileCardInfo)this.mData));
       localIntent.putExtra("isGather", isGatherFriend(this.mQQAppInterface, (ProfileCardInfo)this.mData));
       paramView = TroopBaseProxyActivity.a(this.mActivity);
-      TroopMemberCardProxyActivity.a(this.mQQAppInterface, "troop_member_card_plugin.apk", HardCodeUtil.a(2131704989), TroopMemberCardProxyActivity.class, this.mActivity, localIntent, paramView, "com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", this.mApp.getCurrentAccountUin(), 8);
+      TroopMemberCardProxyActivity.a(this.mQQAppInterface, "troop_member_card_plugin.apk", HardCodeUtil.a(2131902880), TroopMemberCardProxyActivity.class, this.mActivity, localIntent, paramView, "com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", this.mApp.getCurrentAccountUin(), 8);
     }
   }
   
@@ -617,8 +621,8 @@ public class ProfileTitleContainer
     } else {
       bool = false;
     }
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
-    localActionSheet.addButton(2131693344);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mActivity, null);
+    localActionSheet.addButton(2131890893);
     if (((ProfileCardInfo)this.mData).allInOne.pa == 53)
     {
       ReportController.b(this.mApp, "CliOper", "", "", "0X8007015", "0X8007015", 0, 0, "", "", "", "");
@@ -629,15 +633,15 @@ public class ProfileTitleContainer
       {
         int i;
         if (localPhoneContact.isHiden) {
-          i = 2131693345;
+          i = 2131890894;
         } else {
-          i = 2131693343;
+          i = 2131890892;
         }
         localActionSheet.addButton(i);
       }
       ReportController.b(this.mApp, "CliOper", "", "", "0X8007167", "0X8007167", 0, 0, "", "", "", "");
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ProfileTitleContainer.8(this, localIPhoneContactService, bool, localActionSheet));
     try
     {
@@ -661,7 +665,7 @@ public class ProfileTitleContainer
       {
         this.mHideContactSettingDialog = new QQProgressDialog(this.mActivity);
         this.mHideContactSettingDialog.setCancelable(false);
-        this.mHideContactSettingDialog.c(2131695132);
+        this.mHideContactSettingDialog.c(2131892860);
         this.mHideContactSettingDialog.show();
         return;
       }
@@ -674,10 +678,10 @@ public class ProfileTitleContainer
   
   private void showMoreActionSheet()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
-    localActionSheet.addButton(2131699167, 1);
-    localActionSheet.addButton(2131699166, 1);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mActivity, null);
+    localActionSheet.addButton(2131897183, 1);
+    localActionSheet.addButton(2131897182, 1);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ProfileTitleContainer.5(this, localActionSheet));
     localActionSheet.setOnBottomCancelListener(new ProfileTitleContainer.6(this, localActionSheet));
     localActionSheet.setOnPreShowListener(new ProfileTitleContainer.7(this, localActionSheet));
@@ -706,9 +710,9 @@ public class ProfileTitleContainer
       bool = false;
     }
     if (bool) {
-      this.mCenterTextView.setText(2131693368);
+      this.mCenterTextView.setText(2131890917);
     } else {
-      this.mCenterTextView.setText(2131693367);
+      this.mCenterTextView.setText(2131890916);
     }
     updateTitleRight(bool);
   }
@@ -745,7 +749,7 @@ public class ProfileTitleContainer
       QLog.d("ProfileTitleContainer", 2, String.format("updateTitleMode mode=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
     Object localObject = this.mActivity.getResources();
-    int i = 2131167050;
+    int i = 2131167987;
     if (paramInt == 1)
     {
       if (ProfileTemplateApi.isDiyTemplateStyleID(((ProfileCardInfo)this.mData).curUseStyleId))
@@ -760,7 +764,7 @@ public class ProfileTitleContainer
         if (ThemeUtil.isInNightMode(this.mApp)) {
           paramInt = i;
         } else {
-          paramInt = 2131166742;
+          paramInt = 2131167662;
         }
         paramInt = ((Resources)localObject).getColor(paramInt);
         this.mLeftTextView.setTextColor(paramInt);
@@ -772,9 +776,9 @@ public class ProfileTitleContainer
     }
     else if (paramInt == 0)
     {
-      paramInt = ((Resources)localObject).getColor(2131167050);
-      this.mLeftTextView.setTextColor(((Resources)localObject).getColorStateList(2131167050));
-      this.mRightTextView.setTextColor(((Resources)localObject).getColorStateList(2131167050));
+      paramInt = ((Resources)localObject).getColor(2131167987);
+      this.mLeftTextView.setTextColor(((Resources)localObject).getColorStateList(2131167987));
+      this.mRightTextView.setTextColor(((Resources)localObject).getColorStateList(2131167987));
       this.mCenterTextView.setVisibility(0);
       this.mImmersiveTitleBar.setVisibility(0);
       SimpleUIUtil.a(this.mImmersiveTitleBar, this.mActivity.getWindow());
@@ -799,7 +803,7 @@ public class ProfileTitleContainer
       Object localObject = (DataTag)this.mRightTextView.getTag();
       if ((((DataTag)localObject).a == 98) || (((DataTag)localObject).a == 99))
       {
-        localObject = ProfileCardUtil.a();
+        localObject = ProfileCardUtil.d();
         this.mUIHandler.obtainMessage(100, localObject).sendToTarget();
       }
     }
@@ -826,12 +830,12 @@ public class ProfileTitleContainer
       this.mRightImageView.setOnClickListener(this);
       if (paramBoolean)
       {
-        this.mRightImageView.setImageResource(2130840355);
-        this.mRightImageView.setContentDescription(HardCodeUtil.a(2131704992));
+        this.mRightImageView.setImageResource(2130841095);
+        this.mRightImageView.setContentDescription(HardCodeUtil.a(2131902883));
         return;
       }
-      this.mRightImageView.setBackgroundResource(2130840347);
-      this.mRightImageView.setContentDescription(HardCodeUtil.a(2131705026));
+      this.mRightImageView.setBackgroundResource(2130841087);
+      this.mRightImageView.setContentDescription(HardCodeUtil.a(2131902916));
       return;
     }
     this.mRightImageView.setVisibility(8);
@@ -844,7 +848,7 @@ public class ProfileTitleContainer
     localTitleRightStatus.showTextView = false;
     localTitleRightStatus.showImageView = false;
     localTitleRightStatus.textTagType = 16;
-    localTitleRightStatus.textResId = 2131695128;
+    localTitleRightStatus.textResId = 2131892856;
     localTitleRightStatus.imageTagType = 16;
     if (paramBoolean)
     {
@@ -859,7 +863,7 @@ public class ProfileTitleContainer
         localTitleRightStatus.showTextView = true;
         localTitleRightStatus.showImageView = true;
         localTitleRightStatus.textTagType = 98;
-        localTitleRightStatus.textResId = 2131695155;
+        localTitleRightStatus.textResId = 2131892888;
         localTitleRightStatus.imageTagType = 65;
       }
     }
@@ -922,8 +926,8 @@ public class ProfileTitleContainer
       if ((i != 86) && (i != 41) && (i != 42))
       {
         localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if ((localObject != null) && (((FriendsManager)localObject).b(paramProfileCardInfo.allInOne.uin))) {
-          return ((FriendsManager)localObject).e(paramProfileCardInfo.allInOne.uin);
+        if ((localObject != null) && (((FriendsManager)localObject).n(paramProfileCardInfo.allInOne.uin))) {
+          return ((FriendsManager)localObject).w(paramProfileCardInfo.allInOne.uin);
         }
         localObject = (ShieldMsgManger)paramQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
         if (localObject != null)
@@ -944,7 +948,7 @@ public class ProfileTitleContainer
         if (paramQQAppInterface == null) {
           paramQQAppInterface = (QQAppInterface)localObject;
         } else {
-          paramQQAppInterface = paramQQAppInterface.a(paramProfileCardInfo.allInOne.uin);
+          paramQQAppInterface = paramQQAppInterface.b(paramProfileCardInfo.allInOne.uin);
         }
         if ((paramQQAppInterface != null) && (paramQQAppInterface.groupid == -1002)) {
           return true;
@@ -955,7 +959,7 @@ public class ProfileTitleContainer
     {
       paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramQQAppInterface != null) {
-        return paramQQAppInterface.e(paramProfileCardInfo.allInOne.uin);
+        return paramQQAppInterface.w(paramProfileCardInfo.allInOne.uin);
       }
     }
     return false;
@@ -988,14 +992,14 @@ public class ProfileTitleContainer
             if (i != 98)
             {
               if (i == 99) {
-                ProfileCardUtil.a(this.mActivity);
+                ProfileCardUtil.c(this.mActivity);
               }
             }
             else if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
             {
               showMoreActionSheet();
               RedTouch localRedTouch = this.mRightViewRedTouch;
-              if ((localRedTouch != null) && (localRedTouch.c())) {
+              if ((localRedTouch != null) && (localRedTouch.h())) {
                 i = 1;
               } else {
                 i = 2;
@@ -1044,7 +1048,7 @@ public class ProfileTitleContainer
     initViews();
     updateTitle();
     updateTitleMode();
-    paramQBaseActivity = HardCodeUtil.a(2131705018);
+    paramQBaseActivity = HardCodeUtil.a(2131902909);
     AccessibilityUtil.a(this.mLeftTextView, paramQBaseActivity);
     AccessibilityUtil.a(this.mLeftTextView);
   }
@@ -1102,7 +1106,7 @@ public class ProfileTitleContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer
  * JD-Core Version:    0.7.0.1
  */

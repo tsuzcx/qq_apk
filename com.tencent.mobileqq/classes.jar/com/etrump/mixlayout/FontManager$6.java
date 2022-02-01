@@ -10,7 +10,7 @@ class FontManager$6
   
   public Void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
+    this.a.x(this.b);
     return null;
   }
 }

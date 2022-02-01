@@ -18,10 +18,10 @@ class ExtendFriendSquareFragment$2
       QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
     if ((paramBoolean) && (paramInt == 1)) {
-      ExtendFriendSquareFragment.b(this.a);
+      ExtendFriendSquareFragment.c(this.a);
     }
     if (paramBoolean) {
-      ExtendFriendSquareFragment.a(this.a);
+      ExtendFriendSquareFragment.b(this.a);
     }
   }
   
@@ -34,7 +34,7 @@ class ExtendFriendSquareFragment$2
   
   protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<StrangerInfo> paramList, MatchFeedInfo paramMatchFeedInfo)
   {
-    if (this.a.b != paramLong) {
+    if (this.a.O != paramLong) {
       return;
     }
     try
@@ -49,7 +49,7 @@ class ExtendFriendSquareFragment$2
     }
   }
   
-  protected void e(boolean paramBoolean)
+  protected void f(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
@@ -58,12 +58,12 @@ class ExtendFriendSquareFragment$2
       localStringBuilder.append(paramBoolean);
       QLog.d("ExtendFriendSquareFragment", 2, localStringBuilder.toString());
     }
-    ExtendFriendSquareFragment.a(this.a);
+    ExtendFriendSquareFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSquareFragment.2
  * JD-Core Version:    0.7.0.1
  */

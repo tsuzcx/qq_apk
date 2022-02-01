@@ -40,14 +40,14 @@ class DownloadCenterImpl$2
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if (((INowUtil)QRoute.api(INowUtil.class)).copyNowApkToCommonDir(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    if (((INowUtil)QRoute.api(INowUtil.class)).copyNowApkToCommonDir(paramDownloadInfo.q, paramDownloadInfo.c, paramDownloadInfo.e))
     {
-      if (!((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath().equals(paramDownloadInfo.l))
+      if (!((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath().equals(paramDownloadInfo.q))
       {
-        ((INowUtil)QRoute.api(INowUtil.class)).delete(paramDownloadInfo.l);
-        paramDownloadInfo.l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
+        ((INowUtil)QRoute.api(INowUtil.class)).delete(paramDownloadInfo.q);
+        paramDownloadInfo.q = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
       }
-      DownloadManager.a().e(paramDownloadInfo);
+      DownloadManager.b().f(paramDownloadInfo);
     }
     Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
     while (localIterator.hasNext()) {
@@ -97,7 +97,7 @@ class DownloadCenterImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.DownloadCenterImpl.2
  * JD-Core Version:    0.7.0.1
  */

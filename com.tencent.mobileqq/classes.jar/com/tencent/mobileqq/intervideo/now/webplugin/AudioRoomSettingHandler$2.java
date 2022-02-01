@@ -19,7 +19,7 @@ final class AudioRoomSettingHandler$2
     boolean bool2 = paramBundle.getBoolean("success");
     paramBundle = new StringBuilder();
     paramBundle.append("handleSetTmpMsgPushSetting: toStatus=");
-    paramBundle.append(this.jdField_a_of_type_Int);
+    paramBundle.append(this.a);
     paramBundle.append(" result=$isSucceed nowStatus=");
     paramBundle.append(bool1);
     QLog.i("AudioRoomSettingHandler", 1, paramBundle.toString());
@@ -39,7 +39,7 @@ final class AudioRoomSettingHandler$2
           i = 1;
           paramBundle.put("pushSwitch", i);
           localJSONObject.put("data", paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          this.b.callJs(this.c, new String[] { localJSONObject.toString() });
           return;
         }
       }
@@ -60,7 +60,7 @@ final class AudioRoomSettingHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.webplugin.AudioRoomSettingHandler.2
  * JD-Core Version:    0.7.0.1
  */

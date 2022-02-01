@@ -8,46 +8,46 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ReadInJoyAdHomeWatcher
   implements IHomeWatcher
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private OnHomePressedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherOnHomePressedListener;
-  private ReadInJoyAdHomeWatcher.InnerRecevier jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private Context a;
+  private IntentFilter b;
+  private OnHomePressedListener c;
+  private ReadInJoyAdHomeWatcher.InnerRecevier d;
+  private AtomicBoolean e = new AtomicBoolean(false);
   
   public ReadInJoyAdHomeWatcher(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier, this.jdField_a_of_type_AndroidContentIntentFilter);
-    }
+    this.a = paramContext;
+    this.b = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
   }
   
   public void a(OnHomePressedListener paramOnHomePressedListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherOnHomePressedListener = paramOnHomePressedListener;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier = new ReadInJoyAdHomeWatcher.InnerRecevier(this);
+    this.c = paramOnHomePressedListener;
+    this.d = new ReadInJoyAdHomeWatcher.InnerRecevier(this);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.e.get();
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier);
+    if ((this.d != null) && (this.e.compareAndSet(false, true))) {
+      this.a.registerReceiver(this.d, this.b);
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.d != null) && (this.e.compareAndSet(true, false))) {
+      this.a.unregisterReceiver(this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.home_watcher.ReadInJoyAdHomeWatcher
  * JD-Core Version:    0.7.0.1
  */

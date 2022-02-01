@@ -33,9 +33,9 @@ class PublicAccountH5AbilityPttImpl$1
       {
         paramString.put("retCode", 0);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131708768));
+        localStringBuilder.append(HardCodeUtil.a(2131906547));
         localStringBuilder.append(this.a.getLocalIdForPTT());
-        localStringBuilder.append(HardCodeUtil.a(2131708762));
+        localStringBuilder.append(HardCodeUtil.a(2131906541));
         paramString.put("msg", localStringBuilder.toString());
         paramString.put("localId", this.a.getLocalIdForPTT());
       }
@@ -49,7 +49,7 @@ class PublicAccountH5AbilityPttImpl$1
     }
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
     if (this.a.mPlayer != null) {
-      this.a.mPlayer.e();
+      this.a.mPlayer.f();
     }
     this.a.mPlayer = null;
   }
@@ -60,7 +60,7 @@ class PublicAccountH5AbilityPttImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPttImpl.1
  * JD-Core Version:    0.7.0.1
  */

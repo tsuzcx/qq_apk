@@ -10,23 +10,23 @@ class FriendProfileImageActivity$6$1
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b())
+    if (this.a.b.i != this.a.b.c.d())
     {
-      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
+      this.a.b.i = this.a.b.c.d();
       return;
     }
-    View localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
+    View localView = this.a.b.a.getSelectedView();
     if (localView == null) {
       return;
     }
-    this.a.a.jdField_a_of_type_AndroidViewView = localView;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
+    this.a.b.d = localView;
+    this.a.b.c.a(this.a.b.c.d());
+    this.a.b.a(this.a.b.a, this.a.b.c.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

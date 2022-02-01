@@ -12,20 +12,20 @@ import android.widget.HorizontalScrollView;
 public class ComicHorizontalCenterScrollView
   extends HorizontalScrollView
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private ComicHorizontalCenterScrollView.OnCustomScrollListener jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView$OnCustomScrollListener = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a;
+  private int b;
   private int c;
   private int d;
-  private int e = 0;
-  private int f;
-  private int g;
-  private int h;
+  private boolean e = false;
+  private int f = 0;
+  private ComicHorizontalCenterScrollView.OnCustomScrollListener g = null;
+  private float h = 0.0F;
+  private float i = 0.0F;
+  private boolean j = false;
+  private VelocityTracker k;
+  private int l;
+  private int m;
+  private int n;
   
   public ComicHorizontalCenterScrollView(Context paramContext)
   {
@@ -41,56 +41,56 @@ public class ComicHorizontalCenterScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = ViewConfiguration.get(getContext());
-    this.f = paramContext.getScaledTouchSlop();
-    this.g = paramContext.getScaledMinimumFlingVelocity();
-    this.h = (this.g * 2);
+    this.l = paramContext.getScaledTouchSlop();
+    this.m = paramContext.getScaledMinimumFlingVelocity();
+    this.n = (this.m * 2);
   }
   
   private int a(float paramFloat, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j;
-    if (Math.abs(paramFloat) >= this.h) {
-      j = 1;
+    int i2;
+    if (Math.abs(paramFloat) >= this.n) {
+      i2 = 1;
     } else {
-      j = 0;
+      i2 = 0;
     }
-    int i;
+    int i1;
     if (paramFloat <= 0.0F)
     {
       paramInt2 = paramInt3;
-      if (j != 0) {
-        paramInt2 = paramInt3 + this.e;
+      if (i2 != 0) {
+        paramInt2 = paramInt3 + this.f;
       }
       paramInt3 = this.c;
-      j = paramInt2 / paramInt3;
-      i = (j + 1) * paramInt3 + this.d;
-      if (i > paramInt2)
+      i2 = paramInt2 / paramInt3;
+      i1 = (i2 + 1) * paramInt3 + this.d;
+      if (i1 > paramInt2)
       {
-        paramInt3 = i;
-        if (i < paramInt2 + paramInt1) {}
+        paramInt3 = i1;
+        if (i1 < paramInt2 + paramInt1) {}
       }
       else
       {
-        return j * this.c + this.d;
+        return i2 * this.c + this.d;
       }
     }
     else
     {
-      i = paramInt3;
-      if (j != 0) {
-        i = paramInt3 - this.e;
+      i1 = paramInt3;
+      if (i2 != 0) {
+        i1 = paramInt3 - this.f;
       }
       paramInt3 = this.c;
-      int k = (paramInt2 - i - paramInt1) / paramInt3;
-      j = paramInt2 - paramInt3 * (k + 1) - this.d;
-      if (j > i)
+      int i3 = (paramInt2 - i1 - paramInt1) / paramInt3;
+      i2 = paramInt2 - paramInt3 * (i3 + 1) - this.d;
+      if (i2 > i1)
       {
-        paramInt3 = j;
-        if (j < i + paramInt1) {}
+        paramInt3 = i2;
+        if (i2 < i1 + paramInt1) {}
       }
       else
       {
-        paramInt3 = paramInt2 - this.c * k - this.d;
+        paramInt3 = paramInt2 - this.c * i3 - this.d;
       }
     }
     return paramInt3;
@@ -104,10 +104,10 @@ public class ComicHorizontalCenterScrollView
   
   private void a()
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.k;
     if (localVelocityTracker == null)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+      this.k = VelocityTracker.obtain();
       return;
     }
     localVelocityTracker.clear();
@@ -115,10 +115,10 @@ public class ComicHorizontalCenterScrollView
   
   private void a(float paramFloat)
   {
-    int k = getScrollX();
+    int i3 = getScrollX();
     float f1 = paramFloat;
     if (paramFloat == 0.0F) {
-      if (this.jdField_b_of_type_Float - k > 0.0F) {
+      if (this.i - i3 > 0.0F) {
         f1 = 1.0F;
       } else {
         f1 = -1.0F;
@@ -128,66 +128,66 @@ public class ComicHorizontalCenterScrollView
     if (localObject == null) {
       return;
     }
-    int i = ((View)localObject).getMeasuredWidth();
-    int j = getMeasuredWidth();
-    if (i <= j) {
+    int i1 = ((View)localObject).getMeasuredWidth();
+    int i2 = getMeasuredWidth();
+    if (i1 <= i2) {
       return;
     }
-    if (j >= this.jdField_a_of_type_Int * 2) {
+    if (i2 >= this.a * 2) {
       return;
     }
-    k = a(f1, j, i, k);
-    smoothScrollTo(a(k - j / 2, 0, i), 0);
-    localObject = this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView$OnCustomScrollListener;
+    i3 = a(f1, i2, i1, i3);
+    smoothScrollTo(a(i3 - i2 / 2, 0, i1), 0);
+    localObject = this.g;
     if (localObject != null) {
-      ((ComicHorizontalCenterScrollView.OnCustomScrollListener)localObject).a(k);
+      ((ComicHorizontalCenterScrollView.OnCustomScrollListener)localObject).a(i3);
     }
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
     b();
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.k.addMovement(paramMotionEvent);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.k == null) {
+      this.k = VelocityTracker.obtain();
     }
   }
   
   private void c()
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    VelocityTracker localVelocityTracker = this.k;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.k = null;
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_b_of_type_Float = getScrollX();
-      this.jdField_b_of_type_Boolean = false;
+      this.i = getScrollX();
+      this.j = false;
       a();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.h = paramMotionEvent.getX();
     }
     else if (paramMotionEvent.getAction() == 2)
     {
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.j)
       {
-        if (Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) >= this.f)
+        if (Math.abs(paramMotionEvent.getX() - this.h) >= this.l)
         {
-          this.jdField_b_of_type_Boolean = true;
+          this.j = true;
           a(paramMotionEvent);
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.h = paramMotionEvent.getX();
         }
       }
       else {
@@ -216,10 +216,10 @@ public class ComicHorizontalCenterScrollView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.jdField_b_of_type_Boolean))
+    if ((this.e) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.j))
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      a(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity());
+      this.k.computeCurrentVelocity(1000);
+      a(this.k.getXVelocity());
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -227,14 +227,14 @@ public class ComicHorizontalCenterScrollView
   
   public void setBaseInfo(int paramInt1, int paramInt2, ComicHorizontalCenterScrollView.OnCustomScrollListener paramOnCustomScrollListener)
   {
-    this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView$OnCustomScrollListener = paramOnCustomScrollListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    paramInt1 = this.jdField_a_of_type_Int;
-    paramInt2 = this.jdField_b_of_type_Int;
+    this.g = paramOnCustomScrollListener;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    paramInt1 = this.a;
+    paramInt2 = this.b;
     this.c = (paramInt1 + paramInt2);
-    this.e = (paramInt1 / 3);
-    this.jdField_a_of_type_Boolean = true;
+    this.f = (paramInt1 / 3);
+    this.e = true;
     this.d = (paramInt1 / 2 + paramInt2);
   }
   
@@ -247,7 +247,7 @@ public class ComicHorizontalCenterScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.ComicHorizontalCenterScrollView
  * JD-Core Version:    0.7.0.1
  */

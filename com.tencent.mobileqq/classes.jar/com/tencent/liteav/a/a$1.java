@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.io.File;
 
 class a$1
@@ -35,7 +35,7 @@ class a$1
         ((StringBuilder)localObject).append(", coverImage = ");
         ((StringBuilder)localObject).append(a.b(this.a).g);
         TXCLog.d("TXCStreamRecord", ((StringBuilder)localObject).toString());
-        if ((paramMessage.arg1 == 0) && (a.b(this.a).g != null) && (!a.b(this.a).g.isEmpty()) && (!f.a(a.b(this.a).f, a.b(this.a).g)))
+        if ((paramMessage.arg1 == 0) && (a.b(this.a).g != null) && (!a.b(this.a).g.isEmpty()) && (!h.a(a.b(this.a).f, a.b(this.a).g)))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("saveVideoThumb error. sourcePath = ");
@@ -66,7 +66,7 @@ class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.a.a.1
  * JD-Core Version:    0.7.0.1
  */

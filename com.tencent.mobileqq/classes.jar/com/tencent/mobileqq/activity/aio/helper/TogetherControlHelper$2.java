@@ -20,26 +20,26 @@ class TogetherControlHelper$2
     if (QLog.isColorLevel()) {
       QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)TogetherControlHelper.a(this.a).a.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(4, String.valueOf(130500));
-    if (this.a.b == null)
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)TogetherControlHelper.a(this.a).d.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(4, String.valueOf(130500));
+    if (this.a.c == null)
     {
       TogetherControlHelper localTogetherControlHelper = this.a;
-      localTogetherControlHelper.b = ((ImageView)TogetherControlHelper.a(localTogetherControlHelper).c.findViewById(2131376320));
+      localTogetherControlHelper.c = ((ImageView)TogetherControlHelper.a(localTogetherControlHelper).aZ.findViewById(2131444531));
     }
-    if (this.a.b == null) {
+    if (this.a.c == null) {
       return;
     }
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
     {
-      this.a.b.setVisibility(0);
+      this.a.c.setVisibility(0);
       return;
     }
-    this.a.b.setVisibility(8);
+    this.a.c.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper.2
  * JD-Core Version:    0.7.0.1
  */

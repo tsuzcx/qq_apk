@@ -91,19 +91,19 @@ public class QCallCardInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[ qid=");
-    localStringBuilder.append(UinUtils.a(this.uin));
+    localStringBuilder.append(UinUtils.c(this.uin));
     localStringBuilder.append(",nickname=");
-    localStringBuilder.append(StringUtil.g(this.nickname));
+    localStringBuilder.append(StringUtil.crypticCenter(this.nickname));
     localStringBuilder.append(",in_use_flag=");
     localStringBuilder.append(this.in_use_flag);
     localStringBuilder.append(",phoneNum=");
-    localStringBuilder.append(UinUtils.a(this.phonenum));
+    localStringBuilder.append(UinUtils.c(this.phonenum));
     localStringBuilder.append(",phone_mask=");
     localStringBuilder.append(this.phone_mask);
     localStringBuilder.append(",qqUin=");
-    localStringBuilder.append(UinUtils.a(this.qq));
+    localStringBuilder.append(UinUtils.c(this.qq));
     localStringBuilder.append(",qqUin2=");
-    localStringBuilder.append(UinUtils.a(this.qqUin2));
+    localStringBuilder.append(UinUtils.c(this.qqUin2));
     localStringBuilder.append(",remark=");
     localStringBuilder.append(this.remark);
     localStringBuilder.append(",network=");
@@ -182,7 +182,7 @@ public class QCallCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,42 +18,42 @@ public class HotChatPlusPanelAppLoader
   {
     PluginData localPluginData = new PluginData();
     if (paramPlusPanelAppInfo.getAppID() == 1104874204) {
-      this.jdField_a_of_type_Int = (paramInt / 8);
+      this.a = (paramInt / 8);
     }
-    localPluginData.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getAppName();
-    localPluginData.e = paramPlusPanelAppInfo.actionType;
-    localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanelAppInfo);
-    if (localPluginData.jdField_b_of_type_Int == 1107930043)
+    localPluginData.b = paramPlusPanelAppInfo.getAppID();
+    localPluginData.a = paramPlusPanelAppInfo.getAppID();
+    localPluginData.d = paramPlusPanelAppInfo.getAppName();
+    localPluginData.h = paramPlusPanelAppInfo.actionType;
+    localPluginData.k = a(paramBaseChatPie.d, paramPlusPanelAppInfo);
+    if (localPluginData.b == 1107930043)
     {
       if (!ShortVideoUtils.isHotPicConfiginitied) {
         ShortVideoUtils.isHotPicConfiginitied = true;
       }
     }
     else if (paramPlusPanelAppInfo.getAppID() == 101761547) {
-      localPluginData.jdField_a_of_type_Boolean = ListenTogetherUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false);
+      localPluginData.c = ListenTogetherUtils.a(paramBaseChatPie.d, "listen_together_c2c_aio_red_dot_show", true, false);
     } else {
-      localPluginData.jdField_a_of_type_Boolean = false;
+      localPluginData.c = false;
     }
     paramBaseChatPie = new StringBuilder();
     paramBaseChatPie.append(paramPlusPanelAppInfo.getAppName());
-    paramBaseChatPie.append(HardCodeUtil.a(2131708303));
-    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    paramBaseChatPie.append(HardCodeUtil.a(2131906093));
+    localPluginData.e = paramBaseChatPie.toString();
     return localPluginData;
   }
   
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    if (((HotChatManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1200000000);
+    if (((HotChatManager)paramBaseChatPie.d.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).h(paramBaseChatPie.ah.b)) {
+      a(paramBaseChatPie.ah.a, 1200000000);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1104864068);
+    a(paramBaseChatPie.ah.a, 1104864068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.troop.HotChatPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

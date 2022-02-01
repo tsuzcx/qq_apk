@@ -12,7 +12,7 @@ class XViewPager$4
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
     this.a.scrollTo(i, 0);
-    XViewPager.a(this.a, i);
+    XViewPager.b(this.a, i);
     if (XViewPager.a(this.a) != null) {
       XViewPager.a(this.a).b(2);
     }
@@ -20,7 +20,7 @@ class XViewPager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.4
  * JD-Core Version:    0.7.0.1
  */

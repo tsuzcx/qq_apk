@@ -18,9 +18,9 @@ class GuessStarClickStagePresenter$2
     {
       paramString = new StringBuilder();
       paramString.append("onPushVideoFirstFrame run ,topicAnswerDuration = ");
-      paramString.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.s());
+      paramString.append(this.a.aj());
       paramString.append(",statusPassedTime = ");
-      paramString.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().d());
+      paramString.append(this.a.h().n());
       QLog.i("GuessStarClickStagePresenter", 2, paramString.toString());
     }
   }
@@ -29,7 +29,7 @@ class GuessStarClickStagePresenter$2
   
   public void b(String paramString)
   {
-    AVGameHandler.a().b().post(new GuessStarClickStagePresenter.2.1(this, this));
+    AVGameHandler.a().c().post(new GuessStarClickStagePresenter.2.1(this, this));
   }
   
   public void c(String paramString) {}

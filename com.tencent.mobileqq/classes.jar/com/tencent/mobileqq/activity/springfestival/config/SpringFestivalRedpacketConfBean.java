@@ -42,7 +42,90 @@ public class SpringFestivalRedpacketConfBean
     return localObject;
   }
   
-  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.FixedEntryInfo a(JSONObject paramJSONObject)
+  private static void a(SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo paramSpringFestivalHbEntryInfo, JSONObject paramJSONObject)
+  {
+    if (paramSpringFestivalHbEntryInfo != null)
+    {
+      if (paramJSONObject == null) {
+        return;
+      }
+      paramSpringFestivalHbEntryInfo.activityUrl = paramJSONObject.optString("activity_url");
+      paramSpringFestivalHbEntryInfo.emergencyUrl = paramJSONObject.optString("emergency_url");
+      paramSpringFestivalHbEntryInfo.webType = paramJSONObject.optInt("web_type");
+      paramSpringFestivalHbEntryInfo.entrySwitch = paramJSONObject.optInt("entry_switch");
+      paramSpringFestivalHbEntryInfo.pendantSwitch = paramJSONObject.optInt("pendant_switch");
+      paramSpringFestivalHbEntryInfo.activityPrefix = paramJSONObject.optString("activity_prefix");
+      paramSpringFestivalHbEntryInfo.branchActivityPrefix = paramJSONObject.optString("branch_activity_prefix");
+      paramJSONObject = paramJSONObject.optJSONArray("entry_show_list");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        ArrayList localArrayList = new ArrayList(paramJSONObject.length());
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+          SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
+          localTimeInfo.beginTime = Utils.a(localJSONObject.optString("start_time"));
+          localTimeInfo.endTime = Utils.a(localJSONObject.optString("end_time"));
+          localArrayList.add(localTimeInfo);
+          i += 1;
+        }
+        paramSpringFestivalHbEntryInfo.entryShowTime = localArrayList;
+      }
+    }
+  }
+  
+  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo b(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseHbEntryInfo: ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo();
+    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).pendantEntryInfo = e(paramJSONObject);
+    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).fixedEntryInfo = d(paramJSONObject);
+    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).loadingInfo = c(paramJSONObject);
+    a((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject, paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("parseHbEntryInfo: ");
+      paramJSONObject.append(localObject);
+      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, paramJSONObject.toString());
+    }
+    return localObject;
+  }
+  
+  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo c(JSONObject paramJSONObject)
+  {
+    SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo localLoadingInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo();
+    if (paramJSONObject == null) {
+      return localLoadingInfo;
+    }
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("loading");
+    if (localJSONObject == null) {
+      return localLoadingInfo;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseLoadingInfo: ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, localStringBuilder.toString());
+    }
+    localLoadingInfo.loadingUrl = localJSONObject.optString("loading_url");
+    localLoadingInfo.loadingTips = localJSONObject.optString("loading_tips");
+    paramJSONObject = new SpringFestivalRedpacketConfBean.TimeInfo();
+    paramJSONObject.beginTime = Utils.a(localJSONObject.optString("start_time"));
+    paramJSONObject.endTime = Utils.a(localJSONObject.optString("end_time"));
+    localLoadingInfo.loadingTime = paramJSONObject;
+    return localLoadingInfo;
+  }
+  
+  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.FixedEntryInfo d(JSONObject paramJSONObject)
   {
     SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.FixedEntryInfo localFixedEntryInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.FixedEntryInfo();
     if (paramJSONObject == null) {
@@ -95,33 +178,7 @@ public class SpringFestivalRedpacketConfBean
     return localFixedEntryInfo;
   }
   
-  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo a(JSONObject paramJSONObject)
-  {
-    SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo localLoadingInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo();
-    if (paramJSONObject == null) {
-      return localLoadingInfo;
-    }
-    JSONObject localJSONObject = paramJSONObject.optJSONObject("loading");
-    if (localJSONObject == null) {
-      return localLoadingInfo;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("parseLoadingInfo: ");
-      localStringBuilder.append(paramJSONObject);
-      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, localStringBuilder.toString());
-    }
-    localLoadingInfo.loadingUrl = localJSONObject.optString("loading_url");
-    localLoadingInfo.loadingTips = localJSONObject.optString("loading_tips");
-    paramJSONObject = new SpringFestivalRedpacketConfBean.TimeInfo();
-    paramJSONObject.beginTime = Utils.a(localJSONObject.optString("start_time"));
-    paramJSONObject.endTime = Utils.a(localJSONObject.optString("end_time"));
-    localLoadingInfo.loadingTime = paramJSONObject;
-    return localLoadingInfo;
-  }
-  
-  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo a(JSONObject paramJSONObject)
+  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo e(JSONObject paramJSONObject)
   {
     SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo localPendantEntryInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo();
     if (paramJSONObject == null) {
@@ -172,7 +229,7 @@ public class SpringFestivalRedpacketConfBean
           localActivityInfo.logoUrl = localJSONObject.optString("logo_url");
           String str = localJSONObject.optString("pendant_end_time");
           paramJSONObject = str;
-          if (StringUtil.a(str)) {
+          if (StringUtil.isEmpty(str)) {
             paramJSONObject = localJSONObject.optString("end_time");
           }
           localActivityInfo.pendantEndTime = Utils.a(paramJSONObject);
@@ -186,63 +243,6 @@ public class SpringFestivalRedpacketConfBean
       localPendantEntryInfo.activityList = localArrayList;
     }
     return localPendantEntryInfo;
-  }
-  
-  private static SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo a(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("parseHbEntryInfo: ");
-      ((StringBuilder)localObject).append(paramJSONObject);
-      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo();
-    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).pendantEntryInfo = a(paramJSONObject);
-    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).fixedEntryInfo = a(paramJSONObject);
-    ((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject).loadingInfo = a(paramJSONObject);
-    a((SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo)localObject, paramJSONObject);
-    if (QLog.isColorLevel())
-    {
-      paramJSONObject = new StringBuilder();
-      paramJSONObject.append("parseHbEntryInfo: ");
-      paramJSONObject.append(localObject);
-      QLog.i("springHb_SpringFestivalRedpacketConfBean", 2, paramJSONObject.toString());
-    }
-    return localObject;
-  }
-  
-  private static void a(SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo paramSpringFestivalHbEntryInfo, JSONObject paramJSONObject)
-  {
-    if (paramSpringFestivalHbEntryInfo != null)
-    {
-      if (paramJSONObject == null) {
-        return;
-      }
-      paramSpringFestivalHbEntryInfo.activityUrl = paramJSONObject.optString("activity_url");
-      paramSpringFestivalHbEntryInfo.emergencyUrl = paramJSONObject.optString("emergency_url");
-      paramSpringFestivalHbEntryInfo.webType = paramJSONObject.optInt("web_type");
-      paramSpringFestivalHbEntryInfo.entrySwitch = paramJSONObject.optInt("entry_switch");
-      paramSpringFestivalHbEntryInfo.pendantSwitch = paramJSONObject.optInt("pendant_switch");
-      paramSpringFestivalHbEntryInfo.activityPrefix = paramJSONObject.optString("activity_prefix");
-      paramSpringFestivalHbEntryInfo.branchActivityPrefix = paramJSONObject.optString("branch_activity_prefix");
-      paramJSONObject = paramJSONObject.optJSONArray("entry_show_list");
-      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-      {
-        ArrayList localArrayList = new ArrayList(paramJSONObject.length());
-        int i = 0;
-        while (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-          SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-          localTimeInfo.beginTime = Utils.a(localJSONObject.optString("start_time"));
-          localTimeInfo.endTime = Utils.a(localJSONObject.optString("end_time"));
-          localArrayList.add(localTimeInfo);
-          i += 1;
-        }
-        paramSpringFestivalHbEntryInfo.entryShowTime = localArrayList;
-      }
-    }
   }
   
   public static SpringFestivalRedpacketConfBean parse(String paramString)
@@ -263,7 +263,7 @@ public class SpringFestivalRedpacketConfBean
       localObject = new SpringFestivalRedpacketConfBean();
       paramString = new JSONObject(paramString);
       ((SpringFestivalRedpacketConfBean)localObject).htmlOfflineCheckConfig = a(paramString);
-      ((SpringFestivalRedpacketConfBean)localObject).springFestivalHbEntryInfo = a(paramString.optJSONObject("entry"));
+      ((SpringFestivalRedpacketConfBean)localObject).springFestivalHbEntryInfo = b(paramString.optJSONObject("entry"));
       return localObject;
     }
     catch (Throwable paramString)
@@ -275,7 +275,7 @@ public class SpringFestivalRedpacketConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean
  * JD-Core Version:    0.7.0.1
  */

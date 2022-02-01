@@ -18,8 +18,8 @@ final class RIJChannelReporter$1
   {
     try
     {
-      int i = ChannelListDynamicOrderConfigHandler.a(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTabChannelCoverInfo.mChannelCoverId);
-      RIJChannelReporter.a("0X8009954", new RIJTransMergeKanDianReport.ReportR5Builder().addChannelId(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTabChannelCoverInfo.mChannelCoverId).addFolderStatus().addRedDotStatus(RIJChannelHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTabChannelCoverInfo)).addLocation(this.jdField_a_of_type_ComTencentMobileqqKandianRepoReportBaseReportData.l + 1).addType(this.jdField_a_of_type_Int).addStringNotThrow("is_change", i).addStringNotThrow("style", 0).build());
+      int i = ChannelListDynamicOrderConfigHandler.b(ReadInJoyUtils.b(), this.a.mChannelCoverId);
+      RIJChannelReporter.a("0X8009954", new RIJTransMergeKanDianReport.ReportR5Builder().addChannelId(this.a.mChannelCoverId).addFolderStatus().addRedDotStatus(RIJChannelHelper.a(this.a)).addLocation(this.b.D + 1).addType(this.c).addStringNotThrow("is_change", i).addStringNotThrow("style", 0).build());
       return;
     }
     catch (JSONException localJSONException)
@@ -31,7 +31,7 @@ final class RIJChannelReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelReporter.1
  * JD-Core Version:    0.7.0.1
  */

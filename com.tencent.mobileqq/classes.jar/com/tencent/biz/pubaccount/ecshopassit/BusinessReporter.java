@@ -27,71 +27,13 @@ public class BusinessReporter
   private static List<List<String>> a;
   private static List<Map<String, Integer>> b;
   
-  public static void a()
-  {
-    if (b == null)
-    {
-      if (a != null) {
-        return;
-      }
-      b = new ArrayList();
-      a = new ArrayList();
-      Object localObject1 = new File(EcShopAssistantManager.f);
-      if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-      {
-        localObject1 = FileUtils.readFileContent((File)localObject1);
-        try
-        {
-          localObject1 = new JSONArray((String)localObject1);
-          int i = 0;
-          Object localObject2;
-          while (i < ((JSONArray)localObject1).length())
-          {
-            Object localObject3 = ((JSONArray)localObject1).getJSONObject(0);
-            if (((JSONObject)localObject3).getInt("repflag") != 0)
-            {
-              Object localObject4 = new ArrayList();
-              localObject2 = new HashMap();
-              JSONArray localJSONArray = ((JSONObject)localObject3).getJSONArray("entrance");
-              int j = 0;
-              while (j < localJSONArray.length())
-              {
-                ((List)localObject4).add(localJSONArray.getString(j));
-                j += 1;
-              }
-              a.add(localObject4);
-              localObject3 = ((JSONObject)localObject3).getJSONArray("report");
-              j = 0;
-              while (j < ((JSONArray)localObject3).length())
-              {
-                localObject4 = ((JSONArray)localObject3).getJSONObject(j);
-                ((Map)localObject2).put(((JSONObject)localObject4).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject4).getInt("tvalue")));
-                j += 1;
-              }
-              b.add(localObject2);
-            }
-            i += 1;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("parse report json error:");
-          ((StringBuilder)localObject2).append(localException);
-          QLog.e("BusinessReporter", 1, ((StringBuilder)localObject2).toString());
-        }
-      }
-    }
-  }
-  
   public static void a(CustomWebView paramCustomWebView)
   {
     if ((paramCustomWebView != null) && (paramCustomWebView.getPluginEngine() != null))
     {
       String str = paramCustomWebView.getUrl();
       paramCustomWebView = paramCustomWebView.getPluginEngine();
-      WebViewPlugin localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
+      WebViewPlugin localWebViewPlugin = paramCustomWebView.b("JD_REPORT");
       if (localWebViewPlugin == null)
       {
         if (!a())
@@ -166,7 +108,7 @@ public class BusinessReporter
             localStringBuilder.append(str);
             if (paramString1.startsWith(localStringBuilder.toString()))
             {
-              localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
+              localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.m);
               if (localObject2 != null) {
                 ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
               }
@@ -178,7 +120,7 @@ public class BusinessReporter
               localStringBuilder.append(str);
               if (paramString1.startsWith(localStringBuilder.toString()))
               {
-                localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
+                localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.m);
                 if (localObject2 != null)
                 {
                   ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
@@ -226,10 +168,68 @@ public class BusinessReporter
     }
     return false;
   }
+  
+  public static void b()
+  {
+    if (b == null)
+    {
+      if (a != null) {
+        return;
+      }
+      b = new ArrayList();
+      a = new ArrayList();
+      Object localObject1 = new File(EcShopAssistantManager.n);
+      if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+      {
+        localObject1 = FileUtils.readFileContent((File)localObject1);
+        try
+        {
+          localObject1 = new JSONArray((String)localObject1);
+          int i = 0;
+          Object localObject2;
+          while (i < ((JSONArray)localObject1).length())
+          {
+            Object localObject3 = ((JSONArray)localObject1).getJSONObject(0);
+            if (((JSONObject)localObject3).getInt("repflag") != 0)
+            {
+              Object localObject4 = new ArrayList();
+              localObject2 = new HashMap();
+              JSONArray localJSONArray = ((JSONObject)localObject3).getJSONArray("entrance");
+              int j = 0;
+              while (j < localJSONArray.length())
+              {
+                ((List)localObject4).add(localJSONArray.getString(j));
+                j += 1;
+              }
+              a.add(localObject4);
+              localObject3 = ((JSONObject)localObject3).getJSONArray("report");
+              j = 0;
+              while (j < ((JSONArray)localObject3).length())
+              {
+                localObject4 = ((JSONArray)localObject3).getJSONObject(j);
+                ((Map)localObject2).put(((JSONObject)localObject4).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject4).getInt("tvalue")));
+                j += 1;
+              }
+              b.add(localObject2);
+            }
+            i += 1;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("parse report json error:");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.e("BusinessReporter", 1, ((StringBuilder)localObject2).toString());
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessReporter
  * JD-Core Version:    0.7.0.1
  */

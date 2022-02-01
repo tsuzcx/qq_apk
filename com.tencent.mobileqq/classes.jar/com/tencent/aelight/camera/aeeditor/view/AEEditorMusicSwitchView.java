@@ -16,12 +16,12 @@ public class AEEditorMusicSwitchView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AEEditorMusicSwitchView.SwitchClickListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorMusicSwitchView$SwitchClickListener;
+  private View a;
   private TextView b;
+  private TextView c;
+  private ImageView d;
+  private int e = 0;
+  private AEEditorMusicSwitchView.SwitchClickListener f;
   
   public AEEditorMusicSwitchView(@NonNull Context paramContext)
   {
@@ -41,10 +41,10 @@ public class AEEditorMusicSwitchView
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     b(paramInt);
     c(paramInt);
-    AEEditorMusicSwitchView.SwitchClickListener localSwitchClickListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorMusicSwitchView$SwitchClickListener;
+    AEEditorMusicSwitchView.SwitchClickListener localSwitchClickListener = this.f;
     if (localSwitchClickListener != null) {
       localSwitchClickListener.a(paramInt);
     }
@@ -52,27 +52,27 @@ public class AEEditorMusicSwitchView
   
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2064318580, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122781));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122748));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122328));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.a = LayoutInflater.from(paramContext).inflate(2064056452, this, true);
+    this.b = ((TextView)this.a.findViewById(2063991556));
+    this.c = ((TextView)this.a.findViewById(2063991522));
+    this.d = ((ImageView)this.a.findViewById(2063991210));
     this.b.setOnClickListener(this);
-    b(this.jdField_a_of_type_Int);
+    this.c.setOnClickListener(this);
+    b(this.e);
   }
   
   private void b(int paramInt)
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      this.b.setTextColor(Color.parseColor("#9699A5"));
+      this.b.setTextColor(-16777216);
+      this.c.setTextColor(Color.parseColor("#9699A5"));
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#9699A5"));
-      this.b.setTextColor(-16777216);
+      this.b.setTextColor(Color.parseColor("#9699A5"));
+      this.c.setTextColor(-16777216);
     }
   }
   
@@ -80,31 +80,31 @@ public class AEEditorMusicSwitchView
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+      this.d.setTranslationX(0.0F);
       return;
     }
     if (paramInt == 1)
     {
       paramInt = getMeasuredWidth();
-      int i = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(paramInt - i);
+      int i = this.d.getMeasuredWidth();
+      this.d.setTranslationX(paramInt - i);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2064122781)
+    if (i == 2063991556)
     {
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.e == 0) {
         return;
       }
       a(0);
       return;
     }
-    if (i == 2064122748)
+    if (i == 2063991522)
     {
-      if (this.jdField_a_of_type_Int == 1) {
+      if (this.e == 1) {
         return;
       }
       a(1);
@@ -113,12 +113,12 @@ public class AEEditorMusicSwitchView
   
   public void setSwitchClickListener(@Nullable AEEditorMusicSwitchView.SwitchClickListener paramSwitchClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorMusicSwitchView$SwitchClickListener = paramSwitchClickListener;
+    this.f = paramSwitchClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorMusicSwitchView
  * JD-Core Version:    0.7.0.1
  */

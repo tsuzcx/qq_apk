@@ -22,8 +22,8 @@ public class LebaIconEntryDynamicRedPointPathInterface
       } else {
         i = 0;
       }
-      paramAppRuntime = QVipPersonalIconProcessor.c();
-      if ((i != 0) && (paramAppRuntime.a()))
+      paramAppRuntime = QVipPersonalIconProcessor.e();
+      if ((i != 0) && (paramAppRuntime.b()))
       {
         paramAppRuntime = new ArrayList();
         paramAppRuntime.add("150000");
@@ -36,7 +36,7 @@ public class LebaIconEntryDynamicRedPointPathInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.LebaIconEntryDynamicRedPointPathInterface
  * JD-Core Version:    0.7.0.1
  */

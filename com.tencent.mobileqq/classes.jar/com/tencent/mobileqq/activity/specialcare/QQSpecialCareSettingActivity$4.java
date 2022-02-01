@@ -28,7 +28,7 @@ class QQSpecialCareSettingActivity$4
     if (!paramBoolean)
     {
       localObject = this.a;
-      ((QQSpecialCareSettingActivity)localObject).a(QQSpecialCareSettingActivity.a((QQSpecialCareSettingActivity)localObject), QQSpecialCareSettingActivity.a(this.a).a() ^ true);
+      ((QQSpecialCareSettingActivity)localObject).a(QQSpecialCareSettingActivity.f((QQSpecialCareSettingActivity)localObject), QQSpecialCareSettingActivity.f(this.a).a() ^ true);
     }
     this.a.a.sendEmptyMessage(8194);
     Object localObject = this.a.a.obtainMessage(8195);
@@ -39,19 +39,19 @@ class QQSpecialCareSettingActivity$4
     if (paramBoolean)
     {
       if (Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
-        i = 2131699317;
+        i = 2131897334;
       } else {
-        i = 2131699316;
+        i = 2131897333;
       }
     }
     else if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
-      i = 2131699320;
+      i = 2131897337;
     } else {
-      i = 2131699312;
+      i = 2131897329;
     }
     ((Message)localObject).arg2 = i;
     this.a.a.sendMessage((Message)localObject);
-    QQSpecialCareSettingActivity.b(this.a);
+    QQSpecialCareSettingActivity.h(this.a);
     ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanReqSubAccountSpecialCareListSysTime(this.a.app);
   }
   
@@ -67,9 +67,9 @@ class QQSpecialCareSettingActivity$4
     if (!paramBoolean)
     {
       paramArrayOfObject = this.a;
-      paramArrayOfObject.a(QQSpecialCareSettingActivity.b(paramArrayOfObject), QQSpecialCareSettingActivity.b(this.a).a() ^ true);
+      paramArrayOfObject.a(QQSpecialCareSettingActivity.i(paramArrayOfObject), QQSpecialCareSettingActivity.i(this.a).a() ^ true);
     }
-    QQSpecialCareSettingActivity.b(this.a);
+    QQSpecialCareSettingActivity.h(this.a);
   }
   
   protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -81,7 +81,7 @@ class QQSpecialCareSettingActivity$4
       paramArrayOfObject.append(paramBoolean);
       QLog.d("QQSpecialCareSettingActivity", 2, paramArrayOfObject.toString());
     }
-    QQSpecialCareSettingActivity.b(this.a);
+    QQSpecialCareSettingActivity.h(this.a);
   }
   
   protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
@@ -95,7 +95,7 @@ class QQSpecialCareSettingActivity$4
       localStringBuilder.append(paramObject);
       QLog.d("QQSpecialCareSettingActivity", 2, localStringBuilder.toString());
     }
-    QQSpecialCareSettingActivity.b(this.a);
+    QQSpecialCareSettingActivity.h(this.a);
   }
   
   protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
@@ -109,12 +109,12 @@ class QQSpecialCareSettingActivity$4
       paramList.append(paramBoolean2);
       QLog.d("QQSpecialCareSettingActivity", 2, paramList.toString());
     }
-    QQSpecialCareSettingActivity.b(this.a);
+    QQSpecialCareSettingActivity.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

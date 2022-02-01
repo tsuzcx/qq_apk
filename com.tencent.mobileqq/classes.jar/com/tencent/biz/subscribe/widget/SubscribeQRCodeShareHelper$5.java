@@ -17,21 +17,21 @@ class SubscribeQRCodeShareHelper$5
   
   public void run()
   {
-    if ((SubscribeQRCodeShareHelper.a(this.this$0)) && (!SubscribeQRCodeShareHelper.a(this.this$0).isFinishing()))
+    if ((SubscribeQRCodeShareHelper.k(this.this$0)) && (!SubscribeQRCodeShareHelper.c(this.this$0).isFinishing()))
     {
       Object localObject1 = this.this$0;
       Object localObject2 = SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1, SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject1));
       localObject1 = SubscribeQRCodeShareHelper.a(this.this$0, AppConstants.SDCARD_IMG_SAVE);
       if (!FileUtils.copyFile((String)localObject2, (String)localObject1))
       {
-        Toast.makeText(SubscribeQRCodeShareHelper.a(this.this$0), "save failed", 0).show();
+        Toast.makeText(SubscribeQRCodeShareHelper.c(this.this$0), "save failed", 0).show();
         return;
       }
       localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       ((Intent)localObject2).setData(Uri.fromFile(new File((String)localObject1)));
-      SubscribeQRCodeShareHelper.a(this.this$0).sendBroadcast((Intent)localObject2);
-      MobileQQ.sMobileQQ.onSendBroadcast(SubscribeQRCodeShareHelper.a(this.this$0), (Intent)localObject2);
-      localObject2 = SubscribeQRCodeShareHelper.a(this.this$0);
+      SubscribeQRCodeShareHelper.c(this.this$0).sendBroadcast((Intent)localObject2);
+      MobileQQ.sMobileQQ.onSendBroadcast(SubscribeQRCodeShareHelper.c(this.this$0), (Intent)localObject2);
+      localObject2 = SubscribeQRCodeShareHelper.c(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("save:");
       localStringBuilder.append((String)localObject1);
@@ -41,7 +41,7 @@ class SubscribeQRCodeShareHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.5
  * JD-Core Version:    0.7.0.1
  */

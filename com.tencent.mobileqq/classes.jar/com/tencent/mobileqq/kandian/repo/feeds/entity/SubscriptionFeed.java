@@ -9,25 +9,16 @@ import java.util.List;
 
 public class SubscriptionFeed
 {
-  public int a;
-  public long a;
-  public String a;
-  public WeakReference<MessageRecord> a;
-  public List<SubscriptionFeedItem> a;
+  public int a = -1;
   public int b = 0;
-  
-  public SubscriptionFeed()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
+  public String c = "";
+  public long d = 0L;
+  public List<SubscriptionFeedItem> e = new ArrayList();
+  public WeakReference<MessageRecord> f = null;
   
   public void a()
   {
-    if (((IRIJSubscriptionFeeds)QRoute.api(IRIJSubscriptionFeeds.class)).clearUnreadMsg(this.jdField_a_of_type_JavaLangString)) {
+    if (((IRIJSubscriptionFeeds)QRoute.api(IRIJSubscriptionFeeds.class)).clearUnreadMsg(this.c)) {
       this.b = 0;
     }
   }
@@ -43,18 +34,18 @@ public class SubscriptionFeed
         return false;
       }
       paramObject = (SubscriptionFeed)paramObject;
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.c;
       if (str != null) {
-        return str.equals(paramObject.jdField_a_of_type_JavaLangString);
+        return str.equals(paramObject.c);
       }
-      return paramObject.jdField_a_of_type_JavaLangString == null;
+      return paramObject.c == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.c;
     if (str != null) {
       return str.hashCode();
     }
@@ -63,7 +54,7 @@ public class SubscriptionFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.SubscriptionFeed
  * JD-Core Version:    0.7.0.1
  */

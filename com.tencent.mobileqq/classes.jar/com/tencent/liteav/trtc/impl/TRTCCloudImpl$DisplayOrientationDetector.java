@@ -23,11 +23,11 @@ class TRTCCloudImpl$DisplayOrientationDetector
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mTRTCEngine.get();
     if (localTRTCCloudImpl != null)
     {
-      int i = TRTCCloudImpl.access$9600(localTRTCCloudImpl);
+      int i = TRTCCloudImpl.access$11300(localTRTCCloudImpl);
       if (this.mCurrentDisplayRotation != i)
       {
         this.mCurrentDisplayRotation = i;
-        TRTCCloudImpl.access$9700(localTRTCCloudImpl, this.mCurOrientation);
+        TRTCCloudImpl.access$11400(localTRTCCloudImpl, this.mCurOrientation);
       }
     }
   }
@@ -59,8 +59,8 @@ class TRTCCloudImpl$DisplayOrientationDetector
       localObject = (TRTCCloudImpl)this.mTRTCEngine.get();
       if (localObject != null)
       {
-        this.mCurrentDisplayRotation = TRTCCloudImpl.access$9600((TRTCCloudImpl)localObject);
-        TRTCCloudImpl.access$9700((TRTCCloudImpl)localObject, this.mCurOrientation);
+        this.mCurrentDisplayRotation = TRTCCloudImpl.access$11300((TRTCCloudImpl)localObject);
+        TRTCCloudImpl.access$11400((TRTCCloudImpl)localObject, this.mCurOrientation);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("rotation-change onOrientationChanged ");
@@ -80,7 +80,7 @@ class TRTCCloudImpl$DisplayOrientationDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.DisplayOrientationDetector
  * JD-Core Version:    0.7.0.1
  */

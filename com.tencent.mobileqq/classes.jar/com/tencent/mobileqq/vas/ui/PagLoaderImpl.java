@@ -15,36 +15,36 @@ import org.jetbrains.annotations.NotNull;
 public final class PagLoaderImpl
   implements AbsAsyncLoadProxy.Loader
 {
-  private final ArrayList<AbsAsyncLoadProxy.LoaderCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private boolean b;
   private boolean c;
+  private final ArrayList<AbsAsyncLoadProxy.LoaderCallback> d = new ArrayList();
   
-  private final void a()
+  private final void b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.d.isEmpty()) {
       return;
     }
-    Iterator localIterator = ((Iterable)this.jdField_a_of_type_JavaUtilArrayList).iterator();
+    Iterator localIterator = ((Iterable)this.d).iterator();
     while (localIterator.hasNext()) {
       ((AbsAsyncLoadProxy.LoaderCallback)localIterator.next()).a();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.d.clear();
   }
   
   public void a(@NotNull AbsAsyncLoadProxy.LoaderCallback paramLoaderCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramLoaderCallback, "callback");
     this.c = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.d)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         paramLoaderCallback.a();
-        a();
+        b();
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramLoaderCallback);
+      this.d.add(paramLoaderCallback);
       if (!this.b)
       {
         this.b = true;
@@ -68,18 +68,18 @@ public final class PagLoaderImpl
     }
     catch (Throwable paramFunction0)
     {
-      QLog.e(PagViewProxy.a.a(), 1, paramFunction0, new Object[0]);
+      QLog.e(PagViewProxy.d.a(), 1, paramFunction0, new Object[0]);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

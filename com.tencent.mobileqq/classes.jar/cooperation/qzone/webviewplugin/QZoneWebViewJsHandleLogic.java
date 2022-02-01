@@ -161,8 +161,8 @@ public class QZoneWebViewJsHandleLogic
     }
     if ("refreshFeeds".equals(paramString))
     {
-      if (paramPluginRuntime.a() != null) {
-        doRefreshFeed(paramPluginRuntime.a());
+      if (paramPluginRuntime.d() != null) {
+        doRefreshFeed(paramPluginRuntime.d());
       }
       return true;
     }
@@ -282,7 +282,7 @@ public class QZoneWebViewJsHandleLogic
     ((Intent)localObject).putExtra("uin", Long.parseLong(paramString));
     ((Intent)localObject).putExtra("key_jump_from", "key_from_h5_cover_user_home");
     ((Intent)localObject).putExtra("noSpecialCareToast", j);
-    paramPluginRuntime = paramPluginRuntime.a();
+    paramPluginRuntime = paramPluginRuntime.d();
     if (paramPluginRuntime != null) {
       paramPluginRuntime.sendBroadcast((Intent)localObject);
     }
@@ -290,9 +290,9 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handleClickWeiShiWidget(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      Object localObject = paramPluginRuntime.a();
+      Object localObject = paramPluginRuntime.d();
       if (PackageUtil.a((Context)localObject, "com.tencent.weishi"))
       {
         paramPluginRuntime = "";
@@ -358,7 +358,7 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handleGameMates(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
     {
       paramPluginRuntime = new Intent("qzone.pickgamemates");
       paramPluginRuntime.putExtra("gamemates", paramVarArgs[0]);
@@ -460,7 +460,7 @@ public class QZoneWebViewJsHandleLogic
         ((Bundle)localObject1).putInt("from", i);
         ((Bundle)localObject1).putString("schemaUrl", paramVarArgs);
         QZoneHelper.addSource((Bundle)localObject1);
-        AppClient.a(paramPluginRuntime.a(), (Bundle)localObject1);
+        AppClient.a(paramPluginRuntime.d(), (Bundle)localObject1);
         return;
       }
       catch (JSONException paramPluginRuntime)
@@ -475,7 +475,7 @@ public class QZoneWebViewJsHandleLogic
   private static void handlePublishMoodSilently(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
     int i;
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
       i = 0;
     }
     try
@@ -544,7 +544,7 @@ public class QZoneWebViewJsHandleLogic
       }
       localObject3 = new ArrayList();
       ((ArrayList)localObject3).add(str2);
-      QZoneHelper.UserInfo.getInstance().qzone_uin = paramPluginRuntime.a().getCurrentAccountUin();
+      QZoneHelper.UserInfo.getInstance().qzone_uin = paramPluginRuntime.b().getCurrentAccountUin();
       QZoneHelper.publishPictureMoodSilently(str1, (ArrayList)localObject3, j, null, paramArrayOfString, (String)localObject1, localArrayList, (HashMap)localObject2, localHashMap, "value.videoSign", 2);
       return;
       if (QLog.isColorLevel()) {
@@ -612,7 +612,7 @@ public class QZoneWebViewJsHandleLogic
         if (paramPluginRuntime == null) {
           break label1177;
         }
-        localObject1 = paramPluginRuntime.a();
+        localObject1 = paramPluginRuntime.d();
         paramVarArgs = (String[])localObject1;
         if (localObject1 != null)
         {
@@ -714,7 +714,7 @@ public class QZoneWebViewJsHandleLogic
             }
             i = ((WebViewPluginContainer)localObject6).switchRequestCode(paramWebViewPlugin, (byte)3);
             paramWebViewPlugin = QZoneHelper.UserInfo.getInstance();
-            paramWebViewPlugin.qzone_uin = paramPluginRuntime.a().getAccount();
+            paramWebViewPlugin.qzone_uin = paramPluginRuntime.b().getAccount();
             paramPluginRuntime = new Bundle();
             paramPluginRuntime.putString("source", paramVarArgs.getQueryParameter("source"));
             paramPluginRuntime.putString("bypassparam", paramVarArgs.getQueryParameter("bypassparam"));
@@ -724,22 +724,22 @@ public class QZoneWebViewJsHandleLogic
           }
           if ("mqzone://arouse/dynamicnickname".equalsIgnoreCase((String)localObject2))
           {
-            if ((paramPluginRuntime == null) || (paramPluginRuntime.a() == null) || (paramPluginRuntime.a() == null)) {
+            if ((paramPluginRuntime == null) || (paramPluginRuntime.d() == null) || (paramPluginRuntime.b() == null)) {
               break label1164;
             }
-            QZoneHelper.forwardToQZoneFlashNickNameSetting(paramPluginRuntime.a(), paramPluginRuntime.a().getAccount());
+            QZoneHelper.forwardToQZoneFlashNickNameSetting(paramPluginRuntime.d(), paramPluginRuntime.b().getAccount());
             return;
           }
           if (((String)localObject2).startsWith("mqzone://arouse/uploadphoto"))
           {
-            QZoneHelperProxyImpl.forwardToUploadPhoto(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
+            QZoneHelperProxyImpl.forwardToUploadPhoto(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.d(), paramPluginRuntime.b().getAccount(), (String)localObject2);
             return;
           }
           if ((!((String)localObject2).startsWith("mqzone://arouse/facade")) && (!((String)localObject2).startsWith("mqzonev2://arouse/facade")))
           {
             if (((String)localObject2).startsWith("mqzone://arouse/moodVoiceRecord"))
             {
-              QZoneHelperProxyImpl.forwardToOpenRecordPanel(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
+              QZoneHelperProxyImpl.forwardToOpenRecordPanel(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.d(), paramPluginRuntime.b().getAccount(), (String)localObject2);
               return;
             }
             paramVarArgs = new Intent("action_js2qzone");
@@ -769,7 +769,7 @@ public class QZoneWebViewJsHandleLogic
             QZoneHelper.forwardToQzoneTransluentActivity((Activity)localObject1, QZoneHelper.UserInfo.getInstance(), paramVarArgs, -1, bool);
             return;
           }
-          jumpQzoneScheme(paramPluginRuntime.a(), (String)localObject2, 81, paramPluginRuntime);
+          jumpQzoneScheme(paramPluginRuntime.d(), (String)localObject2, 81, paramPluginRuntime);
           return;
         }
         catch (JSONException paramWebViewPlugin) {}
@@ -814,7 +814,7 @@ public class QZoneWebViewJsHandleLogic
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0) && (localJSONArray != null) && (localJSONArray.length() == paramVarArgs.length()))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131689559, 0).a();
+              QQToast.makeText(paramPluginRuntime.d(), 2, 2131886169, 0).show();
             }
             localObject = new long[paramVarArgs.length()];
             long[] arrayOfLong = new long[localJSONArray.length()];
@@ -831,8 +831,8 @@ public class QZoneWebViewJsHandleLogic
             localIntent.putExtra("key_time_list", arrayOfLong);
             localIntent.putExtra("key_msg_content", str);
             localIntent.putExtra("key_gift_id", j);
-            paramPluginRuntime.a().setResult(-1, localIntent);
-            paramPluginRuntime.a().finish();
+            paramPluginRuntime.d().setResult(-1, localIntent);
+            paramPluginRuntime.d().finish();
             if (QLog.isColorLevel())
             {
               paramPluginRuntime = new StringBuilder();
@@ -878,7 +878,7 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handleShowFollowActionSheet(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
       try
       {
         int i = new JSONObject(paramVarArgs[0]).optInt("followStatus");
@@ -903,7 +903,7 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handleUpdateIsSpecialFollow(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
       try
       {
         int i = new JSONObject(paramVarArgs[0]).optInt("isSpecialFollow", -1);
@@ -946,7 +946,7 @@ public class QZoneWebViewJsHandleLogic
     localIntent.putExtra("injectrecommend", true);
     localIntent.setData(Uri.parse(paramString));
     localIntent.addFlags(268435456);
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717365));
+    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131914838));
     paramContext.startActivity(localIntent);
     if (QLog.isColorLevel())
     {
@@ -986,13 +986,13 @@ public class QZoneWebViewJsHandleLogic
   
   static void shareMiniProgramFromQzone(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.d() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
       try
       {
-        Object localObject1 = paramPluginRuntime.a(paramPluginRuntime.a());
+        Object localObject1 = paramPluginRuntime.a(paramPluginRuntime.d());
         if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebShareInterface)))
         {
-          localObject1 = ((Share)((WebUiUtils.WebShareInterface)localObject1).getShare()).a();
+          localObject1 = ((Share)((WebUiUtils.WebShareInterface)localObject1).getShare()).u();
           if ((localObject1 != null) && (((QQProgressDialog)localObject1).isShowing())) {
             ((QQProgressDialog)localObject1).dismiss();
           }
@@ -1027,9 +1027,9 @@ public class QZoneWebViewJsHandleLogic
   public static void showQzoneAppDownloadDialog(Context paramContext, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
     paramPluginRuntime = DialogUtil.a(paramContext, 0);
-    paramPluginRuntime.setMessage(paramContext.getString(2131719637));
-    paramPluginRuntime.setPositiveButton(paramContext.getString(2131691827), new QZoneWebViewJsHandleLogic.4(paramContext));
-    paramPluginRuntime.setNegativeButton(paramContext.getString(2131693250), new QZoneWebViewJsHandleLogic.5(paramPluginRuntime));
+    paramPluginRuntime.setMessage(paramContext.getString(2131917238));
+    paramPluginRuntime.setPositiveButton(paramContext.getString(2131888790), new QZoneWebViewJsHandleLogic.4(paramContext));
+    paramPluginRuntime.setNegativeButton(paramContext.getString(2131890798), new QZoneWebViewJsHandleLogic.5(paramPluginRuntime));
     try
     {
       if (!paramPluginRuntime.isShowing())
@@ -1099,7 +1099,7 @@ public class QZoneWebViewJsHandleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

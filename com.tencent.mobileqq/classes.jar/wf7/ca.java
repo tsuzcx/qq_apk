@@ -10,6 +10,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.util.List;
 
 public final class ca
@@ -171,7 +172,7 @@ public final class ca
   {
     try
     {
-      WifiInfo localWifiInfo = gO.getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo(gO);
       return localWifiInfo;
     }
     catch (Throwable localThrowable)
@@ -296,7 +297,7 @@ public final class ca
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ca
  * JD-Core Version:    0.7.0.1
  */

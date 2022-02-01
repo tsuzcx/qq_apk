@@ -12,7 +12,7 @@ public class TencentDocSelectAddDocsProcessor
 {
   public static TencentDocSelectAddDocsBean a()
   {
-    return (TencentDocSelectAddDocsBean)QConfigManager.a().a(335);
+    return (TencentDocSelectAddDocsBean)QConfigManager.b().b(335);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocSelectAddDocsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocSelectAddDocsProcessor
  * JD-Core Version:    0.7.0.1
  */

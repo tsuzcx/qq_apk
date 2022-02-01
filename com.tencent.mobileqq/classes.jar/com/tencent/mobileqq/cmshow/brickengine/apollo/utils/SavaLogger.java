@@ -39,15 +39,13 @@ public class SavaLogger
     }
     catch (OutOfMemoryError paramString1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]SavaLogUtil", 2, paramString1.getMessage());
-      }
+      QLog.e("[cmshow]SavaLogUtil", 1, paramString1.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.SavaLogger
  * JD-Core Version:    0.7.0.1
  */

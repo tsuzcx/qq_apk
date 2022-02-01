@@ -15,8 +15,8 @@ import java.util.Iterator;
 class MaterialCalendar$4
   extends RecyclerView.ItemDecoration
 {
-  private final Calendar jdField_a_of_type_JavaUtilCalendar = UtcDates.b();
-  private final Calendar b = UtcDates.b();
+  private final Calendar b = UtcDates.c();
+  private final Calendar c = UtcDates.c();
   
   MaterialCalendar$4(MaterialCalendar paramMaterialCalendar) {}
   
@@ -29,16 +29,16 @@ class MaterialCalendar$4
       }
       paramState = (YearGridAdapter)paramRecyclerView.getAdapter();
       GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      Iterator localIterator = MaterialCalendar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar).b().iterator();
+      Iterator localIterator = MaterialCalendar.c(this.a).d().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (Pair)localIterator.next();
         if ((((Pair)localObject).first != null) && (((Pair)localObject).second != null))
         {
-          this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(((Long)((Pair)localObject).first).longValue());
-          this.b.setTimeInMillis(((Long)((Pair)localObject).second).longValue());
-          int j = paramState.a(this.jdField_a_of_type_JavaUtilCalendar.get(1));
-          int i = paramState.a(this.b.get(1));
+          this.b.setTimeInMillis(((Long)((Pair)localObject).first).longValue());
+          this.c.setTimeInMillis(((Long)((Pair)localObject).second).longValue());
+          int j = paramState.a(this.b.get(1));
+          int i = paramState.a(this.c.get(1));
           localObject = localGridLayoutManager.findViewByPosition(j);
           View localView1 = localGridLayoutManager.findViewByPosition(i);
           int m = j / localGridLayoutManager.getSpanCount();
@@ -50,9 +50,9 @@ class MaterialCalendar$4
             if (localView2 != null)
             {
               int i1 = localView2.getTop();
-              int i2 = MaterialCalendar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar).d.a();
+              int i2 = MaterialCalendar.e(this.a).d.a();
               int i3 = localView2.getBottom();
-              int i4 = MaterialCalendar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar).d.b();
+              int i4 = MaterialCalendar.e(this.a).d.b();
               if (i == m) {
                 j = ((View)localObject).getLeft() + ((View)localObject).getWidth() / 2;
               } else {
@@ -64,7 +64,7 @@ class MaterialCalendar$4
               } else {
                 k = paramRecyclerView.getWidth();
               }
-              paramCanvas.drawRect(j, i1 + i2, k, i3 - i4, MaterialCalendar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar).a);
+              paramCanvas.drawRect(j, i1 + i2, k, i3 - i4, MaterialCalendar.e(this.a).h);
             }
             i += 1;
           }
@@ -75,7 +75,7 @@ class MaterialCalendar$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MaterialCalendar.4
  * JD-Core Version:    0.7.0.1
  */

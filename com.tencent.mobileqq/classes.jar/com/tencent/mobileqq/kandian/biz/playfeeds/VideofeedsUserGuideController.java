@@ -27,30 +27,30 @@ import mqq.app.AppRuntime;
 
 public class VideofeedsUserGuideController
 {
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new VideofeedsUserGuideController.5(this, Looper.getMainLooper());
-  private View jdField_a_of_type_AndroidViewView;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean = true;
-  private TranslateAnimation jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = true;
+  private boolean b = false;
   private boolean c = false;
   private boolean d = false;
   private boolean e = false;
+  private LinearLayout f;
+  private View g;
+  private TranslateAnimation h;
+  private TranslateAnimation i;
+  private AnimatorSet j;
+  private AppRuntime k;
+  private Context l;
+  private Activity m;
+  private Handler n = new VideofeedsUserGuideController.5(this, Looper.getMainLooper());
   
   public VideofeedsUserGuideController(Activity paramActivity, AppRuntime paramAppRuntime, View paramView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.g = paramView;
+    this.k = paramAppRuntime;
     this.d = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.l = paramActivity.getApplicationContext();
+    this.m = paramActivity;
     this.e = paramBoolean2;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380311));
+    this.f = ((LinearLayout)this.g.findViewById(2131449241));
   }
   
   @TargetApi(11)
@@ -72,11 +72,11 @@ public class VideofeedsUserGuideController
       paramView2.setRepeatCount(-1);
       paramView2.setRepeatMode(1);
       paramView2.setStartDelay(paramLong2);
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      if (this.j == null) {
+        this.j = new AnimatorSet();
       }
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { paramView1, paramView2 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+      this.j.playTogether(new Animator[] { paramView1, paramView2 });
+      this.j.start();
       return;
     }
     paramView1.setVisibility(0);
@@ -85,69 +85,69 @@ public class VideofeedsUserGuideController
   
   private void a(String paramString)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-    ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131380316)).setText(paramString);
-    paramString = this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    this.b = true;
+    this.n.sendEmptyMessageDelayed(1, 5000L);
+    ((TextView)this.f.findViewById(2131449246)).setText(paramString);
+    paramString = this.h;
     if (paramString != null) {
       paramString.cancel();
     }
-    paramString = this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
+    paramString = this.i;
     if (paramString != null) {
       paramString.cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, -0.2F);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new VideofeedsUserGuideController.2(this));
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new VideofeedsUserGuideController.3(this));
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VideofeedsUserGuideController.4(this), 300L);
+    this.h = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, -0.2F);
+    this.h.setDuration(200L);
+    this.h.setFillAfter(true);
+    this.i = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.2F, 1, 0.0F);
+    this.i.setDuration(300L);
+    this.i.setFillAfter(true);
+    this.h.setAnimationListener(new VideofeedsUserGuideController.2(this));
+    this.i.setAnimationListener(new VideofeedsUserGuideController.3(this));
+    this.n.postDelayed(new VideofeedsUserGuideController.4(this), 300L);
   }
   
   @TargetApi(11)
   public void a()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 8) {
+    if (this.f.getVisibility() == 8) {
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.b = false;
     if (QLog.isColorLevel()) {
       QLog.d("Q.pubaccount.video.feedsVideofeedsUserGuideController", 2, "hide user guide");
     }
     b();
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideofeedsUserGuideController.1(this));
+    this.n.post(new VideofeedsUserGuideController.1(this));
   }
   
   @TargetApi(11)
   public void a(VideoInfo paramVideoInfo)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (this.e) {
         return;
       }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0)
+      if (this.f.getVisibility() != 0)
       {
         if (this.c) {
           return;
         }
-        int i = ReadInJoyHelper.y(this.jdField_a_of_type_MqqAppAppRuntime);
-        if (i < 3)
+        int i1 = ReadInJoyHelper.as(this.k);
+        if (i1 < 3)
         {
-          ReadInJoyHelper.z(this.jdField_a_of_type_MqqAppAppRuntime, i + 1);
+          ReadInJoyHelper.B(this.k, i1 + 1);
           if (QLog.isColorLevel()) {
             QLog.d("Q.pubaccount.video.feedsVideofeedsUserGuideController", 2, "show user guide");
           }
-          if (!TextUtils.isEmpty(paramVideoInfo.g)) {
-            paramVideoInfo = HardCodeUtil.a(2131715913);
+          if (!TextUtils.isEmpty(paramVideoInfo.l)) {
+            paramVideoInfo = HardCodeUtil.a(2131913368);
           } else {
-            paramVideoInfo = HardCodeUtil.a(2131715912);
+            paramVideoInfo = HardCodeUtil.a(2131913367);
           }
           a(paramVideoInfo);
         }
@@ -157,13 +157,13 @@ public class VideofeedsUserGuideController
   
   public void a(VideoInfo paramVideoInfo, VideoInfo.ECommerceEntranceInfo paramECommerceEntranceInfo, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0)
+    if (this.f.getVisibility() != 0)
     {
       if (this.c) {
         return;
       }
       a(paramECommerceEntranceInfo.a);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
+      this.f.setOnClickListener(paramOnClickListener);
     }
   }
   
@@ -175,29 +175,29 @@ public class VideofeedsUserGuideController
   @TargetApi(11)
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getAnimation() != null)
+    if (this.f.getAnimation() != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getAnimation().setAnimationListener(null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getAnimation().cancel();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+      this.f.getAnimation().setAnimationListener(null);
+      this.f.getAnimation().cancel();
+      this.f.clearAnimation();
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    Object localObject = this.h;
     if (localObject != null)
     {
       ((TranslateAnimation)localObject).setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = null;
+      this.h.cancel();
+      this.h = null;
     }
-    localObject = this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
+    localObject = this.i;
     if (localObject != null)
     {
       ((TranslateAnimation)localObject).setAnimationListener(null);
-      this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-      this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = null;
+      this.i.cancel();
+      this.i = null;
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+      localObject = this.j;
       if (localObject != null)
       {
         localObject = ((AnimatorSet)localObject).getChildAnimations().iterator();
@@ -207,21 +207,21 @@ public class VideofeedsUserGuideController
           localAnimator.end();
           localAnimator.cancel();
         }
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+        this.j.end();
+        this.j.cancel();
       }
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
+      this.j = null;
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideofeedsUserGuideController
  * JD-Core Version:    0.7.0.1
  */

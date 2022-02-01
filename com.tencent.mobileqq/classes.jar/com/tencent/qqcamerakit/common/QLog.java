@@ -2,12 +2,12 @@ package com.tencent.qqcamerakit.common;
 
 public class QLog
 {
-  private static int jdField_a_of_type_Int = 2;
-  private static Logger jdField_a_of_type_ComTencentQqcamerakitCommonLogger = new QLog.DefaultLogger(null);
+  private static int a = 2;
+  private static Logger b = new QLog.DefaultLogger(null);
   
   public static void a(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    if (jdField_a_of_type_Int >= paramInt)
+    if (a >= paramInt)
     {
       String str = paramString2;
       if (paramString2 == null) {
@@ -15,10 +15,10 @@ public class QLog
       }
       if (paramThrowable == null)
       {
-        jdField_a_of_type_ComTencentQqcamerakitCommonLogger.a(paramString1, str);
+        b.a(paramString1, str);
         return;
       }
-      jdField_a_of_type_ComTencentQqcamerakitCommonLogger.a(paramString1, str, paramThrowable);
+      b.a(paramString1, str, paramThrowable);
     }
   }
   
@@ -52,12 +52,12 @@ public class QLog
   
   public static boolean a()
   {
-    return jdField_a_of_type_Int > 1;
+    return a > 1;
   }
   
   public static void b(String paramString, int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Int >= paramInt)
+    if (a >= paramInt)
     {
       StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
       int i = paramVarArgs.length;
@@ -70,13 +70,13 @@ public class QLog
         }
         paramInt += 1;
       }
-      jdField_a_of_type_ComTencentQqcamerakitCommonLogger.b(paramString, localStringBuilder.toString());
+      b.b(paramString, localStringBuilder.toString());
     }
   }
   
   public static void c(String paramString, int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Int >= paramInt)
+    if (a >= paramInt)
     {
       StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
       int i = paramVarArgs.length;
@@ -89,13 +89,13 @@ public class QLog
         }
         paramInt += 1;
       }
-      jdField_a_of_type_ComTencentQqcamerakitCommonLogger.c(paramString, localStringBuilder.toString());
+      b.c(paramString, localStringBuilder.toString());
     }
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Int >= paramInt)
+    if (a >= paramInt)
     {
       StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
       int i = paramVarArgs.length;
@@ -108,13 +108,13 @@ public class QLog
         }
         paramInt += 1;
       }
-      jdField_a_of_type_ComTencentQqcamerakitCommonLogger.d(paramString, localStringBuilder.toString());
+      b.d(paramString, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.common.QLog
  * JD-Core Version:    0.7.0.1
  */

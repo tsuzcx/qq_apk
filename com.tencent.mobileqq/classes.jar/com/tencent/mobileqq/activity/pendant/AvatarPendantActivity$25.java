@@ -17,7 +17,7 @@ class AvatarPendantActivity$25
   
   protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if ((paramSetting != null) && (this.a.a != null) && (this.a.a.uin.equals(paramSetting.uin)))
+    if ((paramSetting != null) && (this.a.L != null) && (this.a.L.uin.equals(paramSetting.uin)))
     {
       if (QLog.isColorLevel())
       {
@@ -26,7 +26,7 @@ class AvatarPendantActivity$25
         ((StringBuilder)localObject).append(paramSetting.uin);
         QLog.d("AvatarPendantActivity", 2, ((StringBuilder)localObject).toString());
       }
-      AvatarPendantActivity.d(this.a);
+      AvatarPendantActivity.g(this.a);
       if (!this.a.isResume()) {
         AvatarPendantActivity.a(this.a, true);
       }
@@ -35,7 +35,7 @@ class AvatarPendantActivity$25
       if (!TextUtils.isEmpty(str)) {
         localObject = MsfSdkUtils.insertMtype("QQHeadIcon", str);
       }
-      this.a.d = paramSetting.headImgTimestamp;
+      this.a.ag = paramSetting.headImgTimestamp;
       ThreadManager.getUIHandler().post(new AvatarPendantActivity.25.2(this, (String)localObject));
       return;
     }
@@ -46,7 +46,7 @@ class AvatarPendantActivity$25
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    AvatarPendantActivity.d(this.a);
+    AvatarPendantActivity.g(this.a);
     if (!this.a.isResume()) {
       AvatarPendantActivity.a(this.a, true);
     }
@@ -57,7 +57,7 @@ class AvatarPendantActivity$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.25
  * JD-Core Version:    0.7.0.1
  */

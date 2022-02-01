@@ -6,7 +6,7 @@ public abstract interface RecommendTroopAdapter$IRecommendTroopAdapterCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.RecommendTroopAdapter.IRecommendTroopAdapterCallback
  * JD-Core Version:    0.7.0.1
  */

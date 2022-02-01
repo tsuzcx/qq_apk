@@ -17,19 +17,19 @@ class ReadInJoyVideoTagSelectionFragment$5
     if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo))) {
       if (!ReadInJoyVideoTagSelectionFragment.a(this.a).a())
       {
-        if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).d())) {
-          ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+        if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.f(this.a).isShowing())) {
+          ReadInJoyVideoTagSelectionFragment.f(this.a).show();
         }
       }
-      else if (!ReadInJoyVideoTagSelectionFragment.b(this.a).d()) {
-        ReadInJoyVideoTagSelectionFragment.b(this.a).a();
+      else if (!ReadInJoyVideoTagSelectionFragment.g(this.a).isShowing()) {
+        ReadInJoyVideoTagSelectionFragment.g(this.a).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyVideoTagSelectionFragment.5
  * JD-Core Version:    0.7.0.1
  */

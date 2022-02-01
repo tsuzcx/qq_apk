@@ -15,7 +15,7 @@ public final class oidb_0xdb1$matchTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdb1.oidb_0xdb1.matchTaskInfo
  * JD-Core Version:    0.7.0.1
  */

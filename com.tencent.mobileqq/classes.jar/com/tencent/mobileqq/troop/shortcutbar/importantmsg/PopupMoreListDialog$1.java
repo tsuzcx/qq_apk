@@ -13,14 +13,14 @@ class PopupMoreListDialog$1
   public void onClick(View paramView)
   {
     if (PopupMoreListDialog.a(this.a).isShowing()) {
-      this.a.d();
+      this.a.e();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,42 +21,42 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 class TroopRequestActivity$NumberSpan
   extends URLSpan
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  String a;
   boolean b;
+  boolean c;
   
   public TroopRequestActivity$NumberSpan(TroopRequestActivity paramTroopRequestActivity, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
   {
     super(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.b = paramBoolean1;
+    this.a = paramString2;
+    this.b = paramBoolean2;
+    this.c = paramBoolean1;
   }
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.b > 0L) && (l - TroopRequestActivity.b < 800L)) {
+    if ((l - TroopRequestActivity.am > 0L) && (l - TroopRequestActivity.am < 800L)) {
       return;
     }
-    TroopRequestActivity.b = l;
+    TroopRequestActivity.am = l;
     getURL();
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-    boolean bool = this.jdField_a_of_type_Boolean;
+    int i = this.d.W.msg.group_msg_type.get();
+    boolean bool = this.b;
     Object localObject1 = "1";
     if (bool)
     {
-      paramView = TroopInfoUIUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_JavaLangString, 4);
+      paramView = TroopInfoUIUtil.a(this.d.c, 4);
       paramView.putInt("t_s_f", 1001);
-      ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).openTroopInfoActivity(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity, paramView, 2);
+      ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).openTroopInfoActivity(this.d, paramView, 2);
       if ((i != 2) && (i != 10) && (i != 12)) {
         i = 0;
       } else {
         i = 1;
       }
-      localObject1 = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity);
+      localObject1 = TroopRequestActivity.a(this.d);
       paramView = new StringBuilder();
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
+      paramView.append(this.d.W.msg.group_code.get());
       paramView.append("");
       localObject2 = paramView.toString();
       if (i != 0) {
@@ -67,13 +67,13 @@ class TroopRequestActivity$NumberSpan
       ReportController.b((AppRuntime)localObject1, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, (String)localObject2, paramView, "", "");
       return;
     }
-    paramView = (ITroopSysMsgDependApiService)TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity).getRuntimeService(ITroopSysMsgDependApiService.class, "");
+    paramView = (ITroopSysMsgDependApiService)TroopRequestActivity.a(this.d).getRuntimeService(ITroopSysMsgDependApiService.class, "");
     if (paramView != null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity;
-      paramView.openProfileCardForTroopSysMsg((Context)localObject2, this.jdField_a_of_type_JavaLangString, ((TroopRequestActivity)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get(), i, this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get(), false);
+      localObject2 = this.d;
+      paramView.openProfileCardForTroopSysMsg((Context)localObject2, this.a, ((TroopRequestActivity)localObject2).W.msg.group_code.get(), this.d.W.msg.action_uin.get(), i, this.d.W.msg.sub_type.get(), false);
     }
-    if (this.b)
+    if (this.c)
     {
       if (i == 11)
       {
@@ -100,13 +100,13 @@ class TroopRequestActivity$NumberSpan
     else {
       paramView = "";
     }
-    localObject1 = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity);
+    localObject1 = TroopRequestActivity.a(this.d);
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
+    ((StringBuilder)localObject2).append(this.d.W.msg.group_code.get());
     ((StringBuilder)localObject2).append("");
     ReportController.b((AppRuntime)localObject1, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, ((StringBuilder)localObject2).toString(), paramView, "", "");
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
+    ((StringBuilder)localObject1).append(this.d.W.msg.group_code.get());
     ((StringBuilder)localObject1).append("");
     TroopReportor.a("Grp_contacts_news", "notice", "see_fromdata", 0, 0, new String[] { ((StringBuilder)localObject1).toString(), paramView });
   }
@@ -118,7 +118,7 @@ class TroopRequestActivity$NumberSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.NumberSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -26,16 +26,16 @@ class QFlutterNetworkImageImpl$1
       localStringBuilder.append(localBitmap);
       QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     }
-    if ((6 == paramInt) && (localBitmap != null) && (this.jdField_a_of_type_ComQflutterQflutter_network_imageLoadBitmapCallback != null))
+    if ((6 == paramInt) && (localBitmap != null) && (this.a != null))
     {
-      QFlutterNetworkImageImpl.a(this.jdField_a_of_type_ComTencentMobileqqFlutterPluginQFlutterNetworkImageImpl).put(paramOption.getUrl(), localBitmap);
+      QFlutterNetworkImageImpl.a(this.b).put(paramOption.getUrl(), localBitmap);
       ThreadManagerV2.getUIHandlerV2().post(new QFlutterNetworkImageImpl.1.1(this, localBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterNetworkImageImpl.1
  * JD-Core Version:    0.7.0.1
  */

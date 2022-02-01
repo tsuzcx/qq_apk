@@ -11,12 +11,12 @@ class AVSchema$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ShareChatReport.d();
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
+    this.b.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.4
  * JD-Core Version:    0.7.0.1
  */

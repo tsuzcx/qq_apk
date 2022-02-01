@@ -23,9 +23,9 @@ public class ClassicHeadActivityPbSendReqHandler
   private void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText)
   {
     paramQQAppInterface = (ClassicHeadActivityManager)paramQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.a()) && (paramQQAppInterface.a() == 1L) && ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)))
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.a()) && (paramQQAppInterface.c() == 1L) && ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)))
     {
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.d();
       if (paramQQAppInterface != null)
       {
         int i = paramQQAppInterface.systemHeadID;
@@ -60,7 +60,7 @@ public class ClassicHeadActivityPbSendReqHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.pbsendhandler.ClassicHeadActivityPbSendReqHandler
  * JD-Core Version:    0.7.0.1
  */

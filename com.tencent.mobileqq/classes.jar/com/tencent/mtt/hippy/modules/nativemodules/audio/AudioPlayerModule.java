@@ -10,27 +10,26 @@ import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 @HippyNativeModule(name="AudioPlayerModule")
 public class AudioPlayerModule
   extends HippyNativeModuleBase
 {
-  private final HippyEngineContext a;
-  private a b;
-  private int c = 0;
-  private int d = 0;
-  private String e = "STOPPED";
+  private final HippyEngineContext b;
+  private a c;
+  private String d = "STOPPED";
   
   public AudioPlayerModule(HippyEngineContext paramHippyEngineContext)
   {
     super(paramHippyEngineContext);
-    this.a = paramHippyEngineContext;
-    this.b = new a();
+    this.b = paramHippyEngineContext;
+    this.c = new a();
   }
   
   private a a(Context paramContext, Uri paramUri, MediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
-    this.e = "BUFFERING";
+    this.d = "BUFFERING";
     try
     {
       a locala = new a();
@@ -54,22 +53,25 @@ public class AudioPlayerModule
   
   private String a()
   {
-    if (this.b.b()) {
+    if (this.c.b()) {
       return "PLAYING";
     }
-    return this.e;
+    return this.d;
   }
   
   @HippyMethod(name="destroyNotification")
-  public void destroyNotification() {}
+  public void destroyNotification()
+  {
+    LogUtils.d("AudioPlayerModule", "destroyNotification");
+  }
   
   @HippyMethod(name="getStatus")
   public void getStatus(Promise paramPromise)
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("status", a());
-    localHippyMap.pushInt("duration", this.b.h() / 1000);
-    localHippyMap.pushInt("progress", this.b.g() / 1000);
+    localHippyMap.pushInt("duration", this.c.h() / 1000);
+    localHippyMap.pushInt("progress", this.c.g() / 1000);
     paramPromise.resolve(localHippyMap);
   }
   
@@ -79,7 +81,7 @@ public class AudioPlayerModule
     try
     {
       int i = Math.round(paramFloat.floatValue());
-      int j = this.b.g() - i * 1000;
+      int j = this.c.g() - i * 1000;
       i = j;
       if (j < 0) {
         i = 0;
@@ -96,20 +98,25 @@ public class AudioPlayerModule
   @HippyMethod(name="goForward")
   public void goForward(Float paramFloat)
   {
-    try
+    for (;;)
     {
-      int i = Math.round(paramFloat.floatValue());
-      int j = this.b.g() + i * 1000;
-      i = j;
-      if (j > this.c) {
-        i = this.c;
+      try
+      {
+        int i = Math.round(paramFloat.floatValue());
+        i = this.c.g() + i * 1000;
+        int j = 0;
+        if (i > 0)
+        {
+          i = j;
+          seekTo(i);
+          return;
+        }
       }
-      seekTo(i);
-      return;
-    }
-    catch (Exception paramFloat)
-    {
-      paramFloat.printStackTrace();
+      catch (Exception paramFloat)
+      {
+        paramFloat.printStackTrace();
+        return;
+      }
     }
   }
   
@@ -119,24 +126,24 @@ public class AudioPlayerModule
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   1: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
     //   4: ifnull +10 -> 14
     //   7: aload_0
-    //   8: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
-    //   11: invokevirtual 125	com/tencent/mtt/hippy/modules/nativemodules/audio/a:c	()V
+    //   8: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   11: invokevirtual 134	com/tencent/mtt/hippy/modules/nativemodules/audio/a:c	()V
     //   14: aload_0
-    //   15: ldc 127
-    //   17: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   15: ldc 136
+    //   17: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   20: return
     //   21: astore_1
     //   22: goto +11 -> 33
     //   25: astore_1
     //   26: aload_1
-    //   27: invokevirtual 60	java/lang/Exception:printStackTrace	()V
+    //   27: invokevirtual 64	java/lang/Exception:printStackTrace	()V
     //   30: goto -16 -> 14
     //   33: aload_0
-    //   34: ldc 127
-    //   36: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   34: ldc 136
+    //   36: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   39: goto +5 -> 44
     //   42: aload_1
     //   43: athrow
@@ -160,8 +167,11 @@ public class AudioPlayerModule
     {
       paramString = Uri.parse(paramString);
       stop();
-      this.b = a(this.a.getGlobalConfigs().getContext(), paramString, new AudioPlayerModule.1(this));
-      this.b.a(new AudioPlayerModule.2(this));
+      this.c = a(this.b.getGlobalConfigs().getContext(), paramString, new AudioPlayerModule.1(this));
+      if ((!a) && (this.c == null)) {
+        throw new AssertionError();
+      }
+      this.c.a(new AudioPlayerModule.2(this));
       paramPromise.resolve("OK");
       return;
     }
@@ -178,24 +188,24 @@ public class AudioPlayerModule
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   1: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
     //   4: ifnull +10 -> 14
     //   7: aload_0
-    //   8: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
-    //   11: invokevirtual 170	com/tencent/mtt/hippy/modules/nativemodules/audio/a:d	()V
+    //   8: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   11: invokevirtual 182	com/tencent/mtt/hippy/modules/nativemodules/audio/a:d	()V
     //   14: aload_0
-    //   15: ldc 43
-    //   17: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   15: ldc 47
+    //   17: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   20: return
     //   21: astore_1
     //   22: goto +11 -> 33
     //   25: astore_1
     //   26: aload_1
-    //   27: invokevirtual 60	java/lang/Exception:printStackTrace	()V
+    //   27: invokevirtual 64	java/lang/Exception:printStackTrace	()V
     //   30: goto -16 -> 14
     //   33: aload_0
-    //   34: ldc 43
-    //   36: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   34: ldc 47
+    //   36: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   39: goto +5 -> 44
     //   42: aload_1
     //   43: athrow
@@ -218,25 +228,25 @@ public class AudioPlayerModule
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   1: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
     //   4: ifnull +11 -> 15
     //   7: aload_0
-    //   8: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   8: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
     //   11: iload_1
-    //   12: invokevirtual 172	com/tencent/mtt/hippy/modules/nativemodules/audio/a:a	(I)V
+    //   12: invokevirtual 184	com/tencent/mtt/hippy/modules/nativemodules/audio/a:a	(I)V
     //   15: aload_0
-    //   16: ldc 43
-    //   18: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   16: ldc 47
+    //   18: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   21: return
     //   22: astore_2
     //   23: goto +11 -> 34
     //   26: astore_2
     //   27: aload_2
-    //   28: invokevirtual 60	java/lang/Exception:printStackTrace	()V
+    //   28: invokevirtual 64	java/lang/Exception:printStackTrace	()V
     //   31: goto -16 -> 15
     //   34: aload_0
-    //   35: ldc 43
-    //   37: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   35: ldc 47
+    //   37: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   40: goto +5 -> 45
     //   43: aload_2
     //   44: athrow
@@ -260,27 +270,27 @@ public class AudioPlayerModule
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   1: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
     //   4: ifnull +17 -> 21
     //   7: aload_0
-    //   8: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
-    //   11: invokevirtual 174	com/tencent/mtt/hippy/modules/nativemodules/audio/a:e	()V
+    //   8: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   11: invokevirtual 187	com/tencent/mtt/hippy/modules/nativemodules/audio/a:e	()V
     //   14: aload_0
-    //   15: getfield 37	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:b	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
-    //   18: invokevirtual 177	com/tencent/mtt/hippy/modules/nativemodules/audio/a:f	()V
+    //   15: getfield 42	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:c	Lcom/tencent/mtt/hippy/modules/nativemodules/audio/a;
+    //   18: invokevirtual 190	com/tencent/mtt/hippy/modules/nativemodules/audio/a:f	()V
     //   21: aload_0
-    //   22: ldc 26
-    //   24: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   22: ldc 32
+    //   24: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   27: return
     //   28: astore_1
     //   29: goto +11 -> 40
     //   32: astore_1
     //   33: aload_1
-    //   34: invokevirtual 60	java/lang/Exception:printStackTrace	()V
+    //   34: invokevirtual 64	java/lang/Exception:printStackTrace	()V
     //   37: goto -16 -> 21
     //   40: aload_0
-    //   41: ldc 26
-    //   43: putfield 28	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:e	Ljava/lang/String;
+    //   41: ldc 32
+    //   43: putfield 34	com/tencent/mtt/hippy/modules/nativemodules/audio/AudioPlayerModule:d	Ljava/lang/String;
     //   46: goto +5 -> 51
     //   49: aload_1
     //   50: athrow
@@ -299,7 +309,7 @@ public class AudioPlayerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.audio.AudioPlayerModule
  * JD-Core Version:    0.7.0.1
  */

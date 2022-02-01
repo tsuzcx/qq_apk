@@ -17,7 +17,7 @@ public final class RichEditTextEvent$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.RichEditTextEvent.Companion
  * JD-Core Version:    0.7.0.1
  */

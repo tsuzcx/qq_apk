@@ -21,31 +21,31 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class qfileJumpActivity
   extends BaseActivity
 {
-  protected int a;
   protected String a;
+  protected int b;
   
-  private int a()
+  private int d()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if ((i != 0) && (i != 1)) {
       return -1;
     }
-    if ((!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    if ((!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.a)) && (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.a))) {
       return -1;
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.b == 0)
     {
-      if (!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.a)) {
         return -2;
       }
     }
-    else if (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.a)) {
       return -2;
     }
     return 0;
   }
   
-  private void d()
+  private void e()
   {
     ThreadManagerV2.getUIHandlerV2().postDelayed(new qfileJumpActivity.1(this), 10L);
   }
@@ -81,7 +81,7 @@ public class qfileJumpActivity
     }
     if (QFileAssistantUtils.a(this.app))
     {
-      d();
+      e();
       return;
     }
     b();
@@ -137,13 +137,13 @@ public class qfileJumpActivity
         super.finish();
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+      this.a = AppConstants.DATALINE_PC_UIN;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("targetUin");
-        this.jdField_a_of_type_Int = paramBundle.getIntExtra("device_type", -1);
-        int i = a();
+        this.a = paramBundle.getStringExtra("targetUin");
+        this.b = paramBundle.getIntExtra("device_type", -1);
+        int i = d();
         Object localObject;
         if (i != 0)
         {
@@ -151,10 +151,10 @@ public class qfileJumpActivity
           ((StringBuilder)localObject).append("targetparam no match, modify it ");
           ((StringBuilder)localObject).append(i);
           QLog.w("qfileJump", 1, ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-          paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
-          paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
+          this.b = 0;
+          this.a = AppConstants.DATALINE_PC_UIN;
+          paramBundle.putExtra("device_type", this.b);
+          paramBundle.putExtra("targetUin", this.a);
         }
         if ((!TextUtils.isEmpty(paramBundle.getAction())) && ((paramBundle.getAction().equals("android.intent.action.SEND")) || (paramBundle.getAction().equals("android.intent.action.SEND_MULTIPLE"))))
         {
@@ -223,7 +223,7 @@ public class qfileJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpActivity
  * JD-Core Version:    0.7.0.1
  */

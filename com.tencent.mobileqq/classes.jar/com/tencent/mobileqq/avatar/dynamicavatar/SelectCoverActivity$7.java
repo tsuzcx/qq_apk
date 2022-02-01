@@ -11,21 +11,21 @@ class SelectCoverActivity$7
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.a.setAlpha(1.0F);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    this.c.o = null;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.a.setAlpha(1.0F);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    this.c.o = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class PublicAccountH5AbilityPluginImpl$4
     if (paramEIPCResult.data != null)
     {
       paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
+      this.b.callJs(this.a, new String[] { paramEIPCResult });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.4
  * JD-Core Version:    0.7.0.1
  */

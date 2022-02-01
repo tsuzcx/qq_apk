@@ -15,9 +15,9 @@ class HiddenChatFragment$3
   {
     if ((paramInt2 == 512) && (paramBoolean))
     {
-      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
+      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString1);
       TroopStatusUtil.a(HiddenChatFragment.a(this.a), paramString2);
-      this.a.a();
+      this.a.b();
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
@@ -30,7 +30,7 @@ class HiddenChatFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.3
  * JD-Core Version:    0.7.0.1
  */

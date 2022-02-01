@@ -84,46 +84,40 @@ public class HippyImageViewController
     paramHippyImageView.setNinePatchCoordinate(false, j, i, paramHippyMap.getInt("right"), k);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="defaultSource")
+  @HippyControllerProps(defaultType="string", name="defaultSource")
   public void setDefaultSource(HippyImageView paramHippyImageView, String paramString)
   {
     paramHippyImageView.setHippyViewDefaultSource(getInnerPath((HippyInstanceContext)paramHippyImageView.getContext(), paramString));
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="imageType")
+  @HippyControllerProps(defaultType="string", name="imageType")
   public void setImageType(HippyImageView paramHippyImageView, String paramString)
   {
     paramHippyImageView.setImageType(paramString);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onError")
+  @HippyControllerProps(defaultType="boolean", name="onError")
   public void setOnError(HippyImageView paramHippyImageView, boolean paramBoolean)
   {
     paramHippyImageView.setImageEventEnable(HippyImageView.ImageEvent.ONERROR.ordinal(), paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLoad")
+  @HippyControllerProps(defaultType="boolean", name="onLoad")
   public void setOnLoad(HippyImageView paramHippyImageView, boolean paramBoolean)
   {
     paramHippyImageView.setImageEventEnable(HippyImageView.ImageEvent.ONLOAD.ordinal(), paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLoadEnd")
+  @HippyControllerProps(defaultType="boolean", name="onLoadEnd")
   public void setOnLoadEnd(HippyImageView paramHippyImageView, boolean paramBoolean)
   {
     paramHippyImageView.setImageEventEnable(HippyImageView.ImageEvent.ONLOAD_END.ordinal(), paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLoadStart")
+  @HippyControllerProps(defaultType="boolean", name="onLoadStart")
   public void setOnLoadStart(HippyImageView paramHippyImageView, boolean paramBoolean)
   {
     paramHippyImageView.setImageEventEnable(HippyImageView.ImageEvent.ONLOAD_START.ordinal(), paramBoolean);
-  }
-  
-  @HippyControllerProps(defaultNumber=-1.0D, defaultType="number", name="repeatCount")
-  public void setRepeatCount(HippyImageView paramHippyImageView, int paramInt)
-  {
-    paramHippyImageView.setRepeatCount(paramInt);
   }
   
   @HippyControllerProps(defaultString="fitXY", defaultType="string", name="resizeMode")
@@ -156,7 +150,7 @@ public class HippyImageViewController
     paramHippyImageView.setTintColor(paramInt);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="src")
+  @HippyControllerProps(defaultType="string", name="src")
   public void setUrl(HippyImageView paramHippyImageView, String paramString)
   {
     paramHippyImageView.setUrl(getInnerPath((HippyInstanceContext)paramHippyImageView.getContext(), paramString));
@@ -164,7 +158,7 @@ public class HippyImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageViewController
  * JD-Core Version:    0.7.0.1
  */

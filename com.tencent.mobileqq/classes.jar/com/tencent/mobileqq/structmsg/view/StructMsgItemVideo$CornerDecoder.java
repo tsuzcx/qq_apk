@@ -8,15 +8,15 @@ import com.tencent.mobileqq.utils.ImageUtil;
 class StructMsgItemVideo$CornerDecoder
   extends URLDrawableDecodeHandler
 {
-  private int jdField_a_of_type_Int = 0;
-  private int b = 0;
-  private int c = 0;
+  private int A = 0;
+  private int B = 0;
+  private int C = 0;
   
   public StructMsgItemVideo$CornerDecoder(StructMsgItemVideo paramStructMsgItemVideo, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.A = paramInt1;
+    this.B = paramInt2;
+    this.C = paramInt3;
   }
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
@@ -24,20 +24,20 @@ class StructMsgItemVideo$CornerDecoder
     if (paramBitmap == null) {
       return null;
     }
-    int j = this.c;
+    int j = this.C;
     int k = paramBitmap.getWidth();
     if (paramBitmap.getHeight() != 0) {
       i = paramBitmap.getHeight();
     } else {
-      i = this.c;
+      i = this.C;
     }
     int i = j * k / i;
-    return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+    return ImageUtil.b(paramBitmap, this.A, i, this.C);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.CornerDecoder
  * JD-Core Version:    0.7.0.1
  */

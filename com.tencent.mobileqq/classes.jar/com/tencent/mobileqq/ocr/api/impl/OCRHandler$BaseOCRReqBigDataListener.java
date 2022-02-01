@@ -10,15 +10,15 @@ import com.tencent.qphone.base.util.QLog;
 class OCRHandler$BaseOCRReqBigDataListener
   implements INetEngineListener
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private Intent b;
+  private byte[] c;
+  private String d;
   
   public OCRHandler$BaseOCRReqBigDataListener(OCRHandler paramOCRHandler, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramIntent;
+    this.c = paramArrayOfByte;
+    this.d = paramString;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -33,7 +33,7 @@ class OCRHandler$BaseOCRReqBigDataListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.OCRHandler.BaseOCRReqBigDataListener
  * JD-Core Version:    0.7.0.1
  */

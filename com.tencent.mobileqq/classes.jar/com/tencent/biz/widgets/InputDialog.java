@@ -24,8 +24,8 @@ public class InputDialog
   
   public static InputDialog a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    InputDialog localInputDialog = new InputDialog(paramContext, 2131756189);
-    localInputDialog.setContentView(2131558978);
+    InputDialog localInputDialog = new InputDialog(paramContext, 2131953338);
+    localInputDialog.setContentView(2131624611);
     localInputDialog.setTitle(paramString1);
     localInputDialog.setMessage(paramString2);
     localInputDialog.a(paramInt1, paramOnClickListener2);
@@ -34,7 +34,7 @@ public class InputDialog
     paramString1 = new EditText(paramContext);
     paramString1.setSingleLine();
     paramString1.setFilters(new InputFilter[] { new InputFilter.LengthFilter(120) });
-    paramString1.setBackgroundResource(2130843884);
+    paramString1.setBackgroundResource(2130844839);
     paramString1.setPadding(20, 0, 20, 0);
     paramString1.setHeight(AIOUtils.b(37.0F, paramContext.getResources()));
     paramString1.setTextSize(1, 14.0F);
@@ -117,7 +117,7 @@ public class InputDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.InputDialog
  * JD-Core Version:    0.7.0.1
  */

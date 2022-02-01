@@ -11,12 +11,12 @@ class TagAdapter$TagViewHolder
   
   public TagAdapter$TagViewHolder(View paramView)
   {
-    this.a = ((TextView)paramView.findViewById(2131378259));
+    this.a = ((TextView)paramView.findViewById(2131446778));
   }
   
   public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    if (TextUtils.isEmpty(paramTagInfoBase.a))
+    if (TextUtils.isEmpty(paramTagInfoBase.b))
     {
       this.a.setVisibility(8);
       return;

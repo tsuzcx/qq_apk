@@ -46,7 +46,7 @@ public class ArtFilterBridgeActivity
     localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
     boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
     if (bool2) {
-      localBundle.putString("extra_publish_text", HardCodeUtil.a(2131700974));
+      localBundle.putString("extra_publish_text", HardCodeUtil.a(2131898996));
     }
     if (localIntent.hasExtra("troop_uin")) {
       localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -138,7 +138,7 @@ public class ArtFilterBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

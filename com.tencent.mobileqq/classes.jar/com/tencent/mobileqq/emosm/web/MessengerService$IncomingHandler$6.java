@@ -31,13 +31,13 @@ class MessengerService$IncomingHandler$6
       paramWUserSigInfo.putBoolean("allow_set", bool1);
       paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
     }
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.a.putBundle("response", paramWUserSigInfo);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.6
  * JD-Core Version:    0.7.0.1
  */

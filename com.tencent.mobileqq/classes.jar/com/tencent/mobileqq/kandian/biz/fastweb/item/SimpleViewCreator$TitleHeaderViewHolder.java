@@ -10,47 +10,47 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 class SimpleViewCreator$TitleHeaderViewHolder
   extends BaseItemViewHolder
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
+  private TextView b;
   private View c;
+  private View d;
   
   public SimpleViewCreator$TitleHeaderViewHolder(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379930));
-    this.b = paramView.findViewById(2131365768);
-    this.c = paramView.findViewById(2131377743);
+    this.b = ((TextView)paramView.findViewById(2131448814));
+    this.c = paramView.findViewById(2131432025);
+    this.d = paramView.findViewById(2131446201);
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    if (paramBaseData2.u == 7)
+    if (paramBaseData2.aP == 7)
     {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
-      this.b.setVisibility(0);
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).a;
+      this.c.setVisibility(0);
     }
-    else if (paramBaseData2.u == 13)
+    else if (paramBaseData2.aP == 13)
     {
-      paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
-      this.b.setVisibility(8);
+      paramBaseData1 = ((CommentHeaderData)paramBaseData2).a;
+      this.c.setVisibility(8);
     }
     else
     {
       paramBaseData1 = "";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramBaseData2.u == 7) && (((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean))
+    this.b.setText(paramBaseData1);
+    this.b.setVisibility(8);
+    if ((paramBaseData2.aP == 7) && (((RecommendTitleData)paramBaseData2).b))
     {
-      this.c.setVisibility(8);
+      this.d.setVisibility(8);
       return;
     }
-    this.c.setVisibility(0);
+    this.d.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.SimpleViewCreator.TitleHeaderViewHolder
  * JD-Core Version:    0.7.0.1
  */

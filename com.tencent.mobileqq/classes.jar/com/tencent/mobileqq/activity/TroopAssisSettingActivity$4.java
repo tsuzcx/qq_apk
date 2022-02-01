@@ -17,7 +17,7 @@ class TroopAssisSettingActivity$4
 {
   TroopAssisSettingActivity$4(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = 3;
     if (paramInt != 0)
@@ -41,28 +41,28 @@ class TroopAssisSettingActivity$4
     else {
       i = 1;
     }
-    if (this.jdField_a_of_type_Int != i) {
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity()))
+    if (this.a != i) {
+      if (NetworkUtil.isNetSupport(this.d.getActivity()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService.getMapUploading().clear();
-        TroopAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, i);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService.getMapRequest().put(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, Boolean.valueOf(true));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
-        TroopAssistantManager.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, String.valueOf(i - 1), "", "");
+        this.d.f.getMapUploading().clear();
+        TroopAssistantManager.a().a(this.d.app, this.b.troopuin, i);
+        this.d.f.getMapRequest().put(this.b.troopuin, Boolean.valueOf(true));
+        this.d.b.notifyDataSetChanged();
+        this.d.b();
+        TroopAssistantManager.a().f(this.d.app, this.b.troopuin);
+        ReportController.b(this.d.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.b.troopuin, String.valueOf(i - 1), "", "");
       }
       else
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131694424, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
+        QQToast.makeText(this.d.getActivity(), 2131892104, 0).show(this.d.getTitleBarHeight());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

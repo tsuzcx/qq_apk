@@ -10,22 +10,22 @@ import com.tencent.webbundle.sdk.WebBundleClient;
 public class WebBundleFragment
   extends QQComicFragment
 {
-  private WebBundleClient jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient = null;
-  private String jdField_a_of_type_JavaLangString = "";
+  private WebBundleClient a = null;
   private String b = "";
+  private String c = "";
   
   public WebViewWrapper createWebViewWrapper(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWebbundleSdkWebBundleClient;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      localObject = ((WebBundleClient)localObject).getValidWebView(super.getQBaseActivity(), this.b);
+      localObject = ((WebBundleClient)localObject).getValidWebView(super.getQBaseActivity(), this.c);
       if ((localObject instanceof TouchWebView))
       {
-        WebBundleReportUtils.a(this.jdField_a_of_type_JavaLangString, true, WebBundleReportUtils.jdField_a_of_type_JavaLangString);
+        WebBundleReportUtils.a(this.b, true, WebBundleReportUtils.a);
         return new WebViewWrapperWithActivity(getAppRuntime(), super.getActivity(), this.webViewSurface, this.intent, (TouchWebView)localObject);
       }
-      WebBundleReportUtils.a(this.jdField_a_of_type_JavaLangString, false, WebBundleReportUtils.d);
+      WebBundleReportUtils.a(this.b, false, WebBundleReportUtils.d);
     }
     return null;
   }
@@ -37,7 +37,7 @@ public class WebBundleFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.webbundle.WebBundleFragment
  * JD-Core Version:    0.7.0.1
  */

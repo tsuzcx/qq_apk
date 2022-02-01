@@ -21,26 +21,26 @@ public abstract class FileMsgBackupHandler
 {
   public static final String a;
   public static final String b;
-  protected BaseQQAppInterface a;
+  protected BaseQQAppInterface c;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(MsgBackupConstant.a);
     localStringBuilder.append("fileThumb/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(MsgBackupConstant.a);
     localStringBuilder.append("file/");
     b = localStringBuilder.toString();
   }
   
   public FileMsgBackupHandler(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.c = paramBaseQQAppInterface;
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
     if (QLog.isDebugVersion()) {
       QLog.i("FileMsgBackupHandler<QFile>", 1, paramString);
@@ -87,7 +87,7 @@ public abstract class FileMsgBackupHandler
     if (FileUtils.fileExistsAndNotEmpty(str)) {
       paramString2 = localIFileManagerUtil.recreateFilePath(str);
     }
-    if (a(paramString1, paramString2))
+    if (b(paramString1, paramString2))
     {
       if (QLog.isColorLevel())
       {
@@ -122,7 +122,7 @@ public abstract class FileMsgBackupHandler
           localStringBuilder.append("decodeResExtInfo senderUin[");
           localStringBuilder.append((String)localObject);
           localStringBuilder.append("]");
-          a(localStringBuilder.toString());
+          b(localStringBuilder.toString());
           localHashMap.put("uint64_sender_uin", localObject);
           if (paramString.has("uint64_receiver_uin"))
           {
@@ -131,7 +131,7 @@ public abstract class FileMsgBackupHandler
             localStringBuilder.append("decodeResExtInfo recvUin[");
             localStringBuilder.append((String)localObject);
             localStringBuilder.append("]");
-            a(localStringBuilder.toString());
+            b(localStringBuilder.toString());
             localHashMap.put("uint64_receiver_uin", localObject);
           }
           int i;
@@ -142,7 +142,7 @@ public abstract class FileMsgBackupHandler
             ((StringBuilder)localObject).append("decodeResExtInfo peerType[");
             ((StringBuilder)localObject).append(i);
             ((StringBuilder)localObject).append("]");
-            a(((StringBuilder)localObject).toString());
+            b(((StringBuilder)localObject).toString());
             localHashMap.put("uint32_file_type", String.valueOf(i));
           }
           if (paramString.has("bytes_file_uuid"))
@@ -152,7 +152,7 @@ public abstract class FileMsgBackupHandler
             localStringBuilder.append("decodeResExtInfo fileUuid[");
             localStringBuilder.append((String)localObject);
             localStringBuilder.append("]");
-            a(localStringBuilder.toString());
+            b(localStringBuilder.toString());
             localHashMap.put("bytes_file_uuid", localObject);
           }
           if (paramString.has("str_file_name"))
@@ -162,7 +162,7 @@ public abstract class FileMsgBackupHandler
             localStringBuilder.append("decodeResExtInfo fileName[");
             localStringBuilder.append((String)localObject);
             localStringBuilder.append("]");
-            a(localStringBuilder.toString());
+            b(localStringBuilder.toString());
             localHashMap.put("str_file_name", localObject);
           }
           if (paramString.has("uint64_file_size"))
@@ -172,7 +172,7 @@ public abstract class FileMsgBackupHandler
             ((StringBuilder)localObject).append("decodeResExtInfo fileSize[");
             ((StringBuilder)localObject).append(l);
             ((StringBuilder)localObject).append("]");
-            a(((StringBuilder)localObject).toString());
+            b(((StringBuilder)localObject).toString());
             localHashMap.put("uint64_file_size", String.valueOf(l));
           }
           if (paramString.has("md5"))
@@ -184,7 +184,7 @@ public abstract class FileMsgBackupHandler
               localStringBuilder.append("decodeResExtInfo fileMd5[");
               localStringBuilder.append((String)localObject);
               localStringBuilder.append("]");
-              a(localStringBuilder.toString());
+              b(localStringBuilder.toString());
               localHashMap.put("md5", localObject);
             }
           }
@@ -197,7 +197,7 @@ public abstract class FileMsgBackupHandler
               localStringBuilder.append("decodeResExtInfo file10Md5[");
               localStringBuilder.append((String)localObject);
               localStringBuilder.append("]");
-              a(localStringBuilder.toString());
+              b(localStringBuilder.toString());
               localHashMap.put("md510", localObject);
             }
           }
@@ -210,7 +210,7 @@ public abstract class FileMsgBackupHandler
               localStringBuilder.append("decodeResExtInfo sha[");
               localStringBuilder.append((String)localObject);
               localStringBuilder.append("]");
-              a(localStringBuilder.toString());
+              b(localStringBuilder.toString());
               localHashMap.put("sha", localObject);
             }
           }
@@ -223,7 +223,7 @@ public abstract class FileMsgBackupHandler
               localStringBuilder.append("decodeResExtInfo sha3[");
               localStringBuilder.append((String)localObject);
               localStringBuilder.append("]");
-              a(localStringBuilder.toString());
+              b(localStringBuilder.toString());
               localHashMap.put("sha3", localObject);
             }
           }
@@ -236,7 +236,7 @@ public abstract class FileMsgBackupHandler
               ((StringBuilder)localObject).append("decodeResExtInfo imgWidth[");
               ((StringBuilder)localObject).append(i);
               ((StringBuilder)localObject).append("]");
-              a(((StringBuilder)localObject).toString());
+              b(((StringBuilder)localObject).toString());
               localHashMap.put("uint32_img_width", String.valueOf(i));
             }
           }
@@ -249,7 +249,7 @@ public abstract class FileMsgBackupHandler
               paramString.append("decodeResExtInfo imgHeight[");
               paramString.append(i);
               paramString.append("]");
-              a(paramString.toString());
+              b(paramString.toString());
               localHashMap.put("uint32_img_height", String.valueOf(i));
             }
           }
@@ -312,29 +312,6 @@ public abstract class FileMsgBackupHandler
   
   public abstract boolean a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
   
-  protected boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (paramMsgBackupResEntity == null) {
-      return false;
-    }
-    return (paramMsgBackupResEntity.msgType == 5) && ((paramMsgBackupResEntity.msgSubType == 12) || (paramMsgBackupResEntity.msgSubType == 11));
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString1))
-    {
-      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. tempPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. targetPath is null");
-      return false;
-    }
-    return FileUtils.moveFile(paramString1, paramString2);
-  }
-  
   public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
   
   protected boolean b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
@@ -359,10 +336,33 @@ public abstract class FileMsgBackupHandler
     }
     return true;
   }
+  
+  protected boolean b(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if (paramMsgBackupResEntity == null) {
+      return false;
+    }
+    return (paramMsgBackupResEntity.msgType == 5) && ((paramMsgBackupResEntity.msgSubType == 12) || (paramMsgBackupResEntity.msgSubType == 11));
+  }
+  
+  protected boolean b(String paramString1, String paramString2)
+  {
+    if (!FileUtils.fileExistsAndNotEmpty(paramString1))
+    {
+      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. tempPath is null");
+      return false;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. targetPath is null");
+      return false;
+    }
+    return FileUtils.moveFile(paramString1, paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.msgbackup.FileMsgBackupHandler
  * JD-Core Version:    0.7.0.1
  */

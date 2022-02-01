@@ -44,10 +44,10 @@ import tencent.im.oidb.oidb_0xd84.RspBody;
 public class IntimatePlayTogetherMiniGameCardView
   extends FrameLayout
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RecyclerView a;
+  private TextView b;
+  private ImageView c;
+  private LinearLayout d;
   
   public IntimatePlayTogetherMiniGameCardView(@NonNull Context paramContext)
   {
@@ -69,11 +69,11 @@ public class IntimatePlayTogetherMiniGameCardView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    LayoutInflater.from(paramContext).inflate(2131559273, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131367351));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367354));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367352));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367355));
+    LayoutInflater.from(paramContext).inflate(2131625194, this);
+    this.a = ((RecyclerView)findViewById(2131433808));
+    this.b = ((TextView)findViewById(2131433811));
+    this.c = ((ImageView)findViewById(2131433809));
+    this.d = ((LinearLayout)findViewById(2131433812));
     setVisibility(8);
   }
   
@@ -81,7 +81,7 @@ public class IntimatePlayTogetherMiniGameCardView
   {
     if ((paramView instanceof ViewGroup))
     {
-      paramView = (IntimatePlayTogetherMiniGameCardView)((ViewGroup)paramView).findViewById(2131367350);
+      paramView = (IntimatePlayTogetherMiniGameCardView)((ViewGroup)paramView).findViewById(2131433807);
       if (paramView != null) {
         paramView.a(paramIntimateInfo);
       }
@@ -128,27 +128,27 @@ public class IntimatePlayTogetherMiniGameCardView
         }
         localObject2 = new IntimatePlayTogetherMiniGameCardView.1(this, (MISC.StGetFriendPlayListV2Rsp)localObject1);
         setVisibility(0);
-        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(((MISC.StGetFriendPlayListV2Rsp)localObject1).total.get()));
+        if (this.b != null) {
+          this.b.setText(String.valueOf(((MISC.StGetFriendPlayListV2Rsp)localObject1).total.get()));
         }
         if ((((MISC.StGetFriendPlayListV2Rsp)localObject1).total.get() < 2) || (TextUtils.isEmpty(((MISC.StGetFriendPlayListV2Rsp)localObject1).moreJumpLink.get()))) {
           break label500;
         }
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+        if (this.c != null)
         {
-          localObject3 = this.jdField_a_of_type_AndroidWidgetImageView;
+          localObject3 = this.c;
           if (i == 0) {
             break label505;
           }
           j = 0;
           ((ImageView)localObject3).setVisibility(j);
         }
-        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+          this.a.setLayoutManager(new LinearLayoutManager(getContext()));
           paramIntimateInfo = new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter(((MISC.StGetFriendPlayListV2Rsp)localObject1).appPlayingInfos.get(), paramIntimateInfo.friendUin, (View.OnClickListener)localObject2);
           paramIntimateInfo.b(2064);
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(paramIntimateInfo);
+          this.a.setAdapter(paramIntimateInfo);
         }
         paramIntimateInfo = ((MISC.StAppPlayingInfo)((MISC.StGetFriendPlayListV2Rsp)localObject1).appPlayingInfos.get().get(0)).appMetaInfo;
         localObject3 = new SimpleMiniAppConfig(SimpleMiniAppConfig.SimpleMiniAppInfo.from(paramIntimateInfo));
@@ -212,7 +212,7 @@ public class IntimatePlayTogetherMiniGameCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView
  * JD-Core Version:    0.7.0.1
  */

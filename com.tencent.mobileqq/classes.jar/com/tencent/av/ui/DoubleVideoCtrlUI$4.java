@@ -12,8 +12,8 @@ class DoubleVideoCtrlUI$4
   public void run()
   {
     ChildLockSign localChildLockSign;
-    if ((this.this$0.a != null) && (this.this$0.a.get() != null)) {
-      localChildLockSign = (ChildLockSign)((Activity)this.this$0.a.get()).findViewById(2131373366);
+    if ((this.this$0.ak != null) && (this.this$0.ak.get() != null)) {
+      localChildLockSign = (ChildLockSign)((Activity)this.this$0.ak.get()).findViewById(2131441039);
     } else {
       localChildLockSign = null;
     }

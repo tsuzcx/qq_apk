@@ -18,13 +18,13 @@ class DailyDynamicHeaderViewController$8$1
       QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
       return;
     }
-    DailyDynamicHeaderViewController.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    DailyDynamicHeaderViewController.a(this.a.a, this.a.b);
     ReadInJoyUtils.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderViewController.8.1
  * JD-Core Version:    0.7.0.1
  */

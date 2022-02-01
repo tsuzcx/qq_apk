@@ -28,7 +28,7 @@ class TraeAudioManager$headsetSwitchThread
       if (!TraeAudioManager.enableDeviceSwitchFlag)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "connect headset: disableDeviceSwitchFlag");
+          QLog.w("TraeAudioManager", 2, "connect headset: disableDeviceSwitchFlag");
         }
         return;
       }
@@ -58,7 +58,7 @@ class TraeAudioManager$headsetSwitchThread
         continue;
         return;
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "connect headset: do nothing");
+          QLog.w("TraeAudioManager", 2, "connect headset: do nothing");
         }
         return;
       }
@@ -76,7 +76,7 @@ class TraeAudioManager$headsetSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.headsetSwitchThread
  * JD-Core Version:    0.7.0.1
  */

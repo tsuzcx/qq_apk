@@ -8,11 +8,11 @@ import javax.annotation.concurrent.GuardedBy;
 class SingleThreadExecutor
   extends ThreadManagerExecutor
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
   @GuardedBy("lock")
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private final Queue<Runnable> a = new LinkedList();
   @GuardedBy("lock")
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private final Object c = new Object();
   
   SingleThreadExecutor(int paramInt)
   {
@@ -22,16 +22,16 @@ class SingleThreadExecutor
   public void execute(@NonNull Runnable arg1)
   {
     SingleThreadExecutor.Task localTask = new SingleThreadExecutor.Task(this, ???, null);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.b)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         super.execute(localTask);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilQueue.offer(localTask);
+        this.a.offer(localTask);
       }
       return;
     }
@@ -39,7 +39,7 @@ class SingleThreadExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

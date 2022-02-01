@@ -40,7 +40,7 @@ public class FileVideoOnlinePlayerFragment
       {
         if (ThemeUtil.isInNightMode(localPublicFragmentActivity.app))
         {
-          if ((!SystemUtil.b()) && (!SystemUtil.d()))
+          if ((!SystemUtil.d()) && (!SystemUtil.g()))
           {
             localSystemBarCompact.setStatusBarColor(0);
             return;
@@ -49,13 +49,13 @@ public class FileVideoOnlinePlayerFragment
           localSystemBarCompact.setStatusBarDarkMode(true);
           return;
         }
-        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
         {
           localBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
           localSystemBarCompact.setStatusBarColor(0);
           return;
         }
-        if (!SystemUtil.d())
+        if (!SystemUtil.g())
         {
           localSystemBarCompact.setStatusBarColor(0);
           return;
@@ -68,7 +68,7 @@ public class FileVideoOnlinePlayerFragment
   
   protected int getContentLayoutId()
   {
-    return 2131560819;
+    return 2131627077;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -100,7 +100,7 @@ public class FileVideoOnlinePlayerFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376810);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131445139);
     Object localObject = getBaseActivity().getIntent();
     String str1 = ((Intent)localObject).getStringExtra("fileid");
     String str2 = ((Intent)localObject).getStringExtra("url");
@@ -114,7 +114,7 @@ public class FileVideoOnlinePlayerFragment
     localVideoPlayParam.mIsLocal = false;
     localVideoPlayParam.mIsLoop = false;
     localVideoPlayParam.mSceneId = 109;
-    this.a = ((QQVideoPlayView)QQVideoViewFactory.a(getBaseActivity(), 109L, localVideoPlayParam, null));
+    this.a = ((QQVideoPlayView)QQVideoViewFactory.createQQVideoPlayView(getBaseActivity(), 109L, localVideoPlayParam, null));
     localRelativeLayout.addView(this.a, -1, -1);
     this.a.play();
     super.onViewCreated(paramView, paramBundle);
@@ -122,7 +122,7 @@ public class FileVideoOnlinePlayerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileVideoOnlinePlayerFragment
  * JD-Core Version:    0.7.0.1
  */

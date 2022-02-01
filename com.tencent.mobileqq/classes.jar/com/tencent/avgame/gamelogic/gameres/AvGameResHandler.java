@@ -13,7 +13,31 @@ import mqq.app.MobileQQ;
 public class AvGameResHandler
   extends ResDownloadHandler.DefaultRDHandler
 {
-  private static String a()
+  public static String a(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append("star/");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
+  }
+  
+  public static void a()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append("star/");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if ((localFile.exists()) && (localFile.listFiles() != null) && (localFile.listFiles().length >= 100))
+    {
+      FileUtils.deleteDirectory((String)localObject);
+      QLog.d("AvGameResHandler", 1, "shouldClearStarEffectVideoFiles [delete star video effect files]");
+    }
+  }
+  
+  private static String b()
   {
     if (SystemUtil.a()) {
       localObject1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);
@@ -39,35 +63,11 @@ public class AvGameResHandler
     return ((StringBuilder)localObject1).toString();
   }
   
-  public static String a(String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append("star/");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
-  }
-  
-  public static void a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
-    ((StringBuilder)localObject).append("star/");
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if ((localFile.exists()) && (localFile.listFiles() != null) && (localFile.listFiles().length >= 100))
-    {
-      FileUtils.deleteDirectory((String)localObject);
-      QLog.d("AvGameResHandler", 1, "shouldClearStarEffectVideoFiles [delete star video effect files]");
-    }
-  }
-  
   public String a(IResDownloadManager.DownloadParam paramDownloadParam)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(paramDownloadParam.b);
+    localStringBuilder.append(b());
+    localStringBuilder.append(paramDownloadParam.c);
     localStringBuilder.append(File.separator);
     paramDownloadParam = localStringBuilder.toString();
     if (QLog.isColorLevel())
@@ -82,13 +82,13 @@ public class AvGameResHandler
   
   public boolean a(IResDownloadManager.DownloadParam paramDownloadParam, boolean paramBoolean)
   {
-    paramBoolean = paramDownloadParam.a;
+    paramBoolean = paramDownloadParam.f;
     boolean bool1 = true;
     boolean bool2 = true;
     if (paramBoolean)
     {
       SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("av_game_sp", 4);
-      String str = paramDownloadParam.b;
+      String str = paramDownloadParam.c;
       long l1 = -1L;
       long l3 = localSharedPreferences.getLong(str, -1L);
       paramDownloadParam = new File(a(paramDownloadParam));
@@ -129,17 +129,17 @@ public class AvGameResHandler
   public String b(IResDownloadManager.DownloadParam paramDownloadParam)
   {
     StringBuilder localStringBuilder;
-    if (paramDownloadParam.a)
+    if (paramDownloadParam.f)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a());
-      localStringBuilder.append(paramDownloadParam.b);
+      localStringBuilder.append(b());
+      localStringBuilder.append(paramDownloadParam.c);
       localStringBuilder.append(".end");
       paramDownloadParam = localStringBuilder.toString();
     }
     else
     {
-      paramDownloadParam = a(paramDownloadParam.b, paramDownloadParam.c);
+      paramDownloadParam = a(paramDownloadParam.c, paramDownloadParam.d);
     }
     if (QLog.isColorLevel())
     {

@@ -48,15 +48,10 @@ import org.json.JSONObject;
 
 public class TroopBarPublishUtils
 {
-  public static Editable.Factory a;
-  private static TroopBarPublishUtils.UserInvokeAction a;
   public static String a;
-  public static boolean a = false;
-  
-  static
-  {
-    jdField_a_of_type_AndroidTextEditable$Factory = new TroopBarPublishUtils.4();
-  }
+  public static boolean b = false;
+  public static Editable.Factory c = new TroopBarPublishUtils.4();
+  private static TroopBarPublishUtils.UserInvokeAction d;
   
   public static final Bitmap a(Context paramContext, Bitmap paramBitmap)
   {
@@ -64,24 +59,24 @@ public class TroopBarPublishUtils
     {
       Object localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inScaled = false;
-      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130843376, (BitmapFactory.Options)localObject);
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130844330, (BitmapFactory.Options)localObject);
+      if (TextUtils.isEmpty(a))
       {
-        jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715032);
+        a = HardCodeUtil.a(2131912522);
       }
-      else if (!jdField_a_of_type_JavaLangString.endsWith(HardCodeUtil.a(2131715027)))
+      else if (!a.endsWith(HardCodeUtil.a(2131912518)))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131715024));
-        jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+        ((StringBuilder)localObject).append(a);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131912515));
+        a = ((StringBuilder)localObject).toString();
       }
-      if (jdField_a_of_type_JavaLangString.length() > 12)
+      if (a.length() > 12)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString.substring(0, 11));
+        ((StringBuilder)localObject).append(a.substring(0, 11));
         ((StringBuilder)localObject).append("...");
-        jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+        a = ((StringBuilder)localObject).toString();
       }
       int i = paramBitmap.getWidth();
       double d2 = 750;
@@ -120,7 +115,7 @@ public class TroopBarPublishUtils
       localCanvas.restore();
       localCanvas.save();
       localCanvas.translate(n + k, localCanvas.getHeight() - i - (i - j));
-      localCanvas.drawText(jdField_a_of_type_JavaLangString, 0.0F, 0.0F, (Paint)localObject);
+      localCanvas.drawText(a, 0.0F, 0.0F, (Paint)localObject);
       localCanvas.restore();
       return paramBitmap;
     }
@@ -130,10 +125,10 @@ public class TroopBarPublishUtils
   @TargetApi(11)
   public static SystemAndEmojiEmoticonPanel a(Context paramContext, ViewGroup paramViewGroup, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
-    paramEditText.setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
+    paramEditText.setEditableFactory(c);
     DeviceLib.a(paramContext, paramEditText);
     paramEditText = new SystemAndEmojiEmoticonPanel(paramContext, paramEmoticonCallback);
-    paramEditText.setBackgroundResource(2130837969);
+    paramEditText.setBackgroundResource(2130837993);
     paramEmoticonCallback = new RelativeLayout.LayoutParams(-1, (int)DisplayUtils.a(paramContext, 196.0F));
     int i = (int)DisplayUtils.a(paramContext, 20.0F);
     paramEditText.setPadding(0, i, 0, i);
@@ -168,13 +163,13 @@ public class TroopBarPublishUtils
         for (j = 0; i < paramString.size(); j = k)
         {
           str = (String)paramString.get(i);
-          TroopBarPublishUtils.Pic_list localPic_list = (TroopBarPublishUtils.Pic_list)TroopBarUtils.a.get(str);
+          TroopBarPublishUtils.Pic_list localPic_list = (TroopBarPublishUtils.Pic_list)TroopBarUtils.f.get(str);
           k = j;
           if (localPic_list != null)
           {
             paramArrayList.put(localPic_list.getJsonObject());
             k = j;
-            if (BaseImageUtil.b(str)) {
+            if (BaseImageUtil.c(str)) {
               k = j + 1;
             }
           }
@@ -289,7 +284,7 @@ public class TroopBarPublishUtils
       label31:
       break label31;
     }
-    QQToast.a(paramActivity, HardCodeUtil.a(2131715021), 0).b(50);
+    QQToast.makeText(paramActivity, HardCodeUtil.a(2131912512), 0).show(50);
   }
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
@@ -325,7 +320,7 @@ public class TroopBarPublishUtils
       label161:
       break label161;
     }
-    QQToast.a(paramActivity, HardCodeUtil.a(2131715016), 0).b(50);
+    QQToast.makeText(paramActivity, HardCodeUtil.a(2131912507), 0).show(50);
   }
   
   public static void a(boolean paramBoolean)
@@ -343,10 +338,10 @@ public class TroopBarPublishUtils
     if (TroopFileUtils.a(paramActivity) != 2)
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-      localQQCustomDialog.setTitle(HardCodeUtil.a(2131715020));
+      localQQCustomDialog.setTitle(HardCodeUtil.a(2131912511));
       paramActivity = new TroopBarPublishUtils.6(paramActivity);
-      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131715030), paramActivity);
-      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131715026), paramActivity);
+      localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131898212), paramActivity);
+      localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131912517), paramActivity);
       localQQCustomDialog.show();
       return;
     }
@@ -374,7 +369,7 @@ public class TroopBarPublishUtils
       label148:
       break label148;
     }
-    QQToast.a(paramActivity, HardCodeUtil.a(2131715013), 0).b(50);
+    QQToast.makeText(paramActivity, HardCodeUtil.a(2131912504), 0).show(50);
   }
   
   protected static void c(Activity paramActivity)
@@ -385,10 +380,10 @@ public class TroopBarPublishUtils
       ((Bundle)localObject1).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject1).putString("HOST", " buluo.qq.com");
       localObject2 = new JSONObject(HttpUtil.openUrl(paramActivity, "https://buluo.qq.com/cgi-bin/sbar/other/downloadappurl", "POST", null, (Bundle)localObject1));
-      localObject1 = paramActivity.getString(2131696229);
+      localObject1 = paramActivity.getString(2131893995);
       String str1 = ((JSONObject)localObject2).getJSONObject("result").getJSONObject("android").getString("app_url");
-      Object localObject3 = paramActivity.getString(2131696231);
-      String str2 = paramActivity.getString(2131696228);
+      Object localObject3 = paramActivity.getString(2131893997);
+      String str2 = paramActivity.getString(2131893994);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString(DownloadConstants.b, (String)localObject1);
       ((Bundle)localObject2).putString(DownloadConstants.j, str1);
@@ -416,13 +411,13 @@ public class TroopBarPublishUtils
         ((StringBuilder)localObject2).append(localException.toString());
         QLog.d("TroopBarPublishUtils", 2, ((StringBuilder)localObject2).toString());
       }
-      QQToast.a(paramActivity, HardCodeUtil.a(2131715017), 0).b(50);
+      QQToast.makeText(paramActivity, HardCodeUtil.a(2131912508), 0).show(50);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils
  * JD-Core Version:    0.7.0.1
  */

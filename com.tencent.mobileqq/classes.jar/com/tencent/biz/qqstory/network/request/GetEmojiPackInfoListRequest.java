@@ -15,12 +15,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetEmojiPackInfoListRequest
   extends NetworkRequest<GetEmojiPackInfoListResponse>
 {
-  public final String a;
-  public final int c;
-  public final int d;
-  public final int e;
+  public final String e;
+  public final int f;
+  public final int g;
+  public final int h;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StorySvc.video_emoticon_get");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspGetEmoticonPackList();
     try
@@ -38,16 +43,11 @@ public class GetEmojiPackInfoListRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StorySvc.video_emoticon_get");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
-    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGetEmoticonPackList.count.set(this.c);
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.e));
+    localReqGetEmoticonPackList.count.set(this.f);
     return localReqGetEmoticonPackList.toByteArray();
   }
   
@@ -55,21 +55,21 @@ public class GetEmojiPackInfoListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetEmojiPackInfoListRequest{mCookie='");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mCount=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", latitude=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", longitude=");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetEmojiPackInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

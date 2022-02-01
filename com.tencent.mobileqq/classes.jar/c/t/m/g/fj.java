@@ -13,6 +13,7 @@ import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,7 +46,7 @@ public final class fj
     if (localTelephonyManager != null) {}
     try
     {
-      localCellLocation = localTelephonyManager.getCellLocation();
+      localCellLocation = PhoneInfoMonitor.getCellLocation(localTelephonyManager);
       i = localTelephonyManager.getSimState();
       bool2 = false;
       if (i == 5) {
@@ -66,7 +67,7 @@ public final class fj
     }
     try
     {
-      bool1 = TextUtils.isEmpty(localTelephonyManager.getSubscriberId());
+      bool1 = TextUtils.isEmpty(PhoneInfoMonitor.getSubscriberId(localTelephonyManager));
       j = bool1 ^ true;
     }
     catch (Exception localException)
@@ -237,7 +238,7 @@ public final class fj
   {
     try
     {
-      paramea = paramea.f.getAllCellInfo();
+      paramea = PhoneInfoMonitor.getAllCellInfo(paramea.f);
       if (paramea != null) {
         return paramea;
       }

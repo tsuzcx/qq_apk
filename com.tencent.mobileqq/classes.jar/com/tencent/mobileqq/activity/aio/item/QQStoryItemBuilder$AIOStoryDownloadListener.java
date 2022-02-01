@@ -6,15 +6,15 @@ import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownload
 public class QQStoryItemBuilder$AIOStoryDownloadListener
   implements PlayingListPreloader.OnVideoDownloadListener
 {
-  long jdField_a_of_type_Long;
-  QQStoryItemBuilder.QQStoryMsgHolder jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder;
-  String jdField_a_of_type_JavaLangString;
+  QQStoryItemBuilder.QQStoryMsgHolder b;
+  long c;
+  String d;
   
   public void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder = paramQQStoryMsgHolder;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramQQStoryMsgHolder;
+    this.c = paramLong;
+    this.d = paramString;
   }
   
   public void a(String paramString1, String paramString2, int paramInt) {}
@@ -25,7 +25,7 @@ public class QQStoryItemBuilder$AIOStoryDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.AIOStoryDownloadListener
  * JD-Core Version:    0.7.0.1
  */

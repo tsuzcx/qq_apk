@@ -16,53 +16,42 @@ import java.util.ArrayList;
 public class TroopDataCardRecomTroopListWrapper
   extends RecommendTroopListWrapper
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  TextView b;
+  boolean a = false;
+  long b;
+  int c;
+  TextView d;
+  View e;
+  ArrayList<RecommendTroopItem> f = new ArrayList();
   
   public TroopDataCardRecomTroopListWrapper(AppInterface paramAppInterface, Context paramContext, XListView paramXListView, RecommendTroopListWrapper.RecommendTroopListWrapperCallback paramRecommendTroopListWrapperCallback, String paramString, boolean paramBoolean, TextView paramTextView, View paramView)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper$RecommendTroopListWrapperCallback = paramRecommendTroopListWrapperCallback;
-    this.e = false;
-    this.c = paramBoolean;
-    this.b = paramTextView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.i = paramAppInterface;
+    this.j = paramContext;
+    this.k = paramXListView;
+    this.o = paramRecommendTroopListWrapperCallback;
+    this.r = false;
+    this.p = paramBoolean;
+    this.d = paramTextView;
+    this.e = paramView;
     try
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString);
+      this.b = Long.parseLong(paramString);
     }
     catch (NumberFormatException paramAppInterface)
     {
       QLog.d("TroopDataCardRecomTroopListWrapper", 1, "TroopDataCardRecomTroopListWrapper NumberFormatException ", paramAppInterface);
     }
-    a();
+    b();
   }
   
   protected RecommendTroopAdapter a()
   {
-    return new TroopDataCardRecomTroopAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface, true);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if (this.c)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.b);
-      this.b.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
+    return new TroopDataCardRecomTroopAdapter(this.j, this.i, true);
   }
   
   protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = this.f.size();
     int j = paramArrayList.size();
     if (QLog.isColorLevel())
     {
@@ -79,83 +68,94 @@ public class TroopDataCardRecomTroopListWrapper
       localStringBuilder.append(j);
       QLog.d("TroopDataCardRecomTroopListWrapper", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    if ((paramBoolean1) && (this.jdField_a_of_type_Long == paramLong))
+    this.a = paramBoolean2;
+    if ((paramBoolean1) && (this.b == paramLong))
     {
       if (j + i >= 50)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, 50 - i));
-        this.jdField_a_of_type_Boolean = true;
+        this.f.addAll(paramArrayList.subList(0, 50 - i));
+        this.a = true;
         if (QLog.isColorLevel())
         {
           paramArrayList = new StringBuilder();
           paramArrayList.append("onGetTroopDataCardRecommendTroopList reach limit,this.dataList.size() = ");
-          paramArrayList.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+          paramArrayList.append(this.f.size());
           QLog.d("TroopDataCardRecomTroopListWrapper", 2, paramArrayList.toString());
         }
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+        this.f.addAll(paramArrayList);
       }
-      b();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      d();
+      if (this.f.size() > 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        this.l.setVisibility(0);
+        if (this.a) {
+          this.l.setText("没有更多内容了");
         }
       }
-      this.jdField_a_of_type_Int = paramInt;
+      this.c = paramInt;
     }
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   protected void b()
   {
-    if (!this.c) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterRecommendTroopAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterRecommendTroopAdapter.notifyDataSetChanged();
-    if (QLog.isColorLevel())
+    super.b();
+    if (this.p)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("refreshListView,this.dataList.size() = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, localStringBuilder.toString());
+      this.k.addHeaderView(this.d);
+      this.d.setVisibility(8);
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.k.addFooterView(this.e);
   }
   
   protected void b(boolean paramBoolean)
   {
-    ((ITroopRecommendHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRecommendHandlerName())).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 25);
+    ((ITroopRecommendHandler)this.i.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRecommendHandlerName())).a(this.b, this.c, 25);
   }
   
-  public void f()
+  protected boolean c()
   {
-    if (this.c)
+    return this.a;
+  }
+  
+  protected void d()
+  {
+    if (!this.p) {
+      this.f.clear();
+    }
+    this.m.a(this.f);
+    this.m.notifyDataSetChanged();
+    if (QLog.isColorLevel())
     {
-      this.c = false;
-      b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshListView,this.dataList.size() = ");
+      localStringBuilder.append(this.f.size());
+      QLog.d("TroopDataCardRecomTroopListWrapper", 2, localStringBuilder.toString());
+    }
+    if (this.f.size() > 0)
+    {
+      this.k.setVisibility(0);
+      this.d.setVisibility(0);
+      return;
+    }
+    this.d.setVisibility(8);
+    this.l.setVisibility(8);
+  }
+  
+  public void j()
+  {
+    if (this.p)
+    {
+      this.p = false;
+      d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.TroopDataCardRecomTroopListWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class IliveGuideModule$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     int j = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentIliveInterfacesIAudienceRoomPager.scrollTo(0, this.b + (i - j));
+    this.b.scrollTo(0, this.c + (i - j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveGuideModule.2
  * JD-Core Version:    0.7.0.1
  */

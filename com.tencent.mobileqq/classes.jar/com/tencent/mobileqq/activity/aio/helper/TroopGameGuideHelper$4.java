@@ -14,13 +14,13 @@ class TroopGameGuideHelper$4
   public void onClick(View paramView)
   {
     this.a.a.dismiss();
-    TroopReportor.a("Grp_AIO", "AIO_clk", "game_tips_clk_off", 0, 0, new String[] { this.a.b });
+    TroopReportor.a("Grp_AIO", "AIO_clk", "game_tips_clk_off", 0, 0, new String[] { this.a.d });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopGameGuideHelper.4
  * JD-Core Version:    0.7.0.1
  */

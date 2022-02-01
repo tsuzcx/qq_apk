@@ -61,9 +61,9 @@ public class ProfileContactComponent
         localObject = localView;
         if (!TextUtils.isEmpty(paramCharSequence))
         {
-          localObject = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131561339, null);
-          localView = ((ViewGroup)localObject).findViewById(2131368343);
-          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131368773);
+          localObject = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131627695, null);
+          localView = ((ViewGroup)localObject).findViewById(2131435219);
+          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131435692);
           localView.setBackgroundResource(paramInt);
           if ((paramCharSequence instanceof String)) {
             localTextView.setText(((String)paramCharSequence).trim());
@@ -89,15 +89,15 @@ public class ProfileContactComponent
         return null;
       }
       String str = paramProfileContactInfo.phoneNumber;
-      ViewGroup localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131561343, null);
-      View localView = localViewGroup.findViewById(2131369083);
-      TextView localTextView = (TextView)localViewGroup.findViewById(2131368773);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131362975);
+      ViewGroup localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131627699, null);
+      View localView = localViewGroup.findViewById(2131436047);
+      TextView localTextView = (TextView)localViewGroup.findViewById(2131435692);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131428774);
       localView.setVisibility(0);
-      localView.setBackgroundResource(2130845979);
+      localView.setBackgroundResource(2130847449);
       localTextView.setText(str);
       paramViewGroup.addView(localViewGroup);
-      str = this.mActivity.getString(2131691294);
+      str = this.mActivity.getString(2131888244);
       if (((ProfileCardInfo)this.mData).allInOne.pa == 33)
       {
         paramViewGroup = paramProfileContactInfo.phoneNumber;
@@ -141,7 +141,7 @@ public class ProfileContactComponent
         return;
       }
     }
-    ProfileUIUtils.notifyUser(1, 2131693335);
+    ProfileUIUtils.notifyUser(1, 2131890884);
   }
   
   private void handlePhoneClick()
@@ -202,7 +202,7 @@ public class ProfileContactComponent
       ViewGroup localViewGroup = (ViewGroup)this.mViewContainer;
       if (localViewGroup == null)
       {
-        localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131561353, null);
+        localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131627709, null);
         this.mViewContainer = localViewGroup;
         bool1 = true;
       }
@@ -210,11 +210,11 @@ public class ProfileContactComponent
       {
         bool1 = false;
       }
-      if (paramProfileCardInfo.profileName.a != null) {
-        paramProfileCardInfo.profileName.a.clear();
+      if (paramProfileCardInfo.profileName.b != null) {
+        paramProfileCardInfo.profileName.b.clear();
       }
       localViewGroup.removeAllViews();
-      addAccountBaseInfoItem(localViewGroup, 2130845955, ((ContactCard)localObject).nickName, true);
+      addAccountBaseInfoItem(localViewGroup, 2130847425, ((ContactCard)localObject).nickName, true);
       paramProfileCardInfo = (IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class);
       QBaseActivity localQBaseActivity = this.mActivity;
       int k = ((ContactCard)localObject).bSex;
@@ -223,7 +223,7 @@ public class ProfileContactComponent
       } else {
         i = ((ContactCard)localObject).bAge;
       }
-      addAccountBaseInfoItem(localViewGroup, 2130845966, paramProfileCardInfo.makeSexAgeArea(localQBaseActivity, k, i, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity), true);
+      addAccountBaseInfoItem(localViewGroup, 2130847436, paramProfileCardInfo.makeSexAgeArea(localQBaseActivity, k, i, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity), true);
       k = localArrayList.size();
       i = j;
       while (i < k)
@@ -267,7 +267,7 @@ public class ProfileContactComponent
         return;
       }
     }
-    ProfileUIUtils.notifyUser(1, 2131693335);
+    ProfileUIUtils.notifyUser(1, 2131890884);
   }
   
   private void setRemarks(ProfileContactInfo paramProfileContactInfo)
@@ -292,16 +292,16 @@ public class ProfileContactComponent
           }
           else
           {
-            ProfileUIUtils.notifyUser(1, 2131693362);
+            ProfileUIUtils.notifyUser(1, 2131890911);
           }
         }
         else
         {
-          ProfileUIUtils.notifyUser(1, 2131693348);
+          ProfileUIUtils.notifyUser(1, 2131890897);
         }
       }
       else {
-        ProfileUIUtils.notifyUser(1, 2131694473);
+        ProfileUIUtils.notifyUser(1, 2131892155);
       }
     }
   }
@@ -311,7 +311,7 @@ public class ProfileContactComponent
     if (this.mMenuItems == null) {
       this.mMenuItems = this.mActivity.getResources().getStringArray(2130968636);
     }
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mActivity, null);
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -363,9 +363,9 @@ public class ProfileContactComponent
     if ((localObject instanceof DataTag))
     {
       localObject = (DataTag)localObject;
-      if (((DataTag)localObject).jdField_a_of_type_Int == 4)
+      if (((DataTag)localObject).a == 4)
       {
-        this.mSelectContactInfo = ((ProfileContactInfo)((DataTag)localObject).jdField_a_of_type_JavaLangObject);
+        this.mSelectContactInfo = ((ProfileContactInfo)((DataTag)localObject).b);
         handlePhoneClick();
       }
     }
@@ -380,7 +380,7 @@ public class ProfileContactComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.contact.ProfileContactComponent
  * JD-Core Version:    0.7.0.1
  */

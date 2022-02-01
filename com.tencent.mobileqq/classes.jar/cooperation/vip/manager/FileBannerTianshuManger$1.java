@@ -18,15 +18,15 @@ class FileBannerTianshuManger$1
     }
     ArrayList localArrayList = new ArrayList();
     TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.jdField_a_of_type_Int = FileBannerTianshuManger.jdField_a_of_type_Int;
+    localTianShuAdPosItemData.a = FileBannerTianshuManger.a;
     localTianShuAdPosItemData.b = 1;
     localArrayList.add(localTianShuAdPosItemData);
-    TianShuManager.getInstance().requestAdv(localArrayList, this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuDataTianShuGetAdvCallback);
+    TianShuManager.getInstance().requestAdv(localArrayList, this.this$0.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,18 @@ import java.util.Vector;
 
 class AVNotifyCenter$GAudioRoomInfo
 {
-  public long a;
-  public Vector<AVNotifyCenter.UserInfo> a;
+  public long a = 0L;
+  public Vector<AVNotifyCenter.UserInfo> b = null;
   
-  public AVNotifyCenter$GAudioRoomInfo(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector = null;
-  }
+  public AVNotifyCenter$GAudioRoomInfo(AVNotifyCenter paramAVNotifyCenter) {}
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("roomNum[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], list[");
-    Object localObject = this.jdField_a_of_type_JavaUtilVector;
+    Object localObject = this.b;
     if (localObject == null) {
       localObject = "null";
     } else {

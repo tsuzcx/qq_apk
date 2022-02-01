@@ -11,12 +11,12 @@ class WSFriendFeedDataManager$1
   
   public void a(WeishiTask paramWeishiTask)
   {
-    WSFriendFeedDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSFriendFeedDataManager, this.jdField_a_of_type_Boolean, this.b, paramWeishiTask, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSFriendFeedDataManager.a(this.d, this.a, this.b, paramWeishiTask, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSFriendFeedDataManager.1
  * JD-Core Version:    0.7.0.1
  */

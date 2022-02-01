@@ -8,17 +8,37 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.protocol.link_report.LinkReport.ReportBiz;
+import com.tencent.ad.tangram.statistics.AdReporterForLinkEvent;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import com.tencent.ad.tangram.web.AdBrowserAdapter;
 import com.tencent.ad.tangram.web.AdBrowserAdapter.Params;
+import com.tencent.gdtad.IGdtAdAPI;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.params.InitGdtContextParams;
+import com.tencent.gdtad.web.GdtWebReportQQ;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.ref.WeakReference;
 
 public final class GdtBrowserAdapter
   implements AdBrowserAdapter
 {
+  private void a(AdBrowserAdapter.Params paramParams)
+  {
+    ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).initGdtContext((Context)paramParams.activity.get(), new InitGdtContextParams());
+    link_report.LinkReport.ReportBiz localReportBiz = new link_report.LinkReport.ReportBiz();
+    localReportBiz.wv_progress = 2;
+    localReportBiz.lp_type = 1;
+    if (GdtWebReportQQ.a(paramParams.ad.getUrlForClick())) {
+      localReportBiz.click_req_type = 1;
+    } else {
+      localReportBiz.click_req_type = 3;
+    }
+    AdReporterForLinkEvent.reportAsync((Context)paramParams.activity.get(), 4003001, paramParams.ad, localReportBiz, null);
+  }
+  
   public AdError show(AdBrowserAdapter.Params paramParams)
   {
     if ((paramParams != null) && (paramParams.isValid()) && (paramParams.ad != null) && ((paramParams.ad instanceof GdtAd)))
@@ -40,6 +60,10 @@ public final class GdtBrowserAdapter
         localIntent.putExtra("GdtNocoId", ((GdtAd)localObject).getNocoId());
         localIntent.putExtra("GdtWebReportQQ_ACTION_URL", ((GdtAd)localObject).getUrlForAction());
         localIntent.putExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
+        localIntent.putExtra("GdtWebReportQQ_IS_H5", true);
+        localIntent.putExtra("GdtWebReportQQ_CLICK_URL", ((GdtAd)localObject).getUrlForClick());
+        localIntent.putExtra("GdtWebReportQQ_AD_ID", String.valueOf(((GdtAd)localObject).getAId()));
+        localIntent.putExtra("GdtWebReportQQ_POS_ID", ((GdtAd)localObject).getPosId());
       }
       if ((localObject != null) && (((GdtAd)localObject).isValid()) && ((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(paramParams.ad.getCanvasForXiJingOffline())))
       {
@@ -56,6 +80,7 @@ public final class GdtBrowserAdapter
       }
       try
       {
+        a(paramParams);
         ((Activity)paramParams.activity.get()).startActivity(localIntent);
         paramParams = new AdError(0);
         return paramParams;
@@ -98,7 +123,7 @@ public final class GdtBrowserAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtBrowserAdapter
  * JD-Core Version:    0.7.0.1
  */

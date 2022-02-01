@@ -12,7 +12,7 @@ final class KeyBoardUtil$9
   
   public void afterTextChanged(Editable paramEditable)
   {
-    ApolloSurfaceView localApolloSurfaceView = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloSurfaceView;
+    ApolloSurfaceView localApolloSurfaceView = this.a;
     if (localApolloSurfaceView == null) {
       return;
     }
@@ -25,7 +25,7 @@ final class KeyBoardUtil$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil.9
  * JD-Core Version:    0.7.0.1
  */

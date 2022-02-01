@@ -18,27 +18,27 @@ class PngFrameManager$3
   
   public void run()
   {
-    if (FileUtils.fileExists(this.jdField_a_of_type_JavaLangString))
+    if (FileUtils.fileExists(this.a))
     {
-      ??? = PngGifEngine.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangObject = ???;
+      ??? = PngGifEngine.b(this.a);
+      this.b.h = ???;
       synchronized (this.this$0)
       {
-        if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
-          this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(227, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
+        if (this.this$0.e != null) {
+          this.this$0.e.obtainMessage(227, this.b).sendToTarget();
         }
         return;
       }
     }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.getEmoticon().eId;
-    ??? = new DownloadTask(EmotionPanelConstans.emoticonAIOPreviewExtensionUrl.replace("[eIdSub]", ((String)???).substring(0, 2)).replace("[eId]", (CharSequence)???).replace("[width]", "200").replace("[height]", "200"), new File(this.jdField_a_of_type_JavaLangString));
-    ((DownloadTask)???).n = true;
-    this.this$0.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.startDownload((DownloadTask)???, new PngFrameManager.3.1(this), null);
+    ??? = this.b.c.a.getEmoticon().eId;
+    ??? = new DownloadTask(EmotionPanelConstans.emoticonAIOPreviewExtensionUrl.replace("[eIdSub]", ((String)???).substring(0, 2)).replace("[eId]", (CharSequence)???).replace("[width]", "200").replace("[height]", "200"), new File(this.a));
+    ((DownloadTask)???).J = true;
+    this.this$0.f.startDownload((DownloadTask)???, new PngFrameManager.3.1(this), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.3
  * JD-Core Version:    0.7.0.1
  */

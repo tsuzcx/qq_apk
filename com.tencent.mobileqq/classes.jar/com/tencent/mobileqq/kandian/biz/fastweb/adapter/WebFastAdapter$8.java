@@ -17,18 +17,18 @@ class WebFastAdapter$8
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a().iterator();
+    Iterator localIterator = this.this$0.f().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (BaseData)localIterator.next();
       if ((localObject instanceof ProteusItemData))
       {
-        JSONObject localJSONObject = ((ProteusItemData)localObject).c;
+        JSONObject localJSONObject = ((ProteusItemData)localObject).bb;
         if ((localJSONObject != null) && (localJSONObject.optString("kd_ug_rsp_info") != null))
         {
           localObject = new FastWebRecommendUGInfo(localJSONObject.optString("kd_ug_rsp_info"), WebFastAdapter.a(localJSONObject));
-          if ((!TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject).b)) && (((FastWebRecommendUGInfo)localObject).b.equals(this.a.d)))
+          if ((!TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject).d)) && (((FastWebRecommendUGInfo)localObject).d.equals(this.a.d)))
           {
             int j = i;
             try
@@ -40,9 +40,9 @@ class WebFastAdapter$8
                 j = k;
                 localJSONObject = localJSONObject.getJSONObject("id_recommend_category_txt");
                 j = k;
-                localJSONObject.put("text", ((FastWebRecommendUGInfo)localObject).i);
+                localJSONObject.put("text", ((FastWebRecommendUGInfo)localObject).k);
                 j = k;
-                localJSONObject.put("label_ug_progress_progress", this.a.f);
+                localJSONObject.put("label_ug_progress_progress", this.a.t);
               }
             }
             catch (JSONException localJSONException)
@@ -61,7 +61,7 @@ class WebFastAdapter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter.8
  * JD-Core Version:    0.7.0.1
  */

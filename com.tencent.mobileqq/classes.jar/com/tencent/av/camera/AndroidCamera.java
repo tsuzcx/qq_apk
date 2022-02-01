@@ -27,62 +27,53 @@ import java.util.List;
 
 public class AndroidCamera
 {
-  public static int a = 640;
-  protected static CameraInformation a;
   public static volatile boolean a = true;
-  public static int b = 480;
-  protected static boolean b = false;
-  public static int c = 17;
-  protected static boolean c = false;
-  protected static int d = 0;
-  protected static int e = 15000;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Camera jdField_a_of_type_AndroidHardwareCamera = null;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  private CameraCallback jdField_a_of_type_ComTencentAvCameraCameraCallback = null;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  boolean d;
-  boolean e;
-  int f;
-  public boolean f;
-  int g = 0;
-  int h;
-  int i;
-  int j = 0;
-  int k = 0;
+  public static int b = 1280;
+  public static int c = 720;
+  public static int d = 17;
+  protected static boolean e = false;
+  protected static int f = 0;
+  protected static int g = 15000;
+  protected static boolean h = false;
+  protected static CameraInformation i = new CameraInformation();
+  private int A = 0;
+  Context j = null;
+  Camera k = null;
   int l = 0;
   int m = 0;
-  private int n = 0;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAvCameraCameraInformation = new CameraInformation();
-  }
+  int n;
+  String o;
+  String p;
+  Display q;
+  int r;
+  int s = 0;
+  int t = 0;
+  int u = 0;
+  int v = 0;
+  boolean w = false;
+  boolean x = false;
+  public boolean y = false;
+  private CameraCallback z = null;
   
   public AndroidCamera(Context paramContext)
   {
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_d_of_type_Boolean = PhoneStatusTools.g(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_e_of_type_Boolean = PhoneStatusTools.c();
-    this.h = Build.VERSION.SDK_INT;
-    this.jdField_a_of_type_JavaLangString = Build.MODEL;
-    this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
-    paramContext = jdField_a_of_type_ComTencentAvCameraCameraInformation;
-    paramContext.jdField_b_of_type_Int = -1;
-    paramContext.jdField_c_of_type_Int = -1;
+    this.j = paramContext;
+    this.q = ((WindowManager)this.j.getSystemService("window")).getDefaultDisplay();
+    this.w = PhoneStatusTools.i(this.j);
+    this.x = PhoneStatusTools.c();
+    this.n = Build.VERSION.SDK_INT;
+    this.o = Build.MODEL;
+    this.p = Build.MANUFACTURER;
+    paramContext = i;
+    paramContext.b = -1;
+    paramContext.c = -1;
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("AndroidCamera, Device_Tag[");
-      paramContext.append(this.jdField_b_of_type_JavaLangString);
+      paramContext.append(this.p);
       paramContext.append(": ");
-      paramContext.append(this.jdField_a_of_type_JavaLangString);
+      paramContext.append(this.o);
       paramContext.append("], Rom_Tag[");
       paramContext.append(Build.VERSION.INCREMENTAL);
       paramContext.append("]");
@@ -97,7 +88,7 @@ public class AndroidCamera
       localObject = paramParameters.getSupportedPreviewFormats();
       if (localObject != null)
       {
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           StringBuilder localStringBuilder = new StringBuilder("setPreviewFormat[");
           i1 = 0;
@@ -196,7 +187,7 @@ public class AndroidCamera
     i1 = 0;
     if (i1 != 0)
     {
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("setPreviewFormat, supportFormat[");
@@ -209,7 +200,7 @@ public class AndroidCamera
       paramParameters.setPreviewFormat(i1);
       return i1;
     }
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setPreviewFormat, default supportFormat[");
@@ -225,8 +216,8 @@ public class AndroidCamera
   
   private void a(long paramLong, int paramInt1, int paramInt2, Camera.Parameters paramParameters)
   {
-    int i1 = jdField_a_of_type_Int;
-    int i2 = jdField_b_of_type_Int;
+    int i1 = b;
+    int i2 = c;
     try
     {
       localObject = paramParameters.getSupportedPreviewSizes();
@@ -244,13 +235,13 @@ public class AndroidCamera
       label54:
       break label54;
     }
-    if (((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("samsung")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("GT-I9003"))) || ((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("samsung")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("GT-I9220"))) || ((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("samsung")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("GT-I7000")))) {
+    if (((this.p.equalsIgnoreCase("samsung")) && (this.o.equalsIgnoreCase("GT-I9003"))) || ((this.p.equalsIgnoreCase("samsung")) && (this.o.equalsIgnoreCase("GT-I9220"))) || ((this.p.equalsIgnoreCase("samsung")) && (this.o.equalsIgnoreCase("GT-I7000")))) {
       a("setPreviewSize_hardcode", paramLong, 320, 240);
     }
-    if (a()) {
+    if (g()) {
       a("setPreviewSize_hardcode", paramLong, 1280, 720);
     }
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setPreviewSize, in[");
@@ -262,21 +253,21 @@ public class AndroidCamera
       ((StringBuilder)localObject).append("x");
       ((StringBuilder)localObject).append(i2);
       ((StringBuilder)localObject).append("], final[");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(b);
       ((StringBuilder)localObject).append("x");
-      ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(c);
       ((StringBuilder)localObject).append("], seq[");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("]");
       QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString());
     }
-    paramParameters.setPreviewSize(jdField_a_of_type_Int, jdField_b_of_type_Int);
+    paramParameters.setPreviewSize(b, c);
   }
   
   private void a(long paramLong, Camera.Parameters paramParameters, int paramInt1, int paramInt2)
   {
     Object localObject2 = paramParameters.getSupportedPreviewFpsRange();
-    jdField_e_of_type_Int = paramInt2;
+    g = paramInt2;
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
       Object localObject1 = (int[])((List)localObject2).get(0);
@@ -285,7 +276,7 @@ public class AndroidCamera
       while (localIterator.hasNext())
       {
         localObject2 = (int[])localIterator.next();
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("setPreviewRate2, Range[");
@@ -297,14 +288,14 @@ public class AndroidCamera
           localStringBuilder.append("]");
           QLog.w("AndroidCamera", 1, localStringBuilder.toString());
         }
-        int i2 = Math.abs(localObject2[0] - jdField_e_of_type_Int) + Math.abs(localObject2[1] - jdField_e_of_type_Int);
+        int i2 = Math.abs(localObject2[0] - g) + Math.abs(localObject2[1] - g);
         if (i1 > i2)
         {
           localObject1 = localObject2;
           i1 = i2;
         }
       }
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("setPreviewRate2, Range[");
@@ -336,7 +327,7 @@ public class AndroidCamera
       while (localIterator.hasNext())
       {
         localObject2 = (int[])localIterator.next();
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("setPreviewRate1, Range[");
@@ -346,14 +337,14 @@ public class AndroidCamera
           localStringBuilder.append("]");
           QLog.w("AndroidCamera", 1, localStringBuilder.toString());
         }
-        int i2 = Math.abs(localObject2[0] - jdField_e_of_type_Int) + Math.abs(localObject2[1] - jdField_e_of_type_Int);
+        int i2 = Math.abs(localObject2[0] - g) + Math.abs(localObject2[1] - g);
         if (i1 > i2)
         {
           localObject1 = localObject2;
           i1 = i2;
         }
       }
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("setPreviewRate1, Range[");
@@ -373,15 +364,15 @@ public class AndroidCamera
   {
     try
     {
-      if ((jdField_a_of_type_Int != paramInt1) || (jdField_b_of_type_Int != paramInt2) || (QLog.isDevelopLevel()))
+      if ((b != paramInt1) || (c != paramInt2) || (QLog.isDevelopLevel()))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("resetPreViewSize, from[");
         localStringBuilder.append(paramString);
         localStringBuilder.append("], src[");
-        localStringBuilder.append(jdField_a_of_type_Int);
+        localStringBuilder.append(b);
         localStringBuilder.append("x");
-        localStringBuilder.append(jdField_b_of_type_Int);
+        localStringBuilder.append(c);
         localStringBuilder.append("], final[");
         localStringBuilder.append(paramInt1);
         localStringBuilder.append("x");
@@ -391,55 +382,55 @@ public class AndroidCamera
         localStringBuilder.append("]");
         QLog.w("AndroidCamera", 1, localStringBuilder.toString());
       }
-      jdField_a_of_type_Int = paramInt1;
-      jdField_b_of_type_Int = paramInt2;
+      b = paramInt1;
+      c = paramInt2;
       return;
     }
     finally {}
   }
   
-  public static boolean a()
+  public static boolean g()
   {
     return "1".equalsIgnoreCase(((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.use720PCameraPreviewSize.name(), "0"));
   }
   
-  private void b()
+  private void n()
   {
-    if ((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("meizu")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("meizu_m9")))
+    if ((this.p.equalsIgnoreCase("meizu")) && (this.o.equalsIgnoreCase("meizu_m9")))
     {
-      jdField_c_of_type_Int = 18;
+      d = 18;
       return;
     }
-    if ((this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("ZTE")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("ZTE-T U880"))) {
-      jdField_c_of_type_Int = 100;
+    if ((this.p.equalsIgnoreCase("ZTE")) && (this.o.equalsIgnoreCase("ZTE-T U880"))) {
+      d = 100;
     }
   }
   
-  private void c()
+  private void o()
   {
-    this.i = 0;
+    this.r = 0;
     try
     {
-      if (this.g == 0) {
-        this.g = b();
+      if (this.m == 0) {
+        this.m = c();
       }
-      if (this.g > 0)
+      if (this.m > 0)
       {
         Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
         int i1 = 0;
-        while (i1 < this.g)
+        while (i1 < this.m)
         {
           Camera.getCameraInfo(i1, localCameraInfo);
           int i2 = localCameraInfo.facing;
           if (i2 == 0) {
             try
             {
-              this.i = i1;
+              this.r = i1;
             }
             catch (RuntimeException localRuntimeException)
             {
-              this.i = 0;
-              if (AudioHelper.b()) {
+              this.r = 0;
+              if (AudioHelper.e()) {
                 QLog.w("AndroidCamera", 1, "findBackCameraId, RuntimeException", localRuntimeException);
               }
             }
@@ -451,7 +442,7 @@ public class AndroidCamera
     }
     catch (Exception localException)
     {
-      if (AudioHelper.b()) {
+      if (AudioHelper.e()) {
         QLog.w("AndroidCamera", 1, "findBackCameraId, Exception", localException);
       }
     }
@@ -459,31 +450,15 @@ public class AndroidCamera
   
   public int a()
   {
-    return this.n;
+    return this.A;
   }
   
   int a(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (int i1 = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext, true, true, (byte)0, false);; i1 = ConfigSystemImpl.b(this.jdField_a_of_type_AndroidContentContext, true, true, (byte)0, false)) {
+    for (int i1 = ConfigSystemImpl.a(this.j, true, true, (byte)0, false);; i1 = ConfigSystemImpl.b(this.j, true, true, (byte)0, false)) {
       return 360 - i1 * 90;
     }
-  }
-  
-  public Camera.Parameters a()
-  {
-    try
-    {
-      Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-      return localParameters;
-    }
-    catch (Exception localException)
-    {
-      if (AudioHelper.b()) {
-        QLog.w("AndroidCamera", 1, "getCameraParams, Exception", localException);
-      }
-    }
-    return null;
   }
   
   protected Camera.Size a(List<Camera.Size> paramList, int paramInt1, int paramInt2)
@@ -547,14 +522,14 @@ public class AndroidCamera
     {
       Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
       Camera.getCameraInfo(paramInt, localCameraInfo);
-      paramCamera.jdField_a_of_type_Int = localCameraInfo.facing;
-      paramCamera.jdField_b_of_type_Int = localCameraInfo.orientation;
-      if (this.jdField_a_of_type_AndroidViewDisplay == null)
+      paramCamera.a = localCameraInfo.facing;
+      paramCamera.b = localCameraInfo.orientation;
+      if (this.q == null)
       {
-        paramCamera.jdField_c_of_type_Int = -1;
+        paramCamera.c = -1;
         return paramCamera;
       }
-      paramInt = c();
+      paramInt = d();
       if (paramInt != 0)
       {
         if (paramInt != 1)
@@ -564,16 +539,16 @@ public class AndroidCamera
             if (paramInt != 3) {
               return paramCamera;
             }
-            paramCamera.jdField_c_of_type_Int = 270;
+            paramCamera.c = 270;
             return paramCamera;
           }
-          paramCamera.jdField_c_of_type_Int = 180;
+          paramCamera.c = 180;
           return paramCamera;
         }
-        paramCamera.jdField_c_of_type_Int = 90;
+        paramCamera.c = 90;
         return paramCamera;
       }
-      paramCamera.jdField_c_of_type_Int = 0;
+      paramCamera.c = 0;
       return paramCamera;
     }
     catch (Exception localException)
@@ -581,34 +556,24 @@ public class AndroidCamera
       label110:
       break label110;
     }
-    paramCamera.jdField_c_of_type_Int = 0;
+    paramCamera.c = 0;
     return paramCamera;
-  }
-  
-  public void a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("resetCamera, mCurCamera[");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("->0]");
-    QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-    this.jdField_f_of_type_Int = 0;
   }
   
   public void a(int paramInt)
   {
-    int i1 = jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_c_of_type_Int;
-    Object localObject = jdField_a_of_type_ComTencentAvCameraCameraInformation;
-    ((CameraInformation)localObject).jdField_c_of_type_Int = ((paramInt + this.k) % 360);
-    if (i1 != ((CameraInformation)localObject).jdField_c_of_type_Int)
+    int i1 = i.c;
+    Object localObject = i;
+    ((CameraInformation)localObject).c = ((paramInt + this.t) % 360);
+    if (i1 != ((CameraInformation)localObject).c)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setMobileRotation, rotation[");
       ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append("->");
-      ((StringBuilder)localObject).append(jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(i.c);
       ((StringBuilder)localObject).append("], mCompenSateSendAngle[");
-      ((StringBuilder)localObject).append(this.k);
+      ((StringBuilder)localObject).append(this.t);
       ((StringBuilder)localObject).append("]");
       QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString());
     }
@@ -617,29 +582,29 @@ public class AndroidCamera
   public void a(int paramInt, CameraPreviewCallback paramCameraPreviewCallback)
   {
     int i1;
-    if (this.n != paramInt)
+    if (this.A != paramInt)
     {
-      this.n = paramInt;
+      this.A = paramInt;
       i1 = 1;
     }
     else
     {
       i1 = 0;
     }
-    int i2 = this.n;
+    int i2 = this.A;
     if (i2 == 0)
     {
-      if ((this.jdField_a_of_type_ComTencentAvCameraCameraCallback == null) || (i1 != 0)) {
-        this.jdField_a_of_type_ComTencentAvCameraCameraCallback = new MyPreviewCallback(this, paramCameraPreviewCallback);
+      if ((this.z == null) || (i1 != 0)) {
+        this.z = new MyPreviewCallback(this, paramCameraPreviewCallback);
       }
     }
-    else if ((i2 == 1) && ((this.jdField_a_of_type_ComTencentAvCameraCameraCallback == null) || (i1 != 0)))
+    else if ((i2 == 1) && ((this.z == null) || (i1 != 0)))
     {
-      CameraCallback localCameraCallback = this.jdField_a_of_type_ComTencentAvCameraCameraCallback;
+      CameraCallback localCameraCallback = this.z;
       if (localCameraCallback != null) {
-        localCameraCallback.a();
+        localCameraCallback.b();
       }
-      this.jdField_a_of_type_ComTencentAvCameraCameraCallback = new MySurfaceCallback(this, paramCameraPreviewCallback);
+      this.z = new MySurfaceCallback(this, paramCameraPreviewCallback);
     }
     if (QLog.isColorLevel())
     {
@@ -653,23 +618,23 @@ public class AndroidCamera
   
   public void a(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
+    if (this.k == null) {
       return;
     }
     Camera.Size localSize;
     int i1;
-    synchronized (jdField_a_of_type_ComTencentAvCameraCameraInformation)
+    synchronized (i)
     {
-      a(paramLong, this.i, this.jdField_a_of_type_AndroidHardwareCamera);
+      a(paramLong, this.r, this.k);
       localSize = null;
       try
       {
-        ??? = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        ??? = this.k.getParameters();
       }
       catch (Exception localException2)
       {
         ??? = localSize;
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           QLog.w("AndroidCamera", 1, "setCameraParaFPS, Exception", localException2);
           ??? = localSize;
@@ -677,7 +642,7 @@ public class AndroidCamera
       }
       if (??? == null)
       {
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.w("AndroidCamera", 1, "setCameraParaFPS, parameters为空");
         }
         return;
@@ -688,7 +653,7 @@ public class AndroidCamera
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)???);
+      this.k.setParameters((Camera.Parameters)???);
       label135:
       localSize = ((Camera.Parameters)???).getPreviewSize();
       paramInt = ((Camera.Parameters)???).getPreviewFormat();
@@ -704,26 +669,26 @@ public class AndroidCamera
         ((StringBuilder)localObject3).append("]");
         QLog.w("AndroidCamera", 1, ((StringBuilder)localObject3).toString());
       }
-      jdField_c_of_type_Int = paramInt;
+      d = paramInt;
       Object localObject3 = new int[2];
       ((Camera.Parameters)???).getPreviewFpsRange((int[])localObject3);
-      jdField_d_of_type_Int = (localObject3[0] + localObject3[1]) / 2 / 1000;
-      b();
-      if ((AudioHelper.b()) || (localSize == null))
+      f = (localObject3[0] + localObject3[1]) / 2 / 1000;
+      n();
+      if ((AudioHelper.e()) || (localSize == null))
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("setCameraParaFPS, width[");
-        ((StringBuilder)???).append(jdField_a_of_type_Int);
+        ((StringBuilder)???).append(b);
         ((StringBuilder)???).append("], height[");
-        ((StringBuilder)???).append(jdField_b_of_type_Int);
+        ((StringBuilder)???).append(c);
         ((StringBuilder)???).append("], nInFPS[");
-        ((StringBuilder)???).append(jdField_d_of_type_Int);
+        ((StringBuilder)???).append(f);
         ((StringBuilder)???).append("], fpsRange[");
         ((StringBuilder)???).append(localObject3[0]);
         ((StringBuilder)???).append("|");
         ((StringBuilder)???).append(localObject3[1]);
         ((StringBuilder)???).append("], videoFormat[");
-        ((StringBuilder)???).append(jdField_c_of_type_Int);
+        ((StringBuilder)???).append(d);
         ((StringBuilder)???).append("], supportFormat[");
         ((StringBuilder)???).append(i1);
         ((StringBuilder)???).append("], seq[");
@@ -744,21 +709,21 @@ public class AndroidCamera
   @TargetApi(9)
   protected void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
+    if (this.k == null) {
       return;
     }
-    synchronized (jdField_a_of_type_ComTencentAvCameraCameraInformation)
+    synchronized (i)
     {
-      a(paramLong, this.i, this.jdField_a_of_type_AndroidHardwareCamera);
+      a(paramLong, this.r, this.k);
       localObject2 = null;
       try
       {
-        ??? = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        ??? = this.k.getParameters();
       }
       catch (Exception localException3)
       {
         ??? = localObject2;
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           QLog.w("AndroidCamera", 1, "setCameraPara, Exception", localException3);
           ??? = localObject2;
@@ -766,7 +731,7 @@ public class AndroidCamera
       }
       if (??? == null)
       {
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.w("AndroidCamera", 1, "setCameraPara, parameters为空");
         }
         return;
@@ -781,32 +746,32 @@ public class AndroidCamera
       {
         try
         {
-          this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)???);
+          this.k.setParameters((Camera.Parameters)???);
           localObject2 = ((Camera.Parameters)???).getPreviewSize();
           int i1 = ((Camera.Parameters)???).getPreviewFormat();
           a("setCameraPara", paramLong, ((Camera.Size)localObject2).width, ((Camera.Size)localObject2).height);
-          jdField_c_of_type_Int = i1;
+          d = i1;
           localObject2 = new int[2];
           ((Camera.Parameters)???).getPreviewFpsRange((int[])localObject2);
-          jdField_d_of_type_Int = (localObject2[0] + localObject2[1]) / 2 / 1000;
-          b();
+          f = (localObject2[0] + localObject2[1]) / 2 / 1000;
+          n();
           ??? = new StringBuilder();
           ((StringBuilder)???).append("setCameraPara, size[");
-          ((StringBuilder)???).append(jdField_a_of_type_Int);
+          ((StringBuilder)???).append(b);
           ((StringBuilder)???).append("x");
-          ((StringBuilder)???).append(jdField_b_of_type_Int);
+          ((StringBuilder)???).append(c);
           ((StringBuilder)???).append("], src[");
           ((StringBuilder)???).append(paramInt1);
           ((StringBuilder)???).append("x");
           ((StringBuilder)???).append(paramInt2);
           ((StringBuilder)???).append("], nInFPS[");
-          ((StringBuilder)???).append(jdField_d_of_type_Int);
+          ((StringBuilder)???).append(f);
           ((StringBuilder)???).append("], fpsRange[");
           ((StringBuilder)???).append(localObject2[0]);
           ((StringBuilder)???).append("~");
           ((StringBuilder)???).append(localObject2[1]);
           ((StringBuilder)???).append("], videoFormat[");
-          ((StringBuilder)???).append(jdField_c_of_type_Int);
+          ((StringBuilder)???).append(d);
           ((StringBuilder)???).append("], seq[");
           ((StringBuilder)???).append(paramLong);
           ((StringBuilder)???).append("]");
@@ -834,7 +799,7 @@ public class AndroidCamera
     }
     catch (Exception paramCamera)
     {
-      if (AudioHelper.b()) {
+      if (AudioHelper.e()) {
         QLog.w("AndroidCamera", 1, "setDisplayOrientation, Exception", paramCamera);
       }
     }
@@ -843,70 +808,34 @@ public class AndroidCamera
   public void a(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {
-      this.l = (paramInt % 360);
+      this.u = (paramInt % 360);
     } else {
-      this.m = (paramInt % 360);
+      this.v = (paramInt % 360);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mFrontCameraAngle: ");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(", mBackCameraAngle: ");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.v);
     AVLog.printColorLog("AndroidCamera", localStringBuilder.toString());
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareCamera = a(paramLong);
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_AndroidHardwareCamera == null)
-    {
-      if (AudioHelper.b())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("openFrontCamera, fail, seq[");
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append("]");
-        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-      }
-      jdField_b_of_type_Boolean = false;
-      jdField_c_of_type_Boolean = false;
-      return false;
-    }
-    if (this.g == 0) {
-      this.g = 2;
-    }
-    this.jdField_f_of_type_Int = 1;
-    jdField_b_of_type_Boolean = true;
-    jdField_c_of_type_Boolean = false;
-    if (AudioHelper.b())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("openFrontCamera, success, seq[");
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append("]");
-      QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-    }
-    return true;
   }
   
   protected boolean a(long paramLong, int paramInt, Camera paramCamera)
   {
     CameraInformation localCameraInformation = a(paramInt, paramCamera);
-    this.k = d();
-    this.j = e();
-    int i2 = f();
-    int i3 = g();
+    this.t = e();
+    this.s = f();
+    int i2 = h();
+    int i3 = i();
     int i1;
-    if (localCameraInformation.jdField_a_of_type_Int == 1) {
-      i1 = (360 - (localCameraInformation.jdField_b_of_type_Int + localCameraInformation.jdField_c_of_type_Int) % 360) % 360;
+    if (localCameraInformation.a == 1) {
+      i1 = (360 - (localCameraInformation.b + localCameraInformation.c) % 360) % 360;
     } else {
-      i1 = (localCameraInformation.jdField_b_of_type_Int - localCameraInformation.jdField_c_of_type_Int + 360) % 360;
+      i1 = (localCameraInformation.b - localCameraInformation.c + 360) % 360;
     }
-    int i4 = a(this.jdField_f_of_type_Boolean);
-    int i5 = b(this.jdField_f_of_type_Boolean);
-    if (localCameraInformation.jdField_a_of_type_Int == 1) {
+    int i4 = a(this.y);
+    int i5 = b(this.y);
+    if (localCameraInformation.a == 1) {
       i1 = (i1 + i4) % 360;
     } else {
       i1 = (i1 + i5) % 360;
@@ -915,19 +844,19 @@ public class AndroidCamera
     localStringBuilder.append("setCameraDisplayOrientation, cameraId[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], orientation[");
-    localStringBuilder.append(jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_b_of_type_Int);
+    localStringBuilder.append(i.b);
     localStringBuilder.append("->");
-    localStringBuilder.append(localCameraInformation.jdField_b_of_type_Int);
+    localStringBuilder.append(localCameraInformation.b);
     localStringBuilder.append("], rotation[");
-    localStringBuilder.append(jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_c_of_type_Int);
+    localStringBuilder.append(i.c);
     localStringBuilder.append("->");
-    localStringBuilder.append(localCameraInformation.jdField_c_of_type_Int);
+    localStringBuilder.append(localCameraInformation.c);
     localStringBuilder.append("], mCompenSateSendAngle[");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.t);
     localStringBuilder.append("], mCompenSateRecvAngle[");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.s);
     localStringBuilder.append("], mSupportLandscape[");
-    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append(this.y);
     localStringBuilder.append("], previewAngleForFrontCamera[");
     localStringBuilder.append(i4);
     localStringBuilder.append("], previewAngleForBackCamera[");
@@ -939,14 +868,14 @@ public class AndroidCamera
     localStringBuilder.append("], result[");
     localStringBuilder.append(i1);
     localStringBuilder.append("], cameraMode[");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.A);
     localStringBuilder.append("], seq[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w("AndroidCamera", 1, localStringBuilder.toString());
     a(paramCamera, i1);
-    jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_a_of_type_Int = localCameraInformation.jdField_a_of_type_Int;
-    jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_b_of_type_Int = localCameraInformation.jdField_b_of_type_Int;
+    i.a = localCameraInformation.a;
+    i.b = localCameraInformation.b;
     return true;
   }
   
@@ -959,19 +888,19 @@ public class AndroidCamera
       localStringBuilder.append("openCamera begin, Camera[");
       localStringBuilder.append(toString());
       localStringBuilder.append("], PreViewSize[");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(b);
       localStringBuilder.append("x");
-      localStringBuilder.append(jdField_b_of_type_Int);
+      localStringBuilder.append(c);
       localStringBuilder.append("], seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("]");
       QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-      bool1 = jdField_b_of_type_Boolean;
+      bool1 = e;
       bool2 = false;
       if (bool1) {
-        break label696;
+        break label697;
       }
-      if (this.jdField_a_of_type_AndroidContentContext == null)
+      if (this.j == null)
       {
         paramSurfaceTexture = new StringBuilder();
         paramSurfaceTexture.append("openCamera, context为空, seq[");
@@ -979,11 +908,11 @@ public class AndroidCamera
         paramSurfaceTexture.append("]");
         QLog.w("AndroidCamera", 1, paramSurfaceTexture.toString());
         bool1 = bool2;
-        break label579;
+        break label580;
       }
-      if (this.jdField_f_of_type_Int == 0)
+      if (this.l == 0)
       {
-        if ((!a(paramLong)) && (!b(paramLong)))
+        if ((!c(paramLong)) && (!d(paramLong)))
         {
           paramSurfaceTexture = new StringBuilder();
           paramSurfaceTexture.append("openCamera failed, seq[");
@@ -991,9 +920,9 @@ public class AndroidCamera
           paramSurfaceTexture.append("]");
           QLog.w("AndroidCamera", 1, paramSurfaceTexture.toString());
           bool1 = bool2;
-          break label579;
+          break label580;
         }
-        if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+        if (this.k == null)
         {
           paramSurfaceTexture = new StringBuilder();
           paramSurfaceTexture.append("openCamera camera为空,setPreviewSize seq[");
@@ -1001,25 +930,25 @@ public class AndroidCamera
           paramSurfaceTexture.append("]");
           QLog.w("AndroidCamera", 1, paramSurfaceTexture.toString());
           bool1 = bool2;
-          break label579;
+          break label580;
         }
-        a(paramLong, jdField_a_of_type_Int, jdField_b_of_type_Int);
-        break label702;
+        a(paramLong, b, c);
+        break label703;
       }
-      int i1 = this.jdField_f_of_type_Int;
+      int i1 = this.l;
       if (i1 != 1)
       {
-        if ((i1 != 2) || (!b(paramLong))) {
-          break label708;
+        if ((i1 != 2) || (!d(paramLong))) {
+          break label709;
         }
-        a(paramLong, jdField_a_of_type_Int, jdField_b_of_type_Int);
+        a(paramLong, b, c);
       }
       else
       {
-        if (!a(paramLong)) {
-          break label708;
+        if (!c(paramLong)) {
+          break label709;
         }
-        a(paramLong, jdField_a_of_type_Int, jdField_b_of_type_Int);
+        a(paramLong, b, c);
       }
     }
     finally
@@ -1030,59 +959,59 @@ public class AndroidCamera
         boolean bool2;
         for (;;)
         {
-          label579:
+          label580:
           throw paramSurfaceTexture;
         }
-        label696:
+        label697:
         boolean bool1 = true;
         continue;
-        label702:
+        label703:
         bool1 = true;
         continue;
-        label708:
+        label709:
         bool1 = false;
         continue;
-        label714:
+        label715:
         bool1 = false;
       }
     }
     if (!bool1)
     {
-      this.jdField_f_of_type_Int = 0;
+      this.l = 0;
     }
     else
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentAvCameraCameraCallback != null) {
-          this.jdField_a_of_type_ComTencentAvCameraCameraCallback.a(paramLong, paramSurfaceTexture);
+        if (this.z != null) {
+          this.z.a(paramLong, paramSurfaceTexture);
         }
         if (paramSurfaceTexture != null) {
-          this.jdField_a_of_type_AndroidHardwareCamera.setPreviewTexture(paramSurfaceTexture);
+          this.k.setPreviewTexture(paramSurfaceTexture);
         }
-        this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
+        this.k.startPreview();
       }
       catch (Exception paramSurfaceTexture)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("setPreviewDisplay Exception, camera[");
-        if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
-          break label714;
+        if (this.k == null) {
+          break label715;
         }
       }
       bool1 = true;
       localStringBuilder.append(bool1);
       localStringBuilder.append("], isCameraOpened[");
-      localStringBuilder.append(jdField_b_of_type_Boolean);
+      localStringBuilder.append(e);
       localStringBuilder.append("], seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("]");
       QLog.w("AndroidCamera", 1, localStringBuilder.toString(), paramSurfaceTexture);
       bool1 = bool2;
-      if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+      if (this.k != null)
       {
-        this.jdField_a_of_type_AndroidHardwareCamera.release();
-        this.jdField_a_of_type_AndroidHardwareCamera = null;
+        this.k.release();
+        this.k = null;
         paramSurfaceTexture = new StringBuilder();
         paramSurfaceTexture.append("setPreviewDisplay fail, set camera null, seq[");
         paramSurfaceTexture.append(paramLong);
@@ -1091,7 +1020,7 @@ public class AndroidCamera
         bool1 = bool2;
       }
     }
-    jdField_b_of_type_Boolean = bool1;
+    e = bool1;
     paramSurfaceTexture = new StringBuilder();
     paramSurfaceTexture.append("openCamera end, result[");
     paramSurfaceTexture.append(bool1);
@@ -1115,11 +1044,11 @@ public class AndroidCamera
     {
       try
       {
-        int i1 = this.g;
+        int i1 = this.m;
         boolean bool2 = false;
         bool1 = bool2;
         if (i1 >= 1) {
-          if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+          if (this.k == null)
           {
             bool1 = bool2;
           }
@@ -1127,13 +1056,13 @@ public class AndroidCamera
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("reopenCamera, size[");
-            localStringBuilder.append(jdField_a_of_type_Int);
+            localStringBuilder.append(b);
             localStringBuilder.append(", ");
-            localStringBuilder.append(jdField_b_of_type_Int);
+            localStringBuilder.append(c);
             localStringBuilder.append("], mCurCamera[");
-            localStringBuilder.append(this.jdField_f_of_type_Int);
+            localStringBuilder.append(this.l);
             localStringBuilder.append("], isCameraOpened[");
-            localStringBuilder.append(jdField_b_of_type_Boolean);
+            localStringBuilder.append(e);
             localStringBuilder.append("], sizeFromParameter[");
             localStringBuilder.append(paramInt1);
             localStringBuilder.append(", ");
@@ -1150,20 +1079,20 @@ public class AndroidCamera
             }
             else
             {
-              i1 = jdField_a_of_type_Int;
-              paramInt1 = jdField_b_of_type_Int;
+              i1 = b;
+              paramInt1 = c;
             }
-            c(paramLong);
-            paramInt2 = this.jdField_f_of_type_Int;
+            e(paramLong);
+            paramInt2 = this.l;
             if (paramInt2 != 1)
             {
-              if ((paramInt2 != 2) || (!b(paramLong))) {
+              if ((paramInt2 != 2) || (!d(paramLong))) {
                 break label436;
               }
               a(paramLong, i1, paramInt1);
               break label430;
             }
-            if (!a(paramLong)) {
+            if (!c(paramLong)) {
               break label436;
             }
             a(paramLong, i1, paramInt1);
@@ -1171,19 +1100,19 @@ public class AndroidCamera
             a("reopenCamera", paramLong, i1, paramInt1);
             try
             {
-              if (this.jdField_a_of_type_ComTencentAvCameraCameraCallback != null) {
-                this.jdField_a_of_type_ComTencentAvCameraCameraCallback.a(paramLong, paramSurfaceTexture);
+              if (this.z != null) {
+                this.z.a(paramLong, paramSurfaceTexture);
               }
               if (paramSurfaceTexture != null) {
-                this.jdField_a_of_type_AndroidHardwareCamera.setPreviewTexture(paramSurfaceTexture);
+                this.k.setPreviewTexture(paramSurfaceTexture);
               }
-              this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
+              this.k.startPreview();
               bool1 = true;
             }
             catch (Exception paramSurfaceTexture)
             {
               bool1 = bool2;
-              if (AudioHelper.b())
+              if (AudioHelper.e())
               {
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append("reopenCamera, Exception, seq[");
@@ -1213,60 +1142,28 @@ public class AndroidCamera
     }
   }
   
-  protected int b()
-  {
-    StringBuilder localStringBuilder;
-    if (!MobileIssueSettings.h)
-    {
-      if (AudioHelper.b())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getNumberOfCamera, hardcode[");
-        localStringBuilder.append(KapalaiAdapterUtil.a().a());
-        localStringBuilder.append("]");
-        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-      }
-      return KapalaiAdapterUtil.a().a();
-    }
-    int i1;
-    int i2;
-    try
-    {
-      i1 = Camera.getNumberOfCameras();
-      i2 = i1;
-      try
-      {
-        if (!AudioHelper.b()) {
-          return i2;
-        }
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getNumberOfCamera, count[");
-        localStringBuilder.append(i1);
-        localStringBuilder.append("]");
-        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-        return i1;
-      }
-      catch (Exception localException1) {}
-      i2 = i1;
-    }
-    catch (Exception localException2)
-    {
-      i1 = 1;
-    }
-    if (AudioHelper.b())
-    {
-      QLog.w("AndroidCamera", 1, "getNumberOfCamera, Exception", localException2);
-      i2 = i1;
-    }
-    return i2;
-  }
-  
   int b(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (int i1 = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext, false, true, (byte)0, false);; i1 = ConfigSystemImpl.b(this.jdField_a_of_type_AndroidContentContext, false, true, (byte)0, false)) {
+    for (int i1 = ConfigSystemImpl.a(this.j, false, true, (byte)0, false);; i1 = ConfigSystemImpl.b(this.j, false, true, (byte)0, false)) {
       return i1 * 90;
     }
+  }
+  
+  public Camera.Parameters b()
+  {
+    try
+    {
+      Camera.Parameters localParameters = this.k.getParameters();
+      return localParameters;
+    }
+    catch (Exception localException)
+    {
+      if (AudioHelper.e()) {
+        QLog.w("AndroidCamera", 1, "getCameraParams, Exception", localException);
+      }
+    }
+    return null;
   }
   
   protected Camera.Size b(List<Camera.Size> paramList, int paramInt1, int paramInt2)
@@ -1278,7 +1175,7 @@ public class AndroidCamera
       localObject = (Camera.Size)localIterator.next();
       if ((((Camera.Size)localObject).width == paramInt1) && (((Camera.Size)localObject).height == paramInt2))
       {
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           paramList = new StringBuilder();
           paramList.append("getOptimalEqualPreviewSize1, width[");
@@ -1311,7 +1208,7 @@ public class AndroidCamera
           }
           localObject = (Camera.Size)localIterator.next();
         } while ((((Camera.Size)localObject).width != 640) || (((Camera.Size)localObject).height != 480));
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           paramList = new StringBuilder();
           paramList.append("getOptimalEqualPreviewSize2, width[");
@@ -1324,10 +1221,10 @@ public class AndroidCamera
         return localObject;
       }
     }
-    int i3 = jdField_a_of_type_Int;
-    int i4 = jdField_b_of_type_Int;
+    int i3 = b;
+    int i4 = c;
     paramList = a(paramList, i3, i4);
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getOptimalEqualPreviewSize3, width[");
@@ -1360,7 +1257,7 @@ public class AndroidCamera
   
   protected Camera b(long paramLong)
   {
-    this.i = 0;
+    this.r = 0;
     Object localObject4 = null;
     Object localObject3 = null;
     for (;;)
@@ -1369,21 +1266,21 @@ public class AndroidCamera
       Object localObject2;
       try
       {
-        if (this.g == 0) {
-          this.g = b();
+        if (this.m == 0) {
+          this.m = c();
         }
-        i1 = this.g;
+        i1 = this.m;
         if (i1 > 0)
         {
           Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
           i1 = 0;
           Object localObject1 = localObject4;
-          if (i1 >= this.g) {
+          if (i1 >= this.m) {
             break label468;
           }
           Camera.getCameraInfo(i1, localCameraInfo);
           int i2 = localCameraInfo.facing;
-          if (AudioHelper.b())
+          if (AudioHelper.e())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("openFrontFacingCamera, camIdx[");
@@ -1404,16 +1301,16 @@ public class AndroidCamera
             StringBuilder localStringBuilder2;
             try
             {
-              this.i = i1;
-              if (AudioHelper.b())
+              this.r = i1;
+              if (AudioHelper.e())
               {
                 localStringBuilder2 = new StringBuilder();
                 localStringBuilder2.append("openFrontFacingCamera, c[");
                 localStringBuilder2.append(localObject1);
                 localStringBuilder2.append("], mCameraId[");
-                localStringBuilder2.append(this.i);
+                localStringBuilder2.append(this.r);
                 localStringBuilder2.append("], mCameraNum[");
-                localStringBuilder2.append(this.g);
+                localStringBuilder2.append(this.m);
                 localStringBuilder2.append("], seq[");
                 localStringBuilder2.append(paramLong);
                 localStringBuilder2.append("]");
@@ -1426,7 +1323,7 @@ public class AndroidCamera
           }
           catch (RuntimeException localRuntimeException)
           {
-            this.i = 0;
+            this.r = 0;
             localStringBuilder2 = new StringBuilder();
             localStringBuilder2.append("openFrontFacingCamera, RuntimeException, seq[");
             localStringBuilder2.append(paramLong);
@@ -1436,12 +1333,12 @@ public class AndroidCamera
         }
         else
         {
-          if (!AudioHelper.b()) {
+          if (!AudioHelper.e()) {
             break label468;
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("openFrontFacingCamera, fail, mCameraNum[");
-          ((StringBuilder)localObject2).append(this.g);
+          ((StringBuilder)localObject2).append(this.m);
           ((StringBuilder)localObject2).append("], seq[");
           ((StringBuilder)localObject2).append(paramLong);
           ((StringBuilder)localObject2).append("]");
@@ -1466,75 +1363,6 @@ public class AndroidCamera
     }
   }
   
-  public boolean b()
-  {
-    int i1 = this.jdField_f_of_type_Int;
-    if (i1 == 0) {
-      return true;
-    }
-    return i1 == 1;
-  }
-  
-  protected boolean b(long paramLong)
-  {
-    boolean bool = jdField_b_of_type_Boolean;
-    try
-    {
-      jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidHardwareCamera = Camera.open();
-      if (AudioHelper.b())
-      {
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("openBackCamera, camera[");
-        localStringBuilder1.append(this.jdField_a_of_type_AndroidHardwareCamera);
-        localStringBuilder1.append("], seq[");
-        localStringBuilder1.append(paramLong);
-        localStringBuilder1.append("]");
-        QLog.w("AndroidCamera", 1, localStringBuilder1.toString());
-      }
-    }
-    catch (Exception localException)
-    {
-      jdField_b_of_type_Boolean = false;
-      Object localObject = this.jdField_a_of_type_AndroidHardwareCamera;
-      if (localObject != null)
-      {
-        ((Camera)localObject).release();
-        this.jdField_a_of_type_AndroidHardwareCamera = null;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("openBackCamera Exception, set camera null, seq[");
-        ((StringBuilder)localObject).append(paramLong);
-        ((StringBuilder)localObject).append("]");
-        QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString());
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("openBackCamera Exception, srcIsCameraOpened[");
-      ((StringBuilder)localObject).append(bool);
-      ((StringBuilder)localObject).append("], seq[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("]");
-      QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString(), localException);
-    }
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
-    {
-      this.jdField_f_of_type_Int = 2;
-      jdField_b_of_type_Boolean = true;
-      jdField_c_of_type_Boolean = false;
-      c();
-      if (AudioHelper.b())
-      {
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("openBackCamera, success, seq[");
-        localStringBuilder2.append(paramLong);
-        localStringBuilder2.append("]");
-        QLog.w("AndroidCamera", 1, localStringBuilder2.toString());
-      }
-      return true;
-    }
-    jdField_c_of_type_Boolean = false;
-    return false;
-  }
-  
   @TargetApi(11)
   public boolean b(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
@@ -1544,11 +1372,11 @@ public class AndroidCamera
     label219:
     try
     {
-      int i1 = this.g;
+      int i1 = this.m;
       bool2 = false;
       bool1 = bool2;
       if (i1 >= 1) {
-        if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+        if (this.k == null)
         {
           bool1 = bool2;
         }
@@ -1556,26 +1384,26 @@ public class AndroidCamera
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("switchCamera, mCurCamera[");
-          localStringBuilder.append(this.jdField_f_of_type_Int);
+          localStringBuilder.append(this.l);
           localStringBuilder.append("], seq[");
           localStringBuilder.append(paramLong);
           localStringBuilder.append("]");
           QLog.w("AndroidCamera", 1, localStringBuilder.toString());
-          c(paramLong);
-          i1 = this.jdField_f_of_type_Int;
+          e(paramLong);
+          i1 = this.l;
           if (i1 != 1)
           {
-            if ((i1 != 2) || (!a(paramLong))) {
+            if ((i1 != 2) || (!c(paramLong))) {
               break label171;
             }
-            a(paramLong, jdField_a_of_type_Int, jdField_b_of_type_Int);
+            a(paramLong, b, c);
           }
           else
           {
-            if (!b(paramLong)) {
+            if (!d(paramLong)) {
               break label171;
             }
-            a(paramLong, jdField_a_of_type_Int, jdField_b_of_type_Int);
+            a(paramLong, b, c);
           }
           bool1 = true;
           break label174;
@@ -1587,11 +1415,11 @@ public class AndroidCamera
     finally {}
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvCameraCameraCallback != null) {
-        this.jdField_a_of_type_ComTencentAvCameraCameraCallback.a(paramLong, paramSurfaceTexture);
+      if (this.z != null) {
+        this.z.a(paramLong, paramSurfaceTexture);
       }
-      this.jdField_a_of_type_AndroidHardwareCamera.setPreviewTexture(paramSurfaceTexture);
-      this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
+      this.k.setPreviewTexture(paramSurfaceTexture);
+      this.k.startPreview();
       bool1 = true;
     }
     catch (Exception paramSurfaceTexture)
@@ -1599,7 +1427,7 @@ public class AndroidCamera
       break label219;
     }
     boolean bool1 = bool2;
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       paramSurfaceTexture = new StringBuilder();
       paramSurfaceTexture.append("switchCamera, Exception, seq[");
@@ -1618,12 +1446,104 @@ public class AndroidCamera
   
   protected int c()
   {
-    if (jdField_a_of_type_Boolean) {
+    StringBuilder localStringBuilder;
+    if (!MobileIssueSettings.h)
+    {
+      if (AudioHelper.e())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNumberOfCamera, hardcode[");
+        localStringBuilder.append(KapalaiAdapterUtil.a().e());
+        localStringBuilder.append("]");
+        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
+      }
+      return KapalaiAdapterUtil.a().e();
+    }
+    int i1;
+    int i2;
+    try
+    {
+      i1 = Camera.getNumberOfCameras();
+      i2 = i1;
+      try
+      {
+        if (!AudioHelper.e()) {
+          return i2;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNumberOfCamera, count[");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("]");
+        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
+        return i1;
+      }
+      catch (Exception localException1) {}
+      i2 = i1;
+    }
+    catch (Exception localException2)
+    {
+      i1 = 1;
+    }
+    if (AudioHelper.e())
+    {
+      QLog.w("AndroidCamera", 1, "getNumberOfCamera, Exception", localException2);
+      i2 = i1;
+    }
+    return i2;
+  }
+  
+  public int c(boolean paramBoolean)
+  {
+    if (paramBoolean == true) {
+      return this.u;
+    }
+    return this.v;
+  }
+  
+  protected boolean c(long paramLong)
+  {
+    h = true;
+    this.k = a(paramLong);
+    StringBuilder localStringBuilder;
+    if (this.k == null)
+    {
+      if (AudioHelper.e())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openFrontCamera, fail, seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w("AndroidCamera", 1, localStringBuilder.toString());
+      }
+      e = false;
+      h = false;
+      return false;
+    }
+    if (this.m == 0) {
+      this.m = 2;
+    }
+    this.l = 1;
+    e = true;
+    h = false;
+    if (AudioHelper.e())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openFrontCamera, success, seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w("AndroidCamera", 1, localStringBuilder.toString());
+    }
+    return true;
+  }
+  
+  protected int d()
+  {
+    if (a) {
       return 0;
     }
     try
     {
-      int i1 = this.jdField_a_of_type_AndroidViewDisplay.getRotation();
+      int i1 = this.q.getRotation();
       return i1;
     }
     catch (Exception localException)
@@ -1633,20 +1553,72 @@ public class AndroidCamera
     return 0;
   }
   
-  public int c(boolean paramBoolean)
+  protected boolean d(long paramLong)
   {
-    if (paramBoolean == true) {
-      return this.l;
+    boolean bool = e;
+    try
+    {
+      h = true;
+      this.k = Camera.open();
+      if (AudioHelper.e())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("openBackCamera, camera[");
+        localStringBuilder1.append(this.k);
+        localStringBuilder1.append("], seq[");
+        localStringBuilder1.append(paramLong);
+        localStringBuilder1.append("]");
+        QLog.w("AndroidCamera", 1, localStringBuilder1.toString());
+      }
     }
-    return this.m;
+    catch (Exception localException)
+    {
+      e = false;
+      Object localObject = this.k;
+      if (localObject != null)
+      {
+        ((Camera)localObject).release();
+        this.k = null;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openBackCamera Exception, set camera null, seq[");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append("]");
+        QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openBackCamera Exception, srcIsCameraOpened[");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("AndroidCamera", 1, ((StringBuilder)localObject).toString(), localException);
+    }
+    if (this.k != null)
+    {
+      this.l = 2;
+      e = true;
+      h = false;
+      o();
+      if (AudioHelper.e())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("openBackCamera, success, seq[");
+        localStringBuilder2.append(paramLong);
+        localStringBuilder2.append("]");
+        QLog.w("AndroidCamera", 1, localStringBuilder2.toString());
+      }
+      return true;
+    }
+    h = false;
+    return false;
   }
   
-  public boolean c()
+  protected int e()
   {
-    return jdField_c_of_type_Boolean;
+    return 0;
   }
   
-  public boolean c(long paramLong)
+  public boolean e(long paramLong)
   {
     try
     {
@@ -1659,18 +1631,18 @@ public class AndroidCamera
       QLog.w("AndroidCamera", 1, localStringBuilder1.toString());
       try
       {
-        if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+        if (this.k != null)
         {
-          if (jdField_b_of_type_Boolean)
+          if (e)
           {
-            this.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(null);
-            this.jdField_a_of_type_AndroidHardwareCamera.stopPreview();
-            this.jdField_a_of_type_AndroidHardwareCamera.release();
+            this.k.setPreviewCallbackWithBuffer(null);
+            this.k.stopPreview();
+            this.k.release();
           }
-          if (this.jdField_a_of_type_ComTencentAvCameraCameraCallback != null) {
-            this.jdField_a_of_type_ComTencentAvCameraCameraCallback.a();
+          if (this.z != null) {
+            this.z.b();
           }
-          this.jdField_a_of_type_AndroidHardwareCamera = null;
+          this.k = null;
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("closeCamera, set camera null, seq[");
           localStringBuilder1.append(paramLong);
@@ -1686,7 +1658,7 @@ public class AndroidCamera
         localStringBuilder3.append("]");
         QLog.w("AndroidCamera", 1, localStringBuilder3.toString(), localException);
       }
-      jdField_b_of_type_Boolean = false;
+      e = false;
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("closeCamera end, camera[");
       localStringBuilder2.append(toString());
@@ -1700,26 +1672,16 @@ public class AndroidCamera
     finally {}
   }
   
-  protected int d()
+  protected int f()
   {
     return 0;
   }
   
-  public boolean d()
+  public int h()
   {
-    return jdField_b_of_type_Boolean;
-  }
-  
-  protected int e()
-  {
-    return 0;
-  }
-  
-  public int f()
-  {
-    if (jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_b_of_type_Int == -1)
+    if (i.b == -1)
     {
-      int i1 = this.jdField_f_of_type_Int;
+      int i1 = this.l;
       if (i1 == 1) {
         return 270;
       }
@@ -1727,31 +1689,60 @@ public class AndroidCamera
         return 90;
       }
     }
-    return jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_b_of_type_Int;
+    return i.b;
   }
   
-  public int g()
+  public int i()
   {
-    if ((!PhoneStatusTools.d()) && (jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_c_of_type_Int != -1)) {
-      return jdField_a_of_type_ComTencentAvCameraCameraInformation.jdField_c_of_type_Int;
+    if ((!PhoneStatusTools.d()) && (i.c != -1)) {
+      return i.c;
     }
     return 0;
+  }
+  
+  public boolean j()
+  {
+    int i1 = this.l;
+    if (i1 == 0) {
+      return true;
+    }
+    return i1 == 1;
+  }
+  
+  public boolean k()
+  {
+    return h;
+  }
+  
+  public boolean l()
+  {
+    return e;
+  }
+  
+  public void m()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resetCamera, mCurCamera[");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("->0]");
+    QLog.w("AndroidCamera", 1, localStringBuilder.toString());
+    this.l = 0;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isCameraOpened[");
-    localStringBuilder.append(jdField_b_of_type_Boolean);
+    localStringBuilder.append(e);
     localStringBuilder.append("], mCameraId[");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.r);
     localStringBuilder.append("], NUM[");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("], CUR[");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append("], camera[");
     boolean bool;
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null) {
+    if (this.k != null) {
       bool = true;
     } else {
       bool = false;

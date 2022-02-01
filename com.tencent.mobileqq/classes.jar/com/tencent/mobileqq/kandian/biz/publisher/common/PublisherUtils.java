@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.publisher.common;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Parcelable;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
 import com.tencent.mobileqq.kandian.repo.handler.BiuCommentInfo;
@@ -11,8 +9,6 @@ import com.tencent.mobileqq.kandian.repo.handler.JumpInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.RIJVideoPublishConfig;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig.Companion;
-import com.tencent.tkd.topicsdk.bean.TopicInfo;
-import com.tencent.tkd.topicsdk.bean.TopicInfo.Companion;
 import com.tencent.tkd.weibo.bean.EditObject;
 import com.tencent.tkd.weibo.bean.EditObject.EditObjectType;
 import java.io.Serializable;
@@ -26,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/common/PublisherUtils;", "", "()V", "convertEditObjectsToBiuCommentInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/handler/BiuCommentInfo;", "uin", "", "prependColon", "", "editObjects", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getCommentAfterObject", "position", "", "getCreateTopicInnerBundle", "Landroid/os/Bundle;", "context", "Landroid/content/Context;", "extra", "Lorg/json/JSONObject;", "getEditTopicInnerBundle", "getManageColumnConfigs", "getPublishArticleConfigs", "getPublishArticleInnerBundle", "putAtObjectIntoInfoList", "", "currentObject", "infoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "commentInfo", "putTopicObjectIntoInfoList", "putUrlObjectIntoInfoList", "putAddToTopic", "putAuthorityConfig", "putBottomPanelConfig", "putDeliverKDCommunityConfig", "putPrivacyConfig", "putTopicSubmitConfig", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/common/PublisherUtils;", "", "()V", "convertEditObjectsToBiuCommentInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/handler/BiuCommentInfo;", "uin", "", "prependColon", "", "editObjects", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getCommentAfterObject", "position", "", "getManageColumnConfigs", "Lorg/json/JSONObject;", "context", "Landroid/content/Context;", "getPublishArticleConfigs", "getPublishArticleInnerBundle", "Landroid/os/Bundle;", "extra", "putAtObjectIntoInfoList", "", "currentObject", "infoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "commentInfo", "putTopicObjectIntoInfoList", "putUrlObjectIntoInfoList", "putAuthorityConfig", "putBottomPanelConfig", "putDeliverKDCommunityConfig", "putPrivacyConfig", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class PublisherUtils
 {
   public static final PublisherUtils a = new PublisherUtils();
@@ -45,10 +41,7 @@ public final class PublisherUtils
   
   private final JSONObject a(Context paramContext)
   {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("publishScene", "rijugc");
-    a.a(localJSONObject, paramContext);
-    return localJSONObject;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private final void a(EditObject paramEditObject, ArrayList<BiuCommentInfo> paramArrayList, String paramString)
@@ -79,13 +72,13 @@ public final class PublisherUtils
   private final void a(@NotNull JSONObject paramJSONObject)
   {
     int i;
-    if (RIJVideoPublishConfig.d()) {
+    if (RIJVideoPublishConfig.c()) {
       i = 8;
     } else {
       i = 0;
     }
     int j = i;
-    if (RIJVideoPublishConfig.c()) {
+    if (RIJVideoPublishConfig.b()) {
       j = i + 16;
     }
     paramJSONObject.put("inputPanelConfig", j);
@@ -94,88 +87,53 @@ public final class PublisherUtils
   private final void a(@NotNull JSONObject paramJSONObject, Context paramContext)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("titleCountLimit", RIJUgcUtils.c());
-    localJSONObject.put("titleHint", paramContext.getResources().getString(2097807459));
-    localJSONObject.put("briefCountLimit", RIJUgcUtils.d());
-    localJSONObject.put("briefHint", paramContext.getResources().getString(2097807458));
-    paramJSONObject.put("topicPageConfig", localJSONObject);
-    localJSONObject = new JSONObject();
-    int i;
-    if (RIJUgcUtils.a() != 0) {
-      i = 1;
+    boolean bool;
+    if (RIJUgcUtils.p() == 0) {
+      bool = true;
     } else {
-      i = 0;
+      bool = false;
     }
-    localJSONObject.put("showSubmit", i);
-    localJSONObject.put("allowSubmit", 0);
-    localJSONObject.put("allowSubmitTitle", RIJUgcUtils.a(1, paramContext));
-    localJSONObject.put("allowSubmitDesc", RIJUgcUtils.b(1, paramContext));
-    localJSONObject.put("forbidSubmitTitle", RIJUgcUtils.a(0, paramContext));
-    localJSONObject.put("forbidSubmitDesc", RIJUgcUtils.b(0, paramContext));
-    paramJSONObject.put("topicSubmitConfig", localJSONObject);
-  }
-  
-  private final JSONObject b(Context paramContext)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    localJSONObject.put("showPrivacy", bool);
+    localJSONObject.put("defaultPrivacy", RIJUgcUtils.q());
+    localJSONObject.put("publicAndNotifyTitle", RIJUgcUtils.c(paramContext));
+    localJSONObject.put("publicAndNotifyDesc", RIJUgcUtils.d(paramContext));
+    localJSONObject.put("publicTitle", RIJUgcUtils.e(paramContext));
+    localJSONObject.put("publicDesc", RIJUgcUtils.f(paramContext));
+    localJSONObject.put("privateTitle", RIJUgcUtils.g(paramContext));
+    localJSONObject.put("privateDesc", RIJUgcUtils.h(paramContext));
+    paramJSONObject.put("privacyConfig", localJSONObject);
   }
   
   private final void b(EditObject paramEditObject, ArrayList<BiuCommentInfo> paramArrayList, String paramString1, String paramString2)
   {
-    paramArrayList.add(new BiuCommentInfo(paramString1, Long.valueOf(0L), paramString2, 3, new JumpInfo(0L, HardCodeUtil.a(2131715777), paramEditObject.getId())));
+    paramArrayList.add(new BiuCommentInfo(paramString1, Long.valueOf(0L), paramString2, 3, new JumpInfo(0L, HardCodeUtil.a(2131913235), paramEditObject.getId())));
   }
   
   private final void b(@NotNull JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("showAuthority", RIJVideoPublishConfig.a());
-    localJSONObject.put("allowReprint", RIJVideoPublishConfig.b());
     paramJSONObject.put("authorityConfig", localJSONObject);
-  }
-  
-  private final void b(@NotNull JSONObject paramJSONObject, Context paramContext)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    boolean bool;
-    if (RIJUgcUtils.f() == 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localJSONObject.put("showPrivacy", bool);
-    localJSONObject.put("defaultPrivacy", RIJUgcUtils.g());
-    localJSONObject.put("publicAndNotifyTitle", RIJUgcUtils.d(paramContext));
-    localJSONObject.put("publicAndNotifyDesc", RIJUgcUtils.e(paramContext));
-    localJSONObject.put("publicTitle", RIJUgcUtils.f(paramContext));
-    localJSONObject.put("publicDesc", RIJUgcUtils.g(paramContext));
-    localJSONObject.put("privateTitle", RIJUgcUtils.h(paramContext));
-    localJSONObject.put("privateDesc", RIJUgcUtils.i(paramContext));
-    paramJSONObject.put("privacyConfig", localJSONObject);
   }
   
   private final void c(@NotNull JSONObject paramJSONObject)
   {
-    if (RIJVideoPublishConfig.a.f()) {
-      paramJSONObject.put("showKDCommunity", true);
+    if (RIJVideoPublishConfig.a.e()) {
+      paramJSONObject.put("ownerType", 5);
     }
-  }
-  
-  private final void d(@NotNull JSONObject paramJSONObject)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   @NotNull
   public final Bundle a(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    JSONObject localJSONObject = a(paramContext);
+    Bundle localBundle = new Bundle();
+    paramContext = a(paramContext);
     if (paramJSONObject != null) {
-      PublisherUtilsKt.a(localJSONObject, paramJSONObject);
+      PublisherUtilsKt.a(paramContext, paramJSONObject);
     }
-    paramJSONObject = new Bundle();
-    paramJSONObject.putSerializable("global_publisher_config", (Serializable)GlobalPublisherConfig.Companion.a(GlobalPublisherConfig.Companion, a.a(paramContext), null, 2, null));
-    return paramJSONObject;
+    localBundle.putSerializable("global_publisher_config", (Serializable)GlobalPublisherConfig.Companion.a(GlobalPublisherConfig.Companion, paramContext, null, 2, null));
+    return localBundle;
   }
   
   @NotNull
@@ -219,7 +177,7 @@ public final class PublisherUtils
         localObject = (EditObject)paramList.get(i);
         String str2 = a(i, paramList);
         EditObject.EditObjectType localEditObjectType = ((EditObject)localObject).getType();
-        int k = PublisherUtils.WhenMappings.a[localEditObjectType.ordinal()];
+        int k = PublisherUtils.WhenMappings.$EnumSwitchMapping$0[localEditObjectType.ordinal()];
         if (k != 1)
         {
           if (k != 2)
@@ -240,37 +198,10 @@ public final class PublisherUtils
     }
     return (List)localArrayList;
   }
-  
-  @NotNull
-  public final Bundle b(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = a(paramContext);
-    if (paramJSONObject != null) {
-      PublisherUtilsKt.a(paramContext, paramJSONObject);
-    }
-    paramJSONObject = new Bundle();
-    paramJSONObject.putParcelable("topic_info", (Parcelable)TopicInfo.Companion.a(paramContext));
-    paramJSONObject.putSerializable("global_publisher_config", (Serializable)GlobalPublisherConfig.Companion.a(GlobalPublisherConfig.Companion, paramContext, null, 2, null));
-    return paramJSONObject;
-  }
-  
-  @NotNull
-  public final Bundle c(@NotNull Context paramContext, @Nullable JSONObject paramJSONObject)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Bundle localBundle = new Bundle();
-    paramContext = b(paramContext);
-    if (paramJSONObject != null) {
-      PublisherUtilsKt.a(paramContext, paramJSONObject);
-    }
-    localBundle.putSerializable("global_publisher_config", (Serializable)GlobalPublisherConfig.Companion.a(GlobalPublisherConfig.Companion, paramContext, null, 2, null));
-    return localBundle;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.common.PublisherUtils
  * JD-Core Version:    0.7.0.1
  */

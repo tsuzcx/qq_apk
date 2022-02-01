@@ -8,22 +8,22 @@ public abstract class BaseVidListPlayingListSync
   extends DefaultPlayerVideoListSynchronizer
   implements DefaultPlayerVideoListSynchronizer.RetryableSynchronizer
 {
-  protected IVidToVideoInfoPuller a;
-  protected String a;
+  protected IVidToVideoInfoPuller b;
+  protected String c;
   
   protected abstract IVidToVideoInfoPuller a();
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller = a();
-      localIVidToVideoInfoPuller = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller;
+      this.b = a();
+      localIVidToVideoInfoPuller = this.b;
       if (localIVidToVideoInfoPuller != null) {
-        localIVidToVideoInfoPuller.a(this.jdField_a_of_type_Boolean);
+        localIVidToVideoInfoPuller.a(this.a);
       }
     }
-    IVidToVideoInfoPuller localIVidToVideoInfoPuller = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller;
+    IVidToVideoInfoPuller localIVidToVideoInfoPuller = this.b;
     if (localIVidToVideoInfoPuller != null) {
       localIVidToVideoInfoPuller.a();
     }
@@ -36,7 +36,7 @@ public abstract class BaseVidListPlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BaseVidListPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

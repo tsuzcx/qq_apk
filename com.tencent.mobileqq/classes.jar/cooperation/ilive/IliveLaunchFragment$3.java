@@ -14,9 +14,9 @@ class IliveLaunchFragment$3
   public void run()
   {
     ElapseStat.a("IliveLaunch executeOnSubThread");
-    IlivePluginDownloadManager.a().b();
+    IlivePluginDownloadManager.a().i();
     IlivePluginDownloadManager.a().a(this.this$0);
-    IliveLaunchFragment.access$102(this.this$0, IlivePluginDownloadManager.a().b());
+    IliveLaunchFragment.access$102(this.this$0, IlivePluginDownloadManager.a().k());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onCreateView thread isPluginFileExist = ");
     ((StringBuilder)localObject).append(IliveLaunchFragment.access$100(this.this$0));
@@ -26,8 +26,8 @@ class IliveLaunchFragment$3
     if ((IliveLaunchFragment.access$100(this.this$0)) && (IliveLaunchFragment.access$200(this.this$0)))
     {
       IliveLaunchFragment localIliveLaunchFragment = this.this$0;
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      if (this.jdField_a_of_type_Boolean) {
+      Context localContext = this.a;
+      if (this.b) {
         localObject = new Intent();
       } else if (localIliveLaunchFragment.getBaseActivity() == null) {
         localObject = new Intent();
@@ -37,7 +37,7 @@ class IliveLaunchFragment$3
       localIliveLaunchFragment.enterPlugin(localContext, (Intent)localObject);
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       IliveLaunchFragment.access$300(this.this$0);
     }
     IliveLaunchFragment.access$400(this.this$0);
@@ -46,7 +46,7 @@ class IliveLaunchFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ class AVGameControlUIImpl$4
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if ((AVGameControlUIImpl.a(this.a)) && (this.a.a != null)) {
-      this.a.a.a(i);
+    if ((AVGameControlUIImpl.e(this.a)) && (this.a.r != null)) {
+      this.a.r.a(i);
     }
   }
 }

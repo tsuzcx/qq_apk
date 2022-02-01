@@ -15,14 +15,14 @@ public class OpenDefaultBrowserQQText
   {
     Object localObject = paramObject;
     if ((paramObject instanceof LinkSpan)) {
-      localObject = new OpenDefaultBrowserQQText.DefaultBrowserLinkSpan(this, ((LinkSpan)paramObject).a);
+      localObject = new OpenDefaultBrowserQQText.DefaultBrowserLinkSpan(this, ((LinkSpan)paramObject).b);
     }
     super.addSpan(localObject, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.OpenDefaultBrowserQQText
  * JD-Core Version:    0.7.0.1
  */

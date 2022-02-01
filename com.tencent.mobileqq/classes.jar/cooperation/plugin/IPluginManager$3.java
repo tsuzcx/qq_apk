@@ -15,18 +15,18 @@ final class IPluginManager$3
     }
     IPluginManager.a(paramPluginManagerClient);
     IPluginManager.a(null);
-    while (!IPluginManager.a().isEmpty())
+    while (!IPluginManager.c().isEmpty())
     {
-      paramPluginManagerClient = (IPluginManager.WaitingCommand)IPluginManager.a().poll();
+      paramPluginManagerClient = (IPluginManager.WaitingCommand)IPluginManager.c().poll();
       if (paramPluginManagerClient != null) {
-        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+        IPluginManager.b(paramPluginManagerClient.a, paramPluginManagerClient.b, paramPluginManagerClient.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.3
  * JD-Core Version:    0.7.0.1
  */

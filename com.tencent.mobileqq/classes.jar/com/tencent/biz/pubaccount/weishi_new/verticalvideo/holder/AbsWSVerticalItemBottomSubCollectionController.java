@@ -18,87 +18,87 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeac
 public abstract class AbsWSVerticalItemBottomSubCollectionController
   extends AbsWsVerticalUIGroup
 {
-  protected stSimpleMetaFeed a;
-  protected TextView a;
-  protected WSVerticalPageFragment a;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  protected TextView g;
+  protected WSVerticalPageFragment h;
+  protected stSimpleMetaFeed i;
+  private View j;
+  private TextView k;
   
   public AbsWSVerticalItemBottomSubCollectionController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.h = paramWSVerticalVideoHolder.d;
     }
   }
   
-  private GradientDrawable a()
+  private GradientDrawable n()
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(WeishiUIUtil.h);
+    localGradientDrawable.setCornerRadius(WeishiUIUtil.i);
     localGradientDrawable.setColor(Color.parseColor("#2F2F2F"));
     return localGradientDrawable;
   }
   
-  private void f()
+  private void o()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a().b();
+    this.h.v().c();
   }
-  
-  protected abstract String a();
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
     if (localWSVerticalItemData != null) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+      this.i = localWSVerticalItemData.b();
     }
-  }
-  
-  protected abstract boolean a();
-  
-  protected int b()
-  {
-    return 2131560033;
   }
   
   protected void b()
   {
-    if (a())
+    if (l())
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(a());
+      this.j.setVisibility(0);
+      this.k.setText(m());
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.j.setVisibility(8);
   }
   
-  protected void c() {}
-  
-  protected void c(int paramInt)
+  protected void d(int paramInt)
   {
-    if (a()) {
-      WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
+    if (l()) {
+      WSVerticalBeaconReport.a(this.h.k(), this.h.l(), this.i, ((WSVerticalPageContract.Presenter)this.h.aO_()).n());
     }
   }
   
-  protected void d(int paramInt) {}
+  protected void e(int paramInt) {}
   
-  protected void e()
+  protected void f() {}
+  
+  protected int i()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131380447);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new AbsWSVerticalItemBottomSubCollectionController.1(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131380449));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380448));
-    FrameLayout localFrameLayout = (FrameLayout)a(2131366907);
-    this.jdField_a_of_type_AndroidWidgetTextView.setRotation(270.0F);
-    localFrameLayout.setBackgroundDrawable(a());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundColor(WSFeedUtils.b(2131165336));
+    return 2131626077;
   }
+  
+  protected void j()
+  {
+    this.j = c(2131449399);
+    this.j.setOnClickListener(new AbsWSVerticalItemBottomSubCollectionController.1(this));
+    this.k = ((TextView)c(2131449401));
+    this.g = ((TextView)c(2131449400));
+    FrameLayout localFrameLayout = (FrameLayout)c(2131433245);
+    this.g.setRotation(270.0F);
+    localFrameLayout.setBackgroundDrawable(n());
+    this.j.setBackgroundColor(WSFeedUtils.g(2131165578));
+  }
+  
+  protected abstract boolean l();
+  
+  protected abstract String m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.AbsWSVerticalItemBottomSubCollectionController
  * JD-Core Version:    0.7.0.1
  */

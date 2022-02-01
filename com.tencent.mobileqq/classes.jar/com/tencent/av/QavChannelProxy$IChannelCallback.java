@@ -2,13 +2,13 @@ package com.tencent.av;
 
 public abstract interface QavChannelProxy$IChannelCallback
 {
-  public abstract void a();
-  
   public abstract void a(String paramString, long paramLong);
   
   public abstract boolean a();
   
   public abstract void b();
+  
+  public abstract void c();
 }
 
 

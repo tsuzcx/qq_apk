@@ -12,129 +12,129 @@ import com.google.android.material.color.MaterialColors;
 final class CircularIndeterminateAnimatorDelegate
   extends IndeterminateAnimatorDelegate<ObjectAnimator>
 {
-  private static final Property<CircularIndeterminateAnimatorDelegate, Float> jdField_a_of_type_AndroidUtilProperty = new CircularIndeterminateAnimatorDelegate.3(Float.class, "animationFraction");
-  private static final Property<CircularIndeterminateAnimatorDelegate, Float> jdField_b_of_type_AndroidUtilProperty = new CircularIndeterminateAnimatorDelegate.4(Float.class, "completeEndFraction");
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 0, 1350, 2700, 4050 };
-  private static final int[] c = { 667, 2017, 3367, 4717 };
-  private static final int[] d = { 1000, 2350, 3700, 5050 };
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private final FastOutSlowInInterpolator jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator;
-  Animatable2Compat.AnimationCallback jdField_a_of_type_AndroidxVectordrawableGraphicsDrawableAnimatable2Compat$AnimationCallback = null;
-  private final BaseProgressIndicatorSpec jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec;
-  private float jdField_b_of_type_Float;
-  private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
+  private static final int[] e = { 0, 1350, 2700, 4050 };
+  private static final int[] f = { 667, 2017, 3367, 4717 };
+  private static final int[] g = { 1000, 2350, 3700, 5050 };
+  private static final Property<CircularIndeterminateAnimatorDelegate, Float> o = new CircularIndeterminateAnimatorDelegate.3(Float.class, "animationFraction");
+  private static final Property<CircularIndeterminateAnimatorDelegate, Float> p = new CircularIndeterminateAnimatorDelegate.4(Float.class, "completeEndFraction");
+  Animatable2Compat.AnimationCallback a = null;
+  private ObjectAnimator h;
+  private ObjectAnimator i;
+  private final FastOutSlowInInterpolator j;
+  private final BaseProgressIndicatorSpec k;
+  private int l = 0;
+  private float m;
+  private float n;
   
   public CircularIndeterminateAnimatorDelegate(@NonNull CircularProgressIndicatorSpec paramCircularProgressIndicatorSpec)
   {
     super(1);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec = paramCircularProgressIndicatorSpec;
-    this.jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator = new FastOutSlowInInterpolator();
-  }
-  
-  private float a()
-  {
-    return this.jdField_a_of_type_Float;
+    this.k = paramCircularProgressIndicatorSpec;
+    this.j = new FastOutSlowInInterpolator();
   }
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float * 1520.0F - 20.0F);
-    this.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_a_of_type_Float * 1520.0F);
-    int i = 0;
-    while (i < 4)
+    this.c[0] = (this.m * 1520.0F - 20.0F);
+    this.c[1] = (this.m * 1520.0F);
+    int i1 = 0;
+    while (i1 < 4)
     {
-      float f = a(paramInt, jdField_b_of_type_ArrayOfInt[i], 667);
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      arrayOfFloat[1] += this.jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator.getInterpolation(f) * 250.0F;
-      f = a(paramInt, c[i], 667);
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      arrayOfFloat[0] += this.jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator.getInterpolation(f) * 250.0F;
-      i += 1;
+      float f1 = a(paramInt, e[i1], 667);
+      arrayOfFloat = this.c;
+      arrayOfFloat[1] += this.j.getInterpolation(f1) * 250.0F;
+      f1 = a(paramInt, f[i1], 667);
+      arrayOfFloat = this.c;
+      arrayOfFloat[0] += this.j.getInterpolation(f1) * 250.0F;
+      i1 += 1;
     }
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    arrayOfFloat[0] += (this.jdField_a_of_type_ArrayOfFloat[1] - this.jdField_a_of_type_ArrayOfFloat[0]) * this.jdField_b_of_type_Float;
-    arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.c;
+    arrayOfFloat[0] += (this.c[1] - this.c[0]) * this.n;
+    arrayOfFloat = this.c;
     arrayOfFloat[0] /= 360.0F;
-    arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    arrayOfFloat = this.c;
     arrayOfFloat[1] /= 360.0F;
-  }
-  
-  private float b()
-  {
-    return this.jdField_b_of_type_Float;
   }
   
   private void b(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.n = paramFloat;
   }
   
   private void b(int paramInt)
   {
-    int i = 0;
-    while (i < 4)
+    int i1 = 0;
+    while (i1 < 4)
     {
-      float f = a(paramInt, d[i], 333);
-      if ((f >= 0.0F) && (f <= 1.0F))
+      float f1 = a(paramInt, g[i1], 333);
+      if ((f1 >= 0.0F) && (f1 <= 1.0F))
       {
-        i = (i + this.jdField_a_of_type_Int) % this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.jdField_a_of_type_ArrayOfInt.length;
-        int j = this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.jdField_a_of_type_ArrayOfInt.length;
-        paramInt = MaterialColors.b(this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.jdField_a_of_type_ArrayOfInt[i], this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable.getAlpha());
-        i = MaterialColors.b(this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.jdField_a_of_type_ArrayOfInt[((i + 1) % j)], this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable.getAlpha());
-        f = this.jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator.getInterpolation(f);
-        this.jdField_a_of_type_ArrayOfInt[0] = ArgbEvaluatorCompat.a().a(f, Integer.valueOf(paramInt), Integer.valueOf(i)).intValue();
+        i1 = (i1 + this.l) % this.k.c.length;
+        int i2 = this.k.c.length;
+        paramInt = MaterialColors.b(this.k.c[i1], this.b.getAlpha());
+        i1 = MaterialColors.b(this.k.c[((i1 + 1) % i2)], this.b.getAlpha());
+        f1 = this.j.getInterpolation(f1);
+        this.d[0] = ArgbEvaluatorCompat.a().a(f1, Integer.valueOf(paramInt), Integer.valueOf(i1)).intValue();
         return;
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
+    if (this.h == null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, jdField_a_of_type_AndroidUtilProperty, new float[] { 0.0F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(5400L);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(null);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new CircularIndeterminateAnimatorDelegate.1(this));
+      this.h = ObjectAnimator.ofFloat(this, o, new float[] { 0.0F, 1.0F });
+      this.h.setDuration(5400L);
+      this.h.setInterpolator(null);
+      this.h.setRepeatCount(-1);
+      this.h.addListener(new CircularIndeterminateAnimatorDelegate.1(this));
     }
-    if (this.jdField_b_of_type_AndroidAnimationObjectAnimator == null)
+    if (this.i == null)
     {
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, jdField_b_of_type_AndroidUtilProperty, new float[] { 0.0F, 1.0F });
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator.setDuration(333L);
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator.setInterpolator(this.jdField_a_of_type_AndroidxInterpolatorViewAnimationFastOutSlowInInterpolator);
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator.addListener(new CircularIndeterminateAnimatorDelegate.2(this));
+      this.i = ObjectAnimator.ofFloat(this, p, new float[] { 0.0F, 1.0F });
+      this.i.setDuration(333L);
+      this.i.setInterpolator(this.j);
+      this.i.addListener(new CircularIndeterminateAnimatorDelegate.2(this));
     }
+  }
+  
+  private float h()
+  {
+    return this.m;
+  }
+  
+  private float i()
+  {
+    return this.n;
   }
   
   void a()
   {
     g();
     f();
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.h.start();
   }
   
   @VisibleForTesting
   void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    int i = (int)(this.jdField_a_of_type_Float * 5400.0F);
-    a(i);
-    b(i);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable.invalidateSelf();
+    this.m = paramFloat;
+    int i1 = (int)(this.m * 5400.0F);
+    a(i1);
+    b(i1);
+    this.b.invalidateSelf();
   }
   
   public void a(@NonNull Animatable2Compat.AnimationCallback paramAnimationCallback)
   {
-    this.jdField_a_of_type_AndroidxVectordrawableGraphicsDrawableAnimatable2Compat$AnimationCallback = paramAnimationCallback;
+    this.a = paramAnimationCallback;
   }
   
   void b()
   {
-    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+    ObjectAnimator localObjectAnimator = this.h;
     if (localObjectAnimator != null) {
       localObjectAnimator.cancel();
     }
@@ -142,12 +142,12 @@ final class CircularIndeterminateAnimatorDelegate
   
   void c()
   {
-    if (this.jdField_b_of_type_AndroidAnimationObjectAnimator.isRunning()) {
+    if (this.i.isRunning()) {
       return;
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable.isVisible())
+    if (this.b.isVisible())
     {
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator.start();
+      this.i.start();
       return;
     }
     b();
@@ -160,20 +160,20 @@ final class CircularIndeterminateAnimatorDelegate
   
   public void e()
   {
-    this.jdField_a_of_type_AndroidxVectordrawableGraphicsDrawableAnimatable2Compat$AnimationCallback = null;
+    this.a = null;
   }
   
   @VisibleForTesting
   void f()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfInt[0] = MaterialColors.b(this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable.getAlpha());
-    this.jdField_b_of_type_Float = 0.0F;
+    this.l = 0;
+    this.d[0] = MaterialColors.b(this.k.c[0], this.b.getAlpha());
+    this.n = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.CircularIndeterminateAnimatorDelegate
  * JD-Core Version:    0.7.0.1
  */

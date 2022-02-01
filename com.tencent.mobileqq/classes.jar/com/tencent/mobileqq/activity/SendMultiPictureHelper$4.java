@@ -12,7 +12,7 @@ class SendMultiPictureHelper$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.b = true;
+    paramDialogInterface.m = true;
     SendMultiPictureHelper.b(paramDialogInterface);
     this.a.a.setResult(-1);
     this.a.a.finish();
@@ -20,7 +20,7 @@ class SendMultiPictureHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.4
  * JD-Core Version:    0.7.0.1
  */

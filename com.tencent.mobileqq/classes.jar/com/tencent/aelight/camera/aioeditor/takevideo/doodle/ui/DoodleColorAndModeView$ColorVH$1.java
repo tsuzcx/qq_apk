@@ -12,40 +12,40 @@ class DoodleColorAndModeView$ColorVH$1
   
   public void onClick(View paramView)
   {
-    if (DoodleColorAndModeView.c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView))
+    if (DoodleColorAndModeView.h(this.b.a))
     {
       AEQLog.a("DoodleColorAndModeView", "click color item, but now is disable");
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.getAdapterPosition();
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView;
+    int i = this.b.getAdapterPosition();
+    paramView = this.b.a;
     boolean bool;
-    if (i >= DoodleColorAndModeView.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView)) {
+    if (i >= DoodleColorAndModeView.d(this.b.a)) {
       bool = true;
     } else {
       bool = false;
     }
     DoodleColorAndModeView.a(paramView, bool);
-    if (i < DoodleColorAndModeView.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView))
+    if (i < DoodleColorAndModeView.d(this.b.a))
     {
-      if (DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView) != null) {
-        DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView).a(0, 0);
+      if (DoodleColorAndModeView.c(this.b.a) != null) {
+        DoodleColorAndModeView.c(this.b.a).a(0, 0);
       }
     }
     else
     {
-      i = ((Integer)DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView).get(i - DoodleColorAndModeView.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView))).intValue();
-      if (DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView) != null) {
-        DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView).a(1, i);
+      i = ((Integer)DoodleColorAndModeView.f(this.b.a).get(i - DoodleColorAndModeView.d(this.b.a))).intValue();
+      if (DoodleColorAndModeView.c(this.b.a) != null) {
+        DoodleColorAndModeView.c(this.b.a).a(1, i);
       }
-      DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView, i);
+      DoodleColorAndModeView.a(this.b.a, i);
     }
-    DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView$ColorVH.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView).notifyDataSetChanged();
+    DoodleColorAndModeView.i(this.b.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView.ColorVH.1
  * JD-Core Version:    0.7.0.1
  */

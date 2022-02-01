@@ -47,7 +47,7 @@ public class QrcodeHbGuiderActivity
   
   private void init()
   {
-    new ImmersionBar(this, -468046, findViewById(R.id.bX));
+    new ImmersionBar(this, -468046, findViewById(R.id.ck));
     initView();
     initParams();
     initListener();
@@ -86,12 +86,12 @@ public class QrcodeHbGuiderActivity
   
   private void initView()
   {
-    this.mSendBtn = ((Button)findViewById(R.id.bk));
-    this.mTitleText = ((TextView)findViewById(R.id.aw));
-    this.mTitleText.setText(HardCodeUtil.a(R.string.bQ));
-    this.mBackView = ((TextView)findViewById(R.id.at));
-    this.mConfirmView = ((TextView)findViewById(R.id.av));
-    this.mConfirmView.setText(HardCodeUtil.a(R.string.bP));
+    this.mSendBtn = ((Button)findViewById(R.id.bu));
+    this.mTitleText = ((TextView)findViewById(R.id.aE));
+    this.mTitleText.setText(HardCodeUtil.a(R.string.bU));
+    this.mBackView = ((TextView)findViewById(R.id.aB));
+    this.mConfirmView = ((TextView)findViewById(R.id.aD));
+    this.mConfirmView.setText(HardCodeUtil.a(R.string.bT));
   }
   
   public void addUploadData(String paramString)
@@ -115,7 +115,7 @@ public class QrcodeHbGuiderActivity
       localNameNotFoundException.printStackTrace();
     }
     localStringBuilder1.append("|");
-    localStringBuilder1.append(CommonUtil.a());
+    localStringBuilder1.append(CommonUtil.b());
     localStringBuilder1.append("|");
     localStringBuilder1.append(this.mComeFrom);
     localStringBuilder1.append(".");
@@ -229,20 +229,20 @@ public class QrcodeHbGuiderActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.bk)
+    if (i == R.id.bu)
     {
       go2SendHb();
       addUploadData("face2face.index.go");
       finish();
       return;
     }
-    if (i == R.id.at)
+    if (i == R.id.aB)
     {
       addUploadData("face2face.index.back");
       finish();
       return;
     }
-    if (i == R.id.av) {
+    if (i == R.id.aD) {
       go2HbList();
     }
   }
@@ -260,7 +260,7 @@ public class QrcodeHbGuiderActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.QrcodeHbGuiderActivity
  * JD-Core Version:    0.7.0.1
  */

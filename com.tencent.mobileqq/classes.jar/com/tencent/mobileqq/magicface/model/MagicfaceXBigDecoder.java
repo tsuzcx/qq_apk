@@ -6,42 +6,42 @@ import com.tencent.qphone.base.util.QLog;
 public class MagicfaceXBigDecoder
   extends MagicfaceFFMepgDecoder
 {
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  Runnable jdField_a_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.1(this);
-  Object jdField_b_of_type_JavaLangObject = new Object();
-  Runnable jdField_b_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.2(this);
-  volatile boolean jdField_b_of_type_Boolean = false;
+  Runnable A = new MagicfaceXBigDecoder.2(this);
+  Object w = new Object();
+  Object x = new Object();
+  volatile boolean y = false;
+  Runnable z = new MagicfaceXBigDecoder.1(this);
   
   public MagicfaceXBigDecoder()
   {
     if (QLog.isColorLevel()) {
       QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder();
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder();
+    this.g = new DecoderUtil();
+    this.g.createVideoDecoder();
+    this.g.createAlphaDecoder();
   }
   
   public void a()
   {
     try
     {
-      this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.b;
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
+      this.h = this.a.d;
+      if (this.h == null) {
         return;
       }
-      this.d = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.jdField_a_of_type_ArrayOfByte;
-      if (this.d == null) {
+      this.o = this.a.c;
+      if (this.o == null) {
         return;
       }
       b();
-      if (this.c != null)
+      if (this.j != null)
       {
-        if (this.f == null) {
+        if (this.q == null) {
           return;
         }
-        new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
-        this.jdField_a_of_type_JavaLangRunnable.run();
+        new Thread(this.A).start();
+        this.z.run();
         return;
       }
       return;
@@ -63,8 +63,8 @@ public class MagicfaceXBigDecoder
   {
     try
     {
-      this.c = new byte[921600];
-      this.f = new byte[921600];
+      this.j = new byte[921600];
+      this.q = new byte[921600];
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -78,13 +78,13 @@ public class MagicfaceXBigDecoder
     if (QLog.isColorLevel()) {
       QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder release=");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
+    if (this.g != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+      this.g.releaseAlphaDecoder();
+      this.g.releaseVideoDecoder();
       label37:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
+      this.g = null;
       super.c();
       return;
     }
@@ -96,7 +96,7 @@ public class MagicfaceXBigDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder
  * JD-Core Version:    0.7.0.1
  */

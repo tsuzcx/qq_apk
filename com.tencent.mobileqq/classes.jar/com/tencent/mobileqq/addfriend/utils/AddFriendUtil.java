@@ -60,25 +60,6 @@ public class AddFriendUtil
     return paramString;
   }
   
-  public static String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if (i >= 2)
-      {
-        int j = i - 2;
-        if (Character.isHighSurrogate(paramString.charAt(j)))
-        {
-          paramString = paramString.substring(0, j);
-          continue;
-        }
-      }
-      paramString = paramString.substring(0, i - 1);
-    }
-    return paramString;
-  }
-  
   public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, HttpWebCgiAsyncTask.Callback paramCallback, int paramInt, Bundle paramBundle)
   {
     Bundle localBundle = new Bundle();
@@ -134,10 +115,29 @@ public class AddFriendUtil
   {
     return (!EAddFriendSourceID.a(paramInt)) && (paramInt != 3016) && (paramInt != 3024) && (!TextUtils.isEmpty(paramString)) && (paramInt != 3093) && (!paramString.equals(String.valueOf(0L)));
   }
+  
+  public static String b(String paramString)
+  {
+    while (a(paramString) > 32)
+    {
+      int i = paramString.length();
+      if (i >= 2)
+      {
+        int j = i - 2;
+        if (Character.isHighSurrogate(paramString.charAt(j)))
+        {
+          paramString = paramString.substring(0, j);
+          continue;
+        }
+      }
+      paramString = paramString.substring(0, i - 1);
+    }
+    return paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.utils.AddFriendUtil
  * JD-Core Version:    0.7.0.1
  */

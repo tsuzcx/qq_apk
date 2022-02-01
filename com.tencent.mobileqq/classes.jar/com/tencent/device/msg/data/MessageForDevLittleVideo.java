@@ -67,11 +67,11 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return HardCodeUtil.a(2131706614);
+        return HardCodeUtil.a(2131904465);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(ContactUtils.a((AppRuntime)localObject, this.senderuin, true));
-      localStringBuilder.append(HardCodeUtil.a(2131706618));
+      localStringBuilder.append(HardCodeUtil.a(2131904469));
       return localStringBuilder.toString();
     }
     return null;
@@ -120,7 +120,7 @@ public class MessageForDevLittleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevLittleVideo
  * JD-Core Version:    0.7.0.1
  */

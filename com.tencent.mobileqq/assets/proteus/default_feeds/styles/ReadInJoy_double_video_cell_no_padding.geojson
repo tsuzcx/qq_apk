@@ -1,4 +1,5 @@
 {
+
   "ReadInJoy_double_video_cell_no_padding": {
     "view_type":"UIView",
     "view_id":"id_double_video_cell",
@@ -59,7 +60,7 @@
             "layout_type":"layout_relative",
             "height":{
               "type":"relative",
-              "value":"212"
+              "value":"331"
             },
             "width":{
               "type":"match_parent"
@@ -408,7 +409,8 @@
                           "setFontSizeString:":"11",
                           "setTextColorString:":"$left_mark_color",
                           "setText:":"$left_mark_text",
-                          "setTextAlignmentString:":"1"
+                          "setTextAlignmentString:":"1",
+                          "setMaxWidth:type:": ["100", "relative"]
                         }
                       },
                       {
@@ -428,7 +430,7 @@
                         "attributes":{
                             "setImageWithURLString:lineup:":["$left_icon_v_url","1"]
                         }
-                      },  
+                      },
                       {
                         "view_type":"UILabel",
                         "view_id":"id_leftCard_bottomHalf_bottom_author",
@@ -542,7 +544,7 @@
             "layout_type":"layout_relative",
             "height":{
               "type":"relative",
-              "value":"212"
+              "value":"331"
             },
             "width":{
               "type":"match_parent"
@@ -890,7 +892,8 @@
                           "setFontSizeString:":"11",
                           "setTextColorString:":"$right_mark_color",
                           "setText:":"$right_mark_text",
-                          "setTextAlignmentString:":"1"
+                          "setTextAlignmentString:":"1",
+                          "setMaxWidth:type:": ["100", "relative"]
                         }
                       },
                       {

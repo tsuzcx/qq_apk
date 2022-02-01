@@ -2,12 +2,12 @@ package com.tencent.mtt.hippy.uimanager;
 
 public class f$a
 {
-  double[] a = new double[4];
-  double[] b = new double[4];
-  double[] c = new double[3];
-  double[] d = new double[3];
-  double[] e = new double[3];
-  double[] f = new double[3];
+  final double[] a = new double[4];
+  final double[] b = new double[4];
+  final double[] c = new double[3];
+  final double[] d = new double[3];
+  final double[] e = new double[3];
+  final double[] f = new double[3];
   
   public void a()
   {
@@ -41,7 +41,7 @@ public class f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.f.a
  * JD-Core Version:    0.7.0.1
  */

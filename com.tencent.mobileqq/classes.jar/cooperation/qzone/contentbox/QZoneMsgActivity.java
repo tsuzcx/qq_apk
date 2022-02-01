@@ -119,13 +119,13 @@ public class QZoneMsgActivity
     super.doOnCreate(paramBundle);
     setContentView(2080636928);
     setTitle(QZoneApiProxyImpl.getSubFeedTitle(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131376636);
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131444897);
     int j = Build.VERSION.SDK_INT;
-    int i = 2130850474;
+    int i = 2130852270;
     if (j >= 21)
     {
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850473;
+        i = 2130852269;
       }
       paramBundle = getDrawable(i);
     }
@@ -133,12 +133,12 @@ public class QZoneMsgActivity
     {
       paramBundle = getResources();
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-        i = 2130850473;
+        i = 2130852269;
       }
       paramBundle = paramBundle.getDrawable(i);
     }
     localNavBarCommon.setRightImage(paramBundle);
-    localNavBarCommon.setRightImageDesc(getString(2131696425));
+    localNavBarCommon.setRightImageDesc(getString(2131894197));
     localNavBarCommon.setOnItemSelectListener(this);
     this.mCurFragment = ((BaseFragment)getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment"));
     if (this.mCurFragment == null)
@@ -230,7 +230,7 @@ public class QZoneMsgActivity
         paramView = new Intent();
         paramView.putExtra("need_finish", true);
         paramView.putExtra("uin", "2290230341");
-        paramView.putExtra("uinname", HardCodeUtil.a(2131719439));
+        paramView.putExtra("uinname", HardCodeUtil.a(2131916999));
         paramView.putExtra("uintype", 1008);
         ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfileForResult(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
         return;
@@ -292,7 +292,7 @@ public class QZoneMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgActivity
  * JD-Core Version:    0.7.0.1
  */

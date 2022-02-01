@@ -14,7 +14,7 @@ class FriendProfileImageActivity$2
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.a.b);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.this$0.c.h);
     if (localExtensionInfo != null) {
       ThreadManager.getUIHandler().post(new FriendProfileImageActivity.2.1(this, localExtensionInfo));
     }
@@ -22,7 +22,7 @@ class FriendProfileImageActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.2
  * JD-Core Version:    0.7.0.1
  */

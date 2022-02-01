@@ -12,25 +12,25 @@ class TroopEnterEffectController$4$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("download Res isAIO = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a);
+    localStringBuilder.append(this.c.a.i);
     QLog.d("TroopEnterEffect.Controller", 2, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a)
+    if (this.c.a.i)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("download Res callback success id = ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(" showAnimation");
         QLog.d("TroopEnterEffect.Controller", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$4.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectData);
+      this.c.a.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1
  * JD-Core Version:    0.7.0.1
  */

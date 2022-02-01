@@ -7,18 +7,18 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public abstract class BaseHandlerReceiver
 {
-  protected FriendListHandler a;
   protected QQAppInterface a;
+  protected FriendListHandler b;
   
   public BaseHandlerReceiver(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
+    this.a = paramQQAppInterface;
+    this.b = paramFriendListHandler;
   }
   
   protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
+    this.b.notifyUI(paramInt, paramBoolean, paramObject);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -34,7 +34,7 @@ public abstract class BaseHandlerReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.BaseHandlerReceiver
  * JD-Core Version:    0.7.0.1
  */

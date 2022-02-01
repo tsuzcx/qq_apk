@@ -13,20 +13,20 @@ import mqq.os.MqqHandler;
 class StyleLoaderHelper$DummyCallback
   implements AsyncBack
 {
-  private final String jdField_a_of_type_JavaLangString;
   private final String b;
+  private final String c;
   
   public StyleLoaderHelper$DummyCallback(StyleLoaderHelper paramStyleLoaderHelper, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   public void a(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loaded: bid : ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" param ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" code : ");
@@ -39,19 +39,19 @@ class StyleLoaderHelper$DummyCallback
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("下载离线样式包完成 : ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         QLog.d("TemplateFactory", 2, localStringBuilder.toString());
-        OfflineUtils.a(StyleLoaderHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersStyleLoaderHelper));
-        if ((paramString == null) && (OfflineUtils.a(this.jdField_a_of_type_JavaLangString).a))
+        OfflineUtils.c(StyleLoaderHelper.a(this.a));
+        if ((paramString == null) && (OfflineUtils.b(this.b).a))
         {
           paramString = new StringBuilder();
           paramString.append("加载离线包 : ");
-          paramString.append(this.jdField_a_of_type_JavaLangString);
+          paramString.append(this.b);
           QLog.d("TemplateFactory", 1, paramString.toString());
-          ProteusReportUtil.a(2, StyleLoaderHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersStyleLoaderHelper));
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersStyleLoaderHelper.b(this.jdField_a_of_type_JavaLangString);
+          ProteusReportUtil.a(2, StyleLoaderHelper.a(this.a));
+          this.a.b(this.b);
           RIJSPUtils.a("kandian_pts_style_update", Boolean.valueOf(true));
-          StyleConfigHelper.a().b();
+          StyleConfigHelper.a().c();
           return;
         }
       }
@@ -59,7 +59,7 @@ class StyleLoaderHelper$DummyCallback
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("loaded: bid : ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         QLog.e("TemplateFactory", 1, localStringBuilder.toString(), paramString);
       }
     }
@@ -74,7 +74,7 @@ class StyleLoaderHelper$DummyCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.StyleLoaderHelper.DummyCallback
  * JD-Core Version:    0.7.0.1
  */

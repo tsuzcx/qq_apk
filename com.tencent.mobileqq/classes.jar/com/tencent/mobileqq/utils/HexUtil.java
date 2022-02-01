@@ -4,28 +4,20 @@ import com.tencent.qphone.base.util.QLog;
 
 public class HexUtil
 {
-  private static final char[] digits = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  public static final byte[] emptybytes = new byte[0];
-  
-  public static String String2HexString(String paramString)
-  {
-    return bytes2HexStr(paramString.getBytes());
-  }
+  private static final char[] DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  public static final byte[] EMPTY_BYTES = new byte[0];
   
   public static String byte2HexStr(byte paramByte)
   {
-    char[] arrayOfChar = digits;
+    char[] arrayOfChar = DIGITS;
     int i = arrayOfChar[(paramByte & 0xF)];
     return new String(new char[] { arrayOfChar[((byte)(paramByte >>> 4) & 0xF)], i });
   }
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte != null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      if (paramArrayOfByte.length == 0) {
-        return null;
-      }
       Object localObject = new char[paramArrayOfByte.length * 2];
       int i = 0;
       try
@@ -34,9 +26,9 @@ public class HexUtil
         {
           int k = paramArrayOfByte[i];
           int j = i * 2;
-          localObject[(j + 1)] = digits[(k & 0xF)];
+          localObject[(j + 1)] = DIGITS[(k & 0xF)];
           k = (byte)(k >>> 4);
-          localObject[(j + 0)] = digits[(k & 0xF)];
+          localObject[(j + 0)] = DIGITS[(k & 0xF)];
           i += 1;
         }
         return new String((char[])localObject);
@@ -50,6 +42,7 @@ public class HexUtil
           ((StringBuilder)localObject).append(paramArrayOfByte.toString());
           QLog.d("HexUtil", 2, ((StringBuilder)localObject).toString());
         }
+        return "";
       }
     }
     return null;
@@ -108,10 +101,10 @@ public class HexUtil
           ((StringBuilder)localObject).append(paramString.toString());
           QLog.d("HexUtil", 2, ((StringBuilder)localObject).toString());
         }
-        return emptybytes;
+        return EMPTY_BYTES;
       }
     }
-    return emptybytes;
+    return EMPTY_BYTES;
   }
   
   public static String hexString2String(String paramString)
@@ -200,10 +193,15 @@ public class HexUtil
     }
     QLog.i(paramString, 2, "bytes = null or bytes.length = 0");
   }
+  
+  public static String string2HexString(String paramString)
+  {
+    return bytes2HexStr(paramString.getBytes());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.HexUtil
  * JD-Core Version:    0.7.0.1
  */

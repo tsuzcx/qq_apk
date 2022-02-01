@@ -16,24 +16,24 @@ final class QCircleInjectImpl$3
   
   public void run()
   {
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = QCircleFrame.a(this.a.a() instanceof QCircleFrame);
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = QCircleFrame.c(this.a.v() instanceof QCircleFrame);
     if (localRedTypeInfo == null)
     {
       QLog.i("updateQCircleRedDot", 1, "redInfo is null");
       return;
     }
-    if (this.a.jdField_a_of_type_JavaUtilHashMap == null) {
+    if (this.a.G == null) {
       return;
     }
-    RedTouch localRedTouch = (RedTouch)this.a.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.g);
-    if ((localRedTouch != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new QCircleInjectImpl.3.1(this, localRedTouch, localRedTypeInfo));
+    RedTouch localRedTouch = (RedTouch)this.a.G.get(FrameControllerUtil.r);
+    if ((localRedTouch != null) && (this.a.q != null)) {
+      this.a.q.post(new QCircleInjectImpl.3.1(this, localRedTouch, localRedTypeInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.3
  * JD-Core Version:    0.7.0.1
  */

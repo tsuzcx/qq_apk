@@ -11,37 +11,37 @@ import mqq.util.WeakReference;
 class TroopActivity$GetUnReadNumRunnable
   implements Runnable
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<TroopActivity> jdField_a_of_type_MqqUtilWeakReference;
+  private QQAppInterface a;
+  private WeakReference<TroopActivity> b;
+  private TextView c;
+  private ImageView d;
   
   public TroopActivity$GetUnReadNumRunnable(QQAppInterface paramQQAppInterface, WeakReference<TroopActivity> paramWeakReference, TextView paramTextView, ImageView paramImageView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.a = paramQQAppInterface;
+    this.b = paramWeakReference;
+    this.c = paramTextView;
+    this.d = paramImageView;
   }
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (!((TroopActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).isFinishing()) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null);
+    return (this.b.get() != null) && (!((TroopActivity)this.b.get()).isFinishing()) && (this.d != null) && (this.c != null);
   }
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.a;
     if (localQQAppInterface != null)
     {
-      int i = localQQAppInterface.getMessageFacade().b();
+      int i = localQQAppInterface.getMessageFacade().w();
       ThreadManager.getUIHandler().post(new TroopActivity.GetUnReadNumRunnable.1(this, i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.GetUnReadNumRunnable
  * JD-Core Version:    0.7.0.1
  */

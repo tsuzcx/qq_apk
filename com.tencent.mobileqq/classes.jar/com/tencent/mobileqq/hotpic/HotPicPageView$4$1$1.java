@@ -9,18 +9,18 @@ class HotPicPageView$4$1$1
   
   public void run()
   {
-    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a();
-    if ((localHotVideoData != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.jdField_a_of_type_Int == 1) && (localHotVideoData.picIndex == this.a.a.jdField_a_of_type_Int))
+    HotVideoData localHotVideoData = this.a.a.a.a();
+    if ((localHotVideoData != null) && (this.a.a.a.n == 1) && (localHotVideoData.picIndex == this.a.a.b))
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.a.jdField_a_of_type_Int);
+      this.a.a.c.c(this.a.a.a, this.a.a.b);
       return;
     }
-    new QQToastNotifier(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a(HotVideoMongoliaRelativeLayout.d, 100, 0, 2);
+    new QQToastNotifier(this.a.a.c.b).notifyUser(HotVideoMongoliaRelativeLayout.d, 100, 0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.4.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ public final class FrameCallbackHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.statistic.FrameCallbackHelper
  * JD-Core Version:    0.7.0.1
  */

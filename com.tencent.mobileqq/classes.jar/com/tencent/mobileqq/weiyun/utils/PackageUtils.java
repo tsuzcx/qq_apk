@@ -11,11 +11,29 @@ public class PackageUtils
   
   public static int a()
   {
-    a();
+    e();
     return a;
   }
   
-  private static void a()
+  public static int b()
+  {
+    e();
+    return b;
+  }
+  
+  public static int c()
+  {
+    e();
+    return c;
+  }
+  
+  public static int d()
+  {
+    e();
+    return d;
+  }
+  
+  private static void e()
   {
     String[] arrayOfString;
     if (c == 0)
@@ -35,28 +53,10 @@ public class PackageUtils
     }
     catch (NumberFormatException localNumberFormatException) {}
   }
-  
-  public static int b()
-  {
-    a();
-    return b;
-  }
-  
-  public static int c()
-  {
-    a();
-    return c;
-  }
-  
-  public static int d()
-  {
-    a();
-    return d;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.utils.PackageUtils
  * JD-Core Version:    0.7.0.1
  */

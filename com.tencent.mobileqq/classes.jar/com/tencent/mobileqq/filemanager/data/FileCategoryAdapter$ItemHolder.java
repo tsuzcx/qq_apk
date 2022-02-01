@@ -7,22 +7,22 @@ import android.widget.TextView;
 public class FileCategoryAdapter$ItemHolder
   implements Cloneable
 {
-  public int a;
   public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
   public ImageView b;
-  public TextView b;
-  public TextView c;
+  public ImageView c;
   public TextView d;
   public TextView e;
+  public TextView f;
+  public int g;
+  public String h;
+  public TextView i;
+  public TextView j;
   
   public FileCategoryAdapter$ItemHolder(FileCategoryAdapter paramFileCategoryAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder
  * JD-Core Version:    0.7.0.1
  */

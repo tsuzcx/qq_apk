@@ -23,27 +23,27 @@ import java.util.List;
 public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   extends PagerAdapter
 {
-  private final FragmentManager jdField_a_of_type_AndroidxFragmentAppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = null;
-  private QBaseFragment jdField_a_of_type_ComTencentMobileqqAppQBaseFragment = null;
-  CallHotwordChange jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange;
-  private ArrayList<Fragment.SavedState> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private ArrayList<QBaseFragment> b = new ArrayList();
+  CallHotwordChange a;
+  private final FragmentManager b;
+  private FragmentTransaction c = null;
+  private ArrayList<Fragment.SavedState> d = new ArrayList();
+  private ArrayList<QBaseFragment> e = new ArrayList();
+  private QBaseFragment f = null;
+  private List<TabChannelCoverInfo> g;
   
   public ReadInJoyChannelViewPager$CustomFragmentPagerAdapter(FragmentManager paramFragmentManager)
   {
-    this.jdField_a_of_type_AndroidxFragmentAppFragmentManager = paramFragmentManager;
-    b();
+    this.b = paramFragmentManager;
+    e();
   }
   
   private void a(QBaseFragment paramQBaseFragment)
   {
     if ((paramQBaseFragment instanceof ReadInJoyBaseFragment))
     {
-      ReadInJoySrtUtils.a().a();
+      ReadInJoySrtUtils.a().d();
       paramQBaseFragment = (ReadInJoyBaseFragment)paramQBaseFragment;
-      ReadInJoySrtUtils.a().a(String.valueOf(paramQBaseFragment.b()));
+      ReadInJoySrtUtils.a().a(String.valueOf(paramQBaseFragment.d()));
     }
   }
   
@@ -51,33 +51,28 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   {
     if ((paramInt >= 0) && (paramInt < getCount()))
     {
-      TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)this.g.get(paramInt);
       QBaseFragment localQBaseFragment = ReadInJoyFragmentFactory.a().a(localTabChannelCoverInfo);
       if ((localQBaseFragment instanceof ReadInJoyBaseFragment))
       {
         ReadInJoyBaseFragment localReadInJoyBaseFragment = (ReadInJoyBaseFragment)localQBaseFragment;
         localReadInJoyBaseFragment.b(paramInt);
-        localReadInJoyBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange, localTabChannelCoverInfo.mChannelCoverId);
+        localReadInJoyBaseFragment.a(this.a, localTabChannelCoverInfo.mChannelCoverId);
       }
       return localQBaseFragment;
     }
     return null;
   }
   
-  private void b()
+  private void e()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public QBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment;
+    this.g = new ArrayList();
   }
   
   public QBaseFragment a(int paramInt)
   {
-    if (this.b.size() > paramInt) {
-      return (QBaseFragment)this.b.get(paramInt);
+    if (this.e.size() > paramInt) {
+      return (QBaseFragment)this.e.get(paramInt);
     }
     return null;
   }
@@ -86,7 +81,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.g.clear();
       notifyDataSetChanged();
       return;
     }
@@ -99,53 +94,84 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   
   public void a(CallHotwordChange paramCallHotwordChange)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange = paramCallHotwordChange;
+    this.a = paramCallHotwordChange;
   }
   
   public void a(List<TabChannelCoverInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.g.clear();
+      this.g.addAll(paramList);
     }
     notifyDataSetChanged();
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    while (i < this.e.size())
+    {
+      QBaseFragment localQBaseFragment = (QBaseFragment)this.e.get(i);
+      if ((localQBaseFragment instanceof ReadInJoyBaseFragment)) {
+        ((ReadInJoyBaseFragment)localQBaseFragment).i();
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    int i = 0;
+    while (i < this.e.size())
+    {
+      QBaseFragment localQBaseFragment = (QBaseFragment)this.e.get(i);
+      if ((localQBaseFragment instanceof ReadInJoyBaseFragment)) {
+        ((ReadInJoyBaseFragment)localQBaseFragment).j();
+      }
+      i += 1;
+    }
+  }
+  
+  public QBaseFragment d()
+  {
+    return this.f;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (QBaseFragment)paramObject;
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
     QLog.d("PagerAdapter", 2, new Object[] { "destroyItem position = ", Integer.valueOf(paramInt), ", f = ", paramObject });
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(null);
+    while (this.d.size() <= paramInt) {
+      this.d.add(null);
     }
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.d;
     if (paramObject.isAdded()) {
-      paramViewGroup = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.saveFragmentInstanceState(paramObject);
+      paramViewGroup = this.b.saveFragmentInstanceState(paramObject);
     } else {
       paramViewGroup = null;
     }
     localArrayList.set(paramInt, paramViewGroup);
-    this.b.set(paramInt, null);
-    this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction.remove(paramObject);
+    this.e.set(paramInt, null);
+    this.c.remove(paramObject);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction;
+    paramViewGroup = this.c;
     if (paramViewGroup != null)
     {
       paramViewGroup.commitAllowingStateLoss();
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = null;
+      this.c = null;
     }
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.g;
     if (localList != null) {
       return localList.size();
     }
@@ -158,46 +184,46 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
     {
       paramObject = (ReadInJoyBaseFragment)paramObject;
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.g.size())
       {
-        if (((TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mChannelCoverId == paramObject.b())
+        if (((TabChannelCoverInfo)this.g.get(i)).mChannelCoverId == paramObject.d())
         {
-          int j = paramObject.d();
-          QLog.d("PagerAdapter", 2, new Object[] { "getItemPosition, channelID = ", Integer.valueOf(paramObject.b()), ", channelName = ", ((TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mChannelCoverName, ", oldPos = ", Integer.valueOf(j), ", newPos = ", Integer.valueOf(i) });
+          int j = paramObject.s();
+          QLog.d("PagerAdapter", 2, new Object[] { "getItemPosition, channelID = ", Integer.valueOf(paramObject.d()), ", channelName = ", ((TabChannelCoverInfo)this.g.get(i)).mChannelCoverName, ", oldPos = ", Integer.valueOf(j), ", newPos = ", Integer.valueOf(i) });
           if (j == i) {
             return -1;
           }
         }
         i += 1;
       }
-      QLog.d("PagerAdapter", 2, new Object[] { "getItemPosition, channelID = ", Integer.valueOf(paramObject.b()), ",  POSITION_NONE" });
+      QLog.d("PagerAdapter", 2, new Object[] { "getItemPosition, channelID = ", Integer.valueOf(paramObject.d()), ",  POSITION_NONE" });
     }
     return -2;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.b.size() > paramInt)
+    if (this.e.size() > paramInt)
     {
-      localQBaseFragment = (QBaseFragment)this.b.get(paramInt);
+      localQBaseFragment = (QBaseFragment)this.e.get(paramInt);
       if (localQBaseFragment != null) {
         return localQBaseFragment;
       }
     }
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
     QBaseFragment localQBaseFragment = b(paramInt);
     QLog.d("PagerAdapter", 2, new Object[] { "instantiateItem position = ", Integer.valueOf(paramInt), ", f = ", localQBaseFragment });
-    while (this.b.size() <= paramInt) {
-      this.b.add(null);
+    while (this.e.size() <= paramInt) {
+      this.e.add(null);
     }
     if (localQBaseFragment != null)
     {
       localQBaseFragment.setMenuVisibility(false);
       localQBaseFragment.setUserVisibleHint(false);
-      this.b.set(paramInt, localQBaseFragment);
-      this.jdField_a_of_type_AndroidxFragmentAppFragmentTransaction.add(paramViewGroup.getId(), localQBaseFragment);
+      this.e.set(paramInt, localQBaseFragment);
+      this.c.add(paramViewGroup.getId(), localQBaseFragment);
     }
     return localQBaseFragment;
   }
@@ -214,15 +240,15 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
       paramParcelable = (Bundle)paramParcelable;
       paramParcelable.setClassLoader(paramClassLoader);
       paramClassLoader = paramParcelable.getParcelableArray("states");
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.b.clear();
+      this.d.clear();
+      this.e.clear();
       int i;
       if (paramClassLoader != null)
       {
         i = 0;
         while (i < paramClassLoader.length)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add((Fragment.SavedState)paramClassLoader[i]);
+          this.d.add((Fragment.SavedState)paramClassLoader[i]);
           i += 1;
         }
       }
@@ -233,14 +259,14 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
         if (str.startsWith("f"))
         {
           i = Integer.parseInt(str.substring(1));
-          Object localObject = (QBaseFragment)this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.getFragment(paramParcelable, str);
+          Object localObject = (QBaseFragment)this.b.getFragment(paramParcelable, str);
           if (localObject != null)
           {
-            while (this.b.size() <= i) {
-              this.b.add(null);
+            while (this.e.size() <= i) {
+              this.e.add(null);
             }
             ((QBaseFragment)localObject).setMenuVisibility(false);
-            this.b.set(i, localObject);
+            this.e.set(i, localObject);
           }
           else
           {
@@ -258,11 +284,11 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   {
     Object localObject2;
     Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.d.size() > 0)
     {
       localObject2 = new Bundle();
-      localObject1 = new Fragment.SavedState[this.jdField_a_of_type_JavaUtilArrayList.size()];
-      this.jdField_a_of_type_JavaUtilArrayList.toArray((Object[])localObject1);
+      localObject1 = new Fragment.SavedState[this.d.size()];
+      this.d.toArray((Object[])localObject1);
       ((Bundle)localObject2).putParcelableArray("states", (Parcelable[])localObject1);
     }
     else
@@ -270,9 +296,9 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
       localObject2 = null;
     }
     int i = 0;
-    while (i < this.b.size())
+    while (i < this.e.size())
     {
-      QBaseFragment localQBaseFragment = (QBaseFragment)this.b.get(i);
+      QBaseFragment localQBaseFragment = (QBaseFragment)this.e.get(i);
       localObject1 = localObject2;
       if (localQBaseFragment != null)
       {
@@ -287,7 +313,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
           ((StringBuilder)localObject2).append("f");
           ((StringBuilder)localObject2).append(i);
           localObject2 = ((StringBuilder)localObject2).toString();
-          this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.putFragment((Bundle)localObject1, (String)localObject2, localQBaseFragment);
+          this.b.putFragment((Bundle)localObject1, (String)localObject2, localQBaseFragment);
         }
       }
       i += 1;
@@ -304,21 +330,21 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
       if (!paramViewGroup.isAdded()) {
         return;
       }
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment;
+      paramObject = this.f;
       if (paramViewGroup != paramObject)
       {
         if (paramObject != null)
         {
           paramObject.setMenuVisibility(false);
-          this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment.setUserVisibleHint(false);
+          this.f.setUserVisibleHint(false);
         }
         if (paramViewGroup != null)
         {
           paramViewGroup.setMenuVisibility(true);
           paramViewGroup.setUserVisibleHint(true);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment = paramViewGroup;
-        a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseFragment);
+        this.f = paramViewGroup;
+        a(this.f);
       }
     }
   }
@@ -337,7 +363,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPager.CustomFragmentPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,27 +18,9 @@ public class ColorNoteRecentView
 {
   private ColorNoteCurd a;
   
-  private static SharedPreferences a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = paramAppRuntime.getAccount();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("color_note_recent_view_switch");
-    localStringBuilder.append(paramAppRuntime);
-    paramAppRuntime = localStringBuilder.toString();
-    return MobileQQ.getContext().getSharedPreferences(paramAppRuntime, 4);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime != null) {
-      paramAppRuntime.edit().putBoolean("color_note_recent_first_visit", false).apply();
-    }
-  }
-  
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    paramAppRuntime = a(paramAppRuntime);
+    paramAppRuntime = d(paramAppRuntime);
     if (paramAppRuntime != null)
     {
       paramAppRuntime.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
@@ -57,7 +39,7 @@ public class ColorNoteRecentView
   
   public static boolean a()
   {
-    Object localObject = a(MobileQQ.getMobileQQ().waitAppRuntime(null));
+    Object localObject = d(MobileQQ.getMobileQQ().waitAppRuntime(null));
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
@@ -75,29 +57,47 @@ public class ColorNoteRecentView
   
   public static boolean a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = a(paramAppRuntime);
+    paramAppRuntime = d(paramAppRuntime);
     if (paramAppRuntime != null) {
       return paramAppRuntime.getBoolean("color_note_recently_viewed_switch", true);
     }
     return true;
   }
   
+  public static void b(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = d(paramAppRuntime);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.edit().putBoolean("color_note_recent_first_visit", false).apply();
+    }
+  }
+  
   public static void b(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    paramAppRuntime = a(paramAppRuntime);
+    paramAppRuntime = d(paramAppRuntime);
     if (paramAppRuntime != null) {
       paramAppRuntime.edit().putBoolean("color_recent_permission_shown", paramBoolean).apply();
     }
   }
   
-  public static boolean b(AppRuntime paramAppRuntime)
+  public static boolean c(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = a(paramAppRuntime);
+    paramAppRuntime = d(paramAppRuntime);
     boolean bool = false;
     if (paramAppRuntime != null) {
       bool = paramAppRuntime.getBoolean("color_recent_permission_shown", false);
     }
     return bool;
+  }
+  
+  private static SharedPreferences d(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = paramAppRuntime.getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color_note_recent_view_switch");
+    localStringBuilder.append(paramAppRuntime);
+    paramAppRuntime = localStringBuilder.toString();
+    return MobileQQ.getContext().getSharedPreferences(paramAppRuntime, 4);
   }
   
   public void a(ColorNoteCurd paramColorNoteCurd)
@@ -116,7 +116,7 @@ public class ColorNoteRecentView
     }
     if ((i != 0) && (paramColorNote != null) && (this.a != null) && (((IColorNoteProcessState)QRoute.api(IColorNoteProcessState.class)).isRecentColorNoteTurnOn(MobileQQ.getMobileQQ().waitAppRuntime(null))))
     {
-      localObject = ColorNoteUtils.a(paramColorNote);
+      localObject = ColorNoteUtils.c(paramColorNote);
       this.a.c((ColorNote)localObject);
       if (QLog.isColorLevel())
       {
@@ -130,7 +130,7 @@ public class ColorNoteRecentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteRecentView
  * JD-Core Version:    0.7.0.1
  */

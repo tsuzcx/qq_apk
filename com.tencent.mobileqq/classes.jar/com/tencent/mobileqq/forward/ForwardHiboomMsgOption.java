@@ -19,52 +19,52 @@ public class ForwardHiboomMsgOption
   
   protected View a()
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
-    HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, HiBoomConstants.b);
-    localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
+    int i = this.t.getInt("key_hiboom_id");
+    HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.s);
+    localHiBoomTextView.setHiBoom(i, 0, HiBoomConstants.e);
+    localHiBoomTextView.setText(this.u);
     localHiBoomTextView.setMaxSize(HiBoomConstants.a);
     localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
     return localHiBoomTextView;
   }
   
-  public boolean a()
-  {
-    super.a();
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
   protected void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(null);
+    if (ag()) {
+      this.C.add(e);
+    }
+    if (ah()) {
+      this.C.add(d);
+    }
+    if (ai()) {
+      this.C.add(c);
+    }
   }
   
-  protected boolean m()
+  protected void d()
+  {
+    this.A.setMessage(null);
+  }
+  
+  public boolean e()
+  {
+    super.e();
+    return true;
+  }
+  
+  protected boolean k()
+  {
+    return true;
+  }
+  
+  public boolean l()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardHiboomMsgOption
  * JD-Core Version:    0.7.0.1
  */

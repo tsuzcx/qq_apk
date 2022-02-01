@@ -68,7 +68,7 @@ class SmartDeviceProxyMgr$2
       Object localObject3 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit();
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("qfind_assist");
-      ((StringBuilder)localObject4).append(SmartDeviceProxyMgr.a(this.this$0).getCurrentAccountUin());
+      ((StringBuilder)localObject4).append(SmartDeviceProxyMgr.b(this.this$0).getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject3).putString(((StringBuilder)localObject4).toString(), String.valueOf(((QFindConfig)localObject2).b));
       ((SharedPreferences.Editor)localObject3).commit();
       localObject2 = new StringBuilder();
@@ -89,7 +89,7 @@ class SmartDeviceProxyMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.2
  * JD-Core Version:    0.7.0.1
  */

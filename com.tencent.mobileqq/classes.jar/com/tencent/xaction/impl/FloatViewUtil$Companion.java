@@ -8,6 +8,7 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.xaction.api.data.FloatViewData;
+import com.tencent.xaction.helper.ViewHelper;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
@@ -28,15 +29,7 @@ public final class FloatViewUtil$Companion
       ((StringBuilder)localObject).append(" view:");
       ((StringBuilder)localObject).append(paramView);
       Log.v("FloatViewUtils", ((StringBuilder)localObject).toString());
-      if (paramView.getParent() != null)
-      {
-        localObject = paramView.getParent();
-        if (localObject != null) {
-          ((ViewGroup)localObject).removeView(paramView);
-        } else {
-          throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
-        }
-      }
+      ViewHelper.a.a(paramView);
       localObject = paramFloatViewData.getParent();
       if (localObject != null)
       {
@@ -72,12 +65,7 @@ public final class FloatViewUtil$Companion
         if (localViewParent != null)
         {
           paramFloatViewData.setIndex(((ViewGroup)localViewParent).indexOfChild(paramView));
-          paramFloatViewData = paramView.getParent();
-          if (paramFloatViewData != null) {
-            ((ViewGroup)paramFloatViewData).removeView(paramView);
-          } else {
-            throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
-          }
+          ViewHelper.a.a(paramView);
         }
         else
         {
@@ -96,7 +84,7 @@ public final class FloatViewUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.FloatViewUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 public class ItemHolder$TextItemHolder
 {
-  public long a;
-  public RelativeLayout a;
   public TextView a;
-  public String a;
+  public RelativeLayout b;
+  public String c;
+  public long d;
   
   public ItemHolder$TextItemHolder(ItemHolder paramItemHolder) {}
 }

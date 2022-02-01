@@ -38,13 +38,14 @@ class QQWalletHbItemApiImpl$9
       return;
     }
     QQWalletHbItemApiImpl.mLastClickedTime = l;
-    int m = QwUtils.a(paramView.getTag(R.id.cd), 0);
+    int m = QwUtils.a(paramView.getTag(R.id.cr), 0);
     MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
     if ((localMessageForQQWalletMsg != null) && (this.a.sessionInfo != null))
     {
-      Object localObject2 = this.a.sessionInfo.jdField_a_of_type_JavaLangString;
+      Object localObject2 = this.a.sessionInfo.b;
       Object localObject1;
       Object localObject3;
+      StringBuilder localStringBuilder;
       if (localMessageForQQWalletMsg.mQQWalletTransferMsg != null)
       {
         localObject1 = localMessageForQQWalletMsg.mQQWalletTransferMsg.elem;
@@ -58,13 +59,13 @@ class QQWalletHbItemApiImpl$9
         localMessageForQQWalletMsg.mQQWalletRedPacketMsg.isOpened = true;
         localMessageForQQWalletMsg.mQQWalletTransferMsg = null;
         localMessageForQQWalletMsg.msgData = localMessageForQQWalletMsg.getBytes();
-        ((IMessageFacade)this.a.mAppInterface.getRuntimeService(IMessageFacade.class)).updateMsgContentByUniseq(this.a.sessionInfo.jdField_a_of_type_JavaLangString, this.a.sessionInfo.jdField_a_of_type_Int, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
+        ((IMessageFacade)this.a.mAppInterface.getRuntimeService(IMessageFacade.class)).updateMsgContentByUniseq(this.a.sessionInfo.b, this.a.sessionInfo.a, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
         localObject3 = localObject2;
         localObject2 = null;
       }
       else if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg != null)
       {
-        if ((this.a.sessionInfo.jdField_a_of_type_Int != 0) && (this.a.sessionInfo.jdField_a_of_type_Int != 1000) && (this.a.sessionInfo.jdField_a_of_type_Int != 1004) && (this.a.sessionInfo.jdField_a_of_type_Int != 1001) && (this.a.sessionInfo.jdField_a_of_type_Int != 10002) && (this.a.sessionInfo.jdField_a_of_type_Int != 10004) && (this.a.sessionInfo.jdField_a_of_type_Int != 1008)) {
+        if ((this.a.sessionInfo.a != 0) && (this.a.sessionInfo.a != 1000) && (this.a.sessionInfo.a != 1004) && (this.a.sessionInfo.a != 1001) && (this.a.sessionInfo.a != 10002) && (this.a.sessionInfo.a != 10004) && (this.a.sessionInfo.a != 1008)) {
           i = 0;
         } else {
           i = 1;
@@ -81,25 +82,31 @@ class QQWalletHbItemApiImpl$9
           NotifyMsgApiImpl.onGroupHbGrabbedNotify(localMessageForQQWalletMsg.frienduin, localMessageForQQWalletMsg.istroop, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
         }
         localObject4 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem;
-        localObject2 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
+        String str1 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
         localMessageForQQWalletMsg.msgtype = -2025;
         localMessageForQQWalletMsg.mQQWalletRedPacketMsg.isOpened = true;
         localMessageForQQWalletMsg.msgData = localMessageForQQWalletMsg.getBytes();
-        ((IMessageFacade)this.a.mAppInterface.getRuntimeService(IMessageFacade.class)).updateMsgContentByUniseq(this.a.sessionInfo.jdField_a_of_type_JavaLangString, this.a.sessionInfo.jdField_a_of_type_Int, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
-        localObject3 = this.a.mAppInterface;
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("");
-        localStringBuilder1.append(localMessageForQQWalletMsg.mQQWalletRedPacketMsg.templateId);
-        ReportController.b((AppRuntime)localObject3, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "show", 0, 0, localStringBuilder1.toString(), "", "", "");
-        if ((((QQWalletBaseMsgElem)localObject4).i > 0) && ((localMessageForQQWalletMsg.messageType == 2) || (localMessageForQQWalletMsg.messageType == 3)))
+        ((IMessageFacade)this.a.mAppInterface.getRuntimeService(IMessageFacade.class)).updateMsgContentByUniseq(this.a.sessionInfo.b, this.a.sessionInfo.a, localMessageForQQWalletMsg.uniseq, localMessageForQQWalletMsg.msgData);
+        localObject2 = this.a.mAppInterface;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(localMessageForQQWalletMsg.mQQWalletRedPacketMsg.templateId);
+        ReportController.b((AppRuntime)localObject2, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "show", 0, 0, ((StringBuilder)localObject3).toString(), "", "", "");
+        if ((((QQWalletBaseMsgElem)localObject4).v > 0) && ((localMessageForQQWalletMsg.messageType == 2) || (localMessageForQQWalletMsg.messageType == 3)))
         {
+          if (this.a.sessionInfo.a == 10014) {
+            localObject2 = "2";
+          } else {
+            localObject2 = "1";
+          }
           localObject3 = this.a.mAppInterface;
-          localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("");
-          localStringBuilder1.append(((QQWalletBaseMsgElem)localObject4).i);
-          ReportController.b((AppRuntime)localObject3, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aio.click", 0, 0, localStringBuilder1.toString(), "", "", "");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(((QQWalletBaseMsgElem)localObject4).v);
+          ReportController.b((AppRuntime)localObject3, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aio.click", 0, 0, localStringBuilder.toString(), (String)localObject2, "", "");
         }
         localObject3 = localObject1;
+        localObject2 = str1;
         localObject1 = localObject4;
       }
       else
@@ -115,15 +122,15 @@ class QQWalletHbItemApiImpl$9
       {
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("elem.actionsPriority: ");
-        ((StringBuilder)localObject4).append(((QQWalletBaseMsgElem)localObject1).g);
+        ((StringBuilder)localObject4).append(((QQWalletBaseMsgElem)localObject1).k);
         QLog.d("QQWalletHbItemApi", 2, ((StringBuilder)localObject4).toString());
       }
-      if (TextUtils.isEmpty(((QQWalletBaseMsgElem)localObject1).g))
+      if (TextUtils.isEmpty(((QQWalletBaseMsgElem)localObject1).k))
       {
-        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(paramView.getContext(), ((QQWalletBaseMsgElem)localObject1).d);
+        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(paramView.getContext(), ((QQWalletBaseMsgElem)localObject1).f);
         return;
       }
-      Object localObject4 = ((QQWalletBaseMsgElem)localObject1).g.split("\\|");
+      Object localObject4 = ((QQWalletBaseMsgElem)localObject1).k.split("\\|");
       int j = 0;
       int i = 0;
       while (j < localObject4.length)
@@ -143,16 +150,16 @@ class QQWalletHbItemApiImpl$9
             k = i;
             if (QLog.isColorLevel())
             {
-              StringBuilder localStringBuilder2 = new StringBuilder();
-              localStringBuilder2.append("QQWalletMsgItemBuilder failed to convert String:");
-              localStringBuilder2.append(localObject4[j]);
-              localStringBuilder2.append(" to Interger,");
-              QLog.d("QQWalletHbItemApi", 2, localStringBuilder2.toString(), localException);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("QQWalletMsgItemBuilder failed to convert String:");
+              localStringBuilder.append(localObject4[j]);
+              localStringBuilder.append(" to Interger,");
+              QLog.d("QQWalletHbItemApi", 2, localStringBuilder.toString(), localException);
               k = i;
             }
           }
           if (k == 1) {
-            if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(paramView.getContext(), ((QQWalletBaseMsgElem)localObject1).d))
+            if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(paramView.getContext(), ((QQWalletBaseMsgElem)localObject1).f))
             {
               if (!QLog.isColorLevel()) {
                 break;
@@ -166,11 +173,11 @@ class QQWalletHbItemApiImpl$9
             break;
             if (k == 2)
             {
-              String str = QwUtils.a(((QQWalletBaseMsgElem)localObject1).h, QQWalletHbItemApiImpl.access$100(this.a, m), true);
-              if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(paramView.getContext(), str))
+              String str2 = QwUtils.a(((QQWalletBaseMsgElem)localObject1).l, QQWalletHbItemApiImpl.access$100(this.a, m), true);
+              if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doJumpAction(paramView.getContext(), str2))
               {
                 if (!QLog.isColorLevel()) {
-                  break label1182;
+                  break label1214;
                 }
                 QLog.d("QQWalletHbItemApi", 2, "do jump action...");
               }
@@ -180,7 +187,7 @@ class QQWalletHbItemApiImpl$9
               if (QQWalletHbItemApiImpl.access$200(this.a, paramView.getContext(), (QQWalletBaseMsgElem)localObject1, (String)localObject2, (String)localObject3, localMessageForQQWalletMsg, this.a.sessionInfo))
               {
                 if (!QLog.isColorLevel()) {
-                  break label1182;
+                  break label1214;
                 }
                 QLog.d("QQWalletHbItemApi", 2, "do wallet action...");
                 return;
@@ -191,7 +198,7 @@ class QQWalletHbItemApiImpl$9
         }
         j += 1;
       }
-      label1182:
+      label1214:
       return;
     }
     paramView = new StringBuilder();
@@ -204,7 +211,7 @@ class QQWalletHbItemApiImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.QQWalletHbItemApiImpl.9
  * JD-Core Version:    0.7.0.1
  */

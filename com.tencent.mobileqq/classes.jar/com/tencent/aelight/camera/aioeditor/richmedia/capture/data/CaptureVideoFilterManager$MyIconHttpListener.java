@@ -25,8 +25,8 @@ class CaptureVideoFilterManager$MyIconHttpListener
       AVLog.printColorLog("CaptureVideoFilterManager", localStringBuilder.toString());
       return;
     }
-    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
-      CaptureVideoFilterManager.a(this.a).a(true);
+    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.b(this.a) != null)) {
+      CaptureVideoFilterManager.b(this.a).a(true);
     }
     paramNetResp = new StringBuilder();
     paramNetResp.append("download iconFile success. file: ");
@@ -38,7 +38,7 @@ class CaptureVideoFilterManager$MyIconHttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.CaptureVideoFilterManager.MyIconHttpListener
  * JD-Core Version:    0.7.0.1
  */

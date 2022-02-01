@@ -8,9 +8,6 @@ import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.IJsPlugin;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,18 +15,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class JsPluginEngine
+public abstract class JsPluginEngine
   extends BaseJsPluginEngine
 {
   public static final String TAG = "JsPluginEngine[Dispatcher]";
-  private final Map<Class, IJsPlugin> mActivatedPlugins = new ConcurrentHashMap();
+  protected final Map<Class, IJsPlugin> mActivatedPlugins = new ConcurrentHashMap();
   private final Map<String, Class> mEventPluginMap = new HashMap();
-  private Map<String, WeakReference<Method>> mMethodCache = new ConcurrentHashMap();
   private final Map<String, Class> mSecondaryEventPluginMap = new HashMap();
   
   public JsPluginEngine(Context paramContext)
   {
     super(paramContext);
+    fillEventPluginMap(this.mEventPluginMap, this.mSecondaryEventPluginMap);
   }
   
   private static String buildMessage(String paramString, RequestEvent paramRequestEvent)
@@ -65,7 +62,7 @@ public class JsPluginEngine
     //   18: aconst_null
     //   19: areturn
     //   20: aload_0
-    //   21: getfield 34	com/tencent/qqmini/sdk/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
+    //   21: getfield 32	com/tencent/qqmini/sdk/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
     //   24: aload_1
     //   25: invokeinterface 106 2 0
     //   30: checkcast 108	com/tencent/qqmini/sdk/launcher/core/plugins/IJsPlugin
@@ -90,7 +87,7 @@ public class JsPluginEngine
     //   61: getfield 92	com/tencent/qqmini/sdk/plugins/engine/JsPluginEngine:mMiniAppContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
     //   64: invokeinterface 118 2 0
     //   69: aload_0
-    //   70: getfield 34	com/tencent/qqmini/sdk/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
+    //   70: getfield 32	com/tencent/qqmini/sdk/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
     //   73: aload_1
     //   74: aload_2
     //   75: invokeinterface 122 3 0
@@ -158,7 +155,7 @@ public class JsPluginEngine
     //   start	length	slot	name	signature
     //   0	170	0	this	JsPluginEngine
     //   0	170	1	paramClass	Class
-    //   46	44	2	localObject	Object
+    //   46	44	2	localObject	java.lang.Object
     //   127	31	2	localException1	java.lang.Exception
     //   33	8	3	localIJsPlugin	IJsPlugin
     //   85	44	3	localException2	java.lang.Exception
@@ -176,124 +173,7 @@ public class JsPluginEngine
     //   130	161	165	finally
   }
   
-  private String dispatchRequestEventToPlugin(RequestEvent paramRequestEvent, IJsPlugin paramIJsPlugin)
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject5 = null;
-    Object localObject2 = null;
-    try
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramIJsPlugin.getClass().getCanonicalName());
-      ((StringBuilder)localObject1).append(".");
-      ((StringBuilder)localObject1).append(paramRequestEvent.event);
-      str = ((StringBuilder)localObject1).toString();
-      localObject1 = (WeakReference)this.mMethodCache.get(str);
-      if (localObject1 != null) {
-        localObject1 = (Method)((WeakReference)localObject1).get();
-      } else {
-        localObject1 = null;
-      }
-      localObject2 = localObject1;
-      if (localObject1 != null) {
-        break label474;
-      }
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-    }
-    catch (RuntimeException localRuntimeException1)
-    {
-      Object localObject1;
-      String str;
-      paramIJsPlugin = (IJsPlugin)localObject2;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("dispatchEvent ");
-      ((StringBuilder)localObject2).append(paramRequestEvent.event);
-      ((StringBuilder)localObject2).append(" failed, method = ");
-      ((StringBuilder)localObject2).append(paramIJsPlugin);
-      ((StringBuilder)localObject2).append(", runtime exception ");
-      ((StringBuilder)localObject2).append(localRuntimeException1.getMessage());
-      QMLog.w("JsPluginEngine[Dispatcher]", ((StringBuilder)localObject2).toString(), localRuntimeException1);
-    }
-    catch (InvocationTargetException localInvocationTargetException1)
-    {
-      paramIJsPlugin = localObject3;
-      label293:
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("dispatchEvent ");
-      ((StringBuilder)localObject2).append(paramRequestEvent.event);
-      ((StringBuilder)localObject2).append(" failed, method = ");
-      ((StringBuilder)localObject2).append(paramIJsPlugin);
-      ((StringBuilder)localObject2).append(", invoke exception ");
-      ((StringBuilder)localObject2).append(localInvocationTargetException1.getMessage());
-      QMLog.w("JsPluginEngine[Dispatcher]", ((StringBuilder)localObject2).toString(), localInvocationTargetException1);
-    }
-    catch (IllegalAccessException localIllegalAccessException1)
-    {
-      label215:
-      paramIJsPlugin = localObject4;
-    }
-    try
-    {
-      localObject2 = JsPluginList.getMethod(paramIJsPlugin.getClass(), paramRequestEvent.event);
-      localObject3 = localObject2;
-      localObject4 = localObject2;
-      localObject1 = localObject2;
-      ((Method)localObject2).setAccessible(true);
-      localObject3 = localObject2;
-      localObject4 = localObject2;
-      localObject1 = localObject2;
-      this.mMethodCache.put(str, new WeakReference(localObject2));
-    }
-    catch (RuntimeException localRuntimeException2)
-    {
-      paramIJsPlugin = localObject3;
-      break label215;
-    }
-    catch (InvocationTargetException localInvocationTargetException2)
-    {
-      paramIJsPlugin = localObject4;
-      break label293;
-    }
-    catch (IllegalAccessException localIllegalAccessException3)
-    {
-      for (;;)
-      {
-        paramIJsPlugin = localInvocationTargetException2;
-        localIllegalAccessException2 = localIllegalAccessException3;
-      }
-    }
-    localObject3 = localObject2;
-    localObject4 = localObject2;
-    localObject1 = localObject2;
-    for (paramIJsPlugin = ((Method)localObject2).invoke(paramIJsPlugin, new Object[] { paramRequestEvent }); paramIJsPlugin != null; paramIJsPlugin = localObject5)
-    {
-      localObject3 = localObject2;
-      localObject4 = localObject2;
-      localObject1 = localObject2;
-      paramIJsPlugin = paramIJsPlugin.toString();
-      return paramIJsPlugin;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("dispatchEvent ");
-      ((StringBuilder)localObject2).append(paramRequestEvent.event);
-      ((StringBuilder)localObject2).append(" failed, method = ");
-      ((StringBuilder)localObject2).append(paramIJsPlugin);
-      ((StringBuilder)localObject2).append(", access exception ");
-      ((StringBuilder)localObject2).append(localIllegalAccessException1.getMessage());
-      QMLog.w("JsPluginEngine[Dispatcher]", ((StringBuilder)localObject2).toString(), localIllegalAccessException1);
-      paramRequestEvent.fail();
-      return "";
-      IllegalAccessException localIllegalAccessException2;
-      label474:
-      if (localIllegalAccessException3 != null) {
-        break;
-      }
-    }
-    return "";
-  }
-  
-  String dispatchRequestEvent(RequestEvent paramRequestEvent)
+  protected String dispatchRequestEvent(RequestEvent paramRequestEvent)
   {
     IJsPlugin localIJsPlugin = getEventHandler(paramRequestEvent.event);
     if (localIJsPlugin == null)
@@ -310,6 +190,8 @@ public class JsPluginEngine
     return dispatchRequestEventToPlugin(paramRequestEvent, localIJsPlugin);
   }
   
+  protected abstract String dispatchRequestEventToPlugin(RequestEvent paramRequestEvent, IJsPlugin paramIJsPlugin);
+  
   public String dispatchSecondaryRequestEvent(RepeatRequestEvent paramRepeatRequestEvent)
   {
     IJsPlugin localIJsPlugin = getSecondaryEventHandler(paramRepeatRequestEvent.event);
@@ -325,6 +207,8 @@ public class JsPluginEngine
     }
     return dispatchRequestEventToPlugin(paramRepeatRequestEvent, localIJsPlugin);
   }
+  
+  abstract void fillEventPluginMap(Map<String, Class> paramMap1, Map<String, Class> paramMap2);
   
   protected final IJsPlugin getEventHandler(String paramString)
   {
@@ -355,22 +239,9 @@ public class JsPluginEngine
   public void onCreate(IMiniAppContext paramIMiniAppContext)
   {
     super.onCreate(paramIMiniAppContext);
-    this.mEventPluginMap.putAll(JsPluginList.getEventPluginMap(paramIMiniAppContext.isMiniGame()));
-    this.mSecondaryEventPluginMap.putAll(JsPluginList.getSecondaryEventPluginMap(paramIMiniAppContext.isMiniGame()));
-    Object localObject = JsPluginList.getPreloadPlugins(paramIMiniAppContext.isMiniGame()).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      createJsPlugin((Class)((Iterator)localObject).next());
-    }
-    if (!paramIMiniAppContext.isMiniGame())
-    {
-      localObject = this.mActivatedPlugins;
-      if ((localObject != null) && (((Map)localObject).size() > 0))
-      {
-        localObject = this.mActivatedPlugins.values().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((IJsPlugin)((Iterator)localObject).next()).onCreate(paramIMiniAppContext);
-        }
-      }
+    paramIMiniAppContext = JsPluginList.getPreloadPlugins(paramIMiniAppContext.isMiniGame()).iterator();
+    while (paramIMiniAppContext.hasNext()) {
+      createJsPlugin((Class)paramIMiniAppContext.next());
     }
   }
   
@@ -382,7 +253,6 @@ public class JsPluginEngine
       ((IJsPlugin)localIterator.next()).onDestroy();
     }
     this.mActivatedPlugins.clear();
-    this.mMethodCache.clear();
     this.mEventPluginMap.clear();
     this.mSecondaryEventPluginMap.clear();
     JsPluginList.clear();
@@ -413,7 +283,7 @@ public class JsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

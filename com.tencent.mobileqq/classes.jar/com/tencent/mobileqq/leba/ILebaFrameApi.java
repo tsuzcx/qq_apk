@@ -18,10 +18,14 @@ public abstract interface ILebaFrameApi
   public abstract void onPostThemeChanged(Frame paramFrame);
   
   public abstract void onSwitchToLeba(Frame paramFrame, boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
+  
+  public abstract void showLebaFrame();
+  
+  public abstract void showQzoneFrame();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.ILebaFrameApi
  * JD-Core Version:    0.7.0.1
  */

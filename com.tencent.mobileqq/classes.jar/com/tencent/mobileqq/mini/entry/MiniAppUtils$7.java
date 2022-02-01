@@ -1,37 +1,64 @@
 package com.tencent.mobileqq.mini.entry;
 
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 final class MiniAppUtils$7
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  MiniAppUtils$7(MiniAppConfig paramMiniAppConfig) {}
+  MiniAppUtils$7(int paramInt) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject = this.val$appConfig;
-    if (localObject != null) {
-      if (MiniAppUtils.isFromPullDownEntry((MiniAppConfig)localObject))
+    long l;
+    if (paramBoolean)
+    {
+      l = paramJSONObject.optLong("retCode");
+      localObject = paramJSONObject.optString("errMsg");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAppInfoById, retCode = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(",errMsg = ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("MiniAppUtils", 1, localStringBuilder.toString());
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (paramJSONObject != null)
       {
-        MiniAppUtils.access$100(this.val$appConfig);
-        if (QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0) == 2) {
-          MiniAppUtils.updateMiniAppList(100);
-        }
+        paramJSONObject = new MiniAppConfig(paramJSONObject);
+        paramJSONObject.launchParam.scene = this.val$scene;
+        MiniAppUtils.updatePullDownEntryListData(paramJSONObject);
+        ThreadManager.getSubThreadHandler().postDelayed(new MiniAppUtils.7.1(this), 600L);
+        return;
       }
-      else if ((this.val$appConfig.config != null) && (!this.val$appConfig.config.isAppStoreMiniApp()))
-      {
-        localObject = MiniAppInfo.copy(this.val$appConfig.config);
-        ((MiniAppInfo)localObject).debugInfo = null;
-        MiniAppUtils.access$200((MiniAppInfo)localObject);
-      }
+      QLog.e("MiniAppUtils", 1, "updatePullDownEntryWeixinApp getAppInfoById appInfo is null");
+      return;
     }
+    if (paramJSONObject != null) {
+      l = paramJSONObject.optLong("retCode");
+    } else {
+      l = 0L;
+    }
+    if (paramJSONObject != null) {
+      paramJSONObject = paramJSONObject.optString("errMsg");
+    } else {
+      paramJSONObject = "";
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updatePullDownEntryWeixinApp getAppInfoById failed retCode:");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" errMsg:");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    QLog.e("MiniAppUtils", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.7
  * JD-Core Version:    0.7.0.1
  */

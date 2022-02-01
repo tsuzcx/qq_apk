@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 public class TaskSyncRsp
 {
+  public int mContinueFlag;
   public int mPollTime;
   public Preload mPreaload;
   public long mSeq;
@@ -27,6 +28,7 @@ public class TaskSyncRsp
       localTaskSyncRsp.mSeq = paramString.optLong("seq");
       localTaskSyncRsp.mPollTime = paramString.optInt("polltime");
       localTaskSyncRsp.mSyncSwitch = paramString.optInt("syncSwitch");
+      localTaskSyncRsp.mContinueFlag = paramString.optInt("continueFlag");
       localTaskSyncRsp.mVcrList = SyncItemRecord.parseVcrList(paramString.optJSONArray("vcr_list"));
       localTaskSyncRsp.mPreaload = Preload.parseJsonToPreaload(paramString.optJSONObject("preload"));
       return localTaskSyncRsp;
@@ -37,10 +39,34 @@ public class TaskSyncRsp
     }
     return null;
   }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TaskSyncRsp{mSeq=");
+    localStringBuilder.append(this.mSeq);
+    localStringBuilder.append(", mPollTime=");
+    localStringBuilder.append(this.mPollTime);
+    localStringBuilder.append(", mSyncSwitch=");
+    localStringBuilder.append(this.mSyncSwitch);
+    localStringBuilder.append(", mContinueFlag=");
+    localStringBuilder.append(this.mContinueFlag);
+    localStringBuilder.append(", mVcrListSize=");
+    ArrayList localArrayList = this.mVcrList;
+    int i;
+    if (localArrayList != null) {
+      i = localArrayList.size();
+    } else {
+      i = 0;
+    }
+    localStringBuilder.append(i);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.request.TaskSyncRsp
  * JD-Core Version:    0.7.0.1
  */

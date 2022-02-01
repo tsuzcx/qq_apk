@@ -7,14 +7,13 @@ import com.tencent.gdtad.statistics.GdtC2SReporter;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.skin.ReadInJoyRefreshManager;
 import com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinManager;
 import com.tencent.mobileqq.kandian.biz.skin.RefreshData;
+import com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJProteusOfflineBidSp;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import java.util.List;
 import org.json.JSONException;
@@ -30,22 +29,22 @@ final class ReadinjoyReportUtils$3
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject2 = "0";
     Object localObject1;
     int j;
     int k;
     if (i == 0)
     {
-      localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+      localObject1 = this.b;
       if ((localObject1 instanceof BaseActivity)) {
-        bool1 = SharedPreUtils.p((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
+        bool1 = SharedPreUtils.bz((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
       } else {
         bool1 = false;
       }
-      localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+      localObject1 = this.b;
       if ((localObject1 instanceof BaseActivity)) {
-        localObject1 = ((ReadInJoySkinManager)((BaseActivity)localObject1).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a();
+        localObject1 = ((ReadInJoySkinManager)((BaseActivity)localObject1).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).b();
       } else {
         localObject1 = "0";
       }
@@ -64,14 +63,14 @@ final class ReadinjoyReportUtils$3
         i = 0;
         localObject1 = localObject2;
       }
-      localObject2 = this.jdField_a_of_type_AndroidAppActivity;
+      localObject2 = this.b;
       if ((localObject2 instanceof BaseActivity))
       {
         localObject2 = (ReadInJoyRefreshManager)((BaseActivity)localObject2).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-        if ((((ReadInJoyRefreshManager)localObject2).a() == 1) && (((ReadInJoyRefreshManager)localObject2).b()))
+        if ((((ReadInJoyRefreshManager)localObject2).d() == 1) && (((ReadInJoyRefreshManager)localObject2).e()))
         {
-          localObject1 = ((ReadInJoyRefreshManager)localObject2).a();
-          bool1 = ((ReadInJoyRefreshManager)localObject2).a();
+          localObject1 = ((ReadInJoyRefreshManager)localObject2).c();
+          bool1 = ((ReadInJoyRefreshManager)localObject2).b();
           i = 0;
           j = 2;
           break label228;
@@ -91,11 +90,11 @@ final class ReadinjoyReportUtils$3
     label228:
     int m;
     boolean bool2;
-    Object localObject3;
-    if (this.jdField_a_of_type_Int != 40677)
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder;
+    if (this.a != 40677)
     {
-      localObject2 = ReadInJoyRefreshManager.b(this.jdField_a_of_type_AndroidAppActivity, 0);
-      if (((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) && (this.jdField_a_of_type_Int == 0) && (localObject2 != null) && (((RefreshData)localObject2).isAD) && (((RefreshData)localObject2).adExposureReports != null) && (((RefreshData)localObject2).adExposureReports.size() > 0)) {
+      localObject2 = ReadInJoyRefreshManager.b(this.b, 0);
+      if (((this.b instanceof BaseActivity)) && (this.a == 0) && (localObject2 != null) && (((RefreshData)localObject2).isAD) && (((RefreshData)localObject2).adExposureReports != null) && (((RefreshData)localObject2).adExposureReports.size() > 0)) {
         try
         {
           qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = new qq_ad_get.QQAdGetRsp.AdInfo();
@@ -109,17 +108,17 @@ final class ReadinjoyReportUtils$3
           localNumberFormatException.printStackTrace();
         }
       }
-      m = this.jdField_a_of_type_Int;
-      bool2 = this.jdField_a_of_type_Boolean;
+      m = this.a;
+      bool2 = this.c;
       if (bool1) {
         k = 1;
       } else {
         k = 0;
       }
-      localObject3 = RIJTransMergeKanDianReport.a(m, (String)localObject1, i, j, bool2, k);
-      if (this.jdField_a_of_type_Int == 0) {
+      localReportR5Builder = RIJTransMergeKanDianReport.a(m, (String)localObject1, i, j, bool2, k);
+      if (this.a == 0) {
         if (localObject2 == null) {
-          break label682;
+          break label618;
         }
       }
     }
@@ -128,41 +127,40 @@ final class ReadinjoyReportUtils$3
       try
       {
         if (!((RefreshData)localObject2).isAD) {
-          break label682;
+          break label618;
         }
         k = 1;
-        ((RIJTransMergeKanDianReport.ReportR5Builder)localObject3).addInt("ad_page", k);
-        ((RIJTransMergeKanDianReport.ReportR5Builder)localObject3).addInt("banner_refresh_length", this.b);
+        localReportR5Builder.addInt("ad_page", k);
+        localReportR5Builder.addInt("banner_refresh_length", this.d);
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getProteusOfflineBid("default_feeds_proteus_offline_bid"), "", "", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject3).build(), false);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X80066F8", "", "", "", "", RIJTransMergeKanDianReport.b(this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Int == 70)
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid"), "", "", localReportR5Builder.build(), false);
+      PublicAccountReportUtils.a("0X80066F8", "", "", "", "", RIJTransMergeKanDianReport.b(this.a));
+      if (this.a == 70)
       {
-        IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        localObject3 = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getProteusOfflineBid("default_feeds_proteus_offline_bid");
-        m = this.jdField_a_of_type_Int;
-        bool2 = this.jdField_a_of_type_Boolean;
+        String str = RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid");
+        m = this.a;
+        bool2 = this.c;
         if (bool1) {
           k = 1;
         } else {
           k = 0;
         }
-        localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8009861", "0X8009861", 0, 0, (String)localObject3, "", "", RIJTransMergeKanDianReport.a(m, (String)localObject1, i, j, bool2, k).build(), false);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X8009861", "", "", "", "", RIJTransMergeKanDianReport.b(this.jdField_a_of_type_Int));
+        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009861", "0X8009861", 0, 0, str, "", "", RIJTransMergeKanDianReport.a(m, (String)localObject1, i, j, bool2, k).build(), false);
+        PublicAccountReportUtils.a("0X8009861", "", "", "", "", RIJTransMergeKanDianReport.b(this.a));
       }
       return;
-      label682:
+      label618:
       k = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.3
  * JD-Core Version:    0.7.0.1
  */

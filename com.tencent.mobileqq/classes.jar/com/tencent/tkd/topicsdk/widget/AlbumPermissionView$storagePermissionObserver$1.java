@@ -17,14 +17,14 @@ public final class AlbumPermissionView$storagePermissionObserver$1
     Intrinsics.checkParameterIsNotNull(paramStoragePermissionEvent, "event");
     if (paramStoragePermissionEvent.a())
     {
-      paramStoragePermissionEvent = this.a.a();
+      paramStoragePermissionEvent = this.a.getOnPermissionCallback();
       if (paramStoragePermissionEvent != null) {
         paramStoragePermissionEvent.a();
       }
       TLog.a("AlbumPermissionView", "request storage permissions, grant.");
       return;
     }
-    paramStoragePermissionEvent = this.a.a();
+    paramStoragePermissionEvent = this.a.getOnPermissionCallback();
     if (paramStoragePermissionEvent != null) {
       paramStoragePermissionEvent.b();
     }
@@ -33,7 +33,7 @@ public final class AlbumPermissionView$storagePermissionObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AlbumPermissionView.storagePermissionObserver.1
  * JD-Core Version:    0.7.0.1
  */

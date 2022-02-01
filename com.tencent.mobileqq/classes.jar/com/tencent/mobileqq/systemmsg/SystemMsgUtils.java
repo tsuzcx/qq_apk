@@ -221,7 +221,7 @@ public class SystemMsgUtils
           return;
         }
         localList = paramStructMsg.msg.actions.get();
-        if ((localList != null) && (localList.size() > paramInt1) && (a(paramStructMsg.msg.sub_type.get(), paramStructMsg.msg.group_msg_type.get())))
+        if ((localList != null) && (localList.size() > paramInt1) && (b(paramStructMsg.msg.sub_type.get(), paramStructMsg.msg.group_msg_type.get())))
         {
           str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
           paramStructMsg.msg.msg_decided.set(str);
@@ -255,11 +255,6 @@ public class SystemMsgUtils
     return true;
   }
   
-  private static boolean a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 != 3) || ((paramInt2 != 10) && (paramInt2 != 11));
-  }
-  
   public static boolean a(structmsg.StructMsg paramStructMsg, int paramInt, String paramString1, String paramString2)
   {
     if ((paramStructMsg != null) && (paramInt != 0) && (paramInt != 3)) {
@@ -284,10 +279,15 @@ public class SystemMsgUtils
     }
     return false;
   }
+  
+  private static boolean b(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 != 3) || ((paramInt2 != 10) && (paramInt2 != 11));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.SystemMsgUtils
  * JD-Core Version:    0.7.0.1
  */

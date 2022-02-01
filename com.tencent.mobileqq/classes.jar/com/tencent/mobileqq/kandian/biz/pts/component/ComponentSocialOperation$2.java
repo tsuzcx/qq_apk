@@ -11,7 +11,7 @@ class ComponentSocialOperation$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.startAnimation(this.a.c);
+    this.a.e.startAnimation(this.a.o);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class ComponentSocialOperation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentSocialOperation.2
  * JD-Core Version:    0.7.0.1
  */

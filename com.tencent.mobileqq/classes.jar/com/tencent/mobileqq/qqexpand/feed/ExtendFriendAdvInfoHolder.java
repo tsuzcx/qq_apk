@@ -13,17 +13,17 @@ public class ExtendFriendAdvInfoHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  SquareItemClickListener a;
   public ExtendFriendFeedView a;
-  public VipGeneralGdtShowView a;
+  public VipGeneralGdtShowView b;
+  SquareItemClickListener c;
   
   public ExtendFriendAdvInfoHolder(View paramView, Context paramContext, SquareItemClickListener paramSquareItemClickListener, VipGeneralGdtShowView paramVipGeneralGdtShowView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView = paramVipGeneralGdtShowView;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener = paramSquareItemClickListener;
-    paramView = this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView;
+    this.a = ((ExtendFriendFeedView)paramView);
+    this.b = paramVipGeneralGdtShowView;
+    this.c = paramSquareItemClickListener;
+    paramView = this.b;
     if (paramView != null) {
       paramView.a(paramView.a(), new ExtendFriendAdvInfoHolder.1(this));
     }
@@ -31,13 +31,13 @@ public class ExtendFriendAdvInfoHolder
   
   public void a(ExtendFriendAdvInfoHolder paramExtendFriendAdvInfoHolder, StrangerInfo paramStrangerInfo, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendFeedView != null) && (paramStrangerInfo != null))
+    if ((this.a != null) && (paramStrangerInfo != null))
     {
       int i = paramExtendFriendAdvInfoHolder.getPosition();
-      paramExtendFriendAdvInfoHolder.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetExtendFriendFeedView.setFeedBgParams(i, paramStrangerInfo.mVoiceUrl, paramInt, false);
+      paramExtendFriendAdvInfoHolder.a.setFeedBgParams(i, paramStrangerInfo.mVoiceUrl, paramInt, false);
     }
-    if ((this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView != null) && (paramStrangerInfo != null) && (paramStrangerInfo.mAlumbasicdata != null)) {
-      paramExtendFriendAdvInfoHolder.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView.a(paramStrangerInfo.mAlumbasicdata, paramExtendFriendAdvInfoHolder.getAdapterPosition());
+    if ((this.b != null) && (paramStrangerInfo != null) && (paramStrangerInfo.mAlumbasicdata != null)) {
+      paramExtendFriendAdvInfoHolder.b.a(paramStrangerInfo.mAlumbasicdata, paramExtendFriendAdvInfoHolder.getAdapterPosition());
     }
   }
   
@@ -45,7 +45,7 @@ public class ExtendFriendAdvInfoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.ExtendFriendAdvInfoHolder
  * JD-Core Version:    0.7.0.1
  */

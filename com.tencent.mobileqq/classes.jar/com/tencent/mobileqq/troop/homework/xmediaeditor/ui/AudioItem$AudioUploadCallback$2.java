@@ -15,28 +15,28 @@ class AudioItem$AudioUploadCallback$2
   
   public void run()
   {
-    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c);
+    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.b.b.findViewHolderForAdapterPosition(this.a.a.g);
     if (localAudioViewHolder != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.a)
+      if (this.a.a.f)
       {
-        AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem).getResources().getDrawable(2130772313);
-        localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+        AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.b).getResources().getDrawable(2130772405);
+        localAudioViewHolder.a.setImageDrawable(localAnimationDrawable);
         localAnimationDrawable.start();
       }
       else
       {
-        localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847265);
+        localAudioViewHolder.a.setImageResource(2130848916);
       }
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localAudioViewHolder.d.setVisibility(4);
+      localAudioViewHolder.a.setVisibility(4);
       localAudioViewHolder.c.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2
  * JD-Core Version:    0.7.0.1
  */

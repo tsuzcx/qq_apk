@@ -20,7 +20,7 @@ class PublicAccountHandlerImpl$5
     {
       paramInt = (int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D);
       int i = (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D);
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountHandlerImpl.sendLocRequest(this.jdField_a_of_type_Int, paramInt, i, 0);
+      this.b.sendLocRequest(this.a, paramInt, i, 0);
       return;
     }
     ThreadManager.getSubThreadHandler().post(new PublicAccountHandlerImpl.5.1(this));
@@ -28,7 +28,7 @@ class PublicAccountHandlerImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountHandlerImpl.5
  * JD-Core Version:    0.7.0.1
  */

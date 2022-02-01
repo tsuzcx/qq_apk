@@ -22,25 +22,25 @@ public class TroopTogetherAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private void a()
+  private void c()
   {
-    Object localObject1 = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-    if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null))
+    Object localObject1 = ((BaseActivity)this.b).getChatFragment();
+    if ((localObject1 != null) && (((ChatFragment)localObject1).k() != null))
     {
-      localObject1 = ((ChatFragment)localObject1).a();
+      localObject1 = ((ChatFragment)localObject1).k();
       if ((localObject1 != null) && ((localObject1 instanceof TroopChatPie)))
       {
         localObject1 = (TroopChatPie)localObject1;
-        Object localObject2 = (TogetherControlHelper)((TroopChatPie)localObject1).a(43);
+        Object localObject2 = (TogetherControlHelper)((TroopChatPie)localObject1).q(43);
         if (localObject2 != null) {
           ((TogetherControlHelper)localObject2).a(2);
         }
         localObject2 = new HashMap();
-        if ((((TroopChatPie)localObject1).a != null) && (!TextUtils.isEmpty(((TroopChatPie)localObject1).a.a))) {
-          ((HashMap)localObject2).put("qq_group_num", ((TroopChatPie)localObject1).a.a);
+        if ((((TroopChatPie)localObject1).ah != null) && (!TextUtils.isEmpty(((TroopChatPie)localObject1).ah.b))) {
+          ((HashMap)localObject2).put("qq_group_num", ((TroopChatPie)localObject1).ah.b);
         }
-        if ((this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin()))) {
-          ((HashMap)localObject2).put("A8", this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+        if ((this.a != null) && (!TextUtils.isEmpty(this.a.getCurrentAccountUin()))) {
+          ((HashMap)localObject2).put("A8", this.a.getCurrentAccountUin());
         }
         ClockReportUtil.a("click#aio_graybar", (HashMap)localObject2);
       }
@@ -51,7 +51,7 @@ public class TroopTogetherAction
   {
     try
     {
-      a();
+      c();
       return true;
     }
     catch (Exception localException)
@@ -60,14 +60,14 @@ public class TroopTogetherAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("TroopOneWayAction", 1, localStringBuilder.toString());
-      b_("TroopOneWayAction");
+      h_("TroopOneWayAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TroopTogetherAction
  * JD-Core Version:    0.7.0.1
  */

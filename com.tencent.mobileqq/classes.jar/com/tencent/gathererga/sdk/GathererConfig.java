@@ -8,17 +8,17 @@ public class GathererConfig
 {
   private GathererConfig(GathererConfig.Builder paramBuilder)
   {
-    this.jdField_a_of_type_AndroidContentContext = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaLangString = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaUtilMap = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_Int = GathererConfig.Builder.a(paramBuilder);
+    this.a = GathererConfig.Builder.a(paramBuilder);
     this.b = GathererConfig.Builder.b(paramBuilder);
     this.c = GathererConfig.Builder.c(paramBuilder);
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentGathererHTTP = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_Boolean = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentGatherergaCoreIExecutor = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache = GathererConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentGatherergaCoreILog = GathererConfig.Builder.a(paramBuilder);
+    this.d = GathererConfig.Builder.d(paramBuilder);
+    this.e = GathererConfig.Builder.e(paramBuilder);
+    this.k = GathererConfig.Builder.f(paramBuilder);
+    this.f = GathererConfig.Builder.g(paramBuilder);
+    this.g = GathererConfig.Builder.h(paramBuilder);
+    this.h = GathererConfig.Builder.i(paramBuilder);
+    this.i = GathererConfig.Builder.j(paramBuilder);
+    this.j = GathererConfig.Builder.k(paramBuilder);
   }
   
   public static GathererConfig.Builder a(Context paramContext, int paramInt)
@@ -28,7 +28,7 @@ public class GathererConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.sdk.GathererConfig
  * JD-Core Version:    0.7.0.1
  */

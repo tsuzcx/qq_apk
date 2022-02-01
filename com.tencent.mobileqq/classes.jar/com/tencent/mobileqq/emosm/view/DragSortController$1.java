@@ -10,8 +10,8 @@ class DragSortController$1
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    if ((!this.a.i.d()) && (this.a.k != -1)) {
+      this.a.i.setTapPos(this.a.k);
     }
     return false;
   }
@@ -23,24 +23,24 @@ class DragSortController$1
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) && (!this.a.c) && (Math.abs(paramFloat1) > this.a.jdField_a_of_type_Float))
+    if ((!this.a.i.d()) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (!this.a.i.e()) && (!this.a.h) && (Math.abs(paramFloat1) > this.a.j))
     {
-      if ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2)) {
+      if ((paramFloat1 < 0.0F) && (this.a.a == 2)) {
         return false;
       }
-      if ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      if ((paramFloat1 > 0.0F) && (this.a.a == 1)) {
         return false;
       }
-      int i = this.a.d;
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+      int i = this.a.k;
+      this.a.i.setSrcPos(i);
+      this.a.i.f();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopHWJsPlugin$UploadMediaEntry
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  TroopHomeworkHelper.UploadCallback jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback = new TroopHWJsPlugin.UploadMediaEntry.1(this);
-  TroopHomeworkHelper.UploadFileTask jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask;
-  TroopHWJsPlugin.RequestSource jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource;
-  String jdField_a_of_type_JavaLangString;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  TroopHWJsPlugin.RequestSource a;
+  TroopHomeworkHelper.UploadFileTask b;
+  int c;
+  Bitmap d;
+  String e;
+  boolean f;
+  String g;
+  AtomicBoolean h = new AtomicBoolean(false);
+  int i;
+  TroopHomeworkHelper.UploadCallback j = new TroopHWJsPlugin.UploadMediaEntry.1(this);
   
   public TroopHWJsPlugin$UploadMediaEntry(TroopHWJsPlugin paramTroopHWJsPlugin) {}
   
@@ -33,7 +33,7 @@ public class TroopHWJsPlugin$UploadMediaEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry
  * JD-Core Version:    0.7.0.1
  */

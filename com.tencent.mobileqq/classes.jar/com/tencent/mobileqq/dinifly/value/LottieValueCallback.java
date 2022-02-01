@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.value;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 
 public class LottieValueCallback<T>
@@ -26,13 +26,13 @@ public class LottieValueCallback<T>
   }
   
   @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public final T getValueInternal(float paramFloat1, float paramFloat2, T paramT1, T paramT2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     return getValue(this.frameInfo.set(paramFloat1, paramFloat2, paramT1, paramT2, paramFloat3, paramFloat4, paramFloat5));
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public final void setAnimation(@Nullable BaseKeyframeAnimation<?, ?> paramBaseKeyframeAnimation)
   {
     this.animation = paramBaseKeyframeAnimation;
@@ -49,7 +49,7 @@ public class LottieValueCallback<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieValueCallback
  * JD-Core Version:    0.7.0.1
  */

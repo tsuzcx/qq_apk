@@ -8,22 +8,6 @@ public class WSPartLifeCycleDelegate
 {
   private HashSet<IWSPartLifeCycle> a = new HashSet();
   
-  public void E_()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((IWSPartLifeCycle)localIterator.next()).E_();
-    }
-  }
-  
-  public void F_()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((IWSPartLifeCycle)localIterator.next()).F_();
-    }
-  }
-  
   public void a(HashSet<IWSPartLifeCycle> paramHashSet)
   {
     if (paramHashSet != null) {
@@ -47,25 +31,41 @@ public class WSPartLifeCycleDelegate
     }
   }
   
-  public void h()
+  public void e()
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((IWSPartLifeCycle)localIterator.next()).h();
+      ((IWSPartLifeCycle)localIterator.next()).e();
     }
   }
   
-  public void i()
+  public void f()
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((IWSPartLifeCycle)localIterator.next()).i();
+      ((IWSPartLifeCycle)localIterator.next()).f();
+    }
+  }
+  
+  public void m()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((IWSPartLifeCycle)localIterator.next()).m();
+    }
+  }
+  
+  public void n()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((IWSPartLifeCycle)localIterator.next()).n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.part.WSPartLifeCycleDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.ugc.selectvideo;
 
-import com.tencent.mobileqq.kandian.biz.ugc.AlbumUtils;
+import com.tencent.mobileqq.kandian.base.utils.AlbumUtils;
 import com.tencent.mobileqq.kandian.biz.ugc.PageLoadManager.QueryProvider;
 import com.tencent.qav.thread.ThreadManager;
 import java.util.List;
@@ -23,7 +23,7 @@ class SelectVideoPresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideo.SelectVideoPresenter.5
  * JD-Core Version:    0.7.0.1
  */

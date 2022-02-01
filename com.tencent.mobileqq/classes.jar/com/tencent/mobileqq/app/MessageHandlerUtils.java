@@ -45,8 +45,8 @@ import tencent.im.msg.im_msg_body.RichText;
 public class MessageHandlerUtils
   extends BaseMessageHandlerUtils
 {
-  private static MessageHandlerUtils.Callback jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback;
-  private static ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(24), Integer.valueOf(14), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12), Integer.valueOf(23), Integer.valueOf(25), Integer.valueOf(26), Integer.valueOf(8), Integer.valueOf(16), Integer.valueOf(17), Integer.valueOf(18), Integer.valueOf(15), Integer.valueOf(19), Integer.valueOf(20), Integer.valueOf(22), Integer.valueOf(28), Integer.valueOf(27), Integer.valueOf(29), Integer.valueOf(31), Integer.valueOf(30), Integer.valueOf(32), Integer.valueOf(33), Integer.valueOf(34) }));
+  private static ArrayList<Integer> a = new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(24), Integer.valueOf(14), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(10), Integer.valueOf(11), Integer.valueOf(12), Integer.valueOf(23), Integer.valueOf(25), Integer.valueOf(26), Integer.valueOf(8), Integer.valueOf(16), Integer.valueOf(17), Integer.valueOf(18), Integer.valueOf(15), Integer.valueOf(19), Integer.valueOf(20), Integer.valueOf(22), Integer.valueOf(28), Integer.valueOf(27), Integer.valueOf(29), Integer.valueOf(31), Integer.valueOf(30), Integer.valueOf(32), Integer.valueOf(33), Integer.valueOf(34) }));
+  private static MessageHandlerUtils.Callback b;
   
   static {}
   
@@ -68,7 +68,7 @@ public class MessageHandlerUtils
   public static long a(AppInterface paramAppInterface, long paramLong1, long paramLong2, long paramLong3, msg_comm.UinPairMsg paramUinPairMsg)
   {
     paramLong1 = a(paramAppInterface, paramLong1, paramLong2, paramLong3);
-    return jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(paramLong1, paramUinPairMsg, paramAppInterface);
+    return b.a(paramLong1, paramUinPairMsg, paramAppInterface);
   }
   
   public static long a(byte[] paramArrayOfByte)
@@ -81,14 +81,14 @@ public class MessageHandlerUtils
   
   public static String a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    return jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(paramAppInterface, paramString1, paramString2);
+    return b.a(paramAppInterface, paramString1, paramString2);
   }
   
   public static msg_svc.PbSendMsgReq a(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    Object localObject = new MessageHandlerUtils.GetRichTextAndMsgVia(paramAppInterface, paramMessageRecord, null, 0).a();
+    Object localObject = new MessageHandlerUtils.GetRichTextAndMsgVia(paramAppInterface, paramMessageRecord, null, 0).c();
     im_msg_body.RichText localRichText = ((MessageHandlerUtils.GetRichTextAndMsgVia)localObject).a();
-    int i = ((MessageHandlerUtils.GetRichTextAndMsgVia)localObject).a();
+    int i = ((MessageHandlerUtils.GetRichTextAndMsgVia)localObject).b();
     if (localRichText == null) {
       return null;
     }
@@ -99,7 +99,7 @@ public class MessageHandlerUtils
       ((StringBuilder)localObject).append(i);
       QLog.d("MsgVia", 2, ((StringBuilder)localObject).toString());
     }
-    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().l().iterator();
+    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().z().iterator();
     for (localObject = null; localIterator.hasNext(); localObject = ((IPbSendReqHandler)localIterator.next()).a(paramAppInterface, paramMessageRecord, localRichText, i, (msg_svc.PbSendMsgReq)localObject)) {}
     a(paramMessageRecord, (msg_svc.PbSendMsgReq)localObject, paramAppInterface);
     return localObject;
@@ -107,7 +107,7 @@ public class MessageHandlerUtils
   
   public static msg_svc.PbSendMsgReq a(AppInterface paramAppInterface, MessageRecord paramMessageRecord, ArrayList<String> paramArrayList, Object paramObject)
   {
-    Object localObject1 = jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback;
+    Object localObject1 = b;
     boolean bool5 = false;
     Object localObject2 = ((MessageHandlerUtils.Callback)localObject1).a(paramMessageRecord, null, 0);
     localObject1 = (im_msg_body.RichText)localObject2[0];
@@ -140,10 +140,10 @@ public class MessageHandlerUtils
       localObject1 = new msg_svc.MultiMsgAssist();
       ((msg_svc.MultiMsgAssist)localObject1).msg_use.set(1);
       a(paramArrayList, (msg_svc.MultiMsgAssist)localObject1);
-      jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(paramObject, (msg_svc.MultiMsgAssist)localObject1);
+      b.a(paramObject, (msg_svc.MultiMsgAssist)localObject1);
       int j = MessageUtils.a(paramMessageRecord.msgUid);
       int k = (short)(int)paramMessageRecord.msgseq;
-      paramArrayList = ((MessageCache)paramAppInterface.getMsgCache()).a();
+      paramArrayList = ((MessageCache)paramAppInterface.getMsgCache()).e();
       paramObject = new msg_svc.PbSendMsgReq();
       paramObject.msg_body.set((MessageMicro)localObject2);
       paramObject.msg_seq.set(0xFFFF & k);
@@ -153,7 +153,7 @@ public class MessageHandlerUtils
       if (paramArrayList != null) {
         paramObject.sync_cookie.set(ByteStringMicro.copyFrom(paramArrayList));
       }
-      jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(paramAppInterface, paramMessageRecord, paramObject);
+      b.a(paramAppInterface, paramMessageRecord, paramObject);
       return paramObject;
     }
     if (QLog.isColorLevel())
@@ -198,14 +198,14 @@ public class MessageHandlerUtils
     {
       if (paramMessageRecord.msg != null)
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(paramMessageRecord, localGeneralFlags)) {
+        if (b.a(paramMessageRecord, localGeneralFlags)) {
           return null;
         }
         return localGeneralFlags;
       }
       return null;
     }
-    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().k().iterator();
+    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().x().iterator();
     boolean bool1 = false;
     int k;
     int i;
@@ -234,12 +234,12 @@ public class MessageHandlerUtils
   
   public static void a(MessageHandlerUtils.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback = paramCallback;
+    b = paramCallback;
   }
   
   private static void a(MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, AppInterface paramAppInterface)
   {
-    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().c().iterator();
+    Iterator localIterator = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().h().iterator();
     while (localIterator.hasNext()) {
       ((CreatePbSendReqFromMessageCallback)localIterator.next()).a(paramMessageRecord, paramPbSendMsgReq, paramAppInterface);
     }
@@ -288,10 +288,10 @@ public class MessageHandlerUtils
   public static boolean a(int paramInt, AppInterface paramAppInterface)
   {
     paramAppInterface = (RoutingType)((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().a().a(Integer.valueOf(paramInt));
-    if ((paramAppInterface != null) && (paramAppInterface.a())) {
+    if ((paramAppInterface != null) && (paramAppInterface.b())) {
       return true;
     }
-    return jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    return a.contains(Integer.valueOf(paramInt));
   }
   
   public static boolean a(AppInterface paramAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
@@ -328,70 +328,6 @@ public class MessageHandlerUtils
         }
       }
     }
-    return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.msg.MessageHandlerUtils", 2, "---------------msgFilter message [before filter] is null !");
-      }
-      return true;
-    }
-    long l = System.currentTimeMillis();
-    StringBuilder localStringBuilder = null;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("---------------msgFilter istroop: ");
-      localStringBuilder.append(paramMessageRecord.istroop);
-      localStringBuilder.append(" shmsgseq: ");
-      localStringBuilder.append(paramMessageRecord.shmsgseq);
-      localStringBuilder.append(" friendUin: ");
-      localStringBuilder.append(paramMessageRecord.frienduin);
-      localStringBuilder.append(" senderUin: ");
-      localStringBuilder.append(paramMessageRecord.senderuin);
-      localStringBuilder.append(" msgType: ");
-      localStringBuilder.append(paramMessageRecord.msgtype);
-      localStringBuilder.append(" time:");
-      localStringBuilder.append(paramMessageRecord.time);
-      localStringBuilder.append(" msgContent: ");
-      localStringBuilder.append(paramMessageRecord.getLogColorContent());
-    }
-    paramAppInterface = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getMsgList(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    int j;
-    if (paramAppInterface == null) {
-      j = 0;
-    } else {
-      j = paramAppInterface.size();
-    }
-    int i;
-    if (j > 15) {
-      i = j - 15;
-    } else {
-      i = 0;
-    }
-    while (i < j)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramAppInterface.get(i);
-      if ((localMessageRecord != null) && (localMessageRecord.msgtype == paramMessageRecord.msgtype) && (Utils.a(localMessageRecord.msg, paramMessageRecord.msg)))
-      {
-        if ((QLog.isColorLevel()) && (localStringBuilder != null))
-        {
-          localStringBuilder.append(" filterType: other");
-          QLog.w("Q.msg.MessageHandlerUtils", 2, localStringBuilder.toString());
-        }
-        MsgAutoMonitorUtil.getInstance().addMsgFilterTime(System.currentTimeMillis() - l);
-        return true;
-      }
-      i += 1;
-    }
-    if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
-      QLog.d("Q.msg.MessageHandlerUtils", 2, localStringBuilder.toString());
-    }
-    MsgAutoMonitorUtil.getInstance().addMsgFilterTime(System.currentTimeMillis() - l);
     return false;
   }
   
@@ -486,12 +422,12 @@ public class MessageHandlerUtils
         }
       }
     }
-    return ((MessageCache)paramAppInterface.getMsgCache()).d(paramMessageRecord);
+    return ((MessageCache)paramAppInterface.getMsgCache()).h(paramMessageRecord);
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.b(paramMessageRecord);
+    return b.b(paramMessageRecord);
   }
   
   public static boolean a(MessageRecord paramMessageRecord, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, im_msg_body.GeneralFlags paramGeneralFlags)
@@ -574,6 +510,70 @@ public class MessageHandlerUtils
     return paramBoolean;
   }
   
+  public static boolean b(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.MessageHandlerUtils", 2, "---------------msgFilter message [before filter] is null !");
+      }
+      return true;
+    }
+    long l = System.currentTimeMillis();
+    StringBuilder localStringBuilder = null;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder(256);
+      localStringBuilder.append("---------------msgFilter istroop: ");
+      localStringBuilder.append(paramMessageRecord.istroop);
+      localStringBuilder.append(" shmsgseq: ");
+      localStringBuilder.append(paramMessageRecord.shmsgseq);
+      localStringBuilder.append(" friendUin: ");
+      localStringBuilder.append(paramMessageRecord.frienduin);
+      localStringBuilder.append(" senderUin: ");
+      localStringBuilder.append(paramMessageRecord.senderuin);
+      localStringBuilder.append(" msgType: ");
+      localStringBuilder.append(paramMessageRecord.msgtype);
+      localStringBuilder.append(" time:");
+      localStringBuilder.append(paramMessageRecord.time);
+      localStringBuilder.append(" msgContent: ");
+      localStringBuilder.append(paramMessageRecord.getLogColorContent());
+    }
+    paramAppInterface = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getMsgList(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    int j;
+    if (paramAppInterface == null) {
+      j = 0;
+    } else {
+      j = paramAppInterface.size();
+    }
+    int i;
+    if (j > 15) {
+      i = j - 15;
+    } else {
+      i = 0;
+    }
+    while (i < j)
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramAppInterface.get(i);
+      if ((localMessageRecord != null) && (localMessageRecord.msgtype == paramMessageRecord.msgtype) && (Utils.a(localMessageRecord.msg, paramMessageRecord.msg)))
+      {
+        if ((QLog.isColorLevel()) && (localStringBuilder != null))
+        {
+          localStringBuilder.append(" filterType: other");
+          QLog.w("Q.msg.MessageHandlerUtils", 2, localStringBuilder.toString());
+        }
+        MsgAutoMonitorUtil.getInstance().addMsgFilterTime(System.currentTimeMillis() - l);
+        return true;
+      }
+      i += 1;
+    }
+    if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
+      QLog.d("Q.msg.MessageHandlerUtils", 2, localStringBuilder.toString());
+    }
+    MsgAutoMonitorUtil.getInstance().addMsgFilterTime(System.currentTimeMillis() - l);
+    return false;
+  }
+  
   private static boolean b(AppInterface paramAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong, StringBuilder paramStringBuilder, List<MessageRecord> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
@@ -595,7 +595,7 @@ public class MessageHandlerUtils
         }
       }
     }
-    return ((MessageCache)paramAppInterface.getMsgCache()).d(paramMessageRecord);
+    return ((MessageCache)paramAppInterface.getMsgCache()).h(paramMessageRecord);
   }
   
   public static boolean b(MessageRecord paramMessageRecord)
@@ -641,7 +641,7 @@ public class MessageHandlerUtils
       if (localMessageRecord.msgtype != -2006) {
         return bool1;
       }
-      if (!jdField_a_of_type_ComTencentMobileqqAppMessageHandlerUtils$Callback.a(localMessageRecord)) {
+      if (!b.a(localMessageRecord)) {
         return false;
       }
     }
@@ -651,7 +651,7 @@ public class MessageHandlerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandlerUtils
  * JD-Core Version:    0.7.0.1
  */

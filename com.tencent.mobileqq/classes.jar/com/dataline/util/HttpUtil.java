@@ -22,73 +22,6 @@ public class HttpUtil
 {
   private static final Uri a = Uri.parse("content://telephony/carriers/preferapn");
   
-  private static int a()
-  {
-    if (DatalinePlatformUtil.a() < 11) {
-      return Proxy.getDefaultPort();
-    }
-    String str = System.getProperty("http.proxyPort");
-    if (!TextUtils.isEmpty(str)) {
-      try
-      {
-        int i = Integer.parseInt(str);
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        localNumberFormatException.printStackTrace();
-      }
-    }
-    return -1;
-  }
-  
-  public static HttpUtil.NetworkProxy a()
-  {
-    String str;
-    if (a())
-    {
-      str = a();
-      if (str != null)
-      {
-        if (str.equalsIgnoreCase("cmwap")) {
-          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
-        }
-        if (str.equalsIgnoreCase("3gwap")) {
-          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
-        }
-        if (str.equalsIgnoreCase("uniwap")) {
-          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
-        }
-        if (str.equalsIgnoreCase("ctwap")) {
-          return new HttpUtil.NetworkProxy("10.0.0.200", 80, null);
-        }
-      }
-    }
-    else
-    {
-      str = b();
-      int i = a();
-      if ((!TextUtils.isEmpty(str)) && (!"10.0.0.172".equals(str)) && (!"10.0.0.200".equals(str)) && (i >= 0)) {
-        return new HttpUtil.NetworkProxy(str, i, null);
-      }
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    if (AppNetConnInfo.getRecentNetworkInfo() == null) {
-      return null;
-    }
-    if (AppNetConnInfo.isWifiConn()) {
-      return "wifi";
-    }
-    if ((AppNetConnInfo.isMobileConn()) && (AppNetConnInfo.getCurrentAPN() != null)) {
-      return AppNetConnInfo.getCurrentAPN().toLowerCase();
-    }
-    return null;
-  }
-  
   public static HttpClient a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
     Object localObject2 = new BasicHttpParams();
@@ -139,12 +72,79 @@ public class HttpUtil
     return AppNetConnInfo.isMobileConn();
   }
   
-  private static String b()
+  public static HttpUtil.NetworkProxy b()
+  {
+    String str;
+    if (a())
+    {
+      str = c();
+      if (str != null)
+      {
+        if (str.equalsIgnoreCase("cmwap")) {
+          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("3gwap")) {
+          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("uniwap")) {
+          return new HttpUtil.NetworkProxy("10.0.0.172", 80, null);
+        }
+        if (str.equalsIgnoreCase("ctwap")) {
+          return new HttpUtil.NetworkProxy("10.0.0.200", 80, null);
+        }
+      }
+    }
+    else
+    {
+      str = d();
+      int i = e();
+      if ((!TextUtils.isEmpty(str)) && (!"10.0.0.172".equals(str)) && (!"10.0.0.200".equals(str)) && (i >= 0)) {
+        return new HttpUtil.NetworkProxy(str, i, null);
+      }
+    }
+    return null;
+  }
+  
+  public static String c()
+  {
+    if (AppNetConnInfo.getRecentNetworkInfo() == null) {
+      return null;
+    }
+    if (AppNetConnInfo.isWifiConn()) {
+      return "wifi";
+    }
+    if ((AppNetConnInfo.isMobileConn()) && (AppNetConnInfo.getCurrentAPN() != null)) {
+      return AppNetConnInfo.getCurrentAPN().toLowerCase();
+    }
+    return null;
+  }
+  
+  private static String d()
   {
     if (DatalinePlatformUtil.a() < 11) {
       return Proxy.getDefaultHost();
     }
     return System.getProperty("http.proxyHost");
+  }
+  
+  private static int e()
+  {
+    if (DatalinePlatformUtil.a() < 11) {
+      return Proxy.getDefaultPort();
+    }
+    String str = System.getProperty("http.proxyPort");
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        int i = Integer.parseInt(str);
+        return i;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localNumberFormatException.printStackTrace();
+      }
+    }
+    return -1;
   }
 }
 

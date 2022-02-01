@@ -13,7 +13,7 @@ import java.util.List;
 public abstract interface IGameMsgSayHelloRulesApi
   extends QRouteApi
 {
-  public abstract void doInit(AppInterface paramAppInterface, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, List<ChatMessage> paramList);
+  public abstract void doInit(int paramInt1, AppInterface paramAppInterface, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, List<ChatMessage> paramList);
   
   public abstract boolean isAbleToAction();
   
@@ -25,7 +25,7 @@ public abstract interface IGameMsgSayHelloRulesApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.IGameMsgSayHelloRulesApi
  * JD-Core Version:    0.7.0.1
  */

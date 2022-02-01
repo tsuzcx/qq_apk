@@ -33,14 +33,14 @@ import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RspBody;
 public class TroopMemberRecommendHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopMemberRecommendManager jdField_a_of_type_ComTencentMobileqqMulticardManagerTroopMemberRecommendManager;
+  private TroopMemberRecommendManager a;
+  private QQAppInterface b;
   
   public TroopMemberRecommendHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardManagerTroopMemberRecommendManager = ((TroopMemberRecommendManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER));
+    this.b = paramQQAppInterface;
+    this.a = ((TroopMemberRecommendManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER));
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -101,7 +101,7 @@ public class TroopMemberRecommendHandler
             l2 = paramToServiceMsg.uint32_timestamp.get();
           }
           j = i;
-          Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMulticardManagerTroopMemberRecommendManager.a();
+          Object localObject1 = this.a.a();
           k = i;
           long l3;
           if (localObject2 != null)
@@ -324,7 +324,7 @@ public class TroopMemberRecommendHandler
       paramFromServiceMsg.append(",oidbesult=");
       paramFromServiceMsg.append(i);
       QLog.i("TroopMemberRecommend.Handler", 1, paramFromServiceMsg.toString(), paramToServiceMsg);
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqMulticardManagerTroopMemberRecommendManager;
+      paramToServiceMsg = this.a;
       if (paramToServiceMsg != null) {
         paramToServiceMsg.a(bool2, paramObject, String.valueOf(l1));
       }
@@ -440,7 +440,7 @@ public class TroopMemberRecommendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.manager.TroopMemberRecommendHandler
  * JD-Core Version:    0.7.0.1
  */

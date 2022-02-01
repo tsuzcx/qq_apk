@@ -10,22 +10,22 @@ class SlideBottomPanel$3
   public void onAnimationCancel(Animator paramAnimator)
   {
     paramAnimator = this.a;
-    paramAnimator.jdField_a_of_type_Boolean = false;
     paramAnimator.b = false;
-    paramAnimator.e = false;
-    if (paramAnimator.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.hidePanelFinish();
+    paramAnimator.c = false;
+    paramAnimator.w = false;
+    if (paramAnimator.z != null) {
+      this.a.z.hidePanelFinish();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     paramAnimator = this.a;
-    paramAnimator.jdField_a_of_type_Boolean = false;
     paramAnimator.b = false;
-    paramAnimator.e = false;
-    if (paramAnimator.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.hidePanelFinish();
+    paramAnimator.c = false;
+    paramAnimator.w = false;
+    if (paramAnimator.z != null) {
+      this.a.z.hidePanelFinish();
     }
   }
   
@@ -33,12 +33,12 @@ class SlideBottomPanel$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_Boolean = true;
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideBottomPanel.3
  * JD-Core Version:    0.7.0.1
  */

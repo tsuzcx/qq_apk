@@ -16,7 +16,7 @@ public class JSONConverter
 {
   public static <T> T a(String paramString, Class<T> paramClass)
   {
-    if (!a(paramString))
+    if (!b(paramString))
     {
       if (paramClass == null) {
         return null;
@@ -79,7 +79,7 @@ public class JSONConverter
               if (localObject3 != null) {
                 paramClass = ((Alias)localObject3).a();
               }
-              if ((a(paramClass)) || (!paramJSONObject.has(paramClass))) {}
+              if ((b(paramClass)) || (!paramJSONObject.has(paramClass))) {}
             }
           }
           try
@@ -152,7 +152,7 @@ public class JSONConverter
   
   public static <T> List<T> a(String paramString, Type paramType)
   {
-    if (!a(paramString))
+    if (!b(paramString))
     {
       if (paramType == null) {
         return null;
@@ -215,7 +215,7 @@ public class JSONConverter
       {
         Object localObject = paramList.next();
         if (localObject != null) {
-          if (a(localObject)) {
+          if (b(localObject)) {
             localJSONArray.put(localObject);
           } else if ((localObject instanceof List)) {
             localJSONArray.put(a((List)localObject));
@@ -251,12 +251,12 @@ public class JSONConverter
           if (localObject2 != null)
           {
             localObject2 = ((Alias)localObject2).a();
-            if (!a((String)localObject2)) {
+            if (!b((String)localObject2)) {
               try
               {
                 localObject1 = ((Field)localObject1).get(paramT);
                 if (localObject1 != null) {
-                  if (a(localObject1)) {
+                  if (b(localObject1)) {
                     localJSONObject.put((String)localObject2, localObject1);
                   } else if ((localObject1 instanceof List)) {
                     localJSONObject.put((String)localObject2, a((List)localObject1));
@@ -287,19 +287,19 @@ public class JSONConverter
     QLog.d("JSONConverter", 2, paramString);
   }
   
-  private static boolean a(Object paramObject)
+  private static boolean b(Object paramObject)
   {
     return ((paramObject instanceof Integer)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float)) || ((paramObject instanceof Long)) || ((paramObject instanceof Byte)) || ((paramObject instanceof Character)) || ((paramObject instanceof Short));
   }
   
-  private static boolean a(String paramString)
+  private static boolean b(String paramString)
   {
     return (paramString == null) || (paramString.length() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsonconverter.JSONConverter
  * JD-Core Version:    0.7.0.1
  */

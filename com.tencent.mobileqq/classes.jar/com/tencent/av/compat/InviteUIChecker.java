@@ -14,8 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class InviteUIChecker
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final ConcurrentHashMap<String, InviteUIChecker.CheckTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(2);
+  private final ConcurrentHashMap<String, InviteUIChecker.CheckTask> a = new ConcurrentHashMap(2);
+  private final Handler b = new Handler(Looper.getMainLooper());
   
   public long a(VideoAppInterface paramVideoAppInterface, Intent paramIntent, boolean paramBoolean)
   {
@@ -50,8 +50,8 @@ public class InviteUIChecker
         l = 1500L;
       }
       paramVideoAppInterface = new InviteUIChecker.CheckTask(str, paramIntent, paramVideoAppInterface, null);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramVideoAppInterface);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramVideoAppInterface, l);
+      this.a.put(localObject, paramVideoAppInterface);
+      this.b.postDelayed(paramVideoAppInterface, l);
       if (QLog.isColorLevel())
       {
         paramIntent = new StringBuilder();
@@ -91,11 +91,11 @@ public class InviteUIChecker
       ((StringBuilder)localObject).append("]");
       QLog.d("InviteUIChecker", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    Object localObject = this.a.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      InviteUIChecker.CheckTask localCheckTask = (InviteUIChecker.CheckTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      InviteUIChecker.CheckTask localCheckTask = (InviteUIChecker.CheckTask)this.a.get(str);
       if ((localCheckTask != null) && (InviteUIChecker.CheckTask.a(localCheckTask).equals(paramString))) {
         b(str);
       }
@@ -108,11 +108,11 @@ public class InviteUIChecker
     Object localObject1;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject2 = (InviteUIChecker.CheckTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      localObject2 = (InviteUIChecker.CheckTask)this.a.remove(paramString);
       localObject1 = localObject2;
       if (localObject2 != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject2);
+        this.b.removeCallbacks((Runnable)localObject2);
         localObject1 = localObject2;
       }
     }

@@ -15,43 +15,29 @@ import java.util.Locale;
 
 public class FilterProcessTest
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(500);
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "10.AV_SRC", "20.AV_PRE_RENDER", "30.AV_FILTER_NEW", "40.AV_FILTER", "50.AV_POST_RENDER", "60.AV_RETURN", "appleVideoDenoise", "appleLowLightEnhance", "applyBeauty30", "mInputTextureFbo", "applyBeauty20", "mirrorTextureIn", "mirrorTextureOut" };
-  private static boolean jdField_b_of_type_Boolean = false;
+  private static final String[] b = { "10.AV_SRC", "20.AV_PRE_RENDER", "30.AV_FILTER_NEW", "40.AV_FILTER", "50.AV_POST_RENDER", "60.AV_RETURN", "appleVideoDenoise", "appleLowLightEnhance", "applyBeauty30", "mInputTextureFbo", "applyBeauty20", "mirrorTextureIn", "mirrorTextureOut" };
   private static boolean c = false;
-  private int jdField_a_of_type_Int = 0;
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private FilterProcessTest.DebugFile[] jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile = null;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean d = false;
+  private static boolean d = false;
+  private static final String e;
+  private static final StringBuilder k = new StringBuilder(500);
+  public boolean a = false;
+  private boolean f = false;
+  private String g;
+  private int h = 0;
+  private FilterProcessTest.DebugFile[] i = null;
+  private byte[] j = null;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
     localStringBuilder.append("/avdebug/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public FilterProcessTest()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private FilterProcessTest.DebugFile a(int paramInt)
-  {
-    FilterProcessTest.DebugFile[] arrayOfDebugFile = this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile;
-    if ((arrayOfDebugFile != null) && (paramInt < arrayOfDebugFile.length)) {
-      return arrayOfDebugFile[paramInt];
-    }
-    return null;
+    e = localStringBuilder.toString();
   }
   
   static String a(int paramInt)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = b;
     if (paramInt < arrayOfString.length) {
       return arrayOfString[paramInt];
     }
@@ -98,13 +84,13 @@ public class FilterProcessTest
   private void a(int paramInt1, int paramInt2)
   {
     paramInt1 = paramInt2 * paramInt1 * 4;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.j;
     if ((arrayOfByte != null) && (arrayOfByte.length == paramInt1))
     {
       Arrays.fill(arrayOfByte, (byte)0);
       return;
     }
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt1];
+    this.j = new byte[paramInt1];
   }
   
   private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
@@ -125,27 +111,27 @@ public class FilterProcessTest
     //   0: aload_0
     //   1: ifnull +102 -> 103
     //   4: aload_1
-    //   5: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5: invokestatic 167	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   8: ifeq +4 -> 12
     //   11: return
     //   12: aconst_null
     //   13: astore_3
     //   14: aconst_null
     //   15: astore_2
-    //   16: new 165	java/io/FileOutputStream
+    //   16: new 169	java/io/FileOutputStream
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 168	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 172	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   24: astore_1
     //   25: aload_1
     //   26: aload_0
-    //   27: invokestatic 154	com/tencent/av/opengl/effects/FilterProcessTest:b	(Ljava/io/FileOutputStream;[B)V
+    //   27: invokestatic 158	com/tencent/av/opengl/effects/FilterProcessTest:b	(Ljava/io/FileOutputStream;[B)V
     //   30: aload_1
-    //   31: invokevirtual 171	java/io/FileOutputStream:flush	()V
+    //   31: invokevirtual 175	java/io/FileOutputStream:flush	()V
     //   34: aload_1
-    //   35: invokevirtual 174	java/io/FileOutputStream:close	()V
+    //   35: invokevirtual 178	java/io/FileOutputStream:close	()V
     //   38: aload_1
-    //   39: invokevirtual 174	java/io/FileOutputStream:close	()V
+    //   39: invokevirtual 178	java/io/FileOutputStream:close	()V
     //   42: return
     //   43: astore_0
     //   44: aload_1
@@ -165,24 +151,24 @@ public class FilterProcessTest
     //   64: aload_0
     //   65: astore_2
     //   66: aload_1
-    //   67: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   67: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   70: aload_0
     //   71: ifnull +13 -> 84
     //   74: aload_0
-    //   75: invokevirtual 174	java/io/FileOutputStream:close	()V
+    //   75: invokevirtual 178	java/io/FileOutputStream:close	()V
     //   78: return
     //   79: astore_0
     //   80: aload_0
-    //   81: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   81: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   84: return
     //   85: aload_2
     //   86: ifnull +15 -> 101
     //   89: aload_2
-    //   90: invokevirtual 174	java/io/FileOutputStream:close	()V
+    //   90: invokevirtual 178	java/io/FileOutputStream:close	()V
     //   93: goto +8 -> 101
     //   96: astore_1
     //   97: aload_1
-    //   98: invokevirtual 177	java/lang/Exception:printStackTrace	()V
+    //   98: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   101: aload_0
     //   102: athrow
     //   103: return
@@ -206,30 +192,39 @@ public class FilterProcessTest
     //   89	93	96	java/lang/Exception
   }
   
+  private FilterProcessTest.DebugFile b(int paramInt)
+  {
+    FilterProcessTest.DebugFile[] arrayOfDebugFile = this.i;
+    if ((arrayOfDebugFile != null) && (paramInt < arrayOfDebugFile.length)) {
+      return arrayOfDebugFile[paramInt];
+    }
+    return null;
+  }
+  
   private void b(FilterProcessRender paramFilterProcessRender, int paramInt, CameraFrame paramCameraFrame, GLTexture paramGLTexture)
   {
-    FilterProcessTest.DebugFile localDebugFile = a(paramInt);
+    FilterProcessTest.DebugFile localDebugFile = b(paramInt);
     if (localDebugFile != null)
     {
       Object localObject = null;
-      int m = paramFilterProcessRender.jdField_a_of_type_Int;
-      int j = paramFilterProcessRender.b;
-      int n = 42;
-      int k;
-      int i;
+      int i2 = paramFilterProcessRender.b;
+      int n = paramFilterProcessRender.c;
+      int i3 = 42;
+      int i1;
+      int m;
       if (paramInt == 0)
       {
-        k = m;
-        i = j;
+        i1 = i2;
+        m = n;
         if (paramCameraFrame != null)
         {
-          k = m;
-          i = j;
-          if (paramCameraFrame.b())
+          i1 = i2;
+          m = n;
+          if (paramCameraFrame.c())
           {
-            paramCameraFrame = paramCameraFrame.jdField_a_of_type_ArrayOfByte;
-            paramInt = paramFilterProcessRender.b;
-            i = paramFilterProcessRender.jdField_a_of_type_Int;
+            paramCameraFrame = paramCameraFrame.a;
+            paramInt = paramFilterProcessRender.c;
+            m = paramFilterProcessRender.b;
           }
         }
       }
@@ -237,111 +232,111 @@ public class FilterProcessTest
       {
         for (paramFilterProcessRender = paramCameraFrame;; paramFilterProcessRender = paramCameraFrame)
         {
-          j = 17;
+          n = 17;
           break label518;
           if (paramInt != 5) {
             break;
           }
-          k = m;
-          i = j;
+          i1 = i2;
+          m = n;
           if (paramCameraFrame == null) {
             break label509;
           }
-          k = m;
-          i = j;
-          if (!paramCameraFrame.b()) {
+          i1 = i2;
+          m = n;
+          if (!paramCameraFrame.c()) {
             break label509;
           }
-          paramCameraFrame = paramCameraFrame.jdField_a_of_type_ArrayOfByte;
-          paramInt = paramFilterProcessRender.b;
-          i = paramFilterProcessRender.jdField_a_of_type_Int;
+          paramCameraFrame = paramCameraFrame.a;
+          paramInt = paramFilterProcessRender.c;
+          m = paramFilterProcessRender.b;
         }
         if (paramInt == 3)
         {
-          k = m;
-          i = j;
+          i1 = i2;
+          m = n;
           if (paramGLTexture != null)
           {
-            k = m;
-            i = j;
+            i1 = i2;
+            m = n;
             if (paramGLTexture.b != -1)
             {
-              a(m, j);
-              a(paramGLTexture.b, 36064, m, j, this.jdField_a_of_type_ArrayOfByte);
-              paramFilterProcessRender = this.jdField_a_of_type_ArrayOfByte;
-              paramInt = m;
-              i = j;
-              j = n;
+              a(i2, n);
+              a(paramGLTexture.b, 36064, i2, n, this.j);
+              paramFilterProcessRender = this.j;
+              paramInt = i2;
+              m = n;
+              n = i3;
               break label518;
             }
           }
         }
         else if (paramInt == 2)
         {
-          k = m;
-          i = j;
+          i1 = i2;
+          m = n;
           if (paramGLTexture != null)
           {
-            k = m;
-            i = j;
+            i1 = i2;
+            m = n;
             if (paramGLTexture.b != -1)
             {
-              a(m, j);
-              a(paramGLTexture.b, 36064, m, j, this.jdField_a_of_type_ArrayOfByte);
-              paramFilterProcessRender = this.jdField_a_of_type_ArrayOfByte;
-              paramInt = m;
-              i = j;
-              j = n;
+              a(i2, n);
+              a(paramGLTexture.b, 36064, i2, n, this.j);
+              paramFilterProcessRender = this.j;
+              paramInt = i2;
+              m = n;
+              n = i3;
               break label518;
             }
           }
         }
         else if (paramInt == 4)
         {
-          paramInt = paramFilterProcessRender.b;
-          j = paramFilterProcessRender.jdField_a_of_type_Int;
-          k = paramInt;
-          i = j;
-          if (paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null)
+          paramInt = paramFilterProcessRender.c;
+          n = paramFilterProcessRender.b;
+          i1 = paramInt;
+          m = n;
+          if (paramFilterProcessRender.o != null)
           {
-            paramCameraFrame = paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a();
-            k = paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a();
+            paramCameraFrame = paramFilterProcessRender.o.d();
+            i1 = paramFilterProcessRender.o.e();
             paramFilterProcessRender = paramCameraFrame;
-            i = j;
-            j = k;
+            m = n;
+            n = i1;
             break label518;
           }
         }
         else
         {
-          k = m;
-          i = j;
+          i1 = i2;
+          m = n;
           if (paramInt == 1)
           {
             if ((paramGLTexture != null) && (paramGLTexture.b != -1))
             {
-              a(m, j);
-              a(paramGLTexture.b, 36064, m, j, this.jdField_a_of_type_ArrayOfByte);
-              paramFilterProcessRender = this.jdField_a_of_type_ArrayOfByte;
-              paramInt = m;
-              i = j;
-              j = n;
+              a(i2, n);
+              a(paramGLTexture.b, 36064, i2, n, this.j);
+              paramFilterProcessRender = this.j;
+              paramInt = i2;
+              m = n;
+              n = i3;
               break label518;
             }
-            k = m;
-            i = j;
+            i1 = i2;
+            m = n;
             if (paramGLTexture != null)
             {
-              k = m;
-              i = j;
-              if (paramGLTexture.jdField_a_of_type_Int != -1)
+              i1 = i2;
+              m = n;
+              if (paramGLTexture.a != -1)
               {
-                a(m, j);
-                YuvPostRender.a(paramGLTexture.jdField_a_of_type_Int, m, j, this.jdField_a_of_type_ArrayOfByte);
-                paramFilterProcessRender = this.jdField_a_of_type_ArrayOfByte;
-                paramInt = m;
-                i = j;
-                j = n;
+                a(i2, n);
+                YuvPostRender.a(paramGLTexture.a, i2, n, this.j);
+                paramFilterProcessRender = this.j;
+                paramInt = i2;
+                m = n;
+                n = i3;
                 break label518;
               }
             }
@@ -349,12 +344,12 @@ public class FilterProcessTest
         }
       }
       label509:
-      j = 0;
-      paramInt = k;
+      n = 0;
+      paramInt = i1;
       paramFilterProcessRender = localObject;
       label518:
       if (paramFilterProcessRender != null) {
-        localDebugFile.a(paramFilterProcessRender, j, paramInt, i);
+        localDebugFile.a(paramFilterProcessRender, n, paramInt, m);
       }
     }
   }
@@ -381,40 +376,40 @@ public class FilterProcessTest
   
   public void a()
   {
-    int i = AudioHelper.a(24);
-    int j = 0;
-    if (i == 1)
+    int m = AudioHelper.a(24);
+    int n = 0;
+    if (m == 1)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
     else
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.a) {
         return;
       }
       b();
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("startOneChat debug[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append("]");
       QLog.i("FilterProcessTest", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = null;
     Object localObject2;
     Object localObject3;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       localObject1 = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
       localObject2 = new Date(System.currentTimeMillis());
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(e);
       ((StringBuilder)localObject3).append(((SimpleDateFormat)localObject1).format((Date)localObject2));
       localObject2 = ((StringBuilder)localObject3).toString();
       localObject3 = new File((String)localObject2);
@@ -428,7 +423,7 @@ public class FilterProcessTest
         localObject1 = localObject2;
         if (!((File)localObject3).mkdirs())
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
           localObject1 = localObject2;
           if (QLog.isDevelopLevel())
           {
@@ -441,33 +436,213 @@ public class FilterProcessTest
         }
       }
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      i = j;
-      if (this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile == null)
+      m = n;
+      if (this.i == null)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile = new FilterProcessTest.DebugFile[6];
-        i = j;
+        this.i = new FilterProcessTest.DebugFile[6];
+        m = n;
       }
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile.length)
+      while (m < this.i.length)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+        ((StringBuilder)localObject2).append(b[m]);
         localObject2 = ((StringBuilder)localObject2).toString();
-        localObject3 = this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile;
-        if (localObject3[i] != null) {
-          localObject3[i].a();
+        localObject3 = this.i;
+        if (localObject3[m] != null) {
+          localObject3[m].a();
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile[i] = new FilterProcessTest.DebugFile((String)localObject2);
-        i += 1;
+        this.i[m] = new FilterProcessTest.DebugFile((String)localObject2);
+        m += 1;
       }
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  @TargetApi(23)
+  void a(FilterProcessRender paramFilterProcessRender, int paramInt, CameraFrame paramCameraFrame, GLTexture paramGLTexture)
   {
-    if (!this.d) {
+    if (this.a) {
+      b(paramFilterProcessRender, paramInt, paramCameraFrame, paramGLTexture);
+    }
+    if (!this.f) {
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append(this.h);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(a(paramInt));
+    localObject = ((StringBuilder)localObject).toString();
+    int n = paramFilterProcessRender.c * paramFilterProcessRender.b * 4;
+    if (paramInt != 0)
+    {
+      if (paramInt != 10)
+      {
+        int m = 0;
+        if (paramInt != 4)
+        {
+          if (paramInt != 5)
+          {
+            if ((paramGLTexture != null) && (paramGLTexture.b != -1))
+            {
+              paramCameraFrame = new StringBuilder();
+              paramCameraFrame.append((String)localObject);
+              paramCameraFrame.append("_text_");
+              paramCameraFrame.append(a(paramFilterProcessRender.b, paramFilterProcessRender.c, 0));
+              paramCameraFrame.append(".jpg");
+              paramCameraFrame = paramCameraFrame.toString();
+              RenderUtil.a(paramGLTexture.b, paramFilterProcessRender.b, paramFilterProcessRender.c, paramCameraFrame);
+            }
+            else if ((paramGLTexture != null) && (paramGLTexture.a != -1))
+            {
+              paramCameraFrame = this.j;
+              if ((paramCameraFrame == null) || (paramCameraFrame.length != n)) {
+                this.j = new byte[n];
+              }
+              paramCameraFrame = new StringBuilder();
+              paramCameraFrame.append((String)localObject);
+              paramCameraFrame.append("_fbo_");
+              paramCameraFrame.append(a(paramFilterProcessRender.b, paramFilterProcessRender.c, 42));
+              paramCameraFrame.append(".yuv");
+              paramCameraFrame = paramCameraFrame.toString();
+              YuvPostRender.a(paramGLTexture.a, paramFilterProcessRender.b, paramFilterProcessRender.c, this.j);
+              a(this.j, paramCameraFrame);
+            }
+            else if ((paramCameraFrame != null) && (paramCameraFrame.c()))
+            {
+              paramGLTexture = new StringBuilder();
+              paramGLTexture.append((String)localObject);
+              paramGLTexture.append("_data_");
+              paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 17));
+              paramGLTexture.append(".yuv");
+              paramFilterProcessRender = paramGLTexture.toString();
+              a(paramCameraFrame.a, paramFilterProcessRender);
+            }
+          }
+          else if ((paramCameraFrame != null) && (paramCameraFrame.c()))
+          {
+            paramGLTexture = new StringBuilder();
+            paramGLTexture.append((String)localObject);
+            paramGLTexture.append("_directReturn_");
+            paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 17));
+            paramGLTexture.append(".yuv");
+            paramFilterProcessRender = paramGLTexture.toString();
+            a(paramCameraFrame.a, paramFilterProcessRender);
+          }
+        }
+        else
+        {
+          if ((paramGLTexture != null) && (paramGLTexture.a != -1))
+          {
+            paramCameraFrame = this.j;
+            if ((paramCameraFrame == null) || (paramCameraFrame.length != n)) {
+              this.j = new byte[n];
+            }
+            paramCameraFrame = new StringBuilder();
+            paramCameraFrame.append((String)localObject);
+            paramCameraFrame.append("_rgbRotateCenterTextureFbo_");
+            paramCameraFrame.append(paramGLTexture.a);
+            paramCameraFrame.append("_");
+            paramCameraFrame.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 42));
+            paramCameraFrame.append(".yuv");
+            paramCameraFrame = paramCameraFrame.toString();
+            YuvPostRender.a(paramGLTexture.a, paramFilterProcessRender.c, paramFilterProcessRender.b, this.j);
+            a(this.j, paramCameraFrame);
+          }
+          if ((paramGLTexture != null) && (paramGLTexture.b != -1))
+          {
+            paramCameraFrame = new StringBuilder();
+            paramCameraFrame.append((String)localObject);
+            paramCameraFrame.append("_rgbRotateCenterTextureId_");
+            paramCameraFrame.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 0));
+            paramCameraFrame.append(".jpg");
+            paramCameraFrame = paramCameraFrame.toString();
+            RenderUtil.a(paramGLTexture.b, paramFilterProcessRender.c, paramFilterProcessRender.b, paramCameraFrame);
+          }
+          paramCameraFrame = null;
+          paramInt = m;
+          if (paramFilterProcessRender.o != null)
+          {
+            paramCameraFrame = paramFilterProcessRender.o.d();
+            paramInt = paramFilterProcessRender.o.e();
+          }
+          if ((paramCameraFrame != null) && (paramInt == 35))
+          {
+            paramGLTexture = new StringBuilder();
+            paramGLTexture.append((String)localObject);
+            paramGLTexture.append("_i420Data_");
+            paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 17));
+            paramGLTexture.append(".yuv");
+            a(paramCameraFrame, paramGLTexture.toString());
+          }
+          else if ((paramCameraFrame != null) && (paramInt == 42))
+          {
+            paramGLTexture = new StringBuilder();
+            paramGLTexture.append((String)localObject);
+            paramGLTexture.append("_rgbaData_");
+            paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 42));
+            paramGLTexture.append(".yuv");
+            a(paramCameraFrame, paramGLTexture.toString());
+          }
+        }
+      }
+      else if ((paramCameraFrame != null) && (paramCameraFrame.c()))
+      {
+        paramGLTexture = new StringBuilder();
+        paramGLTexture.append((String)localObject);
+        paramGLTexture.append("_beauty2D_");
+        paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 17));
+        paramGLTexture.append(".yuv");
+        paramFilterProcessRender = paramGLTexture.toString();
+        a(paramCameraFrame.a, paramFilterProcessRender);
+      }
+    }
+    else if ((paramCameraFrame != null) && (paramCameraFrame.c()))
+    {
+      paramGLTexture = new StringBuilder();
+      paramGLTexture.append((String)localObject);
+      paramGLTexture.append("_yuvData_");
+      paramGLTexture.append(a(paramFilterProcessRender.c, paramFilterProcessRender.b, 17));
+      paramGLTexture.append(".yuv");
+      paramFilterProcessRender = paramGLTexture.toString();
+      a(paramCameraFrame.a, paramFilterProcessRender);
+    }
+    this.h += 1;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FilterProcessTest", 2, "endOfOneChat");
+    }
+    if (!this.a) {
+      return;
+    }
+    FilterProcessTest.DebugFile[] arrayOfDebugFile = this.i;
+    if ((arrayOfDebugFile != null) && (arrayOfDebugFile.length > 0))
+    {
+      int m = 0;
+      for (;;)
+      {
+        arrayOfDebugFile = this.i;
+        if (m >= arrayOfDebugFile.length) {
+          break;
+        }
+        if (arrayOfDebugFile[m] != null)
+        {
+          arrayOfDebugFile[m].a();
+          this.i[m] = null;
+        }
+        m += 1;
+      }
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.f) {
       return;
     }
     if (QLog.isColorLevel())
@@ -491,207 +666,27 @@ public class FilterProcessTest
     }
   }
   
-  @TargetApi(23)
-  void a(FilterProcessRender paramFilterProcessRender, int paramInt, CameraFrame paramCameraFrame, GLTexture paramGLTexture)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      b(paramFilterProcessRender, paramInt, paramCameraFrame, paramGLTexture);
-    }
-    if (!this.d) {
-      return;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(a(paramInt));
-    localObject = ((StringBuilder)localObject).toString();
-    int j = paramFilterProcessRender.b * paramFilterProcessRender.jdField_a_of_type_Int * 4;
-    if (paramInt != 0)
-    {
-      if (paramInt != 10)
-      {
-        int i = 0;
-        if (paramInt != 4)
-        {
-          if (paramInt != 5)
-          {
-            if ((paramGLTexture != null) && (paramGLTexture.b != -1))
-            {
-              paramCameraFrame = new StringBuilder();
-              paramCameraFrame.append((String)localObject);
-              paramCameraFrame.append("_text_");
-              paramCameraFrame.append(a(paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.b, 0));
-              paramCameraFrame.append(".jpg");
-              paramCameraFrame = paramCameraFrame.toString();
-              RenderUtil.a(paramGLTexture.b, paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.b, paramCameraFrame);
-            }
-            else if ((paramGLTexture != null) && (paramGLTexture.jdField_a_of_type_Int != -1))
-            {
-              paramCameraFrame = this.jdField_a_of_type_ArrayOfByte;
-              if ((paramCameraFrame == null) || (paramCameraFrame.length != j)) {
-                this.jdField_a_of_type_ArrayOfByte = new byte[j];
-              }
-              paramCameraFrame = new StringBuilder();
-              paramCameraFrame.append((String)localObject);
-              paramCameraFrame.append("_fbo_");
-              paramCameraFrame.append(a(paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.b, 42));
-              paramCameraFrame.append(".yuv");
-              paramCameraFrame = paramCameraFrame.toString();
-              YuvPostRender.a(paramGLTexture.jdField_a_of_type_Int, paramFilterProcessRender.jdField_a_of_type_Int, paramFilterProcessRender.b, this.jdField_a_of_type_ArrayOfByte);
-              a(this.jdField_a_of_type_ArrayOfByte, paramCameraFrame);
-            }
-            else if ((paramCameraFrame != null) && (paramCameraFrame.b()))
-            {
-              paramGLTexture = new StringBuilder();
-              paramGLTexture.append((String)localObject);
-              paramGLTexture.append("_data_");
-              paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 17));
-              paramGLTexture.append(".yuv");
-              paramFilterProcessRender = paramGLTexture.toString();
-              a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramFilterProcessRender);
-            }
-          }
-          else if ((paramCameraFrame != null) && (paramCameraFrame.b()))
-          {
-            paramGLTexture = new StringBuilder();
-            paramGLTexture.append((String)localObject);
-            paramGLTexture.append("_directReturn_");
-            paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 17));
-            paramGLTexture.append(".yuv");
-            paramFilterProcessRender = paramGLTexture.toString();
-            a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramFilterProcessRender);
-          }
-        }
-        else
-        {
-          if ((paramGLTexture != null) && (paramGLTexture.jdField_a_of_type_Int != -1))
-          {
-            paramCameraFrame = this.jdField_a_of_type_ArrayOfByte;
-            if ((paramCameraFrame == null) || (paramCameraFrame.length != j)) {
-              this.jdField_a_of_type_ArrayOfByte = new byte[j];
-            }
-            paramCameraFrame = new StringBuilder();
-            paramCameraFrame.append((String)localObject);
-            paramCameraFrame.append("_rgbRotateCenterTextureFbo_");
-            paramCameraFrame.append(paramGLTexture.jdField_a_of_type_Int);
-            paramCameraFrame.append("_");
-            paramCameraFrame.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 42));
-            paramCameraFrame.append(".yuv");
-            paramCameraFrame = paramCameraFrame.toString();
-            YuvPostRender.a(paramGLTexture.jdField_a_of_type_Int, paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-            a(this.jdField_a_of_type_ArrayOfByte, paramCameraFrame);
-          }
-          if ((paramGLTexture != null) && (paramGLTexture.b != -1))
-          {
-            paramCameraFrame = new StringBuilder();
-            paramCameraFrame.append((String)localObject);
-            paramCameraFrame.append("_rgbRotateCenterTextureId_");
-            paramCameraFrame.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 0));
-            paramCameraFrame.append(".jpg");
-            paramCameraFrame = paramCameraFrame.toString();
-            RenderUtil.a(paramGLTexture.b, paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, paramCameraFrame);
-          }
-          paramCameraFrame = null;
-          paramInt = i;
-          if (paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null)
-          {
-            paramCameraFrame = paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a();
-            paramInt = paramFilterProcessRender.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a();
-          }
-          if ((paramCameraFrame != null) && (paramInt == 35))
-          {
-            paramGLTexture = new StringBuilder();
-            paramGLTexture.append((String)localObject);
-            paramGLTexture.append("_i420Data_");
-            paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 17));
-            paramGLTexture.append(".yuv");
-            a(paramCameraFrame, paramGLTexture.toString());
-          }
-          else if ((paramCameraFrame != null) && (paramInt == 42))
-          {
-            paramGLTexture = new StringBuilder();
-            paramGLTexture.append((String)localObject);
-            paramGLTexture.append("_rgbaData_");
-            paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 42));
-            paramGLTexture.append(".yuv");
-            a(paramCameraFrame, paramGLTexture.toString());
-          }
-        }
-      }
-      else if ((paramCameraFrame != null) && (paramCameraFrame.b()))
-      {
-        paramGLTexture = new StringBuilder();
-        paramGLTexture.append((String)localObject);
-        paramGLTexture.append("_beauty2D_");
-        paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 17));
-        paramGLTexture.append(".yuv");
-        paramFilterProcessRender = paramGLTexture.toString();
-        a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramFilterProcessRender);
-      }
-    }
-    else if ((paramCameraFrame != null) && (paramCameraFrame.b()))
-    {
-      paramGLTexture = new StringBuilder();
-      paramGLTexture.append((String)localObject);
-      paramGLTexture.append("_yuvData_");
-      paramGLTexture.append(a(paramFilterProcessRender.b, paramFilterProcessRender.jdField_a_of_type_Int, 17));
-      paramGLTexture.append(".yuv");
-      paramFilterProcessRender = paramGLTexture.toString();
-      a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramFilterProcessRender);
-    }
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FilterProcessTest", 2, "endOfOneChat");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    FilterProcessTest.DebugFile[] arrayOfDebugFile = this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile;
-    if ((arrayOfDebugFile != null) && (arrayOfDebugFile.length > 0))
-    {
-      int i = 0;
-      for (;;)
-      {
-        arrayOfDebugFile = this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile;
-        if (i >= arrayOfDebugFile.length) {
-          break;
-        }
-        if (arrayOfDebugFile[i] != null)
-        {
-          arrayOfDebugFile[i].a();
-          this.jdField_a_of_type_ArrayOfComTencentAvOpenglEffectsFilterProcessTest$DebugFile[i] = null;
-        }
-        i += 1;
-      }
-    }
-  }
-  
   public void c()
   {
-    this.d = c;
-    if (this.d)
+    this.f = d;
+    if (this.f)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.h = 0;
       Object localObject = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
       Date localDate = new Date(System.currentTimeMillis());
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(e);
       localStringBuilder.append(((SimpleDateFormat)localObject).format(localDate));
-      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-      localObject = new File(this.jdField_b_of_type_JavaLangString);
+      this.g = localStringBuilder.toString();
+      localObject = new File(this.g);
       if (((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) && (!((File)localObject).mkdirs()))
       {
-        this.d = false;
+        this.f = false;
         if (QLog.isDevelopLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("beginTestSaveData mkdir fail path: ");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.g);
           QLog.i("FilterProcessTest", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -699,7 +694,7 @@ public class FilterProcessTest
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("beginTestSaveData path: ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.g);
         QLog.i("FilterProcessTest", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -707,12 +702,12 @@ public class FilterProcessTest
   
   public void d()
   {
-    if (this.d)
+    if (this.f)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("图片已经保存在日志目录下\n");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      AudioHelper.c(localStringBuilder.toString());
+      localStringBuilder.append(this.g);
+      AudioHelper.d(localStringBuilder.toString());
     }
   }
 }

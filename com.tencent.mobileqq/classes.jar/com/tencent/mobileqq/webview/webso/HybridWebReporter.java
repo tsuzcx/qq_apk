@@ -9,39 +9,24 @@ import java.util.Random;
 
 public class HybridWebReporter
 {
-  private static long jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  private static HybridWebReporter jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static String a;
-  private static ArrayList<HybridWebReporter.HybridWebReportInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Random jdField_a_of_type_JavaUtilRandom = null;
+  private static ArrayList<HybridWebReporter.HybridWebReportInfo> b = new ArrayList();
+  private static long c = SystemClock.uptimeMillis();
+  private static HybridWebReporter d = null;
+  private static final Object e = new Object();
+  private Random f = null;
   
   public static HybridWebReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (d == null) {
+      synchronized (e)
       {
-        if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {
-          jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter = new HybridWebReporter();
+        if (d == null) {
+          d = new HybridWebReporter();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return;
-    }
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      ArrayList localArrayList2 = new ArrayList(jdField_a_of_type_JavaUtilArrayList);
-      jdField_a_of_type_JavaUtilArrayList.clear();
-      jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ThreadManager.executeOnNetWorkThread(new HybridWebReporter.ReportRunnable(localArrayList2));
-      return;
-    }
+    return d;
   }
   
   private boolean a(int paramInt)
@@ -50,20 +35,35 @@ public class HybridWebReporter
     if (paramInt <= 0) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilRandom == null) {
-      this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    if (this.f == null) {
+      this.f = new Random(System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % paramInt == 0) {
+    if (this.f.nextInt() % paramInt == 0) {
       bool = true;
     }
     return bool;
   }
   
-  private boolean a(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
+  public static void b()
+  {
+    if (b.isEmpty()) {
+      return;
+    }
+    synchronized (b)
+    {
+      ArrayList localArrayList2 = new ArrayList(b);
+      b.clear();
+      c = SystemClock.uptimeMillis();
+      ThreadManager.executeOnNetWorkThread(new HybridWebReporter.ReportRunnable(localArrayList2));
+      return;
+    }
+  }
+  
+  private boolean b(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
   {
     try
     {
-      i = Integer.valueOf(paramHybridWebReportInfo.jdField_d_of_type_JavaLangString).intValue();
+      i = Integer.valueOf(paramHybridWebReportInfo.e).intValue();
     }
     catch (Exception localException)
     {
@@ -72,37 +72,37 @@ public class HybridWebReporter
       break label14;
     }
     i = 200;
-    return (QLog.isColorLevel()) || ((paramHybridWebReportInfo.b != 1000) && (paramHybridWebReportInfo.b != 0)) || (i < 100) || (i > 400);
+    return (QLog.isColorLevel()) || ((paramHybridWebReportInfo.m != 1000) && (paramHybridWebReportInfo.m != 0)) || (i < 100) || (i > 400);
   }
   
-  private boolean b(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
+  private boolean c(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
   {
-    return (paramHybridWebReportInfo == null) || (paramHybridWebReportInfo.f == 0) || (paramHybridWebReportInfo.jdField_d_of_type_Boolean);
+    return (paramHybridWebReportInfo == null) || (paramHybridWebReportInfo.y == 0) || (paramHybridWebReportInfo.z);
   }
   
   public void a(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
   {
-    if (b(paramHybridWebReportInfo)) {
+    if (c(paramHybridWebReportInfo)) {
       return;
     }
     long l1 = SystemClock.uptimeMillis();
-    long l2 = jdField_a_of_type_Long;
+    long l2 = c;
     int i = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
     int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
-    paramHybridWebReportInfo.jdField_d_of_type_Boolean = true;
-    if (paramHybridWebReportInfo.f < 0) {
-      paramHybridWebReportInfo.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
+    paramHybridWebReportInfo.z = true;
+    if (paramHybridWebReportInfo.y < 0) {
+      paramHybridWebReportInfo.y = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
     }
-    if (a(paramHybridWebReportInfo)) {
-      paramHybridWebReportInfo.f = 1;
+    if (b(paramHybridWebReportInfo)) {
+      paramHybridWebReportInfo.y = 1;
     }
-    if (a(paramHybridWebReportInfo.f)) {
-      synchronized (jdField_a_of_type_JavaUtilArrayList)
+    if (a(paramHybridWebReportInfo.y)) {
+      synchronized (b)
       {
-        jdField_a_of_type_JavaUtilArrayList.add(paramHybridWebReportInfo);
-        if ((jdField_a_of_type_JavaUtilArrayList.size() >= j) || ((l1 - l2 >= i * 1000) && (jdField_a_of_type_JavaUtilArrayList.size() > 0)))
+        b.add(paramHybridWebReportInfo);
+        if ((b.size() >= j) || ((l1 - l2 >= i * 1000) && (b.size() > 0)))
         {
-          a();
+          b();
           return;
         }
       }
@@ -111,7 +111,7 @@ public class HybridWebReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter
  * JD-Core Version:    0.7.0.1
  */

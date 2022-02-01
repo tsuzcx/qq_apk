@@ -12,50 +12,21 @@ import org.json.JSONObject;
 
 public class UserReadUnReadInfoManager
 {
-  private List<ReadUnRead> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private List<ReadUnRead> a = new ArrayList();
+  private boolean b = false;
   
   public static UserReadUnReadInfoManager a()
   {
     return UserReadUnReadInfoManager.Holder.a();
   }
   
-  public ReadUnRead a()
-  {
-    ReadUnRead localReadUnRead1 = new ReadUnRead();
-    long l = NetConnInfoCenter.getServerTime();
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ReadUnRead localReadUnRead2 = (ReadUnRead)((Iterator)localObject).next();
-      if (localReadUnRead2.jdField_a_of_type_Long + localReadUnRead2.jdField_a_of_type_Int > l)
-      {
-        localReadUnRead1.jdField_a_of_type_JavaUtilSet.addAll(localReadUnRead2.jdField_a_of_type_JavaUtilSet);
-        localReadUnRead1.b.addAll(localReadUnRead2.b);
-      }
-    }
-    localReadUnRead1.b.removeAll(localReadUnRead1.jdField_a_of_type_JavaUtilSet);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getEffectUserReadInfo:");
-    ((StringBuilder)localObject).append(localReadUnRead1);
-    QLog.e("UserReadUnReadInfoManager", 1, ((StringBuilder)localObject).toString());
-    return localReadUnRead1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    QLog.e("UserReadUnReadInfoManager", 1, "clearUserReadUnRead");
-  }
-  
   public void a(JSONObject paramJSONObject)
   {
     ReadUnRead localReadUnRead = new ReadUnRead();
-    localReadUnRead.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
+    localReadUnRead.a = NetConnInfoCenter.getServerTime();
     try
     {
-      localReadUnRead.jdField_a_of_type_Int = (paramJSONObject.getInt("effective_time") * 1000);
+      localReadUnRead.b = (paramJSONObject.getInt("effective_time") * 1000);
       Object localObject = paramJSONObject.optJSONArray("clicked_rowkey");
       JSONArray localJSONArray = paramJSONObject.optJSONArray("expose_rowkey");
       int j = 0;
@@ -66,7 +37,7 @@ public class UserReadUnReadInfoManager
         while (i < ((JSONArray)localObject).length())
         {
           String str = ((JSONArray)localObject).getString(i);
-          localReadUnRead.jdField_a_of_type_JavaUtilSet.add(str);
+          localReadUnRead.c.add(str);
           i += 1;
         }
       }
@@ -76,7 +47,7 @@ public class UserReadUnReadInfoManager
         while (i < localJSONArray.length())
         {
           localObject = localJSONArray.getString(i);
-          localReadUnRead.b.add(localObject);
+          localReadUnRead.d.add(localObject);
           i += 1;
         }
       }
@@ -90,40 +61,69 @@ public class UserReadUnReadInfoManager
       localStringBuilder.append("addUserReadInfo:");
       localStringBuilder.append(paramJSONObject);
       QLog.i("UserReadUnReadInfoManager", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_JavaUtilList.add(localReadUnRead);
+      this.a.add(localReadUnRead);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    ReadUnRead localReadUnRead = a();
-    return (!localReadUnRead.jdField_a_of_type_JavaUtilSet.isEmpty()) || (!localReadUnRead.b.isEmpty());
-  }
-  
-  public void b()
-  {
-    QLog.e("UserReadUnReadInfoManager", 1, "onStart");
+    this.b = paramBoolean;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    ReadUnRead localReadUnRead = d();
+    return (!localReadUnRead.c.isEmpty()) || (!localReadUnRead.d.isEmpty());
   }
   
-  public void c()
+  public boolean c()
+  {
+    return this.b;
+  }
+  
+  public ReadUnRead d()
+  {
+    ReadUnRead localReadUnRead1 = new ReadUnRead();
+    long l = NetConnInfoCenter.getServerTime();
+    Object localObject = this.a.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ReadUnRead localReadUnRead2 = (ReadUnRead)((Iterator)localObject).next();
+      if (localReadUnRead2.a + localReadUnRead2.b > l)
+      {
+        localReadUnRead1.c.addAll(localReadUnRead2.c);
+        localReadUnRead1.d.addAll(localReadUnRead2.d);
+      }
+    }
+    localReadUnRead1.d.removeAll(localReadUnRead1.c);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getEffectUserReadInfo:");
+    ((StringBuilder)localObject).append(localReadUnRead1);
+    QLog.e("UserReadUnReadInfoManager", 1, ((StringBuilder)localObject).toString());
+    return localReadUnRead1;
+  }
+  
+  public void e()
+  {
+    this.a.clear();
+    this.b = false;
+    QLog.e("UserReadUnReadInfoManager", 1, "clearUserReadUnRead");
+  }
+  
+  public void f()
+  {
+    QLog.e("UserReadUnReadInfoManager", 1, "onStart");
+  }
+  
+  public void g()
   {
     QLog.e("UserReadUnReadInfoManager", 1, "onStop");
-    a();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.UserReadUnReadInfoManager
  * JD-Core Version:    0.7.0.1
  */

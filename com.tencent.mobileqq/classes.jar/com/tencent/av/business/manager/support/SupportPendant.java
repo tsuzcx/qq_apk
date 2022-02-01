@@ -13,59 +13,54 @@ public class SupportPendant
     super(paramVideoAppInterface);
   }
   
-  private boolean a()
+  private boolean d()
   {
-    if (b()) {
+    if (e()) {
       return true;
     }
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Int < 17)
+    if (this.b < 17)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isUserEffectFace error  OSversion:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
       return false;
     }
-    if (this.jdField_b_of_type_Int < 4)
+    if (this.d < 4)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isUserEffectFace error cpucount:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.d);
       AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
       return false;
     }
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
+    if ((this.c != 0L) && (this.c < 1400000L))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isUserEffectFace error cpuFrequency:");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.c);
       AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
       return false;
     }
-    if (this.jdField_b_of_type_Long < 1073741824L)
+    if (this.e < 1073741824L)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isUserEffectFace error  memory:");
-      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append(this.e);
       AVLog.printColorLog("SupportPendant", localStringBuilder.toString());
       return false;
     }
     return true;
   }
   
-  private static boolean b()
+  private static boolean e()
   {
     String str = Build.MODEL;
     if (TextUtils.isEmpty(str)) {
       return false;
     }
     return str.equals("MI 5");
-  }
-  
-  public int a(String paramString)
-  {
-    return 0;
   }
   
   public boolean a(int paramInt, String paramString)
@@ -75,7 +70,12 @@ public class SupportPendant
   
   public boolean a(String paramString)
   {
-    return a();
+    return d();
+  }
+  
+  public int b(String paramString)
+  {
+    return 0;
   }
   
   public void b() {}

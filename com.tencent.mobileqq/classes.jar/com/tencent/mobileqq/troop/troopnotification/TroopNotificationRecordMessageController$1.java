@@ -13,17 +13,17 @@ class TroopNotificationRecordMessageController$1
   
   public void run()
   {
-    Object localObject = (IMessageFacade)this.this$0.a.getRuntimeService(IMessageFacade.class, "");
+    Object localObject = (IMessageFacade)this.this$0.c.getRuntimeService(IMessageFacade.class, "");
     if (localObject != null)
     {
       localObject = ((IMessageFacade)localObject).getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null);
-      TroopNotificationRecordMessageController.a(this.this$0, (List)localObject, GroupSystemMsgController.a().a(this.this$0.a));
+      TroopNotificationRecordMessageController.a(this.this$0, (List)localObject, GroupSystemMsgController.a().b(this.this$0.c));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationRecordMessageController.1
  * JD-Core Version:    0.7.0.1
  */

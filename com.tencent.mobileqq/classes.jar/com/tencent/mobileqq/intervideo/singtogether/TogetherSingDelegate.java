@@ -73,11 +73,6 @@ public class TogetherSingDelegate
     return true;
   }
   
-  public int a()
-  {
-    return 9;
-  }
-  
   public int a(int paramInt1, String paramString, Context paramContext, int paramInt2, Map<String, TogetherSession> paramMap, Bundle paramBundle)
   {
     a(paramString, paramInt2);
@@ -105,9 +100,9 @@ public class TogetherSingDelegate
     if (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
     {
       paramMap = (SingTogetherSession)paramMap.get(localObject);
-      if (!TextUtils.isEmpty(paramMap.b))
+      if (!TextUtils.isEmpty(paramMap.e))
       {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramMap.b, i, null);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramMap.e, i, null);
         return 1;
       }
       if (QLog.isColorLevel()) {
@@ -116,27 +111,27 @@ public class TogetherSingDelegate
     }
     if (TextUtils.isEmpty(""))
     {
-      localObject = ((SingTogetherConfigBean)QConfigManager.a().a(551)).a(4);
+      localObject = ((SingTogetherConfigBean)QConfigManager.b().b(551)).a(4);
       boolean bool;
-      if ((localObject != null) && (((SingTogetherConfigBean.GeneralTogetherItem)localObject).c != 1))
+      if ((localObject != null) && (((SingTogetherConfigBean.GeneralTogetherItem)localObject).e != 1))
       {
-        bool = TextUtils.isEmpty(((SingTogetherConfigBean.GeneralTogetherItem)localObject).a);
+        bool = TextUtils.isEmpty(((SingTogetherConfigBean.GeneralTogetherItem)localObject).g);
         if (bool) {
           paramMap = "mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc";
         } else {
-          paramMap = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).a;
+          paramMap = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).g;
         }
         if (bool) {
           paramInt2 = 2;
         } else {
-          paramInt2 = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).b;
+          paramInt2 = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).d;
         }
         if (paramInt1 == 2) {
           bool = true;
         } else {
           bool = false;
         }
-        if (!a(bool, paramBundle, paramString, paramContext, ((SingTogetherConfigBean.GeneralTogetherItem)localObject).d)) {
+        if (!a(bool, paramBundle, paramString, paramContext, ((SingTogetherConfigBean.GeneralTogetherItem)localObject).f)) {
           return 0;
         }
         TogetherUtils.a(this.a, paramInt2, paramMap, null, paramBundle, paramInt1);
@@ -168,17 +163,10 @@ public class TogetherSingDelegate
     return -1;
   }
   
-  public QQCustomDialog a()
-  {
-    return null;
-  }
-  
   public String a()
   {
     return "一起K歌";
   }
-  
-  public void a() {}
   
   public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle) {}
   
@@ -199,15 +187,27 @@ public class TogetherSingDelegate
     return true;
   }
   
+  public QQCustomDialog b()
+  {
+    return null;
+  }
+  
   public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, TogetherSession> paramMap, @Nullable Bundle paramBundle)
   {
     a(paramInt1, paramString, paramContext, paramInt2, paramMap, paramBundle);
     return false;
   }
+  
+  public int c()
+  {
+    return 9;
+  }
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.TogetherSingDelegate
  * JD-Core Version:    0.7.0.1
  */

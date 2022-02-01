@@ -10,12 +10,12 @@ final class IPluginManager$9
   
   public void run()
   {
-    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.f, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a);
+    PluginProxyService.openService(this.a, this.b.g, this.b.d, this.b.f, this.b.h, this.b.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.9
  * JD-Core Version:    0.7.0.1
  */

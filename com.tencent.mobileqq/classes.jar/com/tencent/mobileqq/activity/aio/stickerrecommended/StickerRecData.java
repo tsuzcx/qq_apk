@@ -5,316 +5,316 @@ import android.text.TextUtils;
 public class StickerRecData
   extends SimpleRemoteEmoticon
 {
-  int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private int jdField_g_of_type_Int = 0;
-  private String jdField_g_of_type_JavaLangString;
-  private int jdField_h_of_type_Int;
-  private String jdField_h_of_type_JavaLangString;
-  private String i;
-  private String j;
-  private String k;
+  int a = 0;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private long j;
+  private long k;
   private String l;
-  private String m;
+  private boolean m;
+  private boolean n;
+  private int o;
+  private String p;
+  private String q;
+  private String r;
+  private int s = 0;
+  private String t;
+  private String u;
+  private String v;
+  private String w;
+  private int x;
+  private String y;
   
-  public int a()
+  public int A()
   {
-    return 0;
+    if (TextUtils.isEmpty(this.c)) {
+      return this.g;
+    }
+    return this.i;
   }
   
-  public String a()
+  public String B()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(this.l)) {
+      this.l = StickerRecConstants.a(y());
+    }
+    return this.l;
+  }
+  
+  public String C()
+  {
+    return this.q;
+  }
+  
+  public String D()
+  {
+    return this.r;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.m = paramString;
+    this.y = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.m = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    this.p = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    this.n = paramBoolean;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void c(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.j = paramLong;
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_f_of_type_Int;
+    this.b = paramString;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void d(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.k = paramLong;
   }
   
   public void d(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
-  public int e()
+  public boolean d()
   {
-    return this.jdField_g_of_type_Int;
+    return this.n;
   }
   
   public String e()
   {
-    return this.m;
+    return this.b;
   }
   
   public void e(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void e(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_h_of_type_Int;
+    this.d = paramString;
   }
   
   public String f()
   {
-    return this.jdField_f_of_type_JavaLangString;
+    return this.c;
   }
   
   public void f(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.o = paramInt;
   }
   
   public void f(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public int g()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Int;
-    }
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String g()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    this.e = paramString;
   }
   
   public void g(int paramInt)
   {
-    this.jdField_g_of_type_Int = paramInt;
+    this.s = paramInt;
   }
   
   public void g(String paramString)
   {
-    this.i = paramString;
+    this.t = paramString;
+  }
+  
+  public boolean g()
+  {
+    return this.m;
   }
   
   public int h()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_c_of_type_Int;
-    }
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public String h()
-  {
-    return this.i;
+    return 0;
   }
   
   public void h(int paramInt)
   {
-    this.jdField_h_of_type_Int = paramInt;
+    this.x = paramInt;
   }
   
   public void h(String paramString)
   {
-    this.j = paramString;
+    this.u = paramString;
   }
   
-  public String i()
+  public int i()
   {
-    return this.j;
+    return 0;
   }
   
   public void i(String paramString)
   {
-    this.k = paramString;
-  }
-  
-  public String j()
-  {
-    return this.l;
+    this.v = paramString;
   }
   
   public void j(String paramString)
   {
-    this.l = paramString;
-  }
-  
-  public String k()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_c_of_type_JavaLangString;
-    }
-    return this.jdField_d_of_type_JavaLangString;
+    this.w = paramString;
   }
   
   public void k(String paramString)
   {
-    this.jdField_g_of_type_JavaLangString = paramString;
+    this.q = paramString;
   }
   
   public String l()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_b_of_type_JavaLangString;
+    return this.d;
   }
   
   public void l(String paramString)
   {
-    this.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public String m()
-  {
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = StickerRecConstants.a(l());
-    }
-    return this.jdField_e_of_type_JavaLangString;
+    this.r = paramString;
   }
   
   public String n()
   {
-    return this.jdField_g_of_type_JavaLangString;
+    return this.y;
   }
   
   public String o()
   {
-    return this.jdField_h_of_type_JavaLangString;
+    return this.p;
+  }
+  
+  public String p()
+  {
+    return this.e;
+  }
+  
+  public long q()
+  {
+    return this.j;
+  }
+  
+  public int r()
+  {
+    return this.o;
+  }
+  
+  public int s()
+  {
+    return this.s;
+  }
+  
+  public String t()
+  {
+    return this.t;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("imgUrl=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" thumbUrl=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" imgMd5=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" thumbMd5=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" imgWidth=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" imgHeight=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" thumbWidth=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" thumbHeight=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" imgFileSize=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" thumbFileSize=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.k);
     return localStringBuilder.toString();
+  }
+  
+  public String u()
+  {
+    return this.u;
+  }
+  
+  public String v()
+  {
+    return this.w;
+  }
+  
+  public int w()
+  {
+    return this.x;
+  }
+  
+  public String x()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return this.d;
+    }
+    return this.e;
+  }
+  
+  public String y()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return this.b;
+    }
+    return this.c;
+  }
+  
+  public int z()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return this.f;
+    }
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecData
  * JD-Core Version:    0.7.0.1
  */

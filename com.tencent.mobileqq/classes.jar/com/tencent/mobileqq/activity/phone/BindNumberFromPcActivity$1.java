@@ -13,7 +13,7 @@ class BindNumberFromPcActivity$1
   
   protected void onBindMobile(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.a.setEnabled(true);
     this.a.dismissProgressDialog();
     if (paramBoolean)
     {
@@ -24,8 +24,8 @@ class BindNumberFromPcActivity$1
         {
           Intent localIntent = new Intent(this.a, RebindActivity.class);
           localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-          localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-          localIntent.putExtra("k_country_code", this.a.b);
+          localIntent.putExtra("k_number", this.a.b);
+          localIntent.putExtra("k_country_code", this.a.c);
           paramBundle = localIntent;
         }
         else
@@ -45,8 +45,8 @@ class BindNumberFromPcActivity$1
       else
       {
         paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("k_country_code", this.a.b);
+        paramBundle.putExtra("k_number", this.a.b);
+        paramBundle.putExtra("k_country_code", this.a.c);
       }
       if ((paramBundle != null) && (!this.a.isFinishing()))
       {
@@ -56,7 +56,7 @@ class BindNumberFromPcActivity$1
     }
     else
     {
-      this.a.showToast(2131718218);
+      this.a.showToast(2131915700);
     }
     this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
     BindNumberFromPcActivity.a(this.a, null);
@@ -64,7 +64,7 @@ class BindNumberFromPcActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity.1
  * JD-Core Version:    0.7.0.1
  */

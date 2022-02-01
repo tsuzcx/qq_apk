@@ -132,6 +132,19 @@ public class d
     a();
   }
   
+  public void a(boolean paramBoolean)
+  {
+    try
+    {
+      this.b.post(new d.4(this, paramBoolean));
+      return;
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCTextureViewWrapper", "set mirror failed.", localException);
+    }
+  }
+  
   public void b(int paramInt)
   {
     this.i = paramInt;
@@ -351,7 +364,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.d
  * JD-Core Version:    0.7.0.1
  */

@@ -26,44 +26,44 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
   {
     super.getQBaseActivity().getWindow().setFlags(1024, 1024);
     this.webView.setVerticalScrollBarEnabled(false);
-    getUIStyleHandler().a.setVisibility(8);
-    if ((getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.getLayoutParams() instanceof RelativeLayout.LayoutParams))
+    getUIStyleHandler().v.setVisibility(8);
+    if ((getSwiftTitleUI().o.getLayoutParams() instanceof RelativeLayout.LayoutParams))
     {
-      paramBundle = (RelativeLayout.LayoutParams)getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      paramBundle = (RelativeLayout.LayoutParams)getSwiftTitleUI().o.getLayoutParams();
       paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 60.0F));
-      getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
+      getSwiftTitleUI().o.setLayoutParams(paramBundle);
     }
-    getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
+    getSwiftTitleUI().o.setPadding(0, 0, 0, 0);
     int i = (int)UITools.a(BaseApplicationImpl.getApplication(), 12.0F);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
-    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848032);
-    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setText("");
-    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.getParent();
+    getSwiftTitleUI().d.setLayoutParams(paramBundle);
+    getSwiftTitleUI().d.setBackgroundResource(2130849694);
+    getSwiftTitleUI().d.setText("");
+    paramBundle = getSwiftTitleUI().d.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getQBaseActivity().findViewById(2131376755);
+    paramBundle = super.getQBaseActivity().findViewById(2131445048);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.setMargins(i, i, 0, 0);
     paramBundle.setLayoutParams(localLayoutParams);
-    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramBundle = getSwiftTitleUI().h.getLayoutParams();
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 22.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
-    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
-    getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848673);
-    paramBundle = getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.getParent();
+    getSwiftTitleUI().h.setLayoutParams(paramBundle);
+    getSwiftTitleUI().h.setImageResource(2130850338);
+    paramBundle = getSwiftTitleUI().h.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getQBaseActivity().findViewById(2131376756);
+    paramBundle = super.getQBaseActivity().findViewById(2131445049);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, i, i, 0);
@@ -77,7 +77,7 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQH5BrowserActivity.QQH5BrowserFragment
  * JD-Core Version:    0.7.0.1
  */

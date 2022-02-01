@@ -24,6 +24,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.QIphoneTitleBarFragment;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdEntityConvertService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdShakeManager;
 import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
@@ -41,19 +42,19 @@ public class ReadInJoyUninterestComplainFragment
   extends QIphoneTitleBarFragment
   implements TextWatcher, View.OnClickListener, IReadInJoyUninterestComplainFragmentConst
 {
-  private int jdField_a_of_type_Int;
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private EditText b;
-  private TextView g;
+  private EditText a;
+  private TextView b;
+  private EditText c;
+  private Button d;
+  private int e;
+  private Parcelable f;
   
   private void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("ad_complain_tel", paramString2);
     localBundle.putString("ad_complain_txt", paramString1);
-    int i = this.jdField_a_of_type_Int;
+    int i = this.e;
     if (i != 1)
     {
       if (i != 2)
@@ -61,15 +62,15 @@ public class ReadInJoyUninterestComplainFragment
         if (i != 3) {
           return;
         }
-        paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
+        paramString1 = (AdData)this.f;
         ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(getQBaseActivity()).a(3).b(1).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramString1)).a(localBundle));
         return;
       }
-      paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
+      paramString1 = (VideoAdInfo)this.f;
       ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(getQBaseActivity()).a(3).b(10).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramString1)).a(paramString1).a(localBundle));
       return;
     }
-    paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
+    paramString1 = (AdvertisementInfo)this.f;
     if (RIJFeedsType.a(paramString1)) {
       i = 11;
     } else {
@@ -80,40 +81,40 @@ public class ReadInJoyUninterestComplainFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.changeBg(true);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131712746));
+    this.p.changeBg(true);
+    if (this.h != null) {
+      this.h.setText(HardCodeUtil.a(2131901576));
     }
-    a(HardCodeUtil.a(2131712763));
-    if (ThemeUtil.isInNightMode(ReadInJoyUtils.a())) {
-      View.inflate(getQBaseActivity(), 2131560251, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    a(HardCodeUtil.a(2131910337));
+    if (ThemeUtil.isInNightMode(ReadInJoyUtils.b())) {
+      View.inflate(getQBaseActivity(), 2131626298, this.s);
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131365052));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.g = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365265));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131372527));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131378061));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.a = ((EditText)this.t.findViewById(2131431185));
+    this.a.addTextChangedListener(this);
+    this.b = ((TextView)this.t.findViewById(2131431437));
+    this.c = ((EditText)this.t.findViewById(2131440051));
+    this.d = ((Button)this.t.findViewById(2131446561));
+    this.d.setOnClickListener(this);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_Int = getArguments().getInt("key_from_type", 0);
-    this.jdField_a_of_type_AndroidOsParcelable = getArguments().getParcelable("key_ad_info");
+    this.e = getArguments().getInt("key_from_type", 0);
+    this.f = getArguments().getParcelable("key_ad_info");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initData fromType:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.e);
       localStringBuilder.append(", adinfo:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidOsParcelable);
+      localStringBuilder.append(this.f);
       QLog.d("ReadInJoyUninterestComplainFragment", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.e;
     if (i != 1)
     {
       if (i != 2)
@@ -123,7 +124,7 @@ public class ReadInJoyUninterestComplainFragment
           onBackEvent();
           return;
         }
-        if (!(this.jdField_a_of_type_AndroidOsParcelable instanceof AdData))
+        if (!(this.f instanceof AdData))
         {
           if (QLog.isColorLevel()) {
             QLog.e("ReadInJoyUninterestComplainFragment", 2, "adinfo is not AdData");
@@ -131,7 +132,7 @@ public class ReadInJoyUninterestComplainFragment
           onBackEvent();
         }
       }
-      else if (!(this.jdField_a_of_type_AndroidOsParcelable instanceof VideoAdInfo))
+      else if (!(this.f instanceof VideoAdInfo))
       {
         if (QLog.isColorLevel()) {
           QLog.e("ReadInJoyUninterestComplainFragment", 2, "adinfo is not VideoAdInfo");
@@ -139,7 +140,7 @@ public class ReadInJoyUninterestComplainFragment
         onBackEvent();
       }
     }
-    else if (!(this.jdField_a_of_type_AndroidOsParcelable instanceof AdvertisementInfo))
+    else if (!(this.f instanceof AdvertisementInfo))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ReadInJoyUninterestComplainFragment", 2, "adinfo is not AdvertisementInfo");
@@ -165,21 +166,13 @@ public class ReadInJoyUninterestComplainFragment
   private void g()
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_AndroidOsParcelable);
+    localIntent.putExtra("key_ad_info", this.f);
     getQBaseActivity().setResult(-1, localIntent);
   }
   
   protected int a()
   {
-    return 2131560310;
-  }
-  
-  public void a()
-  {
-    View localView = getQBaseActivity().getCurrentFocus();
-    if (localView != null) {
-      ((InputMethodManager)getQBaseActivity().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
-    }
+    return 2131626356;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -194,13 +187,21 @@ public class ReadInJoyUninterestComplainFragment
   public void afterTextChanged(Editable paramEditable)
   {
     paramEditable = paramEditable.toString();
-    this.g.setText(String.valueOf(getResources().getInteger(2131427370) - paramEditable.length()));
+    this.b.setText(String.valueOf(getResources().getInteger(2131492925) - paramEditable.length()));
     if (paramEditable.trim().length() > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.d.setEnabled(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.d.setEnabled(false);
+  }
+  
+  public void b()
+  {
+    View localView = getQBaseActivity().getCurrentFocus();
+    if (localView != null) {
+      ((InputMethodManager)getQBaseActivity().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
+    }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -213,12 +214,12 @@ public class ReadInJoyUninterestComplainFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131378061) {
+    if (paramView.getId() != 2131446561) {
       return;
     }
-    a();
-    paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    String str = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString().trim();
+    b();
+    paramView = this.a.getText().toString().trim();
+    String str = this.c.getText().toString().trim();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -226,6 +227,7 @@ public class ReadInJoyUninterestComplainFragment
       localStringBuilder.append(paramView);
       QLog.d("ReadInJoyUninterestComplainFragment", 2, localStringBuilder.toString());
     }
+    ((IRIJAdShakeManager)QRoute.api(IRIJAdShakeManager.class)).onComplainBackToFeeds();
     a(paramView, str);
     g();
     onBackEvent();
@@ -242,7 +244,7 @@ public class ReadInJoyUninterestComplainFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.fragment.ReadInJoyUninterestComplainFragment
  * JD-Core Version:    0.7.0.1
  */

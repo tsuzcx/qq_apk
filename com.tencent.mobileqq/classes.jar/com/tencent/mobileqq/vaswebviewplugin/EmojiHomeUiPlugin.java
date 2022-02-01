@@ -72,10 +72,10 @@ public class EmojiHomeUiPlugin
       VasWebviewUtil.b(paramActivity, null, 4L, localIntent, false, -1);
       if (paramInt == 3)
       {
-        paramActivity.overridePendingTransition(2130772006, 0);
+        paramActivity.overridePendingTransition(2130772009, 0);
         return;
       }
-      paramActivity.overridePendingTransition(2130771993, 0);
+      paramActivity.overridePendingTransition(2130771996, 0);
     }
   }
   
@@ -113,7 +113,7 @@ public class EmojiHomeUiPlugin
       if (localQQAppInterface == null) {
         return;
       }
-      realOpenEmojiDetailPage(paramActivity, paramString1, paramInt, paramString2, paramBoolean1, paramIntent, paramBoolean2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), new Intent(paramActivity, QQBrowserActivity.class), localQQAppInterface.getMessageFacade().a(), localQQAppInterface.getMessageFacade().a());
+      realOpenEmojiDetailPage(paramActivity, paramString1, paramInt, paramString2, paramBoolean1, paramIntent, paramBoolean2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), new Intent(paramActivity, QQBrowserActivity.class), localQQAppInterface.getMessageFacade().m(), localQQAppInterface.getMessageFacade().l());
     }
   }
   
@@ -194,7 +194,7 @@ public class EmojiHomeUiPlugin
       if (localQQAppInterface == null) {
         return;
       }
-      openEmojiPage(paramActivity, paramString1, paramInt, paramBoolean1, paramString2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), localQQAppInterface.getMessageFacade().a(), localQQAppInterface.getMessageFacade().a(), paramBoolean2);
+      openEmojiPage(paramActivity, paramString1, paramInt, paramBoolean1, paramString2, paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1), localQQAppInterface.getMessageFacade().m(), localQQAppInterface.getMessageFacade().l(), paramBoolean2);
     }
   }
   
@@ -284,7 +284,7 @@ public class EmojiHomeUiPlugin
       VasWebviewUtil.b(paramContext, null, 2L, localIntent, true, 4001);
     }
     if ((paramInt1 == 1) && ((paramContext instanceof Activity))) {
-      ((Activity)paramContext).overridePendingTransition(2130772011, 2130772067);
+      ((Activity)paramContext).overridePendingTransition(2130772014, 2130772092);
     }
   }
   
@@ -324,8 +324,8 @@ public class EmojiHomeUiPlugin
       }
       int j = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
       Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-      int i = ((QQAppInterface)localObject).getMessageFacade().a();
-      String str = ((QQAppInterface)localObject).getMessageFacade().a();
+      int i = ((QQAppInterface)localObject).getMessageFacade().m();
+      String str = ((QQAppInterface)localObject).getMessageFacade().l();
       localObject = str;
       if (str == null)
       {
@@ -531,10 +531,10 @@ public class EmojiHomeUiPlugin
   {
     if (this.mSrcFromType == 3)
     {
-      this.activity.overridePendingTransition(0, 2130772003);
+      this.activity.overridePendingTransition(0, 2130772006);
       return;
     }
-    this.activity.overridePendingTransition(0, 2130771992);
+    this.activity.overridePendingTransition(0, 2130771995);
   }
   
   public void doBeforeFinish()
@@ -566,7 +566,7 @@ public class EmojiHomeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

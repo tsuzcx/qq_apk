@@ -14,20 +14,20 @@ class PhotoListCustomizationQzone$1
   
   public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((PhotoListCustomizationQzone.a(this.a)) && (paramInt == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.jdField_a_of_type_ComTencentWidgetPhotoGridView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap != null)) {
-      PhotoListCustomizationQzone.a(this.a);
+    if ((PhotoListCustomizationQzone.a(this.a)) && (paramInt == 0) && (this.a.h.l != null) && (this.a.h.t != null) && (this.a.e.selectedMediaInfoHashMap != null)) {
+      PhotoListCustomizationQzone.b(this.a);
     }
     if (paramInt == 0)
     {
-      DropFrameMonitor.a().a("list_photo", false);
+      DropFrameMonitor.b().a("list_photo", false);
       return;
     }
-    DropFrameMonitor.a().a("list_photo");
+    DropFrameMonitor.b().a("list_photo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQzone.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,33 +22,33 @@ import org.jetbrains.annotations.Nullable;
 public final class AddLocationView
   extends LinearLayout
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView a;
   @Nullable
-  private LocationInfo jdField_a_of_type_ComTencentTkdTopicsdkBeanLocationInfo;
+  private LocationInfo b;
   @Nullable
-  private Function1<? super Boolean, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private Function1<? super Boolean, Unit> c;
   
   public AddLocationView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.v, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.bc);
+    LayoutInflater.from(paramContext).inflate(R.layout.q, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.aD);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_location)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
+    this.a = ((TextView)paramContext);
   }
   
   private final void a(LocationInfo paramLocationInfo1, LocationInfo paramLocationInfo2)
   {
     if ((paramLocationInfo1 == null) && (paramLocationInfo2 != null))
     {
-      paramLocationInfo1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      paramLocationInfo1 = this.c;
       if (paramLocationInfo1 != null) {
         paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(true));
       }
     }
     else if ((paramLocationInfo1 != null) && (paramLocationInfo2 == null))
     {
-      paramLocationInfo1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      paramLocationInfo1 = this.c;
       if (paramLocationInfo1 != null) {
         paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(false));
       }
@@ -56,16 +56,22 @@ public final class AddLocationView
   }
   
   @Nullable
-  public final LocationInfo a()
+  public final LocationInfo getLocationInfo()
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanLocationInfo;
+    return this.b;
+  }
+  
+  @Nullable
+  public final Function1<Boolean, Unit> getOnLocationChangeCallback()
+  {
+    return this.c;
   }
   
   public final void setLocationInfo(@Nullable LocationInfo paramLocationInfo)
   {
-    a(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanLocationInfo, paramLocationInfo);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanLocationInfo = paramLocationInfo;
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    a(this.b, paramLocationInfo);
+    this.b = paramLocationInfo;
+    TextView localTextView = this.a;
     if (paramLocationInfo != null)
     {
       paramLocationInfo = paramLocationInfo.getName();
@@ -82,12 +88,12 @@ public final class AddLocationView
   
   public final void setOnLocationChangeCallback(@Nullable Function1<? super Boolean, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.c = paramFunction1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AddLocationView
  * JD-Core Version:    0.7.0.1
  */

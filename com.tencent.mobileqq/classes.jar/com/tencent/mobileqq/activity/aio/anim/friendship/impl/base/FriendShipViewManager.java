@@ -13,17 +13,17 @@ import java.util.Set;
 public class FriendShipViewManager
   implements IFriendShipAnimManager
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Integer, IDirector> jdField_a_of_type_JavaUtilHashMap;
-  private String b;
+  private Activity a;
+  private HashMap<Integer, IDirector> b;
+  private int c;
+  private String d;
+  private String e;
   
   public FriendShipViewManager(@NonNull Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramActivity;
+    this.b = new HashMap();
+    this.c = 0;
   }
   
   public void a()
@@ -31,7 +31,7 @@ public class FriendShipViewManager
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipViewManager", 2, "doOnResume");
     }
-    IDirector localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    IDirector localIDirector = (IDirector)this.b.get(Integer.valueOf(this.c));
     if (localIDirector != null) {
       localIDirector.d();
     }
@@ -49,26 +49,26 @@ public class FriendShipViewManager
     if (paramInt == 0) {
       return false;
     }
-    Object localObject = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    Object localObject = (IDirector)this.b.get(Integer.valueOf(this.c));
     if (localObject != null)
     {
       ((IDirector)localObject).b();
       ((IDirector)localObject).e();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), null);
-      this.jdField_a_of_type_Int = 0;
+      this.b.put(Integer.valueOf(this.c), null);
+      this.c = 0;
     }
-    IDirector localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    IDirector localIDirector = (IDirector)this.b.get(Integer.valueOf(paramInt));
     localObject = localIDirector;
     if (localIDirector == null)
     {
-      localObject = BaseDirector.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
+      localObject = BaseDirector.a(paramInt, this.a);
       if (localObject == null) {
         return false;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      this.b.put(Integer.valueOf(paramInt), localObject);
     }
     if ((localObject instanceof LottieAnimDirector)) {
-      ((LottieAnimDirector)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
+      ((LottieAnimDirector)localObject).a(this.d, this.e);
     }
     ((IDirector)localObject).a(new FriendShipViewManager.1(this, (IDirector)localObject));
     return true;
@@ -82,15 +82,15 @@ public class FriendShipViewManager
     localStringBuilder.append(" md5:");
     localStringBuilder.append(paramString2);
     QLog.i("FriendShipViewManager", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    this.d = paramString1;
+    this.e = paramString2;
+    paramString1 = this.d;
     if (paramString1 != null) {
-      this.jdField_a_of_type_JavaLangString = paramString1.trim();
+      this.d = paramString1.trim();
     }
-    paramString1 = this.b;
+    paramString1 = this.e;
     if (paramString1 != null) {
-      this.b = paramString1.trim();
+      this.e = paramString1.trim();
     }
     a(3);
     return true;
@@ -101,7 +101,7 @@ public class FriendShipViewManager
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipViewManager", 2, "doOnPause");
     }
-    IDirector localIDirector = (IDirector)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    IDirector localIDirector = (IDirector)this.b.get(Integer.valueOf(this.c));
     if (localIDirector != null) {
       localIDirector.c();
     }
@@ -112,7 +112,7 @@ public class FriendShipViewManager
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipViewManager", 2, "doOnDestroy");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -122,13 +122,13 @@ public class FriendShipViewManager
         ((IDirector)localEntry.getValue()).e();
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Int = 0;
+    this.b.clear();
+    this.c = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipViewManager
  * JD-Core Version:    0.7.0.1
  */

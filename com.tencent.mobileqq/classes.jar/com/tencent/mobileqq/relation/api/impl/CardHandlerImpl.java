@@ -15,7 +15,7 @@ public class CardHandlerImpl
 {
   public void getAutoReplyList()
   {
-    ((CardHandler)((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).n();
+    ((CardHandler)((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).p();
   }
   
   public BusinessObserver newCardHandlerForAutoReply(ICardHandler.AutoReplyInterface paramAutoReplyInterface)
@@ -30,7 +30,7 @@ public class CardHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relation.api.impl.CardHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

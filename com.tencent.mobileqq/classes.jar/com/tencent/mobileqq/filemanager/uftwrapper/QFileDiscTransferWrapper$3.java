@@ -13,15 +13,15 @@ class QFileDiscTransferWrapper$3
   
   public void a(String paramString1, String paramString2)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a;
     localFileManagerEntity.fileName = paramString1;
     localFileManagerEntity.strApkPackageName = paramString2;
-    QFileDiscTransferWrapper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileDiscTransferWrapper).getFileManagerEngine().a().a(paramString2, new QFileDiscTransferWrapper.3.1(this));
+    QFileDiscTransferWrapper.a(this.c).getFileManagerEngine().f().a(paramString2, new QFileDiscTransferWrapper.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileDiscTransferWrapper.3
  * JD-Core Version:    0.7.0.1
  */

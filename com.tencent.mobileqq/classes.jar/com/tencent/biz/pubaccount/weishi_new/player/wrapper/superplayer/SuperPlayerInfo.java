@@ -15,29 +15,19 @@ public class SuperPlayerInfo
     return 103;
   }
   
-  public SuperPlayerVideoInfo a()
+  public SuperPlayerVideoInfo c()
   {
-    return SuperPlayerFactory.createVideoInfoForUrl(this.b, a(this.a), null);
+    return SuperPlayerFactory.createVideoInfoForUrl(this.b, a(this.c), null);
   }
   
-  public Object a()
+  public SuperPlayerVideoInfo d()
   {
-    return null;
-  }
-  
-  public SuperPlayerVideoInfo b()
-  {
-    return SuperPlayerFactory.createVideoInfoForUrl(this.b, a(this.a), null);
-  }
-  
-  public Object b()
-  {
-    return null;
+    return SuperPlayerFactory.createVideoInfoForUrl(this.b, a(this.c), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerInfo
  * JD-Core Version:    0.7.0.1
  */

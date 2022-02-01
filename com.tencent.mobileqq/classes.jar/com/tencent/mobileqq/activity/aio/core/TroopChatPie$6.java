@@ -33,27 +33,27 @@ class TroopChatPie$6
     //   35: astore 13
     //   37: aload_0
     //   38: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   41: getfield 44	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   44: getstatic 50	com/tencent/mobileqq/app/QQManagerFactory:TROOP_MANAGER	I
-    //   47: invokevirtual 56	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   50: checkcast 58	com/tencent/mobileqq/app/TroopManager
+    //   41: getfield 45	com/tencent/mobileqq/activity/aio/core/TroopChatPie:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   44: getstatic 51	com/tencent/mobileqq/app/QQManagerFactory:TROOP_MANAGER	I
+    //   47: invokevirtual 57	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   50: checkcast 59	com/tencent/mobileqq/app/TroopManager
     //   53: astore 16
     //   55: aload 13
     //   57: ifnull +827 -> 884
     //   60: aload_0
     //   61: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   64: getfield 44	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   67: invokevirtual 62	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   70: invokevirtual 68	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   64: getfield 45	com/tencent/mobileqq/activity/aio/core/TroopChatPie:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   67: invokevirtual 63	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   70: invokevirtual 69	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   73: astore 17
     //   75: aconst_null
     //   76: astore_3
     //   77: aconst_null
     //   78: astore_2
-    //   79: invokestatic 74	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
+    //   79: invokestatic 75	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
     //   82: lstore 4
     //   84: lload 4
-    //   86: ldc2_w 75
+    //   86: ldc2_w 76
     //   89: ladd
     //   90: lstore 4
     //   92: lload 4
@@ -61,7 +61,7 @@ class TroopChatPie$6
     //   96: lload 4
     //   98: lstore 8
     //   100: aload 17
-    //   102: invokevirtual 82	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   102: invokevirtual 83	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   105: astore 12
     //   107: aload 12
     //   109: astore_2
@@ -72,7 +72,7 @@ class TroopChatPie$6
     //   117: lload 4
     //   119: lstore 8
     //   121: aload 12
-    //   123: invokevirtual 87	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   123: invokevirtual 88	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   126: aload 12
     //   128: astore_2
     //   129: lload 4
@@ -82,7 +82,7 @@ class TroopChatPie$6
     //   136: lload 4
     //   138: lstore 8
     //   140: aload 13
-    //   142: invokeinterface 93 1 0
+    //   142: invokeinterface 94 1 0
     //   147: astore 18
     //   149: aload 12
     //   151: astore_2
@@ -93,7 +93,7 @@ class TroopChatPie$6
     //   159: lload 4
     //   161: lstore 8
     //   163: aload 18
-    //   165: invokeinterface 99 1 0
+    //   165: invokeinterface 100 1 0
     //   170: ifeq +607 -> 777
     //   173: aload 12
     //   175: astore_2
@@ -104,8 +104,8 @@ class TroopChatPie$6
     //   183: lload 4
     //   185: lstore 8
     //   187: aload 18
-    //   189: invokeinterface 103 1 0
-    //   194: checkcast 105	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo
+    //   189: invokeinterface 104 1 0
+    //   194: checkcast 106	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo
     //   197: astore 19
     //   199: aload 12
     //   201: astore_2
@@ -116,8 +116,8 @@ class TroopChatPie$6
     //   209: lload 4
     //   211: lstore 8
     //   213: aload 19
-    //   215: getfield 109	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   218: invokevirtual 114	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   215: getfield 110	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   218: invokevirtual 115	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   221: ifeq +510 -> 731
     //   224: aload 12
     //   226: astore_2
@@ -128,8 +128,8 @@ class TroopChatPie$6
     //   234: lload 4
     //   236: lstore 8
     //   238: aload 19
-    //   240: getfield 109	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   243: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   240: getfield 110	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   243: invokevirtual 118	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   246: iconst_m1
     //   247: if_icmpeq +35 -> 282
     //   250: aload 12
@@ -141,10 +141,10 @@ class TroopChatPie$6
     //   260: lload 4
     //   262: lstore 8
     //   264: aload 19
-    //   266: getfield 109	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   269: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   266: getfield 110	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   269: invokevirtual 118	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   272: i2l
-    //   273: invokestatic 74	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
+    //   273: invokestatic 75	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
     //   276: lsub
     //   277: lconst_0
     //   278: lcmp
@@ -160,13 +160,13 @@ class TroopChatPie$6
     //   296: aload 16
     //   298: aload_0
     //   299: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   302: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   305: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
+    //   302: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   305: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
     //   308: aload 19
-    //   310: getfield 129	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   313: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   316: invokestatic 139	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   319: invokevirtual 143	com/tencent/mobileqq/app/TroopManager:b	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/troop/TroopMemberInfo;
+    //   310: getfield 132	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   313: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   316: invokestatic 142	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   319: invokevirtual 146	com/tencent/mobileqq/app/TroopManager:g	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/data/troop/TroopMemberInfo;
     //   322: astore 14
     //   324: aload 14
     //   326: astore 13
@@ -180,9 +180,9 @@ class TroopChatPie$6
     //   342: astore_3
     //   343: lload 4
     //   345: lstore 8
-    //   347: new 145	com/tencent/mobileqq/data/troop/TroopMemberInfo
+    //   347: new 148	com/tencent/mobileqq/data/troop/TroopMemberInfo
     //   350: dup
-    //   351: invokespecial 146	com/tencent/mobileqq/data/troop/TroopMemberInfo:<init>	()V
+    //   351: invokespecial 149	com/tencent/mobileqq/data/troop/TroopMemberInfo:<init>	()V
     //   354: astore 13
     //   356: aload 12
     //   358: astore_2
@@ -194,10 +194,10 @@ class TroopChatPie$6
     //   368: lstore 8
     //   370: aload 13
     //   372: aload 19
-    //   374: getfield 129	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   377: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   380: invokestatic 139	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   383: putfield 149	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   374: getfield 132	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   377: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   380: invokestatic 142	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   383: putfield 152	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
     //   386: aload 12
     //   388: astore_2
     //   389: lload 4
@@ -209,9 +209,9 @@ class TroopChatPie$6
     //   400: aload 13
     //   402: aload_0
     //   403: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   406: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   409: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
-    //   412: putfield 152	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
+    //   406: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   409: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
+    //   412: putfield 155	com/tencent/mobileqq/data/troop/TroopMemberInfo:troopuin	Ljava/lang/String;
     //   415: aload 12
     //   417: astore_2
     //   418: lload 4
@@ -221,9 +221,9 @@ class TroopChatPie$6
     //   425: lload 4
     //   427: lstore 8
     //   429: aload 19
-    //   431: getfield 156	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:bytes_special_title	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   434: invokevirtual 161	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   437: invokevirtual 167	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   431: getfield 159	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:bytes_special_title	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   434: invokevirtual 164	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   437: invokevirtual 170	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   440: astore 14
     //   442: aload 12
     //   444: astore_2
@@ -234,8 +234,8 @@ class TroopChatPie$6
     //   452: lload 4
     //   454: lstore 8
     //   456: aload 19
-    //   458: getfield 109	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   461: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   458: getfield 110	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint32_special_title_expire_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   461: invokevirtual 118	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   464: istore_1
     //   465: lload 4
     //   467: lstore 6
@@ -261,7 +261,7 @@ class TroopChatPie$6
     //   503: lload 6
     //   505: lstore 8
     //   507: aload 13
-    //   509: getfield 170	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitleExpire	I
+    //   509: getfield 173	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitleExpire	I
     //   512: iload_1
     //   513: if_icmpne +34 -> 547
     //   516: aload 12
@@ -275,9 +275,9 @@ class TroopChatPie$6
     //   530: lload 6
     //   532: lstore 4
     //   534: aload 13
-    //   536: getfield 173	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitle	Ljava/lang/String;
+    //   536: getfield 176	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitle	Ljava/lang/String;
     //   539: aload 14
-    //   541: invokestatic 179	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   541: invokestatic 182	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   544: ifne +418 -> 962
     //   547: aload 12
     //   549: astore_2
@@ -289,7 +289,7 @@ class TroopChatPie$6
     //   559: lstore 8
     //   561: aload 13
     //   563: aload 14
-    //   565: putfield 173	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitle	Ljava/lang/String;
+    //   565: putfield 176	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitle	Ljava/lang/String;
     //   568: aload 12
     //   570: astore_2
     //   571: lload 6
@@ -300,7 +300,7 @@ class TroopChatPie$6
     //   580: lstore 8
     //   582: aload 13
     //   584: iload_1
-    //   585: putfield 170	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitleExpire	I
+    //   585: putfield 173	com/tencent/mobileqq/data/troop/TroopMemberInfo:mUniqueTitleExpire	I
     //   588: aload 12
     //   590: astore_2
     //   591: lload 6
@@ -311,10 +311,10 @@ class TroopChatPie$6
     //   600: lstore 8
     //   602: aload 13
     //   604: aload 19
-    //   606: getfield 182	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:bytes_nick_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   609: invokevirtual 161	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   612: invokevirtual 167	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   615: putfield 185	com/tencent/mobileqq/data/troop/TroopMemberInfo:friendnick	Ljava/lang/String;
+    //   606: getfield 185	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:bytes_nick_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   609: invokevirtual 164	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   612: invokevirtual 170	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   615: putfield 188	com/tencent/mobileqq/data/troop/TroopMemberInfo:friendnick	Ljava/lang/String;
     //   618: aload 12
     //   620: astore_2
     //   621: lload 6
@@ -324,7 +324,7 @@ class TroopChatPie$6
     //   628: lload 6
     //   630: lstore 8
     //   632: aload 13
-    //   634: invokevirtual 188	com/tencent/mobileqq/data/troop/TroopMemberInfo:getStatus	()I
+    //   634: invokevirtual 191	com/tencent/mobileqq/data/troop/TroopMemberInfo:getStatus	()I
     //   637: sipush 1000
     //   640: if_icmpne +27 -> 667
     //   643: aload 12
@@ -337,7 +337,7 @@ class TroopChatPie$6
     //   655: lstore 8
     //   657: aload 17
     //   659: aload 13
-    //   661: invokevirtual 192	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   661: invokevirtual 195	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   664: goto +25 -> 689
     //   667: aload 12
     //   669: astore_2
@@ -349,7 +349,7 @@ class TroopChatPie$6
     //   679: lstore 8
     //   681: aload 17
     //   683: aload 13
-    //   685: invokevirtual 196	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   685: invokevirtual 199	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   688: pop
     //   689: aload 12
     //   691: astore_2
@@ -362,12 +362,12 @@ class TroopChatPie$6
     //   703: aload 16
     //   705: aload_0
     //   706: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   709: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   712: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
+    //   709: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   712: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
     //   715: aload 13
-    //   717: getfield 149	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
+    //   717: getfield 152	com/tencent/mobileqq/data/troop/TroopMemberInfo:memberuin	Ljava/lang/String;
     //   720: iconst_0
-    //   721: invokevirtual 199	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   721: invokevirtual 202	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Z)V
     //   724: lload 6
     //   726: lstore 4
     //   728: goto +234 -> 962
@@ -382,15 +382,15 @@ class TroopChatPie$6
     //   745: aload 16
     //   747: aload_0
     //   748: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   751: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   754: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
+    //   751: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   754: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
     //   757: aload 19
-    //   759: getfield 129	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   762: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   765: invokestatic 139	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   768: ldc 201
+    //   759: getfield 132	tencent/im/oidb/cmd0x787/oidb_0x787$MemberLevelInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   762: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   765: invokestatic 142	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   768: ldc 204
     //   770: iconst_0
-    //   771: invokevirtual 204	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    //   771: invokevirtual 207	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
     //   774: goto +188 -> 962
     //   777: aload 12
     //   779: astore_2
@@ -401,79 +401,79 @@ class TroopChatPie$6
     //   787: lload 4
     //   789: lstore 8
     //   791: aload 12
-    //   793: invokevirtual 207	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   793: invokevirtual 210	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   796: aload 12
     //   798: ifnull +8 -> 806
     //   801: aload 12
-    //   803: invokevirtual 210	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   803: invokevirtual 213	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   806: aload_0
     //   807: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   810: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   810: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
     //   813: astore_2
     //   814: aload 16
     //   816: aload_2
-    //   817: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
+    //   817: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
     //   820: lload 4
-    //   822: invokevirtual 213	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;J)V
+    //   822: invokevirtual 216	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;J)V
     //   825: goto +54 -> 879
     //   828: astore_3
     //   829: aload_2
     //   830: ifnull +7 -> 837
     //   833: aload_2
-    //   834: invokevirtual 210	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   834: invokevirtual 213	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   837: aload 16
     //   839: aload_0
     //   840: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   843: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   846: getfield 125	com/tencent/mobileqq/activity/aio/SessionInfo:a	Ljava/lang/String;
+    //   843: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   846: getfield 128	com/tencent/mobileqq/activity/aio/SessionInfo:b	Ljava/lang/String;
     //   849: lload 10
-    //   851: invokevirtual 213	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;J)V
+    //   851: invokevirtual 216	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;J)V
     //   854: aload_3
     //   855: athrow
     //   856: aload_3
     //   857: ifnull +7 -> 864
     //   860: aload_3
-    //   861: invokevirtual 210	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   861: invokevirtual 213	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   864: aload_0
     //   865: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   868: getfield 120	com/tencent/mobileqq/activity/aio/core/TroopChatPie:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   868: getfield 122	com/tencent/mobileqq/activity/aio/core/TroopChatPie:ah	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
     //   871: astore_2
     //   872: lload 8
     //   874: lstore 4
     //   876: goto -62 -> 814
     //   879: aload 17
-    //   881: invokevirtual 216	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   881: invokevirtual 219	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   884: aload 15
-    //   886: getfield 219	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_end_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   889: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   886: getfield 222	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_end_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   889: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   892: lconst_0
     //   893: lcmp
     //   894: ifeq +27 -> 921
     //   897: aload_0
     //   898: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
     //   901: aload 15
-    //   903: getfield 219	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_end_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   906: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   903: getfield 222	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_end_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   906: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   909: aload 15
-    //   911: getfield 222	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_data_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   914: invokevirtual 133	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   917: invokevirtual 225	com/tencent/mobileqq/activity/aio/core/TroopChatPie:a	(JJ)V
+    //   911: getfield 225	tencent/im/oidb/cmd0x787/oidb_0x787$RspBody:uint64_data_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   914: invokevirtual 136	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   917: invokevirtual 228	com/tencent/mobileqq/activity/aio/core/TroopChatPie:a	(JJ)V
     //   920: return
     //   921: aload_0
     //   922: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   925: invokevirtual 228	com/tencent/mobileqq/activity/aio/core/TroopChatPie:at	()V
+    //   925: invokevirtual 231	com/tencent/mobileqq/activity/aio/core/TroopChatPie:bH	()V
     //   928: aload_0
     //   929: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   932: ldc 229
-    //   934: invokevirtual 233	com/tencent/mobileqq/activity/aio/core/TroopChatPie:e	(I)V
+    //   932: ldc 232
+    //   934: invokevirtual 236	com/tencent/mobileqq/activity/aio/core/TroopChatPie:j	(I)V
     //   937: return
     //   938: aload_0
     //   939: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   942: invokevirtual 228	com/tencent/mobileqq/activity/aio/core/TroopChatPie:at	()V
+    //   942: invokevirtual 231	com/tencent/mobileqq/activity/aio/core/TroopChatPie:bH	()V
     //   945: return
     //   946: aload_0
     //   947: getfield 10	com/tencent/mobileqq/activity/aio/core/TroopChatPie$6:a	Lcom/tencent/mobileqq/activity/aio/core/TroopChatPie;
-    //   950: invokevirtual 228	com/tencent/mobileqq/activity/aio/core/TroopChatPie:at	()V
+    //   950: invokevirtual 231	com/tencent/mobileqq/activity/aio/core/TroopChatPie:bH	()V
     //   953: return
     //   954: astore_2
     //   955: goto -17 -> 938
@@ -567,7 +567,7 @@ class TroopChatPie$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.6
  * JD-Core Version:    0.7.0.1
  */

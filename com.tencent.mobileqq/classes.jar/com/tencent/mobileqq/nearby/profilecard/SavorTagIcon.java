@@ -26,14 +26,8 @@ public class SavorTagIcon
   extends HorizontalLabelLayout
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "#C6DAF7", "#FFCCC5", "#D9CAF7", "#B6ECD1" };
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  OnTagClickListener jdField_a_of_type_ComTencentMobileqqNearbyProfilecardOnTagClickListener;
-  String jdField_a_of_type_JavaLangString;
-  List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = true;
+  private static final String[] p = { "#C6DAF7", "#FFCCC5", "#D9CAF7", "#B6ECD1" };
+  String a;
   int b;
   int c;
   int d;
@@ -41,6 +35,12 @@ public class SavorTagIcon
   int f;
   int g;
   int h;
+  int i;
+  List<InterestTagInfo> j;
+  TextView k;
+  OnTagClickListener l;
+  boolean m = true;
+  float n;
   
   public SavorTagIcon(Context paramContext)
   {
@@ -59,48 +59,28 @@ public class SavorTagIcon
     b();
   }
   
-  public String a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaLangString != null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131713427));
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
-      localStringBuilder.append("个");
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localStringBuilder.append(",");
-        localStringBuilder.append(((InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(i)).tagName);
-        i += 1;
-      }
-      return localStringBuilder.toString();
-    }
-    return "";
-  }
-  
   protected void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.j;
     if ((localList != null) && (localList.size() != 0))
     {
-      float f1 = this.jdField_a_of_type_Float;
-      this.h = ((int)(f1 * 12.0F));
-      this.f = ((int)(f1 * 12.0F));
+      float f1 = this.n;
+      this.i = ((int)(f1 * 12.0F));
+      this.g = ((int)(f1 * 12.0F));
       return;
     }
-    this.h = ((int)(this.jdField_a_of_type_Float * 12.0F));
-    this.f = 0;
+    this.i = ((int)(this.n * 12.0F));
+    this.g = 0;
   }
   
   public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, OnTagClickListener paramOnTagClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardOnTagClickListener = paramOnTagClickListener;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramOnTagClickListener = jdField_a_of_type_ArrayOfJavaLangString;
+    this.l = paramOnTagClickListener;
+    this.b = paramInt;
+    this.a = paramString;
+    paramOnTagClickListener = p;
     paramString = paramOnTagClickListener[0];
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.b;
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -124,7 +104,7 @@ public class SavorTagIcon
     }
     try
     {
-      this.c = Color.parseColor(paramString);
+      this.d = Color.parseColor(paramString);
     }
     catch (Exception paramString)
     {
@@ -137,54 +117,30 @@ public class SavorTagIcon
   
   public void a(List<InterestTagInfo> paramList)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    int j = 1;
-    if (i > 0) {
-      i = 1;
+    int i1 = this.j.size();
+    int i2 = 1;
+    if (i1 > 0) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.j.clear();
     if ((paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.j.addAll(paramList);
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-      j = 0;
+    if (this.j.size() <= 0) {
+      i2 = 0;
     }
-    if (i != j)
+    if (i1 != i2)
     {
       a();
       setPadding(getPaddingLeft(), 0, getPaddingRight(), 0);
-      paramList = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      paramList = this.k.getLayoutParams();
       if ((paramList instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)paramList).bottomMargin = this.f;
+        ((ViewGroup.MarginLayoutParams)paramList).bottomMargin = this.g;
       }
     }
     c();
-  }
-  
-  public boolean a()
-  {
-    Rect localRect = new Rect();
-    int k = getChildCount();
-    int i = 0;
-    while ((i < k - 1) && (k > 1))
-    {
-      int j = i + 1;
-      View localView = getChildAt(j);
-      i = j;
-      if (localView.getGlobalVisibleRect(localRect))
-      {
-        double d1 = localRect.bottom - localRect.top;
-        double d2 = localView.getMeasuredHeight();
-        Double.isNaN(d2);
-        i = j;
-        if (d1 >= d2 * 0.5D) {
-          return true;
-        }
-      }
-    }
-    return false;
   }
   
   protected void b()
@@ -193,28 +149,28 @@ public class SavorTagIcon
       QLog.i("SavorTagIcon", 4, "initView");
     }
     removeAllViews();
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    if (this.jdField_a_of_type_Float < 0.01F) {
-      this.jdField_a_of_type_Float = 1.0F;
+    this.n = getResources().getDisplayMetrics().density;
+    if (this.n < 0.01F) {
+      this.n = 1.0F;
     }
-    float f1 = this.jdField_a_of_type_Float;
-    this.g = ((int)(f1 * 12.0F));
+    float f1 = this.n;
     this.h = ((int)(f1 * 12.0F));
+    this.i = ((int)(f1 * 12.0F));
+    this.f = ((int)(f1 * 12.0F));
     this.e = ((int)(f1 * 12.0F));
-    this.d = ((int)(f1 * 12.0F));
     a();
     setPadding(getPaddingLeft(), 0, getPaddingRight(), 0);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
-    this.b = getResources().getDimensionPixelSize(2131298938);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561233, null));
-    FrameLayout.LayoutParams localLayoutParams = a();
+    this.b = 0;
+    this.a = "";
+    this.j = new ArrayList(2);
+    this.c = getResources().getDimensionPixelSize(2131299660);
+    this.k = ((TextView)LayoutInflater.from(getContext()).inflate(2131627589, null));
+    FrameLayout.LayoutParams localLayoutParams = e();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
-    localLayoutParams.topMargin = this.g;
-    localLayoutParams.bottomMargin = this.h;
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+    localLayoutParams.topMargin = this.h;
+    localLayoutParams.bottomMargin = this.i;
+    addView(this.k, localLayoutParams);
   }
   
   protected void c()
@@ -222,115 +178,159 @@ public class SavorTagIcon
     if (QLog.isDevelopLevel()) {
       QLog.i("SavorTagIcon", 4, "refreshView");
     }
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = getChildCount() - 1;
+    int i2 = this.j.size();
+    int i1 = getChildCount() - 1;
     Object localObject1;
-    if (i > j) {
-      while (i > j)
+    if (i1 > i2) {
+      while (i1 > i2)
       {
-        localObject1 = getChildAt(i);
+        localObject1 = getChildAt(i1);
         ((View)localObject1).setOnClickListener(null);
         removeView((View)localObject1);
-        i -= 1;
+        i1 -= 1;
       }
     }
     Object localObject2;
-    if (i < j) {
-      while (i < j)
+    if (i1 < i2) {
+      while (i1 < i2)
       {
-        localObject1 = LayoutInflater.from(getContext()).inflate(2131561229, null);
-        localObject2 = a();
+        localObject1 = LayoutInflater.from(getContext()).inflate(2131627585, null);
+        localObject2 = e();
         ((ViewGroup.MarginLayoutParams)localObject2).width = -2;
         ((ViewGroup.MarginLayoutParams)localObject2).height = -2;
-        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = this.e;
-        ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = this.d;
+        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = this.f;
+        ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = this.e;
         addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        i += 1;
+        i1 += 1;
       }
     }
-    if (j > 0)
+    if (i2 > 0)
     {
-      localObject1 = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+      localObject1 = new StringBuilder(this.a);
       ((StringBuilder)localObject1).append('(');
-      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(i2);
       ((StringBuilder)localObject1).append(')');
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject1).toString());
+      this.k.setText(((StringBuilder)localObject1).toString());
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.k.setText(this.a);
     }
-    int k = this.jdField_a_of_type_JavaUtilList.size();
-    for (i = 0; i < k; i = j)
+    int i3 = this.j.size();
+    for (i1 = 0; i1 < i3; i1 = i2)
     {
-      j = i + 1;
-      localObject1 = getChildAt(j);
+      i2 = i1 + 1;
+      localObject1 = getChildAt(i2);
       if (localObject1 == null)
       {
         if (QLog.isDevelopLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("refreshView child is null, index = ");
-          ((StringBuilder)localObject1).append(String.valueOf(j));
+          ((StringBuilder)localObject1).append(String.valueOf(i2));
           QLog.i("SavorTagIcon", 4, ((StringBuilder)localObject1).toString());
         }
       }
       else
       {
-        localObject2 = (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        localObject2 = (InterestTagInfo)this.j.get(i1);
         if (localObject2 == null)
         {
           if (QLog.isDevelopLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("refreshView item is null, index = ");
-            ((StringBuilder)localObject1).append(String.valueOf(i));
+            ((StringBuilder)localObject1).append(String.valueOf(i1));
             QLog.i("SavorTagIcon", 4, ((StringBuilder)localObject1).toString());
           }
         }
         else
         {
           String str = ((InterestTagInfo)localObject2).tagName;
-          i = this.c;
+          i1 = this.d;
           try
           {
-            i = Color.parseColor(((InterestTagInfo)localObject2).tagBgColor);
+            i1 = Color.parseColor(((InterestTagInfo)localObject2).tagBgColor);
           }
           catch (Exception localException1)
           {
             if (QLog.isDevelopLevel()) {
               localException1.printStackTrace();
             }
-            i = this.c;
+            i1 = this.d;
           }
           GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(i);
-          localGradientDrawable.setCornerRadius(this.b);
+          localGradientDrawable.setColor(i1);
+          localGradientDrawable.setCornerRadius(this.c);
           try
           {
-            i = Color.parseColor(((InterestTagInfo)localObject2).tagTextColor);
+            i1 = Color.parseColor(((InterestTagInfo)localObject2).tagTextColor);
           }
           catch (Exception localException2)
           {
             if (QLog.isDevelopLevel()) {
               localException2.printStackTrace();
             }
-            i = -1;
+            i1 = -1;
           }
-          TextView localTextView = (TextView)((View)localObject1).findViewById(2131379994);
+          TextView localTextView = (TextView)((View)localObject1).findViewById(2131448897);
           if (localTextView != null)
           {
             localTextView.setText(str);
-            localTextView.setTextColor(i);
+            localTextView.setTextColor(i1);
           }
           ((View)localObject1).setBackgroundDrawable(localGradientDrawable);
           ((View)localObject1).setTag(localObject2);
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardOnTagClickListener != null) {
+          if (this.l != null) {
             ((View)localObject1).setOnClickListener(this);
           }
         }
       }
     }
+  }
+  
+  public boolean d()
+  {
+    Rect localRect = new Rect();
+    int i3 = getChildCount();
+    int i1 = 0;
+    while ((i1 < i3 - 1) && (i3 > 1))
+    {
+      int i2 = i1 + 1;
+      View localView = getChildAt(i2);
+      i1 = i2;
+      if (localView.getGlobalVisibleRect(localRect))
+      {
+        double d1 = localRect.bottom - localRect.top;
+        double d2 = localView.getMeasuredHeight();
+        Double.isNaN(d2);
+        i1 = i2;
+        if (d1 >= d2 * 0.5D) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public String getContentsDesc()
+  {
+    if ((this.j != null) && (this.a != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131910978));
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(this.j.size());
+      localStringBuilder.append("个");
+      int i1 = 0;
+      while (i1 < this.j.size())
+      {
+        localStringBuilder.append(",");
+        localStringBuilder.append(((InterestTagInfo)this.j.get(i1)).tagName);
+        i1 += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return "";
   }
   
   public void onClick(View paramView)
@@ -343,9 +343,9 @@ public class SavorTagIcon
     }
     if ((localObject instanceof InterestTagInfo))
     {
-      OnTagClickListener localOnTagClickListener = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardOnTagClickListener;
+      OnTagClickListener localOnTagClickListener = this.l;
       if (localOnTagClickListener != null) {
-        localOnTagClickListener.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
+        localOnTagClickListener.a(paramView, this.b, (InterestTagInfo)localObject);
       }
     }
   }
@@ -360,26 +360,26 @@ public class SavorTagIcon
   
   public void setRightArrowVisible(boolean paramBoolean)
   {
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {
+    if (paramBoolean == this.m) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.m = paramBoolean;
+    if (this.m)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839270, 0);
+      this.k.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839446, 0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.k.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
   }
   
   public void setTitleTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.k.setTextColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.SavorTagIcon
  * JD-Core Version:    0.7.0.1
  */

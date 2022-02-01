@@ -22,11 +22,11 @@ import java.util.List;
 public class TroopHonorView
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.a(16.0F);
-  private static final int b = ViewUtils.a(16.0F);
-  private static final int c = ViewUtils.a(1.0F);
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<TroopHonor> jdField_a_of_type_JavaUtilList;
+  private static final int a = ViewUtils.dip2px(16.0F);
+  private static final int b = ViewUtils.dip2px(16.0F);
+  private static final int c = ViewUtils.dip2px(1.0F);
+  private List<TroopHonor> d;
+  private String e = "";
   
   public TroopHonorView(Context paramContext)
   {
@@ -44,30 +44,30 @@ public class TroopHonorView
     setOrientation(0);
   }
   
-  public int a()
+  public String getContentDesc()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    return TroopHonorUtils.c(this.d);
+  }
+  
+  public int getExpectedWidth()
+  {
+    List localList = this.d;
     if ((localList != null) && (localList.size() != 0)) {
-      return this.jdField_a_of_type_JavaUtilList.size() * jdField_a_of_type_Int + (this.jdField_a_of_type_JavaUtilList.size() - 1) * c + getPaddingLeft() + getPaddingRight();
+      return this.d.size() * a + (this.d.size() - 1) * c + getPaddingLeft() + getPaddingRight();
     }
     return 0;
   }
   
-  public String a()
-  {
-    return TroopHonorUtils.c(this.jdField_a_of_type_JavaUtilList);
-  }
-  
   public void setHonorList(List<TroopHonor> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(TroopHonorUtils.b(paramList))) {
+    if (this.e.equals(TroopHonorUtils.b(paramList))) {
       return;
     }
     if (paramList != null) {
       Collections.sort(paramList);
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = TroopHonorUtils.b(this.jdField_a_of_type_JavaUtilList);
+    this.d = paramList;
+    this.e = TroopHonorUtils.b(this.d);
     removeAllViews();
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -77,17 +77,17 @@ public class TroopHonorView
       {
         TroopHonor localTroopHonor = (TroopHonor)paramList.get(i);
         k = j;
-        if (!TextUtils.isEmpty(localTroopHonor.b))
+        if (!TextUtils.isEmpty(localTroopHonor.c))
         {
-          URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(localTroopHonor.b);
+          URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(localTroopHonor.c);
           k = j;
           if (localURLDrawable != null)
           {
-            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
+            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a, b);
             ImageView localImageView = new ImageView(getContext());
             localURLDrawable.setURLDrawableListener(new TroopHonorView.WeakViewDownloadListener(localImageView));
             localImageView.setImageDrawable(localURLDrawable);
-            localImageView.setContentDescription(localTroopHonor.jdField_a_of_type_JavaLangString);
+            localImageView.setContentDescription(localTroopHonor.b);
             if (j != 0) {
               localLayoutParams.leftMargin = c;
             }
@@ -108,7 +108,7 @@ public class TroopHonorView
     float f1 = getPaddingLeft();
     float f2 = getPaddingRight();
     int i = c;
-    i = (int)((paramFloat - f1 - f2 + i) / (jdField_a_of_type_Int + i));
+    i = (int)((paramFloat - f1 - f2 + i) / (a + i));
     Collections.sort(paramList);
     setHonorList(paramList.subList(0, Math.min(i, paramList.size())));
   }
@@ -124,9 +124,9 @@ public class TroopHonorView
       return;
     }
     paramInt = 3;
-    Object localObject = (TroopHonorConfig)QConfigManager.a().a(544);
+    Object localObject = (TroopHonorConfig)QConfigManager.b().b(544);
     if (localObject != null) {
-      paramInt = ((TroopHonorConfig)localObject).jdField_a_of_type_Int;
+      paramInt = ((TroopHonorConfig)localObject).b;
     }
     Collections.sort(paramList);
     setHonorList(paramList.subList(0, Math.min(paramInt, paramList.size())));
@@ -143,7 +143,7 @@ public class TroopHonorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.widget.TroopHonorView
  * JD-Core Version:    0.7.0.1
  */

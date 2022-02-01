@@ -43,23 +43,17 @@ import tencent.im.oidb.searcher.oidb_c2c_searcher.ReqBody;
 public class BaseMessageHandler
   extends BusinessHandler
 {
-  protected final int a;
-  public RegisterProxyHandler a;
-  public final HashMap<String, List<msg_comm.Msg>> a;
-  protected Map<String, BaseMessageProcessor> a;
-  protected final int b;
-  protected final HashMap<Long, SendMessageHandler> b;
-  private final int c = 450000;
+  public final HashMap<String, List<msg_comm.Msg>> a = new HashMap();
+  protected final HashMap<Long, SendMessageHandler> b = new HashMap();
+  protected final int c = 9;
+  protected final int d = 3;
+  public RegisterProxyHandler e = new RegisterProxyHandler(this);
+  protected Map<String, BaseMessageProcessor> f = new ConcurrentHashMap();
+  private final int g = 450000;
   
   protected BaseMessageHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Int = 9;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler = new RegisterProxyHandler(this);
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
   public static String a(FromServiceMsg paramFromServiceMsg)
@@ -178,24 +172,9 @@ public class BaseMessageHandler
     return i;
   }
   
-  public AppInterface a()
-  {
-    return this.appRuntime;
-  }
-  
   public BaseMessageProcessor a(String paramString)
   {
     return null;
-  }
-  
-  public EntityManager a()
-  {
-    return null;
-  }
-  
-  public SendMessageHandler a(long paramLong)
-  {
-    return (SendMessageHandler)this.jdField_b_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
   }
   
   public Object a(String paramString, int paramInt)
@@ -203,16 +182,11 @@ public class BaseMessageHandler
     return null;
   }
   
-  public String a()
-  {
-    return null;
-  }
-  
   protected void a()
   {
-    synchronized (this.jdField_b_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilHashMap.entrySet().iterator();
+      Iterator localIterator = this.b.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -220,7 +194,7 @@ public class BaseMessageHandler
           ((SendMessageHandler)localEntry.getValue()).a();
         }
       }
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.b.clear();
       return;
     }
     for (;;)
@@ -321,31 +295,14 @@ public class BaseMessageHandler
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject) {}
   
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("removeSendMessageHandler msgseq=");
-      ((StringBuilder)localObject).append(paramLong);
-      QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = a(paramLong);
-    if (localObject != null)
-    {
-      ((SendMessageHandler)localObject).a();
-      a(paramLong);
-    }
-  }
-  
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    a(paramLong, paramInt1, paramInt2, null, 1, DeviceInfoUtil.a());
+    a(paramLong, paramInt1, paramInt2, null, 1, DeviceInfoUtil.M());
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, msg_onlinepush.PbPushMsg paramPbPushMsg)
   {
-    a(paramLong, paramInt1, paramInt2, paramPbPushMsg, 1, DeviceInfoUtil.a());
+    a(paramLong, paramInt1, paramInt2, paramPbPushMsg, 1, DeviceInfoUtil.M());
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, msg_onlinepush.PbPushMsg paramPbPushMsg, int paramInt3, DeviceInfo paramDeviceInfo)
@@ -392,51 +349,9 @@ public class BaseMessageHandler
   
   public void a(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
-    {
-      if (!paramToServiceMsg.extraData.containsKey("msgSeq"))
-      {
-        QLog.e("MessageHandler", 1, "no msgSeq");
-        return;
-      }
-      long l1 = paramToServiceMsg.extraData.getLong("msgSeq");
-      int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-      long l2 = paramFromServiceMsg.getResultCode();
-      long l3 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 9223372036854775807L);
-      SendMessageHandler localSendMessageHandler = a(l1);
-      if (localSendMessageHandler != null)
-      {
-        paramFromServiceMsg = a(paramToServiceMsg, paramFromServiceMsg);
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("<---TimeConsume---> cmd[");
-          localStringBuilder.append(paramToServiceMsg.getServiceCmd());
-          localStringBuilder.append("] seq[");
-          localStringBuilder.append(l1);
-          localStringBuilder.append("] retryIndex[");
-          localStringBuilder.append(i);
-          localStringBuilder.append("] ");
-          localStringBuilder.append(paramFromServiceMsg[0]);
-          localStringBuilder.append("");
-          QLog.d("MessageHandler", 2, localStringBuilder.toString());
-        }
-        localSendMessageHandler.a(i, l2, l3, paramFromServiceMsg);
-        return;
-      }
-      QLog.e("MessageHandler", 1, "can not found handler");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageHandler", 2, "req or resp is null");
-    }
-  }
-  
   protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.f.values().iterator();
     while (localIterator.hasNext())
     {
       BaseMessageProcessor localBaseMessageProcessor = (BaseMessageProcessor)localIterator.next();
@@ -456,32 +371,25 @@ public class BaseMessageHandler
   
   public void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    a(ProcessorDispatcher.a(paramString)).a(ProcessorDispatcher.a(paramString), paramToServiceMsg, paramFromServiceMsg);
+    a(ProcessorDispatcher.a(paramString)).a(ProcessorDispatcher.b(paramString), paramToServiceMsg, paramFromServiceMsg);
   }
   
   protected void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (ProcessorDispatcher.a().containsKey(paramString)) {
-      a(ProcessorDispatcher.a(paramString)).a(ProcessorDispatcher.a(paramString), new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+      a(ProcessorDispatcher.a(paramString)).a(ProcessorDispatcher.b(paramString), new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
     }
   }
   
-  public void a(boolean paramBoolean) {}
-  
   public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
   
   protected boolean a(long paramLong)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+      if (this.b.containsKey(Long.valueOf(paramLong)))
       {
-        this.jdField_b_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+        this.b.remove(Long.valueOf(paramLong));
         return true;
       }
       return false;
@@ -490,11 +398,11 @@ public class BaseMessageHandler
   
   public boolean a(long paramLong, SendMessageHandler paramSendMessageHandler)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilHashMap)
+    synchronized (this.b)
     {
-      if (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+      if (!this.b.containsKey(Long.valueOf(paramLong)))
       {
-        this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramSendMessageHandler);
+        this.b.put(Long.valueOf(paramLong), paramSendMessageHandler);
         paramSendMessageHandler.a = paramLong;
         return true;
       }
@@ -539,7 +447,7 @@ public class BaseMessageHandler
     {
       bool1 = false;
     }
-    if ((!bool1) && (paramSendMessageHandler.a()))
+    if ((!bool1) && (paramSendMessageHandler.b()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MessageHandler", 2, "<<<---retrySendMessage No unfinished retry attampt.");
@@ -562,35 +470,121 @@ public class BaseMessageHandler
     return false;
   }
   
-  public void b() {}
+  public AppInterface b()
+  {
+    return this.appRuntime;
+  }
+  
+  public SendMessageHandler b(long paramLong)
+  {
+    return (SendMessageHandler)this.b.get(Long.valueOf(paramLong));
+  }
   
   public void b(long paramLong, int paramInt1, int paramInt2)
   {
     a(paramLong, paramInt1, paramInt2, null, -1, null);
   }
   
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
+    {
+      if (!paramToServiceMsg.extraData.containsKey("msgSeq"))
+      {
+        QLog.e("MessageHandler", 1, "no msgSeq");
+        return;
+      }
+      long l1 = paramToServiceMsg.extraData.getLong("msgSeq");
+      int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+      long l2 = paramFromServiceMsg.getResultCode();
+      long l3 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 9223372036854775807L);
+      SendMessageHandler localSendMessageHandler = b(l1);
+      if (localSendMessageHandler != null)
+      {
+        paramFromServiceMsg = a(paramToServiceMsg, paramFromServiceMsg);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("<---TimeConsume---> cmd[");
+          localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+          localStringBuilder.append("] seq[");
+          localStringBuilder.append(l1);
+          localStringBuilder.append("] retryIndex[");
+          localStringBuilder.append(i);
+          localStringBuilder.append("] ");
+          localStringBuilder.append(paramFromServiceMsg[0]);
+          localStringBuilder.append("");
+          QLog.d("MessageHandler", 2, localStringBuilder.toString());
+        }
+        localSendMessageHandler.a(i, l2, l3, paramFromServiceMsg);
+        return;
+      }
+      QLog.e("MessageHandler", 1, "can not found handler");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageHandler", 2, "req or resp is null");
+    }
+  }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void b(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    a(ProcessorDispatcher.a(paramString)).b(ProcessorDispatcher.a(paramString), paramToServiceMsg, paramFromServiceMsg);
+    a(ProcessorDispatcher.a(paramString)).b(ProcessorDispatcher.b(paramString), paramToServiceMsg, paramFromServiceMsg);
   }
   
   public void b(boolean paramBoolean) {}
   
-  public void c() {}
+  public void c(long paramLong)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("removeSendMessageHandler msgseq=");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = b(paramLong);
+    if (localObject != null)
+    {
+      ((SendMessageHandler)localObject).a();
+      a(paramLong);
+    }
+  }
+  
+  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
   
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
+  public void c(boolean paramBoolean) {}
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
   public void d() {}
   
-  public void e() {}
+  public EntityManager e()
+  {
+    return null;
+  }
   
   public void f() {}
   
   public void g() {}
+  
+  public void h() {}
+  
+  public String i()
+  {
+    return null;
+  }
+  
+  public void j() {}
+  
+  public void k() {}
   
   protected Class<? extends BusinessObserver> observerClass()
   {
@@ -604,7 +598,7 @@ public class BaseMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseMessageHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -43,15 +43,15 @@ public class CoreService
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130840405;
-      ((Notification)localObject).contentView = new RemoteViews(MobileQQ.getMobileQQ().getPackageName(), 2131559649);
+      ((Notification)localObject).icon = 2130841158;
+      ((Notification)localObject).contentView = new RemoteViews(MobileQQ.getMobileQQ().getPackageName(), 2131625678);
       return localObject;
     }
     Object localObject = new Intent("com.tencent.mobileqq.action.MAINACTIVITY");
     ((Intent)localObject).addFlags(67108864);
     localObject = PendingIntent.getActivity(MobileQQ.getMobileQQ(), 0, (Intent)localObject, 402653184);
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(MobileQQ.getMobileQQ());
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130840405);
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130841158);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }
@@ -212,7 +212,7 @@ public class CoreService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CoreService
  * JD-Core Version:    0.7.0.1
  */

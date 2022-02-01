@@ -12,7 +12,7 @@ class MsgCallbackUnreadCountCalculateStrategy
 {
   public int a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, StringBuilder paramStringBuilder)
   {
-    paramQQMessageFacade = paramQQMessageFacade.a().d().iterator();
+    paramQQMessageFacade = paramQQMessageFacade.c().j().iterator();
     int i = 0;
     while (paramQQMessageFacade.hasNext()) {
       i += ((GetUnreadMsgNumCallback)paramQQMessageFacade.next()).a("(%s,%d,%d) ", paramStringBuilder, paramQQAppInterface);
@@ -22,7 +22,7 @@ class MsgCallbackUnreadCountCalculateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.count.MsgCallbackUnreadCountCalculateStrategy
  * JD-Core Version:    0.7.0.1
  */

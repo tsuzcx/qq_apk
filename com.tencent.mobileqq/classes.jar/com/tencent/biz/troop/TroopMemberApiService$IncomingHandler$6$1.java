@@ -18,17 +18,17 @@ class TroopMemberApiService$IncomingHandler$6$1
       if (paramInt != 0)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131715333));
+        localStringBuilder.append(HardCodeUtil.a(2131912813));
         localStringBuilder.append(paramInt);
         localStringBuilder.append("]");
         VideoEnvironment.LogDownLoad("TroopMemberApiService", localStringBuilder.toString(), null);
-        ShortVideoResourceManager.a(HardCodeUtil.a(2131715387));
+        ShortVideoResourceManager.b(HardCodeUtil.a(2131912866));
         ShortVideoErrorReport.a(2, paramInt);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+        this.a.b.putInt("result", 0);
       }
       else
       {
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+        this.a.b.putInt("result", -2);
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -39,20 +39,20 @@ class TroopMemberApiService$IncomingHandler$6$1
     localStringBuilder.append(",filePath=");
     localStringBuilder.append(paramString2);
     VideoEnvironment.LogDownLoad("TroopMemberApiService", localStringBuilder.toString(), null);
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
+    this.a.c.a.a(93, this.a.b);
+    this.a.c.a.r = false;
   }
   
   public void onNetWorkNone()
   {
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
+    this.a.c.a.r = false;
   }
   
   public void onUpdateProgress(String paramString, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.6.1
  * JD-Core Version:    0.7.0.1
  */

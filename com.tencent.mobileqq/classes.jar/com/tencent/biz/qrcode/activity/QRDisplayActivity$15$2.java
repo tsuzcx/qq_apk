@@ -15,47 +15,47 @@ class QRDisplayActivity$15$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_a_of_type_Int), "1" });
+      if (this.b.this$0.t == 2) {
+        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.b.this$0.n, String.valueOf(this.b.this$0.q), "1" });
       }
-      QRUtils.a(1, 2131696479);
+      QRUtils.a(1, 2131894251);
       return;
     }
     String str;
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_Int == 2)
+    if (this.b.this$0.t == 2)
     {
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_Boolean) {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131692104, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_a_of_type_JavaLangString });
+      if (this.b.this$0.i) {
+        str = this.b.this$0.getString(2131889085, new Object[] { this.b.this$0.l });
       } else {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131692103, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_JavaLangString });
+        str = this.b.this$0.getString(2131889084, new Object[] { this.b.this$0.l, this.b.this$0.n });
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_Int != 5) {
+      if (this.b.this$0.t != 5) {
         break label247;
       }
-      str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131692102, new Object[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_a_of_type_JavaLangString });
+      str = this.b.this$0.getString(2131889083, new Object[] { this.b.this$0.l });
     }
     for (;;)
     {
       break;
       label247:
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.jdField_c_of_type_Int == 11) {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131693111);
+      if (this.b.this$0.t == 11) {
+        str = this.b.this$0.getString(2131890650);
       } else {
-        str = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131692106);
+        str = this.b.this$0.getString(2131889087);
       }
     }
     QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-    localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.app.getAccount();
-    localUserInfo.nickname = ContactUtils.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.app.getAccount());
-    QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$15.this$0.getString(2131692105), str, 1);
+    localUserInfo.qzone_uin = this.b.this$0.app.getAccount();
+    localUserInfo.nickname = ContactUtils.f(this.b.this$0.app, this.b.this$0.app.getAccount());
+    QZoneHelper.forwardToPublishMood(this.b.this$0, localUserInfo, this.a, this.b.this$0.getString(2131889086), str, 1);
   }
 }
 

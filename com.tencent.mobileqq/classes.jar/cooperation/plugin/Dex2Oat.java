@@ -14,16 +14,6 @@ public final class Dex2Oat
 {
   private static final boolean a = b(System.getProperty("java.vm.version"));
   
-  public static String a()
-  {
-    String str2 = (String)ReflecterHelper.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "arm";
-    }
-    return str1;
-  }
-  
   public static String a(File paramFile1, File paramFile2)
   {
     String str = paramFile1.getName();
@@ -61,7 +51,7 @@ public final class Dex2Oat
   
   public static boolean a(String paramString)
   {
-    String str = PluginInstaller.a();
+    String str = PluginInstaller.c();
     if ((paramString != null) && (!paramString.equals("")) && (str != null) && (!str.equals("")))
     {
       if (paramString.equals(str))
@@ -100,100 +90,100 @@ public final class Dex2Oat
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 147	java/util/concurrent/CountDownLatch
+    //   3: new 131	java/util/concurrent/CountDownLatch
     //   6: dup
     //   7: aload_0
-    //   8: invokeinterface 153 1 0
-    //   13: invokespecial 154	java/util/concurrent/CountDownLatch:<init>	(I)V
+    //   8: invokeinterface 137 1 0
+    //   13: invokespecial 138	java/util/concurrent/CountDownLatch:<init>	(I)V
     //   16: astore 10
     //   18: iload 6
-    //   20: new 156	cooperation/plugin/Dex2Oat$1
+    //   20: new 140	cooperation/plugin/Dex2Oat$1
     //   23: dup
-    //   24: invokespecial 157	cooperation/plugin/Dex2Oat$1:<init>	()V
-    //   27: invokestatic 163	java/util/concurrent/Executors:newFixedThreadPool	(ILjava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
+    //   24: invokespecial 141	cooperation/plugin/Dex2Oat$1:<init>	()V
+    //   27: invokestatic 147	java/util/concurrent/Executors:newFixedThreadPool	(ILjava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
     //   30: astore 9
-    //   32: invokestatic 166	java/lang/System:nanoTime	()J
+    //   32: invokestatic 150	java/lang/System:nanoTime	()J
     //   35: lstore 7
-    //   37: new 168	java/util/ArrayList
+    //   37: new 152	java/util/ArrayList
     //   40: dup
     //   41: aload_0
-    //   42: invokespecial 171	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   42: invokespecial 155	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   45: astore 11
     //   47: aload 11
-    //   49: new 173	cooperation/plugin/Dex2Oat$2
+    //   49: new 157	cooperation/plugin/Dex2Oat$2
     //   52: dup
-    //   53: invokespecial 174	cooperation/plugin/Dex2Oat$2:<init>	()V
-    //   56: invokestatic 180	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   53: invokespecial 158	cooperation/plugin/Dex2Oat$2:<init>	()V
+    //   56: invokestatic 164	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   59: aload 11
-    //   61: invokestatic 184	java/util/Collections:reverse	(Ljava/util/List;)V
+    //   61: invokestatic 168	java/util/Collections:reverse	(Ljava/util/List;)V
     //   64: aload 11
-    //   66: invokevirtual 188	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   66: invokevirtual 172	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   69: astore 11
     //   71: aload 11
-    //   73: invokeinterface 193 1 0
+    //   73: invokeinterface 177 1 0
     //   78: ifeq +40 -> 118
     //   81: aload 9
-    //   83: new 195	cooperation/plugin/Dex2Oat$OptimizeWorker
+    //   83: new 179	cooperation/plugin/Dex2Oat$OptimizeWorker
     //   86: dup
     //   87: aload 11
-    //   89: invokeinterface 199 1 0
-    //   94: checkcast 49	java/io/File
+    //   89: invokeinterface 183 1 0
+    //   94: checkcast 29	java/io/File
     //   97: aload_1
     //   98: iload_2
     //   99: aload_3
     //   100: aload 4
     //   102: aload 10
     //   104: aload 5
-    //   106: invokespecial 202	cooperation/plugin/Dex2Oat$OptimizeWorker:<init>	(Ljava/io/File;Ljava/io/File;ZLjava/lang/String;Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/CountDownLatch;Lcooperation/plugin/Dex2Oat$ResultCallback;)V
-    //   109: invokeinterface 208 2 0
+    //   106: invokespecial 186	cooperation/plugin/Dex2Oat$OptimizeWorker:<init>	(Ljava/io/File;Ljava/io/File;ZLjava/lang/String;Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/CountDownLatch;Lcooperation/plugin/Dex2Oat$ResultCallback;)V
+    //   109: invokeinterface 192 2 0
     //   114: pop
     //   115: goto -44 -> 71
     //   118: aload 10
-    //   120: invokevirtual 211	java/util/concurrent/CountDownLatch:await	()V
-    //   123: invokestatic 166	java/lang/System:nanoTime	()J
+    //   120: invokevirtual 195	java/util/concurrent/CountDownLatch:await	()V
+    //   123: invokestatic 150	java/lang/System:nanoTime	()J
     //   126: lload 7
     //   128: lsub
-    //   129: ldc2_w 212
+    //   129: ldc2_w 196
     //   132: ldiv
     //   133: lstore 7
     //   135: aload 4
-    //   137: invokevirtual 216	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   137: invokevirtual 200	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   140: aload_0
-    //   141: invokeinterface 153 1 0
+    //   141: invokeinterface 137 1 0
     //   146: if_icmpne +54 -> 200
-    //   149: new 65	java/lang/StringBuilder
+    //   149: new 48	java/lang/StringBuilder
     //   152: dup
-    //   153: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   153: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   156: astore_0
     //   157: aload_0
-    //   158: ldc 218
-    //   160: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: ldc 202
+    //   160: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: pop
     //   164: aload_0
     //   165: lload 7
-    //   167: invokevirtual 221	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   170: pop
     //   171: aload_0
-    //   172: ldc 223
-    //   174: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: ldc 207
+    //   174: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
-    //   178: ldc 120
+    //   178: ldc 104
     //   180: aload_0
-    //   181: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   184: invokestatic 226	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   181: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 210	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   187: pop
     //   188: aload 9
-    //   190: invokeinterface 229 1 0
+    //   190: invokeinterface 213 1 0
     //   195: ldc 2
     //   197: monitorexit
     //   198: iconst_1
     //   199: ireturn
-    //   200: ldc 120
-    //   202: ldc 231
-    //   204: invokestatic 234	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   200: ldc 104
+    //   202: ldc 215
+    //   204: invokestatic 218	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   207: pop
     //   208: aload 9
-    //   210: invokeinterface 229 1 0
+    //   210: invokeinterface 213 1 0
     //   215: ldc 2
     //   217: monitorexit
     //   218: iconst_0
@@ -201,19 +191,19 @@ public final class Dex2Oat
     //   220: astore_0
     //   221: goto +25 -> 246
     //   224: astore_0
-    //   225: ldc 120
-    //   227: ldc 236
+    //   225: ldc 104
+    //   227: ldc 220
     //   229: aload_0
-    //   230: invokestatic 240	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   230: invokestatic 224	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   233: pop
     //   234: aload 9
-    //   236: invokeinterface 229 1 0
+    //   236: invokeinterface 213 1 0
     //   241: ldc 2
     //   243: monitorexit
     //   244: iconst_0
     //   245: ireturn
     //   246: aload 9
-    //   248: invokeinterface 229 1 0
+    //   248: invokeinterface 213 1 0
     //   253: aload_0
     //   254: athrow
     //   255: astore_0
@@ -251,6 +241,16 @@ public final class Dex2Oat
     //   246	255	255	finally
   }
   
+  public static String b()
+  {
+    String str2 = (String)ReflecterHelper.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "arm";
+    }
+    return str1;
+  }
+  
   private static boolean b(String paramString)
   {
     boolean bool2 = false;
@@ -286,7 +286,7 @@ public final class Dex2Oat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.Dex2Oat
  * JD-Core Version:    0.7.0.1
  */

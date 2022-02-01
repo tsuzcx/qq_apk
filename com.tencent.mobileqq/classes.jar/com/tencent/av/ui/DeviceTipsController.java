@@ -1,223 +1,121 @@
 package com.tencent.av.ui;
 
-import android.os.Looper;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.tips.TipsManager;
-import com.tencent.av.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class DeviceTipsController
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private DeviceTipsController.CustomHandler jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler = new DeviceTipsController.CustomHandler(this, Looper.getMainLooper());
-  private volatile DeviceTipsController.DeviceItemMessage jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private volatile DeviceTipsController.DeviceItemMessage jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage;
-  private boolean jdField_b_of_type_Boolean = false;
+  private volatile DeviceTipsController.DeviceItemMessage a;
+  private volatile boolean b;
+  private DeviceTipsController.CustomHandler c;
+  private volatile DeviceTipsController.DeviceItemMessage d;
+  private ViewGroup e;
+  private TextView f;
+  private TextView g;
   
-  public DeviceTipsController(VideoAppInterface paramVideoAppInterface)
+  private void a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  private String a()
-  {
-    if ((this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage != null) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.a())) {
-      return this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.jdField_a_of_type_JavaLangString;
+    int i;
+    if ((this.b) && (this.a != null) && (this.a.a())) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage != null) {
-      return this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.jdField_a_of_type_JavaLangString;
+    if (i == 0) {
+      this.a = null;
     }
-    return "";
-  }
-  
-  private void a(ViewGroup paramViewGroup, TextView paramTextView)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Boolean = true;
+    String str1 = b();
+    String str2 = c();
+    a(str1, str2, d());
+    if ((this.c != null) && (this.b) && ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) && (!this.c.hasMessages(256))) {
+      this.c.sendEmptyMessageDelayed(256, 1000L);
+    }
   }
   
   private void a(String paramString)
   {
     if ((TextUtils.isEmpty(paramString) ^ true))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.f.setText(paramString);
+      this.f.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
-  private void f()
+  private void a(String paramString1, String paramString2, DeviceTipsController.OnClickTipsListener paramOnClickTipsListener)
   {
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage != null) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.a())) {
-      i = 1;
-    } else {
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
       i = 0;
+    } else {
+      i = 1;
     }
-    if (i == 0) {
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-    }
-    String str = a();
-    a(str);
-    if ((this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.hasMessages(256))) {
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessageDelayed(256, 1000L);
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    switch (paramInt)
+    if (i != 0)
     {
-    default: 
-      return "";
-    case 10: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690196);
-    case 9: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690195);
-    case 8: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690198);
-    case 7: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690194);
-    case 6: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690199);
-    case 5: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690193);
-    case 4: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695452);
-    case 3: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690192);
-    case 2: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690205);
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690191);
+      a(paramString1);
+      a(paramString2, TextUtils.isEmpty(paramString1) ^ true, paramOnClickTipsListener);
+      this.e.setVisibility(0);
+      return;
     }
-    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690204);
+    this.e.setVisibility(8);
   }
   
-  public void a()
+  private void a(String paramString, boolean paramBoolean, DeviceTipsController.OnClickTipsListener paramOnClickTipsListener)
   {
-    if (AudioHelper.b())
+    if ((TextUtils.isEmpty(paramString) ^ true))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("attach, isAttach[");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder.append("]");
-      QLog.w("DeviceTipsController", 1, localStringBuilder.toString());
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      b();
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      ((TipsManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11)).a(this);
-    }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {}
-  }
-  
-  public void a(int paramInt, long paramLong, boolean paramBoolean)
-  {
-    a(a(paramInt), paramLong, paramBoolean);
-  }
-  
-  public void a(View paramView)
-  {
-    a((ViewGroup)paramView.findViewById(2131373627), (TextView)paramView.findViewById(2131373374));
-  }
-  
-  public void a(DeviceTipsController.DeviceItemMessage paramDeviceItemMessage)
-  {
-    this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = paramDeviceItemMessage;
-    if (paramDeviceItemMessage.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = paramDeviceItemMessage;
-    }
-    paramDeviceItemMessage = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
-    if (paramDeviceItemMessage != null)
-    {
-      paramDeviceItemMessage.removeMessages(256);
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessage(256);
-    }
-  }
-  
-  public void a(String paramString, long paramLong, boolean paramBoolean)
-  {
-    DeviceTipsController.DeviceItemMessage localDeviceItemMessage = new DeviceTipsController.DeviceItemMessage();
-    localDeviceItemMessage.jdField_a_of_type_Long = System.currentTimeMillis();
-    localDeviceItemMessage.jdField_a_of_type_Boolean = paramBoolean;
-    localDeviceItemMessage.b = paramLong;
-    localDeviceItemMessage.jdField_a_of_type_JavaLangString = paramString;
-    a(localDeviceItemMessage);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage == this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage) {
-        this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
+      this.g.setText(paramString);
+      paramString = (LinearLayout.LayoutParams)this.g.getLayoutParams();
+      if (paramBoolean) {
+        paramString.leftMargin = ViewUtils.dip2px(5.0F);
+      } else {
+        paramString.leftMargin = ViewUtils.dip2px(0.0F);
       }
-      this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
+      this.g.getPaint().setFlags(8);
+      this.g.getPaint().setAntiAlias(true);
+      this.g.setOnClickListener(new DeviceTipsController.1(this, paramOnClickTipsListener));
+      this.g.setVisibility(0);
+      return;
     }
-    else
-    {
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-    }
-    DeviceTipsController.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
-    if (localCustomHandler != null)
-    {
-      localCustomHandler.removeMessages(256);
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessage(256);
-    }
+    this.g.setVisibility(8);
   }
   
-  public void b()
+  private String b()
   {
-    if (AudioHelper.b())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("detach, isAttach[");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder.append("]");
-      QLog.w("DeviceTipsController", 1, localStringBuilder.toString());
+    if ((this.a != null) && (this.a.a())) {
+      return this.a.d;
     }
-    if (this.jdField_b_of_type_Boolean) {
-      ((TipsManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11)).a(null);
+    if (this.d != null) {
+      return this.d.d;
     }
-    this.jdField_b_of_type_Boolean = false;
+    return "";
   }
   
-  public void c()
+  private String c()
   {
-    a();
+    if ((this.a != null) && (this.a.a())) {
+      return this.a.e;
+    }
+    if (this.d != null) {
+      return this.d.e;
+    }
+    return "";
   }
   
-  public void d() {}
-  
-  public void e()
+  private DeviceTipsController.OnClickTipsListener d()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      b();
+    if ((this.a != null) && (this.a.a())) {
+      return this.a.f;
     }
-    this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-    DeviceTipsController.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
-    if (localCustomHandler != null) {
-      localCustomHandler.removeMessages(256);
+    if (this.d != null) {
+      return this.d.f;
     }
+    return null;
   }
 }
 

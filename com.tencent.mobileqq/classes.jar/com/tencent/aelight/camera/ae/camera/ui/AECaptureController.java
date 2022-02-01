@@ -17,15 +17,20 @@ import com.tencent.aelight.camera.ae.AEPituCameraUnit;
 import com.tencent.aelight.camera.ae.AEPituCameraUnit.ViewStubHoldersViewModel;
 import com.tencent.aelight.camera.ae.AEViewModelProviders;
 import com.tencent.aelight.camera.ae.camera.core.AECameraGLSurfaceView;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowFilterDataManager;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowFilterDataManager.SelectFilter;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowMaterialManager;
 import com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialManager;
 import com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakePanel;
 import com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialPanel;
 import com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkPanel;
-import com.tencent.aelight.camera.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder;
+import com.tencent.aelight.camera.ae.camera.ui.panel.BeautyAndFilterPanel;
+import com.tencent.aelight.camera.ae.control.AEQIMManager;
 import com.tencent.aelight.camera.ae.data.AEGifMaterialManager;
 import com.tencent.aelight.camera.ae.data.AEGiftMaterial;
 import com.tencent.aelight.camera.ae.data.AEMaterialManager;
 import com.tencent.aelight.camera.ae.data.AEMaterialMetaData;
+import com.tencent.aelight.camera.ae.flashshow.AEFlashShowCameraUnit;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
 import com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterTools;
@@ -35,6 +40,7 @@ import com.tencent.aelight.camera.aioeditor.capture.QIMManager;
 import com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager;
 import com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager.CaptureRecord;
 import com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboObeserver;
+import com.tencent.aelight.camera.api.IAEFilterManagerHolder;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.videostory.animator.AnimationBuilder;
@@ -44,6 +50,7 @@ import com.tencent.image.NativeGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.api.URLDrawableDepWrap;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import mqq.os.MqqHandler;
@@ -53,38 +60,37 @@ public class AECaptureController
   implements ICaptureController
 {
   public View a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private AEBaseCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit;
-  private final AECameraGLSurfaceView jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView;
-  private AEARCakePanel jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel;
-  public AEMaterialPanel a;
-  private AEWaterMarkPanel jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel;
-  private BeautyAndFilterPanelViewStubHolder jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
-  private VideoFilterViewPager jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager;
-  private CaptureComboObeserver jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboObeserver = new AECaptureController.3(this);
-  public volatile boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = true;
-  private View c;
-  private View d;
-  private View e;
-  private View f;
+  public AEMaterialPanel b;
+  public volatile boolean c = true;
+  private final AECameraGLSurfaceView d;
+  private AEWaterMarkPanel e;
+  private AEARCakePanel f;
+  private BeautyAndFilterPanel g;
+  private View h;
+  private ViewGroup i;
+  private View j;
+  private View k;
+  private View l;
+  private View m;
+  private VideoFilterViewPager n;
+  private boolean o = true;
+  private AEBaseCameraUnit p;
+  private CaptureComboObeserver q = new AECaptureController.3(this);
   
   public AECaptureController(View paramView, AEBaseCameraUnit paramAEBaseCameraUnit)
   {
-    this.jdField_a_of_type_Boolean = true;
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit = paramAEBaseCameraUnit;
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView = ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122016));
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel = ((AEMaterialPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2064122519));
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel = ((AEWaterMarkPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2064122520));
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel = ((AEARCakePanel)this.jdField_a_of_type_AndroidViewView.findViewById(2064122518));
-      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2064121904);
-      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2064121905);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager = ((VideoFilterViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2064122221));
-      j();
+      this.a = paramView;
+      this.p = paramAEBaseCameraUnit;
+      this.d = ((AECameraGLSurfaceView)this.a.findViewById(2063990947));
+      this.b = ((AEMaterialPanel)this.a.findViewById(2063991338));
+      this.e = ((AEWaterMarkPanel)this.a.findViewById(2063991339));
+      this.f = ((AEARCakePanel)this.a.findViewById(2063991337));
+      this.l = this.a.findViewById(2063990838);
+      this.m = this.a.findViewById(2063990839);
+      this.n = ((VideoFilterViewPager)this.a.findViewById(2063991103));
+      m();
       return;
     }
     throw new IllegalStateException("rootView is null");
@@ -100,15 +106,15 @@ public class AECaptureController
     boolean bool;
     if (paramAEMaterialMetaData != null)
     {
-      String str = AEBaseReportParam.a().a();
-      if ((str != null) && (str.equalsIgnoreCase(paramAEMaterialMetaData.k))) {
+      String str = AEBaseReportParam.a().f();
+      if ((str != null) && (str.equalsIgnoreCase(paramAEMaterialMetaData.m))) {
         bool = false;
       } else {
         bool = true;
       }
-      AEBaseReportParam.a().e(paramAEMaterialMetaData.k);
-      AEBaseReportParam.a().b(paramAEMaterialMetaData.g);
-      if (paramAEMaterialMetaData.g != 0) {
+      AEBaseReportParam.a().f(paramAEMaterialMetaData.m);
+      AEBaseReportParam.a().c(paramAEMaterialMetaData.M);
+      if (paramAEMaterialMetaData.M != 0) {
         a(true);
       } else {
         a(false);
@@ -116,27 +122,27 @@ public class AECaptureController
     }
     else
     {
-      bool = "none".equalsIgnoreCase(AEBaseReportParam.a().a()) ^ true;
-      AEBaseReportParam.a().e("none");
-      AEBaseReportParam.a().b(0);
+      bool = "none".equalsIgnoreCase(AEBaseReportParam.a().f()) ^ true;
+      AEBaseReportParam.a().f("none");
+      AEBaseReportParam.a().c(0);
       a(false);
     }
     if (bool) {
-      AEBaseDataReporter.a().W();
+      AEBaseDataReporter.a().X();
     }
   }
   
-  private void j()
+  private void m()
   {
-    ((AEPituCameraUnit.ViewStubHoldersViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit).get(AEPituCameraUnit.ViewStubHoldersViewModel.class)).a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit, new AECaptureController.2(this));
+    ((AEPituCameraUnit.ViewStubHoldersViewModel)AEViewModelProviders.a(this.p).get(AEPituCameraUnit.ViewStubHoldersViewModel.class)).a.observe(this.p, new AECaptureController.2(this));
   }
   
   public void a()
   {
     AEQLog.b("CaptureController", "applyVideoMaterialAgain");
-    if (((AEPituCameraUnit)this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit).m())
+    if (((AEPituCameraUnit)this.p).aA())
     {
-      localObject = AEARCakeMaterialManager.a().a();
+      localObject = AEARCakeMaterialManager.a().c();
       AEQLog.b("CaptureController", "applyVideoMaterialAgain from arcake : ");
       if (localObject == null)
       {
@@ -144,28 +150,33 @@ public class AECaptureController
         AEQLog.b("CaptureController", "applyVideoMaterialAgain giftMaterial is null ");
         return;
       }
-      a(((AEGiftMaterial)localObject).a());
+      a(((AEGiftMaterial)localObject).c());
       return;
     }
-    if (AEMaterialManager.b() != null)
+    if (AEMaterialManager.o() != null)
     {
-      a(AEMaterialManager.b());
+      a(AEMaterialManager.o());
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit;
-    if (((localObject instanceof AEPituCameraUnit)) && (((AEPituCameraUnit)localObject).f()))
+    Object localObject = this.p;
+    if ((localObject instanceof AEFlashShowCameraUnit))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView;
+      a(AEFlashShowMaterialManager.k());
+      return;
+    }
+    if (((localObject instanceof AEPituCameraUnit)) && (((AEPituCameraUnit)localObject).Z()))
+    {
+      localObject = this.d;
       if (localObject != null) {
-        ((AECameraGLSurfaceView)localObject).setMaterial(AEGifMaterialManager.a().a());
+        ((AECameraGLSurfaceView)localObject).setMaterial(AEGifMaterialManager.a().c());
       }
     }
-    a(AEMaterialManager.a());
+    a(AEMaterialManager.n());
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.getSmoothLevel() == paramInt) {
+    if (this.d.getSmoothLevel() == paramInt) {
       return;
     }
     if (GLVideoClipUtil.a())
@@ -175,7 +186,7 @@ public class AECaptureController
       }
       paramInt = 0;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setBeautyLevel(paramInt);
+    this.d.setBeautyLevel(paramInt);
   }
   
   public void a(AEMaterialMetaData paramAEMaterialMetaData)
@@ -186,33 +197,33 @@ public class AECaptureController
     if (paramAEMaterialMetaData == null) {
       localObject = "null";
     } else {
-      localObject = paramAEMaterialMetaData.k;
+      localObject = paramAEMaterialMetaData.m;
     }
     localStringBuilder.append((String)localObject);
     AEQLog.b("CaptureController", localStringBuilder.toString());
     if (VideoPrefsUtil.getDefaultPrefs() != null) {
       VideoPrefsUtil.setMaterialMute(false);
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView != null)
+    if (this.d != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit.a();
-      if ((!b()) && (paramAEMaterialMetaData != null))
+      localObject = this.p.s();
+      if ((!k()) && (paramAEMaterialMetaData != null))
       {
         localObject = ((Activity)localObject).getIntent();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("camera^");
-        localStringBuilder.append(paramAEMaterialMetaData.k);
+        localStringBuilder.append(paramAEMaterialMetaData.m);
         ((Intent)localObject).putExtra("widgetinfo", localStringBuilder.toString());
-        ((Intent)localObject).putExtra("material_id", paramAEMaterialMetaData.k);
-        ((Intent)localObject).putExtra("material_topic", paramAEMaterialMetaData.v);
+        ((Intent)localObject).putExtra("material_id", paramAEMaterialMetaData.m);
+        ((Intent)localObject).putExtra("material_topic", paramAEMaterialMetaData.N);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("selectSpecificMaterial---塞拍同款名 takeSameName=");
-        localStringBuilder.append(paramAEMaterialMetaData.s);
+        localStringBuilder.append(paramAEMaterialMetaData.H);
         AEQLog.b("CaptureController", localStringBuilder.toString());
-        ((Intent)localObject).putExtra("key_camera_material_name", paramAEMaterialMetaData.s);
-        ((Intent)localObject).putExtra("ae_editor_is_show_take_same", paramAEMaterialMetaData.g);
+        ((Intent)localObject).putExtra("key_camera_material_name", paramAEMaterialMetaData.H);
+        ((Intent)localObject).putExtra("ae_editor_is_show_take_same", paramAEMaterialMetaData.M);
       }
-      else if (!b())
+      else if (!k())
       {
         localObject = ((Activity)localObject).getIntent();
         if (localObject != null)
@@ -225,189 +236,156 @@ public class AECaptureController
           ((Intent)localObject).removeExtra("KEY_SEND_ARK_MSG_ID");
         }
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setMaterialMetaData(paramAEMaterialMetaData);
+      this.d.setMaterialMetaData(paramAEMaterialMetaData);
     }
     b(paramAEMaterialMetaData);
   }
   
   public void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setCustomMaterial(paramString);
+    this.d.setCustomMaterial(paramString);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.i != null)
     {
-      if (this.jdField_b_of_type_AndroidViewView == null) {
+      if (this.h == null) {
         return;
       }
-      if ((this.d == null) && (!((AEPituCameraUnit)this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit).m())) {
+      if ((this.k == null) && (!((AEPituCameraUnit)this.p).aA())) {
         return;
       }
-      int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-      Object localObject = this.d;
-      int i;
+      int i2 = this.i.getHeight();
+      Object localObject = this.k;
+      int i1;
       if (localObject != null) {
-        i = ((View)localObject).getHeight();
+        i1 = ((View)localObject).getHeight();
       } else {
-        i = 0;
+        i1 = 0;
       }
-      float f2 = j + i;
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      float f2 = i2 + i1;
+      localObject = this.i.getLayoutParams();
       float f1 = f2;
       if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
         f1 = f2 + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
       }
-      long l;
-      int k;
+      long l1;
+      int i3;
       if (paramBoolean)
       {
-        localObject = ViewAnimator.a(new View[] { this.jdField_a_of_type_AndroidViewViewGroup, this.d }).a(new float[] { 0.0F, f1 });
-        l = paramInt;
-        ((AnimationBuilder)localObject).a(l).b();
-        localObject = this.e;
+        localObject = ViewAnimator.a(new View[] { this.i, this.k }).b(new float[] { 0.0F, f1 });
+        l1 = paramInt;
+        ((AnimationBuilder)localObject).a(l1).d();
+        localObject = this.l;
         if ((localObject != null) && (((View)localObject).getVisibility() == 0))
         {
-          localObject = this.f;
+          localObject = this.m;
           if ((localObject != null) && (((View)localObject).getVisibility() == 0))
           {
             localObject = new int[2];
-            this.e.getLocationOnScreen((int[])localObject);
-            i = this.jdField_a_of_type_AndroidViewView.getHeight();
-            j = localObject[1];
-            k = UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 100.0F);
-            ViewAnimator.a(new View[] { this.e, this.f }).a(new float[] { 0.0F, i - j + k }).a(l).b();
+            this.l.getLocationOnScreen((int[])localObject);
+            i1 = this.a.getHeight();
+            i2 = localObject[1];
+            i3 = UIUtils.a(this.a.getContext(), 100.0F);
+            ViewAnimator.a(new View[] { this.l, this.m }).b(new float[] { 0.0F, i1 - i2 + i3 }).a(l1).d();
           }
         }
         localObject = new ScaleAnimation(1.0F, 0.7F, 1.0F, 0.7F, 1, 0.5F, 1, 0.5F);
       }
       else
       {
-        localObject = ViewAnimator.a(new View[] { this.jdField_a_of_type_AndroidViewViewGroup, this.d }).a(new float[] { f1, 0.0F });
-        l = paramInt;
-        ((AnimationBuilder)localObject).a(l).b();
-        localObject = this.e;
+        localObject = ViewAnimator.a(new View[] { this.i, this.k }).b(new float[] { f1, 0.0F });
+        l1 = paramInt;
+        ((AnimationBuilder)localObject).a(l1).d();
+        localObject = this.l;
         if ((localObject != null) && (((View)localObject).getVisibility() == 0))
         {
-          localObject = this.f;
+          localObject = this.m;
           if ((localObject != null) && (((View)localObject).getVisibility() == 0))
           {
             localObject = new int[2];
-            this.e.getLocationOnScreen((int[])localObject);
-            i = this.jdField_a_of_type_AndroidViewView.getHeight();
-            j = localObject[1];
-            k = UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 100.0F);
-            ViewAnimator.a(new View[] { this.e, this.f }).a(new float[] { i - j + k, 0.0F }).a(l).b();
+            this.l.getLocationOnScreen((int[])localObject);
+            i1 = this.a.getHeight();
+            i2 = localObject[1];
+            i3 = UIUtils.a(this.a.getContext(), 100.0F);
+            ViewAnimator.a(new View[] { this.l, this.m }).b(new float[] { i1 - i2 + i3, 0.0F }).a(l1).d();
           }
         }
         localObject = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, 1, 0.5F, 1, 0.5F);
       }
       ((ScaleAnimation)localObject).setDuration(paramInt);
       ((ScaleAnimation)localObject).setFillAfter(true);
-      this.jdField_b_of_type_AndroidViewView.startAnimation((Animation)localObject);
+      this.h.startAnimation((Animation)localObject);
     }
-  }
-  
-  public boolean a()
-  {
-    if (b()) {
-      return true;
-    }
-    if (c())
-    {
-      e();
-      return true;
-    }
-    return false;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2064122228));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2064122074);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2064122567);
+    this.i = ((ViewGroup)this.a.findViewById(2063991110));
+    this.h = this.a.findViewById(2063990988);
+    this.k = this.a.findViewById(2063991385);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.setSharpFaceLevel(paramInt);
-  }
-  
-  public boolean b()
-  {
-    AECameraGLSurfaceView localAECameraGLSurfaceView = this.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView;
-    return (localAECameraGLSurfaceView != null) && (localAECameraGLSurfaceView.isRecording());
+    this.d.setSharpFaceLevel(paramInt);
   }
   
   public void c()
   {
-    VideoFilterTools.a().a(0);
-    CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-    if (this.jdField_b_of_type_Boolean) {
-      localCaptureComboManager.a[0].a((Activity)this.jdField_a_of_type_AndroidViewView.getContext());
+    VideoFilterTools.a().d(0);
+    Object localObject = (CaptureComboManager)QIMManager.a(5);
+    if (this.o) {
+      localObject.o[0].a((Activity)this.a.getContext());
     }
-  }
-  
-  public boolean c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel;
-    boolean bool2 = false;
-    if (localObject != null) {
-      bool2 = false | ((AEMaterialPanel)localObject).b();
+    localObject = ((AEFlashShowFilterDataManager)AEQIMManager.a(4)).a();
+    if ((localObject != null) && (!"".equals(((AEFlashShowFilterDataManager.SelectFilter)localObject).a())) && (!((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).isAEFilterManagerEmpty()))
+    {
+      ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).setIsAfterUpdateMaterial(false);
+      ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).updateLutGL(((AEFlashShowFilterDataManager.SelectFilter)localObject).b());
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
-    boolean bool1 = bool2;
-    if (localObject != null) {
-      bool1 = bool2 | ((BeautyAndFilterPanelViewStubHolder)localObject).b();
-    }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel;
-    bool2 = bool1;
-    if (localObject != null) {
-      bool2 = bool1 | ((AEARCakePanel)localObject).b();
-    }
-    return bool2;
   }
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel;
+    Object localObject = this.b;
     if (localObject != null) {
       ((AEMaterialPanel)localObject).b();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel;
+    localObject = this.f;
     if (localObject != null) {
-      ((AEARCakePanel)localObject).c();
+      ((AEARCakePanel)localObject).d();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel;
+    localObject = this.e;
     if (localObject != null) {
-      ((AEWaterMarkPanel)localObject).b();
+      ((AEWaterMarkPanel)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
+    localObject = this.g;
     if (localObject != null) {
-      ((BeautyAndFilterPanelViewStubHolder)localObject).c();
+      ((BeautyAndFilterPanel)localObject).h();
     }
   }
   
   public void e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel;
+    Object localObject = this.f;
     if (localObject != null) {
       ((AEARCakePanel)localObject).a(true);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel;
+    localObject = this.b;
     if (localObject != null) {
       ((AEMaterialPanel)localObject).a(true);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
+    localObject = this.g;
     if (localObject != null) {
-      ((BeautyAndFilterPanelViewStubHolder)localObject).d();
+      ((BeautyAndFilterPanel)localObject).b();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel;
+    localObject = this.e;
     if (localObject != null) {
       ((AEWaterMarkPanel)localObject).a(true);
     }
-    localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    localObject = this.i;
     if (localObject != null) {
       ((ViewGroup)localObject).setVisibility(0);
     }
@@ -415,16 +393,16 @@ public class AECaptureController
   
   public void f()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2064122374);
+    Object localObject = this.a.findViewById(2063991248);
     if ((localObject != null) && ((localObject instanceof RelativeLayout)))
     {
       localObject = (RelativeLayout)localObject;
       if ((localObject != null) && (((RelativeLayout)localObject).isShown()))
       {
         ((RelativeLayout)localObject).setVisibility(8);
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager;
+        localObject = this.n;
         if (localObject != null) {
-          ((VideoFilterViewPager)localObject).d();
+          ((VideoFilterViewPager)localObject).e();
         }
       }
     }
@@ -432,28 +410,28 @@ public class AECaptureController
   
   public void g()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((AEMaterialPanel)localObject).c();
+      ((AEMaterialPanel)localObject).d();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
+    localObject = this.g;
     if (localObject != null) {
-      ((BeautyAndFilterPanelViewStubHolder)localObject).e();
+      ((BeautyAndFilterPanel)localObject).f();
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel;
+    localObject = this.e;
     if (localObject != null) {
-      ((AEWaterMarkPanel)localObject).c();
+      ((AEWaterMarkPanel)localObject).d();
     }
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.o = this.c;
   }
   
   public void h()
   {
-    BeautyAndFilterPanelViewStubHolder localBeautyAndFilterPanelViewStubHolder = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
-    if (localBeautyAndFilterPanelViewStubHolder != null) {
-      localBeautyAndFilterPanelViewStubHolder.f();
+    BeautyAndFilterPanel localBeautyAndFilterPanel = this.g;
+    if (localBeautyAndFilterPanel != null) {
+      localBeautyAndFilterPanel.e();
     }
-    VideoFilterTools.a().a(0);
+    VideoFilterTools.a().d(0);
     NativeGifImage.resumeAll();
     if (URLDrawable.depImp.mLog != null) {
       ApngImage.playByTag(13);
@@ -463,15 +441,61 @@ public class AECaptureController
   public void i()
   {
     e();
-    BeautyAndFilterPanelViewStubHolder localBeautyAndFilterPanelViewStubHolder = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelBeautyAndFilterPanelViewStubHolder;
-    if (localBeautyAndFilterPanelViewStubHolder != null) {
-      localBeautyAndFilterPanelViewStubHolder.g();
+    Object localObject = (CaptureComboManager)QIMManager.a(5);
+    if ((this.a != null) && (localObject != null))
+    {
+      VideoFilterTools.a().b(null, (Activity)this.a.getContext(), 0);
+      ((CaptureComboManager)localObject).a((Activity)this.a.getContext());
+      VideoFilterTools.a().a(null, 0);
     }
+    localObject = this.g;
+    if (localObject != null) {
+      ((BeautyAndFilterPanel)localObject).g();
+    }
+  }
+  
+  public boolean j()
+  {
+    if (k()) {
+      return true;
+    }
+    if (l())
+    {
+      e();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean k()
+  {
+    AECameraGLSurfaceView localAECameraGLSurfaceView = this.d;
+    return (localAECameraGLSurfaceView != null) && (localAECameraGLSurfaceView.isRecording());
+  }
+  
+  public boolean l()
+  {
+    Object localObject = this.b;
+    boolean bool2 = false;
+    if (localObject != null) {
+      bool2 = false | ((AEMaterialPanel)localObject).c();
+    }
+    localObject = this.g;
+    boolean bool1 = bool2;
+    if (localObject != null) {
+      bool1 = bool2 | ((BeautyAndFilterPanel)localObject).ao_();
+    }
+    localObject = this.f;
+    bool2 = bool1;
+    if (localObject != null) {
+      bool2 = bool1 | ((AEARCakePanel)localObject).a();
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.AECaptureController
  * JD-Core Version:    0.7.0.1
  */

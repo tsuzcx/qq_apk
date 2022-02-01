@@ -22,12 +22,12 @@ public class BatchReportInfo
   public String a()
   {
     if (TextUtils.isEmpty(this.f)) {
-      return APNUtil.a(CommonDataAdapter.a().a());
+      return APNUtil.a(CommonDataAdapter.a().b());
     }
     return this.f;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
   }
@@ -51,7 +51,7 @@ public class BatchReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.BatchReportInfo
  * JD-Core Version:    0.7.0.1
  */

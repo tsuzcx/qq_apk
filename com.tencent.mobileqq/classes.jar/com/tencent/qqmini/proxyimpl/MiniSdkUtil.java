@@ -1,5 +1,8 @@
 package com.tencent.qqmini.proxyimpl;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -63,24 +66,6 @@ public class MiniSdkUtil
       }
     }
     return localExtConfigInfo;
-  }
-  
-  public static MiniAppConfig a(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo == null) {
-      return null;
-    }
-    MiniAppConfig localMiniAppConfig = new MiniAppConfig(a(paramMiniAppInfo));
-    localMiniAppConfig.entryPath = paramMiniAppInfo.launchParam.entryPath;
-    localMiniAppConfig.linkType = paramMiniAppInfo.linkType;
-    localMiniAppConfig.link = paramMiniAppInfo.link;
-    localMiniAppConfig.isFromShowInfo = false;
-    localMiniAppConfig.forceReroad = paramMiniAppInfo.forceReroad;
-    localMiniAppConfig.launchParam = a(paramMiniAppInfo.launchParam);
-    if (paramMiniAppInfo.baseLibInfo != null) {
-      localMiniAppConfig.baseLibInfo = new com.tencent.mobileqq.mini.sdk.BaseLibInfo(paramMiniAppInfo.baseLibInfo.baseLibUrl, paramMiniAppInfo.baseLibInfo.baseLibKey, paramMiniAppInfo.baseLibInfo.baseLibVersion, paramMiniAppInfo.baseLibInfo.baseLibDesc, paramMiniAppInfo.baseLibInfo.baseLibType);
-    }
-    return localMiniAppConfig;
   }
   
   public static com.tencent.mobileqq.mini.apkg.MiniAppInfo a(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
@@ -257,6 +242,7 @@ public class MiniSdkUtil
     localLaunchParam.extendData = paramLaunchParam.extendData;
     localLaunchParam.entryModel = a(paramLaunchParam.entryModel);
     localLaunchParam.fromBackToMiniApp = paramLaunchParam.fromBackToMiniApp;
+    localLaunchParam.forceReload = paramLaunchParam.forceReload;
     return localLaunchParam;
   }
   
@@ -459,7 +445,79 @@ public class MiniSdkUtil
     return localArrayList;
   }
   
-  public static void a(boolean paramBoolean)
+  public static boolean a()
+  {
+    try
+    {
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      localStringBuilder.append("_user_sdk_miniapp_");
+      int i = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).getInt("miniapp_sdk__downgrade", -1);
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        String str = ((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName;
+        if ((!"com.tencent.mobileqq:mini3".equals(str)) && (!"com.tencent.mobileqq:mini4".equals(str)))
+        {
+          boolean bool = "com.tencent.mobileqq:mini5".equals(str);
+          if (!bool) {
+            break;
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("MiniSdkUtil", 1, "getProcessInfos fail ", paramContext);
+    }
+    return false;
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public static MiniAppConfig b(com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return null;
+    }
+    MiniAppConfig localMiniAppConfig = new MiniAppConfig(a(paramMiniAppInfo));
+    localMiniAppConfig.entryPath = paramMiniAppInfo.launchParam.entryPath;
+    localMiniAppConfig.linkType = paramMiniAppInfo.linkType;
+    localMiniAppConfig.link = paramMiniAppInfo.link;
+    localMiniAppConfig.isFromShowInfo = false;
+    localMiniAppConfig.launchParam = a(paramMiniAppInfo.launchParam);
+    if (paramMiniAppInfo.baseLibInfo != null) {
+      localMiniAppConfig.baseLibInfo = new com.tencent.mobileqq.mini.sdk.BaseLibInfo(paramMiniAppInfo.baseLibInfo.baseLibUrl, paramMiniAppInfo.baseLibInfo.baseLibKey, paramMiniAppInfo.baseLibInfo.baseLibVersion, paramMiniAppInfo.baseLibInfo.baseLibDesc, paramMiniAppInfo.baseLibInfo.baseLibType);
+    }
+    return localMiniAppConfig;
+  }
+  
+  public static void b(boolean paramBoolean)
   {
     try
     {
@@ -488,37 +546,10 @@ public class MiniSdkUtil
     }
     finally {}
   }
-  
-  public static boolean a()
-  {
-    try
-    {
-      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      localStringBuilder.append("_user_sdk_miniapp_");
-      int i = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).getInt("miniapp_sdk__downgrade", -1);
-      boolean bool = true;
-      if (i != 1) {
-        bool = false;
-      }
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSdkUtil
  * JD-Core Version:    0.7.0.1
  */

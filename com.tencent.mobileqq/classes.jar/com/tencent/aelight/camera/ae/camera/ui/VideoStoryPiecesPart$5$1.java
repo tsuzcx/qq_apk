@@ -7,14 +7,14 @@ class VideoStoryPiecesPart$5$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 200) {
-      VideoStoryPiecesPart.b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiVideoStoryPiecesPart$5.a);
+    if (this.a == 200) {
+      VideoStoryPiecesPart.x(this.b.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart.5.1
  * JD-Core Version:    0.7.0.1
  */

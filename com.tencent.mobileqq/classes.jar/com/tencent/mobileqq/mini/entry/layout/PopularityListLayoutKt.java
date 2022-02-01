@@ -71,7 +71,7 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(20);
     }
-    ((LinearLayout)localObject2).setId(2131371177);
+    ((LinearLayout)localObject2).setId(2131438519);
     ((LinearLayout)localObject2).setOrientation(1);
     localObject2 = (ViewGroup)localObject2;
     Object localObject3 = new RelativeLayout(((ViewGroup)localObject2).getContext());
@@ -121,7 +121,7 @@ public final class PopularityListLayoutKt
     localObject3 = (ViewGroup)localObject3;
     Object localObject4 = new ImageView(((ViewGroup)localObject3).getContext());
     ((ImageView)localObject4).setTag(localObject3);
-    ((ImageView)localObject4).setId(2131371185);
+    ((ImageView)localObject4).setId(2131438527);
     Object localObject5 = (View)localObject4;
     j = LayoutAttrsKt.getDp(20);
     paramContext = ((View)localObject5).getLayoutParams();
@@ -202,11 +202,11 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.leftMargin = LayoutAttrsKt.getDp(11);
     }
-    ((ImageView)localObject4).setImageResource(2130841048);
+    ((ImageView)localObject4).setImageResource(2130841839);
     ((ViewGroup)localObject3).addView((View)localObject5);
     paramContext = new TextView(((ViewGroup)localObject3).getContext());
     paramContext.setTag(localObject3);
-    paramContext.setId(2131371184);
+    paramContext.setId(2131438526);
     localObject4 = (View)paramContext;
     localObject1 = ((View)localObject4).getLayoutParams();
     if (localObject1 != null) {
@@ -239,7 +239,7 @@ public final class PopularityListLayoutKt
       ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
     paramContext.setTextSize(14.0F);
-    paramContext.setText(2131706831);
+    paramContext.setText(2131904679);
     if (("#060606" instanceof Integer)) {
       paramContext.setTextColor(paramContext.getResources().getColor(((Number)"#060606").intValue()));
     } else {
@@ -289,12 +289,12 @@ public final class PopularityListLayoutKt
         }
       }
     }
-    ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131371185);
+    ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131438527);
     ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
     ((ViewGroup)localObject3).addView((View)localObject4);
     localObject4 = new ImageView(((ViewGroup)localObject3).getContext());
     ((ImageView)localObject4).setTag(localObject3);
-    ((ImageView)localObject4).setId(2131371176);
+    ((ImageView)localObject4).setId(2131438518);
     localObject5 = (View)localObject4;
     j = LayoutAttrsKt.getDp(20);
     paramContext = ((View)localObject5).getLayoutParams();
@@ -374,7 +374,7 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.rightMargin = LayoutAttrsKt.getDp(10);
     }
-    ((ImageView)localObject4).setImageResource(2130848647);
+    ((ImageView)localObject4).setImageResource(2130850312);
     ((ViewGroup)localObject3).addView((View)localObject5);
     ((ViewGroup)localObject2).addView(localView2);
     paramContext = new LinearLayout(((ViewGroup)localObject2).getContext());
@@ -484,7 +484,7 @@ public final class PopularityListLayoutKt
     localObject5 = (ViewGroup)localObject5;
     paramContext = new ImageView(((ViewGroup)localObject5).getContext());
     paramContext.setTag(localObject5);
-    paramContext.setId(2131371178);
+    paramContext.setId(2131438520);
     localObject6 = (View)paramContext;
     j = LayoutAttrsKt.getDp(50);
     paramContext = ((View)localObject6).getLayoutParams();
@@ -559,7 +559,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView((View)localObject6);
     localObject6 = new TextView(((ViewGroup)localObject5).getContext());
     ((TextView)localObject6).setTag(localObject5);
-    ((TextView)localObject6).setId(2131371180);
+    ((TextView)localObject6).setId(2131438522);
     View localView3 = (View)localObject6;
     paramContext = localView3.getLayoutParams();
     if (paramContext != null) {
@@ -641,7 +641,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView(localView3);
     localObject6 = new ImageView(((ViewGroup)localObject5).getContext());
     ((ImageView)localObject6).setTag(localObject5);
-    ((ImageView)localObject6).setId(2131371179);
+    ((ImageView)localObject6).setId(2131438521);
     localView3 = (View)localObject6;
     j = LayoutAttrsKt.getDp(54);
     paramContext = localView3.getLayoutParams();
@@ -713,7 +713,7 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(2);
     }
-    ((ImageView)localObject6).setImageResource(2130841021);
+    ((ImageView)localObject6).setImageResource(2130841812);
     ((ViewGroup)localObject5).addView(localView3);
     ((ViewGroup)localObject3).addView((View)localObject4);
     localObject5 = new LinearLayout(((ViewGroup)localObject3).getContext());
@@ -810,7 +810,7 @@ public final class PopularityListLayoutKt
     {
       ((View)localObject6).setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -2));
     }
-    paramContext.setImageResource(2130841048);
+    paramContext.setImageResource(2130841839);
     localObject1 = ((View)localObject6).getTag();
     if ((localObject1 instanceof FrameLayout))
     {
@@ -862,7 +862,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView((View)localObject6);
     paramContext = new ImageView(((ViewGroup)localObject5).getContext());
     paramContext.setTag(localObject5);
-    paramContext.setId(2131371173);
+    paramContext.setId(2131438515);
     paramContext = (View)paramContext;
     j = LayoutAttrsKt.getDp(50);
     localObject1 = paramContext.getLayoutParams();
@@ -928,7 +928,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView(paramContext);
     localObject6 = new TextView(((ViewGroup)localObject5).getContext());
     ((TextView)localObject6).setTag(localObject5);
-    ((TextView)localObject6).setId(2131371175);
+    ((TextView)localObject6).setId(2131438517);
     localView3 = (View)localObject6;
     paramContext = localView3.getLayoutParams();
     if (paramContext != null) {
@@ -1010,7 +1010,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView(localView3);
     localObject6 = new ImageView(((ViewGroup)localObject5).getContext());
     ((ImageView)localObject6).setTag(localObject5);
-    ((ImageView)localObject6).setId(2131371174);
+    ((ImageView)localObject6).setId(2131438516);
     localView3 = (View)localObject6;
     j = LayoutAttrsKt.getDp(54);
     paramContext = localView3.getLayoutParams();
@@ -1082,7 +1082,7 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(10);
     }
-    ((ImageView)localObject6).setImageResource(2130841021);
+    ((ImageView)localObject6).setImageResource(2130841812);
     ((ViewGroup)localObject5).addView(localView3);
     ((ViewGroup)localObject3).addView((View)localObject4);
     localObject5 = new LinearLayout(((ViewGroup)localObject3).getContext());
@@ -1157,7 +1157,7 @@ public final class PopularityListLayoutKt
     localObject5 = (ViewGroup)localObject5;
     paramContext = new ImageView(((ViewGroup)localObject5).getContext());
     paramContext.setTag(localObject5);
-    paramContext.setId(2131371181);
+    paramContext.setId(2131438523);
     localObject6 = (View)paramContext;
     j = LayoutAttrsKt.getDp(50);
     paramContext = ((View)localObject6).getLayoutParams();
@@ -1232,7 +1232,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView((View)localObject6);
     localObject6 = new TextView(((ViewGroup)localObject5).getContext());
     ((TextView)localObject6).setTag(localObject5);
-    ((TextView)localObject6).setId(2131371183);
+    ((TextView)localObject6).setId(2131438525);
     localView3 = (View)localObject6;
     paramContext = localView3.getLayoutParams();
     if (paramContext != null) {
@@ -1314,7 +1314,7 @@ public final class PopularityListLayoutKt
     ((ViewGroup)localObject5).addView(localView3);
     localObject6 = new ImageView(((ViewGroup)localObject5).getContext());
     ((ImageView)localObject6).setTag(localObject5);
-    ((ImageView)localObject6).setId(2131371182);
+    ((ImageView)localObject6).setId(2131438524);
     localView3 = (View)localObject6;
     j = LayoutAttrsKt.getDp(54);
     paramContext = localView3.getLayoutParams();
@@ -1386,7 +1386,7 @@ public final class PopularityListLayoutKt
     if (paramContext != null) {
       paramContext.topMargin = LayoutAttrsKt.getDp(2);
     }
-    ((ImageView)localObject6).setImageResource(2130841021);
+    ((ImageView)localObject6).setImageResource(2130841812);
     ((ViewGroup)localObject5).addView(localView3);
     ((ViewGroup)localObject3).addView((View)localObject4);
     ((ViewGroup)localObject2).addView(localView2);
@@ -1395,7 +1395,7 @@ public final class PopularityListLayoutKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.layout.PopularityListLayoutKt
  * JD-Core Version:    0.7.0.1
  */

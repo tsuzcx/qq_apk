@@ -1,25 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.studymode.AlphabeticFontSwitchObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GeneralSettingActivity$2
-  extends AlphabeticFontSwitchObserver
+  implements View.OnClickListener
 {
   GeneralSettingActivity$2(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    GeneralSettingActivity.a(this.a, paramBoolean2);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    GeneralSettingActivity.a(this.a, paramBoolean2);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingChatOperationFragment.class);
+    ReportController.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

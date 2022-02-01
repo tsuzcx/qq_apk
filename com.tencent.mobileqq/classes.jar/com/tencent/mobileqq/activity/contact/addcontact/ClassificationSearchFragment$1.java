@@ -11,13 +11,13 @@ class ClassificationSearchFragment$1
   {
     SearchResult localSearchResult = this.a;
     if (localSearchResult != null) {
-      ClassificationSearchFragment.a(this.this$0, localSearchResult.a ^ true);
+      ClassificationSearchFragment.a(this.this$0, localSearchResult.c ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ import java.util.Set;
 public class QlinkSendBarManager
   extends QFileCustomBottomBarManager
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QlinkSendBarManager.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  private int g;
+  private boolean h;
+  private String i;
+  private TextView j;
+  private TextView k;
+  private View.OnClickListener l = new QlinkSendBarManager.1(this);
   
   public QlinkSendBarManager(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
@@ -35,54 +35,54 @@ public class QlinkSendBarManager
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377187));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371932));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.j = ((TextView)this.c.a(2131445568));
+    this.k = ((TextView)this.c.a(2131439377));
+    this.j.setOnClickListener(this.l);
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
+    if ((this.d != null) && (this.d.containsKey("qfile_search_param_exparams_qlink_state")))
     {
-      Object localObject1 = this.jdField_a_of_type_JavaLangString;
+      Object localObject1 = this.i;
       Object localObject2 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles();
       ArrayList localArrayList = new ArrayList();
       localObject2 = ((Set)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
+        localArrayList.add(((FileInfo)((Iterator)localObject2).next()).d());
       }
-      int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+      int m = this.d.getInt("qfile_search_param_exparams_qlink_state");
       localObject2 = new Intent();
-      int j = -1;
-      if (222 == i)
+      int n = -1;
+      if (222 == m)
       {
         ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
-        i = j;
+        m = n;
       }
-      else if ((333 != i) && (666 != i) && (3333 != i) && (6666 != i))
+      else if ((333 != m) && (666 != m) && (3333 != m) && (6666 != m))
       {
         boolean bool = true;
-        if ((444 != i) && (555 != i))
+        if ((444 != m) && (555 != m))
         {
-          if ((777 != i) && (888 != i))
+          if ((777 != m) && (888 != m))
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a((String)localObject1, localArrayList);
+            this.b.getQQProxyForQlink().a((String)localObject1, localArrayList);
             ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
             ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
-            i = j;
+            m = n;
           }
           else
           {
             localObject1 = new Bundle();
             ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink();
-            QQProxyForQlink.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
-            i = j;
+            this.b.getQQProxyForQlink();
+            QQProxyForQlink.a(this.a, 16, (Bundle)localObject1);
+            m = n;
           }
         }
         else
         {
-          if (444 != i) {
+          if (444 != m) {
             bool = false;
           }
           ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
@@ -93,7 +93,7 @@ public class QlinkSendBarManager
       {
         ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
       }
-      a(i, (Intent)localObject2);
+      a(m, (Intent)localObject2);
       return;
     }
     a(null);
@@ -101,9 +101,9 @@ public class QlinkSendBarManager
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698404);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713691));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.k.setText(2131896328);
+    this.j.setText(HardCodeUtil.a(2131899883));
+    TextView localTextView = this.j;
     boolean bool;
     if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount() > 0L) {
       bool = true;
@@ -116,17 +116,17 @@ public class QlinkSendBarManager
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("qfile_search_param_exparams_qlink_ap_created");
+      this.i = this.d.getString("qfile_search_param_ex_params_target_uin");
+      this.g = this.d.getInt("qfile_search_param_exparams_qlink_state");
+      this.h = this.d.getBoolean("qfile_search_param_exparams_qlink_ap_created");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,9 @@ class FocusLiveStreamDataImpl$1
   
   public void a(int paramInt, String paramString)
   {
-    FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
-    FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, true);
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener);
+    FocusLiveStreamDataImpl.a(this.b, false);
+    FocusLiveStreamDataImpl.b(this.b, true);
+    this.b.a(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -39,8 +39,8 @@ class FocusLiveStreamDataImpl$1
   {
     try
     {
-      FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
-      FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
+      FocusLiveStreamDataImpl.a(this.b, false);
+      FocusLiveStreamDataImpl.b(this.b, false);
       localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
       ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).mergeFrom(paramArrayOfByte);
       Object localObject2 = ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).anchor_info.get();
@@ -77,25 +77,25 @@ class FocusLiveStreamDataImpl$1
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("Focus cmd:28679 sub cmd:2 nick_name:");
-          localStringBuilder.append(localNowQQLiveAnchorInfo.b());
+          localStringBuilder.append(localNowQQLiveAnchorInfo.d());
           localStringBuilder.append(" jump_url:");
-          localStringBuilder.append(localNowQQLiveAnchorInfo.a());
-          localStringBuilder.append(" anchor_logo_url: ");
           localStringBuilder.append(localNowQQLiveAnchorInfo.c());
+          localStringBuilder.append(" anchor_logo_url: ");
+          localStringBuilder.append(localNowQQLiveAnchorInfo.e());
           localStringBuilder.append(" anchorInfo.jump_url.get():");
           localStringBuilder.append(((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
           QLog.d("FocusLiveStreamDataImpl", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener.a(paramArrayOfByte);
+      this.a.a(paramArrayOfByte);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
       Object localObject1;
-      FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
-      FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, true);
-      this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener);
+      FocusLiveStreamDataImpl.a(this.b, false);
+      FocusLiveStreamDataImpl.b(this.b, true);
+      this.b.a(this.a);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -108,7 +108,7 @@ class FocusLiveStreamDataImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.FocusLiveStreamDataImpl.1
  * JD-Core Version:    0.7.0.1
  */

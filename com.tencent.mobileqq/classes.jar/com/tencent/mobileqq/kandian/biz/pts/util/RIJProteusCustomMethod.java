@@ -20,56 +20,56 @@ public final class RIJProteusCustomMethod
   implements CustomMethodsRegister.CustomMethodInterface
 {
   public static final RIJProteusCustomMethod a;
-  private static String jdField_a_of_type_JavaLangString;
-  private static final Map<String, Function0<Object>> jdField_a_of_type_JavaUtilMap;
+  private static String b;
   @Nullable
-  private static Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  private static Object[] c;
+  private static final Map<String, Function0<Object>> d;
   
   static
   {
     RIJProteusCustomMethod localRIJProteusCustomMethod = new RIJProteusCustomMethod();
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilRIJProteusCustomMethod = localRIJProteusCustomMethod;
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
+    a = localRIJProteusCustomMethod;
+    d = (Map)new LinkedHashMap();
     localRIJProteusCustomMethod.a();
   }
   
-  private final CharSequence a()
+  private final void a()
   {
-    Object localObject = a();
+    d.put("decodeEmotion", RIJProteusCustomMethod.registerMethod.1.INSTANCE);
+    d.put("HyperLinkClick", RIJProteusCustomMethod.registerMethod.2.INSTANCE);
+  }
+  
+  private final CharSequence b()
+  {
+    Object localObject = c();
     if (localObject != null) {
       return (CharSequence)new QQText((CharSequence)localObject, 3, 16);
     }
     throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
   }
   
-  private final Object a()
+  private final Object c()
   {
-    Object[] arrayOfObject = jdField_a_of_type_ArrayOfJavaLangObject;
+    Object[] arrayOfObject = c;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (arrayOfObject != null)
     {
       localObject1 = localObject2;
       if (arrayOfObject.length >= 1) {
-        localObject1 = EmotionCodecUtils.b(arrayOfObject[0].toString());
+        localObject1 = EmotionCodecUtils.c(arrayOfObject[0].toString());
       }
     }
     return localObject1;
   }
   
-  private final void a()
+  private final void d()
   {
-    jdField_a_of_type_JavaUtilMap.put("decodeEmotion", RIJProteusCustomMethod.registerMethod.1.INSTANCE);
-    jdField_a_of_type_JavaUtilMap.put("HyperLinkClick", RIJProteusCustomMethod.registerMethod.2.INSTANCE);
-  }
-  
-  private final void b()
-  {
-    Object localObject = a();
+    Object localObject = c();
     Context localContext = (Context)BaseApplicationImpl.getContext();
     if (localObject != null)
     {
-      RIJJumpUtils.a(localContext, (String)localObject);
+      RIJJumpUtils.c(localContext, (String)localObject);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
@@ -79,9 +79,9 @@ public final class RIJProteusCustomMethod
   public Object invoke(@Nullable String paramString, @NotNull Object... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "d");
-    jdField_a_of_type_JavaLangString = paramString;
-    jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramVarArgs };
-    paramString = (Function0)jdField_a_of_type_JavaUtilMap.get(jdField_a_of_type_JavaLangString);
+    b = paramString;
+    c = new Object[] { paramVarArgs };
+    paramString = (Function0)d.get(b);
     if (paramString != null)
     {
       paramString = paramString.invoke();
@@ -94,7 +94,7 @@ public final class RIJProteusCustomMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJProteusCustomMethod
  * JD-Core Version:    0.7.0.1
  */

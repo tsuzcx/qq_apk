@@ -130,7 +130,7 @@ public class AssociatedAccountManageActivity
         localObject = (SimpleAccount)this.mAccountList.get(i);
         if (localObject != null)
         {
-          View localView = getLayoutInflater().inflate(2131562879, this.mAccountListView, false);
+          View localView = getLayoutInflater().inflate(2131629331, this.mAccountListView, false);
           if ((localView instanceof FormItemRelativeLayout))
           {
             FormItemRelativeLayout localFormItemRelativeLayout = (FormItemRelativeLayout)localView;
@@ -143,9 +143,9 @@ public class AssociatedAccountManageActivity
             localFormItemRelativeLayout.setNeedFocusBg(true);
           }
           localView.setTag(localObject);
-          ((ImageView)localView.findViewById(2131368343)).setScaleType(ImageView.ScaleType.FIT_CENTER);
-          ((RotateSwitchImageView)localView.findViewById(2131365496)).setOnClickListener(this.onDeleteItemSelected);
-          ((Button)localView.findViewById(2131365466)).setOnClickListener(this.onDeleteClickListener);
+          ((ImageView)localView.findViewById(2131435219)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+          ((RotateSwitchImageView)localView.findViewById(2131431711)).setOnClickListener(this.onDeleteItemSelected);
+          ((Button)localView.findViewById(2131431681)).setOnClickListener(this.onDeleteClickListener);
           this.mAccountListView.addView(localView);
         }
         i += 1;
@@ -179,10 +179,10 @@ public class AssociatedAccountManageActivity
         localObject = (SubAccountInfo)this.mSubAccountList.get(i);
         if (localObject != null)
         {
-          View localView = getLayoutInflater().inflate(2131562880, this.mSubAccountListView, false);
+          View localView = getLayoutInflater().inflate(2131629332, this.mSubAccountListView, false);
           localView.setTag(localObject);
-          localView.setBackgroundResource(2130839433);
-          ((Button)localView.findViewById(2131380155)).setOnClickListener(this.onUnBindClickListener);
+          localView.setBackgroundResource(2130839622);
+          ((Button)localView.findViewById(2131449071)).setOnClickListener(this.onUnBindClickListener);
           this.mSubAccountListView.addView(localView);
         }
         i += 1;
@@ -260,7 +260,7 @@ public class AssociatedAccountManageActivity
   {
     paramView = (View)paramView.getParent();
     if (paramView != null) {
-      return paramView.findViewById(2131371697);
+      return paramView.findViewById(2131439121);
     }
     return null;
   }
@@ -269,7 +269,7 @@ public class AssociatedAccountManageActivity
   {
     paramView = (View)paramView.getParent();
     if (paramView != null) {
-      return paramView.findViewById(2131377351);
+      return paramView.findViewById(2131445741);
     }
     return null;
   }
@@ -397,9 +397,9 @@ public class AssociatedAccountManageActivity
     {
       if (this.mDelAccountDialog == null)
       {
-        this.mDelAccountDialog = new ReportDialog(this, 2131756189);
-        this.mDelAccountDialog.setContentView(2131558463);
-        ((TextView)this.mDelAccountDialog.findViewById(2131365644)).setText(getString(2131691504));
+        this.mDelAccountDialog = new ReportDialog(this, 2131953338);
+        this.mDelAccountDialog.setContentView(2131623999);
+        ((TextView)this.mDelAccountDialog.findViewById(2131431876)).setText(getString(2131888463));
         this.mDelAccountDialog.setCancelable(false);
       }
       this.mDelAccountDialog.show();
@@ -443,15 +443,15 @@ public class AssociatedAccountManageActivity
         }
         if (localObject2 != null)
         {
-          localObject3 = (ImageView)((View)localObject1).findViewById(2131368343);
-          SingleLineTextView localSingleLineTextView = (SingleLineTextView)((View)localObject1).findViewById(2131371697);
-          String str = SubAccountControllUtil.a(this.app, (SimpleAccount)localObject2);
+          localObject3 = (ImageView)((View)localObject1).findViewById(2131435219);
+          SingleLineTextView localSingleLineTextView = (SingleLineTextView)((View)localObject1).findViewById(2131439121);
+          String str = SubAccountControllUtil.b(this.app, (SimpleAccount)localObject2);
           localSingleLineTextView.setText(str);
           localObject2 = FaceDrawable.getUserFaceDrawable(this.app, ((SimpleAccount)localObject2).getUin(), (byte)3);
           if ((localObject2 != null) && (localObject3 != null)) {
             ((ImageView)localObject3).setImageDrawable((Drawable)localObject2);
           }
-          if (AppSetting.d) {
+          if (AppSetting.e) {
             ((View)localObject1).setContentDescription(str);
           }
         }
@@ -472,11 +472,11 @@ public class AssociatedAccountManageActivity
       this.mAccountTitle.setVisibility(0);
       this.mAccountListView.setVisibility(0);
       this.mDisplayThirdQQCkb.setVisibility(0);
-      findViewById(2131365747).setVisibility(0);
+      findViewById(2131431990).setVisibility(0);
       return;
     }
     this.mDisplayThirdQQCkb.setVisibility(8);
-    findViewById(2131365747).setVisibility(8);
+    findViewById(2131431990).setVisibility(8);
   }
   
   private void updateSubAccountListView()
@@ -510,14 +510,14 @@ public class AssociatedAccountManageActivity
           }
           localObject1 = (LinearLayout.LayoutParams)localView.getLayoutParams();
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject1).topMargin = getResources().getDimensionPixelSize(2131296586);
+            ((LinearLayout.LayoutParams)localObject1).topMargin = getResources().getDimensionPixelSize(2131296882);
           } else {
             ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
           }
           localView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          ImageView localImageView1 = (ImageView)localView.findViewById(2131368343);
-          ImageView localImageView2 = (ImageView)localView.findViewById(2131368357);
-          SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131371697);
+          ImageView localImageView1 = (ImageView)localView.findViewById(2131435219);
+          ImageView localImageView2 = (ImageView)localView.findViewById(2131435235);
+          SingleLineTextView localSingleLineTextView = (SingleLineTextView)localView.findViewById(2131439121);
           Object localObject2 = ContactUtilsProxy.a((BaseQQAppInterface)this.app, localSubAccountInfo.subuin, false);
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -531,9 +531,9 @@ public class AssociatedAccountManageActivity
           if (localSubAccountInfo.status == 1) {
             localImageView2.setBackgroundDrawable(null);
           } else {
-            localImageView2.setBackgroundResource(2130850730);
+            localImageView2.setBackgroundResource(2130852534);
           }
-          if (AppSetting.d) {
+          if (AppSetting.e) {
             localView.setContentDescription((CharSequence)localObject1);
           }
         }
@@ -567,7 +567,7 @@ public class AssociatedAccountManageActivity
     }
     this.mChanged = true;
     delAccountRecord(this.delCurrentUin, paramBoolean);
-    HistoryChatMsgSearchKeyUtil.a(str);
+    HistoryChatMsgSearchKeyUtil.b(str);
     this.mAccountList.remove(paramSimpleAccount);
     ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).clearGestureData(this, paramSimpleAccount.getUin());
     ThreadManager.post(new AssociatedAccountManageActivity.7(this, paramBoolean, str), 8, null, true);
@@ -599,8 +599,8 @@ public class AssociatedAccountManageActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562878);
-    setContentBackgroundResource(2130838739);
+    super.setContentView(2131629330);
+    setContentBackgroundResource(2130838958);
     this.mIsDisplayThirdFuc = SubAccountControllUtil.b(this.app, false);
     if ((getIntent() != null) && (TextUtils.equals(getIntent().getStringExtra("fromWhere"), ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getAccountManagerName()))) {
       this.mIsFromAccountManage = true;
@@ -652,23 +652,23 @@ public class AssociatedAccountManageActivity
   
   public void initUI()
   {
-    setTitle(2131690181);
+    setTitle(2131887081);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692486);
+    this.rightViewText.setText(2131889474);
     this.rightViewText.setOnClickListener(new AssociatedAccountManageActivity.3(this));
-    this.mAccountTitle = findViewById(2131361931);
-    this.mSubAccountTitle = findViewById(2131378051);
-    this.mAccountListView = ((LinearLayout)findViewById(2131361866));
-    this.mSubAccountListView = ((LinearLayout)findViewById(2131378017));
-    this.leftView.setText(2131690706);
+    this.mAccountTitle = findViewById(2131427485);
+    this.mSubAccountTitle = findViewById(2131446551);
+    this.mAccountListView = ((LinearLayout)findViewById(2131427419));
+    this.mSubAccountListView = ((LinearLayout)findViewById(2131446505));
+    this.leftView.setText(2131887625);
     this.leftView.setVisibility(4);
-    this.mDisplayThirdQQCkb = ((FormSwitchItem)findViewById(2131365746));
-    setSwitchChecked(SubAccountControllUtil.d(this.app));
-    if (AppSetting.d)
+    this.mDisplayThirdQQCkb = ((FormSwitchItem)findViewById(2131431989));
+    setSwitchChecked(SubAccountControllUtil.g(this.app));
+    if (AppSetting.e)
     {
-      this.mDisplayThirdQQCkb.setContentDescription(getString(2131719313));
-      this.leftView.setContentDescription(getString(2131690706));
-      this.rightViewText.setContentDescription(getString(2131692486));
+      this.mDisplayThirdQQCkb.setContentDescription(getString(2131916865));
+      this.leftView.setContentDescription(getString(2131887625));
+      this.rightViewText.setContentDescription(getString(2131889474));
     }
   }
   
@@ -687,13 +687,13 @@ public class AssociatedAccountManageActivity
       QLog.d("AssociatedAccountManage", 2, localStringBuilder.toString());
     }
     boolean bool = super.onBackEvent();
-    overridePendingTransition(2130772004, 2130772015);
+    overridePendingTransition(2130772007, 2130772018);
     return bool;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton == this.mDisplayThirdQQCkb.a()) {
+    if (paramCompoundButton == this.mDisplayThirdQQCkb.getSwitch()) {
       if (NetworkUtil.isNetworkAvailable(this))
       {
         ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).setDisplayThirdQQSwitch(this.app, paramBoolean);
@@ -703,7 +703,7 @@ public class AssociatedAccountManageActivity
       {
         Message localMessage = this.mHandler.obtainMessage(8195);
         localMessage.arg1 = 0;
-        localMessage.arg2 = 2131692183;
+        localMessage.arg2 = 2131889169;
         this.mHandler.sendMessage(localMessage);
         setSwitchChecked(paramBoolean ^ true);
       }
@@ -723,7 +723,7 @@ public class AssociatedAccountManageActivity
     if (paramSimpleAccount == null) {
       return;
     }
-    this.menuDialog = ((ActionSheet)ActionSheetHelper.a(this, null));
+    this.menuDialog = ((ActionSheet)ActionSheetHelper.b(this, null));
     String[] arrayOfString = getResources().getStringArray(2130968576);
     int i = 0;
     while (i < arrayOfString.length)
@@ -731,10 +731,10 @@ public class AssociatedAccountManageActivity
       this.menuDialog.addButton(arrayOfString[i], 1);
       i += 1;
     }
-    this.menuDialog.addCancelButton(2131690728);
+    this.menuDialog.addCancelButton(2131887648);
     this.menuDialog.setOnButtonClickListener(this.onBtnClickLisForDelAccount);
     this.onBtnClickLisForDelAccount.a(paramSimpleAccount);
-    paramSimpleAccount = getString(2131699821).replace("${account}", paramSimpleAccount.getUin());
+    paramSimpleAccount = getString(2131897866).replace("${account}", paramSimpleAccount.getUin());
     this.menuDialog.setMainTitle(paramSimpleAccount);
     if (!this.menuDialog.isShowing()) {
       this.menuDialog.show();
@@ -746,18 +746,18 @@ public class AssociatedAccountManageActivity
     if (paramSubAccountInfo == null) {
       return;
     }
-    this.menuUnbindDialog = ((ActionSheet)ActionSheetHelper.a(this, null));
-    String[] arrayOfString = getResources().getStringArray(2130968671);
+    this.menuUnbindDialog = ((ActionSheet)ActionSheetHelper.b(this, null));
+    String[] arrayOfString = getResources().getStringArray(2130968673);
     int i = 0;
     while (i < arrayOfString.length)
     {
       this.menuUnbindDialog.addButton(arrayOfString[i], 3);
       i += 1;
     }
-    this.menuUnbindDialog.addCancelButton(2131690728);
+    this.menuUnbindDialog.addCancelButton(2131887648);
     this.menuUnbindDialog.setOnButtonClickListener(this.onBtnClickLisForUnbind);
     this.onBtnClickLisForUnbind.a(paramSubAccountInfo);
-    this.menuUnbindDialog.setMainTitle(getString(2131720089));
+    this.menuUnbindDialog.setMainTitle(getString(2131917712));
     if (!this.menuUnbindDialog.isShowing()) {
       this.menuUnbindDialog.show();
     }
@@ -774,7 +774,7 @@ public class AssociatedAccountManageActivity
         return;
       }
       this.mChanged = true;
-      showJuhua(2131719351);
+      showJuhua(2131916903);
       SubAccountProtocServiceImpl localSubAccountProtocServiceImpl = (SubAccountProtocServiceImpl)this.app.getRuntimeService(ISubAccountProtocService.class, "");
       if (localSubAccountProtocServiceImpl != null) {
         localSubAccountProtocServiceImpl.unBindAccount(paramSubAccountInfo.subuin);
@@ -795,7 +795,7 @@ public class AssociatedAccountManageActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity
  * JD-Core Version:    0.7.0.1
  */

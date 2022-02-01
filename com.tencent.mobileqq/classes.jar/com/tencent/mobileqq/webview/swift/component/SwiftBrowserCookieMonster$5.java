@@ -13,8 +13,8 @@ final class SwiftBrowserCookieMonster$5
   
   public void run()
   {
-    Set localSet = AuthorizeConfig.a().a("pskey");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Set localSet = AuthorizeConfig.a().m("pskey");
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -27,14 +27,14 @@ final class SwiftBrowserCookieMonster$5
           localStringBuilder.append(" doesn't need pskey any more,so delete! ");
           QLog.i("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
+        this.b.b(str, "p_skey");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.5
  * JD-Core Version:    0.7.0.1
  */

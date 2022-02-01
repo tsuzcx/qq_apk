@@ -1,21 +1,16 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForPoke;
-
 final class IceBreakingUtil$2
   implements Runnable
 {
-  IceBreakingUtil$2(AppInterface paramAppInterface, String paramString, int paramInt, MessageForPoke paramMessageForPoke) {}
-  
   public void run()
   {
-    IceBreakingUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke);
+    IceBreakingUtil.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingUtil.2
  * JD-Core Version:    0.7.0.1
  */

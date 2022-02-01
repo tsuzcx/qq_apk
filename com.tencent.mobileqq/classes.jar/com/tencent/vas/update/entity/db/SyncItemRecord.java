@@ -18,15 +18,10 @@ public class SyncItemRecord
       return null;
     }
     SyncItemRecord localSyncItemRecord = new SyncItemRecord();
-    long l = paramJSONObject.optInt("bid");
-    String str1 = paramJSONObject.optString("scid");
-    int i = paramJSONObject.optInt("optype");
-    String str2 = paramJSONObject.optString("version");
-    paramJSONObject = paramJSONObject.optString("appVersion");
-    localSyncItemRecord.mItemId = CommonUtil.sComposeItemId(l, str1);
-    localSyncItemRecord.mType = i;
-    localSyncItemRecord.mMD5 = str2;
-    localSyncItemRecord.mAppVersion = paramJSONObject;
+    localSyncItemRecord.mItemId = CommonUtil.sComposeItemId(paramJSONObject.optInt("bid"), paramJSONObject.optString("scid"));
+    localSyncItemRecord.mType = paramJSONObject.optInt("optype");
+    localSyncItemRecord.mMD5 = paramJSONObject.optString("version");
+    localSyncItemRecord.mAppVersion = paramJSONObject.optString("appVersion");
     return localSyncItemRecord;
   }
   
@@ -50,7 +45,7 @@ public class SyncItemRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.SyncItemRecord
  * JD-Core Version:    0.7.0.1
  */

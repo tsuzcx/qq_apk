@@ -13,13 +13,13 @@ class VideoPlayRecommendHandler$2
   
   public void run()
   {
-    ArrayList localArrayList = ((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).convertAdTagInfos(this.jdField_a_of_type_JavaUtilArrayList);
-    VideoPlayRecommendHandler.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoPlayRecommendObserver, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoDbStructWeishiRedDotInfo, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, localArrayList, this.jdField_d_of_type_Int, this.e, this.f, 0, this.jdField_c_of_type_JavaUtilArrayList, null, this.g);
+    ArrayList localArrayList = ((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).convertAdTagInfos(this.a);
+    VideoPlayRecommendHandler.a(this.this$0, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, localArrayList, this.q, this.r, this.s, 0, this.t, null, this.u);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoPlayRecommendHandler.2
  * JD-Core Version:    0.7.0.1
  */

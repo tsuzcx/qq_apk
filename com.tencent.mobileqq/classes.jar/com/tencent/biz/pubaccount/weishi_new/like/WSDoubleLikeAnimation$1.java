@@ -13,14 +13,14 @@ class WSDoubleLikeAnimation$1
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    this.a.removeAnimatorListener(this);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    WSDoubleLikeAnimation.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLikeWSDoubleLikeAnimation).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
-    WSDoubleLikeAnimation.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLikeWSDoubleLikeAnimation).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+    WSDoubleLikeAnimation.a(this.b).removeView(this.a);
+    this.a.removeAnimatorListener(this);
+    WSDoubleLikeAnimation.b(this.b).remove(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -29,7 +29,7 @@ class WSDoubleLikeAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSDoubleLikeAnimation.1
  * JD-Core Version:    0.7.0.1
  */

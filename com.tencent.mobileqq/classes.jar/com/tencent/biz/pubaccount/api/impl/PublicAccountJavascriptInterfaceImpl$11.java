@@ -12,7 +12,7 @@ class PublicAccountJavascriptInterfaceImpl$11
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.mRuntime.a();
+    paramDialogInterface = this.c.mRuntime.a();
     if (paramDialogInterface == null) {
       return;
     }
@@ -21,7 +21,7 @@ class PublicAccountJavascriptInterfaceImpl$11
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("javascript:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       paramDialogInterface.loadUrl(localStringBuilder.toString());
       return;
     }
@@ -36,7 +36,7 @@ class PublicAccountJavascriptInterfaceImpl$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.11
  * JD-Core Version:    0.7.0.1
  */

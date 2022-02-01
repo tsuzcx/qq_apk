@@ -11,34 +11,29 @@ import org.jetbrains.annotations.Nullable;
 @SuppressLint({"ClickableViewAccessibility"})
 public final class DrawableClickHelper
 {
-  public static final DrawableClickHelper.Companion a;
-  private final View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
+  public static final DrawableClickHelper.Companion a = new DrawableClickHelper.Companion(null);
+  private final View.OnTouchListener b;
   @NotNull
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final DrawableClickHelper.OnDrawableListener jdField_a_of_type_ComTencentTkdWeiboUtilsDrawableClickHelper$OnDrawableListener;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdWeiboUtilsDrawableClickHelper$Companion = new DrawableClickHelper.Companion(null);
-  }
+  private final TextView c;
+  private final DrawableClickHelper.OnDrawableListener d;
   
   public DrawableClickHelper(@NotNull TextView paramTextView, @Nullable DrawableClickHelper.OnDrawableListener paramOnDrawableListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_ComTencentTkdWeiboUtilsDrawableClickHelper$OnDrawableListener = paramOnDrawableListener;
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = ((View.OnTouchListener)new DrawableClickHelper.onTouchListener.1(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    this.c = paramTextView;
+    this.d = paramOnDrawableListener;
+    this.b = ((View.OnTouchListener)new DrawableClickHelper.onTouchListener.1(this));
+    this.c.setOnTouchListener(this.b);
   }
   
   @NotNull
   public final TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.DrawableClickHelper
  * JD-Core Version:    0.7.0.1
  */

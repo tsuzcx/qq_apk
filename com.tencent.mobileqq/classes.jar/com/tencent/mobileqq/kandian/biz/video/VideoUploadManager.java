@@ -19,25 +19,25 @@ public class VideoUploadManager
   implements IVideoUploadManager, Manager
 {
   public static int a = 0;
-  public static Map<String, String> a;
   public static int b = 1;
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  HashMap<Long, Bundle> b = new HashMap();
+  public static Map<String, String> c;
+  TroopMemberApiService d;
+  HashMap<Long, Bundle> e = new HashMap();
+  HashMap<Long, Bundle> f = new HashMap();
+  private QQAppInterface g;
+  private boolean h = true;
   
   public VideoUploadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.g = paramQQAppInterface;
   }
   
   private void a(int paramInt) {}
   
   public void a(@Nullable Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) && ((paramObject instanceof TroopMemberApiService))) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = ((TroopMemberApiService)paramObject);
+    if ((this.d == null) && ((paramObject instanceof TroopMemberApiService))) {
+      this.d = ((TroopMemberApiService)paramObject);
     }
   }
   
@@ -46,37 +46,37 @@ public class VideoUploadManager
     if (paramBundle == null) {
       return;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (FileUtils.b(paramString))) {
-      a(jdField_a_of_type_Int);
+    if ((!TextUtils.isEmpty(paramString)) && (FileUtils.c(paramString))) {
+      a(a);
     }
     VideoUploadManager.1 local1 = new VideoUploadManager.1(this);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mUpCallBack = new VideoUploadManager.2(this);
-    ITransFileController localITransFileController = (ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
+    ITransFileController localITransFileController = (ITransFileController)this.g.getRuntimeService(ITransFileController.class);
     local1.addFilter(new Class[] { BDHCommonUploadProcessor.class });
     localITransFileController.addHandle(local1);
     localTransferRequest.mLocalPath = paramString;
     localTransferRequest.mIsUp = true;
     localTransferRequest.mFileType = 24;
     localTransferRequest.mCommandId = 54;
-    localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+    localTransferRequest.mSelfUin = this.g.getCurrentUin();
     localTransferRequest.mPeerUin = "0";
     localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
     localITransFileController.transferAsync(localTransferRequest);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
-    this.b.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
+    this.e.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
+    this.f.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
+    if (this.d != null) {
+      this.d = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoUploadManager
  * JD-Core Version:    0.7.0.1
  */

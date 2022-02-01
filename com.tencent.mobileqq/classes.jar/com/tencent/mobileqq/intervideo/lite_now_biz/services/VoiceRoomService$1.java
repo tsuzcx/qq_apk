@@ -17,13 +17,13 @@ class VoiceRoomService$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    VoiceRoomService.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger().e("AbstractCustomRoomService", "onError,isTimeout[%s] code[%d] msg[%s]", new Object[] { String.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString });
-    if (this.jdField_a_of_type_Int > 0)
+    VoiceRoomService.c(this.c).getLogger().e("AbstractCustomRoomService", "onError,isTimeout[%s] code[%d] msg[%s]", new Object[] { String.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString });
+    if (this.b > 0)
     {
       ThreadCenter.postDefaultUITask(new VoiceRoomService.1.1(this), 1000L);
       return;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceEnterExitRoomCallback.onFail(paramInt, paramString);
+    this.a.onFail(paramInt, paramString);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -32,9 +32,9 @@ class VoiceRoomService$1
     try
     {
       localEnterRoomRsp.mergeFrom(paramArrayOfByte);
-      if ((localEnterRoomRsp.result.get() == 0) && (VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService, localEnterRoomRsp, VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService))))
+      if ((localEnterRoomRsp.result.get() == 0) && (VoiceRoomService.a(this.c, localEnterRoomRsp, VoiceRoomService.a(this.c))))
       {
-        VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService, this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceEnterExitRoomCallback);
+        VoiceRoomService.a(this.c, this.a);
         return;
       }
       onError(false, localEnterRoomRsp.result.get(), localEnterRoomRsp.err_msg.get());
@@ -45,13 +45,13 @@ class VoiceRoomService$1
       label74:
       break label74;
     }
-    VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger().e("AbstractCustomRoomService", "enterRoom,Exception:", new Object[0]);
+    VoiceRoomService.b(this.c).getLogger().e("AbstractCustomRoomService", "enterRoom,Exception:", new Object[0]);
     onError(false, -1, "enterRoom Exception");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomService.1
  * JD-Core Version:    0.7.0.1
  */

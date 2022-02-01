@@ -12,17 +12,17 @@ class TroopCreateLogicActivity$1
 {
   TroopCreateLogicActivity$1(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public void a(WXShareRsp paramWXShareRsp)
+  public void onWXShareResp(WXShareRsp paramWXShareRsp)
   {
-    if (this.a.a != null)
+    if (this.a.f != null)
     {
-      if (!this.a.a.equals(paramWXShareRsp.b)) {
+      if (!this.a.f.equals(paramWXShareRsp.transaction)) {
         return;
       }
-      if (paramWXShareRsp.a == ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).ERR_OK()) {
-        QQToast.a(BaseApplication.getContext(), 2, 2131719027, 1).a();
-      } else if (paramWXShareRsp.a != ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).ERR_USER_CANCEL()) {
-        QQToast.a(BaseApplication.getContext(), 2, 2131719009, 1).a();
+      if (paramWXShareRsp.errCode == ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).ERR_OK()) {
+        QQToast.makeText(BaseApplication.getContext(), 2, 2131916563, 1).show();
+      } else if (paramWXShareRsp.errCode != ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).ERR_USER_CANCEL()) {
+        QQToast.makeText(BaseApplication.getContext(), 2, 2131916544, 1).show();
       }
       ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).removeObserver(this);
     }
@@ -30,7 +30,7 @@ class TroopCreateLogicActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity.1
  * JD-Core Version:    0.7.0.1
  */

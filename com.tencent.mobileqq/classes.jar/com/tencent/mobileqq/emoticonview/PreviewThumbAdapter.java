@@ -42,7 +42,7 @@ public class PreviewThumbAdapter
     this.mContext = paramContext;
     this.thumbItemClickListener = paramIThumbItemClickListener;
     this.colorDrawable = new ColorDrawable(570425344);
-    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848074);
+    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130849738);
     this.thumbWidth = EmotionUtils.a(50.0F, this.mContext.getResources());
   }
   
@@ -121,9 +121,9 @@ public class PreviewThumbAdapter
     if (paramView == null)
     {
       paramView = new PreviewThumbAdapter.Holder(this);
-      localView = LayoutInflater.from(this.mContext).inflate(2131561608, paramViewGroup, false);
-      paramView.mImageView = ((URLImageView)localView.findViewById(2131378666));
-      paramView.mSelectView = ((ImageView)localView.findViewById(2131378661));
+      localView = LayoutInflater.from(this.mContext).inflate(2131627971, paramViewGroup, false);
+      paramView.mImageView = ((URLImageView)localView.findViewById(2131447323));
+      paramView.mSelectView = ((ImageView)localView.findViewById(2131447318));
       localView.setTag(paramView);
     }
     else
@@ -177,7 +177,7 @@ public class PreviewThumbAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PreviewThumbAdapter
  * JD-Core Version:    0.7.0.1
  */

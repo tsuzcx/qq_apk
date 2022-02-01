@@ -14,20 +14,15 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class AnonymousHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  public boolean a()
-  {
-    return ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-  }
-  
   protected void b()
   {
     int i;
-    if (((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getConfessTopicId()).confessorSex == 1) {
-      i = 2130844977;
+    if (((ConfessManager)this.b.getManager(QQManagerFactory.CONFESS_MANAGER)).c().a(this.a.frienduin, this.a.istroop, this.a.getConfessTopicId()).confessorSex == 1) {
+      i = 2130846413;
     } else {
-      i = 2130844976;
+      i = 2130846412;
     }
-    b(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(i));
+    b(this.c.getResources().getDrawable(i));
   }
   
   protected void c()
@@ -42,12 +37,17 @@ public class AnonymousHeadIconController
   
   protected void g()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    a(this.a);
+  }
+  
+  public boolean h()
+  {
+    return ConfessMsgUtil.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.AnonymousHeadIconController
  * JD-Core Version:    0.7.0.1
  */

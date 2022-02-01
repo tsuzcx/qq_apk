@@ -14,12 +14,12 @@ public class UserAuthRequest
     super("UserConfig", 10005);
     stUserConfigReq localstUserConfigReq = new stUserConfigReq();
     localstUserConfigReq.config_set = parameConfigBit.value();
-    this.a = localstUserConfigReq;
+    this.c = localstUserConfigReq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.UserAuthRequest
  * JD-Core Version:    0.7.0.1
  */

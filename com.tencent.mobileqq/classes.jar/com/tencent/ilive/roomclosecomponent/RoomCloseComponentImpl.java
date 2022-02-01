@@ -17,7 +17,7 @@ public class RoomCloseComponentImpl
   {
     super.onCreate(paramView);
     paramView = (ViewStub)paramView;
-    paramView.setLayoutResource(2131559242);
+    paramView.setLayoutResource(2131625162);
     this.mRootView = paramView.inflate();
     this.mRootView.setOnClickListener(new RoomCloseComponentImpl.1(this));
   }
@@ -29,7 +29,7 @@ public class RoomCloseComponentImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.roomclosecomponent.RoomCloseComponentImpl
  * JD-Core Version:    0.7.0.1
  */

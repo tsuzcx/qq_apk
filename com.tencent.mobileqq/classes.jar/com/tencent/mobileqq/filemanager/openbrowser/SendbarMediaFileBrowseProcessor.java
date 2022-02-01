@@ -19,16 +19,15 @@ import java.util.Set;
 public class SendbarMediaFileBrowseProcessor
   extends MediaFileBrowseProcessorBase
 {
-  private final Map<String, Integer> b;
+  private final Map<String, Integer> h = new HashMap();
   
   public SendbarMediaFileBrowseProcessor(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
     b(0);
-    c(this.jdField_a_of_type_JavaUtilList.size());
-    d(this.jdField_a_of_type_JavaUtilList.size());
-    b();
+    c(this.b.size());
+    d(this.b.size());
+    d();
   }
   
   private void b(int paramInt)
@@ -39,10 +38,10 @@ public class SendbarMediaFileBrowseProcessor
       Object localObject = (FileManagerEntity)localIterator.next();
       if (((FileManagerEntity)localObject).nFileType == 0)
       {
-        localObject = FileViewerAdapterBase.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-        this.jdField_a_of_type_JavaUtilList.add(a(paramInt, (IFileViewerAdapter)localObject));
-        this.jdField_b_of_type_JavaUtilMap.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(paramInt));
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
+        localObject = FileViewerAdapterBase.a(this.a, (FileManagerEntity)localObject);
+        this.b.add(a(paramInt, (IFileViewerAdapter)localObject));
+        this.h.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(paramInt));
+        this.e.add(localObject);
         paramInt += 1;
       }
     }
@@ -54,11 +53,11 @@ public class SendbarMediaFileBrowseProcessor
     while (localIterator.hasNext())
     {
       Object localObject = (FileInfo)localIterator.next();
-      if (((FileInfo)localObject).a() == 0)
+      if (((FileInfo)localObject).l() == 0)
       {
         localObject = FileViewerAdapterBase.a((FileInfo)localObject);
-        this.jdField_a_of_type_JavaUtilList.add(a(paramInt, (IFileViewerAdapter)localObject));
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
+        this.b.add(a(paramInt, (IFileViewerAdapter)localObject));
+        this.e.add(localObject);
         paramInt += 1;
       }
     }
@@ -70,12 +69,12 @@ public class SendbarMediaFileBrowseProcessor
     while (localIterator.hasNext())
     {
       Object localObject = (WeiYunFileInfo)localIterator.next();
-      if (FileManagerUtil.a(((WeiYunFileInfo)localObject).c) == 0)
+      if (FileManagerUtil.c(((WeiYunFileInfo)localObject).c) == 0)
       {
-        localObject = FileViewerAdapterBase.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (WeiYunFileInfo)localObject);
-        this.jdField_b_of_type_JavaUtilMap.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilList.add(a(paramInt, (IFileViewerAdapter)localObject));
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
+        localObject = FileViewerAdapterBase.a(this.a, (WeiYunFileInfo)localObject);
+        this.h.put(String.valueOf(((IFileViewerAdapter)localObject).a()), Integer.valueOf(paramInt));
+        this.b.add(a(paramInt, (IFileViewerAdapter)localObject));
+        this.e.add(localObject);
         paramInt += 1;
       }
     }
@@ -83,7 +82,7 @@ public class SendbarMediaFileBrowseProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.SendbarMediaFileBrowseProcessor
  * JD-Core Version:    0.7.0.1
  */

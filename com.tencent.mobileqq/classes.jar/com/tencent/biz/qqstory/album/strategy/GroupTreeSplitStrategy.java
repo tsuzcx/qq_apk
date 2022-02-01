@@ -22,32 +22,32 @@ import java.util.Set;
 public class GroupTreeSplitStrategy
   extends AbstractSplitStrategy<BaseSplitConfig>
 {
-  private SplitConfig.TreeGatherConfig a;
   private SplitConfig.TreeGatherConfig b;
   private SplitConfig.TreeGatherConfig c;
+  private SplitConfig.TreeGatherConfig d;
   
   public GroupTreeSplitStrategy()
   {
-    int i = ((StoryScanManager)SuperManager.a(30)).a().b();
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumStrategySplitConfig$TreeGatherConfig = new SplitConfig.TreeGatherConfig();
-    SplitConfig.TreeGatherConfig localTreeGatherConfig = this.jdField_a_of_type_ComTencentBizQqstoryAlbumStrategySplitConfig$TreeGatherConfig;
+    int i = ((StoryScanManager)SuperManager.a(30)).g().h();
+    this.b = new SplitConfig.TreeGatherConfig();
+    SplitConfig.TreeGatherConfig localTreeGatherConfig = this.b;
     localTreeGatherConfig.a = 2;
     localTreeGatherConfig.b = 6;
-    localTreeGatherConfig.d = i;
-    localTreeGatherConfig.e = (i - 1);
-    this.b = new SplitConfig.TreeGatherConfig();
-    localTreeGatherConfig = this.b;
-    localTreeGatherConfig.a = 4;
-    localTreeGatherConfig.b = 10;
-    localTreeGatherConfig.d = i;
-    localTreeGatherConfig.e = -1;
+    localTreeGatherConfig.g = i;
+    localTreeGatherConfig.h = (i - 1);
     this.c = new SplitConfig.TreeGatherConfig();
     localTreeGatherConfig = this.c;
+    localTreeGatherConfig.a = 4;
+    localTreeGatherConfig.b = 10;
+    localTreeGatherConfig.g = i;
+    localTreeGatherConfig.h = -1;
+    this.d = new SplitConfig.TreeGatherConfig();
+    localTreeGatherConfig = this.d;
     localTreeGatherConfig.a = 3;
     localTreeGatherConfig.b = 6;
-    localTreeGatherConfig = this.b;
-    localTreeGatherConfig.d = i;
-    localTreeGatherConfig.e = -1;
+    localTreeGatherConfig = this.c;
+    localTreeGatherConfig.g = i;
+    localTreeGatherConfig.h = -1;
   }
   
   private List<StoryAlbum> a(List<StoryAlbum> paramList, int paramInt, SplitConfig.TreeGatherConfig paramTreeGatherConfig)
@@ -77,15 +77,15 @@ public class GroupTreeSplitStrategy
     while (paramList.hasNext())
     {
       localObject2 = (StoryAlbum)paramList.next();
-      if (((HashMap)localObject1).containsKey(((StoryAlbum)localObject2).b))
+      if (((HashMap)localObject1).containsKey(((StoryAlbum)localObject2).f))
       {
-        ((List)((HashMap)localObject1).get(((StoryAlbum)localObject2).b)).add(localObject2);
+        ((List)((HashMap)localObject1).get(((StoryAlbum)localObject2).f)).add(localObject2);
       }
       else
       {
         localArrayList1 = new ArrayList();
         localArrayList1.add(localObject2);
-        ((HashMap)localObject1).put(((StoryAlbum)localObject2).b, localArrayList1);
+        ((HashMap)localObject1).put(((StoryAlbum)localObject2).f, localArrayList1);
       }
     }
     paramList = new ArrayList();
@@ -110,30 +110,30 @@ public class GroupTreeSplitStrategy
         while (((Iterator)localObject4).hasNext())
         {
           StoryAlbum localStoryAlbum = (StoryAlbum)((Iterator)localObject4).next();
-          if (!TextUtils.isEmpty(localStoryAlbum.d)) {
-            localArrayList1.add(localStoryAlbum.d);
+          if (!TextUtils.isEmpty(localStoryAlbum.i)) {
+            localArrayList1.add(localStoryAlbum.i);
           }
-          if ((localStoryAlbum.a != null) && (localStoryAlbum.a.size() > 0)) {
-            localArrayList2.addAll(localStoryAlbum.a);
+          if ((localStoryAlbum.j != null) && (localStoryAlbum.j.size() > 0)) {
+            localArrayList2.addAll(localStoryAlbum.j);
           } else {
             SLog.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "mergeSameNameAlbum album=%s", new Object[] { localStoryAlbum.toString() });
           }
           ((List)localObject3).addAll(localStoryAlbum.a());
           long l2 = l3;
-          if (localStoryAlbum.e() < l3) {
-            l2 = localStoryAlbum.e();
+          if (localStoryAlbum.l() < l3) {
+            l2 = localStoryAlbum.l();
           }
           long l4 = l1;
-          if (localStoryAlbum.f() > l1) {
-            l4 = localStoryAlbum.f();
+          if (localStoryAlbum.m() > l1) {
+            l4 = localStoryAlbum.m();
           }
           l3 = l2;
           l1 = l4;
         }
         localObject3 = new StoryAlbum(paramTreeGatherConfig.a, (List)localObject3);
-        ((StoryAlbum)localObject3).b = ((String)localObject2);
-        ((StoryAlbum)localObject3).d = localArrayList1.toString();
-        ((StoryAlbum)localObject3).a = localArrayList2;
+        ((StoryAlbum)localObject3).f = ((String)localObject2);
+        ((StoryAlbum)localObject3).i = localArrayList1.toString();
+        ((StoryAlbum)localObject3).j = localArrayList2;
         ((StoryAlbum)localObject3).a(l3, l1);
         ((StoryAlbum)localObject3).a(paramTreeGatherConfig);
         paramList.add(localObject3);
@@ -150,7 +150,7 @@ public class GroupTreeSplitStrategy
   
   private boolean b(AddressItem paramAddressItem)
   {
-    return (paramAddressItem != null) && (TextUtils.equals(paramAddressItem.country, HardCodeUtil.a(2131705489)));
+    return (paramAddressItem != null) && (TextUtils.equals(paramAddressItem.country, HardCodeUtil.a(2131903377)));
   }
   
   protected List<StoryAlbum> a(@NonNull List<StoryAlbum.PicInfo> paramList)
@@ -163,12 +163,12 @@ public class GroupTreeSplitStrategy
     while (paramList.hasNext())
     {
       localObject4 = (StoryAlbum.PicInfo)paramList.next();
-      Object localObject5 = ((StoryAlbum.PicInfo)localObject4).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      Object localObject5 = ((StoryAlbum.PicInfo)localObject4).o;
       if (localObject5 == null)
       {
         localObject5 = new StringBuilder();
-        ((StringBuilder)localObject5).append(((StoryAlbum.PicInfo)localObject4).c);
-        ((StringBuilder)localObject5).append(((StoryAlbum.PicInfo)localObject4).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject5).append(((StoryAlbum.PicInfo)localObject4).l);
+        ((StringBuilder)localObject5).append(((StoryAlbum.PicInfo)localObject4).b);
         SLog.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit poi is null pic=%s", new Object[] { ((StringBuilder)localObject5).toString() });
       }
       else if (a((AddressItem)localObject5))
@@ -189,51 +189,51 @@ public class GroupTreeSplitStrategy
     if (((List)localObject3).size() > 0)
     {
       localObject3 = new StoryAlbum(2, (List)localObject3);
-      ((StoryAlbum)localObject3).a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum);
+      ((StoryAlbum)localObject3).a(this.a);
       localObject4 = new CitySplitStrategy();
       ((CitySplitStrategy)localObject4).a((StoryAlbum)localObject3);
-      ((CitySplitStrategy)localObject4).a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStrategySplitConfig$TreeGatherConfig);
-      paramList.addAll(a(((CitySplitStrategy)localObject4).b(), 5, this.jdField_a_of_type_ComTencentBizQqstoryAlbumStrategySplitConfig$TreeGatherConfig));
+      ((CitySplitStrategy)localObject4).a(this.b);
+      paramList.addAll(a(((CitySplitStrategy)localObject4).c(), 5, this.b));
     }
     if (((List)localObject2).size() > 0)
     {
       localObject2 = new StoryAlbum(4, (List)localObject2);
-      ((StoryAlbum)localObject2).a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum);
+      ((StoryAlbum)localObject2).a(this.a);
       localObject3 = new GeoHashSplitStrategy();
-      ((GeoHashSplitStrategy)localObject3).a(this.b);
+      ((GeoHashSplitStrategy)localObject3).a(this.c);
       ((GeoHashSplitStrategy)localObject3).a((StoryAlbum)localObject2);
-      paramList.addAll(a(((GeoHashSplitStrategy)localObject3).b(), 3, this.b));
+      paramList.addAll(a(((GeoHashSplitStrategy)localObject3).c(), 3, this.c));
     }
     if (((List)localObject1).size() > 0)
     {
       localObject1 = new StoryAlbum(3, (List)localObject1);
-      ((StoryAlbum)localObject1).a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum);
+      ((StoryAlbum)localObject1).a(this.a);
       localObject2 = new GeoHashSplitStrategy();
-      ((GeoHashSplitStrategy)localObject2).a(this.c);
+      ((GeoHashSplitStrategy)localObject2).a(this.d);
       ((GeoHashSplitStrategy)localObject2).a((StoryAlbum)localObject1);
-      paramList.addAll(a(((GeoHashSplitStrategy)localObject2).b(), 1, this.c));
+      paramList.addAll(a(((GeoHashSplitStrategy)localObject2).c(), 1, this.d));
     }
     return paramList;
   }
   
   public void a(SplitConfig.TreeGatherConfig paramTreeGatherConfig)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumStrategySplitConfig$TreeGatherConfig = paramTreeGatherConfig;
+    this.b = paramTreeGatherConfig;
   }
   
   public void b(SplitConfig.TreeGatherConfig paramTreeGatherConfig)
   {
-    this.b = paramTreeGatherConfig;
+    this.c = paramTreeGatherConfig;
   }
   
   public void c(SplitConfig.TreeGatherConfig paramTreeGatherConfig)
   {
-    this.c = paramTreeGatherConfig;
+    this.d = paramTreeGatherConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.GroupTreeSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

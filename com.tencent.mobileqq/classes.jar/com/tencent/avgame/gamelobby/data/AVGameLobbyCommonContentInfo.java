@@ -8,29 +8,28 @@ public class AVGameLobbyCommonContentInfo
   extends AVGameBaseData
 {
   public int a;
-  public String a;
-  public List<Long> a;
-  public int b;
   public String b;
-  public int c;
   public String c;
   public int d;
-  public int e;
-  private int f;
+  public List<Long> e = new ArrayList();
+  public int f;
+  public int g;
+  public String h;
+  public int i;
+  private int j;
   
   public AVGameLobbyCommonContentInfo(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.f = paramInt;
+    this.j = paramInt;
   }
   
   public int a()
   {
-    return this.f;
+    return this.j;
   }
   
   @NonNull
-  public int b()
+  public int c()
   {
     return 2;
   }
@@ -40,28 +39,28 @@ public class AVGameLobbyCommonContentInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("actionId:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("titleUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("backgroudUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("|");
-    localStringBuilder.append("playUserNum:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("|");
-    localStringBuilder.append("playerList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append("|");
-    localStringBuilder.append("colorStart:");
     localStringBuilder.append(this.c);
     localStringBuilder.append("|");
-    localStringBuilder.append("colorEnd:");
+    localStringBuilder.append("playUserNum:");
     localStringBuilder.append(this.d);
     localStringBuilder.append("|");
-    localStringBuilder.append("itemType:");
+    localStringBuilder.append("playerList:");
     localStringBuilder.append(this.e);
+    localStringBuilder.append("|");
+    localStringBuilder.append("colorStart:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("|");
+    localStringBuilder.append("colorEnd:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("|");
+    localStringBuilder.append("itemType:");
+    localStringBuilder.append(this.i);
     return localStringBuilder.toString();
   }
 }

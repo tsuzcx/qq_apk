@@ -16,21 +16,21 @@ public final class MediaBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "media";
-  }
-  
   public void a()
   {
     a("showPicture", (Function2)new MediaBridgeInvokeHandler.register.1(this));
     a("saveImage", (Function2)new MediaBridgeInvokeHandler.register.2(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "media";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.MediaBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

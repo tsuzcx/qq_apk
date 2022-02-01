@@ -19,9 +19,9 @@ public class JumpParser
   {
     try
     {
-      if (JumpActivityInjectUtil.b.size() > 0)
+      if (JumpActivityInjectUtil.c.size() > 0)
       {
-        a = (IJumpParserInterface)((Class)JumpActivityInjectUtil.b.get(0)).newInstance();
+        a = (IJumpParserInterface)((Class)JumpActivityInjectUtil.c.get(0)).newInstance();
         QLog.d("JumpAction", 1, "JumpParserInject newInstance");
         return;
       }
@@ -58,9 +58,9 @@ public class JumpParser
         ((StringBuilder)localObject2).append(localException.getMessage());
         QLog.e("JumpAction", 1, ((StringBuilder)localObject2).toString());
         paramBaseQQAppInterface = new JumpAction(paramBaseQQAppInterface, paramContext);
-        paramBaseQQAppInterface.b = "";
-        paramBaseQQAppInterface.c = "";
-        paramBaseQQAppInterface.a = paramString;
+        paramBaseQQAppInterface.d = "";
+        paramBaseQQAppInterface.e = "";
+        paramBaseQQAppInterface.c = paramString;
         return paramBaseQQAppInterface;
       }
       localObject1 = a.a(paramBaseQQAppInterface, paramContext, paramString);
@@ -120,7 +120,7 @@ public class JumpParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpParser
  * JD-Core Version:    0.7.0.1
  */

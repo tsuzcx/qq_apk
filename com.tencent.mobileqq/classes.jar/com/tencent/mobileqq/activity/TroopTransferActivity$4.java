@@ -16,11 +16,11 @@ class TroopTransferActivity$4
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      paramString = this.a.a.a(paramString);
+      paramString = this.a.h.a(paramString);
       if (paramString == null) {
         return;
       }
-      Friends localFriends = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString.a);
+      Friends localFriends = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString.c);
       if (localFriends == null) {
         return;
       }
@@ -30,7 +30,7 @@ class TroopTransferActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.4
  * JD-Core Version:    0.7.0.1
  */

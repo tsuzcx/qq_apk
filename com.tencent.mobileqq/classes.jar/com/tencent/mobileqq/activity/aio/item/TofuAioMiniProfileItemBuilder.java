@@ -77,23 +77,23 @@ public class TofuAioMiniProfileItemBuilder
   extends AbstractChatItemBuilder
   implements View.OnClickListener, DecodeTaskCompletionListener
 {
-  private int jdField_a_of_type_Int;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private AnonymousObserver jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver = new TofuAioMiniProfileItemBuilder.7(this);
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, ImageView> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private IFaceDecoder e;
+  private Map<String, ImageView> f = new HashMap();
+  private String g;
+  private int h;
+  private AnonymousObserver i = new TofuAioMiniProfileItemBuilder.7(this);
   
   public TofuAioMiniProfileItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+    this.e = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+    this.e.setDecodeTaskCompletionListener(this);
     double d1 = Math.random();
     double d2 = AnonymousConstant.HEAD_BG_COLOR.length;
     Double.isNaN(d2);
-    this.jdField_a_of_type_Int = ((int)(d1 * d2));
+    this.h = ((int)(d1 * d2));
     a(paramQQAppInterface);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
+    paramQQAppInterface.addObserver(this.i);
   }
   
   private View a(View paramView, TofuAioMiniProfileItemBuilder.Holder paramHolder)
@@ -101,36 +101,36 @@ public class TofuAioMiniProfileItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558831, null);
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (RoundCorneredRelativeLayout)localView.findViewById(2131376666));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (ViewGroup)localView.findViewById(2131376760));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (TextView)localView.findViewById(2131379699));
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (TextView)localView.findViewById(2131379509));
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (TextView)localView.findViewById(2131379763));
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (ViewGroup)localView.findViewById(2131370229));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, localView.findViewById(2131365761));
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, localView.findViewById(2131365762));
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (TextView)localView.findViewById(2131379886));
-      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (TextView)localView.findViewById(2131379592));
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, localView.findViewById(2131365763));
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (ViewGroup)localView.findViewById(2131370230));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (AvatarLayout)localView.findViewById(2131362552));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (DynamicAvatarView)localView.findViewById(2131365426));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (AioMiniProfileLabelFlowLayout)localView.findViewById(2131366924));
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, localView.findViewById(2131365767));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (FrameLayout)localView.findViewById(2131366901));
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (ViewGroup)localView.findViewById(2131370318));
-      TofuAioMiniProfileItemBuilder.Holder.f(paramHolder, (TextView)localView.findViewById(2131379930));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (GridView)localView.findViewById(2131367938));
-      TofuAioMiniProfileItemBuilder.Holder.g(paramHolder, (TextView)localView.findViewById(2131379882));
-      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (ViewGroup)localView.findViewById(2131370292));
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (ImageView)localView.findViewById(2131374154));
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (ImageView)localView.findViewById(2131374152));
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (ImageView)localView.findViewById(2131374153));
-      TofuAioMiniProfileItemBuilder.Holder.h(paramHolder, (TextView)localView.findViewById(2131374167));
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (ImageView)localView.findViewById(2131374147));
-      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (ImageView)localView.findViewById(2131374148));
-      TofuAioMiniProfileItemBuilder.Holder.i(paramHolder, (TextView)localView.findViewById(2131374163));
+      localView = LayoutInflater.from(this.c).inflate(2131624451, null);
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (RoundCorneredRelativeLayout)localView.findViewById(2131444932));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (ViewGroup)localView.findViewById(2131445053));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (TextView)localView.findViewById(2131448488));
+      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (TextView)localView.findViewById(2131448257));
+      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (TextView)localView.findViewById(2131448572));
+      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (ViewGroup)localView.findViewById(2131437416));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, localView.findViewById(2131432018));
+      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, localView.findViewById(2131432019));
+      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (TextView)localView.findViewById(2131448756));
+      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (TextView)localView.findViewById(2131448349));
+      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, localView.findViewById(2131432020));
+      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (ViewGroup)localView.findViewById(2131437418));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (AvatarLayout)localView.findViewById(2131428163));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (DynamicAvatarView)localView.findViewById(2131431630));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (AioMiniProfileLabelFlowLayout)localView.findViewById(2131433270));
+      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, localView.findViewById(2131432024));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (FrameLayout)localView.findViewById(2131433234));
+      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (ViewGroup)localView.findViewById(2131437568));
+      TofuAioMiniProfileItemBuilder.Holder.f(paramHolder, (TextView)localView.findViewById(2131448814));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (GridView)localView.findViewById(2131434776));
+      TofuAioMiniProfileItemBuilder.Holder.g(paramHolder, (TextView)localView.findViewById(2131448751));
+      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (ViewGroup)localView.findViewById(2131437527));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, (ImageView)localView.findViewById(2131442249));
+      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder, (ImageView)localView.findViewById(2131442247));
+      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder, (ImageView)localView.findViewById(2131442248));
+      TofuAioMiniProfileItemBuilder.Holder.h(paramHolder, (TextView)localView.findViewById(2131442262));
+      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder, (ImageView)localView.findViewById(2131442242));
+      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder, (ImageView)localView.findViewById(2131442243));
+      TofuAioMiniProfileItemBuilder.Holder.i(paramHolder, (TextView)localView.findViewById(2131442258));
     }
     return localView;
   }
@@ -142,274 +142,274 @@ public class TofuAioMiniProfileItemBuilder
       if (paramQQAppInterface == null) {
         return;
       }
-      int i = Color.parseColor("#FCFCFC");
-      int j = Color.parseColor("#03081A");
-      int k = Color.parseColor("#878B99");
-      int m = Color.parseColor("#EFEFEF");
-      int n = Color.parseColor("#FFFFFF");
-      int i1 = Color.parseColor("#FAFAFD");
-      int i2 = Color.parseColor("#FFFFFF");
-      int i3 = Color.parseColor("#838383");
-      int i4 = Color.parseColor("#000000");
-      int i5 = Color.parseColor("#1F1F1F");
-      int i6 = Color.parseColor("#1C1C1E");
+      int j = Color.parseColor("#FCFCFC");
+      int k = Color.parseColor("#03081A");
+      int m = Color.parseColor("#878B99");
+      int n = Color.parseColor("#EFEFEF");
+      int i1 = Color.parseColor("#FFFFFF");
+      int i2 = Color.parseColor("#FAFAFD");
+      int i3 = Color.parseColor("#FFFFFF");
+      int i4 = Color.parseColor("#838383");
+      int i5 = Color.parseColor("#000000");
+      int i6 = Color.parseColor("#1F1F1F");
+      int i7 = Color.parseColor("#1C1C1E");
       if (ThemeUtil.isNowThemeIsNight(paramQQAppInterface, false, null))
       {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setTextColor(i2);
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setTextColor(i2);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setTextColor(i2);
-        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setTextColor(i3);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setTextColor(i3);
-        TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).setTextColor(i3);
-        TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setTextColor(i2);
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackgroundColor(i4);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setBackgroundColor(i5);
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackgroundColor(i6);
+        TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setTextColor(i3);
         TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setTextColor(i3);
-        TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setTextColor(i2);
+        TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setTextColor(i3);
+        TofuAioMiniProfileItemBuilder.Holder.m(paramHolder).setTextColor(i4);
+        TofuAioMiniProfileItemBuilder.Holder.n(paramHolder).setTextColor(i4);
+        TofuAioMiniProfileItemBuilder.Holder.s(paramHolder).setTextColor(i4);
+        TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setTextColor(i3);
+        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setBackgroundColor(i5);
+        TofuAioMiniProfileItemBuilder.Holder.A(paramHolder).setBackgroundColor(i6);
+        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setBackgroundColor(i7);
+        TofuAioMiniProfileItemBuilder.Holder.x(paramHolder).setTextColor(i4);
+        TofuAioMiniProfileItemBuilder.Holder.z(paramHolder).setTextColor(i3);
       }
       else
       {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setTextColor(j);
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setTextColor(j);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setTextColor(j);
-        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setTextColor(k);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setTextColor(k);
-        TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).setTextColor(k);
-        TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setTextColor(j);
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackgroundColor(m);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setBackgroundColor(n);
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackgroundColor(i1);
+        TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setTextColor(k);
         TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setTextColor(k);
-        TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setTextColor(j);
+        TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setTextColor(k);
+        TofuAioMiniProfileItemBuilder.Holder.m(paramHolder).setTextColor(m);
+        TofuAioMiniProfileItemBuilder.Holder.n(paramHolder).setTextColor(m);
+        TofuAioMiniProfileItemBuilder.Holder.s(paramHolder).setTextColor(m);
+        TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setTextColor(k);
+        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setBackgroundColor(n);
+        TofuAioMiniProfileItemBuilder.Holder.A(paramHolder).setBackgroundColor(i1);
+        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setBackgroundColor(i2);
+        TofuAioMiniProfileItemBuilder.Holder.x(paramHolder).setTextColor(m);
+        TofuAioMiniProfileItemBuilder.Holder.z(paramHolder).setTextColor(k);
       }
       if ((ThemeUtil.isSimpleDayTheme(false)) && (!ThemeUtil.isNowThemeIsNight(paramQQAppInterface, false, null))) {
         if (Build.VERSION.SDK_INT >= 21)
         {
-          if (this.jdField_a_of_type_AndroidContentContext != null) {
-            TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851149));
+          if (this.c != null) {
+            TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setBackground(this.c.getResources().getDrawable(2130853384));
           }
         }
         else {
-          TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setBackgroundColor(i);
+          TofuAioMiniProfileItemBuilder.Holder.A(paramHolder).setBackgroundColor(j);
         }
       }
-      if (SimpleUIUtil.a())
+      if (SimpleUIUtil.e())
       {
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setImageResource(2130845915);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setImageResource(2130845912);
-        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setImageResource(2130845914);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setImageResource(2130845900);
+        TofuAioMiniProfileItemBuilder.Holder.B(paramHolder).setImageResource(2130847385);
+        TofuAioMiniProfileItemBuilder.Holder.C(paramHolder).setImageResource(2130847382);
+        TofuAioMiniProfileItemBuilder.Holder.D(paramHolder).setImageResource(2130847384);
+        TofuAioMiniProfileItemBuilder.Holder.E(paramHolder).setImageResource(2130847370);
       }
       else
       {
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setImageResource(2130845910);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setImageResource(2130845911);
-        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setImageResource(2130845913);
-        TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setImageResource(2130845899);
+        TofuAioMiniProfileItemBuilder.Holder.B(paramHolder).setImageResource(2130847380);
+        TofuAioMiniProfileItemBuilder.Holder.C(paramHolder).setImageResource(2130847381);
+        TofuAioMiniProfileItemBuilder.Holder.D(paramHolder).setImageResource(2130847383);
+        TofuAioMiniProfileItemBuilder.Holder.E(paramHolder).setImageResource(2130847369);
       }
-      i = this.jdField_a_of_type_Int;
-      j = AnonymousConstant.HEAD_BG_COLOR.length;
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).clearColorFilter();
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setColorFilter(AnonymousConstant.HEAD_BG_COLOR[(i % j)]);
+      j = this.h;
+      k = AnonymousConstant.HEAD_BG_COLOR.length;
+      TofuAioMiniProfileItemBuilder.Holder.C(paramHolder).clearColorFilter();
+      TofuAioMiniProfileItemBuilder.Holder.C(paramHolder).setColorFilter(AnonymousConstant.HEAD_BG_COLOR[(j % k)]);
     }
   }
   
   private void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, AnonymousQuestion paramAnonymousQuestion)
   {
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setText(paramAnonymousQuestion.mQuest);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setImageBitmap(a(paramHolder.jdField_a_of_type_JavaLangString, TofuAioMiniProfileItemBuilder.Holder.a(paramHolder)));
-    TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setText(paramAnonymousQuestion.mAnswer);
-    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
-    TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(8);
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.5(this, paramHolder));
+    TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.w(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.x(paramHolder).setText(paramAnonymousQuestion.mQuest);
+    TofuAioMiniProfileItemBuilder.Holder.y(paramHolder).setImageBitmap(a(paramHolder.d, TofuAioMiniProfileItemBuilder.Holder.y(paramHolder)));
+    TofuAioMiniProfileItemBuilder.Holder.z(paramHolder).setText(paramAnonymousQuestion.mAnswer);
+    TofuAioMiniProfileItemBuilder.Holder.r(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.w(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.5(this, paramHolder));
   }
   
   private void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, MiniCard.BaseProfile paramBaseProfile)
   {
     if (paramBaseProfile == null)
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).setVisibility(8);
       return;
     }
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    int i = paramBaseProfile.jdField_b_of_type_Int;
-    int m = 1;
-    if ((i != 1) && (paramBaseProfile.jdField_b_of_type_Int != 2))
+    TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).setVisibility(0);
+    int j = paramBaseProfile.b;
+    int n = 1;
+    if ((j != 1) && (paramBaseProfile.b != 2))
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(8);
-      i = 0;
-    }
-    else
-    {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-      TextView localTextView = TofuAioMiniProfileItemBuilder.Holder.a(paramHolder);
-      if (paramBaseProfile.jdField_b_of_type_Int == 1) {
-        i = 2131693879;
-      } else {
-        i = 2131692259;
-      }
-      localTextView.setText(i);
-      i = 1;
-    }
-    int j;
-    if (paramBaseProfile.jdField_a_of_type_Int >= 0)
-    {
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131689951, new Object[] { Integer.valueOf(paramBaseProfile.jdField_a_of_type_Int) }));
-      j = 1;
-    }
-    else
-    {
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(8);
       j = 0;
     }
-    int k;
-    if (!TextUtils.isEmpty(paramBaseProfile.jdField_a_of_type_JavaLangString))
+    else
     {
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setText(paramBaseProfile.jdField_a_of_type_JavaLangString);
+      TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(0);
+      TextView localTextView = TofuAioMiniProfileItemBuilder.Holder.g(paramHolder);
+      if (paramBaseProfile.b == 1) {
+        j = 2131891484;
+      } else {
+        j = 2131889246;
+      }
+      localTextView.setText(j);
+      j = 1;
+    }
+    int k;
+    if (paramBaseProfile.a >= 0)
+    {
+      TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setVisibility(0);
+      TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setText(this.c.getResources().getString(2131886592, new Object[] { Integer.valueOf(paramBaseProfile.a) }));
       k = 1;
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.h(paramHolder).setVisibility(8);
       k = 0;
     }
-    i = i + j + k;
-    if (i == 3)
+    int m;
+    if (!TextUtils.isEmpty(paramBaseProfile.c))
     {
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
+      TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setVisibility(0);
+      TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setText(paramBaseProfile.c);
+      m = 1;
     }
-    else if (i == 2)
+    else
     {
-      if ((j == 1) && (k == 1))
+      TofuAioMiniProfileItemBuilder.Holder.i(paramHolder).setVisibility(8);
+      m = 0;
+    }
+    j = j + k + m;
+    if (j == 3)
+    {
+      TofuAioMiniProfileItemBuilder.Holder.j(paramHolder).setVisibility(0);
+      TofuAioMiniProfileItemBuilder.Holder.k(paramHolder).setVisibility(0);
+    }
+    else if (j == 2)
+    {
+      if ((k == 1) && (m == 1))
       {
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(8);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
+        TofuAioMiniProfileItemBuilder.Holder.j(paramHolder).setVisibility(8);
+        TofuAioMiniProfileItemBuilder.Holder.k(paramHolder).setVisibility(0);
       }
       else
       {
-        TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
-        TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
+        TofuAioMiniProfileItemBuilder.Holder.j(paramHolder).setVisibility(0);
+        TofuAioMiniProfileItemBuilder.Holder.k(paramHolder).setVisibility(8);
       }
     }
-    else if (i == 1)
+    else if (j == 1)
     {
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(8);
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.j(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.k(paramHolder).setVisibility(8);
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(8);
-      TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
-      TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.j(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.k(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.l(paramHolder).setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramBaseProfile.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramBaseProfile.d))
     {
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131689950, new Object[] { paramBaseProfile.jdField_b_of_type_JavaLangString }));
-      i = 1;
-    }
-    else
-    {
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(8);
-      i = 0;
-    }
-    if (paramBaseProfile.c > 0)
-    {
-      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setText(String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131689691), new Object[] { Integer.valueOf(paramBaseProfile.c) }));
-      j = m;
+      TofuAioMiniProfileItemBuilder.Holder.m(paramHolder).setText(this.c.getResources().getString(2131886591, new Object[] { paramBaseProfile.d }));
+      j = 1;
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setVisibility(8);
+      TofuAioMiniProfileItemBuilder.Holder.m(paramHolder).setVisibility(8);
       j = 0;
     }
-    if ((j != 0) && (i != 0))
+    if (paramBaseProfile.e > 0)
     {
-      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(0);
+      TofuAioMiniProfileItemBuilder.Holder.n(paramHolder).setText(String.format(this.c.getResources().getString(2131886303), new Object[] { Integer.valueOf(paramBaseProfile.e) }));
+      k = n;
+    }
+    else
+    {
+      TofuAioMiniProfileItemBuilder.Holder.n(paramHolder).setVisibility(8);
+      k = 0;
+    }
+    if ((k != 0) && (j != 0))
+    {
+      TofuAioMiniProfileItemBuilder.Holder.o(paramHolder).setVisibility(0);
       return;
     }
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.o(paramHolder).setVisibility(8);
   }
   
   private void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, MiniCard.QZoneInfo paramQZoneInfo)
   {
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
     TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
-    TextView localTextView = TofuAioMiniProfileItemBuilder.Holder.f(paramHolder);
+    TofuAioMiniProfileItemBuilder.Holder.r(paramHolder).setVisibility(0);
+    TextView localTextView = TofuAioMiniProfileItemBuilder.Holder.s(paramHolder);
     String str;
-    if (TextUtils.isEmpty(paramQZoneInfo.jdField_a_of_type_JavaLangString)) {
-      str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131716548);
+    if (TextUtils.isEmpty(paramQZoneInfo.a)) {
+      str = this.c.getResources().getString(2131914011);
     } else {
-      str = paramQZoneInfo.jdField_a_of_type_JavaLangString;
+      str = paramQZoneInfo.a;
     }
     localTextView.setText(str);
-    if (TofuAioMiniProfileItemBuilder.Holder.a(paramHolder) != null)
+    if (TofuAioMiniProfileItemBuilder.Holder.t(paramHolder) != null)
     {
-      if (TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(paramQZoneInfo.jdField_a_of_type_JavaUtilList)) {
+      if (TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a(paramQZoneInfo.c)) {
         return;
       }
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(false);
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a();
+      TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a(false);
+      TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a();
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new PictureAdapter(this.jdField_a_of_type_AndroidContentContext, false));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new PictureAdapter(this.c, false));
     }
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(paramQZoneInfo.jdField_a_of_type_JavaUtilList);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.a(paramHolder));
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setClickable(false);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setEnabled(false);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnTouchListener(UITools.a);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.2(this));
-    TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(8);
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).b(paramQZoneInfo.c);
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.t(paramHolder));
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setClickable(false);
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setEnabled(false);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnTouchListener(UITools.a);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.2(this));
+    TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.w(paramHolder).setVisibility(8);
   }
   
   private void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, MiniCard.Sign paramSign)
   {
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(0);
-    if (paramSign.jdField_a_of_type_Int != 0)
+    TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setVisibility(0);
+    if (paramSign.a != 0)
     {
-      localObject = ((StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER)).a(paramSign.jdField_a_of_type_Int, 200);
-      localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject);
-      int i = AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((Drawable)localObject).setBounds(0, 0, Math.round(((Drawable)localObject).getIntrinsicWidth() * 1.0F / ((Drawable)localObject).getIntrinsicHeight() * i), i);
+      localObject = ((StatusManager)this.a.getManager(QQManagerFactory.STATUS_MANAGER)).a(paramSign.a, 200);
+      localObject = new BitmapDrawable(this.c.getResources(), (Bitmap)localObject);
+      int j = AIOUtils.b(12.0F, this.c.getResources());
+      ((Drawable)localObject).setBounds(0, 0, Math.round(((Drawable)localObject).getIntrinsicWidth() * 1.0F / ((Drawable)localObject).getIntrinsicHeight() * j), j);
     }
     else
     {
       localObject = null;
     }
-    TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setCompoundDrawables((Drawable)localObject, null, null, null);
-    Object localObject = TofuAioMiniProfileItemBuilder.Holder.g(paramHolder);
+    TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setCompoundDrawables((Drawable)localObject, null, null, null);
+    Object localObject = TofuAioMiniProfileItemBuilder.Holder.v(paramHolder);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramSign.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramSign.b);
     localStringBuilder.append(" ");
-    localStringBuilder.append(paramSign.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramSign.c);
     ((TextView)localObject).setText(localStringBuilder.toString());
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnTouchListener(UITools.a);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.4(this));
-    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(8);
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnTouchListener(UITools.a);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnClickListener(new TofuAioMiniProfileItemBuilder.4(this));
+    TofuAioMiniProfileItemBuilder.Holder.r(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.w(paramHolder).setVisibility(8);
   }
   
   private void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, boolean paramBoolean)
   {
-    paramHolder = TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).getLayoutParams();
+    paramHolder = TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).getLayoutParams();
     if (paramBoolean)
     {
       paramHolder.height = -2;
       return;
     }
-    paramHolder.height = ViewUtils.a(60.0F);
+    paramHolder.height = ViewUtils.dip2px(60.0F);
   }
   
   private void a(QQAppInterface paramQQAppInterface)
@@ -417,73 +417,43 @@ public class TofuAioMiniProfileItemBuilder
     ThreadManager.post(new TofuAioMiniProfileItemBuilder.6(this), 8, null, false);
   }
   
-  private void b()
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gotoSignatureHistory and uin:");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-        localObject = "null";
-      } else {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      }
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(" mContext:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
-      QLog.i("TofuAioMiniProfileItemBuilder", 2, localStringBuilder.toString());
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        return;
-      }
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicFragmentActivity.class);
-      ((Intent)localObject).putExtra("key_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject).putExtra("key_uin_name", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-      ((Intent)localObject).putExtra("key_open_via", "history-liaotian");
-      PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    }
-  }
-  
   private void b(TofuAioMiniProfileItemBuilder.Holder paramHolder, List<String> paramList)
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-      if (TofuAioMiniProfileItemBuilder.Holder.a(paramHolder) != null) {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a();
+      TofuAioMiniProfileItemBuilder.Holder.p(paramHolder).setVisibility(0);
+      if (TofuAioMiniProfileItemBuilder.Holder.q(paramHolder) != null) {
+        TofuAioMiniProfileItemBuilder.Holder.q(paramHolder).a();
       } else {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new AioMiniProfileLabelListAdapter(this.jdField_a_of_type_AndroidContentContext));
+        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new AioMiniProfileLabelListAdapter(this.c));
       }
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(paramList);
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.a(paramHolder));
+      TofuAioMiniProfileItemBuilder.Holder.q(paramHolder).a(paramList);
+      TofuAioMiniProfileItemBuilder.Holder.p(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.q(paramHolder));
       a(paramHolder, true);
       return;
     }
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.p(paramHolder).setVisibility(8);
     a(paramHolder, false);
   }
   
   private void b(String paramString, TofuAioMiniProfileItemBuilder.Holder paramHolder)
   {
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(0, TofuAioMiniProfileItemBuilder.Holder.a(paramHolder), false);
+    TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).a(0, TofuAioMiniProfileItemBuilder.Holder.d(paramHolder), false);
     if ((paramString != null) && (paramString.length() != 0))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmapCacheKey(1, paramString, (byte)3, 0, 100, true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBitmapFromCache((String)localObject);
+      Object localObject = this.a.getFaceBitmapCacheKey(1, paramString, (byte)3, 0, 100, true);
+      localObject = this.a.getBitmapFromCache((String)localObject);
       if (localObject != null) {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setImageBitmap((Bitmap)localObject);
+        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setImageBitmap((Bitmap)localObject);
       } else {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setImageResource(2130840321);
+        TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setImageResource(2130841060);
       }
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setImageResource(2130840321);
+      TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setImageResource(2130841060);
     }
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnClickListener(this);
+    TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setOnClickListener(this);
     a(paramString, paramHolder);
   }
   
@@ -493,52 +463,82 @@ public class TofuAioMiniProfileItemBuilder
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gotoProfileCard and uin:");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      localStringBuilder.append("gotoSignatureHistory and uin:");
+      if (this.d == null) {
         localObject = "null";
       } else {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        localObject = this.d.b;
       }
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" mContext:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+      localStringBuilder.append(this.c);
       QLog.i("TofuAioMiniProfileItemBuilder", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((this.d != null) && (!TextUtils.isEmpty(this.d.b)))
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.c == null) {
         return;
       }
-      localObject = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
-      ProfileUtils.openProfileCard(this.jdField_a_of_type_AndroidContentContext, (AllInOne)localObject);
+      localObject = new Intent(this.c, PublicFragmentActivity.class);
+      ((Intent)localObject).putExtra("key_uin", this.d.b);
+      ((Intent)localObject).putExtra("key_uin_name", this.d.e);
+      ((Intent)localObject).putExtra("key_open_via", "history-liaotian");
+      PublicFragmentActivity.Launcher.a(this.c, (Intent)localObject, PublicFragmentActivity.class, SignatureHistoryFragment.class);
     }
   }
   
   private void d()
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoProfileCard and uin:");
+      if (this.d == null) {
+        localObject = "null";
+      } else {
+        localObject = this.d.b;
+      }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" mContext:");
+      localStringBuilder.append(this.c);
+      QLog.i("TofuAioMiniProfileItemBuilder", 2, localStringBuilder.toString());
+    }
+    if ((this.d != null) && (!TextUtils.isEmpty(this.d.b)))
+    {
+      if (this.c == null) {
+        return;
+      }
+      localObject = new AllInOne(this.d.b, 1);
+      ProfileUtils.openProfileCard(this.c, (AllInOne)localObject);
+    }
+  }
+  
+  private void e()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("gotoQZoneUserHome and uin:");
       String str;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      if (this.d == null) {
         str = "null";
       } else {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        str = this.d.b;
       }
       localStringBuilder.append(str);
       localStringBuilder.append(" mContext:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+      localStringBuilder.append(this.c);
       QLog.i("TofuAioMiniProfileItemBuilder", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((this.d != null) && (!TextUtils.isEmpty(this.d.b)))
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.c == null) {
         return;
       }
       try
       {
-        QZoneHelper.forwardToUserHome(this.jdField_a_of_type_AndroidContentContext, QZoneHelper.UserInfo.getInstance(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 0, 0, 0);
+        QZoneHelper.forwardToUserHome(this.c, QZoneHelper.UserInfo.getInstance(), this.d.b, 0, 0, 0);
         return;
       }
       catch (Exception localException)
@@ -552,21 +552,21 @@ public class TofuAioMiniProfileItemBuilder
   {
     try
     {
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString);
+      Bitmap localBitmap = this.e.getBitmapFromCache(1, paramString);
       if (localBitmap != null) {
         return localBitmap;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+      if (!this.e.isPausing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, true);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, paramImageView);
+        this.e.requestDecodeFace(paramString, 200, true);
+        this.f.put(paramString, paramImageView);
       }
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
     }
-    return ImageUtil.f();
+    return ImageUtil.k();
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -574,7 +574,7 @@ public class TofuAioMiniProfileItemBuilder
     paramLinearLayout = (MessageForTofuAioMiniProfile)paramMessageRecord;
     paramMessageRecord = (TofuAioMiniProfileItemBuilder.Holder)paramViewHolder;
     paramViewHolder = a(paramView, paramMessageRecord);
-    paramMessageRecord.jdField_a_of_type_JavaLangString = paramLinearLayout.frienduin;
+    paramMessageRecord.d = paramLinearLayout.frienduin;
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
@@ -584,60 +584,60 @@ public class TofuAioMiniProfileItemBuilder
     }
     if (paramLinearLayout.miniCard != null)
     {
-      int i = ViewUtils.a(16.0F);
+      int j = ViewUtils.dip2px(16.0F);
       TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord).enablePressEffect(true);
       paramView = TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord);
-      float f = i;
-      paramView.setRadius(f, f, f, f);
+      float f1 = j;
+      paramView.setRadius(f1, f1, f1, f1);
       TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord).setOnClickListener(this);
       TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord).setOnTouchListener(UITools.a);
       paramViewHolder.setVisibility(0);
-      b(paramMessageRecord.jdField_a_of_type_JavaLangString, paramMessageRecord);
-      a(paramMessageRecord, paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$BaseProfile);
-      b(paramMessageRecord, paramLinearLayout.miniCard.jdField_a_of_type_JavaUtilList);
-      if ((paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo != null) && (paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo.jdField_a_of_type_JavaUtilList != null) && (paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo.jdField_a_of_type_JavaUtilList.size() > 0))
+      b(paramMessageRecord.d, paramMessageRecord);
+      a(paramMessageRecord, paramLinearLayout.miniCard.a);
+      b(paramMessageRecord, paramLinearLayout.miniCard.b);
+      if ((paramLinearLayout.miniCard.c != null) && (paramLinearLayout.miniCard.c.c != null) && (paramLinearLayout.miniCard.c.c.size() > 0))
       {
-        a(paramMessageRecord, paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo);
-        this.jdField_a_of_type_JavaLangString = "空间";
+        a(paramMessageRecord, paramLinearLayout.miniCard.c);
+        this.g = "空间";
       }
-      else if (paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion != null)
+      else if (paramLinearLayout.miniCard.f != null)
       {
-        a(paramMessageRecord, paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
-        this.jdField_a_of_type_JavaLangString = "匿问我答";
+        a(paramMessageRecord, paramLinearLayout.miniCard.f);
+        this.g = "匿问我答";
       }
-      else if ((paramLinearLayout.miniCard.b != null) && (paramLinearLayout.miniCard.b.size() > 0))
+      else if ((paramLinearLayout.miniCard.d != null) && (paramLinearLayout.miniCard.d.size() > 0))
       {
-        a(paramMessageRecord, paramLinearLayout.miniCard.b);
-        this.jdField_a_of_type_JavaLangString = "精选照片";
+        a(paramMessageRecord, paramLinearLayout.miniCard.d);
+        this.g = "精选照片";
       }
-      else if (paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign != null)
+      else if (paramLinearLayout.miniCard.e != null)
       {
-        a(paramMessageRecord, paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign);
-        this.jdField_a_of_type_JavaLangString = "个性签名";
+        a(paramMessageRecord, paramLinearLayout.miniCard.e);
+        this.g = "个性签名";
       }
       else
       {
-        TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord).setVisibility(8);
-        TofuAioMiniProfileItemBuilder.Holder.a(paramMessageRecord).setVisibility(8);
-        this.jdField_a_of_type_JavaLangString = "无信息";
+        TofuAioMiniProfileItemBuilder.Holder.b(paramMessageRecord).setVisibility(8);
+        TofuAioMiniProfileItemBuilder.Holder.c(paramMessageRecord).setVisibility(8);
+        this.g = "无信息";
       }
-      a(paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      a(paramMessageRecord, this.a);
     }
     else
     {
       paramViewHolder.setVisibility(8);
     }
-    if (!paramMessageRecord.jdField_a_of_type_Boolean)
+    if (!paramMessageRecord.e)
     {
-      paramMessageRecord.jdField_a_of_type_Boolean = true;
+      paramMessageRecord.e = true;
       ThreadManagerV2.excute(new TofuAioMiniProfileItemBuilder.1(this, paramMessageRecord), 128, null, true);
-      ReportController.b(null, "dc00898", "", "", "0X800B1A8", "0X800B1A8", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
-      if ("匿问我答".equals(this.jdField_a_of_type_JavaLangString))
+      ReportController.b(null, "dc00898", "", "", "0X800B1A8", "0X800B1A8", 0, 0, "", "", this.g, "");
+      if ("匿问我答".equals(this.g))
       {
         try
         {
-          paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion.mOwnerUin = Long.parseLong(paramMessageRecord.jdField_a_of_type_JavaLangString);
-          ((AnonymousHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER)).browseAskAnonymouslyReport(paramLinearLayout.miniCard.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
+          paramLinearLayout.miniCard.f.mOwnerUin = Long.parseLong(paramMessageRecord.d);
+          ((AnonymousHandler)this.a.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER)).browseAskAnonymouslyReport(paramLinearLayout.miniCard.f);
         }
         catch (Exception paramView)
         {
@@ -646,7 +646,7 @@ public class TofuAioMiniProfileItemBuilder
           paramLinearLayout.append(paramView);
           QLog.e("TofuAioMiniProfileItemBuilder", 1, paramLinearLayout.toString());
         }
-        ReportController.b(null, "dc00898", "", paramMessageRecord.jdField_a_of_type_JavaLangString, "0X800B5BE", "0X800B5BE", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", paramMessageRecord.d, "0X800B5BE", "0X800B5BE", 0, 0, "", "", "", "");
       }
     }
     return paramViewHolder;
@@ -657,64 +657,50 @@ public class TofuAioMiniProfileItemBuilder
     return new TofuAioMiniProfileItemBuilder.Holder();
   }
   
-  public void a()
-  {
-    super.a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-    if (localObject != null) {
-      ((IFaceDecoder)localObject).destory();
-    }
-    localObject = this.jdField_a_of_type_JavaUtilMap;
-    if (localObject != null) {
-      ((Map)localObject).clear();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
-  }
-  
   public void a(TofuAioMiniProfileItemBuilder.Holder paramHolder, List<MiniCard.NicePicInfo> paramList)
   {
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.b(paramHolder).setVisibility(0);
     TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setVisibility(0);
-    TofuAioMiniProfileItemBuilder.Holder.f(paramHolder).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695157));
+    TofuAioMiniProfileItemBuilder.Holder.r(paramHolder).setVisibility(0);
+    TofuAioMiniProfileItemBuilder.Holder.s(paramHolder).setText(this.c.getResources().getString(2131892890));
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       paramList = (MiniCard.NicePicInfo)localIterator.next();
-      if ((!TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramList.jdField_b_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramList.a)) && (!TextUtils.isEmpty(paramList.b)))
       {
-        localArrayList1.add(paramList.jdField_a_of_type_JavaLangString);
-        if (!TextUtils.isEmpty(paramList.jdField_b_of_type_JavaLangString)) {
-          paramList = paramList.jdField_b_of_type_JavaLangString;
+        localArrayList1.add(paramList.a);
+        if (!TextUtils.isEmpty(paramList.b)) {
+          paramList = paramList.b;
         } else {
-          paramList = paramList.jdField_a_of_type_JavaLangString;
+          paramList = paramList.a;
         }
         localArrayList2.add(paramList);
       }
     }
-    if (TofuAioMiniProfileItemBuilder.Holder.a(paramHolder) != null)
+    if (TofuAioMiniProfileItemBuilder.Holder.t(paramHolder) != null)
     {
-      if (TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(localArrayList2)) {
+      if (TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a(localArrayList2)) {
         return;
       }
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a();
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(true);
+      TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a();
+      TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).a(true);
     }
     else
     {
-      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new PictureAdapter(this.jdField_a_of_type_AndroidContentContext, true));
+      TofuAioMiniProfileItemBuilder.Holder.a(paramHolder, new PictureAdapter(this.c, true));
     }
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).a(localArrayList2);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.a(paramHolder));
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setClickable(true);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setEnabled(true);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnTouchListener(null);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnClickListener(null);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setOnItemClickListener(new TofuAioMiniProfileItemBuilder.3(this, localArrayList1));
-    TofuAioMiniProfileItemBuilder.Holder.g(paramHolder).setVisibility(8);
-    TofuAioMiniProfileItemBuilder.Holder.d(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.t(paramHolder).b(localArrayList2);
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setAdapter(TofuAioMiniProfileItemBuilder.Holder.t(paramHolder));
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setClickable(true);
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setEnabled(true);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnTouchListener(null);
+    TofuAioMiniProfileItemBuilder.Holder.c(paramHolder).setOnClickListener(null);
+    TofuAioMiniProfileItemBuilder.Holder.u(paramHolder).setOnItemClickListener(new TofuAioMiniProfileItemBuilder.3(this, localArrayList1));
+    TofuAioMiniProfileItemBuilder.Holder.v(paramHolder).setVisibility(8);
+    TofuAioMiniProfileItemBuilder.Holder.w(paramHolder).setVisibility(8);
   }
   
   protected void a(String paramString, TofuAioMiniProfileItemBuilder.Holder paramHolder)
@@ -729,8 +715,8 @@ public class TofuAioMiniProfileItemBuilder
       ((StringBuilder)localObject).append(paramString);
       QLog.i("TofuAioMiniProfileItemBuilder", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (byte)3);
-    TofuAioMiniProfileItemBuilder.Holder.a(paramHolder).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Drawable)localObject, 1, paramString, 200, true, true, 8);
+    Object localObject = FaceDrawable.getUserFaceDrawable(this.a, paramString, (byte)3);
+    TofuAioMiniProfileItemBuilder.Holder.e(paramHolder).setFaceDrawable(this.a, (Drawable)localObject, 1, paramString, 200, true, true, 8);
   }
   
   public QQCustomMenuItem[] a(View paramView)
@@ -738,28 +724,42 @@ public class TofuAioMiniProfileItemBuilder
     return new QQCustomMenuItem[0];
   }
   
+  public void b()
+  {
+    super.b();
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((IFaceDecoder)localObject).destory();
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((Map)localObject).clear();
+    }
+    this.a.removeObserver(this.i);
+  }
+  
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131362552)
+    int j = paramView.getId();
+    if (j != 2131428163)
     {
-      if (i == 2131376666)
+      if (j == 2131444932)
       {
-        ReportController.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "空白处");
-        c();
+        ReportController.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", this.g, "空白处");
+        d();
       }
     }
     else
     {
-      ReportController.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "头像");
-      c();
+      ReportController.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", this.g, "头像");
+      d();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramString = (ImageView)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (ImageView)this.f.get(paramString);
     if (paramString != null) {
       paramString.setImageBitmap(paramBitmap);
     }
@@ -767,7 +767,7 @@ public class TofuAioMiniProfileItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAioMiniProfileItemBuilder
  * JD-Core Version:    0.7.0.1
  */

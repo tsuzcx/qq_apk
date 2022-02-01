@@ -16,23 +16,23 @@ import java.util.List;
 class BaseSlider$AccessibilityHelper
   extends ExploreByTouchHelper
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final BaseSlider<?, ?, ?> jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider;
+  Rect a = new Rect();
+  private final BaseSlider<?, ?, ?> b;
   
   BaseSlider$AccessibilityHelper(BaseSlider<?, ?, ?> paramBaseSlider)
   {
     super(paramBaseSlider);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider = paramBaseSlider;
+    this.b = paramBaseSlider;
   }
   
   @NonNull
   private String a(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a().size() - 1) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContext().getString(R.string.m);
+    if (paramInt == this.b.getValues().size() - 1) {
+      return this.b.getContext().getString(R.string.m);
     }
     if (paramInt == 0) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContext().getString(R.string.n);
+      return this.b.getContext().getString(R.string.n);
     }
     return "";
   }
@@ -40,10 +40,10 @@ class BaseSlider$AccessibilityHelper
   protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a().size())
+    while (i < this.b.getValues().size())
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a(i, this.jdField_a_of_type_AndroidGraphicsRect);
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)paramFloat1, (int)paramFloat2)) {
+      this.b.a(i, this.a);
+      if (this.a.contains((int)paramFloat1, (int)paramFloat2)) {
         return i;
       }
       i += 1;
@@ -54,7 +54,7 @@ class BaseSlider$AccessibilityHelper
   protected void getVisibleVirtualViews(List<Integer> paramList)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a().size())
+    while (i < this.b.getValues().size())
     {
       paramList.add(Integer.valueOf(i));
       i += 1;
@@ -63,7 +63,7 @@ class BaseSlider$AccessibilityHelper
   
   protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.isEnabled()) {
+    if (!this.b.isEnabled()) {
       return false;
     }
     if ((paramInt2 != 4096) && (paramInt2 != 8192))
@@ -77,30 +77,30 @@ class BaseSlider$AccessibilityHelper
           return false;
         }
         f1 = paramBundle.getFloat("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE");
-        if (BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider, paramInt1, f1))
+        if (BaseSlider.a(this.b, paramInt1, f1))
         {
-          BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider);
-          this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.postInvalidate();
+          BaseSlider.c(this.b);
+          this.b.postInvalidate();
           invalidateVirtualView(paramInt1);
           return true;
         }
       }
       return false;
     }
-    float f2 = BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider, 20);
+    float f2 = BaseSlider.a(this.b, 20);
     float f1 = f2;
     if (paramInt2 == 8192) {
       f1 = -f2;
     }
     f2 = f1;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.c()) {
+    if (this.b.c()) {
       f2 = -f1;
     }
-    f1 = MathUtils.clamp(((Float)this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a().get(paramInt1)).floatValue() + f2, this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a(), this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.b());
-    if (BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider, paramInt1, f1))
+    f1 = MathUtils.clamp(((Float)this.b.getValues().get(paramInt1)).floatValue() + f2, this.b.getValueFrom(), this.b.getValueTo());
+    if (BaseSlider.a(this.b, paramInt1, f1))
     {
-      BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.postInvalidate();
+      BaseSlider.c(this.b);
+      this.b.postInvalidate();
       invalidateVirtualView(paramInt1);
       return true;
     }
@@ -110,11 +110,11 @@ class BaseSlider$AccessibilityHelper
   protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     paramAccessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_SET_PROGRESS);
-    List localList = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a();
+    List localList = this.b.getValues();
     float f1 = ((Float)localList.get(paramInt)).floatValue();
-    float f2 = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a();
-    float f3 = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.b();
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.isEnabled())
+    float f2 = this.b.getValueFrom();
+    float f3 = this.b.getValueTo();
+    if (this.b.isEnabled())
     {
       if (f1 > f2) {
         paramAccessibilityNodeInfoCompat.addAction(8192);
@@ -126,24 +126,24 @@ class BaseSlider$AccessibilityHelper
     paramAccessibilityNodeInfoCompat.setRangeInfo(AccessibilityNodeInfoCompat.RangeInfoCompat.obtain(1, f2, f3, f1));
     paramAccessibilityNodeInfoCompat.setClassName(SeekBar.class.getName());
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContentDescription() != null)
+    if (this.b.getContentDescription() != null)
     {
-      localStringBuilder.append(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContentDescription());
+      localStringBuilder.append(this.b.getContentDescription());
       localStringBuilder.append(",");
     }
     if (localList.size() > 1)
     {
       localStringBuilder.append(a(paramInt));
-      localStringBuilder.append(BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider, f1));
+      localStringBuilder.append(BaseSlider.a(this.b, f1));
     }
     paramAccessibilityNodeInfoCompat.setContentDescription(localStringBuilder.toString());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.a(paramInt, this.jdField_a_of_type_AndroidGraphicsRect);
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(this.jdField_a_of_type_AndroidGraphicsRect);
+    this.b.a(paramInt, this.a);
+    paramAccessibilityNodeInfoCompat.setBoundsInParent(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.BaseSlider.AccessibilityHelper
  * JD-Core Version:    0.7.0.1
  */

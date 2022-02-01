@@ -2,6 +2,7 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
@@ -60,6 +61,11 @@ public class EmoticonPanelController
         localQQEmoticonMainPanelApp.registerOtherProcessCallback();
       }
     }
+  }
+  
+  public void addTabListAdditionalView(boolean paramBoolean, View paramView)
+  {
+    this.mBasePanelView.addTabListAdditionalView(paramBoolean, paramView);
   }
   
   public void deleteEmoticonClick()
@@ -522,7 +528,7 @@ public class EmoticonPanelController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController
  * JD-Core Version:    0.7.0.1
  */

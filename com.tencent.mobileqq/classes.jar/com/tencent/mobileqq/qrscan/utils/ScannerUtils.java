@@ -10,6 +10,7 @@ import android.util.SparseArray;
 import com.dataline.util.DBNetworkUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.AIRect;
+import com.tencent.mobileqq.qrscan.IMiniConst;
 import com.tencent.mobileqq.qrscan.QBarConstants;
 import com.tencent.mobileqq.qrscan.QRScanUtil;
 import com.tencent.mobileqq.qrscan.ScannerResult;
@@ -147,7 +148,7 @@ public class ScannerUtils
     //   136: ior
     //   137: istore 8
     //   139: aload 4
-    //   141: invokevirtual 123	com/tencent/mobileqq/qrscan/ScannerResult:d	()Z
+    //   141: invokevirtual 124	com/tencent/mobileqq/qrscan/ScannerResult:h	()Z
     //   144: ifne +58 -> 202
     //   147: aload 12
     //   149: aload_0
@@ -184,7 +185,7 @@ public class ScannerUtils
     //   202: iload 8
     //   204: istore 7
     //   206: aload 12
-    //   208: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   208: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   211: goto +305 -> 516
     //   214: astore_1
     //   215: goto +8 -> 223
@@ -201,7 +202,7 @@ public class ScannerUtils
     //   234: astore 12
     //   236: ldc 67
     //   238: astore 13
-    //   240: ldc 128
+    //   240: ldc 129
     //   242: astore 4
     //   244: aload_1
     //   245: astore_0
@@ -213,7 +214,7 @@ public class ScannerUtils
     //   256: astore_0
     //   257: ldc 67
     //   259: astore_1
-    //   260: ldc 128
+    //   260: ldc 129
     //   262: astore 4
     //   264: aconst_null
     //   265: astore 12
@@ -283,7 +284,7 @@ public class ScannerUtils
     //   379: iload 9
     //   381: istore 8
     //   383: aload 4
-    //   385: invokevirtual 123	com/tencent/mobileqq/qrscan/ScannerResult:d	()Z
+    //   385: invokevirtual 124	com/tencent/mobileqq/qrscan/ScannerResult:h	()Z
     //   388: ifne +63 -> 451
     //   391: iload 9
     //   393: istore 8
@@ -323,7 +324,7 @@ public class ScannerUtils
     //   451: iload 7
     //   453: istore 8
     //   455: aload 14
-    //   457: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   457: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   460: goto +56 -> 516
     //   463: astore_1
     //   464: goto -245 -> 219
@@ -334,7 +335,7 @@ public class ScannerUtils
     //   473: astore 12
     //   475: ldc 67
     //   477: astore 13
-    //   479: ldc 128
+    //   479: ldc 129
     //   481: astore 4
     //   483: aload_1
     //   484: astore_0
@@ -348,7 +349,7 @@ public class ScannerUtils
     //   498: astore_0
     //   499: ldc 67
     //   501: astore_1
-    //   502: ldc 128
+    //   502: ldc 129
     //   504: astore 4
     //   506: goto -242 -> 264
     //   509: astore_1
@@ -357,33 +358,33 @@ public class ScannerUtils
     //   514: istore 7
     //   516: iload_2
     //   517: iload_3
-    //   518: invokestatic 134	java/lang/Math:min	(II)I
+    //   518: invokestatic 135	java/lang/Math:min	(II)I
     //   521: istore_2
     //   522: aload 4
-    //   524: invokevirtual 123	com/tencent/mobileqq/qrscan/ScannerResult:d	()Z
+    //   524: invokevirtual 124	com/tencent/mobileqq/qrscan/ScannerResult:h	()Z
     //   527: ifne +390 -> 917
     //   530: iload_2
     //   531: sipush 250
     //   534: if_icmple +383 -> 917
-    //   537: new 136	android/graphics/BitmapFactory$Options
+    //   537: new 137	android/graphics/BitmapFactory$Options
     //   540: dup
-    //   541: invokespecial 137	android/graphics/BitmapFactory$Options:<init>	()V
+    //   541: invokespecial 138	android/graphics/BitmapFactory$Options:<init>	()V
     //   544: astore 14
     //   546: iload_2
     //   547: i2d
     //   548: dstore 5
     //   550: dload 5
-    //   552: invokestatic 143	java/lang/Double:isNaN	(D)Z
+    //   552: invokestatic 144	java/lang/Double:isNaN	(D)Z
     //   555: pop
     //   556: dload 5
-    //   558: ldc2_w 144
+    //   558: ldc2_w 145
     //   561: ddiv
     //   562: dstore 5
     //   564: aload 14
     //   566: dload 5
-    //   568: invokestatic 149	java/lang/Math:ceil	(D)D
+    //   568: invokestatic 150	java/lang/Math:ceil	(D)D
     //   571: d2i
-    //   572: putfield 153	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   572: putfield 154	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   575: aload 13
     //   577: aload_1
     //   578: invokevirtual 93	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
@@ -393,7 +394,7 @@ public class ScannerUtils
     //   586: aload 12
     //   588: aconst_null
     //   589: aload 14
-    //   591: invokestatic 156	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   591: invokestatic 157	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   594: astore_1
     //   595: aload 12
     //   597: astore_0
@@ -402,12 +403,12 @@ public class ScannerUtils
     //   603: iload 7
     //   605: istore_2
     //   606: aload_1
-    //   607: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
+    //   607: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
     //   610: istore_3
     //   611: iload 7
     //   613: istore_2
     //   614: aload_1
-    //   615: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
+    //   615: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
     //   618: istore 8
     //   620: iload 7
     //   622: istore_2
@@ -430,7 +431,7 @@ public class ScannerUtils
     //   645: iload 7
     //   647: istore_2
     //   648: aload_1
-    //   649: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   649: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   652: iload 7
     //   654: istore_2
     //   655: aload_0
@@ -446,7 +447,7 @@ public class ScannerUtils
     //   673: iload 7
     //   675: istore_2
     //   676: aload 4
-    //   678: invokevirtual 164	com/tencent/mobileqq/qrscan/ScannerResult:a	()V
+    //   678: invokevirtual 166	com/tencent/mobileqq/qrscan/ScannerResult:i	()V
     //   681: ldc 67
     //   683: astore_1
     //   684: iload 7
@@ -461,7 +462,7 @@ public class ScannerUtils
     //   700: astore 12
     //   702: ldc 67
     //   704: astore_1
-    //   705: ldc 128
+    //   705: ldc 129
     //   707: astore 4
     //   709: goto +164 -> 873
     //   712: astore_1
@@ -472,14 +473,14 @@ public class ScannerUtils
     //   718: iload_2
     //   719: istore 7
     //   721: aload_1
-    //   722: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   722: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   725: ldc 67
     //   727: astore 12
     //   729: aload 12
     //   731: iconst_1
-    //   732: ldc 169
+    //   732: ldc 171
     //   734: aload_1
-    //   735: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   735: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   738: aload 12
     //   740: astore_1
     //   741: iload 7
@@ -495,45 +496,45 @@ public class ScannerUtils
     //   758: goto +23 -> 781
     //   761: astore_0
     //   762: aload_0
-    //   763: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   763: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   766: aload 12
     //   768: iconst_1
-    //   769: ldc 128
+    //   769: ldc 129
     //   771: aload_0
-    //   772: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   772: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   775: iload 7
     //   777: istore_2
     //   778: aload 12
     //   780: astore_1
-    //   781: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   781: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   784: ifeq +62 -> 846
     //   787: new 51	java/lang/StringBuilder
     //   790: dup
     //   791: invokespecial 52	java/lang/StringBuilder:<init>	()V
     //   794: astore_0
     //   795: aload_0
-    //   796: ldc 177
+    //   796: ldc 179
     //   798: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   801: pop
     //   802: aload_0
     //   803: iload 10
-    //   805: invokevirtual 180	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   805: invokevirtual 182	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   808: pop
     //   809: aload_0
-    //   810: ldc 182
+    //   810: ldc 184
     //   812: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   815: pop
     //   816: aload_0
     //   817: iload 11
-    //   819: invokevirtual 180	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   819: invokevirtual 182	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   822: pop
     //   823: aload_0
-    //   824: ldc 184
+    //   824: ldc 186
     //   826: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   829: pop
     //   830: aload_0
     //   831: aload 4
-    //   833: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   833: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   836: pop
     //   837: aload_1
     //   838: iconst_2
@@ -547,7 +548,7 @@ public class ScannerUtils
     //   852: astore_1
     //   853: ldc 67
     //   855: astore 14
-    //   857: ldc 128
+    //   857: ldc 129
     //   859: astore 4
     //   861: aload_1
     //   862: astore 13
@@ -564,12 +565,12 @@ public class ScannerUtils
     //   883: goto +19 -> 902
     //   886: astore 12
     //   888: aload 12
-    //   890: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   890: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   893: aload_1
     //   894: iconst_1
     //   895: aload 4
     //   897: aload 12
-    //   899: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   899: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   902: goto +5 -> 907
     //   905: aload_0
     //   906: athrow
@@ -666,7 +667,7 @@ public class ScannerUtils
     if (paramBitmap != null)
     {
       paramBitmap.a(paramSparseArray);
-      return paramBitmap.a();
+      return paramBitmap.e();
     }
     return 0;
   }
@@ -709,7 +710,7 @@ public class ScannerUtils
     Object localObject1 = "IQRScanConst_ScannerUtils";
     if (bool1)
     {
-      paramScannerResult.jdField_a_of_type_Boolean = true;
+      paramScannerResult.c = true;
       Object localObject2 = new ArrayList();
       boolean bool2 = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).detectSync(paramBitmap, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
@@ -724,40 +725,48 @@ public class ScannerUtils
         while (((Iterator)localObject2).hasNext())
         {
           localObject1 = (AIRect)((Iterator)localObject2).next();
-          if (((AIRect)localObject1).jdField_a_of_type_Int == 2)
+          if ((((AIRect)localObject1).a == 2) || (((AIRect)localObject1).a == 3))
           {
             Rect localRect = new Rect();
-            QRScanUtil.a(((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect, localRect, paramInt1, paramInt2, 1.2F);
+            QRScanUtil.a(((AIRect)localObject1).b, localRect, paramInt1, paramInt2, 1.2F);
             StringBuilder localStringBuilder = new StringBuilder();
-            int m = a(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2, localRect.left, localRect.top, localRect.width(), localRect.height(), localStringBuilder);
+            int m = a(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2, localRect.left, localRect.top, localRect.width(), localRect.height(), ((AIRect)localObject1).a, localStringBuilder);
             k = j;
             if ((m & 0x2) != 0)
             {
               k = j + 1;
-              paramScannerResult.a(localStringBuilder.toString(), ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect, ((AIRect)localObject1).jdField_a_of_type_Float, paramInt1, paramInt2);
+              paramScannerResult.a(localStringBuilder.toString(), ((AIRect)localObject1).b, ((AIRect)localObject1).c, paramInt1, paramInt2, ((AIRect)localObject1).a);
             }
             i |= m;
             j = k;
           }
         }
-        break label359;
+        break label378;
       }
     }
     paramBitmap = "IQRScanConst_ScannerUtils";
     j = 0;
     i = 0;
-    label359:
+    label378:
     int k = i;
     if (j == 0)
     {
-      paramScannerResult.jdField_a_of_type_Boolean = false;
+      paramScannerResult.c = false;
       localObject1 = new StringBuilder();
-      paramInt1 = i | a(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2, 0, 0, 0, 0, (StringBuilder)localObject1);
-      k = paramInt1;
-      if ((paramInt1 & 0x2) != 0)
+      paramInt2 = i | a(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2, 0, 0, 0, 0, 0, (StringBuilder)localObject1);
+      k = paramInt2;
+      if ((paramInt2 & 0x2) != 0)
       {
-        paramScannerResult.a(((StringBuilder)localObject1).toString());
-        k = paramInt1;
+        paramArrayOfInt = ((StringBuilder)localObject1).substring(0, IMiniConst.a);
+        if ("WITHOUTAIQQ&".equals(paramArrayOfInt)) {
+          paramInt1 = 2;
+        } else if ("WITHOUTAIWX&".equals(paramArrayOfInt)) {
+          paramInt1 = 3;
+        } else {
+          paramInt1 = 0;
+        }
+        paramScannerResult.a(((StringBuilder)localObject1).substring(IMiniConst.a, ((StringBuilder)localObject1).length()), paramInt1);
+        k = paramInt2;
       }
     }
     if (QLog.isColorLevel())
@@ -784,7 +793,7 @@ public class ScannerUtils
     if (paramUri != null)
     {
       paramUri.a(paramSparseArray);
-      return paramUri.a();
+      return paramUri.e();
     }
     return 0;
   }
@@ -805,14 +814,14 @@ public class ScannerUtils
     //   12: ifne +5 -> 17
     //   15: iconst_0
     //   16: ireturn
-    //   17: ldc2_w 317
+    //   17: ldc2_w 337
     //   20: lstore 8
-    //   22: ldc_w 320
+    //   22: ldc_w 340
     //   25: invokestatic 21	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   28: checkcast 320	com/tencent/mobileqq/qrscan/api/IQRScanTempApi
+    //   28: checkcast 340	com/tencent/mobileqq/qrscan/api/IQRScanAbilityApi
     //   31: aload_0
-    //   32: invokevirtual 325	android/net/Uri:getPath	()Ljava/lang/String;
-    //   35: invokeinterface 329 2 0
+    //   32: invokevirtual 345	android/net/Uri:getPath	()Ljava/lang/String;
+    //   35: invokeinterface 349 2 0
     //   40: astore_0
     //   41: invokestatic 49	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   44: ifeq +35 -> 79
@@ -821,12 +830,12 @@ public class ScannerUtils
     //   51: invokespecial 52	java/lang/StringBuilder:<init>	()V
     //   54: astore_1
     //   55: aload_1
-    //   56: ldc_w 331
+    //   56: ldc_w 351
     //   59: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: aload_1
     //   64: aload_0
-    //   65: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: ldc 67
     //   71: iconst_4
@@ -836,17 +845,17 @@ public class ScannerUtils
     //   79: aload_0
     //   80: ifnull +250 -> 330
     //   83: aload_0
-    //   84: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
+    //   84: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
     //   87: istore 6
     //   89: aload_0
-    //   90: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
+    //   90: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
     //   93: istore 7
     //   95: ldc 15
     //   97: invokestatic 21	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
     //   100: checkcast 15	com/tencent/mobileqq/qrscan/api/IQRCodeApi
     //   103: iload 6
     //   105: iload 7
-    //   107: invokeinterface 335 3 0
+    //   107: invokeinterface 355 3 0
     //   112: ifne +5 -> 117
     //   115: iconst_0
     //   116: ireturn
@@ -855,7 +864,7 @@ public class ScannerUtils
     //   119: iand
     //   120: iconst_1
     //   121: if_icmpne +13 -> 134
-    //   124: invokestatic 336	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
+    //   124: invokestatic 357	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
     //   127: pop
     //   128: iconst_1
     //   129: istore 4
@@ -871,15 +880,15 @@ public class ScannerUtils
     //   146: lstore 10
     //   148: lload 8
     //   150: lstore 12
-    //   152: invokestatic 208	java/lang/System:currentTimeMillis	()J
+    //   152: invokestatic 210	java/lang/System:currentTimeMillis	()J
     //   155: lstore 8
     //   157: lload 8
     //   159: lstore 10
     //   161: lload 8
     //   163: lstore 12
     //   165: lload 8
-    //   167: ldc_w 338
-    //   170: invokestatic 341	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
+    //   167: ldc_w 359
+    //   170: invokestatic 362	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
     //   173: iconst_1
     //   174: istore 5
     //   176: goto +33 -> 209
@@ -895,7 +904,7 @@ public class ScannerUtils
     //   194: lload 12
     //   196: lstore 8
     //   198: goto +179 -> 377
-    //   201: ldc2_w 317
+    //   201: ldc2_w 337
     //   204: lstore 8
     //   206: iconst_0
     //   207: istore 5
@@ -920,7 +929,7 @@ public class ScannerUtils
     //   236: iload 7
     //   238: iload_2
     //   239: aload_3
-    //   240: invokestatic 343	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
+    //   240: invokestatic 364	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
     //   243: istore 6
     //   245: iload 6
     //   247: iconst_0
@@ -930,27 +939,27 @@ public class ScannerUtils
     //   254: ifeq +38 -> 292
     //   257: ldc 67
     //   259: iconst_4
-    //   260: ldc_w 345
+    //   260: ldc_w 366
     //   263: iconst_3
     //   264: anewarray 4	java/lang/Object
     //   267: dup
     //   268: iconst_0
     //   269: iload_2
-    //   270: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   270: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   273: aastore
     //   274: dup
     //   275: iconst_1
     //   276: iload 6
-    //   278: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   278: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   281: aastore
     //   282: dup
     //   283: iconst_2
     //   284: aload_3
     //   285: aastore
-    //   286: invokestatic 240	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   286: invokestatic 242	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   289: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   292: aload_0
-    //   293: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   293: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   296: iload 6
     //   298: istore_2
     //   299: goto +40 -> 339
@@ -978,13 +987,13 @@ public class ScannerUtils
     //   338: istore_2
     //   339: iload 4
     //   341: ifeq +7 -> 348
-    //   344: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   344: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   347: pop
     //   348: iload 5
     //   350: ifeq +11 -> 361
     //   353: lload 8
-    //   355: ldc_w 338
-    //   358: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   355: ldc_w 359
+    //   358: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   361: iload_2
     //   362: ireturn
     //   363: astore_0
@@ -1001,33 +1010,33 @@ public class ScannerUtils
     //   380: iconst_0
     //   381: istore 5
     //   383: aload_0
-    //   384: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   384: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   387: ldc 67
     //   389: iconst_1
-    //   390: ldc_w 357
+    //   390: ldc_w 377
     //   393: aload_0
-    //   394: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   394: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   397: iload_2
     //   398: ifeq +7 -> 405
-    //   401: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   401: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   404: pop
     //   405: iload 5
     //   407: ifeq +11 -> 418
     //   410: lload 8
-    //   412: ldc_w 338
-    //   415: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   412: ldc_w 359
+    //   415: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   418: iload 4
     //   420: ireturn
     //   421: astore_0
     //   422: iload_2
     //   423: ifeq +7 -> 430
-    //   426: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   426: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   429: pop
     //   430: iload 5
     //   432: ifeq +11 -> 443
     //   435: lload 8
-    //   437: ldc_w 338
-    //   440: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   437: ldc_w 359
+    //   440: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   443: aload_0
     //   444: athrow
     // Local variable table:
@@ -1064,9 +1073,9 @@ public class ScannerUtils
     //   383	397	421	finally
   }
   
-  private static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, StringBuilder paramStringBuilder)
+  private static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, StringBuilder paramStringBuilder)
   {
-    paramArrayOfInt = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).decode(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, 1);
+    paramArrayOfInt = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).decode(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, 1);
     if (((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).bValidDecodeResult(paramArrayOfInt))
     {
       if (paramStringBuilder.length() > 0) {
@@ -1090,7 +1099,7 @@ public class ScannerUtils
     paramInt2 = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).scanImage(arrayOfByte, paramInt1, paramInt2);
     paramInt1 = 1;
     if (paramInt2 == 1) {
-      paramScannerResult.jdField_a_of_type_JavaUtilArrayList = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).getResult();
+      paramScannerResult.a = ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).getResult();
     } else {
       paramInt1 = 0;
     }
@@ -1112,7 +1121,7 @@ public class ScannerUtils
   {
     paramUri = a(paramUri, paramContext, 1);
     if (paramUri != null) {
-      return paramUri.a();
+      return paramUri.b();
     }
     return null;
   }
@@ -1129,10 +1138,10 @@ public class ScannerUtils
     //   8: invokestatic 21	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
     //   11: checkcast 15	com/tencent/mobileqq/qrscan/api/IQRCodeApi
     //   14: aload_0
-    //   15: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
+    //   15: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
     //   18: aload_0
-    //   19: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
-    //   22: invokeinterface 335 3 0
+    //   19: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
+    //   22: invokeinterface 355 3 0
     //   27: ifne +5 -> 32
     //   30: aconst_null
     //   31: areturn
@@ -1144,43 +1153,43 @@ public class ScannerUtils
     //   41: ifeq +39 -> 80
     //   44: ldc 67
     //   46: iconst_4
-    //   47: ldc_w 392
+    //   47: ldc_w 409
     //   50: iconst_2
     //   51: anewarray 4	java/lang/Object
     //   54: dup
     //   55: iconst_0
     //   56: aload_0
-    //   57: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
-    //   60: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   57: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
+    //   60: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   63: aastore
     //   64: dup
     //   65: iconst_1
     //   66: aload_0
-    //   67: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
-    //   70: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   67: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
+    //   70: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   73: aastore
-    //   74: invokestatic 240	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   74: invokestatic 242	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   77: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   80: invokestatic 208	java/lang/System:currentTimeMillis	()J
+    //   80: invokestatic 210	java/lang/System:currentTimeMillis	()J
     //   83: lstore 13
-    //   85: ldc2_w 317
+    //   85: ldc2_w 337
     //   88: lstore 7
     //   90: new 121	com/tencent/mobileqq/qrscan/ScannerResult
     //   93: dup
-    //   94: invokespecial 393	com/tencent/mobileqq/qrscan/ScannerResult:<init>	()V
+    //   94: invokespecial 410	com/tencent/mobileqq/qrscan/ScannerResult:<init>	()V
     //   97: astore 15
     //   99: iload_1
     //   100: iconst_1
     //   101: iand
     //   102: iconst_1
     //   103: if_icmpne +33 -> 136
-    //   106: invokestatic 336	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
+    //   106: invokestatic 357	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
     //   109: pop
     //   110: iconst_1
     //   111: istore_2
     //   112: goto +26 -> 138
     //   115: astore_0
-    //   116: ldc2_w 317
+    //   116: ldc2_w 337
     //   119: lstore 7
     //   121: iconst_0
     //   122: istore_2
@@ -1204,15 +1213,15 @@ public class ScannerUtils
     //   147: lstore 9
     //   149: lload 7
     //   151: lstore 11
-    //   153: invokestatic 208	java/lang/System:currentTimeMillis	()J
+    //   153: invokestatic 210	java/lang/System:currentTimeMillis	()J
     //   156: lstore 7
     //   158: lload 7
     //   160: lstore 9
     //   162: lload 7
     //   164: lstore 11
     //   166: lload 7
-    //   168: ldc_w 395
-    //   171: invokestatic 341	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
+    //   168: ldc_w 412
+    //   171: invokestatic 362	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
     //   174: iconst_1
     //   175: istore_3
     //   176: goto +23 -> 199
@@ -1229,10 +1238,10 @@ public class ScannerUtils
     //   197: iconst_0
     //   198: istore_3
     //   199: aload_0
-    //   200: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
+    //   200: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
     //   203: istore 4
     //   205: aload_0
-    //   206: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
+    //   206: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
     //   209: istore 5
     //   211: iload 4
     //   213: iload 5
@@ -1255,44 +1264,44 @@ public class ScannerUtils
     //   241: iload 5
     //   243: iload_1
     //   244: aload 15
-    //   246: invokestatic 343	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
+    //   246: invokestatic 364	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
     //   249: istore 4
     //   251: aload_0
-    //   252: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   252: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   255: invokestatic 49	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   258: ifeq +41 -> 299
     //   261: ldc 67
     //   263: iconst_4
-    //   264: ldc_w 397
+    //   264: ldc_w 414
     //   267: iconst_3
     //   268: anewarray 4	java/lang/Object
     //   271: dup
     //   272: iconst_0
     //   273: iload_1
-    //   274: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   274: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   277: aastore
     //   278: dup
     //   279: iconst_1
     //   280: iload 4
     //   282: iconst_0
     //   283: ior
-    //   284: invokestatic 350	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   284: invokestatic 371	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   287: aastore
     //   288: dup
     //   289: iconst_2
     //   290: aload 15
     //   292: aastore
-    //   293: invokestatic 240	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   293: invokestatic 242	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   296: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   299: iload_2
     //   300: ifeq +7 -> 307
-    //   303: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   303: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   306: pop
     //   307: iload_3
     //   308: ifeq +63 -> 371
     //   311: lload 7
-    //   313: ldc_w 395
-    //   316: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   313: ldc_w 412
+    //   316: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   319: goto +52 -> 371
     //   322: astore_0
     //   323: goto +108 -> 431
@@ -1304,21 +1313,21 @@ public class ScannerUtils
     //   335: iload_2
     //   336: istore_1
     //   337: aload_0
-    //   338: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   338: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   341: ldc 67
     //   343: iconst_1
-    //   344: ldc_w 399
+    //   344: ldc_w 416
     //   347: aload_0
-    //   348: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   348: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   351: iload_1
     //   352: ifeq +7 -> 359
-    //   355: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   355: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   358: pop
     //   359: iload_3
     //   360: ifeq +11 -> 371
     //   363: lload 7
-    //   365: ldc_w 395
-    //   368: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   365: ldc_w 412
+    //   368: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   371: invokestatic 49	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   374: ifeq +41 -> 415
     //   377: new 51	java/lang/StringBuilder
@@ -1326,22 +1335,22 @@ public class ScannerUtils
     //   381: invokespecial 52	java/lang/StringBuilder:<init>	()V
     //   384: astore_0
     //   385: aload_0
-    //   386: ldc_w 401
+    //   386: ldc_w 418
     //   389: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: pop
     //   393: aload_0
-    //   394: invokestatic 208	java/lang/System:currentTimeMillis	()J
+    //   394: invokestatic 210	java/lang/System:currentTimeMillis	()J
     //   397: lload 13
     //   399: lsub
-    //   400: invokevirtual 304	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   400: invokevirtual 324	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   403: pop
-    //   404: ldc_w 395
+    //   404: ldc_w 412
     //   407: iconst_4
     //   408: aload_0
     //   409: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   412: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   415: aload 15
-    //   417: invokevirtual 403	com/tencent/mobileqq/qrscan/ScannerResult:b	()Z
+    //   417: invokevirtual 421	com/tencent/mobileqq/qrscan/ScannerResult:f	()Z
     //   420: ifeq +6 -> 426
     //   423: aload 15
     //   425: areturn
@@ -1352,13 +1361,13 @@ public class ScannerUtils
     //   430: istore_2
     //   431: iload_2
     //   432: ifeq +7 -> 439
-    //   435: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   435: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   438: pop
     //   439: iload_3
     //   440: ifeq +11 -> 451
     //   443: lload 7
-    //   445: ldc_w 395
-    //   448: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   445: ldc_w 412
+    //   448: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   451: goto +5 -> 456
     //   454: aload_0
     //   455: athrow
@@ -1435,7 +1444,7 @@ public class ScannerUtils
         QLog.d("IQRScanConst_ScannerUtils", 4, paramUri.toString());
       }
       localObject1 = localObject2;
-      if (localScannerResult.b()) {
+      if (localScannerResult.f()) {
         localObject1 = localScannerResult;
       }
     }
@@ -1481,7 +1490,7 @@ public class ScannerUtils
       if (!TextUtils.isEmpty(paramString5)) {
         localJSONObject.put("touin", paramString5);
       }
-      paramString1 = DeviceInfoUtil.a();
+      paramString1 = DeviceInfoUtil.b();
       if (!TextUtils.isEmpty(paramString1)) {
         localJSONObject.put("imei", paramString1.toUpperCase());
       }
@@ -1546,7 +1555,7 @@ public class ScannerUtils
     //   10: istore 6
     //   12: aconst_null
     //   13: astore 21
-    //   15: ldc2_w 317
+    //   15: ldc2_w 337
     //   18: lstore 13
     //   20: aload_1
     //   21: invokevirtual 87	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
@@ -1565,37 +1574,37 @@ public class ScannerUtils
     //   50: ireturn
     //   51: astore_0
     //   52: aload_0
-    //   53: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   53: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   56: ldc 67
     //   58: iconst_1
-    //   59: ldc_w 527
+    //   59: ldc_w 546
     //   62: aload_0
-    //   63: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   63: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   66: iconst_0
     //   67: ireturn
-    //   68: new 136	android/graphics/BitmapFactory$Options
+    //   68: new 137	android/graphics/BitmapFactory$Options
     //   71: dup
-    //   72: invokespecial 137	android/graphics/BitmapFactory$Options:<init>	()V
+    //   72: invokespecial 138	android/graphics/BitmapFactory$Options:<init>	()V
     //   75: astore 22
     //   77: aload 22
     //   79: iconst_1
-    //   80: putfield 530	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   80: putfield 549	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   83: aload 20
     //   85: aconst_null
     //   86: aload 22
-    //   88: invokestatic 156	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   88: invokestatic 157	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   91: pop
     //   92: aload 20
     //   94: invokevirtual 104	java/io/InputStream:close	()V
     //   97: aload 22
-    //   99: getfield 533	android/graphics/BitmapFactory$Options:outWidth	I
+    //   99: getfield 552	android/graphics/BitmapFactory$Options:outWidth	I
     //   102: istore 10
     //   104: aload 22
-    //   106: getfield 536	android/graphics/BitmapFactory$Options:outHeight	I
+    //   106: getfield 555	android/graphics/BitmapFactory$Options:outHeight	I
     //   109: istore 11
     //   111: aload 22
     //   113: iconst_0
-    //   114: putfield 530	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   114: putfield 549	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   117: iload 10
     //   119: sipush 12800
     //   122: if_icmpgt +449 -> 571
@@ -1609,7 +1618,7 @@ public class ScannerUtils
     //   140: checkcast 15	com/tencent/mobileqq/qrscan/api/IQRCodeApi
     //   143: iload 10
     //   145: iload 11
-    //   147: invokeinterface 335 3 0
+    //   147: invokeinterface 355 3 0
     //   152: istore 19
     //   154: iload 19
     //   156: ifne +5 -> 161
@@ -1620,22 +1629,22 @@ public class ScannerUtils
     //   165: imul
     //   166: istore 12
     //   168: iload 12
-    //   170: ldc_w 537
+    //   170: ldc_w 556
     //   173: if_icmple +53 -> 226
     //   176: iload 12
     //   178: i2d
     //   179: dstore 4
     //   181: aload 22
     //   183: dload 4
-    //   185: invokestatic 540	java/lang/Math:sqrt	(D)D
-    //   188: ldc2_w 541
+    //   185: invokestatic 559	java/lang/Math:sqrt	(D)D
+    //   188: ldc2_w 560
     //   191: ddiv
-    //   192: invokestatic 149	java/lang/Math:ceil	(D)D
+    //   192: invokestatic 150	java/lang/Math:ceil	(D)D
     //   195: d2i
-    //   196: putfield 153	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   196: putfield 154	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   199: goto +33 -> 232
     //   202: astore_0
-    //   203: ldc2_w 317
+    //   203: ldc2_w 337
     //   206: lstore 13
     //   208: aconst_null
     //   209: astore_1
@@ -1650,7 +1659,7 @@ public class ScannerUtils
     //   223: goto +372 -> 595
     //   226: aload 22
     //   228: iconst_1
-    //   229: putfield 153	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   229: putfield 154	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   232: aload 23
     //   234: aload_0
     //   235: invokevirtual 93	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
@@ -1658,7 +1667,7 @@ public class ScannerUtils
     //   240: aload 20
     //   242: aconst_null
     //   243: aload 22
-    //   245: invokestatic 156	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   245: invokestatic 157	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   248: astore 22
     //   250: aload 20
     //   252: invokevirtual 104	java/io/InputStream:close	()V
@@ -1673,7 +1682,7 @@ public class ScannerUtils
     //   267: iload 9
     //   269: iconst_1
     //   270: if_icmpne +13 -> 283
-    //   273: invokestatic 336	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
+    //   273: invokestatic 357	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	()I
     //   276: pop
     //   277: iconst_1
     //   278: istore 6
@@ -1689,15 +1698,15 @@ public class ScannerUtils
     //   295: lstore 15
     //   297: lload 13
     //   299: lstore 17
-    //   301: invokestatic 208	java/lang/System:currentTimeMillis	()J
+    //   301: invokestatic 210	java/lang/System:currentTimeMillis	()J
     //   304: lstore 13
     //   306: lload 13
     //   308: lstore 15
     //   310: lload 13
     //   312: lstore 17
     //   314: lload 13
-    //   316: ldc_w 544
-    //   319: invokestatic 341	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
+    //   316: ldc_w 563
+    //   319: invokestatic 362	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(JLjava/lang/String;)V
     //   322: iconst_1
     //   323: istore 7
     //   325: goto +38 -> 363
@@ -1717,15 +1726,15 @@ public class ScannerUtils
     //   349: aload 21
     //   351: astore_1
     //   352: goto +243 -> 595
-    //   355: ldc2_w 317
+    //   355: ldc2_w 337
     //   358: lstore 13
     //   360: iconst_0
     //   361: istore 7
     //   363: aload 22
-    //   365: invokevirtual 159	android/graphics/Bitmap:getWidth	()I
+    //   365: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
     //   368: istore 8
     //   370: aload 22
-    //   372: invokevirtual 162	android/graphics/Bitmap:getHeight	()I
+    //   372: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
     //   375: istore 12
     //   377: iload 8
     //   379: iload 12
@@ -1748,14 +1757,14 @@ public class ScannerUtils
     //   409: iload 12
     //   411: iload_2
     //   412: aload_3
-    //   413: invokestatic 343	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
+    //   413: invokestatic 364	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/graphics/Bitmap;[I[BIIILcom/tencent/mobileqq/qrscan/ScannerResult;)I
     //   416: istore_2
     //   417: iconst_0
     //   418: iload_2
     //   419: ior
     //   420: istore_2
     //   421: aload 22
-    //   423: invokevirtual 126	android/graphics/Bitmap:recycle	()V
+    //   423: invokevirtual 127	android/graphics/Bitmap:recycle	()V
     //   426: iload_2
     //   427: istore 8
     //   429: iload 9
@@ -1764,14 +1773,14 @@ public class ScannerUtils
     //   435: iload_2
     //   436: istore 8
     //   438: aload_3
-    //   439: invokevirtual 403	com/tencent/mobileqq/qrscan/ScannerResult:b	()Z
+    //   439: invokevirtual 421	com/tencent/mobileqq/qrscan/ScannerResult:f	()Z
     //   442: ifne +37 -> 479
     //   445: aload_1
     //   446: aload_0
     //   447: iload 10
     //   449: iload 11
     //   451: aload_3
-    //   452: invokestatic 546	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/content/Context;Landroid/net/Uri;IILcom/tencent/mobileqq/qrscan/ScannerResult;)I
+    //   452: invokestatic 565	com/tencent/mobileqq/qrscan/utils/ScannerUtils:a	(Landroid/content/Context;Landroid/net/Uri;IILcom/tencent/mobileqq/qrscan/ScannerResult;)I
     //   455: istore 8
     //   457: iload_2
     //   458: iload 8
@@ -1788,13 +1797,13 @@ public class ScannerUtils
     //   476: goto +52 -> 528
     //   479: iload 6
     //   481: ifeq +7 -> 488
-    //   484: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   484: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   487: pop
     //   488: iload 7
     //   490: ifeq +11 -> 501
     //   493: lload 13
-    //   495: ldc_w 544
-    //   498: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   495: ldc_w 563
+    //   498: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   501: iload 8
     //   503: ireturn
     //   504: astore_0
@@ -1826,7 +1835,7 @@ public class ScannerUtils
     //   546: astore_1
     //   547: iconst_0
     //   548: istore 7
-    //   550: ldc2_w 317
+    //   550: ldc2_w 337
     //   553: lstore 13
     //   555: iload 8
     //   557: istore_2
@@ -1840,7 +1849,7 @@ public class ScannerUtils
     //   571: iconst_0
     //   572: ireturn
     //   573: astore_0
-    //   574: ldc2_w 317
+    //   574: ldc2_w 337
     //   577: lstore 13
     //   579: aload 20
     //   581: astore_1
@@ -1854,7 +1863,7 @@ public class ScannerUtils
     //   594: istore_2
     //   595: goto +26 -> 621
     //   598: astore_0
-    //   599: ldc2_w 317
+    //   599: ldc2_w 337
     //   602: lstore 13
     //   604: aconst_null
     //   605: astore_1
@@ -1873,21 +1882,21 @@ public class ScannerUtils
     //   624: iconst_0
     //   625: istore 7
     //   627: aload_0
-    //   628: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   628: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   631: ldc 67
     //   633: iconst_1
-    //   634: ldc_w 548
+    //   634: ldc_w 567
     //   637: aload_0
-    //   638: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   638: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   641: iload_2
     //   642: ifeq +7 -> 649
-    //   645: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   645: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   648: pop
     //   649: iload 7
     //   651: ifeq +11 -> 662
     //   654: lload 13
-    //   656: ldc_w 544
-    //   659: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   656: ldc_w 563
+    //   659: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   662: aload_1
     //   663: ifnull +25 -> 688
     //   666: aload_1
@@ -1896,25 +1905,25 @@ public class ScannerUtils
     //   672: ireturn
     //   673: astore_0
     //   674: aload_0
-    //   675: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   675: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   678: ldc 67
     //   680: iconst_1
-    //   681: ldc_w 527
+    //   681: ldc_w 546
     //   684: aload_0
-    //   685: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   685: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   688: iload 6
     //   690: ireturn
     //   691: astore_0
     //   692: goto -80 -> 612
     //   695: iload_2
     //   696: ifeq +7 -> 703
-    //   699: invokestatic 353	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
+    //   699: invokestatic 373	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	()I
     //   702: pop
     //   703: iload 7
     //   705: ifeq +11 -> 716
     //   708: lload 13
-    //   710: ldc_w 544
-    //   713: invokestatic 355	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
+    //   710: ldc_w 563
+    //   713: invokestatic 375	com/tencent/mobileqq/qrscan/utils/ScannerUtils:b	(JLjava/lang/String;)V
     //   716: aload_1
     //   717: ifnull +25 -> 742
     //   720: aload_1
@@ -1922,12 +1931,12 @@ public class ScannerUtils
     //   724: goto +18 -> 742
     //   727: astore_1
     //   728: aload_1
-    //   729: invokevirtual 167	java/lang/Throwable:printStackTrace	()V
+    //   729: invokevirtual 169	java/lang/Throwable:printStackTrace	()V
     //   732: ldc 67
     //   734: iconst_1
-    //   735: ldc_w 527
+    //   735: ldc_w 546
     //   738: aload_1
-    //   739: invokestatic 172	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   739: invokestatic 174	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   742: goto +5 -> 747
     //   745: aload_0
     //   746: athrow
@@ -1999,7 +2008,7 @@ public class ScannerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.utils.ScannerUtils
  * JD-Core Version:    0.7.0.1
  */

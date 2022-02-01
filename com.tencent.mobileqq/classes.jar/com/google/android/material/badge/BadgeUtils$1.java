@@ -11,20 +11,20 @@ final class BadgeUtils$1
 {
   public void run()
   {
-    ActionMenuItemView localActionMenuItemView = ToolbarUtils.a(this.jdField_a_of_type_AndroidxAppcompatWidgetToolbar, this.jdField_a_of_type_Int);
+    ActionMenuItemView localActionMenuItemView = ToolbarUtils.a(this.a, this.b);
     if (localActionMenuItemView != null)
     {
-      BadgeDrawable localBadgeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
-      localBadgeDrawable.f(localBadgeDrawable.c() + this.jdField_a_of_type_AndroidxAppcompatWidgetToolbar.getResources().getDimensionPixelOffset(R.dimen.K));
-      localBadgeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
-      localBadgeDrawable.g(localBadgeDrawable.d() + this.jdField_a_of_type_AndroidxAppcompatWidgetToolbar.getResources().getDimensionPixelOffset(R.dimen.L));
-      BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, localActionMenuItemView, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      BadgeDrawable localBadgeDrawable = this.c;
+      localBadgeDrawable.f(localBadgeDrawable.h() + this.a.getResources().getDimensionPixelOffset(R.dimen.K));
+      localBadgeDrawable = this.c;
+      localBadgeDrawable.g(localBadgeDrawable.i() + this.a.getResources().getDimensionPixelOffset(R.dimen.L));
+      BadgeUtils.a(this.c, localActionMenuItemView, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.badge.BadgeUtils.1
  * JD-Core Version:    0.7.0.1
  */

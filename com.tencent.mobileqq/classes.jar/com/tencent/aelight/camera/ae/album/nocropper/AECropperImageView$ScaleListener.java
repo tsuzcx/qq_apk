@@ -15,7 +15,7 @@ class AECropperImageView$ScaleListener
     if (!AECropperImageView.a(this.a)) {
       return false;
     }
-    if (AECropperImageView.a(this.a) == 2) {
+    if (AECropperImageView.c(this.a) == 2) {
       return false;
     }
     if (AECropperImageView.b(this.a))
@@ -34,7 +34,7 @@ class AECropperImageView$ScaleListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperImageView.ScaleListener
  * JD-Core Version:    0.7.0.1
  */

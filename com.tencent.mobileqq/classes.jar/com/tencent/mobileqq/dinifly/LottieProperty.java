@@ -24,12 +24,15 @@ public abstract interface LottieProperty
   public static final Float REPEATER_OFFSET;
   public static final Integer STROKE_COLOR = Integer.valueOf(2);
   public static final Float STROKE_WIDTH;
+  public static final Float TEXT_SIZE;
   public static final Float TEXT_TRACKING;
   public static final Float TIME_REMAP;
   public static final PointF TRANSFORM_ANCHOR_POINT;
   public static final Float TRANSFORM_END_OPACITY;
   public static final Integer TRANSFORM_OPACITY = Integer.valueOf(3);
   public static final PointF TRANSFORM_POSITION;
+  public static final Float TRANSFORM_POSITION_X;
+  public static final Float TRANSFORM_POSITION_Y;
   public static final Float TRANSFORM_ROTATION;
   public static final ScaleXY TRANSFORM_SCALE;
   public static final Float TRANSFORM_SKEW;
@@ -41,6 +44,8 @@ public abstract interface LottieProperty
     OPACITY = Integer.valueOf(4);
     TRANSFORM_ANCHOR_POINT = new PointF();
     TRANSFORM_POSITION = new PointF();
+    TRANSFORM_POSITION_X = Float.valueOf(15.0F);
+    TRANSFORM_POSITION_Y = Float.valueOf(16.0F);
     ELLIPSE_SIZE = new PointF();
     RECTANGLE_SIZE = new PointF();
     Float localFloat = Float.valueOf(0.0F);
@@ -60,15 +65,15 @@ public abstract interface LottieProperty
     POLYSTAR_OUTER_RADIUS = Float.valueOf(9.0F);
     POLYSTAR_INNER_ROUNDEDNESS = Float.valueOf(10.0F);
     POLYSTAR_OUTER_ROUNDEDNESS = Float.valueOf(11.0F);
-    localFloat = Float.valueOf(12.0F);
-    TRANSFORM_START_OPACITY = localFloat;
-    TRANSFORM_END_OPACITY = localFloat;
+    TRANSFORM_START_OPACITY = Float.valueOf(12.0F);
+    TRANSFORM_END_OPACITY = Float.valueOf(12.1F);
     TIME_REMAP = Float.valueOf(13.0F);
+    TEXT_SIZE = Float.valueOf(14.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieProperty
  * JD-Core Version:    0.7.0.1
  */

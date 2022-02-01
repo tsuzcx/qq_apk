@@ -12,17 +12,17 @@ final class PublishManagerImpl$addPublishListener$videoPublishCallback$1
 {
   public final void a(UgcVideo paramUgcVideo)
   {
-    PublishManagerImpl localPublishManagerImpl = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsPublishManagerImpl;
+    PublishManagerImpl localPublishManagerImpl = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramUgcVideo, "ugcVideo");
     paramUgcVideo = PublishManagerImpl.a(localPublishManagerImpl, paramUgcVideo);
     if (paramUgcVideo != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPublishManager$IPublishListener.a(paramUgcVideo);
+      this.b.a(paramUgcVideo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.PublishManagerImpl.addPublishListener.videoPublishCallback.1
  * JD-Core Version:    0.7.0.1
  */

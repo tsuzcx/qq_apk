@@ -25,30 +25,29 @@ import mqq.manager.Manager;
 public class BusinessCardManager
   implements Manager
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  TransFileControllerImpl jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl = null;
-  protected ArrayList<SchoolInfo> a;
-  protected ConcurrentHashMap<String, BusinessCard> a;
-  protected ConcurrentHashMap<String, BusinessCard> b;
+  QQAppInterface a;
+  SharedPreferences b;
+  protected ConcurrentHashMap<String, BusinessCard> c;
+  protected ConcurrentHashMap<String, BusinessCard> d;
+  EntityManager e;
+  TransFileControllerImpl f = null;
+  protected ArrayList<SchoolInfo> g = new ArrayList(0);
   
   public BusinessCardManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.b = new ConcurrentHashMap();
+    this.a = paramQQAppInterface;
+    this.e = this.a.getEntityManagerFactory().createEntityManager();
+    this.c = new ConcurrentHashMap();
+    this.d = new ConcurrentHashMap();
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("pref_business_card");
     localStringBuilder.append(paramQQAppInterface.getAccount());
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+    this.b = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
     a();
   }
   
-  private boolean a(BusinessCard paramBusinessCard)
+  private boolean c(BusinessCard paramBusinessCard)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -62,7 +61,7 @@ public class BusinessCardManager
         if (str.length() != 0)
         {
           paramBusinessCard.setStatus(1000);
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramBusinessCard);
+          this.e.persistOrReplace(paramBusinessCard);
           bool1 = bool2;
           if (paramBusinessCard.getStatus() == 1001) {
             bool1 = true;
@@ -73,79 +72,23 @@ public class BusinessCardManager
     return bool1;
   }
   
-  private void c(BusinessCard paramBusinessCard)
-  {
-    if (paramBusinessCard != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramBusinessCard);
-    }
-  }
-  
   private void d(BusinessCard paramBusinessCard)
   {
     if (paramBusinessCard != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramBusinessCard);
+      this.e.update(paramBusinessCard);
     }
   }
   
-  public int a()
+  private void e(BusinessCard paramBusinessCard)
   {
-    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_server_seq", -1);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getLocalSeq | seq = ");
-      localStringBuilder.append(i);
-      QLog.d("BusinessCard_Manager", 2, localStringBuilder.toString());
+    if (paramBusinessCard != null) {
+      this.e.remove(paramBusinessCard);
     }
-    return i;
-  }
-  
-  public BusinessCard a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localBusinessCard = (BusinessCard)((Map.Entry)localIterator.next()).getValue();
-        if (localBusinessCard.cardType == 1) {
-          break label63;
-        }
-      }
-    }
-    BusinessCard localBusinessCard = null;
-    label63:
-    if ((localBusinessCard == null) && (QLog.isColorLevel())) {
-      QLog.w("BusinessCard_Manager", 2, "getMyBusinessCard return null");
-    }
-    return localBusinessCard;
   }
   
   public BusinessCard a(String paramString)
   {
-    return (BusinessCard)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public ArrayList<SchoolInfo> a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
-      return localArrayList2;
-    }
-  }
-  
-  List<BusinessCard> a()
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(BusinessCard.class);
-    if ((localList != null) && (QLog.isColorLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getBusinessCardListFromDB= ");
-      localStringBuilder.append(localList.size());
-      QLog.d("BusinessCard_Manager", 2, localStringBuilder.toString());
-    }
-    return localList;
+    return (BusinessCard)this.c.get(paramString);
   }
   
   public void a()
@@ -156,7 +99,7 @@ public class BusinessCardManager
   public void a(int paramInt)
   {
     if (paramInt != -1) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_server_seq", paramInt).commit();
+      this.b.edit().putInt("key_server_seq", paramInt).commit();
     }
     if (QLog.isColorLevel())
     {
@@ -185,13 +128,13 @@ public class BusinessCardManager
         if (paramInt != 2) {
           return;
         }
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_need_show_guide", paramBoolean).commit();
+        this.b.edit().putBoolean("key_need_show_guide", paramBoolean).commit();
         return;
       }
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_need_req_card", paramBoolean).commit();
+      this.b.edit().putBoolean("key_need_req_card", paramBoolean).commit();
       return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_show_open_card", paramBoolean).commit();
+    this.b.edit().putBoolean("key_show_open_card", paramBoolean).commit();
   }
   
   public void a(BusinessCard paramBusinessCard)
@@ -199,19 +142,10 @@ public class BusinessCardManager
     if (paramBusinessCard == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramBusinessCard.cardId)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramBusinessCard.cardId);
+    if (this.c.containsKey(paramBusinessCard.cardId)) {
+      this.c.remove(paramBusinessCard.cardId);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramBusinessCard.cardId, paramBusinessCard);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-    {
-      d((BusinessCard)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
+    this.c.put(paramBusinessCard.cardId, paramBusinessCard);
   }
   
   public void a(String paramString, BusinessCard paramBusinessCard)
@@ -221,20 +155,20 @@ public class BusinessCardManager
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if (this.b.containsKey(paramString)) {
-        this.b.remove(paramString);
+      if (this.d.containsKey(paramString)) {
+        this.d.remove(paramString);
       }
-      this.b.put(paramString, paramBusinessCard);
+      this.d.put(paramString, paramBusinessCard);
     }
   }
   
   public void a(ArrayList<SchoolInfo> paramArrayList)
   {
     if (paramArrayList != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.g)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+        this.g.clear();
+        this.g.addAll(paramArrayList);
         return;
       }
     }
@@ -247,88 +181,88 @@ public class BusinessCardManager
     //   0: aload_1
     //   1: ifnull +184 -> 185
     //   4: aload_0
-    //   5: getfield 46	com/tencent/mobileqq/businessCard/BusinessCardManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   8: invokevirtual 283	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   11: invokevirtual 288	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   5: getfield 51	com/tencent/mobileqq/businessCard/BusinessCardManager:e	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   8: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   11: invokevirtual 228	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   14: iload_2
     //   15: ifeq +16 -> 31
     //   18: aload_0
-    //   19: getfield 46	com/tencent/mobileqq/businessCard/BusinessCardManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   22: ldc 87
-    //   24: invokevirtual 293	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   27: invokevirtual 297	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/String;)Z
+    //   19: getfield 51	com/tencent/mobileqq/businessCard/BusinessCardManager:e	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   22: ldc 92
+    //   24: invokevirtual 233	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   27: invokevirtual 237	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/String;)Z
     //   30: pop
     //   31: aload_1
-    //   32: invokeinterface 298 1 0
+    //   32: invokeinterface 243 1 0
     //   37: astore_3
     //   38: aload_3
-    //   39: invokeinterface 162 1 0
+    //   39: invokeinterface 248 1 0
     //   44: ifeq +61 -> 105
     //   47: aload_3
-    //   48: invokeinterface 166 1 0
-    //   53: checkcast 87	com/tencent/mobileqq/businessCard/data/BusinessCard
+    //   48: invokeinterface 252 1 0
+    //   53: checkcast 92	com/tencent/mobileqq/businessCard/data/BusinessCard
     //   56: astore_1
     //   57: aload_0
     //   58: aload_1
-    //   59: invokespecial 300	com/tencent/mobileqq/businessCard/BusinessCardManager:a	(Lcom/tencent/mobileqq/businessCard/data/BusinessCard;)Z
+    //   59: invokespecial 254	com/tencent/mobileqq/businessCard/BusinessCardManager:c	(Lcom/tencent/mobileqq/businessCard/data/BusinessCard;)Z
     //   62: ifeq +6 -> 68
     //   65: goto -27 -> 38
-    //   68: new 59	java/lang/StringBuilder
+    //   68: new 64	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   72: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   75: astore_3
     //   76: aload_3
-    //   77: ldc_w 302
-    //   80: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: ldc_w 256
+    //   80: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: pop
     //   84: aload_3
     //   85: aload_1
-    //   86: getfield 91	com/tencent/mobileqq/businessCard/data/BusinessCard:cardId	Ljava/lang/String;
-    //   89: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: getfield 96	com/tencent/mobileqq/businessCard/data/BusinessCard:cardId	Ljava/lang/String;
+    //   89: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: pop
-    //   93: new 279	java/lang/Exception
+    //   93: new 219	java/lang/Exception
     //   96: dup
     //   97: aload_3
-    //   98: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokespecial 304	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   98: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: invokespecial 259	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   104: athrow
     //   105: aload_0
-    //   106: getfield 46	com/tencent/mobileqq/businessCard/BusinessCardManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   109: invokevirtual 283	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   112: invokevirtual 306	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   106: getfield 51	com/tencent/mobileqq/businessCard/BusinessCardManager:e	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   109: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   112: invokevirtual 261	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   115: aload_0
-    //   116: getfield 46	com/tencent/mobileqq/businessCard/BusinessCardManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   119: invokevirtual 283	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   122: invokevirtual 309	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   116: getfield 51	com/tencent/mobileqq/businessCard/BusinessCardManager:e	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   119: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   122: invokevirtual 264	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   125: return
     //   126: astore_1
     //   127: goto +46 -> 173
     //   130: astore_1
-    //   131: new 59	java/lang/StringBuilder
+    //   131: new 64	java/lang/StringBuilder
     //   134: dup
-    //   135: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   135: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   138: astore_3
     //   139: aload_3
-    //   140: ldc_w 311
-    //   143: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: ldc_w 266
+    //   143: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: pop
     //   147: aload_3
     //   148: aload_1
-    //   149: invokevirtual 312	java/lang/Exception:toString	()Ljava/lang/String;
-    //   152: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 267	java/lang/Exception:toString	()Ljava/lang/String;
+    //   152: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
-    //   156: ldc 140
+    //   156: ldc 168
     //   158: iconst_2
     //   159: aload_3
-    //   160: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   160: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   166: aload_1
-    //   167: invokevirtual 315	java/lang/Exception:printStackTrace	()V
+    //   167: invokevirtual 270	java/lang/Exception:printStackTrace	()V
     //   170: goto -55 -> 115
     //   173: aload_0
-    //   174: getfield 46	com/tencent/mobileqq/businessCard/BusinessCardManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   177: invokevirtual 283	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   180: invokevirtual 309	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   174: getfield 51	com/tencent/mobileqq/businessCard/BusinessCardManager:e	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   177: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   180: invokevirtual 264	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   183: aload_1
     //   184: athrow
     //   185: return
@@ -357,7 +291,7 @@ public class BusinessCardManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_red_point", paramBoolean).commit();
+    this.b.edit().putBoolean("key_red_point", paramBoolean).commit();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -367,7 +301,42 @@ public class BusinessCardManager
     }
   }
   
-  public boolean a(int paramInt)
+  public ArrayList<SchoolInfo> b()
+  {
+    synchronized (this.g)
+    {
+      ArrayList localArrayList2 = (ArrayList)this.g.clone();
+      return localArrayList2;
+    }
+  }
+  
+  public void b(BusinessCard paramBusinessCard)
+  {
+    if (paramBusinessCard == null) {
+      return;
+    }
+    if (this.c.containsKey(paramBusinessCard.cardId))
+    {
+      this.c.remove(paramBusinessCard.cardId);
+      d(paramBusinessCard);
+    }
+    else
+    {
+      c(paramBusinessCard);
+    }
+    this.c.put(paramBusinessCard.cardId, paramBusinessCard);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.c.containsKey(paramString))
+    {
+      e((BusinessCard)this.c.get(paramString));
+      this.c.remove(paramString);
+    }
+  }
+  
+  public boolean b(int paramInt)
   {
     boolean bool = false;
     if (paramInt != 0)
@@ -375,15 +344,15 @@ public class BusinessCardManager
       if (paramInt != 1)
       {
         if (paramInt == 2) {
-          bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_show_guide", true);
+          bool = this.b.getBoolean("key_need_show_guide", true);
         }
       }
       else {
-        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_req_card", false);
+        bool = this.b.getBoolean("key_need_req_card", false);
       }
     }
     else {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_show_open_card", false);
+      bool = this.b.getBoolean("key_show_open_card", false);
     }
     if (QLog.isColorLevel())
     {
@@ -397,49 +366,60 @@ public class BusinessCardManager
     return bool;
   }
   
-  public BusinessCard b(String paramString)
+  public BusinessCard c()
   {
-    return (BusinessCard)this.b.get(paramString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(BusinessCard.class);
-  }
-  
-  public void b(BusinessCard paramBusinessCard)
-  {
-    if (paramBusinessCard == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramBusinessCard.cardId))
+    if (!this.c.isEmpty())
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramBusinessCard.cardId);
-      c(paramBusinessCard);
+      Iterator localIterator = this.c.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localBusinessCard = (BusinessCard)((Map.Entry)localIterator.next()).getValue();
+        if (localBusinessCard.cardType == 1) {
+          break label63;
+        }
+      }
     }
-    else
-    {
-      a(paramBusinessCard);
+    BusinessCard localBusinessCard = null;
+    label63:
+    if ((localBusinessCard == null) && (QLog.isColorLevel())) {
+      QLog.w("BusinessCard_Manager", 2, "getMyBusinessCard return null");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramBusinessCard.cardId, paramBusinessCard);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.b.containsKey(paramString)) {
-      this.b.remove(paramString);
-    }
+    return localBusinessCard;
   }
   
   public BusinessCard c(String paramString)
   {
+    return (BusinessCard)this.d.get(paramString);
+  }
+  
+  List<BusinessCard> d()
+  {
+    List localList = this.e.query(BusinessCard.class);
+    if ((localList != null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBusinessCardListFromDB= ");
+      localStringBuilder.append(localList.size());
+      QLog.d("BusinessCard_Manager", 2, localStringBuilder.toString());
+    }
+    return localList;
+  }
+  
+  public void d(String paramString)
+  {
+    if (this.d.containsKey(paramString)) {
+      this.d.remove(paramString);
+    }
+  }
+  
+  public BusinessCard e(String paramString)
+  {
     if (paramString != null)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
+      if (this.c.isEmpty()) {
         return null;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+      Iterator localIterator = this.c.values().iterator();
       while (localIterator.hasNext())
       {
         BusinessCard localBusinessCard = (BusinessCard)localIterator.next();
@@ -451,10 +431,29 @@ public class BusinessCardManager
     return null;
   }
   
-  public BusinessCard d(String paramString)
+  public void e()
+  {
+    this.c.clear();
+    this.e.drop(BusinessCard.class);
+  }
+  
+  public int f()
+  {
+    int i = this.b.getInt("key_server_seq", -1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLocalSeq | seq = ");
+      localStringBuilder.append(i);
+      QLog.d("BusinessCard_Manager", 2, localStringBuilder.toString());
+    }
+    return i;
+  }
+  
+  public BusinessCard f(String paramString)
   {
     BusinessCard localBusinessCard1 = new BusinessCard();
-    BusinessCard localBusinessCard2 = (BusinessCard)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(BusinessCard.class, paramString);
+    BusinessCard localBusinessCard2 = (BusinessCard)this.e.find(BusinessCard.class, paramString);
     paramString = localBusinessCard2;
     if (localBusinessCard2 == null) {
       paramString = localBusinessCard1;
@@ -464,14 +463,14 @@ public class BusinessCardManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b.clear();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.c.clear();
+    this.d.clear();
+    this.e.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardManager
  * JD-Core Version:    0.7.0.1
  */

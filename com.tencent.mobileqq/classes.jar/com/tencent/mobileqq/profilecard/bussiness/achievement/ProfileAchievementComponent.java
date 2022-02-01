@@ -68,7 +68,7 @@ public class ProfileAchievementComponent
         }
       }
       localObject = MobileQQ.sMobileQQ.getApplicationContext();
-      QQToast.a((Context)localObject, ((Context)localObject).getString(2131694667), 0).a();
+      QQToast.makeText((Context)localObject, ((Context)localObject).getString(2131892359), 0).show();
     }
     if (this.mViewContainer != null) {
       makeOrRefreshLifeAchievement(((ProfileCardInfo)this.mData).card, false);
@@ -112,7 +112,7 @@ public class ProfileAchievementComponent
       {
         localLifeAchivementPanelView = new LifeAchivementPanelView(this.mActivity);
         localLifeAchivementPanelView.setLifeAchievementHandler((LifeAchievementHandler)this.mApp.getBusinessHandler(LifeAchievementHandler.class.getName()));
-        localLifeAchivementPanelView.setTitle(this.mActivity.getString(2131691185));
+        localLifeAchivementPanelView.setTitle(this.mActivity.getString(2131888131));
         this.mViewContainer = localLifeAchivementPanelView;
         paramBoolean = true;
       }
@@ -144,7 +144,7 @@ public class ProfileAchievementComponent
     if (paramBoolean)
     {
       i = paramProfileLifeAchievementInfo.lifeAchievementTotalCount;
-      String str = String.format(this.mActivity.getString(2131698979), new Object[] { Integer.valueOf(i) });
+      String str = String.format(this.mActivity.getString(2131896971), new Object[] { Integer.valueOf(i) });
       TextView localTextView = new TextView(this.mActivity);
       localTextView.setText(str);
       paramLifeAchivementPanelView.mTitleExtContainer.removeAllViews();
@@ -163,10 +163,10 @@ public class ProfileAchievementComponent
         i = 1;
       }
       if ((paramBoolean) || (i != 0)) {
-        ((URLImageView)paramLifeAchivementPanelView.findViewById(2131369710)).setVisibility(4);
+        ((URLImageView)paramLifeAchivementPanelView.findViewById(2131436821)).setVisibility(4);
       }
-      paramProfileLifeAchievementInfo = (TextView)paramLifeAchivementPanelView.findViewById(2131379478);
-      paramLifeAchivementPanelView = (TextView)paramLifeAchivementPanelView.findViewById(2131379479);
+      paramProfileLifeAchievementInfo = (TextView)paramLifeAchivementPanelView.findViewById(2131448221);
+      paramLifeAchivementPanelView = (TextView)paramLifeAchivementPanelView.findViewById(2131448222);
       updateItemTheme(paramProfileLifeAchievementInfo, null);
       updateItemTheme(paramLifeAchivementPanelView, null);
     }
@@ -222,7 +222,7 @@ public class ProfileAchievementComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.achievement.ProfileAchievementComponent
  * JD-Core Version:    0.7.0.1
  */

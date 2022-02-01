@@ -10,18 +10,18 @@ class NewFriendServiceImpl$1
   
   public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
   {
-    if ((!paramNewFriendMessage1.a()) && (paramNewFriendMessage2.a())) {
+    if ((!paramNewFriendMessage1.b()) && (paramNewFriendMessage2.b())) {
       return -1;
     }
-    if ((paramNewFriendMessage1.a()) && (!paramNewFriendMessage2.a())) {
+    if ((paramNewFriendMessage1.b()) && (!paramNewFriendMessage2.b())) {
       return 1;
     }
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
+    return (int)(paramNewFriendMessage2.d - paramNewFriendMessage1.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

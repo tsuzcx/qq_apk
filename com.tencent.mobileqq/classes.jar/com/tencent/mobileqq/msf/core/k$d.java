@@ -22,14 +22,14 @@ class k$d
     //   4: aload_0
     //   5: getfield 40	com/tencent/mobileqq/msf/core/k$d:c	Lcom/tencent/mobileqq/msf/core/k$a;
     //   8: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   11: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   14: getfield 67	com/tencent/mobileqq/msf/core/ac:g	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   11: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   14: getfield 67	com/tencent/mobileqq/msf/core/ad:g	Ljava/util/concurrent/LinkedBlockingDeque;
     //   17: invokevirtual 73	java/util/concurrent/LinkedBlockingDeque:size	()I
     //   20: invokevirtual 76	com/tencent/mobileqq/msf/core/k$a:a	(I)Z
     //   23: istore_3
     //   24: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   27: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   30: getfield 67	com/tencent/mobileqq/msf/core/ac:g	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   27: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   30: getfield 67	com/tencent/mobileqq/msf/core/ad:g	Ljava/util/concurrent/LinkedBlockingDeque;
     //   33: invokevirtual 73	java/util/concurrent/LinkedBlockingDeque:size	()I
     //   36: istore_1
     //   37: iload_1
@@ -67,8 +67,8 @@ class k$d
     //   93: goto +3 -> 96
     //   96: aload_0
     //   97: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   100: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   103: invokevirtual 96	com/tencent/mobileqq/msf/core/ac:a	()J
+    //   100: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   103: invokevirtual 96	com/tencent/mobileqq/msf/core/ad:a	()J
     //   106: putfield 42	com/tencent/mobileqq/msf/core/k$d:h	J
     //   109: invokestatic 101	android/os/SystemClock:uptimeMillis	()J
     //   112: aload_0
@@ -77,8 +77,8 @@ class k$d
     //   117: invokestatic 107	java/lang/Math:abs	(J)J
     //   120: lstore 6
     //   122: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   125: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   128: invokevirtual 109	com/tencent/mobileqq/msf/core/ac:b	()J
+    //   125: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   128: invokevirtual 109	com/tencent/mobileqq/msf/core/ad:b	()J
     //   131: lstore 8
     //   133: aload 13
     //   135: astore 12
@@ -121,16 +121,16 @@ class k$d
     //   200: aastore
     //   201: invokestatic 91	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   204: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   207: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   210: invokevirtual 115	com/tencent/mobileqq/msf/core/ac:c	()V
+    //   207: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   210: invokevirtual 115	com/tencent/mobileqq/msf/core/ad:c	()V
     //   213: ldc 93
     //   215: astore 12
     //   217: iconst_2
     //   218: istore_2
     //   219: aload_0
     //   220: getstatic 58	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   223: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   226: getfield 118	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   223: getfield 62	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   226: getfield 118	com/tencent/mobileqq/msf/core/ad:b	Lcom/tencent/mobileqq/msf/core/net/n;
     //   229: invokevirtual 124	com/tencent/mobileqq/msf/core/net/n:l	()Lcom/tencent/mobileqq/msf/core/net/m;
     //   232: invokevirtual 128	com/tencent/mobileqq/msf/core/net/m:f	()J
     //   235: putfield 44	com/tencent/mobileqq/msf/core/k$d:i	J
@@ -293,10 +293,10 @@ class k$d
     //   540: invokevirtual 164	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   543: pop
     //   544: invokestatic 199	com/tencent/mobileqq/msf/service/MsfService:getCore	()Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   547: invokevirtual 203	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   547: invokevirtual 203	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   550: ifnull +21 -> 571
     //   553: invokestatic 199	com/tencent/mobileqq/msf/service/MsfService:getCore	()Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   556: invokevirtual 203	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   556: invokevirtual 203	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   559: ldc 205
     //   561: iconst_1
     //   562: lconst_0
@@ -304,7 +304,7 @@ class k$d
     //   564: aload 15
     //   566: iconst_0
     //   567: iconst_0
-    //   568: invokevirtual 210	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   568: invokevirtual 210	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   571: invokestatic 214	java/lang/Math:random	()D
     //   574: ldc2_w 215
     //   577: dcmpg
@@ -442,7 +442,7 @@ class k$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class QavWTFilter
   {
     if ((!WTogetherUtil.a()) && (paramPlusPanelAppLoader != null))
     {
-      paramPlusPanelAppLoader.b(223);
+      paramPlusPanelAppLoader.c(223);
       if (QLog.isColorLevel())
       {
         paramPlusPanelAppLoader = new StringBuilder();

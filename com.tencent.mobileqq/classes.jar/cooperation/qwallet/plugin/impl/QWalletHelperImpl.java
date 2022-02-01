@@ -130,7 +130,7 @@ public class QWalletHelperImpl
       localObject = ((MobileQQ)localObject).getProperty(localStringBuilder.toString());
       paramIntent.putExtra("QWalletExtra.Account.Uin", paramAppRuntime.getCurrentAccountUin());
       paramIntent.putExtra("QWalletExtra.Account.NickName", (String)localObject);
-      paramIntent.putExtra("QWalletExtra.MQQ.APPID", AppSetting.a());
+      paramIntent.putExtra("QWalletExtra.MQQ.APPID", AppSetting.d());
       paramIntent.putExtra("QWalletExtra.MQQ.GUID", NetConnInfoCenter.GUID);
       paramIntent.putExtra("QWalletExtra.MQQ.Receiver", QWalletResultReceiver.getInstance());
       paramIntent.putExtra("QWalletExtra.Plugin.isloading", paramBoolean1);
@@ -169,13 +169,9 @@ public class QWalletHelperImpl
   
   private static void addWalletEntryConfig(Intent paramIntent, BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ArrayList localArrayList = parseTabsConfig(paramBaseQQAppInterface);
-    if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      paramIntent.putExtra("entry_tab_info", localArrayList);
-    }
-    paramBaseQQAppInterface = parseExtraConfig(paramBaseQQAppInterface);
-    if (paramBaseQQAppInterface != null) {
-      paramIntent.putExtra("entry_extra_config", paramBaseQQAppInterface);
+    paramBaseQQAppInterface = parseTabsConfig(paramBaseQQAppInterface);
+    if ((paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.size() > 0)) {
+      paramIntent.putExtra("entry_tab_info", paramBaseQQAppInterface);
     }
   }
   
@@ -497,7 +493,7 @@ public class QWalletHelperImpl
         paramBundle = paramBundle.getString("packageName");
         if (!TextUtils.isEmpty(paramBundle))
         {
-          Object localObject = QWalletTools.a();
+          Object localObject = QWalletTools.b();
           if (localObject != null)
           {
             localObject = (IQWalletConfigService)((BaseQQAppInterface)localObject).getRuntimeService(IQWalletConfigService.class, "");
@@ -754,16 +750,6 @@ public class QWalletHelperImpl
     return localObject3;
   }
   
-  static Bundle parseExtraConfig(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    Bundle localBundle = new Bundle();
-    paramBaseQQAppInterface = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
-    if (paramBaseQQAppInterface != null) {
-      localBundle.putInt("accountShowType", paramBaseQQAppInterface.getInt("common", 0, new String[] { "accountShow", "type" }));
-    }
-    return localBundle;
-  }
-  
   static ArrayList<HashMap<String, String>> parseTabsConfig(BaseQQAppInterface paramBaseQQAppInterface)
   {
     Object localObject2 = (IQWalletConfigService)paramBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
@@ -955,7 +941,7 @@ public class QWalletHelperImpl
     QWalletResultReceiver.clear();
     ((IHbThemeConfigApi)QRoute.api(IHbThemeConfigApi.class)).onDestory();
     ((IPreloadImgApi)QRoute.api(IPreloadImgApi.class)).onDestory();
-    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().b();
+    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().c();
     PayLogicImpl.clearCache();
     lastTime = -1L;
   }
@@ -1214,11 +1200,11 @@ public class QWalletHelperImpl
               RouteUtils.a(paramActivity, paramString, "/base/payBridge", 1);
               return;
             }
-            QQToast.a(paramActivity, HardCodeUtil.a(R.string.cR), 0).a();
+            QQToast.makeText(paramActivity, HardCodeUtil.a(R.string.cU), 0).show();
             paramActivity.finish();
             return;
           }
-          QQToast.a(paramActivity, HardCodeUtil.a(R.string.cR), 0).a();
+          QQToast.makeText(paramActivity, HardCodeUtil.a(R.string.cU), 0).show();
           paramActivity.finish();
           return;
         }
@@ -1421,29 +1407,29 @@ public class QWalletHelperImpl
     //   6: aload_0
     //   7: monitorexit
     //   8: return
-    //   9: ldc_w 496
-    //   12: invokestatic 502	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   15: checkcast 496	com/qwallet/temp/IQWalletTemp
+    //   9: ldc_w 486
+    //   12: invokestatic 492	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   15: checkcast 486	com/qwallet/temp/IQWalletTemp
     //   18: aload_1
-    //   19: invokeinterface 1311 2 0
+    //   19: invokeinterface 1302 2 0
     //   24: istore_2
     //   25: new 96	java/lang/StringBuilder
     //   28: dup
     //   29: invokespecial 97	java/lang/StringBuilder:<init>	()V
     //   32: astore 7
     //   34: aload 7
-    //   36: ldc_w 1313
+    //   36: ldc_w 1304
     //   39: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload 7
     //   45: iload_2
-    //   46: invokevirtual 457	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 448	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   49: pop
-    //   50: ldc_w 459
+    //   50: ldc_w 450
     //   53: iconst_1
     //   54: aload 7
     //   56: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokestatic 462	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: invokestatic 452	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   62: iload_2
     //   63: ifne +24 -> 87
     //   66: aload_0
@@ -1452,23 +1438,23 @@ public class QWalletHelperImpl
     //   69: astore_1
     //   70: goto +210 -> 280
     //   73: astore 7
-    //   75: ldc_w 459
+    //   75: ldc_w 450
     //   78: iconst_1
-    //   79: ldc_w 1313
+    //   79: ldc_w 1304
     //   82: aload 7
-    //   84: invokestatic 1316	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   87: ldc_w 496
-    //   90: invokestatic 502	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   93: checkcast 496	com/qwallet/temp/IQWalletTemp
+    //   84: invokestatic 1307	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   87: ldc_w 486
+    //   90: invokestatic 492	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   93: checkcast 486	com/qwallet/temp/IQWalletTemp
     //   96: aload_1
-    //   97: ldc_w 1318
-    //   100: invokeinterface 1322 3 0
+    //   97: ldc_w 1309
+    //   100: invokeinterface 1313 3 0
     //   105: astore 7
     //   107: aload 7
     //   109: ifnull +168 -> 277
     //   112: aload 7
-    //   114: ldc_w 1113
-    //   117: invokevirtual 621	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   114: ldc_w 1099
+    //   117: invokevirtual 612	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   120: ifeq +6 -> 126
     //   123: goto +154 -> 277
     //   126: invokestatic 211	java/lang/System:currentTimeMillis	()J
@@ -1482,7 +1468,7 @@ public class QWalletHelperImpl
     //   145: lload_3
     //   146: lload 5
     //   148: lsub
-    //   149: ldc2_w 1323
+    //   149: ldc2_w 1314
     //   152: lcmp
     //   153: ifge +6 -> 159
     //   156: aload_0
@@ -1490,25 +1476,25 @@ public class QWalletHelperImpl
     //   158: return
     //   159: lload_3
     //   160: putstatic 63	cooperation/qwallet/plugin/impl/QWalletHelperImpl:lastTime	J
-    //   163: invokestatic 302	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   163: invokestatic 293	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   166: ifeq +12 -> 178
     //   169: ldc 19
     //   171: iconst_4
-    //   172: ldc_w 1326
-    //   175: invokestatic 548	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   172: ldc_w 1317
+    //   175: invokestatic 539	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   178: aload_1
-    //   179: invokevirtual 1327	com/tencent/common/app/business/BaseQQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   179: invokevirtual 1318	com/tencent/common/app/business/BaseQQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   182: astore 8
-    //   184: new 572	android/os/Bundle
+    //   184: new 563	android/os/Bundle
     //   187: dup
-    //   188: invokespecial 836	android/os/Bundle:<init>	()V
+    //   188: invokespecial 1095	android/os/Bundle:<init>	()V
     //   191: astore 9
     //   193: ldc 74
     //   195: astore 7
     //   197: aload_1
     //   198: iconst_2
-    //   199: invokevirtual 1328	com/tencent/common/app/business/BaseQQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   202: checkcast 768	mqq/manager/TicketManager
+    //   199: invokevirtual 1319	com/tencent/common/app/business/BaseQQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   202: checkcast 763	mqq/manager/TicketManager
     //   205: astore 10
     //   207: aload 7
     //   209: astore_1
@@ -1516,27 +1502,27 @@ public class QWalletHelperImpl
     //   212: ifnull +13 -> 225
     //   215: aload 10
     //   217: aload 8
-    //   219: invokeinterface 771 2 0
+    //   219: invokeinterface 766 2 0
     //   224: astore_1
     //   225: aload 9
-    //   227: ldc_w 760
+    //   227: ldc_w 755
     //   230: aload 8
-    //   232: invokevirtual 1116	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   232: invokevirtual 1102	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   235: aload 9
-    //   237: ldc_w 1330
+    //   237: ldc_w 1321
     //   240: aload_1
-    //   241: invokevirtual 1116	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   241: invokevirtual 1102	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   244: aload 9
-    //   246: ldc_w 1332
-    //   249: ldc_w 791
-    //   252: invokevirtual 1116	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   246: ldc_w 1323
+    //   249: ldc_w 786
+    //   252: invokevirtual 1102	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   255: aload 9
-    //   257: ldc_w 1334
+    //   257: ldc_w 1325
     //   260: bipush 23
-    //   262: invokevirtual 848	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   265: invokestatic 380	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   262: invokevirtual 1109	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   265: invokestatic 371	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   268: aload 9
-    //   270: invokestatic 1340	cooperation/qwallet/plugin/QWalletPayBridge:launchBackground	(Landroid/content/Context;Landroid/os/Bundle;)Z
+    //   270: invokestatic 1331	cooperation/qwallet/plugin/QWalletPayBridge:launchBackground	(Landroid/content/Context;Landroid/os/Bundle;)Z
     //   273: pop
     //   274: aload_0
     //   275: monitorexit
@@ -1906,7 +1892,7 @@ public class QWalletHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.QWalletHelperImpl
  * JD-Core Version:    0.7.0.1
  */

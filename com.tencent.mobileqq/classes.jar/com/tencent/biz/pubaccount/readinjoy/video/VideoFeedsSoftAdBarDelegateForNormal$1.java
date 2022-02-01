@@ -16,19 +16,19 @@ class VideoFeedsSoftAdBarDelegateForNormal$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.height = (this.c + (int)(paramValueAnimator.getAnimatedFraction() * this.d));
-    VideoFeedsSoftAdBarDelegateForNormal.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsSoftAdBarDelegateForNormal).v.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.width = (this.e + (int)(paramValueAnimator.getAnimatedFraction() * this.f));
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = (this.g + (int)(paramValueAnimator.getAnimatedFraction() * this.f));
-    VideoFeedsSoftAdBarDelegateForNormal.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsSoftAdBarDelegateForNormal).g.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-    this.jdField_b_of_type_AndroidViewViewGroup$LayoutParams.width = (this.h + (int)(paramValueAnimator.getAnimatedFraction() * this.i));
-    VideoFeedsSoftAdBarDelegateForNormal.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsSoftAdBarDelegateForNormal).t.setLayoutParams(this.jdField_b_of_type_AndroidViewViewGroup$LayoutParams);
+    this.a.width = (this.b + (int)(paramValueAnimator.getAnimatedFraction() * this.c));
+    this.a.height = (this.d + (int)(paramValueAnimator.getAnimatedFraction() * this.e));
+    VideoFeedsSoftAdBarDelegateForNormal.a(this.m).bE.setLayoutParams(this.a);
+    this.f.width = (this.g + (int)(paramValueAnimator.getAnimatedFraction() * this.h));
+    this.f.height = (this.i + (int)(paramValueAnimator.getAnimatedFraction() * this.h));
+    VideoFeedsSoftAdBarDelegateForNormal.a(this.m).bu.setLayoutParams(this.f);
+    this.j.width = (this.k + (int)(paramValueAnimator.getAnimatedFraction() * this.l));
+    VideoFeedsSoftAdBarDelegateForNormal.a(this.m).bw.setLayoutParams(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsSoftAdBarDelegateForNormal.1
  * JD-Core Version:    0.7.0.1
  */

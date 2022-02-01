@@ -608,14 +608,14 @@ public class EmoticonManagerServiceImpl
     localPromotionEmoticonPkg.recommendType = paramSTRecommendTabInfo.i32_recommend_mode.get();
     localPromotionEmoticonPkg.redpointFlag = paramSTRecommendTabInfo.int32_red_point_flag.get();
     localPromotionEmoticonPkg.detailUrl = paramSTRecommendTabInfo.str_button_url.get();
-    paramList = HardCodeUtil.a(2131699759);
+    paramList = HardCodeUtil.a(2131897792);
     if (localPromotionEmoticonPkg.feeType == 6)
     {
-      paramSTRecommendTabInfo = HardCodeUtil.a(2131704159);
+      paramSTRecommendTabInfo = HardCodeUtil.a(2131902081);
     }
     else if (localPromotionEmoticonPkg.feeType == 1)
     {
-      paramSTRecommendTabInfo = HardCodeUtil.a(2131704200);
+      paramSTRecommendTabInfo = HardCodeUtil.a(2131902122);
     }
     else if (localPromotionEmoticonPkg.feeType == 4)
     {
@@ -631,7 +631,7 @@ public class EmoticonManagerServiceImpl
       if (localPromotionEmoticonPkg.feeType == 2) {
         if (localPromotionEmoticonPkg.price == PromotionEmoticonPkg.PAY_LIMIT_FREE)
         {
-          paramSTRecommendTabInfo = HardCodeUtil.a(2131704165);
+          paramSTRecommendTabInfo = HardCodeUtil.a(2131902087);
         }
         else if (localPromotionEmoticonPkg.price == PromotionEmoticonPkg.PAY_1_YUAN)
         {
@@ -768,7 +768,7 @@ public class EmoticonManagerServiceImpl
     if (localObject == null) {
       return false;
     }
-    int i = ((ISVIPHandler)this.app.getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).g();
+    int i = ((ISVIPHandler)this.app.getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).j();
     int j = ((EmoticonPackage)localObject).mobileFeetype;
     if (j == 1) {
       return true;
@@ -1837,8 +1837,8 @@ public class EmoticonManagerServiceImpl
       }
       if ((paramEmoticonPackage.jobType != 0) && (4 != paramEmoticonPackage.jobType))
       {
-        paramIEmojiManagerService = EmosmUtils.b(2, paramEmoticonPackage.epId);
-        paramEmoticonPackage = new File(EmosmUtils.a(2, paramEmoticonPackage.epId));
+        paramIEmojiManagerService = EmosmUtils.c(2, paramEmoticonPackage.epId);
+        paramEmoticonPackage = new File(EmosmUtils.b(2, paramEmoticonPackage.epId));
         if (!paramEmoticonPackage.exists())
         {
           paramIEmojiManagerService = new DownloadTask(paramIEmojiManagerService, paramEmoticonPackage);
@@ -2750,7 +2750,7 @@ public class EmoticonManagerServiceImpl
   
   public void parseCloudKeywordsJson()
   {
-    int i = ((ISVIPHandler)this.app.getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).g();
+    int i = ((ISVIPHandler)this.app.getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).j();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -3811,7 +3811,7 @@ public class EmoticonManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

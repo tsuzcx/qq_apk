@@ -25,26 +25,26 @@ final class ColdPalaceTipDialog$init$$inlined$let$lambda$2
   
   public final void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetColdPalaceTipDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetColdPalaceTipDialog.dismiss();
+      if (this.a.isShowing()) {
+        this.a.dismiss();
       }
-      paramView = this.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(paramView, 1, (CharSequence)paramView.getResources().getString(2131692183), 0).a();
+      paramView = this.b;
+      QQToast.makeText(paramView, 1, (CharSequence)paramView.getResources().getString(2131889169), 0).show();
     }
-    else if (this.jdField_a_of_type_JavaLangString != null)
+    else if (this.c != null)
     {
       paramView = (Map)new HashMap();
-      paramView.put("frompage", this.b);
-      paramView.put("to_uid", this.jdField_a_of_type_JavaLangString);
+      paramView.put("frompage", this.d);
+      paramView.put("to_uid", this.c);
       ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#doghouse_page#doghouse", true, -1L, -1L, paramView, true, true);
-      paramView = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+      paramView = this.e.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
       if (paramView != null)
       {
-        ((IExpandHandler)paramView).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetColdPalaceTipDialog.isShowing()) {
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetColdPalaceTipDialog.dismiss();
+        ((IExpandHandler)paramView).a(this.c, this.f);
+        if (this.a.isShowing()) {
+          this.a.dismiss();
         }
       }
       else
@@ -57,7 +57,7 @@ final class ColdPalaceTipDialog$init$$inlined$let$lambda$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ColdPalaceTipDialog.init..inlined.let.lambda.2
  * JD-Core Version:    0.7.0.1
  */

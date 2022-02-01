@@ -15,14 +15,14 @@ class QFlutterLauncher$2
     if (!paramEIPCResult.isSuccess())
     {
       QLog.d("QFlutter.launcher", 1, "install IPC fail");
-      FlutterSubQIPCModule.b();
+      FlutterSubQIPCModule.c();
       QFlutterLauncher.a(this.a, 1, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QFlutterLauncher.2
  * JD-Core Version:    0.7.0.1
  */

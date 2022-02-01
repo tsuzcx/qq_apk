@@ -11,7 +11,7 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public abstract class GeneralGroupNotifyParser
   implements IGeneralGroupNotifyParser
 {
-  private general_group_notify.GroupNotify a(structmsg.StructMsg paramStructMsg)
+  private general_group_notify.GroupNotify b(structmsg.StructMsg paramStructMsg)
   {
     Object localObject3 = null;
     Object localObject2 = null;
@@ -50,13 +50,11 @@ public abstract class GeneralGroupNotifyParser
     return localStructMsg;
   }
   
-  protected abstract <T extends IGeneralGroupNotifyParser.GeneralGroupNotifyInfo> T a(general_group_notify.GroupNotify paramGroupNotify);
-  
   public <T extends IGeneralGroupNotifyParser.GeneralGroupNotifyInfo> T a(structmsg.StructMsg paramStructMsg)
   {
-    paramStructMsg = a(paramStructMsg);
+    paramStructMsg = b(paramStructMsg);
     if (paramStructMsg != null) {
-      paramStructMsg = a(paramStructMsg);
+      paramStructMsg = b(paramStructMsg);
     } else {
       paramStructMsg = null;
     }
@@ -69,10 +67,12 @@ public abstract class GeneralGroupNotifyParser
     }
     return paramStructMsg;
   }
+  
+  protected abstract <T extends IGeneralGroupNotifyParser.GeneralGroupNotifyInfo> T b(general_group_notify.GroupNotify paramGroupNotify);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.generalgroupnotifyparser.GeneralGroupNotifyParser
  * JD-Core Version:    0.7.0.1
  */

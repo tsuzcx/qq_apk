@@ -21,7 +21,6 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
@@ -33,6 +32,7 @@ import com.tencent.mobileqq.apollo.view.ApolloMainInfo;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -44,44 +44,43 @@ import org.json.JSONObject;
 
 public class ApolloNewActionFloatViewController
 {
-  private static int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private ApolloPanel jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel;
-  private ApolloPanelManager jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelManager;
-  private ApolloManagerServiceImpl jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl;
+  private static int h;
+  private BaseChatPie a;
+  private Context b;
+  private SessionInfo c;
+  private ApolloPanel d;
+  private ApolloManagerServiceImpl e;
+  private ApolloPanelManager f;
+  private RelativeLayout g;
   
   public ApolloNewActionFloatViewController(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, ApolloPanel paramApolloPanel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel = paramApolloPanel;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl = ((ApolloManagerServiceImpl)paramBaseChatPie.a.getRuntimeService(IApolloManagerService.class, "all"));
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelManager = this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl.getApolloPanelManager();
+    this.a = paramBaseChatPie;
+    this.c = paramSessionInfo;
+    this.d = paramApolloPanel;
+    this.b = this.d.getContext();
+    this.e = ((ApolloManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all"));
+    this.f = this.e.getApolloPanelManager();
   }
   
   private Drawable a(ApolloActionData paramApolloActionData)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
-    Object localObject3 = null;
-    Resources localResources;
-    Object localObject2;
+    Object localObject1 = this.b;
+    Object localObject4 = null;
+    Object localObject3;
     String str;
     if (localObject1 != null)
     {
       if (paramApolloActionData == null) {
         return null;
       }
-      localResources = ((Context)localObject1).getResources();
+      Object localObject2 = ((Context)localObject1).getResources();
       try
       {
-        localObject1 = localResources.getDrawable(2130837970);
+        localObject1 = ((Resources)localObject2).getDrawable(2130837994);
         try
         {
-          Drawable localDrawable = localResources.getDrawable(2130843910);
+          localObject2 = ((Resources)localObject2).getDrawable(2130844865);
         }
         catch (OutOfMemoryError localOutOfMemoryError1) {}catch (Exception localException1) {}
         QLog.e("[cmshow]ApolloNewActionFloatViewController", 1, "[getNewActionStaticDrawable] exception=", localException2);
@@ -95,7 +94,7 @@ public class ApolloNewActionFloatViewController
       {
         localObject1 = null;
       }
-      localObject2 = null;
+      localObject3 = null;
       if (paramApolloActionData.status == 0) {
         return localObject1;
       }
@@ -103,34 +102,34 @@ public class ApolloNewActionFloatViewController
     }
     try
     {
-      localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(paramApolloActionData.actionId);
-      ((StringBuilder)localObject4).append("_");
-      ((StringBuilder)localObject4).append(paramApolloActionData.actionName);
-      localObject4 = new URL("apollo_pic", null, ((StringBuilder)localObject4).toString());
-      localObject3 = localObject4;
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append(paramApolloActionData.actionId);
+      ((StringBuilder)localObject5).append("_");
+      ((StringBuilder)localObject5).append(paramApolloActionData.actionName);
+      localObject5 = new URL("apollo_pic", null, ((StringBuilder)localObject5).toString());
+      localObject4 = localObject5;
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      Object localObject4;
-      label156:
-      break label156;
+      Object localObject5;
+      label153:
+      break label153;
     }
     QLog.e("[cmshow]ApolloNewActionFloatViewController", 1, new Object[] { "[getNewActionStaticDrawable] get url exception=", null });
-    if (localObject3 == null) {
+    if (localObject4 == null) {
       return localObject1;
     }
-    localObject4 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = localObject2;
-    ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = ((Drawable)localObject1);
-    ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = AIOUtils.b(90.0F, localResources);
-    ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight;
-    ((URLDrawable.URLDrawableOptions)localObject4).mPlayGifImage = false;
-    localObject1 = URLDrawable.getDrawable(localObject3, (URLDrawable.URLDrawableOptions)localObject4);
+    localObject5 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject5).mFailedDrawable = localObject3;
+    ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = ((Drawable)localObject1);
+    ((URLDrawable.URLDrawableOptions)localObject5).mRequestHeight = ViewUtils.dip2px(90.0F);
+    ((URLDrawable.URLDrawableOptions)localObject5).mRequestWidth = ((URLDrawable.URLDrawableOptions)localObject5).mRequestHeight;
+    ((URLDrawable.URLDrawableOptions)localObject5).mPlayGifImage = false;
+    localObject1 = URLDrawable.getDrawable(localObject4, (URLDrawable.URLDrawableOptions)localObject5);
     if (((URLDrawable)localObject1).getStatus() != 1)
     {
       ((URLDrawable)localObject1).setTag(paramApolloActionData);
-      ((URLDrawable)localObject1).addHeader("apollo_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getCurrentUin());
+      ((URLDrawable)localObject1).addHeader("apollo_uin", this.a.d.getCurrentUin());
       ((URLDrawable)localObject1).addHeader("apollo_tasks", str);
     }
     return localObject1;
@@ -138,37 +137,9 @@ public class ApolloNewActionFloatViewController
   }
   
   @NotNull
-  private View.OnClickListener a()
-  {
-    return new ApolloNewActionFloatViewController.6(this);
-  }
-  
-  @NotNull
   private View.OnClickListener a(int paramInt1, ApolloActionData paramApolloActionData, int paramInt2, String paramString1, String paramString2)
   {
     return new ApolloNewActionFloatViewController.5(this, paramApolloActionData, paramInt1, paramInt2, paramString1, paramString2);
-  }
-  
-  private RelativeLayout a()
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558610, null);
-    localRelativeLayout.setId(2131362785);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.getHeight() - this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.a().getHeight();
-    if (i < AIOUtils.b(213.0F, (Resources)localObject))
-    {
-      LinearLayout localLinearLayout = (LinearLayout)localRelativeLayout.findViewById(2131365146);
-      int j = (int)((Resources)localObject).getDimension(2131296500);
-      int k = (int)((Resources)localObject).getDimension(2131296501);
-      localObject = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      double d = i - j - k;
-      Double.isNaN(d);
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(0.1D * d));
-      localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localRelativeLayout.findViewById(2131365142)).getLayoutParams();
-      Double.isNaN(d);
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(d * 0.2D));
-    }
-    return localRelativeLayout;
   }
   
   private void a(ApolloActionData paramApolloActionData, int paramInt1, Bundle paramBundle, ApolloMainInfo paramApolloMainInfo, int paramInt2, String paramString1, String paramString2, Button paramButton)
@@ -182,19 +153,19 @@ public class ApolloNewActionFloatViewController
           if (paramInt1 != 4) {
             return;
           }
-          paramButton.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690040));
+          paramButton.setText(this.b.getResources().getString(2131886690));
           paramButton.setOnClickListener(new ApolloNewActionFloatViewController.4(this, paramApolloActionData, paramInt2, paramString1, paramString2));
           return;
         }
-        paramButton.setText(HardCodeUtil.a(2131700691));
+        paramButton.setText(HardCodeUtil.a(2131898717));
         paramButton.setOnClickListener(new ApolloNewActionFloatViewController.3(this, paramApolloActionData, paramBundle, paramInt2, paramString1, paramString2));
         return;
       }
-      paramButton.setText(HardCodeUtil.a(2131700702));
+      paramButton.setText(HardCodeUtil.a(2131898728));
       paramButton.setOnClickListener(new ApolloNewActionFloatViewController.2(this, paramBundle, paramApolloActionData, paramInt2, paramString1, paramString2));
       return;
     }
-    paramButton.setText(HardCodeUtil.a(2131700692));
+    paramButton.setText(HardCodeUtil.a(2131898718));
     paramButton.setOnClickListener(new ApolloNewActionFloatViewController.1(this, paramApolloMainInfo, paramApolloActionData, paramInt2, paramString1, paramString2));
   }
   
@@ -208,72 +179,100 @@ public class ApolloNewActionFloatViewController
       return;
     case 28: 
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130838537);
+      paramImageView.setImageResource(2130838596);
       paramTextView.setVisibility(0);
       paramTextView.setTextColor(Color.parseColor("#FF777777"));
-      paramTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690042));
+      paramTextView.setText(this.b.getResources().getString(2131886692));
       return;
     case 27: 
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130838537);
+      paramImageView.setImageResource(2130838596);
       paramTextView.setVisibility(0);
       paramTextView.setTextColor(Color.parseColor("#FF777777"));
-      paramTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690042));
+      paramTextView.setText(this.b.getResources().getString(2131886692));
       return;
     case 25: 
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130838510);
+      paramImageView.setImageResource(2130838574);
       paramTextView.setVisibility(0);
       paramTextView.setTextColor(Color.parseColor("#FF777777"));
-      paramTextView.setText(HardCodeUtil.a(2131700698));
+      paramTextView.setText(HardCodeUtil.a(2131898724));
       return;
     case 23: 
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130838509);
+      paramImageView.setImageResource(2130838573);
       paramTextView.setTextColor(Color.parseColor("#FF777777"));
-      paramTextView.setText(HardCodeUtil.a(2131700689));
-      paramImageView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380019);
+      paramTextView.setText(HardCodeUtil.a(2131898716));
+      paramImageView = (TextView)this.g.findViewById(2131448924);
       paramImageView.setVisibility(0);
       paramImageView.setText(String.valueOf(paramApolloActionData.currencyNum));
       return;
     case 22: 
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130838508);
+      paramImageView.setImageResource(2130838572);
       paramTextView.setTextColor(Color.parseColor("#FFFF8444"));
       paramTextView.setText(paramApolloActionData.extraWording);
       return;
     case 21: 
       paramImageView.setVisibility(8);
       paramTextView.setTextColor(Color.parseColor("#FF777777"));
-      paramTextView.setText(HardCodeUtil.a(2131700687));
+      paramTextView.setText(HardCodeUtil.a(2131898714));
       return;
     }
     paramImageView.setVisibility(8);
     paramTextView.setTextColor(Color.parseColor("#FF777777"));
-    paramTextView.setText(HardCodeUtil.a(2131700697));
+    paramTextView.setText(HardCodeUtil.a(2131898723));
   }
   
   private void a(ApolloActionData paramApolloActionData, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, "cmshow", "Apollo", paramString, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(paramApolloActionData.actionId) });
+    if (this.c != null) {
+      VipUtils.a(this.a.d, "cmshow", "Apollo", paramString, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.c.a), 0, new String[] { String.valueOf(paramApolloActionData.actionId) });
     }
   }
   
-  private void b()
+  private void c()
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(2, 2131362805);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
+    localLayoutParams.addRule(2, 2131428491);
+    this.d.addView(this.g, localLayoutParams);
   }
   
-  private void c()
+  @NotNull
+  private View.OnClickListener d()
+  {
+    return new ApolloNewActionFloatViewController.6(this);
+  }
+  
+  private RelativeLayout e()
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.b).inflate(2131624174, null);
+    localRelativeLayout.setId(2131428471);
+    Object localObject = this.b.getResources();
+    int i = this.d.getHeight() - this.d.getApolloTab().getHeight();
+    if (i < ViewUtils.dip2px(213.0F))
+    {
+      LinearLayout localLinearLayout = (LinearLayout)localRelativeLayout.findViewById(2131431295);
+      int j = (int)((Resources)localObject).getDimension(2131296740);
+      int k = (int)((Resources)localObject).getDimension(2131296741);
+      localObject = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
+      double d1 = i - j - k;
+      Double.isNaN(d1);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(0.1D * d1));
+      localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localRelativeLayout.findViewById(2131431290)).getLayoutParams();
+      Double.isNaN(d1);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(d1 * 0.2D));
+    }
+    return localRelativeLayout;
+  }
+  
+  private void f()
   {
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     localTranslateAnimation.setDuration(500L);
     localTranslateAnimation.setRepeatCount(0);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+    this.g.startAnimation(localTranslateAnimation);
   }
   
   public void a()
@@ -281,22 +280,22 @@ public class ApolloNewActionFloatViewController
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloNewActionFloatViewController", 2, "[hideNewActionFloatView]");
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.g;
     if ((localObject != null) && (((RelativeLayout)localObject).getParent() != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloNewActionFloatViewController", 2, "[hideNewActionFloatView] remove");
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      this.d.removeView(this.g);
+      this.g = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.findViewById(2131362785);
+    localObject = this.d.findViewById(2131428471);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloNewActionFloatViewController", 2, "[hideNewActionFloatView] remove by id");
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanel.removeView((View)localObject);
+      this.d.removeView((View)localObject);
     }
   }
   
@@ -307,16 +306,16 @@ public class ApolloNewActionFloatViewController
     if (bool) {
       QLog.d("[cmshow]ApolloNewActionFloatViewController", 2, new Object[] { "[showNewActionFloatView] actionInfo=", paramApolloActionData, ", btnType=", Integer.valueOf(paramInt1), ", extraWordingType=", Integer.valueOf(paramInt2), ", pkgId=", Integer.valueOf(paramInt3), ", extra=", paramBundle });
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localObject1 != null) && (((BaseChatPie)localObject1).a != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((BaseChatPie)localObject1).d != null) && (this.b != null))
     {
       if (paramApolloActionData == null) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getApp();
+      localObject1 = this.a.d.getApp();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("apollo_sp");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getCurrentUin());
+      ((StringBuilder)localObject2).append(this.a.d.getCurrentUin());
       Object localObject3 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
       Object localObject4 = String.format("key_new_action_info_%s", new Object[] { String.valueOf(paramInt3) });
       Object localObject5 = ((SharedPreferences)localObject3).getString((String)localObject4, "");
@@ -355,29 +354,29 @@ public class ApolloNewActionFloatViewController
         localObject1 = null;
         paramInt3 = 0;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = a();
-      ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368624)).setOnClickListener(a());
-      localObject3 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368610);
-      ApolloMainInfo localApolloMainInfo = new ApolloMainInfo(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getCurrentUin());
+      this.g = e();
+      ((ImageView)this.g.findViewById(2131435536)).setOnClickListener(d());
+      localObject3 = (ImageView)this.g.findViewById(2131435522);
+      ApolloMainInfo localApolloMainInfo = new ApolloMainInfo(this.a.d.getCurrentUin());
       localApolloMainInfo.mAction = paramApolloActionData;
       ((ImageView)localObject3).setImageDrawable(a(paramApolloActionData));
-      ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380009)).setText(paramApolloActionData.actionName);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380008)).setText(paramApolloActionData.description);
-      ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364002)).setOnClickListener(a(jdField_a_of_type_Int, paramApolloActionData, paramInt3, (String)localObject1, str));
-      localObject3 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368359);
-      localObject4 = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380028);
+      ((TextView)this.g.findViewById(2131448912)).setText(paramApolloActionData.actionName);
+      ((TextView)this.g.findViewById(2131448911)).setText(paramApolloActionData.description);
+      ((Button)this.g.findViewById(2131429959)).setOnClickListener(a(h, paramApolloActionData, paramInt3, (String)localObject1, str));
+      localObject3 = (ImageView)this.g.findViewById(2131435238);
+      localObject4 = (TextView)this.g.findViewById(2131448933);
       ((TextView)localObject4).setMaxLines(1);
       a(paramApolloActionData, paramInt2, (ImageView)localObject3, (TextView)localObject4);
-      a(paramApolloActionData, paramInt1, paramBundle, localApolloMainInfo, paramInt3, (String)localObject1, str, (Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363841));
-      b();
+      a(paramApolloActionData, paramInt1, paramBundle, localApolloMainInfo, paramInt3, (String)localObject1, str, (Button)this.g.findViewById(2131429787));
       c();
+      f();
       a(paramApolloActionData, "action_flame_view");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloNewActionFloatViewController
  * JD-Core Version:    0.7.0.1
  */

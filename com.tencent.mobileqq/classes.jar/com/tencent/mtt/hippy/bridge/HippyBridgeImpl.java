@@ -17,29 +17,23 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.util.Locale;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public class HippyBridgeImpl
   implements f.a, HippyBridge
 {
-  private static int TIMEOUT = 3000;
   private static volatile String mCodeCacheRootDir;
-  private static volatile ThreadPoolExecutor mCodeCacheThreadExecutor;
-  private static volatile int sBridgeNum;
-  private static Object sBridgeSyncLock = new Object();
+  private static final Object sBridgeSyncLock = new Object();
   private HippyBridge.a mBridgeCallback;
-  private boolean mBridgeParamJson;
-  private HippyEngineContext mContext;
+  private final boolean mBridgeParamJson;
+  private final HippyEngineContext mContext;
   private String mDebugGobalConfig;
   private NativeCallback mDebugInitJSFrameworkCallback;
   private String mDebugServerHost;
   private b mDebugWebSocketClient;
   private HippyBuffer mHippyBuffer;
   private boolean mInit = false;
-  private boolean mIsDevModule = false;
-  private boolean mSingleThreadMode = false;
+  private boolean mIsDevModule;
+  private boolean mSingleThreadMode;
   private long mV8RuntimeId = 0L;
   
   public HippyBridgeImpl(HippyEngineContext arg1, HippyBridge.a parama, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
@@ -52,7 +46,6 @@ public class HippyBridgeImpl
     this.mContext = ???;
     synchronized (sBridgeSyncLock)
     {
-      sBridgeNum += 1;
       if (mCodeCacheRootDir == null)
       {
         parama = FileUtils.getHippyFile(this.mContext.getGlobalConfigs().getContext());
@@ -65,11 +58,6 @@ public class HippyBridgeImpl
           paramString.append(File.separator);
           mCodeCacheRootDir = paramString.toString();
         }
-      }
-      if (mCodeCacheThreadExecutor == null)
-      {
-        mCodeCacheThreadExecutor = new ThreadPoolExecutor(1, 1, 120L, TimeUnit.SECONDS, new LinkedBlockingQueue());
-        mCodeCacheThreadExecutor.allowCoreThreadTimeOut(true);
       }
       if (!this.mBridgeParamJson) {
         this.mHippyBuffer = new HippyBuffer();
@@ -105,19 +93,6 @@ public class HippyBridgeImpl
       localObject = new HippyArray();
     }
     return localObject;
-  }
-  
-  public static void deleteCodeCache(String paramString)
-  {
-    String[] arrayOfString = new File(mCodeCacheRootDir).list(new HippyBridgeImpl.a(paramString));
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(mCodeCacheRootDir);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append(arrayOfString[0]);
-      new File(localStringBuilder.toString(), paramString).delete();
-    }
   }
   
   private void initJSEngine(int paramInt)
@@ -206,8 +181,6 @@ public class HippyBridgeImpl
     UIThreadUtils.runOnUiThread(new HippyBridgeImpl.2(this, paramString, paramLong));
   }
   
-  public native String getCrashMessage();
-  
   public void initJSBridge(String paramString, NativeCallback paramNativeCallback, int paramInt)
   {
     this.mDebugGobalConfig = paramString;
@@ -229,48 +202,25 @@ public class HippyBridgeImpl
   
   public void onDestroy()
   {
-    ??? = this.mDebugWebSocketClient;
-    if (??? != null)
+    Object localObject = this.mDebugWebSocketClient;
+    if (localObject != null)
     {
-      ((b)???).a();
+      ((b)localObject).a();
       this.mDebugWebSocketClient = null;
     }
     if (!this.mInit) {
       return;
     }
     this.mInit = false;
-    synchronized (sBridgeSyncLock)
+    if (!this.mBridgeParamJson)
     {
-      sBridgeNum -= 1;
-      int i = sBridgeNum;
-      if (i == 0)
-      {
-        try
-        {
-          if (mCodeCacheThreadExecutor != null) {
-            mCodeCacheThreadExecutor.shutdownNow();
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("onDestroy: ");
-          localStringBuilder.append(localThrowable.getMessage());
-          LogUtils.d("HippyBridgeImpl", localStringBuilder.toString());
-        }
-        mCodeCacheThreadExecutor = null;
+      localObject = this.mHippyBuffer;
+      if (localObject != null) {
+        ((HippyBuffer)localObject).release();
       }
-      if (!this.mBridgeParamJson)
-      {
-        ??? = this.mHippyBuffer;
-        if (??? != null) {
-          ((HippyBuffer)???).release();
-        }
-      }
-      this.mV8RuntimeId = 0L;
-      this.mBridgeCallback = null;
-      return;
     }
+    this.mV8RuntimeId = 0L;
+    this.mBridgeCallback = null;
   }
   
   public void onReceiveData(String paramString)
@@ -284,28 +234,6 @@ public class HippyBridgeImpl
   
   public native void onResourceReady(ByteBuffer paramByteBuffer, long paramLong1, long paramLong2);
   
-  public void postCodeCacheRunnable(String paramString, long paramLong)
-  {
-    try
-    {
-      synchronized (sBridgeSyncLock)
-      {
-        if (mCodeCacheThreadExecutor != null) {
-          mCodeCacheThreadExecutor.execute(new HippyBridgeImpl.b(this, paramString, paramLong));
-        }
-        return;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("postCodeCacheRunnable: ");
-      ((StringBuilder)???).append(paramString.getMessage());
-      LogUtils.d("HippyBridgeImpl", ((StringBuilder)???).toString());
-    }
-  }
-  
   public void reportException(String paramString1, String paramString2)
   {
     LogUtils.e("reportException", "!!!!!!!!!!!!!!!!!!!");
@@ -317,139 +245,30 @@ public class HippyBridgeImpl
     }
   }
   
-  public native void runNativeRunnable(String paramString, long paramLong1, long paramLong2, NativeCallback paramNativeCallback);
-  
-  public native boolean runScriptFromAssets(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, long paramLong, NativeCallback paramNativeCallback);
-  
-  public boolean runScriptFromAssets(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, NativeCallback paramNativeCallback)
-  {
-    boolean bool = this.mInit;
-    int i = 0;
-    if (!bool) {
-      return false;
-    }
-    Object localObject;
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(mCodeCacheRootDir)))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("runScriptFromAssets ======core====== ");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(", canUseCodeCache == ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      LogUtils.e("HippyEngineMonitor", ((StringBuilder)localObject).toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(mCodeCacheRootDir);
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(File.separator);
-      paramString2 = ((StringBuilder)localObject).toString();
-      localObject = new File(paramString2);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("codeCacheDir file size : ");
-      if (((File)localObject).listFiles() != null) {
-        i = ((File)localObject).listFiles().length;
-      }
-      localStringBuilder.append(i);
-      LogUtils.d("HippyEngineMonitor", localStringBuilder.toString());
-    }
-    for (long l = this.mV8RuntimeId;; l = this.mV8RuntimeId)
-    {
-      return runScriptFromAssets(paramString1, paramAssetManager, paramBoolean, paramString2, l, paramNativeCallback);
-      LogUtils.e("HippyEngineMonitor", "runScriptFromAssets codeCacheTag is null");
-      paramBoolean = false;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(File.separator);
-      paramString2 = ((StringBuilder)localObject).toString();
-    }
-  }
-  
-  public native boolean runScriptFromFile(String paramString1, String paramString2, boolean paramBoolean, String paramString3, long paramLong, NativeCallback paramNativeCallback);
-  
-  public boolean runScriptFromFile(String paramString1, String paramString2, boolean paramBoolean, String paramString3, NativeCallback paramNativeCallback)
-  {
-    boolean bool = this.mInit;
-    int i = 0;
-    if (!bool) {
-      return false;
-    }
-    Object localObject;
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(mCodeCacheRootDir)))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("runScriptFromFile ======core====== ");
-      ((StringBuilder)localObject).append(paramString3);
-      ((StringBuilder)localObject).append(", canUseCodeCache == ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      LogUtils.e("HippyEngineMonitor", ((StringBuilder)localObject).toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(mCodeCacheRootDir);
-      ((StringBuilder)localObject).append(paramString3);
-      ((StringBuilder)localObject).append(File.separator);
-      paramString3 = ((StringBuilder)localObject).toString();
-      localObject = new File(paramString3);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("codeCacheDir file size : ");
-      if (((File)localObject).listFiles() != null) {
-        i = ((File)localObject).listFiles().length;
-      }
-      localStringBuilder.append(i);
-      LogUtils.d("HippyEngineMonitor", localStringBuilder.toString());
-    }
-    for (long l = this.mV8RuntimeId;; l = this.mV8RuntimeId)
-    {
-      return runScriptFromFile(paramString1, paramString2, paramBoolean, paramString3, l, paramNativeCallback);
-      LogUtils.e("HippyEngineMonitor", "runScriptFromFile codeCacheTag is null");
-      paramBoolean = false;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramString3);
-      ((StringBuilder)localObject).append(File.separator);
-      paramString3 = ((StringBuilder)localObject).toString();
-    }
-  }
-  
   public native boolean runScriptFromUri(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, long paramLong, NativeCallback paramNativeCallback);
   
   public boolean runScriptFromUri(String paramString1, AssetManager paramAssetManager, boolean paramBoolean, String paramString2, NativeCallback paramNativeCallback)
   {
-    boolean bool = this.mInit;
-    int i = 0;
-    if (!bool) {
+    if (!this.mInit) {
       return false;
     }
-    Object localObject;
+    StringBuilder localStringBuilder;
     if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(mCodeCacheRootDir)))
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("runScriptFromAssets ======core====== ");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(", canUseCodeCache == ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      LogUtils.d("HippyEngineMonitor", ((StringBuilder)localObject).toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(mCodeCacheRootDir);
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(File.separator);
-      paramString2 = ((StringBuilder)localObject).toString();
-      localObject = new File(paramString2);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("codeCacheDir file size : ");
-      if (((File)localObject).listFiles() != null) {
-        i = ((File)localObject).listFiles().length;
-      }
-      localStringBuilder.append(i);
-      LogUtils.d("HippyEngineMonitor", localStringBuilder.toString());
-      return runScriptFromUri(paramString1, paramAssetManager, paramBoolean, paramString2, this.mV8RuntimeId, paramNativeCallback);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(mCodeCacheRootDir);
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(File.separator);
+      return runScriptFromUri(paramString1, paramAssetManager, paramBoolean, localStringBuilder.toString(), this.mV8RuntimeId, paramNativeCallback);
     }
     LogUtils.d("HippyEngineMonitor", "runScriptFromAssets codeCacheTag is null");
     try
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(File.separator);
-      paramBoolean = runScriptFromUri(paramString1, paramAssetManager, false, ((StringBuilder)localObject).toString(), this.mV8RuntimeId, paramNativeCallback);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(File.separator);
+      paramBoolean = runScriptFromUri(paramString1, paramAssetManager, false, localStringBuilder.toString(), this.mV8RuntimeId, paramNativeCallback);
       return paramBoolean;
     }
     catch (Throwable paramString1)
@@ -464,7 +283,7 @@ public class HippyBridgeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.HippyBridgeImpl
  * JD-Core Version:    0.7.0.1
  */

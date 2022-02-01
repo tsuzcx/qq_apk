@@ -2,9 +2,12 @@ package com.tencent.common.app;
 
 import android.content.Context;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.qqgift.runtime.QQGiftToolAppInterface;
+import com.tencent.mobileqq.qqlive.runtime.QQLiveToolAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ToolRuntimePeak
   extends ToolRuntimeBase
@@ -18,6 +21,10 @@ public class ToolRuntimePeak
       localObject = new PeakAppInterface((BaseApplicationImpl)localObject, "peak");
     } else if ("Photoplus.apk".equals(paramString)) {
       localObject = QZoneHelper.createPhotoPlusAppInterface((Context)localObject);
+    } else if ("qq_live_tool".equals(paramString)) {
+      localObject = new QQLiveToolAppInterface((MobileQQ)localObject, MobileQQ.processName);
+    } else if ("qq_gift_tool".equals(paramString)) {
+      localObject = new QQGiftToolAppInterface((MobileQQ)localObject, MobileQQ.processName);
     } else {
       localObject = null;
     }
@@ -36,7 +43,7 @@ public class ToolRuntimePeak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.ToolRuntimePeak
  * JD-Core Version:    0.7.0.1
  */

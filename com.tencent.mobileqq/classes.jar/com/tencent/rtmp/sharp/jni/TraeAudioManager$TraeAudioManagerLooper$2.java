@@ -28,8 +28,10 @@ class TraeAudioManager$TraeAudioManagerLooper$2
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("TraeAudioManagerLooper msg:");
+      localStringBuilder.append("TraeAudioManagerLooper msg ");
       localStringBuilder.append(paramMessage.what);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.this$1.msgToText(paramMessage.what));
       localStringBuilder.append(" _enabled:");
       if (this.this$1._enabled) {
         localObject2 = "Y";
@@ -37,7 +39,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
         localObject2 = "N";
       }
       localStringBuilder.append((String)localObject2);
-      QLog.w("TRAE", 2, localStringBuilder.toString());
+      QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
     if (paramMessage.what == 32772)
     {
@@ -47,7 +49,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
     if (!this.this$1._enabled)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "******* disabled ,skip msg******");
+        QLog.w("TraeAudioManager", 2, "******* disabled ,skip msg******");
       }
       paramMessage = new Intent();
       this.this$1.this$0.sendResBroadcast(paramMessage, (HashMap)localObject1, 1);
@@ -55,7 +57,11 @@ class TraeAudioManager$TraeAudioManagerLooper$2
     }
     switch (paramMessage.what)
     {
+    case 32792: 
     default: 
+      return;
+    case 32793: 
+      this.this$1.this$0.InternalNotifyDeviceListUpdate();
       return;
     case 32790: 
       this.this$1.abandonAudioFocus();
@@ -65,7 +71,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
       if (paramMessage == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TRAE", 2, " MESSAGE_VOICECALL_AUIDOPARAM_CHANGED params.get(PARAM_STREAMTYPE)==null!!");
+          QLog.e("TraeAudioManager", 2, " MESSAGE_VOICECALL_AUIDOPARAM_CHANGED params.get(PARAM_STREAMTYPE)==null!!");
         }
       }
       else
@@ -79,16 +85,13 @@ class TraeAudioManager$TraeAudioManagerLooper$2
       if (this.this$1.this$0.InternalConnectDevice(this.this$1.this$0.sessionConnectedDev, null, false) != 0)
       {
         paramMessage = (String)((HashMap)localObject1).get("PARAM_DEVICE");
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(" plugout dev:");
-          ((StringBuilder)localObject1).append(paramMessage);
-          ((StringBuilder)localObject1).append(" sessionConnectedDev:");
-          ((StringBuilder)localObject1).append(this.this$1.this$0.sessionConnectedDev);
-          ((StringBuilder)localObject1).append(" connected fail,auto switch!");
-          QLog.w("TRAE", 2, ((StringBuilder)localObject1).toString());
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" plugout dev:");
+        ((StringBuilder)localObject1).append(paramMessage);
+        ((StringBuilder)localObject1).append(" sessionConnectedDev:");
+        ((StringBuilder)localObject1).append(this.this$1.this$0.sessionConnectedDev);
+        ((StringBuilder)localObject1).append(" connected fail,auto switch!");
+        QLog.w("TRAE", 2, ((StringBuilder)localObject1).toString());
         this.this$1.this$0.InternalConnectDevice(this.this$1.this$0._deviceConfigManager.getAvailabledHighestPriorityDevice(), null, false);
         return;
       }
@@ -105,7 +108,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
           ((StringBuilder)localObject1).append(" sessionConnectedDev:");
           ((StringBuilder)localObject1).append(this.this$1.this$0.sessionConnectedDev);
           ((StringBuilder)localObject1).append(" connected fail,auto switch!");
-          QLog.w("TRAE", 2, ((StringBuilder)localObject1).toString());
+          QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject1).toString());
         }
         this.this$1.this$0.InternalConnectDevice(this.this$1.this$0._deviceConfigManager.getAvailabledHighestPriorityDevice(), null, false);
         return;
@@ -122,7 +125,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append(" highestDev");
         ((StringBuilder)localObject2).append(paramMessage);
-        QLog.w("TRAE", 2, ((StringBuilder)localObject2).toString());
+        QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject2).toString());
       }
       if (TraeAudioManager.IsUpdateSceneFlag)
       {
@@ -134,12 +137,12 @@ class TraeAudioManager$TraeAudioManagerLooper$2
         this.this$1.this$0.InternalConnectDevice(paramMessage, null, true);
         return;
       }
-      if (!paramMessage.equals(localObject1))
+      if ((!"DEVICE_BLUETOOTHHEADSET".equals(localObject1)) && (paramMessage.equals(localObject1)))
       {
-        this.this$1.this$0.InternalConnectDevice(paramMessage, null, false);
+        this.this$1.this$0.InternalNotifyDeviceListUpdate();
         return;
       }
-      this.this$1.this$0.InternalNotifyDeviceListUpdate();
+      this.this$1.this$0.InternalConnectDevice(paramMessage, null, false);
       return;
     case 32784: 
       this.this$1.InternalGetStreamType((HashMap)localObject1);
@@ -181,7 +184,7 @@ class TraeAudioManager$TraeAudioManagerLooper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.TraeAudioManagerLooper.2
  * JD-Core Version:    0.7.0.1
  */

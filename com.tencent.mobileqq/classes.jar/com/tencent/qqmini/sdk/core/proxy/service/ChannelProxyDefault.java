@@ -256,11 +256,6 @@ public class ChannelProxyDefault
     paramMiniAppProxy.sendData(paramArrayOfByte, new ChannelProxyDefault.5(this, paramProtoBufRequest, paramAsyncResult));
   }
   
-  public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
-  {
-    handleRequest(new ReportExecuteRequest(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
-  }
-  
   public void addGroupApp(IMiniAppContext paramIMiniAppContext, AsyncResult paramAsyncResult) {}
   
   public void addPhoneNumber(String paramString1, String paramString2, String paramString3, int paramInt, AsyncResult paramAsyncResult)
@@ -604,6 +599,8 @@ public class ChannelProxyDefault
     handleRequest(new ModifyFriendInteractiveStorageRequest(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap, paramBoolean, paramStInteractiveTemplate), paramAsyncResult);
   }
   
+  public void onInitFinish() {}
+  
   public boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult)
   {
     return false;
@@ -665,6 +662,11 @@ public class ChannelProxyDefault
     localStringBuilder.append(paramMap);
     localStringBuilder.append("]");
     QMLog.d("ChannelProxyDefault", localStringBuilder.toString());
+  }
+  
+  public void reportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new ReportExecuteRequest(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
   }
   
   public void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult)
@@ -866,7 +868,7 @@ public class ChannelProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault
  * JD-Core Version:    0.7.0.1
  */

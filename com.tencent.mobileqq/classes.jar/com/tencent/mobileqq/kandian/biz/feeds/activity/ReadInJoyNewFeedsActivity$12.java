@@ -9,12 +9,12 @@ class ReadInJoyNewFeedsActivity$12
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().b(this.this$0.app);
+    ReadInJoyGlobalReporter.e().d(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -12,53 +12,25 @@ import com.tencent.qav.observer.ObserverDispatcher;
 public class QavSDK
   implements IQavSDK
 {
-  private static volatile QavSDK jdField_a_of_type_ComTencentQavQavSDK;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VideoChannelInterface jdField_a_of_type_ComTencentQavChannelVideoChannelInterface;
-  private QavCtrl jdField_a_of_type_ComTencentQavControllerQavCtrl;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile QavSDK a;
+  private Context b;
+  private long c;
+  private VideoChannelInterface d;
+  private QavCtrl e;
+  private boolean f = false;
   
   public static QavSDK a()
   {
-    if (jdField_a_of_type_ComTencentQavQavSDK == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQavQavSDK == null) {
-          jdField_a_of_type_ComTencentQavQavSDK = new QavSDK();
+        if (a == null) {
+          a = new QavSDK();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQavQavSDK;
-  }
-  
-  public IMultiOperator a()
-  {
-    QavCtrl localQavCtrl = this.jdField_a_of_type_ComTencentQavControllerQavCtrl;
-    if (localQavCtrl != null) {
-      return localQavCtrl.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      ObserverDispatcher.a().a();
-      if (this.jdField_a_of_type_ComTencentQavControllerQavCtrl != null)
-      {
-        this.jdField_a_of_type_ComTencentQavControllerQavCtrl.a();
-        this.jdField_a_of_type_ComTencentQavControllerQavCtrl = null;
-      }
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = null;
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    finally {}
+    return a;
   }
   
   public void a(Context paramContext, long paramLong, VideoChannelInterface paramVideoChannelInterface)
@@ -66,28 +38,28 @@ public class QavSDK
     try
     {
       AVLog.c("QavSDK", String.format("initSDK context=%s selfUin=%s videoChannel=%s", new Object[] { paramContext, Long.valueOf(paramLong), paramVideoChannelInterface }));
-      if (this.jdField_a_of_type_Boolean)
+      if (this.f)
       {
         AVLog.b("QavSDK", "initSDK has init before");
         return;
       }
       try
       {
-        this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-        this.jdField_a_of_type_Long = paramLong;
-        this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = paramVideoChannelInterface;
-        if (this.jdField_a_of_type_ComTencentQavControllerQavCtrl == null)
+        this.b = paramContext.getApplicationContext();
+        this.c = paramLong;
+        this.d = paramVideoChannelInterface;
+        if (this.e == null)
         {
-          paramContext = new MultiOperatorImpl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface);
-          this.jdField_a_of_type_ComTencentQavControllerQavCtrl = new QavCtrl(this.jdField_a_of_type_AndroidContentContext, paramContext);
+          paramContext = new MultiOperatorImpl(this.b, this.c, this.d);
+          this.e = new QavCtrl(this.b, paramContext);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
       }
       catch (Throwable paramContext)
       {
         AVLog.a("QavSDK", "initSDK fail.", paramContext);
-        this.jdField_a_of_type_ComTencentQavControllerQavCtrl = null;
-        this.jdField_a_of_type_Boolean = false;
+        this.e = null;
+        this.f = false;
       }
       return;
     }
@@ -96,22 +68,50 @@ public class QavSDK
   
   public void a(QavCtrl paramQavCtrl)
   {
-    this.jdField_a_of_type_ComTencentQavControllerQavCtrl = paramQavCtrl;
+    this.e = paramQavCtrl;
   }
   
   public void a(FilterableObserver paramFilterableObserver)
   {
-    ObserverDispatcher.a().a(paramFilterableObserver, true);
+    ObserverDispatcher.b().a(paramFilterableObserver, true);
+  }
+  
+  public void b()
+  {
+    try
+    {
+      ObserverDispatcher.b().a();
+      if (this.e != null)
+      {
+        this.e.d();
+        this.e = null;
+      }
+      this.b = null;
+      this.c = 0L;
+      this.d = null;
+      this.f = false;
+      return;
+    }
+    finally {}
   }
   
   public void b(FilterableObserver paramFilterableObserver)
   {
-    ObserverDispatcher.a().a(paramFilterableObserver);
+    ObserverDispatcher.b().a(paramFilterableObserver);
+  }
+  
+  public IMultiOperator c()
+  {
+    QavCtrl localQavCtrl = this.e;
+    if (localQavCtrl != null) {
+      return localQavCtrl.c();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.QavSDK
  * JD-Core Version:    0.7.0.1
  */

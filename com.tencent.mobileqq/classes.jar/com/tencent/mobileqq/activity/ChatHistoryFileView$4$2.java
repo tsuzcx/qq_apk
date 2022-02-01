@@ -18,23 +18,23 @@ class ChatHistoryFileView$4$2
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    if (this.a.getCloudType() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileView$4.a.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.b.a.b.getOnlineFileSessionCenter().d(this.a.nSessionId);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 6)
+    if (this.a.getCloudType() == 6)
     {
-      DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileView$4.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      DataLineHandler localDataLineHandler = (DataLineHandler)this.b.a.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-      if (!localDataLineHandler.a(localArrayList)) {
-        FMToastUtil.a(2131692553);
+      localArrayList.add(Long.valueOf(this.a.uniseq));
+      if (!localDataLineHandler.b(localArrayList)) {
+        FMToastUtil.a(2131889576);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileView$4.a.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.b.a.b.getFileManagerEngine().b(this.a.nSessionId);
     }
   }
   
@@ -42,7 +42,7 @@ class ChatHistoryFileView$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileView.4.2
  * JD-Core Version:    0.7.0.1
  */

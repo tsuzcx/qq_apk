@@ -54,7 +54,7 @@ class IndividualRedPacketManager$2
               if (arrayOfFile.length > 150)
               {
                 localObject1 = str1;
-                Arrays.sort(arrayOfFile, this.this$0.jdField_a_of_type_JavaUtilComparator);
+                Arrays.sort(arrayOfFile, this.this$0.v);
                 int j = 100;
                 for (;;)
                 {
@@ -62,11 +62,11 @@ class IndividualRedPacketManager$2
                   if (j < arrayOfFile.length)
                   {
                     localObject1 = str1;
-                    localObject3 = this.this$0.jdField_a_of_type_JavaUtilLinkedList;
+                    localObject3 = this.this$0.r;
                     localObject1 = str1;
                     try
                     {
-                      this.this$0.jdField_a_of_type_JavaUtilLinkedList.add(arrayOfFile[j].getAbsolutePath());
+                      this.this$0.r.add(arrayOfFile[j].getAbsolutePath());
                       localObject1 = new StringBuilder();
                       ((StringBuilder)localObject1).append(arrayOfFile[j].getParent());
                       ((StringBuilder)localObject1).append(File.separator);
@@ -74,7 +74,7 @@ class IndividualRedPacketManager$2
                       localObject1 = new File(((StringBuilder)localObject1).toString());
                       arrayOfFile[j].renameTo((File)localObject1);
                       ((File)localObject1).delete();
-                      this.this$0.jdField_a_of_type_JavaUtilLinkedList.remove(arrayOfFile[j].getAbsolutePath());
+                      this.this$0.r.remove(arrayOfFile[j].getAbsolutePath());
                       j += 1;
                     }
                     finally
@@ -97,7 +97,7 @@ class IndividualRedPacketManager$2
     {
       if (QLog.isColorLevel())
       {
-        str2 = IndividualRedPacketManager.b();
+        str2 = IndividualRedPacketManager.i();
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("eliminateImageCache error: ");
         ((StringBuilder)localObject3).append(localException2.getMessage());
@@ -118,7 +118,7 @@ class IndividualRedPacketManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.IndividualRedPacketManager.2
  * JD-Core Version:    0.7.0.1
  */

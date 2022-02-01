@@ -11,8 +11,8 @@ class GuessStarClickStagePresenter$1
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a(this.a);
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(new GuessStarClickStagePresenter.1.1(this, localBitmap));
+    Bitmap localBitmap = this.this$0.b.a(this.a);
+    this.this$0.d.post(new GuessStarClickStagePresenter.1.1(this, localBitmap));
   }
 }
 

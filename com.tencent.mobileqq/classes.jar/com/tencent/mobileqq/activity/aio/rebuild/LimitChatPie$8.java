@@ -9,28 +9,28 @@ class LimitChatPie$8
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.f != null)
     {
-      if (this.this$0.a.isFinishing()) {
+      if (this.this$0.f.isFinishing()) {
         return;
       }
-      if ((this.this$0.u()) && (LimitChatPie.a(this.this$0))) {
+      if ((this.this$0.bG()) && (LimitChatPie.c(this.this$0))) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        LimitChatPie.a(this.this$0);
+        LimitChatPie.d(this.this$0);
         return;
       }
       if (this.b) {
-        LimitChatPie.a(this.this$0, this.jdField_a_of_type_Int);
+        LimitChatPie.b(this.this$0, this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.8
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ public class AEEditorProcessImpl
 {
   public void clean()
   {
-    AEEditorProcessManager.a().b();
+    AEEditorProcessManager.a().c();
   }
   
   public boolean isGenerateWorking()
   {
-    return AEEditorProcessManager.a().a();
+    return AEEditorProcessManager.a().d();
   }
   
   public void requestGenerateVideo(@Nullable String paramString)
@@ -24,7 +24,7 @@ public class AEEditorProcessImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.api.impl.AEEditorProcessImpl
  * JD-Core Version:    0.7.0.1
  */

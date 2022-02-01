@@ -12,7 +12,7 @@ public class OpenSdkD55Processor
 {
   public static boolean a()
   {
-    OpenSdkD55Bean localOpenSdkD55Bean = (OpenSdkD55Bean)QConfigManager.a().a(613);
+    OpenSdkD55Bean localOpenSdkD55Bean = (OpenSdkD55Bean)QConfigManager.b().b(613);
     boolean bool;
     if (localOpenSdkD55Bean != null) {
       bool = localOpenSdkD55Bean.a();
@@ -90,7 +90,7 @@ public class OpenSdkD55Processor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkD55Processor
  * JD-Core Version:    0.7.0.1
  */

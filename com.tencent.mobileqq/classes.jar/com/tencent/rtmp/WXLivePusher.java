@@ -935,14 +935,15 @@ public class WXLivePusher
   private void updateConfig(boolean paramBoolean, WXLivePushConfig paramWXLivePushConfig)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("force: ");
+    ((StringBuilder)localObject).append("updateConfig force: ");
     ((StringBuilder)localObject).append(paramBoolean);
     ((StringBuilder)localObject).append(", config: ");
     ((StringBuilder)localObject).append(paramWXLivePushConfig.toString());
     ((StringBuilder)localObject).append(", isTRTC: ");
     ((StringBuilder)localObject).append(this.mIsTRTC);
-    apiLog("[API] updateConfig", ((StringBuilder)localObject).toString());
-    int k = 2;
+    localObject = ((StringBuilder)localObject).toString();
+    int k = 1;
+    apiOnlineLog((String)localObject, true);
     if (!paramBoolean) {}
     for (;;)
     {
@@ -1004,15 +1005,15 @@ public class WXLivePusher
         {
           i = paramWXLivePushConfig.mLocalVideoMirrorType;
           if (i == 0) {
-            break label858;
+            break label860;
           }
           if (i == 1) {
-            break label868;
+            break label870;
           }
           if (i == 2) {
-            break label863;
+            break label865;
           }
-          break label858;
+          break label860;
           this.mTRTCCloud.setLocalViewMirror(i);
         }
         if ((paramBoolean) || (paramWXLivePushConfig.mAudioSample != this.mPushConfig.mAudioSample))
@@ -1028,7 +1029,7 @@ public class WXLivePusher
         {
           localObject = new JSONObject();
           if (!paramWXLivePushConfig.mEnableAgc) {
-            break label873;
+            break label875;
           }
           i = 1;
           ((JSONObject)localObject).put("enable", i);
@@ -1041,7 +1042,7 @@ public class WXLivePusher
         {
           localObject = new JSONObject();
           if (!paramWXLivePushConfig.mEnableAns) {
-            break label878;
+            break label880;
           }
           i = 1;
           ((JSONObject)localObject).put("enable", i);
@@ -1054,14 +1055,14 @@ public class WXLivePusher
         {
           if (paramWXLivePushConfig.mVolumeType == 1)
           {
-            i = 1;
+            i = k;
           }
           else
           {
             if (paramWXLivePushConfig.mVolumeType != 2) {
-              break label883;
+              break label885;
             }
-            i = k;
+            i = 2;
           }
           this.mTRTCCloud.setSystemVolumeType(i);
         }
@@ -1079,48 +1080,51 @@ public class WXLivePusher
         TXCLog.e("WXLivePusher", "update config failed.", paramWXLivePushConfig);
       }
       return;
-      label858:
+      label860:
       int i = 0;
       continue;
-      label863:
+      label865:
       i = 2;
       continue;
-      label868:
+      label870:
       i = 1;
       continue;
-      label873:
+      label875:
       i = 0;
       continue;
-      label878:
+      label880:
       i = 0;
       continue;
-      label883:
+      label885:
       i = 0;
     }
   }
   
-  public void apiLog(String paramString1, String paramString2)
+  public void apiOnlineLog(String paramString, boolean paramBoolean)
   {
-    Object localObject = paramString1;
-    if (paramString1 == null) {
-      localObject = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
+    paramString = new StringBuilder();
+    paramString.append("[API] WXLivePusher(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString = paramString.toString();
+    if (paramBoolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str);
+      Monitor.a(1, localStringBuilder.toString(), "", 0, "");
+      return;
     }
-    paramString2 = new StringBuilder();
-    paramString2.append("wx_livepusher(");
-    paramString2.append(hashCode());
-    paramString2.append(") ");
-    paramString2.append((String)localObject);
-    paramString2 = paramString2.toString();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString2);
-    ((StringBuilder)localObject).append(" ");
-    ((StringBuilder)localObject).append(paramString1);
-    TXCLog.i("WXLivePusher", ((StringBuilder)localObject).toString());
-    Monitor.a(1, paramString2, paramString1, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    TXCLog.i("WXLivePusher", localStringBuilder.toString());
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -1160,9 +1164,9 @@ public class WXLivePusher
   public void pausePusher()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isTRTC: ");
+    localStringBuilder.append("pausePusher isTRTC: ");
     localStringBuilder.append(this.mIsTRTC);
-    apiLog("[API] pausePusher", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (this.mIsTRTC)
     {
       if ((this.mStartPreview) && ((this.mPushConfig.mPauseFlag & 0x1) == 1)) {
@@ -1215,9 +1219,9 @@ public class WXLivePusher
   public void resumePusher()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isTRTC: ");
+    localStringBuilder.append("resumePusher isTRTC: ");
     localStringBuilder.append(this.mIsTRTC);
-    apiLog("[API] resumePusher", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (this.mIsTRTC)
     {
       if ((this.mStartPreview) && ((this.mPushConfig.mPauseFlag & 0x1) == 1)) {
@@ -1278,14 +1282,14 @@ public class WXLivePusher
     if (this.mIsTRTC)
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("config: ");
+      ((StringBuilder)localObject).append("setConfig config: ");
       ((StringBuilder)localObject).append(paramWXLivePushConfig);
       if (((StringBuilder)localObject).toString() != null) {
         localObject = paramWXLivePushConfig.toString();
       } else {
         localObject = "";
       }
-      apiLog("[API] setConfig", (String)localObject);
+      apiOnlineLog((String)localObject, true);
       if (this.mEnterRoom) {
         updateConfig(false, paramWXLivePushConfig);
       }
@@ -1329,9 +1333,9 @@ public class WXLivePusher
   public void setMute(boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mute: ");
+    localStringBuilder.append("setMute mute: ");
     localStringBuilder.append(paramBoolean);
-    apiLog("[API] setMute", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), true);
     super.setMute(paramBoolean);
     this.mTRTCCloud.muteLocalAudio(paramBoolean);
   }
@@ -1418,9 +1422,9 @@ public class WXLivePusher
   public void startCameraPreview(TXCloudVideoView paramTXCloudVideoView)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("view: ");
+    localStringBuilder.append("startCameraPreview view: ");
     localStringBuilder.append(paramTXCloudVideoView);
-    apiLog("[API] startCameraPreview", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (this.mIsTRTC) {
       this.mTRTCCloud.startLocalPreview(this.mPushConfig.mFrontCamera, paramTXCloudVideoView);
     } else {
@@ -1448,16 +1452,13 @@ public class WXLivePusher
       return -1;
     }
     this.mIsRtmpProxy = isRtmpProxyUrl(paramString);
-    if (this.mIsRtmpProxy)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("url:");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(", isTRTC: ");
-      localStringBuilder.append(this.mIsTRTC);
-      Monitor.a(1, "[API] startPusher", localStringBuilder.toString(), 0);
-    }
     boolean bool = isTRTCPusherUrl(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startPusher url: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", isTRTC: ");
+    localStringBuilder.append(this.mIsTRTC);
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (!bool)
     {
       this.mIsTRTC = bool;
@@ -1468,12 +1469,6 @@ public class WXLivePusher
       TXCLog.e("WXLivePusher", "parse pusherUrl failed!!!");
       return -1;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url: ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", isTRTC: ");
-    localStringBuilder.append(this.mIsTRTC);
-    apiLog("[API] startPusher", localStringBuilder.toString());
     if ((!this.mIsTRTC) && (bool == true))
     {
       if (this.mStartPreview)
@@ -1526,9 +1521,9 @@ public class WXLivePusher
   public void stopCameraPreview(boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isNeedClearLastImg: ");
+    localStringBuilder.append("stopCameraPreview isNeedClearLastImg: ");
     localStringBuilder.append(paramBoolean);
-    apiLog("[API] stopCameraPreview", localStringBuilder.toString());
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (this.mIsTRTC) {
       this.mTRTCCloud.stopLocalPreview();
     } else {
@@ -1550,20 +1545,12 @@ public class WXLivePusher
   
   public void stopPusher()
   {
-    StringBuilder localStringBuilder;
-    if (this.mIsRtmpProxy)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isTRTC: ");
-      localStringBuilder.append(this.mIsTRTC);
-      Monitor.a(1, "[API] stopPusher", localStringBuilder.toString(), 0);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopPusher isTRTC: ");
+    localStringBuilder.append(this.mIsTRTC);
+    apiOnlineLog(localStringBuilder.toString(), true);
     if (this.mIsTRTC)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isTRTC: ");
-      localStringBuilder.append(this.mIsTRTC);
-      apiLog("[API] stopPusher", localStringBuilder.toString());
       this.mTRTCCloud.exitRoom();
       this.mTRTCCloud.setLocalViewMirror(0);
     }
@@ -1597,7 +1584,7 @@ public class WXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePusher
  * JD-Core Version:    0.7.0.1
  */

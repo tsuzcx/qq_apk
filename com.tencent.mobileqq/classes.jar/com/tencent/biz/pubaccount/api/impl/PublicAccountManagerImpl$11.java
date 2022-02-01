@@ -21,30 +21,30 @@ class PublicAccountManagerImpl$11
 {
   PublicAccountManagerImpl$11(PublicAccountManagerImpl paramPublicAccountManagerImpl, AppInterface paramAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        this.e.dismiss();
         return;
       }
-      PlusPanelUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      PlusPanelUtils.a((QQAppInterface)this.a, (Activity)this.b, this.d, null, null);
+      this.e.dismiss();
       return;
     }
-    PlusPanelUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    PlusPanelUtils.a((QQAppInterface)this.a, (BaseActivity)this.b, this.c, this.d);
     paramView = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
     if (paramView != null) {
       paramView.putString("LastScreenShotUri", null).apply();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.e.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.11
  * JD-Core Version:    0.7.0.1
  */

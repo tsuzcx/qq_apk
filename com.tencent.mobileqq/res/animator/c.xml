@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="together"
+<set
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator android:duration="300" android:valueFrom="0f" android:valueTo="0.5f" android:propertyName="alpha" />
-    <objectAnimator android:duration="300" android:valueFrom="0.0f" android:valueTo="1.058f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="300" android:valueFrom="0.0f" android:valueTo="1.058f" android:propertyName="scaleY" />
-    <objectAnimator android:duration="300" android:valueFrom="0" android:valueTo="-3.0dip" android:propertyName="translationX" />
-    <objectAnimator android:duration="166" android:startOffset="300" android:valueFrom="0.5f" android:valueTo="1.0f" android:propertyName="alpha" />
-    <objectAnimator android:duration="166" android:startOffset="300" android:valueFrom="1.058f" android:valueTo="0.969" android:propertyName="scaleX" />
-    <objectAnimator android:duration="166" android:startOffset="300" android:valueFrom="1.058f" android:valueTo="0.969f" android:propertyName="scaleY" />
-    <objectAnimator android:duration="166" android:startOffset="300" android:valueFrom="-3.0dip" android:valueTo="-5.0dip" android:propertyName="translationX" />
-    <objectAnimator android:duration="134" android:startOffset="466" android:valueFrom="0.969" android:valueTo="1.0f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="134" android:startOffset="466" android:valueFrom="0.969f" android:valueTo="1.0f" android:propertyName="scaleY" />
+    <objectAnimator android:interpolator="@interpolator/o" android:duration="200" android:startOffset="0" android:propertyName="opacity" />
+    <objectAnimator android:interpolator="@interpolator/o" android:duration="200" android:startOffset="0" android:propertyName="scale" />
+    <objectAnimator android:interpolator="@interpolator/m" android:duration="0" android:startOffset="0" android:propertyName="iconScale" />
 </set>

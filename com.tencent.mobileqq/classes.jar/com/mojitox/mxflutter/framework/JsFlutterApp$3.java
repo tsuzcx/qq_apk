@@ -11,17 +11,17 @@ class JsFlutterApp$3
   
   public void a(Error paramError)
   {
-    JsLoadErrorMsg.a.a(paramError, this.jdField_a_of_type_JavaLangString);
+    JsLoadErrorMsg.a.a(paramError, this.c);
   }
   
   public void a(@Nullable Object paramObject)
   {
-    JsFlutterApp.a(this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterApp, this.jdField_a_of_type_Long);
+    JsFlutterApp.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterApp.3
  * JD-Core Version:    0.7.0.1
  */

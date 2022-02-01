@@ -13,9 +13,9 @@ import com.tencent.widget.ListView;
 public abstract class QBaseContentView
   extends RelativeLayout
 {
-  View a;
-  protected BaseQQAppInterface a;
   protected QBaseActivity a;
+  protected BaseQQAppInterface b;
+  View c;
   
   public QBaseContentView(Context paramContext)
   {
@@ -30,26 +30,26 @@ public abstract class QBaseContentView
   public QBaseContentView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = ((QBaseActivity)paramContext);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = ((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime());
+    this.a = ((QBaseActivity)paramContext);
+    this.b = ((BaseQQAppInterface)this.a.getAppRuntime());
   }
-  
-  public abstract ListView a();
   
   public abstract void a();
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSystemService("layout_inflater")).inflate(paramInt, null);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    addView(this.jdField_a_of_type_AndroidViewView);
-  }
   
   public abstract void b();
   
   public abstract void c();
   
   public abstract void d();
+  
+  public abstract ListView getScrollableView();
+  
+  protected void setContentView(int paramInt)
+  {
+    this.c = ((LayoutInflater)this.a.getSystemService("layout_inflater")).inflate(paramInt, null);
+    this.c.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    addView(this.c);
+  }
 }
 
 

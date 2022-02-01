@@ -13,41 +13,41 @@ class SchoolTroopKeywordManager$SchoolTroopHighlightSpan$1
   
   public void run()
   {
-    if (!SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_a_of_type_Boolean)
+    if (!SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).h)
     {
-      localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).getCurrentAccountUin();
-      localObject = ((TroopManager)SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER)).b(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_a_of_type_JavaLangString, (String)localObject);
+      localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.b(this.this$0).getCurrentAccountUin();
+      localObject = ((TroopManager)SchoolTroopKeywordManager.SchoolTroopHighlightSpan.b(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER)).g(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).b, (String)localObject);
       if (localObject != null) {
         if (((TroopMemberInfo)localObject).level == 332)
         {
           localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0);
-          ((SchoolTroopKeywordManager.KeywordResult)localObject).jdField_a_of_type_Int |= 0x4;
+          ((SchoolTroopKeywordManager.KeywordResult)localObject).c |= 0x4;
         }
         else if (((TroopMemberInfo)localObject).level == 333)
         {
           localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0);
-          ((SchoolTroopKeywordManager.KeywordResult)localObject).jdField_a_of_type_Int |= 0x8;
+          ((SchoolTroopKeywordManager.KeywordResult)localObject).c |= 0x8;
         }
       }
-      SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_a_of_type_Boolean = true;
+      SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).h = true;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    String str1 = this.jdField_b_of_type_JavaLangString;
+    Object localObject = this.a;
+    String str1 = this.b;
     String str2 = this.c;
     String str3 = this.d;
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
-    String str4 = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_a_of_type_JavaLangString;
+    int i = this.e;
+    int j = this.f;
+    String str4 = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).b;
     String str5 = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_b_of_type_Int);
+    localStringBuilder.append(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).d);
     localStringBuilder.append("");
-    ReportController.b(null, "dc00899", (String)localObject, str1, str2, str3, i, j, str4, str5, localStringBuilder.toString(), SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).jdField_b_of_type_JavaLangString);
+    ReportController.b(null, "dc00899", (String)localObject, str1, str2, str3, i, j, str4, str5, localStringBuilder.toString(), SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1
  * JD-Core Version:    0.7.0.1
  */

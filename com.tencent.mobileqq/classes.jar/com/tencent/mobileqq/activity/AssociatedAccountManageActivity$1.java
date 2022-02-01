@@ -24,7 +24,7 @@ class AssociatedAccountManageActivity$1
         AssociatedAccountManageActivity.access$100(this.a).cancel();
       }
       localAssociatedAccountManageActivity = this.a;
-      AssociatedAccountManageActivity.access$102(localAssociatedAccountManageActivity, QQToast.a(localAssociatedAccountManageActivity, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+      AssociatedAccountManageActivity.access$102(localAssociatedAccountManageActivity, QQToast.makeText(localAssociatedAccountManageActivity, paramMessage.arg1, paramMessage.arg2, 0).show(this.a.getTitleBarHeight()));
       break;
     case 8194: 
       if ((AssociatedAccountManageActivity.access$000(this.a) != null) && (AssociatedAccountManageActivity.access$000(this.a).isShowing()))
@@ -58,7 +58,7 @@ class AssociatedAccountManageActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ final class AppClient$3
   
   public void run()
   {
-    MyAppApi.a();
-    if (MyAppApi.b())
+    MyAppApi.l();
+    if (MyAppApi.m())
     {
       Bundle localBundle = new Bundle();
       String str2 = DownloadConstants.b;
-      String str1 = this.jdField_a_of_type_JavaLangString;
+      String str1 = this.a;
       localObject = str1;
       if (str1 == null) {
         localObject = "";
@@ -41,12 +41,12 @@ final class AppClient$3
     ((Bundle)localObject).putBoolean("autoDownload", false);
     ((Bundle)localObject).putString("packageName", this.b);
     ((Bundle)localObject).putString("subpagetype", "SHARESOURCE");
-    AppClient.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 2462, (Bundle)localObject);
+    AppClient.a(this.d, this.a, 2462, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.3
  * JD-Core Version:    0.7.0.1
  */

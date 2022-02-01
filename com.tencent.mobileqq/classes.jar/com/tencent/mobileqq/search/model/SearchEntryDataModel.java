@@ -22,47 +22,43 @@ import tencent.im.oidb.search.DynamicDiscovery.HotSearchItem;
 import tencent.im.oidb.search.DynamicDiscovery.Result;
 
 public abstract class SearchEntryDataModel
-  implements IModel
+  extends IModel
 {
-  protected final Object a;
-  protected boolean a;
-  protected byte[] a;
-  public int c;
-  protected int d;
+  public int g;
+  protected int h;
+  protected byte[] i;
+  protected final Object j = new Object();
+  protected boolean k = false;
   
   public SearchEntryDataModel(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Boolean = false;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramInt1;
+    this.h = paramInt2;
+    this.k = paramBoolean;
   }
   
   public SearchEntryDataModel(QQAppInterface paramQQAppInterface, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Boolean = false;
-    this.c = paramInt1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramInt1;
+    this.i = paramArrayOfByte;
+    this.h = paramInt2;
+    this.k = paramBoolean;
   }
   
   public static List<SearchEntryDataModel> a(QQAppInterface paramQQAppInterface, List<DynamicDiscovery.Result> paramList, int paramInt)
   {
     QLog.d("SearchEntryDataModel818searchProto_old", 2, "convertPbDataToModel");
     Object localObject1 = Aladdin.getConfig(313);
-    int i;
+    int m;
     if (localObject1 != null)
     {
-      SearchEntryConfigManager.b = ((AladdinConfig)localObject1).getString("SBWord_Source", "Hot_word");
-      i = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_UIType", 0);
-      SearchEntryConfigManager.a = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_RwordNum", 8);
+      SearchEntryConfigManager.c = ((AladdinConfig)localObject1).getString("SBWord_Source", "Hot_word");
+      m = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_UIType", 0);
+      SearchEntryConfigManager.d = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_RwordNum", 8);
     }
     else
     {
-      i = 0;
+      m = 0;
     }
     ArrayList localArrayList = new ArrayList();
     int[] arrayOfInt = new int[paramList.size()];
@@ -71,16 +67,16 @@ public abstract class SearchEntryDataModel
       Object localObject2 = null;
       localObject1 = null;
       Object localObject3 = null;
-      int j = 0;
-      while (j < paramList.size())
+      int n = 0;
+      while (n < paramList.size())
       {
-        Object localObject4 = (DynamicDiscovery.Result)paramList.get(j);
-        int m = ((DynamicDiscovery.Result)localObject4).type.get();
-        if (m != 1)
+        Object localObject4 = (DynamicDiscovery.Result)paramList.get(n);
+        int i2 = ((DynamicDiscovery.Result)localObject4).type.get();
+        if (i2 != 1)
         {
-          if (m != 3)
+          if (i2 != 3)
           {
-            if (m != 7)
+            if (i2 != 7)
             {
               localObject5 = null;
               localObject4 = localObject1;
@@ -89,9 +85,9 @@ public abstract class SearchEntryDataModel
             if (((DynamicDiscovery.Result)localObject4).hot_search_items.get().size() < 6) {
               localObject2 = null;
             } else {
-              localObject2 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
+              localObject2 = new HotWordSearchEntryDataModel(paramQQAppInterface, i2, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
             }
-            if (i == 1) {
+            if (m == 1) {
               localObject2 = null;
             }
             localObject5 = localObject2;
@@ -101,7 +97,7 @@ public abstract class SearchEntryDataModel
           }
           else
           {
-            localObject5 = new BusinessSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
+            localObject5 = new BusinessSearchEntryDataModel(paramQQAppInterface, i2, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
             localObject3 = localObject5;
             localObject4 = localObject1;
             break label423;
@@ -116,20 +112,20 @@ public abstract class SearchEntryDataModel
           }
           else
           {
-            if (SearchEntryConfigManager.b.contentEquals("Hot_word"))
+            if (SearchEntryConfigManager.c.contentEquals("Hot_word"))
             {
               localObject5 = new String[((List)localObject1).size()];
-              int k = 0;
-              while (k < ((List)localObject1).size())
+              int i1 = 0;
+              while (i1 < ((List)localObject1).size())
               {
-                localObject5[k] = ((DynamicDiscovery.HotSearchItem)((List)localObject1).get(k)).title.get().toStringUtf8();
-                k += 1;
+                localObject5[i1] = ((DynamicDiscovery.HotSearchItem)((List)localObject1).get(i1)).title.get().toStringUtf8();
+                i1 += 1;
               }
               SharedPreUtils.a(paramQQAppInterface.getCurrentAccountUin(), (String[])localObject5);
             }
-            localObject1 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
+            localObject1 = new HotWordSearchEntryDataModel(paramQQAppInterface, i2, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
           }
-          if (i == 2) {
+          if (m == 2) {
             localObject1 = null;
           }
           localObject4 = localObject1;
@@ -141,17 +137,17 @@ public abstract class SearchEntryDataModel
         localObject2 = localObject1;
         label423:
         if (localObject5 != null) {
-          ((SearchEntryDataModel)localObject5).b();
+          ((SearchEntryDataModel)localObject5).d();
         }
-        j += 1;
+        n += 1;
         localObject1 = localObject4;
       }
-      if (i != 3)
+      if (m != 3)
       {
-        if (i == 4) {
+        if (m == 4) {
           break label508;
         }
-        if (i != 6)
+        if (m != 6)
         {
           if (localObject3 != null) {
             localArrayList.add(localObject3);
@@ -213,13 +209,13 @@ public abstract class SearchEntryDataModel
       if (paramArrayOfInt1.length != paramArrayOfInt2.length) {
         return true;
       }
-      int i = 0;
-      while (i < paramArrayOfInt1.length)
+      int m = 0;
+      while (m < paramArrayOfInt1.length)
       {
-        if (paramArrayOfInt1[i] != paramArrayOfInt2[i]) {
+        if (paramArrayOfInt1[m] != paramArrayOfInt2[m]) {
           return true;
         }
-        i += 1;
+        m += 1;
       }
       return false;
     }
@@ -233,15 +229,15 @@ public abstract class SearchEntryDataModel
     int[] arrayOfInt = new int[paramList.size()];
     if (paramList.size() > 0)
     {
-      int i = 0;
-      while (i < paramList.size())
+      int m = 0;
+      while (m < paramList.size())
       {
-        Object localObject = (UnifySearchDiscovery.Result)paramList.get(i);
-        arrayOfInt[i] = ((UnifySearchDiscovery.Result)paramList.get(i)).type.get();
-        int k = ((UnifySearchDiscovery.Result)localObject).type.get();
-        if (k != 1) {
-          if (k != 3) {
-            if (k == 8) {}
+        Object localObject = (UnifySearchDiscovery.Result)paramList.get(m);
+        arrayOfInt[m] = ((UnifySearchDiscovery.Result)paramList.get(m)).type.get();
+        int i1 = ((UnifySearchDiscovery.Result)localObject).type.get();
+        if (i1 != 1) {
+          if (i1 != 3) {
+            if (i1 == 8) {}
           }
         }
         List localList;
@@ -251,34 +247,34 @@ public abstract class SearchEntryDataModel
           break;
           localList = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
           arrayOfString = new String[localList.size()];
-          j = 0;
-          while (j < localList.size())
+          n = 0;
+          while (n < localList.size())
           {
-            arrayOfString[j] = ((UnifySearchDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-            j += 1;
+            arrayOfString[n] = ((UnifySearchDiscovery.HotSearchItem)localList.get(n)).title.get().toStringUtf8();
+            n += 1;
           }
           SharedPreUtils.b(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-          localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
+          localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, i1, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
           break;
-          localObject = new BusinessSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
+          localObject = new BusinessSearchEntryDataModel(paramQQAppInterface, i1, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
           break;
           localList = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
         } while (localList.size() < 6);
         String[] arrayOfString = new String[localList.size()];
-        int j = 0;
-        while (j < localList.size())
+        int n = 0;
+        while (n < localList.size())
         {
-          arrayOfString[j] = ((UnifySearchDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-          j += 1;
+          arrayOfString[n] = ((UnifySearchDiscovery.HotSearchItem)localList.get(n)).title.get().toStringUtf8();
+          n += 1;
         }
         SharedPreUtils.b(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-        localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
+        localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, i1, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
         if (localObject != null)
         {
-          ((SearchEntryDataModel)localObject).b();
+          ((SearchEntryDataModel)localObject).d();
           localArrayList.add(localObject);
         }
-        i += 1;
+        m += 1;
       }
       boolean bool = a(arrayOfInt, SearchEntryConfigManager.a(paramQQAppInterface, paramInt, true));
       SearchEntryConfigManager.a(paramQQAppInterface, paramInt, bool, true);
@@ -296,25 +292,27 @@ public abstract class SearchEntryDataModel
     return localArrayList;
   }
   
-  public void a()
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public void c()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       BaseApplication localBaseApplication;
       StringBuilder localStringBuilder;
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.k)
       {
         localBaseApplication = BaseApplication.getContext();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("search_discovery_sp_prefixpref_search_model_data");
         localStringBuilder.append(localQQAppInterface.getCurrentAccountUin());
         localStringBuilder.append("_");
-        localStringBuilder.append(this.c);
+        localStringBuilder.append(this.g);
         localStringBuilder.append("_");
-        localStringBuilder.append(this.d);
-        this.jdField_a_of_type_ArrayOfByte = FileUtils.fileToBytes(localBaseApplication.getFileStreamPath(localStringBuilder.toString()));
-        a(this.jdField_a_of_type_ArrayOfByte);
+        localStringBuilder.append(this.h);
+        this.i = FileUtils.fileToBytes(localBaseApplication.getFileStreamPath(localStringBuilder.toString()));
+        a(this.i);
       }
       else
       {
@@ -323,21 +321,19 @@ public abstract class SearchEntryDataModel
         localStringBuilder.append("search_discovery_sp_prefix_unifypref_search_model_data");
         localStringBuilder.append(localQQAppInterface.getCurrentAccountUin());
         localStringBuilder.append("_");
-        localStringBuilder.append(this.c);
+        localStringBuilder.append(this.g);
         localStringBuilder.append("_");
-        localStringBuilder.append(this.d);
-        this.jdField_a_of_type_ArrayOfByte = FileUtils.fileToBytes(localBaseApplication.getFileStreamPath(localStringBuilder.toString()));
-        a(this.jdField_a_of_type_ArrayOfByte);
+        localStringBuilder.append(this.h);
+        this.i = FileUtils.fileToBytes(localBaseApplication.getFileStreamPath(localStringBuilder.toString()));
+        a(this.i);
       }
       return;
     }
   }
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  protected void b()
+  protected void d()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    if (this.i == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("SearchEntryDataModel", 2, "saveDataToLocal, mRawData is null");
@@ -349,7 +345,7 @@ public abstract class SearchEntryDataModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.SearchEntryDataModel
  * JD-Core Version:    0.7.0.1
  */

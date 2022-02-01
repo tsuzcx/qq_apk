@@ -12,11 +12,11 @@ import com.tencent.aelight.camera.ae.camera.ui.BaseViewStubHolder;
 public class MaterialTipsViewStubHolder
   extends BaseViewStubHolder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new MaterialTipsViewStubHolder.1(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View a;
+  private TextView b;
+  private ImageView c;
+  private AlphaAnimation d = new AlphaAnimation(1.0F, 0.0F);
+  private Animation.AnimationListener e = new MaterialTipsViewStubHolder.1(this);
   
   public MaterialTipsViewStubHolder(ViewStub paramViewStub)
   {
@@ -25,29 +25,29 @@ public class MaterialTipsViewStubHolder
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122459);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122460));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122458));
+    this.a = paramView.findViewById(2063991285);
+    this.c = ((ImageView)paramView.findViewById(2063991286));
+    this.b = ((TextView)paramView.findViewById(2063991284));
   }
   
   public void a(String paramString, Bitmap paramBitmap, int paramInt)
   {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    c();
+    this.a.setVisibility(0);
+    this.b.setVisibility(0);
+    this.b.setText(paramString);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.c.setImageBitmap(paramBitmap);
+      this.c.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.c.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    paramString = this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
+    this.d.reset();
+    this.d.setAnimationListener(this.e);
+    paramString = this.d;
     long l;
     if (paramInt > 0) {
       l = paramInt;
@@ -55,25 +55,25 @@ public class MaterialTipsViewStubHolder
       l = 3000L;
     }
     paramString.setStartOffset(l);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewView.setAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.startNow();
+    this.d.setDuration(200L);
+    this.a.setAnimation(this.d);
+    this.d.startNow();
   }
   
-  public void b()
+  public void d()
   {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(null);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.cancel();
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.d.setAnimationListener(null);
+    this.d.cancel();
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.tips.MaterialTipsViewStubHolder
  * JD-Core Version:    0.7.0.1
  */

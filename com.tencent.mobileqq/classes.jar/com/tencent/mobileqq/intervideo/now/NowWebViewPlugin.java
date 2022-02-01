@@ -15,10 +15,10 @@ import org.json.JSONObject;
 public class NowWebViewPlugin
   extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  final ITroopMemberApiClientApi.Callback jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = new NowWebViewPlugin.1(this);
-  private int b;
+  final ITroopMemberApiClientApi.Callback a = new NowWebViewPlugin.1(this);
+  private TroopMemberApiClient b;
+  private int c;
+  private int d;
   
   public NowWebViewPlugin()
   {
@@ -94,7 +94,7 @@ public class NowWebViewPlugin
   
   public TroopMemberApiClient a()
   {
-    return this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    return this.b;
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -110,7 +110,7 @@ public class NowWebViewPlugin
       paramJsBridgeListener.append(paramString3);
       QLog.d("NowWebViewPlugin", 2, paramJsBridgeListener.toString());
     }
-    paramJsBridgeListener = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    paramJsBridgeListener = this.b;
     boolean bool = false;
     if ((paramJsBridgeListener != null) && (paramString1 != null) && ("nowlive".equals(paramString2)))
     {
@@ -119,8 +119,8 @@ public class NowWebViewPlugin
       }
       if ("getPluginInfo".equals(paramString3))
       {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.h();
-        a(this.jdField_a_of_type_Int, this.b);
+        this.b.l();
+        a(this.c, this.d);
         return true;
       }
       if ("openRoom".equals(paramString3))
@@ -141,7 +141,7 @@ public class NowWebViewPlugin
           if (TextUtils.isEmpty(paramJsBridgeListener)) {
             return false;
           }
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(Long.valueOf(paramJsBridgeListener).longValue());
+          this.b.a(Long.valueOf(paramJsBridgeListener).longValue());
           return true;
         }
         return false;
@@ -172,7 +172,7 @@ public class NowWebViewPlugin
         {
           i = 0;
         }
-        paramJsBridgeListener = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+        paramJsBridgeListener = this.b;
         if (i == 1) {
           bool = true;
         }
@@ -181,7 +181,7 @@ public class NowWebViewPlugin
       }
       if ("preload".equals(paramString3))
       {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(a(paramVarArgs));
+        this.b.a(a(paramVarArgs));
         return true;
       }
       if ("audioRoomSetting".equals(paramString3))
@@ -204,25 +204,25 @@ public class NowWebViewPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g(this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback);
+    this.b = TroopMemberApiClient.a();
+    this.b.e();
+    this.b.i(this.a);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    TroopMemberApiClient localTroopMemberApiClient = this.b;
     if (localTroopMemberApiClient != null)
     {
-      localTroopMemberApiClient.b();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.g();
+      localTroopMemberApiClient.f();
+      this.b.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

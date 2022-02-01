@@ -39,7 +39,7 @@ class ArkPubicEventWrapImpl$1
         try
         {
           paramString2 = new JSONObject(paramString3).optString("packageName");
-          paramString2 = PackageUtil.a(MobileQQ.getContext(), paramString2);
+          paramString2 = PackageUtil.b(MobileQQ.getContext(), paramString2);
           paramString3 = new JSONObject();
           boolean bool = "0".equals(paramString2);
           if (bool)
@@ -171,7 +171,7 @@ class ArkPubicEventWrapImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.utils.impl.ArkPubicEventWrapImpl.1
  * JD-Core Version:    0.7.0.1
  */

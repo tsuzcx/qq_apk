@@ -10,7 +10,7 @@ import java.util.List;
 public class PathKeyframeAnimation
   extends KeyframeAnimation<PointF>
 {
-  private PathMeasure pathMeasure = new PathMeasure();
+  private final PathMeasure pathMeasure = new PathMeasure();
   private PathKeyframe pathMeasureKeyframe;
   private final PointF point = new PointF();
   private final float[] pos = new float[2];
@@ -49,7 +49,7 @@ public class PathKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

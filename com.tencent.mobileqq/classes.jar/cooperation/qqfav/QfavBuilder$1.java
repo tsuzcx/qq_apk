@@ -10,12 +10,12 @@ class QfavBuilder$1
   
   public void run()
   {
-    QfavHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    QfavHelper.a(this.a, this.b.getAccount(), this.c, this.d, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavBuilder.1
  * JD-Core Version:    0.7.0.1
  */

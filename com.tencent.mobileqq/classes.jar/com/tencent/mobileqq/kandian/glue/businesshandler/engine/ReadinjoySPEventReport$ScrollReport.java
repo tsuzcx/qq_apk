@@ -8,15 +8,15 @@ import com.tencent.widget.ListView;
 
 public class ReadinjoySPEventReport$ScrollReport
 {
-  static int jdField_a_of_type_Int = -1;
-  static long jdField_a_of_type_Long = 0L;
-  static int jdField_b_of_type_Int = -1;
-  static long jdField_b_of_type_Long;
-  static int c;
+  static long a = 0L;
+  static long b = 0L;
+  static int c = -1;
+  static int d = -1;
+  static int e;
   
   public static int a()
   {
-    return c;
+    return e;
   }
   
   static void a(AbsListView paramAbsListView)
@@ -24,13 +24,13 @@ public class ReadinjoySPEventReport$ScrollReport
     ReadinjoySPEventReport.ScrollStep localScrollStep = new ReadinjoySPEventReport.ScrollStep();
     int i = paramAbsListView.getLastVisiblePosition();
     int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
-    localScrollStep.jdField_a_of_type_Int = b();
-    localScrollStep.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
-    long l = jdField_b_of_type_Long;
-    localScrollStep.jdField_a_of_type_Long = (l - jdField_a_of_type_Long);
-    localScrollStep.c = (j - i);
-    localScrollStep.jdField_b_of_type_Long = l;
-    localScrollStep.d = j;
+    localScrollStep.a = b();
+    localScrollStep.d = Math.abs(d - c);
+    long l = b;
+    localScrollStep.b = (l - a);
+    localScrollStep.e = (j - i);
+    localScrollStep.c = l;
+    localScrollStep.f = j;
     ReadinjoySPEventReport.ScrollReportUtil.a(localScrollStep);
   }
   
@@ -42,9 +42,9 @@ public class ReadinjoySPEventReport$ScrollReport
         return;
       }
       b(paramAbsListView, paramInt);
-      if (ReadinjoySPEventReport.ScrollReportUtil.jdField_a_of_type_Long >= 0L)
+      if (ReadinjoySPEventReport.ScrollReportUtil.a >= 0L)
       {
-        if (ReadinjoySPEventReport.ScrollReportUtil.jdField_b_of_type_Long < 0L) {
+        if (ReadinjoySPEventReport.ScrollReportUtil.b < 0L) {
           return;
         }
         if (paramInt != 0)
@@ -52,16 +52,16 @@ public class ReadinjoySPEventReport$ScrollReport
           if (paramInt != 1) {
             return;
           }
-          jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-          jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-          jdField_b_of_type_Int = -1;
-          jdField_b_of_type_Long = -1L;
+          c = paramAbsListView.getFirstVisiblePosition();
+          a = NetConnInfoCenter.getServerTimeMillis();
+          d = -1;
+          b = -1L;
           return;
         }
-        if ((jdField_b_of_type_Int < 0) && (jdField_b_of_type_Long < 0L))
+        if ((d < 0) && (b < 0L))
         {
-          jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-          jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+          d = paramAbsListView.getFirstVisiblePosition();
+          b = NetConnInfoCenter.getServerTimeMillis();
           a(paramAbsListView);
         }
       }
@@ -70,7 +70,7 @@ public class ReadinjoySPEventReport$ScrollReport
   
   static int b()
   {
-    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
+    if (c > d) {
       return 0;
     }
     return 1;
@@ -81,16 +81,16 @@ public class ReadinjoySPEventReport$ScrollReport
     if (paramInt != 0) {
       return;
     }
-    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
-    if (c < 0) {
-      c = 0;
+    e = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
+    if (e < 0) {
+      e = 0;
     }
-    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
+    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(e) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScrollReport
  * JD-Core Version:    0.7.0.1
  */

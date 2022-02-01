@@ -51,7 +51,7 @@ public final class ReadInJoySPEventReportImpl
   
   public void onLebaResume()
   {
-    ReadinjoySPEventReport.a().c();
+    ReadinjoySPEventReport.a().d();
   }
   
   public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
@@ -61,7 +61,7 @@ public final class ReadInJoySPEventReportImpl
   
   public void recordOneKeyClean()
   {
-    ReadinjoySPEventReport.a().h();
+    ReadinjoySPEventReport.a().n();
   }
   
   public void removeForeBackGroundCallback(@Nullable IForeBackGroundCallback paramIForeBackGroundCallback)
@@ -71,12 +71,12 @@ public final class ReadInJoySPEventReportImpl
   
   public void reportAfterSyncMsg(int paramInt)
   {
-    ReadinjoySPEventReport.d(paramInt);
+    ReadinjoySPEventReport.h(paramInt);
   }
   
   public void reportDau(int paramInt)
   {
-    ReadinjoySPEventReport.e(paramInt);
+    ReadinjoySPEventReport.i(paramInt);
   }
   
   public void reportInForeground() {}
@@ -90,7 +90,7 @@ public final class ReadInJoySPEventReportImpl
   
   public void reportManualRefresMsg()
   {
-    ReadinjoySPEventReport.a().a();
+    ReadinjoySPEventReport.a().b();
   }
   
   public void reportPubAioItemClick(@Nullable String paramString, @Nullable Object paramObject)
@@ -117,7 +117,7 @@ public final class ReadInJoySPEventReportImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.api.impl.ReadInJoySPEventReportImpl
  * JD-Core Version:    0.7.0.1
  */

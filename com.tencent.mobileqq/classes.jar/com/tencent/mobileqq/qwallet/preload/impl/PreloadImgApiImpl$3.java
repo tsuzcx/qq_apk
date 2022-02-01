@@ -17,24 +17,24 @@ class PreloadImgApiImpl$3
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       if (!TextUtils.isEmpty(str1))
       {
         String str2 = MD5.toMD5(str1);
-        File localFile2 = new File(this.jdField_a_of_type_JavaLangString, str2);
+        File localFile2 = new File(this.b, str2);
         File localFile1 = localFile2;
         if (!localFile2.exists()) {
-          localFile1 = new File(this.b, str2);
-        }
-        if ((!localFile1.exists()) || (PreloadImgApiImpl.access$000(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), localFile1.getPath(), str1) == null))
-        {
-          this.jdField_a_of_type_JavaUtilList.add(str1);
           localFile1 = new File(this.c, str2);
-          this.jdField_a_of_type_JavaUtilMap.put(str1, localFile1);
-          this.jdField_a_of_type_AndroidOsBundle.putString(str1, localFile1.getPath());
+        }
+        if ((!localFile1.exists()) || (PreloadImgApiImpl.access$000(this.this$0, this.d.getApplication(), localFile1.getPath(), str1) == null))
+        {
+          this.e.add(str1);
+          localFile1 = new File(this.f, str2);
+          this.g.put(str1, localFile1);
+          this.h.putString(str1, localFile1.getPath());
         }
       }
     }
@@ -42,7 +42,7 @@ class PreloadImgApiImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadImgApiImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,6 @@ public abstract interface IWSPlayerUIDelegate
   
   public abstract void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean a(WSPlayerParam paramWSPlayerParam);
-  
   public abstract void b(WSPlayerParam paramWSPlayerParam);
   
   public abstract void c(WSPlayerParam paramWSPlayerParam);
@@ -33,10 +31,12 @@ public abstract interface IWSPlayerUIDelegate
   public abstract void i(WSPlayerParam paramWSPlayerParam);
   
   public abstract void j(WSPlayerParam paramWSPlayerParam);
+  
+  public abstract boolean k(WSPlayerParam paramWSPlayerParam);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.IWSPlayerUIDelegate
  * JD-Core Version:    0.7.0.1
  */

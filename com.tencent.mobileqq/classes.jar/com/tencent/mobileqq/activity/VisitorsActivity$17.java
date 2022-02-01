@@ -11,17 +11,17 @@ class VisitorsActivity$17
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.f = false;
+    this.a.T = false;
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.c.setVisibility(0);
+    this.a.G.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.17
  * JD-Core Version:    0.7.0.1
  */

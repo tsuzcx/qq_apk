@@ -29,10 +29,10 @@ class CmGameAudioPlayer$6
         localJSONObject.put("event", 2);
         continue;
         localJSONObject.put("event", 1);
-        CmGameLauncher localCmGameLauncher = CmGameUtil.a(CmGameAudioPlayer.a(this.a));
-        if ((localCmGameLauncher != null) && (localCmGameLauncher.a() != null))
+        CmGameLauncher localCmGameLauncher = CmGameUtil.a(CmGameAudioPlayer.b(this.a));
+        if ((localCmGameLauncher != null) && (localCmGameLauncher.e() != null))
         {
-          ApolloCmdChannel.getInstance().callbackFromRequest(localCmGameLauncher.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
+          ApolloCmdChannel.getInstance().callbackFromRequest(localCmGameLauncher.e().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
           return;
         }
       }
@@ -50,7 +50,7 @@ class CmGameAudioPlayer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmGameAudioPlayer.6
  * JD-Core Version:    0.7.0.1
  */

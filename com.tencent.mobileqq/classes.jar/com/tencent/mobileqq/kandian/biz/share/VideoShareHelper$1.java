@@ -15,7 +15,7 @@ class VideoShareHelper$1
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
     if (VideoShareHelper.a(this.a) != null) {
-      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), false, false);
+      VideoShareHelper.a(this.a).a(VideoShareHelper.b(this.a), VideoShareHelper.c(this.a), false, false);
     }
     VideoShareHelper.a(this.a, true);
     VideoShareHelper.b(this.a, false);
@@ -23,7 +23,7 @@ class VideoShareHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

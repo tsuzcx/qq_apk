@@ -66,15 +66,15 @@ public class TroopGiftManager
   extends Observable
   implements Manager
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  ConcurrentHashMap<String, TroopGiftBagInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  AppInterface a = null;
+  ConcurrentHashMap<String, TroopGiftBagInfo> b = new ConcurrentHashMap();
+  private EntityManager c;
   
   public TroopGiftManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    this.a = paramAppInterface;
+    if (this.a != null) {
+      this.c = paramAppInterface.getEntityManagerFactory().createEntityManager();
     }
   }
   
@@ -100,7 +100,7 @@ public class TroopGiftManager
     case 5: 
       return 2;
     }
-    paramString = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getHotChatMng(true).a(paramString);
+    paramString = ((QQAppInterface)this.a).getHotChatMng(true).c(paramString);
     if (paramString != null)
     {
       if (paramString.isBuLuoHotChat()) {
@@ -168,7 +168,7 @@ public class TroopGiftManager
     }
     localObject2 = ((oidb_0x6b6.ReqBody)localObject1).uint32_portal;
     paramInt5 = i;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+    if ((this.a instanceof QQAppInterface)) {
       paramInt5 = paramInt4;
     }
     ((PBUInt32Field)localObject2).set(a(paramString2, paramInt3, paramInt5), true);
@@ -186,19 +186,19 @@ public class TroopGiftManager
     if (AnonymousChatHelper.a().a(paramString2))
     {
       paramThrowFlowerReq = new oidb_0x6b6.AnonymousGroupMsg();
-      paramString2 = AnonymousChatHelper.a().a(paramString2);
+      paramString2 = AnonymousChatHelper.a().b(paramString2);
       paramThrowFlowerReq.uint32_flags.set(2);
-      if (!TextUtils.isEmpty(paramString2.jdField_b_of_type_JavaLangString)) {
-        paramThrowFlowerReq.str_anon_id.set(ByteStringMicro.copyFrom(paramString2.jdField_b_of_type_JavaLangString.getBytes()));
+      if (!TextUtils.isEmpty(paramString2.f)) {
+        paramThrowFlowerReq.str_anon_id.set(ByteStringMicro.copyFrom(paramString2.f.getBytes()));
       }
-      if (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) {
-        paramThrowFlowerReq.str_anon_nick.set(ByteStringMicro.copyFrom(paramString2.jdField_a_of_type_JavaLangString.getBytes()));
+      if (!TextUtils.isEmpty(paramString2.d)) {
+        paramThrowFlowerReq.str_anon_nick.set(ByteStringMicro.copyFrom(paramString2.d.getBytes()));
       }
-      paramThrowFlowerReq.uint32_head_portrait.set(paramString2.jdField_a_of_type_Int);
-      paramThrowFlowerReq.uint32_expire_time.set(paramString2.jdField_b_of_type_Int);
-      paramThrowFlowerReq.uint32_bubble_id.set((int)paramString2.jdField_a_of_type_Long);
-      if (!TextUtils.isEmpty(paramString2.c)) {
-        paramThrowFlowerReq.str_rank_color.set(ByteStringMicro.copyFrom(paramString2.c.getBytes()));
+      paramThrowFlowerReq.uint32_head_portrait.set(paramString2.c);
+      paramThrowFlowerReq.uint32_expire_time.set(paramString2.e);
+      paramThrowFlowerReq.uint32_bubble_id.set((int)paramString2.b);
+      if (!TextUtils.isEmpty(paramString2.g)) {
+        paramThrowFlowerReq.str_rank_color.set(ByteStringMicro.copyFrom(paramString2.g.getBytes()));
       }
       ((oidb_0x6b6.ReqBody)localObject1).msg_anony.set(paramThrowFlowerReq);
     }
@@ -210,9 +210,9 @@ public class TroopGiftManager
     localObject2 = new StringBuilder();
     paramThrowFlowerReq = "";
     ((StringBuilder)localObject2).append("");
-    ((StringBuilder)localObject2).append(AppSetting.a());
+    ((StringBuilder)localObject2).append(AppSetting.b());
     localObject2 = ((StringBuilder)localObject2).toString();
-    paramInt4 = AppSetting.a();
+    paramInt4 = AppSetting.d();
     ((oidb_0x6b6.ReqBody)localObject1).bytes_user_ip.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
     ((oidb_0x6b6.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()), true);
     ((oidb_0x6b6.ReqBody)localObject1).uint32_client.set(1, true);
@@ -225,7 +225,7 @@ public class TroopGiftManager
       ((oidb_0x6b6.ReqBody)localObject1).msg_tmp_msg_token.c2c_type.set(1, true);
       if (paramSendFlowerReq != null)
       {
-        paramString2 = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getMsgCache().m(String.valueOf(paramSendFlowerReq.uint64_to_uin.get()));
+        paramString2 = ((QQAppInterface)this.a).getMsgCache().r(String.valueOf(paramSendFlowerReq.uint64_to_uin.get()));
         if (paramString2 != null) {
           ((oidb_0x6b6.ReqBody)localObject1).msg_tmp_msg_token.buf.set(ByteStringMicro.copyFrom(paramString2), true);
         }
@@ -238,7 +238,7 @@ public class TroopGiftManager
       ((oidb_0x6b6.ReqBody)localObject1).msg_tmp_msg_token.c2c_type.set(1, true);
       if (paramSendFlowerReq != null)
       {
-        paramString2 = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getMsgCache().j(String.valueOf(paramSendFlowerReq.uint64_to_uin.get()));
+        paramString2 = ((QQAppInterface)this.a).getMsgCache().o(String.valueOf(paramSendFlowerReq.uint64_to_uin.get()));
         if (paramString2 != null) {
           ((oidb_0x6b6.ReqBody)localObject1).msg_tmp_msg_token.buf.set(ByteStringMicro.copyFrom(paramString2), true);
         }
@@ -253,10 +253,10 @@ public class TroopGiftManager
       ((oidb_0x6b6.ReqBody)localObject1).msg_gps_info.set(paramString2, true);
     }
     paramSendFlowerReq = new oidb_0x6b6.ExtParam();
-    localObject2 = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+    localObject2 = (TicketManager)this.a.getManager(2);
     paramString2 = paramThrowFlowerReq;
     if (localObject2 != null) {
-      paramString2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      paramString2 = ((TicketManager)localObject2).getSkey(this.a.getCurrentAccountUin());
     }
     paramThrowFlowerReq = new oidb_0x6b6.LoginSig();
     paramThrowFlowerReq.uint32_type.set(1);
@@ -276,7 +276,7 @@ public class TroopGiftManager
       paramSendFlowerReq.append(paramInt2);
       QLog.i(".troop.send_gift", 2, paramSendFlowerReq.toString());
     }
-    paramSendFlowerReq = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    paramSendFlowerReq = this.a;
     paramThrowFlowerReq = new TroopGiftManager.1(this, paramTroopGiftCallback);
     paramTroopGiftCallback = ((oidb_0x6b6.ReqBody)localObject1).toByteArray();
     localObject1 = new StringBuilder();
@@ -342,9 +342,9 @@ public class TroopGiftManager
       Object localObject2 = new StringBuilder();
       paramGetExtraDataReq = "";
       ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(AppSetting.a());
+      ((StringBuilder)localObject2).append(AppSetting.b());
       localObject2 = ((StringBuilder)localObject2).toString();
-      paramInt3 = AppSetting.a();
+      paramInt3 = AppSetting.d();
       ((oidb_0x6c3.ReqBody)localObject1).bytes_user_ip.set(ByteStringMicro.copyFrom(paramGetStockReq.getBytes()), true);
       ((oidb_0x6c3.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()), true);
       ((oidb_0x6c3.ReqBody)localObject1).uint32_client.set(1, true);
@@ -352,10 +352,10 @@ public class TroopGiftManager
       ((oidb_0x6c3.ReqBody)localObject1).uint32_business_id.set(paramInt2, true);
       ((oidb_0x6c3.ReqBody)localObject1).setHasFlag(true);
       localObject2 = new oidb_0x6c3.ExtParam();
-      TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+      TicketManager localTicketManager = (TicketManager)this.a.getManager(2);
       paramGetStockReq = paramGetExtraDataReq;
       if (localTicketManager != null) {
-        paramGetStockReq = localTicketManager.getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        paramGetStockReq = localTicketManager.getSkey(this.a.getCurrentAccountUin());
       }
       paramGetExtraDataReq = new oidb_0x6c3.LoginSig();
       paramGetExtraDataReq.uint32_type.set(1);
@@ -375,7 +375,7 @@ public class TroopGiftManager
         paramString2.append(paramInt4);
         QLog.i(".troop.send_gift", 2, paramString2.toString());
       }
-      paramString2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      paramString2 = this.a;
       paramGetExtraDataReq = new TroopGiftManager.3(this, paramTroopGiftCallback);
       paramTroopGiftCallback = ((oidb_0x6c3.ReqBody)localObject1).toByteArray();
       localObject1 = new StringBuilder();
@@ -412,9 +412,9 @@ public class TroopGiftManager
       localReqBody.bytes_gift_bagid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
       localReqBody.uint32_channel.set(1, true);
       localReqBody.setHasFlag(true);
-      localObject1 = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+      localObject1 = (TicketManager)this.a.getManager(2);
       if (localObject1 != null) {
-        localObject1 = ((TicketManager)localObject1).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        localObject1 = ((TicketManager)localObject1).getSkey(this.a.getCurrentAccountUin());
       } else {
         localObject1 = "";
       }
@@ -439,7 +439,7 @@ public class TroopGiftManager
         ((StringBuilder)localObject2).append(paramInt3);
         QLog.i(".troop.send_gift", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      localObject2 = this.a;
       paramString1 = new TroopGiftManager.5(this, paramTroopGiftCallback, paramString1, paramString2);
       paramString2 = localReqBody.toByteArray();
       paramTroopGiftCallback = new StringBuilder();
@@ -492,7 +492,7 @@ public class TroopGiftManager
       long l = Long.parseLong(paramString1);
       localObject = new oidb_0x962.ClientInfo();
       ((oidb_0x962.ClientInfo)localObject).uint32_client_type.set(1, true);
-      ((oidb_0x962.ClientInfo)localObject).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.a().getBytes()), true);
+      ((oidb_0x962.ClientInfo)localObject).bytes_version.set(ByteStringMicro.copyFrom(AppSetting.b().getBytes()), true);
       paramString1 = new oidb_0x962.ReqBody();
       paramString1.uint64_group_code.set(l, true);
       paramString1.bytes_id.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
@@ -502,7 +502,7 @@ public class TroopGiftManager
       paramString1.uint32_cmd.set(paramInt3, true);
       paramString2 = new Bundle();
       paramString2.putInt("subCmd", paramInt3);
-      localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      localObject = this.a;
       paramTroopGiftCallback = new TroopGiftManager.6(this, paramTroopGiftCallback);
       paramString1 = paramString1.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -531,7 +531,7 @@ public class TroopGiftManager
     Oidb_0xcd1.GetPackageShopReq localGetPackageShopReq = new Oidb_0xcd1.GetPackageShopReq();
     localGetPackageShopReq.portal_number.set(2);
     localReqBody.get_pack_req.set(localGetPackageShopReq);
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopGiftManager.2(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0xcd1_0", 3281, 0, null, 0L);
+    ProtoUtils.a(this.a, new TroopGiftManager.2(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0xcd1_0", 3281, 0, null, 0L);
   }
   
   private void b(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, long paramLong, TroopGiftCallback paramTroopGiftCallback)
@@ -548,7 +548,7 @@ public class TroopGiftManager
       ((PBUInt64Field)localObject1).set(l, true);
       localObject1 = localReqBody.uint32_portal;
       int i;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+      if ((this.a instanceof QQAppInterface)) {
         i = 7;
       } else {
         i = 10;
@@ -558,9 +558,9 @@ public class TroopGiftManager
       localReqBody.bytes_gift_bagid.set(ByteStringMicro.copyFrom(paramString3.getBytes()));
       localReqBody.uint32_channel.set(1, true);
       localReqBody.setHasFlag(true);
-      localObject1 = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+      localObject1 = (TicketManager)this.a.getManager(2);
       if (localObject1 != null) {
-        localObject1 = ((TicketManager)localObject1).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        localObject1 = ((TicketManager)localObject1).getSkey(this.a.getCurrentAccountUin());
       } else {
         localObject1 = "";
       }
@@ -581,7 +581,7 @@ public class TroopGiftManager
       } else {
         paramInt2 = 0;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      localObject2 = this.a;
       paramString2 = new TroopGiftManager.4(this, paramTroopGiftCallback, paramString2, paramString3);
       paramString3 = localReqBody.toByteArray();
       paramTroopGiftCallback = new StringBuilder();
@@ -619,9 +619,9 @@ public class TroopGiftManager
   
   public int a(int paramInt)
   {
-    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    BaseApplication localBaseApplication = this.a.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.a.getCurrentAccountUin());
     localStringBuilder.append("_troop_gift_");
     localStringBuilder.append(paramInt);
     return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getInt("gift_list_version", 0);
@@ -636,13 +636,13 @@ public class TroopGiftManager
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(paramString2);
       localObject = ((StringBuilder)localObject).toString();
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject) != null) {
-        return (TroopGiftBagInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (this.b.get(localObject) != null) {
+        return (TroopGiftBagInfo)this.b.get(localObject);
       }
-      TroopGiftBagInfo localTroopGiftBagInfo = (TroopGiftBagInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopGiftBagInfo.class, paramString2);
+      TroopGiftBagInfo localTroopGiftBagInfo = (TroopGiftBagInfo)this.c.find(TroopGiftBagInfo.class, paramString2);
       if (localTroopGiftBagInfo != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localTroopGiftBagInfo);
+        this.b.put(localObject, localTroopGiftBagInfo);
         return localTroopGiftBagInfo;
       }
       a(paramString1, paramString2, 0, 0, 1000L, paramTroopGiftCallback);
@@ -662,9 +662,9 @@ public class TroopGiftManager
   
   public void a(int paramInt1, int paramInt2)
   {
-    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    BaseApplication localBaseApplication = this.a.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.a.getCurrentAccountUin());
     localStringBuilder.append("_troop_gift_");
     localStringBuilder.append(paramInt2);
     localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("gift_list_version", paramInt1).commit();
@@ -672,20 +672,20 @@ public class TroopGiftManager
   
   public void a(int paramInt, TroopGiftCallback paramTroopGiftCallback)
   {
-    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return;
     }
     cmd0x9e9.ReqBody localReqBody = new cmd0x9e9.ReqBody();
     cmd0x9e9.User localUser = new cmd0x9e9.User();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(AppSetting.a());
+    ((StringBuilder)localObject).append(AppSetting.b());
     localObject = ((StringBuilder)localObject).toString();
     localUser.bytes_version.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()), true);
     localUser.uint32_client.set(1, true);
     localUser.uint32_portal.set(paramInt, true);
     localReqBody.msg_user.set(localUser, true);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopGiftManager.8(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0x9e9_0", 2537, 0);
+    ProtoUtils.a((QQAppInterface)this.a, new TroopGiftManager.8(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0x9e9_0", 2537, 0);
   }
   
   public void a(TroopGiftAioItemData paramTroopGiftAioItemData, int paramInt, String paramString, long paramLong, TroopGiftCallback paramTroopGiftCallback)
@@ -694,8 +694,8 @@ public class TroopGiftManager
     {
       localObject2 = new cmd0xdad.ReqBody();
       ((cmd0xdad.ReqBody)localObject2).client.set(1L, true);
-      ((cmd0xdad.ReqBody)localObject2).product_id.set(paramTroopGiftAioItemData.jdField_a_of_type_Int, true);
-      ((cmd0xdad.ReqBody)localObject2).amount.set(paramTroopGiftAioItemData.f, true);
+      ((cmd0xdad.ReqBody)localObject2).product_id.set(paramTroopGiftAioItemData.d, true);
+      ((cmd0xdad.ReqBody)localObject2).amount.set(paramTroopGiftAioItemData.j, true);
       ((cmd0xdad.ReqBody)localObject2).to_uin.set(paramLong, true);
       if (paramString == null) {}
     }
@@ -718,9 +718,9 @@ public class TroopGiftManager
       QLog.e(".troop.send_gift", 2, paramTroopGiftAioItemData.toString());
     }
     return;
-    paramString = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
+    paramString = (TicketManager)this.a.getManager(2);
     localObject1 = new cmd0xdad.LoginSig();
-    ((cmd0xdad.LoginSig)localObject1).bytes_sig.set(ByteStringMicro.copyFrom(paramString.getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).getBytes()), true);
+    ((cmd0xdad.LoginSig)localObject1).bytes_sig.set(ByteStringMicro.copyFrom(paramString.getSkey(this.a.getCurrentAccountUin()).getBytes()), true);
     ((cmd0xdad.LoginSig)localObject1).uint32_type.set(1, true);
     ((cmd0xdad.LoginSig)localObject1).uint32_appid.set(0, true);
     ((cmd0xdad.ReqBody)localObject2).sig.set((MessageMicro)localObject1, true);
@@ -731,7 +731,7 @@ public class TroopGiftManager
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("");
-    ((StringBuilder)localObject1).append(AppSetting.a());
+    ((StringBuilder)localObject1).append(AppSetting.b());
     localObject1 = ((StringBuilder)localObject1).toString();
     ((cmd0xdad.ReqBody)localObject2).ip.set(new String(paramString.getBytes()), true);
     ((cmd0xdad.ReqBody)localObject2).vsersion.set(new String(((String)localObject1).getBytes()), true);
@@ -745,7 +745,7 @@ public class TroopGiftManager
       ((StringBuilder)localObject1).append(paramInt);
       QLog.i(".troop.send_gift", 2, ((StringBuilder)localObject1).toString());
     }
-    localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    localObject1 = this.a;
     paramTroopGiftAioItemData = new TroopGiftManager.7(this, paramTroopGiftCallback, paramTroopGiftAioItemData);
     paramTroopGiftCallback = ((cmd0xdad.ReqBody)localObject2).toByteArray();
     Object localObject2 = new StringBuilder();
@@ -871,7 +871,7 @@ public class TroopGiftManager
       long l = Long.parseLong(paramString);
       paramString = new oidb_0xa48.ReqBody();
       paramString.uint64_groupcode.set(l, true);
-      ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new TroopGiftManager.9(this, paramTroopGiftCallback), paramString.toByteArray(), "OidbSvc.0xa48_1", 2632, 1, new Bundle(), 6000L);
+      ProtoUtils.a((QQAppInterface)this.a, new TroopGiftManager.9(this, paramTroopGiftCallback), paramString.toByteArray(), "OidbSvc.0xa48_1", 2632, 1, new Bundle(), 6000L);
       return;
     }
     catch (Exception paramString)
@@ -932,7 +932,7 @@ public class TroopGiftManager
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.a.getCurrentAccountUin());
     ((StringBuilder)localObject).append("_troop_gift_panel_red_dot");
     localObject = ((StringBuilder)localObject).toString();
     int i;
@@ -948,7 +948,7 @@ public class TroopGiftManager
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.a.getCurrentAccountUin());
     ((StringBuilder)localObject).append("_troop_gift_panel_red_dot");
     localObject = ((StringBuilder)localObject).toString();
     int i;
@@ -962,7 +962,7 @@ public class TroopGiftManager
   
   public boolean a(Entity paramEntity)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.c;
     boolean bool = false;
     if (localEntityManager != null)
     {
@@ -971,7 +971,7 @@ public class TroopGiftManager
       }
       if (paramEntity.getStatus() == 1000)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        this.c.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool = true;
         }
@@ -980,7 +980,7 @@ public class TroopGiftManager
       if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
         return false;
       }
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+      return this.c.update(paramEntity);
     }
     return false;
   }
@@ -1001,22 +1001,22 @@ public class TroopGiftManager
   
   public void onDestroy()
   {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (QLog.isColorLevel()))
+    if ((this.a != null) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("clear History. uin:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount());
+      localStringBuilder.append(this.a.getAccount());
       localStringBuilder.append(" app=");
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface));
+      localStringBuilder.append(String.valueOf(this.a));
       QLog.d(".troop.send_gift", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
+    this.c.close();
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,26 @@ import com.tencent.mobileqq.widget.MessageProgressView;
 class PersonalityLabelGalleryActivity$RecyclerViewHolder
   extends RecyclerView.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  MessageProgressView jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+  RelativeLayout a;
   ImageView b;
+  ImageView c;
+  MessageProgressView d;
   
   public PersonalityLabelGalleryActivity$RecyclerViewHolder(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
   {
     super(paramView);
-    float f = PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity) * 2.0F;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372608));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372550));
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
-    this.b = ((ImageView)paramView.findViewById(2131366456));
+    float f = PersonalityLabelGalleryActivity.f(paramPersonalityLabelGalleryActivity) * 2.0F;
+    this.a = ((RelativeLayout)paramView.findViewById(2131440148));
+    this.b = ((ImageView)paramView.findViewById(2131440088));
     ((CornerImageView)this.b).setRadius(f);
+    ((CornerImageView)this.b).setPressMask(true);
+    this.c = ((ImageView)paramView.findViewById(2131432774));
+    ((CornerImageView)this.c).setRadius(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.RecyclerViewHolder
  * JD-Core Version:    0.7.0.1
  */

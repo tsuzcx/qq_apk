@@ -18,38 +18,38 @@ class ReadinjoySPEventReport$6
       long l;
       try
       {
-        int i = ReadinjoySPEventReport.c(this.this$0).size();
+        int i = ReadinjoySPEventReport.f(this.this$0).size();
         l = i;
-        if (l > ReadInJoyHelper.c(RIJQQAppInterfaceUtil.a()))
+        if (l > ReadInJoyHelper.ao(RIJQQAppInterfaceUtil.e()))
         {
-          l -= ReadInJoyHelper.c(RIJQQAppInterfaceUtil.a());
+          l -= ReadInJoyHelper.ao(RIJQQAppInterfaceUtil.e());
           if (l > 0L)
           {
-            if (ReadinjoySPEventReport.c(this.this$0).size() <= 1) {
+            if (ReadinjoySPEventReport.f(this.this$0).size() <= 1) {
               break label308;
             }
-            ReadinjoySPEventReport.c(this.this$0).remove(1);
+            ReadinjoySPEventReport.f(this.this$0).remove(1);
             break label308;
           }
         }
         if (i == 0) {
-          ReadinjoySPEventReport.c(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
+          ReadinjoySPEventReport.f(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
         }
-        ReadinjoySPEventReport.c(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.c(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.jdField_a_of_type_Int)));
+        ReadinjoySPEventReport.f(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.f(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.a)));
         String str = ReadinjoySPEventReport.class.getSimpleName();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("add aio enter or out info, type : ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         QLog.d(str, 2, localStringBuilder.toString());
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          ReadinjoySPEventReport.a(this.this$0, ReadinjoySPEventReport.a(this.this$0, this.jdField_a_of_type_JavaUtilList));
+        if (this.b != null) {
+          ReadinjoySPEventReport.a(this.this$0, ReadinjoySPEventReport.a(this.this$0, this.b));
         }
-        if ((this.jdField_a_of_type_Int == 0) && (ReadinjoySPEventReport.b(this.this$0)))
+        if ((this.a == 0) && (ReadinjoySPEventReport.i(this.this$0)))
         {
           ReadinjoySPEventReport.a(this.this$0, false);
-          if (ReadinjoySPEventReport.a(this.this$0) != null)
+          if (ReadinjoySPEventReport.g(this.this$0) != null)
           {
-            ReadinjoySPEventReport.a(this.this$0);
+            ReadinjoySPEventReport.h(this.this$0);
             return;
           }
           ReadinjoySPEventReport.a(this.this$0, 0);
@@ -68,7 +68,7 @@ class ReadinjoySPEventReport$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.6
  * JD-Core Version:    0.7.0.1
  */

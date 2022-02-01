@@ -23,45 +23,45 @@ import java.util.Map;
 public class StrangerQidianHelper
   implements ILifeCycleHelper
 {
-  private final BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  protected C2BTipsBar a;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  QidianManager jdField_a_of_type_ComTencentQidianQidianManager;
+  QidianManager a;
+  protected C2BTipsBar b;
+  private final AIOContext c;
+  private final QQAppInterface d;
+  private final BaseSessionInfo e;
   
   public StrangerQidianHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
+    this.c = paramAIOContext;
+    this.e = paramAIOContext.O();
+    this.d = paramAIOContext.a();
   }
   
   public QidianManager a()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianManager == null) {
-      this.jdField_a_of_type_ComTencentQidianQidianManager = ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER));
+    if (this.a == null) {
+      this.a = ((QidianManager)this.d.getManager(QQManagerFactory.QIDIAN_MANAGER));
     }
-    return this.jdField_a_of_type_ComTencentQidianQidianManager;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsC2BTipsBar == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsC2BTipsBar = new C2BTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsC2BTipsBar);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsC2BTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    return this.a;
   }
   
   public boolean a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBoolean);
+    return this.a.b(this.e.b, paramBoolean);
+  }
+  
+  public String b()
+  {
+    return this.a.a(this.c.b(), this.e.b);
+  }
+  
+  public void c()
+  {
+    if (this.b == null)
+    {
+      this.b = new C2BTipsBar(this.c.b(), this.c.c());
+      this.c.c().b(this.b);
+    }
+    this.b.a(this.e.b);
   }
   
   @NonNull
@@ -87,54 +87,54 @@ public class StrangerQidianHelper
         if (paramInt != 15) {
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentQidianQidianManager != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1025)) {
-          this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+        if ((this.a != null) && (this.e.a == 1025)) {
+          this.a.a(this.e.b, this.e.a);
         }
-        localQidianManager = this.jdField_a_of_type_ComTencentQidianQidianManager;
-        if ((localQidianManager != null) && (localQidianManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString))) {
-          ((QidianHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(null, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, false);
+        localQidianManager = this.a;
+        if ((localQidianManager != null) && (localQidianManager.e(this.e.b))) {
+          ((QidianHandler)this.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(null, this.e.b, false);
         }
-        if (BmqqSegmentUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString))
+        if (BmqqSegmentUtil.c(this.e.b))
         {
-          localQidianManager = this.jdField_a_of_type_ComTencentQidianQidianManager;
+          localQidianManager = this.a;
           if (localQidianManager != null) {
-            localObject = localQidianManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+            localObject = localQidianManager.h(this.e.b);
           }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.7.0", "");
+          ReportController.b(this.d, "dc00899", "Qidian", this.e.b, "0X8009787", "CloseAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.8.17", "");
         }
       }
-      else if (BmqqSegmentUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString))
+      else if (BmqqSegmentUtil.c(this.e.b))
       {
-        a();
-        localQidianManager = this.jdField_a_of_type_ComTencentQidianQidianManager;
+        c();
+        localQidianManager = this.a;
         if (localQidianManager != null) {
-          localObject = localQidianManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+          localObject = localQidianManager.h(this.e.b);
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X8009786", "EnterAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.7.0", "");
+        ReportController.b(this.d, "dc00899", "Qidian", this.e.b, "0X8009786", "EnterAIO", 1, 0, String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, "8.8.17", "");
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1025)
+    else if (this.e.a == 1025)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getIntent().getByteArrayExtra("sigt");
+      localObject = this.c.b().getIntent().getByteArrayExtra("sigt");
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, (byte[])localObject);
+        this.d.getMsgCache().d(this.e.b, (byte[])localObject);
         if (QLog.isDevelopLevel()) {
           QLog.d("StrangerQidianHelper", 4, "updateSession()--AIO 已保存 sigt");
         }
       }
-      if (a().a.containsKey(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
-        a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, true);
+      if (a().a.containsKey(this.e.b)) {
+        a().c(this.e.b, true);
       }
-      if (a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      if (a().e(this.e.b)) {
+        ((FriendListHandler)this.d.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(this.e.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StrangerQidianHelper
  * JD-Core Version:    0.7.0.1
  */

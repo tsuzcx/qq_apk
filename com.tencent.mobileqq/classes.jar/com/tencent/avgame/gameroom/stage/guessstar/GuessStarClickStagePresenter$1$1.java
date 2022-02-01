@@ -9,8 +9,8 @@ class GuessStarClickStagePresenter$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$1.this$0.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$1.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.b.this$0.e) {
+      this.b.this$0.b.a(this.a);
     }
   }
 }

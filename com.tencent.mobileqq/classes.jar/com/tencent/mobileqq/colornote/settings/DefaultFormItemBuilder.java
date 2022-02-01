@@ -27,20 +27,20 @@ public class DefaultFormItemBuilder
           if (i != 17039360)
           {
             if (i != 17104896) {
-              return 2130844437;
+              return 2130845755;
             }
-            return 2130844168;
+            return 2130845485;
           }
-          return 2130839210;
+          return 2130839382;
         }
-        return 2130844379;
+        return 2130845696;
       }
-      return 2130839212;
+      return 2130839384;
     }
-    return 2130839211;
+    return 2130839383;
   }
   
-  private Drawable a(Context paramContext, ColorNote paramColorNote)
+  private Drawable b(Context paramContext, ColorNote paramColorNote)
   {
     paramContext = paramContext.getResources();
     int i = a(paramColorNote);
@@ -91,13 +91,13 @@ public class DefaultFormItemBuilder
   {
     HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
     localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
-    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298957), paramContext.getResources().getDimensionPixelSize(2131298956));
+    localHistoryFormItem.setLeftIcon(b(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131299683), paramContext.getResources().getDimensionPixelSize(2131299682));
     return localHistoryFormItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.DefaultFormItemBuilder
  * JD-Core Version:    0.7.0.1
  */

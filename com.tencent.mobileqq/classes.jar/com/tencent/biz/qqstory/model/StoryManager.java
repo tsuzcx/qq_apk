@@ -41,22 +41,10 @@ import org.json.JSONObject;
 public class StoryManager
   implements IManager
 {
-  protected OneObjectCacheList<String, StoryVideoItem> a;
-  private CacheHit a;
-  public ArrayList<RecommendItem> a;
+  protected OneObjectCacheList<String, StoryVideoItem> a = new OneObjectCacheList(300);
   protected OneObjectCacheList<String, StoryItem> b = new OneObjectCacheList(300);
-  
-  public StoryManager()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList = new OneObjectCacheList(300);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPreloadCacheHit = new CacheHit("videoItem");
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
+  public ArrayList<RecommendItem> c = new ArrayList();
+  private CacheHit d = new CacheHit("videoItem");
   
   @Nullable
   private StoryVideoEntry a(EntityManager paramEntityManager, String paramString)
@@ -78,17 +66,6 @@ public class StoryManager
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, paramString3, null, null);
   }
   
-  private StoryItem b(String paramString, int paramInt)
-  {
-    paramString = a(a().a().createEntityManager(), StoryEntry.class, StoryEntry.class.getSimpleName(), StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(paramString), String.valueOf(paramInt) });
-    if ((paramString != null) && (paramString.size() != 0))
-    {
-      paramString = new StoryItem((StoryEntry)paramString.get(0));
-      return (StoryItem)this.b.a(paramString.key, paramString);
-    }
-    return null;
-  }
-  
   public static List<String> b(List<StoryVideoItem> paramList)
   {
     if (paramList == null) {
@@ -102,19 +79,26 @@ public class StoryManager
     return localArrayList;
   }
   
-  public int a(String paramString)
+  private StoryItem c(String paramString, int paramInt)
   {
-    paramString = a().a().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
-    if (paramString == null) {
-      return 0;
+    paramString = a(f().d().createEntityManager(), StoryEntry.class, StoryEntry.class.getSimpleName(), StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(paramString), String.valueOf(paramInt) });
+    if ((paramString != null) && (paramString.size() != 0))
+    {
+      paramString = new StoryItem((StoryEntry)paramString.get(0));
+      return (StoryItem)this.b.a(paramString.key, paramString);
     }
-    return paramString.size();
+    return null;
+  }
+  
+  private QQStoryContext f()
+  {
+    return QQStoryContext.a();
   }
   
   public int a(String paramString1, String paramString2, String paramString3)
   {
     long l = System.currentTimeMillis();
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = f().d().createEntityManager();
     Object localObject2 = localEntityManager.query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString2) }, null, null, null, null);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -167,14 +151,14 @@ public class StoryManager
     if (localObject != null) {
       return localObject;
     }
-    return b(paramString, paramInt);
+    return c(paramString, paramInt);
   }
   
   public StoryItem a(String paramString, int paramInt, StoryItem paramStoryItem)
   {
     a(paramString, paramInt);
     paramString = (StoryItem)this.b.a(paramStoryItem.key, paramStoryItem);
-    a().a().createEntityManager().persistOrReplace(paramString.cover2StoryEntry());
+    f().d().createEntityManager().persistOrReplace(paramString.cover2StoryEntry());
     return paramString;
   }
   
@@ -186,7 +170,7 @@ public class StoryManager
   @Nullable
   public StoryVideoItem a(String paramString)
   {
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
+    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a(paramString);
     if (localStoryVideoItem != null) {
       return localStoryVideoItem;
     }
@@ -201,7 +185,7 @@ public class StoryManager
   {
     a(paramString);
     paramStoryVideoItem.mVid = paramString;
-    paramString = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
+    paramString = (StoryVideoItem)this.a.a(paramString);
     if (paramString == null)
     {
       paramString = new StringBuilder();
@@ -218,124 +202,9 @@ public class StoryManager
       localStringBuilder.append(paramStoryVideoItem);
       SLog.b("Q.qqstory.StoryManager", localStringBuilder.toString());
     }
-    paramString = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
-    a().a().createEntityManager().persistOrReplace(paramString.cover2StoryEntry());
+    paramString = (StoryVideoItem)this.a.a(paramStoryVideoItem.mVid, paramStoryVideoItem);
+    f().d().createEntityManager().persistOrReplace(paramString.cover2StoryEntry());
     return paramString;
-  }
-  
-  @Nullable
-  public GetStoryPlayerTagInfoRequest.TagInfoBaseVidList a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    Object localObject = a(paramString);
-    if ((localObject != null) && (TagItem.TagInfoBase.a(((StoryVideoItem)localObject).mTagInfoBase))) {
-      return new GetStoryPlayerTagInfoRequest.TagInfoBaseVidList(paramString, ((StoryVideoItem)localObject).mTagInfoBase, ((StoryVideoItem)localObject).mCompInfoBase, ((StoryVideoItem)localObject).mOALinkInfoJson);
-    }
-    localObject = new ArrayList(1);
-    ((List)localObject).add(paramString);
-    GetStoryPlayerTagInfoHandler.a((List)localObject, true);
-    return null;
-  }
-  
-  public ArrayList<RecommendItem> a()
-  {
-    Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localObject1 = (ArrayList)a(a().a().createEntityManager(), OfficialRecommendEntry.class, OfficialRecommendEntry.class.getSimpleName(), "", null);
-      if (localObject1 != null)
-      {
-        localObject1 = ((ArrayList)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (OfficialRecommendEntry)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilArrayList.add(new RecommendItem((OfficialRecommendEntry)localObject2));
-        }
-      }
-    }
-    Object localObject1 = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject2 = (RecommendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (((RecommendItem)localObject2).mIsMarkRead) {
-        ((ArrayList)localObject1).add(localObject2);
-      }
-      i += 1;
-    }
-    return localObject1;
-  }
-  
-  public List<StoryVideoItem> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = a().a().createEntityManager().query(StoryVideoEntry.class, StoryVideoEntry.class.getSimpleName(), false, StoryVideoEntry.getLocalVideo(), null, null, null, null, null);
-    if (localObject == null) {
-      return localArrayList;
-    }
-    StoryVideoUploadManager localStoryVideoUploadManager = (StoryVideoUploadManager)SuperManager.a(3);
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryVideoEntry localStoryVideoEntry = (StoryVideoEntry)((Iterator)localObject).next();
-      if (StoryVideoItem.isFakeVid(localStoryVideoEntry.vid))
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localStoryVideoEntry.vid);
-        if (localStoryVideoItem == null)
-        {
-          int i;
-          if (localStoryVideoUploadManager.a(localStoryVideoEntry.vid)) {
-            i = 1;
-          } else {
-            i = 3;
-          }
-          localStoryVideoEntry.uploadStatus = i;
-          localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localStoryVideoEntry.vid, new StoryVideoItem(localStoryVideoEntry)));
-        }
-        else
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("queryLocalStoryVideo: find one item in cache ");
-          localStringBuilder.append(localStoryVideoEntry.vid);
-          localStringBuilder.append(", item ");
-          localStringBuilder.append(localStoryVideoItem);
-          SLog.b("Q.qqstory.StoryManager", localStringBuilder.toString());
-          localArrayList.add(localStoryVideoItem);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<StoryVideoItem> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    EntityManager localEntityManager = a().a().createEntityManager();
-    paramString = localEntityManager.query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
-    if (paramString == null) {
-      return localArrayList;
-    }
-    Iterator localIterator = paramString.iterator();
-    while (localIterator.hasNext())
-    {
-      StoryVideoListEntry localStoryVideoListEntry = (StoryVideoListEntry)localIterator.next();
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localStoryVideoListEntry.vid);
-      paramString = localStoryVideoItem;
-      if (localStoryVideoItem == null)
-      {
-        StoryVideoEntry localStoryVideoEntry = a(localEntityManager, localStoryVideoListEntry.vid);
-        paramString = localStoryVideoItem;
-        if (localStoryVideoEntry != null) {
-          paramString = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localStoryVideoListEntry.vid, new StoryVideoItem(localStoryVideoEntry));
-        }
-      }
-      if ((paramString != null) && (!StoryVideoItem.isFakeVid(paramString.mVid))) {
-        localArrayList.add(paramString);
-      }
-    }
-    return localArrayList;
   }
   
   public List<StoryVideoItem> a(String paramString, int paramInt, List<StoryVideoItem> paramList, boolean paramBoolean)
@@ -343,7 +212,7 @@ public class StoryManager
     if (paramList == null) {
       return paramList;
     }
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = f().d().createEntityManager();
     ArrayList localArrayList = new ArrayList(paramList.size());
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
@@ -365,7 +234,7 @@ public class StoryManager
       {
         localObject = (StoryVideoItem)paramList.next();
         a(((StoryVideoItem)localObject).mVid);
-        localObject = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(((StoryVideoItem)localObject).mVid, (Copyable)localObject);
+        localObject = (StoryVideoItem)this.a.a(((StoryVideoItem)localObject).mVid, (Copyable)localObject);
         localArrayList.add(localObject);
         localEntityManager.persistOrReplace(((StoryVideoItem)localObject).cover2StoryEntry());
         StoryVideoListEntry localStoryVideoListEntry = new StoryVideoListEntry();
@@ -397,7 +266,7 @@ public class StoryManager
     if (paramList == null) {
       return paramList;
     }
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = f().d().createEntityManager();
     new ArrayList();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
@@ -424,7 +293,7 @@ public class StoryManager
     {
       StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
       a(localStoryVideoItem.mVid);
-      localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(localStoryVideoItem.mVid, localStoryVideoItem);
+      localStoryVideoItem = (StoryVideoItem)this.a.a(localStoryVideoItem.mVid, localStoryVideoItem);
       localArrayList.add(localStoryVideoItem);
       if (localStoryVideoItem.mErrorCode == 0) {
         paramEntityManager.persistOrReplace(localStoryVideoItem.cover2StoryEntry());
@@ -435,7 +304,7 @@ public class StoryManager
   
   public List<StoryVideoItem> a(boolean paramBoolean)
   {
-    List localList = a();
+    List localList = d();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < localList.size())
@@ -452,22 +321,106 @@ public class StoryManager
   
   public void a() {}
   
-  public void a(String paramString)
+  public void a(String paramString, int paramInt, List<String> paramList, boolean paramBoolean, EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a.remove(paramString);
-    EntityManager localEntityManager = a().a().createEntityManager();
-    Object localObject = new StoryVideoListEntry();
-    ((StoryVideoListEntry)localObject).setStatus(1001);
-    localEntityManager.remove((Entity)localObject, StoryVideoListEntry.getVidSelectionNoArg(), new String[] { paramString });
-    localObject = new StoryVideoEntry();
-    ((StoryVideoEntry)localObject).setStatus(1001);
-    localEntityManager.remove((Entity)localObject, StoryVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
+    if (paramList == null) {
+      return;
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = new StoryVideoListEntry();
+      ((StoryVideoListEntry)localObject).setStatus(1001);
+      if (paramInt == 1) {
+        paramEntityManager.remove((Entity)localObject, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) });
+      } else {
+        paramEntityManager.remove((Entity)localObject, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) });
+      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (String)paramList.next();
+      StoryVideoListEntry localStoryVideoListEntry = new StoryVideoListEntry();
+      localStoryVideoListEntry.unionId = paramString;
+      localStoryVideoListEntry.vid = ((String)localObject);
+      if (paramInt == 1) {
+        localStoryVideoListEntry.listType = 3;
+      } else {
+        localStoryVideoListEntry.listType = 0;
+      }
+      paramEntityManager.persistOrReplace(localStoryVideoListEntry);
+    }
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(String paramString, List<SquareFeed.FeedIdVid> paramList, boolean paramBoolean)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = new StoryVideoListEntry();
+      ((StoryVideoListEntry)localObject).setStatus(1001);
+      localEntityManager.remove((Entity)localObject, StoryVideoListEntry.getSelectionNoArg(), new String[] { String.valueOf(8), paramString });
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (SquareFeed.FeedIdVid)paramList.next();
+      StoryVideoListEntry localStoryVideoListEntry = new StoryVideoListEntry();
+      localStoryVideoListEntry.unionId = paramString;
+      localStoryVideoListEntry.listType = 8;
+      localStoryVideoListEntry.collectionKey = ((SquareFeed.FeedIdVid)localObject).a;
+      localStoryVideoListEntry.vid = ((SquareFeed.FeedIdVid)localObject).b;
+      localEntityManager.persistOrReplace(localStoryVideoListEntry);
+    }
+  }
+  
+  public void a(@NonNull ArrayList<RecommendItem> paramArrayList)
+  {
+    this.c.clear();
+    this.c.addAll(paramArrayList);
+    EntityManager localEntityManager = f().d().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    try
+    {
+      localEntityManager.drop(OfficialRecommendEntry.class);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localEntityManager.persistOrReplace(((RecommendItem)paramArrayList.next()).cover2StoryEntry());
+      }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return;
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    for (;;)
+    {
+      throw paramArrayList;
+    }
+  }
+  
+  @Nullable
+  @UiThread
+  public StoryVideoItem b(String paramString)
+  {
+    AssertUtils.assertTrue(paramString.startsWith("Loading") ^ true);
+    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a(paramString);
+    if ((localStoryVideoItem != null) && (localStoryVideoItem.isBasicInfoOK())) {
+      return localStoryVideoItem;
+    }
+    Bosses.get().postLightWeightJob(new StoryManager.1(this, paramString), 0);
+    return localStoryVideoItem;
+  }
+  
+  public void b() {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    EntityManager localEntityManager = f().d().createEntityManager();
     StoryEntry localStoryEntry = new StoryEntry();
     localStoryEntry.setStatus(1001);
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -478,12 +431,12 @@ public class StoryManager
     localEntityManager.remove(localStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(paramString), String.valueOf(paramInt) });
   }
   
-  public void a(String paramString, int paramInt, List<String> paramList, boolean paramBoolean)
+  public void b(String paramString, int paramInt, List<String> paramList, boolean paramBoolean)
   {
     if (paramList == null) {
       return;
     }
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = f().d().createEntityManager();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     try
     {
@@ -531,89 +484,217 @@ public class StoryManager
     }
   }
   
-  public void a(String paramString, int paramInt, List<String> paramList, boolean paramBoolean, EntityManager paramEntityManager)
+  @Nullable
+  public StoryVideoItem c(String paramString)
   {
-    if (paramList == null) {
-      return;
-    }
-    Object localObject;
-    if (paramBoolean)
+    paramString = a(f().d().createEntityManager(), StoryVideoEntry.class, StoryVideoEntry.class.getSimpleName(), StoryVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
+    if ((paramString != null) && (paramString.size() != 0))
     {
-      localObject = new StoryVideoListEntry();
-      ((StoryVideoListEntry)localObject).setStatus(1001);
-      if (paramInt == 1) {
-        paramEntityManager.remove((Entity)localObject, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) });
-      } else {
-        paramEntityManager.remove((Entity)localObject, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) });
-      }
+      paramString = (StoryVideoEntry)paramString.get(0);
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem(paramString);
+      return (StoryVideoItem)this.a.a(paramString.vid, localStoryVideoItem);
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localObject = (String)paramList.next();
-      StoryVideoListEntry localStoryVideoListEntry = new StoryVideoListEntry();
-      localStoryVideoListEntry.unionId = paramString;
-      localStoryVideoListEntry.vid = ((String)localObject);
-      if (paramInt == 1) {
-        localStoryVideoListEntry.listType = 3;
-      } else {
-        localStoryVideoListEntry.listType = 0;
-      }
-      paramEntityManager.persistOrReplace(localStoryVideoListEntry);
+    return null;
+  }
+  
+  public void c()
+  {
+    this.a.a(0);
+    this.b.a(0);
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
   }
   
-  public void a(String paramString, List<SquareFeed.FeedIdVid> paramList, boolean paramBoolean)
+  public List<StoryVideoItem> d()
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = new StoryVideoListEntry();
-      ((StoryVideoListEntry)localObject).setStatus(1001);
-      localEntityManager.remove((Entity)localObject, StoryVideoListEntry.getSelectionNoArg(), new String[] { String.valueOf(8), paramString });
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = f().d().createEntityManager().query(StoryVideoEntry.class, StoryVideoEntry.class.getSimpleName(), false, StoryVideoEntry.getLocalVideo(), null, null, null, null, null);
+    if (localObject == null) {
+      return localArrayList;
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    StoryVideoUploadManager localStoryVideoUploadManager = (StoryVideoUploadManager)SuperManager.a(3);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localObject = (SquareFeed.FeedIdVid)paramList.next();
-      StoryVideoListEntry localStoryVideoListEntry = new StoryVideoListEntry();
-      localStoryVideoListEntry.unionId = paramString;
-      localStoryVideoListEntry.listType = 8;
-      localStoryVideoListEntry.collectionKey = ((SquareFeed.FeedIdVid)localObject).a;
-      localStoryVideoListEntry.vid = ((SquareFeed.FeedIdVid)localObject).b;
-      localEntityManager.persistOrReplace(localStoryVideoListEntry);
-    }
-  }
-  
-  public void a(@NonNull ArrayList<RecommendItem> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    EntityManager localEntityManager = a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
-    {
-      localEntityManager.drop(OfficialRecommendEntry.class);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        localEntityManager.persistOrReplace(((RecommendItem)paramArrayList.next()).cover2StoryEntry());
+      StoryVideoEntry localStoryVideoEntry = (StoryVideoEntry)((Iterator)localObject).next();
+      if (StoryVideoItem.isFakeVid(localStoryVideoEntry.vid))
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a(localStoryVideoEntry.vid);
+        if (localStoryVideoItem == null)
+        {
+          int i;
+          if (localStoryVideoUploadManager.c(localStoryVideoEntry.vid)) {
+            i = 1;
+          } else {
+            i = 3;
+          }
+          localStoryVideoEntry.uploadStatus = i;
+          localArrayList.add(this.a.a(localStoryVideoEntry.vid, new StoryVideoItem(localStoryVideoEntry)));
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("queryLocalStoryVideo: find one item in cache ");
+          localStringBuilder.append(localStoryVideoEntry.vid);
+          localStringBuilder.append(", item ");
+          localStringBuilder.append(localStoryVideoItem);
+          SLog.b("Q.qqstory.StoryManager", localStringBuilder.toString());
+          localArrayList.add(localStoryVideoItem);
+        }
       }
-      localEntityManager.getTransaction().commit();
-      localEntityManager.getTransaction().end();
-      return;
     }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-    for (;;)
-    {
-      throw paramArrayList;
-    }
+    return localArrayList;
   }
   
-  public boolean a(String paramString)
+  public List<StoryVideoItem> d(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    EntityManager localEntityManager = f().d().createEntityManager();
+    paramString = localEntityManager.query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    Iterator localIterator = paramString.iterator();
+    while (localIterator.hasNext())
+    {
+      StoryVideoListEntry localStoryVideoListEntry = (StoryVideoListEntry)localIterator.next();
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a(localStoryVideoListEntry.vid);
+      paramString = localStoryVideoItem;
+      if (localStoryVideoItem == null)
+      {
+        StoryVideoEntry localStoryVideoEntry = a(localEntityManager, localStoryVideoListEntry.vid);
+        paramString = localStoryVideoItem;
+        if (localStoryVideoEntry != null) {
+          paramString = (StoryVideoItem)this.a.a(localStoryVideoListEntry.vid, new StoryVideoItem(localStoryVideoEntry));
+        }
+      }
+      if ((paramString != null) && (!StoryVideoItem.isFakeVid(paramString.mVid))) {
+        localArrayList.add(paramString);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public ArrayList<RecommendItem> e()
+  {
+    Object localObject2;
+    if (this.c.size() == 0)
+    {
+      localObject1 = (ArrayList)a(f().d().createEntityManager(), OfficialRecommendEntry.class, OfficialRecommendEntry.class.getSimpleName(), "", null);
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (OfficialRecommendEntry)((Iterator)localObject1).next();
+          this.c.add(new RecommendItem((OfficialRecommendEntry)localObject2));
+        }
+      }
+    }
+    Object localObject1 = new ArrayList();
+    int i = 0;
+    while (i < this.c.size())
+    {
+      localObject2 = (RecommendItem)this.c.get(i);
+      if (((RecommendItem)localObject2).mIsMarkRead) {
+        ((ArrayList)localObject1).add(localObject2);
+      }
+      i += 1;
+    }
+    return localObject1;
+  }
+  
+  public List<String> e(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = f().d().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
+    }
+    return localArrayList;
+  }
+  
+  public List<String> f(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = f().d().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecommendBigVSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
+    }
+    return localArrayList;
+  }
+  
+  public List<StoryVideoItem> g(String paramString)
+  {
+    if (!QQStoryContext.a().b(paramString)) {
+      return d(paramString);
+    }
+    List localList = a(false);
+    Object localObject = d(paramString);
+    paramString = new HashSet(localList);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
+      if (paramString.add(localStoryVideoItem)) {
+        localList.add(localStoryVideoItem);
+      }
+    }
+    return localList;
+  }
+  
+  public List<String> h(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = f().d().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
+    if (paramString == null) {
+      return localArrayList;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
+    }
+    return localArrayList;
+  }
+  
+  public int i(String paramString)
+  {
+    paramString = f().d().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
+    if (paramString == null) {
+      return 0;
+    }
+    return paramString.size();
+  }
+  
+  public void j(String paramString)
+  {
+    this.a.b(paramString);
+    this.a.b.remove(paramString);
+    EntityManager localEntityManager = f().d().createEntityManager();
+    Object localObject = new StoryVideoListEntry();
+    ((StoryVideoListEntry)localObject).setStatus(1001);
+    localEntityManager.remove((Entity)localObject, StoryVideoListEntry.getVidSelectionNoArg(), new String[] { paramString });
+    localObject = new StoryVideoEntry();
+    ((StoryVideoEntry)localObject).setStatus(1001);
+    localEntityManager.remove((Entity)localObject, StoryVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
+  }
+  
+  public void k(String paramString)
+  {
+    Bosses.get().postLightWeightJob(new StoryManager.3(this, paramString), 10);
+  }
+  
+  public boolean l(String paramString)
   {
     try
     {
@@ -643,25 +724,25 @@ public class StoryManager
       SLog.d("Q.qqstory.videoCache", ((StringBuilder)localObject2).toString());
       localObject2 = (StoryConfigManager)SuperManager.a(10);
       if (paramString != null) {
-        ((StoryConfigManager)localObject2).b("StoryMyCacheCountMax", Integer.valueOf(paramString));
+        ((StoryConfigManager)localObject2).d("StoryMyCacheCountMax", Integer.valueOf(paramString));
       }
       if (str1 != null) {
-        ((StoryConfigManager)localObject2).b("StoryFriendCacheCountMax", Integer.valueOf(str1));
+        ((StoryConfigManager)localObject2).d("StoryFriendCacheCountMax", Integer.valueOf(str1));
       }
       if (str2 != null) {
-        ((StoryConfigManager)localObject2).b("StoryMyCacheCountNormal", Integer.valueOf(str2));
+        ((StoryConfigManager)localObject2).d("StoryMyCacheCountNormal", Integer.valueOf(str2));
       }
       if (str3 != null) {
-        ((StoryConfigManager)localObject2).b("StoryFriendCacheCountNormal", Integer.valueOf(str3));
+        ((StoryConfigManager)localObject2).d("StoryFriendCacheCountNormal", Integer.valueOf(str3));
       }
       if (str4 != null) {
-        ((StoryConfigManager)localObject2).b("StoryClearRate", Long.valueOf(str4));
+        ((StoryConfigManager)localObject2).d("StoryClearRate", Long.valueOf(str4));
       }
       if (str5 != null) {
-        ((StoryConfigManager)localObject2).b("StoryPreloadCount", Integer.valueOf(str5));
+        ((StoryConfigManager)localObject2).d("StoryPreloadCount", Integer.valueOf(str5));
       }
       if (localObject1 != null) {
-        ((StoryConfigManager)localObject2).b("StoryPreloadFriendCount", Integer.valueOf((String)localObject1));
+        ((StoryConfigManager)localObject2).d("StoryPreloadFriendCount", Integer.valueOf((String)localObject1));
       }
       return true;
     }
@@ -673,112 +754,24 @@ public class StoryManager
   }
   
   @Nullable
-  @UiThread
-  public StoryVideoItem b(String paramString)
+  public GetStoryPlayerTagInfoRequest.TagInfoBaseVidList m(String paramString)
   {
-    AssertUtils.assertTrue(paramString.startsWith("Loading") ^ true);
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
-    if ((localStoryVideoItem != null) && (localStoryVideoItem.isBasicInfoOK())) {
-      return localStoryVideoItem;
-    }
-    Bosses.get().postLightWeightJob(new StoryManager.1(this, paramString), 0);
-    return localStoryVideoItem;
-  }
-  
-  public List<String> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = a().a().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getUserUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
     if (paramString == null) {
-      return localArrayList;
+      return null;
     }
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
-    }
-    return localArrayList;
-  }
-  
-  public void b() {}
-  
-  public void b(String paramString)
-  {
-    Bosses.get().postLightWeightJob(new StoryManager.3(this, paramString), 10);
-  }
-  
-  @Nullable
-  public StoryVideoItem c(String paramString)
-  {
-    paramString = a(a().a().createEntityManager(), StoryVideoEntry.class, StoryVideoEntry.class.getSimpleName(), StoryVideoEntry.getVidSelectionNoArgs(), new String[] { paramString });
-    if ((paramString != null) && (paramString.size() != 0))
-    {
-      paramString = (StoryVideoEntry)paramString.get(0);
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem(paramString);
-      return (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString.vid, localStoryVideoItem);
-    }
-    return null;
-  }
-  
-  public List<String> c(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = a().a().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecommendBigVSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
-    if (paramString == null) {
-      return localArrayList;
-    }
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
-    }
-    return localArrayList;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(0);
-    this.b.a(0);
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      localArrayList.clear();
-    }
-  }
-  
-  public List<StoryVideoItem> d(String paramString)
-  {
-    if (!QQStoryContext.a().a(paramString)) {
-      return a(paramString);
-    }
-    List localList = a(false);
     Object localObject = a(paramString);
-    paramString = new HashSet(localList);
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
-      if (paramString.add(localStoryVideoItem)) {
-        localList.add(localStoryVideoItem);
-      }
+    if ((localObject != null) && (TagItem.TagInfoBase.a(((StoryVideoItem)localObject).mTagInfoBase))) {
+      return new GetStoryPlayerTagInfoRequest.TagInfoBaseVidList(paramString, ((StoryVideoItem)localObject).mTagInfoBase, ((StoryVideoItem)localObject).mCompInfoBase, ((StoryVideoItem)localObject).mOALinkInfoJson);
     }
-    return localList;
-  }
-  
-  public List<String> e(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = a().a().createEntityManager().query(StoryVideoListEntry.class, StoryVideoListEntry.class.getSimpleName(), true, StoryVideoListEntry.getRecentUidSelectionNoArg(), new String[] { String.valueOf(paramString) }, null, null, null, null);
-    if (paramString == null) {
-      return localArrayList;
-    }
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      localArrayList.add(((StoryVideoListEntry)paramString.next()).vid);
-    }
-    return localArrayList;
+    localObject = new ArrayList(1);
+    ((List)localObject).add(paramString);
+    GetStoryPlayerTagInfoHandler.a((List)localObject, true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager
  * JD-Core Version:    0.7.0.1
  */

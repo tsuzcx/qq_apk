@@ -22,45 +22,24 @@ public class IliveFloatWindowHelper
     if (localIliveManagerCfgBean != null)
     {
       l1 = l2;
-      if (localIliveManagerCfgBean.b() > 0L) {
-        l1 = localIliveManagerCfgBean.b();
+      if (localIliveManagerCfgBean.e() > 0L) {
+        l1 = localIliveManagerCfgBean.e();
       }
     }
     return l1;
-  }
-  
-  private static void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ilive_float_window", 0).edit();
-    localEditor.putLong("last_open_permission_time", System.currentTimeMillis());
-    localEditor.commit();
-  }
-  
-  public static boolean a()
-  {
-    IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerConfProcessor.a();
-    if (localIliveManagerCfgBean != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isEnableFloatWindowShow config switch =  ");
-      localStringBuilder.append(localIliveManagerCfgBean.e());
-      QLog.e("IliveFloatWindowHelper", 1, localStringBuilder.toString());
-      return localIliveManagerCfgBean.e();
-    }
-    return true;
   }
   
   public static boolean a(Activity paramActivity, IliveFloatWindowHelper.IPermissionCallback paramIPermissionCallback)
   {
     try
     {
-      if (!a())
+      if (!b())
       {
         QLog.e("IliveFloatWindowHelper", 1, "checkHasFloatWindowPermission switch = 0");
         return false;
       }
       boolean bool1 = FWPermission.hasPermission(paramActivity);
-      boolean bool2 = b();
+      boolean bool2 = c();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkHasFloatWindowPermission hasPermission = ");
       localStringBuilder.append(bool1);
@@ -69,8 +48,8 @@ public class IliveFloatWindowHelper
       QLog.e("IliveFloatWindowHelper", 1, localStringBuilder.toString());
       if ((!bool1) && (bool2))
       {
-        DialogUtil.a(paramActivity, 230, HardCodeUtil.a(2131694539), HardCodeUtil.a(2131694538), HardCodeUtil.a(2131691602), HardCodeUtil.a(2131691603), new IliveFloatWindowHelper.1(paramActivity, paramIPermissionCallback), new IliveFloatWindowHelper.2(paramIPermissionCallback)).show();
-        a();
+        DialogUtil.a(paramActivity, 230, HardCodeUtil.a(2131892223), HardCodeUtil.a(2131892222), HardCodeUtil.a(2131888564), HardCodeUtil.a(2131888565), new IliveFloatWindowHelper.1(paramActivity, paramIPermissionCallback), new IliveFloatWindowHelper.2(paramIPermissionCallback)).show();
+        d();
         return true;
       }
     }
@@ -82,7 +61,21 @@ public class IliveFloatWindowHelper
     return false;
   }
   
-  private static boolean b()
+  public static boolean b()
+  {
+    IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerConfProcessor.a();
+    if (localIliveManagerCfgBean != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isEnableFloatWindowShow config switch =  ");
+      localStringBuilder.append(localIliveManagerCfgBean.f());
+      QLog.e("IliveFloatWindowHelper", 1, localStringBuilder.toString());
+      return localIliveManagerCfgBean.f();
+    }
+    return true;
+  }
+  
+  private static boolean c()
   {
     long l1 = BaseApplication.getContext().getSharedPreferences("ilive_float_window", 0).getLong("last_open_permission_time", 0L);
     long l2 = System.currentTimeMillis();
@@ -93,10 +86,17 @@ public class IliveFloatWindowHelper
     QLog.e("IliveFloatWindowHelper", 1, localStringBuilder.toString());
     return l2 - l1 >= l3 * 60L * 60L * 1000L;
   }
+  
+  private static void d()
+  {
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ilive_float_window", 0).edit();
+    localEditor.putLong("last_open_permission_time", System.currentTimeMillis());
+    localEditor.commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.floatwindow.IliveFloatWindowHelper
  * JD-Core Version:    0.7.0.1
  */

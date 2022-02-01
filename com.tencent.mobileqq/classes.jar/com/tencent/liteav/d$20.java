@@ -1,24 +1,23 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.liteav.videoencoder.b;
 
 class d$20
   implements Runnable
 {
-  d$20(d paramd, int paramInt1, int paramInt2, int paramInt3) {}
+  d$20(d paramd, int paramInt) {}
   
   public void run()
   {
-    TXCLog.w("TXCCaptureAndEnc", String.format("QOS restart big encoder old resolution %dx%d fps %d, new resolution %dx%d fps %d", new Object[] { Integer.valueOf(d.h(this.d).width), Integer.valueOf(d.h(this.d).height), Integer.valueOf(d.h(this.d).fps), Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c) }));
-    d.h(this.d).width = this.a;
-    d.h(this.d).height = this.b;
-    d.i(this.d);
+    if (d.a(this.b) != null) {
+      d.a(this.b).d(this.a);
+    }
+    d.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.20
  * JD-Core Version:    0.7.0.1
  */

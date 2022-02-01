@@ -7,14 +7,14 @@ import kotlin.Metadata;
 public final class RIJSocialBottomUtils$Companion$observer$1
   extends ReadInJoyObserver
 {
-  public void ar_()
+  public void cG_()
   {
     RIJSocialBottomUtils.Companion.a(RIJSocialBottomUtils.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion.observer.1
  * JD-Core Version:    0.7.0.1
  */

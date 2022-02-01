@@ -26,108 +26,108 @@ import java.util.List;
 public class RelaxedAfternoon
   extends DynamicTextItem
 {
+  public static final int a;
   public static final int b;
   public static final int c;
-  public static final int d;
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  TextDrawImplement jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-  private String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  TextDrawImplement jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-  private String jdField_b_of_type_JavaLangString;
-  TextDrawImplement jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-  private String jdField_c_of_type_JavaLangString;
-  int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
+  private int A;
+  private int B;
+  private int C;
+  private InputFilter D;
+  TextDrawImplement d;
+  TextDrawImplement e;
+  TextDrawImplement f;
+  int g;
+  private TextPaint h;
+  private RectF i = new RectF();
+  private RectF j = new RectF();
+  private int p;
+  private String q;
+  private String r;
+  private String s;
+  private int t;
+  private int u;
+  private TextPaint v;
+  private float w;
+  private float x;
+  private int y;
+  private int z;
   
   static
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = AIOUtils.b(18.0F, localResources);
-    d = AIOUtils.b(6.0F, localResources);
-    int n = DisplayUtil.a();
-    jdField_c_of_type_Int = localResources.getDisplayMetrics().widthPixels - TextLayer.a - n * 2;
+    a = AIOUtils.b(18.0F, localResources);
+    c = AIOUtils.b(6.0F, localResources);
+    int k = DisplayUtil.a();
+    b = localResources.getDisplayMetrics().widthPixels - TextLayer.b - k * 2;
   }
   
   public RelaxedAfternoon(int paramInt, List<String> paramList, Typeface paramTypeface)
   {
     super(paramInt, paramList);
-    int n = 0;
-    this.f = 0;
-    this.jdField_a_of_type_JavaLangString = "jenny";
-    this.jdField_b_of_type_JavaLangString = "05/09";
-    this.jdField_c_of_type_JavaLangString = "by";
+    int k = 0;
+    this.p = 0;
+    this.q = "jenny";
+    this.r = "05/09";
+    this.s = "by";
+    this.t = 0;
+    this.u = 0;
+    this.A = 0;
     this.g = 0;
-    this.h = 0;
-    this.k = 0;
-    this.e = 0;
-    this.jdField_a_of_type_AndroidTextInputFilter = null;
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    this.D = null;
+    this.v = new TextPaint();
+    this.v.setTypeface(Typeface.DEFAULT);
+    this.v.setTextAlign(Paint.Align.CENTER);
     if (paramTypeface == null) {
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+      this.v.setTypeface(Typeface.defaultFromStyle(1));
     } else {
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.v.setTypeface(paramTypeface);
     }
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
-    this.k = AIOUtils.b(41.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.k);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.g = AIOUtils.b(34.0F, BaseApplicationImpl.getContext().getResources());
-    this.h = AIOUtils.b(45.0F, BaseApplicationImpl.getContext().getResources());
-    this.l = AIOUtils.b(4.0F, BaseApplicationImpl.getContext().getResources());
-    this.m = AIOUtils.b(3.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement = new TextDrawImplement(0);
-    this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(new PathDrawBackground(-1, this.l, this.m));
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSkewX(-0.15F);
+    this.v.setAntiAlias(true);
+    this.v.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.v.setTextSkewX(-0.15F);
+    this.A = AIOUtils.b(41.0F, BaseApplicationImpl.getContext().getResources());
+    this.v.setTextSize(this.A);
+    this.v.setColor(-1);
+    this.v.setTextAlign(Paint.Align.LEFT);
+    this.t = AIOUtils.b(34.0F, BaseApplicationImpl.getContext().getResources());
+    this.u = AIOUtils.b(45.0F, BaseApplicationImpl.getContext().getResources());
+    this.B = AIOUtils.b(4.0F, BaseApplicationImpl.getContext().getResources());
+    this.C = AIOUtils.b(3.0F, BaseApplicationImpl.getContext().getResources());
+    this.f = new TextDrawImplement(0);
+    this.f.a(new PathDrawBackground(-1, this.B, this.C));
+    this.h = new TextPaint();
+    this.h.setTextSkewX(-0.15F);
     if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.h.setTypeface(paramTypeface);
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.j = AIOUtils.b(19.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+    this.h.setAntiAlias(true);
+    this.h.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.z = AIOUtils.b(19.0F, BaseApplicationImpl.getContext().getResources());
+    this.h.setTextSize(this.z);
+    this.h.setColor(-16777216);
     TextPaint localTextPaint = new TextPaint();
     if (paramTypeface != null) {
       localTextPaint.setTypeface(paramTypeface);
     }
-    this.jdField_b_of_type_JavaLangString = InfoStickerUtils.a();
+    this.r = InfoStickerUtils.a();
     localTextPaint.setAntiAlias(true);
     localTextPaint.setTextSkewX(-0.15F);
     localTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.i = AIOUtils.b(23.0F, BaseApplicationImpl.getContext().getResources());
-    localTextPaint.setTextSize(this.i);
+    this.y = AIOUtils.b(23.0F, BaseApplicationImpl.getContext().getResources());
+    localTextPaint.setTextSize(this.y);
     localTextPaint.setColor(-1);
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement = new TextDrawImplement(0);
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(new PathDrawBackground(-16777216, this.l, this.m));
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(this.jdField_b_of_type_JavaLangString, jdField_c_of_type_Int, this.i, localTextPaint);
+    this.e = new TextDrawImplement(0);
+    this.e.a(new PathDrawBackground(-16777216, this.B, this.C));
+    this.e.a(this.r, b, this.y, localTextPaint);
     if (paramList == null) {
       paramInt = 0;
     } else {
       paramInt = paramList.size();
     }
-    while (n < paramInt)
+    while (k < paramInt)
     {
-      a(n, (String)paramList.get(n));
-      n += 1;
+      a(k, (String)paramList.get(k));
+      k += 1;
     }
   }
   
@@ -146,21 +146,11 @@ public class RelaxedAfternoon
     return false;
   }
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
   public int a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    float f1 = paramFloat1 / a();
-    RectF localRectF1 = new RectF(this.jdField_b_of_type_AndroidGraphicsRectF.left * f1, this.jdField_b_of_type_AndroidGraphicsRectF.top * f1, this.jdField_b_of_type_AndroidGraphicsRectF.right * f1, this.jdField_b_of_type_AndroidGraphicsRectF.bottom * f1);
-    RectF localRectF2 = new RectF(this.jdField_a_of_type_AndroidGraphicsRectF.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top * f1, this.jdField_a_of_type_AndroidGraphicsRectF.right * f1, this.jdField_a_of_type_AndroidGraphicsRectF.bottom * f1);
+    float f1 = paramFloat1 / c();
+    RectF localRectF1 = new RectF(this.j.left * f1, this.j.top * f1, this.j.right * f1, this.j.bottom * f1);
+    RectF localRectF2 = new RectF(this.i.left * f1, this.i.top * f1, this.i.right * f1, this.i.bottom * f1);
     PointF localPointF = new PointF(-paramFloat1 / 2.0F, -paramFloat2 / 2.0F);
     if (a(paramFloat3, paramFloat4, localRectF1, localPointF)) {
       return 1;
@@ -178,97 +168,89 @@ public class RelaxedAfternoon
     if (paramTextItem != null) {
       return paramGestureHelper.a(paramTextItem, f1, f2);
     }
-    paramMotionEvent = new PointF((paramFloat1 - a()) / 2.0F, (paramFloat2 - b()) / 2.0F);
-    if (a(f1, f2, this.jdField_b_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+    paramMotionEvent = new PointF((paramFloat1 - c()) / 2.0F, (paramFloat2 - d()) / 2.0F);
+    if (a(f1, f2, this.j, paramMotionEvent)) {
       return 1;
     }
-    if (a(f1, f2, this.jdField_a_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+    if (a(f1, f2, this.i, paramMotionEvent)) {
       return 0;
     }
     return -1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new RelaxedAfternoon.1(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
   }
   
   public void a(int paramInt, String paramString)
   {
     if (paramInt >= 0)
     {
-      if (paramInt >= a()) {
+      if (paramInt >= b()) {
         return;
       }
       super.a(paramInt, paramString);
-      Object localObject = super.b(paramInt);
+      Object localObject = super.c(paramInt);
       paramString = (String)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         paramString = "　　";
       }
-      this.f = AIOUtils.b(18.0F, BaseApplicationImpl.getContext().getResources());
+      this.p = AIOUtils.b(18.0F, BaseApplicationImpl.getContext().getResources());
       if (paramInt == 0)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(" ");
         ((StringBuilder)localObject).append(paramString);
         paramString = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement = new TextDrawImplement(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(new PathDrawBackground(-16777216, this.l, this.m));
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramString, jdField_c_of_type_Int, this.k, this.jdField_b_of_type_AndroidTextTextPaint);
-        this.jdField_a_of_type_Float = Math.max(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(), this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a());
-        this.jdField_a_of_type_Float = Math.max(this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(), this.jdField_a_of_type_Float);
-        this.jdField_b_of_type_Float = (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b() + this.g + this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b() + this.h + this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b());
+        this.d = new TextDrawImplement(0);
+        this.d.a(new PathDrawBackground(-16777216, this.B, this.C));
+        this.d.a(paramString, b, this.A, this.v);
+        this.w = Math.max(this.d.a(), this.e.a());
+        this.w = Math.max(this.f.a(), this.w);
+        this.x = (this.d.b() + this.t + this.e.b() + this.u + this.f.b());
         return;
       }
       if (paramString.length() > 18) {
-        this.jdField_a_of_type_JavaLangString = paramString.substring(0, 18);
+        this.q = paramString.substring(0, 18);
       } else {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.q = paramString;
       }
-      paramString = this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
+      paramString = this.f;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.s);
       ((StringBuilder)localObject).append("\n");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      paramString.a(((StringBuilder)localObject).toString(), jdField_c_of_type_Int, this.j, this.jdField_a_of_type_AndroidTextTextPaint);
+      ((StringBuilder)localObject).append(this.q);
+      paramString.a(((StringBuilder)localObject).toString(), b, this.z, this.h);
     }
   }
   
   protected void a(Canvas paramCanvas)
   {
-    this.e = 0;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramCanvas, 0, this.e);
-    this.e = ((int)(this.e + this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b()));
-    this.e += this.g;
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramCanvas, 0, this.e);
-    this.e = ((int)(this.e + this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b()));
-    this.e += this.h;
-    this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramCanvas, 0, this.e);
+    this.g = 0;
+    this.d.a(paramCanvas, 0, this.g);
+    this.g = ((int)(this.g + this.d.b()));
+    this.g += this.t;
+    this.e.a(paramCanvas, 0, this.g);
+    this.g = ((int)(this.g + this.e.b()));
+    this.g += this.u;
+    this.f.a(paramCanvas, 0, this.g);
     RectF localRectF;
-    if (super.b(1))
+    if (super.f(1))
     {
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-      TextDrawImplement localTextDrawImplement = this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-      localRectF.set(localTextDrawImplement.a(2, localTextDrawImplement.a()));
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-      localRectF.top += this.e;
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-      localRectF.bottom += this.e;
-      paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      localRectF = this.j;
+      TextDrawImplement localTextDrawImplement = this.f;
+      localRectF.set(localTextDrawImplement.a(2, localTextDrawImplement.c()));
+      localRectF = this.j;
+      localRectF.top += this.g;
+      localRectF = this.j;
+      localRectF.bottom += this.g;
+      paramCanvas.drawRoundRect(this.j, 6.0F, 6.0F, s());
     }
-    this.e = ((int)(this.e + this.jdField_c_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b()));
-    if (super.b(0))
+    this.g = ((int)(this.g + this.f.b()));
+    if (super.f(0))
     {
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = 0.0F;
-      localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      this.j.left = 0.0F;
+      localRectF = this.i;
       localRectF.top = 0.0F;
-      localRectF.right = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a();
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b();
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      localRectF.right = this.d.a();
+      this.i.bottom = this.d.b();
+      paramCanvas.drawRoundRect(this.i, 6.0F, 6.0F, s());
     }
   }
   
@@ -277,14 +259,32 @@ public class RelaxedAfternoon
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_b_of_type_Float;
+    return 2;
+  }
+  
+  public float c()
+  {
+    return this.w;
+  }
+  
+  public float d()
+  {
+    return this.x;
+  }
+  
+  public InputFilter f()
+  {
+    if (this.D == null) {
+      this.D = new RelaxedAfternoon.1(this, 20);
+    }
+    return this.D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.RelaxedAfternoon
  * JD-Core Version:    0.7.0.1
  */

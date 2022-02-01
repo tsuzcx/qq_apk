@@ -10,10 +10,10 @@ class GuessPictureClickStageView$2
   
   public void run()
   {
-    if (this.this$0.jdField_b_of_type_AndroidViewView != null)
+    if (this.this$0.m != null)
     {
-      this.this$0.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.this$0.m.setVisibility(8);
+      this.this$0.f.setVisibility(8);
     }
   }
 }

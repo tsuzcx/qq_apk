@@ -16,12 +16,12 @@ class QIMCameraCaptureActivity$1
   public void run()
   {
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "enter_story_capture_count", true, 0L, 0L, null, "");
-    StoryReportor.a("video_shoot_new", "shoot_exp", StoryReportor.b(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
+    StoryReportor.a("video_shoot_new", "shoot_exp", StoryReportor.c(this.a), 0, new String[] { "", "", "", String.valueOf(this.this$0.getIntent().getIntExtra("entrance_type", 0)) });
     boolean bool = TextUtils.isEmpty(this.this$0.getIntent().getStringExtra("KEY_ISENTER_SO_DOWNLOAD"));
     AEBaseDataReporter.a().b(bool ^ true);
     try
     {
-      AEBaseDataReporter.a().ag();
+      AEBaseDataReporter.a().al();
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class QIMCameraCaptureActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMCameraCaptureActivity.1
  * JD-Core Version:    0.7.0.1
  */

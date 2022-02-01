@@ -109,7 +109,7 @@ public class QzoneRecommedPhotoJsPlugin
       Intent localIntent = new Intent("action_enter_to_qzone_recommend_photo");
       localIntent.putExtra("param.formSchemeToRecommend", true);
       localIntent.putExtra("param.photoUnikey", paramString);
-      QZoneHelper.forwardToQzoneTransluentActivity(this.parentPlugin.mRuntime.a(), QZoneHelper.UserInfo.getInstance(), localIntent, 0);
+      QZoneHelper.forwardToQzoneTransluentActivity(this.parentPlugin.mRuntime.d(), QZoneHelper.UserInfo.getInstance(), localIntent, 0);
       return;
     }
     catch (Exception paramString)
@@ -136,7 +136,7 @@ public class QzoneRecommedPhotoJsPlugin
       if (!TextUtils.isEmpty(paramString))
       {
         this.callbackMap.put("cmd.getRecommedPhoto", paramString);
-        this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneRecommedPhotoJsPlugin.2(this));
+        this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneRecommedPhotoJsPlugin.2(this));
         return;
       }
     }
@@ -162,7 +162,7 @@ public class QzoneRecommedPhotoJsPlugin
       if (!TextUtils.isEmpty(paramString1)) {
         this.callbackMap.put(paramString1, str);
       }
-      this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(paramRunnable);
+      this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(paramRunnable);
       return;
     }
     catch (Exception paramString1)
@@ -349,7 +349,7 @@ public class QzoneRecommedPhotoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

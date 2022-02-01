@@ -17,33 +17,27 @@ import java.util.List;
 public class LebaMainBizProxy
 {
   @ConfigInject(configPath="Business/qqleba-impl/src/main/resources/Inject_LebaBusiness.yml", version=1)
-  public static ArrayList<Class<? extends BaseLebaMainBiz>> a;
-  public List<BaseLebaMainBiz> a;
+  public static ArrayList<Class<? extends BaseLebaMainBiz>> a = new ArrayList();
+  public List<BaseLebaMainBiz> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(LebaQCirclePart.class);
-    jdField_a_of_type_JavaUtilArrayList.add(LebaQzoneAndPluginPart.class);
-    jdField_a_of_type_JavaUtilArrayList.add(LebaSearchPart.class);
-  }
-  
-  public LebaMainBizProxy()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a.add(LebaQCirclePart.class);
+    a.add(LebaQzoneAndPluginPart.class);
+    a.add(LebaSearchPart.class);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (this.b.isEmpty())
     {
-      Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject = a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         Class localClass = (Class)((Iterator)localObject).next();
         try
         {
-          this.jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
+          this.b.add(localClass.newInstance());
         }
         catch (Exception localException)
         {
@@ -52,14 +46,14 @@ public class LebaMainBizProxy
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("initBizList size = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.b.size());
       QLog.i("LebaMainBizProxy", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(View paramView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).a(paramView);
     }
@@ -67,7 +61,7 @@ public class LebaMainBizProxy
   
   public void a(View paramView, LebaViewItem paramLebaViewItem, LebaClickReportInfo paramLebaClickReportInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).a(paramView, paramLebaViewItem, paramLebaClickReportInfo);
     }
@@ -75,7 +69,7 @@ public class LebaMainBizProxy
   
   public void a(LeabOnPauseInfo paramLeabOnPauseInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).a(paramLeabOnPauseInfo);
     }
@@ -84,18 +78,18 @@ public class LebaMainBizProxy
   public void a(ILebaProxy paramILebaProxy)
   {
     a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       BaseLebaMainBiz localBaseLebaMainBiz = (BaseLebaMainBiz)localIterator.next();
       localBaseLebaMainBiz.a(paramILebaProxy);
-      localBaseLebaMainBiz.g();
+      localBaseLebaMainBiz.n();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).a(paramBoolean);
     }
@@ -103,15 +97,15 @@ public class LebaMainBizProxy
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).e();
+      ((BaseLebaMainBiz)localIterator.next()).l();
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).b(paramBoolean);
     }
@@ -119,15 +113,15 @@ public class LebaMainBizProxy
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).f();
+      ((BaseLebaMainBiz)localIterator.next()).m();
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseLebaMainBiz)localIterator.next()).c(paramBoolean);
     }
@@ -135,71 +129,71 @@ public class LebaMainBizProxy
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).h();
+      ((BaseLebaMainBiz)localIterator.next()).o();
     }
   }
   
   public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).i();
+      ((BaseLebaMainBiz)localIterator.next()).p();
     }
   }
   
   public void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).j();
+      ((BaseLebaMainBiz)localIterator.next()).q();
     }
   }
   
   public void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).k();
+      ((BaseLebaMainBiz)localIterator.next()).r();
     }
   }
   
   public void h()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).l();
+      ((BaseLebaMainBiz)localIterator.next()).s();
     }
   }
   
   public void i()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).m();
+      ((BaseLebaMainBiz)localIterator.next()).t();
     }
   }
   
   public void j()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).n();
+      ((BaseLebaMainBiz)localIterator.next()).u();
     }
   }
   
   public void k()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
-      ((BaseLebaMainBiz)localIterator.next()).o();
+      ((BaseLebaMainBiz)localIterator.next()).v();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.LebaMainBizProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -69,7 +69,7 @@ public class BirthdayActivateData
         localObject2 = localObject1;
         ((JSONObject)localObject4).put("app", "com.tencent.giftmall.greeting");
         localObject2 = localObject1;
-        localJSONObject2.put("ua", WebSoUtils.a());
+        localJSONObject2.put("ua", WebSoUtils.b());
         String str2 = "meta";
         String str1 = "greetingData";
         if (localObject5 == null)
@@ -259,7 +259,7 @@ public class BirthdayActivateData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivateData
  * JD-Core Version:    0.7.0.1
  */

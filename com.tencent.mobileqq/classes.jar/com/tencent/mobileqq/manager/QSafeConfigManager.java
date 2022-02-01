@@ -5,26 +5,21 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QSafeConfigManager
 {
-  private static volatile QSafeConfigManager jdField_a_of_type_ComTencentMobileqqManagerQSafeConfigManager;
-  private QSafeManagerBean jdField_a_of_type_ComTencentMobileqqManagerQSafeManagerBean = (QSafeManagerBean)QConfigManager.a().a(732);
+  private static volatile QSafeConfigManager a;
+  private QSafeManagerBean b = (QSafeManagerBean)QConfigManager.b().b(732);
   
   public static QSafeConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqManagerQSafeConfigManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqManagerQSafeConfigManager == null) {
-          jdField_a_of_type_ComTencentMobileqqManagerQSafeConfigManager = new QSafeConfigManager();
+        if (a == null) {
+          a = new QSafeConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqManagerQSafeConfigManager;
-  }
-  
-  public QSafeManagerBean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqManagerQSafeManagerBean;
+    return a;
   }
   
   public void a(QSafeManagerBean paramQSafeManagerBean)
@@ -34,12 +29,17 @@ public class QSafeConfigManager
       QLog.e("QSafeConfigManager", 1, "setConfig, config is null");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqManagerQSafeManagerBean = paramQSafeManagerBean;
+    this.b = paramQSafeManagerBean;
+  }
+  
+  public QSafeManagerBean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.manager.QSafeConfigManager
  * JD-Core Version:    0.7.0.1
  */

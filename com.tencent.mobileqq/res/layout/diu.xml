@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioGroup android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/m62" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginRight="22.0dip">
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/b7f" android:gravity="center" android:id="@id/pqx" android:background="@color/ajr" android:layout_width="0.0dip" android:layout_height="40.0dip" android:checked="true" android:button="@null" android:text="@string/1u" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/b7f" android:gravity="center" android:id="@id/pr7" android:background="@color/ajr" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:button="@null" android:text="@string/1w" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/b7f" android:gravity="center" android:id="@id/pr2" android:background="@color/ajr" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:button="@null" android:text="@string/1v" android:includeFontPadding="false" android:layout_weight="1.0" />
+        </RadioGroup>
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.wink.view.scrollingheader.ScrollingHeaderLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/osj" android:background="@drawable/jsl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="52.0dip">
+                    <com.tencent.mobileqq.wink.view.RoundCornerImageView android:id="@id/osi" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/jvt" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/pno" android:layout_width="256.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/z0n" android:layout_toRightOf="@id/osi" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/osk" android:layout_width="19.199982dip" android:layout_height="19.199982dip" android:layout_marginRight="12.0dip" android:src="@drawable/jsk" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.tencent.mobileqq.wink.view.scrollingheader.ScrollingHeaderLayout>
+        <com.tencent.mobileqq.wink.pick.circle.view.NoScrollViewPager android:id="@id/osl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

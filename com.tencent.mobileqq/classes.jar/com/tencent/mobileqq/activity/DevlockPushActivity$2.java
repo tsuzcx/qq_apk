@@ -22,10 +22,10 @@ class DevlockPushActivity$2
       this.a.b();
       return;
     }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
+    if (((this.a.b == null) || (!this.a.b.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
     {
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      DevlockPhoneStatus.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      this.a.a = paramDevlockInfo;
+      DevlockPhoneStatus.a().a(this.a.a.TransferInfo);
       return;
     }
     this.a.b();
@@ -62,10 +62,10 @@ class DevlockPushActivity$2
         paramWUserSigInfo.append(paramDevlockInfo.MbGuideInfo);
         QLog.d("Q.devlock.DevlockPushActivity", 2, paramWUserSigInfo.toString());
       }
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      DevlockPhoneStatus.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      this.a.a = paramDevlockInfo;
+      DevlockPhoneStatus.a().a(this.a.a.TransferInfo);
       paramWUserSigInfo = this.a;
-      paramWUserSigInfo.a(paramWUserSigInfo.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+      paramWUserSigInfo.a(paramWUserSigInfo.a);
       return;
     }
     if (QLog.isColorLevel())
@@ -85,7 +85,7 @@ class DevlockPushActivity$2
         QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
-    paramDevlockInfo = this.a.getString(2131692013);
+    paramDevlockInfo = this.a.getString(2131888980);
     paramWUserSigInfo = paramDevlockInfo;
     if (paramErrMsg != null)
     {
@@ -94,12 +94,12 @@ class DevlockPushActivity$2
         paramWUserSigInfo = paramErrMsg.getMessage();
       }
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getApplicationContext(), paramWUserSigInfo, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity.2
  * JD-Core Version:    0.7.0.1
  */

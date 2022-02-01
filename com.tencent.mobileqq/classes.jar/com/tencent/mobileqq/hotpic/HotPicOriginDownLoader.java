@@ -13,7 +13,7 @@ import java.net.URL;
 public class HotPicOriginDownLoader
   extends HotPicDownLoader
 {
-  protected static URL b(String paramString)
+  protected static URL d(String paramString)
   {
     try
     {
@@ -49,11 +49,11 @@ public class HotPicOriginDownLoader
       return localFile;
     }
     localFile.getParentFile().mkdirs();
-    if ((Utils.a()) && (Utils.b() < 31457280L))
+    if ((Utils.b()) && (Utils.c() < 31457280L))
     {
       paramDownloadParams = new StringBuilder();
       paramDownloadParams.append("SD card free space is ");
-      paramDownloadParams.append(Utils.b());
+      paramDownloadParams.append(Utils.c());
       throw new IOException(paramDownloadParams.toString());
     }
     Object localObject = new File(a);
@@ -95,7 +95,7 @@ public class HotPicOriginDownLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicOriginDownLoader
  * JD-Core Version:    0.7.0.1
  */

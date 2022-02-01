@@ -18,7 +18,7 @@ class NearbyCardVoteView$1
   {
     super.handleMessage(paramMessage);
     int j = paramMessage.what;
-    int k = NearbyCardVoteView.c;
+    int k = NearbyCardVoteView.m;
     int i = 0;
     if (j == k)
     {
@@ -29,7 +29,7 @@ class NearbyCardVoteView$1
       this.a.a(j, i);
       return;
     }
-    if (paramMessage.what == NearbyCardVoteView.d)
+    if (paramMessage.what == NearbyCardVoteView.n)
     {
       int m = paramMessage.arg1;
       int n = paramMessage.arg2;
@@ -56,8 +56,8 @@ class NearbyCardVoteView$1
           j = 0;
           k = 0;
         }
-        localObject = this.a.a.obtainMessage(NearbyCardVoteView.c, k, j);
-        this.a.a.sendMessageDelayed((Message)localObject, (i + 2) * 500);
+        localObject = this.a.o.obtainMessage(NearbyCardVoteView.m, k, j);
+        this.a.o.sendMessageDelayed((Message)localObject, (i + 2) * 500);
         i += 1;
       }
       paramMessage = this.a.getContext().getSharedPreferences("nearby_card_reddot_num", 0).edit();
@@ -69,7 +69,7 @@ class NearbyCardVoteView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView.1
  * JD-Core Version:    0.7.0.1
  */

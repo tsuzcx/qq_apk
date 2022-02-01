@@ -16,18 +16,18 @@ class CountDownClockNumLottieView$2
     if (CountDownClockNumLottieView.a(this.a) != 0.0F)
     {
       paramValueAnimator = this.a;
-      CountDownClockNumLottieView.a(paramValueAnimator, CountDownClockNumLottieView.a(paramValueAnimator) - (int)(CountDownClockNumLottieView.a(this.a) / CountDownClockNumLottieView.a(this.a)));
+      CountDownClockNumLottieView.a(paramValueAnimator, CountDownClockNumLottieView.b(paramValueAnimator) - (int)(CountDownClockNumLottieView.c(this.a) / CountDownClockNumLottieView.a(this.a)));
     }
-    if ((CountDownClockNumLottieView.a(this.a) == 360) && (CountDownClockNumLottieView.a(this.a) != null) && (this.a.getVisibility() == 0)) {
-      CountDownClockNumLottieView.a(this.a).a();
+    if ((CountDownClockNumLottieView.c(this.a) == 360) && (CountDownClockNumLottieView.d(this.a) != null) && (this.a.getVisibility() == 0)) {
+      CountDownClockNumLottieView.d(this.a).a();
     }
-    if ((CountDownClockNumLottieView.a(this.a) == 360) && (this.a.a != null))
+    if ((CountDownClockNumLottieView.c(this.a) == 360) && (this.a.b != null))
     {
-      if (this.a.a.isRunning()) {
-        this.a.a.stop();
+      if (this.a.b.isRunning()) {
+        this.a.b.stop();
       }
-      this.a.a.setMinProgress(0.0F);
-      this.a.a.setProgress(0.0F);
+      this.a.b.setMinProgress(0.0F);
+      this.a.b.setProgress(0.0F);
     }
     this.a.invalidate();
   }

@@ -6,11 +6,9 @@ import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView;
-import com.tencent.kingkong.DataReport;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJUGJsonUtils;
 import com.tencent.mobileqq.kandian.biz.hippy.entity.AccountInfo;
+import com.tencent.mobileqq.kandian.repo.common.RIJUGJsonUtils;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -62,13 +60,13 @@ public class TKDDeviceModule
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
-    localHippyMap.pushString("qua", ((IRIJUGJsonUtils)QRoute.api(IRIJUGJsonUtils.class)).getQUA2ForKanDian());
-    localHippyMap.pushString("qua2", ((IRIJUGJsonUtils)QRoute.api(IRIJUGJsonUtils.class)).getQUA2ForKanDian());
-    localHippyMap.pushString("macAddress", DeviceInfoUtil.c(BaseApplicationImpl.getApplication().getApplicationContext()));
+    localHippyMap.pushString("qua", RIJUGJsonUtils.c());
+    localHippyMap.pushString("qua2", RIJUGJsonUtils.c());
+    localHippyMap.pushString("macAddress", DeviceInfoUtil.d(BaseApplicationImpl.getApplication().getApplicationContext()));
     localHippyMap.pushString("networkType", getApnType());
-    localHippyMap.pushString("id", DataReport.p());
+    localHippyMap.pushString("id", DeviceInfoUtil.j());
     localHippyMap.pushString("qimei", UserAction.getQIMEI());
-    localHippyMap.pushString("dpi", String.valueOf(ViewUtils.c()));
+    localHippyMap.pushString("dpi", String.valueOf(ViewUtils.getDensityDpi()));
     localHippyMap.pushBoolean("isKingCardUser", HippyTKDListView.isKingCardMobileNetWork());
     return localHippyMap;
   }
@@ -337,7 +335,7 @@ public class TKDDeviceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDDeviceModule
  * JD-Core Version:    0.7.0.1
  */

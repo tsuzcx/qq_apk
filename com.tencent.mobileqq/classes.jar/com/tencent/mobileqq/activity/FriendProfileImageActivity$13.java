@@ -14,19 +14,19 @@ class FriendProfileImageActivity$13
   public void run()
   {
     Object localObject = this.this$0;
-    ((FriendProfileImageActivity)localObject).f = false;
-    if (!((FriendProfileImageActivity)localObject).jdField_c_of_type_Boolean) {
-      this.this$0.b.setVisibility(0);
+    ((FriendProfileImageActivity)localObject).D = false;
+    if (!((FriendProfileImageActivity)localObject).v) {
+      this.this$0.o.setVisibility(0);
     }
-    localObject = new TranslateAnimation(0.0F, 0.0F, this.this$0.getResources().getDimension(2131297609), 0.0F);
+    localObject = new TranslateAnimation(0.0F, 0.0F, this.this$0.getResources().getDimension(2131298273), 0.0F);
     ((TranslateAnimation)localObject).setDuration(300L);
     ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    this.this$0.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation((Animation)localObject);
+    this.this$0.p.startAnimation((Animation)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.13
  * JD-Core Version:    0.7.0.1
  */

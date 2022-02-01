@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pw3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pv9" android:background="#ff1b1c26" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/ox9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ofk" android:paddingTop="28.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ofj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ofk">
+        <include android:layout_width="fill_parent" android:layout_height="194.0dip" layout="@layout/d9s" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/py3" android:paddingLeft="10.5dip" android:paddingRight="10.5dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="194.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="78.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/qlr" android:visibility="visible" android:layout_width="68.0dip" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/yu2" android:layout_alignParentRight="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/b08" android:gravity="center" android:id="@id/qls" android:paddingLeft="10.5dip" android:paddingRight="10.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/yu2" android:layout_alignParentRight="true" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/ogg" android:background="@drawable/j4l" android:paddingLeft="3.0dip" android:paddingRight="7.9499817dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip">
+                <ImageView android:background="@drawable/j4f" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/qo_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/yu1" />
+                <ImageView android:background="@drawable/j4j" android:layout_width="10.599976dip" android:layout_height="10.599976dip" android:layout_marginLeft="1.4499817dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/of_" android:visibility="invisible" android:layout_width="100.0dip" android:layout_height="2.0dip" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.qqgift.view.QQGiftComboSendView android:id="@id/my2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="110.0dip" android:layout_below="@id/ofk" android:layout_alignParentRight="true" />
+</com.tencent.mobileqq.widget.RoundRelativeLayout>

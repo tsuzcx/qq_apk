@@ -10,20 +10,20 @@ class BottomAppBar$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new BottomAppBar.SavedState.1();
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  int a;
+  boolean b;
   
   public BottomAppBar$SavedState(@NonNull Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
     boolean bool;
     if (paramParcel.readInt() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
   }
   
   public BottomAppBar$SavedState(Parcelable paramParcelable)
@@ -38,7 +38,7 @@ class BottomAppBar$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.SavedState
  * JD-Core Version:    0.7.0.1
  */

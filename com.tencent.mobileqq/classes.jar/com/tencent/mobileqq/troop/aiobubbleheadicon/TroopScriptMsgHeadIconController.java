@@ -8,19 +8,14 @@ import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
 public class TroopScriptMsgHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  public boolean a()
-  {
-    return TroopBindPublicAccountMgr.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-  }
-  
   protected void b()
   {
-    b(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840425));
+    b(this.c.getResources().getDrawable(2130841181));
   }
   
   protected void c()
   {
-    a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    a(this.h);
   }
   
   protected void d()
@@ -29,10 +24,15 @@ public class TroopScriptMsgHeadIconController
   }
   
   protected void g() {}
+  
+  public boolean h()
+  {
+    return TroopBindPublicAccountMgr.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.aiobubbleheadicon.TroopScriptMsgHeadIconController
  * JD-Core Version:    0.7.0.1
  */

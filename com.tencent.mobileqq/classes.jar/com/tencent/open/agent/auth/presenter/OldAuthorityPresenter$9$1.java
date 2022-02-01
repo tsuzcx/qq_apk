@@ -11,12 +11,12 @@ class OldAuthorityPresenter$9$1
   
   public void run()
   {
-    OldAuthorityPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter$9.a).a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterOldAuthorityPresenter$9.a.a.a, "", this.jdField_a_of_type_AndroidGraphicsBitmap);
+    OldAuthorityPresenter.a(this.b.a).a(this.b.a.w.a, "", this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.OldAuthorityPresenter.9.1
  * JD-Core Version:    0.7.0.1
  */

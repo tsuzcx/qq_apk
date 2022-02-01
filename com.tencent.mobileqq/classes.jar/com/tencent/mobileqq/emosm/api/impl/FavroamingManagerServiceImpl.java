@@ -155,7 +155,7 @@ public class FavroamingManagerServiceImpl
     if (TextUtils.isEmpty(paramString)) {
       str = "";
     }
-    return String.format(MobileQQ.getContext().getString(2131691895), new Object[] { str });
+    return String.format(MobileQQ.getContext().getString(2131888862), new Object[] { str });
   }
   
   private void notifyFavEmoticonDownloaded()
@@ -177,6 +177,11 @@ public class FavroamingManagerServiceImpl
       i += 1;
     }
     notifyFavEmoticonSyncFinished();
+  }
+  
+  private void updateAccessibilityEmotionDataMap(Map<Integer, String> paramMap)
+  {
+    ThreadManager.getUIHandler().post(new FavroamingManagerServiceImpl.10(this, paramMap));
   }
   
   public void addCustomEmotions(List<String> paramList, IFavroamingManagerService.AddCustomEmotionsCallback paramAddCustomEmotionsCallback)
@@ -204,49 +209,13 @@ public class FavroamingManagerServiceImpl
   
   public void cacheAccessibilityEmotionData()
   {
-    if (this.mApp == null) {
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface == null)
+    {
+      QLog.e("FavroamingManager", 2, "[cacheAccessibilityEmotionData] error, app is null!");
       return;
     }
-    Object localObject = (IFavroamingDBManagerService)this.mApp.getRuntimeService(IFavroamingDBManagerService.class);
-    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.mApp.getRuntimeService(IEmoticonManagerService.class);
-    localObject = ((IFavroamingDBManagerService)localObject).getEmoticonDataList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      this.mAccessibilityEmotionDataMap.clear();
-      Iterator localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localIterator.next();
-        String str = "";
-        if (localCustomEmotionData.isMarkFace)
-        {
-          Emoticon localEmoticon = localIEmoticonManagerService.syncFindEmoticonById(localCustomEmotionData.emoPath, localCustomEmotionData.eId);
-          localObject = str;
-          if (localEmoticon != null)
-          {
-            localObject = str;
-            if (!TextUtils.isEmpty(localEmoticon.name)) {
-              localObject = localEmoticon.name;
-            }
-          }
-        }
-        else
-        {
-          if (!TextUtils.isEmpty(localCustomEmotionData.modifyWord)) {
-            str = localCustomEmotionData.modifyWord;
-          }
-          localObject = str;
-          if (TextUtils.isEmpty(str))
-          {
-            localObject = str;
-            if (!TextUtils.isEmpty(localCustomEmotionData.ocrWord)) {
-              localObject = localCustomEmotionData.ocrWord;
-            }
-          }
-        }
-        this.mAccessibilityEmotionDataMap.put(Integer.valueOf(localCustomEmotionData.emoId), localObject);
-      }
-    }
+    ThreadManager.excute(new FavroamingManagerServiceImpl.9(this, localBaseQQAppInterface), 32, null, true);
   }
   
   public void cancelAddCustomEmotions()
@@ -996,7 +965,7 @@ public class FavroamingManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.FavroamingManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

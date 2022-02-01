@@ -32,9 +32,9 @@ import java.util.List;
 public class LocalFileSearchResultModel
   extends FileSelectorSearchResultModel
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CharSequence b;
+  private List<FileInfo> d = new ArrayList();
+  private CharSequence e;
+  private CharSequence f;
   
   public LocalFileSearchResultModel(String paramString, int paramInt)
   {
@@ -44,49 +44,39 @@ public class LocalFileSearchResultModel
   private String a(FileInfo paramFileInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(QfileTimeUtils.b(paramFileInfo.b()));
+    localStringBuilder.append(QfileTimeUtils.b(paramFileInfo.g()));
     localStringBuilder.append("  ");
-    localStringBuilder.append(FileUtil.a(paramFileInfo.a()));
+    localStringBuilder.append(FileUtil.a(paramFileInfo.f()));
     return localStringBuilder.toString();
-  }
-  
-  public int a()
-  {
-    return 0;
   }
   
   public CharSequence a()
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+    if (this.e == null) {
+      if (this.d.size() == 1)
       {
-        Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+        Object localObject = (FileInfo)this.d.get(0);
         localObject = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject).append(d());
-        this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);
+        ((SpannableStringBuilder)localObject).append(f());
+        this.e = ((CharSequence)localObject);
       }
       else
       {
-        this.jdField_a_of_type_JavaLangCharSequence = d();
+        this.e = f();
       }
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return null;
+    return this.e;
   }
   
   public List<ISearchResultModel> a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     paramQQAppInterface = new ArrayList();
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramContext = this.d.iterator();
     while (paramContext.hasNext())
     {
       FileInfo localFileInfo = (FileInfo)paramContext.next();
-      LocalFileSearchResultModel localLocalFileSearchResultModel = new LocalFileSearchResultModel(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      localLocalFileSearchResultModel.a(this.jdField_a_of_type_AndroidOsBundle);
+      LocalFileSearchResultModel localLocalFileSearchResultModel = new LocalFileSearchResultModel(this.b, this.a);
+      localLocalFileSearchResultModel.a(this.c);
       ArrayList localArrayList = new ArrayList(1);
       localArrayList.add(localFileInfo);
       localLocalFileSearchResultModel.a(localArrayList);
@@ -98,18 +88,18 @@ public class LocalFileSearchResultModel
   public void a(List<FileInfo> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.d.addAll(paramList);
     }
   }
   
-  public CharSequence b()
+  public int b()
   {
-    return SearchUtils.a(((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)).d().toLowerCase(), this.jdField_a_of_type_JavaLangString);
+    return 0;
   }
   
   protected void b(View paramView)
   {
-    Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject = (FileInfo)this.d.get(0);
     paramView = (QBaseActivity)paramView.getContext();
     localObject = FileManagerUtil.a((FileInfo)localObject);
     if ((((FileManagerEntity)localObject).nFileType != 0) && (((FileManagerEntity)localObject).nFileType != 2))
@@ -124,45 +114,14 @@ public class LocalFileSearchResultModel
     paramView.a();
   }
   
-  public boolean b()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).isSelected(localFileInfo);
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return FileManagerUtil.a(localFileInfo.c());
-    }
-    return 11;
-  }
-  
-  public CharSequence c()
+  public String c()
   {
     return null;
   }
   
-  public String c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null)
-    {
-      int i = FileManagerUtil.a(localFileInfo.c());
-      if ((i == 0) || (i == 2) || (i == 5)) {
-        return localFileInfo.c();
-      }
-    }
-    return "";
-  }
-  
   protected void c(View paramView)
   {
-    paramView = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramView = (FileInfo)this.d.get(0);
     if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).isSelected(paramView))
     {
       ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).removeSelected(paramView);
@@ -172,11 +131,11 @@ public class LocalFileSearchResultModel
       ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).addSelected(paramView);
       ReportController.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 2, 0, "0", "0", "", "");
     }
-    if (!FileUtil.a(paramView.c()))
+    if (!FileUtil.b(paramView.d()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(FileManagerUtil.c(paramView.d()));
-      localStringBuilder.append(HardCodeUtil.a(2131709605));
+      localStringBuilder.append(FileManagerUtil.j(paramView.e()));
+      localStringBuilder.append(HardCodeUtil.a(2131907332));
       FMToastUtil.a(localStringBuilder.toString());
       ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).removeSelected(paramView);
     }
@@ -184,38 +143,7 @@ public class LocalFileSearchResultModel
   
   public CharSequence d()
   {
-    Object localObject = this.b;
-    if (localObject != null) {
-      return localObject;
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 1)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131704617));
-      ((StringBuilder)localObject).append("\"");
-      localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
-      ((SpannableStringBuilder)localObject).append(SearchUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      ((SpannableStringBuilder)localObject).append("\"").append(HardCodeUtil.a(2131692328));
-      this.b = ((CharSequence)localObject);
-      return this.b;
-    }
-    localObject = new SpannableStringBuilder();
-    ((SpannableStringBuilder)localObject).append(SearchUtils.a(a((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)), this.jdField_a_of_type_JavaLangString));
-    if (this.b == null) {
-      this.b = ((CharSequence)localObject);
-    }
-    return this.b;
-  }
-  
-  public String d()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return localFileInfo.d();
-    }
-    return "";
+    return SearchUtils.a(((FileInfo)this.d.get(0)).e().toLowerCase(), this.b);
   }
   
   protected void d(View paramView)
@@ -223,18 +151,90 @@ public class LocalFileSearchResultModel
     paramView = (QBaseActivity)paramView.getContext();
     FileSelectorSearchGroupFragment.a(this);
     Intent localIntent = new Intent();
-    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
+    localIntent.putExtra("qfile_search_param_ex_params", this.c);
     PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
   }
   
-  public int e_()
+  public CharSequence e()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return null;
+  }
+  
+  public CharSequence f()
+  {
+    Object localObject = this.f;
+    if (localObject != null) {
+      return localObject;
+    }
+    int i = this.d.size();
+    if (i > 1)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131902521));
+      ((StringBuilder)localObject).append("\"");
+      localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
+      ((SpannableStringBuilder)localObject).append(SearchUtils.a(this.b, this.b));
+      ((SpannableStringBuilder)localObject).append("\"").append(HardCodeUtil.a(2131889316));
+      this.f = ((CharSequence)localObject);
+      return this.f;
+    }
+    localObject = new SpannableStringBuilder();
+    ((SpannableStringBuilder)localObject).append(SearchUtils.a(a((FileInfo)this.d.get(0)), this.b));
+    if (this.f == null) {
+      this.f = ((CharSequence)localObject);
+    }
+    return this.f;
+  }
+  
+  public int i()
+  {
+    return this.d.size();
+  }
+  
+  public String j()
+  {
+    FileInfo localFileInfo = (FileInfo)this.d.get(0);
+    if (localFileInfo != null)
+    {
+      int i = FileManagerUtil.c(localFileInfo.d());
+      if ((i == 0) || (i == 2) || (i == 5)) {
+        return localFileInfo.d();
+      }
+    }
+    return "";
+  }
+  
+  public String k()
+  {
+    FileInfo localFileInfo = (FileInfo)this.d.get(0);
+    if (localFileInfo != null) {
+      return localFileInfo.e();
+    }
+    return "";
+  }
+  
+  public int l()
+  {
+    FileInfo localFileInfo = (FileInfo)this.d.get(0);
+    if (localFileInfo != null) {
+      return FileManagerUtil.c(localFileInfo.d());
+    }
+    return 11;
+  }
+  
+  public boolean m()
+  {
+    FileInfo localFileInfo = (FileInfo)this.d.get(0);
+    if (localFileInfo != null) {
+      return ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).isSelected(localFileInfo);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.LocalFileSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

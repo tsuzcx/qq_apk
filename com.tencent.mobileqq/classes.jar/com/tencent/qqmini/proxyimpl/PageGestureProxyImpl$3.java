@@ -13,10 +13,10 @@ class PageGestureProxyImpl$3
   public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
     super.onAddColorNote(paramBundle, paramBoolean);
-    if (PageGestureProxyImpl.a(this.a) == null) {
+    if (PageGestureProxyImpl.b(this.a) == null) {
       return;
     }
-    paramBundle = (Activity)PageGestureProxyImpl.a(this.a).get();
+    paramBundle = (Activity)PageGestureProxyImpl.b(this.a).get();
     if (paramBundle != null) {
       paramBundle.moveTaskToBack(false);
     }
@@ -24,7 +24,7 @@ class PageGestureProxyImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PageGestureProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

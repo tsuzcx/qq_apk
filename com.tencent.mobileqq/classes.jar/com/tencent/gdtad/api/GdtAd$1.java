@@ -10,10 +10,10 @@ class GdtAd$1
   
   public void run()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()) != null) && (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get() != null))
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (GdtAd.access$000((GdtAd)this.a.get()) != null) && (GdtAd.access$000((GdtAd)this.a.get()).get() != null))
     {
-      ((GdtAdListener)GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get()).a((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiGdtAdError);
+      ((GdtAdListener)GdtAd.access$000((GdtAd)this.a.get()).get()).a((GdtAd)this.a.get(), this.b);
       return;
     }
     GdtLog.d("GdtAd", "notifyFailedToLoad error");
@@ -21,7 +21,7 @@ class GdtAd$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd.1
  * JD-Core Version:    0.7.0.1
  */

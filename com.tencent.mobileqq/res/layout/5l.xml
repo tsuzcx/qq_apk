@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/pis" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="54.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="54.0dip" android:layout_marginBottom="8.0dip">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/pix" android:background="@drawable/g9i" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="16.0dip">
+                <ImageView android:id="@id/piv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/iw6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/piw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/iw7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:gravity="center" android:id="@id/piu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/y_x" android:singleLine="true" android:layout_toLeftOf="@id/piw" android:layout_toRightOf="@id/piv" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/pir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="12.0dip">
+                <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
+                    <ImageView android:id="@id/pip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/g9n" />
+                    <ImageView android:id="@id/pio" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/j1q" />
+                    <ImageView android:id="@id/piq" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/g9p" android:scaleType="fitCenter" />
+                </FrameLayout>
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/pj3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="2" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/pit" android:background="@drawable/g9b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:id="@id/pid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip">
+                <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
+                    <ImageView android:id="@id/pii" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/com" />
+                    <ImageView android:id="@id/pij" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/g9d" android:scaleType="fitCenter" />
+                </FrameLayout>
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/piz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="2" android:layout_toRightOf="@id/pii" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+            <ImageView android:id="@id/pik" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:layout_marginBottom="12.0dip" android:src="@drawable/iw_" android:scaleType="centerInside" android:layout_below="@id/pid" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/pj0" android:layout_width="wrap_content" android:layout_height="20.0dip" android:maxLines="1" android:layout_toRightOf="@id/pik" android:layout_alignTop="@id/pik" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/pj1" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="20.0dip" android:maxLines="1" android:layout_alignTop="@id/pj0" android:layout_alignParentRight="true" />
+            <ImageView android:id="@id/pil" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/clk" android:scaleType="centerCrop" android:layout_toLeftOf="@id/pj1" android:layout_alignTop="@id/pik" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/pj2" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="14.0dip" android:maxLines="1" android:layout_toLeftOf="@id/pil" android:layout_alignTop="@id/pj0" />
+            <ImageView android:id="@id/pim" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/j20" android:scaleType="centerCrop" android:layout_toLeftOf="@id/pj2" android:layout_alignTop="@id/pik" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

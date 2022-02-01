@@ -31,7 +31,7 @@ public final class DecorDrawable$Companion
       if (localObject != null)
       {
         DecorDrawable localDecorDrawable = (DecorDrawable)localObject;
-        IDrawable localIDrawable = localDecorDrawable.clone();
+        IDrawable localIDrawable = localDecorDrawable.cloneDrawable();
         if (localIDrawable != null) {
           localObject = localIDrawable.getDecor();
         } else {
@@ -44,7 +44,7 @@ public final class DecorDrawable$Companion
           {
             localObject = (DecorDrawable)localObject;
             ((DecorDrawable)localObject).init(paramView, (IXAEngine)paramXAEngine);
-            ((DecorDrawable)localObject).getBaseAnim().setDuration(localDecorDrawable.getBaseAnim().getDuration());
+            ((DecorDrawable)localObject).setDuration(localDecorDrawable.getDuration());
           }
           else
           {
@@ -80,7 +80,7 @@ public final class DecorDrawable$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramXAEngine, "engine");
     Intrinsics.checkParameterIsNotNull(paramIView, "iView");
-    View localView = paramIView.getDecor().getProxy();
+    View localView = paramIView.getDecor().b();
     if (localView == null) {
       Intrinsics.throwNpe();
     }
@@ -133,7 +133,7 @@ public final class DecorDrawable$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.base.DecorDrawable.Companion
  * JD-Core Version:    0.7.0.1
  */

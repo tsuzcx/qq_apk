@@ -17,17 +17,17 @@ class BaseGuessPictureStageView$5
   
   public void onGlobalLayout()
   {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getPaddingRight();
+    int i = this.b.f.getWidth() - this.b.f.getPaddingLeft() - this.b.f.getPaddingRight();
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onShowMosaicImageGameTopicTips tip = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("BaseGuessPictureStageView", 2, ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onShowMosaicImageGameTopicTips tipWidth  = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getWidth());
+      ((StringBuilder)localObject).append(this.b.f.getWidth());
       QLog.d("BaseGuessPictureStageView", 2, ((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onShowMosaicImageGameTopicTips caluWidth  = ");
@@ -36,15 +36,15 @@ class BaseGuessPictureStageView$5
     }
     if (i > 0)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.b.f.getViewTreeObserver().removeGlobalOnLayoutListener(this);
       StringBuilder localStringBuilder;
-      if (UiUtils.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidWidgetTextView) > 1)
+      if (UiUtils.a(this.b.f) > 1)
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.a.a().b());
-        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
+        this.b.m.setBackgroundDrawable(this.b.d.a().f());
+        localObject = this.b.m.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = this.b.m.getWidth();
         ((ViewGroup.LayoutParams)localObject).height = (((ViewGroup.LayoutParams)localObject).width * 130 / 478);
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.b.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -57,11 +57,11 @@ class BaseGuessPictureStageView$5
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.a.a().a());
-        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.getWidth();
+        this.b.m.setBackgroundDrawable(this.b.d.a().e());
+        localObject = this.b.m.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = this.b.m.getWidth();
         ((ViewGroup.LayoutParams)localObject).height = (((ViewGroup.LayoutParams)localObject).width * 110 / 478);
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_b_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.b.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();

@@ -1,31 +1,27 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.content.Context;
-import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IFlutterProxy;
-import io.flutter.view.FlutterMain;
+import com.tencent.oskplayer.OskPlayerCore;
+import com.tencent.oskplayer.proxy.VideoManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayerUtil;
 
 class ChannelProxyImpl$12
-  implements IFlutterProxy
+  implements IMediaPlayerUtil
 {
   ChannelProxyImpl$12(ChannelProxyImpl paramChannelProxyImpl) {}
   
-  public void initFlutterRuntime(BaseRuntime paramBaseRuntime, Context paramContext)
+  public int getContentFlag(String paramString)
   {
-    try
-    {
-      FlutterMain.setNativeLibDir(TissueEnvImpl.getNativeLibDirInSubProgress());
-      FlutterMain.startInitialization(paramContext.getApplicationContext());
-      FlutterMain.ensureInitializationComplete(paramContext.getApplicationContext(), null);
-      return;
-    }
-    catch (IllegalStateException paramBaseRuntime) {}
+    return VideoManager.getInstance().probeContentFlag(paramString);
+  }
+  
+  public String getUrl(String paramString)
+  {
+    return OskPlayerCore.getInstance().getUrl(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.12
  * JD-Core Version:    0.7.0.1
  */

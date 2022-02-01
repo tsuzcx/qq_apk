@@ -27,18 +27,18 @@ public class HeadAdapter
   extends BaseAdapter
   implements DecodeTaskCompletionListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final HeadSetView jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
-  private LocationShareController jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController;
-  private final HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private final HorizontalListView a;
+  private final HeadSetView b;
+  private LocationShareController c;
+  private final Context d;
+  private List<String> e;
   
   public HeadAdapter(Context paramContext, HorizontalListView paramHorizontalListView, HeadSetView paramHeadSetView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = paramHeadSetView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.d = paramContext;
+    this.a = paramHorizontalListView;
+    this.b = paramHeadSetView;
+    this.e = new ArrayList();
   }
   
   protected static <T extends View> T a(View paramView, int paramInt)
@@ -48,40 +48,40 @@ public class HeadAdapter
   
   private void b(@NonNull List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.e = paramList;
   }
   
   public void a(LocationShareController paramLocationShareController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController = paramLocationShareController;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController.a(this);
+    this.c = paramLocationShareController;
+    this.c.a(this);
   }
   
   public void a(@NonNull List<String> paramList)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.equals(paramList)) && (QLog.isColorLevel())) {
-      QLog.d("HeadAdapter", 2, new Object[] { "notifyDataSetChangedAdvance: invoked. same list, ", " newHeadSetList: ", paramList, " headSetList: ", this.jdField_a_of_type_JavaUtilList });
+    if ((this.e.equals(paramList)) && (QLog.isColorLevel())) {
+      QLog.d("HeadAdapter", 2, new Object[] { "notifyDataSetChangedAdvance: invoked. same list, ", " newHeadSetList: ", paramList, " headSetList: ", this.e });
     }
     b(paramList);
-    if (this.jdField_a_of_type_JavaUtilList.size() <= this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a()) {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(1);
+    if (this.e.size() <= this.b.b()) {
+      this.a.setOverScrollMode(1);
     } else {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(0);
+      this.a.setOverScrollMode(0);
     }
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareController == null) {
+    if (this.c == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.e.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -94,26 +94,26 @@ public class HeadAdapter
     String str = (String)getItem(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559289, null);
+      paramView = LayoutInflater.from(this.d).inflate(2131625215, null);
       localObject1 = new HeadAdapter.VH(paramView);
       if (QLog.isColorLevel()) {
         QLog.d("HeadAdapter", 2, new Object[] { "getView: invoked. ", " position: ", Integer.valueOf(paramInt) });
       }
-      ((HeadAdapter.VH)localObject1).jdField_a_of_type_JavaLangString = str;
+      ((HeadAdapter.VH)localObject1).b = str;
       paramView.setTag(localObject1);
     }
     else
     {
       localObject1 = (HeadAdapter.VH)paramView.getTag();
-      ((HeadAdapter.VH)localObject1).jdField_a_of_type_JavaLangString = str;
+      ((HeadAdapter.VH)localObject1).b = str;
     }
     paramView.setOnClickListener(new HeadAdapter.1(this, str));
-    Bitmap localBitmap = LocationAvatarHelper.a().a(((HeadAdapter.VH)localObject1).jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = LocationAvatarHelper.a().a(((HeadAdapter.VH)localObject1).b);
     Object localObject2 = localBitmap;
     if (localBitmap == null) {
-      localObject2 = BaseImageUtil.f();
+      localObject2 = BaseImageUtil.k();
     }
-    ((HeadAdapter.VH)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
+    ((HeadAdapter.VH)localObject1).a.setImageBitmap((Bitmap)localObject2);
     Object localObject1 = ((IFriendNameService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFriendNameService.class, "")).getFriendNick(str);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -125,15 +125,15 @@ public class HeadAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramInt2 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildCount();
+    paramInt2 = this.a.getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(paramInt1).getTag();
+      Object localObject = this.a.getChildAt(paramInt1).getTag();
       if ((localObject instanceof HeadAdapter.VH))
       {
         localObject = (HeadAdapter.VH)localObject;
-        if ((paramString != null) && (paramString.equals(((HeadAdapter.VH)localObject).jdField_a_of_type_JavaLangString)))
+        if ((paramString != null) && (paramString.equals(((HeadAdapter.VH)localObject).b)))
         {
           if (paramBitmap == null) {
             break;
@@ -142,7 +142,7 @@ public class HeadAdapter
           if (paramString == null) {
             break;
           }
-          ((HeadAdapter.VH)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
+          ((HeadAdapter.VH)localObject).a.setImageBitmap(paramString);
           return;
         }
       }
@@ -152,7 +152,7 @@ public class HeadAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.headset.HeadAdapter
  * JD-Core Version:    0.7.0.1
  */

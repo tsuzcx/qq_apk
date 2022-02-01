@@ -9,13 +9,13 @@ public class SignatureScan
 {
   protected int doStep()
   {
-    new a(this.mAutomator.a).a(false);
+    new a(this.mAutomator.k).a(false);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.SignatureScan
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ class ReadInjoyXRecyclerView$3
   protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    this.b.a(paramViewHolder, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInjoyXRecyclerView.3
  * JD-Core Version:    0.7.0.1
  */

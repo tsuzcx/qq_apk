@@ -33,20 +33,9 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/share/WebShare;", "", "hostActivity", "Landroid/app/Activity;", "webview", "Lcom/tencent/biz/pubaccount/CustomWebView;", "runtime", "Lmqq/app/AppRuntime;", "(Landroid/app/Activity;Lcom/tencent/biz/pubaccount/CustomWebView;Lmqq/app/AppRuntime;)V", "activityForLaunchPlugin", "getActivityForLaunchPlugin", "()Landroid/app/Activity;", "setActivityForLaunchPlugin", "(Landroid/app/Activity;)V", "getHostActivity", "onShareHandler", "", "getOnShareHandler", "()Ljava/lang/String;", "setOnShareHandler", "(Ljava/lang/String;)V", "onShareQQFriendHandler", "getOnShareQQFriendHandler", "setOnShareQQFriendHandler", "onShareQQSpecifiedFriendHandler", "getOnShareQQSpecifiedFriendHandler", "setOnShareQQSpecifiedFriendHandler", "onShareQZoneHandler", "getOnShareQZoneHandler", "setOnShareQZoneHandler", "onShareWXFriendHandler", "getOnShareWXFriendHandler", "setOnShareWXFriendHandler", "onShareWXTimelineHandler", "getOnShareWXTimelineHandler", "setOnShareWXTimelineHandler", "getRuntime", "()Lmqq/app/AppRuntime;", "shareProgressDialog", "Lcom/tencent/mobileqq/widget/QQProgressDialog;", "getWebview", "()Lcom/tencent/biz/pubaccount/CustomWebView;", "actionShareToQQFriend", "", "action", "", "uinType", "uin", "nickname", "getShareProgressDialog", "notifyOnShare", "forWhat", "notifyOnShareQQFriend", "notifyOnShareQQSpecifiedFriend", "notifyOnShareQZone", "notifyOnShareWXFriend", "notifyOnShareWXTimeline", "share2QZone", "share2WeChat", "shareUrl", "sourcePuin", "defaultUrl", "msgId", "share2WechatCircle", "shareStructFromH5", "shareToQzone", "", "shareToWechat", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class WebShare
 {
-  public static final WebShare.Companion a;
+  public static final WebShare.Companion a = new WebShare.Companion(null);
   @Nullable
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  @Nullable
-  private final CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  @Nullable
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  @NotNull
-  private final Activity jdField_b_of_type_AndroidAppActivity;
-  @Nullable
-  private String jdField_b_of_type_JavaLangString;
+  private String b;
   @Nullable
   private String c;
   @Nullable
@@ -55,22 +44,28 @@ public final class WebShare
   private String e;
   @Nullable
   private String f;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentShareWebShare$Companion = new WebShare.Companion(null);
-  }
+  @Nullable
+  private String g;
+  private QQProgressDialog h;
+  @Nullable
+  private Activity i;
+  @NotNull
+  private final Activity j;
+  @Nullable
+  private final CustomWebView k;
+  @Nullable
+  private final AppRuntime l;
   
   public WebShare(@NotNull Activity paramActivity, @Nullable CustomWebView paramCustomWebView, @Nullable AppRuntime paramAppRuntime)
   {
-    this.jdField_b_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.j = paramActivity;
+    this.k = paramCustomWebView;
+    this.l = paramAppRuntime;
   }
   
   private final void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.c != null)
+    if (this.d != null)
     {
       JSONObject localJSONObject = new JSONObject();
       try
@@ -83,19 +78,19 @@ public final class WebShare
       {
         QLog.e("WebShare", 1, "notifyOnShareQQSpecifiedFriend process data error!", (Throwable)paramString1);
       }
-      paramString1 = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+      paramString1 = this.k;
       if (paramString1 != null) {
-        paramString1.callJs(this.c, new String[] { localJSONObject.toString() });
+        paramString1.callJs(this.d, new String[] { localJSONObject.toString() });
       }
     }
   }
   
   private final void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty((CharSequence)this.b)) {
       b(3);
-    } else if (!TextUtils.isEmpty((CharSequence)this.e)) {
-      e();
+    } else if (!TextUtils.isEmpty((CharSequence)this.f)) {
+      g();
     }
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_40", "weixin_share", 0, 1, 0, "", "", "", "");
     if ((paramString2 != null) && ((Intrinsics.areEqual("", paramString2) ^ true)))
@@ -104,79 +99,6 @@ public final class WebShare
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1003, 0, paramString2, paramString4, paramString3, paramString1, false);
     }
     ReportCenter.a().a("", "", "", "1000", "103", "0", false);
-  }
-  
-  private final boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity == null)
-    {
-      if (StringsKt.equals(this.jdField_b_of_type_AndroidAppActivity.getPackageName(), "com.tencent.qqreadinjoy", true))
-      {
-        localObject2 = this.jdField_b_of_type_AndroidAppActivity;
-        localObject1 = localObject2;
-        if (!(localObject2 instanceof PluginBaseActivity)) {
-          localObject1 = null;
-        }
-        localObject1 = (PluginBaseActivity)localObject1;
-        if (localObject1 != null) {
-          localObject1 = ((PluginBaseActivity)localObject1).getOutActivity();
-        } else {
-          localObject1 = null;
-        }
-      }
-      else
-      {
-        localObject1 = this.jdField_b_of_type_AndroidAppActivity;
-      }
-      this.jdField_a_of_type_AndroidAppActivity = ((Activity)localObject1);
-    }
-    QZoneShareData localQZoneShareData = new QZoneShareData();
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-    if (localObject1 != null) {
-      localObject1 = ((CustomWebView)localObject1).getTitle();
-    } else {
-      localObject1 = null;
-    }
-    Object localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = null;
-    }
-    localQZoneShareData.mTitle = ((String)localObject2);
-    localQZoneShareData.mSummary = ((String)null);
-    localQZoneShareData.mImageUrls = new ArrayList(1);
-    localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-    if (localObject1 != null) {
-      localObject1 = ((CustomWebView)localObject1).getUrl();
-    } else {
-      localObject1 = null;
-    }
-    localQZoneShareData.targetUrl = Util.a((String)localObject1, new String[0]);
-    localQZoneShareData.mShareBeginTime = SwiftBrowserShareMenuHandler.b;
-    localQZoneShareData.from = 2;
-    localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-    if (localObject1 != null) {
-      localQZoneShareData.mWebUrl = ((CustomWebView)localObject1).getUrl();
-    }
-    localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
-    if (localObject1 != null)
-    {
-      QZoneShareManager.shareToQzone((Context)this.jdField_a_of_type_AndroidAppActivity, ((AppRuntime)localObject1).getCurrentAccountUin(), localQZoneShareData, null, -1);
-      return true;
-    }
-    QRUtils.a(1, 2131689486);
-    return true;
-  }
-  
-  private final void b()
-  {
-    String str = this.d;
-    if (str != null)
-    {
-      CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs(str, new String[] { "1" });
-      }
-    }
   }
   
   private final void b(int paramInt)
@@ -213,10 +135,10 @@ public final class WebShare
     if (localObject != null) {
       ((QQProgressDialog)localObject).show();
     }
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    localObject = this.k;
     if (localObject != null)
     {
-      ((CustomWebView)localObject).callJs(this.jdField_a_of_type_JavaLangString, new String[] { str });
+      ((CustomWebView)localObject).callJs(this.b, new String[] { str });
       return;
     }
     QLog.w("WebShare", 1, "notifyOnShare webview is null");
@@ -224,54 +146,127 @@ public final class WebShare
   
   private final void c()
   {
-    String str = this.jdField_b_of_type_JavaLangString;
+    String str = this.e;
     if (str != null)
     {
-      CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+      CustomWebView localCustomWebView = this.k;
       if (localCustomWebView != null) {
-        localCustomWebView.callJs(str, new String[] { "0" });
+        localCustomWebView.callJs(str, new String[] { "1" });
       }
     }
   }
   
   private final void d()
   {
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
+    String str = this.c;
+    if (str != null)
+    {
+      CustomWebView localCustomWebView = this.k;
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs(str, new String[] { "0" });
+      }
+    }
+  }
+  
+  private final boolean e()
+  {
+    if (this.i == null)
+    {
+      if (StringsKt.equals(this.j.getPackageName(), "com.tencent.qqreadinjoy", true))
+      {
+        localObject2 = this.j;
+        localObject1 = localObject2;
+        if (!(localObject2 instanceof PluginBaseActivity)) {
+          localObject1 = null;
+        }
+        localObject1 = (PluginBaseActivity)localObject1;
+        if (localObject1 != null) {
+          localObject1 = ((PluginBaseActivity)localObject1).getOutActivity();
+        } else {
+          localObject1 = null;
+        }
+      }
+      else
+      {
+        localObject1 = this.j;
+      }
+      this.i = ((Activity)localObject1);
+    }
+    QZoneShareData localQZoneShareData = new QZoneShareData();
+    Object localObject1 = this.k;
+    if (localObject1 != null) {
+      localObject1 = ((CustomWebView)localObject1).getTitle();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = null;
+    }
+    localQZoneShareData.mTitle = ((String)localObject2);
+    localQZoneShareData.mSummary = ((String)null);
+    localQZoneShareData.mImageUrls = new ArrayList(1);
+    localObject1 = this.k;
+    if (localObject1 != null) {
+      localObject1 = ((CustomWebView)localObject1).getUrl();
+    } else {
+      localObject1 = null;
+    }
+    localQZoneShareData.targetUrl = Util.a((String)localObject1, new String[0]);
+    localQZoneShareData.mShareBeginTime = SwiftBrowserShareMenuHandler.x;
+    localQZoneShareData.from = 2;
+    localObject1 = this.k;
+    if (localObject1 != null) {
+      localQZoneShareData.mWebUrl = ((CustomWebView)localObject1).getUrl();
+    }
+    localObject1 = this.l;
+    if (localObject1 != null)
+    {
+      QZoneShareManager.shareToQzone((Context)this.i, ((AppRuntime)localObject1).getCurrentAccountUin(), localQZoneShareData, null, -1);
+      return true;
+    }
+    QRUtils.a(1, 2131886094);
+    return true;
+  }
+  
+  private final void f()
+  {
+    if (!TextUtils.isEmpty((CharSequence)this.b)) {
       b(4);
-    } else if (!TextUtils.isEmpty((CharSequence)this.f)) {
-      f();
+    } else if (!TextUtils.isEmpty((CharSequence)this.g)) {
+      h();
     }
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_42", "pengyouquan_share", 0, 1, 0, "", "", "", "");
     ReportCenter.a().a("", "", "", "1000", "104", "0", false);
   }
   
-  private final void e()
+  private final void g()
   {
-    String str = this.e;
+    String str = this.f;
     if (str != null)
     {
-      CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+      CustomWebView localCustomWebView = this.k;
       if (localCustomWebView != null) {
         localCustomWebView.callJs(str, new String[] { "2" });
       }
     }
   }
   
-  private final void f()
+  private final void h()
   {
-    String str = this.f;
+    String str = this.g;
     if (str != null)
     {
-      CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+      CustomWebView localCustomWebView = this.k;
       if (localCustomWebView != null) {
         localCustomWebView.callJs(str, new String[] { "3" });
       }
     }
   }
   
-  private final void g()
+  private final void i()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    Object localObject = this.k;
     if (localObject != null) {
       localObject = ((CustomWebView)localObject).getUrl();
     } else {
@@ -279,10 +274,10 @@ public final class WebShare
     }
     localObject = Util.a((String)localObject, new String[0]);
     ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1001, (String)localObject, 100);
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty((CharSequence)this.b)) {
       b(1);
-    } else if (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaLangString)) {
-      c();
+    } else if (!TextUtils.isEmpty((CharSequence)this.c)) {
+      d();
     } else {
       QLog.e("WebShare", 1, "onShareHandler and onShareQQFriendHandler is empty");
     }
@@ -293,42 +288,29 @@ public final class WebShare
   @Nullable
   public final QQProgressDialog a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.h == null)
     {
-      int i = this.jdField_b_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)this.jdField_b_of_type_AndroidAppActivity, i);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      int m = this.j.getResources().getDimensionPixelSize(2131299920);
+      this.h = new QQProgressDialog((Context)this.j, m);
+      Object localObject = this.h;
       if (localObject != null) {
-        ((QQProgressDialog)localObject).c(2131689482);
+        ((QQProgressDialog)localObject).c(2131886090);
       }
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("dialog show time :");
-        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(l1);
         QLog.d("WebShare", 2, ((StringBuilder)localObject).toString());
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  }
-  
-  public final void a()
-  {
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
-      b(2);
-    } else if (!TextUtils.isEmpty((CharSequence)this.d)) {
-      b();
-    } else {
-      a();
-    }
-    ReportCenter.a().a("", "", "", "1000", "102", "0", false);
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_44", "qzone_share", 0, 1, 0, "", "", "", "");
+    return this.h;
   }
   
   public final void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    Object localObject = this.k;
     if (localObject != null) {
       localObject = ((CustomWebView)localObject).getUrl();
     } else {
@@ -342,24 +324,24 @@ public final class WebShare
     }
     WXShareHelper localWXShareHelper = WXShareHelper.a();
     Intrinsics.checkExpressionValueIsNotNull(localWXShareHelper, "WXShareHelper.getInstance()");
-    int i;
-    if (!localWXShareHelper.a())
+    int m;
+    if (!localWXShareHelper.b())
     {
-      i = 2131720478;
+      m = 2131918154;
     }
     else
     {
       localWXShareHelper = WXShareHelper.a();
       Intrinsics.checkExpressionValueIsNotNull(localWXShareHelper, "WXShareHelper.getInstance()");
-      if (!localWXShareHelper.b()) {
-        i = 2131720479;
+      if (!localWXShareHelper.c()) {
+        m = 2131918155;
       } else {
-        i = -1;
+        m = -1;
       }
     }
-    if (i != -1)
+    if (m != -1)
     {
-      QRUtils.a(0, i);
+      QRUtils.a(0, m);
       return;
     }
     if (paramInt == 9)
@@ -368,52 +350,65 @@ public final class WebShare
       a((String)localObject, "", (String)localObject, "");
       return;
     }
-    d();
+    f();
   }
   
   public final void a(int paramInt1, int paramInt2, @NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "uin");
     Intrinsics.checkParameterIsNotNull(paramString2, "nickname");
-    if ((paramInt1 == 72) && (!TextUtils.isEmpty((CharSequence)this.c))) {
+    if ((paramInt1 == 72) && (!TextUtils.isEmpty((CharSequence)this.d))) {
       a(paramInt2, paramString1, paramString2);
     }
-    g();
+    i();
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
+  }
+  
+  public final void b()
+  {
+    if (!TextUtils.isEmpty((CharSequence)this.b)) {
+      b(2);
+    } else if (!TextUtils.isEmpty((CharSequence)this.e)) {
+      c();
+    } else {
+      e();
+    }
+    ReportCenter.a().a("", "", "", "1000", "102", "0", false);
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_44", "qzone_share", 0, 1, 0, "", "", "", "");
   }
   
   public final void b(@Nullable String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public final void c(@Nullable String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
   }
   
   public final void d(@Nullable String paramString)
   {
-    this.d = paramString;
+    this.e = paramString;
   }
   
   public final void e(@Nullable String paramString)
   {
-    this.e = paramString;
+    this.f = paramString;
   }
   
   public final void f(@Nullable String paramString)
   {
-    this.f = paramString;
+    this.g = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.share.WebShare
  * JD-Core Version:    0.7.0.1
  */

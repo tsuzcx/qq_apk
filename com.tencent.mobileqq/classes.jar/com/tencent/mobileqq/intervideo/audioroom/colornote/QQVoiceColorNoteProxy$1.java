@@ -9,7 +9,7 @@ class QQVoiceColorNoteProxy$1
   
   public void onColorNoteAnimFinish()
   {
-    OnColorNoteAnimFinish localOnColorNoteAnimFinish = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomColornoteOnColorNoteAnimFinish;
+    OnColorNoteAnimFinish localOnColorNoteAnimFinish = this.a;
     if (localOnColorNoteAnimFinish != null) {
       localOnColorNoteAnimFinish.onColorNoteAnimFinish();
     }
@@ -17,7 +17,7 @@ class QQVoiceColorNoteProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.colornote.QQVoiceColorNoteProxy.1
  * JD-Core Version:    0.7.0.1
  */

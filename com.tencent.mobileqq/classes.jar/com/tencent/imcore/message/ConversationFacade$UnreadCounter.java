@@ -10,91 +10,91 @@ import java.util.Set;
 
 class ConversationFacade$UnreadCounter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
-  private Map<String, Set<MessageRecord>> jdField_a_of_type_JavaUtilMap;
-  private Set<String> jdField_a_of_type_JavaUtilSet;
   private int b;
-  private int c;
-  private int d;
+  private List<MessageRecord> c;
+  private long d;
+  private int e;
+  private int f;
+  private int g;
+  private Set<String> h;
+  private Map<String, Set<MessageRecord>> i;
   
   public ConversationFacade$UnreadCounter(int paramInt1, List<MessageRecord> paramList, long paramLong, int paramInt2, int paramInt3, int paramInt4, Set<String> paramSet, Map<String, Set<MessageRecord>> paramMap)
   {
-    this.jdField_a_of_type_Int = paramList;
-    this.jdField_a_of_type_JavaUtilList = paramLong;
-    this.jdField_a_of_type_Long = ???;
-    this.b = paramInt3;
-    this.c = paramInt4;
-    this.d = paramSet;
-    this.jdField_a_of_type_JavaUtilSet = paramMap;
+    this.b = paramList;
+    this.c = paramLong;
+    this.d = ???;
+    this.e = paramInt3;
+    this.f = paramInt4;
+    this.g = paramSet;
+    this.h = paramMap;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilMap = localObject;
+    this.i = localObject;
   }
   
   private void a(MessageRecord paramMessageRecord, long paramLong)
   {
-    if (paramLong > this.jdField_a_of_type_Long)
+    if (paramLong > this.d)
     {
-      if (UinTypeUtil.k(paramMessageRecord.msgtype))
+      if (UinTypeUtil.m(paramMessageRecord.msgtype))
       {
-        this.b -= 1;
+        this.e -= 1;
         return;
       }
-      if ((ConversationFacade.a(this.jdField_a_of_type_Int)) && (ConversationFacade.a.b(paramMessageRecord)))
+      if ((ConversationFacade.a(this.b)) && (ConversationFacade.a.b(paramMessageRecord)))
       {
-        this.b -= 1;
+        this.e -= 1;
         return;
       }
       if (paramMessageRecord.isLongMsg())
       {
-        Object localObject = this.jdField_a_of_type_JavaUtilMap;
-        if ((localObject != null) && (((Map)localObject).containsKey(UinTypeUtil.a(paramMessageRecord))) && (ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)this.jdField_a_of_type_JavaUtilMap.get(UinTypeUtil.a(paramMessageRecord)))))
+        Object localObject = this.i;
+        if ((localObject != null) && (((Map)localObject).containsKey(UinTypeUtil.a(paramMessageRecord))) && (ConversationFacade.a(this.a, paramMessageRecord, (Set)this.i.get(UinTypeUtil.a(paramMessageRecord)))))
         {
-          this.b -= 1;
+          this.e -= 1;
           return;
         }
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        if (this.h == null) {
+          this.h = new HashSet();
         }
         localObject = UinTypeUtil.a(paramMessageRecord);
         if (ConversationFacade.a.f(paramMessageRecord))
         {
-          if (ConversationFacade.a.a(ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade), paramMessageRecord))
+          if (ConversationFacade.a.a(ConversationFacade.b(this.a), paramMessageRecord))
           {
-            this.b -= 1;
+            this.e -= 1;
             return;
           }
-          if (this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+          if (this.h.contains(localObject))
           {
-            this.b -= 1;
+            this.e -= 1;
             return;
           }
-          this.jdField_a_of_type_JavaUtilSet.add(localObject);
+          this.h.add(localObject);
         }
-        else if (this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+        else if (this.h.contains(localObject))
         {
-          this.jdField_a_of_type_JavaUtilSet.remove(localObject);
+          this.h.remove(localObject);
         }
       }
-      this.c += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.a(paramMessageRecord);
-      this.d += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.b(paramMessageRecord);
+      this.f += this.a.a(paramMessageRecord);
+      this.g += this.a.b(paramMessageRecord);
     }
   }
   
   private void b(MessageRecord paramMessageRecord, long paramLong)
   {
-    if (paramLong <= this.jdField_a_of_type_Long) {
+    if (paramLong <= this.d) {
       if (paramMessageRecord.isLongMsg())
       {
-        if (this.jdField_a_of_type_JavaUtilMap == null) {
-          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        if (this.i == null) {
+          this.i = new HashMap();
         }
         Object localObject = UinTypeUtil.a(paramMessageRecord);
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(UinTypeUtil.a(paramMessageRecord)))
+        if (this.i.containsKey(UinTypeUtil.a(paramMessageRecord)))
         {
-          localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-          if ((localObject != null) && (!((Set)localObject).isEmpty()) && (!ConversationFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade, paramMessageRecord, (Set)localObject))) {
+          localObject = (Set)this.i.get(localObject);
+          if ((localObject != null) && (!((Set)localObject).isEmpty()) && (!ConversationFacade.a(this.a, paramMessageRecord, (Set)localObject))) {
             ((Set)localObject).add(paramMessageRecord);
           }
         }
@@ -102,31 +102,41 @@ class ConversationFacade$UnreadCounter
         {
           HashSet localHashSet = new HashSet();
           localHashSet.add(paramMessageRecord);
-          this.jdField_a_of_type_JavaUtilMap.put(localObject, localHashSet);
+          this.i.put(localObject, localHashSet);
         }
       }
-      else if ((UinTypeUtil.f(paramMessageRecord.msgtype)) && (!paramMessageRecord.isread))
+      else if ((UinTypeUtil.g(paramMessageRecord.msgtype)) && (!paramMessageRecord.isread))
       {
-        this.b += 1;
-        this.c += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.a(paramMessageRecord);
-        this.d += this.jdField_a_of_type_ComTencentImcoreMessageConversationFacade.b(paramMessageRecord);
+        this.e += 1;
+        this.f += this.a.a(paramMessageRecord);
+        this.g += this.a.b(paramMessageRecord);
       }
     }
   }
   
   public int a()
   {
-    return this.b;
+    return this.e;
   }
   
-  public UnreadCounter a()
+  public int b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    return this.f;
+  }
+  
+  public int c()
+  {
+    return this.g;
+  }
+  
+  public UnreadCounter d()
+  {
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       long l;
-      if (ConversationFacade.a(this.jdField_a_of_type_Int)) {
+      if (ConversationFacade.a(this.b)) {
         l = localMessageRecord.shmsgseq;
       } else {
         l = localMessageRecord.time;
@@ -136,20 +146,10 @@ class ConversationFacade$UnreadCounter
     }
     return this;
   }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public int c()
-  {
-    return this.d;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacade.UnreadCounter
  * JD-Core Version:    0.7.0.1
  */

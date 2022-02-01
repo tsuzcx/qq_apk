@@ -11,12 +11,12 @@ import mqq.app.MobileQQ;
 
 public class WTogetherRealNameMainProcessHelper
 {
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConfigObserver a = null;
+  private QQAppInterface b;
   
   public WTogetherRealNameMainProcessHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a(boolean paramBoolean)
@@ -24,23 +24,23 @@ public class WTogetherRealNameMainProcessHelper
     Intent localIntent = new Intent();
     localIntent.setAction("tencent.video.q2v.avReceiveRealNameMsg");
     localIntent.putExtra("real_name_result", paramBoolean);
-    localIntent.setPackage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getPackageName());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    localIntent.setPackage(this.b.getApplication().getPackageName());
+    this.b.getApp().sendBroadcast(localIntent);
   }
   
-  private boolean a()
+  private boolean c()
   {
     if (QLog.isColorLevel()) {
       QLog.i("WTogetherRealNameMainProcessHelper", 2, "preCheckRealNameStatus");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("WTogetherRealNameMainProcessHelper", 2, "preCheckRealNameStatus remove observer");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.b.removeObserver(this.a);
     }
-    return ((ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).c();
+    return ((ConfigHandler)this.b.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).p();
   }
   
   public void a()
@@ -48,16 +48,16 @@ public class WTogetherRealNameMainProcessHelper
     if (QLog.isColorLevel()) {
       QLog.i("WTogetherRealNameMainProcessHelper", 2, "startMonitorRealNameResult");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("WTogetherRealNameMainProcessHelper", 2, "monitorRealNameResult remove observer");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
+      this.b.removeObserver(this.a);
+      this.a = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new WTogetherRealNameMainProcessHelper.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+    this.a = new WTogetherRealNameMainProcessHelper.1(this);
+    this.b.addObserver(this.a);
   }
   
   public boolean a(int paramInt)
@@ -70,7 +70,7 @@ public class WTogetherRealNameMainProcessHelper
       }
     }
     else {
-      bool = a();
+      bool = c();
     }
     a();
     return bool;
@@ -78,11 +78,11 @@ public class WTogetherRealNameMainProcessHelper
   
   public void b()
   {
-    ConfigObserver localConfigObserver = this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver;
+    ConfigObserver localConfigObserver = this.a;
     if (localConfigObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localConfigObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
+      this.b.removeObserver(localConfigObserver);
+      this.a = null;
     }
   }
 }

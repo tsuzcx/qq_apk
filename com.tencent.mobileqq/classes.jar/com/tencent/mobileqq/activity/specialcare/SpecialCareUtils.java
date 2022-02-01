@@ -14,7 +14,7 @@ public class SpecialCareUtils
 {
   public static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    if ((paramInt == 3) && (QFlutterDPC.a().a()))
+    if ((paramInt == 3) && (QFlutterDPC.a().c()))
     {
       localObject = new HashMap();
       ((Map)localObject).put("uin", paramString);
@@ -35,7 +35,7 @@ public class SpecialCareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecialCareUtils
  * JD-Core Version:    0.7.0.1
  */

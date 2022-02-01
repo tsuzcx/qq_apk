@@ -1,6 +1,7 @@
 package com.tencent.av.tips;
 
 import android.content.res.Resources;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -8,47 +9,51 @@ import android.widget.TextView;
 class AvTipsView$SubTips
   extends AvTipsView.BaseTips
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView f;
+  Button g;
+  View h;
   
   AvTipsView$SubTips(LinearLayout paramLinearLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373621));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131373356));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.e = paramLinearLayout;
+    this.f = ((TextView)paramLinearLayout.findViewById(2131441287));
+    this.g = ((Button)paramLinearLayout.findViewById(2131441028));
+    this.h = paramLinearLayout.findViewById(2131441281);
   }
   
   boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+    return this.f != null;
   }
   
   boolean a(AvTipsView.TipsInfo paramTipsInfo)
   {
-    a();
-    if (paramTipsInfo.a != null)
+    b();
+    if (paramTipsInfo.i != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.f;
       if (localTextView != null)
       {
         AvTipsView.a(localTextView, paramTipsInfo);
+        this.h.setVisibility(0);
         return true;
       }
     }
     return false;
+  }
+  
+  void b()
+  {
+    if (!a()) {
+      return;
+    }
+    this.f.setVisibility(8);
+    this.h.setVisibility(8);
+  }
+  
+  Resources c()
+  {
+    return this.f.getResources();
   }
 }
 

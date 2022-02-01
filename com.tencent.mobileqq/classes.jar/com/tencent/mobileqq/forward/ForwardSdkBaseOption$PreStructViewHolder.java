@@ -30,115 +30,57 @@ import java.util.List;
 
 class ForwardSdkBaseOption$PreStructViewHolder
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  HashMap<AbsStructMsgElement, View> jdField_a_of_type_JavaUtilHashMap = new HashMap(1);
+  Context a;
+  View b;
+  HashMap<AbsStructMsgElement, View> c = new HashMap(1);
   
   ForwardSdkBaseOption$PreStructViewHolder(ForwardSdkBaseOption paramForwardSdkBaseOption, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   View a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForImageShare)) {
-      return this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, null);
+    if ((this.d.am instanceof StructMsgForImageShare)) {
+      return this.d.am.getPreDialogView(this.a, null);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForAudioShare))
+    if ((this.d.am instanceof StructMsgForAudioShare))
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+      this.b = this.d.am.getPreDialogView(this.a, this.b);
     }
     else
     {
-      Object localObject1 = new HeightLimitedLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject1 = new HeightLimitedLinearLayout(this.a);
       ((HeightLimitedLinearLayout)localObject1).setOrientation(1);
       Object localObject2 = new LinearLayout.LayoutParams(-1, -2);
       ((LinearLayout.LayoutParams)localObject2).gravity = 1;
       ((HeightLimitedLinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((HeightLimitedLinearLayout)localObject1).setMaxHeight(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels >> 1);
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-      a();
-      if ((a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg)) && (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl != null))
+      ((HeightLimitedLinearLayout)localObject1).setMaxHeight(this.a.getResources().getDisplayMetrics().heightPixels >> 1);
+      this.b = ((View)localObject1);
+      b();
+      if ((a(this.d.am)) && (this.d.am.mMsgUrl != null))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption;
+        localObject1 = this.d;
         if (!(localObject1 instanceof ForwardQZoneRichImageOption))
         {
-          ((ForwardSdkBaseOption)localObject1).b = 8;
-          localObject1 = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-          localObject2 = new View(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidAppActivity);
-          ((View)localObject2).setBackgroundResource(2130840143);
-          ((FrameLayout)localObject1).addView((View)localObject2, new FrameLayout.LayoutParams(-1, ViewUtils.a(33.0F), 16));
+          ((ForwardSdkBaseOption)localObject1).L = 8;
+          localObject1 = new FrameLayout(this.a);
+          localObject2 = new View(this.d.s);
+          ((View)localObject2).setBackgroundResource(2130840448);
+          ((FrameLayout)localObject1).addView((View)localObject2, new FrameLayout.LayoutParams(-1, ViewUtils.dip2px(33.0F), 16));
           ((View)localObject2).setOnClickListener(new ForwardSdkBaseOption.PreStructViewHolder.1(this));
-          ((View)localObject2).setContentDescription(HardCodeUtil.a(2131704927));
+          ((View)localObject2).setContentDescription(HardCodeUtil.a(2131902819));
           localObject2 = new FrameLayout.LayoutParams(-1, -2, 16);
-          ((FrameLayout.LayoutParams)localObject2).rightMargin = ViewUtils.a(16.0F);
-          ((FrameLayout)localObject1).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject2);
-          localObject2 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidAppActivity);
-          ((ImageView)localObject2).setImageResource(2130840133);
-          ((FrameLayout)localObject1).addView((View)localObject2, new FrameLayout.LayoutParams(ViewUtils.a(8.0F), ViewUtils.a(14.0F), 21));
+          ((FrameLayout.LayoutParams)localObject2).rightMargin = ViewUtils.dip2px(16.0F);
+          ((FrameLayout)localObject1).addView(this.b, (ViewGroup.LayoutParams)localObject2);
+          localObject2 = new ImageView(this.d.s);
+          ((ImageView)localObject2).setImageResource(2130840437);
+          ((FrameLayout)localObject1).addView((View)localObject2, new FrameLayout.LayoutParams(ViewUtils.dip2px(8.0F), ViewUtils.dip2px(14.0F), 21));
           return localObject1;
         }
       }
     }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        return;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForImageShare))
-      {
-        QLog.w("ForwardOption.ForwardSdkBaseOption", 1, "updateStructView|StructMsgForImageShare not supported！");
-        return;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForAudioShare))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-        return;
-      }
-      Object localObject1 = new Bundle();
-      ((Bundle)localObject1).putBoolean("pre_dialog", true);
-      int i = 0;
-      Object localObject2 = new ArrayList(1);
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getStructMsgItemLists().iterator();
-      while (localIterator.hasNext())
-      {
-        AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)localIterator.next();
-        View localView1 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(localAbsStructMsgElement);
-        View localView2 = localAbsStructMsgElement.a(this.jdField_a_of_type_AndroidContentContext, localView1, (Bundle)localObject1);
-        if ((localView2 != null) && ((localAbsStructMsgElement instanceof StructMsgItemLayout2)))
-        {
-          TextView localTextView = (TextView)localView2.findViewById(2131379930);
-          if (localTextView != null)
-          {
-            localTextView.setGravity(16);
-            localTextView.setMaxLines(2);
-            localTextView.setTextSize(14.0F);
-            localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165660));
-          }
-        }
-        if ((localView2 != null) && (localView2 != localView1))
-        {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localAbsStructMsgElement, localView2);
-          ((List)localObject2).add(localView2);
-          i = 1;
-        }
-      }
-      if (i != 0)
-      {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeAllViewsInLayout();
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (View)((Iterator)localObject1).next();
-          ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView((View)localObject2);
-        }
-      }
-    }
+    return this.b;
   }
   
   boolean a(AbsStructMsg paramAbsStructMsg)
@@ -155,7 +97,7 @@ class ForwardSdkBaseOption$PreStructViewHolder
           if ((localAbsStructMsgElement instanceof StructMsgItemLayout2))
           {
             paramAbsStructMsg = (StructMsgItemLayout2)localAbsStructMsgElement;
-            return (paramAbsStructMsg.o != 1) && (paramAbsStructMsg.o != 3);
+            return (paramAbsStructMsg.au != 1) && (paramAbsStructMsg.au != 3);
           }
           i += 1;
         }
@@ -163,10 +105,68 @@ class ForwardSdkBaseOption$PreStructViewHolder
     }
     return false;
   }
+  
+  void b()
+  {
+    if (this.d.am != null)
+    {
+      if (this.b == null) {
+        return;
+      }
+      if ((this.d.am instanceof StructMsgForImageShare))
+      {
+        QLog.w("ForwardOption.ForwardSdkBaseOption", 1, "updateStructView|StructMsgForImageShare not supported！");
+        return;
+      }
+      if ((this.d.am instanceof StructMsgForAudioShare))
+      {
+        this.d.am.getPreDialogView(this.a, this.b);
+        return;
+      }
+      Object localObject1 = new Bundle();
+      ((Bundle)localObject1).putBoolean("pre_dialog", true);
+      int i = 0;
+      Object localObject2 = new ArrayList(1);
+      Iterator localIterator = this.d.am.getStructMsgItemLists().iterator();
+      while (localIterator.hasNext())
+      {
+        AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)localIterator.next();
+        View localView1 = (View)this.c.get(localAbsStructMsgElement);
+        View localView2 = localAbsStructMsgElement.a(this.a, localView1, (Bundle)localObject1);
+        if ((localView2 != null) && ((localAbsStructMsgElement instanceof StructMsgItemLayout2)))
+        {
+          TextView localTextView = (TextView)localView2.findViewById(2131448814);
+          if (localTextView != null)
+          {
+            localTextView.setGravity(16);
+            localTextView.setMaxLines(2);
+            localTextView.setTextSize(14.0F);
+            localTextView.setTextColor(this.a.getResources().getColor(2131166120));
+          }
+        }
+        if ((localView2 != null) && (localView2 != localView1))
+        {
+          this.c.put(localAbsStructMsgElement, localView2);
+          ((List)localObject2).add(localView2);
+          i = 1;
+        }
+      }
+      if (i != 0)
+      {
+        ((ViewGroup)this.b).removeAllViewsInLayout();
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (View)((Iterator)localObject1).next();
+          ((ViewGroup)this.b).addView((View)localObject2);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.PreStructViewHolder
  * JD-Core Version:    0.7.0.1
  */

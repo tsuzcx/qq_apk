@@ -8,31 +8,31 @@ import java.util.List;
 
 public final class ComponentContentGridImage$Model$Builder
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<SquareCornerTextImageView.PicInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<URL> a = new ArrayList();
+  private List<SquareCornerTextImageView.PicInfo> b = new ArrayList();
+  private String c = "";
+  private String d = "";
+  private int e;
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public Builder a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public Builder a(@NonNull List<SquareCornerTextImageView.PicInfo> paramList)
   {
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (localList.size() == 1)) {
-      ((SquareCornerTextImageView.PicInfo)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+      ((SquareCornerTextImageView.PicInfo)this.b.get(0)).a(true);
     }
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     return this;
   }
   
@@ -43,19 +43,19 @@ public final class ComponentContentGridImage$Model$Builder
   
   public Builder b(@NonNull String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
     return this;
   }
   
   public Builder b(@NonNull List<URL> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGridImage.Model.Builder
  * JD-Core Version:    0.7.0.1
  */

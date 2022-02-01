@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IUserActionHandler
   extends Releasable
 {
-  public static final IUserActionHandler.Companion a = IUserActionHandler.Companion.a;
+  public static final IUserActionHandler.Companion b = IUserActionHandler.Companion.a;
   
   public abstract void a(@NotNull Activity paramActivity, @Nullable Bundle paramBundle, @NotNull Function2<? super ArrayList<EditObject>, ? super Bundle, Unit> paramFunction2);
   
@@ -28,13 +28,11 @@ public abstract interface IUserActionHandler
   
   public abstract void a(@NotNull Activity paramActivity, @NotNull CoverSelectData paramCoverSelectData, @NotNull Function1<? super CoverSelectData, Unit> paramFunction1);
   
-  public abstract void a(@NotNull Activity paramActivity, @NotNull Function2<? super String, ? super Bundle, Unit> paramFunction2);
-  
   public abstract void b(@NotNull Activity paramActivity, @Nullable Bundle paramBundle, @NotNull Function2<? super EditObject, ? super Bundle, Unit> paramFunction2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.IUserActionHandler
  * JD-Core Version:    0.7.0.1
  */

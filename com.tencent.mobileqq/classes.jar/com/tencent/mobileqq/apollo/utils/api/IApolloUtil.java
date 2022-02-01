@@ -17,6 +17,8 @@ import mqq.app.AppRuntime;
 public abstract interface IApolloUtil
   extends QRouteApi
 {
+  public static final String APOLLO_JSON_PATH = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/action_v730.json";
+  
   public abstract void checkApolloUrl(DownloadTask paramDownloadTask);
   
   public abstract boolean checkPreloadOnSettingMe(AppRuntime paramAppRuntime, View paramView);
@@ -47,9 +49,7 @@ public abstract interface IApolloUtil
   
   public abstract int getJsonIntValue(String paramString1, String paramString2);
   
-  public abstract int getReportSessionTypeByContext(Object paramObject, AppRuntime paramAppRuntime);
-  
-  public abstract int getReportSessiontype(int paramInt);
+  public abstract int getReportSessionType(int paramInt);
   
   public abstract int getReportUserResult(int paramInt);
   
@@ -59,17 +59,9 @@ public abstract interface IApolloUtil
   
   public abstract int getTraceDownloadErrCode(int paramInt);
   
-  public abstract boolean is3DFaceResExist(String paramString);
-  
   public abstract boolean isApolloProxyEnable();
   
-  public abstract boolean isDressResExist(int paramInt);
-  
   public abstract boolean isFemale(AppRuntime paramAppRuntime, String paramString);
-  
-  public abstract boolean isRoleResExist(int paramInt);
-  
-  public abstract void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
   
   public abstract void onEmoticonNewIconShown(int paramInt);
   
@@ -98,12 +90,10 @@ public abstract interface IApolloUtil
   public abstract boolean shouldShowNewIcon(int paramInt);
   
   public abstract boolean shouldShowPopupGuide();
-  
-  public abstract String wrapLogUin(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.IApolloUtil
  * JD-Core Version:    0.7.0.1
  */

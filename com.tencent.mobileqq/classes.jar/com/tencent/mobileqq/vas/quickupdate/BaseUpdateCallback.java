@@ -165,9 +165,9 @@ public abstract class BaseUpdateCallback
     if (isDefaultSc(paramString))
     {
       TagItemInfo localTagItemInfo = new TagItemInfo();
-      localTagItemInfo.jdField_a_of_type_Boolean = false;
+      localTagItemInfo.a = false;
       localTagItemInfo.b = false;
-      localTagItemInfo.jdField_a_of_type_JavaLangString = getSavePath(MobileQQ.getContext(), paramString);
+      localTagItemInfo.c = getSavePath(MobileQQ.getContext(), paramString);
       return localTagItemInfo;
     }
     return null;
@@ -238,7 +238,7 @@ public abstract class BaseUpdateCallback
     if (localObject1 == null) {
       bool = false;
     } else {
-      bool = ((TagItemInfo)localObject1).jdField_a_of_type_Boolean;
+      bool = ((TagItemInfo)localObject1).a;
     }
     int i = j;
     if (bool) {
@@ -290,7 +290,7 @@ public abstract class BaseUpdateCallback
     if (localObject1 == null) {
       bool = false;
     } else {
-      bool = ((TagItemInfo)localObject1).jdField_a_of_type_Boolean;
+      bool = ((TagItemInfo)localObject1).a;
     }
     localObject1 = getKey(paramLong1, paramString1, paramString2);
     if (!bool)
@@ -320,7 +320,7 @@ public abstract class BaseUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.BaseUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

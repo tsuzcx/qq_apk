@@ -17,17 +17,17 @@ class VideoMerger$1
   
   public void run()
   {
-    ((ILaunchVideoEditorForAlbum)QRoute.api(ILaunchVideoEditorForAlbum.class)).jumpToEditVideoActivity(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$MergeContext.a, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_AndroidOsBundle, 7, this.b);
-    if ((SlideShowPhotoListManager.a().a() == 14) && ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$MergeContext.a instanceof NewPhotoListActivity)))
+    ((ILaunchVideoEditorForAlbum)QRoute.api(ILaunchVideoEditorForAlbum.class)).jumpToEditVideoActivity(this.a.c, this.b, this.c, this.d, 7, this.e);
+    if ((SlideShowPhotoListManager.a().d() == 14) && ((this.a.c instanceof NewPhotoListActivity)))
     {
       QLog.d("VideoMerger", 2, "shuoshuo merge complete, jump to editVideoActivity and finish PhotoListActivity");
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$MergeContext.a.finish();
+      this.a.c.finish();
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("merge complete, jump to editVideoActivity , context : ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$MergeContext.a.getClass().getSimpleName());
+      localStringBuilder.append(this.a.c.getClass().getSimpleName());
       QLog.d("VideoMerger", 2, localStringBuilder.toString());
     }
   }

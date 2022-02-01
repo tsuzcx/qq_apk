@@ -10,38 +10,38 @@ import java.util.TimerTask;
 public class ProgressControler
 {
   protected long a;
-  protected Handler a;
-  private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
-  protected WeakReference<IVideoView> a;
-  protected Timer a;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  protected boolean a;
   protected long b;
   public long c;
+  protected WeakReference<IVideoView> d;
+  protected boolean e;
+  protected Timer f;
+  protected Handler g;
+  private SplitedProgressBar h;
+  private TimerTask i;
   
   private void a()
   {
     ProgressControler.2 local2 = new ProgressControler.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+    this.g.post(local2);
   }
   
   private void a(long paramLong)
   {
     long l = this.b;
-    int i;
+    int j;
     if (l > 0L)
     {
-      int j = (int)paramLong * 100 / (int)l;
-      i = j;
-      if (j > 100) {
-        i = 100;
+      int k = (int)paramLong * 100 / (int)l;
+      j = k;
+      if (k > 100) {
+        j = 100;
       }
     }
     else
     {
-      i = 0;
+      j = 0;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
+    this.h.setProgress(0, j);
   }
   
   private void b()
@@ -49,33 +49,33 @@ public class ProgressControler
     Timer localTimer = new Timer();
     ProgressControler.3 local3 = new ProgressControler.3(this);
     localTimer.scheduleAtFixedRate(local3, 0L, 50L);
-    this.jdField_a_of_type_JavaUtilTimer = localTimer;
-    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+    this.f = localTimer;
+    this.i = local3;
   }
   
   public void a(long paramLong1, long paramLong2, IVideoView paramIVideoView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = this.jdField_a_of_type_Long;
+    this.e = false;
+    this.a = paramLong1;
+    this.c = this.a;
     this.b = paramLong2;
-    Object localObject = this.jdField_a_of_type_JavaUtilTimer;
+    Object localObject = this.f;
     if (localObject != null) {
       ((Timer)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_JavaUtilTimerTask;
+    localObject = this.i;
     if (localObject != null) {
       ((TimerTask)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    localObject = this.g;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
     if (paramLong2 <= 0L)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIVideoView);
+      this.d = new WeakReference(paramIVideoView);
       a();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.g.sendEmptyMessage(0);
       return;
     }
     b();
@@ -83,7 +83,7 @@ public class ProgressControler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.ProgressControler
  * JD-Core Version:    0.7.0.1
  */

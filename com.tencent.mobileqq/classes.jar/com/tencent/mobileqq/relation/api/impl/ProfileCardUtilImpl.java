@@ -18,7 +18,7 @@ public class ProfileCardUtilImpl
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
       FriendsManager localFriendsManager = (FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localFriendsManager != null) {
-        return localFriendsManager.a(paramAppRuntime.getCurrentAccountUin());
+        return localFriendsManager.f(paramAppRuntime.getCurrentAccountUin());
       }
     }
     return null;
@@ -31,7 +31,7 @@ public class ProfileCardUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relation.api.impl.ProfileCardUtilImpl
  * JD-Core Version:    0.7.0.1
  */

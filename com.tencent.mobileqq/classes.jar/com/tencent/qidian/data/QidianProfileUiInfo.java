@@ -59,7 +59,7 @@ public class QidianProfileUiInfo
       if (this.infoByte != null)
       {
         Object localObject2;
-        if (!((QidianManager)localObject1).c(this.uin, true))
+        if (!((QidianManager)localObject1).d(this.uin, true))
         {
           localObject1 = new mobileqq_qidian.GetUserDetailInfoRspBody();
           ((mobileqq_qidian.GetUserDetailInfoRspBody)localObject1).mergeFrom(this.infoByte);
@@ -156,7 +156,7 @@ public class QidianProfileUiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.data.QidianProfileUiInfo
  * JD-Core Version:    0.7.0.1
  */

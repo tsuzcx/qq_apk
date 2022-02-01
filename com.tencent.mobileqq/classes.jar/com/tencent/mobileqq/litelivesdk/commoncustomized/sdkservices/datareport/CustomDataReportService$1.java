@@ -21,23 +21,23 @@ class CustomDataReportService$1
     {
       localObject = this.this$0.a.getHostProxy().getReportInterface().getHostReportData();
       if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.putAll((Map)localObject);
+        this.a.putAll((Map)localObject);
       }
-      localObject = this.this$0.a.getHostProxy().getReportInterface().getHostReportData(this.jdField_a_of_type_JavaLangString);
+      localObject = this.this$0.a.getHostProxy().getReportInterface().getHostReportData(this.b);
       if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.putAll((Map)localObject);
+        this.a.putAll((Map)localObject);
       }
       localObject = new Bundle();
-      ((Bundle)localObject).putString("anchor", (String)this.jdField_a_of_type_JavaUtilHashMap.get("anchor"));
-      localObject = this.this$0.a.getHostProxy().getReportInterface().getHostReportPrivateData(this.jdField_a_of_type_JavaLangString, (Bundle)localObject);
+      ((Bundle)localObject).putString("anchor", (String)this.a.get("anchor"));
+      localObject = this.this$0.a.getHostProxy().getReportInterface().getHostReportPrivateData(this.b, (Bundle)localObject);
       if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("zt_str6", localObject);
+        this.a.put("zt_str6", localObject);
       }
     }
     if (this.this$0.a.isUserHostBeacon()) {
-      QQBeaconReport.a(this.this$0.a.getAppKey(), "", this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Boolean);
+      QQBeaconReport.a(this.this$0.a.getAppKey(), "", this.b, true, this.a, this.c);
     } else {
-      QQBeaconReport.a("", this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Boolean);
+      QQBeaconReport.a("", this.b, true, this.a, this.c);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("product report qimei=");
@@ -49,7 +49,7 @@ class CustomDataReportService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportService.1
  * JD-Core Version:    0.7.0.1
  */

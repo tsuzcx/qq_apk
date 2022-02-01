@@ -28,7 +28,9 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.CompoundButton;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.text.AllCapsTransformationMethod;
@@ -74,7 +76,7 @@ public class SwitchCompat
   private final AppCompatTextHelper mTextHelper;
   private CharSequence mTextOff;
   private CharSequence mTextOn;
-  private final TextPaint mTextPaint = new TextPaint(1);
+  private final TextPaint mTextPaint;
   private Drawable mThumbDrawable;
   float mThumbPosition;
   private int mThumbTextPadding;
@@ -90,22 +92,25 @@ public class SwitchCompat
   private PorterDuff.Mode mTrackTintMode = null;
   private VelocityTracker mVelocityTracker = VelocityTracker.obtain();
   
-  public SwitchCompat(Context paramContext)
+  public SwitchCompat(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public SwitchCompat(Context paramContext, AttributeSet paramAttributeSet)
+  public SwitchCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035264);
+    this(paramContext, paramAttributeSet, R.attr.switchStyle);
   }
   
-  public SwitchCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public SwitchCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mTextPaint = new TextPaint(1);
     Object localObject1 = getResources();
     this.mTextPaint.density = ((Resources)localObject1).getDisplayMetrics().density;
     localObject1 = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.SwitchCompat, paramInt, 0);
+    ViewCompat.saveAttributeDataForStyleable(this, paramContext, R.styleable.SwitchCompat, paramAttributeSet, ((TintTypedArray)localObject1).getWrappedTypeArray(), paramInt, 0);
     this.mThumbDrawable = ((TintTypedArray)localObject1).getDrawable(R.styleable.SwitchCompat_android_thumb);
     Object localObject2 = this.mThumbDrawable;
     if (localObject2 != null) {

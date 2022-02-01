@@ -12,13 +12,13 @@ class TroopRequestActivity$12
   
   protected void onOIDB0X88D_10_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (this.a.a == null) {
+    if (this.a.c == null) {
       return;
     }
     try
     {
-      this.a.a = this.a.a.trim();
-      long l = Long.parseLong(this.a.a);
+      this.a.c = this.a.c.trim();
+      long l = Long.parseLong(this.a.c);
       if (paramLong == l) {
         break label62;
       }
@@ -44,7 +44,7 @@ class TroopRequestActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.12
  * JD-Core Version:    0.7.0.1
  */

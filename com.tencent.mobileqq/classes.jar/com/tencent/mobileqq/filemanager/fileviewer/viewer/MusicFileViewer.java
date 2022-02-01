@@ -21,13 +21,13 @@ import com.tencent.qphone.base.util.QLog;
 public class MusicFileViewer
   extends FileBrowserViewBase
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  private ImageView l;
+  private SeekBar m;
+  private TextView n;
+  private TextView o;
+  private TextView p;
+  private TextView q;
+  private TextView r;
   
   public MusicFileViewer(Activity paramActivity)
   {
@@ -37,18 +37,18 @@ public class MusicFileViewer
   public void a()
   {
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560837, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371656));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366792));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372862));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362661));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373004));
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366789));
+      this.b = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131627095, this.a, false);
+      this.l = ((ImageView)this.b.findViewById(2131439077));
+      this.n = ((TextView)this.b.findViewById(2131439595));
+      this.q = ((TextView)this.b.findViewById(2131433114));
+      this.m = ((SeekBar)this.b.findViewById(2131440424));
+      this.p = ((TextView)this.b.findViewById(2131428284));
+      this.o = ((TextView)this.b.findViewById(2131440573));
+      this.r = ((TextView)this.b.findViewById(2131433111));
       if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
+        this.m.setSplitTrack(false);
       }
     }
   }
@@ -56,85 +56,85 @@ public class MusicFileViewer
   public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
     if (paramOnSeekBarChangeListener != null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
+      this.m.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
     }
   }
   
   public void b(View.OnClickListener paramOnClickListener)
   {
     if (paramOnClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void c()
-  {
-    if (FontSettingManager.getFontLevel() > 17.0F)
-    {
-      int i = (int)(this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density * 150.0F);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.l.setOnClickListener(paramOnClickListener);
     }
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
+    this.m.setProgress(paramInt);
   }
   
   public void c(String paramString)
   {
-    this.f.setText(paramString);
+    this.p.setText(paramString);
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
+    this.m.setEnabled(paramBoolean);
   }
   
   public void d(int paramInt)
   {
     if (paramInt > 0) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
+      this.m.setMax(paramInt);
     }
   }
   
   public void d(String paramString)
   {
-    this.e.setText(paramString);
+    this.o.setText(paramString);
   }
   
   public void d(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844382);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691138));
+      this.l.setImageResource(2130845699);
+      this.l.setContentDescription(this.c.getString(2131888084));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844383);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691140));
+    this.l.setImageResource(2130845700);
+    this.l.setContentDescription(this.c.getString(2131888086));
+  }
+  
+  public void e()
+  {
+    if (FontSettingManager.getFontLevel() > 17.0F)
+    {
+      int i = (int)(this.c.getResources().getDisplayMetrics().density * 150.0F);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
+      this.l.setLayoutParams(localLayoutParams);
+    }
   }
   
   public void e(String paramString)
   {
-    if (this.g.getMeasuredWidth() <= 0)
+    if (this.q.getMeasuredWidth() <= 0)
     {
-      this.g.post(new MusicFileViewer.1(this, paramString));
+      this.q.post(new MusicFileViewer.1(this, paramString));
       return;
     }
-    TextView localTextView = this.g;
-    localTextView.setText(FileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.g.getPaint(), 2));
+    TextView localTextView = this.q;
+    localTextView.setText(FileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.q.getPaint(), 2));
   }
   
   public void f(String paramString)
   {
-    this.h.setText(paramString);
+    this.r.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ class QFileC2CTransferWrapper$3
   
   public void a(String paramString1, String paramString2)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a;
     localFileManagerEntity.fileName = paramString1;
     localFileManagerEntity.strApkPackageName = paramString2;
-    QFileC2CTransferWrapper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper).getFileManagerEngine().a().a(paramString2, new QFileC2CTransferWrapper.3.1(this));
+    QFileC2CTransferWrapper.a(this.c).getFileManagerEngine().f().a(paramString2, new QFileC2CTransferWrapper.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.3
  * JD-Core Version:    0.7.0.1
  */

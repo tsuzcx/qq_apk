@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.anim.businesseggs;
 
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -20,20 +19,18 @@ public class BusinessEggsPlayer
     return 8;
   }
   
-  public void a() {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Handler paramHandler, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, AioAnimationRule paramAioAnimationRule)
+  public void a(QQAppInterface paramQQAppInterface, Handler paramHandler, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt1, AioAnimationRule paramAioAnimationRule, boolean paramBoolean, ArrayList<AioAnimationRule> paramArrayList, int paramInt2)
   {
-    int i = paramAioAnimationRule.b.size();
-    paramInt = 0;
-    while (paramInt < i)
+    paramInt2 = paramAioAnimationRule.j.size();
+    paramInt1 = 0;
+    while (paramInt1 < paramInt2)
     {
-      Object localObject = (AioAnimationRule.JumpImage)paramAioAnimationRule.b.get(paramInt);
-      localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
+      paramArrayList = (AioAnimationRule.JumpImage)paramAioAnimationRule.j.get(paramInt1);
+      paramArrayList = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), paramArrayList);
       if (paramAioAnimationRule.a == 8) {
-        paramHandler.post(new BusinessEggsPlayer.1(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, paramAioAnimationRule, paramChatMessage));
+        paramHandler.post(new BusinessEggsPlayer.1(this, paramQQAppInterface, paramAIOAnimationConatiner, paramArrayList, paramAioAnimationRule, paramChatMessage));
       }
-      paramInt += 1;
+      paramInt1 += 1;
     }
   }
   
@@ -45,10 +42,12 @@ public class BusinessEggsPlayer
   {
     return 3;
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsPlayer
  * JD-Core Version:    0.7.0.1
  */

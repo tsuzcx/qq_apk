@@ -55,9 +55,9 @@ public class PreloadingFragment
   private static final boolean mEnableDBCache;
   private static LruCache<String, PreloadingFragment.MiniAppConfigCache> sMiniAppConfigCache = new LruCache(10);
   private Bundle mBundle;
-  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131370381);
+  private LinearLayout mLoadingView = (LinearLayout)this.mRootView.findViewById(2131437648);
   private ResultReceiver mResultReceiver;
-  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559383, null);
+  private View mRootView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131625349, null);
   private Handler mUIHandler;
   
   static
@@ -120,7 +120,7 @@ public class PreloadingFragment
         return;
       }
     }
-    getBaseActivity().runOnUiThread(new PreloadingFragment.2(this));
+    ThreadManagerV2.getUIHandlerV2().post(new PreloadingFragment.2(this));
     Object localObject3 = null;
     Object localObject1 = localObject3;
     Object localObject2;
@@ -472,7 +472,7 @@ public class PreloadingFragment
       }
       addAppConfigCache(localMiniAppConfig);
       if ((paramMiniAppInfo.verType != 3) && (paramMiniAppInfo.verType != 1)) {
-        localMiniAppConfig.forceReroad = 3;
+        localMiniAppConfig.launchParam.forceReload = 3;
       }
       doStartMiniApp(localMiniAppConfig);
       paramMiniAppInfo = this.mResultReceiver;
@@ -710,6 +710,7 @@ public class PreloadingFragment
     }
   }
   
+  @Deprecated
   private boolean startMiniAppFromLinkDB(String paramString1, int paramInt, String paramString2, LaunchParam paramLaunchParam)
   {
     for (;;)
@@ -801,8 +802,8 @@ public class PreloadingFragment
     QLog.i("miniapp-start", 1, "LoadingFragment onCreateView");
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(getBaseActivity()).inflate(2131559383, null);
-      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131370381));
+      this.mRootView = LayoutInflater.from(getBaseActivity()).inflate(2131625349, null);
+      this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(2131437648));
     }
     return this.mRootView;
   }
@@ -833,7 +834,7 @@ public class PreloadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment
  * JD-Core Version:    0.7.0.1
  */

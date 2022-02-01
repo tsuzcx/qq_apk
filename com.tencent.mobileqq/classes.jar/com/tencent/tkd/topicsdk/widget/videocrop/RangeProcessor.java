@@ -23,82 +23,77 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/videocrop/RangeProcessor;", "", "parent", "Lcom/tencent/tkd/topicsdk/widget/videocrop/FrameParent;", "frameWidth", "", "frameHeight", "milliSecPerFrame", "", "(Lcom/tencent/tkd/topicsdk/widget/videocrop/FrameParent;FFI)V", "lastX", "leftBarrier", "lineHeight", "maxRange", "minRange", "paint", "Landroid/graphics/Paint;", "getParent", "()Lcom/tencent/tkd/topicsdk/widget/videocrop/FrameParent;", "pressedThumb", "rangeChangeListener", "Lcom/tencent/tkd/topicsdk/widget/videocrop/RangeProcessor$OnRangeChangeListener;", "getRangeChangeListener", "()Lcom/tencent/tkd/topicsdk/widget/videocrop/RangeProcessor$OnRangeChangeListener;", "setRangeChangeListener", "(Lcom/tencent/tkd/topicsdk/widget/videocrop/RangeProcessor$OnRangeChangeListener;)V", "rangeDistance", "getRangeDistance", "()F", "rightBarrier", "screenMaxCoord", "screenMinCoord", "screenWidth", "thumbColor", "thumbHalfWidth", "getThumbHalfWidth", "thumbHeight", "getThumbHeight", "thumbMaxImage", "Landroid/graphics/Bitmap;", "thumbMinImage", "thumbWidth", "getThumbWidth", "calculateInSampleSize", "options", "Landroid/graphics/BitmapFactory$Options;", "reqWidth", "reqHeight", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "drawMaxImage", "thumbDrawable", "Landroid/graphics/drawable/Drawable;", "drawMinImage", "floatEquals", "", "a", "b", "getBitmapFromResource", "resources", "Landroid/content/res/Resources;", "resId", "hasChanged", "isInThumbRange", "touchX", "touchY", "cursorX", "isPressedThumb", "processTouchEvent", "event", "Landroid/view/MotionEvent;", "reset", "setBarrier", "left", "right", "setLimitRange", "minVideoLength", "maxVideoLength", "updateScreenMaxCoordInMove", "dx", "updateScreenMinCoordInMove", "Companion", "OnRangeChangeListener", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class RangeProcessor
 {
-  public static final RangeProcessor.Companion a;
-  private final float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  @NotNull
-  private final FrameParent jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent;
-  @Nullable
-  private RangeProcessor.OnRangeChangeListener jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener;
-  private final float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private final float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private final int jdField_d_of_type_Int;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
+  public static final RangeProcessor.Companion a = new RangeProcessor.Companion(null);
+  private final int b;
+  private final Paint c;
+  private final float d;
+  private Bitmap e;
+  private Bitmap f;
+  private final float g;
+  private final float h;
   private float i;
   private float j;
-  private final float k;
-  private final float l;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$Companion = new RangeProcessor.Companion(null);
-  }
+  private float k;
+  private float l;
+  private float m;
+  private float n;
+  private int o;
+  private float p;
+  private final int q;
+  @Nullable
+  private RangeProcessor.OnRangeChangeListener r;
+  @NotNull
+  private final FrameParent s;
+  private final float t;
+  private final float u;
+  private final int v;
   
   public RangeProcessor(@NotNull FrameParent paramFrameParent, float paramFloat1, float paramFloat2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent = paramFrameParent;
-    this.k = paramFloat1;
-    this.l = paramFloat2;
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Int = DisplayUtils.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_Float = DisplayUtils.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext(), 2.0F);
-    this.jdField_b_of_type_Float = DisplayUtils.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext(), 18.0F);
-    this.jdField_c_of_type_Float = (this.l + this.jdField_a_of_type_Float * 2);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext().getResources().getColor(R.color.jdField_c_of_type_Int);
-    paramFrameParent = (Drawable)new ColorDrawable(this.jdField_c_of_type_Int);
-    paramFrameParent.setBounds(0, 0, (int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float);
+    this.s = paramFrameParent;
+    this.t = paramFloat1;
+    this.u = paramFloat2;
+    this.v = paramInt;
+    this.b = DisplayUtils.a.a(this.s.getContext());
+    this.c = new Paint(1);
+    this.d = DisplayUtils.a.a(this.s.getContext(), 2.0F);
+    this.g = DisplayUtils.a.a(this.s.getContext(), 18.0F);
+    this.h = (this.u + this.d * 2);
+    this.o = -1;
+    this.q = this.s.getContext().getResources().getColor(R.color.c);
+    paramFrameParent = (Drawable)new ColorDrawable(this.q);
+    paramFrameParent.setBounds(0, 0, (int)this.g, (int)this.h);
     b(paramFrameParent);
     a(paramFrameParent);
-    paramFloat1 = this.jdField_b_of_type_Float;
-    this.h = paramFloat1;
-    this.i = (12 * this.k + paramFloat1);
+    paramFloat1 = this.g;
+    this.m = paramFloat1;
+    this.n = (12 * this.t + paramFloat1);
   }
   
   private final int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int i1 = paramOptions.outHeight;
-    int i2 = paramOptions.outWidth;
-    int n = 1;
-    int m = 1;
-    if ((i1 > paramInt2) || (i2 > paramInt1))
+    int i3 = paramOptions.outHeight;
+    int i4 = paramOptions.outWidth;
+    int i2 = 1;
+    int i1 = 1;
+    if ((i3 > paramInt2) || (i4 > paramInt1))
     {
-      i1 /= 2;
-      i2 /= 2;
+      i3 /= 2;
+      i4 /= 2;
       for (;;)
       {
-        n = m;
-        if (i1 / m <= paramInt2) {
+        i2 = i1;
+        if (i3 / i1 <= paramInt2) {
           break;
         }
-        n = m;
-        if (i2 / m <= paramInt1) {
+        i2 = i1;
+        if (i4 / i1 <= paramInt1) {
           break;
         }
-        m *= 2;
+        i1 *= 2;
       }
     }
-    return n;
+    return i2;
   }
   
   private final Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
@@ -112,11 +107,11 @@ public final class RangeProcessor
     try
     {
       localObject = new BitmapFactory.Options();
-      int m = 1;
+      int i1 = 1;
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       BitmapFactory.decodeResource(paramResources, paramInt1, (BitmapFactory.Options)localObject);
       if ((paramInt2 <= 0) && (paramInt3 <= 0)) {
-        paramInt2 = m;
+        paramInt2 = i1;
       } else {
         paramInt2 = a((BitmapFactory.Options)localObject, paramInt2, paramInt3);
       }
@@ -143,42 +138,27 @@ public final class RangeProcessor
     return (Bitmap)null;
   }
   
-  private final void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if ((paramFloat1 >= 0) || (this.jdField_d_of_type_Float + paramFloat1 > this.jdField_b_of_type_Float))
-    {
-      paramFloat1 = this.e;
-      paramFloat2 = this.f;
-      if (paramFloat1 - paramFloat3 < paramFloat2) {
-        paramFloat2 = paramFloat1 - paramFloat2;
-      } else {
-        paramFloat2 = paramFloat3;
-      }
-    }
-    this.jdField_d_of_type_Float = paramFloat2;
-  }
-  
   private final void a(Drawable paramDrawable)
   {
-    Bitmap localBitmap = a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext().getResources(), R.drawable.jdField_b_of_type_Int, (int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float);
-    Object localObject = Bitmap.createBitmap((int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float, Bitmap.Config.RGB_565);
+    Bitmap localBitmap = a(this.s.getContext().getResources(), R.drawable.b, (int)this.g, (int)this.h);
+    Object localObject = Bitmap.createBitmap((int)this.g, (int)this.h, Bitmap.Config.RGB_565);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Bitmap.createBitmap(thum…), Bitmap.Config.RGB_565)");
-    this.jdField_b_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-    localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    this.f = ((Bitmap)localObject);
+    localObject = this.f;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("thumbMaxImage");
     }
     localObject = new Canvas((Bitmap)localObject);
     paramDrawable.draw((Canvas)localObject);
     if (localBitmap != null) {
-      ((Canvas)localObject).drawBitmap(localBitmap, DisplayUtils.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext(), 2.0F), (this.jdField_c_of_type_Float - localBitmap.getHeight()) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      ((Canvas)localObject).drawBitmap(localBitmap, DisplayUtils.a.a(this.s.getContext(), 2.0F), (this.h - localBitmap.getHeight()) / 2, this.c);
     }
   }
   
   private final boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     paramFloat1 = Math.abs(paramFloat1 - paramFloat3);
-    paramFloat3 = this.jdField_b_of_type_Float;
+    paramFloat3 = this.g;
     float f1 = 2;
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -188,7 +168,7 @@ public final class RangeProcessor
       if (paramFloat2 > 0)
       {
         bool1 = bool2;
-        if (paramFloat2 < this.jdField_c_of_type_Float) {
+        if (paramFloat2 < this.h) {
           bool1 = true;
         }
       }
@@ -198,113 +178,97 @@ public final class RangeProcessor
   
   private final void b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat1 <= 0) || (this.e + paramFloat1 < this.g))
+    if ((paramFloat1 >= 0) || (this.i + paramFloat1 > this.g))
     {
-      paramFloat1 = this.jdField_d_of_type_Float;
-      paramFloat2 = this.f;
-      if (paramFloat3 - paramFloat1 < paramFloat2) {
-        paramFloat2 = paramFloat1 + paramFloat2;
+      paramFloat1 = this.j;
+      paramFloat2 = this.k;
+      if (paramFloat1 - paramFloat3 < paramFloat2) {
+        paramFloat2 = paramFloat1 - paramFloat2;
       } else {
         paramFloat2 = paramFloat3;
       }
     }
-    this.e = paramFloat2;
+    this.i = paramFloat2;
   }
   
   private final void b(Drawable paramDrawable)
   {
-    Bitmap localBitmap = a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext().getResources(), R.drawable.jdField_a_of_type_Int, (int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float);
-    Object localObject = Bitmap.createBitmap((int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float, Bitmap.Config.RGB_565);
+    Bitmap localBitmap = a(this.s.getContext().getResources(), R.drawable.a, (int)this.g, (int)this.h);
+    Object localObject = Bitmap.createBitmap((int)this.g, (int)this.h, Bitmap.Config.RGB_565);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "Bitmap.createBitmap(thum…), Bitmap.Config.RGB_565)");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.e = ((Bitmap)localObject);
+    localObject = this.e;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("thumbMinImage");
     }
     localObject = new Canvas((Bitmap)localObject);
     paramDrawable.draw((Canvas)localObject);
     if (localBitmap != null) {
-      ((Canvas)localObject).drawBitmap(localBitmap, DisplayUtils.a.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.getContext(), 5.0F), (this.jdField_c_of_type_Float - localBitmap.getHeight()) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      ((Canvas)localObject).drawBitmap(localBitmap, DisplayUtils.a.a(this.s.getContext(), 5.0F), (this.h - localBitmap.getHeight()) / 2, this.c);
     }
   }
   
-  private final boolean b(float paramFloat1, float paramFloat2)
+  private final void c(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if ((paramFloat1 <= 0) || (this.j + paramFloat1 < this.l))
+    {
+      paramFloat1 = this.i;
+      paramFloat2 = this.k;
+      if (paramFloat3 - paramFloat1 < paramFloat2) {
+        paramFloat2 = paramFloat1 + paramFloat2;
+      } else {
+        paramFloat2 = paramFloat3;
+      }
+    }
+    this.j = paramFloat2;
+  }
+  
+  private final boolean c(float paramFloat1, float paramFloat2)
   {
     return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
   }
   
-  private final float d()
+  private final float f()
   {
-    return this.jdField_b_of_type_Float / 2;
+    return this.g / 2;
   }
   
   public final float a()
   {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public final void a()
-  {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener = ((RangeProcessor.OnRangeChangeListener)null);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("thumbMinImage");
-    }
-    localBitmap.recycle();
-    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    if (localBitmap == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("thumbMaxImage");
-    }
-    localBitmap.recycle();
-  }
-  
-  public final void a(float paramFloat1, float paramFloat2)
-  {
-    float f1 = 0;
-    if (paramFloat1 >= f1) {
-      paramFloat1 += this.jdField_b_of_type_Float;
-    } else {
-      paramFloat1 = this.jdField_b_of_type_Float;
-    }
-    this.h = paramFloat1;
-    if (paramFloat2 >= f1)
-    {
-      paramFloat1 = this.jdField_b_of_type_Float;
-      this.i = Math.min(paramFloat2 + paramFloat1, this.jdField_a_of_type_Int - paramFloat1);
-    }
+    return this.g;
   }
   
   public final void a(int paramInt1, int paramInt2)
   {
-    float f1 = paramInt2 * 1.0F / this.jdField_d_of_type_Int;
-    float f2 = this.k;
-    this.g = Math.min(f1 * f2, 12 * f2 + this.jdField_b_of_type_Float);
-    this.f = Math.max(paramInt1 * 1.0F / this.jdField_d_of_type_Int * this.k, 0.0F);
-    f1 = this.jdField_b_of_type_Float;
-    this.jdField_d_of_type_Float = f1;
-    this.e = (this.g + f1);
+    float f1 = paramInt2 * 1.0F / this.v;
+    float f2 = this.t;
+    this.l = Math.min(f1 * f2, 12 * f2 + this.g);
+    this.k = Math.max(paramInt1 * 1.0F / this.v * this.t, 0.0F);
+    f1 = this.g;
+    this.i = f1;
+    this.j = (this.l + f1);
   }
   
   public final void a(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    paramCanvas.drawRect(this.jdField_d_of_type_Float, -this.jdField_a_of_type_Float, this.e, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    float f1 = this.jdField_d_of_type_Float;
-    float f2 = this.jdField_c_of_type_Float;
-    float f3 = this.jdField_a_of_type_Float;
-    paramCanvas.drawRect(f1, f2 - 2 * f3, this.e, f2 - f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.c.setColor(this.q);
+    paramCanvas.drawRect(this.i, -this.d, this.j, 0.0F, this.c);
+    float f1 = this.i;
+    float f2 = this.h;
+    float f3 = this.d;
+    paramCanvas.drawRect(f1, f2 - 2 * f3, this.j, f2 - f3, this.c);
+    Bitmap localBitmap = this.e;
     if (localBitmap == null) {
       Intrinsics.throwUninitializedPropertyAccessException("thumbMinImage");
     }
-    paramCanvas.drawBitmap(localBitmap, this.jdField_d_of_type_Float - this.jdField_b_of_type_Float, -this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramCanvas.drawBitmap(localBitmap, this.i - this.g, -this.d, this.c);
+    localBitmap = this.f;
     if (localBitmap == null) {
       Intrinsics.throwUninitializedPropertyAccessException("thumbMaxImage");
     }
-    paramCanvas.drawBitmap(localBitmap, this.e, -this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(localBitmap, this.j, -this.d, this.c);
     paramCanvas.restore();
   }
   
@@ -313,68 +277,63 @@ public final class RangeProcessor
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
     float f1 = paramMotionEvent.getX();
     if (paramMotionEvent.getAction() == 1) {
-      this.jdField_b_of_type_Int = -1;
+      this.o = -1;
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      this.j = paramMotionEvent.getX();
+      this.p = paramMotionEvent.getX();
       return;
     }
     if (paramMotionEvent.getAction() == 2)
     {
-      float f2 = f1 - this.j;
-      int m = this.jdField_b_of_type_Int;
+      float f2 = f1 - this.p;
+      int i1 = this.o;
       float f3;
-      if (m == 0)
+      if (i1 == 0)
       {
-        f3 = Math.max(this.e - this.g, this.h);
+        f3 = Math.max(this.j - this.l, this.m);
         if (f1 < f3)
         {
-          this.jdField_d_of_type_Float = f3;
-          return;
-        }
-        a(f2, f3, f1);
-      }
-      else if (m == 1)
-      {
-        f3 = Math.min(this.jdField_d_of_type_Float + this.g, this.i);
-        if (f1 > f3)
-        {
-          this.e = f3;
+          this.i = f3;
           return;
         }
         b(f2, f3, f1);
       }
+      else if (i1 == 1)
+      {
+        f3 = Math.min(this.i + this.l, this.n);
+        if (f1 > f3)
+        {
+          this.j = f3;
+          return;
+        }
+        c(f2, f3, f1);
+      }
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.invalidate();
-    paramMotionEvent = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener;
+    this.s.invalidate();
+    paramMotionEvent = this.r;
     if (paramMotionEvent != null) {
-      paramMotionEvent.a(this.jdField_d_of_type_Float, this.e);
+      paramMotionEvent.a(this.i, this.j);
     }
   }
   
   public final void a(@Nullable RangeProcessor.OnRangeChangeListener paramOnRangeChangeListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener = paramOnRangeChangeListener;
-  }
-  
-  public final boolean a()
-  {
-    return (!b(this.jdField_d_of_type_Float, this.jdField_b_of_type_Float)) || (!b(this.e, this.g));
+    this.r = paramOnRangeChangeListener;
   }
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    boolean bool1 = a(paramFloat1, paramFloat2, this.jdField_d_of_type_Float - d());
-    boolean bool2 = a(paramFloat1, paramFloat2, this.e + d());
+    boolean bool1 = a(paramFloat1, paramFloat2, this.i - f());
+    boolean bool2 = a(paramFloat1, paramFloat2, this.j + f());
     if (bool1)
     {
-      this.jdField_b_of_type_Int = 0;
+      this.o = 0;
       return true;
     }
     if (bool2)
     {
-      this.jdField_b_of_type_Int = 1;
+      this.o = 1;
       return true;
     }
     return false;
@@ -382,17 +341,53 @@ public final class RangeProcessor
   
   public final float b()
   {
-    return this.jdField_c_of_type_Float;
+    return this.h;
+  }
+  
+  public final void b(float paramFloat1, float paramFloat2)
+  {
+    float f1 = 0;
+    if (paramFloat1 >= f1) {
+      paramFloat1 += this.g;
+    } else {
+      paramFloat1 = this.g;
+    }
+    this.m = paramFloat1;
+    if (paramFloat2 >= f1)
+    {
+      paramFloat1 = this.g;
+      this.n = Math.min(paramFloat2 + paramFloat1, this.b - paramFloat1);
+    }
   }
   
   public final float c()
   {
-    return this.e - this.jdField_d_of_type_Float;
+    return this.j - this.i;
+  }
+  
+  public final boolean d()
+  {
+    return (!c(this.i, this.g)) || (!c(this.j, this.l));
+  }
+  
+  public final void e()
+  {
+    this.r = ((RangeProcessor.OnRangeChangeListener)null);
+    Bitmap localBitmap = this.e;
+    if (localBitmap == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("thumbMinImage");
+    }
+    localBitmap.recycle();
+    localBitmap = this.f;
+    if (localBitmap == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("thumbMaxImage");
+    }
+    localBitmap.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.RangeProcessor
  * JD-Core Version:    0.7.0.1
  */

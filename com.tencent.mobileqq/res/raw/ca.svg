@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="60px"
+    version="1.1"
+    viewBox="0 0 60 60"
+    width="60px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Radio_off</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="WeChat-Android-UI-Kit"
+        stroke="none"
+        stroke-width="1">
+        <g
+            fill="#000000"
+            id="Artboard-19"
+            transform="translate(-305.000000, -141.000000)">
+            <g
+                id="Radio_off"
+                transform="translate(305.000000, 141.000000)">
+                <rect
+                    fill="none"
+                    height="60"
+                    id="bounds"
+                    width="60"
+                    x="0"
+                    y="0"></rect>
+                <path
+                    d="M6,30 C6,43.2 16.8,54 30,54 C43.2,54 54,43.2 54,30 C54,16.8 43.2,6 30,6 C16.8,6 6,16.8 6,30 Z M10,30 C10,19 19,10 30,10 C41,10 50,19 50,30 C50,41 41,50 30,50 C19,50 10,41 10,30 Z"
+                    fill="#AAAAAA"
+                    id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

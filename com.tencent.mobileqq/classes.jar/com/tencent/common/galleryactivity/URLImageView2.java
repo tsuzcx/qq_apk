@@ -10,17 +10,16 @@ public class URLImageView2
   extends URLImageView
 {
   public URLDrawable a;
-  public boolean a;
+  public boolean b = false;
   
   public URLImageView2(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.a;
     if (paramURLDrawable == localURLDrawable)
     {
       setImageDrawable(localURLDrawable);
@@ -32,17 +31,17 @@ public class URLImageView2
   @TargetApi(11)
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable == this.jdField_a_of_type_ComTencentImageURLDrawable)
+    if (paramURLDrawable == this.a)
     {
       Drawable localDrawable = getDrawable();
       if ((localDrawable != null) && (localDrawable.getIntrinsicWidth() == paramURLDrawable.getIntrinsicWidth()) && (localDrawable.getIntrinsicHeight() == paramURLDrawable.getIntrinsicHeight()))
       {
-        this.jdField_a_of_type_Boolean = true;
-        setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_Boolean = false;
+        this.b = true;
+        setImageDrawable(this.a);
+        this.b = false;
         return;
       }
-      setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      setImageDrawable(this.a);
       return;
     }
     super.onLoadSuccessed(paramURLDrawable);
@@ -50,35 +49,35 @@ public class URLImageView2
   
   public void requestLayout()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       super.requestLayout();
     }
   }
   
   public void setDecodingDrawble(URLDrawable paramURLDrawable)
   {
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.a;
     if (localURLDrawable != null) {
       localURLDrawable.setURLDrawableListener(null);
     }
     paramURLDrawable.setURLDrawableListener(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.a = paramURLDrawable;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    paramDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    paramDrawable = this.a;
     if (paramDrawable != null)
     {
       paramDrawable.setURLDrawableListener(null);
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.URLImageView2
  * JD-Core Version:    0.7.0.1
  */

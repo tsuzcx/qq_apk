@@ -11,8 +11,8 @@ class QIMProviderContainerView$6
 {
   public void run()
   {
-    int j = this.this$0.a.getChildCount();
-    VideoFilterTools.a();
+    int j = this.this$0.b.getChildCount();
+    VideoFilterTools.e();
     boolean bool2 = false;
     int i = 0;
     boolean bool1;
@@ -22,7 +22,7 @@ class QIMProviderContainerView$6
       if (i >= j) {
         break;
       }
-      if (QIMProviderContainerView.a(this.this$0).a(i))
+      if (QIMProviderContainerView.f(this.this$0).c(i))
       {
         bool1 = true;
         break;
@@ -34,7 +34,7 @@ class QIMProviderContainerView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.6
  * JD-Core Version:    0.7.0.1
  */

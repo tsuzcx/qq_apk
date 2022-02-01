@@ -21,7 +21,7 @@ class TroopRobotShortcutBarService$8
     }
     if (((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getIfRobotRedInfoNeedUpdate((AppRuntime)localObject))
     {
-      localObject = (ITroopRobotHandler)TroopRobotShortcutBarService.a(this.this$0).getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRobotHandlerName());
+      localObject = (ITroopRobotHandler)TroopRobotShortcutBarService.d(this.this$0).getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRobotHandlerName());
       if (localObject != null) {
         ((ITroopRobotHandler)localObject).c(this.a);
       }
@@ -30,7 +30,7 @@ class TroopRobotShortcutBarService$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotShortcutBarService.8
  * JD-Core Version:    0.7.0.1
  */

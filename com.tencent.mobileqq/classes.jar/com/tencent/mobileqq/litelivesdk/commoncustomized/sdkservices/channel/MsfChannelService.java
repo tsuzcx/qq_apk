@@ -54,16 +54,16 @@ public class MsfChannelService
   {
     ForwardReq localForwardReq = new ForwardReq();
     Object localObject = (AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class);
-    localForwardReq.jdField_a_of_type_Int = ((AppGeneralInfoService)localObject).getClientType();
-    localForwardReq.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    localForwardReq.jdField_b_of_type_JavaLangString = ((AppGeneralInfoService)localObject).getVersionName();
-    localForwardReq.jdField_b_of_type_Int = ((AppGeneralInfoService)localObject).getVersionCode();
-    localForwardReq.jdField_c_of_type_Int = 1;
-    localForwardReq.jdField_b_of_type_ArrayOfByte = ((AppGeneralInfoService)localObject).getDeviceID().getBytes();
+    localForwardReq.d = ((AppGeneralInfoService)localObject).getClientType();
+    localForwardReq.f = paramArrayOfByte;
+    localForwardReq.e = ((AppGeneralInfoService)localObject).getVersionName();
+    localForwardReq.g = ((AppGeneralInfoService)localObject).getVersionCode();
+    localForwardReq.h = 1;
+    localForwardReq.p = ((AppGeneralInfoService)localObject).getDeviceID().getBytes();
     if (((AppGeneralInfoService)localObject).isSvrTestEnv()) {
-      localForwardReq.f = 2;
+      localForwardReq.n = 2;
     } else {
-      localForwardReq.f = 0;
+      localForwardReq.n = 0;
     }
     localObject = this.a;
     paramArrayOfByte = (byte[])localObject;
@@ -76,30 +76,30 @@ public class MsfChannelService
       if (i != 1)
       {
         if (i != 2) {
-          localForwardReq.jdField_d_of_type_Int = 3;
+          localForwardReq.k = 3;
         } else {
-          localForwardReq.jdField_d_of_type_Int = 2;
+          localForwardReq.k = 2;
         }
       }
       else {
-        localForwardReq.jdField_d_of_type_Int = 1;
+        localForwardReq.k = 1;
       }
     }
     else
     {
-      localForwardReq.jdField_d_of_type_Int = 3;
+      localForwardReq.k = 3;
     }
-    localForwardReq.g = 37;
+    localForwardReq.q = 37;
     if (paramArrayOfByte != null)
     {
-      localForwardReq.jdField_a_of_type_Long = paramArrayOfByte.uid;
-      localForwardReq.jdField_a_of_type_JavaLangString = HexUtil.bytesToHexString(paramArrayOfByte.a2);
-      localForwardReq.jdField_b_of_type_Long = paramArrayOfByte.tinyid;
+      localForwardReq.a = paramArrayOfByte.uid;
+      localForwardReq.c = HexUtil.bytesToHexString(paramArrayOfByte.a2);
+      localForwardReq.b = paramArrayOfByte.tinyid;
       if (!TextUtils.isEmpty(paramArrayOfByte.access_token)) {
-        localForwardReq.jdField_d_of_type_JavaLangString = paramArrayOfByte.access_token;
+        localForwardReq.j = paramArrayOfByte.access_token;
       }
       if (!TextUtils.isEmpty(paramArrayOfByte.openId)) {
-        localForwardReq.jdField_c_of_type_JavaLangString = paramArrayOfByte.openId;
+        localForwardReq.i = paramArrayOfByte.openId;
       }
     }
     return MessageNano.toByteArray(localForwardReq);
@@ -209,7 +209,7 @@ public class MsfChannelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelService
  * JD-Core Version:    0.7.0.1
  */

@@ -84,18 +84,18 @@ public class ColorNote
   
   public ColorNote(ColorNote.Builder paramBuilder)
   {
-    this.mServiceType = paramBuilder.jdField_a_of_type_Int;
-    this.mSubType = paramBuilder.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramBuilder.c;
-    this.mMainTitle = paramBuilder.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramBuilder.d;
-    this.mReserve = paramBuilder.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramBuilder.jdField_b_of_type_Int;
-    this.mExtLong = paramBuilder.jdField_a_of_type_Long;
+    this.mServiceType = paramBuilder.a;
+    this.mSubType = paramBuilder.b;
+    this.mSubTitle = paramBuilder.e;
+    this.mMainTitle = paramBuilder.d;
+    this.mPicUrl = paramBuilder.f;
+    this.mReserve = paramBuilder.g;
+    this.mExtra = paramBuilder.c;
+    this.mExtLong = paramBuilder.h;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramBuilder.jdField_a_of_type_Int);
-    localStringBuilder.append(paramBuilder.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(paramBuilder.jdField_b_of_type_Int);
+    localStringBuilder.append(paramBuilder.a);
+    localStringBuilder.append(paramBuilder.b);
+    localStringBuilder.append(paramBuilder.c);
     this.mUniKey = localStringBuilder.toString();
     this.mTime = NetConnInfoCenter.getServerTime();
     if (((this.mServiceType == -1) || (TextUtils.isEmpty(this.mSubType))) && (QLog.isColorLevel()))
@@ -315,7 +315,7 @@ public class ColorNote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNote
  * JD-Core Version:    0.7.0.1
  */

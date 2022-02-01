@@ -15,7 +15,7 @@ class MessengerService$1
   
   public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if (this.a.a != null) {}
+    if (this.a.b != null) {}
     for (;;)
     {
       try
@@ -30,7 +30,7 @@ class MessengerService$1
           paramEmoticonPackage.putInt("peoriodtype", 1);
           paramEmoticonPackage.putInt("resultcode", paramInt);
           localMessage.setData(paramEmoticonPackage);
-          this.a.a.send(localMessage);
+          this.a.b.send(localMessage);
           if (QLog.isColorLevel()) {
             QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
           }
@@ -55,7 +55,7 @@ class MessengerService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.1
  * JD-Core Version:    0.7.0.1
  */

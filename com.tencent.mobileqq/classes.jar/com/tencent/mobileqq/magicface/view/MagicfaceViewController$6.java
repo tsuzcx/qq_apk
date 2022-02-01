@@ -11,22 +11,22 @@ class MagicfaceViewController$6
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new MagicfaceViewController.6.1(this, paramString));
+    this.c.x.post(new MagicfaceViewController.6.1(this, paramString));
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new MagicfaceViewController.6.2(this, paramString));
+    this.c.x.post(new MagicfaceViewController.6.2(this, paramString));
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new MagicfaceViewController.6.3(this, paramString));
+    this.c.x.post(new MagicfaceViewController.6.3(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.6
  * JD-Core Version:    0.7.0.1
  */

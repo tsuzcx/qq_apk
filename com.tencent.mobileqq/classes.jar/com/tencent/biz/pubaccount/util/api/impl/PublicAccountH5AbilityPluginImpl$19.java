@@ -11,15 +11,15 @@ class PublicAccountH5AbilityPluginImpl$19
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.takePicture();
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl;
-    paramView.cameraCallback = this.jdField_a_of_type_JavaLangString;
+    this.b.takePicture();
+    paramView = this.b;
+    paramView.cameraCallback = this.a;
     paramView.paActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.19
  * JD-Core Version:    0.7.0.1
  */

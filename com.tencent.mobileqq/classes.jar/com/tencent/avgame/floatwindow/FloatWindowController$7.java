@@ -37,21 +37,21 @@ class FloatWindowController$7
       localStringBuilder.append(" mIsFloatWindowShowing: ");
       localStringBuilder.append(FloatWindowController.b(this.a));
       localStringBuilder.append(" mIgnoreByOpenSdkForeGround: ");
-      localStringBuilder.append(FloatWindowController.c(this.a));
+      localStringBuilder.append(FloatWindowController.f(this.a));
       QLog.d("FloatWindowController", 2, localStringBuilder.toString());
     }
     if ((FloatWindowController.a(this.a)) && (!FloatWindowController.b(this.a)))
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.e);
+      ThreadManager.getUIHandlerV2().postDelayed(this.a.e, 1000L);
       paramActivity.finish();
       return;
     }
-    if (FloatWindowController.c(this.a))
+    if (FloatWindowController.f(this.a))
     {
       FloatWindowController.a(this.a, false);
       paramActivity = this.a;
-      paramActivity.jdField_a_of_type_Boolean = true;
+      paramActivity.a = true;
       paramActivity.a(true);
     }
   }

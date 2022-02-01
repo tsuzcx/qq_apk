@@ -10,20 +10,20 @@ import com.tencent.qphone.base.util.QLog;
 public class PluginManagerV2$NetworkReceiver
   implements INetEventHandler
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
-  private boolean jdField_a_of_type_Boolean;
+  private Context b = BaseApplicationImpl.getApplication();
+  private boolean c;
   
   public PluginManagerV2$NetworkReceiver(PluginManagerV2 paramPluginManagerV2) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     try
     {
-      AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this);
+      AppNetConnInfo.registerNetChangeReceiver(this.b, this);
       return;
     }
     catch (Exception localException)
@@ -36,10 +36,10 @@ public class PluginManagerV2$NetworkReceiver
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     try
     {
       AppNetConnInfo.unregisterNetEventHandler(this);
@@ -55,12 +55,12 @@ public class PluginManagerV2$NetworkReceiver
   
   public void onNetChangeEvent(boolean paramBoolean)
   {
-    PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).sendEmptyMessage(66304);
+    PluginManagerV2.b(this.a).sendEmptyMessage(66304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.NetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

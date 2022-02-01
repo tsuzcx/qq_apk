@@ -13,7 +13,7 @@ class AbsProfileHeaderComponent$5
 {
   AbsProfileHeaderComponent$5(AbsProfileHeaderComponent paramAbsProfileHeaderComponent, String paramString1, String paramString2, int paramInt, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if ((paramInt == 0) && (AbsProfileHeaderComponent.access$1200(this.this$0) != null))
     {
@@ -44,7 +44,7 @@ class AbsProfileHeaderComponent$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent.5
  * JD-Core Version:    0.7.0.1
  */

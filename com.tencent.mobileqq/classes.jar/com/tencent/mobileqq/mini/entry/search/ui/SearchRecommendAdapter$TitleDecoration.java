@@ -29,7 +29,7 @@ public class SearchRecommendAdapter$TitleDecoration
     }
     if ((paramRecyclerView.getAdapter().getItemViewType(i) == 1) && (i > 0))
     {
-      paramRect.set(0, ViewUtils.b(20.0F), 0, 0);
+      paramRect.set(0, ViewUtils.dpToPx(20.0F), 0, 0);
       return;
     }
     paramRect.set(0, 0, 0, 0);
@@ -50,7 +50,7 @@ public class SearchRecommendAdapter$TitleDecoration
           return;
         }
         if ((paramRecyclerView.getAdapter().getItemViewType(k) == 1) && (k > 0)) {
-          paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.b(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.b(20.0F) + 2, this.paint);
+          paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.dpToPx(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.dpToPx(20.0F) + 2, this.paint);
         }
       }
       i += 1;
@@ -59,7 +59,7 @@ public class SearchRecommendAdapter$TitleDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.TitleDecoration
  * JD-Core Version:    0.7.0.1
  */

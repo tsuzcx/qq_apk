@@ -8,15 +8,15 @@ import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 class CustomizeStrategyFactory$ThemeCustomizeStrategy
   implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private IPreloadService jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = null;
+  private BaseQQAppInterface a;
+  private IPreloadService b = null;
   
   public CustomizeStrategyFactory$ThemeCustomizeStrategy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    paramBaseQQAppInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    this.a = paramBaseQQAppInterface;
+    paramBaseQQAppInterface = this.a;
     if (paramBaseQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
+      this.b = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
     }
   }
   
@@ -39,7 +39,7 @@ class CustomizeStrategyFactory$ThemeCustomizeStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.ThemeCustomizeStrategy
  * JD-Core Version:    0.7.0.1
  */

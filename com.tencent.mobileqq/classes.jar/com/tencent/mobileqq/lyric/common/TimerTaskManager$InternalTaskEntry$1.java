@@ -7,14 +7,14 @@ class TimerTaskManager$InternalTaskEntry$1
   
   public void run()
   {
-    if (TimerTaskManager.InternalTaskEntry.a(this.this$0) != null) {
-      TimerTaskManager.InternalTaskEntry.a(this.this$0).run();
+    if (TimerTaskManager.InternalTaskEntry.c(this.this$0) != null) {
+      TimerTaskManager.InternalTaskEntry.c(this.this$0).run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1
  * JD-Core Version:    0.7.0.1
  */

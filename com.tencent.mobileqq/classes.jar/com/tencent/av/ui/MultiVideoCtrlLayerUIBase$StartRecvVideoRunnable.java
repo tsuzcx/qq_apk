@@ -13,13 +13,13 @@ class MultiVideoCtrlLayerUIBase$StartRecvVideoRunnable
   {
     if (QLog.isColorLevel())
     {
-      String str = this.this$0.d;
+      String str = this.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StartRecvAllVideoRunnable-->FunctionName=");
       localStringBuilder.append(this.a);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.this$0.e();
+    this.this$0.K();
   }
 }
 

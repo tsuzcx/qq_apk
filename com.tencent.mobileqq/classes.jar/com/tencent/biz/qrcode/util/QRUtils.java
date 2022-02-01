@@ -97,7 +97,7 @@ public class QRUtils
     if (paramQQAppInterface == null) {
       return 1;
     }
-    if (!QVipQidProcessor.c().b) {
+    if (!QVipQidProcessor.e().b) {
       return 1;
     }
     paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("sp_vip_qid_info", 0);
@@ -339,7 +339,7 @@ public class QRUtils
       paramBitmap1 = new Paint();
       paramBitmap1.setAntiAlias(true);
       paramBitmap2 = new Rect(217, 247, 323, 353);
-      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130839669);
+      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130840141);
       localCanvas.drawBitmap(paramContext, null, paramBitmap2, paramBitmap1);
       paramContext.recycle();
     }
@@ -358,7 +358,7 @@ public class QRUtils
       paramBitmap1 = new Paint();
       paramBitmap1.setAntiAlias(true);
       paramBitmap2 = new Rect(217, 247, 323, 353);
-      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130839669);
+      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130840141);
       localCanvas.drawBitmap(paramContext, null, paramBitmap2, paramBitmap1);
       paramContext.recycle();
     }
@@ -367,7 +367,7 @@ public class QRUtils
       paramBitmap1 = new Paint();
       paramBitmap1.setAntiAlias(true);
       paramBitmap2 = new Rect(217, 247, 323, 353);
-      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130839669);
+      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2130840141);
       localCanvas.drawBitmap(paramContext, null, paramBitmap2, paramBitmap1);
       paramContext.recycle();
       break label1294;
@@ -718,7 +718,7 @@ public class QRUtils
   public static void a(int paramInt1, int paramInt2)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    QQToast.a(localBaseApplication, paramInt1, paramInt2, 1).b(localBaseApplication.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(localBaseApplication, paramInt1, paramInt2, 1).show(localBaseApplication.getResources().getDimensionPixelSize(2131299920));
   }
   
   private static void a(int paramInt1, Canvas paramCanvas, int paramInt2)
@@ -817,7 +817,7 @@ public class QRUtils
     localStringBuilder.append("logoColor is illegal please check manage info logoColor = ");
     localStringBuilder.append(paramString);
     QLog.d("QRUtils", 1, localStringBuilder.toString());
-    paramCanvas.drawBitmap(BitmapFactory.decodeResource(paramContext.getResources(), 2130847181), null, localRect, localPaint);
+    paramCanvas.drawBitmap(BitmapFactory.decodeResource(paramContext.getResources(), 2130848761), null, localRect, localPaint);
   }
   
   private static void a(Bitmap paramBitmap, int paramInt1, int paramInt2, Canvas paramCanvas)
@@ -1027,7 +1027,7 @@ public class QRUtils
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (!QVipQidProcessor.c().b) {
+    if (!QVipQidProcessor.e().b) {
       return false;
     }
     paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("sp_vip_qid_info", 0).edit();
@@ -1262,8 +1262,8 @@ public class QRUtils
     }
     ArkPlatformConfigBean localArkPlatformConfigBean = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
     boolean bool;
-    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.a() != null)) {
-      bool = localArkPlatformConfigBean.a().f;
+    if ((localArkPlatformConfigBean != null) && (localArkPlatformConfigBean.b() != null)) {
+      bool = localArkPlatformConfigBean.b().g;
     } else {
       bool = true;
     }

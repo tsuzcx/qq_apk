@@ -15,17 +15,17 @@ class P2VEditMusicDialog$4$1
   
   public void run()
   {
-    SLog.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
-    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
+    SLog.b(P2VEditMusicDialog.h(), "address update, refresh ui.");
+    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.a))
     {
-      QLog.d(P2VEditMusicDialog.a(), 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog$4.a.a.a();
+      QLog.d(P2VEditMusicDialog.h(), 2, "isInternationalUser --------------------2");
+      this.b.a.b.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1
  * JD-Core Version:    0.7.0.1
  */

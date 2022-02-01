@@ -15,16 +15,16 @@ class CommentFloatDialog$2
   
   public void onClick(View paramView)
   {
-    if ((CommentFloatDialog.a(this.a) != null) && (CommentFloatDialog.a(this.a).a()))
+    if ((CommentFloatDialog.a(this.a) != null) && (CommentFloatDialog.a(this.a).c()))
     {
-      CommentFloatDialog.a(this.a).c();
+      CommentFloatDialog.a(this.a).d();
       ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
     }
     else
     {
       this.a.a();
     }
-    boolean bool = this.a.a();
+    boolean bool = this.a.c();
     String str2 = "2";
     String str1;
     if (bool) {
@@ -32,7 +32,7 @@ class CommentFloatDialog$2
     } else {
       str1 = "1";
     }
-    if (!this.a.b()) {
+    if (!this.a.d()) {
       str2 = "1";
     }
     StoryReportor.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
@@ -41,7 +41,7 @@ class CommentFloatDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2
  * JD-Core Version:    0.7.0.1
  */

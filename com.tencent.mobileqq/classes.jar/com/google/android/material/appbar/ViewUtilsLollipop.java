@@ -29,8 +29,8 @@ class ViewUtilsLollipop
   {
     int i = paramView.getResources().getInteger(R.integer.a);
     StateListAnimator localStateListAnimator = new StateListAnimator();
-    int j = R.attr.O;
-    int k = -R.attr.P;
+    int j = R.attr.W;
+    int k = -R.attr.X;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "elevation", new float[] { 0.0F });
     long l = i;
     localObjectAnimator = localObjectAnimator.setDuration(l);
@@ -61,7 +61,7 @@ class ViewUtilsLollipop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.ViewUtilsLollipop
  * JD-Core Version:    0.7.0.1
  */

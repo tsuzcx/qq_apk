@@ -14,14 +14,9 @@ import org.json.JSONObject;
 
 public class WebViewTitleStyleHelper
 {
-  private static WebViewTitleStyleHelper a;
-  public Map<String, WebViewTitleStyle> a;
-  public boolean a;
-  
-  private WebViewTitleStyleHelper()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  private static WebViewTitleStyleHelper c;
+  public Map<String, WebViewTitleStyle> a = new HashMap();
+  public boolean b;
   
   private int a(String paramString)
   {
@@ -59,16 +54,16 @@ public class WebViewTitleStyleHelper
   
   public static WebViewTitleStyleHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper = new WebViewTitleStyleHelper();
+        if (c == null) {
+          c = new WebViewTitleStyleHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyleHelper;
+    return c;
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -78,7 +73,7 @@ public class WebViewTitleStyleHelper
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.a.clear();
       int j = MobileQQ.sProcessId;
       int i = 0;
       boolean bool;
@@ -97,7 +92,7 @@ public class WebViewTitleStyleHelper
           }
           return;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         localObject = ((JSONObject)localObject).optJSONArray("webViewStyleList");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
@@ -115,7 +110,7 @@ public class WebViewTitleStyleHelper
                 localWebViewTitleStyle.c = a(localJSONObject.optString("bgColor", ""));
                 localWebViewTitleStyle.d = a(localJSONObject.optString("titleColor", ""));
                 localWebViewTitleStyle.e = a(localJSONObject.optString("iconColor", ""));
-                this.jdField_a_of_type_JavaUtilMap.put(str, localWebViewTitleStyle);
+                this.a.put(str, localWebViewTitleStyle);
               }
             }
             i += 1;
@@ -165,7 +160,7 @@ public class WebViewTitleStyleHelper
             break label454;
           }
           localObject = paramJSONObject.getString("minVersion");
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (SwiftWebViewUtils.b((String)localObject, "8.7.0.5295"))) {
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (SwiftWebViewUtils.b((String)localObject, "8.8.17.5770"))) {
             break label454;
           }
           i = 0;
@@ -180,7 +175,7 @@ public class WebViewTitleStyleHelper
               if (!TextUtils.isEmpty((CharSequence)localObject))
               {
                 j = i;
-                if (!SwiftWebViewUtils.b("8.7.0.5295", (String)localObject)) {
+                if (!SwiftWebViewUtils.b("8.8.17.5770", (String)localObject)) {
                   j = 0;
                 }
               }
@@ -253,7 +248,7 @@ public class WebViewTitleStyleHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewTitleStyleHelper
  * JD-Core Version:    0.7.0.1
  */

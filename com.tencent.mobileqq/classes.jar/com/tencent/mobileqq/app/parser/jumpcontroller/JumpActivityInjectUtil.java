@@ -23,40 +23,39 @@ import java.util.HashMap;
 public class JumpActivityInjectUtil
 {
   @ConfigInject(configPath="Business/qqjump-api/src/main/resources/Inject_jump_activity_config.yml", version=1)
-  public static ArrayList<Class<? extends IJumpControllerInterface>> a;
+  public static ArrayList<Class<? extends IJumpControllerInterface>> a = new ArrayList();
   @ConfigInject(configPath="Business/qqjump-api/src/main/resources/Inject_jump_activity_config.yml", version=1)
-  public static HashMap<String, Class<? extends IJumpBusinessInterface>> a;
+  public static HashMap<String, Class<? extends IJumpBusinessInterface>> b;
   @ConfigInject(configPath="Business/qqjump-api/src/main/resources/Inject_jump_activity_config.yml", version=1)
-  public static ArrayList<Class<? extends IJumpParserInterface>> b;
+  public static ArrayList<Class<? extends IJumpParserInterface>> c;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(JumpControllerInject.class);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("573", ShortCutJumpSmartDeviceResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("570", ShortCutJumpQFileResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("25", WebSecurityVerifyResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("572", ShortCutJumpQQComicResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("2", SingleVoiceCallResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("1", MultiVoiceCallResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("24", MiniAppLoginResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("27", ThirdPartyGesturePWDResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("26", ThirdPartyLoginResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("22", WPAGesturePWDResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("21", WPALoginResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("20", ViewLoginResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("19", ShareLoginResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("18", LBSResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("880", ProfilePreviewResultPlugin.class);
-    jdField_a_of_type_JavaUtilHashMap.put("800", ProfilePreviewResultPlugin.class);
-    b = new ArrayList();
-    b.add(JumpParserInject.class);
+    a.add(JumpControllerInject.class);
+    b = new HashMap();
+    b.put("573", ShortCutJumpSmartDeviceResultPlugin.class);
+    b.put("570", ShortCutJumpQFileResultPlugin.class);
+    b.put("25", WebSecurityVerifyResultPlugin.class);
+    b.put("572", ShortCutJumpQQComicResultPlugin.class);
+    b.put("2", SingleVoiceCallResultPlugin.class);
+    b.put("1", MultiVoiceCallResultPlugin.class);
+    b.put("24", MiniAppLoginResultPlugin.class);
+    b.put("27", ThirdPartyGesturePWDResultPlugin.class);
+    b.put("26", ThirdPartyLoginResultPlugin.class);
+    b.put("22", WPAGesturePWDResultPlugin.class);
+    b.put("21", WPALoginResultPlugin.class);
+    b.put("20", ViewLoginResultPlugin.class);
+    b.put("19", ShareLoginResultPlugin.class);
+    b.put("18", LBSResultPlugin.class);
+    b.put("880", ProfilePreviewResultPlugin.class);
+    b.put("800", ProfilePreviewResultPlugin.class);
+    c = new ArrayList();
+    c.add(JumpParserInject.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.jumpcontroller.JumpActivityInjectUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,38 +2,38 @@ package com.tencent.mobileqq.fts.v2.tokenizer;
 
 public final class Token
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = "word";
-  private int c = 1;
+  String a;
+  int b;
+  int c;
+  String d = "word";
+  private int e = 1;
   
   public Token(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString1;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramString2;
   }
   
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
   }
   
-  public final String b()
+  public final int c()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
+  }
+  
+  public final String d()
+  {
+    return this.d;
   }
   
   public final String toString()
@@ -41,24 +41,24 @@ public final class Token
     StringBuffer localStringBuffer = new StringBuffer();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuffer.append(localStringBuilder.toString());
-    if (!this.jdField_b_of_type_JavaLangString.equals("word"))
+    if (!this.d.equals("word"))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(",type=");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuffer.append(localStringBuilder.toString());
     }
-    if (this.c != 1)
+    if (this.e != 1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(",posIncr=");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.e);
       localStringBuffer.append(localStringBuilder.toString());
     }
     localStringBuffer.append(")");
@@ -67,7 +67,7 @@ public final class Token
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.tokenizer.Token
  * JD-Core Version:    0.7.0.1
  */

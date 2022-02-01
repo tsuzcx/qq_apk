@@ -16,7 +16,7 @@ class GameCenterAPIJavaScript$2
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    CustomWebView localCustomWebView = this.a;
     if ((localCustomWebView instanceof View)) {
       localCustomWebView.dispatchTouchEvent(paramMotionEvent);
     }
@@ -25,7 +25,7 @@ class GameCenterAPIJavaScript$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.2
  * JD-Core Version:    0.7.0.1
  */

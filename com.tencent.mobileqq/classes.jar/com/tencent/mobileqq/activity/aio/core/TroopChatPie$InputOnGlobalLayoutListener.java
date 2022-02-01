@@ -15,20 +15,20 @@ class TroopChatPie$InputOnGlobalLayoutListener
   public void onGlobalLayout()
   {
     if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.Y.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     } else {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.a.Y.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    if (!this.a.I)
+    if (!this.a.bN)
     {
-      this.a.I = true;
+      this.a.bN = true;
       ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.InputOnGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

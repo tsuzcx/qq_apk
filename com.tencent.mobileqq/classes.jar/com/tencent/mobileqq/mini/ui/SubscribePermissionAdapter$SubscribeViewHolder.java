@@ -16,14 +16,14 @@ public class SubscribePermissionAdapter$SubscribeViewHolder
   public SubscribePermissionAdapter$SubscribeViewHolder(View paramView)
   {
     super(paramView);
-    this.contentTextView = ((TextView)paramView.findViewById(2131379525));
-    this.detailImageView = ((ImageView)paramView.findViewById(2131369280));
-    this.authSwitch = ((Switch)paramView.findViewById(2131378148));
+    this.contentTextView = ((TextView)paramView.findViewById(2131448276));
+    this.detailImageView = ((ImageView)paramView.findViewById(2131436264));
+    this.authSwitch = ((Switch)paramView.findViewById(2131446658));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.SubscribePermissionAdapter.SubscribeViewHolder
  * JD-Core Version:    0.7.0.1
  */

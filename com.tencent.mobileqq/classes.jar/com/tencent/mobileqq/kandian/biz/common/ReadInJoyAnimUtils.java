@@ -32,32 +32,32 @@ public class ReadInJoyAnimUtils
   public static VideoPlayParam a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    localVideoPlayParam.jdField_c_of_type_JavaLangString = paramAbsBaseArticleInfo.mVideoVid;
-    localVideoPlayParam.jdField_c_of_type_Long = paramAbsBaseArticleInfo.mArticleID;
-    localVideoPlayParam.jdField_b_of_type_Int = paramAbsBaseArticleInfo.mVideoDuration;
-    localVideoPlayParam.jdField_c_of_type_Int = paramAbsBaseArticleInfo.mVideoJsonWidth;
-    localVideoPlayParam.jdField_d_of_type_Int = paramAbsBaseArticleInfo.mVideoJsonHeight;
+    localVideoPlayParam.d = paramAbsBaseArticleInfo.mVideoVid;
+    localVideoPlayParam.j = paramAbsBaseArticleInfo.mArticleID;
+    localVideoPlayParam.l = paramAbsBaseArticleInfo.mVideoDuration;
+    localVideoPlayParam.n = paramAbsBaseArticleInfo.mVideoJsonWidth;
+    localVideoPlayParam.o = paramAbsBaseArticleInfo.mVideoJsonHeight;
     if (paramAbsBaseArticleInfo.mVideoCoverUrl == null) {
       localObject = null;
     } else {
       localObject = paramAbsBaseArticleInfo.mVideoCoverUrl.getFile();
     }
-    localVideoPlayParam.jdField_b_of_type_JavaLangString = ((String)localObject);
-    localVideoPlayParam.k = paramAbsBaseArticleInfo.mSubscribeID;
-    localVideoPlayParam.jdField_g_of_type_Int = paramAbsBaseArticleInfo.mStrategyId;
-    localVideoPlayParam.jdField_g_of_type_Long = paramAbsBaseArticleInfo.mAlgorithmID;
+    localVideoPlayParam.b = ((String)localObject);
+    localVideoPlayParam.A = paramAbsBaseArticleInfo.mSubscribeID;
+    localVideoPlayParam.C = paramAbsBaseArticleInfo.mStrategyId;
+    localVideoPlayParam.B = paramAbsBaseArticleInfo.mAlgorithmID;
     Object localObject = new ReadInJoyVideoReportData();
-    ((ReadInJoyVideoReportData)localObject).a = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
-    ((ReadInJoyVideoReportData)localObject).jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
-    ((ReadInJoyVideoReportData)localObject).jdField_c_of_type_JavaLangString = paramAbsBaseArticleInfo.mVideoVid;
-    ((ReadInJoyVideoReportData)localObject).jdField_b_of_type_Int = paramAbsBaseArticleInfo.busiType;
-    localVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerDataAbsReadInJoyVideoReportData = ((AbsReadInJoyVideoReportData)localObject);
-    localVideoPlayParam.jdField_d_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdIcon;
-    localVideoPlayParam.e = paramAbsBaseArticleInfo.thirdName;
-    localVideoPlayParam.jdField_f_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdAction;
-    localVideoPlayParam.jdField_f_of_type_Int = paramAbsBaseArticleInfo.busiType;
-    localVideoPlayParam.j = paramAbsBaseArticleInfo.innerUniqueID;
-    localVideoPlayParam.jdField_b_of_type_Long = paramAbsBaseArticleInfo.mChannelID;
+    ((ReadInJoyVideoReportData)localObject).d = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
+    ((ReadInJoyVideoReportData)localObject).e = paramAbsBaseArticleInfo.innerUniqueID;
+    ((ReadInJoyVideoReportData)localObject).f = paramAbsBaseArticleInfo.mVideoVid;
+    ((ReadInJoyVideoReportData)localObject).g = paramAbsBaseArticleInfo.busiType;
+    localVideoPlayParam.z = ((AbsReadInJoyVideoReportData)localObject);
+    localVideoPlayParam.q = paramAbsBaseArticleInfo.thirdIcon;
+    localVideoPlayParam.r = paramAbsBaseArticleInfo.thirdName;
+    localVideoPlayParam.s = paramAbsBaseArticleInfo.thirdAction;
+    localVideoPlayParam.x = paramAbsBaseArticleInfo.busiType;
+    localVideoPlayParam.y = paramAbsBaseArticleInfo.innerUniqueID;
+    localVideoPlayParam.f = paramAbsBaseArticleInfo.mChannelID;
     return localVideoPlayParam;
   }
   
@@ -75,20 +75,20 @@ public class ReadInJoyAnimUtils
   public static void a(LinearLayout paramLinearLayout, AbsBaseArticleInfo paramAbsBaseArticleInfo, Activity paramActivity, ReadInJoyArticleAdapter paramReadInJoyArticleAdapter, int paramInt1, int paramInt2, int paramInt3)
   {
     VideoFeedsViewHolder localVideoFeedsViewHolder = new VideoFeedsViewHolder(paramActivity);
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramLinearLayout.findViewById(2131380736));
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramLinearLayout.findViewById(2131368461));
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131368343));
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131376054));
-    localVideoFeedsViewHolder.b = ((TextView)paramLinearLayout.findViewById(2131365996));
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoViewGroup = ((VideoViewGroup)paramLinearLayout.findViewById(2131380660));
-    localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131369723));
+    localVideoFeedsViewHolder.a = ((RoundAngleFrameLayout)paramLinearLayout.findViewById(2131449704));
+    localVideoFeedsViewHolder.c = ((KandianUrlImageView)paramLinearLayout.findViewById(2131435357));
+    localVideoFeedsViewHolder.f = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131435219));
+    localVideoFeedsViewHolder.e = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131444254));
+    localVideoFeedsViewHolder.h = ((TextView)paramLinearLayout.findViewById(2131432267));
+    localVideoFeedsViewHolder.i = ((VideoViewGroup)paramLinearLayout.findViewById(2131449619));
+    localVideoFeedsViewHolder.s = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131436837));
     a(localVideoFeedsViewHolder, paramAbsBaseArticleInfo, paramLinearLayout, paramActivity, paramReadInJoyArticleAdapter, paramInt1, paramInt2, paramInt3);
   }
   
   public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean, Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     UtilsForComponent.a(paramActivity, paramKandianUrlImageView);
-    if (RIJBaseItemViewType.a(paramAbsBaseArticleInfo) == 71) {
+    if (RIJBaseItemViewType.c(paramAbsBaseArticleInfo) == 71) {
       paramURL = paramAbsBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
     }
     ReadInJoyDisplayUtils.a(paramKandianUrlImageView, paramURL, paramActivity, paramBoolean);
@@ -96,16 +96,16 @@ public class ReadInJoyAnimUtils
   
   public static void a(ReadInJoyHeadImageView paramReadInJoyHeadImageView)
   {
-    paramReadInJoyHeadImageView.setImageDrawable(ImageUtil.e());
+    paramReadInJoyHeadImageView.setImageDrawable(ImageUtil.j());
   }
   
   public static void a(VideoFeedsViewHolder paramVideoFeedsViewHolder, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     VideoPlayParam localVideoPlayParam = a(paramAbsBaseArticleInfo);
-    localVideoPlayParam.jdField_a_of_type_AndroidViewView = paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-    localVideoPlayParam.jdField_a_of_type_Int = paramVideoFeedsViewHolder.jdField_a_of_type_Int;
-    localVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam = localVideoPlayParam;
+    localVideoPlayParam.h = paramVideoFeedsViewHolder.c;
+    localVideoPlayParam.e = paramVideoFeedsViewHolder.P;
+    localVideoPlayParam.D = paramAbsBaseArticleInfo;
+    paramVideoFeedsViewHolder.t = localVideoPlayParam;
   }
   
   public static void a(VideoFeedsViewHolder paramVideoFeedsViewHolder, AbsBaseArticleInfo paramAbsBaseArticleInfo, LinearLayout paramLinearLayout, Activity paramActivity, ReadInJoyArticleAdapter paramReadInJoyArticleAdapter, int paramInt1, int paramInt2, int paramInt3)
@@ -114,11 +114,11 @@ public class ReadInJoyAnimUtils
       return;
     }
     a(paramVideoFeedsViewHolder, paramAbsBaseArticleInfo);
-    VideoPlayParam localVideoPlayParam = paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam;
-    paramVideoFeedsViewHolder.b.setText(ReadInJoyDisplayUtils.a(localVideoPlayParam.jdField_b_of_type_Int));
-    a(paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setTag(paramAbsBaseArticleInfo);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setContentDescription(paramAbsBaseArticleInfo.mSubscribeName);
+    VideoPlayParam localVideoPlayParam = paramVideoFeedsViewHolder.t;
+    paramVideoFeedsViewHolder.h.setText(ReadInJoyDisplayUtils.a(localVideoPlayParam.l));
+    a(paramVideoFeedsViewHolder.f);
+    paramVideoFeedsViewHolder.f.setTag(paramAbsBaseArticleInfo);
+    paramVideoFeedsViewHolder.f.setContentDescription(paramAbsBaseArticleInfo.mSubscribeName);
     Object localObject = paramAbsBaseArticleInfo.mSubscribeName;
     if (paramAbsBaseArticleInfo.mSubscribeName.length() > 18)
     {
@@ -127,29 +127,29 @@ public class ReadInJoyAnimUtils
       ((StringBuilder)localObject).append("…");
       localObject = ((StringBuilder)localObject).toString();
     }
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setVisibility(0);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setText((CharSequence)localObject);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setContentDescription(paramAbsBaseArticleInfo.mSubscribeName);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.getPaint().setFakeBoldText(true);
+    paramVideoFeedsViewHolder.e.setVisibility(0);
+    paramVideoFeedsViewHolder.e.setText((CharSequence)localObject);
+    paramVideoFeedsViewHolder.e.setContentDescription(paramAbsBaseArticleInfo.mSubscribeName);
+    paramVideoFeedsViewHolder.e.getPaint().setFakeBoldText(true);
     localObject = new HashSet();
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewReadInJoyVideoInfoViewGroup.setArticleInfo(paramAbsBaseArticleInfo, paramReadInJoyArticleAdapter, paramInt1, (Set)localObject);
-    a(paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, paramAbsBaseArticleInfo.getVideoCoverUrlWithSmartCut(false), false, paramActivity, paramAbsBaseArticleInfo);
-    paramVideoFeedsViewHolder.b.setVisibility(0);
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoViewGroup.setCustomSize(1.0F, ReadInJoyDisplayUtils.a(localVideoPlayParam.jdField_c_of_type_Int, localVideoPlayParam.jdField_d_of_type_Int));
-    float f1 = DeviceInfoUtil.b(paramActivity);
-    float f2 = ReadInJoyDisplayUtils.a(localVideoPlayParam.jdField_c_of_type_Int, localVideoPlayParam.jdField_d_of_type_Int);
-    paramAbsBaseArticleInfo = paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRoundAngleFrameLayout.getLayoutParams();
+    paramVideoFeedsViewHolder.s.setArticleInfo(paramAbsBaseArticleInfo, paramReadInJoyArticleAdapter, paramInt1, (Set)localObject);
+    a(paramVideoFeedsViewHolder.c, paramAbsBaseArticleInfo.getVideoCoverUrlWithSmartCut(false), false, paramActivity, paramAbsBaseArticleInfo);
+    paramVideoFeedsViewHolder.h.setVisibility(0);
+    paramVideoFeedsViewHolder.i.setCustomSize(1.0F, ReadInJoyDisplayUtils.b(localVideoPlayParam.n, localVideoPlayParam.o));
+    float f1 = DeviceInfoUtil.h(paramActivity);
+    float f2 = ReadInJoyDisplayUtils.b(localVideoPlayParam.n, localVideoPlayParam.o);
+    paramAbsBaseArticleInfo = paramVideoFeedsViewHolder.a.getLayoutParams();
     paramInt1 = (int)f1;
     paramAbsBaseArticleInfo.width = paramInt1;
     int i = (int)(f2 * f1);
     paramAbsBaseArticleInfo.height = i;
-    paramVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRoundAngleFrameLayout.setLayoutParams(paramAbsBaseArticleInfo);
+    paramVideoFeedsViewHolder.a.setLayoutParams(paramAbsBaseArticleInfo);
     a(paramLinearLayout, paramInt1, i, paramActivity, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyAnimUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,13 @@ final class TweetTopicView$loadRecentTopic$1$1
   
   public final void run()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.b;
       if ((localList != null) && ((((Collection)localList).isEmpty() ^ true)))
       {
         TweetTopicView.a(this.this$0.this$0).setVisibility(0);
-        TweetTopicView.a(this.this$0.this$0).a(this.jdField_a_of_type_JavaUtilList, UiComponentSdk.a.a().a());
+        TweetTopicView.a(this.this$0.this$0).a(this.b, UiComponentSdk.a.a().c());
         return;
       }
     }
@@ -30,7 +30,7 @@ final class TweetTopicView$loadRecentTopic$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.loadRecentTopic.1.1
  * JD-Core Version:    0.7.0.1
  */

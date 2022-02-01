@@ -30,15 +30,13 @@ public class ApolloConfBean
         while (i < paramArrayOfQConfItem.length)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]ApolloConfig_GlobalProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfQConfItem[i].jdField_a_of_type_Int) });
+            QLog.d("[cmshow]ApolloConfig_GlobalProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfQConfItem[i].a) });
           }
-          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].b);
           if (localJSONObject.has("apolloSwitch")) {
-            localApolloConfBean.a.put("apolloConfig", paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
-          } else if (localJSONObject.has("aioGameTab")) {
-            localApolloConfBean.a.put("apolloGame", paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+            localApolloConfBean.a.put("apolloConfig", paramArrayOfQConfItem[i].b);
           } else if (localJSONObject.has("preDownLoadRes")) {
-            localApolloConfBean.a.put("apolloPreDownload", paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+            localApolloConfBean.a.put("apolloPreDownload", paramArrayOfQConfItem[i].b);
           }
           i += 1;
         }
@@ -107,10 +105,6 @@ public class ApolloConfBean
           }
           i = 1;
         }
-        else if ("apolloGame".equals(str1))
-        {
-          ApolloConfigUtils.b(paramAppRuntime, str2, paramBoolean);
-        }
         else if ("apolloPreDownload".equals(str1))
         {
           ApolloConfigUtils.b(paramAppRuntime, str2);
@@ -129,7 +123,7 @@ public class ApolloConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.config.ApolloConfBean
  * JD-Core Version:    0.7.0.1
  */

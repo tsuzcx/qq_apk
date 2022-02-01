@@ -18,27 +18,27 @@ class KandianAdPandentMask$KandianAdPandentView$2
       if (i != 2) {
         return false;
       }
-      KandianAdPandentMask.KandianAdPandentView.a(this.a);
+      KandianAdPandentMask.KandianAdPandentView.e(this.a);
       return false;
     }
-    if (System.currentTimeMillis() - KandianAdPandentMask.KandianAdPandentView.a(this.a) > 1500L)
+    if (System.currentTimeMillis() - KandianAdPandentMask.KandianAdPandentView.c(this.a) > 1500L)
     {
       KandianAdPandentMask.KandianAdPandentView.a(this.a, false);
       QLog.d("ReadInJoySuperMaskAd", 2, "time up do not update volume");
     }
-    if (KandianAdPandentMask.KandianAdPandentView.a(this.a))
+    if (KandianAdPandentMask.KandianAdPandentView.d(this.a))
     {
-      KandianAdPandentMask.KandianAdPandentView.a(this.a).sendEmptyMessageDelayed(1, 300L);
+      KandianAdPandentMask.KandianAdPandentView.b(this.a).sendEmptyMessageDelayed(1, 300L);
       this.a.d();
       return false;
     }
-    KandianAdPandentMask.KandianAdPandentView.a(this.a).removeMessages(1);
+    KandianAdPandentMask.KandianAdPandentView.b(this.a).removeMessages(1);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.2
  * JD-Core Version:    0.7.0.1
  */

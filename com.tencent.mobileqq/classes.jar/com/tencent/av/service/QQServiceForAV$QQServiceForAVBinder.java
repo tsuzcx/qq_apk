@@ -79,8 +79,8 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 import com.tencent.mobileqq.troop.troopgag.data.TroopGagInfo;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -104,7 +104,7 @@ class QQServiceForAV$QQServiceForAVBinder
 {
   QQServiceForAV$QQServiceForAVBinder(QQServiceForAV paramQQServiceForAV) {}
   
-  private void a(IBinder paramIBinder)
+  private void b(IBinder paramIBinder)
   {
     Object localObject = new Intent(this.a.getApplicationContext(), UtilsServiceForAV.class);
     this.a.getApplicationContext().stopService((Intent)localObject);
@@ -126,47 +126,6 @@ class QQServiceForAV$QQServiceForAVBinder
         AVLog.printErrorLog("QQServiceForAV", ((StringBuilder)localObject).toString());
       }
     }
-  }
-  
-  public int a()
-  {
-    return ((IPhoneContactService)((QQAppInterface)this.a.a()).getRuntimeService(IPhoneContactService.class, "")).getSelfBindState();
-  }
-  
-  public int a(int paramInt, String paramString)
-  {
-    Object localObject = (QQAppInterface)this.a.a();
-    boolean bool;
-    if (paramInt == 1) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    int i = QAVGroupConfig.a((QQAppInterface)localObject, bool, paramString);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getGroupMemberNum, relationType[");
-    ((StringBuilder)localObject).append(paramInt);
-    ((StringBuilder)localObject).append("], uin[");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("], 成员数[");
-    ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append("]");
-    QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString());
-    return i;
-  }
-  
-  public int a(String paramString)
-  {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().b(paramString);
-  }
-  
-  public long a(String paramString)
-  {
-    paramString = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
-    if (paramString != null) {
-      return paramString.mOrigin;
-    }
-    return 0L;
   }
   
   public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
@@ -205,14 +164,14 @@ class QQServiceForAV$QQServiceForAVBinder
               if (paramInt != 1001)
               {
                 if (paramInt == 1004) {
-                  break label498;
+                  break label497;
                 }
                 if (paramInt != 1006)
                 {
                   if (paramInt != 1010)
                   {
                     if (paramInt == 1024) {
-                      break label498;
+                      break label497;
                     }
                     if (paramInt != 3000)
                     {
@@ -221,17 +180,17 @@ class QQServiceForAV$QQServiceForAVBinder
                         if (paramInt != 10002)
                         {
                           if ((paramInt == 1020) || (paramInt == 1021)) {
-                            break label498;
+                            break label497;
                           }
                           paramString2 = localQQAppInterface.getFaceBitmap(paramString1, b, true);
-                          break label508;
+                          break label507;
                         }
                       }
                       else
                       {
-                        paramString2 = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString1));
+                        paramString2 = ((SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(paramString1));
                         paramString2 = DeviceHeadMgr.getInstance().getDeviceHeadByPID(paramString2.productId);
-                        break label508;
+                        break label507;
                       }
                     }
                     else
@@ -239,10 +198,10 @@ class QQServiceForAV$QQServiceForAVBinder
                       localObject2 = (BitmapDrawable)((DiscussionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(paramString1, false);
                       paramString2 = (String)localObject1;
                       if (localObject2 == null) {
-                        break label508;
+                        break label507;
                       }
                       paramString2 = ((BitmapDrawable)localObject2).getBitmap();
-                      break label508;
+                      break label507;
                     }
                   }
                 }
@@ -252,17 +211,17 @@ class QQServiceForAV$QQServiceForAVBinder
                     paramString2 = paramString1;
                   }
                   paramString2 = FaceDrawable.getMobileFaceDrawable(localQQAppInterface, paramString2, b).getLoadedBitmap();
-                  break label508;
+                  break label507;
                 }
               }
               paramString2 = FaceDrawable.getStrangerFaceDrawable(localQQAppInterface, 200, paramString1, true).getLoadedBitmap();
-              break label508;
+              break label507;
             }
           }
           else
           {
-            paramString2 = OpenSDKUtils.a(localQQAppInterface, paramString2);
-            break label508;
+            paramString2 = OpenSDKUtils.c(localQQAppInterface, paramString2);
+            break label507;
           }
         }
         else
@@ -286,27 +245,27 @@ class QQServiceForAV$QQServiceForAVBinder
           if (localObject1 != null)
           {
             paramString2 = FaceDrawable.getMobileFaceDrawable(localQQAppInterface, paramString2, b).getLoadedBitmap();
-            break label508;
+            break label507;
           }
           paramString2 = localQQAppInterface.getFaceBitmap(16, paramString1, (byte)3, true, 16);
-          break label508;
+          break label507;
         }
       }
       else
       {
         paramString2 = localQQAppInterface.getTroopFaceBitmap(paramString1, b, false, false);
-        break label508;
+        break label507;
       }
     }
-    label498:
+    label497:
     paramString2 = localQQAppInterface.getFaceBitmap(paramString1, b, true);
-    label508:
+    label507:
     if (paramString2 == null)
     {
-      if (!this.a.jdField_b_of_type_JavaUtilArrayList.contains(paramString1)) {
-        this.a.jdField_b_of_type_JavaUtilArrayList.add(paramString1);
+      if (!this.a.t.contains(paramString1)) {
+        this.a.t.add(paramString1);
       }
-      localQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+      localQQAppInterface.addObserver(this.a.u);
     }
     paramString1 = paramString2;
     if (paramString2 == null)
@@ -318,12 +277,12 @@ class QQServiceForAV$QQServiceForAVBinder
           QLog.w("QQServiceForAV", 2, "getFaceBitmap failed, use default face!");
         }
         if (paramInt == 1) {
-          return ImageUtil.d();
+          return ImageUtil.g();
         }
         if (paramInt == 3000) {
-          return ImageUtil.e();
+          return ImageUtil.i();
         }
-        paramString1 = ImageUtil.f();
+        paramString1 = ImageUtil.k();
       }
     }
     return paramString1;
@@ -380,11 +339,11 @@ class QQServiceForAV$QQServiceForAVBinder
               }
             }
             else {
-              return QAVGroupConfig.a((QQAppInterface)this.a.a(), paramBundle.getString("uin"));
+              return QAVGroupConfig.b((QQAppInterface)this.a.a(), paramBundle.getString("uin"));
             }
           }
           else {
-            return QAVHrMeeting.a((QQAppInterface)this.a.a(), paramBundle);
+            return QAVHrMeeting.b((QQAppInterface)this.a.a(), paramBundle);
           }
         }
         else {
@@ -396,7 +355,7 @@ class QQServiceForAV$QQServiceForAVBinder
         paramArrayOfByte = paramBundle.getString("uin");
         paramResultReceiver = (QQAppInterface)this.a.a();
         bool1 = QAVGroupConfig.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
-        QAVGroupConfig.a("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
+        QAVGroupConfig.b("GetInviteFlag", paramResultReceiver, paramArrayOfByte);
         paramBundle.putBoolean("enableInvite", bool1);
         return paramBundle;
       }
@@ -405,12 +364,6 @@ class QQServiceForAV$QQServiceForAVBinder
       new Handler(Looper.getMainLooper()).postDelayed(new QQServiceForAV.QQServiceForAVBinder.3(this, paramBundle), 1L);
     }
     return null;
-  }
-  
-  public String a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    return ((TicketManager)localQQAppInterface.getManager(2)).getSkey(localQQAppInterface.getCurrentAccountUin());
   }
   
   public String a(int paramInt, String paramString1, String paramString2)
@@ -446,7 +399,7 @@ class QQServiceForAV$QQServiceForAVBinder
     }
     if (paramInt == 26)
     {
-      paramString1 = OpenSDKUtils.a(localQQAppInterface, paramString2);
+      paramString1 = OpenSDKUtils.b(localQQAppInterface, paramString2);
     }
     else if (paramInt == 25)
     {
@@ -462,15 +415,15 @@ class QQServiceForAV$QQServiceForAVBinder
     }
     else if (paramInt == 9500)
     {
-      paramString1 = ((SmartDeviceProxyMgr)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(str1));
+      paramString1 = ((SmartDeviceProxyMgr)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(str1));
       if (paramString1 == null) {
-        break label507;
+        break label509;
       }
       paramString1 = SmartDeviceUtil.a(paramString1);
     }
     else
     {
-      i = ContactUtils.a(paramInt);
+      i = ContactUtils.c(paramInt);
       if (i == -1) {
         paramString1 = ContactUtils.a(localQQAppInterface, str1, paramInt);
       } else {
@@ -496,7 +449,7 @@ class QQServiceForAV$QQServiceForAVBinder
         localObject1 = paramString1;
         if (localObject2 != null)
         {
-          localObject2 = ((FriendsManager)localObject2).e(str1);
+          localObject2 = ((FriendsManager)localObject2).m(str1);
           localObject1 = paramString1;
           if (localObject2 != null) {
             localObject1 = ContactUtils.a((Friends)localObject2);
@@ -513,8 +466,8 @@ class QQServiceForAV$QQServiceForAVBinder
           localObject2 = localObject1;
           if (paramString1 != null)
           {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(str1);
-            localQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+            this.a.s.add(str1);
+            localQQAppInterface.addObserver(this.a.v);
             paramString1.getFriendInfo(str1);
             localObject2 = localObject1;
           }
@@ -574,8 +527,8 @@ class QQServiceForAV$QQServiceForAVBinder
         }
       }
     }
-    if (!this.a.jdField_b_of_type_JavaUtilArrayList.contains(paramString1)) {
-      this.a.jdField_b_of_type_JavaUtilArrayList.add(paramString1);
+    if (!this.a.t.contains(paramString1)) {
+      this.a.t.add(paramString1);
     }
     if (QLog.isDevelopLevel())
     {
@@ -627,7 +580,7 @@ class QQServiceForAV$QQServiceForAVBinder
       localObject = paramString1;
       if (paramString1 != null)
       {
-        ContactUtils.a(paramQQAppInterface, str1, paramString1);
+        ContactUtils.b(paramQQAppInterface, str1, paramString1);
         localObject = paramString1;
       }
     }
@@ -635,7 +588,7 @@ class QQServiceForAV$QQServiceForAVBinder
     {
       paramString1 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramString1 != null) {
-        paramString1 = paramString1.e((String)localObject);
+        paramString1 = paramString1.m((String)localObject);
       } else {
         paramString1 = null;
       }
@@ -653,41 +606,18 @@ class QQServiceForAV$QQServiceForAVBinder
     paramString1 = (FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     if ((paramString1 != null) && (localObject != null))
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      paramQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.a.s.add(localObject);
+      paramQQAppInterface.addObserver(this.a.v);
       paramString1.getFriendInfo((String)localObject);
     }
     return str1;
-  }
-  
-  public String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    IPhoneContactService localIPhoneContactService = (IPhoneContactService)((QQAppInterface)this.a.a()).getRuntimeService(IPhoneContactService.class, "");
-    if (localIPhoneContactService == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceForAV", 2, "getPhoneNameByPhoneNum --> can not get PhoneContactManager");
-      }
-      return null;
-    }
-    paramString = localIPhoneContactService.queryPhoneContactByMobile(paramString);
-    if ((paramString != null) && (paramString.name != null)) {
-      return paramString.name;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQServiceForAV", 2, "getPhoneNameByPhoneNum --> can not get phoneContact Or Name");
-    }
-    return null;
   }
   
   public void a()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("stopPumpMessage, monbind[");
-    ((StringBuilder)localObject).append(this.a.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.a.o);
     ((StringBuilder)localObject).append("], IBinder[");
     ((StringBuilder)localObject).append(((IVideoProcessMonitor)QRoute.api(IVideoProcessMonitor.class)).isVideoProcessAlive());
     ((StringBuilder)localObject).append("]");
@@ -702,7 +632,7 @@ class QQServiceForAV$QQServiceForAVBinder
   
   public void a(int paramInt)
   {
-    Object localObject = (IEarlyDownloadService)QQServiceForAV.b(this.a).getRuntimeService(IEarlyDownloadService.class, "");
+    Object localObject = (IEarlyDownloadService)QQServiceForAV.f(this.a).getRuntimeService(IEarlyDownloadService.class, "");
     if (localObject != null)
     {
       localObject = (QavVideoDownloadHandler)((IEarlyDownloadService)localObject).getEarlyHandler("qq.android.qav.video");
@@ -731,13 +661,13 @@ class QQServiceForAV$QQServiceForAVBinder
         localStringBuilder.append(paramInt3);
         localStringBuilder.append("]");
         QLog.w("QQServiceForAV", 1, localStringBuilder.toString());
-        ((QQAppInterface)localObject).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+        ((QQAppInterface)localObject).addObserver(this.a.r);
         localGVideoHandler.a(paramInt1, paramLong);
         return;
       }
       catch (Exception localException)
       {
-        ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+        ((QQAppInterface)localObject).removeObserver(this.a.r);
         if (!QLog.isColorLevel()) {
           return;
         }
@@ -761,9 +691,9 @@ class QQServiceForAV$QQServiceForAVBinder
       localObject1 = (QQAppInterface)this.a.a();
     }
     localObject2 = this.a;
-    ((QQServiceForAV)localObject2).jdField_a_of_type_Int = paramInt;
-    ((QQServiceForAV)localObject2).jdField_b_of_type_JavaLangString = paramString;
-    ((QQServiceForAV)localObject2).jdField_b_of_type_Long = MessageCache.a();
+    ((QQServiceForAV)localObject2).a = paramInt;
+    ((QQServiceForAV)localObject2).d = paramString;
+    ((QQServiceForAV)localObject2).h = MessageCache.c();
     ((QQAppInterface)localObject1).getMessageFacade().addObserver(this.a);
     if (QLog.isColorLevel())
     {
@@ -773,37 +703,14 @@ class QQServiceForAV$QQServiceForAVBinder
       ((StringBuilder)localObject1).append(", peerUin = ");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(",mStartTime:");
-      ((StringBuilder)localObject1).append(this.a.jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(this.a.h);
       QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject1).toString());
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    Object localObject = (QQAppInterface)this.a.a();
-    localObject = this.a;
-    ((QQServiceForAV)localObject).jdField_a_of_type_Int = paramInt;
-    ((QQServiceForAV)localObject).jdField_b_of_type_JavaLangString = paramString1;
-    ((QQServiceForAV)localObject).d = paramString2;
-    ((QQServiceForAV)localObject).jdField_b_of_type_Long = MessageCache.a();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("setPeerInfo uinType = ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(", peerUin = ");
-      ((StringBuilder)localObject).append(paramString1);
-      ((StringBuilder)localObject).append(", extraUin = ");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append(",mStartTime:");
-      ((StringBuilder)localObject).append(this.a.jdField_b_of_type_Long);
-      QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(long paramLong)
   {
-    ((QQAppInterface)this.a.a()).getAVNotifyCenter().a(paramLong);
+    ((QQAppInterface)this.a.a()).getAVNotifyCenter().j(paramLong);
   }
   
   public void a(long paramLong, String paramString, int paramInt)
@@ -820,7 +727,7 @@ class QQServiceForAV$QQServiceForAVBinder
       QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (QQAppInterface)this.a.a();
-    ((QQAppInterface)localObject).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    ((QQAppInterface)localObject).addObserver(this.a.r);
     GVideoHandler localGVideoHandler = (GVideoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
     if (localGVideoHandler != null) {
       try
@@ -837,7 +744,7 @@ class QQServiceForAV$QQServiceForAVBinder
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "getGVideoLevelInfo-->can not get TroopHandle");
     }
-    ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    ((QQAppInterface)localObject).removeObserver(this.a.r);
   }
   
   public void a(long paramLong1, String paramString, long paramLong2)
@@ -851,7 +758,7 @@ class QQServiceForAV$QQServiceForAVBinder
   public void a(IQQServiceCallback paramIQQServiceCallback)
   {
     if (paramIQQServiceCallback != null) {
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.unregister(paramIQQServiceCallback);
+      this.a.m.unregister(paramIQQServiceCallback);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQServiceForAV", 2, "unregisterCallback");
@@ -863,11 +770,11 @@ class QQServiceForAV$QQServiceForAVBinder
   {
     if (paramIQQServiceCallback != null)
     {
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.register(paramIQQServiceCallback, paramString);
+      this.a.m.register(paramIQQServiceCallback, paramString);
       if (QLog.isColorLevel()) {
         QLog.d("QQServiceForAV", 2, "registerCallback");
       }
-      a(paramIQQServiceCallback.asBinder());
+      b(paramIQQServiceCallback.asBinder());
       paramIQQServiceCallback = (QQAppInterface)this.a.a();
       paramIQQServiceCallback.mQQServiceRef = null;
       paramIQQServiceCallback.mQQServiceRef = new WeakReference(this.a);
@@ -884,22 +791,22 @@ class QQServiceForAV$QQServiceForAVBinder
       return;
     }
     Object localObject = (QQAppInterface)this.a.a();
-    localObject = (ConditionSearchManager)QQServiceForAV.a(this.a).getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
+    localObject = (ConditionSearchManager)QQServiceForAV.c(this.a).getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQServiceForAV", 2, "getAddressConfig for IQQServiceLocationCallback");
       }
-      if (((ConditionSearchManager)localObject).a() == 1)
+      if (((ConditionSearchManager)localObject).d() == 1)
       {
-        if (((ConditionSearchManager)localObject).a(((ConditionSearchManager)localObject).a(), true) == 0)
+        if (((ConditionSearchManager)localObject).a(((ConditionSearchManager)localObject).d(), true) == 0)
         {
-          if (QQServiceForAV.a(this.a) == null) {
+          if (QQServiceForAV.d(this.a) == null) {
             QQServiceForAV.a(this.a, new QQServiceForAV.CMSConfigUpdateListener(this, (ConditionSearchManager)localObject, paramIQQServiceLocationCallback));
           } else {
-            QQServiceForAV.a(this.a).a(paramIQQServiceLocationCallback);
+            QQServiceForAV.d(this.a).a(paramIQQServiceLocationCallback);
           }
-          ((ConditionSearchManager)localObject).c(QQServiceForAV.a(this.a));
+          ((ConditionSearchManager)localObject).c(QQServiceForAV.d(this.a));
           return;
         }
         if (QLog.isColorLevel()) {
@@ -920,31 +827,18 @@ class QQServiceForAV$QQServiceForAVBinder
     a(false, paramIQQServiceLocationCallback);
   }
   
-  public void a(String paramString)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    INearbyCardHandler localINearbyCardHandler = (INearbyCardHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
-    localQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver);
-    localINearbyCardHandler.a(paramString);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    ProtoUtils.a((QQAppInterface)this.a.a(), new QQServiceForAV.QQServiceForAVBinder.1(this, paramString, paramInt2), paramArrayOfByte, paramString, paramInt1, paramInt2);
-  }
-  
   public void a(String paramString, long paramLong)
   {
     Object localObject = (AIOAnimationControlManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
     if (localObject != null) {
-      ((AIOAnimationControlManager)localObject).a(paramString);
+      ((AIOAnimationControlManager)localObject).b(paramString);
     }
-    if ((paramLong > 0L) && ((QQServiceForAV.f(this.a) instanceof QQAppInterface)))
+    if ((paramLong > 0L) && ((QQServiceForAV.k(this.a) instanceof QQAppInterface)))
     {
-      localObject = (QQAppInterface)QQServiceForAV.g(this.a);
+      localObject = (QQAppInterface)QQServiceForAV.l(this.a);
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = paramString;
-      localSessionInfo.jdField_a_of_type_Int = 1;
+      localSessionInfo.b = paramString;
+      localSessionInfo.a = 1;
       ChatActivityFacade.a((QQAppInterface)localObject, localSessionInfo);
     }
   }
@@ -961,7 +855,7 @@ class QQServiceForAV$QQServiceForAVBinder
       return;
     }
     MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     localMessageRecord.init(paramString2.getCurrentAccountUin(), paramString3, paramString2.getCurrentAccountUin(), paramString1, l, -1000, 1, l);
     localMessageRecord.issend = 1;
     paramString2.getMessageFacade().a(localMessageRecord, null);
@@ -995,10 +889,10 @@ class QQServiceForAV$QQServiceForAVBinder
     {
       if (paramBoolean)
       {
-        ((QQAppInterface)localObject).addObserver(QQServiceForAV.a(this.a));
+        ((QQAppInterface)localObject).addObserver(QQServiceForAV.b(this.a));
         return;
       }
-      ((QQAppInterface)localObject).removeObserver(QQServiceForAV.a(this.a));
+      ((QQAppInterface)localObject).removeObserver(QQServiceForAV.b(this.a));
     }
   }
   
@@ -1035,7 +929,7 @@ class QQServiceForAV$QQServiceForAVBinder
       QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (QQAppInterface)this.a.a();
-    ((QQAppInterface)localObject).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    ((QQAppInterface)localObject).addObserver(this.a.r);
     GVideoHandler localGVideoHandler = (GVideoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
     if (localGVideoHandler != null) {
       try
@@ -1052,75 +946,22 @@ class QQServiceForAV$QQServiceForAVBinder
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "getGVideoLevelInfo-->can not get TroopHandle");
     }
-    ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
-  }
-  
-  public boolean a()
-  {
-    return ((QQAppInterface)this.a.a()).isBackgroundPause;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (QQServiceForAV.a(this.a) == null)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-      QQServiceForAV.a(this.a, new WTogetherRealNameMainProcessHelper(localQQAppInterface));
-    }
-    return QQServiceForAV.a(this.a).a(paramInt);
+    ((QQAppInterface)localObject).removeObserver(this.a.r);
   }
   
   public boolean a(int paramInt, long paramLong)
   {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().a(paramInt, paramLong) > 0L;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    Object localObject = (QQAppInterface)this.a.a();
-    ITroopMemberListHandler localITroopMemberListHandler = (ITroopMemberListHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
-    if (localITroopMemberListHandler != null) {
-      try
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getAdminMemberList, troopUin[");
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append("]");
-        QLog.w("QQServiceForAV", 1, localStringBuilder.toString());
-        ((QQAppInterface)localObject).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-        localITroopMemberListHandler.a(paramLong, 0L, 2, 0, 0);
-        return true;
-      }
-      catch (Exception localException)
-      {
-        ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getAdminMemberList Exception, troopUin[");
-        ((StringBuilder)localObject).append(paramLong);
-        ((StringBuilder)localObject).append("]");
-        QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString(), localException);
-        return false;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getAdminMemberList null, troopUin[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("]");
-      QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString());
-    }
-    return false;
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().c(paramInt, paramLong) > 0L;
   }
   
   public boolean a(String paramString)
   {
-    return ((FriendsManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+    return ((FriendsManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString);
   }
   
   public boolean a(String paramString, int paramInt)
   {
-    paramString = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
+    paramString = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(paramString);
     if (paramString != null)
     {
       paramString.mOrigin = paramInt;
@@ -1137,7 +978,7 @@ class QQServiceForAV$QQServiceForAVBinder
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "send0x211C2CMsg");
     }
-    return localQQAppInterface.getMsgHandler().a().a(paramString, paramInt1, paramArrayOfByte, localFMTransC2CMsgInfo);
+    return localQQAppInterface.getMsgHandler().D().a(paramString, paramInt1, paramArrayOfByte, localFMTransC2CMsgInfo);
   }
   
   public boolean a(String paramString1, String paramString2)
@@ -1155,7 +996,7 @@ class QQServiceForAV$QQServiceForAVBinder
     if (localObject != null)
     {
       localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((localObject != null) && (((TroopManager)localObject).b(paramString1, paramString2) == null)) {
+      if ((localObject != null) && (((TroopManager)localObject).g(paramString1, paramString2) == null)) {
         return false;
       }
     }
@@ -1165,7 +1006,7 @@ class QQServiceForAV$QQServiceForAVBinder
   public boolean a(String paramString, boolean paramBoolean)
   {
     Object localObject = (QQAppInterface)this.a.a();
-    ((QQAppInterface)localObject).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    ((QQAppInterface)localObject).addObserver(this.a.r);
     GVideoHandler localGVideoHandler = (GVideoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
     if (localGVideoHandler != null) {
       try
@@ -1175,7 +1016,7 @@ class QQServiceForAV$QQServiceForAVBinder
       }
       catch (Exception paramString)
       {
-        ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+        ((QQAppInterface)localObject).removeObserver(this.a.r);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("joinOrExitOpenTroop-->error,e=");
         ((StringBuilder)localObject).append(paramString.getMessage());
@@ -1186,75 +1027,8 @@ class QQServiceForAV$QQServiceForAVBinder
     if (QLog.isColorLevel()) {
       QLog.e("QQServiceForAV", 2, "joinOrExitOpenTroop-->can not get TroopHandle");
     }
-    ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    ((QQAppInterface)localObject).removeObserver(this.a.r);
     return false;
-  }
-  
-  @Deprecated
-  public int[] a()
-  {
-    return new int[3];
-  }
-  
-  public long[] a(String paramString)
-  {
-    ArrayList localArrayList = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
-    if (localArrayList != null)
-    {
-      int j = localArrayList.size();
-      long[] arrayOfLong = new long[j];
-      int i = 0;
-      for (;;)
-      {
-        paramString = arrayOfLong;
-        if (i >= j) {
-          break;
-        }
-        paramString = (DiscussionMemberInfo)localArrayList.get(i);
-        if (paramString != null) {
-          arrayOfLong[i] = Long.valueOf(paramString.memberUin).longValue();
-        }
-        i += 1;
-      }
-    }
-    paramString = null;
-    return paramString;
-  }
-  
-  public String[] a(String paramString)
-  {
-    Object localObject = (QQAppInterface)this.a.a();
-    if (localObject != null)
-    {
-      localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
-      if (localObject != null)
-      {
-        paramString = ((TroopManager)localObject).b(paramString);
-        if (paramString == null) {
-          return new String[0];
-        }
-        if (!TextUtils.isEmpty(paramString.Administrator)) {
-          return paramString.Administrator.split("\\|");
-        }
-      }
-    }
-    return new String[0];
-  }
-  
-  @Deprecated
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int b(String paramString)
-  {
-    return ((QQAppInterface)this.a.a()).getAvAddFriendService().a(paramString);
-  }
-  
-  public long b(String paramString)
-  {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().a(paramString);
   }
   
   String b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
@@ -1279,7 +1053,7 @@ class QQServiceForAV$QQServiceForAVBinder
     paramString2 = ((QCallCardManager)paramQQAppInterface.getManager(QQManagerFactory.QCALLCARD_MANAGER)).a(paramString1);
     paramQQAppInterface = (QCallCardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QCALLCARD_HANDLER);
     paramQQAppInterface.a(paramString1);
-    paramQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener);
+    paramQQAppInterface.a(this.a.l);
     paramQQAppInterface = str;
     if (paramString2 != null)
     {
@@ -1293,42 +1067,55 @@ class QQServiceForAV$QQServiceForAVBinder
   
   public String b(String paramString)
   {
-    Object localObject = (QQAppInterface)this.a.a();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getTroopOwner mApp = ");
-      localStringBuilder.append(localObject);
-      QLog.d("QQServiceForAV", 2, localStringBuilder.toString());
+    if (paramString == null) {
+      return null;
     }
-    if (localObject != null)
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)((QQAppInterface)this.a.a()).getRuntimeService(IPhoneContactService.class, "");
+    if (localIPhoneContactService == null)
     {
-      localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
-      if (localObject != null)
-      {
-        paramString = ((TroopManager)localObject).b(paramString);
-        if (paramString == null) {
-          return null;
-        }
-        return paramString.troopowneruin;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceForAV", 2, "getPhoneNameByPhoneNum --> can not get PhoneContactManager");
       }
+      return null;
+    }
+    paramString = localIPhoneContactService.queryPhoneContactByMobile(paramString);
+    if ((paramString != null) && (paramString.name != null)) {
+      return paramString.name;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQServiceForAV", 2, "getPhoneNameByPhoneNum --> can not get phoneContact Or Name");
     }
     return null;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQServiceForAV", 2, "avStartAddFriendService");
-    }
-    ((QQAppInterface)this.a.a()).getAvAddFriendService();
   }
   
   public void b(int paramInt, String paramString)
   {
     QQServiceForAV localQQServiceForAV = this.a;
-    localQQServiceForAV.jdField_a_of_type_JavaLangString = paramString;
-    localQQServiceForAV.jdField_b_of_type_Int = paramInt;
+    localQQServiceForAV.c = paramString;
+    localQQServiceForAV.b = paramInt;
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    Object localObject = (QQAppInterface)this.a.a();
+    localObject = this.a;
+    ((QQServiceForAV)localObject).a = paramInt;
+    ((QQServiceForAV)localObject).d = paramString1;
+    ((QQServiceForAV)localObject).f = paramString2;
+    ((QQServiceForAV)localObject).h = MessageCache.c();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setPeerInfo uinType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", peerUin = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", extraUin = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",mStartTime:");
+      ((StringBuilder)localObject).append(this.a.h);
+      QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void b(IQQServiceLocationCallback paramIQQServiceLocationCallback)
@@ -1343,13 +1130,13 @@ class QQServiceForAV$QQServiceForAVBinder
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
     if ((localQQAppInterface.getApp() != null) && (NetworkUtil.isNetSupport(localQQAppInterface.getApp().getApplicationContext())))
     {
-      if (QQServiceForAV.a(this.a) == null) {
+      if (QQServiceForAV.e(this.a) == null) {
         QQServiceForAV.a(this.a, new QQServiceForAV.LocationListener());
       }
-      QQServiceForAV.a(this.a).a(paramIQQServiceLocationCallback);
-      if (QQServiceForAV.a(this.a).a() == 1)
+      QQServiceForAV.e(this.a).a(paramIQQServiceLocationCallback);
+      if (QQServiceForAV.e(this.a).a() == 1)
       {
-        localQQAppInterface.addObserver(QQServiceForAV.a(this.a));
+        localQQAppInterface.addObserver(QQServiceForAV.e(this.a));
         ((LBSHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER)).b();
         return;
       }
@@ -1373,21 +1160,14 @@ class QQServiceForAV$QQServiceForAVBinder
     }
   }
   
-  public void b(String paramString)
+  public void b(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("acceptAddFriend :");
-      localStringBuilder.append(paramString);
-      QLog.e("QQServiceForAV", 2, localStringBuilder.toString());
-    }
-    ((QQAppInterface)this.a.a()).getAvAddFriendService().c(paramString);
+    ProtoUtils.a((QQAppInterface)this.a.a(), new QQServiceForAV.QQServiceForAVBinder.1(this, paramString, paramInt2), paramArrayOfByte, paramString, paramInt1, paramInt2);
   }
   
   public void b(boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = SharedPreUtils.a(((QQAppInterface)this.a.a()).getApplication().getApplicationContext());
+    SharedPreferences localSharedPreferences = SharedPreUtils.B(((QQAppInterface)this.a.a()).getApplication().getApplicationContext());
     Object localObject = localSharedPreferences.edit();
     if (paramBoolean)
     {
@@ -1410,25 +1190,55 @@ class QQServiceForAV$QQServiceForAVBinder
   
   public boolean b()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (localQQAppInterface.isVideoChatting())
-    {
-      long l = localQQAppInterface.getAVNotifyCenter().b();
-      int i = localQQAppInterface.getAVNotifyCenter().a();
-      if (l > 0L)
-      {
-        int j = localQQAppInterface.getAVNotifyCenter().b(l);
-        if ((i == 1) && (j == 2)) {
-          return true;
-        }
-      }
-    }
-    return false;
+    return ((QQAppInterface)this.a.a()).isBackgroundPause;
   }
   
-  public boolean b(String paramString)
+  public boolean b(int paramInt)
   {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().d(paramString);
+    if (QQServiceForAV.j(this.a) == null)
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+      QQServiceForAV.a(this.a, new WTogetherRealNameMainProcessHelper(localQQAppInterface));
+    }
+    return QQServiceForAV.j(this.a).a(paramInt);
+  }
+  
+  public boolean b(long paramLong)
+  {
+    Object localObject = (QQAppInterface)this.a.a();
+    ITroopMemberListHandler localITroopMemberListHandler = (ITroopMemberListHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
+    if (localITroopMemberListHandler != null) {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAdminMemberList, troopUin[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w("QQServiceForAV", 1, localStringBuilder.toString());
+        ((QQAppInterface)localObject).addObserver(this.a.q);
+        localITroopMemberListHandler.a(paramLong, 0L, 2, 0, 0);
+        return true;
+      }
+      catch (Exception localException)
+      {
+        ((QQAppInterface)localObject).removeObserver(this.a.q);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getAdminMemberList Exception, troopUin[");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append("]");
+        QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString(), localException);
+        return false;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getAdminMemberList null, troopUin[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString());
+    }
+    return false;
   }
   
   public boolean b(String paramString, int paramInt)
@@ -1437,75 +1247,51 @@ class QQServiceForAV$QQServiceForAVBinder
       QLog.d("QQServiceForAV", 2, "requestDecodeStrangeFace");
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null)
+    if (this.a.i == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)localQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(localQQAppInterface);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this.a.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener);
+      this.a.i = ((IQQAvatarService)localQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(localQQAppInterface);
+      this.a.i.setDecodeTaskCompletionListener(this.a.k);
     }
     if (paramInt == 25) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeQCallFace(paramString, 16, true, false);
+      return this.a.i.requestDecodeQCallFace(paramString, 16, true, false);
     }
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeStrangeFace(paramString, 200, true, false);
+    return this.a.i.requestDecodeStrangeFace(paramString, 200, true, false);
   }
   
-  public long[] b(String paramString)
-  {
-    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
-    if (localAIOAnimationControlManager != null) {
-      return localAIOAnimationControlManager.a(paramString);
-    }
-    return null;
-  }
-  
-  @Deprecated
   public int c()
   {
-    return 0;
+    return ((IPhoneContactService)((QQAppInterface)this.a.a()).getRuntimeService(IPhoneContactService.class, "")).getSelfBindState();
   }
   
-  public int c(String paramString)
+  public int c(int paramInt, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (BmqqSegmentUtil.c(paramString)) {
-        return 1025;
-      }
-      return 1024;
+    Object localObject = (QQAppInterface)this.a.a();
+    boolean bool;
+    if (paramInt == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return -1;
+    int i = QAVGroupConfig.a((QQAppInterface)localObject, bool, paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getGroupMemberNum, relationType[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], uin[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], 成员数[");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("QQServiceForAV", 1, ((StringBuilder)localObject).toString());
+    return i;
   }
   
-  public String c(String paramString)
+  public long c(String paramString)
   {
-    if (paramString == null) {
-      return null;
+    paramString = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(paramString);
+    if (paramString != null) {
+      return paramString.mOrigin;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    paramString = ((IPhoneContactService)QQServiceForAV.c(this.a).getRuntimeService(IPhoneContactService.class, "")).queryPhoneContactByMobile(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.uin;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQServiceForAV", 2, "avStopAddFriendService");
-    }
-    ((QQAppInterface)this.a.a()).releaseAvAddFriendService();
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("acceptAddFriend :");
-      localStringBuilder.append(paramString);
-      QLog.e("QQServiceForAV", 2, localStringBuilder.toString());
-    }
-    ((QQAppInterface)this.a.a()).getAvAddFriendService().b(paramString);
+    return 0L;
   }
   
   public void c(boolean paramBoolean)
@@ -1516,46 +1302,9 @@ class QQServiceForAV$QQServiceForAVBinder
       localStringBuilder.append("playFlowerAnimation play: ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", mFlowerAnimationActive: ");
-      localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a.j);
       QLog.d("QQServiceForAV", 2, localStringBuilder.toString());
     }
-  }
-  
-  public boolean c()
-  {
-    return AppSetting.d;
-  }
-  
-  public boolean c(String paramString)
-  {
-    if (!(QQServiceForAV.h(this.a) instanceof QQAppInterface)) {
-      return false;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQServiceForAV.i(this.a);
-    try
-    {
-      l = Long.parseLong(paramString);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      long l;
-      label35:
-      int i;
-      TroopGagMgr localTroopGagMgr;
-      boolean bool1;
-      boolean bool2;
-      boolean bool3;
-      break label35;
-    }
-    l = 0L;
-    i = UITools.b(1);
-    l = localQQAppInterface.getAVNotifyCenter().a(i, l);
-    localTroopGagMgr = (TroopGagMgr)((QQAppInterface)QQServiceForAV.j(this.a)).getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-    bool1 = localTroopGagMgr.a(paramString, localQQAppInterface.getCurrentAccountUin());
-    bool2 = localTroopGagMgr.a(paramString);
-    bool3 = localTroopGagMgr.b(paramString);
-    paramString = localTroopGagMgr.a(paramString);
-    return (l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (paramString != null) && (paramString.a > 0L)));
   }
   
   public boolean c(String paramString, int paramInt)
@@ -1570,12 +1319,251 @@ class QQServiceForAV$QQServiceForAVBinder
     return ((QQAppInterface)this.a.a()).getAvAddFriendService().a(paramString, paramInt);
   }
   
-  public int d()
+  public String d()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    return ((TicketManager)localQQAppInterface.getManager(2)).getSkey(localQQAppInterface.getCurrentAccountUin());
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, String.format("keepVideoProcessAlive keepAlive=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    QQServiceForAV.a(this.a, paramBoolean);
+  }
+  
+  public long[] d(String paramString)
+  {
+    ArrayList localArrayList = ((DiscussionManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
+    if (localArrayList != null)
+    {
+      int j = localArrayList.size();
+      long[] arrayOfLong = new long[j];
+      int i = 0;
+      for (;;)
+      {
+        paramString = arrayOfLong;
+        if (i >= j) {
+          break;
+        }
+        paramString = (DiscussionMemberInfo)localArrayList.get(i);
+        if (paramString != null) {
+          arrayOfLong[i] = Long.valueOf(paramString.memberUin).longValue();
+        }
+        i += 1;
+      }
+    }
+    paramString = null;
+    return paramString;
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQServiceForAV", 2, "avStartAddFriendService");
+    }
+    ((QQAppInterface)this.a.a()).getAvAddFriendService();
+  }
+  
+  public boolean e(String paramString)
+  {
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().i(paramString);
+  }
+  
+  public int f(String paramString)
+  {
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().k(paramString);
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQServiceForAV", 2, "avStopAddFriendService");
+    }
+    ((QQAppInterface)this.a.a()).releaseAvAddFriendService();
+  }
+  
+  public long g(String paramString)
+  {
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().j(paramString);
+  }
+  
+  public boolean g()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface.isVideoChatting())
+    {
+      long l = localQQAppInterface.getAVNotifyCenter().g();
+      int i = localQQAppInterface.getAVNotifyCenter().h();
+      if (l > 0L)
+      {
+        int j = localQQAppInterface.getAVNotifyCenter().e(l);
+        if ((i == 1) && (j == 2)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  @Deprecated
+  public int h()
+  {
+    return 0;
+  }
+  
+  public void h(String paramString)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    INearbyCardHandler localINearbyCardHandler = (INearbyCardHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
+    localQQAppInterface.addObserver(this.a.p);
+    localINearbyCardHandler.a(paramString);
+  }
+  
+  @Deprecated
+  public int i()
+  {
+    return 0;
+  }
+  
+  public void i(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("acceptAddFriend :");
+      localStringBuilder.append(paramString);
+      QLog.e("QQServiceForAV", 2, localStringBuilder.toString());
+    }
+    ((QQAppInterface)this.a.a()).getAvAddFriendService().d(paramString);
+  }
+  
+  public void j(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("acceptAddFriend :");
+      localStringBuilder.append(paramString);
+      QLog.e("QQServiceForAV", 2, localStringBuilder.toString());
+    }
+    ((QQAppInterface)this.a.a()).getAvAddFriendService().c(paramString);
+  }
+  
+  @Deprecated
+  public int[] j()
+  {
+    return new int[3];
+  }
+  
+  public int k(String paramString)
+  {
+    return ((QQAppInterface)this.a.a()).getAvAddFriendService().a(paramString);
+  }
+  
+  public boolean k()
+  {
+    return AppSetting.e;
+  }
+  
+  public boolean l()
+  {
+    boolean bool = PtuResChecker.a(new PtuResDownloadCallbackForQav((QQAppInterface)this.a.a()));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getEffectsSoLoadIsOk, ret[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("]");
+      QLog.w("PtuResCheck", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
+  public long[] l(String paramString)
+  {
+    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)((QQAppInterface)this.a.a()).getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+    if (localAIOAnimationControlManager != null) {
+      return localAIOAnimationControlManager.e(paramString);
+    }
+    return null;
+  }
+  
+  public int m()
   {
     return -1;
   }
   
-  public String d(String paramString)
+  public String[] m(String paramString)
+  {
+    Object localObject = (QQAppInterface)this.a.a();
+    if (localObject != null)
+    {
+      localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
+      if (localObject != null)
+      {
+        paramString = ((TroopManager)localObject).f(paramString);
+        if (paramString == null) {
+          return new String[0];
+        }
+        if (!TextUtils.isEmpty(paramString.Administrator)) {
+          return paramString.Administrator.split("\\|");
+        }
+      }
+    }
+    return new String[0];
+  }
+  
+  public String n(String paramString)
+  {
+    Object localObject = (QQAppInterface)this.a.a();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopOwner mApp = ");
+      localStringBuilder.append(localObject);
+      QLog.d("QQServiceForAV", 2, localStringBuilder.toString());
+    }
+    if (localObject != null)
+    {
+      localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
+      if (localObject != null)
+      {
+        paramString = ((TroopManager)localObject).f(paramString);
+        if (paramString == null) {
+          return null;
+        }
+        return paramString.troopowneruin;
+      }
+    }
+    return null;
+  }
+  
+  public boolean n()
+  {
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().d();
+  }
+  
+  public String o(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    paramString = ((IPhoneContactService)QQServiceForAV.g(this.a).getRuntimeService(IPhoneContactService.class, "")).queryPhoneContactByMobile(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.uin;
+  }
+  
+  public boolean o()
+  {
+    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().c();
+  }
+  
+  public String p(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
     Object localObject1 = null;
@@ -1584,7 +1572,7 @@ class QQServiceForAV$QQServiceForAVBinder
       return null;
     }
     Object localObject2 = (QQAppInterface)this.a.a();
-    localObject2 = ((FriendsManager)QQServiceForAV.d(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString);
+    localObject2 = ((FriendsManager)QQServiceForAV.h(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER)).f(paramString);
     if (localObject2 != null)
     {
       localObject1 = BusinessCardUtils.a(((Card)localObject2).bCardInfo);
@@ -1609,7 +1597,7 @@ class QQServiceForAV$QQServiceForAVBinder
     localObject3 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject3 = (IPhoneContactService)QQServiceForAV.e(this.a).getRuntimeService(IPhoneContactService.class, "");
+      localObject3 = (IPhoneContactService)QQServiceForAV.i(this.a).getRuntimeService(IPhoneContactService.class, "");
       localObject2 = localObject1;
       if (localObject3 != null)
       {
@@ -1622,7 +1610,7 @@ class QQServiceForAV$QQServiceForAVBinder
         else
         {
           localObject2 = localObject1;
-          if (PermissionChecker.a().c())
+          if (PermissionChecker.a().e())
           {
             paramString = ((IPhoneContactService)localObject3).queryPhoneContactByUin(paramString);
             localObject2 = localObject1;
@@ -1645,71 +1633,15 @@ class QQServiceForAV$QQServiceForAVBinder
     return localObject3;
   }
   
-  public void d(String paramString)
-  {
-    ((IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(paramString);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, String.format("keepVideoProcessAlive keepAlive=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    QQServiceForAV.a(this.a, paramBoolean);
-  }
-  
-  public boolean d()
-  {
-    boolean bool = PtuResChecker.a(new PtuResDownloadCallbackForQav((QQAppInterface)this.a.a()));
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getEffectsSoLoadIsOk, ret[");
-      localStringBuilder.append(bool);
-      localStringBuilder.append("]");
-      QLog.w("PtuResCheck", 2, localStringBuilder.toString());
-    }
-    return bool;
-  }
-  
-  public void e(String paramString)
-  {
-    IRedTouchManager localIRedTouchManager = (IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "");
-    localIRedTouchManager.onRedTouchItemExposure(localIRedTouchManager.getAppInfoByPath(paramString), "");
-  }
-  
-  public boolean e()
-  {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().b();
-  }
-  
-  public void f(String paramString)
-  {
-    IRedTouchManager localIRedTouchManager = (IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "");
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("redTouchManagerDismiss, appId ");
-      localStringBuilder.append(paramString);
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, localStringBuilder.toString());
-    }
-    localIRedTouchManager.dismissRedTouch(paramString);
-  }
-  
-  public boolean f()
-  {
-    return ((QQAppInterface)this.a.a()).getAVNotifyCenter().a();
-  }
-  
-  public boolean g()
+  public boolean p()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQServiceForAV", 2, "call isQQSVIP ");
     }
-    return VasUtil.a((QQAppInterface)this.a.a()).getVipStatus().isSVip();
+    return VasUtil.b((QQAppInterface)this.a.a()).getVipStatus().isSVip();
   }
   
-  public boolean h()
+  public boolean q()
   {
     IAvGameManager localIAvGameManager = (IAvGameManager)((QQAppInterface)this.a.a()).getRuntimeService(IAvGameManager.class);
     boolean bool;
@@ -1729,6 +1661,74 @@ class QQServiceForAV$QQServiceForAVBinder
       QLog.i("QQServiceForAV", 2, localStringBuilder.toString());
     }
     return bool;
+  }
+  
+  public boolean q(String paramString)
+  {
+    if (!(QQServiceForAV.m(this.a) instanceof QQAppInterface)) {
+      return false;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)QQServiceForAV.n(this.a);
+    try
+    {
+      l = Long.parseLong(paramString);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      long l;
+      label35:
+      int i;
+      TroopGagMgr localTroopGagMgr;
+      boolean bool1;
+      boolean bool2;
+      boolean bool3;
+      break label35;
+    }
+    l = 0L;
+    i = UITools.b(1);
+    l = localQQAppInterface.getAVNotifyCenter().c(i, l);
+    localTroopGagMgr = (TroopGagMgr)((QQAppInterface)QQServiceForAV.o(this.a)).getManager(QQManagerFactory.TROOP_GAG_MANAGER);
+    bool1 = localTroopGagMgr.a(paramString, localQQAppInterface.getCurrentAccountUin());
+    bool2 = localTroopGagMgr.c(paramString);
+    bool3 = localTroopGagMgr.d(paramString);
+    paramString = localTroopGagMgr.b(paramString);
+    return (l == 0L) && (((!bool3) && (bool1)) || ((!bool2) && (paramString != null) && (paramString.b > 0L)));
+  }
+  
+  public void r(String paramString)
+  {
+    ((IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(paramString);
+  }
+  
+  public void s(String paramString)
+  {
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "");
+    localIRedTouchManager.onRedTouchItemExposure(localIRedTouchManager.getAppInfoByPath(paramString), "");
+  }
+  
+  public int t(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (BmqqSegmentUtil.c(paramString)) {
+        return 1025;
+      }
+      return 1024;
+    }
+    return -1;
+  }
+  
+  public void u(String paramString)
+  {
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)((QQAppInterface)this.a.a()).getRuntimeService(IRedTouchManager.class, "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("redTouchManagerDismiss, appId ");
+      localStringBuilder.append(paramString);
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, localStringBuilder.toString());
+    }
+    localIRedTouchManager.dismissRedTouch(paramString);
   }
 }
 

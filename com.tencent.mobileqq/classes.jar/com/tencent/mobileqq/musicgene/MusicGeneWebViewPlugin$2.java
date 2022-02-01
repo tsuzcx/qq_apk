@@ -15,22 +15,22 @@ class MusicGeneWebViewPlugin$2
     if (paramInt == 2)
     {
       MusicGeneWebViewPlugin localMusicGeneWebViewPlugin = this.a;
-      MusicGeneWebViewPlugin.a(localMusicGeneWebViewPlugin, MusicGeneWebViewPlugin.a(localMusicGeneWebViewPlugin).c());
+      MusicGeneWebViewPlugin.b(localMusicGeneWebViewPlugin, MusicGeneWebViewPlugin.b(localMusicGeneWebViewPlugin).i());
     }
   }
   
   public void a(SongInfo paramSongInfo)
   {
-    if (MusicGeneWebViewPlugin.a(this.a) != null)
+    if (MusicGeneWebViewPlugin.b(this.a) != null)
     {
       paramSongInfo = this.a;
-      MusicGeneWebViewPlugin.a(paramSongInfo, MusicGeneWebViewPlugin.a(paramSongInfo).a());
+      MusicGeneWebViewPlugin.a(paramSongInfo, MusicGeneWebViewPlugin.b(paramSongInfo).k());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.2
  * JD-Core Version:    0.7.0.1
  */

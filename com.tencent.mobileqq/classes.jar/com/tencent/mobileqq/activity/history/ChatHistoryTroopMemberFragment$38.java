@@ -12,16 +12,16 @@ class ChatHistoryTroopMemberFragment$38
   
   public void onClick(View paramView)
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.a;
     if ((localDialog != null) && (localDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.38
  * JD-Core Version:    0.7.0.1
  */

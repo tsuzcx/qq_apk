@@ -10,22 +10,22 @@ import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 class MedalNewsItemBuilder$Holder
   extends AbstractChatItemBuilder.ViewHolder
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  MessageForMedalNews jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
+  CornerImageView d;
   TextView e;
+  URLImageView f;
+  TextView g;
+  ImageView h;
+  TextView i;
+  TextView j;
+  public long k;
+  public String l;
+  MessageForMedalNews m;
   
   MedalNewsItemBuilder$Holder(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

@@ -20,23 +20,23 @@ class FriendTabView$3
   {
     QLog.d("FriendTabView", 2, "----->onBuddyListClick");
     SelectBuddyChildTag localSelectBuddyChildTag = (SelectBuddyChildTag)paramView.getTag();
-    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject != null))
+    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.g != null) && (localSelectBuddyChildTag.h != null))
     {
       Object localObject;
-      if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        localObject = ((Friends)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      } else if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        localObject = ((PhoneContact)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject).name;
+      if ((localSelectBuddyChildTag.h instanceof Friends)) {
+        localObject = ((Friends)localSelectBuddyChildTag.h).getFriendNickWithAlias();
+      } else if ((localSelectBuddyChildTag.h instanceof PhoneContact)) {
+        localObject = ((PhoneContact)localSelectBuddyChildTag.h).name;
       } else {
         localObject = "";
       }
-      if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      if (localSelectBuddyChildTag.g.isEnabled())
       {
         boolean bool;
-        if (localSelectBuddyChildTag.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          bool = this.a.a.onListViewItemClick(localSelectBuddyChildTag.jdField_a_of_type_JavaLangString, (String)localObject, 4, "-1", "");
+        if (localSelectBuddyChildTag.y.startsWith("+")) {
+          bool = this.a.d.onListViewItemClick(localSelectBuddyChildTag.y, (String)localObject, 4, "-1", "");
         } else {
-          bool = this.a.a.onListViewItemClick(localSelectBuddyChildTag.jdField_a_of_type_JavaLangString, (String)localObject, 0, "-1", "");
+          bool = this.a.d.onListViewItemClick(localSelectBuddyChildTag.y, (String)localObject, 0, "-1", "");
         }
         if (QLog.isDevelopLevel())
         {
@@ -45,25 +45,25 @@ class FriendTabView$3
           ((StringBuilder)localObject).append(bool);
           QLog.d("FriendTabView", 2, ((StringBuilder)localObject).toString());
         }
-        localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.d) {
-          if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())
+        localSelectBuddyChildTag.g.setChecked(bool);
+        if (AppSetting.e) {
+          if (localSelectBuddyChildTag.g.isChecked())
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131705044));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131902934));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
           else
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131705045));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131902935));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
         }
         this.a.c();
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
         }
       }
@@ -73,7 +73,7 @@ class FriendTabView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.FriendTabView.3
  * JD-Core Version:    0.7.0.1
  */

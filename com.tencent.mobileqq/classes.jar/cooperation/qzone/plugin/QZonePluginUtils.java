@@ -320,7 +320,7 @@ public class QZonePluginUtils
           }
           i += 1;
         }
-        PluginInfoUtil.a((File)localObject);
+        PluginInfoUtil.b((File)localObject);
         return;
       }
       int k = paramContext.length;
@@ -350,40 +350,40 @@ public class QZonePluginUtils
     //   4: astore 5
     //   6: aconst_null
     //   7: astore_1
-    //   8: new 333	java/io/FileInputStream
+    //   8: new 334	java/io/FileInputStream
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   13: invokespecial 336	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   16: astore_2
     //   17: aload_0
-    //   18: invokevirtual 339	java/io/File:length	()J
+    //   18: invokevirtual 340	java/io/File:length	()J
     //   21: l2i
     //   22: newarray byte
     //   24: astore_0
     //   25: aload_2
     //   26: aload_0
-    //   27: invokevirtual 343	java/io/FileInputStream:read	([B)I
+    //   27: invokevirtual 344	java/io/FileInputStream:read	([B)I
     //   30: pop
     //   31: new 38	java/lang/String
     //   34: dup
     //   35: aload_0
     //   36: iconst_0
-    //   37: invokestatic 349	com/tencent/mobileqq/utils/Base64Util:decode	([BI)[B
-    //   40: invokespecial 352	java/lang/String:<init>	([B)V
+    //   37: invokestatic 350	com/tencent/mobileqq/utils/Base64Util:decode	([BI)[B
+    //   40: invokespecial 353	java/lang/String:<init>	([B)V
     //   43: astore_1
     //   44: new 82	cooperation/qzone/plugin/PluginRecord
     //   47: dup
-    //   48: invokespecial 353	cooperation/qzone/plugin/PluginRecord:<init>	()V
+    //   48: invokespecial 354	cooperation/qzone/plugin/PluginRecord:<init>	()V
     //   51: astore_0
     //   52: aload_0
     //   53: aload_1
-    //   54: invokevirtual 356	cooperation/qzone/plugin/PluginRecord:fromJson	(Ljava/lang/String;)V
+    //   54: invokevirtual 357	cooperation/qzone/plugin/PluginRecord:fromJson	(Ljava/lang/String;)V
     //   57: aload_2
-    //   58: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   58: invokevirtual 360	java/io/FileInputStream:close	()V
     //   61: goto +8 -> 69
     //   64: astore_1
     //   65: aload_1
-    //   66: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   66: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   69: aload_0
     //   70: areturn
     //   71: astore_1
@@ -416,7 +416,7 @@ public class QZonePluginUtils
     //   111: aload_2
     //   112: astore_1
     //   113: aload_3
-    //   114: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   114: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   117: aload_0
     //   118: astore_1
     //   119: aload_2
@@ -424,12 +424,12 @@ public class QZonePluginUtils
     //   123: aload_0
     //   124: astore_1
     //   125: aload_2
-    //   126: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   126: invokevirtual 360	java/io/FileInputStream:close	()V
     //   129: aload_0
     //   130: areturn
     //   131: astore_0
     //   132: aload_0
-    //   133: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   133: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   136: aload_1
     //   137: areturn
     //   138: astore_3
@@ -440,7 +440,7 @@ public class QZonePluginUtils
     //   144: aload_2
     //   145: astore_1
     //   146: aload_3
-    //   147: invokevirtual 363	java/io/FileNotFoundException:printStackTrace	()V
+    //   147: invokevirtual 364	java/io/FileNotFoundException:printStackTrace	()V
     //   150: aload_0
     //   151: astore_1
     //   152: aload_2
@@ -448,7 +448,7 @@ public class QZonePluginUtils
     //   156: aload_0
     //   157: astore_1
     //   158: aload_2
-    //   159: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   159: invokevirtual 360	java/io/FileInputStream:close	()V
     //   162: aload_0
     //   163: astore_1
     //   164: aload_1
@@ -456,11 +456,11 @@ public class QZonePluginUtils
     //   166: aload_2
     //   167: ifnull +15 -> 182
     //   170: aload_2
-    //   171: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   171: invokevirtual 360	java/io/FileInputStream:close	()V
     //   174: goto +8 -> 182
     //   177: astore_1
     //   178: aload_1
-    //   179: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   179: invokevirtual 363	java/io/IOException:printStackTrace	()V
     //   182: aload_0
     //   183: athrow
     // Local variable table:
@@ -548,7 +548,7 @@ public class QZonePluginUtils
     //   5: aconst_null
     //   6: astore_3
     //   7: aload_1
-    //   8: invokevirtual 383	cooperation/qzone/plugin/PluginRecord:toJson	()Ljava/lang/String;
+    //   8: invokevirtual 384	cooperation/qzone/plugin/PluginRecord:toJson	()Ljava/lang/String;
     //   11: astore 5
     //   13: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   16: ifeq +39 -> 55
@@ -557,35 +557,35 @@ public class QZonePluginUtils
     //   23: invokespecial 115	java/lang/StringBuilder:<init>	()V
     //   26: astore 6
     //   28: aload 6
-    //   30: ldc_w 385
+    //   30: ldc_w 386
     //   33: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: pop
     //   37: aload 6
     //   39: aload_1
-    //   40: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 389	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: ldc 33
     //   46: iconst_2
     //   47: aload 6
     //   49: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 391	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   55: aload 5
-    //   57: invokevirtual 395	java/lang/String:getBytes	()[B
+    //   57: invokevirtual 396	java/lang/String:getBytes	()[B
     //   60: iconst_0
-    //   61: invokestatic 398	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
+    //   61: invokestatic 399	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
     //   64: astore_1
-    //   65: new 400	java/io/FileOutputStream
+    //   65: new 401	java/io/FileOutputStream
     //   68: dup
     //   69: aload_0
-    //   70: invokespecial 401	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   70: invokespecial 402	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   73: astore_0
     //   74: aload_0
     //   75: aload_1
-    //   76: invokevirtual 404	java/io/FileOutputStream:write	([B)V
+    //   76: invokevirtual 405	java/io/FileOutputStream:write	([B)V
     //   79: iconst_1
     //   80: istore_2
     //   81: aload_0
-    //   82: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   82: invokevirtual 406	java/io/FileOutputStream:close	()V
     //   85: iconst_1
     //   86: ireturn
     //   87: astore_3
@@ -601,13 +601,13 @@ public class QZonePluginUtils
     //   101: aload_1
     //   102: ifnull +7 -> 109
     //   105: aload_1
-    //   106: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   106: invokevirtual 406	java/io/FileOutputStream:close	()V
     //   109: aload_0
     //   110: athrow
     //   111: aload_0
     //   112: ifnull +7 -> 119
     //   115: aload_0
-    //   116: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   116: invokevirtual 406	java/io/FileOutputStream:close	()V
     //   119: iconst_0
     //   120: ireturn
     //   121: astore_0
@@ -659,7 +659,7 @@ public class QZonePluginUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginUtils
  * JD-Core Version:    0.7.0.1
  */

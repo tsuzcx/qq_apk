@@ -26,22 +26,22 @@ public class FileSaveHelper
   private void a()
   {
     BaseChatPie localBaseChatPie = this.a;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      ((MultiRichMediaSaveManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER)).onDestroy();
+    if ((localBaseChatPie != null) && (localBaseChatPie.d != null)) {
+      ((MultiRichMediaSaveManager)this.a.d.getManager(QQManagerFactory.MULTI_CHOOSE_SAVE_MANAGER)).onDestroy();
     }
   }
   
   private void b()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.a.d;
     if (((QQAppInterface)localObject).getFileManagerProxy() != null) {
-      ((QQAppInterface)localObject).getFileManagerProxy().b();
+      ((QQAppInterface)localObject).getFileManagerProxy().e();
     }
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (!TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString))
+    SessionInfo localSessionInfo = this.a.ah;
+    if (!TextUtils.isEmpty(localSessionInfo.b))
     {
-      FileManagerDataCenter.b((QQAppInterface)localObject, localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, -3010);
-      FileManagerDataCenter.b((QQAppInterface)localObject, localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, -4020);
+      FileManagerDataCenter.b((QQAppInterface)localObject, localSessionInfo.b, localSessionInfo.a, -3010);
+      FileManagerDataCenter.b((QQAppInterface)localObject, localSessionInfo.b, localSessionInfo.a, -4020);
     }
     localObject = FileTransferManager.a((QQAppInterface)localObject);
     if (localObject != null) {
@@ -57,7 +57,7 @@ public class FileSaveHelper
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 16711683) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2131718740, 1).b(this.a.a());
+      QQToast.makeText(this.a.e, 2131916243, 1).show(this.a.A());
     }
     return false;
   }
@@ -78,7 +78,7 @@ public class FileSaveHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FileSaveHelper
  * JD-Core Version:    0.7.0.1
  */

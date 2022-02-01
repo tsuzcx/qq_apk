@@ -8,6 +8,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.open.agent.util.AuthorityUtil;
@@ -35,9 +36,10 @@ class QrAgentLoginManager$2
     if (paramQBaseActivity.getAppRuntime() != null)
     {
       QLog.d("QrAgentLoginManager", 1, "startOpenUrlWebView cancelCode");
-      QrAgentLoginManager.a(this.a, (QQAppInterface)paramQBaseActivity.getAppRuntime(), QrAgentLoginManager.a(this.a));
+      QrAgentLoginManager.a(this.a, (QQAppInterface)paramQBaseActivity.getAppRuntime(), QrAgentLoginManager.e(this.a));
     }
-    String str = QrAgentLoginManager.b(this.a);
+    QLog.d("QrAgentLoginManager", 1, "startOpenUrlWebView");
+    String str = QrAgentLoginManager.f(this.a);
     Intent localIntent = new Intent(paramQBaseActivity, QQBrowserActivity.class);
     localIntent.putExtra("url", str);
     paramQBaseActivity.startActivity(localIntent);
@@ -52,12 +54,12 @@ class QrAgentLoginManager$2
       return;
     }
     Intent localIntent = new Intent(localQBaseActivity, QRLoginAuthActivity.class);
-    localIntent.putExtra("QR_CODE_STRING", QrAgentLoginManager.a(this.a));
+    localIntent.putExtra("QR_CODE_STRING", QrAgentLoginManager.d(this.a));
     if (paramBoolean)
     {
       localIntent.putExtra("KEY_ERROR_MSG", QRLoginAuthActivity.c);
       if (localQBaseActivity.getAppRuntime() != null) {
-        QrAgentLoginManager.a(this.a, (QQAppInterface)localQBaseActivity.getAppRuntime(), QrAgentLoginManager.a(this.a));
+        QrAgentLoginManager.a(this.a, (QQAppInterface)localQBaseActivity.getAppRuntime(), QrAgentLoginManager.e(this.a));
       }
     }
     if (localQBaseActivity.getIntent().getBooleanExtra("fromPicQRDecode", false))
@@ -70,15 +72,7 @@ class QrAgentLoginManager$2
   
   public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel())
-    {
-      paramArrayOfByte1 = new StringBuilder();
-      paramArrayOfByte1.append("OnCloseCode userAccount=");
-      paramArrayOfByte1.append(paramString);
-      paramArrayOfByte1.append(" ret=");
-      paramArrayOfByte1.append(paramInt);
-      QLog.d("QrAgentLoginManager", 2, paramArrayOfByte1.toString());
-    }
+    QLog.d("QrAgentLoginManager", 1, new Object[] { "OnCloseCode userAccount=", MsfSdkUtils.getShortUin(paramString), " ret=", Integer.valueOf(paramInt) });
     paramArrayOfByte1 = QBaseActivity.sTopActivity;
     if (paramInt == 0)
     {
@@ -104,41 +98,33 @@ class QrAgentLoginManager$2
   
   public void onException(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OnException e=");
-      localStringBuilder.append(paramString);
-      QLog.d("QrAgentLoginManager", 2, localStringBuilder.toString());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WtloginObserver OnException : ");
+    localStringBuilder.append(paramString);
+    QLog.d("QrAgentLoginManager", 1, localStringBuilder.toString());
   }
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel())
-    {
-      paramErrMsg = new StringBuilder();
-      paramErrMsg.append("OnVerifyCode userAccount=");
-      paramErrMsg.append(paramString);
-      paramErrMsg.append(" ret=");
-      paramErrMsg.append(paramInt);
-      paramErrMsg.append(" appName: ");
-      paramErrMsg.append(paramArrayOfByte1);
-      QLog.d("QrAgentLoginManager", 2, paramErrMsg.toString());
+    boolean bool2 = false;
+    paramErrMsg = MsfSdkUtils.getShortUin(paramString);
+    if (paramArrayOfByte1 == null) {
+      paramString = "";
+    } else {
+      paramString = new String(paramArrayOfByte1);
     }
+    QLog.d("QrAgentLoginManager", 1, new Object[] { "OnVerifyCode userAccount=", paramErrMsg, " ret=", Integer.valueOf(paramInt), " appName: ", paramString });
     if (paramInt != 0)
     {
       QrAgentLoginManager.a(this.a, paramArrayOfByte2);
       return;
     }
-    boolean bool2;
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      bool2 = false;
       paramInt = 0;
       if (paramInt >= paramArrayList.size()) {}
     }
-    label398:
+    label396:
     for (;;)
     {
       try
@@ -153,10 +139,10 @@ class QrAgentLoginManager$2
             if (QBaseActivity.sTopActivity == null)
             {
               paramString = null;
-              break label398;
+              break label396;
             }
             paramString = QBaseActivity.sTopActivity.getAppRuntime();
-            break label398;
+            break label396;
             ReportController.b(paramString, "dc00898", "", "", "0X800B5A6", "0X800B5A6", 0, 0, "", "", "", "");
             a(QBaseActivity.sTopActivity);
             return;
@@ -205,7 +191,7 @@ class QrAgentLoginManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.QrAgentLoginManager.2
  * JD-Core Version:    0.7.0.1
  */

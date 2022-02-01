@@ -27,31 +27,30 @@ import java.util.List;
 public class ArkAppPublicAccountItemBuilder
   extends ArkAppItemBuilder
 {
-  private final List<MessageRecord> a;
-  private long c;
-  private long d;
+  private long a;
+  private long w;
+  private final List<MessageRecord> x = new ArrayList();
   
   public ArkAppPublicAccountItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   private void a(View paramView, MessageRecord paramMessageRecord)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramMessageRecord))
+    if (!this.x.contains(paramMessageRecord))
     {
-      if ((paramView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isQQGamePubAccount(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      if ((paramView != null) && (this.f != null) && (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isQQGamePubAccount(this.f.b))) {
         ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).reportArkExposure(paramView.getContext(), paramMessageRecord);
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
+      this.x.add(paramMessageRecord);
     }
   }
   
-  private void c(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
+  private void e(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      ((IQQGameSubscribeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQGameSubscribeService.class, "all")).handleSubscribeGrayTipsUi(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramChatMessage, paramBaseChatItemLayout, -5008);
+    if (this.f != null) {
+      ((IQQGameSubscribeService)this.d.getRuntimeService(IQQGameSubscribeService.class, "all")).handleSubscribeGrayTipsUi(this.f.b, paramChatMessage, paramBaseChatItemLayout, -5008);
     }
   }
   
@@ -60,16 +59,16 @@ public class ArkAppPublicAccountItemBuilder
     if (paramChatMessage.istroop == 1038)
     {
       long l = System.currentTimeMillis();
-      if ((this.c != paramChatMessage.msgUid) || (l - this.d > 1000L))
+      if ((this.a != paramChatMessage.msgUid) || (l - this.w > 1000L))
       {
-        this.c = paramChatMessage.msgUid;
-        this.d = l;
+        this.a = paramChatMessage.msgUid;
+        this.w = l;
         if ((paramChatMessage instanceof MessageForArkApp))
         {
           Object localObject = (MessageForArkApp)paramChatMessage;
           if (((MessageForArkApp)localObject).ark_app_message != null)
           {
-            this.d = System.currentTimeMillis();
+            this.w = System.currentTimeMillis();
             localObject = ((MessageForArkApp)localObject).ark_app_message.appView;
             ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_aio", "expo", "com.tencent.miniapp", (String)localObject, "", "");
             if (QLog.isColorLevel()) {
@@ -80,7 +79,7 @@ public class ArkAppPublicAccountItemBuilder
       }
     }
     paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).bindViewForGdtReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, paramView);
+    ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).bindViewForGdtReport(this.d, paramChatMessage, paramView);
     return paramView;
   }
   
@@ -88,7 +87,7 @@ public class ArkAppPublicAccountItemBuilder
   {
     try
     {
-      c(paramChatMessage, paramBaseChatItemLayout);
+      e(paramChatMessage, paramBaseChatItemLayout);
       a(paramBaseChatItemLayout, paramChatMessage);
     }
     catch (Throwable localThrowable)
@@ -100,7 +99,7 @@ public class ArkAppPublicAccountItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppPublicAccountItemBuilder
  * JD-Core Version:    0.7.0.1
  */

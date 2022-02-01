@@ -13,17 +13,17 @@ class NotificationPermissionHandler$1
   
   public void onClick(View paramView)
   {
-    if (NotificationPermissionHandler.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerNotificationPermissionHandler)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqpermissionQQPermission$BasePermissionsListener.a();
+    if (NotificationPermissionHandler.a(this.b)) {
+      this.a.a();
     } else {
-      PermissionUtil.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerNotificationPermissionHandler.a);
+      PermissionUtil.a(this.b.d);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.NotificationPermissionHandler.1
  * JD-Core Version:    0.7.0.1
  */

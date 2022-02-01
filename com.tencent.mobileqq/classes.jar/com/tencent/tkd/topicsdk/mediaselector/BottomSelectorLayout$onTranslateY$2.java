@@ -12,16 +12,16 @@ final class BottomSelectorLayout$onTranslateY$2
   
   public final void onClick(View paramView)
   {
-    if (BottomSelectorLayout.a(this.a)) {
-      BottomSelectorLayout.a(this.a);
+    if (BottomSelectorLayout.d(this.a)) {
+      BottomSelectorLayout.e(this.a);
     }
     paramView = this.a;
-    BottomSelectorLayout.a(paramView, 0.0F, paramView.e(), false, 4, null);
+    BottomSelectorLayout.a(paramView, 0.0F, paramView.getCurrentPanelInitY(), false, 4, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onTranslateY.2
  * JD-Core Version:    0.7.0.1
  */

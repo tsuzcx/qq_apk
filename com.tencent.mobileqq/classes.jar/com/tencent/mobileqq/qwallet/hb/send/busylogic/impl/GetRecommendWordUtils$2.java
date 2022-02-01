@@ -37,7 +37,7 @@ final class GetRecommendWordUtils$2
       ((StringBuilder)localObject1).append(",bundle:");
       ((StringBuilder)localObject1).append(paramBundle);
       ((StringBuilder)localObject1).append(",cost:");
-      ((StringBuilder)localObject1).append(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(NetConnInfoCenter.getServerTimeMillis() - this.a);
       QLog.d("GetRandomRecommendWordUtils", 2, ((StringBuilder)localObject1).toString());
     }
     for (;;)
@@ -53,7 +53,7 @@ final class GetRecommendWordUtils$2
           paramInt = paramBundle.code.get();
           localObject1 = paramBundle.message.get();
           i = paramBundle.ver.get();
-          Object localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+          Object localObject2 = this.b.edit();
           Object localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("sp_key_group_words_list");
           ((StringBuilder)localObject3).append(QWalletHelperImpl.getAppRuntime().getCurrentUin());
@@ -96,15 +96,15 @@ final class GetRecommendWordUtils$2
               ((List)localObject1).add(localObject2);
               break label567;
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetGroupWordsListener != null) {
-              this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetGroupWordsListener.a(true, this.jdField_a_of_type_Int, (List)localObject1);
+            if (this.c != null) {
+              this.c.a(true, this.d, (List)localObject1);
             }
             FileUtils.writeObject(GetRecommendWordUtils.a(), localObject1);
             return;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetGroupWordsListener != null)
+          if (this.c != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplGetRecommendWordUtils$GetGroupWordsListener.a(false, 0, null);
+            this.c.a(false, 0, null);
             return;
           }
         }
@@ -128,7 +128,7 @@ final class GetRecommendWordUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.GetRecommendWordUtils.2
  * JD-Core Version:    0.7.0.1
  */

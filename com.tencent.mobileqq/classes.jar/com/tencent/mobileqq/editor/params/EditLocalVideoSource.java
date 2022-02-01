@@ -11,78 +11,78 @@ public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
   public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new EditLocalVideoSource.1();
-  public int a;
-  @NonNull
-  public final LocalMediaInfo a;
   @NonNull
   public final String a;
-  public final int b;
+  @NonNull
+  public final LocalMediaInfo b;
+  public int c;
+  public final int d;
   
   protected EditLocalVideoSource(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readInt();
+    this.a = paramParcel.readString();
+    this.b = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
   }
   
   public EditLocalVideoSource(String paramString, LocalMediaInfo paramLocalMediaInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    paramString = b();
+    this.a = paramString;
+    this.b = paramLocalMediaInfo;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    paramString = d();
     if (paramString == null) {
       return;
     }
     throw new IllegalArgumentException(paramString);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
   @NonNull
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+    return this.b.mediaWidth;
   }
   
-  public String b()
+  public int c()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    return this.b.mediaHeight;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.a)) {
       return "sourcePath is empty";
     }
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    if (!new File(this.a).exists())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Can not find file by sourcePath = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       return localStringBuilder.toString();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) {
+    if (this.b == null) {
       return "media info should not be null";
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.c;
     if (i >= 0)
     {
-      int j = this.b;
+      int j = this.d;
       if ((j >= 0) && (j >= i)) {
         return null;
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startTime(");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(") or endTime(");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(") is illegal");
     return localStringBuilder.toString();
   }
@@ -94,15 +94,15 @@ public class EditLocalVideoSource
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, 0);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeParcelable(this.b, 0);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.params.EditLocalVideoSource
  * JD-Core Version:    0.7.0.1
  */

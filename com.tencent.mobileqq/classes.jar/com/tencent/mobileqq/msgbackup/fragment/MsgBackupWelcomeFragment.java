@@ -17,37 +17,37 @@ public class MsgBackupWelcomeFragment
   protected void c()
   {
     super.c();
-    a(getActivity().getString(2131690553));
+    a(getActivity().getString(2131887464));
   }
   
   protected void d()
   {
     super.d();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.b.setVisibility(0);
   }
   
   protected void e()
   {
     super.e();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    if (AppSetting.d)
+    this.f.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    if (AppSetting.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(getString(2131690549));
-      this.b.setContentDescription(getString(2131690550));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setLeftViewName(2131690584);
+      this.f.setContentDescription(getString(2131887460));
+      this.g.setContentDescription(getString(2131887461));
+      this.p.setLeftViewName(2131887495);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131376279)
+    if (i == 2131444488)
     {
       MsgBackupReporter.a("0X800A22E");
       QPublicFragmentActivity.startForResult(getActivity(), MsgBackupMigrateFragment.class, 1000);
     }
-    else if (i == 2131376275)
+    else if (i == 2131444484)
     {
       MsgBackupReporter.a("0X800A268");
       MsgBackupAuthProcessor.a().a(1);
@@ -58,7 +58,7 @@ public class MsgBackupWelcomeFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,8 @@ import com.tencent.tavkit.ciimage.CIContext;
 import com.tencent.tavkit.ciimage.CIImage;
 import com.tencent.tavkit.composition.model.TAVVideoCompositionTrack;
 import com.tencent.tavkit.composition.video.RenderInfo;
-import com.tencent.tavsticker.core.TAVStickerRenderContext;
 import com.tencent.tavsticker.model.TAVSourceImage;
 import com.tencent.tavsticker.model.TAVSticker;
-import com.tencent.tavsticker.model.TAVStickerTexture;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,10 +23,10 @@ import org.jetbrains.annotations.NotNull;
 class PagMixerEffect$MyFilter
   implements BaseEffectNode.Filter
 {
-  private RenderContext jdField_a_of_type_ComTencentTavDecoderRenderContext;
-  private final TAVStickerRenderContext jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext = new TAVStickerRenderContext();
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, TextureInfo> b = new HashMap();
+  private final PagAutomaticRenderContext a = new PagAutomaticRenderContext();
+  private HashMap<String, Integer> b = new HashMap();
+  private HashMap<String, TextureInfo> c = new HashMap();
+  private RenderContext d;
   
   public PagMixerEffect$MyFilter(List<TAVSticker> paramList)
   {
@@ -36,30 +34,30 @@ class PagMixerEffect$MyFilter
     while (paramList.hasNext())
     {
       TAVSticker localTAVSticker = (TAVSticker)paramList.next();
-      this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.loadSticker(localTAVSticker);
+      this.a.loadSticker(localTAVSticker);
     }
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTavDecoderRenderContext;
+    Object localObject = this.d;
     if (localObject != null) {
       ((RenderContext)localObject).makeCurrent();
     }
-    localObject = this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext;
+    localObject = this.a;
     if (localObject != null) {
-      ((TAVStickerRenderContext)localObject).release();
+      ((PagAutomaticRenderContext)localObject).release();
     }
-    localObject = this.b;
+    localObject = this.c;
     if (localObject != null)
     {
       localObject = ((HashMap)localObject).values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((TextureInfo)((Iterator)localObject).next()).release();
       }
-      this.b.clear();
+      this.c.clear();
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.b;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
@@ -71,13 +69,13 @@ class PagMixerEffect$MyFilter
   
   public void a(@NotNull ImageParams paramImageParams, @NotNull RenderInfo paramRenderInfo)
   {
-    if (!BaseFilter.a(paramRenderInfo.getTime(), this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.getStickers())) {
+    if (!BaseFilter.a(paramRenderInfo.getTime(), this.a.getStickers())) {
       return;
     }
-    this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.setRenderSize(paramRenderInfo.getRenderSize());
+    this.a.setRenderSize(paramRenderInfo.getRenderSize());
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentTavDecoderRenderContext = paramRenderInfo.getCiContext().getRenderContext();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.d = paramRenderInfo.getCiContext().getRenderContext();
+    this.b.clear();
     if (!paramImageParams.a.isEmpty())
     {
       int i = 0;
@@ -93,7 +91,7 @@ class PagMixerEffect$MyFilter
           } else {
             j = i;
           }
-          CIImage localCIImage = ((ImageParams.ImageTrackPair)localObject1).a();
+          CIImage localCIImage = ((ImageParams.ImageTrackPair)localObject1).b();
           int k = (int)localCIImage.getSize().width;
           int m = (int)localCIImage.getSize().height;
           localObject1 = new StringBuilder();
@@ -101,60 +99,36 @@ class PagMixerEffect$MyFilter
           ((StringBuilder)localObject1).append("_");
           ((StringBuilder)localObject1).append(m);
           localObject1 = ((StringBuilder)localObject1).toString();
-          localObject2 = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+          localObject2 = (Integer)this.b.get(localObject1);
           if (localObject2 == null) {
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, Integer.valueOf(1));
+            this.b.put(localObject1, Integer.valueOf(1));
           } else {
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, Integer.valueOf(((Integer)localObject2).intValue() + 1));
+            this.b.put(localObject1, Integer.valueOf(((Integer)localObject2).intValue() + 1));
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("_");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilHashMap.get(localObject1));
+          ((StringBuilder)localObject2).append(this.b.get(localObject1));
           String str = ((StringBuilder)localObject2).toString();
-          localObject2 = (TextureInfo)this.b.get(str);
+          localObject2 = (TextureInfo)this.c.get(str);
           localObject1 = localObject2;
           if (localObject2 == null)
           {
-            this.jdField_a_of_type_ComTencentTavDecoderRenderContext.makeCurrent();
+            this.d.makeCurrent();
             localObject1 = CIContext.newTextureInfo(k, m);
-            this.b.put(str, localObject1);
+            this.c.put(str, localObject1);
           }
           paramRenderInfo.getCiContext().convertImageToTexture(localCIImage, (TextureInfo)localObject1);
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("PAGImage::layerIndex: ");
-          ((StringBuilder)localObject2).append(j);
-          ((StringBuilder)localObject2).append(", renderSize: ");
-          ((StringBuilder)localObject2).append(((TextureInfo)localObject1).width);
-          ((StringBuilder)localObject2).append(", ");
-          ((StringBuilder)localObject2).append(((TextureInfo)localObject1).height);
-          ((StringBuilder)localObject2).append(", textureID: ");
-          ((StringBuilder)localObject2).append(((TextureInfo)localObject1).textureID);
-          ((StringBuilder)localObject2).append(", textureKey: ");
-          ((StringBuilder)localObject2).append(str);
-          ((StringBuilder)localObject2).append(", context: ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentTavDecoderRenderContext.eglContext());
-          Logger.d("PagMixerEffect", ((StringBuilder)localObject2).toString());
           localArrayList.add(new TAVSourceImage((TextureInfo)localObject1, true, j));
         }
         i += 1;
       }
     }
     long l = paramRenderInfo.getTime().getTimeUs() / 1000L;
-    paramRenderInfo = this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.renderSticker(l, localArrayList, this.jdField_a_of_type_ComTencentTavDecoderRenderContext.eglContext());
-    this.jdField_a_of_type_ComTencentTavDecoderRenderContext.makeCurrent();
+    paramRenderInfo = this.a.a(l, localArrayList);
+    this.d.makeCurrent();
     if (paramRenderInfo != null)
     {
-      try
-      {
-        if (paramRenderInfo.isNewFrame()) {
-          this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.getStickerTexture().awaitNewImage(1000L);
-        }
-      }
-      catch (Exception localException)
-      {
-        Logger.e("PagMixerEffect", "apply: ", localException);
-      }
       paramRenderInfo = paramRenderInfo.getTextureInfo();
       paramImageParams.a.clear();
       paramRenderInfo = new ImageParams.ImageTrackPair(new CIImage(paramRenderInfo), null);
@@ -164,7 +138,7 @@ class PagMixerEffect$MyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagMixerEffect.MyFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ApolloSSOConfig$1
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
-    ApolloSSOConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
+    ApolloSSOConfig.a(this.b, this.a, paramBoolean, paramBundle);
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
@@ -29,7 +29,7 @@ class ApolloSSOConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.1
  * JD-Core Version:    0.7.0.1
  */

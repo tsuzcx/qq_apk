@@ -20,14 +20,14 @@ class PicPreDownloader$ScreenBroadcastReceiver$1
     {
       localObject = ((PicPreDownloadImpl)((AppRuntime)localObject).getRuntimeService(IPicPreDownload.class, "")).picPreDownloader;
       ((PicPreDownloader)localObject).d();
-      PicPreDownloader.a((PicPreDownloader)localObject);
+      PicPreDownloader.b((PicPreDownloader)localObject);
       ((IDep)QRoute.api(IDep.class)).consumeAllThumbsInPendingQueue();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver.1
  * JD-Core Version:    0.7.0.1
  */

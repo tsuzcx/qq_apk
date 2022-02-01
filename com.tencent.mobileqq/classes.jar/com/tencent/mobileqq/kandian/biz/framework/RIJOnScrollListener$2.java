@@ -16,7 +16,7 @@ class RIJOnScrollListener$2
   
   public AbsBaseArticleInfo a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().a();
+    Object localObject = this.a.a().v().d();
     int i;
     if (localObject != null) {
       i = ((ListView)localObject).getHeaderViewsCount();
@@ -34,10 +34,10 @@ class RIJOnScrollListener$2
         ((StringBuilder)localObject).append(", headViewCount = ");
         ((StringBuilder)localObject).append(i);
         ((StringBuilder)localObject).append(", articleInfo = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a(j));
+        ((StringBuilder)localObject).append(this.a.c(j));
         QLog.i("RIJOnScrollListener", 2, ((StringBuilder)localObject).toString());
       }
-      return this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a(j);
+      return this.a.c(j);
     }
     return null;
   }
@@ -45,13 +45,13 @@ class RIJOnScrollListener$2
   public void a(FeedExposureHelper.Range paramRange)
   {
     if (paramRange != null) {
-      RIJReportDataCollectionManager.a(paramRange, this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().a().getHeaderViewsCount(), this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager);
+      RIJReportDataCollectionManager.a(paramRange, this.a.a().v().d().getHeaderViewsCount(), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJOnScrollListener.2
  * JD-Core Version:    0.7.0.1
  */

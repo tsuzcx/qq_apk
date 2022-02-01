@@ -19,14 +19,14 @@ class MsgBackupQRFragment$1
     if (QLog.isColorLevel()) {
       QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
     }
-    MsgBackupManager.a().d();
+    MsgBackupManager.a().g();
     this.a.onBackEvent();
     MsgBackupReporter.a("0X800A242", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.1
  * JD-Core Version:    0.7.0.1
  */

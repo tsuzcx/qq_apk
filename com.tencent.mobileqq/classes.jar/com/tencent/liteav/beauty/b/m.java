@@ -2,11 +2,11 @@ package com.tencent.liteav.beauty.b;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 import java.nio.FloatBuffer;
 
 public class m
-  extends h
+  extends j
 {
   private int A;
   private float[] B;
@@ -65,10 +65,10 @@ public class m
   
   public boolean b()
   {
-    this.t = GLES20.glGetUniformLocation(p(), "inputImageTexture2");
-    this.x = GLES20.glGetUniformLocation(p(), "inputImageTexture3");
-    this.A = GLES20.glGetUniformLocation(p(), "v3_params");
-    this.C = GLES20.glGetUniformLocation(p(), "v2_texs");
+    this.t = GLES20.glGetUniformLocation(q(), "inputImageTexture2");
+    this.x = GLES20.glGetUniformLocation(q(), "inputImageTexture3");
+    this.A = GLES20.glGetUniformLocation(q(), "v3_params");
+    this.C = GLES20.glGetUniformLocation(q(), "v2_texs");
     return super.b();
   }
   
@@ -122,7 +122,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.m
  * JD-Core Version:    0.7.0.1
  */

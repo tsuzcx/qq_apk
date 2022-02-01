@@ -41,7 +41,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.c();
+      localRedTouchManager.e();
     }
   }
   
@@ -67,7 +67,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.c(paramString);
+      localRedTouchManager.d(paramString);
     }
   }
   
@@ -97,7 +97,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramString);
+      return localRedTouchManager.b(paramString);
     }
     return null;
   }
@@ -115,7 +115,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramAppInfo);
+      return localRedTouchManager.c(paramAppInfo);
     }
     return null;
   }
@@ -124,7 +124,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramInt);
+      return localRedTouchManager.b(paramInt);
     }
     return 0;
   }
@@ -138,7 +138,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a();
+      return localRedTouchManager.d();
     }
     QLog.e("RedPointLog.RedTouchManagerImpl", 1, "warnning redtouch manager null");
     return null;
@@ -174,7 +174,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramInt);
+      return localRedTouchManager.c(paramInt);
     }
     return null;
   }
@@ -192,7 +192,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.b(paramInt);
+      return localRedTouchManager.e(paramInt);
     }
     return 0;
   }
@@ -201,7 +201,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramInt);
+      return localRedTouchManager.g(paramInt);
     }
     return null;
   }
@@ -210,7 +210,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a(paramInt, paramString);
+      return localRedTouchManager.d(paramInt, paramString);
     }
     return null;
   }
@@ -245,7 +245,7 @@ public class RedTouchManagerImpl
     boolean bool1 = bool2;
     if (localRedTouchManager != null)
     {
-      paramString = localRedTouchManager.a(paramString);
+      paramString = localRedTouchManager.b(paramString);
       bool1 = bool2;
       if (paramString != null)
       {
@@ -262,7 +262,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.b(paramInt);
+      return localRedTouchManager.f(paramInt);
     }
     return false;
   }
@@ -305,7 +305,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.b(paramString);
+      localRedTouchManager.c(paramString);
     }
   }
   
@@ -329,7 +329,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramInt, paramString);
+      localRedTouchManager.c(paramInt, paramString);
     }
   }
   
@@ -345,7 +345,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramAppInfo);
+      localRedTouchManager.b(paramAppInfo);
     }
   }
   
@@ -353,7 +353,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramArrayOfByte);
+      localRedTouchManager.b(paramArrayOfByte);
     }
   }
   
@@ -370,7 +370,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramInt1, paramInt2);
+      localRedTouchManager.b(paramInt1, paramInt2);
     }
   }
   
@@ -378,7 +378,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramString, paramInt);
+      localRedTouchManager.b(paramString, paramInt);
     }
   }
   
@@ -386,7 +386,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.b(paramInt1, paramInt2);
+      localRedTouchManager.c(paramInt1, paramInt2);
     }
   }
   
@@ -394,7 +394,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      localRedTouchManager.a(paramTimeRspBody);
+      localRedTouchManager.b(paramTimeRspBody);
     }
   }
   
@@ -418,7 +418,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.b(paramInt);
+      return localRedTouchManager.d(paramInt);
     }
     return null;
   }
@@ -427,7 +427,7 @@ public class RedTouchManagerImpl
   {
     RedTouchManager localRedTouchManager = this.mRedTouchManager;
     if (localRedTouchManager != null) {
-      return localRedTouchManager.a();
+      return localRedTouchManager.c();
     }
     return null;
   }
@@ -486,7 +486,7 @@ public class RedTouchManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchManagerImpl
  * JD-Core Version:    0.7.0.1
  */

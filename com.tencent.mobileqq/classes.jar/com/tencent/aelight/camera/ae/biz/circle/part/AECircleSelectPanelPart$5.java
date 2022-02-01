@@ -12,9 +12,9 @@ class AECircleSelectPanelPart$5
   
   public void onClick(View paramView)
   {
-    if (AECircleSelectPanelPart.c(this.a) != null)
+    if (AECircleSelectPanelPart.g(this.a) != null)
     {
-      AECircleSelectPanelPart.d(this.a).f();
+      AECircleSelectPanelPart.h(this.a).n();
       return;
     }
     QLog.d("AECircleSelectPanelPart", 1, "initMove, mPhotoListLogic == null");
@@ -22,7 +22,7 @@ class AECircleSelectPanelPart$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECircleSelectPanelPart.5
  * JD-Core Version:    0.7.0.1
  */

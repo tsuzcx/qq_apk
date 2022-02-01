@@ -14,15 +14,15 @@ class QavPanel$4
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (QavPanel.c(this.a))
+    if (QavPanel.f(this.a))
     {
-      if (this.a.a != null) {
-        this.a.a.setLevel(i);
+      if (this.a.K != null) {
+        this.a.K.setLevel(i);
       }
-      if (QavPanel.d(this.a))
+      if (QavPanel.g(this.a))
       {
-        QavPanel.a(this.a).a(i);
-        QavPanel.a(this.a).b(i);
+        QavPanel.h(this.a).a(i);
+        QavPanel.c(this.a).b(i);
       }
     }
   }

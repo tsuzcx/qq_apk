@@ -10,7 +10,7 @@ class CommentPresenter$10
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    this.this$0.a(this.a, this.b);
   }
 }
 

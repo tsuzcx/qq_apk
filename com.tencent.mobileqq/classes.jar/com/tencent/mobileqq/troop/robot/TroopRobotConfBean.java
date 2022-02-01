@@ -8,13 +8,8 @@ import org.json.JSONObject;
 
 public class TroopRobotConfBean
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  
-  public static TroopRobotConfBean a()
-  {
-    return (TroopRobotConfBean)QConfigManager.a().a(460);
-  }
+  private int a = 1;
+  private String b = "";
   
   public static TroopRobotConfBean a(QConfItem paramQConfItem)
   {
@@ -26,14 +21,14 @@ public class TroopRobotConfBean
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse taskid->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQConfItem.a);
         localStringBuilder.append(" content->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramQConfItem.b);
         QLog.d("TroopRobotConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        paramQConfItem = new JSONObject(paramQConfItem.b);
         int i = paramQConfItem.optInt("robotswitch", 0);
         paramQConfItem = paramQConfItem.optString("c2cwarning", "");
         localTroopRobotConfBean.a(i);
@@ -54,34 +49,39 @@ public class TroopRobotConfBean
     return localTroopRobotConfBean;
   }
   
-  public String a()
+  public static TroopRobotConfBean c()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return (TroopRobotConfBean)QConfigManager.b().b(460);
   }
   
   void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
   
   public String toString()
   {
-    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.TroopRobotConfBean
  * JD-Core Version:    0.7.0.1
  */

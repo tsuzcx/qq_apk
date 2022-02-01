@@ -148,7 +148,7 @@ public class QzoneSoundPlugin
         QLog.d("QzoneSoundPlugin", 2, ((StringBuilder)localObject2).toString());
         if (!new File(this.mDownloadMusicFinalCachePath).exists())
         {
-          DownloaderFactory.getInstance(this.parentPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.mDownloadMusicFinalCachePath, new QzoneSoundPlugin.1(this, paramVarArgs));
+          DownloaderFactory.getInstance(this.parentPlugin.mRuntime.d()).getCommonDownloader().download((String)localObject1, this.mDownloadMusicFinalCachePath, new QzoneSoundPlugin.1(this, paramVarArgs));
           return;
         }
         if (QLog.isColorLevel()) {
@@ -272,7 +272,7 @@ public class QzoneSoundPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin
  * JD-Core Version:    0.7.0.1
  */

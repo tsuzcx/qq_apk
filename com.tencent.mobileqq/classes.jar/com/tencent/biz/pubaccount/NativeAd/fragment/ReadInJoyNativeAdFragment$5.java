@@ -9,17 +9,17 @@ class ReadInJoyNativeAdFragment$5
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.this$0).setBackgroundResource(2130839301);
-    ReadInJoyNativeAdFragment.a(this.this$0).setText(this.this$0.getText(2131717960));
-    ReadInJoyNativeAdFragment.a(this.this$0).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.this$0).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.this$0).setClickable(true);
+    ReadInJoyNativeAdFragment.m(this.this$0).setBackgroundResource(2130839481);
+    ReadInJoyNativeAdFragment.m(this.this$0).setText(this.this$0.getText(2131915440));
+    ReadInJoyNativeAdFragment.m(this.this$0).setTextColor(-1);
+    ReadInJoyNativeAdFragment.m(this.this$0).setProgress(0);
+    ReadInJoyNativeAdFragment.m(this.this$0).setClickable(true);
     ReadInJoyNativeAdFragment.c(this.this$0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.5
  * JD-Core Version:    0.7.0.1
  */

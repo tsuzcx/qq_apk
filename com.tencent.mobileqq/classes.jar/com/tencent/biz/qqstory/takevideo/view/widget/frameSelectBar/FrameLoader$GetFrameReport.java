@@ -8,43 +8,36 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FrameLoader$GetFrameReport
 {
-  public int a;
-  public long a;
-  private Map<Integer, Long> a;
-  public int b = -1;
-  
-  public FrameLoader$GetFrameReport()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  public int a = 0;
+  public long b = 0L;
+  public int c = -1;
+  private Map<Integer, Long> d = new ConcurrentHashMap();
   
   public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_Long < paramLong)
+    this.d.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    if (this.b < paramLong)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      this.b = paramInt;
+      this.b = paramLong;
+      this.c = paramInt;
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.d.entrySet().iterator();
     for (long l = 0L; localIterator.hasNext(); l += ((Long)((Map.Entry)localIterator.next()).getValue()).longValue()) {}
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+    if (this.d.size() == 0) {
       return "there_is_no_frame";
     }
-    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
+    this.a = ((int)l / this.d.size());
     localStringBuilder.append("avg:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|max:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("|maxId:");
     localStringBuilder.append(this.b);
+    localStringBuilder.append("|maxId:");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }

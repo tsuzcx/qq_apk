@@ -8,15 +8,15 @@ import java.util.List;
 
 public class PoiCache$PoiItem
 {
-  public final AdInfo a;
   public LatLng a;
-  public final List<Poi> a;
+  public final List<Poi> b;
+  public final AdInfo c;
   
   public PoiCache$PoiItem(LatLng paramLatLng, AdInfo paramAdInfo, List<Poi> paramList)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo = paramAdInfo;
+    this.a = paramLatLng;
+    this.b = paramList;
+    this.c = paramAdInfo;
   }
   
   @NonNull
@@ -24,18 +24,18 @@ public class PoiCache$PoiItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PoiItem{latLng=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", poiList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", adInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentLbssearchHttpresponseAdInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.PoiCache.PoiItem
  * JD-Core Version:    0.7.0.1
  */

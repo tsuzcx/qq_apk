@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract interface IGuessPictureGameRecordCtrl$GameImageDataProvider
 {
-  public abstract ArrayList<GameImageData> a();
+  public abstract boolean f();
   
-  public abstract boolean b();
+  public abstract ArrayList<GameImageData> g();
 }
 
 

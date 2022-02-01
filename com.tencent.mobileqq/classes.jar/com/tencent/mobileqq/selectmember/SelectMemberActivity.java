@@ -59,6 +59,7 @@ import com.tencent.mobileqq.discussion.observer.DiscussionObserver;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.qwallet.transaction.IToPayManager;
@@ -83,6 +84,7 @@ import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.mobileqq.troop.api.ITroopUtilApi;
 import com.tencent.mobileqq.troop.api.handler.ITroopMngHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.troop.createtroopblacklist.api.ICreateTroopBlackListUtilApi;
 import com.tencent.mobileqq.troop.data.TroopCreateInfo.TroopCreateResult;
 import com.tencent.mobileqq.troop.troopcreate.TroopCreateUtils;
 import com.tencent.mobileqq.troop.troopcreate.api.ITroopCreateService;
@@ -184,7 +186,7 @@ public class SelectMemberActivity
   protected InnerFrameManager mInnerFrameManager;
   protected Intent mIntent;
   protected long mInviteNoAuthLimitNum = 9223372036854775807L;
-  String mInviteSuccToastWording = HardCodeUtil.a(2131713668);
+  String mInviteSuccToastWording = HardCodeUtil.a(2131911213);
   protected List<String> mInvitedUinList = new ArrayList();
   public boolean mIsForbidOnlyChooseMySelf = false;
   protected boolean mIsLimitToInviteByTroopMaxLimit = false;
@@ -419,26 +421,26 @@ public class SelectMemberActivity
           {
             int i = this.mEntrance;
             if ((i != 11) && (i != 36)) {
-              str = getString(2131693483);
+              str = getString(2131891032);
             } else {
-              str = getString(2131695583);
+              str = getString(2131893342);
             }
           }
           else
           {
-            str = getString(2131693481);
+            str = getString(2131891030);
           }
         }
         else {
-          str = getString(2131693482);
+          str = getString(2131891031);
         }
       }
       else {
-        str = getString(2131693479);
+        str = getString(2131891028);
       }
     }
     else {
-      str = getString(2131693480);
+      str = getString(2131891029);
     }
     this.mHandler.obtainMessage(1, str).sendToTarget();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -491,13 +493,13 @@ public class SelectMemberActivity
       localDialog.dismiss();
       this.pd = null;
     }
-    this.pd = new ReportDialog(this, 2131756189);
-    this.pd.setContentView(2131562765);
-    this.tipsDialogText = ((TextView)this.pd.findViewById(2131365644));
-    this.tipsDialogText.setText(getString(2131718766));
-    this.tipsDialogPb = ((ProgressBar)this.pd.findViewById(2131367113));
+    this.pd = new ReportDialog(this, 2131953338);
+    this.pd.setContentView(2131629210);
+    this.tipsDialogText = ((TextView)this.pd.findViewById(2131431876));
+    this.tipsDialogText.setText(getString(2131916272));
+    this.tipsDialogPb = ((ProgressBar)this.pd.findViewById(2131433567));
     this.tipsDialogPb.setVisibility(0);
-    this.tipsFlagImage = ((ImageView)this.pd.findViewById(2131380236));
+    this.tipsFlagImage = ((ImageView)this.pd.findViewById(2131449154));
     this.tipsFlagImage.setVisibility(4);
   }
   
@@ -599,14 +601,14 @@ public class SelectMemberActivity
       }
       this.mRightBtn.setText((CharSequence)localObject1);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       localObject1 = this.mRightBtn;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(this.mDoneBtnText);
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131713661));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131911206));
       ((StringBuilder)localObject2).append(i);
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131713652));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131911197));
       ((TextView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
     }
   }
@@ -620,7 +622,7 @@ public class SelectMemberActivity
   {
     if (System.currentTimeMillis() - this.mOverloadToastLastShowTime > 2000)
     {
-      QQToast.a(this, paramString, 2000).b(this.mTitleBar.getHeight());
+      QQToast.makeText(this, paramString, 2000).show(this.mTitleBar.getHeight());
       this.mOverloadToastLastShowTime = System.currentTimeMillis();
     }
   }
@@ -639,7 +641,7 @@ public class SelectMemberActivity
         QLog.i("SelectMemberActivity", 2, ((StringBuilder)localObject).toString());
       }
       SelectMemberInnerFrame localSelectMemberInnerFrame = (SelectMemberInnerFrame)this.mInnerFrameManager.getChildAt(1);
-      if ((paramBoolean) && (this.mInnerFrameManager.a() == 0)) {
+      if ((paramBoolean) && (this.mInnerFrameManager.getCurrentPage() == 0)) {
         return;
       }
       if ((localSelectMemberInnerFrame instanceof FriendTeamListInnerFrame))
@@ -755,7 +757,7 @@ public class SelectMemberActivity
         ((JSONObject)localObject2).put("group_type", 1);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(((ISelectMemberRefatorHelperApi)QRoute.api(ISelectMemberRefatorHelperApi.class)).getAccountNickName(this.app, this.app.getCurrentAccountUin()));
-        localStringBuilder.append(HardCodeUtil.a(2131713651));
+        localStringBuilder.append(HardCodeUtil.a(2131911196));
         ((JSONObject)localObject2).put("name", localStringBuilder.toString());
         ((JSONObject)localObject2).put("classify", 10010);
         if ((this.mEntrance != 12) && (this.mEntrance != 36)) {
@@ -908,7 +910,7 @@ public class SelectMemberActivity
       }
       if (!canInvite())
       {
-        QQToast.a(this, 2131694488, 0).b(getTitleBarHeight());
+        QQToast.makeText(this, 2131892170, 0).show(getTitleBarHeight());
         return;
       }
       if (this.mTroopMemberNum <= 0)
@@ -921,7 +923,7 @@ public class SelectMemberActivity
       if ((this.mInviteNoAuthLimitNum > 0L) && (paramArrayList.size() + this.mTroopMemberNum > this.mInviteNoAuthLimitNum))
       {
         paramArrayList = TroopCreateUtils.a(paramArrayList);
-        DialogUtil.a(this, HardCodeUtil.a(2131713662), 2131690728, 2131693477, new SelectMemberActivity.7(this, paramArrayList), new DialogUtil.DialogOnClickAdapter()).show();
+        DialogUtil.a(this, HardCodeUtil.a(2131911207), 2131887648, 2131891026, new SelectMemberActivity.7(this, paramArrayList), new DialogUtil.DialogOnClickAdapter()).show();
         reportInviteFriend("exp_msgbox");
         return;
       }
@@ -965,7 +967,7 @@ public class SelectMemberActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    setTheme(2131755317);
+    setTheme(2131952010);
     super.doOnCreate(paramBundle);
     this.app = ((AppInterface)getAppRuntime());
     getIntentExtras();
@@ -997,7 +999,7 @@ public class SelectMemberActivity
       ThreadManager.post(new SelectMemberActivity.1(this), 8, null, true);
     }
     this.mTransparentFace = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-    this.mDefaultAvatar = BaseImageUtil.f();
+    this.mDefaultAvatar = BaseImageUtil.k();
     if (this.videoMsgReceiver == null)
     {
       this.videoMsgReceiver = new SelectMemberActivity.VideoMsgReceiver(this);
@@ -1114,7 +1116,7 @@ public class SelectMemberActivity
   @TargetApi(14)
   protected void findViews()
   {
-    Object localObject = (RelativeLayout)findViewById(2131376809);
+    Object localObject = (RelativeLayout)findViewById(2131445137);
     int i = ImmersiveUtils.isSupporImmersive();
     boolean bool = true;
     if (i == 1)
@@ -1124,33 +1126,33 @@ public class SelectMemberActivity
       }
       ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.mTitleBar = findViewById(2131378803);
-    this.mTitle = ((TextView)findViewById(2131369249));
-    this.mLeftBackBtn = ((TextView)findViewById(2131369202));
-    this.mLeftCancelBtn = ((TextView)findViewById(2131369204));
-    this.mRightBtn = ((TextView)findViewById(2131369233));
-    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)findViewById(2131377172));
-    this.mListPanel = ((LinearLayout)findViewById(2131370145));
-    this.mInnerFrameManager = ((InnerFrameManager)findViewById(2131380840));
-    this.mSearchResultLayout = findViewById(2131376483);
+    this.mTitleBar = findViewById(2131447484);
+    this.mTitle = ((TextView)findViewById(2131436227));
+    this.mLeftBackBtn = ((TextView)findViewById(2131436180));
+    this.mLeftCancelBtn = ((TextView)findViewById(2131436182));
+    this.mRightBtn = ((TextView)findViewById(2131436211));
+    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)findViewById(2131445550));
+    this.mListPanel = ((LinearLayout)findViewById(2131437308));
+    this.mInnerFrameManager = ((InnerFrameManager)findViewById(2131449816));
+    this.mSearchResultLayout = findViewById(2131444724);
     this.mSearchResultLayout.setVisibility(8);
-    this.mTooManyMembersTipsBar = findViewById(2131378981);
+    this.mTooManyMembersTipsBar = findViewById(2131447691);
     localObject = this.mTooManyMembersTipsBar;
     if (localObject != null)
     {
       ((View)localObject).setVisibility(8);
       this.mTooManyMembersTipsBar.setOnClickListener(this);
     }
-    this.mTooManyMembersTipsClose = findViewById(2131378982);
+    this.mTooManyMembersTipsClose = findViewById(2131447692);
     localObject = this.mTooManyMembersTipsClose;
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
-    this.mCreateTroopButtonLayout = findViewById(2131365324);
+    this.mCreateTroopButtonLayout = findViewById(2131431508);
     if (isShowDoneButtonInBottom())
     {
       this.mCreateTroopButtonLayout.setVisibility(0);
-      this.mCreateTroopButton = ((Button)findViewById(2131365323));
+      this.mCreateTroopButton = ((Button)findViewById(2131431507));
       if (this.mEntrance == 35) {
         this.mCreateTroopButton.setText(this.mDoneBtnText);
       } else {
@@ -1172,13 +1174,13 @@ public class SelectMemberActivity
       }
       else if (isInviteTroopMember())
       {
-        this.mCreateTroopButton.setText(HardCodeUtil.a(2131713632));
+        this.mCreateTroopButton.setText(HardCodeUtil.a(2131911177));
         refreshInviteTipsBar();
       }
     }
-    this.mMultiSearchView = findViewById(2131377173);
-    this.mMultiAddContainerV = findViewById(2131366925);
-    this.mMultiAddBtn = ((Button)findViewById(2131363978));
+    this.mMultiSearchView = findViewById(2131445551);
+    this.mMultiAddContainerV = findViewById(2131433271);
+    this.mMultiAddBtn = ((Button)findViewById(2131429937));
     localObject = this.mMultiAddBtn;
     if (localObject != null) {
       ((Button)localObject).setOnClickListener(this);
@@ -1205,18 +1207,18 @@ public class SelectMemberActivity
         if (i != 3)
         {
           if (i != 4) {
-            overridePendingTransition(0, 2130771992);
+            overridePendingTransition(0, 2130771995);
           } else {
             overridePendingTransition(0, 0);
           }
         }
         else {
-          overridePendingTransition(0, 2130772015);
+          overridePendingTransition(0, 2130772018);
         }
       }
     }
     else {
-      overridePendingTransition(2130772002, 2130772003);
+      overridePendingTransition(2130772005, 2130772006);
     }
     if (this.mSelectedAndSearchBar.a()) {
       runOnUiThread(new SelectMemberActivity.16(this));
@@ -1231,26 +1233,26 @@ public class SelectMemberActivity
     default: 
       return 0;
     case 6: 
-      return 2131718725;
+      return 2131916227;
     case 5: 
-      return 2131718724;
+      return 2131916226;
     case 4: 
-      return 2131718723;
+      return 2131916225;
     case 3: 
-      return 2131718722;
+      return 2131916224;
     case 2: 
-      return 2131718721;
+      return 2131916223;
     case 1: 
-      return 2131718720;
+      return 2131916222;
     }
-    return 2131718726;
+    return 2131916228;
   }
   
   public Map<String, List<TroopMemberInfo>> getIndexedFriends()
   {
     InnerFrameManager localInnerFrameManager = this.mInnerFrameManager;
     if ((localInnerFrameManager != null) && ((localInnerFrameManager.getCurrentView() instanceof TroopMemberListInnerFrame))) {
-      return ((TroopMemberListInnerFrame)this.mInnerFrameManager.getCurrentView()).a();
+      return ((TroopMemberListInnerFrame)this.mInnerFrameManager.getCurrentView()).getIndexedFriends();
     }
     return null;
   }
@@ -1301,7 +1303,7 @@ public class SelectMemberActivity
     this.mMaxSelectNumber = this.mIntent.getIntExtra("param_max", 2147483647);
     if ((!TextUtils.isEmpty(this.mGroupCode)) && (!TextUtils.equals("0", this.mGroupCode)))
     {
-      localObject1 = CommonUtils.a(this.app, this.mGroupCode);
+      localObject1 = CommonUtils.d(this.app, this.mGroupCode);
       if (localObject1 != null)
       {
         i = ((TroopInfo)localObject1).wMemberMax - ((TroopInfo)localObject1).wMemberNum;
@@ -1340,11 +1342,11 @@ public class SelectMemberActivity
     this.mOverloadTipsIncludeDefaultCount = this.mIntent.getBooleanExtra("param_overload_tips_include_default_count", false);
     this.mTitleString = this.mIntent.getStringExtra("param_title");
     if (this.mTitleString == null) {
-      this.mTitleString = getString(2131718701);
+      this.mTitleString = getString(2131916202);
     }
     this.mDoneBtnText = this.mIntent.getStringExtra("param_done_button_wording");
     if (this.mDoneBtnText == null) {
-      this.mDoneBtnText = getString(2131718713);
+      this.mDoneBtnText = getString(2131916215);
     }
     this.mDoneBtnText_x = this.mIntent.getStringExtra("param_done_button_highlight_wording");
     if (this.mDoneBtnText_x == null)
@@ -1424,7 +1426,7 @@ public class SelectMemberActivity
   {
     InnerFrameManager localInnerFrameManager = this.mInnerFrameManager;
     if ((localInnerFrameManager != null) && ((localInnerFrameManager.getCurrentView() instanceof TroopMemberListInnerFrame))) {
-      return ((TroopMemberListInnerFrame)this.mInnerFrameManager.getCurrentView()).a();
+      return ((TroopMemberListInnerFrame)this.mInnerFrameManager.getCurrentView()).getMemberListAdapter();
     }
     return null;
   }
@@ -1621,14 +1623,14 @@ public class SelectMemberActivity
     this.mLeftBackBtn.setVisibility(0);
     this.mLeftCancelBtn.setVisibility(8);
     this.mRightBtn.setVisibility(0);
-    this.mLeftBackBtn.setText(2131718706);
+    this.mLeftBackBtn.setText(2131916208);
     this.mLeftBackBtn.setBackgroundResource(0);
     this.mLeftBackBtn.setPadding(0, 0, 0, 0);
     this.mTitle.setText(this.mTitleString);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       this.mTitle.setContentDescription(this.mTitleString);
-      this.mLeftBackBtn.setContentDescription(getString(2131718706));
+      this.mLeftBackBtn.setContentDescription(getString(2131916208));
     }
     if (isShowDoneButtonInBottom())
     {
@@ -1636,17 +1638,17 @@ public class SelectMemberActivity
       if (isCreateNewTroopEntrance())
       {
         this.mLeftBackBtn.setText("");
-        this.mLeftBackBtn.setBackgroundResource(2130851066);
+        this.mLeftBackBtn.setBackgroundResource(2130853297);
       }
       else if (isInviteTroopMember())
       {
-        this.mLeftBackBtn.setText(2131690728);
+        this.mLeftBackBtn.setText(2131887648);
         this.mLeftBackBtn.setBackgroundDrawable(null);
       }
       else
       {
         this.mLeftBackBtn.setText("");
-        this.mLeftBackBtn.setBackgroundResource(2130851066);
+        this.mLeftBackBtn.setBackgroundResource(2130853297);
       }
       this.mLeftCancelBtn.setVisibility(8);
     }
@@ -1656,12 +1658,12 @@ public class SelectMemberActivity
     {
       if (this.mEntrance == 35)
       {
-        this.mRightBtn.setText(2131718704);
+        this.mRightBtn.setText(2131916206);
         ShareChatReport.f();
       }
       else
       {
-        this.mRightBtn.setText(2131718705);
+        this.mRightBtn.setText(2131916207);
       }
       this.mRightBtn.setVisibility(0);
     }
@@ -1732,10 +1734,10 @@ public class SelectMemberActivity
       {
         if ((this.mEntrance == 12) && (i == 1))
         {
-          showMemberOverloadToast(2131691793);
+          showMemberOverloadToast(2131888755);
           return true;
         }
-        showMemberOverloadToast(2131691788);
+        showMemberOverloadToast(2131888750);
         return true;
       }
     }
@@ -1745,7 +1747,7 @@ public class SelectMemberActivity
       {
         if ((this.mIsLimitToInviteByTroopMaxLimit) && (this.mResultList.size() >= this.mMaxSelectNumber))
         {
-          showMemberOverloadToast(HardCodeUtil.a(2131713644));
+          showMemberOverloadToast(HardCodeUtil.a(2131911189));
           return true;
         }
         i = this.mSubType;
@@ -1754,14 +1756,14 @@ public class SelectMemberActivity
           if (this.mResultList.size() < this.mMaxSelectNumber) {
             break label1110;
           }
-          showMemberOverloadToast(getString(2131720065));
+          showMemberOverloadToast(getString(2131917686));
           return true;
         }
         if (i == 1)
         {
           if (this.mResultList.size() >= this.mMaxSelectNumber)
           {
-            showMemberOverloadToast(2131720065);
+            showMemberOverloadToast(2131917686);
             return true;
           }
           if (this.mEntrance != 11) {
@@ -1822,7 +1824,7 @@ public class SelectMemberActivity
           if (paramInt <= i) {
             break label1033;
           }
-          showMemberOverloadToast(2131720033);
+          showMemberOverloadToast(2131917654);
         }
         else
         {
@@ -1831,7 +1833,7 @@ public class SelectMemberActivity
             if (this.mResultList.size() < this.mMaxSelectNumber) {
               break label1110;
             }
-            showMemberOverloadToast(getString(2131720032));
+            showMemberOverloadToast(getString(2131917653));
             paramString1 = this.mGroupCode;
             paramString2 = new StringBuilder();
             paramString3 = (ISelectMemberRefatorHelperApi)QRoute.api(ISelectMemberRefatorHelperApi.class);
@@ -1848,7 +1850,7 @@ public class SelectMemberActivity
             if (paramInt < i) {
               break label1110;
             }
-            showMemberOverloadToast(getString(2131719798, new Object[] { Integer.valueOf(i) }));
+            showMemberOverloadToast(getString(2131917402, new Object[] { Integer.valueOf(i) }));
             return true;
           }
           if (this.mResultList.size() < this.mMaxSelectNumber) {
@@ -1856,10 +1858,10 @@ public class SelectMemberActivity
           }
           if (this.mEntrance == 35)
           {
-            showMemberOverloadToast(2131720065);
+            showMemberOverloadToast(2131917686);
             return true;
           }
-          showMemberOverloadToast(2131720032);
+          showMemberOverloadToast(2131917653);
           return true;
         }
       }
@@ -1877,7 +1879,7 @@ public class SelectMemberActivity
         if (this.mResultList.size() < paramInt) {
           break label1033;
         }
-        showMemberOverloadToast(String.format(getString(2131690685), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getTotalSendLimit(this.app)) }));
+        showMemberOverloadToast(String.format(getString(2131887600), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getTotalSendLimit(this.app)) }));
       }
       for (;;)
       {
@@ -1893,7 +1895,7 @@ public class SelectMemberActivity
         if (this.mResultList.size() < paramInt) {
           break;
         }
-        showMemberOverloadToast(String.format(getString(2131690685), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getWebTotalSendLimit(this.app)) }));
+        showMemberOverloadToast(String.format(getString(2131887600), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getWebTotalSendLimit(this.app)) }));
       }
       label1033:
       return paramBoolean;
@@ -1911,7 +1913,7 @@ public class SelectMemberActivity
         }
         paramInt = 0;
         label1077:
-        showMemberOverloadToast(String.format(getString(2131694673), new Object[] { Integer.valueOf(paramInt + this.mMaxSelectNumber) }));
+        showMemberOverloadToast(String.format(getString(2131892365), new Object[] { Integer.valueOf(paramInt + this.mMaxSelectNumber) }));
         return true;
       }
     }
@@ -1927,7 +1929,7 @@ public class SelectMemberActivity
       boolean bool1;
       if ((this.mEntrance == 15) && (!((IBlessApi)QRoute.api(IBlessApi.class)).isUinBlessed(this.app, paramString1)) && (this.mUnblessedUinCount >= ((IBlessApi)QRoute.api(IBlessApi.class)).getAvailableUinCount(this.app)))
       {
-        showMemberOverloadToast(String.format(getString(2131690686), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getTotalUinLimit(this.app)) }));
+        showMemberOverloadToast(String.format(getString(2131887601), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getTotalUinLimit(this.app)) }));
         bool1 = true;
       }
       else
@@ -1943,7 +1945,7 @@ public class SelectMemberActivity
           bool2 = bool1;
           if (this.mUnblessedUinCount >= ((IBlessApi)QRoute.api(IBlessApi.class)).getWebAvailableUinCount(this.app))
           {
-            showMemberOverloadToast(String.format(getString(2131720366), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getWebTotalUinLimit(this.app)) }));
+            showMemberOverloadToast(String.format(getString(2131918004), new Object[] { Integer.valueOf(((IBlessApi)QRoute.api(IBlessApi.class)).getWebTotalUinLimit(this.app)) }));
             return true;
           }
         }
@@ -2014,19 +2016,19 @@ public class SelectMemberActivity
   
   public void onAction(View paramView)
   {
-    Object localObject2 = (IContactSearchModel)paramView.getTag(2131380884);
+    Object localObject2 = (IContactSearchModel)paramView.getTag(2131449867);
     if (localObject2 == null) {
       return;
     }
     if (this.mEntrance == 33) {
       ReportController.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.searchclick", 0, 0, "", "", "", "");
     }
-    paramView = ((IContactSearchModel)localObject2).a();
-    String str = ((IContactSearchModel)localObject2).b().toString();
+    paramView = ((IContactSearchModel)localObject2).c();
+    String str = ((IContactSearchModel)localObject2).d().toString();
     boolean bool1 = localObject2 instanceof ContactSearchModelDiscussionMember;
     Object localObject1;
     if (bool1) {
-      localObject1 = ((ContactSearchModelDiscussionMember)localObject2).e();
+      localObject1 = ((ContactSearchModelDiscussionMember)localObject2).s();
     } else if ((localObject2 instanceof ContactSearchModelNewTroopMember)) {
       localObject1 = ((ContactSearchModelNewTroopMember)localObject2).a;
     } else {
@@ -2059,8 +2061,8 @@ public class SelectMemberActivity
     {
       paramView = new Bundle();
       localObject1 = (ContactSearchModelDiscussion)localObject2;
-      paramView.putString("group_uin", ((ContactSearchModelDiscussion)localObject1).a());
-      paramView.putString("group_name", ((ContactSearchModelDiscussion)localObject1).c());
+      paramView.putString("group_uin", ((ContactSearchModelDiscussion)localObject1).c());
+      paramView.putString("group_name", ((ContactSearchModelDiscussion)localObject1).m());
       this.mInnerFrameManager.a(7, paramView);
       quitSearchState();
       return;
@@ -2068,15 +2070,15 @@ public class SelectMemberActivity
     if ((localObject2 instanceof ContactSearchModelNewTroop))
     {
       paramView = (ContactSearchModelNewTroop)localObject2;
-      localObject1 = paramView.a();
+      localObject1 = paramView.t();
       if ((!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.app.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.app.getCurrentAccountUin())))
       {
-        QQToast.a(this, 0, getResources().getString(2131697626), 0).b(getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this, 0, getResources().getString(2131895399), 0).show(getResources().getDimensionPixelSize(2131299920));
         return;
       }
       localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("group_uin", paramView.a());
-      ((Bundle)localObject1).putString("group_name", paramView.c());
+      ((Bundle)localObject1).putString("group_uin", paramView.c());
+      ((Bundle)localObject1).putString("group_name", paramView.m());
       this.mInnerFrameManager.a(6, (Bundle)localObject1);
       quitSearchState();
       return;
@@ -2084,22 +2086,22 @@ public class SelectMemberActivity
     if ((localObject2 instanceof ContactSearchModelTroop))
     {
       paramView = (ContactSearchModelTroop)localObject2;
-      localObject1 = paramView.a();
+      localObject1 = paramView.t();
       if ((!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.app.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.app.getCurrentAccountUin())))
       {
-        QQToast.a(this, 0, getResources().getString(2131697626), 0).b(getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this, 0, getResources().getString(2131895399), 0).show(getResources().getDimensionPixelSize(2131299920));
         return;
       }
       localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("group_uin", paramView.a());
-      ((Bundle)localObject1).putString("group_name", paramView.c());
+      ((Bundle)localObject1).putString("group_uin", paramView.c());
+      ((Bundle)localObject1).putString("group_name", paramView.m());
       this.mInnerFrameManager.a(6, (Bundle)localObject1);
       quitSearchState();
       return;
     }
     if (isInvitedListContainFriend(paramView))
     {
-      QQToast.a(this, 1, HardCodeUtil.a(2131713655), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131911200), 0).show(getTitleBarHeight());
       ReportController.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, (String)localObject1, "", "", "");
       return;
     }
@@ -2110,33 +2112,33 @@ public class SelectMemberActivity
         return;
       }
       localObject3 = (SelectMemberInnerFrame)this.mInnerFrameManager.getCurrentView();
-      int j = this.mInnerFrameManager.a();
+      int j = this.mInnerFrameManager.getCurrentPage();
       int i = 5;
-      if ((j != 5) && (this.mInnerFrameManager.a() != 0) && (this.mInnerFrameManager.a() != 4) && (this.mInnerFrameManager.a() != 3) && (this.mInnerFrameManager.a() != 8)) {
-        if (this.mInnerFrameManager.a() == 6) {
-          this.mResultList.add(constructAResultRecord(paramView, str, 1, ((SelectMemberInnerFrame)localObject3).a()));
+      if ((j != 5) && (this.mInnerFrameManager.getCurrentPage() != 0) && (this.mInnerFrameManager.getCurrentPage() != 4) && (this.mInnerFrameManager.getCurrentPage() != 3) && (this.mInnerFrameManager.getCurrentPage() != 8)) {
+        if (this.mInnerFrameManager.getCurrentPage() == 6) {
+          this.mResultList.add(constructAResultRecord(paramView, str, 1, ((SelectMemberInnerFrame)localObject3).getGroupUin()));
         }
       }
       for (;;)
       {
         break;
-        if (this.mInnerFrameManager.a() == 7)
+        if (this.mInnerFrameManager.getCurrentPage() == 7)
         {
-          this.mResultList.add(constructAResultRecord(paramView, str, 2, ((SelectMemberInnerFrame)localObject3).a()));
+          this.mResultList.add(constructAResultRecord(paramView, str, 2, ((SelectMemberInnerFrame)localObject3).getGroupUin()));
         }
-        else if (this.mInnerFrameManager.a() == 1)
+        else if (this.mInnerFrameManager.getCurrentPage() == 1)
         {
-          if ((paramView.startsWith("pstn")) && (preAddPstnNumber(paramView, str, 5, ((SelectMemberInnerFrame)localObject3).a()))) {
-            this.mResultList.add(constructAResultRecord(paramView, str, 5, ((SelectMemberInnerFrame)localObject3).a()));
+          if ((paramView.startsWith("pstn")) && (preAddPstnNumber(paramView, str, 5, ((SelectMemberInnerFrame)localObject3).getGroupUin()))) {
+            this.mResultList.add(constructAResultRecord(paramView, str, 5, ((SelectMemberInnerFrame)localObject3).getGroupUin()));
           } else if (paramView.startsWith("+")) {
-            this.mResultList.add(constructAResultRecord(paramView, str, 4, ((SelectMemberInnerFrame)localObject3).a()));
+            this.mResultList.add(constructAResultRecord(paramView, str, 4, ((SelectMemberInnerFrame)localObject3).getGroupUin()));
           } else {
-            this.mResultList.add(constructAResultRecord(paramView, str, 0, ((SelectMemberInnerFrame)localObject3).a()));
+            this.mResultList.add(constructAResultRecord(paramView, str, 0, ((SelectMemberInnerFrame)localObject3).getGroupUin()));
           }
         }
-        else if (this.mInnerFrameManager.a() == 9)
+        else if (this.mInnerFrameManager.getCurrentPage() == 9)
         {
-          localObject1 = constructAResultRecord(paramView, str, 1, ((SelectMemberInnerFrame)localObject3).a());
+          localObject1 = constructAResultRecord(paramView, str, 1, ((SelectMemberInnerFrame)localObject3).getGroupUin());
           localObject2 = new ArrayList(1);
           ((List)localObject2).add(localObject1);
           addFriendResults((List)localObject2, false);
@@ -2177,7 +2179,7 @@ public class SelectMemberActivity
       setupDoneBtn();
       ((SelectMemberInnerFrame)localObject3).f();
       this.mSelectedAndSearchBar.a(true);
-      this.mSelectedAndSearchBar.a();
+      this.mSelectedAndSearchBar.b();
       if (this.mType == 9003) {
         if ((this.mEntrance == 15) && (!((IBlessApi)QRoute.api(IBlessApi.class)).isUinBlessed(this.app, paramView))) {
           this.mUnblessedUinCount += 1;
@@ -2192,7 +2194,7 @@ public class SelectMemberActivity
   
   protected boolean onBackEvent()
   {
-    if (!TextUtils.isEmpty(this.mSelectedAndSearchBar.a()))
+    if (!TextUtils.isEmpty(this.mSelectedAndSearchBar.getEditTextContent()))
     {
       quitSearchState();
       return true;
@@ -2200,7 +2202,7 @@ public class SelectMemberActivity
     if (this.mSelectedAndSearchBar.a()) {
       quitSearchState();
     }
-    switch (this.mInnerFrameManager.a())
+    switch (this.mInnerFrameManager.getCurrentPage())
     {
     default: 
       break;
@@ -2261,7 +2263,7 @@ public class SelectMemberActivity
     Object localObject2;
     Object localObject3;
     Object localObject4;
-    if (i == 2131378982)
+    if (i == 2131447692)
     {
       this.mTooManyMembersTipsBar.setVisibility(8);
       this.isClosed = true;
@@ -2277,7 +2279,7 @@ public class SelectMemberActivity
     else
     {
       localObject2 = null;
-      if (i == 2131365323)
+      if (i == 2131431507)
       {
         if (this.mEntrance == 35)
         {
@@ -2344,7 +2346,7 @@ public class SelectMemberActivity
           {
             localObject1 = getOutGroupMem();
             if (((ArrayList)localObject1).size() > 0) {
-              DialogUtil.a(this, 230, getString(2131695691), getString(2131695566), 2131695421, 2131695433, new SelectMemberActivity.18(this, (ArrayList)localObject1), new SelectMemberActivity.19(this)).show();
+              DialogUtil.a(this, 230, getString(2131893450), getString(2131893325), 2131893167, 2131893180, new SelectMemberActivity.18(this, (ArrayList)localObject1), new SelectMemberActivity.19(this)).show();
             } else {
               afterCreateTroopSucc(this.mIntent.getStringExtra("group_uin"), false);
             }
@@ -2367,7 +2369,7 @@ public class SelectMemberActivity
           finish();
         }
       }
-      else if (i == 2131363978)
+      else if (i == 2131429937)
       {
         quitSearchState();
         if (getResultUins().size() == 1)
@@ -2398,16 +2400,20 @@ public class SelectMemberActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreateTroopCompletely(int paramInt, String paramString)
+  public void onCreateTroopCompletely(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)))
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString1)))
     {
-      ReportController.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "cre_suc", 0, 0, paramString, "", "", "");
+      ReportController.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "cre_suc", 0, 0, paramString1, "", "", "");
       return;
     }
-    paramInt = TroopCreateInfo.TroopCreateResult.a(paramInt);
-    if (paramInt != 0) {
-      QQToast.a(this, 1, paramInt, 0).b(getTitleBarHeight());
+    int i = TroopCreateInfo.TroopCreateResult.a(paramInt);
+    if (i != 0)
+    {
+      if (((ICreateTroopBlackListUtilApi)QRoute.api(ICreateTroopBlackListUtilApi.class)).checkAndHandleCreateGroupBlackListResult(this, this.app, paramString2, paramInt)) {
+        return;
+      }
+      QQToast.makeText(this, 1, i, 0).show(getTitleBarHeight());
     }
   }
   
@@ -2439,7 +2445,7 @@ public class SelectMemberActivity
       afterCreateTroopSucc(paramString, false);
       return;
     }
-    QQToast.a(this, getString(2131691759), 2000).b(this.mTitleBar.getHeight());
+    QQToast.makeText(this, getString(2131888721), 2000).show(this.mTitleBar.getHeight());
   }
   
   boolean onListViewItemClick(String paramString1, String paramString2, int paramInt, String paramString3)
@@ -2466,7 +2472,7 @@ public class SelectMemberActivity
     if (isInvitedListContainFriend(paramString1))
     {
       removeFriendFromResultList(paramString1);
-      QQToast.a(this, 1, HardCodeUtil.a(2131713664), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131911209), 0).show(getTitleBarHeight());
       ReportController.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
       bool = false;
     }
@@ -2495,7 +2501,7 @@ public class SelectMemberActivity
     if (isInvitedListContainFriend(paramString1))
     {
       removeFriendFromResultList(paramString1);
-      QQToast.a(this, 1, HardCodeUtil.a(2131713629), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131911174), 0).show(getTitleBarHeight());
       ReportController.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
       bool = false;
     }
@@ -2580,9 +2586,9 @@ public class SelectMemberActivity
         if ((i != 35) && (i != 40))
         {
           if (isCreateNewTroopEntrance()) {
-            i = 2131713665;
+            i = 2131911210;
           } else {
-            i = 2131713642;
+            i = 2131911187;
           }
           localObject1 = MessageFormat.format(HardCodeUtil.a(i), new Object[] { Integer.valueOf(j) });
         }
@@ -2609,9 +2615,9 @@ public class SelectMemberActivity
         else
         {
           if (isCreateNewTroopEntrance()) {
-            i = 2131713633;
+            i = 2131911178;
           } else {
-            i = 2131713667;
+            i = 2131911212;
           }
           localObject1 = HardCodeUtil.a(i);
         }
@@ -2649,7 +2655,7 @@ public class SelectMemberActivity
     {
       bool = isNotMaxOfPSTN();
       if (!bool) {
-        QQToast.a(this, 2131718727, 1).b(getTitleBarHeight());
+        QQToast.makeText(this, 2131916229, 1).show(getTitleBarHeight());
       }
       int i = getCheckPhoneNumberResId(paramString1);
       if (i == 0) {
@@ -2658,7 +2664,7 @@ public class SelectMemberActivity
         paramInt = 0;
       }
       if (paramInt == 0) {
-        QQToast.a(this, i, 1).b(getTitleBarHeight());
+        QQToast.makeText(this, i, 1).show(getTitleBarHeight());
       }
       if ((bool) && (paramInt != 0)) {
         return true;
@@ -2723,7 +2729,7 @@ public class SelectMemberActivity
         }
         ((HashMap)localObject2).put("ext1", localObject1);
         ((HashMap)localObject2).put("ext6", paramArrayList.toString());
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", 41, 1, 2, (HashMap)localObject2, null, null);
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(41).setSubActionType(1).setThrActionType(2).setExtras((HashMap)localObject2));
       }
     }
   }
@@ -2731,8 +2737,8 @@ public class SelectMemberActivity
   void quitSearchState()
   {
     this.imm.hideSoftInputFromWindow(getWindow().peekDecorView().getWindowToken(), 0);
-    this.mSelectedAndSearchBar.a();
     this.mSelectedAndSearchBar.b();
+    this.mSelectedAndSearchBar.c();
     this.mSearchResultLayout.setVisibility(8);
     this.mIsSoftInputShowing = false;
   }
@@ -2741,15 +2747,15 @@ public class SelectMemberActivity
   {
     if (this.mSubType == 3)
     {
-      this.mGVideoTextView = ((TextView)findViewById(2131377147));
+      this.mGVideoTextView = ((TextView)findViewById(2131445525));
       if ((paramBoolean) && (getIntent().getIntExtra("param_member_show_type", 1) == 2))
       {
         this.mGVideoTextView.setVisibility(0);
-        this.mGVideoTextView.setText(getString(2131697816, new Object[] { Integer.valueOf(Math.min(paramInt, this.mMaxSelectNumber)) }));
+        this.mGVideoTextView.setText(getString(2131895589, new Object[] { Integer.valueOf(Math.min(paramInt, this.mMaxSelectNumber)) }));
         return;
       }
       this.mGVideoTextView.setVisibility(0);
-      this.mGVideoTextView.setText(getString(2131697818, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
+      this.mGVideoTextView.setText(getString(2131895591, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
     }
   }
   
@@ -2806,33 +2812,33 @@ public class SelectMemberActivity
         this.needShowYellowTips = false;
         int i = this.mEntrance;
         if ((i != 11) && (i != 36)) {
-          this.mInviteSuccToastWording = HardCodeUtil.a(2131713659);
+          this.mInviteSuccToastWording = HardCodeUtil.a(2131911204);
         } else {
-          this.mInviteSuccToastWording = getString(2131695584);
+          this.mInviteSuccToastWording = getString(2131893343);
         }
       }
       else if ((!bool2) && (bool1))
       {
         this.needShowYellowTips = true;
-        this.mYellowTipsWording = HardCodeUtil.a(2131713640);
-        this.mInviteSuccToastWording = HardCodeUtil.a(2131713669);
+        this.mYellowTipsWording = HardCodeUtil.a(2131911185);
+        this.mInviteSuccToastWording = HardCodeUtil.a(2131911214);
       }
       else if ((bool2) && (bool1))
       {
         this.needShowYellowTips = true;
-        this.mYellowTipsWording = HardCodeUtil.a(2131713656);
-        this.mInviteSuccToastWording = HardCodeUtil.a(2131713645);
+        this.mYellowTipsWording = HardCodeUtil.a(2131911201);
+        this.mInviteSuccToastWording = HardCodeUtil.a(2131911190);
       }
       else if ((bool2) && (!bool1))
       {
         this.needShowYellowTips = true;
-        this.mYellowTipsWording = HardCodeUtil.a(2131713636);
-        this.mInviteSuccToastWording = HardCodeUtil.a(2131713647);
+        this.mYellowTipsWording = HardCodeUtil.a(2131911181);
+        this.mInviteSuccToastWording = HardCodeUtil.a(2131911192);
       }
       if ((!this.isClosed) && (this.needShowYellowTips) && (!TextUtils.isEmpty(this.mYellowTipsWording)))
       {
         this.mTooManyMembersTipsBar.setVisibility(0);
-        localObject = (TextView)this.mTooManyMembersTipsBar.findViewById(2131378983);
+        localObject = (TextView)this.mTooManyMembersTipsBar.findViewById(2131447693);
         ((TextView)localObject).setText(this.mYellowTipsWording);
         ((TextView)localObject).setContentDescription(this.mYellowTipsWording);
         return;
@@ -2904,7 +2910,7 @@ public class SelectMemberActivity
   {
     try
     {
-      setContentView(2131562821);
+      setContentView(2131629266);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
@@ -2955,7 +2961,7 @@ public class SelectMemberActivity
       this.mLeftBackBtn.setVisibility(0);
       this.mLeftBackBtn.setText(paramString1);
       this.mLeftBackBtn.setOnClickListener(new SelectMemberActivity.2(this));
-      this.mLeftBackBtn.setBackgroundResource(2130851066);
+      this.mLeftBackBtn.setBackgroundResource(2130853297);
       this.mLeftCancelBtn.setVisibility(8);
       QIphoneTitleBarActivity.setLayerType(this.mLeftBackBtn);
     }
@@ -2968,11 +2974,11 @@ public class SelectMemberActivity
     {
       if (this.mSubType == 3)
       {
-        this.mTitle.setText(getString(2131697817));
+        this.mTitle.setText(getString(2131895590));
       }
       else if (this.mFrom == 30)
       {
-        this.mTitleString = getString(2131689609);
+        this.mTitleString = getString(2131886219);
         if (!this.mTitle.getText().equals(this.mTitleString)) {
           this.mTitle.setText(this.mTitleString);
         }
@@ -2985,10 +2991,10 @@ public class SelectMemberActivity
         this.mLeftBackBtn.setVisibility(0);
         this.mRightBtn.setVisibility(8);
         this.mLeftBackBtn.setOnClickListener(new SelectMemberActivity.3(this));
-        if (AppSetting.d)
+        if (AppSetting.e)
         {
           this.mTitle.setContentDescription(this.mTitleString);
-          this.mLeftBackBtn.setContentDescription(getString(2131718706));
+          this.mLeftBackBtn.setContentDescription(getString(2131916208));
         }
       }
       else
@@ -3001,13 +3007,13 @@ public class SelectMemberActivity
     } else {
       this.mTitle.setText(paramString2);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramString1 = this.mTitle;
       paramString1.setContentDescription(paramString1.getText());
       paramString2 = this.mLeftBackBtn;
       if (TextUtils.isEmpty(paramString2.getText())) {
-        paramString1 = HardCodeUtil.a(2131713657);
+        paramString1 = HardCodeUtil.a(2131911202);
       } else {
         paramString1 = this.mLeftBackBtn.getText();
       }
@@ -3025,7 +3031,7 @@ public class SelectMemberActivity
     int i = 0;
     if (((Intent)localObject).getBooleanExtra("param_enable_all_select", false))
     {
-      localObject = (RelativeLayout)findViewById(2131376735);
+      localObject = (RelativeLayout)findViewById(2131445020);
       if (localObject != null)
       {
         if (!this.mIsSelectAllMembers) {
@@ -3147,11 +3153,11 @@ public class SelectMemberActivity
         ReportController.b(this.app, "CliOper", "", "", "0X800674C", "0X800674C", 0, 0, "", "", "", "");
       }
       if (this.mSubType == 0) {
-        i = 2131691761;
+        i = 2131888723;
       } else {
-        i = 2131691758;
+        i = 2131888720;
       }
-      this.mQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299168));
+      this.mQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299920));
       this.mQQProgressDialog.c(i);
       this.mQQProgressDialog.show();
       if ((this.mSubType == 0) || (m != 0))
@@ -3178,7 +3184,7 @@ public class SelectMemberActivity
   {
     if ((this.mTitle != null) && (this.mAnimationDrawable == null))
     {
-      this.mAnimationDrawable = getResources().getDrawable(2130839406);
+      this.mAnimationDrawable = getResources().getDrawable(2130839590);
       this.mTitle.setCompoundDrawablePadding(10);
       this.mTitle.setCompoundDrawablesWithIntrinsicBounds(this.mAnimationDrawable, null, null, null);
       ((Animatable)this.mAnimationDrawable).start();
@@ -3217,9 +3223,9 @@ public class SelectMemberActivity
     {
       this.mMultiAddContainerV.setVisibility(0);
       if (this.mResultList.isEmpty()) {
-        localObject = getString(2131691084);
+        localObject = getString(2131888030);
       } else {
-        localObject = getString(2131691085, new Object[] { Integer.valueOf(this.mResultList.size()) });
+        localObject = getString(2131888031, new Object[] { Integer.valueOf(this.mResultList.size()) });
       }
       Button localButton = this.mMultiAddBtn;
       if (localButton != null) {
@@ -3232,7 +3238,7 @@ public class SelectMemberActivity
       this.mMultiSearchView.setVisibility(8);
       this.mMultiAddContainerV.setVisibility(8);
     }
-    this.mSelectedAndSearchBar.a();
+    this.mSelectedAndSearchBar.b();
     localObject = this.mMultiAddBtn;
     if (localObject != null) {
       ((Button)localObject).setEnabled(this.mResultList.isEmpty() ^ true);
@@ -3274,9 +3280,9 @@ public class SelectMemberActivity
       ((SelectMemberActivity.IOnSelectStateChange)localObject).a(paramResultRecord, paramBoolean);
     }
     if (this.mResultList.isEmpty()) {
-      paramResultRecord = getString(2131691084);
+      paramResultRecord = getString(2131888030);
     } else {
-      paramResultRecord = getString(2131691085, new Object[] { Integer.valueOf(this.mResultList.size()) });
+      paramResultRecord = getString(2131888031, new Object[] { Integer.valueOf(this.mResultList.size()) });
     }
     localObject = this.mMultiAddBtn;
     if (localObject != null)
@@ -3288,7 +3294,7 @@ public class SelectMemberActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity
  * JD-Core Version:    0.7.0.1
  */

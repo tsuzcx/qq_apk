@@ -108,10 +108,10 @@ public final class RIJFeedsDynamicInsertController
           continue;
         }
         bool1 = bool2;
-        if (paramRIJFeedsInsertAction.a() >= ((RIJFeedsInsertAction)localObject1).a())
+        if (paramRIJFeedsInsertAction.b() >= ((RIJFeedsInsertAction)localObject1).b())
         {
-          i = paramRIJFeedsInsertAction.b();
-          j = ((RIJFeedsInsertAction)localObject1).b();
+          i = paramRIJFeedsInsertAction.c();
+          j = ((RIJFeedsInsertAction)localObject1).c();
           bool1 = bool2;
           if (i >= j) {
             bool1 = true;
@@ -165,8 +165,8 @@ public final class RIJFeedsDynamicInsertController
         if (localObject1 == null) {
           continue;
         }
-        i = paramRIJFeedsInsertAction.a();
-        j = ((RIJFeedsInsertAction)localObject1).a();
+        i = paramRIJFeedsInsertAction.b();
+        j = ((RIJFeedsInsertAction)localObject1).b();
         if (i >= j) {
           bool1 = true;
         }
@@ -193,7 +193,7 @@ public final class RIJFeedsDynamicInsertController
   
   private final void updateAdReadStatus(ExposureArticle paramExposureArticle)
   {
-    if ((paramExposureArticle != null) && (paramExposureArticle.a())) {
+    if ((paramExposureArticle != null) && (paramExposureArticle.b())) {
       INSTANCE.updateAdReadStatus(true);
     }
   }
@@ -229,9 +229,9 @@ public final class RIJFeedsDynamicInsertController
   {
     RIJFeedsDynamicInsertModule localRIJFeedsDynamicInsertModule = getFeedsInsertDynamicInsertModule();
     if (localRIJFeedsDynamicInsertModule != null) {
-      localRIJFeedsDynamicInsertModule.a(paramInt, paramString);
+      localRIJFeedsDynamicInsertModule.b(paramInt, paramString);
     }
-    RIJFeedsDynamicInsertRecordAction.a.a().a(paramInt, paramString);
+    RIJFeedsDynamicInsertRecordAction.a.a().c(paramInt, paramString);
   }
   
   public final int findReqSourceByRowkey(@Nullable String paramString)
@@ -257,7 +257,7 @@ public final class RIJFeedsDynamicInsertController
   @Nullable
   public final RIJFeedsDynamicInsertModule getFeedsInsertDynamicInsertModule()
   {
-    Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject1 = (QQAppInterface)ReadInJoyUtils.b();
     Object localObject2 = null;
     if (localObject1 != null) {
       localObject1 = ((QQAppInterface)localObject1).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -271,7 +271,7 @@ public final class RIJFeedsDynamicInsertController
       localObject3 = ((ReadInJoyLogicManager)localObject3).getReadInJoyLogicEngine();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((ReadInJoyLogicEngine)localObject3).a();
+        localObject1 = ((ReadInJoyLogicEngine)localObject3).ag();
       }
     }
     return localObject1;
@@ -280,7 +280,7 @@ public final class RIJFeedsDynamicInsertController
   @Nullable
   public final RIJFeedsInsertModule getFeedsInsertModule()
   {
-    Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject1 = (QQAppInterface)ReadInJoyUtils.b();
     Object localObject2 = null;
     if (localObject1 != null) {
       localObject1 = ((QQAppInterface)localObject1).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -294,7 +294,7 @@ public final class RIJFeedsDynamicInsertController
       localObject3 = ((ReadInJoyLogicManager)localObject3).getReadInJoyLogicEngine();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((ReadInJoyLogicEngine)localObject3).a();
+        localObject1 = ((ReadInJoyLogicEngine)localObject3).q();
       }
     }
     return localObject1;
@@ -385,9 +385,9 @@ public final class RIJFeedsDynamicInsertController
       RIJFeedsInsertAction localRIJFeedsInsertAction = paramAbsBaseArticleInfo.insertAction;
       String str = paramAbsBaseArticleInfo.inserSeqNo;
       ReportData localReportData = new ReportData();
-      localReportData.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      localReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData = new ReportInfo.DynamicInsertReportData();
-      ReportInfo.DynamicInsertReportData localDynamicInsertReportData = localReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData;
+      localReportData.m = paramAbsBaseArticleInfo;
+      localReportData.G = new ReportInfo.DynamicInsertReportData();
+      ReportInfo.DynamicInsertReportData localDynamicInsertReportData = localReportData.G;
       int j = -1;
       if (localRIJFeedsInsertAction != null)
       {
@@ -400,25 +400,25 @@ public final class RIJFeedsDynamicInsertController
       }
       int i = -1;
       label80:
-      localDynamicInsertReportData.jdField_a_of_type_Int = i;
-      localDynamicInsertReportData = localReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData;
+      localDynamicInsertReportData.c = i;
+      localDynamicInsertReportData = localReportData.G;
       if (localRIJFeedsInsertAction != null) {
-        i = localRIJFeedsInsertAction.a();
+        i = localRIJFeedsInsertAction.b();
       } else {
         i = -1;
       }
-      localDynamicInsertReportData.jdField_b_of_type_Int = i;
-      localDynamicInsertReportData = localReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData;
+      localDynamicInsertReportData.d = i;
+      localDynamicInsertReportData = localReportData.G;
       i = j;
       if (localRIJFeedsInsertAction != null) {
-        i = localRIJFeedsInsertAction.b();
+        i = localRIJFeedsInsertAction.c();
       }
-      localDynamicInsertReportData.c = i;
-      localReportData.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$DynamicInsertReportData.jdField_a_of_type_JavaLangString = str;
-      localReportData.jdField_a_of_type_JavaLangLong = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
-      localReportData.jdField_a_of_type_Long = paramAbsBaseArticleInfo.mAlgorithmID;
-      localReportData.jdField_b_of_type_Int = paramAbsBaseArticleInfo.mStrategyId;
-      localReportData.e = RIJFeedsInsertUtil.a.b(paramAbsBaseArticleInfo);
+      localDynamicInsertReportData.e = i;
+      localReportData.G.b = str;
+      localReportData.g = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
+      localReportData.i = paramAbsBaseArticleInfo.mAlgorithmID;
+      localReportData.h = paramAbsBaseArticleInfo.mStrategyId;
+      localReportData.t = RIJFeedsInsertUtil.a.b(paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new StringBuilder();
       paramAbsBaseArticleInfo.append("report64e: ");
       paramAbsBaseArticleInfo.append(localReportData);
@@ -460,7 +460,7 @@ public final class RIJFeedsDynamicInsertController
       QLog.d("RIJFeedsDynamicInsertController", 1, "requestDynamicInsertBackToTL, channelId not match");
       return;
     }
-    Object localObject2 = RIJFeedsDynamicInsertRecordAction.a.a().a(paramInt, paramString);
+    Object localObject2 = RIJFeedsDynamicInsertRecordAction.a.a().b(paramInt, paramString);
     if (localObject2 != null)
     {
       localObject1 = (List)((Triple)localObject2).component1();
@@ -480,8 +480,8 @@ public final class RIJFeedsDynamicInsertController
   {
     Intrinsics.checkParameterIsNotNull(paramRIJFeedsInsertAction, "action");
     ActionType localActionType = paramRIJFeedsInsertAction.a();
-    int i = paramRIJFeedsInsertAction.a();
-    int j = paramRIJFeedsInsertAction.b();
+    int i = paramRIJFeedsInsertAction.b();
+    int j = paramRIJFeedsInsertAction.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestDynamicInsertInTL, channelId: ");
     Long localLong = null;
@@ -582,7 +582,7 @@ public final class RIJFeedsDynamicInsertController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController
  * JD-Core Version:    0.7.0.1
  */

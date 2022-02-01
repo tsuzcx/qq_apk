@@ -13,16 +13,16 @@ class SecurityProtectActivity$2
   public void run()
   {
     SecurityProtectActivity.a(this.this$0, false);
-    SecurityProtectActivity.a(this.this$0).setText(2131718664);
+    SecurityProtectActivity.a(this.this$0).setText(2131916165);
     SecurityProtectActivity.b(this.this$0).setVisibility(0);
-    SecurityProtectActivity.a(this.this$0).setVisibility(0);
-    ((LinearLayout)this.this$0.findViewById(2131365860)).setVisibility(8);
-    FMToastUtil.a(2131694475);
+    SecurityProtectActivity.c(this.this$0).setVisibility(0);
+    ((LinearLayout)this.this$0.findViewById(2131432119)).setVisibility(8);
+    FMToastUtil.a(2131892157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SecurityProtectActivity.2
  * JD-Core Version:    0.7.0.1
  */

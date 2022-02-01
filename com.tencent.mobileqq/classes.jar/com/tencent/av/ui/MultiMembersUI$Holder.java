@@ -7,30 +7,23 @@ import android.widget.TextView;
 
 public class MultiMembersUI$Holder
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  boolean jdField_b_of_type_Boolean = true;
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
-  boolean jdField_c_of_type_Boolean = false;
-  ImageView d;
-  public boolean d;
+  long a;
+  int b = 0;
+  ImageView c = null;
+  ImageView d = null;
   ImageView e = null;
-  ImageView f;
-  
-  public MultiMembersUI$Holder()
-  {
-    this.jdField_d_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = true;
-  }
+  ViewGroup f = null;
+  ImageView g = null;
+  TextView h = null;
+  TextView i = null;
+  RelativeLayout j;
+  boolean k = false;
+  boolean l = true;
+  ImageView m = null;
+  boolean n = false;
+  public int o = 0;
+  ImageView p;
+  public boolean q = true;
 }
 
 

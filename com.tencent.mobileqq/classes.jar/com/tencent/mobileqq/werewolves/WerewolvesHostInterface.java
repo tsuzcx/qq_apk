@@ -54,9 +54,9 @@ public class WerewolvesHostInterface
   
   public void disableMic()
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null)
+    if (this.manager.e != null)
     {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.m(false);
+      this.manager.e.p(false);
       return;
     }
     IGameRoomAVControllerDelegate localIGameRoomAVControllerDelegate = this.gameRoomAVControllerDelegate;
@@ -73,24 +73,24 @@ public class WerewolvesHostInterface
   
   public void enableMic()
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.m(true);
+    if (this.manager.e != null) {
+      this.manager.e.p(true);
     }
   }
   
   public void enterProfile(String paramString)
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null)
+    if (this.manager.e != null)
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      boolean bool1 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+      boolean bool1 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString);
       String str = getCurrentRoomUin();
       Object localObject2 = localQQAppInterface.getHotChatMng(false);
       AllInOne localAllInOne = null;
       Object localObject1 = localAllInOne;
       if (localObject2 != null)
       {
-        localObject2 = ((HotChatManager)localObject2).a(str);
+        localObject2 = ((HotChatManager)localObject2).c(str);
         localObject1 = localAllInOne;
         if (localObject2 != null) {
           localObject1 = ((HotChatInfo)localObject2).troopCode;
@@ -108,17 +108,17 @@ public class WerewolvesHostInterface
         paramString.putExtra("is_from_werewolves", true);
         paramString.putExtra("AllInOne", localAllInOne);
         paramString.putExtra("param_mode", 3);
-        RouteUtils.a(this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a(), paramString, "/nearby/people/profile");
+        RouteUtils.a(this.manager.e.aX(), paramString, "/nearby/people/profile");
         return;
       }
-      ProfileUtils.openProfileCard(this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a(), localAllInOne);
+      ProfileUtils.openProfileCard(this.manager.e.aX(), localAllInOne);
     }
   }
   
   public void existRoom()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    HotChatInfo localHotChatInfo = localQQAppInterface.getHotChatMng(true).a(getCurrentRoomUin());
+    HotChatInfo localHotChatInfo = localQQAppInterface.getHotChatMng(true).c(getCurrentRoomUin());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -134,8 +134,8 @@ public class WerewolvesHostInterface
   
   public void exitChatPie()
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.b(1);
+    if (this.manager.e != null) {
+      this.manager.e.f(1);
     }
   }
   
@@ -146,41 +146,41 @@ public class WerewolvesHostInterface
   
   public String getCurrentRoomUin()
   {
-    return this.manager.jdField_a_of_type_JavaLangString;
+    return this.manager.d;
   }
   
   public Bitmap getFaceBitmap(String paramString, boolean paramBoolean)
   {
     Object localObject1;
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null)
+    if (this.manager.f != null)
     {
       localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
       boolean bool = ((QQAppInterface)localObject1).getCurrentAccountUin().equals(paramString);
-      if ((!((FriendsManager)localObject2).b(paramString)) && (!bool))
+      if ((!((FriendsManager)localObject2).n(paramString)) && (!bool))
       {
-        localObject2 = this.manager.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(32, paramString, 200);
+        localObject2 = this.manager.f.getBitmapFromCache(32, paramString, 200);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = localObject2;
           if (paramBoolean)
           {
-            this.manager.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeStrangeFace(paramString, 200, true, false);
+            this.manager.f.requestDecodeStrangeFace(paramString, 200, true, false);
             localObject1 = localObject2;
           }
         }
       }
       else
       {
-        localObject2 = this.manager.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString, 200);
+        localObject2 = this.manager.f.getBitmapFromCache(1, paramString, 200);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = localObject2;
           if (paramBoolean)
           {
-            this.manager.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 1, true);
+            this.manager.f.requestDecodeFace(paramString, 1, true);
             localObject1 = localObject2;
           }
         }
@@ -191,7 +191,7 @@ public class WerewolvesHostInterface
       localObject1 = null;
     }
     if (localObject1 == null) {
-      return ImageUtil.h();
+      return ImageUtil.n();
     }
     return localObject1;
   }
@@ -206,7 +206,7 @@ public class WerewolvesHostInterface
   
   public String getQQVersion()
   {
-    return "8.7.0";
+    return "8.8.17";
   }
   
   public String getSKey()
@@ -217,8 +217,8 @@ public class WerewolvesHostInterface
   
   public void hideAllPanels()
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ad();
+    if (this.manager.e != null) {
+      this.manager.e.aQ();
     }
   }
   
@@ -227,7 +227,7 @@ public class WerewolvesHostInterface
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return ((FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+    return ((FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString);
   }
   
   public boolean isNetworkAvailable()
@@ -275,16 +275,16 @@ public class WerewolvesHostInterface
     if (QLog.isColorLevel()) {
       QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "onExist");
     }
-    if ((this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) && (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null)) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d(HardCodeUtil.a(2131716408));
+    if ((this.manager.e != null) && (this.manager.e != null)) {
+      this.manager.e.e(HardCodeUtil.a(2131913848));
     }
     existRoom();
   }
   
   public void onKickOut()
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d(HardCodeUtil.a(2131716409));
+    if (this.manager.e != null) {
+      this.manager.e.e(HardCodeUtil.a(2131913849));
     }
     existRoom();
   }
@@ -327,8 +327,8 @@ public class WerewolvesHostInterface
   
   public void setDarkTheme(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie != null) {
-      this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.b(paramBoolean1, paramBoolean2);
+    if (this.manager.e != null) {
+      this.manager.e.b(paramBoolean1, paramBoolean2);
     }
   }
   
@@ -360,10 +360,10 @@ public class WerewolvesHostInterface
   
   public void showActionSheet(String paramString, String[] paramArrayOfString, int[] paramArrayOfInt, Object paramObject)
   {
-    if (this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie == null) {
+    if (this.manager.e == null) {
       return;
     }
-    ActionSheet localActionSheet = ActionSheet.create(this.manager.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a());
+    ActionSheet localActionSheet = ActionSheet.create(this.manager.e.aX());
     if (!TextUtils.isEmpty(paramString)) {
       localActionSheet.setMainTitle(paramString);
     }
@@ -373,7 +373,7 @@ public class WerewolvesHostInterface
       localActionSheet.addButton(paramArrayOfString[i], paramArrayOfInt[i]);
       i += 1;
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new WerewolvesHostInterface.3(this, paramObject, localActionSheet));
     localActionSheet.show();
   }
@@ -399,13 +399,13 @@ public class WerewolvesHostInterface
   
   public void showQQToast(int paramInt1, String paramString, int paramInt2)
   {
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168);
-    QQToast.a(BaseApplicationImpl.getApplication(), paramInt1, paramString, paramInt2).b(i);
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(BaseApplicationImpl.getApplication(), paramInt1, paramString, paramInt2).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface
  * JD-Core Version:    0.7.0.1
  */

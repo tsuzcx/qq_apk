@@ -15,7 +15,7 @@ public enum HorizontalProgressStyle
   private String btnDrawableNormalColor = "#1AFFFFFF";
   private float btnDrawableNormalRadius;
   private int btnTextLength = 4;
-  private int progressDrawable = 2130842818;
+  private int progressDrawable = 2130843774;
   @NotNull
   private String progressTextColor = "#FFFFFF";
   private float progressTextSize = 14.0F;
@@ -140,7 +140,7 @@ public enum HorizontalProgressStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle
  * JD-Core Version:    0.7.0.1
  */

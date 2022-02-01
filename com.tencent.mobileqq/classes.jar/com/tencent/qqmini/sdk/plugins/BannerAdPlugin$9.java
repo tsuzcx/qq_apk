@@ -13,15 +13,15 @@ class BannerAdPlugin$9
   
   public void run()
   {
-    boolean bool = this.this$0.updateBannerAdPosition(this.jdField_a_of_type_Int, this.b);
-    if ((bool) && (this.jdField_a_of_type_Int == 3)) {
+    boolean bool = this.this$0.updateBannerAdPosition(this.a, this.b);
+    if ((bool) && (this.a == 3)) {
       try
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("state", "resize");
         localJSONObject.put("width", this.b);
         localJSONObject.put("height", BannerAdPosInfo.getHeight(this.b));
-        BannerAdPlugin.access$600(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent, localJSONObject, "onBannerAdStateChange");
+        BannerAdPlugin.access$600(this.this$0, this.c, localJSONObject, "onBannerAdStateChange");
       }
       catch (JSONException localJSONException)
       {
@@ -41,7 +41,7 @@ class BannerAdPlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin.9
  * JD-Core Version:    0.7.0.1
  */

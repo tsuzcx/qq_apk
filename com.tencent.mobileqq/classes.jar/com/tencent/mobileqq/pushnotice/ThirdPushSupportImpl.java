@@ -9,12 +9,12 @@ public class ThirdPushSupportImpl
 {
   public int getThirdPushType(Context paramContext, Bundle paramBundle)
   {
-    return PushNoticeUtil.a();
+    return ThirdPushManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushnotice.ThirdPushSupportImpl
  * JD-Core Version:    0.7.0.1
  */

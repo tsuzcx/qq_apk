@@ -14,15 +14,15 @@ public final class VideoColumnGuideManager$showGuideRootView$$inlined$also$lambd
   
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    if (VideoColumnGuideManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoColumnVideoColumnGuideManager)) {
+    if (VideoColumnGuideManager.g(this.a)) {
       return;
     }
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
+    this.b.invoke();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnGuideManager.showGuideRootView..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

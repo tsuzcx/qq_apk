@@ -5,37 +5,26 @@ import org.json.JSONObject;
 
 public class PreloadPublicParam
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public int a = 0;
+  public boolean b = false;
   public int c;
-  public boolean c;
   public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
+  public boolean e = false;
   public boolean f;
-  public int g;
   public boolean g;
-  public int h;
   public boolean h;
-  public int i;
-  public boolean i;
-  public boolean j = false;
+  public boolean i = false;
+  public int j;
   public boolean k = false;
-  
-  public PreloadPublicParam()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = false;
-  }
+  public boolean l = false;
+  public boolean m = false;
+  public int n;
+  public boolean o = false;
+  public int p;
+  public boolean q = false;
+  public int r;
+  public int s;
+  public int t;
   
   public static PreloadPublicParam a(JSONObject paramJSONObject)
   {
@@ -46,54 +35,54 @@ public class PreloadPublicParam
     try
     {
       if (paramJSONObject.has("pppid")) {
-        localPreloadPublicParam.jdField_a_of_type_Int = paramJSONObject.getInt("pppid");
+        localPreloadPublicParam.a = paramJSONObject.getInt("pppid");
       }
       boolean bool = paramJSONObject.has("timecontrol");
       JSONObject localJSONObject;
       if (bool)
       {
         localJSONObject = paramJSONObject.getJSONObject("timecontrol");
-        localPreloadPublicParam.jdField_a_of_type_Boolean = localJSONObject.getBoolean("switch");
-        localPreloadPublicParam.jdField_b_of_type_Int = localJSONObject.getInt("dayofweek");
-        localPreloadPublicParam.jdField_c_of_type_Int = localJSONObject.getInt("hourofday");
+        localPreloadPublicParam.b = localJSONObject.getBoolean("switch");
+        localPreloadPublicParam.c = localJSONObject.getInt("dayofweek");
+        localPreloadPublicParam.d = localJSONObject.getInt("hourofday");
       }
       if (paramJSONObject.has("reddot"))
       {
         localJSONObject = paramJSONObject.getJSONObject("reddot");
-        localPreloadPublicParam.jdField_b_of_type_Boolean = localJSONObject.getBoolean("switch");
-        localPreloadPublicParam.jdField_c_of_type_Boolean = localJSONObject.optBoolean("apponly");
-        localPreloadPublicParam.jdField_d_of_type_Boolean = localJSONObject.getBoolean("app");
-        localPreloadPublicParam.jdField_e_of_type_Boolean = localJSONObject.getBoolean("leba");
+        localPreloadPublicParam.e = localJSONObject.getBoolean("switch");
+        localPreloadPublicParam.f = localJSONObject.optBoolean("apponly");
+        localPreloadPublicParam.g = localJSONObject.getBoolean("app");
+        localPreloadPublicParam.h = localJSONObject.getBoolean("leba");
       }
       if (paramJSONObject.has("lebalist")) {
-        localPreloadPublicParam.jdField_h_of_type_Boolean = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
+        localPreloadPublicParam.l = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
       }
       if (paramJSONObject.has("activetime"))
       {
         localJSONObject = paramJSONObject.getJSONObject("activetime");
-        localPreloadPublicParam.jdField_i_of_type_Boolean = localJSONObject.getBoolean("switch");
-        localPreloadPublicParam.jdField_e_of_type_Int = localJSONObject.getInt("hour");
+        localPreloadPublicParam.m = localJSONObject.getBoolean("switch");
+        localPreloadPublicParam.n = localJSONObject.getInt("hour");
       }
       if (paramJSONObject.has("usedtimes"))
       {
         localJSONObject = paramJSONObject.getJSONObject("usedtimes");
-        localPreloadPublicParam.j = localJSONObject.getBoolean("switch");
-        localPreloadPublicParam.jdField_f_of_type_Int = localJSONObject.getInt("times");
+        localPreloadPublicParam.o = localJSONObject.getBoolean("switch");
+        localPreloadPublicParam.p = localJSONObject.getInt("times");
       }
       if (paramJSONObject.has("userlearn"))
       {
         localJSONObject = paramJSONObject.getJSONObject("userlearn");
-        localPreloadPublicParam.k = localJSONObject.getBoolean("switch");
-        localPreloadPublicParam.jdField_g_of_type_Int = localJSONObject.getInt("timearea");
-        localPreloadPublicParam.jdField_h_of_type_Int = localJSONObject.getInt("methodid");
-        localPreloadPublicParam.jdField_i_of_type_Int = localJSONObject.getInt("clusternum");
+        localPreloadPublicParam.q = localJSONObject.getBoolean("switch");
+        localPreloadPublicParam.r = localJSONObject.getInt("timearea");
+        localPreloadPublicParam.s = localJSONObject.getInt("methodid");
+        localPreloadPublicParam.t = localJSONObject.getInt("clusternum");
       }
       if (paramJSONObject.has("cdperiod"))
       {
         paramJSONObject = paramJSONObject.getJSONObject("cdperiod");
-        localPreloadPublicParam.jdField_f_of_type_Boolean = paramJSONObject.optBoolean("switch");
-        localPreloadPublicParam.jdField_d_of_type_Int = paramJSONObject.optInt("time");
-        localPreloadPublicParam.jdField_g_of_type_Boolean = paramJSONObject.optBoolean("reverse");
+        localPreloadPublicParam.i = paramJSONObject.optBoolean("switch");
+        localPreloadPublicParam.j = paramJSONObject.optInt("time");
+        localPreloadPublicParam.k = paramJSONObject.optBoolean("reverse");
       }
       return localPreloadPublicParam;
     }
@@ -103,7 +92,7 @@ public class PreloadPublicParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.comic.api.plugin.PreloadPublicParam
  * JD-Core Version:    0.7.0.1
  */

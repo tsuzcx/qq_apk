@@ -13,8 +13,8 @@ class MsgTabStoryNodeView$1
   {
     this.this$0.a(this.a);
     MsgTabStoryNodeView localMsgTabStoryNodeView = this.this$0;
-    localMsgTabStoryNodeView.invalidate(localMsgTabStoryNodeView.jdField_a_of_type_AndroidGraphicsRect);
-    if (!this.this$0.b)
+    localMsgTabStoryNodeView.invalidate(localMsgTabStoryNodeView.i);
+    if (!this.this$0.g)
     {
       int i = this.a;
       if (i < 110) {
@@ -22,13 +22,13 @@ class MsgTabStoryNodeView$1
       } else {
         this.a = -10;
       }
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
+      this.this$0.h.postDelayed(this, 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView.1
  * JD-Core Version:    0.7.0.1
  */

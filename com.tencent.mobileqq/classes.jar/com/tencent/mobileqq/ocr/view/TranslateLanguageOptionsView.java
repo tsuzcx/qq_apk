@@ -19,14 +19,14 @@ public class TranslateLanguageOptionsView
   extends PopupWindow
   implements RadioGroup.OnCheckedChangeListener
 {
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private TranslateLanguageOptionsView.OnOptionSelectedListener jdField_a_of_type_ComTencentMobileqqOcrViewTranslateLanguageOptionsView$OnOptionSelectedListener;
+  private RadioGroup a;
+  private TranslateLanguageOptionsView.OnOptionSelectedListener b;
   
   private TranslateLanguageOptionsView(Context paramContext, View paramView, int paramInt1, int paramInt2)
   {
     super(paramView, paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131365203));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
+    this.a = ((RadioGroup)paramView.findViewById(2131431368));
+    this.a.setOnCheckedChangeListener(this);
   }
   
   public static TranslateLanguageOptionsView a(Activity paramActivity, List<TranslateLanguageOptionsView.OptionItem> paramList, int paramInt, TranslateLanguageOptionsView.OnOptionSelectedListener paramOnOptionSelectedListener)
@@ -36,16 +36,16 @@ public class TranslateLanguageOptionsView
       paramActivity.getResources();
       int m = DisplayUtil.a(paramActivity, 36.0F);
       int k = DisplayUtil.a(paramActivity, 150.0F);
-      View localView = LayoutInflater.from(paramActivity).inflate(2131561263, null);
-      BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131364121);
-      RadioGroup localRadioGroup = (RadioGroup)localView.findViewById(2131365203);
+      View localView = LayoutInflater.from(paramActivity).inflate(2131627619, null);
+      BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131430088);
+      RadioGroup localRadioGroup = (RadioGroup)localView.findViewById(2131431368);
       Object localObject = null;
       int j = 0;
       int i = 78;
       while (j < paramList.size())
       {
         TranslateLanguageOptionsView.OptionItem localOptionItem = (TranslateLanguageOptionsView.OptionItem)paramList.get(j);
-        RadioButton localRadioButton = (RadioButton)LayoutInflater.from(paramActivity).inflate(2131561262, null);
+        RadioButton localRadioButton = (RadioButton)LayoutInflater.from(paramActivity).inflate(2131627618, null);
         localRadioButton.setText(localOptionItem.a);
         localRadioButton.setTag(localOptionItem);
         localRadioButton.setId(j);
@@ -66,7 +66,7 @@ public class TranslateLanguageOptionsView
         localBounceScrollView.post(new TranslateLanguageOptionsView.1(localObject, localBounceScrollView));
       }
       paramActivity = new TranslateLanguageOptionsView(paramActivity, localView, k, paramInt);
-      paramActivity.setAnimationStyle(2131755035);
+      paramActivity.setAnimationStyle(2131951650);
       paramActivity.setBackgroundDrawable(new ColorDrawable(0));
       paramActivity.setFocusable(true);
       paramActivity.setOutsideTouchable(true);
@@ -78,7 +78,7 @@ public class TranslateLanguageOptionsView
   
   public void a(TranslateLanguageOptionsView.OnOptionSelectedListener paramOnOptionSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslateLanguageOptionsView$OnOptionSelectedListener = paramOnOptionSelectedListener;
+    this.b = paramOnOptionSelectedListener;
   }
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
@@ -86,8 +86,8 @@ public class TranslateLanguageOptionsView
     try
     {
       TranslateLanguageOptionsView.OptionItem localOptionItem = (TranslateLanguageOptionsView.OptionItem)((RadioButton)paramRadioGroup.getChildAt(paramInt)).getTag();
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslateLanguageOptionsView$OnOptionSelectedListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslateLanguageOptionsView$OnOptionSelectedListener.a(paramInt, localOptionItem);
+      if (this.b != null) {
+        this.b.a(paramInt, localOptionItem);
       }
       dismiss();
     }
@@ -100,7 +100,7 @@ public class TranslateLanguageOptionsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.TranslateLanguageOptionsView
  * JD-Core Version:    0.7.0.1
  */

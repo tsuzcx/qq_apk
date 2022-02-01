@@ -12,9 +12,9 @@ class AEEditorVideoEditFragment$14
   
   public void run()
   {
-    this.this$0.b.b(2);
-    int i = AEEditorVideoEditFragment.c() / 60 / 1000;
-    int j = AEEditorVideoEditFragment.c() / 1000 % 60;
+    this.this$0.X.b(2);
+    int i = AEEditorVideoEditFragment.ak() / 60 / 1000;
+    int j = AEEditorVideoEditFragment.ak() / 1000 % 60;
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2;
     if ((i > 0) && (j == 0))
@@ -38,15 +38,15 @@ class AEEditorVideoEditFragment$14
       localStringBuilder2.append("秒");
       localStringBuilder1.append(localStringBuilder2.toString());
     }
-    this.this$0.b.a(this.this$0.getResources().getString(2064515126, new Object[] { localStringBuilder1.toString() }));
-    this.this$0.b.a(AEEditorVideoEditFragment.a(this.this$0), 1, 2);
-    ThreadManager.getUIHandler().postDelayed(AEEditorVideoEditFragment.b(this.this$0), 3000L);
-    this.this$0.b.setOnDismissListener(new AEEditorVideoEditFragment.14.1(this));
+    this.this$0.X.a(this.this$0.getResources().getString(2064187468, new Object[] { localStringBuilder1.toString() }));
+    this.this$0.X.a(AEEditorVideoEditFragment.p(this.this$0), 1, 2);
+    ThreadManager.getUIHandler().postDelayed(AEEditorVideoEditFragment.q(this.this$0), 3000L);
+    this.this$0.X.setOnDismissListener(new AEEditorVideoEditFragment.14.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.14
  * JD-Core Version:    0.7.0.1
  */

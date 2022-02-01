@@ -11,7 +11,7 @@ class FrameHelperActivity$3
   {
     try
     {
-      Object localObject = this.this$0.a();
+      Object localObject = this.this$0.C();
       if (localObject != null)
       {
         if (((QBaseActivity)localObject).getAppRuntime() == null) {
@@ -22,7 +22,7 @@ class FrameHelperActivity$3
         {
           FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
           if (localFriendsManager != null) {
-            FrameHelperActivity.a(this.this$0, localFriendsManager.a(((QQAppInterface)localObject).getCurrentAccountUin()));
+            FrameHelperActivity.a(this.this$0, localFriendsManager.f(((QQAppInterface)localObject).getCurrentAccountUin()));
           }
         }
       }
@@ -39,7 +39,7 @@ class FrameHelperActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.3
  * JD-Core Version:    0.7.0.1
  */

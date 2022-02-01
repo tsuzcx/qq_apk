@@ -11,8 +11,8 @@ class LoginDevInfoAdapter$3
   
   public void onClick(View paramView)
   {
-    if (LoginDevInfoAdapter.a(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevInfoAdapter) != null) {
-      LoginDevInfoAdapter.a(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevInfoAdapter).c(this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem);
+    if (LoginDevInfoAdapter.a(this.b) != null) {
+      LoginDevInfoAdapter.a(this.b).c(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

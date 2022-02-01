@@ -14,7 +14,7 @@ public class HippyModuleANRMonitor
   static final int ANR_TIME = 100;
   static int MONITOR_ID;
   static final int MONITOR_ID_NAN = 0;
-  HippyEngineContext mContext;
+  final HippyEngineContext mContext;
   HippyEngineMonitorAdapter mEngineMonitorAdapter;
   ConcurrentHashMap<Integer, HippyModuleANRMonitor.MonitorMessage> mMonitorMessages;
   boolean mNeedReportBridgeANR = false;
@@ -106,7 +106,7 @@ public class HippyModuleANRMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.HippyModuleANRMonitor
  * JD-Core Version:    0.7.0.1
  */

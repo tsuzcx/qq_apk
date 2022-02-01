@@ -23,14 +23,14 @@ import java.util.List;
 public class TianshuBreathLight
   extends ConversationActivePendantHolderBase
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AnimationDrawableProxyView jdField_a_of_type_CooperationVipAdAnimationDrawableProxyView;
-  private TianShuAccess.AdItem jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+  private QQAppInterface a;
+  private AnimationDrawableProxyView b;
+  private TianShuAccess.AdItem c;
   
   public TianshuBreathLight(QQAppInterface paramQQAppInterface, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public void a(TianShuAccess.AdItem paramAdItem)
@@ -40,7 +40,7 @@ public class TianshuBreathLight
       QLog.e("ConvActivePendantHolderBase", 2, "showLayer with null ");
       return;
     }
-    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
+    this.c = paramAdItem;
     Object localObject1 = paramAdItem.argList.get().iterator();
     paramAdItem = null;
     Object localObject2;
@@ -55,35 +55,35 @@ public class TianshuBreathLight
     {
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("key_loop", 1);
-      localObject2 = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject2, (Bundle)localObject1, null);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      localObject2 = URLDrawableHelperConstants.a;
+      this.B = VasApngUtil.getApngURLDrawable(paramAdItem, new int[] { 2 }, (Drawable)localObject2, (Bundle)localObject1, null);
+      if (this.B != null)
       {
-        this.jdField_a_of_type_CooperationVipAdAnimationDrawableProxyView = new AnimationDrawableProxyView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        c();
-        paramAdItem = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        this.b = new AnimationDrawableProxyView(this.m, this.n, this.B);
+        d();
+        paramAdItem = this.a;
         if (paramAdItem != null)
         {
-          localObject1 = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+          localObject1 = this.c;
           if (localObject1 != null) {
-            TianshuAdUtils.a(paramAdItem, 101, String.valueOf(((TianShuAccess.AdItem)localObject1).iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
+            TianshuAdUtils.a(paramAdItem, 101, String.valueOf(((TianShuAccess.AdItem)localObject1).iAdId.get()), this.c.traceinfo.get());
           }
         }
       }
     }
   }
   
-  public void c()
+  public void d()
   {
     try
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
+      int j = this.n.getWidth();
       int i = j;
       if (j == 0) {
         i = ScreenUtil.SCREEN_WIDTH;
       }
-      j = AIOUtils.b(375.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-      a(i - j + 0, 0, j, AIOUtils.b(30.0F, this.jdField_a_of_type_AndroidViewView.getResources()), this.jdField_a_of_type_AndroidViewView);
+      j = AIOUtils.b(375.0F, this.n.getResources());
+      a(i - j + 0, 0, j, AIOUtils.b(30.0F, this.n.getResources()), this.n);
       return;
     }
     catch (Throwable localThrowable)
@@ -92,18 +92,18 @@ public class TianshuBreathLight
     }
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    super.h();
+    QQAppInterface localQQAppInterface = this.a;
     if (localQQAppInterface != null)
     {
-      TianShuAccess.AdItem localAdItem = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
+      TianShuAccess.AdItem localAdItem = this.c;
       if (localAdItem != null)
       {
-        TianshuAdUtils.a(localQQAppInterface, 102, String.valueOf(localAdItem.iAdId.get()), this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.traceinfo.get());
-        if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ARMapHongBaoListView))) {
-          ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewView).h();
+        TianshuAdUtils.a(localQQAppInterface, 102, String.valueOf(localAdItem.iAdId.get()), this.c.traceinfo.get());
+        if ((this.n != null) && ((this.n instanceof ARMapHongBaoListView))) {
+          ((ARMapHongBaoListView)this.n).i();
         }
       }
     }
@@ -111,7 +111,7 @@ public class TianshuBreathLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBreathLight
  * JD-Core Version:    0.7.0.1
  */

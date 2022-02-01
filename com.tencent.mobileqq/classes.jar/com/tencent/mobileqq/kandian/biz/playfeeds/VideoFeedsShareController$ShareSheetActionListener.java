@@ -6,13 +6,13 @@ public abstract interface VideoFeedsShareController$ShareSheetActionListener
 {
   public abstract void a(int paramInt, VideoInfo paramVideoInfo);
   
-  public abstract void f();
+  public abstract void e();
   
-  public abstract void g();
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.ShareSheetActionListener
  * JD-Core Version:    0.7.0.1
  */

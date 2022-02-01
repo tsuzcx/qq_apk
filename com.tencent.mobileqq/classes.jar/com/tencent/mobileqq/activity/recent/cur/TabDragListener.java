@@ -7,21 +7,20 @@ import com.tencent.qphone.base.util.QLog;
 public class TabDragListener
   implements DragFrameLayout.OnDragListener
 {
-  public View a;
   public TabDragAnimationView a;
-  private boolean a;
+  public View b;
+  private boolean c = false;
   
   public TabDragListener(TabDragAnimationView paramTabDragAnimationView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+    this.a = paramTabDragAnimationView;
   }
   
   public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView != null)
+    if (this.a != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.b;
       if (localView != null)
       {
         if (!localView.equals(paramView)) {
@@ -40,19 +39,19 @@ public class TabDragListener
         }
         if ((paramInt != 1) && (paramInt != 2))
         {
-          if (this.jdField_a_of_type_Boolean)
+          if (this.c)
           {
-            this.jdField_a_of_type_Boolean = false;
-            this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
+            this.c = false;
+            this.a.b();
           }
         }
         else
         {
-          if (!this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+          if (!this.c) {
+            this.a.c();
           }
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
+          this.c = true;
+          this.a.a(paramFloat1, paramFloat2, false);
         }
       }
     }
@@ -60,7 +59,7 @@ public class TabDragListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.TabDragListener
  * JD-Core Version:    0.7.0.1
  */

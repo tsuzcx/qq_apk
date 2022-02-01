@@ -16,23 +16,23 @@ class MediaPreviewActivity$2
     if (paramView == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(false, paramInt);
+    if (this.a.e != null) {
+      this.a.e.a(false, paramInt);
     }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.i = paramInt;
     paramAdapterView = new StringBuilder();
-    paramAdapterView.append(this.a.jdField_a_of_type_Int + 1);
+    paramAdapterView.append(this.a.i + 1);
     paramAdapterView.append("/");
-    paramAdapterView.append(this.a.b);
+    paramAdapterView.append(this.a.j);
     paramAdapterView = paramAdapterView.toString();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    this.a.f.setText(paramAdapterView);
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

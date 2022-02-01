@@ -25,12 +25,12 @@ class PresendPicMgrService$1
   
   public void c(int paramInt, PicResult arg2)
   {
-    Object localObject1 = (UpCallBack.SendResult)???.a;
+    Object localObject1 = (UpCallBack.SendResult)???.d;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("PresendStatus: destPath:");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g);
+    ((StringBuilder)localObject3).append(this.a.g.n);
     ((StringBuilder)localObject3).append(",uuid:");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.a.c);
     ((StringBuilder)localObject3).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
     if (paramInt == 0) {
       ??? = "ResultOk";
@@ -43,31 +43,31 @@ class PresendPicMgrService$1
     ???.append(" SendResult = ");
     ???.append(localObject1);
     Logger.a("PresendPicMgrService", "onSend", ???.toString());
-    synchronized (PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService))
+    synchronized (this.c.b)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.f)
+      if (!this.b.z)
       {
         if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 1;
+          this.a.g.h = 1;
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 2;
+          this.a.g.h = 2;
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(" SendButton not clicked, add senReq to mUploadFinishList,senReq = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+        ((StringBuilder)localObject1).append(this.a);
         Logger.a("PresendPicMgrService", "onSend", ((StringBuilder)localObject1).toString());
-        PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService).add(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+        this.c.b.add(this.a);
       }
       else if (paramInt != 0) {}
       label393:
       try
       {
-        localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService));
-        localObject3 = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.a;
+        localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(PresendPicMgrService.a(this.c));
+        localObject3 = (MessageRecord)this.a.g.i;
         ((IOrderMediaMsgService)((QQAppInterface)localObject1).getRuntimeService(IOrderMediaMsgService.class)).sendOrderMsg((MessageRecord)localObject3, null);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(" SendButton has been clicked, sendMessage directly! ,senReq = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+        ((StringBuilder)localObject1).append(this.a);
         Logger.a("PresendPicMgrService", "onSend", ((StringBuilder)localObject1).toString());
       }
       catch (AccountNotMatchException localAccountNotMatchException)
@@ -96,7 +96,7 @@ class PresendPicMgrService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PresendPicMgrService.1
  * JD-Core Version:    0.7.0.1
  */

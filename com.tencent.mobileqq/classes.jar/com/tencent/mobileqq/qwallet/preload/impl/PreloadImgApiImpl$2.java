@@ -13,20 +13,20 @@ class PreloadImgApiImpl$2
   
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    List localList = (List)PreloadImgApiImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadImgApiImpl).get(paramPathResult.url);
+    List localList = (List)PreloadImgApiImpl.access$100(this.b).get(paramPathResult.url);
     if (paramPathResult.url.endsWith(".zip"))
     {
-      PreloadImgApiImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadImgApiImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+      PreloadImgApiImpl.access$200(this.b, this.a, paramPathResult.url, paramPathResult.folderPath, localList);
       return;
     }
     if (paramPathResult.url.endsWith(".png")) {
-      PreloadImgApiImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadImgApiImpl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
+      PreloadImgApiImpl.access$300(this.b, this.a, paramPathResult.url, localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadImgApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

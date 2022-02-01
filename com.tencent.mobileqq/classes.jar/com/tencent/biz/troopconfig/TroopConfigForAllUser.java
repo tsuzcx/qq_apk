@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class TroopConfigForAllUser
   extends CommonConfigBase
 {
-  public boolean a;
+  public boolean d;
   
   public TroopConfigForAllUser(Context paramContext, String paramString)
   {
@@ -25,7 +25,7 @@ public class TroopConfigForAllUser
   public void a(String paramString)
   {
     boolean bool = true;
-    this.a = true;
+    this.d = true;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
@@ -35,7 +35,7 @@ public class TroopConfigForAllUser
       {
         if (new JSONObject(paramString).optInt("isShow3kTroopTips") == 1)
         {
-          this.a = bool;
+          this.d = bool;
           return;
         }
       }
@@ -57,7 +57,7 @@ public class TroopConfigForAllUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopconfig.TroopConfigForAllUser
  * JD-Core Version:    0.7.0.1
  */

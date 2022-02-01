@@ -9,23 +9,23 @@ import com.tencent.widget.RecentDynamicAvatarView;
 class SessionClearFragment$SessionHolder
   extends RecyclerView.ViewHolder
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-  TextView b;
+  CheckBox a;
+  RecentDynamicAvatarView b;
+  TextView c;
+  TextView d;
   
   public SessionClearFragment$SessionHolder(SessionClearFragment paramSessionClearFragment, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364613));
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
-    this.b = ((TextView)paramView.findViewById(2131377641));
+    this.a = ((CheckBox)paramView.findViewById(2131430688));
+    this.b = ((RecentDynamicAvatarView)paramView.findViewById(2131435219));
+    this.c = ((TextView)paramView.findViewById(2131439121));
+    this.d = ((TextView)paramView.findViewById(2131446052));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.SessionHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ public class BottomSheetBehavior$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new BottomSheetBehavior.SavedState.1();
-  final int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  final int a;
+  int b;
   boolean c;
+  boolean d;
+  boolean e;
   
   public BottomSheetBehavior$SavedState(@NonNull Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readInt();
     int i = paramParcel.readInt();
     boolean bool2 = false;
     if (i == 1) {
@@ -28,28 +28,28 @@ public class BottomSheetBehavior$SavedState
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.c = bool1;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.d = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     }
-    this.c = bool1;
+    this.e = bool1;
   }
   
   public BottomSheetBehavior$SavedState(Parcelable paramParcelable, @NonNull BottomSheetBehavior<?> paramBottomSheetBehavior)
   {
     super(paramParcelable);
-    this.jdField_a_of_type_Int = paramBottomSheetBehavior.e;
-    this.jdField_b_of_type_Int = BottomSheetBehavior.a(paramBottomSheetBehavior);
-    this.jdField_a_of_type_Boolean = BottomSheetBehavior.b(paramBottomSheetBehavior);
-    this.jdField_b_of_type_Boolean = paramBottomSheetBehavior.jdField_a_of_type_Boolean;
+    this.a = paramBottomSheetBehavior.h;
+    this.b = BottomSheetBehavior.d(paramBottomSheetBehavior);
     this.c = BottomSheetBehavior.c(paramBottomSheetBehavior);
+    this.d = paramBottomSheetBehavior.g;
+    this.e = BottomSheetBehavior.e(paramBottomSheetBehavior);
   }
   
   public void writeToParcel(@NonNull Parcel paramParcel, int paramInt)
@@ -59,7 +59,7 @@ public class BottomSheetBehavior$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetBehavior.SavedState
  * JD-Core Version:    0.7.0.1
  */

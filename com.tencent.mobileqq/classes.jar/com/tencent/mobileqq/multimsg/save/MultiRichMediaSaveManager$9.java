@@ -11,16 +11,16 @@ class MultiRichMediaSaveManager$9
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq;
-    if ((localObject != null) && (((FileSaveReq)localObject).a != null))
+    Object localObject = this.b;
+    if ((localObject != null) && (((FileSaveReq)localObject).d != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.a.a();
-      FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a((String)localObject);
+      localObject = this.b.d.b();
+      FileSaveResult localFileSaveResult = this.c.a((String)localObject);
       if ((localFileSaveResult != null) && (!localFileSaveResult.a))
       {
-        localFileSaveResult.c = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a((String)localObject, localFileSaveResult);
-        MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult, paramInt);
+        localFileSaveResult.e = paramInt;
+        this.c.a((String)localObject, localFileSaveResult);
+        MultiRichMediaSaveManager.a(this.c, localFileSaveResult, paramInt);
       }
     }
   }
@@ -31,19 +31,19 @@ class MultiRichMediaSaveManager$9
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadFile key = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", result = ");
       localStringBuilder.append(paramBoolean);
       QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
     }
-    MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, paramBoolean);
+    MultiRichMediaSaveManager.a(this.c, this.b, paramBoolean);
   }
   
   public void b(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.9
  * JD-Core Version:    0.7.0.1
  */

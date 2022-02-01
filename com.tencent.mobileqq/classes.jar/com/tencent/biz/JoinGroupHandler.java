@@ -16,60 +16,58 @@ import com.tencent.mobileqq.widget.QQToastNotifier;
 
 public class JoinGroupHandler
 {
-  protected int a;
-  protected long a;
-  protected Context a;
-  protected JoinGroupHandler.IJoinGroupCB a;
-  protected QQAppInterface a;
-  protected TroopMngObserver a;
   protected QQProgressDialog a;
-  protected Runnable a;
-  protected String a;
-  protected long b = 0L;
+  protected Context b;
+  protected QQAppInterface c;
+  protected long d;
+  protected String e;
+  protected JoinGroupHandler.IJoinGroupCB f;
+  protected int g;
+  protected long h = 0L;
+  protected Runnable i = new JoinGroupHandler.2(this);
+  protected TroopMngObserver j = new JoinGroupHandler.3(this);
   
   public JoinGroupHandler(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, JoinGroupHandler.IJoinGroupCB paramIJoinGroupCB)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new JoinGroupHandler.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new JoinGroupHandler.3(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB = paramIJoinGroupCB;
+    this.b = paramContext;
+    this.c = paramQQAppInterface;
+    this.g = paramInt;
+    this.e = paramString;
+    this.f = paramIJoinGroupCB;
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    new QQToastNotifier(this.jdField_a_of_type_AndroidContentContext).a(paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168), 0, paramInt2);
+    new QQToastNotifier(this.b).notifyUser(paramInt1, this.b.getResources().getDimensionPixelSize(2131299920), 0, paramInt2);
   }
   
   private void a(TroopInfo paramTroopInfo)
   {
     if (paramTroopInfo.cGroupOption != 3)
     {
-      paramTroopInfo = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.jdField_a_of_type_Int, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.jdField_a_of_type_JavaLangString, null);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramTroopInfo);
-      this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.b();
+      paramTroopInfo = AddFriendLogicActivity.a(this.b, paramTroopInfo.troopuin, paramTroopInfo.troopname, paramTroopInfo.cGroupOption, this.g, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer, null, this.e, null);
+      this.b.startActivity(paramTroopInfo);
+      this.f.b();
       return;
     }
-    a(2131719932, 1);
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
+    a(2131917537, 1);
+    this.f.a();
   }
   
   private void a(boolean paramBoolean)
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      if ((this.a != null) && (this.a.isShowing()))
       {
         long l1 = System.currentTimeMillis();
-        long l2 = this.b;
+        long l2 = this.h;
         if ((!paramBoolean) && (l1 - l2 < 1000L))
         {
-          ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+          ThreadManager.getUIHandlerV2().postDelayed(this.i, 500L);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        this.a.dismiss();
         return;
       }
     }
@@ -83,16 +81,16 @@ public class JoinGroupHandler
   {
     try
     {
-      ITroopMngHandler localITroopMngHandler = (ITroopMngHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
-      this.jdField_a_of_type_Long = paramLong;
+      ITroopMngHandler localITroopMngHandler = (ITroopMngHandler)this.c.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+      this.d = paramLong;
       localITroopMngHandler.a(paramLong, 8390784);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      a(2131719418, 0);
-      this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
+      a(2131916977, 0);
+      this.f.a();
     }
   }
   
@@ -100,15 +98,15 @@ public class JoinGroupHandler
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694668);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new JoinGroupHandler.1(this));
+        this.a = new QQProgressDialog(this.b, this.b.getResources().getDimensionPixelSize(2131299920));
+        this.a.c(2131892360);
+        this.a.c(false);
+        this.a.setOnDismissListener(new JoinGroupHandler.1(this));
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      this.b = System.currentTimeMillis();
+      this.a.show();
+      this.h = System.currentTimeMillis();
       return;
     }
     catch (Exception localException)
@@ -119,31 +117,31 @@ public class JoinGroupHandler
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
+    this.c.addObserver(this.j);
   }
   
   public void a(long paramLong)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      a(2131694422, 0);
-      this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
+      a(2131892102, 0);
+      this.f.a();
       return;
     }
     if (0L == paramLong)
     {
-      this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
+      this.f.a();
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
     c();
     b(paramLong);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.c.removeObserver(this.j);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.i);
     a(true);
   }
 }

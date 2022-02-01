@@ -35,7 +35,7 @@ class QzoneVideoSoDownloadModule$MyISVConfig
       localObject = this.this$0;
       localResultReceiver = this.mReceiver;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131712432));
+      localStringBuilder.append(HardCodeUtil.a(2131910025));
       localStringBuilder.append(paramInt2);
       localStringBuilder.append("]");
       QzoneVideoSoDownloadModule.access$000((QzoneVideoSoDownloadModule)localObject, localResultReceiver, -2, localStringBuilder.toString());
@@ -47,7 +47,7 @@ class QzoneVideoSoDownloadModule$MyISVConfig
       localObject = this.this$0;
       localResultReceiver = this.mReceiver;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131712457));
+      localStringBuilder.append(HardCodeUtil.a(2131910047));
       localStringBuilder.append(paramInt2);
       localStringBuilder.append("]");
       QzoneVideoSoDownloadModule.access$000((QzoneVideoSoDownloadModule)localObject, localResultReceiver, -2, localStringBuilder.toString());
@@ -64,7 +64,7 @@ class QzoneVideoSoDownloadModule$MyISVConfig
     localObject = this.this$0;
     ResultReceiver localResultReceiver = this.mReceiver;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131712541));
+    localStringBuilder.append(HardCodeUtil.a(2131910129));
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("]");
     QzoneVideoSoDownloadModule.access$000((QzoneVideoSoDownloadModule)localObject, localResultReceiver, -2, localStringBuilder.toString());
@@ -73,7 +73,7 @@ class QzoneVideoSoDownloadModule$MyISVConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule.MyISVConfig
  * JD-Core Version:    0.7.0.1
  */

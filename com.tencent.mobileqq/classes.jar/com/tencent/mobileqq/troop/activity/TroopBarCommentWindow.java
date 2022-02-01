@@ -18,75 +18,74 @@ import org.json.JSONObject;
 public class TroopBarCommentWindow
   extends PublicCommentWindow
 {
-  Context a;
-  protected boolean c;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h = "0";
-  protected String i;
+  protected String A;
+  Context t;
+  protected boolean u = false;
+  String v;
+  String w;
+  String x;
+  String y;
+  String z = "0";
   
   public TroopBarCommentWindow(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
     super(paramQBaseActivity, paramBundle);
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramQBaseActivity.getApplicationContext();
+    this.t = paramQBaseActivity.getApplicationContext();
   }
   
   protected void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.d = this.jdField_a_of_type_OrgJsonJSONObject.optString("bid");
-    this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("pid");
-    this.f = this.jdField_a_of_type_OrgJsonJSONObject.optString("cid");
-    this.g = this.jdField_a_of_type_OrgJsonJSONObject.optString("rid");
-    if ("detail".equals(this.jdField_a_of_type_OrgJsonJSONObject.optString("from"))) {
+    this.v = this.g.optString("bid");
+    this.w = this.g.optString("pid");
+    this.x = this.g.optString("cid");
+    this.y = this.g.optString("rid");
+    if ("detail".equals(this.g.optString("from"))) {
       paramBundle = "0";
     } else {
       paramBundle = "1";
     }
-    this.h = paramBundle;
-    this.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("extparam");
+    this.z = paramBundle;
+    this.A = this.g.optString("extparam");
     paramBundle = new StringBuilder();
-    paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+    paramBundle.append(this.r.getAppRuntime().getAccount());
     paramBundle.append("-");
-    paramBundle.append(this.d);
+    paramBundle.append(this.v);
     paramBundle.append("-");
-    paramBundle.append(this.e);
+    paramBundle.append(this.w);
     paramBundle.append("-");
-    paramBundle.append(this.f);
+    paramBundle.append(this.x);
     paramBundle.append("-");
-    paramBundle.append(this.g);
-    this.jdField_a_of_type_JavaLangString = paramBundle.toString();
-    TroopBarUtils.a("two_comment", "exp", this.d, this.h, "", "");
+    paramBundle.append(this.y);
+    this.h = paramBundle.toString();
+    TroopBarUtils.a("two_comment", "exp", this.v, this.z, "", "");
   }
   
   protected void a(String paramString)
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.u) {
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.u = true;
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("pid", this.e);
-      localJSONObject.put("cid", this.f);
-      localJSONObject.put("bid", Long.parseLong(this.d));
-      localJSONObject.put("target_rid", this.g);
+      localJSONObject.put("pid", this.w);
+      localJSONObject.put("cid", this.x);
+      localJSONObject.put("bid", Long.parseLong(this.v));
+      localJSONObject.put("target_rid", this.y);
       localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "8.7.0.5295");
-      localJSONObject.put("extparam", this.i);
-      paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, ProtoServlet.class);
+      localJSONObject.put("version", "8.8.17.5770");
+      localJSONObject.put("extparam", this.A);
+      paramString = new NewIntent(this.t, ProtoServlet.class);
       paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
       WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
       localWebSsoRequestBody.type.set(0);
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.c.setEnabled(false);
       paramString.setObserver(new TroopBarCommentWindow.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().startServlet(paramString);
+      this.r.getAppRuntime().startServlet(paramString);
       return;
     }
     catch (Exception paramString)
@@ -94,28 +93,28 @@ public class TroopBarCommentWindow
       label194:
       break label194;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, 2131696272, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getTitleBarHeight());
-    this.jdField_c_of_type_Boolean = false;
+    QQToast.makeText(this.r, 1, 2131894038, 0).show(this.r.getTitleBarHeight());
+    this.u = false;
   }
   
   public void dismiss()
   {
     super.dismiss();
     String str;
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_AndroidWidgetEditText.length() > 0)) {
+    if ((this.b != null) && (this.b.length() > 0)) {
       str = "0";
     } else {
       str = "1";
     }
-    TroopBarUtils.a("two_comment", "un", this.d, str, "", "");
-    if (!this.jdField_a_of_type_Boolean) {
-      a(this.jdField_c_of_type_JavaLangString, null, false);
+    TroopBarUtils.a("two_comment", "un", this.v, str, "", "");
+    if (!this.l) {
+      a(this.s, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarCommentWindow
  * JD-Core Version:    0.7.0.1
  */

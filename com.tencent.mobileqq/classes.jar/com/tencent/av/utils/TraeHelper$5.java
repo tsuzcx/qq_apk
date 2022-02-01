@@ -12,13 +12,13 @@ class TraeHelper$5
   
   public void run()
   {
-    VideoController localVideoController = this.this$0.a;
+    VideoController localVideoController = this.this$0.d;
     if (localVideoController == null) {
       return;
     }
-    this.this$0.d = 2;
+    this.this$0.n = 2;
     TraeHelper.5.1 local1 = new TraeHelper.5.1(this);
-    localVideoController.a().runOnUiThread(local1);
+    localVideoController.aj().runOnUiThread(local1);
   }
 }
 

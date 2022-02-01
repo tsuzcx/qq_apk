@@ -13,8 +13,8 @@ class LiteActivity$32
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      LiteActivity.a(this.a).x = paramMotionEvent.getRawX();
-      LiteActivity.a(this.a).y = paramMotionEvent.getRawY();
+      LiteActivity.f(this.a).x = paramMotionEvent.getRawX();
+      LiteActivity.f(this.a).y = paramMotionEvent.getRawY();
     }
     return false;
   }

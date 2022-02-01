@@ -30,7 +30,17 @@ public class AddMemberItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public RectF a()
+  public void a()
+  {
+    this.a = findViewById(2131427827);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    localLayoutParams.width = GameRoomViewLayoutParamsDef.F;
+    localLayoutParams.height = GameRoomViewLayoutParamsDef.F;
+    this.a.setLayoutParams(localLayoutParams);
+    this.a.setBackgroundColor(getContext().getResources().getColor(2131165547));
+  }
+  
+  public RectF getViewRect()
   {
     Object localObject = new int[2];
     GameRoomViewLayoutParamsDef.a(this, (int[])localObject);
@@ -47,16 +57,6 @@ public class AddMemberItemView
       QLog.i("AddMemberItemView", 2, ((StringBuilder)localObject).toString());
     }
     return localRectF;
-  }
-  
-  public void a()
-  {
-    this.a = findViewById(2131362246);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    localLayoutParams.width = GameRoomViewLayoutParamsDef.F;
-    localLayoutParams.height = GameRoomViewLayoutParamsDef.F;
-    this.a.setLayoutParams(localLayoutParams);
-    this.a.setBackgroundColor(getContext().getResources().getColor(2131165311));
   }
 }
 

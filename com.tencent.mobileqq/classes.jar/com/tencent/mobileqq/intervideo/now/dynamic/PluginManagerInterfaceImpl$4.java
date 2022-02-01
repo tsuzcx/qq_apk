@@ -16,14 +16,14 @@ class PluginManagerInterfaceImpl$4
     ILoginKeyHelper localILoginKeyHelper = (ILoginKeyHelper)QRoute.api(ILoginKeyHelper.class);
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Bundle[] arrayOfBundle = new Bundle[1];
-    localILoginKeyHelper.getA1(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, new PluginManagerInterfaceImpl.4.1(this, localILoginKeyHelper, arrayOfBundle, localCountDownLatch), true, this.e);
+    localILoginKeyHelper.getA1(this.a, this.b, this.c, this.d, new PluginManagerInterfaceImpl.4.1(this, localILoginKeyHelper, arrayOfBundle, localCountDownLatch), true, this.e);
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.4
  * JD-Core Version:    0.7.0.1
  */

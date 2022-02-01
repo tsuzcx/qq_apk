@@ -6,7 +6,7 @@ public abstract interface QWalletTools$TextUrlClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletTools.TextUrlClickListener
  * JD-Core Version:    0.7.0.1
  */

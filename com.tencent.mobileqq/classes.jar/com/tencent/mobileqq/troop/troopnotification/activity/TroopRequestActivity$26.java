@@ -18,7 +18,7 @@ class TroopRequestActivity$26
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramURLDrawable = this.a;
     if (paramURLDrawable != null)
     {
       paramURLDrawable = (View)paramURLDrawable.get();
@@ -30,7 +30,7 @@ class TroopRequestActivity$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.26
  * JD-Core Version:    0.7.0.1
  */

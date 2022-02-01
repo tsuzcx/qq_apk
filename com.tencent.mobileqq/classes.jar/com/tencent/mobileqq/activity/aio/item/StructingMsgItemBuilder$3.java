@@ -22,27 +22,27 @@ class StructingMsgItemBuilder$3
     int i = 0;
     String str1;
     String str2;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
+    if ((this.a.d != null) && (this.a.q != null))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {
+      if (this.a.d.a == 1) {
         i = 1;
       } else {
         i = 2;
       }
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+      str1 = this.a.d.b;
+      str2 = this.a.q.senderuin;
     }
     else
     {
       str1 = "";
       str2 = str1;
     }
-    Object localObject1 = (PortalManager)this.this$0.a.getManager(QQManagerFactory.MGR_PORTAL);
+    Object localObject1 = (PortalManager)this.this$0.d.getManager(QQManagerFactory.MGR_PORTAL);
     int j = -1;
     if (localObject1 != null) {
-      j = ((PortalManager)localObject1).a();
+      j = ((PortalManager)localObject1).b();
     }
-    localObject1 = this.this$0.a;
+    localObject1 = this.this$0.d;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(j);
@@ -59,7 +59,7 @@ class StructingMsgItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,20 @@ final class PreviewPhotoPage$onCreateView$2
   
   public final void onClick(View paramView)
   {
-    paramView = this.a.b().get(this.a.a());
+    paramView = this.a.p().get(this.a.n());
     Intrinsics.checkExpressionValueIsNotNull(paramView, "photoList[currentPosition]");
     paramView = (String)paramView;
-    if (this.a.a().contains(paramView)) {
-      this.a.a().remove(paramView);
+    if (this.a.o().contains(paramView)) {
+      this.a.o().remove(paramView);
     } else {
-      this.a.a().add(paramView);
+      this.a.o().add(paramView);
     }
     PreviewPhotoPage.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PreviewPhotoPage.onCreateView.2
  * JD-Core Version:    0.7.0.1
  */

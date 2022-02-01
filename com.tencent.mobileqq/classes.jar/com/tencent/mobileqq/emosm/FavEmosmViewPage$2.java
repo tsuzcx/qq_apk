@@ -10,18 +10,18 @@ class FavEmosmViewPage$2
 {
   FavEmosmViewPage$2(FavEmosmViewPage paramFavEmosmViewPage, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.l();
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.m();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    ReportController.b(FavEmosmViewPage.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
+    ReportController.b(FavEmosmViewPage.a(this.b), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.2
  * JD-Core Version:    0.7.0.1
  */

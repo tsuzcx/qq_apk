@@ -14,21 +14,21 @@ class AVSchema$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.isDetached()) {
+    if (this.c.a.isDetached()) {
       return;
     }
-    boolean bool = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspCheckGroupCanJoin.is_can_join.get();
+    boolean bool = this.a.is_can_join.get();
     if (bool)
     {
       ShareChatReport.h();
-      str = this.jdField_a_of_type_ComTencentAvReqGroupVideo$RspCheckGroupCanJoin.join_wording.get().toStringUtf8();
-      PopupDialog.a(this.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.getBaseActivity(), 230, null, str, 2131690728, 2131694583, new AVSchema.2.1.1(this), new AVSchema.2.1.2(this));
+      str = this.a.join_wording.get().toStringUtf8();
+      PopupDialog.a(this.c.a.getBaseActivity(), 230, null, str, 2131887648, 2131892267, new AVSchema.2.1.1(this), new AVSchema.2.1.2(this));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.a);
+      this.c.a.b(this.b, this.c.a.a);
     }
-    String str = AVSchema.a();
+    String str = AVSchema.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("join group check[");
     localStringBuilder.append(bool);
@@ -38,7 +38,7 @@ class AVSchema$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.2.1
  * JD-Core Version:    0.7.0.1
  */

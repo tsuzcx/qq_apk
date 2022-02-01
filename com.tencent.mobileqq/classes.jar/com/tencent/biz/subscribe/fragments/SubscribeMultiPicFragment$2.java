@@ -15,7 +15,7 @@ class SubscribeMultiPicFragment$2
     if (SubscribeMultiPicFragment.a(this.a) != null)
     {
       SubscribeMultiPicFragment localSubscribeMultiPicFragment = this.a;
-      localSubscribeMultiPicFragment.a(SubscribeMultiPicFragment.a(localSubscribeMultiPicFragment).a(1));
+      localSubscribeMultiPicFragment.a(SubscribeMultiPicFragment.a(localSubscribeMultiPicFragment).b(1));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

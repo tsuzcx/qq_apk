@@ -35,19 +35,18 @@ public class MessageRoamHandler
   extends BusinessHandler
 {
   public int a;
-  public SparseArray<MessageRoamHandler.ChatHistoryMessageObserver> a;
-  private QQAppInterface a;
+  public SparseArray<MessageRoamHandler.ChatHistoryMessageObserver> b = new SparseArray();
+  private QQAppInterface c;
   
   public MessageRoamHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramObject = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    paramObject = (MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     Object localObject;
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
@@ -205,7 +204,7 @@ public class MessageRoamHandler
     i5 = paramToServiceMsg.extraData.getInt("EndRoamYearKey");
     int i6 = paramToServiceMsg.extraData.getInt("EndRoamMonthKey");
     i4 = paramToServiceMsg.extraData.getInt("EndRoamDayKey");
-    paramMessageRoamManager.a().d();
+    paramMessageRoamManager.b().d();
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg", 2, "handle_oidb_0x42e_3 : clearRoamDateSerIndex...");
     }
@@ -224,7 +223,7 @@ public class MessageRoamHandler
       } else {
         i3 = 31;
       }
-      paramMessageRoamManager.a().a(l, i, j, (int)paramOIDBSSOPkg[i2], i3);
+      paramMessageRoamManager.b().a(l, i, j, (int)paramOIDBSSOPkg[i2], i3);
       if (j - 1 > 0)
       {
         j -= 1;
@@ -240,9 +239,9 @@ public class MessageRoamHandler
       i2 += 1;
     }
     paramMessageRoamManager.b(i5, i6, i4);
-    paramMessageRoamManager.a().a(String.valueOf(l), k, m, i1, n);
-    paramMessageRoamManager.m();
-    paramMessageRoamManager.c();
+    paramMessageRoamManager.b().a(String.valueOf(l), k, m, i1, n);
+    paramMessageRoamManager.y();
+    paramMessageRoamManager.j();
     paramMessageRoamManager.a(2003);
     paramMessageRoamManager.a(18, null);
   }
@@ -287,11 +286,11 @@ public class MessageRoamHandler
         i = j;
         if (j == 0)
         {
-          paramToServiceMsg = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+          paramToServiceMsg = (MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
           i = j;
           if (paramToServiceMsg != null)
           {
-            paramToServiceMsg.d(k);
+            paramToServiceMsg.e(k);
             i = j;
           }
         }
@@ -305,7 +304,7 @@ public class MessageRoamHandler
     {
       i = -1;
     }
-    paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryAuthDevForRoamMsgFragment.class);
+    paramToServiceMsg = this.c.getHandler(ChatHistoryAuthDevForRoamMsgFragment.class);
     if (paramToServiceMsg != null)
     {
       paramFromServiceMsg = paramToServiceMsg.obtainMessage();
@@ -372,9 +371,9 @@ public class MessageRoamHandler
             if (k == -23723)
             {
               i = paramToServiceMsg.getShort();
-              paramToServiceMsg = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+              paramToServiceMsg = (MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
               if (paramToServiceMsg != null) {
-                paramToServiceMsg.d(i);
+                paramToServiceMsg.e(i);
               }
               if (QLog.isColorLevel())
               {
@@ -421,7 +420,7 @@ public class MessageRoamHandler
           QLog.d("Q.roammsg", 2, paramFromServiceMsg.toString());
         }
       }
-      ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(34, null);
+      ((MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(34, null);
       return;
       label524:
       int i = 0;
@@ -436,13 +435,13 @@ public class MessageRoamHandler
   
   public MessageObserver a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    this.a = paramInt;
+    if (this.b.get(paramInt) == null)
     {
       MessageRoamHandler.ChatHistoryMessageObserver localChatHistoryMessageObserver = new MessageRoamHandler.ChatHistoryMessageObserver(this, paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localChatHistoryMessageObserver);
+      this.b.put(paramInt, localChatHistoryMessageObserver);
     }
-    return (MessageObserver)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (MessageObserver)this.b.get(paramInt);
   }
   
   public void a()
@@ -455,7 +454,7 @@ public class MessageRoamHandler
     localOIDBSSOPkg.uint32_result.set(0);
     localOIDBSSOPkg.uint32_service_type.set(9);
     Object localObject = ByteBuffer.allocate(9);
-    ((ByteBuffer)localObject).putInt((int)Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((ByteBuffer)localObject).putInt((int)Long.parseLong(this.c.getCurrentAccountUin()));
     ((ByteBuffer)localObject).put((byte)0);
     ((ByteBuffer)localObject).putShort((short)1);
     ((ByteBuffer)localObject).putShort((short)-23723);
@@ -504,13 +503,13 @@ public class MessageRoamHandler
   
   public void a(String paramString, Calendar paramCalendar, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
-    MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
-    if (localMessageRoamManager.b() == 0)
+    MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
+    if (localMessageRoamManager.z() == 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("vip_message_roam_last_request_timestamp");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.c.getCurrentAccountUin());
       l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
       if ((System.currentTimeMillis() - l1 > 7200000L) || (l1 == 0L))
       {
@@ -522,23 +521,23 @@ public class MessageRoamHandler
         paramString = localSharedPreferences.edit();
         paramCalendar = new StringBuilder();
         paramCalendar.append("vip_message_roam_last_request_timestamp");
-        paramCalendar.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramCalendar.append(this.c.getCurrentAccountUin());
         paramString.putLong(paramCalendar.toString(), System.currentTimeMillis());
         paramString.commit();
         return;
       }
     }
-    paramCalendar = localMessageRoamManager.a((Calendar)paramCalendar.clone());
+    paramCalendar = localMessageRoamManager.f((Calendar)paramCalendar.clone());
     long l1 = ((Long)paramCalendar.first).longValue();
     long l2 = ((Long)paramCalendar.second).longValue();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(paramString, l1, 0L, l2, (short)0, 0L, 1, localMessageRoamManager.a(), localMessageRoamManager.b(), paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
+    this.c.getMsgHandler().a(paramString, l1, 0L, l2, (short)0, 0L, 1, localMessageRoamManager.h(), localMessageRoamManager.z(), paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
   }
   
   public void a(short paramShort)
   {
     try
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      long l = Long.parseLong(this.c.getAccount());
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -567,10 +566,17 @@ public class MessageRoamHandler
     }
   }
   
-  public boolean a(String paramString, Calendar paramCalendar, boolean paramBoolean, int paramInt)
+  public MessageObserver b(int paramInt)
   {
-    Object localObject1 = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    paramCalendar = ((MessageRoamManager)localObject1).a(paramCalendar);
+    MessageObserver localMessageObserver = (MessageObserver)this.b.get(paramInt);
+    this.b.remove(paramInt);
+    return localMessageObserver;
+  }
+  
+  public boolean b(String paramString, Calendar paramCalendar, boolean paramBoolean, int paramInt)
+  {
+    Object localObject1 = (MessageRoamManager)this.c.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    paramCalendar = ((MessageRoamManager)localObject1).g(paramCalendar);
     if (paramCalendar == null)
     {
       if (QLog.isColorLevel()) {
@@ -613,8 +619,8 @@ public class MessageRoamHandler
     if ("local".equals(localObject2))
     {
       ((MessageRoamManager)localObject1).a(paramCalendar);
-      localObject2 = ((MessageRoamManager)localObject1).a((Calendar)paramCalendar.clone());
-      int m = ((MessageRoamManager)localObject1).a(paramString, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
+      localObject2 = ((MessageRoamManager)localObject1).f((Calendar)paramCalendar.clone());
+      int m = ((MessageRoamManager)localObject1).b(paramString, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -631,18 +637,11 @@ public class MessageRoamHandler
         QLog.d("Q.roammsg", 2, ((StringBuilder)localObject1).toString());
       }
       if ((m >= 0) && (m < paramInt)) {
-        return a(paramString, paramCalendar, paramBoolean, paramInt - m);
+        return b(paramString, paramCalendar, paramBoolean, paramInt - m);
       }
       return false;
     }
     return false;
-  }
-  
-  public MessageObserver b(int paramInt)
-  {
-    MessageObserver localMessageObserver = (MessageObserver)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    return localMessageObserver;
   }
   
   public Set<String> getCommandList()
@@ -694,7 +693,7 @@ public class MessageRoamHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.MessageRoamHandler
  * JD-Core Version:    0.7.0.1
  */

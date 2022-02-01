@@ -33,14 +33,14 @@ public final class DateUtils
     return d * 1.0D / 86400000.0D >= paramInt;
   }
   
-  public final boolean a(long paramLong)
+  public final boolean b(long paramLong)
   {
     return a(paramLong, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.DateUtils
  * JD-Core Version:    0.7.0.1
  */

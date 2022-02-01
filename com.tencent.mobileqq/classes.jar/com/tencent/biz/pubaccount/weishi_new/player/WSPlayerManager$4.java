@@ -10,16 +10,16 @@ class WSPlayerManager$4
   
   public void run()
   {
-    if ((WSPlayerManager.a(this.this$0) != null) && (WSPlayerManager.b(this.this$0).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSVideoView != null))
+    if ((WSPlayerManager.l(this.this$0) != null) && (WSPlayerManager.d(this.this$0).b != null))
     {
-      if (WSPlayerManager.b(this.this$0).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate != null) {
-        WSPlayerManager.b(this.this$0).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate.d(WSPlayerManager.b(this.this$0));
+      if (WSPlayerManager.d(this.this$0).k != null) {
+        WSPlayerManager.d(this.this$0).k.d(WSPlayerManager.d(this.this$0));
       }
-      if (WSPlayerManager.a(this.this$0) != null)
+      if (WSPlayerManager.j(this.this$0) != null)
       {
-        Iterator localIterator = WSPlayerManager.a(this.this$0).iterator();
+        Iterator localIterator = WSPlayerManager.j(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((WSPlayerStatusListener)localIterator.next()).b(WSPlayerManager.b(this.this$0));
+          ((WSPlayerStatusListener)localIterator.next()).b(WSPlayerManager.d(this.this$0));
         }
       }
     }
@@ -27,7 +27,7 @@ class WSPlayerManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.4
  * JD-Core Version:    0.7.0.1
  */

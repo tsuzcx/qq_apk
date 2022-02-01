@@ -14,14 +14,14 @@ class NewMyStorySegment$9
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (paramView.getId() != 2131374606)
+    if (paramView.getId() != 2131442776)
     {
-      if (NewMyStorySegment.a(this.a).a().size() > 0)
+      if (NewMyStorySegment.b(this.a).b().size() > 0)
       {
         paramView = this.a;
-        NewMyStorySegment.a(paramView, NewMyStorySegment.a(paramView) ^ true);
-        NewMyStorySegment.a(this.a);
-        if (NewMyStorySegment.a(this.a)) {
+        NewMyStorySegment.a(paramView, NewMyStorySegment.e(paramView) ^ true);
+        NewMyStorySegment.f(this.a);
+        if (NewMyStorySegment.e(this.a)) {
           paramView = "1";
         } else {
           paramView = "2";
@@ -31,11 +31,11 @@ class NewMyStorySegment$9
         return;
       }
       paramObject = this.a;
-      NewMyStorySegment.a(paramObject, NewMyStorySegment.a(paramObject), paramView);
+      NewMyStorySegment.a(paramObject, NewMyStorySegment.b(paramObject), paramView);
       return;
     }
     paramObject = this.a;
-    NewMyStorySegment.a(paramObject, NewMyStorySegment.a(paramObject), paramView);
+    NewMyStorySegment.a(paramObject, NewMyStorySegment.b(paramObject), paramView);
   }
 }
 

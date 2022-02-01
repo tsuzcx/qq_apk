@@ -11,14 +11,14 @@ class NearbyFragmentEnterAdapter$3
   public void onClick(View paramView)
   {
     NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.a(paramView, localViewHolder.a, localViewHolder.a);
+    if (this.a.j != null) {
+      this.a.j.a(paramView, localViewHolder.g, localViewHolder.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.3
  * JD-Core Version:    0.7.0.1
  */

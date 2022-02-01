@@ -12,18 +12,18 @@ class FloatWindowController$6
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "mIsForeGroundTrueRunnable run");
     }
-    FloatWindowController.a(this.this$0).a = true;
+    FloatWindowController.d(this.this$0).a = true;
     if (FloatWindowController.b(this.this$0)) {
       if (!FloatWindowController.a(this.this$0))
       {
-        this.this$0.c();
+        this.this$0.d();
         if (QLog.isColorLevel()) {
           QLog.d("FloatWindowController", 2, "ACTION_QQ_FOREGROUND no permission hideFloatWindow");
         }
       }
       else
       {
-        FloatWindowController.a(this.this$0);
+        FloatWindowController.e(this.this$0);
       }
     }
   }

@@ -21,88 +21,43 @@ import java.util.List;
 public final class AIOSelectableDelegateImpl
   implements Handler.Callback, SelectableDelegate
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.b(30.0F);
-  private static final int jdField_b_of_type_Int = ViewUtils.b(28.0F);
-  private static final int c = ViewUtils.b(72.0F);
-  private static final int d = ViewUtils.b(63.0F);
-  protected long a;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private SelectableComponent jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-  private SelectableCursor jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-  private SelectableMagnifier jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
+  private static final int d = ViewUtils.dpToPx(30.0F);
+  private static final int e = ViewUtils.dpToPx(28.0F);
+  private static final int f = ViewUtils.dpToPx(72.0F);
+  private static final int g = ViewUtils.dpToPx(63.0F);
   protected SelectablePopupMenu a;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private WeakReference<AIOSelectableDelegateProxy> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<WeakReference<OnSelectListener>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private SelectableCursor jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int e = -1;
-  private int f = -1;
-  private int g = -1;
-  private int h = -1;
-  private int i = -1;
-  private int j = -1;
-  private int k;
-  private int l;
+  protected long b = -1L;
+  ChatMessage c;
+  private WeakReference<AIOSelectableDelegateProxy> h;
+  private SelectableComponent i;
+  private SelectableCursor j;
+  private SelectableCursor k;
+  private SelectableMagnifier l;
+  private List<WeakReference<OnSelectListener>> m = new ArrayList();
+  private int n = -1;
+  private int o = -1;
+  private boolean p = false;
+  private final int[] q = new int[2];
+  private int r = -1;
+  private int s = -1;
+  private int t = -1;
+  private int u = -1;
+  private int v;
+  private int w;
+  private final Handler x = new Handler(Looper.getMainLooper(), this);
+  private boolean y = true;
   
-  private AIOSelectableDelegateImpl()
+  private void A()
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public static AIOSelectableDelegateImpl a()
-  {
-    return AIOSelectableDelegateImpl.Holder.a;
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightBackgroundColor(this.k);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(this.e, this.f);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightContent();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
-    this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-    localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
-  }
-  
-  private boolean g()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null;
-  }
-  
-  private void h()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null)) {
-      return;
-    }
-    throw new IllegalStateException("Has not bound cursors.");
-  }
-  
-  private boolean h()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null;
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null) {
+    if (this.l != null) {
       return;
     }
     throw new IllegalStateException("Has no magnifier.");
   }
   
-  private void j()
+  private void B()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       OnSelectListener localOnSelectListener = (OnSelectListener)((WeakReference)localIterator.next()).get();
@@ -112,58 +67,283 @@ public final class AIOSelectableDelegateImpl
     }
   }
   
-  public int a()
+  public static AIOSelectableDelegateImpl a()
   {
-    g();
-    SelectableComponent localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-    if (localSelectableComponent != null) {
-      return localSelectableComponent.contentLength();
+    return AIOSelectableDelegateImpl.Holder.a;
+  }
+  
+  private void w()
+  {
+    this.i.highlightBackgroundColor(this.v);
+    this.i.selectContent(this.n, this.o);
+    this.i.highlightContent();
+    this.j.f(this.w);
+    this.k.f(this.w);
+    this.i.locationByIndex(this.n, this.q, true);
+    SelectableCursor localSelectableCursor = this.j;
+    int[] arrayOfInt = this.q;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
+    this.i.locationByIndex(this.o, this.q, false);
+    localSelectableCursor = this.k;
+    arrayOfInt = this.q;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
+  }
+  
+  private boolean x()
+  {
+    return this.i != null;
+  }
+  
+  private void y()
+  {
+    if ((this.j != null) && (this.k != null)) {
+      return;
     }
-    return 0;
+    throw new IllegalStateException("Has not bound cursors.");
+  }
+  
+  private boolean z()
+  {
+    return this.a != null;
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (d())) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    if ((paramInt1 == 1) && (this.j != null) && (o())) {
+      return this.j.a(paramFloat1, paramFloat2, paramInt1, paramInt2);
     }
-    if ((paramInt1 == 2) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (e())) {
-      return this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    if ((paramInt1 == 2) && (this.k != null) && (p())) {
+      return this.k.a(paramFloat1, paramFloat2, paramInt1, paramInt2);
     }
     return -1;
   }
   
-  public int a(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    g();
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.touchIndex(paramInt1, paramInt2);
+    this.s = paramInt;
   }
   
-  @Nullable
-  public View a()
+  public void a(int paramInt1, int paramInt2)
   {
-    SelectableComponent localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-    if (localSelectableComponent != null) {
-      return localSelectableComponent.view();
+    if ((paramInt1 != -1) && (paramInt2 != -1))
+    {
+      if (paramInt1 > paramInt2)
+      {
+        this.n = paramInt2;
+        this.o = paramInt1;
+      }
+      else
+      {
+        this.n = paramInt1;
+        this.o = paramInt2;
+      }
+      if (this.o - this.n > 0) {
+        this.p = true;
+      }
     }
-    return null;
+    else
+    {
+      this.n = -1;
+      this.o = -1;
+      this.p = false;
+    }
+    x();
+    this.i.selectContent(this.n, this.o);
+    this.i.highlightContent();
+    y();
+    this.i.locationByIndex(this.n, this.q, true);
+    SelectableCursor localSelectableCursor = this.j;
+    int[] arrayOfInt = this.q;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
+    this.i.locationByIndex(this.o, this.q, false);
+    localSelectableCursor = this.k;
+    arrayOfInt = this.q;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
+    B();
   }
   
-  @Nullable
-  AIOSelectableDelegateProxy a()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    x();
+    z();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = Integer.valueOf(paramInt3);
+    this.x.sendMessageDelayed(localMessage, 10L);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    x();
+    A();
+    if (this.r == -1) {
+      return;
+    }
+    if (!this.y) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    int i1;
+    if (paramBoolean) {
+      i1 = 2;
+    } else {
+      i1 = 3;
+    }
+    localMessage.what = i1;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = Integer.valueOf(this.r);
+    this.x.sendMessageDelayed(localMessage, 10L);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.r = paramInt;
+    if (!paramBoolean) {
+      this.s = paramInt;
+    }
+  }
+  
+  void a(View paramView)
+  {
+    int i1;
+    if (paramView != null)
+    {
+      paramView.getLocationInWindow(this.q);
+      i1 = this.q[1];
+    }
+    else
+    {
+      i1 = ViewUtils.getScreenHeight();
+    }
+    d(i1);
+  }
+  
+  void a(BaseChatPie paramBaseChatPie)
+  {
+    BaseChatPie localBaseChatPie = paramBaseChatPie;
+    if (paramBaseChatPie == null)
+    {
+      SelectablePopupMenu localSelectablePopupMenu = this.a;
+      localBaseChatPie = paramBaseChatPie;
+      if ((localSelectablePopupMenu instanceof AIOMenuWrapper)) {
+        localBaseChatPie = ((AIOMenuWrapper)localSelectablePopupMenu).a;
+      }
+    }
+    int i1;
+    if ((localBaseChatPie != null) && (localBaseChatPie.X != null) && (localBaseChatPie.X.getVisibility() == 0))
+    {
+      localBaseChatPie.X.getLocationInWindow(this.q);
+      i1 = this.q[1];
+    }
+    else
+    {
+      i1 = ViewUtils.getScreenHeight();
+    }
+    d(i1);
+  }
+  
+  void a(@Nullable AIOSelectableDelegateProxy paramAIOSelectableDelegateProxy)
+  {
+    WeakReference localWeakReference = this.h;
     if (localWeakReference != null) {
-      return (AIOSelectableDelegateProxy)localWeakReference.get();
+      localWeakReference.clear();
     }
-    return null;
+    this.h = new WeakReference(paramAIOSelectableDelegateProxy);
+  }
+  
+  public void a(@NonNull OnSelectListener paramOnSelectListener)
+  {
+    Iterator localIterator = this.m.iterator();
+    while (localIterator.hasNext()) {
+      if (paramOnSelectListener == (OnSelectListener)((WeakReference)localIterator.next()).get())
+      {
+        i1 = 1;
+        break label45;
+      }
+    }
+    int i1 = 0;
+    label45:
+    if (i1 == 0) {
+      this.m.add(new WeakReference(paramOnSelectListener));
+    }
+  }
+  
+  public void a(@NonNull SelectableComponent paramSelectableComponent)
+  {
+    this.i = paramSelectableComponent;
+  }
+  
+  public void a(@NonNull SelectableCursor paramSelectableCursor1, @NonNull SelectableCursor paramSelectableCursor2)
+  {
+    this.j = paramSelectableCursor1;
+    this.k = paramSelectableCursor2;
+  }
+  
+  public void a(@NonNull SelectablePopupMenu paramSelectablePopupMenu)
+  {
+    this.a = paramSelectablePopupMenu;
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    x();
+    this.n = 0;
+    this.o = this.i.contentLength();
+    if (this.n >= this.o)
+    {
+      this.p = false;
+      return;
+    }
+    this.b = System.currentTimeMillis();
+    this.c = paramChatMessage;
+    this.p = true;
+    this.i.highlightBackgroundColor(this.v);
+    this.i.selectContent(this.n, this.o);
+    this.i.highlightContent();
+    y();
+    this.r = -1;
+    this.s = -1;
+    this.t = -1;
+    this.u = -1;
+    this.j.f(this.w);
+    this.k.f(this.w);
+    this.i.locationByIndex(this.n, this.q, true);
+    paramChatMessage = this.j;
+    int[] arrayOfInt = this.q;
+    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 1);
+    this.i.locationByIndex(this.o, this.q, false);
+    paramChatMessage = this.k;
+    arrayOfInt = this.q;
+    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 2);
+    h();
+    paramChatMessage = this.l;
+    if (paramChatMessage == null) {
+      this.l = new QMagnifier();
+    } else if (paramChatMessage.a()) {
+      this.l.b();
+    }
+    B();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.y = paramBoolean;
+  }
+  
+  public int b(int paramInt1, int paramInt2)
+  {
+    x();
+    return this.i.touchIndex(paramInt1, paramInt2);
   }
   
   @Nullable
-  public String a()
+  public String b()
   {
-    g();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    x();
+    Object localObject = this.i;
     if (localObject != null)
     {
       localObject = ((SelectableComponent)localObject).content();
@@ -174,291 +354,14 @@ public final class AIOSelectableDelegateImpl
     return "";
   }
   
-  public void a()
-  {
-    a((View)null);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 != -1) && (paramInt2 != -1))
-    {
-      if (paramInt1 > paramInt2)
-      {
-        this.e = paramInt2;
-        this.f = paramInt1;
-      }
-      else
-      {
-        this.e = paramInt1;
-        this.f = paramInt2;
-      }
-      if (this.f - this.e > 0) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      this.e = -1;
-      this.f = -1;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(this.e, this.f);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightContent();
-    h();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-    localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
-    j();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    g();
-    h();
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    localMessage.obj = Integer.valueOf(paramInt3);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 10L);
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    g();
-    i();
-    if (this.g == -1) {
-      return;
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    int m;
-    if (paramBoolean) {
-      m = 2;
-    } else {
-      m = 3;
-    }
-    localMessage.what = m;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    localMessage.obj = Integer.valueOf(this.g);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 10L);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.g = paramInt;
-    if (!paramBoolean) {
-      this.h = paramInt;
-    }
-  }
-  
-  void a(View paramView)
-  {
-    int m;
-    if (paramView != null)
-    {
-      paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      m = this.jdField_a_of_type_ArrayOfInt[1];
-    }
-    else
-    {
-      m = ViewUtils.b();
-    }
-    d(m);
-  }
-  
-  void a(BaseChatPie paramBaseChatPie)
-  {
-    BaseChatPie localBaseChatPie = paramBaseChatPie;
-    if (paramBaseChatPie == null)
-    {
-      SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
-      localBaseChatPie = paramBaseChatPie;
-      if ((localSelectablePopupMenu instanceof AIOMenuWrapper)) {
-        localBaseChatPie = ((AIOMenuWrapper)localSelectablePopupMenu).a;
-      }
-    }
-    int m;
-    if ((localBaseChatPie != null) && (localBaseChatPie.a != null) && (localBaseChatPie.a.getVisibility() == 0))
-    {
-      localBaseChatPie.a.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      m = this.jdField_a_of_type_ArrayOfInt[1];
-    }
-    else
-    {
-      m = ViewUtils.b();
-    }
-    d(m);
-  }
-  
-  void a(@Nullable AIOSelectableDelegateProxy paramAIOSelectableDelegateProxy)
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localWeakReference != null) {
-      localWeakReference.clear();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAIOSelectableDelegateProxy);
-  }
-  
-  public void a(@NonNull OnSelectListener paramOnSelectListener)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (paramOnSelectListener == (OnSelectListener)((WeakReference)localIterator.next()).get())
-      {
-        m = 1;
-        break label45;
-      }
-    }
-    int m = 0;
-    label45:
-    if (m == 0) {
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnSelectListener));
-    }
-  }
-  
-  public void a(@NonNull SelectableComponent paramSelectableComponent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = paramSelectableComponent;
-  }
-  
-  public void a(@NonNull SelectableCursor paramSelectableCursor1, @NonNull SelectableCursor paramSelectableCursor2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = paramSelectableCursor1;
-    this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = paramSelectableCursor2;
-  }
-  
-  public void a(@NonNull SelectablePopupMenu paramSelectablePopupMenu)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu = paramSelectablePopupMenu;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    g();
-    this.e = 0;
-    this.f = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.contentLength();
-    if (this.e >= this.f)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightBackgroundColor(this.k);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(this.e, this.f);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightContent();
-    h();
-    this.g = -1;
-    this.h = -1;
-    this.i = -1;
-    this.j = -1;
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
-    this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-    paramChatMessage = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 2);
-    a();
-    paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
-    if (paramChatMessage == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier = new QMagnifier();
-    } else if (paramChatMessage.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
-    }
-    j();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
-    if (localSelectablePopupMenu != null) {
-      return localSelectablePopupMenu.a();
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (!c()) {
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((SelectableComponent)localObject).view();
-    ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int m = arrayOfInt[0];
-    int n = arrayOfInt[1];
-    int i1 = ((View)localObject).getMeasuredWidth();
-    int i2 = ((View)localObject).getMeasuredHeight();
-    return (paramInt1 >= m) && (paramInt1 <= i1 + m) && (paramInt2 >= n) && (paramInt2 <= i2 + n);
-  }
-  
-  public int b()
-  {
-    g();
-    return this.e;
-  }
-  
-  @Nullable
-  public String b()
-  {
-    g();
-    CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent();
-    if (localCharSequence != null) {
-      return localCharSequence.toString();
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    h();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a();
-  }
-  
   public void b(int paramInt)
   {
-    this.k = paramInt;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.i = paramInt1;
-    this.j = paramInt2;
+    this.v = paramInt;
   }
   
   public void b(@NonNull OnSelectListener paramOnSelectListener)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -471,278 +374,223 @@ public final class AIOSelectableDelegateImpl
     paramOnSelectListener = null;
     label47:
     if (paramOnSelectListener != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramOnSelectListener);
+      this.m.remove(paramOnSelectListener);
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
   }
   
   public int c()
   {
-    g();
-    return this.f;
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent instanceof MixedMsgLinearLayout))
-    {
-      g();
-      CharSequence localCharSequence = ((MixedMsgLinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent).a();
-      if (localCharSequence != null) {
-        return localCharSequence.toString();
-      }
-      return null;
+    x();
+    SelectableComponent localSelectableComponent = this.i;
+    if (localSelectableComponent != null) {
+      return localSelectableComponent.contentLength();
     }
-    return b();
-  }
-  
-  public void c()
-  {
-    j();
+    return 0;
   }
   
   public void c(int paramInt)
   {
-    this.l = paramInt;
+    this.w = paramInt;
   }
   
-  public boolean c()
+  public void c(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Boolean;
+    this.t = paramInt1;
+    this.u = paramInt2;
   }
   
-  public int d()
+  @Nullable
+  public String d()
   {
-    return this.g;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-    SelectableMagnifier localSelectableMagnifier = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
-    if (localSelectableMagnifier != null)
-    {
-      if (localSelectableMagnifier.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier = null;
+    x();
+    CharSequence localCharSequence = this.i.selectContent();
+    if (localCharSequence != null) {
+      return localCharSequence.toString();
     }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.e = -1;
-    this.f = -1;
-    this.g = -1;
-    this.h = -1;
-    this.i = -1;
-    this.j = -1;
-    this.jdField_a_of_type_Long = -1L;
-    j();
+    return null;
   }
   
   void d(int paramInt)
   {
-    if (!g()) {
+    if (!x()) {
       return;
     }
-    if (!h()) {
+    if (!z()) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+    Object localObject1 = this.a;
     if ((localObject1 instanceof CommonMenuWrapper)) {
-      n = ((CommonMenuWrapper)localObject1).jdField_b_of_type_Int;
+      i2 = ((CommonMenuWrapper)localObject1).d;
     } else {
-      n = ((SelectablePopupMenu)localObject1).a();
+      i2 = ((SelectablePopupMenu)localObject1).c();
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
-    int i1;
+    localObject1 = this.a;
+    int i3;
     if ((localObject1 instanceof CommonMenuWrapper)) {
-      i1 = ((CommonMenuWrapper)localObject1).jdField_a_of_type_Int;
+      i3 = ((CommonMenuWrapper)localObject1).c;
     } else {
-      i1 = ((SelectablePopupMenu)localObject1).b();
+      i3 = ((SelectablePopupMenu)localObject1).d();
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view();
+    Object localObject2 = this.i.view();
     localObject1 = localObject2;
-    if (((View)localObject2).getId() != 2131364521)
+    if (((View)localObject2).getId() != 2131430578)
     {
-      View localView = ((View)localObject2).findViewById(2131364521);
+      View localView = ((View)localObject2).findViewById(2131430578);
       localObject1 = localObject2;
       if (localView != null) {
         localObject1 = localView;
       }
     }
-    ((View)localObject1).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    localObject2 = this.jdField_a_of_type_ArrayOfInt;
-    int i3 = 1;
-    int i4 = localObject2[1];
-    int i5 = localObject2[1];
-    int i6 = ((View)localObject1).getHeight();
-    localObject1 = this.jdField_a_of_type_ArrayOfInt;
-    int i2 = 0;
-    int i7 = localObject1[0];
-    int i8 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view().getPaddingLeft();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    localObject1 = this.jdField_a_of_type_ArrayOfInt;
+    ((View)localObject1).getLocationInWindow(this.q);
+    localObject2 = this.q;
+    int i5 = 1;
+    int i6 = localObject2[1];
+    int i7 = localObject2[1];
+    int i8 = ((View)localObject1).getHeight();
+    localObject1 = this.q;
+    int i4 = 0;
     int i9 = localObject1[0];
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, (int[])localObject1, false);
-    int m = this.jdField_a_of_type_ArrayOfInt[0];
-    if (this.h == 2)
+    int i10 = this.i.view().getPaddingLeft();
+    this.i.locationByIndex(this.n, this.q, true);
+    localObject1 = this.q;
+    int i11 = localObject1[0];
+    this.i.locationByIndex(this.o, (int[])localObject1, false);
+    int i1 = this.q[0];
+    if (this.s == 2)
     {
-      i9 = m - n;
-      if ((i9 > jdField_a_of_type_Int) || (i9 < 0))
+      i11 = i1 - i2;
+      if ((i11 > d) || (i11 < 0))
       {
-        i9 = jdField_a_of_type_Int;
-        if (m - i9 < i7 + i8) {
+        i11 = d;
+        if (i1 - i11 < i9 + i10) {
           break label339;
         }
-        m -= i9;
+        i1 -= i11;
         break label339;
       }
     }
     else
     {
-      m = n - i9;
-      if ((m > jdField_a_of_type_Int) || (m < 0)) {
+      i1 = i2 - i11;
+      if ((i1 > d) || (i1 < 0)) {
         break label332;
       }
     }
-    m = n;
+    i1 = i2;
     break label339;
     label332:
-    m = jdField_a_of_type_Int + i9;
+    i1 = d + i11;
     label339:
-    if (i4 - jdField_b_of_type_Int < c + ImmersiveUtils.statusHeight)
+    if (i6 - e < f + ImmersiveUtils.statusHeight)
     {
-      i4 = i5 + i6 + 0;
-      if (i4 < c + ImmersiveUtils.statusHeight)
+      i6 = i7 + i8 + 0;
+      if (i6 < f + ImmersiveUtils.statusHeight)
       {
-        if ((i1 != 0) && (i1 - jdField_b_of_type_Int > c + ImmersiveUtils.statusHeight))
+        if ((i3 != 0) && (i3 - e > f + ImmersiveUtils.statusHeight))
         {
-          paramInt = i1 - jdField_b_of_type_Int;
-          m = i2;
+          paramInt = i3 - e;
+          i1 = i4;
           break label591;
         }
-        if (i1 != 0)
+        if (i3 != 0)
         {
-          i3 = d;
-          i4 = jdField_b_of_type_Int;
-          if (i3 + i1 - i4 < paramInt)
+          i5 = g;
+          i6 = e;
+          if (i5 + i3 - i6 < paramInt)
           {
-            paramInt = i1 - i4;
-            m = 1;
+            paramInt = i3 - i6;
+            i1 = 1;
             break label591;
           }
         }
-        paramInt = c + ImmersiveUtils.statusHeight;
+        paramInt = f + ImmersiveUtils.statusHeight;
       }
       else
       {
-        if (d + i4 > paramInt)
+        if (g + i6 > paramInt)
         {
-          if ((i1 != 0) && (i1 - jdField_b_of_type_Int > c + ImmersiveUtils.statusHeight))
+          if ((i3 != 0) && (i3 - e > f + ImmersiveUtils.statusHeight))
           {
-            paramInt = i1 - jdField_b_of_type_Int;
+            paramInt = i3 - e;
           }
           else
           {
-            if (i1 != 0)
+            if (i3 != 0)
             {
-              i2 = d;
-              i4 = jdField_b_of_type_Int;
-              if (i2 + i1 - i4 < paramInt)
+              i4 = g;
+              i6 = e;
+              if (i4 + i3 - i6 < paramInt)
               {
-                paramInt = i1 - i4;
+                paramInt = i3 - i6;
                 break label564;
               }
             }
-            paramInt = c + ImmersiveUtils.statusHeight + d + jdField_b_of_type_Int;
-            n = m;
+            paramInt = f + ImmersiveUtils.statusHeight + g + e;
+            i2 = i1;
           }
-          m = 0;
+          i1 = 0;
           break label567;
         }
         else
         {
-          paramInt = i4;
-          n = m;
+          paramInt = i6;
+          i2 = i1;
         }
-        m = i3;
+        i1 = i5;
         break label591;
       }
     }
-    else if (i4 <= paramInt)
+    else if (i6 <= paramInt)
     {
-      paramInt = i4 - jdField_b_of_type_Int;
+      paramInt = i6 - e;
     }
     label564:
     label567:
-    int n = m;
-    m = i2;
+    int i2 = i1;
+    i1 = i4;
     label591:
-    a(n, paramInt, m);
+    a(i2, paramInt, i1);
   }
   
-  public boolean d()
+  public boolean d(int paramInt1, int paramInt2)
   {
-    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    return (localSelectableCursor != null) && (localSelectableCursor.a(1));
-  }
-  
-  void e()
-  {
-    g();
-    h();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-  }
-  
-  public boolean e()
-  {
-    SelectableCursor localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    return (localSelectableCursor != null) && (localSelectableCursor.a(2));
-  }
-  
-  void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a();
-      }
+    if (!l()) {
+      return false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-    if (localObject != null)
-    {
-      ((SelectableComponent)localObject).selectContent(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.clearHighlightContent();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = null;
+    Object localObject = this.i;
+    if (localObject == null) {
+      return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    if (localObject != null)
-    {
-      if (((SelectableCursor)localObject).a(1)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(1);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = null;
-    }
-    localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-    if (localObject != null)
-    {
-      if (((SelectableCursor)localObject).a(2)) {
-        this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(2);
-      }
-      this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = null;
-    }
-    a(null);
+    localObject = ((SelectableComponent)localObject).view();
+    ((View)localObject).getLocationInWindow(this.q);
+    int[] arrayOfInt = this.q;
+    int i1 = arrayOfInt[0];
+    int i2 = arrayOfInt[1];
+    int i3 = ((View)localObject).getMeasuredWidth();
+    int i4 = ((View)localObject).getMeasuredHeight();
+    return (paramInt1 >= i1) && (paramInt1 <= i3 + i1) && (paramInt2 >= i2) && (paramInt2 <= i4 + i2);
   }
   
-  public boolean f()
+  public int e()
   {
-    return (d()) && (e());
+    x();
+    return this.n;
+  }
+  
+  public int f()
+  {
+    x();
+    return this.o;
+  }
+  
+  public int g()
+  {
+    return this.r;
+  }
+  
+  public void h()
+  {
+    a((View)null);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -750,17 +598,17 @@ public final class AIOSelectableDelegateImpl
     Object localObject;
     if (paramMessage.what == 1)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+      this.x.removeMessages(1);
+      localObject = this.i;
       if (localObject != null)
       {
-        SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+        SelectablePopupMenu localSelectablePopupMenu = this.a;
         if (localSelectablePopupMenu != null)
         {
           localSelectablePopupMenu.a(((SelectableComponent)localObject).view(), paramMessage.arg1, paramMessage.arg2, ((Integer)paramMessage.obj).intValue());
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
+          paramMessage = this.l;
           if ((paramMessage != null) && (paramMessage.a())) {
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
+            this.l.b();
           }
         }
       }
@@ -768,51 +616,198 @@ public final class AIOSelectableDelegateImpl
     }
     if (paramMessage.what == 2)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
+      this.x.removeMessages(2);
+      this.x.removeMessages(3);
+      if (this.l != null)
       {
         if (((Integer)paramMessage.obj).intValue() == 1) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+          localObject = this.j;
         } else {
-          localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+          localObject = this.k;
         }
-        if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(((SelectableCursor)localObject).a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), true);
+        if ((localObject != null) && (this.i != null)) {
+          this.l.a(((SelectableCursor)localObject).e(), paramMessage.arg1, paramMessage.arg2, this.i.view(), true);
         }
       }
     }
     else if (paramMessage.what == 3)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
+      this.x.removeMessages(2);
+      this.x.removeMessages(3);
+      if (this.l != null)
       {
         if (((Integer)paramMessage.obj).intValue() == 1) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+          localObject = this.j;
         } else {
-          localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+          localObject = this.k;
         }
-        if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(((SelectableCursor)localObject).a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), false);
+        if ((localObject != null) && (this.i != null)) {
+          this.l.a(((SelectableCursor)localObject).e(), paramMessage.arg1, paramMessage.arg2, this.i.view(), false);
         }
       }
     }
     else if (paramMessage.what == 4)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null))
+      this.x.removeMessages(4);
+      if ((this.i != null) && (this.j != null) && (this.k != null))
       {
-        g();
-        a();
+        w();
+        h();
       }
     }
     return false;
   }
+  
+  public boolean i()
+  {
+    SelectablePopupMenu localSelectablePopupMenu = this.a;
+    if (localSelectablePopupMenu != null) {
+      return localSelectablePopupMenu.e();
+    }
+    return false;
+  }
+  
+  public void j()
+  {
+    z();
+    this.a.f();
+  }
+  
+  public boolean k()
+  {
+    return true;
+  }
+  
+  public boolean l()
+  {
+    return this.p;
+  }
+  
+  public void m()
+  {
+    B();
+  }
+  
+  public void n()
+  {
+    this.c = null;
+    SelectableMagnifier localSelectableMagnifier = this.l;
+    if (localSelectableMagnifier != null)
+    {
+      if (localSelectableMagnifier.a()) {
+        this.l.b();
+      }
+      this.l = null;
+    }
+    v();
+    this.a = null;
+    this.p = false;
+    this.n = -1;
+    this.o = -1;
+    this.r = -1;
+    this.s = -1;
+    this.t = -1;
+    this.u = -1;
+    this.b = -1L;
+    B();
+  }
+  
+  public boolean o()
+  {
+    SelectableCursor localSelectableCursor = this.j;
+    return (localSelectableCursor != null) && (localSelectableCursor.d(1));
+  }
+  
+  public boolean p()
+  {
+    SelectableCursor localSelectableCursor = this.k;
+    return (localSelectableCursor != null) && (localSelectableCursor.d(2));
+  }
+  
+  public boolean q()
+  {
+    return (o()) && (p());
+  }
+  
+  public String r()
+  {
+    if ((this.i instanceof MixedMsgLinearLayout))
+    {
+      x();
+      CharSequence localCharSequence = ((MixedMsgLinearLayout)this.i).a();
+      if (localCharSequence != null) {
+        return localCharSequence.toString();
+      }
+      return null;
+    }
+    return d();
+  }
+  
+  @Nullable
+  AIOSelectableDelegateProxy s()
+  {
+    WeakReference localWeakReference = this.h;
+    if (localWeakReference != null) {
+      return (AIOSelectableDelegateProxy)localWeakReference.get();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public View t()
+  {
+    SelectableComponent localSelectableComponent = this.i;
+    if (localSelectableComponent != null) {
+      return localSelectableComponent.view();
+    }
+    return null;
+  }
+  
+  void u()
+  {
+    x();
+    y();
+    this.x.sendEmptyMessage(4);
+  }
+  
+  void v()
+  {
+    if (this.a != null)
+    {
+      this.x.removeMessages(1);
+      if (this.a.e()) {
+        this.a.f();
+      }
+    }
+    Object localObject = this.i;
+    if (localObject != null)
+    {
+      ((SelectableComponent)localObject).selectContent(-1, -1);
+      this.i.clearHighlightContent();
+      this.i = null;
+    }
+    localObject = this.j;
+    if (localObject != null)
+    {
+      if (((SelectableCursor)localObject).d(1)) {
+        this.j.e(1);
+      }
+      this.j = null;
+    }
+    localObject = this.k;
+    if (localObject != null)
+    {
+      if (((SelectableCursor)localObject).d(2)) {
+        this.k.e(2);
+      }
+      this.k = null;
+    }
+    a(null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.AIOSelectableDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

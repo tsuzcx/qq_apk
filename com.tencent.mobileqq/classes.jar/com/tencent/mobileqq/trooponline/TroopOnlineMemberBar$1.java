@@ -17,20 +17,20 @@ class TroopOnlineMemberBar$1
   {
     if (TroopOnlineMemberBar.a(this.this$0) != 0)
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((TroopOnlineMemberBar.a(this.this$0) != 2) && (NetworkUtil.isNetworkAvailable(this.this$0.jdField_a_of_type_AndroidContentContext)))
+      this.this$0.q.setVisibility(0);
+      if ((TroopOnlineMemberBar.a(this.this$0) != 2) && (NetworkUtil.isNetworkAvailable(this.this$0.c)))
       {
         if (TroopOnlineMemberBar.a(this.this$0) != 1) {
           return;
         }
         try
         {
-          if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable == null) {
-            this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839401));
+          if (this.this$0.p == null) {
+            this.this$0.p = ((Animatable)this.this$0.c.getResources().getDrawable(2130839585));
           }
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-          this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+          this.this$0.q.setText(null);
+          this.this$0.q.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.this$0.p, null, null, null);
+          this.this$0.p.start();
           return;
         }
         catch (Exception localException)
@@ -42,16 +42,16 @@ class TroopOnlineMemberBar$1
           return;
         }
       }
-      if (this.this$0.b == 1) {
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131694607);
-      } else if (this.this$0.b == 3) {
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131692800);
+      if (this.this$0.n == 1) {
+        this.this$0.q.setText(2131892291);
+      } else if (this.this$0.n == 3) {
+        this.this$0.q.setText(2131889904);
       } else {
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131719214);
+        this.this$0.q.setText(2131916756);
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      if ((this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning())) {
-        this.this$0.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+      this.this$0.q.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if ((this.this$0.p != null) && (this.this$0.p.isRunning())) {
+        this.this$0.p.stop();
       }
       TroopOnlineMemberBar.a(this.this$0, 2);
     }
@@ -59,7 +59,7 @@ class TroopOnlineMemberBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberBar.1
  * JD-Core Version:    0.7.0.1
  */

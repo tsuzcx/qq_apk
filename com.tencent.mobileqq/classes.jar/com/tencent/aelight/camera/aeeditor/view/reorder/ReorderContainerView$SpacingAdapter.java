@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import com.tencent.tavcut.util.TimeFormatUtil;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import com.tencent.qcircle.tavcut.util.TimeFormatUtil;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,22 +21,12 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "()V", "data", "", "Lcom/tencent/weseevideo/camera/mvauto/redo/CutModelKt;", "getItemCount", "", "getItemViewType", "position", "indexOf", "uuid", "", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "screenWidth", "context", "Landroid/content/Context;", "submitList", "", "swapItem", "src", "dest", "Companion", "aelight_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "()V", "data", "", "Lcom/tencent/qcircle/weseevideo/camera/mvauto/redo/CutModelKt;", "getItemCount", "", "getItemViewType", "position", "indexOf", "uuid", "", "onBindViewHolder", "", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "screenWidth", "context", "Landroid/content/Context;", "submitList", "", "swapItem", "src", "dest", "Companion", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class ReorderContainerView$SpacingAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public static final ReorderContainerView.SpacingAdapter.Companion a;
-  private List<CutModelKt> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderReorderContainerView$SpacingAdapter$Companion = new ReorderContainerView.SpacingAdapter.Companion(null);
-  }
-  
-  public ReorderContainerView$SpacingAdapter()
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-  }
+  public static final ReorderContainerView.SpacingAdapter.Companion a = new ReorderContainerView.SpacingAdapter.Companion(null);
+  private List<CutModelKt> b = (List)new ArrayList();
   
   private final int a(Context paramContext)
   {
@@ -48,7 +38,7 @@ public final class ReorderContainerView$SpacingAdapter
   public final int a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uuid");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -62,28 +52,28 @@ public final class ReorderContainerView$SpacingAdapter
   
   public final void a(int paramInt1, int paramInt2)
   {
-    CutModelKt localCutModelKt = (CutModelKt)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    CutModelKt localCutModelKt = (CutModelKt)this.b.get(paramInt1);
+    List localList = this.b;
     localList.set(paramInt1, localList.get(paramInt2));
-    this.jdField_a_of_type_JavaUtilList.set(paramInt2, localCutModelKt);
+    this.b.set(paramInt2, localCutModelKt);
   }
   
   public final void a(@NotNull List<CutModelKt> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "data");
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll((Collection)paramList);
+    this.b.clear();
+    this.b.addAll((Collection)paramList);
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + 2;
+    return this.b.size() + 2;
   }
   
   public int getItemViewType(int paramInt)
   {
-    if ((paramInt != 0) && (paramInt != this.jdField_a_of_type_JavaUtilList.size() + 1)) {
+    if ((paramInt != 0) && (paramInt != this.b.size() + 1)) {
       return 11;
     }
     return 12;
@@ -94,14 +84,14 @@ public final class ReorderContainerView$SpacingAdapter
     Intrinsics.checkParameterIsNotNull(paramViewHolder, "holder");
     if ((paramViewHolder instanceof ReorderVH))
     {
-      CutModelKt localCutModelKt = (CutModelKt)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+      CutModelKt localCutModelKt = (CutModelKt)this.b.get(paramInt - 1);
       paramViewHolder = (ReorderVH)paramViewHolder;
       paramViewHolder.a().setClipUrl(localCutModelKt.getUuid(), localCutModelKt.getResource().getPath(), localCutModelKt.getResource().getSelectTimeStart());
       paramInt = ReorderViewIdManager.a.a(localCutModelKt.getUuid());
       if (paramInt != -1) {
         paramViewHolder.a().setId(paramInt);
       }
-      paramViewHolder.a().setText((CharSequence)TimeFormatUtil.getDurationSecondsEnglish(localCutModelKt.getResource().getScaleDuration()));
+      paramViewHolder.b().setText((CharSequence)TimeFormatUtil.getDurationSecondsEnglish(localCutModelKt.getResource().getScaleDuration()));
     }
   }
   
@@ -119,7 +109,7 @@ public final class ReorderContainerView$SpacingAdapter
     View localView = new View(paramViewGroup.getContext());
     Context localContext = paramViewGroup.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "parent.context");
-    paramInt = localContext.getResources().getDimensionPixelSize(2063990852);
+    paramInt = localContext.getResources().getDimensionPixelSize(2063859779);
     paramViewGroup = paramViewGroup.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "parent.context");
     localView.setLayoutParams(new ViewGroup.LayoutParams(a(paramViewGroup) / 2, paramInt));
@@ -128,7 +118,7 @@ public final class ReorderContainerView$SpacingAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ReorderContainerView.SpacingAdapter
  * JD-Core Version:    0.7.0.1
  */

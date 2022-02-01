@@ -11,12 +11,12 @@ class AEGIFTextEditFragment$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AEGIFTextEditFragment.a(this.a).dismiss();
+    AEGIFTextEditFragment.d(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFTextEditFragment.6
  * JD-Core Version:    0.7.0.1
  */

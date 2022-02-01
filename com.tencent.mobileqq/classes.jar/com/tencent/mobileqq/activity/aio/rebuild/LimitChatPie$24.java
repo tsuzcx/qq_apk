@@ -11,12 +11,12 @@ class LimitChatPie$24
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.a, "dc00898", "", "", "0X800ADCA", "0X800ADCA", 0, 0, "", "", "", "");
+    ReportController.b(this.a.d, "dc00898", "", "", "0X800ADCA", "0X800ADCA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.24
  * JD-Core Version:    0.7.0.1
  */

@@ -14,56 +14,56 @@ public class StoryMessageListActivity$ItemViewHolder
   extends SwipRightMenuBuilder.SwipItemBaseHolder
   implements View.OnClickListener, View.OnLongClickListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
-  String jdField_a_of_type_JavaLangString;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  TextView c;
-  TextView d;
+  String a;
+  ImageView b;
+  String c;
+  StoryCoverView d;
   TextView e;
   TextView f;
+  TextView g;
+  View h;
+  TextView i;
+  TextView j;
+  TextView k;
+  View l;
+  int m;
   
   public StoryMessageListActivity$ItemViewHolder(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363135));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131378667));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371854));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364910));
-    this.c = ((TextView)paramView.findViewById(2131371959));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370030);
-    this.d = ((TextView)paramView.findViewById(2131378723));
-    this.e = ((TextView)paramView.findViewById(2131380506));
-    this.f = ((TextView)paramView.findViewById(2131380507));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370041);
+    this.b = ((ImageView)paramView.findViewById(2131428988));
+    this.d = ((StoryCoverView)paramView.findViewById(2131447324));
+    this.e = ((TextView)paramView.findViewById(2131439295));
+    this.f = ((TextView)paramView.findViewById(2131431033));
+    this.g = ((TextView)paramView.findViewById(2131439404));
+    this.h = paramView.findViewById(2131437186);
+    this.i = ((TextView)paramView.findViewById(2131447382));
+    this.j = ((TextView)paramView.findViewById(2131449463));
+    this.k = ((TextView)paramView.findViewById(2131449464));
+    this.l = paramView.findViewById(2131437197);
     paramView.setOnClickListener(this);
     paramView.setOnLongClickListener(this);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity;
-    SwipListView localSwipListView = localStoryMessageListActivity.a;
-    int i = this.jdField_a_of_type_Int;
-    localStoryMessageListActivity.onItemClick(localSwipListView, paramView, i, i);
+    StoryMessageListActivity localStoryMessageListActivity = this.n;
+    SwipListView localSwipListView = localStoryMessageListActivity.b;
+    int i1 = this.m;
+    localStoryMessageListActivity.onItemClick(localSwipListView, paramView, i1, i1);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity;
-    SwipListView localSwipListView = localStoryMessageListActivity.a;
-    int i = this.jdField_a_of_type_Int;
-    return localStoryMessageListActivity.onItemLongClick(localSwipListView, paramView, i, i);
+    StoryMessageListActivity localStoryMessageListActivity = this.n;
+    SwipListView localSwipListView = localStoryMessageListActivity.b;
+    int i1 = this.m;
+    return localStoryMessageListActivity.onItemLongClick(localSwipListView, paramView, i1, i1);
   }
 }
 

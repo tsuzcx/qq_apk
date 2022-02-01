@@ -12,11 +12,11 @@ public class SignalStrengthReport$PingUtil
   
   public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = a(paramString);
+    paramString = b(paramString);
     if (paramString == null) {
       return -1;
     }
-    paramString = b(a(paramInt1, paramInt2, paramString));
+    paramString = c(a(paramInt1, paramInt2, paramString));
     if (paramString != null) {
       try
       {
@@ -46,7 +46,7 @@ public class SignalStrengthReport$PingUtil
     return localStringBuilder.toString();
   }
   
-  private static String a(String paramString)
+  private static String b(String paramString)
   {
     try
     {
@@ -64,38 +64,38 @@ public class SignalStrengthReport$PingUtil
   }
   
   /* Error */
-  private static String b(String paramString)
+  private static String c(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 110	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   0: invokestatic 111	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   3: aload_0
-    //   4: invokevirtual 114	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   4: invokevirtual 115	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
     //   7: astore_1
     //   8: aload_1
     //   9: astore_0
     //   10: aload_1
-    //   11: invokevirtual 120	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   11: invokevirtual 121	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   14: astore_2
     //   15: aload_1
     //   16: astore_0
-    //   17: new 122	java/io/BufferedReader
+    //   17: new 123	java/io/BufferedReader
     //   20: dup
-    //   21: new 124	java/io/InputStreamReader
+    //   21: new 125	java/io/InputStreamReader
     //   24: dup
     //   25: aload_2
-    //   26: invokespecial 127	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   29: invokespecial 130	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: invokespecial 128	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   29: invokespecial 131	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   32: astore_3
     //   33: aload_1
     //   34: astore_0
-    //   35: new 60	java/lang/StringBuilder
+    //   35: new 61	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   39: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   42: astore 4
     //   44: aload_1
     //   45: astore_0
     //   46: aload_3
-    //   47: invokevirtual 133	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   47: invokevirtual 134	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   50: astore 5
     //   52: aload 5
     //   54: ifnull +26 -> 80
@@ -103,32 +103,32 @@ public class SignalStrengthReport$PingUtil
     //   58: astore_0
     //   59: aload 4
     //   61: aload 5
-    //   63: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: aload_1
     //   68: astore_0
     //   69: aload 4
-    //   71: ldc 135
-    //   73: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: ldc 136
+    //   73: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: goto -33 -> 44
     //   80: aload_1
     //   81: astore_0
     //   82: aload_3
-    //   83: invokevirtual 138	java/io/BufferedReader:close	()V
+    //   83: invokevirtual 139	java/io/BufferedReader:close	()V
     //   86: aload_1
     //   87: astore_0
     //   88: aload_2
-    //   89: invokevirtual 141	java/io/InputStream:close	()V
+    //   89: invokevirtual 142	java/io/InputStream:close	()V
     //   92: aload_1
     //   93: astore_0
     //   94: aload 4
-    //   96: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   96: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   99: astore_2
     //   100: aload_1
     //   101: ifnull +7 -> 108
     //   104: aload_1
-    //   105: invokevirtual 144	java/lang/Process:destroy	()V
+    //   105: invokevirtual 145	java/lang/Process:destroy	()V
     //   108: aload_2
     //   109: areturn
     //   110: astore_2
@@ -142,32 +142,32 @@ public class SignalStrengthReport$PingUtil
     //   122: astore_1
     //   123: aload_1
     //   124: astore_0
-    //   125: new 60	java/lang/StringBuilder
+    //   125: new 61	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   132: astore_3
     //   133: aload_1
     //   134: astore_0
     //   135: aload_3
-    //   136: ldc 146
-    //   138: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: ldc 147
+    //   138: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload_1
     //   143: astore_0
     //   144: aload_3
     //   145: aload_2
-    //   146: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   149: pop
     //   150: aload_1
     //   151: astore_0
-    //   152: ldc 72
+    //   152: ldc 73
     //   154: aload_3
-    //   155: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: invokestatic 82	com/tencent/av/AVLog:printColorLog	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokestatic 83	com/tencent/av/AVLog:printColorLog	(Ljava/lang/String;Ljava/lang/String;)V
     //   161: aload_1
     //   162: ifnull +7 -> 169
     //   165: aload_1
-    //   166: invokevirtual 144	java/lang/Process:destroy	()V
+    //   166: invokevirtual 145	java/lang/Process:destroy	()V
     //   169: aconst_null
     //   170: areturn
     //   171: astore_2
@@ -178,7 +178,7 @@ public class SignalStrengthReport$PingUtil
     //   176: aload_1
     //   177: ifnull +7 -> 184
     //   180: aload_1
-    //   181: invokevirtual 144	java/lang/Process:destroy	()V
+    //   181: invokevirtual 145	java/lang/Process:destroy	()V
     //   184: goto +5 -> 189
     //   187: aload_0
     //   188: athrow

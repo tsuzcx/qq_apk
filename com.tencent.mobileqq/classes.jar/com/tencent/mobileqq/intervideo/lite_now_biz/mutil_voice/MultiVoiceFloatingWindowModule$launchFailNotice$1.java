@@ -12,14 +12,14 @@ final class MultiVoiceFloatingWindowModule$launchFailNotice$1
   
   public final void run()
   {
-    if (!MultiVoiceFloatingWindowModule.e(this.this$0)) {
+    if (!MultiVoiceFloatingWindowModule.o(this.this$0)) {
       ((ToastInterface)this.this$0.getRoomEngine().getService(ToastInterface.class)).showToast("正在返回直播间，请耐心等待", 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.launchFailNotice.1
  * JD-Core Version:    0.7.0.1
  */

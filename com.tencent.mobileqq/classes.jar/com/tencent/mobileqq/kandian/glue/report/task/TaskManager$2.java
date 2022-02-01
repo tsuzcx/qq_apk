@@ -11,11 +11,11 @@ class TaskManager$2
   {
     try
     {
-      TaskManager.a = TaskManager.a();
-      if (TaskManager.a)
+      TaskManager.b = TaskManager.a();
+      if (TaskManager.b)
       {
         QLog.d("kandianreport.taskmanager", 1, "configure is on");
-        KandianReportSoLoader.a();
+        KandianReportSoLoader.f();
         this.this$0.a(false);
         return;
       }
@@ -28,7 +28,7 @@ class TaskManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskManager.2
  * JD-Core Version:    0.7.0.1
  */

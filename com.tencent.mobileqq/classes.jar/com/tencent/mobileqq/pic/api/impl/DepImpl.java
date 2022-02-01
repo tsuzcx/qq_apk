@@ -59,7 +59,7 @@ public class DepImpl
   
   public msg_ctrl.MsgCtrl getMsgCtrlForPicMsg(String paramString)
   {
-    return JumpShareUtils.a(paramString);
+    return JumpShareUtils.c(paramString);
   }
   
   public subcmd0x501.SubCmd0x501Rspbody.DownloadEncryptConf getPicDownEncryptConf()
@@ -74,7 +74,7 @@ public class DepImpl
   
   public String getZhituText()
   {
-    return ZhituManager.a((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).b();
+    return ZhituManager.a((QQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).e();
   }
   
   public void reportEmotionPicMonitor(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
@@ -119,7 +119,7 @@ public class DepImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.DepImpl
  * JD-Core Version:    0.7.0.1
  */

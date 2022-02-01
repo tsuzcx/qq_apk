@@ -18,23 +18,23 @@ class PhotoPreviewCustomizationAIO$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      ((IAlbumUtils)QRoute.api(IAlbumUtils.class)).sendPhoto(PhotoPreviewCustomizationAIO.a(this.this$0), this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, PhotoPreviewCustomizationAIO.a(this.this$0).b, ((PhotoOtherData)this.this$0.a).jdField_a_of_type_Int, true);
-      PhotoPreviewCustomizationAIO.b(this.this$0).setResult(-1);
-      PhotoPreviewCustomizationAIO.c(this.this$0).finish();
+      ((IAlbumUtils)QRoute.api(IAlbumUtils.class)).sendPhoto(PhotoPreviewCustomizationAIO.a(this.this$0), this.b, (ArrayList)this.c.first, PhotoPreviewCustomizationAIO.b(this.this$0).b, ((PhotoOtherData)this.this$0.g).d, true);
+      PhotoPreviewCustomizationAIO.c(this.this$0).setResult(-1);
+      PhotoPreviewCustomizationAIO.d(this.this$0).finish();
     }
     else
     {
-      PhotoUtils.sendPhoto(PhotoPreviewCustomizationAIO.d(this.this$0), this.jdField_a_of_type_AndroidContentIntent, (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.first, ((PhotoOtherData)this.this$0.a).jdField_a_of_type_Int, PhotoPreviewCustomizationAIO.b(this.this$0).jdField_a_of_type_Boolean);
+      PhotoUtils.sendPhoto(PhotoPreviewCustomizationAIO.e(this.this$0), this.b, (ArrayList)this.c.first, ((PhotoOtherData)this.this$0.g).d, PhotoPreviewCustomizationAIO.f(this.this$0).e);
     }
-    ReportController.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-    com.tencent.mobileqq.shortvideo.SVBusiUtil.b = System.currentTimeMillis();
+    ReportController.b(null, "CliOper", "", "", "0X8009AB1", "0X8009AB1", this.d, 0, this.e, this.f, "", "");
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.c = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAIO.2
  * JD-Core Version:    0.7.0.1
  */

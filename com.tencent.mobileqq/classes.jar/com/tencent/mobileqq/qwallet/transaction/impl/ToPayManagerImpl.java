@@ -67,7 +67,7 @@ public class ToPayManagerImpl
   
   public static ArrayList<PfaFriend> getRecentList()
   {
-    Object localObject1 = QWalletTools.a();
+    Object localObject1 = QWalletTools.b();
     if (localObject1 == null) {
       return null;
     }
@@ -85,7 +85,7 @@ public class ToPayManagerImpl
     while (((Iterator)localObject2).hasNext())
     {
       RecentUser localRecentUser = (RecentUser)((Iterator)localObject2).next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1006) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 1) && ((localRecentUser.getType() != 0) || (!localICrmApi.isQiye(localRecentUser.uin, localRecentUser.getType()))) && (localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000))
+      if ((localRecentUser != null) && (!Utils.b(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && (localRecentUser.getType() != 1006) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 1) && ((localRecentUser.getType() != 0) || (!localICrmApi.isQiye(localRecentUser.uin, localRecentUser.getType()))) && (localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000))
       {
         PfaFriend localPfaFriend = new PfaFriend();
         localPfaFriend.uin = localRecentUser.uin;
@@ -152,7 +152,7 @@ public class ToPayManagerImpl
   
   protected static void refreshFromNet(int paramInt1, int paramInt2)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface == null) {
       return;
     }
@@ -249,7 +249,7 @@ public class ToPayManagerImpl
   {
     ToPayManagerImpl.6 local6 = new ToPayManagerImpl.6(paramActivity);
     paramList1 = new ToPayManagerImpl.7(paramActivity, paramList1, paramList2);
-    paramActivity = DialogUtil.a(paramActivity, 230, null, HardCodeUtil.a(R.string.cZ), HardCodeUtil.a(R.string.cX), "留在QQ", paramList1, local6);
+    paramActivity = DialogUtil.a(paramActivity, 230, null, HardCodeUtil.a(R.string.dc), HardCodeUtil.a(R.string.da), "留在QQ", paramList1, local6);
     paramActivity.setCancelable(false);
     paramActivity.setCanceledOnTouchOutside(false);
     paramActivity.show();
@@ -361,7 +361,7 @@ public class ToPayManagerImpl
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      Object localObject2 = HardCodeUtil.a(R.string.cY);
+      Object localObject2 = HardCodeUtil.a(R.string.db);
       Object localObject1 = localObject2;
       if (paramArrayList != null)
       {
@@ -411,7 +411,7 @@ public class ToPayManagerImpl
       }
       if (localArrayList.size() <= 0)
       {
-        QQToast.a(paramAppActivity, paramAppActivity.getString(R.string.dv), 0).a();
+        QQToast.makeText(paramAppActivity, paramAppActivity.getString(R.string.dy), 0).show();
         return;
       }
       paramArrayList = new ToPayManagerImpl.4(this, new WeakReference(paramAppActivity), localArrayList);
@@ -423,7 +423,7 @@ public class ToPayManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl
  * JD-Core Version:    0.7.0.1
  */

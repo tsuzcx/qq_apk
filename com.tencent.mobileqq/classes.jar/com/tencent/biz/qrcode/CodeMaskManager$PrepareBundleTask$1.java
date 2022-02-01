@@ -9,15 +9,15 @@ class CodeMaskManager$PrepareBundleTask$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0.a) {
+    if (this.b.this$0.h) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0));
+    if (this.a == null) {
+      this.b.b.a(CodeMaskManager.a(this.b.this$0));
     } else {
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
+      this.b.b.a((Bundle)this.a.clone());
     }
-    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0);
+    CodeMaskManager.b(this.b.this$0);
   }
 }
 

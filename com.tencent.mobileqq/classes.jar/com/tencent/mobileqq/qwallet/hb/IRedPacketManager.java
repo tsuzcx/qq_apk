@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.qwallet.hb;
 
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.qwallet.hb.aio.elem.IRedPacket;
 import com.tencent.mobileqq.qwallet.hb.send.PanelData;
@@ -11,7 +12,7 @@ import java.util.Map;
 
 @QAPI(process={""})
 public abstract interface IRedPacketManager
-  extends IRedPacket
+  extends QRouteApi, IRedPacket
 {
   public static final String CONFIG_BIG_ANIM = "bigAnimMap";
   public static final String CONFIG_MODULE = "redPack";
@@ -33,7 +34,7 @@ public abstract interface IRedPacketManager
   
   public abstract List<PanelData> getPanelList(BaseSessionInfo paramBaseSessionInfo);
   
-  public abstract List<PanelTabData> getPanelTabList(int paramInt, String paramString);
+  public abstract List<PanelTabData> getPanelTabList(int paramInt, String paramString1, String paramString2);
   
   public abstract ThemeRedPkgConfig getThemeRedPkgConfById(int paramInt);
   
@@ -41,7 +42,7 @@ public abstract interface IRedPacketManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.IRedPacketManager
  * JD-Core Version:    0.7.0.1
  */

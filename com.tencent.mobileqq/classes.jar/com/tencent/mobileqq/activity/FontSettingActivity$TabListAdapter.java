@@ -19,28 +19,28 @@ class FontSettingActivity$TabListAdapter
   extends BaseAdapter
   implements DecodeTaskCompletionListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+  private LayoutInflater b;
+  private RecentFaceDecoder c;
   
   public FontSettingActivity$TabListAdapter(FontSettingActivity paramFontSettingActivity, Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramFontSettingActivity.getLayoutInflater();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this);
+    this.b = paramFontSettingActivity.getLayoutInflater();
+    this.c = new RecentFaceDecoder(paramQQAppInterface, this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a();
+    this.c.b();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size();
+    return this.a.q.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.q.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -50,22 +50,22 @@ class FontSettingActivity$TabListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562725, paramViewGroup, false);
-    Object localObject = (FontSettingActivity.RecentData)this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368343);
-    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a(((FontSettingActivity.RecentData)localObject).jdField_b_of_type_Int, ((FontSettingActivity.RecentData)localObject).d));
-    ((TextView)paramView.findViewById(16908308)).setText(((FontSettingActivity.RecentData)localObject).jdField_a_of_type_JavaLangString);
-    ((TextView)paramView.findViewById(16908309)).setText(((FontSettingActivity.RecentData)localObject).jdField_b_of_type_JavaLangString);
-    ((TextView)paramView.findViewById(2131369727)).setText(((FontSettingActivity.RecentData)localObject).c);
+    paramView = this.b.inflate(2131629159, paramViewGroup, false);
+    Object localObject = (FontSettingActivity.RecentData)this.a.q.get(paramInt);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131435219);
+    localImageView.setImageDrawable(this.c.a(((FontSettingActivity.RecentData)localObject).f, ((FontSettingActivity.RecentData)localObject).e));
+    ((TextView)paramView.findViewById(16908308)).setText(((FontSettingActivity.RecentData)localObject).b);
+    ((TextView)paramView.findViewById(16908309)).setText(((FontSettingActivity.RecentData)localObject).c);
+    ((TextView)paramView.findViewById(2131436844)).setText(((FontSettingActivity.RecentData)localObject).d);
     FontSettingActivity.TabListAdapter.ViewHolder localViewHolder = new FontSettingActivity.TabListAdapter.ViewHolder(this);
-    localViewHolder.jdField_a_of_type_JavaLangString = ((FontSettingActivity.RecentData)localObject).d;
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-    localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity$RecentData = ((FontSettingActivity.RecentData)localObject);
+    localViewHolder.a = ((FontSettingActivity.RecentData)localObject).e;
+    localViewHolder.b = localImageView;
+    localViewHolder.c = ((FontSettingActivity.RecentData)localObject);
     paramView.setTag(localViewHolder);
-    if ((FontSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size() - 1))
+    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.q.size() - 1))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity;
-      ((FontSettingActivity)localObject).jdField_b_of_type_Boolean = true;
+      localObject = this.a;
+      ((FontSettingActivity)localObject).s = true;
       ((FontSettingActivity)localObject).a();
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -74,7 +74,7 @@ class FontSettingActivity$TabListAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildCount();
+    paramInt2 = this.a.f.getChildCount();
     if (paramBitmap != null)
     {
       paramInt1 = 0;
@@ -85,7 +85,7 @@ class FontSettingActivity$TabListAdapter
         if (paramInt1 >= paramInt2) {
           break;
         }
-        Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
+        Object localObject3 = this.a.f.getChildAt(paramInt1).getTag();
         localObject2 = localObject1;
         if (localObject3 != null)
         {
@@ -94,7 +94,7 @@ class FontSettingActivity$TabListAdapter
           {
             localObject1 = (FontSettingActivity.TabListAdapter.ViewHolder)localObject3;
             localObject2 = localObject1;
-            if (((FontSettingActivity.TabListAdapter.ViewHolder)localObject1).jdField_a_of_type_JavaLangString.equals(paramString))
+            if (((FontSettingActivity.TabListAdapter.ViewHolder)localObject1).a.equals(paramString))
             {
               localObject2 = localObject1;
               break;
@@ -105,7 +105,7 @@ class FontSettingActivity$TabListAdapter
       }
       if (localObject2 != null)
       {
-        localObject2.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        localObject2.b.setImageBitmap(paramBitmap);
         notifyDataSetChanged();
       }
     }
@@ -113,7 +113,7 @@ class FontSettingActivity$TabListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.TabListAdapter
  * JD-Core Version:    0.7.0.1
  */

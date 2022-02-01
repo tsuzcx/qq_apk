@@ -19,7 +19,7 @@ class QIMInformationPasterManager$2
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!NetworkUtil.isNetworkAvailable(QIMInformationPasterManager.a(this.this$0)))
+    if (!NetworkUtil.isNetworkAvailable(QIMInformationPasterManager.b(this.this$0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
@@ -31,7 +31,7 @@ class QIMInformationPasterManager$2
     while (((Iterator)localObject).hasNext())
     {
       localItem = (InformationFacePackage.Item)((Iterator)localObject).next();
-      if ((!TextUtils.isEmpty(localItem.e)) && (!this.this$0.a(localItem)) && (localItem.b != 2)) {
+      if ((!TextUtils.isEmpty(localItem.g)) && (!this.this$0.a(localItem)) && (localItem.f != 2)) {
         QIMInformationPasterManager.a(this.this$0).add(localItem);
       }
     }
@@ -52,7 +52,7 @@ class QIMInformationPasterManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.QIMInformationPasterManager.2
  * JD-Core Version:    0.7.0.1
  */

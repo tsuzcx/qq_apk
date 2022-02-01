@@ -10,10 +10,14 @@ public abstract interface IForwardOption
   extends QRouteApi
 {
   public abstract void startForwardActivityForResult(Activity paramActivity, Intent paramIntent, int paramInt);
+  
+  public abstract void startForwardActivityForResult(Activity paramActivity, Intent paramIntent, Class<?> paramClass, int paramInt);
+  
+  public abstract void startForwardActivityForResult(Activity paramActivity, Intent paramIntent, Class<?> paramClass, int paramInt1, int paramInt2, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqforward.api.IForwardOption
  * JD-Core Version:    0.7.0.1
  */

@@ -26,11 +26,9 @@ public final class ITFReader
   static
   {
     END_PATTERN_REVERSED = new int[][] { { 1, 1, 2 }, { 1, 1, 3 } };
-    int[] arrayOfInt1 = { 1, 2, 1, 1, 2 };
-    int[] arrayOfInt2 = { 3, 1, 1, 1, 3 };
-    int[] arrayOfInt3 = { 3, 3, 1, 1, 1 };
-    int[] arrayOfInt4 = { 3, 1, 3, 1, 1 };
-    PATTERNS = new int[][] { { 1, 1, 2, 2, 1 }, { 2, 1, 1, 1, 2 }, arrayOfInt1, { 2, 2, 1, 1, 1 }, { 1, 1, 2, 1, 2 }, { 2, 1, 2, 1, 1 }, { 1, 2, 2, 1, 1 }, { 1, 1, 1, 2, 2 }, { 2, 1, 1, 2, 1 }, { 1, 2, 1, 2, 1 }, { 1, 1, 3, 3, 1 }, arrayOfInt2, { 1, 3, 1, 1, 3 }, arrayOfInt3, { 1, 1, 3, 1, 3 }, arrayOfInt4, { 1, 3, 3, 1, 1 }, { 1, 1, 1, 3, 3 }, { 3, 1, 1, 3, 1 }, { 1, 3, 1, 3, 1 } };
+    int[] arrayOfInt1 = { 1, 1, 2, 2, 1 };
+    int[] arrayOfInt2 = { 3, 1, 1, 3, 1 };
+    PATTERNS = new int[][] { arrayOfInt1, { 2, 1, 1, 1, 2 }, { 1, 2, 1, 1, 2 }, { 2, 2, 1, 1, 1 }, { 1, 1, 2, 1, 2 }, { 2, 1, 2, 1, 1 }, { 1, 2, 2, 1, 1 }, { 1, 1, 1, 2, 2 }, { 2, 1, 1, 2, 1 }, { 1, 2, 1, 2, 1 }, { 1, 1, 3, 3, 1 }, { 3, 1, 1, 1, 3 }, { 1, 3, 1, 1, 3 }, { 3, 3, 1, 1, 1 }, { 1, 1, 3, 1, 3 }, { 3, 1, 3, 1, 1 }, { 1, 3, 3, 1, 1 }, { 1, 1, 1, 3, 3 }, arrayOfInt2, { 1, 3, 1, 3, 1 } };
   }
   
   private static int decodeDigit(int[] paramArrayOfInt)
@@ -288,7 +286,7 @@ public final class ITFReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.ITFReader
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ final class Changeset$12
   
   public String a(Matcher paramMatcher)
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Changeset.a(paramMatcher.group(1))));
+    this.a.add(this.b.a(Changeset.b(paramMatcher.group(1))));
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.12
  * JD-Core Version:    0.7.0.1
  */

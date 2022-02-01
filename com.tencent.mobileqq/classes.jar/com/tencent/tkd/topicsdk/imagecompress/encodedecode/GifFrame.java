@@ -4,22 +4,22 @@ import androidx.annotation.ColorInt;
 
 class GifFrame
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  @ColorInt
-  int[] jdField_a_of_type_ArrayOfInt;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  int a;
+  int b;
   int c;
   int d;
-  int e;
-  int f;
+  boolean e;
+  boolean f;
   int g;
   int h;
+  int i;
+  int j;
+  @ColorInt
+  int[] k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.GifFrame
  * JD-Core Version:    0.7.0.1
  */

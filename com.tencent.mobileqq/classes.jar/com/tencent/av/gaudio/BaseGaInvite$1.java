@@ -11,10 +11,10 @@ class BaseGaInvite$1
   public boolean a(Bitmap paramBitmap, String paramString)
   {
     boolean bool = this.a.a(paramBitmap, 6);
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
+    if (this.a.k != null)
     {
-      paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
+      paramBitmap = BaseGaInvite.a(this.a.e, this.a.k, paramString, this.a.d, String.valueOf(this.a.b), this.a.i);
+      this.a.k.setText(paramBitmap);
     }
     return bool;
   }

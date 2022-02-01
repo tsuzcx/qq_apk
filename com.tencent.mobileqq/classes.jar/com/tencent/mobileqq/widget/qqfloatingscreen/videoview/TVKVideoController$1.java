@@ -16,10 +16,10 @@ class TVKVideoController$1
   
   public void notifyVideoSeek(int paramInt)
   {
-    if (TVKVideoController.a(this.a) != null)
+    if (TVKVideoController.c(this.a) != null)
     {
       double d1 = paramInt;
-      double d2 = TVKVideoController.a(this.a).getVideoDurationMs();
+      double d2 = TVKVideoController.c(this.a).getVideoDurationMs();
       Double.isNaN(d1);
       Double.isNaN(d2);
       int i = (int)(d1 * d2 / 100.0D);
@@ -48,7 +48,7 @@ class TVKVideoController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class SCFChannel$1$3
   public void run()
   {
     Object localObject = new Bundle();
-    ((Bundle)localObject).putString("KEY_UIN", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putString("KEY_UIN", this.a);
     localObject = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_GET_SPECIAL_CARE_INFO", (Bundle)localObject);
     boolean bool = ((EIPCResult)localObject).isSuccess();
     SpecialCareInfo localSpecialCareInfo = null;
@@ -37,7 +37,7 @@ class SCFChannel$1$3
       bool = false;
     }
     if (bool) {
-      VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelRelationSCFChannel$1.a.b(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
+      VasWebviewUtil.a(this.c.a.e(), "Care", "RedShow", "", 1, 0, 0, null, null, null);
     }
     if (QLog.isColorLevel()) {
       QLog.d("flutter.SCFSettingChannel", 2, String.format("getSCFSwitchs, from main process: %s, isVoiceNewFlag: %s", new Object[] { localSpecialCareInfo, Boolean.valueOf(bool) }));
@@ -47,7 +47,7 @@ class SCFChannel$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.3
  * JD-Core Version:    0.7.0.1
  */

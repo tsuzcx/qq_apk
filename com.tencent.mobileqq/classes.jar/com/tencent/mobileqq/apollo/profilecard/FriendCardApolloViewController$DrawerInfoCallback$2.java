@@ -7,12 +7,12 @@ class FriendCardApolloViewController$DrawerInfoCallback$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    this.d.a.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.FriendCardApolloViewController.DrawerInfoCallback.2
  * JD-Core Version:    0.7.0.1
  */

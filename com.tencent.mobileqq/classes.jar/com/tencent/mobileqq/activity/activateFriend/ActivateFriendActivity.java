@@ -43,6 +43,7 @@ import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
 import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
 import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
 import com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends;
+import com.tencent.mobileqq.app.activateFriends.MessageForReminder;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -68,13 +69,15 @@ import cooperation.qwallet.plugin.FakeUrl;
 import cooperation.qzone.mobilereport.MobileReportManager;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.activity.activateFriend.biz.QQReminderOrderModel;>;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x13a.submsgtype0x13a.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MemorialDayNotify;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneMemorialDayInfo;
@@ -83,70 +86,144 @@ public class ActivateFriendActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, ViewPager.OnPageChangeListener, Observer
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.b(16.0F);
-  private long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new ActivateFriendActivity.5(this));
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ActivatePageAdapter jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-  private BirthdayActivatePageArkView jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView;
-  MemorialActivatePage jdField_a_of_type_ComTencentMobileqqActivityActivateFriendMemorialActivatePage;
-  private ReminderViewPager jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ActivateFriendActivity.8(this);
-  private ActivateFriendsManager jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager;
-  private ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new ActivateFriendActivity.9(this);
-  private IQQReminderDataService jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int d;
-  private int e;
-  
-  private TopGestureLayout a()
-  {
-    ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
-    View localView = localViewGroup.getChildAt(0);
-    Object localObject = localViewGroup;
-    if (localView != null)
-    {
-      localObject = localViewGroup;
-      if ((localView instanceof DragFrameLayout)) {
-        localObject = (ViewGroup)localView;
-      }
-    }
-    localObject = ((ViewGroup)localObject).getChildAt(0);
-    if ((localObject instanceof TopGestureLayout)) {
-      return (TopGestureLayout)localObject;
-    }
-    return null;
-  }
+  private static final int c = ViewUtils.dpToPx(16.0F);
+  Handler a = new Handler(Looper.getMainLooper(), new ActivateFriendActivity.5(this));
+  MemorialActivatePage b;
+  private int d = 0;
+  private ImageView e;
+  private TextView f;
+  private ReminderViewPager g;
+  private ActivatePageAdapter h;
+  private LinearLayout i = null;
+  private int j;
+  private int k;
+  private ActivateFriendsManager l;
+  private IQQReminderDataService m;
+  private boolean n = false;
+  private long o;
+  private boolean p = false;
+  private boolean q = false;
+  private long r = -1L;
+  private int s;
+  private BirthdayActivatePageArkView t;
+  private MemorialActivatePageArk u;
+  private CardObserver v = new ActivateFriendActivity.8(this);
+  private ActivateFriendsObserver w = new ActivateFriendActivity.9(this);
   
   private void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendMemorialActivatePage == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendMemorialActivatePage = new MemorialActivatePage(this, this.app, paramInt1, String.valueOf(paramLong2), paramInt2, paramString1, paramString2, paramString3, paramString4, paramInt3);
+    if (this.b == null) {
+      this.b = new MemorialActivatePage(this, this.app, paramInt1, String.valueOf(paramLong2), paramInt2, paramString1, paramString2, paramString3, paramString4, paramInt3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendMemorialActivatePage.a(paramLong1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendMemorialActivatePage);
+    this.b.a(paramLong1);
+    this.h.a(this.b);
+  }
+  
+  private void a(long paramLong, JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.u == null)
+      {
+        this.u = new MemorialActivatePageArk(this);
+        if (this.u.a(paramLong, paramJSONObject, this.s)) {
+          this.h.a(this.u);
+        }
+      }
+      else if (this.u.a(paramLong, paramJSONObject, this.s))
+      {
+        this.h.a(this.u);
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("erro ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.e("ActivateFriends.MainActivity", 1, localStringBuilder.toString());
+    }
+  }
+  
+  private void a(SparseBooleanArray paramSparseBooleanArray, boolean paramBoolean, MessageRecord paramMessageRecord)
+  {
+    SubMsgType0x76.MsgBody localMsgBody = ((MessageForActivateFriends)paramMessageRecord).getMsgBody();
+    long l1 = paramMessageRecord.time * 1000L;
+    int i1 = localMsgBody.uint32_msg_type.get();
+    if ((i1 == 1) && (!paramSparseBooleanArray.get(1, false)))
+    {
+      QLog.w("ActivateFriends.MainActivity", 1, "MSG_TYPE_GEO is no longer support!");
+      return;
+    }
+    if ((i1 == 2) && (!paramSparseBooleanArray.get(2, false)))
+    {
+      paramMessageRecord = BirthdayActivateData.a(localMsgBody.msg_birthday_notify, this.app);
+      a(this.app, l1, paramMessageRecord);
+      paramSparseBooleanArray.put(2, true);
+      if (paramBoolean) {
+        LpReportInfo_pf00064.allReport(220, 2, 1);
+      }
+    }
+    else if ((i1 == 3) && (!paramSparseBooleanArray.get(3, false)))
+    {
+      a(paramSparseBooleanArray, paramBoolean, localMsgBody, l1);
+    }
+  }
+  
+  private void a(SparseBooleanArray paramSparseBooleanArray, boolean paramBoolean, SubMsgType0x76.MsgBody paramMsgBody, long paramLong)
+  {
+    Object localObject = (SubMsgType0x76.OneMemorialDayInfo)paramMsgBody.msg_memorialday_notify.rpt_anniversary_info.get(0);
+    long l1 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).uint64_uin.get();
+    int i1 = (int)((SubMsgType0x76.OneMemorialDayInfo)localObject).uint32_type.get();
+    int i2 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).uint32_memorial_time.get();
+    paramMsgBody = ((SubMsgType0x76.OneMemorialDayInfo)localObject).bytes_main_wording_nick.get().toStringUtf8();
+    String str1 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).bytes_main_wording_event.get().toStringUtf8();
+    String str2 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).bytes_sub_wording.get().toStringUtf8();
+    String str3 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).bytes_greetings.get().toStringUtf8();
+    int i3 = ((SubMsgType0x76.OneMemorialDayInfo)localObject).uint32_friend_gender.get();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("memorial_type:");
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append(" pushTime:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" uin:");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(" timeStamp:");
+      ((StringBuilder)localObject).append(i2);
+      ((StringBuilder)localObject).append(" titleNick:");
+      ((StringBuilder)localObject).append(paramMsgBody);
+      ((StringBuilder)localObject).append(" titleEvent:");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(" subTitle:");
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append(" greetings:");
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(" gender:");
+      ((StringBuilder)localObject).append(i3);
+      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    a(i1, paramLong, l1, i2, paramMsgBody, str1, str2, str3, i3);
+    paramSparseBooleanArray.put(3, true);
+    if (paramBoolean) {
+      LpReportInfo_pf00064.allReport(220, 2, 2);
+    }
   }
   
   private void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView == null)
+      if (this.t == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView = new BirthdayActivatePageArkView(this);
-        this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a(paramLong, paramString, this.e);
-        this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView);
+        this.t = new BirthdayActivatePageArkView(this);
+        this.t.a(paramLong, paramString, this.s);
+        this.h.a(this.t);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a(paramLong, paramString, this.e);
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView);
+      this.t.a(paramLong, paramString, this.s);
+      this.h.a(this.t);
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -161,14 +238,14 @@ public class ActivateFriendActivity
   private void a(String paramString, int paramInt)
   {
     String str = paramString;
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       str = "https://act.qzone.qq.com/vip/meteor/blockly/p/4403xdf3cc";
     }
     paramString = Uri.parse(str);
     if (paramString != null)
     {
       paramString = paramString.getScheme();
-      if (!StringUtil.a(paramString))
+      if (!StringUtil.isEmpty(paramString))
       {
         FakeUrl localFakeUrl = new FakeUrl();
         localFakeUrl.init(this);
@@ -186,55 +263,172 @@ public class ActivateFriendActivity
     }
   }
   
-  private void a(ArrayList<QQReminderOrderModel> paramArrayList, List<AcsMsg> paramList, int paramInt)
+  private void a(ArrayList<QQReminderOrderModel> paramArrayList)
   {
-    Object localObject1 = this;
-    Object localObject2 = ((ActivateFriendActivity)localObject1).jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a().iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
+    boolean bool = this.q;
+    int i1 = 1;
+    if (!bool)
     {
-      localObject3 = (ActivateBasePage)((Iterator)localObject2).next();
-      if ((localObject3 instanceof BirthdayActivatePage)) {
-        ((BirthdayActivatePage)localObject3).e();
+      int i2;
+      StringBuilder localStringBuilder;
+      if (c())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.visit");
+        }
+        ReportController.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
+        MobileReportManager.getInstance().reportActionOfNotice("qqremind", "3", "1", 100, ((ReminderCardItemPage)this.h.a().get(0)).k.msg_id, "15", 1);
+        if (getIntent() != null)
+        {
+          i2 = getIntent().getIntExtra("af_key_from", 0);
+          if (QLog.isColorLevel())
+          {
+            paramArrayList = new StringBuilder();
+            paramArrayList.append("from : ");
+            paramArrayList.append(i2);
+            QLog.d("ActivateFriends.MainActivity", 2, paramArrayList.toString());
+          }
+          if (i2 == 4)
+          {
+            paramArrayList = this.app.getMessageFacade().B();
+            if (paramArrayList != null)
+            {
+              long l1 = paramArrayList.uniseq;
+              localStringBuilder = null;
+              Object localObject = this.m.getCacheKeyList().iterator();
+              do
+              {
+                paramArrayList = localStringBuilder;
+                if (!((Iterator)localObject).hasNext()) {
+                  break;
+                }
+                paramArrayList = (String)((Iterator)localObject).next();
+              } while (l1 != paramArrayList.hashCode());
+              localObject = this.m.getEntityByKey(paramArrayList);
+              paramArrayList = localStringBuilder;
+              if (localObject != null) {
+                paramArrayList = ((IReminderEntity)localObject).getAcsMsg();
+              }
+              if (paramArrayList != null) {
+                QQNotifyHelper.a(this.app, "push_click", paramArrayList.busi_id, paramArrayList.msg_id, null, null);
+              } else {
+                QQNotifyHelper.a(this.app, "push_click", null, null, null, null);
+              }
+            }
+          }
+          else if (i2 == 1)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.list.click");
+            }
+            QQNotifyHelper.a(this.app, "newslisting_click", null, null, null, null);
+            ReportController.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.list.click", 0, 0, "", "", "", "");
+          }
+        }
+      }
+      else if ((d()) && (getIntent() != null))
+      {
+        i2 = getIntent().getIntExtra("af_key_from", 0);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("from : ");
+          localStringBuilder.append(i2);
+          QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+        }
+        paramArrayList = (MessageForReminder)((QQReminderOrderModel)paramArrayList.get(0)).a;
+        if (paramArrayList != null)
+        {
+          int i3 = QQNotifyHelper.a(paramArrayList.getMsgBody().toByteArray());
+          if (i2 == 4)
+          {
+            paramArrayList = this.app;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(i3);
+            QQNotifyHelper.a(paramArrayList, "push_click", null, null, null, localStringBuilder.toString());
+          }
+          else if (i2 == 1)
+          {
+            paramArrayList = this.app;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(i3);
+            QQNotifyHelper.a(paramArrayList, "newslisting_click", null, null, null, localStringBuilder.toString());
+          }
+        }
+      }
+      this.q = true;
+    }
+    paramArrayList = this.h;
+    if (paramArrayList != null)
+    {
+      paramArrayList = (ActivateBasePage)paramArrayList.a().get(0);
+      if ((paramArrayList instanceof ReminderCardItemPage))
+      {
+        paramArrayList = (ReminderCardItemPage)paramArrayList;
+        if (!paramArrayList.e())
+        {
+          paramArrayList = paramArrayList.k;
+          if (paramArrayList.type != 0) {
+            i1 = 2;
+          }
+          QQNotifyHelper.a(this.app, "remindcontentpage_exp", paramArrayList.busi_id, paramArrayList.msg_id, String.valueOf(i1), paramArrayList.mn_reserved);
+          QQReminderAMSHelper.a(paramArrayList);
+        }
       }
     }
-    ((ActivateFriendActivity)localObject1).jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.c();
-    boolean bool = ((ActivateFriendActivity)localObject1).jdField_a_of_type_Boolean;
-    long l1 = 1000L;
-    localObject2 = "ActivateFriends.MainActivity";
-    Object localObject4;
-    Object localObject5;
-    if (bool)
+  }
+  
+  private void a(ArrayList<QQReminderOrderModel> paramArrayList, List<AcsMsg> paramList)
+  {
+    Object localObject1;
+    Object localObject2;
+    if ((QLog.isColorLevel()) && (paramList != null) && (!paramList.isEmpty()))
     {
-      if ((QLog.isColorLevel()) && (paramList != null) && (!paramList.isEmpty()))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get today's list size: ");
+      ((StringBuilder)localObject1).append(paramList.size());
+      QLog.i("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject1).toString());
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("get today's list size: ");
-        ((StringBuilder)localObject3).append(paramList.size());
-        QLog.i("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject3).toString());
-        localObject3 = paramList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (AcsMsg)((Iterator)localObject3).next();
-          localObject5 = new StringBuilder();
-          ((StringBuilder)localObject5).append("acsMsg notice time: ");
-          ((StringBuilder)localObject5).append(DateUtil.a(((AcsMsg)localObject4).notice_time * 1000L, "yyyy-MM-dd HH:mm:ss"));
-          QLog.i("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject5).toString());
-        }
+        localObject2 = (AcsMsg)((Iterator)localObject1).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("acsMsg notice time: ");
+        localStringBuilder.append(DateUtil.a(((AcsMsg)localObject2).notice_time * 1000L, "yyyy-MM-dd HH:mm:ss"));
+        QLog.i("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
       }
-      if ((paramList != null) && (!paramList.isEmpty()))
+    }
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject3 = (AcsMsg)paramList.next();
-          localObject4 = new QQReminderOrderModel();
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_Long = ((AcsMsg)localObject3).notice_time;
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_WalletAcsMsg = ((AcsMsg)localObject3);
-          paramArrayList.add(localObject4);
-        }
+        localObject1 = (AcsMsg)paramList.next();
+        localObject2 = new QQReminderOrderModel();
+        ((QQReminderOrderModel)localObject2).c = ((AcsMsg)localObject1).notice_time;
+        ((QQReminderOrderModel)localObject2).a = null;
+        ((QQReminderOrderModel)localObject2).b = ((AcsMsg)localObject1);
+        paramArrayList.add(localObject2);
       }
+    }
+  }
+  
+  private void a(ArrayList<QQReminderOrderModel> paramArrayList, List<AcsMsg> paramList, int paramInt)
+  {
+    Iterator localIterator = this.h.a().iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (ActivateBasePage)localIterator.next();
+      if ((localObject instanceof BirthdayActivatePage)) {
+        ((BirthdayActivatePage)localObject).e();
+      }
+    }
+    this.h.d();
+    if (this.n) {
+      a(paramArrayList, paramList);
     }
     if (QLog.isColorLevel())
     {
@@ -243,157 +437,66 @@ public class ActivateFriendActivity
       paramList.append(paramArrayList);
       QLog.d("ActivateFriends.MainActivity", 2, paramList.toString());
     }
-    Collections.sort(paramArrayList, new ActivateFriendActivity.4((ActivateFriendActivity)localObject1));
-    paramList = new SparseBooleanArray(3);
-    int i;
-    if (!paramArrayList.isEmpty())
+    Collections.sort(paramArrayList, new ActivateFriendActivity.4(this));
+    paramList = new SparseBooleanArray(4);
+    boolean bool = paramArrayList.isEmpty();
+    int i1 = 0;
+    if (!bool)
     {
-      localObject3 = paramArrayList.iterator();
-      i = 0;
-      int j = 1;
-      paramArrayList = (ArrayList<QQReminderOrderModel>)localObject2;
-      while (((Iterator)localObject3).hasNext())
+      localIterator = paramArrayList.iterator();
+      i1 = 0;
+      bool = true;
+      while (localIterator.hasNext())
       {
-        localObject2 = (QQReminderOrderModel)((Iterator)localObject3).next();
-        int k;
-        int m;
-        if (((QQReminderOrderModel)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+        localObject = (QQReminderOrderModel)localIterator.next();
+        if (((QQReminderOrderModel)localObject).a != null)
         {
-          localObject2 = ((QQReminderOrderModel)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          localObject4 = ((MessageForActivateFriends)localObject2).getMsgBody();
-          l1 = ((MessageRecord)localObject2).time * l1;
-          k = ((SubMsgType0x76.MsgBody)localObject4).uint32_msg_type.get();
-          if ((k == 1) && (!paramList.get(1, false)))
+          localObject = ((QQReminderOrderModel)localObject).a;
+          if ((localObject instanceof MessageForActivateFriends))
           {
-            QLog.w(paramArrayList, 1, "MSG_TYPE_GEO is no longer support!");
+            a(paramList, bool, (MessageRecord)localObject);
           }
-          else if ((k == 2) && (!paramList.get(2, false)))
+          else if (((localObject instanceof MessageForReminder)) && (MemorialActivatePageArk.h()))
           {
-            localObject2 = BirthdayActivateData.a(((SubMsgType0x76.MsgBody)localObject4).msg_birthday_notify, ((ActivateFriendActivity)localObject1).app);
-            ((ActivateFriendActivity)localObject1).a(((ActivateFriendActivity)localObject1).app, l1, (String)localObject2);
-            paramList.put(2, true);
-            if (j != 0) {
-              LpReportInfo_pf00064.allReport(220, 2, 1);
+            if (QLog.isColorLevel()) {
+              QLog.d("ActivateFriends.MainActivity", 2, "showReminderPage");
             }
+            a((MessageRecord)localObject, paramList);
           }
-          else if ((k == 3) && (!paramList.get(3, false)))
-          {
-            Object localObject6 = (SubMsgType0x76.OneMemorialDayInfo)((SubMsgType0x76.MsgBody)localObject4).msg_memorialday_notify.rpt_anniversary_info.get(0);
-            long l2 = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).uint64_uin.get();
-            k = (int)((SubMsgType0x76.OneMemorialDayInfo)localObject6).uint32_type.get();
-            m = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).uint32_memorial_time.get();
-            localObject1 = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).bytes_main_wording_nick.get().toStringUtf8();
-            localObject2 = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).bytes_main_wording_event.get().toStringUtf8();
-            localObject4 = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).bytes_sub_wording.get().toStringUtf8();
-            localObject5 = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).bytes_greetings.get().toStringUtf8();
-            int n = ((SubMsgType0x76.OneMemorialDayInfo)localObject6).uint32_friend_gender.get();
-            if (QLog.isColorLevel())
-            {
-              localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append("memorial_type:");
-              ((StringBuilder)localObject6).append(k);
-              ((StringBuilder)localObject6).append(" pushTime:");
-              ((StringBuilder)localObject6).append(l1);
-              ((StringBuilder)localObject6).append(" uin:");
-              ((StringBuilder)localObject6).append(l2);
-              ((StringBuilder)localObject6).append(" timeStamp:");
-              ((StringBuilder)localObject6).append(m);
-              ((StringBuilder)localObject6).append(" titleNick:");
-              ((StringBuilder)localObject6).append((String)localObject1);
-              ((StringBuilder)localObject6).append(" titleEvent:");
-              ((StringBuilder)localObject6).append((String)localObject2);
-              ((StringBuilder)localObject6).append(" subTitle:");
-              ((StringBuilder)localObject6).append((String)localObject4);
-              ((StringBuilder)localObject6).append(" greetings:");
-              ((StringBuilder)localObject6).append((String)localObject5);
-              ((StringBuilder)localObject6).append(" gender:");
-              ((StringBuilder)localObject6).append(n);
-              QLog.d(paramArrayList, 2, ((StringBuilder)localObject6).toString());
-            }
-            a(k, l1, l2, m, (String)localObject1, (String)localObject2, (String)localObject4, (String)localObject5, n);
-            paramList.put(3, true);
-            if (j != 0) {
-              LpReportInfo_pf00064.allReport(220, 2, 2);
-            }
-          }
-          j = 0;
+          bool = false;
         }
-        for (;;)
+        else if (((QQReminderOrderModel)localObject).b != null)
         {
-          k = i;
-          m = j;
-          break;
-          if (((QQReminderOrderModel)localObject2).jdField_a_of_type_WalletAcsMsg != null)
+          long l1 = ((QQReminderOrderModel)localObject).b.notice_time * 1000L;
+          AcsMsg localAcsMsg = ((QQReminderOrderModel)localObject).b;
+          if (((localAcsMsg.type == 0) && (DateUtil.a(l1)) && (this.o > l1)) || ((localAcsMsg.type == 1) && (this.o - l1 < 86400000L)))
           {
-            l1 = ((QQReminderOrderModel)localObject2).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L;
-            localObject1 = ((QQReminderOrderModel)localObject2).jdField_a_of_type_WalletAcsMsg;
-            if ((((AcsMsg)localObject1).type == 0) && (DateUtil.a(l1)) && (this.jdField_a_of_type_Long > l1)) {
-              break label1013;
-            }
-            k = i;
-            m = j;
-            if (((AcsMsg)localObject1).type != 1) {
-              break;
-            }
-            k = i;
-            m = j;
-            if (this.jdField_a_of_type_Long - l1 >= 86400000L) {
-              break;
-            }
-            label1013:
-            b(((QQReminderOrderModel)localObject2).jdField_a_of_type_WalletAcsMsg);
-            k = 1;
-            m = j;
-            break;
+            b(((QQReminderOrderModel)localObject).b);
+            i1 = 1;
           }
         }
-        l1 = 1000L;
-        localObject1 = this;
-        i = k;
-        j = m;
       }
     }
-    else
-    {
-      i = 0;
-    }
     if (paramInt == 0) {
-      d();
+      g();
     }
-    if (i == 0) {
-      ((ActivateFriendActivity)localObject1).b(null);
+    if (i1 == 0) {
+      b(null);
     }
     if (paramInt > 0)
     {
-      paramArrayList = ((ActivateFriendActivity)localObject1).jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView;
-      if (paramArrayList != null) {
-        paramArrayList.e();
+      paramList = this.t;
+      if (paramList != null) {
+        paramList.e();
       }
     }
-    f();
-    e();
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((ActivatePageAdapter)localObject).a();
-    if (localObject != null)
-    {
-      if (((ArrayList)localObject).isEmpty()) {
-        return false;
-      }
-      return (ActivateBasePage)((ArrayList)localObject).get(0) instanceof ReminderCardItemPage;
-    }
-    return false;
+    i();
+    a(paramArrayList);
   }
   
   private boolean a(String paramString)
   {
-    return (!StringUtil.a(paramString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString));
+    return (!StringUtil.isEmpty(paramString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString));
   }
   
   private void b(AcsMsg paramAcsMsg)
@@ -414,203 +517,7 @@ public class ActivateFriendActivity
     }
     ReminderCardItemPage localReminderCardItemPage = new ReminderCardItemPage(this, this.app);
     localReminderCardItemPage.a(paramAcsMsg);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a(localReminderCardItemPage);
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.checkTodayReminder();
-    } else {
-      ((IQQReminderAlarmService)this.app.getRuntimeService(IQQReminderAlarmService.class, "")).clearAllAlarm();
-    }
-    if (getIntent().getExtras() != null) {
-      localObject1 = getIntent().getExtras().getString("leftViewText");
-    } else {
-      localObject1 = null;
-    }
-    int i;
-    if ((localObject1 != null) && (((String)localObject1).contains(getString(2131719442)))) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0) {
-      this.app.getMessageFacade().addObserver(this);
-    }
-    Object localObject1 = this.app.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("current message count = ");
-      ((StringBuilder)localObject2).append(((List)localObject1).size());
-      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject2).toString());
-    }
-    Object localObject2 = new ArrayList();
-    Object localObject4;
-    if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
-    {
-      localObject3 = ((List)localObject1).iterator();
-      i = 0;
-      for (;;)
-      {
-        j = i;
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
-        localObject4 = (MessageRecord)((Iterator)localObject3).next();
-        if ((localObject4 instanceof MessageForActivateFriends))
-        {
-          i += 1;
-        }
-        else if ((localObject4 instanceof MessageForText))
-        {
-          ((List)localObject2).add((MessageForText)localObject4);
-          ((Iterator)localObject3).remove();
-        }
-      }
-    }
-    int j = 0;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("initData | message count = ");
-      ((StringBuilder)localObject2).append(j);
-      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject2).toString());
-    }
-    localObject2 = new ArrayList(((List)localObject1).size());
-    Object localObject3 = ((List)localObject1).iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      localObject4 = (MessageRecord)((Iterator)localObject3).next();
-      if (((localObject4 instanceof MessageForActivateFriends)) && (!((MessageRecord)localObject4).isread) && ((((MessageRecord)localObject4).extLong & 0x1) == 1) && (!TextUtils.isEmpty(((MessageRecord)localObject4).extStr))) {
-        ((List)localObject2).add(((MessageRecord)localObject4).extStr);
-      }
-    }
-    if (((List)localObject2).size() > 0) {
-      ActivateFriendServlet.a(this.app, (ArrayList)localObject2);
-    }
-    this.app.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-    if (localObject2 != null) {
-      ((ActivatePageAdapter)localObject2).c();
-    }
-    Collections.sort((List)localObject1, new ActivateFriendActivity.2(this));
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("entrance type : ");
-      ((StringBuilder)localObject2).append(getIntent().getIntExtra("af_key_from", 0));
-      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject2).toString());
-    }
-    if (j > 0)
-    {
-      localObject2 = ((List)localObject1).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (((MessageRecord)((Iterator)localObject2).next() instanceof MessageForActivateFriends))
-        {
-          localObject2 = (MessageForActivateFriends)((List)localObject1).get(0);
-          if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 1) {
-            i = 2;
-          } else if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 2) {
-            i = 1;
-          } else if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 3) {
-            i = (int)((SubMsgType0x76.OneMemorialDayInfo)((MessageForActivateFriends)localObject2).getMsgBody().msg_memorialday_notify.rpt_anniversary_info.get(0)).uint32_type.get() + 2;
-          } else {
-            i = -1;
-          }
-          localObject2 = this.app;
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(getIntent().getIntExtra("af_key_from", 1));
-          ((StringBuilder)localObject3).append("");
-          ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8004E05", "0X8004E05", i, 0, ((StringBuilder)localObject3).toString(), "", "", "");
-        }
-      }
-    }
-    localObject2 = new ArrayList();
-    if (j > 0)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (MessageRecord)((Iterator)localObject1).next();
-        if ((localObject3 instanceof MessageForActivateFriends))
-        {
-          localObject4 = new QQReminderOrderModel();
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_Long = ((MessageRecord)localObject3).time;
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject3);
-          ((QQReminderOrderModel)localObject4).jdField_a_of_type_WalletAcsMsg = null;
-          ((ArrayList)localObject2).add(localObject4);
-        }
-      }
-    }
-    if (j == 0) {
-      d();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getTodayReminderMsgAsync(new ActivateFriendActivity.3(this, (ArrayList)localObject2, j), false);
-    return true;
-  }
-  
-  private void c()
-  {
-    super.setContentView(2131560908);
-    super.setTitle(2131689565);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369216));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840347);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369202));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373522));
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager = ((ReminderViewPager)findViewById(2131362019));
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter = new ActivatePageAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setPageMargin(jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("af_key_from", 1);
-    this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager = ((ActivateFriendsManager)this.app.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(true);
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131718832));
-    }
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mViewPager height: ");
-      localStringBuilder.append(localLayoutParams1.height);
-      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mPageIndicator topMargin: ");
-      localStringBuilder.append(localLayoutParams2.topMargin);
-      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("screen height: ");
-      localStringBuilder.append(UIUtils.c(this));
-      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
-    }
-    double d1;
-    if (localLayoutParams1 != null)
-    {
-      d1 = UIUtils.c(this);
-      Double.isNaN(d1);
-      this.e = ((int)(d1 * 0.785D));
-      int i = ViewUtils.b(550.0F);
-      int j = this.e;
-      if (j >= i) {
-        i = j;
-      }
-      this.e = i;
-      localLayoutParams1.height = this.e;
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderViewPager.setLayoutParams(localLayoutParams1);
-    }
-    if (localLayoutParams2 != null)
-    {
-      d1 = UIUtils.c(this);
-      Double.isNaN(d1);
-      localLayoutParams2.topMargin = ((int)(d1 * 0.8050000000000001D));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams2);
-    }
+    this.h.a(localReminderCardItemPage);
   }
   
   private void c(AcsMsg paramAcsMsg)
@@ -625,28 +532,354 @@ public class ActivateFriendActivity
   
   private boolean c()
   {
+    Object localObject = this.h;
+    boolean bool2 = false;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((ActivatePageAdapter)localObject).a();
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).isEmpty()) {
+        return false;
+      }
+      localObject = (ActivateBasePage)((ArrayList)localObject).get(0);
+      bool1 = bool2;
+      if ((localObject instanceof ReminderCardItemPage))
+      {
+        bool1 = bool2;
+        if (((ReminderCardItemPage)localObject).k != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private boolean d()
+  {
+    Object localObject = this.h;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((ActivatePageAdapter)localObject).a();
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).isEmpty()) {
+        return false;
+      }
+      return (ActivateBasePage)((ArrayList)localObject).get(0) instanceof MemorialActivatePageArk;
+    }
+    return false;
+  }
+  
+  private TopGestureLayout e()
+  {
+    ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
+    View localView = localViewGroup.getChildAt(0);
+    Object localObject = localViewGroup;
+    if (localView != null)
+    {
+      localObject = localViewGroup;
+      if ((localView instanceof DragFrameLayout)) {
+        localObject = (ViewGroup)localView;
+      }
+    }
+    localObject = ((ViewGroup)localObject).getChildAt(0);
+    if ((localObject instanceof TopGestureLayout)) {
+      return (TopGestureLayout)localObject;
+    }
+    return null;
+  }
+  
+  private void f()
+  {
+    super.setContentView(2131627249);
+    super.setTitle(2131886175);
+    this.e = ((ImageView)super.findViewById(2131436194));
+    this.e.setVisibility(0);
+    this.e.setImageResource(2130841087);
+    this.e.setOnClickListener(this);
+    this.f = ((TextView)findViewById(2131436180));
+    this.i = ((LinearLayout)super.findViewById(2131441195));
+    this.g = ((ReminderViewPager)findViewById(2131427597));
+    this.h = new ActivatePageAdapter(this.g);
+    this.g.setAdapter(this.h);
+    this.g.setOnPageChangeListener(this);
+    this.g.setPageMargin(c);
+    this.d = getIntent().getIntExtra("af_key_from", 1);
+    this.l = ((ActivateFriendsManager)this.app.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
+    this.n = this.l.a(true);
+    if (AppSetting.e) {
+      this.e.setContentDescription(getString(2131916361));
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.g.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.i.getLayoutParams();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mViewPager height: ");
+      localStringBuilder.append(localLayoutParams1.height);
+      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mPageIndicator topMargin: ");
+      localStringBuilder.append(localLayoutParams2.topMargin);
+      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("screen height: ");
+      localStringBuilder.append(UIUtils.d(this));
+      QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+    }
+    double d1;
+    if (localLayoutParams1 != null)
+    {
+      d1 = UIUtils.d(this);
+      Double.isNaN(d1);
+      this.s = ((int)(d1 * 0.785D));
+      int i1 = ViewUtils.dpToPx(550.0F);
+      int i2 = this.s;
+      if (i2 >= i1) {
+        i1 = i2;
+      }
+      this.s = i1;
+      localLayoutParams1.height = this.s;
+      this.g.setLayoutParams(localLayoutParams1);
+    }
+    if (localLayoutParams2 != null)
+    {
+      d1 = UIUtils.d(this);
+      Double.isNaN(d1);
+      localLayoutParams2.topMargin = ((int)(d1 * 0.8050000000000001D));
+      this.i.setLayoutParams(localLayoutParams2);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.n)
+    {
+      a(this.app, System.currentTimeMillis(), BirthdayActivateData.a(null, this.app));
+      this.l.c();
+      a();
+      return;
+    }
+    a(this.app, System.currentTimeMillis(), null);
+    Object localObject = this.t;
+    if (localObject != null) {
+      ((BirthdayActivatePageArkView)localObject).a(false);
+    }
+    localObject = (TextView)this.t.b.findViewById(2131432518);
+    SpannableString localSpannableString = new SpannableString(HardCodeUtil.a(2131898036));
+    localSpannableString.setSpan(new ActivateFriendActivity.1(this), 0, 2, 33);
+    ((TextView)localObject).setText(localSpannableString);
+    ((TextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
+  }
+  
+  private boolean h()
+  {
+    if (this.n) {
+      this.m.checkTodayReminder();
+    } else {
+      ((IQQReminderAlarmService)this.app.getRuntimeService(IQQReminderAlarmService.class, "")).clearAllAlarm();
+    }
+    if (getIntent().getExtras() != null) {
+      localObject1 = getIntent().getExtras().getString("leftViewText");
+    } else {
+      localObject1 = null;
+    }
+    int i1;
+    if ((localObject1 != null) && (((String)localObject1).contains(getString(2131917002)))) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0) {
+      this.app.getMessageFacade().addObserver(this);
+    }
+    Object localObject1 = this.app.getMessageFacade().h(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("current message count = ");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = new ArrayList();
+    Object localObject4;
+    if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+    {
+      localObject3 = ((List)localObject1).iterator();
+      boolean bool1 = false;
+      i1 = 0;
+      for (;;)
+      {
+        bool2 = bool1;
+        i2 = i1;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject4 = (MessageRecord)((Iterator)localObject3).next();
+        if ((localObject4 instanceof MessageForActivateFriends))
+        {
+          i1 += 1;
+        }
+        else if ((localObject4 instanceof MessageForText))
+        {
+          ((List)localObject2).add((MessageForText)localObject4);
+          ((Iterator)localObject3).remove();
+        }
+        else if ((localObject4 instanceof MessageForReminder))
+        {
+          bool1 = true;
+        }
+      }
+    }
+    boolean bool2 = false;
+    int i2 = 0;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("initData | message count = ");
+      ((StringBuilder)localObject2).append(i2);
+      QLog.d("ActivateFriends.MainActivity", 2, new Object[] { ((StringBuilder)localObject2).toString(), " has memorial Msg: ", Boolean.valueOf(bool2) });
+    }
+    localObject2 = new ArrayList(((List)localObject1).size());
+    Object localObject3 = ((List)localObject1).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (MessageRecord)((Iterator)localObject3).next();
+      if (((localObject4 instanceof MessageForActivateFriends)) && (!((MessageRecord)localObject4).isread) && ((((MessageRecord)localObject4).extLong & 0x1) == 1) && (!TextUtils.isEmpty(((MessageRecord)localObject4).extStr))) {
+        ((List)localObject2).add(((MessageRecord)localObject4).extStr);
+      }
+    }
+    if (((List)localObject2).size() > 0) {
+      ActivateFriendServlet.a(this.app, (ArrayList)localObject2);
+    }
+    this.app.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 9002);
+    localObject2 = this.h;
+    if (localObject2 != null) {
+      ((ActivatePageAdapter)localObject2).d();
+    }
+    Collections.sort((List)localObject1, new ActivateFriendActivity.2(this));
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("entrance type : ");
+      ((StringBuilder)localObject2).append(getIntent().getIntExtra("af_key_from", 0));
+      QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((i2 > 0) && (((List)localObject1).size() > 0) && ((((List)localObject1).get(0) instanceof MessageForActivateFriends)))
+    {
+      localObject2 = ((List)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        if (((MessageRecord)((Iterator)localObject2).next() instanceof MessageForActivateFriends))
+        {
+          localObject2 = (MessageForActivateFriends)((List)localObject1).get(0);
+          if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 1) {
+            i1 = 2;
+          } else if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 2) {
+            i1 = 1;
+          } else if (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() == 3) {
+            i1 = (int)((SubMsgType0x76.OneMemorialDayInfo)((MessageForActivateFriends)localObject2).getMsgBody().msg_memorialday_notify.rpt_anniversary_info.get(0)).uint32_type.get() + 2;
+          } else {
+            i1 = -1;
+          }
+          localObject2 = this.app;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(getIntent().getIntExtra("af_key_from", 1));
+          ((StringBuilder)localObject3).append("");
+          ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8004E05", "0X8004E05", i1, 0, ((StringBuilder)localObject3).toString(), "", "", "");
+        }
+      }
+    }
+    localObject2 = new ArrayList();
+    if ((i2 > 0) || (bool2))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (MessageRecord)((Iterator)localObject1).next();
+        if (((localObject3 instanceof MessageForActivateFriends)) || ((localObject3 instanceof MessageForReminder)))
+        {
+          localObject4 = new QQReminderOrderModel();
+          ((QQReminderOrderModel)localObject4).c = ((MessageRecord)localObject3).time;
+          ((QQReminderOrderModel)localObject4).a = ((MessageRecord)localObject3);
+          ((QQReminderOrderModel)localObject4).b = null;
+          ((ArrayList)localObject2).add(localObject4);
+        }
+      }
+    }
+    if (i2 == 0) {
+      g();
+    }
+    this.m.getTodayReminderMsgAsync(new ActivateFriendActivity.3(this, (ArrayList)localObject2, i2), false);
+    return true;
+  }
+  
+  private void i()
+  {
+    Object localObject = this.h;
+    int i1;
+    if (localObject != null) {
+      i1 = ((ActivatePageAdapter)localObject).getCount();
+    } else {
+      i1 = 0;
+    }
+    this.k = i1;
+    if (this.k > 1)
+    {
+      this.i.removeAllViews();
+      this.i.setVisibility(0);
+      localObject = new LinearLayout.LayoutParams(ViewUtils.dpToPx(7.0F), ViewUtils.dpToPx(7.0F));
+      i1 = 0;
+      while (i1 < this.k)
+      {
+        ImageView localImageView = new ImageView(this);
+        localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        localImageView.setImageDrawable(getResources().getDrawable(2130837996));
+        if (i1 != 0) {
+          ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(5.0F, getResources());
+        }
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.i.addView(localImageView);
+        i1 += 1;
+      }
+      this.j = 0;
+      a(this.j);
+      return;
+    }
+    this.i.setVisibility(8);
+    localObject = this.h;
+    if (localObject != null) {
+      ((ActivatePageAdapter)localObject).a(0);
+    }
+  }
+  
+  private boolean j()
+  {
     Object localObject = getIntent();
     if (localObject == null) {
       return false;
     }
-    int i = ((Intent)localObject).getIntExtra("af_key_from", 0);
-    if ((i != 4) && (i != 3)) {
+    int i1 = ((Intent)localObject).getIntExtra("af_key_from", 0);
+    if ((i1 != 4) && (i1 != 3)) {
       return false;
     }
-    long l = ((Intent)localObject).getLongExtra("msg_hash", -1L);
-    if (l == this.jdField_b_of_type_Long) {
+    long l1 = ((Intent)localObject).getLongExtra("msg_hash", -1L);
+    if (l1 == this.r) {
       return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getCacheKeyList().iterator();
+    localObject = this.m.getCacheKeyList().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (l == str.hashCode())
+      if (l1 == str.hashCode())
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getEntityByKey(str);
-        this.jdField_b_of_type_Long = l;
+        localObject = this.m.getEntityByKey(str);
+        this.r = l1;
         localObject = ((IReminderEntity)localObject).getAcsMsg();
-        if (QQReminderAMSHelper.a((AcsMsg)localObject))
+        if (QQReminderAMSHelper.b((AcsMsg)localObject))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ActivateFriends.MainActivity", 2, "ActivateFriends inter isAms");
@@ -660,154 +893,17 @@ public class ActivateFriendActivity
     return false;
   }
   
-  private void d()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      a(this.app, System.currentTimeMillis(), BirthdayActivateData.a(null, this.app));
-      this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c();
-      a();
-      return;
-    }
-    a(this.app, System.currentTimeMillis(), null);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView;
-    if (localObject != null) {
-      ((BirthdayActivatePageArkView)localObject).a(false);
-    }
-    localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView.a.findViewById(2131366230);
-    SpannableString localSpannableString = new SpannableString(HardCodeUtil.a(2131699990));
-    localSpannableString.setSpan(new ActivateFriendActivity.1(this), 0, 2, 33);
-    ((TextView)localObject).setText(localSpannableString);
-    ((TextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
-  }
-  
-  private void e()
-  {
-    boolean bool = this.jdField_c_of_type_Boolean;
-    int i = 1;
-    if ((!bool) && (a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.visit");
-      }
-      ReportController.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
-      MobileReportManager.getInstance().reportActionOfNotice("qqremind", "3", "1", 100, ((ReminderCardItemPage)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a().get(0)).jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
-      if (getIntent() != null)
-      {
-        int j = getIntent().getIntExtra("af_key_from", 0);
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("from : ");
-          ((StringBuilder)localObject1).append(j);
-          QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject1).toString());
-        }
-        if (j == 4)
-        {
-          localObject1 = this.app.getMessageFacade().a();
-          if (localObject1 != null)
-          {
-            long l = ((Message)localObject1).uniseq;
-            Object localObject2 = null;
-            Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getCacheKeyList().iterator();
-            do
-            {
-              localObject1 = localObject2;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              localObject1 = (String)((Iterator)localObject3).next();
-            } while (l != ((String)localObject1).hashCode());
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.getEntityByKey((String)localObject1);
-            localObject1 = localObject2;
-            if (localObject3 != null) {
-              localObject1 = ((IReminderEntity)localObject3).getAcsMsg();
-            }
-            if (localObject1 != null) {
-              QQNotifyHelper.a(this.app, "push_click", ((AcsMsg)localObject1).busi_id, ((AcsMsg)localObject1).msg_id, null, null);
-            } else {
-              QQNotifyHelper.a(this.app, "push_click", null, null, null, null);
-            }
-          }
-        }
-        else if (j == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.list.click");
-          }
-          QQNotifyHelper.a(this.app, "newslisting_click", null, null, null, null);
-          ReportController.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.list.click", 0, 0, "", "", "", "");
-        }
-      }
-      this.jdField_c_of_type_Boolean = true;
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-    if (localObject1 != null)
-    {
-      localObject1 = (ActivateBasePage)((ActivatePageAdapter)localObject1).a().get(0);
-      if ((localObject1 instanceof ReminderCardItemPage))
-      {
-        localObject1 = (ReminderCardItemPage)localObject1;
-        if (!((ReminderCardItemPage)localObject1).a())
-        {
-          localObject1 = ((ReminderCardItemPage)localObject1).jdField_a_of_type_WalletAcsMsg;
-          if (((AcsMsg)localObject1).type != 0) {
-            i = 2;
-          }
-          QQNotifyHelper.a(this.app, "remindcontentpage_exp", ((AcsMsg)localObject1).busi_id, ((AcsMsg)localObject1).msg_id, String.valueOf(i), ((AcsMsg)localObject1).mn_reserved);
-          QQReminderAMSHelper.a((AcsMsg)localObject1);
-        }
-      }
-    }
-  }
-  
-  private void f()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-    int i;
-    if (localObject != null) {
-      i = ((ActivatePageAdapter)localObject).getCount();
-    } else {
-      i = 0;
-    }
-    this.d = i;
-    if (this.d > 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      localObject = new LinearLayout.LayoutParams(ViewUtils.b(7.0F), ViewUtils.b(7.0F));
-      i = 0;
-      while (i < this.d)
-      {
-        ImageView localImageView = new ImageView(this);
-        localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        localImageView.setImageDrawable(getResources().getDrawable(2130837972));
-        if (i != 0) {
-          ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(5.0F, getResources());
-        }
-        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
-        i += 1;
-      }
-      this.jdField_c_of_type_Int = 0;
-      a(this.jdField_c_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
-    if (localObject != null) {
-      ((ActivatePageAdapter)localObject).a(0);
-    }
-  }
-  
   public void a()
   {
-    BirthdayActivatePageArkView localBirthdayActivatePageArkView = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBirthdayActivatePageArkView;
-    if (localBirthdayActivatePageArkView != null)
-    {
-      localBirthdayActivatePageArkView.f();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+    Object localObject = this.t;
+    if (localObject != null) {
+      ((BirthdayActivatePageArkView)localObject).f();
     }
+    localObject = this.u;
+    if (localObject != null) {
+      ((MemorialActivatePageArk)localObject).e();
+    }
+    this.a.sendEmptyMessageDelayed(1, 5000L);
   }
   
   void a(int paramInt)
@@ -819,39 +915,39 @@ public class ActivateFriendActivity
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject).toString());
     }
-    int j = this.d;
-    int k = 0;
-    int i = 0;
-    if (j <= 1)
+    int i2 = this.k;
+    int i3 = 0;
+    int i1 = 0;
+    if (i2 <= 1)
     {
-      paramInt = i;
-      while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+      paramInt = i1;
+      while (paramInt < this.i.getChildCount())
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).setVisibility(8);
+        this.i.getChildAt(paramInt).setVisibility(8);
         paramInt += 1;
       }
       return;
     }
-    i = 0;
+    i1 = 0;
     for (;;)
     {
-      j = k;
-      if (i >= this.d) {
+      i2 = i3;
+      if (i1 >= this.k) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setVisibility(0);
-      i += 1;
+      this.i.getChildAt(i1).setVisibility(0);
+      i1 += 1;
     }
-    while (j < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    while (i2 < this.i.getChildCount())
     {
-      if (j == paramInt) {
-        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j)).setImageResource(2130837973);
+      if (i2 == paramInt) {
+        ((ImageView)this.i.getChildAt(i2)).setImageResource(2130837997);
       } else {
-        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j)).setImageResource(2130837972);
+        ((ImageView)this.i.getChildAt(i2)).setImageResource(2130837996);
       }
-      j += 1;
+      i2 += 1;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
+    Object localObject = this.h;
     if (localObject != null) {
       ((ActivatePageAdapter)localObject).a(paramInt);
     }
@@ -863,16 +959,16 @@ public class ActivateFriendActivity
     {
       ReminderCardItemPage localReminderCardItemPage = new ReminderCardItemPage(this, this.app);
       localReminderCardItemPage.a(paramAcsMsg);
-      paramAcsMsg = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a().iterator();
+      paramAcsMsg = this.h.a().iterator();
       while (paramAcsMsg.hasNext())
       {
         ActivateBasePage localActivateBasePage = (ActivateBasePage)paramAcsMsg.next();
-        if (((localActivateBasePage instanceof ReminderCardItemPage)) && (((ReminderCardItemPage)localActivateBasePage).a())) {
+        if (((localActivateBasePage instanceof ReminderCardItemPage)) && (((ReminderCardItemPage)localActivateBasePage).e())) {
           paramAcsMsg.remove();
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a(localReminderCardItemPage, 0);
-      f();
+      this.h.a(localReminderCardItemPage, 0);
+      i();
       this.app.getMessageFacade().a(AppConstants.ACTIVATE_FRIENDS_UIN, 0);
       return;
     }
@@ -883,12 +979,45 @@ public class ActivateFriendActivity
     }
   }
   
+  void a(MessageRecord paramMessageRecord, SparseBooleanArray paramSparseBooleanArray)
+  {
+    Object localObject = ((MessageForReminder)paramMessageRecord).getMsgBody();
+    long l1 = paramMessageRecord.time;
+    try
+    {
+      paramMessageRecord = new JSONObject(((submsgtype0x13a.MsgBody)localObject).bytes_push_data.get().toStringUtf8());
+      if ((TextUtils.equals("97f2e3f9e7a46a25a4e986296e5ab4b1", paramMessageRecord.optString("msg_id", ""))) && (!paramSparseBooleanArray.get(4, false)))
+      {
+        localObject = paramMessageRecord.optJSONObject("ark_data");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showReminderPage arkData:");
+          if (localObject == null) {
+            paramMessageRecord = "null";
+          } else {
+            paramMessageRecord = ((JSONObject)localObject).toString();
+          }
+          localStringBuilder.append(paramMessageRecord);
+          QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+        }
+        a(l1 * 1000L, (JSONObject)localObject);
+        paramSparseBooleanArray.put(4, true);
+        return;
+      }
+    }
+    catch (JSONException paramMessageRecord)
+    {
+      paramMessageRecord.printStackTrace();
+    }
+  }
+  
   void b()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.addRadioButton(getString(2131689563), this.jdField_a_of_type_Boolean);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+    localActionSheet.addRadioButton(getString(2131886173), this.n);
     localActionSheet.setOnButtonClickListener(new ActivateFriendActivity.6(this, localActionSheet));
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnBottomCancelListener(new ActivateFriendActivity.7(this, localActionSheet));
     localActionSheet.show();
   }
@@ -907,7 +1036,7 @@ public class ActivateFriendActivity
     StringBuilder localStringBuilder = new StringBuilder("doOnActiResult");
     localStringBuilder.append(" | rs code = ");
     localStringBuilder.append(paramInt2);
-    int i = -1;
+    int i1 = -1;
     Object localObject1;
     Object localObject2;
     if ((paramInt1 == 1000) && (paramInt2 == -1))
@@ -915,16 +1044,16 @@ public class ActivateFriendActivity
       if (paramIntent != null)
       {
         localObject1 = paramIntent.getLongArrayExtra("key_friend_list");
-        int j = paramIntent.getIntExtra("key_msg_type", -1);
+        int i2 = paramIntent.getIntExtra("key_msg_type", -1);
         localObject2 = paramIntent.getLongArrayExtra("key_time_list");
         String str = paramIntent.getStringExtra("key_msg_content");
         paramInt2 = paramIntent.getIntExtra("key_gift_id", -1);
-        if ((localObject1 != null) && (localObject1.length > 0) && (j != -1))
+        if ((localObject1 != null) && (localObject1.length > 0) && (i2 != -1))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a((long[])localObject1, j);
-          if ((j == 2) && (localObject2 != null) && (localObject2.length > 0) && (str != null) && (str.length() != 0) && (paramInt2 != -1))
+          this.l.a((long[])localObject1, i2);
+          if ((i2 == 2) && (localObject2 != null) && (localObject2.length > 0) && (str != null) && (str.length() != 0) && (paramInt2 != -1))
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(j, (long[])localObject1, (long[])localObject2, str, paramInt2);
+            this.l.a(i2, (long[])localObject1, (long[])localObject2, str, paramInt2);
             ReportController.b(this.app, "dc00898", "", "", "0X8007AD1", "0X8007AD1", localObject1.length, 0, "", "", "", "");
             if (QLog.isColorLevel())
             {
@@ -951,10 +1080,10 @@ public class ActivateFriendActivity
         }
         localStringBuilder.append(paramInt1);
         localStringBuilder.append(" | type = ");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(" | stampList len = ");
         if (localObject2 == null) {
-          paramInt1 = i;
+          paramInt1 = i1;
         } else {
           paramInt1 = localObject2.length;
         }
@@ -976,9 +1105,9 @@ public class ActivateFriendActivity
         ((StringBuilder)localObject1).append(paramIntent);
         QLog.d("ActivateFriends.MainActivity", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter != null) && (!StringUtil.a(paramIntent)))
+      if ((this.h != null) && (!StringUtil.isEmpty(paramIntent)))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a();
+        localObject1 = this.h.a();
         if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty())) {
           localObject1 = ((ArrayList)localObject1).iterator();
         }
@@ -992,33 +1121,33 @@ public class ActivateFriendActivity
         if ((localObject2 instanceof ReminderCardItemPage))
         {
           localObject2 = (ReminderCardItemPage)localObject2;
-          if ((((ReminderCardItemPage)localObject2).jdField_a_of_type_WalletAcsMsg != null) && (paramIntent.equals(((ReminderCardItemPage)localObject2).jdField_a_of_type_WalletAcsMsg.msg_id)) && (this.jdField_a_of_type_Long >= ((ReminderCardItemPage)localObject2).jdField_a_of_type_WalletAcsMsg.notice_time * 1000L))
+          if ((((ReminderCardItemPage)localObject2).k != null) && (paramIntent.equals(((ReminderCardItemPage)localObject2).k.msg_id)) && (this.o >= ((ReminderCardItemPage)localObject2).k.notice_time * 1000L))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ActivateFriends.MainActivity", 2, "----------刷新页面------");
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.c();
-            b();
+            this.h.d();
+            h();
             break;
-            if ((paramInt1 == 2001) && (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter != null))
+            if ((paramInt1 == 2001) && (this.h != null))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("ActivateFriends.MainActivity", 2, "----------刷新页面------ qqbrowser");
               }
-              paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a();
+              paramIntent = this.h.a();
               if ((paramIntent != null) && (!paramIntent.isEmpty()))
               {
                 paramIntent = paramIntent.iterator();
                 while (paramIntent.hasNext())
                 {
                   localObject1 = (ActivateBasePage)paramIntent.next();
-                  if (((localObject1 instanceof ReminderCardItemPage)) && (((ReminderCardItemPage)localObject1).jdField_a_of_type_WalletAcsMsg != null))
+                  if (((localObject1 instanceof ReminderCardItemPage)) && (((ReminderCardItemPage)localObject1).k != null))
                   {
                     if (QLog.isColorLevel()) {
                       QLog.d("ActivateFriends.MainActivity", 2, "----------刷新页面------");
                     }
-                    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.c();
-                    b();
+                    this.h.d();
+                    h();
                   }
                 }
               }
@@ -1035,26 +1164,26 @@ public class ActivateFriendActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService = ((IQQReminderDataService)this.app.getRuntimeService(IQQReminderDataService.class, ""));
-    c();
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver);
-    this.jdField_c_of_type_Boolean = false;
+    this.o = NetConnInfoCenter.getServerTimeMillis();
+    this.m = ((IQQReminderDataService)this.app.getRuntimeService(IQQReminderDataService.class, ""));
+    f();
+    addObserver(this.v);
+    this.app.registObserver(this.w);
+    this.q = false;
     return true;
   }
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver);
+    removeObserver(this.v);
+    this.app.unRegistObserver(this.w);
     this.app.getMessageFacade().deleteObserver(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter.a();
+    this.h.b();
     View localView = getCurrentFocus();
     if (localView != null) {
       localView.clearFocus();
     }
-    this.jdField_c_of_type_Boolean = false;
+    this.q = false;
     super.doOnDestroy();
   }
   
@@ -1062,44 +1191,44 @@ public class ActivateFriendActivity
   {
     setIntent(paramIntent);
     super.doOnNewIntent(paramIntent);
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
+    paramIntent = this.h;
     if (paramIntent != null)
     {
-      paramIntent.c();
-      b();
+      paramIntent.d();
+      h();
     }
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    c();
-    if (!this.jdField_b_of_type_Boolean)
+    j();
+    if (!this.p)
     {
-      this.jdField_b_of_type_Boolean = true;
-      b();
+      this.p = true;
+      h();
     }
-    ActivatePageAdapter localActivatePageAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
+    ActivatePageAdapter localActivatePageAdapter = this.h;
     if (localActivatePageAdapter != null) {
-      localActivatePageAdapter.b();
+      localActivatePageAdapter.c();
     }
   }
   
   protected void doOnStart()
   {
     super.doOnStart();
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.setQQNotifyListener(new ActivateFriendActivity.11(this));
+    this.m.setQQNotifyListener(new ActivateFriendActivity.11(this));
   }
   
   protected void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiIQQReminderDataService.setQQNotifyListener(null);
+    this.m.setQQNotifyListener(null);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369216)
+    if (paramView.getId() == 2131436194)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ActivateFriends.MainActivity", 2, "do report: QQnotice.aio.detail.set");
@@ -1123,20 +1252,20 @@ public class ActivateFriendActivity
   
   public void onPageSelected(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.j = paramInt;
     ReportController.b(this.app, "dc00898", "", "", "0X8007AEB", "0X8007AEB", 0, 0, "", "", "", "");
     LpReportInfo_pf00064.allReport(220, 3);
     a(paramInt);
-    Object localObject1 = a();
-    int i = 1;
+    Object localObject1 = e();
+    int i1 = 1;
     if (localObject1 != null) {
-      if (this.jdField_c_of_type_Int == 0) {
+      if (this.j == 0) {
         ((TopGestureLayout)localObject1).setInterceptTouchFlag(true);
       } else {
         ((TopGestureLayout)localObject1).setInterceptTouchFlag(false);
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivatePageAdapter;
+    localObject1 = this.h;
     if (localObject1 != null)
     {
       localObject1 = ((ActivatePageAdapter)localObject1).a();
@@ -1151,12 +1280,12 @@ public class ActivateFriendActivity
           ReportController.b(this.app, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.visit", 0, 0, "", "", "", "");
           localObject1 = MobileReportManager.getInstance();
           localObject2 = (ReminderCardItemPage)localObject2;
-          ((MobileReportManager)localObject1).reportActionOfNotice("qqremind", "3", "1", 100, ((ReminderCardItemPage)localObject2).jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
-          if (!((ReminderCardItemPage)localObject2).a())
+          ((MobileReportManager)localObject1).reportActionOfNotice("qqremind", "3", "1", 100, ((ReminderCardItemPage)localObject2).k.msg_id, "15", 1);
+          if (!((ReminderCardItemPage)localObject2).e())
           {
-            localObject1 = ((ReminderCardItemPage)localObject2).jdField_a_of_type_WalletAcsMsg;
+            localObject1 = ((ReminderCardItemPage)localObject2).k;
             if (((AcsMsg)localObject1).type == 0) {
-              paramInt = i;
+              paramInt = i1;
             } else {
               paramInt = 2;
             }
@@ -1172,16 +1301,16 @@ public class ActivateFriendActivity
   {
     if ((paramObject instanceof MessageRecord))
     {
-      int j = 1;
-      int i = j;
+      int i2 = 1;
+      int i1 = i2;
       if ((paramObject instanceof ChatMessage))
       {
-        i = j;
+        i1 = i2;
         if (((MessageRecord)paramObject).isSendFromLocal()) {
-          i = 0;
+          i1 = 0;
         }
       }
-      if (i != 0) {
+      if (i1 != 0) {
         runOnUiThread(new ActivateFriendActivity.10(this));
       }
     }
@@ -1189,7 +1318,7 @@ public class ActivateFriendActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -12,40 +12,33 @@ import mqq.app.AppRuntime;
 
 public class QQIndividualityRemoteProxy
 {
-  private ServiceConnection a;
-  protected IQQIndividualityRemoteProxyInterface a;
-  public final String a;
-  protected WeakReference<AppRuntime> a;
-  protected HashSet<String> a;
-  protected ConcurrentLinkedQueue<QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper> a;
-  protected boolean a;
+  public final String a = "QQIndividualityRemoteProxy";
   public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
+  protected boolean c = false;
+  protected WeakReference<AppRuntime> d = null;
+  protected IQQIndividualityRemoteProxyInterface e = null;
+  protected ConcurrentLinkedQueue<QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper> f = new ConcurrentLinkedQueue();
+  protected HashSet<String> g = new HashSet();
+  private ServiceConnection h = new QQIndividualityRemoteProxy.2(this);
   
   public QQIndividualityRemoteProxy(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new QQIndividualityRemoteProxy.2(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    this.d = new WeakReference(paramAppRuntime);
     a("qqindividuality_signature");
   }
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface == null) && (!this.jdField_a_of_type_Boolean))
+    if ((this.e == null) && (!this.c))
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.d;
       if (localObject != null)
       {
         localObject = (AppRuntime)((WeakReference)localObject).get();
         if (localObject != null)
         {
-          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
-          this.jdField_a_of_type_Boolean = true;
+          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.h, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
+          this.c = true;
           return true;
         }
       }
@@ -53,33 +46,33 @@ public class QQIndividualityRemoteProxy
     return false;
   }
   
-  private boolean a(QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramQQIndividualityRemoteProxyCallWrapper);
-  }
-  
   private boolean b()
   {
-    if (this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
+    if (this.e != null)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.d;
       if (localObject != null)
       {
         localObject = (AppRuntime)((WeakReference)localObject).get();
         if (localObject != null)
         {
-          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
-          this.jdField_a_of_type_Boolean = false;
+          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.h);
+          this.e = null;
+          this.c = false;
         }
       }
     }
     return true;
   }
   
+  private boolean b(QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper)
+  {
+    return this.f.add(paramQQIndividualityRemoteProxyCallWrapper);
+  }
+  
   public void a(QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper)
   {
-    if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null) && (paramQQIndividualityRemoteProxyCallWrapper != null))
+    if ((this.e != null) && (paramQQIndividualityRemoteProxyCallWrapper != null))
     {
       Looper localLooper = Looper.getMainLooper();
       if (Thread.currentThread() != localLooper.getThread())
@@ -90,7 +83,7 @@ public class QQIndividualityRemoteProxy
     }
     try
     {
-      this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface.a(paramQQIndividualityRemoteProxyCallWrapper.jdField_a_of_type_Int, paramQQIndividualityRemoteProxyCallWrapper.jdField_a_of_type_AndroidOsBundle);
+      this.e.a(paramQQIndividualityRemoteProxyCallWrapper.a, paramQQIndividualityRemoteProxyCallWrapper.b);
       return;
     }
     catch (RemoteException paramQQIndividualityRemoteProxyCallWrapper) {}
@@ -98,9 +91,9 @@ public class QQIndividualityRemoteProxy
   
   public boolean a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    if (!this.g.contains(paramString))
     {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
+      this.g.add(paramString);
       return true;
     }
     return false;
@@ -108,16 +101,16 @@ public class QQIndividualityRemoteProxy
   
   public boolean a(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    if (this.g.contains(paramString))
     {
       paramString = new QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
+      if (this.e != null)
       {
         a(paramString);
       }
       else
       {
-        a(paramString);
+        b(paramString);
         a();
       }
       return true;
@@ -127,10 +120,10 @@ public class QQIndividualityRemoteProxy
   
   public boolean b(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
+    if (this.g.contains(paramString))
     {
-      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
+      this.g.remove(paramString);
+      if (this.g.isEmpty()) {
         b();
       }
     }
@@ -139,7 +132,7 @@ public class QQIndividualityRemoteProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy
  * JD-Core Version:    0.7.0.1
  */

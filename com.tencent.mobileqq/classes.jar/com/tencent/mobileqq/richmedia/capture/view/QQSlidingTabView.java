@@ -28,31 +28,31 @@ import java.util.ArrayList;
 public class QQSlidingTabView
   extends HorizontalScrollView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842901, 16842904 };
-  private int jdField_a_of_type_Int = -7829368;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
-  private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = null;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private QQSlidingTabView.IOnTabCheckListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = -16777216;
-  private int c = Color.parseColor("#E62555");
-  private int d = 14;
-  private int e = 0;
-  private int f = 15;
-  private int g = 5;
-  private int h = 52;
-  private int i = 0;
-  private int j = 4;
-  private int k = -16776961;
-  private int l = 1;
-  private int m = -3355444;
-  private int n = 0;
-  private int o = 0;
-  private int p = 0;
+  private static final int[] w = { 16842901, 16842904 };
+  private LinearLayout.LayoutParams a = null;
+  private LinearLayout b = null;
+  private ArrayList<View> c = new ArrayList(5);
+  private int d = -7829368;
+  private int e = -16777216;
+  private int f = Color.parseColor("#E62555");
+  private int g = 14;
+  private int h = 0;
+  private int i = 15;
+  private int j = 5;
+  private int k = 52;
+  private int l = 0;
+  private int m = 4;
+  private int n = -16776961;
+  private int o = 1;
+  private int p = -3355444;
   private int q = 0;
-  private int r = -1;
+  private int r = 0;
+  private Paint s = null;
+  private int t = 0;
+  private int u = 0;
+  private QQSlidingTabView.IOnTabCheckListener v;
+  private boolean x = false;
+  private int y = -1;
   
   public QQSlidingTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -69,22 +69,22 @@ public class QQSlidingTabView
   @TargetApi(11)
   private void a()
   {
-    int i1 = this.o;
-    int i2 = this.n;
+    int i1 = this.r;
+    int i2 = this.q;
     if (i1 != i2)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
+      Object localObject = this.b.getChildAt(i1);
+      View localView = this.b.getChildAt(this.q);
       if ((localObject != null) && (localView != null))
       {
         i1 = ((View)localObject).getLeft();
         i2 = localView.getLeft();
         if ((i1 == 0) && (i2 == 0))
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.x = true;
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.x = false;
         localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
         ((ValueAnimator)localObject).setDuration(100L);
         ((ValueAnimator)localObject).addUpdateListener(new QQSlidingTabView.2(this));
@@ -93,110 +93,56 @@ public class QQSlidingTabView
     }
     else
     {
-      this.i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i2).getLeft();
+      this.l = this.b.getChildAt(i2).getLeft();
       invalidate();
     }
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(-2, -1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.a = new LinearLayout.LayoutParams(-2, -1);
+    this.b = new LinearLayout(paramContext);
+    this.b.setOrientation(0);
+    this.b.setLayoutParams(this.a);
+    addView(this.b);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    this.e = ((int)TypedValue.applyDimension(1, this.e, localDisplayMetrics));
     this.h = ((int)TypedValue.applyDimension(1, this.h, localDisplayMetrics));
-    this.j = ((int)TypedValue.applyDimension(1, this.j, localDisplayMetrics));
-    this.l = ((int)TypedValue.applyDimension(1, this.l, localDisplayMetrics));
-    this.f = ((int)TypedValue.applyDimension(1, this.f, localDisplayMetrics));
-    this.d = ((int)TypedValue.applyDimension(1, this.d, localDisplayMetrics));
+    this.k = ((int)TypedValue.applyDimension(1, this.k, localDisplayMetrics));
+    this.m = ((int)TypedValue.applyDimension(1, this.m, localDisplayMetrics));
+    this.o = ((int)TypedValue.applyDimension(1, this.o, localDisplayMetrics));
+    this.i = ((int)TypedValue.applyDimension(1, this.i, localDisplayMetrics));
     this.g = ((int)TypedValue.applyDimension(1, this.g, localDisplayMetrics));
-    paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt).recycle();
+    this.j = ((int)TypedValue.applyDimension(1, this.j, localDisplayMetrics));
+    paramContext.obtainStyledAttributes(paramAttributeSet, w).recycle();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QIMSlidingTabViewStyle);
-    this.e = paramContext.getDimensionPixelSize(4, this.e);
-    this.f = paramContext.getDimensionPixelSize(3, this.f);
-    this.k = paramContext.getColor(0, this.k);
-    this.j = paramContext.getDimensionPixelSize(1, this.j);
-    this.jdField_a_of_type_Int = paramContext.getColor(6, this.jdField_a_of_type_Int);
-    this.b = paramContext.getColor(5, this.b);
-    this.m = paramContext.getColor(8, this.m);
-    this.l = paramContext.getDimensionPixelSize(9, this.l);
-    this.d = paramContext.getDimensionPixelSize(7, this.d);
-    this.g = paramContext.getDimensionPixelSize(2, this.g);
+    this.h = paramContext.getDimensionPixelSize(4, this.h);
+    this.i = paramContext.getDimensionPixelSize(3, this.i);
+    this.n = paramContext.getColor(0, this.n);
+    this.m = paramContext.getDimensionPixelSize(1, this.m);
+    this.d = paramContext.getColor(6, this.d);
+    this.e = paramContext.getColor(5, this.e);
+    this.p = paramContext.getColor(8, this.p);
+    this.o = paramContext.getDimensionPixelSize(9, this.o);
+    this.g = paramContext.getDimensionPixelSize(7, this.g);
+    this.j = paramContext.getDimensionPixelSize(2, this.j);
     paramContext.recycle();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.k);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.s = new Paint();
+    this.s.setAntiAlias(true);
+    this.s.setColor(this.n);
+    this.s.setStyle(Paint.Style.FILL);
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.q = ScreenUtil.dip2px(this.p);
+    this.u = ScreenUtil.dip2px(this.t);
   }
   
   private void b(int paramInt)
   {
-    int i2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i1);
-      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localObject1 != null) && (i1 < ((ArrayList)localObject1).size()))
-      {
-        localObject1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (i1 == paramInt)
-        {
-          if ((localObject1 instanceof ImageView))
-          {
-            localObject2 = (Bundle)((View)localObject1).getTag();
-            if (localObject2 != null) {
-              ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("checked_image_bg_id", 2130846887));
-            }
-          }
-          else if ((localObject1 instanceof RedDotTextView))
-          {
-            if (this.r == i1) {
-              ((RedDotTextView)localObject2).setTextColor(this.c);
-            } else {
-              ((RedDotTextView)localObject2).setTextColor(this.b);
-            }
-            ((RedDotTextView)localObject2).a(false);
-          }
-          else if ((localObject1 instanceof TextView))
-          {
-            ((TextView)localObject2).setTextColor(this.b);
-          }
-        }
-        else if ((localObject1 instanceof ImageView))
-        {
-          localObject2 = (Bundle)((View)localObject1).getTag();
-          if (localObject2 != null) {
-            ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("normal_image_bg_id", 2130846886));
-          }
-        }
-        else if ((localObject1 instanceof RedDotTextView))
-        {
-          ((RedDotTextView)localObject2).setTextColor(this.jdField_a_of_type_Int);
-        }
-        else if ((localObject1 instanceof TextView))
-        {
-          ((TextView)localObject2).setTextColor(this.jdField_a_of_type_Int);
-        }
-      }
-      i1 += 1;
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
+    View localView = this.b.getChildAt(paramInt);
     if (localView != null)
     {
       paramInt = getScrollX();
-      int i1 = this.f * 4;
+      int i1 = this.i * 4;
       int i2 = localView.getRight() - paramInt - getWidth() + i1;
       if (i2 > 0)
       {
@@ -210,69 +156,133 @@ public class QQSlidingTabView
     }
   }
   
+  private void setTabChangeBackgroud(int paramInt)
+  {
+    int i2 = this.b.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      Object localObject2 = this.b.getChildAt(i1);
+      Object localObject1 = this.c;
+      if ((localObject1 != null) && (i1 < ((ArrayList)localObject1).size()))
+      {
+        localObject1 = (View)this.c.get(i1);
+        if (i1 == paramInt)
+        {
+          if ((localObject1 instanceof ImageView))
+          {
+            localObject2 = (Bundle)((View)localObject1).getTag();
+            if (localObject2 != null) {
+              ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("checked_image_bg_id", 2130848439));
+            }
+          }
+          else if ((localObject1 instanceof RedDotTextView))
+          {
+            if (this.y == i1) {
+              ((RedDotTextView)localObject2).setTextColor(this.f);
+            } else {
+              ((RedDotTextView)localObject2).setTextColor(this.e);
+            }
+            ((RedDotTextView)localObject2).a(false);
+          }
+          else if ((localObject1 instanceof TextView))
+          {
+            ((TextView)localObject2).setTextColor(this.e);
+          }
+        }
+        else if ((localObject1 instanceof ImageView))
+        {
+          localObject2 = (Bundle)((View)localObject1).getTag();
+          if (localObject2 != null) {
+            ((ImageView)localObject1).setImageResource(((Bundle)localObject2).getInt("normal_image_bg_id", 2130848438));
+          }
+        }
+        else if ((localObject1 instanceof RedDotTextView))
+        {
+          ((RedDotTextView)localObject2).setTextColor(this.d);
+        }
+        else if ((localObject1 instanceof TextView))
+        {
+          ((TextView)localObject2).setTextColor(this.d);
+        }
+      }
+      i1 += 1;
+    }
+  }
+  
   public void a(int paramInt)
   {
     if (paramInt >= 0)
     {
-      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt >= this.c.size()) {
         return;
       }
-      this.n = paramInt;
+      this.q = paramInt;
+      setTabChangeBackgroud(paramInt);
       b(paramInt);
-      c(paramInt);
       a();
-      QQSlidingTabView.IOnTabCheckListener localIOnTabCheckListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener;
+      QQSlidingTabView.IOnTabCheckListener localIOnTabCheckListener = this.v;
       if (localIOnTabCheckListener != null) {
         localIOnTabCheckListener.a(paramInt);
       }
-      this.o = this.n;
+      this.r = this.q;
     }
+  }
+  
+  public int getTabCount()
+  {
+    return this.c.size();
+  }
+  
+  public ArrayList<View> getmTabItemList()
+  {
+    return this.c;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i2 = getHeight();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.n);
+    Object localObject = this.b.getChildAt(this.q);
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.x)
       {
-        this.i = ((View)localObject).getLeft();
-        c(this.n);
-        this.jdField_a_of_type_Boolean = false;
+        this.l = ((View)localObject).getLeft();
+        b(this.q);
+        this.x = false;
       }
-      if ((this.n == 0) && (this.i < ((View)localObject).getLeft())) {
-        this.i = ((View)localObject).getLeft();
+      if ((this.q == 0) && (this.l < ((View)localObject).getLeft())) {
+        this.l = ((View)localObject).getLeft();
       }
-      if (this.r == this.n) {
-        i1 = this.c;
+      if (this.y == this.q) {
+        i1 = this.f;
       } else {
-        i1 = this.k;
+        i1 = this.n;
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i1);
-      int i1 = this.i;
-      localObject = new RectF(this.g + i1, i2 - this.j, i1 + ((View)localObject).getWidth() - this.g, i2);
-      i1 = this.q;
-      paramCanvas.drawRoundRect((RectF)localObject, i1, i1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.s.setColor(i1);
+      int i1 = this.l;
+      localObject = new RectF(this.j + i1, i2 - this.m, i1 + ((View)localObject).getWidth() - this.j, i2);
+      i1 = this.u;
+      paramCanvas.drawRoundRect((RectF)localObject, i1, i1, this.s);
     }
   }
   
   public void setIndicateColor(int paramInt)
   {
-    this.k = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.k);
+    this.n = paramInt;
+    this.s.setColor(this.n);
     invalidate();
   }
   
   public void setTabCheckListener(QQSlidingTabView.IOnTabCheckListener paramIOnTabCheckListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener = paramIOnTabCheckListener;
+    this.v = paramIOnTabCheckListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

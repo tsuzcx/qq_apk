@@ -6,7 +6,7 @@ public abstract interface MultiNameSpacePluginCompact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact
  * JD-Core Version:    0.7.0.1
  */

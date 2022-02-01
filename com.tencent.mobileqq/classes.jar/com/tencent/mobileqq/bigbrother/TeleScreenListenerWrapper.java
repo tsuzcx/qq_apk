@@ -13,25 +13,25 @@ import mqq.app.Foreground;
 public class TeleScreenListenerWrapper
   implements DownloadListener, JumpListener
 {
+  private WeakReference<Context> a;
   @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private Object b;
   
   TeleScreenListenerWrapper(Context paramContext, @Nullable DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramDownloadListener;
+    this.a = new WeakReference(paramContext);
+    this.b = paramDownloadListener;
   }
   
   TeleScreenListenerWrapper(Context paramContext, @Nullable JumpListener paramJumpListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramJumpListener;
+    this.a = new WeakReference(paramContext);
+    this.b = paramJumpListener;
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.b;
     if ((localObject instanceof JumpListener)) {
       ((JumpListener)localObject).a(paramBoolean, paramInt1, paramInt2, paramString);
     }
@@ -39,7 +39,7 @@ public class TeleScreenListenerWrapper
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.b;
     if ((localObject instanceof DownloadListener)) {
       ((DownloadListener)localObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
     }
@@ -47,7 +47,7 @@ public class TeleScreenListenerWrapper
   
   public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.b;
     if ((localObject instanceof DownloadListener)) {
       return ((DownloadListener)localObject).a();
     }
@@ -78,11 +78,11 @@ public class TeleScreenListenerWrapper
     ((StringBuilder)localObject).append(paramString1);
     QLog.d("TeleScreenListenerWrapper", 1, ((StringBuilder)localObject).toString());
     a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    paramString1 = this.jdField_a_of_type_JavaLangObject;
+    paramString1 = this.b;
     if (((paramString1 instanceof DownloadListener)) && (!((DownloadListener)paramString1).a())) {
       return;
     }
-    localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject = (Context)this.a.get();
     if ((localObject != null) && (paramBoolean1) && (!paramBoolean2) && (!TextUtils.isEmpty(paramString2)))
     {
       Intent localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
@@ -104,7 +104,7 @@ public class TeleScreenListenerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.TeleScreenListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

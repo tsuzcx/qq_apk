@@ -11,13 +11,13 @@ class AIOIceBreakShow$3
   public void onAnimationCancel(Animator paramAnimator)
   {
     AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
+    AIOIceBreakShow.d(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     AIOIceBreakShow.a(this.a, false);
-    AIOIceBreakShow.a(this.a);
+    AIOIceBreakShow.d(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -29,7 +29,7 @@ class AIOIceBreakShow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow.3
  * JD-Core Version:    0.7.0.1
  */

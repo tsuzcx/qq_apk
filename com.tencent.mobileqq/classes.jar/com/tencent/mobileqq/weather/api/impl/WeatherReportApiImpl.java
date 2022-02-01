@@ -20,19 +20,19 @@ public class WeatherReportApiImpl
     WeatherDCReportHelper.a().a(paramAppInterface, "aio_page_arrive");
   }
   
-  public void reportWeatherMessageClick(AppInterface paramAppInterface)
+  public void reportWeatherMessageClick(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    WeatherDCReportHelper.a().b(paramAppInterface);
+    WeatherDCReportHelper.a().c(paramAppInterface, paramMessageRecord);
   }
   
-  public void reportWeatherMessageExpose(AppInterface paramAppInterface)
+  public void reportWeatherMessageExpose(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    WeatherDCReportHelper.a().a(paramAppInterface);
+    WeatherDCReportHelper.a().b(paramAppInterface, paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.api.impl.WeatherReportApiImpl
  * JD-Core Version:    0.7.0.1
  */

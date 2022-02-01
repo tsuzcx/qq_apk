@@ -17,15 +17,15 @@ public class BubbleContextMenu
   public static QQCustomMenuNoIconLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener)
   {
     QQCustomMenuItemPriorityHelper.a(paramQQCustomMenu);
-    paramContext = new QQCustomMenuNoIconLayout(paramContext);
-    paramContext.setGravity(17);
-    paramContext.setPadding(0, 0, 0, 0);
-    paramContext.setPopupWindow(paramBubblePopupWindow, new BubbleContextMenu.1());
-    paramContext.setMenuCreateOrClickCallback(new BubbleMenuReporter());
-    paramContext.setMenu(paramQQCustomMenu);
-    paramContext.setMenuIconClickListener(paramOnClickListener);
-    paramContext.a();
-    return paramContext;
+    QQCustomMenuNoIconLayout localQQCustomMenuNoIconLayout = new QQCustomMenuNoIconLayout(paramContext);
+    localQQCustomMenuNoIconLayout.setGravity(17);
+    localQQCustomMenuNoIconLayout.setPadding(0, 0, 0, 0);
+    localQQCustomMenuNoIconLayout.setPopupWindow(paramBubblePopupWindow, new BubbleContextMenu.1());
+    localQQCustomMenuNoIconLayout.setMenuCreateOrClickCallback(new BubbleMenuReporter(paramContext, paramOnClickListener));
+    localQQCustomMenuNoIconLayout.setMenu(paramQQCustomMenu);
+    localQQCustomMenuNoIconLayout.setMenuIconClickListener(paramOnClickListener);
+    localQQCustomMenuNoIconLayout.c();
+    return localQQCustomMenuNoIconLayout;
   }
   
   public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener)
@@ -85,7 +85,7 @@ public class BubbleContextMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BubbleContextMenu
  * JD-Core Version:    0.7.0.1
  */

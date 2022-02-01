@@ -7,37 +7,37 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 class ReadInJoyDynamicGridView$KitKatSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener
   implements ViewTreeObserver.OnPreDrawListener
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  private final View b;
+  private final int c;
+  private final int d;
   
   ReadInJoyDynamicGridView$KitKatSwitchCellAnimator$AnimateSwitchViewOnPreDrawListener(ReadInJoyDynamicGridView.KitKatSwitchCellAnimator paramKitKatSwitchCellAnimator, View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramView;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a) + ReadInJoyDynamicGridView.KitKatSwitchCellAnimator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator));
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a) + ReadInJoyDynamicGridView.KitKatSwitchCellAnimator.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator));
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.a.a, ReadInJoyDynamicGridView.c(this.a.a) + ReadInJoyDynamicGridView.KitKatSwitchCellAnimator.a(this.a));
+    ReadInJoyDynamicGridView.b(this.a.a, ReadInJoyDynamicGridView.d(this.a.a) + ReadInJoyDynamicGridView.KitKatSwitchCellAnimator.b(this.a));
+    View localView = this.b;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a, this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a)));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a).setVisibility(4);
+    ReadInJoyDynamicGridView.b(this.a.a, this.a.a.b(ReadInJoyDynamicGridView.f(this.a.a)));
+    if (ReadInJoyDynamicGridView.e(this.a.a) != null) {
+      ReadInJoyDynamicGridView.e(this.a.a).setVisibility(4);
     }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyDynamicGridView$KitKatSwitchCellAnimator.a, this.jdField_a_of_type_Int, this.b);
+    ReadInJoyDynamicGridView.a(this.a.a, this.c, this.d);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyDynamicGridView.KitKatSwitchCellAnimator.AnimateSwitchViewOnPreDrawListener
  * JD-Core Version:    0.7.0.1
  */

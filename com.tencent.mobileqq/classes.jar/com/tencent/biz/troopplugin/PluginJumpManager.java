@@ -85,12 +85,12 @@ public class PluginJumpManager
       localNameNotFoundException.printStackTrace();
       i = 0;
     }
-    boolean bool2 = TextUtils.isEmpty(paramUrlMappingInfo.e);
+    boolean bool2 = TextUtils.isEmpty(paramUrlMappingInfo.f);
     boolean bool1 = true;
-    if ((!bool2) || (!TextUtils.isEmpty(paramUrlMappingInfo.d))) {}
+    if ((!bool2) || (!TextUtils.isEmpty(paramUrlMappingInfo.e))) {}
     try
     {
-      j = Integer.valueOf(paramUrlMappingInfo.d).intValue();
+      j = Integer.valueOf(paramUrlMappingInfo.e).intValue();
       if (i < j) {
         break label131;
       }
@@ -104,7 +104,7 @@ public class PluginJumpManager
       String str;
       break label131;
     }
-    localObject1 = paramUrlMappingInfo.e.split(",");
+    localObject1 = paramUrlMappingInfo.f.split(",");
     k = localObject1.length;
     j = 0;
     while (j < k)
@@ -117,12 +117,12 @@ public class PluginJumpManager
     label131:
     bool1 = false;
     label134:
-    if (!TextUtils.isEmpty(paramUrlMappingInfo.f))
+    if (!TextUtils.isEmpty(paramUrlMappingInfo.g))
     {
       localObject2 = Build.BRAND;
       str = Build.MODEL;
       localObject1 = Build.VERSION.RELEASE;
-      paramUrlMappingInfo = paramUrlMappingInfo.f.split(",");
+      paramUrlMappingInfo = paramUrlMappingInfo.g.split(",");
       localObject2 = new StringBuffer((String)localObject2);
       ((StringBuffer)localObject2).append(" ");
       ((StringBuffer)localObject2).append(str);
@@ -184,10 +184,10 @@ public class PluginJumpManager
       {
         localObject3 = new PluginJumpManager.BidInfo(this);
         JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-        ((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
+        ((PluginJumpManager.BidInfo)localObject3).a = localJSONObject.optString("bid");
         ((PluginJumpManager.BidInfo)localObject3).b = localJSONObject.optString("pluginid");
         ((PluginJumpManager.BidInfo)localObject3).c = localJSONObject.optString("pluginname");
-        this.mBidInfos.put(((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+        this.mBidInfos.put(((PluginJumpManager.BidInfo)localObject3).a, localObject3);
         i += 1;
       }
       localObject1 = new JSONArray((String)localObject1);
@@ -197,15 +197,15 @@ public class PluginJumpManager
       {
         localObject2 = new PluginJumpManager.UrlMappingInfo(this);
         localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-        ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).a = ((JSONObject)localObject3).optString("url");
         ((PluginJumpManager.UrlMappingInfo)localObject2).b = ((JSONObject)localObject3).optString("activity");
         ((PluginJumpManager.UrlMappingInfo)localObject2).c = ((JSONObject)localObject3).optString("bid");
-        ((PluginJumpManager.UrlMappingInfo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
-        ((PluginJumpManager.UrlMappingInfo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
-        ((PluginJumpManager.UrlMappingInfo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
-        ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
-        ((PluginJumpManager.UrlMappingInfo)localObject2).g = ((JSONObject)localObject3).optString("extra");
-        this.mUrlmappingInfos.put(((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+        ((PluginJumpManager.UrlMappingInfo)localObject2).g = ((JSONObject)localObject3).optString("a_black_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).e = ((JSONObject)localObject3).optString("q_min_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).f = ((JSONObject)localObject3).optString("q_white_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).d = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).h = ((JSONObject)localObject3).optString("extra");
+        this.mUrlmappingInfos.put(((PluginJumpManager.UrlMappingInfo)localObject2).a, localObject2);
         i += 1;
       }
       return;
@@ -222,7 +222,7 @@ public class PluginJumpManager
   public void loadConfigFromFile()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(OfflineEnvHelper.a("1007"));
+    ((StringBuilder)localObject1).append(OfflineEnvHelper.b("1007"));
     ((StringBuilder)localObject1).append("1007");
     ((StringBuilder)localObject1).append("/urlplugin.cfg");
     localObject1 = new File(((StringBuilder)localObject1).toString());
@@ -247,7 +247,7 @@ public class PluginJumpManager
       {
         localObject2 = new JSONObject((String)localObject2);
         SharedPreferences.Editor localEditor = this.mPref.edit();
-        localEditor.putString("config_file_version", HtmlOffline.a("1007"));
+        localEditor.putString("config_file_version", HtmlOffline.d("1007"));
         localEditor.putString("version", ((JSONObject)localObject2).optString("version"));
         localEditor.putString("bidinfo", ((JSONObject)localObject2).optString("bidinfo"));
         localEditor.putString("urlmaping", ((JSONObject)localObject2).optString("urlmaping")).commit();
@@ -387,13 +387,13 @@ public class PluginJumpManager
       if (!checkQVerAndModel((PluginJumpManager.UrlMappingInfo)localObject1)) {
         return false;
       }
-      if (!TextUtils.isEmpty(((PluginJumpManager.UrlMappingInfo)localObject1).g))
+      if (!TextUtils.isEmpty(((PluginJumpManager.UrlMappingInfo)localObject1).h))
       {
         String[] arrayOfString;
         int j;
-        if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(","))
+        if (((PluginJumpManager.UrlMappingInfo)localObject1).h.contains(","))
         {
-          arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(",");
+          arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).h.split(",");
           int k = arrayOfString.length;
           i = 0;
           j = 0;
@@ -410,9 +410,9 @@ public class PluginJumpManager
         }
         else
         {
-          if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(";"))
+          if (((PluginJumpManager.UrlMappingInfo)localObject1).h.contains(";"))
           {
-            arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(";");
+            arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).h.split(";");
             j = arrayOfString.length;
             i = 0;
             while (i < j)
@@ -423,7 +423,7 @@ public class PluginJumpManager
               i += 1;
             }
           }
-          if (!paramString1.contains(((PluginJumpManager.UrlMappingInfo)localObject1).g)) {
+          if (!paramString1.contains(((PluginJumpManager.UrlMappingInfo)localObject1).h)) {
             return false;
           }
         }
@@ -440,20 +440,20 @@ public class PluginJumpManager
     if (paramAppRuntime == null) {
       return;
     }
-    HtmlOffline.a();
+    HtmlOffline.b();
     boolean bool;
     if (paramAppRuntime.getLongAccountUin() % 10L == 6L) {
       bool = true;
     } else {
       bool = false;
     }
-    HtmlOffline.jdField_a_of_type_Boolean = bool;
+    HtmlOffline.i = bool;
     HtmlOffline.b("1007", paramAppRuntime, true, new PluginJumpManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopplugin.PluginJumpManager
  * JD-Core Version:    0.7.0.1
  */

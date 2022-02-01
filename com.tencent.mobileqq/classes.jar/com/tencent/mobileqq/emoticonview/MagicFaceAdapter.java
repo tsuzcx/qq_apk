@@ -64,7 +64,7 @@ public class MagicFaceAdapter
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
     localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.density * 72.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378202);
+    ((URLImageView)localObject).setId(2131446720);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams1.addRule(10, -1);
     localLayoutParams1.addRule(14, -1);
@@ -74,35 +74,35 @@ public class MagicFaceAdapter
     localRelativeLayout.addView((View)localObject);
     localObject = new TextView(this.mContext);
     ((TextView)localObject).setVisibility(8);
-    ((TextView)localObject).setId(2131374392);
+    ((TextView)localObject).setId(2131442558);
     ((TextView)localObject).setTextSize(11.0F);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(3, 2131378202);
+    localLayoutParams1.addRule(3, 2131446720);
     localLayoutParams1.topMargin = ((int)(this.density * 5.0F));
     localLayoutParams1.addRule(14, -1);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
     localObject = new ImageView(this.mContext);
     ((ImageView)localObject).setVisibility(8);
-    ((ImageView)localObject).setId(2131374393);
+    ((ImageView)localObject).setId(2131442559);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(8, 2131378202);
-    localLayoutParams1.addRule(7, 2131378202);
+    localLayoutParams1.addRule(8, 2131446720);
+    localLayoutParams1.addRule(7, 2131446720);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131366145);
+    ((ImageView)localObject).setId(2131432431);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(5, 2131378202);
-    localLayoutParams1.addRule(6, 2131378202);
+    localLayoutParams1.addRule(5, 2131446720);
+    localLayoutParams1.addRule(6, 2131446720);
     ProgressBar localProgressBar = new ProgressBar(this.mContext);
     localProgressBar.setVisibility(8);
-    localProgressBar.setId(2131366142);
-    localProgressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130846461));
+    localProgressBar.setId(2131432428);
+    localProgressBar.setIndeterminateDrawable(this.mContext.getResources().getDrawable(2130847934));
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams((int)(this.density * 16.0F), (int)(this.density * 16.0F));
     localLayoutParams2.addRule(14, -1);
     localLayoutParams2.topMargin = ((int)(this.density * 20.0F));
     localRelativeLayout.addView(localProgressBar, localLayoutParams2);
     localRelativeLayout.addView((View)localObject, localLayoutParams1);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localRelativeLayout.setFocusable(true);
     }
     return localRelativeLayout;
@@ -157,7 +157,7 @@ public class MagicFaceAdapter
         ((StringBuilder)localObject2).append((String)localObject1);
         boolean bool = paramPicEmoticonInfo.getBoolean(((StringBuilder)localObject2).toString(), false);
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846448);
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130847921);
         if (bool)
         {
           paramPicEmoticonInfo = paramPicEmoticonInfo.getString("magic_promotion_gifUrl", "");
@@ -182,8 +182,8 @@ public class MagicFaceAdapter
         } else {
           paramURLImageView.setImageDrawable(null);
         }
-        if (AppSetting.d) {
-          paramURLImageView.setContentDescription(this.mContext.getString(2131699749));
+        if (AppSetting.e) {
+          paramURLImageView.setContentDescription(this.mContext.getString(2131897782));
         }
       }
       else
@@ -228,8 +228,8 @@ public class MagicFaceAdapter
         if (paramPicEmoticonInfo != null)
         {
           localObject1 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130846447);
-          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.mContext.getResources().getDrawable(2130846453);
+          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.mContext.getResources().getDrawable(2130847920);
+          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.mContext.getResources().getDrawable(2130847926);
           paramPicEmoticonInfo = URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject1);
           paramPicEmoticonInfo.setTag(localEmoticon);
           paramPicEmoticonInfo.addHeader("my_uin", this.app.getCurrentAccountUin());
@@ -275,13 +275,13 @@ public class MagicFaceAdapter
       }
       paramView.setVisibility(0);
       paramView.setTag(localObject);
-      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131378202);
+      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131446720);
       paramEmotionPanelData.setVisibility(0);
       updateImageView(paramEmotionPanelData, (PicEmoticonInfo)localObject);
-      paramEmotionPanelData = (TextView)paramView.findViewById(2131374392);
-      ImageView localImageView1 = (ImageView)paramView.findViewById(2131366145);
-      ImageView localImageView2 = (ImageView)paramView.findViewById(2131374393);
-      paramView = (ProgressBar)paramView.findViewById(2131366142);
+      paramEmotionPanelData = (TextView)paramView.findViewById(2131442558);
+      ImageView localImageView1 = (ImageView)paramView.findViewById(2131432431);
+      ImageView localImageView2 = (ImageView)paramView.findViewById(2131442559);
+      paramView = (ProgressBar)paramView.findViewById(2131432428);
       if ("push".equals(((PicEmoticonInfo)localObject).action))
       {
         paramEmotionPanelData.setVisibility(8);
@@ -308,7 +308,7 @@ public class MagicFaceAdapter
           {
             paramEmotionPanelData.setText(str);
           }
-          if (AppSetting.d) {
+          if (AppSetting.e) {
             paramEmotionPanelData.setContentDescription(str);
           }
         }
@@ -320,7 +320,7 @@ public class MagicFaceAdapter
         localImageView2.setVisibility(8);
         if (!((EmoticonManagerServiceProxy)this.app.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonPackageById(((Emoticon)localObject).epId).valid)
         {
-          localImageView2.setImageResource(2130846462);
+          localImageView2.setImageResource(2130847935);
           localImageView2.setVisibility(0);
         }
         paramView.setVisibility(8);
@@ -518,7 +518,7 @@ public class MagicFaceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.MagicFaceAdapter
  * JD-Core Version:    0.7.0.1
  */

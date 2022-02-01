@@ -44,52 +44,44 @@ import mqq.manager.Manager;
 public class MedalWallMng
   implements Handler.Callback, Manager
 {
-  public static int a;
-  protected static final String a;
-  public static int b;
+  protected static final String a = Environment.getExternalStorageDirectory().getAbsolutePath();
   protected static final String b;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f = 6;
-  public static int g = 7;
-  protected final SparseArray<MedalInfo> a;
-  protected QQAppInterface a;
-  protected final WeakReferenceHandler a;
-  protected final ArrayList<MedalWallMng.NeedGuideMedal> a;
-  protected boolean a;
-  private boolean b;
-  private String c;
-  private String d;
-  private String e;
-  protected int h;
-  protected int i;
-  private int j = -2147483648;
+  public static int c = 1;
+  public static int d = 2;
+  public static int e = 3;
+  public static int f = 4;
+  public static int g = 5;
+  public static int h = 6;
+  public static int i = 7;
+  protected final SparseArray<MedalInfo> j;
+  protected final ArrayList<MedalWallMng.NeedGuideMedal> k;
+  protected int l;
+  protected int m;
+  protected QQAppInterface n;
+  protected boolean o = false;
+  protected final WeakReferenceHandler p;
+  private String q;
+  private String r;
+  private String s;
+  private boolean t = false;
+  private int u = -2147483648;
   
   static
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("tencent/MobileQQ/medal/");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
-    jdField_e_of_type_Int = 5;
+    b = localStringBuilder.toString();
   }
   
   public MedalWallMng(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.h = 0;
+    this.n = paramQQAppInterface;
+    this.j = new SparseArray(3);
+    this.k = new ArrayList();
+    this.p = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.l = 0;
   }
   
   public static String a(String paramString)
@@ -158,10 +150,10 @@ public class MedalWallMng
     }
     paramStringBuilder.append("MedalID[");
     paramStringBuilder.append("id: ");
-    paramStringBuilder.append(paramMedalID.jdField_a_of_type_Int);
+    paramStringBuilder.append(paramMedalID.a);
     paramStringBuilder.append(",");
     paramStringBuilder.append("level: ");
-    paramStringBuilder.append(paramMedalID.jdField_b_of_type_Int);
+    paramStringBuilder.append(paramMedalID.b);
     paramStringBuilder.append("] ");
   }
   
@@ -169,20 +161,20 @@ public class MedalWallMng
   {
     if (paramNeedGuideMedal != null)
     {
-      if (paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null) {
+      if (paramNeedGuideMedal.a == null) {
         return;
       }
-      if (!FileUtils.fileExistsAndNotEmpty(paramNeedGuideMedal.jdField_b_of_type_JavaLangString)) {
+      if (!FileUtils.fileExistsAndNotEmpty(paramNeedGuideMedal.c)) {
         return;
       }
       try
       {
         Resources localResources = BaseApplicationImpl.getApplication().getResources();
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        int k = localResources.getDimensionPixelSize(2131298357);
-        localURLDrawableOptions.mRequestWidth = k;
-        localURLDrawableOptions.mRequestHeight = k;
-        URLDrawable.getDrawable(new File(paramNeedGuideMedal.jdField_b_of_type_JavaLangString), localURLDrawableOptions).startDownload(true);
+        int i1 = localResources.getDimensionPixelSize(2131299071);
+        localURLDrawableOptions.mRequestWidth = i1;
+        localURLDrawableOptions.mRequestHeight = i1;
+        URLDrawable.getDrawable(new File(paramNeedGuideMedal.c), localURLDrawableOptions).startDownload(true);
         return;
       }
       catch (Exception paramNeedGuideMedal)
@@ -192,41 +184,23 @@ public class MedalWallMng
     }
   }
   
-  private void b(int paramInt)
+  private void c(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "updateCheckResFlag value: %d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    Object localObject = String.format(Locale.getDefault(), "%s%s", new Object[] { "medal_wall_", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() });
+    Object localObject = String.format(Locale.getDefault(), "%s%s", new Object[] { "medal_wall_", this.n.getAccount() });
     localObject = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject, 4);
     if (((SharedPreferences)localObject).getInt("MEDAL_CHECK_RES_STATE", 0) != paramInt) {
       ((SharedPreferences)localObject).edit().putInt("MEDAL_CHECK_RES_STATE", paramInt).apply();
     }
   }
   
-  private boolean b()
-  {
-    boolean bool;
-    if (SharedPreUtils.U(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != 1) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.jdField_b_of_type_Boolean = bool;
-    if (this.jdField_b_of_type_Boolean) {
-      return true;
-    }
-    if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).medalSwitchDisable) {
-      return true;
-    }
-    return Utils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-  }
-  
-  private void d()
+  private void f()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.o;
       if (bool) {
         return;
       }
@@ -234,18 +208,18 @@ public class MedalWallMng
       if (QLog.isColorLevel()) {
         localStringBuilder = new StringBuilder(200);
       }
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().query(MedalInfo.class);
+      Object localObject3 = this.n.getEntityManagerFactory().createEntityManager().query(MedalInfo.class);
       if ((localObject3 != null) && (((List)localObject3).size() > 0)) {
-        synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+        synchronized (this.j)
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+          this.j.clear();
           localObject3 = ((List)localObject3).iterator();
           while (((Iterator)localObject3).hasNext())
           {
             MedalInfo localMedalInfo = (MedalInfo)((Iterator)localObject3).next();
             if (localMedalInfo != null)
             {
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(localMedalInfo.iId, localMedalInfo);
+              this.j.put(localMedalInfo.iId, localMedalInfo);
               if ((QLog.isColorLevel()) && (localStringBuilder != null))
               {
                 a(localMedalInfo, localStringBuilder);
@@ -255,9 +229,9 @@ public class MedalWallMng
           }
         }
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.o = true;
       if ((QLog.isColorLevel()) && (localObject1 != null)) {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "init size: %d \r\n{%s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseArray.size()), localObject1.toString() }));
+        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "init size: %d \r\n{%s}", new Object[] { Integer.valueOf(this.j.size()), localObject1.toString() }));
       }
       return;
     }
@@ -268,167 +242,185 @@ public class MedalWallMng
     }
   }
   
-  private void e()
+  private void g()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "doCheckMedalRes checkedCount: %d", new Object[] { Integer.valueOf(this.h) }));
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "doCheckMedalRes checkedCount: %d", new Object[] { Integer.valueOf(this.l) }));
     }
-    int k;
+    int i1;
     label182:
     Object localObject2;
     label187:
     label192:
     label199:
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.k)
     {
-      if (this.h > 0)
+      if (this.l > 0)
       {
-        k = this.h - 1;
+        i1 = this.l - 1;
         break label182;
-        if (k >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i1 >= this.k.size()) {
           break label199;
         }
-        MedalWallMng.NeedGuideMedal localNeedGuideMedal = (MedalWallMng.NeedGuideMedal)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-        if ((localNeedGuideMedal != null) && (!localNeedGuideMedal.jdField_a_of_type_Boolean))
+        MedalWallMng.NeedGuideMedal localNeedGuideMedal = (MedalWallMng.NeedGuideMedal)this.k.get(i1);
+        if ((localNeedGuideMedal != null) && (!localNeedGuideMedal.e))
         {
           if (!localNeedGuideMedal.a()) {
             break label187;
           }
-          this.h = (k + 1);
+          this.l = (i1 + 1);
           a(localNeedGuideMedal);
           break label192;
         }
-        this.h = (k + 1);
+        this.l = (i1 + 1);
         break label192;
-        if (k != 0)
+        if (i1 != 0)
         {
           ThreadManager.post(new MedalWallMng.DownloadResTask(this, localNeedGuideMedal), 5, null, false);
           return;
         }
-        if (this.i > 0)
+        if (this.m > 0)
         {
-          b(2);
+          c(2);
           return;
         }
-        b(1);
+        c(1);
       }
     }
   }
   
-  private void f()
+  private void h()
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MedalWallMng", 4, "doCheckForLogin");
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    Object localObject = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    this.p.removeMessages(3);
+    Object localObject = (LocalRedTouchManager)this.n.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
     RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(10015);
     boolean bool = ((LocalRedTouchManager)localObject).b(localRedTouchItem);
     if (QLog.isColorLevel()) {
       QLog.d("MedalWallMng", 2, String.format("doCheckForLogin item=%s hasMedalRedPoint=%s", new Object[] { localRedTouchItem, Boolean.valueOf(bool) }));
     }
-    int k;
+    int i1;
     if (bool)
     {
-      localObject = String.format(Locale.getDefault(), "%s%s", new Object[] { "medal_wall_", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() });
-      k = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject, 4).getInt("MEDAL_CHECK_RES_STATE", 0);
-      if (k == 2) {
-        b();
-      } else {
+      localObject = String.format(Locale.getDefault(), "%s%s", new Object[] { "medal_wall_", this.n.getAccount() });
+      i1 = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject, 4).getInt("MEDAL_CHECK_RES_STATE", 0);
+      if (i1 == 2) {
         c();
+      } else {
+        d();
       }
     }
     else
     {
-      b(0);
-      k = 0;
+      c(0);
+      i1 = 0;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MedalWallMng", 2, String.format("doCheckForLogin hasMedalRedPoint=%s, flag=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(k) }));
+      QLog.d("MedalWallMng", 2, String.format("doCheckForLogin hasMedalRedPoint=%s, flag=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i1) }));
     }
   }
   
-  private void g()
+  private boolean i()
+  {
+    boolean bool;
+    if (SharedPreUtils.am(this.n.getApplication(), this.n.getCurrentAccountUin()) != 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.t = bool;
+    if (this.t) {
+      return true;
+    }
+    if (((FriendsManager)this.n.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.n.getCurrentAccountUin()).medalSwitchDisable) {
+      return true;
+    }
+    return Utils.c(this.n.getCurrentAccountUin());
+  }
+  
+  private void j()
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString("hostUrl", "");
-    this.jdField_d_of_type_JavaLangString = localSharedPreferences.getString("guestUrl", "");
-    this.jdField_e_of_type_JavaLangString = localSharedPreferences.getString("shareUrl", "");
+    this.q = localSharedPreferences.getString("hostUrl", "");
+    this.r = localSharedPreferences.getString("guestUrl", "");
+    this.s = localSharedPreferences.getString("shareUrl", "");
     if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 4, String.format("onGetConfig,local hostUrl:%s,guestUrl:%s,shareUrl:%s", new Object[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString }));
+      QLog.i("MedalWallMng", 4, String.format("onGetConfig,local hostUrl:%s,guestUrl:%s,shareUrl:%s", new Object[] { this.q, this.r, this.s }));
     }
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_c_of_type_JavaLangString = "https://ti.qq.com/qqmedal2/index.html?_wv=1&_bid=2450&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&_wwv=4";
+    if (TextUtils.isEmpty(this.q)) {
+      this.q = "https://ti.qq.com/qqmedal2/index.html?_wv=1&_bid=2450&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&_wwv=4";
     }
-    if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-      this.jdField_d_of_type_JavaLangString = "https://ti.qq.com/qqmedal2/index.html?_wv=1&_bid=2450&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&_wwv=4";
+    if (TextUtils.isEmpty(this.r)) {
+      this.r = "https://ti.qq.com/qqmedal2/index.html?_wv=1&_bid=2450&_nav_alpha=0&_nav_txtclr=ffffff&_nav_titleclr=ffffff&_nav_anim=true&_wwv=4";
     }
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = "https://ti.qq.com/qqmedal2/share.html?_wv=16777217&_wwv=4&_bid=2450";
+    if (TextUtils.isEmpty(this.s)) {
+      this.s = "https://ti.qq.com/qqmedal2/share.html?_wv=16777217&_wwv=4&_bid=2450";
     }
   }
   
   public Card a(TMedalWallInfo paramTMedalWallInfo, boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int i3 = 0;
-    int i2 = 0;
-    int k = 0;
+    Object localObject1 = this.j;
+    int i6 = 0;
+    int i5 = 0;
+    int i1 = 0;
     for (;;)
     {
       try
       {
         Object localObject2;
-        if (i3 < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+        if (i6 < this.j.size())
         {
-          localObject2 = (MedalInfo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i3);
+          localObject2 = (MedalInfo)this.j.valueAt(i6);
           if (localObject2 == null)
           {
-            n = i2;
-            i1 = k;
+            i3 = i5;
+            i4 = i1;
           }
           else if (((MedalInfo)localObject2).iLevel == 255)
           {
-            n = i2;
-            i1 = k;
+            i3 = i5;
+            i4 = i1;
             if (((MedalInfo)localObject2).iUnreadLevel1 == 1)
             {
-              n = i2 + 1;
-              i1 = k;
+              i3 = i5 + 1;
+              i4 = i1;
             }
           }
           else
           {
-            n = i2;
-            i1 = k;
+            i3 = i5;
+            i4 = i1;
             if (((MedalInfo)localObject2).iLevelCount > 1)
             {
-              int m = i2;
+              int i2 = i5;
               if (((MedalInfo)localObject2).iLevel >= 1)
               {
-                m = i2;
+                i2 = i5;
                 if (((MedalInfo)localObject2).iUnreadLevel1 == 1) {
-                  m = i2 + 1;
+                  i2 = i5 + 1;
                 }
               }
-              i2 = k;
+              i5 = i1;
               if (((MedalInfo)localObject2).iLevel >= 2)
               {
-                i2 = k;
+                i5 = i1;
                 if (((MedalInfo)localObject2).iUnreadLevel2 == 1) {
-                  i2 = k + 1;
+                  i5 = i1 + 1;
                 }
               }
-              n = m;
-              i1 = i2;
+              i3 = i2;
+              i4 = i5;
               if (((MedalInfo)localObject2).iLevel >= 3)
               {
-                n = m;
-                i1 = i2;
+                i3 = i2;
+                i4 = i5;
                 if (((MedalInfo)localObject2).iUnreadLevel3 == 1)
                 {
-                  i1 = i2 + 1;
-                  n = m;
+                  i4 = i5 + 1;
+                  i3 = i2;
                 }
               }
             }
@@ -436,18 +428,18 @@ public class MedalWallMng
         }
         else
         {
-          localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-          localObject2 = ((FriendsManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localObject1 = (FriendsManager)this.n.getManager(QQManagerFactory.FRIENDS_MANAGER);
+          localObject2 = ((FriendsManager)localObject1).g(this.n.getCurrentAccountUin());
           if (paramTMedalWallInfo != null)
           {
             ((Card)localObject2).iMedalCount = paramTMedalWallInfo.iMedalCount;
             if (QLog.isColorLevel()) {
-              QLog.d("MedalWallMng", 2, String.format(Locale.getDefault(), "updateCardMedalInfo needCheck: %s, compute[iNewCount: %d, iUpgradeCount: %d] server[iNewCount: %d, iUpgradeCount: %d] card[iNewCount: %d, iUpgradeCount: %d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i2), Integer.valueOf(k), Integer.valueOf(paramTMedalWallInfo.iNewCount), Integer.valueOf(paramTMedalWallInfo.iUpgradeCount), Integer.valueOf(((Card)localObject2).iNewCount), Integer.valueOf(((Card)localObject2).iUpgradeCount) }));
+              QLog.d("MedalWallMng", 2, String.format(Locale.getDefault(), "updateCardMedalInfo needCheck: %s, compute[iNewCount: %d, iUpgradeCount: %d] server[iNewCount: %d, iUpgradeCount: %d] card[iNewCount: %d, iUpgradeCount: %d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i5), Integer.valueOf(i1), Integer.valueOf(paramTMedalWallInfo.iNewCount), Integer.valueOf(paramTMedalWallInfo.iUpgradeCount), Integer.valueOf(((Card)localObject2).iNewCount), Integer.valueOf(((Card)localObject2).iUpgradeCount) }));
             }
-            if ((paramBoolean) && ((paramTMedalWallInfo.iNewCount > i2) || (paramTMedalWallInfo.iUpgradeCount > k)))
+            if ((paramBoolean) && ((paramTMedalWallInfo.iNewCount > i5) || (paramTMedalWallInfo.iUpgradeCount > i1)))
             {
-              paramTMedalWallInfo.iNewCount = Math.min(paramTMedalWallInfo.iNewCount, i2);
-              paramTMedalWallInfo.iUpgradeCount = Math.min(paramTMedalWallInfo.iUpgradeCount, k);
+              paramTMedalWallInfo.iNewCount = Math.min(paramTMedalWallInfo.iNewCount, i5);
+              paramTMedalWallInfo.iUpgradeCount = Math.min(paramTMedalWallInfo.iUpgradeCount, i1);
             }
             ((Card)localObject2).iNewCount = paramTMedalWallInfo.iNewCount;
             ((Card)localObject2).iUpgradeCount = paramTMedalWallInfo.iUpgradeCount;
@@ -455,10 +447,10 @@ public class MedalWallMng
           else
           {
             if (QLog.isColorLevel()) {
-              QLog.d("MedalWallMng", 2, String.format(Locale.getDefault(), "updateCardMedalInfo compute[iNewCount: %d, iUpgradeCount: %d] card[iNewCount: %d, iUpgradeCount: %d]", new Object[] { Integer.valueOf(i2), Integer.valueOf(k), Integer.valueOf(((Card)localObject2).iNewCount), Integer.valueOf(((Card)localObject2).iUpgradeCount) }));
+              QLog.d("MedalWallMng", 2, String.format(Locale.getDefault(), "updateCardMedalInfo compute[iNewCount: %d, iUpgradeCount: %d] card[iNewCount: %d, iUpgradeCount: %d]", new Object[] { Integer.valueOf(i5), Integer.valueOf(i1), Integer.valueOf(((Card)localObject2).iNewCount), Integer.valueOf(((Card)localObject2).iUpgradeCount) }));
             }
-            ((Card)localObject2).iNewCount = Math.min(((Card)localObject2).iNewCount, i2);
-            ((Card)localObject2).iUpgradeCount = Math.min(((Card)localObject2).iUpgradeCount, k);
+            ((Card)localObject2).iNewCount = Math.min(((Card)localObject2).iNewCount, i5);
+            ((Card)localObject2).iUpgradeCount = Math.min(((Card)localObject2).iUpgradeCount, i1);
           }
           ((FriendsManager)localObject1).a((Card)localObject2);
           return localObject2;
@@ -466,24 +458,509 @@ public class MedalWallMng
       }
       finally
       {
-        int n;
-        int i1;
+        int i3;
+        int i4;
         continue;
         throw paramTMedalWallInfo;
         continue;
-        i3 += 1;
-        i2 = n;
-        k = i1;
+        i6 += 1;
+        i5 = i3;
+        i1 = i4;
       }
     }
   }
   
-  public MedalInfo a(int paramInt)
+  public String a(boolean paramBoolean, String paramString, int paramInt)
   {
-    d();
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    if ((this.q == null) || (this.r == null) || (this.s == null)) {
+      j();
+    }
+    if (!paramBoolean)
     {
-      MedalInfo localMedalInfo = (MedalInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      StringBuilder localStringBuilder = new StringBuilder(this.r);
+      localStringBuilder.append("&tuin=");
+      localStringBuilder.append(NearbyURLSafeUtil.b(paramString));
+      paramString = localStringBuilder;
+    }
+    else
+    {
+      paramString = new StringBuilder(this.q);
+    }
+    paramString.append("&from=");
+    paramString.append(paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "getMedalWallUrl url: %s", new Object[] { paramString }));
+    }
+    return paramString.toString();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.u = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onGetMedalStrongReminderConfig value: %s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    ??? = this.n.getEntityManagerFactory().createEntityManager();
+    Object localObject1 = new ArrayList(5);
+    int i3 = 0;
+    if (paramInt == 2) {}
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        ??? = this.j;
+        i1 = 0;
+        try
+        {
+          if (i1 < this.j.size())
+          {
+            MedalInfo localMedalInfo = (MedalInfo)this.j.valueAt(i1);
+            localMedalInfo.putReportInfo((ArrayList)localObject1);
+            localMedalInfo.setRead();
+            if (localMedalInfo.getStatus() == 1000)
+            {
+              ((EntityManager)???).persistOrReplace(localMedalInfo);
+              break label577;
+            }
+            if ((localMedalInfo.getStatus() != 1001) && (localMedalInfo.getStatus() != 1002)) {
+              break label577;
+            }
+            ((EntityManager)???).update(localMedalInfo);
+            break label577;
+          }
+          synchronized (this.k)
+          {
+            this.k.clear();
+          }
+          if (!(paramObject instanceof MedalWallMng.NeedGuideMedal)) {
+            continue;
+          }
+        }
+        finally {}
+        paramObject = (MedalWallMng.NeedGuideMedal)paramObject;
+        i1 = paramObject.a.iId;
+        try
+        {
+          ??? = paramObject.a;
+          ((MedalInfo)???).putReportInfo((ArrayList)localObject1);
+          ((MedalInfo)???).setRead();
+          if (((MedalInfo)???).getStatus() == 1000) {
+            ((EntityManager)???).persistOrReplace((Entity)???);
+          } else if ((((MedalInfo)???).getStatus() == 1001) || (((MedalInfo)???).getStatus() == 1002)) {
+            ((EntityManager)???).update((Entity)???);
+          }
+          synchronized (this.k)
+          {
+            this.k.remove(paramObject);
+          }
+          i1 = 0;
+        }
+        catch (Throwable paramObject) {}
+      }
+      catch (Throwable paramObject)
+      {
+        i1 = 0;
+        paramObject.printStackTrace();
+      }
+      if (paramInt == 0)
+      {
+        paramObject = a(null, true);
+      }
+      else
+      {
+        ??? = (FriendsManager)this.n.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        paramObject = ((FriendsManager)???).g(this.n.getCurrentAccountUin());
+        if (paramObject != null)
+        {
+          paramObject.iUpgradeCount = 0;
+          paramObject.iNewCount = 0;
+          ((FriendsManager)???).a(paramObject);
+        }
+      }
+      ??? = (LocalRedTouchManager)this.n.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+      if ((paramInt != 1) && (paramInt != 2))
+      {
+        if ((paramObject == null) || ((paramObject.iNewCount == 0) && (paramObject.iUpgradeCount == 0))) {
+          ((LocalRedTouchManager)???).b(10015);
+        }
+      }
+      else
+      {
+        ((LocalRedTouchManager)???).b(10015);
+        ((LocalRedTouchManager)???).b(10016);
+      }
+      if (!((ArrayList)localObject1).isEmpty()) {
+        ((CardHandler)this.n.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).b((ArrayList)localObject1);
+      }
+      if ((paramObject == null) || ((paramObject.iNewCount == 0) && (paramObject.iUpgradeCount == 0))) {
+        c(0);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = Locale.getDefault();
+        int i2;
+        if (paramObject == null) {
+          i2 = 0;
+        } else {
+          i2 = paramObject.iNewCount;
+        }
+        if (paramObject != null) {
+          i3 = paramObject.iUpgradeCount;
+        }
+        QLog.i("MedalWallMng", 2, String.format((Locale)localObject1, "reportReadSelfNewObtainedMedal [nActionType: %d, id: %d, iNewCount: %d, iUpgradeCount: %d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3) }));
+      }
+      return;
+      label577:
+      i1 += 1;
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = false;
+    if (bool2) {
+      QLog.i("MedalWallMng", 4, String.format("onGetConfig,hostUrl:%s,guestUrl:%s,shareUrl:%s", new Object[] { paramString1, paramString2, paramString3 }));
+    }
+    if ((this.q == null) || (this.r == null) || (this.s == null)) {
+      j();
+    }
+    if ((Utils.a(paramString1, this.q)) && (Utils.a(paramString2, this.r)) && (Utils.a(paramString3, this.s)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 4, "onGetConfig, no change return.");
+      }
+      return;
+    }
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
+    localEditor.putString("hostUrl", paramString1);
+    localEditor.putString("guestUrl", paramString2);
+    localEditor.putString("shareUrl", paramString3);
+    localEditor.commit();
+    this.q = paramString1;
+    this.r = paramString2;
+    this.s = paramString3;
+    if (paramInt != 1) {
+      bool1 = true;
+    }
+    this.t = bool1;
+  }
+  
+  public void a(boolean paramBoolean, TMedalWallInfo paramTMedalWallInfo, SparseArray<MedalInfo> paramSparseArray)
+  {
+    f();
+    int i1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder(200);
+      ((StringBuilder)???).append("onGetSelfNewObtainedMedaInfo isSuc:");
+      ((StringBuilder)???).append(paramBoolean);
+      if (paramTMedalWallInfo != null)
+      {
+        ((StringBuilder)???).append(", iMedalCount:");
+        ((StringBuilder)???).append(paramTMedalWallInfo.iMedalCount);
+        ((StringBuilder)???).append(", iNewCount:");
+        ((StringBuilder)???).append(paramTMedalWallInfo.iNewCount);
+        ((StringBuilder)???).append(", iUpgradeCount:");
+        ((StringBuilder)???).append(paramTMedalWallInfo.iUpgradeCount);
+      }
+      if (paramSparseArray != null)
+      {
+        ((StringBuilder)???).append(", medalInfoArrayList: ");
+        ((StringBuilder)???).append(paramSparseArray.size());
+        i1 = 0;
+        while (i1 < paramSparseArray.size())
+        {
+          localObject2 = (MedalInfo)paramSparseArray.valueAt(i1);
+          if (localObject2 != null)
+          {
+            ((StringBuilder)???).append("\r\n info [id: ");
+            ((StringBuilder)???).append(((MedalInfo)localObject2).iId);
+            ((StringBuilder)???).append(", iLevel: ");
+            ((StringBuilder)???).append(((MedalInfo)localObject2).iLevel);
+            ((StringBuilder)???).append(", name: ");
+            ((StringBuilder)???).append(((MedalInfo)localObject2).strName);
+            ((StringBuilder)???).append(", res: ");
+            ((StringBuilder)???).append(((MedalInfo)localObject2).strResJson);
+            ((StringBuilder)???).append("]");
+          }
+          i1 += 1;
+        }
+      }
+      QLog.i("MedalWallMng", 2, ((StringBuilder)???).toString());
+    }
+    Object localObject3;
+    if (!paramBoolean)
+    {
+      c(2);
+    }
+    else
+    {
+      localObject2 = this.n.getEntityManagerFactory().createEntityManager();
+      localObject3 = this.j;
+      i1 = 0;
+    }
+    try
+    {
+      if (i1 >= this.j.size()) {
+        break label475;
+      }
+      localMedalInfo = (MedalInfo)this.j.valueAt(i1);
+      if (localMedalInfo == null) {
+        break label636;
+      }
+      if (paramSparseArray == null) {
+        break label628;
+      }
+      ??? = (MedalInfo)paramSparseArray.get(localMedalInfo.iId);
+    }
+    finally
+    {
+      label475:
+      label628:
+      do
+      {
+        MedalInfo localMedalInfo;
+        for (;;)
+        {
+          throw paramTMedalWallInfo;
+        }
+        ??? = null;
+      } while (??? == null);
+      label636:
+      i1 += 1;
+    }
+    if (localMedalInfo.isUnread())
+    {
+      localMedalInfo.setRead();
+      if (localMedalInfo.getStatus() == 1000) {
+        ((EntityManager)localObject2).persistOrReplace(localMedalInfo);
+      } else if ((localMedalInfo.getStatus() == 1001) || (localMedalInfo.getStatus() == 1002)) {
+        ((EntityManager)localObject2).update(localMedalInfo);
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onGetSelfNewObtainedMedaInfo just local is unread [id: %d, level: %d, name: %s]", new Object[] { Integer.valueOf(localMedalInfo.iId), Integer.valueOf(localMedalInfo.iLevel), localMedalInfo.strName }));
+        break label636;
+        i1 = 0;
+      }
+    }
+    for (;;)
+    {
+      if ((paramSparseArray != null) && (i1 < paramSparseArray.size()))
+      {
+        localObject3 = (MedalInfo)paramSparseArray.valueAt(i1);
+        if (localObject3 != null)
+        {
+          if (((MedalInfo)localObject3).getStatus() == 1000) {
+            ((EntityManager)localObject2).persistOrReplace((Entity)localObject3);
+          } else if ((((MedalInfo)localObject3).getStatus() == 1001) || (((MedalInfo)localObject3).getStatus() == 1002)) {
+            ((EntityManager)localObject2).update((Entity)localObject3);
+          }
+          synchronized (this.j)
+          {
+            this.j.put(((MedalInfo)localObject3).iId, localObject3);
+          }
+        }
+      }
+      else
+      {
+        a(paramTMedalWallInfo, true);
+        c(0);
+        d();
+        return;
+        break;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    int i1 = this.u;
+    boolean bool = false;
+    if (i1 == -2147483648)
+    {
+      this.u = SharedPreUtils.v(this.n.getApp(), this.n.getCurrentAccountUin(), 3);
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "isMedalStrongReminderOff value: %s", new Object[] { Integer.valueOf(this.u) }));
+      }
+    }
+    if (this.u == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean a(QBaseActivity paramQBaseActivity, View paramView, int paramInt, Object paramObject)
+  {
+    if (a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "checkShowMedalGuide medal strong reminder is off!");
+      }
+      return false;
+    }
+    if (this.t)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkShowMedalGuide isMedalConfigOff: %s", new Object[] { Boolean.valueOf(this.t) }));
+      }
+      return false;
+    }
+    Object localObject1 = (LocalRedTouchManager)this.n.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    Object localObject2 = ((LocalRedTouchManager)localObject1).a(10015);
+    boolean bool = ((LocalRedTouchManager)localObject1).b((RedTouchItem)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.d("MedalWallMng", 2, String.format("checkShowMedalGuide item=%s hasMedalRedPoint=%s", new Object[] { localObject2, Boolean.valueOf(bool) }));
+    }
+    if (!bool)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "checkShowMedalGuide no red point");
+      }
+      return false;
+    }
+    localObject2 = null;
+    localObject1 = null;
+    try
+    {
+      Iterator localIterator = this.k.iterator();
+      Object localObject3;
+      for (;;)
+      {
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = localObject1;
+        localObject3 = (MedalWallMng.NeedGuideMedal)localIterator.next();
+        if (localObject3 != null)
+        {
+          localObject2 = localObject1;
+          if (!((MedalWallMng.NeedGuideMedal)localObject3).h)
+          {
+            localObject2 = localObject1;
+            if (((MedalWallMng.NeedGuideMedal)localObject3).e)
+            {
+              localObject2 = localObject1;
+              if (!TextUtils.isEmpty(((MedalWallMng.NeedGuideMedal)localObject3).b))
+              {
+                localObject2 = localObject1;
+                if (!TextUtils.isEmpty(((MedalWallMng.NeedGuideMedal)localObject3).c))
+                {
+                  localObject2 = localObject1;
+                  if (((MedalWallMng.NeedGuideMedal)localObject3).f != 2)
+                  {
+                    localObject2 = localObject1;
+                    if (((MedalWallMng.NeedGuideMedal)localObject3).a != null) {
+                      if (localObject1 != null)
+                      {
+                        localObject2 = localObject1;
+                        bool = ((MedalWallMng.NeedGuideMedal)localObject3).a.isNewer(((MedalWallMng.NeedGuideMedal)localObject1).a);
+                        if (!bool) {}
+                      }
+                      else
+                      {
+                        localObject1 = localObject3;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      MedalInfo localMedalInfo;
+      int i1;
+      int i3;
+      int i4;
+      int i2;
+      label522:
+      label529:
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      localObject3 = localObject2;
+      if ((localObject3 != null) && (((MedalWallMng.NeedGuideMedal)localObject3).a != null))
+      {
+        ((MedalWallMng.NeedGuideMedal)localObject3).h = true;
+        localMedalInfo = ((MedalWallMng.NeedGuideMedal)localObject3).a;
+        if ((paramObject instanceof Card))
+        {
+          paramObject = (Card)paramObject;
+          if (localMedalInfo.iLevel == 255)
+          {
+            if (localMedalInfo.iUnreadLevel1 == 1)
+            {
+              i1 = 1;
+              break label522;
+            }
+          }
+          else if (localMedalInfo.iLevelCount > 1)
+          {
+            if ((localMedalInfo.iLevel >= 1) && (localMedalInfo.iUnreadLevel1 == 1)) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            if ((localMedalInfo.iLevel >= 2) && (localMedalInfo.iUnreadLevel2 == 1)) {
+              i3 = 1;
+            } else {
+              i3 = 0;
+            }
+            i4 = i1;
+            i2 = i3;
+            if (localMedalInfo.iLevel < 3) {
+              break label529;
+            }
+            i4 = i1;
+            i2 = i3;
+            if (localMedalInfo.iUnreadLevel3 != 1) {
+              break label529;
+            }
+            i2 = i3 + 1;
+            i4 = i1;
+            break label529;
+          }
+          i1 = 0;
+          i2 = 0;
+          i4 = i1;
+          paramObject.iNewCount -= i4;
+          paramObject.iUpgradeCount -= i2;
+        }
+        paramObject = Message.obtain();
+        paramObject.what = 4;
+        paramObject.obj = localObject3;
+        this.p.sendMessage(paramObject);
+        MedalGuideView.a((MedalWallMng.NeedGuideMedal)localObject3, paramQBaseActivity, paramView, paramInt);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "checkShowMedalGuide [%d, %d,  %s]", new Object[] { Integer.valueOf(localMedalInfo.iId), Integer.valueOf(localMedalInfo.iLevel), localMedalInfo.strName }));
+        }
+        return true;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "checkShowMedalGuide no medal to show");
+      }
+    }
+  }
+  
+  public MedalInfo b(int paramInt)
+  {
+    f();
+    synchronized (this.j)
+    {
+      MedalInfo localMedalInfo = (MedalInfo)this.j.get(paramInt);
       ??? = localMedalInfo;
       if (localMedalInfo == null)
       {
@@ -498,74 +975,42 @@ public class MedalWallMng
     }
   }
   
-  public String a()
-  {
-    if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_d_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null)) {
-      g();
-    }
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public String a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_d_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null)) {
-      g();
-    }
-    if (!paramBoolean)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(this.jdField_d_of_type_JavaLangString);
-      localStringBuilder.append("&tuin=");
-      localStringBuilder.append(NearbyURLSafeUtil.a(paramString));
-      paramString = localStringBuilder;
-    }
-    else
-    {
-      paramString = new StringBuilder(this.jdField_c_of_type_JavaLangString);
-    }
-    paramString.append("&from=");
-    paramString.append(paramInt);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "getMedalWallUrl url: %s", new Object[] { paramString }));
-    }
-    return paramString.toString();
-  }
-  
-  public ArrayList<MedalID> a(String paramString)
+  public ArrayList<MedalID> b(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      int k;
+      int i1;
       try
       {
         paramString = paramString.replaceAll("new_medals=", "").replaceAll("update_medals=", "").replaceAll("&", ",").split(",");
-        k = 0;
-        if (k < paramString.length)
+        i1 = 0;
+        if (i1 < paramString.length)
         {
-          if ((paramString[k] == null) || (paramString[k].isEmpty())) {
+          if ((paramString[i1] == null) || (paramString[i1].isEmpty())) {
             break label309;
           }
-          localObject = paramString[k].split("_");
+          localObject = paramString[i1].split("_");
           if (localObject.length != 3) {
             break label309;
           }
           localArrayList.add(new MedalID(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1])));
           break label309;
         }
-        k = localArrayList.size() - 1;
-        if (k < 0) {
+        i1 = localArrayList.size() - 1;
+        if (i1 < 0) {
           break label306;
         }
-        paramString = (MedalID)localArrayList.get(k);
-        Object localObject = a(paramString.jdField_a_of_type_Int);
-        m = paramString.jdField_b_of_type_Int;
-        if (m != 1)
+        paramString = (MedalID)localArrayList.get(i1);
+        Object localObject = b(paramString.a);
+        i2 = paramString.b;
+        if (i2 != 1)
         {
-          if (m != 2)
+          if (i2 != 2)
           {
-            if (m != 3)
+            if (i2 != 3)
             {
-              if ((m != 255) || (((MedalInfo)localObject).iUnreadLevel1 != 2)) {
+              if ((i2 != 255) || (((MedalInfo)localObject).iUnreadLevel1 != 2)) {
                 break label316;
               }
               break label321;
@@ -591,29 +1036,29 @@ public class MedalWallMng
         }
         QLog.i("MedalWallMng", 2, "summarycard", paramString);
       }
-      if (m != 0)
+      if (i2 != 0)
       {
-        localArrayList.remove(k);
+        localArrayList.remove(i1);
         if (QLog.isColorLevel()) {
-          QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "parsePromptParams local read [id: %d , level: %d]", new Object[] { Integer.valueOf(paramString.jdField_a_of_type_Int), Integer.valueOf(paramString.jdField_b_of_type_Int) }));
+          QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "parsePromptParams local read [id: %d , level: %d]", new Object[] { Integer.valueOf(paramString.a), Integer.valueOf(paramString.b) }));
         }
       }
-      k -= 1;
+      i1 -= 1;
       continue;
       label306:
       return localArrayList;
       label309:
-      k += 1;
+      i1 += 1;
       continue;
       label316:
-      int m = 0;
+      int i2 = 0;
       continue;
       label321:
-      m = 1;
+      i2 = 1;
     }
   }
   
-  public void a()
+  public void b()
   {
     if (a())
     {
@@ -622,482 +1067,21 @@ public class MedalWallMng
       }
       return;
     }
-    if (b())
+    if (i())
     {
       if (QLog.isDevelopLevel()) {
         QLog.i("MedalWallMng", 4, "checkForLogin medal is off!");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(3, 1000L);
+    this.p.removeMessages(3);
+    this.p.sendEmptyMessageDelayed(3, 1000L);
   }
   
-  public void a(int paramInt)
-  {
-    this.j = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onGetMedalStrongReminderConfig value: %s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject1 = new ArrayList(5);
-    int n = 0;
-    if (paramInt == 2) {}
-    for (;;)
-    {
-      int k;
-      try
-      {
-        ??? = this.jdField_a_of_type_AndroidUtilSparseArray;
-        k = 0;
-        try
-        {
-          if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-          {
-            MedalInfo localMedalInfo = (MedalInfo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k);
-            localMedalInfo.putReportInfo((ArrayList)localObject1);
-            localMedalInfo.setRead();
-            if (localMedalInfo.getStatus() == 1000)
-            {
-              ((EntityManager)???).persistOrReplace(localMedalInfo);
-              break label577;
-            }
-            if ((localMedalInfo.getStatus() != 1001) && (localMedalInfo.getStatus() != 1002)) {
-              break label577;
-            }
-            ((EntityManager)???).update(localMedalInfo);
-            break label577;
-          }
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
-          }
-          if (!(paramObject instanceof MedalWallMng.NeedGuideMedal)) {
-            continue;
-          }
-        }
-        finally {}
-        paramObject = (MedalWallMng.NeedGuideMedal)paramObject;
-        k = paramObject.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
-        try
-        {
-          ??? = paramObject.jdField_a_of_type_ComTencentMobileqqDataMedalInfo;
-          ((MedalInfo)???).putReportInfo((ArrayList)localObject1);
-          ((MedalInfo)???).setRead();
-          if (((MedalInfo)???).getStatus() == 1000) {
-            ((EntityManager)???).persistOrReplace((Entity)???);
-          } else if ((((MedalInfo)???).getStatus() == 1001) || (((MedalInfo)???).getStatus() == 1002)) {
-            ((EntityManager)???).update((Entity)???);
-          }
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.remove(paramObject);
-          }
-          k = 0;
-        }
-        catch (Throwable paramObject) {}
-      }
-      catch (Throwable paramObject)
-      {
-        k = 0;
-        paramObject.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        paramObject = a(null, true);
-      }
-      else
-      {
-        ??? = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        paramObject = ((FriendsManager)???).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if (paramObject != null)
-        {
-          paramObject.iUpgradeCount = 0;
-          paramObject.iNewCount = 0;
-          ((FriendsManager)???).a(paramObject);
-        }
-      }
-      ??? = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-      if ((paramInt != 1) && (paramInt != 2))
-      {
-        if ((paramObject == null) || ((paramObject.iNewCount == 0) && (paramObject.iUpgradeCount == 0))) {
-          ((LocalRedTouchManager)???).a(10015);
-        }
-      }
-      else
-      {
-        ((LocalRedTouchManager)???).a(10015);
-        ((LocalRedTouchManager)???).a(10016);
-      }
-      if (!((ArrayList)localObject1).isEmpty()) {
-        ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).b((ArrayList)localObject1);
-      }
-      if ((paramObject == null) || ((paramObject.iNewCount == 0) && (paramObject.iUpgradeCount == 0))) {
-        b(0);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = Locale.getDefault();
-        int m;
-        if (paramObject == null) {
-          m = 0;
-        } else {
-          m = paramObject.iNewCount;
-        }
-        if (paramObject != null) {
-          n = paramObject.iUpgradeCount;
-        }
-        QLog.i("MedalWallMng", 2, String.format((Locale)localObject1, "reportReadSelfNewObtainedMedal [nActionType: %d, id: %d, iNewCount: %d, iUpgradeCount: %d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n) }));
-      }
-      return;
-      label577:
-      k += 1;
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    boolean bool2 = QLog.isColorLevel();
-    boolean bool1 = false;
-    if (bool2) {
-      QLog.i("MedalWallMng", 4, String.format("onGetConfig,hostUrl:%s,guestUrl:%s,shareUrl:%s", new Object[] { paramString1, paramString2, paramString3 }));
-    }
-    if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_d_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null)) {
-      g();
-    }
-    if ((Utils.a(paramString1, this.jdField_c_of_type_JavaLangString)) && (Utils.a(paramString2, this.jdField_d_of_type_JavaLangString)) && (Utils.a(paramString3, this.jdField_e_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 4, "onGetConfig, no change return.");
-      }
-      return;
-    }
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
-    localEditor.putString("hostUrl", paramString1);
-    localEditor.putString("guestUrl", paramString2);
-    localEditor.putString("shareUrl", paramString3);
-    localEditor.commit();
-    this.jdField_c_of_type_JavaLangString = paramString1;
-    this.jdField_d_of_type_JavaLangString = paramString2;
-    this.jdField_e_of_type_JavaLangString = paramString3;
-    if (paramInt != 1) {
-      bool1 = true;
-    }
-    this.jdField_b_of_type_Boolean = bool1;
-  }
-  
-  public void a(boolean paramBoolean, TMedalWallInfo paramTMedalWallInfo, SparseArray<MedalInfo> paramSparseArray)
-  {
-    d();
-    int k;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder(200);
-      ((StringBuilder)???).append("onGetSelfNewObtainedMedaInfo isSuc:");
-      ((StringBuilder)???).append(paramBoolean);
-      if (paramTMedalWallInfo != null)
-      {
-        ((StringBuilder)???).append(", iMedalCount:");
-        ((StringBuilder)???).append(paramTMedalWallInfo.iMedalCount);
-        ((StringBuilder)???).append(", iNewCount:");
-        ((StringBuilder)???).append(paramTMedalWallInfo.iNewCount);
-        ((StringBuilder)???).append(", iUpgradeCount:");
-        ((StringBuilder)???).append(paramTMedalWallInfo.iUpgradeCount);
-      }
-      if (paramSparseArray != null)
-      {
-        ((StringBuilder)???).append(", medalInfoArrayList: ");
-        ((StringBuilder)???).append(paramSparseArray.size());
-        k = 0;
-        while (k < paramSparseArray.size())
-        {
-          localObject2 = (MedalInfo)paramSparseArray.valueAt(k);
-          if (localObject2 != null)
-          {
-            ((StringBuilder)???).append("\r\n info [id: ");
-            ((StringBuilder)???).append(((MedalInfo)localObject2).iId);
-            ((StringBuilder)???).append(", iLevel: ");
-            ((StringBuilder)???).append(((MedalInfo)localObject2).iLevel);
-            ((StringBuilder)???).append(", name: ");
-            ((StringBuilder)???).append(((MedalInfo)localObject2).strName);
-            ((StringBuilder)???).append(", res: ");
-            ((StringBuilder)???).append(((MedalInfo)localObject2).strResJson);
-            ((StringBuilder)???).append("]");
-          }
-          k += 1;
-        }
-      }
-      QLog.i("MedalWallMng", 2, ((StringBuilder)???).toString());
-    }
-    Object localObject3;
-    if (!paramBoolean)
-    {
-      b(2);
-    }
-    else
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject3 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      k = 0;
-    }
-    try
-    {
-      if (k >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
-        break label475;
-      }
-      localMedalInfo = (MedalInfo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k);
-      if (localMedalInfo == null) {
-        break label636;
-      }
-      if (paramSparseArray == null) {
-        break label628;
-      }
-      ??? = (MedalInfo)paramSparseArray.get(localMedalInfo.iId);
-    }
-    finally
-    {
-      label475:
-      label628:
-      do
-      {
-        MedalInfo localMedalInfo;
-        for (;;)
-        {
-          throw paramTMedalWallInfo;
-        }
-        ??? = null;
-      } while (??? == null);
-      label636:
-      k += 1;
-    }
-    if (localMedalInfo.isUnread())
-    {
-      localMedalInfo.setRead();
-      if (localMedalInfo.getStatus() == 1000) {
-        ((EntityManager)localObject2).persistOrReplace(localMedalInfo);
-      } else if ((localMedalInfo.getStatus() == 1001) || (localMedalInfo.getStatus() == 1002)) {
-        ((EntityManager)localObject2).update(localMedalInfo);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onGetSelfNewObtainedMedaInfo just local is unread [id: %d, level: %d, name: %s]", new Object[] { Integer.valueOf(localMedalInfo.iId), Integer.valueOf(localMedalInfo.iLevel), localMedalInfo.strName }));
-        break label636;
-        k = 0;
-      }
-    }
-    for (;;)
-    {
-      if ((paramSparseArray != null) && (k < paramSparseArray.size()))
-      {
-        localObject3 = (MedalInfo)paramSparseArray.valueAt(k);
-        if (localObject3 != null)
-        {
-          if (((MedalInfo)localObject3).getStatus() == 1000) {
-            ((EntityManager)localObject2).persistOrReplace((Entity)localObject3);
-          } else if ((((MedalInfo)localObject3).getStatus() == 1001) || (((MedalInfo)localObject3).getStatus() == 1002)) {
-            ((EntityManager)localObject2).update((Entity)localObject3);
-          }
-          synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-          {
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(((MedalInfo)localObject3).iId, localObject3);
-          }
-        }
-      }
-      else
-      {
-        a(paramTMedalWallInfo, true);
-        b(0);
-        c();
-        return;
-        break;
-      }
-      k += 1;
-    }
-  }
-  
-  public boolean a()
-  {
-    int k = this.j;
-    boolean bool = false;
-    if (k == -2147483648)
-    {
-      this.j = SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "isMedalStrongReminderOff value: %s", new Object[] { Integer.valueOf(this.j) }));
-      }
-    }
-    if (this.j == 1) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean a(QBaseActivity paramQBaseActivity, View paramView, int paramInt, Object paramObject)
-  {
-    if (a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "checkShowMedalGuide medal strong reminder is off!");
-      }
-      return false;
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkShowMedalGuide isMedalConfigOff: %s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
-      }
-      return false;
-    }
-    Object localObject1 = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    Object localObject2 = ((LocalRedTouchManager)localObject1).a(10015);
-    boolean bool = ((LocalRedTouchManager)localObject1).b((RedTouchItem)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.d("MedalWallMng", 2, String.format("checkShowMedalGuide item=%s hasMedalRedPoint=%s", new Object[] { localObject2, Boolean.valueOf(bool) }));
-    }
-    if (!bool)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "checkShowMedalGuide no red point");
-      }
-      return false;
-    }
-    localObject2 = null;
-    localObject1 = null;
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      Object localObject3;
-      for (;;)
-      {
-        localObject2 = localObject1;
-        localObject3 = localObject1;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = localObject1;
-        localObject3 = (MedalWallMng.NeedGuideMedal)localIterator.next();
-        if (localObject3 != null)
-        {
-          localObject2 = localObject1;
-          if (!((MedalWallMng.NeedGuideMedal)localObject3).jdField_b_of_type_Boolean)
-          {
-            localObject2 = localObject1;
-            if (((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_Boolean)
-            {
-              localObject2 = localObject1;
-              if (!TextUtils.isEmpty(((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_JavaLangString))
-              {
-                localObject2 = localObject1;
-                if (!TextUtils.isEmpty(((MedalWallMng.NeedGuideMedal)localObject3).jdField_b_of_type_JavaLangString))
-                {
-                  localObject2 = localObject1;
-                  if (((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_Int != 2)
-                  {
-                    localObject2 = localObject1;
-                    if (((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null) {
-                      if (localObject1 != null)
-                      {
-                        localObject2 = localObject1;
-                        bool = ((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_ComTencentMobileqqDataMedalInfo.isNewer(((MedalWallMng.NeedGuideMedal)localObject1).jdField_a_of_type_ComTencentMobileqqDataMedalInfo);
-                        if (!bool) {}
-                      }
-                      else
-                      {
-                        localObject1 = localObject3;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      MedalInfo localMedalInfo;
-      int k;
-      int n;
-      int i1;
-      int m;
-      label522:
-      label529:
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      localObject3 = localObject2;
-      if ((localObject3 != null) && (((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
-      {
-        ((MedalWallMng.NeedGuideMedal)localObject3).jdField_b_of_type_Boolean = true;
-        localMedalInfo = ((MedalWallMng.NeedGuideMedal)localObject3).jdField_a_of_type_ComTencentMobileqqDataMedalInfo;
-        if ((paramObject instanceof Card))
-        {
-          paramObject = (Card)paramObject;
-          if (localMedalInfo.iLevel == 255)
-          {
-            if (localMedalInfo.iUnreadLevel1 == 1)
-            {
-              k = 1;
-              break label522;
-            }
-          }
-          else if (localMedalInfo.iLevelCount > 1)
-          {
-            if ((localMedalInfo.iLevel >= 1) && (localMedalInfo.iUnreadLevel1 == 1)) {
-              k = 1;
-            } else {
-              k = 0;
-            }
-            if ((localMedalInfo.iLevel >= 2) && (localMedalInfo.iUnreadLevel2 == 1)) {
-              n = 1;
-            } else {
-              n = 0;
-            }
-            i1 = k;
-            m = n;
-            if (localMedalInfo.iLevel < 3) {
-              break label529;
-            }
-            i1 = k;
-            m = n;
-            if (localMedalInfo.iUnreadLevel3 != 1) {
-              break label529;
-            }
-            m = n + 1;
-            i1 = k;
-            break label529;
-          }
-          k = 0;
-          m = 0;
-          i1 = k;
-          paramObject.iNewCount -= i1;
-          paramObject.iUpgradeCount -= m;
-        }
-        paramObject = Message.obtain();
-        paramObject.what = 4;
-        paramObject.obj = localObject3;
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramObject);
-        MedalGuideView.a((MedalWallMng.NeedGuideMedal)localObject3, paramQBaseActivity, paramView, paramInt);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "checkShowMedalGuide [%d, %d,  %s]", new Object[] { Integer.valueOf(localMedalInfo.iId), Integer.valueOf(localMedalInfo.iLevel), localMedalInfo.strName }));
-        }
-        return true;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "checkShowMedalGuide no medal to show");
-      }
-    }
-  }
-  
-  public void b()
+  public void c()
   {
     boolean bool1 = a();
-    boolean bool2 = b();
+    boolean bool2 = i();
     if (QLog.isColorLevel()) {
       QLog.d("MedalWallMng", 2, String.format("onGetSelfObtainNewMedalNotice isMedalStrongReminderOff=%s isMedalOff=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
     }
@@ -1106,12 +1090,12 @@ public class MedalWallMng
       if (bool2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-      ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).l();
+      this.p.removeMessages(3);
+      ((CardHandler)this.n.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).n();
     }
   }
   
-  protected void c()
+  protected void d()
   {
     if (a())
     {
@@ -1120,7 +1104,7 @@ public class MedalWallMng
       }
       return;
     }
-    if (b())
+    if (i())
     {
       if (QLog.isDevelopLevel()) {
         QLog.i("MedalWallMng", 4, "checkMedalWall medal is off!");
@@ -1128,38 +1112,38 @@ public class MedalWallMng
       return;
     }
     boolean bool = QLog.isColorLevel();
-    int k = 0;
+    int i1 = 0;
     if (bool) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkMedalWall mIsInit: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "checkMedalWall mIsInit: %s", new Object[] { Boolean.valueOf(this.o) }));
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-    this.h = 0;
-    this.i = 0;
-    d();
+    this.p.removeMessages(3);
+    this.p.removeMessages(1);
+    this.l = 0;
+    this.m = 0;
+    f();
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      synchronized (this.j)
       {
-        if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+        if (i1 < this.j.size())
         {
-          MedalInfo localMedalInfo = (MedalInfo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k);
+          MedalInfo localMedalInfo = (MedalInfo)this.j.valueAt(i1);
           if ((localMedalInfo != null) && (localMedalInfo.isUnread()))
           {
             MedalWallMng.NeedGuideMedal localNeedGuideMedal = new MedalWallMng.NeedGuideMedal();
-            localNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo = localMedalInfo;
+            localNeedGuideMedal.a = localMedalInfo;
             localArrayList.add(localNeedGuideMedal);
           }
         }
         else
         {
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          synchronized (this.k)
           {
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
-            this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-            if (this.h < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-              this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+            this.k.clear();
+            this.k.addAll(localArrayList);
+            if (this.l < this.k.size()) {
+              this.p.sendEmptyMessage(1);
             }
             return;
           }
@@ -1168,16 +1152,24 @@ public class MedalWallMng
     }
   }
   
+  public String e()
+  {
+    if ((this.q == null) || (this.r == null) || (this.s == null)) {
+      j();
+    }
+    return this.s;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    int k = paramMessage.what;
-    if (k != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (k != 2)
+      if (i1 != 2)
       {
-        if (k != 3)
+        if (i1 != 3)
         {
-          if (k != 4) {
+          if (i1 != 4) {
             return true;
           }
           if ((paramMessage.obj instanceof MedalWallMng.NeedGuideMedal))
@@ -1188,7 +1180,7 @@ public class MedalWallMng
         }
         else
         {
-          f();
+          h();
           return true;
         }
       }
@@ -1197,35 +1189,35 @@ public class MedalWallMng
         MedalWallMng.NeedGuideMedal localNeedGuideMedal = (MedalWallMng.NeedGuideMedal)paramMessage.obj;
         if (localNeedGuideMedal != null)
         {
-          if (localNeedGuideMedal.jdField_a_of_type_Int == 2) {
-            this.i += 1;
+          if (localNeedGuideMedal.f == 2) {
+            this.m += 1;
           }
           if (QLog.isColorLevel()) {
-            QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "MSG_DOWNLOAD_RES_RESULT failCount: %d, cost: %d, failCode: %d, url: %s", new Object[] { Integer.valueOf(this.i), Integer.valueOf(paramMessage.arg1), Integer.valueOf(localNeedGuideMedal.jdField_b_of_type_Int), localNeedGuideMedal.jdField_a_of_type_JavaLangString }));
+            QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "MSG_DOWNLOAD_RES_RESULT failCount: %d, cost: %d, failCode: %d, url: %s", new Object[] { Integer.valueOf(this.m), Integer.valueOf(paramMessage.arg1), Integer.valueOf(localNeedGuideMedal.g), localNeedGuideMedal.b }));
           }
         }
-        if (this.h < this.jdField_a_of_type_JavaUtilArrayList.size())
+        if (this.l < this.k.size())
         {
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+          this.p.sendEmptyMessage(1);
           return true;
         }
       }
     }
     else {
-      e();
+      g();
     }
     return true;
   }
   
   public void onDestroy()
   {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    synchronized (this.j)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      this.j.clear();
+      synchronized (this.k)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_Boolean = false;
+        this.k.clear();
+        this.o = false;
         return;
       }
     }

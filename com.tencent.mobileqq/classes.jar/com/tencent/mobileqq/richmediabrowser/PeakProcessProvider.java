@@ -12,29 +12,11 @@ public class PeakProcessProvider
 {
   public IAIOImageProvider a;
   
-  public int a(long paramLong, int paramInt)
-  {
-    IAIOImageProvider localIAIOImageProvider = this.a;
-    if (localIAIOImageProvider != null) {
-      return localIAIOImageProvider.a(paramLong, paramInt);
-    }
-    return 0;
-  }
-  
   public Intent a(long paramLong, int paramInt)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      return localIAIOImageProvider.a(paramLong, paramInt);
-    }
-    return null;
-  }
-  
-  public Intent a(long paramLong, int paramInt1, int paramInt2)
-  {
-    IAIOImageProvider localIAIOImageProvider = this.a;
-    if (localIAIOImageProvider != null) {
-      return localIAIOImageProvider.a(paramLong, paramInt1, paramInt2);
+      return localIAIOImageProvider.b(paramLong, paramInt);
     }
     return null;
   }
@@ -59,15 +41,7 @@ public class PeakProcessProvider
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      localIAIOImageProvider.c(paramLong);
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    IAIOImageProvider localIAIOImageProvider = this.a;
-    if (localIAIOImageProvider != null) {
-      localIAIOImageProvider.a(paramLong, paramInt);
+      localIAIOImageProvider.e(paramLong);
     }
   }
   
@@ -113,25 +87,20 @@ public class PeakProcessProvider
     }
   }
   
-  public boolean a()
+  public int b(long paramLong, int paramInt)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      return localIAIOImageProvider.asBinder().pingBinder();
+      return localIAIOImageProvider.a(paramLong, paramInt);
     }
-    return false;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
+    return 0;
   }
   
   public void b(long paramLong)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      localIAIOImageProvider.e(paramLong);
+      localIAIOImageProvider.g(paramLong);
     }
   }
   
@@ -145,17 +114,16 @@ public class PeakProcessProvider
   
   public void b(String paramString) {}
   
-  public void c(long paramLong)
+  public Intent c(long paramLong, int paramInt1, int paramInt2)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      localIAIOImageProvider.d(paramLong);
+      return localIAIOImageProvider.c(paramLong, paramInt1, paramInt2);
     }
+    return null;
   }
   
-  public void c(String paramString) {}
-  
-  public void d(long paramLong)
+  public void c(long paramLong)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
@@ -163,19 +131,51 @@ public class PeakProcessProvider
     }
   }
   
-  public void d(String paramString) {}
-  
-  public void e(long paramLong)
+  public void c(long paramLong, int paramInt)
   {
     IAIOImageProvider localIAIOImageProvider = this.a;
     if (localIAIOImageProvider != null) {
-      localIAIOImageProvider.a(paramLong);
+      localIAIOImageProvider.c(paramLong, paramInt);
+    }
+  }
+  
+  public void c(String paramString) {}
+  
+  public boolean c()
+  {
+    IAIOImageProvider localIAIOImageProvider = this.a;
+    if (localIAIOImageProvider != null) {
+      return localIAIOImageProvider.asBinder().pingBinder();
+    }
+    return false;
+  }
+  
+  public void d(long paramLong)
+  {
+    IAIOImageProvider localIAIOImageProvider = this.a;
+    if (localIAIOImageProvider != null) {
+      localIAIOImageProvider.h(paramLong);
+    }
+  }
+  
+  public void d(String paramString) {}
+  
+  public boolean e(long paramLong)
+  {
+    return true;
+  }
+  
+  public void f(long paramLong)
+  {
+    IAIOImageProvider localIAIOImageProvider = this.a;
+    if (localIAIOImageProvider != null) {
+      localIAIOImageProvider.c(paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.PeakProcessProvider
  * JD-Core Version:    0.7.0.1
  */

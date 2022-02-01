@@ -13,18 +13,18 @@ class HomeFeedPresenter$2
   public void run()
   {
     long l = System.currentTimeMillis();
-    if ((this.a.c) && (this.a.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())) {
-      HomeFeedPresenter.a(this.this$0).clear();
+    if ((this.a.c) && (this.a.g.isSuccess())) {
+      HomeFeedPresenter.b(this.this$0).clear();
     }
-    HomeFeedPresenter.a(this.this$0).addAll(this.a.b);
+    HomeFeedPresenter.b(this.this$0).addAll(this.a.f);
     HomeFeedPresenter localHomeFeedPresenter = this.this$0;
-    localHomeFeedPresenter.a(HomeFeedPresenter.a(localHomeFeedPresenter));
-    Collections.sort(HomeFeedPresenter.a(this.this$0), GeneralHomeFeed.a);
-    HomeFeedPresenter.a(this.this$0, this.a.jdField_a_of_type_Boolean);
-    this.a.b = HomeFeedPresenter.a(this.this$0);
-    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(HomeFeedPresenter.a(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
-    if (HomeFeedPresenter.a(this.this$0) != null) {
-      HomeFeedPresenter.a(this.this$0).a(this.a);
+    localHomeFeedPresenter.a(HomeFeedPresenter.b(localHomeFeedPresenter));
+    Collections.sort(HomeFeedPresenter.b(this.this$0), GeneralHomeFeed.l);
+    HomeFeedPresenter.a(this.this$0, this.a.a);
+    this.a.f = HomeFeedPresenter.b(this.this$0);
+    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(HomeFeedPresenter.b(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
+    if (HomeFeedPresenter.c(this.this$0) != null) {
+      HomeFeedPresenter.c(this.this$0).a(this.a);
     }
   }
 }

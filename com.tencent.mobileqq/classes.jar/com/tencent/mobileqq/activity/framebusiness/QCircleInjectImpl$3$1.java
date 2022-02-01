@@ -12,12 +12,12 @@ class QCircleInjectImpl$3$1
   
   public void run()
   {
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateRedTouch(this.this$0.a, 40, this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$RedTypeInfo);
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateRedTouch(this.this$0.a, 40, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

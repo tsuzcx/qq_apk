@@ -27,20 +27,20 @@ import java.util.List;
 public class DiscActiveTipsBar
   implements TipsBarTask
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AIOContext a;
+  private QQAppInterface b;
+  private TipsManager c;
+  private Activity d;
+  private BaseSessionInfo e;
+  private Time f;
   
   public DiscActiveTipsBar(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramAIOContext.a();
-    this.jdField_a_of_type_AndroidAppActivity = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.a();
+    this.c = paramAIOContext.c();
+    this.d = paramAIOContext.b();
+    this.e = paramAIOContext.O();
   }
   
   public int a()
@@ -50,10 +50,10 @@ public class DiscActiveTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560946, null);
-    ((TextView)paramVarArgs.findViewById(2131374123)).setText(2131691768);
-    ((ImageView)paramVarArgs.findViewById(2131374121)).setImageResource(2130850188);
-    paramVarArgs.findViewById(2131374120).setOnClickListener(new DiscActiveTipsBar.1(this));
+    paramVarArgs = LayoutInflater.from(this.d).inflate(2131627287, null);
+    ((TextView)paramVarArgs.findViewById(2131442218)).setText(2131888730);
+    ((ImageView)paramVarArgs.findViewById(2131442216)).setImageResource(2130851979);
+    paramVarArgs.findViewById(2131442215).setOnClickListener(new DiscActiveTipsBar.1(this));
     return paramVarArgs;
   }
   
@@ -67,7 +67,7 @@ public class DiscActiveTipsBar
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 3000)
+      if (this.e.a != 3000)
       {
         if (QLog.isColorLevel())
         {
@@ -78,7 +78,7 @@ public class DiscActiveTipsBar
         }
         return;
       }
-      if (QQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, 1))
+      if (QQOperateManager.a(this.b).b(this.e.a, 1))
       {
         if (QLog.isColorLevel())
         {
@@ -89,7 +89,7 @@ public class DiscActiveTipsBar
         }
         return;
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+      paramVarArgs = this.a.e().b().d();
       if (paramVarArgs == null)
       {
         if (QLog.isColorLevel())
@@ -116,9 +116,9 @@ public class DiscActiveTipsBar
         }
         return;
       }
-      l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramInt = UITools.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a(paramInt, l1))
+      l1 = Long.valueOf(this.e.b).longValue();
+      paramInt = UITools.b(this.e.a);
+      if (this.b.getAVNotifyCenter().a(paramInt, l1))
       {
         if (QLog.isColorLevel())
         {
@@ -131,7 +131,7 @@ public class DiscActiveTipsBar
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("voice_disc_chat_freq_bar_show_count");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject1).append(this.b.getCurrentAccountUin());
       localObject2 = ((StringBuilder)localObject1).toString();
       localObject1 = BaseApplication.getContext().getSharedPreferences("free_call", 0);
       paramInt = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
@@ -153,27 +153,27 @@ public class DiscActiveTipsBar
         ((StringBuilder)localObject2).append(paramInt);
         QLog.d("DiscActiveTipsBar", 2, ((StringBuilder)localObject2).toString());
       }
-      l1 = MessageCache.a() * 1000L;
-      if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-        this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+      l1 = MessageCache.c() * 1000L;
+      if (this.f == null) {
+        this.f = new Time();
       }
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
-      paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      i = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-      this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, j, i, paramInt);
-      long l2 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
-      this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, j, i, paramInt);
-      long l3 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+      this.f.set(l1);
+      paramInt = this.f.year;
+      i = this.f.month;
+      j = this.f.monthDay;
+      this.f.set(0, 0, 20, j, i, paramInt);
+      long l2 = this.f.toMillis(false);
+      this.f.set(0, 0, 23, j, i, paramInt);
+      long l3 = this.f.toMillis(false);
       if ((l1 < l2) || (l1 > l3)) {
-        break label1241;
+        break label1242;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("voice_disc_chat_freq_bar_show_time");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.b.getCurrentAccountUin());
       localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
       if (!QLog.isColorLevel()) {
-        break label1378;
+        break label1379;
       }
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramInt);
@@ -186,7 +186,7 @@ public class DiscActiveTipsBar
       localStringBuilder.append("currDate is:");
       localStringBuilder.append((String)localObject3);
       localStringBuilder.append(",curr hour is:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidTextFormatTime.hour);
+      localStringBuilder.append(this.f.hour);
       localStringBuilder.append(",discPttFreqTipMsgInsertTime is:");
       localStringBuilder.append((String)localObject2);
       QLog.d("DiscActiveTipsBar", 2, localStringBuilder.toString());
@@ -221,10 +221,10 @@ public class DiscActiveTipsBar
     }
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject2));
-      k = this.jdField_a_of_type_AndroidTextFormatTime.year;
-      m = this.jdField_a_of_type_AndroidTextFormatTime.month;
-      n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+      this.f.set(Long.parseLong((String)localObject2));
+      k = this.f.year;
+      m = this.f.month;
+      n = this.f.monthDay;
       if ((paramInt == k) && (i == m) && (j == n))
       {
         if (QLog.isColorLevel())
@@ -239,7 +239,7 @@ public class DiscActiveTipsBar
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("start_group_audio_time");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject2).append(this.b.getCurrentAccountUin());
     localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L))
     {
@@ -295,7 +295,7 @@ public class DiscActiveTipsBar
         QLog.d("DiscActiveTipsBar", 2, paramVarArgs.toString());
       }
       return;
-      label1241:
+      label1242:
       paramVarArgs = new StringBuilder();
       paramVarArgs.append("current time not in ");
       paramVarArgs.append(20);
@@ -313,19 +313,19 @@ public class DiscActiveTipsBar
     }
   }
   
-  public int[] a()
-  {
-    return new int[] { 2000 };
-  }
-  
   public int b()
   {
     return 4;
   }
+  
+  public int[] c()
+  {
+    return new int[] { 2000 };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.DiscActiveTipsBar
  * JD-Core Version:    0.7.0.1
  */

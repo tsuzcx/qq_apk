@@ -1,12 +1,12 @@
 package com.tencent.xaction.gldrawable;
 
+import android.content.Context;
 import android.view.View;
 import com.tencent.android.gldrawable.api.GLDrawableApi;
 import com.tencent.android.gldrawable.api.IFactoryStub;
-import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.xaction.api.base.DecorDrawableState;
-import com.tencent.xaction.api.util.FilePathUtil;
-import com.tencent.xaction.api.util.FilePathUtil.Companion;
+import com.tencent.xaction.api.util.FileUtil;
+import com.tencent.xaction.api.util.FileUtil.Companion;
 import com.tencent.xaction.openapi.api.IXAEngine;
 import java.io.File;
 import kotlin.Metadata;
@@ -22,27 +22,24 @@ final class GLDrawableDecor$preStart$1
   {
     try
     {
-      Object localObject1 = FilePathUtil.a;
+      Object localObject1 = FileUtil.a;
+      Context localContext = this.a.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context");
       Object localObject2 = this.this$0.getDecorState();
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       localObject2 = ((DecorDrawableState)localObject2).getPath();
-      Object localObject3 = this.this$0.getDecorState();
-      if (localObject3 == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject3 = ((DecorDrawableState)localObject3).getRoot();
       IXAEngine localIXAEngine = this.this$0.getEngine();
       if (localIXAEngine == null) {
         Intrinsics.throwNpe();
       }
-      localObject1 = ((FilePathUtil.Companion)localObject1).a((String)localObject2, (String)localObject3, localIXAEngine);
+      localObject1 = ((FileUtil.Companion)localObject1).a(localContext, (String)localObject2, "$PARENT_ROOT", localIXAEngine);
       if (!new File((String)localObject1).exists()) {
         return;
       }
-      localObject1 = GLDrawableApi.factory().fromFile(new File((String)localObject1));
-      this.a.post((Runnable)new GLDrawableDecor.preStart.1.1(this, (IGLDrawable)localObject1));
+      this.this$0.a(GLDrawableApi.factory().fromFile(new File((String)localObject1)));
+      this.a.post((Runnable)new GLDrawableDecor.preStart.1.1(this));
       return;
     }
     catch (Exception localException)
@@ -53,7 +50,7 @@ final class GLDrawableDecor$preStart$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.gldrawable.GLDrawableDecor.preStart.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ class QQSettingCleanActivity$GetApkSizeTask
           long l = new JSONObject(((String)localObject).substring(6, ((String)localObject).length() - 2)).getLong("size");
           if (l > 0L)
           {
-            this.this$0.a = l;
+            this.this$0.s = l;
             this.this$0.runOnUiThread(new QQSettingCleanActivity.ShowTask(this.this$0, 0));
             return;
           }
@@ -49,7 +49,7 @@ class QQSettingCleanActivity$GetApkSizeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity.GetApkSizeTask
  * JD-Core Version:    0.7.0.1
  */

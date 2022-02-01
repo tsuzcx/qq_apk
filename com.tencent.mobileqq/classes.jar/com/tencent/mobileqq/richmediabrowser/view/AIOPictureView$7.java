@@ -14,25 +14,25 @@ class AIOPictureView$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Int != 100)
+    if (this.a != 100)
     {
       paramDialogInterface = BrowserLogHelper.getInstance().getGalleryLog();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showSaveFileTips type = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       paramDialogInterface.d("AIOPictureView", 4, localStringBuilder.toString());
       return;
     }
-    if ((this.jdField_a_of_type_JavaLangObject instanceof AIOPictureData))
+    if ((this.b instanceof AIOPictureData))
     {
-      AIOPictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView).a((AIOPictureData)this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView.a();
+      AIOPictureView.b(this.c).a((AIOPictureData)this.b);
+      this.c.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.7
  * JD-Core Version:    0.7.0.1
  */

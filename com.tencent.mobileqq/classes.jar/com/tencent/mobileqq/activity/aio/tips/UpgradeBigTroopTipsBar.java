@@ -17,16 +17,16 @@ public class UpgradeBigTroopTipsBar
   implements View.OnClickListener, TipsBarTask
 {
   public static String a = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  private QQAppInterface b;
+  private Context c;
+  private TipsManager d;
+  private String e;
   
   public UpgradeBigTroopTipsBar(QQAppInterface paramQQAppInterface, Context paramContext, TipsManager paramTipsManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
+    this.b = paramQQAppInterface;
+    this.c = paramContext;
+    this.d = paramTipsManager;
   }
   
   public int a()
@@ -36,7 +36,7 @@ public class UpgradeBigTroopTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558592, null);
+    paramVarArgs = LayoutInflater.from(this.c).inflate(2131624151, null);
     paramVarArgs.setOnClickListener(this);
     return paramVarArgs;
   }
@@ -45,12 +45,7 @@ public class UpgradeBigTroopTipsBar
   
   public void a(String paramString)
   {
-    this.b = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
+    this.e = paramString;
   }
   
   public int b()
@@ -58,31 +53,36 @@ public class UpgradeBigTroopTipsBar
     return 21;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362522)
+    if (paramView.getId() == 2131428133)
     {
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
       }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.c, QQBrowserActivity.class);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(a);
+      localStringBuilder.append(this.e);
       localStringBuilder.append("&from=aio");
       localIntent.putExtra("url", localStringBuilder.toString());
       localIntent.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.b, 3);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
+      this.c.startActivity(localIntent);
+      ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.e, 3);
+      this.d.c();
+      ReportController.b(this.b, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.e, "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.UpgradeBigTroopTipsBar
  * JD-Core Version:    0.7.0.1
  */

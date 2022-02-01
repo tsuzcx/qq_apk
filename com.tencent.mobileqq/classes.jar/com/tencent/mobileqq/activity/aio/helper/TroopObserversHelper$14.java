@@ -16,21 +16,21 @@ class TroopObserversHelper$14
   {
     if (paramBoolean)
     {
-      if (paramInt4 == 0)
+      if ((paramInt4 != 0) && (!TroopObserversHelper.n))
       {
-        AnonymousChatHelper.a().a(paramString1, paramInt2, paramInt1, paramString2, paramInt3, null, paramString4);
-        TroopObserversHelper.a(this.a).a().postDelayed(new TroopObserversHelper.14.1(this), 500L);
+        TroopObserversHelper.d(this.a).a(3, paramString3);
         return;
       }
-      TroopObserversHelper.a(this.a).a(3, paramString3);
+      AnonymousChatHelper.a().a(paramString1, paramInt2, paramInt1, paramString2, paramInt3, null, paramString4);
+      TroopObserversHelper.d(this.a).j().postDelayed(new TroopObserversHelper.14.1(this), 500L);
       return;
     }
-    TroopObserversHelper.a(this.a).a(1, TroopObserversHelper.a(this.a).getResources().getString(2131690012));
+    TroopObserversHelper.d(this.a).a(1, TroopObserversHelper.g(this.a).getResources().getString(2131886661));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.14
  * JD-Core Version:    0.7.0.1
  */

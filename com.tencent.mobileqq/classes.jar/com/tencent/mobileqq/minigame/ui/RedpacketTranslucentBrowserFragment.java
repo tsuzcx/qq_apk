@@ -48,7 +48,7 @@ public class RedpacketTranslucentBrowserFragment
       if (bool)
       {
         QLog.d("WebLog_RedpacketTranslucentBrowserFragment", 1, "使用redpacket自己的fragment，设置背景图片");
-        super.getQBaseActivity().getWindow().setBackgroundDrawableResource(2130841249);
+        super.getQBaseActivity().getWindow().setBackgroundDrawableResource(2130842040);
         return;
       }
     }
@@ -60,7 +60,7 @@ public class RedpacketTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.RedpacketTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

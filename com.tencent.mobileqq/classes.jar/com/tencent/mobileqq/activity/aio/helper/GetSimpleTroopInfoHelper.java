@@ -10,29 +10,29 @@ import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 public class GetSimpleTroopInfoHelper
   implements ILifeCycleHelper
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new GetSimpleTroopInfoHelper.1(this);
+  private BaseChatPie a;
+  private TroopObserver b = new GetSimpleTroopInfoHelper.1(this);
   
   public GetSimpleTroopInfoHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   private void a()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (localBaseChatPie.d != null)) {
+      this.a.d.removeObserver(this.b);
     }
   }
   
   private void b()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null))
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (localBaseChatPie.ah != null) && (this.a.ah.b != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-      ((ITroopInfoHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      this.a.d.addObserver(this.b);
+      ((ITroopInfoHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).b(this.a.ah.b);
     }
   }
   
@@ -61,7 +61,7 @@ public class GetSimpleTroopInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GetSimpleTroopInfoHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,43 +20,17 @@ import org.jetbrains.annotations.NotNull;
 public final class SelectTweetTopicPopupModel
   implements ISelectPopupModel<TweetTopicItem>
 {
-  public static final SelectTweetTopicPopupModel.Companion a;
-  private HashMap<String, TweetTopicItem> a;
+  public static final SelectTweetTopicPopupModel.Companion a = new SelectTweetTopicPopupModel.Companion(null);
+  private HashMap<String, TweetTopicItem> b = new HashMap(10);
   
-  static
+  private final IDataTransfer b()
   {
-    jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectTweetTopicPopupModel$Companion = new SelectTweetTopicPopupModel.Companion(null);
-  }
-  
-  public SelectTweetTopicPopupModel()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  private final IDataTransfer a()
-  {
-    return TopicSDK.a.a().a().a();
+    return TopicSDK.a.a().b().g();
   }
   
   public char a()
   {
     return '#';
-  }
-  
-  @NotNull
-  public TweetTopicItem a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "wording");
-    TweetTopicItem localTweetTopicItem = (TweetTopicItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) && (localTweetTopicItem != null)) {
-      return localTweetTopicItem;
-    }
-    localTweetTopicItem = new TweetTopicItem(null, null, null, 0L, null, 31, null);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('#');
-    localStringBuilder.append(paramString);
-    localTweetTopicItem.c(localStringBuilder.toString());
-    return localTweetTopicItem;
   }
   
   @NotNull
@@ -78,8 +52,8 @@ public final class SelectTweetTopicPopupModel
   {
     Intrinsics.checkParameterIsNotNull(paramString, "wording");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
-    TweetTopicItem localTweetTopicItem = (TweetTopicItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) && (localTweetTopicItem != null))
+    TweetTopicItem localTweetTopicItem = (TweetTopicItem)this.b.get(paramString);
+    if ((this.b.containsKey(paramString)) && (localTweetTopicItem != null))
     {
       int i;
       if (((CharSequence)localTweetTopicItem.a()).length() > 0) {
@@ -93,12 +67,28 @@ public final class SelectTweetTopicPopupModel
         return;
       }
     }
-    a().a(0, 1, paramString, (Function4)new SelectTweetTopicPopupModel.getObjectFromInput.1(this, paramString, paramFunction1));
+    b().a(0, 1, paramString, (Function4)new SelectTweetTopicPopupModel.getObjectFromInput.1(this, paramString, paramFunction1));
+  }
+  
+  @NotNull
+  public TweetTopicItem b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "wording");
+    TweetTopicItem localTweetTopicItem = (TweetTopicItem)this.b.get(paramString);
+    if ((this.b.containsKey(paramString)) && (localTweetTopicItem != null)) {
+      return localTweetTopicItem;
+    }
+    localTweetTopicItem = new TweetTopicItem(null, null, null, 0L, null, 0L, null, 127, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('#');
+    localStringBuilder.append(paramString);
+    localTweetTopicItem.c(localStringBuilder.toString());
+    return localTweetTopicItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectTweetTopicPopupModel
  * JD-Core Version:    0.7.0.1
  */

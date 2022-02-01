@@ -10,13 +10,13 @@ class VideoStoryAIScenePart$17
   
   public void run()
   {
-    VideoStoryAIScenePart.a(this.this$0).setVisibility(8);
-    VideoStoryAIScenePart.b(this.this$0).setVisibility(8);
+    VideoStoryAIScenePart.f(this.this$0).setVisibility(8);
+    VideoStoryAIScenePart.e(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.17
  * JD-Core Version:    0.7.0.1
  */

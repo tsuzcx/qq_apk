@@ -7,20 +7,20 @@ import android.widget.RelativeLayout.LayoutParams;
 
 public class ShareActionSheetV2$AdViewManager
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ViewGroup a;
+  private View b;
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.a != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.b;
       if (localView != null)
       {
         if (localView.getParent() != null) {
-          ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+          ((ViewGroup)this.b.getParent()).removeView(this.b);
         }
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+        this.a.addView(this.b);
       }
     }
   }
@@ -45,7 +45,7 @@ public class ShareActionSheetV2$AdViewManager
   
   void a(int paramInt)
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.a;
     if (localViewGroup != null) {
       localViewGroup.setBackgroundColor(paramInt);
     }
@@ -53,26 +53,26 @@ public class ShareActionSheetV2$AdViewManager
   
   void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    a(this.jdField_a_of_type_AndroidViewView);
+    a(this.b);
     a(paramView);
     if (paramView != null) {
       paramView.setLayoutParams(paramLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
     a();
   }
   
   public void a(RelativeLayout paramRelativeLayout)
   {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(this.a);
     a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    this.a = paramRelativeLayout;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.AdViewManager
  * JD-Core Version:    0.7.0.1
  */

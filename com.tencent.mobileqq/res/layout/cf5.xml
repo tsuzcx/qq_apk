@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nhx" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/l7s" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/n1h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/bu" android:layout_below="@id/p0h" android:rotation="180.0" app:iconColor="@color/4" />
+    <LinearLayout android:orientation="vertical" android:id="@id/p0h" android:background="@drawable/eh3" android:paddingLeft="@dimen/1d" android:paddingRight="@dimen/1d" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/ojz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@id/eq1" android:background="@color/95" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/1p" android:layout_marginRight="@dimen/1p" />
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/ok0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/n1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-1.0px" android:src="@raw/bu" android:layout_below="@id/p0h" android:layout_alignParentBottom="true" app:iconColor="@color/4" />
+</LinearLayout>

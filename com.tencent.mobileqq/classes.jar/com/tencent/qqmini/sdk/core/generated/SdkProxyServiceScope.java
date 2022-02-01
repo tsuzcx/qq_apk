@@ -49,10 +49,10 @@ public final class SdkProxyServiceScope
     PROXY_SERVICES.put(DownloaderProxy.class, DownloaderProxyDefault.class);
     PROXY_SERVICES.put(WnsConfigProxy.class, WnsConfigProxyDefault.class);
     PROXY_SERVICES.put(KingCardProxy.class, KingCardProxyDefault.class);
-    PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
     PROXY_SERVICES.put(ChannelProxy.class, ChannelProxyDefault.class);
-    PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
+    PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyDefault.class);
     PROXY_SERVICES.put(IWXLivePusherProxy.class, WXLivePusherDefaultProxy.class);
+    PROXY_SERVICES.put(ShareProxy.class, ShareProxyDefault.class);
     PROXY_SERVICES.put(MiniAppCacheProxy.class, MiniAppCacheProxyDefault.class);
     PROXY_SERVICES.put(MiniAppProxy.class, MiniAppProxyDefault.class);
     PROXY_SERVICES.put(IWXLivePlayerProxy.class, WXLivePlayerDefaultProxy.class);
@@ -64,7 +64,7 @@ public final class SdkProxyServiceScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.SdkProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

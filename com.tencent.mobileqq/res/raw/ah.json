@@ -1,0 +1,614 @@
+[
+  {
+    "additionalFields": {
+      "name": "现代",
+      "effectType": "client",
+      "id": "xiandai_cam",
+      "md5": "5e58accfe3781a2a0c9a371d95f9537c",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/xiandai_cam_5e58accfe3781a2a0c9a371d95f9537c.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_xiandai",
+    "packageMd5": "07ee22faed88b7b7f9159d1bbc1627bd",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/da1e1ee6-607d-11eb-a4b6-7ac5100db047-effect_xiandai.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cc97fe90-607d-11eb-9cc5-7ac5100db047-xiandai_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "山谷",
+      "effectType": "client",
+      "id": "shangu_bf",
+      "md5": "acdc4a9d8d18fc970f2f77ba50b15940",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/shangu_bf_acdc4a9d8d18fc970f2f77ba50b15940.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_shangu",
+    "packageMd5": "7b7edc1be18fad2a57320c613fcd2461",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0e84101e-607e-11eb-b688-7ac5100db047-effect_shangu.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/003a964a-607e-11eb-804f-7ac5100db047-shangu_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "海岛",
+      "effectType": "client",
+      "id": "musi_cam",
+      "md5": "3ecc69811675107036cd7be7a5df8467",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/musi_cam_3ecc69811675107036cd7be7a5df8467.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_musi",
+    "packageMd5": "fe388769256d1c85532137b6d565c193",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4ed4fd9a-607e-11eb-9379-7ac5100db047-effect_musi.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/485841e8-607e-11eb-92c0-7ac5100db047-musi_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "余晖",
+      "effectType": "client",
+      "id": "yuhui_bf",
+      "md5": "5088d990c04f440b5eb7003ca8739919",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/yuhui_bf_5088d990c04f440b5eb7003ca8739919.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_yuhui",
+    "packageMd5": "3b50518e7b62849a9ca6666bafb1e707",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7b329168-607e-11eb-8584-7ac5100db047-effect_yuhui.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6d21e1fa-607e-11eb-a574-7ac5100db047-yuhui_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "青森",
+      "effectType": "client",
+      "id": "jiaopian_bf",
+      "md5": "50679aaac09202d28ecbc6b691e25dcb",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/jiaopian_bf_50679aaac09202d28ecbc6b691e25dcb.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_jiaopian",
+    "packageMd5": "2ebdf9ce1f8a1e97810c8eaa6c93d4b3",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a56f76b2-607e-11eb-aeff-7ac5100db047-effect_jiaopian_9.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/96db47d4-607e-11eb-88ee-7ac5100db047-effect_jiaopian_9_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "电影",
+      "effectType": "client",
+      "id": "dianying_cam",
+      "md5": "8e9c1d47410498a536b0426e5148dd93",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/dianying_cam_8e9c1d47410498a536b0426e5148dd93.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_dianying",
+    "packageMd5": "64d52c4b1fea6249aa086f4bc973ad5e",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cc181e68-607e-11eb-8baf-7ac5100db047-effect_dianying.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bed10ed6-607e-11eb-8c7c-7ac5100db047-dianying_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "画报",
+      "effectType": "client",
+      "id": "huabao2_bf",
+      "md5": "18a5e1e1c8513959bc6f471914eca22b",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/huabao2_bf_18a5e1e1c8513959bc6f471914eca22b.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_huabao2",
+    "packageMd5": "95d74df9dbbe2fd3caec50a7b1526539",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f60e2d52-607e-11eb-aebc-7ac5100db047-effect_huabao2.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e988f9e0-607e-11eb-9c67-7ac5100db047-huabao2_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "暮秋",
+      "effectType": "client",
+      "id": "muqiu_bf",
+      "md5": "4dd6bd6a939ef07f81572b1751448a25",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/muqiu_bf_4dd6bd6a939ef07f81572b1751448a25.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_muqiu",
+    "packageMd5": "465d9f071c3a54a47bc16660a3b8bba3",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/22f0d590-607f-11eb-ace6-7ac5100db047-effect_muqiu.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/154cd95c-607f-11eb-a7a8-7ac5100db047-muqiu_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "默片",
+      "effectType": "client",
+      "id": "mopian_cam",
+      "md5": "882446506de8ea0cc06b834b70dd02ed",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/mopian_cam_882446506de8ea0cc06b834b70dd02ed.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_mopian",
+    "packageMd5": "740947e1ed27c50fbe8536c91ab15c44",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/442a0fe2-607f-11eb-86f0-7ac5100db047-effect_mopian.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/39494890-607f-11eb-8d68-7ac5100db047-mopian_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "新鲜",
+      "effectType": "client",
+      "id": "xiangyang_cam",
+      "md5": "ac9c86ca8ec06503c915159e64dd35c1",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/xiangyang_cam_ac9c86ca8ec06503c915159e64dd35c1.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_xiangyang",
+    "packageMd5": "b9323d44843b41a89d09362f937cdec4",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7b01a960-607c-11eb-9e97-7ac5100db047-effect_xiangyang.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4f6949a2-607c-11eb-b4f7-7ac5100db047-xiangyang_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "美味",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "meiwei2_bf",
+      "md5": "f6fd83a41c46114fe2e19679193210fb",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/meiwei2_bf_f6fd83a41c46114fe2e19679193210fb.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_meiwei2",
+    "packageMd5": "f938bfa7bf4916c6ae081c50c22ff627",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c86cb12c-607c-11eb-9a5b-7ac5100db047-effect_meiwei2.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b00963a0-607c-11eb-afe0-7ac5100db047-meiwei2_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "自然",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "ziran_cam",
+      "md5": "2c381baa590b46b7d7e20deebaec4d89",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/ziran_cam_2c381baa590b46b7d7e20deebaec4d89.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_ziran",
+    "packageMd5": "abc3f970516ec8e9e19e106b782a74c4",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/27836d84-5c97-11eb-aaf3-7ac5100db047-effect_ziran.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/21f45388-5c97-11eb-9654-7ac5100db047-ziran_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "优格",
+      "effectType": "client",
+      "id": "youge_cam",
+      "md5": "e5624df0e49650e870c8cbcc1792b2bb",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/youge_cam_e5624df0e49650e870c8cbcc1792b2bb.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_youge",
+    "packageMd5": "a80eed46649f4d74f535a64be04da620",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2c8bf2da-607d-11eb-a2f4-7ac5100db047-effect_youge.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/12f79bbc-607d-11eb-b049-7ac5100db047-youge_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "name": "摩卡",
+      "effectType": "client",
+      "id": "moka_cam",
+      "md5": "40170c423e1bd4bac4916b3e86ae1ce3",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/moka_cam_40170c423e1bd4bac4916b3e86ae1ce3.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_moka",
+    "packageMd5": "00325c8a98d7bda787c5053dfd496f11",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fcbf7e6e-607c-11eb-a7bf-7ac5100db047-effect_moka.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ea031f10-607c-11eb-8bd2-7ac5100db047-moka_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "奶油",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "naiyou_bf",
+      "md5": "690b8b86adb2baf701e9703c355ef82e",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/naiyou_bf_690b8b86adb2baf701e9703c355ef82e.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_naiyou",
+    "packageMd5": "25e0bcf97cc2b395b861d7947bcab2bc",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ca527056-6074-11eb-aad2-7ac5100db047-effect_naiyou_6.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c519a992-6074-11eb-b5ab-7ac5100db047-effect_naiyou_5_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "元气",
+      "disableForImage": "0",
+      "hideAlphaBar": "0",
+      "effectType": "client",
+      "id": "yuanqi_bf",
+      "md5": "69a5ada27672f2e9c50e164df00b784e",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/yuanqi_bf_69a5ada27672f2e9c50e164df00b784e.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_yuanqi",
+    "packageMd5": "9d734f4abe71f8a5d4076c7d8a6404a3",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b0f002cc-6074-11eb-8cb1-7ac5100db047-effect_yuanqi.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ad53d850-6074-11eb-8cb1-7ac5100db047-yuanqi_bf_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "悸动",
+      "disableForImage": "0",
+      "hideAlphaBar": "0",
+      "effectType": "client",
+      "id": "jidong_bf",
+      "md5": "8a07834462afeccdff9a90f4612e3a3d",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/jidong_bf_8a07834462afeccdff9a90f4612e3a3d.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_jidong",
+    "packageMd5": "4271dcf5e6d6cbe7a58ae673bad58267",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9bdddb84-6074-11eb-9c79-7ac5100db047-effect_jidong.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/96999adc-6074-11eb-b1ca-7ac5100db047-jidong_bf_cover.png",
+    "thumbWidth": 211
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "和风",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "hefeng_cam",
+      "md5": "c687d0ba4ace2db97ee21d092d3f0889",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/hefeng_cam_c687d0ba4ace2db97ee21d092d3f0889.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_hefeng",
+    "packageMd5": "4dc0305fb0b0163929162a19d93f8b12",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/81cf67a8-6074-11eb-b9ca-7ac5100db047-effect_hefeng.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7e5ef034-6074-11eb-b9ca-7ac5100db047-hefeng_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "仪式感",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "yishigan_cam",
+      "md5": "dda6b04e911c14cf111e316bd39fbcb2",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/yishigan_cam_dda6b04e911c14cf111e316bd39fbcb2.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_yishigan",
+    "packageMd5": "bc2c4b07e2b1bd0f1d11ca97b0169f81",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6f15326e-6074-11eb-956b-7ac5100db047-effect_yishigan.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/69fcef4c-6074-11eb-82b7-7ac5100db047-yishigan_cam_cover.png",
+    "thumbWidth": 210
+  },
+  {
+    "additionalFields": {
+      "hideApplyAll": "0",
+      "disableForVideo": "0",
+      "name": "日常",
+      "hideAlphaBar": "0",
+      "disableForImage": "0",
+      "effectType": "client",
+      "id": "richang_bf",
+      "md5": "b400129c9291fdd97ba7b425eca0a988",
+      "url": "https://downv6.qq.com/shadow_qqcamera/LUTFilterResource/lut/richang_bf_b400129c9291fdd97ba7b425eca0a988.zip"
+    },
+    "additionalPackage": {
+      "highPackageMd5": "",
+      "highPackageUrl": "",
+      "lowPackageMd5": "",
+      "lowPackageUrl": "",
+      "midPackageMd5": "",
+      "midPackageUrl": "",
+      "superLowPackageMd5": "",
+      "superLowPackageUrl": ""
+    },
+    "id": "effect_richang",
+    "packageMd5": "c3424775348521d5c8a3910baedf9ced",
+    "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4cce6892-6074-11eb-8726-7ac5100db047-effect_richang.zip",
+    "sdkInfo": {
+      "sdk": 0,
+      "sdkVersion": "2.1.0"
+    },
+    "thumbHeight": 210,
+    "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/45bc03d4-6074-11eb-a669-7ac5100db047-richang_bf_cover.png",
+    "thumbWidth": 210
+  }
+]

@@ -15,13 +15,13 @@ public abstract interface IAPMModuleCelling
   
   public abstract void b(IAPMMemoryClearListener paramIAPMMemoryClearListener);
   
-  public abstract boolean b();
+  public abstract boolean e();
   
-  public abstract String c();
+  public abstract String k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.base.IAPMModuleCelling
  * JD-Core Version:    0.7.0.1
  */

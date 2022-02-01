@@ -61,17 +61,6 @@ public class HippyQQBridgeModule
     this.mBridgeModule.cancelVideoPreDownload();
   }
   
-  @HippyMethod(name="chooseVideoAddToTopic")
-  public void chooseVideoAddToTopic(HippyMap paramHippyMap, Promise paramPromise)
-  {
-    if (paramHippyMap != null) {
-      paramHippyMap = paramHippyMap.toJSONObject();
-    } else {
-      paramHippyMap = new JSONObject();
-    }
-    this.mBridgeModule.chooseVideoAddToTopic(paramHippyMap, paramPromise);
-  }
-  
   @HippyMethod(name="dwellTimeMillisReport")
   public void dwellTimeMillisReport(HippyMap paramHippyMap)
   {
@@ -103,17 +92,6 @@ public class HippyQQBridgeModule
       paramHippyMap = new JSONObject();
     }
     this.mBridgeModule.getAllowedStateOfOperationAction(paramHippyMap, paramPromise);
-  }
-  
-  @HippyMethod(name="getCreateTopicPermission")
-  public void getCreateTopicPermission(HippyMap paramHippyMap, Promise paramPromise)
-  {
-    if (paramHippyMap != null) {
-      paramHippyMap = paramHippyMap.toJSONObject();
-    } else {
-      paramHippyMap = new JSONObject();
-    }
-    this.mBridgeModule.getCreateTopicPermission(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getDeviceInfo")
@@ -235,23 +213,6 @@ public class HippyQQBridgeModule
   public void openApp(String paramString)
   {
     this.mBridgeModule.openApp(paramString);
-  }
-  
-  @HippyMethod(name="openCreateTopicView")
-  public void openCreateTopicView(Promise paramPromise)
-  {
-    this.mBridgeModule.openCreateTopicView(paramPromise);
-  }
-  
-  @HippyMethod(name="openEditTopicView")
-  public void openEditTopicView(HippyMap paramHippyMap, Promise paramPromise)
-  {
-    if (paramHippyMap != null) {
-      paramHippyMap = paramHippyMap.toJSONObject();
-    } else {
-      paramHippyMap = new JSONObject();
-    }
-    this.mBridgeModule.openEditTopicView(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="openRewardAd")
@@ -438,7 +399,7 @@ public class HippyQQBridgeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

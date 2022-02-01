@@ -7,9 +7,9 @@ import android.view.animation.AlphaAnimation;
 @TargetApi(14)
 public class TakeVideoUtils
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
+  private static int a;
   private static int b;
+  private static float c;
   
   public static void a(View paramView)
   {
@@ -36,7 +36,7 @@ public class TakeVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.TakeVideoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -34,22 +34,22 @@ public class ScannerMultiResultSelectView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ScannerResult jdField_a_of_type_ComTencentMobileqqQrscanScannerResult;
-  private ScannerMultiResultSelectView.ImageData jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData;
-  private ScannerMultiResultSelectView.MultiSelectListener jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ScannerMultiResultSelectView.3(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = false;
+  private ScannerResult b;
   private int c;
-  private int d = 0;
+  private ImageView d;
+  private TextView e;
+  private TextView f;
+  private FrameLayout g;
+  private ScannerMultiResultSelectView.MultiSelectListener h;
+  private long i = 0L;
+  private boolean j = false;
+  private Bitmap k;
+  private int l;
+  private int m;
+  private int n = 0;
+  private ScannerMultiResultSelectView.ImageData o;
+  private Runnable p = new ScannerMultiResultSelectView.3(this);
   
   public ScannerMultiResultSelectView(Context paramContext)
   {
@@ -68,83 +68,164 @@ public class ScannerMultiResultSelectView
   
   private Rect a(RectF paramRectF)
   {
-    int j = this.jdField_b_of_type_Int;
-    int m = this.c;
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int k = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    if ((!paramRectF.isEmpty()) && (k > 0) && (i > 0))
+    int i2 = this.l;
+    int i4 = this.m;
+    int i1 = this.k.getWidth();
+    int i3 = this.k.getHeight();
+    if ((!paramRectF.isEmpty()) && (i3 > 0) && (i1 > 0))
     {
-      float f1 = i * 1.0F / k;
-      float f2 = j;
-      float f3 = m;
-      int n;
+      float f1 = i1 * 1.0F / i3;
+      float f2 = i2;
+      float f3 = i4;
+      int i5;
       if (f1 > 1.0F * f2 / f3)
       {
-        j = j * k / i;
-        k = (int)(paramRectF.left * f2);
-        i = (int)(paramRectF.right * f2);
-        n = m / 2 - j / 2;
+        i2 = i2 * i3 / i1;
+        i3 = (int)(paramRectF.left * f2);
+        i1 = (int)(paramRectF.right * f2);
+        i5 = i4 / 2 - i2 / 2;
         f1 = paramRectF.top;
-        f2 = j;
-        m = (int)(f1 * f2) + n;
-        j = (int)(paramRectF.bottom * f2) + n;
-        n = i;
+        f2 = i2;
+        i4 = (int)(f1 * f2) + i5;
+        i2 = (int)(paramRectF.bottom * f2) + i5;
+        i5 = i1;
       }
       else
       {
-        k = m * i / k;
-        m = (int)(paramRectF.top * f3);
-        i = (int)(paramRectF.bottom * f3);
-        j = j / 2 - k / 2;
+        i3 = i4 * i1 / i3;
+        i4 = (int)(paramRectF.top * f3);
+        i1 = (int)(paramRectF.bottom * f3);
+        i2 = i2 / 2 - i3 / 2;
         f1 = paramRectF.left;
-        f2 = k;
-        k = (int)(f1 * f2);
-        n = (int)(paramRectF.right * f2) + j;
-        k += j;
-        j = i;
+        f2 = i3;
+        i3 = (int)(f1 * f2);
+        i5 = (int)(paramRectF.right * f2) + i2;
+        i3 += i2;
+        i2 = i1;
       }
-      return new Rect(k, m, n, j);
+      return new Rect(i3, i4, i5, i2);
     }
-    return new Rect(0, 0, j, m);
+    return new Rect(0, 0, i2, i4);
   }
   
-  private View a()
+  private void a(RelativeLayout paramRelativeLayout)
+  {
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131626490, this, true);
+    this.d = ((ImageView)((View)localObject).findViewById(2131435357));
+    this.e = ((TextView)((View)localObject).findViewById(2131430272));
+    this.f = ((TextView)((View)localObject).findViewById(2131447403));
+    this.g = ((FrameLayout)((View)localObject).findViewById(2131440487));
+    localObject = new RelativeLayout.LayoutParams(-1, -1);
+    setBackgroundColor(-16777216);
+    paramRelativeLayout.addView(this, (ViewGroup.LayoutParams)localObject);
+    this.e.setOnClickListener(this);
+    this.a = true;
+    if (LiuHaiUtils.b()) {
+      ((RelativeLayout.LayoutParams)this.f.getLayoutParams()).topMargin = ViewUtils.dip2px(60.0F);
+    }
+  }
+  
+  private void c()
+  {
+    this.g.removeAllViews();
+    Object localObject1 = this.k;
+    if (localObject1 == null)
+    {
+      d();
+      return;
+    }
+    this.d.setImageBitmap((Bitmap)localObject1);
+    Object localObject2;
+    int i1;
+    if (((this.c & 0x1) != 0) && (this.b.h()))
+    {
+      localObject1 = this.b.a.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (QBarResult)((Iterator)localObject1).next();
+        f().setTag(localObject2);
+      }
+      i1 = 1;
+    }
+    else
+    {
+      i1 = 0;
+    }
+    int i2 = i1;
+    if ((this.c & 0x2) != 0)
+    {
+      i2 = i1;
+      if (this.b.g())
+      {
+        localObject1 = this.b.b.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (QMiniResult)((Iterator)localObject1).next();
+          f().setTag(localObject2);
+        }
+        i2 = i1 | 0x2;
+      }
+    }
+    if (i2 == 1) {
+      this.f.setText(2131914097);
+    } else if (i2 == 2) {
+      this.f.setText(2131914096);
+    } else {
+      this.f.setText(2131914095);
+    }
+    if ((this.l > 0) && (this.m > 0)) {
+      this.p.run();
+    }
+  }
+  
+  private void d()
+  {
+    ScannerMultiResultSelectView.ImageData localImageData = this.o;
+    if (localImageData == null) {
+      return;
+    }
+    ThreadManagerV2.excute(new ScannerMultiResultSelectView.1(this, localImageData), 16, null, true);
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateAfterDecodeBitmap mShowing：");
+      localStringBuilder.append(this.j);
+      localStringBuilder.append(" mBitmap:");
+      localStringBuilder.append(this.k);
+      localStringBuilder.append(" mScannerResult:");
+      localStringBuilder.append(this.b);
+      QLog.i("IQRScanConst_ScannerMultiResultSelectView", 2, localStringBuilder.toString());
+    }
+    if (!this.j) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new ScannerMultiResultSelectView.2(this));
+  }
+  
+  private View f()
   {
     DiniFlyAnimationView localDiniFlyAnimationView = new DiniFlyAnimationView(getContext());
     localDiniFlyAnimationView.setImageAssetsFolder("qr_scan_multi_point/images");
     localDiniFlyAnimationView.setAnimation("qr_scan_multi_point/data.json");
     localDiniFlyAnimationView.setRepeatCount(-1);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.a(54.0F), ViewUtils.a(54.0F));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localDiniFlyAnimationView, localLayoutParams);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dip2px(54.0F), ViewUtils.dip2px(54.0F));
+    this.g.addView(localDiniFlyAnimationView, localLayoutParams);
     localDiniFlyAnimationView.setOnClickListener(this);
     localDiniFlyAnimationView.setVisibility(8);
     return localDiniFlyAnimationView;
   }
   
-  private void a(RelativeLayout paramRelativeLayout)
+  private void setAnimState(boolean paramBoolean)
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131560445, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131368461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131364259));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131378732));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((View)localObject).findViewById(2131372924));
-    localObject = new RelativeLayout.LayoutParams(-1, -1);
-    setBackgroundColor(-16777216);
-    paramRelativeLayout.addView(this, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_Boolean = true;
-    if (LiuHaiUtils.b()) {
-      ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = ViewUtils.a(60.0F);
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    int j = this.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = this.g.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout.getChildAt(i);
+      Object localObject = this.g.getChildAt(i1);
       if ((localObject instanceof DiniFlyAnimationView))
       {
         localObject = (DiniFlyAnimationView)localObject;
@@ -154,109 +235,7 @@ public class ScannerMultiResultSelectView
           ((DiniFlyAnimationView)localObject).cancelAnimation();
         }
       }
-      i += 1;
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localObject1 == null)
-    {
-      c();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-    Object localObject2;
-    int i;
-    if (((this.jdField_a_of_type_Int & 0x1) != 0) && (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.d()))
-    {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.a.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (QBarResult)((Iterator)localObject1).next();
-        a().setTag(localObject2);
-      }
-      i = 1;
-    }
-    else
-    {
-      i = 0;
-    }
-    int j = i;
-    if ((this.jdField_a_of_type_Int & 0x2) != 0)
-    {
-      j = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.c())
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.b.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (QMiniResult)((Iterator)localObject1).next();
-          a().setTag(localObject2);
-        }
-        j = i | 0x2;
-      }
-    }
-    if (j == 1) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716634);
-    } else if (j == 2) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716633);
-    } else {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131716632);
-    }
-    if ((this.jdField_b_of_type_Int > 0) && (this.c > 0)) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
-  
-  private void c()
-  {
-    ScannerMultiResultSelectView.ImageData localImageData = this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData;
-    if (localImageData == null) {
-      return;
-    }
-    ThreadManagerV2.excute(new ScannerMultiResultSelectView.1(this, localImageData), 16, null, true);
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("updateAfterDecodeBitmap mShowing：");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder.append(" mBitmap:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localStringBuilder.append(" mScannerResult:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult);
-      QLog.i("IQRScanConst_ScannerMultiResultSelectView", 2, localStringBuilder.toString());
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ScannerMultiResultSelectView.2(this));
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    a(false);
-    setVisibility(8);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localObject != null) {
-      ((Bitmap)localObject).recycle();
-    }
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener;
-    if (localObject != null) {
-      ((ScannerMultiResultSelectView.MultiSelectListener)localObject).a();
+      i1 += 1;
     }
   }
   
@@ -273,49 +252,70 @@ public class ScannerMultiResultSelectView
       localStringBuilder.append(paramImageData);
       QLog.i("IQRScanConst_ScannerMultiResultSelectView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult = paramScannerResult;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData = paramImageData;
-    if (!this.jdField_a_of_type_Boolean) {
+    this.b = paramScannerResult;
+    this.c = paramInt1;
+    this.o = paramImageData;
+    if (!this.a) {
       a(paramRelativeLayout);
     }
-    b();
+    c();
     setVisibility(0);
-    this.jdField_b_of_type_Boolean = true;
-    this.d = paramInt2;
-    ReportController.b(null, "dc00898", "", "", "0X800B5E1", "0X800B5E1", this.d, 0, "", "", "", "");
+    this.j = true;
+    this.n = paramInt2;
+    ReportController.b(null, "dc00898", "", "", "0X800B5E1", "0X800B5E1", this.n, 0, "", "", "", "");
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.j;
+  }
+  
+  public void b()
+  {
+    if (!this.j) {
+      return;
+    }
+    setAnimState(false);
+    setVisibility(8);
+    this.j = false;
+    this.d.setImageBitmap(null);
+    Object localObject = this.k;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
+    }
+    removeCallbacks(this.p);
+    this.k = null;
+    localObject = this.h;
+    if (localObject != null) {
+      ((ScannerMultiResultSelectView.MultiSelectListener)localObject).a();
+    }
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener != null) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 1000L))
+    if ((this.h != null) && (System.currentTimeMillis() - this.i >= 1000L))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (paramView.getId() == 2131364259)
+      this.i = System.currentTimeMillis();
+      if (paramView.getId() == 2131430272)
       {
-        a();
-        this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener.a();
-        ReportController.b(null, "dc00898", "", "", "0X800B5E3", "0X800B5E3", this.d, 0, "", "", "", "");
+        b();
+        this.h.a();
+        ReportController.b(null, "dc00898", "", "", "0X800B5E3", "0X800B5E3", this.n, 0, "", "", "", "");
       }
       else
       {
         Object localObject = paramView.getTag();
         if ((localObject != null) && ((localObject instanceof QBarResult)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener.a((QBarResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData);
-          a(false);
-          ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
+          this.h.a((QBarResult)localObject, this.c, this.o);
+          setAnimState(false);
+          ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.n, 0, "", "", "", "");
         }
         else if ((localObject != null) && ((localObject instanceof QMiniResult)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener.a((QMiniResult)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$ImageData);
-          a(false);
-          ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.d, 0, "", "", "", "");
+          this.h.a((QMiniResult)localObject, this.c, this.o);
+          setAnimState(false);
+          ReportController.b(null, "dc00898", "", "", "0X800B5E2", "0X800B5E2", this.n, 0, "", "", "", "");
         }
       }
     }
@@ -327,23 +327,23 @@ public class ScannerMultiResultSelectView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 != this.jdField_b_of_type_Int) || (paramInt2 != this.c)))
+    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 != this.l) || (paramInt2 != this.m)))
     {
-      this.jdField_b_of_type_Int = paramInt1;
-      this.c = paramInt2;
-      removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      post(this.jdField_a_of_type_JavaLangRunnable);
+      this.l = paramInt1;
+      this.m = paramInt2;
+      removeCallbacks(this.p);
+      post(this.p);
     }
   }
   
   public void setMultiSelectListener(ScannerMultiResultSelectView.MultiSelectListener paramMultiSelectListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrscanViewScannerMultiResultSelectView$MultiSelectListener = paramMultiSelectListener;
+    this.h = paramMultiSelectListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView
  * JD-Core Version:    0.7.0.1
  */

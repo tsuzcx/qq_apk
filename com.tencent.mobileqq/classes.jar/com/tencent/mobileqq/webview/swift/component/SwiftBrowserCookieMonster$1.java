@@ -18,12 +18,12 @@ class SwiftBrowserCookieMonster$1
   
   public void run()
   {
-    Object localObject2 = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject2 = this.a;
     ??? = localObject2;
     if (localObject2 == null) {
       ??? = MobileQQ.sMobileQQ.waitAppRuntime(null);
     }
-    if (this.this$0.b.get() == 2)
+    if (this.this$0.i.get() == 2)
     {
       if (??? != null)
       {
@@ -42,21 +42,21 @@ class SwiftBrowserCookieMonster$1
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("start set all cookies ");
-        ((StringBuilder)localObject2).append(Util.b(this.this$0.l, new String[0]));
+        ((StringBuilder)localObject2).append(Util.b(this.this$0.o, new String[0]));
         QLog.i("SwiftBrowserCookieMonster", 2, ((StringBuilder)localObject2).toString());
       }
       localObject2 = this.this$0;
-      ((SwiftBrowserCookieMonster)localObject2).a(((SwiftBrowserCookieMonster)localObject2).a(this.jdField_a_of_type_AndroidContentIntent, (AppRuntime)???), true);
-      if (this.this$0.b.compareAndSet(2, 3)) {
-        synchronized (this.this$0.b)
+      ((SwiftBrowserCookieMonster)localObject2).a(((SwiftBrowserCookieMonster)localObject2).a(this.b, (AppRuntime)???), true);
+      if (this.this$0.i.compareAndSet(2, 3)) {
+        synchronized (this.this$0.i)
         {
-          this.this$0.b.notifyAll();
-          if (this.this$0.a > 0L)
+          this.this$0.i.notifyAll();
+          if (this.this$0.t > 0L)
           {
-            this.this$0.g();
+            this.this$0.i();
             ??? = new StringBuilder();
             ((StringBuilder)???).append("set cookie error :");
-            ((StringBuilder)???).append(this.this$0.a);
+            ((StringBuilder)???).append(this.this$0.t);
             QLog.e("SwiftBrowserCookieMonster", 1, ((StringBuilder)???).toString());
           }
           else if (QLog.isColorLevel())
@@ -65,14 +65,14 @@ class SwiftBrowserCookieMonster$1
           }
         }
       }
-      Util.b("Web_qqbrowser_check_and_set_cookies");
+      Util.g("Web_qqbrowser_check_and_set_cookies");
       new Handler(Looper.getMainLooper()).post(new SwiftBrowserCookieMonster.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,6 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilterInfo;
 import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.qphone.base.util.QLog;
@@ -27,17 +25,15 @@ import java.util.List<Lcom.tencent.mobileqq.richmedia.capture.data.FilterDesc;>;
 public class CaptureComboFilter
   extends CaptureComboBase
 {
-  public float a;
-  CaptureComboFilter.MyDownloaderListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboFilter$MyDownloaderListener = new CaptureComboFilter.MyDownloaderListener(this);
-  FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  public boolean a;
+  FilterDesc f;
+  public float g = -1.0F;
+  public boolean h = false;
+  CaptureComboFilter.MyDownloaderListener i = new CaptureComboFilter.MyDownloaderListener(this);
   
   public CaptureComboFilter(FilterDesc paramFilterDesc)
   {
     super(paramFilterDesc);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
+    this.f = paramFilterDesc;
   }
   
   public static int a(Context paramContext, List<FilterDesc> paramList, CaptureSet paramCaptureSet, int paramInt)
@@ -115,13 +111,13 @@ public class CaptureComboFilter
     {
       paramList = new StringBuilder();
       paramList.append("applyFiltersForCapture filters:");
-      int i;
+      int j;
       if (paramContext == null) {
-        i = 0;
+        j = 0;
       } else {
-        i = paramContext.size();
+        j = paramContext.size();
       }
-      paramList.append(i);
+      paramList.append(j);
       QLog.d("QCombo", 2, paramList.toString());
     }
     localVideoFilterTools.a(null);
@@ -130,25 +126,21 @@ public class CaptureComboFilter
     }
     if ((!((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).isAEFilterManagerEmpty()) && (paramContext != null) && (paramContext.size() > 0))
     {
-      paramList = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
-      paramContext = (FilterDesc)paramContext.get(0);
-      if (!TextUtils.isEmpty(paramContext.resRootPath)) {
-        paramContext = paramContext.getResFold(paramContext.resRootPath);
+      localObject = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+      paramList = (FilterDesc)paramContext.get(0);
+      if (!TextUtils.isEmpty(paramList.resRootPath)) {
+        paramContext = paramList.getResFold(paramList.resRootPath);
       } else {
-        paramContext = paramContext.getResFold(paramList);
+        paramContext = paramList.getResFold((String)localObject);
       }
-      paramList = QQPtColorFilter.getColorFilterInfo(paramContext);
-      if (paramList != null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(paramList.respicname);
+      paramContext = ((StringBuilder)localObject).toString();
+      if (new File(paramContext).exists())
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramContext);
-        ((StringBuilder)localObject).append(paramList.getColorPng());
-        paramContext = ((StringBuilder)localObject).toString();
-        if (new File(paramContext).exists())
-        {
-          ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).setIsAfterUpdateMaterial(false);
-          ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).updateLutGL(paramContext);
-        }
+        ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).setIsAfterUpdateMaterial(false);
+        ((IAEFilterManagerHolder)QRoute.api(IAEFilterManagerHolder.class)).updateLutGL(paramContext);
       }
     }
   }
@@ -191,13 +183,13 @@ public class CaptureComboFilter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("applyFiltersForCapture filters:");
-      int i;
+      int j;
       if (paramList == null) {
-        i = 0;
+        j = 0;
       } else {
-        i = paramList.size();
+        j = paramList.size();
       }
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(j);
       QLog.d("QCombo", 2, ((StringBuilder)localObject).toString());
     }
     localVideoFilterTools.a(null);
@@ -209,9 +201,9 @@ public class CaptureComboFilter
     boolean bool2;
     if (paramComboSet != null)
     {
-      Object localObject = VideoFilterTools.a().a[paramInt];
+      Object localObject = VideoFilterTools.a().e[paramInt];
       boolean bool1;
-      if ((paramComboSet != null) && (localObject != null) && (paramComboSet.b().equals(((ComboSet)localObject).b()))) {
+      if ((paramComboSet != null) && (localObject != null) && (paramComboSet.h().equals(((ComboSet)localObject).h()))) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -315,39 +307,54 @@ public class CaptureComboFilter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("applyFiltersForEditVideo filters:");
-      int i;
+      int j;
       if (paramList == null) {
-        i = 0;
+        j = 0;
       } else {
-        i = paramList.size();
+        j = paramList.size();
       }
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(j);
       QLog.d("QCombo", 2, ((StringBuilder)localObject).toString());
     }
     localQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramList);
     localVideoFilterTools.a(null);
   }
   
-  public float a()
+  public int a(Activity paramActivity, int paramInt)
   {
-    return 0.5F;
+    return 0;
   }
   
-  public int a()
+  public void b(int paramInt)
   {
-    float f = this.jdField_a_of_type_Float;
-    if (f == 1.0F)
+    this.b = paramInt;
+  }
+  
+  public void b(Activity paramActivity, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      paramActivity = new ArrayList();
+      paramActivity.add(this.f);
+      a(paramActivity, false);
+    }
+  }
+  
+  public int c()
+  {
+    float f1 = this.g;
+    if (f1 == 1.0F)
     {
       b(3);
       return 3;
     }
-    if (f >= 0.0F)
+    if (f1 >= 0.0F)
     {
       b(1);
       return 1;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.getResFold(CaptureVideoFilterManager.b);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl)) && (!TextUtils.isEmpty(str)) && (VideoFilterListDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc)))
+    String str = this.f.getResFold(CaptureVideoFilterManager.b);
+    if ((!TextUtils.isEmpty(this.f.resurl)) && (!TextUtils.isEmpty(str)) && (VideoFilterListDownloader.a(this.f)))
     {
       b(2);
       return 2;
@@ -356,49 +363,34 @@ public class CaptureComboFilter
     return 3;
   }
   
-  public int a(Activity paramActivity, int paramInt)
-  {
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      paramActivity = new ArrayList();
-      paramActivity.add(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
-      a(paramActivity, false);
-    }
-  }
-  
-  public int b()
+  public int d()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("download: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.predownload);
+      localStringBuilder.append(this.f.predownload);
       localStringBuilder.append(", iconurl: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.iconurl);
+      localStringBuilder.append(this.f.iconurl);
       localStringBuilder.append(", resurl:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.resurl);
+      localStringBuilder.append(this.f.resurl);
       QLog.d("QCombo", 2, localStringBuilder.toString());
     }
-    VideoFilterListDownloader.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboFilter$MyDownloaderListener);
+    VideoFilterListDownloader.a().a(this.f, this.i);
     a();
-    return super.b();
+    return super.d();
   }
   
-  public void b(int paramInt)
+  public float e()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return 0.5F;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Filter@");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.name);
+    localStringBuilder.append(this.f.name);
     localStringBuilder.append("@");
     localStringBuilder.append(hashCode());
     return localStringBuilder.toString();
@@ -406,7 +398,7 @@ public class CaptureComboFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboFilter
  * JD-Core Version:    0.7.0.1
  */

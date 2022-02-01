@@ -14,16 +14,16 @@ final class ReadinjoySPEventReport$3
   
   public void run()
   {
-    if ((!this.a) && (!ReadinjoySPEventReport.c())) {
+    if ((!this.a) && (!ReadinjoySPEventReport.x())) {
       return;
     }
     if (this.a)
     {
-      ReadinjoySPEventReport.c(System.currentTimeMillis());
-      ReadinjoySPEventReport.a(true);
+      ReadinjoySPEventReport.e(System.currentTimeMillis());
+      ReadinjoySPEventReport.e(true);
     }
-    ReadinjoySPEventReport.b(this.a);
-    if (ReadinjoySPEventReport.b(9))
+    ReadinjoySPEventReport.f(this.a);
+    if (ReadinjoySPEventReport.j(9))
     {
       ArrayList localArrayList = new ArrayList();
       oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -40,7 +40,7 @@ final class ReadinjoySPEventReport$3
       localArrayList.add(localAttributeList);
       if (!this.a)
       {
-        long l = ReadinjoySPEventReport.e();
+        long l = ReadinjoySPEventReport.y();
         l = (System.currentTimeMillis() - l) / 1000L;
         localObject = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -51,7 +51,7 @@ final class ReadinjoySPEventReport$3
         localAttributeList.att_id.set(3);
         localAttributeList.att_name.set("isScreenTime");
         localPBStringField = localAttributeList.att_value;
-        if (ReadinjoySPEventReport.d()) {
+        if (ReadinjoySPEventReport.z()) {
           localObject = "1";
         } else {
           localObject = "0";
@@ -62,12 +62,12 @@ final class ReadinjoySPEventReport$3
       ReadinjoyReportUtils.a(9, localArrayList);
       if (this.a)
       {
-        ReadinjoySPEventReport.d(System.currentTimeMillis());
-        ReadinjoySPEventReport.c(0);
+        ReadinjoySPEventReport.f(System.currentTimeMillis());
+        ReadinjoySPEventReport.k(0);
       }
       else
       {
-        ReadinjoySPEventReport.a();
+        ReadinjoySPEventReport.A();
       }
     }
     if (ReadinjoySPEventReport.ForeBackGround.a == 1) {
@@ -77,7 +77,7 @@ final class ReadinjoySPEventReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.3
  * JD-Core Version:    0.7.0.1
  */

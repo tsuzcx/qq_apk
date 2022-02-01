@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/aig"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="@dimen/i9" android:textColor="@color/skin_color_button_common_white" android:layout_gravity="center" android:id="@id/txt" android:layout_width="148.0dip" android:layout_height="50.0dip"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+</LinearLayout>

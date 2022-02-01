@@ -16,17 +16,17 @@ public class SendGetSig
       paramObject = (MessageFactoryReceiver.SigStruct)paramObject;
       if (paramObject == null)
       {
-        paramMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.c(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
-      ((IPicTransFile)paramMessageHandler.a.getRuntimeService(IPicTransFile.class, "")).setSig(paramObject.a, paramObject.b);
+      ((IPicTransFile)paramMessageHandler.n.getRuntimeService(IPicTransFile.class, "")).setSig(paramObject.a, paramObject.b);
       paramMessageHandler.a(5002, true, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.SendGetSig
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,19 @@ public class WeishiRedDotInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WeishiRedDotInfo> CREATOR = new WeishiRedDotInfo.1();
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> a = new ArrayList();
   private String b = "";
   private String c = "";
   private String d = "";
+  private String e = "";
   
   protected WeishiRedDotInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createStringArrayList();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.createStringArrayList();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
   }
   
   public WeishiRedDotInfo(MessageForStructing paramMessageForStructing)
@@ -35,31 +35,26 @@ public class WeishiRedDotInfo
     {
       paramMessageForStructing = paramMessageForStructing.structingMsg;
       if (paramMessageForStructing.mAlgorithmIds != null) {
-        this.b = paramMessageForStructing.mAlgorithmIds;
+        this.c = paramMessageForStructing.mAlgorithmIds;
       }
       if (paramMessageForStructing.mStrategyIds != null) {
-        this.c = paramMessageForStructing.mStrategyIds;
+        this.d = paramMessageForStructing.mStrategyIds;
       }
       if (paramMessageForStructing.mMsgBrief != null) {
-        this.jdField_a_of_type_JavaLangString = paramMessageForStructing.mMsgBrief;
+        this.b = paramMessageForStructing.mMsgBrief;
       }
       if (!TextUtils.isEmpty(paramMessageForStructing.mArticleIds)) {
-        this.jdField_a_of_type_JavaUtilList.addAll(Arrays.asList(paramMessageForStructing.mArticleIds.split("\\|")));
+        this.a.addAll(Arrays.asList(paramMessageForStructing.mArticleIds.split("\\|")));
       }
       if (paramMessageForStructing.mMsgActionData != null) {
-        this.d = paramMessageForStructing.mMsgActionData;
+        this.e = paramMessageForStructing.mMsgActionData;
       }
     }
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public List<String> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public String b()
@@ -82,18 +77,23 @@ public class WeishiRedDotInfo
     return 0;
   }
   
+  public String e()
+  {
+    return this.e;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeStringList(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.WeishiRedDotInfo
  * JD-Core Version:    0.7.0.1
  */

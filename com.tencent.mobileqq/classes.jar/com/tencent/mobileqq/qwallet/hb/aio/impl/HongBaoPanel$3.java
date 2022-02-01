@@ -27,26 +27,26 @@ class HongBaoPanel$3
     if (paramView == null) {
       return;
     }
-    switch (paramView.jdField_a_of_type_Int)
+    switch (paramView.b)
     {
     default: 
     case 102: 
-      paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-      if (!StringUtil.a(paramView))
+      paramView = paramView.e.optString("url");
+      if (!StringUtil.isEmpty(paramView))
       {
-        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.a.a, paramView);
+        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.a.b, paramView);
         return;
       }
       break;
     case 101: 
-      HongBaoPanel.a(this.a);
+      HongBaoPanel.b(this.a);
       return;
     case 100: 
-      if (paramView.jdField_a_of_type_OrgJsonJSONObject != null)
+      if (paramView.e != null)
       {
-        paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-        if (!StringUtil.a(paramView)) {
-          ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.a.a, paramView);
+        paramView = paramView.e.optString("url");
+        if (!StringUtil.isEmpty(paramView)) {
+          ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.a.b, paramView);
         }
       }
       break;
@@ -55,7 +55,7 @@ class HongBaoPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class PublicAccountImageCollectionPreloadManagerImpl$4
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD);
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       localObject1 = ((StringBuilder)localObject1).toString();
       if (QLog.isColorLevel())
       {
@@ -68,7 +68,7 @@ class PublicAccountImageCollectionPreloadManagerImpl$4
     }
     try
     {
-      ((FileOutputStream)localObject1).write(this.jdField_a_of_type_ArrayOfByte);
+      ((FileOutputStream)localObject1).write(this.b);
     }
     catch (Exception localException2)
     {
@@ -84,7 +84,7 @@ class PublicAccountImageCollectionPreloadManagerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionPreloadManagerImpl.4
  * JD-Core Version:    0.7.0.1
  */

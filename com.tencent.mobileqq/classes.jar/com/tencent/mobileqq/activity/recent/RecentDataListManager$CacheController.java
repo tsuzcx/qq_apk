@@ -40,7 +40,7 @@ public final class RecentDataListManager$CacheController
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       this.a.remove(paramString);
@@ -49,7 +49,7 @@ public final class RecentDataListManager$CacheController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentDataListManager.CacheController
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public class ShieldOperationItem
 {
   public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new ShieldOperationItem.1();
   public int a;
-  public long[] a;
   public int b;
   public int c = 0;
-  public int d = 0;
+  public long[] d;
+  public int e = 0;
   
   public int describeContents()
   {
@@ -25,14 +25,14 @@ public class ShieldOperationItem
     localStringBuilder.append("--->>DUMP_ShieldOperationItem<<---");
     localStringBuilder.append(",");
     localStringBuilder.append("opType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",source_id:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",source_sub_id:");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",uinList:");
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.d;
     if (arrayOfLong != null) {
       localStringBuilder.append(arrayOfLong.toString());
     } else {
@@ -43,16 +43,16 @@ public class ShieldOperationItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
-    paramParcel.writeLongArray(this.jdField_a_of_type_ArrayOfLong);
-    paramParcel.writeInt(this.d);
+    paramParcel.writeLongArray(this.d);
+    paramParcel.writeInt(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ShieldOperationItem
  * JD-Core Version:    0.7.0.1
  */

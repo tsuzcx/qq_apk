@@ -11,8 +11,8 @@ class MoreVideoInfoWidget$OnSimpleShareListenerImpl$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a) != null) {
-      MoreVideoInfoWidget.OnSimpleShareListenerImpl.a(this.a).c(false);
+    if (MoreVideoInfoWidget.OnSimpleShareListenerImpl.b(this.a) != null) {
+      MoreVideoInfoWidget.OnSimpleShareListenerImpl.b(this.a).c(false);
     }
   }
 }

@@ -10,19 +10,19 @@ class ReadInJoyChannelViewPagerController$6
   
   public void run()
   {
-    if (this.jdField_a_of_type_Float >= 1.0F - ReadInJoyChannelViewPagerController.a(this.this$0))
+    if (this.a >= 1.0F - ReadInJoyChannelViewPagerController.h(this.this$0))
     {
-      ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_Int);
-      ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+      ReadInJoyChannelViewPagerController.c(this.this$0, this.b);
+      ReadInJoyChannelViewPagerController.a(this.this$0, this.c, this.d);
       return;
     }
-    ReadInJoyChannelViewPagerController.a(this.this$0, this.b);
-    ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewView);
+    ReadInJoyChannelViewPagerController.c(this.this$0, this.e);
+    ReadInJoyChannelViewPagerController.a(this.this$0, this.d, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.6
  * JD-Core Version:    0.7.0.1
  */

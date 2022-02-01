@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="96px"
+    version="1.1"
+    viewBox="0 0 96 96"
+    width="96px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Page-1"
+        stroke="none"
+        stroke-width="1">
+        <g id="delete_dark_icon1">
+            <g id="Tipsbar">
+                <g id="Artboard">
+                    <g id="tipsbar_red_normal">
+                        <g id="tipsbar_dark_icon">
+                            <rect
+                                height="96"
+                                id="Rectangle"
+                                width="96"
+                                x="0"
+                                y="0"></rect>
+                            <polygon
+                                fill="#000000"
+                                id="Combined-Shape"
+                                opacity="0.300000012"
+                                points="50 24 46 24 46 46 24 46 24 50 46 50 46 72 50 72 50 50 72 50 72 46 50 46"
+                                transform="translate(48.000000, 48.000000) rotate(-45.000000) translate(-48.000000, -48.000000) "></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

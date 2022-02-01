@@ -10,14 +10,14 @@ class PublicAccountImageCollectionMainActivityImpl$3$9
   
   public void run()
   {
-    if (PublicAccountImageCollectionMainActivityImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionMainActivityImpl$3.a) != null) {
-      PublicAccountImageCollectionMainActivityImpl.access$700(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionMainActivityImpl$3.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (PublicAccountImageCollectionMainActivityImpl.access$700(this.b.a) != null) {
+      PublicAccountImageCollectionMainActivityImpl.access$700(this.b.a).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.3.9
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.animation.ValueAnimator;
 
 class StateListAnimator$Tuple
 {
-  final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  final int[] jdField_a_of_type_ArrayOfInt;
+  final int[] a;
+  final ValueAnimator b;
   
   StateListAnimator$Tuple(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = paramValueAnimator;
+    this.a = paramArrayOfInt;
+    this.b = paramValueAnimator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.StateListAnimator.Tuple
  * JD-Core Version:    0.7.0.1
  */

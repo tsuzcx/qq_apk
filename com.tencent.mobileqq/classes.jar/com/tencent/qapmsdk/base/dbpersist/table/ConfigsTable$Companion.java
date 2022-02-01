@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class ConfigsTable$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.table.ConfigsTable.Companion
  * JD-Core Version:    0.7.0.1
  */

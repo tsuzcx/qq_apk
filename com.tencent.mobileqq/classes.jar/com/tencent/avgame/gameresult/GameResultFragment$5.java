@@ -13,7 +13,7 @@ class GameResultFragment$5
   
   public void onClick(View paramView)
   {
-    GameResultFragment.a(this.a);
+    GameResultFragment.d(this.a);
   }
   
   public void updateDrawState(@NonNull TextPaint paramTextPaint)

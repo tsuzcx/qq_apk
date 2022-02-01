@@ -11,7 +11,12 @@ public abstract class PhotoIncompatibleBase
     this.c = paramString;
   }
   
-  public static PhotoIncompatibleBase a(String paramString)
+  public static boolean b(String paramString)
+  {
+    return c(paramString) != null;
+  }
+  
+  public static PhotoIncompatibleBase c(String paramString)
   {
     if (PhotoWebp.a(paramString)) {
       return new PhotoWebp(paramString);
@@ -21,15 +26,10 @@ public abstract class PhotoIncompatibleBase
     }
     return null;
   }
-  
-  public static boolean b(String paramString)
-  {
-    return a(paramString) != null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoIncompatibleBase
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,8 @@ class VidToVideoInfoPuller$4
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     paramJobContext = (StoryManager)SuperManager.a(5);
-    if (!this.a.jdField_a_of_type_Boolean) {
-      paramJobContext = paramJobContext.c(this.a.jdField_b_of_type_JavaLangString);
+    if (!this.a.l) {
+      paramJobContext = paramJobContext.f(this.a.j);
     } else {
       paramJobContext = null;
     }
@@ -34,27 +34,27 @@ class VidToVideoInfoPuller$4
     if (paramVarArgs.size() > 0)
     {
       this.a.a(paramVarArgs);
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int), paramVarArgs }));
+      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.j, Integer.valueOf(this.a.h), paramVarArgs }));
       return null;
     }
-    SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int) }));
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
+    SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.j, Integer.valueOf(this.a.h) }));
+    if (this.a.c == null)
     {
       paramJobContext = this.a;
-      paramJobContext.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver = new VidToVideoInfoPuller.StoryVidListReceiver(paramJobContext);
-      StoryDispatcher.a().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver);
+      paramJobContext.c = new VidToVideoInfoPuller.StoryVidListReceiver(paramJobContext);
+      StoryDispatcher.a().registerSubscriber(this.a.c);
     }
     paramJobContext = new ArrayList();
-    paramJobContext.add(this.a.jdField_b_of_type_JavaLangString);
+    paramJobContext.add(this.a.j);
     paramVarArgs = this.a;
-    paramVarArgs.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler = new UidToVidHandler(paramJobContext, paramVarArgs.jdField_b_of_type_Int);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler.a();
+    paramVarArgs.b = new UidToVidHandler(paramJobContext, paramVarArgs.h);
+    this.a.b.a();
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.VidToVideoInfoPuller.4
  * JD-Core Version:    0.7.0.1
  */

@@ -43,8 +43,8 @@ class GameRoomInviteActivity$11
       paramRspBody.isRequested = false;
       paramRspBody.refreshUI();
       paramRspBody = this.a.getSelf();
-      if ((paramRspBody != null) && (paramRspBody.a)) {
-        QQToast.a(this.a, HardCodeUtil.a(2131705162), 0).a();
+      if ((paramRspBody != null) && (paramRspBody.b)) {
+        QQToast.makeText(this.a, HardCodeUtil.a(2131903052), 0).show();
       }
       this.a.mAdapter.notifyDataSetChanged();
       this.a.mRightButton.setVisibility(8);
@@ -54,7 +54,7 @@ class GameRoomInviteActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.11
  * JD-Core Version:    0.7.0.1
  */

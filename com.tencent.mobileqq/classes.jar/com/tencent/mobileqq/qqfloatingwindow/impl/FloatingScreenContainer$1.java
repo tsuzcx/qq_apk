@@ -13,20 +13,20 @@ class FloatingScreenContainer$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (this.jdField_a_of_type_Int >= -this.b) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = ((int)(this.c + paramValueAnimator.floatValue() * (this.jdField_a_of_type_Int - this.c)));
+    if (this.a >= -this.b) {
+      this.c.x = ((int)(this.d + paramValueAnimator.floatValue() * (this.a - this.d)));
     }
-    if (this.d >= this.e) {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = ((int)(this.f + paramValueAnimator.floatValue() * (this.d - this.f)));
+    if (this.e >= this.f) {
+      this.c.y = ((int)(this.g + paramValueAnimator.floatValue() * (this.e - this.g)));
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer).setFloatingCenterX(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x);
-    FloatingScreenContainer.a(this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer).setFloatingCenterY(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y);
+    this.h.a(this.c);
+    FloatingScreenContainer.a(this.h).setFloatingCenterX(this.c.x);
+    FloatingScreenContainer.a(this.h).setFloatingCenterY(this.c.y);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer.1
  * JD-Core Version:    0.7.0.1
  */

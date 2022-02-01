@@ -16,7 +16,7 @@ final class ThemeBackground$7
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLayoutChange bgType:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" isAnimate:");
       localStringBuilder.append(ThemeUtil.isHorizontalAnimate());
       localStringBuilder.append(" view width:");
@@ -28,13 +28,13 @@ final class ThemeBackground$7
     if (paramView.getHeight() > 0)
     {
       paramView.removeOnLayoutChangeListener(this);
-      ThemeBackground.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeBackground);
+      ThemeBackground.a(paramView, this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.7
  * JD-Core Version:    0.7.0.1
  */

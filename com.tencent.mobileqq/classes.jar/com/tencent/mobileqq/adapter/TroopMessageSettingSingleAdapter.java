@@ -22,17 +22,17 @@ import java.util.List;
 public class TroopMessageSettingSingleAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private QQAppInterface b;
+  private List<Long> c = new ArrayList();
+  private TroopManager d;
   
   public TroopMessageSettingSingleAdapter(Context paramContext, QQAppInterface paramQQAppInterface, List<Long> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
+    this.c = paramList;
+    this.d = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER));
   }
   
   private void a(View paramView, int paramInt1, int paramInt2)
@@ -48,31 +48,31 @@ public class TroopMessageSettingSingleAdapter
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130839433);
+      paramView.setBackgroundResource(2130839622);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130839449);
+      paramView.setBackgroundResource(2130839638);
       return;
     }
     if (paramInt1 == paramInt2 - 1)
     {
-      paramView.setBackgroundResource(2130839440);
+      paramView.setBackgroundResource(2130839629);
       return;
     }
-    paramView.setBackgroundResource(2130839443);
+    paramView.setBackgroundResource(2130839632);
   }
   
   public void a(List<Long> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList == null) {
       return 0;
     }
@@ -81,8 +81,8 @@ public class TroopMessageSettingSingleAdapter
   
   public Object getItem(int paramInt)
   {
-    String str = String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(str);
+    String str = String.valueOf(this.c.get(paramInt));
+    return this.d.g(str);
   }
   
   public long getItemId(int paramInt)
@@ -92,7 +92,7 @@ public class TroopMessageSettingSingleAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(paramInt)));
+    TroopInfo localTroopInfo = this.d.g(String.valueOf(this.c.get(paramInt)));
     TroopMessageSettingSingleAdapter.ViewHolder localViewHolder;
     if (paramView != null)
     {
@@ -100,35 +100,35 @@ public class TroopMessageSettingSingleAdapter
     }
     else
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562836, null);
+      paramView = LayoutInflater.from(this.a).inflate(2131629281, null);
       localViewHolder = new TroopMessageSettingSingleAdapter.ViewHolder(this);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367828));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367877));
-      localViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367844));
-      localViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376458));
+      localViewHolder.a = ((ImageView)paramView.findViewById(2131434407));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131434457));
+      localViewHolder.c = ((TextView)paramView.findViewById(2131434424));
+      localViewHolder.d = ((ImageView)paramView.findViewById(2131444691));
       paramView.setTag(localViewHolder);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceDrawable(localTroopInfo.troopuin);
+    Object localObject = this.b.getTroopFaceDrawable(localTroopInfo.troopuin);
     if (localObject == null)
     {
-      localObject = ImageUtil.d();
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      localObject = ImageUtil.g();
+      localViewHolder.a.setImageBitmap((Bitmap)localObject);
     }
     else
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localViewHolder.a.setImageDrawable((Drawable)localObject);
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopDisplayName());
-    localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    localViewHolder.b.setText(localTroopInfo.getTroopDisplayName());
+    localViewHolder.c.setVisibility(0);
     a(paramView, paramInt, getCount());
-    paramView.setBackgroundResource(2130839433);
+    paramView.setBackgroundResource(2130839622);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopMessageSettingSingleAdapter
  * JD-Core Version:    0.7.0.1
  */

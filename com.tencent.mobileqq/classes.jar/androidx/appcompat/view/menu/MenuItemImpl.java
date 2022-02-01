@@ -22,6 +22,7 @@ import android.view.ViewDebug.CapturedViewProperty;
 import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.string;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.internal.view.SupportMenuItem;
@@ -273,7 +274,7 @@ public final class MenuItemImpl
     Resources localResources = this.mMenu.getContext().getResources();
     StringBuilder localStringBuilder = new StringBuilder();
     if (ViewConfiguration.get(this.mMenu.getContext()).hasPermanentMenuKey()) {
-      localStringBuilder.append(localResources.getString(2131689510));
+      localStringBuilder.append(localResources.getString(R.string.abc_prepend_shortcut_label));
     }
     int i;
     if (this.mMenu.isQwertyMode()) {
@@ -281,12 +282,12 @@ public final class MenuItemImpl
     } else {
       i = this.mShortcutNumericModifiers;
     }
-    appendModifier(localStringBuilder, i, 65536, localResources.getString(2131689506));
-    appendModifier(localStringBuilder, i, 4096, localResources.getString(2131689502));
-    appendModifier(localStringBuilder, i, 2, localResources.getString(2131689501));
-    appendModifier(localStringBuilder, i, 1, localResources.getString(2131689507));
-    appendModifier(localStringBuilder, i, 4, localResources.getString(2131689509));
-    appendModifier(localStringBuilder, i, 8, localResources.getString(2131689505));
+    appendModifier(localStringBuilder, i, 65536, localResources.getString(R.string.abc_menu_meta_shortcut_label));
+    appendModifier(localStringBuilder, i, 4096, localResources.getString(R.string.abc_menu_ctrl_shortcut_label));
+    appendModifier(localStringBuilder, i, 2, localResources.getString(R.string.abc_menu_alt_shortcut_label));
+    appendModifier(localStringBuilder, i, 1, localResources.getString(R.string.abc_menu_shift_shortcut_label));
+    appendModifier(localStringBuilder, i, 4, localResources.getString(R.string.abc_menu_sym_shortcut_label));
+    appendModifier(localStringBuilder, i, 8, localResources.getString(R.string.abc_menu_function_shortcut_label));
     if (c != '\b')
     {
       if (c != '\n')
@@ -294,15 +295,15 @@ public final class MenuItemImpl
         if (c != ' ') {
           localStringBuilder.append(c);
         } else {
-          localStringBuilder.append(localResources.getString(2131689508));
+          localStringBuilder.append(localResources.getString(R.string.abc_menu_space_shortcut_label));
         }
       }
       else {
-        localStringBuilder.append(localResources.getString(2131689504));
+        localStringBuilder.append(localResources.getString(R.string.abc_menu_enter_shortcut_label));
       }
     }
     else {
-      localStringBuilder.append(localResources.getString(2131689503));
+      localStringBuilder.append(localResources.getString(R.string.abc_menu_delete_shortcut_label));
     }
     return localStringBuilder.toString();
   }

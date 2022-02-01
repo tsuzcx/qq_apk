@@ -50,7 +50,7 @@ class AuthDetailDialog$DetailAdapter
       }
       else
       {
-        paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559371, null);
+        paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131625337, null);
         paramViewGroup = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
         paramView.setTag(paramViewGroup);
       }
@@ -68,7 +68,7 @@ class AuthDetailDialog$DetailAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDetailDialog.DetailAdapter
  * JD-Core Version:    0.7.0.1
  */

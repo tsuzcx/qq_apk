@@ -27,16 +27,14 @@ public class VasEmojiManager
   implements IVasEmojiManager
 {
   public BaseQQAppInterface a;
-  public IEmojiManagerService a;
-  private DownloadListener a;
-  public ConcurrentHashMap<String, Bundle> a;
+  public IEmojiManagerService b;
+  public ConcurrentHashMap<String, Bundle> c = new ConcurrentHashMap();
+  private DownloadListener d = new VasEmojiManager.2(this);
   
   public VasEmojiManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new VasEmojiManager.2(this);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = ((BaseQQAppInterface)paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService = ((IEmojiManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmojiManagerService.class));
+    this.a = ((BaseQQAppInterface)paramAppInterface);
+    this.b = ((IEmojiManagerService)this.a.getRuntimeService(IEmojiManagerService.class));
   }
   
   private String a(String paramString1, String paramString2, String paramString3, File paramFile)
@@ -86,16 +84,16 @@ public class VasEmojiManager
     paramArrayList.append("vipEmoticonKey_");
     paramArrayList.append(paramEmoticonPackage.epId);
     paramArrayList = new DownloadTask(localArrayList, localHashMap, paramArrayList.toString());
-    paramArrayList.n = true;
+    paramArrayList.J = true;
     if (localArrayList.size() == 0)
     {
       paramArrayList.a(paramBundle);
       paramArrayList.a(3);
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener.onDone(paramArrayList);
+      this.d.onDone(paramArrayList);
     }
     else
     {
-      localIEmojiManagerService.getDownloader().startDownload(paramArrayList, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramBundle);
+      localIEmojiManagerService.getDownloader().startDownload(paramArrayList, this.d, paramBundle);
     }
     localIEmojiManagerService.addH5MagicChildDownloadTask(paramEmoticonPackage, paramBoolean);
   }
@@ -168,7 +166,7 @@ public class VasEmojiManager
           QLog.e("VasEmojiManager", 1, ((StringBuilder)localObject1).toString());
           continue;
         }
-        localBaseQQAppInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+        localBaseQQAppInterface = this.a;
         i = EmojiManagerServiceConstant.JSON_EMOSM_MALL;
         paramString = (String)localObject2;
         localObject1 = EmotionJsonUtils.parseJson(localBaseQQAppInterface, paramEmoticonPackage, i, (byte[])localObject1, (ArrayList)localObject2, localReqInfo);
@@ -252,7 +250,7 @@ public class VasEmojiManager
   
   public IEmojiManagerService a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService;
+    return this.b;
   }
   
   public void a(EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2)
@@ -262,7 +260,7 @@ public class VasEmojiManager
     ((StringBuilder)localObject).append(paramEmoticonPackage.epId);
     ((StringBuilder)localObject).append(".zip");
     localObject = ((StringBuilder)localObject).toString();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramEmoticonPackage.epId)) {
+    if (this.c.contains(paramEmoticonPackage.epId)) {
       return;
     }
     Bundle localBundle = new Bundle();
@@ -271,7 +269,7 @@ public class VasEmojiManager
     localBundle.putBoolean("wifiAutoDownload", paramBoolean2);
     localBundle.putBoolean("isUpdate", EmoticonPanelUtils.a(paramEmoticonPackage));
     localBundle.putLong("vas_download_start", System.currentTimeMillis());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonPackage.epId, localBundle);
+    this.c.put(paramEmoticonPackage.epId, localBundle);
     a().getStatusMap().put(paramEmoticonPackage.epId, new TaskStatus(paramEmoticonPackage.epId, null));
     ThreadManager.post(new VasEmojiManager.1(this, (String)localObject, paramEmoticonPackage), 5, null, true);
   }
@@ -286,17 +284,17 @@ public class VasEmojiManager
       QLog.e("VasEmojiManager", 1, ((StringBuilder)localObject1).toString());
     }
     String str = VasEmojiManagerContstant.getEpId(paramString);
-    Object localObject2 = (Bundle)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    Object localObject2 = (Bundle)this.c.remove(str);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject2 = new Bundle();
-      EmoticonPackage localEmoticonPackage = ((IEmoticonManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonPackageById(str);
+      EmoticonPackage localEmoticonPackage = ((IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonPackageById(str);
       localObject1 = localEmoticonPackage;
       if (localEmoticonPackage == null)
       {
         localObject1 = new EmoticonPackage();
-        ((EmoticonPackage)localObject1).name = HardCodeUtil.a(2131699762);
+        ((EmoticonPackage)localObject1).name = HardCodeUtil.a(2131897795);
         ((EmoticonPackage)localObject1).epId = str;
         ((EmoticonPackage)localObject1).jobType = 5;
         ((EmoticonPackage)localObject1).type = 1;
@@ -312,14 +310,14 @@ public class VasEmojiManager
     }
     localObject2 = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
     if ((paramInt != 0) || (!a(VasEmojiManagerContstant.getSavePath(paramString), (Bundle)localObject1, (EmoticonPackage)localObject2))) {
-      ((IEmojiManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyPackageFail((EmoticonPackage)localObject2, paramInt, 8, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+      ((IEmojiManagerService)this.a.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyPackageFail((EmoticonPackage)localObject2, paramInt, 8, this.a);
     }
     a().getStatusMap().remove(str);
   }
   
   public ConcurrentHashMap<String, Bundle> getParamMap()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return this.c;
   }
   
   public void onProgress(String paramString, long paramLong1, long paramLong2)
@@ -329,17 +327,17 @@ public class VasEmojiManager
     if (localTaskStatus != null) {
       localTaskStatus.setPercent((float)paramLong1 * 100.0F / (float)paramLong2);
     }
-    paramString = (Bundle)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    paramString = (Bundle)this.c.get(paramString);
     if (paramString != null)
     {
       paramString = (EmoticonPackage)paramString.getSerializable("emoticonPackage");
-      ((IEmojiManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyPackageProgress(paramString, (int)paramLong1, (int)paramLong2);
+      ((IEmojiManagerService)this.a.getRuntimeService(IEmojiManagerService.class)).getEmojiListenerManager().notifyPackageProgress(paramString, (int)paramLong1, (int)paramLong2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.VasEmojiManager
  * JD-Core Version:    0.7.0.1
  */

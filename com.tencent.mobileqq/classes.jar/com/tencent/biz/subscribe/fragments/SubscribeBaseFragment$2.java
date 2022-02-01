@@ -20,32 +20,32 @@ class SubscribeBaseFragment$2
   
   public ColorNote getColorNote()
   {
-    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null))
+    if ((this.a.a != null) && (this.a.b != null))
     {
-      byte[] arrayOfByte = ObjectTransformUtil.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
+      byte[] arrayOfByte = ObjectTransformUtil.a(new SubscribeColorNoteReserveBean(this.a.a.toByteArray(), this.a.b.pageType));
       ShareInfoBean localShareInfoBean = new ShareInfoBean();
-      localShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-      localShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      localShareInfoBean.b = this.a.a;
+      localShareInfoBean.e = this.a.b;
       Object localObject = "";
-      String str2 = localShareInfoBean.c();
-      String str1 = localShareInfoBean.d();
-      String str3 = localShareInfoBean.e();
-      switch (localShareInfoBean.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+      String str2 = localShareInfoBean.d();
+      String str1 = localShareInfoBean.e();
+      String str3 = localShareInfoBean.f();
+      switch (localShareInfoBean.e.pageType)
       {
       default: 
         break;
       case 7002: 
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(localShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get());
+        ((StringBuilder)localObject).append(localShareInfoBean.b.poster.id.get());
         localObject = ((StringBuilder)localObject).toString();
         break;
       case 7000: 
       case 7001: 
-        str1 = localShareInfoBean.f();
+        str1 = localShareInfoBean.g();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(localShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get());
+        ((StringBuilder)localObject).append(localShareInfoBean.b.id.get());
         localObject = ((StringBuilder)localObject).toString();
       }
       if (TextUtils.isEmpty((CharSequence)localObject)) {

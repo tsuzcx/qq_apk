@@ -16,7 +16,7 @@ class AddContactsView$2
     if (this.a.i != null) {
       if (paramInt2 >= this.a.i.getY() + this.a.i.getHeight() * 2 / 3)
       {
-        if ((this.a.a != null) && (this.a.a.isShowing())) {
+        if ((this.a.D != null) && (this.a.D.isShowing())) {
           AddContactsView.a(this.a, false);
         }
       }
@@ -28,7 +28,7 @@ class AddContactsView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class WnsCollector
   
   public WnsCollector()
   {
-    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.d(), QZoneConfigHelper.c(), true);
+    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.f(), QZoneConfigHelper.c(), true);
     LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.a());
     HttpAssembler localHttpAssembler = new HttpAssembler();
     localHttpAssembler.setPublicField(this.publicShareInfo);
@@ -76,7 +76,7 @@ public class WnsCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsCollector
  * JD-Core Version:    0.7.0.1
  */

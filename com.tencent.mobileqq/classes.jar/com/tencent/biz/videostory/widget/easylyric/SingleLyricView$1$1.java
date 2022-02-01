@@ -7,12 +7,12 @@ class SingleLyricView$1$1
   
   public void run()
   {
-    SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView$1.a).a(this.jdField_a_of_type_Long);
+    SingleLyricView.a(this.b.a).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1
  * JD-Core Version:    0.7.0.1
  */

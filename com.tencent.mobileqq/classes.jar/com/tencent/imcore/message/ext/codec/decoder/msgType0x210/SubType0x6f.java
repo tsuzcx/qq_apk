@@ -177,7 +177,7 @@ public class SubType0x6f
               }
               localObject1 = ((TicketManager)paramQQAppInterface.getManager(2)).getSkey(paramMsgType0x210);
               ((VipInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a((String)localObject1, paramMsgType0x210);
-              TroopKeywordManager.a(paramQQAppInterface).b();
+              TroopKeywordManager.a(paramQQAppInterface).c();
             }
             else if ((k == 2003) && (paramMsgType0x210.msg_push_lost_dev_found.has()))
             {
@@ -233,7 +233,7 @@ public class SubType0x6f
                 ((QIMFollwerAdd)localObject1).opType = paramMsgType0x210.uint32_op_type.get();
                 ((QIMFollwerAdd)localObject1).fansCount = paramMsgType0x210.uint64_fans_count.get();
                 ((QIMFollwerAdd)localObject1).longNick = RichStatus.parseStatus(paramMsgType0x210.bytes_longnick.get().toByteArray()).getPlainText();
-                ((QIMFollwerAdd)localObject1).upTime = MessageCache.a();
+                ((QIMFollwerAdd)localObject1).upTime = MessageCache.c();
                 ((QIMFollwerAdd)localObject1).source = paramMsgType0x210.bytes_src_wording.get().toStringUtf8();
                 ((INewFriendService)paramQQAppInterface.getRuntimeService(INewFriendService.class)).handleQIMNewFollower((QIMFollwerAdd)localObject1);
                 continue;
@@ -260,7 +260,7 @@ public class SubType0x6f
                     j += 1;
                     continue;
                   }
-                  paramMsgType0x210.pushTime = MessageCache.a();
+                  paramMsgType0x210.pushTime = MessageCache.c();
                   if (QLog.isColorLevel())
                   {
                     localObject1 = new StringBuilder();
@@ -272,7 +272,7 @@ public class SubType0x6f
                 }
               }
             }
-            MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.a());
+            MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.b());
             i += 1;
           }
         }
@@ -336,7 +336,7 @@ public class SubType0x6f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x6f
  * JD-Core Version:    0.7.0.1
  */

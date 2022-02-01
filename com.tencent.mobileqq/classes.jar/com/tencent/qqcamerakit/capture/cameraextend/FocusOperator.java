@@ -9,19 +9,19 @@ import com.tencent.qqcamerakit.capture.CameraProxy;
 
 public class FocusOperator
 {
-  private static int jdField_b_of_type_Int;
-  private int jdField_a_of_type_Int = 90;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static int b;
+  private int a = 90;
+  private Matrix c = new Matrix();
+  private Matrix d = new Matrix();
   
   private static int a()
   {
-    int j = jdField_b_of_type_Int;
+    int j = b;
     int i = j;
     if (j == 0)
     {
-      jdField_b_of_type_Int = (int)CameraProxy.a().getResources().getDimension(2131296676);
-      i = jdField_b_of_type_Int;
+      b = (int)CameraProxy.a().getResources().getDimension(2131296990);
+      i = b;
     }
     return i;
   }
@@ -82,21 +82,21 @@ public class FocusOperator
   
   public Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.d = new Matrix();
     boolean bool;
     if (paramInt5 == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    a(this.jdField_b_of_type_AndroidGraphicsMatrix, bool, this.jdField_a_of_type_Int, paramInt3, paramInt4, paramInt1, paramInt2);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.invert(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    a(this.d, bool, this.a, paramInt3, paramInt4, paramInt1, paramInt2);
+    this.d.invert(this.c);
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.cameraextend.FocusOperator
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class MessengerService$5
   
   public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    if (this.a.a != null) {
+    if (this.a.b != null) {
       try
       {
         Message localMessage = Message.obtain(null, 5);
@@ -29,7 +29,7 @@ class MessengerService$5
         paramBundle.putInt("id", (int)paramLong);
         paramBundle.putInt("result", paramInt);
         localMessage.setData(paramBundle);
-        this.a.a.send(localMessage);
+        this.a.b.send(localMessage);
         return;
       }
       catch (Exception paramBundle)
@@ -43,13 +43,13 @@ class MessengerService$5
   
   public void a(Bundle paramBundle)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
       Message localMessage = Message.obtain(null, 5);
       localMessage.setData(paramBundle);
       try
       {
-        this.a.a.send(localMessage);
+        this.a.b.send(localMessage);
         return;
       }
       catch (RemoteException paramBundle)
@@ -63,7 +63,7 @@ class MessengerService$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.5
  * JD-Core Version:    0.7.0.1
  */

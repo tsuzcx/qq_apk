@@ -11,13 +11,13 @@ class ReadInJoyDeliverVideoActivity$8
   public void onClick(View paramView)
   {
     paramView = this.a;
-    paramView.m = true;
-    ReadInJoyDeliverVideoActivity.c(paramView);
+    paramView.M = true;
+    ReadInJoyDeliverVideoActivity.l(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.8
  * JD-Core Version:    0.7.0.1
  */

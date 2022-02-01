@@ -2,19 +2,13 @@ package com.tencent.mobileqq.leba.report;
 
 public abstract class EXBaseReportItem
 {
-  public int a = 0;
-  public int b;
-  public long b;
-  public int c = 1;
-  public String i = "";
-  public String j = "";
+  public long j = 0L;
   public String k = "";
-  
-  EXBaseReportItem()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public String l = "";
+  public String m = "";
+  public int n = 0;
+  public int o = 0;
+  public int p = 1;
   
   public abstract String a(int paramInt);
   
@@ -22,7 +16,7 @@ public abstract class EXBaseReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.report.EXBaseReportItem
  * JD-Core Version:    0.7.0.1
  */

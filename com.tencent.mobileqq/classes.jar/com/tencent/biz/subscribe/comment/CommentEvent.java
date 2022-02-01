@@ -6,12 +6,12 @@ public class CommentEvent
   implements Dispatcher.Dispatchable
 {
   public int a;
-  public Object a;
+  public Object b;
   
   public CommentEvent(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
+    this.a = paramInt;
+    this.b = paramVarArgs;
   }
 }
 

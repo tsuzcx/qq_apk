@@ -23,7 +23,7 @@ class Camera2Control$6
     if ((paramCaptureRequest instanceof FocusOperator.CameraFocusParams))
     {
       paramCaptureRequest = (FocusOperator.CameraFocusParams)paramCaptureRequest;
-      if (!paramCaptureRequest.b)
+      if (!paramCaptureRequest.j)
       {
         paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
         StringBuilder localStringBuilder = new StringBuilder();
@@ -46,7 +46,7 @@ class Camera2Control$6
   private void a(boolean paramBoolean, FocusOperator.CameraFocusParams paramCameraFocusParams)
   {
     Camera2Control.e(this.a, false);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    Camera2Control.c(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
     try
     {
       if (QLog.a())
@@ -56,12 +56,12 @@ class Camera2Control$6
         localStringBuilder.append(paramBoolean);
         QLog.d("Camera2Control", 2, new Object[] { localStringBuilder.toString() });
       }
-      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-      Camera2Control.a(this.a).setRepeatingRequest(Camera2Control.a(this.a).build(), null, null);
-      if ((paramCameraFocusParams.a != null) && (!paramCameraFocusParams.b))
+      Camera2Control.c(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+      Camera2Control.j(this.a).setRepeatingRequest(Camera2Control.c(this.a).build(), null, null);
+      if ((paramCameraFocusParams.g != null) && (!paramCameraFocusParams.j))
       {
-        paramCameraFocusParams.b = true;
-        paramCameraFocusParams.a.onAutoFocusCallback(paramBoolean);
+        paramCameraFocusParams.j = true;
+        paramCameraFocusParams.g.onAutoFocusCallback(paramBoolean);
         return;
       }
     }
@@ -89,7 +89,7 @@ class Camera2Control$6
     if ((paramCameraCaptureSession instanceof FocusOperator.CameraFocusParams))
     {
       paramCameraCaptureSession = (FocusOperator.CameraFocusParams)paramCameraCaptureSession;
-      if (!paramCameraCaptureSession.b)
+      if (!paramCameraCaptureSession.j)
       {
         a(false, paramCameraCaptureSession);
         return;
@@ -106,7 +106,7 @@ class Camera2Control$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera2.Camera2Control.6
  * JD-Core Version:    0.7.0.1
  */

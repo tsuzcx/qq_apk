@@ -12,13 +12,13 @@ class PublicAccountChatPie$24
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.R = false;
-    ReportController.b(paramDialogInterface.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
+    paramDialogInterface.cj = false;
+    ReportController.b(paramDialogInterface.d, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.24
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ class NearbyChatPieObserver$1
   
   public void run()
   {
-    ReportTask localReportTask = new ReportTask(NearbyChatPieObserver.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card");
+    ReportTask localReportTask = new ReportTask(NearbyChatPieObserver.a(this.this$0).d).a("dc00899").b("grp_lbs").c("data_card");
     String str;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       str = "msg_suc";
     } else {
       str = "msg_fail";
     }
-    localReportTask.d(str).e(NearbyChatPieObserver.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).a(new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b()) }).a();
+    localReportTask.d(str).e(NearbyChatPieObserver.a(this.this$0).ah.b).a(new String[] { this.b, String.valueOf(this.c.c()) }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPieObserver.1
  * JD-Core Version:    0.7.0.1
  */

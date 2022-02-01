@@ -11,24 +11,18 @@ import org.jetbrains.annotations.Nullable;
 public final class AbsProtocol$JceIntercept
 {
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final Function1<JceStruct, JceStruct> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private final String a;
   @NotNull
   private final String b;
   @NotNull
   private final String c;
+  @NotNull
+  private final Function1<JceStruct, JceStruct> d;
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final Function1<JceStruct, JceStruct> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    return this.a;
   }
   
   @NotNull
@@ -43,13 +37,19 @@ public final class AbsProtocol$JceIntercept
     return this.c;
   }
   
+  @NotNull
+  public final Function1<JceStruct, JceStruct> d()
+  {
+    return this.d;
+  }
+  
   public boolean equals(@Nullable Object paramObject)
   {
     if (this != paramObject) {
       if ((paramObject instanceof JceIntercept))
       {
         paramObject = (JceIntercept)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.jdField_a_of_type_KotlinJvmFunctionsFunction1, paramObject.jdField_a_of_type_KotlinJvmFunctionsFunction1))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
       }
       else
       {
@@ -61,7 +61,7 @@ public final class AbsProtocol$JceIntercept
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     int m = 0;
     int i;
     if (localObject != null) {
@@ -83,7 +83,7 @@ public final class AbsProtocol$JceIntercept
     } else {
       k = 0;
     }
-    localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    localObject = this.d;
     if (localObject != null) {
       m = localObject.hashCode();
     }
@@ -95,20 +95,20 @@ public final class AbsProtocol$JceIntercept
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("JceIntercept(servantName=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", cmd=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", funcName=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", block=");
-    localStringBuilder.append(this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.AbsProtocol.JceIntercept
  * JD-Core Version:    0.7.0.1
  */

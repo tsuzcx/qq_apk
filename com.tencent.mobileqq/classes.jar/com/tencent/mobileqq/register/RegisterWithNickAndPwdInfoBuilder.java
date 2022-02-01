@@ -2,99 +2,99 @@ package com.tencent.mobileqq.register;
 
 public class RegisterWithNickAndPwdInfoBuilder
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean = false;
+  private String a;
+  private String b;
+  private String c;
+  private boolean d;
+  private boolean e;
   private String f;
+  private int g;
+  private String h;
+  private String i;
+  private boolean j;
+  private boolean k;
+  private boolean l = false;
   
   public RegisterWithNickAndPwdInfo a()
   {
-    return new RegisterWithNickAndPwdInfo(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_JavaLangString, this.f, this.jdField_c_of_type_Boolean, this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean);
+    return new RegisterWithNickAndPwdInfo(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l);
   }
   
   public RegisterWithNickAndPwdInfoBuilder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder d(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.f = paramString;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder d(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder e(String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.h = paramString;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder e(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
     return this;
   }
   
   public RegisterWithNickAndPwdInfoBuilder f(String paramString)
   {
-    this.f = paramString;
+    this.i = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.RegisterWithNickAndPwdInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

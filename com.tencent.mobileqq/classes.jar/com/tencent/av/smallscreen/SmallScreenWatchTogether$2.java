@@ -13,10 +13,10 @@ class SmallScreenWatchTogether$2
 {
   SmallScreenWatchTogether$2(SmallScreenWatchTogether paramSmallScreenWatchTogether, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       i = paramInt + 1;
     }
     if (i != 0)
@@ -26,30 +26,30 @@ class SmallScreenWatchTogether$2
         if (i != 2) {
           return;
         }
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenWatchTogether.b();
+        this.b.c();
         return;
       }
-      paramView = SessionMgr.a().a();
-      VideoController localVideoController = VideoController.a();
-      if (paramView.z == -1) {
-        paramView.z = 0;
+      paramView = SessionMgr.a().b();
+      VideoController localVideoController = VideoController.f();
+      if (paramView.ay == -1) {
+        paramView.ay = 0;
       }
-      localVideoController.a(paramView.c, 237);
+      localVideoController.a(paramView.s, 237);
       localVideoController.b(237);
-      localVideoController.b(paramView.c, paramView.z);
+      localVideoController.b(paramView.s, paramView.ay);
       paramView.a("onClick_quit", false);
       paramView.c("onClick_quit", 0);
       return;
     }
-    paramView = SessionMgr.a().a();
+    paramView = SessionMgr.a().b();
     if (paramView.r()) {
-      ((WTogetherMng)VideoController.a().a.a(16)).d(paramView);
+      ((WTogetherMng)VideoController.f().e.c(17)).g(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenWatchTogether.2
  * JD-Core Version:    0.7.0.1
  */

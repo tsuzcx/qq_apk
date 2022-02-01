@@ -10,13 +10,13 @@ import java.security.interfaces.RSAKey;
 
 class JsonWebSignature
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Key jdField_a_of_type_JavaSecurityKey;
+  private String a;
   private String b;
   private String c;
   private String d;
   private String e;
   private String f;
+  private Key g;
   
   public static JsonWebSignature a(String paramString)
   {
@@ -32,7 +32,7 @@ class JsonWebSignature
       return null;
     }
     JsonWebSignature localJsonWebSignature = new JsonWebSignature();
-    localJsonWebSignature.jdField_a_of_type_JavaLangString = paramString;
+    localJsonWebSignature.a = paramString;
     localJsonWebSignature.b = arrayOfString[0];
     localJsonWebSignature.c = new String(Base64.decode(arrayOfString[0], 11));
     localJsonWebSignature.d = arrayOfString[1];
@@ -62,7 +62,7 @@ class JsonWebSignature
     return localStringBuilder.toString();
   }
   
-  private byte[] a()
+  private byte[] c()
   {
     Object localObject = a(new String[] { this.b, this.d });
     try
@@ -78,31 +78,31 @@ class JsonWebSignature
     return null;
   }
   
-  public String a()
-  {
-    return this.e;
-  }
-  
   public void a(Key paramKey)
   {
-    this.jdField_a_of_type_JavaSecurityKey = paramKey;
+    this.g = paramKey;
   }
   
   public boolean a()
   {
     RsaUsingShaAlgorithm localRsaUsingShaAlgorithm = new RsaUsingShaAlgorithm();
-    Object localObject = this.jdField_a_of_type_JavaSecurityKey;
+    Object localObject = this.g;
     if (((localObject instanceof RSAKey)) && (((RSAKey)localObject).getModulus().bitLength() < 2048)) {
       return false;
     }
     localObject = Base64.decode(this.f, 11);
-    byte[] arrayOfByte = a();
-    return localRsaUsingShaAlgorithm.a((byte[])localObject, this.jdField_a_of_type_JavaSecurityKey, arrayOfByte);
+    byte[] arrayOfByte = c();
+    return localRsaUsingShaAlgorithm.a((byte[])localObject, this.g, arrayOfByte);
+  }
+  
+  public String b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JsonWebSignature
  * JD-Core Version:    0.7.0.1
  */

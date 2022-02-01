@@ -8,22 +8,16 @@ import java.nio.FloatBuffer;
 
 public class GPUBaseFilter
 {
-  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_a_of_type_ArrayOfFloat);
-  public static float[] a;
-  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(jdField_b_of_type_ArrayOfFloat);
-  public static final float[] b;
-  public int a;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  protected int b;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  }
+  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  private static final FloatBuffer e = GlUtil.createFloatBuffer(a);
+  private static final FloatBuffer f = GlUtil.createFloatBuffer(b);
+  public int c = 3553;
+  protected int d = 101;
+  private final String g;
+  private final String h;
+  private int i;
+  private boolean j;
   
   public GPUBaseFilter()
   {
@@ -32,12 +26,10 @@ public class GPUBaseFilter
   
   public GPUBaseFilter(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 3553;
-    this.jdField_b_of_type_Int = 101;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = 3553;
-    this.jdField_b_of_type_Int = 101;
+    this.g = paramString1;
+    this.h = paramString2;
+    this.c = 3553;
+    this.d = 101;
   }
   
   public static void a(int paramInt, String paramString)
@@ -56,44 +48,39 @@ public class GPUBaseFilter
   {
     for (;;)
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
+      int k = GLES20.glGetError();
+      if (k == 0) {
         break;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(": glError ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       SLog.e("GPUBaseFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
-  public int a()
-  {
-    return this.c;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.j) {
       return;
     }
-    this.c = GlUtil.createProgram(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-    if (this.c == 0)
+    this.i = GlUtil.createProgram(this.g, this.h);
+    if (this.i == 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("failed creating program ");
       localStringBuilder.append(getClass().getSimpleName());
       SLog.e("GPUBaseFilter", new RuntimeException(localStringBuilder.toString()));
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.j = true;
     b();
   }
   
   public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     a("onDrawFrame start");
-    int m = a();
+    int i1 = c();
     float[] arrayOfFloat = paramArrayOfFloat1;
     if (paramArrayOfFloat1 == null)
     {
@@ -106,53 +93,58 @@ public class GPUBaseFilter
       paramArrayOfFloat1 = new float[16];
       Matrix.setIdentityM(paramArrayOfFloat1, 0);
     }
-    GLES20.glUseProgram(m);
+    GLES20.glUseProgram(i1);
     a("glUseProgram");
-    int i = GLES20.glGetAttribLocation(m, "aPosition");
-    a(i, "aPosition");
-    int j = GLES20.glGetAttribLocation(m, "aTextureCoord");
-    a(j, "aTextureCoord");
-    int k = GLES20.glGetUniformLocation(m, "uMVPMatrix");
-    a(k, "uMVPMatrix");
-    m = GLES20.glGetUniformLocation(m, "uTextureMatrix");
-    a(m, "uTextureMatrix");
-    GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
+    int k = GLES20.glGetAttribLocation(i1, "aPosition");
+    a(k, "aPosition");
+    int m = GLES20.glGetAttribLocation(i1, "aTextureCoord");
+    a(m, "aTextureCoord");
+    int n = GLES20.glGetUniformLocation(i1, "uMVPMatrix");
+    a(n, "uMVPMatrix");
+    i1 = GLES20.glGetUniformLocation(i1, "uTextureMatrix");
+    a(i1, "uTextureMatrix");
+    GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, e);
     a("glVertexAttribPointer aPosition");
-    GLES20.glEnableVertexAttribArray(i);
+    GLES20.glEnableVertexAttribArray(k);
     a("glEnableVertexAttribArray mPositionHandle");
-    GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
+    GLES20.glVertexAttribPointer(m, 2, 5126, false, 8, f);
     a("glVertexAttribPointer mTextureHandle");
-    GLES20.glEnableVertexAttribArray(j);
+    GLES20.glEnableVertexAttribArray(m);
     a("glEnableVertexAttribArray mTextureHandle");
-    GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat1, 0);
-    GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(n, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(i1, 1, false, arrayOfFloat, 0);
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.jdField_a_of_type_Int, paramInt);
-    e();
+    GLES20.glBindTexture(this.c, paramInt);
+    f();
     GLES20.glDrawArrays(5, 0, 4);
     a("glDrawArrays");
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.jdField_a_of_type_Int, 0);
+    GLES20.glBindTexture(this.c, 0);
   }
   
   protected void b() {}
   
-  public void c()
+  public int c()
   {
-    SLog.d("GPUBaseFilter", "destroy");
-    this.jdField_a_of_type_Boolean = false;
-    GLES20.glDeleteProgram(this.c);
-    this.c = 0;
-    d();
+    return this.i;
   }
   
-  protected void d() {}
+  public void d()
+  {
+    SLog.d("GPUBaseFilter", "destroy");
+    this.j = false;
+    GLES20.glDeleteProgram(this.i);
+    this.i = 0;
+    e();
+  }
   
   protected void e() {}
+  
+  protected void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.renderer.GPUBaseFilter
  * JD-Core Version:    0.7.0.1
  */

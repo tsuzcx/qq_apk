@@ -13,12 +13,12 @@ class MaterialShapeDrawable$2
     if ((paramCornerSize instanceof RelativeCornerSize)) {
       return paramCornerSize;
     }
-    return new AdjustedCornerSize(this.jdField_a_of_type_Float, paramCornerSize);
+    return new AdjustedCornerSize(this.a, paramCornerSize);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.MaterialShapeDrawable.2
  * JD-Core Version:    0.7.0.1
  */

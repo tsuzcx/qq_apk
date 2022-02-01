@@ -25,47 +25,47 @@ class ChatHistory$ChatHistoryAdapter$9
   public void onClick(View paramView)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_Int == -3000) && ((this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.istroop == 1001) || (this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.istroop == 10002)))
+    if ((this.a == -3000) && ((this.b.b.istroop == 1001) || (this.b.b.istroop == 10002)))
     {
-      localObject = PkgTools.decodeCgi(this.jdField_a_of_type_JavaLangString);
-      localObject = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, (String)localObject);
+      localObject = PkgTools.decodeCgi(this.c);
+      localObject = JumpParser.a(this.d.f.app, this.d.f, (String)localObject);
       if (localObject != null) {
         ((JumpAction)localObject).a();
       }
     }
     else
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if ((i != -3000) && (i != -3004) && (i != -30002) && (i != -30003))
       {
         if (i == -3005)
         {
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
+          ChatActivityUtils.a(this.d.f, this.d.f.app, this.b.b.action, this.b.b.shareAppID, this.b.b.msgtype);
         }
         else if (i == -3001)
         {
           localObject = new Bundle();
-          ((Bundle)localObject).putString("schemaurl", this.jdField_a_of_type_JavaLangString);
-          String str = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.getCurrentAccountUin();
+          ((Bundle)localObject).putString("schemaurl", this.c);
+          String str = this.d.f.app.getCurrentAccountUin();
           ((Bundle)localObject).putString("uin", str);
-          ((Bundle)localObject).putString("vkey", ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.getManager(2)).getSkey(str));
-          OpenAppClient.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, (Bundle)localObject);
+          ((Bundle)localObject).putString("vkey", ((TicketManager)this.d.f.app.getManager(2)).getSkey(str));
+          OpenAppClient.a(this.d.f, (Bundle)localObject);
         }
-        else if (((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a))
+        else if (((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(this.b.b))
         {
-          AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, AnimationUtils.a(paramView));
+          AIOEmotionFragment.a(paramView.getContext(), this.b.b, this.d.f.K, AnimationUtils.a(paramView));
         }
         else
         {
-          i = this.jdField_a_of_type_Int;
+          i = this.a;
           if ((i == -30002) || (i == -30003)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.isInMixedMsg = true;
+            this.b.b.isInMixedMsg = true;
           }
-          PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, paramView.getContext(), paramView, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, false, true, true, null);
+          PicItemBuilder.a(this.d.f.app, paramView.getContext(), paramView, this.b.b, this.d.f.K, false, true, true, null);
         }
       }
       else {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
+        ChatActivityUtils.a(this.d.f, this.d.f.app, this.b.b.action, this.b.b.shareAppID, this.b.b.msgtype);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -73,7 +73,7 @@ class ChatHistory$ChatHistoryAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.9
  * JD-Core Version:    0.7.0.1
  */

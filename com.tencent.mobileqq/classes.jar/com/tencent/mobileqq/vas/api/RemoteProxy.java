@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.vas.api;
 
+import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCCallback.Stub;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -15,6 +18,7 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 public class RemoteProxy
 {
@@ -26,42 +30,52 @@ public class RemoteProxy
   public static EIPCResult a(QIPCModule paramQIPCModule, String paramString, Bundle paramBundle, int paramInt)
   {
     boolean bool = QLog.isColorLevel();
-    int i = 0;
+    int j = 0;
     if (bool) {
       QLog.d("RemoteProxy", 2, new Object[] { "action:", paramString, "  callbackId:", Integer.valueOf(paramInt) });
     }
+    Object localObject2;
     Object localObject1;
     Object localObject3;
     String str1;
-    Object localObject2;
-    int j;
     if (!TextUtils.isEmpty(paramString))
     {
       if (!paramString.contains("$")) {
         return null;
       }
-      localObject1 = paramString.split("\\$");
-      localObject3 = localObject1[0];
-      str1 = localObject1[1];
+      localObject2 = paramString.split("\\$");
+      localObject1 = localObject2[0];
+      i = 1;
+      while (i < localObject2.length - 1)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append("$");
+        ((StringBuilder)localObject3).append(localObject2[i]);
+        localObject1 = ((StringBuilder)localObject3).toString();
+        i += 1;
+      }
+      str1 = localObject2[(localObject2.length - 1)];
       try
       {
-        if (a.containsKey(localObject3))
+        if (a.containsKey(localObject1))
         {
-          localObject1 = (Class)a.get(localObject3);
+          localObject2 = (Class)a.get(localObject1);
         }
         else
         {
-          localObject1 = Class.forName((String)localObject3);
-          a.put(localObject3, localObject1);
+          localObject2 = Class.forName((String)localObject1);
+          a.put(localObject1, localObject2);
         }
-        if (d.containsKey(localObject3))
+        if (d.containsKey(localObject1))
         {
-          localObject2 = d.get(localObject3);
+          localObject1 = d.get(localObject1);
         }
         else
         {
-          localObject2 = ((Class)localObject1).newInstance();
-          d.put(localObject3, localObject2);
+          localObject3 = ((Class)localObject2).newInstance();
+          d.put(localObject1, localObject3);
+          localObject1 = localObject3;
         }
       }
       catch (Exception paramQIPCModule)
@@ -73,14 +87,13 @@ public class RemoteProxy
         paramQIPCModule.printStackTrace();
         QLog.d("RemoteProxy", 1, "onCall exception", paramQIPCModule);
       }
-      paramBundle.setClassLoader(((Class)localObject1).getClassLoader());
+      paramBundle.setClassLoader(((Class)localObject2).getClassLoader());
       localArrayList = paramBundle.getStringArrayList("__parameterTypes__");
-      j = localArrayList.size();
-      arrayOfClass = new Class[j];
-      localObject3 = new Object[j];
+      i = localArrayList.size();
+      arrayOfClass = new Class[i];
+      localObject3 = new Object[i];
     }
-    for (;;)
-    {
+    for (int i = j;; i = j + 1) {
       if (i < localArrayList.size())
       {
         Object localObject4 = new StringBuilder();
@@ -108,10 +121,10 @@ public class RemoteProxy
         }
         else
         {
-          paramQIPCModule = ((Class)localObject1).getMethod(str1, arrayOfClass);
+          paramQIPCModule = ((Class)localObject2).getMethod(str1, arrayOfClass);
           c.put(paramString, paramQIPCModule);
         }
-        paramString = paramQIPCModule.invoke(localObject2, (Object[])localObject3);
+        paramString = paramQIPCModule.invoke(localObject1, (Object[])localObject3);
         localObject1 = new EIPCResult();
         ((EIPCResult)localObject1).data = paramBundle;
         b(paramBundle, paramQIPCModule.getReturnType().getName(), "result", paramString);
@@ -119,12 +132,11 @@ public class RemoteProxy
         paramBundle.putString("resultType", paramQIPCModule.getReturnType().getName());
         return localObject1;
         return null;
-        if (localObject2 != null) {
+        if (localObject1 != null) {
           break;
         }
         return null;
       }
-      i = j + 1;
     }
   }
   
@@ -182,6 +194,47 @@ public class RemoteProxy
       localObject1 = paramBundle.getSerializable(paramString);
     }
     return localObject1;
+  }
+  
+  @Nullable
+  private static Object a(Bundle paramBundle, String paramString1, String paramString2, Class<?>[] paramArrayOfClass)
+  {
+    try
+    {
+      Class localClass = Class.forName(paramString1);
+      paramString1 = paramArrayOfClass;
+      if (localClass.getInterfaces().length > 0) {
+        paramString1 = localClass.getInterfaces();
+      }
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+      paramString1 = paramArrayOfClass;
+    }
+    if (paramString1 != null)
+    {
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramArrayOfClass = paramString1[i].getName();
+        if (paramArrayOfClass.equals("android.os.Parcelable")) {
+          return paramBundle.getParcelable(paramString2);
+        }
+        if (paramArrayOfClass.equals("java.io.Serializable")) {
+          return paramBundle.getSerializable(paramString2);
+        }
+        if (paramArrayOfClass.equals("java.util.Collection")) {
+          return a(paramBundle, paramString2);
+        }
+        if (paramArrayOfClass.equals("java.util.HashMap")) {
+          return paramBundle.getSerializable(paramString2);
+        }
+        i += 1;
+      }
+    }
+    return null;
   }
   
   public static Object a(Class paramClass)
@@ -257,41 +310,10 @@ public class RemoteProxy
       if ("java.util.HashMap".equals(paramString1)) {
         return paramBundle.getSerializable(paramString2);
       }
-      try
-      {
-        paramString1 = Class.forName(paramString1);
-        if (paramString1.getInterfaces().length > 0) {
-          paramString1 = paramString1.getInterfaces();
-        }
+      if (("eipc.EIPCCallback".equals(paramString1)) && (Build.VERSION.SDK_INT >= 18)) {
+        return EIPCCallback.Stub.asInterface(paramBundle.getBinder(paramString2));
       }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        paramString1 = null;
-      }
-      if (paramString1 != null)
-      {
-        int j = paramString1.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = paramString1[i].getName();
-          if (str.equals("android.os.Parcelable")) {
-            return paramBundle.getParcelable(paramString2);
-          }
-          if (str.equals("java.io.Serializable")) {
-            return paramBundle.getSerializable(paramString2);
-          }
-          if (str.equals("java.util.Collection")) {
-            return a(paramBundle, paramString2);
-          }
-          if (str.equals("java.util.HashMap")) {
-            return paramBundle.getSerializable(paramString2);
-          }
-          i += 1;
-        }
-      }
-      return null;
+      return a(paramBundle, paramString1, paramString2, null);
     }
     return a(paramBundle, paramString2);
   }
@@ -338,13 +360,22 @@ public class RemoteProxy
       a(paramBundle, paramString2, paramObject);
       return;
     }
-    if ((paramObject instanceof Parcelable))
+    if ("eipc.EIPCCallback".equals(paramString1))
     {
-      paramBundle.putParcelable(paramString2, (Parcelable)paramObject);
-      return;
+      if (Build.VERSION.SDK_INT >= 18) {
+        paramBundle.putBinder(paramString2, (IBinder)paramObject);
+      }
     }
-    if ((paramObject instanceof Serializable)) {
-      paramBundle.putSerializable(paramString2, (Serializable)paramObject);
+    else
+    {
+      if ((paramObject instanceof Parcelable))
+      {
+        paramBundle.putParcelable(paramString2, (Parcelable)paramObject);
+        return;
+      }
+      if ((paramObject instanceof Serializable)) {
+        paramBundle.putSerializable(paramString2, (Serializable)paramObject);
+      }
     }
   }
   
@@ -355,7 +386,7 @@ public class RemoteProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.RemoteProxy
  * JD-Core Version:    0.7.0.1
  */

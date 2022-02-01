@@ -24,9 +24,9 @@ class FeedbackSheetHelper$2$1
       paramBaseRequest.append(paramLong);
       QLog.w("FeedbackSheetHelper", 1, paramBaseRequest.toString());
     }
-    if (this.a.a != null)
+    if (this.a.c != null)
     {
-      paramBaseRequest = this.a.a;
+      paramBaseRequest = this.a.c;
       if (paramLong != 0L) {
         paramBoolean = false;
       }

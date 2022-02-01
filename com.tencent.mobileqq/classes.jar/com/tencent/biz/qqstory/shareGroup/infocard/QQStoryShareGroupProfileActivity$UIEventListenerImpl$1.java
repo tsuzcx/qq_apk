@@ -12,13 +12,13 @@ class QQStoryShareGroupProfileActivity$UIEventListenerImpl$1
   public void b(int paramInt)
   {
     super.b(paramInt);
-    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).u.getReportUserType() });
   }
   
   public void d()
   {
     super.d();
-    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = null;
+    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).H = null;
   }
 }
 

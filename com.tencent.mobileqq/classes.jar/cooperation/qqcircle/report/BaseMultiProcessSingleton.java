@@ -33,6 +33,20 @@ public abstract class BaseMultiProcessSingleton
     MobileQQ.sMobileQQ.registerReceiver(localMultiProcessBroadcastReceiver, localIntentFilter);
   }
   
+  private void putDataMap(String paramString, Object paramObject)
+  {
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (paramObject != null))
+      {
+        this.mDataMap.put(paramString, paramObject);
+        return;
+      }
+      return;
+    }
+    finally {}
+  }
+  
   private void updateDataMap(Bundle paramBundle)
   {
     if (paramBundle == null)
@@ -44,7 +58,7 @@ public abstract class BaseMultiProcessSingleton
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.mDataMap.put(str, paramBundle.get(str));
+      putDataMap(str, paramBundle.get(str));
     }
   }
   
@@ -67,13 +81,8 @@ public abstract class BaseMultiProcessSingleton
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("key_process_data_update_");
       ((StringBuilder)localObject1).append(paramString);
-      paramObject = QCircleSpUtil.a(((StringBuilder)localObject1).toString(), paramObject);
-      localObject1 = paramObject;
-      if (paramObject != null)
-      {
-        this.mDataMap.put(paramString, paramObject);
-        localObject1 = paramObject;
-      }
+      localObject1 = QCircleSpUtil.b(((StringBuilder)localObject1).toString(), paramObject);
+      putDataMap(paramString, localObject1);
     }
     paramObject = new StringBuilder();
     paramObject.append("getMultiProcessData  key = ");
@@ -105,7 +114,7 @@ public abstract class BaseMultiProcessSingleton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.BaseMultiProcessSingleton
  * JD-Core Version:    0.7.0.1
  */

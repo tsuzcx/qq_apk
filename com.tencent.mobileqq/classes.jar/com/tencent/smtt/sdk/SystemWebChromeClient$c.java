@@ -1,26 +1,33 @@
 package com.tencent.smtt.sdk;
 
-import android.webkit.GeolocationPermissions.Callback;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-
 class SystemWebChromeClient$c
-  implements GeolocationPermissionsCallback
+  implements com.tencent.smtt.export.external.interfaces.JsPromptResult
 {
-  GeolocationPermissions.Callback a;
+  android.webkit.JsPromptResult a;
   
-  SystemWebChromeClient$c(SystemWebChromeClient paramSystemWebChromeClient, GeolocationPermissions.Callback paramCallback)
+  SystemWebChromeClient$c(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.JsPromptResult paramJsPromptResult)
   {
-    this.a = paramCallback;
+    this.a = paramJsPromptResult;
   }
   
-  public void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void cancel()
   {
-    this.a.invoke(paramString, paramBoolean1, paramBoolean2);
+    this.a.cancel();
+  }
+  
+  public void confirm()
+  {
+    this.a.confirm();
+  }
+  
+  public void confirm(String paramString)
+  {
+    this.a.confirm(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.c
  * JD-Core Version:    0.7.0.1
  */

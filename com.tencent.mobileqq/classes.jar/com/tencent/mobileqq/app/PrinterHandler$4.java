@@ -15,20 +15,20 @@ class PrinterHandler$4
   
   public void a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PrinterActivity.class);
+    Intent localIntent = new Intent(this.a, PrinterActivity.class);
     localIntent.putExtra(AlbumConstants.h, 55);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localArrayList.add(this.b);
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
+    this.a.startActivity(localIntent);
+    ReportController.b(this.c.d, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterHandler.4
  * JD-Core Version:    0.7.0.1
  */

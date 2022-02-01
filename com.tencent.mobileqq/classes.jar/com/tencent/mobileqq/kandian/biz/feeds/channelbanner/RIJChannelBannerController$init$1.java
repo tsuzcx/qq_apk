@@ -26,10 +26,10 @@ public final class RIJChannelBannerController$init$1
     } else {
       paramHashMap = null;
     }
-    paramView = RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController);
+    paramView = RIJChannelBannerController.c(this.a);
     if (paramView != null)
     {
-      paramPTSComposer = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
+      paramPTSComposer = this.a;
       if (paramString == null) {
         paramString = "";
       }
@@ -51,7 +51,7 @@ public final class RIJChannelBannerController$init$1
       paramView = null;
     }
     if (!TextUtils.isEmpty((CharSequence)paramView)) {
-      ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, paramView);
+      ReadInJoyUtils.a(this.b, paramView);
     }
     paramView = paramPTSComposer;
     if (paramHashMap != null) {
@@ -64,12 +64,12 @@ public final class RIJChannelBannerController$init$1
       i = 0;
     }
     if (i == 2) {
-      RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController, paramString, 0);
+      RIJChannelBannerController.a(this.a, paramString, 0);
     }
-    paramPTSComposer = RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController);
+    paramPTSComposer = RIJChannelBannerController.c(this.a);
     if (paramPTSComposer != null)
     {
-      paramHashMap = RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController);
+      paramHashMap = RIJChannelBannerController.b(this.a);
       if (paramHashMap != null)
       {
         paramHashMap = paramHashMap.getJsonData();
@@ -81,14 +81,14 @@ public final class RIJChannelBannerController$init$1
       }
       paramPTSComposer.c(paramHashMap);
     }
-    paramHashMap = RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController);
+    paramHashMap = RIJChannelBannerController.c(this.a);
     if (paramHashMap != null) {
-      RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController, paramHashMap);
+      RIJChannelBannerController.a(this.a, paramHashMap);
     }
-    paramHashMap = RIJChannelBannerController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController);
+    paramHashMap = RIJChannelBannerController.c(this.a);
     if (paramHashMap != null)
     {
-      paramPTSComposer = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController;
+      paramPTSComposer = this.a;
       if (paramString == null) {
         paramString = "";
       }
@@ -98,7 +98,7 @@ public final class RIJChannelBannerController$init$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerController.init.1
  * JD-Core Version:    0.7.0.1
  */

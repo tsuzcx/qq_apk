@@ -31,8 +31,8 @@ public class AchillesFragmentUtils$InstallBroadcastReceiver
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("code", 1);
           localJSONObject.put("packageName", paramIntent);
-          if ((paramContext != null) && (!TextUtils.isEmpty(AchillesFragmentUtils.a()))) {
-            paramContext.callJs(AchillesFragmentUtils.a(), new String[] { localJSONObject.toString() });
+          if ((paramContext != null) && (!TextUtils.isEmpty(AchillesFragmentUtils.b()))) {
+            paramContext.callJs(AchillesFragmentUtils.b(), new String[] { localJSONObject.toString() });
           }
         }
         AchillesFragmentUtils.a("appinstall", str, paramIntent);
@@ -50,7 +50,7 @@ public class AchillesFragmentUtils$InstallBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.AchillesFragmentUtils.InstallBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

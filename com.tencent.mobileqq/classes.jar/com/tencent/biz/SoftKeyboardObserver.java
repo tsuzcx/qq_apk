@@ -11,10 +11,10 @@ import com.tencent.qphone.base.util.QLog;
 public class SoftKeyboardObserver
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private SoftKeyboardObserver.OnSoftKeyboardToggledListener jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private View a;
+  private SoftKeyboardObserver.OnSoftKeyboardToggledListener b;
+  private boolean c = false;
+  private final int d;
   
   public SoftKeyboardObserver(View paramView, SoftKeyboardObserver.OnSoftKeyboardToggledListener paramOnSoftKeyboardToggledListener)
   {
@@ -23,20 +23,20 @@ public class SoftKeyboardObserver
   
   public SoftKeyboardObserver(View paramView, SoftKeyboardObserver.OnSoftKeyboardToggledListener paramOnSoftKeyboardToggledListener, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener = paramOnSoftKeyboardToggledListener;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+    this.a = paramView;
+    this.b = paramOnSoftKeyboardToggledListener;
+    this.d = paramInt;
+    this.a.getViewTreeObserver().addOnGlobalLayoutListener(this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener = null;
+    this.b = null;
     try
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         return;
       }
     }
@@ -52,19 +52,19 @@ public class SoftKeyboardObserver
     boolean bool = true;
     try
     {
-      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-      int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      this.a.getWindowVisibleDisplayFrame(localRect);
+      int i = this.a.getRootView().getHeight();
       int j = localRect.bottom;
       int k = localRect.top;
-      if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener != null)
+      if (this.b != null)
       {
-        if (i - (j - k) < this.jdField_a_of_type_Int) {
+        if (i - (j - k) < this.d) {
           bool = false;
         }
-        if (bool != this.jdField_a_of_type_Boolean)
+        if (bool != this.c)
         {
-          this.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver$OnSoftKeyboardToggledListener.a(bool, localRect.right, localRect.bottom);
+          this.c = bool;
+          this.b.a(bool, localRect.right, localRect.bottom);
         }
       }
       return;

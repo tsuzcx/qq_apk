@@ -6,12 +6,12 @@ import mqq.app.MobileQQ;
 
 public class GScreenActionMonitor
 {
-  private GScreenActionMonitor.ScreenActionReceiver jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private VideoAppInterface a;
+  private GScreenActionMonitor.ScreenActionReceiver b;
   
   public GScreenActionMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
   public void a()
@@ -23,10 +23,10 @@ public class GScreenActionMonitor
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver = new GScreenActionMonitor.ScreenActionReceiver();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+      this.b = new GScreenActionMonitor.ScreenActionReceiver();
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver, localIntentFilter);
+        this.a.getApplication().getApplicationContext().registerReceiver(this.b, localIntentFilter);
         return;
       }
     }
@@ -40,9 +40,9 @@ public class GScreenActionMonitor
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver != null))
+      if ((this.a != null) && (this.b != null))
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver);
+        this.a.getApplication().getApplicationContext().unregisterReceiver(this.b);
         return;
       }
     }

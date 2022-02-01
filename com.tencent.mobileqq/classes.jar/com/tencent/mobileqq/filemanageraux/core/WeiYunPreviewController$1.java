@@ -31,15 +31,15 @@ class WeiYunPreviewController$1
         paramString4 = paramString5;
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback == null) {
+    if (this.a.a == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
+    this.a.a.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunPreviewController.1
  * JD-Core Version:    0.7.0.1
  */

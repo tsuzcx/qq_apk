@@ -8,70 +8,66 @@ import java.util.ArrayList;
 public class TroopFileSearchableFriend
 {
   public String a;
-  public ArrayList<HanziPinyin> a;
   public String b;
-  public ArrayList<HanziPinyin> b;
   public String c;
-  public ArrayList<HanziPinyin> c;
   public String d;
-  public ArrayList<HanziPinyin> d;
   public String e;
   public String f;
   public String g;
+  public ArrayList<HanziPinyin> h = null;
+  public ArrayList<HanziPinyin> i = null;
+  public ArrayList<HanziPinyin> j = null;
+  public ArrayList<HanziPinyin> k = null;
   
   public TroopFileSearchableFriend(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_c_of_type_JavaUtilArrayList = null;
-    this.jdField_d_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
     this.e = paramString3;
-    this.jdField_c_of_type_JavaLangString = ChnToSpell.a(paramString2, 1).toLowerCase();
-    this.jdField_d_of_type_JavaLangString = ChnToSpell.a(paramString2, 2).toLowerCase();
-    this.f = ChnToSpell.a(paramString3, 1).toLowerCase();
-    this.g = ChnToSpell.a(paramString3, 2).toLowerCase();
+    this.c = ChnToSpell.b(paramString2, 1).toLowerCase();
+    this.d = ChnToSpell.b(paramString2, 2).toLowerCase();
+    this.f = ChnToSpell.b(paramString3, 1).toLowerCase();
+    this.g = ChnToSpell.b(paramString3, 2).toLowerCase();
     boolean bool = TextUtils.isEmpty(paramString2);
-    int j = 0;
-    int k;
-    int i;
+    int n = 0;
+    int i1;
+    int m;
     if (!bool)
     {
       paramString1 = paramString2.trim();
-      k = paramString1.length();
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(k);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(k);
-      i = 0;
-      while (i < k)
+      i1 = paramString1.length();
+      this.h = new ArrayList(i1);
+      this.i = new ArrayList(i1);
+      m = 0;
+      while (m < i1)
       {
-        int m = paramString1.charAt(i);
-        if ((m >= 19968) && (m <= 40869))
+        int i2 = paramString1.charAt(m);
+        if ((i2 >= 19968) && (i2 <= 40869))
         {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_a_of_type_JavaUtilArrayList.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_b_of_type_JavaUtilArrayList.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+          paramString2 = paramString1.substring(m, m + 1);
+          this.h.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.b(paramString2, 1).toLowerCase()));
+          this.i.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.b(paramString2, 2).toLowerCase()));
         }
-        i += 1;
+        m += 1;
       }
     }
     if (!TextUtils.isEmpty(paramString3))
     {
       paramString1 = paramString3.trim();
-      k = paramString1.length();
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(k);
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(k);
-      i = j;
-      while (i < k)
+      i1 = paramString1.length();
+      this.j = new ArrayList(i1);
+      this.k = new ArrayList(i1);
+      m = n;
+      while (m < i1)
       {
-        j = paramString1.charAt(i);
-        if ((j >= 19968) && (j <= 40869))
+        n = paramString1.charAt(m);
+        if ((n >= 19968) && (n <= 40869))
         {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_c_of_type_JavaUtilArrayList.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_d_of_type_JavaUtilArrayList.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
+          paramString2 = paramString1.substring(m, m + 1);
+          this.j.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.b(paramString2, 1).toLowerCase()));
+          this.k.add(new HanziPinyin(paramContext, paramString2, ChnToSpell.b(paramString2, 2).toLowerCase()));
         }
-        i += 1;
+        m += 1;
       }
     }
   }
@@ -85,63 +81,42 @@ public class TroopFileSearchableFriend
       return paramTroopFileSearchableFriend.g.indexOf(paramString);
     }
     if (paramInt == 2) {
-      return paramTroopFileSearchableFriend.jdField_c_of_type_JavaLangString.indexOf(paramString);
+      return paramTroopFileSearchableFriend.c.indexOf(paramString);
     }
     if (paramInt == 3) {
-      return paramTroopFileSearchableFriend.jdField_d_of_type_JavaLangString.indexOf(paramString);
+      return paramTroopFileSearchableFriend.d.indexOf(paramString);
     }
     return -1;
   }
   
   protected static int a(int paramInt, ArrayList<HanziPinyin> paramArrayList)
   {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    int i1 = paramArrayList.size();
+    int m = 0;
+    int n = 0;
+    while (m < i1)
     {
-      HanziPinyin localHanziPinyin = (HanziPinyin)paramArrayList.get(i);
-      if (localHanziPinyin.jdField_a_of_type_Int + j > paramInt) {
-        return j;
+      HanziPinyin localHanziPinyin = (HanziPinyin)paramArrayList.get(m);
+      if (localHanziPinyin.c + n > paramInt) {
+        return n;
       }
-      j += localHanziPinyin.jdField_a_of_type_Int;
-      i += 1;
+      n += localHanziPinyin.c;
+      m += 1;
     }
-    return j;
-  }
-  
-  protected static final int a(String paramString, TroopFileSearchableFriend paramTroopFileSearchableFriend)
-  {
-    String str = paramTroopFileSearchableFriend.f;
-    if ((str != null) && (str.indexOf(paramString) > -1)) {
-      return 5;
-    }
-    str = paramTroopFileSearchableFriend.g;
-    if ((str != null) && (str.indexOf(paramString) > -1)) {
-      return 6;
-    }
-    str = paramTroopFileSearchableFriend.jdField_c_of_type_JavaLangString;
-    if ((str != null) && (str.indexOf(paramString) > -1)) {
-      return 2;
-    }
-    paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.jdField_d_of_type_JavaLangString;
-    if ((paramTroopFileSearchableFriend != null) && (paramTroopFileSearchableFriend.indexOf(paramString) > -1)) {
-      return 3;
-    }
-    return 0;
+    return n;
   }
   
   protected static final String a(int paramInt1, int paramInt2, String paramString, TroopFileSearchableFriend paramTroopFileSearchableFriend)
   {
     String str = null;
     if (paramInt1 == 5) {
-      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.jdField_c_of_type_JavaUtilArrayList;
+      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.j;
     } else if (paramInt1 == 6) {
-      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.jdField_d_of_type_JavaUtilArrayList;
+      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.k;
     } else if (paramInt1 == 2) {
-      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.jdField_a_of_type_JavaUtilArrayList;
+      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.h;
     } else if (paramInt1 == 3) {
-      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.jdField_b_of_type_JavaUtilArrayList;
+      paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.i;
     } else {
       paramTroopFileSearchableFriend = null;
     }
@@ -155,77 +130,98 @@ public class TroopFileSearchableFriend
   
   public static String a(int paramInt1, int paramInt2, ArrayList<HanziPinyin> paramArrayList)
   {
-    int m = paramArrayList.size();
+    int i2 = paramArrayList.size();
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    while (i < m)
+    int m = 0;
+    int n = 0;
+    int i1 = 0;
+    while (m < i2)
     {
-      HanziPinyin localHanziPinyin = (HanziPinyin)paramArrayList.get(i);
-      if (j == paramInt1) {
-        k = 1;
+      HanziPinyin localHanziPinyin = (HanziPinyin)paramArrayList.get(m);
+      if (n == paramInt1) {
+        i1 = 1;
       }
-      if (j == paramInt2) {
+      if (n == paramInt2) {
         break;
       }
-      if (k != 0) {
-        localStringBuilder.append(localHanziPinyin.jdField_a_of_type_JavaLangString);
+      if (i1 != 0) {
+        localStringBuilder.append(localHanziPinyin.a);
       }
-      j += localHanziPinyin.jdField_a_of_type_Int;
-      i += 1;
+      n += localHanziPinyin.c;
+      m += 1;
     }
     return localStringBuilder.toString();
   }
   
   public static final String a(String paramString, TroopFileSearchableFriend paramTroopFileSearchableFriend)
   {
-    int i = a(paramString, paramTroopFileSearchableFriend);
-    int j = a(i, paramString, paramTroopFileSearchableFriend);
-    if (((j == 0) && (i == 5) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.f))) || ((i == 6) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.g)))) {
+    int m = b(paramString, paramTroopFileSearchableFriend);
+    int n = a(m, paramString, paramTroopFileSearchableFriend);
+    if (((n == 0) && (m == 5) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.f))) || ((m == 6) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.g)))) {
       return paramTroopFileSearchableFriend.e;
     }
-    if (((j == 0) && (i == 2) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.jdField_c_of_type_JavaLangString))) || ((i == 3) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.jdField_d_of_type_JavaLangString)))) {
-      return paramTroopFileSearchableFriend.jdField_b_of_type_JavaLangString;
+    if (((n == 0) && (m == 2) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.c))) || ((m == 3) && (paramString.equalsIgnoreCase(paramTroopFileSearchableFriend.d)))) {
+      return paramTroopFileSearchableFriend.b;
     }
-    if (j > -1) {
-      return a(i, j, paramString, paramTroopFileSearchableFriend);
+    if (n > -1) {
+      return a(m, n, paramString, paramTroopFileSearchableFriend);
     }
     return null;
   }
   
   protected static int b(int paramInt, ArrayList<HanziPinyin> paramArrayList)
   {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    int i1 = paramArrayList.size();
+    int m = 0;
+    int n = 0;
+    while (m < i1)
     {
-      j += ((HanziPinyin)paramArrayList.get(i)).jdField_a_of_type_Int;
-      if (j >= paramInt) {
-        return j;
+      n += ((HanziPinyin)paramArrayList.get(m)).c;
+      if (n >= paramInt) {
+        return n;
       }
-      i += 1;
+      m += 1;
     }
-    return j;
+    return n;
+  }
+  
+  protected static final int b(String paramString, TroopFileSearchableFriend paramTroopFileSearchableFriend)
+  {
+    String str = paramTroopFileSearchableFriend.f;
+    if ((str != null) && (str.indexOf(paramString) > -1)) {
+      return 5;
+    }
+    str = paramTroopFileSearchableFriend.g;
+    if ((str != null) && (str.indexOf(paramString) > -1)) {
+      return 6;
+    }
+    str = paramTroopFileSearchableFriend.c;
+    if ((str != null) && (str.indexOf(paramString) > -1)) {
+      return 2;
+    }
+    paramTroopFileSearchableFriend = paramTroopFileSearchableFriend.d;
+    if ((paramTroopFileSearchableFriend != null) && (paramTroopFileSearchableFriend.indexOf(paramString) > -1)) {
+      return 3;
+    }
+    return 0;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2;
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("uin = ");
-      localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder2.append(this.a);
       localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (this.jdField_b_of_type_JavaLangString != null)
+    if (this.b != null)
     {
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append(", name = ");
-      localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder2.append(this.b);
       localStringBuilder1.append(localStringBuilder2.toString());
     }
     if (this.e != null)
@@ -240,7 +236,7 @@ public class TroopFileSearchableFriend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchableFriend
  * JD-Core Version:    0.7.0.1
  */

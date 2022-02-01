@@ -6,17 +6,17 @@ import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
 public class AuidoTransitionAssetDelegate
   implements ImageAssetDelegate
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  private Context b;
   
   public AuidoTransitionAssetDelegate(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     paramContext = new StringBuilder();
     paramContext.append(AudioTransitionAnimManager.b);
     paramContext.append(paramString);
     paramContext.append("images/");
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
+    this.a = paramContext.toString();
   }
   
   /* Error */
@@ -24,13 +24,13 @@ public class AuidoTransitionAssetDelegate
   public android.graphics.Bitmap fetchBitmap(com.tencent.mobileqq.dinifly.LottieImageAsset paramLottieImageAsset)
   {
     // Byte code:
-    //   0: new 18	java/lang/StringBuilder
+    //   0: new 19	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   7: astore_2
     //   8: aload_2
     //   9: aload_0
-    //   10: getfield 36	com/tencent/mobileqq/activity/aio/audiopanel/AuidoTransitionAssetDelegate:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   10: getfield 36	com/tencent/mobileqq/activity/aio/audiopanel/AuidoTransitionAssetDelegate:a	Ljava/lang/String;
     //   13: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload_2
@@ -68,9 +68,9 @@ public class AuidoTransitionAssetDelegate
     //   71: aload_3
     //   72: areturn
     //   73: astore_1
-    //   74: new 18	java/lang/StringBuilder
+    //   74: new 19	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   78: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   81: astore_2
     //   82: aload_2
     //   83: ldc 74
@@ -99,9 +99,9 @@ public class AuidoTransitionAssetDelegate
     //   122: astore_2
     //   123: aload_2
     //   124: astore_1
-    //   125: new 18	java/lang/StringBuilder
+    //   125: new 19	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   132: astore 4
     //   134: aload_2
     //   135: astore_1
@@ -130,9 +130,9 @@ public class AuidoTransitionAssetDelegate
     //   177: aconst_null
     //   178: areturn
     //   179: astore_1
-    //   180: new 18	java/lang/StringBuilder
+    //   180: new 19	java/lang/StringBuilder
     //   183: dup
-    //   184: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   184: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   187: astore_2
     //   188: aload_2
     //   189: ldc 74
@@ -157,9 +157,9 @@ public class AuidoTransitionAssetDelegate
     //   222: invokevirtual 72	java/io/InputStream:close	()V
     //   225: goto +38 -> 263
     //   228: astore_1
-    //   229: new 18	java/lang/StringBuilder
+    //   229: new 19	java/lang/StringBuilder
     //   232: dup
-    //   233: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   233: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   236: astore_3
     //   237: aload_3
     //   238: ldc 74
@@ -211,7 +211,7 @@ public class AuidoTransitionAssetDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AuidoTransitionAssetDelegate
  * JD-Core Version:    0.7.0.1
  */

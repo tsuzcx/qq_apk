@@ -4,13 +4,14 @@ import java.util.List;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params$Builder
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int a = 1;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> g;
+  private int h;
   
   public Builder a(int paramInt)
   {
@@ -20,7 +21,7 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$Builder
   
   public Builder a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.g = paramList;
     return this;
   }
   
@@ -52,10 +53,16 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$Builder
     this.f = paramInt;
     return this;
   }
+  
+  public Builder f(int paramInt)
+  {
+    this.h = paramInt;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule.Request0xb81Params.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ public class ExtfGroupFileDownloader
   extends ExtfBaseFileDownloader
   implements ITroopFileDownloader
 {
-  protected ITroopFileDownloaderSink a;
-  protected String b;
+  protected ITroopFileDownloaderSink l;
+  protected String m;
   
   public ExtfGroupFileDownloader(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, ExtfDownloadFileInfo paramExtfDownloadFileInfo)
   {
@@ -47,40 +47,35 @@ public class ExtfGroupFileDownloader
   
   protected ExcitingTransferDownloadConfig a()
   {
-    return ((IExcitingTransferAdapter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IExcitingTransferAdapter.class, "")).getGroupDownloadConfig();
-  }
-  
-  protected String a()
-  {
-    return AppConstants.SDCARD_FILE_SAVE_PATH;
+    return ((IExcitingTransferAdapter)this.d.getRuntimeService(IExcitingTransferAdapter.class, "")).getGroupDownloadConfig();
   }
   
   protected void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     super.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null)
+    if (this.l != null)
     {
       Bundle localBundle = new Bundle();
       if (paramExcitingTransferDownloadCompletedInfo != null) {
         localBundle.putInt("nSrvReturnCode", paramExcitingTransferDownloadCompletedInfo.mnSrvReturnCode);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(true, a(), paramInt, "", "", localBundle);
+      this.l.a(true, h(), paramInt, "", "", localBundle);
     }
   }
   
   protected void a(long paramLong1, long paramLong2, long paramLong3)
   {
     super.a(paramLong1, paramLong2, paramLong3);
-    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.l;
     if (localITroopFileDownloaderSink != null) {
-      localITroopFileDownloaderSink.a(paramLong2, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a());
+      localITroopFileDownloaderSink.a(paramLong2, this.h.c());
     }
   }
   
   protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     super.a(paramExcitingTransferDownloadCompletedInfo);
-    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.l;
     if (localITroopFileDownloaderSink != null) {
       localITroopFileDownloaderSink.a(paramExcitingTransferDownloadCompletedInfo.mstrFileSavePath);
     }
@@ -88,77 +83,82 @@ public class ExtfGroupFileDownloader
   
   public void a(ITroopFileDownloaderSink paramITroopFileDownloaderSink)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink = paramITroopFileDownloaderSink;
+    this.l = paramITroopFileDownloaderSink;
   }
   
   protected void a(String paramString)
   {
-    this.b = paramString;
+    this.m = paramString;
   }
   
-  public int b()
+  protected String d()
   {
-    if (a() != null) {
-      return a().muRetryTimes;
-    }
-    return 0;
+    return AppConstants.SDCARD_FILE_SAVE_PATH;
   }
   
-  protected String b()
+  protected String e()
   {
-    return this.b;
+    return this.m;
   }
   
-  public void b()
+  public void k()
   {
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    this.a = false;
+    b();
   }
   
-  public boolean b()
+  public void l()
   {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Id[");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("] cancelTask");
     QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, localStringBuilder.toString());
-    a();
+    c();
   }
   
-  public int d()
+  public int m()
   {
-    if (a() != null) {
-      return a().muProxyType;
+    if (i() != null) {
+      return i().muRetryTimes;
     }
     return 0;
   }
   
-  public String d()
+  public boolean n()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return false;
   }
   
-  public String e()
+  public String o()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.k;
+  }
+  
+  public String p()
+  {
+    return this.k;
+  }
+  
+  public int q()
+  {
+    return 0;
+  }
+  
+  public int r()
+  {
+    if (i() != null) {
+      return i().muProxyType;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfGroupFileDownloader
  * JD-Core Version:    0.7.0.1
  */

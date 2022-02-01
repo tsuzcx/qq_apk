@@ -15,7 +15,7 @@ public class TroopCommonTeensModeFilter
   
   public void a(PlusPanelAppLoader paramPlusPanelAppLoader, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
     if ((localTroopInfo != null) && (localTroopInfo.isHomeworkTroop())) {
       this.c = this.b;
     } else {
@@ -31,7 +31,7 @@ public class TroopCommonTeensModeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.filter.TroopCommonTeensModeFilter
  * JD-Core Version:    0.7.0.1
  */

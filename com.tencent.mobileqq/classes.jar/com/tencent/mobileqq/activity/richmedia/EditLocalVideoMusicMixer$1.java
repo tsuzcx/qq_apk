@@ -13,7 +13,7 @@ class EditLocalVideoMusicMixer$1
     if (EditLocalVideoMusicMixer.a(this.a))
     {
       EditLocalVideoMusicMixer.a(this.a, false);
-      EditLocalVideoMusicMixer.a(this.a);
+      EditLocalVideoMusicMixer.b(this.a);
     }
   }
   
@@ -27,7 +27,7 @@ class EditLocalVideoMusicMixer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixer.1
  * JD-Core Version:    0.7.0.1
  */

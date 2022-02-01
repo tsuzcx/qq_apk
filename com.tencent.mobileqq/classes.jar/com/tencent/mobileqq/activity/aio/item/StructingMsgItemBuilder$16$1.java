@@ -33,20 +33,20 @@ class StructingMsgItemBuilder$16$1
         {
           paramInt = 1;
           i = 1;
-          StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_AndroidAppActivity);
+          StructingMsgItemBuilder.a(this.b.d, this.b.b);
           paramInt = i;
         }
         else
         {
           paramInt = j;
-          StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_AndroidAppActivity);
+          StructingMsgItemBuilder.b(this.b.d, this.b.b);
           paramInt = i;
         }
       }
       else
       {
         paramInt = j;
-        StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_AndroidAppActivity);
+        StructingMsgItemBuilder.b(this.b.d, this.b.b);
         paramInt = i;
       }
     }
@@ -57,26 +57,26 @@ class StructingMsgItemBuilder$16$1
       break label175;
     }
     paramInt = j;
-    StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_AndroidAppActivity);
+    StructingMsgItemBuilder.b(this.b.d, this.b.b);
     paramInt = i;
     break label192;
     label175:
-    StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_AndroidAppActivity);
+    StructingMsgItemBuilder.b(this.b.d, this.b.b);
     label192:
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$16.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a;
+    paramBundle = this.b.d.d;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
     ((StringBuilder)localObject).append(paramInt);
     localObject = ((StringBuilder)localObject).toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     ReportController.b(paramBundle, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.16.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class NearbyGrayTipsManager$GrayTipStatisticData
     localStringBuilder.append(paramInt);
     paramString = MD5.toMD5(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a());
+    localStringBuilder.append(NearbyGrayTipsManager.d());
     localStringBuilder.append(GrayTipStatisticData.class.getSimpleName());
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
@@ -122,7 +122,7 @@ public class NearbyGrayTipsManager$GrayTipStatisticData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipStatisticData
  * JD-Core Version:    0.7.0.1
  */

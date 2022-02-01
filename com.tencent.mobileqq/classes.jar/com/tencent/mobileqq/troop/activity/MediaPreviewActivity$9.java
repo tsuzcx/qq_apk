@@ -15,7 +15,7 @@ class MediaPreviewActivity$9
   {
     try
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      paramVarArgs = this.a.saveTo(this.b);
     }
     catch (Exception paramVarArgs)
     {
@@ -26,24 +26,24 @@ class MediaPreviewActivity$9
     }
     if (paramVarArgs != null)
     {
-      ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
+      ImageUtil.b(this.c, paramVarArgs);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694913));
+      localStringBuilder.append(this.c.getString(2131892639));
       localStringBuilder.append(" ");
       localStringBuilder.append(paramVarArgs);
       return localStringBuilder.toString();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131694911);
+    return this.c.getString(2131892637);
   }
   
   protected void a(String paramString)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    QQToast.makeText(this.c, paramString, 0).show(this.c.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.9
  * JD-Core Version:    0.7.0.1
  */

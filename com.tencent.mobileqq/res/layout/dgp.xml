@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/b4k" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <com.tencent.timi.game.live.impl.danmuku.EsportsDanmakuView android:id="@id/n1y" android:layout_width="fill_parent" android:layout_height="200.0dip" />
+    <Button android:id="@id/in0" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="发送弹幕" />
+    <Button android:id="@id/mvo" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="5.0dip" android:text="清屏弹幕" />
+    <Button android:id="@id/psd" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="5.0dip" android:text="清屏弹幕" />
+</LinearLayout>

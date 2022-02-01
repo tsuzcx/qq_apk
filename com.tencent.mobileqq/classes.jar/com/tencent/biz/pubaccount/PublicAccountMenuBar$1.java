@@ -12,17 +12,17 @@ class PublicAccountMenuBar$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ButtonInfo);
+      PublicAccountMenuBar.a(this.d, this.b);
       return;
     }
-    PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, this.jdField_a_of_type_ComTencentBizUiMenuItem);
+    PublicAccountMenuBar.a(this.d, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountMenuBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ public class NetSearchTemplateBigImageItem
   extends NetSearchTemplateBaseItem
 {
   public static final String a;
-  public float a;
-  public int a;
-  public CharSequence a;
-  public float b;
-  public CharSequence b;
-  public String b;
-  public String j;
-  public String k;
+  public int b;
+  public String c;
+  public float d;
+  public float e;
+  public String f;
+  public String t;
+  public CharSequence u;
+  public CharSequence v;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.uniteSearch.");
     localStringBuilder.append(NetSearchTemplateBigImageItem.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public NetSearchTemplateBigImageItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
@@ -47,32 +47,32 @@ public class NetSearchTemplateBigImageItem
     return i;
   }
   
-  public void a(String paramString)
+  public void o_(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
-      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
-      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
-      this.j = paramString.optString("topLeftTagText");
-      this.k = paramString.optString("topLeftTagColor");
-      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
-      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
+      this.b = paramString.optInt("bannerImageType");
+      this.c = paramString.optString("bannerImageUrl");
+      this.d = ((float)paramString.optDouble("bannerImageWidth"));
+      this.e = ((float)paramString.optDouble("bannerImageHeight"));
+      this.f = paramString.optString("topLeftTagText");
+      this.t = paramString.optString("topLeftTagColor");
+      this.u = paramString.optString("firstLineText");
+      this.v = paramString.optString("secondLineText");
       return;
     }
     catch (JSONException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+        QLog.e(a, 2, QLog.getStackTraceString(paramString));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBigImageItem
  * JD-Core Version:    0.7.0.1
  */

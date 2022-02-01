@@ -31,6 +31,7 @@ public class NativeMemoryMonitor
   private static volatile boolean sFileHooked = false;
   private static volatile boolean sSoLoadRes = false;
   private static volatile boolean sSoLoaded = false;
+  private static volatile boolean soLoadHooked;
   private final Set<IFileMonitor> fileMonitors = new HashSet();
   private ReadWriteLock fileMonitorsLock = new ReentrantReadWriteLock();
   private boolean mInit = false;
@@ -289,95 +290,95 @@ public class NativeMemoryMonitor
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 76	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   6: invokeinterface 263 1 0
-    //   11: invokeinterface 172 1 0
+    //   3: getfield 77	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   6: invokeinterface 264 1 0
+    //   11: invokeinterface 173 1 0
     //   16: aload_0
-    //   17: getfield 71	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitors	Ljava/util/Set;
+    //   17: getfield 72	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitors	Ljava/util/Set;
     //   20: aload_1
-    //   21: invokeinterface 273 2 0
+    //   21: invokeinterface 274 2 0
     //   26: pop
     //   27: aload_0
-    //   28: getfield 76	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   31: invokeinterface 263 1 0
-    //   36: invokeinterface 198 1 0
-    //   41: invokestatic 278	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:initFromJava	()V
+    //   28: getfield 77	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   31: invokeinterface 264 1 0
+    //   36: invokeinterface 199 1 0
+    //   41: invokestatic 279	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:initFromJava	()V
     //   44: aload_0
-    //   45: getstatic 281	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:markArtMethod	J
-    //   48: getstatic 284	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:mark2ArtMethod	J
-    //   51: invokespecial 286	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeJniHookInit	(JJ)V
-    //   54: getstatic 288	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sFileHooked	Z
+    //   45: getstatic 282	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:markArtMethod	J
+    //   48: getstatic 285	com/tencent/mobileqq/nativememorymonitor/library/ClassToFindJniOffset:mark2ArtMethod	J
+    //   51: invokespecial 287	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeJniHookInit	(JJ)V
+    //   54: getstatic 289	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sFileHooked	Z
     //   57: ifne +128 -> 185
     //   60: iconst_1
-    //   61: putstatic 288	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sFileHooked	Z
-    //   64: getstatic 294	android/os/Build$VERSION:SDK_INT	I
+    //   61: putstatic 289	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sFileHooked	Z
+    //   64: getstatic 295	android/os/Build$VERSION:SDK_INT	I
     //   67: bipush 28
     //   69: if_icmple +51 -> 120
     //   72: aload_0
-    //   73: ldc_w 296
-    //   76: ldc_w 297
+    //   73: ldc_w 297
+    //   76: ldc_w 298
     //   79: iconst_1
-    //   80: anewarray 299	java/lang/Class
+    //   80: anewarray 300	java/lang/Class
     //   83: dup
     //   84: iconst_0
-    //   85: ldc 211
+    //   85: ldc 212
     //   87: aastore
-    //   88: invokestatic 305	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
-    //   91: ldc_w 296
-    //   94: ldc_w 307
+    //   88: invokestatic 306	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
+    //   91: ldc_w 297
+    //   94: ldc_w 308
     //   97: iconst_2
-    //   98: anewarray 299	java/lang/Class
+    //   98: anewarray 300	java/lang/Class
     //   101: dup
     //   102: iconst_0
-    //   103: ldc 211
+    //   103: ldc 212
     //   105: aastore
     //   106: dup
     //   107: iconst_1
-    //   108: ldc 211
+    //   108: ldc 212
     //   110: aastore
-    //   111: invokestatic 305	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
-    //   114: invokespecial 309	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
+    //   111: invokestatic 306	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
+    //   114: invokespecial 310	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
     //   117: goto +68 -> 185
-    //   120: getstatic 294	android/os/Build$VERSION:SDK_INT	I
+    //   120: getstatic 295	android/os/Build$VERSION:SDK_INT	I
     //   123: bipush 28
     //   125: if_icmpne +54 -> 179
     //   128: aload_0
-    //   129: ldc_w 311
-    //   132: ldc_w 313
+    //   129: ldc_w 312
+    //   132: ldc_w 314
     //   135: iconst_1
-    //   136: anewarray 299	java/lang/Class
+    //   136: anewarray 300	java/lang/Class
     //   139: dup
     //   140: iconst_0
-    //   141: ldc_w 315
+    //   141: ldc_w 316
     //   144: aastore
-    //   145: invokestatic 305	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
-    //   148: ldc_w 311
-    //   151: ldc_w 317
+    //   145: invokestatic 306	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
+    //   148: ldc_w 312
+    //   151: ldc_w 318
     //   154: iconst_2
-    //   155: anewarray 299	java/lang/Class
+    //   155: anewarray 300	java/lang/Class
     //   158: dup
     //   159: iconst_0
-    //   160: ldc_w 315
+    //   160: ldc_w 316
     //   163: aastore
     //   164: dup
     //   165: iconst_1
-    //   166: ldc_w 315
+    //   166: ldc_w 316
     //   169: aastore
-    //   170: invokestatic 305	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
-    //   173: invokespecial 309	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
+    //   170: invokestatic 306	com/tencent/mobileqq/nativememorymonitor/library/Utils:getHiddenArtMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)J
+    //   173: invokespecial 310	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
     //   176: goto +9 -> 185
     //   179: aload_0
     //   180: lconst_0
     //   181: lconst_0
-    //   182: invokespecial 309	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
+    //   182: invokespecial 310	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeFileHook	(JJ)V
     //   185: aload_0
     //   186: monitorexit
     //   187: return
     //   188: astore_1
     //   189: aload_0
-    //   190: getfield 76	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   193: invokeinterface 263 1 0
-    //   198: invokeinterface 198 1 0
+    //   190: getfield 77	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:fileMonitorsLock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   193: invokeinterface 264 1 0
+    //   198: invokeinterface 199 1 0
     //   203: aload_1
     //   204: athrow
     //   205: astore_1
@@ -403,18 +404,23 @@ public class NativeMemoryMonitor
     try
     {
       externalProvider = paramExternalProvider;
+      boolean bool = soLoadHooked;
+      if (bool) {
+        return;
+      }
       paramExternalProvider = paramContext.getApplicationInfo();
       ClassToFindJniOffset.initFromJava();
       nativeJniHookInit(ClassToFindJniOffset.markArtMethod, ClassToFindJniOffset.mark2ArtMethod);
       paramContext = paramContext.getPackageName();
       paramExternalProvider = paramExternalProvider.nativeLibraryDir;
       long l;
-      if (Build.VERSION.SDK_INT < 30) {
+      if (Build.VERSION.SDK_INT < 29) {
         l = 0L;
       } else {
         l = Utils.getArtMethod(Runtime.class, "nativeLoad", new Class[] { String.class, ClassLoader.class, Class.class });
       }
       nativeSoLoadHook(paramContext, paramExternalProvider, l);
+      soLoadHooked = true;
       return;
     }
     finally {}
@@ -422,7 +428,7 @@ public class NativeMemoryMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nativememorymonitor.library.NativeMemoryMonitor
  * JD-Core Version:    0.7.0.1
  */

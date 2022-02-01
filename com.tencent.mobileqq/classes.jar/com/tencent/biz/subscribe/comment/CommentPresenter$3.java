@@ -11,7 +11,7 @@ class CommentPresenter$3
   
   public void onClick(View paramView)
   {
-    CommentPresenter.a(this.a);
+    CommentPresenter.e(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

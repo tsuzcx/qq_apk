@@ -23,7 +23,6 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.jsp.X5ApiPlugin;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.vaswebviewplugin.VasBaseWebviewUtil;
@@ -34,7 +33,9 @@ import com.tencent.mobileqq.webview.swift.injector.ISwiftBrowserTBSInjector;
 import com.tencent.mobileqq.webview.swift.injector.SwiftBrowserTBSInjectorUtil;
 import com.tencent.mobileqq.webview.util.ITbsDownloader;
 import com.tencent.mobileqq.webview.webso.SHA1Util;
-import com.tencent.open.temp.api.IWebViewOpenSdkApi;
+import com.tencent.open.api.WebViewOpenSdkApi;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.QbSdk;
@@ -56,45 +57,45 @@ public class SwiftBrowserTBSHandler
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
   implements Handler.Callback
 {
-  private static ISwiftBrowserTBSInjector jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserTBSInjector = ;
-  long jdField_a_of_type_Long = 0L;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Dialog jdField_a_of_type_AndroidAppDialog = null;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  WebViewProvider jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
-  Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  String jdField_a_of_type_JavaLangString = null;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = null;
-  boolean jdField_a_of_type_Boolean = false;
+  private static ISwiftBrowserTBSInjector m = ;
+  Activity a;
+  WebViewProvider c;
+  MqqHandler d = null;
+  final Object e = new Object();
+  Dialog f = null;
+  Boolean g = Boolean.valueOf(false);
+  long h = 0L;
+  String i = null;
+  boolean j = false;
+  BroadcastReceiver k;
+  private HashSet<String> l;
   
   private static Pair<Integer, Integer> a(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
-    int j = 0;
+    int i1 = 0;
     if (!bool)
     {
       paramString = Uri.parse(paramString);
       if (paramString.isHierarchical())
       {
         paramString = paramString.getHost();
-        if ((!TextUtils.isEmpty(paramString)) && (AuthorizeConfig.a().j(paramString)))
+        if ((!TextUtils.isEmpty(paramString)) && (AuthorizeConfig.a().r(paramString)))
         {
-          j = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
-          i = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+          i1 = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
+          n = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
           if (!paramString.contains("cmshow"))
           {
-            i -= Utils.a(54.0F, BaseApplication.getContext().getResources());
+            n -= Utils.a(54.0F, BaseApplication.getContext().getResources());
             break label102;
           }
           break label102;
         }
       }
     }
-    int i = 0;
+    int n = 0;
     label102:
-    return new Pair(Integer.valueOf(j), Integer.valueOf(i));
+    return new Pair(Integer.valueOf(i1), Integer.valueOf(n));
   }
   
   private ITbsDownloader a(AppRuntime paramAppRuntime)
@@ -110,12 +111,49 @@ public class SwiftBrowserTBSHandler
     ThreadManager.post(new SwiftBrowserTBSHandler.9(paramString, paramWebView), 5, null, true);
   }
   
+  private void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    if (paramBundle.containsKey("url"))
+    {
+      String str1 = paramBundle.getString("url");
+      if ((!TextUtils.isEmpty(str1)) && (str1.startsWith("http")))
+      {
+        String str2 = Uri.parse(str1).getQueryParameter("_bid");
+        if (!TextUtils.isEmpty(str2))
+        {
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("ServiceWorkerOffline Notify Resource RequestURL: ");
+            localStringBuilder.append(paramBundle.getString("url"));
+            QLog.i("SwiftBrowserTBSHandler", 2, localStringBuilder.toString());
+          }
+          if (this.l == null) {
+            this.l = new HashSet(6);
+          }
+          if (!this.l.contains(str2))
+          {
+            this.l.add(str2);
+            ThreadManager.getUIHandler().postDelayed(new SwiftBrowserTBSHandler.4(this, str1), 5000L);
+          }
+        }
+      }
+    }
+  }
+  
   private static void b(WebView paramWebView, String paramString1, String paramString2)
   {
     Object localObject = a(paramString1);
-    int i = ((Integer)((Pair)localObject).first).intValue();
-    int j = ((Integer)((Pair)localObject).second).intValue();
-    if ((i > 0) && (j > 0) && (paramWebView != null))
+    int n = ((Integer)((Pair)localObject).first).intValue();
+    int i1 = ((Integer)((Pair)localObject).second).intValue();
+    if ((n > 0) && (i1 > 0) && (paramWebView != null))
     {
       if (paramWebView.getX5WebViewExtension() == null) {
         return;
@@ -125,669 +163,428 @@ public class SwiftBrowserTBSHandler
       } else {
         localObject = SHA1Util.a(paramString2);
       }
-      ThreadManager.getUIHandler().post(new SwiftBrowserTBSHandler.10(paramString2, paramString1, paramWebView, i, j, (String)localObject));
+      ThreadManager.getUIHandler().post(new SwiftBrowserTBSHandler.10(paramString2, paramString1, paramWebView, n, i1, (String)localObject));
     }
   }
   
   /* Error */
-  public Object a(String paramString, Bundle paramBundle)
+  private void c(Bundle paramBundle)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 198	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   4: ifnonnull +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: ldc 200
-    //   11: aload_1
-    //   12: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   15: ifeq +13 -> 28
-    //   18: ldc 206
-    //   20: iconst_1
-    //   21: ldc 208
-    //   23: invokestatic 214	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   26: aconst_null
-    //   27: areturn
-    //   28: ldc 216
-    //   30: aload_1
-    //   31: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   34: ifeq +214 -> 248
-    //   37: aload_2
-    //   38: ifnonnull +5 -> 43
-    //   41: aconst_null
-    //   42: areturn
-    //   43: aload_2
-    //   44: ldc 218
-    //   46: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   49: astore 16
-    //   51: aload_2
-    //   52: ldc 225
-    //   54: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   57: astore 17
-    //   59: aload_2
-    //   60: ldc 227
-    //   62: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   65: astore_1
-    //   66: aload_0
-    //   67: aload 17
-    //   69: putfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   72: aload_1
-    //   73: ifnull +173 -> 246
-    //   76: aload 16
-    //   78: ifnull +168 -> 246
-    //   81: ldc 229
-    //   83: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   86: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   89: aload_1
-    //   90: invokeinterface 239 2 0
-    //   95: checkcast 241	com/tencent/open/downloadnew/DownloadInfo
-    //   98: astore_2
-    //   99: aload_2
-    //   100: ifnull +128 -> 228
-    //   103: aload_2
-    //   104: getfield 243	com/tencent/open/downloadnew/DownloadInfo:d	Ljava/lang/String;
-    //   107: astore 17
-    //   109: new 220	android/os/Bundle
-    //   112: dup
-    //   113: invokespecial 244	android/os/Bundle:<init>	()V
-    //   116: astore_2
-    //   117: aload_2
-    //   118: getstatic 248	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
-    //   121: aload_1
-    //   122: invokevirtual 252	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   125: aload_2
-    //   126: getstatic 254	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   129: aload 17
-    //   131: invokevirtual 252	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   134: aload_2
-    //   135: getstatic 257	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   138: iconst_2
-    //   139: invokevirtual 261	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   142: aload_2
-    //   143: getstatic 264	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
-    //   146: aload 16
-    //   148: invokevirtual 252	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   151: aload_2
-    //   152: getstatic 267	com/tencent/open/downloadnew/DownloadConstants:s	Ljava/lang/String;
-    //   155: iconst_0
-    //   156: invokevirtual 271	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   159: aload_2
-    //   160: getstatic 274	com/tencent/open/downloadnew/DownloadConstants:y	Ljava/lang/String;
-    //   163: iconst_0
-    //   164: invokevirtual 271	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   167: getstatic 277	com/tencent/open/downloadnew/DownloadConstants:m	Ljava/lang/String;
-    //   170: astore 16
-    //   172: new 279	java/lang/StringBuilder
-    //   175: dup
-    //   176: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   179: astore 17
-    //   181: aload 17
-    //   183: ldc_w 282
-    //   186: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: pop
-    //   190: aload 17
-    //   192: aload_1
-    //   193: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: pop
-    //   197: aload_2
-    //   198: aload 16
-    //   200: aload 17
-    //   202: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokevirtual 252	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   208: ldc 229
-    //   210: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   213: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   216: aload_0
-    //   217: getfield 198	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   220: aload_2
-    //   221: invokeinterface 293 3 0
-    //   226: aload_1
-    //   227: areturn
-    //   228: new 295	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$3
-    //   231: dup
-    //   232: aload_0
-    //   233: aload_1
-    //   234: aload 16
-    //   236: invokespecial 298	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$3:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;Ljava/lang/String;Ljava/lang/String;)V
-    //   239: bipush 8
-    //   241: aconst_null
-    //   242: iconst_1
-    //   243: invokestatic 154	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   246: aload_1
-    //   247: areturn
-    //   248: ldc_w 300
-    //   251: aload_1
-    //   252: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   255: ifeq +85 -> 340
-    //   258: aload_2
-    //   259: ldc_w 302
-    //   262: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   265: astore_1
-    //   266: ldc 229
-    //   268: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   271: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   274: aload_1
-    //   275: invokeinterface 305 2 0
-    //   280: ifne +8 -> 288
-    //   283: iconst_0
-    //   284: invokestatic 48	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   287: areturn
-    //   288: ldc 229
-    //   290: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   293: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   296: astore_2
-    //   297: new 279	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   304: astore 16
-    //   306: aload 16
-    //   308: ldc_w 282
-    //   311: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: pop
-    //   315: aload 16
-    //   317: aload_1
-    //   318: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: pop
-    //   322: aload_2
-    //   323: aload_1
-    //   324: aload 16
-    //   326: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: iconst_1
-    //   330: invokeinterface 309 4 0
-    //   335: iconst_1
-    //   336: invokestatic 48	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   339: areturn
-    //   340: ldc_w 311
-    //   343: aload_1
-    //   344: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   347: ifeq +89 -> 436
-    //   350: aload_2
-    //   351: ldc_w 302
-    //   354: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   357: astore_1
-    //   358: ldc 229
-    //   360: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   363: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   366: aload_1
-    //   367: invokeinterface 239 2 0
-    //   372: checkcast 241	com/tencent/open/downloadnew/DownloadInfo
-    //   375: astore_1
-    //   376: aload_1
-    //   377: ifnonnull +8 -> 385
-    //   380: iconst_0
-    //   381: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   384: areturn
-    //   385: aload_1
-    //   386: invokevirtual 313	com/tencent/open/downloadnew/DownloadInfo:a	()I
-    //   389: istore_3
-    //   390: iload_3
-    //   391: iconst_2
-    //   392: if_icmpeq +39 -> 431
-    //   395: iload_3
-    //   396: iconst_3
-    //   397: if_icmpeq +29 -> 426
-    //   400: iload_3
-    //   401: iconst_4
-    //   402: if_icmpeq +19 -> 421
-    //   405: iload_3
-    //   406: bipush 10
-    //   408: if_icmpeq +8 -> 416
-    //   411: iconst_0
-    //   412: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   415: areturn
-    //   416: iconst_5
-    //   417: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   420: areturn
-    //   421: iconst_3
-    //   422: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   425: areturn
-    //   426: iconst_2
-    //   427: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   430: areturn
-    //   431: iconst_1
-    //   432: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   435: areturn
-    //   436: ldc_w 315
-    //   439: aload_1
-    //   440: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   443: ifeq +112 -> 555
-    //   446: aload_2
-    //   447: ldc_w 302
-    //   450: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   453: astore_1
-    //   454: ldc 229
-    //   456: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   459: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   462: aload_1
-    //   463: invokeinterface 239 2 0
-    //   468: checkcast 241	com/tencent/open/downloadnew/DownloadInfo
-    //   471: astore_2
-    //   472: aload_2
-    //   473: ifnull +77 -> 550
-    //   476: aload_2
-    //   477: invokevirtual 313	com/tencent/open/downloadnew/DownloadInfo:a	()I
-    //   480: iconst_4
-    //   481: if_icmpeq +6 -> 487
-    //   484: goto +66 -> 550
-    //   487: new 220	android/os/Bundle
-    //   490: dup
-    //   491: invokespecial 244	android/os/Bundle:<init>	()V
-    //   494: astore_2
-    //   495: aload_2
-    //   496: getstatic 248	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
-    //   499: aload_1
-    //   500: invokevirtual 252	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   503: aload_2
-    //   504: getstatic 257	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   507: iconst_5
-    //   508: invokevirtual 261	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   511: aload_2
-    //   512: getstatic 267	com/tencent/open/downloadnew/DownloadConstants:s	Ljava/lang/String;
-    //   515: iconst_0
-    //   516: invokevirtual 271	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   519: aload_2
-    //   520: getstatic 274	com/tencent/open/downloadnew/DownloadConstants:y	Ljava/lang/String;
-    //   523: iconst_0
-    //   524: invokevirtual 271	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   527: ldc 229
-    //   529: invokestatic 235	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   532: checkcast 229	com/tencent/open/temp/api/IWebViewOpenSdkApi
-    //   535: aload_0
-    //   536: getfield 198	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   539: aload_2
-    //   540: invokeinterface 293 3 0
-    //   545: iconst_1
-    //   546: invokestatic 48	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   549: areturn
-    //   550: iconst_0
-    //   551: invokestatic 48	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   554: areturn
-    //   555: ldc_w 317
-    //   558: aload_1
-    //   559: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   562: ifeq +49 -> 611
-    //   565: aload_0
-    //   566: getfield 320	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
-    //   569: invokeinterface 325 1 0
-    //   574: iconst_2
-    //   575: invokevirtual 330	com/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider:a	(I)Ljava/lang/Object;
-    //   578: checkcast 332	com/tencent/mobileqq/webview/swift/component/SwiftBrowserUIStyleHandler
-    //   581: astore_1
-    //   582: aload_1
-    //   583: ifnull +26 -> 609
-    //   586: aload_1
-    //   587: getfield 335	com/tencent/mobileqq/webview/swift/component/SwiftBrowserUIStyleHandler:jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle	Lcom/tencent/mobileqq/webview/swift/SwiftBrowserUIStyle;
-    //   590: iconst_1
-    //   591: putfield 340	com/tencent/mobileqq/webview/swift/SwiftBrowserUIStyle:z	Z
-    //   594: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   597: ifeq +12 -> 609
-    //   600: ldc 206
-    //   602: iconst_2
-    //   603: ldc_w 345
-    //   606: invokestatic 214	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   609: aconst_null
-    //   610: areturn
-    //   611: ldc_w 347
-    //   614: aload_1
-    //   615: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   618: ifeq +410 -> 1028
-    //   621: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   624: ifeq +12 -> 636
-    //   627: ldc 206
-    //   629: iconst_2
-    //   630: ldc_w 349
-    //   633: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   636: aload_2
-    //   637: ldc_w 354
-    //   640: invokevirtual 357	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   643: ifeq -34 -> 609
-    //   646: aload_2
-    //   647: ldc_w 354
-    //   650: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   653: astore_1
-    //   654: aload_2
-    //   655: ldc_w 359
-    //   658: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   661: astore 16
-    //   663: aload_2
-    //   664: ldc_w 361
-    //   667: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   670: astore_2
-    //   671: aload_1
-    //   672: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   675: ifne +569 -> 1244
-    //   678: aload_1
-    //   679: invokestatic 367	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   682: lstore 4
-    //   684: goto +3 -> 687
-    //   687: aload 16
-    //   689: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   692: ifne +558 -> 1250
-    //   695: aload 16
-    //   697: invokestatic 367	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   700: lstore 6
-    //   702: goto +3 -> 705
-    //   705: aload_2
-    //   706: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   709: ifne +547 -> 1256
-    //   712: aload_2
-    //   713: invokestatic 367	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   716: lstore 8
-    //   718: goto +3 -> 721
-    //   721: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   724: ifeq +28 -> 752
-    //   727: ldc 206
-    //   729: iconst_2
-    //   730: ldc_w 369
-    //   733: iconst_2
-    //   734: anewarray 37	java/lang/Object
-    //   737: dup
-    //   738: iconst_0
-    //   739: aload_1
-    //   740: aastore
-    //   741: dup
-    //   742: iconst_1
-    //   743: aload 16
-    //   745: aastore
-    //   746: invokestatic 373	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   749: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   752: aload_0
-    //   753: getfield 320	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
-    //   756: invokeinterface 325 1 0
-    //   761: bipush 254
-    //   763: invokevirtual 330	com/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider:a	(I)Ljava/lang/Object;
-    //   766: checkcast 375	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics
-    //   769: astore_1
-    //   770: aload_1
-    //   771: ifnull +491 -> 1262
-    //   774: aload_1
-    //   775: getfield 377	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:b	J
-    //   778: lstore 10
-    //   780: aload_1
-    //   781: getfield 380	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:c	J
-    //   784: lstore 12
-    //   786: aload_1
-    //   787: getfield 383	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:r	J
-    //   790: lstore 14
-    //   792: aload_1
-    //   793: lload 4
-    //   795: putfield 386	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:f	J
-    //   798: aload_1
-    //   799: lload 6
-    //   801: putfield 389	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:g	J
-    //   804: aload_1
-    //   805: lload 8
-    //   807: putfield 392	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:e	J
-    //   810: goto +3 -> 813
-    //   813: aload_1
-    //   814: invokestatic 398	com/tencent/mobileqq/vaswebviewplugin/VasBaseWebviewUtil:reportX5SpeedData	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics;)V
-    //   817: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   820: ifeq +454 -> 1274
-    //   823: ldc_w 400
-    //   826: iconst_4
-    //   827: anewarray 37	java/lang/Object
-    //   830: dup
-    //   831: iconst_0
-    //   832: lload 12
-    //   834: lload 10
-    //   836: lsub
-    //   837: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   840: aastore
-    //   841: dup
-    //   842: iconst_1
-    //   843: lload 14
-    //   845: lload 12
-    //   847: lsub
-    //   848: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   851: aastore
-    //   852: dup
-    //   853: iconst_2
-    //   854: lload 4
-    //   856: lload 14
-    //   858: lsub
-    //   859: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   862: aastore
-    //   863: dup
-    //   864: iconst_3
-    //   865: lload 6
-    //   867: lload 4
-    //   869: lsub
-    //   870: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   873: aastore
-    //   874: invokestatic 373	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   877: astore_1
-    //   878: ldc 206
-    //   880: iconst_2
-    //   881: aload_1
-    //   882: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   885: goto +3 -> 888
-    //   888: ldc 206
-    //   890: astore_1
-    //   891: new 279	java/lang/StringBuilder
-    //   894: dup
-    //   895: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   898: astore_2
-    //   899: aload_2
-    //   900: ldc_w 405
-    //   903: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   906: pop
-    //   907: aload_2
-    //   908: lload 4
-    //   910: lload 14
-    //   912: lsub
-    //   913: invokevirtual 408	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   916: pop
-    //   917: aload_1
-    //   918: iconst_1
-    //   919: aload_2
-    //   920: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   923: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   926: new 279	java/lang/StringBuilder
-    //   929: dup
-    //   930: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   933: astore_2
-    //   934: aload_2
-    //   935: ldc_w 410
-    //   938: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   941: pop
-    //   942: aload_2
-    //   943: lload 6
-    //   945: lload 4
-    //   947: lsub
-    //   948: invokevirtual 408	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   951: pop
-    //   952: aload_1
-    //   953: iconst_1
-    //   954: aload_2
-    //   955: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   958: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   961: new 279	java/lang/StringBuilder
-    //   964: dup
-    //   965: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   968: astore_2
-    //   969: aload_2
-    //   970: ldc_w 412
-    //   973: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   976: pop
-    //   977: aload_2
-    //   978: lload 8
-    //   980: lload 10
-    //   982: lsub
-    //   983: invokevirtual 408	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   986: pop
-    //   987: aload_1
-    //   988: iconst_1
-    //   989: aload_2
-    //   990: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   993: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   996: goto +47 -> 1043
-    //   999: ldc 206
-    //   1001: astore_2
-    //   1002: astore_1
-    //   1003: goto +14 -> 1017
-    //   1006: astore_1
-    //   1007: ldc 206
-    //   1009: astore_2
-    //   1010: goto +7 -> 1017
-    //   1013: astore_1
-    //   1014: ldc 206
-    //   1016: astore_2
-    //   1017: aload_2
-    //   1018: iconst_2
-    //   1019: ldc 174
-    //   1021: aload_1
-    //   1022: invokestatic 415	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1025: goto +18 -> 1043
-    //   1028: aload_1
-    //   1029: ldc_w 417
-    //   1032: invokevirtual 420	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   1035: ifeq +10 -> 1045
-    //   1038: aload_0
-    //   1039: aload_2
-    //   1040: invokevirtual 423	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:a	(Landroid/os/Bundle;)V
-    //   1043: aconst_null
-    //   1044: areturn
-    //   1045: ldc_w 425
-    //   1048: aload_1
-    //   1049: invokevirtual 204	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1052: ifeq +170 -> 1222
-    //   1055: aload_2
-    //   1056: ldc_w 427
-    //   1059: invokevirtual 357	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   1062: ifeq -19 -> 1043
-    //   1065: aload_2
-    //   1066: ldc_w 427
-    //   1069: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1072: astore_1
-    //   1073: aload_1
-    //   1074: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1077: ifne -34 -> 1043
-    //   1080: aload_1
-    //   1081: ldc_w 429
-    //   1084: invokevirtual 432	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   1087: ifeq -44 -> 1043
-    //   1090: aload_1
-    //   1091: invokestatic 69	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   1094: ldc_w 434
-    //   1097: invokevirtual 437	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
-    //   1100: astore 16
-    //   1102: aload 16
-    //   1104: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1107: ifne -64 -> 1043
-    //   1110: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1113: ifeq +45 -> 1158
-    //   1116: new 279	java/lang/StringBuilder
-    //   1119: dup
-    //   1120: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   1123: astore 17
-    //   1125: aload 17
-    //   1127: ldc_w 439
-    //   1130: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1133: pop
-    //   1134: aload 17
-    //   1136: aload_2
-    //   1137: ldc_w 427
-    //   1140: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1143: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1146: pop
-    //   1147: ldc 206
-    //   1149: iconst_2
-    //   1150: aload 17
-    //   1152: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1155: invokestatic 352	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1158: aload_0
-    //   1159: getfield 441	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1162: ifnonnull +16 -> 1178
-    //   1165: aload_0
-    //   1166: new 443	java/util/HashSet
-    //   1169: dup
-    //   1170: bipush 6
-    //   1172: invokespecial 446	java/util/HashSet:<init>	(I)V
-    //   1175: putfield 441	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1178: aload_0
-    //   1179: getfield 441	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1182: aload 16
-    //   1184: invokevirtual 448	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   1187: ifne -144 -> 1043
-    //   1190: aload_0
-    //   1191: getfield 441	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1194: aload 16
-    //   1196: invokevirtual 451	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   1199: pop
-    //   1200: invokestatic 183	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   1203: new 453	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$4
-    //   1206: dup
-    //   1207: aload_0
-    //   1208: aload_1
-    //   1209: invokespecial 456	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$4:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;Ljava/lang/String;)V
-    //   1212: ldc2_w 457
-    //   1215: invokevirtual 462	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   1218: pop
-    //   1219: goto -176 -> 1043
-    //   1222: getstatic 29	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserTBSInjector	Lcom/tencent/mobileqq/webview/swift/injector/ISwiftBrowserTBSInjector;
-    //   1225: astore 16
-    //   1227: aload 16
-    //   1229: ifnull -186 -> 1043
-    //   1232: aload 16
-    //   1234: aload_1
-    //   1235: aload_2
-    //   1236: invokeinterface 467 3 0
-    //   1241: goto -198 -> 1043
-    //   1244: lconst_0
-    //   1245: lstore 4
-    //   1247: goto -560 -> 687
-    //   1250: lconst_0
-    //   1251: lstore 6
-    //   1253: goto -548 -> 705
-    //   1256: lconst_0
-    //   1257: lstore 8
-    //   1259: goto -538 -> 721
-    //   1262: lconst_0
-    //   1263: lstore 10
-    //   1265: lconst_0
-    //   1266: lstore 12
-    //   1268: lconst_0
-    //   1269: lstore 14
-    //   1271: goto -458 -> 813
-    //   1274: goto -386 -> 888
+    //   0: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 207
+    //   8: iconst_2
+    //   9: ldc_w 278
+    //   12: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_1
+    //   16: ldc_w 280
+    //   19: invokevirtual 182	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   22: ifeq +405 -> 427
+    //   25: aload_1
+    //   26: ldc_w 280
+    //   29: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: astore 15
+    //   34: aload_1
+    //   35: ldc_w 282
+    //   38: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   41: astore 16
+    //   43: aload_1
+    //   44: ldc_w 284
+    //   47: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   50: astore_1
+    //   51: aload 15
+    //   53: invokestatic 74	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   56: istore_2
+    //   57: lconst_0
+    //   58: lstore 11
+    //   60: iload_2
+    //   61: ifne +367 -> 428
+    //   64: aload 15
+    //   66: invokestatic 290	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   69: lstore_3
+    //   70: goto +3 -> 73
+    //   73: aload 16
+    //   75: invokestatic 74	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   78: ifne +355 -> 433
+    //   81: aload 16
+    //   83: invokestatic 290	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   86: lstore 5
+    //   88: goto +3 -> 91
+    //   91: aload_1
+    //   92: invokestatic 74	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   95: ifne +344 -> 439
+    //   98: aload_1
+    //   99: invokestatic 290	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   102: lstore 7
+    //   104: goto +3 -> 107
+    //   107: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   110: ifeq +29 -> 139
+    //   113: ldc 207
+    //   115: iconst_2
+    //   116: ldc_w 292
+    //   119: iconst_2
+    //   120: anewarray 48	java/lang/Object
+    //   123: dup
+    //   124: iconst_0
+    //   125: aload 15
+    //   127: aastore
+    //   128: dup
+    //   129: iconst_1
+    //   130: aload 16
+    //   132: aastore
+    //   133: invokestatic 296	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   136: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   139: aload_0
+    //   140: getfield 299	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:b	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
+    //   143: invokeinterface 304 1 0
+    //   148: bipush 254
+    //   150: invokevirtual 309	com/tencent/mobileqq/webview/swift/component/SwiftBrowserComponentsProvider:a	(I)Ljava/lang/Object;
+    //   153: checkcast 311	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics
+    //   156: astore_1
+    //   157: aload_1
+    //   158: ifnull +295 -> 453
+    //   161: aload_1
+    //   162: getfield 313	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:c	J
+    //   165: lstore 11
+    //   167: aload_1
+    //   168: getfield 315	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:d	J
+    //   171: lstore 9
+    //   173: aload_1
+    //   174: getfield 318	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:u	J
+    //   177: lstore 13
+    //   179: aload_1
+    //   180: lload_3
+    //   181: putfield 320	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:i	J
+    //   184: aload_1
+    //   185: lload 5
+    //   187: putfield 322	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:j	J
+    //   190: aload_1
+    //   191: lload 7
+    //   193: putfield 323	com/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics:h	J
+    //   196: goto +3 -> 199
+    //   199: aload_1
+    //   200: invokestatic 329	com/tencent/mobileqq/vaswebviewplugin/VasBaseWebviewUtil:reportX5SpeedData	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserStatistics;)V
+    //   203: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   206: ifeq +257 -> 463
+    //   209: ldc_w 331
+    //   212: iconst_4
+    //   213: anewarray 48	java/lang/Object
+    //   216: dup
+    //   217: iconst_0
+    //   218: lload 9
+    //   220: lload 11
+    //   222: lsub
+    //   223: invokestatic 334	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   226: aastore
+    //   227: dup
+    //   228: iconst_1
+    //   229: lload 13
+    //   231: lload 9
+    //   233: lsub
+    //   234: invokestatic 334	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   237: aastore
+    //   238: dup
+    //   239: iconst_2
+    //   240: lload_3
+    //   241: lload 13
+    //   243: lsub
+    //   244: invokestatic 334	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   247: aastore
+    //   248: dup
+    //   249: iconst_3
+    //   250: lload 5
+    //   252: lload_3
+    //   253: lsub
+    //   254: invokestatic 334	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   257: aastore
+    //   258: invokestatic 296	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   261: astore_1
+    //   262: ldc 207
+    //   264: iconst_2
+    //   265: aload_1
+    //   266: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: goto +3 -> 272
+    //   272: ldc 207
+    //   274: astore_1
+    //   275: new 198	java/lang/StringBuilder
+    //   278: dup
+    //   279: invokespecial 199	java/lang/StringBuilder:<init>	()V
+    //   282: astore 15
+    //   284: aload 15
+    //   286: ldc_w 336
+    //   289: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: pop
+    //   293: aload 15
+    //   295: lload_3
+    //   296: lload 13
+    //   298: lsub
+    //   299: invokevirtual 339	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   302: pop
+    //   303: aload_1
+    //   304: iconst_1
+    //   305: aload 15
+    //   307: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   310: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   313: new 198	java/lang/StringBuilder
+    //   316: dup
+    //   317: invokespecial 199	java/lang/StringBuilder:<init>	()V
+    //   320: astore 15
+    //   322: aload 15
+    //   324: ldc_w 341
+    //   327: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: aload 15
+    //   333: lload 5
+    //   335: lload_3
+    //   336: lsub
+    //   337: invokevirtual 339	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   340: pop
+    //   341: aload_1
+    //   342: iconst_1
+    //   343: aload 15
+    //   345: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: new 198	java/lang/StringBuilder
+    //   354: dup
+    //   355: invokespecial 199	java/lang/StringBuilder:<init>	()V
+    //   358: astore 15
+    //   360: aload 15
+    //   362: ldc_w 343
+    //   365: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   368: pop
+    //   369: aload 15
+    //   371: lload 7
+    //   373: lload 11
+    //   375: lsub
+    //   376: invokevirtual 339	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   379: pop
+    //   380: aload_1
+    //   381: iconst_1
+    //   382: aload 15
+    //   384: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   387: invokestatic 212	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   390: return
+    //   391: ldc 207
+    //   393: astore 15
+    //   395: astore_1
+    //   396: goto +20 -> 416
+    //   399: astore_1
+    //   400: ldc 207
+    //   402: astore 15
+    //   404: goto +12 -> 416
+    //   407: astore_1
+    //   408: goto +4 -> 412
+    //   411: astore_1
+    //   412: ldc 207
+    //   414: astore 15
+    //   416: aload 15
+    //   418: iconst_2
+    //   419: ldc_w 262
+    //   422: aload_1
+    //   423: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   426: return
+    //   427: return
+    //   428: lconst_0
+    //   429: lstore_3
+    //   430: goto -357 -> 73
+    //   433: lconst_0
+    //   434: lstore 5
+    //   436: goto -345 -> 91
+    //   439: lconst_0
+    //   440: lstore 7
+    //   442: goto -335 -> 107
+    //   445: astore_1
+    //   446: ldc 207
+    //   448: astore 15
+    //   450: goto -34 -> 416
+    //   453: lconst_0
+    //   454: lstore 9
+    //   456: lload 9
+    //   458: lstore 13
+    //   460: goto -261 -> 199
+    //   463: goto -191 -> 272
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1277	0	this	SwiftBrowserTBSHandler
-    //   0	1277	1	paramString	String
-    //   0	1277	2	paramBundle	Bundle
-    //   389	20	3	i	int
-    //   682	564	4	l1	long
-    //   700	552	6	l2	long
-    //   716	542	8	l3	long
-    //   778	486	10	l4	long
-    //   784	483	12	l5	long
-    //   790	480	14	l6	long
-    //   49	1184	16	localObject1	Object
-    //   57	1094	17	localObject2	Object
+    //   0	466	0	this	SwiftBrowserTBSHandler
+    //   0	466	1	paramBundle	Bundle
+    //   56	5	2	bool	boolean
+    //   69	361	3	l1	long
+    //   86	349	5	l2	long
+    //   102	339	7	l3	long
+    //   171	286	9	l4	long
+    //   58	316	11	l5	long
+    //   177	282	13	l6	long
+    //   32	417	15	localObject	Object
+    //   41	90	16	str	String
     // Exception table:
     //   from	to	target	type
-    //   878	885	999	java/lang/Exception
-    //   891	996	999	java/lang/Exception
-    //   780	810	1006	java/lang/Exception
-    //   813	878	1006	java/lang/Exception
-    //   646	684	1013	java/lang/Exception
-    //   687	702	1013	java/lang/Exception
-    //   705	718	1013	java/lang/Exception
-    //   721	752	1013	java/lang/Exception
-    //   752	770	1013	java/lang/Exception
-    //   774	780	1013	java/lang/Exception
+    //   262	269	391	java/lang/Exception
+    //   275	390	391	java/lang/Exception
+    //   173	196	399	java/lang/Exception
+    //   199	262	399	java/lang/Exception
+    //   139	157	407	java/lang/Exception
+    //   161	167	407	java/lang/Exception
+    //   25	57	411	java/lang/Exception
+    //   64	70	411	java/lang/Exception
+    //   73	88	411	java/lang/Exception
+    //   91	104	411	java/lang/Exception
+    //   107	139	411	java/lang/Exception
+    //   167	173	445	java/lang/Exception
+  }
+  
+  private Object d(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("download_id");
+    paramBundle = (DownloadInfo)WebViewOpenSdkApi.a().a(paramBundle);
+    Integer localInteger = Integer.valueOf(0);
+    if (paramBundle == null) {
+      return localInteger;
+    }
+    int n = paramBundle.a();
+    if (n != 2)
+    {
+      if (n != 3)
+      {
+        if (n != 4)
+        {
+          if (n != 10) {
+            return localInteger;
+          }
+          return Integer.valueOf(5);
+        }
+        return Integer.valueOf(3);
+      }
+      return Integer.valueOf(2);
+    }
+    return Integer.valueOf(1);
+  }
+  
+  public Object a(String paramString, Bundle paramBundle)
+  {
+    if (this.a == null) {
+      return null;
+    }
+    if ("openBrowserList".equals(paramString))
+    {
+      QLog.d("SwiftBrowserTBSHandler", 1, "XChooserActivity 已在725下架");
+      return null;
+    }
+    Object localObject1;
+    if ("addDownloadTask".equals(paramString))
+    {
+      if (paramBundle == null) {
+        return null;
+      }
+      localObject1 = paramBundle.getString("task_name");
+      Object localObject2 = paramBundle.getString("task_url");
+      paramString = paramBundle.getString("appid");
+      this.i = ((String)localObject2);
+      if ((paramString != null) && (localObject1 != null))
+      {
+        paramBundle = (DownloadInfo)WebViewOpenSdkApi.a().a(paramString);
+        if (paramBundle != null)
+        {
+          localObject2 = paramBundle.d;
+          paramBundle = new Bundle();
+          paramBundle.putString(DownloadConstants.b, paramString);
+          paramBundle.putString(DownloadConstants.j, (String)localObject2);
+          paramBundle.putInt(DownloadConstants.k, 2);
+          paramBundle.putString(DownloadConstants.l, (String)localObject1);
+          paramBundle.putBoolean(DownloadConstants.s, false);
+          paramBundle.putBoolean(DownloadConstants.y, false);
+          localObject1 = DownloadConstants.m;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("_");
+          ((StringBuilder)localObject2).append(paramString);
+          paramBundle.putString((String)localObject1, ((StringBuilder)localObject2).toString());
+          WebViewOpenSdkApi.a().a(this.a, paramBundle);
+          return paramString;
+        }
+        ThreadManager.post(new SwiftBrowserTBSHandler.3(this, paramString, (String)localObject1), 8, null, true);
+      }
+      return paramString;
+    }
+    if ("cancelDownloadTask".equals(paramString))
+    {
+      paramString = paramBundle.getString("download_id");
+      if (!WebViewOpenSdkApi.a().b(paramString)) {
+        return Boolean.valueOf(false);
+      }
+      paramBundle = WebViewOpenSdkApi.a();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(paramString);
+      paramBundle.a(paramString, ((StringBuilder)localObject1).toString(), true);
+      return Boolean.valueOf(true);
+    }
+    if ("queryDownloadTask".equals(paramString)) {
+      return d(paramBundle);
+    }
+    if ("installDownloadTask".equals(paramString))
+    {
+      paramString = paramBundle.getString("download_id");
+      paramBundle = (DownloadInfo)WebViewOpenSdkApi.a().a(paramString);
+      if ((paramBundle != null) && (paramBundle.a() == 4))
+      {
+        paramBundle = new Bundle();
+        paramBundle.putString(DownloadConstants.b, paramString);
+        paramBundle.putInt(DownloadConstants.k, 5);
+        paramBundle.putBoolean(DownloadConstants.s, false);
+        paramBundle.putBoolean(DownloadConstants.y, false);
+        WebViewOpenSdkApi.a().a(this.a, paramBundle);
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(false);
+    }
+    if ("notifyQBiconShine".equals(paramString))
+    {
+      paramString = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+      if (paramString != null)
+      {
+        paramString.f.K = true;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("SwiftBrowserTBSHandler", 2, "QQBrowser has related content.");
+          return null;
+        }
+      }
+    }
+    else
+    {
+      if ("netTimeConsumingReport".equals(paramString))
+      {
+        c(paramBundle);
+        return null;
+      }
+      if (paramString.equalsIgnoreCase("onReportStgwTime"))
+      {
+        a(paramBundle);
+        return null;
+      }
+      if ("onNotifyResourceRequestURL".equals(paramString))
+      {
+        b(paramBundle);
+        return null;
+      }
+      localObject1 = m;
+      if (localObject1 != null) {
+        ((ISwiftBrowserTBSInjector)localObject1).a(paramString, paramBundle);
+      }
+    }
+    return null;
   }
   
   public void a()
   {
     super.a();
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+    Activity localActivity = this.b.b();
     if ((localActivity instanceof QQBrowserActivity)) {
-      this.jdField_a_of_type_AndroidAppActivity = localActivity;
+      this.a = localActivity;
     } else {
-      this.jdField_a_of_type_AndroidAppActivity = null;
+      this.a = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+    this.c = this.b.c();
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -798,37 +595,37 @@ public class SwiftBrowserTBSHandler
       if (paramInt != 7) {
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.j)
       {
-        this.jdField_a_of_type_Boolean = true;
-        Object localObject = jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserTBSInjector;
+        this.j = true;
+        Object localObject = m;
         if (localObject != null) {
-          ((ISwiftBrowserTBSInjector)localObject).a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext);
+          ((ISwiftBrowserTBSInjector)localObject).a(this.b);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+        localObject = this.c;
         if (localObject != null) {
           paramBundle = ((WebViewProvider)localObject).getWebView();
         }
         if (paramBundle != null)
         {
-          paramBundle = (X5ApiPlugin)paramBundle.getPluginEngine().a("x5");
+          paramBundle = (X5ApiPlugin)paramBundle.getPluginEngine().b("x5");
           if (paramBundle != null) {
-            paramBundle.a();
+            paramBundle.b();
           }
         }
       }
     }
     else
     {
-      paramBundle = this.jdField_a_of_type_AndroidAppDialog;
+      paramBundle = this.f;
       if ((paramBundle != null) && (paramBundle.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.f.dismiss();
       }
-      paramBundle = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+      paramBundle = this.k;
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(paramBundle);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+        this.a.unregisterReceiver(paramBundle);
+        this.k = null;
       }
     }
   }
@@ -845,7 +642,7 @@ public class SwiftBrowserTBSHandler
       ((StringBuilder)localObject).append(paramString);
       QLog.d("SwiftBrowserTBSHandler", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+    Object localObject = this.c;
     if (localObject != null) {
       localObject = ((WebViewProvider)localObject).getWebView();
     } else {
@@ -853,9 +650,9 @@ public class SwiftBrowserTBSHandler
     }
     if (localObject != null)
     {
-      localObject = (X5ApiPlugin)((CustomWebView)localObject).getPluginEngine().a("x5");
+      localObject = (X5ApiPlugin)((CustomWebView)localObject).getPluginEngine().b("x5");
       if (localObject != null) {
-        ((X5ApiPlugin)localObject).a(paramInt, paramString);
+        ((X5ApiPlugin)localObject).b(paramInt, paramString);
       }
     }
   }
@@ -864,130 +661,130 @@ public class SwiftBrowserTBSHandler
   void a(Bundle paramBundle)
   {
     // Byte code:
-    //   0: ldc 174
-    //   2: astore 7
-    //   4: aload_1
-    //   5: ifnull +197 -> 202
-    //   8: aload_1
-    //   9: ldc_w 427
-    //   12: invokevirtual 357	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   15: ifeq +14 -> 29
+    //   0: ldc_w 262
+    //   3: astore 7
+    //   5: aload_1
+    //   6: ifnull +199 -> 205
+    //   9: aload_1
+    //   10: ldc 177
+    //   12: invokevirtual 182	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   15: ifeq +13 -> 28
     //   18: aload_1
-    //   19: ldc_w 427
-    //   22: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   25: astore_2
-    //   26: goto +6 -> 32
-    //   29: ldc 174
+    //   19: ldc 177
+    //   21: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: astore_2
+    //   25: goto +7 -> 32
+    //   28: ldc_w 262
     //   31: astore_2
     //   32: aload_1
-    //   33: ldc_w 545
-    //   36: invokevirtual 357	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   33: ldc_w 547
+    //   36: invokevirtual 182	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
     //   39: ifeq +14 -> 53
     //   42: aload_1
-    //   43: ldc_w 545
-    //   46: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   43: ldc_w 547
+    //   46: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   49: astore_3
-    //   50: goto +6 -> 56
-    //   53: ldc 174
-    //   55: astore_3
-    //   56: aload_3
-    //   57: astore 6
-    //   59: aload_2
-    //   60: astore 4
-    //   62: aload 7
-    //   64: astore 5
-    //   66: aload_1
-    //   67: ldc_w 547
-    //   70: invokevirtual 357	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
-    //   73: ifeq +58 -> 131
-    //   76: aload_1
-    //   77: ldc_w 547
-    //   80: invokevirtual 223	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   83: astore 5
-    //   85: aload_3
-    //   86: astore 6
-    //   88: aload_2
-    //   89: astore 4
-    //   91: goto +40 -> 131
-    //   94: astore_1
-    //   95: goto +16 -> 111
-    //   98: astore_1
-    //   99: ldc 174
-    //   101: astore_3
-    //   102: goto +9 -> 111
-    //   105: astore_1
-    //   106: ldc 174
-    //   108: astore_3
-    //   109: aload_3
-    //   110: astore_2
-    //   111: ldc 206
-    //   113: iconst_1
-    //   114: ldc_w 549
-    //   117: aload_1
-    //   118: invokestatic 415	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   121: aload 7
-    //   123: astore 5
-    //   125: aload_2
-    //   126: astore 4
-    //   128: aload_3
-    //   129: astore 6
-    //   131: new 279	java/lang/StringBuilder
-    //   134: dup
-    //   135: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   138: astore_1
-    //   139: aload_1
-    //   140: ldc_w 551
-    //   143: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: pop
-    //   147: aload_1
-    //   148: aload 6
-    //   150: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: pop
-    //   154: aload_1
-    //   155: ldc_w 553
-    //   158: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: pop
-    //   162: aload_1
-    //   163: aload 5
-    //   165: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: pop
-    //   169: aload_1
-    //   170: ldc_w 555
-    //   173: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: pop
-    //   177: aload_1
-    //   178: aload 4
-    //   180: iconst_0
-    //   181: anewarray 115	java/lang/String
-    //   184: invokestatic 560	com/tencent/biz/common/util/Util:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
-    //   187: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: pop
-    //   191: ldc 206
-    //   193: iconst_1
-    //   194: aload_1
-    //   195: invokevirtual 289	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   198: invokestatic 214	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   201: return
-    //   202: ldc 206
-    //   204: iconst_1
-    //   205: ldc_w 562
-    //   208: invokestatic 214	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   211: return
+    //   50: goto +7 -> 57
+    //   53: ldc_w 262
+    //   56: astore_3
+    //   57: aload_3
+    //   58: astore 6
+    //   60: aload_2
+    //   61: astore 4
+    //   63: aload 7
+    //   65: astore 5
+    //   67: aload_1
+    //   68: ldc_w 549
+    //   71: invokevirtual 182	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   74: ifeq +60 -> 134
+    //   77: aload_1
+    //   78: ldc_w 549
+    //   81: invokevirtual 186	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   84: astore 5
+    //   86: aload_3
+    //   87: astore 6
+    //   89: aload_2
+    //   90: astore 4
+    //   92: goto +42 -> 134
+    //   95: astore_1
+    //   96: goto +18 -> 114
+    //   99: astore_1
+    //   100: ldc_w 262
+    //   103: astore_3
+    //   104: goto +10 -> 114
+    //   107: astore_1
+    //   108: ldc_w 262
+    //   111: astore_3
+    //   112: aload_3
+    //   113: astore_2
+    //   114: ldc 207
+    //   116: iconst_1
+    //   117: ldc_w 551
+    //   120: aload_1
+    //   121: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   124: aload 7
+    //   126: astore 5
+    //   128: aload_2
+    //   129: astore 4
+    //   131: aload_3
+    //   132: astore 6
+    //   134: new 198	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 199	java/lang/StringBuilder:<init>	()V
+    //   141: astore_1
+    //   142: aload_1
+    //   143: ldc_w 553
+    //   146: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload_1
+    //   151: aload 6
+    //   153: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: pop
+    //   157: aload_1
+    //   158: ldc_w 555
+    //   161: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_1
+    //   166: aload 5
+    //   168: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: pop
+    //   172: aload_1
+    //   173: ldc_w 557
+    //   176: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload_1
+    //   181: aload 4
+    //   183: iconst_0
+    //   184: anewarray 126	java/lang/String
+    //   187: invokestatic 562	com/tencent/biz/common/util/Util:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+    //   190: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: ldc 207
+    //   196: iconst_1
+    //   197: aload_1
+    //   198: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   204: return
+    //   205: ldc 207
+    //   207: iconst_1
+    //   208: ldc_w 564
+    //   211: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	212	0	this	SwiftBrowserTBSHandler
-    //   0	212	1	paramBundle	Bundle
-    //   25	101	2	localObject1	Object
-    //   49	80	3	str1	String
-    //   60	119	4	localObject2	Object
-    //   64	100	5	str2	String
-    //   57	92	6	str3	String
-    //   2	120	7	str4	String
+    //   0	215	0	this	SwiftBrowserTBSHandler
+    //   0	215	1	paramBundle	Bundle
+    //   24	105	2	localObject1	Object
+    //   49	83	3	str1	String
+    //   61	121	4	localObject2	Object
+    //   65	102	5	str2	String
+    //   58	94	6	str3	String
+    //   3	122	7	str4	String
     // Exception table:
     //   from	to	target	type
-    //   66	85	94	java/lang/Throwable
-    //   32	50	98	java/lang/Throwable
-    //   8	26	105	java/lang/Throwable
+    //   67	86	95	java/lang/Throwable
+    //   32	50	99	java/lang/Throwable
+    //   9	25	107	java/lang/Throwable
   }
   
   void a(String paramString, int paramInt)
@@ -1000,13 +797,13 @@ public class SwiftBrowserTBSHandler
         localHttpURLConnection.setConnectTimeout(20000);
         localHttpURLConnection.setRequestMethod("GET");
         localHttpURLConnection.connect();
-        int i = localHttpURLConnection.getResponseCode();
-        if ((i != 301) && (i != 302))
+        int n = localHttpURLConnection.getResponseCode();
+        if ((n != 301) && (n != 302))
         {
-          if (i == 200)
+          if (n == 200)
           {
-            this.jdField_a_of_type_Long = localHttpURLConnection.getContentLength();
-            this.jdField_a_of_type_JavaLangString = localHttpURLConnection.getURL().toString();
+            this.h = localHttpURLConnection.getContentLength();
+            this.i = localHttpURLConnection.getURL().toString();
           }
         }
         else
@@ -1043,14 +840,14 @@ public class SwiftBrowserTBSHandler
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
+      if (this.a == null) {
         return;
       }
       Object localObject1 = WebAccelerateHelper.getInstance().getTBSDpcParam();
       boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-      int j = 1;
+      int i1 = 1;
       Object localObject2;
       if (!bool)
       {
@@ -1063,62 +860,54 @@ public class SwiftBrowserTBSHandler
             ((StringBuilder)localObject2).append((String)localObject1);
             QLog.i("SwiftBrowserTBSHandler", 2, ((StringBuilder)localObject2).toString());
           }
-          i = 0;
+          n = 0;
           break label105;
         }
       }
       else {
         QLog.e("SwiftBrowserTBSHandler", 1, "error: no dpc param!");
       }
-      int i = 1;
+      int n = 1;
       label105:
-      if ((a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getAppRuntime()) != null) && (i != 0))
+      if ((a(this.c.getAppRuntime()) != null) && (n != 0))
       {
         if ("CN".equals(Locale.getDefault().getCountry()))
         {
-          localObject1 = a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getAppRuntime());
+          localObject1 = a(this.c.getAppRuntime());
           if (TbsDownloader.needDownload(BaseApplication.getContext(), false, false, new SwiftBrowserTBSHandler.TbsDownloadCallback((ITbsDownloader)localObject1)))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("TBS_update", 2, "tbs need download");
-            }
+            a("TBS_update", "tbs need download");
             QbSdk.setUploadCode(BaseApplication.getContext(), 150);
             ((ITbsDownloader)localObject1).a(false);
-            i = j;
-            break label273;
+            n = i1;
+            break label247;
           }
-          i = j;
-          if (!QLog.isColorLevel()) {
-            break label273;
-          }
-          QLog.d("TBS_update", 2, "tbs no need download");
-          i = j;
-          break label273;
+          a("TBS_update", "tbs no need download");
+          n = i1;
+          break label247;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("TBS_update", 2, "tbs loc/tz not match");
-        }
+        a("TBS_update", "tbs loc/tz not match");
       }
-      else if (QLog.isColorLevel())
+      else
       {
-        QLog.d("TBS_update", 2, "tbs update disabled");
+        a("TBS_update", "tbs update disabled");
       }
-      i = 0;
-      label273:
+      n = 0;
+      label247:
       localObject1 = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext != null) {
-        localObject1 = (SwiftBrowserStatistics)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(-2);
+      if (this.b != null) {
+        localObject1 = (SwiftBrowserStatistics)this.b.d().a(-2);
       }
-      if (((localObject1 != null) && (((SwiftBrowserStatistics)localObject1).h)) || (QLog.isColorLevel()))
+      if (((localObject1 != null) && (((SwiftBrowserStatistics)localObject1).as)) || (QLog.isColorLevel()))
       {
-        j = QbSdk.getTbsVersion(BaseApplication.getContext());
+        i1 = QbSdk.getTbsVersion(BaseApplication.getContext());
         bool = QLog.isColorLevel();
         String str = "sys";
         if (bool)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("tbs current webview:");
-          if (j == 0)
+          if (i1 == 0)
           {
             localObject2 = "sys";
           }
@@ -1126,20 +915,20 @@ public class SwiftBrowserTBSHandler
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("x5_");
-            ((StringBuilder)localObject2).append(j);
+            ((StringBuilder)localObject2).append(i1);
             localObject2 = ((StringBuilder)localObject2).toString();
           }
           localStringBuilder.append((String)localObject2);
           QLog.d("TBS_update", 2, localStringBuilder.toString());
         }
-        if ((localObject1 != null) && (((SwiftBrowserStatistics)localObject1).h))
+        if ((localObject1 != null) && (((SwiftBrowserStatistics)localObject1).as))
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("tbs_cover_");
-          if (i != 0)
+          if (n != 0)
           {
             localObject1 = str;
-            if (j > 0) {
+            if (i1 > 0) {
               localObject1 = "tbs";
             }
           }
@@ -1148,7 +937,7 @@ public class SwiftBrowserTBSHandler
             localObject1 = "dis";
           }
           ((StringBuilder)localObject2).append((String)localObject1);
-          ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", ((StringBuilder)localObject2).toString(), 0, 1, j, "", "", "", "");
+          ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", ((StringBuilder)localObject2).toString(), 0, 1, i1, "", "", "", "");
         }
       }
     }
@@ -1163,19 +952,19 @@ public class SwiftBrowserTBSHandler
       return true;
     case 104: 
       paramMessage = (String)paramMessage.obj;
-      localObject1 = this.jdField_a_of_type_AndroidAppDialog;
+      localObject1 = this.f;
       if ((localObject1 != null) && (((Dialog)localObject1).isShowing()) && (paramMessage != null))
       {
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131380179)).setText(paramMessage);
+        ((TextView)this.f.findViewById(2131449094)).setText(paramMessage);
         return true;
       }
       break;
     case 103: 
       paramMessage = (Drawable)paramMessage.obj;
-      localObject1 = this.jdField_a_of_type_AndroidAppDialog;
+      localObject1 = this.f;
       if ((localObject1 != null) && (((Dialog)localObject1).isShowing()) && (paramMessage != null))
       {
-        localObject1 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131380177);
+        localObject1 = (ImageView)this.f.findViewById(2131449092);
         ((ImageView)localObject1).setImageDrawable(null);
         ((ImageView)localObject1).setImageDrawable(paramMessage);
         return true;
@@ -1185,14 +974,14 @@ public class SwiftBrowserTBSHandler
       ThreadManager.post(new SwiftBrowserTBSHandler.2(this), 8, null, true);
       return true;
     case 101: 
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+      if (!this.a.isFinishing())
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+        localObject1 = this.c;
         if ((localObject1 != null) && (!((WebViewProvider)localObject1).isDestroyed()))
         {
           paramMessage = (Bundle)paramMessage.obj;
-          ((IWebViewOpenSdkApi)QRoute.api(IWebViewOpenSdkApi.class)).downloadByUniformDownload(paramMessage, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebView().getUrl(), this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebView().getSettings().getUserAgentString());
-          ((SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getComponentProvider().a(2)).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          WebViewOpenSdkApi.a().a(paramMessage, this.a, this.c.getWebView().getUrl(), this.c.getWebView().getSettings().getUserAgentString());
+          ((SwiftBrowserUIStyleHandler)this.c.getComponentProvider().a(2)).B.setVisibility(8);
           return true;
         }
       }
@@ -1227,7 +1016,7 @@ public class SwiftBrowserTBSHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler
  * JD-Core Version:    0.7.0.1
  */

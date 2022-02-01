@@ -15,13 +15,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 public abstract class FileViewerAdapterBase
   implements IFileViewerAdapter
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a = 0;
   private boolean b = false;
   private boolean c = false;
   private boolean d = false;
   private boolean e = false;
   private boolean f = false;
+  private boolean g = false;
   
   public static IFileViewerAdapter a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
@@ -45,41 +45,36 @@ public abstract class FileViewerAdapterBase
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean b()
-  {
-    return this.d;
-  }
-  
-  public String f()
+  public String l()
   {
     return "";
   }
   
-  public String i()
+  public String t()
   {
-    long l = c();
+    long l = e();
     String str = "";
     Object localObject = str;
     if (l > 0L)
     {
       localObject = str;
-      if (c() != 3)
+      if (m() != 3)
       {
         int i;
-        if ((e() != null) && (e().length() > 0)) {
+        if ((j() != null) && (j().length() > 0)) {
           i = 1;
         } else {
           i = 0;
@@ -89,18 +84,23 @@ public abstract class FileViewerAdapterBase
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("");
-          ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getString(2131692346));
-          ((StringBuilder)localObject).append(FileManagerUtil.a(c(), b()));
+          ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getString(2131889334));
+          ((StringBuilder)localObject).append(FileManagerUtil.a(e(), f()));
           localObject = ((StringBuilder)localObject).toString();
         }
       }
     }
     return localObject;
   }
+  
+  public boolean u()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileViewerAdapterBase
  * JD-Core Version:    0.7.0.1
  */

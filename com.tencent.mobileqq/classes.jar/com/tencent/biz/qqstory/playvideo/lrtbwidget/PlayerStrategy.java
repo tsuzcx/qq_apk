@@ -10,7 +10,7 @@ public class PlayerStrategy
   
   public static PlayerStrategy a(StoryPlayerContext paramStoryPlayerContext)
   {
-    if (paramStoryPlayerContext.a().mReportData.from == 86) {
+    if (paramStoryPlayerContext.i().mReportData.from == 86) {
       return new SelectVideoPlayerStrategy(paramStoryPlayerContext);
     }
     return new PlayerStrategy(paramStoryPlayerContext);
@@ -26,7 +26,7 @@ public class PlayerStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerStrategy
  * JD-Core Version:    0.7.0.1
  */

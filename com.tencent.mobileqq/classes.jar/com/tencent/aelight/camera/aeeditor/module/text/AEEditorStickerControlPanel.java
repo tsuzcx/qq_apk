@@ -25,18 +25,18 @@ import java.util.List;
 public class AEEditorStickerControlPanel
   extends FrameLayout
 {
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private Observer<Integer> jdField_a_of_type_AndroidxLifecycleObserver;
-  private BottomSheetBehavior jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
-  private AEEditorStickerControlPanel.TextStickerControlListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel$TextStickerControlListener;
-  private AEEditorStickerMaterialContentAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter;
-  private AEEditorStickerViewModel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel;
-  private MaterialCategoryAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter;
-  private final List<MetaCategory> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private final List<MetaMaterial> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private RecyclerView a;
+  private GridLayoutManager b;
+  private MaterialCategoryAdapter c;
+  private AEEditorStickerMaterialContentAdapter d;
+  private BottomSheetBehavior e;
+  private AEEditorStickerControlPanel.TextStickerControlListener f;
+  private AEEditorStickerViewModel g;
+  private final List<MetaCategory> h = new ArrayList();
+  private final List<MetaMaterial> i = new ArrayList();
+  private Observer<Integer> j;
+  private boolean k;
+  private boolean l;
   
   public AEEditorStickerControlPanel(@NonNull Context paramContext)
   {
@@ -55,71 +55,71 @@ public class AEEditorStickerControlPanel
     b();
   }
   
-  private ApplyMaterialTask a()
-  {
-    return new AEEditorStickerControlPanel.5(this);
-  }
-  
   private void a(@NonNull Context paramContext)
   {
-    View localView = View.inflate(paramContext, 2064318583, this);
-    RecyclerView localRecyclerView = (RecyclerView)localView.findViewById(2064122584);
+    View localView = View.inflate(paramContext, 2064056455, this);
+    RecyclerView localRecyclerView = (RecyclerView)localView.findViewById(2063991401);
     localRecyclerView.setLayoutManager(new LinearLayoutManager(paramContext, 0, false));
     localRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter = new MaterialCategoryAdapter(this.jdField_a_of_type_JavaUtilList, new AEEditorStickerControlPanel.1(this));
-    localRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2064122586));
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 5);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new AEEditorStickerControlPanel.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter = new AEEditorStickerMaterialContentAdapter(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter.a(a());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter.a(this.jdField_b_of_type_JavaUtilList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior = BottomSheetBehavior.a(localView.findViewById(2064122355));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.a(new AEEditorStickerControlPanel.3(this));
+    this.c = new MaterialCategoryAdapter(this.h, new AEEditorStickerControlPanel.1(this));
+    localRecyclerView.setAdapter(this.c);
+    this.a = ((RecyclerView)localView.findViewById(2063991403));
+    this.b = new GridLayoutManager(paramContext, 5);
+    this.a.setLayoutManager(this.b);
+    this.a.addOnScrollListener(new AEEditorStickerControlPanel.2(this));
+    this.d = new AEEditorStickerMaterialContentAdapter(paramContext);
+    this.d.a(c());
+    this.d.a(this.i);
+    this.a.setAdapter(this.d);
+    this.e = BottomSheetBehavior.b(localView.findViewById(2063991228));
+    this.e.b(new AEEditorStickerControlPanel.3(this));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidxLifecycleObserver = new AEEditorStickerControlPanel.4(this);
+    this.j = new AEEditorStickerControlPanel.4(this);
   }
   
-  public List<MetaMaterial> a()
+  private ApplyMaterialTask c()
   {
-    return this.jdField_b_of_type_JavaUtilList;
+    return new AEEditorStickerControlPanel.5(this);
   }
   
   public void a()
   {
-    BottomSheetBehavior localBottomSheetBehavior = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
-    if ((localBottomSheetBehavior != null) && (localBottomSheetBehavior.b() != 4)) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.d(4);
+    BottomSheetBehavior localBottomSheetBehavior = this.e;
+    if ((localBottomSheetBehavior != null) && (localBottomSheetBehavior.d() != 4)) {
+      this.e.d(4);
     }
   }
   
   public boolean a(String paramString)
   {
-    AEEditorStickerMaterialContentAdapter localAEEditorStickerMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter;
+    AEEditorStickerMaterialContentAdapter localAEEditorStickerMaterialContentAdapter = this.d;
     if (localAEEditorStickerMaterialContentAdapter != null) {
       return localAEEditorStickerMaterialContentAdapter.a(paramString);
     }
     return false;
   }
   
+  public List<MetaMaterial> getStickerMaterials()
+  {
+    return this.i;
+  }
+  
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    AEEditorStickerViewModel localAEEditorStickerViewModel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel;
+    AEEditorStickerViewModel localAEEditorStickerViewModel = this.g;
     if (localAEEditorStickerViewModel != null) {
-      localAEEditorStickerViewModel.c().removeObserver(this.jdField_a_of_type_AndroidxLifecycleObserver);
+      localAEEditorStickerViewModel.e().removeObserver(this.j);
     }
   }
   
   public void setIsImageMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter.b(this.jdField_a_of_type_Boolean);
+    this.k = paramBoolean;
+    this.d.b(this.k);
   }
   
   public void setStickerCategories(List<MetaCategory> paramList)
@@ -127,35 +127,35 @@ public class AEEditorStickerControlPanel
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_b_of_type_JavaUtilList.clear();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.h.clear();
+    this.h.addAll(paramList);
+    this.i.clear();
+    paramList = this.h.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (MetaCategory)paramList.next();
       localObject = TextMetaMaterialKt.a(((MetaCategory)localObject).id, ((MetaCategory)localObject).materials);
-      this.jdField_b_of_type_JavaUtilList.addAll((Collection)localObject);
+      this.i.addAll((Collection)localObject);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(this.jdField_b_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter.notifyDataSetChanged();
+    this.g.a(this.i);
+    this.c.notifyDataSetChanged();
+    this.d.notifyDataSetChanged();
   }
   
   public void setStickerControlPanelListener(AEEditorStickerControlPanel.TextStickerControlListener paramTextStickerControlListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel$TextStickerControlListener = paramTextStickerControlListener;
+    this.f = paramTextStickerControlListener;
   }
   
   public void setStickerViewModel(AEEditorStickerViewModel paramAEEditorStickerViewModel)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel = paramAEEditorStickerViewModel;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.c().observeForever(this.jdField_a_of_type_AndroidxLifecycleObserver);
+    this.g = paramAEEditorStickerViewModel;
+    this.g.e().observeForever(this.j);
   }
   
   public void setToastValidListener(QQToast.IToastValidListener paramIToastValidListener)
   {
-    AEEditorStickerMaterialContentAdapter localAEEditorStickerMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerMaterialContentAdapter;
+    AEEditorStickerMaterialContentAdapter localAEEditorStickerMaterialContentAdapter = this.d;
     if (localAEEditorStickerMaterialContentAdapter != null) {
       localAEEditorStickerMaterialContentAdapter.a(paramIToastValidListener);
     }
@@ -163,7 +163,7 @@ public class AEEditorStickerControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerControlPanel
  * JD-Core Version:    0.7.0.1
  */

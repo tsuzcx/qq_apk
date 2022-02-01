@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.kandian.repo.account;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
 import com.google.gson.Gson;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
@@ -15,8 +17,10 @@ import com.tencent.mobileqq.kandian.repo.account.api.IRIJUserLevelModule;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -31,6 +35,7 @@ public class RIJUserLevelModule
   private static final String USER_LEVEL_INFO_SP = "user_info_level_sp";
   private static volatile RIJUserLevelModule instance;
   private boolean hasPreRequest = false;
+  private List<RIJUserLevelModule.UserLevelInfoUpdateListener> levelInfoUpdateListeners = new ArrayList();
   private RIJUserLevelModule.UserLevelDenyCallback userLevelDenyCallback = null;
   private Map<Long, UserLevelInfo> userLevelInfoCache = new HashMap();
   
@@ -105,7 +110,7 @@ public class RIJUserLevelModule
   
   private void loadUserInfoFromSP()
   {
-    String str = (String)RIJSPUtils.a("user_info_level_sp", "");
+    String str = (String)RIJSPUtils.b("user_info_level_sp", "");
     if (!TextUtils.isEmpty(str)) {
       try
       {
@@ -133,9 +138,14 @@ public class RIJUserLevelModule
     QLog.d("RIJUserLevelModel", 1, localStringBuilder1.toString());
   }
   
+  private void notifyUserLevelInfoUpdate(UserLevelInfo paramUserLevelInfo)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new RIJUserLevelModule.2(this, paramUserLevelInfo));
+  }
+  
   private void requestUserLevel(long paramLong, int paramInt)
   {
-    RIJUserLevelRequestModule localRIJUserLevelRequestModule = ReadInJoyLogicEngine.a().a();
+    RIJUserLevelRequestModule localRIJUserLevelRequestModule = ReadInJoyLogicEngine.a().af();
     if (localRIJUserLevelRequestModule != null) {
       localRIJUserLevelRequestModule.a(paramLong, paramInt);
     }
@@ -214,10 +224,16 @@ public class RIJUserLevelModule
     localUserLevelInfo.operFobidWording.put(Integer.valueOf(paramInt), RIJPBFieldUtils.a(paramPrivilegeRspBody.forbid_wording, ""));
     localUserLevelInfo.isInLevelGrayList = RIJPBFieldUtils.a(paramPrivilegeRspBody.is_experience);
     saveUserLevelInfo(localUserLevelInfo);
+    notifyUserLevelInfoUpdate(localUserLevelInfo);
     paramPrivilegeRspBody = new StringBuilder();
     paramPrivilegeRspBody.append("updateUserLevelInfo! cacheUserLevelInfo=");
     paramPrivilegeRspBody.append(localUserLevelInfo);
     QLog.d("RIJUserLevelModel", 1, paramPrivilegeRspBody.toString());
+  }
+  
+  public void addUserLevelInfoUpdateListener(RIJUserLevelModule.UserLevelInfoUpdateListener paramUserLevelInfoUpdateListener)
+  {
+    this.levelInfoUpdateListeners.add(paramUserLevelInfoUpdateListener);
   }
   
   public boolean doActionsByUserLevel(Context paramContext, int paramInt, @Nullable IUserLevelCallBack paramIUserLevelCallBack)
@@ -302,9 +318,14 @@ public class RIJUserLevelModule
   
   public UserLevelInfo getCurrentUserLevelInfo(int paramInt)
   {
-    UserLevelInfo localUserLevelInfo = getUserLevelInfo(RIJQQAppInterfaceUtil.a());
+    UserLevelInfo localUserLevelInfo = getUserLevelInfo(RIJQQAppInterfaceUtil.c());
     localUserLevelInfo.currentOpType = paramInt;
     return localUserLevelInfo;
+  }
+  
+  public UserLevelInfo getUserLevelInfoOrNull(long paramLong)
+  {
+    return (UserLevelInfo)this.userLevelInfoCache.get(Long.valueOf(paramLong));
   }
   
   public void preRequestUserLevel()
@@ -313,7 +334,7 @@ public class RIJUserLevelModule
     localStringBuilder.append("preRequestUserLevel! hasPreRequest=");
     localStringBuilder.append(this.hasPreRequest);
     QLog.d("RIJUserLevelModel", 1, localStringBuilder.toString());
-    long l = RIJQQAppInterfaceUtil.a();
+    long l = RIJQQAppInterfaceUtil.c();
     requestUserLevel(l, 5);
     if (this.hasPreRequest) {
       return;
@@ -322,6 +343,11 @@ public class RIJUserLevelModule
     requestUserLevel(l, 6);
     requestUserLevel(l, 11);
     this.hasPreRequest = true;
+  }
+  
+  public void removeUserLevelInfoUpdateListener(RIJUserLevelModule.UserLevelInfoUpdateListener paramUserLevelInfoUpdateListener)
+  {
+    this.levelInfoUpdateListeners.remove(paramUserLevelInfoUpdateListener);
   }
   
   @Deprecated
@@ -339,7 +365,7 @@ public class RIJUserLevelModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.RIJUserLevelModule
  * JD-Core Version:    0.7.0.1
  */

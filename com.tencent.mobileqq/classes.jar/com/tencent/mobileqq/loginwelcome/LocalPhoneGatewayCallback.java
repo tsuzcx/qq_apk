@@ -11,16 +11,16 @@ import tencent.im.login.GetLocalPhone.LocalPhoneCodeData;
 public abstract class LocalPhoneGatewayCallback
   implements GatewayCallback
 {
-  private int jdField_a_of_type_Int;
-  private List<GetLocalPhone.LocalPhoneCodeData> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
   private int b;
-  private int c;
+  private boolean c;
+  private int d;
+  private List<GetLocalPhone.LocalPhoneCodeData> e;
   
   public LocalPhoneGatewayCallback(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramInt;
+    this.e = new ArrayList();
   }
   
   public abstract void a(int paramInt, Exception paramException);
@@ -36,14 +36,14 @@ public abstract class LocalPhoneGatewayCallback
         QLog.d("LocalPhoneGatewayCallback", 1, "not finish request");
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
         QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
         a(-100002, paramException);
         return;
       }
       QLog.e("LocalPhoneGatewayCallback", 1, "onChangeNetworkError getTokenFinish");
-      a(this.jdField_a_of_type_JavaUtilList);
+      a(this.e);
       return;
     }
     finally {}
@@ -53,8 +53,8 @@ public abstract class LocalPhoneGatewayCallback
   
   public void a(GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl)
   {
-    this.c += 1;
-    if (this.c > 5)
+    this.d += 1;
+    if (this.d > 5)
     {
       QLog.e("LocalPhoneGatewayCallback", 1, "onRedirect time out of max time");
       b(-100000, new Exception("onRedirect time out"));
@@ -74,22 +74,22 @@ public abstract class LocalPhoneGatewayCallback
       return;
     }
     finally {}
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     GetLocalPhone.LocalPhoneCodeData localLocalPhoneCodeData = new GetLocalPhone.LocalPhoneCodeData();
     localLocalPhoneCodeData.str_code_data.set(paramString);
     localLocalPhoneCodeData.int32_channel_id.set(paramSelfPhoneUrl.int32_channel_id.get());
-    this.jdField_a_of_type_JavaUtilList.add(localLocalPhoneCodeData);
+    this.e.add(localLocalPhoneCodeData);
     boolean bool = a();
-    QLog.d("LocalPhoneGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.b), " totalCount : ", Integer.valueOf(this.jdField_a_of_type_Int), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
+    QLog.d("LocalPhoneGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.b), " totalCount : ", Integer.valueOf(this.a), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
     if (bool) {
-      a(this.jdField_a_of_type_JavaUtilList);
+      a(this.e);
     }
   }
   
   public boolean a()
   {
     this.b += 1;
-    return this.b >= this.jdField_a_of_type_Int;
+    return this.b >= this.a;
   }
   
   public void b(int paramInt, Exception paramException)
@@ -103,14 +103,14 @@ public abstract class LocalPhoneGatewayCallback
         QLog.e("LocalPhoneGatewayCallback", 1, "not finish request");
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
         QLog.e("LocalPhoneGatewayCallback", 1, "no success request");
         a(paramInt, paramException);
         return;
       }
       QLog.e("LocalPhoneGatewayCallback", 1, "onGetTokenError getTokenFinish");
-      a(this.jdField_a_of_type_JavaUtilList);
+      a(this.e);
       return;
     }
     finally {}
@@ -118,7 +118,7 @@ public abstract class LocalPhoneGatewayCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LocalPhoneGatewayCallback
  * JD-Core Version:    0.7.0.1
  */

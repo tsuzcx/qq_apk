@@ -19,7 +19,7 @@ class AbstractPicOperator$1
   public void handleMessage(Message paramMessage)
   {
     Object localObject1 = this.a.b;
-    String str = this.a.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("what:");
     ((StringBuilder)localObject3).append(paramMessage.what);
@@ -28,7 +28,7 @@ class AbstractPicOperator$1
     ((StringBuilder)localObject3).append(",obj:");
     ((StringBuilder)localObject3).append(paramMessage.obj);
     Logger.a((String)localObject1, str, "dispatchMessage", ((StringBuilder)localObject3).toString());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {
+    if (this.a.d == null) {
       return;
     }
     switch (paramMessage.what)
@@ -37,7 +37,7 @@ class AbstractPicOperator$1
       return;
     case 6: 
       paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue());
+      this.a.d.a(((Integer)paramMessage.d).intValue());
       return;
     case 5: 
       localObject3 = paramMessage.obj;
@@ -50,28 +50,28 @@ class AbstractPicOperator$1
     try
     {
       localObject1 = (ArrayList)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, (ArrayList)localObject1);
+      this.a.d.a(paramMessage.arg1, (ArrayList)localObject1);
       return;
       int i = paramMessage.arg1;
       paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
+      this.a.d.d(i, paramMessage);
       return;
       i = paramMessage.arg1;
       paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
+      this.a.d.c(i, paramMessage);
       return;
       i = paramMessage.arg1;
       paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
+      this.a.d.b(i, paramMessage);
       return;
       paramMessage = (PicResult)paramMessage.obj;
-      if ((paramMessage.a instanceof Integer))
+      if ((paramMessage.d instanceof Integer))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
+        this.a.d.a_(((Integer)paramMessage.d).intValue(), paramMessage.g);
         return;
         i = paramMessage.arg1;
         paramMessage = (PicResult)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
+        this.a.d.a(i, paramMessage);
       }
       return;
     }
@@ -86,7 +86,7 @@ class AbstractPicOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.AbstractPicOperator.1
  * JD-Core Version:    0.7.0.1
  */

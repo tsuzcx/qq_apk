@@ -9,18 +9,12 @@ import org.json.JSONObject;
 
 public class QuickAuthorityConfBean
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
+  public int a = 0;
   public int b = 0;
   public int c = 1;
   public int d = 0;
   public int e = 1;
-  
-  public QuickAuthorityConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-  }
+  public ConcurrentHashMap<String, String> f = new ConcurrentHashMap(10);
   
   public static QuickAuthorityConfBean a(String paramString)
   {
@@ -33,7 +27,7 @@ public class QuickAuthorityConfBean
       try
       {
         paramString = new JSONObject(paramString);
-        localQuickAuthorityConfBean.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
+        localQuickAuthorityConfBean.a = paramString.optInt("kCheckSignatureSwitch", 0);
         localQuickAuthorityConfBean.b = paramString.optInt("kDisableChooseSwitch", 0);
         localQuickAuthorityConfBean.c = paramString.optInt("kShowKickDialog", 1);
         localQuickAuthorityConfBean.d = paramString.optInt("kFDHookSwitch", 0);
@@ -49,7 +43,7 @@ public class QuickAuthorityConfBean
             if (TextUtils.isEmpty(str2)) {
               continue;
             }
-            localQuickAuthorityConfBean.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
+            localQuickAuthorityConfBean.f.put(str1, str2);
             if (!QLog.isColorLevel()) {
               continue;
             }
@@ -83,11 +77,11 @@ public class QuickAuthorityConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder(20);
     localStringBuilder.append("kCheckSignatureSwitch:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" kDisableChooseSwitch:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" signatureMaps:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    localStringBuilder.append(this.f.size());
     localStringBuilder.append(" fdSwitch:");
     localStringBuilder.append(this.d);
     localStringBuilder.append(" wtloginPowTest:");
@@ -97,7 +91,7 @@ public class QuickAuthorityConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickAuthorityConfBean
  * JD-Core Version:    0.7.0.1
  */

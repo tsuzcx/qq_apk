@@ -16,11 +16,11 @@ public class QQStoryShareGroupProfileActivity$PlayVideoChangeReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull PlayVideoChangeEvent paramPlayVideoChangeEvent)
   {
-    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramPlayVideoChangeEvent.jdField_a_of_type_JavaLangString)) && ((paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)))
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramPlayVideoChangeEvent.a)) && ((paramPlayVideoChangeEvent.b instanceof MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)))
     {
-      paramPlayVideoChangeEvent = ((MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
+      paramPlayVideoChangeEvent = ((MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)paramPlayVideoChangeEvent.b).a;
       if (paramPlayVideoChangeEvent != null) {
-        paramQQStoryShareGroupProfileActivity.a(paramPlayVideoChangeEvent.jdField_a_of_type_JavaLangString);
+        paramQQStoryShareGroupProfileActivity.a(paramPlayVideoChangeEvent.a);
       }
     }
   }

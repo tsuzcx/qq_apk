@@ -10,14 +10,14 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (StatusManager.b(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a) != null)
+    if (StatusManager.i(this.a.b.a) != null)
     {
-      Iterator localIterator = StatusManager.b(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).iterator();
+      Iterator localIterator = StatusManager.i(this.a.b.a).iterator();
       while (localIterator.hasNext())
       {
         IStatusListener localIStatusListener = (IStatusListener)localIterator.next();
         int i;
-        if (this.a.jdField_a_of_type_Boolean) {
+        if (this.a.a) {
           i = 100;
         } else {
           i = -1;
@@ -29,7 +29,7 @@ class StatusManager$3$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2.1
  * JD-Core Version:    0.7.0.1
  */

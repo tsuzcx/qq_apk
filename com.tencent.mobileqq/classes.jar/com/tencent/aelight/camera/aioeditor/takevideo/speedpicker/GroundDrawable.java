@@ -20,140 +20,118 @@ public class GroundDrawable
   extends Drawable
   implements Animatable
 {
-  private float jdField_a_of_type_Float = 16.0F;
-  private int jdField_a_of_type_Int = 0;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property<GroundDrawable, Float> jdField_a_of_type_AndroidUtilProperty = new GroundDrawable.1(this, Float.class, "backHeight");
-  private PickerBack jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack = new PickerBack();
-  private PickerFore jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore = new PickerFore();
-  private WeakReference<GroundDrawable.GroundDrawableListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 5.0F;
-  private int jdField_b_of_type_Int = 255;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  Property<GroundDrawable, Integer> jdField_b_of_type_AndroidUtilProperty = new GroundDrawable.2(this, Integer.class, "backAlpha");
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float = 50.0F;
-  private int jdField_c_of_type_Int = 0;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  Property<GroundDrawable, Integer> jdField_c_of_type_AndroidUtilProperty = new GroundDrawable.3(this, Integer.class, "speedAlpha");
-  private float jdField_d_of_type_Float = 50.0F;
-  private int jdField_d_of_type_Int = 179;
-  Property<GroundDrawable, Integer> jdField_d_of_type_AndroidUtilProperty = new GroundDrawable.4(this, Integer.class, "reverseAlpha");
-  private float jdField_e_of_type_Float = 30.0F;
-  private int jdField_e_of_type_Int = 0;
-  Property<GroundDrawable, Float> jdField_e_of_type_AndroidUtilProperty = new GroundDrawable.5(this, Float.class, "foreSpeed");
-  private float jdField_f_of_type_Float = 22.0F;
-  private int jdField_f_of_type_Int = 179;
-  Property<GroundDrawable, Float> jdField_f_of_type_AndroidUtilProperty = new GroundDrawable.6(this, Float.class, "foreHeight");
-  private int jdField_g_of_type_Int = -1;
-  Property<GroundDrawable, Float> jdField_g_of_type_AndroidUtilProperty = new GroundDrawable.7(this, Float.class, "speedPos");
-  private int jdField_h_of_type_Int = 0;
-  Property<GroundDrawable, Integer> jdField_h_of_type_AndroidUtilProperty = new GroundDrawable.8(this, Integer.class, "markAlpha");
-  
-  private float a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
-  }
-  
-  private void a(float paramFloat)
-  {
-    if (this.jdField_h_of_type_Int == 4)
-    {
-      float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
-      this.jdField_b_of_type_AndroidGraphicsRectF.offset(0.0F, paramFloat - f1);
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (GroundDrawable.GroundDrawableListener)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((GroundDrawable.GroundDrawableListener)localObject).a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
-        }
-      }
-    }
-  }
+  private int A = -1;
+  private boolean B = false;
+  private Drawable C;
+  private boolean D = false;
+  private int E = 0;
+  private ValueAnimator F;
+  private WeakReference<GroundDrawable.GroundDrawableListener> G;
+  Property<GroundDrawable, Float> a = new GroundDrawable.1(this, Float.class, "backHeight");
+  Property<GroundDrawable, Integer> b = new GroundDrawable.2(this, Integer.class, "backAlpha");
+  Property<GroundDrawable, Integer> c = new GroundDrawable.3(this, Integer.class, "speedAlpha");
+  Property<GroundDrawable, Integer> d = new GroundDrawable.4(this, Integer.class, "reverseAlpha");
+  Property<GroundDrawable, Float> e = new GroundDrawable.5(this, Float.class, "foreSpeed");
+  Property<GroundDrawable, Float> f = new GroundDrawable.6(this, Float.class, "foreHeight");
+  Property<GroundDrawable, Float> g = new GroundDrawable.7(this, Float.class, "speedPos");
+  Property<GroundDrawable, Integer> h = new GroundDrawable.8(this, Integer.class, "markAlpha");
+  private float i = 16.0F;
+  private float j = 5.0F;
+  private float k = 50.0F;
+  private float l = 50.0F;
+  private float m = 30.0F;
+  private float n = 22.0F;
+  private PickerBack o = new PickerBack();
+  private RectF p = new RectF();
+  private RectF q = new RectF();
+  private int r = 0;
+  private int s = 255;
+  private int t = 0;
+  private int u = 179;
+  private int v = 0;
+  private int w = 179;
+  private PickerFore x = new PickerFore();
+  private RectF y = new RectF();
+  private Drawable z;
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    Object localObject = this.F;
     if (localObject != null)
     {
       ((ValueAnimator)localObject).cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.F.removeAllUpdateListeners();
+      this.F = null;
     }
-    int i = getBounds().height();
+    int i1 = getBounds().height();
     PropertyValuesHolder localPropertyValuesHolder1;
     PropertyValuesHolder localPropertyValuesHolder2;
     if (paramInt1 == 1)
     {
-      localObject = this.jdField_a_of_type_AndroidUtilProperty;
-      paramFloat1 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-      paramFloat2 = i;
+      localObject = this.a;
+      paramFloat1 = this.p.height();
+      paramFloat2 = i1;
       localObject = PropertyValuesHolder.ofFloat((Property)localObject, new float[] { paramFloat1, paramFloat2 });
-      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), paramFloat2 });
-      localPropertyValuesHolder2 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 115 });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder1, PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 0 }), PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 255 }), localPropertyValuesHolder2, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 127 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.f, new float[] { this.y.height(), paramFloat2 });
+      localPropertyValuesHolder2 = PropertyValuesHolder.ofInt(this.b, new int[] { this.r, 115 });
+      this.F = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder1, PropertyValuesHolder.ofInt(this.c, new int[] { this.s, 0 }), PropertyValuesHolder.ofInt(this.d, new int[] { this.v, 255 }), localPropertyValuesHolder2, PropertyValuesHolder.ofInt(this.h, new int[] { this.w, 127 }) });
+      this.F.setDuration(paramInt2);
     }
     else if (paramInt1 == 3)
     {
-      localObject = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 0 });
-      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F });
-      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), (int)(i * 0.9F) });
-      PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat(this.jdField_e_of_type_AndroidUtilProperty, new float[] { this.jdField_b_of_type_AndroidGraphicsRectF.height(), (int)this.jdField_c_of_type_Float });
-      PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 255 });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder2, localPropertyValuesHolder3, PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 0 }), localPropertyValuesHolder1, localPropertyValuesHolder4, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 179 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      localObject = PropertyValuesHolder.ofInt(this.b, new int[] { this.r, 0 });
+      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.a, new float[] { this.p.height(), 0.0F });
+      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.f, new float[] { this.y.height(), (int)(i1 * 0.9F) });
+      PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat(this.e, new float[] { this.q.height(), (int)this.k });
+      PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofInt(this.c, new int[] { this.s, 255 });
+      this.F = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder2, localPropertyValuesHolder3, PropertyValuesHolder.ofInt(this.d, new int[] { this.v, 0 }), localPropertyValuesHolder1, localPropertyValuesHolder4, PropertyValuesHolder.ofInt(this.h, new int[] { this.w, 179 }) });
+      this.F.setDuration(paramInt2);
     }
     else if (paramInt1 == 4)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_g_of_type_AndroidUtilProperty, new float[] { paramFloat1, paramFloat2 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      this.F = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.g, new float[] { paramFloat1, paramFloat2 }) });
+      this.F.setDuration(paramInt2);
     }
-    localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localObject = this.F;
     if (localObject != null)
     {
       ((ValueAnimator)localObject).setRepeatMode(1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GroundDrawable.9(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new GroundDrawable.10(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.F.setRepeatCount(0);
+      this.F.setStartDelay(0L);
+      this.F.addUpdateListener(new GroundDrawable.9(this));
+      this.F.addListener(new GroundDrawable.10(this));
+      this.F.start();
     }
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_c_of_type_Float = PickerContainer.a(paramContext, this.jdField_c_of_type_Float);
-    this.jdField_d_of_type_Float = PickerContainer.a(paramContext, this.jdField_d_of_type_Float);
-    this.jdField_e_of_type_Float = PickerContainer.a(paramContext, this.jdField_e_of_type_Float);
-    this.jdField_f_of_type_Float = PickerContainer.a(paramContext, this.jdField_f_of_type_Float);
-    this.jdField_b_of_type_Float = PickerContainer.a(paramContext, this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_Float /= paramContext.getResources().getDisplayMetrics().density;
+    this.k = PickerContainer.a(paramContext, this.k);
+    this.l = PickerContainer.a(paramContext, this.l);
+    this.m = PickerContainer.a(paramContext, this.m);
+    this.n = PickerContainer.a(paramContext, this.n);
+    this.j = PickerContainer.a(paramContext, this.j);
+    this.i /= paramContext.getResources().getDisplayMetrics().density;
   }
   
   private void a(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(this.jdField_g_of_type_Int);
+    Object localObject = this.x.a(this.A);
     if (localObject != null)
     {
       float f1 = ((RectF)localObject).centerX();
       float f2 = ((RectF)localObject).centerY();
-      f1 -= this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F;
-      f2 -= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F;
-      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height();
+      f1 -= this.q.width() / 2.0F;
+      f2 -= this.q.height() / 2.0F;
+      float f3 = this.q.width();
+      float f4 = this.q.height();
       paramCanvas.save();
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject = this.z;
       if (localObject != null)
       {
         ((Drawable)localObject).setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        this.z.setAlpha(this.s);
+        this.z.draw(paramCanvas);
       }
       paramCanvas.restore();
     }
@@ -161,22 +139,22 @@ public class GroundDrawable
   
   private void a(Canvas paramCanvas, boolean paramBoolean)
   {
-    RectF localRectF = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(this.jdField_c_of_type_Int - 1);
-    if ((localRectF != null) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
+    RectF localRectF = this.x.a(this.t - 1);
+    if ((localRectF != null) && (this.C != null))
     {
       float f3 = localRectF.centerX();
       float f2 = localRectF.centerY();
-      float f1 = this.jdField_e_of_type_Float;
+      float f1 = this.m;
       f3 -= f1 / 2.0F;
-      float f4 = this.jdField_f_of_type_Float;
+      float f4 = this.n;
       f2 -= f4 / 2.0F;
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f3, (int)f2, (int)(f1 + f3), (int)(f4 + f2));
+      this.C.setBounds((int)f3, (int)f2, (int)(f1 + f3), (int)(f4 + f2));
       if (!paramBoolean) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_e_of_type_Int);
+        this.C.setAlpha(this.v);
       } else {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
+        this.C.setAlpha(255);
       }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.C.draw(paramCanvas);
     }
   }
   
@@ -185,45 +163,45 @@ public class GroundDrawable
     if (paramRect == null) {
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.D)
     {
       if (QLog.isColorLevel())
       {
         paramRect = new StringBuilder();
         paramRect.append("isrunning, cannot resetdata:");
-        paramRect.append(this.jdField_h_of_type_Int);
+        paramRect.append(this.E);
         QLog.d("GroundDrawable", 2, paramRect.toString());
       }
       return;
     }
-    int i = this.jdField_h_of_type_Int;
-    if ((i != 0) && (i != 1))
+    int i1 = this.E;
+    if ((i1 != 0) && (i1 != 1))
     {
-      if ((i == 3) || (i == 2))
+      if ((i1 == 3) || (i1 == 2))
       {
-        a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height());
-        a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height());
-        paramRect = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack;
+        a(this.p, paramRect.height());
+        a(this.y, paramRect.height());
+        paramRect = this.o;
         if (paramRect != null) {
-          paramRect.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+          paramRect.a(this.p);
         }
-        paramRect = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+        paramRect = this.x;
         if (paramRect != null) {
-          paramRect.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+          paramRect.a(this.y);
         }
       }
     }
     else
     {
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height() * 0.4F);
-      PickerBack localPickerBack = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack;
+      a(this.p, paramRect.height() * 0.4F);
+      PickerBack localPickerBack = this.o;
       if (localPickerBack != null) {
-        localPickerBack.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+        localPickerBack.a(this.p);
       }
-      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height() * 0.9F);
-      paramRect = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+      a(this.y, paramRect.height() * 0.9F);
+      paramRect = this.x;
       if (paramRect != null) {
-        paramRect.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+        paramRect.a(this.y);
       }
     }
   }
@@ -250,96 +228,58 @@ public class GroundDrawable
   
   private void a(Float paramFloat)
   {
-    if (this.jdField_h_of_type_Int == 3)
+    if (this.E == 3)
     {
-      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      RectF localRectF = this.q;
       localRectF.left = (localRectF.centerX() - paramFloat.floatValue() / 2.0F);
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF = this.q;
       localRectF.right = (localRectF.centerX() + paramFloat.floatValue() / 2.0F);
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF = this.q;
       localRectF.top = (localRectF.centerY() - paramFloat.floatValue() / 2.0F);
-      localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      localRectF = this.q;
       localRectF.bottom = (localRectF.centerY() + paramFloat.floatValue() / 2.0F);
-    }
-  }
-  
-  private float b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRectF.height();
-  }
-  
-  private int b()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  private void b(float paramFloat)
-  {
-    int i = this.jdField_h_of_type_Int;
-    if ((i == 1) || (i == 3))
-    {
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramFloat);
-      PickerBack localPickerBack = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack;
-      if (localPickerBack != null) {
-        localPickerBack.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-      }
     }
   }
   
   private void b(int paramInt)
   {
-    int i = this.jdField_h_of_type_Int;
-    if ((i != 3) && (i != 1))
+    int i1 = this.E;
+    if ((i1 != 3) && (i1 != 1))
     {
-      if (i == 0)
+      if (i1 == 0)
       {
-        this.jdField_f_of_type_Int = 179;
+        this.w = 179;
         return;
       }
-      this.jdField_f_of_type_Int = 127;
+      this.w = 127;
       return;
     }
-    this.jdField_f_of_type_Int = paramInt;
+    this.w = paramInt;
   }
   
   private void b(Canvas paramCanvas)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.z;
     if (localDrawable != null)
     {
-      localDrawable.setBounds((int)this.jdField_b_of_type_AndroidGraphicsRectF.left, (int)this.jdField_b_of_type_AndroidGraphicsRectF.top, (int)this.jdField_b_of_type_AndroidGraphicsRectF.right, (int)this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      localDrawable.setBounds((int)this.q.left, (int)this.q.top, (int)this.q.right, (int)this.q.bottom);
+      this.z.setAlpha(this.s);
+      this.z.draw(paramCanvas);
     }
-  }
-  
-  private float c()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF.height();
-  }
-  
-  private int c()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   private void c(float paramFloat)
   {
-    int i = this.jdField_h_of_type_Int;
-    if ((i == 1) || (i == 3))
+    if (this.E == 4)
     {
-      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramFloat);
-      Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+      float f1 = this.q.centerY();
+      this.q.offset(0.0F, paramFloat - f1);
+      Object localObject = this.G;
       if (localObject != null)
       {
-        ((PickerFore)localObject).a(this.jdField_c_of_type_AndroidGraphicsRectF);
-        localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-        if (localObject != null)
-        {
-          localObject = (GroundDrawable.GroundDrawableListener)((WeakReference)localObject).get();
-          if (localObject != null) {
-            ((GroundDrawable.GroundDrawableListener)localObject).a(this.jdField_h_of_type_Int, a());
-          }
+        localObject = (GroundDrawable.GroundDrawableListener)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((GroundDrawable.GroundDrawableListener)localObject).a(this.E, this.q);
         }
       }
     }
@@ -347,60 +287,95 @@ public class GroundDrawable
   
   private void c(int paramInt)
   {
-    int i = this.jdField_h_of_type_Int;
-    if ((i != 3) && (i != 1))
+    int i1 = this.E;
+    if ((i1 != 3) && (i1 != 1))
     {
-      this.jdField_a_of_type_Int = 115;
+      this.r = 115;
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.r = paramInt;
   }
   
   private float d()
   {
-    return this.jdField_c_of_type_AndroidGraphicsRectF.height();
+    return this.q.centerY();
   }
   
-  private int d()
+  private void d(float paramFloat)
   {
-    return this.jdField_e_of_type_Int;
+    int i1 = this.E;
+    if ((i1 == 1) || (i1 == 3))
+    {
+      a(this.p, paramFloat);
+      PickerBack localPickerBack = this.o;
+      if (localPickerBack != null) {
+        localPickerBack.a(this.p);
+      }
+    }
   }
   
   private void d(int paramInt)
   {
-    int i = this.jdField_h_of_type_Int;
-    if ((i != 1) && (i != 3))
+    int i1 = this.E;
+    if ((i1 != 1) && (i1 != 3))
     {
-      this.jdField_a_of_type_Int = 255;
+      this.r = 255;
       return;
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.s = paramInt;
   }
   
-  private int e()
+  private float e()
   {
-    return this.jdField_b_of_type_Int;
+    return this.q.height();
+  }
+  
+  private void e(float paramFloat)
+  {
+    int i1 = this.E;
+    if ((i1 == 1) || (i1 == 3))
+    {
+      a(this.y, paramFloat);
+      Object localObject = this.x;
+      if (localObject != null)
+      {
+        ((PickerFore)localObject).a(this.y);
+        localObject = this.G;
+        if (localObject != null)
+        {
+          localObject = (GroundDrawable.GroundDrawableListener)((WeakReference)localObject).get();
+          if (localObject != null) {
+            ((GroundDrawable.GroundDrawableListener)localObject).a(this.E, a());
+          }
+        }
+      }
+    }
   }
   
   private void e(int paramInt)
   {
-    int i = this.jdField_h_of_type_Int;
-    if (i == 1)
+    int i1 = this.E;
+    if (i1 == 1)
     {
-      this.jdField_e_of_type_Int = paramInt;
-      this.jdField_d_of_type_Int = (255 - this.jdField_e_of_type_Int);
+      this.v = paramInt;
+      this.u = (255 - this.v);
       return;
     }
-    if (i == 3)
+    if (i1 == 3)
     {
-      this.jdField_e_of_type_Int = paramInt;
-      this.jdField_d_of_type_Int = ((int)((255 - this.jdField_e_of_type_Int) * 179 * 1.0F / 255.0F));
+      this.v = paramInt;
+      this.u = ((int)((255 - this.v) * 179 * 1.0F / 255.0F));
     }
+  }
+  
+  private float f()
+  {
+    return this.p.height();
   }
   
   private void f(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.G;
     if (localObject == null) {
       return;
     }
@@ -411,9 +386,14 @@ public class GroundDrawable
     ((GroundDrawable.GroundDrawableListener)localObject).b(paramInt);
   }
   
+  private int g()
+  {
+    return this.w;
+  }
+  
   private void g(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.G;
     if (localObject == null) {
       return;
     }
@@ -424,9 +404,14 @@ public class GroundDrawable
     ((GroundDrawable.GroundDrawableListener)localObject).a(paramInt);
   }
   
+  private int h()
+  {
+    return this.r;
+  }
+  
   private void h(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.G;
     if (localObject == null) {
       return;
     }
@@ -437,14 +422,24 @@ public class GroundDrawable
     ((GroundDrawable.GroundDrawableListener)localObject).c(paramInt);
   }
   
-  public int a()
+  private int i()
   {
-    return this.jdField_h_of_type_Int;
+    return this.v;
+  }
+  
+  private int j()
+  {
+    return this.s;
+  }
+  
+  private float k()
+  {
+    return this.y.height();
   }
   
   public int a(float paramFloat)
   {
-    PickerFore localPickerFore = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+    PickerFore localPickerFore = this.x;
     if (localPickerFore != null) {
       return localPickerFore.a(paramFloat);
     }
@@ -453,31 +448,21 @@ public class GroundDrawable
   
   public RectF a()
   {
-    PickerFore localPickerFore = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+    PickerFore localPickerFore = this.x;
     if (localPickerFore != null) {
-      return localPickerFore.a(this.jdField_g_of_type_Int);
-    }
-    return null;
-  }
-  
-  public RectF a(float paramFloat)
-  {
-    int i = a(paramFloat);
-    PickerFore localPickerFore = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
-    if (localPickerFore != null) {
-      return localPickerFore.a(i);
+      return localPickerFore.a(this.A);
     }
     return null;
   }
   
   public RectF a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = this.jdField_g_of_type_Int;
-    this.jdField_g_of_type_Int = paramInt;
+    int i1 = this.A;
+    this.A = paramInt;
     if (paramBoolean1) {
-      this.jdField_a_of_type_Boolean = paramBoolean1;
+      this.B = paramBoolean1;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore;
+    Object localObject1 = this.x;
     if (localObject1 != null)
     {
       localObject1 = ((PickerFore)localObject1).a(paramInt);
@@ -486,17 +471,17 @@ public class GroundDrawable
         Object localObject2;
         if (!paramBoolean2)
         {
-          this.jdField_b_of_type_AndroidGraphicsRectF.set(((RectF)localObject1).centerX() - this.jdField_c_of_type_Float / 2.0F, ((RectF)localObject1).centerY() - this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject1).centerX() + this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject1).centerY() + this.jdField_d_of_type_Float / 2.0F);
+          this.q.set(((RectF)localObject1).centerX() - this.k / 2.0F, ((RectF)localObject1).centerY() - this.l / 2.0F, ((RectF)localObject1).centerX() + this.l / 2.0F, ((RectF)localObject1).centerY() + this.l / 2.0F);
           if (paramBoolean1)
           {
-            localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+            localObject2 = this.G;
             if (localObject2 != null)
             {
               localObject2 = (GroundDrawable.GroundDrawableListener)((WeakReference)localObject2).get();
               if (localObject2 != null)
               {
-                ((GroundDrawable.GroundDrawableListener)localObject2).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, (RectF)localObject1);
-                this.jdField_a_of_type_Boolean = false;
+                ((GroundDrawable.GroundDrawableListener)localObject2).a(this.E, this.A, (RectF)localObject1);
+                this.B = false;
               }
             }
           }
@@ -504,109 +489,124 @@ public class GroundDrawable
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(i);
+          localObject2 = this.x.a(i1);
           if (localObject2 != null)
           {
-            this.jdField_b_of_type_AndroidGraphicsRectF.set(((RectF)localObject2).centerX() - this.jdField_c_of_type_Float / 2.0F, ((RectF)localObject2).centerY() - this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject2).centerX() + this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject2).centerY() + this.jdField_d_of_type_Float / 2.0F);
+            this.q.set(((RectF)localObject2).centerX() - this.k / 2.0F, ((RectF)localObject2).centerY() - this.l / 2.0F, ((RectF)localObject2).centerX() + this.l / 2.0F, ((RectF)localObject2).centerY() + this.l / 2.0F);
             float f1 = Math.abs(((RectF)localObject2).centerY() - ((RectF)localObject1).centerY());
-            float f2 = this.jdField_a_of_type_Float;
+            float f2 = this.i;
             if (isRunning()) {
               stop();
             }
-            this.jdField_h_of_type_Int = 4;
-            this.jdField_b_of_type_Boolean = true;
-            a(this.jdField_h_of_type_Int, (int)(f1 * f2), ((RectF)localObject2).centerY(), ((RectF)localObject1).centerY());
+            this.E = 4;
+            this.D = true;
+            a(this.E, (int)(f1 * f2), ((RectF)localObject2).centerY(), ((RectF)localObject1).centerY());
           }
         }
       }
     }
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_Boolean = false;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null)
-    {
-      localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_AndroidUtilProperty = null;
-    this.jdField_b_of_type_AndroidUtilProperty = null;
-    this.jdField_c_of_type_AndroidUtilProperty = null;
-    this.jdField_d_of_type_AndroidUtilProperty = null;
-    this.jdField_e_of_type_AndroidUtilProperty = null;
-    this.jdField_f_of_type_AndroidUtilProperty = null;
-    this.jdField_g_of_type_AndroidUtilProperty = null;
-    this.jdField_h_of_type_AndroidUtilProperty = null;
+    return this.q;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_h_of_type_Int = paramInt;
-    paramInt = this.jdField_h_of_type_Int;
+    this.E = paramInt;
+    paramInt = this.E;
   }
   
   public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, GroundDrawable.GroundDrawableListener paramGroundDrawableListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGroundDrawableListener);
+    this.G = new WeakReference(paramGroundDrawableListener);
     if (paramInt > 0) {
-      this.jdField_a_of_type_Float /= paramInt;
+      this.i /= paramInt;
     }
     a(paramContext);
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(-1, paramInt, this.jdField_b_of_type_Float, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack.a(0, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841611);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841610);
+    this.t = paramInt;
+    this.x.a(-1, paramInt, this.j, paramFloat1, paramFloat2);
+    this.o.a(0, paramFloat1, paramFloat2);
+    this.z = paramContext.getResources().getDrawable(2130842511);
+    this.C = paramContext.getResources().getDrawable(2130842510);
     return true;
+  }
+  
+  public int b()
+  {
+    return this.E;
+  }
+  
+  public RectF b(float paramFloat)
+  {
+    int i1 = a(paramFloat);
+    PickerFore localPickerFore = this.x;
+    if (localPickerFore != null) {
+      return localPickerFore.a(i1);
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    this.x.a();
+    this.o.a();
+    this.z = null;
+    this.C = null;
+    this.D = false;
+    ValueAnimator localValueAnimator = this.F;
+    if (localValueAnimator != null)
+    {
+      localValueAnimator.cancel();
+      this.F.removeAllUpdateListeners();
+      this.F = null;
+    }
+    this.G = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
+    this.h = null;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int i = this.jdField_h_of_type_Int;
-    if (i == 0)
+    int i1 = this.E;
+    if (i1 == 0)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
-      i = this.jdField_g_of_type_Int;
-      if ((i >= 0) && (i < this.jdField_c_of_type_Int)) {
+      this.x.a(paramCanvas, this.u, this.A, (int)(this.v * 1.0F * 179.0F / 255.0F), this.w);
+      i1 = this.A;
+      if ((i1 >= 0) && (i1 < this.t)) {
         a(paramCanvas);
       }
     }
-    else if ((i != 1) && (i != 3) && (i != 2))
+    else if ((i1 != 1) && (i1 != 3) && (i1 != 2))
     {
-      if (i == 4)
+      if (i1 == 4)
       {
         RectF localRectF = a();
         if (localRectF != null) {
-          if (Math.abs(localRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY()) < this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F) {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+          if (Math.abs(localRectF.centerY() - this.q.centerY()) < this.q.height() / 2.0F) {
+            this.x.a(paramCanvas, this.u, this.A, (int)(this.v * 1.0F * 179.0F / 255.0F), this.w);
           } else {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(paramCanvas, this.jdField_d_of_type_Int, -1, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+            this.x.a(paramCanvas, this.u, -1, (int)(this.v * 1.0F * 179.0F / 255.0F), this.w);
           }
         }
-        i = this.jdField_g_of_type_Int;
-        if ((i >= 0) && (i < this.jdField_c_of_type_Int)) {
+        i1 = this.A;
+        if ((i1 >= 0) && (i1 < this.t)) {
           b(paramCanvas);
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBack.a(paramCanvas, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerFore.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 127.0F / 255.0F), this.jdField_f_of_type_Int);
+      this.o.a(paramCanvas, this.r);
+      this.x.a(paramCanvas, this.u, this.A, (int)(this.v * 1.0F * 127.0F / 255.0F), this.w);
       a(paramCanvas, false);
-      i = this.jdField_h_of_type_Int;
-      if ((i == 3) || (i == 1))
+      i1 = this.E;
+      if ((i1 == 3) || (i1 == 1))
       {
-        if (this.jdField_g_of_type_Int == this.jdField_c_of_type_Int - 1)
+        if (this.A == this.t - 1)
         {
           a(paramCanvas, true);
           return;
@@ -623,33 +623,33 @@ public class GroundDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.D;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
     a(paramRect);
-    int i = this.jdField_g_of_type_Int;
-    if (i >= 0)
+    int i1 = this.A;
+    if (i1 >= 0)
     {
-      a(i, false, false);
-      if (this.jdField_a_of_type_Boolean)
+      a(i1, false, false);
+      if (this.B)
       {
-        paramRect = this.jdField_a_of_type_JavaLangRefWeakReference;
+        paramRect = this.G;
         if (paramRect != null)
         {
           paramRect = (GroundDrawable.GroundDrawableListener)paramRect.get();
           if (paramRect != null)
           {
             RectF localRectF = new RectF();
-            localRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
-            paramRect.a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
-            this.jdField_a_of_type_Boolean = false;
+            localRectF.set(this.q);
+            paramRect.a(this.E, this.A, localRectF);
+            this.B = false;
           }
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.B = false;
     }
   }
   
@@ -662,62 +662,62 @@ public class GroundDrawable
     if (isRunning()) {
       stop();
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.D = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start :");
-      localStringBuilder.append(this.jdField_h_of_type_Int);
+      localStringBuilder.append(this.E);
       QLog.d("GroundDrawable", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_h_of_type_Int;
-    if ((i != 1) && (i != 0))
+    int i1 = this.E;
+    if ((i1 != 1) && (i1 != 0))
     {
-      if ((i == 3) || (i == 2))
+      if ((i1 == 3) || (i1 == 2))
       {
-        this.jdField_h_of_type_Int = 3;
-        a(this.jdField_h_of_type_Int, 200, -1.0F, -1.0F);
+        this.E = 3;
+        a(this.E, 200, -1.0F, -1.0F);
       }
     }
     else
     {
-      this.jdField_h_of_type_Int = 1;
-      a(this.jdField_h_of_type_Int, 300, -1.0F, -1.0F);
+      this.E = 1;
+      a(this.E, 300, -1.0F, -1.0F);
     }
   }
   
   public void stop()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.D) {
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.D = false;
+    ValueAnimator localValueAnimator = this.F;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.F.removeAllUpdateListeners();
+      this.F = null;
     }
-    int i = this.jdField_h_of_type_Int;
-    if (i == 1)
+    int i1 = this.E;
+    if (i1 == 1)
     {
-      this.jdField_h_of_type_Int = 2;
+      this.E = 2;
       a(getBounds());
-      this.jdField_a_of_type_Int = 115;
+      this.r = 115;
       return;
     }
-    if (i == 3)
+    if (i1 == 3)
     {
-      this.jdField_h_of_type_Int = 0;
+      this.E = 0;
       a(getBounds());
-      this.jdField_a_of_type_Int = 115;
+      this.r = 115;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.GroundDrawable
  * JD-Core Version:    0.7.0.1
  */

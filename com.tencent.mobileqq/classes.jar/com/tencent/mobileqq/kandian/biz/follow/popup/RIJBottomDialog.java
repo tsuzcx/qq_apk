@@ -32,38 +32,20 @@ public final class RIJBottomDialog
   extends Dialog
   implements SimpleEventReceiver<RIJFollowRecommendPopupCommand>
 {
-  public static final RIJBottomDialog.Companion a;
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  @Nullable
-  private RIJFollowPackUtils.RIJFollowPackData jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils$RIJFollowPackData;
-  private boolean jdField_a_of_type_Boolean;
+  public static final RIJBottomDialog.Companion a = new RIJBottomDialog.Companion(null);
   private boolean b;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJBottomDialog$Companion = new RIJBottomDialog.Companion(null);
-  }
+  @Nullable
+  private View c;
+  private boolean d;
+  private boolean e;
+  @Nullable
+  private RIJFollowPackUtils.RIJFollowPackData f;
+  private final int g;
   
   public RIJBottomDialog(@NotNull Context paramContext, int paramInt)
   {
-    super(paramContext, 2131755504);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private final void a()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null)
-    {
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, localView.getHeight(), 0.0F);
-      localTranslateAnimation.setFillAfter(true);
-      localTranslateAnimation.setDuration(200L);
-      localTranslateAnimation.setInterpolator((Interpolator)new DecelerateInterpolator());
-      localView.startAnimation((Animation)localTranslateAnimation);
-    }
+    super(paramContext, 2131952290);
+    this.g = paramInt;
   }
   
   private final void a(View paramView)
@@ -103,7 +85,20 @@ public final class RIJBottomDialog
   
   private final void b()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
+    if (localView != null)
+    {
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, localView.getHeight(), 0.0F);
+      localTranslateAnimation.setFillAfter(true);
+      localTranslateAnimation.setDuration(200L);
+      localTranslateAnimation.setInterpolator((Interpolator)new DecelerateInterpolator());
+      localView.startAnimation((Animation)localTranslateAnimation);
+    }
+  }
+  
+  private final void c()
+  {
+    View localView = this.c;
     if (localView != null)
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localView.getHeight());
@@ -115,27 +110,27 @@ public final class RIJBottomDialog
     }
   }
   
-  private final void c()
+  private final void d()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils$RIJFollowPackData;
+    Object localObject1 = this.f;
     if (localObject1 != null)
     {
-      localObject1 = ((RIJFollowPackUtils.RIJFollowPackData)localObject1).a();
+      localObject1 = ((RIJFollowPackUtils.RIJFollowPackData)localObject1).c();
       if (localObject1 != null)
       {
         localObject1 = ((AbsBaseArticleInfo)localObject1).mRecommendFollowInfos;
         if (localObject1 != null)
         {
-          Object localObject2 = ((RecommendFollowInfos)localObject1).a;
+          Object localObject2 = ((RecommendFollowInfos)localObject1).c;
           Intrinsics.checkExpressionValueIsNotNull(localObject2, "it.recommendFollowInfoList");
           if ((((Collection)localObject2).isEmpty() ^ true))
           {
             localObject2 = RIJFollowPackUtils.a;
-            localObject1 = ((RecommendFollowInfos)localObject1).a;
+            localObject1 = ((RecommendFollowInfos)localObject1).c;
             Intrinsics.checkExpressionValueIsNotNull(localObject1, "it.recommendFollowInfoList");
             ((RIJFollowPackUtils)localObject2).a((List)localObject1);
             localObject1 = RIJFollowPackUtils.a;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils$RIJFollowPackData;
+            localObject2 = this.f;
             if (localObject2 == null) {
               Intrinsics.throwNpe();
             }
@@ -149,17 +144,17 @@ public final class RIJBottomDialog
   @Nullable
   public final View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.c;
   }
   
   public final void a(@Nullable RIJFollowPackUtils.RIJFollowPackData paramRIJFollowPackData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils$RIJFollowPackData = paramRIJFollowPackData;
+    this.f = paramRIJFollowPackData;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void dismiss()
@@ -169,21 +164,21 @@ public final class RIJBottomDialog
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("dismiss: showed=");
-      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("， isAnimating=");
-      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(this.d);
       QLog.d("RIJBottomDialog", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!this.b)
+    if (!this.d)
     {
-      if (!this.c) {
+      if (!this.e) {
         return;
       }
-      this.c = false;
-      b();
-      RIJFollowPackUtils.a.a();
-      Object localObject2 = RIJFollowRecommendReport.a.a(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Boolean) {
+      this.e = false;
+      c();
+      RIJFollowPackUtils.a.b();
+      Object localObject2 = RIJFollowRecommendReport.a.a(Integer.valueOf(this.g));
+      if (this.b) {
         localObject1 = "1";
       } else {
         localObject1 = "2";
@@ -227,7 +222,7 @@ public final class RIJBottomDialog
         if (i != 2) {
           return;
         }
-        c();
+        d();
         return;
       }
       dismiss();
@@ -237,20 +232,20 @@ public final class RIJBottomDialog
   protected void onStart()
   {
     super.onStart();
-    a(this.jdField_a_of_type_AndroidViewView);
+    a(this.c);
   }
   
   public void setContentView(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "view");
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramView;
     super.setContentView(paramView);
   }
   
   public void setContentView(@NotNull View paramView, @Nullable ViewGroup.LayoutParams paramLayoutParams)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "view");
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramView;
     super.setContentView(paramView, paramLayoutParams);
   }
   
@@ -260,23 +255,23 @@ public final class RIJBottomDialog
     if (QLog.isColorLevel()) {
       QLog.d("RIJBottomDialog", 2, "show: ");
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((View)localObject).setVisibility(4);
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.c;
     if (localObject != null) {
       ((View)localObject).post((Runnable)new RIJBottomDialog.show.1(this));
     }
     localObject = RIJFollowRecommendReport.a;
-    String str = RIJFollowRecommendReport.a.a(Integer.valueOf(this.jdField_a_of_type_Int)).toString();
+    String str = RIJFollowRecommendReport.a.a(Integer.valueOf(this.g)).toString();
     Intrinsics.checkExpressionValueIsNotNull(str, "RIJFollowRecommendReport…uilder(source).toString()");
     ((RIJFollowRecommendReport.Companion)localObject).a("0X800B96A", str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJBottomDialog
  * JD-Core Version:    0.7.0.1
  */

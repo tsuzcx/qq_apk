@@ -14,7 +14,7 @@ class SubmitHomeWorkFragment$1
   public void a(boolean paramBoolean, int paramInt)
   {
     super.a(paramBoolean, paramInt);
-    this.a.m();
+    this.a.t();
     if (paramBoolean)
     {
       this.a.h();
@@ -36,7 +36,7 @@ class SubmitHomeWorkFragment$1
   public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
   {
     super.a(paramBoolean, paramHomeworkInfo);
-    this.a.m();
+    this.a.t();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -50,10 +50,10 @@ class SubmitHomeWorkFragment$1
       localStringBuilder.append(str);
       QLog.d("SubmitHomeWorkFragment", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.b != null))
+    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.d != null))
     {
-      this.a.a = paramHomeworkInfo;
-      paramHomeworkInfo = paramHomeworkInfo.b;
+      this.a.E = paramHomeworkInfo;
+      paramHomeworkInfo = paramHomeworkInfo.d;
     }
     try
     {
@@ -71,13 +71,13 @@ class SubmitHomeWorkFragment$1
     return;
     this.a.a(3, null, null, null);
     paramHomeworkInfo = this.a;
-    paramHomeworkInfo.a = null;
+    paramHomeworkInfo.E = null;
     paramHomeworkInfo.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.1
  * JD-Core Version:    0.7.0.1
  */

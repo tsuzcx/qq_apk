@@ -9,7 +9,7 @@ public final class ViewTreeSavedStateRegistryOwner
   @Nullable
   public static SavedStateRegistryOwner get(@NonNull View paramView)
   {
-    SavedStateRegistryOwner localSavedStateRegistryOwner = (SavedStateRegistryOwner)paramView.getTag(2131380892);
+    SavedStateRegistryOwner localSavedStateRegistryOwner = (SavedStateRegistryOwner)paramView.getTag(R.id.view_tree_saved_state_registry_owner);
     if (localSavedStateRegistryOwner != null) {
       return localSavedStateRegistryOwner;
     }
@@ -18,7 +18,7 @@ public final class ViewTreeSavedStateRegistryOwner
     while ((paramView == null) && ((localObject instanceof View)))
     {
       localObject = (View)localObject;
-      paramView = (SavedStateRegistryOwner)((View)localObject).getTag(2131380892);
+      paramView = (SavedStateRegistryOwner)((View)localObject).getTag(R.id.view_tree_saved_state_registry_owner);
       localObject = ((View)localObject).getParent();
     }
     return paramView;
@@ -26,7 +26,7 @@ public final class ViewTreeSavedStateRegistryOwner
   
   public static void set(@NonNull View paramView, @Nullable SavedStateRegistryOwner paramSavedStateRegistryOwner)
   {
-    paramView.setTag(2131380892, paramSavedStateRegistryOwner);
+    paramView.setTag(R.id.view_tree_saved_state_registry_owner, paramSavedStateRegistryOwner);
   }
 }
 

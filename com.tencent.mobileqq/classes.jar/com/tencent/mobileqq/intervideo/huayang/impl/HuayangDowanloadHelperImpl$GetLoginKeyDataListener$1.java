@@ -21,19 +21,19 @@ class HuayangDowanloadHelperImpl$GetLoginKeyDataListener$1
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("IHuayangPluginNewDownloader", 2, ((StringBuilder)localObject).toString());
     }
-    if (!HuayangDowanloadHelperImpl.access$1100(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener.a))
+    if (!HuayangDowanloadHelperImpl.access$1100(this.c.a))
     {
-      Context localContext = HuayangDowanloadHelperImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener.a);
-      String str1 = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener);
-      IVPluginInfo localIVPluginInfo = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener);
-      InstalledPlugin localInstalledPlugin = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener);
-      String str2 = HuayangDowanloadHelperImpl.access$1500(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener.a);
-      if (this.jdField_a_of_type_Boolean) {
-        localObject = HuayangDowanloadHelperImpl.access$1600(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener.a);
+      Context localContext = HuayangDowanloadHelperImpl.access$400(this.c.a);
+      String str1 = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.a(this.c);
+      IVPluginInfo localIVPluginInfo = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.b(this.c);
+      InstalledPlugin localInstalledPlugin = HuayangDowanloadHelperImpl.GetLoginKeyDataListener.c(this.c);
+      String str2 = HuayangDowanloadHelperImpl.access$1500(this.c.a);
+      if (this.a) {
+        localObject = HuayangDowanloadHelperImpl.access$1600(this.c.a);
       } else {
         localObject = null;
       }
-      HuayangLoadbackgroudActivity.a(localContext, str1, localIVPluginInfo, localInstalledPlugin, str2, (String)localObject, this.b, this.jdField_a_of_type_Boolean, HuayangDowanloadHelperImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener.a), HuayangDowanloadHelperImpl.GetLoginKeyDataListener.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl$GetLoginKeyDataListener));
+      HuayangLoadbackgroudActivity.a(localContext, str1, localIVPluginInfo, localInstalledPlugin, str2, (String)localObject, this.b, this.a, HuayangDowanloadHelperImpl.access$800(this.c.a), HuayangDowanloadHelperImpl.GetLoginKeyDataListener.d(this.c));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -43,7 +43,7 @@ class HuayangDowanloadHelperImpl$GetLoginKeyDataListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangDowanloadHelperImpl.GetLoginKeyDataListener.1
  * JD-Core Version:    0.7.0.1
  */

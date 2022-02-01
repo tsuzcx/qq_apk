@@ -10,6 +10,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+import com.tencent.biz.pubaccount.weishi_new.ipc.WSIPCClientHelper;
 import com.tencent.biz.pubaccount.weishi_new.operationh5.report.WSOperationH5BeaconReporter;
 import com.tencent.biz.pubaccount.weishi_new.operationh5.report.WSOperationH5ReportParams;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
@@ -24,9 +25,9 @@ import com.tencent.mobileqq.widget.WebViewProgressBar;
 public class WSOperationWebViewFragment
   extends WebViewFragment
 {
-  OperationTitleBarView jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5OperationTitleBarView;
-  WSOperationH5BeaconReporter jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter;
-  boolean jdField_a_of_type_Boolean = false;
+  OperationTitleBarView a;
+  WSOperationH5BeaconReporter b;
+  boolean c = false;
   
   private void a()
   {
@@ -42,21 +43,21 @@ public class WSOperationWebViewFragment
         return;
       }
       getActivity().getWindow().setFlags(1024, 1024);
-      getUIStyleHandler().a.setVisibility(8);
-      getUIStyle().jdField_a_of_type_Boolean = true;
+      getUIStyleHandler().v.setVisibility(8);
+      getUIStyle().a = true;
       WebViewUIUtils.b(super.getActivity());
-      getWebTitleBarInterface().e(false);
+      getWebTitleBarInterface().f(false);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5OperationTitleBarView = new OperationTitleBarView(requireActivity());
+    this.a = new OperationTitleBarView(requireActivity());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(10);
-    getUIStyleHandler().c.addView(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5OperationTitleBarView, localLayoutParams);
-    getUIStyleHandler().b = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5OperationTitleBarView.setOperationTitleClickListener(new WSOperationWebViewFragment.2(this));
+    getUIStyleHandler().u.addView(this.a, localLayoutParams);
+    getUIStyleHandler().d = false;
+    this.a.setOperationTitleClickListener(new WSOperationWebViewFragment.2(this));
     this.webView.addScrollChangedListener(new WSOperationWebViewFragment.3(this));
   }
   
@@ -66,7 +67,7 @@ public class WSOperationWebViewFragment
     String str2 = this.intent.getStringExtra("web_test_id");
     String str3 = this.intent.getStringExtra("web_url");
     String str4 = this.intent.getStringExtra("share_scenes_from");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter = new WSOperationH5BeaconReporter(new WSOperationH5ReportParams(str1, str2, str3, str4));
+    this.b = new WSOperationH5BeaconReporter(new WSOperationH5ReportParams(str1, str2, str3, str4));
     Bundle localBundle = new Bundle();
     localBundle.putString("web_url", str3);
     localBundle.putString("spid", str1);
@@ -84,37 +85,44 @@ public class WSOperationWebViewFragment
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     d();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter.a();
+    this.b.a();
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter.b();
+    this.b.d();
+    this.b.b();
     WSPublicAccReport.getInstance().closePublicAccReport(1);
     super.onDestroy();
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    WSIPCClientHelper.a().a("action_write_back_feed");
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter.a();
-      this.jdField_a_of_type_Boolean = false;
+      this.b.a();
+      this.c = false;
     }
   }
   
   public void onViewCreated(@NonNull View paramView, @Nullable Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOperationh5ReportWSOperationH5BeaconReporter.c();
+    this.b.c();
+    WSIPCClientHelper.a().a("action_req_aio_list_operation_feed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.operationh5.WSOperationWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

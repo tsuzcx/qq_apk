@@ -1,7 +1,9 @@
 package com.tencent.vas.update.entity.db;
 
 import android.text.TextUtils;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.util.CommonUtil;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,6 +11,7 @@ import org.json.JSONObject;
 
 public class PreloadItem
 {
+  private static final String TAG = "PreloadItem";
   public int mFlag;
   public String mItemId;
   
@@ -81,13 +84,14 @@ public class PreloadItem
     catch (Throwable paramJSONArray)
     {
       paramJSONArray.printStackTrace();
+      VasUpdateWrapper.getLog().a("PreloadItem", "parsePreloadItemList exception", paramJSONArray);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.PreloadItem
  * JD-Core Version:    0.7.0.1
  */

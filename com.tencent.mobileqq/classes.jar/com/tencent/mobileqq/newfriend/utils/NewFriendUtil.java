@@ -22,15 +22,15 @@ public class NewFriendUtil
     }
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2130839395);
+      paramView.setBackgroundResource(2130839579);
       return;
     }
     if (ThemeUtil.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
       return;
     }
-    paramView.setBackgroundResource(2130839390);
+    paramView.setBackgroundResource(2130839574);
   }
   
   public static void a(TextView paramTextView, int paramInt1, int paramInt2, StringBuilder paramStringBuilder)
@@ -41,25 +41,25 @@ public class NewFriendUtil
     {
       if (paramInt1 != 1)
       {
-        paramTextView.setBackgroundResource(2130846056);
+        paramTextView.setBackgroundResource(2130847526);
         i = 0;
         j = 0;
       }
       else
       {
-        paramTextView.setBackgroundResource(2130846054);
-        if ((paramStringBuilder != null) && (AppSetting.d)) {
+        paramTextView.setBackgroundResource(2130847524);
+        if ((paramStringBuilder != null) && (AppSetting.e)) {
           paramStringBuilder.append(",女");
         }
         i = 1;
-        j = 2130846053;
+        j = 2130847523;
       }
     }
     else
     {
-      j = 2130846055;
-      paramTextView.setBackgroundResource(2130846056);
-      if ((paramStringBuilder != null) && (AppSetting.d)) {
+      j = 2130847525;
+      paramTextView.setBackgroundResource(2130847526);
+      if ((paramStringBuilder != null) && (AppSetting.e)) {
         paramStringBuilder.append(",男");
       }
       i = 1;
@@ -67,7 +67,7 @@ public class NewFriendUtil
     if ((paramInt2 > 0) && ((paramInt1 == 0) || (paramInt1 == 1)))
     {
       paramTextView.setText(String.valueOf(paramInt2));
-      if ((paramStringBuilder != null) && (AppSetting.d))
+      if ((paramStringBuilder != null) && (AppSetting.e))
       {
         paramStringBuilder.append(",");
         paramStringBuilder.append(String.valueOf(paramInt2));
@@ -92,7 +92,7 @@ public class NewFriendUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.utils.NewFriendUtil
  * JD-Core Version:    0.7.0.1
  */

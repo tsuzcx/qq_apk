@@ -15,10 +15,10 @@ class PublicAccountDetailActivityImpl$25
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
     int i = paramActionSheetItem.action;
-    ShareActionSheet.Detail localDetail = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl.getShareDetail();
+    ShareActionSheet.Detail localDetail = this.b.getShareDetail();
     String str1 = localDetail.a();
-    int j = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl.getAccountType();
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl.getShareUrl();
+    int j = this.b.getAccountType();
+    String str2 = this.b.getShareUrl();
     if (i != 2) {
       if (i != 3)
       {
@@ -34,31 +34,31 @@ class PublicAccountDetailActivityImpl$25
           }
           else
           {
-            paramActionSheetItem = PublicAccountDetailActivityImpl.access$1400(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl, paramActionSheetItem, localDetail, str1, j, str2, this.jdField_a_of_type_AndroidAppActivity);
+            paramActionSheetItem = PublicAccountDetailActivityImpl.access$1400(this.b, paramActionSheetItem, localDetail, str1, j, str2, this.a);
             break label178;
           }
         }
         else
         {
-          paramActionSheetItem = PublicAccountDetailActivityImpl.access$1700(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl, i, localDetail, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
+          paramActionSheetItem = PublicAccountDetailActivityImpl.access$1700(this.b, i, localDetail, str1, j, str2, (BaseActivity)this.a);
           break label178;
         }
       }
       else
       {
-        paramActionSheetItem = PublicAccountDetailActivityImpl.access$1600(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl, localDetail, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
+        paramActionSheetItem = PublicAccountDetailActivityImpl.access$1600(this.b, localDetail, str1, j, str2, (BaseActivity)this.a);
         break label178;
       }
     }
-    paramActionSheetItem = PublicAccountDetailActivityImpl.access$1500(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl, localDetail, str1, j, str2, (BaseActivity)this.jdField_a_of_type_AndroidAppActivity);
+    paramActionSheetItem = PublicAccountDetailActivityImpl.access$1500(this.b, localDetail, str1, j, str2, (BaseActivity)this.a);
     label178:
     paramShareActionSheet.dismiss();
-    PublicAccountDetailActivityImpl.access$1800(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl, paramActionSheetItem, localDetail);
+    PublicAccountDetailActivityImpl.access$1800(this.b, paramActionSheetItem, localDetail);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.25
  * JD-Core Version:    0.7.0.1
  */

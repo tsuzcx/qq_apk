@@ -11,11 +11,11 @@ public abstract interface IViolaSoLoader
   
   public abstract void a(@Nullable String paramString, @Nullable LoadLibCallback paramLoadLibCallback);
   
-  public abstract boolean a();
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.so.IViolaSoLoader
  * JD-Core Version:    0.7.0.1
  */

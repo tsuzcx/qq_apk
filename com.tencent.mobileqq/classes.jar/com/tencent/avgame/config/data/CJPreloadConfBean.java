@@ -8,14 +8,8 @@ import org.json.JSONObject;
 
 public class CJPreloadConfBean
 {
-  private IAvGameResPreloadManager.ConfInfo a;
-  public JSONArray a;
-  
-  public CJPreloadConfBean()
-  {
-    this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo = new IAvGameResPreloadManager.ConfInfo();
-  }
+  public JSONArray a = new JSONArray();
+  private IAvGameResPreloadManager.ConfInfo b = new IAvGameResPreloadManager.ConfInfo();
   
   public static CJPreloadConfBean a(String paramString)
   {
@@ -23,8 +17,8 @@ public class CJPreloadConfBean
       return null;
     }
     CJPreloadConfBean localCJPreloadConfBean = new CJPreloadConfBean();
-    localCJPreloadConfBean.jdField_a_of_type_OrgJsonJSONArray = a(new JSONObject(paramString));
-    localCJPreloadConfBean.a();
+    localCJPreloadConfBean.a = a(new JSONObject(paramString));
+    localCJPreloadConfBean.b();
     return localCJPreloadConfBean;
   }
   
@@ -43,26 +37,26 @@ public class CJPreloadConfBean
   
   public IAvGameResPreloadManager.ConfInfo a()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo;
+    return this.b;
   }
   
-  public void a()
+  public void b()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("parseAllConfigJaToResInfo allConfigJa:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_OrgJsonJSONArray);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("CJPreloadConfBean", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_OrgJsonJSONArray.length() < 0)
+    if (this.a.length() < 0)
     {
       if (QLog.isColorLevel()) {
         QLog.e("CJPreloadConfBean", 2, "parseAllConfigJaToResInfo allConfigJa length < 0");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_OrgJsonJSONArray;
+    Object localObject = this.a;
     int i = 0;
     localObject = ((JSONArray)localObject).optJSONObject(0).optJSONArray("resources");
     while (i < ((JSONArray)localObject).length())
@@ -70,38 +64,38 @@ public class CJPreloadConfBean
       JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
       if (localJSONObject.optString("res_id").equals("res1009Android"))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.a = localJSONObject.optString("url");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.b = localJSONObject.optString("md5");
+        this.b.a = localJSONObject.optString("url");
+        this.b.b = localJSONObject.optString("md5");
       }
       else if (localJSONObject.optString("res_id").equals("AVGameVoiceRecogSo"))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.c = localJSONObject.optString("url");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.d = localJSONObject.optString("md5");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.e = localJSONObject.optString("file_md5");
+        this.b.c = localJSONObject.optString("url");
+        this.b.d = localJSONObject.optString("md5");
+        this.b.e = localJSONObject.optString("file_md5");
       }
       else if (localJSONObject.optString("res_id").equals("AVGameVoiceRecogModel"))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.f = localJSONObject.optString("url");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.g = localJSONObject.optString("md5");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.h = localJSONObject.optString("file_md5");
+        this.b.f = localJSONObject.optString("url");
+        this.b.g = localJSONObject.optString("md5");
+        this.b.h = localJSONObject.optString("file_md5");
       }
       else if (localJSONObject.optString("res_id").equals("AVGameVoiceRecogAILabSo"))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.i = localJSONObject.optString("url");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.j = localJSONObject.optString("md5");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.k = localJSONObject.optString("file_md5");
+        this.b.i = localJSONObject.optString("url");
+        this.b.j = localJSONObject.optString("md5");
+        this.b.k = localJSONObject.optString("file_md5");
       }
       else if (localJSONObject.optString("res_id").equals("AVGameVoiceRecogAILabModel"))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.l = localJSONObject.optString("url");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.m = localJSONObject.optString("md5");
-        this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo.n = localJSONObject.optString("file_md5");
+        this.b.l = localJSONObject.optString("url");
+        this.b.m = localJSONObject.optString("md5");
+        this.b.n = localJSONObject.optString("file_md5");
       }
       i += 1;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("parseAllConfigJaToResInfo mConfInfo:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicGameresIAvGameResPreloadManager$ConfInfo);
+    ((StringBuilder)localObject).append(this.b);
     QLog.d("CJPreloadConfBean", 2, ((StringBuilder)localObject).toString());
   }
 }

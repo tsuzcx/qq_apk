@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity.miniaio;
 
 import android.content.Context;
+import android.os.Bundle;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,35 +14,43 @@ public class MiniPieForTroop
     super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  protected boolean b()
+  protected void A()
+  {
+    this.a = "MiniPieForTroop";
+  }
+  
+  public boolean a()
+  {
+    super.a();
+    long l = this.d.getConversationFacade().e(this.c.b, this.c.a);
+    this.c.b().putLong("key_troop_last_read_seq", l);
+    return true;
+  }
+  
+  protected boolean c()
   {
     return true;
   }
   
-  protected void g()
+  protected void i()
   {
-    this.e = true;
-    super.g();
+    this.T = true;
+    super.i();
   }
   
-  protected void u()
+  protected void w()
   {
-    super.u();
+    super.w();
   }
   
-  protected void v()
+  protected void x()
   {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    super.x();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPieForTroop
  * JD-Core Version:    0.7.0.1
  */

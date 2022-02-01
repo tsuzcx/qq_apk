@@ -26,55 +26,55 @@ import java.util.HashMap;
 public class VideoCompressTask
   extends AsyncTask<String, Void, Integer>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  VideoCompressTask.VideoCompressTaskListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private Long jdField_b_of_type_JavaLangLong;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private Long jdField_c_of_type_JavaLangLong;
-  private String jdField_c_of_type_JavaLangString;
-  private Long jdField_d_of_type_JavaLangLong;
-  private String jdField_d_of_type_JavaLangString;
+  VideoCompressTask.VideoCompressTaskListener a;
+  private Long b;
+  private Long c;
+  private Long d;
+  private Long e;
+  private boolean f;
+  private boolean g;
+  private Context h;
+  private String i;
+  private String j;
+  private int k;
+  private int l;
+  private String m;
+  private String n;
+  private long o;
+  private long p;
   
   public VideoCompressTask(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, VideoCompressTask.VideoCompressTaskListener paramVideoCompressTaskListener)
   {
     Long localLong = Long.valueOf(0L);
-    this.jdField_a_of_type_JavaLangLong = localLong;
-    this.jdField_b_of_type_JavaLangLong = localLong;
-    this.jdField_c_of_type_JavaLangLong = localLong;
-    this.jdField_d_of_type_JavaLangLong = localLong;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener = paramVideoCompressTaskListener;
+    this.b = localLong;
+    this.c = localLong;
+    this.d = localLong;
+    this.e = localLong;
+    this.f = false;
+    this.g = false;
+    this.o = 0L;
+    this.p = 0L;
+    this.h = paramContext;
+    this.f = paramBoolean1;
+    this.g = paramBoolean2;
+    this.a = paramVideoCompressTaskListener;
   }
   
   private static int a(int paramInt1, int paramInt2)
   {
-    int i = paramInt1;
+    int i1 = paramInt1;
     if (paramInt1 <= paramInt2) {
-      i = paramInt2;
+      i1 = paramInt2;
     }
-    paramInt2 = ReadInJoyConstants.jdField_a_of_type_Int;
-    paramInt1 = ReadInJoyHelper.p(BaseApplicationImpl.getApplication().getRuntime());
+    paramInt2 = ReadInJoyConstants.t;
+    paramInt1 = ReadInJoyHelper.N(BaseApplicationImpl.getApplication().getRuntime());
     if (paramInt1 > 0) {
       paramInt2 = paramInt1;
     }
     paramInt1 = 960;
-    if (i >= 1280) {
+    if (i1 >= 1280) {
       paramInt1 = 1280;
-    } else if (i < 960) {
+    } else if (i1 < 960) {
       paramInt1 = 640;
     }
     return (int)(paramInt2 * 1.0F / 640.0F * paramInt1);
@@ -83,42 +83,42 @@ public class VideoCompressTask
   @NonNull
   private Integer a(String paramString, long paramLong)
   {
-    int i = paramString.lastIndexOf(".");
+    int i1 = paramString.lastIndexOf(".");
     Object localObject = Integer.valueOf(-1);
-    if (i == -1) {
+    if (i1 == -1) {
       return localObject;
     }
-    this.jdField_b_of_type_JavaLangString = ShortVideoUtils.getShortVideoCompressPath(paramString, paramString.substring(i + 1));
-    HashMap localHashMap = a(paramString, this.jdField_a_of_type_AndroidContentContext);
+    this.j = ShortVideoUtils.getShortVideoCompressPath(paramString, paramString.substring(i1 + 1));
+    HashMap localHashMap = a(paramString, this.h);
     if (localHashMap == null)
     {
       QLog.e("ReadInJoyUploadVideoCompressTask", 1, "dealAfterInit return for compressResult is null.");
       return localObject;
     }
-    i = Integer.parseInt((String)localHashMap.get("ret"));
-    this.jdField_b_of_type_JavaLangString = ((String)localHashMap.get("outputPath"));
-    this.jdField_a_of_type_Int = Integer.parseInt((String)localHashMap.get("outWidth"));
-    this.jdField_b_of_type_Int = Integer.parseInt((String)localHashMap.get("outHeight"));
+    i1 = Integer.parseInt((String)localHashMap.get("ret"));
+    this.j = ((String)localHashMap.get("outputPath"));
+    this.k = Integer.parseInt((String)localHashMap.get("outWidth"));
+    this.l = Integer.parseInt((String)localHashMap.get("outHeight"));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Before Compress file:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(", after Compress file:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.j);
       QLog.d("ReadInJoyUploadVideoCompressTask", 2, ((StringBuilder)localObject).toString());
     }
     long l2 = System.currentTimeMillis();
     long l3 = new File(paramString).length();
     long l1 = 0L;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      l1 = new File(this.jdField_b_of_type_JavaLangString).length();
+    if (!TextUtils.isEmpty(this.j)) {
+      l1 = new File(this.j).length();
     }
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("CompressTask，step: ShortVideoTrimmer compress ret = ");
-      paramString.append(i);
+      paramString.append(i1);
       paramString.append(", cost:");
       paramString.append(l2 - paramLong);
       paramString.append("ms, fileSourceSize=");
@@ -127,9 +127,9 @@ public class VideoCompressTask
       paramString.append(l1);
       QLog.d("ReadInJoyUploadVideoCompressTask", 2, paramString.toString());
     }
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(l3);
-    this.jdField_b_of_type_JavaLangLong = Long.valueOf(l1);
-    return Integer.valueOf(i);
+    this.b = Long.valueOf(l3);
+    this.c = Long.valueOf(l1);
+    return Integer.valueOf(i1);
   }
   
   @NonNull
@@ -145,7 +145,7 @@ public class VideoCompressTask
       localStringBuilder.append(", no need compress");
       QLog.d("ReadInJoyUploadVideoCompressTask", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.j = this.i;
     if (paramVideoConverterConfig != null) {
       a(paramString, paramVideoConverterConfig);
     }
@@ -164,8 +164,8 @@ public class VideoCompressTask
     }
     a(localVideoConverterConfig, paramString);
     boolean bool = localVideoConverterConfig.isNeedCompress;
-    int j = 0;
-    int i = 0;
+    int i2 = 0;
+    int i1 = 0;
     Object localObject1;
     if (bool)
     {
@@ -175,21 +175,21 @@ public class VideoCompressTask
         localMediaMetadataRetriever.setDataSource(paramString);
         Object localObject2 = localMediaMetadataRetriever.extractMetadata(9);
         localMediaMetadataRetriever.release();
-        long l;
+        long l1;
         try
         {
-          l = Long.parseLong((String)localObject2);
+          l1 = Long.parseLong((String)localObject2);
         }
         catch (NumberFormatException localNumberFormatException)
         {
           QLog.e("ReadInJoyUploadVideoCompressTask", 1, "compressPosition", localNumberFormatException);
-          l = 0L;
+          l1 = 0L;
         }
-        localObject1 = new VideoCompressTask.HWCompressProcessor(this, str, (int)(localVideoConverterConfig.srcBitrate * 1024L), (int)localVideoConverterConfig.srcFrameRate, 0L, l);
+        localObject1 = new VideoCompressTask.HWCompressProcessor(this, str, (int)(localVideoConverterConfig.srcBitrate * 1024L), (int)localVideoConverterConfig.srcFrameRate, 0L, l1);
         localObject2 = new VideoConverter(new VideoConverterLog());
         ((VideoConverter)localObject2).setCompressMode(1);
-        j = ((VideoConverter)localObject2).startCompress(paramContext, paramString, (VideoConverter.Processor)localObject1, true);
-        if (j == 0)
+        i2 = ((VideoConverter)localObject2).startCompress(paramContext, paramString, (VideoConverter.Processor)localObject1, true);
+        if (i2 == 0)
         {
           if (QLog.isColorLevel())
           {
@@ -202,24 +202,24 @@ public class VideoCompressTask
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("CompressTask, step: compress failed using MediaCodec， compressRet:");
-          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append(i2);
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, ((StringBuilder)localObject1).toString());
         }
       }
-      i = -1;
+      i1 = -1;
       label272:
       localObject1 = str;
-      j = i;
-      if (i != 0)
+      i2 = i1;
+      if (i1 != 0)
       {
         localObject1 = str;
-        j = i;
+        i2 = i1;
         if (!TextUtils.isEmpty(str))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: Try to compress using ShortVideoTrimmer.compressVideo");
           }
-          j = ShortVideoTrimmer.compressVideo(paramContext, paramString, str, localVideoConverterConfig);
+          i2 = ShortVideoTrimmer.compressVideo(paramContext, paramString, str, localVideoConverterConfig);
           localObject1 = str;
         }
       }
@@ -229,8 +229,8 @@ public class VideoCompressTask
       localObject1 = paramString;
     }
     localHashMap.put("outputPath", localObject1);
-    localHashMap.put("ret", String.valueOf(j));
-    if (a(localVideoConverterConfig, paramString))
+    localHashMap.put("ret", String.valueOf(i2));
+    if (b(localVideoConverterConfig, paramString))
     {
       localHashMap.put("outWidth", String.valueOf(localVideoConverterConfig.destHeight));
       localHashMap.put("outHeight", String.valueOf(localVideoConverterConfig.destWidth));
@@ -254,37 +254,37 @@ public class VideoCompressTask
   
   private void a(int paramInt)
   {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.p = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put("video_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
-    localHashMap.put("source_video_bitrate", this.jdField_c_of_type_JavaLangLong.toString());
-    localHashMap.put("target_video_bitrate", this.jdField_d_of_type_JavaLangLong.toString());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = RIJQQAppInterfaceUtil.a();
+    localHashMap.put("video_size_before_compression", this.b.toString());
+    localHashMap.put("source_video_bitrate", this.d.toString());
+    localHashMap.put("target_video_bitrate", this.e.toString());
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.h);
+    String str = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoCompressVideo", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoCompressVideo", bool, this.p - this.o, 0L, localHashMap, "");
   }
   
   private static void a(VideoConverterConfig paramVideoConverterConfig, String paramString)
   {
     if ((paramVideoConverterConfig != null) && (paramVideoConverterConfig.isNeedCompress))
     {
-      long l = new File(paramString).length();
-      int i = a(paramVideoConverterConfig.srcWidth, paramVideoConverterConfig.srcHeight);
-      if ((l <= 52428800L) && (i > 0) && (paramVideoConverterConfig.srcBitrate * 1024L / i < 1.3D))
+      long l1 = new File(paramString).length();
+      int i1 = a(paramVideoConverterConfig.srcWidth, paramVideoConverterConfig.srcHeight);
+      if ((l1 <= 52428800L) && (i1 > 0) && (paramVideoConverterConfig.srcBitrate * 1024L / i1 < 1.3D))
       {
         paramVideoConverterConfig.isNeedCompress = false;
         if (QLog.isColorLevel())
         {
           paramVideoConverterConfig = new StringBuilder();
           paramVideoConverterConfig.append("CompressTask, fileSize:");
-          paramVideoConverterConfig.append(l);
+          paramVideoConverterConfig.append(l1);
           paramVideoConverterConfig.append(", no need compress!");
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, paramVideoConverterConfig.toString());
         }
@@ -295,12 +295,12 @@ public class VideoCompressTask
   private void a(String paramString, VideoConverterConfig paramVideoConverterConfig)
   {
     boolean bool = "90".equals(paramVideoConverterConfig.rotate);
-    int j = 1;
-    int i = j;
+    int i2 = 1;
+    int i1 = i2;
     if (!bool) {
       if ("270".equals(paramVideoConverterConfig.rotate))
       {
-        i = j;
+        i1 = i2;
       }
       else
       {
@@ -309,32 +309,49 @@ public class VideoCompressTask
           paramString = ShortVideoTrimmer.getVideoProperty(paramString);
           if ((paramString != null) && (paramString.length == 5))
           {
-            i = j;
+            i1 = i2;
             if (paramString[3] == 90) {
               break label98;
             }
             if (paramString[3] == 270)
             {
-              i = j;
+              i1 = i2;
               break label98;
             }
           }
         }
-        i = 0;
+        i1 = 0;
       }
     }
     label98:
-    if (i != 0)
+    if (i1 != 0)
     {
-      this.jdField_a_of_type_Int = paramVideoConverterConfig.srcHeight;
-      this.jdField_b_of_type_Int = paramVideoConverterConfig.srcWidth;
+      this.k = paramVideoConverterConfig.srcHeight;
+      this.l = paramVideoConverterConfig.srcWidth;
       return;
     }
-    this.jdField_a_of_type_Int = paramVideoConverterConfig.srcWidth;
-    this.jdField_b_of_type_Int = paramVideoConverterConfig.srcHeight;
+    this.k = paramVideoConverterConfig.srcWidth;
+    this.l = paramVideoConverterConfig.srcHeight;
   }
   
-  private static boolean a(VideoConverterConfig paramVideoConverterConfig, String paramString)
+  private boolean a(boolean paramBoolean, VideoConverterConfig paramVideoConverterConfig)
+  {
+    int i1 = a(paramVideoConverterConfig.srcWidth, paramVideoConverterConfig.srcHeight);
+    this.d = Long.valueOf(paramVideoConverterConfig.srcBitrate);
+    long l1 = i1;
+    this.e = Long.valueOf(l1);
+    boolean bool = paramBoolean;
+    if (i1 > 0)
+    {
+      bool = paramBoolean;
+      if (paramVideoConverterConfig.srcBitrate * 1024L / l1 > 1.3D) {
+        bool = true;
+      }
+    }
+    return bool;
+  }
+  
+  private static boolean b(VideoConverterConfig paramVideoConverterConfig, String paramString)
   {
     boolean bool3 = "90".equals(paramVideoConverterConfig.rotate);
     boolean bool2 = true;
@@ -363,35 +380,18 @@ public class VideoCompressTask
     return bool1;
   }
   
-  private boolean a(boolean paramBoolean, VideoConverterConfig paramVideoConverterConfig)
-  {
-    int i = a(paramVideoConverterConfig.srcWidth, paramVideoConverterConfig.srcHeight);
-    this.jdField_c_of_type_JavaLangLong = Long.valueOf(paramVideoConverterConfig.srcBitrate);
-    long l = i;
-    this.jdField_d_of_type_JavaLangLong = Long.valueOf(l);
-    boolean bool = paramBoolean;
-    if (i > 0)
-    {
-      bool = paramBoolean;
-      if (paramVideoConverterConfig.srcBitrate * 1024L / l > 1.3D) {
-        bool = true;
-      }
-    }
-    return bool;
-  }
-  
   protected Integer a(String... paramVarArgs)
   {
     boolean bool1 = false;
     paramVarArgs = paramVarArgs[0];
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener.a(0.0F);
+    this.a.a(0.0F);
     boolean bool2 = TextUtils.isEmpty(paramVarArgs);
     Integer localInteger = Integer.valueOf(-1);
-    if ((!bool2) && (this.jdField_a_of_type_AndroidContentContext != null))
+    if ((!bool2) && (this.h != null))
     {
-      this.jdField_a_of_type_JavaLangString = paramVarArgs;
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      VideoConverterConfig localVideoConverterConfig = ShortVideoTrimmer.getCompressConfig(this.jdField_a_of_type_JavaLangString);
+      this.i = paramVarArgs;
+      File localFile = new File(this.i);
+      VideoConverterConfig localVideoConverterConfig = ShortVideoTrimmer.getCompressConfig(this.i);
       if (localVideoConverterConfig != null) {
         bool1 = a(false, localVideoConverterConfig);
       }
@@ -399,9 +399,9 @@ public class VideoCompressTask
         return a(paramVarArgs, localFile, localVideoConverterConfig);
       }
       a();
-      long l = System.currentTimeMillis();
-      if (ShortVideoTrimmer.initVideoTrim(this.jdField_a_of_type_AndroidContentContext)) {
-        return a(paramVarArgs, l);
+      long l1 = System.currentTimeMillis();
+      if (ShortVideoTrimmer.initVideoTrim(this.h)) {
+        return a(paramVarArgs, l1);
       }
       return localInteger;
     }
@@ -417,34 +417,34 @@ public class VideoCompressTask
     if (isCancelled()) {
       return;
     }
-    int i = paramInteger.intValue();
-    int j = 1004;
-    if (i != 0)
+    int i1 = paramInteger.intValue();
+    int i2 = 1004;
+    if (i1 != 0)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, not support shortvideo so");
         }
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
-        i = j;
+        paramInteger = this.a;
+        i1 = i2;
         if (paramInteger != null)
         {
-          paramInteger.a(1, this.jdField_a_of_type_JavaLangLong.longValue(), this.jdField_b_of_type_JavaLangLong.longValue(), null, null, 0L);
-          i = j;
+          paramInteger.a(1, this.b.longValue(), this.c.longValue(), null, null, 0L);
+          i1 = i2;
         }
       }
-      else if (!this.jdField_b_of_type_Boolean)
+      else if (!this.g)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, shortvideo so not ready");
         }
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
-        i = j;
+        paramInteger = this.a;
+        i1 = i2;
         if (paramInteger != null)
         {
-          paramInteger.a(2, this.jdField_a_of_type_JavaLangLong.longValue(), this.jdField_b_of_type_JavaLangLong.longValue(), null, null, 0L);
-          i = j;
+          paramInteger.a(2, this.b.longValue(), this.c.longValue(), null, null, 0L);
+          i1 = i2;
         }
       }
       else
@@ -456,64 +456,64 @@ public class VideoCompressTask
           localStringBuilder.append(paramInteger);
           QLog.d("ReadInJoyUploadVideoCompressTask", 2, localStringBuilder.toString());
         }
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
-        i = j;
+        paramInteger = this.a;
+        i1 = i2;
         if (paramInteger != null)
         {
-          paramInteger.a(3, this.jdField_a_of_type_JavaLangLong.longValue(), this.jdField_b_of_type_JavaLangLong.longValue(), null, null, 0L);
-          i = j;
+          paramInteger.a(3, this.b.longValue(), this.c.longValue(), null, null, 0L);
+          i1 = i2;
         }
       }
     }
     else
     {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        paramInteger = this.jdField_a_of_type_JavaLangString;
+      if (TextUtils.isEmpty(this.j)) {
+        paramInteger = this.i;
       } else {
-        paramInteger = this.jdField_b_of_type_JavaLangString;
+        paramInteger = this.j;
       }
-      this.jdField_c_of_type_JavaLangString = paramInteger;
-      paramInteger = MD5.getFileMd5(this.jdField_c_of_type_JavaLangString);
+      this.m = paramInteger;
+      paramInteger = MD5.getFileMd5(this.m);
       if (paramInteger != null) {
-        this.jdField_d_of_type_JavaLangString = new String(paramInteger);
+        this.n = new String(paramInteger);
       }
-      long l = new File(this.jdField_c_of_type_JavaLangString).length();
+      long l1 = new File(this.m).length();
       if (QLog.isColorLevel())
       {
         paramInteger = new StringBuilder();
         paramInteger.append("CompressTask, finalSize:");
-        paramInteger.append(l);
+        paramInteger.append(l1);
         QLog.d("ReadInJoyUploadVideoCompressTask", 2, paramInteger.toString());
       }
-      if (l > 314572800L)
+      if (l1 > 314572800L)
       {
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
+        paramInteger = this.a;
         if (paramInteger != null) {
-          paramInteger.a(4, this.jdField_a_of_type_JavaLangLong.longValue(), this.jdField_b_of_type_JavaLangLong.longValue(), this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, this.jdField_c_of_type_JavaLangLong.longValue());
+          paramInteger.a(4, this.b.longValue(), this.c.longValue(), this.m, this.n, this.d.longValue());
         }
-        i = 1005;
+        i1 = 1005;
       }
       else
       {
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask$VideoCompressTaskListener;
+        paramInteger = this.a;
         if (paramInteger != null) {
-          paramInteger.a(0, this.jdField_a_of_type_JavaLangLong.longValue(), this.jdField_b_of_type_JavaLangLong.longValue(), this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_JavaLangLong.longValue());
+          paramInteger.a(0, this.b.longValue(), this.c.longValue(), this.m, this.n, this.e.longValue());
         }
-        i = 0;
+        i1 = 0;
       }
     }
-    a(i);
+    a(i1);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.o = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.VideoCompressTask
  * JD-Core Version:    0.7.0.1
  */

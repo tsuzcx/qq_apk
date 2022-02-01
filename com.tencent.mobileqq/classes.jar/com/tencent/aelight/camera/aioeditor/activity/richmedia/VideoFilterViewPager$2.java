@@ -1,51 +1,33 @@
 package com.tencent.aelight.camera.aioeditor.activity.richmedia;
 
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.aelight.camera.log.AEQLog;
+import android.opengl.GLES20;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import com.tencent.ttpic.openapi.filter.LightNode;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 class VideoFilterViewPager$2
   implements Runnable
 {
-  VideoFilterViewPager$2(VideoFilterViewPager paramVideoFilterViewPager) {}
+  VideoFilterViewPager$2(VideoFilterViewPager paramVideoFilterViewPager, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Bitmap localBitmap = VideoFilterTools.a().a();
-    if (localBitmap == null)
-    {
-      AEQLog.d("VideoFilterViewPager", "bitmap is null.");
-      return;
-    }
-    if (VideoFilterViewPager.a(this.this$0) == null) {
-      VideoFilterViewPager.a(this.this$0, localBitmap.getWidth(), localBitmap.getHeight());
-    }
-    if (TextUtils.isEmpty(VideoFilterViewPager.a(this.this$0)))
-    {
-      localObject = this.this$0;
-      VideoFilterViewPager.a((VideoFilterViewPager)localObject, VideoFilterViewPager.a((VideoFilterViewPager)localObject), localBitmap);
-      return;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("aio photo ai label saved: ");
-    ((StringBuilder)localObject).append(VideoFilterViewPager.a(this.this$0));
-    ((StringBuilder)localObject).append(" isPreload: ");
-    ((StringBuilder)localObject).append(VideoFilterViewPager.a(this.this$0));
-    AEQLog.b("VideoFilterViewPager", ((StringBuilder)localObject).toString());
-    if (!VideoFilterViewPager.a(this.this$0))
-    {
-      VideoFilterViewPager.a(this.this$0);
-      VideoFilterViewPager.a(this.this$0, localBitmap);
-      localObject = VideoFilterViewPager.b(localBitmap);
-      if ((localObject != null) && (!((String)localObject).equals(VideoFilterViewPager.a(this.this$0)))) {
-        VideoFilterViewPager.a(this.this$0, false, localBitmap);
-      }
-    }
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    VideoFilterViewPager.a(this.this$0, arrayOfInt[0]);
+    VideoFilterViewPager.a(this.this$0, new AEFilterManager());
+    VideoFilterViewPager.c(this.this$0).supportMultiThreads(true);
+    VideoFilterViewPager.c(this.this$0).initInGL(this.a, this.b);
+    VideoFilterViewPager.c(this.this$0).defineFiltersAndOrder(new int[] { 300, 100 });
+    VideoFilterViewPager.c(this.this$0).setFilterInSmooth(true);
+    VideoFilterViewPager.c(this.this$0).setSyncMode(true);
+    VideoFilterViewPager.c(this.this$0).updateMaterialGL(VideoMaterial.loadLightAsset(LightNode.getEmptyMaterialPath()));
+    VideoFilterViewPager.c(this.this$0).setExternalRenderCallback(new VideoFilterViewPager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterViewPager.2
  * JD-Core Version:    0.7.0.1
  */

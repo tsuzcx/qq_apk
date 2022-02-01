@@ -27,7 +27,7 @@ public class QQFavAction
     {
       try
       {
-        if (TextUtils.isEmpty(this.c))
+        if (TextUtils.isEmpty(this.e))
         {
           QLog.e("QQFavAction", 1, "doAction error: action_name is empty");
         }
@@ -35,7 +35,7 @@ public class QQFavAction
         {
           try
           {
-            i = Integer.parseInt(this.c);
+            i = Integer.parseInt(this.e);
           }
           catch (NumberFormatException localNumberFormatException)
           {
@@ -46,8 +46,8 @@ public class QQFavAction
             break label170;
           }
           Intent localIntent = new Intent();
-          localIntent.putExtra("selfSet_leftViewText", BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690706));
-          boolean bool = QfavHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount(), localIntent, -1, false);
+          localIntent.putExtra("selfSet_leftViewText", BaseApplicationImpl.getApplication().getApplicationContext().getString(2131887625));
+          boolean bool = QfavHelper.a((Activity)this.b, this.a.getAccount(), localIntent, -1, false);
           return bool;
         }
       }
@@ -57,7 +57,7 @@ public class QQFavAction
         localStringBuilder.append("doAction error: ");
         localStringBuilder.append(localException.getMessage());
         QLog.e("QQFavAction", 1, localStringBuilder.toString());
-        b_("QQFavAction");
+        h_("QQFavAction");
         return false;
       }
       i = -1;
@@ -67,7 +67,7 @@ public class QQFavAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQFavAction
  * JD-Core Version:    0.7.0.1
  */

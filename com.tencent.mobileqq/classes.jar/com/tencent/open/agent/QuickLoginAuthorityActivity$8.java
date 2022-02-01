@@ -21,9 +21,9 @@ class QuickLoginAuthorityActivity$8
     case 1005: 
     default: 
     case 1006: 
-      if (this.a.a.a != null)
+      if (this.a.q.k != null)
       {
-        this.a.a.a.f();
+        this.a.q.k.i();
         return;
       }
       break;
@@ -31,7 +31,7 @@ class QuickLoginAuthorityActivity$8
       paramMessage = (String)paramMessage.obj;
       if (!TextUtils.isEmpty(paramMessage))
       {
-        this.a.a.setAppType(paramMessage);
+        this.a.q.setAppType(paramMessage);
         return;
       }
       break;
@@ -39,14 +39,14 @@ class QuickLoginAuthorityActivity$8
       paramMessage = (Bitmap)paramMessage.obj;
       if (paramMessage != null)
       {
-        this.a.a.a("", paramMessage);
+        this.a.q.a("", paramMessage);
         return;
       }
       break;
     case 1002: 
       paramMessage = (Bitmap)paramMessage.obj;
       if (paramMessage != null) {
-        this.a.a.a("", "", paramMessage);
+        this.a.q.a("", "", paramMessage);
       }
       break;
     }
@@ -54,7 +54,7 @@ class QuickLoginAuthorityActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.8
  * JD-Core Version:    0.7.0.1
  */

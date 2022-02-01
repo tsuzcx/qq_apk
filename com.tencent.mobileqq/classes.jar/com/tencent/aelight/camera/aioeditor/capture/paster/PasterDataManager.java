@@ -55,57 +55,45 @@ public class PasterDataManager
   extends QIMAsyncManager
   implements DataProvider.DataUpdateListener<WeatherDataProvider.WeatherInfo>, LbsManager.POIListRequestCallback, IEventReceiver
 {
-  public static AtomicBoolean a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  private PasterDataManager.DoodleEmojiDownloadEventReceiver jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver;
-  protected InformationFacePackage a;
-  protected LocationFacePackage a;
-  protected EditVideoDoodle.DoodleFacePanelAdapter a;
-  DoodleEmojiManager.POIPostersRequestCallback jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback = new PasterDataManager.2(this);
-  private WeatherDataProvider jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider;
-  public LbsManager.POIListRequestSession a;
-  protected Runnable a;
-  public CopyOnWriteArrayList<FacePackage> a;
+  public static AtomicBoolean j = new AtomicBoolean(false);
   protected boolean a;
-  private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public PasterDataManager()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = null;
-    this.jdField_a_of_type_JavaLangRunnable = new PasterDataManager.1(this);
-  }
+  protected EditVideoDoodle.DoodleFacePanelAdapter b;
+  protected LocationFacePackage c;
+  protected InformationFacePackage d;
+  protected Handler e = new Handler(Looper.getMainLooper());
+  public LbsManager.POIListRequestSession f = null;
+  public CopyOnWriteArrayList<FacePackage> g;
+  protected Runnable h = new PasterDataManager.1(this);
+  DoodleEmojiManager.POIPostersRequestCallback i = new PasterDataManager.2(this);
+  private Context k;
+  private PasterDataManager.DoodleEmojiDownloadEventReceiver l;
+  private WeatherDataProvider m;
+  private boolean n;
   
   private void a(WeatherDataProvider.WeatherInfo paramWeatherInfo)
   {
     if (paramWeatherInfo != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.c = paramWeatherInfo.jdField_a_of_type_Int;
-      if (paramWeatherInfo.jdField_a_of_type_JavaLangString != null)
+      this.d.q = paramWeatherInfo.a;
+      if (paramWeatherInfo.b != null)
       {
-        paramWeatherInfo = paramWeatherInfo.jdField_a_of_type_JavaLangString.split("\\|");
+        paramWeatherInfo = paramWeatherInfo.b.split("\\|");
         Object localObject;
         if ((paramWeatherInfo != null) && (paramWeatherInfo.length == 2))
         {
-          localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage;
-          ((InformationFacePackage)localObject).h = paramWeatherInfo[0];
-          ((InformationFacePackage)localObject).i = paramWeatherInfo[1];
+          localObject = this.d;
+          ((InformationFacePackage)localObject).o = paramWeatherInfo[0];
+          ((InformationFacePackage)localObject).p = paramWeatherInfo[1];
         }
-        paramWeatherInfo = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilList.iterator();
+        paramWeatherInfo = this.d.l.iterator();
         while (paramWeatherInfo.hasNext())
         {
           localObject = (InformationFacePackage.Item)paramWeatherInfo.next();
-          if (((InformationFacePackage.Item)localObject).jdField_a_of_type_Int == 6)
+          if (((InformationFacePackage.Item)localObject).c == 6)
           {
-            ((InformationFacePackage.Item)localObject).j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.h;
-            ((InformationFacePackage.Item)localObject).k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.i;
-            ((InformationFacePackage.Item)localObject).c = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.c;
+            ((InformationFacePackage.Item)localObject).l = this.d.o;
+            ((InformationFacePackage.Item)localObject).m = this.d.p;
+            ((InformationFacePackage.Item)localObject).n = this.d.q;
           }
         }
       }
@@ -118,14 +106,14 @@ public class PasterDataManager
     LbsManager localLbsManager = (LbsManager)SuperManager.a(9);
     BasicLocation localBasicLocation = paramBasicLocation;
     if (paramBasicLocation == null) {
-      localBasicLocation = LbsManager.a();
+      localBasicLocation = LbsManager.c();
     }
     if (paramBoolean)
     {
       localLbsManager.a(localBasicLocation, null, this);
       return;
     }
-    localLbsManager.a(localBasicLocation, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession, this);
+    localLbsManager.a(localBasicLocation, this.f, this);
   }
   
   private void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -133,62 +121,62 @@ public class PasterDataManager
     Object localObject;
     if (paramString1 != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage;
-      if ((localObject != null) && (!paramString1.equals(((InformationFacePackage)localObject).g))) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.g = paramString1;
+      localObject = this.d;
+      if ((localObject != null) && (!paramString1.equals(((InformationFacePackage)localObject).n))) {
+        this.d.n = paramString1;
       }
     }
-    int j = 0;
-    int i = j;
+    int i2 = 0;
+    int i1 = i2;
     if (paramString2 != null)
     {
-      paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage;
-      i = j;
+      paramString1 = this.c;
+      i1 = i2;
       if (paramString1 != null)
       {
-        i = j;
-        if (!paramString2.equals(paramString1.f)) {
-          i = 1;
+        i1 = i2;
+        if (!paramString2.equals(paramString1.m)) {
+          i1 = 1;
         }
       }
     }
-    paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage;
-    if ((paramString1 != null) && (i != 0))
+    paramString1 = this.c;
+    if ((paramString1 != null) && (i1 != 0))
     {
-      paramString1.f = paramString2;
-      paramString1 = paramString1.jdField_a_of_type_JavaUtilList.iterator();
+      paramString1.m = paramString2;
+      paramString1 = paramString1.k.iterator();
       while (paramString1.hasNext()) {
-        ((LocationFacePackage.Item)paramString1.next()).jdField_b_of_type_JavaLangString = paramString2;
+        ((LocationFacePackage.Item)paramString1.next()).b = paramString2;
       }
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle$DoodleFacePanelAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage);
+        this.b.a(this.c);
       }
     }
-    paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage;
+    paramString1 = this.d;
     if (paramString1 != null)
     {
-      if (i != 0)
+      if (i1 != 0)
       {
-        paramString1.f = paramString2;
-        paramString1 = paramString1.jdField_a_of_type_JavaUtilList.iterator();
+        paramString1.m = paramString2;
+        paramString1 = paramString1.l.iterator();
         while (paramString1.hasNext())
         {
           localObject = (InformationFacePackage.Item)paramString1.next();
-          if (((InformationFacePackage.Item)localObject).jdField_a_of_type_Boolean) {
-            ((InformationFacePackage.Item)localObject).l = paramString2;
+          if (((InformationFacePackage.Item)localObject).p) {
+            ((InformationFacePackage.Item)localObject).q = paramString2;
           }
         }
       }
-      paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilList.iterator();
+      paramString1 = this.d.l.iterator();
       while (paramString1.hasNext())
       {
         paramString2 = (InformationFacePackage.Item)paramString1.next();
-        if ((paramString2.jdField_a_of_type_Int == 7) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.g.equals(paramString2.i)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilMap != null)) {
-          a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.g, paramString2);
+        if ((paramString2.c == 7) && (!this.d.n.equals(paramString2.k)) && (this.d.r != null)) {
+          a(this.d.r, this.d.n, paramString2);
         }
       }
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle$DoodleFacePanelAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage);
+        this.b.a(this.d);
       }
     }
   }
@@ -196,9 +184,9 @@ public class PasterDataManager
   private void a(Map<String, Map<String, InformationFacePackage.CityRes>> paramMap, String paramString, InformationFacePackage.Item paramItem)
   {
     if (paramItem.a() != null) {
-      paramItem.a().c();
+      paramItem.a().g();
     }
-    Map localMap = (Map)paramMap.get(paramItem.h);
+    Map localMap = (Map)paramMap.get(paramItem.j);
     if (localMap != null)
     {
       paramString = (InformationFacePackage.CityRes)localMap.get(paramString);
@@ -208,75 +196,51 @@ public class PasterDataManager
       }
       if (paramMap != null)
       {
-        paramItem.g = paramMap.jdField_a_of_type_JavaLangString;
-        paramItem.e = paramMap.jdField_b_of_type_JavaLangString;
-        paramItem.f = paramMap.c;
+        paramItem.i = paramMap.a;
+        paramItem.g = paramMap.b;
+        paramItem.h = paramMap.c;
       }
     }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    a(null, paramBoolean);
   }
   
   private static void b(NormalFacePackage paramNormalFacePackage, DoodleEmojiItem paramDoodleEmojiItem)
   {
-    paramNormalFacePackage.jdField_b_of_type_JavaLangString = paramDoodleEmojiItem.name;
+    paramNormalFacePackage.b = paramDoodleEmojiItem.name;
     paramNormalFacePackage.c = paramDoodleEmojiItem.icon;
     paramNormalFacePackage.d = paramDoodleEmojiItem.download_icon;
-    paramNormalFacePackage.g = paramDoodleEmojiItem.getLocalEmojiFolderPath();
-    paramNormalFacePackage.e = paramDoodleEmojiItem.download_wording;
-    paramNormalFacePackage.jdField_a_of_type_Boolean = "1".equals(paramDoodleEmojiItem.random_position);
+    paramNormalFacePackage.l = paramDoodleEmojiItem.getLocalEmojiFolderPath();
+    paramNormalFacePackage.f = paramDoodleEmojiItem.download_wording;
+    paramNormalFacePackage.g = "1".equals(paramDoodleEmojiItem.random_position);
     paramNormalFacePackage.a(paramDoodleEmojiItem.config);
-    paramNormalFacePackage.jdField_a_of_type_Int = paramDoodleEmojiItem.hide;
-    paramNormalFacePackage.jdField_b_of_type_Int = paramDoodleEmojiItem.mask;
+    paramNormalFacePackage.i = paramDoodleEmojiItem.hide;
+    paramNormalFacePackage.j = paramDoodleEmojiItem.mask;
   }
   
-  private void f()
+  private void b(boolean paramBoolean)
+  {
+    a(null, paramBoolean);
+  }
+  
+  private void j()
   {
     Object localObject = (DoodleEmojiManager)QIMManager.a(14);
-    ((DoodleEmojiManager)localObject).c();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage == null)
+    ((DoodleEmojiManager)localObject).a();
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage = new LocationFacePackage("0");
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_b_of_type_Boolean = true;
+      this.c = new LocationFacePackage("0");
+      this.c.l = true;
       String str = DoodleEmojiManager.c((DoodleEmojiManager)localObject, "0");
       localObject = DoodleEmojiManager.a((DoodleEmojiManager)localObject, "0");
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.c = ((String)localObject);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (NetworkUtil.isNetworkAvailable(this.k))) {
+        this.c.c = ((String)localObject);
       } else {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846835);
+        this.c.e = this.k.getResources().getDrawable(2130848387);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.a(str);
+      this.c.a(str);
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage = new InformationFacePackage("2001");
+    if (this.d == null) {
+      this.d = new InformationFacePackage("2001");
     }
-  }
-  
-  public FacePackage a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle$DoodleFacePanelAdapter.a(paramString);
-  }
-  
-  public EditVideoDoodle.DoodleFacePanelAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle$DoodleFacePanelAdapter;
-  }
-  
-  public String a()
-  {
-    LocationFacePackage localLocationFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage;
-    if (localLocationFacePackage != null) {
-      return localLocationFacePackage.f;
-    }
-    return null;
-  }
-  
-  public List<FacePackage> a()
-  {
-    return a(false);
   }
   
   @NonNull
@@ -284,10 +248,10 @@ public class PasterDataManager
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0))
+      if ((this.g == null) || (this.g.size() == 0))
       {
-        localObject1 = ((DoodleEmojiManager)QIMManager.a(14)).a();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+        localObject1 = ((DoodleEmojiManager)QIMManager.a(14)).e();
+        this.g = new CopyOnWriteArrayList();
         localObject1 = ((Collection)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -297,98 +261,98 @@ public class PasterDataManager
           {
             localObject3 = new NormalFacePackage(localDoodleEmojiItem.pack_id);
             b((NormalFacePackage)localObject3, localDoodleEmojiItem);
-            if (("1".equals(((NormalFacePackage)localObject3).jdField_a_of_type_JavaLangString)) && (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))) {
-              ((NormalFacePackage)localObject3).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846694);
+            if (("1".equals(((NormalFacePackage)localObject3).a)) && (!NetworkUtil.isNetworkAvailable(this.k))) {
+              ((NormalFacePackage)localObject3).e = this.k.getResources().getDrawable(2130848246);
             }
-            this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject3);
+            this.g.add(localObject3);
           }
           else
           {
             Object localObject4;
             if (localDoodleEmojiItem.type == 2)
             {
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-              if ((!TextUtils.isEmpty(localDoodleEmojiItem.icon)) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))) {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.c = localDoodleEmojiItem.icon;
+              this.c.b = localDoodleEmojiItem.name;
+              if ((!TextUtils.isEmpty(localDoodleEmojiItem.icon)) && (NetworkUtil.isNetworkAvailable(this.k))) {
+                this.c.c = localDoodleEmojiItem.icon;
               } else {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846835);
+                this.c.e = this.k.getResources().getDrawable(2130848387);
               }
               if (localDoodleEmojiItem.mItemList != null)
               {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mItemList;
+                this.c.k = localDoodleEmojiItem.mItemList;
                 if (localDoodleEmojiItem.mItemList != null)
                 {
                   localObject3 = new StringBuilder();
                   ((StringBuilder)localObject3).append("add doodle emoji location item name = ");
-                  ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.f);
+                  ((StringBuilder)localObject3).append(this.c.m);
                   SLog.b("PasterDataManager", ((StringBuilder)localObject3).toString());
                   localObject3 = localDoodleEmojiItem.mItemList.iterator();
                   while (((Iterator)localObject3).hasNext())
                   {
                     localObject4 = (LocationFacePackage.Item)((Iterator)localObject3).next();
-                    ((LocationFacePackage.Item)localObject4).g = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_b_of_type_JavaLangString;
-                    ((LocationFacePackage.Item)localObject4).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.f;
+                    ((LocationFacePackage.Item)localObject4).i = this.c.b;
+                    ((LocationFacePackage.Item)localObject4).b = this.c.m;
                   }
                 }
               }
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_a_of_type_Boolean = "1".equals(localDoodleEmojiItem.random_position);
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage.jdField_b_of_type_Int = localDoodleEmojiItem.mask;
-              this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage);
+              this.c.g = "1".equals(localDoodleEmojiItem.random_position);
+              this.c.i = localDoodleEmojiItem.hide;
+              this.c.j = localDoodleEmojiItem.mask;
+              this.g.add(this.c);
             }
             else if (localDoodleEmojiItem.type == 3)
             {
-              if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage == null) {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage = new InformationFacePackage(localDoodleEmojiItem.pack_id);
+              if (this.d == null) {
+                this.d = new InformationFacePackage(localDoodleEmojiItem.pack_id);
               } else {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaLangString = localDoodleEmojiItem.pack_id;
+                this.d.a = localDoodleEmojiItem.pack_id;
               }
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mInfoItemList;
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.a(localDoodleEmojiItem.config);
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.g = "default";
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.c = -999;
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.h = "--";
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.i = "default";
-              if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilList != null)
+              this.d.b = localDoodleEmojiItem.name;
+              this.d.l = localDoodleEmojiItem.mInfoItemList;
+              this.d.a(localDoodleEmojiItem.config);
+              this.d.i = localDoodleEmojiItem.hide;
+              this.d.n = "default";
+              this.d.q = -999;
+              this.d.o = "--";
+              this.d.p = "default";
+              if (this.d.l != null)
               {
-                localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilList.iterator();
+                localObject3 = this.d.l.iterator();
                 while (((Iterator)localObject3).hasNext())
                 {
                   localObject4 = (InformationFacePackage.Item)((Iterator)localObject3).next();
-                  ((InformationFacePackage.Item)localObject4).m = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_b_of_type_JavaLangString;
-                  if (InformationFaceConstant.a(((InformationFacePackage.Item)localObject4).jdField_a_of_type_Int)) {
-                    ((InformationFacePackage.Item)localObject4).l = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.f;
+                  ((InformationFacePackage.Item)localObject4).t = this.d.b;
+                  if (InformationFaceConstant.a(((InformationFacePackage.Item)localObject4).c)) {
+                    ((InformationFacePackage.Item)localObject4).q = this.d.m;
                   }
-                  if ((localDoodleEmojiItem.mCityRes != null) && (((InformationFacePackage.Item)localObject4).jdField_a_of_type_Int == 7)) {
-                    a(localDoodleEmojiItem.mCityRes, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.g, (InformationFacePackage.Item)localObject4);
+                  if ((localDoodleEmojiItem.mCityRes != null) && (((InformationFacePackage.Item)localObject4).c == 7)) {
+                    a(localDoodleEmojiItem.mCityRes, this.d.n, (InformationFacePackage.Item)localObject4);
                   }
-                  if (((InformationFacePackage.Item)localObject4).jdField_a_of_type_Int == 6)
+                  if (((InformationFacePackage.Item)localObject4).c == 6)
                   {
-                    ((InformationFacePackage.Item)localObject4).c = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.c;
-                    ((InformationFacePackage.Item)localObject4).j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.h;
-                    ((InformationFacePackage.Item)localObject4).k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.i;
+                    ((InformationFacePackage.Item)localObject4).n = this.d.q;
+                    ((InformationFacePackage.Item)localObject4).l = this.d.o;
+                    ((InformationFacePackage.Item)localObject4).m = this.d.p;
                   }
                 }
               }
-              this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage);
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_a_of_type_JavaUtilMap = localDoodleEmojiItem.mCityRes;
+              this.g.add(this.d);
+              this.d.r = localDoodleEmojiItem.mCityRes;
             }
           }
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getDoodleFacePackages, size = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+        ((StringBuilder)localObject1).append(this.g.size());
         SLog.b("PasterDataManager", ((StringBuilder)localObject1).toString());
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        j.set(true);
       }
       if (paramBoolean)
       {
-        StaticStickerProviderView.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        StaticStickerProviderView.a(this.g);
+        j.set(true);
       }
-      Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+      Object localObject1 = this.g;
       return localObject1;
     }
     finally {}
@@ -406,10 +370,10 @@ public class PasterDataManager
     SLog.b("PasterDataManager", ((StringBuilder)localObject).toString());
     if ((paramInt == 0) && (paramPOIListRequestSession != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = paramPOIListRequestSession;
+      this.f = paramPOIListRequestSession;
       if ((paramList != null) && (paramList.size() > 0))
       {
-        localObject = ((TroopBarPOI)paramList.get(0)).a();
+        localObject = ((TroopBarPOI)paramList.get(0)).b();
         if (QLog.isColorLevel())
         {
           paramPOIListRequestSession = new StringBuilder();
@@ -417,7 +381,7 @@ public class PasterDataManager
           paramPOIListRequestSession.append((String)localObject);
           QLog.d("PasterDataManager", 2, paramPOIListRequestSession.toString());
         }
-        String str = ShortVideoUtils.getRecentPOI(QQStoryContext.a().getCurrentAccountUin());
+        String str = ShortVideoUtils.getRecentPOI(QQStoryContext.k().getCurrentAccountUin());
         Iterator localIterator = paramList.iterator();
         do
         {
@@ -425,17 +389,17 @@ public class PasterDataManager
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((TroopBarPOI)localIterator.next()).a().equals(str));
+        } while (!((TroopBarPOI)localIterator.next()).b().equals(str));
         paramPOIListRequestSession = str;
-        a(((TroopBarPOI)paramList.get(0)).jdField_b_of_type_JavaLangString, paramPOIListRequestSession, true);
+        a(((TroopBarPOI)paramList.get(0)).b, paramPOIListRequestSession, true);
       }
     }
   }
   
   public void a(BasicLocation paramBasicLocation)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider = ((WeatherDataProvider)((DataProviderManager)SuperManager.a(20)).a(0));
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider.a();
+    this.m = ((WeatherDataProvider)((DataProviderManager)SuperManager.a(20)).a(0));
+    Object localObject = this.m.c();
     if (localObject != null)
     {
       SLog.b("PasterDataManager", "get weather from cache.");
@@ -445,10 +409,10 @@ public class PasterDataManager
     SLog.b("PasterDataManager", "get weather from net.");
     localObject = paramBasicLocation;
     if (paramBasicLocation == null) {
-      localObject = LbsManager.a();
+      localObject = LbsManager.c();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider.b((BasicLocation)localObject);
+    this.m.a(this);
+    this.m.b((BasicLocation)localObject);
   }
   
   public void a(String paramString)
@@ -458,10 +422,10 @@ public class PasterDataManager
   
   public void a(boolean paramBoolean, Activity paramActivity)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.n)
     {
-      InformationFacePackage localInformationFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage;
-      if ((localInformationFacePackage != null) && (!"default".equals(localInformationFacePackage.g)) && (!"--".equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.h))) {
+      InformationFacePackage localInformationFacePackage = this.d;
+      if ((localInformationFacePackage != null) && (!"default".equals(localInformationFacePackage.n)) && (!"--".equals(this.d.o))) {
         return;
       }
     }
@@ -475,34 +439,58 @@ public class PasterDataManager
     }
   }
   
-  public void b()
+  public FacePackage b(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver != null)
-    {
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver = null;
-    }
-    WeatherDataProvider localWeatherDataProvider = this.jdField_a_of_type_ComTencentBizQqstoryModelWeatherDataProvider;
-    if (localWeatherDataProvider != null) {
-      localWeatherDataProvider.b(this);
-    }
+    return this.b.a(paramString);
   }
   
-  public void d()
+  public void b()
   {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle$DoodleFacePanelAdapter = new EditVideoDoodle.DoodleFacePanelAdapter();
-    f();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver = new PasterDataManager.DoodleEmojiDownloadEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver);
+    this.k = BaseApplicationImpl.getContext();
+    this.b = new EditVideoDoodle.DoodleFacePanelAdapter();
+    j();
+    this.l = new PasterDataManager.DoodleEmojiDownloadEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.l);
     if (QLog.isDevelopLevel()) {
       QLog.d("PasterDataManager", 4, "initPasterConfig");
     }
   }
   
-  public void e()
+  public void d()
   {
-    this.jdField_b_of_type_Boolean = false;
+    if (this.l != null)
+    {
+      StoryDispatcher.a().unRegisterSubscriber(this.l);
+      this.l = null;
+    }
+    WeatherDataProvider localWeatherDataProvider = this.m;
+    if (localWeatherDataProvider != null) {
+      localWeatherDataProvider.b(this);
+    }
+  }
+  
+  public EditVideoDoodle.DoodleFacePanelAdapter e()
+  {
+    return this.b;
+  }
+  
+  public List<FacePackage> f()
+  {
+    return a(false);
+  }
+  
+  public String h()
+  {
+    LocationFacePackage localLocationFacePackage = this.c;
+    if (localLocationFacePackage != null) {
+      return localLocationFacePackage.m;
+    }
+    return null;
+  }
+  
+  public void i()
+  {
+    this.n = false;
   }
   
   public boolean isValidate()
@@ -512,7 +500,7 @@ public class PasterDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterDataManager
  * JD-Core Version:    0.7.0.1
  */

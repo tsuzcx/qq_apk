@@ -1,10 +1,10 @@
 package com.tencent.liteav.beauty.b.c;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 
 class d
-  extends h
+  extends j
 {
   private final boolean r;
   private int s = -1;
@@ -45,14 +45,14 @@ class d
     if (!super.b()) {
       return false;
     }
-    this.s = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.t = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.t = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.d
  * JD-Core Version:    0.7.0.1
  */

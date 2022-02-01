@@ -9,12 +9,12 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public abstract class BaseProtocolReceiver<T extends BusinessHandler>
 {
   protected AppInterface a;
-  protected T a;
+  protected T b;
   
   public BaseProtocolReceiver(AppInterface paramAppInterface, T paramT)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessHandler = paramT;
+    this.a = paramAppInterface;
+    this.b = paramT;
   }
   
   public abstract String a();

@@ -439,11 +439,11 @@ public class MessageRoamJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
-      this.browserAppInterface = ((BrowserAppInterface)this.mRuntime.a());
+    if ((this.mRuntime.b() != null) && ((this.mRuntime.b() instanceof BrowserAppInterface))) {
+      this.browserAppInterface = ((BrowserAppInterface)this.mRuntime.b());
     }
-    this.browserActivity = this.mRuntime.a();
-    this.context = this.mRuntime.a().getApplicationContext();
+    this.browserActivity = this.mRuntime.d();
+    this.context = this.mRuntime.d().getApplicationContext();
   }
   
   protected void onDestroy()
@@ -511,7 +511,7 @@ public class MessageRoamJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin
  * JD-Core Version:    0.7.0.1
  */

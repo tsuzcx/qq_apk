@@ -19,7 +19,7 @@ class AuthorityControlAppDetailsFragment$3
     {
       paramInt = paramBundle.getInt("code", -1);
       paramBundle = paramBundle.getString("errorMsg", "");
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment$IGetAppInfoCallback.a(paramInt, paramBundle);
+      this.a.a(paramInt, paramBundle);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onReceive: errorCode=");
       ((StringBuilder)localObject).append(paramInt);
@@ -36,11 +36,11 @@ class AuthorityControlAppDetailsFragment$3
         localObject = new GetAppInfoProto.GetAppinfoResponse();
         ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
         paramBundle = AppInfo.a((GetAppInfoProto.GetAppinfoResponse)localObject);
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment$IGetAppInfoCallback.a(paramBundle);
+        this.a.a(paramBundle);
         return;
       }
       QLog.e("AuthorityControlAppDetailsActivity", 1, "onReceive: data=null");
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment$IGetAppInfoCallback.a(-1, "data is null!");
+      this.a.a(-1, "data is null!");
       return;
     }
     catch (Exception paramBundle)
@@ -49,13 +49,13 @@ class AuthorityControlAppDetailsFragment$3
       ((StringBuilder)localObject).append("onReceive: ");
       ((StringBuilder)localObject).append(paramBundle.getMessage());
       QLog.e("AuthorityControlAppDetailsActivity", 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment$IGetAppInfoCallback.a(-1, paramBundle.getMessage());
+      this.a.a(-1, paramBundle.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.3
  * JD-Core Version:    0.7.0.1
  */

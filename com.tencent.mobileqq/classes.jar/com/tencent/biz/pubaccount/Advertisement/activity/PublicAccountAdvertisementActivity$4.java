@@ -29,57 +29,57 @@ class PublicAccountAdvertisementActivity$4
       bool = false;
     }
     PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
-    if (PublicAccountAdvertisementActivity.c(this.a))
+    if (PublicAccountAdvertisementActivity.f(this.a))
     {
-      PublicAccountAdvertisementActivity.a(this.a).b(true);
-      PublicAccountAdvertisementActivity.a(this.a).onResume();
-      PublicAccountAdvertisementActivity.e(this.a);
+      PublicAccountAdvertisementActivity.l(this.a).b(true);
+      PublicAccountAdvertisementActivity.l(this.a).onResume();
+      PublicAccountAdvertisementActivity.m(this.a);
       PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
-      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a))
+      if (PublicAccountAdvertisementActivity.n(this.a) > PublicAccountAdvertisementActivity.o(this.a))
       {
         paramVerticalPagerView = this.a;
-        PublicAccountAdvertisementActivity.b(paramVerticalPagerView, PublicAccountAdvertisementActivity.c(paramVerticalPagerView) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
+        PublicAccountAdvertisementActivity.b(paramVerticalPagerView, PublicAccountAdvertisementActivity.p(paramVerticalPagerView) + (PublicAccountAdvertisementActivity.n(this.a) - PublicAccountAdvertisementActivity.o(this.a)));
       }
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.a(this.a);
+      paramVerticalPagerView = PublicAccountAdvertisementActivity.i(this.a);
+      PublicAccountAdvertisementActivity.i(this.a);
       paramVerticalPagerView.setMode(1);
-      if (!PublicAccountAdvertisementActivity.a(this.a).a())
+      if (!PublicAccountAdvertisementActivity.l(this.a).a())
       {
-        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-        PublicAccountAdvertisementActivity.a(this.a).a(false);
+        PublicAccountAdvertisementActivity.i(this.a).setVisibility(8);
+        PublicAccountAdvertisementActivity.l(this.a).a(false);
       }
     }
     else
     {
-      if (PublicAccountAdvertisementActivity.d(this.a))
+      if (PublicAccountAdvertisementActivity.q(this.a))
       {
         PublicAccountAdvertisementActivity.d(this.a, false);
         if (this.a.a()) {
-          this.a.a.sendEmptyMessage(5);
+          this.a.e.sendEmptyMessage(5);
         }
       }
-      PublicAccountAdvertisementActivity.c(this.a);
-      PublicAccountAdvertisementActivity.a(this.a).b(false);
-      PublicAccountAdvertisementActivity.a(this.a).onPause();
-      PublicAccountAdvertisementActivity.a(this.a).b();
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.g(this.a);
+      PublicAccountAdvertisementActivity.l(this.a).b(false);
+      PublicAccountAdvertisementActivity.l(this.a).onPause();
+      PublicAccountAdvertisementActivity.i(this.a).b();
+      paramVerticalPagerView = PublicAccountAdvertisementActivity.i(this.a);
+      PublicAccountAdvertisementActivity.i(this.a);
       paramVerticalPagerView.setMode(2);
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
+      PublicAccountAdvertisementActivity.i(this.a).setVisibility(0);
       PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a).a.a;
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a.c;
+      paramVerticalPagerView = PublicAccountAdvertisementActivity.h(this.a).g.a;
+      paramView = PublicAccountAdvertisementActivity.h(this.a).g.c;
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(PublicAccountAdvertisementActivity.a(this.a));
+      ((StringBuilder)localObject).append(PublicAccountAdvertisementActivity.r(this.a));
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(PublicAccountAdvertisementActivity.a(this.a).a.d);
-      ReportController.a(null, "dc00898", "", paramVerticalPagerView, "0X8008F68", "0X8008F68", 0, 0, paramView, (String)localObject, localStringBuilder.toString(), PublicAccountAdvertisementActivity.a(this.a).a.b);
+      localStringBuilder.append(PublicAccountAdvertisementActivity.h(this.a).g.n);
+      ReportController.a(null, "dc00898", "", paramVerticalPagerView, "0X8008F68", "0X8008F68", 0, 0, paramView, (String)localObject, localStringBuilder.toString(), PublicAccountAdvertisementActivity.h(this.a).g.b);
       paramVerticalPagerView = BaseApplicationImpl.getApplication().getRuntime();
       if ((paramVerticalPagerView instanceof ToolAppRuntime)) {
-        ImaxAdPresenter.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
+        ImaxAdPresenter.a().a(PublicAccountAdvertisementActivity.h(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
       }
       PublicAccountAdvertisementActivity.b(this.a, 0);
     }
@@ -92,7 +92,7 @@ class PublicAccountAdvertisementActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.4
  * JD-Core Version:    0.7.0.1
  */

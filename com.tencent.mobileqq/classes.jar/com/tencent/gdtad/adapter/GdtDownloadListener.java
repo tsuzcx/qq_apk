@@ -43,7 +43,7 @@ public class GdtDownloadListener
   {
     WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
-      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(4, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(4, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
@@ -51,7 +51,7 @@ public class GdtDownloadListener
   {
     paramString = this.a;
     if ((paramString != null) && (paramString.get() != null) && (paramDownloadInfo != null)) {
-      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(5, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(5, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
@@ -59,7 +59,7 @@ public class GdtDownloadListener
   {
     WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
-      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(3, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(3, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
@@ -67,7 +67,7 @@ public class GdtDownloadListener
   {
     WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
-      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(2, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+      ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(2, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
@@ -120,7 +120,7 @@ public class GdtDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloadListener
  * JD-Core Version:    0.7.0.1
  */

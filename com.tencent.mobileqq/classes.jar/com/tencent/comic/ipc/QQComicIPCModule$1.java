@@ -22,12 +22,12 @@ class QQComicIPCModule$1
     ((Bundle)localObject).putInt("retCode", paramInt);
     ((Bundle)localObject).putString("msg", paramString);
     paramString = EIPCResult.createSuccessResult((Bundle)localObject);
-    this.jdField_a_of_type_ComTencentComicIpcQQComicIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString);
+    this.b.callbackResult(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ipc.QQComicIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

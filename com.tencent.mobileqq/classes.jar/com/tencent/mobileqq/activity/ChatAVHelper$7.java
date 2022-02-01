@@ -13,15 +13,15 @@ final class ChatAVHelper$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_Boolean) {
+    ChatActivityUtils.a(this.a, null, this.b.a, this.b.b, this.b.d, true);
+    if (this.b.e) {
       ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    ChatActivityUtils.VideoCheckFlag localVideoCheckFlag = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
-    localVideoCheckFlag.b = false;
-    localVideoCheckFlag.jdField_c_of_type_Boolean = true;
-    localVideoCheckFlag.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, localVideoCheckFlag);
+    ChatActivityUtils.VideoCheckFlag localVideoCheckFlag = this.b;
+    localVideoCheckFlag.g = false;
+    localVideoCheckFlag.h = true;
+    localVideoCheckFlag.l = false;
+    ChatActivityUtils.a(this.c, this.a, this.d, this.e, localVideoCheckFlag);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -29,7 +29,7 @@ final class ChatAVHelper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 package com.tencent.aelight.camera.ae.play;
 
 import android.text.TextUtils;
-import com.tencent.aelight.camera.ae.entry.AECameraEntryManager;
-import com.tencent.aelight.camera.aioeditor.takevideo.ShortVideoForwardManager;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import java.io.File;
@@ -64,12 +62,12 @@ class AEVideoShelfPreviewFragment$5
       AEVideoShelfPreviewFragment.access$1102(this.this$0, false);
       AEVideoShelfPreviewFragment.keepScreenOn(this.this$0.getBaseActivity(), false);
     }
-    ShortVideoForwardManager.a(this.this$0.getBaseActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), AECameraEntryManager.b(this.this$0.getBaseActivity()), "caller_aecamera");
+    AEVideoShelfPreviewFragment.access$1200(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfPreviewFragment.5
  * JD-Core Version:    0.7.0.1
  */

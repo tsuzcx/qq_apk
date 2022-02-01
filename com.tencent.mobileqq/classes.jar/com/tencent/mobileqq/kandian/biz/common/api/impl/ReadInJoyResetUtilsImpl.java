@@ -18,7 +18,7 @@ public final class ReadInJoyResetUtilsImpl
   @Nullable
   public String getLocalFilesPathForDebug()
   {
-    return ReadInJoyResetUtils.a();
+    return ReadInJoyResetUtils.h();
   }
   
   public int getLocalResetVersion()
@@ -32,7 +32,7 @@ public final class ReadInJoyResetUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.api.impl.ReadInJoyResetUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

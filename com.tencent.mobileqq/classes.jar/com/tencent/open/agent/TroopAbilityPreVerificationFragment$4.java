@@ -25,9 +25,9 @@ class TroopAbilityPreVerificationFragment$4
   {
     paramBundle = new StringBuilder();
     paramBundle.append("onResult type=");
-    paramBundle.append(this.a.a);
+    paramBundle.append(this.a.m);
     paramBundle.append(", appid=");
-    paramBundle.append(this.a.c);
+    paramBundle.append(this.a.h);
     paramBundle.append(", code=");
     paramBundle.append(paramInt);
     QLog.i("TroopAbility.PreVerification", 1, paramBundle.toString());
@@ -62,13 +62,13 @@ class TroopAbilityPreVerificationFragment$4
           return;
         }
         QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
-        this.a.c(HardCodeUtil.a(2131714908));
+        this.a.c(HardCodeUtil.a(2131912406));
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
-        this.a.c(HardCodeUtil.a(2131714913));
+        this.a.c(HardCodeUtil.a(2131912411));
         return;
       }
     }
@@ -99,12 +99,12 @@ class TroopAbilityPreVerificationFragment$4
     }
     ((StringBuilder)localObject).append(paramArrayOfByte);
     QLog.i("TroopAbility.PreVerification", 1, ((StringBuilder)localObject).toString());
-    this.a.c(HardCodeUtil.a(2131714916));
+    this.a.c(HardCodeUtil.a(2131912414));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment.4
  * JD-Core Version:    0.7.0.1
  */

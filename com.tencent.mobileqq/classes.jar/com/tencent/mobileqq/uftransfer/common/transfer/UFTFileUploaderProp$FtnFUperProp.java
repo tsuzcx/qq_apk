@@ -4,57 +4,37 @@ import android.text.TextUtils;
 
 public class UFTFileUploaderProp$FtnFUperProp
 {
-  protected int a;
   protected long a;
-  protected String a;
-  protected boolean a;
-  protected String b;
-  
-  public UFTFileUploaderProp$FtnFUperProp()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
+  protected int b;
+  protected String c;
+  protected String d;
+  protected boolean e = false;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.c))
     {
-      this.b = "strFilePath is empty";
+      this.d = "strFilePath is empty";
       return false;
     }
     return true;
@@ -62,17 +42,32 @@ public class UFTFileUploaderProp$FtnFUperProp
   
   public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
-  public boolean b()
+  public long c()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public int d()
+  {
+    return this.b;
+  }
+  
+  public String e()
+  {
+    return this.c;
+  }
+  
+  public boolean f()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTFileUploaderProp.FtnFUperProp
  * JD-Core Version:    0.7.0.1
  */

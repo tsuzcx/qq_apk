@@ -27,18 +27,18 @@ public class EcshopWebActivity
   extends QQBrowserActivity
   implements SwipListView.RightIconMenuListener
 {
-  public long a;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public String a;
-  public List<RecentShopParcel> a;
-  Map<Rect, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  public String b;
-  boolean b;
-  long jdField_c_of_type_Long;
-  boolean jdField_c_of_type_Boolean = false;
-  private long d = 0L;
+  ViewGroup a;
+  public List<RecentShopParcel> b;
+  public String c;
+  public String d;
+  public long e;
+  boolean f = false;
+  public long g;
+  boolean h;
+  long i;
+  Map<Rect, Boolean> j = new HashMap();
+  boolean k = false;
+  private long l = 0L;
   
   public EcshopWebActivity()
   {
@@ -47,7 +47,7 @@ public class EcshopWebActivity
   
   private boolean a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.j.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -63,36 +63,36 @@ public class EcshopWebActivity
   {
     if (paramRect != null)
     {
-      if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramRect))) {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramRect);
+      if ((paramBoolean) && (this.j.containsKey(paramRect))) {
+        this.j.remove(paramRect);
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      Iterator localIterator = this.j.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Rect localRect = (Rect)((Map.Entry)localIterator.next()).getKey();
         if ((localRect.left == paramRect.left) && (localRect.top == paramRect.top)) {
-          this.jdField_a_of_type_JavaUtilMap.remove(localRect);
+          this.j.remove(localRect);
         }
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramRect, Boolean.valueOf(paramBoolean));
+      this.j.put(paramRect, Boolean.valueOf(paramBoolean));
     }
   }
   
   void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = paramBundle.getParcelableArrayList("datas");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("ad_logo");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("ad_jump");
-    this.jdField_a_of_type_Long = paramBundle.getLong("ad_id", 0L);
-    this.jdField_b_of_type_Long = paramBundle.getLong("latest_time", 0L);
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("is_tab_show", false);
+    this.b = paramBundle.getParcelableArrayList("datas");
+    this.c = paramBundle.getString("ad_logo");
+    this.d = paramBundle.getString("ad_jump");
+    this.e = paramBundle.getLong("ad_id", 0L);
+    this.g = paramBundle.getLong("latest_time", 0L);
+    this.f = paramBundle.getBoolean("is_tab_show", false);
   }
   
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.b;
       if (localObject != null)
       {
         if (((List)localObject).isEmpty()) {
@@ -102,12 +102,12 @@ public class EcshopWebActivity
         ((Intent)localObject).putExtra("uin", paramString);
         ((Intent)localObject).putExtra("needDelete", false);
         sendBroadcast((Intent)localObject);
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject = this.b.iterator();
         while (((Iterator)localObject).hasNext())
         {
           RecentShopParcel localRecentShopParcel = (RecentShopParcel)((Iterator)localObject).next();
-          if (paramString.equals(localRecentShopParcel.jdField_a_of_type_JavaLangString)) {
-            localRecentShopParcel.b = 0;
+          if (paramString.equals(localRecentShopParcel.a)) {
+            localRecentShopParcel.g = 0;
           }
         }
       }
@@ -117,54 +117,54 @@ public class EcshopWebActivity
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    int i = paramMotionEvent.getAction();
+    int m = paramMotionEvent.getAction();
     boolean bool;
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381085));
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365183));
+      this.a = ((ViewGroup)findViewById(2131450099));
+      if (this.a == null) {
+        this.a = ((ViewGroup)findViewById(2131431345));
       }
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null)
+      if (this.a == null)
       {
         bool = super.dispatchTouchEvent(paramMotionEvent);
         break label204;
       }
     }
-    View localView = findViewById(2131376636);
+    View localView = findViewById(2131444897);
     if (localView == null)
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
     }
     else
     {
-      if (i != 0)
+      if (m != 0)
       {
-        if (i != 1) {
-          if (i != 2)
+        if (m != 1) {
+          if (m != 2)
           {
-            if (i != 3) {
+            if (m != 3) {
               break label198;
             }
           }
           else
           {
-            if (!this.jdField_c_of_type_Boolean) {
+            if (!this.k) {
               break label198;
             }
-            this.jdField_a_of_type_AndroidViewViewGroup.requestDisallowInterceptTouchEvent(true);
+            this.a.requestDisallowInterceptTouchEvent(true);
             break label198;
           }
         }
-        this.jdField_c_of_type_Boolean = false;
+        this.k = false;
       }
-      else if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      else if ((!this.f) && (!this.h))
       {
-        this.jdField_c_of_type_Boolean = false;
+        this.k = false;
       }
-      else if ((this.jdField_b_of_type_Boolean) || (!a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() - localView.getBottom())))
+      else if ((this.h) || (!a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() - localView.getBottom())))
       {
-        this.jdField_c_of_type_Boolean = true;
+        this.k = true;
       }
       label198:
       bool = super.dispatchTouchEvent(paramMotionEvent);
@@ -178,7 +178,7 @@ public class EcshopWebActivity
   {
     super.doOnDestroy();
     Intent localIntent = new Intent("action_folder_destroy");
-    localIntent.putExtra("stay_time", System.currentTimeMillis() - this.jdField_c_of_type_Long);
+    localIntent.putExtra("stay_time", System.currentTimeMillis() - this.i);
     sendBroadcast(localIntent);
   }
   
@@ -186,15 +186,15 @@ public class EcshopWebActivity
   {
     super.doOnPause();
     Object localObject = new Intent("action_folder_set_read");
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      ((Intent)localObject).putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
+    if (!this.b.isEmpty()) {
+      ((Intent)localObject).putExtra("uin", ((RecentShopParcel)this.b.get(0)).a);
     }
     sendBroadcast((Intent)localObject);
     localObject = null;
     if ((getAppRuntime() instanceof QQAppInterface)) {
       localObject = (QQAppInterface)getAppRuntime();
     }
-    PublicAccountEventReport.a((QQAppInterface)localObject, "9970", 1, 4, System.currentTimeMillis() - this.d);
+    PublicAccountEventReport.a((QQAppInterface)localObject, "9970", 1, 4, System.currentTimeMillis() - this.l);
   }
   
   protected void doOnRestoreInstanceState(Bundle paramBundle)
@@ -208,7 +208,7 @@ public class EcshopWebActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    this.d = System.currentTimeMillis();
+    this.l = System.currentTimeMillis();
   }
   
   protected void doOnSaveInstanceState(Bundle paramBundle)
@@ -219,7 +219,7 @@ public class EcshopWebActivity
   
   public WebViewFragment getFragmentByTabBarData(WebViewTabBarData paramWebViewTabBarData)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return super.getFragmentByTabBarData(paramWebViewTabBarData);
     }
     return WebViewFragmentBuilder.a(this, paramWebViewTabBarData, super.getIntent());
@@ -244,22 +244,22 @@ public class EcshopWebActivity
     }
     super.onCreate(paramBundle);
     a(getIntent().getBundleExtra("bundle"));
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    this.i = System.currentTimeMillis();
   }
   
   public void onRightIconMenuHide(View paramView)
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.h = false;
   }
   
   public void onRightIconMenuShow(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.h = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity
  * JD-Core Version:    0.7.0.1
  */

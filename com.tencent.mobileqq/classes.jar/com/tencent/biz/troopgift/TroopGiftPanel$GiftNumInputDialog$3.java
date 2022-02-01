@@ -14,19 +14,19 @@ class TroopGiftPanel$GiftNumInputDialog$3
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.c();
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.b();
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
+    this.b.c();
+    this.b.b();
+    if (this.b.e.F) {
+      this.b.e.G.b();
     } else {
-      ((GiftPanelHelper)((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).a(136)).b();
+      ((GiftPanelHelper)((BaseChatPie)this.b.e.C.get()).q(136)).e();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.3
  * JD-Core Version:    0.7.0.1
  */

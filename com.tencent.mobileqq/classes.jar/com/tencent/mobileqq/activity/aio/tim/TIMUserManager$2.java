@@ -9,7 +9,7 @@ class TIMUserManager$2
   
   public void run()
   {
-    if (TIMUserManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0)
+    if (TIMUserManager.a(this.this$0, this.a, this.b) == 0)
     {
       if (TIMUserManager.a(this.this$0, this.b))
       {
@@ -27,16 +27,16 @@ class TIMUserManager$2
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(" startDownLoadTimTheme TimIconsState ");
-      localStringBuilder.append(TIMUserManager.a(this.this$0));
+      localStringBuilder.append(TIMUserManager.c(this.this$0));
       QLog.i("TIMUserManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tim.TIMUserManager.2
  * JD-Core Version:    0.7.0.1
  */

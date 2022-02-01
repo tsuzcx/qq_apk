@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 public class SlipLimitedListView
   extends SlideDetectListView
 {
-  private Rect a = new Rect();
+  private Rect p = new Rect();
   
   public SlipLimitedListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,9 +29,9 @@ public class SlipLimitedListView
         if ((localView instanceof WorkSpaceView))
         {
           paramView = (WorkSpaceView)localView;
-          paramView.getGlobalVisibleRect(this.a);
+          paramView.getGlobalVisibleRect(this.p);
           if (paramView.isShown()) {
-            return this.a.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
+            return this.p.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
           }
           return false;
         }
@@ -54,7 +54,7 @@ public class SlipLimitedListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlipLimitedListView
  * JD-Core Version:    0.7.0.1
  */

@@ -123,7 +123,7 @@ public class VideoComponentCallback
       paramInt1 = 200;
     }
     paramString3.putInt("param.uploadEntrance", paramInt1);
-    paramString3.putInt("param.entranceSource", QzoneSlideShowPhotoListManager.a().a());
+    paramString3.putInt("param.entranceSource", QzoneSlideShowPhotoListManager.a().d());
     if (paramInt6 >= 0)
     {
       paramString3.putInt("extra_key_font_id", paramInt6);
@@ -272,7 +272,7 @@ public class VideoComponentCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.VideoComponentCallback
  * JD-Core Version:    0.7.0.1
  */

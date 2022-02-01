@@ -6,40 +6,51 @@ import com.tencent.mobileqq.activity.aio.panel.miniapp.AioPanelMiniAppManager;
 import com.tencent.mobileqq.activity.aio.pluspanel.PluginData;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
 import com.tencent.mobileqq.listentogether.ListenTogetherUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class CommonPlusPanelAppLoader
   extends PlusPanelAppLoader
 {
+  private void a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo)
+  {
+    if (((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).judgeIsGuildLiveChannelChatPie(paramBaseChatPie)) {
+      paramPlusPanelAppInfo.guildLiveChannel = true;
+    }
+  }
+  
   public PluginData a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
   {
     PluginData localPluginData = new PluginData();
     if (paramPlusPanelAppInfo.getAppID() == 213) {
-      this.jdField_a_of_type_Int = (paramInt / 8);
+      this.a = (paramInt / 8);
     }
-    localPluginData.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localPluginData.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getAppName();
-    localPluginData.e = paramPlusPanelAppInfo.actionType;
-    localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanelAppInfo);
-    if (localPluginData.jdField_b_of_type_Int == 204)
+    localPluginData.b = paramPlusPanelAppInfo.getAppID();
+    localPluginData.a = paramPlusPanelAppInfo.getAppID();
+    localPluginData.d = paramPlusPanelAppInfo.getAppName();
+    localPluginData.h = paramPlusPanelAppInfo.actionType;
+    a(paramBaseChatPie, paramPlusPanelAppInfo);
+    localPluginData.k = a(paramBaseChatPie.d, paramPlusPanelAppInfo);
+    localPluginData.j = paramPlusPanelAppInfo.getDTElementId();
+    if (localPluginData.b == 204)
     {
       if (!ShortVideoUtils.isHotPicConfiginitied) {
         ShortVideoUtils.isHotPicConfiginitied = true;
       }
     }
-    else if (localPluginData.jdField_b_of_type_Int == 209) {
-      localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+    else if (localPluginData.b == 209) {
+      localPluginData.c = AioPanelMiniAppManager.a(paramBaseChatPie.d).d();
     } else if (paramPlusPanelAppInfo.getAppID() == 101761547) {
-      localPluginData.jdField_a_of_type_Boolean = ListenTogetherUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false);
+      localPluginData.c = ListenTogetherUtils.a(paramBaseChatPie.d, "listen_together_c2c_aio_red_dot_show", true, false);
     } else {
-      localPluginData.jdField_a_of_type_Boolean = false;
+      localPluginData.c = false;
     }
     paramBaseChatPie = new StringBuilder();
     paramBaseChatPie.append(paramPlusPanelAppInfo.getAppName());
-    paramBaseChatPie.append(HardCodeUtil.a(2131708303));
-    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    paramBaseChatPie.append(HardCodeUtil.a(2131906093));
+    localPluginData.e = paramBaseChatPie.toString();
     return localPluginData;
   }
   
@@ -47,14 +58,14 @@ public class CommonPlusPanelAppLoader
   {
     super.a(paramBaseChatPie);
     b(paramBaseChatPie);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    a(paramBaseChatPie.d, paramBaseChatPie.ah.a, paramBaseChatPie.ah.b);
   }
   
   protected void b(BaseChatPie paramBaseChatPie) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.CommonPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

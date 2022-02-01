@@ -22,23 +22,22 @@ import org.json.JSONObject;
 public class GroupSearchModelFooter
   extends SearchResultGroupModelImpl
 {
-  public long a;
   public String a;
-  public boolean a;
   public String b;
-  public String c = "xiaoweiba";
+  public boolean c = true;
+  public long d;
+  public String e = "xiaoweiba";
   
   public GroupSearchModelFooter(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void b(View paramView)
@@ -74,19 +73,19 @@ public class GroupSearchModelFooter
       }
       Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_tail");
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("");
       paramView = ((ReportModelDC02528)localObject2).obj1(localStringBuilder.toString()).ver1(((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getCurrKeyword()).ver2(UniteSearchReportController.a(((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getFromForHistoryCode())).ver7(paramView.toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localAppInterface.getCurrentAccountUin());
-      ((StringBuilder)localObject2).append(SearchUtils.d);
+      ((StringBuilder)localObject2).append(SearchUtils.j);
       UniteSearchReportController.a(null, paramView.session_id(((StringBuilder)localObject2).toString()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelFooter
  * JD-Core Version:    0.7.0.1
  */

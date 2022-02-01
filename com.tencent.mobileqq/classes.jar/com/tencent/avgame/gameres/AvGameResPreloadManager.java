@@ -14,21 +14,6 @@ import mqq.app.MobileQQ;
 public class AvGameResPreloadManager
   implements IAvGameResPreloadManager
 {
-  public static IAvGameResPreloadManager.ConfInfo a()
-  {
-    SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("av_game_sp", 4);
-    IAvGameResPreloadManager.ConfInfo localConfInfo = new IAvGameResPreloadManager.ConfInfo();
-    localConfInfo.d = localSharedPreferences.getString("preloadVoiceRecogSoMD5", "");
-    localConfInfo.e = localSharedPreferences.getString("preloadVoiceRecogSoFileMD5", "");
-    localConfInfo.g = localSharedPreferences.getString("preloadVoiceRecogModelMD5", "");
-    localConfInfo.h = localSharedPreferences.getString("preloadVoiceRecogModelFileMD5", "");
-    localConfInfo.j = localSharedPreferences.getString("preloadVoiceRecogAILabSoMD5", "");
-    localConfInfo.k = localSharedPreferences.getString("preloadVoiceRecogAILabSoFileMD5", "");
-    localConfInfo.m = localSharedPreferences.getString("preloadVoiceRecogAILabModelMD5", "");
-    localConfInfo.n = localSharedPreferences.getString("preloadVoiceRecogAILabModelFileMD5", "");
-    return localConfInfo;
-  }
-  
   public static IAvGameResPreloadManager.PathInfo a()
   {
     SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("av_game_sp", 4);
@@ -171,6 +156,21 @@ public class AvGameResPreloadManager
       }
     }
     return false;
+  }
+  
+  public static IAvGameResPreloadManager.ConfInfo b()
+  {
+    SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("av_game_sp", 4);
+    IAvGameResPreloadManager.ConfInfo localConfInfo = new IAvGameResPreloadManager.ConfInfo();
+    localConfInfo.d = localSharedPreferences.getString("preloadVoiceRecogSoMD5", "");
+    localConfInfo.e = localSharedPreferences.getString("preloadVoiceRecogSoFileMD5", "");
+    localConfInfo.g = localSharedPreferences.getString("preloadVoiceRecogModelMD5", "");
+    localConfInfo.h = localSharedPreferences.getString("preloadVoiceRecogModelFileMD5", "");
+    localConfInfo.j = localSharedPreferences.getString("preloadVoiceRecogAILabSoMD5", "");
+    localConfInfo.k = localSharedPreferences.getString("preloadVoiceRecogAILabSoFileMD5", "");
+    localConfInfo.m = localSharedPreferences.getString("preloadVoiceRecogAILabModelMD5", "");
+    localConfInfo.n = localSharedPreferences.getString("preloadVoiceRecogAILabModelFileMD5", "");
+    return localConfInfo;
   }
 }
 

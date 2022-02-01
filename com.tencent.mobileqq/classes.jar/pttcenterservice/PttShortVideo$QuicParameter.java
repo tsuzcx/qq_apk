@@ -21,7 +21,7 @@ public final class PttShortVideo$QuicParameter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pttcenterservice.PttShortVideo.QuicParameter
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class GAudioMembersCtrlActivity$7
     if (QLog.isColorLevel()) {
       QLog.d("GAudioMembersCtrlActivity", 2, "onDestroyUI");
     }
-    this.a.finish();
+    this.b.finish();
   }
   
   protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -29,12 +29,12 @@ class GAudioMembersCtrlActivity$7
       localStringBuilder.append(paramBoolean);
       QLog.e("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
     }
-    GAudioMembersCtrlActivity.c(this.a, new GAudioMembersCtrlActivity.7.3(this, paramLong, paramInt1, paramInt2, paramBoolean));
+    GAudioMembersCtrlActivity.c(this.b, new GAudioMembersCtrlActivity.7.3(this, paramLong, paramInt1, paramInt2, paramBoolean));
   }
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    if (this.b.d != paramLong1)
     {
       if (QLog.isColorLevel())
       {
@@ -42,7 +42,7 @@ class GAudioMembersCtrlActivity$7
         localStringBuilder.append("onMemberJoin,wrong group uin.GroupUin = ");
         localStringBuilder.append(paramLong1);
         localStringBuilder.append(" ,mGroupId = ");
-        localStringBuilder.append(this.a.jdField_a_of_type_Long);
+        localStringBuilder.append(this.b.d);
         localStringBuilder.append(" ,isQQUser = ");
         localStringBuilder.append(paramBoolean);
         QLog.e("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
@@ -50,13 +50,13 @@ class GAudioMembersCtrlActivity$7
       return;
     }
     super.a(paramLong1, paramLong2, paramBoolean);
-    this.a.a(paramLong2, 1, true, 71);
+    this.b.a(paramLong2, 1, true, 71);
   }
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    if (this.b.d != paramLong1)
     {
       if (QLog.isColorLevel())
       {
@@ -64,14 +64,14 @@ class GAudioMembersCtrlActivity$7
         localStringBuilder.append("onMemberJoin,wrong group uin.GroupUin = ");
         localStringBuilder.append(paramLong1);
         localStringBuilder.append(" ,mGroupId = ");
-        localStringBuilder.append(this.a.jdField_a_of_type_Long);
+        localStringBuilder.append(this.b.d);
         localStringBuilder.append(" ,isQQUser = ");
         localStringBuilder.append(paramBoolean2);
         QLog.e("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
       }
       return;
     }
-    this.a.a(paramLong2, 0, paramBoolean1, 70);
+    this.b.a(paramLong2, 0, paramBoolean1, 70);
   }
   
   protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -85,7 +85,7 @@ class GAudioMembersCtrlActivity$7
       localStringBuilder.append(paramBoolean1);
       QLog.e("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
     }
-    GAudioMembersCtrlActivity.b(this.a, new GAudioMembersCtrlActivity.7.2(this));
+    GAudioMembersCtrlActivity.b(this.b, new GAudioMembersCtrlActivity.7.2(this));
   }
   
   protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
@@ -96,22 +96,22 @@ class GAudioMembersCtrlActivity$7
     } else {
       paramInt = 43;
     }
-    this.a.a(paramLong, 2, paramBoolean2, paramInt);
+    this.b.a(paramLong, 2, paramBoolean2, paramInt);
   }
   
   protected void a(ArrayList<AVUserInfo> paramArrayList)
   {
-    GAudioMembersCtrlActivity.d(this.a, new GAudioMembersCtrlActivity.7.4(this, paramArrayList));
+    GAudioMembersCtrlActivity.d(this.b, new GAudioMembersCtrlActivity.7.4(this, paramArrayList));
   }
   
   protected void b(long paramLong, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl.b(paramLong, paramBoolean);
+    this.b.c.b(paramLong, paramBoolean);
   }
   
   protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    this.a.finish();
+    this.b.finish();
   }
   
   protected void e()
@@ -120,7 +120,7 @@ class GAudioMembersCtrlActivity$7
     if (QLog.isColorLevel()) {
       QLog.d("GAudioMembersCtrlActivity", 2, "onUpdatePstnInfo --> Start");
     }
-    GAudioMembersCtrlActivity.a(this.a, new GAudioMembersCtrlActivity.7.1(this));
+    GAudioMembersCtrlActivity.a(this.b, new GAudioMembersCtrlActivity.7.1(this));
   }
 }
 

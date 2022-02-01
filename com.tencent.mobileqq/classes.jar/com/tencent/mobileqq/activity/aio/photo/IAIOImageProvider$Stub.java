@@ -14,7 +14,7 @@ public abstract class IAIOImageProvider$Stub
   extends Binder
   implements IBinder.DeathRecipient, IAIOImageProvider
 {
-  protected IAIOImageProviderCallBack a;
+  protected IAIOImageProviderCallBack y;
   
   protected IAIOImageProvider$Stub()
   {
@@ -88,7 +88,7 @@ public abstract class IAIOImageProvider$Stub
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    paramParcel1 = a(paramParcel1.readLong());
+    paramParcel1 = b(paramParcel1.readLong());
     paramParcel2.writeNoException();
     if (paramParcel1 != null)
     {
@@ -105,7 +105,7 @@ public abstract class IAIOImageProvider$Stub
     if (QLog.isColorLevel()) {
       QLog.d("PEAK", 2, "binder destoryed");
     }
-    this.a = null;
+    this.y = null;
   }
   
   public void a(IAIOImageProviderCallBack paramIAIOImageProviderCallBack)
@@ -113,7 +113,7 @@ public abstract class IAIOImageProvider$Stub
     try
     {
       paramIAIOImageProviderCallBack.asBinder().linkToDeath(this, 0);
-      this.a = paramIAIOImageProviderCallBack;
+      this.y = paramIAIOImageProviderCallBack;
       return;
     }
     catch (RemoteException paramIAIOImageProviderCallBack)
@@ -166,15 +166,15 @@ public abstract class IAIOImageProvider$Stub
       break label571;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    c(paramParcel1.readLong());
+    e(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    b(paramParcel1.readLong());
+    d(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel1 = c(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
     paramParcel2.writeNoException();
     if (paramParcel1 != null)
     {
@@ -189,7 +189,7 @@ public abstract class IAIOImageProvider$Stub
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    a(paramParcel1.readLong(), paramParcel1.readInt());
+    c(paramParcel1.readLong(), paramParcel1.readInt());
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
@@ -197,7 +197,7 @@ public abstract class IAIOImageProvider$Stub
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+    paramParcel1 = b(paramParcel1.readLong(), paramParcel1.readInt());
     paramParcel2.writeNoException();
     if (paramParcel1 != null)
     {
@@ -228,27 +228,27 @@ public abstract class IAIOImageProvider$Stub
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    a(paramParcel1.readLong());
+    c(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    e(paramParcel1.readLong());
+    g(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    d(paramParcel1.readLong());
+    f(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
     arrayOfLong = new long[paramParcel1.readInt()];
     paramParcel1.readLongArray(arrayOfLong);
-    a(arrayOfLong);
+    b(arrayOfLong);
     paramParcel2.writeNoException();
     return true;
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
-    f(paramParcel1.readLong());
+    h(paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
     label571:
@@ -258,7 +258,7 @@ public abstract class IAIOImageProvider$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub
  * JD-Core Version:    0.7.0.1
  */

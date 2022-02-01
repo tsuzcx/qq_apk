@@ -15,18 +15,18 @@ class TroopAssistantActivity$4
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
+    if (System.currentTimeMillis() - this.a.y >= 1500L) {
       try
       {
-        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (paramView.getId() == 2131379169)
+        this.a.y = System.currentTimeMillis();
+        if (paramView.getId() == 2131447905)
         {
           TroopStoryMainActivity.a(this.a);
           if (QLog.isColorLevel()) {
             QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
           }
-          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          if (this.a.t != null) {
+            this.a.t.setVisibility(8);
           }
           StoryReportor.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
         }
@@ -47,7 +47,7 @@ class TroopAssistantActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.4
  * JD-Core Version:    0.7.0.1
  */

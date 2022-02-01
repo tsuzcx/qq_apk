@@ -11,9 +11,6 @@ public class ReadInJoyUgcVideoReportItem
 {
   public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new ReadInJoyUgcVideoReportItem.1();
   public double a;
-  public int a;
-  public long a;
-  public String a;
   public String b;
   public String c;
   public String d;
@@ -21,22 +18,25 @@ public class ReadInJoyUgcVideoReportItem
   public String f;
   public String g;
   public String h;
+  public long i;
+  public int j;
+  public String k;
   
   public ReadInJoyUgcVideoReportItem() {}
   
   protected ReadInJoyUgcVideoReportItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Double = paramParcel.readDouble();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readDouble();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
     this.f = paramParcel.readString();
     this.g = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
     this.h = paramParcel.readString();
+    this.i = paramParcel.readLong();
+    this.j = paramParcel.readInt();
+    this.k = paramParcel.readString();
   }
   
   public JSONObject a()
@@ -44,13 +44,13 @@ public class ReadInJoyUgcVideoReportItem
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("op_duration", this.jdField_a_of_type_Double);
-      localJSONObject.put("msg_id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("msg_feature", this.b);
-      localJSONObject.put("content_source", this.c);
-      localJSONObject.put("element_type", this.d);
-      localJSONObject.put("element_tag", this.e);
-      localJSONObject.put("element_id", this.f);
+      localJSONObject.put("op_duration", this.a);
+      localJSONObject.put("msg_id", this.b);
+      localJSONObject.put("msg_feature", this.c);
+      localJSONObject.put("content_source", this.d);
+      localJSONObject.put("element_type", this.e);
+      localJSONObject.put("element_tag", this.f);
+      localJSONObject.put("element_id", this.g);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -67,22 +67,22 @@ public class ReadInJoyUgcVideoReportItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeDouble(this.jdField_a_of_type_Double);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeDouble(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
     paramParcel.writeString(this.f);
     paramParcel.writeString(this.g);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.h);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeInt(this.j);
+    paramParcel.writeString(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.capture.ReadInJoyUgcVideoReportItem
  * JD-Core Version:    0.7.0.1
  */

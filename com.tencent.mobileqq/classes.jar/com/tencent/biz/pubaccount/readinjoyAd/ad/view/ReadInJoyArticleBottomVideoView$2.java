@@ -28,17 +28,17 @@ class ReadInJoyArticleBottomVideoView$2
   {
     if ((paramInt == 17) && (FastWeqAdUtils.h(ReadInJoyArticleBottomVideoView.a(this.a))))
     {
-      FastWeqAdUtils.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
+      FastWeqAdUtils.a((Context)ReadInJoyArticleBottomVideoView.f(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
       return;
     }
     if (paramInt == 21)
     {
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).a(1).b(ReadInJoyArticleBottomVideoView.a(this.a)).b(Integer.valueOf(0)).a(ReadInJoyArticleBottomVideoView.a(this.a)).c(paramInt));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(ReadInJoyArticleBottomVideoView.j(this.a)).a(ReadInJoyArticleBottomVideoView.i(this.a)).a(1).b(ReadInJoyArticleBottomVideoView.h(this.a)).b(Integer.valueOf(0)).a(ReadInJoyArticleBottomVideoView.g(this.a)).c(paramInt));
       long l = System.currentTimeMillis();
-      if (l - ReadInJoyArticleBottomVideoView.a(this.a) > 500L)
+      if (l - ReadInJoyArticleBottomVideoView.k(this.a) > 500L)
       {
         ReadInJoyArticleBottomVideoView.a(this.a, l);
-        ReadInJoyArticleBottomVideoView.e(this.a);
+        ReadInJoyArticleBottomVideoView.l(this.a);
       }
     }
     else
@@ -47,10 +47,10 @@ class ReadInJoyArticleBottomVideoView$2
       boolean bool2;
       if (ReadInJoyArticleBottomVideoView.a(this.a) != null)
       {
-        if (ReadInJoyArticleBottomVideoView.a(this.a).D != null)
+        if (ReadInJoyArticleBottomVideoView.a(this.a).P != null)
         {
-          localObject = ReadInJoyArticleBottomVideoView.a(this.a).D;
-          bool1 = PackageUtil.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+          localObject = ReadInJoyArticleBottomVideoView.a(this.a).P;
+          bool1 = PackageUtil.a((Context)ReadInJoyArticleBottomVideoView.f(this.a).get(), (String)localObject);
         }
         else
         {
@@ -58,7 +58,7 @@ class ReadInJoyArticleBottomVideoView$2
           bool1 = false;
         }
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = ADBaseAppDownloadManager.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+          bool2 = ADBaseAppDownloadManager.a((Context)ReadInJoyArticleBottomVideoView.f(this.a).get(), (String)localObject);
         } else {
           bool2 = false;
         }
@@ -81,7 +81,7 @@ class ReadInJoyArticleBottomVideoView$2
       if (localAdvertisementInfo != null) {
         localAdvertisementInfo.setClickPos(paramInt);
       }
-      paramView = ReadinJoyActionUtil.d(paramView.getContext(), localAdvertisementInfo, null, 2, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isClickBtn(paramInt), (AdJumpParams)localObject);
+      paramView = ReadinJoyActionUtil.e(paramView.getContext(), localAdvertisementInfo, null, 2, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isClickBtn(paramInt), (AdJumpParams)localObject);
       if (localAdvertisementInfo != null) {
         localAdvertisementInfo.setClickPos(paramInt);
       }
@@ -91,7 +91,7 @@ class ReadInJoyArticleBottomVideoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.2
  * JD-Core Version:    0.7.0.1
  */

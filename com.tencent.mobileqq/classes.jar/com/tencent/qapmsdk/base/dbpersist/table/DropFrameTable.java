@@ -41,7 +41,7 @@ public final class DropFrameTable
   private static final String TABLE_DROP_FRAME = "drop_frame";
   private static final String TAG = "QAPM_table_DropFrameTable";
   private long curTime;
-  private DropFrameResultMeta dropFrameResult = new DropFrameResultMeta(0, 0.0F, null, null, 15, null);
+  private DropFrameResultMeta dropFrameResult = new DropFrameResultMeta(0, 0.0F, null, null, 0.0F, 31, null);
   private long lastTime;
   private int pId;
   private String processName = "";
@@ -163,7 +163,7 @@ public final class DropFrameTable
     //   38: ifeq +11 -> 49
     //   41: ldc_w 302
     //   44: astore 17
-    //   46: goto +1141 -> 1187
+    //   46: goto +1142 -> 1188
     //   49: aload 17
     //   51: iconst_4
     //   52: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -171,15 +171,15 @@ public final class DropFrameTable
     //   58: ifeq +11 -> 69
     //   61: ldc_w 304
     //   64: astore 17
-    //   66: goto +1121 -> 1187
+    //   66: goto +1122 -> 1188
     //   69: aload 17
     //   71: iconst_5
     //   72: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   75: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   78: ifeq +1112 -> 1190
+    //   78: ifeq +1113 -> 1191
     //   81: ldc_w 306
     //   84: astore 17
-    //   86: goto +1101 -> 1187
+    //   86: goto +1102 -> 1188
     //   89: aload_2
     //   90: invokeinterface 296 1 0
     //   95: astore 18
@@ -207,7 +207,7 @@ public final class DropFrameTable
     //   137: aload_0
     //   138: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
     //   141: aastore
-    //   142: goto +1055 -> 1197
+    //   142: goto +1056 -> 1198
     //   145: aload 18
     //   147: iconst_4
     //   148: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -238,12 +238,12 @@ public final class DropFrameTable
     //   198: aload_0
     //   199: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
     //   202: aastore
-    //   203: goto +994 -> 1197
+    //   203: goto +995 -> 1198
     //   206: aload 18
     //   208: iconst_5
     //   209: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   212: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   215: ifeq +985 -> 1200
+    //   215: ifeq +986 -> 1201
     //   218: iconst_5
     //   219: anewarray 188	java/lang/String
     //   222: astore 18
@@ -275,7 +275,7 @@ public final class DropFrameTable
     //   266: getfield 149	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:curTime	J
     //   269: invokestatic 309	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   272: aastore
-    //   273: goto +924 -> 1197
+    //   273: goto +925 -> 1198
     //   276: aload_1
     //   277: ldc 99
     //   279: aconst_null
@@ -287,7 +287,7 @@ public final class DropFrameTable
     //   287: invokevirtual 313	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   290: astore 17
     //   292: aload 17
-    //   294: ifnull +890 -> 1184
+    //   294: ifnull +891 -> 1185
     //   297: aload 17
     //   299: checkcast 315	java/io/Closeable
     //   302: astore 17
@@ -320,7 +320,7 @@ public final class DropFrameTable
     //   359: astore 22
     //   361: aload 21
     //   363: invokeinterface 323 1 0
-    //   368: ifne +684 -> 1052
+    //   368: ifne +685 -> 1053
     //   371: aload 17
     //   373: astore 20
     //   375: aload 18
@@ -461,7 +461,7 @@ public final class DropFrameTable
     //   707: checkcast 130	com/tencent/qapmsdk/base/meta/DropFrameResultMeta
     //   710: astore 19
     //   712: aload 19
-    //   714: ifnull +496 -> 1210
+    //   714: ifnull +497 -> 1211
     //   717: aload 17
     //   719: astore 22
     //   721: aload 19
@@ -574,7 +574,7 @@ public final class DropFrameTable
     //   909: aload 19
     //   911: invokeinterface 354 3 0
     //   916: pop
-    //   917: goto +293 -> 1210
+    //   917: goto +294 -> 1211
     //   920: iload 6
     //   922: i2l
     //   923: lstore 13
@@ -616,130 +616,131 @@ public final class DropFrameTable
     //   973: i2l
     //   974: lastore
     //   975: aconst_null
-    //   976: bipush 8
-    //   978: aconst_null
-    //   979: invokespecial 133	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:<init>	(IF[JLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-    //   982: astore 20
-    //   984: aload 18
-    //   986: astore 19
-    //   988: aload 20
-    //   990: iload 4
-    //   992: putfield 186	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:state	I
-    //   995: aload 18
-    //   997: astore 19
-    //   999: aload 23
-    //   1001: checkcast 348	java/util/Map
-    //   1004: astore 22
-    //   1006: aload 18
-    //   1008: astore 19
-    //   1010: aload 24
-    //   1012: ldc 82
-    //   1014: invokestatic 351	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   1017: aload 18
-    //   1019: astore 19
-    //   1021: aload 22
-    //   1023: aload 24
-    //   1025: aload 20
-    //   1027: invokeinterface 354 3 0
-    //   1032: pop
-    //   1033: aload 18
-    //   1035: astore 19
-    //   1037: aload 21
-    //   1039: invokeinterface 357 1 0
-    //   1044: pop
-    //   1045: goto -696 -> 349
-    //   1048: astore_1
-    //   1049: goto +80 -> 1129
-    //   1052: aload 17
-    //   1054: astore 20
-    //   1056: aload 18
-    //   1058: astore 19
-    //   1060: aload_2
-    //   1061: invokeinterface 296 1 0
-    //   1066: iconst_5
-    //   1067: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1070: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   1073: istore 12
-    //   1075: iload 12
-    //   1077: iconst_1
-    //   1078: ixor
-    //   1079: ifeq +27 -> 1106
-    //   1082: aload 18
-    //   1084: astore 19
-    //   1086: aload_1
-    //   1087: ldc 99
-    //   1089: aconst_null
+    //   976: fconst_0
+    //   977: bipush 24
+    //   979: aconst_null
+    //   980: invokespecial 133	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:<init>	(IF[JLjava/lang/String;FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    //   983: astore 20
+    //   985: aload 18
+    //   987: astore 19
+    //   989: aload 20
+    //   991: iload 4
+    //   993: putfield 186	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:state	I
+    //   996: aload 18
+    //   998: astore 19
+    //   1000: aload 23
+    //   1002: checkcast 348	java/util/Map
+    //   1005: astore 22
+    //   1007: aload 18
+    //   1009: astore 19
+    //   1011: aload 24
+    //   1013: ldc 82
+    //   1015: invokestatic 351	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1018: aload 18
+    //   1020: astore 19
+    //   1022: aload 22
+    //   1024: aload 24
+    //   1026: aload 20
+    //   1028: invokeinterface 354 3 0
+    //   1033: pop
+    //   1034: aload 18
+    //   1036: astore 19
+    //   1038: aload 21
+    //   1040: invokeinterface 357 1 0
+    //   1045: pop
+    //   1046: goto -697 -> 349
+    //   1049: astore_1
+    //   1050: goto +80 -> 1130
+    //   1053: aload 17
+    //   1055: astore 20
+    //   1057: aload 18
+    //   1059: astore 19
+    //   1061: aload_2
+    //   1062: invokeinterface 296 1 0
+    //   1067: iconst_5
+    //   1068: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1071: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   1074: istore 12
+    //   1076: iload 12
+    //   1078: iconst_1
+    //   1079: ixor
+    //   1080: ifeq +27 -> 1107
+    //   1083: aload 18
+    //   1085: astore 19
+    //   1087: aload_1
+    //   1088: ldc 99
     //   1090: aconst_null
-    //   1091: invokevirtual 361	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   1094: pop
-    //   1095: goto +11 -> 1106
-    //   1098: astore_1
-    //   1099: aload 17
-    //   1101: astore 20
-    //   1103: goto +54 -> 1157
-    //   1106: aload 18
-    //   1108: astore 19
-    //   1110: getstatic 367	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   1113: astore_1
-    //   1114: aload 20
-    //   1116: aload 18
-    //   1118: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   1121: aload 23
-    //   1123: areturn
-    //   1124: astore_1
-    //   1125: aload 19
-    //   1127: astore 18
-    //   1129: goto +33 -> 1162
-    //   1132: astore_1
-    //   1133: aload 20
-    //   1135: astore 22
-    //   1137: goto +16 -> 1153
-    //   1140: astore_1
-    //   1141: aload 20
-    //   1143: astore 17
-    //   1145: aload 19
-    //   1147: astore 18
-    //   1149: goto +13 -> 1162
-    //   1152: astore_1
-    //   1153: aload 22
-    //   1155: astore 20
-    //   1157: aload_1
-    //   1158: astore 19
-    //   1160: aload_1
-    //   1161: athrow
-    //   1162: aload 17
-    //   1164: aload 18
-    //   1166: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   1169: aload_1
-    //   1170: athrow
-    //   1171: astore_1
-    //   1172: getstatic 378	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   1175: ldc 102
-    //   1177: aload_1
-    //   1178: checkcast 290	java/lang/Throwable
-    //   1181: invokevirtual 382	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1184: aload 23
-    //   1186: areturn
-    //   1187: goto -1098 -> 89
-    //   1190: ldc 120
-    //   1192: astore 17
-    //   1194: goto -7 -> 1187
-    //   1197: goto -921 -> 276
-    //   1200: aconst_null
-    //   1201: astore 18
-    //   1203: goto -927 -> 276
-    //   1206: astore_1
-    //   1207: goto -78 -> 1129
-    //   1210: goto -177 -> 1033
-    //   1213: astore_1
-    //   1214: goto -52 -> 1162
+    //   1091: aconst_null
+    //   1092: invokevirtual 361	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   1095: pop
+    //   1096: goto +11 -> 1107
+    //   1099: astore_1
+    //   1100: aload 17
+    //   1102: astore 20
+    //   1104: goto +54 -> 1158
+    //   1107: aload 18
+    //   1109: astore 19
+    //   1111: getstatic 367	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   1114: astore_1
+    //   1115: aload 20
+    //   1117: aload 18
+    //   1119: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   1122: aload 23
+    //   1124: areturn
+    //   1125: astore_1
+    //   1126: aload 19
+    //   1128: astore 18
+    //   1130: goto +33 -> 1163
+    //   1133: astore_1
+    //   1134: aload 20
+    //   1136: astore 22
+    //   1138: goto +16 -> 1154
+    //   1141: astore_1
+    //   1142: aload 20
+    //   1144: astore 17
+    //   1146: aload 19
+    //   1148: astore 18
+    //   1150: goto +13 -> 1163
+    //   1153: astore_1
+    //   1154: aload 22
+    //   1156: astore 20
+    //   1158: aload_1
+    //   1159: astore 19
+    //   1161: aload_1
+    //   1162: athrow
+    //   1163: aload 17
+    //   1165: aload 18
+    //   1167: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   1170: aload_1
+    //   1171: athrow
+    //   1172: astore_1
+    //   1173: getstatic 378	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   1176: ldc 102
+    //   1178: aload_1
+    //   1179: checkcast 290	java/lang/Throwable
+    //   1182: invokevirtual 382	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1185: aload 23
+    //   1187: areturn
+    //   1188: goto -1099 -> 89
+    //   1191: ldc 120
+    //   1193: astore 17
+    //   1195: goto -7 -> 1188
+    //   1198: goto -922 -> 276
+    //   1201: aconst_null
+    //   1202: astore 18
+    //   1204: goto -928 -> 276
+    //   1207: astore_1
+    //   1208: goto -78 -> 1130
+    //   1211: goto -177 -> 1034
+    //   1214: astore_1
+    //   1215: goto -52 -> 1163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1217	0	this	DropFrameTable
-    //   0	1217	1	paramSQLiteDatabase	SQLiteDatabase
-    //   0	1217	2	paramFunction0	Function0<? extends java.lang.Object>
+    //   0	1218	0	this	DropFrameTable
+    //   0	1218	1	paramSQLiteDatabase	SQLiteDatabase
+    //   0	1218	2	paramFunction0	Function0<? extends java.lang.Object>
     //   459	477	3	f	float
-    //   429	562	4	i	int
+    //   429	563	4	i	int
     //   488	446	5	j	int
     //   518	403	6	k	int
     //   548	400	7	m	int
@@ -747,101 +748,101 @@ public final class DropFrameTable
     //   608	352	9	i1	int
     //   638	328	10	i2	int
     //   668	304	11	i3	int
-    //   689	390	12	bool	boolean
+    //   689	391	12	bool	boolean
     //   765	178	13	l1	long
     //   770	73	15	l2	long
-    //   27	1166	17	localObject1	java.lang.Object
-    //   95	1107	18	localObject2	java.lang.Object
-    //   316	843	19	localObject3	java.lang.Object
-    //   312	844	20	localObject4	java.lang.Object
-    //   327	711	21	localCursor	android.database.Cursor
-    //   320	834	22	localObject5	java.lang.Object
-    //   19	1166	23	localHashMap	HashMap
-    //   399	625	24	str	String
+    //   27	1167	17	localObject1	java.lang.Object
+    //   95	1108	18	localObject2	java.lang.Object
+    //   316	844	19	localObject3	java.lang.Object
+    //   312	845	20	localObject4	java.lang.Object
+    //   327	712	21	localCursor	android.database.Cursor
+    //   320	835	22	localObject5	java.lang.Object
+    //   19	1167	23	localHashMap	HashMap
+    //   399	626	24	str	String
     // Exception table:
     //   from	to	target	type
-    //   846	853	1048	finally
-    //   865	872	1048	finally
-    //   884	917	1048	finally
-    //   781	788	1098	java/lang/Throwable
-    //   800	807	1098	java/lang/Throwable
-    //   819	826	1098	java/lang/Throwable
-    //   846	853	1098	java/lang/Throwable
-    //   865	872	1098	java/lang/Throwable
-    //   884	917	1098	java/lang/Throwable
-    //   929	984	1098	java/lang/Throwable
-    //   988	995	1098	java/lang/Throwable
-    //   999	1006	1098	java/lang/Throwable
-    //   1010	1017	1098	java/lang/Throwable
-    //   1021	1033	1098	java/lang/Throwable
-    //   1037	1045	1098	java/lang/Throwable
-    //   1086	1095	1098	java/lang/Throwable
-    //   929	984	1124	finally
-    //   988	995	1124	finally
-    //   999	1006	1124	finally
-    //   1010	1017	1124	finally
-    //   1021	1033	1124	finally
-    //   1037	1045	1124	finally
-    //   1060	1075	1124	finally
-    //   1086	1095	1124	finally
-    //   1110	1114	1124	finally
-    //   1060	1075	1132	java/lang/Throwable
-    //   1110	1114	1132	java/lang/Throwable
-    //   322	329	1140	finally
-    //   341	349	1140	finally
-    //   361	371	1140	finally
-    //   383	401	1140	finally
-    //   413	431	1140	finally
-    //   443	460	1140	finally
-    //   472	490	1140	finally
-    //   502	520	1140	finally
-    //   532	550	1140	finally
-    //   562	580	1140	finally
-    //   592	610	1140	finally
-    //   622	640	1140	finally
-    //   652	670	1140	finally
-    //   682	691	1140	finally
-    //   1160	1162	1140	finally
-    //   322	329	1152	java/lang/Throwable
-    //   341	349	1152	java/lang/Throwable
-    //   361	371	1152	java/lang/Throwable
-    //   383	401	1152	java/lang/Throwable
-    //   413	431	1152	java/lang/Throwable
-    //   443	460	1152	java/lang/Throwable
-    //   472	490	1152	java/lang/Throwable
-    //   502	520	1152	java/lang/Throwable
-    //   532	550	1152	java/lang/Throwable
-    //   562	580	1152	java/lang/Throwable
-    //   592	610	1152	java/lang/Throwable
-    //   622	640	1152	java/lang/Throwable
-    //   652	670	1152	java/lang/Throwable
-    //   682	691	1152	java/lang/Throwable
-    //   700	712	1152	java/lang/Throwable
-    //   721	734	1152	java/lang/Throwable
-    //   738	750	1152	java/lang/Throwable
-    //   754	761	1152	java/lang/Throwable
-    //   21	41	1171	java/lang/Exception
-    //   49	61	1171	java/lang/Exception
-    //   69	81	1171	java/lang/Exception
-    //   89	142	1171	java/lang/Exception
-    //   145	203	1171	java/lang/Exception
-    //   206	273	1171	java/lang/Exception
-    //   276	292	1171	java/lang/Exception
-    //   297	310	1171	java/lang/Exception
-    //   1114	1121	1171	java/lang/Exception
-    //   1162	1171	1171	java/lang/Exception
-    //   781	788	1206	finally
-    //   800	807	1206	finally
-    //   819	826	1206	finally
-    //   700	712	1213	finally
-    //   721	734	1213	finally
-    //   738	750	1213	finally
-    //   754	761	1213	finally
+    //   846	853	1049	finally
+    //   865	872	1049	finally
+    //   884	917	1049	finally
+    //   781	788	1099	java/lang/Throwable
+    //   800	807	1099	java/lang/Throwable
+    //   819	826	1099	java/lang/Throwable
+    //   846	853	1099	java/lang/Throwable
+    //   865	872	1099	java/lang/Throwable
+    //   884	917	1099	java/lang/Throwable
+    //   929	985	1099	java/lang/Throwable
+    //   989	996	1099	java/lang/Throwable
+    //   1000	1007	1099	java/lang/Throwable
+    //   1011	1018	1099	java/lang/Throwable
+    //   1022	1034	1099	java/lang/Throwable
+    //   1038	1046	1099	java/lang/Throwable
+    //   1087	1096	1099	java/lang/Throwable
+    //   929	985	1125	finally
+    //   989	996	1125	finally
+    //   1000	1007	1125	finally
+    //   1011	1018	1125	finally
+    //   1022	1034	1125	finally
+    //   1038	1046	1125	finally
+    //   1061	1076	1125	finally
+    //   1087	1096	1125	finally
+    //   1111	1115	1125	finally
+    //   1061	1076	1133	java/lang/Throwable
+    //   1111	1115	1133	java/lang/Throwable
+    //   322	329	1141	finally
+    //   341	349	1141	finally
+    //   361	371	1141	finally
+    //   383	401	1141	finally
+    //   413	431	1141	finally
+    //   443	460	1141	finally
+    //   472	490	1141	finally
+    //   502	520	1141	finally
+    //   532	550	1141	finally
+    //   562	580	1141	finally
+    //   592	610	1141	finally
+    //   622	640	1141	finally
+    //   652	670	1141	finally
+    //   682	691	1141	finally
+    //   1161	1163	1141	finally
+    //   322	329	1153	java/lang/Throwable
+    //   341	349	1153	java/lang/Throwable
+    //   361	371	1153	java/lang/Throwable
+    //   383	401	1153	java/lang/Throwable
+    //   413	431	1153	java/lang/Throwable
+    //   443	460	1153	java/lang/Throwable
+    //   472	490	1153	java/lang/Throwable
+    //   502	520	1153	java/lang/Throwable
+    //   532	550	1153	java/lang/Throwable
+    //   562	580	1153	java/lang/Throwable
+    //   592	610	1153	java/lang/Throwable
+    //   622	640	1153	java/lang/Throwable
+    //   652	670	1153	java/lang/Throwable
+    //   682	691	1153	java/lang/Throwable
+    //   700	712	1153	java/lang/Throwable
+    //   721	734	1153	java/lang/Throwable
+    //   738	750	1153	java/lang/Throwable
+    //   754	761	1153	java/lang/Throwable
+    //   21	41	1172	java/lang/Exception
+    //   49	61	1172	java/lang/Exception
+    //   69	81	1172	java/lang/Exception
+    //   89	142	1172	java/lang/Exception
+    //   145	203	1172	java/lang/Exception
+    //   206	273	1172	java/lang/Exception
+    //   276	292	1172	java/lang/Exception
+    //   297	310	1172	java/lang/Exception
+    //   1115	1122	1172	java/lang/Exception
+    //   1163	1172	1172	java/lang/Exception
+    //   781	788	1207	finally
+    //   800	807	1207	finally
+    //   819	826	1207	finally
+    //   700	712	1214	finally
+    //   721	734	1214	finally
+    //   738	750	1214	finally
+    //   754	761	1214	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.table.DropFrameTable
  * JD-Core Version:    0.7.0.1
  */

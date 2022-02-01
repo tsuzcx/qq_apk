@@ -16,16 +16,16 @@ class GdtInterstitialFragmentForJS$2
   
   public void onClick(View paramView)
   {
-    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getBaseActivity());
+    GdtInterstitialFragmentForJS.d(this.a).e = GdtInterstitialFragmentForJS.a(this.a.getBaseActivity());
     GdtAdLoader localGdtAdLoader = GdtInterstitialFragmentForJS.a(this.a);
     String str = "ad is not loaded";
     if (localGdtAdLoader == null) {
       Toast.makeText(this.a.getBaseActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    } else if (GdtInterstitialFragmentForJS.a(this.a) == null) {
+    } else if (GdtInterstitialFragmentForJS.e(this.a) == null) {
       str = "ad is loading";
-    } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
-      str = GdtInterstitialFragmentForJS.a(this.a).a();
-    } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getBaseActivity())) {
+    } else if (GdtInterstitialFragmentForJS.e(this.a).a() != 0) {
+      str = GdtInterstitialFragmentForJS.e(this.a).b();
+    } else if (GdtInterstitialFragmentForJS.f(this.a).a(this.a.getBaseActivity())) {
       str = "正在打开插屏";
     } else {
       str = "打开插屏错误";
@@ -36,7 +36,7 @@ class GdtInterstitialFragmentForJS$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.2
  * JD-Core Version:    0.7.0.1
  */

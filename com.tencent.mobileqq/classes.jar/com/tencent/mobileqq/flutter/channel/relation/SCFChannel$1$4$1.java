@@ -9,12 +9,12 @@ class SCFChannel$1$4$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterChannelRelationSCFChannel$1$4.a.success(this.jdField_a_of_type_JavaLangString);
+    this.b.b.success(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.4.1
  * JD-Core Version:    0.7.0.1
  */

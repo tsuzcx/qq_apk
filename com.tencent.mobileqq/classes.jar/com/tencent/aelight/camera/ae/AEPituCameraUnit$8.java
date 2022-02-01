@@ -19,46 +19,46 @@ class AEPituCameraUnit$8
   
   public void onFirstFrameDone()
   {
-    AELaunchRecorder.a().a("onFirstFrameDone");
-    this.a.x();
+    AELaunchRecorder.d().a("onFirstFrameDone");
+    this.a.S();
   }
   
   public void onOrientionChanged(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraManager.setActivityOrientation(paramInt);
+    this.a.d.setActivityOrientation(paramInt);
   }
   
   public void onPreviewSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraManager.setFocusOperatorMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.d.setFocusOperatorMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
     this.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onPreviewSurfaceTextureCreate(SurfaceTexture paramSurfaceTexture)
   {
     Object localObject = this.a;
-    ((AEPituCameraUnit)localObject).jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
-    paramSurfaceTexture = ((AEPituCameraUnit)localObject).jdField_a_of_type_JavaLangString;
+    ((AEPituCameraUnit)localObject).l = paramSurfaceTexture;
+    paramSurfaceTexture = ((AEPituCameraUnit)localObject).a;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onPreviewSurfaceTextureCreate---");
-    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    ((StringBuilder)localObject).append(this.a.l);
     AEQLog.b(paramSurfaceTexture, ((StringBuilder)localObject).toString());
-    this.a.l();
+    this.a.A();
   }
   
   public void onPreviewSurfaceTextureRelease()
   {
-    String str = this.a.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPreviewSurfaceTextureRelease---");
-    localStringBuilder.append(this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    localStringBuilder.append(this.a.l);
     AEQLog.b(str, localStringBuilder.toString());
-    this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.a.l = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.8
  * JD-Core Version:    0.7.0.1
  */

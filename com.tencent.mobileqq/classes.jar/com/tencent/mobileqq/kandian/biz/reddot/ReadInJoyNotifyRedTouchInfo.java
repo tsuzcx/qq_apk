@@ -2,38 +2,26 @@ package com.tencent.mobileqq.kandian.biz.reddot;
 
 public class ReadInJoyNotifyRedTouchInfo
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public int c = 0;
+  public static final String a = Long.toString(1130L);
+  public int b = 0;
+  public String c = "";
   public int d = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = Long.toString(1130L);
-  }
-  
-  public ReadInJoyNotifyRedTouchInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-  }
+  public int e = 0;
+  public int f = 0;
   
   public int a()
   {
-    if (this.jdField_a_of_type_Int != 1) {
+    if (this.b != 1) {
       return 0;
     }
-    return this.jdField_b_of_type_Int;
+    return this.d;
   }
   
   public int a(ReadInJoyNotifyRedTouchInfo paramReadInJoyNotifyRedTouchInfo)
   {
     ReadInJoyNotifyRedTouchInfo localReadInJoyNotifyRedTouchInfo1;
     ReadInJoyNotifyRedTouchInfo localReadInJoyNotifyRedTouchInfo2;
-    if (this.jdField_a_of_type_Int > paramReadInJoyNotifyRedTouchInfo.jdField_a_of_type_Int)
+    if (this.b > paramReadInJoyNotifyRedTouchInfo.b)
     {
       localReadInJoyNotifyRedTouchInfo1 = this;
       localReadInJoyNotifyRedTouchInfo2 = paramReadInJoyNotifyRedTouchInfo;
@@ -43,27 +31,27 @@ public class ReadInJoyNotifyRedTouchInfo
       localReadInJoyNotifyRedTouchInfo2 = this;
       localReadInJoyNotifyRedTouchInfo1 = paramReadInJoyNotifyRedTouchInfo;
     }
-    int i = localReadInJoyNotifyRedTouchInfo2.jdField_a_of_type_Int;
+    int i = localReadInJoyNotifyRedTouchInfo2.b;
     int m = 0;
     if (i != 0)
     {
       if (i != 1)
       {
-        if (i != 2 ? i != 3 ? (i == 4) || ((localReadInJoyNotifyRedTouchInfo1.jdField_a_of_type_Int != 4) && (!localReadInJoyNotifyRedTouchInfo2.jdField_b_of_type_JavaLangString.equals(localReadInJoyNotifyRedTouchInfo1.jdField_b_of_type_JavaLangString))) : (localReadInJoyNotifyRedTouchInfo1.jdField_a_of_type_Int != 3) && (localReadInJoyNotifyRedTouchInfo2.c != localReadInJoyNotifyRedTouchInfo1.c) : (localReadInJoyNotifyRedTouchInfo1.jdField_a_of_type_Int == 2) && (localReadInJoyNotifyRedTouchInfo2.jdField_b_of_type_JavaLangString.equals(localReadInJoyNotifyRedTouchInfo1.jdField_b_of_type_JavaLangString))) {
+        if (i != 2 ? i != 3 ? (i == 4) || ((localReadInJoyNotifyRedTouchInfo1.b != 4) && (!localReadInJoyNotifyRedTouchInfo2.c.equals(localReadInJoyNotifyRedTouchInfo1.c))) : (localReadInJoyNotifyRedTouchInfo1.b != 3) && (localReadInJoyNotifyRedTouchInfo2.e != localReadInJoyNotifyRedTouchInfo1.e) : (localReadInJoyNotifyRedTouchInfo1.b == 2) && (localReadInJoyNotifyRedTouchInfo2.c.equals(localReadInJoyNotifyRedTouchInfo1.c))) {
           break label186;
         }
         i = 1;
         break label188;
       }
-      if (localReadInJoyNotifyRedTouchInfo1.jdField_a_of_type_Int == 1) {
-        if (localReadInJoyNotifyRedTouchInfo2.jdField_b_of_type_Int == localReadInJoyNotifyRedTouchInfo1.jdField_b_of_type_Int) {
+      if (localReadInJoyNotifyRedTouchInfo1.b == 1) {
+        if (localReadInJoyNotifyRedTouchInfo2.d == localReadInJoyNotifyRedTouchInfo1.d) {
           break label186;
         }
       }
     }
     else
     {
-      if (localReadInJoyNotifyRedTouchInfo1.jdField_a_of_type_Int == 0) {
+      if (localReadInJoyNotifyRedTouchInfo1.b == 0) {
         break label186;
       }
     }
@@ -87,13 +75,13 @@ public class ReadInJoyNotifyRedTouchInfo
     return k;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 0)
     {
       if (i != 1) {}
-      while (this.jdField_b_of_type_Int > 0) {
+      while (this.d > 0) {
         return true;
       }
     }
@@ -102,7 +90,7 @@ public class ReadInJoyNotifyRedTouchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ReadInJoyNotifyRedTouchInfo
  * JD-Core Version:    0.7.0.1
  */

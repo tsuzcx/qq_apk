@@ -14,34 +14,34 @@ class MutiMemberThumbList$1$1
   
   public void run()
   {
-    if (MutiMemberThumbList.b(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0))
+    if (MutiMemberThumbList.f(this.c.this$0))
     {
       QLog.d("MutiMemberThumbList", 1, "doDisplay quit by destroyed in UI_Thread");
       return;
     }
-    View localView = this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(2131364868);
-    if (this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a > 0)
+    View localView = this.c.this$0.findViewById(2131430993);
+    if (this.c.a > 0)
     {
       localView.setVisibility(0);
       int i = 0;
-      while (i < MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length)
+      while (i < MutiMemberThumbList.a(this.c.this$0).length)
       {
-        localView = this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.findViewById(MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0)[i]);
-        ImageView localImageView = (ImageView)localView.findViewById(2131373409);
-        TextView localTextView = (TextView)localView.findViewById(2131373411);
+        localView = this.c.this$0.findViewById(MutiMemberThumbList.a(this.c.this$0)[i]);
+        ImageView localImageView = (ImageView)localView.findViewById(2131441083);
+        TextView localTextView = (TextView)localView.findViewById(2131441085);
         localTextView.setVisibility(8);
         localImageView.setImageDrawable(null);
-        if ((this.jdField_a_of_type_Boolean) && (i == MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length - 1))
+        if ((this.a) && (i == MutiMemberThumbList.a(this.c.this$0).length - 1))
         {
-          localTextView.setText(String.format("%d+", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a - MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).length + 1) }));
+          localTextView.setText(String.format("%d+", new Object[] { Integer.valueOf(this.c.a - MutiMemberThumbList.a(this.c.this$0).length + 1) }));
           localTextView.setVisibility(0);
-          ((ImageView)localView.findViewById(2131373409)).setImageDrawable(MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0));
+          ((ImageView)localView.findViewById(2131441083)).setImageDrawable(MutiMemberThumbList.g(this.c.this$0));
           localView.setVisibility(0);
           break;
         }
-        if ((i < this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.a) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
+        if ((i < this.c.a) && (i < this.b.size()))
         {
-          localImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          localImageView.setImageBitmap((Bitmap)this.b.get(i));
           localView.setVisibility(0);
         }
         else
@@ -50,14 +50,14 @@ class MutiMemberThumbList$1$1
         }
         i += 1;
       }
-      this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.setVisibility(0);
-      if (MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0) != null) {
-        MutiMemberThumbList.a(this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0).setVisibility(0);
+      this.c.this$0.setVisibility(0);
+      if (MutiMemberThumbList.h(this.c.this$0) != null) {
+        MutiMemberThumbList.h(this.c.this$0).setVisibility(0);
       }
       return;
     }
     localView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentAvUiMutiMemberThumbList$1.this$0.setVisibility(4);
+    this.c.this$0.setVisibility(4);
   }
 }
 

@@ -8,11 +8,6 @@ import com.tencent.open.component.cache.database.DbCacheData.Structure;
 final class FriendGroup$1
   implements DbCacheData.DbCreator<FriendGroup>
 {
-  public int a()
-  {
-    return 0;
-  }
-  
   public FriendGroup a(Cursor paramCursor)
   {
     Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
@@ -28,19 +23,24 @@ final class FriendGroup$1
     return localObject;
   }
   
-  public String a()
-  {
-    return null;
-  }
-  
   public DbCacheData.Structure[] a()
   {
     return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
   }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.FriendGroup.1
  * JD-Core Version:    0.7.0.1
  */

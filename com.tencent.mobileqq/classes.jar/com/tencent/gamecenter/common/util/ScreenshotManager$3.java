@@ -17,21 +17,21 @@ class ScreenshotManager$3
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("addMaskAsync mRemoveCall=");
-    ((StringBuilder)localObject).append(ScreenshotManager.a(this.this$0));
+    ((StringBuilder)localObject).append(ScreenshotManager.b(this.this$0));
     QLog.i("ScreenshotManager", 1, ((StringBuilder)localObject).toString());
-    if ((ScreenshotManager.a(this.this$0) != null) && (!ScreenshotManager.a(this.this$0))) {
+    if ((ScreenshotManager.a(this.this$0) != null) && (!ScreenshotManager.b(this.this$0))) {
       try
       {
-        if (ScreenshotManager.a(this.this$0) == null)
+        if (ScreenshotManager.c(this.this$0) == null)
         {
           ScreenshotManager.a(this.this$0, new ImageView(this.a.getContext()));
-          ScreenshotManager.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
+          ScreenshotManager.c(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
         }
-        ScreenshotManager.a(this.this$0).setImageBitmap(ScreenshotManager.a(this.this$0));
-        this.this$0.a();
+        ScreenshotManager.c(this.this$0).setImageBitmap(ScreenshotManager.a(this.this$0));
+        this.this$0.b();
         localObject = new FrameLayout.LayoutParams(-1, -1);
-        ((ViewGroup)this.a.getParent()).addView(ScreenshotManager.a(this.this$0), (ViewGroup.LayoutParams)localObject);
-        ScreenshotManager.a(this.this$0).setVisibility(0);
+        ((ViewGroup)this.a.getParent()).addView(ScreenshotManager.c(this.this$0), (ViewGroup.LayoutParams)localObject);
+        ScreenshotManager.c(this.this$0).setVisibility(0);
         return;
       }
       catch (Throwable localThrowable)
@@ -46,7 +46,7 @@ class ScreenshotManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ScreenshotManager.3
  * JD-Core Version:    0.7.0.1
  */

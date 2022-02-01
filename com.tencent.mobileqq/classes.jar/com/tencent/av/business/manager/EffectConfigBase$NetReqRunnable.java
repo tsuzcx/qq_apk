@@ -19,9 +19,9 @@ class EffectConfigBase$NetReqRunnable
   {
     try
     {
-      if ((this.this$0.a != null) && (this.a != null))
+      if ((this.this$0.c != null) && (this.a != null))
       {
-        ((IHttpEngineService)this.this$0.a.getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.a);
+        ((IHttpEngineService)this.this$0.c.getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.a);
         return;
       }
     }

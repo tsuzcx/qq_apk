@@ -14,7 +14,7 @@ class QavAvatarHelper$1
   {
     try
     {
-      QavAvatarHelper.a(this.this$0, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_ComTencentAvUiAvatarAvatarParam, this.jdField_a_of_type_MqqUtilWeakReference, this.jdField_a_of_type_Int);
+      QavAvatarHelper.a(this.this$0, this.a, this.b, this.c, this.d);
       return;
     }
     catch (Throwable localThrowable)

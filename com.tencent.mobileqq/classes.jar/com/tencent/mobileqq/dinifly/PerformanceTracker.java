@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.v4.util.ArraySet;
 import android.util.Log;
-import android.util.Pair;
+import androidx.collection.ArraySet;
+import androidx.core.util.Pair;
 import com.tencent.mobileqq.dinifly.utils.MeanCalculator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -87,7 +87,7 @@ public class PerformanceTracker
   
   public void removeFrameListener(PerformanceTracker.FrameListener paramFrameListener)
   {
-    this.frameListeners.add(paramFrameListener);
+    this.frameListeners.remove(paramFrameListener);
   }
   
   void setEnabled(boolean paramBoolean)
@@ -97,7 +97,7 @@ public class PerformanceTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.PerformanceTracker
  * JD-Core Version:    0.7.0.1
  */

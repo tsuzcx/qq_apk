@@ -9,20 +9,20 @@ import com.tencent.widget.XEditTextEx.TextMenuListener;
 public class ChatPieInputHelper
   implements ILifeCycleHelper
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private XEditTextEx.TextMenuListener jdField_a_of_type_ComTencentWidgetXEditTextEx$TextMenuListener = new ChatPieInputHelper.1(this);
   public boolean a;
+  private final BaseChatPie b;
+  private XEditTextEx.TextMenuListener c = new ChatPieInputHelper.1(this);
   
   public ChatPieInputHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   private void b(XEditTextEx paramXEditTextEx)
   {
     try
     {
-      paramXEditTextEx.b(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$TextMenuListener);
+      paramXEditTextEx.b(this.c);
       return;
     }
     catch (Throwable paramXEditTextEx) {}
@@ -31,7 +31,7 @@ public class ChatPieInputHelper
   public void a(int paramInt)
   {
     if (paramInt >= 30) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
   }
   
@@ -39,7 +39,7 @@ public class ChatPieInputHelper
   {
     try
     {
-      paramXEditTextEx.a(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$TextMenuListener);
+      paramXEditTextEx.a(this.c);
       return;
     }
     catch (Throwable paramXEditTextEx)
@@ -62,22 +62,22 @@ public class ChatPieInputHelper
   {
     if (paramInt == 4)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+      a(this.b.Y);
       return;
     }
     if (paramInt == 15)
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+      b(this.b.Y);
       return;
     }
     if (paramInt == 7) {
-      NotifyIdManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      NotifyIdManager.a(this.b.d).a(this.b.ah);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.orion.ChatPieInputHelper
  * JD-Core Version:    0.7.0.1
  */

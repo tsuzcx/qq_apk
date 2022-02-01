@@ -12,13 +12,13 @@ class VideoTextureView$4
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
     if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+      VideoTextureView.a().onVideoStart(VideoTextureView.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView.4
  * JD-Core Version:    0.7.0.1
  */

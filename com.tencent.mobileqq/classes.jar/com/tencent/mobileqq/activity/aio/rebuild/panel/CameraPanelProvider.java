@@ -26,30 +26,29 @@ import com.tencent.widget.XPanelContainer;
 public class CameraPanelProvider
   implements PanelProvider<AIOFakePanel>
 {
-  private AIOContext a;
-  protected AIOFakePanel a;
+  protected AIOFakePanel a = null;
+  private AIOContext b;
   
   public CameraPanelProvider(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAIOFakePanel = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.b = paramAIOContext;
   }
   
-  private void b()
+  private void c()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().checkSelfPermission("android.permission.CAMERA") == 0) {
+      if (this.b.b().checkSelfPermission("android.permission.CAMERA") == 0) {
         i = 1;
       } else {
         i = 0;
       }
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {
+      if ((i != 0) && (this.b.b().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {
         i = 1;
       } else {
         i = 0;
       }
-      if ((i == 0) || (!PermissionUtils.isStorePermissionEnable(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a())))
+      if ((i == 0) || (!PermissionUtils.isStorePermissionEnable(this.b.b())))
       {
         i = 0;
         break label83;
@@ -58,33 +57,33 @@ public class CameraPanelProvider
     int i = 1;
     label83:
     if (i == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().requestPermissions(new CameraPanelProvider.1(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      this.b.b().requestPermissions(new CameraPanelProvider.1(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
     } else {
-      a();
+      b();
     }
-    AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "0X800407A", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_Int);
+    AIOPanelUtiles.a(this.b.a(), "0X800407A", this.b.O().a);
   }
   
   public AIOFakePanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAIOFakePanel;
+    return this.a;
   }
   
   public AIOFakePanel a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAIOFakePanel = new AIOFakePanel(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAIOFakePanel;
+    this.a = new AIOFakePanel(this.b.b());
+    return this.a;
   }
   
-  public void a()
+  public void b()
   {
     QLog.d("CheckPermission", 1, "CheckPermission user grant");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(true);
-    ((AudioPanelAioHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(128)).f();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_Int == 9501) {}
+    this.b.q().a(true);
+    ((AudioPanelAioHelper)this.b.a(128)).k();
+    if (this.b.O().a == 9501) {}
     try
     {
-      localObject = SmartDeviceProxyMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString));
+      localObject = SmartDeviceProxyMgr.a(this.b.a(), Long.parseLong(this.b.O().b));
       if (localObject != null) {
         i = ((DeviceInfo)localObject).productId;
       } else {
@@ -99,9 +98,9 @@ public class CameraPanelProvider
       break label92;
     }
     i = 0;
-    PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), i, 0);
-    localObject = (BabyQHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
-    if (((BabyQHandler)localObject).a(0)) {
+    PlusPanelUtils.a(this.b.a(), this.b.b(), this.b.b(), this.b.O(), i, 0);
+    localObject = (BabyQHandler)this.b.a().getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
+    if (((BabyQHandler)localObject).b(0)) {
       ((BabyQHandler)localObject).a();
     }
   }
@@ -122,14 +121,14 @@ public class CameraPanelProvider
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    b();
-    paramXPanelContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-    if (((paramXPanelContainer instanceof BaseTroopAIOContext)) && (((BaseTroopAIOContext)paramXPanelContainer).k())) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString, "", "", "");
+    c();
+    paramXPanelContainer = this.b;
+    if (((paramXPanelContainer instanceof BaseTroopAIOContext)) && (((BaseTroopAIOContext)paramXPanelContainer).P())) {
+      ReportController.b(this.b.a(), "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, this.b.O().b, "", "", "");
     }
-    paramXPanelContainer = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    paramXPanelContainer = this.b;
     if ((paramXPanelContainer instanceof LimitContext)) {
-      ReportController.b(paramXPanelContainer.a(), "dc00898", "", "", "0X80096AB", "0X80096AB", ((LimitContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f(), 0, "", "", "", "");
+      ReportController.b(paramXPanelContainer.a(), "dc00898", "", "", "0X80096AB", "0X80096AB", ((LimitContext)this.b).P(), 0, "", "", "", "");
     }
   }
   
@@ -139,7 +138,7 @@ public class CameraPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.CameraPanelProvider
  * JD-Core Version:    0.7.0.1
  */

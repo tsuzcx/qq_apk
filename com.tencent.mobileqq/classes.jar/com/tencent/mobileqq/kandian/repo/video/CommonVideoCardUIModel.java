@@ -12,65 +12,65 @@ public class CommonVideoCardUIModel
   implements IVideoCardUIModel
 {
   protected AbsBaseArticleInfo a;
-  protected URL a;
+  protected URL b;
   
   public CommonVideoCardUIModel(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.a = paramAbsBaseArticleInfo;
   }
   
   protected Pair<Integer, Integer> a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return ReadInJoyDisplayUtils.g();
+      return ReadInJoyDisplayUtils.h();
     }
-    return ReadInJoyDisplayUtils.f();
+    return ReadInJoyDisplayUtils.g();
   }
   
   public int getCommentCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoCommentCount;
+    return this.a.mVideoCommentCount;
   }
   
   public String getInnerUniqueID()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID;
+    return this.a.innerUniqueID;
   }
   
   public String getShareUrl()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleContentUrl;
+    return this.a.mArticleContentUrl;
   }
   
   public String getSubscribeName()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSubscribeName;
+    return this.a.mSubscribeName;
   }
   
   public String getSubscribeUin()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSubscribeID;
+    return this.a.mSubscribeID;
   }
   
   public URL getVideoCoverURL()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoCoverUrl != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoCoverUrl;
+    if (this.a.mVideoCoverUrl != null) {
+      return this.a.mVideoCoverUrl;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSinglePicture != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSinglePicture;
+    if (this.a.mSinglePicture != null) {
+      return this.a.mSinglePicture;
     }
-    return RIJConvertString2URL.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFirstPagePicUrl);
+    return RIJConvertString2URL.b(this.a.mFirstPagePicUrl);
   }
   
   public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaNetURL == null)
+    if (this.b == null)
     {
       Pair localPair = a(paramBoolean);
-      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+      this.b = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
     }
-    return this.jdField_a_of_type_JavaNetURL;
+    return this.b;
   }
   
   public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
@@ -86,14 +86,14 @@ public class CommonVideoCardUIModel
           str1 = str2.replaceFirst("pubaccountimage:", "");
         }
       }
-      return RIJConvertString2URL.a(RIJSmartCropUtils.a(str1, paramInt1, paramInt2));
+      return RIJConvertString2URL.b(RIJSmartCropUtils.a(str1, paramInt1, paramInt2));
     }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoCoverUrl;
+    return this.a.mVideoCoverUrl;
   }
   
   public int getVideoDuration()
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
     if (localAbsBaseArticleInfo != null) {
       return localAbsBaseArticleInfo.mVideoDuration;
     }
@@ -102,22 +102,22 @@ public class CommonVideoCardUIModel
   
   public int getVideoHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoJsonHeight;
+    return this.a.mVideoJsonHeight;
   }
   
   public String getVideoVid()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoVid;
+    return this.a.mVideoVid;
   }
   
   public int getVideoWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mVideoJsonWidth;
+    return this.a.mVideoJsonWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.CommonVideoCardUIModel
  * JD-Core Version:    0.7.0.1
  */

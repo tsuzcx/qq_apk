@@ -28,14 +28,14 @@ final class TitleLayoutController$updateTitlelayout$1
       }
       str = this.a.getString("navBgColor");
       if (!TextUtils.isEmpty((CharSequence)str)) {
-        this.this$0.a().setBackgroundColor(Color.parseColor(str));
+        this.this$0.b().setBackgroundColor(Color.parseColor(str));
       }
       if (this.a.getInt("isStatusDark") == 1)
       {
-        FlymeOSStatusBarFontUtils.a(this.this$0.a(), true);
+        FlymeOSStatusBarFontUtils.a(this.this$0.c(), true);
         return;
       }
-      FlymeOSStatusBarFontUtils.a(this.this$0.a(), false);
+      FlymeOSStatusBarFontUtils.a(this.this$0.c(), false);
       return;
     }
     catch (Exception localException)
@@ -46,7 +46,7 @@ final class TitleLayoutController$updateTitlelayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController.updateTitlelayout.1
  * JD-Core Version:    0.7.0.1
  */

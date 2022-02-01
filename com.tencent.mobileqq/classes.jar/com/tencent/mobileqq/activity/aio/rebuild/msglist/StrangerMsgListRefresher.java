@@ -18,12 +18,12 @@ public class StrangerMsgListRefresher
   
   protected boolean a(MessageRecord paramMessageRecord)
   {
-    return (this.a.a().jdField_a_of_type_JavaLangString.equals(paramMessageRecord.frienduin)) && ((MsgProxyUtils.l(this.a.a().jdField_a_of_type_Int)) || (this.a.a().jdField_a_of_type_Int == paramMessageRecord.istroop) || ((UinTypeUtil.b(this.a.a().jdField_a_of_type_Int)) && (UinTypeUtil.b(paramMessageRecord.istroop))));
+    return (this.a.O().b.equals(paramMessageRecord.frienduin)) && ((MsgProxyUtils.m(this.a.O().a)) || (this.a.O().a == paramMessageRecord.istroop) || ((UinTypeUtil.b(this.a.O().a)) && (UinTypeUtil.b(paramMessageRecord.istroop))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.StrangerMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class ExpandAudioPlayer$1
   
   public void setResult(boolean paramBoolean)
   {
-    ExpandAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterAudioExpandAudioPlayer, this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result, Boolean.valueOf(paramBoolean));
+    ExpandAudioPlayer.a(this.b, this.a, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.audio.ExpandAudioPlayer.1
  * JD-Core Version:    0.7.0.1
  */

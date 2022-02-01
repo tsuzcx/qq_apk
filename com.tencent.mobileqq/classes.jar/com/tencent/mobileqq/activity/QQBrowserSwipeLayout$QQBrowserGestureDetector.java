@@ -10,11 +10,11 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 public class QQBrowserSwipeLayout$QQBrowserGestureDetector
   extends GestureDetector.SimpleOnGestureListener
 {
-  private float jdField_a_of_type_Float;
+  private float b;
   
   public QQBrowserSwipeLayout$QQBrowserGestureDetector(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    this.b = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -24,25 +24,25 @@ public class QQBrowserSwipeLayout$QQBrowserGestureDetector
       float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
       float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
       boolean bool = false;
-      if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
-        bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
+      if (QQBrowserSwipeLayout.d(this.a) != null) {
+        bool = QQBrowserSwipeLayout.a(this.a, paramMotionEvent1);
       }
-      if ((QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) && (paramFloat1 >= 200.0F))
+      if ((QQBrowserSwipeLayout.e(this.a)) && (paramFloat1 >= 200.0F))
       {
         if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool)) {
-          if ((QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity))
+          if ((QQBrowserSwipeLayout.f(this.a) instanceof Activity))
           {
-            QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
-            if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+            QQBrowserSwipeLayout.a(this.a, true);
+            if (QQBrowserSwipeLayout.g(this.a) != null)
             {
-              QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
-              QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+              QQBrowserSwipeLayout.h(this.a).flingLToR();
+              QQBrowserSwipeLayout.i(this.a);
             }
           }
-          else if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+          else if (QQBrowserSwipeLayout.j(this.a) != null)
           {
-            QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).flingLToR();
-            QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+            QQBrowserSwipeLayout.k(this.a).flingLToR();
+            QQBrowserSwipeLayout.l(this.a);
           }
         }
         return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
@@ -54,7 +54,7 @@ public class QQBrowserSwipeLayout$QQBrowserGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserSwipeLayout.QQBrowserGestureDetector
  * JD-Core Version:    0.7.0.1
  */

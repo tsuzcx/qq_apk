@@ -10,12 +10,12 @@ class Makeup3DJsModule$2$1
   
   public void run()
   {
-    QQToast.a(this.a.a, this.a.a.getString(2131690051), 0).a();
+    QQToast.makeText(this.a.d, this.a.d.getString(2131886702), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule.2.1
  * JD-Core Version:    0.7.0.1
  */

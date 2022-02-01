@@ -9,17 +9,65 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QGLoader
 {
-  public static AtomicBoolean a;
-  public static final String[] a;
+  public static final String[] a = { "libicudata_53.so", "libicuuc_53.so", "libicui18n_53.so", "libJavaScriptCore.so", "libqg.so" };
   public static AtomicBoolean b = new AtomicBoolean(false);
+  public static AtomicBoolean c = new AtomicBoolean(false);
   
-  static
+  private static File a()
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libicudata_53.so", "libicuuc_53.so", "libicui18n_53.so", "libJavaScriptCore.so", "libqg.so" };
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(OfflineEnvHelper.b("1018"));
+    ((StringBuilder)localObject).append("1018");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).isDirectory()) {
+      return null;
+    }
+    localObject = ((File)localObject).listFiles(new QGLoader.2());
+    if (localObject != null)
+    {
+      if (localObject.length == 0) {
+        return null;
+      }
+      return localObject[0];
+    }
+    return null;
   }
   
-  private static int a()
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = c.get();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" load so enter. soloaded=");
+      QLog.d("QGLoader", 2, new Object[] { localStringBuilder.toString(), Boolean.valueOf(bool2) });
+    }
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QGLoader", 2, "load offline so");
+      }
+      if (b() < 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QGLoader", 2, new Object[] { "so version low. min version is: ", Integer.valueOf(6) });
+        }
+        return false;
+      }
+      bool2 = c("1018");
+      bool1 = bool2;
+      if (bool2)
+      {
+        c.set(true);
+        bool1 = bool2;
+      }
+    }
+    return bool1;
+  }
+  
+  private static int b()
   {
     Object localObject = a();
     if (localObject == null) {
@@ -49,60 +97,6 @@ public class QGLoader
     i = 0;
     QLog.e("QGLoader", 1, new Object[] { "getQGLocalVersion version error. fileName=", localObject });
     return i;
-  }
-  
-  private static File a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(OfflineEnvHelper.a("1018"));
-    ((StringBuilder)localObject).append("1018");
-    localObject = new File(((StringBuilder)localObject).toString());
-    if (!((File)localObject).isDirectory()) {
-      return null;
-    }
-    localObject = ((File)localObject).listFiles(new QGLoader.2());
-    if (localObject != null)
-    {
-      if (localObject.length == 0) {
-        return null;
-      }
-      return localObject[0];
-    }
-    return null;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = b.get();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" load so enter. soloaded=");
-      QLog.d("QGLoader", 2, new Object[] { localStringBuilder.toString(), Boolean.valueOf(bool2) });
-    }
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QGLoader", 2, "load offline so");
-      }
-      if (a() < 6)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QGLoader", 2, new Object[] { "so version low. min version is: ", Integer.valueOf(6) });
-        }
-        return false;
-      }
-      bool2 = c("1018");
-      bool1 = bool2;
-      if (bool2)
-      {
-        b.set(true);
-        bool1 = bool2;
-      }
-    }
-    return bool1;
   }
   
   private static boolean b(String paramString)
@@ -162,35 +156,35 @@ public class QGLoader
     //   3: ifeq +5 -> 8
     //   6: iconst_0
     //   7: ireturn
-    //   8: new 85	java/lang/StringBuilder
+    //   8: new 41	java/lang/StringBuilder
     //   11: dup
-    //   12: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   12: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   15: astore_2
     //   16: aload_2
     //   17: aload_0
-    //   18: invokestatic 93	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   21: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokestatic 49	com/tencent/biz/common/offline/OfflineEnvHelper:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   21: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: pop
     //   25: aload_2
     //   26: aload_0
-    //   27: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload_2
     //   32: getstatic 197	java/io/File:separator	Ljava/lang/String;
-    //   35: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload_2
     //   40: ldc 199
-    //   42: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload_2
     //   47: getstatic 197	java/io/File:separator	Ljava/lang/String;
-    //   50: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload_2
-    //   55: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   58: astore 4
-    //   60: invokestatic 43	com/tencent/qg/loader/QGLoader:a	()Ljava/io/File;
+    //   60: invokestatic 120	com/tencent/qg/loader/QGLoader:a	()Ljava/io/File;
     //   63: astore_2
     //   64: aload_2
     //   65: ifnonnull +9 -> 74
@@ -231,7 +225,7 @@ public class QGLoader
     //   133: invokevirtual 226	java/io/BufferedReader:close	()V
     //   136: goto +13 -> 149
     //   139: astore_0
-    //   140: ldc 66
+    //   140: ldc 86
     //   142: iconst_1
     //   143: ldc 228
     //   145: aload_0
@@ -256,29 +250,29 @@ public class QGLoader
     //   174: astore_3
     //   175: aload_2
     //   176: astore_0
-    //   177: new 85	java/lang/StringBuilder
+    //   177: new 41	java/lang/StringBuilder
     //   180: dup
-    //   181: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   181: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   184: astore 6
     //   186: aload_2
     //   187: astore_0
     //   188: aload 6
     //   190: ldc 234
-    //   192: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: pop
     //   196: aload_2
     //   197: astore_0
     //   198: aload 6
     //   200: aload_3
     //   201: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   204: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: pop
     //   208: aload_2
     //   209: astore_0
-    //   210: ldc 66
+    //   210: ldc 86
     //   212: iconst_1
     //   213: aload 6
-    //   215: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   215: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   218: invokestatic 237	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   221: aload_2
     //   222: ifnull +20 -> 242
@@ -286,7 +280,7 @@ public class QGLoader
     //   226: invokevirtual 226	java/io/BufferedReader:close	()V
     //   229: goto +13 -> 242
     //   232: astore_0
-    //   233: ldc 66
+    //   233: ldc 86
     //   235: iconst_1
     //   236: ldc 228
     //   238: aload_0
@@ -309,30 +303,30 @@ public class QGLoader
     //   278: ifeq +44 -> 322
     //   281: aload_0
     //   282: invokeinterface 181 1 0
-    //   287: checkcast 12	java/lang/String
+    //   287: checkcast 13	java/lang/String
     //   290: astore_2
-    //   291: new 85	java/lang/StringBuilder
+    //   291: new 41	java/lang/StringBuilder
     //   294: dup
-    //   295: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   295: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   298: astore_3
     //   299: aload_3
     //   300: aload 4
-    //   302: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload_3
     //   307: aload_2
-    //   308: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: pop
     //   312: aload_3
-    //   313: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   316: invokestatic 159	java/lang/System:load	(Ljava/lang/String;)V
     //   319: goto -47 -> 272
     //   322: iload_1
     //   323: ireturn
     //   324: astore_0
-    //   325: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   325: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   328: ifeq +25 -> 353
-    //   331: ldc 66
+    //   331: ldc 86
     //   333: iconst_1
     //   334: iconst_2
     //   335: anewarray 4	java/lang/Object
@@ -345,7 +339,7 @@ public class QGLoader
     //   345: aload_0
     //   346: invokevirtual 164	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
     //   349: aastore
-    //   350: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   350: invokestatic 143	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   353: iconst_0
     //   354: ireturn
     //   355: aload_0
@@ -354,7 +348,7 @@ public class QGLoader
     //   360: invokevirtual 226	java/io/BufferedReader:close	()V
     //   363: goto +13 -> 376
     //   366: astore_0
-    //   367: ldc 66
+    //   367: ldc 86
     //   369: iconst_1
     //   370: ldc 228
     //   372: aload_0
@@ -398,7 +392,7 @@ public class QGLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.loader.QGLoader
  * JD-Core Version:    0.7.0.1
  */

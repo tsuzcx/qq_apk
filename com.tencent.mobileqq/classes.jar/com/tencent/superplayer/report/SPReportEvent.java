@@ -24,6 +24,9 @@ public class SPReportEvent
   public String audioCodecJson;
   public boolean audioCodecReused;
   public long audioTotalCodecDuration;
+  public int avgHttpSpeed;
+  public int avgP2PSpeed;
+  public int avgPcdnSpeed;
   public float bitrate;
   public String codecErrorCodeList;
   public String codecErrorMsgList;
@@ -45,10 +48,23 @@ public class SPReportEvent
   public int height;
   public int httpDownloadCompleteCnt;
   public int httpDownloadFailCnt;
+  public long httpDownloadSize;
+  public long httpRepeatedSize;
   public boolean isDownloadByQuic;
   public boolean isDownloadByQuicPlaintext;
   public boolean isEnableQuicConnectionMigration;
   public boolean isEnableQuicPlaintext;
+  public long p2pDownloadSize;
+  public long p2pRepeatedSize;
+  public int pcdnDownloadFailCount;
+  public long pcdnDownloadSize;
+  public int pcdnDownloadSuccessCount;
+  public int pcdnErrorCount;
+  public int pcdnErrorSize;
+  public long pcdnRepeatedSize;
+  public int pcdnRequestCount;
+  public long pcdnRequestSize;
+  public String pcdnStopReason;
   public int platform = 1;
   public long playDuration;
   public int prePlay = 0;
@@ -78,6 +94,7 @@ public class SPReportEvent
   public boolean success = true;
   public int totalBufferCount;
   public long totalBufferDuration;
+  public long totalDownloadedSize;
   public String url;
   public String vid;
   public String videoCodec;
@@ -102,6 +119,7 @@ public class SPReportEvent
       localObject = SuperPlayerSDKMgr.getContext().getPackageName();
     }
     localLinkedHashMap.put("param_packagename", localObject);
+    localLinkedHashMap.put("param_uin", SuperPlayerSDKMgr.getUid());
     localLinkedHashMap.put("param_videoSource", String.valueOf(this.videoSource));
     localLinkedHashMap.put("param_vid", this.vid);
     localLinkedHashMap.put("param_url", this.url);
@@ -171,6 +189,23 @@ public class SPReportEvent
     localLinkedHashMap.put("param_seekPercent", String.valueOf(this.seekPercent));
     localLinkedHashMap.put("param_seekStartPercent", String.valueOf(this.seekStartPercent));
     localLinkedHashMap.put("param_hdrSupport", String.valueOf(this.hdrSupport));
+    localLinkedHashMap.put("param_totalDownloadedSize", String.valueOf(this.totalDownloadedSize));
+    localLinkedHashMap.put("param_httpDownloadSize", String.valueOf(this.httpDownloadSize));
+    localLinkedHashMap.put("param_httpRepeatedSize", String.valueOf(this.httpRepeatedSize));
+    localLinkedHashMap.put("param_pcdnDownloadSize", String.valueOf(this.pcdnDownloadSize));
+    localLinkedHashMap.put("param_pcdnRepeatedSize", String.valueOf(this.pcdnRepeatedSize));
+    localLinkedHashMap.put("param_p2pDownloadSize", String.valueOf(this.p2pDownloadSize));
+    localLinkedHashMap.put("param_p2pRepeatedSize", String.valueOf(this.p2pRepeatedSize));
+    localLinkedHashMap.put("param_pcdnRequestSize", String.valueOf(this.pcdnRequestSize));
+    localLinkedHashMap.put("param_pcdnRequestCount", String.valueOf(this.pcdnRequestCount));
+    localLinkedHashMap.put("param_pcdnDownloadFailCount", String.valueOf(this.pcdnDownloadFailCount));
+    localLinkedHashMap.put("param_pcdnDownloadSuccessCount", String.valueOf(this.pcdnDownloadSuccessCount));
+    localLinkedHashMap.put("param_avgHttpSpeed", String.valueOf(this.avgHttpSpeed));
+    localLinkedHashMap.put("param_avgPcdnSpeed", String.valueOf(this.avgPcdnSpeed));
+    localLinkedHashMap.put("param_avgP2PSpeed", String.valueOf(this.avgP2PSpeed));
+    localLinkedHashMap.put("param_pcdnErrorCount", String.valueOf(this.pcdnErrorCount));
+    localLinkedHashMap.put("param_pcdnErrorSize", String.valueOf(this.pcdnErrorSize));
+    localLinkedHashMap.put("param_pcdnStopReason", this.pcdnStopReason);
     Object localObject = this.extReportData.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -187,7 +222,7 @@ public class SPReportEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.report.SPReportEvent
  * JD-Core Version:    0.7.0.1
  */

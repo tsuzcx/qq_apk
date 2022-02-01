@@ -12,24 +12,24 @@ public class WSGridOnlyCoverItemView
     super(paramContext, paramView, paramWSRecommendAdapter);
   }
   
-  protected int a()
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected boolean f()
+  {
+    return false;
+  }
+  
+  protected int g()
   {
     return 0;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected boolean b()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridOnlyCoverItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,11 +23,11 @@ public final class RIJHorizontalProgress
   implements IProgressView
 {
   @Nullable
-  private View jdField_a_of_type_AndroidViewView;
+  private View a;
   @Nullable
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private ProgressBar b;
   @Nullable
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView c;
   
   public RIJHorizontalProgress(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -41,20 +41,38 @@ public final class RIJHorizontalProgress
     LayoutInflater localLayoutInflater = (LayoutInflater)paramContext;
     paramContext = paramAttributeSet;
     if (localLayoutInflater != null) {
-      paramContext = localLayoutInflater.inflate(2131560069, (ViewGroup)this);
+      paramContext = localLayoutInflater.inflate(2131626116, (ViewGroup)this);
     }
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidViewView;
+    this.a = paramContext;
+    paramContext = this.a;
     if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131372393));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379821));
+      this.b = ((ProgressBar)paramContext.findViewById(2131439913));
+      this.c = ((TextView)paramContext.findViewById(2131448661));
     }
+  }
+  
+  @Nullable
+  public final ProgressBar getProgressView()
+  {
+    return this.b;
+  }
+  
+  @Nullable
+  public final TextView getTextView()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public final View getViewRoot()
+  {
+    return this.a;
   }
   
   public void setProgress(int paramInt)
   {
-    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    ProgressBar localProgressBar = this.b;
     if (localProgressBar != null) {
       localProgressBar.setProgress(paramInt);
     }
@@ -65,11 +83,11 @@ public final class RIJHorizontalProgress
     if (!(paramIDownloadStyle instanceof HorizontalProgressStyle)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setTextColor(Color.parseColor(((HorizontalProgressStyle)paramIDownloadStyle).getProgressTextColor()));
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setTextSize(((HorizontalProgressStyle)paramIDownloadStyle).getProgressTextSize());
     }
@@ -79,7 +97,7 @@ public final class RIJHorizontalProgress
       localObject = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
       paramIDownloadStyle = ((Context)localObject).getResources().getDrawable(paramIDownloadStyle.getProgressDrawable());
-      localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+      localObject = this.b;
       if (localObject != null) {
         ((ProgressBar)localObject).setProgressDrawable(paramIDownloadStyle);
       }
@@ -88,7 +106,7 @@ public final class RIJHorizontalProgress
   
   public void setProgressText(@Nullable String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null) {
       localTextView.setText((CharSequence)paramString);
     }
@@ -96,22 +114,22 @@ public final class RIJHorizontalProgress
   
   public final void setProgressView(@Nullable ProgressBar paramProgressBar)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = paramProgressBar;
+    this.b = paramProgressBar;
   }
   
   public final void setTextView(@Nullable TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
   
   public final void setViewRoot(@Nullable View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJHorizontalProgress
  * JD-Core Version:    0.7.0.1
  */

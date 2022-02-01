@@ -34,25 +34,25 @@ import java.util.ArrayList;
 public class BaseGuessStarStageView
   extends BaseGuessClickStageView
 {
-  int jdField_a_of_type_Int = 0;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  IGameStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
-  IStageRecordPresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStageRecordPresenter;
-  AVGameText jdField_a_of_type_ComTencentAvgameUiAVGameText;
-  public Runnable a;
-  ArrayList<Pair<Integer, String>> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean = false;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  AVGameText jdField_b_of_type_ComTencentAvgameUiAVGameText;
-  public Runnable b;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  public Runnable c;
-  TextView d;
+  IGameStagePresenter c;
+  IStageRecordPresenter d;
+  TextView e;
+  TextView f;
+  LinearLayout g;
+  ImageView h;
+  View i;
+  AVGameText j;
+  AVGameText k;
+  View l;
+  TextView m;
+  View n;
+  TextView o;
+  boolean p = false;
+  ArrayList<Pair<Integer, String>> q;
+  int r = 0;
+  public Runnable s = new BaseGuessStarStageView.1(this);
+  public Runnable t = new BaseGuessStarStageView.2(this);
+  public Runnable u = new BaseGuessStarStageView.3(this);
   
   public BaseGuessStarStageView(Context paramContext)
   {
@@ -67,20 +67,7 @@ public class BaseGuessStarStageView
   public BaseGuessStarStageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new BaseGuessStarStageView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new BaseGuessStarStageView.2(this);
-    this.jdField_c_of_type_JavaLangRunnable = new BaseGuessStarStageView.3(this);
-    b();
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public IGameStagePresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+    c();
   }
   
   public void a(ITopic paramITopic)
@@ -96,29 +83,29 @@ public class BaseGuessStarStageView
       return;
     }
     Object localObject1 = (TopicOperGuessVideo)paramITopic;
-    Object localObject2 = ((TopicOperGuessVideo)localObject1).a();
+    Object localObject2 = ((TopicOperGuessVideo)localObject1).g();
     if ((localObject2[0] != null) && (localObject2[0].length() != 0) && (localObject2[1] != null) && (localObject2[1].length() != 0) && (localObject2[2] != null) && (localObject2[2].length() != 0))
     {
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFFFFF", localObject2[2]);
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setText(localObject2[0]);
-      this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFC000", "#FFFFFF");
-      this.jdField_b_of_type_ComTencentAvgameUiAVGameText.setText(localObject2[1]);
-      ThreadManager.getUIHandlerV2().post(this.jdField_b_of_type_JavaLangRunnable);
+      this.j.setAttribute("#FFFFFF", localObject2[2]);
+      this.j.setText(localObject2[0]);
+      this.k.setAttribute("#FFC000", "#FFFFFF");
+      this.k.setText(localObject2[1]);
+      ThreadManager.getUIHandlerV2().post(this.t);
     }
     else
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().post(this.jdField_c_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.u);
+      ThreadManager.getUIHandlerV2().post(this.u);
     }
-    this.jdField_a_of_type_JavaUtilArrayList = ((TopicOperGuessVideo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-    localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    this.q = ((TopicOperGuessVideo)localObject1).k;
+    localObject2 = this.q;
     if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
     {
-      this.jdField_a_of_type_Int = 0;
-      ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
+      this.r = 0;
+      ThreadManager.getUIHandlerV2().postDelayed(this.s, ((Integer)((Pair)this.q.get(this.r)).first).intValue() * 1000);
     }
     b(paramITopic);
-    paramITopic = ((TopicOperGuessVideo)localObject1).c;
+    paramITopic = ((TopicOperGuessVideo)localObject1).r;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -127,7 +114,7 @@ public class BaseGuessStarStageView
       QLog.i("BaseGuessStarStageView", 2, ((StringBuilder)localObject1).toString());
     }
     if (!TextUtils.isEmpty(paramITopic)) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a().a().a(paramITopic);
+      this.c.a().a().b(paramITopic);
     }
   }
   
@@ -135,10 +122,10 @@ public class BaseGuessStarStageView
   {
     if (GameRoomViewLayoutParamsDef.w <= 0)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.i.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.i.setVisibility(8);
   }
   
   public void a(String paramString)
@@ -150,14 +137,14 @@ public class BaseGuessStarStageView
       localStringBuilder.append(paramString);
       QLog.i("BaseGuessStarStageView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.e.setText(paramString);
     if ((paramString != null) && (paramString.length() > 5)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.d());
+      this.e.setTextSize(0, UiUtils.d());
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.c());
+      this.e.setTextSize(0, UiUtils.c());
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new BaseGuessStarStageView.4(this, paramString));
+    this.e.setText(paramString);
+    this.e.getViewTreeObserver().addOnGlobalLayoutListener(new BaseGuessStarStageView.4(this, paramString));
   }
   
   public void a(boolean paramBoolean)
@@ -169,13 +156,13 @@ public class BaseGuessStarStageView
       localStringBuilder.append(paramBoolean);
       QLog.d("BaseGuessStarStageView", 2, localStringBuilder.toString());
     }
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    setVisibility(i);
+    setVisibility(i1);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -191,62 +178,72 @@ public class BaseGuessStarStageView
     }
     if (!paramBoolean2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.h.setVisibility(4);
+      this.g.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.h.setVisibility(0);
+      this.g.setVisibility(8);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageRecordPresenter;
+    Object localObject = this.d;
     if (localObject != null) {
-      ((IStageRecordPresenter)localObject).a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      ((IStageRecordPresenter)localObject).a(this.g);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378821));
-    this.d = ((TextView)findViewById(2131378859));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131378837);
-    ((RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams()).topMargin = GameRoomViewLayoutParamsDef.x;
+    return this.p;
   }
   
   public void b(IStagePresenter paramIStagePresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(paramIStagePresenter);
+    this.c.a(paramIStagePresenter);
     a(paramIStagePresenter);
+  }
+  
+  protected void c()
+  {
+    this.m = ((TextView)findViewById(2131447504));
+    this.o = ((TextView)findViewById(2131447559));
+    this.n = findViewById(2131447534);
+    ((RelativeLayout.LayoutParams)this.n.getLayoutParams()).topMargin = GameRoomViewLayoutParamsDef.x;
+  }
+  
+  public IGameStagePresenter getPresenter()
+  {
+    return this.c;
+  }
+  
+  public ImageView getTopicClockView()
+  {
+    return this.h;
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
-    this.d.setTextSize(paramFontStyleConfig.jdField_a_of_type_Int);
-    this.d.setTextColor(Color.parseColor(paramFontStyleConfig.jdField_a_of_type_JavaLangString));
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    this.o.setTextSize(paramFontStyleConfig.b);
+    this.o.setTextColor(Color.parseColor(paramFontStyleConfig.a));
+    ImageView localImageView = this.h;
     if ((localImageView instanceof CountDownClockNumLottieView)) {
-      ((CountDownClockNumLottieView)localImageView).setParams(Color.parseColor(paramFontStyleConfig.jdField_b_of_type_JavaLangString), ViewUtils.a(paramFontStyleConfig.jdField_b_of_type_Int));
+      ((CountDownClockNumLottieView)localImageView).setParams(Color.parseColor(paramFontStyleConfig.c), ViewUtils.dip2px(paramFontStyleConfig.d));
     }
   }
   
   public void setSpecialMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public void setStageRecordPresenter(IStageRecordPresenter paramIStageRecordPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageRecordPresenter = paramIStageRecordPresenter;
+    this.d = paramIStageRecordPresenter;
   }
   
   public void setTitleCenter(String paramString)
   {
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.m;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -254,7 +251,7 @@ public class BaseGuessStarStageView
   
   public void setTitleRight(String paramString)
   {
-    TextView localTextView = this.d;
+    TextView localTextView = this.o;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }

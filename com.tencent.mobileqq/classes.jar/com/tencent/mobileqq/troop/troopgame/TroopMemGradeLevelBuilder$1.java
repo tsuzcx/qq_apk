@@ -8,6 +8,7 @@ import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseC
 import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameChatItemLayoutProcessor;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.troop.troopgame.api.ITroopGameCardService;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -32,23 +33,26 @@ class TroopMemGradeLevelBuilder$1
         }
         return;
       }
-      Object localObject = (TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel)TroopMemGradeLevelBuilder.a(this.a).getTag(2131364558);
-      paramMessage = (Message)localObject;
-      if (localObject == null)
+      TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel localTmiCallbackForMemberGradeLevel2 = (TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel)TroopMemGradeLevelBuilder.a(this.a).getTag(2131430617);
+      TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel localTmiCallbackForMemberGradeLevel1 = localTmiCallbackForMemberGradeLevel2;
+      if (localTmiCallbackForMemberGradeLevel2 == null)
       {
-        paramMessage = new TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel(this.a, null);
-        TroopMemGradeLevelBuilder.a(this.a).setTag(2131364558, paramMessage);
+        localTmiCallbackForMemberGradeLevel1 = new TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel(this.a, null);
+        TroopMemGradeLevelBuilder.a(this.a).setTag(2131430617, localTmiCallbackForMemberGradeLevel1);
       }
-      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = TroopMemGradeLevelBuilder.a(this.a);
-      paramMessage.jdField_a_of_type_JavaLangString = TroopMemGradeLevelBuilder.a(this.a).senderuin;
-      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject == null) {
+      int i = VipUtils.a(TroopMemGradeLevelBuilder.b(this.a).getExtInfoFromExtStr("game_card_id"), 0);
+      localTmiCallbackForMemberGradeLevel1.a = TroopMemGradeLevelBuilder.a(this.a);
+      localTmiCallbackForMemberGradeLevel1.b = TroopMemGradeLevelBuilder.b(this.a).senderuin;
+      localTmiCallbackForMemberGradeLevel1.c = i;
+      localTmiCallbackForMemberGradeLevel1.d = paramMessage.arg2;
+      paramMessage = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (paramMessage == null) {
         return;
       }
-      localObject = (ITroopGameCardService)((AppRuntime)localObject).getRuntimeService(ITroopGameCardService.class, "");
-      if (localObject != null)
+      paramMessage = (ITroopGameCardService)paramMessage.getRuntimeService(ITroopGameCardService.class, "");
+      if (paramMessage != null)
       {
-        ((ITroopGameCardService)localObject).getMemberGradeLevelInfoAsync(TroopMemGradeLevelBuilder.a(this.a).senderuin, paramMessage);
+        paramMessage.getMemberGradeLevelInfoAsync(TroopMemGradeLevelBuilder.b(this.a).senderuin, localTmiCallbackForMemberGradeLevel1);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -59,7 +63,7 @@ class TroopMemGradeLevelBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopMemGradeLevelBuilder.1
  * JD-Core Version:    0.7.0.1
  */

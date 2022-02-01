@@ -140,8 +140,8 @@ public class EmoticonPanelMallHelper
     Object localObject2;
     if (i == 8)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704193);
-      paramView = (ImageView)paramView.findViewById(2131376328);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902115);
+      paramView = (ImageView)paramView.findViewById(2131444541);
       if (paramView != null)
       {
         if (paramView.getVisibility() == 0) {
@@ -176,7 +176,7 @@ public class EmoticonPanelMallHelper
     }
     else if (paramEmotionPanelInfo.type == 9)
     {
-      paramEmotionPanelInfo = HardCodeUtil.a(2131704182);
+      paramEmotionPanelInfo = HardCodeUtil.a(2131902104);
       localObject1 = "0X8005797";
       localObject3 = "0X800AE0D";
       localObject2 = "";
@@ -188,7 +188,7 @@ public class EmoticonPanelMallHelper
     {
       if (paramEmotionPanelInfo.type == 4)
       {
-        paramEmotionPanelInfo = HardCodeUtil.a(2131704155);
+        paramEmotionPanelInfo = HardCodeUtil.a(2131902077);
         ReportController.b(paramQQEmoticonMainPanelApp.getQQAppInterface(), "dc00898", "", "", "0x800a56e", "0x800a56e", 0, 0, "", "", "", "");
         ((EmoticonPanelFavHelper)((EmoticonPanelController)this.mPanelController).getHelper(2)).doSyncFavEmotion();
         paramView = "0X800AE08";
@@ -206,7 +206,7 @@ public class EmoticonPanelMallHelper
         break label741;
         if (paramEmotionPanelInfo.type == 7)
         {
-          paramEmotionPanelInfo = HardCodeUtil.a(2131704201);
+          paramEmotionPanelInfo = HardCodeUtil.a(2131902123);
           paramView = "0X800AE07";
           localObject1 = "0X800579A";
           break label321;
@@ -224,15 +224,15 @@ public class EmoticonPanelMallHelper
             }
             localObject1 = Integer.toString(((EmoticonPanelController)this.mPanelController).getEmoticonTab((String)localObject2));
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131704162));
+            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131902084));
             ((StringBuilder)localObject3).append(paramEmotionPanelInfo.name);
-            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131704179));
+            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131902101));
             localObject3 = ((StringBuilder)localObject3).toString();
             if (paramEmotionPanelInfo.status != 2)
             {
               paramEmotionPanelInfo = new StringBuilder();
               paramEmotionPanelInfo.append((String)localObject3);
-              paramEmotionPanelInfo.append(HardCodeUtil.a(2131704204));
+              paramEmotionPanelInfo.append(HardCodeUtil.a(2131902125));
               localObject3 = paramEmotionPanelInfo.toString();
               paramEmotionPanelInfo = paramView;
               paramView = (View)localObject3;
@@ -259,8 +259,8 @@ public class EmoticonPanelMallHelper
         }
         if (paramEmotionPanelInfo.type == 11)
         {
-          paramEmotionPanelInfo = HardCodeUtil.a(2131704202);
-          paramView = (ImageView)paramView.findViewById(2131376328);
+          paramEmotionPanelInfo = HardCodeUtil.a(2131902124);
+          paramView = (ImageView)paramView.findViewById(2131444541);
           if (paramView != null)
           {
             paramView.setVisibility(8);
@@ -545,7 +545,7 @@ public class EmoticonPanelMallHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import mqq.app.MSFServlet;
 public class AVGameService
   extends MobileQQServiceBase
 {
-  private AVGameProtocolCoder jdField_a_of_type_ComTencentAvgameProtocolAVGameProtocolCoder;
-  private BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
+  private BaseAVGameAppInterface a;
+  private AVGameProtocolCoder b;
   
   AVGameService(BaseAVGameAppInterface paramBaseAVGameAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
+    this.a = paramBaseAVGameAppInterface;
     seq = Math.abs(new Random().nextInt());
   }
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
+    return this.a;
   }
   
   protected Map<String, String[]> getCompatibleCmd2HandlerMap()
@@ -43,8 +43,8 @@ public class AVGameService
   {
     try
     {
-      this.jdField_a_of_type_ComTencentAvgameProtocolAVGameProtocolCoder = new AVGameProtocolCoder();
-      super.addCoder(this.jdField_a_of_type_ComTencentAvgameProtocolAVGameProtocolCoder);
+      this.b = new AVGameProtocolCoder();
+      super.addCoder(this.b);
       super.setCodersInit();
       return;
     }

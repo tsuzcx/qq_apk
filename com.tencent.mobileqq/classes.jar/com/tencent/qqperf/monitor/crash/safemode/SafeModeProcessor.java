@@ -24,7 +24,7 @@ public class SafeModeProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed: invoked.  content: ");
       localStringBuilder.append(paramArrayOfQConfItem);
@@ -76,7 +76,7 @@ public class SafeModeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.safemode.SafeModeProcessor
  * JD-Core Version:    0.7.0.1
  */

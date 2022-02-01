@@ -10,7 +10,7 @@ public class BizTroopUtil
 {
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return a(paramResources, paramInt, paramResources.getDrawable(2130850040));
+    return a(paramResources, paramInt, paramResources.getDrawable(2130851807));
   }
   
   public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable)
@@ -27,7 +27,7 @@ public class BizTroopUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.BizTroopUtil
  * JD-Core Version:    0.7.0.1
  */

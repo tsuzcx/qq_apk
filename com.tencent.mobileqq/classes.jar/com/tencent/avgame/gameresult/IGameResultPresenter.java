@@ -4,19 +4,19 @@ public abstract interface IGameResultPresenter
 {
   public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  public abstract boolean a();
-  
   public abstract void b();
   
   public abstract void c();
   
   public abstract void d();
   
-  public abstract void e();
-  
-  public abstract void f();
+  public abstract boolean f();
   
   public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

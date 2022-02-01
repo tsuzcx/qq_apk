@@ -11,15 +11,15 @@ class MaterialContentAdapter$1
   
   public void onClick(View paramView)
   {
-    if (MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter) != null) {
-      MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+    if (MaterialContentAdapter.a(this.c) != null) {
+      MaterialContentAdapter.a(this.c).b(this.a, this.b);
     }
-    MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+    MaterialContentAdapter.a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.1
  * JD-Core Version:    0.7.0.1
  */

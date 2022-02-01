@@ -31,11 +31,11 @@ public class BannerVideoInfoWidget3
   extends AbsVideoInfoWidget
   implements View.OnClickListener
 {
-  public static SparseArray<Pools.Pool<BannerVideoInfoWidget3.BannerVideoInfoController>> a;
-  private BannerVideoInfoWidget3.BannerActivityLifeCycle a;
-  public BannerVideoInfoWidget3.BannerVideoInfoController a;
-  public BannerVideoInfoWidget3.BannerViewHolder a;
-  private int b;
+  public static SparseArray<Pools.Pool<BannerVideoInfoWidget3.BannerVideoInfoController>> s;
+  public BannerVideoInfoWidget3.BannerVideoInfoController t;
+  public BannerVideoInfoWidget3.BannerViewHolder u;
+  private int v;
+  private BannerVideoInfoWidget3.BannerActivityLifeCycle w;
   
   public BannerVideoInfoWidget3(ViewGroup paramViewGroup)
   {
@@ -47,16 +47,16 @@ public class BannerVideoInfoWidget3
     VideoLinkInfo localVideoLinkInfo = paramStoryVideoItem.getOALinkInfo();
     int k = 0;
     int i;
-    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.jdField_a_of_type_Int > 0))
+    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.a > 0))
     {
-      i = paramStoryVideoItem.getOALinkInfo().jdField_a_of_type_Int;
+      i = paramStoryVideoItem.getOALinkInfo().a;
       paramStoryVideoItem = null;
     }
     else
     {
       paramStoryVideoItem = paramStoryVideoItem.getVideoLinkInfo();
       if (paramStoryVideoItem != null) {
-        i = paramStoryVideoItem.jdField_a_of_type_Int;
+        i = paramStoryVideoItem.a;
       } else {
         i = 0;
       }
@@ -70,10 +70,10 @@ public class BannerVideoInfoWidget3
           return j;
         }
         j = k;
-        if (paramStoryVideoItem.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo == null) {
+        if (paramStoryVideoItem.h == null) {
           return j;
         }
-        if (paramStoryVideoItem.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo.a()) {
+        if (paramStoryVideoItem.h.a()) {
           return 0;
         }
       }
@@ -83,44 +83,6 @@ public class BannerVideoInfoWidget3
     }
     int j = i;
     return j;
-  }
-  
-  private BannerVideoInfoWidget3.BannerVideoInfoController a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerVideoInfoController;
-    if ((localObject1 != null) && (this.jdField_b_of_type_Int == paramInt)) {
-      return localObject1;
-    }
-    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
-      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    }
-    Object localObject2 = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new Pools.SimplePool(5);
-      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
-    }
-    localObject2 = (BannerVideoInfoWidget3.BannerVideoInfoController)((Pools.Pool)localObject1).acquire();
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = b(paramInt);
-    }
-    if (localObject1 != null) {
-      ((BannerVideoInfoWidget3.BannerVideoInfoController)localObject1).b = true;
-    }
-    localObject2 = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_b_of_type_Int);
-    if (localObject2 != null)
-    {
-      BannerVideoInfoWidget3.BannerVideoInfoController localBannerVideoInfoController = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerVideoInfoController;
-      if (localBannerVideoInfoController != null)
-      {
-        ((Pools.Pool)localObject2).release(localBannerVideoInfoController);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerVideoInfoController.b = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerVideoInfoController = ((BannerVideoInfoWidget3.BannerVideoInfoController)localObject1);
-    return localObject1;
   }
   
   public static void a(String paramString, @NonNull ImageView paramImageView, Drawable paramDrawable, int paramInt1, int paramInt2)
@@ -169,6 +131,44 @@ public class BannerVideoInfoWidget3
   
   private BannerVideoInfoWidget3.BannerVideoInfoController b(int paramInt)
   {
+    Object localObject1 = this.t;
+    if ((localObject1 != null) && (this.v == paramInt)) {
+      return localObject1;
+    }
+    if (s == null) {
+      s = new SparseArray();
+    }
+    Object localObject2 = (Pools.Pool)s.get(paramInt);
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new Pools.SimplePool(5);
+      s.put(paramInt, localObject1);
+    }
+    localObject2 = (BannerVideoInfoWidget3.BannerVideoInfoController)((Pools.Pool)localObject1).acquire();
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = c(paramInt);
+    }
+    if (localObject1 != null) {
+      ((BannerVideoInfoWidget3.BannerVideoInfoController)localObject1).e = true;
+    }
+    localObject2 = (Pools.Pool)s.get(this.v);
+    if (localObject2 != null)
+    {
+      BannerVideoInfoWidget3.BannerVideoInfoController localBannerVideoInfoController = this.t;
+      if (localBannerVideoInfoController != null)
+      {
+        ((Pools.Pool)localObject2).release(localBannerVideoInfoController);
+        this.t.e = false;
+      }
+    }
+    this.t = ((BannerVideoInfoWidget3.BannerVideoInfoController)localObject1);
+    return localObject1;
+  }
+  
+  private BannerVideoInfoWidget3.BannerVideoInfoController c(int paramInt)
+  {
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -195,47 +195,27 @@ public class BannerVideoInfoWidget3
     return new LinkVideoInfoController();
   }
   
-  public String a()
-  {
-    return "BannerVideoInfoWidget";
-  }
-  
   protected void a(View paramView)
   {
-    if (jdField_a_of_type_AndroidUtilSparseArray == null) {
-      jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    }
-  }
-  
-  protected void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    SLog.a(this.jdField_b_of_type_JavaLangString, "BannerVideoInfoWidget3 doOnBindUIWhileVideoInfoReady, dataVid:%s, videoItemVid:%s", paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString, paramStoryVideoItem.mVid);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerViewHolder == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerViewHolder = new BannerVideoInfoWidget3.BannerViewHolder(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    int i = a(paramStoryVideoItem);
-    paramStoryVideoItem = a(i);
-    if (paramStoryVideoItem != null) {
-      paramStoryVideoItem.a(this, i, paramStoryPlayerVideoData);
+    if (s == null) {
+      s = new SparseArray();
     }
   }
   
   protected void a(Map<Subscriber, String> paramMap)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerActivityLifeCycle = new BannerVideoInfoWidget3.BannerActivityLifeCycle(this);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerActivityLifeCycle);
+    this.w = new BannerVideoInfoWidget3.BannerActivityLifeCycle(this);
+    a(this.w);
   }
   
   protected boolean a(StoryPlayerVideoData paramStoryPlayerVideoData, StoryVideoItem paramStoryVideoItem)
   {
-    boolean bool3 = a().mUIStyle.hideBannerInfo;
+    boolean bool3 = i().mUIStyle.hideBannerInfo;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3)
     {
-      if ((paramStoryPlayerVideoData.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo != null) && (paramStoryPlayerVideoData.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 13)) {
+      if ((paramStoryPlayerVideoData.a != null) && (paramStoryPlayerVideoData.a.b == 13)) {
         return false;
       }
       bool1 = bool2;
@@ -246,47 +226,67 @@ public class BannerVideoInfoWidget3
     return bool1;
   }
   
-  protected int b()
+  protected void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    return 2131561810;
+    SLog.a(this.i, "BannerVideoInfoWidget3 doOnBindUIWhileVideoInfoReady, dataVid:%s, videoItemVid:%s", paramStoryPlayerVideoData.b, paramStoryVideoItem.mVid);
+    if (this.u == null)
+    {
+      this.u = new BannerVideoInfoWidget3.BannerViewHolder(this.b);
+      this.b.setOnClickListener(this);
+    }
+    int i = a(paramStoryVideoItem);
+    paramStoryVideoItem = b(i);
+    if (paramStoryVideoItem != null) {
+      paramStoryVideoItem.a(this, i, paramStoryPlayerVideoData);
+    }
   }
   
-  protected void f() {}
-  
-  public void g()
+  public void onClick(View paramView)
   {
-    Object localObject = jdField_a_of_type_AndroidUtilSparseArray;
+    BannerVideoInfoWidget3.BannerVideoInfoController localBannerVideoInfoController = this.t;
+    if (localBannerVideoInfoController != null) {
+      localBannerVideoInfoController.a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void q() {}
+  
+  public void r()
+  {
+    Object localObject = s;
     if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
       int i = 0;
-      while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+      while (i < s.size())
       {
-        localObject = (Pools.Pool)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        localObject = (Pools.Pool)s.valueAt(i);
         for (;;)
         {
           BannerVideoInfoWidget3.BannerVideoInfoController localBannerVideoInfoController = (BannerVideoInfoWidget3.BannerVideoInfoController)((Pools.Pool)localObject).acquire();
           if (localBannerVideoInfoController == null) {
             break;
           }
-          localBannerVideoInfoController.a();
+          localBannerVideoInfoController.c();
         }
         i += 1;
       }
-      jdField_a_of_type_AndroidUtilSparseArray.clear();
+      s.clear();
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerActivityLifeCycle;
+    localObject = this.w;
     if (localObject != null) {
       b((ActivityLifeCycle)localObject);
     }
   }
   
-  public void onClick(View paramView)
+  protected int s()
   {
-    BannerVideoInfoWidget3.BannerVideoInfoController localBannerVideoInfoController = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3$BannerVideoInfoController;
-    if (localBannerVideoInfoController != null) {
-      localBannerVideoInfoController.a(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 2131628189;
+  }
+  
+  public String t()
+  {
+    return "BannerVideoInfoWidget";
   }
 }
 

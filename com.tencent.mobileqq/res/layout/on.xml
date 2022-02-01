@@ -13,10 +13,12 @@
         <TextView android:textSize="12.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:id="@id/fr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/ft" android:layout_centerVertical="true" />
     </LinearLayout>
     <Button android:textSize="18.0sp" android:textColor="@color/ai2" android:id="@id/g6" android:background="@drawable/nd" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="430.0dip" android:layout_marginRight="15.0dip" />
+    <FrameLayout android:id="@id/4p" android:layout_width="fill_parent" android:layout_height="9.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/g6" />
     <View android:id="@id/cs7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="157.0dip" android:layout_alignParentBottom="true" />
-    <include layout="@layout/cjc" />
-    <FrameLayout android:id="@id/op7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/op6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include layout="@layout/cjf" />
+    <FrameLayout android:id="@id/nl3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="9.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/g6" />
+    <include layout="@layout/cdh" />
+    <FrameLayout android:id="@id/r09" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/r08" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/cf4" />
     <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

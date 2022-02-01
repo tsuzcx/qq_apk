@@ -52,7 +52,7 @@ class ChooseInterestTagActivity$13
       if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() != 0) {
         ChooseInterestTagActivity.access$1900(this.a).setVisibility(0);
       }
-      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702028));
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131900040));
       ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
       ChooseInterestTagActivity.access$702(this.a, "");
       return;
@@ -62,7 +62,7 @@ class ChooseInterestTagActivity$13
     }
     if (NetworkUtil.isNetSupport(this.a))
     {
-      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702033));
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131900045));
       ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
       ChooseInterestTagActivity.access$702(this.a, str);
       ChooseInterestTagActivity.access$400(this.a).sendEmptyMessageDelayed(4097, 400L);
@@ -70,7 +70,7 @@ class ChooseInterestTagActivity$13
     }
     if (!ChooseInterestTagActivity.access$1500(this.a))
     {
-      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131702008));
+      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131900020));
       ChooseInterestTagActivity.access$1502(this.a, true);
       ChooseInterestTagActivity.access$400(this.a).sendEmptyMessageDelayed(4100, 3000L);
     }
@@ -89,7 +89,7 @@ class ChooseInterestTagActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.13
  * JD-Core Version:    0.7.0.1
  */

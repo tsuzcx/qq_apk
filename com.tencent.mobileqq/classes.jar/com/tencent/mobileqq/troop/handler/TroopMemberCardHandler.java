@@ -56,14 +56,14 @@ public class TroopMemberCardHandler
   extends TroopBaseHandler
   implements ITroopMemberCardHandler
 {
-  private AppInterface a;
   protected Set<String> a;
+  private AppInterface b;
   
   public TroopMemberCardHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
     TroopMemberCardHandlerProcessorConfig.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   public static int a(byte[] paramArrayOfByte)
@@ -167,7 +167,7 @@ public class TroopMemberCardHandler
         if (bool1) {
           localITroopMemberInfoService.saveTroopMember((TroopMemberInfo)localObject, bool2);
         }
-        if ((i != 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount())) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount().equals(str)))
+        if ((i != 0) && (!TextUtils.isEmpty(this.b.getAccount())) && (this.b.getAccount().equals(str)))
         {
           paramTroopMemberCard = localITroopInfoService.getTroopInfo(((TroopMemberInfo)localObject).troopuin);
           if ((paramTroopMemberCard != null) && ((!((TroopMemberInfo)localObject).honorList.equals(paramTroopMemberCard.myHonorList)) || (((TroopMemberInfo)localObject).mHonorRichFlag != paramTroopMemberCard.myHonorRichFlag)))
@@ -252,7 +252,7 @@ public class TroopMemberCardHandler
       paramFromServiceMsg = paramGetTroopAppointRemarkResp.vecTroopRemark;
       if (paramFromServiceMsg != null)
       {
-        paramFromServiceMsg = TroopMemberCardHandlerProcessorConfig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(paramGetTroopAppointRemarkResp.GroupCode), paramFromServiceMsg);
+        paramFromServiceMsg = TroopMemberCardHandlerProcessorConfig.a(this.b, String.valueOf(paramGetTroopAppointRemarkResp.GroupCode), paramFromServiceMsg);
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.length > 0) && (QLog.isColorLevel()))
         {
           paramGetTroopAppointRemarkResp = new StringBuilder();
@@ -549,7 +549,7 @@ public class TroopMemberCardHandler
     long l = paramToServiceMsg.extraData.getLong("dwGroupCode");
     paramToServiceMsg.extraData.getLong("dwZero");
     paramToServiceMsg.extraData.getLong("dwNewSeq");
-    paramToServiceMsg = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).modifyTroopMemberCardInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(l), paramFromServiceMsg);
+    paramToServiceMsg = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).modifyTroopMemberCardInfo(this.b, String.valueOf(l), paramFromServiceMsg);
     notifyUI(TroopObserver.TYPE_MODIFY_TROOPMEMEBER_CARD, true, new Object[] { paramToServiceMsg, "" });
   }
   
@@ -623,11 +623,6 @@ public class TroopMemberCardHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopMemberCardHandler";
-  }
-  
   public void a(long paramLong1, long paramLong2)
   {
     a(paramLong1, paramLong2, false);
@@ -635,7 +630,7 @@ public class TroopMemberCardHandler
   
   public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    Object localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "group_member_card.get_group_member_card_info");
+    Object localObject = new ToServiceMsg("mobileqq.service", this.b.getAccount(), "group_member_card.get_group_member_card_info");
     group_member_info.ReqBody localReqBody = new group_member_info.ReqBody();
     localReqBody.uint64_group_code.set(paramLong1);
     localReqBody.uint64_uin.set(paramLong2);
@@ -778,16 +773,21 @@ public class TroopMemberCardHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopMemberCardHandler";
+  }
+  
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("friendlist.ModifyGroupCardReq");
-      this.jdField_a_of_type_JavaUtilSet.add("friendlist.GetTroopAppointRemarkReq");
-      this.jdField_a_of_type_JavaUtilSet.add("group_member_card.get_group_member_card_info");
+      this.a = new HashSet();
+      this.a.add("friendlist.ModifyGroupCardReq");
+      this.a.add("friendlist.GetTroopAppointRemarkReq");
+      this.a.add("group_member_card.get_group_member_card_info");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -811,7 +811,7 @@ public class TroopMemberCardHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -844,7 +844,7 @@ public class TroopMemberCardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopMemberCardHandler
  * JD-Core Version:    0.7.0.1
  */

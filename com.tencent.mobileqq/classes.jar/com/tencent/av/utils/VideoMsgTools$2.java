@@ -20,23 +20,23 @@ final class VideoMsgTools$2
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
-    if ((ProcessUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (!QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())))
+    if ((ProcessUtil.a(this.a.getApp())) && (!QQUtils.a(this.a.getApp())))
     {
-      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+      QQMessageFacade localQQMessageFacade = this.a.getMessageFacade();
       if (localQQMessageFacade != null)
       {
-        MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        MessageRecord localMessageRecord = this.b;
         if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.frienduin))) {
-          localQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+          localQQMessageFacade.a(this.b, this.d);
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
+      this.a.getMsgHandler().a(this.b, this.c);
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      CUOpenCardGuideMng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+    if (!TextUtils.isEmpty(this.e)) {
+      CUOpenCardGuideMng.a(this.a, this.b.frienduin, this.f, this.g, "qav");
     }
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgTools", 2, "addMessage end");

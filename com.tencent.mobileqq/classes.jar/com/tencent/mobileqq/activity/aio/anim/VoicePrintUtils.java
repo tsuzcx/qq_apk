@@ -26,23 +26,23 @@ public class VoicePrintUtils
   {
     if ((paramQQAppInterface != null) && (paramBoolean))
     {
-      Object localObject = paramHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a(paramQQAppInterface, 7);
+      Object localObject = paramHolder.i.a(paramQQAppInterface, 7);
       if (localObject == null) {
         return 0;
       }
       localObject = (BubbleInfo.CommonAttrs)((Pair)localObject).first;
       int i;
-      if ((paramHolder.jdField_a_of_type_AndroidViewView != null) && (paramHolder.jdField_a_of_type_AndroidViewView.getHeight() > 0))
+      if ((paramHolder.h != null) && (paramHolder.h.getHeight() > 0))
       {
-        int j = paramHolder.jdField_a_of_type_AndroidViewView.getHeight() - ((BubbleInfo.CommonAttrs)localObject).a.h - ((BubbleInfo.CommonAttrs)localObject).a.i;
+        int j = paramHolder.h.getHeight() - ((BubbleInfo.CommonAttrs)localObject).l.q - ((BubbleInfo.CommonAttrs)localObject).l.r;
         i = j;
-        if (j > paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight()) {
-          return paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+        if (j > paramHolder.B.getHeight()) {
+          return paramHolder.B.getHeight();
         }
       }
       else
       {
-        i = AIOUtils.b(57.0F, paramQQAppInterface.getApp().getResources()) - ((BubbleInfo.CommonAttrs)localObject).a.h - ((BubbleInfo.CommonAttrs)localObject).a.i;
+        i = AIOUtils.b(57.0F, paramQQAppInterface.getApp().getResources()) - ((BubbleInfo.CommonAttrs)localObject).l.q - ((BubbleInfo.CommonAttrs)localObject).l.r;
       }
       return i;
     }
@@ -51,15 +51,15 @@ public class VoicePrintUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, BaseBubbleBuilder.ViewHolder paramViewHolder, MessageForPtt paramMessageForPtt)
   {
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.e()) {
       return false;
     }
     if (paramMessageForPtt.needVipBubble())
     {
-      int j = BubbleManager.a;
+      int j = BubbleManager.l;
       int i = j;
       if (j == 0) {
-        i = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramMessageForPtt);
+        i = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(paramMessageForPtt);
       }
       if (i == 0) {
         return false;
@@ -70,10 +70,10 @@ public class VoicePrintUtils
       } else {
         bool = false;
       }
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = BubbleUtils.a(i, paramQQAppInterface, bool);
-      if ((paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) && (paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a > 0))
+      paramViewHolder.i = BubbleUtils.a(i, paramQQAppInterface, bool);
+      if ((paramViewHolder.i != null) && (paramViewHolder.i.a > 0))
       {
-        paramQQAppInterface = paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a(paramQQAppInterface, 7);
+        paramQQAppInterface = paramViewHolder.i.a(paramQQAppInterface, 7);
         return (paramQQAppInterface != null) && (paramQQAppInterface.first != null);
       }
     }
@@ -91,15 +91,15 @@ public class VoicePrintUtils
         f = 24.0F;
       }
       int i = paramInt + AIOUtils.b(f, paramQQAppInterface.getApp().getResources());
-      Object localObject = paramHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a(paramQQAppInterface, 7);
+      Object localObject = paramHolder.i.a(paramQQAppInterface, 7);
       if (localObject == null) {
         return new int[] { i, 0, 0 };
       }
       localObject = (BubbleInfo.CommonAttrs)((Pair)localObject).first;
-      if (paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft() > 0) {
-        paramInt = ((BubbleInfo.CommonAttrs)localObject).a.f - paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft();
+      if (paramHolder.B.getLeft() > 0) {
+        paramInt = ((BubbleInfo.CommonAttrs)localObject).l.o - paramHolder.B.getLeft();
       } else {
-        paramInt = ((BubbleInfo.CommonAttrs)localObject).a.f - AIOUtils.b(12.0F, paramQQAppInterface.getApp().getResources());
+        paramInt = ((BubbleInfo.CommonAttrs)localObject).l.o - AIOUtils.b(12.0F, paramQQAppInterface.getApp().getResources());
       }
       int j = paramInt;
       if (paramInt < 0) {
@@ -107,7 +107,7 @@ public class VoicePrintUtils
       }
       int m = AIOUtils.b(6.0F, paramQQAppInterface.getApp().getResources());
       int k = i - j - m;
-      paramQQAppInterface = ((BubbleInfo.CommonAttrs)localObject).a.c;
+      paramQQAppInterface = ((BubbleInfo.CommonAttrs)localObject).l.k;
       paramInt = k;
       if (paramQQAppInterface != null)
       {
@@ -156,7 +156,7 @@ public class VoicePrintUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils
  * JD-Core Version:    0.7.0.1
  */

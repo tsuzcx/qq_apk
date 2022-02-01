@@ -8,7 +8,7 @@ public abstract interface QFileTroopTransferWrapper$ITroopMultiFwdCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileTroopTransferWrapper.ITroopMultiFwdCallback
  * JD-Core Version:    0.7.0.1
  */

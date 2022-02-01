@@ -11,17 +11,17 @@ class AEAbstractPhotoListFragment$6
   
   public void onClick(View paramView)
   {
-    if (this.a.a.isPlaying())
+    if (this.a.m.isPlaying())
     {
-      this.a.a.pause();
+      this.a.m.pause();
       return;
     }
-    this.a.a.resume();
+    this.a.m.resume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AEAbstractPhotoListFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,22 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class QQStoryGuideRequest
   extends NetworkRequest
 {
-  public static String a = StoryApi.a("StorySvc.new_user_guide");
-  public String b;
-  public String c;
+  public static String e = StoryApi.a("StorySvc.new_user_guide");
+  public String f;
+  public String g;
   
   public QQStoryGuideRequest(String paramString1, String paramString2)
   {
-    this.b = paramString1;
-    this.c = paramString2;
+    this.f = paramString1;
+    this.g = paramString2;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
     try
@@ -36,17 +41,12 @@ public class QQStoryGuideRequest
     return new QQStoryGuideRequest.QQStoryGuideResponse(localRspQQStoryGuide);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
     try
     {
-      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
+      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.f).longValue());
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -54,7 +54,7 @@ public class QQStoryGuideRequest
       break label28;
     }
     localReqQQStoryGuide.to_uid.set(0L);
-    localReqQQStoryGuide.version.set(this.c);
+    localReqQQStoryGuide.version.set(this.g);
     return localReqQQStoryGuide.toByteArray();
   }
   
@@ -62,10 +62,10 @@ public class QQStoryGuideRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQStoryGuideRequest{toUid='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append("version='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -73,7 +73,7 @@ public class QQStoryGuideRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.QQStoryGuideRequest
  * JD-Core Version:    0.7.0.1
  */

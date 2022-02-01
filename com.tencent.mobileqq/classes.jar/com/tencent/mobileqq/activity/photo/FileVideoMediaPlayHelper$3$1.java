@@ -7,14 +7,14 @@ class FileVideoMediaPlayHelper$3$1
   
   public void run()
   {
-    if (FileVideoMediaPlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0) != null) {
-      FileVideoMediaPlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoFileVideoMediaPlayHelper$3.this$0).a(true, this.jdField_a_of_type_JavaLangString);
+    if (FileVideoMediaPlayHelper.d(this.b.this$0) != null) {
+      FileVideoMediaPlayHelper.d(this.b.this$0).a(true, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FileVideoMediaPlayHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

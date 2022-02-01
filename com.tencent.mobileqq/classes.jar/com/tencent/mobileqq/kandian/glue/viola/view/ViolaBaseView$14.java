@@ -16,27 +16,27 @@ class ViolaBaseView$14
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
+    if (ViolaBaseView.n(this.a) != null) {
+      ViolaBaseView.n(this.a).setSize(paramView.getWidth(), paramView.getHeight());
     }
-    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1")))
+    if ((ViolaBaseView.n(this.a) != null) && (ViolaBaseView.i(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1")))
     {
       paramView = new JSONObject();
       try
       {
-        paramView.put("navigationBarHeight", ViewUtils.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
+        paramView.put("navigationBarHeight", ViewUtils.pxToDp(CommonSuspensionGestureLayout.a(ViolaBaseView.i(this.a).getActivity())));
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
+      ViolaBaseView.n(this.a).updateInstance(paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.14
  * JD-Core Version:    0.7.0.1
  */

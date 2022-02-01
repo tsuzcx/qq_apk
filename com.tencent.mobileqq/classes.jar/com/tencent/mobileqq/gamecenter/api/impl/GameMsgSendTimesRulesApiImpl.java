@@ -12,16 +12,16 @@ public class GameMsgSendTimesRulesApiImpl
 {
   private GameMsgSendTimesRules mInstance;
   
-  public void doInit(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, List<ChatMessage> paramList)
+  public void doInit(int paramInt1, AppInterface paramAppInterface, String paramString, int paramInt2, int paramInt3, List<ChatMessage> paramList)
   {
-    this.mInstance = new GameMsgSendTimesRules(paramAppInterface, paramString, paramInt1, paramInt2, null, null, paramList);
+    this.mInstance = new GameMsgSendTimesRules(paramInt1, paramAppInterface, paramString, paramInt2, paramInt3, null, null, paramList);
   }
   
   public boolean isAbleToAction()
   {
     GameMsgSendTimesRules localGameMsgSendTimesRules = this.mInstance;
     if (localGameMsgSendTimesRules != null) {
-      return localGameMsgSendTimesRules.a();
+      return localGameMsgSendTimesRules.b();
     }
     return false;
   }
@@ -47,7 +47,7 @@ public class GameMsgSendTimesRulesApiImpl
   {
     GameMsgSendTimesRules localGameMsgSendTimesRules = this.mInstance;
     if (localGameMsgSendTimesRules != null) {
-      localGameMsgSendTimesRules.b();
+      localGameMsgSendTimesRules.c();
     }
   }
   
@@ -61,7 +61,7 @@ public class GameMsgSendTimesRulesApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameMsgSendTimesRulesApiImpl
  * JD-Core Version:    0.7.0.1
  */

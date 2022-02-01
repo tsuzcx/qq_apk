@@ -8,7 +8,7 @@ import android.view.View;
 public class NearbyWorkspaceView
   extends WorkSpaceView
 {
-  private int b = 0;
+  private int c = 0;
   
   public NearbyWorkspaceView(Context paramContext)
   {
@@ -24,7 +24,7 @@ public class NearbyWorkspaceView
     int i;
     int k;
     int m;
-    if ((f < 0.0F) && (this.a))
+    if ((f < 0.0F) && (this.b))
     {
       j = n - 1;
       i = 0;
@@ -35,7 +35,7 @@ public class NearbyWorkspaceView
       m = k + 1;
       j = k;
       i = m;
-      if (this.a)
+      if (this.b)
       {
         i = m % n;
         j = k;
@@ -55,12 +55,12 @@ public class NearbyWorkspaceView
         paramCanvas.getGlobalVisibleRect(localRect1);
         localView.getGlobalVisibleRect(localRect2);
         k = getWidth() - (getScrollX() + getWidth()) % getWidth();
-        m = this.b;
+        m = this.c;
         if (m == j)
         {
           if ((localRect1.left < 0) || (k < localRect1.right))
           {
-            this.b = -1;
+            this.c = -1;
             paramCanvas.setVisibility(4);
           }
         }
@@ -68,26 +68,26 @@ public class NearbyWorkspaceView
         {
           if ((k > localRect2.left) || (getWidth() < localRect2.right))
           {
-            this.b = -1;
+            this.c = -1;
             localView.setVisibility(4);
           }
         }
         else if (m != -1)
         {
           ((View)getChildAt(m).getTag()).setVisibility(4);
-          this.b = -1;
+          this.c = -1;
         }
-        if (this.b == -1)
+        if (this.c == -1)
         {
           if ((localRect1.left >= 0) && (k >= localRect1.right))
           {
-            this.b = j;
+            this.c = j;
             paramCanvas.setVisibility(0);
             return;
           }
           if ((k <= localRect2.left) && (getWidth() >= localRect2.right))
           {
-            this.b = i;
+            this.c = i;
             localView.setVisibility(0);
           }
         }
@@ -97,7 +97,7 @@ public class NearbyWorkspaceView
   
   public void removeAllViews()
   {
-    View localView = getChildAt(this.b);
+    View localView = getChildAt(this.c);
     if ((localView != null) && (localView.getTag() != null)) {
       ((View)localView.getTag()).setVisibility(4);
     }
@@ -106,7 +106,7 @@ public class NearbyWorkspaceView
   
   public void setVisibility(int paramInt)
   {
-    View localView = getChildAt(this.b);
+    View localView = getChildAt(this.c);
     if ((localView != null) && (localView.getTag() != null))
     {
       localView = (View)localView.getTag();
@@ -121,7 +121,7 @@ public class NearbyWorkspaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NearbyWorkspaceView
  * JD-Core Version:    0.7.0.1
  */

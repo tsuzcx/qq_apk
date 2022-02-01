@@ -8,12 +8,12 @@ import java.util.Map;
 @Deprecated
 public class HippyRootViewParams
 {
-  private Activity mActivity;
-  private HippyBundleLoader mBundleLoader;
+  private final Activity mActivity;
+  private final HippyBundleLoader mBundleLoader;
   private HippyInstanceContext mHippyInstanceContext;
-  private HippyMap mLaunchParams;
-  private String mName;
-  private Map mNativeParams;
+  private final HippyMap mLaunchParams;
+  private final String mName;
+  private final Map mNativeParams;
   
   private HippyRootViewParams(String paramString, HippyBundleLoader paramHippyBundleLoader, Activity paramActivity, HippyMap paramHippyMap, Map paramMap, HippyInstanceContext paramHippyInstanceContext)
   {
@@ -62,7 +62,7 @@ public class HippyRootViewParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootViewParams
  * JD-Core Version:    0.7.0.1
  */

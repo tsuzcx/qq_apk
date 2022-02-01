@@ -11,9 +11,9 @@ class StructMsgItemLayoutPromotion$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - this.jdField_a_of_type_AndroidWidgetTextView.getWidth() > this.jdField_a_of_type_Float + this.jdField_a_of_type_Int)
+    if (this.a.getWidth() - this.b.getWidth() > this.c + this.d)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      this.a.addView(this.e, this.f);
       StructMsgItemLayoutPromotion.a(this.this$0, 1);
       return;
     }
@@ -22,7 +22,7 @@ class StructMsgItemLayoutPromotion$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutPromotion.1
  * JD-Core Version:    0.7.0.1
  */

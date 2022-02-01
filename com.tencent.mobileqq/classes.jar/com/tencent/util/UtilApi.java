@@ -6,17 +6,16 @@ import java.util.ArrayList;
 
 public class UtilApi
 {
-  public static IUtilApi a;
   @ConfigInject(configPath="Foundation/QQCommon/src/main/resources/Inject_Util.yml", version=2)
-  public static ArrayList<Class<? extends IUtilApi>> a;
+  public static ArrayList<Class<? extends IUtilApi>> a = new ArrayList();
+  public static IUtilApi b;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(UtilApiImpl.class);
+    a.add(UtilApiImpl.class);
     try
     {
-      jdField_a_of_type_ComTencentUtilIUtilApi = (IUtilApi)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+      b = (IUtilApi)((Class)a.get(0)).newInstance();
       return;
     }
     catch (Exception localException)
@@ -27,7 +26,7 @@ public class UtilApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.UtilApi
  * JD-Core Version:    0.7.0.1
  */

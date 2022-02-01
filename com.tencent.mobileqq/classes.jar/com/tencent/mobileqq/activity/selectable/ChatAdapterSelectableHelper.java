@@ -21,25 +21,24 @@ import com.tencent.mobileqq.text.TextUtils;
 
 public class ChatAdapterSelectableHelper
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.rgb(38, 87, 178);
-  private static final int d = Color.argb(64, 125, 113, 30);
-  private static final int e = Color.argb(64, 6, 59, 156);
-  private static final int f = Color.rgb(162, 116, 4);
-  private static final int g = Color.argb(64, 213, 185, 118);
-  private static final int h = Color.argb(102, 213, 185, 118);
-  public int a;
-  private final ChatAdapter1 a;
+  private static final int c = Color.rgb(123, 113, 30);
+  private static final int d = Color.rgb(38, 87, 178);
+  private static final int e = Color.argb(64, 125, 113, 30);
+  private static final int f = Color.argb(64, 6, 59, 156);
+  private static final int g = Color.rgb(162, 116, 4);
+  private static final int h = Color.argb(64, 213, 185, 118);
+  private static final int i = Color.argb(102, 213, 185, 118);
   public QQAppInterface a;
+  public int b = 0;
+  private final ChatAdapter1 j;
   
   public ChatAdapterSelectableHelper(ChatAdapter1 paramChatAdapter1, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.j = paramChatAdapter1;
+    this.a = paramQQAppInterface;
   }
   
-  private SelectableComponent a(View paramView)
+  private SelectableComponent b(View paramView)
   {
     if (paramView == null) {
       return null;
@@ -55,64 +54,64 @@ public class ChatAdapterSelectableHelper
   
   public void a(View paramView, CommonMenuWrapper paramCommonMenuWrapper)
   {
-    SelectableComponent localSelectableComponent = a(paramView);
+    SelectableComponent localSelectableComponent = b(paramView);
     if (localSelectableComponent == null) {
       return;
     }
     SelectableDelegate localSelectableDelegate = localSelectableComponent.delegate();
     ChatMessage localChatMessage = AIOUtils.a(paramView);
-    if ((localSelectableDelegate != null) && (localSelectableDelegate.b()) && (!localSelectableComponent.hasSelected()) && (localChatMessage != null))
+    if ((localSelectableDelegate != null) && (localSelectableDelegate.k()) && (!localSelectableComponent.hasSelected()) && (localChatMessage != null))
     {
-      int i = this.jdField_a_of_type_Int;
-      if (i == 2)
+      int k = this.b;
+      if (k == 2)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
+        if (this.a.getCurrentAccountUin().equals(localChatMessage.selfuin))
         {
-          localSelectableDelegate.c(f);
-          localSelectableDelegate.b(g);
-        }
-        else
-        {
-          localSelectableDelegate.c(f);
+          localSelectableDelegate.c(g);
           localSelectableDelegate.b(h);
         }
-      }
-      else if (i == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-        {
-          localSelectableDelegate.c(b);
-          localSelectableDelegate.b(d);
-        }
         else
+        {
+          localSelectableDelegate.c(g);
+          localSelectableDelegate.b(i);
+        }
+      }
+      else if (k == 1)
+      {
+        if (this.a.getCurrentAccountUin().equals(localChatMessage.selfuin))
         {
           localSelectableDelegate.c(c);
           localSelectableDelegate.b(e);
+        }
+        else
+        {
+          localSelectableDelegate.c(d);
+          localSelectableDelegate.b(f);
         }
       }
       else
       {
         paramView = paramView.getResources();
-        int j;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
+        int m;
+        if (this.a.getCurrentAccountUin().equals(localChatMessage.selfuin))
         {
-          i = paramView.getColorStateList(2131167031).getDefaultColor();
-          j = paramView.getColorStateList(2131167033).getDefaultColor();
+          k = paramView.getColorStateList(2131167967).getDefaultColor();
+          m = paramView.getColorStateList(2131167969).getDefaultColor();
         }
         else
         {
-          i = paramView.getColorStateList(2131167030).getDefaultColor();
-          j = paramView.getColorStateList(2131167032).getDefaultColor();
+          k = paramView.getColorStateList(2131167966).getDefaultColor();
+          m = paramView.getColorStateList(2131167968).getDefaultColor();
         }
-        localSelectableDelegate.c(i);
-        localSelectableDelegate.b(j);
+        localSelectableDelegate.c(k);
+        localSelectableDelegate.b(m);
         if (QLog.isColorLevel())
         {
           paramView = new StringBuilder();
           paramView.append("Load Select color, cursor=");
-          paramView.append(i);
+          paramView.append(k);
           paramView.append(", component=");
-          paramView.append(j);
+          paramView.append(m);
           QLog.d("ChatAdapterSelectableHelper", 0, paramView.toString());
         }
       }
@@ -124,7 +123,7 @@ public class ChatAdapterSelectableHelper
   public boolean a(View paramView)
   {
     ChatMessage localChatMessage = AIOUtils.a(paramView);
-    if (AppSetting.d) {}
+    if (AppSetting.e) {}
     label65:
     do
     {
@@ -153,31 +152,31 @@ public class ChatAdapterSelectableHelper
     label95:
     if (bool)
     {
-      paramView = a(paramView);
+      paramView = b(paramView);
       if (paramView != null)
       {
         if (paramView.contentLength() > 0) {
           return true;
         }
-        if (AIOSelectableDelegateImpl.a().c()) {
-          AIOSelectableDelegateImpl.a().d();
+        if (AIOSelectableDelegateImpl.a().l()) {
+          AIOSelectableDelegateImpl.a().n();
         }
         return false;
       }
-      if (AIOSelectableDelegateImpl.a().c()) {
-        AIOSelectableDelegateImpl.a().d();
+      if (AIOSelectableDelegateImpl.a().l()) {
+        AIOSelectableDelegateImpl.a().n();
       }
       return false;
     }
-    if (AIOSelectableDelegateImpl.a().c()) {
-      AIOSelectableDelegateImpl.a().d();
+    if (AIOSelectableDelegateImpl.a().l()) {
+      AIOSelectableDelegateImpl.a().n();
     }
     return false;
   }
   
   public boolean a(View paramView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    paramView = a(paramView);
+    paramView = b(paramView);
     boolean bool2 = false;
     if (paramView == null) {
       return false;
@@ -193,7 +192,7 @@ public class ChatAdapterSelectableHelper
     if (paramView != null)
     {
       bool1 = bool2;
-      if (paramView.f())
+      if (paramView.q())
       {
         bool1 = bool2;
         if (paramView.a(paramFloat1, paramFloat2, paramInt1, paramInt2) != -1) {
@@ -206,7 +205,7 @@ public class ChatAdapterSelectableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.ChatAdapterSelectableHelper
  * JD-Core Version:    0.7.0.1
  */

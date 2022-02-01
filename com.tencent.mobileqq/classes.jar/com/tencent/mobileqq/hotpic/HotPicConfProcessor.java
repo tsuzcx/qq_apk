@@ -45,12 +45,12 @@ public class HotPicConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      HotPicConfBean localHotPicConfBean = HotPicConfBean.a(paramArrayOfQConfItem[0].a);
+      HotPicConfBean localHotPicConfBean = HotPicConfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("HotPicConfProcessor", 2, localStringBuilder.toString());
       }
       return localHotPicConfBean;
@@ -62,7 +62,7 @@ public class HotPicConfProcessor
   {
     HotPicManager localHotPicManager = a();
     if (localHotPicManager != null) {
-      localHotPicManager.b(paramHotPicConfBean.a);
+      localHotPicManager.f(paramHotPicConfBean.a);
     }
   }
   
@@ -85,7 +85,7 @@ public class HotPicConfProcessor
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localQQAppInterface != null) {
-      return HotPicManager.a(localQQAppInterface);
+      return HotPicManager.b(localQQAppInterface);
     }
     return 0;
   }
@@ -108,7 +108,7 @@ public class HotPicConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicConfProcessor
  * JD-Core Version:    0.7.0.1
  */

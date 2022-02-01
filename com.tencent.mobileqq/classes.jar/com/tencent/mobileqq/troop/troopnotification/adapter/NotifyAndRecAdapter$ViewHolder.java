@@ -12,31 +12,31 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 public class NotifyAndRecAdapter$ViewHolder
   extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public NotifyAndRecAdapter.ApplicantHolder a;
-  public IGeneralGroupNotifyParser.GeneralGroupNotifyInfo a;
   public ShaderAnimLayout a;
-  public String a;
-  public structmsg.StructMsg a;
   public int b;
-  public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
   public long c;
-  public TextView c;
-  public String c = "";
-  public TextView d;
+  public long d;
+  public String e;
+  public String f;
+  public LinearLayout g;
+  public ImageView h;
+  public LinearLayout i;
+  public TextView j;
+  public ImageView k;
+  public TextView l;
+  public TextView m;
+  public TextView n;
+  public String o = "";
+  public Button p;
+  public int q;
+  public structmsg.StructMsg r;
+  public long s;
+  public NotifyAndRecAdapter.ApplicantHolder t;
+  public IGeneralGroupNotifyParser.GeneralGroupNotifyInfo u;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.adapter.NotifyAndRecAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

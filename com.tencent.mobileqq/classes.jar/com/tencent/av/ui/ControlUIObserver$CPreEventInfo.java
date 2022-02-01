@@ -5,24 +5,20 @@ import android.view.View;
 public class ControlUIObserver$CPreEventInfo
   extends ControlUIObserver.BaseParameter
 {
-  private View a;
-  public boolean a;
-  public String b;
+  private View b = null;
+  public boolean d = false;
+  public String e;
   
   public ControlUIObserver$CPreEventInfo(int paramInt, View paramView)
   {
     super(paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
   
   public ControlUIObserver$CPreEventInfo(View paramView)
   {
     super(0);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
 }
 

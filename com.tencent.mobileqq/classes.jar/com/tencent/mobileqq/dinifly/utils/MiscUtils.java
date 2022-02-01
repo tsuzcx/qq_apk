@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dinifly.utils;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.FloatRange;
+import androidx.annotation.FloatRange;
 import com.tencent.mobileqq.dinifly.animation.content.KeyPathElementContent;
 import com.tencent.mobileqq.dinifly.model.CubicCurveData;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
@@ -16,6 +16,11 @@ public class MiscUtils
   public static PointF addPoints(PointF paramPointF1, PointF paramPointF2)
   {
     return new PointF(paramPointF1.x + paramPointF2.x, paramPointF1.y + paramPointF2.y);
+  }
+  
+  public static double clamp(double paramDouble1, double paramDouble2, double paramDouble3)
+  {
+    return Math.max(paramDouble2, Math.min(paramDouble3, paramDouble1));
   }
   
   public static float clamp(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -113,7 +118,7 @@ public class MiscUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.MiscUtils
  * JD-Core Version:    0.7.0.1
  */

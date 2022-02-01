@@ -14,16 +14,16 @@ class ContactListView$3
   
   public void onClick(View paramView)
   {
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.f(this.a).removeHeaderView(ContactListView.e(this.a));
     ContactListView.a(this.a, null);
     QQPimTipsInfoHelper.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
+    QQPimGetTipsInfoIPC.a().d();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.3
  * JD-Core Version:    0.7.0.1
  */

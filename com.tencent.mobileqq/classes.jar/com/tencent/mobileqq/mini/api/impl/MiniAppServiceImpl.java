@@ -106,7 +106,8 @@ import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.module.IQRoutePlugin;
 import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.IPullRefreshHeaderControl;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.SharePlugin;
 import com.tencent.qqmini.proxyimpl.ShareQQArkHelper;
@@ -258,9 +259,19 @@ public class MiniAppServiceImpl
     return false;
   }
   
+  public void batchGetFollowingCount(ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    MiniAppCmdUtil.getInstance().batchGetFollowingCount(paramArrayList, paramMiniAppCmdInterface);
+  }
+  
   public void checkPreloadMiniApp()
   {
     AppBrandLaunchManager.g().checkPreloadApp();
+  }
+  
+  public boolean checkPreloadMiniGame()
+  {
+    return AppBrandLaunchManager.g().checkPreloadMiniGame();
   }
   
   public BaseContactsMiniAppEntryManager createContactsMiniAppEntryManager(Context paramContext, AppRuntime paramAppRuntime, RelativeLayout paramRelativeLayout, int paramInt)
@@ -275,7 +286,7 @@ public class MiniAppServiceImpl
   
   public Manager createMiniAppEntityManager(String paramString)
   {
-    return new MiniAppEntityManager(paramString);
+    return MiniAppEntityManager.get(paramString);
   }
   
   public MiniAppPullInterface createMiniAppEntryManager(boolean paramBoolean, Activity paramActivity, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, ViewGroup paramViewGroup)
@@ -283,13 +294,13 @@ public class MiniAppServiceImpl
     if (paramBoolean) {}
     try
     {
-      return new MiniAppDesktop(paramActivity, (Conversation)paramObject1, (ListView)paramObject2, (PullRefreshHeader)paramObject3, (DrawerFrame)paramObject4, paramViewGroup);
+      return new MiniAppDesktop(paramActivity, (Conversation)paramObject1, (ListView)paramObject2, (IPullRefreshHeaderControl)paramObject3, (DrawerFrame)paramObject4, paramViewGroup);
     }
     catch (Throwable paramActivity)
     {
       QLog.e("MiniAppServiceImpl", 1, "", paramActivity);
     }
-    paramActivity = new QQMessagePageMiniAppEntryManager(paramActivity, (Conversation)paramObject1, (ListView)paramObject2, (PullRefreshHeader)paramObject3, (DrawerFrame)paramObject4);
+    paramActivity = new QQMessagePageMiniAppEntryManager(paramActivity, (Conversation)paramObject1, (ListView)paramObject2, (IPullRefreshHeaderControl)paramObject3, (DrawerFrame)paramObject4);
     return paramActivity;
     return null;
   }
@@ -459,7 +470,7 @@ public class MiniAppServiceImpl
   public Class getMiniAppSearchFragmentClass()
   {
     int i;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_search_dynamic_feature", 1) == 1) {
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_search_dynamic_feature", 0) == 1) {
       i = 1;
     } else {
       i = 0;
@@ -531,6 +542,11 @@ public class MiniAppServiceImpl
   public String getTmpPathFromOut(String paramString1, String paramString2)
   {
     return MiniAppFileManager.getInstance().getTmpPathFromOut(paramString1, paramString2);
+  }
+  
+  public void getWeixinSDKAppInfo(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    MiniAppCmdUtil.getInstance().getWeixinSDKAppInfo(paramString, paramMiniAppCmdInterface);
   }
   
   public void guessYouLike(COMM.StCommonExt paramStCommonExt, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -699,6 +715,11 @@ public class MiniAppServiceImpl
     MiniArkShareAsyncManager.performUploadArkShareImage(paramString, paramIMiniCallback);
   }
   
+  public void preDownloadPkg(String paramString1, String paramString2, IMiniCallback paramIMiniCallback)
+  {
+    MiniAppController.preDownloadPkg(paramString1, paramString2, paramIMiniCallback);
+  }
+  
   public void preLaunchMiniAppCheckinFromLeba() {}
   
   public void prePullAppinfoByLink(String paramString, int paramInt, boolean paramBoolean, IPrePullListener paramIPrePullListener)
@@ -711,7 +732,11 @@ public class MiniAppServiceImpl
     MiniAppPrePullManager.getInstance().prePullAppinfoByLink(paramString, paramBoolean, paramIPrePullListener);
   }
   
-  public void preloadMiniProcess() {}
+  public void preloadMiniProcess()
+  {
+    MiniAppController.preloadMiniProcess();
+    ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).preDownload();
+  }
   
   public void processControlInfo(String paramString, MiniAppControlInfo paramMiniAppControlInfo)
   {
@@ -783,7 +808,12 @@ public class MiniAppServiceImpl
   
   public void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MiniProgramLpReportDC04239.reportByQQqunInfo(paramString1, paramString2, paramString3, paramString4);
+    MiniProgramLpReportDC04239.reportByQQqunInfo(paramString1, paramString2, paramString3, "", "", "", paramString4);
+  }
+  
+  public void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    MiniProgramLpReportDC04239.reportByQQqunInfo(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
   }
   
   public void reportColorNoteExpoForMiniApp(String paramString, boolean paramBoolean)
@@ -1002,6 +1032,11 @@ public class MiniAppServiceImpl
     ((DesktopDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateMiniHBBanner(paramObject);
   }
   
+  public void updateRecentPlay(String paramString, int paramInt)
+  {
+    MiniAppUtils.updatePullDownEntryWeixinApp(paramString, paramInt);
+  }
+  
   public Object validMoodInfo(Object paramObject)
   {
     try
@@ -1023,7 +1058,7 @@ public class MiniAppServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.impl.MiniAppServiceImpl
  * JD-Core Version:    0.7.0.1
  */

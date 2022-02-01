@@ -6,17 +6,17 @@ import com.tencent.mobileqq.troop.widget.RoundRectUrlImageView;
 
 public class TogetherPopupDialog$TogetherEntryItem
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  HeadsPanelAnimationView jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView;
-  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView = null;
-  RoundRectUrlImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = null;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  RelativeLayout a = null;
+  RoundRectView b = null;
+  TextView c = null;
+  TextView d = null;
+  RoundRectUrlImageView e = null;
+  RelativeLayout f = null;
+  HeadsPanelAnimationView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.TogetherEntryItem
  * JD-Core Version:    0.7.0.1
  */

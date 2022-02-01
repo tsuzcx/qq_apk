@@ -12,7 +12,7 @@ public class FlingGestureHandler
   extends FlingHandler
   implements TopGestureLayout.OnGestureListener
 {
-  private View a;
+  private View mInnerView;
   public TopGestureLayout mTopLayout;
   
   public FlingGestureHandler(Activity paramActivity)
@@ -20,7 +20,7 @@ public class FlingGestureHandler
     super(paramActivity);
   }
   
-  private ViewGroup a(Activity paramActivity)
+  private ViewGroup getDecorView(Activity paramActivity)
   {
     paramActivity = (ViewGroup)paramActivity.getWindow().getDecorView();
     View localView = paramActivity.getChildAt(0);
@@ -30,21 +30,85 @@ public class FlingGestureHandler
     return paramActivity;
   }
   
-  protected void a()
+  public void flingLToR()
   {
-    if (!a()) {
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
+    if (localActivity != null) {
+      localActivity.onBackPressed();
+    }
+  }
+  
+  public void flingRToL() {}
+  
+  protected boolean isWrapped()
+  {
+    Object localObject = this.mTopLayout;
+    if ((localObject != null) && (((TopGestureLayout)localObject).getParent() != null))
+    {
+      localObject = this.mInnerView;
+      if ((localObject != null) && (((View)localObject).getParent() == this.mTopLayout)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void setTopLayout(TopGestureLayout paramTopGestureLayout)
+  {
+    if ((!canWrapContent()) && (paramTopGestureLayout == null)) {
       return;
     }
-    Object localObject3 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
+    if (localActivity == null) {
+      return;
+    }
+    if (isWrapped())
+    {
+      unwrap();
+      this.mInnerView = getDecorView(localActivity).getChildAt(0);
+      this.mTopLayout = paramTopGestureLayout;
+      paramTopGestureLayout.setOnFlingGesture(this);
+      wrap();
+      return;
+    }
+    this.mInnerView = getDecorView(localActivity).getChildAt(0);
+    this.mTopLayout = paramTopGestureLayout;
+    paramTopGestureLayout.setOnFlingGesture(this);
+  }
+  
+  protected void unwrap()
+  {
+    Object localObject = (Activity)this.mWrappedActivity.get();
+    if (localObject == null) {
+      return;
+    }
+    localObject = getDecorView((Activity)localObject);
+    if ((isWrapped()) && (this.mTopLayout.getParent().equals(localObject)))
+    {
+      ((ViewGroup)localObject).removeView(this.mTopLayout);
+      if (this.mInnerView.getParent().equals(this.mTopLayout))
+      {
+        this.mTopLayout.removeView(this.mInnerView);
+        ((ViewGroup)localObject).addView(this.mInnerView);
+      }
+    }
+  }
+  
+  protected void wrap()
+  {
+    if (!canWrapContent()) {
+      return;
+    }
+    Object localObject3 = (Activity)this.mWrappedActivity.get();
     if (localObject3 == null) {
       return;
     }
-    Object localObject1 = a((Activity)localObject3);
+    Object localObject1 = getDecorView((Activity)localObject3);
     Object localObject2;
     if (this.mTopLayout == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject1).getChildAt(0);
-      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      this.mInnerView = ((ViewGroup)localObject1).getChildAt(0);
+      localObject2 = this.mInnerView;
       if (localObject2 == null) {
         return;
       }
@@ -56,20 +120,20 @@ public class FlingGestureHandler
       ((TopGestureLayout)localObject3).addView((View)localObject2);
       return;
     }
-    if (!b())
+    if (!isWrapped())
     {
       localObject2 = this.mTopLayout;
       if ((localObject2 != null) && (((TopGestureLayout)localObject2).getParent() != null)) {
         ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
       }
       ((ViewGroup)localObject1).addView(this.mTopLayout);
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      localObject1 = this.mInnerView;
       if ((localObject1 != null) && (((View)localObject1).getParent() != null)) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)this.mInnerView.getParent()).removeView(this.mInnerView);
       }
       try
       {
-        this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        this.mTopLayout.addView(this.mInnerView);
         return;
       }
       catch (Exception localException)
@@ -78,74 +142,10 @@ public class FlingGestureHandler
       }
     }
   }
-  
-  protected void b()
-  {
-    Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      return;
-    }
-    localObject = a((Activity)localObject);
-    if ((b()) && (this.mTopLayout.getParent().equals(localObject)))
-    {
-      ((ViewGroup)localObject).removeView(this.mTopLayout);
-      if (this.jdField_a_of_type_AndroidViewView.getParent().equals(this.mTopLayout))
-      {
-        this.mTopLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-        ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
-      }
-    }
-  }
-  
-  protected boolean b()
-  {
-    Object localObject = this.mTopLayout;
-    if ((localObject != null) && (((TopGestureLayout)localObject).getParent() != null))
-    {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if ((localObject != null) && (((View)localObject).getParent() == this.mTopLayout)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void flingLToR()
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity != null) {
-      localActivity.onBackPressed();
-    }
-  }
-  
-  public void flingRToL() {}
-  
-  public void setTopLayout(TopGestureLayout paramTopGestureLayout)
-  {
-    if ((!a()) && (paramTopGestureLayout == null)) {
-      return;
-    }
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null) {
-      return;
-    }
-    if (b())
-    {
-      b();
-      this.jdField_a_of_type_AndroidViewView = a(localActivity).getChildAt(0);
-      this.mTopLayout = paramTopGestureLayout;
-      paramTopGestureLayout.setOnFlingGesture(this);
-      a();
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = a(localActivity).getChildAt(0);
-    this.mTopLayout = paramTopGestureLayout;
-    paramTopGestureLayout.setOnFlingGesture(this);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingGestureHandler
  * JD-Core Version:    0.7.0.1
  */

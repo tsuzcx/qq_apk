@@ -11,13 +11,13 @@ class GateWayVerifyManager$6
   
   public void a(Network paramNetwork)
   {
-    GateWayVerifyManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGateWayVerifyManager).removeCallbacksAndMessages(null);
-    GateWayVerifyManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGateWayVerifyManager, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, paramNetwork, new NetGatewayCallback(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback, paramNetwork));
+    GateWayVerifyManager.a(this.c).removeCallbacksAndMessages(null);
+    GateWayVerifyManager.a(this.c, this.a, paramNetwork, new NetGatewayCallback(this.b, paramNetwork));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.GateWayVerifyManager.6
  * JD-Core Version:    0.7.0.1
  */

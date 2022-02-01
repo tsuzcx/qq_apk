@@ -35,7 +35,7 @@ public class MusicLauncher
     if (paramColorNote.getServiceType() != 16973824) {
       return;
     }
-    Intent localIntent = QQPlayerService.a();
+    Intent localIntent = QQPlayerService.m();
     if (localIntent != null)
     {
       a(localIntent, paramColorNote);
@@ -50,7 +50,7 @@ public class MusicLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.MusicLauncher
  * JD-Core Version:    0.7.0.1
  */

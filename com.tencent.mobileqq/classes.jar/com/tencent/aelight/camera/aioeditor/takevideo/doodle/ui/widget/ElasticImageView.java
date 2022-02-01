@@ -16,57 +16,39 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public class ElasticImageView
   extends ImageView
 {
-  public float a;
-  public int a;
-  public final long a;
-  public ValueAnimator a;
-  private Matrix a;
-  public boolean a;
-  public float b;
-  public int b;
-  public ValueAnimator b;
-  private Matrix b;
-  public boolean b;
-  public float c;
-  public int c;
-  public boolean c;
-  public float d;
-  public int d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
+  public float a = 1.0F;
+  public float b = 1.0F;
+  public float c = 1.0F;
+  public final long d = 100L;
+  public float e = this.b;
+  public boolean f;
   public int g;
   public int h;
   public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public ValueAnimator p;
+  public ValueAnimator q;
+  public boolean r = false;
+  public float s = 1.0F;
+  public float t = 1.0F;
+  public boolean u = true;
+  private Matrix v;
+  private Matrix w;
   
   public ElasticImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Long = 100L;
-    this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_e_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Boolean = true;
     a();
   }
   
   public ElasticImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Long = 100L;
-    this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_e_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Boolean = true;
     a();
   }
   
@@ -78,8 +60,8 @@ public class ElasticImageView
   private void a()
   {
     setScaleType(ImageView.ScaleType.MATRIX);
-    this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix(getImageMatrix());
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.w = new Matrix(getImageMatrix());
+    this.v = new Matrix();
   }
   
   private void a(float paramFloat)
@@ -91,38 +73,38 @@ public class ElasticImageView
     localStringBuilder.append("updateMatrix:");
     localStringBuilder.append(paramFloat);
     SLog.b("ElasticImageView", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.g, this.h);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat, paramFloat, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    super.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.v.set(this.w);
+    this.v.postTranslate(this.m, this.n);
+    this.v.postScale(this.s, this.t, this.k, this.l);
+    this.v.postScale(paramFloat, paramFloat, this.k, this.l);
+    super.setImageMatrix(this.v);
   }
   
   private void b()
   {
-    ValueAnimator localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.q;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
+      this.q.cancel();
     }
-    localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.p;
     if ((localValueAnimator == null) || (!localValueAnimator.isRunning()))
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = a(this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, 100L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.p = a(this.e, this.c, 100L);
+      this.p.start();
     }
   }
   
   private void c()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.p;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.p.cancel();
     }
-    localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.q;
     if ((localValueAnimator == null) || (!localValueAnimator.isRunning()))
     {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = a(this.jdField_d_of_type_Float, this.jdField_a_of_type_Float, 100L);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
+      this.q = a(this.e, this.a, 100L);
+      this.q.start();
     }
   }
   
@@ -134,47 +116,47 @@ public class ElasticImageView
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.f = bool;
     if (!bool) {
       return;
     }
-    int m = getDrawable().getIntrinsicWidth();
-    int n = getDrawable().getIntrinsicHeight();
-    int j = m;
-    int k = n;
-    if (this.jdField_b_of_type_Boolean) {
-      if (m < n)
+    int i3 = getDrawable().getIntrinsicWidth();
+    int i4 = getDrawable().getIntrinsicHeight();
+    int i1 = i3;
+    int i2 = i4;
+    if (this.r) {
+      if (i3 < i4)
       {
-        this.jdField_f_of_type_Float = (m / n);
-        this.jdField_e_of_type_Float = 1.0F;
-        k = m;
-        j = m;
+        this.t = (i3 / i4);
+        this.s = 1.0F;
+        i2 = i3;
+        i1 = i3;
       }
-      else if (m > n)
+      else if (i3 > i4)
       {
-        this.jdField_e_of_type_Float = (n / m);
-        this.jdField_f_of_type_Float = 1.0F;
-        j = n;
-        k = n;
+        this.s = (i4 / i3);
+        this.t = 1.0F;
+        i1 = i4;
+        i2 = i4;
       }
       else
       {
-        this.jdField_e_of_type_Float = 1.0F;
-        this.jdField_f_of_type_Float = 1.0F;
-        k = n;
-        j = m;
+        this.s = 1.0F;
+        this.t = 1.0F;
+        i2 = i4;
+        i1 = i3;
       }
     }
-    m = this.jdField_c_of_type_Int;
+    i3 = this.i;
     float f2;
     float f3;
-    if (j <= m)
+    if (i1 <= i3)
     {
-      n = this.jdField_d_of_type_Int;
-      if (k <= n)
+      i4 = this.j;
+      if (i2 <= i4)
       {
-        f2 = m / j;
-        f3 = n / k;
+        f2 = i3 / i1;
+        f3 = i4 / i2;
         f1 = f3;
         if (f2 < f3)
         {
@@ -186,14 +168,14 @@ public class ElasticImageView
     for (;;)
     {
       break;
-      m = this.jdField_c_of_type_Int;
-      n = j - m;
-      int i1 = this.jdField_d_of_type_Int;
-      int i2 = k - i1;
-      if ((n > 0) && (i2 > 0))
+      i3 = this.i;
+      i4 = i1 - i3;
+      int i5 = this.j;
+      int i6 = i2 - i5;
+      if ((i4 > 0) && (i6 > 0))
       {
-        f2 = m / j;
-        f3 = i1 / k;
+        f2 = i3 / i1;
+        f3 = i5 / i2;
         f1 = f3;
         if (f2 < f3) {
           f1 = f2;
@@ -201,17 +183,17 @@ public class ElasticImageView
       }
       else
       {
-        if (n > 0) {
-          f1 = this.jdField_c_of_type_Int;
+        if (i4 > 0) {
+          f1 = this.i;
         }
-        for (f2 = j;; f2 = k)
+        for (f2 = i1;; f2 = i2)
         {
           f1 /= f2;
           break;
-          if (i2 <= 0) {
+          if (i6 <= 0) {
             break label313;
           }
-          f1 = this.jdField_d_of_type_Int;
+          f1 = this.j;
         }
         label313:
         f1 = 1.0F;
@@ -220,67 +202,67 @@ public class ElasticImageView
     label315:
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("drawableWidth:");
-    localStringBuilder.append(j);
+    localStringBuilder.append(i1);
     localStringBuilder.append(",drawableHeight:");
-    localStringBuilder.append(k);
+    localStringBuilder.append(i2);
     localStringBuilder.append(",AvaliableWidth:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(",AvaliableHeight:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(",scaleValue:");
     localStringBuilder.append(f1);
     SLog.b("ElasticImageView", localStringBuilder.toString());
-    this.jdField_a_of_type_Float = f1;
-    float f1 = this.jdField_a_of_type_Float;
-    this.jdField_b_of_type_Float = (0.9F * f1);
-    this.jdField_c_of_type_Float = (f1 * 0.5F);
-    this.g = ((int)(this.jdField_e_of_type_Int - j / this.jdField_e_of_type_Float / 2.0F));
-    this.h = ((int)(this.jdField_f_of_type_Int - k / this.jdField_f_of_type_Float / 2.0F));
+    this.a = f1;
+    float f1 = this.a;
+    this.b = (0.9F * f1);
+    this.c = (f1 * 0.5F);
+    this.m = ((int)(this.k - i1 / this.s / 2.0F));
+    this.n = ((int)(this.l - i2 / this.t / 2.0F));
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 2);
-    this.jdField_f_of_type_Int = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 2);
-    paramInt1 = this.jdField_f_of_type_Int;
-    this.i = (paramInt1 * 2);
-    this.jdField_c_of_type_Int = (this.jdField_e_of_type_Int * 2);
-    this.jdField_d_of_type_Int = (paramInt1 * 2);
+    this.g = paramInt1;
+    this.h = paramInt2;
+    this.k = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 2);
+    this.l = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 2);
+    paramInt1 = this.l;
+    this.o = (paramInt1 * 2);
+    this.i = (this.k * 2);
+    this.j = (paramInt1 * 2);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ImageViewWidth:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(",ImageViewHeight:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(",centerX:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(",centerY:");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(",AvaliableWidth:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(",AvaliableHeight:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.j);
     SLog.b("ElasticImageView", localStringBuilder.toString());
     d();
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
-    a(this.jdField_d_of_type_Float);
+    this.e = this.a;
+    a(this.e);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    if ((this.f) && (this.u))
     {
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      int j = paramMotionEvent.getAction();
-      if (j != 0)
+      int i1 = paramMotionEvent.getAction();
+      if (i1 != 0)
       {
-        if (j != 1) {
-          if (j != 2)
+        if (i1 != 1) {
+          if (i1 != 2)
           {
-            if (j != 3) {
+            if (i1 != 3) {
               break label128;
             }
           }
@@ -300,7 +282,7 @@ public class ElasticImageView
       else
       {
         d();
-        this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
+        this.e = this.b;
         b();
       }
     }
@@ -313,18 +295,18 @@ public class ElasticImageView
   {
     super.setImageDrawable(paramDrawable);
     d();
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
-    a(this.jdField_d_of_type_Float);
+    this.e = this.a;
+    a(this.e);
   }
   
   public void setIsNeedAdjustDrawableToSquare(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.widget.ElasticImageView
  * JD-Core Version:    0.7.0.1
  */

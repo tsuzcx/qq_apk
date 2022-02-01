@@ -15,36 +15,36 @@ import java.util.List;
 public class RIJEmotionPanelBuilder
   implements IEmotionPanelBuilder, IEmotionTabCreateListener
 {
-  private RIJCommonEmotionAdapter jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapter;
-  private final RIJCommonEmotionAdapterParams jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapterParams;
-  private final String jdField_a_of_type_JavaLangString;
-  private List jdField_a_of_type_JavaUtilList;
+  private final RIJCommonEmotionAdapterParams a;
+  private final String b;
+  private RIJCommonEmotionAdapter c;
+  private List d;
   
   public RIJEmotionPanelBuilder(RIJCommonEmotionAdapterParams paramRIJCommonEmotionAdapterParams, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapterParams = paramRIJCommonEmotionAdapterParams;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramRIJCommonEmotionAdapterParams;
+    this.b = paramString;
   }
   
   public void a(List paramList)
   {
-    RIJCommonEmotionAdapter localRIJCommonEmotionAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapter;
+    RIJCommonEmotionAdapter localRIJCommonEmotionAdapter = this.c;
     if (localRIJCommonEmotionAdapter != null)
     {
       localRIJCommonEmotionAdapter.setData(paramList);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
   }
   
   public BaseEmotionAdapter buildComplete()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapter = new RIJCommonEmotionAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapterParams);
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    this.c = new RIJCommonEmotionAdapter(this.a);
+    List localList = this.d;
     if (localList != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapter.setData(localList);
+      this.c.setData(localList);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionAdapterRIJCommonEmotionAdapter;
+    return this.c;
   }
   
   public void buildData() {}
@@ -56,14 +56,14 @@ public class RIJEmotionPanelBuilder
   public void onCreateTabView(View paramView, URLImageView paramURLImageView, ImageView paramImageView, int paramInt)
   {
     paramView = URLDrawable.URLDrawableOptions.obtain();
-    paramView = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, paramView);
+    paramView = URLDrawable.getDrawable(this.b, paramView);
     paramView.startDownload();
     paramURLImageView.setImageDrawable(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.RIJEmotionPanelBuilder
  * JD-Core Version:    0.7.0.1
  */

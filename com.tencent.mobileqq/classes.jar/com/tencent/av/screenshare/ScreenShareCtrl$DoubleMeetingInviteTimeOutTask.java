@@ -11,27 +11,27 @@ class ScreenShareCtrl$DoubleMeetingInviteTimeOutTask
   implements Runnable
 {
   public final SessionInfo a;
-  private final WeakReference<VideoController> a;
+  private final WeakReference<VideoController> b;
   
   public ScreenShareCtrl$DoubleMeetingInviteTimeOutTask(VideoController paramVideoController, @NotNull SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramVideoController);
-    this.jdField_a_of_type_ComTencentAvAppSessionInfo = paramSessionInfo;
+    this.b = new WeakReference(paramVideoController);
+    this.a = paramSessionInfo;
   }
   
   public void run()
   {
-    long l = AudioHelper.b();
-    VideoController localVideoController = (VideoController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localVideoController != null) && (this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_f_of_type_Int == 9))
+    long l = AudioHelper.c();
+    VideoController localVideoController = (VideoController)this.b.get();
+    if ((localVideoController != null) && (this.a.i == 9))
     {
-      if (localVideoController.a.a() > 0)
+      if (localVideoController.e.f() > 0)
       {
-        localVideoController.a.a(new Object[] { Integer.valueOf(404), Long.valueOf(l), Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_f_of_type_Long) });
+        localVideoController.e.a(new Object[] { Integer.valueOf(404), Long.valueOf(l), Long.valueOf(this.a.aN) });
         return;
       }
-      if (localVideoController.a.isBackgroundStop) {
-        localVideoController.a(l, this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_f_of_type_Long, true, 0);
+      if (localVideoController.e.isBackgroundStop) {
+        localVideoController.a(l, this.a.aN, true, 0);
       }
     }
   }

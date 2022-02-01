@@ -9,51 +9,51 @@ import android.view.View;
 public class SpaceManager
   extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = true;
+  boolean a = true;
   private int b;
   private int c;
   private int d;
+  private int e;
   
   public SpaceManager(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.c = paramInt4;
+    this.a = paramBoolean;
+    this.c = paramInt1;
+    this.e = paramInt2;
+    this.b = paramInt3;
+    this.d = paramInt4;
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      paramRect.top = this.jdField_a_of_type_Int;
-      paramRect.bottom = this.c;
+      paramRect.top = this.b;
+      paramRect.bottom = this.d;
       if (i == 0) {
-        paramRect.left = this.b;
+        paramRect.left = this.c;
       }
       if (i == paramState.getItemCount() - 1) {
-        paramRect.right = this.d;
+        paramRect.right = this.e;
       }
     }
     else
     {
-      paramRect.left = this.b;
-      paramRect.right = this.d;
+      paramRect.left = this.c;
+      paramRect.right = this.e;
       if (i == 0) {
-        paramRect.top = this.jdField_a_of_type_Int;
+        paramRect.top = this.b;
       }
       if (i == paramState.getItemCount() - 1) {
-        paramRect.bottom = this.c;
+        paramRect.bottom = this.d;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.layout.SpaceManager
  * JD-Core Version:    0.7.0.1
  */

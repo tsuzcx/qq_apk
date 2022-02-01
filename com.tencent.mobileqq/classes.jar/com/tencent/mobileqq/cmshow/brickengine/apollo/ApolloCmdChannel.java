@@ -15,12 +15,8 @@ import com.tencent.mobileqq.apollo.channel.IRequestHandler;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.game.process.audio.ApolloGameMusicPlayer;
 import com.tencent.mobileqq.apollo.game.process.audio.ICmGameAudioPlayer;
-import com.tencent.mobileqq.apollo.game.process.chanel.CmGameSubProcessHandler;
 import com.tencent.mobileqq.apollo.game.process.chanel.CmGameToolCmdChannel;
 import com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.game.process.data.CmGameOpenIdFinder;
-import com.tencent.mobileqq.apollo.game.ranklist.CmGameUserInfo;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -46,7 +42,7 @@ public class ApolloCmdChannel
   private static final String TAG = "[cmshow][scripted]cmgame_process.ApolloDataChannel";
   private static volatile ApolloCmdChannel instance;
   private HashMap<Long, Boolean> mCallJsRuntimeMap = new HashMap();
-  private ICmGameAudioPlayer mPlayer = new ApolloGameMusicPlayer(-10000);
+  private ICmGameAudioPlayer mPlayer;
   private ApolloRenderRunner mRenderRunners = new ApolloRenderRunner();
   private WeakReferenceHandler mRequestHandlerThread;
   private List<IRequestHandler> mRequestHandlers = new ArrayList();
@@ -76,7 +72,7 @@ public class ApolloCmdChannel
       if (localCmGameLauncher == null) {
         return -1;
       }
-      return localCmGameLauncher.a();
+      return localCmGameLauncher.g();
     }
     return -10000;
   }
@@ -97,13 +93,21 @@ public class ApolloCmdChannel
   
   private ICmGameAudioPlayer getRightPlayer()
   {
+    return getRightPlayer(true);
+  }
+  
+  private ICmGameAudioPlayer getRightPlayer(boolean paramBoolean)
+  {
     if (CmGameUtil.a())
     {
       CmGameLauncher localCmGameLauncher = CmGameUtil.a(getGameId());
       if (localCmGameLauncher != null) {
-        return localCmGameLauncher.a();
+        return localCmGameLauncher.h();
       }
       return null;
+    }
+    if ((this.mPlayer == null) && (paramBoolean)) {
+      this.mPlayer = new ApolloGameMusicPlayer(-10000);
     }
     return this.mPlayer;
   }
@@ -116,30 +120,6 @@ public class ApolloCmdChannel
     {
       Collections.sort(this.mRequestHandlers, new ApolloCmdChannel.1(this));
       return;
-    }
-  }
-  
-  private boolean isGameHandlerClosed()
-  {
-    List localList = this.mRequestHandlers;
-    boolean bool2 = true;
-    try
-    {
-      Iterator localIterator = this.mRequestHandlers.iterator();
-      do
-      {
-        bool1 = bool2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      } while (!((IRequestHandler)localIterator.next() instanceof CmGameSubProcessHandler));
-      boolean bool1 = false;
-      return bool1;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
     }
   }
   
@@ -206,44 +186,27 @@ public class ApolloCmdChannel
     if (paramLong == -1L) {
       return;
     }
-    if (ApolloEngine.isEngineReady())
+    if (!ApolloEngine.isEngineReady())
     {
-      Object localObject = (Boolean)this.mCallJsRuntimeMap.get(Long.valueOf(paramLong));
-      try
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, "callbackEngineWarpper ApolloEngineImpl.isEngineReady() false");
+      }
+      return;
+    }
+    Object localObject = (Boolean)this.mCallJsRuntimeMap.get(Long.valueOf(paramLong));
+    try
+    {
+      CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
+      if ((localCmGameLauncher != null) && (localCmGameLauncher.m()))
       {
-        CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
-        if ((localCmGameLauncher != null) && (localCmGameLauncher.a()))
+        if (localObject != null)
         {
-          if (localObject != null)
-          {
-            if (((Boolean)localObject).booleanValue())
-            {
-              if (QLog.isColorLevel())
-              {
-                localObject = new StringBuilder();
-                ((StringBuilder)localObject).append("callbackEngineWrapper isCallFromJs callbackEngine,lState:");
-                ((StringBuilder)localObject).append(paramLong);
-                QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
-              }
-              callbackEngine(paramLong, paramInt, paramString1, paramString2);
-              return;
-            }
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("callbackEngineWrapper isCallFromJs callbackEngineOld,lState:");
-              ((StringBuilder)localObject).append(paramLong);
-              QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
-            }
-            callbackEngineOld(paramLong, paramInt, paramString1, paramString2);
-            return;
-          }
-          if (paramBoolean)
+          if (((Boolean)localObject).booleanValue())
           {
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("callbackEngineWrapper callbackEngine, jsRuntime lState:");
+              ((StringBuilder)localObject).append("callbackEngineWrapper isCallFromJs callbackEngine,lState:");
               ((StringBuilder)localObject).append(paramLong);
               QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
             }
@@ -253,30 +216,47 @@ public class ApolloCmdChannel
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("callbackEngineWrapper callbackEngineOld, jsRuntime lState:");
+            ((StringBuilder)localObject).append("callbackEngineWrapper isCallFromJs callbackEngineOld,lState:");
             ((StringBuilder)localObject).append(paramLong);
             QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
           }
           callbackEngineOld(paramLong, paramInt, paramString1, paramString2);
           return;
         }
-        if (CmGameUtil.a((int)paramLong) != null) {
+        if (paramBoolean)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("callbackEngineWrapper callbackEngine, jsRuntime lState:");
+            ((StringBuilder)localObject).append(paramLong);
+            QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
+          }
+          callbackEngine(paramLong, paramInt, paramString1, paramString2);
           return;
         }
-        if ((paramBoolean) || (((Boolean)localObject).booleanValue())) {
-          callbackEngine(paramLong, paramInt, paramString1, paramString2);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("callbackEngineWrapper callbackEngineOld, jsRuntime lState:");
+          ((StringBuilder)localObject).append(paramLong);
+          QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.e("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, "can not find h5 launcher");
+        callbackEngineOld(paramLong, paramInt, paramString1, paramString2);
         return;
       }
-      catch (OutOfMemoryError paramString1)
-      {
-        QLog.e("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, paramString1, new Object[0]);
+      if (CmGameUtil.a((int)paramLong) != null) {
         return;
       }
+      if ((paramBoolean) || (((Boolean)localObject).booleanValue())) {
+        callbackEngine(paramLong, paramInt, paramString1, paramString2);
+      }
+      QLog.e("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, "can not find h5 launcher");
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, "callbackEngineWarpper ApolloEngineImpl.isEngineReady() false");
+    catch (OutOfMemoryError paramString1)
+    {
+      QLog.e("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, paramString1, new Object[0]);
     }
   }
   
@@ -310,23 +290,7 @@ public class ApolloCmdChannel
         }
         return;
       }
-      localIRenderRunner.runRenderTask(new ApolloCmdChannel.3(this, paramBitmap, paramString, paramInt, paramLong));
-    }
-  }
-  
-  public void callbackGetNick(String paramString1, String paramString2, int paramInt, long paramLong)
-  {
-    IRenderRunner localIRenderRunner = this.mRenderRunners.a(paramLong);
-    if (localIRenderRunner != null)
-    {
-      if (!ApolloEngine.isEngineReady())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, "callbackGetNick ApolloEngineImpl.isEngineReady() false");
-        }
-        return;
-      }
-      localIRenderRunner.runRenderTask(new ApolloCmdChannel.2(this, paramString1, paramString2, paramInt, paramLong));
+      localIRenderRunner.runRenderTask(new ApolloCmdChannel.2(this, paramBitmap, paramString, paramInt, paramLong));
     }
   }
   
@@ -344,66 +308,66 @@ public class ApolloCmdChannel
   
   public void destroyMusic()
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer(false);
     if (localICmGameAudioPlayer != null) {
       localICmGameAudioPlayer.c();
     }
   }
   
-  public void getAccountInfo(long paramLong, String paramString, int paramInt)
-  {
-    if (CmGameUtil.a()) {
-      CmGameOpenIdFinder.a(paramLong, paramInt, paramString);
-    }
-  }
+  @Deprecated
+  @Keep
+  public void getAccountInfo(long paramLong, String paramString, int paramInt) {}
   
+  @Keep
   public int getDeviceHeight()
   {
-    return (int)DeviceInfoUtil.l();
+    return (int)DeviceInfoUtil.G();
   }
   
+  @Keep
   public int getDeviceWidth()
   {
-    return (int)DeviceInfoUtil.k();
+    return (int)DeviceInfoUtil.F();
   }
   
+  @Keep
   public int getDispalyDpi()
   {
-    return DeviceInfoUtil.e();
+    return DeviceInfoUtil.J();
   }
   
+  @Keep
   public int getMusicCurPos(int paramInt)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       return localICmGameAudioPlayer.a(paramInt);
     }
     return -1;
   }
   
+  @Keep
   public int getMusicDuration(int paramInt)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       return localICmGameAudioPlayer.b(paramInt);
     }
     return -1;
   }
   
+  @Keep
   public int getMusicSwitch()
   {
-    this.mPlayer = getRightPlayer();
-    AppInterface localAppInterface = CmGameUtil.a();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
+    AppInterface localAppInterface = CmGameUtil.b();
     if ((localICmGameAudioPlayer != null) && (localAppInterface != null)) {
       return localICmGameAudioPlayer.a(localAppInterface);
     }
     return 1;
   }
   
+  @Keep
   public String getNickname(int paramInt, String paramString1, String paramString2)
   {
     QQAppInterface localQQAppInterface = ApolloUtilImpl.getQQApp();
@@ -426,7 +390,7 @@ public class ApolloCmdChannel
         paramString1 = paramString2;
         if (paramInt == 1)
         {
-          localObject = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
+          localObject = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString2);
           paramString1 = paramString2;
           if (localObject != null) {
             paramString1 = ((Friends)localObject).getFriendNick();
@@ -447,9 +411,11 @@ public class ApolloCmdChannel
   }
   
   @Deprecated
+  @Keep
   public void getOpenApiHead(long paramLong, String paramString) {}
   
   @Deprecated
+  @Keep
   public void getOpenApiNick(long paramLong, String paramString) {}
   
   public void handleWebEvent(String paramString, int paramInt)
@@ -477,7 +443,7 @@ public class ApolloCmdChannel
       }
       return;
     }
-    localIRenderRunner.runRenderTask(new ApolloCmdChannel.4(this, localIRenderRunner, paramString));
+    localIRenderRunner.runRenderTask(new ApolloCmdChannel.3(this, localIRenderRunner, paramString));
   }
   
   protected native void nativeGetHeadCallback(Bitmap paramBitmap, String paramString, int paramInt, long paramLong);
@@ -492,6 +458,7 @@ public class ApolloCmdChannel
   
   protected native void nativeSetDataChannelObj(ApolloCmdChannel paramApolloCmdChannel);
   
+  @Keep
   public void openWebview(String paramString)
   {
     Object localObject2 = BaseActivity.sTopActivity;
@@ -520,15 +487,16 @@ public class ApolloCmdChannel
   
   public void operateNativeUI(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
+  @Keep
   public void pauseMusic(int paramInt, String paramString)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       localICmGameAudioPlayer.a(paramInt, paramString);
     }
   }
   
+  @Keep
   public void playMusic(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
     if (QLog.isColorLevel())
@@ -545,6 +513,7 @@ public class ApolloCmdChannel
     playMusic(paramLong, paramInt1, paramInt2, paramString, -1.0F, 0, 0);
   }
   
+  @Keep
   public void playMusic(long paramLong, int paramInt1, int paramInt2, String paramString, float paramFloat, int paramInt3, int paramInt4)
   {
     Object localObject = paramString;
@@ -582,9 +551,9 @@ public class ApolloCmdChannel
       }
     }
     createRightPlayer(paramInt4);
-    this.mPlayer = getRightPlayer();
-    if (this.mPlayer != null) {
-      ThreadManager.post(new ApolloCmdChannel.PlayMusicTask(getGameId(), this, localIRenderRunner, this.mPlayer, paramLong, paramInt1, paramInt2, paramString, paramFloat, paramInt3), 5, null, true);
+    localObject = getRightPlayer();
+    if (localObject != null) {
+      ThreadManager.post(new ApolloCmdChannel.PlayMusicTask(getGameId(), this, localIRenderRunner, (ICmGameAudioPlayer)localObject, paramLong, paramInt1, paramInt2, paramString, paramFloat, paramInt3), 5, null, true);
     }
   }
   
@@ -599,7 +568,7 @@ public class ApolloCmdChannel
         }
         return;
       }
-      paramIRenderRunner.runRenderTask(new ApolloCmdChannel.5(this, paramLong, paramInt));
+      paramIRenderRunner.runRenderTask(new ApolloCmdChannel.4(this, paramLong, paramInt));
     }
   }
   
@@ -645,22 +614,13 @@ public class ApolloCmdChannel
       ((StringBuilder)???).append(paramBoolean2);
       QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)???).toString());
     }
-    if (isGameHandlerClosed()) {
-      CmGameUtil.a(paramString1, paramString2);
-    }
-    if (CmGameToolCmdChannel.a(paramLong, paramBoolean1, paramString1, paramString2))
-    {
-      QLog.i("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, "fetch uin by openId first.");
-      return "{}";
-    }
-    paramString2 = CmGameOpenIdFinder.a(paramLong, paramString1, paramString2);
     if (1 == CmGameToolCmdChannel.a(paramLong, paramString1, paramString2, paramBoolean1)) {
       return "{}";
     }
     this.mCallJsRuntimeMap.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean2));
     ??? = paramString1.trim();
     Object localObject2 = new ApolloCmdChannel.RequestRunnable(this, paramLong, (String)???, paramString2);
-    if ((!"cs.close_room.local".equals(???)) && (!"cs.make_room_min.local".equals(???)) && (!"cs.share_game_result.local".equals(???)) && (!"cs.send_b2c_redpacket.local".equals(paramString1)) && (!"cs.qta_notify_test_result.local".equals(paramString1)) && (!"cs.share_pic.local".equals(paramString1)))
+    if ((!"cs.close_room.local".equals(???)) && (!"cs.qta_notify_test_result.local".equals(paramString1)))
     {
       if (paramBoolean1) {
         this.mRequestHandlerThread.post((Runnable)localObject2);
@@ -673,10 +633,10 @@ public class ApolloCmdChannel
             HandleResult localHandleResult = ((IRequestHandler)((Iterator)localObject2).next()).a(paramLong, paramString1, paramString2);
             if (localHandleResult != null)
             {
-              if (localHandleResult.jdField_a_of_type_Boolean) {
+              if (localHandleResult.b) {
                 ((Iterator)localObject2).remove();
               }
-              paramString1 = localHandleResult.jdField_a_of_type_JavaLangString;
+              paramString1 = localHandleResult.a;
               return paramString1;
             }
           }
@@ -689,24 +649,25 @@ public class ApolloCmdChannel
     return "{}";
   }
   
+  @Keep
   public void resumeMusic(int paramInt, String paramString)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       localICmGameAudioPlayer.b(paramInt, paramString);
     }
   }
   
+  @Keep
   public void seekTo(int paramInt1, int paramInt2)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       localICmGameAudioPlayer.a(paramInt1, paramInt2);
     }
   }
   
+  @Keep
   public void setMusicSwitch(int paramInt)
   {
     if (QLog.isColorLevel())
@@ -716,11 +677,14 @@ public class ApolloCmdChannel
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("[cmshow][scripted]cmgame_process.ApolloDataChannel", 2, ((StringBuilder)localObject).toString());
     }
-    this.mPlayer = getRightPlayer();
-    Object localObject = CmGameUtil.a();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
-    if ((localICmGameAudioPlayer != null) && (localObject != null)) {
-      localICmGameAudioPlayer.a(paramInt, (AppInterface)localObject);
+    Object localObject = getRightPlayer();
+    AppInterface localAppInterface = CmGameUtil.b();
+    if (localObject != null)
+    {
+      if (localAppInterface == null) {
+        return;
+      }
+      ((ICmGameAudioPlayer)localObject).a(paramInt, localAppInterface);
     }
   }
   
@@ -737,30 +701,18 @@ public class ApolloCmdChannel
     QLog.i("[cmshow][scripted]cmgame_process.ApolloDataChannel", 1, localStringBuilder.toString());
   }
   
+  @Keep
   public void stopMusic(int paramInt, String paramString)
   {
-    this.mPlayer = getRightPlayer();
-    ICmGameAudioPlayer localICmGameAudioPlayer = this.mPlayer;
+    ICmGameAudioPlayer localICmGameAudioPlayer = getRightPlayer();
     if (localICmGameAudioPlayer != null) {
       localICmGameAudioPlayer.c(paramInt, paramString);
-    }
-  }
-  
-  public void updateUserInfo(CmGameUserInfo paramCmGameUserInfo)
-  {
-    int i = 0;
-    while (i < this.mRequestHandlers.size())
-    {
-      if ((this.mRequestHandlers.get(i) instanceof CmGameSubProcessHandler)) {
-        ((CmGameSubProcessHandler)this.mRequestHandlers.get(i)).a(paramCmGameUserInfo);
-      }
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloCmdChannel
  * JD-Core Version:    0.7.0.1
  */

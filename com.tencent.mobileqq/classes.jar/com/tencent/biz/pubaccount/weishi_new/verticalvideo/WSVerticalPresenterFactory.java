@@ -26,6 +26,12 @@ public class WSVerticalPresenterFactory
     m();
     n();
     a();
+    o();
+    p();
+    q();
+    b("open_home_then_video");
+    r();
+    s();
   }
   
   public static WSVerticalPageContract.Presenter a(String paramString, WSVerticalPageContract.View paramView)
@@ -50,6 +56,11 @@ public class WSVerticalPresenterFactory
   private static void b()
   {
     a.put("share", new WSVerticalPresenterFactory.2());
+  }
+  
+  private static void b(String paramString)
+  {
+    a.put(paramString, new WSVerticalPresenterFactory.19());
   }
   
   private static void c()
@@ -111,10 +122,35 @@ public class WSVerticalPresenterFactory
   {
     a.put("drama_collection", new WSVerticalPresenterFactory.15());
   }
+  
+  private static void o()
+  {
+    a.put("personal_main", new WSVerticalPresenterFactory.16());
+  }
+  
+  private static void p()
+  {
+    a.put("personal_guest", new WSVerticalPresenterFactory.17());
+  }
+  
+  private static void q()
+  {
+    a.put("aio_enter_c_link", new WSVerticalPresenterFactory.18());
+  }
+  
+  private static void r()
+  {
+    a.put("essence_tab", new WSVerticalPresenterFactory.20());
+  }
+  
+  private static void s()
+  {
+    a.put("msg_feed", new WSVerticalPresenterFactory.21());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPresenterFactory
  * JD-Core Version:    0.7.0.1
  */

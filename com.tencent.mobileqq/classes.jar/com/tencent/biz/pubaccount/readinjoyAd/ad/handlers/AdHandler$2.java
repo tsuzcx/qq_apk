@@ -16,8 +16,8 @@ class AdHandler$2
     {
       if (AdHandler.a(this.this$0))
       {
-        ((AdvertisementInfo)this.this$0.a().b().get(0)).isSmallCard = true;
-        this.this$0.a().notifyDataSetChanged();
+        ((AdvertisementInfo)this.this$0.b().h().get(0)).isSmallCard = true;
+        this.this$0.b().notifyDataSetChanged();
         return;
       }
     }
@@ -35,7 +35,7 @@ class AdHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.handlers.AdHandler.2
  * JD-Core Version:    0.7.0.1
  */

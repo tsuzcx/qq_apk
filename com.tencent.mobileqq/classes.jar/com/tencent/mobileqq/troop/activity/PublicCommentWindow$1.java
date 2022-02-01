@@ -12,18 +12,18 @@ class PublicCommentWindow$1
   public void run()
   {
     PublicCommentWindow localPublicCommentWindow = this.this$0;
-    localPublicCommentWindow.b = false;
-    if ((localPublicCommentWindow.isShowing()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null))
+    localPublicCommentWindow.o = false;
+    if ((localPublicCommentWindow.isShowing()) && (this.this$0.e != null))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848135);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696247));
+      this.this$0.e.setVisibility(0);
+      this.this$0.a.setImageResource(2130849799);
+      this.this$0.a.setContentDescription(this.this$0.r.getString(2131894013));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.PublicCommentWindow.1
  * JD-Core Version:    0.7.0.1
  */

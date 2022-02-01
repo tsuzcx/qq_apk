@@ -20,23 +20,23 @@ class AVNotifyCenter$UpdateChattingTime
     if (localAVNotifyCenter == null) {
       return;
     }
-    if (localAVNotifyCenter.a(String.valueOf(AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Long)))
+    if (localAVNotifyCenter.a(String.valueOf(AVNotifyCenter.c(localAVNotifyCenter).h)))
     {
-      localAVNotifyCenter.jdField_b_of_type_JavaLangRunnable = null;
+      localAVNotifyCenter.l = null;
       return;
     }
-    if (localAVNotifyCenter.jdField_a_of_type_MqqOsMqqHandler != null) {
-      localAVNotifyCenter.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 2000L);
+    if (localAVNotifyCenter.f != null) {
+      localAVNotifyCenter.f.postDelayed(this, 2000L);
     }
-    if (localAVNotifyCenter.jdField_b_of_type_Boolean)
+    if (localAVNotifyCenter.n)
     {
-      String str = UITools.a(localAVNotifyCenter.jdField_a_of_type_Long);
-      if (AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Int == 3)
+      String str = UITools.a(localAVNotifyCenter.m);
+      if (AVNotifyCenter.c(localAVNotifyCenter).c == 3)
       {
-        localAVNotifyCenter.a(29, 0, Long.toString(AVNotifyCenter.a(localAVNotifyCenter).jdField_a_of_type_Long), str);
+        localAVNotifyCenter.a(29, 0, Long.toString(AVNotifyCenter.c(localAVNotifyCenter).h), str);
         return;
       }
-      localAVNotifyCenter.a(29, 0, AVNotifyCenter.a(localAVNotifyCenter).b, str);
+      localAVNotifyCenter.a(29, 0, AVNotifyCenter.c(localAVNotifyCenter).e, str);
     }
   }
 }

@@ -1,36 +1,58 @@
 package com.tencent.biz.pubaccount.weishi_new.image;
 
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSFallKeyPicMonitor;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.lang.ref.WeakReference;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-final class WSPicLoader$4
-  implements Runnable
+class WSPicLoader$4
+  implements URLDrawable.URLDrawableListener
 {
-  WSPicLoader$4(WeakReference paramWeakReference, String paramString, Drawable paramDrawable) {}
+  WSPicLoader$4(WSPicLoader paramWSPicLoader, String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadCanceled - ");
+    paramURLDrawable.append(this.a);
+    WSLog.a("815", paramURLDrawable.toString());
+    this.b.setImageResource(2130842687);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadFialed - ");
+    paramURLDrawable.append(this.a);
+    WSLog.a("815", paramURLDrawable.toString());
+    this.b.setImageResource(2130842687);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadProgressed - ");
+    paramURLDrawable.append(this.a);
+    WSLog.a("815", paramURLDrawable.toString());
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadSuccessed - ");
+    localStringBuilder.append(this.a);
+    WSLog.a("815", localStringBuilder.toString());
+    this.b.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.a, "banner")) {
+      WSFallKeyPicMonitor.b(2, this.c);
     }
-    if (WeishiUtils.a(this.jdField_a_of_type_JavaLangString) == null) {
-      return;
-    }
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
-    localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-    WSPicLoader.a(this.jdField_a_of_type_JavaLangRefWeakReference, (Drawable)localObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader.4
  * JD-Core Version:    0.7.0.1
  */

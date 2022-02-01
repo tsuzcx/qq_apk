@@ -19,106 +19,73 @@ import mqq.app.MobileQQ;
 public class VoiceView
   implements IViewPresenter, IPanelDragListener
 {
-  private Context jdField_a_of_type_AndroidContentContext = MobileQQ.sMobileQQ;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RecyclerView jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView;
-  private IViewPresenter jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
-  private VoiceAdapter jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
-  private VoicePanelSlideContainer jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private Context a = MobileQQ.sMobileQQ;
+  private View b;
+  private VoicePanelSlideContainer c;
+  private RecyclerView d;
+  private ImageView e;
+  private View f;
+  private VoiceAdapter g;
+  private IViewPresenter h;
+  private TextView i;
+  private TextView j;
   
   public VoiceView(IViewPresenter paramIViewPresenter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter = paramIViewPresenter;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558645, null);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer = ((VoicePanelSlideContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377657));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372440));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372441));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363013));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377656);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380982));
-    d();
-    e();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new VoiceView.1(this));
+    this.h = paramIViewPresenter;
   }
   
   private void c(boolean paramBoolean)
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.f;
     if (localView != null)
     {
-      int i;
+      int k;
       if (paramBoolean) {
-        i = 0;
+        k = 0;
       } else {
-        i = 4;
+        k = 4;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(k);
     }
   }
   
-  private void d()
+  private void h()
   {
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 1, false);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter = new VoiceAdapter(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter.a(this);
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter);
+    this.b = LayoutInflater.from(this.a).inflate(2131624260, null);
+    this.c = ((VoicePanelSlideContainer)this.b.findViewById(2131446076));
+    this.i = ((TextView)this.b.findViewById(2131439962));
+    this.j = ((TextView)this.b.findViewById(2131439963));
+    this.e = ((ImageView)this.b.findViewById(2131428817));
+    this.f = this.b.findViewById(2131446075);
+    this.d = ((RecyclerView)this.b.findViewById(2131449973));
+    i();
+    j();
+    this.i.setVisibility(8);
+    this.j.setVisibility(8);
+    this.j.setOnClickListener(new VoiceView.1(this));
   }
   
-  private void e()
+  private void i()
   {
-    VoicePanelSlideContainer localVoicePanelSlideContainer = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.a, 1, false);
+    this.d.setLayoutManager(localLinearLayoutManager);
+    this.g = new VoiceAdapter(this.a);
+    this.g.a(this);
+    this.d.setAdapter(this.g);
+  }
+  
+  private void j()
+  {
+    VoicePanelSlideContainer localVoicePanelSlideContainer = this.c;
     if (localVoicePanelSlideContainer != null) {
       localVoicePanelSlideContainer.setPanelDragListener(this);
     }
   }
   
-  public int a()
-  {
-    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
-    if (localVoiceAdapter != null) {
-      return localVoiceAdapter.a();
-    }
-    return 3;
-  }
-  
-  public View a()
-  {
-    c();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public CommandInfo a()
-  {
-    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
-    if (localVoiceAdapter != null) {
-      return localVoiceAdapter.a();
-    }
-    return null;
-  }
-  
-  public List<VoiceItemInfo> a()
-  {
-    VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
-    if (localVoiceAdapter != null) {
-      return localVoiceAdapter.a();
-    }
-    return null;
-  }
-  
   public void a()
   {
-    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    IViewPresenter localIViewPresenter = this.h;
     if (localIViewPresenter != null) {
       localIViewPresenter.a();
     }
@@ -126,7 +93,7 @@ public class VoiceView
   
   public void a(int paramInt)
   {
-    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    IViewPresenter localIViewPresenter = this.h;
     if (localIViewPresenter != null) {
       localIViewPresenter.a(paramInt);
     }
@@ -136,7 +103,7 @@ public class VoiceView
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      VoiceAdapter localVoiceAdapter = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter;
+      VoiceAdapter localVoiceAdapter = this.g;
       if (localVoiceAdapter != null) {
         localVoiceAdapter.a(paramCommandInfo, paramList);
       }
@@ -149,7 +116,7 @@ public class VoiceView
   
   public void a(FriendItemInfo paramFriendItemInfo)
   {
-    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    IViewPresenter localIViewPresenter = this.h;
     if (localIViewPresenter != null) {
       localIViewPresenter.a(paramFriendItemInfo);
     }
@@ -157,34 +124,67 @@ public class VoiceView
   
   public void a(boolean paramBoolean)
   {
-    IViewPresenter localIViewPresenter = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreIViewPresenter;
+    IViewPresenter localIViewPresenter = this.h;
     if (localIViewPresenter != null) {
       localIViewPresenter.a(paramBoolean);
     }
   }
   
-  public boolean a()
-  {
-    VoicePanelSlideContainer localVoicePanelSlideContainer = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelSlideContainer;
-    return (localVoicePanelSlideContainer != null) && (localVoicePanelSlideContainer.a());
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceAdapter = null;
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.g = null;
+    this.d = null;
+    this.e = null;
+    this.b = null;
   }
   
   public void b(boolean paramBoolean)
   {
     c(paramBoolean);
   }
+  
+  public View c()
+  {
+    h();
+    return this.b;
+  }
+  
+  public List<VoiceItemInfo> d()
+  {
+    VoiceAdapter localVoiceAdapter = this.g;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.a();
+    }
+    return null;
+  }
+  
+  public int e()
+  {
+    VoiceAdapter localVoiceAdapter = this.g;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.b();
+    }
+    return 3;
+  }
+  
+  public CommandInfo f()
+  {
+    VoiceAdapter localVoiceAdapter = this.g;
+    if (localVoiceAdapter != null) {
+      return localVoiceAdapter.c();
+    }
+    return null;
+  }
+  
+  public boolean g()
+  {
+    VoicePanelSlideContainer localVoicePanelSlideContainer = this.c;
+    return (localVoicePanelSlideContainer != null) && (localVoicePanelSlideContainer.a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoiceView
  * JD-Core Version:    0.7.0.1
  */

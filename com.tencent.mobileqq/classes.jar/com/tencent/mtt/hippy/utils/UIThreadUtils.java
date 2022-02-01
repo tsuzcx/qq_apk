@@ -5,7 +5,7 @@ import android.os.Looper;
 
 public class UIThreadUtils
 {
-  private static Handler sMainHandler = new Handler(Looper.getMainLooper());
+  private static final Handler sMainHandler = new Handler(Looper.getMainLooper());
   
   public static void assertOnUiThread()
   {
@@ -27,7 +27,7 @@ public class UIThreadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.UIThreadUtils
  * JD-Core Version:    0.7.0.1
  */

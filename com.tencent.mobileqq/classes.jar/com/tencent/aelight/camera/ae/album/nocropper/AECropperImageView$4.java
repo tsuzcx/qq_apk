@@ -12,16 +12,16 @@ class AECropperImageView$4
   public void onAnimationCancel(Animator paramAnimator)
   {
     AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationCancel(paramAnimator);
+    if (this.a.d != null) {
+      this.a.d.onAnimationCancel(paramAnimator);
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     AECropperImageView.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.onAnimationEnd(paramAnimator);
+    if (this.a.d != null) {
+      this.a.d.onAnimationEnd(paramAnimator);
     }
   }
   
@@ -33,14 +33,14 @@ class AECropperImageView$4
   public void onAnimationStart(Animator paramAnimator)
   {
     AECropperImageView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.onAnimationStart(paramAnimator);
+    if (this.a.d != null) {
+      this.a.d.onAnimationStart(paramAnimator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperImageView.4
  * JD-Core Version:    0.7.0.1
  */

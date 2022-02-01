@@ -16,42 +16,42 @@ public class CaseDefaultNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  private void a(Message paramMessage)
+  private void e(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b() == 1)
+    if (this.a.getMessageFacade().d.d() == 1)
     {
       if ((!AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(paramMessage.frienduin)) && (!AppConstants.MAYKNOW_RECOMMEND_UIN.equals(paramMessage.frienduin)) && (!AppConstants.FRIEND_ANNIVER_UIN.equals(paramMessage.frienduin)))
       {
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(paramMessage);
+        paramMessage = this.a.getFaceBitmap(paramMessage.frienduin, true);
+        this.b.a(paramMessage);
         return;
       }
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.senderuin, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(paramMessage);
+      paramMessage = this.a.getFaceBitmap(paramMessage.senderuin, true);
+      this.b.a(paramMessage);
     }
-  }
-  
-  public int a(Message paramMessage)
-  {
-    return -113;
   }
   
   public NotificationElement a(Message paramMessage)
   {
-    a(paramMessage);
+    e(paramMessage);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(b());
     ((StringBuilder)localObject).append(": ");
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d(c());
-    b(paramMessage);
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+    this.b.b((String)localObject);
+    this.b.d(d());
+    c(paramMessage);
+    return this.b;
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.CaseDefaultNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

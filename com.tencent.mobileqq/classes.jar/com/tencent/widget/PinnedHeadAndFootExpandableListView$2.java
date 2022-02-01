@@ -11,15 +11,15 @@ class PinnedHeadAndFootExpandableListView$2
   
   public void onClick(View paramView)
   {
-    if (this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener != null) {
-      this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    if (this.b.a != null) {
+      this.b.a.a(this.a, this.b.f, this.b.o);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.PinnedHeadAndFootExpandableListView.2
  * JD-Core Version:    0.7.0.1
  */

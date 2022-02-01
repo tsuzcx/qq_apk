@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/m6j" android:layout_width="fill_parent" android:layout_height="96.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o6t" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="6.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/qk2" android:visibility="invisible" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.qqgift.view.QQGiftCircleProgress android:layout_gravity="center" android:id="@id/p2y" android:visibility="invisible" android:layout_width="37.0dip" android:layout_height="37.0dip" android:layout_marginTop="14.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/qlp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/o6t" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/b01" android:ellipsize="end" android:id="@id/qln" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/qlp" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/o6x" android:layout_width="wrap_content" android:layout_height="14.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:scaleType="fitEnd" android:layout_alignParentRight="true" />
+</RelativeLayout>

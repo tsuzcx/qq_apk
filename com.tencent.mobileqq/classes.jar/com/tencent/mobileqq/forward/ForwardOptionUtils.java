@@ -140,7 +140,7 @@ public class ForwardOptionUtils
               localContentValues.put("extLong", Integer.valueOf(localMessageForArkApp.extLong));
               paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageForArkApp, localContentValues, new int[] { 2, 3 });
               paramQQAppInterface.getMsgHandler().notifyUI(6003, true, new String[] { localMessageRecord.frienduin, String.valueOf(localMessageRecord.uniseq) });
-              paramQQAppInterface.getMsgCache().a(localMessageRecord.frienduin, localMessageRecord.istroop, l);
+              paramQQAppInterface.getMsgCache().b(localMessageRecord.frienduin, localMessageRecord.istroop, l);
               if (localObject1 == null) {
                 localObject1 = new ArrayList(paramList);
               }
@@ -217,7 +217,7 @@ public class ForwardOptionUtils
     paramMessageForArkApp.saveExtInfoToExtStr(MessageConstants.x, paramString);
     paramMessageForArkApp.saveMsgData(paramQQAppInterface);
     paramMessageForArkApp.saveMsgExtStrAndFlag(paramQQAppInterface);
-    paramQQAppInterface.getMsgCache().a(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
+    paramQQAppInterface.getMsgCache().b(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
     paramString = new Object[8];
     paramString[0] = paramMessageForArkApp.frienduin;
     paramString[1] = Integer.valueOf(paramMessageForArkApp.istroop);
@@ -235,7 +235,7 @@ public class ForwardOptionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardOptionUtils
  * JD-Core Version:    0.7.0.1
  */

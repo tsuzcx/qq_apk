@@ -10,12 +10,12 @@ class ReadInJoyChannelWaterFallViewController$1
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    this.this$0.a.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelWaterFallViewController.1
  * JD-Core Version:    0.7.0.1
  */

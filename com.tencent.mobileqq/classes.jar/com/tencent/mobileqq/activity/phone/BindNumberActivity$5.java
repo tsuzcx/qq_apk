@@ -16,7 +16,7 @@ class BindNumberActivity$5
   protected void onBindMobile(boolean paramBoolean, Bundle paramBundle)
   {
     Object localObject = this.a;
-    ((BindNumberActivity)localObject).f = false;
+    ((BindNumberActivity)localObject).q = false;
     ((BindNumberActivity)localObject).a();
     this.a.dismissProgressDialog();
     if (paramBoolean)
@@ -28,7 +28,7 @@ class BindNumberActivity$5
       int i = paramBundle.getInt("k_result");
       if (paramBundle.getBoolean("k_buto_bind", false))
       {
-        this.a.c();
+        this.a.d();
       }
       else if ((i != 104) && (i != 0))
       {
@@ -43,11 +43,11 @@ class BindNumberActivity$5
         }
         else if (i == 227)
         {
-          this.a.d();
+          this.a.e();
         }
         else if (i == 226)
         {
-          this.a.e();
+          this.a.f();
         }
         else
         {
@@ -63,7 +63,7 @@ class BindNumberActivity$5
       }
       else
       {
-        this.a.b();
+        this.a.c();
       }
     }
     else
@@ -71,28 +71,28 @@ class BindNumberActivity$5
       if (QLog.isColorLevel()) {
         QLog.d("BindNumberActivity", 2, "onBindMobile failed");
       }
-      this.a.showToast(2131718218);
+      this.a.showToast(2131915700);
     }
-    ContactUtils.a();
-    this.a.app.unRegistObserver(this.a.a);
-    this.a.a = null;
+    ContactUtils.b();
+    this.a.app.unRegistObserver(this.a.f);
+    this.a.f = null;
   }
   
   protected void onRebindMobile(boolean paramBoolean, Bundle paramBundle)
   {
     this.a.dismissProgressDialog();
     if (paramBoolean) {
-      this.a.b();
+      this.a.c();
     } else {
-      this.a.showToast(2131718218);
+      this.a.showToast(2131915700);
     }
-    this.a.app.unRegistObserver(this.a.a);
-    this.a.a = null;
+    this.a.app.unRegistObserver(this.a.f);
+    this.a.f = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindNumberActivity.5
  * JD-Core Version:    0.7.0.1
  */

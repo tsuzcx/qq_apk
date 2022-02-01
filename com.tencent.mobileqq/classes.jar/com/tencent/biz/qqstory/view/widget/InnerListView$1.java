@@ -11,8 +11,8 @@ class InnerListView$1
   
   public void onClick(View paramView)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    if ((InnerListView.a(this.b) != null) && (InnerListView.b(this.b) != null)) {
+      InnerListView.a(this.b).a(this.b, paramView, this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

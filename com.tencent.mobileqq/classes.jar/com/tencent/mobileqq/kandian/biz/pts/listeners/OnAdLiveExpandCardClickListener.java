@@ -17,27 +17,27 @@ import java.util.ArrayList;
 public class OnAdLiveExpandCardClickListener
   implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private int b;
+  private IReadInJoyModel a;
+  private Context b;
+  private int c;
+  private int d;
   
   public OnAdLiveExpandCardClickListener(IReadInJoyModel paramIReadInJoyModel, Context paramContext, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramIReadInJoyModel;
+    this.b = paramContext;
+    this.d = paramInt1;
+    this.c = paramInt2;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().b() != null) {
+    if (this.a.u().h() != null) {
       try
       {
         ArrayList localArrayList = new ArrayList();
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().a(0, localArrayList, new ArrayList(), null, false, true);
+        localArrayList.add(this.a.k());
+        this.a.u().a(0, localArrayList, new ArrayList(), null, false, true);
         return;
       }
       catch (Exception localException)
@@ -54,8 +54,8 @@ public class OnAdLiveExpandCardClickListener
   {
     try
     {
-      ((AdvertisementInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()).isSmallCard = true;
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().notifyDataSetChanged();
+      ((AdvertisementInfo)this.a.k()).isSmallCard = true;
+      this.a.u().notifyDataSetChanged();
       return;
     }
     catch (Exception localException)
@@ -69,13 +69,13 @@ public class OnAdLiveExpandCardClickListener
   
   public void onClick(ViewBase paramViewBase)
   {
-    IReadInJoyModel localIReadInJoyModel = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-    if ((localIReadInJoyModel != null) && (localIReadInJoyModel.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSmallMiniGameInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a())))
+    IReadInJoyModel localIReadInJoyModel = this.a;
+    if ((localIReadInJoyModel != null) && (localIReadInJoyModel.k() != null) && (this.a.k().mSmallMiniGameInfo != null) && (this.a.u() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(this.a.k())))
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.b == null) {
         return;
       }
-      if (this.b != 1121) {
+      if (this.d != 1121) {
         return;
       }
       LogUtil.QLog.d("OnAdLiveExpandCardClickListener", 2, "close click");
@@ -83,21 +83,21 @@ public class OnAdLiveExpandCardClickListener
       {
         LogUtil.QLog.d("OnAdLiveExpandCardClickListener", 2, "close click remove");
         a();
-        ((AdvertisementInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()).clickPos = 39;
+        ((AdvertisementInfo)this.a.k()).clickPos = 39;
       }
       else
       {
         LogUtil.QLog.d("OnAdLiveExpandCardClickListener", 2, "close click change");
         b();
-        ((AdvertisementInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()).clickPos = 40;
+        ((AdvertisementInfo)this.a.k()).clickPos = 40;
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(ReportAction.CLOSE, Integer.valueOf(0), (AdvertisementInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 3, 1, 1);
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(ReportAction.CLOSE, Integer.valueOf(0), (AdvertisementInfo)this.a.k(), 3, 1, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnAdLiveExpandCardClickListener
  * JD-Core Version:    0.7.0.1
  */

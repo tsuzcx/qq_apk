@@ -23,19 +23,19 @@ class WSVideoPluginInstall$3
         return true;
       }
       WSVideoPluginInstall.a(this.a, false);
-      WSVideoPluginInstall.a(this.a).removeMessages(1);
-      if (WSVideoPluginInstall.a(this.a) != null)
+      WSVideoPluginInstall.b(this.a).removeMessages(1);
+      if (WSVideoPluginInstall.d(this.a) != null)
       {
-        WSVideoPluginInstall.a(this.a).a(false);
+        WSVideoPluginInstall.d(this.a).a(false);
         return true;
       }
     }
     else
     {
       WSVideoPluginInstall.a(this.a, false);
-      WSVideoPluginInstall.a(this.a).removeMessages(0);
-      if (WSVideoPluginInstall.a(this.a) != null) {
-        WSVideoPluginInstall.a(this.a).a(true);
+      WSVideoPluginInstall.b(this.a).removeMessages(0);
+      if (WSVideoPluginInstall.d(this.a) != null) {
+        WSVideoPluginInstall.d(this.a).a(true);
       }
     }
     return true;
@@ -43,7 +43,7 @@ class WSVideoPluginInstall$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.3
  * JD-Core Version:    0.7.0.1
  */

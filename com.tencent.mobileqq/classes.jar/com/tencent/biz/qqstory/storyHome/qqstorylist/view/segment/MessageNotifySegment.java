@@ -43,10 +43,10 @@ public class MessageNotifySegment
   implements View.OnClickListener
 {
   public static final String KEY = "MessageNotifySegment";
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
+  private int a = 0;
+  private long b;
+  private String c;
+  private Integer d;
   
   public MessageNotifySegment(Context paramContext)
   {
@@ -60,20 +60,20 @@ public class MessageNotifySegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
-      paramBaseViewHolder.a(2131378745).setVisibility(8);
+      paramBaseViewHolder.a(2131447419).setVisibility(8);
       paramBaseViewHolder.a().setLayoutParams(new AbsListView.LayoutParams(-1, 0));
       return paramBaseViewHolder.a();
     }
     paramInt = UIUtils.a(paramBaseViewHolder.a().getContext(), 52.0F);
-    paramBaseViewHolder.a(2131378745).setVisibility(0);
+    paramBaseViewHolder.a(2131447419).setVisibility(0);
     paramBaseViewHolder.a().setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
     paramBaseViewHolder.a().setVisibility(0);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131368343);
-    Drawable localDrawable = ImageUtil.e();
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131435219);
+    Drawable localDrawable = ImageUtil.j();
     QQStoryContext.a();
-    if (QQStoryContext.a() == null)
+    if (QQStoryContext.j() == null)
     {
       localImageView.setImageDrawable(localDrawable);
     }
@@ -81,25 +81,25 @@ public class MessageNotifySegment
     {
       if (localImageView.getTag() != null)
       {
-        paramViewGroup = this.jdField_a_of_type_JavaLangInteger;
+        paramViewGroup = this.d;
         if ((paramViewGroup == null) || (paramViewGroup.equals(localImageView.getTag()))) {
           return paramBaseViewHolder.a();
         }
       }
-      localImageView.setTag(this.jdField_a_of_type_JavaLangInteger);
+      localImageView.setTag(this.d);
       localImageView.setImageDrawable(localDrawable);
-      TextView localTextView = (TextView)paramBaseViewHolder.a(2131365169);
+      TextView localTextView = (TextView)paramBaseViewHolder.a(2131431322);
       StringBuilder localStringBuilder = new StringBuilder();
-      paramInt = this.jdField_a_of_type_Int;
+      paramInt = this.a;
       if (paramInt > 99) {
         paramViewGroup = "99+";
       } else {
         paramViewGroup = Integer.valueOf(paramInt);
       }
       localStringBuilder.append(paramViewGroup);
-      localStringBuilder.append(HardCodeUtil.a(2131706675));
+      localStringBuilder.append(HardCodeUtil.a(2131904526));
       localTextView.setText(localStringBuilder.toString());
-      if (this.jdField_a_of_type_Long <= 0L)
+      if (this.b <= 0L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "uin <=0. fetch first message.");
@@ -116,14 +116,9 @@ public class MessageNotifySegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561712, paramViewGroup, false);
-    paramViewGroup.findViewById(2131378745).setOnClickListener(this);
+    paramViewGroup = LayoutInflater.from(this.l).inflate(2131628091, paramViewGroup, false);
+    paramViewGroup.findViewById(2131447419).setOnClickListener(this);
     return new BaseViewHolder(paramViewGroup);
-  }
-  
-  public String a()
-  {
-    return "MessageNotifySegment";
   }
   
   public void a(ImageView paramImageView)
@@ -137,29 +132,34 @@ public class MessageNotifySegment
       QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch first message from gray, start=0");
     }
     QQStoryContext.a();
-    ProtoUtils.a(QQStoryContext.a(), new MessageNotifySegment.MessageListFirstObserver(this, paramImageView), localReqStoryMessageList.toByteArray(), StoryApi.a("StorySvc.get_710_message_list"));
+    ProtoUtils.a(QQStoryContext.j(), new MessageNotifySegment.MessageListFirstObserver(this, paramImageView), localReqStoryMessageList.toByteArray(), StoryApi.a("StorySvc.get_710_message_list"));
   }
   
   public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
   {
     if ((paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.get() == 52) && (paramRedDotInfo.bool_display_reddot.get()) && (paramRedDotInfo.uint32_number.get() > 0))
     {
-      this.jdField_a_of_type_Int = paramRedDotInfo.uint32_number.get();
-      this.jdField_a_of_type_Long = paramRedDotInfo.uint64_cmd_uin.get();
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramRedDotInfo.uint32_last_time.get());
-      this.jdField_a_of_type_JavaLangString = paramRedDotInfo.str_face_url.get().toStringUtf8();
+      this.a = paramRedDotInfo.uint32_number.get();
+      this.b = paramRedDotInfo.uint64_cmd_uin.get();
+      this.d = Integer.valueOf(paramRedDotInfo.uint32_last_time.get());
+      this.c = paramRedDotInfo.str_face_url.get().toStringUtf8();
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
   }
   
-  protected void c()
+  public String b()
+  {
+    return "MessageNotifySegment";
+  }
+  
+  protected void g()
   {
     QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.j();
     if (localQQAppInterface != null)
     {
-      a(((TroopRedTouchManager)localQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(52));
+      a(((TroopRedTouchManager)localQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).e(52));
       return;
     }
     SLog.e("Q.qqstory.home.MessageNotifySegment", "Get the QQAppInterface is null,we dont know the red point state");
@@ -167,11 +167,11 @@ public class MessageNotifySegment
   
   public void onClick(View paramView)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, StoryMessageListActivity.class);
+    Object localObject = new Intent(this.l, StoryMessageListActivity.class);
     ((Intent)localObject).putExtra("qqstory_message_list_source", 0);
     ((Intent)localObject).putExtra("qqstory_jump_source", "2");
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    localObject = ((UserManager)SuperManager.a(2)).b(QQStoryContext.a().b());
+    this.l.startActivity((Intent)localObject);
+    localObject = ((UserManager)SuperManager.a(2)).b(QQStoryContext.a().i());
     int i;
     if ((localObject != null) && (((QQUserUIItem)localObject).isVip)) {
       i = 1;

@@ -13,12 +13,12 @@ import com.tencent.image.URLImageView;
 public class URLTextImageView
   extends URLImageView
 {
-  float jdField_b_of_type_Float = 0.0F;
-  Paint jdField_b_of_type_AndroidGraphicsPaint;
-  public String e;
-  int i;
-  public int j = 0;
-  int k = 2131165535;
+  public String G;
+  Paint H;
+  int I;
+  public int J = 0;
+  float K = 0.0F;
+  int L = 2131165875;
   
   public URLTextImageView(Context paramContext)
   {
@@ -38,51 +38,51 @@ public class URLTextImageView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (!TextUtils.isEmpty(this.e))
+    if (!TextUtils.isEmpty(this.G))
     {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      if (this.H == null)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(this.k));
-        this.jdField_b_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
+        this.H = new Paint(1);
+        this.H.setColor(getContext().getResources().getColor(this.L));
+        this.H.setTextAlign(Paint.Align.CENTER);
       }
-      if (this.j != this.jdField_b_of_type_AndroidGraphicsPaint.getTextSize())
+      if (this.J != this.H.getTextSize())
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.j);
-        Paint.FontMetricsInt localFontMetricsInt = this.jdField_b_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-        this.i = ((getHeight() - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
+        this.H.setTextSize(this.J);
+        Paint.FontMetricsInt localFontMetricsInt = this.H.getFontMetricsInt();
+        this.I = ((getHeight() - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
       }
-      int m = this.i;
-      float f = this.jdField_b_of_type_Float;
+      int i = this.I;
+      float f = this.K;
       if (f != 0.0F) {
-        m = (int)(f * getHeight());
+        i = (int)(f * getHeight());
       }
-      paramCanvas.drawText(this.e, getWidth() / 2, m, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(this.G, getWidth() / 2, i, this.H);
     }
   }
   
   public void setTextColor(int paramInt)
   {
-    this.k = paramInt;
-    Paint localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;
+    this.L = paramInt;
+    Paint localPaint = this.H;
     if (localPaint != null) {
-      localPaint.setColor(getContext().getResources().getColor(this.k));
+      localPaint.setColor(getContext().getResources().getColor(this.L));
     }
   }
   
   public void setTextSize(int paramInt)
   {
-    this.j = paramInt;
+    this.J = paramInt;
   }
   
   public void setTopPercent(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.K = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.URLTextImageView
  * JD-Core Version:    0.7.0.1
  */

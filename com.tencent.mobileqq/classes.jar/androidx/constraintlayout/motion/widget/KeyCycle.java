@@ -56,9 +56,12 @@ public class KeyCycle
           ((KeyCycleOscillator)paramHashMap.get(str)).setPoint(this.mFramePosition, this.mWaveShape, this.mWaveVariesBy, this.mWavePeriod, this.mWaveOffset, ((ConstraintAttribute)localObject).getValueToInterpolate(), (ConstraintAttribute)localObject);
         }
       }
-      float f = getValue(str);
-      if (!Float.isNaN(f)) {
-        ((KeyCycleOscillator)paramHashMap.get(str)).setPoint(this.mFramePosition, this.mWaveShape, this.mWaveVariesBy, this.mWavePeriod, this.mWaveOffset, f);
+      else
+      {
+        float f = getValue(str);
+        if (!Float.isNaN(f)) {
+          ((KeyCycleOscillator)paramHashMap.get(str)).setPoint(this.mFramePosition, this.mWaveShape, this.mWaveVariesBy, this.mWavePeriod, this.mWaveOffset, f);
+        }
       }
     }
   }
@@ -150,9 +153,9 @@ public class KeyCycle
       {
       default: 
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("  UNKNOWN  ");
+        ((StringBuilder)localObject2).append("WARNING KeyCycle UNKNOWN  ");
         ((StringBuilder)localObject2).append(str);
-        Log.v("WARNING KeyCycle", ((StringBuilder)localObject2).toString());
+        Log.v("KeyCycle", ((StringBuilder)localObject2).toString());
         break;
       case 12: 
         ((SplineSet)localObject2).setPoint(this.mFramePosition, this.mProgress);
@@ -322,9 +325,9 @@ public class KeyCycle
     {
     default: 
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("  UNKNOWN  ");
+      localStringBuilder.append("WARNING! KeyCycle UNKNOWN  ");
       localStringBuilder.append(paramString);
-      Log.v("WARNING! KeyCycle", localStringBuilder.toString());
+      Log.v("KeyCycle", localStringBuilder.toString());
       return (0.0F / 0.0F);
     case 12: 
       return this.mProgress;
@@ -502,7 +505,7 @@ public class KeyCycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.KeyCycle
  * JD-Core Version:    0.7.0.1
  */

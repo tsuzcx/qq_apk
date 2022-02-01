@@ -33,7 +33,7 @@ public class GdtDownloaderAdapter
     paramString = DownloadManagerV2.a().b(paramString);
     if (paramString != null)
     {
-      paramString.m = "biz_src_ads";
+      paramString.r = "biz_src_ads";
       return paramString;
     }
     return null;
@@ -53,7 +53,7 @@ public class GdtDownloaderAdapter
     }
     paramObject = (DownloadInfo)DownloadInfo.class.cast(paramObject);
     if (paramObject != null) {
-      i = paramObject.f;
+      i = paramObject.t;
     }
     return i;
   }
@@ -62,7 +62,7 @@ public class GdtDownloaderAdapter
   {
     if ((paramObject instanceof DownloadInfo))
     {
-      DownloadManagerV2.a().a((DownloadInfo)paramObject);
+      DownloadManagerV2.a().d((DownloadInfo)paramObject);
       return;
     }
     if ((paramObject instanceof Bundle)) {
@@ -136,7 +136,7 @@ public class GdtDownloaderAdapter
   
   public void pauseDownload(String paramString1, String paramString2)
   {
-    DownloadManagerV2.a().a(paramString2);
+    DownloadManagerV2.a().e(paramString2);
   }
   
   public void registerListener(IAdDownloader.Callback paramCallback)
@@ -155,7 +155,7 @@ public class GdtDownloaderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloaderAdapter
  * JD-Core Version:    0.7.0.1
  */

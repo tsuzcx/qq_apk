@@ -15,7 +15,23 @@ public final class VasPreloadService$Companion
 {
   @JvmStatic
   @Nullable
-  public final String a(@NotNull String paramString)
+  public final qq_ad_get.QQAdGetRsp a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "businessId");
+    return (qq_ad_get.QQAdGetRsp)VasPreloadService.d().remove(paramString);
+  }
+  
+  @JvmStatic
+  @Nullable
+  public final qq_ad_get.QQAdGetRsp b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "businessId");
+    return (qq_ad_get.QQAdGetRsp)VasPreloadService.d().get(paramString);
+  }
+  
+  @JvmStatic
+  @Nullable
+  public final String c(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
     Object localObject2 = ((Companion)this).b(paramString);
@@ -31,26 +47,10 @@ public final class VasPreloadService$Companion
     }
     return paramString;
   }
-  
-  @JvmStatic
-  @Nullable
-  public final qq_ad_get.QQAdGetRsp a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "businessId");
-    return (qq_ad_get.QQAdGetRsp)VasPreloadService.a().remove(paramString);
-  }
-  
-  @JvmStatic
-  @Nullable
-  public final qq_ad_get.QQAdGetRsp b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "businessId");
-    return (qq_ad_get.QQAdGetRsp)VasPreloadService.a().get(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.preload.VasPreloadService.Companion
  * JD-Core Version:    0.7.0.1
  */

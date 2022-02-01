@@ -10,7 +10,7 @@ class SearchHistoryAdapter$1
 {
   public void run()
   {
-    String[] arrayOfString = HistoryChatMsgSearchKeyUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String[] arrayOfString = HistoryChatMsgSearchKeyUtil.a(this.this$0.b.getCurrentAccountUin());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -18,12 +18,12 @@ class SearchHistoryAdapter$1
       localStringBuilder.append(arrayOfString);
       QLog.i("chatHistory.searchHistory", 2, localStringBuilder.toString());
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(new SearchHistoryAdapter.1.1(this, arrayOfString));
+    this.this$0.a.post(new SearchHistoryAdapter.1.1(this, arrayOfString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SearchHistoryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,7 @@ class LoginInfoActivity$2
       if ((!LoginInfoActivity.access$800(this.a)) && (!LoginInfoActivity.access$900(this.a))) {
         return;
       }
-      paramMessage = this.a.getString(2131716723);
+      paramMessage = this.a.getString(2131914195);
       if (LoginInfoActivity.access$1000(this.a) >= 4)
       {
         LoginInfoActivity.access$700(this.a).setText(paramMessage);
@@ -68,7 +68,7 @@ class LoginInfoActivity$2
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append(paramMessage);
-            ((StringBuilder)localObject).append(this.a.getString(2131718676));
+            ((StringBuilder)localObject).append(this.a.getString(2131916177));
             paramMessage = ((StringBuilder)localObject).toString();
             LoginInfoActivity.access$700(this.a).setText(paramMessage);
           }
@@ -77,7 +77,7 @@ class LoginInfoActivity$2
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramMessage);
-          ((StringBuilder)localObject).append(this.a.getString(2131718675));
+          ((StringBuilder)localObject).append(this.a.getString(2131916176));
           paramMessage = ((StringBuilder)localObject).toString();
           LoginInfoActivity.access$700(this.a).setText(paramMessage);
         }
@@ -86,7 +86,7 @@ class LoginInfoActivity$2
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramMessage);
-        ((StringBuilder)localObject).append(this.a.getString(2131718674));
+        ((StringBuilder)localObject).append(this.a.getString(2131916175));
         paramMessage = ((StringBuilder)localObject).toString();
         LoginInfoActivity.access$700(this.a).setText(paramMessage);
       }
@@ -136,7 +136,7 @@ class LoginInfoActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.2
  * JD-Core Version:    0.7.0.1
  */

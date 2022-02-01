@@ -11,41 +11,41 @@ import com.tencent.widget.SwipListView;
 public class StoryMessageListActivity$FooterViewHolder
   implements View.OnClickListener, View.OnLongClickListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  View a;
+  TextView b;
+  View c;
+  ImageView d;
+  int e;
   
   public StoryMessageListActivity$FooterViewHolder(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370360);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370392));
-    this.b = paramView.findViewById(2131371498);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371487));
+    this.a = paramView.findViewById(2131437622);
+    this.b = ((TextView)paramView.findViewById(2131437659));
+    this.c = paramView.findViewById(2131438875);
+    this.d = ((ImageView)paramView.findViewById(2131438862));
     paramView.setOnClickListener(this);
     paramView.setOnLongClickListener(this);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity;
-    SwipListView localSwipListView = localStoryMessageListActivity.a;
-    int i = this.jdField_a_of_type_Int;
+    StoryMessageListActivity localStoryMessageListActivity = this.f;
+    SwipListView localSwipListView = localStoryMessageListActivity.b;
+    int i = this.e;
     localStoryMessageListActivity.onItemClick(localSwipListView, paramView, i, i);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity;
-    SwipListView localSwipListView = localStoryMessageListActivity.a;
-    int i = this.jdField_a_of_type_Int;
+    StoryMessageListActivity localStoryMessageListActivity = this.f;
+    SwipListView localSwipListView = localStoryMessageListActivity.b;
+    int i = this.e;
     return localStoryMessageListActivity.onItemLongClick(localSwipListView, paramView, i, i);
   }
 }

@@ -19,7 +19,7 @@ class PasswdRedBagServiceImpl$3
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = ((IMessageFacade)PasswdRedBagServiceImpl.access$600(this.this$0).getRuntimeService(IMessageFacade.class)).getMsgList(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
+    Object localObject1 = ((IMessageFacade)PasswdRedBagServiceImpl.access$200(this.this$0).getRuntimeService(IMessageFacade.class)).getMsgList(this.a.b, this.a.a);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -33,7 +33,7 @@ class PasswdRedBagServiceImpl$3
           {
             Object localObject3 = ((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg;
             localObject3 = this.this$0.getPasswdRedBagInfoById(((QQWalletRedPacketMsg)localObject3).redPacketId);
-            if ((localObject3 != null) && (((PasswdRedBagInfo)localObject3).jdField_a_of_type_Int == 4) && (!((PasswdRedBagInfo)localObject3).b)) {
+            if ((localObject3 != null) && (((PasswdRedBagInfo)localObject3).h == 4) && (!((PasswdRedBagInfo)localObject3).g)) {
               localArrayList.add(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.redPacketId);
             }
           }
@@ -45,7 +45,7 @@ class PasswdRedBagServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

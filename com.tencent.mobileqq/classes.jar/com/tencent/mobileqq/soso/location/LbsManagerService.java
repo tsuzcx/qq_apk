@@ -231,6 +231,8 @@ public class LbsManagerService
     S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
     localBusinessInfo = new LbsManagerService.BusinessInfo("NearbyProtocolCoder.Encounter", true, 1, 0, false, true, false);
     S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
+    localBusinessInfo = new LbsManagerService.BusinessInfo("QQLive", true, 2, 3, false, true, false);
+    S_BUSINESS.put(localBusinessInfo.businessId, localBusinessInfo);
   }
   
   public static void removeListener(LbsManagerServiceOnLocationChangeListener paramLbsManagerServiceOnLocationChangeListener)
@@ -312,7 +314,7 @@ public class LbsManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.LbsManagerService
  * JD-Core Version:    0.7.0.1
  */

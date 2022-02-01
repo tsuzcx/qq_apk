@@ -21,7 +21,7 @@ public final class QFlutterResConfigProcessor
   {
     LogUtils localLogUtils = LogUtils.a;
     if (QLog.isColorLevel()) {
-      localLogUtils.a().a("QFlutterResConfigProcessor", 2, "init... branchName = feature/_8.4.17_ExtendFriend, version = 8.7.0");
+      localLogUtils.a().a("QFlutterResConfigProcessor", 2, "init... branchName = feature/_8.4.17_ExtendFriend, version = 8.8.17");
     }
   }
   
@@ -40,9 +40,9 @@ public final class QFlutterResConfigProcessor
   }
   
   @JvmStatic
-  public static final boolean a(@NotNull ExpandModuleKey paramExpandModuleKey)
+  public static final boolean b(@NotNull ExpandModuleKey paramExpandModuleKey)
   {
-    return a.a(paramExpandModuleKey);
+    return a.b(paramExpandModuleKey);
   }
   
   @NotNull
@@ -55,7 +55,7 @@ public final class QFlutterResConfigProcessor
   public QFlutterResConfig a(@NotNull QConfItem[] paramArrayOfQConfItem)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfQConfItem, "config");
-    return QFlutterResConfig.jdField_a_of_type_ComTencentMobileqqConfigBusinessQflutterQFlutterResConfig$Companion.a(paramArrayOfQConfItem);
+    return QFlutterResConfig.b.a(paramArrayOfQConfItem);
   }
   
   public void a(@NotNull QFlutterResConfig paramQFlutterResConfig)
@@ -70,8 +70,8 @@ public final class QFlutterResConfigProcessor
       localStringBuilder.append(paramQFlutterResConfig);
       ((ILog)localObject).a("QFlutterResConfigProcessor", 2, localStringBuilder.toString());
     }
-    QFlutterResConfig.jdField_a_of_type_ComTencentMobileqqConfigBusinessQflutterQFlutterResConfig = paramQFlutterResConfig;
-    QFlutterDownloader.g();
+    QFlutterResConfig.a = paramQFlutterResConfig;
+    QFlutterDownloader.x();
   }
   
   @NotNull
@@ -115,7 +115,7 @@ public final class QFlutterResConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.QFlutterResConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

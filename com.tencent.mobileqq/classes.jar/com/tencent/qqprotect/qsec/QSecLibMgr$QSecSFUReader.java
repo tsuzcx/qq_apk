@@ -54,11 +54,11 @@ class QSecLibMgr$QSecSFUReader
     //   92: lcmp
     //   93: ifne -30 -> 63
     //   96: aload 6
-    //   98: getfield 66	com/tencent/qqprotect/singleupdate/SFU$UpdateSection:a	Ljava/util/List;
+    //   98: getfield 67	com/tencent/qqprotect/singleupdate/SFU$UpdateSection:p	Ljava/util/List;
     //   101: ifnonnull +6 -> 107
     //   104: goto -41 -> 63
     //   107: aload 6
-    //   109: getfield 66	com/tencent/qqprotect/singleupdate/SFU$UpdateSection:a	Ljava/util/List;
+    //   109: getfield 67	com/tencent/qqprotect/singleupdate/SFU$UpdateSection:p	Ljava/util/List;
     //   112: invokeinterface 47 1 0
     //   117: astore 8
     //   119: aload 8
@@ -66,68 +66,68 @@ class QSecLibMgr$QSecSFUReader
     //   126: ifeq -63 -> 63
     //   129: aload 8
     //   131: invokeinterface 57 1 0
-    //   136: checkcast 68	com/tencent/qqprotect/singleupdate/SFU$FileInfo
+    //   136: checkcast 69	com/tencent/qqprotect/singleupdate/SFU$FileInfo
     //   139: astore 9
     //   141: aload 9
-    //   143: getfield 72	com/tencent/qqprotect/singleupdate/SFU$FileInfo:i	Ljava/lang/String;
-    //   146: invokestatic 78	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   143: getfield 73	com/tencent/qqprotect/singleupdate/SFU$FileInfo:k	Ljava/lang/String;
+    //   146: invokestatic 79	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   149: ifeq +6 -> 155
     //   152: goto -33 -> 119
     //   155: aload 9
-    //   157: getfield 81	com/tencent/qqprotect/singleupdate/SFU$FileInfo:f	Ljava/lang/String;
+    //   157: getfield 82	com/tencent/qqprotect/singleupdate/SFU$FileInfo:f	Ljava/lang/String;
     //   160: astore 6
     //   162: aload 9
-    //   164: getfield 84	com/tencent/qqprotect/singleupdate/SFU$FileInfo:g	Ljava/lang/String;
-    //   167: invokestatic 78	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   164: getfield 85	com/tencent/qqprotect/singleupdate/SFU$FileInfo:g	Ljava/lang/String;
+    //   167: invokestatic 79	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   170: ifne +10 -> 180
     //   173: aload 9
-    //   175: getfield 84	com/tencent/qqprotect/singleupdate/SFU$FileInfo:g	Ljava/lang/String;
+    //   175: getfield 85	com/tencent/qqprotect/singleupdate/SFU$FileInfo:g	Ljava/lang/String;
     //   178: astore 6
     //   180: aload 6
     //   182: ifnull -63 -> 119
-    //   185: invokestatic 89	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   185: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   188: ifeq +31 -> 219
-    //   191: ldc 91
+    //   191: ldc 92
     //   193: iconst_2
-    //   194: ldc 93
+    //   194: ldc 94
     //   196: iconst_2
     //   197: anewarray 4	java/lang/Object
     //   200: dup
     //   201: iconst_0
     //   202: aload 9
-    //   204: getfield 72	com/tencent/qqprotect/singleupdate/SFU$FileInfo:i	Ljava/lang/String;
+    //   204: getfield 73	com/tencent/qqprotect/singleupdate/SFU$FileInfo:k	Ljava/lang/String;
     //   207: aastore
     //   208: dup
     //   209: iconst_1
     //   210: aload 6
     //   212: aastore
-    //   213: invokestatic 99	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   216: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   219: new 105	org/json/JSONObject
+    //   213: invokestatic 100	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   216: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   219: new 106	org/json/JSONObject
     //   222: dup
     //   223: aload 9
-    //   225: getfield 72	com/tencent/qqprotect/singleupdate/SFU$FileInfo:i	Ljava/lang/String;
-    //   228: invokespecial 108	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   225: getfield 73	com/tencent/qqprotect/singleupdate/SFU$FileInfo:k	Ljava/lang/String;
+    //   228: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   231: astore 9
     //   233: aload 9
-    //   235: ldc 110
-    //   237: invokevirtual 114	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   235: ldc 111
+    //   237: invokevirtual 115	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   240: istore_2
     //   241: aload 9
-    //   243: ldc 116
-    //   245: invokevirtual 114	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   243: ldc 117
+    //   245: invokevirtual 115	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   248: istore_3
     //   249: aload 9
-    //   251: ldc 118
-    //   253: invokevirtual 114	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   251: ldc 119
+    //   253: invokevirtual 115	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   256: istore 4
     //   258: aload 9
-    //   260: ldc 120
-    //   262: invokevirtual 114	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   260: ldc 121
+    //   262: invokevirtual 115	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   265: istore 5
     //   267: aload 9
-    //   269: ldc 122
-    //   271: invokevirtual 126	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   269: ldc 123
+    //   271: invokevirtual 127	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   274: astore 9
     //   276: aload_0
     //   277: getfield 13	com/tencent/qqprotect/qsec/QSecLibMgr$QSecSFUReader:a	Lcom/tencent/qqprotect/qsec/QSecLibMgr$SFUVisitor;
@@ -140,7 +140,7 @@ class QSecLibMgr$QSecSFUReader
     //   292: iload_3
     //   293: iload 4
     //   295: iload 5
-    //   297: invokevirtual 129	com/tencent/qqprotect/qsec/QSecLibMgr$SFUVisitor:a	(Ljava/lang/String;Ljava/lang/String;IIII)V
+    //   297: invokevirtual 130	com/tencent/qqprotect/qsec/QSecLibMgr$SFUVisitor:a	(Ljava/lang/String;Ljava/lang/String;IIII)V
     //   300: goto -181 -> 119
     //   303: aload_0
     //   304: getfield 13	com/tencent/qqprotect/qsec/QSecLibMgr$QSecSFUReader:a	Lcom/tencent/qqprotect/qsec/QSecLibMgr$SFUVisitor;
@@ -152,7 +152,7 @@ class QSecLibMgr$QSecSFUReader
     //   319: goto +27 -> 346
     //   322: astore 6
     //   324: aload 6
-    //   326: invokevirtual 132	java/lang/Exception:printStackTrace	()V
+    //   326: invokevirtual 133	java/lang/Exception:printStackTrace	()V
     //   329: aload_0
     //   330: getfield 13	com/tencent/qqprotect/qsec/QSecLibMgr$QSecSFUReader:a	Lcom/tencent/qqprotect/qsec/QSecLibMgr$SFUVisitor;
     //   333: astore 6
@@ -214,7 +214,7 @@ class QSecLibMgr$QSecSFUReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecLibMgr.QSecSFUReader
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ class GMemoryMonitor$1
   
   private void a(int paramInt)
   {
-    VideoController localVideoController = this.a.a.a();
+    VideoController localVideoController = this.a.a.b();
     if (localVideoController != null) {
-      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
+      localVideoController.b("lowMemoryLevel", String.valueOf(paramInt));
     }
     for (;;)
     {
@@ -30,12 +30,12 @@ class GMemoryMonitor$1
         ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
         ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
         localActivityManager.getMemoryInfo(localMemoryInfo);
-        localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
+        localVideoController = localVideoController.b("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).b("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
         if (!localMemoryInfo.lowMemory) {
           break label125;
         }
         paramInt = 1;
-        localVideoController.a("lowMemory", String.valueOf(paramInt));
+        localVideoController.b("lowMemory", String.valueOf(paramInt));
         return;
       }
       catch (Throwable localThrowable)
@@ -59,7 +59,7 @@ class GMemoryMonitor$1
   {
     QLog.d("GMemoryMonitor", 1, "onLowMemory called");
     GMemoryMonitor localGMemoryMonitor = this.a;
-    localGMemoryMonitor.a(-10, localGMemoryMonitor.a.d);
+    localGMemoryMonitor.a(-10, localGMemoryMonitor.a.z);
     a(-10);
   }
   
@@ -78,8 +78,8 @@ class GMemoryMonitor$1
         QLog.d("GMemoryMonitor", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = this.a;
-      ((GMemoryMonitor)localObject).a(paramInt, ((GMemoryMonitor)localObject).a.d);
-      ((VideoNodeReporter)this.a.a.a(4)).a(27, paramInt);
+      ((GMemoryMonitor)localObject).a(paramInt, ((GMemoryMonitor)localObject).a.z);
+      ((VideoNodeReporter)this.a.a.c(4)).a(27, paramInt);
       a(paramInt);
     }
   }

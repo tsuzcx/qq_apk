@@ -25,25 +25,25 @@ import java.util.ArrayList;
 public class WSFollowFriendFeedHolder
   extends BaseViewHolder<WSFriendItemData>
 {
-  private static final int jdField_a_of_type_Int = WSFeedUtils.a(5.0F);
-  private static final int jdField_b_of_type_Int = WSFeedUtils.a(2.0F);
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSFriendItemData jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData;
-  private WSFollowFriendFeedAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter;
-  private RoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView;
-  private RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private RoundTextView jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView;
-  private DiniFlyAnimationView jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private int c;
+  private static final int a = WSFeedUtils.a(5.0F);
+  private static final int b = WSFeedUtils.a(2.0F);
+  private WSFollowFriendFeedAdapter c;
+  private RoundCornerImageView d;
+  private RoundImageView e;
+  private TextView f;
+  private RoundTextView g;
+  private DiniFlyAnimationView h;
+  private FrameLayout i;
+  private DiniFlyAnimationView j;
+  private stSimpleMetaFeed k;
+  private WSFriendItemData l;
+  private int m;
   
   private WSFollowFriendFeedHolder(ViewGroup paramViewGroup, WSFollowFriendFeedAdapter paramWSFollowFriendFeedAdapter)
   {
-    super(paramViewGroup, 2131560414);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter = paramWSFollowFriendFeedAdapter;
-    d();
+    super(paramViewGroup, 2131626459);
+    this.c = paramWSFollowFriendFeedAdapter;
+    e();
   }
   
   public static WSFollowFriendFeedHolder a(ViewGroup paramViewGroup, WSFollowFriendFeedAdapter paramWSFollowFriendFeedAdapter)
@@ -55,78 +55,69 @@ public class WSFollowFriendFeedHolder
   {
     if (paramInt <= 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(8);
+      this.g.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setText(String.valueOf(paramInt));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView = ((RoundCornerImageView)getView(2131381229));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)getView(2131381231));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getView(2131381254));
-    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView = ((RoundTextView)getView(2131381235));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)getView(2131381210));
-    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)getView(2131381217));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)getView(2131381216));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new WSFollowFriendFeedHolder.1(this));
-    this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new WSFollowFriendFeedHolder.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/followbtn.json");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView.setCorner(jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderInnerPadding(5);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderWidth(jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(Color.parseColor("#D9D9D9"));
-    this.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setRoundBgColor(getContext().getResources().getColor(2131167394));
+    this.g.setVisibility(0);
+    this.g.setText(String.valueOf(paramInt));
   }
   
   private void e()
   {
-    stSimpleMetaPerson localstSimpleMetaPerson = a();
-    WSFollowFriendFeedAdapter localWSFollowFriendFeedAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter;
-    if ((localWSFollowFriendFeedAdapter != null) && (localstSimpleMetaPerson != null))
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData == null) {
-        return;
-      }
-      WSFeedUtils.a(localWSFollowFriendFeedAdapter.a(), localstSimpleMetaPerson.avatarSchema, 0, localstSimpleMetaPerson.id);
-      WSFollowBeaconReport.b(this.c + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData.a());
-    }
+    this.d = ((RoundCornerImageView)getView(2131450277));
+    this.e = ((RoundImageView)getView(2131450279));
+    this.f = ((TextView)getView(2131450302));
+    this.g = ((RoundTextView)getView(2131450283));
+    this.i = ((FrameLayout)getView(2131450258));
+    this.j = ((DiniFlyAnimationView)getView(2131450265));
+    this.h = ((DiniFlyAnimationView)getView(2131450264));
+    this.h.setOnClickListener(new WSFollowFriendFeedHolder.1(this));
+    this.j.setOnClickListener(new WSFollowFriendFeedHolder.2(this));
+    this.h.setAnimation("wsfollow/followbtn.json");
+    this.d.setCorner(a);
+    this.e.setBorderInnerPadding(5);
+    this.e.setBorderWidth(b);
+    this.e.setBorderColor(Color.parseColor("#D9D9D9"));
+    this.g.setRoundBgColor(getContext().getResources().getColor(2131168464));
   }
   
   private void f()
   {
-    Object localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-    if ((localObject != null) && (((stSimpleMetaFeed)localObject).poster != null) && (!this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()))
+    stSimpleMetaPerson localstSimpleMetaPerson = c();
+    WSFollowFriendFeedAdapter localWSFollowFriendFeedAdapter = this.c;
+    if ((localWSFollowFriendFeedAdapter != null) && (localstSimpleMetaPerson != null))
     {
-      localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
+      if (this.l == null) {
+        return;
+      }
+      WSFeedUtils.a(localWSFollowFriendFeedAdapter.a(), localstSimpleMetaPerson.avatarSchema, 0, localstSimpleMetaPerson);
+      WSFollowBeaconReport.b(this.m + 1, this.k, this.l.c(), this.l.d());
+    }
+  }
+  
+  private void g()
+  {
+    Object localObject = this.k;
+    if ((localObject != null) && (((stSimpleMetaFeed)localObject).poster != null) && (!this.h.isAnimating()))
+    {
+      localObject = this.k.poster;
       WSUserBusiness.a().a(((stSimpleMetaPerson)localObject).id, 1);
       return;
     }
     WSLog.b("WSFollowFriendFeedHolder", "[showFollowAction] is null");
   }
   
-  private void g()
+  private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new WSFollowFriendFeedHolder.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-  }
-  
-  public stSimpleMetaPerson a()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-    if (localstSimpleMetaFeed != null) {
-      return localstSimpleMetaFeed.poster;
-    }
-    return null;
+    this.h.addAnimatorListener(new WSFollowFriendFeedHolder.4(this));
+    this.h.playAnimation();
   }
   
   public void a()
   {
-    stSimpleMetaPerson localstSimpleMetaPerson = a();
+    stSimpleMetaPerson localstSimpleMetaPerson = c();
     if (WSFeedUtils.a(localstSimpleMetaPerson)) {
-      WSLiveAnimationManager.a().a(this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, localstSimpleMetaPerson.avatar, new WSFollowFriendFeedHolder.3(this));
+      WSLiveAnimationManager.a().a(this.j, localstSimpleMetaPerson.avatar, new WSFollowFriendFeedHolder.3(this));
     }
   }
   
@@ -134,44 +125,44 @@ public class WSFollowFriendFeedHolder
   {
     if (paramWSFriendItemData != null)
     {
-      if (((ArrayList)paramWSFriendItemData.a()).size() < 1) {
+      if (((ArrayList)paramWSFriendItemData.b()).size() < 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData = paramWSFriendItemData;
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((ArrayList)paramWSFriendItemData.a()).get(0));
-      if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) {
+      this.l = paramWSFriendItemData;
+      this.k = ((stSimpleMetaFeed)((ArrayList)paramWSFriendItemData.b()).get(0));
+      if (this.k == null) {
         return;
       }
-      this.c = paramInt;
-      a(paramWSFriendItemData.a());
-      a(paramWSFriendItemData.a());
-      paramWSFriendItemData = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster;
+      this.m = paramInt;
+      a(paramWSFriendItemData.d());
+      a(paramWSFriendItemData.c());
+      paramWSFriendItemData = this.k.poster;
       if (paramWSFriendItemData != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+        if (this.h.isAnimating()) {
+          this.h.cancelAnimation();
         }
-        if (WSFeedUtils.a(paramWSFriendItemData.followStatus))
+        if (WSFeedUtils.b(paramWSFriendItemData.followStatus))
         {
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+          this.h.setVisibility(8);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFrame(1);
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+          this.h.setFrame(1);
+          this.h.setVisibility(0);
         }
-        WSPicLoader.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundCornerImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, true, "focus", this.c);
-        WSPicLoader.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView, paramWSFriendItemData.avatar);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramWSFriendItemData.nick);
+        WSPicLoader.a().a(this.d, this.k, true, "focus", this.m);
+        WSPicLoader.a().a(getContext(), this.e, paramWSFriendItemData.avatar);
+        this.f.setText(paramWSFriendItemData.nick);
       }
       if (WSFeedUtils.a(paramWSFriendItemData))
       {
-        this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+        this.j.setVisibility(0);
+        this.i.setVisibility(8);
         return;
       }
-      this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.j.setVisibility(8);
+      this.i.setVisibility(0);
     }
   }
   
@@ -183,47 +174,56 @@ public class WSFollowFriendFeedHolder
     } else {
       str = "#FF7A46FF";
     }
-    int i = Color.parseColor(str);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setBorderColor(i);
+    int n = Color.parseColor(str);
+    this.e.setBorderColor(n);
   }
   
   public void b()
   {
-    WSFriendItemData localWSFriendItemData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData;
+    WSFriendItemData localWSFriendItemData = this.l;
     if (localWSFriendItemData == null)
     {
       WSLog.b("WSFollowFriendFeedHolder", "[reportExposure] mCurrentItemData is null");
       return;
     }
-    WSFollowBeaconReport.a(this.c + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, localWSFriendItemData.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowDataWSFriendItemData.a());
+    WSFollowBeaconReport.a(this.m + 1, this.k, localWSFriendItemData.c(), this.l.d());
   }
   
-  public void c()
+  public stSimpleMetaPerson c()
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    stSimpleMetaFeed localstSimpleMetaFeed = this.k;
+    if (localstSimpleMetaFeed != null) {
+      return localstSimpleMetaFeed.poster;
+    }
+    return null;
+  }
+  
+  public void d()
+  {
+    stSimpleMetaFeed localstSimpleMetaFeed = this.k;
     if (localstSimpleMetaFeed != null)
     {
       if (localstSimpleMetaFeed.poster == null) {
         return;
       }
-      if (WSFeedUtils.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.followStatus))
+      if (WSFeedUtils.b(this.k.poster.followStatus))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+        this.h.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.h.setVisibility(0);
     }
   }
   
   public void onViewDetachedFromWindow()
   {
     super.onViewDetachedFromWindow();
-    WSLiveAnimationManager.a().a(this.jdField_b_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+    WSLiveAnimationManager.a().a(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder
  * JD-Core Version:    0.7.0.1
  */

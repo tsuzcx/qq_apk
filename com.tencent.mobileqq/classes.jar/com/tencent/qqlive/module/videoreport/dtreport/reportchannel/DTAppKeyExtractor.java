@@ -38,12 +38,11 @@ public class DTAppKeyExtractor
       if (!isElementEvent(paramString)) {
         return str;
       }
-      paramString = (Map)paramMap;
-      paramMap = getAppKeyFromElementPath(paramString.get("element_params"));
-      if (!TextUtils.isEmpty(paramMap)) {
-        return paramMap;
+      paramString = getAppKeyFromElementPath(getParam(paramMap, "element_params"));
+      if (!TextUtils.isEmpty(paramString)) {
+        return paramString;
       }
-      return getAppKeyFromMap(paramString.get("cur_pg"));
+      return getAppKeyFromMap(getParam(paramMap, "cur_pg"));
     }
     return str;
   }
@@ -76,6 +75,14 @@ public class DTAppKeyExtractor
     return null;
   }
   
+  private static Object getParam(Object paramObject, String paramString)
+  {
+    if ((paramObject instanceof Map)) {
+      return ((Map)paramObject).get(paramString);
+    }
+    return null;
+  }
+  
   private static boolean isElementEvent(String paramString)
   {
     return sElementEvents.contains(paramString);
@@ -83,7 +90,7 @@ public class DTAppKeyExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTAppKeyExtractor
  * JD-Core Version:    0.7.0.1
  */

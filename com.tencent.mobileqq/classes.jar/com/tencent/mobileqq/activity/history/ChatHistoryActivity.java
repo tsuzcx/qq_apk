@@ -23,12 +23,12 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class ChatHistoryActivity
   extends BaseActivity
 {
-  int jdField_a_of_type_Int;
-  ChatHistoryBaseViewController jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  ChatHistoryBaseViewController a;
+  int b;
   boolean c;
+  boolean d;
+  boolean e;
+  int f;
   
   public static int a(Context paramContext)
   {
@@ -39,16 +39,16 @@ public class ChatHistoryActivity
     {
       paramContext = (ChatHistoryActivity)paramContext;
       int k = paramContext.a();
-      if (paramContext.jdField_a_of_type_Int == 3013) {
+      if (paramContext.b == 3013) {
         i = 3;
-      } else if ((k != 2131364504) && (k != 2131364495))
+      } else if ((k != 2131430561) && (k != 2131430552))
       {
-        if ((k != 2131364500) && (k != 2131364509))
+        if ((k != 2131430557) && (k != 2131430566))
         {
-          if ((k != 2131364506) && (k != 2131364497))
+          if ((k != 2131430563) && (k != 2131430554))
           {
             i = j;
-            if (k == 2131364498) {
+            if (k == 2131430555) {
               i = 7;
             }
           }
@@ -84,40 +84,6 @@ public class ChatHistoryActivity
       QLog.d("Q.history.ChatHistoryActivity", 2, paramContext.toString());
     }
     return i;
-  }
-  
-  private ChatHistoryBaseViewController a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.c))
-    {
-      int i = this.jdField_a_of_type_Int;
-      if (i == 3011) {
-        return new ChatHistoryC2CViewController(this);
-      }
-      if (i == 3012) {
-        return new ChatHistoryTroopViewController(this);
-      }
-      if (i == 3013) {
-        return new ChatHistoryReadOnlyViewController(this);
-      }
-      if (i == 3014) {
-        return new ChatHistoryEmotionViewController(this);
-      }
-      if (i == 3015) {
-        return new ChatHistoryDatalineViewController(this);
-      }
-      return null;
-    }
-    return new ChatHistoryPicVideoViewController(this);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("FromType", 3011);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("extra.IS_FROM_CHAT_AIO_GALLERY", false);
-    this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("need_jump_to_msg", false);
-    this.c = getIntent().getBooleanExtra("FromTroopAlbum", false);
-    this.jdField_b_of_type_Int = getIntent().getIntExtra("TargetTabPos", 0);
   }
   
   public static void a(Activity paramActivity, String paramString)
@@ -189,11 +155,45 @@ public class ChatHistoryActivity
     return a(paramContext) != 0;
   }
   
+  private void b()
+  {
+    this.b = getIntent().getIntExtra("FromType", 3011);
+    this.c = getIntent().getBooleanExtra("extra.IS_FROM_CHAT_AIO_GALLERY", false);
+    this.d = getIntent().getBooleanExtra("need_jump_to_msg", false);
+    this.e = getIntent().getBooleanExtra("FromTroopAlbum", false);
+    this.f = getIntent().getIntExtra("TargetTabPos", 0);
+  }
+  
+  private ChatHistoryBaseViewController c()
+  {
+    if ((!this.c) && (!this.e))
+    {
+      int i = this.b;
+      if (i == 3011) {
+        return new ChatHistoryC2CViewController(this);
+      }
+      if (i == 3012) {
+        return new ChatHistoryTroopViewController(this);
+      }
+      if (i == 3013) {
+        return new ChatHistoryReadOnlyViewController(this);
+      }
+      if (i == 3014) {
+        return new ChatHistoryEmotionViewController(this);
+      }
+      if (i == 3015) {
+        return new ChatHistoryDatalineViewController(this);
+      }
+      return null;
+    }
+    return new ChatHistoryPicVideoViewController(this);
+  }
+  
   public int a()
   {
-    ChatHistoryBaseViewController localChatHistoryBaseViewController = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController;
+    ChatHistoryBaseViewController localChatHistoryBaseViewController = this.a;
     if (localChatHistoryBaseViewController != null) {
-      return localChatHistoryBaseViewController.a();
+      return localChatHistoryBaseViewController.i();
     }
     return 0;
   }
@@ -218,7 +218,7 @@ public class ChatHistoryActivity
       ((StringBuilder)localObject).append(paramInt1);
       QLog.d("Q.history.ChatHistoryActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.a(paramInt1, paramInt2, paramIntent);
+    this.a.a(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1)
     {
       if (paramInt1 != 37) {
@@ -244,17 +244,17 @@ public class ChatHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558852);
-    a();
-    paramBundle = (TextView)findViewById(2131369249);
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377671);
-    if ((!this.jdField_a_of_type_Boolean) && (!this.c))
+    setContentView(2131624472);
+    b();
+    paramBundle = (TextView)findViewById(2131436227);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131446095);
+    if ((!this.c) && (!this.e))
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       if (i == 3013)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131693903);
+          paramBundle.setText(2131891528);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -263,7 +263,7 @@ public class ChatHistoryActivity
       else if (i == 3014)
       {
         if (paramBundle != null) {
-          paramBundle.setText(2131690810);
+          paramBundle.setText(2131887740);
         }
         if (localFrameLayout != null) {
           localFrameLayout.setVisibility(8);
@@ -273,19 +273,21 @@ public class ChatHistoryActivity
     else
     {
       if (paramBundle != null) {
-        paramBundle.setText(2131690813);
+        paramBundle.setText(2131887743);
       }
       if (localFrameLayout != null) {
         localFrameLayout.setVisibility(8);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController = a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.a();
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController;
-    if (((paramBundle instanceof ChatHistoryC2CViewController)) || ((paramBundle instanceof ChatHistoryTroopViewController))) {
-      ((ChatHistoryCommonViewController)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController).b(this.jdField_b_of_type_Int);
+    this.a = c();
+    this.a.c();
+    paramBundle = this.a;
+    if (((paramBundle instanceof ChatHistoryC2CViewController)) || ((paramBundle instanceof ChatHistoryTroopViewController)))
+    {
+      ((ChatHistoryCommonViewController)this.a).c(this.f);
+      ((ChatHistoryCommonViewController)this.a).p();
     }
-    paramBundle = super.findViewById(2131376809);
+    paramBundle = super.findViewById(2131445137);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
@@ -297,19 +299,19 @@ public class ChatHistoryActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.d();
+    this.a.f();
   }
   
   protected void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.c();
+    this.a.e();
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseViewController.b();
+    this.a.d();
   }
   
   protected void doOnSaveInstanceState(Bundle paramBundle)
@@ -333,10 +335,16 @@ public class ChatHistoryActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  public void onPostThemeChanged()
+  {
+    super.onPostThemeChanged();
+    this.a.j();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryActivity
  * JD-Core Version:    0.7.0.1
  */

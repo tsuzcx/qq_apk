@@ -2,119 +2,134 @@ package com.tencent.mobileqq.vassplash.model;
 
 public class SplashUIdata$Builder
 {
-  public int a;
-  public String a;
-  private boolean a;
-  private int jdField_b_of_type_Int = -1;
-  public String b;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int c;
+  public int a = 0;
+  public String b = "";
   public String c;
-  private int d;
   public String d;
-  private String e = "";
-  private String f = "";
-  private String g = "";
-  
-  public SplashUIdata$Builder()
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public String e;
+  public int f;
+  public String g;
+  public String h;
+  private int i = -1;
+  private String j = "";
+  private int k = 0;
+  private int l = 0;
+  private String m = "";
+  private String n = "";
+  private boolean o = false;
+  private boolean p = true;
   
   public Builder a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.i = paramInt;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.e = paramString;
+    this.j = paramString;
     return this;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
     return this;
   }
   
   public SplashUIdata a()
   {
-    SplashUIdata localSplashUIdata = new SplashUIdata(this.jdField_b_of_type_Int, this.e, this.jdField_c_of_type_Int, this.g, this.jdField_d_of_type_Int, this.f, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    localSplashUIdata.e = this.jdField_b_of_type_JavaLangString;
-    localSplashUIdata.f = this.jdField_c_of_type_JavaLangString;
-    localSplashUIdata.g = this.jdField_d_of_type_JavaLangString;
+    SplashUIdata localSplashUIdata = new SplashUIdata(this.i, this.j, this.k, this.n, this.l, this.m, this.o, this.p, this.a, this.b);
+    localSplashUIdata.k = this.c;
+    localSplashUIdata.l = this.d;
+    localSplashUIdata.m = this.e;
+    localSplashUIdata.n = this.f;
+    localSplashUIdata.o = this.g;
+    localSplashUIdata.p = this.h;
     return localSplashUIdata;
   }
   
   public Builder b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.k = paramInt;
     return this;
   }
   
   public Builder b(String paramString)
   {
-    this.g = paramString;
+    this.n = paramString;
     return this;
   }
   
   public Builder b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
     return this;
   }
   
   public Builder c(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.l = paramInt;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.f = paramString;
+    this.m = paramString;
     return this;
   }
   
   public Builder d(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public Builder d(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
+    return this;
+  }
+  
+  public Builder e(int paramInt)
+  {
+    this.f = paramInt;
     return this;
   }
   
   public Builder e(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public Builder f(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.d = paramString;
     return this;
   }
   
   public Builder g(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.e = paramString;
+    return this;
+  }
+  
+  public Builder h(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public Builder i(String paramString)
+  {
+    this.h = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vassplash.model.SplashUIdata.Builder
  * JD-Core Version:    0.7.0.1
  */

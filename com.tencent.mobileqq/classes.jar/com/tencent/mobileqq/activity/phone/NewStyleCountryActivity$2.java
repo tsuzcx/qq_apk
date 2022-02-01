@@ -11,9 +11,9 @@ class NewStyleCountryActivity$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    this.b.e.setAnimation(null);
+    this.b.e.offsetTopAndBottom(this.a);
+    this.b.e.requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class NewStyleCountryActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.NewStyleCountryActivity.2
  * JD-Core Version:    0.7.0.1
  */

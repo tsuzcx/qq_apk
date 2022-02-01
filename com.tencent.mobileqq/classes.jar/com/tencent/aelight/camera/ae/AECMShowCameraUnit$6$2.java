@@ -14,14 +14,14 @@ class AECMShowCameraUnit$6$2
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    AECMShowCameraUnit.a(this.a.this$0).setAlpha(paramValueAnimator.floatValue());
-    AECMShowCameraUnit.a(this.a.this$0).setAlpha(paramValueAnimator.floatValue() * 255.0F);
-    AECMShowCameraUnit.a(this.a.this$0).setAlpha(1.0F - paramValueAnimator.floatValue());
+    AECMShowCameraUnit.d(this.a.this$0).setAlpha(paramValueAnimator.floatValue());
+    AECMShowCameraUnit.h(this.a.this$0).setAlpha(paramValueAnimator.floatValue() * 255.0F);
+    AECMShowCameraUnit.j(this.a.this$0).setAlpha(1.0F - paramValueAnimator.floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.6.2
  * JD-Core Version:    0.7.0.1
  */

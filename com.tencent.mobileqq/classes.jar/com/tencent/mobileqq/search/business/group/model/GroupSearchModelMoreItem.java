@@ -12,47 +12,47 @@ import com.tencent.mobileqq.statistics.ReportController;
 import java.util.List;
 
 public class GroupSearchModelMoreItem
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b;
   
   public GroupSearchModelMoreItem(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 0;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705469);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return null;
+    return HardCodeUtil.a(2131903357);
   }
   
   public void a(View paramView)
   {
-    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToSearchBaseActivity((Activity)paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
+    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToSearchBaseActivity((Activity)paramView.getContext(), this.a, this.b);
+    SearchUtils.a(this.a, 0, 0, paramView);
     ReportController.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return null;
+  }
+  
+  public String c()
+  {
+    return this.a;
+  }
+  
+  public int d()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelMoreItem
  * JD-Core Version:    0.7.0.1
  */

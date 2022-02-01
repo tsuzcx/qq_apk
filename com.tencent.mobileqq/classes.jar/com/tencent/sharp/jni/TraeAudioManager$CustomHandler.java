@@ -15,7 +15,7 @@ public class TraeAudioManager$CustomHandler
     super(paramLooper);
   }
   
-  private void a(int paramInt, HashMap<String, Object> paramHashMap)
+  private void b(int paramInt, HashMap<String, Object> paramHashMap)
   {
     Object localObject1;
     Object localObject2;
@@ -26,7 +26,7 @@ public class TraeAudioManager$CustomHandler
       default: 
         return;
       case 32871: 
-        localObject1 = this.a.a.c();
+        localObject1 = this.a.a.h();
         paramHashMap = (String)paramHashMap.get("PARAM_DEVICE_NAME");
         if (QLog.isColorLevel())
         {
@@ -44,11 +44,11 @@ public class TraeAudioManager$CustomHandler
           return;
         }
         paramHashMap = this.a;
-        if (TraeAudioManager.a(paramHashMap, paramHashMap.jdField_c_of_type_JavaLangString, null) == 0) {
+        if (TraeAudioManager.a(paramHashMap, paramHashMap.k, null) == 0) {
           break;
         }
         paramHashMap = this.a;
-        TraeAudioManager.a(paramHashMap, paramHashMap.a.a(null), null);
+        TraeAudioManager.a(paramHashMap, paramHashMap.a.e(null), null);
         return;
       case 32870: 
         paramHashMap = (String)paramHashMap.get("PARAM_DEVICE_NAME");
@@ -64,20 +64,20 @@ public class TraeAudioManager$CustomHandler
           break;
         }
         paramHashMap = this.a;
-        TraeAudioManager.a(paramHashMap, paramHashMap.a.a(null), null);
+        TraeAudioManager.a(paramHashMap, paramHashMap.a.e(null), null);
         return;
       }
     }
     else
     {
-      localObject2 = this.a.a.a(null);
-      String str = this.a.a.c();
+      localObject2 = this.a.a.e(null);
+      String str = this.a.a.h();
       localObject1 = (String)paramHashMap.get("PARAM_CONNECT_DEVICE_WHEN_START_SERVICE");
       paramHashMap = (HashMap<String, Object>)localObject2;
       if (localObject1 != null)
       {
         paramHashMap = (HashMap<String, Object>)localObject2;
-        if (this.a.a.c((String)localObject1)) {
+        if (this.a.a.d((String)localObject1)) {
           paramHashMap = (HashMap<String, Object>)localObject1;
         }
       }
@@ -122,7 +122,7 @@ public class TraeAudioManager$CustomHandler
         TraeAudioManager.a(this.a, localHashMap);
         return;
       }
-      if (!TraeAudioManager.a(this.a))
+      if (!TraeAudioManager.d(this.a))
       {
         if (QLog.isColorLevel()) {
           QLog.e("TraeAudioManager", 2, "handleMessage, service off");
@@ -134,10 +134,10 @@ public class TraeAudioManager$CustomHandler
       {
       case 32774: 
       default: 
-        a(paramMessage.what, localHashMap);
+        b(paramMessage.what, localHashMap);
         return;
       case 32780: 
-        TraeAudioManager.e(this.a);
+        TraeAudioManager.g(this.a);
         return;
       case 32779: 
         TraeAudioManager.g(this.a, localHashMap);
@@ -147,11 +147,11 @@ public class TraeAudioManager$CustomHandler
         if (paramMessage == null) {
           return;
         }
-        this.a.jdField_c_of_type_Int = paramMessage.intValue();
+        this.a.i = paramMessage.intValue();
         TraeAudioManager.a(this.a, paramMessage.intValue());
         return;
       case 32777: 
-        TraeAudioManager.d(this.a);
+        TraeAudioManager.f(this.a);
         return;
       case 32776: 
         TraeAudioManager.f(this.a, localHashMap);
@@ -169,7 +169,7 @@ public class TraeAudioManager$CustomHandler
         TraeAudioManager.b(this.a, localHashMap);
         return;
       }
-      TraeAudioManager.c(this.a);
+      TraeAudioManager.e(this.a);
       return;
     }
     catch (Exception paramMessage)
@@ -182,7 +182,7 @@ public class TraeAudioManager$CustomHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.CustomHandler
  * JD-Core Version:    0.7.0.1
  */

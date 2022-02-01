@@ -25,22 +25,22 @@ class SSOLoginAction$7
     }
     if (paramIntent.getBooleanExtra("param_is_qr_code_login", false))
     {
-      SSOLoginAction.a(this.a).a(3, paramIntent);
+      SSOLoginAction.c(this.a).a(3, paramIntent);
       QIPCClientHelper.getInstance().getClient().callServer("open_sdk_qipc_module", "action_on_qr_code_login_success", new Bundle());
       return;
     }
-    paramContext = AuthParamUtil.a(paramIntent, "login_success_uin");
+    paramContext = AuthParamUtil.b(paramIntent, "login_success_uin");
     if (!TextUtils.isEmpty(paramContext)) {
-      SSOLoginAction.a(this.a).putExtra("login_success_uin", paramContext);
+      SSOLoginAction.d(this.a).putExtra("login_success_uin", paramContext);
     }
-    boolean bool = SSOLoginAction.a(this.a).getBooleanExtra("intent_router", false);
+    boolean bool = SSOLoginAction.d(this.a).getBooleanExtra("intent_router", false);
     paramContext = this.a;
-    SSOLoginAction.a(paramContext, bool, SSOLoginAction.a(paramContext));
+    SSOLoginAction.a(paramContext, bool, SSOLoginAction.d(paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.7
  * JD-Core Version:    0.7.0.1
  */

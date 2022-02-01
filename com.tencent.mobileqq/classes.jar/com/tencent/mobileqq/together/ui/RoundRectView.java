@@ -12,11 +12,11 @@ import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 public class RoundRectView
   extends PressEffectImageView
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int a;
   private int b;
   private int c;
   private int d = 0;
+  private Paint e;
   
   public RoundRectView(Context paramContext)
   {
@@ -32,16 +32,16 @@ public class RoundRectView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.e = new Paint();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-    int i = this.jdField_a_of_type_Int;
-    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.e.setColor(this.d);
+    int i = this.a;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.e);
   }
   
   @SuppressLint({"DrawAllocation"})
@@ -63,10 +63,10 @@ public class RoundRectView
     if (paramInt < 0) {
       i = 0;
     }
-    if (this.jdField_a_of_type_Int == i) {
+    if (this.a == i) {
       return;
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
     invalidate();
   }
   
@@ -81,7 +81,7 @@ public class RoundRectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.RoundRectView
  * JD-Core Version:    0.7.0.1
  */

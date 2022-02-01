@@ -18,26 +18,26 @@ import java.util.Set;
 
 public class QQSettingConfigManager
 {
-  private static QQSettingConfigManager jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager = null;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private final Map<Integer, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static Object c = new Object();
+  private static QQSettingConfigManager d = null;
+  private final Map<Integer, String> a = new HashMap();
   private final Map<Integer, String> b = new HashMap();
   
   private QQSettingConfigManager()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject1 = this.a;
     Integer localInteger1 = Integer.valueOf(1);
     ((Map)localObject1).put(localInteger1, "key_svip_item_my_shopping_");
-    Object localObject2 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject2 = this.a;
     localObject1 = Integer.valueOf(2);
     ((Map)localObject2).put(localObject1, "key_svip_item_my_vip_");
-    Object localObject3 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject3 = this.a;
     localObject2 = Integer.valueOf(3);
     ((Map)localObject3).put(localObject2, "key_svip_item_makup_");
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.a;
     localObject3 = Integer.valueOf(4);
     localMap.put(localObject3, "key_svip_item_my_love_zone_");
-    localMap = this.jdField_a_of_type_JavaUtilMap;
+    localMap = this.a;
     Integer localInteger2 = Integer.valueOf(5);
     localMap.put(localInteger2, "key_svip_item_cu_king_card_");
     this.b.put(localInteger1, "d_qq_shopping");
@@ -47,36 +47,17 @@ public class QQSettingConfigManager
     this.b.put(localInteger2, "d_vip_card");
   }
   
-  private int a(@NonNull QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    Object localObject = paramQQAppInterface.getApp().getSharedPreferences("sp_svip_qqsetting_me", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_svip_items_flag_");
-    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    paramInt = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), paramInt);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("get sp key:key_svip_items_flag_");
-      ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
-      ((StringBuilder)localObject).append(" value=");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("QSetting.ConfigManager", 1, ((StringBuilder)localObject).toString());
-    }
-    return paramInt;
-  }
-  
   public static QQSettingConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (d == null) {
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager == null) {
-          jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager = new QQSettingConfigManager();
+        if (d == null) {
+          d = new QQSettingConfigManager();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqVipQQSettingConfigManager;
+    return d;
   }
   
   private void a(SharedPreferences paramSharedPreferences, String paramString, int paramInt)
@@ -140,7 +121,7 @@ public class QQSettingConfigManager
     }
   }
   
-  private void a(@NonNull QQAppInterface paramQQAppInterface, int paramInt)
+  private void b(@NonNull QQAppInterface paramQQAppInterface, int paramInt)
   {
     Object localObject = paramQQAppInterface.getApp().getSharedPreferences("sp_svip_qqsetting_me", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -157,6 +138,25 @@ public class QQSettingConfigManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("QSetting.ConfigManager", 1, ((StringBuilder)localObject).toString());
     }
+  }
+  
+  private int c(@NonNull QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    Object localObject = paramQQAppInterface.getApp().getSharedPreferences("sp_svip_qqsetting_me", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_svip_items_flag_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramInt = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get sp key:key_svip_items_flag_");
+      ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(" value=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QSetting.ConfigManager", 1, ((StringBuilder)localObject).toString());
+    }
+    return paramInt;
   }
   
   public int a(Integer paramInteger)
@@ -202,31 +202,16 @@ public class QQSettingConfigManager
     return localMenumItem;
   }
   
-  public String a(Integer paramInteger)
-  {
-    Object localObject = (String)this.b.get(paramInteger);
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("注册表 : QQSettingConfigManager.jceIDWithItemIdMap : itemId ");
-      ((StringBuilder)localObject).append(paramInteger);
-      ((StringBuilder)localObject).append("不存在");
-      QLog.d("QSetting.ConfigManager", 1, ((StringBuilder)localObject).toString());
-      return "";
-    }
-    return localObject;
-  }
-  
   public Map<Integer, MenumItem> a(@NonNull QQAppInterface paramQQAppInterface)
   {
     HashMap localHashMap = new HashMap();
-    int i = a(paramQQAppInterface, 0);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    int i = c(paramQQAppInterface, 0);
+    Iterator localIterator = this.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
       if ((1 << localInteger.intValue() & i) != 0) {
-        localHashMap.put(localInteger, a(paramQQAppInterface, (String)this.jdField_a_of_type_JavaUtilMap.get(localInteger)));
+        localHashMap.put(localInteger, a(paramQQAppInterface, (String)this.a.get(localInteger)));
       } else if ((2 != localInteger.intValue()) && (5 != localInteger.intValue())) {
         localHashMap.put(localInteger, null);
       }
@@ -269,7 +254,7 @@ public class QQSettingConfigManager
     while (localIterator.hasNext())
     {
       Object localObject1 = (Integer)localIterator.next();
-      Object localObject2 = (String)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+      Object localObject2 = (String)this.a.get(localObject1);
       int j = i | a((Integer)localObject1);
       i = j;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
@@ -285,19 +270,19 @@ public class QQSettingConfigManager
         }
       }
     }
-    a(paramQQAppInterface, i);
+    b(paramQQAppInterface, i);
   }
   
   public boolean a(@NonNull QQAppInterface paramQQAppInterface, int paramInt)
   {
-    int i = a(paramQQAppInterface, 0);
+    int i = c(paramQQAppInterface, 0);
     if ((4 == paramInt) && ((i & 0x4) == 0)) {
       return false;
     }
     if ((32 == paramInt) && ((i & 0x20) == 0)) {
       return false;
     }
-    paramQQAppInterface = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    paramQQAppInterface = this.a.keySet().iterator();
     while (paramQQAppInterface.hasNext()) {
       if (a((Integer)paramQQAppInterface.next()) == paramInt) {
         return true;
@@ -305,10 +290,25 @@ public class QQSettingConfigManager
     }
     return false;
   }
+  
+  public String b(Integer paramInteger)
+  {
+    Object localObject = (String)this.b.get(paramInteger);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("注册表 : QQSettingConfigManager.jceIDWithItemIdMap : itemId ");
+      ((StringBuilder)localObject).append(paramInteger);
+      ((StringBuilder)localObject).append("不存在");
+      QLog.d("QSetting.ConfigManager", 1, ((StringBuilder)localObject).toString());
+      return "";
+    }
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.QQSettingConfigManager
  * JD-Core Version:    0.7.0.1
  */

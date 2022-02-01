@@ -11,26 +11,26 @@ import java.util.StringTokenizer;
 
 public abstract class BaseTimDataLineTipsProcessor
 {
-  protected int a;
   protected QQAppInterface a;
-  protected DataLineMsgRecord a;
-  protected ConfigSettingForDataLine a;
-  protected String a;
+  protected String b;
+  protected int c;
+  protected DataLineMsgRecord d;
+  protected ConfigSettingForDataLine e;
   
   public BaseTimDataLineTipsProcessor(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, ConfigSettingForDataLine paramConfigSettingForDataLine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSettingForDataLine = paramConfigSettingForDataLine;
+    this.a = paramQQAppInterface;
+    this.d = paramDataLineMsgRecord;
+    this.b = paramDataLineMsgRecord.frienduin;
+    this.c = paramDataLineMsgRecord.istroop;
+    this.e = paramConfigSettingForDataLine;
   }
   
   protected abstract String a();
   
-  protected boolean a()
+  protected boolean b()
   {
-    Object localObject = TencentDocDataLineTipsConfigProcessor.a().a();
+    Object localObject = TencentDocDataLineTipsConfigProcessor.a().c();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       if (QLog.isColorLevel()) {
@@ -57,7 +57,7 @@ public abstract class BaseTimDataLineTipsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BaseTimDataLineTipsProcessor
  * JD-Core Version:    0.7.0.1
  */

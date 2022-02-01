@@ -6,13 +6,13 @@ public abstract interface IQFileExcitingC2CDownloadConfigBean
 {
   public abstract long a();
   
-  public abstract ExcitingTransferDownloadConfig a();
+  public abstract boolean b();
   
-  public abstract boolean a();
+  public abstract ExcitingTransferDownloadConfig c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CDownloadConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -16,56 +16,56 @@ class LottieHelper$3$1
     //   1: astore_3
     //   2: aload_0
     //   3: getfield 12	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3$1:a	Lcom/tencent/mobileqq/onlinestatus/utils/LottieHelper$3;
-    //   6: getfield 28	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   9: invokevirtual 34	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   6: getfield 29	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3:e	Landroid/content/Context;
+    //   9: invokevirtual 35	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   12: astore_2
-    //   13: new 36	java/lang/StringBuilder
+    //   13: new 37	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   17: invokespecial 38	java/lang/StringBuilder:<init>	()V
     //   20: astore 4
     //   22: aload 4
     //   24: aload_0
     //   25: getfield 12	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3$1:a	Lcom/tencent/mobileqq/onlinestatus/utils/LottieHelper$3;
-    //   28: getfield 40	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   31: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: getfield 42	com/tencent/mobileqq/onlinestatus/utils/LottieHelper$3:d	Ljava/lang/String;
+    //   31: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload 4
     //   37: aload_1
-    //   38: invokevirtual 50	com/tencent/mobileqq/dinifly/LottieImageAsset:getFileName	()Ljava/lang/String;
-    //   41: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 52	com/tencent/mobileqq/dinifly/LottieImageAsset:getFileName	()Ljava/lang/String;
+    //   41: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload_2
     //   46: aload 4
-    //   48: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokevirtual 59	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   48: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokevirtual 61	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   54: astore_2
     //   55: aload_2
     //   56: astore_1
-    //   57: new 61	android/graphics/BitmapFactory$Options
+    //   57: new 63	android/graphics/BitmapFactory$Options
     //   60: dup
-    //   61: invokespecial 62	android/graphics/BitmapFactory$Options:<init>	()V
+    //   61: invokespecial 64	android/graphics/BitmapFactory$Options:<init>	()V
     //   64: astore_3
     //   65: aload_2
     //   66: astore_1
     //   67: aload_3
     //   68: iconst_0
-    //   69: putfield 66	android/graphics/BitmapFactory$Options:inScaled	Z
+    //   69: putfield 68	android/graphics/BitmapFactory$Options:inScaled	Z
     //   72: aload_2
     //   73: astore_1
     //   74: aload_2
     //   75: aconst_null
-    //   76: checkcast 68	android/graphics/Rect
+    //   76: checkcast 70	android/graphics/Rect
     //   79: aload_3
-    //   80: invokestatic 74	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   80: invokestatic 76	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   83: astore_3
     //   84: aload_2
     //   85: astore_1
     //   86: aload_2
-    //   87: invokevirtual 79	java/io/InputStream:close	()V
+    //   87: invokevirtual 81	java/io/InputStream:close	()V
     //   90: aload_2
     //   91: ifnull +7 -> 98
     //   94: aload_2
-    //   95: invokevirtual 79	java/io/InputStream:close	()V
+    //   95: invokevirtual 81	java/io/InputStream:close	()V
     //   98: aload_3
     //   99: areturn
     //   100: astore_3
@@ -79,22 +79,22 @@ class LottieHelper$3$1
     //   112: astore_2
     //   113: aload_2
     //   114: astore_1
-    //   115: ldc 81
+    //   115: ldc 83
     //   117: iconst_2
-    //   118: ldc 83
+    //   118: ldc 85
     //   120: aload_3
-    //   121: invokestatic 89	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: invokestatic 91	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   124: aload_2
     //   125: ifnull +7 -> 132
     //   128: aload_2
-    //   129: invokevirtual 79	java/io/InputStream:close	()V
+    //   129: invokevirtual 81	java/io/InputStream:close	()V
     //   132: aconst_null
     //   133: areturn
     //   134: astore_2
     //   135: aload_1
     //   136: ifnull +7 -> 143
     //   139: aload_1
-    //   140: invokevirtual 79	java/io/InputStream:close	()V
+    //   140: invokevirtual 81	java/io/InputStream:close	()V
     //   143: aload_2
     //   144: athrow
     //   145: astore_1
@@ -137,7 +137,7 @@ class LottieHelper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.LottieHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

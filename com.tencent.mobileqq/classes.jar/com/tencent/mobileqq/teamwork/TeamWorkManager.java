@@ -13,61 +13,61 @@ import mqq.manager.Manager;
 public class TeamWorkManager
   implements Manager
 {
-  private static String jdField_a_of_type_JavaLangString = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
-  private static String b = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
-  private static String c = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
-  private static String d = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static String b = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
+  private static String c = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
+  private static String d = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
+  private static String e = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
+  AppInterface a;
+  private volatile boolean f = false;
   
   public TeamWorkManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public static String a()
-  {
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.jdField_a_of_type_JavaLangString, 4);
-    if (localSharedPreferences != null) {
-      jdField_a_of_type_JavaLangString = localSharedPreferences.getString(CommonUtils.b, "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png");
-    }
-    return jdField_a_of_type_JavaLangString;
+    this.a = paramAppInterface;
   }
   
   public static String b()
   {
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.jdField_a_of_type_JavaLangString, 4);
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.a, 4);
     if (localSharedPreferences != null) {
-      b = localSharedPreferences.getString(CommonUtils.c, "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png");
+      b = localSharedPreferences.getString(CommonUtils.b, "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png");
     }
     return b;
   }
   
   public static String c()
   {
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.jdField_a_of_type_JavaLangString, 4);
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.a, 4);
     if (localSharedPreferences != null) {
-      c = localSharedPreferences.getString(CommonUtils.d, "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png");
+      c = localSharedPreferences.getString(CommonUtils.c, "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png");
     }
     return c;
   }
   
   public static String d()
   {
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.jdField_a_of_type_JavaLangString, 4);
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.a, 4);
     if (localSharedPreferences != null) {
-      d = localSharedPreferences.getString(CommonUtils.e, "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png");
+      d = localSharedPreferences.getString(CommonUtils.d, "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png");
     }
     return d;
   }
   
+  public static String e()
+  {
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(CommonUtils.a, 4);
+    if (localSharedPreferences != null) {
+      e = localSharedPreferences.getString(CommonUtils.e, "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png");
+    }
+    return e;
+  }
+  
   public Boolean a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin();
+    this.a.getApplication();
+    this.a.getCurrentUin();
     boolean bool4 = TencentDocAIOPlusPanelEntryConfigProcessor.a().a();
-    boolean bool1 = TencentDocUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    String str = TencentDocAIOPlusPanelEntryConfigProcessor.a().a();
+    boolean bool1 = TencentDocUtils.a(this.a);
+    String str = TencentDocAIOPlusPanelEntryConfigProcessor.a().b();
     boolean bool3 = true;
     if ((bool1) && (str != null)) {
       bool1 = true;
@@ -103,7 +103,7 @@ public class TeamWorkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ final class WeiyunAIOUtils$1
   public void a(int paramInt)
   {
     if (paramInt == 2) {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+      FileManagerUtil.a(this.a, this.b, BaseActivity.sTopActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.1
  * JD-Core Version:    0.7.0.1
  */

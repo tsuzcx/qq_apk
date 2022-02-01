@@ -30,7 +30,7 @@ class AuthDevOpenUgActivity$1
       paramErrMsg = this.a.app;
       AuthDevOpenUgActivity localAuthDevOpenUgActivity = this.a;
       paramWUserSigInfo.a(paramErrMsg, localAuthDevOpenUgActivity, localAuthDevOpenUgActivity.app.getCurrentAccountUin(), true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691980), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 2, this.a.getString(2131888947), 0).show(this.a.getTitleBarHeight());
       paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
       if (paramWUserSigInfo != null) {
         paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
@@ -49,10 +49,10 @@ class AuthDevOpenUgActivity$1
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).show(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692022), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131888989), 0).show(this.a.getTitleBarHeight());
   }
   
   public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
@@ -63,12 +63,12 @@ class AuthDevOpenUgActivity$1
       return;
     }
     paramWUserSigInfo = this.a;
-    QQToast.a(paramWUserSigInfo, paramWUserSigInfo.getString(2131692031), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(paramWUserSigInfo, paramWUserSigInfo.getString(2131888998), 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevOpenUgActivity.1
  * JD-Core Version:    0.7.0.1
  */

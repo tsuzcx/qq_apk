@@ -7,7 +7,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.publisher.column.ColumnModeImpl;
 import com.tencent.mobileqq.kandian.biz.publisher.column.IColumnModel;
-import com.tencent.mobileqq.kandian.biz.publisher.column.IColumnModel.IColumnCallback;
 import com.tencent.mobileqq.kandian.biz.publisher.column.IColumnModel.IColumnListCallback;
 import com.tencent.mobileqq.kandian.biz.publisher.impls.component.UIDataTransferImpl;
 import com.tencent.mobileqq.kandian.biz.publisher.net.PublishVideoHelper;
@@ -36,24 +35,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tencent.im.oidb.cmd0xf77.oidb_cmd0xf77.ReqBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/DataTransferImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IDataTransfer;", "()V", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "uiDataTransferImpl", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/component/UIDataTransferImpl;", "bindAccount", "", "accountId", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuccess", "cancelBindAccount", "checkAccountBindStatus", "Lkotlin/Function5;", "needBind", "Lcom/tencent/tkd/topicsdk/publisharticle/BindAccountInfo;", "bindAccountInfo", "protocolUrl", "needRealNameConfirm", "realNameConfirmUrl", "Lcom/tencent/tkd/topicsdk/interfaces/CheckAccountBindStatusCallback;", "createTopic", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "Lkotlin/Function4;", "", "errorCode", "errorMsg", "tip", "", "topicId", "deleteTopic", "Lkotlin/Function3;", "editTopic", "getCommunityList", "cookie", "isEnd", "", "Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "communityList", "getFansList", "", "pageSize", "Lcom/tencent/tkd/topicsdk/bean/AtPersonItem;", "personList", "getFollowList", "getRecentTopicList", "pageCount", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "topicList", "getSearchTopicList", "pageNum", "wording", "getTopicList", "topTopicId", "getTweetHotTopicList", "onRelease", "publishArticle", "articleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "id", "serverPublisherData", "Lcom/tencent/tkd/topicsdk/interfaces/PublishCallback;", "requestCurrentLocation", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/DataTransferImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IDataTransfer;", "()V", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "uiDataTransferImpl", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/component/UIDataTransferImpl;", "bindAccount", "", "accountId", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuccess", "cancelBindAccount", "checkAccountBindStatus", "Lkotlin/Function5;", "needBind", "Lcom/tencent/tkd/topicsdk/publisharticle/BindAccountInfo;", "bindAccountInfo", "protocolUrl", "needRealNameConfirm", "realNameConfirmUrl", "Lcom/tencent/tkd/topicsdk/interfaces/CheckAccountBindStatusCallback;", "createTopic", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "Lkotlin/Function4;", "", "errorCode", "errorMsg", "tip", "", "topicId", "deleteTopic", "Lkotlin/Function3;", "editTopic", "getCommunityList", "cookie", "isEnd", "", "Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "communityList", "getFansList", "", "pageSize", "Lcom/tencent/tkd/topicsdk/bean/AtPersonItem;", "personList", "getFollowList", "getInvitedManuscriptItemList", "pageNum", "Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;", "itemList", "getInvitedManuscriptItemStatus", "itemId", "isSigned", "protocol", "getRecentTopicList", "pageCount", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "topicList", "getSearchTopicList", "wording", "getTopicList", "topTopicId", "getTweetHotTopicList", "onRelease", "publishArticle", "articleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "id", "serverPublisherData", "Lcom/tencent/tkd/topicsdk/interfaces/PublishCallback;", "requestCurrentLocation", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "requestManuscriptSignProtocol", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class DataTransferImpl
   implements IDataTransfer
 {
-  public static final DataTransferImpl.Companion a;
-  private final UIDataTransferImpl a;
+  public static final DataTransferImpl.Companion a = new DataTransferImpl.Companion(null);
+  private final UIDataTransferImpl b = new UIDataTransferImpl();
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsDataTransferImpl$Companion = new DataTransferImpl.Companion(null);
-  }
-  
-  public DataTransferImpl()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsComponentUIDataTransferImpl = new UIDataTransferImpl();
-  }
-  
-  private final QQAppInterface a()
+  private final QQAppInterface b()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
@@ -66,7 +55,7 @@ public final class DataTransferImpl
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsComponentUIDataTransferImpl.a();
+    this.b.a();
   }
   
   public void a(int paramInt1, int paramInt2, @NotNull String paramString, @NotNull Function4<? super Integer, ? super String, ? super Boolean, ? super List<TweetTopicItem>, Unit> paramFunction4)
@@ -74,7 +63,7 @@ public final class DataTransferImpl
     Intrinsics.checkParameterIsNotNull(paramString, "wording");
     Intrinsics.checkParameterIsNotNull(paramFunction4, "callback");
     paramFunction4 = (IDataTransfer.TopicCallback)new DataTransferImpl.getSearchTopicList.uiCallback.1(paramFunction4);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsComponentUIDataTransferImpl.a(paramString, paramInt1, paramFunction4);
+    this.b.a(paramString, paramInt1, paramFunction4);
   }
   
   public void a(@Nullable LocationInfo paramLocationInfo)
@@ -99,13 +88,6 @@ public final class DataTransferImpl
     localCompanion.a(bool, localList, (PublishVideoHelper.IPublishVideoCallback)paramFunction4);
   }
   
-  public void a(@NotNull TopicInfo paramTopicInfo, @NotNull Function4<? super Integer, ? super String, ? super String, ? super Long, Unit> paramFunction4)
-  {
-    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    Intrinsics.checkParameterIsNotNull(paramFunction4, "callback");
-    ((IColumnModel)new ColumnModeImpl(a())).a(paramTopicInfo, (IColumnModel.IColumnCallback)new DataTransferImpl.createTopic.1(paramFunction4));
-  }
-  
   public void a(@Nullable String paramString, @NotNull Function5<? super Integer, ? super String, ? super String, ? super Boolean, ? super List<CommunityInfo>, Unit> paramFunction5)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction5, "callback");
@@ -116,19 +98,12 @@ public final class DataTransferImpl
   public void a(@Nullable byte[] paramArrayOfByte, long paramLong, @NotNull Function5<? super Integer, ? super String, ? super byte[], ? super Boolean, ? super List<TopicInfo>, Unit> paramFunction5)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction5, "callback");
-    ((IColumnModel)new ColumnModeImpl(a())).a(paramArrayOfByte, paramLong, (IColumnModel.IColumnListCallback)new DataTransferImpl.getTopicList.1(paramFunction5));
-  }
-  
-  public void b(@NotNull TopicInfo paramTopicInfo, @NotNull Function4<? super Integer, ? super String, ? super String, ? super Long, Unit> paramFunction4)
-  {
-    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    Intrinsics.checkParameterIsNotNull(paramFunction4, "callback");
-    ((IColumnModel)new ColumnModeImpl(a())).b(paramTopicInfo, (IColumnModel.IColumnCallback)new DataTransferImpl.editTopic.1(paramFunction4));
+    ((IColumnModel)new ColumnModeImpl(b())).a(paramArrayOfByte, paramLong, (IColumnModel.IColumnListCallback)new DataTransferImpl.getTopicList.1(paramFunction5));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.DataTransferImpl
  * JD-Core Version:    0.7.0.1
  */

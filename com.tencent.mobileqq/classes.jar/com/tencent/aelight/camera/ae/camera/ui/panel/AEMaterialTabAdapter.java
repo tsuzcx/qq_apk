@@ -8,6 +8,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.aelight.camera.ae.control.AEQIMManager;
 import com.tencent.aelight.camera.ae.data.AEMaterialCategory;
 import com.tencent.aelight.camera.ae.data.AEMaterialManager;
+import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
@@ -15,72 +16,94 @@ import java.util.List;
 public class AEMaterialTabAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AEMaterialPanel.AEMaterialPanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  public HashMap<Integer, AEGridView> a;
-  private List<AEMaterialCategory> jdField_a_of_type_JavaUtilList;
+  public HashMap<Integer, AEGridView> a = new HashMap();
+  private Context b;
+  private List<AEMaterialCategory> c;
+  private AEMaterialPanel.AEMaterialPanelListener d;
+  private AEMaterialManager e;
   
   public AEMaterialTabAdapter(Context paramContext, AEMaterialPanel.AEMaterialPanelListener paramAEMaterialPanelListener)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener = paramAEMaterialPanelListener;
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
+    this.b = paramContext;
+    this.d = paramAEMaterialPanelListener;
+    this.e = ((AEMaterialManager)AEQIMManager.a(1));
   }
   
   private void a(AEMaterialAdapter paramAEMaterialAdapter, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 112);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 113);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 1024);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 114);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 111);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 115);
+    this.e.a(paramAEMaterialAdapter, 112);
+    this.e.a(paramAEMaterialAdapter, 113);
+    this.e.a(paramAEMaterialAdapter, 1024);
+    this.e.a(paramAEMaterialAdapter, 114);
+    this.e.a(paramAEMaterialAdapter, 111);
+    this.e.a(paramAEMaterialAdapter, 115);
     if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramAEMaterialAdapter, 111);
+      this.e.a(paramAEMaterialAdapter, 111);
     }
   }
   
   public AEMaterialCategory a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (localList.size() > paramInt) && (paramInt >= 0)) {
-      return (AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (AEMaterialCategory)this.c.get(paramInt);
     }
     return null;
   }
   
   public void a(List<AEMaterialCategory> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
+  }
+  
+  public void b(int paramInt)
+  {
+    AEQLog.a("PtvTemplateViewPagerAdapter", "dtexpose reportTabFirstExpose");
+    Object localObject = (AEGridView)this.a.get(Integer.valueOf(paramInt));
+    if (localObject == null) {
+      return;
+    }
+    localObject = (AEMaterialAdapter)((AEGridView)localObject).getAdapter();
+    if (localObject != null)
+    {
+      List localList = this.c;
+      if (localList != null)
+      {
+        if (localList.get(paramInt) == null) {
+          return;
+        }
+        ((AEMaterialAdapter)localObject).b(((AEMaterialCategory)this.c.get(paramInt)).a);
+      }
+    }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
-    paramViewGroup = (AEGridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    paramViewGroup.removeView((View)this.a.get(Integer.valueOf(paramInt)));
+    paramViewGroup = (AEGridView)this.a.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
       paramViewGroup = (AEMaterialAdapter)paramViewGroup.getAdapter();
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(paramViewGroup);
+      this.e.a(paramViewGroup);
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AEGridView localAEGridView = (AEGridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    AEGridView localAEGridView = (AEGridView)this.a.get(Integer.valueOf(paramInt));
+    int j = 0;
+    int i = 0;
     Object localObject;
     if (localAEGridView == null)
     {
-      localAEGridView = new AEGridView(this.jdField_a_of_type_AndroidContentContext);
-      localObject = this.jdField_a_of_type_AndroidContentContext;
-      AEMaterialPanel.AEMaterialPanelListener localAEMaterialPanelListener = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel$AEMaterialPanelListener;
+      localAEGridView = new AEGridView(this.b);
+      localObject = this.b;
+      AEMaterialPanel.AEMaterialPanelListener localAEMaterialPanelListener = this.d;
       boolean bool;
       if (paramInt == 0) {
         bool = true;
@@ -89,14 +112,24 @@ public class AEMaterialTabAdapter
       }
       localObject = new AEMaterialAdapter((Context)localObject, localAEGridView, localAEMaterialPanelListener, bool);
       a((AEMaterialAdapter)localObject, paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localAEGridView);
+      localAEGridView.a(new AEMaterialTabAdapter.1(this, (AEMaterialAdapter)localObject));
+      if (paramInt == 1) {
+        i = 1;
+      }
+      this.a.put(Integer.valueOf(paramInt), localAEGridView);
     }
     else
     {
       localObject = (AEMaterialAdapter)localAEGridView.getAdapter();
       a((AEMaterialAdapter)localObject, paramInt);
+      i = j;
     }
-    ((AEMaterialAdapter)localObject).a(((AEMaterialCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+    ((AEMaterialAdapter)localObject).a(((AEMaterialCategory)this.c.get(paramInt)).a);
+    if (i != 0)
+    {
+      AEQLog.a("PtvTemplateViewPagerAdapter", "dtexpose isFirstTabExpose");
+      ((AEMaterialAdapter)localObject).b(((AEMaterialCategory)this.c.get(paramInt)).a);
+    }
     localAEGridView.setAdapter((RecyclerView.Adapter)localObject);
     paramViewGroup.addView(localAEGridView);
     if (QLog.isColorLevel())
@@ -116,7 +149,7 @@ public class AEMaterialTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialTabAdapter
  * JD-Core Version:    0.7.0.1
  */

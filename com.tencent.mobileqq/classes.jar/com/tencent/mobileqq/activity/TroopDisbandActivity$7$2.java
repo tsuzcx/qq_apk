@@ -12,13 +12,13 @@ class TroopDisbandActivity$7$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity$7.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity$7.a.a, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    ReportController.b(this.b.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.b.a.k, "", "", "");
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.7.2
  * JD-Core Version:    0.7.0.1
  */

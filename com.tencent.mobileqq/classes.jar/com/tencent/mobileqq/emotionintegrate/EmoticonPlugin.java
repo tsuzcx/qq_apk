@@ -20,19 +20,19 @@ public class EmoticonPlugin
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           paramString1 = new SearchEmoticonWebBean();
-          paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("emt_name", "");
-          paramString1.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriUrl", "");
-          paramString1.jdField_c_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriMd5", "");
-          paramString1.jdField_a_of_type_Int = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
-          paramString1.jdField_b_of_type_Int = paramJsBridgeListener.optInt("emt_oriWidth", 0);
-          paramString1.jdField_c_of_type_Int = paramJsBridgeListener.optInt("emt_oriHeight", 0);
-          paramString1.jdField_d_of_type_Int = paramJsBridgeListener.optInt("emt_type", 0);
-          paramString1.jdField_d_of_type_JavaLangString = paramJsBridgeListener.optString("emt_packCoverUrl", "");
-          paramString1.e = paramJsBridgeListener.optString("emt_packId", "");
-          paramString1.f = paramJsBridgeListener.optString("emt_packName", "");
-          paramString1.g = paramJsBridgeListener.optString("emt_miniId", "");
-          paramString1.h = paramJsBridgeListener.optString("emt_miniName", "");
-          SearchEmoticonFragment.a(this.mRuntime.a(), paramString1);
+          paramString1.a = paramJsBridgeListener.optString("emt_name", "");
+          paramString1.b = paramJsBridgeListener.optString("emt_oriUrl", "");
+          paramString1.c = paramJsBridgeListener.optString("emt_oriMd5", "");
+          paramString1.d = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
+          paramString1.e = paramJsBridgeListener.optInt("emt_oriWidth", 0);
+          paramString1.f = paramJsBridgeListener.optInt("emt_oriHeight", 0);
+          paramString1.g = paramJsBridgeListener.optInt("emt_type", 0);
+          paramString1.h = paramJsBridgeListener.optString("emt_packCoverUrl", "");
+          paramString1.i = paramJsBridgeListener.optString("emt_packId", "");
+          paramString1.j = paramJsBridgeListener.optString("emt_packName", "");
+          paramString1.k = paramJsBridgeListener.optString("emt_miniId", "");
+          paramString1.l = paramJsBridgeListener.optString("emt_miniName", "");
+          SearchEmoticonFragment.a(this.mRuntime.d(), paramString1);
         }
         catch (JSONException paramJsBridgeListener)
         {
@@ -52,7 +52,7 @@ public class EmoticonPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmoticonPlugin
  * JD-Core Version:    0.7.0.1
  */

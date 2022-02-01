@@ -4,42 +4,42 @@ import org.json.JSONObject;
 
 public class UnifiedDebugManager$TerminalInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
   public String c;
   public String d;
   public String e;
-  public String f;
+  public int f;
+  public long g;
+  public long h;
+  public String i;
+  public boolean j;
+  public boolean k;
+  public int l;
   
   public UnifiedDebugManager$TerminalInfo(UnifiedDebugManager paramUnifiedDebugManager) {}
   
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("mobile_mode", this.a);
+    localJSONObject.put("os_version", this.b);
     localJSONObject.put("app_version", this.c);
     localJSONObject.put("net_type", this.d);
     localJSONObject.put("carrier_type", this.e);
-    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
-    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
-    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
-    localJSONObject.put("cpu_type", this.f);
-    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
-    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
-    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
+    localJSONObject.put("cpu_num", this.f);
+    localJSONObject.put("cpu_freq", this.g);
+    localJSONObject.put("total_ram", this.h);
+    localJSONObject.put("cpu_type", this.i);
+    localJSONObject.put("is_proxy", this.j);
+    localJSONObject.put("is_X5_support", this.k);
+    localJSONObject.put("X5_version", this.l);
     return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugManager.TerminalInfo
  * JD-Core Version:    0.7.0.1
  */

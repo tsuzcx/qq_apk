@@ -9,13 +9,13 @@ import java.util.List;
 class AECMShowQipcModule$CmShowAEDownloadCallBack
   implements IAEDownloadCallBack
 {
-  private int jdField_a_of_type_Int = 0;
   private int b = 0;
-  private int c;
+  private int c = 0;
+  private int d;
   
   public AECMShowQipcModule$CmShowAEDownloadCallBack(AECMShowQipcModule paramAECMShowQipcModule, int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
   
   public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
@@ -31,21 +31,21 @@ class AECMShowQipcModule$CmShowAEDownloadCallBack
     if (paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_Int += 1;
-      break label86;
       this.b += 1;
+      break label86;
+      this.c += 1;
       label86:
-      if (this.jdField_a_of_type_Int + this.b == AECMShowQipcModule.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule).size())
+      if (this.b + this.c == AECMShowQipcModule.c(this.a).size())
       {
         paramAEResInfo = new EIPCResult();
-        if (this.b != 0)
+        if (this.c != 0)
         {
           paramAEResInfo.code = -1;
-          this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule.callbackResult(this.c, paramAEResInfo);
+          this.a.callbackResult(this.d, paramAEResInfo);
           return;
         }
         paramAEResInfo.code = 0;
-        this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule.callbackResult(this.c, paramAEResInfo);
+        this.a.callbackResult(this.d, paramAEResInfo);
       }
       return;
     }
@@ -56,7 +56,7 @@ class AECMShowQipcModule$CmShowAEDownloadCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowQipcModule.CmShowAEDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

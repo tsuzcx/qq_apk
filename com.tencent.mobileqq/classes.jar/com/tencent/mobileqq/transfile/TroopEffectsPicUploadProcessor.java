@@ -25,12 +25,12 @@ public class TroopEffectsPicUploadProcessor
     {
       constructCustomFace();
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
-      localSendResult.c = this.mFileName;
-      localSendResult.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
-      localSendResult.jdField_b_of_type_Long = this.mFileID;
-      localSendResult.jdField_a_of_type_JavaLangObject = this.customFace;
+      localSendResult.e = this.mFileSize;
+      localSendResult.g = this.mMd5Str;
+      localSendResult.f = this.mFileName;
+      localSendResult.d = this.mUiRequest.mLocalPath;
+      localSendResult.h = this.mFileID;
+      localSendResult.l = this.customFace;
       this.mUiRequest.mUpCallBack.b(localSendResult);
       doReport(true);
     }
@@ -38,7 +38,7 @@ public class TroopEffectsPicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TroopEffectsPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

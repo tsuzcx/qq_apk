@@ -19,10 +19,10 @@ public class MsgTabNodeBridgeSegment
     {
       MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramList.next();
       MsgTabVideoData localMsgTabVideoData = new MsgTabVideoData();
-      localMsgTabVideoData.jdField_a_of_type_JavaLangString = localMsgTabNodeVideoInfo.b;
-      localMsgTabVideoData.b = localMsgTabNodeVideoInfo.jdField_a_of_type_JavaLangString;
-      localMsgTabVideoData.jdField_a_of_type_Long = localMsgTabNodeVideoInfo.jdField_a_of_type_Long;
-      localMsgTabVideoData.jdField_a_of_type_Boolean = localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean;
+      localMsgTabVideoData.b = localMsgTabNodeVideoInfo.d;
+      localMsgTabVideoData.c = localMsgTabNodeVideoInfo.c;
+      localMsgTabVideoData.d = localMsgTabNodeVideoInfo.a;
+      localMsgTabVideoData.a = localMsgTabNodeVideoInfo.b;
       localArrayList.add(localMsgTabVideoData);
     }
     return localArrayList;
@@ -35,12 +35,12 @@ public class MsgTabNodeBridgeSegment
       notifyResult(new ArrayList());
       return;
     }
-    notifyResult(a(paramMsgTabNodeVidListResponse.a.a));
+    notifyResult(a(paramMsgTabNodeVidListResponse.a.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeBridgeSegment
  * JD-Core Version:    0.7.0.1
  */

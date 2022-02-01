@@ -10,17 +10,17 @@ class BaseTransientBottomBar$17
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar.c(this.jdField_a_of_type_Int);
+    this.b.c(this.a);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    BaseTransientBottomBar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar).b(0, 180);
+    BaseTransientBottomBar.k(this.b).b(0, 180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.17
  * JD-Core Version:    0.7.0.1
  */

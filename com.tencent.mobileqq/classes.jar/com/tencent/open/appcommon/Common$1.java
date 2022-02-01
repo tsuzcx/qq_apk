@@ -19,7 +19,7 @@ final class Common$1
       while (i < j)
       {
         File localFile2 = arrayOfFile[i];
-        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.q())) && (!localFile2.getName().equals(Common.q()))))
+        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.w())) && (!localFile2.getName().equals(Common.w()))))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(localFile1);
@@ -49,7 +49,7 @@ final class Common$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.Common.1
  * JD-Core Version:    0.7.0.1
  */

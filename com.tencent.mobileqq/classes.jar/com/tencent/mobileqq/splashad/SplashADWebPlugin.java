@@ -30,7 +30,7 @@ public class SplashADWebPlugin
       paramString.append(this.a);
       QLog.i("QSplash@VasSplashUtil", 1, paramString.toString());
       if (this.a) {
-        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
+        this.mRuntime.d().startActivity(new Intent(this.mRuntime.d(), SplashActivity.class));
       }
       return true;
     }
@@ -58,14 +58,14 @@ public class SplashADWebPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    if (this.mRuntime.a().getIntent() != null) {
-      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
+    if (this.mRuntime.d().getIntent() != null) {
+      this.a = this.mRuntime.d().getIntent().getBooleanExtra("key_from_splash_ad", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.splashad.SplashADWebPlugin
  * JD-Core Version:    0.7.0.1
  */

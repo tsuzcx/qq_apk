@@ -19,7 +19,7 @@ public class SubAccountConfProcessor
   public SubAccountConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      return SubAccountConfigBean.a(paramArrayOfQConfItem[0].a);
+      return SubAccountConfigBean.a(paramArrayOfQConfItem[0].b);
     }
     if (QLog.isColorLevel()) {
       QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
@@ -75,7 +75,7 @@ public class SubAccountConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SubAccountConfProcessor
  * JD-Core Version:    0.7.0.1
  */

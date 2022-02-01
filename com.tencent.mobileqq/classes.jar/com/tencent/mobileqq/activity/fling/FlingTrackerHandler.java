@@ -18,20 +18,20 @@ public class FlingTrackerHandler
   extends FlingHandler
   implements TopLayout.OnDraggingListener
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ContentWrapView jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
-  private TopLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FlingTrackerHandler.1(this);
+  private ImageView mBackImageView;
+  private ContentWrapView mContentWrapView;
+  private int mCount;
+  private Handler mHandler = new Handler();
+  private View mInnerView;
+  private TopLayout mTopView;
+  private Runnable mWrapContentTaskRunnable = new FlingTrackerHandler.1(this);
   
   public FlingTrackerHandler(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  private int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  private int calculateInSamplePowerSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
     int m = 1;
     int i = 1;
@@ -68,45 +68,45 @@ public class FlingTrackerHandler
     return m;
   }
   
-  private String a()
+  private String getSnapFilePath()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
     if (localActivity != null) {
-      return ScreenCapture.getSnapPath(localActivity, a());
+      return ScreenCapture.getSnapPath(localActivity, getFlingCode());
     }
     return null;
   }
   
   /* Error */
-  private void c()
+  private void loadBackViewSnap()
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 98	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:a	()Ljava/lang/String;
+    //   1: invokespecial 120	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:getSnapFilePath	()Ljava/lang/String;
     //   4: astore_3
     //   5: aload_3
     //   6: ifnonnull +4 -> 10
     //   9: return
     //   10: aload_0
-    //   11: getfield 60	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   14: invokevirtual 103	android/widget/ImageView:getMeasuredWidth	()I
+    //   11: getfield 70	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:mBackImageView	Landroid/widget/ImageView;
+    //   14: invokevirtual 125	android/widget/ImageView:getMeasuredWidth	()I
     //   17: istore_1
     //   18: aload_0
-    //   19: getfield 60	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   22: invokevirtual 106	android/widget/ImageView:getMeasuredHeight	()I
+    //   19: getfield 70	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:mBackImageView	Landroid/widget/ImageView;
+    //   22: invokevirtual 128	android/widget/ImageView:getMeasuredHeight	()I
     //   25: istore_2
     //   26: aload_0
     //   27: aload_3
     //   28: iload_1
     //   29: iload_2
-    //   30: invokevirtual 110	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:decodeSampledBitmapFromFile	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
+    //   30: invokevirtual 132	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:decodeSampledBitmapFromFile	(Ljava/lang/String;II)Landroid/graphics/Bitmap;
     //   33: astore_3
     //   34: aload_3
     //   35: ifnull +15 -> 50
     //   38: aload_0
-    //   39: getfield 60	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   39: getfield 70	com/tencent/mobileqq/activity/fling/FlingTrackerHandler:mBackImageView	Landroid/widget/ImageView;
     //   42: aload_3
-    //   43: invokevirtual 114	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   43: invokevirtual 136	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
     //   46: return
     //   47: astore_3
     //   48: aload_3
@@ -128,61 +128,9 @@ public class FlingTrackerHandler
     //   26	34	51	java/lang/OutOfMemoryError
   }
   
-  protected void a()
-  {
-    if (a())
-    {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null) {
-        localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
-      }
-    }
-  }
-  
-  protected void b()
-  {
-    Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      return;
-    }
-    localObject = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
-    if ((b()) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.getParent().equals(localObject)))
-    {
-      ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null) && (this.jdField_a_of_type_AndroidViewView.getParent().equals(this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.removeView(this.jdField_a_of_type_AndroidViewView);
-        ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
-      }
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      if ((localObject != null) && (((ImageView)localObject).getDrawable() != null))
-      {
-        localObject = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-        if ((localObject instanceof BitmapDrawable))
-        {
-          localObject = ((BitmapDrawable)localObject).getBitmap();
-          if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-            ((Bitmap)localObject).recycle();
-          }
-        }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      }
-    }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
-    if (localObject != null) {
-      ((Handler)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  protected boolean b()
-  {
-    TopLayout localTopLayout = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout;
-    return (localTopLayout != null) && (localTopLayout.getParent() != null);
-  }
-  
   public void cancelDrag()
   {
-    OrientationUtil.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    OrientationUtil.b((Activity)this.mWrappedActivity.get());
   }
   
   public Bitmap decodeSampledBitmapFromFile(String paramString, int paramInt1, int paramInt2)
@@ -190,7 +138,7 @@ public class FlingTrackerHandler
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions);
-    localOptions.inSampleSize = a(localOptions, paramInt1, paramInt2);
+    localOptions.inSampleSize = calculateInSamplePowerSize(localOptions, paramInt1, paramInt2);
     localOptions.inJustDecodeBounds = false;
     try
     {
@@ -207,31 +155,83 @@ public class FlingTrackerHandler
   
   public void endDrag()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
     if (localActivity != null)
     {
       OrientationUtil.b(localActivity);
       localActivity.onBackPressed();
-      localActivity.overridePendingTransition(2130772071, 2130772071);
+      localActivity.overridePendingTransition(2130772101, 2130772101);
     }
+  }
+  
+  protected boolean isWrapped()
+  {
+    TopLayout localTopLayout = this.mTopView;
+    return (localTopLayout != null) && (localTopLayout.getParent() != null);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (b()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout.onConfigChanged(paramConfiguration);
+    if (isWrapped()) {
+      this.mTopView.onConfigChanged(paramConfiguration);
     }
   }
   
   public void startDrag()
   {
-    OrientationUtil.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    OrientationUtil.a((Activity)this.mWrappedActivity.get());
+  }
+  
+  protected void unwrap()
+  {
+    Object localObject = (Activity)this.mWrappedActivity.get();
+    if (localObject == null) {
+      return;
+    }
+    localObject = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
+    if ((isWrapped()) && (this.mTopView.getParent().equals(localObject)))
+    {
+      ((ViewGroup)localObject).removeView(this.mTopView);
+      if ((this.mContentWrapView != null) && (this.mInnerView.getParent().equals(this.mContentWrapView)))
+      {
+        this.mContentWrapView.removeView(this.mInnerView);
+        ((ViewGroup)localObject).addView(this.mInnerView);
+      }
+      localObject = this.mBackImageView;
+      if ((localObject != null) && (((ImageView)localObject).getDrawable() != null))
+      {
+        localObject = this.mBackImageView.getDrawable();
+        if ((localObject instanceof BitmapDrawable))
+        {
+          localObject = ((BitmapDrawable)localObject).getBitmap();
+          if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+            ((Bitmap)localObject).recycle();
+          }
+        }
+        this.mBackImageView.setImageDrawable(null);
+      }
+    }
+    localObject = this.mHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacks(this.mWrapContentTaskRunnable);
+    }
+  }
+  
+  protected void wrap()
+  {
+    if (canWrapContent())
+    {
+      Handler localHandler = this.mHandler;
+      if (localHandler != null) {
+        localHandler.postDelayed(this.mWrapContentTaskRunnable, 100L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingTrackerHandler
  * JD-Core Version:    0.7.0.1
  */

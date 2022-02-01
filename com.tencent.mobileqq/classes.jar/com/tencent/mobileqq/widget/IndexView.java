@@ -15,20 +15,20 @@ import com.tencent.qphone.base.util.QLog;
 public class IndexView
   extends View
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private IndexView.OnIndexChangedListener2 jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = null;
-  private IndexView.OnIndexChangedListener jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private boolean c = false;
-  private boolean d = false;
+  private String[] a;
+  private int[] b;
+  private int[] c;
+  private IndexView.OnIndexChangedListener d = null;
+  private IndexView.OnIndexChangedListener2 e = null;
+  private TextPaint f = new TextPaint();
+  private boolean g = false;
+  private boolean h;
+  private Drawable i;
+  private Rect j;
+  private Drawable k;
+  private Rect l;
+  private boolean m = false;
+  private boolean n = false;
   
   public IndexView(Context paramContext)
   {
@@ -52,93 +52,93 @@ public class IndexView
   
   private int a(int paramInt1, int paramInt2)
   {
-    int k = getPaddingTop();
-    int m = getPaddingBottom();
+    int i3 = getPaddingTop();
+    int i4 = getPaddingBottom();
     paramInt1 = 1;
-    int i = 100;
-    int j = 50;
-    while (paramInt1 < i)
+    int i1 = 100;
+    int i2 = 50;
+    while (paramInt1 < i1)
     {
-      j = (paramInt1 + i) / 2;
-      if (b(j) <= paramInt2 - (k + m)) {
-        paramInt1 = j + 1;
+      i2 = (paramInt1 + i1) / 2;
+      if (b(i2) <= paramInt2 - (i3 + i4)) {
+        paramInt1 = i2 + 1;
       } else {
-        i = j - 1;
+        i1 = i2 - 1;
       }
     }
-    return c(j) + getPaddingLeft() + getPaddingRight();
+    return c(i2) + getPaddingLeft() + getPaddingRight();
   }
   
   private static int a(int[] paramArrayOfInt)
   {
-    int i = 0;
-    int j = 0;
+    int i1 = 0;
+    int i2 = 0;
     if (paramArrayOfInt != null)
     {
-      int k = paramArrayOfInt.length;
-      i = 0;
-      while (j < k)
+      int i3 = paramArrayOfInt.length;
+      i1 = 0;
+      while (i2 < i3)
       {
-        i += paramArrayOfInt[j];
-        j += 1;
+        i1 += paramArrayOfInt[i2];
+        i2 += 1;
       }
     }
-    return i;
+    return i1;
   }
   
   private void a()
   {
-    int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    int i2 = this.a.length;
     Rect localRect = new Rect();
-    int i = 0;
-    while (i < j)
+    int i1 = 0;
+    while (i1 < i2)
     {
-      TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      localTextPaint.getTextBounds(arrayOfString[i], 0, arrayOfString[i].length(), localRect);
-      this.jdField_b_of_type_ArrayOfInt[i] = (localRect.right - localRect.left);
-      this.jdField_a_of_type_ArrayOfInt[i] = (localRect.bottom - localRect.top);
-      i += 1;
+      TextPaint localTextPaint = this.f;
+      String[] arrayOfString = this.a;
+      localTextPaint.getTextBounds(arrayOfString[i1], 0, arrayOfString[i1].length(), localRect);
+      this.c[i1] = (localRect.right - localRect.left);
+      this.b[i1] = (localRect.bottom - localRect.top);
+      i1 += 1;
     }
   }
   
   private int b(int paramInt)
   {
-    int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    int i2 = this.a.length;
+    TextPaint localTextPaint = this.f;
     localTextPaint.setTextSize(paramInt);
     localTextPaint.setAntiAlias(true);
     Rect localRect = new Rect();
     paramInt = 0;
-    int i = 0;
-    while (paramInt < j)
+    int i1 = 0;
+    while (paramInt < i2)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.a;
       localTextPaint.getTextBounds(arrayOfString[paramInt], 0, arrayOfString[paramInt].length(), localRect);
-      int k = localRect.bottom - localRect.top;
-      i = i + k + (int)(k * 0.8F);
+      int i3 = localRect.bottom - localRect.top;
+      i1 = i1 + i3 + (int)(i3 * 0.8F);
       paramInt += 1;
     }
-    return i;
+    return i1;
   }
   
   private int c(int paramInt)
   {
-    int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    int i2 = this.a.length;
+    TextPaint localTextPaint = this.f;
     localTextPaint.setTextSize(paramInt);
     localTextPaint.setAntiAlias(true);
     Rect localRect = new Rect();
     paramInt = 0;
-    int i = 0;
-    while (paramInt < j)
+    int i1 = 0;
+    while (paramInt < i2)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.a;
       localTextPaint.getTextBounds(arrayOfString[paramInt], 0, arrayOfString[paramInt].length(), localRect);
-      i = Math.max(i, localRect.right - localRect.left);
+      i1 = Math.max(i1, localRect.right - localRect.left);
       paramInt += 1;
     }
-    return i;
+    return i1;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -153,45 +153,45 @@ public class IndexView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    int j = a(paramInt2);
-    paramInt2 = a(paramInt1, j);
-    int k = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getSize(paramInt1);
-    if (k == -2147483648)
+    int i2 = a(paramInt2);
+    paramInt2 = a(paramInt1, i2);
+    int i3 = View.MeasureSpec.getMode(paramInt1);
+    int i1 = View.MeasureSpec.getSize(paramInt1);
+    if (i3 == -2147483648)
     {
-      paramInt1 = Math.min(paramInt2, i);
+      paramInt1 = Math.min(paramInt2, i1);
     }
     else
     {
       paramInt1 = paramInt2;
-      if (k == 1073741824) {
-        paramInt1 = i;
+      if (i3 == 1073741824) {
+        paramInt1 = i1;
       }
     }
-    setMeasuredDimension(paramInt1, j);
+    setMeasuredDimension(paramInt1, i2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k = paramMotionEvent.getAction();
+    int i3 = paramMotionEvent.getAction();
     int[] arrayOfInt;
     Drawable localDrawable;
-    if (k == 0)
+    if (i3 == 0)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.g = true;
       arrayOfInt = new int[1];
       arrayOfInt[0] = 16842919;
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localDrawable = this.i;
       if (localDrawable != null)
       {
         localDrawable.setState(arrayOfInt);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+        this.i.invalidateSelf();
       }
-      localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      localDrawable = this.k;
       if (localDrawable != null)
       {
         localDrawable.setState(arrayOfInt);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+        this.k.invalidateSelf();
       }
       localDrawable = getBackground();
       if (localDrawable != null)
@@ -204,21 +204,21 @@ public class IndexView
         QLog.e("IndexView", 1, "getBackground: failed. ");
       }
     }
-    else if ((k == 3) || (k == 1))
+    else if ((i3 == 3) || (i3 == 1))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.g = false;
       arrayOfInt = new int[0];
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localDrawable = this.i;
       if (localDrawable != null)
       {
         localDrawable.setState(arrayOfInt);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+        this.i.invalidateSelf();
       }
-      localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      localDrawable = this.k;
       if (localDrawable != null)
       {
         localDrawable.setState(arrayOfInt);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+        this.k.invalidateSelf();
       }
       localDrawable = getBackground();
       if (localDrawable != null)
@@ -231,44 +231,44 @@ public class IndexView
         QLog.e("IndexView", 1, "getBackground: failed. ");
       }
     }
-    if ((k != 0) && (k != 2) && (k != 1)) {
-      return k == 3;
+    if ((i3 != 0) && (i3 != 2) && (i3 != 1)) {
+      return i3 == 3;
     }
     float f2 = paramMotionEvent.getY();
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener != null) && (f2 >= 0.0F))
+    if ((this.d != null) && (f2 >= 0.0F))
     {
-      int i = getHeight() - getPaddingTop() - getPaddingBottom();
-      int j = a(this.jdField_a_of_type_ArrayOfInt);
+      int i1 = getHeight() - getPaddingTop() - getPaddingBottom();
+      int i2 = a(this.b);
       float f1;
-      if (i > j) {
-        f1 = (i - j) * 1.0F / (this.jdField_a_of_type_ArrayOfJavaLangString.length - 1);
+      if (i1 > i2) {
+        f1 = (i1 - i2) * 1.0F / (this.a.length - 1);
       } else {
         f1 = 0.0F;
       }
-      j = -1;
+      i2 = -1;
       for (;;)
       {
-        i = j;
+        i1 = i2;
         if (f2 < 0.0F) {
           break;
         }
-        j += 1;
-        paramMotionEvent = this.jdField_a_of_type_ArrayOfInt;
-        i = j;
-        if (j >= paramMotionEvent.length) {
+        i2 += 1;
+        paramMotionEvent = this.b;
+        i1 = i2;
+        if (i2 >= paramMotionEvent.length) {
           break;
         }
-        f2 -= paramMotionEvent[j] + f1;
+        f2 -= paramMotionEvent[i2] + f1;
       }
-      paramMotionEvent = this.jdField_a_of_type_ArrayOfInt;
-      j = i;
-      if (i >= paramMotionEvent.length) {
-        j = paramMotionEvent.length - 1;
+      paramMotionEvent = this.b;
+      i2 = i1;
+      if (i1 >= paramMotionEvent.length) {
+        i2 = paramMotionEvent.length - 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener.onIndexChanged(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2;
+      this.d.onIndexChanged(this.a[i2]);
+      paramMotionEvent = this.e;
       if (paramMotionEvent != null) {
-        paramMotionEvent.onIndexChanged(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
+        paramMotionEvent.onIndexChanged(this.a[i2], i3);
       }
     }
     return true;
@@ -278,18 +278,18 @@ public class IndexView
   {
     if ("$".equals(paramArrayOfString[0]))
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840500);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+      this.h = true;
+      this.i = getResources().getDrawable(2130841262);
+      this.j = new Rect();
     }
-    if (this.c)
+    if (this.m)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840499);
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+      this.k = getResources().getDrawable(2130841261);
+      this.l = new Rect();
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_ArrayOfInt = new int[paramArrayOfString.length];
-    this.jdField_b_of_type_ArrayOfInt = new int[paramArrayOfString.length];
+    this.a = paramArrayOfString;
+    this.b = new int[paramArrayOfString.length];
+    this.c = new int[paramArrayOfString.length];
   }
   
   public void setIndex(String[] paramArrayOfString, boolean paramBoolean)
@@ -298,13 +298,13 @@ public class IndexView
     if (paramBoolean)
     {
       arrayOfString = new String[paramArrayOfString.length + 1];
-      int i = 0;
+      int i1 = 0;
       arrayOfString[0] = "$";
-      while (i < paramArrayOfString.length)
+      while (i1 < paramArrayOfString.length)
       {
-        int j = i + 1;
-        arrayOfString[j] = paramArrayOfString[i];
-        i = j;
+        int i2 = i1 + 1;
+        arrayOfString[i2] = paramArrayOfString[i1];
+        i1 = i2;
       }
     }
     setIndex(arrayOfString);
@@ -315,47 +315,47 @@ public class IndexView
     String[] arrayOfString = paramArrayOfString;
     if (paramBoolean1)
     {
-      this.c = paramBoolean2;
-      this.d = paramBoolean3;
-      int j = 0;
-      int k = 0;
-      int i = 0;
+      this.m = paramBoolean2;
+      this.n = paramBoolean3;
+      int i2 = 0;
+      int i3 = 0;
+      int i1 = 0;
       if ((paramBoolean2) && (paramBoolean3))
       {
         arrayOfString = new String[paramArrayOfString.length + 3];
         arrayOfString[0] = "$";
-        while (i < paramArrayOfString.length)
+        while (i1 < paramArrayOfString.length)
         {
-          j = i + 1;
-          arrayOfString[j] = paramArrayOfString[i];
-          i = j;
+          i2 = i1 + 1;
+          arrayOfString[i2] = paramArrayOfString[i1];
+          i1 = i2;
         }
-        arrayOfString[(i + 1)] = "&";
-        arrayOfString[(i + 2)] = "+";
+        arrayOfString[(i1 + 1)] = "&";
+        arrayOfString[(i1 + 2)] = "+";
       }
       else if ((!paramBoolean2) && (!paramBoolean3))
       {
         arrayOfString = new String[paramArrayOfString.length + 1];
         arrayOfString[0] = "$";
-        for (i = j; i < paramArrayOfString.length; i = j)
+        for (i1 = i2; i1 < paramArrayOfString.length; i1 = i2)
         {
-          j = i + 1;
-          arrayOfString[j] = paramArrayOfString[i];
+          i2 = i1 + 1;
+          arrayOfString[i2] = paramArrayOfString[i1];
         }
       }
       else
       {
         arrayOfString = new String[paramArrayOfString.length + 2];
         arrayOfString[0] = "$";
-        for (i = k; i < paramArrayOfString.length; i = j)
+        for (i1 = i3; i1 < paramArrayOfString.length; i1 = i2)
         {
-          j = i + 1;
-          arrayOfString[j] = paramArrayOfString[i];
+          i2 = i1 + 1;
+          arrayOfString[i2] = paramArrayOfString[i1];
         }
         if (paramBoolean2) {
-          arrayOfString[(i + 1)] = "&";
+          arrayOfString[(i1 + 1)] = "&";
         } else {
-          arrayOfString[(i + 1)] = "+";
+          arrayOfString[(i1 + 1)] = "+";
         }
       }
     }
@@ -364,17 +364,17 @@ public class IndexView
   
   public void setOnIndexChangedListener(IndexView.OnIndexChangedListener paramOnIndexChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener = paramOnIndexChangedListener;
+    this.d = paramOnIndexChangedListener;
   }
   
   public void setOnIndexChangedListener2(IndexView.OnIndexChangedListener2 paramOnIndexChangedListener2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 = paramOnIndexChangedListener2;
+    this.e = paramOnIndexChangedListener2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IndexView
  * JD-Core Version:    0.7.0.1
  */

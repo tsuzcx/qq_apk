@@ -115,7 +115,7 @@ public class SttServlet
       }
       paramAppRuntime = "1";
       ((HashMap)localObject).put("param_FailCode", paramAppRuntime);
-      ((HashMap)localObject).put("appversion", "8.7.0");
+      ((HashMap)localObject).put("appversion", "8.8.17");
       paramLong.collectPerformance("", "PttSttRequestV2", false, 0L, 0L, (HashMap)localObject, "");
     }
     catch (Exception paramAppRuntime)
@@ -475,7 +475,7 @@ public class SttServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttServlet
  * JD-Core Version:    0.7.0.1
  */

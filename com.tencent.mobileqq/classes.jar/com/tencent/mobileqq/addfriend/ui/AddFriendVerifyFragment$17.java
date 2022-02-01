@@ -13,12 +13,12 @@ class AddFriendVerifyFragment$17
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B992", "0X800B992", 0, 0, "", "", "", "");
-    AddFriendVerifyFragment.a(this.a).dismiss();
+    AddFriendVerifyFragment.j(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.17
  * JD-Core Version:    0.7.0.1
  */

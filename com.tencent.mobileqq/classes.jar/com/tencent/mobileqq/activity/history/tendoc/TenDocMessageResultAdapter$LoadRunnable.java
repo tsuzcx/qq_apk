@@ -10,16 +10,16 @@ import java.util.ArrayList;
 class TenDocMessageResultAdapter$LoadRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  private String b;
+  private long c;
+  private final Object d = new Object();
   
   TenDocMessageResultAdapter$LoadRunnable(TenDocMessageResultAdapter paramTenDocMessageResultAdapter, int paramInt, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramInt;
+    this.b = paramString;
+    this.c = paramLong;
   }
   
   public void run()
@@ -28,9 +28,9 @@ class TenDocMessageResultAdapter$LoadRunnable
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(this.b);
       ((StringBuilder)???).append(", loadType = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)???).append(this.a);
       QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     Object localObject2 = new ArrayList();
@@ -43,16 +43,16 @@ class TenDocMessageResultAdapter$LoadRunnable
       ((StringBuilder)???).append(localObject2);
       QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if (TenDocMessageResultAdapter.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+      if (TenDocMessageResultAdapter.b(this.this$0).equals(this.b))
       {
         TenDocMessageResultAdapter.a(this.this$0, true);
         TenDocMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
-        localObject2 = TenDocMessageResultAdapter.a(this.this$0).obtainMessage(2, localObject2);
+        localObject2 = TenDocMessageResultAdapter.c(this.this$0).obtainMessage(2, localObject2);
         localObject4 = new Bundle();
-        ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-        ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject4).putLong("searchSequence", this.c);
+        ((Bundle)localObject4).putString("searchKeyword", this.b);
         ((Message)localObject2).setData((Bundle)localObject4);
         ((Message)localObject2).sendToTarget();
       }
@@ -62,7 +62,7 @@ class TenDocMessageResultAdapter$LoadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter.LoadRunnable
  * JD-Core Version:    0.7.0.1
  */

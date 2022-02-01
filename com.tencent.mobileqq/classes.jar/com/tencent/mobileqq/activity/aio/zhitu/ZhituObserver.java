@@ -28,7 +28,7 @@ public class ZhituObserver
       ((StringBuilder)localObject2).append(paramInt);
       QLog.d("ZhituObserver", 2, ZhituManager.a((String)localObject1, "onReceive", ((StringBuilder)localObject2).toString()));
     }
-    Object localObject2 = ZhituManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    Object localObject2 = ZhituManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).d();
     if (!((String)localObject2).equals(localObject1))
     {
       if (QLog.isColorLevel())
@@ -53,7 +53,7 @@ public class ZhituObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ final class ViewGroupExtensionKt$removeViewWithAnim$1$1$onAnimationEnd$1
   
   public final void run()
   {
-    this.this$0.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.this$0.a.jdField_a_of_type_AndroidViewView);
+    this.this$0.a.a.removeView(this.this$0.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.ktx.ViewGroupExtensionKt.removeViewWithAnim.1.1.onAnimationEnd.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,7 @@ public class ReadInJoySelfCenterViolaFragment
   extends ReadInJoyViolaChannelFragment
   implements OnTabRedNumsChangeListenner
 {
-  private ReadInJoyObserver a;
-  
-  public ReadInJoySelfCenterViolaFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoySelfCenterViolaFragment.1(this);
-  }
+  private ReadInJoyObserver o = new ReadInJoySelfCenterViolaFragment.1(this);
   
   public static ReadInJoySelfCenterViolaFragment a(String paramString)
   {
@@ -33,27 +28,27 @@ public class ReadInJoySelfCenterViolaFragment
     return localReadInJoySelfCenterViolaFragment;
   }
   
-  private void a()
+  private void x()
   {
-    if (a() != null)
+    if (u() != null)
     {
-      int i = a().getTabRedNums(3);
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView.c())) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView.a(ViolaBizUtils.a(i).toString());
+      int i = u().getTabRedNums(3);
+      if ((this.m != null) && (this.m.c())) {
+        this.m.a(ViolaBizUtils.a(i).toString());
       }
     }
   }
   
-  private void i()
+  private void y()
   {
-    if (a() != null) {
-      a().clearMsgBoxRedPnt();
+    if (u() != null) {
+      u().clearMsgBoxRedPnt();
     }
   }
   
-  private void j()
+  private void z()
   {
-    if (MxFlutterResourceLoader.a.b()) {
+    if (MxFlutterResourceLoader.a.d()) {
       MxFlutterResourceLoader.a.a("4630", true, null);
     }
   }
@@ -61,22 +56,17 @@ public class ReadInJoySelfCenterViolaFragment
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     b(paramBoolean, paramActivity, paramBundle);
-    a();
+    x();
   }
   
-  public void aA_()
-  {
-    a();
-  }
-  
-  public void aD_()
-  {
-    a();
-  }
-  
-  protected boolean f()
+  protected boolean a()
   {
     return false;
+  }
+  
+  public void da_()
+  {
+    x();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -86,7 +76,7 @@ public class ReadInJoySelfCenterViolaFragment
     if (localBundle != null)
     {
       Object localObject = localBundle.getString("url_key");
-      int i = a().getTabRedNums(3);
+      int i = u().getTabRedNums(3);
       paramBundle = (Bundle)localObject;
       if (i > 0)
       {
@@ -101,30 +91,35 @@ public class ReadInJoySelfCenterViolaFragment
       ((StringBuilder)localObject).append("&statusBarStyle=0");
       paramBundle = ((StringBuilder)localObject).toString();
       if (!TextUtils.isEmpty(paramBundle)) {
-        a(paramBundle);
+        b(paramBundle);
       }
-      this.b = localBundle.getString("channel_version_key", "");
+      this.c = localBundle.getString("channel_version_key", "");
     }
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    FlymeOSStatusBarFontUtils.a(a(), true);
-    j();
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.o);
+    FlymeOSStatusBarFontUtils.a(v(), true);
+    z();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.o);
   }
   
   public void onResume()
   {
     super.onResume();
-    a();
+    x();
+  }
+  
+  public void t()
+  {
+    x();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.ReadInJoySelfCenterViolaFragment
  * JD-Core Version:    0.7.0.1
  */

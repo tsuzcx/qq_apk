@@ -14,13 +14,13 @@ class EmotionDownGIFCallback$2
       QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownloadProgress:", Integer.valueOf(this.a) });
     }
     if (EmotionDownGIFCallback.a(this.this$0).get() != null) {
-      ((EmotionDownGIFCallback.UiCallback)EmotionDownGIFCallback.a(this.this$0).get()).a(this.a, EmotionDownGIFCallback.a(this.this$0));
+      ((EmotionDownGIFCallback.UiCallback)EmotionDownGIFCallback.a(this.this$0).get()).a(this.a, EmotionDownGIFCallback.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ import java.util.Locale;
 public class FetchInfoListManager
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final FetchInfoListManager.FetchInfoListener jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener;
-  private final LinkedList<FetchInfoReq> jdField_a_of_type_JavaUtilLinkedList;
+  private final FetchInfoListManager.FetchInfoListener a;
   private final LinkedList<FetchInfoReq> b;
+  private final LinkedList<FetchInfoReq> c;
+  private final Handler d;
+  private long e;
   
   public FetchInfoListManager(FetchInfoListManager.FetchInfoListener paramFetchInfoListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener = paramFetchInfoListener;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.a = paramFetchInfoListener;
     this.b = new LinkedList();
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Long = 0L;
+    this.c = new LinkedList();
+    this.d = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.e = 0L;
   }
   
   private void a(FetchInfoReq paramFetchInfoReq)
@@ -36,36 +36,36 @@ public class FetchInfoListManager
     if (!paramFetchInfoReq.a())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FetchInfoListManager", 2, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner() ", paramFetchInfoReq.toString(), "非法请求" }));
+        QLog.d("FetchInfoListManager", 2, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner() ", paramFetchInfoReq.toString(), "非法请求" }));
       }
       return;
     }
-    if ((!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramFetchInfoReq)) && (!this.b.contains(paramFetchInfoReq)))
+    if ((!this.b.contains(paramFetchInfoReq)) && (!this.c.contains(paramFetchInfoReq)))
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d("FetchInfoListManager", 4, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString() }));
+        QLog.d("FetchInfoListManager", 4, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString() }));
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFetchInfoReq);
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))
+      this.b.addFirst(paramFetchInfoReq);
+      if (!this.d.hasMessages(1))
       {
-        long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+        long l = SystemClock.elapsedRealtime() - this.e;
         if ((l >= 0L) && (l <= 2000L))
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 300L);
+          this.d.sendEmptyMessageDelayed(1, 300L);
           return;
         }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        this.d.sendEmptyMessage(1);
       }
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.d("FetchInfoListManager", 4, StringUtil.a(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString(), "已经在队列中了" }));
+      QLog.d("FetchInfoListManager", 4, StringUtil.makeLogMsg(new Object[] { "addToNeedFetchInfoListInner()", paramFetchInfoReq.toString(), "已经在队列中了" }));
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    if (this.b.isEmpty())
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("FetchInfoListManager", 4, "doFetchInfo fetch list is empty!");
@@ -75,8 +75,8 @@ public class FetchInfoListManager
     FetchInfoReq localFetchInfoReq;
     do
     {
-      localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    } while ((localFetchInfoReq == null) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()));
+      localFetchInfoReq = (FetchInfoReq)this.b.removeFirst();
+    } while ((localFetchInfoReq == null) && (!this.b.isEmpty()));
     if (localFetchInfoReq == null)
     {
       if (QLog.isDevelopLevel()) {
@@ -84,47 +84,47 @@ public class FetchInfoListManager
       }
       return;
     }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.e = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
-      QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localFetchInfoReq.jdField_a_of_type_Int), localFetchInfoReq.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) }));
+      QLog.d("FetchInfoListManager", 2, String.format(Locale.getDefault(), "doFetchInfo type:%d  key: %s time:%d", new Object[] { Integer.valueOf(localFetchInfoReq.a), localFetchInfoReq.b, Long.valueOf(this.e) }));
     }
-    if (localFetchInfoReq.jdField_a_of_type_Int == 1)
+    if (localFetchInfoReq.a == 1)
     {
       ArrayList localArrayList = new ArrayList();
       b(localFetchInfoReq);
       localArrayList.add(localFetchInfoReq);
-      int i = Math.min(this.jdField_a_of_type_JavaUtilLinkedList.size(), 20) - 1;
+      int i = Math.min(this.b.size(), 20) - 1;
       while (i >= 0)
       {
-        localFetchInfoReq = (FetchInfoReq)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
-        if ((localFetchInfoReq != null) && (localFetchInfoReq.jdField_a_of_type_Int == 1))
+        localFetchInfoReq = (FetchInfoReq)this.b.get(i);
+        if ((localFetchInfoReq != null) && (localFetchInfoReq.a == 1))
         {
-          this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+          this.b.remove(i);
           b(localFetchInfoReq);
           localArrayList.add(localFetchInfoReq);
         }
         i -= 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(1, localArrayList);
+      this.a.a(1, localArrayList);
     }
     else
     {
       b(localFetchInfoReq);
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager$FetchInfoListener.a(localFetchInfoReq);
+      this.a.a(localFetchInfoReq);
     }
-    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    if (!this.b.isEmpty()) {
+      this.d.sendEmptyMessage(1);
     }
   }
   
   private void b(FetchInfoReq paramFetchInfoReq)
   {
-    if ((paramFetchInfoReq != null) && (!this.b.contains(paramFetchInfoReq)))
+    if ((paramFetchInfoReq != null) && (!this.c.contains(paramFetchInfoReq)))
     {
-      paramFetchInfoReq.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.b.add(paramFetchInfoReq);
-      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 30000L);
+      paramFetchInfoReq.f = SystemClock.elapsedRealtime();
+      this.c.add(paramFetchInfoReq);
+      if (!this.d.hasMessages(2)) {
+        this.d.sendEmptyMessageDelayed(2, 30000L);
       }
     }
   }
@@ -136,7 +136,7 @@ public class FetchInfoListManager
     {
       localStringBuilder = new StringBuilder(200);
       localStringBuilder.append("dealTimeOut  size:");
-      localStringBuilder.append(this.b.size());
+      localStringBuilder.append(this.c.size());
       localStringBuilder.append(" {");
     }
     else
@@ -144,19 +144,19 @@ public class FetchInfoListManager
       localStringBuilder = null;
     }
     long l4 = SystemClock.elapsedRealtime();
-    int i = this.b.size() - 1;
+    int i = this.c.size() - 1;
     long l2;
     for (long l1 = 30000L; i >= 0; l1 = l2)
     {
-      FetchInfoReq localFetchInfoReq = (FetchInfoReq)this.b.get(i);
+      FetchInfoReq localFetchInfoReq = (FetchInfoReq)this.c.get(i);
       if (localFetchInfoReq == null)
       {
-        this.b.remove(localFetchInfoReq);
+        this.c.remove(localFetchInfoReq);
         l2 = l1;
       }
       else
       {
-        long l3 = l4 - localFetchInfoReq.jdField_a_of_type_Long;
+        long l3 = l4 - localFetchInfoReq.f;
         if ((l3 >= 0L) && (l3 < 30000L))
         {
           l2 = l1;
@@ -166,14 +166,14 @@ public class FetchInfoListManager
         }
         else
         {
-          this.b.remove(localFetchInfoReq);
+          this.c.remove(localFetchInfoReq);
           l2 = l1;
           if (localStringBuilder != null)
           {
             localStringBuilder.append(", [");
-            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_Int);
+            localStringBuilder.append(localFetchInfoReq.a);
             localStringBuilder.append(",");
-            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(localFetchInfoReq.b);
             localStringBuilder.append("]");
             l2 = l1;
           }
@@ -181,23 +181,23 @@ public class FetchInfoListManager
       }
       i -= 1;
     }
-    if (!this.b.isEmpty()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
+    if (!this.c.isEmpty()) {
+      this.d.sendEmptyMessageDelayed(2, Math.max(1000L, l1));
     }
     if ((QLog.isDevelopLevel()) && (localStringBuilder != null))
     {
       localStringBuilder.append("}");
       localStringBuilder.append(" isEmpty: ");
-      localStringBuilder.append(this.b.isEmpty());
+      localStringBuilder.append(this.c.isEmpty());
       QLog.d("FetchInfoListManager", 4, localStringBuilder.toString());
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
     this.b.clear();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.c.clear();
+    this.d.removeCallbacksAndMessages(null);
     if (QLog.isDevelopLevel()) {
       QLog.i("FetchInfoListManager", 4, "clear");
     }
@@ -206,8 +206,8 @@ public class FetchInfoListManager
   public void a(int paramInt, String paramString1, String paramString2, Object paramObject, Bundle paramBundle)
   {
     paramString2 = new FetchInfoReq(paramInt, paramString1, paramString2, paramObject, paramBundle);
-    paramString2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, paramString2);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString2);
+    paramString2 = this.d.obtainMessage(3, paramString2);
+    this.d.sendMessage(paramString2);
     if (QLog.isDevelopLevel()) {
       QLog.i("FetchInfoListManager", 4, String.format(Locale.getDefault(), "addToNeedFetchInfoList [%d, %s]", new Object[] { Integer.valueOf(paramInt), paramString1 }));
     }
@@ -239,7 +239,7 @@ public class FetchInfoListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchInfoListManager
  * JD-Core Version:    0.7.0.1
  */

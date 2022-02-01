@@ -7,8 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.widget.XEditTextEx;
 import mqq.app.AppRuntime;
 
@@ -19,35 +19,46 @@ class FullScreenInputHelper$5
   
   public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    Object localObject = FullScreenInputHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.a.a.d;
+    FullScreenInputHelper.a(this.a, paramMenuItem.getItemId());
     if (paramMenuItem.getItemId() == 1)
     {
-      ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800A513", "0X800A513", FullScreenInputHelper.a(this.a), 0, "", "", "", "");
-      FullScreenInputHelper.a(this.a).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().insert(FullScreenInputHelper.a(this.a).jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart(), "\n");
+      ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800A513", "0X800A513", FullScreenInputHelper.d(this.a), 0, "", "", "", "");
+      this.a.a.Y.getText().insert(this.a.a.Y.getSelectionStart(), "\n");
       paramActionMode.finish();
       return true;
     }
     if (paramMenuItem.getItemId() == 2)
     {
-      if (this.a.c())
+      if (this.a.e())
       {
-        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800A514", "0X800A514", FullScreenInputHelper.a(this.a), 0, "", "", "", "");
-        this.a.a(false);
+        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800A514", "0X800A514", FullScreenInputHelper.d(this.a), 0, "", "", "", "");
+        this.a.b(false);
+        if (QQTheme.isNowSimpleUI()) {
+          FullScreenInputHelper.e(this.a).d();
+        } else {
+          this.a.b(false);
+        }
       }
       else
       {
-        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009F28", "0X8009F28", FullScreenInputHelper.a(this.a), 0, "", "", "", "");
-        FullScreenInputHelper.b(this.a);
+        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009F28", "0X8009F28", FullScreenInputHelper.d(this.a), 0, "", "", "", "");
+        SimpleFullInputReporter.a(this.a.a.d, "0X800BDA1", FullScreenInputHelper.c(this.a), "");
+        if (QQTheme.isNowSimpleUI()) {
+          FullScreenInputHelper.e(this.a).c();
+        } else {
+          this.a.b();
+        }
       }
       paramActionMode.finish();
       return true;
     }
     if (paramMenuItem.getItemId() == 3)
     {
-      localObject = (WriteTogetherHelper)FullScreenInputHelper.a(this.a).a(74);
+      localObject = (WriteTogetherHelper)this.a.a.q(74);
       if (localObject != null)
       {
-        localObject = ((WriteTogetherHelper)localObject).a();
+        localObject = ((WriteTogetherHelper)localObject).c();
         if (localObject != null) {
           return ((ActionMode.Callback)localObject).onActionItemClicked(paramActionMode, paramMenuItem);
         }
@@ -58,27 +69,27 @@ class FullScreenInputHelper$5
   
   public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    if (!SimpleUIUtil.a())
-    {
-      paramMenu.add(0, 1, 196608, HardCodeUtil.a(2131705061));
-      int i;
-      if (this.a.c()) {
-        i = 2131705062;
-      } else {
-        i = 2131705059;
-      }
-      paramMenu.add(0, 2, 196608, HardCodeUtil.a(i));
+    paramMenu.add(0, 1, 196608, HardCodeUtil.a(2131902951));
+    int i;
+    if (this.a.e()) {
+      i = 2131902952;
+    } else {
+      i = 2131902949;
     }
-    if (this.a.b() == 0)
+    paramMenu.add(0, 2, 196608, HardCodeUtil.a(i));
+    if (this.a.o() == 0)
     {
-      Object localObject = (WriteTogetherHelper)FullScreenInputHelper.a(this.a).a(74);
+      Object localObject = (WriteTogetherHelper)this.a.a.q(74);
       if (localObject != null)
       {
-        localObject = ((WriteTogetherHelper)localObject).a();
+        localObject = ((WriteTogetherHelper)localObject).c();
         if (localObject != null) {
           ((ActionMode.Callback)localObject).onCreateActionMode(paramActionMode, paramMenu);
         }
       }
+    }
+    if (!this.a.e()) {
+      SimpleFullInputReporter.a(this.a.a.d, "0X800BDA0", FullScreenInputHelper.c(this.a), "");
     }
     return true;
   }
@@ -92,7 +103,7 @@ class FullScreenInputHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.5
  * JD-Core Version:    0.7.0.1
  */

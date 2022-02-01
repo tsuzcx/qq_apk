@@ -12,21 +12,21 @@ class TavPlayer$2
   
   public void onPositionChanged(CMTime paramCMTime)
   {
-    if ((this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer$PlayerListener != null) && (TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer) != null)) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer$PlayerListener.a(paramCMTime, TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer).duration());
+    if ((this.a != null) && (TavPlayer.a(this.b) != null)) {
+      this.a.a(paramCMTime, TavPlayer.a(this.b).duration());
     }
   }
   
   public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
   {
-    if ((this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer$PlayerListener != null) && (TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer) != null)) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer$PlayerListener.a(paramPlayerStatus, TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer));
+    if ((this.a != null) && (TavPlayer.a(this.b) != null)) {
+      this.a.a(paramPlayerStatus, TavPlayer.a(this.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayer.2
  * JD-Core Version:    0.7.0.1
  */

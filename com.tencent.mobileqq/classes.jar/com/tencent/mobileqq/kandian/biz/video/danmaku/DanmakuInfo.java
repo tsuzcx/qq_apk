@@ -12,15 +12,15 @@ public final class DanmakuInfo
   implements Parcelable
 {
   public static final DanmakuInfo.CREATOR CREATOR = new DanmakuInfo.CREATOR(null);
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final int jdField_b_of_type_Int;
+  private final String a;
+  private final int b;
+  private final int c;
   @NotNull
-  private final String jdField_b_of_type_JavaLangString;
+  private final String d;
+  private final long e;
   @Nullable
-  private final String c;
+  private final String f;
   
   public DanmakuInfo(@NotNull Parcel paramParcel)
   {
@@ -29,50 +29,44 @@ public final class DanmakuInfo
   
   public DanmakuInfo(@NotNull String paramString1, int paramInt1, int paramInt2, @NotNull String paramString2, long paramLong, @Nullable String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.c = paramString3;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a = paramString1;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramString2;
+    this.e = paramLong;
+    this.f = paramString3;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
+  }
+  
+  public final int c()
+  {
+    return this.c;
   }
   
   @NotNull
-  public final String b()
+  public final String d()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  @Nullable
-  public final String c()
-  {
-    return this.c;
+    return this.d;
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public final long e()
+  {
+    return this.e;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -81,7 +75,7 @@ public final class DanmakuInfo
       if ((paramObject instanceof DanmakuInfo))
       {
         paramObject = (DanmakuInfo)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (Intrinsics.areEqual(this.c, paramObject.c))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (this.b == paramObject.b) && (this.c == paramObject.c) && (Intrinsics.areEqual(this.d, paramObject.d)) && (this.e == paramObject.e) && (Intrinsics.areEqual(this.f, paramObject.f))) {}
       }
       else
       {
@@ -91,9 +85,15 @@ public final class DanmakuInfo
     return true;
   }
   
+  @Nullable
+  public final String f()
+  {
+    return this.f;
+  }
+  
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     int k = 0;
     int i;
     if (str != null) {
@@ -101,18 +101,18 @@ public final class DanmakuInfo
     } else {
       i = 0;
     }
-    int m = this.jdField_a_of_type_Int;
-    int n = this.jdField_b_of_type_Int;
-    str = this.jdField_b_of_type_JavaLangString;
+    int m = this.b;
+    int n = this.c;
+    str = this.d;
     int j;
     if (str != null) {
       j = str.hashCode();
     } else {
       j = 0;
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.e;
     int i1 = (int)(l ^ l >>> 32);
-    str = this.c;
+    str = this.f;
     if (str != null) {
       k = str.hashCode();
     }
@@ -124,13 +124,13 @@ public final class DanmakuInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DanmakuInfo(id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("', content='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("', time=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", rowkey=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
@@ -138,17 +138,17 @@ public final class DanmakuInfo
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuInfo
  * JD-Core Version:    0.7.0.1
  */

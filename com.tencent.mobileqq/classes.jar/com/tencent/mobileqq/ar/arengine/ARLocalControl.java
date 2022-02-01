@@ -11,55 +11,22 @@ import java.util.ArrayList;
 public class ARLocalControl
   implements ARLocalFaceRecog.ARLocalFaceRecogCallback, ARLocalGestureCircleRecog.ARLocalGestureCircleRecogCallback, ARLocalMarkerRecog.ARLocalMarkerRecogCallback
 {
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  private long jdField_a_of_type_Long = 0L;
-  ARLocalControl.ARLocalRecogCallback jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl$ARLocalRecogCallback = null;
-  public ARLocalFaceRecog a;
-  ARLocalGestureCircleRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
-  ARLocalMarkerRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c;
-  private boolean d = false;
-  
-  public ARLocalControl()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog = null;
-  }
+  private static final Object i = new Object();
+  ARLocalMarkerRecog a = null;
+  public ARLocalFaceRecog b = null;
+  ARLocalGestureCircleRecog c = null;
+  ARLocalControl.ARLocalRecogCallback d = null;
+  Object e = new Object();
+  private long f = 0L;
+  private boolean g = false;
+  private boolean h = false;
+  private boolean j;
+  private boolean k = false;
   
   private void a(Context paramContext, int paramInt1, int paramInt2, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo)
   {
     QLog.i("AREngine_ARLocalControl", 1, "initFaceRecogAsync start.");
     ThreadManager.postImmediately(new ARLocalControl.1(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
-  }
-  
-  public void a()
-  {
-    QLog.i("AREngine_ARLocalControl", 1, "stop start.");
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
-    if (localObject != null) {
-      ((ARLocalMarkerRecog)localObject).d();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
-    if (localObject != null) {
-      ((ARLocalFaceRecog)localObject).e();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
-    if (localObject != null) {
-      ((ARLocalGestureCircleRecog)localObject).c();
-    }
-    this.jdField_b_of_type_Boolean = false;
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("stop end. mIsStarted = ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-    QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
   }
   
   public void a(long paramLong)
@@ -70,33 +37,33 @@ public class ARLocalControl
     QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
     if ((1L & paramLong) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
+      localObject = this.a;
       if (localObject != null) {
-        ((ARLocalMarkerRecog)localObject).b();
+        ((ARLocalMarkerRecog)localObject).c();
       }
     }
     if ((0x4 & paramLong) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
+      localObject = this.b;
       if (localObject != null) {
-        ((ARLocalFaceRecog)localObject).c();
+        ((ARLocalFaceRecog)localObject).e();
       }
     }
     if ((paramLong & 0x1000) != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
+      localObject = this.c;
       if (localObject != null) {
-        ((ARLocalGestureCircleRecog)localObject).a();
+        ((ARLocalGestureCircleRecog)localObject).d();
       }
     }
   }
   
   public void a(long paramLong, ARLocalRecogResultBase paramARLocalRecogResultBase)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.e)
     {
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl$ARLocalRecogCallback != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl$ARLocalRecogCallback.a(paramLong, paramARLocalRecogResultBase);
+      if ((this.h) && (this.d != null)) {
+        this.d.a(paramLong, paramARLocalRecogResultBase);
       }
       return;
     }
@@ -106,24 +73,24 @@ public class ARLocalControl
   {
     if (paramArrayOfByte != null)
     {
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.h) {
         return;
       }
       Object localObject;
-      if (this.d)
+      if (this.k)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
+        localObject = this.c;
         if (localObject != null) {
           ((ARLocalGestureCircleRecog)localObject).a(paramLong, paramArrayOfByte);
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
+        localObject = this.a;
         if (localObject != null) {
           ((ARLocalMarkerRecog)localObject).a(paramLong, paramArrayOfByte);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
+        localObject = this.b;
         if (localObject != null) {
           ((ARLocalFaceRecog)localObject).a(paramLong, paramArrayOfByte);
         }
@@ -149,124 +116,97 @@ public class ARLocalControl
   public boolean a()
   {
     QLog.i("AREngine_ARLocalControl", 1, "start start.");
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return false;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.h) {
       return true;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
-    if ((localObject != null) && (!((ARLocalMarkerRecog)localObject).a()))
+    Object localObject = this.a;
+    if ((localObject != null) && (!((ARLocalMarkerRecog)localObject).b()))
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.h = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("start end. marker recog start failed. mIsStarted = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.h);
       QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-      return this.jdField_b_of_type_Boolean;
+      return this.h;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
-    if ((localObject != null) && (!((ARLocalFaceRecog)localObject).b()))
+    localObject = this.b;
+    if ((localObject != null) && (!((ARLocalFaceRecog)localObject).d()))
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.h = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("start end. face recog start failed. mIsStarted = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.h);
       QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-      return this.jdField_b_of_type_Boolean;
+      return this.h;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
+    localObject = this.c;
     if ((localObject != null) && (!((ARLocalGestureCircleRecog)localObject).c()))
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.h = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("start end. gesture circle recog start failed. mIsStarted = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.h);
       QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-      return this.jdField_b_of_type_Boolean;
+      return this.h;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.h = true;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("start end. mIsStarted = ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.h);
     QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    Object localObject;
-    if ((1L & paramLong) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
-      if (localObject != null) {
-        return ((ARLocalMarkerRecog)localObject).b();
-      }
-    }
-    if ((0x4 & paramLong) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
-      if (localObject != null) {
-        return ((ARLocalFaceRecog)localObject).c();
-      }
-    }
-    if ((paramLong & 0x1000) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
-      if (localObject != null) {
-        return ((ARLocalGestureCircleRecog)localObject).d();
-      }
-    }
     return true;
   }
   
   public boolean a(Context arg1, long paramLong, int paramInt1, int paramInt2, ArConfigInfo paramArConfigInfo, ArrayList<ArCloudConfigInfo> paramArrayList, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, ARLocalControl.ARLocalRecogCallback paramARLocalRecogCallback)
   {
     long l = System.currentTimeMillis();
-    QLog.i("AREngine_ARLocalControl", 1, String.format("init start. mIsInited=%s recogType=%s imageWidth=%s imageHeight=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    if (this.jdField_a_of_type_Boolean) {
+    QLog.i("AREngine_ARLocalControl", 1, String.format("init start. mIsInited=%s recogType=%s imageWidth=%s imageHeight=%s", new Object[] { Boolean.valueOf(this.g), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    if (this.g) {
       return true;
     }
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl$ARLocalRecogCallback = paramARLocalRecogCallback;
+    this.f = paramLong;
+    this.d = paramARLocalRecogCallback;
     a(???, paramInt1, paramInt2, paramARScanStarFaceConfigInfo);
     QLog.i("AREngine_ARLocalControl", 1, "init running. marker recog start.");
     paramLong = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long & 1L) != 0L)
+    if ((this.f & 1L) != 0L)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = new ARLocalMarkerRecog();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramInt1, paramInt2, paramArConfigInfo, paramArrayList, this)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
+      this.a = new ARLocalMarkerRecog();
+      if (!this.a.a(paramInt1, paramInt2, paramArConfigInfo, paramArrayList, this)) {
+        this.a = null;
       }
     }
-    if ((this.jdField_a_of_type_Long & 0x1000) != 0L)
+    if ((this.f & 0x1000) != 0L)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
+      this.c = new ARLocalGestureCircleRecog();
+      if (!this.c.a(paramInt1, paramInt2, this)) {
+        this.c = null;
       }
     }
     QLog.i("AREngine_ARLocalControl", 1, String.format("init running. marker recog end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - paramLong) }));
-    synchronized (jdField_b_of_type_JavaLangObject)
+    synchronized (i)
     {
-      if (!this.c) {
+      if (!this.j) {
         QLog.i("AREngine_ARLocalControl", 1, "init running. face recog has not init complete, wait...");
       }
     }
     try
     {
-      jdField_b_of_type_JavaLangObject.wait();
+      i.wait();
       label242:
       QLog.i("AREngine_ARLocalControl", 1, "init running. face recog init complete.");
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog == null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog == null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null)) {
-        this.jdField_a_of_type_Boolean = false;
+      if ((this.a == null) && (this.b == null) && (this.c == null)) {
+        this.g = false;
       } else {
-        this.jdField_a_of_type_Boolean = true;
+        this.g = true;
       }
-      this.jdField_b_of_type_Boolean = false;
-      QLog.i("AREngine_ARLocalControl", 1, String.format("init end. mIsInited=%s time cost:%sms", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Long.valueOf(System.currentTimeMillis() - l) }));
-      ARReport.a().a(System.currentTimeMillis() - l, this.jdField_a_of_type_Boolean);
-      return this.jdField_a_of_type_Boolean;
+      this.h = false;
+      QLog.i("AREngine_ARLocalControl", 1, String.format("init end. mIsInited=%s time cost:%sms", new Object[] { Boolean.valueOf(this.g), Long.valueOf(System.currentTimeMillis() - l) }));
+      ARReport.a().a(System.currentTimeMillis() - l, this.g);
+      return this.g;
       paramArConfigInfo = finally;
       throw paramArConfigInfo;
     }
@@ -278,10 +218,10 @@ public class ARLocalControl
   
   public boolean a(ARCloudRecogRspFaceResult paramARCloudRecogRspFaceResult)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return false;
     }
-    ARLocalFaceRecog localARLocalFaceRecog = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
+    ARLocalFaceRecog localARLocalFaceRecog = this.b;
     if (localARLocalFaceRecog != null) {
       return localARLocalFaceRecog.a(paramARCloudRecogRspFaceResult);
     }
@@ -290,10 +230,10 @@ public class ARLocalControl
   
   public boolean a(String paramString1, String paramString2, ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return false;
     }
-    ARLocalMarkerRecog localARLocalMarkerRecog = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
+    ARLocalMarkerRecog localARLocalMarkerRecog = this.a;
     if (localARLocalMarkerRecog != null) {
       return localARLocalMarkerRecog.a(paramString1, paramString2, paramArCloudConfigInfo);
     }
@@ -304,34 +244,34 @@ public class ARLocalControl
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
-        if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this))
+        this.c = new ARLocalGestureCircleRecog();
+        if (!this.c.a(paramInt1, paramInt2, this))
         {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
+          this.c = null;
           return false;
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c();
-        this.jdField_b_of_type_Boolean = true;
+        this.g = true;
+        this.c.c();
+        this.h = true;
       }
-      this.jdField_a_of_type_Long |= 0x1000;
+      this.f |= 0x1000;
     }
     else
     {
-      this.jdField_a_of_type_Long &= 0xFFFFEFFF;
+      this.f &= 0xFFFFEFFF;
     }
-    this.d = paramBoolean;
-    return this.d;
+    this.k = paramBoolean;
+    return this.k;
   }
   
   public float[] a(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return null;
     }
-    ARLocalMarkerRecog localARLocalMarkerRecog = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
+    ARLocalMarkerRecog localARLocalMarkerRecog = this.a;
     if (localARLocalMarkerRecog != null) {
       return localARLocalMarkerRecog.a(paramInt1, paramInt2);
     }
@@ -340,65 +280,54 @@ public class ARLocalControl
   
   public void b()
   {
-    QLog.i("AREngine_ARLocalControl", 1, "uninit start.");
-    if (!this.jdField_a_of_type_Boolean) {
+    QLog.i("AREngine_ARLocalControl", 1, "stop start.");
+    if (!this.g) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
-    if (localObject != null) {
-      ((ARLocalMarkerRecog)localObject).e();
+    if (!this.h) {
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((ARLocalFaceRecog)localObject).b();
+      ((ARLocalMarkerRecog)localObject).f();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
+    localObject = this.b;
     if (localObject != null) {
-      ((ARLocalGestureCircleRecog)localObject).d();
+      ((ARLocalFaceRecog)localObject).i();
     }
-    this.jdField_a_of_type_Boolean = false;
+    localObject = this.c;
+    if (localObject != null) {
+      ((ARLocalGestureCircleRecog)localObject).g();
+    }
+    this.h = false;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("uninit end. mIsInited = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append("stop end. mIsStarted = ");
+    ((StringBuilder)localObject).append(this.h);
     QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-  }
-  
-  public void b(long paramLong)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("resume. recogType = ");
-    ((StringBuilder)localObject).append(paramLong);
-    QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
-    if ((1L & paramLong) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog;
-      if (localObject != null) {
-        ((ARLocalMarkerRecog)localObject).c();
-      }
-    }
-    if ((0x4 & paramLong) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
-      if (localObject != null) {
-        ((ARLocalFaceRecog)localObject).d();
-      }
-    }
-    if ((paramLong & 0x1000) != 0L)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
-      if (localObject != null) {
-        ((ARLocalGestureCircleRecog)localObject).b();
-      }
-    }
   }
   
   public boolean b(long paramLong)
   {
-    if ((paramLong & 0x4) != 0L)
+    Object localObject;
+    if ((1L & paramLong) != 0L)
     {
-      ARLocalFaceRecog localARLocalFaceRecog = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog;
-      if (localARLocalFaceRecog != null) {
-        return localARLocalFaceRecog.d();
+      localObject = this.a;
+      if (localObject != null) {
+        return ((ARLocalMarkerRecog)localObject).d();
+      }
+    }
+    if ((0x4 & paramLong) != 0L)
+    {
+      localObject = this.b;
+      if (localObject != null) {
+        return ((ARLocalFaceRecog)localObject).f();
+      }
+    }
+    if ((paramLong & 0x1000) != 0L)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        return ((ARLocalGestureCircleRecog)localObject).e();
       }
     }
     return true;
@@ -406,18 +335,84 @@ public class ARLocalControl
   
   public void c()
   {
-    if (this.d)
+    QLog.i("AREngine_ARLocalControl", 1, "uninit start.");
+    if (!this.g) {
+      return;
+    }
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((ARLocalMarkerRecog)localObject).g();
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      ((ARLocalFaceRecog)localObject).c();
+    }
+    localObject = this.c;
+    if (localObject != null) {
+      ((ARLocalGestureCircleRecog)localObject).h();
+    }
+    this.g = false;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninit end. mIsInited = ");
+    ((StringBuilder)localObject).append(this.g);
+    QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
+  }
+  
+  public boolean c(long paramLong)
+  {
+    if ((paramLong & 0x4) != 0L)
     {
-      ARLocalGestureCircleRecog localARLocalGestureCircleRecog = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog;
-      if ((localARLocalGestureCircleRecog != null) && (!localARLocalGestureCircleRecog.d())) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.e();
+      ARLocalFaceRecog localARLocalFaceRecog = this.b;
+      if (localARLocalFaceRecog != null) {
+        return localARLocalFaceRecog.g();
+      }
+    }
+    return true;
+  }
+  
+  public void d()
+  {
+    if (this.k)
+    {
+      ARLocalGestureCircleRecog localARLocalGestureCircleRecog = this.c;
+      if ((localARLocalGestureCircleRecog != null) && (!localARLocalGestureCircleRecog.e())) {
+        this.c.i();
+      }
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resume. recogType = ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i("AREngine_ARLocalControl", 1, ((StringBuilder)localObject).toString());
+    if ((1L & paramLong) != 0L)
+    {
+      localObject = this.a;
+      if (localObject != null) {
+        ((ARLocalMarkerRecog)localObject).e();
+      }
+    }
+    if ((0x4 & paramLong) != 0L)
+    {
+      localObject = this.b;
+      if (localObject != null) {
+        ((ARLocalFaceRecog)localObject).h();
+      }
+    }
+    if ((paramLong & 0x1000) != 0L)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        ((ARLocalGestureCircleRecog)localObject).f();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalControl
  * JD-Core Version:    0.7.0.1
  */

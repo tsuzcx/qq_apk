@@ -38,7 +38,7 @@ class ScreenShotFragment$4
     if (paramAdapterView == null) {
       return;
     }
-    int i = ((ScreenShotFragment.ActionSheetItemViewHolder)paramAdapterView).a.action;
+    int i = ((ScreenShotFragment.ActionSheetItemViewHolder)paramAdapterView).c.action;
     paramAdapterView = null;
     if (i != 2)
     {
@@ -77,21 +77,21 @@ class ScreenShotFragment$4
       ScreenShotHelper.a("0X8009FF0", 0);
       paramAdapterView = "1";
     }
-    if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
+    if ((ScreenShotFragment.d(this.a)) && (paramAdapterView != null)) {
       ScreenShotHelper.a("0X800A9A9", paramAdapterView, "1");
     }
     if ((i == 9) || (i == 10))
     {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        paramInt = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        paramInt = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        paramInt = 2131918155;
       } else {
         paramInt = -1;
       }
       if (paramInt != -1)
       {
-        QQToast.a(this.a.getBaseActivity(), this.a.getBaseActivity().getString(paramInt), 0).b(this.a.getBaseActivity().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this.a.getBaseActivity(), this.a.getBaseActivity().getString(paramInt), 0).show(this.a.getBaseActivity().getResources().getDimensionPixelSize(2131299920));
         return;
       }
     }
@@ -109,10 +109,10 @@ class ScreenShotFragment$4
                 return;
               }
               paramAdapterView = this.a;
-              ScreenShotFragment.a(paramAdapterView, ScreenShotFragment.a(paramAdapterView));
+              ScreenShotFragment.a(paramAdapterView, ScreenShotFragment.e(paramAdapterView));
               return;
             }
-            paramAdapterView = new File(ScreenShotFragment.a(this.a));
+            paramAdapterView = new File(ScreenShotFragment.e(this.a));
             if (paramAdapterView.exists())
             {
               paramView = this.a.getBaseActivity();
@@ -120,35 +120,35 @@ class ScreenShotFragment$4
               localStringBuilder.append(paramAdapterView.getAbsolutePath());
               localStringBuilder.append(NetConnInfoCenter.getServerTime());
               AIOGalleryUtils.a(paramView, paramAdapterView, Utils.Crc64String(localStringBuilder.toString()));
-              QQToast.a(this.a.getBaseActivity(), 2, this.a.getBaseActivity().getString(2131718379), 0).a();
+              QQToast.makeText(this.a.getBaseActivity(), 2, this.a.getBaseActivity().getString(2131915871), 0).show();
             }
             this.a.b();
             return;
           }
           paramAdapterView = this.a;
-          ScreenShotFragment.b(paramAdapterView, ScreenShotFragment.a(paramAdapterView), ScreenShotFragment.a(this.a));
+          ScreenShotFragment.b(paramAdapterView, ScreenShotFragment.e(paramAdapterView), ScreenShotFragment.g(this.a));
           return;
         }
-        if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
+        if ((PicShareToWX.b().e()) && (PicShareToWX.b().a(ScreenShotFragment.e(this.a))))
         {
-          PicShareToWX.a().a(this.a.getBaseActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
+          PicShareToWX.b().a(this.a.getBaseActivity(), ScreenShotFragment.f(this.a), ScreenShotFragment.e(this.a), 3);
           ReportController.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
           return;
         }
         paramAdapterView = this.a;
-        ScreenShotFragment.a(paramAdapterView, ScreenShotFragment.a(paramAdapterView), ScreenShotFragment.a(this.a));
+        ScreenShotFragment.a(paramAdapterView, ScreenShotFragment.e(paramAdapterView), ScreenShotFragment.g(this.a));
         return;
       }
       paramAdapterView = this.a;
-      ScreenShotFragment.a(paramAdapterView, paramAdapterView.getBaseActivity(), ScreenShotFragment.a(this.a));
+      ScreenShotFragment.a(paramAdapterView, paramAdapterView.getBaseActivity(), ScreenShotFragment.e(this.a));
       return;
     }
-    ScreenShotFragment.a(this.a.getBaseActivity(), ScreenShotFragment.a(this.a));
+    ScreenShotFragment.a(this.a.getBaseActivity(), ScreenShotFragment.e(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.4
  * JD-Core Version:    0.7.0.1
  */

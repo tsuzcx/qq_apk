@@ -16,20 +16,20 @@ class StickerBubbleListView$3
     {
       Object localObject = (StickerBubbleImageView)paramView;
       ((StickerBubbleImageView)localObject).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
+      if ((StickerBubbleListView.b(this.a) == null) || (StickerBubbleListView.b(this.a).get() != paramView)) {
         StickerBubbleListView.a(this.a, new WeakReference(localObject));
       }
       paramView = (View)paramView.getParent();
       localObject = (View)paramView.getParent();
-      if (StickerBubbleListView.a(this.a) == null) {
+      if (StickerBubbleListView.c(this.a) == null) {
         StickerBubbleListView.a(this.a, new Rect());
       }
-      StickerBubbleListView.a(this.a).set(((View)localObject).getLeft() + paramView.getLeft(), ((View)localObject).getTop() + paramView.getTop(), ((View)localObject).getLeft() + paramView.getRight(), ((View)localObject).getTop() + paramView.getBottom());
+      StickerBubbleListView.c(this.a).set(((View)localObject).getLeft() + paramView.getLeft(), ((View)localObject).getTop() + paramView.getTop(), ((View)localObject).getLeft() + paramView.getRight(), ((View)localObject).getTop() + paramView.getBottom());
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("notifyItemViewTouchDown with rect: ");
-        paramView.append(StickerBubbleListView.a(this.a));
+        paramView.append(StickerBubbleListView.c(this.a));
         QLog.d("StickerBubbleListView", 2, paramView.toString());
       }
     }
@@ -37,7 +37,7 @@ class StickerBubbleListView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView.3
  * JD-Core Version:    0.7.0.1
  */

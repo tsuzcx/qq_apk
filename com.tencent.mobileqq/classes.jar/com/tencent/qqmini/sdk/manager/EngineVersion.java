@@ -27,7 +27,7 @@ public class EngineVersion
     if (QUAUtil.isQQApp()) {
       str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
     } else {
-      str = "1.15.0";
+      str = "1.19.0";
     }
     this.mMajor = str;
     this.mMinor = paramString;
@@ -161,7 +161,7 @@ public class EngineVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineVersion
  * JD-Core Version:    0.7.0.1
  */

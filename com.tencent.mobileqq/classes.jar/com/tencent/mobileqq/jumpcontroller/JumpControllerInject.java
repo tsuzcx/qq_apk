@@ -98,55 +98,6 @@ public class JumpControllerInject
     return null;
   }
   
-  public String a(Context paramContext)
-  {
-    if ((paramContext instanceof BaseActivity))
-    {
-      paramContext = ((BaseActivity)paramContext).getSupportFragmentManager().getFragments();
-      if (paramContext != null)
-      {
-        if (paramContext.size() <= 0) {
-          return "";
-        }
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
-        {
-          Object localObject2 = (Fragment)paramContext.next();
-          if (((Fragment)localObject2).isVisible())
-          {
-            Object localObject1 = localObject2.getClass().getName();
-            paramContext = (Context)localObject1;
-            if ((localObject2 instanceof MainFragment))
-            {
-              paramContext = (MainFragment)localObject2;
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append((String)localObject1);
-              localStringBuilder.append("$");
-              localStringBuilder.append(paramContext.a());
-              paramContext = localStringBuilder.toString();
-            }
-            localObject1 = paramContext;
-            if ((localObject2 instanceof ChatFragment))
-            {
-              localObject2 = (ChatFragment)localObject2;
-              localObject1 = paramContext;
-              if (((ChatFragment)localObject2).a != null)
-              {
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append(paramContext);
-                ((StringBuilder)localObject1).append("$");
-                ((StringBuilder)localObject1).append(((ChatFragment)localObject2).a.b());
-                localObject1 = ((StringBuilder)localObject1).toString();
-              }
-            }
-            return localObject1;
-          }
-        }
-      }
-    }
-    return "";
-  }
-  
   public void a(Context paramContext)
   {
     QQProxyForQlink.a(paramContext, 7, null);
@@ -198,22 +149,22 @@ public class JumpControllerInject
         localObject1 = ((IVoiceAssistantConf)localObject1).findItemByOpenJumpAction((String)localObject2, paramUri);
         if (localObject1 != null)
         {
-          if (((QAssistantConfigItem)localObject1).a.size() > 0)
+          if (((QAssistantConfigItem)localObject1).i.size() > 0)
           {
-            localObject2 = ((QAssistantConfigItem)localObject1).a.keySet().iterator();
+            localObject2 = ((QAssistantConfigItem)localObject1).i.keySet().iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str1 = (String)((Iterator)localObject2).next();
               if (paramIntent.hasExtra(str1))
               {
                 String str2 = paramIntent.getStringExtra(str1);
-                if (!StringUtil.a(str2)) {
-                  ((QAssistantConfigItem)localObject1).a.put(str1, str2);
+                if (!StringUtil.isEmpty(str2)) {
+                  ((QAssistantConfigItem)localObject1).i.put(str1, str2);
                 }
               }
             }
           }
-          ((QAssistantConfigItem)localObject1).g = paramUri;
+          ((QAssistantConfigItem)localObject1).h = paramUri;
           ((QAssistantConfigItem)localObject1).a(paramJumpActivity);
           return;
         }
@@ -235,7 +186,7 @@ public class JumpControllerInject
       return;
     }
     SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)((QQAppInterface)paramJumpActivity.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    DeviceInfo localDeviceInfo = localSmartDeviceProxyMgr.a(Long.parseLong(paramString1));
+    DeviceInfo localDeviceInfo = localSmartDeviceProxyMgr.g(Long.parseLong(paramString1));
     if ((localDeviceInfo != null) && (paramString1.equals(String.valueOf(localDeviceInfo.din))))
     {
       localSmartDeviceProxyMgr.a(paramJumpActivity, localDeviceInfo, false, null);
@@ -246,21 +197,21 @@ public class JumpControllerInject
       paramString1 = new Intent();
       paramString1.setClass(paramJumpActivity, QQBrowserActivity.class);
       paramString1.putExtra("url", paramString2);
-      paramString1.putExtra("title", HardCodeUtil.a(2131705972));
+      paramString1.putExtra("title", HardCodeUtil.a(2131903849));
       paramString1.putExtra("webStyle", "noBottomBar");
       paramString1.putExtra("hide_more_button", true);
-      paramString1.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131705980));
-      paramString1.putExtra("leftViewText", HardCodeUtil.a(2131705978));
+      paramString1.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
+      paramString1.putExtra("leftViewText", HardCodeUtil.a(2131901576));
       paramJumpActivity.startActivity(paramString1);
       return;
     }
-    ToastUtil.a().a(HardCodeUtil.a(2131705977));
+    ToastUtil.a().a(HardCodeUtil.a(2131903854));
   }
   
   public void a(JumpActivity paramJumpActivity, DevlockInfo paramDevlockInfo)
   {
     DevlockPhoneStatus localDevlockPhoneStatus = DevlockPhoneStatus.a();
-    if ((localDevlockPhoneStatus != null) && (localDevlockPhoneStatus.a() == DevlockPhoneStatus.d))
+    if ((localDevlockPhoneStatus != null) && (localDevlockPhoneStatus.b() == DevlockPhoneStatus.d))
     {
       Intent localIntent = new Intent();
       localIntent.setAction("mqq.intent.action.DEVLOCK_ROAM");
@@ -274,7 +225,7 @@ public class JumpControllerInject
         }
       }
       localIntent.putExtra("auth_dev_open", bool1);
-      localIntent.putExtra("guardphone_state", localDevlockPhoneStatus.a());
+      localIntent.putExtra("guardphone_state", localDevlockPhoneStatus.b());
       if (paramDevlockInfo != null) {
         paramDevlockInfo = paramDevlockInfo.Mobile;
       } else {
@@ -327,13 +278,13 @@ public class JumpControllerInject
         localObject = (ITroopMngHandler)((AppInterface)paramJumpActivity.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
         if ((paramBoolean) && (paramIntent != null) && (!TextUtils.isEmpty(str)))
         {
-          paramIntent.a = j;
-          paramIntent.c = str;
+          paramIntent.d = j;
+          paramIntent.e = str;
           ((ITroopMngHandler)localObject).a(paramIntent);
         }
         else
         {
-          ((ITroopMngHandler)localObject).a(TroopMngObserver.c, false, new Object[] { Integer.valueOf(8), Integer.valueOf(-1) });
+          ((ITroopMngHandler)localObject).a(TroopMngObserver.d, false, new Object[] { Integer.valueOf(8), Integer.valueOf(-1) });
         }
       }
     }
@@ -343,13 +294,13 @@ public class JumpControllerInject
       localObject = (ITroopMngHandler)((AppInterface)paramJumpActivity.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
       if ((paramBoolean) && (paramIntent != null) && (!TextUtils.isEmpty(str)))
       {
-        paramIntent.b = j;
-        paramIntent.f = str;
+        paramIntent.h = j;
+        paramIntent.i = str;
         ((ITroopMngHandler)localObject).a(paramIntent);
       }
       else
       {
-        ((ITroopMngHandler)localObject).a(TroopMngObserver.c, false, new Object[] { Integer.valueOf(1), Integer.valueOf(-1) });
+        ((ITroopMngHandler)localObject).a(TroopMngObserver.d, false, new Object[] { Integer.valueOf(1), Integer.valueOf(-1) });
       }
     }
     paramJumpActivity.finish();
@@ -358,19 +309,6 @@ public class JumpControllerInject
   public void a(QBaseActivity paramQBaseActivity)
   {
     LoginHelper.a(paramQBaseActivity.getAppRuntime());
-  }
-  
-  public boolean a(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    if (!ThridAppShareHelper.a().a(String.valueOf(Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L)))))
-    {
-      paramJumpActivity.finish();
-      return false;
-    }
-    Intent localIntent = new Intent(paramJumpActivity, SplashActivity.class);
-    localIntent.putExtras(paramIntent.getExtras());
-    paramJumpActivity.startActivity(AIOUtils.a(localIntent, null));
-    return false;
   }
   
   public boolean a(JumpActivity paramJumpActivity, String paramString)
@@ -400,16 +338,73 @@ public class JumpControllerInject
     paramIntent.putExtra("url", "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/bundle_feeds.js");
     paramIntent.putExtra("title_name", "QQ看点");
     QPublicFragmentActivity.start(paramJumpActivity.getActivity(), paramIntent, ViolaFragment.class);
-    paramJumpActivity.getActivity().overridePendingTransition(2130772011, 0);
+    paramJumpActivity.getActivity().overridePendingTransition(2130772014, 0);
     paramJumpActivity.finish();
   }
   
-  public boolean b(JumpActivity paramJumpActivity, Intent paramIntent)
+  public String c(Context paramContext)
   {
-    return ThirdPushNotifyManager.a().a(paramJumpActivity, paramIntent, paramJumpActivity.getAppRuntime());
+    if ((paramContext instanceof BaseActivity))
+    {
+      paramContext = ((BaseActivity)paramContext).getSupportFragmentManager().getFragments();
+      if (paramContext != null)
+      {
+        if (paramContext.size() <= 0) {
+          return "";
+        }
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext())
+        {
+          Object localObject2 = (Fragment)paramContext.next();
+          if (((Fragment)localObject2).isVisible())
+          {
+            Object localObject1 = localObject2.getClass().getName();
+            paramContext = (Context)localObject1;
+            if ((localObject2 instanceof MainFragment))
+            {
+              paramContext = (MainFragment)localObject2;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject1);
+              localStringBuilder.append("$");
+              localStringBuilder.append(paramContext.g());
+              paramContext = localStringBuilder.toString();
+            }
+            localObject1 = paramContext;
+            if ((localObject2 instanceof ChatFragment))
+            {
+              localObject2 = (ChatFragment)localObject2;
+              localObject1 = paramContext;
+              if (((ChatFragment)localObject2).c != null)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append(paramContext);
+                ((StringBuilder)localObject1).append("$");
+                ((StringBuilder)localObject1).append(((ChatFragment)localObject2).c.F());
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
+            }
+            return localObject1;
+          }
+        }
+      }
+    }
+    return "";
   }
   
-  public void c(JumpActivity paramJumpActivity, Intent paramIntent)
+  public boolean c(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    if (!ThridAppShareHelper.a().a(String.valueOf(Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L)))))
+    {
+      paramJumpActivity.finish();
+      return false;
+    }
+    Intent localIntent = new Intent(paramJumpActivity, SplashActivity.class);
+    localIntent.putExtras(paramIntent.getExtras());
+    paramJumpActivity.startActivity(AIOUtils.a(localIntent, null));
+    return false;
+  }
+  
+  public void d(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     Intent localIntent = new Intent(paramJumpActivity, DataMigrationService.class);
     localIntent.setAction("com.tencent.mobileqq.action.MIGRATION_DATA");
@@ -425,15 +420,20 @@ public class JumpControllerInject
     paramJumpActivity.finish();
   }
   
-  public void d(JumpActivity paramJumpActivity, Intent paramIntent)
+  public void e(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     NearbyVideoChatManager localNearbyVideoChatManager = (NearbyVideoChatManager)paramJumpActivity.getAppRuntime().getManager(QQManagerFactory.NEARBY_VIDEO_CHAT);
     NearbyVideoChatProxyActivity.a((QQAppInterface)paramJumpActivity.getAppRuntime(), paramJumpActivity, paramIntent, localNearbyVideoChatManager.a(), null, 123987);
   }
+  
+  public boolean f(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    return ThirdPushNotifyManager.a().a(paramJumpActivity, paramIntent, paramJumpActivity.getAppRuntime());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jumpcontroller.JumpControllerInject
  * JD-Core Version:    0.7.0.1
  */

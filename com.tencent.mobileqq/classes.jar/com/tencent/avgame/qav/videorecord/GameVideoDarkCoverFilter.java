@@ -6,7 +6,7 @@ import java.nio.FloatBuffer;
 public class GameVideoDarkCoverFilter
   extends GPUImageFilter
 {
-  private int g;
+  private int k;
   
   public GameVideoDarkCoverFilter()
   {
@@ -20,32 +20,32 @@ public class GameVideoDarkCoverFilter
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    if (!a()) {
+    if (!f()) {
       a();
     }
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    g();
+    GLES20.glUseProgram(this.e);
+    j();
     paramFloatBuffer1.position(0);
-    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, paramFloatBuffer1);
-    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
+    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 0, paramFloatBuffer1);
+    GLES20.glEnableVertexAttribArray(this.f);
     GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
-    c();
+    GLES20.glDisableVertexAttribArray(this.f);
+    k();
   }
   
   public void b()
   {
     super.b();
-    this.g = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "coverColor");
+    this.k = GLES20.glGetUniformLocation(this.e, "coverColor");
   }
   
-  public void h()
+  public void l()
   {
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
-    a(-1, this.jdField_b_of_type_JavaNioFloatBuffer, this.jdField_a_of_type_JavaNioFloatBuffer);
+    a(-1, this.d, this.c);
   }
 }
 

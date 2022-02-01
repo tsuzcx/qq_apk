@@ -18,16 +18,16 @@ class ShareHelper$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
+    if (this.a.b.getActionSheet().isShowing()) {
+      this.a.b.getActionSheet().dismiss();
     }
     int i;
     if ((paramLong == 2L) || (paramLong == 3L))
     {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        i = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i = 2131918155;
       } else {
         i = -1;
       }
@@ -37,9 +37,9 @@ class ShareHelper$1
         break label223;
       }
     }
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    if ((this.a.f != null) && (!this.a.f.isRecycled()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(true);
+      this.a.g.a(true);
       i = (int)paramLong;
       if (i != 0)
       {
@@ -59,7 +59,7 @@ class ShareHelper$1
     }
     else
     {
-      QRUtils.a(1, 2131699133);
+      QRUtils.a(1, 2131897149);
     }
     label223:
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
@@ -67,7 +67,7 @@ class ShareHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

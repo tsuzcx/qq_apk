@@ -13,7 +13,7 @@ class ChannelProxyImpl$6
   
   public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
+    if (this.a != null)
     {
       JSONObject localJSONObject = new JSONObject();
       try
@@ -24,13 +24,13 @@ class ChannelProxyImpl$6
       {
         QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramGetAdsRsp);
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      this.a.onReceiveResult(paramBoolean, localJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

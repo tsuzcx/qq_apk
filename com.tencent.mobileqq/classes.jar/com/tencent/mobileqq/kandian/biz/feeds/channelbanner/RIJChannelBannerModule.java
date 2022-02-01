@@ -35,19 +35,13 @@ import tencent.im.oidb.cmd0xea0.oidb_cmd0xea0.RspBody;
 public final class RIJChannelBannerModule
   extends ReadInJoyEngineModule
 {
-  public static final RIJChannelBannerModule.Companion a;
-  private final ConcurrentHashMap<Integer, List<ChannelBannerInfo>> a;
-  private final ConcurrentHashMap<Integer, Long> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerModule$Companion = new RIJChannelBannerModule.Companion(null);
-  }
+  public static final RIJChannelBannerModule.Companion a = new RIJChannelBannerModule.Companion(null);
+  private final ConcurrentHashMap<Integer, List<ChannelBannerInfo>> b = new ConcurrentHashMap();
+  private final ConcurrentHashMap<Integer, Long> c = new ConcurrentHashMap();
   
   public RIJChannelBannerModule(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
   private final String a(String paramString)
@@ -142,7 +136,7 @@ public final class RIJChannelBannerModule
           paramToServiceMsg = "";
           label270:
           localChannelBannerInfo.d(paramToServiceMsg);
-          localChannelBannerInfo.b(a(localChannelBannerInfo.c()));
+          localChannelBannerInfo.b(a(localChannelBannerInfo.d()));
           paramFromServiceMsg.add(localChannelBannerInfo);
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("[handleReceiveChannelBannerInfo], channelBannerInfo: ");
@@ -151,7 +145,7 @@ public final class RIJChannelBannerModule
           j += 1;
         }
       }
-      ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Integer.valueOf(i), paramFromServiceMsg);
+      ((Map)this.b).put(Integer.valueOf(i), paramFromServiceMsg);
       ReadInJoyLogicEngineEventDispatcher.a().d(i, (List)paramFromServiceMsg);
     }
   }
@@ -159,7 +153,7 @@ public final class RIJChannelBannerModule
   @Nullable
   public final List<ChannelBannerInfo> a(int paramInt)
   {
-    return (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    return (List)this.b.get(Integer.valueOf(paramInt));
   }
   
   public final void a(int paramInt1, int paramInt2)
@@ -173,7 +167,7 @@ public final class RIJChannelBannerModule
       return;
     }
     RIJChannelBannerUtil localRIJChannelBannerUtil = RIJChannelBannerUtil.a;
-    Object localObject = (Long)this.b.get(Integer.valueOf(paramInt1));
+    Object localObject = (Long)this.c.get(Integer.valueOf(paramInt1));
     if (localObject == null) {
       localObject = Long.valueOf(0L);
     }
@@ -184,13 +178,13 @@ public final class RIJChannelBannerModule
     }
     localObject = new oidb_cmd0xea0.ReqBody();
     ((oidb_cmd0xea0.ReqBody)localObject).req_client_type.set(1);
-    ((oidb_cmd0xea0.ReqBody)localObject).version.set("8.7.0");
+    ((oidb_cmd0xea0.ReqBody)localObject).version.set("8.8.17");
     ((oidb_cmd0xea0.ReqBody)localObject).channel_id.set(paramInt1);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xea0", 3744, paramInt2, ((oidb_cmd0xea0.ReqBody)localObject).toByteArray());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyOidbHelper.make…e, reqBody.toByteArray())");
     sendPbReq((ToServiceMsg)localObject);
     long l = System.currentTimeMillis();
-    ((Map)this.b).put(Integer.valueOf(paramInt1), Long.valueOf(l));
+    ((Map)this.c).put(Integer.valueOf(paramInt1), Long.valueOf(l));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestChannelBannerInfo], channelId = ");
     ((StringBuilder)localObject).append(paramInt1);
@@ -216,12 +210,12 @@ public final class RIJChannelBannerModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerModule
  * JD-Core Version:    0.7.0.1
  */

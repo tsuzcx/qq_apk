@@ -13,16 +13,16 @@ import com.tencent.mobileqq.qrscan.utils.ScannerUtils;
 public class QrImageScan
   implements Handler.Callback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QrImageScan.FileDecodeListener jdField_a_of_type_ComTencentMobileqqQrscanQrImageScan$FileDecodeListener;
-  private String jdField_a_of_type_JavaLangString = "QR_CODE";
+  private Context a;
   private Handler b;
+  private Handler c;
+  private String d = "QR_CODE";
+  private QrImageScan.FileDecodeListener e;
   
   public QrImageScan(Context paramContext, QrImageScan.FileDecodeListener paramFileDecodeListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqQrscanQrImageScan$FileDecodeListener = paramFileDecodeListener;
+    this.a = paramContext;
+    this.e = paramFileDecodeListener;
     ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).init(paramContext, hashCode(), "QrImageScan");
   }
   
@@ -30,19 +30,19 @@ public class QrImageScan
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
-      }
       if (this.b != null)
       {
         this.b.removeCallbacksAndMessages(null);
         this.b = null;
       }
+      if (this.c != null)
+      {
+        this.c.removeCallbacksAndMessages(null);
+        this.c = null;
+      }
       ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).unInit(hashCode(), "QrImageScan");
-      this.jdField_a_of_type_ComTencentMobileqqQrscanQrImageScan$FileDecodeListener = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
+      this.e = null;
+      this.a = null;
       return;
     }
     finally {}
@@ -50,25 +50,25 @@ public class QrImageScan
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.a == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("file://");
     localStringBuilder.append(paramString);
     paramString = Uri.parse(localStringBuilder.toString());
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    if (this.b == null) {
       try
       {
-        if (this.jdField_a_of_type_AndroidOsHandler == null)
+        if (this.b == null)
         {
-          this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-          this.b = new Handler(this.jdField_a_of_type_AndroidContentContext.getMainLooper(), this);
+          this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
+          this.c = new Handler(this.a.getMainLooper(), this);
         }
       }
       finally {}
     }
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt, 0, paramString).sendToTarget();
+    this.b.obtainMessage(1, paramInt, 0, paramString).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -83,7 +83,7 @@ public class QrImageScan
           return true;
         }
         i = paramMessage.arg1;
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqQrscanQrImageScan$FileDecodeListener;
+        paramMessage = this.e;
         if (paramMessage != null)
         {
           paramMessage.a(i);
@@ -93,7 +93,7 @@ public class QrImageScan
       else
       {
         i = paramMessage.arg1;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQrscanQrImageScan$FileDecodeListener;
+        localObject = this.e;
         if (localObject != null)
         {
           ((QrImageScan.FileDecodeListener)localObject).a((ScannerResult)paramMessage.obj, i);
@@ -104,10 +104,10 @@ public class QrImageScan
     else
     {
       i = paramMessage.arg1;
-      paramMessage = ScannerUtils.a((Uri)paramMessage.obj, this.jdField_a_of_type_AndroidContentContext, i);
-      if ((paramMessage != null) && (paramMessage.b()))
+      paramMessage = ScannerUtils.a((Uri)paramMessage.obj, this.a, i);
+      if ((paramMessage != null) && (paramMessage.f()))
       {
-        localObject = this.b;
+        localObject = this.c;
         if (localObject != null)
         {
           ((Handler)localObject).obtainMessage(2, i, 0, paramMessage).sendToTarget();
@@ -116,7 +116,7 @@ public class QrImageScan
       }
       else
       {
-        paramMessage = this.b;
+        paramMessage = this.c;
         if (paramMessage != null) {
           paramMessage.obtainMessage(3, i, 0).sendToTarget();
         }
@@ -127,7 +127,7 @@ public class QrImageScan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.QrImageScan
  * JD-Core Version:    0.7.0.1
  */

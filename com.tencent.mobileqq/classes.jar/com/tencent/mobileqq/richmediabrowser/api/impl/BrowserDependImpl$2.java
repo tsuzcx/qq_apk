@@ -13,12 +13,12 @@ class BrowserDependImpl$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).setResult(8001);
+    ((Activity)this.a).setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.BrowserDependImpl.2
  * JD-Core Version:    0.7.0.1
  */

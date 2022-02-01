@@ -14,7 +14,6 @@ import com.tencent.mobileqq.soso.location.LbsManagerServiceOnLocationChangeListe
 import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
-import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,33 +23,8 @@ import org.json.JSONObject;
 
 public class ReadInJoySpEventReportUtil
 {
-  private static final LbsManagerServiceOnLocationChangeListener jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener = new ReadInJoySpEventReportUtil.1("readinjoy_anti_cheating", false);
-  private static boolean jdField_a_of_type_Boolean = false;
-  
-  private static int a()
-  {
-    String str1 = a();
-    String str2 = (String)RIJSPUtils.a("readinjoy_sp_key_last_request_lbs_date", "");
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
-    if (str1.equals(str2)) {
-      return ((Integer)RIJSPUtils.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
-    }
-    return 0;
-  }
-  
-  private static SosoLocation a()
-  {
-    SosoLbsInfo localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("readinjoy_anti_cheating");
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
-      return localSosoLbsInfo.mLocation;
-    }
-    return null;
-  }
-  
-  private static String a()
-  {
-    return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
-  }
+  private static boolean a = false;
+  private static final LbsManagerServiceOnLocationChangeListener b = new ReadInJoySpEventReportUtil.1("readinjoy_anti_cheating", false);
   
   public static void a()
   {
@@ -64,7 +38,7 @@ public class ReadInJoySpEventReportUtil
     if (paramJSONObject == null) {
       return;
     }
-    SosoLocation localSosoLocation = a();
+    SosoLocation localSosoLocation = c();
     if (localSosoLocation != null) {
       try
       {
@@ -83,22 +57,41 @@ public class ReadInJoySpEventReportUtil
     }
   }
   
-  private static boolean a()
+  private static void b()
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    if (d())
+    {
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(b);
+      a = true;
+      e();
+    }
+  }
+  
+  private static SosoLocation c()
+  {
+    SosoLbsInfo localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("readinjoy_anti_cheating");
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
+      return localSosoLbsInfo.mLocation;
+    }
+    return null;
+  }
+  
+  private static boolean d()
+  {
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if ((localObject != null) && (((QQAppInterface)localObject).isLogin()))
     {
-      if (jdField_a_of_type_Boolean)
+      if (a)
       {
         QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, isRequestingLbs.");
         return false;
       }
-      if (a() != null)
+      if (c() != null)
       {
         QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, cache is valid, no need to request.");
         return false;
       }
-      if ((SystemUtil.b()) && (RIJAppSetting.a((QQAppInterface)localObject)))
+      if (RIJAppSetting.f((QQAppInterface)localObject))
       {
         QLog.i("ReadInJoySpEventReportUtil", 1, "[isAbleToRequestLbs] NO, MUI and app in background.");
         return false;
@@ -120,7 +113,7 @@ public class ReadInJoySpEventReportUtil
           return false;
         }
         i = ((AladdinConfig)localObject).getIntegerFromString("lbs_request_interval", 2);
-        long l1 = ((Long)RIJSPUtils.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
+        long l1 = ((Long)RIJSPUtils.b("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
         long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
         QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "from app launch interval = ", Long.valueOf(l2), ", lbsRequestInterval = ", Integer.valueOf(i), ", appLaunchTime = ", Long.valueOf(l1) });
         if (l2 <= i)
@@ -129,7 +122,7 @@ public class ReadInJoySpEventReportUtil
           return false;
         }
         i = ((AladdinConfig)localObject).getIntegerFromString("lbs_day_limit", 1);
-        int j = a();
+        int j = f();
         QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsDayLimit = ", Integer.valueOf(i), ", todayRequestTime = ", Integer.valueOf(j) });
         if (j >= i)
         {
@@ -144,24 +137,14 @@ public class ReadInJoySpEventReportUtil
     return false;
   }
   
-  private static void b()
+  private static void e()
   {
-    if (a())
-    {
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
-      jdField_a_of_type_Boolean = true;
-      c();
-    }
-  }
-  
-  private static void c()
-  {
-    String str = a();
-    Object localObject = (String)RIJSPUtils.a("readinjoy_sp_key_last_request_lbs_date", "");
+    String str = g();
+    Object localObject = (String)RIJSPUtils.b("readinjoy_sp_key_last_request_lbs_date", "");
     QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, today = ", str, ", lastRequestLbsDate = ", localObject });
     if (str.equals(localObject))
     {
-      localObject = (Integer)RIJSPUtils.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
+      localObject = (Integer)RIJSPUtils.b("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
       QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, todayTime = ", localObject });
       RIJSPUtils.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
     }
@@ -172,10 +155,26 @@ public class ReadInJoySpEventReportUtil
     }
     RIJSPUtils.a("readinjoy_sp_key_last_request_lbs_date", str);
   }
+  
+  private static int f()
+  {
+    String str1 = g();
+    String str2 = (String)RIJSPUtils.b("readinjoy_sp_key_last_request_lbs_date", "");
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
+    if (str1.equals(str2)) {
+      return ((Integer)RIJSPUtils.b("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
+    }
+    return 0;
+  }
+  
+  private static String g()
+  {
+    return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoySpEventReportUtil
  * JD-Core Version:    0.7.0.1
  */

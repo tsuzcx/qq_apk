@@ -16,35 +16,35 @@ class VideoController$10
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    String str = VideoController.jdField_a_of_type_JavaLangString;
+    SessionInfo localSessionInfo = this.a.k();
+    String str = VideoController.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCompletion, onClose, mainSession[");
     localStringBuilder.append(localSessionInfo);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], timeOutTask[");
-    localStringBuilder.append(VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController));
+    localStringBuilder.append(VideoController.a(this.a));
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController) != null)
+    if (VideoController.a(this.a) != null)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController));
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, null);
+      this.a.e.a().removeCallbacks(VideoController.a(this.a));
+      VideoController.a(this.a, null);
     }
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
     if (!localSessionInfo.n())
     {
-      AVLog.printAllUserLog(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onClose is not Closing2");
-      this.jdField_a_of_type_Long = 0L;
+      AVLog.printAllUserLog(VideoController.a, "onCompletion onClose is not Closing2");
+      this.b = 0L;
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.c, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
-    this.jdField_a_of_type_Long = 0L;
+    this.a.a(localSessionInfo.s, 217);
+    this.a.b(217);
+    this.a.b(localSessionInfo.s, this.a.k().ay);
+    this.b = 0L;
   }
 }
 

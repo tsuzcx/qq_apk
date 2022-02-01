@@ -9,13 +9,13 @@ class OkHttpNetworkManager$2
   
   public void cancel()
   {
-    this.jdField_a_of_type_Okhttp3Call.cancel();
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback.onCancel();
+    this.a.cancel();
+    this.b.onCancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -25,19 +25,6 @@ public class AddFriendSettingProcessor
     super(paramAppRuntime);
   }
   
-  public static int a(AppRuntime paramAppRuntime)
-  {
-    int i = MobileQQ.sMobileQQ.getSharedPreferences(paramAppRuntime.getCurrentAccountUin(), 0).getInt("e_add_friend_setting", 101);
-    if (QLog.isColorLevel())
-    {
-      paramAppRuntime = new StringBuilder();
-      paramAppRuntime.append("getSelfAddFriendSettingValue  settingValue:");
-      paramAppRuntime.append(i);
-      QLog.i("AddFriendSettingProcessor", 2, paramAppRuntime.toString());
-    }
-    return i;
-  }
-  
   public static void a(int paramInt, AppRuntime paramAppRuntime)
   {
     paramAppRuntime = MobileQQ.sMobileQQ.getSharedPreferences(paramAppRuntime.getCurrentAccountUin(), 0);
@@ -77,6 +64,19 @@ public class AddFriendSettingProcessor
       localStringBuilder.append(paramAppRuntime.getMessage());
       QLog.e("AddFriendSettingProcessor", 1, localStringBuilder.toString());
     }
+  }
+  
+  public static int b(AppRuntime paramAppRuntime)
+  {
+    int i = MobileQQ.sMobileQQ.getSharedPreferences(paramAppRuntime.getCurrentAccountUin(), 0).getInt("e_add_friend_setting", 101);
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("getSelfAddFriendSettingValue  settingValue:");
+      paramAppRuntime.append(i);
+      QLog.i("AddFriendSettingProcessor", 2, paramAppRuntime.toString());
+    }
+    return i;
   }
   
   void a()
@@ -144,7 +144,7 @@ public class AddFriendSettingProcessor
     }
     else
     {
-      this.handler.notifyUI(3, false, Integer.valueOf(a(this.appRuntime)));
+      this.handler.notifyUI(3, false, Integer.valueOf(b(this.appRuntime)));
     }
   }
   
@@ -178,7 +178,7 @@ public class AddFriendSettingProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.processor.switchprocessor.AddFriendSettingProcessor
  * JD-Core Version:    0.7.0.1
  */

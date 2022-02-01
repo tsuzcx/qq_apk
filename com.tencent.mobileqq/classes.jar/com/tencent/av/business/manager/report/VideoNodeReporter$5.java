@@ -15,11 +15,11 @@ class VideoNodeReporter$5
     ((StringBuilder)localObject).append("updateCrashType ,crashType = ");
     ((StringBuilder)localObject).append(this.a);
     QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject).toString());
-    if (this.this$0.a.size() > 0)
+    if (this.this$0.e.size() > 0)
     {
-      localObject = this.this$0.a.iterator();
+      localObject = this.this$0.e.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((VideoNodeReporter.SeesionRecord)((Iterator)localObject).next()).d = this.a;
+        ((VideoNodeReporter.SeesionRecord)((Iterator)localObject).next()).k = this.a;
       }
     }
   }

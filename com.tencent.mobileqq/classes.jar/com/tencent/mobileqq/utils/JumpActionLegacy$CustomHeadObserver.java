@@ -12,38 +12,38 @@ import java.util.Hashtable;
 public class JumpActionLegacy$CustomHeadObserver
   extends AvatarObserver
 {
-  private final JumpAction jdField_a_of_type_ComTencentMobileqqUtilsJumpAction;
+  private final JumpAction b;
   
   public JumpActionLegacy$CustomHeadObserver(JumpActionLegacy paramJumpActionLegacy, JumpAction paramJumpAction)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction = paramJumpAction;
+    this.b = paramJumpAction;
   }
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashtable != null))
+    if ((paramBoolean) && (this.a.u != null))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString)) {
+      if (!this.a.u.containsKey(paramString)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy$CustomHeadObserver);
+      this.a.u.remove(paramString);
+      if (this.a.u.size() == 0) {
+        this.a.H.removeObserver(this.a.I);
       }
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.b());
+      ((StringBuilder)localObject).append(this.a.E());
       ((StringBuilder)localObject).append("&uin=");
       ((StringBuilder)localObject).append(paramString);
       localObject = Uri.parse(((StringBuilder)localObject).toString());
-      localObject = new Intent((String)this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+      localObject = new Intent((String)this.a.f.get("callback_name"), (Uri)localObject);
+      this.a.b.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("download head ");
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append(" success. Send broadcast to ");
-        ((StringBuilder)localObject).append((String)this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
+        ((StringBuilder)localObject).append((String)this.a.f.get("callback_name"));
         QLog.i("JumpAction", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -51,7 +51,7 @@ public class JumpActionLegacy$CustomHeadObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.CustomHeadObserver
  * JD-Core Version:    0.7.0.1
  */

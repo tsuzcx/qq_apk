@@ -23,7 +23,7 @@ class LottieAnimation$1
       this.a.c();
       return;
     }
-    if (!LottieAnimation.a(this.a))
+    if (!LottieAnimation.b(this.a))
     {
       LottieAnimation.a(this.a).clear();
       this.a.c();
@@ -36,7 +36,7 @@ class LottieAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.LottieAnimation.1
  * JD-Core Version:    0.7.0.1
  */

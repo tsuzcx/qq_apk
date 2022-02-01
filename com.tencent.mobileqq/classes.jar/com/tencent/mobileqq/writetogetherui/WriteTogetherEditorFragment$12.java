@@ -13,12 +13,12 @@ class WriteTogetherEditorFragment$12
   {
     paramDialogInterface.dismiss();
     this.a.getQBaseActivity().finish();
-    WriteTogetherEditorFragment.b(this.a);
+    WriteTogetherEditorFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.12
  * JD-Core Version:    0.7.0.1
  */

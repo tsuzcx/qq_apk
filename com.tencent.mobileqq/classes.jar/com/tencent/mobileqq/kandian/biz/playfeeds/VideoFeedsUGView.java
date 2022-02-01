@@ -40,23 +40,18 @@ public class VideoFeedsUGView
   extends AbsVideoFeedsUGView
   implements DownloadListener
 {
-  public static VideoFeedsUGDownloadListener a;
-  int jdField_a_of_type_Int = 0;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Path jdField_a_of_type_AndroidGraphicsPath;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  UGDownloadInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo;
-  String jdField_a_of_type_JavaLangString;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString = "";
-  ImageView c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsUGDownloadListener = new VideoFeedsUGDownloadListener();
-  }
+  public static VideoFeedsUGDownloadListener k = new VideoFeedsUGDownloadListener();
+  UGDownloadInfo a;
+  String b;
+  int c = 0;
+  ImageView d;
+  ImageView e;
+  ImageView f;
+  TextView g;
+  RectF h = new RectF();
+  Paint i = new Paint();
+  Path j;
+  private String l = "";
   
   public VideoFeedsUGView(@NonNull Context paramContext)
   {
@@ -74,90 +69,90 @@ public class VideoFeedsUGView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(1);
+    this.d = new ImageView(paramContext);
+    this.d.setId(1);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.b(24.0F, getResources()), AIOUtils.b(24.0F, getResources()));
     localLayoutParams.addRule(15);
     localLayoutParams.addRule(9);
     localLayoutParams.leftMargin = AIOUtils.b(8.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setId(2);
+    this.d.setLayoutParams(localLayoutParams);
+    addView(this.d, localLayoutParams);
+    this.e = new ImageView(paramContext);
+    this.e.setId(2);
     localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.b(95.0F, getResources()), AIOUtils.b(14.0F, getResources()));
     localLayoutParams.addRule(1, 1);
     localLayoutParams.addRule(15);
     localLayoutParams.leftMargin = AIOUtils.b(4.0F, getResources());
-    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(3);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(11.0F);
+    this.e.setLayoutParams(localLayoutParams);
+    addView(this.e, localLayoutParams);
+    this.g = new TextView(paramContext);
+    this.g.setId(3);
+    this.g.setTextSize(11.0F);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(1, 1);
     localLayoutParams.addRule(10);
     localLayoutParams.topMargin = AIOUtils.b(6.0F, getResources());
     localLayoutParams.leftMargin = AIOUtils.b(4.0F, getResources());
     localLayoutParams.bottomMargin = 1;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.c = new ImageView(paramContext);
-    this.c.setPadding(AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()));
-    this.c.setOnClickListener(new VideoFeedsUGView.1(this));
+    this.g.setLayoutParams(localLayoutParams);
+    addView(this.g, localLayoutParams);
+    this.f = new ImageView(paramContext);
+    this.f.setPadding(AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()), AIOUtils.b(4.0F, getResources()));
+    this.f.setOnClickListener(new VideoFeedsUGView.1(this));
     paramContext = new RelativeLayout.LayoutParams(AIOUtils.b(16.0F, getResources()), AIOUtils.b(16.0F, getResources()));
     paramContext.addRule(11);
     paramContext.addRule(15);
     paramContext.rightMargin = AIOUtils.b(4.0F, getResources());
-    this.c.setLayoutParams(paramContext);
-    addView(this.c, paramContext);
+    this.f.setLayoutParams(paramContext);
+    addView(this.f, paramContext);
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo == null)
+    if (this.a == null)
     {
       setVisibility(8);
       return;
     }
-    if (!DateUtils.isToday(SharedPreUtils.b("ug_prefix_ug_1get3_ug_show_time")))
+    if (!DateUtils.isToday(SharedPreUtils.k("ug_prefix_ug_1get3_ug_show_time")))
     {
       SharedPreUtils.a("ug_prefix_ug_1get3_ug_show_time", System.currentTimeMillis());
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ug_prefix_ug_1get3_ug_click_count");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-      SharedPreUtils.a(((StringBuilder)localObject1).toString(), 0);
+      ((StringBuilder)localObject1).append(this.a.p);
+      SharedPreUtils.c(((StringBuilder)localObject1).toString(), 0);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ug_prefix_ug_1get3_ug_exp_count");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-      SharedPreUtils.a(((StringBuilder)localObject1).toString(), 0);
+      ((StringBuilder)localObject1).append(this.a.p);
+      SharedPreUtils.c(((StringBuilder)localObject1).toString(), 0);
     }
-    if (DateUtils.isToday(SharedPreUtils.b("ug_prefix_ug_1get3_ug_close_time")))
+    if (DateUtils.isToday(SharedPreUtils.k("ug_prefix_ug_1get3_ug_close_time")))
     {
       setVisibility(8);
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("ug_prefix_ug_1get3_ug_click_count");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-    if (SharedPreUtils.a(((StringBuilder)localObject1).toString()) >= this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_a_of_type_Int)
+    ((StringBuilder)localObject1).append(this.a.p);
+    if (SharedPreUtils.l(((StringBuilder)localObject1).toString()) >= this.a.n)
     {
       setVisibility(8);
       return;
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("ug_prefix_ug_1get3_ug_exp_count");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-    if (SharedPreUtils.a(((StringBuilder)localObject1).toString()) >= this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_b_of_type_Int)
+    ((StringBuilder)localObject1).append(this.a.p);
+    if (SharedPreUtils.l(((StringBuilder)localObject1).toString()) >= this.a.o)
     {
       setVisibility(8);
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_c_of_type_Int == 1) && (PackageUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.j)))
+    if ((this.a.q == 1) && (PackageUtil.a(BaseApplicationImpl.getContext(), this.a.j)))
     {
       setVisibility(8);
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_c_of_type_Int == 2) && (!PackageUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.j)))
+    if ((this.a.q == 2) && (!PackageUtil.a(BaseApplicationImpl.getContext(), this.a.j)))
     {
       setVisibility(8);
       return;
@@ -167,52 +162,52 @@ public class VideoFeedsUGView
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ug_prefix_ug_1get3_ug_exp_count");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
+      ((StringBuilder)localObject1).append(this.a.p);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("ug_prefix_ug_1get3_ug_exp_count");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-      SharedPreUtils.a((String)localObject1, SharedPreUtils.a(((StringBuilder)localObject2).toString()) + 1);
-      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "2", this.jdField_a_of_type_JavaLangString));
+      ((StringBuilder)localObject2).append(this.a.p);
+      SharedPreUtils.c((String)localObject1, SharedPreUtils.l(((StringBuilder)localObject2).toString()) + 1);
+      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "2", this.b));
     }
     setVisibility(0);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_c_of_type_Int == 2)
+    if (this.a.q == 2)
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c = 0;
+      this.e.setVisibility(0);
+      this.g.setVisibility(8);
     }
     else
     {
-      localObject1 = DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f);
+      localObject1 = DownloadManagerV2.a().b(this.a.f);
       if (localObject1 == null)
       {
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.c = 0;
+        this.e.setVisibility(0);
+        this.g.setVisibility(8);
       }
       else
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.e.setVisibility(8);
+        this.g.setVisibility(0);
         if (((DownloadInfo)localObject1).a() == 4)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.m);
+          this.g.setText(this.a.m);
         }
         else if ((((DownloadInfo)localObject1).a() != 20) && (((DownloadInfo)localObject1).a() != 1) && (((DownloadInfo)localObject1).a() != 2))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.l);
+          this.g.setText(this.a.l);
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+          localObject2 = this.g;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.k);
-          localStringBuilder.append(((DownloadInfo)localObject1).f);
+          localStringBuilder.append(this.a.k);
+          localStringBuilder.append(((DownloadInfo)localObject1).t);
           localStringBuilder.append("%");
           ((TextView)localObject2).setText(localStringBuilder.toString());
         }
-        this.jdField_a_of_type_Int = ((DownloadInfo)localObject1).f;
+        this.c = ((DownloadInfo)localObject1).t;
       }
     }
     b();
@@ -221,41 +216,41 @@ public class VideoFeedsUGView
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(((UGDownloadInfo)localObject).e));
+      this.g.setTextColor(Color.parseColor(((UGDownloadInfo)localObject).e));
       label24:
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(153.0F, getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(28.0F, getResources());
-      setBackgroundDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject));
+      setBackgroundDrawable(URLDrawable.getDrawable(this.a.a, (URLDrawable.URLDrawableOptions)localObject));
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(24.0F, getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(24.0F, getResources());
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(this.a.b, (URLDrawable.URLDrawableOptions)localObject);
+      this.d.setImageDrawable((Drawable)localObject);
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(95.0F, getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(14.0F, getResources());
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.jdField_c_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(this.a.c, (URLDrawable.URLDrawableOptions)localObject);
+      this.e.setImageDrawable((Drawable)localObject);
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(8.0F, getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(8.0F, getResources());
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.d, (URLDrawable.URLDrawableOptions)localObject);
-      this.c.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(this.a.d, (URLDrawable.URLDrawableOptions)localObject);
+      this.f.setImageDrawable((Drawable)localObject);
       return;
     }
     catch (Exception localException)
@@ -266,7 +261,7 @@ public class VideoFeedsUGView
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo = null;
+    this.a = null;
   }
   
   public void installSucceed(String paramString1, String paramString2)
@@ -276,87 +271,87 @@ public class VideoFeedsUGView
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo;
+    paramView = this.a;
     if (paramView == null) {
       return;
     }
     Object localObject;
-    if (paramView.jdField_c_of_type_Int == 2)
+    if (paramView.q == 2)
     {
       paramView = new Intent();
       paramView.setAction("android.intent.action.VIEW");
       paramView.putExtra("big_brother_source_key", "biz_src_kandian_videos");
-      paramView.setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.g));
+      paramView.setData(Uri.parse(this.a.g));
       if (VideoFeedsHelper.a(getContext(), paramView)) {
         getContext().startActivity(paramView);
       }
-      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "7", this.jdField_a_of_type_JavaLangString));
+      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "7", this.b));
       paramView = new StringBuilder();
       paramView.append("ug_prefix_ug_1get3_ug_click_count");
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
+      paramView.append(this.a.p);
       paramView = paramView.toString();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ug_prefix_ug_1get3_ug_click_count");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-      SharedPreUtils.a(paramView, SharedPreUtils.a(((StringBuilder)localObject).toString()) + 1);
+      ((StringBuilder)localObject).append(this.a.p);
+      SharedPreUtils.c(paramView, SharedPreUtils.l(((StringBuilder)localObject).toString()) + 1);
       return;
     }
     paramView = new VideoFeedsUGDownloadListener.UGClickData();
-    paramView.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f;
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i;
-    paramView.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsUGDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.j, paramView);
-    DownloadManagerV2.a().a(jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsUGDownloadListener);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.h;
+    paramView.c = this.a.f;
+    paramView.a = this.a.i;
+    paramView.b = this.b;
+    k.a(this.a.j, paramView);
+    DownloadManagerV2.a().a(k);
+    paramView = this.a.h;
     try
     {
       ((ClipboardManager)getContext().getSystemService("clipboard")).setText(paramView);
       label258:
-      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "3", this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView = DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f);
+      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "3", this.b));
+      this.g.setVisibility(0);
+      this.e.setVisibility(8);
+      paramView = DownloadManagerV2.a().b(this.a.f);
       if (paramView == null)
       {
         paramView = new DownloadInfo();
-        paramView.d = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f;
-        paramView.m = "biz_src_kandian_videos";
-        paramView.e = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.j;
+        paramView.d = this.a.f;
+        paramView.r = "biz_src_kandian_videos";
+        paramView.e = this.a.j;
         DownloadManagerV2.a().b(paramView);
         paramView = new StringBuilder();
         paramView.append("ug_prefix_ug_1get3_ug_click_count");
-        paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
+        paramView.append(this.a.p);
         paramView = paramView.toString();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ug_prefix_ug_1get3_ug_click_count");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-        SharedPreUtils.a(paramView, SharedPreUtils.a(((StringBuilder)localObject).toString()) + 1);
-        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "9", this.jdField_a_of_type_JavaLangString));
-        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "10", this.jdField_a_of_type_JavaLangString));
-        paramView = this.jdField_a_of_type_AndroidWidgetTextView;
+        ((StringBuilder)localObject).append(this.a.p);
+        SharedPreUtils.c(paramView, SharedPreUtils.l(((StringBuilder)localObject).toString()) + 1);
+        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "9", this.b));
+        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "10", this.b));
+        paramView = this.g;
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.k);
+        ((StringBuilder)localObject).append(this.a.k);
         ((StringBuilder)localObject).append("0%");
         paramView.setText(((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_Int = 0;
+        this.c = 0;
         return;
       }
       if (paramView.a() == 4)
       {
-        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "102", this.jdField_a_of_type_JavaLangString));
-        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "20", this.jdField_a_of_type_JavaLangString));
-        if (!DownloadManagerV2.a().a(paramView)) {
+        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "102", this.b));
+        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "20", this.b));
+        if (!DownloadManagerV2.a().d(paramView)) {
           DownloadManagerV2.a().b(paramView);
         }
         paramView = new StringBuilder();
         paramView.append("ug_prefix_ug_1get3_ug_click_count");
-        paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
+        paramView.append(this.a.p);
         paramView = paramView.toString();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ug_prefix_ug_1get3_ug_click_count");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-        SharedPreUtils.a(paramView, SharedPreUtils.a(((StringBuilder)localObject).toString()) + 1);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.m);
+        ((StringBuilder)localObject).append(this.a.p);
+        SharedPreUtils.c(paramView, SharedPreUtils.l(((StringBuilder)localObject).toString()) + 1);
+        this.g.setText(this.a.m);
         return;
       }
       if ((paramView.a() != 30) && (paramView.a() != 10) && (paramView.a() != 20) && (paramView.a() != 1) && (paramView.a() != 2))
@@ -364,25 +359,25 @@ public class VideoFeedsUGView
         DownloadManagerV2.a().b(paramView);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ug_prefix_ug_1get3_ug_click_count");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
+        ((StringBuilder)localObject).append(this.a.p);
         localObject = ((StringBuilder)localObject).toString();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("ug_prefix_ug_1get3_ug_click_count");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.n);
-        SharedPreUtils.a((String)localObject, SharedPreUtils.a(localStringBuilder.toString()) + 1);
-        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "10", this.jdField_a_of_type_JavaLangString));
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        localStringBuilder.append(this.a.p);
+        SharedPreUtils.c((String)localObject, SharedPreUtils.l(localStringBuilder.toString()) + 1);
+        KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "10", this.b));
+        localObject = this.g;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.k);
-        localStringBuilder.append(paramView.f);
+        localStringBuilder.append(this.a.k);
+        localStringBuilder.append(paramView.t);
         localStringBuilder.append("%");
         ((TextView)localObject).setText(localStringBuilder.toString());
-        this.jdField_a_of_type_Int = paramView.f;
+        this.c = paramView.t;
         return;
       }
-      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.i, "22", this.jdField_a_of_type_JavaLangString));
-      DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.f);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo.l);
+      KandianUGStatisticUtils.a(KandianUGStatisticUtils.b(this.a.i, "22", this.b));
+      DownloadManagerV2.a().e(this.a.f);
+      this.g.setText(this.a.l);
       return;
     }
     catch (Throwable paramView)
@@ -424,18 +419,18 @@ public class VideoFeedsUGView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo != null) && (this.jdField_a_of_type_Int != 0))
+    if ((this.a != null) && (this.c != 0))
     {
       paramCanvas.save();
-      if (this.jdField_a_of_type_AndroidGraphicsPath == null)
+      if (this.j == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), AIOUtils.b(14.0F, getResources()), AIOUtils.b(14.0F, getResources()), Path.Direction.CW);
+        this.j = new Path();
+        this.j.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), AIOUtils.b(14.0F, getResources()), AIOUtils.b(14.0F, getResources()), Path.Direction.CW);
       }
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth() * this.jdField_a_of_type_Int / 100.0F, getHeight());
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1291845631);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.clipPath(this.j, Region.Op.INTERSECT);
+      this.h.set(0.0F, 0.0F, getWidth() * this.c / 100.0F, getHeight());
+      this.i.setColor(1291845631);
+      paramCanvas.drawRect(this.h, this.i);
       paramCanvas.restore();
     }
   }
@@ -455,9 +450,9 @@ public class VideoFeedsUGView
   
   public void setInfo(UGDownloadInfo paramUGDownloadInfo, String paramString1, String paramString2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo = paramUGDownloadInfo;
+    this.l = paramString1;
+    this.b = paramString2;
+    this.a = paramUGDownloadInfo;
     a(false);
   }
   
@@ -468,7 +463,7 @@ public class VideoFeedsUGView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsUGView
  * JD-Core Version:    0.7.0.1
  */

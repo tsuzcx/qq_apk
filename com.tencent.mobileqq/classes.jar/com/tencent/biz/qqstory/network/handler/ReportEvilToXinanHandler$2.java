@@ -20,7 +20,7 @@ class ReportEvilToXinanHandler$2
     int i;
     try
     {
-      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
+      i = new JSONObject(this.a).getInt("rtn_code");
     }
     catch (JSONException localJSONException)
     {
@@ -30,31 +30,31 @@ class ReportEvilToXinanHandler$2
     int j;
     if (i == 0)
     {
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713336), 0).a();
-      if (this.jdField_a_of_type_Boolean) {
+      QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131910889), 0).show();
+      if (this.b) {
         j = 1;
       } else {
         j = 2;
       }
-      StoryReportor.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
+      StoryReportor.a("play_video", "report_suc", j, 0, new String[] { this.c, "", "", this.d });
     }
     else
     {
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713337), 0).a();
-      if (this.jdField_a_of_type_Boolean) {
+      QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131910890), 0).show();
+      if (this.b) {
         j = 1;
       } else {
         j = 2;
       }
-      StoryReportor.a("play_video", "report_fail", j, 0, new String[] { this.b, "", "", this.c });
+      StoryReportor.a("play_video", "report_fail", j, 0, new String[] { this.c, "", "", this.d });
     }
-    ReportEvilToXinanHandler.ReportToXinanEvent localReportToXinanEvent = new ReportEvilToXinanHandler.ReportToXinanEvent(new ErrorMessage(i, ""), this.c, this.d, this.b);
+    ReportEvilToXinanHandler.ReportToXinanEvent localReportToXinanEvent = new ReportEvilToXinanHandler.ReportToXinanEvent(new ErrorMessage(i, ""), this.d, this.e, this.c);
     StoryDispatcher.a().dispatch(localReportToXinanEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.2
  * JD-Core Version:    0.7.0.1
  */

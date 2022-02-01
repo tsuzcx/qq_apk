@@ -13,7 +13,7 @@ final class VideoPreviewPage$onCreateView$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.a.a();
+    paramView = this.a.b();
     if (paramView != null) {
       paramView.finish();
     }
@@ -21,7 +21,7 @@ final class VideoPreviewPage$onCreateView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videopreview.VideoPreviewPage.onCreateView.1
  * JD-Core Version:    0.7.0.1
  */

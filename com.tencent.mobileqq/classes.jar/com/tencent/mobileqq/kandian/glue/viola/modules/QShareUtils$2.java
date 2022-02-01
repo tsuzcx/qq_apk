@@ -18,17 +18,17 @@ class QShareUtils$2
   {
     try
     {
-      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject != null)
       {
         localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-        if ((!this.jdField_a_of_type_Boolean) && (localObject != null))
+        if ((!this.b) && (localObject != null))
         {
-          boolean bool = this.b;
+          boolean bool = this.c;
           if (bool) {
-            this.jdField_a_of_type_JavaUtilMap.put("image", QShareUtils.a((Bitmap)localObject));
+            this.d.put("image", QShareUtils.a((Bitmap)localObject));
           } else {
-            this.jdField_a_of_type_JavaUtilMap.put("image", QShareUtils.a(this.this$0, (Bitmap)localObject));
+            this.d.put("image", QShareUtils.a(this.this$0, (Bitmap)localObject));
           }
         }
       }
@@ -38,12 +38,12 @@ class QShareUtils$2
       label91:
       break label91;
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.e.runOnUiThread(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.QShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

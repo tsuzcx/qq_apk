@@ -10,7 +10,7 @@
     <RelativeLayout android:id="@id/hs3" android:layout_width="fill_parent" android:layout_height="95.0dip">
         <LinearLayout android:orientation="vertical" android:id="@id/hs8" android:background="@color/al3" android:layout_width="70.0dip" android:layout_height="95.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
             <ImageView android:background="@drawable/g3d" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="18.0dip" android:scaleType="center" />
-            <TextView android:textSize="10.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.5dip" android:layout_marginTop="6.0dip" android:text="@string/rv0" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.5dip" android:layout_marginTop="6.0dip" android:text="@string/rv0" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
         </LinearLayout>
         <com.tencent.widget.HorizontalListView android:id="@id/d7x" android:background="@color/al3" android:paddingLeft="7.5dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_toLeftOf="@id/hs8" android:layout_alignParentLeft="true" />
     </RelativeLayout>

@@ -19,10 +19,10 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager;
 import com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.Companion;
 import com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.RIJRewardData;
@@ -33,7 +33,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
 import com.tencent.mobileqq.kandian.repo.pts.entity.ProteusItemData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
@@ -51,20 +50,15 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/fastweb/util/RIJ3ClickUtils;", "", "()V", "COIN_ICON", "", "FAVOURITE_ICON", "FIRST_3CLICK_KEY", "", "LIKE_ICON", "REQUEST_COUNT", "SUCCESS_CODE", "SWITCH_3CLICK_KEY", "SWITCH_SCENE_ARTICLE", "SWITCH_SCENE_VIDEO", "TAG", "TRIGGER_ICON", "absBaseArticleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "clickRespObserver", "Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "getClickRespObserver", "()Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "setClickRespObserver", "(Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;)V", "fastWebArticleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/FastWebArticleInfo;", "imageViewRef", "Lmqq/util/WeakReference;", "Landroid/widget/ImageView;", "isCoinInsuffcient", "", "isRequestIng", "requestCountFlag", "addAnimationView", "", "v", "Landroid/view/View;", "fastWebActivity", "Lcom/tencent/mobileqq/kandian/biz/fastweb/FastWebActivity;", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "addLongClickListener", "itemData", "Lcom/tencent/mobileqq/kandian/repo/pts/entity/ProteusItemData;", "calculatePosition", "context", "Landroid/content/Context;", "location", "", "changeRequestFlag", "type", "resultCode", "data", "destroy", "getToastMsg", "isSuccess", "hasClicked", "scene", "init", "isAllRequestBack", "isAllSuccess", "webInfo", "isSwitchOpen", "playAnimation", "playFinalAnimation", "playStartAnimation", "view", "playSuccess", "playSuccessAnimation", "refreshWebInfo", "report3Click", "report3ClickCoin", "success", "request", "requestCoin", "articleInfo", "fastWebInfo", "requestFavourite", "requestLike", "reset3ClickStatus", "showTipsWindow", "showToast", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJ3ClickUtils
 {
-  private static int jdField_a_of_type_Int;
-  public static final RIJ3ClickUtils a;
+  public static final RIJ3ClickUtils a = new RIJ3ClickUtils();
+  private static int b;
+  private static boolean c;
+  private static boolean d;
+  private static FastWebArticleInfo e;
+  private static AbsBaseArticleInfo f;
+  private static WeakReference<ImageView> g;
   @NotNull
-  private static ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = (ReadInJoyObserver)new RIJ3ClickUtils.clickRespObserver.1();
-  private static AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private static FastWebArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
-  private static WeakReference<ImageView> jdField_a_of_type_MqqUtilWeakReference;
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilRIJ3ClickUtils = new RIJ3ClickUtils();
-  }
+  private static ReadInJoyObserver h = (ReadInJoyObserver)new RIJ3ClickUtils.clickRespObserver.1();
   
   private final String a(Context paramContext, boolean paramBoolean)
   {
@@ -74,7 +68,7 @@ public final class RIJ3ClickUtils
     {
       try
       {
-        localObject = paramContext.getString(2131699847);
+        localObject = paramContext.getString(2131897896);
       }
       catch (Exception paramContext)
       {
@@ -85,14 +79,14 @@ public final class RIJ3ClickUtils
         QLog.d("RIJ3ClickUtils", 1, ((StringBuilder)localObject).toString());
         return str;
       }
-      if (jdField_a_of_type_Boolean)
+      if (c)
       {
         if (paramContext != null) {
-          localObject = paramContext.getString(2131699845);
+          localObject = paramContext.getString(2131897894);
         }
       }
       else if (paramContext != null) {
-        localObject = paramContext.getString(2131699846);
+        localObject = paramContext.getString(2131897895);
       }
     }
     return localObject;
@@ -100,7 +94,7 @@ public final class RIJ3ClickUtils
   
   private final void a(int paramInt)
   {
-    Object localObject = jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = g;
     if (localObject != null) {
       localObject = (ImageView)((WeakReference)localObject).get();
     } else {
@@ -121,7 +115,7 @@ public final class RIJ3ClickUtils
   
   private final void a(int paramInt1, int paramInt2)
   {
-    FastWebArticleInfo localFastWebArticleInfo = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+    FastWebArticleInfo localFastWebArticleInfo = e;
     if (localFastWebArticleInfo != null)
     {
       boolean bool;
@@ -134,12 +128,12 @@ public final class RIJ3ClickUtils
       {
         if (bool)
         {
-          localFastWebArticleInfo.jdField_e_of_type_Boolean = true;
-          localFastWebArticleInfo.jdField_e_of_type_Int += 1;
+          localFastWebArticleInfo.N = true;
+          localFastWebArticleInfo.M += 1;
         }
         else if (paramInt2 == 1034)
         {
-          jdField_a_of_type_Boolean = true;
+          c = true;
         }
         c(bool);
       }
@@ -151,10 +145,10 @@ public final class RIJ3ClickUtils
         if (paramInt1 != 7) {
           return;
         }
-        if (!localFastWebArticleInfo.jdField_a_of_type_Boolean)
+        if (!localFastWebArticleInfo.h)
         {
-          localFastWebArticleInfo.jdField_a_of_type_Boolean = true;
-          localFastWebArticleInfo.jdField_a_of_type_Int += 1;
+          localFastWebArticleInfo.h = true;
+          localFastWebArticleInfo.f += 1;
         }
       }
       else
@@ -166,20 +160,20 @@ public final class RIJ3ClickUtils
   
   private final void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    jdField_a_of_type_Int += 1;
+    b += 1;
   }
   
   private final void a(Context paramContext, FastWebActivity paramFastWebActivity, Container paramContainer, int[] paramArrayOfInt)
   {
-    paramFastWebActivity = paramFastWebActivity.b;
+    paramFastWebActivity = paramFastWebActivity.e;
     if (paramFastWebActivity != null)
     {
       int[] arrayOfInt1 = new int[2];
       paramContainer.getLocationOnScreen(arrayOfInt1);
       int[] arrayOfInt2 = new int[2];
       paramFastWebActivity.getLocationOnScreen(arrayOfInt2);
-      float f3 = paramContext.getResources().getDimension(2131298842);
-      float f2 = paramContext.getResources().getDimension(2131298841);
+      float f3 = paramContext.getResources().getDimension(2131299559);
+      float f2 = paramContext.getResources().getDimension(2131299558);
       float f1 = paramContainer.getWidth() / 2;
       f3 /= 2;
       float f4 = arrayOfInt1[1] - arrayOfInt2[1];
@@ -195,7 +189,7 @@ public final class RIJ3ClickUtils
   private final void a(View paramView)
   {
     Object localObject1 = paramView.getTag();
-    paramView = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramView = f;
     if ((paramView != null) && ((localObject1 instanceof Integer)))
     {
       try
@@ -206,7 +200,7 @@ public final class RIJ3ClickUtils
         ((JSONObject)localObject2).put("channel_id", paramView.mChannelID);
         ((JSONObject)localObject2).put("page_type", 2);
         ((JSONObject)localObject2).put("trigger_icon ", ((Number)localObject1).intValue());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800BAFD", "0X800BAFD", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
+        PublicAccountReportUtils.a(null, "", "0X800BAFD", "0X800BAFD", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
       }
       catch (Exception localException)
       {
@@ -222,10 +216,10 @@ public final class RIJ3ClickUtils
   
   private final void a(View paramView, FastWebActivity paramFastWebActivity, Container paramContainer)
   {
-    if ((paramFastWebActivity.a instanceof ViewGroup))
+    if ((paramFastWebActivity.d instanceof ViewGroup))
     {
       Context localContext = paramView.getContext();
-      paramView = jdField_a_of_type_MqqUtilWeakReference;
+      paramView = g;
       if (paramView != null) {
         paramView = (ImageView)paramView.get();
       } else {
@@ -235,8 +229,8 @@ public final class RIJ3ClickUtils
       if (paramView == null)
       {
         localObject = new ImageView(localContext);
-        jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject);
-        paramView = paramFastWebActivity.a;
+        g = new WeakReference(localObject);
+        paramView = paramFastWebActivity.d;
         if (paramView != null) {
           ((ViewGroup)paramView).addView((View)localObject);
         } else {
@@ -244,8 +238,8 @@ public final class RIJ3ClickUtils
         }
       }
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      float f1 = localContext.getResources().getDimension(2131298842);
-      float f2 = localContext.getResources().getDimension(2131298841);
+      float f1 = localContext.getResources().getDimension(2131299559);
+      float f2 = localContext.getResources().getDimension(2131299558);
       paramView = new int[2];
       a(localContext, paramFastWebActivity, paramContainer, paramView);
       if ((paramView[0] > 0) && (paramView[1] > 0))
@@ -281,15 +275,15 @@ public final class RIJ3ClickUtils
     } else {
       l = 0L;
     }
-    localReadInJoyLogicEngine.a(l, 1, paramFastWebArticleInfo.j, (Bundle)localObject);
-    paramAbsBaseArticleInfo = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+    localReadInJoyLogicEngine.a(l, 1, paramFastWebArticleInfo.q, (Bundle)localObject);
+    paramAbsBaseArticleInfo = e;
     if (paramAbsBaseArticleInfo != null)
     {
       paramFastWebArticleInfo = RIJVideoRewardCoinManager.a;
-      localObject = paramAbsBaseArticleInfo.j;
+      localObject = paramAbsBaseArticleInfo.q;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "it.rowKey");
       int i;
-      if (paramAbsBaseArticleInfo.jdField_e_of_type_Boolean) {
+      if (paramAbsBaseArticleInfo.N) {
         i = 3;
       } else {
         i = 1;
@@ -298,16 +292,96 @@ public final class RIJ3ClickUtils
     }
   }
   
-  private final void a(FastWebArticleInfo paramFastWebArticleInfo)
+  private final boolean a(FastWebArticleInfo paramFastWebArticleInfo)
   {
-    ReadInJoyLogicEngine.a().a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), true, paramFastWebArticleInfo, 7);
-    paramFastWebArticleInfo = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    return (paramFastWebArticleInfo.h) && (paramFastWebArticleInfo.N) && (paramFastWebArticleInfo.z);
+  }
+  
+  private final void b(FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    ReadInJoyLogicEngine.a().a(RIJQQAppInterfaceUtil.c(), true, paramFastWebArticleInfo, 7);
+    paramFastWebArticleInfo = f;
     if (paramFastWebArticleInfo != null) {
       ReportUtil.b(paramFastWebArticleInfo, "0X8009764", "2");
     }
   }
   
-  private final boolean a()
+  private final void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      d();
+    }
+    else
+    {
+      a(false);
+      RIJCoinAnimationUtils.a.e();
+      RIJCoinAnimationUtils.a.d();
+    }
+    f();
+  }
+  
+  private final boolean b(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("first_3click_Key");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = (Boolean)RIJSPUtils.b(((StringBuilder)localObject).toString(), Boolean.valueOf(false));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("first_3click_Key");
+    localStringBuilder.append(paramInt);
+    RIJSPUtils.a(localStringBuilder.toString(), Boolean.valueOf(true));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "hasClicked");
+    return ((Boolean)localObject).booleanValue();
+  }
+  
+  private final void c(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("video_mode", 6);
+        Object localObject1 = f;
+        localStringBuilder = null;
+        if (localObject1 != null)
+        {
+          localObject1 = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
+          localJSONObject.put("rowkey", localObject1);
+          localJSONObject.put("number", 1);
+          if (!paramBoolean) {
+            break label187;
+          }
+          i = 1;
+          localJSONObject.put("result", i);
+          localJSONObject.put("click_type", 2);
+          AbsBaseArticleInfo localAbsBaseArticleInfo = f;
+          localObject1 = localStringBuilder;
+          if (localAbsBaseArticleInfo != null) {
+            localObject1 = localAbsBaseArticleInfo.innerUniqueID;
+          }
+          PublicAccountReportUtils.a(null, "", "0X800B2EC", "0X800B2EC", 0, 0, (String)localObject1, "", "", localJSONObject.toString(), false);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("report error! e={");
+        localStringBuilder.append(localException);
+        localStringBuilder.append('}');
+        QLog.d("RIJ3ClickUtils", 1, localStringBuilder.toString());
+        return;
+      }
+      Object localObject2 = null;
+      continue;
+      label187:
+      int i = 2;
+    }
+  }
+  
+  private final boolean c()
   {
     boolean bool3 = false;
     boolean bool1 = false;
@@ -355,127 +429,46 @@ public final class RIJ3ClickUtils
     return bool2;
   }
   
-  private final boolean a(int paramInt)
+  private final void d()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("first_3click_Key");
-    ((StringBuilder)localObject).append(paramInt);
-    localObject = (Boolean)RIJSPUtils.a(((StringBuilder)localObject).toString(), Boolean.valueOf(false));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("first_3click_Key");
-    localStringBuilder.append(paramInt);
-    RIJSPUtils.a(localStringBuilder.toString(), Boolean.valueOf(true));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "hasClicked");
-    return ((Boolean)localObject).booleanValue();
+    QLog.d("RIJ3ClickUtils", 1, "playSuccessAnimation!");
+    a(3);
   }
   
-  private final boolean a(FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    return (paramFastWebArticleInfo.jdField_a_of_type_Boolean) && (paramFastWebArticleInfo.jdField_e_of_type_Boolean) && (paramFastWebArticleInfo.c);
-  }
-  
-  private final void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      c();
-    }
-    else
-    {
-      a(false);
-      RIJCoinAnimationUtils.a.b();
-      RIJCoinAnimationUtils.a.a();
-    }
-    d();
-  }
-  
-  private final boolean b()
+  private final boolean e()
   {
     boolean bool;
-    if (jdField_a_of_type_Int == 3) {
+    if (b == 3) {
       bool = true;
     } else {
       bool = false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isAllRequestBack,  requestCountFlag={");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(b);
     localStringBuilder.append('}');
     QLog.d("RIJ3ClickUtils", 1, localStringBuilder.toString());
     return bool;
   }
   
-  private final void c()
+  private final void f()
   {
-    QLog.d("RIJ3ClickUtils", 1, "playSuccessAnimation!");
-    a(3);
+    c = false;
+    b = 0;
+    d = false;
   }
   
-  private final void c(boolean paramBoolean)
+  private final void g()
   {
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("video_mode", 6);
-        Object localObject1 = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-        localStringBuilder = null;
-        if (localObject1 != null)
-        {
-          localObject1 = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
-          localJSONObject.put("rowkey", localObject1);
-          localJSONObject.put("number", 1);
-          if (!paramBoolean) {
-            break label202;
-          }
-          i = 1;
-          localJSONObject.put("result", i);
-          localJSONObject.put("click_type", 2);
-          IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          AbsBaseArticleInfo localAbsBaseArticleInfo = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-          localObject1 = localStringBuilder;
-          if (localAbsBaseArticleInfo != null) {
-            localObject1 = localAbsBaseArticleInfo.innerUniqueID;
-          }
-          localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X800B2EC", "0X800B2EC", 0, 0, (String)localObject1, "", "", localJSONObject.toString(), false);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("report error! e={");
-        localStringBuilder.append(localException);
-        localStringBuilder.append('}');
-        QLog.d("RIJ3ClickUtils", 1, localStringBuilder.toString());
-        return;
-      }
-      Object localObject2 = null;
-      continue;
-      label202:
-      int i = 2;
-    }
-  }
-  
-  private final void d()
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-    b = false;
-  }
-  
-  private final void e()
-  {
-    FastWebArticleInfo localFastWebArticleInfo = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    FastWebArticleInfo localFastWebArticleInfo = e;
+    Object localObject = f;
     if ((localFastWebArticleInfo != null) && (localObject != null))
     {
       try
       {
-        d();
-        b = true;
-        a(localFastWebArticleInfo);
+        f();
+        d = true;
+        b(localFastWebArticleInfo);
         a((AbsBaseArticleInfo)localObject, localFastWebArticleInfo);
         a((AbsBaseArticleInfo)localObject);
       }
@@ -495,11 +488,11 @@ public final class RIJ3ClickUtils
   
   public final void a()
   {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = (AbsBaseArticleInfo)null;
-    jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = (FastWebArticleInfo)null;
-    jdField_a_of_type_MqqUtilWeakReference = (WeakReference)null;
-    d();
-    ReadInJoyLogicEngineEventDispatcher.a().b(jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    f = (AbsBaseArticleInfo)null;
+    e = (FastWebArticleInfo)null;
+    g = (WeakReference)null;
+    f();
+    ReadInJoyLogicEngineEventDispatcher.a().b(h);
   }
   
   public final void a(@Nullable View paramView, int paramInt)
@@ -507,10 +500,10 @@ public final class RIJ3ClickUtils
     if (paramView == null) {
       return;
     }
-    if (!a()) {
+    if (!c()) {
       return;
     }
-    if (a(paramInt))
+    if (b(paramInt))
     {
       QLog.d("RIJ3ClickUtils", 1, "hasClicked!");
       return;
@@ -518,15 +511,15 @@ public final class RIJ3ClickUtils
     BaseApplication localBaseApplication = BaseApplication.context;
     if (localBaseApplication != null)
     {
-      paramInt = (int)localBaseApplication.getResources().getDimension(2131298805);
-      int i = (int)localBaseApplication.getResources().getDimension(2131298804);
+      paramInt = (int)localBaseApplication.getResources().getDimension(2131299522);
+      int i = (int)localBaseApplication.getResources().getDimension(2131299521);
       PopupWindow localPopupWindow = new PopupWindow(paramInt, i);
-      localPopupWindow.setContentView(LayoutInflater.from((Context)localBaseApplication).inflate(2131560108, null));
+      localPopupWindow.setContentView(LayoutInflater.from((Context)localBaseApplication).inflate(2131626155, null));
       int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
       localPopupWindow.setBackgroundDrawable((Drawable)new ColorDrawable());
       localPopupWindow.setOutsideTouchable(true);
-      localPopupWindow.setAnimationStyle(2131756314);
+      localPopupWindow.setAnimationStyle(2131953472);
       Runnable localRunnable = (Runnable)new RIJ3ClickUtils.showTipsWindow.1.runnable.1(localPopupWindow);
       paramView.postDelayed(localRunnable, 4000L);
       localPopupWindow.setOnDismissListener((PopupWindow.OnDismissListener)new RIJ3ClickUtils.showTipsWindow..inlined.let.lambda.1(localRunnable, localBaseApplication, paramView));
@@ -540,10 +533,10 @@ public final class RIJ3ClickUtils
     if ((paramProteusItemData != null) && (paramContainer != null)) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramProteusItemData.b;
-        jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramProteusItemData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+        f = paramProteusItemData.aQ;
+        e = paramProteusItemData.aR;
         b(paramProteusItemData, paramContainer, paramFastWebActivity);
-        ReadInJoyLogicEngineEventDispatcher.a().a(jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+        ReadInJoyLogicEngineEventDispatcher.a().a(h);
         return;
       }
       catch (Throwable paramProteusItemData)
@@ -571,14 +564,14 @@ public final class RIJ3ClickUtils
   public final void b()
   {
     QLog.d("RIJ3ClickUtils", 1, "playSuccessAnimation!");
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+    Object localObject = e;
     if (localObject != null)
     {
-      if (!b) {
+      if (!d) {
         return;
       }
       boolean bool1 = a((FastWebArticleInfo)localObject);
-      boolean bool2 = b();
+      boolean bool2 = e();
       if (bool1) {
         b(bool1);
       } else if (bool2) {
@@ -607,7 +600,7 @@ public final class RIJ3ClickUtils
         localObject = FastWebPTSUtils.a((ViewBase)localObject, "id_favourite");
         if ((paramProteusItemData != null) && (localView != null) && (localObject != null))
         {
-          if (!a()) {
+          if (!c()) {
             return;
           }
           paramContainer = (View.OnLongClickListener)new RIJ3ClickUtils.addLongClickListener.longClickListener.1(paramFastWebActivity, paramContainer);
@@ -629,7 +622,7 @@ public final class RIJ3ClickUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJ3ClickUtils
  * JD-Core Version:    0.7.0.1
  */

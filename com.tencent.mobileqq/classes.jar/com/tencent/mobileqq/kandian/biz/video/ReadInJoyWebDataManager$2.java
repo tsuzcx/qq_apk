@@ -10,12 +10,12 @@ class ReadInJoyWebDataManager$2
   
   public void run()
   {
-    ReadInJoyWebDataManager.a(this.this$0, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyWebDataManager.a(this.this$0, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager.2
  * JD-Core Version:    0.7.0.1
  */

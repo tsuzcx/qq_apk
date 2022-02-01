@@ -17,67 +17,67 @@ public class BaseChatPieAdapter
     this.a = paramBaseChatPie;
   }
   
-  public int a()
-  {
-    BaseChatPie localBaseChatPie = this.a;
-    if (localBaseChatPie != null) {
-      return localBaseChatPie.b();
-    }
-    return 0;
-  }
-  
-  public Context a()
-  {
-    BaseChatPie localBaseChatPie = this.a;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    }
-    return null;
-  }
-  
-  public BaseSessionInfo a()
-  {
-    BaseChatPie localBaseChatPie = this.a;
-    if (localBaseChatPie == null) {
-      return null;
-    }
-    return localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    BaseChatPie localBaseChatPie = this.a;
-    if (localBaseChatPie == null) {
-      return null;
-    }
-    return localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public XEditText a()
-  {
-    BaseChatPie localBaseChatPie = this.a;
-    if (localBaseChatPie == null) {
-      return null;
-    }
-    return localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
-  }
-  
   public Object a()
   {
     return this.a;
   }
   
-  public void a()
+  public QQAppInterface b()
+  {
+    BaseChatPie localBaseChatPie = this.a;
+    if (localBaseChatPie == null) {
+      return null;
+    }
+    return localBaseChatPie.d;
+  }
+  
+  public Context c()
+  {
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (localBaseChatPie.d != null)) {
+      return this.a.d.getApp();
+    }
+    return null;
+  }
+  
+  public XEditText d()
+  {
+    BaseChatPie localBaseChatPie = this.a;
+    if (localBaseChatPie == null) {
+      return null;
+    }
+    return localBaseChatPie.Y;
+  }
+  
+  public BaseSessionInfo e()
+  {
+    BaseChatPie localBaseChatPie = this.a;
+    if (localBaseChatPie == null) {
+      return null;
+    }
+    return localBaseChatPie.ah;
+  }
+  
+  public void f()
   {
     BaseChatPie localBaseChatPie = this.a;
     if (localBaseChatPie != null) {
-      localBaseChatPie.Y();
+      localBaseChatPie.aF();
     }
+  }
+  
+  public int g()
+  {
+    BaseChatPie localBaseChatPie = this.a;
+    if (localBaseChatPie != null) {
+      return localBaseChatPie.F();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.BaseChatPieAdapter
  * JD-Core Version:    0.7.0.1
  */

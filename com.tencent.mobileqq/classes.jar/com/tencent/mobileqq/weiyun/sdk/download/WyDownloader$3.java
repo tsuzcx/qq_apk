@@ -15,11 +15,11 @@ class WyDownloader$3
   public void a(String paramString, long paramLong, float paramFloat)
   {
     WeiyunDownloadStatusInfo localWeiyunDownloadStatusInfo = new WeiyunDownloadStatusInfo();
-    localWeiyunDownloadStatusInfo.c = paramString;
-    localWeiyunDownloadStatusInfo.jdField_a_of_type_Int = 2;
-    localWeiyunDownloadStatusInfo.jdField_b_of_type_Long = (paramFloat);
-    localWeiyunDownloadStatusInfo.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener.a(paramString, this.jdField_a_of_type_Int, localWeiyunDownloadStatusInfo, false);
+    localWeiyunDownloadStatusInfo.g = paramString;
+    localWeiyunDownloadStatusInfo.a = 2;
+    localWeiyunDownloadStatusInfo.e = (paramFloat);
+    localWeiyunDownloadStatusInfo.d = paramLong;
+    this.a.a(paramString, this.b, localWeiyunDownloadStatusInfo, false);
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
@@ -39,23 +39,23 @@ class WyDownloader$3
       i = 0;
     }
     localObject = new WeiyunDownloadStatusInfo();
-    ((WeiyunDownloadStatusInfo)localObject).jdField_b_of_type_JavaLangString = paramString2;
-    ((WeiyunDownloadStatusInfo)localObject).c = paramString1;
-    ((WeiyunDownloadStatusInfo)localObject).jdField_b_of_type_Int = paramInt;
-    ((WeiyunDownloadStatusInfo)localObject).jdField_a_of_type_JavaLangString = paramString3;
+    ((WeiyunDownloadStatusInfo)localObject).f = paramString2;
+    ((WeiyunDownloadStatusInfo)localObject).g = paramString1;
+    ((WeiyunDownloadStatusInfo)localObject).b = paramInt;
+    ((WeiyunDownloadStatusInfo)localObject).c = paramString3;
     if (i != 0)
     {
-      ((WeiyunDownloadStatusInfo)localObject).jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, (WeiyunDownloadStatusInfo)localObject, true);
+      ((WeiyunDownloadStatusInfo)localObject).a = 4;
+      this.a.a(paramString1, this.b, (WeiyunDownloadStatusInfo)localObject, true);
       return;
     }
-    ((WeiyunDownloadStatusInfo)localObject).jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, (WeiyunDownloadStatusInfo)localObject, true);
+    ((WeiyunDownloadStatusInfo)localObject).a = 5;
+    this.a.a(paramString1, this.b, (WeiyunDownloadStatusInfo)localObject, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.WyDownloader.3
  * JD-Core Version:    0.7.0.1
  */

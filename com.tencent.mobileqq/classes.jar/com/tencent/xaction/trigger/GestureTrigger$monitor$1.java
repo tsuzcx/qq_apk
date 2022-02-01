@@ -16,20 +16,20 @@ public final class GestureTrigger$monitor$1
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentXactionTriggerGestureTrigger.updateStatus(this.jdField_a_of_type_AndroidViewView, "undefined");
+    this.a.updateStatus(this.b, "undefined");
   }
   
   public void a(@NotNull List<? extends Prediction> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "predictionList");
-    GestureTrigger.access$recognized(this.jdField_a_of_type_ComTencentXactionTriggerGestureTrigger, this.jdField_a_of_type_AndroidViewView, paramList);
+    GestureTrigger.access$recognized(this.a, this.b, paramList);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.GestureTrigger.monitor.1
  * JD-Core Version:    0.7.0.1
  */

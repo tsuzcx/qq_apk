@@ -8,10 +8,8 @@ import java.util.List;
 public abstract interface IQQGameConfigUtil
   extends QRouteApi
 {
-  public static final int sFloatShowTime = 7000;
-  public static final String sLastShowFloadWindowDate = "";
-  public static final int sPlayVideoCount = 3;
-  public static final int sPlayVideoTime = 30000;
+  public static final int S_PLAY_VIDEO_COUNT = 3;
+  public static final int S_PLAY_VIDEO_TIME = 30000;
   
   public abstract boolean canShowFloatWindow(String paramString);
   
@@ -57,7 +55,7 @@ public abstract interface IQQGameConfigUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil
  * JD-Core Version:    0.7.0.1
  */

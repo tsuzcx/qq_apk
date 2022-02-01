@@ -17,29 +17,29 @@ final class GdtInterstitialView$1
     if (j == 0) {
       i = 1;
     }
-    GdtLog.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
-    GdtInterstitialView.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
+    GdtLog.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.a), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
+    GdtInterstitialView.a(i, paramInt2, this.b);
+    if ((this.c.get() != null) && (!((GdtInterstitialStatus)this.c.get()).e))
     {
-      ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-      GdtAnalysisHelperForInterstitial.a((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), i, paramInt2);
+      ((GdtInterstitialStatus)this.c.get()).e = true;
+      GdtAnalysisHelperForInterstitial.a((Context)this.d.get(), this.e, (GdtInterstitialStatus)this.c.get(), i, paramInt2);
     }
   }
   
   public void onLoadState(int paramInt)
   {
-    GdtLog.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
-    if ((paramInt == 1) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
+    GdtLog.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.a) }));
+    if ((paramInt == 1) && (this.c.get() != null) && (!((GdtInterstitialStatus)this.c.get()).e))
     {
-      ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-      ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c = true;
-      GdtAnalysisHelperForInterstitial.a((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0, -2147483648);
+      ((GdtInterstitialStatus)this.c.get()).e = true;
+      ((GdtInterstitialStatus)this.c.get()).d = true;
+      GdtAnalysisHelperForInterstitial.a((Context)this.d.get(), this.e, (GdtInterstitialStatus)this.c.get(), 0, -2147483648);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialView.1
  * JD-Core Version:    0.7.0.1
  */

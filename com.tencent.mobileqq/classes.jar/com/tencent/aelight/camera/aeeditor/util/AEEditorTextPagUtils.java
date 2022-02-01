@@ -22,7 +22,7 @@ public class AEEditorTextPagUtils
   public static void a(@NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
     AEQLog.a("AEEditorTextPagUtils", "[prepareTextPag] - BEGIN -");
-    if (AEEditorResourceManager.a().a(paramMetaMaterial))
+    if (AEEditorResourceManager.a().b(paramMetaMaterial))
     {
       AEQLog.a("AEEditorTextPagUtils", "[prepareTextPag] pag zip file exists");
       ThreadManager.excute(new AEEditorTextPagUtils.3(paramMetaMaterial, paramMaterialStatusCallback), 64, null, false);
@@ -47,7 +47,7 @@ public class AEEditorTextPagUtils
       while (paramList.hasNext())
       {
         MetaMaterial localMetaMaterial = (MetaMaterial)paramList.next();
-        if (AEEditorResourceManager.a().a(localMetaMaterial)) {
+        if (AEEditorResourceManager.a().b(localMetaMaterial)) {
           a(localMetaMaterial, local1);
         } else {
           ApplyMaterialTaskHelper.a(localMetaMaterial, new AEEditorTextPagUtils.2(localMetaMaterial, local1, localCountDownLatch));
@@ -68,14 +68,14 @@ public class AEEditorTextPagUtils
   private static void b(@NonNull MetaMaterial paramMetaMaterial)
   {
     AEQLog.a("AEEditorTextPagUtils", "[parseTextPagConfig] - BEGIN -");
-    Object localObject = TextMetaMaterialKt.b(paramMetaMaterial);
+    Object localObject = TextMetaMaterialKt.c(paramMetaMaterial);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       AEQLog.a("AEEditorTextPagUtils", "[parseTextPagConfig] invalid config json path");
       AEQLog.a("AEEditorTextPagUtils", "[parseTextPagConfig] - END -");
       return;
     }
-    localObject = AEEditorResourceManager.a().a((String)localObject);
+    localObject = AEEditorResourceManager.a().d((String)localObject);
     if (localObject != null) {
       TextMetaMaterialKt.a(paramMetaMaterial, (AEEditorPagStickerConfig)localObject);
     }
@@ -92,7 +92,7 @@ public class AEEditorTextPagUtils
   private static void c(@NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
     AEQLog.a("AEEditorTextPagUtils", "[prepareFontToPag] - BEGIN -");
-    if (!TextUtils.isEmpty(TextMetaMaterialKt.d(paramMetaMaterial)))
+    if (!TextUtils.isEmpty(TextMetaMaterialKt.e(paramMetaMaterial)))
     {
       AEQLog.a("AEEditorTextPagUtils", "[prepareFontToPag] font info configured");
       d(paramMetaMaterial, paramMaterialStatusCallback);
@@ -108,7 +108,7 @@ public class AEEditorTextPagUtils
   private static void d(@NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
     AEQLog.a("AEEditorTextPagUtils", "[preProcessFontInfo] - BEGIN -");
-    paramMetaMaterial = AEEditorResourceManager.a().a(TextMetaMaterialKt.d(paramMetaMaterial));
+    paramMetaMaterial = AEEditorResourceManager.a().e(TextMetaMaterialKt.e(paramMetaMaterial));
     if (paramMetaMaterial == null)
     {
       paramMaterialStatusCallback.a(ApplyMaterialTask.Status.FAILED, -1);
@@ -116,7 +116,7 @@ public class AEEditorTextPagUtils
       AEQLog.a("AEEditorTextPagUtils", "[preProcessFontInfo] - END -");
       return;
     }
-    if (AEEditorResourceManager.a().a(paramMetaMaterial))
+    if (AEEditorResourceManager.a().b(paramMetaMaterial))
     {
       AEQLog.a("AEEditorTextPagUtils", "[preProcessFontInfo] font file exists");
       paramMaterialStatusCallback.a(ApplyMaterialTask.Status.SUCCEEDED, 100);
@@ -124,7 +124,7 @@ public class AEEditorTextPagUtils
     else
     {
       AEQLog.a("AEEditorTextPagUtils", "[preProcessFontInfo] font file not exists");
-      if (AEEditorResourceManager.a().a(paramMetaMaterial.getId()))
+      if (AEEditorResourceManager.a().g(paramMetaMaterial.getId()))
       {
         paramMaterialStatusCallback.a(ApplyMaterialTask.Status.FAILED, -1);
         AEQLog.a("AEEditorTextPagUtils", "[preProcessFontInfo] used fonts exceeded limit");
@@ -138,7 +138,7 @@ public class AEEditorTextPagUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.util.AEEditorTextPagUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -24,9 +24,9 @@ class QCircleHybirdFragment$1
   
   public void onDataInit(Bundle paramBundle)
   {
-    this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.D = false;
-    this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.f = true;
-    this.a.getUIStyleHandler().b = ((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).getDefaultThemeColor(false);
+    this.a.getUIStyleHandler().f.O = false;
+    this.a.getUIStyleHandler().f.m = true;
+    this.a.getUIStyleHandler().F = ((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).getDefaultThemeColor(false);
     QCircleHybirdFragment.a(this.a);
     super.onDataInit(paramBundle);
   }
@@ -48,10 +48,10 @@ class QCircleHybirdFragment$1
     if (NetworkUtil.isNetworkAvailable(this.a.getActivity())) {
       this.a.getWebView().getSettings().setCacheMode(2);
     }
-    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null)) {
-      this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(false);
+    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().w != null)) {
+      this.a.getUIStyleHandler().w.a(false);
     }
-    QCircleHybirdFragment.a(this.a).setMask(false);
+    QCircleHybirdFragment.b(this.a).setMask(false);
     if (this.a.getActivity() != null)
     {
       paramBundle = this.a;
@@ -59,13 +59,13 @@ class QCircleHybirdFragment$1
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_update_web_user_follow_state");
       paramBundle.addAction("action_update_web_tag_follow_state");
-      this.a.getActivity().registerReceiver(QCircleHybirdFragment.a(this.a), paramBundle);
+      this.a.getActivity().registerReceiver(QCircleHybirdFragment.c(this.a), paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdFragment.1
  * JD-Core Version:    0.7.0.1
  */

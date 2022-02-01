@@ -18,18 +18,18 @@ class MiniSDKClientQIPCModule$2
     paramEIPCResult = paramEIPCResult.data.getString("preview");
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("metaData").optJSONObject("detail").put("preview", paramEIPCResult);
+      this.a.optJSONObject("metaData").optJSONObject("detail").put("preview", paramEIPCResult);
     }
     catch (JSONException paramEIPCResult)
     {
       QLog.e("MiniSDKClientQIPCModule", 1, "getReplaceJsonString JSONException,", paramEIPCResult);
     }
-    MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, this.jdField_a_of_type_OrgJsonJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqMiniLaunchCmdCallback);
+    MiniSDKClientQIPCModule.a(this.c, this.a.toString(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -29,14 +29,6 @@ public abstract class PagerAdapterProxy
   @NotNull
   public abstract Object a(@NotNull ViewGroup paramViewGroup, int paramInt);
   
-  public void a()
-  {
-    IPagerAdapter localIPagerAdapter = this.a;
-    if (localIPagerAdapter != null) {
-      localIPagerAdapter.a();
-    }
-  }
-  
   public void a(@NotNull ViewGroup paramViewGroup, int paramInt, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
@@ -50,6 +42,14 @@ public abstract class PagerAdapterProxy
   
   public abstract boolean a(@NotNull View paramView, @NotNull Object paramObject);
   
+  public void b()
+  {
+    IPagerAdapter localIPagerAdapter = this.a;
+    if (localIPagerAdapter != null) {
+      localIPagerAdapter.a();
+    }
+  }
+  
   public void b(@NotNull ViewGroup paramViewGroup, int paramInt, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
@@ -58,7 +58,7 @@ public abstract class PagerAdapterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.PagerAdapterProxy
  * JD-Core Version:    0.7.0.1
  */

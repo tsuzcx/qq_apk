@@ -31,17 +31,12 @@ import mqq.os.MqqHandler;
 public class ContactsInjectImpl
   extends BaseFrameBusiness
 {
-  public static final String a = FrameControllerUtil.jdField_b_of_type_JavaLangString;
-  public static final String b;
-  
-  static
-  {
-    jdField_b_of_type_JavaLangString = Contacts.class.getName();
-  }
+  public static final String a = FrameControllerUtil.m;
+  public static final String b = Contacts.class.getName();
   
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(Contacts.class, FrameControllerUtil.c, FrameControllerUtil.jdField_b_of_type_JavaLangString, 2130850748, 2130850749, 2131693874, 12, 3));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(Contacts.class, FrameControllerUtil.c, FrameControllerUtil.m, 2130852554, 2130852556, 2131891479, 12, 3));
   }
   
   public void a(FrameFragment paramFrameFragment)
@@ -51,11 +46,11 @@ public class ContactsInjectImpl
     {
       int j = -1;
       int i = j;
-      if (paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost != null)
+      if (paramFrameFragment.s != null)
       {
         i = j;
-        if (paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget() != null) {
-          i = paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget().getHeight();
+        if (paramFrameFragment.s.getTabWidget() != null) {
+          i = paramFrameFragment.s.getTabWidget().getHeight();
         }
       }
       ((Contacts)localFrame).b(i);
@@ -64,35 +59,35 @@ public class ContactsInjectImpl
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, Frame paramFrame, int paramInt2)
   {
-    if ((paramInt1 == FrameControllerUtil.jdField_b_of_type_Int) && (paramInt2 != FrameControllerUtil.jdField_b_of_type_Int) && (paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime != null))
+    if ((paramInt1 == FrameControllerUtil.b) && (paramInt2 != FrameControllerUtil.b) && (paramFrameFragment.A != null))
     {
-      paramFrameFragment = (QCallFacade)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.RECENT_CALL_FACADE);
+      paramFrameFragment = (QCallFacade)paramFrameFragment.A.getManager(QQManagerFactory.RECENT_CALL_FACADE);
       if (paramFrameFragment != null) {
-        paramFrameFragment.a(MessageCache.a());
+        paramFrameFragment.a(MessageCache.c());
       }
     }
   }
   
   public void a(FrameFragment paramFrameFragment, FrameFragment.DragViewTouchListener paramDragViewTouchListener)
   {
-    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[2].findViewById(2131378232);
+    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.z[2].findViewById(2131446751);
     localTabDragAnimationView.setOnTouchListener(paramDragViewTouchListener);
-    localTabDragAnimationView.setExpectedLogoMoveDistance(ViewUtils.b(2.0F));
+    localTabDragAnimationView.setExpectedLogoMoveDistance(ViewUtils.dpToPx(2.0F));
     localTabDragAnimationView.a("联系人");
-    paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.put(FrameControllerUtil.c, localTabDragAnimationView);
-    paramFrameFragment.b.put(FrameControllerUtil.c, (TextView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[2].findViewById(2131379917));
+    paramFrameFragment.B.put(FrameControllerUtil.c, localTabDragAnimationView);
+    paramFrameFragment.C.put(FrameControllerUtil.c, (TextView)paramFrameFragment.z[2].findViewById(2131448791));
   }
   
   public void a(FrameFragment paramFrameFragment, String paramString)
   {
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.jdField_b_of_type_JavaLangString, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost));
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.m, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.s));
   }
   
   public void a(RedTouch paramRedTouch, FrameFragment paramFrameFragment, int paramInt, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, IRedTouchManager paramIRedTouchManager)
   {
     if (paramInt == 33)
     {
-      paramRedTouch = (RedTouch)paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.jdField_b_of_type_JavaLangString);
+      paramRedTouch = (RedTouch)paramFrameFragment.G.get(FrameControllerUtil.m);
       ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateRedTouch(paramFrameFragment, paramInt, paramRedTouch, paramRedTypeInfo);
     }
   }
@@ -110,25 +105,25 @@ public class ContactsInjectImpl
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
   }
   
   public void b(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment.a(FrameControllerUtil.c, 2130850901, 2130850902);
+    paramFrameFragment.a(FrameControllerUtil.c, 2130852753, 2130852754);
   }
   
   public void b(FrameFragment paramFrameFragment, String paramString)
   {
-    if (jdField_b_of_type_JavaLangString.equals(paramString)) {
+    if (b.equals(paramString)) {
       ThreadManager.getSubThreadHandler().postDelayed(new ContactsInjectImpl.1(this, paramFrameFragment), 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.ContactsInjectImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -23,25 +23,25 @@ import mqq.os.MqqHandler;
 public class ShowVoicePanelState
   extends State
 {
-  private volatile int jdField_a_of_type_Int = 2;
-  private VoiceAssistantStateMachine jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
+  private VoiceAssistantStateMachine a;
+  private volatile int b = 2;
   
   public ShowVoicePanelState(VoiceAssistantStateMachine paramVoiceAssistantStateMachine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine = paramVoiceAssistantStateMachine;
+    this.a = paramVoiceAssistantStateMachine;
   }
   
   public int a()
   {
-    if (!WakeManager.a().b())
+    if (!WakeManager.a().h())
     {
       if (QLog.isColorLevel()) {
         QLog.d("ShowVoicePanelState", 2, "enterVoicePanel not allow");
       }
       return 3;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
-    if ((localObject != null) && (((VoiceAssistantStateMachine)localObject).a() != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((VoiceAssistantStateMachine)localObject).i() != null))
     {
       IVoiceAssistantCore localIVoiceAssistantCore = AssistantUtils.a();
       if (localIVoiceAssistantCore == null)
@@ -51,25 +51,25 @@ public class ShowVoicePanelState
         }
         return 2;
       }
-      int i = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a().a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a().a());
+      int i = this.a.k().a(this.a.i().b());
       if (i == 1)
       {
-        ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).enterPermissionRequestDialogCustom(localIVoiceAssistantCore.getActivity(), 2131720318, 2131720317);
+        ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).enterPermissionRequestDialogCustom(localIVoiceAssistantCore.getActivity(), 2131917953, 2131917952);
         return i;
       }
       if (i == 0)
       {
         if (localIVoiceAssistantCore.isSilent()) {
-          QQToast.a(MobileQQ.sMobileQQ, 2131695325, 1).a();
+          QQToast.makeText(MobileQQ.sMobileQQ, 2131893060, 1).show();
         }
         localObject = VoiceDataUtils.a(1);
         if (!NetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ)) {
-          localObject = MobileQQ.sMobileQQ.getString(2131695327);
+          localObject = MobileQQ.sMobileQQ.getString(2131893062);
         }
         localIVoiceAssistantCore.executeCommand(CommandUtils.a((String)localObject, true));
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
-        if ((localObject != null) && (((VoiceAssistantStateMachine)localObject).a() != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a().a();
+        localObject = this.a;
+        if ((localObject != null) && (((VoiceAssistantStateMachine)localObject).h() != null)) {
+          this.a.h().a();
         }
       }
       return i;
@@ -80,22 +80,6 @@ public class ShowVoicePanelState
     return 2;
   }
   
-  public String a()
-  {
-    return ShowVoicePanelState.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (ViewCommandModelCheck.a())
-    {
-      ReportUtils.e(1);
-      return;
-    }
-    ReportUtils.e(2);
-  }
-  
   public boolean a(Message paramMessage)
   {
     int i = paramMessage.what;
@@ -104,15 +88,15 @@ public class ShowVoicePanelState
       if (i != 3) {
         return super.a(paramMessage);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine != null)
+      if (this.a != null)
       {
-        if (this.jdField_a_of_type_Int == 0)
+        if (this.b == 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.c(4);
+          this.a.e(4);
           return true;
         }
-        this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.c(1);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a(1);
+        this.a.e(1);
+        this.a.c(1);
       }
       return true;
     }
@@ -123,11 +107,27 @@ public class ShowVoicePanelState
   public void b()
   {
     super.b();
+    if (ViewCommandModelCheck.a())
+    {
+      ReportUtils.e(1);
+      return;
+    }
+    ReportUtils.e(2);
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public String d()
+  {
+    return ShowVoicePanelState.class.getSimpleName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.ShowVoicePanelState
  * JD-Core Version:    0.7.0.1
  */

@@ -11,23 +11,23 @@ class ViolaBaseView$20
   
   public void a()
   {
-    if (ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView) != null) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView).c();
+    if (ViolaBaseView.h(this.b) != null) {
+      ViolaBaseView.h(this.b).c();
     }
-    ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, 2, this.jdField_a_of_type_Boolean);
+    ViolaBaseView.a(this.b, 2, this.a);
   }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView)))
+    if (TextUtils.isEmpty(ViolaBaseView.s(this.b)))
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, paramString, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.a(this.b, paramString, this.a);
     }
     else
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.a;
       if (!bool) {
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView, paramString, bool);
+        ViolaBaseView.a(this.b, paramString, bool);
       }
     }
     if (QLog.isColorLevel()) {
@@ -37,7 +37,7 @@ class ViolaBaseView$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.20
  * JD-Core Version:    0.7.0.1
  */

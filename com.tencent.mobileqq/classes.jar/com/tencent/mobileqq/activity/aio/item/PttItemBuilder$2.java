@@ -11,12 +11,12 @@ class PttItemBuilder$2
   
   public void run()
   {
-    this.this$0.a.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+    this.this$0.d.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

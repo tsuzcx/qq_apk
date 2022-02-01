@@ -6,10 +6,9 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import kotlin.Metadata;
@@ -22,55 +21,36 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/repo/share/ShareReport;", "", "()V", "TAG", "", "action", "", "actionToShareUnit", "articleStriked", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getArticleStriked", "()Ljava/util/ArrayList;", "setArticleStriked", "(Ljava/util/ArrayList;)V", "from", "isSharing", "", "modelNew", "shareArticleId", "getShareArticleId", "()Ljava/lang/String;", "setShareArticleId", "(Ljava/lang/String;)V", "shareArticleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "getShareArticleInfo", "()Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "setShareArticleInfo", "(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)V", "uinType", "getUinType", "setUinType", "checkPermissionToShareArticle", "doReport", "", "r5", "reportClick", "kanDianMode", "reportExp", "articleId", "reportResult", "success", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ShareReport
 {
-  private static int jdField_a_of_type_Int;
-  @Nullable
-  private static AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  public static final ShareReport a;
-  @NotNull
-  private static String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private static ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int;
-  @Nullable
-  private static String jdField_b_of_type_JavaLangString;
+  public static final ShareReport a = new ShareReport();
+  private static int b;
   private static int c;
-  private static int d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoShareShareReport = new ShareReport();
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-  }
-  
+  private static boolean d;
+  @NotNull
+  private static String e = "";
+  private static int f;
+  private static int g;
   @Nullable
-  public final AbsBaseArticleInfo a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  }
+  private static AbsBaseArticleInfo h;
+  @Nullable
+  private static String i = "";
+  @NotNull
+  private static ArrayList<String> j = new ArrayList();
   
   @NotNull
   public final String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final ArrayList<String> a()
-  {
-    return jdField_a_of_type_JavaUtilArrayList;
+    return e;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_b_of_type_Int = paramInt1;
-    c = paramInt2;
-    d = paramInt3;
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
+    c = paramInt1;
+    f = paramInt2;
+    g = paramInt3;
+    d = true;
+    e = "";
     Object localObject = new RIJTransMergeKanDianReport.ReportR5Builder();
-    ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "from", Integer.valueOf(jdField_a_of_type_Int));
+    ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "from", Integer.valueOf(b));
     ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "kandian_mode_new", Integer.valueOf(paramInt2));
     ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "share_unit", Integer.valueOf(paramInt3));
     localObject = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build();
@@ -80,8 +60,8 @@ public final class ShareReport
   
   public final void a(int paramInt1, @Nullable String paramString, int paramInt2)
   {
-    jdField_b_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Int = paramInt1;
+    i = paramString;
+    b = paramInt1;
     paramString = new RIJTransMergeKanDianReport.ReportR5Builder();
     ReportR5BuilderExtensionsKt.a(paramString, "from", Integer.valueOf(paramInt1));
     ReportR5BuilderExtensionsKt.a(paramString, "kandian_mode_new", Integer.valueOf(paramInt2));
@@ -92,13 +72,13 @@ public final class ShareReport
   
   public final void a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    h = paramAbsBaseArticleInfo;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    jdField_a_of_type_JavaLangString = paramString;
+    e = paramString;
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2)
@@ -119,21 +99,21 @@ public final class ShareReport
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
       }
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent((AppInterface)localObject, "", paramString1, paramString1, 0, 0, "", jdField_b_of_type_JavaLangString, "", paramString2, false);
+    PublicAccountReportUtils.a((AppInterface)localObject, "", paramString1, paramString1, 0, 0, "", i, "", paramString2, false);
   }
   
   public final void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Boolean)
+    if (d)
     {
-      jdField_a_of_type_Boolean = false;
+      d = false;
       Object localObject = new RIJTransMergeKanDianReport.ReportR5Builder();
-      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "from", Integer.valueOf(jdField_a_of_type_Int));
-      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "share_unit", Integer.valueOf(d));
-      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "kandian_mode_new", Integer.valueOf(c));
-      int i = jdField_b_of_type_Int;
-      if ((i == 72) || (i == 2)) {
-        ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "is_group", jdField_a_of_type_JavaLangString);
+      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "from", Integer.valueOf(b));
+      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "share_unit", Integer.valueOf(g));
+      ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "kandian_mode_new", Integer.valueOf(f));
+      int k = c;
+      if ((k == 72) || (k == 2)) {
+        ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "is_group", e);
       }
       ReportR5BuilderExtensionsKt.a((RIJTransMergeKanDianReport.ReportR5Builder)localObject, "result", Integer.valueOf(paramBoolean ^ true));
       localObject = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build();
@@ -142,32 +122,44 @@ public final class ShareReport
     }
   }
   
-  public final boolean a()
+  @Nullable
+  public final AbsBaseArticleInfo b()
   {
-    String str = String.valueOf(RIJQQAppInterfaceUtil.a());
-    if (!jdField_a_of_type_JavaUtilArrayList.contains(str))
+    return h;
+  }
+  
+  @Nullable
+  public final String c()
+  {
+    return i;
+  }
+  
+  @NotNull
+  public final ArrayList<String> d()
+  {
+    return j;
+  }
+  
+  public final boolean e()
+  {
+    String str = String.valueOf(RIJQQAppInterfaceUtil.c());
+    if (!j.contains(str))
     {
-      jdField_a_of_type_JavaUtilArrayList.clear();
-      jdField_a_of_type_JavaUtilArrayList.add(str);
+      j.clear();
+      j.add(str);
     }
-    if (CollectionsKt.contains((Iterable)jdField_a_of_type_JavaUtilArrayList, jdField_b_of_type_JavaLangString))
+    if (CollectionsKt.contains((Iterable)j, i))
     {
-      QRUtils.a(1, 2131719009);
+      QRUtils.a(1, 2131916544);
       QLog.d("ShareReport", 1, "sharing is stroked!");
       return true;
     }
     return false;
   }
-  
-  @Nullable
-  public final String b()
-  {
-    return jdField_b_of_type_JavaLangString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.share.ShareReport
  * JD-Core Version:    0.7.0.1
  */

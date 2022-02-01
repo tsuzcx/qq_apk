@@ -30,11 +30,11 @@ import java.util.List;
 public class ComponentHeaderNewSocial
   extends ComponentHeaderFriendRecommend
 {
-  View jdField_a_of_type_AndroidViewView;
-  ReadInJoyYAFolderTextView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView;
-  View b;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View o;
+  TextView p;
+  ImageView q;
+  View r;
+  ReadInJoyYAFolderTextView s;
   
   public ComponentHeaderNewSocial(Context paramContext)
   {
@@ -60,7 +60,7 @@ public class ComponentHeaderNewSocial
       if (paramAbsBaseArticleInfo.mSocialFeedInfo == null) {
         return null;
       }
-      List localList = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList;
+      List localList = paramAbsBaseArticleInfo.mSocialFeedInfo.d;
       localObject = localIterator;
       if (localList != null)
       {
@@ -75,7 +75,7 @@ public class ComponentHeaderNewSocial
           if (!localIterator.hasNext()) {
             break;
           }
-          paramAbsBaseArticleInfo.add(Long.valueOf(((FeedsInfoUser)localIterator.next()).jdField_a_of_type_Long));
+          paramAbsBaseArticleInfo.add(Long.valueOf(((FeedsInfoUser)localIterator.next()).a));
         }
       }
     }
@@ -84,40 +84,40 @@ public class ComponentHeaderNewSocial
   
   private void b(IReadInJoyModel paramIReadInJoyModel)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     if (paramIReadInJoyModel == null)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+      this.o.setVisibility(8);
+      this.o.setOnClickListener(null);
       return;
     }
     List localList = a(paramIReadInJoyModel);
     if ((localList != null) && (localList.size() != 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.o.setVisibility(0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("你的其他");
       localStringBuilder.append(localList.size());
       localStringBuilder.append("个好友也Biu了");
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ComponentHeaderNewSocial.1(this, paramIReadInJoyModel));
+      this.p.setText(localStringBuilder.toString());
+      this.o.setOnClickListener(new ComponentHeaderNewSocial.1(this, paramIReadInJoyModel));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+    this.o.setVisibility(8);
+    this.o.setOnClickListener(null);
   }
   
   private void c(IReadInJoyModel paramIReadInJoyModel)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo != null))
     {
       paramIReadInJoyModel = localAbsBaseArticleInfo.mSocialFeedInfo;
       Object localObject1;
-      if ((paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList != null) && (paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() > 0) && ((paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() != 1) || ((!TextUtils.isEmpty(((BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.get(0)).mBiuComment)) && (!TextUtils.equals(((BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.get(0)).mBiuComment, ":")) && (!TextUtils.equals(((BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.get(0)).mBiuComment, "：")))))
+      if ((paramIReadInJoyModel.n != null) && (paramIReadInJoyModel.n.a != null) && (paramIReadInJoyModel.n.a.size() > 0) && ((paramIReadInJoyModel.n.a.size() != 1) || ((!TextUtils.isEmpty(((BiuCommentInfo)paramIReadInJoyModel.n.a.get(0)).mBiuComment)) && (!TextUtils.equals(((BiuCommentInfo)paramIReadInJoyModel.n.a.get(0)).mBiuComment, ":")) && (!TextUtils.equals(((BiuCommentInfo)paramIReadInJoyModel.n.a.get(0)).mBiuComment, "：")))))
       {
-        this.b.setVisibility(0);
-        List localList = paramIReadInJoyModel.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList;
+        this.r.setVisibility(0);
+        List localList = paramIReadInJoyModel.n.a;
         StringBuilder localStringBuilder = new StringBuilder();
         Object localObject2 = new ArrayList();
         int i = localList.size();
@@ -144,7 +144,7 @@ public class ComponentHeaderNewSocial
           if (paramIReadInJoyModel != null) {
             paramIReadInJoyModel = paramIReadInJoyModel.nick;
           } else {
-            paramIReadInJoyModel = ReadInJoyUserInfoModule.a();
+            paramIReadInJoyModel = ReadInJoyUserInfoModule.d();
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("@");
@@ -166,9 +166,9 @@ public class ComponentHeaderNewSocial
           localStringBuilder.append(paramIReadInJoyModel);
           localStringBuilder.append((String)localObject1);
           localObject1 = new ComponentHeaderNewSocial.BiuUserStruct();
-          ((ComponentHeaderNewSocial.BiuUserStruct)localObject1).jdField_a_of_type_Int = j;
+          ((ComponentHeaderNewSocial.BiuUserStruct)localObject1).a = j;
           ((ComponentHeaderNewSocial.BiuUserStruct)localObject1).b = (j + paramIReadInJoyModel.length());
-          ((ComponentHeaderNewSocial.BiuUserStruct)localObject1).jdField_a_of_type_Long = l;
+          ((ComponentHeaderNewSocial.BiuUserStruct)localObject1).c = l;
           ((List)localObject2).add(localObject1);
           j = localStringBuilder.length();
           i -= 1;
@@ -178,60 +178,60 @@ public class ComponentHeaderNewSocial
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (ComponentHeaderNewSocial.BiuUserStruct)((Iterator)localObject1).next();
-          paramIReadInJoyModel.setSpan(new ComponentHeaderNewSocial.UserSpan(this, ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).jdField_a_of_type_Long, -3355444), ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).jdField_a_of_type_Int, ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).b, 17);
+          paramIReadInJoyModel.setSpan(new ComponentHeaderNewSocial.UserSpan(this, ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).c, -3355444), ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).a, ((ComponentHeaderNewSocial.BiuUserStruct)localObject2).b, 17);
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setMaxLines(7);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setSpanText(HardCodeUtil.a(2131702462));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setMoreSpan(new ComponentHeaderNewSocial.MoreSpan(this, localAbsBaseArticleInfo, -3355444));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setText(paramIReadInJoyModel);
+        this.s.setMaxLines(7);
+        this.s.setSpanText(HardCodeUtil.a(2131900464));
+        this.s.setMoreSpan(new ComponentHeaderNewSocial.MoreSpan(this, localAbsBaseArticleInfo, -3355444));
+        this.s.setText(paramIReadInJoyModel);
         return;
       }
-      if (!TextUtils.isEmpty(paramIReadInJoyModel.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramIReadInJoyModel.e))
       {
-        this.b.setVisibility(0);
-        if (paramIReadInJoyModel.jdField_a_of_type_JavaLangString.length() >= 100)
+        this.r.setVisibility(0);
+        if (paramIReadInJoyModel.e.length() >= 100)
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(paramIReadInJoyModel.jdField_a_of_type_JavaLangString.substring(0, 99));
+          ((StringBuilder)localObject1).append(paramIReadInJoyModel.e.substring(0, 99));
           ((StringBuilder)localObject1).append('…');
-          paramIReadInJoyModel.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+          paramIReadInJoyModel.e = ((StringBuilder)localObject1).toString();
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setText(paramIReadInJoyModel.jdField_a_of_type_JavaLangString);
+        this.s.setText(paramIReadInJoyModel.e);
         return;
       }
-      this.b.setVisibility(8);
+      this.r.setVisibility(8);
       return;
     }
-    this.b.setVisibility(8);
+    this.r.setVisibility(8);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560143, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131626190, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371808);
-    ApiCompatibilityUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130841773));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371810));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371809));
-    this.b = findViewById(2131371805);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131371806));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView[1].setVisibility(8);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView[2].setVisibility(8);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView[3].setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setTextSize(2, 15.5F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 16.0F);
+    this.o = findViewById(2131439243);
+    ApiCompatibilityUtils.a(this.o, getResources().getDrawable(2130842690));
+    this.p = ((TextView)findViewById(2131439245));
+    this.q = ((ImageView)findViewById(2131439244));
+    this.r = findViewById(2131439240);
+    this.s = ((ReadInJoyYAFolderTextView)findViewById(2131439241));
+    this.s.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+    this.g[1].setVisibility(8);
+    this.g[2].setVisibility(8);
+    this.g[3].setVisibility(8);
+    this.h.setTextSize(2, 15.5F);
+    this.j.setTextSize(2, 16.0F);
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
     int i;
-    if (b()) {
+    if (e()) {
       i = 0;
     } else {
       i = 8;
@@ -245,19 +245,19 @@ public class ComponentHeaderNewSocial
     }
   }
   
-  public boolean b()
+  public boolean e()
   {
     return true;
   }
   
   public void setReadedStatus(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyYAFolderTextView.setTextColor(getContext().getResources().getColor(2131165327));
+    this.s.setTextColor(getContext().getResources().getColor(2131165564));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderNewSocial
  * JD-Core Version:    0.7.0.1
  */

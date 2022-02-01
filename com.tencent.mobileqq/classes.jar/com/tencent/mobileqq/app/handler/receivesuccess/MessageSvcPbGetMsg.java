@@ -15,7 +15,7 @@ public class MessageSvcPbGetMsg
     if ("MessageSvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
       try
       {
-        if ((paramMessageHandler.a.mAutomator != null) && (!paramMessageHandler.a.mAutomator.d()))
+        if ((paramMessageHandler.n.mAutomator != null) && (!paramMessageHandler.n.mAutomator.i()))
         {
           paramMessageHandler.h(paramToServiceMsg, paramFromServiceMsg, paramObject);
           return;
@@ -36,7 +36,7 @@ public class MessageSvcPbGetMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPbGetMsg
  * JD-Core Version:    0.7.0.1
  */

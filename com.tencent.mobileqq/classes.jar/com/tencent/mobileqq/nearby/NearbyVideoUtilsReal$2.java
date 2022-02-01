@@ -10,12 +10,12 @@ final class NearbyVideoUtilsReal$2
   
   public void run()
   {
-    DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
+    DynamicUtils.a(this.a, this.b, 39, this.c, 640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyVideoUtilsReal.2
  * JD-Core Version:    0.7.0.1
  */

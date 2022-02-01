@@ -18,9 +18,9 @@ final class GdtMotiveBrowsingDialog$Companion$startMotiveBrowsingDialog$1
   {
     try
     {
-      GdtMotiveBrowsingDialog localGdtMotiveBrowsingDialog = new GdtMotiveBrowsingDialog((Context)this.jdField_a_of_type_AndroidAppActivity);
-      localGdtMotiveBrowsingDialog.a(new GdtMotiveVideoModel(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData));
-      localGdtMotiveBrowsingDialog.a(this.jdField_a_of_type_AndroidContentIntent);
+      GdtMotiveBrowsingDialog localGdtMotiveBrowsingDialog = new GdtMotiveBrowsingDialog((Context)this.a);
+      localGdtMotiveBrowsingDialog.a(new GdtMotiveVideoModel(this.b));
+      localGdtMotiveBrowsingDialog.a(this.c);
       localGdtMotiveBrowsingDialog.show();
       return;
     }
@@ -32,7 +32,7 @@ final class GdtMotiveBrowsingDialog$Companion$startMotiveBrowsingDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1
  * JD-Core Version:    0.7.0.1
  */

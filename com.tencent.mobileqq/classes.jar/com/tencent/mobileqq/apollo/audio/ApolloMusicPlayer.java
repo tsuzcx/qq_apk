@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -16,19 +16,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ApolloMusicPlayer
 {
-  protected AudioManager a;
-  protected MediaPlayer a;
-  protected final Object a;
-  protected List<MediaPlayer> a;
-  protected AtomicBoolean a;
-  
-  public ApolloMusicPlayer()
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-  }
+  protected final Object a = new Object();
+  protected List<MediaPlayer> b = Collections.synchronizedList(new ArrayList());
+  protected MediaPlayer c;
+  protected AudioManager d = (AudioManager)BaseApplicationImpl.getContext().getSystemService("audio");
+  protected AtomicBoolean e = new AtomicBoolean(false);
   
   public void a()
   {
@@ -36,12 +28,12 @@ public class ApolloMusicPlayer
       QLog.d("[cmshow]ApolloMusicPlayer", 2, "[stopMusic]");
     }
     a(false);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        while (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.b != null) {
+        while (this.b.size() > 0)
         {
-          MediaPlayer localMediaPlayer = (MediaPlayer)this.jdField_a_of_type_JavaUtilList.get(0);
+          MediaPlayer localMediaPlayer = (MediaPlayer)this.b.get(0);
           try
           {
             localMediaPlayer.stop();
@@ -51,15 +43,15 @@ public class ApolloMusicPlayer
             QLog.e("[cmshow]ApolloMusicPlayer", 1, "[stopMusic] failed, ", localIllegalStateException);
           }
           localMediaPlayer.release();
-          this.jdField_a_of_type_JavaUtilList.remove(localMediaPlayer);
+          this.b.remove(localMediaPlayer);
         }
       }
-      ??? = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+      ??? = this.c;
       if (??? != null)
       {
         ((MediaPlayer)???).stop();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        this.c.release();
+        this.c = null;
       }
       return;
     }
@@ -69,7 +61,7 @@ public class ApolloMusicPlayer
     }
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, float paramFloat)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, float paramFloat, IApolloResManager paramIApolloResManager)
   {
     int i = paramInt2;
     if (paramInt2 < 0) {
@@ -77,19 +69,19 @@ public class ApolloMusicPlayer
     }
     if (!URLUtil.isNetworkUrl(paramString))
     {
-      paramString = CMGetResPathUtil.a(paramString, "mp3");
+      paramString = paramIApolloResManager.a(paramString, "mp3");
       if (!TextUtils.isEmpty(paramString))
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
           paramString = paramString.getPath();
-          break label61;
+          break label65;
         }
       }
       paramString = null;
     }
-    label61:
+    label65:
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("[cmshow]ApolloMusicPlayer", 1, "[playMusic] music file not exist");
@@ -110,9 +102,9 @@ public class ApolloMusicPlayer
       try
       {
         MediaPlayer localMediaPlayer = new MediaPlayer();
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.a)
         {
-          this.jdField_a_of_type_JavaUtilList.add(localMediaPlayer);
+          this.b.add(localMediaPlayer);
           a(true);
           localMediaPlayer.setDataSource(paramString);
           if (paramInt1 == 2147483647)
@@ -155,9 +147,9 @@ public class ApolloMusicPlayer
   {
     int i;
     if (paramBoolean) {
-      i = this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(null, 3, 2);
+      i = this.d.requestAudioFocus(null, 3, 2);
     } else {
-      i = this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(null);
+      i = this.d.abandonAudioFocus(null);
     }
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloMusicPlayer", 2, new Object[] { "[execAudioFocus] requestFocus:", Boolean.valueOf(paramBoolean), ",ret:", Integer.valueOf(i) });
@@ -170,27 +162,27 @@ public class ApolloMusicPlayer
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+        if (this.c == null) {
+          this.c = new MediaPlayer();
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+        this.c.stop();
+        this.c.reset();
         a(true);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        paramString = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+        this.c.setDataSource(paramString);
+        paramString = this.c;
         if (paramInt1 != 2147483647) {
           break label126;
         }
         bool = true;
         paramString.setLooping(bool);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+        this.c.prepare();
+        this.c.start();
         if (-1 != paramInt2) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt2);
+          this.c.seekTo(paramInt2);
         }
         if (-1.0F != paramFloat)
         {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(paramFloat, paramFloat);
+          this.c.setVolume(paramFloat, paramFloat);
           return;
         }
       }
@@ -206,7 +198,7 @@ public class ApolloMusicPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.audio.ApolloMusicPlayer
  * JD-Core Version:    0.7.0.1
  */

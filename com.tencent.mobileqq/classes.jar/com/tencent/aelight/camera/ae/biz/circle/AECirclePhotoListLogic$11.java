@@ -15,16 +15,16 @@ class AECirclePhotoListLogic$11
   {
     AEQLog.b("AECirclePhotoListLogic", "batchCompressDialog cancel clicked");
     AECirclePhotoListLogic.a(this.a, true);
-    this.a.c();
-    if (AECirclePhotoListLogic.a(this.a) != null) {
-      AECirclePhotoListLogic.a(this.a).countDown();
+    this.a.k();
+    if (AECirclePhotoListLogic.b(this.a) != null) {
+      AECirclePhotoListLogic.b(this.a).countDown();
     }
-    AECirclePhotoListLogic.a(this.a).cancel();
+    AECirclePhotoListLogic.c(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.11
  * JD-Core Version:    0.7.0.1
  */

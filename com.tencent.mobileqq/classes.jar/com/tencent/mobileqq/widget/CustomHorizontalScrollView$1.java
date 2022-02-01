@@ -10,33 +10,33 @@ class CustomHorizontalScrollView$1
   public void run()
   {
     int i = this.this$0.getScrollX();
-    if (i == this.this$0.jdField_a_of_type_Int)
+    if (i == this.this$0.k)
     {
-      int j = i % (this.this$0.b + this.this$0.c);
-      if (this.this$0.e + i >= this.this$0.d) {
+      int j = i % (this.this$0.l + this.this$0.m);
+      if (this.this$0.o + i >= this.this$0.n) {
         return;
       }
-      if (j < this.this$0.b / 2)
+      if (j < this.this$0.l / 2)
       {
         this.this$0.smoothScrollBy(-j, 0);
       }
-      else if (j >= this.this$0.b / 2)
+      else if (j >= this.this$0.l / 2)
       {
-        int k = this.this$0.b;
-        int m = this.this$0.c;
+        int k = this.this$0.l;
+        int m = this.this$0.m;
         this.this$0.smoothScrollBy(k + m - j, 0);
       }
-      this.this$0.jdField_a_of_type_Int = i;
+      this.this$0.k = i;
       return;
     }
     CustomHorizontalScrollView localCustomHorizontalScrollView = this.this$0;
-    localCustomHorizontalScrollView.jdField_a_of_type_Int = i;
-    localCustomHorizontalScrollView.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 5L);
+    localCustomHorizontalScrollView.k = i;
+    localCustomHorizontalScrollView.i.postDelayed(this.this$0.p, 5L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomHorizontalScrollView.1
  * JD-Core Version:    0.7.0.1
  */

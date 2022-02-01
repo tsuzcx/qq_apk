@@ -16,21 +16,21 @@ class LoginDevicesBannerProcessor$1
   {
     if ((LoginDevicesBannerProcessor.a(this.a) != null) && ("1600000104".equals(LoginDevicesBannerProcessor.a(this.a).trim())))
     {
-      this.a.b();
+      this.a.d();
     }
     else
     {
-      Intent localIntent = new Intent(LoginDevicesBannerProcessor.a(this.a), QRLoginMgrActivity.class);
-      localIntent.putExtra("qrlogin_position", LoginDevicesBannerProcessor.b(this.a));
-      localIntent.putExtra("qrlogin_appid", LoginDevicesBannerProcessor.a(this.a));
-      LoginDevicesBannerProcessor.b(this.a).startActivity(localIntent);
+      Intent localIntent = new Intent(LoginDevicesBannerProcessor.b(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("qrlogin_position", LoginDevicesBannerProcessor.c(this.a));
+      localIntent.putExtra("qrlogin_appid", LoginDevicesBannerProcessor.d(this.a));
+      LoginDevicesBannerProcessor.e(this.a).startActivity(localIntent);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.LoginDevicesBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

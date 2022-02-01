@@ -28,74 +28,33 @@ import org.json.JSONObject;
 
 public class QrAgentLoginManager
 {
-  private static volatile QrAgentLoginManager jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager;
   public static boolean a = true;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<OnQRHandleResultCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new QrAgentLoginManager.2(this);
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private static volatile QrAgentLoginManager b;
+  private byte[] c;
+  private long d;
+  private WeakReference<OnQRHandleResultCallback> e;
+  private String f;
+  private boolean g;
+  private String h;
+  private WtloginObserver i = new QrAgentLoginManager.2(this);
   
   private QrAgentLoginManager()
   {
-    a();
+    b();
   }
   
   public static QrAgentLoginManager a()
   {
-    if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {
-          jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager = new QrAgentLoginManager();
+        if (b == null) {
+          b = new QrAgentLoginManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager;
-  }
-  
-  @Nullable
-  private static OpenSDKAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof OpenSDKAppInterface)) {
-      return (OpenSDKAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  private String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      QLog.e("QrAgentLoginManager", 1, "getConfigOpenUrl, mLocalQrLoginConfig is null");
-      return "https://connect.qq.com";
-    }
-    try
-    {
-      String str = new JSONObject(this.jdField_b_of_type_JavaLangString).optString("openUrl", "https://connect.qq.com");
-      return str;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("QrAgentLoginManager", 1, "getConfigOpenUrl JSONException, ", localJSONException);
-    }
-    return "https://connect.qq.com";
-  }
-  
-  private void a()
-  {
-    int j = BaseApplicationImpl.sProcessId;
-    int i = 1;
-    if (j != 1) {
-      i = 0;
-    }
-    if (i != 0) {
-      QIPCServerHelper.getInstance().register(new QrAgentLoginManager.1(this, "QR_LOGIN_QIPC_MODULE_NAME"));
-    }
+    return b;
   }
   
   private void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
@@ -111,6 +70,7 @@ public class QrAgentLoginManager
       QLog.d("QrAgentLoginManager", 1, "cancelCode, but wtloginManager is null");
       return;
     }
+    QLog.d("QrAgentLoginManager", 1, "cancelCode");
     localWtloginManager.cancelCode(paramQQAppInterface.getCurrentAccountUin(), 16L, paramArrayOfByte);
   }
   
@@ -119,16 +79,13 @@ public class QrAgentLoginManager
     if (paramArrayOfByte != null) {
       paramArrayOfByte = new String(paramArrayOfByte);
     } else {
-      paramArrayOfByte = HardCodeUtil.a(2131711138);
+      paramArrayOfByte = HardCodeUtil.a(2131908803);
     }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("onQRCodeExpired: invoked.  error: ");
-      ((StringBuilder)localObject).append(paramArrayOfByte);
-      QLog.i("QrAgentLoginManager", 2, ((StringBuilder)localObject).toString());
-    }
-    paramArrayOfByte = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onQRCodeExpired: invoked.  error: ");
+    ((StringBuilder)localObject).append(paramArrayOfByte);
+    QLog.i("QrAgentLoginManager", 1, ((StringBuilder)localObject).toString());
+    paramArrayOfByte = this.e;
     if (paramArrayOfByte == null) {
       paramArrayOfByte = null;
     } else {
@@ -138,9 +95,9 @@ public class QrAgentLoginManager
       paramArrayOfByte.a(false);
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("QR_CODE_STRING", this.f);
     localIntent.putExtra("KEY_QR_CODE_EXPIRED", true);
-    Object localObject = QBaseActivity.sTopActivity;
+    localObject = QBaseActivity.sTopActivity;
     if (localObject == null) {
       localObject = BaseApplicationImpl.context;
     }
@@ -151,16 +108,38 @@ public class QrAgentLoginManager
     }
   }
   
-  private boolean a()
+  private void b()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    int k = BaseApplicationImpl.sProcessId;
+    int j = 1;
+    if (k != 1) {
+      j = 0;
+    }
+    if (j != 0) {
+      QIPCServerHelper.getInstance().register(new QrAgentLoginManager.1(this, "QR_LOGIN_QIPC_MODULE_NAME"));
+    }
+  }
+  
+  @Nullable
+  private static OpenSDKAppInterface c()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof OpenSDKAppInterface)) {
+      return (OpenSDKAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  private boolean d()
+  {
+    if (TextUtils.isEmpty(this.h))
     {
       QLog.e("QrAgentLoginManager", 1, "configShieldQQLogin, mLocalQrLoginConfig is null");
       return true;
     }
     try
     {
-      boolean bool = new JSONObject(this.jdField_b_of_type_JavaLangString).optBoolean("shieldQQLogin", true);
+      boolean bool = new JSONObject(this.h).optBoolean("shieldQQLogin", true);
       return bool;
     }
     catch (JSONException localJSONException)
@@ -170,16 +149,16 @@ public class QrAgentLoginManager
     return true;
   }
   
-  private boolean b()
+  private boolean e()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.h))
     {
       QLog.e("QrAgentLoginManager", 1, "configShieldOpenLogin, mLocalQrLoginConfig is null");
       return false;
     }
     try
     {
-      boolean bool = new JSONObject(this.jdField_b_of_type_JavaLangString).optBoolean("shieldOpenLogin", false);
+      boolean bool = new JSONObject(this.h).optBoolean("shieldOpenLogin", false);
       return bool;
     }
     catch (JSONException localJSONException)
@@ -187,6 +166,25 @@ public class QrAgentLoginManager
       QLog.e("QrAgentLoginManager", 1, "configShieldOpenLogin JSONException, ", localJSONException);
     }
     return false;
+  }
+  
+  private String f()
+  {
+    if (TextUtils.isEmpty(this.h))
+    {
+      QLog.e("QrAgentLoginManager", 1, "getConfigOpenUrl, mLocalQrLoginConfig is null");
+      return "https://connect.qq.com";
+    }
+    try
+    {
+      String str = new JSONObject(this.h).optString("openUrl", "https://connect.qq.com");
+      return str;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("QrAgentLoginManager", 1, "getConfigOpenUrl JSONException, ", localJSONException);
+    }
+    return "https://connect.qq.com";
   }
   
   public void a(long paramLong, String paramString)
@@ -198,8 +196,8 @@ public class QrAgentLoginManager
     localBundle.putBoolean("key_login_by_qr_scan", true);
     localBundle.putString("client_id", String.valueOf(paramLong));
     localBundle.putString("sdkp", paramString);
-    localBundle.putLong("KEY_ONLINE_STATUS", this.jdField_a_of_type_Long);
-    localBundle.putByteArray("key_qr_code", this.jdField_a_of_type_ArrayOfByte);
+    localBundle.putLong("KEY_ONLINE_STATUS", this.d);
+    localBundle.putByteArray("key_qr_code", this.c);
     localIntent.putExtra("key_params", localBundle);
     localQBaseActivity.startActivity(localIntent);
   }
@@ -211,25 +209,26 @@ public class QrAgentLoginManager
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, OnQRHandleResultCallback paramOnQRHandleResultCallback, boolean paramBoolean)
   {
+    QLog.d("QrAgentLoginManager", 1, "requestQRLogin: invoked");
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("requestQRLogin: invoked.  qrCodeStr: ");
+      ((StringBuilder)localObject).append("qrCodeStr: ");
       ((StringBuilder)localObject).append(paramString);
       QLog.i("QrAgentLoginManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Long = paramQQAppInterface.getOnlineStauts();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnQRHandleResultCallback);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramQQAppInterface.getOnlineStauts();
+    this.e = new WeakReference(paramOnQRHandleResultCallback);
+    this.f = paramString;
     paramOnQRHandleResultCallback = BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).edit();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("KEY_QR_AGENT_LOGIN_CODE");
     ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentUin());
-    paramOnQRHandleResultCallback.putString(((StringBuilder)localObject).toString(), this.jdField_a_of_type_JavaLangString).apply();
+    paramOnQRHandleResultCallback.putString(((StringBuilder)localObject).toString(), this.f).apply();
     paramOnQRHandleResultCallback = (WtloginManager)paramQQAppInterface.getManager(1);
-    int i = paramString.indexOf("?k=") + 3;
-    localObject = paramString.substring(i, i + 32);
-    this.jdField_a_of_type_ArrayOfByte = QRLoginAuthUtil.a(((String)localObject).getBytes(), ((String)localObject).length());
+    int j = paramString.indexOf("?k=") + 3;
+    localObject = paramString.substring(j, j + 32);
+    this.c = QRLoginAuthUtil.a(((String)localObject).getBytes(), ((String)localObject).length());
     paramString = paramString.substring(paramString.indexOf("&f=") + 3);
     paramQQAppInterface = paramQQAppInterface.getAccount();
     if (QLog.isColorLevel())
@@ -243,18 +242,18 @@ public class QrAgentLoginManager
       localStringBuilder.append((String)localObject);
       QLog.i("QrAgentLoginManager", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_b_of_type_JavaLangString = SharedPreUtils.a("local_qr_login_config");
+    this.g = paramBoolean;
+    if (this.g) {
+      this.h = SharedPreUtils.r("local_qr_login_config");
     }
-    paramString = this.jdField_a_of_type_ArrayOfByte;
-    localObject = this.jdField_a_of_type_MqqObserverWtloginObserver;
+    paramString = this.c;
+    localObject = this.i;
     paramOnQRHandleResultCallback.verifyCode(paramQQAppInterface, 16L, true, paramString, new int[] { 3, 5, 32, 54 }, 1, (WtloginObserver)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.QrAgentLoginManager
  * JD-Core Version:    0.7.0.1
  */

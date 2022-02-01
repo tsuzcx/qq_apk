@@ -41,7 +41,7 @@ public class HbBusiUtils
     {
       int j = QwUtils.a(paramBundleInfo.bus_type, 2);
       i = j;
-      if (!StringUtil.a(paramBundleInfo.biz_params)) {
+      if (!StringUtil.isEmpty(paramBundleInfo.biz_params)) {
         try
         {
           String str = new JSONObject(paramBundleInfo.biz_params).optString("memo", "");
@@ -53,7 +53,7 @@ public class HbBusiUtils
             paramBundleInfo.append("...");
             paramBundleInfo = paramBundleInfo.toString();
           }
-          boolean bool = StringUtil.a(paramBundleInfo);
+          boolean bool = StringUtil.isEmpty(paramBundleInfo);
           i = j;
           if (!bool) {
             return paramBundleInfo;
@@ -86,7 +86,7 @@ public class HbBusiUtils
     return localObject;
   }
   
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
     String str = "";
@@ -98,7 +98,7 @@ public class HbBusiUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbBusiUtils
  * JD-Core Version:    0.7.0.1
  */

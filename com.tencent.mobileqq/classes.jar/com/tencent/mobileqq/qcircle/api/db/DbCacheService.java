@@ -3,8 +3,8 @@ package com.tencent.mobileqq.qcircle.api.db;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.biz.richframework.delegate.impl.RFApplication;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,34 +14,33 @@ import java.util.Set;
 public class DbCacheService
 {
   public static int a = 0;
-  private static DbCacheService jdField_a_of_type_ComTencentMobileqqQcircleApiDbDbCacheService;
   public static int b = 1;
   public static int c = -1;
   public static int d = 2;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IDBManagerWrapper.OnCloseListener jdField_a_of_type_ComTencentMobileqqQcircleApiDbIDBManagerWrapper$OnCloseListener = new DbCacheService.1(this);
-  private final HashMap<String, DbCacheManager> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private int e = -1;
+  private static volatile DbCacheService i;
+  private Context e;
+  private final HashMap<String, DbCacheManager> f = new HashMap();
+  private int g = -1;
+  private IDBManagerWrapper.OnCloseListener h = new DbCacheService.1(this);
   
   private DbCacheService(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.e = paramContext.getApplicationContext();
   }
   
-  public static DbCacheService a()
+  public static DbCacheService c()
   {
-    DbCacheService localDbCacheService = jdField_a_of_type_ComTencentMobileqqQcircleApiDbDbCacheService;
-    if (localDbCacheService != null) {
-      return localDbCacheService;
+    if (i != null) {
+      return i;
     }
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqQcircleApiDbDbCacheService == null)
+      if (i == null)
       {
-        jdField_a_of_type_ComTencentMobileqqQcircleApiDbDbCacheService = new DbCacheService(RFApplication.getApplication());
+        i = new DbCacheService(RFApplication.getApplication());
         DbCacheExceptionHandler.a().a(RFApplication.getApplication());
       }
-      localDbCacheService = jdField_a_of_type_ComTencentMobileqqQcircleApiDbDbCacheService;
+      DbCacheService localDbCacheService = i;
       return localDbCacheService;
     }
     finally {}
@@ -49,13 +48,12 @@ public class DbCacheService
   
   public int a()
   {
-    int i = QCircleConfigHelper.a("QZoneSetting", "DbOptiSync", Integer.valueOf(1)).intValue();
-    int j = RFLog.USR;
+    int j = QCircleConfigHelper.a("QZoneSetting", "DbOptiSync", Integer.valueOf(1)).intValue();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("dbOptiSync=");
-    localStringBuilder.append(i);
-    RFLog.w("QCircleDbCacheDatabase.DbCacheService", j, localStringBuilder.toString());
-    return i;
+    localStringBuilder.append(j);
+    QLog.w("QCircleDbCacheDatabase.DbCacheService", 1, localStringBuilder.toString());
+    return j;
   }
   
   public DbCacheManager a(Class<? extends IDBCacheDataWrapper> paramClass, long paramLong, int paramInt1, int paramInt2, String paramString)
@@ -68,39 +66,12 @@ public class DbCacheService
     if (paramLong == -1L) {
       return a(paramClass, paramString);
     }
-    return a(paramClass, paramLong, jdField_a_of_type_Int, 117, paramString);
+    return a(paramClass, paramLong, a, 117, paramString);
   }
   
   public DbCacheManager a(Class<? extends IDBCacheDataWrapper> paramClass, String paramString)
   {
     return a(paramClass, -1L, b, 1, paramString);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-        while (localIterator.hasNext())
-        {
-          DbCacheManager localDbCacheManager = (DbCacheManager)localIterator.next();
-          if (localDbCacheManager != null)
-          {
-            localDbCacheManager.a(this.jdField_a_of_type_ComTencentMobileqqQcircleApiDbIDBManagerWrapper$OnCloseListener);
-            localDbCacheManager.close();
-          }
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      RFLog.e("QCircleDbCacheDatabase.DbCacheService", RFLog.USR, new Object[] { localException });
-    }
   }
   
   public void a(String paramString)
@@ -110,9 +81,9 @@ public class DbCacheService
     }
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      synchronized (this.f)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = this.f.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (Map.Entry)localIterator.next();
@@ -123,7 +94,7 @@ public class DbCacheService
             {
               if (paramString.equals(((DbCacheManager)localObject).a()))
               {
-                ((DbCacheManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqQcircleApiDbIDBManagerWrapper$OnCloseListener);
+                ((DbCacheManager)localObject).a(this.h);
                 ((DbCacheManager)localObject).close();
                 localIterator.remove();
               }
@@ -143,13 +114,40 @@ public class DbCacheService
     }
     catch (Exception paramString)
     {
-      RFLog.e("QCircleDbCacheDatabase.DbCacheService", RFLog.USR, new Object[] { paramString });
+      QLog.e("QCircleDbCacheDatabase.DbCacheService", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      synchronized (this.f)
+      {
+        Iterator localIterator = this.f.values().iterator();
+        while (localIterator.hasNext())
+        {
+          DbCacheManager localDbCacheManager = (DbCacheManager)localIterator.next();
+          if (localDbCacheManager != null)
+          {
+            localDbCacheManager.a(this.h);
+            localDbCacheManager.close();
+          }
+        }
+        this.f.clear();
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleDbCacheDatabase.DbCacheService", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheService
  * JD-Core Version:    0.7.0.1
  */

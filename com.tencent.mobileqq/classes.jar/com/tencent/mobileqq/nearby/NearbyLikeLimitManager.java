@@ -33,29 +33,25 @@ public class NearbyLikeLimitManager
   implements INearbyLikeLimitManager, Manager
 {
   protected QQAppInterface a;
-  protected INearbyLikeLimitManager.LimitInfo a;
-  protected HashMap<Long, INearbyLikeLimitManager.LikeItem> a;
-  protected HashSet<String> a;
-  protected boolean a;
-  protected boolean b = true;
+  protected INearbyLikeLimitManager.LimitInfo b = new INearbyLikeLimitManager.LimitInfo();
+  protected HashMap<Long, INearbyLikeLimitManager.LikeItem> c = new HashMap();
+  protected HashSet<String> d = new HashSet();
+  protected boolean e = true;
+  protected boolean f = true;
   
   public NearbyLikeLimitManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo = new INearbyLikeLimitManager.LimitInfo();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     String str = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("over_people_limit_tip_show_date");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Boolean = (localSharedPreferences.getString(localStringBuilder.toString(), "").equals(str) ^ true);
+    this.e = (localSharedPreferences.getString(localStringBuilder.toString(), "").equals(str) ^ true);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("over_one_limit_tip_show_date");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    this.b = (localSharedPreferences.getString(localStringBuilder.toString(), "").equals(str) ^ true);
+    this.f = (localSharedPreferences.getString(localStringBuilder.toString(), "").equals(str) ^ true);
   }
   
   private SpannableString a(List<oidb_0x8e7.Text> paramList)
@@ -96,45 +92,22 @@ public class NearbyLikeLimitManager
   
   public SpannableString a()
   {
-    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-    if ((localLimitInfo != null) && (localLimitInfo.jdField_a_of_type_JavaLangObject != null)) {
-      return a(((oidb_0x8e7.WarnMsg)this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.jdField_a_of_type_JavaLangObject).rpt_msg_first_info.get());
+    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.b;
+    if ((localLimitInfo != null) && (localLimitInfo.e != null)) {
+      return a(((oidb_0x8e7.WarnMsg)this.b.e).rpt_msg_first_info.get());
     }
     return null;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("need_show_first_tip_");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localObject = ((StringBuilder)localObject).toString();
-      BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putBoolean((String)localObject, false).commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("disableShowFirstTip");
-        localStringBuilder.append(localException.toString());
-        QLog.e("NearbyLikeLimitManager", 2, localStringBuilder.toString());
-      }
-    }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.c = paramInt2;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.d = paramInt3;
+        this.b.a = paramInt1;
+        this.b.f = paramInt2;
+        this.b.g = paramInt3;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -162,39 +135,39 @@ public class NearbyLikeLimitManager
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo == null)
+        if (this.b == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("NearbyLikeLimitManager", 2, "updateItem, mLimitInfo == null, return");
           }
           return;
         }
-        Object localObject1 = (INearbyLikeLimitManager.LikeItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+        Object localObject1 = (INearbyLikeLimitManager.LikeItem)this.c.get(Long.valueOf(paramLong));
         Object localObject3;
         if (localObject1 == null)
         {
           if ((paramInt1 > 0) || (paramInt2 > 0))
           {
             localObject1 = new INearbyLikeLimitManager.LikeItem();
-            ((INearbyLikeLimitManager.LikeItem)localObject1).jdField_a_of_type_Long = paramLong;
-            ((INearbyLikeLimitManager.LikeItem)localObject1).jdField_a_of_type_Int += paramInt1;
-            ((INearbyLikeLimitManager.LikeItem)localObject1).b += paramInt2;
-            ((INearbyLikeLimitManager.LikeItem)localObject1).c += this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.b * paramInt2;
-            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject1);
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-            ((INearbyLikeLimitManager.LimitInfo)localObject3).f += 1;
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-            ((INearbyLikeLimitManager.LimitInfo)localObject3).e -= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.b * paramInt2;
+            ((INearbyLikeLimitManager.LikeItem)localObject1).a = paramLong;
+            ((INearbyLikeLimitManager.LikeItem)localObject1).b += paramInt1;
+            ((INearbyLikeLimitManager.LikeItem)localObject1).c += paramInt2;
+            ((INearbyLikeLimitManager.LikeItem)localObject1).d += this.b.b * paramInt2;
+            this.c.put(Long.valueOf(paramLong), localObject1);
+            localObject3 = this.b;
+            ((INearbyLikeLimitManager.LimitInfo)localObject3).i += 1;
+            localObject3 = this.b;
+            ((INearbyLikeLimitManager.LimitInfo)localObject3).h -= this.b.b * paramInt2;
           }
         }
         else
         {
-          ((INearbyLikeLimitManager.LikeItem)localObject1).jdField_a_of_type_Int += paramInt1;
-          ((INearbyLikeLimitManager.LikeItem)localObject1).b += paramInt2;
-          ((INearbyLikeLimitManager.LikeItem)localObject1).c += this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.b * paramInt2;
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject1);
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-          ((INearbyLikeLimitManager.LimitInfo)localObject3).e -= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.b * paramInt2;
+          ((INearbyLikeLimitManager.LikeItem)localObject1).b += paramInt1;
+          ((INearbyLikeLimitManager.LikeItem)localObject1).c += paramInt2;
+          ((INearbyLikeLimitManager.LikeItem)localObject1).d += this.b.b * paramInt2;
+          this.c.put(Long.valueOf(paramLong), localObject1);
+          localObject3 = this.b;
+          ((INearbyLikeLimitManager.LimitInfo)localObject3).h -= this.b.b * paramInt2;
         }
         if (QLog.isColorLevel())
         {
@@ -243,7 +216,7 @@ public class NearbyLikeLimitManager
           paramObject1.append(", from=");
           paramObject1.append(paramString2);
           paramObject1.append(", mLimitInfo=");
-          paramObject1.append(this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo);
+          paramObject1.append(this.b);
           QLog.d("NearbyLikeLimitManager", 2, paramObject1.toString());
         }
         boolean bool1 = b(Long.valueOf(paramString1).longValue());
@@ -255,25 +228,25 @@ public class NearbyLikeLimitManager
         }
         else
         {
-          if ((bool1) && (c()))
+          if ((bool1) && (g()))
           {
-            paramObject1 = b();
+            paramObject1 = e();
             ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(localQQAppInterface, "exp_uv_limit", paramString2);
             break label406;
           }
-          if ((!bool2) || (!d())) {
+          if ((!bool2) || (!h())) {
             break label412;
           }
-          paramObject1 = c();
+          paramObject1 = f();
           ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(localQQAppInterface, "exp_pv_limit", paramString2);
           break label406;
           if (i != 0)
           {
-            paramActivity = DialogUtil.a(paramActivity, 0, null, paramObject1, HardCodeUtil.a(2131707241), HardCodeUtil.a(2131707237), HardCodeUtil.a(2131707236), new NearbyLikeLimitManager.1(this, bool1, paramString1, paramObject2, localQQAppInterface, paramString2, paramActivity), new NearbyLikeLimitManager.2(this, paramActivity, localQQAppInterface, paramString2));
+            paramActivity = DialogUtil.a(paramActivity, 0, null, paramObject1, HardCodeUtil.a(2131905068), HardCodeUtil.a(2131905065), HardCodeUtil.a(2131898212), new NearbyLikeLimitManager.1(this, bool1, paramString1, paramObject2, localQQAppInterface, paramString2, paramActivity), new NearbyLikeLimitManager.2(this, paramActivity, localQQAppInterface, paramString2));
             paramActivity.getBtnLeft().setTextColor(-14698765);
             paramActivity.show();
           }
-          else if (b())
+          else if (d())
           {
             a(Long.valueOf(paramString1).longValue(), 0, 1);
             paramObject2.a(paramString1, false);
@@ -299,16 +272,16 @@ public class NearbyLikeLimitManager
   
   protected void a(Activity paramActivity, String paramString)
   {
-    DialogUtil.a(paramActivity, 230).setTitle(HardCodeUtil.a(2131707242)).setMessage(HardCodeUtil.a(2131707238)).setNegativeButton(HardCodeUtil.a(2131707240), new NearbyLikeLimitManager.4(this)).setPositiveButton(HardCodeUtil.a(2131707239), new NearbyLikeLimitManager.3(this, paramActivity)).show();
+    DialogUtil.a(paramActivity, 230).setTitle(HardCodeUtil.a(2131905069)).setMessage(HardCodeUtil.a(2131905066)).setNegativeButton(HardCodeUtil.a(2131898212), new NearbyLikeLimitManager.4(this)).setPositiveButton(HardCodeUtil.a(2131905067), new NearbyLikeLimitManager.3(this, paramActivity)).show();
   }
   
   public void a(Object paramObject, List<Object> paramList, int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo = ((INearbyLikeLimitManager.LimitInfo)paramObject);
+      this.b = ((INearbyLikeLimitManager.LimitInfo)paramObject);
       if (paramInt == 511) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.c.clear();
       }
       paramObject = new StringBuilder();
       if ((paramList != null) && (paramList.size() > 0))
@@ -317,7 +290,7 @@ public class NearbyLikeLimitManager
         while (paramList.hasNext())
         {
           INearbyLikeLimitManager.LikeItem localLikeItem = (INearbyLikeLimitManager.LikeItem)paramList.next();
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localLikeItem.jdField_a_of_type_Long), localLikeItem);
+          this.c.put(Long.valueOf(localLikeItem.a), localLikeItem);
           if (QLog.isColorLevel())
           {
             paramObject.append(localLikeItem);
@@ -329,7 +302,7 @@ public class NearbyLikeLimitManager
       {
         paramList = new StringBuilder();
         paramList.append("updateFromServer, mLimitInfo=");
-        paramList.append(this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo);
+        paramList.append(this.b);
         paramList.append(", mLikeItemMap=[");
         paramList.append(paramObject);
         paramList.append("]");
@@ -353,9 +326,9 @@ public class NearbyLikeLimitManager
         return;
       }
       if (!paramBoolean) {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+        this.d.remove(paramString);
       } else {
-        this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
+        this.d.add(paramString);
       }
       if (QLog.isColorLevel())
       {
@@ -371,40 +344,16 @@ public class NearbyLikeLimitManager
     finally {}
   }
   
-  public boolean a()
-  {
-    try
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("need_show_first_tip_");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localObject = ((StringBuilder)localObject).toString();
-      boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).getBoolean((String)localObject, true);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isNeedShowFirstTip");
-        localStringBuilder.append(localException.toString());
-        QLog.e("NearbyLikeLimitManager", 2, localStringBuilder.toString());
-      }
-    }
-    return true;
-  }
-  
   public boolean a(long paramLong)
   {
     try
     {
-      INearbyLikeLimitManager.LikeItem localLikeItem = (INearbyLikeLimitManager.LikeItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      INearbyLikeLimitManager.LimitInfo localLimitInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
+      INearbyLikeLimitManager.LikeItem localLikeItem = (INearbyLikeLimitManager.LikeItem)this.c.get(Long.valueOf(paramLong));
+      INearbyLikeLimitManager.LimitInfo localLimitInfo = this.b;
       boolean bool = false;
       if ((localLimitInfo != null) && (localLikeItem != null))
       {
-        int i = localLikeItem.b;
+        int i = localLikeItem.c;
         if (i > 0) {
           bool = true;
         }
@@ -423,7 +372,7 @@ public class NearbyLikeLimitManager
       if (TextUtils.isEmpty(paramString)) {
         bool = false;
       } else {
-        bool = this.jdField_a_of_type_JavaUtilHashSet.contains(paramString);
+        bool = this.d.contains(paramString);
       }
       if (QLog.isColorLevel())
       {
@@ -439,70 +388,35 @@ public class NearbyLikeLimitManager
     finally {}
   }
   
-  public SpannableString b()
-  {
-    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-    if ((localLimitInfo != null) && (localLimitInfo.jdField_a_of_type_JavaLangObject != null)) {
-      return a(((oidb_0x8e7.WarnMsg)this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.jdField_a_of_type_JavaLangObject).rpt_msg_user_num_limit_info.get());
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    Object localObject1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("over_people_limit_tip_show_date");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject2 = ((StringBuilder)localObject2).toString();
-    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString((String)localObject2, (String)localObject1).commit();
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("disableShowOverPeopleLimitTip, key=");
-      ((StringBuilder)localObject1).append((String)localObject2);
-      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
-    }
-  }
-  
   public boolean b()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-        bool = true;
-        if (localObject1 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyLikeLimitManager", 2, "isStockEnough, mLimitInfo == null, return true");
-          }
-          return true;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.e >= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.b)
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("isStockEnough, ret=");
-            ((StringBuilder)localObject1).append(bool);
-            QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
-          }
-          return bool;
-        }
-      }
-      finally {}
-      boolean bool = false;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("need_show_first_tip_");
+      ((StringBuilder)localObject).append(this.a.getCurrentAccountUin());
+      localObject = ((StringBuilder)localObject).toString();
+      boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).getBoolean((String)localObject, true);
+      return bool;
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isNeedShowFirstTip");
+        localStringBuilder.append(localException.toString());
+        QLog.e("NearbyLikeLimitManager", 2, localStringBuilder.toString());
+      }
+    }
+    return true;
   }
   
   public boolean b(long paramLong)
   {
     try
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
+      localObject1 = this.b;
       boolean bool2 = false;
       if (localObject1 == null)
       {
@@ -515,24 +429,24 @@ public class NearbyLikeLimitManager
         }
         return false;
       }
-      localObject1 = (INearbyLikeLimitManager.LikeItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      localObject1 = (INearbyLikeLimitManager.LikeItem)this.c.get(Long.valueOf(paramLong));
       if (localObject1 == null)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.f >= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.c) {
+        if (this.b.i >= this.b.f) {
           break label226;
         }
       }
       else
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.f >= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.c)
+        if (this.b.i >= this.b.f)
         {
           bool1 = bool2;
-          if (((INearbyLikeLimitManager.LikeItem)localObject1).b > 0)
+          if (((INearbyLikeLimitManager.LikeItem)localObject1).c > 0)
           {
             bool1 = bool2;
-            if (((INearbyLikeLimitManager.LikeItem)localObject1).jdField_a_of_type_Int != 0) {}
+            if (((INearbyLikeLimitManager.LikeItem)localObject1).b != 0) {}
           }
         }
       }
@@ -562,55 +476,27 @@ public class NearbyLikeLimitManager
     return bool1;
   }
   
-  public SpannableString c()
-  {
-    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-    if ((localLimitInfo != null) && (localLimitInfo.jdField_a_of_type_JavaLangObject != null)) {
-      return a(((oidb_0x8e7.WarnMsg)this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.jdField_a_of_type_JavaLangObject).rpt_msg_zan_limit_info.get());
-    }
-    return null;
-  }
-  
   public void c()
   {
-    Object localObject1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("over_one_limit_tip_show_date");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject2 = ((StringBuilder)localObject2).toString();
-    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString((String)localObject2, (String)localObject1).commit();
-    this.b = false;
-    if (QLog.isColorLevel())
+    try
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("disableShowOverOneLimitTip, key=");
-      ((StringBuilder)localObject1).append((String)localObject2);
-      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("need_show_first_tip_");
+      ((StringBuilder)localObject).append(this.a.getCurrentAccountUin());
+      localObject = ((StringBuilder)localObject).toString();
+      BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putBoolean((String)localObject, false).commit();
+      return;
     }
-  }
-  
-  public boolean c()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    catch (Exception localException)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-      if ((localObject != null) && (((INearbyLikeLimitManager.LimitInfo)localObject).jdField_a_of_type_JavaLangObject != null))
+      if (QLog.isColorLevel())
       {
-        bool = true;
-        break label30;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("disableShowFirstTip");
+        localStringBuilder.append(localException.toString());
+        QLog.e("NearbyLikeLimitManager", 2, localStringBuilder.toString());
       }
     }
-    boolean bool = false;
-    label30:
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isNeedShowOverPeopleLimitTip, ret=");
-      ((StringBuilder)localObject).append(bool);
-      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject).toString());
-    }
-    return bool;
   }
   
   public boolean c(long paramLong)
@@ -619,13 +505,13 @@ public class NearbyLikeLimitManager
     {
       try
       {
-        Object localObject1 = (INearbyLikeLimitManager.LikeItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
+        Object localObject1 = (INearbyLikeLimitManager.LikeItem)this.c.get(Long.valueOf(paramLong));
+        Object localObject3 = this.b;
         boolean bool2 = true;
         bool1 = true;
         if ((localObject3 != null) && (localObject1 != null))
         {
-          if (((INearbyLikeLimitManager.LikeItem)localObject1).jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo.d)
+          if (((INearbyLikeLimitManager.LikeItem)localObject1).b >= this.b.g)
           {
             if (QLog.isColorLevel())
             {
@@ -645,7 +531,7 @@ public class NearbyLikeLimitManager
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("isOVerFreeLikeOneLimit, mLimitInfo isNull=");
-            if (this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo != null) {
+            if (this.b != null) {
               break label244;
             }
             bool1 = true;
@@ -677,11 +563,85 @@ public class NearbyLikeLimitManager
   
   public boolean d()
   {
-    Object localObject;
-    if (this.b)
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo;
-      if ((localObject != null) && (((INearbyLikeLimitManager.LimitInfo)localObject).jdField_a_of_type_JavaLangObject != null))
+      try
+      {
+        Object localObject1 = this.b;
+        bool = true;
+        if (localObject1 == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyLikeLimitManager", 2, "isStockEnough, mLimitInfo == null, return true");
+          }
+          return true;
+        }
+        if (this.b.h >= this.b.b)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("isStockEnough, ret=");
+            ((StringBuilder)localObject1).append(bool);
+            QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
+          }
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
+  }
+  
+  public SpannableString e()
+  {
+    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.b;
+    if ((localLimitInfo != null) && (localLimitInfo.e != null)) {
+      return a(((oidb_0x8e7.WarnMsg)this.b.e).rpt_msg_user_num_limit_info.get());
+    }
+    return null;
+  }
+  
+  public SpannableString f()
+  {
+    INearbyLikeLimitManager.LimitInfo localLimitInfo = this.b;
+    if ((localLimitInfo != null) && (localLimitInfo.e != null)) {
+      return a(((oidb_0x8e7.WarnMsg)this.b.e).rpt_msg_zan_limit_info.get());
+    }
+    return null;
+  }
+  
+  public boolean g()
+  {
+    Object localObject;
+    if (this.e)
+    {
+      localObject = this.b;
+      if ((localObject != null) && (((INearbyLikeLimitManager.LimitInfo)localObject).e != null))
+      {
+        bool = true;
+        break label30;
+      }
+    }
+    boolean bool = false;
+    label30:
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isNeedShowOverPeopleLimitTip, ret=");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
+  }
+  
+  public boolean h()
+  {
+    Object localObject;
+    if (this.f)
+    {
+      localObject = this.b;
+      if ((localObject != null) && (((INearbyLikeLimitManager.LimitInfo)localObject).e != null))
       {
         bool = true;
         break label30;
@@ -699,12 +659,48 @@ public class NearbyLikeLimitManager
     return bool;
   }
   
+  public void i()
+  {
+    Object localObject1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("over_people_limit_tip_show_date");
+    ((StringBuilder)localObject2).append(this.a.getCurrentAccountUin());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString((String)localObject2, (String)localObject1).commit();
+    this.e = false;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("disableShowOverPeopleLimitTip, key=");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
+    }
+  }
+  
+  public void j()
+  {
+    Object localObject1 = DateFormat.format("yyyy-MM-dd", System.currentTimeMillis()).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("over_one_limit_tip_show_date");
+    ((StringBuilder)localObject2).append(this.a.getCurrentAccountUin());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    BaseApplicationImpl.getApplication().getSharedPreferences("nearby_like_cfg", 0).edit().putString((String)localObject2, (String)localObject1).commit();
+    this.f = false;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("disableShowOverOneLimitTip, key=");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.d("NearbyLikeLimitManager", 2, ((StringBuilder)localObject1).toString());
+    }
+  }
+  
   public void onDestroy()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$LimitInfo = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.b = null;
+      this.c.clear();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyLikeLimitManager", 2, "onDestroy");
       }
@@ -715,7 +711,7 @@ public class NearbyLikeLimitManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyLikeLimitManager
  * JD-Core Version:    0.7.0.1
  */

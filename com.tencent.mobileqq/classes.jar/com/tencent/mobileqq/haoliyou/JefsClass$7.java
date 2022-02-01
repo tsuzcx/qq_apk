@@ -24,19 +24,19 @@ class JefsClass$7
       try
       {
         Object localObject;
-        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.jdField_a_of_type_AndroidContentIntent.getType()))
+        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.a.getType()))
         {
-          localObject = this.jdField_a_of_type_AndroidContentIntent.getData();
+          localObject = this.a.getData();
           localObject = FileProvider7Helper.getRealPathFromContentURI(MobileQQ.context, (Uri)localObject);
         }
         else
         {
-          localObject = Uri.parse(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("yyb_install_url")).getQueryParameter("filepath");
+          localObject = Uri.parse(this.a.getStringExtra("yyb_install_url")).getQueryParameter("filepath");
         }
         if (localObject == null)
         {
           QLog.w("TeleScreen|JefsClass", 1, "apk path is null");
-          JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+          JefsClass.a(this.this$0, this.b);
           return;
         }
         str2 = null;
@@ -51,21 +51,21 @@ class JefsClass$7
         }
         else
         {
-          localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          localObject = (Context)this.c.get();
           if ((str2 != null) && (localObject != null))
           {
-            JefsClass.a(this.this$0, (Context)localObject, this.jdField_a_of_type_JavaLangString, this.b, str2, null, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+            JefsClass.a(this.this$0, (Context)localObject, this.d, this.e, str2, null, this.b);
             return;
           }
           QLog.i("TeleScreen|JefsClass", 1, "could not resolve apk file's package");
-          JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+          JefsClass.a(this.this$0, this.b);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("TeleScreen|JefsClass", 1, localThrowable, new Object[0]);
-        JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+        JefsClass.a(this.this$0, this.b);
         return;
       }
       String str1 = "";
@@ -76,7 +76,7 @@ class JefsClass$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.7
  * JD-Core Version:    0.7.0.1
  */

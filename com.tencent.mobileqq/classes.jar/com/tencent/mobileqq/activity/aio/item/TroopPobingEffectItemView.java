@@ -32,23 +32,18 @@ public class TroopPobingEffectItemView
   extends RelativeLayout
   implements View.OnClickListener, PobingDecoder.DecodeCallBack
 {
-  public static final HashMap<Integer, String> a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  ApngDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener = new TroopPobingEffectItemView.3(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private TroopPobingItemBuilder.Callback jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<URLImageView> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
-  private WeakReference<Button> jdField_b_of_type_MqqUtilWeakReference;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new TroopPobingEffectItemView.1();
-  }
+  public static final HashMap<Integer, String> a = new TroopPobingEffectItemView.1();
+  ApngDrawable.OnPlayRepeatListener b = new TroopPobingEffectItemView.3(this);
+  private String c;
+  private boolean d;
+  private int e;
+  private long f;
+  private View g;
+  private TroopPobingItemBuilder.Callback h;
+  private WeakReference<URLImageView> i;
+  private WeakReference<Button> j;
+  private URLDrawable k;
+  private URLDrawable l;
   
   public TroopPobingEffectItemView(Context paramContext)
   {
@@ -58,12 +53,12 @@ public class TroopPobingEffectItemView
   public TroopPobingEffectItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131561999, this);
-    findViewById(2131366013).setOnClickListener(this);
-    findViewById(2131366012).setOnClickListener(this);
+    inflate(paramContext, 2131628425, this);
+    findViewById(2131432284).setOnClickListener(this);
+    findViewById(2131432283).setOnClickListener(this);
     setHorizontalGravity(0);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference((URLImageView)findViewById(2131366012));
-    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference((Button)findViewById(2131366013));
+    this.i = new WeakReference((URLImageView)findViewById(2131432283));
+    this.j = new WeakReference((Button)findViewById(2131432284));
   }
   
   private void a()
@@ -80,51 +75,51 @@ public class TroopPobingEffectItemView
     if (!(paramURLDrawable instanceof ApngDrawable)) {
       return;
     }
-    ((ApngDrawable)paramURLDrawable).setOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener);
+    ((ApngDrawable)paramURLDrawable).setOnPlayRepeatListener(this.b);
   }
   
   private void a(PobingDecoder.BitmapsCache paramBitmapsCache)
   {
     c(paramBitmapsCache);
     b(paramBitmapsCache);
-    TroopPobingItemBuilder.a(this.jdField_a_of_type_AndroidViewView, true);
+    TroopPobingItemBuilder.a(this.g, true);
     ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F6", 3, 0, "", "", "", "");
   }
   
   private void b()
   {
-    Object localObject = (URLImageView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (URLImageView)this.i.get();
     if (localObject != null) {
-      ((URLImageView)localObject).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      ((URLImageView)localObject).setImageDrawable(this.k);
     }
-    localObject = (Button)this.jdField_b_of_type_MqqUtilWeakReference.get();
+    localObject = (Button)this.j.get();
     if (localObject != null)
     {
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 8;
+      int m;
+      if (this.d) {
+        m = 8;
       } else {
-        i = 0;
+        m = 0;
       }
-      ((Button)localObject).setVisibility(i);
+      ((Button)localObject).setVisibility(m);
     }
-    localObject = (TextView)findViewById(2131366011);
-    ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+    localObject = (TextView)findViewById(2131432282);
+    ((TextView)localObject).setText(this.c);
     ((TextView)localObject).setVisibility(0);
   }
   
   private void b(PobingDecoder.BitmapsCache paramBitmapsCache)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("press", new ApngOptions(), paramBitmapsCache.a(2131366013));
+    URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("press", new ApngOptions(), paramBitmapsCache.a(2131432284));
     localURLDrawable.setColorFilter(1291845632, PorterDuff.Mode.SRC_ATOP);
-    paramBitmapsCache = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("normal", new ApngOptions(), paramBitmapsCache.a(2131366013));
+    paramBitmapsCache = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("normal", new ApngOptions(), paramBitmapsCache.a(2131432284));
     localStateListDrawable.addState(new int[] { 16842919 }, localURLDrawable);
     localStateListDrawable.addState(new int[] { 0 }, paramBitmapsCache);
-    paramBitmapsCache = (Button)this.jdField_b_of_type_MqqUtilWeakReference.get();
+    paramBitmapsCache = (Button)this.j.get();
     if (paramBitmapsCache != null) {
       paramBitmapsCache.setBackgroundDrawable(localStateListDrawable);
     }
@@ -132,13 +127,13 @@ public class TroopPobingEffectItemView
   
   private void c(PobingDecoder.BitmapsCache paramBitmapsCache)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", new ApngOptions(), paramBitmapsCache.a(2131366011));
-    if (!PobingManager.a(this.jdField_a_of_type_Long))
+    this.k = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", new ApngOptions(), paramBitmapsCache.a(2131432282));
+    if (!PobingManager.a(this.f))
     {
       b();
       return;
     }
-    URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    URLImageView localURLImageView = (URLImageView)this.i.get();
     if (localURLImageView == null) {
       return;
     }
@@ -148,25 +143,25 @@ public class TroopPobingEffectItemView
     ApngOptions localApngOptions = new ApngOptions();
     localApngOptions.a(1);
     localApngOptions.a(new TroopPobingEffectItemView.2(this));
-    this.jdField_b_of_type_ComTencentImageURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", localApngOptions, paramBitmapsCache.a(2131366012));
-    localURLImageView.setImageDrawable(this.jdField_b_of_type_ComTencentImageURLDrawable);
-    if (this.jdField_b_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-      a(this.jdField_b_of_type_ComTencentImageURLDrawable);
+    this.l = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", localApngOptions, paramBitmapsCache.a(2131432283));
+    localURLImageView.setImageDrawable(this.l);
+    if (this.l.getStatus() == 1) {
+      a(this.l);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    PobingDecoder.BitmapsCache localBitmapsCache = PobingDecoder.a(PobingManager.a(this.jdField_a_of_type_Int));
+    this.e = paramInt;
+    this.f = paramLong;
+    this.d = paramBoolean;
+    PobingDecoder.BitmapsCache localBitmapsCache = PobingDecoder.a(PobingManager.a(this.e));
     if (localBitmapsCache != null)
     {
       a(localBitmapsCache);
       return;
     }
-    new PobingDecoder(this.jdField_a_of_type_Int, jdField_a_of_type_JavaUtilHashMap, this);
+    new PobingDecoder(this.e, a, this);
   }
   
   public void a(PobingDecoder.DecodeData paramDecodeData)
@@ -180,9 +175,9 @@ public class TroopPobingEffectItemView
   
   public void a(String paramString, View paramView, TroopPobingItemBuilder.Callback paramCallback)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback = paramCallback;
+    this.c = paramString;
+    this.g = paramView;
+    this.h = paramCallback;
   }
   
   public void onClick(View paramView)
@@ -191,14 +186,14 @@ public class TroopPobingEffectItemView
     {
     default: 
       break;
-    case 2131366013: 
-      TroopPobingItemBuilder.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback;
+    case 2131432284: 
+      TroopPobingItemBuilder.Callback localCallback = this.h;
       if (localCallback != null) {
         localCallback.a(this);
       }
       ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 3, 0, "", "", "", "");
       break;
-    case 2131366012: 
+    case 2131432283: 
       PobingManager.a(getContext());
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -206,7 +201,7 @@ public class TroopPobingEffectItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingEffectItemView
  * JD-Core Version:    0.7.0.1
  */

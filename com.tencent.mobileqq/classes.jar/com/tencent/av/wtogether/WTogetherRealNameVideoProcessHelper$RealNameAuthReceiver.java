@@ -37,7 +37,7 @@ class WTogetherRealNameVideoProcessHelper$RealNameAuthReceiver
       if (paramContext != null)
       {
         WTogetherRealNameVideoProcessHelper.a(paramContext, bool);
-        WTogetherRealNameVideoProcessHelper.b(paramContext);
+        WTogetherRealNameVideoProcessHelper.c(paramContext);
       }
     }
   }

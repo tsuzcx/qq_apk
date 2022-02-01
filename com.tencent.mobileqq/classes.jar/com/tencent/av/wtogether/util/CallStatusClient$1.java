@@ -14,7 +14,7 @@ class CallStatusClient$1
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(CallStatusClient.a(), 2, String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+      QLog.d(CallStatusClient.f(), 2, String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
     }
     CallStatusClient.a(this.a, IQQServiceForAV.Stub.a(paramIBinder));
   }
@@ -22,7 +22,7 @@ class CallStatusClient$1
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(CallStatusClient.a(), 2, String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+      QLog.d(CallStatusClient.f(), 2, String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
     }
     CallStatusClient.a(this.a, null);
   }

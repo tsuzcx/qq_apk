@@ -12,6 +12,8 @@ public final class MobileOrderServer$GetSubscribeReply
   extends MessageMicro<GetSubscribeReply>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBInt32Field FlowThreshold = PBField.initInt32(0);
+  public final PBStringField FlowThresholdText = PBField.initString("");
   public final PBInt32Field IsFlowFree = PBField.initInt32(0);
   public final PBRepeatMessageField<MobileOrderServer.SubscribeItem> ItemList = PBField.initRepeatMessage(MobileOrderServer.SubscribeItem.class);
   public final PBStringField MaxExpiredTime = PBField.initString("");
@@ -22,12 +24,12 @@ public final class MobileOrderServer$GetSubscribeReply
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 48 }, new String[] { "RetMsg", "RetCode", "IsFlowFree", "ItemList", "MaxExpiredTime", "NextReqTime" }, new Object[] { "", localInteger, localInteger, null, "", localInteger }, GetSubscribeReply.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 48, 56, 66 }, new String[] { "RetMsg", "RetCode", "IsFlowFree", "ItemList", "MaxExpiredTime", "NextReqTime", "FlowThreshold", "FlowThresholdText" }, new Object[] { "", localInteger, localInteger, null, "", localInteger, localInteger, "" }, GetSubscribeReply.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.vas.treasurecard.MobileOrderServer.GetSubscribeReply
  * JD-Core Version:    0.7.0.1
  */

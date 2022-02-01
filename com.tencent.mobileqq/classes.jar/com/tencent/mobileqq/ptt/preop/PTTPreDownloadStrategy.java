@@ -17,59 +17,36 @@ import mqq.app.AppRuntime;
 public class PTTPreDownloadStrategy
   implements IPTTPreDownloader.IPreDownloadStrategy, Runnable
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PTTPreDownloadStrategy.StrategyInfo jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo = new PTTPreDownloadStrategy.StrategyInfo(1);
-  private WeakReference<AppRuntime> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private PTTPreDownloadStrategy.StrategyInfo b = new PTTPreDownloadStrategy.StrategyInfo(3);
-  private PTTPreDownloadStrategy.StrategyInfo c = new PTTPreDownloadStrategy.StrategyInfo(2);
+  private volatile boolean a;
+  private PTTPreDownloadStrategy.StrategyInfo b = new PTTPreDownloadStrategy.StrategyInfo(1);
+  private PTTPreDownloadStrategy.StrategyInfo c = new PTTPreDownloadStrategy.StrategyInfo(3);
+  private PTTPreDownloadStrategy.StrategyInfo d = new PTTPreDownloadStrategy.StrategyInfo(2);
+  private WeakReference<AppRuntime> e;
+  private Handler f;
   
   public PTTPreDownloadStrategy(AppRuntime paramAppRuntime, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private long a(MessageForPtt paramMessageForPtt)
-  {
-    long l2 = paramMessageForPtt.fileSize;
-    long l1 = l2;
-    if (l2 <= 0L)
-    {
-      if (paramMessageForPtt.voiceType == 1) {
-        if (paramMessageForPtt.voiceLength <= 0) {
-          return 10240L;
-        }
-      }
-      for (int i = paramMessageForPtt.voiceLength * 1200;; i = paramMessageForPtt.voiceLength * 700)
-      {
-        return i;
-        if ((paramMessageForPtt.voiceType != 0) || (paramMessageForPtt.voiceLength <= 0)) {
-          break;
-        }
-      }
-      l1 = 4096L;
-    }
-    return l1;
+    this.e = new WeakReference(paramAppRuntime);
+    this.f = paramHandler;
+    this.a = false;
   }
   
   private void a(PTTPreDownloadStrategy.StrategyInfo paramStrategyInfo)
   {
-    if (paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int == -2147483648)
+    if (paramStrategyInfo.a.a == -2147483648)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PTTPreDownloadStrategy", 4, "initStrategyInfoIfNeccessary");
       }
       Date localDate = new Date();
-      Object localObject1 = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      PreDownloadParams.Params localParams1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.jdField_a_of_type_Int);
-      paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int = localParams1.jdField_a_of_type_Int;
+      Object localObject1 = (AppRuntime)this.e.get();
+      PreDownloadParams.Params localParams1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.b);
+      paramStrategyInfo.a.a = localParams1.a;
       int i;
-      if (paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int > 0)
+      if (paramStrategyInfo.a.a > 0)
       {
         PreDownloadParams.Params localParams2 = new PreDownloadParams.Params();
-        localObject1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.jdField_a_of_type_Int, localParams2);
+        localObject1 = PreDownloadParams.a((AppRuntime)localObject1, paramStrategyInfo.b, localParams2);
         Object localObject2 = new SimpleDateFormat("yyyy-MM-dd").format(localDate);
         if (QLog.isDevelopLevel())
         {
@@ -85,22 +62,22 @@ public class PTTPreDownloadStrategy
           i = 0;
           while (i <= 5)
           {
-            paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i] = localParams2.jdField_a_of_type_ArrayOfInt[i];
+            paramStrategyInfo.a.b[i] = localParams2.b[i];
             i += 1;
           }
         }
-        if (localParams2.jdField_a_of_type_Int > -1)
+        if (localParams2.a > -1)
         {
           localObject1 = new HashMap();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(localParams2.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(localParams2.a);
           i = 0;
           while (i <= 5)
           {
             ((StringBuilder)localObject2).append('#');
             ((StringBuilder)localObject2).append(i);
             ((StringBuilder)localObject2).append('_');
-            ((StringBuilder)localObject2).append(localParams2.jdField_a_of_type_ArrayOfInt[i]);
+            ((StringBuilder)localObject2).append(localParams2.b[i]);
             i += 1;
           }
           ((HashMap)localObject1).put("RemainCfg", ((StringBuilder)localObject2).toString());
@@ -110,12 +87,12 @@ public class PTTPreDownloadStrategy
         i = 0;
         while (i <= 5)
         {
-          paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i] = localParams1.jdField_a_of_type_ArrayOfInt[i];
+          paramStrategyInfo.a.b[i] = localParams1.b[i];
           i += 1;
         }
       }
       b(paramStrategyInfo);
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
         long l2 = localDate.getTime();
         i = localDate.getHours();
@@ -140,8 +117,8 @@ public class PTTPreDownloadStrategy
           paramStrategyInfo.append(l2 % 60L);
           QLog.d("PTTPreDownloadStrategy", 4, paramStrategyInfo.toString());
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, l1);
+        this.a = true;
+        this.f.postDelayed(this, l1);
       }
     }
   }
@@ -149,13 +126,36 @@ public class PTTPreDownloadStrategy
   private void b(PTTPreDownloadStrategy.StrategyInfo paramStrategyInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramStrategyInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(paramStrategyInfo.b);
     localStringBuilder.append(":");
-    localStringBuilder.append(paramStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params);
+    localStringBuilder.append(paramStrategyInfo.a);
     paramStrategyInfo = localStringBuilder.toString();
     if (QLog.isDevelopLevel()) {
       QLog.d("PTTPreDownloadStrategy", 4, paramStrategyInfo);
     }
+  }
+  
+  private long c(MessageForPtt paramMessageForPtt)
+  {
+    long l2 = paramMessageForPtt.fileSize;
+    long l1 = l2;
+    if (l2 <= 0L)
+    {
+      if (paramMessageForPtt.voiceType == 1) {
+        if (paramMessageForPtt.voiceLength <= 0) {
+          return 10240L;
+        }
+      }
+      for (int i = paramMessageForPtt.voiceLength * 1200;; i = paramMessageForPtt.voiceLength * 700)
+      {
+        return i;
+        if ((paramMessageForPtt.voiceType != 0) || (paramMessageForPtt.voiceLength <= 0)) {
+          break;
+        }
+      }
+      l1 = 4096L;
+    }
+    return l1;
   }
   
   private void c()
@@ -163,38 +163,38 @@ public class PTTPreDownloadStrategy
     if (QLog.isDevelopLevel()) {
       QLog.d("PTTPreDownloadStrategy", 4, "save");
     }
-    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AppRuntime localAppRuntime = (AppRuntime)this.e.get();
     if (localAppRuntime == null) {
       return;
     }
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int != -2147483648)
+    if (this.b.a.a != -2147483648)
     {
-      PreDownloadParams.a(localAppRuntime, this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params, this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.jdField_a_of_type_Int);
-      b(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo);
-      localHashMap.put("C2CDownload", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.b));
-      localHashMap.put("C2CView", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.d));
-      localHashMap.put("C2CCancel", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.e));
-      localHashMap.put("C2CEscape", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo.c));
-    }
-    if (this.b.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int != -2147483648)
-    {
-      PreDownloadParams.a(localAppRuntime, this.b.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params, this.b.jdField_a_of_type_Int);
+      PreDownloadParams.a(localAppRuntime, this.b.a, this.b.b);
       b(this.b);
-      b(this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo);
-      localHashMap.put("GroupDownload", String.valueOf(this.b.b));
-      localHashMap.put("GroupView", String.valueOf(this.b.d));
-      localHashMap.put("GroupCancel", String.valueOf(this.b.e));
-      localHashMap.put("GroupEscape", String.valueOf(this.b.c));
+      localHashMap.put("C2CDownload", String.valueOf(this.b.c));
+      localHashMap.put("C2CView", String.valueOf(this.b.e));
+      localHashMap.put("C2CCancel", String.valueOf(this.b.f));
+      localHashMap.put("C2CEscape", String.valueOf(this.b.d));
     }
-    if (this.c.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int != -2147483648)
+    if (this.c.a.a != -2147483648)
     {
-      PreDownloadParams.a(localAppRuntime, this.c.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params, this.c.jdField_a_of_type_Int);
+      PreDownloadParams.a(localAppRuntime, this.c.a, this.c.b);
       b(this.c);
-      localHashMap.put("DiscussDownload", String.valueOf(this.c.b));
-      localHashMap.put("DiscussView", String.valueOf(this.c.d));
-      localHashMap.put("DiscussCancel", String.valueOf(this.c.e));
-      localHashMap.put("DiscussEscape", String.valueOf(this.c.c));
+      b(this.b);
+      localHashMap.put("GroupDownload", String.valueOf(this.c.c));
+      localHashMap.put("GroupView", String.valueOf(this.c.e));
+      localHashMap.put("GroupCancel", String.valueOf(this.c.f));
+      localHashMap.put("GroupEscape", String.valueOf(this.c.d));
+    }
+    if (this.d.a.a != -2147483648)
+    {
+      PreDownloadParams.a(localAppRuntime, this.d.a, this.d.b);
+      b(this.d);
+      localHashMap.put("DiscussDownload", String.valueOf(this.d.c));
+      localHashMap.put("DiscussView", String.valueOf(this.d.e));
+      localHashMap.put("DiscussCancel", String.valueOf(this.d.f));
+      localHashMap.put("DiscussEscape", String.valueOf(this.d.d));
     }
     if (localHashMap.size() > 0)
     {
@@ -208,8 +208,8 @@ public class PTTPreDownloadStrategy
     if (QLog.isDevelopLevel()) {
       QLog.d("PTTPreDownloadStrategy", 4, "onDestroy");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.f.removeCallbacks(this);
+    this.a = false;
     c();
   }
   
@@ -217,11 +217,11 @@ public class PTTPreDownloadStrategy
   {
     PTTPreDownloadStrategy.StrategyInfo localStrategyInfo;
     if (paramMessageForPtt.istroop == 0) {
-      localStrategyInfo = this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo;
-    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.b;
-    } else if (paramMessageForPtt.istroop == 3000) {
+    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
     } else {
       localStrategyInfo = null;
     }
@@ -235,22 +235,22 @@ public class PTTPreDownloadStrategy
       {
         a(localStrategyInfo);
         Object localObject;
-        if (localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int > 0)
+        if (localStrategyInfo.a.a > 0)
         {
           long l2 = paramMessageForPtt.msgRecTime - paramMessageForPtt.msgTime;
-          if ((l2 >= -10000L) && (l2 <= localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int * 24 * 60 * 60 * 100))
+          if ((l2 >= -10000L) && (l2 <= localStrategyInfo.a.a * 24 * 60 * 60 * 100))
           {
-            l2 = a(paramMessageForPtt);
-            if (l2 > localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i])
+            l2 = c(paramMessageForPtt);
+            if (l2 > localStrategyInfo.a.b[i])
             {
-              localStrategyInfo.c += 1;
+              localStrategyInfo.d += 1;
             }
             else
             {
-              localStrategyInfo.b += 1;
+              localStrategyInfo.c += 1;
               paramMessageForPtt.estimatedSize = l2;
-              l1 = localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i];
-              localObject = localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt;
+              l1 = localStrategyInfo.a.b[i];
+              localObject = localStrategyInfo.a.b;
               localObject[i] = ((int)(localObject[i] - l2));
               bool1 = true;
             }
@@ -263,7 +263,7 @@ public class PTTPreDownloadStrategy
           ((StringBuilder)localObject).append("canDownload:");
           ((StringBuilder)localObject).append(bool1);
           ((StringBuilder)localObject).append(" sesion:");
-          ((StringBuilder)localObject).append(localStrategyInfo.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(localStrategyInfo.b);
           ((StringBuilder)localObject).append(" net:");
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append(" ");
@@ -271,7 +271,7 @@ public class PTTPreDownloadStrategy
           ((StringBuilder)localObject).append(" - ");
           ((StringBuilder)localObject).append(paramMessageForPtt.estimatedSize);
           ((StringBuilder)localObject).append(" = ");
-          ((StringBuilder)localObject).append(localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i]);
+          ((StringBuilder)localObject).append(localStrategyInfo.a.b[i]);
           ((StringBuilder)localObject).append(", pttSize:");
           ((StringBuilder)localObject).append(paramMessageForPtt.fileSize);
           QLog.d("PTTPreDownloadStrategy", 4, ((StringBuilder)localObject).toString());
@@ -291,11 +291,11 @@ public class PTTPreDownloadStrategy
     }
     PTTPreDownloadStrategy.StrategyInfo localStrategyInfo = null;
     if (paramMessageForPtt.istroop == 0) {
-      localStrategyInfo = this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo;
-    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.b;
-    } else if (paramMessageForPtt.istroop == 3000) {
+    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
     }
     if (localStrategyInfo != null)
     {
@@ -311,25 +311,25 @@ public class PTTPreDownloadStrategy
         try
         {
           a(localStrategyInfo);
-          long l1 = localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i];
+          long l1 = localStrategyInfo.a.b[i];
           long l2 = paramMessageForPtt.fileSize + l1;
-          Object localObject = PreDownloadParams.a((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localStrategyInfo.jdField_a_of_type_Int);
-          if (l2 > localObject.jdField_a_of_type_ArrayOfInt[i]) {
-            localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i] = localObject.jdField_a_of_type_ArrayOfInt[i];
+          Object localObject = PreDownloadParams.a((AppRuntime)this.e.get(), localStrategyInfo.b);
+          if (l2 > localObject.b[i]) {
+            localStrategyInfo.a.b[i] = localObject.b[i];
           } else {
-            localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i] = ((int)l2);
+            localStrategyInfo.a.b[i] = ((int)l2);
           }
           if (paramInt == 1) {
-            localStrategyInfo.d += 1;
-          } else if (paramInt == 3) {
             localStrategyInfo.e += 1;
+          } else if (paramInt == 3) {
+            localStrategyInfo.f += 1;
           }
           if (!QLog.isDevelopLevel()) {
             break label418;
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("consume sesion:");
-          ((StringBuilder)localObject).append(localStrategyInfo.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(localStrategyInfo.b);
           ((StringBuilder)localObject).append(" netType:");
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append(", ");
@@ -337,7 +337,7 @@ public class PTTPreDownloadStrategy
           ((StringBuilder)localObject).append(" + ");
           ((StringBuilder)localObject).append(paramMessageForPtt.fileSize);
           ((StringBuilder)localObject).append(" = ");
-          ((StringBuilder)localObject).append(localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i]);
+          ((StringBuilder)localObject).append(localStrategyInfo.a.b[i]);
           QLog.d("PTTPreDownloadStrategy", 4, ((StringBuilder)localObject).toString());
           return true;
         }
@@ -347,7 +347,7 @@ public class PTTPreDownloadStrategy
       {
         paramMessageForPtt = new StringBuilder();
         paramMessageForPtt.append("consume sesion:");
-        paramMessageForPtt.append(localStrategyInfo.jdField_a_of_type_Int);
+        paramMessageForPtt.append(localStrategyInfo.b);
         paramMessageForPtt.append(" not preDownload");
         QLog.d("PTTPreDownloadStrategy", 4, paramMessageForPtt.toString());
       }
@@ -359,9 +359,9 @@ public class PTTPreDownloadStrategy
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo = new PTTPreDownloadStrategy.StrategyInfo(1);
-    this.b = new PTTPreDownloadStrategy.StrategyInfo(3);
-    this.c = new PTTPreDownloadStrategy.StrategyInfo(2);
+    this.b = new PTTPreDownloadStrategy.StrategyInfo(1);
+    this.c = new PTTPreDownloadStrategy.StrategyInfo(3);
+    this.d = new PTTPreDownloadStrategy.StrategyInfo(2);
   }
   
   public boolean b(MessageForPtt paramMessageForPtt)
@@ -371,26 +371,26 @@ public class PTTPreDownloadStrategy
     }
     PTTPreDownloadStrategy.StrategyInfo localStrategyInfo = null;
     if (paramMessageForPtt.istroop == 0) {
-      localStrategyInfo = this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloadStrategy$StrategyInfo;
-    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.b;
-    } else if (paramMessageForPtt.istroop == 3000) {
+    } else if (paramMessageForPtt.istroop == 1) {
       localStrategyInfo = this.c;
+    } else if (paramMessageForPtt.istroop == 3000) {
+      localStrategyInfo = this.d;
     }
     if (localStrategyInfo != null)
     {
       int i = NetworkCenter.getInstance().getNetType();
       try
       {
-        long l1 = localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i];
-        localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
+        long l1 = localStrategyInfo.a.b[i];
+        localStrategyInfo.a.b[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
         long l2 = paramMessageForPtt.estimatedSize;
         paramMessageForPtt.estimatedSize = 0L;
         if (QLog.isDevelopLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("fixEstimatedSize sesion:");
-          localStringBuilder.append(localStrategyInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(localStrategyInfo.b);
           localStringBuilder.append(" net:");
           localStringBuilder.append(i);
           localStringBuilder.append(", ");
@@ -400,7 +400,7 @@ public class PTTPreDownloadStrategy
           localStringBuilder.append(" - ");
           localStringBuilder.append(paramMessageForPtt.fileSize);
           localStringBuilder.append(" = ");
-          localStringBuilder.append(localStrategyInfo.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_ArrayOfInt[i]);
+          localStringBuilder.append(localStrategyInfo.a.b[i]);
           localStringBuilder.append(", PttSize:");
           localStringBuilder.append(paramMessageForPtt.fileSize);
           QLog.d("PTTPreDownloadStrategy", 4, localStringBuilder.toString());
@@ -417,14 +417,14 @@ public class PTTPreDownloadStrategy
     if (QLog.isDevelopLevel()) {
       QLog.d("PTTPreDownloadStrategy", 4, "reset");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.f.removeCallbacks(this);
+    this.a = false;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PTTPreDownloadStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ final class TroopApplicationListUtil$2
     if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
       paramMessage = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
-      if (paramMessage.c == 0) {
+      if (paramMessage.i == 0) {
         try
         {
           QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
@@ -35,7 +35,7 @@ final class TroopApplicationListUtil$2
           return;
         }
       }
-      QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.resultCode: ", Integer.valueOf(paramMessage.c) });
+      QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.resultCode: ", Integer.valueOf(paramMessage.i) });
       return;
     }
     QLog.e("TroopApplicationListUtil", 1, new Object[] { "handleMessage addMiniAppToTroopApplicationList ", " invalid msg.obj" });
@@ -43,7 +43,7 @@ final class TroopApplicationListUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.TroopApplicationListUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,10 @@ import java.util.List;
 public class SubscribeBannerView
   extends BaseWidgetView
 {
-  private static int c = ImmersiveUtils.dpToPx(20.0F);
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private SubscribeBannerView.BannerAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
-  private SubscribeBannerView.DotsIndicator jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator;
+  private static int f = ImmersiveUtils.dpToPx(20.0F);
+  private SubscribeBannerView.BannerAdapter c;
+  private SubscribeBannerView.DotsIndicator d;
+  private ViewPager e;
   
   public SubscribeBannerView(@NonNull Context paramContext)
   {
@@ -33,20 +33,15 @@ public class SubscribeBannerView
   
   private void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator = new SubscribeBannerView.DotsIndicator(getContext());
+    this.d = new SubscribeBannerView.DotsIndicator(getContext());
     paramFrameLayout = new FrameLayout.LayoutParams(-2, -2);
     paramFrameLayout.gravity = 81;
-    addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator, paramFrameLayout);
-  }
-  
-  protected int a()
-  {
-    return 0;
+    addView(this.d, paramFrameLayout);
   }
   
   public void a()
   {
-    SubscribeBannerView.BannerAdapter localBannerAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
+    SubscribeBannerView.BannerAdapter localBannerAdapter = this.c;
     if (localBannerAdapter != null) {
       localBannerAdapter.a().clear();
     }
@@ -54,25 +49,30 @@ public class SubscribeBannerView
   
   protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = new ViewPager(getContext());
+    this.e = new ViewPager(getContext());
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    paramContext.bottomMargin = c;
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(new SubscribeBannerView.1(this));
+    paramContext.bottomMargin = f;
+    this.e.setLayoutParams(paramContext);
+    this.e.setOffscreenPageLimit(3);
+    this.e.setOnPageChangeListener(new SubscribeBannerView.1(this));
     paramContext = (FrameLayout)paramView;
-    paramContext.addView(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager);
+    paramContext.addView(this.e);
     a(paramContext);
   }
   
   protected void a(Object paramObject) {}
   
+  protected int getLayoutId()
+  {
+    return 0;
+  }
+  
   public void setAdapter(SubscribeBannerView.BannerAdapter paramBannerAdapter)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter = paramBannerAdapter;
-    paramBannerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    this.c = paramBannerAdapter;
+    paramBannerAdapter = this.e;
     if (paramBannerAdapter != null) {
-      paramBannerAdapter.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter);
+      paramBannerAdapter.setAdapter(this.c);
     }
   }
   
@@ -80,32 +80,32 @@ public class SubscribeBannerView
   {
     if (getLayoutParams() != null)
     {
-      getLayoutParams().height = (paramInt + c);
+      getLayoutParams().height = (paramInt + f);
       requestLayout();
     }
   }
   
   public void setDatas(List paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
+    Object localObject = this.c;
     if (localObject != null) {
       ((SubscribeBannerView.BannerAdapter)localObject).a((ArrayList)paramList);
     }
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator;
+    localObject = this.d;
     if (localObject != null)
     {
       ((SubscribeBannerView.DotsIndicator)localObject).removeAllViews();
       if ((paramList != null) && (paramList.size() > 0))
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator.a(paramList.size());
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator.setDotsSelected(0);
+        this.d.a(paramList.size());
+        this.d.setDotsSelected(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import com.tencent.mobileqq.qroute.annotation.QAPI;
 public abstract interface IGameMsgUnissoHandlerApi
   extends QRouteApi
 {
-  public abstract void addOrShieldFriend(int paramInt, String paramString1, String paramString2, String paramString3);
+  public abstract void addOrShieldFriend(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
   
-  public abstract void getAioPopInfo(String paramString1, String paramString2);
+  public abstract void getAioPopInfo(int paramInt, String paramString1, String paramString2);
   
   public abstract void getGameMsgTabConfig();
   
-  public abstract void getGameStartPriority(String paramString);
+  public abstract void getGameStartPriority(int paramInt, String paramString);
   
-  public abstract void getGameSwitch();
+  public abstract void getGameSwitch(int paramInt);
   
-  public abstract void setGameSwitch(String paramString, int paramInt1, int paramInt2);
+  public abstract void setGameSwitch(int paramInt1, String paramString, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.IGameMsgUnissoHandlerApi
  * JD-Core Version:    0.7.0.1
  */

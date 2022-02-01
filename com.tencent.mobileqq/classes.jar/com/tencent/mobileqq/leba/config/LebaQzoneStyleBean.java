@@ -21,7 +21,7 @@ public class LebaQzoneStyleBean
     try
     {
       if (paramArrayOfQConfItem.length > 0) {
-        localObject1 = paramArrayOfQConfItem[0].a;
+        localObject1 = paramArrayOfQConfItem[0].b;
       }
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
@@ -49,7 +49,7 @@ public class LebaQzoneStyleBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.config.LebaQzoneStyleBean
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class WMDReportImpl
     if (localWMDConfig == null) {
       return 0;
     }
-    return localWMDConfig.c;
+    return localWMDConfig.d;
   }
   
   public String getReportId()
@@ -32,19 +32,19 @@ public class WMDReportImpl
     if (localWMDConfig == null) {
       return 0;
     }
-    return localWMDConfig.d;
+    return localWMDConfig.e;
   }
   
   public void loadConfig()
   {
     QZoneUnreadServletLogic.WMDConfig localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
-    localWMDConfig.a();
+    localWMDConfig.b();
     this.mConfig = localWMDConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.report.wmd.impl.WMDReportImpl
  * JD-Core Version:    0.7.0.1
  */

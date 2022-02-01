@@ -6,24 +6,19 @@ import java.io.InputStreamReader;
 
 class HwVideoMerge$LogStream
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader = null;
-  private InputStream jdField_a_of_type_JavaIoInputStream = null;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader = null;
-  public Process a;
-  
-  private HwVideoMerge$LogStream()
-  {
-    this.jdField_a_of_type_JavaLangProcess = null;
-  }
+  public Process a = null;
+  private InputStream b = null;
+  private InputStreamReader c = null;
+  private BufferedReader d = null;
   
   public void a()
   {
-    Process localProcess = this.jdField_a_of_type_JavaLangProcess;
+    Process localProcess = this.a;
     if (localProcess != null)
     {
-      this.jdField_a_of_type_JavaIoInputStream = localProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+      this.b = localProcess.getInputStream();
+      this.c = new InputStreamReader(this.b);
+      this.d = new BufferedReader(this.c);
     }
   }
   
@@ -32,85 +27,85 @@ class HwVideoMerge$LogStream
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 21	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   1: getfield 24	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:a	Ljava/lang/Process;
     //   4: ifnull +175 -> 179
     //   7: aload_0
-    //   8: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
-    //   11: invokevirtual 47	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   8: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
+    //   11: invokevirtual 49	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   14: astore_1
     //   15: aload_1
     //   16: ifnull +35 -> 51
-    //   19: new 49	java/lang/StringBuilder
+    //   19: new 51	java/lang/StringBuilder
     //   22: dup
-    //   23: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   23: invokespecial 52	java/lang/StringBuilder:<init>	()V
     //   26: astore_2
     //   27: aload_2
-    //   28: ldc 52
-    //   30: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 54
+    //   30: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: pop
     //   34: aload_2
     //   35: aload_1
-    //   36: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_2
-    //   41: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   44: aconst_null
-    //   45: invokestatic 64	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 66	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   48: goto -41 -> 7
     //   51: aload_0
-    //   52: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   52: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
     //   55: ifnull +10 -> 65
     //   58: aload_0
-    //   59: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   62: invokevirtual 69	java/io/InputStream:close	()V
+    //   59: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
+    //   62: invokevirtual 71	java/io/InputStream:close	()V
     //   65: aload_0
-    //   66: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
+    //   66: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
     //   69: ifnull +10 -> 79
     //   72: aload_0
-    //   73: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
-    //   76: invokevirtual 70	java/io/InputStreamReader:close	()V
+    //   73: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
+    //   76: invokevirtual 72	java/io/InputStreamReader:close	()V
     //   79: aload_0
-    //   80: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
+    //   80: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
     //   83: ifnull +96 -> 179
     //   86: aload_0
-    //   87: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
-    //   90: invokevirtual 71	java/io/BufferedReader:close	()V
+    //   87: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
+    //   90: invokevirtual 73	java/io/BufferedReader:close	()V
     //   93: return
     //   94: astore_1
     //   95: aload_0
-    //   96: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   96: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
     //   99: ifnull +10 -> 109
     //   102: aload_0
-    //   103: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   106: invokevirtual 69	java/io/InputStream:close	()V
+    //   103: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
+    //   106: invokevirtual 71	java/io/InputStream:close	()V
     //   109: aload_0
-    //   110: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
+    //   110: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
     //   113: ifnull +10 -> 123
     //   116: aload_0
-    //   117: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
-    //   120: invokevirtual 70	java/io/InputStreamReader:close	()V
+    //   117: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
+    //   120: invokevirtual 72	java/io/InputStreamReader:close	()V
     //   123: aload_0
-    //   124: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
+    //   124: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
     //   127: ifnull +10 -> 137
     //   130: aload_0
-    //   131: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
-    //   134: invokevirtual 71	java/io/BufferedReader:close	()V
+    //   131: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
+    //   134: invokevirtual 73	java/io/BufferedReader:close	()V
     //   137: aload_1
     //   138: athrow
     //   139: aload_0
-    //   140: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   140: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
     //   143: ifnull +10 -> 153
     //   146: aload_0
-    //   147: getfield 15	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   150: invokevirtual 69	java/io/InputStream:close	()V
+    //   147: getfield 18	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:b	Ljava/io/InputStream;
+    //   150: invokevirtual 71	java/io/InputStream:close	()V
     //   153: aload_0
-    //   154: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
+    //   154: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
     //   157: ifnull +10 -> 167
     //   160: aload_0
-    //   161: getfield 17	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoInputStreamReader	Ljava/io/InputStreamReader;
-    //   164: invokevirtual 70	java/io/InputStreamReader:close	()V
+    //   161: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:c	Ljava/io/InputStreamReader;
+    //   164: invokevirtual 72	java/io/InputStreamReader:close	()V
     //   167: aload_0
-    //   168: getfield 19	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:jdField_a_of_type_JavaIoBufferedReader	Ljava/io/BufferedReader;
+    //   168: getfield 22	com/tencent/aelight/camera/aioeditor/shortvideo/util/HwVideoMerge$LogStream:d	Ljava/io/BufferedReader;
     //   171: astore_1
     //   172: aload_1
     //   173: ifnull +6 -> 179
@@ -152,7 +147,7 @@ class HwVideoMerge$LogStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.HwVideoMerge.LogStream
  * JD-Core Version:    0.7.0.1
  */

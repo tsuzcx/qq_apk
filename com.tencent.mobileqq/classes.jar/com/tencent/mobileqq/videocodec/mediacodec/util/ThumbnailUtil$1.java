@@ -16,7 +16,7 @@ final class ThumbnailUtil$1
     //   3: iconst_0
     //   4: istore_1
     //   5: aload_0
-    //   6: getfield 18	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_Int	I
+    //   6: getfield 23	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:a	I
     //   9: istore_2
     //   10: iload_1
     //   11: iload_2
@@ -24,13 +24,13 @@ final class ThumbnailUtil$1
     //   15: iconst_0
     //   16: istore_2
     //   17: aload_0
-    //   18: getfield 20	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_b_of_type_Int	I
+    //   18: getfield 25	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:b	I
     //   21: istore_3
     //   22: iload_2
     //   23: iload_3
     //   24: if_icmpge +63 -> 87
     //   27: aload_0
-    //   28: getfield 22	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_ArrayOfInt	[I
+    //   28: getfield 27	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:c	[I
     //   31: iload_1
     //   32: iload_3
     //   33: imul
@@ -39,9 +39,9 @@ final class ThumbnailUtil$1
     //   36: iaload
     //   37: istore 4
     //   39: aload_0
-    //   40: getfield 24	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_b_of_type_ArrayOfInt	[I
+    //   40: getfield 29	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:d	[I
     //   43: aload_0
-    //   44: getfield 18	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_Int	I
+    //   44: getfield 23	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:a	I
     //   47: iload_1
     //   48: isub
     //   49: iconst_1
@@ -51,12 +51,12 @@ final class ThumbnailUtil$1
     //   53: iload_2
     //   54: iadd
     //   55: iload 4
-    //   57: ldc 42
+    //   57: ldc 47
     //   59: iand
     //   60: iload 4
     //   62: bipush 16
     //   64: ishl
-    //   65: ldc 43
+    //   65: ldc 48
     //   67: iand
     //   68: ior
     //   69: iload 4
@@ -77,12 +77,12 @@ final class ThumbnailUtil$1
     //   90: istore_1
     //   91: goto -86 -> 5
     //   94: aload_0
-    //   95: getfield 24	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_b_of_type_ArrayOfInt	[I
+    //   95: getfield 29	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:d	[I
     //   98: aload_0
-    //   99: getfield 20	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_b_of_type_Int	I
+    //   99: getfield 25	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:b	I
     //   102: iload_2
-    //   103: getstatic 49	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   106: invokestatic 55	android/graphics/Bitmap:createBitmap	([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   103: getstatic 54	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   106: invokestatic 60	android/graphics/Bitmap:createBitmap	([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   109: astore 11
     //   111: aconst_null
     //   112: astore 9
@@ -90,28 +90,28 @@ final class ThumbnailUtil$1
     //   115: astore 10
     //   117: aconst_null
     //   118: astore 7
-    //   120: new 57	java/io/FileOutputStream
+    //   120: new 62	java/io/FileOutputStream
     //   123: dup
     //   124: aload_0
-    //   125: getfield 26	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   128: invokespecial 60	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   125: getfield 31	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:e	Ljava/lang/String;
+    //   128: invokespecial 65	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   131: astore 8
     //   133: aload 11
     //   135: aload_0
-    //   136: getfield 28	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat	Landroid/graphics/Bitmap$CompressFormat;
+    //   136: getfield 33	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:f	Landroid/graphics/Bitmap$CompressFormat;
     //   139: aload_0
-    //   140: getfield 30	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:c	I
+    //   140: getfield 35	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:g	I
     //   143: aload 8
-    //   145: invokevirtual 64	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   145: invokevirtual 69	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   148: pop
     //   149: aload 8
-    //   151: invokevirtual 67	java/io/FileOutputStream:flush	()V
+    //   151: invokevirtual 72	java/io/FileOutputStream:flush	()V
     //   154: aload 8
-    //   156: invokevirtual 70	java/io/FileOutputStream:close	()V
+    //   156: invokevirtual 75	java/io/FileOutputStream:close	()V
     //   159: goto +10 -> 169
     //   162: astore 7
     //   164: aload 7
-    //   166: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   166: invokevirtual 78	java/io/IOException:printStackTrace	()V
     //   169: iconst_1
     //   170: istore 5
     //   172: goto +118 -> 290
@@ -135,13 +135,13 @@ final class ThumbnailUtil$1
     //   213: aload 8
     //   215: astore 7
     //   217: aload 9
-    //   219: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   219: invokevirtual 78	java/io/IOException:printStackTrace	()V
     //   222: iload 6
     //   224: istore 5
     //   226: aload 8
     //   228: ifnull +62 -> 290
     //   231: aload 8
-    //   233: invokevirtual 70	java/io/FileOutputStream:close	()V
+    //   233: invokevirtual 75	java/io/FileOutputStream:close	()V
     //   236: iload 6
     //   238: istore 5
     //   240: goto +50 -> 290
@@ -151,40 +151,40 @@ final class ThumbnailUtil$1
     //   249: aload 8
     //   251: astore 7
     //   253: aload 9
-    //   255: invokevirtual 74	java/io/FileNotFoundException:printStackTrace	()V
+    //   255: invokevirtual 79	java/io/FileNotFoundException:printStackTrace	()V
     //   258: iload 6
     //   260: istore 5
     //   262: aload 8
     //   264: ifnull +26 -> 290
     //   267: aload 8
-    //   269: invokevirtual 70	java/io/FileOutputStream:close	()V
+    //   269: invokevirtual 75	java/io/FileOutputStream:close	()V
     //   272: iload 6
     //   274: istore 5
     //   276: goto +14 -> 290
     //   279: astore 7
     //   281: aload 7
-    //   283: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   283: invokevirtual 78	java/io/IOException:printStackTrace	()V
     //   286: iload 6
     //   288: istore 5
     //   290: aload_0
-    //   291: getfield 32	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecUtilThumbnailUtil$ThumbnailCallback	Lcom/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$ThumbnailCallback;
+    //   291: getfield 37	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:h	Lcom/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$ThumbnailCallback;
     //   294: astore 7
     //   296: aload 7
     //   298: ifnull +16 -> 314
     //   301: aload 7
     //   303: iload 5
     //   305: aload_0
-    //   306: getfield 26	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   309: invokeinterface 79 3 0
+    //   306: getfield 31	com/tencent/mobileqq/videocodec/mediacodec/util/ThumbnailUtil$1:e	Ljava/lang/String;
+    //   309: invokeinterface 84 3 0
     //   314: return
     //   315: aload 7
     //   317: ifnull +18 -> 335
     //   320: aload 7
-    //   322: invokevirtual 70	java/io/FileOutputStream:close	()V
+    //   322: invokevirtual 75	java/io/FileOutputStream:close	()V
     //   325: goto +10 -> 335
     //   328: astore 7
     //   330: aload 7
-    //   332: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   332: invokevirtual 78	java/io/IOException:printStackTrace	()V
     //   335: goto +6 -> 341
     //   338: aload 8
     //   340: athrow
@@ -235,7 +235,7 @@ final class ThumbnailUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.util.ThumbnailUtil.1
  * JD-Core Version:    0.7.0.1
  */

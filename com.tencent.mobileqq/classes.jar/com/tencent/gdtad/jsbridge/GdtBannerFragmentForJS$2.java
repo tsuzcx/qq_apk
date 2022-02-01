@@ -13,7 +13,7 @@ class GdtBannerFragmentForJS$2
 {
   GdtBannerFragmentForJS$2(GdtBannerFragmentForJS paramGdtBannerFragmentForJS) {}
   
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  private long e(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
     if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
       return paramGdtAd.getAd().getAId();
@@ -23,45 +23,45 @@ class GdtBannerFragmentForJS$2
   
   public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdLoaded %d", new Object[] { Long.valueOf(e(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(e(paramGdtAd)) }), 0).show();
   }
   
   public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, GdtAdError paramGdtAdError)
   {
     paramGdtAd = new StringBuilder();
     paramGdtAd.append("onAdFailedToLoad ");
-    paramGdtAd.append(paramGdtAdError.a());
+    paramGdtAd.append(paramGdtAdError.b());
     GdtLog.d("GdtBannerFragmentForJS", paramGdtAd.toString());
     paramGdtAd = BaseApplicationImpl.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onAdFailedToLoad ");
-    localStringBuilder.append(paramGdtAdError.a());
+    localStringBuilder.append(paramGdtAdError.b());
     Toast.makeText(paramGdtAd, localStringBuilder.toString(), 0).show();
   }
   
   public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdImpression %d", new Object[] { Long.valueOf(e(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(e(paramGdtAd)) }), 0).show();
   }
   
   public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdClicked %d", new Object[] { Long.valueOf(e(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(e(paramGdtAd)) }), 0).show();
   }
   
   public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-    this.a.a.removeView(GdtBannerFragmentForJS.a(this.a).a());
+    GdtLog.b("GdtBannerFragmentForJS", String.format("onAdClosed %d", new Object[] { Long.valueOf(e(paramGdtAd)) }));
+    Toast.makeText(BaseApplicationImpl.getContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(e(paramGdtAd)) }), 0).show();
+    this.a.a.removeView(GdtBannerFragmentForJS.b(this.a).getView());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS.2
  * JD-Core Version:    0.7.0.1
  */

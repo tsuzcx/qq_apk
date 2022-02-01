@@ -7,12 +7,7 @@ public class QCircleMsgInfo
 {
   private long a;
   
-  public int a()
-  {
-    return 1;
-  }
-  
-  public long a()
+  public long b()
   {
     return 0L;
   }
@@ -21,10 +16,15 @@ public class QCircleMsgInfo
   {
     this.a = paramLong;
   }
+  
+  public int c()
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.QCircleMsgInfo
  * JD-Core Version:    0.7.0.1
  */

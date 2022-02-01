@@ -34,17 +34,17 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadInJoySrtUtils
 {
-  private static ReadInJoySrtUtils jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoySrtUtils;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
-  private List<oidb_cmd0x64e.SRTRule> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private oidb_cmd0x64e.SRTClickInfo jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo;
-  private String jdField_b_of_type_JavaLangString;
-  private List<ReadInJoySrtUtils.SRTInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private static ReadInJoySrtUtils a;
+  private int b = 0;
+  private List<oidb_cmd0x64e.SRTRule> c = new ArrayList();
+  private oidb_cmd0x64e.SRTClickInfo d;
+  private String e;
+  private List<ReadInJoySrtUtils.SRTInfo> f = new ArrayList();
+  private String g;
   
   private ReadInJoySrtUtils()
   {
-    b();
+    f();
   }
   
   private ReadInJoySrtUtils.SRTInfo a(oidb_cmd0x64e.SRTRule paramSRTRule)
@@ -54,36 +54,36 @@ public class ReadInJoySrtUtils
     }
     ReadInJoySrtUtils.SRTInfo localSRTInfo = new ReadInJoySrtUtils.SRTInfo(this);
     if (paramSRTRule.uint32_click_number.has()) {
-      localSRTInfo.jdField_b_of_type_JavaUtilList = paramSRTRule.uint32_click_number.get();
+      localSRTInfo.c = paramSRTRule.uint32_click_number.get();
     }
     if (paramSRTRule.uint32_feeds_type.has()) {
-      localSRTInfo.jdField_a_of_type_JavaUtilList = paramSRTRule.uint32_feeds_type.get();
+      localSRTInfo.b = paramSRTRule.uint32_feeds_type.get();
     }
     if (paramSRTRule.uint32_network_type.has()) {
-      localSRTInfo.jdField_a_of_type_Int = paramSRTRule.uint32_network_type.get();
+      localSRTInfo.a = paramSRTRule.uint32_network_type.get();
     }
     if (paramSRTRule.bytes_app_package_name.has()) {
-      localSRTInfo.jdField_a_of_type_JavaLangString = paramSRTRule.bytes_app_package_name.get().toStringUtf8();
+      localSRTInfo.d = paramSRTRule.bytes_app_package_name.get().toStringUtf8();
     }
     if (paramSRTRule.bytes_schema.has()) {
-      localSRTInfo.c = paramSRTRule.bytes_schema.get().toStringUtf8();
+      localSRTInfo.f = paramSRTRule.bytes_schema.get().toStringUtf8();
     }
     if (paramSRTRule.bytes_h5.has()) {
-      localSRTInfo.jdField_b_of_type_JavaLangString = paramSRTRule.bytes_h5.get().toStringUtf8();
+      localSRTInfo.e = paramSRTRule.bytes_h5.get().toStringUtf8();
     }
     paramSRTRule = new StringBuilder();
     paramSRTRule.append("convertSRTPbToSRTClassclickNumList = ");
-    paramSRTRule.append(localSRTInfo.jdField_b_of_type_JavaUtilList);
-    paramSRTRule.append(" feedsTypeList= ");
-    paramSRTRule.append(localSRTInfo.jdField_a_of_type_JavaUtilList);
-    paramSRTRule.append(" netWorkType= ");
-    paramSRTRule.append(localSRTInfo.jdField_a_of_type_Int);
-    paramSRTRule.append(" packageName = ");
-    paramSRTRule.append(localSRTInfo.jdField_a_of_type_JavaLangString);
-    paramSRTRule.append(" schemaUrl= ");
     paramSRTRule.append(localSRTInfo.c);
+    paramSRTRule.append(" feedsTypeList= ");
+    paramSRTRule.append(localSRTInfo.b);
+    paramSRTRule.append(" netWorkType= ");
+    paramSRTRule.append(localSRTInfo.a);
+    paramSRTRule.append(" packageName = ");
+    paramSRTRule.append(localSRTInfo.d);
+    paramSRTRule.append(" schemaUrl= ");
+    paramSRTRule.append(localSRTInfo.f);
     paramSRTRule.append(" h5Url= ");
-    paramSRTRule.append(localSRTInfo.jdField_b_of_type_JavaLangString);
+    paramSRTRule.append(localSRTInfo.e);
     QLog.d("ReadInJoySrtUtils", 1, paramSRTRule.toString());
     return localSRTInfo;
   }
@@ -92,10 +92,10 @@ public class ReadInJoySrtUtils
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoySrtUtils == null) {
-        jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoySrtUtils = new ReadInJoySrtUtils();
+      if (a == null) {
+        a = new ReadInJoySrtUtils();
       }
-      ReadInJoySrtUtils localReadInJoySrtUtils = jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoySrtUtils;
+      ReadInJoySrtUtils localReadInJoySrtUtils = a;
       return localReadInJoySrtUtils;
     }
     finally {}
@@ -106,14 +106,14 @@ public class ReadInJoySrtUtils
     if (paramAbsBaseArticleInfo == null) {
       return "";
     }
-    if ((!TextUtils.isEmpty(paramSRTInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramSRTInfo.c)))
+    if ((!TextUtils.isEmpty(paramSRTInfo.e)) && (!TextUtils.isEmpty(paramSRTInfo.f)))
     {
-      if (TextUtils.isEmpty(paramSRTInfo.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramSRTInfo.d)) {
         return "";
       }
-      String str2 = paramSRTInfo.jdField_a_of_type_JavaLangString;
-      String str1 = paramSRTInfo.jdField_b_of_type_JavaLangString;
-      paramSRTInfo = paramSRTInfo.c;
+      String str2 = paramSRTInfo.d;
+      String str1 = paramSRTInfo.e;
+      paramSRTInfo = paramSRTInfo.f;
       paramTemplateBean = a(paramAbsBaseArticleInfo, str2, paramTemplateBean, paramViewBase);
       paramAbsBaseArticleInfo = new StringBuilder();
       paramAbsBaseArticleInfo.append("appPackageName = ");
@@ -130,8 +130,8 @@ public class ReadInJoySrtUtils
       }
       if (!TextUtils.isEmpty(paramTemplateBean))
       {
-        paramAbsBaseArticleInfo = str1.replace("${rowkey}", paramTemplateBean).replace("${uin}", RIJQQAppInterfaceUtil.a());
-        paramSRTInfo = paramSRTInfo.replace("${rowkey}", paramTemplateBean).replace("${uin}", RIJQQAppInterfaceUtil.a());
+        paramAbsBaseArticleInfo = str1.replace("${rowkey}", paramTemplateBean).replace("${uin}", RIJQQAppInterfaceUtil.d());
+        paramSRTInfo = paramSRTInfo.replace("${rowkey}", paramTemplateBean).replace("${uin}", RIJQQAppInterfaceUtil.d());
       }
       else
       {
@@ -254,28 +254,28 @@ public class ReadInJoySrtUtils
       return null;
     }
     oidb_cmd0x64e.SRTRule localSRTRule = new oidb_cmd0x64e.SRTRule();
+    if (paramSRTInfo.f != null) {
+      localSRTRule.bytes_schema.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.f));
+    }
+    if (paramSRTInfo.e != null) {
+      localSRTRule.bytes_h5.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.e));
+    }
+    if (paramSRTInfo.d != null) {
+      localSRTRule.bytes_app_package_name.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.d));
+    }
     if (paramSRTInfo.c != null) {
-      localSRTRule.bytes_schema.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.c));
+      localSRTRule.uint32_click_number.set(paramSRTInfo.c);
     }
-    if (paramSRTInfo.jdField_b_of_type_JavaLangString != null) {
-      localSRTRule.bytes_h5.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.jdField_b_of_type_JavaLangString));
+    if (paramSRTInfo.b != null) {
+      localSRTRule.uint32_feeds_type.set(paramSRTInfo.b);
     }
-    if (paramSRTInfo.jdField_a_of_type_JavaLangString != null) {
-      localSRTRule.bytes_app_package_name.set(ByteStringMicro.copyFromUtf8(paramSRTInfo.jdField_a_of_type_JavaLangString));
-    }
-    if (paramSRTInfo.jdField_b_of_type_JavaUtilList != null) {
-      localSRTRule.uint32_click_number.set(paramSRTInfo.jdField_b_of_type_JavaUtilList);
-    }
-    if (paramSRTInfo.jdField_a_of_type_JavaUtilList != null) {
-      localSRTRule.uint32_feeds_type.set(paramSRTInfo.jdField_a_of_type_JavaUtilList);
-    }
-    localSRTRule.uint32_network_type.set(paramSRTInfo.jdField_a_of_type_Int);
+    localSRTRule.uint32_network_type.set(paramSRTInfo.a);
     return localSRTRule;
   }
   
   private void a(ReadInJoySrtUtils.SRTInfo paramSRTInfo, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.c;
     if (localObject != null)
     {
       if (paramInt3 >= ((List)localObject).size()) {
@@ -289,7 +289,7 @@ public class ReadInJoySrtUtils
       ((StringBuilder)localObject).append(" position");
       ((StringBuilder)localObject).append(paramInt3);
       QLog.d("ReadInJoySrtUtils", 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo = new oidb_cmd0x64e.SRTClickInfo();
+      this.d = new oidb_cmd0x64e.SRTClickInfo();
       paramSRTInfo = a(paramSRTInfo);
       if (paramSRTInfo != null)
       {
@@ -300,10 +300,10 @@ public class ReadInJoySrtUtils
         paramSRTInfo.uint32_click_number.set((List)localObject);
         paramSRTInfo.uint32_feeds_type.set(localArrayList);
       }
-      this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo.msg_srt_rule_list.set(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo.uint32_hit_srt_rule_index.set(paramInt3);
+      this.d.msg_srt_rule_list.set(this.c);
+      this.d.uint32_hit_srt_rule_index.set(paramInt3);
       if (paramSRTInfo != null) {
-        this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo.msg_hit_srt_rule.set(paramSRTInfo);
+        this.d.msg_hit_srt_rule.set(paramSRTInfo);
       }
     }
   }
@@ -313,34 +313,34 @@ public class ReadInJoySrtUtils
     if (paramSRTInfo == null) {
       return false;
     }
-    if (paramSRTInfo.jdField_b_of_type_JavaUtilList != null)
+    if (paramSRTInfo.c != null)
     {
-      if (paramSRTInfo.jdField_a_of_type_JavaUtilList == null) {
+      if (paramSRTInfo.b == null) {
         return false;
       }
-      int i = paramSRTInfo.jdField_a_of_type_Int;
-      int j = NetworkUtil.a(BaseActivity.sTopActivity);
+      int i = paramSRTInfo.a;
+      int j = NetworkUtil.b(BaseActivity.sTopActivity);
       if (j == 0) {
         return false;
       }
       if (((i == 1) && (j != 1)) || ((i == 2) && (j == 1))) {
         return false;
       }
-      if (!paramSRTInfo.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt))) {
+      if (!paramSRTInfo.b.contains(Integer.valueOf(paramInt))) {
         return false;
       }
-      return paramSRTInfo.jdField_b_of_type_JavaUtilList.contains(Integer.valueOf(this.jdField_a_of_type_Int));
+      return paramSRTInfo.c.contains(Integer.valueOf(this.b));
     }
     return false;
   }
   
-  private void b() {}
+  private void f() {}
   
-  private void c()
+  private void g()
   {
     try
     {
-      Object localObject1 = (String)RIJSPUtils.a("readinjoy_srt_click_time_key", "");
+      Object localObject1 = (String)RIJSPUtils.b("readinjoy_srt_click_time_key", "");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject1 = new JSONObject();
       } else {
@@ -349,12 +349,12 @@ public class ReadInJoySrtUtils
       Object localObject2 = ((JSONObject)localObject1).optString("time", "");
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("clickTimes");
-      ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.g);
       int j = ((JSONObject)localObject1).optInt(((StringBuilder)localObject3).toString(), 0);
       localObject3 = TimeSliceHelper.a();
       int i = j;
       if (j == 0) {
-        i = this.jdField_a_of_type_Int;
+        i = this.b;
       }
       if (!((String)localObject2).equals(localObject3))
       {
@@ -362,11 +362,11 @@ public class ReadInJoySrtUtils
         i = 0;
       }
       i += 1;
-      this.jdField_a_of_type_Int = i;
+      this.b = i;
       ((JSONObject)localObject1).put("time", localObject3);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("clickTimes");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.g);
       ((JSONObject)localObject1).put(((StringBuilder)localObject2).toString(), i);
       RIJSPUtils.a("readinjoy_srt_click_time_key", ((JSONObject)localObject1).toString());
       return;
@@ -377,45 +377,12 @@ public class ReadInJoySrtUtils
     }
   }
   
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      QLog.d("ReadInJoySrtUtils", 1, "getJumpSchema schemaCache is null");
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangString = null;
-    return str;
-  }
-  
-  public oidb_cmd0x64e.SRTClickInfo a()
-  {
-    if (this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo == null)
-    {
-      QLog.d("ReadInJoySrtUtils", 1, "getNoDifferenceDiversionInfo cache is null");
-      return null;
-    }
-    QLog.d("ReadInJoySrtUtils", 1, "getNoDifferenceDiversionInfo");
-    oidb_cmd0x64e.SRTClickInfo localSRTClickInfo = this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo;
-    this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo = null;
-    return localSRTClickInfo;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_TencentImOidbCmd0x64eOidb_cmd0x64e$SRTClickInfo = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Int = 0;
-    QLog.d("ReadInJoySrtUtils", 1, "clearData");
-  }
-  
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.g = paramString;
     ArrayList localArrayList = new ArrayList();
     Object localObject = new oidb_cmd0x80a.AttributeList();
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
@@ -437,7 +404,7 @@ public class ReadInJoySrtUtils
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.c = paramList;
       Object localObject = new ArrayList();
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
@@ -447,7 +414,7 @@ public class ReadInJoySrtUtils
           ((List)localObject).add(localSRTInfo);
         }
       }
-      this.jdField_b_of_type_JavaUtilList = ((List)localObject);
+      this.f = ((List)localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handle0x80aRespInfo  size = ");
       ((StringBuilder)localObject).append(paramList.size());
@@ -455,28 +422,22 @@ public class ReadInJoySrtUtils
     }
   }
   
-  public boolean a()
-  {
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    return (localList != null) && (localList.size() != 0);
-  }
-  
   public boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
+    Object localObject = this.f;
     if ((localObject != null) && (((List)localObject).size() != 0) && (paramAbsBaseArticleInfo != null) && ((paramAbsBaseArticleInfo.mChannelID == 0L) || (DailyModeConfigHandler.c((int)paramAbsBaseArticleInfo.mChannelID))))
     {
-      c();
+      g();
       int i = 0;
-      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      while (i < this.f.size())
       {
-        localObject = (ReadInJoySrtUtils.SRTInfo)this.jdField_b_of_type_JavaUtilList.get(i);
-        int j = RIJFeedsType.a(paramAbsBaseArticleInfo);
+        localObject = (ReadInJoySrtUtils.SRTInfo)this.f.get(i);
+        int j = RIJFeedsType.g(paramAbsBaseArticleInfo);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("startJudge feedsType:");
         localStringBuilder.append(j);
         localStringBuilder.append(" clickTimes: ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" position");
         localStringBuilder.append(i);
         QLog.d("ReadInJoySrtUtils", 1, localStringBuilder.toString());
@@ -486,13 +447,13 @@ public class ReadInJoySrtUtils
           if (TextUtils.isEmpty(paramAbsBaseArticleInfo)) {
             return false;
           }
-          this.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo;
-          a((ReadInJoySrtUtils.SRTInfo)localObject, j, this.jdField_a_of_type_Int, i);
+          this.e = paramAbsBaseArticleInfo;
+          a((ReadInJoySrtUtils.SRTInfo)localObject, j, this.b, i);
           paramAbsBaseArticleInfo = new StringBuilder();
           paramAbsBaseArticleInfo.append("hitSrtRules feedsType:");
           paramAbsBaseArticleInfo.append(j);
           paramAbsBaseArticleInfo.append(" clickTimes: ");
-          paramAbsBaseArticleInfo.append(this.jdField_a_of_type_Int);
+          paramAbsBaseArticleInfo.append(this.b);
           paramAbsBaseArticleInfo.append(" position");
           paramAbsBaseArticleInfo.append(i);
           QLog.d("ReadInJoySrtUtils", 1, paramAbsBaseArticleInfo.toString());
@@ -505,10 +466,49 @@ public class ReadInJoySrtUtils
     QLog.d("ReadInJoySrtUtils", 1, "judgeIsNeedNoDifferenceDiversion srtInfos is null");
     return false;
   }
+  
+  public oidb_cmd0x64e.SRTClickInfo b()
+  {
+    if (this.d == null)
+    {
+      QLog.d("ReadInJoySrtUtils", 1, "getNoDifferenceDiversionInfo cache is null");
+      return null;
+    }
+    QLog.d("ReadInJoySrtUtils", 1, "getNoDifferenceDiversionInfo");
+    oidb_cmd0x64e.SRTClickInfo localSRTClickInfo = this.d;
+    this.d = null;
+    return localSRTClickInfo;
+  }
+  
+  public String c()
+  {
+    if (this.e == null) {
+      QLog.d("ReadInJoySrtUtils", 1, "getJumpSchema schemaCache is null");
+    }
+    String str = this.e;
+    this.e = null;
+    return str;
+  }
+  
+  public void d()
+  {
+    this.c.clear();
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.b = 0;
+    QLog.d("ReadInJoySrtUtils", 1, "clearData");
+  }
+  
+  public boolean e()
+  {
+    List localList = this.f;
+    return (localList != null) && (localList.size() != 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoySrtUtils
  * JD-Core Version:    0.7.0.1
  */

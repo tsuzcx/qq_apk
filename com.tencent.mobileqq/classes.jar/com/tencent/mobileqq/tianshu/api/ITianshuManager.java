@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.tianshu.api;
 
 import com.tencent.mobileqq.qroute.QRouteApi;
-import com.tencent.mobileqq.qroute.annotation.Service;
+import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
 import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import com.tencent.mobileqq.tianshu.data.TianShuReportData;
 import java.util.List;
 
-@Service(process={"all"})
+@QAPI(process={"all"})
 public abstract interface ITianshuManager
   extends QRouteApi
 {
@@ -17,7 +17,7 @@ public abstract interface ITianshuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.ITianshuManager
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,11 @@ import java.util.Set;
 public class DownloaderImp
   implements Downloader
 {
-  protected int a;
-  protected DownloadProgressListener a;
-  protected String a;
-  protected volatile boolean a;
+  protected volatile boolean a = false;
   protected volatile boolean b = false;
-  
-  public DownloaderImp()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 10;
-  }
+  protected DownloadProgressListener c;
+  protected String d = null;
+  protected int e = 10;
   
   /* Error */
   private int a(String paramString1, String paramString2, HashMap<String, String> paramHashMap, int paramInt, long paramLong, boolean paramBoolean)
@@ -32,90 +25,90 @@ public class DownloaderImp
     // Byte code:
     //   0: aload_0
     //   1: iconst_0
-    //   2: putfield 21	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Boolean	Z
+    //   2: putfield 24	com/tencent/biz/qqstory/base/download/DownloaderImp:a	Z
     //   5: aload_0
     //   6: iconst_1
-    //   7: putfield 23	com/tencent/biz/qqstory/base/download/DownloaderImp:b	Z
+    //   7: putfield 26	com/tencent/biz/qqstory/base/download/DownloaderImp:b	Z
     //   10: aload_0
     //   11: aload_2
-    //   12: putfield 25	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   15: new 45	java/lang/StringBuilder
+    //   12: putfield 28	com/tencent/biz/qqstory/base/download/DownloaderImp:d	Ljava/lang/String;
+    //   15: new 48	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   19: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   22: astore 28
     //   24: aload 28
-    //   26: ldc 48
-    //   28: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc 51
+    //   28: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: pop
     //   32: aload 28
     //   34: aload_2
-    //   35: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
-    //   39: ldc 54
+    //   39: ldc 57
     //   41: aload 28
-    //   43: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 63	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   49: new 45	java/lang/StringBuilder
+    //   43: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 66	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: new 48	java/lang/StringBuilder
     //   52: dup
-    //   53: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   53: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   56: astore 28
     //   58: aload 28
-    //   60: ldc 65
-    //   62: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: ldc 68
+    //   62: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload 28
     //   68: aload_1
-    //   69: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
-    //   73: ldc 54
+    //   73: ldc 57
     //   75: aload 28
-    //   77: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 63	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   77: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 66	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   83: aload_0
-    //   84: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
+    //   84: getfield 70	com/tencent/biz/qqstory/base/download/DownloaderImp:c	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   87: astore 28
     //   89: aload 28
     //   91: ifnull +12 -> 103
     //   94: aload 28
     //   96: aload_1
     //   97: aload_2
-    //   98: invokeinterface 71 3 0
+    //   98: invokeinterface 74 3 0
     //   103: iload 4
     //   105: ifle +10 -> 115
     //   108: iload 4
     //   110: istore 14
     //   112: goto +7 -> 119
-    //   115: ldc 72
+    //   115: ldc 75
     //   117: istore 14
     //   119: aconst_null
     //   120: astore 31
-    //   122: new 74	java/net/URL
+    //   122: new 77	java/net/URL
     //   125: dup
     //   126: aload_1
-    //   127: invokespecial 77	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   127: invokespecial 80	java/net/URL:<init>	(Ljava/lang/String;)V
     //   130: astore 28
     //   132: aload 28
     //   134: astore 56
     //   136: aload 28
-    //   138: invokestatic 82	com/tencent/biz/qqstory/base/download/URLChecker:a	(Ljava/net/URL;)Z
+    //   138: invokestatic 85	com/tencent/biz/qqstory/base/download/URLChecker:a	(Ljava/net/URL;)Z
     //   141: ifne +10 -> 151
     //   144: aload 28
-    //   146: invokestatic 85	com/tencent/biz/qqstory/base/download/URLChecker:a	(Ljava/net/URL;)Ljava/net/URL;
+    //   146: invokestatic 88	com/tencent/biz/qqstory/base/download/URLChecker:b	(Ljava/net/URL;)Ljava/net/URL;
     //   149: astore 56
     //   151: aload_2
-    //   152: invokestatic 91	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   152: invokestatic 94	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   155: astore 28
     //   157: aload 28
-    //   159: invokevirtual 97	java/io/File:exists	()Z
+    //   159: invokevirtual 100	java/io/File:exists	()Z
     //   162: ifne +9 -> 171
     //   165: aload 28
-    //   167: invokevirtual 100	java/io/File:createNewFile	()Z
+    //   167: invokevirtual 103	java/io/File:createNewFile	()Z
     //   170: pop
-    //   171: new 102	java/io/RandomAccessFile
+    //   171: new 105	java/io/RandomAccessFile
     //   174: dup
     //   175: aload 28
-    //   177: ldc 104
-    //   179: invokespecial 107	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   177: ldc 107
+    //   179: invokespecial 110	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   182: astore 28
     //   184: aconst_null
     //   185: astore 29
@@ -125,13 +118,13 @@ public class DownloaderImp
     //   191: istore 8
     //   193: iload 4
     //   195: aload_0
-    //   196: getfield 27	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Int	I
+    //   196: getfield 30	com/tencent/biz/qqstory/base/download/DownloaderImp:e	I
     //   199: if_icmple +9 -> 208
     //   202: aload 28
     //   204: astore_3
     //   205: goto +852 -> 1057
     //   208: aload_0
-    //   209: getfield 21	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Boolean	Z
+    //   209: getfield 24	com/tencent/biz/qqstory/base/download/DownloaderImp:a	Z
     //   212: ifeq +13 -> 225
     //   215: aload 28
     //   217: astore_3
@@ -141,71 +134,71 @@ public class DownloaderImp
     //   225: aload_0
     //   226: aload 31
     //   228: aload 29
-    //   230: invokespecial 110	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
+    //   230: invokespecial 113	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
     //   233: aload 56
-    //   235: invokevirtual 114	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   238: checkcast 116	java/net/HttpURLConnection
+    //   235: invokevirtual 117	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   238: checkcast 119	java/net/HttpURLConnection
     //   241: astore 30
     //   243: aload 30
     //   245: iconst_0
-    //   246: invokevirtual 120	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   246: invokevirtual 123	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   249: aload 30
     //   251: sipush 5000
-    //   254: invokevirtual 124	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   254: invokevirtual 127	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   257: aload 30
     //   259: sipush 5000
-    //   262: invokevirtual 127	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   262: invokevirtual 130	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   265: aload 30
-    //   267: ldc 129
-    //   269: ldc 131
-    //   271: invokevirtual 134	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   267: ldc 132
+    //   269: ldc 134
+    //   271: invokevirtual 137	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   274: aload_3
     //   275: aload 30
-    //   277: invokestatic 137	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/util/HashMap;Ljava/net/HttpURLConnection;)V
+    //   277: invokestatic 140	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/util/HashMap;Ljava/net/HttpURLConnection;)V
     //   280: aload 28
     //   282: lload 5
-    //   284: invokevirtual 141	java/io/RandomAccessFile:seek	(J)V
-    //   287: new 45	java/lang/StringBuilder
+    //   284: invokevirtual 144	java/io/RandomAccessFile:seek	(J)V
+    //   287: new 48	java/lang/StringBuilder
     //   290: dup
-    //   291: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   291: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   294: astore 31
     //   296: iload 4
     //   298: istore 9
     //   300: aload 31
-    //   302: ldc 143
-    //   304: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: ldc 146
+    //   304: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: pop
     //   308: aload 31
     //   310: lload 5
-    //   312: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   312: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload 31
-    //   318: ldc 148
-    //   320: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: ldc 151
+    //   320: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   323: pop
     //   324: aload 30
-    //   326: ldc 150
+    //   326: ldc 153
     //   328: aload 31
-    //   330: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   333: invokevirtual 134	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   336: new 45	java/lang/StringBuilder
+    //   330: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   333: invokevirtual 137	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   336: new 48	java/lang/StringBuilder
     //   339: dup
-    //   340: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   340: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   343: astore 31
     //   345: aload 31
-    //   347: ldc 152
-    //   349: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: ldc 155
+    //   349: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   352: pop
     //   353: aload 31
     //   355: lload 5
-    //   357: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   357: invokevirtual 149	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   360: pop
-    //   361: ldc 54
+    //   361: ldc 57
     //   363: aload 31
-    //   365: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   368: invokestatic 63	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   365: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   368: invokestatic 66	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   371: aload 30
-    //   373: invokevirtual 156	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   373: invokevirtual 159	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   376: astore 31
     //   378: aload 28
     //   380: astore 40
@@ -256,7 +249,7 @@ public class DownloaderImp
     //   470: iload 9
     //   472: istore 13
     //   474: aload 30
-    //   476: invokevirtual 160	java/net/HttpURLConnection:getContentLength	()I
+    //   476: invokevirtual 163	java/net/HttpURLConnection:getContentLength	()I
     //   479: i2l
     //   480: lstore 25
     //   482: aload 28
@@ -368,13 +361,13 @@ public class DownloaderImp
     //   694: istore 13
     //   696: aload 29
     //   698: aload 31
-    //   700: invokevirtual 166	java/io/InputStream:read	([B)I
+    //   700: invokevirtual 169	java/io/InputStream:read	([B)I
     //   703: istore 9
     //   705: iload 9
     //   707: iconst_m1
     //   708: if_icmpeq +322 -> 1030
     //   711: aload_0
-    //   712: getfield 21	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Boolean	Z
+    //   712: getfield 24	com/tencent/biz/qqstory/base/download/DownloaderImp:a	Z
     //   715: ifeq +10 -> 725
     //   718: bipush 6
     //   720: istore 8
@@ -383,17 +376,17 @@ public class DownloaderImp
     //   727: aload 31
     //   729: iconst_0
     //   730: iload 9
-    //   732: invokevirtual 170	java/io/RandomAccessFile:write	([BII)V
+    //   732: invokevirtual 173	java/io/RandomAccessFile:write	([BII)V
     //   735: lload 15
     //   737: iload 9
     //   739: i2l
     //   740: ladd
     //   741: lstore 15
     //   743: aload_0
-    //   744: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
+    //   744: getfield 70	com/tencent/biz/qqstory/base/download/DownloaderImp:c	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   747: ifnull +3282 -> 4029
     //   750: aload_0
-    //   751: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
+    //   751: getfield 70	com/tencent/biz/qqstory/base/download/DownloaderImp:c	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   754: astore 32
     //   756: aload 32
     //   758: aload_1
@@ -401,9 +394,9 @@ public class DownloaderImp
     //   761: lload 5
     //   763: lload 25
     //   765: ladd
-    //   766: invokeinterface 173 6 0
+    //   766: invokeinterface 176 6 0
     //   771: goto +3 -> 774
-    //   774: invokestatic 178	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
+    //   774: invokestatic 181	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
     //   777: istore 27
     //   779: iload 7
     //   781: ifeq +15 -> 796
@@ -532,7 +525,7 @@ public class DownloaderImp
     //   1038: aload_0
     //   1039: aload 30
     //   1041: aload 32
-    //   1043: invokespecial 110	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
+    //   1043: invokespecial 113	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
     //   1046: aload 32
     //   1048: astore 29
     //   1050: aload 31
@@ -540,31 +533,31 @@ public class DownloaderImp
     //   1053: aload 30
     //   1055: astore 31
     //   1057: aload_3
-    //   1058: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   1058: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   1061: aload 31
     //   1063: ifnull +20 -> 1083
     //   1066: aload 31
-    //   1068: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   1068: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   1071: goto +12 -> 1083
     //   1074: astore_2
-    //   1075: ldc 54
-    //   1077: ldc 186
+    //   1075: ldc 57
+    //   1077: ldc 189
     //   1079: aload_2
-    //   1080: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1080: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1083: iload 8
     //   1085: istore 4
     //   1087: aload 29
     //   1089: ifnull +2842 -> 3931
     //   1092: aload 29
-    //   1094: invokevirtual 191	java/io/InputStream:close	()V
+    //   1094: invokevirtual 193	java/io/InputStream:close	()V
     //   1097: iload 8
     //   1099: istore 4
     //   1101: goto +2830 -> 3931
     //   1104: astore_2
-    //   1105: ldc 54
-    //   1107: ldc 193
+    //   1105: ldc 57
+    //   1107: ldc 195
     //   1109: aload_2
-    //   1110: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1110: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1113: iload 8
     //   1115: istore 4
     //   1117: goto +2814 -> 3931
@@ -899,10 +892,10 @@ public class DownloaderImp
     //   1762: astore 29
     //   1764: aload 31
     //   1766: astore 28
-    //   1768: ldc 54
-    //   1770: ldc 193
+    //   1768: ldc 57
+    //   1770: ldc 195
     //   1772: aload 55
-    //   1774: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1774: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1777: aload 32
     //   1779: astore 48
     //   1781: aload 33
@@ -951,7 +944,7 @@ public class DownloaderImp
     //   1867: astore 29
     //   1869: aload 31
     //   1871: astore 28
-    //   1873: invokestatic 199	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1873: invokestatic 201	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   1876: pop
     //   1877: aload 32
     //   1879: astore 48
@@ -1001,8 +994,8 @@ public class DownloaderImp
     //   1967: astore 29
     //   1969: aload 31
     //   1971: astore 28
-    //   1973: ldc2_w 200
-    //   1976: invokestatic 204	java/lang/Thread:sleep	(J)V
+    //   1973: ldc2_w 202
+    //   1976: invokestatic 206	java/lang/Thread:sleep	(J)V
     //   1979: iload 4
     //   1981: iconst_1
     //   1982: iadd
@@ -1064,10 +1057,10 @@ public class DownloaderImp
     //   2093: astore 29
     //   2095: aload 31
     //   2097: astore 28
-    //   2099: ldc 54
-    //   2101: ldc 193
+    //   2099: ldc 57
+    //   2101: ldc 195
     //   2103: aload 55
-    //   2105: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2105: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2108: aload 32
     //   2110: astore 48
     //   2112: aload 33
@@ -1116,7 +1109,7 @@ public class DownloaderImp
     //   2198: astore 29
     //   2200: aload 31
     //   2202: astore 28
-    //   2204: invokestatic 199	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2204: invokestatic 201	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   2207: pop
     //   2208: aload 32
     //   2210: astore 48
@@ -1166,8 +1159,8 @@ public class DownloaderImp
     //   2298: astore 29
     //   2300: aload 31
     //   2302: astore 28
-    //   2304: ldc2_w 200
-    //   2307: invokestatic 204	java/lang/Thread:sleep	(J)V
+    //   2304: ldc2_w 202
+    //   2307: invokestatic 206	java/lang/Thread:sleep	(J)V
     //   2310: iload 4
     //   2312: iconst_1
     //   2313: iadd
@@ -1229,10 +1222,10 @@ public class DownloaderImp
     //   2424: astore 29
     //   2426: aload 31
     //   2428: astore 28
-    //   2430: ldc 54
-    //   2432: ldc 193
+    //   2430: ldc 57
+    //   2432: ldc 195
     //   2434: aload 55
-    //   2436: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2436: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2439: aload 32
     //   2441: astore 48
     //   2443: aload 33
@@ -1281,7 +1274,7 @@ public class DownloaderImp
     //   2529: astore 29
     //   2531: aload 31
     //   2533: astore 28
-    //   2535: invokestatic 199	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2535: invokestatic 201	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   2538: pop
     //   2539: aload 32
     //   2541: astore 48
@@ -1331,8 +1324,8 @@ public class DownloaderImp
     //   2629: astore 29
     //   2631: aload 31
     //   2633: astore 28
-    //   2635: ldc2_w 200
-    //   2638: invokestatic 204	java/lang/Thread:sleep	(J)V
+    //   2635: ldc2_w 202
+    //   2638: invokestatic 206	java/lang/Thread:sleep	(J)V
     //   2641: iload 4
     //   2643: iconst_1
     //   2644: iadd
@@ -1394,10 +1387,10 @@ public class DownloaderImp
     //   2755: astore 29
     //   2757: aload 31
     //   2759: astore 28
-    //   2761: ldc 54
-    //   2763: ldc 193
+    //   2761: ldc 57
+    //   2763: ldc 195
     //   2765: aload 55
-    //   2767: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2767: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2770: aload 32
     //   2772: astore 48
     //   2774: aload 33
@@ -1446,7 +1439,7 @@ public class DownloaderImp
     //   2860: astore 29
     //   2862: aload 31
     //   2864: astore 28
-    //   2866: invokestatic 199	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2866: invokestatic 201	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   2869: pop
     //   2870: aload 32
     //   2872: astore 48
@@ -1496,8 +1489,8 @@ public class DownloaderImp
     //   2960: astore 29
     //   2962: aload 31
     //   2964: astore 28
-    //   2966: ldc2_w 200
-    //   2969: invokestatic 204	java/lang/Thread:sleep	(J)V
+    //   2966: ldc2_w 202
+    //   2969: invokestatic 206	java/lang/Thread:sleep	(J)V
     //   2972: iload 4
     //   2974: iconst_1
     //   2975: iadd
@@ -1576,40 +1569,40 @@ public class DownloaderImp
     //   3105: astore 29
     //   3107: aload_3
     //   3108: astore 28
-    //   3110: ldc 54
-    //   3112: ldc 193
+    //   3110: ldc 57
+    //   3112: ldc 195
     //   3114: aload_2
-    //   3115: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3115: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3118: aload 41
     //   3120: ifnull +20 -> 3140
     //   3123: aload 41
-    //   3125: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3125: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3128: goto +12 -> 3140
     //   3131: astore_2
-    //   3132: ldc 54
-    //   3134: ldc 186
+    //   3132: ldc 57
+    //   3134: ldc 189
     //   3136: aload_2
-    //   3137: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3137: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3140: aload 48
     //   3142: ifnull +20 -> 3162
     //   3145: aload 48
-    //   3147: invokevirtual 191	java/io/InputStream:close	()V
+    //   3147: invokevirtual 193	java/io/InputStream:close	()V
     //   3150: goto +12 -> 3162
     //   3153: astore_2
-    //   3154: ldc 54
-    //   3156: ldc 193
+    //   3154: ldc 57
+    //   3156: ldc 195
     //   3158: aload_2
-    //   3159: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3159: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3162: aload_3
     //   3163: ifnull +19 -> 3182
     //   3166: aload_3
-    //   3167: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3167: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3170: goto +12 -> 3182
     //   3173: astore_2
-    //   3174: ldc 54
-    //   3176: ldc 193
+    //   3174: ldc 57
+    //   3176: ldc 195
     //   3178: aload_2
-    //   3179: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3179: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3182: iconst_5
     //   3183: istore 4
     //   3185: goto +746 -> 3931
@@ -1634,34 +1627,34 @@ public class DownloaderImp
     //   3216: astore 29
     //   3218: aload_2
     //   3219: astore 28
-    //   3221: ldc 54
-    //   3223: ldc 193
+    //   3221: ldc 57
+    //   3223: ldc 195
     //   3225: aload 32
-    //   3227: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3227: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3230: aload 31
     //   3232: ifnull +22 -> 3254
     //   3235: aload 31
-    //   3237: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3237: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3240: goto +14 -> 3254
     //   3243: astore 28
-    //   3245: ldc 54
-    //   3247: ldc 186
+    //   3245: ldc 57
+    //   3247: ldc 189
     //   3249: aload 28
-    //   3251: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3251: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3254: aload_3
     //   3255: ifnull +19 -> 3274
     //   3258: aload_3
-    //   3259: invokevirtual 191	java/io/InputStream:close	()V
+    //   3259: invokevirtual 193	java/io/InputStream:close	()V
     //   3262: goto +12 -> 3274
     //   3265: astore_3
-    //   3266: ldc 54
-    //   3268: ldc 193
+    //   3266: ldc 57
+    //   3268: ldc 195
     //   3270: aload_3
-    //   3271: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3271: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3274: aload_2
     //   3275: ifnull +440 -> 3715
     //   3278: aload_2
-    //   3279: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3279: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3282: goto +433 -> 3715
     //   3285: astore_2
     //   3286: goto +421 -> 3707
@@ -1686,9 +1679,9 @@ public class DownloaderImp
     //   3317: astore 29
     //   3319: aload_2
     //   3320: astore 28
-    //   3322: new 45	java/lang/StringBuilder
+    //   3322: new 48	java/lang/StringBuilder
     //   3325: dup
-    //   3326: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   3326: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   3329: astore 33
     //   3331: aload_3
     //   3332: astore 30
@@ -1697,8 +1690,8 @@ public class DownloaderImp
     //   3338: aload_2
     //   3339: astore 28
     //   3341: aload 33
-    //   3343: ldc 206
-    //   3345: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3343: ldc 208
+    //   3345: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3348: pop
     //   3349: aload_3
     //   3350: astore 30
@@ -1708,7 +1701,7 @@ public class DownloaderImp
     //   3357: astore 28
     //   3359: aload 33
     //   3361: aload_1
-    //   3362: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3362: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3365: pop
     //   3366: aload_3
     //   3367: astore 30
@@ -1716,41 +1709,41 @@ public class DownloaderImp
     //   3371: astore 29
     //   3373: aload_2
     //   3374: astore 28
-    //   3376: ldc 54
+    //   3376: ldc 57
     //   3378: aload 33
-    //   3380: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3380: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3383: aload 32
-    //   3385: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3385: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3388: aload 31
     //   3390: ifnull +22 -> 3412
     //   3393: aload 31
-    //   3395: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3395: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3398: goto +14 -> 3412
     //   3401: astore 28
-    //   3403: ldc 54
-    //   3405: ldc 186
+    //   3403: ldc 57
+    //   3405: ldc 189
     //   3407: aload 28
-    //   3409: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3409: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3412: aload_3
     //   3413: ifnull +19 -> 3432
     //   3416: aload_3
-    //   3417: invokevirtual 191	java/io/InputStream:close	()V
+    //   3417: invokevirtual 193	java/io/InputStream:close	()V
     //   3420: goto +12 -> 3432
     //   3423: astore_3
-    //   3424: ldc 54
-    //   3426: ldc 193
+    //   3424: ldc 57
+    //   3426: ldc 195
     //   3428: aload_3
-    //   3429: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3429: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3432: aload_2
     //   3433: ifnull +19 -> 3452
     //   3436: aload_2
-    //   3437: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3437: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3440: goto +12 -> 3452
     //   3443: astore_2
-    //   3444: ldc 54
-    //   3446: ldc 193
+    //   3444: ldc 57
+    //   3446: ldc 195
     //   3448: aload_2
-    //   3449: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3449: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3452: iconst_4
     //   3453: istore 4
     //   3455: goto +476 -> 3931
@@ -1767,10 +1760,10 @@ public class DownloaderImp
     //   3476: astore 29
     //   3478: aload_3
     //   3479: astore 28
-    //   3481: new 93	java/io/File
+    //   3481: new 96	java/io/File
     //   3484: dup
     //   3485: aload_2
-    //   3486: invokespecial 207	java/io/File:<init>	(Ljava/lang/String;)V
+    //   3486: invokespecial 209	java/io/File:<init>	(Ljava/lang/String;)V
     //   3489: astore_2
     //   3490: aload 51
     //   3492: astore 30
@@ -1779,7 +1772,7 @@ public class DownloaderImp
     //   3498: aload_3
     //   3499: astore 28
     //   3501: aload_2
-    //   3502: invokevirtual 97	java/io/File:exists	()Z
+    //   3502: invokevirtual 100	java/io/File:exists	()Z
     //   3505: ifeq +19 -> 3524
     //   3508: aload 51
     //   3510: astore 30
@@ -1788,7 +1781,7 @@ public class DownloaderImp
     //   3516: aload_3
     //   3517: astore 28
     //   3519: aload_2
-    //   3520: invokevirtual 210	java/io/File:delete	()Z
+    //   3520: invokevirtual 212	java/io/File:delete	()Z
     //   3523: pop
     //   3524: aload 51
     //   3526: astore 30
@@ -1796,40 +1789,40 @@ public class DownloaderImp
     //   3530: astore 29
     //   3532: aload_3
     //   3533: astore 28
-    //   3535: ldc 54
-    //   3537: ldc 193
+    //   3535: ldc 57
+    //   3537: ldc 195
     //   3539: aload 31
-    //   3541: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3541: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3544: aload 44
     //   3546: ifnull +20 -> 3566
     //   3549: aload 44
-    //   3551: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3551: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3554: goto +12 -> 3566
     //   3557: astore_2
-    //   3558: ldc 54
-    //   3560: ldc 186
+    //   3558: ldc 57
+    //   3560: ldc 189
     //   3562: aload_2
-    //   3563: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3563: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3566: aload 51
     //   3568: ifnull +20 -> 3588
     //   3571: aload 51
-    //   3573: invokevirtual 191	java/io/InputStream:close	()V
+    //   3573: invokevirtual 193	java/io/InputStream:close	()V
     //   3576: goto +12 -> 3588
     //   3579: astore_2
-    //   3580: ldc 54
-    //   3582: ldc 193
+    //   3580: ldc 57
+    //   3582: ldc 195
     //   3584: aload_2
-    //   3585: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3585: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3588: aload_3
     //   3589: ifnull +19 -> 3608
     //   3592: aload_3
-    //   3593: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3593: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3596: goto +12 -> 3608
     //   3599: astore_2
-    //   3600: ldc 54
-    //   3602: ldc 193
+    //   3600: ldc 57
+    //   3602: ldc 195
     //   3604: aload_2
-    //   3605: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3605: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3608: iconst_3
     //   3609: istore 4
     //   3611: goto +320 -> 3931
@@ -1850,40 +1843,40 @@ public class DownloaderImp
     //   3638: astore 29
     //   3640: aload_3
     //   3641: astore 28
-    //   3643: ldc 54
-    //   3645: ldc 193
+    //   3643: ldc 57
+    //   3645: ldc 195
     //   3647: aload_2
-    //   3648: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3648: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3651: aload 45
     //   3653: ifnull +20 -> 3673
     //   3656: aload 45
-    //   3658: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3658: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3661: goto +12 -> 3673
     //   3664: astore_2
-    //   3665: ldc 54
-    //   3667: ldc 186
+    //   3665: ldc 57
+    //   3667: ldc 189
     //   3669: aload_2
-    //   3670: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3670: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3673: aload 52
     //   3675: ifnull +20 -> 3695
     //   3678: aload 52
-    //   3680: invokevirtual 191	java/io/InputStream:close	()V
+    //   3680: invokevirtual 193	java/io/InputStream:close	()V
     //   3683: goto +12 -> 3695
     //   3686: astore_2
-    //   3687: ldc 54
-    //   3689: ldc 193
+    //   3687: ldc 57
+    //   3689: ldc 195
     //   3691: aload_2
-    //   3692: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3692: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3695: aload_3
     //   3696: ifnull +19 -> 3715
     //   3699: aload_3
-    //   3700: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3700: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3703: goto +12 -> 3715
     //   3706: astore_2
-    //   3707: ldc 54
-    //   3709: ldc 193
+    //   3707: ldc 57
+    //   3709: ldc 195
     //   3711: aload_2
-    //   3712: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3712: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3715: iconst_1
     //   3716: istore 4
     //   3718: goto +213 -> 3931
@@ -1900,40 +1893,40 @@ public class DownloaderImp
     //   3738: astore 29
     //   3740: aload_3
     //   3741: astore 28
-    //   3743: ldc 54
-    //   3745: ldc 193
+    //   3743: ldc 57
+    //   3745: ldc 195
     //   3747: aload_2
-    //   3748: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3748: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3751: aload 46
     //   3753: ifnull +20 -> 3773
     //   3756: aload 46
-    //   3758: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3758: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3761: goto +12 -> 3773
     //   3764: astore_2
-    //   3765: ldc 54
-    //   3767: ldc 186
+    //   3765: ldc 57
+    //   3767: ldc 189
     //   3769: aload_2
-    //   3770: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3770: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3773: aload 53
     //   3775: ifnull +20 -> 3795
     //   3778: aload 53
-    //   3780: invokevirtual 191	java/io/InputStream:close	()V
+    //   3780: invokevirtual 193	java/io/InputStream:close	()V
     //   3783: goto +12 -> 3795
     //   3786: astore_2
-    //   3787: ldc 54
-    //   3789: ldc 193
+    //   3787: ldc 57
+    //   3789: ldc 195
     //   3791: aload_2
-    //   3792: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3792: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3795: aload_3
     //   3796: ifnull +19 -> 3815
     //   3799: aload_3
-    //   3800: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3800: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3803: goto +12 -> 3815
     //   3806: astore_2
-    //   3807: ldc 54
-    //   3809: ldc 193
+    //   3807: ldc 57
+    //   3809: ldc 195
     //   3811: aload_2
-    //   3812: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3812: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3815: iconst_2
     //   3816: istore 4
     //   3818: goto +113 -> 3931
@@ -1958,86 +1951,86 @@ public class DownloaderImp
     //   3849: astore 29
     //   3851: aload_2
     //   3852: astore 28
-    //   3854: ldc 54
-    //   3856: ldc 193
+    //   3854: ldc 57
+    //   3856: ldc 195
     //   3858: aload 32
-    //   3860: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3860: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3863: aload 31
     //   3865: ifnull +22 -> 3887
     //   3868: aload 31
-    //   3870: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3870: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3873: goto +14 -> 3887
     //   3876: astore 28
-    //   3878: ldc 54
-    //   3880: ldc 186
+    //   3878: ldc 57
+    //   3880: ldc 189
     //   3882: aload 28
-    //   3884: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3884: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3887: aload_3
     //   3888: ifnull +19 -> 3907
     //   3891: aload_3
-    //   3892: invokevirtual 191	java/io/InputStream:close	()V
+    //   3892: invokevirtual 193	java/io/InputStream:close	()V
     //   3895: goto +12 -> 3907
     //   3898: astore_3
-    //   3899: ldc 54
-    //   3901: ldc 193
+    //   3899: ldc 57
+    //   3901: ldc 195
     //   3903: aload_3
-    //   3904: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3904: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3907: aload_2
     //   3908: ifnull +19 -> 3927
     //   3911: aload_2
-    //   3912: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   3912: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   3915: goto +12 -> 3927
     //   3918: astore_2
-    //   3919: ldc 54
-    //   3921: ldc 193
+    //   3919: ldc 57
+    //   3921: ldc 195
     //   3923: aload_2
-    //   3924: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3924: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3927: bipush 6
     //   3929: istore 4
     //   3931: aload_0
-    //   3932: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
+    //   3932: getfield 70	com/tencent/biz/qqstory/base/download/DownloaderImp:c	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   3935: astore_2
     //   3936: aload_2
     //   3937: ifnull +12 -> 3949
     //   3940: aload_2
     //   3941: aload_1
     //   3942: iload 4
-    //   3944: invokeinterface 213 3 0
+    //   3944: invokeinterface 215 3 0
     //   3949: aload_0
     //   3950: iconst_0
-    //   3951: putfield 23	com/tencent/biz/qqstory/base/download/DownloaderImp:b	Z
+    //   3951: putfield 26	com/tencent/biz/qqstory/base/download/DownloaderImp:b	Z
     //   3954: iload 4
     //   3956: ireturn
     //   3957: aload 29
     //   3959: ifnull +22 -> 3981
     //   3962: aload 29
-    //   3964: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   3964: invokevirtual 187	java/net/HttpURLConnection:disconnect	()V
     //   3967: goto +14 -> 3981
     //   3970: astore 28
-    //   3972: ldc 54
-    //   3974: ldc 186
+    //   3972: ldc 57
+    //   3974: ldc 189
     //   3976: aload 28
-    //   3978: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3978: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   3981: aload_2
     //   3982: ifnull +19 -> 4001
     //   3985: aload_2
-    //   3986: invokevirtual 191	java/io/InputStream:close	()V
+    //   3986: invokevirtual 193	java/io/InputStream:close	()V
     //   3989: goto +12 -> 4001
     //   3992: astore_2
-    //   3993: ldc 54
-    //   3995: ldc 193
+    //   3993: ldc 57
+    //   3995: ldc 195
     //   3997: aload_2
-    //   3998: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3998: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   4001: aload_1
     //   4002: ifnull +19 -> 4021
     //   4005: aload_1
-    //   4006: invokevirtual 181	java/io/RandomAccessFile:close	()V
+    //   4006: invokevirtual 184	java/io/RandomAccessFile:close	()V
     //   4009: goto +12 -> 4021
     //   4012: astore_1
-    //   4013: ldc 54
-    //   4015: ldc 193
+    //   4013: ldc 57
+    //   4015: ldc 195
     //   4017: aload_1
-    //   4018: invokestatic 190	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   4018: invokestatic 192	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   4021: goto +5 -> 4026
     //   4024: aload_3
     //   4025: athrow
@@ -2542,29 +2535,29 @@ public class DownloaderImp
     return a(paramString1, paramString2, null, 65536, paramLong, false);
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public void a(DownloadProgressListener paramDownloadProgressListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener = paramDownloadProgressListener;
+    this.c = paramDownloadProgressListener;
   }
   
-  public boolean a()
+  public String b()
+  {
+    return this.d;
+  }
+  
+  public boolean c()
   {
     return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloaderImp
  * JD-Core Version:    0.7.0.1
  */

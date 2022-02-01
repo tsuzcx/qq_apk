@@ -22,18 +22,18 @@ public class IliveGroupTipsManager
   public static String a = "source_resume";
   public static String b = "source_push";
   public static String c = "source_loop";
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IliveGroupObserver jdField_a_of_type_CooperationIliveGroupIliveGroupObserver;
-  private HashMap<Long, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private QQAppInterface d;
+  private IliveGroupObserver e;
+  private HashMap<Long, Boolean> f = new HashMap();
   
   public IliveGroupTipsManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   private void a(long paramLong, boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver == null) {
+    if (this.e == null) {
       return;
     }
     long l;
@@ -52,18 +52,18 @@ public class IliveGroupTipsManager
   
   public void a(IliveGroupObserver paramIliveGroupObserver)
   {
-    this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver = paramIliveGroupObserver;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramIliveGroupObserver);
+    this.e = paramIliveGroupObserver;
+    this.d.addObserver(paramIliveGroupObserver);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    ((IliveCommonHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a("", paramString1, paramString2);
+    ((IliveCommonHandler)this.d.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a("", paramString1, paramString2);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    ((IliveCommonHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a(paramString1, paramString2, paramString3);
+    ((IliveCommonHandler)this.d.getBusinessHandler(BusinessHandlerFactory.ILIVE_COMMON_HANDLER)).a(paramString1, paramString2, paramString3);
   }
   
   public void a(TroopTips0x857.QQVaLiveNotifyMsg paramQQVaLiveNotifyMsg, long paramLong)
@@ -94,25 +94,25 @@ public class IliveGroupTipsManager
     localStringBuilder.append(" troopUin = ");
     localStringBuilder.append(paramLong);
     QLog.d("IliveGroupTipsManager", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), Boolean.valueOf(bool1));
-    ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(paramLong)).setIsTroopLive(bool1);
-    if (this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver != null) {
+    this.f.put(Long.valueOf(paramLong), Boolean.valueOf(bool1));
+    ((TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER)).f(String.valueOf(paramLong)).setIsTroopLive(bool1);
+    if (this.e != null) {
       a(paramLong, bool1, paramQQVaLiveNotifyMsg);
     }
   }
   
   public void b(IliveGroupObserver paramIliveGroupObserver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(paramIliveGroupObserver);
-    this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver = null;
+    this.d.removeObserver(paramIliveGroupObserver);
+    this.e = null;
   }
   
   public void onDestroy()
   {
-    IliveGroupObserver localIliveGroupObserver = this.jdField_a_of_type_CooperationIliveGroupIliveGroupObserver;
+    IliveGroupObserver localIliveGroupObserver = this.e;
     if (localIliveGroupObserver != null)
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.d;
       if (localQQAppInterface != null) {
         localQQAppInterface.removeObserver(localIliveGroupObserver);
       }
@@ -121,7 +121,7 @@ public class IliveGroupTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsManager
  * JD-Core Version:    0.7.0.1
  */

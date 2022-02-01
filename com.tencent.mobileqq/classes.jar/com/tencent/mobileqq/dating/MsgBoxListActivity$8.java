@@ -13,12 +13,12 @@ class MsgBoxListActivity$8
   public void run()
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
-      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType;
+    if (this.a.isLiving) {
+      i = this.a.startLiveWordingType;
     } else {
-      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType;
+      i = this.a.endLiveWordingType;
     }
-    int j = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b();
+    int j = this.b.c();
     String str1;
     if (this.this$0.isFromNearby) {
       str1 = "1";
@@ -27,17 +27,17 @@ class MsgBoxListActivity$8
     }
     ReportTask localReportTask = new ReportTask(this.this$0.app).a("dc00899").b("grp_lbs").c("msg_box");
     String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
+    if (this.a.isLiving) {
       str2 = "clk_livepush";
     } else {
       str2 = "clk_relivepush";
     }
-    localReportTask.d(str2).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE)).a(new String[] { String.valueOf(i), String.valueOf(j), str1 }).a();
+    localReportTask.d(str2).e(String.valueOf(Long.valueOf(this.a.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE)).a(new String[] { String.valueOf(i), String.valueOf(j), str1 }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.8
  * JD-Core Version:    0.7.0.1
  */

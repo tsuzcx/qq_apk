@@ -9,7 +9,6 @@ import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Collections;
-import java.util.Map;
 
 class LoadCompactDynamicFeature$ActivityLifeCycleCallback
   implements Application.ActivityLifecycleCallbacks
@@ -18,27 +17,37 @@ class LoadCompactDynamicFeature$ActivityLifeCycleCallback
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    boolean bool = paramActivity.getIntent().getBooleanExtra("extra_is_plugin", false);
-    paramBundle = paramActivity.getIntent().getStringExtra("extra_plugin_id");
-    StringBuilder localStringBuilder;
-    if ((bool) && (!TextUtils.isEmpty(paramBundle)))
+    try
     {
-      paramBundle = new File(PluginUtils.getPluginInstallDir(paramActivity), paramBundle).getAbsolutePath();
-      localStringBuilder = new StringBuilder();
+      boolean bool = paramActivity.getIntent().getBooleanExtra("extra_is_plugin", false);
+      paramBundle = paramActivity.getIntent().getStringExtra("extra_plugin_id");
+      if ((bool) && (!TextUtils.isEmpty(paramBundle)))
+      {
+        paramBundle = new File(PluginUtils.getPluginInstallDir(paramActivity), paramBundle).getAbsolutePath();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("inject resources before plugin aty onCreate! resources path: ");
+        localStringBuilder.append(paramBundle);
+        QLog.i("plugin_tag", 1, localStringBuilder.toString());
+        this.a.a(paramActivity, Collections.singletonList(paramBundle));
+        return;
+      }
+      paramBundle = LoadCompactDynamicFeature.a(this.a, paramActivity, paramActivity.getClass().getName());
+      if (TextUtils.isEmpty(paramBundle)) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("inject resources before plugin aty onCreate! resources path: ");
       localStringBuilder.append(paramBundle);
       QLog.i("plugin_tag", 1, localStringBuilder.toString());
       this.a.a(paramActivity, Collections.singletonList(paramBundle));
       return;
     }
-    if (LoadCompactDynamicFeature.a(this.a).containsKey(paramActivity.getClass().getName()))
+    catch (Exception paramActivity)
     {
-      paramBundle = (String)LoadCompactDynamicFeature.a(this.a).get(paramActivity.getClass().getName());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("inject resources before plugin aty onCreate! resources path: ");
-      localStringBuilder.append(paramBundle);
-      QLog.i("plugin_tag", 1, localStringBuilder.toString());
-      this.a.a(paramActivity, Collections.singletonList(paramBundle));
+      paramBundle = new StringBuilder();
+      paramBundle.append("inject resources before plugin aty error: ");
+      paramBundle.append(paramActivity);
+      QLog.e("plugin_tag", 1, paramBundle.toString());
     }
   }
   
@@ -56,7 +65,7 @@ class LoadCompactDynamicFeature$ActivityLifeCycleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.compact.LoadCompactDynamicFeature.ActivityLifeCycleCallback
  * JD-Core Version:    0.7.0.1
  */

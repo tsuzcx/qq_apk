@@ -13,13 +13,13 @@ class NewFriendVerifyBlockedListFragment$5
   
   public void onClick(View paramView)
   {
-    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).gotoFriendSettingBrowser(NewFriendVerifyBlockedListFragment.a(this.a));
+    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).gotoFriendSettingBrowser(NewFriendVerifyBlockedListFragment.b(this.a));
     ReportController.b(null, "dc00898", "", "", "0X800A3AA", "0X800A3AA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.fragment.NewFriendVerifyBlockedListFragment.5
  * JD-Core Version:    0.7.0.1
  */

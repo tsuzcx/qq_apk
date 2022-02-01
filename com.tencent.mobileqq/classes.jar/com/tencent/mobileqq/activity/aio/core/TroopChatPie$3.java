@@ -17,19 +17,19 @@ class TroopChatPie$3
     if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "Confess action! ");
+        QLog.d(this.a.c, 2, "Confess action! ");
       }
-      if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null)
+      if (this.a.n != null)
       {
-        this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(35);
-        TroopConfessUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+        this.a.n.a(35);
+        TroopConfessUtil.a(this.a.d, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.3
  * JD-Core Version:    0.7.0.1
  */

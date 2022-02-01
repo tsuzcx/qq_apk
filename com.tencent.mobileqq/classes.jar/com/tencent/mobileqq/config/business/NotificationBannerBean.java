@@ -6,16 +6,16 @@ import org.json.JSONObject;
 
 public class NotificationBannerBean
 {
-  private static final NotificationBannerBean jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean = new NotificationBannerBean();
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final NotificationBannerBean e = new NotificationBannerBean();
+  private boolean a = false;
   private String b = "";
+  private String c = "";
+  private long d = 0L;
   
   public static NotificationBannerBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if (paramArrayOfQConfItem == null) {
-      return jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
+      return e;
     }
     for (;;)
     {
@@ -26,14 +26,14 @@ public class NotificationBannerBean
         int i = 0;
         if (i < j)
         {
-          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].b);
           if (localJSONObject.optInt("visible", 0) == 1)
           {
             bool = true;
-            localNotificationBannerBean.jdField_a_of_type_Boolean = bool;
-            localNotificationBannerBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("guideText", "");
-            localNotificationBannerBean.b = localJSONObject.optString("guideHighlightText", "");
-            localNotificationBannerBean.jdField_a_of_type_Long = localJSONObject.optLong("showIntervalMs", 0L);
+            localNotificationBannerBean.a = bool;
+            localNotificationBannerBean.b = localJSONObject.optString("guideText", "");
+            localNotificationBannerBean.c = localJSONObject.optString("guideHighlightText", "");
+            localNotificationBannerBean.d = localJSONObject.optLong("showIntervalMs", 0L);
             i += 1;
           }
         }
@@ -45,35 +45,35 @@ public class NotificationBannerBean
       catch (Exception paramArrayOfQConfItem)
       {
         QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfQConfItem);
-        return jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
+        return e;
       }
       boolean bool = false;
     }
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public String b()
   {
     return this.b;
   }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public long d()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.NotificationBannerBean
  * JD-Core Version:    0.7.0.1
  */

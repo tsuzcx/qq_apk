@@ -8,74 +8,33 @@ import java.util.ArrayList;
 
 public class ParcelHelper
 {
-  public static ArrayList<Field> a(Object paramObject)
-  {
-    paramObject = paramObject.getClass();
-    ArrayList localArrayList = new ArrayList(16);
-    for (;;)
-    {
-      if (paramObject != Object.class) {
-        try
-        {
-          Field[] arrayOfField = paramObject.getDeclaredFields();
-          int j = arrayOfField.length;
-          int i = 0;
-          while (i < j)
-          {
-            Field localField = arrayOfField[i];
-            if ((((localField.getModifiers() & 0x10) == 0) || ((localField.getModifiers() & 0x8) == 0)) && (!localField.isAnnotationPresent(ParcelAnnotation.NotParcel.class)) && ((!"$jacocoData".endsWith(localField.getName())) || (localField.getType() != [Z.class)))
-            {
-              localField.setAccessible(true);
-              localArrayList.add(localField);
-            }
-            i += 1;
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.d("ParcelHelper", 2, new Object[] { "cls null error", localException.getStackTrace() });
-          paramObject = paramObject.getSuperclass();
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private static void a(Object paramObject)
-  {
-    if (paramObject.getClass().isAnnotationPresent(ParcelAnnotation.ParcelObject.class)) {
-      return;
-    }
-    throw new RuntimeException("Object to Parcel must describe @ParcelObject");
-  }
-  
   /* Error */
   public static boolean a(Object paramObject, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +25 -> 28
-    //   6: ldc 67
+    //   6: ldc 23
     //   8: iconst_2
     //   9: iconst_2
     //   10: anewarray 4	java/lang/Object
     //   13: dup
     //   14: iconst_0
-    //   15: ldc 106
+    //   15: ldc 25
     //   17: aastore
     //   18: dup
     //   19: iconst_1
     //   20: aload_0
-    //   21: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   21: invokevirtual 29	java/lang/Object:getClass	()Ljava/lang/Class;
     //   24: aastore
-    //   25: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   25: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   28: aconst_null
     //   29: astore 4
     //   31: aconst_null
     //   32: astore 5
     //   34: aconst_null
     //   35: astore_3
-    //   36: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   36: invokestatic 39	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   39: astore 6
     //   41: aload 6
     //   43: astore_3
@@ -88,7 +47,7 @@ public class ParcelHelper
     //   55: iconst_0
     //   56: aload_1
     //   57: arraylength
-    //   58: invokevirtual 116	android/os/Parcel:unmarshall	([BII)V
+    //   58: invokevirtual 43	android/os/Parcel:unmarshall	([BII)V
     //   61: aload 6
     //   63: astore_3
     //   64: aload 6
@@ -97,7 +56,7 @@ public class ParcelHelper
     //   70: astore 5
     //   72: aload 6
     //   74: iconst_0
-    //   75: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
+    //   75: invokevirtual 47	android/os/Parcel:setDataPosition	(I)V
     //   78: aload 6
     //   80: astore_3
     //   81: aload 6
@@ -105,7 +64,7 @@ public class ParcelHelper
     //   85: aload 6
     //   87: astore 5
     //   89: aload 6
-    //   91: invokevirtual 122	android/os/Parcel:readInt	()I
+    //   91: invokevirtual 51	android/os/Parcel:readInt	()I
     //   94: istore_2
     //   95: sipush 147
     //   98: iload_2
@@ -116,34 +75,34 @@ public class ParcelHelper
     //   107: astore 4
     //   109: aload 6
     //   111: astore 5
-    //   113: ldc 67
+    //   113: ldc 23
     //   115: iconst_1
     //   116: iconst_2
     //   117: anewarray 4	java/lang/Object
     //   120: dup
     //   121: iconst_0
-    //   122: ldc 124
+    //   122: ldc 53
     //   124: aastore
     //   125: dup
     //   126: iconst_1
     //   127: iload_2
-    //   128: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   128: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   131: aastore
-    //   132: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   132: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   135: aload 6
     //   137: ifnull +26 -> 163
     //   140: aload 6
-    //   142: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   142: invokevirtual 62	android/os/Parcel:recycle	()V
     //   145: iconst_0
     //   146: ireturn
     //   147: astore_0
-    //   148: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   148: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   151: ifeq +12 -> 163
-    //   154: ldc 67
+    //   154: ldc 23
     //   156: iconst_2
-    //   157: ldc 135
+    //   157: ldc 64
     //   159: aload_0
-    //   160: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   160: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   163: iconst_0
     //   164: ireturn
     //   165: aload 6
@@ -153,7 +112,7 @@ public class ParcelHelper
     //   172: aload 6
     //   174: astore 5
     //   176: aload_0
-    //   177: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
+    //   177: invokestatic 71	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:c	(Ljava/lang/Object;)V
     //   180: aload 6
     //   182: astore_3
     //   183: aload 6
@@ -161,7 +120,7 @@ public class ParcelHelper
     //   187: aload 6
     //   189: astore 5
     //   191: aload 6
-    //   193: invokevirtual 143	android/os/Parcel:readString	()Ljava/lang/String;
+    //   193: invokevirtual 75	android/os/Parcel:readString	()Ljava/lang/String;
     //   196: astore_1
     //   197: aload 6
     //   199: astore_3
@@ -170,10 +129,10 @@ public class ParcelHelper
     //   204: aload 6
     //   206: astore 5
     //   208: aload_0
-    //   209: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   212: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
+    //   209: invokevirtual 29	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   212: invokevirtual 80	java/lang/Class:getName	()Ljava/lang/String;
     //   215: aload_1
-    //   216: invokevirtual 147	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   216: invokevirtual 86	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   219: ifne +78 -> 297
     //   222: aload 6
     //   224: astore_3
@@ -181,13 +140,13 @@ public class ParcelHelper
     //   227: astore 4
     //   229: aload 6
     //   231: astore 5
-    //   233: ldc 67
+    //   233: ldc 23
     //   235: iconst_1
     //   236: iconst_4
     //   237: anewarray 4	java/lang/Object
     //   240: dup
     //   241: iconst_0
-    //   242: ldc 149
+    //   242: ldc 88
     //   244: aastore
     //   245: dup
     //   246: iconst_1
@@ -195,29 +154,29 @@ public class ParcelHelper
     //   248: aastore
     //   249: dup
     //   250: iconst_2
-    //   251: ldc 151
+    //   251: ldc 90
     //   253: aastore
     //   254: dup
     //   255: iconst_3
     //   256: aload_0
-    //   257: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   260: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
+    //   257: invokevirtual 29	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   260: invokevirtual 80	java/lang/Class:getName	()Ljava/lang/String;
     //   263: aastore
-    //   264: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   264: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   267: aload 6
     //   269: ifnull +26 -> 295
     //   272: aload 6
-    //   274: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   274: invokevirtual 62	android/os/Parcel:recycle	()V
     //   277: iconst_0
     //   278: ireturn
     //   279: astore_0
-    //   280: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   280: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   283: ifeq +12 -> 295
-    //   286: ldc 67
+    //   286: ldc 23
     //   288: iconst_2
-    //   289: ldc 135
+    //   289: ldc 64
     //   291: aload_0
-    //   292: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   292: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   295: iconst_0
     //   296: ireturn
     //   297: aload 6
@@ -227,7 +186,7 @@ public class ParcelHelper
     //   304: aload 6
     //   306: astore 5
     //   308: aload_0
-    //   309: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
+    //   309: invokestatic 94	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:b	(Ljava/lang/Object;)Ljava/util/ArrayList;
     //   312: astore_1
     //   313: aload 6
     //   315: astore_3
@@ -236,25 +195,25 @@ public class ParcelHelper
     //   320: aload 6
     //   322: astore 5
     //   324: aload_0
-    //   325: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
+    //   325: invokestatic 99	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
     //   328: aload_0
     //   329: aload 6
     //   331: aload_1
-    //   332: invokevirtual 163	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
+    //   332: invokevirtual 104	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Landroid/os/Parcel;Ljava/util/ArrayList;)V
     //   335: aload 6
     //   337: ifnull +26 -> 363
     //   340: aload 6
-    //   342: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   342: invokevirtual 62	android/os/Parcel:recycle	()V
     //   345: iconst_1
     //   346: ireturn
     //   347: astore_0
-    //   348: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   348: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   351: ifeq +12 -> 363
-    //   354: ldc 67
+    //   354: ldc 23
     //   356: iconst_2
-    //   357: ldc 135
+    //   357: ldc 64
     //   359: aload_0
-    //   360: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   360: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   363: iconst_1
     //   364: ireturn
     //   365: astore_0
@@ -262,25 +221,25 @@ public class ParcelHelper
     //   369: astore_0
     //   370: aload 4
     //   372: astore_3
-    //   373: ldc 67
+    //   373: ldc 23
     //   375: iconst_1
-    //   376: ldc 165
+    //   376: ldc 106
     //   378: aload_0
-    //   379: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   379: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   382: aload 4
     //   384: ifnull +26 -> 410
     //   387: aload 4
-    //   389: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   389: invokevirtual 62	android/os/Parcel:recycle	()V
     //   392: iconst_0
     //   393: ireturn
     //   394: astore_0
-    //   395: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   395: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   398: ifeq +12 -> 410
-    //   401: ldc 67
+    //   401: ldc 23
     //   403: iconst_2
-    //   404: ldc 135
+    //   404: ldc 64
     //   406: aload_0
-    //   407: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   407: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   410: iconst_0
     //   411: ireturn
     //   412: astore_0
@@ -291,16 +250,16 @@ public class ParcelHelper
     //   418: aload_3
     //   419: ifnull +26 -> 445
     //   422: aload_3
-    //   423: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   423: invokevirtual 62	android/os/Parcel:recycle	()V
     //   426: goto +19 -> 445
     //   429: astore_1
-    //   430: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   430: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   433: ifeq +12 -> 445
-    //   436: ldc 67
+    //   436: ldc 23
     //   438: iconst_2
-    //   439: ldc 135
+    //   439: ldc 64
     //   441: aload_1
-    //   442: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   442: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   445: aload_0
     //   446: athrow
     // Local variable table:
@@ -364,52 +323,52 @@ public class ParcelHelper
     //   1: astore_3
     //   2: aconst_null
     //   3: astore_1
-    //   4: invokestatic 112	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   4: invokestatic 39	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   7: astore_2
     //   8: aload_2
     //   9: astore_1
     //   10: aload_2
     //   11: iconst_0
-    //   12: invokevirtual 119	android/os/Parcel:setDataPosition	(I)V
+    //   12: invokevirtual 47	android/os/Parcel:setDataPosition	(I)V
     //   15: aload_2
     //   16: astore_1
     //   17: aload_2
     //   18: sipush 147
-    //   21: invokevirtual 171	android/os/Parcel:writeInt	(I)V
+    //   21: invokevirtual 112	android/os/Parcel:writeInt	(I)V
     //   24: aload_2
     //   25: astore_1
     //   26: aload_0
-    //   27: invokestatic 140	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)V
+    //   27: invokestatic 71	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:c	(Ljava/lang/Object;)V
     //   30: aload_2
     //   31: astore_1
     //   32: aload_2
     //   33: aload_0
-    //   34: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   37: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
-    //   40: invokevirtual 174	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   34: invokevirtual 29	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   37: invokevirtual 80	java/lang/Class:getName	()Ljava/lang/String;
+    //   40: invokevirtual 116	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   43: aload_2
     //   44: astore_1
     //   45: aload_0
-    //   46: invokestatic 153	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:a	(Ljava/lang/Object;)Ljava/util/ArrayList;
+    //   46: invokestatic 94	com/tencent/mobileqq/activity/recent/parcelUtils/ParcelHelper:b	(Ljava/lang/Object;)Ljava/util/ArrayList;
     //   49: astore_3
     //   50: aload_2
     //   51: astore_1
     //   52: aload_0
-    //   53: invokestatic 158	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
+    //   53: invokestatic 99	com/tencent/mobileqq/activity/recent/parcelUtils/processor/ParcelProcessorFactory:a	(Ljava/lang/Object;)Lcom/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor;
     //   56: aload_0
     //   57: aload_3
     //   58: aload_2
-    //   59: invokevirtual 177	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
+    //   59: invokevirtual 119	com/tencent/mobileqq/activity/recent/parcelUtils/processor/BaseParcelProcessor:a	(Ljava/lang/Object;Ljava/util/ArrayList;Landroid/os/Parcel;)Z
     //   62: pop
     //   63: aload_2
     //   64: astore_1
     //   65: aload_2
-    //   66: invokevirtual 181	android/os/Parcel:marshall	()[B
+    //   66: invokevirtual 123	android/os/Parcel:marshall	()[B
     //   69: astore_3
     //   70: aload_2
     //   71: ifnull +7 -> 78
     //   74: aload_2
-    //   75: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   75: invokevirtual 62	android/os/Parcel:recycle	()V
     //   78: aload_3
     //   79: areturn
     //   80: astore_0
@@ -430,18 +389,18 @@ public class ParcelHelper
     //   105: aload_2
     //   106: astore_1
     //   107: aload_0
-    //   108: invokevirtual 17	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   108: invokevirtual 29	java/lang/Object:getClass	()Ljava/lang/Class;
     //   111: astore_0
     //   112: goto +3 -> 115
     //   115: aload_2
     //   116: astore_1
-    //   117: ldc 67
+    //   117: ldc 23
     //   119: iconst_1
     //   120: iconst_4
     //   121: anewarray 4	java/lang/Object
     //   124: dup
     //   125: iconst_0
-    //   126: ldc 183
+    //   126: ldc 125
     //   128: aastore
     //   129: dup
     //   130: iconst_1
@@ -449,17 +408,17 @@ public class ParcelHelper
     //   132: aastore
     //   133: dup
     //   134: iconst_2
-    //   135: ldc 185
+    //   135: ldc 127
     //   137: aastore
     //   138: dup
     //   139: iconst_3
     //   140: aload_3
     //   141: aastore
-    //   142: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   142: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   145: aload_2
     //   146: ifnull +7 -> 153
     //   149: aload_2
-    //   150: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   150: invokevirtual 62	android/os/Parcel:recycle	()V
     //   153: aconst_null
     //   154: areturn
     //   155: astore_0
@@ -470,7 +429,7 @@ public class ParcelHelper
     //   160: aload_1
     //   161: ifnull +7 -> 168
     //   164: aload_1
-    //   165: invokevirtual 133	android/os/Parcel:recycle	()V
+    //   165: invokevirtual 62	android/os/Parcel:recycle	()V
     //   168: aload_0
     //   169: athrow
     //   170: astore_0
@@ -481,7 +440,7 @@ public class ParcelHelper
     //   175: areturn
     //   176: astore_1
     //   177: goto -9 -> 168
-    //   180: ldc 187
+    //   180: ldc 129
     //   182: astore_0
     //   183: goto -68 -> 115
     // Local variable table:
@@ -526,10 +485,51 @@ public class ParcelHelper
     //   149	153	173	java/lang/Throwable
     //   164	168	176	java/lang/Throwable
   }
+  
+  public static ArrayList<Field> b(Object paramObject)
+  {
+    paramObject = paramObject.getClass();
+    ArrayList localArrayList = new ArrayList(16);
+    for (;;)
+    {
+      if (paramObject != Object.class) {
+        try
+        {
+          Field[] arrayOfField = paramObject.getDeclaredFields();
+          int j = arrayOfField.length;
+          int i = 0;
+          while (i < j)
+          {
+            Field localField = arrayOfField[i];
+            if ((((localField.getModifiers() & 0x10) == 0) || ((localField.getModifiers() & 0x8) == 0)) && (!localField.isAnnotationPresent(ParcelAnnotation.NotParcel.class)) && ((!"$jacocoData".endsWith(localField.getName())) || (localField.getType() != [Z.class)))
+            {
+              localField.setAccessible(true);
+              localArrayList.add(localField);
+            }
+            i += 1;
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.d("ParcelHelper", 2, new Object[] { "cls null error", localException.getStackTrace() });
+          paramObject = paramObject.getSuperclass();
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static void c(Object paramObject)
+  {
+    if (paramObject.getClass().isAnnotationPresent(ParcelAnnotation.ParcelObject.class)) {
+      return;
+    }
+    throw new RuntimeException("Object to Parcel must describe @ParcelObject");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper
  * JD-Core Version:    0.7.0.1
  */

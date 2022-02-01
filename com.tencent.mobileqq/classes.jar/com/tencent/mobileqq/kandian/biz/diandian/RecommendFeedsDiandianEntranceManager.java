@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.diandian.api.IRecommendFeedsDiandianEntranceManager;
 import com.tencent.mobileqq.kandian.biz.reddot.OnEntryIconRefreshListener;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
@@ -21,7 +21,6 @@ import com.tencent.mobileqq.kandian.repo.diandian.IEntranceButtonDataSource;
 import com.tencent.mobileqq.kandian.repo.diandian.RIJColumnDataSource;
 import com.tencent.mobileqq.kandian.repo.diandian.ReadInJoyDianDianEntranceModule;
 import com.tencent.mobileqq.kandian.repo.diandian.ReadInJoyDianDianEntranceModule.OnIconRefreshCallback;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,7 +30,6 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Deprecated
 public class RecommendFeedsDiandianEntranceManager
   implements IRecommendFeedsDiandianEntranceManager
 {
@@ -91,7 +89,7 @@ public class RecommendFeedsDiandianEntranceManager
   
   private void checkAndUpdateIconInfo(String paramString)
   {
-    int i = ReadInJoyHelper.e();
+    int i = ReadInJoyHelper.K();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkAndUpdateIconInfo | reason ");
     localStringBuilder.append(paramString);
@@ -105,7 +103,7 @@ public class RecommendFeedsDiandianEntranceManager
       localStringBuilder.append("checkAndUpdateIconInfo | spIconInfo : ");
       localStringBuilder.append(paramString);
       QLog.d("RecommendFeedsDiandianEntranceManager", 1, localStringBuilder.toString());
-      if (paramString.jdField_a_of_type_Int != i)
+      if (paramString.a != i)
       {
         QLog.d("RecommendFeedsDiandianEntranceManager", 1, "checkAndUpdateIconInfo | spIconInfo updated");
         if (isFollowOrTribeFeedsType(i))
@@ -146,9 +144,9 @@ public class RecommendFeedsDiandianEntranceManager
       localJSONObject.put("channel_id", paramInt3);
       if (paramRIJColumnDataSource != null)
       {
-        localJSONObject.put("column_id", paramRIJColumnDataSource.jdField_a_of_type_Int);
-        localJSONObject.put("rowkey", paramRIJColumnDataSource.d);
-        localJSONObject.put("video_report_info", paramRIJColumnDataSource.e);
+        localJSONObject.put("column_id", paramRIJColumnDataSource.e);
+        localJSONObject.put("rowkey", paramRIJColumnDataSource.f);
+        localJSONObject.put("video_report_info", paramRIJColumnDataSource.g);
       }
       localJSONObject.put("diandianfeeds_type", 6);
     }
@@ -164,27 +162,27 @@ public class RecommendFeedsDiandianEntranceManager
   
   public static int getDefaultFeedsIconSrcId()
   {
-    int j = ReadInJoyHelper.e();
-    int i = 2130849669;
+    int j = ReadInJoyHelper.K();
+    int i = 2130851374;
     if ((j != 1) && (j != 2))
     {
       if (j != 3)
       {
         if (j != 4) {
-          return 2130849669;
+          return 2130851374;
         }
-        return 2130849704;
+        return 2130851410;
       }
     }
     else {
-      i = 2130843228;
+      i = 2130844182;
     }
     return i;
   }
   
   public static String getEntranceSchema()
   {
-    return (String)RIJSPUtils.a("KEY_ENTRANCE_SCHEMA", "");
+    return (String)RIJSPUtils.b("KEY_ENTRANCE_SCHEMA", "");
   }
   
   public static String getFeedsDefaultSchema(int paramInt)
@@ -204,7 +202,7 @@ public class RecommendFeedsDiandianEntranceManager
         }
         return "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0";
       }
-      return ReadInJoyHelper.a();
+      return ReadInJoyHelper.M();
     }
     return "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";
   }
@@ -215,12 +213,12 @@ public class RecommendFeedsDiandianEntranceManager
     if (localEntranceIconInfo == null) {
       return -1;
     }
-    return localEntranceIconInfo.jdField_b_of_type_Int;
+    return localEntranceIconInfo.h;
   }
   
   private EntranceIconInfo getIconInfoFromSp()
   {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
+    Object localObject1 = RIJQQAppInterfaceUtil.d();
     if (localObject1 != null) {
       localObject1 = RIJSPUtils.a((String)localObject1);
     } else {
@@ -238,14 +236,14 @@ public class RecommendFeedsDiandianEntranceManager
           return null;
         }
         localObject1 = new EntranceIconInfo();
-        ((EntranceIconInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("icon_url", "");
-        ((EntranceIconInfo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("feeds_type", 3);
-        ((EntranceIconInfo)localObject1).c = ((JSONObject)localObject2).optString("jump_schema", "");
-        ((EntranceIconInfo)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("small_icon_url", "");
-        ((EntranceIconInfo)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optBoolean("use_gif", false);
+        ((EntranceIconInfo)localObject1).b = ((JSONObject)localObject2).optString("icon_url", "");
+        ((EntranceIconInfo)localObject1).a = ((JSONObject)localObject2).optInt("feeds_type", 3);
+        ((EntranceIconInfo)localObject1).d = ((JSONObject)localObject2).optString("jump_schema", "");
+        ((EntranceIconInfo)localObject1).c = ((JSONObject)localObject2).optString("small_icon_url", "");
+        ((EntranceIconInfo)localObject1).e = ((JSONObject)localObject2).optBoolean("use_gif", false);
         ExtraInfo localExtraInfo = new ExtraInfo();
-        localExtraInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_str", "");
-        ((EntranceIconInfo)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianExtraInfo = localExtraInfo;
+        localExtraInfo.a = ((JSONObject)localObject2).optString("report_str", "");
+        ((EntranceIconInfo)localObject1).f = localExtraInfo;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("getIconInfoFromSp entryInfo ");
         ((StringBuilder)localObject2).append(localObject1);
@@ -293,7 +291,7 @@ public class RecommendFeedsDiandianEntranceManager
     paramIEntranceButtonDataSource = mCurIconInfo;
     if (paramIEntranceButtonDataSource != null)
     {
-      sFeedsType = paramIEntranceButtonDataSource.jdField_a_of_type_Int;
+      sFeedsType = paramIEntranceButtonDataSource.a;
       paramIEntranceButtonDataSource = new StringBuilder();
       paramIEntranceButtonDataSource.append("handleDianDianIconRefresh | sFeedsType update : ");
       paramIEntranceButtonDataSource.append(sFeedsType);
@@ -333,7 +331,7 @@ public class RecommendFeedsDiandianEntranceManager
     SharedPreferences localSharedPreferences;
     if (localObject != null)
     {
-      if (!isFollowOrTribeFeedsType(((EntranceIconInfo)localObject).jdField_a_of_type_Int)) {
+      if (!isFollowOrTribeFeedsType(((EntranceIconInfo)localObject).a)) {
         return;
       }
       localSharedPreferences = RIJSPUtils.a(RIJQQAppInterfaceUtil.a().getCurrentUin());
@@ -344,16 +342,16 @@ public class RecommendFeedsDiandianEntranceManager
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("feeds_type", mCurIconInfo.jdField_a_of_type_Int);
-        localJSONObject.put("icon_url", mCurIconInfo.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("small_icon_url", mCurIconInfo.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("jump_schema", mCurIconInfo.c);
-        if (mCurIconInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianExtraInfo == null) {
+        localJSONObject.put("feeds_type", mCurIconInfo.a);
+        localJSONObject.put("icon_url", mCurIconInfo.b);
+        localJSONObject.put("small_icon_url", mCurIconInfo.c);
+        localJSONObject.put("jump_schema", mCurIconInfo.d);
+        if (mCurIconInfo.f == null) {
           break label206;
         }
-        localObject = mCurIconInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianExtraInfo.jdField_a_of_type_JavaLangString;
+        localObject = mCurIconInfo.f.a;
         localJSONObject.put("report_str", localObject);
-        localJSONObject.put("use_gif", mCurIconInfo.jdField_a_of_type_Boolean);
+        localJSONObject.put("use_gif", mCurIconInfo.e);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("saveIconInfo2Sp | jsonStr : ");
         ((StringBuilder)localObject).append(localJSONObject.toString());
@@ -400,12 +398,12 @@ public class RecommendFeedsDiandianEntranceManager
     if (!isFollowOrTribeFeedsType(sFeedsType)) {
       return;
     }
-    localObject1 = ReadInJoyLogicEngine.a().a();
+    localObject1 = ReadInJoyLogicEngine.a().l();
     if (localObject1 != null)
     {
       this.sLastExitTime = System.currentTimeMillis();
       ((ReadInJoyDianDianEntranceModule)localObject1).a(this.onIconRefreshCallback);
-      ReadInJoyLogicEngine.a().a().a(sFeedsType);
+      ReadInJoyLogicEngine.a().l().a(sFeedsType);
       ((ReadInJoyDianDianEntranceModule)localObject1).b(this.onIconRefreshCallback);
     }
   }
@@ -419,7 +417,7 @@ public class RecommendFeedsDiandianEntranceManager
   
   public void columnDiandianClickReport(RIJColumnDataSource paramRIJColumnDataSource, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", getColumnDiandianR5(paramRIJColumnDataSource, paramInt1, paramInt2, paramInt3), false);
+    PublicAccountReportUtils.a(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", getColumnDiandianR5(paramRIJColumnDataSource, paramInt1, paramInt2, paramInt3), false);
   }
   
   public int getEntryFeedsType()
@@ -442,7 +440,7 @@ public class RecommendFeedsDiandianEntranceManager
         if (this.mDailyMode == 3) {
           paramInt2 = 6;
         }
-        str = KandianDailyReportUtils.b();
+        str = KandianDailyReportUtils.h();
       }
       localJSONObject.put("diandianfeeds_type", paramInt2);
       localJSONObject.put("trigger_src", paramInt1);
@@ -462,7 +460,7 @@ public class RecommendFeedsDiandianEntranceManager
   
   public boolean isVideoFeedsType()
   {
-    int i = ReadInJoyHelper.e();
+    int i = ReadInJoyHelper.K();
     boolean bool = true;
     if (i != 1)
     {
@@ -499,12 +497,12 @@ public class RecommendFeedsDiandianEntranceManager
   
   public void reportEntryIconClick(int paramInt1, int paramInt2)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", getReportR5Str(paramInt1, paramInt2), false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", getReportR5Str(paramInt1, paramInt2), false);
   }
   
   public void reportEntryIconExposure(int paramInt1, int paramInt2)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", getReportR5Str(paramInt1, paramInt2), false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", getReportR5Str(paramInt1, paramInt2), false);
   }
   
   public void setDailyMode(int paramInt)
@@ -514,7 +512,7 @@ public class RecommendFeedsDiandianEntranceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.diandian.RecommendFeedsDiandianEntranceManager
  * JD-Core Version:    0.7.0.1
  */

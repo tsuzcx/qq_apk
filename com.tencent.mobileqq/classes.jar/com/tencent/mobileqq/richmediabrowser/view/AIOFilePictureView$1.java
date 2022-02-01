@@ -19,15 +19,15 @@ class AIOFilePictureView$1
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.a();
-      AIOFilePictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 20);
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView != null)
+      this.b.a();
+      AIOFilePictureView.a(this.b).a(this.a.a, this.a.b, 20);
+      if (this.b.l.imageView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setDoubleTapEnable(true);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setScaleEnable(true);
+        this.b.l.imageView.setDoubleTapEnable(true);
+        this.b.l.imageView.setScaleEnable(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.f();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
+      this.b.h();
+      this.b.k.g().b();
       return;
     }
     catch (Exception localException)
@@ -42,13 +42,13 @@ class AIOFilePictureView$1
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.a();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.g(true);
+    this.b.a();
+    this.b.g(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView.1
  * JD-Core Version:    0.7.0.1
  */

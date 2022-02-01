@@ -18,16 +18,16 @@ class ExpandAudioPlayerImpl$2
   public void run()
   {
     boolean bool = true;
-    QLog.i("ExpandAudioPlayerImpl", 1, String.format("audioPreDownLoad: %s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-    if (ExpandAudioPlayerImpl.access$200(this.this$0, this.jdField_a_of_type_JavaLangString) != null)
+    QLog.i("ExpandAudioPlayerImpl", 1, String.format("audioPreDownLoad: %s", new Object[] { this.a }));
+    if (ExpandAudioPlayerImpl.access$200(this.this$0, this.a) != null)
     {
-      QLog.i("ExpandAudioPlayerImpl", 2, String.format("audioPreDownLoad: %s has downloaded", new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIMethodCallback.setResult(true);
+      QLog.i("ExpandAudioPlayerImpl", 2, String.format("audioPreDownLoad: %s has downloaded", new Object[] { this.a }));
+      this.b.setResult(true);
       return;
     }
-    Object localObject = new File(VFSAssistantUtils.getSDKPrivatePath(TransFileUtil.getTransferFilePath(BaseApplicationImpl.sApplication.getRuntime().getCurrentAccountUin(), MD5.toMD5(this.jdField_a_of_type_JavaLangString), 23, null)));
-    int i = HttpDownloadUtil.downloadData(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_JavaLangString, (File)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIMethodCallback;
+    Object localObject = new File(VFSAssistantUtils.getSDKPrivatePath(TransFileUtil.getTransferFilePath(BaseApplicationImpl.sApplication.getRuntime().getCurrentAccountUin(), MD5.toMD5(this.a), 23, null)));
+    int i = HttpDownloadUtil.downloadData(BaseApplicationImpl.sApplication.getRuntime(), this.a, (File)localObject);
+    localObject = this.b;
     if (i != 0) {
       bool = false;
     }
@@ -36,7 +36,7 @@ class ExpandAudioPlayerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.audio.impl.ExpandAudioPlayerImpl.2
  * JD-Core Version:    0.7.0.1
  */

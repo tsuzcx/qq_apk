@@ -5,13 +5,12 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 class PublicAccountListActivity$InnerPAInfo
 {
   public PublicAccountInfo a;
-  public String a;
   public String b = "";
+  public String c = "";
   
   public PublicAccountListActivity$InnerPAInfo(PublicAccountInfo paramPublicAccountInfo)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+    this.a = paramPublicAccountInfo;
   }
   
   public void a(String paramString)
@@ -20,7 +19,7 @@ class PublicAccountListActivity$InnerPAInfo
     if (paramString == null) {
       str = "";
     }
-    this.jdField_a_of_type_JavaLangString = str;
+    this.b = str;
   }
   
   public void b(String paramString)
@@ -29,12 +28,12 @@ class PublicAccountListActivity$InnerPAInfo
     if (paramString == null) {
       str = "";
     }
-    this.b = str;
+    this.c = str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.InnerPAInfo
  * JD-Core Version:    0.7.0.1
  */

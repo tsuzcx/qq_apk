@@ -7,7 +7,7 @@ class GAudioMembersCtrlActivity$7$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity$7.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    this.e.b.c.a(this.a, this.b, this.c, this.d);
   }
 }
 

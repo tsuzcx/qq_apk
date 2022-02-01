@@ -17,7 +17,7 @@ class ARCloudPretreatmentManager$1
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "[DEBUG_SCAN_yt_face] pretreat, extractFaceFeature start");
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus;
+    Object localObject = this.a;
     int i = 0;
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -31,8 +31,8 @@ class ARCloudPretreatmentManager$1
         long l2 = System.currentTimeMillis();
         if (FaceScanModelsLoader.b)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus;
-          localObject[i].feature = this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuFaceFeature(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, localObject[i].xys, 0);
+          localObject = this.a;
+          localObject[i].feature = this.b.calcuFaceFeature(this.c, this.d, this.e, localObject[i].xys, 0);
         }
         else
         {
@@ -45,11 +45,11 @@ class ARCloudPretreatmentManager$1
           ((StringBuilder)localObject).append("  calcuFaceFeature TimeCost = ");
           ((StringBuilder)localObject).append(l3 - l2);
           QLog.d("AREngine_ARCloudPretreatmentManagert", 2, ((StringBuilder)localObject).toString());
-          if (this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature != null)
+          if (this.a[i].feature != null)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("  calcuFaceFeature feature = ");
-            ((StringBuilder)localObject).append(Arrays.toString(this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature));
+            ((StringBuilder)localObject).append(Arrays.toString(this.a[i].feature));
             QLog.d("AREngine_ARCloudPretreatmentManagert", 2, ((StringBuilder)localObject).toString());
           }
         }
@@ -58,8 +58,8 @@ class ARCloudPretreatmentManager$1
     }
     int j = 0;
     l1 = System.currentTimeMillis() - l1;
-    ARFaceDataCollector.a().e = l1;
-    ARFaceDataCollector.a().jdField_a_of_type_Int = j;
+    ARFaceDataCollector.b().f = l1;
+    ARFaceDataCollector.b().g = j;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -71,7 +71,7 @@ class ARCloudPretreatmentManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudPretreatmentManager.1
  * JD-Core Version:    0.7.0.1
  */

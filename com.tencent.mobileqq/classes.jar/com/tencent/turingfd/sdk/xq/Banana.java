@@ -1,24 +1,58 @@
 package com.tencent.turingfd.sdk.xq;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class Banana
-  extends case
+  extends else
 {
-  public int ec = 0;
-  public int od = 0;
-  public int pd = 0;
+  public static List<String> a;
+  public static List<String> b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public List<String> f = null;
+  public List<String> g = null;
+  public String h = "";
   
-  public void a(byte parambyte)
+  static
   {
-    parambyte.b(this.ec, 0);
-    parambyte.b(this.od, 1);
-    parambyte.b(this.pd, 2);
+    ArrayList localArrayList = new ArrayList();
+    a = localArrayList;
+    localArrayList.add("");
+    localArrayList = new ArrayList();
+    b = localArrayList;
+    localArrayList.add("");
+  }
+  
+  public void a(case paramcase)
+  {
+    paramcase.a(this.c, 0);
+    paramcase.a(this.d, 1);
+    paramcase.a(this.e, 2);
+    Object localObject = this.f;
+    if (localObject != null) {
+      paramcase.a((Collection)localObject, 3);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      paramcase.a((Collection)localObject, 4);
+    }
+    localObject = this.h;
+    if (localObject != null) {
+      paramcase.a((String)localObject, 5);
+    }
   }
   
   public void a(try paramtry)
   {
-    this.ec = paramtry.a(this.ec, 0, false);
-    this.od = paramtry.a(this.od, 1, false);
-    this.pd = paramtry.a(this.pd, 2, false);
+    this.c = paramtry.a(this.c, 0, false);
+    this.d = paramtry.a(this.d, 1, false);
+    this.e = paramtry.a(this.e, 2, false);
+    this.f = ((List)paramtry.a(a, 3, false));
+    this.g = ((List)paramtry.a(b, 4, false));
+    this.h = paramtry.b(5, false);
   }
   
   public boolean equals(Object paramObject)
@@ -33,12 +67,12 @@ public class Banana
       return false;
     }
     paramObject = (Banana)paramObject;
-    return (char.equals(this.ec, paramObject.ec)) && (char.equals(this.od, paramObject.od)) && (char.equals(this.pd, paramObject.pd));
+    return (goto.a(this.c, paramObject.c)) && (goto.a(this.d, paramObject.d)) && (goto.a(this.e, paramObject.e)) && (this.f.equals(paramObject.f)) && (this.g.equals(paramObject.g)) && (this.h.equals(paramObject.h));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Banana
  * JD-Core Version:    0.7.0.1
  */

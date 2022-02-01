@@ -43,18 +43,18 @@ class ReadInJoyTabTopSearchHeaderController$1
     if (paramInt != 10) {
       return;
     }
-    Object localObject = SearchEntryConfigManager.b;
+    Object localObject = SearchEntryConfigManager.c;
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.next();
-        if (localSearchEntryDataModel.c == 1) {
-          this.a.a = ((HotWordSearchEntryDataModel)localSearchEntryDataModel);
+        if (localSearchEntryDataModel.g == 1) {
+          this.a.b = ((HotWordSearchEntryDataModel)localSearchEntryDataModel);
         }
-        if ((localSearchEntryDataModel.c == 7) && (TextUtils.equals((CharSequence)localObject, "Recom_word"))) {
-          this.a.a = ((HotWordSearchEntryDataModel)localSearchEntryDataModel);
+        if ((localSearchEntryDataModel.g == 7) && (TextUtils.equals((CharSequence)localObject, "Recom_word"))) {
+          this.a.b = ((HotWordSearchEntryDataModel)localSearchEntryDataModel);
         }
       }
       com.tencent.mobileqq.kandian.biz.search.entity.ReadInJoySearchWord.a = 0;
@@ -64,7 +64,7 @@ class ReadInJoyTabTopSearchHeaderController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyTabTopSearchHeaderController.1
  * JD-Core Version:    0.7.0.1
  */

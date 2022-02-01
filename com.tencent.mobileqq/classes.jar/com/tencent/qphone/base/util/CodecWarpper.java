@@ -3,8 +3,10 @@ package com.tencent.qphone.base.util;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import oicq.wlogin_sdk.tools.util;
 
 public abstract class CodecWarpper
 {
@@ -219,9 +221,16 @@ public abstract class CodecWarpper
   public static void nativeSetAccountKey(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder("nativeSetAccountKey ");
+    localStringBuilder.append(",uin=");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(paramString1));
     printBytes(",A1=", paramArrayOfByte1, localStringBuilder);
     printBytes(",A2=", paramArrayOfByte2, localStringBuilder);
+    printBytes(",A3=", paramArrayOfByte3, localStringBuilder);
+    printBytes(",D1=", paramArrayOfByte4, localStringBuilder);
     printBytes(",D2=", paramArrayOfByte5, localStringBuilder);
+    printBytes(",S2=", paramArrayOfByte6, localStringBuilder);
+    printBytes(",key=", paramArrayOfByte7, localStringBuilder);
+    printBytes(",cookie=", paramArrayOfByte8, localStringBuilder);
     QLog.d(tag, 1, localStringBuilder.toString());
     setAccountKey(paramString1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramString2);
   }
@@ -245,12 +254,14 @@ public abstract class CodecWarpper
   public static void printBytes(String paramString, byte[] paramArrayOfByte, StringBuilder paramStringBuilder)
   {
     paramStringBuilder.append(paramString);
-    if (paramArrayOfByte == null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      paramStringBuilder.append("null");
+      paramStringBuilder.append(paramArrayOfByte.length);
+      paramStringBuilder.append("|");
+      paramStringBuilder.append(util.buf_to_string(paramArrayOfByte, 1));
       return;
     }
-    paramStringBuilder.append(paramArrayOfByte.length);
+    paramStringBuilder.append("null");
   }
   
   private static synchronized native void removeAccountKey(String paramString);
@@ -315,7 +326,7 @@ public abstract class CodecWarpper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.CodecWarpper
  * JD-Core Version:    0.7.0.1
  */

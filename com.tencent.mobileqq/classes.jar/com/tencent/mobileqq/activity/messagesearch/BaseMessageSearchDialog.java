@@ -31,49 +31,47 @@ public class BaseMessageSearchDialog
   extends ReportDialog
   implements Handler.Callback
 {
-  protected int a;
-  protected Context a;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  MessageItem jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected MessageRecord a;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   protected MqqWeakReferenceHandler a;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public XListView a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseMessageSearchDialog.2(this);
-  boolean jdField_a_of_type_Boolean = false;
+  public XListView b;
+  protected Context c;
+  EditText d;
+  boolean e = false;
+  QQAppInterface f;
+  SessionInfo g;
+  QQProgressDialog h;
+  BubblePopupWindow i;
+  MessageItem j;
+  protected int k = 0;
+  protected MessageRecord l = null;
+  private Runnable m = new BaseMessageSearchDialog.2(this);
   
   public BaseMessageSearchDialog(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     super(paramContext, 16973834);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+    this.c = paramContext;
+    this.f = paramQQAppInterface;
+    this.g = paramSessionInfo;
+    this.a = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
     requestWindowFeature(1);
     getWindow().setSoftInputMode(2);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131559332);
+    setContentView(2131625298);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;
     paramContext.width = -1;
     paramContext.windowAnimations = 16973824;
     paramContext.gravity = 51;
-    e();
+    g();
   }
   
-  private void e()
+  private void g()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.c;
     if (((localObject instanceof Activity)) && (((Context)localObject).getResources().getConfiguration().orientation == 1))
     {
-      localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      View localView = findViewById(2131370406);
+      localObject = (Activity)this.c;
+      View localView = findViewById(2131437674);
       if (LiuHaiUtils.c((Activity)localObject))
       {
         localView.post(new BaseMessageSearchDialog.1(this, localView, (Activity)localObject));
@@ -83,73 +81,73 @@ public class BaseMessageSearchDialog
         QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
       }
       localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+      ThreadManager.getUIHandler().postDelayed(this.m, 500L);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   protected void a() {}
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.h == null)
     {
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localContext, localContext.getResources().getDimensionPixelSize(2131299168));
+      Context localContext = this.c;
+      this.h = new QQProgressDialog(localContext, localContext.getResources().getDimensionPixelSize(2131299920));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.h.setCancelable(false);
+    this.h.setCanceledOnTouchOutside(false);
+    this.h.c(paramInt);
+    this.h.show();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.e = paramBoolean;
   }
   
   protected void b()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.h;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.h.dismiss();
     }
   }
   
-  protected void c()
+  public int c()
   {
-    if (getContext().getResources().getConfiguration().orientation == 2) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1, 0L);
-    }
+    return this.k;
   }
   
   protected void d()
   {
-    if (isShowing())
-    {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
+    if (getContext().getResources().getConfiguration().orientation == 2) {
+      this.a.sendEmptyMessageDelayed(1, 0L);
     }
   }
   
   public void dismiss()
   {
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandler().removeCallbacks(this.m);
     super.dismiss();
+  }
+  
+  protected void e()
+  {
+    if (isShowing())
+    {
+      long l1 = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l1, l1, 0, 0.0F, 0.0F, 0);
+      this.d.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l1, l1, 1, 0.0F, 0.0F, 0);
+      this.d.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+    }
+  }
+  
+  public boolean f()
+  {
+    return this.e;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -159,7 +157,7 @@ public class BaseMessageSearchDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog
  * JD-Core Version:    0.7.0.1
  */

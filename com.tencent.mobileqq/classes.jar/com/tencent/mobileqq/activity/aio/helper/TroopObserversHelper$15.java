@@ -22,11 +22,11 @@ class TroopObserversHelper$15
   public void run()
   {
     Object localObject1 = (TroopManager)TroopObserversHelper.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(TroopObserversHelper.a(this.this$0).a);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).f(TroopObserversHelper.b(this.this$0).b);
     if (localTroopInfo == null) {
       return;
     }
-    if (StringUtil.a(localTroopInfo.troopowneruin)) {
+    if (StringUtil.isEmpty(localTroopInfo.troopowneruin)) {
       return;
     }
     Object localObject2 = TroopObserversHelper.a(this.this$0).getCurrentAccountUin();
@@ -111,7 +111,7 @@ class TroopObserversHelper$15
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onOIDB0X899_0_Ret: toopUin=");
-      ((StringBuilder)localObject2).append(TroopObserversHelper.a(this.this$0).a);
+      ((StringBuilder)localObject2).append(TroopObserversHelper.b(this.this$0).b);
       ((StringBuilder)localObject2).append(", admin=");
       ((StringBuilder)localObject2).append(localTroopInfo.Administrator);
       ((StringBuilder)localObject2).append(", owner=");
@@ -126,17 +126,17 @@ class TroopObserversHelper$15
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onOIDB0X899_0_Ret, sendEmptyMessage-TIMER_ID, hasDestory=");
-      ((StringBuilder)localObject1).append(TroopObserversHelper.a(this.this$0).B);
+      ((StringBuilder)localObject1).append(TroopObserversHelper.d(this.this$0).aY);
       QLog.d("troop_gag", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!TroopObserversHelper.a(this.this$0).B) {
-      TroopObserversHelper.a(this.this$0).aG();
+    if (!TroopObserversHelper.d(this.this$0).aY) {
+      TroopObserversHelper.d(this.this$0).cf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.15
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ import com.tencent.qphone.base.util.QLog;
 public class PoiSlideBottomPanel
   extends SlideBottomPanel
 {
-  private View a;
-  private View b;
-  private int g;
+  private View A;
+  private View B;
+  private int C = 2;
   
   public PoiSlideBottomPanel(Context paramContext)
   {
@@ -31,71 +31,65 @@ public class PoiSlideBottomPanel
   public PoiSlideBottomPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_g_of_type_Int = 2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_d_of_type_Int;
   }
   
   public void a()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.c)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         return;
       }
       View localView = findViewWithTag(Integer.valueOf(1));
       float f1 = localView.getY();
-      float f2 = this.jdField_b_of_type_Int;
-      float f3 = this.i;
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.i }).setDuration(this.jdField_c_of_type_Int);
+      float f2 = this.h;
+      float f3 = this.o;
+      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.h - this.o }).setDuration(this.r);
       localValueAnimator.setTarget(localView);
-      localValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+      localValueAnimator.setInterpolator(this.x);
       localValueAnimator.addUpdateListener(new PoiSlideBottomPanel.2(this, localView, f1, f2 - f3));
       localValueAnimator.addListener(new PoiSlideBottomPanel.3(this));
       localValueAnimator.start();
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_e_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.displayPanel();
+      this.c = true;
+      this.w = false;
+      if (this.z != null) {
+        this.z.displayPanel();
       }
     }
   }
   
   protected void a(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.s) {
       return;
     }
-    f();
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = findViewWithTag(Integer.valueOf(1));
+    g();
+    if (this.B == null) {
+      this.B = findViewWithTag(Integer.valueOf(1));
     }
-    if ((!this.jdField_c_of_type_Boolean) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.jdField_d_of_type_Float))
+    if ((!this.n) && (Math.abs(paramMotionEvent.getY() - this.j) > this.f))
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_g_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(new PoiSlideBottomPanel.1(this));
+      this.n = true;
+      this.k = paramMotionEvent.getY();
+      this.B.addOnLayoutChangeListener(new PoiSlideBottomPanel.1(this));
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[panel] handleActionDown: invoked. isDragging: ");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.n);
       localStringBuilder.append(" Math.abs(event.getY() - firstDownY): ");
-      localStringBuilder.append(Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float));
+      localStringBuilder.append(Math.abs(paramMotionEvent.getY() - this.j));
       localStringBuilder.append(" mTouchSlop: ");
-      localStringBuilder.append(this.jdField_d_of_type_Float);
+      localStringBuilder.append(this.f);
       QLog.d("PoiSlideBottomPanel", 2, localStringBuilder.toString());
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.n)
     {
-      this.h = (paramMotionEvent.getY() - this.jdField_g_of_type_Float);
-      this.jdField_g_of_type_Float = paramMotionEvent.getY();
-      float f = this.jdField_b_of_type_AndroidViewView.getY();
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) && (f > this.jdField_b_of_type_Int - this.i) && (f < this.jdField_b_of_type_Int - this.j))
+      this.l = (paramMotionEvent.getY() - this.k);
+      this.k = paramMotionEvent.getY();
+      float f = this.B.getY();
+      if ((this.z != null) && (f > this.h - this.o) && (f < this.h - this.p))
       {
         if (QLog.isColorLevel())
         {
@@ -103,68 +97,143 @@ public class PoiSlideBottomPanel
           paramMotionEvent.append("[panel] fadeBackground: invoked. touchingViewY: ");
           paramMotionEvent.append(f);
           paramMotionEvent.append(" mMeasureHeight: ");
-          paramMotionEvent.append(this.jdField_b_of_type_Int);
+          paramMotionEvent.append(this.h);
           paramMotionEvent.append(" mPanelHeight: ");
-          paramMotionEvent.append(this.i);
+          paramMotionEvent.append(this.o);
           paramMotionEvent.append(" mTitleHeightNoDisplay: ");
-          paramMotionEvent.append(this.j);
+          paramMotionEvent.append(this.p);
           paramMotionEvent.append(" mMeasureHeight - mPanelHeight: ");
-          paramMotionEvent.append(this.jdField_b_of_type_Int - this.i);
+          paramMotionEvent.append(this.h - this.o);
           paramMotionEvent.append(" mMeasureHeight - mTitleHeightNoDisplay: ");
-          paramMotionEvent.append(this.jdField_b_of_type_Int - this.j);
+          paramMotionEvent.append(this.h - this.p);
           QLog.d("PoiSlideBottomPanel", 2, paramMotionEvent.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.fadeBackground(1.0F - f / (this.jdField_b_of_type_Int - this.j));
+        this.z.fadeBackground(1.0F - f / (this.h - this.p));
       }
-      if (this.h + f <= this.jdField_b_of_type_Int - this.i)
+      if (this.l + f <= this.h - this.o)
       {
-        this.jdField_b_of_type_AndroidViewView.offsetTopAndBottom((int)(this.jdField_b_of_type_Int - this.i - f));
+        this.B.offsetTopAndBottom((int)(this.h - this.o - f));
         return;
       }
-      if (f + this.h >= a())
+      if (f + this.l >= getBottomHeight())
       {
-        if (this.jdField_e_of_type_Boolean) {
+        if (this.w) {
           return;
         }
-        if (this.h > this.jdField_e_of_type_Int) {
-          this.h = this.jdField_e_of_type_Int;
+        if (this.l > this.u) {
+          this.l = this.u;
         }
-        this.jdField_b_of_type_AndroidViewView.offsetTopAndBottom((int)this.h);
+        this.B.offsetTopAndBottom((int)this.l);
         return;
       }
-      this.jdField_b_of_type_AndroidViewView.offsetTopAndBottom((int)this.h);
+      this.B.offsetTopAndBottom((int)this.l);
     }
   }
   
-  protected boolean a(MotionEvent paramMotionEvent)
+  protected void b()
+  {
+    if (this.b) {
+      return;
+    }
+    View localView = findViewWithTag(Integer.valueOf(1));
+    int i = (int)(this.h - this.p);
+    float f = localView.getY();
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.h - this.p });
+    localValueAnimator.setInterpolator(this.y);
+    localValueAnimator.setTarget(localView);
+    localValueAnimator.setDuration(500L);
+    localValueAnimator.addUpdateListener(new PoiSlideBottomPanel.4(this, localView, f, i));
+    localValueAnimator.addListener(new PoiSlideBottomPanel.5(this));
+    localValueAnimator.start();
+    if (this.z != null) {
+      this.z.hidePanel();
+    }
+  }
+  
+  protected void b(MotionEvent paramMotionEvent)
+  {
+    if (!this.s) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.m;
+    g();
+    if (((!this.c) && (paramMotionEvent.getY() - this.j < 0.0F) && (Math.abs(paramMotionEvent.getY() - this.j) > this.q)) || ((this.e < 0.0F) && (Math.abs(this.e) > Math.abs(this.d)) && (Math.abs(this.e) > this.g)))
+    {
+      a();
+    }
+    else if ((l1 - l2 < 300L) && (a(this.i, this.j, paramMotionEvent.getX(), paramMotionEvent.getY()) < a + 5.0F))
+    {
+      if (this.c)
+      {
+        b();
+      }
+      else
+      {
+        a();
+        this.C = 1;
+      }
+    }
+    else if ((!this.c) && (this.n))
+    {
+      int i = (int)(paramMotionEvent.getY() - this.j);
+      if (((!this.w) && (i > this.v)) || ((this.w) && (i < 0) && (Math.abs(i) < this.q))) {
+        c();
+      }
+      if ((!this.w) && (i < 0) && (Math.abs(i) < this.q))
+      {
+        paramMotionEvent = findViewWithTag(Integer.valueOf(1));
+        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { paramMotionEvent.getY(), this.h - this.p }).setDuration(this.r).start();
+      }
+    }
+    if (this.c)
+    {
+      paramMotionEvent = findViewWithTag(Integer.valueOf(1));
+      float f = paramMotionEvent.getY();
+      if ((f >= this.h - this.o) && (f >= this.h - this.o + this.q))
+      {
+        if (f > this.h - this.o + this.q) {
+          b();
+        }
+      }
+      else {
+        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f, this.h - this.o }).setDuration(this.r).start();
+      }
+    }
+    this.s = false;
+    this.n = false;
+    this.l = 0.0F;
+  }
+  
+  protected boolean c(MotionEvent paramMotionEvent)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.m;
     boolean bool2 = false;
     if (l1 - l2 <= 500L) {
       return false;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_e_of_type_Float = paramMotionEvent.getX();
+    this.m = System.currentTimeMillis();
+    this.i = paramMotionEvent.getX();
     float f = paramMotionEvent.getY();
-    this.jdField_g_of_type_Float = f;
-    this.jdField_f_of_type_Float = f;
+    this.k = f;
+    this.j = f;
     paramMotionEvent = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getGlobalVisibleRect(paramMotionEvent);
+    this.A.getGlobalVisibleRect(paramMotionEvent);
     boolean bool1 = bool2;
-    if (this.jdField_g_of_type_Float > paramMotionEvent.top)
+    if (this.k > paramMotionEvent.top)
     {
       bool1 = bool2;
-      if (this.jdField_g_of_type_Float < paramMotionEvent.bottom) {
+      if (this.k < paramMotionEvent.bottom) {
         bool1 = true;
       }
     }
-    this.jdField_d_of_type_Boolean = bool1;
+    this.s = bool1;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[panel] handleActionDown: invoked. firstDownY: ");
-      localStringBuilder.append(this.jdField_f_of_type_Float);
+      localStringBuilder.append(this.j);
       localStringBuilder.append(" actionRect: ");
       localStringBuilder.append(paramMotionEvent);
       localStringBuilder.append(" isConsume: ");
@@ -174,109 +243,39 @@ public class PoiSlideBottomPanel
     return bool1;
   }
   
-  public int b()
+  public int getBottomHeight()
   {
-    return this.jdField_g_of_type_Int;
+    return this.t;
   }
   
-  protected void b()
+  public int getDisplayFromType()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    View localView = findViewWithTag(Integer.valueOf(1));
-    int i = (int)(this.jdField_b_of_type_Int - this.j);
-    float f = localView.getY();
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.j });
-    localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
-    localValueAnimator.setTarget(localView);
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new PoiSlideBottomPanel.4(this, localView, f, i));
-    localValueAnimator.addListener(new PoiSlideBottomPanel.5(this));
-    localValueAnimator.start();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.hidePanel();
-    }
-  }
-  
-  protected void b(MotionEvent paramMotionEvent)
-  {
-    if (!this.jdField_d_of_type_Boolean) {
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    f();
-    if (((!this.jdField_b_of_type_Boolean) && (paramMotionEvent.getY() - this.jdField_f_of_type_Float < 0.0F) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.k)) || ((this.jdField_c_of_type_Float < 0.0F) && (Math.abs(this.jdField_c_of_type_Float) > Math.abs(this.jdField_b_of_type_Float)) && (Math.abs(this.jdField_c_of_type_Float) > this.jdField_a_of_type_Int)))
-    {
-      a();
-    }
-    else if ((l1 - l2 < 300L) && (a(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, paramMotionEvent.getX(), paramMotionEvent.getY()) < jdField_a_of_type_Float + 5.0F))
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        b();
-      }
-      else
-      {
-        a();
-        this.jdField_g_of_type_Int = 1;
-      }
-    }
-    else if ((!this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
-    {
-      int i = (int)(paramMotionEvent.getY() - this.jdField_f_of_type_Float);
-      if (((!this.jdField_e_of_type_Boolean) && (i > this.jdField_f_of_type_Int)) || ((this.jdField_e_of_type_Boolean) && (i < 0) && (Math.abs(i) < this.k))) {
-        c();
-      }
-      if ((!this.jdField_e_of_type_Boolean) && (i < 0) && (Math.abs(i) < this.k))
-      {
-        paramMotionEvent = findViewWithTag(Integer.valueOf(1));
-        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { paramMotionEvent.getY(), this.jdField_b_of_type_Int - this.j }).setDuration(this.jdField_c_of_type_Int).start();
-      }
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      paramMotionEvent = findViewWithTag(Integer.valueOf(1));
-      float f = paramMotionEvent.getY();
-      if ((f >= this.jdField_b_of_type_Int - this.i) && (f >= this.jdField_b_of_type_Int - this.i + this.k))
-      {
-        if (f > this.jdField_b_of_type_Int - this.i + this.k) {
-          b();
-        }
-      }
-      else {
-        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f, this.jdField_b_of_type_Int - this.i }).setDuration(this.jdField_c_of_type_Int).start();
-      }
-    }
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.h = 0.0F;
+    return this.C;
   }
   
   public void setBottomHeight(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void setDisplayFromType(int paramInt)
   {
-    this.jdField_g_of_type_Int = paramInt;
+    this.C = paramInt;
   }
   
   public void setDragView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.A = paramView;
   }
   
   public void setTitleHeightNoDisplay(int paramInt)
   {
-    this.j = paramInt;
+    this.p = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

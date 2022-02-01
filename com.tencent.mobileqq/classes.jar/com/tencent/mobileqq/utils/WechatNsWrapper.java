@@ -18,32 +18,30 @@ import java.util.HashMap;
 public final class WechatNsWrapper
   extends AudioComponentProcessor
 {
-  public static boolean a = false;
-  short[] a;
-  int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c;
+  public static boolean j = false;
+  int k;
+  short[] l;
+  private int m = 0;
+  private boolean n = false;
   
   public WechatNsWrapper()
   {
     super(BaseApplication.getContext());
-    this.jdField_c_of_type_Int = 0;
     c();
   }
   
   public WechatNsWrapper(Context paramContext)
   {
     super(paramContext);
-    this.jdField_c_of_type_Int = 0;
     c();
   }
   
   private void c()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!j) {
       try
       {
-        boolean bool1 = SoLoadUtil.a(this.jdField_a_of_type_AndroidContentContext, "stlport_shared", 0, false);
+        boolean bool1 = SoLoadUtil.a(this.a, "stlport_shared", 0, false);
         boolean bool2 = QLog.isColorLevel();
         StringBuilder localStringBuilder;
         if (bool2)
@@ -53,7 +51,7 @@ public final class WechatNsWrapper
           localStringBuilder.append(bool1);
           QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
         }
-        bool1 = SoLoadUtilNew.loadSoByName(this.jdField_a_of_type_AndroidContentContext, "voicemessagedenoise");
+        bool1 = SoLoadUtilNew.loadSoByName(this.a, "voicemessagedenoise");
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -61,7 +59,7 @@ public final class WechatNsWrapper
           localStringBuilder.append(bool1);
           QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
         }
-        bool1 = SoLoadUtilNew.loadSoByName(this.jdField_a_of_type_AndroidContentContext, "wechatns");
+        bool1 = SoLoadUtilNew.loadSoByName(this.a, "wechatns");
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -69,7 +67,7 @@ public final class WechatNsWrapper
           localStringBuilder.append(bool1);
           QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
         }
-        jdField_a_of_type_Boolean = true;
+        j = true;
         return;
       }
       catch (Throwable localThrowable)
@@ -92,26 +90,26 @@ public final class WechatNsWrapper
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     super.a(paramInt1, paramInt2, paramInt3);
-    if (this.jdField_b_of_type_Int == 0) {}
+    if (this.k == 0) {}
     for (;;)
     {
       try
       {
-        this.jdField_b_of_type_Int = nsNew();
+        this.k = nsNew();
         StringBuilder localStringBuilder1;
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("silkEncoderNew =");
-          localStringBuilder1.append(this.jdField_b_of_type_Int);
+          localStringBuilder1.append(this.k);
           QLog.d("SilkCodecWrapper", 2, localStringBuilder1.toString());
         }
-        paramInt2 = nsInit(this.jdField_b_of_type_Int, paramInt1);
+        paramInt2 = nsInit(this.k, paramInt1);
         if (paramInt2 != 0) {
           break label281;
         }
         bool = true;
-        this.jdField_b_of_type_Boolean = bool;
+        this.n = bool;
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
@@ -129,20 +127,20 @@ public final class WechatNsWrapper
           localStringBuilder2.append(localException.toString());
           QLog.d("SilkCodecWrapper", 2, localStringBuilder2.toString());
         }
-        this.jdField_b_of_type_Int = 0;
-        jdField_a_of_type_Boolean = false;
+        this.k = 0;
+        j = false;
       }
-      this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
-      this.jdField_a_of_type_ArrayOfShort = new short[this.jdField_a_of_type_Int / 2];
-      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-      this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-      paramInt2 = this.jdField_a_of_type_Int;
+      this.i = QQAudioUtils.a(paramInt1);
+      this.l = new short[this.i / 2];
+      this.d = new byte[this.i];
+      this.e = new byte[this.i];
+      paramInt2 = this.i;
       paramInt1 = 960;
       if (paramInt2 * 2 > 960) {
-        paramInt1 = this.jdField_a_of_type_Int * 2;
+        paramInt1 = this.i * 2;
       }
-      this.jdField_c_of_type_ArrayOfByte = new byte[paramInt1];
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+      this.f = new byte[paramInt1];
+      this.g = new IAudioProcessor.ProcessData(this.f, 0);
       return;
       label281:
       boolean bool = false;
@@ -161,7 +159,7 @@ public final class WechatNsWrapper
   
   public void b()
   {
-    int i = this.jdField_b_of_type_Int;
+    int i = this.k;
     if (i != 0)
     {
       i = nsDelete(i);
@@ -173,7 +171,7 @@ public final class WechatNsWrapper
         QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
       }
     }
-    this.jdField_b_of_type_Int = 0;
+    this.k = 0;
   }
   
   public void close()
@@ -192,27 +190,27 @@ public final class WechatNsWrapper
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Boolean))
+    if ((this.k != 0) && (this.n))
     {
-      if (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) == -1) {
+      if (this.c.read(this.d, 0, this.i) == -1) {
         return -1;
       }
-      a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfShort);
-      nsProcess(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte.length);
-      a(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte);
-      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1, this.jdField_a_of_type_Int);
-      return this.jdField_a_of_type_Int;
+      a(this.d, this.l);
+      nsProcess(this.k, this.l, this.d.length);
+      a(this.l, this.d);
+      System.arraycopy(this.d, 0, paramArrayOfByte, paramInt1, this.i);
+      return this.i;
     }
-    if (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) == -1) {
+    if (this.c.read(this.d, 0, this.i) == -1) {
       return -1;
     }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1, this.jdField_a_of_type_Int);
-    return this.jdField_a_of_type_Int;
+    System.arraycopy(this.d, 0, paramArrayOfByte, paramInt1, this.i);
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.WechatNsWrapper
  * JD-Core Version:    0.7.0.1
  */

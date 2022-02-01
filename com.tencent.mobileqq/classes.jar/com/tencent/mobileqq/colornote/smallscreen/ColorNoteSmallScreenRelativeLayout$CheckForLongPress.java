@@ -14,15 +14,15 @@ final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
       ColorNoteSmallScreenRelativeLayout.a(this.this$0, true);
       ColorNoteSmallScreenRelativeLayout.b(this.this$0, true);
       ColorNoteSmallScreenRelativeLayout localColorNoteSmallScreenRelativeLayout = this.this$0;
-      ColorNoteSmallScreenRelativeLayout.a(localColorNoteSmallScreenRelativeLayout, ColorNoteSmallScreenRelativeLayout.a(localColorNoteSmallScreenRelativeLayout));
-      ColorNoteSmallScreenRelativeLayout.a(this.this$0).a();
-      ColorNoteSmallScreenRelativeLayout.a(this.this$0).start();
+      ColorNoteSmallScreenRelativeLayout.a(localColorNoteSmallScreenRelativeLayout, ColorNoteSmallScreenRelativeLayout.b(localColorNoteSmallScreenRelativeLayout));
+      ColorNoteSmallScreenRelativeLayout.a(this.this$0).e();
+      ColorNoteSmallScreenRelativeLayout.c(this.this$0).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

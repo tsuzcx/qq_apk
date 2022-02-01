@@ -24,8 +24,8 @@ public class NativeUsersCommentsView
   extends LinearLayout
   implements IView
 {
-  private String jdField_a_of_type_JavaLangString;
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private String a;
+  private JSONArray b;
   
   public NativeUsersCommentsView(Context paramContext)
   {
@@ -45,26 +45,13 @@ public class NativeUsersCommentsView
     return localObject;
   }
   
-  private ReadInJoyYAFolderTextView a()
-  {
-    Object localObject = getChildAt(getChildCount() - 1);
-    if ((localObject instanceof ReadInJoyYAFolderTextView))
-    {
-      ((View)localObject).setVisibility(0);
-      return (ReadInJoyYAFolderTextView)localObject;
-    }
-    localObject = new ReadInJoyYAFolderTextView(getContext());
-    addView((View)localObject);
-    return localObject;
-  }
-  
   private void a(int paramInt, String paramString1, String paramString2)
   {
     TextView localTextView = a(paramInt);
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    paramString1 = EmotionCodecUtils.b(paramString1);
-    paramString2 = EmotionCodecUtils.b(paramString2);
+    paramString1 = EmotionCodecUtils.c(paramString1);
+    paramString2 = EmotionCodecUtils.c(paramString2);
     paramInt = paramString1.length();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString1);
@@ -78,7 +65,7 @@ public class NativeUsersCommentsView
     paramString1.setSpan(new ForegroundColorSpan(Color.parseColor("#D9000000")), paramInt, paramString1.length(), 33);
     localTextView.setTextSize(0, Utils.dp2px(14.0D));
     localTextView.setText(paramString1);
-    localTextView.setPadding(0, 0, 0, ViewUtils.a(2.0F));
+    localTextView.setPadding(0, 0, 0, ViewUtils.dip2px(2.0F));
     localTextView.setMaxLines(3);
     localTextView.setEllipsize(TextUtils.TruncateAt.END);
   }
@@ -97,6 +84,19 @@ public class NativeUsersCommentsView
     }
   }
   
+  private ReadInJoyYAFolderTextView getCommentAllLink()
+  {
+    Object localObject = getChildAt(getChildCount() - 1);
+    if ((localObject instanceof ReadInJoyYAFolderTextView))
+    {
+      ((View)localObject).setVisibility(0);
+      return (ReadInJoyYAFolderTextView)localObject;
+    }
+    localObject = new ReadInJoyYAFolderTextView(getContext());
+    addView((View)localObject);
+    return localObject;
+  }
+  
   public void a()
   {
     b();
@@ -104,14 +104,14 @@ public class NativeUsersCommentsView
     {
       try
       {
-        if ((this.jdField_a_of_type_OrgJsonJSONArray == null) || (this.jdField_a_of_type_OrgJsonJSONArray.length() <= 0)) {
+        if ((this.b == null) || (this.b.length() <= 0)) {
           break label243;
         }
         i = 0;
-        if (i >= this.jdField_a_of_type_OrgJsonJSONArray.length()) {
+        if (i >= this.b.length()) {
           break label238;
         }
-        localObject1 = this.jdField_a_of_type_OrgJsonJSONArray.get(i);
+        localObject1 = this.b.get(i);
         if (!(localObject1 instanceof JSONObject)) {
           break label231;
         }
@@ -131,22 +131,22 @@ public class NativeUsersCommentsView
         QLog.e("Q.readinjoy.proteus", 2, "refresh", localException);
         return;
       }
-      if (this.jdField_a_of_type_JavaLangString != null)
+      if (this.a != null)
       {
-        localObject1 = a();
+        localObject1 = getCommentAllLink();
         ((ReadInJoyYAFolderTextView)localObject1).setTextColor(Color.parseColor("#FF4D7CAF"));
         ((ReadInJoyYAFolderTextView)localObject1).setTextSize(0, Utils.dp2px(14.0D));
         if (i != 0) {
-          ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, ViewUtils.a(5.0F), 0, 0);
+          ((ReadInJoyYAFolderTextView)localObject1).setPadding(0, ViewUtils.dip2px(5.0F), 0, 0);
         }
-        localObject2 = new SpannableStringBuilder(this.jdField_a_of_type_JavaLangString);
+        localObject2 = new SpannableStringBuilder(this.a);
         localPressedSpan = new PressedSpan(-15504151, 16777215, 860716207);
         localPressedSpan.a(new NativeUsersCommentsView.1(this));
         ((SpannableStringBuilder)localObject2).setSpan(localPressedSpan, 0, ((SpannableStringBuilder)localObject2).length(), 33);
         ((ReadInJoyYAFolderTextView)localObject1).setText((CharSequence)localObject2);
         ((ReadInJoyYAFolderTextView)localObject1).setFocusable(false);
       }
-      setPadding(ViewUtils.a(12.0F), 0, ViewUtils.a(12.0F), ViewUtils.a(12.0F));
+      setPadding(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(12.0F), ViewUtils.dip2px(12.0F));
       return;
       label231:
       i += 1;
@@ -191,17 +191,17 @@ public class NativeUsersCommentsView
   
   public void setCommentAllLink(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void setComments(JSONArray paramJSONArray)
   {
-    this.jdField_a_of_type_OrgJsonJSONArray = paramJSONArray;
+    this.b = paramJSONArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeUsersCommentsView
  * JD-Core Version:    0.7.0.1
  */

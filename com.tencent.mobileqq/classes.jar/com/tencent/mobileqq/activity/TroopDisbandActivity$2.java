@@ -12,17 +12,17 @@ class TroopDisbandActivity$2
   
   public void onClick(View paramView)
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-    if ((localDialog != null) && (localDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    Dialog localDialog = this.a;
+    if ((localDialog != null) && (localDialog.isShowing()) && (this.a.getWindow() != null)) {
+      this.a.dismiss();
     }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    TroopDisbandActivity.a(this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.2
  * JD-Core Version:    0.7.0.1
  */

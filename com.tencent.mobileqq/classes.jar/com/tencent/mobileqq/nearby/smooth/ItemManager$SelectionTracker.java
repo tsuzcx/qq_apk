@@ -11,13 +11,13 @@ class ItemManager$SelectionTracker
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.b != 0)
+    if (this.a.g != 0)
     {
       localObject = this.a;
-      ((ItemManager)localObject).b = 0;
+      ((ItemManager)localObject).g = 0;
       ((ItemManager)localObject).b();
     }
-    Object localObject = this.a.a.a();
+    Object localObject = this.a.a.e();
     if (localObject != null) {
       ((AdapterView.OnItemSelectedListener)localObject).onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
     }
@@ -25,7 +25,7 @@ class ItemManager$SelectionTracker
   
   public void onNothingSelected(AdapterView<?> paramAdapterView)
   {
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.a.a();
+    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.a.e();
     if (localOnItemSelectedListener != null) {
       localOnItemSelectedListener.onNothingSelected(paramAdapterView);
     }
@@ -33,7 +33,7 @@ class ItemManager$SelectionTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.SelectionTracker
  * JD-Core Version:    0.7.0.1
  */

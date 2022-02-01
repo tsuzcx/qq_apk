@@ -38,28 +38,28 @@ public class ReadInJoyAdPopSheetDialog
   extends IRIJAdPopSheetDialog
   implements DialogInterface.OnDismissListener, DialogInterface.OnShowListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog";
-  private long jdField_a_of_type_Long = 0L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private GdtWebViewBuilder jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
-  private IRIJAdPopSheetDialog.OnPopSheetDismissListener jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIRIJAdPopSheetDialog$OnPopSheetDismissListener;
-  private SoftKeyboardStateHelper jdField_a_of_type_ComTencentMobileqqSearchUtilSoftKeyboardStateHelper;
-  private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
-  private WebViewProgressBarController jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
-  private long jdField_b_of_type_Long = 0L;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private long jdField_c_of_type_Long = -1L;
-  private String jdField_c_of_type_JavaLangString;
+  private static final String a = "com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog";
+  private String b;
+  private String c;
   private String d;
+  private TouchWebView e;
+  private GdtWebViewBuilder f;
+  private WebViewProgressBar g;
+  private WebViewProgressBarController h;
+  private RelativeLayout i;
+  private Activity j;
+  private IRIJAdPopSheetDialog.OnPopSheetDismissListener k;
+  private long l = 0L;
+  private long m = 0L;
+  private SoftKeyboardStateHelper n;
+  private RelativeLayout o;
+  private long p = -1L;
   
   public ReadInJoyAdPopSheetDialog(Activity paramActivity)
   {
-    super(paramActivity, 2131756189);
-    b();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(paramActivity, 2131953338);
+    c();
+    this.j = paramActivity;
   }
   
   public ReadInJoyAdPopSheetDialog(Activity paramActivity, String paramString1, String paramString2, String paramString3)
@@ -67,11 +67,11 @@ public class ReadInJoyAdPopSheetDialog
     this(paramActivity);
     if (paramString1 != null)
     {
-      this.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_c_of_type_JavaLangString = paramString2;
+      this.b = paramString1;
+      this.c = paramString2;
       this.d = paramString3;
     }
-    this.jdField_b_of_type_Long = SystemClock.currentThreadTimeMillis();
+    this.m = SystemClock.currentThreadTimeMillis();
   }
   
   public static ReadInJoyAdPopSheetDialog a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
@@ -79,15 +79,27 @@ public class ReadInJoyAdPopSheetDialog
     return new ReadInJoyAdPopSheetDialog(paramActivity, paramString1, paramString2, paramString3);
   }
   
-  private void a()
+  private void a(Activity paramActivity)
+  {
+    AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
+    this.e = new TouchWebView(paramActivity);
+    this.i.removeAllViews();
+    this.i.addView(this.e, new RelativeLayout.LayoutParams(-1, -1));
+    this.i.setVisibility(0);
+    this.f = new ReadInJoyAdPopSheetDialog.7(this, paramActivity.getApplicationContext(), paramActivity, null, localAppInterface);
+    this.f.a(this.e);
+    new WebViewDirector(this.f).a(null, localAppInterface, null);
+  }
+  
+  private void b()
   {
     try
     {
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.c);
       ((StringBuilder)localObject1).append("&acttype=9000&rsptype=1");
       localObject1 = ((StringBuilder)localObject1).toString();
-      long l = SystemClock.currentThreadTimeMillis();
+      long l1 = SystemClock.currentThreadTimeMillis();
       localObject2 = "";
       localObject3 = new Bundle();
       localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), (String)localObject1, "GET", null, (Bundle)localObject3);
@@ -95,11 +107,11 @@ public class ReadInJoyAdPopSheetDialog
       {
         localObject1 = new String((byte[])localObject1);
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "loadForm result = ", localObject1 });
+          QLog.d(a, 1, new Object[] { "loadForm result = ", localObject1 });
         }
         localObject1 = new JSONObject((String)localObject1);
-        int i = ((JSONObject)localObject1).getInt("ret");
-        if (i == 0)
+        int i1 = ((JSONObject)localObject1).getInt("ret");
+        if (i1 == 0)
         {
           localObject3 = ((JSONObject)localObject1).getJSONObject("data");
           localObject1 = localObject2;
@@ -109,7 +121,7 @@ public class ReadInJoyAdPopSheetDialog
             localObject1 = localObject2;
             if (QLog.isColorLevel())
             {
-              localObject1 = jdField_a_of_type_JavaLangString;
+              localObject1 = a;
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("loadForm clickid = ");
               ((StringBuilder)localObject3).append((String)localObject2);
@@ -123,10 +135,10 @@ public class ReadInJoyAdPopSheetDialog
           localObject1 = localObject2;
           if (QLog.isColorLevel())
           {
-            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject1 = a;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("retCode = ");
-            ((StringBuilder)localObject3).append(i);
+            ((StringBuilder)localObject3).append(i1);
             QLog.d((String)localObject1, 2, ((StringBuilder)localObject3).toString());
             localObject1 = localObject2;
           }
@@ -137,7 +149,7 @@ public class ReadInJoyAdPopSheetDialog
         localObject1 = localObject2;
         if (QLog.isColorLevel())
         {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { Integer.valueOf(2), "requestAdData bytes null" });
+          QLog.d(a, 1, new Object[] { Integer.valueOf(2), "requestAdData bytes null" });
           localObject1 = localObject2;
         }
       }
@@ -147,14 +159,14 @@ public class ReadInJoyAdPopSheetDialog
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("loadForm: get click id costTime=");
-        ((StringBuilder)localObject3).append(SystemClock.currentThreadTimeMillis() - l);
+        ((StringBuilder)localObject3).append(SystemClock.currentThreadTimeMillis() - l1);
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject3).toString());
       }
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append("&click_id=");
       ((StringBuilder)localObject1).append((String)localObject2);
       localObject1 = ((StringBuilder)localObject1).toString();
@@ -167,7 +179,7 @@ public class ReadInJoyAdPopSheetDialog
       Object localObject3;
       if (QLog.isColorLevel())
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("loadForm exception:");
         ((StringBuilder)localObject3).append(localException.getMessage());
@@ -176,74 +188,62 @@ public class ReadInJoyAdPopSheetDialog
     }
   }
   
-  private void a(Activity paramActivity)
+  private void c()
   {
-    AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, new RelativeLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new ReadInJoyAdPopSheetDialog.7(this, paramActivity.getApplicationContext(), paramActivity, null, localAppInterface);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new WebViewDirector(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder).a(null, localAppInterface, null);
-  }
-  
-  private void b()
-  {
-    View localView = getLayoutInflater().inflate(2131560067, null);
-    ((RelativeLayout)localView.findViewById(2131372943)).setOnClickListener(new ReadInJoyAdPopSheetDialog.4(this));
+    View localView = getLayoutInflater().inflate(2131626114, null);
+    ((RelativeLayout)localView.findViewById(2131440507)).setOnClickListener(new ReadInJoyAdPopSheetDialog.4(this));
     localView.setOnClickListener(new ReadInJoyAdPopSheetDialog.5(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)localView.findViewById(2131373133));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController = new WebViewProgressBarController();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372946));
-    this.jdField_a_of_type_ComTencentMobileqqSearchUtilSoftKeyboardStateHelper = new SoftKeyboardStateHelper(localView);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372944));
-    Object localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqSearchUtilSoftKeyboardStateHelper.a(new ReadInJoyAdPopSheetDialog.6(this, (RelativeLayout.LayoutParams)localObject));
+    this.g = ((WebViewProgressBar)localView.findViewById(2131440738));
+    this.h = new WebViewProgressBarController();
+    this.h.a(this.g);
+    this.g.setController(this.h);
+    this.i = ((RelativeLayout)localView.findViewById(2131440510));
+    this.n = new SoftKeyboardStateHelper(localView);
+    this.o = ((RelativeLayout)localView.findViewById(2131440508));
+    Object localObject = (RelativeLayout.LayoutParams)this.o.getLayoutParams();
+    this.p = System.currentTimeMillis();
+    this.n.a(new ReadInJoyAdPopSheetDialog.6(this, (RelativeLayout.LayoutParams)localObject));
     setOnDismissListener(this);
     setOnShowListener(this);
     localObject = BaseApplicationImpl.getContext();
-    int i = ((Context)localObject).getResources().getDisplayMetrics().widthPixels;
-    int j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
-    double d1 = i;
+    int i1 = ((Context)localObject).getResources().getDisplayMetrics().widthPixels;
+    int i2 = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
+    double d1 = i1;
     Double.isNaN(d1);
-    int k = (int)(d1 * 0.85D);
-    localObject = (RelativeLayout)localView.findViewById(2131372944);
+    int i3 = (int)(d1 * 0.85D);
+    localObject = (RelativeLayout)localView.findViewById(2131440508);
     if (localObject != null)
     {
       localObject = ((RelativeLayout)localObject).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = k;
-      ((ViewGroup.LayoutParams)localObject).height = k;
+      ((ViewGroup.LayoutParams)localObject).width = i3;
+      ((ViewGroup.LayoutParams)localObject).height = i3;
     }
     setContentView(localView);
-    getWindow().setLayout(i, j);
+    getWindow().setLayout(i1, i2);
   }
   
   public void a(IRIJAdPopSheetDialog.OnPopSheetDismissListener paramOnPopSheetDismissListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIRIJAdPopSheetDialog$OnPopSheetDismissListener = paramOnPopSheetDismissListener;
+    this.k = paramOnPopSheetDismissListener;
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel())
     {
-      paramDialogInterface = jdField_a_of_type_JavaLangString;
+      paramDialogInterface = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDismiss h5Url = ");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       QLog.d(paramDialogInterface, 2, localStringBuilder.toString());
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder;
+    paramDialogInterface = this.f;
     if (paramDialogInterface != null)
     {
       paramDialogInterface.c();
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = null;
+      this.f = null;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIRIJAdPopSheetDialog$OnPopSheetDismissListener;
+    paramDialogInterface = this.k;
     if (paramDialogInterface != null) {
       paramDialogInterface.a();
     }
@@ -253,21 +253,21 @@ public class ReadInJoyAdPopSheetDialog
   {
     if (QLog.isColorLevel())
     {
-      paramDialogInterface = jdField_a_of_type_JavaLangString;
+      paramDialogInterface = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onShow h5Url = ");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       QLog.d(paramDialogInterface, 2, localStringBuilder.toString());
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+    paramDialogInterface = this.g;
     if (paramDialogInterface != null) {
       paramDialogInterface.setVisibility(0);
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
+    paramDialogInterface = this.h;
     if (paramDialogInterface != null) {
       paramDialogInterface.a((byte)0);
     }
-    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    paramDialogInterface = this.i;
     if (paramDialogInterface != null) {
       paramDialogInterface.setVisibility(4);
     }
@@ -285,7 +285,7 @@ public class ReadInJoyAdPopSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog
  * JD-Core Version:    0.7.0.1
  */

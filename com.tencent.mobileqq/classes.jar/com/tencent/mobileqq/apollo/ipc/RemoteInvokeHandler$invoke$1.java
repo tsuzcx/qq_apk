@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.ipc;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ipc.reflect.Reflect;
+import com.tencent.mobileqq.apollo.utils.reflect.Reflect;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import java.util.Arrays;
@@ -26,19 +26,19 @@ final class RemoteInvokeHandler$invoke$1
     Intrinsics.checkExpressionValueIsNotNull(localObject, "cbActionName");
     localObject = ((String)localObject).substring(((String)StringsKt.split$default((CharSequence)localObject, new char[] { ';' }, false, 0, 6, null).get(0)).length() + 1);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.String).substring(startIndex)");
-    localObject = ((TypeToken)this.a.element).a((String)localObject);
+    localObject = ((TypeToken)this.a.element).b((String)localObject);
     if (localObject != null)
     {
       paramEIPCResult = paramEIPCResult.data;
       Intrinsics.checkExpressionValueIsNotNull(paramEIPCResult, "result.data");
       paramEIPCResult = ParamDeserializer.a((MethodToken)localObject, paramEIPCResult);
-      Reflect.a(this.b.element).a(((MethodToken)localObject).a(), Arrays.copyOf(paramEIPCResult, paramEIPCResult.length));
+      Reflect.a(this.b.element).a(((MethodToken)localObject).b(), Arrays.copyOf(paramEIPCResult, paramEIPCResult.length));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.RemoteInvokeHandler.invoke.1
  * JD-Core Version:    0.7.0.1
  */

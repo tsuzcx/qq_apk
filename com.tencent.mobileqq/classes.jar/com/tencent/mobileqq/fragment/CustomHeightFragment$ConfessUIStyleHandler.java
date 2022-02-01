@@ -18,14 +18,14 @@ class CustomHeightFragment$ConfessUIStyleHandler
 {
   CustomHeightFragment$ConfessUIStyleHandler(CustomHeightFragment paramCustomHeightFragment) {}
   
-  public void Y_()
+  public void bI_()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null)
+    if (this.b.a() != null)
     {
-      WebView localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      localWebView.setId(2131381075);
-      if (this.b != -1) {
-        localWebView.setBackgroundColor(this.b);
+      WebView localWebView = this.b.a();
+      localWebView.setId(2131450088);
+      if (this.F != -1) {
+        localWebView.setBackgroundColor(this.F);
       }
       Object localObject = (Activity)localWebView.getContext();
       int i;
@@ -43,26 +43,26 @@ class CustomHeightFragment$ConfessUIStyleHandler
       }
       if (i != 0)
       {
-        if ((this.c instanceof RelativeLayout))
+        if ((this.u instanceof RelativeLayout))
         {
           localObject = new RelativeLayout.LayoutParams(-1, i);
           ((RelativeLayout.LayoutParams)localObject).addRule(12);
-          this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
+          this.u.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
         }
         else
         {
-          this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, i));
+          this.u.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, i));
         }
-        this.c.setOnClickListener(new CustomHeightFragment.ConfessUIStyleHandler.1(this));
+        this.u.setOnClickListener(new CustomHeightFragment.ConfessUIStyleHandler.1(this));
         return;
       }
-      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, -1));
+      this.u.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, -1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CustomHeightFragment.ConfessUIStyleHandler
  * JD-Core Version:    0.7.0.1
  */

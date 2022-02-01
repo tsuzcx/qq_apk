@@ -22,9 +22,10 @@ public class EmoticonPanelCmShowHelper
   extends AbsEmoticonPanelLifecycleObserver
   implements IEmoticonPanelCmShowHelper
 {
-  private static String jdField_a_of_type_JavaLangString = "2";
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
+  private static String c = "2";
+  private static int d;
+  private long a;
+  private int b = -1;
   
   public EmoticonPanelCmShowHelper(int paramInt)
   {
@@ -33,21 +34,17 @@ public class EmoticonPanelCmShowHelper
   
   public static String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return c;
   }
   
-  private void a()
+  public static void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != 1)
-    {
-      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "bigexpose", new DtReportParamsBuilder().h(a()).a());
-      this.jdField_a_of_type_Int = 1;
-    }
+    d = paramInt;
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    c = paramString;
   }
   
   private boolean a(List<EmotionPanelInfo> paramList)
@@ -66,12 +63,42 @@ public class EmoticonPanelCmShowHelper
     return false;
   }
   
-  private void b()
+  public static int b()
   {
-    if (this.jdField_a_of_type_Int != 0)
+    return d;
+  }
+  
+  private CmShowEmotionAdapter c()
+  {
+    if (this.mPanelController == null) {
+      return null;
+    }
+    Object localObject = this.mPanelController.getEmotionInjectionInfo(15);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((EmotionInjectionInfo)localObject).emotionPanelBuilder;
+    if (!(localObject instanceof CmShowEmotionPanelBuilderImpl)) {
+      return null;
+    }
+    return ((CmShowEmotionPanelBuilderImpl)localObject).getAdapter();
+  }
+  
+  private void d()
+  {
+    if (this.b != 1)
     {
-      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "smallexpose", new DtReportParamsBuilder().h(a()).a());
-      this.jdField_a_of_type_Int = 0;
+      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "bigexpose", new DtReportParamsBuilder().k(a()).b(Integer.valueOf(b())).a());
+      this.b = 1;
+    }
+  }
+  
+  private void e()
+  {
+    if (this.b != 0)
+    {
+      ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "smallexpose", new DtReportParamsBuilder().k(a()).b(Integer.valueOf(b())).a());
+      this.b = 0;
     }
   }
   
@@ -89,15 +116,19 @@ public class EmoticonPanelCmShowHelper
   {
     IApolloCmEmojiReportHelper localIApolloCmEmojiReportHelper = (IApolloCmEmojiReportHelper)QRoute.api(IApolloCmEmojiReportHelper.class);
     if ((localIApolloCmEmojiReportHelper.needReport()) && (this.mPanelController.getAIOContext() != null)) {
-      localIApolloCmEmojiReportHelper.report(MobileQQ.sMobileQQ.waitAppRuntime(null), this.mPanelController.getAIOContext().a().jdField_a_of_type_Int, this.mPanelController.getAIOContext().a().jdField_a_of_type_JavaLangString);
+      localIApolloCmEmojiReportHelper.report(MobileQQ.sMobileQQ.waitAppRuntime(null), this.mPanelController.getAIOContext().O().a, this.mPanelController.getAIOContext().O().b);
     }
   }
   
   public void onHide(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "2";
+    this.b = -1;
+    this.a = 0L;
+    c = "2";
+    CmShowEmotionAdapter localCmShowEmotionAdapter = c();
+    if (localCmShowEmotionAdapter != null) {
+      localCmShowEmotionAdapter.b();
+    }
   }
   
   public void onPageSelected(int paramInt)
@@ -106,22 +137,31 @@ public class EmoticonPanelCmShowHelper
     {
       if (this.mPanelController != null)
       {
-        EmotionInjectionInfo localEmotionInjectionInfo = this.mPanelController.getEmotionInjectionInfo(15);
-        if ((localEmotionInjectionInfo != null) && ((localEmotionInjectionInfo.emotionTabListener instanceof EmoticonTabCmshowListener))) {
-          ((EmoticonTabCmshowListener)localEmotionInjectionInfo.emotionTabListener).a(paramInt);
+        Object localObject = this.mPanelController.getEmotionInjectionInfo(15);
+        if ((localObject != null) && ((((EmotionInjectionInfo)localObject).emotionTabListener instanceof EmoticonTabCmshowListener))) {
+          ((EmoticonTabCmshowListener)((EmotionInjectionInfo)localObject).emotionTabListener).a(paramInt);
         }
+        localObject = c();
         if (this.mPanelController.isEmoticonOnShow(15))
         {
-          if (this.mPanelController.isPanelOpen())
+          if (this.mPanelController.isPanelOpen()) {
+            d();
+          } else {
+            e();
+          }
+          if (localObject != null) {
+            ((CmShowEmotionAdapter)localObject).a(true);
+          }
+        }
+        else
+        {
+          this.b = -1;
+          if (localObject != null)
           {
-            a();
+            ((CmShowEmotionAdapter)localObject).a(false);
             return;
           }
-          b();
-          return;
         }
-        this.jdField_a_of_type_Int = -1;
-        return;
       }
     }
     catch (Throwable localThrowable)
@@ -136,7 +176,7 @@ public class EmoticonPanelCmShowHelper
     {
       if ((this.mPanelController != null) && (this.mPanelController.isEmoticonOnShow(15)))
       {
-        b();
+        e();
         return;
       }
     }
@@ -152,7 +192,7 @@ public class EmoticonPanelCmShowHelper
     {
       if ((this.mPanelController != null) && (this.mPanelController.isEmoticonOnShow(15)))
       {
-        a();
+        d();
         return;
       }
     }
@@ -171,10 +211,10 @@ public class EmoticonPanelCmShowHelper
         if (a(this.mPanelController.getPanelDataList()))
         {
           long l = SystemClock.elapsedRealtime();
-          if (l - this.jdField_a_of_type_Long > 2000L)
+          if (l - this.a > 2000L)
           {
-            ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "expose", new DtReportParamsBuilder().h(a()).a());
-            this.jdField_a_of_type_Long = l;
+            ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("aio", "emojicmtab", "expose", new DtReportParamsBuilder().k(a()).b(Integer.valueOf(b())).a());
+            this.a = l;
           }
         }
         Object localObject = this.mPanelController.getEmotionInjectionInfo(15);
@@ -183,23 +223,16 @@ public class EmoticonPanelCmShowHelper
         }
         if (this.mPanelController.isEmoticonOnShow(15)) {
           if (this.mPanelController.isPanelOpen()) {
-            a();
+            d();
           } else {
-            b();
+            e();
           }
         }
+        localObject = c();
         if (localObject != null)
         {
-          localObject = ((EmotionInjectionInfo)localObject).emotionPanelBuilder;
-          if ((localObject instanceof CmShowEmotionPanelBuilderImpl))
-          {
-            localObject = ((CmShowEmotionPanelBuilderImpl)localObject).getAdapter();
-            if (localObject != null)
-            {
-              ((CmShowEmotionAdapter)localObject).a();
-              return;
-            }
-          }
+          ((CmShowEmotionAdapter)localObject).a();
+          return;
         }
       }
     }
@@ -211,7 +244,7 @@ public class EmoticonPanelCmShowHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.emotionview.EmoticonPanelCmShowHelper
  * JD-Core Version:    0.7.0.1
  */

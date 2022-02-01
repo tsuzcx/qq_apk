@@ -11,14 +11,14 @@ class DrawerBizFacade$6$3
   
   public void run()
   {
-    if (DrawerBizFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$6.a).get() != null) {
-      ((FrameHelperActivity)DrawerBizFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$6.a).get()).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (DrawerBizFacade.b(this.b.a).get() != null) {
+      ((FrameHelperActivity)DrawerBizFacade.b(this.b.a).get()).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.6.3
  * JD-Core Version:    0.7.0.1
  */

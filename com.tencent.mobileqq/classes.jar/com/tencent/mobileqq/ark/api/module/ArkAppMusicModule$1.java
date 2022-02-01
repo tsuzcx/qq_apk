@@ -18,14 +18,14 @@ class ArkAppMusicModule$1
     if ((localBaseActivity instanceof BaseActivity))
     {
       QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-      QQPlayerService.a(101);
-      QQPlayerService.a(localBaseActivity, ArkAppMusicModule.a(), new SongInfo[] { this.a });
+      QQPlayerService.b(101);
+      QQPlayerService.a(localBaseActivity, ArkAppMusicModule.d(), new SongInfo[] { this.a });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppMusicModule.1
  * JD-Core Version:    0.7.0.1
  */

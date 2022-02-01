@@ -20,7 +20,7 @@ class PublicAccountImageCollectionCommentActivity$1
     if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100))
     {
       paramCharSequence = this.a;
-      QQToast.a(paramCharSequence, 0, paramCharSequence.getString(2131695202), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramCharSequence, 0, paramCharSequence.getString(2131892935), 0).show(this.a.getTitleBarHeight());
     }
   }
   
@@ -28,7 +28,7 @@ class PublicAccountImageCollectionCommentActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionCommentActivity.1
  * JD-Core Version:    0.7.0.1
  */

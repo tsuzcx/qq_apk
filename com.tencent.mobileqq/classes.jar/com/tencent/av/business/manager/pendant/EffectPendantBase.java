@@ -25,56 +25,48 @@ public abstract class EffectPendantBase
   extends EffectConfigBase<PendantItem>
   implements EffectMutexManager.IMutexItem
 {
-  protected final EffectPendantBase.Pendant a;
-  protected EffectPendantTipsImpl a;
-  protected boolean a;
-  protected String[] c = null;
+  protected boolean o = false;
+  protected String[] p = null;
+  protected EffectPendantTipsImpl q = null;
+  protected final EffectPendantBase.Pendant r = new EffectPendantBase.Pendant();
   
   public EffectPendantBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl = null;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant = new EffectPendantBase.Pendant();
   }
   
   public EffectPendantBase.Pendant a(int paramInt1, int paramInt2)
   {
-    if (!EffectsRenderController.f()) {
+    if (!EffectsRenderController.m()) {
       return null;
     }
     VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
-    PendantItem localPendantItem = (PendantItem)a();
-    if (this.jdField_a_of_type_Boolean)
+    PendantItem localPendantItem = (PendantItem)c();
+    if (this.o)
     {
-      this.jdField_a_of_type_Boolean = false;
-      d();
+      this.o = false;
+      l();
     }
     if ((paramInt1 != 0) && (paramInt2 != 0) && (localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())))
     {
       String str1 = c(localPendantItem);
       String str2 = localPendantItem.getId();
-      if ((str1.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
-        return this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant;
+      if ((str1.equals(this.r.b)) && (this.r.c != null) && (str2.equals(this.r.c.getId()))) {
+        return this.r;
       }
       long l = System.currentTimeMillis();
       VideoMaterial localVideoMaterial = VideoMaterial.loadLightAsset(str1);
-      EffectPendantBase.Pendant localPendant = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant;
-      localPendant.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
-      localPendant.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
-      localPendant.jdField_a_of_type_JavaLangString = str1;
-      AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant;
+      EffectPendantBase.Pendant localPendant = this.r;
+      localPendant.a = localVideoMaterial;
+      localPendant.c = localPendantItem;
+      localPendant.b = str1;
+      AVLog.printColorLog(this.a, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
+      return this.r;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant.jdField_a_of_type_JavaLangString = null;
+    if (!TextUtils.isEmpty(this.r.b)) {
+      this.r.b = null;
     }
     return null;
-  }
-  
-  protected Class<?> a()
-  {
-    return PendantItem.class;
   }
   
   public String a(PendantItem paramPendantItem)
@@ -89,127 +81,38 @@ public abstract class EffectPendantBase
     return null;
   }
   
-  public List<PendantItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
   protected void a()
   {
     super.a();
-    EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.c.c(12);
     if (localEffectMutexManager != null) {
-      localEffectMutexManager.a(b(), this);
-    }
-  }
-  
-  protected void a(long paramLong, PendantItem paramPendantItem)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      ((EffectFilterTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
+      localEffectMutexManager.a(k(), this);
     }
   }
   
   public void a(EffectPendantTipsImpl paramEffectPendantTipsImpl)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl = paramEffectPendantTipsImpl;
+    this.q = paramEffectPendantTipsImpl;
   }
   
   public boolean a(long paramLong, PendantItem paramPendantItem)
   {
     boolean bool = super.a(paramLong, paramPendantItem);
-    SessionInfo localSessionInfo = VideoController.a().a();
-    a(paramLong, paramPendantItem);
+    SessionInfo localSessionInfo = VideoController.f().k();
+    b(paramLong, paramPendantItem);
     if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
-      localSessionInfo.a.set(1);
+      localSessionInfo.bG.set(1);
       return bool;
     }
-    localSessionInfo.a.clear(1);
-    return bool;
-  }
-  
-  protected boolean a(PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramPendantItem);
-    if (bool)
-    {
-      String str1 = c(paramPendantItem);
-      Object localObject1 = this.c;
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        int m = localObject1.length;
-        int k = 0;
-        int i = 0;
-        for (;;)
-        {
-          j = i;
-          if (k >= m) {
-            break;
-          }
-          String str2 = localObject1[k];
-          Object localObject2 = new File(str1, str2);
-          long l = ((File)localObject2).length();
-          if (((((File)localObject2).exists()) && (l < 1L)) || (!((File)localObject2).exists())) {
-            j = 1;
-          } else {
-            j = 0;
-          }
-          if ((j == 0) && (i == 0)) {
-            i = 0;
-          } else {
-            i = 1;
-          }
-          if ((j != 0) && (QLog.isColorLevel()))
-          {
-            localObject2 = this.jdField_a_of_type_JavaLangString;
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("isTemplateUsable, fileName[");
-            localStringBuilder.append(str2);
-            localStringBuilder.append("], item[");
-            localStringBuilder.append(paramPendantItem);
-            localStringBuilder.append("]");
-            QLog.i((String)localObject2, 2, localStringBuilder.toString());
-          }
-          if (i != 0)
-          {
-            j = i;
-            break;
-          }
-          k += 1;
-        }
-      }
-      int j = 0;
-      if (j != 0)
-      {
-        str1 = a(paramPendantItem);
-        localObject1 = b(paramPendantItem);
-        ThreadManager.excute(new EffectPendantBase.1(this, new File(str1), (String)localObject1), 16, null, false);
-        if (QLog.isDevelopLevel())
-        {
-          str1 = this.jdField_a_of_type_JavaLangString;
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("isTemplateUsable, need unzip item[");
-          ((StringBuilder)localObject1).append(paramPendantItem);
-          ((StringBuilder)localObject1).append("]");
-          QLog.i(str1, 4, ((StringBuilder)localObject1).toString());
-        }
-      }
-    }
+    localSessionInfo.bG.clear(1);
     return bool;
   }
   
   protected boolean a(String paramString)
   {
-    return PtuResChecker.a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    return PtuResChecker.a().a(this.c);
   }
-  
-  public abstract int b();
   
   public String b(PendantItem paramPendantItem)
   {
@@ -222,6 +125,13 @@ public abstract class EffectPendantBase
       return localStringBuilder.toString();
     }
     return "";
+  }
+  
+  protected void b(long paramLong, PendantItem paramPendantItem)
+  {
+    if (this.c != null) {
+      ((EffectFilterTools)this.c.c(1)).a(paramLong, paramPendantItem);
+    }
   }
   
   protected String c(PendantItem paramPendantItem)
@@ -260,7 +170,7 @@ public abstract class EffectPendantBase
         localObject3 = localObject1;
         if (QLog.isDevelopLevel())
         {
-          localObject3 = this.jdField_a_of_type_JavaLangString;
+          localObject3 = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getFilterPathForRead, new[");
           localStringBuilder.append(str);
@@ -277,12 +187,99 @@ public abstract class EffectPendantBase
     return localObject3;
   }
   
-  public void d()
+  public List<PendantItem> c(String paramString)
   {
-    EffectPendantBase.Pendant localPendant = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantBase$Pendant;
-    localPendant.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
-    localPendant.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
-    localPendant.jdField_a_of_type_JavaLangString = null;
+    paramString = super.c(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
+    }
+    return localArrayList;
+  }
+  
+  protected boolean d(PendantItem paramPendantItem)
+  {
+    boolean bool = super.d(paramPendantItem);
+    if (bool)
+    {
+      String str1 = c(paramPendantItem);
+      Object localObject1 = this.p;
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        int m = localObject1.length;
+        int k = 0;
+        int i = 0;
+        for (;;)
+        {
+          j = i;
+          if (k >= m) {
+            break;
+          }
+          String str2 = localObject1[k];
+          Object localObject2 = new File(str1, str2);
+          long l = ((File)localObject2).length();
+          if (((((File)localObject2).exists()) && (l < 1L)) || (!((File)localObject2).exists())) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          if ((j == 0) && (i == 0)) {
+            i = 0;
+          } else {
+            i = 1;
+          }
+          if ((j != 0) && (QLog.isColorLevel()))
+          {
+            localObject2 = this.a;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("isTemplateUsable, fileName[");
+            localStringBuilder.append(str2);
+            localStringBuilder.append("], item[");
+            localStringBuilder.append(paramPendantItem);
+            localStringBuilder.append("]");
+            QLog.i((String)localObject2, 2, localStringBuilder.toString());
+          }
+          if (i != 0)
+          {
+            j = i;
+            break;
+          }
+          k += 1;
+        }
+      }
+      int j = 0;
+      if (j != 0)
+      {
+        str1 = a(paramPendantItem);
+        localObject1 = b(paramPendantItem);
+        ThreadManager.excute(new EffectPendantBase.1(this, new File(str1), (String)localObject1), 16, null, false);
+        if (QLog.isDevelopLevel())
+        {
+          str1 = this.a;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("isTemplateUsable, need unzip item[");
+          ((StringBuilder)localObject1).append(paramPendantItem);
+          ((StringBuilder)localObject1).append("]");
+          QLog.i(str1, 4, ((StringBuilder)localObject1).toString());
+        }
+      }
+    }
+    return bool;
+  }
+  
+  protected Class<?> i()
+  {
+    return PendantItem.class;
+  }
+  
+  public abstract int k();
+  
+  public void l()
+  {
+    EffectPendantBase.Pendant localPendant = this.r;
+    localPendant.a = null;
+    localPendant.c = null;
+    localPendant.b = null;
   }
 }
 

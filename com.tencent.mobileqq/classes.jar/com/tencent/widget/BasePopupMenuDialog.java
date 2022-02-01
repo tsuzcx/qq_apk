@@ -35,7 +35,7 @@ public class BasePopupMenuDialog
   
   public static void setModeTouch(PopupWindow paramPopupWindow)
   {
-    if (!AppSetting.d) {
+    if (!AppSetting.e) {
       return;
     }
     Method[] arrayOfMethod = PopupWindow.class.getMethods();
@@ -86,7 +86,7 @@ public class BasePopupMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.BasePopupMenuDialog
  * JD-Core Version:    0.7.0.1
  */

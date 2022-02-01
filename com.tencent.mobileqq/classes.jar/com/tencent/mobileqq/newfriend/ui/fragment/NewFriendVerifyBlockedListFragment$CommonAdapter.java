@@ -53,104 +53,104 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
     }
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2130839395);
+      paramView.setBackgroundResource(2130839579);
       return;
     }
-    if (QQTheme.e())
+    if (QQTheme.isDefaultTheme())
     {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
       return;
     }
-    paramView.setBackgroundResource(2130839390);
+    paramView.setBackgroundResource(2130839574);
   }
   
   private void a(NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder paramNewFriendBlockedHolder, View.OnClickListener paramOnClickListener)
   {
-    if (paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo == null) {
+    if (paramNewFriendBlockedHolder.a == null) {
       return;
     }
-    if (TextUtils.isEmpty(paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_b_of_type_JavaLangString)) {
-      paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramNewFriendBlockedHolder.a.b)) {
+      paramNewFriendBlockedHolder.d.setText(paramNewFriendBlockedHolder.a.a);
     } else {
-      paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_b_of_type_JavaLangString);
+      paramNewFriendBlockedHolder.d.setText(paramNewFriendBlockedHolder.a.b);
     }
-    a(paramNewFriendBlockedHolder, paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_a_of_type_JavaLangString);
-    paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(paramNewFriendBlockedHolder);
-    ((INewFriendApi)QRoute.api(INewFriendApi.class)).showGenderAge(paramNewFriendBlockedHolder.d, paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_b_of_type_Int, paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_a_of_type_Int, null);
-    paramOnClickListener = paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_c_of_type_JavaLangString;
+    a(paramNewFriendBlockedHolder, paramNewFriendBlockedHolder.a.a);
+    paramNewFriendBlockedHolder.c.setTag(paramNewFriendBlockedHolder);
+    ((INewFriendApi)QRoute.api(INewFriendApi.class)).showGenderAge(paramNewFriendBlockedHolder.h, paramNewFriendBlockedHolder.a.d, paramNewFriendBlockedHolder.a.c, null);
+    paramOnClickListener = paramNewFriendBlockedHolder.a.e;
     if (!TextUtils.isEmpty(paramOnClickListener))
     {
-      paramOnClickListener = String.format(Locale.getDefault(), HardCodeUtil.a(2131707525), new Object[] { paramOnClickListener });
-      paramNewFriendBlockedHolder.c.setText(paramOnClickListener);
-      paramNewFriendBlockedHolder.c.setVisibility(0);
+      paramOnClickListener = String.format(Locale.getDefault(), HardCodeUtil.a(2131905340), new Object[] { paramOnClickListener });
+      paramNewFriendBlockedHolder.f.setText(paramOnClickListener);
+      paramNewFriendBlockedHolder.f.setVisibility(0);
     }
     else
     {
-      paramNewFriendBlockedHolder.c.setVisibility(8);
+      paramNewFriendBlockedHolder.f.setVisibility(8);
     }
-    int i = paramNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_c_of_type_Int;
+    int i = paramNewFriendBlockedHolder.a.h;
     if (i > 0)
     {
       paramOnClickListener = String.format(Locale.getDefault(), "%d位共同好友", new Object[] { Integer.valueOf(i) });
-      paramNewFriendBlockedHolder.b.setVisibility(0);
-      paramNewFriendBlockedHolder.b.setText(paramOnClickListener);
+      paramNewFriendBlockedHolder.e.setVisibility(0);
+      paramNewFriendBlockedHolder.e.setText(paramOnClickListener);
     }
     else
     {
-      paramNewFriendBlockedHolder.b.setVisibility(8);
+      paramNewFriendBlockedHolder.e.setVisibility(8);
     }
-    paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramNewFriendBlockedHolder);
-    paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    paramNewFriendBlockedHolder.g.setTag(paramNewFriendBlockedHolder);
+    paramNewFriendBlockedHolder.g.setOnClickListener(this);
   }
   
   public AddFriendBlockedInfo a(int paramInt)
   {
-    return (AddFriendBlockedInfo)NewFriendVerifyBlockedListFragment.a(this.a).get(paramInt);
+    return (AddFriendBlockedInfo)NewFriendVerifyBlockedListFragment.e(this.a).get(paramInt);
   }
   
   public void a()
   {
-    NewFriendVerifyBlockedListFragment.a(this.a).cancelPendingRequests();
-    NewFriendVerifyBlockedListFragment.a(this.a).pause();
+    NewFriendVerifyBlockedListFragment.f(this.a).cancelPendingRequests();
+    NewFriendVerifyBlockedListFragment.f(this.a).pause();
   }
   
   public void a(NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder paramNewFriendBlockedHolder, String paramString)
   {
-    if ((paramNewFriendBlockedHolder != null) && (paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetImageView != null))
+    if ((paramNewFriendBlockedHolder != null) && (paramNewFriendBlockedHolder.c != null))
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      Bitmap localBitmap = NewFriendVerifyBlockedListFragment.a(this.a).getBitmapFromCache(1, paramString);
-      if ((localBitmap == null) && (!NewFriendVerifyBlockedListFragment.a(this.a).isPausing())) {
-        NewFriendVerifyBlockedListFragment.a(this.a).requestDecodeFace(paramString, 1, true);
+      Bitmap localBitmap = NewFriendVerifyBlockedListFragment.f(this.a).getBitmapFromCache(1, paramString);
+      if ((localBitmap == null) && (!NewFriendVerifyBlockedListFragment.f(this.a).isPausing())) {
+        NewFriendVerifyBlockedListFragment.f(this.a).requestDecodeFace(paramString, 1, true);
       }
       paramString = localBitmap;
       if (localBitmap == null) {
-        paramString = BaseImageUtil.f();
+        paramString = BaseImageUtil.k();
       }
-      paramNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
+      paramNewFriendBlockedHolder.c.setImageBitmap(paramString);
     }
   }
   
   public void b()
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a).isPausing()) {
-      NewFriendVerifyBlockedListFragment.a(this.a).resume();
+    if (NewFriendVerifyBlockedListFragment.f(this.a).isPausing()) {
+      NewFriendVerifyBlockedListFragment.f(this.a).resume();
     }
   }
   
   public void c()
   {
-    int j = NewFriendVerifyBlockedListFragment.a(this.a).getChildCount();
+    int j = NewFriendVerifyBlockedListFragment.c(this.a).getChildCount();
     int i = 0;
     while (i < j)
     {
-      Object localObject = NewFriendVerifyBlockedListFragment.a(this.a).getChildAt(i).getTag();
+      Object localObject = NewFriendVerifyBlockedListFragment.c(this.a).getChildAt(i).getTag();
       if ((localObject instanceof NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder))
       {
         localObject = (NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject;
-        a((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject, ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject).jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo.jdField_a_of_type_JavaLangString);
+        a((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject, ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject).a.a);
       }
       i += 1;
     }
@@ -158,10 +158,10 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
   
   public int getCount()
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) == null) {
+    if (NewFriendVerifyBlockedListFragment.e(this.a) == null) {
       return 0;
     }
-    return NewFriendVerifyBlockedListFragment.a(this.a).size();
+    return NewFriendVerifyBlockedListFragment.e(this.a).size();
   }
   
   public long getItemId(int paramInt)
@@ -175,16 +175,16 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
     if (paramView == null)
     {
       localNewFriendBlockedHolder = new NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder(this);
-      paramView = LayoutInflater.from(NewFriendVerifyBlockedListFragment.a(this.a)).inflate(2131561615, null);
-      localNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361799));
-      localNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371877));
-      localNewFriendBlockedHolder.b = ((TextView)paramView.findViewById(2131376487));
-      localNewFriendBlockedHolder.d = ((TextView)paramView.findViewById(2131362299));
-      localNewFriendBlockedHolder.c = ((TextView)paramView.findViewById(2131377726));
-      localNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376477));
-      localNewFriendBlockedHolder.jdField_a_of_type_AndroidViewView = paramView;
+      paramView = LayoutInflater.from(NewFriendVerifyBlockedListFragment.b(this.a)).inflate(2131627994, null);
+      localNewFriendBlockedHolder.c = ((ImageView)paramView.findViewById(2131427337));
+      localNewFriendBlockedHolder.d = ((TextView)paramView.findViewById(2131439320));
+      localNewFriendBlockedHolder.e = ((TextView)paramView.findViewById(2131444728));
+      localNewFriendBlockedHolder.h = ((TextView)paramView.findViewById(2131427898));
+      localNewFriendBlockedHolder.f = ((TextView)paramView.findViewById(2131446184));
+      localNewFriendBlockedHolder.g = ((Button)paramView.findViewById(2131444718));
+      localNewFriendBlockedHolder.b = paramView;
       paramView.setOnClickListener(this);
-      a(localNewFriendBlockedHolder.jdField_a_of_type_AndroidWidgetImageView);
+      a(localNewFriendBlockedHolder.c);
       paramView.setTag(localNewFriendBlockedHolder);
     }
     else
@@ -192,11 +192,11 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
       localNewFriendBlockedHolder = (NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)paramView.getTag();
     }
     AddFriendBlockedInfo localAddFriendBlockedInfo = a(paramInt);
-    localNewFriendBlockedHolder.jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo = localAddFriendBlockedInfo;
-    if (!localAddFriendBlockedInfo.jdField_a_of_type_Boolean) {
-      a(localNewFriendBlockedHolder.jdField_a_of_type_AndroidViewView, true);
+    localNewFriendBlockedHolder.a = localAddFriendBlockedInfo;
+    if (!localAddFriendBlockedInfo.g) {
+      a(localNewFriendBlockedHolder.b, true);
     } else {
-      a(localNewFriendBlockedHolder.jdField_a_of_type_AndroidViewView, false);
+      a(localNewFriendBlockedHolder.b, false);
     }
     a(localNewFriendBlockedHolder, this);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -208,12 +208,12 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
     int i = paramView.getId();
     Object localObject1;
     Object localObject2;
-    if (i == 2131376644)
+    if (i == 2131444905)
     {
       localObject1 = paramView.getTag();
       if ((localObject1 instanceof NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder))
       {
-        localObject1 = ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo;
+        localObject1 = ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject1).a;
         if (localObject1 != null)
         {
           if (QLog.isColorLevel())
@@ -223,36 +223,36 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
             ((StringBuilder)localObject2).append(109);
             QLog.d("BlockedListFragment", 2, ((StringBuilder)localObject2).toString());
           }
-          localObject2 = new AllInOne(((AddFriendBlockedInfo)localObject1).jdField_a_of_type_JavaLangString, 109);
-          if (!TextUtils.isEmpty(((AddFriendBlockedInfo)localObject1).jdField_b_of_type_JavaLangString)) {
-            ((AllInOne)localObject2).nickname = ((AddFriendBlockedInfo)localObject1).jdField_b_of_type_JavaLangString;
+          localObject2 = new AllInOne(((AddFriendBlockedInfo)localObject1).a, 109);
+          if (!TextUtils.isEmpty(((AddFriendBlockedInfo)localObject1).b)) {
+            ((AllInOne)localObject2).nickname = ((AddFriendBlockedInfo)localObject1).b;
           } else {
-            ((AllInOne)localObject2).nickname = ((AddFriendBlockedInfo)localObject1).jdField_a_of_type_JavaLangString;
+            ((AllInOne)localObject2).nickname = ((AddFriendBlockedInfo)localObject1).a;
           }
           ((AllInOne)localObject2).profileEntryType = 120;
-          ProfileUtils.openProfileCardForResult(NewFriendVerifyBlockedListFragment.a(this.a), (AllInOne)localObject2, 100);
+          ProfileUtils.openProfileCardForResult(NewFriendVerifyBlockedListFragment.b(this.a), (AllInOne)localObject2, 100);
           ReportController.b(null, "dc00898", "", "", "0X800A3A8", "0X800A3A8", 0, 0, "", "", "", "");
         }
       }
     }
-    else if (i == 2131376477)
+    else if (i == 2131444718)
     {
       localObject1 = paramView.getTag();
       if ((localObject1 instanceof NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)) {
-        if (!NetworkUtil.isNetworkAvailable(NewFriendVerifyBlockedListFragment.a(this.a)))
+        if (!NetworkUtil.isNetworkAvailable(NewFriendVerifyBlockedListFragment.b(this.a)))
         {
-          QQToast.a(NewFriendVerifyBlockedListFragment.a(this.a), NewFriendVerifyBlockedListFragment.a(this.a).getResources().getString(2131692183), 0).b(NewFriendVerifyBlockedListFragment.a(this.a).getTitleBarHeight());
+          QQToast.makeText(NewFriendVerifyBlockedListFragment.b(this.a), NewFriendVerifyBlockedListFragment.b(this.a).getResources().getString(2131889169), 0).show(NewFriendVerifyBlockedListFragment.b(this.a).getTitleBarHeight());
         }
         else
         {
-          localObject2 = ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject1).jdField_a_of_type_ComTencentMobileqqNewfriendDataAddFriendBlockedInfo;
-          if (!TextUtils.isEmpty(((AddFriendBlockedInfo)localObject2).jdField_b_of_type_JavaLangString)) {
-            localObject1 = ((AddFriendBlockedInfo)localObject2).jdField_b_of_type_JavaLangString;
+          localObject2 = ((NewFriendVerifyBlockedListFragment.CommonAdapter.NewFriendBlockedHolder)localObject1).a;
+          if (!TextUtils.isEmpty(((AddFriendBlockedInfo)localObject2).b)) {
+            localObject1 = ((AddFriendBlockedInfo)localObject2).b;
           } else {
-            localObject1 = ((AddFriendBlockedInfo)localObject2).jdField_a_of_type_JavaLangString;
+            localObject1 = ((AddFriendBlockedInfo)localObject2).a;
           }
-          localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(NewFriendVerifyBlockedListFragment.a(this.a), 1, ((AddFriendBlockedInfo)localObject2).jdField_a_of_type_JavaLangString, null, 3041, 15, (String)localObject1, null, null, NewFriendVerifyBlockedListFragment.a(this.a).getString(2131689589), null);
-          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(NewFriendVerifyBlockedListFragment.a(this.a), (Intent)localObject1, 100);
+          localObject1 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(NewFriendVerifyBlockedListFragment.b(this.a), 1, ((AddFriendBlockedInfo)localObject2).a, null, 3041, 15, (String)localObject1, null, null, NewFriendVerifyBlockedListFragment.b(this.a).getString(2131886199), null);
+          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(NewFriendVerifyBlockedListFragment.b(this.a), (Intent)localObject1, 100);
           ReportController.b(null, "dc00898", "", "", "0X800A3A7", "0X800A3A7", 0, 0, "", "", "", "");
         }
       }
@@ -262,7 +262,7 @@ class NewFriendVerifyBlockedListFragment$CommonAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.fragment.NewFriendVerifyBlockedListFragment.CommonAdapter
  * JD-Core Version:    0.7.0.1
  */

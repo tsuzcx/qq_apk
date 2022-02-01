@@ -16,9 +16,9 @@ abstract class TraeAudioManager$switchThread
     if (QLog.isColorLevel())
     {
       paramTraeAudioManager = new StringBuilder();
-      paramTraeAudioManager.append(" ++switchThread:");
+      paramTraeAudioManager.append("construct switchThread:");
       paramTraeAudioManager.append(getDeviceName());
-      QLog.w("TRAE", 2, paramTraeAudioManager.toString());
+      QLog.w("TraeAudioManager", 2, paramTraeAudioManager.toString());
     }
   }
   
@@ -49,7 +49,7 @@ abstract class TraeAudioManager$switchThread
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" sessonID:");
       localStringBuilder.append(localObject);
-      QLog.w("TRAE", 2, localStringBuilder.toString());
+      QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
     if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L))
     {
@@ -63,7 +63,7 @@ abstract class TraeAudioManager$switchThread
     }
     this.this$0.InternalNotifyDeviceListUpdate();
     if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "processDeviceConnectRes sid null,don't send res");
+      QLog.w("TraeAudioManager", 2, "processDeviceConnectRes sid null,don't send res");
     }
   }
   
@@ -78,7 +78,7 @@ abstract class TraeAudioManager$switchThread
       ((StringBuilder)???).append(getDeviceName());
       ((StringBuilder)???).append(" _running:");
       ((StringBuilder)???).append(this._running);
-      QLog.w("TRAE", 2, ((StringBuilder)???).toString());
+      QLog.w("TraeAudioManager", 2, ((StringBuilder)???).toString());
     }
     interrupt();
     _quit();
@@ -130,7 +130,7 @@ abstract class TraeAudioManager$switchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.switchThread
  * JD-Core Version:    0.7.0.1
  */

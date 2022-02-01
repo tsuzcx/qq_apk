@@ -7,10 +7,10 @@ import com.tencent.biz.subscribe.utils.NavigationBarUtil;
 public class GdtAdBox
   implements IGdtAdBox
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData;
-  private GdtAdBoxDialog jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog;
-  private GdtAdBoxListener jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener;
+  private GdtAdBoxData a;
+  private Context b;
+  private GdtAdBoxListener c;
+  private GdtAdBoxDialog d;
   
   public static GdtAdBoxBuilder a(Context paramContext)
   {
@@ -19,51 +19,51 @@ public class GdtAdBox
   
   public GdtAdBoxData a()
   {
-    return this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog = new GdtAdBoxDialogCompact(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog.a(this);
-    Window localWindow = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog.getWindow();
-    NavigationBarUtil.a(localWindow);
-    NavigationBarUtil.b(localWindow);
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog.show();
-    NavigationBarUtil.c(localWindow);
-  }
-  
-  void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return this.a;
   }
   
   void a(GdtAdBoxData paramGdtAdBoxData)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData = paramGdtAdBoxData;
+    this.a = paramGdtAdBoxData;
   }
   
   void a(GdtAdBoxListener paramGdtAdBoxListener)
   {
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener = paramGdtAdBoxListener;
+    this.c = paramGdtAdBoxListener;
   }
   
   public void b()
   {
-    GdtAdBoxDialog localGdtAdBoxDialog = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog;
-    if ((localGdtAdBoxDialog != null) && (localGdtAdBoxDialog.isShowing()))
-    {
-      this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog.dismiss();
-      this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxDialog = null;
-    }
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener = null;
-    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxData = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.d = new GdtAdBoxDialogCompact(this.b);
+    this.d.a(this);
+    Window localWindow = this.d.getWindow();
+    NavigationBarUtil.a(localWindow);
+    NavigationBarUtil.b(localWindow);
+    this.d.show();
+    NavigationBarUtil.c(localWindow);
+  }
+  
+  void b(Context paramContext)
+  {
+    this.b = paramContext;
   }
   
   public void c()
   {
-    GdtAdBoxListener localGdtAdBoxListener = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxListener;
+    GdtAdBoxDialog localGdtAdBoxDialog = this.d;
+    if ((localGdtAdBoxDialog != null) && (localGdtAdBoxDialog.isShowing()))
+    {
+      this.d.dismiss();
+      this.d = null;
+    }
+    this.c = null;
+    this.a = null;
+    this.b = null;
+  }
+  
+  public void d()
+  {
+    GdtAdBoxListener localGdtAdBoxListener = this.c;
     if (localGdtAdBoxListener != null) {
       localGdtAdBoxListener.a();
     }
@@ -71,7 +71,7 @@ public class GdtAdBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBox
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class DynamicTextBuilder$1
   {
     String str1 = CaptureContext.a().getCurrentNickname();
     Map localMap = DynamicTextBuilder.a();
-    String str2 = HardCodeUtil.a(2131703756);
+    String str2 = HardCodeUtil.a(2131901702);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MY JOURNEY \n");
     localStringBuilder.append(str1);
@@ -23,7 +23,7 @@ final class DynamicTextBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextBuilder.1
  * JD-Core Version:    0.7.0.1
  */

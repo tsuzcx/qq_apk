@@ -18,28 +18,28 @@ public class ContactSearchResultMobileView
     super(paramViewGroup, paramInt);
   }
   
-  public Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
   protected void a()
   {
-    this.d = ((TextView)this.b.findViewById(2131371877));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.b.findViewById(2131361799));
-    this.e = ((TextView)this.b.findViewById(2131376487));
-    this.g = ((TextView)this.b.findViewById(2131377726));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131376477));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
-    this.f = ((TextView)this.b.findViewById(2131376485));
-    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setSupportMaskView(true);
+    this.f = ((TextView)this.e.findViewById(2131439320));
+    this.j = ((ImageView)this.e.findViewById(2131427337));
+    this.g = ((TextView)this.e.findViewById(2131444728));
+    this.i = ((TextView)this.e.findViewById(2131446184));
+    this.a = ((Button)this.e.findViewById(2131444718));
+    this.a.setText(HardCodeUtil.a(2131886199));
+    this.h = ((TextView)this.e.findViewById(2131444726));
+    if ((this.j instanceof ThemeImageView)) {
+      ((ThemeImageView)this.j).setSupportMaskView(true);
     }
+  }
+  
+  public Button j()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.view.ContactSearchResultMobileView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class AIOGalleryActivity$2$4
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOGalleryActivity$2.a) != null) {
-      AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserAIOGalleryActivity$2.a).notifyVideoUrl(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c, this.jdField_a_of_type_AndroidOsBundle);
+    if (AIOGalleryActivity.a(this.j.a) != null) {
+      AIOGalleryActivity.a(this.j.a).notifyVideoUrl(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4
  * JD-Core Version:    0.7.0.1
  */

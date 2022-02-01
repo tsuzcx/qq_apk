@@ -21,39 +21,31 @@ import java.util.List;
 public abstract class BaseMenuCloudFileItemBuilder
   extends CloudFileItemBuilder
 {
-  public static MenuItem a;
-  private static int[] jdField_a_of_type_ArrayOfInt = { BaseApplication.getContext().getResources().getDimensionPixelSize(2131298886), BaseApplication.getContext().getResources().getDimensionPixelSize(2131298887) };
-  public static MenuItem b;
-  public static MenuItem c;
-  protected int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new BaseMenuCloudFileItemBuilder.1(this);
+  public static MenuItem b = new MenuItem(0, 2131430854, 2131887820, 2130839697);
+  public static MenuItem c = new MenuItem(0, 2131430853, 2131887819, 2130839698);
+  public static MenuItem d = new MenuItem(0, 2131430855, 2131887821, 2130839699);
+  private static int[] k = { BaseApplication.getContext().getResources().getDimensionPixelSize(2131299607), BaseApplication.getContext().getResources().getDimensionPixelSize(2131299608) };
   protected SwipTextViewMenuBuilder a;
-  private BaseMenuCloudFileItemBuilder.OnMenuItemClickListener jdField_a_of_type_ComTencentMobileqqTeamworkforgroupBaseMenuCloudFileItemBuilder$OnMenuItemClickListener;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqTeamworkforgroupMenuItem = new MenuItem(0, 2131364746, 2131690882, 2130839506);
-    b = new MenuItem(0, 2131364745, 2131690881, 2130839507);
-    c = new MenuItem(0, 2131364747, 2131690883, 2130839508);
-  }
+  protected int e = 0;
+  private View.OnClickListener j = new BaseMenuCloudFileItemBuilder.1(this);
+  private BaseMenuCloudFileItemBuilder.OnMenuItemClickListener l;
   
   public BaseMenuCloudFileItemBuilder(AppInterface paramAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     super(paramAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
   }
   
-  private SwipTextViewMenuBuilder a()
+  private SwipTextViewMenuBuilder b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRelySwipTextViewMenuBuilder;
+    Object localObject = this.a;
     if (localObject != null) {
       return localObject;
     }
     localObject = new ArrayList(a());
-    int j = ((List)localObject).size();
+    int m = ((List)localObject).size();
     int i = 0;
-    if (j > 3) {
-      ((List)localObject).add(0, jdField_a_of_type_ComTencentMobileqqTeamworkforgroupMenuItem);
+    if (m > 3) {
+      ((List)localObject).add(0, b);
     }
     int[] arrayOfInt1 = new int[((List)localObject).size()];
     int[] arrayOfInt2 = new int[((List)localObject).size()];
@@ -68,35 +60,35 @@ public abstract class BaseMenuCloudFileItemBuilder
       arrayOfInt4[i] = localMenuItem.a();
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRelySwipTextViewMenuBuilder = new BaseMenuCloudFileItemBuilder.2(this, ((List)localObject).size(), 2, jdField_a_of_type_ArrayOfInt, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3, (List)localObject, arrayOfInt4);
-    return this.jdField_a_of_type_ComTencentMobileqqRelySwipTextViewMenuBuilder;
+    this.a = new BaseMenuCloudFileItemBuilder.2(this, ((List)localObject).size(), 2, k, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3, (List)localObject, arrayOfInt4);
+    return this.a;
   }
   
-  private void a(ICloudFile paramICloudFile)
+  private void b(ICloudFile paramICloudFile)
   {
-    ActionSheet localActionSheet = (ActionSheet)((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).actionSheetHelperCreateDialog(this.jdField_a_of_type_AndroidContentContext, null);
+    ActionSheet localActionSheet = (ActionSheet)((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).actionSheetHelperCreateDialog(this.g, null);
     List localList = a(paramICloudFile);
     localList = localList.subList(0, localList.size() - 2);
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
-      localActionSheet.addButton(this.jdField_a_of_type_AndroidContentContext.getResources().getString(localMenuItem.c()), 1);
+      localActionSheet.addButton(this.g.getResources().getString(localMenuItem.c()), 1);
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new BaseMenuCloudFileItemBuilder.3(this, localList, paramICloudFile, localActionSheet));
     localActionSheet.show();
   }
   
   public final View a(int paramInt1, ICloudFile paramICloudFile, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
   {
-    SwipTextViewMenuBuilder localSwipTextViewMenuBuilder = a();
+    SwipTextViewMenuBuilder localSwipTextViewMenuBuilder = b();
     SwipRightMenuBuilder.SwipItemBaseHolder localSwipItemBaseHolder;
     if (paramView == null)
     {
       localSwipItemBaseHolder = new SwipRightMenuBuilder.SwipItemBaseHolder();
       paramView = b(paramInt1, paramICloudFile, localSwipItemBaseHolder.a, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
-      paramView = localSwipTextViewMenuBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramView, localSwipItemBaseHolder, -1);
+      paramView = localSwipTextViewMenuBuilder.a(this.g, paramView, localSwipItemBaseHolder, -1);
       paramView.setTag(localSwipItemBaseHolder);
       paramViewGroup = localSwipItemBaseHolder;
     }
@@ -106,7 +98,7 @@ public abstract class BaseMenuCloudFileItemBuilder
       b(paramInt1, paramICloudFile, localSwipItemBaseHolder.a, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
       paramViewGroup = localSwipItemBaseHolder;
     }
-    localSwipTextViewMenuBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt1, paramICloudFile, paramViewGroup, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localSwipTextViewMenuBuilder.a(this.g, paramView, paramInt1, paramICloudFile, paramViewGroup, this.j);
     paramView.setEnabled(false);
     return paramView;
   }
@@ -117,14 +109,14 @@ public abstract class BaseMenuCloudFileItemBuilder
   
   public void a(BaseMenuCloudFileItemBuilder.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupBaseMenuCloudFileItemBuilder$OnMenuItemClickListener = paramOnMenuItemClickListener;
+    this.l = paramOnMenuItemClickListener;
   }
   
   public abstract View b(int paramInt1, ICloudFile paramICloudFile, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.BaseMenuCloudFileItemBuilder
  * JD-Core Version:    0.7.0.1
  */

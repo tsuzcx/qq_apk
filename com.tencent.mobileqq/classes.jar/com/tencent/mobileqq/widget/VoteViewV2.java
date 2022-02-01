@@ -34,25 +34,25 @@ public class VoteViewV2
   extends FrameLayout
   implements PraiseManager.OnPraiseLoadListener
 {
-  private double jdField_a_of_type_Double;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected ImageView a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HeartLayout jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout;
-  private FloatViewBuilder jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder;
-  PraiseAnimation jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation = new PraiseAnimation();
-  private boolean jdField_a_of_type_Boolean;
-  protected TextView b;
-  private boolean b;
-  protected TextView c;
-  private boolean c;
-  private boolean d = false;
-  public int e;
-  public int f;
-  protected int g = 0;
+  private Context a;
+  private LayoutInflater b;
+  private double c;
+  private ViewGroup d;
+  private TextView e;
+  private HeartLayout f;
+  private FloatViewBuilder g;
+  private boolean h;
+  QQAppInterface i;
+  protected TextView j;
+  protected ImageView k;
+  protected TextView l;
+  public int m;
+  public int n;
+  protected int o = 0;
+  PraiseAnimation p = new PraiseAnimation();
+  private boolean q;
+  private boolean r;
+  private boolean s = false;
   
   public VoteViewV2(Context paramContext)
   {
@@ -67,83 +67,78 @@ public class VoteViewV2
   public VoteViewV2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Double = getResources().getDisplayMetrics().density;
+    this.a = paramContext;
+    this.b = LayoutInflater.from(paramContext);
+    this.c = getResources().getDisplayMetrics().density;
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(a(), this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381000));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376322));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376323));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372362));
+    this.b.inflate(getLayout(), this);
+    this.j = ((TextView)findViewById(2131449995));
+    this.d = ((ViewGroup)findViewById(2131444535));
+    this.e = ((TextView)findViewById(2131444536));
+    this.l = ((TextView)findViewById(2131439880));
     Vote2RotateAnimation.a();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381003));
+    this.k = ((ImageView)findViewById(2131449998));
     a(1);
-  }
-  
-  protected int a()
-  {
-    return 2131561392;
   }
   
   public void a()
   {
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       QLog.i("PraiseManager", 1, "showPatternVote, SimpleUIMode is open now");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean = false;
-    if (!this.d)
+    this.p.f = false;
+    if (!this.s)
     {
       VoteRotateAnimation.a();
       VasWebviewUtil.a(null, "thumbup", "others_pageview", null, 1, 0, 0, null, "1", null);
     }
-    this.d = true;
+    this.s = true;
     postDelayed(new VoteViewV2.1(this), 3000L);
   }
   
   public void a(int paramInt)
   {
-    this.g = paramInt;
+    this.o = paramInt;
     PraiseAnimation localPraiseAnimation;
-    if (this.g == 1)
+    if (this.o == 1)
     {
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846068);
+      if ((!this.q) && (this.h)) {
+        this.k.setImageResource(2130847538);
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846069);
+        this.k.setImageResource(2130847539);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167138));
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167138));
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      this.j.setTextColor(this.a.getResources().getColor(2131168118));
+      this.l.setTextColor(this.a.getResources().getColor(2131168118));
+      if (this.p.e != null)
       {
-        localPraiseAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation;
-        localPraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.a(localPraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -7894119);
+        localPraiseAnimation = this.p;
+        localPraiseAnimation.e = ImageUtil.a(localPraiseAnimation.e, -7894119);
       }
     }
     else
     {
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846068);
+      if ((!this.q) && (this.h)) {
+        this.k.setImageResource(2130847538);
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846070);
+        this.k.setImageResource(2130847540);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167222));
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167222));
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      this.j.setTextColor(this.a.getResources().getColor(2131168212));
+      this.l.setTextColor(this.a.getResources().getColor(2131168212));
+      if (this.p.e != null)
       {
-        localPraiseAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation;
-        localPraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.a(localPraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -1);
+        localPraiseAnimation = this.p;
+        localPraiseAnimation.e = ImageUtil.a(localPraiseAnimation.e, -1);
       }
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167056));
+        this.k.setColorFilter(1996488704);
+        this.j.setTextColor(getResources().getColor(2131167993));
       }
     }
   }
@@ -153,82 +148,82 @@ public class VoteViewV2
     if (paramInt1 == 0) {
       return;
     }
-    if ((paramInt1 == PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (paramPraiseInfo != null) && (!this.jdField_b_of_type_Boolean))
+    if ((paramInt1 == PraiseManager.a(this.i)) && (paramPraiseInfo != null) && (!this.q))
     {
       a(paramPraiseInfo);
-      paramPraiseInfo = (Pair)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+      paramPraiseInfo = (Pair)this.p.h.get(paramInt1);
       if (paramPraiseInfo != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder.b(), this, paramInt1, false, 0, ((Point)paramPraiseInfo.first).x, ((Point)paramPraiseInfo.first).y);
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        this.p.a(this.i, this.f, this.g.b(), this, paramInt1, false, 0, ((Point)paramPraiseInfo.first).x, ((Point)paramPraiseInfo.first).y);
+        this.p.h.remove(paramInt1);
       }
     }
   }
   
   public void a(PraiseInfo paramPraiseInfo)
   {
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       QLog.i("PraiseManager", 1, "startPraiseAnim, SimpleUIMode is open now");
       return;
     }
-    if ((!this.jdField_b_of_type_Boolean) && (paramPraiseInfo != null) && (!this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean) && (!this.d))
+    if ((!this.q) && (paramPraiseInfo != null) && (!this.p.f) && (!this.s))
     {
-      PraiseAnimation localPraiseAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation;
-      localPraiseAnimation.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetImageView;
-      localPraiseAnimation.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getResources(), paramPraiseInfo.a);
-      if (this.g == 1)
+      PraiseAnimation localPraiseAnimation = this.p;
+      localPraiseAnimation.c = this.k;
+      localPraiseAnimation.e = new BitmapDrawable(getResources(), paramPraiseInfo.f);
+      if (this.o == 1)
       {
-        paramPraiseInfo = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation;
-        paramPraiseInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.a(paramPraiseInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -7894119);
+        paramPraiseInfo = this.p;
+        paramPraiseInfo.e = ImageUtil.a(paramPraiseInfo.e, -7894119);
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.a(false, false, this.jdField_a_of_type_AndroidWidgetImageView.getDrawable(), getResources());
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(PraiseAnimation.a(this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation, 1.0F, 0.3F));
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean = true;
+      this.p.a(false, false, this.k.getDrawable(), getResources());
+      this.k.startAnimation(PraiseAnimation.a(this.p, 1.0F, 0.3F));
+      this.p.f = true;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0) {
+    this.r = paramBoolean;
+    if (this.d.getVisibility() == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850767);
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    int i;
+    this.d.setBackgroundResource(2130852589);
+    ViewGroup localViewGroup = this.d;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 4;
+      i1 = 4;
     }
-    localViewGroup.setVisibility(i);
+    localViewGroup.setVisibility(i1);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
-    int k = 4;
-    int i;
+    boolean bool = this.q;
+    int i3 = 4;
+    int i1;
     if (bool)
     {
-      i = this.f;
-      if (i > 0)
+      i1 = this.n;
+      if (i1 > 0)
       {
-        int j;
+        int i2;
         if (paramBoolean)
         {
-          j = 2130850767;
-          i = this.e;
+          i2 = 2130852589;
+          i1 = this.m;
         }
         else
         {
-          i = this.e - i;
-          j = 2130850777;
+          i1 = this.m - i1;
+          i2 = 2130852599;
         }
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(j);
-        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(paramInt);
-        TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+        this.d.setBackgroundResource(i2);
+        this.d.setVisibility(paramInt);
+        TextView localTextView = this.e;
         if (paramBoolean)
         {
           localObject = "";
@@ -237,13 +232,13 @@ public class VoteViewV2
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("+");
-          ((StringBuilder)localObject).append(this.f);
+          ((StringBuilder)localObject).append(this.n);
           localObject = ((StringBuilder)localObject).toString();
         }
         localTextView.setText((CharSequence)localObject);
-        Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        Object localObject = this.e;
         if (paramBoolean) {
-          paramInt = k;
+          paramInt = i3;
         } else {
           paramInt = 0;
         }
@@ -251,92 +246,92 @@ public class VoteViewV2
         break label187;
       }
     }
-    paramInt = this.e;
-    if (this.jdField_b_of_type_Boolean)
+    paramInt = this.m;
+    if (this.q)
     {
-      i = paramInt;
-      if (this.jdField_c_of_type_Boolean) {}
+      i1 = paramInt;
+      if (this.r) {}
     }
     else
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
-      i = paramInt;
+      this.d.setVisibility(4);
+      i1 = paramInt;
     }
     label187:
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(i));
+    this.j.setText(String.valueOf(i1));
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, NewVoteAnimHelper paramNewVoteAnimHelper, boolean paramBoolean3)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.q = paramBoolean1;
+    this.h = paramBoolean2;
     if (paramInt1 <= 0) {
       paramInt1 = 0;
     }
-    this.e = paramInt1;
-    paramInt1 = this.e;
+    this.m = paramInt1;
+    paramInt1 = this.m;
     if (paramInt2 > paramInt1) {
-      this.f = (paramInt1 % 20);
+      this.n = (paramInt1 % 20);
     } else if (paramInt2 < 0) {
-      this.f = 0;
+      this.n = 0;
     } else {
-      this.f = paramInt2;
+      this.n = paramInt2;
     }
     Object localObject;
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-      localObject = getResources().getDrawable(2130846068);
-    } else if (this.g == 1) {
-      localObject = getResources().getDrawable(2130846069);
+    if ((!this.q) && (this.h)) {
+      localObject = getResources().getDrawable(2130847538);
+    } else if (this.o == 1) {
+      localObject = getResources().getDrawable(2130847539);
     } else {
-      localObject = getResources().getDrawable(2130846070);
+      localObject = getResources().getDrawable(2130847540);
     }
-    setContentDescription(String.format(getContext().getString(2131691167), new Object[] { String.valueOf(this.e) }));
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.a(false, false, (Drawable)localObject, getResources());
+    setContentDescription(String.format(getContext().getString(2131888113), new Object[] { String.valueOf(this.m) }));
+    if (this.p.f) {
+      this.p.a(false, false, (Drawable)localObject, getResources());
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.k.setImageDrawable((Drawable)localObject);
     }
-    if ((!paramBoolean1) && (!this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean) && (!paramBoolean3) && (!this.d))
+    if ((!paramBoolean1) && (!this.p.f) && (!paramBoolean3) && (!this.s))
     {
-      paramInt1 = PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramInt1 = PraiseManager.a(this.i);
       if (paramInt1 > 0)
       {
-        localObject = (PraiseManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER);
+        localObject = (PraiseManager)this.i.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER);
         ((PraiseManager)localObject).a(this);
         a(((PraiseManager)localObject).a(paramInt1, true, "from_profile_card"));
       }
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.q)
     {
       a(false, 4);
-      if ((paramBoolean3) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout != null))
+      if ((paramBoolean3) && (this.f != null))
       {
         paramNewVoteAnimHelper = new int[2];
-        this.jdField_b_of_type_AndroidWidgetTextView.getLocationInWindow(paramNewVoteAnimHelper);
-        if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(getContext(), 2130846080);
+        this.j.getLocationInWindow(paramNewVoteAnimHelper);
+        if (this.g == null) {
+          this.g = new FloatViewBuilder(getContext(), 2130847550);
         }
         double d1 = paramNewVoteAnimHelper[0];
-        double d2 = this.jdField_b_of_type_AndroidWidgetTextView.getCompoundPaddingLeft();
+        double d2 = this.j.getCompoundPaddingLeft();
         Double.isNaN(d2);
         Double.isNaN(d1);
         float f1 = (float)(d1 + d2 * 0.5D);
         float f2 = paramNewVoteAnimHelper[1];
-        paramInt1 = PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramInt1 = PraiseManager.a(this.i);
         if (paramInt1 > 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder.b(), this, paramInt1, true, 0, f1, f2);
+          this.p.a(this.i, this.f, this.g.b(), this, paramInt1, true, 0, f1, f2);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a(this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder.b(), f1, f2);
+        this.f.a(this.g.b(), f1, f2);
       }
     }
     else
     {
       if (paramNewVoteAnimHelper != null)
       {
-        paramNewVoteAnimHelper.a(this.e, this.f, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, null, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
-        a(this.jdField_c_of_type_Boolean);
+        paramNewVoteAnimHelper.a(this.m, this.n, this.d, this.e, this.j, null, this.f);
+        a(this.r);
         return;
       }
       a(true, 0);
@@ -345,32 +340,37 @@ public class VoteViewV2
   
   public void b(boolean paramBoolean)
   {
-    HeartLayout localHeartLayout = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout;
+    HeartLayout localHeartLayout = this.f;
     if (localHeartLayout != null) {
       localHeartLayout.setCanDoAnim(paramBoolean);
     }
   }
   
+  protected int getLayout()
+  {
+    return 2131627748;
+  }
+  
   protected void onDetachedFromWindow()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.i;
     if (localQQAppInterface != null) {
       ((PraiseManager)localQQAppInterface.getManager(QQManagerFactory.PERSONAL_PRAISE_MANAGER)).b(this);
     }
-    this.d = false;
+    this.s = false;
     super.onDetachedFromWindow();
   }
   
   public void setHeartLayout(QQAppInterface paramQQAppInterface, HeartLayout paramHeartLayout)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout = paramHeartLayout;
-    FloatViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
+    this.i = paramQQAppInterface;
+    this.f = paramHeartLayout;
+    FloatViewBuilder.a(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VoteViewV2
  * JD-Core Version:    0.7.0.1
  */

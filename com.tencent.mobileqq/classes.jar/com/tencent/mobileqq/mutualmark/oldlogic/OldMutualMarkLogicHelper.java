@@ -84,58 +84,58 @@ public class OldMutualMarkLogicHelper
     }
     paramMessageForUniteGrayTip = AioAnimationDetector.a();
     if (paramInt == 3) {
-      paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850540);
+      paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852336);
     }
     for (;;)
     {
       break;
       if (paramInt == 26)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850541);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852337);
       }
       else if (paramInt == 27)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850542);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852338);
       }
       else if (paramInt == 4)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850487);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852283);
       }
       else if (paramInt == 28)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850488);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852284);
       }
       else if (paramInt == 29)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850489);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852285);
       }
       else if (paramInt == 1)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850544);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852340);
       }
       else if (paramInt == 2)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850491);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852287);
       }
       else if (paramInt == 5)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850543);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852339);
       }
       else if (paramInt == 30)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850545);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852341);
       }
       else if (paramInt == 31)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850546);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852342);
       }
       else if (paramInt == 7)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850538);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852334);
       }
       else if (paramInt == 8)
       {
-        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850539);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852335);
       }
       else
       {
@@ -148,76 +148,76 @@ public class OldMutualMarkLogicHelper
             break;
             if (paramInt == 12)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850508);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852304);
               break;
             }
             if (paramInt == 13)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850509);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852305);
               break;
             }
             if (paramInt == 14)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850516);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852312);
               break;
             }
             if (paramInt == 15)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850517);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852313);
               break;
             }
             if (paramInt == 16)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850518);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852314);
               break;
             }
             if (paramInt == 17)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850510);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852306);
               break;
             }
             if (paramInt == 18)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850511);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852307);
               break;
             }
             if (paramInt == 19)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850512);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852308);
               break;
             }
             if (paramInt == 20)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850513);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852309);
               break;
             }
             if (paramInt == 21)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850514);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852310);
               break;
             }
             if (paramInt == 22)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850515);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852311);
               break;
             }
             if (paramInt == 23)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850519);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852315);
               break;
             }
             if (paramInt == 24)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850520);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852316);
               break;
             }
             if (paramInt == 25)
             {
-              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850521);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130852317);
               break;
             }
           } while ((!MutualMarkUtils.a(paramInt)) || (paramBaseSessionInfo == null));
-          paramInt = MutualMarkConfigHelper.a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramInt));
+          paramInt = MutualMarkConfigHelper.a(paramQQAppInterface, paramBaseSessionInfo.b, String.valueOf(paramInt));
         } while (paramInt == 0);
         paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
       }
@@ -234,10 +234,10 @@ public class OldMutualMarkLogicHelper
   
   private static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList, FriendChatPie paramFriendChatPie)
   {
-    if ((QzoneLoverService.a().a()) && (a(paramQQAppInterface, paramSessionInfo, paramList)))
+    if ((QzoneLoverService.a().c()) && (a(paramQQAppInterface, paramSessionInfo, paramList)))
     {
-      paramFriendChatPie.G = true;
-      QzoneLoverService.a().a();
+      paramFriendChatPie.bp = true;
+      QzoneLoverService.a().b();
       if (QLog.isColorLevel()) {
         QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover enter!!!!!!!!");
       }
@@ -255,7 +255,7 @@ public class OldMutualMarkLogicHelper
       if (paramInt == 33) {
         return true;
       }
-      return paramInt == MutualMarkUtils.a(12L, 2L);
+      return paramInt == MutualMarkUtils.b(12L, 2L);
     }
     return true;
   }
@@ -267,7 +267,7 @@ public class OldMutualMarkLogicHelper
       if (paramQQAppInterface == null) {
         return false;
       }
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       Time localTime1 = new Time();
       localTime1.set(l * 1000L);
       Time localTime2 = new Time();
@@ -295,7 +295,7 @@ public class OldMutualMarkLogicHelper
               bool3 = bool1;
               continue;
             }
-            if (!TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString))
+            if (!TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.b))
             {
               bool4 = bool2;
               bool3 = bool1;
@@ -314,7 +314,7 @@ public class OldMutualMarkLogicHelper
             if (localTime1.yearDay != localTime2.yearDay) {
               continue;
             }
-            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString);
+            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.b);
             if (bool3) {
               bool2 = true;
             } else {
@@ -419,16 +419,16 @@ public class OldMutualMarkLogicHelper
   
   public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, FriendChatPie paramFriendChatPie)
   {
-    if (paramFriendChatPie.G) {
+    if (paramFriendChatPie.bp) {
       return;
     }
     Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    String str = paramSessionInfo.b;
     int j = 0;
-    if (((FriendsManager)localObject).a(str, false) == null) {
+    if (((FriendsManager)localObject).d(str, false) == null) {
       return;
     }
-    localObject = MutualMarkDataCenter.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, 7L, false);
+    localObject = MutualMarkDataCenter.a(paramQQAppInterface, paramSessionInfo.b, 7L, false);
     int i = j;
     if (localObject != null)
     {
@@ -442,7 +442,7 @@ public class OldMutualMarkLogicHelper
       }
     }
     if (i != 0) {
-      a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int), paramFriendChatPie);
+      a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.getMessageFacade().o(paramSessionInfo.b, paramSessionInfo.a), paramFriendChatPie);
     }
   }
   
@@ -451,7 +451,7 @@ public class OldMutualMarkLogicHelper
     if (paramInt == 13) {
       return true;
     }
-    return paramInt == MutualMarkUtils.a(4L, 3L);
+    return paramInt == MutualMarkUtils.b(4L, 3L);
   }
   
   public static boolean c(int paramInt)
@@ -466,7 +466,7 @@ public class OldMutualMarkLogicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -34,32 +34,32 @@ class BindGroupConfirmActivity$7
             paramBundle = (String)paramJSONObject.get("retMsg");
             if (paramInt == 0)
             {
-              if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
+              if (this.a.t == null)
               {
-                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690651));
-                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690650, new Object[] { this.a.e }), this.a);
-                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
+                this.a.t = new ShareAioResultDialog(this.a);
+                this.a.t.a(this.a.p.getString(2131887562));
+                this.a.t.a(this.a.p.getString(2131887561, new Object[] { this.a.q }), this.a);
+                this.a.t.a(this.a);
               }
-              if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
-                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
+              if (!this.a.t.isShowing()) {
+                this.a.t.show();
               }
               ReportController.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
             }
             else
             {
-              paramJSONObject = this.a.getActivity().getResources().getString(2131719905);
+              paramJSONObject = this.a.getActivity().getResources().getString(2131917510);
             }
             switch (paramInt)
             {
             case 221020: 
-              paramJSONObject = this.a.getActivity().getResources().getString(2131719903);
+              paramJSONObject = this.a.getActivity().getResources().getString(2131917508);
               break;
             case 221019: 
-              paramJSONObject = this.a.getActivity().getResources().getString(2131719907);
+              paramJSONObject = this.a.getActivity().getResources().getString(2131917512);
               break;
             case 221001: 
-              paramJSONObject = this.a.getActivity().getResources().getString(2131719908);
+              paramJSONObject = this.a.getActivity().getResources().getString(2131917513);
               BindGroupConfirmActivity.a(this.a, paramJSONObject);
               if (QLog.isColorLevel())
               {
@@ -79,7 +79,7 @@ class BindGroupConfirmActivity$7
       catch (Exception paramJSONObject)
       {
         paramBundle = this.a;
-        BindGroupConfirmActivity.a(paramBundle, paramBundle.getActivity().getResources().getString(2131719905));
+        BindGroupConfirmActivity.a(paramBundle, paramBundle.getActivity().getResources().getString(2131917510));
         if (QLog.isColorLevel())
         {
           paramBundle = new StringBuilder();
@@ -94,7 +94,7 @@ class BindGroupConfirmActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.7
  * JD-Core Version:    0.7.0.1
  */

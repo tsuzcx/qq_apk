@@ -1,10 +1,9 @@
 package com.tencent.biz.richframework.animation.drawable;
 
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
-import com.tencent.mobileqq.mqq.api.IThreadManagerApi;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
 class AnimationDrawableFactory$1
@@ -16,36 +15,33 @@ class AnimationDrawableFactory$1
   
   public void onRspCallback(boolean paramBoolean, String paramString)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cost time");
-    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    RFLog.d("AnimationDrawableFactory", i, localStringBuilder.toString());
-    if ((paramBoolean) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a()))
+    localStringBuilder.append(System.currentTimeMillis() - this.a);
+    QLog.d("AnimationDrawableFactory", 1, localStringBuilder.toString());
+    if ((paramBoolean) && (System.currentTimeMillis() - this.a < this.b.c()))
     {
-      i = RFLog.USR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("get drawable file list success:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      RFLog.d("AnimationDrawableFactory", i, localStringBuilder.toString());
-      paramString = AnimationDrawableFactory.a(paramString, this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.b());
+      localStringBuilder.append(this.c);
+      QLog.d("AnimationDrawableFactory", 1, localStringBuilder.toString());
+      paramString = AnimationDrawableFactory.a(paramString, this.b.f());
       if ((paramString != null) && (paramString.length != 0)) {
-        ((IThreadManagerApi)QRoute.api(IThreadManagerApi.class)).getUIHandlerV2().post(new AnimationDrawableFactory.1.1(this, paramString));
+        RFThreadManager.getUIHandler().post(new AnimationDrawableFactory.1.1(this, paramString));
       } else {
-        this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener.a(false, null);
+        this.d.a(false, null);
       }
     }
     else
     {
-      RFLog.d("AnimationDrawableFactory", RFLog.USR, "create animationDrawable failed");
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener.a(false, null);
+      QLog.d("AnimationDrawableFactory", 1, "create animationDrawable failed");
+      this.d.a(false, null);
     }
-    i = RFLog.USR;
     paramString = new StringBuilder();
     paramString.append("removeKey");
-    paramString.append(this.jdField_a_of_type_JavaLangString);
-    RFLog.d("AnimationDrawableFactory", i, paramString.toString());
-    AnimationDrawableFactory.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory).remove(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.c);
+    QLog.d("AnimationDrawableFactory", 1, paramString.toString());
+    AnimationDrawableFactory.a(this.e).remove(this.c);
   }
 }
 

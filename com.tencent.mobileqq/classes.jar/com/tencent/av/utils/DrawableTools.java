@@ -8,7 +8,7 @@ public class DrawableTools
 {
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return a(paramResources, paramInt, 2131166042, true, 2130842062, 2131166045, null);
+    return a(paramResources, paramInt, 2131166769, true, 2130842986, 2131166772, null);
   }
   
   private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
@@ -43,18 +43,18 @@ public class DrawableTools
   
   public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
   {
-    return a(paramResources, paramInt, 2131166042, paramBoolean, 2130842062, 2131166045, paramDrawable);
+    return a(paramResources, paramInt, 2131166769, paramBoolean, 2130842986, 2131166772, paramDrawable);
   }
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    return a(paramResources, paramInt, 2131166042, paramBoolean, 2130842062, 2131166045, null);
+    return a(paramResources, paramInt, 2131166769, paramBoolean, 2130842986, 2131166772, null);
   }
   
   public static Drawable b(Resources paramResources, int paramInt)
   {
     Drawable localDrawable = paramResources.getDrawable(paramInt);
-    paramResources = TintStateDrawable.a(paramResources, paramInt, 2131166042);
+    paramResources = TintStateDrawable.a(paramResources, paramInt, 2131166769);
     paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     return paramResources;
   }

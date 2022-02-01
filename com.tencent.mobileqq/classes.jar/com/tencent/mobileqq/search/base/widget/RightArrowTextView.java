@@ -29,7 +29,7 @@ public class RightArrowTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    Drawable localDrawable = getResources().getDrawable(2130850607);
+    Drawable localDrawable = getResources().getDrawable(2130852405);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramCharSequence.toString());
@@ -42,7 +42,7 @@ public class RightArrowTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.widget.RightArrowTextView
  * JD-Core Version:    0.7.0.1
  */

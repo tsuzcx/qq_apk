@@ -20,12 +20,12 @@ final class VasAdvSupport$Companion$instance$2
   @NotNull
   public final VasAdvSupport invoke()
   {
-    return new VasAdvSupport(VasAdvInterfaceBinder.a.a(), VasAdvInterfaceBinder.a.a(), null);
+    return new VasAdvSupport(VasAdvInterfaceBinder.a.a(), VasAdvInterfaceBinder.a.b(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.VasAdvSupport.Companion.instance.2
  * JD-Core Version:    0.7.0.1
  */

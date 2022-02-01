@@ -3,11 +3,13 @@ package org.light.gles;
 import android.opengl.GLES20;
 import android.text.TextUtils;
 import android.util.Log;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import org.light.device.DeviceInstance;
 import org.light.device.GpuScopeAttrs;
+import org.light.device.GpuScopeAttrs.GpuBean.BaseModel;
 import org.light.device.GpuScopeAttrs.GpuBean.DeviceModel;
-import org.light.device.GpuScopeAttrs.GpuBean.GpuModel;
 import org.light.utils.LightLogUtil;
 import org.light.utils.MustRunOnGLThread;
 
@@ -63,6 +65,11 @@ public class GLCapabilities
       localStringIndexOutOfBoundsException.printStackTrace();
     }
     return "2.0";
+  }
+  
+  private static List<GpuScopeAttrs.GpuBean.BaseModel> getModels()
+  {
+    return Arrays.asList(new GpuScopeAttrs.GpuBean.BaseModel[] { GpuScopeAttrs.getInstance().getGPuModel(), GpuScopeAttrs.getInstance().getDeviceModel(), GpuScopeAttrs.getInstance().getSysVersionModel() });
   }
   
   public static void init(boolean paramBoolean)
@@ -181,69 +188,134 @@ public class GLCapabilities
     LightLogUtil.d("GLCapabilities", String.format("[uniform] GL_MAX_VERTEX_UNIFORM_COMPONENTS = %d, GL_MAX_FRAGMENT_UNIFORM_COMPONENTS = %d", new Object[] { Integer.valueOf(maxVertexUniformComponents[0]), Integer.valueOf(maxFragmentUniformComponents[0]) }));
   }
   
+  public static boolean isDeviceSupportAce3dFlush()
+  {
+    Iterator localIterator = getModels().iterator();
+    boolean bool = true;
+    while (localIterator.hasNext())
+    {
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool &= localBaseModel.ace3dFlushSupport;
+      }
+    }
+    return bool;
+  }
+  
   public static boolean isDeviceSupportAceEngine()
   {
-    Object localObject = GpuScopeAttrs.getInstance().getGPuModel();
-    if (localObject == null)
+    Iterator localIterator = getModels().iterator();
+    boolean bool2 = true;
+    while (localIterator.hasNext())
     {
-      localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-      if (localObject == null) {
-        return true;
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null)
+      {
+        boolean bool3 = localBaseModel.filamentSupport;
+        boolean bool1 = bool3;
+        if (!bool3) {
+          if ((localBaseModel.filamentWhiteList != null) && (localBaseModel.filamentWhiteList.contains(DeviceInstance.getInstance().getDeviceName()))) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+        }
+        bool2 &= bool1;
       }
-      return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).filamentSupport;
     }
-    if (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentSupport) {
-      return true;
-    }
-    return (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList != null) && (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList.contains(DeviceInstance.getInstance().getDeviceName()));
+    return bool2;
   }
   
   public static boolean isDeviceSupportAiAbility()
   {
-    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-    if (localObject == null)
+    Iterator localIterator = getModels().iterator();
+    boolean bool = true;
+    while (localIterator.hasNext())
     {
-      localObject = GpuScopeAttrs.getInstance().getGPuModel();
-      if (localObject == null) {
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool &= localBaseModel.aiSupport;
+      }
+    }
+    return bool;
+  }
+  
+  public static boolean isDeviceSupportFilamentFeature(String paramString)
+  {
+    GpuScopeAttrs.GpuBean.DeviceModel localDeviceModel = GpuScopeAttrs.getInstance().getDeviceModel();
+    if (localDeviceModel != null)
+    {
+      if (localDeviceModel.renderBlackList == null) {
         return true;
       }
-      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).aiSupport;
+      try
+      {
+        boolean bool = localDeviceModel.renderBlackList.contains(paramString);
+        return true ^ bool;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
-    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).aiSupport;
+    return true;
+  }
+  
+  public static boolean isDeviceSupportHairSegPreLoad()
+  {
+    Iterator localIterator = getModels().iterator();
+    boolean bool = true;
+    while (localIterator.hasNext())
+    {
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool &= localBaseModel.hairSegPreLoadSupport;
+      }
+    }
+    return bool;
   }
   
   public static boolean isDeviceSupportKapu()
   {
-    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-    if (localObject == null)
+    Iterator localIterator = getModels().iterator();
+    boolean bool = true;
+    while (localIterator.hasNext())
     {
-      localObject = GpuScopeAttrs.getInstance().getGPuModel();
-      if (localObject == null) {
-        return true;
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool &= localBaseModel.kapuSupport;
       }
-      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).kapuSupport;
     }
-    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).kapuSupport;
+    return bool;
   }
   
   public static boolean isDeviceSupportOpenCL()
   {
-    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-    if (localObject == null)
+    Iterator localIterator = getModels().iterator();
+    boolean bool = true;
+    while (localIterator.hasNext())
     {
-      localObject = GpuScopeAttrs.getInstance().getGPuModel();
-      if (localObject == null) {
-        return true;
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool &= localBaseModel.openclSupport;
       }
-      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).openclSupport;
     }
-    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).openclSupport;
+    return bool;
   }
   
   public static boolean isFilamentShaderCompileSucceed()
   {
     waitInitFinish();
     return filamentShaderCompileSucceed;
+  }
+  
+  public static boolean isImuSmoothEnable()
+  {
+    GpuScopeAttrs.GpuBean.DeviceModel localDeviceModel = GpuScopeAttrs.getInstance().getDeviceModel();
+    if (localDeviceModel == null) {
+      return false;
+    }
+    return localDeviceModel.enableImuSmooth;
   }
   
   public static boolean isInOneGLThreadBlackList()
@@ -268,16 +340,16 @@ public class GLCapabilities
   
   public static boolean isShareGLContextError()
   {
-    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-    if (localObject == null)
+    Iterator localIterator = getModels().iterator();
+    boolean bool = false;
+    while (localIterator.hasNext())
     {
-      localObject = GpuScopeAttrs.getInstance().getGPuModel();
-      if (localObject == null) {
-        return false;
+      GpuScopeAttrs.GpuBean.BaseModel localBaseModel = (GpuScopeAttrs.GpuBean.BaseModel)localIterator.next();
+      if (localBaseModel != null) {
+        bool |= localBaseModel.shareGLContextError;
       }
-      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).shareGLContextError;
     }
-    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).shareGLContextError;
+    return bool;
   }
   
   public static boolean isSupportFloatTexture()
@@ -354,7 +426,7 @@ public class GLCapabilities
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.gles.GLCapabilities
  * JD-Core Version:    0.7.0.1
  */

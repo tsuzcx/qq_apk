@@ -21,14 +21,14 @@ class QGroupListContentView$2
       localStringBuilder.append(paramInt);
       QLog.d("QGroupListContentView", 2, localStringBuilder.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.d != null) {
+      this.a.d.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupListContentView.2
  * JD-Core Version:    0.7.0.1
  */

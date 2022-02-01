@@ -12,17 +12,17 @@ import java.util.List;
 public class WSDramaGalleryAdapter
   extends WSAbsSingleCheckAdapter<WSDramaItemData, WSDramaGalleryHolder>
 {
-  private final String a;
+  private final String b;
   
   public WSDramaGalleryAdapter(WSDramaMiddlePart paramWSDramaMiddlePart, RecyclerView paramRecyclerView)
   {
-    super(paramWSDramaMiddlePart.a(), paramRecyclerView);
-    this.a = paramWSDramaMiddlePart.a();
+    super(paramWSDramaMiddlePart.o(), paramRecyclerView);
+    this.b = paramWSDramaMiddlePart.k();
   }
   
   public WSDramaGalleryHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new WSDramaGalleryHolder(paramViewGroup, this.a, this);
+    return new WSDramaGalleryHolder(paramViewGroup, this.b, this);
   }
   
   public void a(WSDramaGalleryHolder paramWSDramaGalleryHolder, int paramInt)
@@ -43,7 +43,7 @@ public class WSDramaGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.gallery.WSDramaGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

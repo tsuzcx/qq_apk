@@ -18,7 +18,7 @@ class TextPreviewSettingActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131367104);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131433558);
     int i = paramMessage.what;
     if (i != 16)
     {
@@ -37,13 +37,13 @@ class TextPreviewSettingActivity$1
       }
     }
     else {
-      localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).getFontNameDrawable(TextPreviewSettingActivity.a(this.a)));
+      localImageView.setImageDrawable(TextPreviewSettingActivity.b(this.a).getFontNameDrawable(TextPreviewSettingActivity.a(this.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

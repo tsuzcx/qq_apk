@@ -1,80 +1,51 @@
 package oicq.wlogin_sdk.report.event;
 
-import java.util.HashMap;
+import android.text.TextUtils;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import oicq.wlogin_sdk.tools.c;
 
 public class a
 {
-  private String a;
-  private String b;
-  private String c;
-  private boolean d = false;
-  private boolean e = false;
-  private String f;
-  private HashMap<String, String> g = new HashMap();
-  
-  public a(String paramString1, String paramString2, String paramString3)
+  public static String a(String paramString, Map<String, String> paramMap)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if ((!TextUtils.isEmpty(paramString)) && (paramMap != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("attaid=0c200055384&token=5658354256&report_type=wtlogin_android_atta&event_type=");
+      localStringBuilder.append(paramString);
+      paramString = paramMap.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        Object localObject = (Map.Entry)paramString.next();
+        paramMap = (String)((Map.Entry)localObject).getKey();
+        localObject = (String)((Map.Entry)localObject).getValue();
+        if ((!TextUtils.isEmpty(paramMap)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(URLEncoder.encode(paramMap));
+          localStringBuilder.append("=");
+          localStringBuilder.append(URLEncoder.encode((String)localObject));
+        }
+      }
+      return localStringBuilder.toString();
+    }
+    return "";
   }
   
-  public String a()
+  public static void a(b paramb)
   {
-    return this.a;
-  }
-  
-  public a a(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public a a(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-    return this;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public a b(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-    return this;
-  }
-  
-  public HashMap<String, String> c()
-  {
-    return this.g;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public boolean e()
-  {
-    return this.d;
-  }
-  
-  public boolean f()
-  {
-    return this.e;
-  }
-  
-  public String g()
-  {
-    return this.f;
+    if (paramb == null) {
+      return;
+    }
+    c.a("https://h.trace.qq.com/kv", a(paramb.a(), paramb.c()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.event.a
  * JD-Core Version:    0.7.0.1
  */

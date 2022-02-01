@@ -23,71 +23,71 @@ import java.util.List;
 public class ColorNickColorPanelAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private int jdField_a_of_type_Int = -1;
-  public Drawable a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ColorNickColorPanelAdapter.OnColorSelectListener jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener;
   public ColorNickColorPanelAdapter.PureColorAdapter a;
-  private ArrayList<ColorNickColorPanelAdapter.ColorItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b;
+  public Drawable b;
+  private ArrayList<ColorNickColorPanelAdapter.ColorItem> c = new ArrayList();
+  private LayoutInflater d;
+  private int e = -1;
+  private ColorNickColorPanelAdapter.OnColorSelectListener f;
+  private int g;
   
   public ColorNickColorPanelAdapter(Context paramContext, ColorNickColorPanelAdapter.OnColorSelectListener paramOnColorSelectListener)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener = paramOnColorSelectListener;
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter = new ColorNickColorPanelAdapter.PureColorAdapter();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847310);
-    this.jdField_b_of_type_Int = DisplayUtil.a(paramContext, 2.0F);
-  }
-  
-  public ColorNickColorPanelAdapter.ColorItem a(int paramInt)
-  {
-    return (ColorNickColorPanelAdapter.ColorItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    this.d = LayoutInflater.from(paramContext);
+    this.f = paramOnColorSelectListener;
+    this.a = new ColorNickColorPanelAdapter.PureColorAdapter();
+    this.b = paramContext.getResources().getDrawable(2130848961);
+    this.g = DisplayUtil.a(paramContext, 2.0F);
   }
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = paramInt;
+    int i = this.e;
+    this.e = paramInt;
     if (i > 0) {
       notifyItemChanged(i);
     }
-    i = this.jdField_a_of_type_Int;
+    i = this.e;
     if (i > 0) {
       notifyItemChanged(i);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter.a(-1);
+      this.a.a(-1);
     }
   }
   
   public void a(List<ColorNickColorPanelAdapter.ColorItem> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.c.clear();
+    this.c.addAll(paramList);
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new ColorNickColorPanelAdapter.ColorItem(4, null, 0, null));
+      this.c.add(new ColorNickColorPanelAdapter.ColorItem(4, null, 0, null));
     }
     notifyDataSetChanged();
   }
   
+  public ColorNickColorPanelAdapter.ColorItem b(int paramInt)
+  {
+    return (ColorNickColorPanelAdapter.ColorItem)this.c.get(paramInt);
+  }
+  
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.c.size();
   }
   
   public long getItemId(int paramInt)
   {
-    ColorNickColorPanelAdapter.ColorItem localColorItem = (ColorNickColorPanelAdapter.ColorItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (localColorItem.jdField_a_of_type_Int == 3) {
-      return localColorItem.jdField_b_of_type_Int;
+    ColorNickColorPanelAdapter.ColorItem localColorItem = (ColorNickColorPanelAdapter.ColorItem)this.c.get(paramInt);
+    if (localColorItem.a == 3) {
+      return localColorItem.d;
     }
     return paramInt;
   }
   
   public int getItemViewType(int paramInt)
   {
-    return ((ColorNickColorPanelAdapter.ColorItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
+    return ((ColorNickColorPanelAdapter.ColorItem)this.c.get(paramInt)).a;
   }
   
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
@@ -98,39 +98,39 @@ public class ColorNickColorPanelAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject1 = (ColorNickColorPanelAdapter.ColorItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    int i = ((ColorNickColorPanelAdapter.ColorItem)localObject1).jdField_a_of_type_Int;
+    Object localObject1 = (ColorNickColorPanelAdapter.ColorItem)this.c.get(paramInt);
+    int i = ((ColorNickColorPanelAdapter.ColorItem)localObject1).a;
     Object localObject2;
     if (i != 1)
     {
       if ((i == 3) && ((paramViewHolder instanceof ColorNickColorPanelAdapter.GradientViewHolder)))
       {
         localObject2 = (ColorNickColorPanelAdapter.GradientViewHolder)paramViewHolder;
-        ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).jdField_a_of_type_Int = paramInt;
+        ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).a = paramInt;
         Object localObject3 = (GridLayoutManager.LayoutParams)((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).itemView.getLayoutParams();
         if (paramInt % 3 == 0) {
           ((GridLayoutManager.LayoutParams)localObject3).rightMargin = 0;
         } else {
-          ((GridLayoutManager.LayoutParams)localObject3).rightMargin = this.jdField_b_of_type_Int;
+          ((GridLayoutManager.LayoutParams)localObject3).rightMargin = this.g;
         }
-        if (paramInt == this.jdField_a_of_type_Int) {
-          ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).b.setVisibility(0);
+        if (paramInt == this.e) {
+          ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).c.setVisibility(0);
         } else {
-          ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).b.setVisibility(8);
+          ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).c.setVisibility(8);
         }
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        Drawable localDrawable = this.b;
         ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localDrawable;
         ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localDrawable;
-        localObject1 = URLDrawable.getDrawable(((ColorNickColorPanelAdapter.ColorItem)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
-        ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+        localObject1 = URLDrawable.getDrawable(((ColorNickColorPanelAdapter.ColorItem)localObject1).c, (URLDrawable.URLDrawableOptions)localObject3);
+        ((ColorNickColorPanelAdapter.GradientViewHolder)localObject2).b.setImageDrawable((Drawable)localObject1);
       }
     }
     else if ((paramViewHolder instanceof ColorNickColorPanelAdapter.TitleViewHolder))
     {
       localObject2 = (ColorNickColorPanelAdapter.TitleViewHolder)paramViewHolder;
-      if (((ColorNickColorPanelAdapter.TitleViewHolder)localObject2).jdField_a_of_type_Int == 1) {
-        ((ColorNickColorPanelAdapter.TitleViewHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(((ColorNickColorPanelAdapter.ColorItem)localObject1).jdField_a_of_type_JavaLangString);
+      if (((ColorNickColorPanelAdapter.TitleViewHolder)localObject2).b == 1) {
+        ((ColorNickColorPanelAdapter.TitleViewHolder)localObject2).a.setText(((ColorNickColorPanelAdapter.ColorItem)localObject1).b);
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -147,18 +147,18 @@ public class ColorNickColorPanelAdapter
           if (paramInt != 4) {
             return null;
           }
-          return new ColorNickColorPanelAdapter.TitleViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561878, paramViewGroup, false), 4);
+          return new ColorNickColorPanelAdapter.TitleViewHolder(this.d.inflate(2131628296, paramViewGroup, false), 4);
         }
-        return new ColorNickColorPanelAdapter.GradientViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561880, paramViewGroup, false), this, this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener);
+        return new ColorNickColorPanelAdapter.GradientViewHolder(this.d.inflate(2131628298, paramViewGroup, false), this, this.f);
       }
-      return new ColorNickColorPanelAdapter.PureColorViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561882, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener, this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter, this);
+      return new ColorNickColorPanelAdapter.PureColorViewHolder(this.d.inflate(2131628300, paramViewGroup, false), this.f, this.a, this);
     }
-    return new ColorNickColorPanelAdapter.TitleViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561879, paramViewGroup, false), 1);
+    return new ColorNickColorPanelAdapter.TitleViewHolder(this.d.inflate(2131628297, paramViewGroup, false), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

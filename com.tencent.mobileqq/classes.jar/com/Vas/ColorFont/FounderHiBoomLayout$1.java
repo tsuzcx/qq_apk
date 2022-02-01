@@ -12,20 +12,20 @@ class FounderHiBoomLayout$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i >= this.a.i[0])
+    if (i >= this.a.p[0])
     {
-      this.a.a.cancel();
+      this.a.r.cancel();
       paramValueAnimator = this.a;
-      paramValueAnimator.e = 0;
-      FounderHiBoomLayout.a(paramValueAnimator).a = FounderHiBoomLayout.a(this.a).d();
+      paramValueAnimator.s = 0;
+      FounderHiBoomLayout.a(paramValueAnimator).e = FounderHiBoomLayout.a(this.a).i();
       FounderHiBoomLayout.a(this.a).requestLayout();
       FounderHiBoomLayout.a(this.a).invalidate();
       return;
     }
-    if (i > this.a.e)
+    if (i > this.a.s)
     {
       paramValueAnimator = this.a;
-      paramValueAnimator.e = i;
+      paramValueAnimator.s = i;
       FounderHiBoomLayout.a(paramValueAnimator).invalidate();
     }
   }

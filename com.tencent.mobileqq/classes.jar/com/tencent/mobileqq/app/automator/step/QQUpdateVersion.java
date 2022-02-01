@@ -21,27 +21,27 @@ import java.util.List;
 public class QQUpdateVersion
   extends AsyncStep
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { AppConstants.LBS_HELLO_UIN, AppConstants.DATE_UIN };
-  private final String jdField_a_of_type_JavaLangString = "qq_update_5.6";
-  private final String b = "qq_update_6.5.5";
-  private final String c = "qq_update_version";
+  private static final String[] a = { AppConstants.LBS_HELLO_UIN, AppConstants.DATE_UIN };
+  private final String b = "qq_update_5.6";
+  private final String c = "qq_update_6.5.5";
+  private final String d = "qq_update_version";
   
   private void a()
   {
     int i = 0;
     for (;;)
     {
-      Object localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+      Object localObject1 = a;
       if (i >= localObject1.length) {
         break;
       }
       String str = localObject1[i];
-      int j = com.tencent.imcore.message.MsgProxyUtils.k[i];
-      Object localObject3 = this.mAutomator.a.getMessageFacade().a(str, j);
+      int j = com.tencent.imcore.message.MsgProxyUtils.l[i];
+      Object localObject3 = this.mAutomator.k.getMessageFacade().h(str, j);
       localObject1 = AppConstants.LBS_SAY_HELLO_LIST_UIN;
-      if ((UinTypeUtil.a(j) != 1001) && (UinTypeUtil.a(j) != 10002))
+      if ((UinTypeUtil.e(j) != 1001) && (UinTypeUtil.e(j) != 10002))
       {
-        if (UinTypeUtil.a(j) == 1010) {
+        if (UinTypeUtil.e(j) == 1010) {
           localObject1 = AppConstants.DATE_SAY_HELLO_LIST_UIN;
         }
       }
@@ -60,7 +60,7 @@ public class QQUpdateVersion
       while (localIterator.hasNext())
       {
         localObject3 = (MessageRecord)localIterator.next();
-        if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (UinTypeUtil.a((MessageRecord)localObject3)))
+        if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (UinTypeUtil.c((MessageRecord)localObject3)))
         {
           if (QLog.isColorLevel())
           {
@@ -72,18 +72,18 @@ public class QQUpdateVersion
           if (localObject2 == null) {
             localObject2 = localObject3;
           }
-          this.mAutomator.a.getMessageFacade().a().a(str, j, ((MessageRecord)localObject3).senderuin, ((MessageRecord)localObject3).selfuin, false);
+          this.mAutomator.k.getMessageFacade().r().a(str, j, ((MessageRecord)localObject3).senderuin, ((MessageRecord)localObject3).selfuin, false);
           ((MessageRecord)localObject3).frienduin = ((String)localObject1);
           ((MessageRecord)localObject3).setStatus(1000);
           localArrayList.add(localObject3);
         }
       }
       if (localArrayList.size() > 0) {
-        this.mAutomator.a.getMessageFacade().a(localArrayList);
+        this.mAutomator.k.getMessageFacade().a(localArrayList);
       }
       if (localObject2 != null)
       {
-        this.mAutomator.a.getMessageFacade().a(str, j, localObject2.frienduin, localObject2.selfuin);
+        this.mAutomator.k.getMessageFacade().a(str, j, localObject2.frienduin, localObject2.selfuin);
         localObject3 = MessageRecordFactory.a(localObject2.msgtype);
         MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject3, localObject2);
         ((MessageRecord)localObject3).senderuin = ((String)localObject1);
@@ -91,11 +91,11 @@ public class QQUpdateVersion
         ((MessageRecord)localObject3).istroop = j;
         localObject1 = new ArrayList();
         ((List)localObject1).add(localObject3);
-        this.mAutomator.a.getMessageFacade().a((List)localObject1);
-        this.mAutomator.a.getConversationFacade().b(str, j);
-        this.mAutomator.a.getMessageFacade().a().a((MessageRecord)localObject3, true, 2);
-        this.mAutomator.a.getMessageFacade().a().a(localObject2, true, 2);
-        this.mAutomator.a.getMessageFacade().a(localObject3);
+        this.mAutomator.k.getMessageFacade().a((List)localObject1);
+        this.mAutomator.k.getConversationFacade().k(str, j);
+        this.mAutomator.k.getMessageFacade().r().a((MessageRecord)localObject3, true, 2);
+        this.mAutomator.k.getMessageFacade().r().a(localObject2, true, 2);
+        this.mAutomator.k.getMessageFacade().a(localObject3);
       }
       i += 1;
     }
@@ -103,7 +103,7 @@ public class QQUpdateVersion
   
   private void b()
   {
-    Object localObject = this.mAutomator.a.getMessageFacade().a(AppConstants.DATE_SAY_HELLO_LIST_UIN, 1010);
+    Object localObject = this.mAutomator.k.getMessageFacade().h(AppConstants.DATE_SAY_HELLO_LIST_UIN, 1010);
     MessageRecord localMessageRecord;
     if (localObject != null)
     {
@@ -111,24 +111,24 @@ public class QQUpdateVersion
       while (((Iterator)localObject).hasNext())
       {
         localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        this.mAutomator.a.getMessageFacade().a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
+        this.mAutomator.k.getMessageFacade().r().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
       }
     }
-    localObject = this.mAutomator.a.getMessageFacade().a(AppConstants.DATE_UIN, 1010);
+    localObject = this.mAutomator.k.getMessageFacade().h(AppConstants.DATE_UIN, 1010);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        this.mAutomator.a.getMessageFacade().a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
+        this.mAutomator.k.getMessageFacade().r().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.senderuin, localMessageRecord.selfuin);
       }
     }
   }
   
   protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.mAutomator.a.getApp().getSharedPreferences(this.mAutomator.a.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.k.getApp().getSharedPreferences(this.mAutomator.k.getCurrentAccountUin(), 0);
     boolean bool1 = localSharedPreferences.getBoolean("qq_update_5.6", true);
     boolean bool2 = localSharedPreferences.getBoolean("qq_update_6.5.5", true);
     Object localObject = localSharedPreferences.getString("qq_update_version", "");
@@ -139,7 +139,7 @@ public class QQUpdateVersion
       }
       try
       {
-        String[] arrayOfString = "8.7.0".split("\\.");
+        String[] arrayOfString = "8.8.17".split("\\.");
         if ((arrayOfString != null) && (arrayOfString.length >= 2))
         {
           int i = Integer.parseInt(arrayOfString[0]);
@@ -174,24 +174,24 @@ public class QQUpdateVersion
       }
       localSharedPreferences.edit().putBoolean("qq_update_6.5.5", false).commit();
     }
-    if (!"8.7.0".equals(localObject))
+    if (!"8.8.17".equals(localObject))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { localObject, "8.7.0" }));
+        QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { localObject, "8.8.17" }));
       }
-      localObject = this.mAutomator.a.getApp();
+      localObject = this.mAutomator.k.getApp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("loginwelcome_");
-      localStringBuilder.append(this.mAutomator.a.getCurrentAccountUin());
+      localStringBuilder.append(this.mAutomator.k.getCurrentAccountUin());
       ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("request_state", true).commit();
-      localSharedPreferences.edit().putString("qq_update_version", "8.7.0").commit();
+      localSharedPreferences.edit().putString("qq_update_version", "8.8.17").commit();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.QQUpdateVersion
  * JD-Core Version:    0.7.0.1
  */

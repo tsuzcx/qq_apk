@@ -45,6 +45,9 @@ import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x139;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x13b;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x13c;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x141;
+import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x144;
+import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x145;
+import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x146;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x26;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x27;
 import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x28;
@@ -204,7 +207,7 @@ public class OnLinePushMessageProcessor
   public OnLinePushMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    a();
+    c();
   }
   
   @Nullable
@@ -225,133 +228,6 @@ public class OnLinePushMessageProcessor
     return paramMsgBody;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(39L), SubType0x27.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(40L), SubType0x28.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(63L), SubType0x3f.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(166L), SubType0xa6.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(48L), SubType0x30.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(49L), SubType0x31.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(53L), SubType0x35.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(201L), SubType0xc9.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(59L), SubType0x3b.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(61L), SubType0x3d.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(67L), SubType0x43.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(68L), SubType0x44.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(179L), SubType0xb3.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(228L), SubType0xe4.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(38L), SubType0x26.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(278L), SubType0x116.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(279L), SubType0x117.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(309L), SubType0x135.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(131L), SubType0x83.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(181L), SubType0xb5.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(190L), SubType0xbe.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(72L), SubType0x48.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(81L), SubType0x51.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(74L), SubType0x4a.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(84L), SubType0x54.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(103L), SubType0x67.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(110L), SubType0x6e.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(99L), SubType0x63.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(102L), SubType0x66.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(195L), SubType0xc3.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(126L), SubType0x7e.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(78L), SubType0x4e.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(107L), SubType0x6b.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(105L), SubType0x69.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(222L), SubType0xde.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(111L), SubType0x6f.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(120L), SubType0x78.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(113L), SubType0x71.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(137L), SubType0x89.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(280L), SubType0x118.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(118L), SubType0x76.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(114L), SubType0x72.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(121L), SubType0x79.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(124L), SubType0x7c.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(134L), SubType0x86.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(133L), SubType0x85.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(146L), SubType0x92.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(229L), SubType0xe5.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(159L), SubType0x9f.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(162L), SubType0xa2.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(141L), SubType0x8d.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(135L), SubType0x87.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(138L), SubType0x8a.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(139L), SubType0x8a.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(144L), SubType0x90.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(149L), SubType0x95.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(150L), SubType0x96.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(206L), SubType0xce.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(284L), SubType0x11c.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(148L), SubType0x94.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(220L), SubType0xdc.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(152L), SubType0x98.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(160L), SubType0xa0.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(164L), SubType0xa4.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(171L), SubType0xab.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(168L), SubType0xa8.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(170L), SubType0xaa.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(174L), SubType0xae.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(177L), SubType0xb1.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(193L), SubType0xc1.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(233L), SubType0xe9.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(199L), SubType0xc7.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(197L), SubType0xc5.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(258L), SubType0x102.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(238L), SubType0xee.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(249L), SubType0xf9.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(253L), SubType0xfd.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(198L), SubType0xc6.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(203L), SubType0xcb.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(204L), SubType0xcc.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(207L), SubType0xcf.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(208L), SubType0xd0.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(218L), SubType0xda.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(215L), SubType0xd7.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(254L), SubType0xfe.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(221L), SubType0xdd.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(219L), SubType0xdb.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(223L), SubType0xdf.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(232L), SubType0xe8.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(235L), SubType0xeb.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(239L), SubType0xef.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(267L), SubType0x10b.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(244L), SubType0xf4.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(251L), SubType0xfb.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(256L), SubType0x100.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(257L), SubType0x101.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(259L), SubType0x103.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(260L), SubType0x104.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(264L), SubType0x108.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(273L), SubType0x111.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(286L), SubType0x11e.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(287L), SubType0x11f.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(295L), SubType0x127.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(297L), SubType0x127.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(275L), SubType0x113.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(277L), SubType0x115.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(281L), SubType0x119.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(288L), SubType0x120.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(293L), SubType0x125.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(282L), SubType0x11a.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(294L), SubType0x126.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(283L), SubType0x11b.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(290L), SubType0x122.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(291L), SubType0x122.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(296L), SubType0x128.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(311L), SubType0x128.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(307L), SubType0x133.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(310L), SubType0x136.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(313L), SubType0x139.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(312L), SubType0x138.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(315L), SubType0x13b.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(316L), SubType0x13c.class);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(321L), SubType0x141.class);
-  }
-  
   private void a(byte paramByte, int paramInt1, long paramLong, int paramInt2)
   {
     if (QLog.isColorLevel())
@@ -365,7 +241,7 @@ public class OnLinePushMessageProcessor
       ((StringBuilder)localObject).append(paramByte);
       QLog.i("Q.msg.BaseMessageProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getGAudioHandler();
+    Object localObject = ((QQAppInterface)this.q).getGAudioHandler();
     if (localObject != null)
     {
       if (paramByte != 0) {
@@ -402,8 +278,8 @@ public class OnLinePushMessageProcessor
       ((StringBuilder)localObject).append(paramByte);
       QLog.i("Q.msg.BaseMessageProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    HotChatInfo localHotChatInfo = ((HotChatManager)localObject).a(String.valueOf(paramLong));
+    Object localObject = (HotChatManager)this.q.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    HotChatInfo localHotChatInfo = ((HotChatManager)localObject).c(String.valueOf(paramLong));
     if (paramByte == 3)
     {
       a(paramByte, paramInt1 + 1 + 4, paramLong, paramString, paramInt2, paramByte, (HotChatManager)localObject, localHotChatInfo);
@@ -444,31 +320,31 @@ public class OnLinePushMessageProcessor
         if (paramHotChatInfo != null)
         {
           paramHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT);
-          HotChatHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramHotChatInfo, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131693175), true);
-          ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, 6);
-          ((IHotChatHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT });
+          HotChatHelper.a((QQAppInterface)this.q, paramHotChatInfo, this.q.getApp().getString(2131890715), true);
+          ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.q, paramString, 6);
+          ((IHotChatHandler)this.q.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT });
         }
       }
       else if (paramHotChatInfo != null)
       {
         paramHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT);
-        HotChatHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramHotChatInfo, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131693174), true);
-        ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, 6);
-        ((IHotChatHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT });
+        HotChatHelper.a((QQAppInterface)this.q, paramHotChatInfo, this.q.getApp().getString(2131890714), true);
+        ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.q, paramString, 6);
+        ((IHotChatHandler)this.q.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_KICK_OUT });
       }
     }
     else if (paramHotChatInfo != null)
     {
       paramHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
-      HotChatHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramHotChatInfo, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131693194), true);
-      ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, 6);
-      ((IHotChatHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED });
+      HotChatHelper.a((QQAppInterface)this.q, paramHotChatInfo, this.q.getApp().getString(2131890734), true);
+      ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.q, paramString, 6);
+      ((IHotChatHandler)this.q.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED });
     }
   }
   
   private void a(long paramLong)
   {
-    QQGAudioMsgHandler localQQGAudioMsgHandler = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getGAudioHandler();
+    QQGAudioMsgHandler localQQGAudioMsgHandler = ((QQAppInterface)this.q).getGAudioHandler();
     if (localQQGAudioMsgHandler != null) {
       localQQGAudioMsgHandler.a(paramLong, false);
     }
@@ -497,16 +373,16 @@ public class OnLinePushMessageProcessor
         paramForwardBody = (submsgtype0xc7.RelationalChainChange)paramForwardBody.msg_relational_chain_change.get();
         if (paramForwardBody.uint64_appid.get() == 10001L)
         {
-          FriendIntimateRelationshipHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramForwardBody, paramPushMsg0x210C7Info);
+          FriendIntimateRelationshipHelper.a(this.q, paramForwardBody, paramPushMsg0x210C7Info);
           return;
         }
         if (paramForwardBody.uint64_appid.get() == 19999L)
         {
-          ReactivePushHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramForwardBody, paramPushMsg0x210C7Info);
+          ReactivePushHelper.a(this.q, paramForwardBody, paramPushMsg0x210C7Info);
           return;
         }
         if (paramForwardBody.uint64_appid.get() == 10002L) {
-          ExtSnsFrdDataHandleHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramForwardBody, paramPushMsg0x210C7Info);
+          ExtSnsFrdDataHandleHelper.a((QQAppInterface)this.q, paramForwardBody, paramPushMsg0x210C7Info);
         }
       }
     }
@@ -518,7 +394,7 @@ public class OnLinePushMessageProcessor
     paramArrayOfByte = BuddyTransfileProcessor.analysisOffLineFileMsg(paramArrayOfByte, paramArrayOfLong);
     if (paramArrayOfByte != null)
     {
-      ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramString, String.valueOf(paramArrayOfLong[0]), paramArrayOfByte, paramLong2, paramShort, paramLong1, paramBoolean);
+      ((QQAppInterface)this.q).getFileTransferHandler().a(paramString, String.valueOf(paramArrayOfLong[0]), paramArrayOfByte, paramLong2, paramShort, paramLong1, paramBoolean);
       return;
     }
   }
@@ -528,30 +404,9 @@ public class OnLinePushMessageProcessor
     if (paramHotChatInfo != null)
     {
       paramHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_LONG_TIME_NOT_SAY);
-      HotChatHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramHotChatInfo, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131693173), false);
-      ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, 6);
-      ((IHotChatHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_LEFT_LONG_TIME_NOT_SAY });
-    }
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    long l = PkgTools.getLongData(paramArrayOfByte, 0);
-    int i = paramArrayOfByte[5];
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("----->handleTroopExitMsg cOp = ");
-      localStringBuilder.append(i);
-      QLog.i("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
-    }
-    if (i == 3)
-    {
-      a(paramArrayOfByte[5], 5, l, String.valueOf(l), i);
-      return;
-    }
-    if (i == 1) {
-      a(paramArrayOfByte[5], 5, l, i);
+      HotChatHelper.a((QQAppInterface)this.q, paramHotChatInfo, this.q.getApp().getString(2131890713), false);
+      ((IHotChatApi)QRoute.api(IHotChatApi.class)).delHotChatRecentUserNotNotifyUi((QQAppInterface)this.q, paramString, 6);
+      ((IHotChatHandler)this.q.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).notifyUI(1041, true, new Object[] { paramString, HotChatManager.HotChatStateWrapper.STATE_LEFT_LONG_TIME_NOT_SAY });
     }
   }
   
@@ -565,8 +420,8 @@ public class OnLinePushMessageProcessor
       paramArrayOfByte = localGroupVisitorJoinMsg.rpt_msg_visitor_join_info.get();
       if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-        if (((HotChatManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(String.valueOf(l)))
+        localObject1 = this.q.getCurrentAccountUin();
+        if (((HotChatManager)this.q.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(String.valueOf(l)))
         {
           Iterator localIterator = paramArrayOfByte.iterator();
           paramArrayOfByte = "";
@@ -620,7 +475,7 @@ public class OnLinePushMessageProcessor
           {
             paramArrayOfByte = new StringBuilder();
             paramArrayOfByte.append((String)localObject1);
-            paramArrayOfByte.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getString(2131693180));
+            paramArrayOfByte.append(this.q.getApplication().getString(2131890720));
             paramArrayOfByte = paramArrayOfByte.toString();
           }
           else
@@ -631,19 +486,19 @@ public class OnLinePushMessageProcessor
               {
                 paramArrayOfByte = new StringBuilder();
                 paramArrayOfByte.append((String)localObject1);
-                paramArrayOfByte.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getString(2131693198));
+                paramArrayOfByte.append(this.q.getApplication().getString(2131890738));
                 paramArrayOfByte = paramArrayOfByte.toString();
               }
               else
               {
                 paramArrayOfByte = new StringBuilder();
                 paramArrayOfByte.append((String)localObject1);
-                paramArrayOfByte.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getString(2131693184));
+                paramArrayOfByte.append(this.q.getApplication().getString(2131890724));
                 paramArrayOfByte = paramArrayOfByte.toString();
               }
             }
           }
-          AddMessageHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(l), paramArrayOfByte, 1, false, true);
+          AddMessageHelper.a(this.q, String.valueOf(l), paramArrayOfByte, 1, false, true);
         }
       }
       return;
@@ -665,19 +520,25 @@ public class OnLinePushMessageProcessor
     return false;
   }
   
-  private boolean a(byte[] paramArrayOfByte, int paramInt)
+  private void b(byte[] paramArrayOfByte)
   {
-    long l1 = PkgTools.getLongData(paramArrayOfByte, 0);
-    if (paramArrayOfByte[4] == 15)
+    long l = PkgTools.getLongData(paramArrayOfByte, 0);
+    int i = paramArrayOfByte[5];
+    if (QLog.isColorLevel())
     {
-      long l2 = PkgTools.getLongData(paramArrayOfByte, 5);
-      long l3 = PkgTools.getLongData(paramArrayOfByte, 9);
-      paramArrayOfByte = PkgTools.getUTFString(paramArrayOfByte, 15, PkgTools.getHShortData(paramArrayOfByte, 13));
-      long l4 = NetConnInfoCenter.getServerTime();
-      ((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramInt, l1, l4, l3, l2, paramArrayOfByte);
-      return true;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("----->handleTroopExitMsg cOp = ");
+      localStringBuilder.append(i);
+      QLog.i("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
     }
-    return false;
+    if (i == 3)
+    {
+      a(paramArrayOfByte[5], 5, l, String.valueOf(l), i);
+      return;
+    }
+    if (i == 1) {
+      a(paramArrayOfByte[5], 5, l, i);
+    }
   }
   
   private boolean b(SubMsgType0xa8.MsgBody paramMsgBody, Intent paramIntent, int paramInt)
@@ -694,14 +555,154 @@ public class OnLinePushMessageProcessor
     return false;
   }
   
-  protected OnLinePushMessageProcessor.ProcessOneMsg a(BaseOnLinePushMessageProcessor.ProcessOneMsgBuildParams paramProcessOneMsgBuildParams)
+  private boolean b(byte[] paramArrayOfByte, int paramInt)
   {
-    return new OnLinePushMessageProcessor.ProcessOneMsg(this, paramProcessOneMsgBuildParams);
+    long l1 = PkgTools.getLongData(paramArrayOfByte, 0);
+    if (paramArrayOfByte[4] == 15)
+    {
+      long l2 = PkgTools.getLongData(paramArrayOfByte, 5);
+      long l3 = PkgTools.getLongData(paramArrayOfByte, 9);
+      paramArrayOfByte = PkgTools.getUTFString(paramArrayOfByte, 15, PkgTools.getHShortData(paramArrayOfByte, 13));
+      long l4 = NetConnInfoCenter.getServerTime();
+      ((TroopManager)this.q.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramInt, l1, l4, l3, l2, paramArrayOfByte);
+      return true;
+    }
+    return false;
+  }
+  
+  private void c()
+  {
+    this.t.a(Long.valueOf(39L), SubType0x27.class);
+    this.t.a(Long.valueOf(40L), SubType0x28.class);
+    this.t.a(Long.valueOf(63L), SubType0x3f.class);
+    this.t.a(Long.valueOf(166L), SubType0xa6.class);
+    this.t.a(Long.valueOf(48L), SubType0x30.class);
+    this.t.a(Long.valueOf(49L), SubType0x31.class);
+    this.t.a(Long.valueOf(53L), SubType0x35.class);
+    this.t.a(Long.valueOf(201L), SubType0xc9.class);
+    this.t.a(Long.valueOf(59L), SubType0x3b.class);
+    this.t.a(Long.valueOf(61L), SubType0x3d.class);
+    this.t.a(Long.valueOf(67L), SubType0x43.class);
+    this.t.a(Long.valueOf(68L), SubType0x44.class);
+    this.t.a(Long.valueOf(179L), SubType0xb3.class);
+    this.t.a(Long.valueOf(228L), SubType0xe4.class);
+    this.t.a(Long.valueOf(38L), SubType0x26.class);
+    this.t.a(Long.valueOf(278L), SubType0x116.class);
+    this.t.a(Long.valueOf(279L), SubType0x117.class);
+    this.t.a(Long.valueOf(309L), SubType0x135.class);
+    this.t.a(Long.valueOf(131L), SubType0x83.class);
+    this.t.a(Long.valueOf(181L), SubType0xb5.class);
+    this.t.a(Long.valueOf(190L), SubType0xbe.class);
+    this.t.a(Long.valueOf(72L), SubType0x48.class);
+    this.t.a(Long.valueOf(81L), SubType0x51.class);
+    this.t.a(Long.valueOf(74L), SubType0x4a.class);
+    this.t.a(Long.valueOf(84L), SubType0x54.class);
+    this.t.a(Long.valueOf(103L), SubType0x67.class);
+    this.t.a(Long.valueOf(110L), SubType0x6e.class);
+    this.t.a(Long.valueOf(99L), SubType0x63.class);
+    this.t.a(Long.valueOf(102L), SubType0x66.class);
+    this.t.a(Long.valueOf(195L), SubType0xc3.class);
+    this.t.a(Long.valueOf(126L), SubType0x7e.class);
+    this.t.a(Long.valueOf(78L), SubType0x4e.class);
+    this.t.a(Long.valueOf(107L), SubType0x6b.class);
+    this.t.a(Long.valueOf(105L), SubType0x69.class);
+    this.t.a(Long.valueOf(222L), SubType0xde.class);
+    this.t.a(Long.valueOf(111L), SubType0x6f.class);
+    this.t.a(Long.valueOf(120L), SubType0x78.class);
+    this.t.a(Long.valueOf(113L), SubType0x71.class);
+    this.t.a(Long.valueOf(137L), SubType0x89.class);
+    this.t.a(Long.valueOf(280L), SubType0x118.class);
+    this.t.a(Long.valueOf(118L), SubType0x76.class);
+    this.t.a(Long.valueOf(114L), SubType0x72.class);
+    this.t.a(Long.valueOf(121L), SubType0x79.class);
+    this.t.a(Long.valueOf(124L), SubType0x7c.class);
+    this.t.a(Long.valueOf(134L), SubType0x86.class);
+    this.t.a(Long.valueOf(133L), SubType0x85.class);
+    this.t.a(Long.valueOf(146L), SubType0x92.class);
+    this.t.a(Long.valueOf(229L), SubType0xe5.class);
+    this.t.a(Long.valueOf(159L), SubType0x9f.class);
+    this.t.a(Long.valueOf(162L), SubType0xa2.class);
+    this.t.a(Long.valueOf(141L), SubType0x8d.class);
+    this.t.a(Long.valueOf(135L), SubType0x87.class);
+    this.t.a(Long.valueOf(138L), SubType0x8a.class);
+    this.t.a(Long.valueOf(139L), SubType0x8a.class);
+    this.t.a(Long.valueOf(144L), SubType0x90.class);
+    this.t.a(Long.valueOf(149L), SubType0x95.class);
+    this.t.a(Long.valueOf(150L), SubType0x96.class);
+    this.t.a(Long.valueOf(206L), SubType0xce.class);
+    this.t.a(Long.valueOf(284L), SubType0x11c.class);
+    this.t.a(Long.valueOf(148L), SubType0x94.class);
+    this.t.a(Long.valueOf(220L), SubType0xdc.class);
+    this.t.a(Long.valueOf(152L), SubType0x98.class);
+    this.t.a(Long.valueOf(160L), SubType0xa0.class);
+    this.t.a(Long.valueOf(164L), SubType0xa4.class);
+    this.t.a(Long.valueOf(171L), SubType0xab.class);
+    this.t.a(Long.valueOf(168L), SubType0xa8.class);
+    this.t.a(Long.valueOf(170L), SubType0xaa.class);
+    this.t.a(Long.valueOf(174L), SubType0xae.class);
+    this.t.a(Long.valueOf(177L), SubType0xb1.class);
+    this.t.a(Long.valueOf(193L), SubType0xc1.class);
+    this.t.a(Long.valueOf(233L), SubType0xe9.class);
+    this.t.a(Long.valueOf(199L), SubType0xc7.class);
+    this.t.a(Long.valueOf(197L), SubType0xc5.class);
+    this.t.a(Long.valueOf(258L), SubType0x102.class);
+    this.t.a(Long.valueOf(238L), SubType0xee.class);
+    this.t.a(Long.valueOf(249L), SubType0xf9.class);
+    this.t.a(Long.valueOf(253L), SubType0xfd.class);
+    this.t.a(Long.valueOf(198L), SubType0xc6.class);
+    this.t.a(Long.valueOf(203L), SubType0xcb.class);
+    this.t.a(Long.valueOf(204L), SubType0xcc.class);
+    this.t.a(Long.valueOf(207L), SubType0xcf.class);
+    this.t.a(Long.valueOf(208L), SubType0xd0.class);
+    this.t.a(Long.valueOf(218L), SubType0xda.class);
+    this.t.a(Long.valueOf(215L), SubType0xd7.class);
+    this.t.a(Long.valueOf(254L), SubType0xfe.class);
+    this.t.a(Long.valueOf(221L), SubType0xdd.class);
+    this.t.a(Long.valueOf(219L), SubType0xdb.class);
+    this.t.a(Long.valueOf(223L), SubType0xdf.class);
+    this.t.a(Long.valueOf(232L), SubType0xe8.class);
+    this.t.a(Long.valueOf(235L), SubType0xeb.class);
+    this.t.a(Long.valueOf(239L), SubType0xef.class);
+    this.t.a(Long.valueOf(267L), SubType0x10b.class);
+    this.t.a(Long.valueOf(244L), SubType0xf4.class);
+    this.t.a(Long.valueOf(251L), SubType0xfb.class);
+    this.t.a(Long.valueOf(256L), SubType0x100.class);
+    this.t.a(Long.valueOf(257L), SubType0x101.class);
+    this.t.a(Long.valueOf(259L), SubType0x103.class);
+    this.t.a(Long.valueOf(260L), SubType0x104.class);
+    this.t.a(Long.valueOf(264L), SubType0x108.class);
+    this.t.a(Long.valueOf(273L), SubType0x111.class);
+    this.t.a(Long.valueOf(286L), SubType0x11e.class);
+    this.t.a(Long.valueOf(287L), SubType0x11f.class);
+    this.t.a(Long.valueOf(295L), SubType0x127.class);
+    this.t.a(Long.valueOf(297L), SubType0x127.class);
+    this.t.a(Long.valueOf(275L), SubType0x113.class);
+    this.t.a(Long.valueOf(277L), SubType0x115.class);
+    this.t.a(Long.valueOf(281L), SubType0x119.class);
+    this.t.a(Long.valueOf(288L), SubType0x120.class);
+    this.t.a(Long.valueOf(293L), SubType0x125.class);
+    this.t.a(Long.valueOf(282L), SubType0x11a.class);
+    this.t.a(Long.valueOf(294L), SubType0x126.class);
+    this.t.a(Long.valueOf(283L), SubType0x11b.class);
+    this.t.a(Long.valueOf(290L), SubType0x122.class);
+    this.t.a(Long.valueOf(291L), SubType0x122.class);
+    this.t.a(Long.valueOf(296L), SubType0x128.class);
+    this.t.a(Long.valueOf(311L), SubType0x128.class);
+    this.t.a(Long.valueOf(307L), SubType0x133.class);
+    this.t.a(Long.valueOf(310L), SubType0x136.class);
+    this.t.a(Long.valueOf(313L), SubType0x139.class);
+    this.t.a(Long.valueOf(312L), SubType0x138.class);
+    this.t.a(Long.valueOf(315L), SubType0x13b.class);
+    this.t.a(Long.valueOf(316L), SubType0x13c.class);
+    this.t.a(Long.valueOf(321L), SubType0x141.class);
+    this.t.a(Long.valueOf(324L), SubType0x144.class);
+    this.t.a(Long.valueOf(325L), SubType0x145.class);
+    this.t.a(Long.valueOf(326L), SubType0x146.class);
   }
   
   public void a(int paramInt)
   {
-    ((ISVIPHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramInt);
+    ((ISVIPHandler)this.q.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramInt);
   }
   
   protected void a(MsgType0x210 paramMsgType0x210)
@@ -712,7 +713,7 @@ public class OnLinePushMessageProcessor
       Object localObject = paramMsgType0x210.vPluginNumList;
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        paramMsgType0x210 = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.GAMECENTER_MANAGER);
+        paramMsgType0x210 = (GameCenterManagerImp)this.q.getManager(QQManagerFactory.GAMECENTER_MANAGER);
         if (paramMsgType0x210 != null)
         {
           localObject = ((List)localObject).iterator();
@@ -738,7 +739,7 @@ public class OnLinePushMessageProcessor
   
   protected void a(SvcReqPushMsg paramSvcReqPushMsg)
   {
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).userActiveStatus = paramSvcReqPushMsg.wUserActive;
+    ((QQAppInterface)this.q).userActiveStatus = paramSvcReqPushMsg.wUserActive;
     if ((paramSvcReqPushMsg.wGeneralFlag & 0x20) == 32) {
       NoDisturbUtil.a(true);
     } else {
@@ -755,23 +756,23 @@ public class OnLinePushMessageProcessor
       a(paramArrayList1);
     }
     int i = paramFromServiceMsg.getRequestSsoSeq();
-    ((BaseMessageHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(paramLong, paramArrayList2, paramInt, i, null);
+    ((BaseMessageHandler)this.q.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(paramLong, paramArrayList2, paramInt, i, null);
     if (paramArrayList.size() > 0)
     {
       boolean bool2 = MessageHandlerUtils.a(paramArrayList);
-      paramInt = MsgProxyUtils.a(paramArrayList, (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache());
-      paramFromServiceMsg = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
+      paramInt = MsgProxyUtils.a(paramArrayList, (MessageCache)this.q.getMsgCache());
+      paramFromServiceMsg = (IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "");
       boolean bool1;
-      if ((bool2) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundStop)) {
+      if ((bool2) && (this.q.isBackgroundStop)) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       paramFromServiceMsg.addMessage(paramArrayList, String.valueOf(paramLong), bool1);
-      ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a((int)paramSvcReqPushMsg.uMsgTime);
-      a("handleGetBuddyMessageResp", true, paramInt, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(bool2), false);
+      ((MessageCache)this.q.getMsgCache()).a((int)paramSvcReqPushMsg.uMsgTime);
+      a("handleGetBuddyMessageResp", true, paramInt, this.r.a(bool2), false);
     }
-    PreDownloadMsg.a(paramArrayList, true, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    PreDownloadMsg.a(paramArrayList, true, this.q);
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -783,8 +784,8 @@ public class OnLinePushMessageProcessor
       while (paramArrayList.hasNext())
       {
         String str = (String)paramArrayList.next();
-        Object localObject = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a(str);
-        if (((localObject == null) || (System.currentTimeMillis() - ((AppShareID)localObject).updateTime >= 86400000L)) && (((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a().add(str)))
+        Object localObject = ((MessageCache)this.q.getMsgCache()).O(str);
+        if (((localObject == null) || (System.currentTimeMillis() - ((AppShareID)localObject).updateTime >= 86400000L)) && (((MessageCache)this.q.getMsgCache()).u().add(str)))
         {
           localObject = new GetResourceReqInfo();
           ((GetResourceReqInfo)localObject).uiResID = 0L;
@@ -804,26 +805,26 @@ public class OnLinePushMessageProcessor
         }
       }
       if (localArrayList.size() > 0) {
-        ConfigUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), localArrayList);
+        ConfigUtil.a(this.q, this.q.getCurrentAccountUin(), localArrayList);
       }
     }
   }
   
   public void a(SubMsgType0xa8.MsgBody paramMsgBody)
   {
-    if (!a())
+    if (!b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("PullActive", 2, "handlePullActivePushMsg, isNeedNotifyActivePush is false");
       }
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "CliOper", "", "", "0X80065A9", "0X80065A9", 0, 0, "", "", "", "");
+    ReportController.b(this.q, "CliOper", "", "", "0X80065A9", "0X80065A9", 0, 0, "", "", "", "");
     if (!paramMsgBody.bytes_msg_summary.has()) {
       return;
     }
     Object localObject2 = paramMsgBody.bytes_msg_summary.get().toStringUtf8();
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), SplashActivity.class);
+    Intent localIntent = new Intent(this.q.getApp(), SplashActivity.class);
     localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.putExtra("fragment_id", 1);
     localIntent.setFlags(335544320);
@@ -855,27 +856,27 @@ public class OnLinePushMessageProcessor
       }
       localIntent.putExtra(PullActiveManager.b, (String)localObject2);
       localIntent.putExtra("activepull_push_flag", true);
-      localObject1 = PullActiveManager.jdField_a_of_type_JavaLangString;
-      Object localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), 2130840405);
-      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
+      localObject1 = PullActiveManager.a;
+      Object localObject3 = BitmapManager.a(this.q.getApp().getResources(), 2130841158);
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.q.getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
       localToServiceMsg.extraData.putStringArray("cmds", new String[] { localObject2, localObject1, localObject2 });
       localToServiceMsg.extraData.putParcelable("intent", localIntent);
       localToServiceMsg.extraData.putParcelable("bitmap", (Parcelable)localObject3);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.sendToService(localToServiceMsg);
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext();
+      this.q.sendToService(localToServiceMsg);
+      localObject1 = this.q.getApp().getBaseContext();
       if (QQUtils.a((Context)localObject1))
       {
-        localObject2 = (PullActiveManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.PULL_ACTIVE_MANAGER);
+        localObject2 = (PullActiveManager)this.q.getManager(QQManagerFactory.PULL_ACTIVE_MANAGER);
         ((PullActiveManager)localObject2).a(localIntent);
-        localObject3 = (QQLSRecentManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
-        if (SettingCloneUtil.readValue((Context)localObject1, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), ((Context)localObject1).getString(2131693837), "qqsetting_lock_screen_whenexit_key", true))
+        localObject3 = (QQLSRecentManager)this.q.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
+        if (SettingCloneUtil.readValue((Context)localObject1, this.q.getCurrentAccountUin(), ((Context)localObject1).getString(2131891413), "qqsetting_lock_screen_whenexit_key", true))
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQLSActivity", 2, "handlePullActivePushMsg, start lsActivity");
           }
-          ((QQLSRecentManager)localObject3).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, AppConstants.PULL_ACTIVE_PUSH_UIN, 9653, false, MsgPushReportHelper.a(paramMsgBody, 1008, localIntent));
+          ((QQLSRecentManager)localObject3).a(this.q, AppConstants.PULL_ACTIVE_PUSH_UIN, 9653, false, MsgPushReportHelper.a(paramMsgBody, 1008, localIntent));
         }
-        ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(((PullActiveManager)localObject2).jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush);
+        ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(((PullActiveManager)localObject2).c);
       }
     }
   }
@@ -906,12 +907,56 @@ public class OnLinePushMessageProcessor
     }
   }
   
-  public boolean a()
+  protected OnLinePushMessageProcessor.ProcessOneMsg b(BaseOnLinePushMessageProcessor.ProcessOneMsgBuildParams paramProcessOneMsgBuildParams)
   {
-    return ((this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundPause) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundStop)) && (((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).userActiveStatus == 0);
+    return new OnLinePushMessageProcessor.ProcessOneMsg(this, paramProcessOneMsgBuildParams);
   }
   
-  public boolean a(int paramInt)
+  protected void b(MsgType0x210 paramMsgType0x210)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xea, [S2C push for ark]");
+    }
+    for (;;)
+    {
+      try
+      {
+        submsgtype0xea.MsgBody localMsgBody = new submsgtype0xea.MsgBody();
+        if (d(paramMsgType0x210))
+        {
+          localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+          boolean bool = localMsgBody.bytes_title.has();
+          localObject = "";
+          if (!bool) {
+            break label147;
+          }
+          paramMsgType0x210 = localMsgBody.bytes_title.get().toStringUtf8();
+          if (localMsgBody.bytes_content.has()) {
+            localObject = localMsgBody.bytes_content.get().toStringUtf8();
+          }
+          ArkTipsManager.b().a(this.q, paramMsgType0x210, (String)localObject);
+          return;
+        }
+      }
+      catch (Exception paramMsgType0x210)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[msg0x210.uSubMsgType == 0xea], errInfo->");
+        ((StringBuilder)localObject).append(paramMsgType0x210.getMessage());
+        QLog.e("Q.msg.BaseMessageProcessor", 1, ((StringBuilder)localObject).toString());
+      }
+      return;
+      label147:
+      paramMsgType0x210 = "";
+    }
+  }
+  
+  public boolean b()
+  {
+    return ((this.q.isBackgroundPause) || (this.q.isBackgroundStop)) && (((QQAppInterface)this.q).userActiveStatus == 0);
+  }
+  
+  public boolean b(int paramInt)
   {
     boolean bool2 = true;
     if (paramInt != 0)
@@ -932,46 +977,7 @@ public class OnLinePushMessageProcessor
     return bool1;
   }
   
-  protected void b(MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xea, [S2C push for ark]");
-    }
-    for (;;)
-    {
-      try
-      {
-        submsgtype0xea.MsgBody localMsgBody = new submsgtype0xea.MsgBody();
-        if (b(paramMsgType0x210))
-        {
-          localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-          boolean bool = localMsgBody.bytes_title.has();
-          localObject = "";
-          if (!bool) {
-            break label149;
-          }
-          paramMsgType0x210 = localMsgBody.bytes_title.get().toStringUtf8();
-          if (localMsgBody.bytes_content.has()) {
-            localObject = localMsgBody.bytes_content.get().toStringUtf8();
-          }
-          ArkTipsManager.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMsgType0x210, (String)localObject);
-          return;
-        }
-      }
-      catch (Exception paramMsgType0x210)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[msg0x210.uSubMsgType == 0xea], errInfo->");
-        ((StringBuilder)localObject).append(paramMsgType0x210.getMessage());
-        QLog.e("Q.msg.BaseMessageProcessor", 1, ((StringBuilder)localObject).toString());
-      }
-      return;
-      label149:
-      paramMsgType0x210 = "";
-    }
-  }
-  
-  public boolean b(int paramInt)
+  public boolean c(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -985,14 +991,14 @@ public class OnLinePushMessageProcessor
     return bool1;
   }
   
-  public boolean c(int paramInt)
+  public boolean d(int paramInt)
   {
     return (paramInt == 3) || (paramInt == 9) || (paramInt == 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

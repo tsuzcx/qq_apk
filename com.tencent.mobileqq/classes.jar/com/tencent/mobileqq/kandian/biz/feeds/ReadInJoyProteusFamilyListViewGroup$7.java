@@ -10,7 +10,7 @@ class ReadInJoyProteusFamilyListViewGroup$7
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (((ReadInJoyProteusFamilyListViewGroup.b(this.a) == 0) || (ReadInJoyProteusFamilyListViewGroup.c(this.a) == 70)) && (paramBoolean))
+    if (((ReadInJoyProteusFamilyListViewGroup.d(this.a) == 0) || (ReadInJoyProteusFamilyListViewGroup.e(this.a) == 70)) && (paramBoolean))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateFriendInfo uin:");
@@ -22,7 +22,7 @@ class ReadInJoyProteusFamilyListViewGroup$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadInJoyProteusFamilyListViewGroup.7
  * JD-Core Version:    0.7.0.1
  */

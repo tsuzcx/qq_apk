@@ -7,19 +7,20 @@ import android.location.LocationManager;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 
 public class LocationInfoUtil
 {
-  private static volatile LocationInfoUtil jdField_a_of_type_ComTencentGatherergaCoreInternalUtilLocationInfoUtil;
-  private double jdField_a_of_type_Double = 0.0D;
-  private float jdField_a_of_type_Float = 0.0F;
-  private LocationListener jdField_a_of_type_AndroidLocationLocationListener = new LocationInfoUtil.2(this);
-  private LocationManager jdField_a_of_type_AndroidLocationLocationManager = null;
+  private static volatile LocationInfoUtil a;
   private double b = 0.0D;
+  private double c = 0.0D;
+  private float d = 0.0F;
+  private LocationManager e = null;
+  private LocationListener f = new LocationInfoUtil.2(this);
   
   private LocationInfoUtil(Context paramContext)
   {
-    b(paramContext);
+    c(paramContext);
   }
   
   private Location a(Location paramLocation1, Location paramLocation2)
@@ -46,25 +47,16 @@ public class LocationInfoUtil
   
   public static LocationInfoUtil a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentGatherergaCoreInternalUtilLocationInfoUtil == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGatherergaCoreInternalUtilLocationInfoUtil == null) {
-          jdField_a_of_type_ComTencentGatherergaCoreInternalUtilLocationInfoUtil = new LocationInfoUtil(paramContext);
+        if (a == null) {
+          a = new LocationInfoUtil(paramContext);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGatherergaCoreInternalUtilLocationInfoUtil;
-  }
-  
-  private void a()
-  {
-    GLog.b("stop request location updates.");
-    LocationManager localLocationManager = this.jdField_a_of_type_AndroidLocationLocationManager;
-    if (localLocationManager != null) {
-      localLocationManager.removeUpdates(this.jdField_a_of_type_AndroidLocationLocationListener);
-    }
+    return a;
   }
   
   private void a(Context paramContext, LocationManager paramLocationManager)
@@ -74,12 +66,12 @@ public class LocationInfoUtil
     Location localLocation2 = null;
     Location localLocation1;
     if (i == 0) {
-      localLocation1 = paramLocationManager.getLastKnownLocation("gps");
+      localLocation1 = LocationMonitor.getLastKnownLocation(paramLocationManager, "gps");
     } else {
       localLocation1 = null;
     }
     if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == 0) {
-      localLocation2 = paramLocationManager.getLastKnownLocation("network");
+      localLocation2 = LocationMonitor.getLastKnownLocation(paramLocationManager, "network");
     }
     paramContext = a(localLocation1, localLocation2);
     if (paramContext != null) {
@@ -89,9 +81,9 @@ public class LocationInfoUtil
   
   private void a(Location paramLocation)
   {
-    this.jdField_a_of_type_Double = paramLocation.getLatitude();
-    this.b = paramLocation.getLongitude();
-    this.jdField_a_of_type_Float = paramLocation.getAccuracy();
+    this.b = paramLocation.getLatitude();
+    this.c = paramLocation.getLongitude();
+    this.d = paramLocation.getAccuracy();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("--- Set current location: ");
     localStringBuilder.append(paramLocation.toString());
@@ -100,7 +92,21 @@ public class LocationInfoUtil
     GLog.b(localStringBuilder.toString());
   }
   
-  private static boolean a(Context paramContext)
+  private void c()
+  {
+    GLog.b("stop request location updates.");
+    LocationManager localLocationManager = this.e;
+    if (localLocationManager != null) {
+      localLocationManager.removeUpdates(this.f);
+    }
+  }
+  
+  private void c(Context paramContext)
+  {
+    b(paramContext);
+  }
+  
+  private static boolean d(Context paramContext)
   {
     String[] arrayOfString = new String[2];
     arrayOfString[0] = "android.permission.ACCESS_FINE_LOCATION";
@@ -128,38 +134,38 @@ public class LocationInfoUtil
     return false;
   }
   
-  private void b(Context paramContext)
+  private void e(Context paramContext)
   {
-    a(paramContext);
-  }
-  
-  private void c(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidLocationLocationManager = ((LocationManager)paramContext.getSystemService("location"));
-    if (this.jdField_a_of_type_AndroidLocationLocationManager == null)
+    this.e = ((LocationManager)paramContext.getSystemService("location"));
+    if (this.e == null)
     {
       GLog.b("### LocationManager unavailable!");
       return;
     }
     GLog.b("use system location");
-    this.jdField_a_of_type_AndroidLocationLocationManager.requestLocationUpdates("network", 0L, 0.0F, this.jdField_a_of_type_AndroidLocationLocationListener);
+    LocationMonitor.requestLocationUpdates(this.e, "network", 0L, 0.0F, this.f);
   }
   
   public double a()
   {
-    return this.jdField_a_of_type_Double;
+    return this.b;
   }
   
-  public void a(Context paramContext)
+  public double b()
   {
-    if (!a(paramContext)) {
+    return this.c;
+  }
+  
+  public void b(Context paramContext)
+  {
+    if (!d(paramContext)) {
       return;
     }
     try
     {
       GLog.b("--- Update Location ---");
-      a(paramContext, this.jdField_a_of_type_AndroidLocationLocationManager);
-      c(paramContext);
+      a(paramContext, this.e);
+      e(paramContext);
       new Handler(Looper.getMainLooper()).postDelayed(new LocationInfoUtil.1(this), 30000L);
       return;
     }
@@ -171,15 +177,10 @@ public class LocationInfoUtil
       GLog.b(localStringBuilder.toString());
     }
   }
-  
-  public double b()
-  {
-    return this.b;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.LocationInfoUtil
  * JD-Core Version:    0.7.0.1
  */

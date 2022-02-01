@@ -16,162 +16,157 @@ import org.jetbrains.annotations.NotNull;
 public abstract class BaseVideoItemDelegate
   implements IVideoFeedsItemUIDelegate
 {
-  public static final BaseVideoItemDelegate.Companion a;
+  public static final BaseVideoItemDelegate.Companion d = new BaseVideoItemDelegate.Companion(null);
+  private final BaseVideoItemHolder a;
   @JvmField
   @NotNull
-  public final IVideoFeedsAdapter a;
+  public final IVideoFeedsRecommendPresenter b;
   @JvmField
   @NotNull
-  public final IVideoFeedsRecommendPresenter a;
-  private final BaseVideoItemHolder jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseVideoItemHolder;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsDelegateBaseVideoItemDelegate$Companion = new BaseVideoItemDelegate.Companion(null);
-  }
+  public final IVideoFeedsAdapter c;
   
   public BaseVideoItemDelegate(@NotNull BaseVideoItemHolder paramBaseVideoItemHolder, @NotNull IVideoFeedsRecommendPresenter paramIVideoFeedsRecommendPresenter, @NotNull IVideoFeedsAdapter paramIVideoFeedsAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate = ((IBaseVideoItemDelegateProxyFactory)QRoute.api(IBaseVideoItemDelegateProxyFactory.class)).create(paramBaseVideoItemHolder, paramIVideoFeedsRecommendPresenter, paramIVideoFeedsAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseVideoItemHolder = paramBaseVideoItemHolder;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter = paramIVideoFeedsRecommendPresenter;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter = paramIVideoFeedsAdapter;
+    this.e = ((IBaseVideoItemDelegateProxyFactory)QRoute.api(IBaseVideoItemDelegateProxyFactory.class)).create(paramBaseVideoItemHolder, paramIVideoFeedsRecommendPresenter, paramIVideoFeedsAdapter);
+    this.a = paramBaseVideoItemHolder;
+    this.b = paramIVideoFeedsRecommendPresenter;
+    this.c = paramIVideoFeedsAdapter;
     a((IVideoFeedsItemUIDelegate)this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a();
+    this.e.a();
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramFloat);
+    this.e.a(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramInt);
+    this.e.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramInt1, paramInt2, paramBoolean);
+    this.e.a(paramInt1, paramInt2, paramBoolean);
   }
   
   public void a(IVideoFeedsItemUIDelegate paramIVideoFeedsItemUIDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramIVideoFeedsItemUIDelegate);
+    this.e.a(paramIVideoFeedsItemUIDelegate);
   }
   
   public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramVideoInfo, paramBoolean);
+    this.e.a(paramVideoInfo, paramBoolean);
   }
   
   public void a(VideoItemHolder paramVideoItemHolder, VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramVideoItemHolder, paramVideoInfo);
+    this.e.a(paramVideoItemHolder, paramVideoInfo);
   }
   
   public void a(Boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramBoolean);
+    this.e.a(paramBoolean);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a(paramBoolean1, paramBoolean2);
+    this.e.a(paramBoolean1, paramBoolean2);
   }
   
   public void a_(VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.a_(paramVideoInfo);
+    this.e.a_(paramVideoInfo);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.b(paramInt);
+    this.e.b(paramInt);
   }
   
   public void b(VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.b(paramVideoInfo);
+    this.e.b(paramVideoInfo);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.e.b(paramBoolean);
   }
   
   public void c(VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.c(paramVideoInfo);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.c(paramBoolean);
+    this.e.c(paramVideoInfo);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.d();
+    this.e.d();
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.d(paramBoolean);
+    this.e.d(paramBoolean);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.e();
+    this.e.e();
   }
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.e(paramBoolean);
+    this.e.e(paramBoolean);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.f();
+    this.e.f();
   }
   
   public void f(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.f(paramBoolean);
+    this.e.f(paramBoolean);
   }
   
   public void g(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.g(paramBoolean);
+    this.e.g(paramBoolean);
   }
   
   public void h(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.h(paramBoolean);
+    this.e.h(paramBoolean);
   }
   
   public void i(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.i(paramBoolean);
+    this.e.i(paramBoolean);
   }
   
   public void j(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.j(paramBoolean);
+    this.e.j(paramBoolean);
   }
   
   public void k(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsItemUIDelegate.k(paramBoolean);
+    this.e.k(paramBoolean);
+  }
+  
+  public void l(boolean paramBoolean)
+  {
+    this.e.l(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.delegate.BaseVideoItemDelegate
  * JD-Core Version:    0.7.0.1
  */

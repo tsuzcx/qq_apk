@@ -1,6 +1,7 @@
 package com.tencent.tkd.topicsdk.selectowner;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.tencent.tkd.topicsdk.list.CommonListAdapter;
 import com.tencent.tkd.topicsdk.list.CommonListAdapter.BaseListViewHolder;
 import com.tencent.tkd.topicsdk.mvp.ListContract.IListPresenter.DefaultImpls;
 import com.tencent.tkd.topicsdk.mvp.ListContract.IListView;
+import com.tencent.tkd.topicsdk.mvp.ListContract.IListView.DefaultImpls;
 import com.tencent.tkd.topicsdk.mvp.ListPresenter;
 import com.tencent.tkd.topicsdk.widget.PressRelativeLayout;
 import com.tencent.tkd.topicsdk.widget.PressTextView;
@@ -34,283 +36,273 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/selectowner/BaseSelectView;", "BEAN", "HOLDER", "Lcom/tencent/tkd/topicsdk/list/CommonListAdapter$BaseListViewHolder;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "context", "Landroid/app/Activity;", "listPresenter", "Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;", "(Landroid/app/Activity;Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;)V", "adapter", "Lcom/tencent/tkd/topicsdk/list/CommonListAdapter;", "getAdapter", "()Lcom/tencent/tkd/topicsdk/list/CommonListAdapter;", "footerView", "Landroid/view/View;", "mIsLoadingMore", "", "mOnScrollListener", "com/tencent/tkd/topicsdk/selectowner/BaseSelectView$mOnScrollListener$1", "Lcom/tencent/tkd/topicsdk/selectowner/BaseSelectView$mOnScrollListener$1;", "mSelectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bean", "", "rightActionText", "", "getRightActionText", "()Ljava/lang/String;", "selectTip", "getSelectTip", "addItemToTop", "(Ljava/lang/Object;)V", "handleRightActionClick", "onAttachedToWindow", "onDetachedFromWindow", "setCenterEmpty", "setCenterError", "errorCode", "", "errorMsg", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setFooterViewFail", "setFooterViewFinish", "setFooterViewHide", "setFooterViewLoading", "setFooterViewShow", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "setOnSelectCallback", "callback", "setTotal", "total", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/selectowner/BaseSelectView;", "BEAN", "HOLDER", "Lcom/tencent/tkd/topicsdk/list/CommonListAdapter$BaseListViewHolder;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "context", "Landroid/app/Activity;", "listPresenter", "Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;", "(Landroid/app/Activity;Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;)V", "adapter", "Lcom/tencent/tkd/topicsdk/list/CommonListAdapter;", "getAdapter", "()Lcom/tencent/tkd/topicsdk/list/CommonListAdapter;", "footerView", "Landroid/view/View;", "mIsLoadingMore", "", "mOnScrollListener", "com/tencent/tkd/topicsdk/selectowner/BaseSelectView$mOnScrollListener$1", "Lcom/tencent/tkd/topicsdk/selectowner/BaseSelectView$mOnScrollListener$1;", "mSelectCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "bean", "", "selectTip", "", "getSelectTip", "()Ljava/lang/String;", "addItemToTop", "(Ljava/lang/Object;)V", "getEmptyText", "onAttachedToWindow", "onDetachedFromWindow", "setCenterEmpty", "setCenterError", "errorCode", "", "errorMsg", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setFooterViewFail", "setFooterViewFinish", "setFooterViewHide", "setFooterViewLoading", "setFooterViewShow", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "setOnSelectCallback", "callback", "setTotal", "total", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public abstract class BaseSelectView<BEAN, HOLDER extends CommonListAdapter.BaseListViewHolder>
   extends RelativeLayout
   implements ListContract.IListView<BEAN>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private final ListPresenter<BEAN, ListContract.IListView<BEAN>> jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter;
-  private BaseSelectView.mOnScrollListener.1 jdField_a_of_type_ComTencentTkdTopicsdkSelectownerBaseSelectView$mOnScrollListener$1;
+  private Function1<? super BEAN, Unit> a;
+  private boolean b;
+  private View c;
+  private BaseSelectView.mOnScrollListener.1 d;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private Function1<? super BEAN, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_a_of_type_Boolean;
-  @NotNull
-  private final String b;
+  private final String e;
+  private final ListPresenter<BEAN, ListContract.IListView<BEAN>> f;
+  private HashMap g;
   
   public BaseSelectView(@NotNull Activity paramActivity, @NotNull ListPresenter<BEAN, ListContract.IListView<BEAN>> paramListPresenter)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter = paramListPresenter;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkSelectownerBaseSelectView$mOnScrollListener$1 = new BaseSelectView.mOnScrollListener.1(this);
-    LayoutInflater.from(paramActivity).inflate(R.layout.G, (ViewGroup)this, true);
-    ((PressTextView)a(R.id.az)).setOnClickListener((View.OnClickListener)new BaseSelectView.1(this));
-    ((PressRelativeLayout)a(R.id.u)).setOnClickListener((View.OnClickListener)new BaseSelectView.2(this));
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
+    this.f = paramListPresenter;
+    this.d = new BaseSelectView.mOnScrollListener.1(this);
+    LayoutInflater.from(paramActivity).inflate(R.layout.C, (ViewGroup)this, true);
+    ((PressRelativeLayout)a(R.id.m)).setOnClickListener((View.OnClickListener)new BaseSelectView.1(this));
+    this.e = "";
   }
   
-  private final void b()
+  private final void a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     localView.setVisibility(8);
   }
   
-  private final void c()
+  private final void b()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     localView.setVisibility(0);
   }
   
-  private final void d()
+  private final void c()
   {
-    c();
-    Object localObject = (ImageView)a(R.id.m);
+    b();
+    Object localObject = (ImageView)a(R.id.e);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomLoadingIcon");
     ((ImageView)localObject).setVisibility(0);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
-    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.A));
-    localObject = (PressTextView)a(R.id.n);
+    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.u));
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setClickable(false);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setEnabled(false);
   }
   
-  private final void e()
+  private final void d()
   {
-    c();
-    Object localObject = (ImageView)a(R.id.m);
+    b();
+    Object localObject = (ImageView)a(R.id.e);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomLoadingIcon");
     ((ImageView)localObject).setVisibility(8);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
-    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.y));
-    localObject = (PressTextView)a(R.id.n);
+    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.s));
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setClickable(true);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setEnabled(true);
-    ((PressTextView)a(R.id.n)).setOnClickListener((View.OnClickListener)new BaseSelectView.setFooterViewFail.1(this));
+    ((PressTextView)a(R.id.f)).setOnClickListener((View.OnClickListener)new BaseSelectView.setFooterViewFail.1(this));
   }
   
-  private final void f()
+  private final void e()
   {
-    c();
-    Object localObject = (ImageView)a(R.id.m);
+    b();
+    Object localObject = (ImageView)a(R.id.e);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomLoadingIcon");
     ((ImageView)localObject).setVisibility(8);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
-    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.z));
-    localObject = (PressTextView)a(R.id.n);
+    ((PressTextView)localObject).setText((CharSequence)getResources().getString(R.string.t));
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setClickable(false);
-    localObject = (PressTextView)a(R.id.n);
+    localObject = (PressTextView)a(R.id.f);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "bottomText");
     ((PressTextView)localObject).setEnabled(false);
   }
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.g == null) {
+      this.g = new HashMap();
     }
-    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView2 = (View)this.g.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
       localView1 = findViewById(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+      this.g.put(Integer.valueOf(paramInt), localView1);
     }
     return localView1;
   }
-  
-  @NotNull
-  public abstract CommonListAdapter<BEAN, HOLDER> a();
-  
-  @NotNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a() {}
   
   public final void a(BEAN paramBEAN)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramBEAN);
-    localArrayList.addAll((Collection)a().a());
-    a().a((List)localArrayList);
-    paramBEAN = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(paramBEAN, "listView");
+    localArrayList.addAll((Collection)getAdapter().a());
+    getAdapter().a((List)localArrayList);
+    paramBEAN = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(paramBEAN, "list_view");
     paramBEAN.setVisibility(0);
-    paramBEAN = (RelativeLayout)a(R.id.ai);
+    paramBEAN = (RelativeLayout)a(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(paramBEAN, "loadingLayout");
     paramBEAN.setVisibility(8);
-    paramBEAN = (PressRelativeLayout)a(R.id.u);
+    paramBEAN = (PressRelativeLayout)a(R.id.m);
     Intrinsics.checkExpressionValueIsNotNull(paramBEAN, "errorLayout");
     paramBEAN.setVisibility(8);
   }
   
   @NotNull
-  public String b()
+  public abstract CommonListAdapter<BEAN, HOLDER> getAdapter();
+  
+  public int getDividerHeight()
   {
-    return this.b;
+    return ListContract.IListView.DefaultImpls.a(this);
+  }
+  
+  @NotNull
+  public String getEmptyText()
+  {
+    Object localObject = getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
+    localObject = ((Context)localObject).getResources().getString(R.string.q);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…tring.empty_content_tips)");
+    return localObject;
+  }
+  
+  @NotNull
+  public String getSelectTip()
+  {
+    return this.e;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Object localObject = (TextView)a(R.id.aF);
+    Object localObject = (TextView)a(R.id.ah);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "selectTipView");
-    ((TextView)localObject).setText((CharSequence)a());
-    int i;
-    if (((CharSequence)b()).length() > 0) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      localObject = (PressTextView)a(R.id.az);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "rightActionBtn");
-      ((PressTextView)localObject).setText((CharSequence)b());
-      ((PressTextView)a(R.id.az)).setOnClickListener((View.OnClickListener)new BaseSelectView.onAttachedToWindow.1(this));
-    }
-    localObject = LayoutInflater.from(getContext()).inflate(R.layout.J, null, false);
+    ((TextView)localObject).setText((CharSequence)getSelectTip());
+    localObject = LayoutInflater.from(getContext()).inflate(R.layout.F, null, false);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "LayoutInflater.from(cont…footer_view, null, false)");
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    this.c = ((View)localObject);
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     ((View)localObject).setClickable(false);
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     ((View)localObject).setEnabled(false);
-    localObject = (ListView)a(R.id.ae);
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    localObject = (ListView)a(R.id.I);
+    View localView = this.c;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     ((ListView)localObject).addFooterView(localView);
-    localObject = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
-    ((ListView)localObject).setAdapter((ListAdapter)a());
-    localObject = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
-    ((ListView)localObject).setOnItemClickListener((AdapterView.OnItemClickListener)new BaseSelectView.onAttachedToWindow.2(this));
-    ((ListView)a(R.id.ae)).setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentTkdTopicsdkSelectownerBaseSelectView$mOnScrollListener$1);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter.a((ListContract.IListView)this);
-    ListContract.IListPresenter.DefaultImpls.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter, null, 1, null);
+    localObject = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "list_view");
+    ((ListView)localObject).setAdapter((ListAdapter)getAdapter());
+    localObject = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "list_view");
+    ((ListView)localObject).setOnItemClickListener((AdapterView.OnItemClickListener)new BaseSelectView.onAttachedToWindow.1(this));
+    ((ListView)a(R.id.I)).setOnScrollListener((AbsListView.OnScrollListener)this.d);
+    this.f.a((ListContract.IListView)this);
+    ListContract.IListPresenter.DefaultImpls.a(this.f, null, 1, null);
   }
   
   protected void onDetachedFromWindow()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter.a();
+    this.f.a();
     super.onDetachedFromWindow();
   }
   
   public void setCenterEmpty()
   {
-    Object localObject = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
+    Object localObject = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "list_view");
     ((ListView)localObject).setVisibility(8);
-    localObject = (RelativeLayout)a(R.id.ai);
+    localObject = (RelativeLayout)a(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "loadingLayout");
     ((RelativeLayout)localObject).setVisibility(8);
-    localObject = (PressRelativeLayout)a(R.id.u);
+    localObject = (PressRelativeLayout)a(R.id.m);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "errorLayout");
     ((PressRelativeLayout)localObject).setVisibility(8);
   }
   
   public void setCenterError(int paramInt, @Nullable String paramString)
   {
-    paramString = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "listView");
+    paramString = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "list_view");
     paramString.setVisibility(8);
-    paramString = (RelativeLayout)a(R.id.ai);
+    paramString = (RelativeLayout)a(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "loadingLayout");
     paramString.setVisibility(8);
-    paramString = (PressRelativeLayout)a(R.id.u);
+    paramString = (PressRelativeLayout)a(R.id.m);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "errorLayout");
     paramString.setVisibility(0);
   }
   
   public void setCenterHide()
   {
-    Object localObject = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
+    Object localObject = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "list_view");
     ((ListView)localObject).setVisibility(0);
-    localObject = (RelativeLayout)a(R.id.ai);
+    localObject = (RelativeLayout)a(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "loadingLayout");
     ((RelativeLayout)localObject).setVisibility(8);
   }
   
   public void setCenterLoading()
   {
-    Object localObject = (ListView)a(R.id.ae);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
+    Object localObject = (ListView)a(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "list_view");
     ((ListView)localObject).setVisibility(8);
-    localObject = (PressRelativeLayout)a(R.id.u);
+    localObject = (PressRelativeLayout)a(R.id.m);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "errorLayout");
     ((PressRelativeLayout)localObject).setVisibility(8);
-    localObject = (RelativeLayout)a(R.id.ai);
+    localObject = (RelativeLayout)a(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "loadingLayout");
     ((RelativeLayout)localObject).setVisibility(0);
   }
   
   public void setFooterError(int paramInt, @Nullable String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    e();
+    this.b = false;
+    d();
   }
   
   public void setFooterHasMore()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public void setFooterHide()
   {
-    b();
+    a();
   }
   
   public void setFooterLoading()
   {
-    this.jdField_a_of_type_Boolean = true;
-    d();
+    this.b = true;
+    c();
   }
   
   public void setFooterNoMore()
   {
-    this.jdField_a_of_type_Boolean = false;
-    f();
+    this.b = false;
+    e();
   }
   
   public void setHeaderError(int paramInt, @Nullable String paramString) {}
@@ -322,20 +314,20 @@ public abstract class BaseSelectView<BEAN, HOLDER extends CommonListAdapter.Base
   public void setListData(@NotNull List<? extends BEAN> paramList, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "allList");
-    a().a(paramList);
+    getAdapter().a(paramList);
   }
   
   public final void setOnSelectCallback(@NotNull Function1<? super BEAN, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.a = paramFunction1;
   }
   
   public void setTotal(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.BaseSelectView
  * JD-Core Version:    0.7.0.1
  */

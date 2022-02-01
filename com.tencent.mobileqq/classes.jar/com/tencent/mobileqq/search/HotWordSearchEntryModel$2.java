@@ -14,21 +14,21 @@ class HotWordSearchEntryModel$2
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$TitleHeaderItem.d))
+    if (!TextUtils.isEmpty(this.a.d))
     {
-      SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$TitleHeaderItem.d);
-      SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
+      SearchUtils.a(this.b.p, this.b.q, this.a.d);
+      SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.b.a) });
     }
     else
     {
-      SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
+      SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.b.a) });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.2
  * JD-Core Version:    0.7.0.1
  */

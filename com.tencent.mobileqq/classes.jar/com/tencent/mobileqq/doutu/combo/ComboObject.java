@@ -2,9 +2,9 @@ package com.tencent.mobileqq.doutu.combo;
 
 public class ComboObject
 {
-  public int a;
   public String a;
-  public boolean a;
+  public int b;
+  public boolean c;
   
   public ComboObject(String paramString, int paramInt)
   {
@@ -13,25 +13,25 @@ public class ComboObject
   
   public ComboObject(String paramString, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramBoolean;
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append(',');
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.b);
     localStringBuffer.append(',');
-    localStringBuffer.append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(this.c);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboObject
  * JD-Core Version:    0.7.0.1
  */

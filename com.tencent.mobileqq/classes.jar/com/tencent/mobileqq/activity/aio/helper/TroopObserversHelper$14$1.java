@@ -12,19 +12,19 @@ class TroopObserversHelper$14$1
   
   public void run()
   {
-    if (TroopObserversHelper.a(this.a.a).a != null) {
-      TroopObserversHelper.a(this.a.a).a.dismiss();
+    if (TroopObserversHelper.d(this.a.a).by != null) {
+      TroopObserversHelper.d(this.a.a).by.dismiss();
     }
-    TroopObserversHelper.a(this.a.a).o(true);
-    TroopObserversHelper.a(this.a.a).a().postDelayed(new TroopObserversHelper.14.1.1(this), 100L);
-    if (!AnonymousChatHelper.a(TroopObserversHelper.a(this.a.a), TroopObserversHelper.a(this.a.a))) {
-      TroopObserversHelper.a(this.a.a).a().postDelayed(new TroopObserversHelper.14.1.2(this), 200L);
+    TroopObserversHelper.d(this.a.a).s(true);
+    TroopObserversHelper.d(this.a.a).j().postDelayed(new TroopObserversHelper.14.1.1(this), 100L);
+    if (!AnonymousChatHelper.a(TroopObserversHelper.g(this.a.a), TroopObserversHelper.a(this.a.a))) {
+      TroopObserversHelper.d(this.a.a).j().postDelayed(new TroopObserversHelper.14.1.2(this), 200L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.14.1
  * JD-Core Version:    0.7.0.1
  */

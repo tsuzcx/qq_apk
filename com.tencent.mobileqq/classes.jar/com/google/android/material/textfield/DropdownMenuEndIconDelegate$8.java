@@ -9,14 +9,14 @@ class DropdownMenuEndIconDelegate$8
   
   public void onDismiss()
   {
-    DropdownMenuEndIconDelegate.a(this.a, true);
+    DropdownMenuEndIconDelegate.b(this.a, true);
     DropdownMenuEndIconDelegate.a(this.a, System.currentTimeMillis());
     DropdownMenuEndIconDelegate.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.8
  * JD-Core Version:    0.7.0.1
  */

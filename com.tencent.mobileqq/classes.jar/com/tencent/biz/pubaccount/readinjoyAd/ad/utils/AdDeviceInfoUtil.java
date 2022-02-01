@@ -31,45 +31,8 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
 
 public class AdDeviceInfoUtil
 {
-  public static int a()
-  {
-    int j = AppNetConnInfo.getConnInfo();
-    int i = 1;
-    if (j != 0)
-    {
-      if (j == 1) {}
-    }
-    else
-    {
-      do
-      {
-        i = 0;
-        break label59;
-        i = AppNetConnInfo.getMobileInfo();
-        if (i == 1) {
-          break label57;
-        }
-        if (i == 2) {
-          break;
-        }
-      } while ((i != 3) && (i != 4));
-      i = 4;
-      break label59;
-      i = 3;
-      break label59;
-      label57:
-      i = 2;
-    }
-    label59:
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getNetType ");
-      localStringBuilder.append(i);
-      QLog.i("AdDeviceInfoUtil", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
+  private static String a = "";
+  private static int b = -1;
   
   public static String a()
   {
@@ -115,7 +78,124 @@ public class AdDeviceInfoUtil
     return "";
   }
   
-  public static oidb_0x6cf.PhoneInfo a()
+  public static String b()
+  {
+    try
+    {
+      Object localObject = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
+      if (Build.VERSION.SDK_INT <= 28)
+      {
+        localObject = ((TelephonyManager)localObject).getDeviceId();
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getGdtIMEI: exception");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("AdDeviceInfoUtil", 2, localStringBuilder.toString());
+      }
+    }
+    return "";
+  }
+  
+  public static int c()
+  {
+    int j = AppNetConnInfo.getConnInfo();
+    int i = 1;
+    if (j != 0)
+    {
+      if (j == 1) {}
+    }
+    else
+    {
+      do
+      {
+        i = 0;
+        break label59;
+        i = AppNetConnInfo.getMobileInfo();
+        if (i == 1) {
+          break label57;
+        }
+        if (i == 2) {
+          break;
+        }
+      } while ((i != 3) && (i != 4));
+      i = 4;
+      break label59;
+      i = 3;
+      break label59;
+      label57:
+      i = 2;
+    }
+    label59:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNetType ");
+      localStringBuilder.append(i);
+      QLog.i("AdDeviceInfoUtil", 2, localStringBuilder.toString());
+    }
+    return i;
+  }
+  
+  public static String d()
+  {
+    if (!TextUtils.isEmpty(a)) {
+      return a;
+    }
+    try
+    {
+      a = QQDeviceInfo.getMAC("d059d4");
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMAC: exception");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("AdDeviceInfoUtil", 2, localStringBuilder.toString());
+      }
+    }
+    return a;
+  }
+  
+  public static int e()
+  {
+    int i = b;
+    if (i != -1) {
+      return i;
+    }
+    b = DeviceInfoUtil.X();
+    return b;
+  }
+  
+  public static int f()
+  {
+    int i = 0;
+    try
+    {
+      Object localObject = new GdtDeviceInfoHelper.Params();
+      ((GdtDeviceInfoHelper.Params)localObject).a = "ce2d9f";
+      localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+      if (localObject != null)
+      {
+        if (((GdtDeviceInfoHelper.Result)localObject).a == null) {
+          return 0;
+        }
+        i = ((GdtDeviceInfoHelper.Result)localObject).a.carrier_code.get();
+      }
+      return i;
+    }
+    catch (Throwable localThrowable) {}
+    return 0;
+  }
+  
+  public static oidb_0x6cf.PhoneInfo g()
   {
     oidb_0x6cf.PhoneInfo localPhoneInfo = new oidb_0x6cf.PhoneInfo();
     Object localObject1 = new GdtDeviceInfoHelper.Params();
@@ -140,7 +220,7 @@ public class AdDeviceInfoUtil
     i = 0;
     try
     {
-      int j = DeviceInfoUtil.g();
+      int j = e();
       i = j;
     }
     catch (Exception localException)
@@ -149,11 +229,11 @@ public class AdDeviceInfoUtil
       break label163;
     }
     localPhoneInfo.uint32_carrier.set(i);
-    localObject2 = DeviceInfoUtil.e();
+    localObject2 = DeviceInfoUtil.g();
     localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localObject2 = DeviceInfoUtil.c();
+    localObject2 = DeviceInfoUtil.e();
     localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    i = AppSetting.a();
+    i = AppSetting.d();
     localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
     localObject2 = DatalineMathUtil.a(DatalineMathUtil.a());
     localPhoneInfo.bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject2));
@@ -199,75 +279,10 @@ public class AdDeviceInfoUtil
     localPhoneInfo.bytes_wx_ver.set(ByteStringMicro.copyFrom(a(BaseApplication.getContext()).getBytes()));
     return localPhoneInfo;
   }
-  
-  public static int b()
-  {
-    int i = 0;
-    try
-    {
-      Object localObject = new GdtDeviceInfoHelper.Params();
-      ((GdtDeviceInfoHelper.Params)localObject).a = "ce2d9f";
-      localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
-      if (localObject != null)
-      {
-        if (((GdtDeviceInfoHelper.Result)localObject).a == null) {
-          return 0;
-        }
-        i = ((GdtDeviceInfoHelper.Result)localObject).a.carrier_code.get();
-      }
-      return i;
-    }
-    catch (Throwable localThrowable) {}
-    return 0;
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      Object localObject = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
-      if (Build.VERSION.SDK_INT <= 28)
-      {
-        localObject = ((TelephonyManager)localObject).getDeviceId();
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getGdtIMEI: exception");
-        localStringBuilder.append(localException.getMessage());
-        QLog.d("AdDeviceInfoUtil", 2, localStringBuilder.toString());
-      }
-    }
-    return "";
-  }
-  
-  public static String c()
-  {
-    try
-    {
-      String str = QQDeviceInfo.getMAC("d059d4");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getIMEI: exception");
-        localStringBuilder.append(localException.getMessage());
-        QLog.d("AdDeviceInfoUtil", 2, localStringBuilder.toString());
-      }
-    }
-    return "";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdDeviceInfoUtil
  * JD-Core Version:    0.7.0.1
  */

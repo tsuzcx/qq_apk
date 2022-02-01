@@ -9,13 +9,13 @@ public class CookieHelper
 {
   public static String a()
   {
-    Object localObject = BusinessManager.a.a();
-    LoginResult localLoginResult = LoginManager.a.a();
+    Object localObject = BusinessManager.a.b();
+    LoginResult localLoginResult = LoginManager.c.c();
     String str2 = "";
     if (localLoginResult == null) {
       str1 = "";
     } else {
-      str1 = String.valueOf(LoginManager.a.a().a);
+      str1 = String.valueOf(LoginManager.c.c().e);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin=o");
@@ -34,7 +34,7 @@ public class CookieHelper
     if (localObject == null) {
       i = 0;
     } else {
-      i = ((BusinessConfig)localObject).d;
+      i = ((BusinessConfig)localObject).f;
     }
     localStringBuilder.append(i);
     str1 = localStringBuilder.toString();
@@ -45,7 +45,7 @@ public class CookieHelper
     if (localLoginResult == null) {
       l = 0L;
     } else {
-      l = localLoginResult.a;
+      l = localLoginResult.e;
     }
     ((StringBuilder)localObject).append(l);
     str1 = ((StringBuilder)localObject).toString();
@@ -55,7 +55,7 @@ public class CookieHelper
     if (localLoginResult == null) {
       str1 = "";
     } else {
-      str1 = localLoginResult.f;
+      str1 = localLoginResult.g;
     }
     ((StringBuilder)localObject).append(str1);
     str1 = ((StringBuilder)localObject).toString();
@@ -65,7 +65,7 @@ public class CookieHelper
     if (localLoginResult == null) {
       str1 = str2;
     } else {
-      str1 = localLoginResult.e;
+      str1 = localLoginResult.f;
     }
     ((StringBuilder)localObject).append(str1);
     return ((StringBuilder)localObject).toString();
@@ -73,7 +73,7 @@ public class CookieHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.CookieHelper
  * JD-Core Version:    0.7.0.1
  */

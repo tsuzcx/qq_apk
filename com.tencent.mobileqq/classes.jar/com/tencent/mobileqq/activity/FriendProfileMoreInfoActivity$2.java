@@ -30,10 +30,10 @@ class FriendProfileMoreInfoActivity$2
       if (Utils.a(str, paramObject.uin))
       {
         FriendProfileMoreInfoActivity.a(this.a, paramObject, true);
-        if (!this.a.i)
+        if (!this.a.I)
         {
           paramObject = (BusinessCardManager)this.a.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
-          FriendProfileMoreInfoActivity.a(this.a, paramObject.a());
+          FriendProfileMoreInfoActivity.a(this.a, paramObject.b());
         }
       }
     }
@@ -49,7 +49,7 @@ class FriendProfileMoreInfoActivity$2
   protected void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, String.format("onSetProfileDetail success=%s resultCode=%s mDelayRemoveCardObserver=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.a.jdField_b_of_type_Boolean) }));
+      QLog.d("FriendProfileMoreInfoActivity", 2, String.format("onSetProfileDetail success=%s resultCode=%s mDelayRemoveCardObserver=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.a.w) }));
     }
     if (FriendProfileMoreInfoActivity.a(this.a))
     {
@@ -58,71 +58,71 @@ class FriendProfileMoreInfoActivity$2
     }
     if (((!paramBoolean) || (paramInt != 0)) && ((paramBoolean) || (paramInt != 34))) {
       if (paramInt == 40) {
-        FriendProfileMoreInfoActivity.a(this.a, 2131718812, 1);
+        FriendProfileMoreInfoActivity.a(this.a, 2131916320, 1);
       } else {
-        FriendProfileMoreInfoActivity.a(this.a, 2131695119, 1);
+        FriendProfileMoreInfoActivity.a(this.a, 2131892847, 1);
       }
     }
     Object localObject;
-    if (this.a.jdField_b_of_type_Boolean)
+    if (this.a.w)
     {
       localObject = this.a;
-      ((FriendProfileMoreInfoActivity)localObject).removeObserver(((FriendProfileMoreInfoActivity)localObject).jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+      ((FriendProfileMoreInfoActivity)localObject).removeObserver(((FriendProfileMoreInfoActivity)localObject).M);
       localObject = this.a;
-      ((FriendProfileMoreInfoActivity)localObject).removeObserver(FriendProfileMoreInfoActivity.a((FriendProfileMoreInfoActivity)localObject));
-      this.a.jdField_b_of_type_Boolean = false;
+      ((FriendProfileMoreInfoActivity)localObject).removeObserver(FriendProfileMoreInfoActivity.b((FriendProfileMoreInfoActivity)localObject));
+      this.a.w = false;
     }
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog != null))
+    if ((this.a.v) && (this.a.u != null))
     {
       if (paramBoolean)
       {
         ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC3", "0X8007EC3", 0, 0, "", "", "", "");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity$MaxBytesTextWatcher.jdField_b_of_type_Boolean)
+        if (this.a.l.b)
         {
-          paramCard = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+          paramCard = this.a.f.getText().toString();
           if ((!TextUtils.isEmpty(paramCard)) && (!TextUtils.isEmpty(paramCard.trim()))) {
             ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC7", "0X8007EC7", 0, 0, "", "", "", "");
           }
         }
-        if (this.a.jdField_c_of_type_Boolean) {
+        if (this.a.z) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC8", "0X8007EC8", 0, 0, "", "", "", "");
         }
-        if (this.a.jdField_d_of_type_Boolean) {
+        if (this.a.A) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC9", "0X8007EC9", 0, 0, "", "", "", "");
         }
-        if (this.a.e) {
+        if (this.a.B) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECA", "0X8007ECA", 0, 0, "", "", "", "");
         }
-        if (this.a.jdField_b_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity$MaxBytesTextWatcher.jdField_b_of_type_Boolean) {
+        if (this.a.m.b) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECB", "0X8007ECB", 0, 0, "", "", "", "");
         }
-        if (this.a.jdField_c_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity$MaxBytesTextWatcher.jdField_b_of_type_Boolean) {
+        if (this.a.n.b) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECC", "0X8007ECC", 0, 0, "", "", "", "");
         }
-        if (this.a.f) {
+        if (this.a.C) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECD", "0X8007ECD", 0, 0, "", "", "", "");
         }
-        if (this.a.g) {
+        if (this.a.D) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECE", "0X8007ECE", 0, 0, "", "", "", "");
         }
-        if (this.a.jdField_d_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity$MaxBytesTextWatcher.jdField_b_of_type_Boolean)
+        if (this.a.o.b)
         {
-          paramCard = this.a.jdField_d_of_type_AndroidWidgetEditText.getText().toString();
-          localObject = SearchBaseActivity.a.matcher(paramCard);
+          paramCard = this.a.i.getText().toString();
+          localObject = SearchBaseActivity.C.matcher(paramCard);
           if ((TextUtils.isEmpty(paramCard)) || (((Matcher)localObject).matches())) {
             ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECF", "0X8007ECF", 0, 0, "", "", "", "");
           }
         }
-        if (this.a.h) {
+        if (this.a.E) {
           ReportController.b(this.a.app, "dc00898", "", "", "0X8007ED0", "0X8007ED0", 0, 0, "", "", "", "");
         }
-        if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-          this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        if (this.a.H == null) {
+          this.a.H = new Bundle();
         }
       }
       paramCard = this.a;
-      paramCard.jdField_a_of_type_Boolean = false;
-      paramCard.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      paramCard.v = false;
+      paramCard.u.dismiss();
       if (!this.a.isFinishing()) {
         this.a.finish();
       }
@@ -135,7 +135,7 @@ class FriendProfileMoreInfoActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.2
  * JD-Core Version:    0.7.0.1
  */

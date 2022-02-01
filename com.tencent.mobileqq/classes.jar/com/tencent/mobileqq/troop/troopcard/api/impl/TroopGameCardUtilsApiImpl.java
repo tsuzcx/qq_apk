@@ -34,12 +34,12 @@ public class TroopGameCardUtilsApiImpl
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (SimpleUIUtil.a())
+      if (SimpleUIUtil.e())
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopGameCardUtil", 2, "checkoutMsgShowGameGradeLevel SimpleUI");
         }
-        paramICheckShowMsgGameGradeLevelBack.a(false);
+        paramICheckShowMsgGameGradeLevelBack.a(false, false);
         return;
       }
       if (((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch())
@@ -47,21 +47,13 @@ public class TroopGameCardUtilsApiImpl
         if (QLog.isColorLevel()) {
           QLog.d("TroopGameCardUtil", 2, "checkoutMsgShowGameGradeLevel StudyMode");
         }
-        paramICheckShowMsgGameGradeLevelBack.a(false);
-        return;
-      }
-      if (!((ITroopCardApi)QRoute.api(ITroopCardApi.class)).isGrayTroopForTroopGameCard(paramString1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopGameCardUtil", 2, "checkoutMsgShowGameGradeLevel configData is invalid");
-        }
-        paramICheckShowMsgGameGradeLevelBack.a(false);
+        paramICheckShowMsgGameGradeLevelBack.a(false, false);
         return;
       }
       AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
       if (localAppRuntime == null)
       {
-        paramICheckShowMsgGameGradeLevelBack.a(false);
+        paramICheckShowMsgGameGradeLevelBack.a(false, false);
         return;
       }
       Object localObject = (ITroopInfoService)localAppRuntime.getRuntimeService(ITroopInfoService.class, "");
@@ -70,7 +62,7 @@ public class TroopGameCardUtilsApiImpl
         if (QLog.isColorLevel()) {
           QLog.d("TroopGameCardUtil", 2, "checkoutMsgShowGameGradeLevel manager is null");
         }
-        paramICheckShowMsgGameGradeLevelBack.a(false);
+        paramICheckShowMsgGameGradeLevelBack.a(false, false);
         return;
       }
       localObject = ((ITroopInfoService)localObject).findTroopInfo(paramString1);
@@ -91,13 +83,13 @@ public class TroopGameCardUtilsApiImpl
         paramString2.append(paramString1);
         QLog.d("TroopGameCardUtil", 2, paramString2.toString());
       }
-      paramICheckShowMsgGameGradeLevelBack.a(false);
+      paramICheckShowMsgGameGradeLevelBack.a(false, false);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TroopGameCardUtil", 2, "checkoutMsgShowGameGradeLevel invalid args");
     }
-    paramICheckShowMsgGameGradeLevelBack.a(false);
+    paramICheckShowMsgGameGradeLevelBack.a(false, false);
   }
   
   @Nullable
@@ -404,15 +396,15 @@ public class TroopGameCardUtilsApiImpl
       if (paramInt / 100000 >= 8)
       {
         if (paramInt >= 860050) {
-          return HardCodeUtil.a(2131693311);
+          return HardCodeUtil.a(2131890859);
         }
-        return HardCodeUtil.a(2131693308);
+        return HardCodeUtil.a(2131890856);
       }
       String str2 = getSecondaryGradeById(paramInt);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str1);
       localStringBuilder.append(str2);
-      localStringBuilder.append(HardCodeUtil.a(2131693317));
+      localStringBuilder.append(HardCodeUtil.a(2131890865));
       return localStringBuilder.toString();
     }
     return null;
@@ -462,19 +454,19 @@ public class TroopGameCardUtilsApiImpl
     default: 
       return null;
     case 8: 
-      return HardCodeUtil.a(2131693313);
+      return HardCodeUtil.a(2131890861);
     case 7: 
-      return HardCodeUtil.a(2131693316);
+      return HardCodeUtil.a(2131890864);
     case 6: 
-      return HardCodeUtil.a(2131693310);
+      return HardCodeUtil.a(2131890858);
     case 5: 
-      return HardCodeUtil.a(2131693314);
+      return HardCodeUtil.a(2131890862);
     case 4: 
-      return HardCodeUtil.a(2131693312);
+      return HardCodeUtil.a(2131890860);
     case 3: 
-      return HardCodeUtil.a(2131693315);
+      return HardCodeUtil.a(2131890863);
     }
-    return HardCodeUtil.a(2131693309);
+    return HardCodeUtil.a(2131890857);
   }
   
   public String getMemberGameCardBgImagePath(boolean paramBoolean)
@@ -503,17 +495,17 @@ public class TroopGameCardUtilsApiImpl
     default: 
       return null;
     case 6: 
-      return HardCodeUtil.a(2131693320);
+      return HardCodeUtil.a(2131890868);
     case 5: 
-      return HardCodeUtil.a(2131693322);
+      return HardCodeUtil.a(2131890870);
     case 4: 
-      return HardCodeUtil.a(2131693321);
+      return HardCodeUtil.a(2131890869);
     case 3: 
-      return HardCodeUtil.a(2131693319);
+      return HardCodeUtil.a(2131890867);
     case 2: 
-      return HardCodeUtil.a(2131693324);
+      return HardCodeUtil.a(2131890872);
     }
-    return HardCodeUtil.a(2131693323);
+    return HardCodeUtil.a(2131890871);
   }
   
   public String getSecondaryGradeById(int paramInt)
@@ -526,15 +518,15 @@ public class TroopGameCardUtilsApiImpl
     default: 
       return null;
     case 9: 
-      return HardCodeUtil.a(2131693326);
+      return HardCodeUtil.a(2131890874);
     case 8: 
-      return HardCodeUtil.a(2131693327);
+      return HardCodeUtil.a(2131890875);
     case 7: 
-      return HardCodeUtil.a(2131693328);
+      return HardCodeUtil.a(2131890876);
     case 6: 
-      return HardCodeUtil.a(2131693329);
+      return HardCodeUtil.a(2131890877);
     }
-    return HardCodeUtil.a(2131693330);
+    return HardCodeUtil.a(2131890878);
   }
   
   public String getSelectedEndColorById(int paramInt)
@@ -649,7 +641,7 @@ public class TroopGameCardUtilsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcard.api.impl.TroopGameCardUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

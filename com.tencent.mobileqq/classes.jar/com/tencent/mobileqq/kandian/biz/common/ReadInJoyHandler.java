@@ -17,24 +17,24 @@ import java.util.concurrent.Executors;
 public class ReadInJoyHandler
   extends BusinessHandler
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ReadInJoyRemoteCommand jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyRemoteCommand = null;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
+  Handler a = new Handler(Looper.getMainLooper());
+  ReadInJoyRemoteCommand b = null;
+  private QQAppInterface c;
+  private ExecutorService d = Executors.newSingleThreadExecutor();
   
   public ReadInJoyHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   public void a()
   {
-    ReadInJoyRemoteCommand localReadInJoyRemoteCommand = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyRemoteCommand;
+    ReadInJoyRemoteCommand localReadInJoyRemoteCommand = this.b;
     if (localReadInJoyRemoteCommand != null)
     {
       localReadInJoyRemoteCommand.a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyRemoteCommand = null;
+      this.b = null;
     }
   }
   
@@ -77,7 +77,7 @@ public class ReadInJoyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -160,7 +160,7 @@ class AbsWebView$WebViewClientImpl
     if (!"about:blank".equalsIgnoreCase(paramString)) {
       this.b.mStateReporter.a(2);
     }
-    if ((!this.b.isIsFirstOnPageStart()) && (this.b.mProgressBarController != null) && (this.b.mProgressBarController.b() != 0)) {
+    if ((!this.b.isIsFirstOnPageStart()) && (this.b.mProgressBarController != null) && (this.b.mProgressBarController.d() != 0)) {
       this.b.mProgressBarController.a((byte)0);
     }
     if (this.b.isIsFirstOnPageStart())
@@ -300,9 +300,7 @@ class AbsWebView$WebViewClientImpl
           paramWebView = paramString;
         }
         ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("AbsWebView", 2, paramString);
-        }
+        QLog.e("AbsWebView", 2, paramString);
       }
     }
     return true;
@@ -310,7 +308,7 @@ class AbsWebView$WebViewClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

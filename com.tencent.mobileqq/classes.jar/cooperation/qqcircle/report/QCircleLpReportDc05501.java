@@ -1,10 +1,10 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleLpReportDc05501
 {
@@ -36,6 +36,11 @@ public class QCircleLpReportDc05501
   public static final String KEY_TOUIN = "touin";
   private static final String TAG = "QCircleLpReportDc05501";
   
+  static void doReportInner(QCircleLpReportDc05501.DataBuilder paramDataBuilder)
+  {
+    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05501.1(paramDataBuilder));
+  }
+  
   private static int getDcId()
   {
     return 5501;
@@ -60,12 +65,11 @@ public class QCircleLpReportDc05501
   {
     if (paramDataBuilder == null)
     {
-      RFLog.e("QCircleLpReportDc05501", RFLog.USR, "DataBuilder == null");
+      QLog.e("QCircleLpReportDc05501", 1, "DataBuilder == null");
       return;
     }
     if (QCircleLpReportDc05501.DataBuilder.access$000(paramDataBuilder) <= 0)
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("report invalid pageId,");
       localStringBuilder.append(QCircleLpReportDc05501.DataBuilder.access$000(paramDataBuilder));
@@ -73,10 +77,10 @@ public class QCircleLpReportDc05501
       localStringBuilder.append(QCircleLpReportDc05501.DataBuilder.access$100(paramDataBuilder));
       localStringBuilder.append(",subActionType:");
       localStringBuilder.append(QCircleLpReportDc05501.DataBuilder.access$200(paramDataBuilder));
-      RFLog.e("QCircleReportBean_QCircleLpReportDc05501", i, localStringBuilder.toString());
+      QLog.e("QCircleReportBean_QCircleLpReportDc05501", 1, localStringBuilder.toString());
       showErrorToast(QCircleLpReportDc05501.DataBuilder.access$100(paramDataBuilder), QCircleLpReportDc05501.DataBuilder.access$200(paramDataBuilder));
     }
-    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05501.1(paramDataBuilder));
+    doReportInner(paramDataBuilder);
   }
   
   private static void showErrorToast(int paramInt1, int paramInt2)
@@ -88,7 +92,7 @@ public class QCircleLpReportDc05501
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05501
  * JD-Core Version:    0.7.0.1
  */

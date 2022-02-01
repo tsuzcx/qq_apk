@@ -20,19 +20,19 @@ class EditPicSave$2
   {
     super.onNext(paramGenerateContext);
     this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
+    paramGenerateContext = paramGenerateContext.l.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("picPath = ");
     localStringBuilder.append(paramGenerateContext);
     SLog.b("EditPicSave", localStringBuilder.toString());
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity() != null)
+    if (this.a.u.getActivity() != null)
     {
-      ThreadManager.excute(new EditPicSave.2.1(this, paramGenerateContext), 64, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      ThreadManager.excute(new EditPicSave.2.1(this, paramGenerateContext), 64, this.a.e, true);
       paramGenerateContext = this.a;
-      paramGenerateContext.jdField_a_of_type_Int = 40;
-      paramGenerateContext.jdField_a_of_type_Boolean = false;
-      paramGenerateContext.b = 10;
-      paramGenerateContext.b();
+      paramGenerateContext.a = 40;
+      paramGenerateContext.b = false;
+      paramGenerateContext.c = 10;
+      paramGenerateContext.c();
     }
   }
   
@@ -42,13 +42,13 @@ class EditPicSave$2
     SLog.d("EditPicSave", "saveVideo cancel !");
     if (!EditPicSave.a(this.a))
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a() == 14) {
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.p = false;
+      if (this.a.t.I.h() == 14) {
+        this.a.t.E = false;
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
+      this.a.t.d(0);
     }
-    this.a.g();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext(), HardCodeUtil.a(2131703843), 0).a();
+    this.a.d();
+    QQToast.makeText(this.a.u.getContext(), HardCodeUtil.a(2131901789), 0).show();
   }
   
   public void onError(@NonNull Error paramError)
@@ -60,22 +60,22 @@ class EditPicSave$2
     SLog.e("EditPicSave", ((StringBuilder)localObject).toString());
     if (!EditPicSave.a(this.a))
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a() == 14) {
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.p = false;
+      if (this.a.t.I.h() == 14) {
+        this.a.t.E = false;
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
+      this.a.t.d(0);
     }
-    localObject = this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext();
+    localObject = this.a.u.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131703845));
+    localStringBuilder.append(HardCodeUtil.a(2131901791));
     localStringBuilder.append(paramError);
-    QQToast.a((Context)localObject, 1, localStringBuilder.toString(), 0).a();
-    this.a.g();
+    QQToast.makeText((Context)localObject, 1, localStringBuilder.toString(), 0).show();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave.2
  * JD-Core Version:    0.7.0.1
  */

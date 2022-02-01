@@ -12,9 +12,9 @@ class LoginInfoActivity$22
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    LoginInfoActivity.access$4200(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).setVisibility(4);
-    LoginInfoActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).clearAnimation();
-    LoginInfoActivity.access$4300(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    LoginInfoActivity.access$4200(this.c).setVisibility(4);
+    LoginInfoActivity.access$700(this.c).clearAnimation();
+    LoginInfoActivity.access$4300(this.c, this.a, this.b);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -23,7 +23,7 @@ class LoginInfoActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.22
  * JD-Core Version:    0.7.0.1
  */

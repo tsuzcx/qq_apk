@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class QFileSaveModel
 {
   protected QQAppInterface a;
-  protected ChatMessage a;
-  protected QFileSaveReqUiCallback a;
+  protected ChatMessage b;
+  protected QFileSaveReqUiCallback c;
   
   public QFileSaveModel(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.a = paramQQAppInterface;
+    this.b = paramChatMessage;
   }
   
   public static QFileSaveModel a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
@@ -43,28 +43,28 @@ public abstract class QFileSaveModel
     return null;
   }
   
-  public abstract long a();
-  
-  public abstract QFileControlReq a();
-  
-  public abstract String a();
-  
   public void a(QFileSaveReqUiCallback paramQFileSaveReqUiCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileSaveReqUiCallback = paramQFileSaveReqUiCallback;
+    this.c = paramQFileSaveReqUiCallback;
   }
   
   public abstract boolean a();
   
-  public abstract String b();
-  
   public abstract boolean b();
   
-  public abstract boolean c();
+  public abstract String c();
+  
+  public abstract boolean d();
+  
+  public abstract QFileControlReq e();
+  
+  public abstract String f();
+  
+  public abstract long g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

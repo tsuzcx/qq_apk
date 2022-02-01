@@ -35,26 +35,26 @@ class RedDotBubblePopupWindow$1
     ((StringBuilder)localObject).append(" getHeight:");
     ((StringBuilder)localObject).append(this.a.getHeight());
     WSLog.d("RedDotBubblePopupWindow", ((StringBuilder)localObject).toString());
-    if (RedDotBubblePopupWindow.a(this.this$0) != null)
+    if (RedDotBubblePopupWindow.b(this.this$0) != null)
     {
-      if (RedDotBubblePopupWindow.a(this.this$0).isFinishing()) {
+      if (RedDotBubblePopupWindow.b(this.this$0).isFinishing()) {
         return;
       }
-      if (RedDotBubblePopupWindow.a(this.this$0) == null)
+      if (RedDotBubblePopupWindow.c(this.this$0) == null)
       {
         localObject = this.this$0;
         RedDotBubblePopupWindow.a((RedDotBubblePopupWindow)localObject, new RedDotBubblePopupWindow.DisPopupRunnable((RedDotBubblePopupWindow)localObject, (RedDotBubblePopupWindow)localObject));
       }
       localObject = this.this$0;
       View localView = this.a;
-      ((RedDotBubblePopupWindow)localObject).showAtLocation(localView, 0, arrayOfInt[0] + localView.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + ViewUtils.a(2.0F));
-      this.this$0.a.postDelayed(RedDotBubblePopupWindow.a(this.this$0), 3000L);
+      ((RedDotBubblePopupWindow)localObject).showAtLocation(localView, 0, arrayOfInt[0] + localView.getWidth() / 2 - i / 2, arrayOfInt[1] + this.a.getHeight() + ViewUtils.dip2px(2.0F));
+      this.this$0.a.postDelayed(RedDotBubblePopupWindow.c(this.this$0), 3000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

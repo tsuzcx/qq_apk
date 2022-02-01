@@ -8,30 +8,30 @@ public class QueryTask<Param, Result>
   implements Runnable
 {
   public QueryTask.Query<Param, Result> a;
-  public QueryCallback<Result> a;
-  private Param a;
+  public QueryCallback<Result> b;
+  private Param c;
   
   public QueryTask(QueryTask.Query<Param, Result> paramQuery, QueryCallback<Result> paramQueryCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqModelQueryTask$Query = paramQuery;
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeApiQueryCallback = paramQueryCallback;
+    this.a = paramQuery;
+    this.b = paramQueryCallback;
   }
   
   public void a(Param paramParam)
   {
-    this.jdField_a_of_type_JavaLangObject = paramParam;
+    this.c = paramParam;
     ThreadManager.excute(this, 32, null, true);
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelQueryTask$Query.a(this.jdField_a_of_type_JavaLangObject);
+    Object localObject = this.a.a(this.c);
     ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.QueryTask
  * JD-Core Version:    0.7.0.1
  */

@@ -111,7 +111,7 @@ public final class BrowserUtilKt
         boolean bool1;
         try
         {
-          bool1 = PackageUtil.a((Context)BaseApplication.context, (String)localObject);
+          bool1 = PackageUtil.d((Context)BaseApplication.context, (String)localObject);
         }
         catch (Exception localException)
         {
@@ -125,7 +125,7 @@ public final class BrowserUtilKt
         boolean bool3 = paramBrowserOpenBean.b().contains(localObject);
         if ((bool1) && (!bool3) && (!bool2))
         {
-          String str = PackageUtil.a((Context)BaseApplication.context, (String)localObject);
+          String str = PackageUtil.c((Context)BaseApplication.context, (String)localObject);
           if (str != null) {
             localList.add(new BrowserItem(str, "", "", "", (String)localObject, true));
           }
@@ -181,7 +181,7 @@ public final class BrowserUtilKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserUtilKt
  * JD-Core Version:    0.7.0.1
  */

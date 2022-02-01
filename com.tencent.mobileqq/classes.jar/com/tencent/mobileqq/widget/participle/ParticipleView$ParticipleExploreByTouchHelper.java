@@ -40,7 +40,7 @@ final class ParticipleView$ParticipleExploreByTouchHelper
     Object localObject = (View)this.a.get();
     if ((localObject instanceof ParticipleView))
     {
-      localObject = ParticipleView.b((ParticipleView)localObject);
+      localObject = ParticipleView.d((ParticipleView)localObject);
       int i = 0;
       int j = ((List)localObject).size();
       while (i < j)
@@ -58,7 +58,7 @@ final class ParticipleView$ParticipleExploreByTouchHelper
       paramBundle = (View)this.a.get();
       if ((paramBundle instanceof ParticipleView))
       {
-        paramBundle = ParticipleView.a((ParticipleView)paramBundle);
+        paramBundle = ParticipleView.e((ParticipleView)paramBundle);
         if (paramBundle != null)
         {
           paramBundle.invalidateVirtualView(paramInt1);
@@ -75,7 +75,7 @@ final class ParticipleView$ParticipleExploreByTouchHelper
     Object localObject = (View)this.a.get();
     if ((localObject instanceof ParticipleView))
     {
-      localObject = ParticipleView.b((ParticipleView)localObject);
+      localObject = ParticipleView.d((ParticipleView)localObject);
       if (paramInt < ((List)localObject).size()) {
         paramAccessibilityEvent.setContentDescription(((ParticipleView.ParticipleEntity)((List)localObject).get(paramInt)).a.toPlainText());
       }
@@ -87,7 +87,7 @@ final class ParticipleView$ParticipleExploreByTouchHelper
     Object localObject = (View)this.a.get();
     if ((localObject instanceof ParticipleView))
     {
-      localObject = ParticipleView.b((ParticipleView)localObject);
+      localObject = ParticipleView.d((ParticipleView)localObject);
       if ((paramInt < ((List)localObject).size()) && (paramInt != -2147483648))
       {
         localObject = (ParticipleView.ParticipleEntity)((List)localObject).get(paramInt);
@@ -104,7 +104,7 @@ final class ParticipleView$ParticipleExploreByTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.participle.ParticipleView.ParticipleExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

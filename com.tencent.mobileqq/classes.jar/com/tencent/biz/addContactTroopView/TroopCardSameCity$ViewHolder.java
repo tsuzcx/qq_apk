@@ -6,8 +6,8 @@ import android.widget.TextView;
 public class TroopCardSameCity$ViewHolder
 {
   public ImageView a;
-  public TextView a;
   public TextView b;
+  public TextView c;
 }
 
 

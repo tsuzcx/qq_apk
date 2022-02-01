@@ -15,21 +15,21 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class HiBoomRightIconClickListener
   implements IOnRightIconClickListener
 {
-  public void a(AIOContext paramAIOContext, View paramView)
-  {
-    if (((AIOZhituHelper)paramAIOContext.a(116)).a) {
-      HiBoomConstants.b.set(false);
-    }
-  }
-  
   public boolean a(AIOContext paramAIOContext, View paramView)
   {
-    return !HiBoomHelper.a(paramAIOContext.a(), paramAIOContext.a(), paramAIOContext.a().a().a().a().toString(), paramAIOContext.a().a);
+    return !HiBoomHelper.a(paramAIOContext.a(), paramAIOContext.b(), paramAIOContext.p().d().f().a().toString(), paramAIOContext.O().a);
+  }
+  
+  public void b(AIOContext paramAIOContext, View paramView)
+  {
+    if (((AIOZhituHelper)paramAIOContext.a(116)).a) {
+      HiBoomConstants.c.set(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.righticon.HiBoomRightIconClickListener
  * JD-Core Version:    0.7.0.1
  */

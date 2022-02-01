@@ -11,13 +11,13 @@ class IntimateInfoShareHelper$4
   public void onWXShareResp(BaseResp paramBaseResp)
   {
     if (paramBaseResp.errCode != 0) {
-      IntimateInfoShareHelper.a(this.a, 1, 2131693458);
+      IntimateInfoShareHelper.a(this.a, 1, 2131891007);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

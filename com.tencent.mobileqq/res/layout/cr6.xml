@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:layout_marginBottom="@dimen/mw"
+<com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout android:id="@id/c9k" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayn" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/oqm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="12" />
-    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/oqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/nd" android:maxWidth="350.0dip" android:maxLines="1" android:maxLength="20" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/g1o" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+</com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout>

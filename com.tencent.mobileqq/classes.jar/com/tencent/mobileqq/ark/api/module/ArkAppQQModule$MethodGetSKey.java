@@ -21,24 +21,24 @@ class ArkAppQQModule$MethodGetSKey
     paramVariantWrapper.SetString(ArkQQAPIIPCModule.b());
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
   
-  public String b()
+  public String c()
   {
     return null;
   }
   
-  public boolean b()
+  public boolean d()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.MethodGetSKey
  * JD-Core Version:    0.7.0.1
  */

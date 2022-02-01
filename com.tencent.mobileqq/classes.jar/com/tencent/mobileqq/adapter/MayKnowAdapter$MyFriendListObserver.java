@@ -105,13 +105,13 @@ final class MayKnowAdapter$MyFriendListObserver
       MayKnowAdapter localMayKnowAdapter = (MayKnowAdapter)this.a.get();
       if (localMayKnowAdapter != null)
       {
-        if (MayKnowAdapter.a(localMayKnowAdapter) != null)
+        if (MayKnowAdapter.c(localMayKnowAdapter) != null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
           }
           localMayKnowAdapter.notifyDataSetChanged();
-          MayKnowAdapter.a(localMayKnowAdapter).postDelayed(localMayKnowAdapter.a, 1600L);
+          MayKnowAdapter.c(localMayKnowAdapter).postDelayed(localMayKnowAdapter.h, 1600L);
         }
       }
       else {
@@ -122,7 +122,7 @@ final class MayKnowAdapter$MyFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

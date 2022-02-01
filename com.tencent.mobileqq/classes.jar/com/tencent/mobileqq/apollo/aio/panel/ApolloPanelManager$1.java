@@ -15,22 +15,22 @@ class ApolloPanelManager$1
   public void run()
   {
     Object localObject = this.this$0;
-    ((ApolloPanelManager)localObject).a(((ApolloPanelManager)localObject).a.get(), true, ApolloPanelManager.a(this.this$0));
-    if ((this.this$0.a.get() == 0) && (!ApolloPanelManager.a(this.this$0)) && (this.this$0.a() != null))
+    ((ApolloPanelManager)localObject).a(((ApolloPanelManager)localObject).c.get(), true, ApolloPanelManager.a(this.this$0));
+    if ((this.this$0.c.get() == 0) && (!ApolloPanelManager.a(this.this$0)) && (this.this$0.a() != null))
     {
       localObject = ((SpriteScriptManagerImpl)this.this$0.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteActionMessage();
       if (localObject != null) {
-        ((SpriteActionMessage)localObject).a(this.this$0.b);
+        ((SpriteActionMessage)localObject).a(this.this$0.e);
       }
     }
-    if ((ApolloPanelManager.a(this.this$0)) || (this.this$0.a.get() > 0)) {
+    if ((ApolloPanelManager.a(this.this$0)) || (this.this$0.c.get() > 0)) {
       ApolloPanelManager.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelManager.1
  * JD-Core Version:    0.7.0.1
  */

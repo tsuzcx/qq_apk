@@ -35,24 +35,23 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x7c.submsgtype0x7c.MsgBody;
 public class SecSpyFileManager
   implements Manager
 {
-  private static final String d = HardCodeUtil.a(2131713604);
-  private static final String e = HardCodeUtil.a(2131713603);
-  public Handler a;
-  public QQAppInterface a;
-  public UnifiedDebugManager a;
-  public UnifiedDebugReporter a;
-  private Runnable a;
-  public String a;
+  private static final String h = HardCodeUtil.a(2131911149);
+  private static final String i = HardCodeUtil.a(2131911148);
+  public String a = "https://logic.content.qq.com/public/file_upload2?";
   public String b = "https://qprostat.imtt.qq.com/";
   public String c = ".mgz";
+  public QQAppInterface d;
+  public UnifiedDebugManager e;
+  public UnifiedDebugReporter f;
+  public Handler g;
+  private Runnable j;
   
   public SecSpyFileManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "https://logic.content.qq.com/public/file_upload2?";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangRunnable = new SecSpyFileManager.1(this);
+    this.d = paramQQAppInterface;
+    this.j = new SecSpyFileManager.1(this);
     if (paramQQAppInterface.getApplication().getSharedPreferences("x5_proxy_setting", 4).getBoolean("is_in_proxy", false)) {
-      ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.getFileThreadHandler().post(this.j);
     }
   }
   
@@ -62,18 +61,18 @@ public class SecSpyFileManager
     // Byte code:
     //   0: aload_0
     //   1: aload_0
-    //   2: getfield 101	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
+    //   2: getfield 106	com/tencent/mobileqq/secspy/SecSpyFileManager:e	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
     //   5: aload_1
-    //   6: invokevirtual 106	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   9: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   6: invokevirtual 111	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   12: astore 9
     //   14: aload 9
     //   16: ifnull +851 -> 867
     //   19: aload 9
-    //   21: invokevirtual 115	java/io/File:exists	()Z
+    //   21: invokevirtual 120	java/io/File:exists	()Z
     //   24: ifeq +843 -> 867
     //   27: aload 9
-    //   29: invokevirtual 118	java/io/File:isFile	()Z
+    //   29: invokevirtual 123	java/io/File:isFile	()Z
     //   32: ifeq +835 -> 867
     //   35: aload_0
     //   36: lload_3
@@ -83,10 +82,10 @@ public class SecSpyFileManager
     //   42: dup
     //   43: iconst_0
     //   44: aload 9
-    //   46: invokevirtual 122	java/io/File:length	()J
-    //   49: invokestatic 128	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   46: invokevirtual 127	java/io/File:length	()J
+    //   49: invokestatic 133	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   52: aastore
-    //   53: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   53: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   56: aload_0
     //   57: lload_3
     //   58: iconst_3
@@ -95,49 +94,49 @@ public class SecSpyFileManager
     //   63: dup
     //   64: iconst_0
     //   65: bipush 100
-    //   67: invokestatic 136	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   67: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   70: aastore
-    //   71: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
-    //   74: new 138	java/util/HashMap
+    //   71: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   74: new 143	java/util/HashMap
     //   77: dup
-    //   78: invokespecial 139	java/util/HashMap:<init>	()V
+    //   78: invokespecial 144	java/util/HashMap:<init>	()V
     //   81: astore 10
     //   83: aload 10
-    //   85: ldc 141
+    //   85: ldc 146
     //   87: aload_2
-    //   88: invokeinterface 147 3 0
+    //   88: invokeinterface 152 3 0
     //   93: pop
     //   94: aload 10
-    //   96: ldc 149
-    //   98: ldc 151
-    //   100: invokeinterface 147 3 0
+    //   96: ldc 154
+    //   98: ldc 156
+    //   100: invokeinterface 152 3 0
     //   105: pop
     //   106: aload 10
-    //   108: ldc 153
-    //   110: ldc 155
-    //   112: invokeinterface 147 3 0
+    //   108: ldc 158
+    //   110: ldc 160
+    //   112: invokeinterface 152 3 0
     //   117: pop
-    //   118: new 157	java/lang/StringBuilder
+    //   118: new 162	java/lang/StringBuilder
     //   121: dup
-    //   122: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   122: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   125: astore_1
     //   126: aload_1
-    //   127: ldc 160
-    //   129: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: ldc 165
+    //   129: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: pop
     //   133: aload_1
     //   134: aload_2
-    //   135: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: pop
     //   139: aload_1
-    //   140: ldc 166
-    //   142: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: ldc 171
+    //   142: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload 10
-    //   148: ldc 168
+    //   148: ldc 173
     //   150: aload_1
-    //   151: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokeinterface 147 3 0
+    //   151: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokeinterface 152 3 0
     //   159: pop
     //   160: aconst_null
     //   161: astore 7
@@ -145,13 +144,13 @@ public class SecSpyFileManager
     //   164: astore_2
     //   165: aconst_null
     //   166: astore 8
-    //   168: new 174	java/net/URL
+    //   168: new 179	java/net/URL
     //   171: dup
     //   172: aload_0
-    //   173: getfield 43	com/tencent/mobileqq/secspy/SecSpyFileManager:b	Ljava/lang/String;
-    //   176: invokespecial 177	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   179: invokevirtual 181	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   182: checkcast 183	java/net/HttpURLConnection
+    //   173: getfield 48	com/tencent/mobileqq/secspy/SecSpyFileManager:b	Ljava/lang/String;
+    //   176: invokespecial 182	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   179: invokevirtual 186	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   182: checkcast 188	java/net/HttpURLConnection
     //   185: astore_1
     //   186: aload_1
     //   187: astore_2
@@ -159,43 +158,43 @@ public class SecSpyFileManager
     //   190: astore 5
     //   192: aload_1
     //   193: iconst_1
-    //   194: invokevirtual 187	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   194: invokevirtual 192	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   197: aload_1
     //   198: astore_2
     //   199: aload 7
     //   201: astore 5
     //   203: aload_1
     //   204: iconst_1
-    //   205: invokevirtual 190	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   205: invokevirtual 195	java/net/HttpURLConnection:setDoInput	(Z)V
     //   208: aload_1
     //   209: astore_2
     //   210: aload 7
     //   212: astore 5
     //   214: aload_1
     //   215: iconst_0
-    //   216: invokevirtual 193	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   216: invokevirtual 198	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   219: aload_1
     //   220: astore_2
     //   221: aload 7
     //   223: astore 5
     //   225: aload_1
-    //   226: ldc 195
-    //   228: invokevirtual 198	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   226: ldc 200
+    //   228: invokevirtual 203	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   231: aload_1
     //   232: astore_2
     //   233: aload 7
     //   235: astore 5
-    //   237: new 157	java/lang/StringBuilder
+    //   237: new 162	java/lang/StringBuilder
     //   240: dup
-    //   241: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   241: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   244: astore 11
     //   246: aload_1
     //   247: astore_2
     //   248: aload 7
     //   250: astore 5
     //   252: aload 11
-    //   254: ldc 200
-    //   256: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: ldc 205
+    //   256: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: pop
     //   260: aload_1
     //   261: astore_2
@@ -203,56 +202,56 @@ public class SecSpyFileManager
     //   264: astore 5
     //   266: aload 11
     //   268: aload 9
-    //   270: invokevirtual 122	java/io/File:length	()J
-    //   273: invokevirtual 203	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   270: invokevirtual 127	java/io/File:length	()J
+    //   273: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   276: pop
     //   277: aload_1
     //   278: astore_2
     //   279: aload 7
     //   281: astore 5
     //   283: aload_1
-    //   284: ldc 205
+    //   284: ldc 210
     //   286: aload 11
-    //   288: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   291: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   288: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   294: aload_1
     //   295: astore_2
     //   296: aload 7
     //   298: astore 5
     //   300: aload_1
-    //   301: ldc 211
-    //   303: ldc 213
-    //   305: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: ldc 216
+    //   303: ldc 218
+    //   305: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   308: aload_1
     //   309: astore_2
     //   310: aload 7
     //   312: astore 5
     //   314: aload_1
-    //   315: ldc 215
-    //   317: ldc 217
-    //   319: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: ldc 220
+    //   317: ldc 222
+    //   319: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   322: aload_1
     //   323: astore_2
     //   324: aload 7
     //   326: astore 5
     //   328: aload 10
-    //   330: invokeinterface 221 1 0
-    //   335: invokeinterface 227 1 0
+    //   330: invokeinterface 226 1 0
+    //   335: invokeinterface 232 1 0
     //   340: astore 11
     //   342: aload_1
     //   343: astore_2
     //   344: aload 7
     //   346: astore 5
     //   348: aload 11
-    //   350: invokeinterface 232 1 0
+    //   350: invokeinterface 237 1 0
     //   355: ifeq +48 -> 403
     //   358: aload_1
     //   359: astore_2
     //   360: aload 7
     //   362: astore 5
     //   364: aload 11
-    //   366: invokeinterface 236 1 0
-    //   371: checkcast 238	java/lang/String
+    //   366: invokeinterface 241 1 0
+    //   371: checkcast 243	java/lang/String
     //   374: astore 12
     //   376: aload_1
     //   377: astore_2
@@ -262,24 +261,24 @@ public class SecSpyFileManager
     //   383: aload 12
     //   385: aload 10
     //   387: aload 12
-    //   389: invokeinterface 242 2 0
-    //   394: checkcast 238	java/lang/String
-    //   397: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   389: invokeinterface 247 2 0
+    //   394: checkcast 243	java/lang/String
+    //   397: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   400: goto -58 -> 342
     //   403: aload_1
     //   404: astore_2
     //   405: aload 7
     //   407: astore 5
     //   409: aload_1
-    //   410: invokevirtual 246	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   410: invokevirtual 251	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   413: astore 7
     //   415: sipush 10240
     //   418: newarray byte
     //   420: astore 8
-    //   422: new 248	java/io/FileInputStream
+    //   422: new 253	java/io/FileInputStream
     //   425: dup
     //   426: aload 9
-    //   428: invokespecial 251	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   428: invokespecial 256	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   431: astore 5
     //   433: aload 5
     //   435: astore_2
@@ -287,7 +286,7 @@ public class SecSpyFileManager
     //   438: aload 8
     //   440: iconst_0
     //   441: sipush 10240
-    //   444: invokevirtual 255	java/io/FileInputStream:read	([BII)I
+    //   444: invokevirtual 260	java/io/FileInputStream:read	([BII)I
     //   447: istore 6
     //   449: iload 6
     //   451: iconst_m1
@@ -298,16 +297,16 @@ public class SecSpyFileManager
     //   460: aload 8
     //   462: iconst_0
     //   463: iload 6
-    //   465: invokevirtual 261	java/io/OutputStream:write	([BII)V
+    //   465: invokevirtual 266	java/io/OutputStream:write	([BII)V
     //   468: goto -35 -> 433
     //   471: aload 5
-    //   473: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   473: invokevirtual 269	java/io/FileInputStream:close	()V
     //   476: goto +8 -> 484
     //   479: astore_2
     //   480: aload_2
-    //   481: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   481: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   484: aload_1
-    //   485: invokevirtual 271	java/net/HttpURLConnection:getResponseCode	()I
+    //   485: invokevirtual 276	java/net/HttpURLConnection:getResponseCode	()I
     //   488: istore 6
     //   490: iload 6
     //   492: sipush 200
@@ -317,19 +316,19 @@ public class SecSpyFileManager
     //   500: iconst_0
     //   501: iconst_0
     //   502: anewarray 4	java/lang/Object
-    //   505: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   505: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   508: goto +43 -> 551
-    //   511: new 157	java/lang/StringBuilder
+    //   511: new 162	java/lang/StringBuilder
     //   514: dup
-    //   515: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   515: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   518: astore_2
     //   519: aload_2
-    //   520: ldc_w 273
-    //   523: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   520: ldc_w 278
+    //   523: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   526: pop
     //   527: aload_2
     //   528: iload 6
-    //   530: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   530: invokevirtual 281	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   533: pop
     //   534: aload_0
     //   535: lload_3
@@ -339,17 +338,17 @@ public class SecSpyFileManager
     //   541: dup
     //   542: iconst_0
     //   543: aload_2
-    //   544: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   544: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   547: aastore
-    //   548: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   548: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   551: aload 7
     //   553: ifnull +8 -> 561
     //   556: aload 7
-    //   558: invokevirtual 277	java/io/OutputStream:close	()V
+    //   558: invokevirtual 282	java/io/OutputStream:close	()V
     //   561: aload_1
     //   562: ifnull +257 -> 819
     //   565: aload_1
-    //   566: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   566: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   569: goto +250 -> 819
     //   572: astore 8
     //   574: goto +15 -> 589
@@ -362,22 +361,22 @@ public class SecSpyFileManager
     //   587: astore 5
     //   589: aload 5
     //   591: astore_2
-    //   592: new 157	java/lang/StringBuilder
+    //   592: new 162	java/lang/StringBuilder
     //   595: dup
-    //   596: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   596: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   599: astore 10
     //   601: aload 5
     //   603: astore_2
     //   604: aload 10
-    //   606: ldc_w 282
-    //   609: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   606: ldc_w 287
+    //   609: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   612: pop
     //   613: aload 5
     //   615: astore_2
     //   616: aload 10
     //   618: aload 8
-    //   620: invokevirtual 285	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   623: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   623: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: pop
     //   627: aload 5
     //   629: astore_2
@@ -389,39 +388,39 @@ public class SecSpyFileManager
     //   637: dup
     //   638: iconst_0
     //   639: aload 10
-    //   641: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   641: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   644: aastore
-    //   645: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   645: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   648: aload 5
     //   650: ifnull +16 -> 666
     //   653: aload 5
-    //   655: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   655: invokevirtual 269	java/io/FileInputStream:close	()V
     //   658: goto +8 -> 666
     //   661: astore_2
     //   662: aload_2
-    //   663: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   663: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   666: aload 7
     //   668: ifnull +11 -> 679
     //   671: aload 7
-    //   673: invokevirtual 277	java/io/OutputStream:close	()V
+    //   673: invokevirtual 282	java/io/OutputStream:close	()V
     //   676: goto +3 -> 679
     //   679: aload_1
     //   680: ifnull +12 -> 692
     //   683: aload_1
-    //   684: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   684: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   687: return
     //   688: aload_1
-    //   689: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   689: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   692: return
     //   693: astore 5
     //   695: aload_2
     //   696: ifnull +15 -> 711
     //   699: aload_2
-    //   700: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   700: invokevirtual 269	java/io/FileInputStream:close	()V
     //   703: goto +8 -> 711
     //   706: astore_2
     //   707: aload_2
-    //   708: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   708: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   711: aload 5
     //   713: athrow
     //   714: astore 5
@@ -447,11 +446,11 @@ public class SecSpyFileManager
     //   750: astore_2
     //   751: aload 8
     //   753: astore 5
-    //   755: ldc_w 287
+    //   755: ldc_w 292
     //   758: iconst_1
-    //   759: ldc_w 289
+    //   759: ldc_w 294
     //   762: aload 7
-    //   764: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   764: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   767: aload_1
     //   768: astore_2
     //   769: aload 8
@@ -464,23 +463,23 @@ public class SecSpyFileManager
     //   780: dup
     //   781: iconst_0
     //   782: aload 7
-    //   784: invokevirtual 295	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   784: invokevirtual 300	java/io/IOException:getMessage	()Ljava/lang/String;
     //   787: aastore
-    //   788: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   788: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   791: aload 8
     //   793: ifnull +11 -> 804
     //   796: aload 8
-    //   798: invokevirtual 277	java/io/OutputStream:close	()V
+    //   798: invokevirtual 282	java/io/OutputStream:close	()V
     //   801: goto +3 -> 804
     //   804: aload_1
     //   805: ifnull +14 -> 819
     //   808: aload_1
-    //   809: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   809: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   812: goto +7 -> 819
     //   815: aload_1
-    //   816: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   816: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   819: aload 9
-    //   821: invokevirtual 298	java/io/File:delete	()Z
+    //   821: invokevirtual 303	java/io/File:delete	()Z
     //   824: pop
     //   825: return
     //   826: astore_1
@@ -493,15 +492,15 @@ public class SecSpyFileManager
     //   836: aload 7
     //   838: ifnull +11 -> 849
     //   841: aload 7
-    //   843: invokevirtual 277	java/io/OutputStream:close	()V
+    //   843: invokevirtual 282	java/io/OutputStream:close	()V
     //   846: goto +3 -> 849
     //   849: aload_1
     //   850: ifnull +14 -> 864
     //   853: aload_1
-    //   854: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   854: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   857: goto +7 -> 864
     //   860: aload_1
-    //   861: invokevirtual 267	java/io/IOException:printStackTrace	()V
+    //   861: invokevirtual 272	java/io/IOException:printStackTrace	()V
     //   864: aload 5
     //   866: athrow
     //   867: aload_0
@@ -511,9 +510,9 @@ public class SecSpyFileManager
     //   871: anewarray 4	java/lang/Object
     //   874: dup
     //   875: iconst_0
-    //   876: ldc_w 300
+    //   876: ldc_w 305
     //   879: aastore
-    //   880: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   880: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   883: return
     //   884: astore_1
     //   885: goto -197 -> 688
@@ -528,7 +527,7 @@ public class SecSpyFileManager
     //   0	896	2	paramString2	String
     //   0	896	3	paramLong	long
     //   0	896	5	paramString3	String
-    //   447	82	6	i	int
+    //   447	82	6	k	int
     //   161	565	7	localObject1	Object
     //   730	1	7	localIOException1	java.io.IOException
     //   740	1	7	str1	String
@@ -649,7 +648,7 @@ public class SecSpyFileManager
         localObject2 = localObject1;
         localObject3 = ((String)localObject3).substring(((String)localObject3).indexOf("/") + 1);
         localObject2 = localObject1;
-        Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
+        Context localContext = this.d.getApplication().getApplicationContext();
         localObject2 = localObject1;
         if (paramString.equals("files"))
         {
@@ -668,7 +667,7 @@ public class SecSpyFileManager
           localObject2 = localObject1;
           paramString = paramString.substring(4);
           localObject2 = localObject1;
-          return new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getDir(paramString, 0), (String)localObject3);
+          return new File(this.d.getApplication().getApplicationContext().getDir(paramString, 0), (String)localObject3);
         }
         localObject2 = localObject1;
         return new File((String)localObject1);
@@ -741,14 +740,14 @@ public class SecSpyFileManager
   public List<String> a(JSONArray paramJSONArray)
   {
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
+    int k = 0;
+    while (k < paramJSONArray.length())
     {
-      String str = paramJSONArray.optString(i);
+      String str = paramJSONArray.optString(k);
       if (!TextUtils.isEmpty(str)) {
         localArrayList.add(str);
       }
-      i += 1;
+      k += 1;
     }
     return localArrayList;
   }
@@ -765,7 +764,7 @@ public class SecSpyFileManager
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramLong);
+    this.e.a(this.d.getApplication(), paramLong);
   }
   
   public void a(long paramLong, int paramInt, Object... paramVarArgs)
@@ -785,7 +784,7 @@ public class SecSpyFileManager
       if (paramVarArgs.length > 0) {
         localJSONObject.put("percent", paramVarArgs[0]);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter.a(paramLong, paramInt, localJSONObject);
+      this.f.a(paramLong, paramInt, localJSONObject);
       return;
     }
     catch (JSONException paramVarArgs)
@@ -797,15 +796,15 @@ public class SecSpyFileManager
     if (paramVarArgs.length > 0) {
       localJSONObject.put("sizes", paramVarArgs[0]);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter.a(paramLong, paramInt, localJSONObject);
+    this.f.a(paramLong, paramInt, localJSONObject);
     return;
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter.a(paramLong, paramInt, null);
+    this.f.a(paramLong, paramInt, null);
     return;
     localJSONObject = new JSONObject();
     if (paramVarArgs.length > 0) {
       localJSONObject.put("msg", paramVarArgs[0]);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter.a(paramLong, paramInt, localJSONObject);
+    this.f.a(paramLong, paramInt, localJSONObject);
     return;
   }
   
@@ -818,11 +817,11 @@ public class SecSpyFileManager
   {
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    while (i < paramList.size())
+    int k = 0;
+    while (k < paramList.size())
     {
-      localJSONArray.put(((UnifiedTraceRouter.TraceRouteInfo)paramList.get(i)).a());
-      i += 1;
+      localJSONArray.put(((UnifiedTraceRouter.TraceRouteInfo)paramList.get(k)).a());
+      k += 1;
     }
     try
     {
@@ -832,8 +831,8 @@ public class SecSpyFileManager
         String str = (String)localIterator.next();
         localJSONObject.put(str, paramMap.get(str));
       }
-      localJSONObject.put("dns", this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a());
-      localJSONObject.put("ip", this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.d(paramString));
+      localJSONObject.put("dns", this.e.b());
+      localJSONObject.put("ip", this.e.d(paramString));
       localJSONObject.put("traceRoute", localJSONArray);
       if (QLog.isColorLevel()) {
         QLog.d("SecSpyFileManager", 2, localJSONObject.toString());
@@ -849,12 +848,12 @@ public class SecSpyFileManager
   
   public void a(long paramLong, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter.a(paramLong, 0, paramJSONObject);
+    this.f.a(paramLong, 0, paramJSONObject);
   }
   
   public void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString1, paramInt, paramLong1, paramLong2, paramString2);
+    this.e.c(this.d.getApp(), paramString1, paramInt, paramLong1, paramLong2, paramString2);
   }
   
   public void a(String paramString1, long paramLong, String paramString2, boolean paramBoolean)
@@ -863,7 +862,7 @@ public class SecSpyFileManager
     if ((localFile.exists()) && (localFile.isFile()))
     {
       a(paramLong, 2, new Object[] { Long.valueOf(localFile.length()) });
-      if (a(paramString1, paramLong, paramString2, false))
+      if (b(paramString1, paramLong, paramString2, false))
       {
         if (paramBoolean)
         {
@@ -885,7 +884,7 @@ public class SecSpyFileManager
   
   public void a(List<String> paramList, long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramLong)) {
+    if (this.e.a(this.d.getApplication(), paramLong)) {
       b(paramList, paramLong, paramString);
     }
   }
@@ -899,17 +898,17 @@ public class SecSpyFileManager
       }
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    if (this.g == null)
     {
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("SecSpyFile", 0);
       localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-      this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager = new UnifiedDebugManager(new SnapshotResultReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsHandler));
+      this.g = new Handler(localHandlerThread.getLooper());
+      this.e = new UnifiedDebugManager(new SnapshotResultReceiver(this.d, this.g));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter = new UnifiedDebugReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (this.f == null) {
+      this.f = new UnifiedDebugReporter(this.d);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SecSpyFileManager.2(this, paramMsgBody, paramInt));
+    this.g.post(new SecSpyFileManager.2(this, paramMsgBody, paramInt));
   }
   
   /* Error */
@@ -926,64 +925,64 @@ public class SecSpyFileManager
     //   9: istore 5
     //   11: iconst_0
     //   12: istore 4
-    //   14: new 248	java/io/FileInputStream
+    //   14: new 253	java/io/FileInputStream
     //   17: dup
     //   18: aload_1
-    //   19: invokespecial 251	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 256	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   22: astore 6
-    //   24: new 157	java/lang/StringBuilder
+    //   24: new 162	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   28: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   31: astore 8
     //   33: aload 8
     //   35: aload_1
-    //   36: invokevirtual 551	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   39: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 556	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   39: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload 8
     //   45: aload_0
-    //   46: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   49: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   49: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: pop
     //   53: aload_0
     //   54: aload 8
-    //   56: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   56: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   62: astore_1
     //   63: aload_1
     //   64: ifnonnull +56 -> 120
     //   67: aload 6
-    //   69: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   69: invokevirtual 269	java/io/FileInputStream:close	()V
     //   72: goto +21 -> 93
     //   75: astore_1
-    //   76: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   76: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   79: ifeq +14 -> 93
-    //   82: ldc_w 287
+    //   82: ldc_w 292
     //   85: iconst_2
-    //   86: ldc_w 553
+    //   86: ldc_w 558
     //   89: aload_1
-    //   90: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   93: aload 6
-    //   95: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   95: invokevirtual 269	java/io/FileInputStream:close	()V
     //   98: iconst_0
     //   99: ireturn
     //   100: astore_1
-    //   101: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   101: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   104: ifeq +14 -> 118
-    //   107: ldc_w 287
+    //   107: ldc_w 292
     //   110: iconst_2
-    //   111: ldc_w 553
+    //   111: ldc_w 558
     //   114: aload_1
-    //   115: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   115: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   118: iconst_0
     //   119: ireturn
-    //   120: new 555	java/util/zip/GZIPOutputStream
+    //   120: new 560	java/util/zip/GZIPOutputStream
     //   123: dup
-    //   124: new 557	java/io/FileOutputStream
+    //   124: new 562	java/io/FileOutputStream
     //   127: dup
     //   128: aload_1
-    //   129: invokespecial 558	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   132: invokespecial 561	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   129: invokespecial 563	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   132: invokespecial 566	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   135: astore_1
     //   136: iload 4
     //   138: istore_3
@@ -996,7 +995,7 @@ public class SecSpyFileManager
     //   151: aload 7
     //   153: iconst_0
     //   154: sipush 10240
-    //   157: invokevirtual 255	java/io/FileInputStream:read	([BII)I
+    //   157: invokevirtual 260	java/io/FileInputStream:read	([BII)I
     //   160: istore_2
     //   161: iload_2
     //   162: iconst_m1
@@ -1007,7 +1006,7 @@ public class SecSpyFileManager
     //   170: aload 7
     //   172: iconst_0
     //   173: iload_2
-    //   174: invokevirtual 562	java/util/zip/GZIPOutputStream:write	([BII)V
+    //   174: invokevirtual 567	java/util/zip/GZIPOutputStream:write	([BII)V
     //   177: goto -31 -> 146
     //   180: iconst_1
     //   181: istore_3
@@ -1016,23 +1015,23 @@ public class SecSpyFileManager
     //   185: iconst_1
     //   186: istore 5
     //   188: aload_1
-    //   189: invokevirtual 565	java/util/zip/GZIPOutputStream:flush	()V
+    //   189: invokevirtual 570	java/util/zip/GZIPOutputStream:flush	()V
     //   192: aload 6
-    //   194: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   194: invokevirtual 269	java/io/FileInputStream:close	()V
     //   197: aload_1
-    //   198: invokevirtual 566	java/util/zip/GZIPOutputStream:close	()V
+    //   198: invokevirtual 571	java/util/zip/GZIPOutputStream:close	()V
     //   201: iconst_1
     //   202: ireturn
     //   203: astore_1
-    //   204: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   204: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   207: ifeq +130 -> 337
     //   210: iload 5
     //   212: istore_3
-    //   213: ldc_w 287
+    //   213: ldc_w 292
     //   216: iconst_2
-    //   217: ldc_w 553
+    //   217: ldc_w 558
     //   220: aload_1
-    //   221: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   221: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   224: iload_3
     //   225: ireturn
     //   226: astore 7
@@ -1064,29 +1063,29 @@ public class SecSpyFileManager
     //   276: istore_3
     //   277: aload 8
     //   279: astore 6
-    //   281: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   281: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   284: ifeq +15 -> 299
-    //   287: ldc_w 287
+    //   287: ldc_w 292
     //   290: iconst_2
-    //   291: ldc_w 553
+    //   291: ldc_w 558
     //   294: aload 7
-    //   296: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   296: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   299: aload 6
     //   301: ifnull +11 -> 312
     //   304: aload 6
-    //   306: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   306: invokevirtual 269	java/io/FileInputStream:close	()V
     //   309: goto +3 -> 312
     //   312: iload_3
     //   313: istore 4
     //   315: aload_1
     //   316: ifnull +21 -> 337
     //   319: aload_1
-    //   320: invokevirtual 566	java/util/zip/GZIPOutputStream:close	()V
+    //   320: invokevirtual 571	java/util/zip/GZIPOutputStream:close	()V
     //   323: iload_3
     //   324: ireturn
     //   325: iload_3
     //   326: istore 4
-    //   328: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   328: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   331: ifeq +6 -> 337
     //   334: goto -121 -> 213
     //   337: iload 4
@@ -1095,20 +1094,20 @@ public class SecSpyFileManager
     //   342: aload 6
     //   344: ifnull +11 -> 355
     //   347: aload 6
-    //   349: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   349: invokevirtual 269	java/io/FileInputStream:close	()V
     //   352: goto +3 -> 355
     //   355: aload_1
     //   356: ifnull +27 -> 383
     //   359: aload_1
-    //   360: invokevirtual 566	java/util/zip/GZIPOutputStream:close	()V
+    //   360: invokevirtual 571	java/util/zip/GZIPOutputStream:close	()V
     //   363: goto +20 -> 383
-    //   366: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   366: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   369: ifeq +14 -> 383
-    //   372: ldc_w 287
+    //   372: ldc_w 292
     //   375: iconst_2
-    //   376: ldc_w 553
+    //   376: ldc_w 558
     //   379: aload_1
-    //   380: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   380: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   383: goto +6 -> 389
     //   386: aload 7
     //   388: athrow
@@ -1121,7 +1120,7 @@ public class SecSpyFileManager
     //   start	length	slot	name	signature
     //   0	400	0	this	SecSpyFileManager
     //   0	400	1	paramFile	File
-    //   160	14	2	i	int
+    //   160	14	2	k	int
     //   7	319	3	bool1	boolean
     //   12	326	4	bool2	boolean
     //   9	266	5	bool3	boolean
@@ -1167,43 +1166,50 @@ public class SecSpyFileManager
     //   359	363	396	java/lang/Exception
   }
   
+  public void b(List<String> paramList, long paramLong, String paramString)
+  {
+    a(this.e.a(paramList), paramLong, paramString, false);
+    UnifiedFileUtil.a(paramList);
+    paramList.clear();
+  }
+  
   /* Error */
-  public boolean a(String paramString1, long paramLong, String paramString2, boolean paramBoolean)
+  public boolean b(String paramString1, long paramLong, String paramString2, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_1
     //   1: astore 13
     //   3: aload_1
-    //   4: invokestatic 412	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: invokestatic 417	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifeq +5 -> 12
     //   10: iconst_0
     //   11: ireturn
-    //   12: new 568	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo
+    //   12: new 583	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo
     //   15: dup
     //   16: aload_0
-    //   17: invokespecial 569	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;)V
+    //   17: invokespecial 584	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;)V
     //   20: astore 18
     //   22: aload_0
     //   23: aload_1
-    //   24: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   24: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   27: astore 16
     //   29: aload 16
     //   31: ifnull +1800 -> 1831
     //   34: aload 16
-    //   36: invokevirtual 115	java/io/File:exists	()Z
+    //   36: invokevirtual 120	java/io/File:exists	()Z
     //   39: ifeq +1792 -> 1831
     //   42: aload 16
-    //   44: invokevirtual 118	java/io/File:isFile	()Z
+    //   44: invokevirtual 123	java/io/File:isFile	()Z
     //   47: ifne +6 -> 53
     //   50: goto +1781 -> 1831
-    //   53: invokestatic 574	com/tencent/biz/common/util/HttpUtil:getNetWorkType	()I
+    //   53: invokestatic 589	com/tencent/biz/common/util/HttpUtil:getNetWorkType	()I
     //   56: iconst_1
     //   57: if_icmpne +2280 -> 2337
-    //   60: ldc2_w 575
+    //   60: ldc2_w 590
     //   63: lstore 8
     //   65: goto +3 -> 68
     //   68: aload 16
-    //   70: invokevirtual 122	java/io/File:length	()J
+    //   70: invokevirtual 127	java/io/File:length	()J
     //   73: lstore 10
     //   75: lload 10
     //   77: lload 8
@@ -1216,73 +1222,73 @@ public class SecSpyFileManager
     //   87: anewarray 4	java/lang/Object
     //   90: dup
     //   91: iconst_0
-    //   92: getstatic 27	com/tencent/mobileqq/secspy/SecSpyFileManager:d	Ljava/lang/String;
+    //   92: getstatic 32	com/tencent/mobileqq/secspy/SecSpyFileManager:h	Ljava/lang/String;
     //   95: aastore
-    //   96: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
-    //   99: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   99: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   102: ifeq +44 -> 146
-    //   105: new 157	java/lang/StringBuilder
+    //   105: new 162	java/lang/StringBuilder
     //   108: dup
-    //   109: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   109: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   112: astore 4
     //   114: aload 4
-    //   116: ldc_w 578
-    //   119: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: ldc_w 593
+    //   119: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: pop
     //   123: aload 4
     //   125: aload 16
-    //   127: invokevirtual 122	java/io/File:length	()J
-    //   130: invokevirtual 203	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 127	java/io/File:length	()J
+    //   130: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   133: pop
-    //   134: ldc_w 287
+    //   134: ldc_w 292
     //   137: iconst_2
     //   138: aload 4
-    //   140: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   140: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokestatic 484	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   146: iload 5
     //   148: ifeq +52 -> 200
-    //   151: new 157	java/lang/StringBuilder
+    //   151: new 162	java/lang/StringBuilder
     //   154: dup
-    //   155: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   155: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   158: astore_1
     //   159: aload_1
     //   160: aload 13
-    //   162: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload_1
     //   167: aload_0
-    //   168: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   171: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   171: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload_0
     //   176: aload_1
-    //   177: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   177: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   183: astore_1
     //   184: aload_1
     //   185: ifnull +15 -> 200
     //   188: aload_1
-    //   189: invokevirtual 115	java/io/File:exists	()Z
+    //   189: invokevirtual 120	java/io/File:exists	()Z
     //   192: ifeq +8 -> 200
     //   195: aload_1
-    //   196: invokevirtual 298	java/io/File:delete	()Z
+    //   196: invokevirtual 303	java/io/File:delete	()Z
     //   199: pop
     //   200: aload 18
     //   202: iconst_1
-    //   203: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   203: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   206: pop
     //   207: iconst_0
     //   208: ireturn
     //   209: astore_1
-    //   210: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   210: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   213: ifeq +14 -> 227
-    //   216: ldc_w 287
+    //   216: ldc_w 292
     //   219: iconst_2
-    //   220: ldc_w 583
+    //   220: ldc_w 598
     //   223: aload_1
-    //   224: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   224: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   227: aload_1
-    //   228: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   228: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   231: iconst_0
     //   232: ireturn
     //   233: astore 13
@@ -1310,10 +1316,10 @@ public class SecSpyFileManager
     //   271: aload 13
     //   273: aload 13
     //   275: bipush 47
-    //   277: invokevirtual 587	java/lang/String:lastIndexOf	(I)I
+    //   277: invokevirtual 602	java/lang/String:lastIndexOf	(I)I
     //   280: iconst_1
     //   281: iadd
-    //   282: invokevirtual 318	java/lang/String:substring	(I)Ljava/lang/String;
+    //   282: invokevirtual 323	java/lang/String:substring	(I)Ljava/lang/String;
     //   285: astore 17
     //   287: aload 16
     //   289: astore 14
@@ -1321,254 +1327,254 @@ public class SecSpyFileManager
     //   293: astore 15
     //   295: iload 5
     //   297: ifeq +336 -> 633
-    //   300: new 157	java/lang/StringBuilder
+    //   300: new 162	java/lang/StringBuilder
     //   303: dup
-    //   304: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   304: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   307: astore 14
     //   309: aload 14
     //   311: aload 17
-    //   313: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   313: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: pop
     //   317: aload 14
-    //   319: ldc_w 589
-    //   322: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   319: ldc_w 604
+    //   322: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: pop
     //   326: aload 14
-    //   328: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   331: astore 15
     //   333: aload_0
     //   334: aload 16
-    //   336: invokevirtual 591	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/io/File;)Z
+    //   336: invokevirtual 606	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/io/File;)Z
     //   339: ifeq +207 -> 546
-    //   342: new 157	java/lang/StringBuilder
+    //   342: new 162	java/lang/StringBuilder
     //   345: dup
-    //   346: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   346: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   349: astore 14
     //   351: aload 14
     //   353: aload 13
-    //   355: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   358: pop
     //   359: aload 14
     //   361: aload_0
-    //   362: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   365: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   362: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   365: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   368: pop
     //   369: aload_0
     //   370: aload 14
-    //   372: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   375: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   372: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   375: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   378: astore 16
     //   380: aload 16
     //   382: ifnull +23 -> 405
     //   385: aload 16
-    //   387: invokevirtual 115	java/io/File:exists	()Z
+    //   387: invokevirtual 120	java/io/File:exists	()Z
     //   390: ifeq +15 -> 405
     //   393: aload 16
     //   395: astore 14
     //   397: aload 16
-    //   399: invokevirtual 118	java/io/File:isFile	()Z
+    //   399: invokevirtual 123	java/io/File:isFile	()Z
     //   402: ifne +231 -> 633
-    //   405: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   405: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   408: ifeq +51 -> 459
-    //   411: new 157	java/lang/StringBuilder
+    //   411: new 162	java/lang/StringBuilder
     //   414: dup
-    //   415: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   415: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   418: astore 4
     //   420: aload 4
-    //   422: ldc_w 593
-    //   425: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   422: ldc_w 608
+    //   425: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   428: pop
     //   429: aload 4
     //   431: aload 13
-    //   433: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   436: pop
     //   437: aload 4
     //   439: aload_0
-    //   440: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   443: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   440: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   443: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: pop
-    //   447: ldc_w 287
+    //   447: ldc_w 292
     //   450: iconst_2
     //   451: aload 4
-    //   453: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   456: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   453: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   456: invokestatic 484	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   459: iload 5
     //   461: ifeq +52 -> 513
-    //   464: new 157	java/lang/StringBuilder
+    //   464: new 162	java/lang/StringBuilder
     //   467: dup
-    //   468: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   468: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   471: astore_1
     //   472: aload_1
     //   473: aload 13
-    //   475: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   478: pop
     //   479: aload_1
     //   480: aload_0
-    //   481: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   484: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   481: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   484: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: pop
     //   488: aload_0
     //   489: aload_1
-    //   490: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   493: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   490: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   493: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   496: astore_1
     //   497: aload_1
     //   498: ifnull +15 -> 513
     //   501: aload_1
-    //   502: invokevirtual 115	java/io/File:exists	()Z
+    //   502: invokevirtual 120	java/io/File:exists	()Z
     //   505: ifeq +8 -> 513
     //   508: aload_1
-    //   509: invokevirtual 298	java/io/File:delete	()Z
+    //   509: invokevirtual 303	java/io/File:delete	()Z
     //   512: pop
     //   513: aload 18
     //   515: iconst_1
-    //   516: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   516: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   519: pop
     //   520: iconst_0
     //   521: ireturn
     //   522: astore_1
-    //   523: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   523: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   526: ifeq +14 -> 540
-    //   529: ldc_w 287
+    //   529: ldc_w 292
     //   532: iconst_2
-    //   533: ldc_w 583
+    //   533: ldc_w 598
     //   536: aload_1
-    //   537: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   537: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   540: aload_1
-    //   541: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   541: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   544: iconst_0
     //   545: ireturn
     //   546: iload 5
     //   548: ifeq +52 -> 600
-    //   551: new 157	java/lang/StringBuilder
+    //   551: new 162	java/lang/StringBuilder
     //   554: dup
-    //   555: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   555: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   558: astore_1
     //   559: aload_1
     //   560: aload 13
-    //   562: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   562: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   565: pop
     //   566: aload_1
     //   567: aload_0
-    //   568: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   571: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   568: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   571: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   574: pop
     //   575: aload_0
     //   576: aload_1
-    //   577: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   580: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   577: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   580: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   583: astore_1
     //   584: aload_1
     //   585: ifnull +15 -> 600
     //   588: aload_1
-    //   589: invokevirtual 115	java/io/File:exists	()Z
+    //   589: invokevirtual 120	java/io/File:exists	()Z
     //   592: ifeq +8 -> 600
     //   595: aload_1
-    //   596: invokevirtual 298	java/io/File:delete	()Z
+    //   596: invokevirtual 303	java/io/File:delete	()Z
     //   599: pop
     //   600: aload 18
     //   602: iconst_1
-    //   603: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   603: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   606: pop
     //   607: iconst_0
     //   608: ireturn
     //   609: astore_1
-    //   610: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   610: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   613: ifeq +14 -> 627
-    //   616: ldc_w 287
+    //   616: ldc_w 292
     //   619: iconst_2
-    //   620: ldc_w 583
+    //   620: ldc_w 598
     //   623: aload_1
-    //   624: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   624: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   627: aload_1
-    //   628: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   628: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   631: iconst_0
     //   632: ireturn
-    //   633: new 383	java/util/TreeMap
+    //   633: new 388	java/util/TreeMap
     //   636: dup
-    //   637: invokespecial 594	java/util/TreeMap:<init>	()V
+    //   637: invokespecial 609	java/util/TreeMap:<init>	()V
     //   640: astore 16
     //   642: aload 16
-    //   644: ldc_w 596
+    //   644: ldc_w 611
     //   647: lload_2
-    //   648: invokestatic 128	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   651: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   648: invokestatic 133	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   651: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   654: pop
     //   655: aload 16
-    //   657: ldc_w 599
-    //   660: ldc_w 601
-    //   663: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   657: ldc_w 614
+    //   660: ldc_w 616
+    //   663: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   666: pop
     //   667: aload 16
-    //   669: ldc_w 603
+    //   669: ldc_w 618
     //   672: aload 15
-    //   674: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   674: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   677: pop
     //   678: aload 16
-    //   680: ldc_w 605
+    //   680: ldc_w 620
     //   683: aload 14
-    //   685: invokevirtual 122	java/io/File:length	()J
-    //   688: invokestatic 128	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   691: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   685: invokevirtual 127	java/io/File:length	()J
+    //   688: invokestatic 133	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   691: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   694: pop
     //   695: aload 16
-    //   697: ldc_w 607
+    //   697: ldc_w 622
     //   700: iconst_0
-    //   701: invokestatic 136	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   704: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   701: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   704: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   707: pop
     //   708: aload 16
-    //   710: ldc_w 609
+    //   710: ldc_w 624
     //   713: aload_0
     //   714: aload 16
     //   716: aload 4
-    //   718: invokevirtual 611	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/util/TreeMap;Ljava/lang/String;)Ljava/lang/String;
-    //   721: invokevirtual 597	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   718: invokevirtual 626	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/util/TreeMap;Ljava/lang/String;)Ljava/lang/String;
+    //   721: invokevirtual 612	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   724: pop
     //   725: aload_0
-    //   726: getfield 39	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   726: getfield 44	com/tencent/mobileqq/secspy/SecSpyFileManager:a	Ljava/lang/String;
     //   729: astore 4
     //   731: aload 16
-    //   733: invokevirtual 384	java/util/TreeMap:keySet	()Ljava/util/Set;
-    //   736: invokeinterface 227 1 0
+    //   733: invokevirtual 389	java/util/TreeMap:keySet	()Ljava/util/Set;
+    //   736: invokeinterface 232 1 0
     //   741: astore 13
     //   743: aload 13
-    //   745: invokeinterface 232 1 0
+    //   745: invokeinterface 237 1 0
     //   750: istore 12
     //   752: iload 12
     //   754: ifeq +106 -> 860
     //   757: aload 13
-    //   759: invokeinterface 236 1 0
-    //   764: checkcast 238	java/lang/String
+    //   759: invokeinterface 241 1 0
+    //   764: checkcast 243	java/lang/String
     //   767: astore 17
-    //   769: new 157	java/lang/StringBuilder
+    //   769: new 162	java/lang/StringBuilder
     //   772: dup
-    //   773: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   773: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   776: astore 19
     //   778: aload 19
     //   780: aload 4
-    //   782: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   782: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   785: pop
     //   786: aload 19
     //   788: aload 17
-    //   790: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   790: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   793: pop
     //   794: aload 19
-    //   796: ldc_w 613
-    //   799: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   796: ldc_w 628
+    //   799: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   802: pop
     //   803: aload 19
     //   805: aload 16
     //   807: aload 17
-    //   809: invokevirtual 385	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   812: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   809: invokevirtual 390	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   812: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   815: pop
     //   816: aload 19
-    //   818: ldc_w 615
-    //   821: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   818: ldc_w 630
+    //   821: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   824: pop
     //   825: aload 19
-    //   827: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   827: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   830: astore 4
     //   832: goto -89 -> 743
     //   835: astore 4
@@ -1586,8 +1592,8 @@ public class SecSpyFileManager
     //   855: astore 14
     //   857: goto +1173 -> 2030
     //   860: aload 4
-    //   862: ldc_w 615
-    //   865: invokevirtual 311	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   862: ldc_w 630
+    //   865: invokevirtual 316	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   868: istore 12
     //   870: aload 4
     //   872: astore 13
@@ -1596,174 +1602,174 @@ public class SecSpyFileManager
     //   879: aload 4
     //   881: iconst_0
     //   882: aload 4
-    //   884: invokevirtual 616	java/lang/String:length	()I
+    //   884: invokevirtual 631	java/lang/String:length	()I
     //   887: iconst_1
     //   888: isub
-    //   889: invokevirtual 321	java/lang/String:substring	(II)Ljava/lang/String;
+    //   889: invokevirtual 326	java/lang/String:substring	(II)Ljava/lang/String;
     //   892: astore 13
-    //   894: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   894: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   897: istore 12
     //   899: iload 12
     //   901: ifeq +41 -> 942
-    //   904: new 157	java/lang/StringBuilder
+    //   904: new 162	java/lang/StringBuilder
     //   907: dup
-    //   908: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   908: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   911: astore 4
     //   913: aload 4
-    //   915: ldc_w 618
-    //   918: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   915: ldc_w 633
+    //   918: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   921: pop
     //   922: aload 4
     //   924: aload 13
-    //   926: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   926: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   929: pop
-    //   930: ldc_w 287
+    //   930: ldc_w 292
     //   933: iconst_2
     //   934: aload 4
-    //   936: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   939: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   942: new 174	java/net/URL
+    //   936: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   939: invokestatic 484	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   942: new 179	java/net/URL
     //   945: dup
     //   946: aload 13
-    //   948: invokespecial 177	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   951: invokevirtual 181	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   954: checkcast 183	java/net/HttpURLConnection
+    //   948: invokespecial 182	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   951: invokevirtual 186	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   954: checkcast 188	java/net/HttpURLConnection
     //   957: astore 4
     //   959: aload 4
     //   961: iconst_0
-    //   962: invokevirtual 193	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   962: invokevirtual 198	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   965: aload 4
     //   967: iconst_1
-    //   968: invokevirtual 187	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   968: invokevirtual 192	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   971: aload_0
-    //   972: getfield 49	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   972: getfield 54	com/tencent/mobileqq/secspy/SecSpyFileManager:d	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   975: iconst_2
-    //   976: invokevirtual 622	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   979: checkcast 624	mqq/app/TicketManagerImpl
+    //   976: invokevirtual 637	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   979: checkcast 639	mqq/app/TicketManagerImpl
     //   982: astore 13
-    //   984: new 157	java/lang/StringBuilder
+    //   984: new 162	java/lang/StringBuilder
     //   987: dup
-    //   988: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   988: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   991: astore 16
     //   993: aload 16
-    //   995: ldc_w 626
-    //   998: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   995: ldc_w 641
+    //   998: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1001: pop
     //   1002: aload 16
     //   1004: aload_0
-    //   1005: getfield 49	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1008: invokevirtual 629	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1011: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1005: getfield 54	com/tencent/mobileqq/secspy/SecSpyFileManager:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1008: invokevirtual 644	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1011: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1014: pop
     //   1015: aload 16
-    //   1017: ldc_w 631
-    //   1020: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1017: ldc_w 646
+    //   1020: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1023: pop
     //   1024: aload 16
     //   1026: aload 13
     //   1028: aload_0
-    //   1029: getfield 49	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1032: invokevirtual 629	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1035: invokevirtual 634	mqq/app/TicketManagerImpl:getSkey	(Ljava/lang/String;)Ljava/lang/String;
-    //   1038: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1029: getfield 54	com/tencent/mobileqq/secspy/SecSpyFileManager:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1032: invokevirtual 644	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1035: invokevirtual 649	mqq/app/TicketManagerImpl:getSkey	(Ljava/lang/String;)Ljava/lang/String;
+    //   1038: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1041: pop
     //   1042: aload 4
-    //   1044: ldc_w 636
+    //   1044: ldc_w 651
     //   1047: aload 16
-    //   1049: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1052: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1049: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1052: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   1055: aload 4
-    //   1057: ldc 195
-    //   1059: invokevirtual 198	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   1057: ldc 200
+    //   1059: invokevirtual 203	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   1062: aload 4
-    //   1064: ldc_w 638
-    //   1067: ldc_w 640
-    //   1070: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1064: ldc_w 653
+    //   1067: ldc_w 655
+    //   1070: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   1073: aload 4
-    //   1075: ldc_w 642
-    //   1078: ldc_w 644
-    //   1081: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1084: new 157	java/lang/StringBuilder
+    //   1075: ldc_w 657
+    //   1078: ldc_w 659
+    //   1081: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1084: new 162	java/lang/StringBuilder
     //   1087: dup
-    //   1088: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1088: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1091: astore 13
     //   1093: aload 13
-    //   1095: ldc_w 646
-    //   1098: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1095: ldc_w 661
+    //   1098: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1101: pop
     //   1102: aload 13
-    //   1104: ldc_w 648
-    //   1107: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1104: ldc_w 663
+    //   1107: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1110: pop
     //   1111: aload 4
-    //   1113: ldc 211
+    //   1113: ldc 216
     //   1115: aload 13
-    //   1117: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1120: invokevirtual 209	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1123: new 650	java/io/DataOutputStream
+    //   1117: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1120: invokevirtual 214	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1123: new 665	java/io/DataOutputStream
     //   1126: dup
     //   1127: aload 4
-    //   1129: invokevirtual 246	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   1132: invokespecial 651	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   1129: invokevirtual 251	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   1132: invokespecial 666	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   1135: astore 13
-    //   1137: new 157	java/lang/StringBuilder
+    //   1137: new 162	java/lang/StringBuilder
     //   1140: dup
-    //   1141: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1141: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1144: astore 16
     //   1146: aload 16
-    //   1148: ldc_w 653
-    //   1151: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1148: ldc_w 668
+    //   1151: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1154: pop
     //   1155: aload 16
-    //   1157: ldc_w 648
-    //   1160: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1157: ldc_w 663
+    //   1160: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1163: pop
     //   1164: aload 16
-    //   1166: ldc_w 655
-    //   1169: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1166: ldc_w 670
+    //   1169: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1172: pop
     //   1173: aload 13
     //   1175: aload 16
-    //   1177: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1180: invokevirtual 658	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   1183: new 157	java/lang/StringBuilder
+    //   1177: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1180: invokevirtual 673	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   1183: new 162	java/lang/StringBuilder
     //   1186: dup
-    //   1187: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1187: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1190: astore 16
     //   1192: aload 16
-    //   1194: ldc_w 660
-    //   1197: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1194: ldc_w 675
+    //   1197: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1200: pop
     //   1201: aload 16
     //   1203: aload 15
-    //   1205: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1205: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1208: pop
     //   1209: aload 16
-    //   1211: ldc_w 662
-    //   1214: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1211: ldc_w 677
+    //   1214: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1217: pop
     //   1218: aload 16
-    //   1220: ldc_w 655
-    //   1223: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1220: ldc_w 670
+    //   1223: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1226: pop
     //   1227: aload 13
     //   1229: aload 16
-    //   1231: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1234: invokevirtual 658	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   1231: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1234: invokevirtual 673	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   1237: aload 13
-    //   1239: ldc_w 655
-    //   1242: invokevirtual 658	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   1245: new 248	java/io/FileInputStream
+    //   1239: ldc_w 670
+    //   1242: invokevirtual 673	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   1245: new 253	java/io/FileInputStream
     //   1248: dup
     //   1249: aload 14
-    //   1251: invokespecial 251	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   1251: invokespecial 256	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   1254: astore 14
     //   1256: aload 14
-    //   1258: invokevirtual 665	java/io/FileInputStream:available	()I
+    //   1258: invokevirtual 680	java/io/FileInputStream:available	()I
     //   1261: istore 6
     //   1263: iload 6
-    //   1265: ldc_w 666
-    //   1268: invokestatic 672	java/lang/Math:min	(II)I
+    //   1265: ldc_w 681
+    //   1268: invokestatic 687	java/lang/Math:min	(II)I
     //   1271: istore 7
     //   1273: iload 7
     //   1275: newarray byte
@@ -1771,25 +1777,25 @@ public class SecSpyFileManager
     //   1279: aload 18
     //   1281: iload 6
     //   1283: i2f
-    //   1284: invokestatic 675	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
+    //   1284: invokestatic 690	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
     //   1287: pop
     //   1288: aload_0
-    //   1289: getfield 101	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
-    //   1292: invokevirtual 678	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:a	()Landroid/os/Handler;
-    //   1295: new 680	com/tencent/mobileqq/secspy/SecSpyFileManager$3
+    //   1289: getfield 106	com/tencent/mobileqq/secspy/SecSpyFileManager:e	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
+    //   1292: invokevirtual 693	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:a	()Landroid/os/Handler;
+    //   1295: new 695	com/tencent/mobileqq/secspy/SecSpyFileManager$3
     //   1298: dup
     //   1299: aload_0
     //   1300: aload 18
     //   1302: lload_2
-    //   1303: invokespecial 683	com/tencent/mobileqq/secspy/SecSpyFileManager$3:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
-    //   1306: ldc2_w 684
-    //   1309: invokevirtual 689	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   1303: invokespecial 698	com/tencent/mobileqq/secspy/SecSpyFileManager$3:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
+    //   1306: ldc2_w 699
+    //   1309: invokevirtual 704	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   1312: pop
     //   1313: aload 14
     //   1315: aload 15
     //   1317: iconst_0
     //   1318: iload 7
-    //   1320: invokevirtual 255	java/io/FileInputStream:read	([BII)I
+    //   1320: invokevirtual 260	java/io/FileInputStream:read	([BII)I
     //   1323: istore 6
     //   1325: iload 6
     //   1327: ifle +82 -> 1409
@@ -1797,25 +1803,25 @@ public class SecSpyFileManager
     //   1332: aload 15
     //   1334: iconst_0
     //   1335: iload 7
-    //   1337: invokevirtual 690	java/io/DataOutputStream:write	([BII)V
+    //   1337: invokevirtual 705	java/io/DataOutputStream:write	([BII)V
     //   1340: aload 18
     //   1342: aload 18
-    //   1344: invokestatic 693	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;)F
+    //   1344: invokestatic 708	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:b	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;)F
     //   1347: iload 6
     //   1349: i2f
     //   1350: fadd
-    //   1351: invokestatic 695	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:b	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
+    //   1351: invokestatic 710	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:b	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
     //   1354: pop
     //   1355: aload 14
-    //   1357: invokevirtual 665	java/io/FileInputStream:available	()I
-    //   1360: ldc_w 666
-    //   1363: invokestatic 672	java/lang/Math:min	(II)I
+    //   1357: invokevirtual 680	java/io/FileInputStream:available	()I
+    //   1360: ldc_w 681
+    //   1363: invokestatic 687	java/lang/Math:min	(II)I
     //   1366: istore 7
     //   1368: aload 14
     //   1370: aload 15
     //   1372: iconst_0
     //   1373: iload 7
-    //   1375: invokevirtual 255	java/io/FileInputStream:read	([BII)I
+    //   1375: invokevirtual 260	java/io/FileInputStream:read	([BII)I
     //   1378: istore 6
     //   1380: goto -55 -> 1325
     //   1383: astore 15
@@ -1831,73 +1837,73 @@ public class SecSpyFileManager
     //   1404: astore 15
     //   1406: goto +342 -> 1748
     //   1409: aload 13
-    //   1411: ldc_w 655
-    //   1414: invokevirtual 658	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   1417: new 157	java/lang/StringBuilder
+    //   1411: ldc_w 670
+    //   1414: invokevirtual 673	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   1417: new 162	java/lang/StringBuilder
     //   1420: dup
-    //   1421: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1421: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1424: astore 15
     //   1426: aload 15
-    //   1428: ldc_w 653
-    //   1431: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1428: ldc_w 668
+    //   1431: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1434: pop
     //   1435: aload 15
-    //   1437: ldc_w 648
-    //   1440: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1437: ldc_w 663
+    //   1440: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1443: pop
     //   1444: aload 15
-    //   1446: ldc_w 653
-    //   1449: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1446: ldc_w 668
+    //   1449: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1452: pop
     //   1453: aload 15
-    //   1455: ldc_w 655
-    //   1458: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1455: ldc_w 670
+    //   1458: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1461: pop
     //   1462: aload 13
     //   1464: aload 15
-    //   1466: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1469: invokevirtual 658	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   1466: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1469: invokevirtual 673	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   1472: aload 4
-    //   1474: invokevirtual 271	java/net/HttpURLConnection:getResponseCode	()I
+    //   1474: invokevirtual 276	java/net/HttpURLConnection:getResponseCode	()I
     //   1477: istore 6
     //   1479: aload 4
-    //   1481: invokevirtual 698	java/net/HttpURLConnection:getResponseMessage	()Ljava/lang/String;
+    //   1481: invokevirtual 713	java/net/HttpURLConnection:getResponseMessage	()Ljava/lang/String;
     //   1484: astore 15
-    //   1486: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1486: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1489: istore 12
     //   1491: iload 12
     //   1493: ifeq +57 -> 1550
-    //   1496: new 157	java/lang/StringBuilder
+    //   1496: new 162	java/lang/StringBuilder
     //   1499: dup
-    //   1500: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1500: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1503: astore 16
     //   1505: aload 16
-    //   1507: ldc 200
-    //   1509: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1507: ldc 205
+    //   1509: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1512: pop
     //   1513: aload 16
     //   1515: iload 6
-    //   1517: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1517: invokevirtual 281	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1520: pop
     //   1521: aload 16
-    //   1523: ldc_w 700
-    //   1526: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1523: ldc_w 715
+    //   1526: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1529: pop
     //   1530: aload 16
     //   1532: aload 15
-    //   1534: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1534: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1537: pop
-    //   1538: ldc_w 287
+    //   1538: ldc_w 292
     //   1541: iconst_2
     //   1542: aload 16
-    //   1544: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1547: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1544: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1547: invokestatic 484	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1550: aload 13
-    //   1552: invokevirtual 701	java/io/DataOutputStream:flush	()V
+    //   1552: invokevirtual 716	java/io/DataOutputStream:flush	()V
     //   1555: aload 13
-    //   1557: invokevirtual 702	java/io/DataOutputStream:close	()V
+    //   1557: invokevirtual 717	java/io/DataOutputStream:close	()V
     //   1560: aload 14
-    //   1562: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   1562: invokevirtual 269	java/io/FileInputStream:close	()V
     //   1565: iload 6
     //   1567: sipush 200
     //   1570: if_icmpne +9 -> 1579
@@ -1907,55 +1913,55 @@ public class SecSpyFileManager
     //   1579: iconst_0
     //   1580: istore 12
     //   1582: aload 13
-    //   1584: invokevirtual 702	java/io/DataOutputStream:close	()V
+    //   1584: invokevirtual 717	java/io/DataOutputStream:close	()V
     //   1587: aload 4
     //   1589: ifnull +8 -> 1597
     //   1592: aload 4
-    //   1594: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   1594: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   1597: iload 5
     //   1599: ifeq +55 -> 1654
-    //   1602: new 157	java/lang/StringBuilder
+    //   1602: new 162	java/lang/StringBuilder
     //   1605: dup
-    //   1606: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1606: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1609: astore 4
     //   1611: aload 4
     //   1613: aload_1
-    //   1614: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1614: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1617: pop
     //   1618: aload 4
     //   1620: aload_0
-    //   1621: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   1624: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1621: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   1624: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1627: pop
     //   1628: aload_0
     //   1629: aload 4
-    //   1631: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1634: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   1631: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1634: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   1637: astore_1
     //   1638: aload_1
     //   1639: ifnull +15 -> 1654
     //   1642: aload_1
-    //   1643: invokevirtual 115	java/io/File:exists	()Z
+    //   1643: invokevirtual 120	java/io/File:exists	()Z
     //   1646: ifeq +8 -> 1654
     //   1649: aload_1
-    //   1650: invokevirtual 298	java/io/File:delete	()Z
+    //   1650: invokevirtual 303	java/io/File:delete	()Z
     //   1653: pop
     //   1654: aload 18
     //   1656: iconst_1
-    //   1657: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   1657: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   1660: pop
     //   1661: iload 12
     //   1663: ireturn
     //   1664: astore_1
-    //   1665: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1665: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1668: ifeq +14 -> 1682
-    //   1671: ldc_w 287
+    //   1671: ldc_w 292
     //   1674: iconst_2
-    //   1675: ldc_w 583
+    //   1675: ldc_w 598
     //   1678: aload_1
-    //   1679: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1679: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1682: aload_1
-    //   1683: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   1683: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   1686: iload 12
     //   1688: ireturn
     //   1689: astore 15
@@ -2030,7 +2036,7 @@ public class SecSpyFileManager
     //   1824: goto +162 -> 1986
     //   1827: astore_1
     //   1828: goto +158 -> 1986
-    //   1831: getstatic 30	com/tencent/mobileqq/secspy/SecSpyFileManager:e	Ljava/lang/String;
+    //   1831: getstatic 35	com/tencent/mobileqq/secspy/SecSpyFileManager:i	Ljava/lang/String;
     //   1834: astore_1
     //   1835: aload_0
     //   1836: lload_2
@@ -2041,69 +2047,69 @@ public class SecSpyFileManager
     //   1843: iconst_0
     //   1844: aload_1
     //   1845: aastore
-    //   1846: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
-    //   1849: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1846: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   1849: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1852: ifeq +37 -> 1889
-    //   1855: new 157	java/lang/StringBuilder
+    //   1855: new 162	java/lang/StringBuilder
     //   1858: dup
-    //   1859: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1859: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1862: astore_1
     //   1863: aload_1
-    //   1864: ldc_w 704
-    //   1867: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1864: ldc_w 719
+    //   1867: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1870: pop
     //   1871: aload_1
     //   1872: aload 13
-    //   1874: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1874: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1877: pop
-    //   1878: ldc_w 287
+    //   1878: ldc_w 292
     //   1881: iconst_2
     //   1882: aload_1
-    //   1883: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1886: invokestatic 479	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1883: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1886: invokestatic 484	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1889: iload 5
     //   1891: ifeq +52 -> 1943
-    //   1894: new 157	java/lang/StringBuilder
+    //   1894: new 162	java/lang/StringBuilder
     //   1897: dup
-    //   1898: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   1898: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   1901: astore_1
     //   1902: aload_1
     //   1903: aload 13
-    //   1905: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1905: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1908: pop
     //   1909: aload_1
     //   1910: aload_0
-    //   1911: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   1914: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1911: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   1914: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1917: pop
     //   1918: aload_0
     //   1919: aload_1
-    //   1920: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1923: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   1920: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1923: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   1926: astore_1
     //   1927: aload_1
     //   1928: ifnull +15 -> 1943
     //   1931: aload_1
-    //   1932: invokevirtual 115	java/io/File:exists	()Z
+    //   1932: invokevirtual 120	java/io/File:exists	()Z
     //   1935: ifeq +8 -> 1943
     //   1938: aload_1
-    //   1939: invokevirtual 298	java/io/File:delete	()Z
+    //   1939: invokevirtual 303	java/io/File:delete	()Z
     //   1942: pop
     //   1943: aload 18
     //   1945: iconst_1
-    //   1946: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   1946: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   1949: pop
     //   1950: goto +25 -> 1975
     //   1953: astore_1
-    //   1954: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1954: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1957: ifeq +14 -> 1971
-    //   1960: ldc_w 287
+    //   1960: ldc_w 292
     //   1963: iconst_2
-    //   1964: ldc_w 583
+    //   1964: ldc_w 598
     //   1967: aload_1
-    //   1968: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1968: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1971: aload_1
-    //   1972: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   1972: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   1975: iconst_0
     //   1976: ireturn
     //   1977: astore_1
@@ -2137,13 +2143,13 @@ public class SecSpyFileManager
     //   2024: astore 14
     //   2026: aload 16
     //   2028: astore 13
-    //   2030: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2030: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2033: ifeq +15 -> 2048
-    //   2036: ldc_w 287
+    //   2036: ldc_w 292
     //   2039: iconst_2
-    //   2040: ldc_w 706
+    //   2040: ldc_w 721
     //   2043: aload 15
-    //   2045: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2045: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2048: aload_0
     //   2049: lload_2
     //   2050: iconst_m1
@@ -2152,64 +2158,64 @@ public class SecSpyFileManager
     //   2055: dup
     //   2056: iconst_0
     //   2057: aload 15
-    //   2059: invokevirtual 285	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2059: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   2062: aastore
-    //   2063: invokevirtual 131	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
+    //   2063: invokevirtual 136	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(JI[Ljava/lang/Object;)V
     //   2066: aload 4
     //   2068: ifnull +11 -> 2079
     //   2071: aload 4
-    //   2073: invokevirtual 702	java/io/DataOutputStream:close	()V
+    //   2073: invokevirtual 717	java/io/DataOutputStream:close	()V
     //   2076: goto +3 -> 2079
     //   2079: aload 14
     //   2081: ifnull +8 -> 2089
     //   2084: aload 14
-    //   2086: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   2086: invokevirtual 269	java/io/FileInputStream:close	()V
     //   2089: aload 13
     //   2091: ifnull +8 -> 2099
     //   2094: aload 13
-    //   2096: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   2096: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   2099: iload 5
     //   2101: ifeq +55 -> 2156
-    //   2104: new 157	java/lang/StringBuilder
+    //   2104: new 162	java/lang/StringBuilder
     //   2107: dup
-    //   2108: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   2108: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   2111: astore 4
     //   2113: aload 4
     //   2115: aload_1
-    //   2116: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2116: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2119: pop
     //   2120: aload 4
     //   2122: aload_0
-    //   2123: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   2126: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2123: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   2126: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2129: pop
     //   2130: aload_0
     //   2131: aload 4
-    //   2133: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2136: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   2133: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2136: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   2139: astore_1
     //   2140: aload_1
     //   2141: ifnull +15 -> 2156
     //   2144: aload_1
-    //   2145: invokevirtual 115	java/io/File:exists	()Z
+    //   2145: invokevirtual 120	java/io/File:exists	()Z
     //   2148: ifeq +8 -> 2156
     //   2151: aload_1
-    //   2152: invokevirtual 298	java/io/File:delete	()Z
+    //   2152: invokevirtual 303	java/io/File:delete	()Z
     //   2155: pop
     //   2156: aload 18
     //   2158: iconst_1
-    //   2159: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   2159: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   2162: pop
     //   2163: goto +24 -> 2187
-    //   2166: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2166: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2169: ifeq +14 -> 2183
-    //   2172: ldc_w 287
+    //   2172: ldc_w 292
     //   2175: iconst_2
-    //   2176: ldc_w 583
+    //   2176: ldc_w 598
     //   2179: aload_1
-    //   2180: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2180: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2183: aload_1
-    //   2184: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   2184: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   2187: iconst_0
     //   2188: ireturn
     //   2189: astore 16
@@ -2222,63 +2228,63 @@ public class SecSpyFileManager
     //   2201: aload 4
     //   2203: ifnull +11 -> 2214
     //   2206: aload 4
-    //   2208: invokevirtual 702	java/io/DataOutputStream:close	()V
+    //   2208: invokevirtual 717	java/io/DataOutputStream:close	()V
     //   2211: goto +3 -> 2214
     //   2214: aload 14
     //   2216: ifnull +8 -> 2224
     //   2219: aload 14
-    //   2221: invokevirtual 264	java/io/FileInputStream:close	()V
+    //   2221: invokevirtual 269	java/io/FileInputStream:close	()V
     //   2224: aload 15
     //   2226: ifnull +8 -> 2234
     //   2229: aload 15
-    //   2231: invokevirtual 280	java/net/HttpURLConnection:disconnect	()V
+    //   2231: invokevirtual 285	java/net/HttpURLConnection:disconnect	()V
     //   2234: iload 5
     //   2236: ifeq +60 -> 2296
-    //   2239: new 157	java/lang/StringBuilder
+    //   2239: new 162	java/lang/StringBuilder
     //   2242: dup
-    //   2243: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   2243: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   2246: astore 4
     //   2248: aload 4
     //   2250: aload 13
-    //   2252: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2252: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2255: pop
     //   2256: aload 4
     //   2258: aload_0
-    //   2259: getfield 47	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
-    //   2262: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2259: getfield 52	com/tencent/mobileqq/secspy/SecSpyFileManager:c	Ljava/lang/String;
+    //   2262: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2265: pop
     //   2266: aload_0
     //   2267: aload 4
-    //   2269: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2272: invokevirtual 109	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
+    //   2269: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2272: invokevirtual 114	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/lang/String;)Ljava/io/File;
     //   2275: astore 4
     //   2277: aload 4
     //   2279: ifnull +17 -> 2296
     //   2282: aload 4
-    //   2284: invokevirtual 115	java/io/File:exists	()Z
+    //   2284: invokevirtual 120	java/io/File:exists	()Z
     //   2287: ifeq +9 -> 2296
     //   2290: aload 4
-    //   2292: invokevirtual 298	java/io/File:delete	()Z
+    //   2292: invokevirtual 303	java/io/File:delete	()Z
     //   2295: pop
     //   2296: aload 18
     //   2298: iconst_1
-    //   2299: invokestatic 581	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
+    //   2299: invokestatic 596	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   2302: pop
     //   2303: goto +26 -> 2329
-    //   2306: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2306: invokestatic 382	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2309: ifeq +15 -> 2324
-    //   2312: ldc_w 287
+    //   2312: ldc_w 292
     //   2315: iconst_2
-    //   2316: ldc_w 583
+    //   2316: ldc_w 598
     //   2319: aload 4
-    //   2321: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2321: invokestatic 299	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2324: aload 4
-    //   2326: invokevirtual 380	java/lang/Exception:printStackTrace	()V
+    //   2326: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   2329: goto +5 -> 2334
     //   2332: aload_1
     //   2333: athrow
     //   2334: goto -2 -> 2332
-    //   2337: ldc2_w 707
+    //   2337: ldc2_w 722
     //   2340: lstore 8
     //   2342: goto -2274 -> 68
     //   2345: astore_1
@@ -2292,8 +2298,8 @@ public class SecSpyFileManager
     //   0	2354	2	paramLong	long
     //   0	2354	4	paramString2	String
     //   0	2354	5	paramBoolean	boolean
-    //   1261	310	6	i	int
-    //   1271	103	7	j	int
+    //   1261	310	6	k	int
+    //   1271	103	7	m	int
     //   63	2278	8	l1	long
     //   73	3	10	l2	long
     //   750	937	12	bool	boolean
@@ -2417,18 +2423,11 @@ public class SecSpyFileManager
     //   2296	2303	2349	java/lang/Exception
   }
   
-  public void b(List<String> paramList, long paramLong, String paramString)
-  {
-    a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a(paramList), paramLong, paramString, false);
-    UnifiedFileUtil.a(paramList);
-    paramList.clear();
-  }
-  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager
  * JD-Core Version:    0.7.0.1
  */

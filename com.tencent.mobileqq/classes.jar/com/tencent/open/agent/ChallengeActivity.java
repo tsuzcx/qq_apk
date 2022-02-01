@@ -28,66 +28,66 @@ public class ChallengeActivity
   extends ChallengeBragBase
   implements View.OnClickListener, ImageLoader.ImageLoadListener, IKeyboardChanged
 {
-  protected ImageView a;
-  protected ScrollView a;
   protected KeyboardDetectorRelativeLayout a;
-  protected String a;
-  protected InputFilter[] a;
-  protected ImageView b;
   protected ScrollView b;
-  protected String b;
+  protected ScrollView c;
+  protected ImageView d;
+  protected ImageView e;
+  protected InputFilter[] f;
+  protected String g;
+  protected String h;
   
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131376718));
+    this.a = ((KeyboardDetectorRelativeLayout)super.findViewById(2131445000));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setFitsSystemWindows(true);
-      this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+      this.a.setFitsSystemWindows(true);
+      this.a.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131378143));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379810));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366316));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131378142));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363817));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363814));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363163));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363164));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetScrollView;
+    this.c = ((ScrollView)super.findViewById(2131446652));
+    this.x = ((TextView)super.findViewById(2131448645));
+    this.A = ((EditText)super.findViewById(2131432616));
+    this.b = ((ScrollView)super.findViewById(2131446651));
+    this.y = ((TextView)super.findViewById(2131429752));
+    this.z = ((TextView)super.findViewById(2131429747));
+    this.d = ((ImageView)super.findViewById(2131429037));
+    this.e = ((ImageView)super.findViewById(2131429038));
+    this.a.a(this);
+    this.c.setVerticalFadingEdgeEnabled(false);
+    this.f = new InputFilter[] { new LengthInputFilter(this.A, 100) };
+    this.A.setFilters(this.f);
+    this.A.setText(this.o);
+    Object localObject1 = this.b;
     if (localObject1 != null) {
       ((ScrollView)localObject1).setVerticalFadingEdgeEnabled(false);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.y.setOnClickListener(this);
+    this.z.setOnClickListener(this);
     try
     {
-      a(this.h);
-      this.jdField_a_of_type_JavaLangString = QZonePortraitData.a(this.jdField_c_of_type_JavaLangString, this.d);
-      this.jdField_b_of_type_JavaLangString = QZonePortraitData.a(this.jdField_c_of_type_JavaLangString, this.h);
-      localObject1 = ImageLoader.a().a(this.jdField_a_of_type_JavaLangString);
-      localObject2 = ImageLoader.a().a(this.jdField_b_of_type_JavaLangString);
+      a(this.n);
+      this.g = QZonePortraitData.a(this.i, this.j);
+      this.h = QZonePortraitData.a(this.i, this.n);
+      localObject1 = ImageLoader.a().a(this.g);
+      localObject2 = ImageLoader.a().a(this.h);
       if (localObject1 != null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
+        this.d.setImageBitmap((Bitmap)localObject1);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840321);
-        ImageLoader.a().a(this.jdField_a_of_type_JavaLangString, this);
+        this.d.setImageResource(2130841060);
+        ImageLoader.a().a(this.g, this);
       }
       if (localObject2 != null)
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
+        this.e.setImageBitmap((Bitmap)localObject2);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840321);
-      ImageLoader.a().a(this.jdField_b_of_type_JavaLangString, this);
+      this.e.setImageResource(2130841060);
+      ImageLoader.a().a(this.h, this);
       return;
     }
     catch (Exception localException)
@@ -96,14 +96,14 @@ public class ChallengeActivity
       ((StringBuilder)localObject2).append("getNickName error. ");
       ((StringBuilder)localObject2).append(localException.getMessage());
       LogUtility.c("ChallengeActivity", ((StringBuilder)localObject2).toString(), localException);
-      c();
+      d();
     }
   }
   
   public void a(int paramInt)
   {
     paramInt = DisplayUtil.b(this, paramInt) - 10 - 10;
-    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    ScrollView localScrollView = this.b;
     if ((localScrollView != null) && (paramInt < 255))
     {
       int i = paramInt - 20;
@@ -112,51 +112,51 @@ public class ChallengeActivity
       if ((paramInt > 0) && (paramInt < 55))
       {
         localScrollView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, paramInt);
-        this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
-        this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
-        this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-        this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
+        this.b.getLayoutParams().height = DisplayUtil.a(this, paramInt);
+        this.b.setVerticalFadingEdgeEnabled(true);
+        this.c.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
+        this.c.setVerticalFadingEdgeEnabled(false);
+        this.c.setVisibility(0);
         return;
       }
       if ((paramInt <= 0) && (i > 0) && (i < 30))
       {
-        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
-        this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = DisplayUtil.a(this, i);
-        this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
+        this.b.getLayoutParams().height = 0;
+        this.b.setVisibility(8);
+        this.x.getLayoutParams().height = DisplayUtil.a(this, i);
+        this.c.setVerticalFadingEdgeEnabled(true);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
-      this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
-      this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(8);
+      this.b.getLayoutParams().height = 0;
+      this.b.setVisibility(8);
+      this.c.getLayoutParams().height = 0;
+      this.c.setVisibility(8);
     }
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
+    if (this.g.equals(paramString1))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.d.setImageBitmap(paramBitmap);
       return;
     }
-    if (this.jdField_b_of_type_JavaLangString.equals(paramString1)) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    if (this.h.equals(paramString1)) {
+      this.e.setImageBitmap(paramBitmap);
     }
   }
   
   public void b()
   {
-    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    ScrollView localScrollView = this.b;
     if (localScrollView != null)
     {
       localScrollView.getLayoutParams().height = DisplayUtil.a(this, 55.0F);
-      this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
-      this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetScrollView.setVisibility(0);
+      this.b.setVerticalFadingEdgeEnabled(false);
+      this.b.setVisibility(0);
+      this.c.getLayoutParams().height = DisplayUtil.a(this, 30.0F);
+      this.c.setVerticalFadingEdgeEnabled(false);
+      this.c.setVisibility(0);
     }
   }
   
@@ -180,15 +180,15 @@ public class ChallengeActivity
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2131559669);
-    super.a();
+    super.setContentView(2131625699);
+    super.c();
     a();
-    StaticAnalyz.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString, true);
+    StaticAnalyz.a("100", "ANDROIDQQ.PK.FS", this.i, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeActivity
  * JD-Core Version:    0.7.0.1
  */

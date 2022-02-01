@@ -6,34 +6,34 @@ import android.text.TextUtils;
 
 class TickerColumn
 {
-  private char jdField_a_of_type_Char = '\000';
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final TickerDrawMetrics jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics;
-  private char[] jdField_a_of_type_ArrayOfChar;
-  private final TickerCharacterList[] jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetTickerTickerCharacterList;
-  private char jdField_b_of_type_Char = '\000';
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
+  private final TickerCharacterList[] a;
+  private final TickerDrawMetrics b;
+  private char c = '\000';
+  private char d = '\000';
+  private char[] e;
+  private int f;
+  private int g;
+  private int h;
+  private float i;
+  private float j;
+  private float k;
+  private float l;
+  private float m;
+  private float n;
+  private float o;
+  private float p;
+  private int q;
   
   TickerColumn(TickerCharacterList[] paramArrayOfTickerCharacterList, TickerDrawMetrics paramTickerDrawMetrics)
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetTickerTickerCharacterList = paramArrayOfTickerCharacterList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics = paramTickerDrawMetrics;
+    this.a = paramArrayOfTickerCharacterList;
+    this.b = paramTickerDrawMetrics;
   }
   
   private void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, char[] paramArrayOfChar, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ArrayOfChar = null;
-    char c2 = this.jdField_b_of_type_Char;
+    this.e = null;
+    char c2 = this.d;
     char c1 = c2;
     if (paramBoolean1)
     {
@@ -43,40 +43,40 @@ class TickerColumn
       }
     }
     Object localObject2 = null;
-    int i = 0;
+    int i1 = 0;
     Object localObject1;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetTickerTickerCharacterList;
-      if (i >= localObject1.length) {
+      localObject1 = this.a;
+      if (i1 >= localObject1.length) {
         break;
       }
-      TickerCharacterList.CharacterIndices localCharacterIndices = localObject1[i].a(this.jdField_a_of_type_Char, c1, this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a());
+      TickerCharacterList.CharacterIndices localCharacterIndices = localObject1[i1].a(this.c, c1, this.b.d());
       localObject1 = localObject2;
       if (localCharacterIndices != null) {
         if (paramBoolean2)
         {
-          this.jdField_a_of_type_ArrayOfChar = paramArrayOfChar;
-          this.jdField_a_of_type_Int = paramInt2;
-          this.jdField_b_of_type_Int = paramInt3;
+          this.e = paramArrayOfChar;
+          this.f = paramInt2;
+          this.g = paramInt3;
           localObject1 = localObject2;
         }
         else
         {
-          this.jdField_a_of_type_ArrayOfChar = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetTickerTickerCharacterList[i].a();
-          this.jdField_a_of_type_Int = localCharacterIndices.jdField_a_of_type_Int;
-          this.jdField_b_of_type_Int = localCharacterIndices.jdField_b_of_type_Int;
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetTickerTickerCharacterList[i].a();
+          this.e = this.a[i1].b();
+          this.f = localCharacterIndices.a;
+          this.g = localCharacterIndices.b;
+          localObject1 = this.a[i1].c();
         }
       }
-      i += 1;
+      i1 += 1;
       localObject2 = localObject1;
     }
-    if ((this.jdField_a_of_type_ArrayOfChar != null) && (paramInt1 > 1) && (!TextUtils.isEmpty(localObject2)))
+    if ((this.e != null) && (paramInt1 > 1) && (!TextUtils.isEmpty(localObject2)))
     {
       paramInt2 = Math.min(paramInt1 - 1, 5);
-      paramArrayOfChar = new String(this.jdField_a_of_type_ArrayOfChar);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a() == 1)
+      paramArrayOfChar = new String(this.e);
+      if (this.b.d() == 1)
       {
         paramInt1 = 0;
         for (;;)
@@ -89,11 +89,11 @@ class TickerColumn
           ((StringBuilder)localObject1).append(paramArrayOfChar);
           ((StringBuilder)localObject1).append(localObject2);
           paramArrayOfChar = ((StringBuilder)localObject1).toString();
-          this.jdField_a_of_type_Int += localObject2.length();
+          this.f += localObject2.length();
           paramInt1 += 1;
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a() == 2)
+      if (this.b.d() == 2)
       {
         paramInt1 = 0;
         for (;;)
@@ -106,27 +106,27 @@ class TickerColumn
           ((StringBuilder)localObject1).append(paramArrayOfChar);
           ((StringBuilder)localObject1).append(localObject2);
           paramArrayOfChar = ((StringBuilder)localObject1).toString();
-          this.jdField_b_of_type_Int += localObject2.length();
+          this.g += localObject2.length();
           paramInt1 += 1;
         }
       }
       localObject1 = paramArrayOfChar;
-      this.jdField_a_of_type_ArrayOfChar = ((String)localObject1).toCharArray();
+      this.e = ((String)localObject1).toCharArray();
     }
-    if (this.jdField_a_of_type_ArrayOfChar == null)
+    if (this.e == null)
     {
-      c1 = this.jdField_a_of_type_Char;
-      c2 = this.jdField_b_of_type_Char;
+      c1 = this.c;
+      c2 = this.d;
       if (c1 == c2)
       {
-        this.jdField_a_of_type_ArrayOfChar = new char[] { c1 };
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
+        this.e = new char[] { c1 };
+        this.g = 0;
+        this.f = 0;
         return;
       }
-      this.jdField_a_of_type_ArrayOfChar = new char[] { c1, c2 };
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 1;
+      this.e = new char[] { c1, c2 };
+      this.f = 0;
+      this.g = 1;
     }
   }
   
@@ -140,105 +140,93 @@ class TickerColumn
     return false;
   }
   
-  private void b()
+  private void f()
   {
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a(this.jdField_b_of_type_Char);
-    float f2 = this.jdField_d_of_type_Float;
-    float f3 = this.e;
+    float f1 = this.b.a(this.d);
+    float f2 = this.l;
+    float f3 = this.m;
     if ((f2 == f3) && (f3 != f1))
     {
-      this.e = f1;
-      this.jdField_d_of_type_Float = f1;
-      this.f = f1;
+      this.m = f1;
+      this.l = f1;
+      this.n = f1;
     }
   }
   
   char a()
   {
-    return this.jdField_a_of_type_Char;
-  }
-  
-  float a()
-  {
-    b();
-    return this.jdField_d_of_type_Float;
-  }
-  
-  void a()
-  {
-    b();
-    this.f = this.jdField_d_of_type_Float;
+    return this.c;
   }
   
   void a(float paramFloat, boolean paramBoolean)
   {
     if (paramFloat == 1.0F)
     {
-      this.jdField_a_of_type_Char = this.jdField_b_of_type_Char;
-      this.g = 0.0F;
-      this.h = 0.0F;
+      this.c = this.d;
+      this.o = 0.0F;
+      this.p = 0.0F;
     }
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a();
-    float f2 = Math.abs(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) * f1 * paramFloat / f1;
-    int i = (int)f2;
-    float f3 = i;
-    float f4 = this.h;
-    int j = this.jdField_d_of_type_Int;
-    this.jdField_a_of_type_Float = ((f2 - f3) * f1 * j + f4 * (1.0F - paramFloat));
-    this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int + i * j);
-    this.jdField_b_of_type_Float = f1;
+    float f1 = this.b.b();
+    float f2 = Math.abs(this.g - this.f) * f1 * paramFloat / f1;
+    int i1 = (int)f2;
+    float f3 = i1;
+    float f4 = this.p;
+    int i2 = this.q;
+    this.i = ((f2 - f3) * f1 * i2 + f4 * (1.0F - paramFloat));
+    this.h = (this.f + i1 * i2);
+    this.j = f1;
     if (paramBoolean)
     {
-      this.jdField_d_of_type_Float = Math.max(this.e, this.jdField_c_of_type_Float);
+      this.l = Math.max(this.m, this.k);
       if (paramFloat > 0.999F)
       {
-        this.jdField_d_of_type_Float = this.e;
-        if (this.jdField_b_of_type_Char == 0) {
-          this.jdField_c_of_type_Int = 0;
+        this.l = this.m;
+        if (this.d == 0) {
+          this.h = 0;
         }
       }
     }
     else
     {
-      f1 = this.jdField_c_of_type_Float;
-      this.jdField_d_of_type_Float = (f1 + (this.e - f1) * paramFloat);
+      f1 = this.k;
+      this.l = (f1 + (this.m - f1) * paramFloat);
     }
   }
   
   void a(int paramInt, char paramChar, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Char = paramChar;
-    this.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
-    this.e = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a(paramChar);
-    this.f = Math.max(this.jdField_c_of_type_Float, this.e);
+    this.d = paramChar;
+    this.k = this.l;
+    this.m = this.b.a(paramChar);
+    this.n = Math.max(this.k, this.m);
     a(paramInt, paramBoolean, false, null, 0, 0);
-    paramInt = this.jdField_b_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    int i = 1;
-    if (paramInt >= j) {
+    paramInt = this.g;
+    int i2 = this.f;
+    int i1 = 1;
+    if (paramInt >= i2) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     if (paramInt != 0) {
-      paramInt = i;
+      paramInt = i1;
     } else {
       paramInt = -1;
     }
-    this.jdField_d_of_type_Int = paramInt;
-    this.h = this.g;
-    this.g = 0.0F;
+    this.q = paramInt;
+    this.p = this.o;
+    this.o = 0.0F;
   }
   
   void a(int paramInt1, char paramChar, boolean paramBoolean1, boolean paramBoolean2, char[] paramArrayOfChar, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Char = paramChar;
-    this.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
-    this.e = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerDrawMetrics.a(paramChar);
-    this.f = Math.max(this.jdField_c_of_type_Float, this.e);
+    this.d = paramChar;
+    this.k = this.l;
+    this.m = this.b.a(paramChar);
+    this.n = Math.max(this.k, this.m);
     a(paramInt1, paramBoolean1, paramBoolean2, paramArrayOfChar, paramInt2, paramInt3);
-    paramInt1 = this.jdField_b_of_type_Int;
-    paramInt3 = this.jdField_a_of_type_Int;
+    paramInt1 = this.g;
+    paramInt3 = this.f;
     paramInt2 = 1;
     if (paramInt1 >= paramInt3) {
       paramInt1 = 1;
@@ -250,39 +238,51 @@ class TickerColumn
     } else {
       paramInt1 = -1;
     }
-    this.jdField_d_of_type_Int = paramInt1;
-    this.h = this.g;
-    this.g = 0.0F;
+    this.q = paramInt1;
+    this.p = this.o;
+    this.o = 0.0F;
   }
   
   void a(Canvas paramCanvas, Paint paramPaint)
   {
-    if (a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float))
+    if (a(paramCanvas, paramPaint, this.e, this.h, this.i))
     {
-      int i = this.jdField_c_of_type_Int;
-      if (i >= 0) {
-        this.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[i];
+      int i1 = this.h;
+      if (i1 >= 0) {
+        this.c = this.e[i1];
       }
-      this.g = this.jdField_a_of_type_Float;
+      this.o = this.i;
     }
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int + 1, this.jdField_a_of_type_Float - this.jdField_b_of_type_Float);
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int - 1, this.jdField_a_of_type_Float + this.jdField_b_of_type_Float);
+    a(paramCanvas, paramPaint, this.e, this.h + 1, this.i - this.j);
+    a(paramCanvas, paramPaint, this.e, this.h - 1, this.i + this.j);
   }
   
   char b()
   {
-    return this.jdField_b_of_type_Char;
+    return this.d;
   }
   
-  float b()
+  float c()
   {
-    b();
-    return this.f;
+    f();
+    return this.l;
+  }
+  
+  float d()
+  {
+    f();
+    return this.n;
+  }
+  
+  void e()
+  {
+    f();
+    this.n = this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerColumn
  * JD-Core Version:    0.7.0.1
  */

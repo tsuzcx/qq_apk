@@ -10,13 +10,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AbsListView;
+import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.exposure.AreaInfo;
+import com.tencent.qqlive.module.videoreport.page.DialogListUtil;
+import com.tencent.qqlive.module.videoreport.page.ViewContainerBinder;
 import java.util.HashSet;
 import java.util.Set;
 
 public class UIUtils
 {
+  private static final String TAG = "UIUtils";
   private static final Rect TEMP_RECT = new Rect();
+  
+  public static Activity findAttachedActivity(View paramView)
+  {
+    if (!ViewCompatUtils.isAttachedToWindow(paramView)) {
+      return null;
+    }
+    paramView = paramView.getRootView();
+    paramView = ViewContainerBinder.getInstance().getBoundContainer(paramView);
+    if ((paramView instanceof Activity)) {
+      return (Activity)paramView;
+    }
+    if ((paramView instanceof Dialog)) {
+      return DialogListUtil.getDialogActivity((Dialog)paramView);
+    }
+    return null;
+  }
   
   public static String getActivityInfo(Activity paramActivity)
   {
@@ -97,6 +117,14 @@ public class UIUtils
     return new AreaInfo(l2, l1, d1);
   }
   
+  public static Object getListOnHierarchyChangeListener(AbsListView paramAbsListView)
+  {
+    if (paramAbsListView == null) {
+      return null;
+    }
+    return ReflectUtils.getField(ViewGroup.class, "mOnHierarchyChangeListener", paramAbsListView);
+  }
+  
   public static Object getListScrollListener(AbsListView paramAbsListView)
   {
     if (paramAbsListView == null) {
@@ -150,35 +178,38 @@ public class UIUtils
     if (paramView == null) {
       return "null";
     }
-    localObject3 = "0";
+    Object localObject3 = "0";
     int i = paramView.getId();
     Object localObject1 = localObject3;
-    if (i != -1) {}
-    try
-    {
-      Context localContext = ReportUtils.getContext();
-      localObject1 = localObject3;
-      if (localContext != null) {
-        localObject1 = localContext.getResources().getResourceName(i);
-      }
-    }
-    catch (Resources.NotFoundException localNotFoundException)
-    {
-      for (;;)
+    Object localObject2;
+    if (i != -1) {
+      try
       {
-        Object localObject2 = localObject3;
+        localObject4 = ReportUtils.getContext();
+        localObject1 = localObject3;
+        if (localObject4 != null) {
+          localObject1 = ((Context)localObject4).getResources().getResourceName(i);
+        }
+      }
+      catch (Resources.NotFoundException localNotFoundException)
+      {
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("NotFoundException ");
+        ((StringBuilder)localObject4).append(localNotFoundException);
+        Log.e("UIUtils", ((StringBuilder)localObject4).toString());
+        localObject2 = localObject3;
       }
     }
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(paramView.getClass().getSimpleName());
     ((StringBuilder)localObject3).append(":");
-    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(localObject2);
     return ((StringBuilder)localObject3).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.UIUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class ReadinjoyJumpActivity$1
   {
     QLog.d("ReadinjoyJumpActivity", 1, "timeout ! show error page !");
     ReadInJoyLogicEngineEventDispatcher.a().b(ReadinjoyJumpActivity.a(this.this$0));
-    ReadinjoyJumpActivity.a(this.this$0);
+    ReadinjoyJumpActivity.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.activity.ReadinjoyJumpActivity.1
  * JD-Core Version:    0.7.0.1
  */

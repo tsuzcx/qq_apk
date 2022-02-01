@@ -18,7 +18,7 @@ class DropdownMenuEndIconDelegate$3
   public void onInitializeAccessibilityNodeInfo(View paramView, @NonNull AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (!DropdownMenuEndIconDelegate.a(this.a.a.a())) {
+    if (!DropdownMenuEndIconDelegate.b(this.a.a.getEditText())) {
       paramAccessibilityNodeInfoCompat.setClassName(Spinner.class.getName());
     }
     if (paramAccessibilityNodeInfoCompat.isShowingHintText()) {
@@ -29,15 +29,15 @@ class DropdownMenuEndIconDelegate$3
   public void onPopulateAccessibilityEvent(View paramView, @NonNull AccessibilityEvent paramAccessibilityEvent)
   {
     super.onPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramView = DropdownMenuEndIconDelegate.a(this.a.a.a());
-    if ((paramAccessibilityEvent.getEventType() == 1) && (DropdownMenuEndIconDelegate.a(this.a).isTouchExplorationEnabled()) && (!DropdownMenuEndIconDelegate.a(this.a.a.a()))) {
+    paramView = DropdownMenuEndIconDelegate.a(this.a.a.getEditText());
+    if ((paramAccessibilityEvent.getEventType() == 1) && (DropdownMenuEndIconDelegate.a(this.a).isTouchExplorationEnabled()) && (!DropdownMenuEndIconDelegate.b(this.a.a.getEditText()))) {
       DropdownMenuEndIconDelegate.a(this.a, paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.3
  * JD-Core Version:    0.7.0.1
  */

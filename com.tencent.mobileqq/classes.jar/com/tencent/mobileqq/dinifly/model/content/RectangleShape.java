@@ -5,7 +5,6 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.RectangleContent;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
 
@@ -16,13 +15,13 @@ public class RectangleShape
   private final boolean hidden;
   private final String name;
   private final AnimatableValue<PointF, PointF> position;
-  private final AnimatablePointValue size;
+  private final AnimatableValue<PointF, PointF> size;
   
-  public RectangleShape(String paramString, AnimatableValue<PointF, PointF> paramAnimatableValue, AnimatablePointValue paramAnimatablePointValue, AnimatableFloatValue paramAnimatableFloatValue, boolean paramBoolean)
+  public RectangleShape(String paramString, AnimatableValue<PointF, PointF> paramAnimatableValue1, AnimatableValue<PointF, PointF> paramAnimatableValue2, AnimatableFloatValue paramAnimatableFloatValue, boolean paramBoolean)
   {
     this.name = paramString;
-    this.position = paramAnimatableValue;
-    this.size = paramAnimatablePointValue;
+    this.position = paramAnimatableValue1;
+    this.size = paramAnimatableValue2;
     this.cornerRadius = paramAnimatableFloatValue;
     this.hidden = paramBoolean;
   }
@@ -42,7 +41,7 @@ public class RectangleShape
     return this.position;
   }
   
-  public AnimatablePointValue getSize()
+  public AnimatableValue<PointF, PointF> getSize()
   {
     return this.size;
   }
@@ -70,7 +69,7 @@ public class RectangleShape
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.RectangleShape
  * JD-Core Version:    0.7.0.1
  */

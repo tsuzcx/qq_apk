@@ -11,7 +11,7 @@ public class NowUtil
   public static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
+    localStringBuilder.append(d());
     localStringBuilder.append("now_download_temp_QQ.apk");
     return localStringBuilder.toString();
   }
@@ -25,26 +25,6 @@ public class NowUtil
     localIntent.putExtra("processName", "com.tencent.mobileqq:tool");
     localIntent.putExtra("noticeParam", localNoticeParam);
     paramContext.sendBroadcast(localIntent);
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (!paramString.exists())
-    {
-      if (!paramString.getParentFile().exists()) {
-        a(paramString.getParent());
-      }
-      paramString.mkdir();
-    }
-  }
-  
-  public static boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
-    localStringBuilder.append("/now/h5testEnv");
-    return new File(localStringBuilder.toString()).exists();
   }
   
   public static boolean a(String paramString)
@@ -69,7 +49,7 @@ public class NowUtil
     // Byte code:
     //   0: ldc 32
     //   2: aload_2
-    //   3: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   6: istore 4
     //   8: iconst_0
     //   9: istore 5
@@ -78,35 +58,35 @@ public class NowUtil
     //   16: iconst_0
     //   17: ireturn
     //   18: aload_0
-    //   19: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   19: invokestatic 90	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   22: ifne +5 -> 27
     //   25: iconst_0
     //   26: ireturn
-    //   27: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   30: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   27: invokestatic 88	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   30: invokestatic 90	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   33: ifeq +5 -> 38
     //   36: iconst_1
     //   37: ireturn
-    //   38: invokestatic 123	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
+    //   38: invokestatic 97	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
     //   41: astore 8
     //   43: aload 8
-    //   45: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   45: invokestatic 90	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   48: ifeq +9 -> 57
     //   51: aload 8
-    //   53: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
+    //   53: invokestatic 99	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
     //   56: pop
-    //   57: new 67	java/io/File
+    //   57: new 73	java/io/File
     //   60: dup
     //   61: aload_0
-    //   62: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   65: astore_0
-    //   66: new 67	java/io/File
+    //   66: new 73	java/io/File
     //   69: dup
     //   70: aload 8
-    //   72: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   72: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   75: astore_1
     //   76: aload_1
-    //   77: invokevirtual 128	java/io/File:createNewFile	()Z
+    //   77: invokevirtual 102	java/io/File:createNewFile	()Z
     //   80: pop
     //   81: aconst_null
     //   82: astore_2
@@ -114,22 +94,22 @@ public class NowUtil
     //   84: astore 7
     //   86: aconst_null
     //   87: astore 6
-    //   89: new 130	java/io/FileInputStream
+    //   89: new 104	java/io/FileInputStream
     //   92: dup
     //   93: aload_0
-    //   94: invokespecial 133	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   94: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   97: astore_0
-    //   98: new 135	java/io/FileOutputStream
+    //   98: new 109	java/io/FileOutputStream
     //   101: dup
     //   102: aload_1
-    //   103: invokespecial 136	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   103: invokespecial 110	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   106: astore_1
     //   107: sipush 1024
     //   110: newarray byte
     //   112: astore_2
     //   113: aload_0
     //   114: aload_2
-    //   115: invokevirtual 142	java/io/InputStream:read	([B)I
+    //   115: invokevirtual 116	java/io/InputStream:read	([B)I
     //   118: istore_3
     //   119: iload_3
     //   120: iconst_m1
@@ -138,16 +118,16 @@ public class NowUtil
     //   125: aload_2
     //   126: iconst_0
     //   127: iload_3
-    //   128: invokevirtual 148	java/io/OutputStream:write	([BII)V
+    //   128: invokevirtual 122	java/io/OutputStream:write	([BII)V
     //   131: goto -18 -> 113
     //   134: aload_1
-    //   135: invokevirtual 151	java/io/OutputStream:close	()V
+    //   135: invokevirtual 125	java/io/OutputStream:close	()V
     //   138: aload_0
-    //   139: invokevirtual 152	java/io/InputStream:close	()V
+    //   139: invokevirtual 126	java/io/InputStream:close	()V
     //   142: goto +8 -> 150
     //   145: astore_0
     //   146: aload_0
-    //   147: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   147: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   150: iconst_1
     //   151: istore 4
     //   153: goto +140 -> 293
@@ -175,15 +155,15 @@ public class NowUtil
     //   191: aload_1
     //   192: ifnull +10 -> 202
     //   195: aload_1
-    //   196: invokevirtual 151	java/io/OutputStream:close	()V
+    //   196: invokevirtual 125	java/io/OutputStream:close	()V
     //   199: goto +3 -> 202
     //   202: aload_2
     //   203: ifnull +14 -> 217
     //   206: aload_2
-    //   207: invokevirtual 152	java/io/InputStream:close	()V
+    //   207: invokevirtual 126	java/io/InputStream:close	()V
     //   210: goto +7 -> 217
     //   213: aload_1
-    //   214: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   214: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   217: aload_0
     //   218: athrow
     //   219: aconst_null
@@ -193,19 +173,19 @@ public class NowUtil
     //   223: aload_1
     //   224: ifnull +10 -> 234
     //   227: aload_1
-    //   228: invokevirtual 151	java/io/OutputStream:close	()V
+    //   228: invokevirtual 125	java/io/OutputStream:close	()V
     //   231: goto +3 -> 234
     //   234: iload 5
     //   236: istore 4
     //   238: aload_0
     //   239: ifnull +54 -> 293
     //   242: aload_0
-    //   243: invokevirtual 152	java/io/InputStream:close	()V
+    //   243: invokevirtual 126	java/io/InputStream:close	()V
     //   246: iload 5
     //   248: istore 4
     //   250: goto +43 -> 293
     //   253: aload_0
-    //   254: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   254: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   257: iload 5
     //   259: istore 4
     //   261: goto +32 -> 293
@@ -216,25 +196,25 @@ public class NowUtil
     //   269: aload_1
     //   270: ifnull +7 -> 277
     //   273: aload_1
-    //   274: invokevirtual 151	java/io/OutputStream:close	()V
+    //   274: invokevirtual 125	java/io/OutputStream:close	()V
     //   277: iload 5
     //   279: istore 4
     //   281: aload_0
     //   282: ifnull +11 -> 293
     //   285: aload_0
-    //   286: invokevirtual 152	java/io/InputStream:close	()V
+    //   286: invokevirtual 126	java/io/InputStream:close	()V
     //   289: iload 5
     //   291: istore 4
     //   293: iload 4
     //   295: ifne +12 -> 307
     //   298: aload 8
-    //   300: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
+    //   300: invokestatic 99	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
     //   303: pop
     //   304: iload 4
     //   306: ireturn
     //   307: aload 8
-    //   309: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   312: invokestatic 157	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   309: invokestatic 88	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   312: invokestatic 131	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
     //   315: pop
     //   316: iload 4
     //   318: ireturn
@@ -304,7 +284,7 @@ public class NowUtil
   public static String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
+    localStringBuilder.append(d());
     localStringBuilder.append("now_download_common.apk");
     return localStringBuilder.toString();
   }
@@ -325,19 +305,39 @@ public class NowUtil
     return new File(paramString1).renameTo(new File(paramString2));
   }
   
-  private static String c()
+  private static void c(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists())
+    {
+      if (!paramString.getParentFile().exists()) {
+        c(paramString.getParent());
+      }
+      paramString.mkdir();
+    }
+  }
+  
+  public static boolean c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    localStringBuilder.append("/now/h5testEnv");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
+  private static String d()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
     ((StringBuilder)localObject).append("/tencent/now/");
     localObject = ((StringBuilder)localObject).toString();
-    a((String)localObject);
+    c((String)localObject);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowUtil
  * JD-Core Version:    0.7.0.1
  */

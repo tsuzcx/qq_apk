@@ -11,19 +11,19 @@ class ChatHistory$25
   
   public void a(AudioPlayerBase paramAudioPlayerBase)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo.d();
+    this.a.r();
+    if (this.a.al != null) {
+      this.a.al.d();
     }
     this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    this.a.ag.unregisterListener(this.a);
   }
   
   public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
   {
-    this.a.b(2131694926);
+    this.a.c(2131892653);
     this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    this.a.ag.unregisterListener(this.a);
   }
   
   public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt)
@@ -37,7 +37,7 @@ class ChatHistory$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.25
  * JD-Core Version:    0.7.0.1
  */

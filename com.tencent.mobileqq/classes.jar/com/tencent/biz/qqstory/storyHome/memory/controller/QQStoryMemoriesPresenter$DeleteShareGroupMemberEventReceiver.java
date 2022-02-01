@@ -20,7 +20,7 @@ public class QQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver
     if (paramDeleteShareGroupMemberEvent.a)
     {
       SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramDeleteShareGroupMemberEvent);
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).a.h();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).i.i();
     }
   }
   

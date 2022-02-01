@@ -21,15 +21,15 @@ class QzoneGiftUtil$1$1
     localStringBuilder.append(" mLoadFailTimes = ");
     localStringBuilder.append(QzoneGiftUtil.1.d(this.a));
     QLog.i("QzoneGiftUtil", 1, localStringBuilder.toString());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqQzonevipGiftQzoneGiftUtil$GiftLoadListener != null)
+    if (this.a.a != null)
     {
-      if (QzoneGiftUtil.1.c(this.a) == this.a.jdField_a_of_type_Int)
+      if (QzoneGiftUtil.1.c(this.a) == this.a.b)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqQzonevipGiftQzoneGiftUtil$GiftLoadListener.a();
+        this.a.a.b();
         return;
       }
-      if (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) == this.a.jdField_a_of_type_Int) {
-        this.a.jdField_a_of_type_ComTencentMobileqqQzonevipGiftQzoneGiftUtil$GiftLoadListener.b();
+      if (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) == this.a.b) {
+        this.a.a.c();
       }
     }
   }
@@ -38,7 +38,7 @@ class QzoneGiftUtil$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

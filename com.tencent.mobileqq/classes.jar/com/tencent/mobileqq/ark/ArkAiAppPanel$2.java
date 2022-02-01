@@ -10,7 +10,7 @@ class ArkAiAppPanel$2
   
   public void run()
   {
-    View localView = ArkAiAppPanel.a(this.this$0).getSelectedView();
+    View localView = ArkAiAppPanel.b(this.this$0).getSelectedView();
     if (localView != null) {
       localView.setSelected(true);
     }
@@ -18,7 +18,7 @@ class ArkAiAppPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.2
  * JD-Core Version:    0.7.0.1
  */

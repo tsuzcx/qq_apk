@@ -31,7 +31,7 @@ public class FloatMapCallback
       return;
     }
     FloatingScreenReporter.b();
-    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramQBaseActivity.getString(2131690728), paramQBaseActivity.getString(2131694583), new FloatMapCallback.2(paramQBaseActivity), null);
+    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramQBaseActivity.getString(2131887648), paramQBaseActivity.getString(2131892267), new FloatMapCallback.2(paramQBaseActivity), null);
     paramQBaseActivity.setCancelable(false);
     try
     {
@@ -84,7 +84,7 @@ public class FloatMapCallback
   
   public boolean a(QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey)
   {
-    return a(paramQBaseActivity, paramRoomKey, LocationShareServiceHolder.a(MobileQQ.sMobileQQ.waitAppRuntime(null)).getFloatMapView());
+    return a(paramQBaseActivity, paramRoomKey, LocationShareServiceHolder.b(MobileQQ.sMobileQQ.waitAppRuntime(null)).getFloatMapView());
   }
   
   public void b()
@@ -95,7 +95,7 @@ public class FloatMapCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.FloatMapCallback
  * JD-Core Version:    0.7.0.1
  */

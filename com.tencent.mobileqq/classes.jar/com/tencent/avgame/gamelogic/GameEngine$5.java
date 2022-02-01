@@ -16,8 +16,8 @@ class GameEngine$5
   public void a()
   {
     QLog.i("avgame_logic.GameEngine", 1, "onEnterRoomSucess.");
-    if ((this.a.h()) && (Build.VERSION.SDK_INT >= 16)) {
-      AudioProcess.a().startRecog(this.a);
+    if ((this.a.C()) && (Build.VERSION.SDK_INT >= 16)) {
+      AudioProcess.b().startRecog(this.a);
     }
   }
   
@@ -27,10 +27,10 @@ class GameEngine$5
     localStringBuilder.append("onEnterRoomError errorType = ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" engineData = ");
-    localStringBuilder.append(GameEngine.a(this.a));
+    localStringBuilder.append(GameEngine.b(this.a));
     QLog.i("avgame_logic.GameEngine", 1, localStringBuilder.toString());
     if ((paramInt == 4) || (paramInt == 3)) {
-      AVGameHandler.a().b().post(new GameEngine.5.1(this));
+      AVGameHandler.a().c().post(new GameEngine.5.1(this));
     }
   }
 }

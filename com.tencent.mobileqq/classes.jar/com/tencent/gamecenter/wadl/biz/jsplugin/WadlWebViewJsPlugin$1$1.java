@@ -13,13 +13,13 @@ class WadlWebViewJsPlugin$1$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.a.a.h = 1;
+    this.a.a.C = 1;
     WadlProxyServiceUtil.a().b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.jsplugin.WadlWebViewJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

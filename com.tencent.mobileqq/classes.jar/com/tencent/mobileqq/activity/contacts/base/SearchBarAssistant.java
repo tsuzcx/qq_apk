@@ -16,6 +16,8 @@ import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.base.util.SearchConfigManager;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
@@ -24,32 +26,38 @@ public class SearchBarAssistant
   implements View.OnClickListener
 {
   public static final String a = "SearchBarAssistant";
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<BaseActivity> b;
+  private TextView c;
+  private EditText d;
+  private long e;
+  private int f;
   
   public SearchBarAssistant(BaseActivity paramBaseActivity, int paramInt, View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    paramBaseActivity = paramView.findViewById(2131377050);
+    this.b = new WeakReference(paramBaseActivity);
+    this.f = paramInt;
+    paramBaseActivity = paramView.findViewById(2131445416);
     IphoneTitleBarActivity.setLayerType(paramBaseActivity);
-    paramView = paramBaseActivity.findViewById(2131363868);
+    paramView = paramBaseActivity.findViewById(2131429816);
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBaseActivity.findViewById(2131366333));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBaseActivity.findViewById(2131379866));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
+    this.d = ((EditText)paramBaseActivity.findViewById(2131432634));
+    this.c = ((TextView)paramBaseActivity.findViewById(2131448724));
+    this.d.setFocusableInTouchMode(false);
+    this.d.setCursorVisible(false);
+    this.d.setOnClickListener(this);
+    a();
   }
   
-  public void a()
+  protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(SearchEntryConfigManager.b());
+    if (QQTheme.isNowSimpleUI())
+    {
+      this.c.setTextSize(0, ViewUtils.dpToPx(14.0F));
+      return;
+    }
+    this.c.setTextSize(0, ViewUtils.dpToPx(16.0F));
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -65,39 +73,49 @@ public class SearchBarAssistant
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 1) {
+    this.c.setText(SearchEntryConfigManager.c());
+  }
+  
+  public void c()
+  {
+    if (this.f == 1) {
       ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).resetAttribute();
     }
   }
   
+  public void d()
+  {
+    a();
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131366333)
+    if (paramView.getId() == 2131432634)
     {
       long l = System.currentTimeMillis();
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onClick() time stamp = ");
-        localStringBuilder.append(l - this.jdField_a_of_type_Long);
+        localStringBuilder.append(l - this.e);
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      if (Math.abs(l - this.jdField_a_of_type_Long) >= 1500L)
+      if (Math.abs(l - this.e) >= 1500L)
       {
-        int j = this.jdField_a_of_type_Int;
+        int j = this.f;
         int i = 1;
         if (j == 2) {
           i = 2;
         }
-        this.jdField_a_of_type_Long = l;
-        FrameHelperActivity.b(false);
-        localObject = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        this.e = l;
+        FrameHelperActivity.c(false);
+        localObject = (BaseActivity)this.b.get();
         if (localObject != null)
         {
           UniteSearchReportController.a(null, i, 0, "0X8009D15", 0, 0, null, null);
-          UniteSearchActivity.a((Activity)localObject, null, this.jdField_a_of_type_Int, i);
+          UniteSearchActivity.a((Activity)localObject, null, this.f, i);
         }
       }
     }
@@ -106,7 +124,7 @@ public class SearchBarAssistant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.SearchBarAssistant
  * JD-Core Version:    0.7.0.1
  */

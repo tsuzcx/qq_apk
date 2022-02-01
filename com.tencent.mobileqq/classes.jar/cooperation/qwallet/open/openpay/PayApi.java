@@ -8,39 +8,39 @@ import org.json.JSONObject;
 public class PayApi
   extends BaseApi
 {
-  public long a;
-  public String e;
   public String f;
   public String g;
   public String h;
   public String i;
   public String j;
   public String k;
-  public String l;
+  public long l;
   public String m;
   public String n;
+  public String o;
+  public String p;
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
-    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
-    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
-    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
-    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
-    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
-    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
-    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
-    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
-    this.m = paramBundle.getString("_mqqpay_payapi_sig");
-    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
+    this.f = paramBundle.getString("_mqqpay_payapi_serialnumber");
+    this.g = paramBundle.getString("_mqqpay_payapi_callbackscheme");
+    this.h = paramBundle.getString("_mqqpay_payapi_pubacc");
+    this.i = paramBundle.getString("_mqqpay_payapi_pubacchint");
+    this.j = paramBundle.getString("_mqqpay_payapi_tokenid");
+    this.k = paramBundle.getString("_mqqpay_payapi_nonce");
+    this.l = paramBundle.getLong("_mqqpay_payapi_timeStamp");
+    this.m = paramBundle.getString("_mqqpay_payapi_bargainorId");
+    this.n = paramBundle.getString("_mqqpay_payapi_sigType");
+    this.o = paramBundle.getString("_mqqpay_payapi_sig");
+    this.p = paramBundle.getString("_mqqpay_payapi_packageName");
   }
   
   public void a(String paramString)
   {
     this.c = "browser";
     this.d = "pay";
-    this.jdField_a_of_type_Int = 1;
+    this.e = 1;
     try
     {
       paramString = new JSONObject(paramString);
@@ -53,25 +53,25 @@ public class PayApi
           if (!str.equals("pay")) {
             return;
           }
-          this.e = localJSONObject.optString("identifier");
+          this.f = localJSONObject.optString("identifier");
           localJSONObject = paramString.optJSONObject("application");
           if (localJSONObject != null)
           {
-            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
+            this.a = localJSONObject.optString("appId");
             this.b = localJSONObject.optString("sdkVersion");
-            this.n = localJSONObject.optString("pkgName");
-            this.f = localJSONObject.optString("urlScheme");
+            this.p = localJSONObject.optString("pkgName");
+            this.g = localJSONObject.optString("urlScheme");
           }
           paramString = paramString.optJSONObject("params");
           if (paramString == null) {
             return;
           }
-          this.i = paramString.optString("tokenId");
-          this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
-          this.j = paramString.optString("nonce");
-          this.k = paramString.optString("bargainorId");
-          this.l = "HMAC-SHA1";
-          this.m = paramString.optString("sig");
+          this.j = paramString.optString("tokenId");
+          this.l = paramString.optLong("timeStamp");
+          this.k = paramString.optString("nonce");
+          this.m = paramString.optString("bargainorId");
+          this.n = "HMAC-SHA1";
+          this.o = paramString.optString("sig");
           return;
         }
       }
@@ -85,7 +85,7 @@ public class PayApi
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return false;
     }
     if (TextUtils.isEmpty(this.c)) {
@@ -94,16 +94,10 @@ public class PayApi
     if ((!this.c.equals("native")) && (!this.c.equals("browser"))) {
       return false;
     }
-    if (TextUtils.isEmpty(this.n)) {
+    if (TextUtils.isEmpty(this.p)) {
       return false;
     }
-    if ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) {
-      return false;
-    }
-    if (TextUtils.isEmpty(this.i)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(this.k)) {
+    if ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.g))) {
       return false;
     }
     if (TextUtils.isEmpty(this.j)) {
@@ -112,13 +106,19 @@ public class PayApi
     if (TextUtils.isEmpty(this.m)) {
       return false;
     }
-    if (TextUtils.isEmpty(this.l)) {
+    if (TextUtils.isEmpty(this.k)) {
       return false;
     }
-    if (this.jdField_a_of_type_Long <= 0L) {
+    if (TextUtils.isEmpty(this.o)) {
       return false;
     }
-    return !TextUtils.isEmpty(this.e);
+    if (TextUtils.isEmpty(this.n)) {
+      return false;
+    }
+    if (this.l <= 0L) {
+      return false;
+    }
+    return !TextUtils.isEmpty(this.f);
   }
   
   public String toString()
@@ -127,54 +127,54 @@ public class PayApi
     localStringBuilder1.append(super.toString());
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("&sn=");
-    localStringBuilder2.append(this.e);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&cs=");
     localStringBuilder2.append(this.f);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&pa=");
+    localStringBuilder2.append("&cs=");
     localStringBuilder2.append(this.g);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&pah=");
+    localStringBuilder2.append("&pa=");
     localStringBuilder2.append(this.h);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&ti=");
+    localStringBuilder2.append("&pah=");
     localStringBuilder2.append(this.i);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&ne=");
+    localStringBuilder2.append("&ti=");
     localStringBuilder2.append(this.j);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&ts=");
-    localStringBuilder2.append(this.jdField_a_of_type_Long);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&bi=");
+    localStringBuilder2.append("&ne=");
     localStringBuilder2.append(this.k);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&st=");
+    localStringBuilder2.append("&ts=");
     localStringBuilder2.append(this.l);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&sg=");
+    localStringBuilder2.append("&bi=");
     localStringBuilder2.append(this.m);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("&pn=");
+    localStringBuilder2.append("&st=");
     localStringBuilder2.append(this.n);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&sg=");
+    localStringBuilder2.append(this.o);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("&pn=");
+    localStringBuilder2.append(this.p);
     localStringBuilder1.append(localStringBuilder2.toString());
     return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.open.openpay.PayApi
  * JD-Core Version:    0.7.0.1
  */

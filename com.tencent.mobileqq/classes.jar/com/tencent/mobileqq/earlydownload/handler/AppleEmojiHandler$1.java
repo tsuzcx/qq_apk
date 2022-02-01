@@ -34,15 +34,15 @@ class AppleEmojiHandler$1
     localObject2 = AIOUtils.a();
     ((StringBuilder)localObject2).append(AppConstants.SDCARD_PATH);
     ((StringBuilder)localObject2).append("early/");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaIoFile.getName());
+    ((StringBuilder)localObject2).append(this.a.getName());
     ((SharedPreferences.Editor)localObject1).putString("apple_emoji_file", ((StringBuilder)localObject2).toString()).commit();
-    AppleEmojiManager.unzip(this.jdField_a_of_type_JavaIoFile);
-    AppleEmojiHandler.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    AppleEmojiManager.unzip(this.a);
+    AppleEmojiHandler.a(this.this$0, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1
  * JD-Core Version:    0.7.0.1
  */

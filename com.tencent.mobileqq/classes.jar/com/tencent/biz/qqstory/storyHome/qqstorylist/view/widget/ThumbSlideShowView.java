@@ -32,13 +32,13 @@ public class ThumbSlideShowView
   extends ImageSwitcher
   implements Handler.Callback, ViewSwitcher.ViewFactory
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private RoundedTransformation jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation;
-  private ArrayList<LocalMediaInfo> jdField_a_of_type_JavaUtilArrayList;
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+  private Handler a;
   private Handler b;
+  private ArrayList<LocalMediaInfo> c;
+  private BitmapDrawable[] d;
+  private int e = 0;
+  private RoundedTransformation f;
+  private long g = 0L;
   
   public ThumbSlideShowView(Context paramContext)
   {
@@ -77,16 +77,16 @@ public class ThumbSlideShowView
   private void b()
   {
     super.setFactory(this);
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772065);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772067);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772090);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772092);
     localAnimation1.setDuration(800L);
     localAnimation2.setDuration(800L);
     super.setInAnimation(localAnimation1);
     super.setOutAnimation(localAnimation2);
     super.setAnimateFirstView(true);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.a = new Handler(Looper.getMainLooper(), this);
     this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation = new RoundedTransformation(UIUtils.b(getContext(), 8.0F), 0, 1.418182F, null, null);
+    this.f = new RoundedTransformation(UIUtils.b(getContext(), 8.0F), 0, 1.418182F, null, null);
   }
   
   public void a()
@@ -95,11 +95,11 @@ public class ThumbSlideShowView
     if (localHandler != null) {
       localHandler.removeMessages(2);
     }
-    localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    localHandler = this.a;
     if (localHandler != null)
     {
       localHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+      this.a.removeMessages(3);
     }
   }
   
@@ -111,12 +111,12 @@ public class ThumbSlideShowView
         return;
       }
       a();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable[paramArrayList.size()];
+      this.g = System.currentTimeMillis();
+      this.e = 0;
+      this.c = new ArrayList(paramArrayList);
+      this.d = new BitmapDrawable[paramArrayList.size()];
       this.b.sendEmptyMessage(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.a.sendEmptyMessage(1);
     }
   }
   
@@ -130,9 +130,9 @@ public class ThumbSlideShowView
         return true;
       }
       long l = System.currentTimeMillis();
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.c.size())
       {
-        paramMessage = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        paramMessage = (LocalMediaInfo)this.c.get(i);
         localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inMutable = true;
         paramMessage = a(getContext(), paramMessage, 1, (BitmapFactory.Options)localObject);
@@ -145,42 +145,42 @@ public class ThumbSlideShowView
           ((Canvas)localObject).drawRect(0.0F, 0.0F, paramMessage.getWidth(), paramMessage.getHeight(), localPaint);
           ((Canvas)localObject).save();
           ((Canvas)localObject).restore();
-          if (this.jdField_a_of_type_Long > l) {
+          if (this.g > l) {
             return true;
           }
           if (paramMessage != null)
           {
-            this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation.a(paramMessage));
+            this.d[i] = new BitmapDrawable(getContext().getResources(), this.f.a(paramMessage));
             paramMessage.recycle();
           }
         }
         i += 1;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.a.sendEmptyMessage(3);
       return true;
     }
-    paramMessage = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-    i = this.jdField_a_of_type_Int;
+    paramMessage = this.d;
+    i = this.e;
     Object localObject = paramMessage[i];
     if (localObject != null)
     {
       super.setImageDrawable((Drawable)localObject);
-      paramMessage = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+      paramMessage = this.d;
       if (paramMessage.length == 1) {
         return true;
       }
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int >= paramMessage.length) {
-        this.jdField_a_of_type_Int = 0;
+      this.e += 1;
+      if (this.e >= paramMessage.length) {
+        this.e = 0;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
+      this.a.sendEmptyMessageDelayed(1, 2000L);
       return true;
     }
-    this.jdField_a_of_type_Int = (i + 1);
-    if (this.jdField_a_of_type_Int >= paramMessage.length) {
-      this.jdField_a_of_type_Int = 0;
+    this.e = (i + 1);
+    if (this.e >= paramMessage.length) {
+      this.e = 0;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
+    this.a.sendEmptyMessageDelayed(1, 100L);
     return true;
   }
   

@@ -11,13 +11,13 @@ class NotifyPushSettingFragment$25
   
   public void onClick(View paramView)
   {
-    NotifyPushSettingFragment.a(this.a);
+    NotifyPushSettingFragment.w(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.25
  * JD-Core Version:    0.7.0.1
  */

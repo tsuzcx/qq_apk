@@ -22,7 +22,7 @@ class AVGameLobbyOnClickListenerFactory$1
     if (paramIBaseData == null) {
       return;
     }
-    paramIBaseData = ((AVGameLobbyBannerContentInfo)paramIBaseData).a();
+    paramIBaseData = ((AVGameLobbyBannerContentInfo)paramIBaseData).b();
     if ((paramIBaseData != null) && (paramIBaseData.size() != 0))
     {
       if (paramInt >= paramIBaseData.size()) {
@@ -35,7 +35,7 @@ class AVGameLobbyOnClickListenerFactory$1
       }
       if (paramIBaseData.startsWith("http"))
       {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800B494", "0X800B494", 1, 0, "", "", "", "");
+        ReportController.b(this.a.b, "dc00898", "", "", "0X800B494", "0X800B494", 1, 0, "", "", "", "");
         Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
         localIntent.putExtra("url", paramIBaseData);
         paramView.startActivity(localIntent);
@@ -46,9 +46,9 @@ class AVGameLobbyOnClickListenerFactory$1
         paramView = paramIBaseData;
         if (paramIBaseData.startsWith("mqqapi"))
         {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800B494", "0X800B494", 2, 0, "", "", "", "");
+          ReportController.b(this.a.b, "dc00898", "", "", "0X800B494", "0X800B494", 2, 0, "", "", "", "");
           paramView = AVGameLobbyOnClickListenerFactory.a(this.a, paramIBaseData);
-          this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramView);
+          this.a.a.a(paramView);
         }
       }
       if (QLog.isColorLevel())

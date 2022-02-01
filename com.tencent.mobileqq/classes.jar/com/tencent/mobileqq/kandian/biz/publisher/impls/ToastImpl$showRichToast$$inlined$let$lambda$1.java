@@ -12,12 +12,12 @@ final class ToastImpl$showRichToast$$inlined$let$lambda$1
 {
   public final void onClick(View paramView)
   {
-    ViolaAccessHelper.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "", this.jdField_a_of_type_JavaLangString, null, false);
+    ViolaAccessHelper.a((Context)this.a, "", this.b, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ToastImpl.showRichToast..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

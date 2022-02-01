@@ -23,7 +23,7 @@ final class URLDrawableDecodeHandler$1
       paramDownloadParams = (int[])paramDownloadParams;
       if (paramDownloadParams.length == 2)
       {
-        float f2 = DeviceInfoUtil.a();
+        float f2 = DeviceInfoUtil.A();
         float f1 = f2;
         if (f2 < 0.01F) {
           f1 = 1.0F;
@@ -38,7 +38,7 @@ final class URLDrawableDecodeHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.URLDrawableDecodeHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class ProfileNameView$1
   
   public void onClick(View paramView)
   {
-    String str = ((ITroopLinkApi)QRoute.api(ITroopLinkApi.class)).getTroopMemberHonorUrl(this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.troopUin, this.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin);
+    String str = ((ITroopLinkApi)QRoute.api(ITroopLinkApi.class)).getTroopMemberHonorUrl(this.a.troopUin, this.a.allInOne.uin);
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
     localIntent.putExtra("url", str);
     paramView.getContext().startActivity(localIntent);
@@ -29,7 +29,7 @@ class ProfileNameView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileNameView.1
  * JD-Core Version:    0.7.0.1
  */

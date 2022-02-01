@@ -12,13 +12,13 @@ class SwiftFloatViewUI$2$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI$2.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI$2.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI$2.a = false;
+    paramAnimation = (FrameLayout.LayoutParams)this.a.getLayoutParams();
+    paramAnimation.leftMargin = this.b.e;
+    paramAnimation.topMargin = this.b.f;
+    this.a.setLayoutParams(paramAnimation);
+    this.a.clearAnimation();
+    this.a.setVisibility(0);
+    this.b.i = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -27,7 +27,7 @@ class SwiftFloatViewUI$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -90,12 +90,12 @@ public class JumpAdUtils
   
   public static void a(Activity paramActivity, AdData paramAdData)
   {
-    if (paramAdData.c) {
-      paramActivity = a(paramActivity, paramAdData.r);
-    } else if (paramAdData.d == 12) {
-      paramActivity = a(paramActivity, paramAdData.p, paramAdData.n);
+    if (paramAdData.v) {
+      paramActivity = a(paramActivity, paramAdData.w);
+    } else if (paramAdData.s == 12) {
+      paramActivity = a(paramActivity, paramAdData.t, paramAdData.q);
     } else {
-      paramActivity = a(paramActivity, paramAdData.n);
+      paramActivity = a(paramActivity, paramAdData.q);
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
     if (localQQAppInterface != null) {
@@ -105,13 +105,13 @@ public class JumpAdUtils
   
   public static void a(BaseData paramBaseData, View paramView, Context paramContext)
   {
-    if ((paramBaseData != null) && ((paramBaseData.u == 10) || (paramBaseData.u == 17) || (paramBaseData.u == 22) || (paramBaseData.u == 9)))
+    if ((paramBaseData != null) && ((paramBaseData.aP == 10) || (paramBaseData.aP == 17) || (paramBaseData.aP == 22) || (paramBaseData.aP == 9)))
     {
-      if (paramBaseData.u == 17) {
+      if (paramBaseData.aP == 17) {
         paramBaseData = (ProteusBannerVideoItemData)paramBaseData;
-      } else if (paramBaseData.u == 10) {
+      } else if (paramBaseData.aP == 10) {
         paramBaseData = (AdData)paramBaseData;
-      } else if (paramBaseData.u == 9) {
+      } else if (paramBaseData.aP == 9) {
         paramBaseData = (AdData)paramBaseData;
       } else {
         paramBaseData = (AdData)paramBaseData;
@@ -120,10 +120,10 @@ public class JumpAdUtils
         a = new KandianPopupWindowForAd((Activity)paramContext);
       }
       if (!a.a()) {
-        a.a();
+        a.b();
       }
       JumpAdUtils.1 local1 = new JumpAdUtils.1(paramContext, paramBaseData);
-      if (a.a(0, paramBaseData.b))
+      if (a.a(0, paramBaseData.E))
       {
         a.a(paramView, local1);
         a.a(new JumpAdUtils.2(paramContext, paramBaseData));
@@ -133,7 +133,7 @@ public class JumpAdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment
   extends JobSegment<ImageInfo, ImageInfo>
 {
-  private int jdField_a_of_type_Int;
-  private ImageInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo;
-  private TroopHomeworkHelper.UploadFileTask jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<XMediaEditor> a;
+  private int b;
+  private String c;
+  private TroopHomeworkHelper.UploadFileTask d;
+  private ImageInfo e;
   
   public ImageInfo$UploadMediaSegment(int paramInt, XMediaEditor paramXMediaEditor, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt;
+    this.a = new WeakReference(paramXMediaEditor);
+    this.c = paramString;
   }
   
   protected void a(JobContext paramJobContext, ImageInfo paramImageInfo)
@@ -30,22 +30,22 @@ public class ImageInfo$UploadMediaSegment
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int), ", info status=", Integer.valueOf(paramImageInfo.f) });
+      QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start. mediaType=", Integer.valueOf(this.b), ", info status=", Integer.valueOf(paramImageInfo.o) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo = paramImageInfo;
-    if (this.jdField_a_of_type_Int != 1) {
+    this.e = paramImageInfo;
+    if (this.b != 1) {
       paramJobContext = paramImageInfo.c;
     } else {
-      paramJobContext = ((VideoInfo)paramImageInfo).g;
+      paramJobContext = ((VideoInfo)paramImageInfo).s;
     }
     if (QLog.isColorLevel()) {
       QLog.d("UploadMediaSegment", 2, new Object[] { "UploadMediaSegment start - getFilePath: ", paramJobContext });
     }
     if (!TextUtils.isEmpty(paramJobContext))
     {
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = paramImageInfo.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new ImageInfo.UploadMediaSegment.MediaUploadCallback(this));
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.b();
+      this.d = paramImageInfo.a(paramJobContext, this.c);
+      this.d.a(new ImageInfo.UploadMediaSegment.MediaUploadCallback(this));
+      this.d.b();
       return;
     }
     notifyError(new Error("-2"));
@@ -54,13 +54,13 @@ public class ImageInfo$UploadMediaSegment
   protected void onCancel()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.jdField_a_of_type_Int) });
+      QLog.d(getClass().getSimpleName(), 2, new Object[] { "UploadMediaSegment onCancel. mediaType=", Integer.valueOf(this.b) });
     }
-    Object localObject = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask;
+    Object localObject = this.d;
     if (localObject != null) {
       ((TroopHomeworkHelper.UploadFileTask)localObject).c();
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 1)
     {
       if (i != 2) {
@@ -77,7 +77,7 @@ public class ImageInfo$UploadMediaSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment
  * JD-Core Version:    0.7.0.1
  */

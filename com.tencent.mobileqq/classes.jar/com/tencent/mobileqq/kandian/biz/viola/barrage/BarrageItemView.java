@@ -26,24 +26,19 @@ import org.jetbrains.annotations.Nullable;
 public final class BarrageItemView
   extends LinearLayout
 {
-  public static final BarrageItemView.Companion a;
-  private static final int b = DisplayUtil.a((Context)BaseApplication.getContext(), 10.0F);
-  private static final int c = DisplayUtil.a((Context)BaseApplication.getContext(), 24.0F);
-  private int jdField_a_of_type_Int;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static final BarrageItemView.Companion a = new BarrageItemView.Companion(null);
+  private static final int j = DisplayUtil.a((Context)BaseApplication.getContext(), 10.0F);
+  private static final int k = DisplayUtil.a((Context)BaseApplication.getContext(), 24.0F);
+  private final TextView b;
+  private final ImageView c;
+  private BarrageItemView.BarrageType d = BarrageItemView.BarrageType.SHORT;
+  private final ComponentAdapter e = new ComponentAdapter();
+  private boolean f;
+  private int g;
   @NotNull
-  private BarrageItemView.AppearState jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$AppearState = BarrageItemView.AppearState.NONE;
-  private BarrageItemView.BarrageType jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$BarrageType = BarrageItemView.BarrageType.SHORT;
-  private final ComponentAdapter jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter = new ComponentAdapter();
+  private List<BarrageTrack.BarrageLine> h = CollectionsKt.emptyList();
   @NotNull
-  private List<BarrageTrack.BarrageLine> jdField_a_of_type_JavaUtilList = CollectionsKt.emptyList();
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$Companion = new BarrageItemView.Companion(null);
-  }
+  private BarrageItemView.AppearState i = BarrageItemView.AppearState.NONE;
   
   @JvmOverloads
   public BarrageItemView(@NotNull Context paramContext)
@@ -61,32 +56,32 @@ public final class BarrageItemView
   public BarrageItemView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131560434, (ViewGroup)this);
-    paramContext = findViewById(2131379542);
+    LayoutInflater.from(paramContext).inflate(2131626479, (ViewGroup)this);
+    paramContext = findViewById(2131448294);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_barrage)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(2131369283);
+    this.b = ((TextView)paramContext);
+    paramContext = findViewById(2131436268);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.iv_author)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
+    this.c = ((ImageView)paramContext);
     a(0.2F);
-    paramInt = b;
+    paramInt = j;
     setPadding(paramInt, 0, paramInt, 0);
     setGravity(16);
-    setMinimumHeight(c);
+    setMinimumHeight(k);
     setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
   }
   
   private final void a(float paramFloat)
   {
-    Drawable localDrawable = getResources().getDrawable(2130841757);
+    Drawable localDrawable = getResources().getDrawable(2130842674);
     Intrinsics.checkExpressionValueIsNotNull(localDrawable, "shapeDrawable");
     localDrawable.setAlpha((int)(paramFloat * 'ÿ'));
     setBackgroundDrawable(localDrawable);
   }
   
-  private final int c()
+  private final int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$BarrageType == BarrageItemView.BarrageType.DOUBLE_LINE)
+    if (this.d == BarrageItemView.BarrageType.DOUBLE_LINE)
     {
       Size localSize = DisplayUtil.a((Context)BaseApplication.getContext());
       Intrinsics.checkExpressionValueIsNotNull(localSize, "DisplayUtil.getScreenSiz…Application.getContext())");
@@ -95,80 +90,80 @@ public final class BarrageItemView
     return BarrageController.a.a()[kotlin.random.Random.Default.nextInt(BarrageController.a.a().length)].intValue();
   }
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final BarrageItemView.AppearState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$AppearState;
-  }
-  
-  @NotNull
-  public final List<BarrageTrack.BarrageLine> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public final void a(@NotNull BarrageInfo paramBarrageInfo, @NotNull BarrageConfig paramBarrageConfig)
   {
     Intrinsics.checkParameterIsNotNull(paramBarrageInfo, "barrageInfo");
     Intrinsics.checkParameterIsNotNull(paramBarrageConfig, "barrageConfig");
-    a(paramBarrageConfig.b());
+    a(paramBarrageConfig.e());
     paramBarrageInfo.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramBarrageInfo.jdField_a_of_type_ComTencentMobileqqTextQQText);
-    if (paramBarrageInfo.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender != null)
+    this.b.setText((CharSequence)paramBarrageInfo.g);
+    if (paramBarrageInfo.e != null)
     {
-      paramBarrageConfig = this.jdField_a_of_type_AndroidWidgetImageView;
-      int i;
-      if (paramBarrageInfo.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender.jdField_a_of_type_Boolean) {
-        i = 0;
+      paramBarrageConfig = this.c;
+      int m;
+      if (paramBarrageInfo.e.d) {
+        m = 0;
       } else {
-        i = 8;
+        m = 8;
       }
-      paramBarrageConfig.setVisibility(i);
+      paramBarrageConfig.setVisibility(m);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$BarrageType = jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$Companion.a(paramBarrageInfo.b);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$BarrageType == BarrageItemView.BarrageType.DOUBLE_LINE) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setLines(2);
+    this.d = a.a(paramBarrageInfo.c);
+    if (this.d == BarrageItemView.BarrageType.DOUBLE_LINE) {
+      this.b.setLines(2);
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
+      this.b.setLines(1);
     }
-    this.jdField_a_of_type_Int = c();
+    this.g = b();
   }
   
-  public final boolean a()
+  @NotNull
+  public final BarrageItemView.AppearState getAppearState()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.i;
+  }
+  
+  public final int getBlockDistance()
+  {
+    return this.g;
+  }
+  
+  public final boolean getBusyInLineEntry()
+  {
+    return this.f;
+  }
+  
+  @NotNull
+  public final List<BarrageTrack.BarrageLine> getPlaceLines()
+  {
+    return this.h;
   }
   
   public final void setAppearState(@NotNull BarrageItemView.AppearState paramAppearState)
   {
     Intrinsics.checkParameterIsNotNull(paramAppearState, "<set-?>");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView$AppearState = paramAppearState;
+    this.i = paramAppearState;
   }
   
   public final void setBlockDistance(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public final void setBusyInLineEntry(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public final void setPlaceLines(@NotNull List<BarrageTrack.BarrageLine> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "<set-?>");
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.h = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageItemView
  * JD-Core Version:    0.7.0.1
  */

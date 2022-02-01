@@ -9,7 +9,7 @@ class LocationFloatWindowController$3
   
   public void onNetMobile2None()
   {
-    LocationFloatWindowController.a(this.a);
+    LocationFloatWindowController.d(this.a);
   }
   
   public void onNetMobile2Wifi(String paramString) {}
@@ -22,12 +22,12 @@ class LocationFloatWindowController$3
   
   public void onNetWifi2None()
   {
-    LocationFloatWindowController.a(this.a);
+    LocationFloatWindowController.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowController.3
  * JD-Core Version:    0.7.0.1
  */

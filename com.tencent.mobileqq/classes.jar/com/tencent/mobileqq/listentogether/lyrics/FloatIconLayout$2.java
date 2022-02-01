@@ -19,12 +19,12 @@ class FloatIconLayout$2
     if (paramBitmap == null) {
       return null;
     }
-    return ImageUtil.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
+    return ImageUtil.a(paramBitmap, this.a.t / 2, this.a.t / 2, this.a.t / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,8 @@ import java.util.ArrayList;
 public abstract class VideoChannelBase
   implements VideoChannelInterface
 {
-  private VideoChannelCallback jdField_a_of_type_ComTencentQavChannelVideoChannelCallback;
-  private VideoChannelSupportCallback jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback;
-  
-  private Bundle a(byte[] paramArrayOfByte)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("buffer", paramArrayOfByte);
-    return localBundle;
-  }
+  private VideoChannelCallback a;
+  private VideoChannelSupportCallback b;
   
   private void a(MultiVideoMsg paramMultiVideoMsg)
   {
@@ -41,7 +34,7 @@ public abstract class VideoChannelBase
   
   private boolean a(int paramInt)
   {
-    VideoChannelSupportCallback localVideoChannelSupportCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback;
+    VideoChannelSupportCallback localVideoChannelSupportCallback = this.b;
     if (localVideoChannelSupportCallback != null) {
       return localVideoChannelSupportCallback.a(paramInt);
     }
@@ -50,32 +43,37 @@ public abstract class VideoChannelBase
   
   private boolean b(int paramInt)
   {
-    VideoChannelSupportCallback localVideoChannelSupportCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback;
+    VideoChannelSupportCallback localVideoChannelSupportCallback = this.b;
     if (localVideoChannelSupportCallback != null) {
       return localVideoChannelSupportCallback.b(paramInt);
     }
     return true;
   }
   
-  protected abstract long a();
+  private Bundle k(byte[] paramArrayOfByte)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("buffer", paramArrayOfByte);
+    return localBundle;
+  }
   
-  protected abstract void a();
+  protected abstract long a();
   
   protected abstract void a(long paramLong, byte[] paramArrayOfByte);
   
   public void a(VideoChannelCallback paramVideoChannelCallback)
   {
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback = paramVideoChannelCallback;
+    this.a = paramVideoChannelCallback;
   }
   
   public void a(VideoChannelSupportCallback paramVideoChannelSupportCallback)
   {
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelSupportCallback = paramVideoChannelSupportCallback;
+    this.b = paramVideoChannelSupportCallback;
   }
   
   public void a(String paramString, int paramInt)
   {
-    VideoChannelCallback localVideoChannelCallback = this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback;
+    VideoChannelCallback localVideoChannelCallback = this.a;
     if (localVideoChannelCallback != null) {
       localVideoChannelCallback.receiveGatewayMsg(paramString, paramInt);
     }
@@ -83,7 +81,7 @@ public abstract class VideoChannelBase
   
   public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null)
+    if (this.a != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
@@ -92,28 +90,30 @@ public abstract class VideoChannelBase
       if (a(paramArrayOfByte.type))
       {
         a(paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveSharpVideoMsg(a(paramArrayOfByte.video_buff));
+        this.a.receiveSharpVideoMsg(k(paramArrayOfByte.video_buff));
       }
     }
   }
   
+  protected abstract void b();
+  
   public void b(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null)
+    if (this.a != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
       localUniPacket.decode(paramArrayOfByte);
       paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
       if (a(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveSharpVideoAck(a(paramArrayOfByte.video_buff));
+        this.a.receiveSharpVideoAck(k(paramArrayOfByte.video_buff));
       }
     }
   }
   
   public void c(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null)
+    if (this.a != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
@@ -123,14 +123,14 @@ public abstract class VideoChannelBase
       if (b(paramArrayOfByte.type))
       {
         a(paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveMultiVideoMsg(a(paramArrayOfByte.video_buff));
+        this.a.receiveMultiVideoMsg(k(paramArrayOfByte.video_buff));
       }
     }
   }
   
   public void d(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null)
+    if (this.a != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
@@ -138,20 +138,20 @@ public abstract class VideoChannelBase
       paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
       AVLog.c("VideoChannelBase", String.format("receiveMultiVideoAck type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
       if (b(paramArrayOfByte.type)) {
-        this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveMultiVideoAck(a(paramArrayOfByte.video_buff));
+        this.a.receiveMultiVideoAck(k(paramArrayOfByte.video_buff));
       }
     }
   }
   
   public void e(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback != null)
+    if (this.a != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
       localUniPacket.decode(paramArrayOfByte);
       paramArrayOfByte = (VideoCallMsg)localUniPacket.getByClass("VideoCallMsg", new VideoCallMsg());
-      this.jdField_a_of_type_ComTencentQavChannelVideoChannelCallback.receiveVideoConfig(a(paramArrayOfByte.vMsg));
+      this.a.receiveVideoConfig(k(paramArrayOfByte.vMsg));
     }
   }
   
@@ -167,7 +167,7 @@ public abstract class VideoChannelBase
   
   public void sendGetGatewayMsg()
   {
-    a();
+    b();
   }
   
   public void sendGetVideoConfig(byte[] paramArrayOfByte)
@@ -230,7 +230,7 @@ public abstract class VideoChannelBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelBase
  * JD-Core Version:    0.7.0.1
  */

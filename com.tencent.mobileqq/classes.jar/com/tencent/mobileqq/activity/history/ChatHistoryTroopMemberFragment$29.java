@@ -20,19 +20,19 @@ class ChatHistoryTroopMemberFragment$29
 {
   ChatHistoryTroopMemberFragment$29(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i;
-    if ((!ChatHistoryTroopMemberFragment.c(this.a)) && (paramInt >= 5)) {
+    if ((!ChatHistoryTroopMemberFragment.l(this.a)) && (paramInt >= 5)) {
       i = paramInt + 1;
     } else {
       i = paramInt;
     }
-    if (this.a.h)
+    if (this.a.B)
     {
       if (paramInt == 0)
       {
-        this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
+        this.a.bn.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
       }
       else if (QLog.isColorLevel())
       {
@@ -40,24 +40,24 @@ class ChatHistoryTroopMemberFragment$29
         paramView.append("mOnActionSheetClickListener.OnClick, error : which = ");
         paramView.append(paramInt);
         paramView.append(", troopUin = ");
-        paramView.append(this.a.c);
+        paramView.append(this.a.w);
         QLog.d("Q.history.BaseFragment", 2, paramView.toString());
       }
     }
-    else if (this.a.jdField_d_of_type_Int == 9)
+    else if (this.a.az == 9)
     {
       if (i == 0)
       {
         paramView = this.a;
-        paramView.f = true;
-        paramView.u = "";
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+        paramView.z = true;
+        paramView.br = "";
+        paramView.N.setVisibility(0);
+        this.a.O.setVisibility(8);
+        this.a.P.setVisibility(8);
+        if (this.a.K != null) {
+          this.a.K.c();
         }
-        ReportController.b(this.a.getBaseActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.c, this.a.o, "", "");
+        ReportController.b(this.a.getBaseActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.w, this.a.aK, "", "");
       }
     }
     else if (i != 0)
@@ -69,55 +69,55 @@ class ChatHistoryTroopMemberFragment$29
           if (i == 3)
           {
             paramView = this.a;
-            paramView.g = true;
-            paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-            ChatHistoryTroopMemberFragment.a(this.a);
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-            this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+            paramView.A = true;
+            paramView.N.setVisibility(0);
+            ChatHistoryTroopMemberFragment.c(this.a);
+            this.a.O.setVisibility(8);
+            this.a.P.setVisibility(8);
+            this.a.T.setVisibility(8);
             paramView = this.a;
-            paramView.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(paramView, 2131369204));
-            this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-            this.a.jdField_d_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701827));
-            this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ChatHistoryTroopMemberFragment.29.3(this));
-            if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null) {
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+            paramView.T = ((TextView)ChatHistoryTroopMemberFragment.b(paramView, 2131436182));
+            this.a.T.setVisibility(0);
+            this.a.T.setText(HardCodeUtil.a(2131898212));
+            this.a.T.setOnClickListener(new ChatHistoryTroopMemberFragment.29.3(this));
+            if (this.a.K != null) {
+              this.a.K.c();
             }
-            paramView = this.a.o;
+            paramView = this.a.aK;
             this.a.a("Clk_del", paramView, "");
           }
         }
         else {
-          this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
+          this.a.bn.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
         }
       }
-      else if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+      else if (!TextUtils.isEmpty(this.a.v))
       {
         paramView = new Intent();
         paramView.putExtra("param_from", 30);
-        paramView.putExtra("group_uin", this.a.c);
-        paramView.putExtra("param_groupcode", this.a.jdField_b_of_type_JavaLangString);
+        paramView.putExtra("group_uin", this.a.w);
+        paramView.putExtra("param_groupcode", this.a.v);
         paramView.putExtra("param_from", 30);
         paramView.putExtra("param_subtype", 4);
         paramView.putExtra("param_entrance", 30);
         paramView.putExtra("param_max", 30);
         paramView.putExtra("param_exit_animation", 3);
         ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivity(this.a.getBaseActivity(), paramView);
-        this.a.getBaseActivity().overridePendingTransition(2130772011, 0);
-        ReportController.b(this.a.getBaseActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.c, "", "", "");
+        this.a.getBaseActivity().overridePendingTransition(2130772014, 0);
+        ReportController.b(this.a.getBaseActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.w, "", "", "");
       }
     }
     else {
-      this.a.A();
+      this.a.E();
     }
-    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if ((this.a.am != null) && (this.a.am.isShowing())) {
+      this.a.am.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29
  * JD-Core Version:    0.7.0.1
  */

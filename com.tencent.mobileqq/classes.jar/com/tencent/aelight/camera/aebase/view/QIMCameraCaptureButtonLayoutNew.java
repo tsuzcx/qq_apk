@@ -28,153 +28,115 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class QIMCameraCaptureButtonLayoutNew
   extends AbsAECaptureButton
 {
-  protected float a;
-  protected int a;
-  protected long a;
-  protected ValueAnimator a;
-  protected GLSurfaceView a;
-  protected Handler a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new QIMCameraCaptureButtonLayoutNew.5(this);
-  public View a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected AnimationQIMCircleProgress a;
-  protected IAECaptureButton.CountDownDelegate a;
-  protected QIMCameraCaptureButtonLayoutNew.CaptureButtonListener a;
-  protected QIMCameraCaptureButtonLayoutNew.CaptureButtonProgressInterceptor a;
-  protected QIMCameraCountTimeLayout a;
-  protected AtomicBoolean a;
-  protected boolean a;
-  private int b;
-  protected ValueAnimator b;
-  public View b;
-  protected AtomicBoolean b;
-  protected boolean b;
-  private int c;
-  protected View c;
-  protected boolean c;
-  protected View d;
-  protected boolean d;
-  protected boolean e = true;
-  private boolean f = true;
-  private boolean g = true;
+  private boolean A = true;
+  private boolean B = true;
+  private View.OnTouchListener C = new QIMCameraCaptureButtonLayoutNew.5(this);
+  protected AtomicBoolean a = new AtomicBoolean(false);
+  protected AtomicBoolean b = new AtomicBoolean(false);
+  protected float c = 20000.0F;
+  public View d;
+  public View e;
+  protected View f;
+  protected GLSurfaceView g;
+  protected AnimationQIMCircleProgress h;
+  protected QIMCameraCountTimeLayout i;
+  protected QIMCameraCaptureButtonLayoutNew.CaptureButtonListener j;
+  protected long k = 0L;
+  protected ValueAnimator l = null;
+  protected ValueAnimator m = null;
+  protected boolean n = false;
+  protected boolean o = false;
+  protected boolean p = false;
+  protected boolean q = false;
+  protected IAECaptureButton.CountDownDelegate r;
+  protected int s = 1;
+  protected QIMCameraCaptureButtonLayoutNew.CaptureButtonProgressInterceptor t;
+  protected View u;
+  protected boolean v = true;
+  protected Handler w = new QIMCameraCaptureButtonLayoutNew.6(this, Looper.getMainLooper());
+  private int x = AIOUtils.b(53.0F, getResources());
+  private int y = AIOUtils.b(80.0F, getResources());
+  private TextView z;
   
   public QIMCameraCaptureButtonLayoutNew(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = AIOUtils.b(53.0F, getResources());
-    this.jdField_c_of_type_Int = AIOUtils.b(80.0F, getResources());
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Float = 20000.0F;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new QIMCameraCaptureButtonLayoutNew.6(this, Looper.getMainLooper());
     a();
   }
   
   public QIMCameraCaptureButtonLayoutNew(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = AIOUtils.b(53.0F, getResources());
-    this.jdField_c_of_type_Int = AIOUtils.b(80.0F, getResources());
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Float = 20000.0F;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new QIMCameraCaptureButtonLayoutNew.6(this, Looper.getMainLooper());
     a();
   }
   
-  private void p()
+  private void q()
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 1) && (i != 2) && (i != 3))
+    int i1 = this.s;
+    if ((i1 != 1) && (i1 != 2) && (i1 != 3))
     {
-      if (i != 4) {
+      if (i1 != 4) {
         return;
       }
-      if (!AEResUtil.a())
+      if (!AEResUtil.e())
       {
-        QQToast.a(getContext(), 1, getContext().getString(2064515266), 1).a();
+        QQToast.makeText(getContext(), 1, getContext().getString(2064187616), 1).show();
         return;
       }
-      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+      if ((this.p) && (this.a.get()))
       {
-        m();
+        o();
         return;
       }
-      if (!this.jdField_c_of_type_Boolean)
+      if (!this.p)
       {
-        if (this.jdField_d_of_type_Boolean)
+        if (this.q)
         {
-          j();
+          n();
           return;
         }
-        n();
+        k();
       }
     }
     else
     {
-      n();
+      k();
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public View a()
-  {
-    return this.jdField_b_of_type_AndroidViewView;
   }
   
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(2064318679, this, true);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2064122026);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)findViewById(2064122074));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2064122218);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_b_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2064122219);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setBackgroundResource(2064056660);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setCenterView();
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.changeMode(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout = ((QIMCameraCountTimeLayout)findViewById(2064122027));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122169));
-    this.jdField_d_of_type_AndroidViewView = findViewById(2064122075);
+    LayoutInflater.from(getContext()).inflate(2064056509, this, true);
+    this.f = findViewById(2063990960);
+    this.h = ((AnimationQIMCircleProgress)findViewById(2063990988));
+    this.e = findViewById(2063991100);
+    this.e.setOnTouchListener(this.C);
+    this.e.setEnabled(true);
+    this.d = findViewById(2063991101);
+    this.d.setOnTouchListener(this.C);
+    this.h.setBackgroundResource(2063925625);
+    this.h.setCenterView();
+    this.h.setVisibility(0);
+    this.h.changeMode(0);
+    this.i = ((QIMCameraCountTimeLayout)findViewById(2063990961));
+    this.z = ((TextView)findViewById(2063991054));
+    this.u = findViewById(2063990989);
   }
   
   protected void a(float paramFloat)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_b_of_type_Int;
-    localLayoutParams.width = ((int)(i * paramFloat));
-    localLayoutParams.height = ((int)(i * paramFloat));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.e.getLayoutParams();
+    int i1 = this.x;
+    localLayoutParams.width = ((int)(i1 * paramFloat));
+    localLayoutParams.height = ((int)(i1 * paramFloat));
     localLayoutParams.addRule(13);
-    this.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.getLayoutParams();
-    i = this.jdField_c_of_type_Int;
-    localLayoutParams.width = ((int)(i * paramFloat));
-    localLayoutParams.height = ((int)(i * paramFloat));
+    this.e.setLayoutParams(localLayoutParams);
+    localLayoutParams = (RelativeLayout.LayoutParams)this.h.getLayoutParams();
+    i1 = this.y;
+    localLayoutParams.width = ((int)(i1 * paramFloat));
+    localLayoutParams.height = ((int)(i1 * paramFloat));
     localLayoutParams.addRule(13);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setLayoutParams(localLayoutParams);
+    this.h.setLayoutParams(localLayoutParams);
   }
   
   protected void a(Message paramMessage)
@@ -185,67 +147,67 @@ public class QIMCameraCaptureButtonLayoutNew
       localStringBuilder.append("handleMessage what:");
       localStringBuilder.append(paramMessage.what);
       localStringBuilder.append(", shortVideoShot:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      localStringBuilder.append(this.a.get());
       QLog.i("QIMCameraCaptureButtonLayoutNew", 2, localStringBuilder.toString());
     }
-    int i = paramMessage.what;
-    if (i != 9) {
-      switch (i)
+    int i1 = paramMessage.what;
+    if (i1 != 9) {
+      switch (i1)
       {
       default: 
         return;
       case 6: 
-        h();
+        l();
         break;
       case 5: 
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        if (!this.a.get()) {
           return;
         }
-        i();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 50L);
+        m();
+        this.w.sendEmptyMessageDelayed(5, 50L);
         return;
       case 4: 
-        paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
+        paramMessage = this.j;
         if (paramMessage != null) {
-          paramMessage.a();
+          paramMessage.b();
         }
-        g();
+        f();
         return;
       case 3: 
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        if (!this.a.get()) {
           return;
         }
-        paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
+        paramMessage = this.j;
         if (paramMessage != null) {
-          paramMessage.C();
+          paramMessage.aa();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        g();
+        this.a.set(false);
+        f();
         return;
       case 2: 
-        paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
+        paramMessage = this.j;
         if (paramMessage == null) {
           return;
         }
-        paramMessage.E();
+        paramMessage.ad();
         return;
       case 1: 
         c();
         return;
       }
     }
-    paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
+    paramMessage = this.j;
     if (paramMessage != null) {
-      paramMessage.D();
+      paramMessage.ac();
     }
   }
   
   public void a(AbsAECaptureButton.CaptureListener paramCaptureListener, int paramInt, GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    this.g = paramGLSurfaceView;
     if ((paramCaptureListener instanceof QIMCameraCaptureButtonLayoutNew.CaptureButtonListener))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener = ((QIMCameraCaptureButtonLayoutNew.CaptureButtonListener)paramCaptureListener);
+      this.j = ((QIMCameraCaptureButtonLayoutNew.CaptureButtonListener)paramCaptureListener);
       return;
     }
     throw new IllegalArgumentException("listener should be instance of SegmentCaptureButtonListener");
@@ -253,20 +215,20 @@ public class QIMCameraCaptureButtonLayoutNew
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress;
+    Object localObject = this.h;
     if (localObject != null) {
       ((AnimationQIMCircleProgress)localObject).a(paramBoolean);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout;
+    localObject = this.i;
     if (localObject != null)
     {
-      int i;
+      int i1;
       if (paramBoolean) {
-        i = -16777216;
+        i1 = -16777216;
       } else {
-        i = -1;
+        i1 = -1;
       }
-      ((QIMCameraCountTimeLayout)localObject).setTextColor(i);
+      ((QIMCameraCountTimeLayout)localObject).setTextColor(i1);
     }
   }
   
@@ -277,13 +239,8 @@ public class QIMCameraCaptureButtonLayoutNew
   
   public void a(boolean paramBoolean, IAECaptureButton.CountDownDelegate paramCountDownDelegate)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewIAECaptureButton$CountDownDelegate = paramCountDownDelegate;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.getMode() != 0;
+    this.q = paramBoolean;
+    this.r = paramCountDownDelegate;
   }
   
   protected boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -294,336 +251,361 @@ public class QIMCameraCaptureButtonLayoutNew
       paramView.append("touch action:");
       paramView.append(paramMotionEvent.getAction() & 0xFF);
       paramView.append(", shortVideoShot:");
-      paramView.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      paramView.append(this.a.get());
       paramView.append(", actionUp:");
-      paramView.append(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      paramView.append(this.b.get());
       paramView.append(", isOver:");
-      paramView.append(this.jdField_a_of_type_Boolean);
+      paramView.append(this.n);
       paramView.append(", mTouchEnable:");
-      paramView.append(this.f);
+      paramView.append(this.A);
       QLog.i("QIMCameraCaptureButtonLayoutNew", 2, paramView.toString());
     }
     b();
-    if (!this.f) {
+    if (!this.A) {
       return false;
     }
-    if (this.g) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.jdField_b_of_type_AndroidViewView, this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
+    if (this.B) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.e, this.g);
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.n) {
       return false;
     }
-    if (!this.e)
+    if (!this.v)
     {
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener != null) && ((paramMotionEvent.getAction() & 0xFF) == 0)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener.c();
+      if ((this.j != null) && ((paramMotionEvent.getAction() & 0xFF) == 0)) {
+        this.j.c();
       }
       return false;
     }
-    if (this.jdField_d_of_type_AndroidViewView.getVisibility() == 0)
+    if (this.u.getVisibility() == 0)
     {
-      o();
+      p();
       return false;
     }
-    int i = paramMotionEvent.getAction() & 0xFF;
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction() & 0xFF;
+    if (i1 != 0)
     {
-      if ((i != 1) && (i != 3))
+      if ((i1 != 1) && (i1 != 3))
       {
-        if (i != 5) {
+        if (i1 != 5) {
           return false;
         }
-        paramView = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
+        paramView = this.j;
         if (paramView != null) {
-          paramView.b();
+          paramView.a();
         }
         return false;
       }
-      m();
+      o();
       return true;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.o) {
       return false;
     }
-    p();
+    q();
     return true;
   }
   
   public void b()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.z;
     if ((localTextView != null) && (localTextView.getVisibility() == 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.z.clearAnimation();
+      this.z.setVisibility(8);
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.u.setVisibility(0);
+      return;
+    }
+    this.u.setVisibility(8);
   }
   
   @TargetApi(11)
   protected void c()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.45F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new QIMCameraCaptureButtonLayoutNew.2(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new QIMCameraCaptureButtonLayoutNew.3(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.changeMode(1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setStrokeWidth(3.0F);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new QIMCameraCaptureButtonLayoutNew.4(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
+    this.l = ValueAnimator.ofFloat(new float[] { 1.0F, 1.45F });
+    this.l.setDuration(400L);
+    this.l.addUpdateListener(new QIMCameraCaptureButtonLayoutNew.2(this));
+    this.l.addListener(new QIMCameraCaptureButtonLayoutNew.3(this));
+    this.l.start();
+    this.h.changeMode(1);
+    this.m = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F });
+    this.m.setDuration(400L);
+    this.h.setStrokeWidth(3.0F);
+    this.m.addUpdateListener(new QIMCameraCaptureButtonLayoutNew.4(this));
+    this.m.start();
   }
   
-  public void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void d()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.getLayoutParams();
-    localLayoutParams.bottomMargin = AIOUtils.b(158.0F, this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.getResources());
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.setLayoutParams(localLayoutParams);
-  }
-  
-  protected void e() {}
+  protected void d() {}
   
   @TargetApi(11)
-  protected void f()
+  protected void e()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.l;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.m;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
   }
   
-  protected void g()
+  protected void f()
   {
     a(1.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setProgress(0.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setCenterScaleValue(1.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.setText("0秒");
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.h.setProgress(0.0F);
+    this.h.setCenterScaleValue(1.0F);
+    this.i.setText("0秒");
+    this.i.setVisibility(8);
+    this.e.setEnabled(true);
+    this.e.setVisibility(0);
+  }
+  
+  public boolean g()
+  {
+    return this.h.getMode() != 0;
+  }
+  
+  public View getCaptureBtn()
+  {
+    return this.e;
+  }
+  
+  public long getCaptureVideoStartTimeStamp()
+  {
+    return this.k;
+  }
+  
+  public float getMaxDuration()
+  {
+    return this.c;
+  }
+  
+  public AnimationQIMCircleProgress getProgressView()
+  {
+    return this.h;
   }
   
   public void h()
   {
-    g();
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.i.getLayoutParams();
+    localLayoutParams.bottomMargin = AIOUtils.b(158.0F, this.i.getResources());
+    this.i.setLayoutParams(localLayoutParams);
   }
   
-  protected void i()
+  public void i()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonProgressInterceptor == null)
-    {
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      float f1 = (float)l;
-      boolean bool;
-      if (f1 >= this.jdField_a_of_type_Float) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = QIMCircleProgress.MAX_PROGRESS;
-      } else {
-        i = (int)(f1 / this.jdField_a_of_type_Float * QIMCircleProgress.MAX_PROGRESS);
-      }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append((int)l / 1000);
-      ((StringBuilder)localObject).append("秒");
-      localObject = ((StringBuilder)localObject).toString();
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCountTimeLayout.setText((String)localObject);
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setProgress(i);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("updateProgress percent:");
-        localStringBuilder.append(i);
-        localStringBuilder.append(", time:");
-        localStringBuilder.append((String)localObject);
-        QLog.i("QIMCameraCaptureButtonLayoutNew", 2, localStringBuilder.toString());
-      }
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      m();
-    }
+    this.o = false;
+    l();
   }
   
   public void j()
   {
-    IAECaptureButton.CountDownDelegate localCountDownDelegate = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewIAECaptureButton$CountDownDelegate;
-    if (localCountDownDelegate != null) {
-      localCountDownDelegate.a();
-    }
+    this.o = true;
+    o();
   }
   
   public void k()
   {
-    this.jdField_b_of_type_Boolean = false;
-    h();
-  }
-  
-  public void l()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    m();
-  }
-  
-  public void m()
-  {
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMCameraCaptureButtonLayoutNew", 2, "stop failed because is not start");
-      }
-      return;
-    }
-    int i = this.jdField_a_of_type_Int;
-    if (i != 1) {
-      if (i != 2)
-      {
-        if (i != 3)
-        {
-          if (i != 4) {
-            return;
-          }
-          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-            return;
-          }
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
-          f();
-          AEBaseReportParam.a().d(System.currentTimeMillis() - a());
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.changeMode(0);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.changeMode(0);
-        return;
-      }
-    }
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
-    f();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    }
-    else
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      i = this.jdField_a_of_type_Int;
-      if (i == 1)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      }
-      else if (i == 3)
-      {
-        QIMCameraCaptureButtonLayoutNew.CaptureButtonListener localCaptureButtonListener = this.jdField_a_of_type_ComTencentAelightCameraAebaseViewQIMCameraCaptureButtonLayoutNew$CaptureButtonListener;
-        if (localCaptureButtonListener != null) {
-          localCaptureButtonListener.G();
-        }
-      }
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.changeMode(0);
-  }
-  
-  public void n()
-  {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.p)
     {
       if (QLog.isColorLevel()) {
         QLog.i("QIMCameraCaptureButtonLayoutNew", 2, "start fail because is started");
       }
       return;
     }
-    int i = this.jdField_a_of_type_Int;
-    if ((i == 3) || (i == 1) || (i == 4)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 100L);
+    int i1 = this.s;
+    if ((i1 == 3) || (i1 == 1) || (i1 == 4)) {
+      this.w.sendEmptyMessageDelayed(1, 100L);
     }
-    this.jdField_c_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int == 2) {
-      m();
+    this.p = true;
+    if (this.s == 2) {
+      o();
+    }
+  }
+  
+  public void l()
+  {
+    f();
+    this.b.set(false);
+    this.a.set(false);
+    this.k = 0L;
+    this.n = false;
+  }
+  
+  protected void m()
+  {
+    if (this.t == null)
+    {
+      long l1 = System.currentTimeMillis() - this.k;
+      float f1 = (float)l1;
+      boolean bool;
+      if (f1 >= this.c) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.n = bool;
+      int i1;
+      if (this.n) {
+        i1 = QIMCircleProgress.MAX_PROGRESS;
+      } else {
+        i1 = (int)(f1 / this.c * QIMCircleProgress.MAX_PROGRESS);
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((int)l1 / 1000);
+      ((StringBuilder)localObject).append("秒");
+      localObject = ((StringBuilder)localObject).toString();
+      this.i.setText((String)localObject);
+      this.h.setProgress(i1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateProgress percent:");
+        localStringBuilder.append(i1);
+        localStringBuilder.append(", time:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("QIMCameraCaptureButtonLayoutNew", 2, localStringBuilder.toString());
+      }
+    }
+    if (this.n) {
+      o();
+    }
+  }
+  
+  public void n()
+  {
+    IAECaptureButton.CountDownDelegate localCountDownDelegate = this.r;
+    if (localCountDownDelegate != null) {
+      localCountDownDelegate.a();
     }
   }
   
   public void o()
   {
-    c(false);
+    if (!this.p)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMCameraCaptureButtonLayoutNew", 2, "stop failed because is not start");
+      }
+      return;
+    }
+    int i1 = this.s;
+    if (i1 != 1) {
+      if (i1 != 2)
+      {
+        if (i1 != 3)
+        {
+          if (i1 != 4) {
+            return;
+          }
+          if (!this.a.get()) {
+            return;
+          }
+          this.b.set(true);
+          this.w.removeMessages(5);
+          e();
+          AEBaseReportParam.a().h(System.currentTimeMillis() - getCaptureVideoStartTimeStamp());
+          this.w.sendEmptyMessage(3);
+          this.p = false;
+          this.h.changeMode(0);
+        }
+      }
+      else
+      {
+        this.w.sendEmptyMessage(4);
+        this.p = false;
+        this.h.changeMode(0);
+        return;
+      }
+    }
+    this.b.set(true);
+    this.w.removeMessages(5);
+    e();
+    if (this.a.get())
+    {
+      this.w.sendEmptyMessage(3);
+    }
+    else
+    {
+      this.w.removeMessages(1);
+      i1 = this.s;
+      if (i1 == 1)
+      {
+        this.w.sendEmptyMessage(4);
+      }
+      else if (i1 == 3)
+      {
+        QIMCameraCaptureButtonLayoutNew.CaptureButtonListener localCaptureButtonListener = this.j;
+        if (localCaptureButtonListener != null) {
+          localCaptureButtonListener.af();
+        }
+      }
+    }
+    this.p = false;
+    this.h.changeMode(0);
+  }
+  
+  public void p()
+  {
+    b(false);
   }
   
   public void setEnabled(boolean paramBoolean)
   {
-    if (this.e == paramBoolean) {
+    if (this.v == paramBoolean) {
       return;
     }
-    this.e = paramBoolean;
-    if (this.e)
+    this.v = paramBoolean;
+    if (this.v)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setVisibility(0);
+      this.d.setVisibility(8);
+      this.e.setVisibility(0);
+      this.h.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAelightCameraAebaseViewAnimationQIMCircleProgress.setVisibility(8);
+    this.d.setVisibility(0);
+    this.e.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   public void setFunctionFlag(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.s = paramInt;
   }
   
   public void setIsFollowCaptureTips()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.z.getLayoutParams();
     localLayoutParams.topMargin += ScreenUtil.dip2px(10.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.z.setLayoutParams(localLayoutParams);
   }
   
   public void setMaxDuration(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
   
   public void setRecordTipsWording(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.z.setText(paramString);
   }
   
   public void setTouchEnable(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.A = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.view.QIMCameraCaptureButtonLayoutNew
  * JD-Core Version:    0.7.0.1
  */

@@ -6,29 +6,29 @@ import java.util.Map;
 
 public class LiteLiveJsProvider
 {
-  private LiteJsModuleProvider a = new LiteJsModuleProvider();
+  private LiteJsModuleProvider mLiteJsModuleProvider = new LiteJsModuleProvider();
   
-  public void a()
+  public boolean callFunction(String paramString1, String paramString2, Map<String, String> paramMap)
   {
-    this.a.removeAllJsModule();
+    return this.mLiteJsModuleProvider.callFunction(paramString1, paramString2, paramMap);
   }
   
-  public void a(BaseLiteJSModule paramBaseLiteJSModule)
+  public void registerJsModule(BaseLiteJSModule paramBaseLiteJSModule)
   {
     if (paramBaseLiteJSModule == null) {
       return;
     }
-    this.a.registerJsModule(paramBaseLiteJSModule);
+    this.mLiteJsModuleProvider.registerJsModule(paramBaseLiteJSModule);
   }
   
-  public boolean a(String paramString1, String paramString2, Map<String, String> paramMap)
+  public void removeAllJsModule()
   {
-    return this.a.callFunction(paramString1, paramString2, paramMap);
+    this.mLiteJsModuleProvider.removeAllJsModule();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.LiteLiveJsProvider
  * JD-Core Version:    0.7.0.1
  */

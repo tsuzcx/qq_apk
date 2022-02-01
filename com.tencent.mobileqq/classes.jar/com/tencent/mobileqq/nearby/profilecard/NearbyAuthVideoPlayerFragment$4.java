@@ -15,27 +15,27 @@ class NearbyAuthVideoPlayerFragment$4
 {
   NearbyAuthVideoPlayerFragment$4(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        paramView = (INearbyCardHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
+        paramView = (INearbyCardHandler)this.b.getBaseActivity().app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
         if (paramView != null) {
           paramView.a("", 0, false);
         }
       }
     }
     else {
-      ((INearbyVideoUtils)QRoute.api(INearbyVideoUtils.class)).showPtvPanel(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getBaseActivity().app, 4);
+      ((INearbyVideoUtils)QRoute.api(INearbyVideoUtils.class)).showPtvPanel(this.b.getActivity(), this.b.getBaseActivity().app, 4);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.4
  * JD-Core Version:    0.7.0.1
  */

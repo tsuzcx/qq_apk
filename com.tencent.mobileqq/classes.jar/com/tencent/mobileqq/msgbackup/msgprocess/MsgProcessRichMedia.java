@@ -12,28 +12,12 @@ import org.json.JSONObject;
 public abstract class MsgProcessRichMedia<T extends MessageRecord>
   extends MsgProcessConstant
 {
-  protected T a;
-  protected MessageRecord b;
+  protected T b;
+  protected MessageRecord c;
   
   public MsgProcessRichMedia(T paramT)
   {
-    this.a = paramT;
-  }
-  
-  protected abstract int a();
-  
-  protected MsgBackupResEntity a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
-    localMsgBackupResEntity.msgType = a();
-    MessageRecord localMessageRecord = this.b;
-    if (localMessageRecord != null)
-    {
-      MsgBackupUtil.a(localMessageRecord, localMsgBackupResEntity);
-      return localMsgBackupResEntity;
-    }
-    MsgBackupUtil.a(this.a, localMsgBackupResEntity);
-    return localMsgBackupResEntity;
+    this.b = paramT;
   }
   
   protected String a(Map paramMap)
@@ -54,18 +38,16 @@ public abstract class MsgProcessRichMedia<T extends MessageRecord>
   protected HashMap<String, String> a(int paramInt)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", String.valueOf(a()));
+    localHashMap.put("msgType", String.valueOf(c()));
     localHashMap.put("msgSubType", String.valueOf(paramInt));
     return localHashMap;
   }
-  
-  public abstract List<MsgBackupResEntity> a();
   
   public abstract void a();
   
   protected void a(MessageRecord paramMessageRecord)
   {
-    this.b = paramMessageRecord;
+    this.c = paramMessageRecord;
   }
   
   protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
@@ -82,16 +64,34 @@ public abstract class MsgProcessRichMedia<T extends MessageRecord>
     }
   }
   
-  public boolean a()
+  public abstract List<MsgBackupResEntity> b();
+  
+  protected abstract int c();
+  
+  public void d() {}
+  
+  public boolean e()
   {
     return true;
   }
   
-  public void b() {}
+  protected MsgBackupResEntity f()
+  {
+    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
+    localMsgBackupResEntity.msgType = c();
+    MessageRecord localMessageRecord = this.c;
+    if (localMessageRecord != null)
+    {
+      MsgBackupUtil.a(localMessageRecord, localMsgBackupResEntity);
+      return localMsgBackupResEntity;
+    }
+    MsgBackupUtil.a(this.b, localMsgBackupResEntity);
+    return localMsgBackupResEntity;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessRichMedia
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public final class ImageUploaderImpl
   extends BaseUploader
 {
-  private final QQAppInterface a()
+  private final QQAppInterface e()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
@@ -33,6 +33,8 @@ public final class ImageUploaderImpl
     Intrinsics.checkParameterIsNotNull(paramString, "p0");
   }
   
+  public void b() {}
+  
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "path");
@@ -45,14 +47,16 @@ public final class ImageUploaderImpl
     if (i != 0) {
       return;
     }
-    paramString = new RIJUgcImageUploader((Context)BaseApplicationImpl.getApplication(), a(), paramString);
+    paramString = new RIJUgcImageUploader((Context)BaseApplicationImpl.getApplication(), e(), paramString);
     paramString.a((IImageUploadListener)new ImageUploaderImpl.upload.1(this));
     paramString.a();
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.net.ImageUploaderImpl
  * JD-Core Version:    0.7.0.1
  */

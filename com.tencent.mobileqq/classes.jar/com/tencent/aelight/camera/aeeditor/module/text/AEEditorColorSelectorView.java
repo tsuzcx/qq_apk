@@ -22,17 +22,12 @@ public class AEEditorColorSelectorView
   extends LinearLayout
   implements AEEditorColorAdapter.ColorClickListener
 {
-  public static final int a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "#FFFFFFFF", "#FFF4675C", "#FFFFB143", "#FF79D397", "#FF9CC9FF", "#FF000000", "#FFFDA2B6", "#FFF8EB74", "#FF9AE3FF", "#FFD592FF" };
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private AEEditorColorAdapter.ColorClickListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter$ColorClickListener;
-  private AEEditorColorAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter;
-  private final List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_Int = Color.parseColor("#ff262626");
-  }
+  public static final int a = Color.parseColor("#ff262626");
+  private static final String[] b = { "#FFFFFFFF", "#FFF4675C", "#FFFFB143", "#FF79D397", "#FF9CC9FF", "#FF000000", "#FFFDA2B6", "#FFF8EB74", "#FF9AE3FF", "#FFD592FF" };
+  private RecyclerView c;
+  private AEEditorColorAdapter d;
+  private final List<Integer> e = new ArrayList();
+  private AEEditorColorAdapter.ColorClickListener f;
   
   public AEEditorColorSelectorView(Context paramContext)
   {
@@ -49,7 +44,7 @@ public class AEEditorColorSelectorView
     super(paramContext, paramAttributeSet, paramInt);
     setOrientation(1);
     setGravity(16);
-    a(LayoutInflater.from(paramContext).inflate(2064318677, this, true));
+    a(LayoutInflater.from(paramContext).inflate(2064056507, this, true));
   }
   
   public static Drawable a(View paramView, boolean paramBoolean, int paramInt)
@@ -57,15 +52,15 @@ public class AEEditorColorSelectorView
     GradientDrawable localGradientDrawable = new GradientDrawable();
     int i;
     if (paramBoolean) {
-      i = 2063991159;
+      i = 2063859820;
     } else {
-      i = 2063991160;
+      i = 2063859821;
     }
-    int k = paramView.getResources().getDimensionPixelSize(2063991157);
+    int k = paramView.getResources().getDimensionPixelSize(2063859818);
     if (paramBoolean) {
       j = 0;
     } else {
-      j = paramView.getResources().getDimensionPixelSize(2063991160);
+      j = paramView.getResources().getDimensionPixelSize(2063859821);
     }
     int j = k - j;
     localGradientDrawable.setColor(paramInt);
@@ -77,20 +72,20 @@ public class AEEditorColorSelectorView
   
   private void a(View paramView)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = b;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
-      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(Color.parseColor(str)));
+      this.e.add(Integer.valueOf(Color.parseColor(str)));
       i += 1;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2064122057));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter = new AEEditorColorAdapter("adapter_fix", this.jdField_a_of_type_JavaUtilList, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter);
+    this.c = ((RecyclerView)paramView.findViewById(2063990976));
+    this.d = new AEEditorColorAdapter("adapter_fix", this.e, this);
+    this.c.setAdapter(this.d);
     paramView = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+    this.c.setLayoutManager(paramView);
   }
   
   public void a(Integer paramInteger)
@@ -98,9 +93,9 @@ public class AEEditorColorSelectorView
     if (paramInteger != null)
     {
       i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.e.size())
       {
-        if (paramInteger.equals(this.jdField_a_of_type_JavaUtilList.get(i)))
+        if (paramInteger.equals(this.e.get(i)))
         {
           ThreadManager.getUIHandler().post(new AEEditorColorSelectorView.1(this, i));
           break label64;
@@ -110,19 +105,19 @@ public class AEEditorColorSelectorView
     }
     int i = -1;
     label64:
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter.a(i);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter.notifyDataSetChanged();
+    this.d.a(i);
+    this.d.notifyDataSetChanged();
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if ("adapter_extract".equals(paramString1)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter.a(-1);
+      this.d.a(-1);
     } else if (("adapter_fix".equals(paramString1)) && (paramInt2 >= 0)) {
-      AdapterUtil.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter.a(), paramInt2, true, true);
+      AdapterUtil.a(this.c, this.d.a(), paramInt2, true, true);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter.notifyDataSetChanged();
-    AEEditorColorAdapter.ColorClickListener localColorClickListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter$ColorClickListener;
+    this.d.notifyDataSetChanged();
+    AEEditorColorAdapter.ColorClickListener localColorClickListener = this.f;
     if (localColorClickListener != null) {
       localColorClickListener.a(paramString1, paramInt1, paramInt2, paramString2);
     }
@@ -130,12 +125,12 @@ public class AEEditorColorSelectorView
   
   public void setColorSelectedListener(AEEditorColorAdapter.ColorClickListener paramColorClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter$ColorClickListener = paramColorClickListener;
+    this.f = paramColorClickListener;
   }
   
   public void setMaterialId(String paramString)
   {
-    AEEditorColorAdapter localAEEditorColorAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorColorAdapter;
+    AEEditorColorAdapter localAEEditorColorAdapter = this.d;
     if (localAEEditorColorAdapter != null) {
       localAEEditorColorAdapter.a(paramString);
     }
@@ -143,7 +138,7 @@ public class AEEditorColorSelectorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorColorSelectorView
  * JD-Core Version:    0.7.0.1
  */

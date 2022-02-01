@@ -74,7 +74,7 @@ public class VoiceTuneUtilImpl
   public boolean isExternalStorageReady(Context paramContext)
   {
     long l1 = System.currentTimeMillis();
-    boolean bool3 = Utils.a();
+    boolean bool3 = Utils.b();
     Object localObject = paramContext;
     boolean bool2;
     if (bool3)
@@ -161,7 +161,7 @@ public class VoiceTuneUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.impl.VoiceTuneUtilImpl
  * JD-Core Version:    0.7.0.1
  */

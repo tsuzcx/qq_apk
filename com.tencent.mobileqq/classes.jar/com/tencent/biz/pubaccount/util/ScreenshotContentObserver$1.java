@@ -29,19 +29,19 @@ class ScreenshotContentObserver$1
       if (paramInt != 256) {
         return;
       }
-      if (!paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver)))
+      if (!paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.b)))
       {
         if (paramString.contains("temp")) {
           return;
         }
-        if (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) != null)
+        if (ScreenshotContentObserver.b(this.b) != null)
         {
-          localObject = ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver);
+          localObject = ScreenshotContentObserver.b(this.b);
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.a);
           localStringBuilder.append(paramString);
           ((ScreenshotContentObserver.Listener)localObject).a(null, localStringBuilder.toString(), 1);
-          ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
+          ScreenshotContentObserver.a(this.b, paramString);
         }
       }
     }
@@ -49,7 +49,7 @@ class ScreenshotContentObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ScreenshotContentObserver.1
  * JD-Core Version:    0.7.0.1
  */

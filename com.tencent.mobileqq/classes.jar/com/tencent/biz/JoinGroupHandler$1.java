@@ -10,8 +10,8 @@ class JoinGroupHandler$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.c();
-    this.a.jdField_a_of_type_Long = 0L;
+    this.a.f.c();
+    this.a.d = 0L;
   }
 }
 

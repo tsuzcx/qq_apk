@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class MsgMoreViewV2
   extends FrameLayout
 {
-  private static final int AVATAR_GAP = ViewUtils.b(14.0F);
+  private static final int AVATAR_GAP = ViewUtils.dpToPx(14.0F);
   private QQAppInterface mApp;
   private ImageView mArrow;
   private FrameLayout mAvatarListLayout;
@@ -80,7 +80,7 @@ public class MsgMoreViewV2
     if (paramBoolean)
     {
       this.mText.setTextColor(-1);
-      this.mArrow.setImageDrawable(getResources().getDrawable(2130844104));
+      this.mArrow.setImageDrawable(getResources().getDrawable(2130845131));
     }
     if (!TextUtils.isEmpty(paramMQMsg.content)) {
       this.mText.setText(paramMQMsg.content);
@@ -97,7 +97,7 @@ public class MsgMoreViewV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreViewV2
  * JD-Core Version:    0.7.0.1
  */

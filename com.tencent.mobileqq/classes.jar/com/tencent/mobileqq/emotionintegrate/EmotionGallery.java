@@ -20,14 +20,6 @@ public class EmotionGallery
     super(paramContext, paramAttributeSet);
   }
   
-  public float a()
-  {
-    if (this.mSelectedChild != null) {
-      return super.getChildScale(this.mSelectedChild);
-    }
-    return 1.0F;
-  }
-  
   protected float customScale(View paramView, float paramFloat, int paramInt)
   {
     paramFloat = getResources().getDisplayMetrics().density * 135.0F * 1.5F;
@@ -41,11 +33,19 @@ public class EmotionGallery
     return paramFloat;
   }
   
+  public float getSelectChildScale()
+  {
+    if (this.mSelectedChild != null) {
+      return super.getChildScale(this.mSelectedChild);
+    }
+    return 1.0F;
+  }
+  
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     if (this.a != null)
     {
-      float f = a();
+      float f = getSelectChildScale();
       this.a.b(f);
     }
     return super.onDoubleTap(paramMotionEvent);
@@ -55,7 +55,7 @@ public class EmotionGallery
   {
     EmotionGallery.OnScaleChangeListener localOnScaleChangeListener = this.a;
     if (localOnScaleChangeListener != null) {
-      localOnScaleChangeListener.b();
+      localOnScaleChangeListener.d();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
@@ -64,7 +64,7 @@ public class EmotionGallery
   {
     if (this.a != null)
     {
-      float f = a();
+      float f = getSelectChildScale();
       this.a.a(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
@@ -77,7 +77,7 @@ public class EmotionGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionGallery
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public class QIMFilterConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -37,7 +37,7 @@ public class QIMFilterConfigProcessor
         localStringBuilder.append(paramArrayOfQConfItem);
         QLog.d("QIMFilterConfigProcessor", 2, localStringBuilder.toString());
       }
-      return new ConfigSimplifier().a(paramArrayOfQConfItem, AVPathUtil.e(), "temp_filter_zip", new QIMFilterConfigProcessor.1(this));
+      return new ConfigSimplifier().a(paramArrayOfQConfItem, AVPathUtil.g(), "temp_filter_zip", new QIMFilterConfigProcessor.1(this));
     }
     return null;
   }
@@ -90,7 +90,7 @@ public class QIMFilterConfigProcessor
     if (!new File(localStringBuilder.toString()).exists())
     {
       QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(306, 0);
+      QConfigManager.b().a(306, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -103,7 +103,7 @@ public class QIMFilterConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMFilterConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

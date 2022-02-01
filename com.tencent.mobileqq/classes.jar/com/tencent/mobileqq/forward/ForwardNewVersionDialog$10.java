@@ -17,25 +17,25 @@ class ForwardNewVersionDialog$10
   public void onClick(View paramView)
   {
     boolean bool;
-    if (ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog) != null) {
-      bool = ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).a(paramView);
+    if (ForwardNewVersionDialog.l(this.b) != null) {
+      bool = ForwardNewVersionDialog.l(this.b).a(paramView);
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.hideSoftInputFromWindow();
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    this.b.hideSoftInputFromWindow();
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog, 1);
+      localOnClickListener.onClick(this.b, 1);
     }
-    if (ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog))
+    if (ForwardNewVersionDialog.d(this.b))
     {
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).removeView(ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog).getView());
-      ForwardNewVersionDialog.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog, false);
+      ForwardNewVersionDialog.g(this.b).removeView(ForwardNewVersionDialog.f(this.b).getView());
+      ForwardNewVersionDialog.a(this.b, false);
     }
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.isShowing()) && (!bool)) {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.dismiss();
+      if ((this.b.isShowing()) && (!bool)) {
+        this.b.dismiss();
       }
     }
     catch (Exception localException)
@@ -49,7 +49,7 @@ class ForwardNewVersionDialog$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.10
  * JD-Core Version:    0.7.0.1
  */

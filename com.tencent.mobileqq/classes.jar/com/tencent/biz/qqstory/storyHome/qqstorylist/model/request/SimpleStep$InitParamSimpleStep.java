@@ -4,32 +4,31 @@ public class SimpleStep$InitParamSimpleStep
   extends SimpleStep
 {
   public Object a;
-  public String a;
+  public String b = "InitParamSimpleStep";
   
   public SimpleStep$InitParamSimpleStep(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a = paramObject;
   }
   
   public Object a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.a;
   }
   
-  public String a()
+  public void b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    h();
   }
   
-  public void a()
+  public String c()
   {
-    d();
+    return this.b;
   }
   
-  public void b() {}
+  public void e() {}
   
-  public void c() {}
+  public void f() {}
 }
 
 

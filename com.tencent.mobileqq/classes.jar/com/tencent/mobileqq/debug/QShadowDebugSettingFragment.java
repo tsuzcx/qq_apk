@@ -51,21 +51,12 @@ import org.jetbrains.annotations.Nullable;
 public final class QShadowDebugSettingFragment
   extends QIphoneTitleBarFragment
 {
-  private int jdField_a_of_type_Int = ((Number)((Pair)this.jdField_a_of_type_JavaUtilList.get(0)).getSecond()).intValue();
-  private final String jdField_a_of_type_JavaLangString = "debug_plugin";
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private final List<Pair<String, Integer>> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new Pair[] { TuplesKt.to("Shadow插件", Integer.valueOf(1)), TuplesKt.to("手Q插件", Integer.valueOf(0)), TuplesKt.to("DF插件", Integer.valueOf(2)) });
-  private final String b = "key_debug_id";
-  private final String c = "key_branch";
-  
-  private final String a()
-  {
-    String str = requireActivity().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 0).getString(this.b, "");
-    if (str != null) {
-      return str;
-    }
-    return "";
-  }
+  private final List<Pair<String, Integer>> a = CollectionsKt.listOf(new Pair[] { TuplesKt.to("Shadow插件", Integer.valueOf(1)), TuplesKt.to("手Q插件", Integer.valueOf(0)), TuplesKt.to("DF插件", Integer.valueOf(2)) });
+  private int b = ((Number)((Pair)this.a.get(0)).getSecond()).intValue();
+  private final String c = "debug_plugin";
+  private final String d = "key_debug_id";
+  private final String e = "key_branch";
+  private HashMap f;
   
   private final String a(String paramString)
   {
@@ -103,16 +94,7 @@ public final class QShadowDebugSettingFragment
   
   private final void a(String paramString1, String paramString2)
   {
-    requireActivity().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 0).edit().putString(this.b, paramString1).putString(this.c, paramString2).apply();
-  }
-  
-  private final String b()
-  {
-    String str = requireActivity().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 0).getString(this.c, "");
-    if (str != null) {
-      return str;
-    }
-    return "";
+    requireActivity().getSharedPreferences(this.c, 0).edit().putString(this.d, paramString1).putString(this.e, paramString2).apply();
   }
   
   private final void c()
@@ -135,7 +117,7 @@ public final class QShadowDebugSettingFragment
       ((PluginInfo)localObject2).mID = ((String)localObject3);
       ((PluginInfo)localObject2).mURL = str;
       ((PluginInfo)localObject2).mMD5 = "";
-      ((PluginInfo)localObject2).mSubType = this.jdField_a_of_type_Int;
+      ((PluginInfo)localObject2).mSubType = this.b;
       localObject3 = new AlertDialog.Builder((Context)getActivity()).setView((View)new ProgressBar((Context)getActivity())).create();
       Intrinsics.checkExpressionValueIsNotNull(localObject3, "dialog");
       ((AlertDialog)localObject3).getWindow().setBackgroundDrawable((Drawable)new ColorDrawable());
@@ -146,17 +128,35 @@ public final class QShadowDebugSettingFragment
     throw new TypeCastException("null cannot be cast to non-null type cooperation.plugin.IPluginManager");
   }
   
+  private final String d()
+  {
+    String str = requireActivity().getSharedPreferences(this.c, 0).getString(this.d, "");
+    if (str != null) {
+      return str;
+    }
+    return "";
+  }
+  
+  private final String e()
+  {
+    String str = requireActivity().getSharedPreferences(this.c, 0).getString(this.e, "");
+    if (str != null) {
+      return str;
+    }
+    return "";
+  }
+  
   protected int a()
   {
-    return 2131561863;
+    return 2131628281;
   }
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.f == null) {
+      this.f = new HashMap();
     }
-    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView2 = (View)this.f.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
@@ -165,14 +165,14 @@ public final class QShadowDebugSettingFragment
         return null;
       }
       localView1 = localView1.findViewById(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+      this.f.put(Integer.valueOf(paramInt), localView1);
     }
     return localView1;
   }
   
-  public void a()
+  public void b()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.f;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -186,7 +186,7 @@ public final class QShadowDebugSettingFragment
     paramView = (Spinner)a(R.id.choosePluginType);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "choosePluginType");
     paramBundle = (Context)getActivity();
-    Object localObject = (Iterable)this.jdField_a_of_type_JavaUtilList;
+    Object localObject = (Iterable)this.a;
     Collection localCollection = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -196,20 +196,20 @@ public final class QShadowDebugSettingFragment
     paramView = (Spinner)a(R.id.choosePluginType);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "choosePluginType");
     paramView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener)new QShadowDebugSettingFragment.onViewCreated.2(this));
-    paramView = a();
-    paramBundle = b();
+    paramView = d();
+    paramBundle = e();
     ((EditText)a(R.id.pluginIdEditText)).setText((CharSequence)paramView);
     ((EditText)a(R.id.pluginBranchEditText)).setText((CharSequence)paramBundle);
     ((Button)a(R.id.installPlugin)).setOnClickListener((View.OnClickListener)new QShadowDebugSettingFragment.onViewCreated.3(this));
     paramView = (FormSwitchItem)a(R.id.pluginSwitch);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "pluginSwitch");
-    paramView.setChecked(PluginUpdater.a((Context)getActivity()));
+    paramView.setChecked(PluginUpdater.b((Context)getActivity()));
     ((FormSwitchItem)a(R.id.pluginSwitch)).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new QShadowDebugSettingFragment.onViewCreated.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.QShadowDebugSettingFragment
  * JD-Core Version:    0.7.0.1
  */

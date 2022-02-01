@@ -50,15 +50,15 @@ public class ProviderDynamicProxy
       if (paramInt != 2)
       {
         if (paramInt != 4) {
-          return ProviderResultImpl.a(-1L);
+          return ProviderResultImpl.b(-1L);
         }
         paramArrayOfObject = new StringBuilder();
         paramArrayOfObject.append(paramMethod.getName());
         paramArrayOfObject.append(" try get from cache");
         GLog.b(paramArrayOfObject.toString());
-        paramArrayOfObject = GathererCompContext.a.a();
+        paramArrayOfObject = GathererCompContext.a.c();
         if (paramArrayOfObject == null) {
-          return ProviderResultImpl.a(-11L);
+          return ProviderResultImpl.b(-11L);
         }
         paramArrayOfObject = paramArrayOfObject.a(paramInfoID.id());
         if (paramArrayOfObject != null)
@@ -69,15 +69,15 @@ public class ProviderDynamicProxy
           GLog.b(paramInfoID.toString());
           return ProviderResultImpl.a(paramArrayOfObject, 4);
         }
-        return ProviderResultImpl.a(-11L);
+        return ProviderResultImpl.b(-11L);
       }
       paramArrayOfObject = new StringBuilder();
       paramArrayOfObject.append(paramMethod.getName());
       paramArrayOfObject.append(" try get from file");
       GLog.b(paramArrayOfObject.toString());
-      paramArrayOfObject = GathererCompContext.a.a();
+      paramArrayOfObject = GathererCompContext.a.c();
       if (paramArrayOfObject == null) {
-        return ProviderResultImpl.a(-12L);
+        return ProviderResultImpl.b(-12L);
       }
       paramArrayOfObject = paramArrayOfObject.b(paramInfoID.id());
       if (paramArrayOfObject != null)
@@ -88,7 +88,7 @@ public class ProviderDynamicProxy
         GLog.b(paramInfoID.toString());
         return ProviderResultImpl.a(paramArrayOfObject, 2);
       }
-      return ProviderResultImpl.a(-12L);
+      return ProviderResultImpl.b(-12L);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramMethod.getName());
@@ -120,14 +120,14 @@ public class ProviderDynamicProxy
   private static ProviderResult a(Method paramMethod, Object[] paramArrayOfObject, InfoID paramInfoID, ProviderMethodPriority paramProviderMethodPriority, Object paramObject)
   {
     ProviderResult localProviderResult = a(paramMethod, paramArrayOfObject, paramInfoID, paramProviderMethodPriority.a(), paramObject);
-    if (localProviderResult.a()) {
+    if (localProviderResult.c()) {
       return localProviderResult;
     }
     if (paramProviderMethodPriority.b() == 0) {
       return localProviderResult;
     }
     localProviderResult = a(paramMethod, paramArrayOfObject, paramInfoID, paramProviderMethodPriority.b(), paramObject);
-    if (localProviderResult.a()) {
+    if (localProviderResult.c()) {
       return localProviderResult;
     }
     if (paramProviderMethodPriority.c() == 0) {
@@ -163,19 +163,22 @@ public class ProviderDynamicProxy
     }
     localObject = (InfoID)localAnnotation;
     if (!IDConfigManagerImpl.a().a(((InfoID)localObject).id())) {
-      return ProviderResultImpl.a(-999L);
+      return ProviderResultImpl.b(-999L);
     }
     paramMethod = a(paramMethod, paramArrayOfObject, (InfoID)localObject, paramObject, this.a);
-    if ((paramMethod.a()) && (paramObject.b()))
+    if ((paramMethod.c()) && (paramObject.e()) && (paramMethod.d() != 2))
     {
-      paramArrayOfObject = GathererCompContext.a.a();
+      if (paramMethod.d() == 4) {
+        return paramMethod;
+      }
+      paramArrayOfObject = GathererCompContext.a.c();
       if (paramArrayOfObject == null) {
         return paramMethod;
       }
       int i = ((InfoID)localObject).id();
-      localObject = paramMethod.a();
+      localObject = paramMethod.b();
       boolean bool;
-      if ((paramObject.a()) && (a(paramMethod.a()))) {
+      if ((paramObject.d()) && (a(paramMethod.b()))) {
         bool = true;
       } else {
         bool = false;
@@ -187,7 +190,7 @@ public class ProviderDynamicProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.provider.ProviderDynamicProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -78,7 +78,7 @@ public class TappedElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.models.TappedElement
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,11 @@ final class AEEditorMusicHelper$1
     localStringBuilder.append(", frameSize=");
     localStringBuilder.append(paramLong);
     AEQLog.b("AEEditorMusicHelper", localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null)
+    if (this.a != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[extractFrameForSmartMusic], executeTime=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a());
+      localStringBuilder.append(this.a.b());
       localStringBuilder.append(", frameCount=");
       int i;
       if (paramArrayList == null) {
@@ -33,20 +33,20 @@ final class AEEditorMusicHelper$1
       }
       localStringBuilder.append(i);
       localStringBuilder.append(", size=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.b());
+      localStringBuilder.append(this.a.c());
       localStringBuilder.append("KB");
       AEQLog.a("AEEditorMusicHelper", localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener != null)
+    if (this.b != null)
     {
       if (paramArrayList == null) {
         paramArrayList = null;
       } else {
         paramArrayList = new ArrayList(paramArrayList);
       }
-      this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener.a(paramBoolean, paramArrayList, paramLong);
+      this.b.a(paramBoolean, paramArrayList, paramLong);
     }
-    paramArrayList = this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper;
+    paramArrayList = this.a;
     if (paramArrayList != null) {
       paramArrayList.a();
     }
@@ -54,7 +54,7 @@ final class AEEditorMusicHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicHelper.1
  * JD-Core Version:    0.7.0.1
  */

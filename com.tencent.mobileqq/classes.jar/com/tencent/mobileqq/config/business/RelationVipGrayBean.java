@@ -8,17 +8,10 @@ import org.json.JSONObject;
 
 public class RelationVipGrayBean
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public String b = "";
-  
-  public RelationVipGrayBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public String a = "";
+  public int b = 0;
+  public HashMap<String, String> c = new HashMap();
+  public String d = "";
   
   public static RelationVipGrayBean a(String paramString)
   {
@@ -28,19 +21,19 @@ public class RelationVipGrayBean
     try
     {
       RelationVipGrayBean localRelationVipGrayBean = new RelationVipGrayBean();
-      localRelationVipGrayBean.jdField_a_of_type_JavaLangString = paramString;
+      localRelationVipGrayBean.a = paramString;
       paramString = new JSONObject(paramString);
-      localRelationVipGrayBean.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
-      localRelationVipGrayBean.b = paramString.optString("iconUrl");
-      if (!TextUtils.isEmpty(localRelationVipGrayBean.b)) {
-        localRelationVipGrayBean.b = localRelationVipGrayBean.b.trim();
+      localRelationVipGrayBean.b = paramString.optInt("isShowEntry");
+      localRelationVipGrayBean.d = paramString.optString("iconUrl");
+      if (!TextUtils.isEmpty(localRelationVipGrayBean.d)) {
+        localRelationVipGrayBean.d = localRelationVipGrayBean.d.trim();
       }
       paramString = paramString.optJSONObject("grayTips");
       Iterator localIterator = paramString.keys();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        localRelationVipGrayBean.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
+        localRelationVipGrayBean.c.put(str, paramString.optString(str));
       }
       paramString = new StringBuilder();
       paramString.append("confBean = ");
@@ -61,13 +54,13 @@ public class RelationVipGrayBean
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("configContent:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RelationVipGrayBean
  * JD-Core Version:    0.7.0.1
  */

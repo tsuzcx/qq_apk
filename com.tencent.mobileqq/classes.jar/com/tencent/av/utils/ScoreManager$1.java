@@ -43,7 +43,7 @@ final class ScoreManager$1
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramNetResp.getParentFile().getAbsolutePath());
       ((StringBuilder)localObject2).append(File.separator);
-      ArResourceConfigUtils.a((String)localObject1, ((StringBuilder)localObject2).toString());
+      ArResourceConfigUtils.b((String)localObject1, ((StringBuilder)localObject2).toString());
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();

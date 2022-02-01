@@ -48,35 +48,35 @@ public class PicPreDownloadConfProcessor
       localStringBuilder.append(paramPicPreDownloadBean.toString());
       QLog.d("PicPreDownloadConfProcessor", 2, localStringBuilder.toString());
     }
-    if (Pattern.matches("(\\d+?\\|){7}\\d+", paramPicPreDownloadBean.jdField_a_of_type_JavaLangString)) {
-      PicPreDownloadUtils.a("flowCombination", paramPicPreDownloadBean.jdField_a_of_type_JavaLangString, true);
+    if (Pattern.matches("(\\d+?\\|){7}\\d+", paramPicPreDownloadBean.g)) {
+      PicPreDownloadUtils.a("flowCombination", paramPicPreDownloadBean.g, true);
     }
-    if (Pattern.matches("(\\d+?\\|){3}\\d+", paramPicPreDownloadBean.jdField_b_of_type_JavaLangString)) {
-      PicPreDownloadUtils.a("troopCombination", paramPicPreDownloadBean.jdField_b_of_type_JavaLangString, true);
+    if (Pattern.matches("(\\d+?\\|){3}\\d+", paramPicPreDownloadBean.h)) {
+      PicPreDownloadUtils.a("troopCombination", paramPicPreDownloadBean.h, true);
     }
-    if (paramPicPreDownloadBean.g > 0L) {
-      PicPreDownloadUtils.a("maxRequest", paramPicPreDownloadBean.g, true);
+    if (paramPicPreDownloadBean.i > 0L) {
+      PicPreDownloadUtils.a("maxRequest", paramPicPreDownloadBean.i, true);
     }
-    long l = paramPicPreDownloadBean.jdField_a_of_type_Long;
+    long l = paramPicPreDownloadBean.a;
     boolean bool2 = false;
     boolean bool1;
-    if ((l == 0L) || (paramPicPreDownloadBean.jdField_a_of_type_Long == 1L))
+    if ((l == 0L) || (paramPicPreDownloadBean.a == 1L))
     {
-      if (paramPicPreDownloadBean.jdField_a_of_type_Long == 1L) {
+      if (paramPicPreDownloadBean.a == 1L) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       PicPreDownloadUtils.a("PicPreDownSwitchNew", bool1, true);
     }
-    if ((paramPicPreDownloadBean.jdField_b_of_type_Long == 0L) || (paramPicPreDownloadBean.jdField_b_of_type_Long == 1L) || (paramPicPreDownloadBean.jdField_b_of_type_Long == 2L) || (paramPicPreDownloadBean.jdField_b_of_type_Long == 3L)) {
-      PicPreDownloadUtils.a("PicAuDownTimePoint", paramPicPreDownloadBean.jdField_b_of_type_Long, true);
+    if ((paramPicPreDownloadBean.b == 0L) || (paramPicPreDownloadBean.b == 1L) || (paramPicPreDownloadBean.b == 2L) || (paramPicPreDownloadBean.b == 3L)) {
+      PicPreDownloadUtils.a("PicAuDownTimePoint", paramPicPreDownloadBean.b, true);
     }
-    if (paramPicPreDownloadBean.jdField_c_of_type_Long > 0L) {
-      PicPreDownloadUtils.a("MaxWifiFlow", paramPicPreDownloadBean.jdField_c_of_type_Long, true);
+    if (paramPicPreDownloadBean.c > 0L) {
+      PicPreDownloadUtils.a("MaxWifiFlow", paramPicPreDownloadBean.c, true);
     }
-    if (paramPicPreDownloadBean.jdField_d_of_type_Long > 0L) {
-      PicPreDownloadUtils.a("Max4GFlow", paramPicPreDownloadBean.jdField_d_of_type_Long, true);
+    if (paramPicPreDownloadBean.d > 0L) {
+      PicPreDownloadUtils.a("Max4GFlow", paramPicPreDownloadBean.d, true);
     }
     if (paramPicPreDownloadBean.e > 0L) {
       PicPreDownloadUtils.a("Max3GFlow", paramPicPreDownloadBean.e, true);
@@ -84,39 +84,39 @@ public class PicPreDownloadConfProcessor
     if (paramPicPreDownloadBean.f > 0L) {
       PicPreDownloadUtils.a("Max2GFlow", paramPicPreDownloadBean.f, true);
     }
-    if (Pattern.matches("^[0-9A-Fa-f]+$", paramPicPreDownloadBean.jdField_c_of_type_JavaLangString)) {
-      PicPreDownloadUtils.a("xGPreDownPolicy", Long.valueOf(paramPicPreDownloadBean.jdField_c_of_type_JavaLangString, 16).longValue(), true);
-    }
-    if (paramPicPreDownloadBean.h > 0L) {
-      PicPreDownloadUtils.a("AFBFlowHitXG", paramPicPreDownloadBean.h, true);
-    }
-    if (paramPicPreDownloadBean.i > 0L) {
-      PicPreDownloadUtils.a("AFBFlowMissXG", paramPicPreDownloadBean.i, true);
-    }
-    if (paramPicPreDownloadBean.j > 0L) {
-      PicPreDownloadUtils.a("APicAvgSize", paramPicPreDownloadBean.j, true);
+    if (Pattern.matches("^[0-9A-Fa-f]+$", paramPicPreDownloadBean.j)) {
+      PicPreDownloadUtils.a("xGPreDownPolicy", Long.valueOf(paramPicPreDownloadBean.j, 16).longValue(), true);
     }
     if (paramPicPreDownloadBean.k > 0L) {
-      PicPreDownloadUtils.a("APicMaxSize", paramPicPreDownloadBean.k, true);
+      PicPreDownloadUtils.a("AFBFlowHitXG", paramPicPreDownloadBean.k, true);
     }
-    if ((paramPicPreDownloadBean.l == 0L) || (paramPicPreDownloadBean.l == 1L))
+    if (paramPicPreDownloadBean.l > 0L) {
+      PicPreDownloadUtils.a("AFBFlowMissXG", paramPicPreDownloadBean.l, true);
+    }
+    if (paramPicPreDownloadBean.m > 0L) {
+      PicPreDownloadUtils.a("APicAvgSize", paramPicPreDownloadBean.m, true);
+    }
+    if (paramPicPreDownloadBean.n > 0L) {
+      PicPreDownloadUtils.a("APicMaxSize", paramPicPreDownloadBean.n, true);
+    }
+    if ((paramPicPreDownloadBean.o == 0L) || (paramPicPreDownloadBean.o == 1L))
     {
       bool1 = bool2;
-      if (paramPicPreDownloadBean.l == 1L) {
+      if (paramPicPreDownloadBean.o == 1L) {
         bool1 = true;
       }
       PicPreDownloadUtils.a("enablePeakFlow", bool1, true);
     }
-    if (Pattern.matches("^((([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]);)*+([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]))$", paramPicPreDownloadBean.jdField_d_of_type_JavaLangString)) {
-      PicPreDownloadUtils.a("PeakFlowTimePeriod", paramPicPreDownloadBean.jdField_d_of_type_JavaLangString, true);
+    if (Pattern.matches("^((([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]);)*+([01]?[0-9]|2[01234])-([01]?[0-9]|2[01234]))$", paramPicPreDownloadBean.p)) {
+      PicPreDownloadUtils.a("PeakFlowTimePeriod", paramPicPreDownloadBean.p, true);
     }
-    if (paramPicPreDownloadBean.m > 0L) {
-      PicPreDownloadUtils.a("PeakFlowMaxPicSize", paramPicPreDownloadBean.m, true);
+    if (paramPicPreDownloadBean.q > 0L) {
+      PicPreDownloadUtils.a("PeakFlowMaxPicSize", paramPicPreDownloadBean.q, true);
     }
-    if ((paramPicPreDownloadBean.jdField_a_of_type_Int > 0) && (paramPicPreDownloadBean.jdField_b_of_type_Int > 0))
+    if ((paramPicPreDownloadBean.r > 0) && (paramPicPreDownloadBean.s > 0))
     {
-      PicPreDownloadUtils.a("gifWifiPreDownloadLimit", paramPicPreDownloadBean.jdField_a_of_type_Int, true);
-      PicPreDownloadUtils.a("gifXgPreDownloadLimit", paramPicPreDownloadBean.jdField_b_of_type_Int, true);
+      PicPreDownloadUtils.a("gifWifiPreDownloadLimit", paramPicPreDownloadBean.r, true);
+      PicPreDownloadUtils.a("gifXgPreDownloadLimit", paramPicPreDownloadBean.s, true);
     }
   }
   
@@ -163,7 +163,7 @@ public class PicPreDownloadConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicPreDownloadConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -4,80 +4,79 @@ import java.nio.ByteBuffer;
 
 class TroopBarShortVideoUploadUtil$UploadReqBody
 {
-  public final int a;
-  public final long a;
-  public final byte[] a;
-  public final int b;
-  public final long b;
+  public final int a = 304;
   public final byte[] b;
-  public final long c;
-  public final long d;
+  public final int c;
+  public final byte[] d;
   public final long e;
+  public final long f;
+  public final long g;
+  public final long h;
+  public final long i;
   
   public TroopBarShortVideoUploadUtil$UploadReqBody(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
-    this.jdField_a_of_type_Int = 304;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_Int = 20;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
+    this.b = paramArrayOfByte1;
+    this.c = 20;
+    this.d = paramArrayOfByte2;
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.g = paramLong3;
+    this.h = paramLong4;
+    this.i = paramLong5;
   }
   
   public void a(ByteBuffer paramByteBuffer)
   {
-    paramByteBuffer.putShort((short)(this.jdField_a_of_type_Int & 0xFFFF));
-    Object localObject = this.jdField_a_of_type_ArrayOfByte;
-    int j = localObject.length;
-    int i = this.jdField_a_of_type_Int;
+    paramByteBuffer.putShort((short)(this.a & 0xFFFF));
+    Object localObject = this.b;
+    int k = localObject.length;
+    int j = this.a;
     byte[] arrayOfByte;
-    if (j != i)
+    if (k != j)
     {
-      arrayOfByte = new byte[i];
-      if (localObject.length <= i) {
-        i = localObject.length;
+      arrayOfByte = new byte[j];
+      if (localObject.length <= j) {
+        j = localObject.length;
       }
-      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-      while (i < this.jdField_a_of_type_Int)
+      System.arraycopy(this.b, 0, arrayOfByte, 0, j);
+      while (j < this.a)
       {
-        arrayOfByte[i] = 0;
-        i += 1;
+        arrayOfByte[j] = 0;
+        j += 1;
       }
       localObject = arrayOfByte;
     }
-    paramByteBuffer.put((byte[])localObject, 0, this.jdField_a_of_type_Int);
-    paramByteBuffer.putShort((short)(this.jdField_b_of_type_Int & 0xFFFF));
-    localObject = this.jdField_b_of_type_ArrayOfByte;
-    j = localObject.length;
-    i = this.jdField_b_of_type_Int;
-    if (j != i)
+    paramByteBuffer.put((byte[])localObject, 0, this.a);
+    paramByteBuffer.putShort((short)(this.c & 0xFFFF));
+    localObject = this.d;
+    k = localObject.length;
+    j = this.c;
+    if (k != j)
     {
-      arrayOfByte = new byte[i];
-      if (localObject.length <= i) {
-        i = localObject.length;
+      arrayOfByte = new byte[j];
+      if (localObject.length <= j) {
+        j = localObject.length;
       }
-      System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-      while (i < this.jdField_b_of_type_Int)
+      System.arraycopy(this.d, 0, arrayOfByte, 0, j);
+      while (j < this.c)
       {
-        arrayOfByte[i] = 0;
-        i += 1;
+        arrayOfByte[j] = 0;
+        j += 1;
       }
       localObject = arrayOfByte;
     }
-    paramByteBuffer.put((byte[])localObject, 0, this.jdField_b_of_type_Int);
-    paramByteBuffer.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    paramByteBuffer.put((byte[])localObject, 0, this.c);
     paramByteBuffer.putInt((int)(this.e & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.f & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.g & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.h & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.i & 0xFFFFFFFF));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil.UploadReqBody
  * JD-Core Version:    0.7.0.1
  */

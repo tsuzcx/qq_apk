@@ -24,19 +24,19 @@ import java.util.List;
 class ComponentContentRecommendFollowList$FollowListAdapter
   extends BaseAdapter
 {
-  private List<RecommendFollowInfo> jdField_a_of_type_JavaUtilList;
+  private List<RecommendFollowInfo> b;
   
   private ComponentContentRecommendFollowList$FollowListAdapter(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
   public void a(List<RecommendFollowInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -58,60 +58,60 @@ class ComponentContentRecommendFollowList$FollowListAdapter
     int j = 0;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560266, paramViewGroup, false);
-      paramViewGroup = new ComponentContentRecommendFollowList.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368058));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368067));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380362));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377820));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371884));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378309));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367080));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367072));
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626313, paramViewGroup, false);
+      paramViewGroup = new ComponentContentRecommendFollowList.ViewHolder(this.a, null);
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131434908));
+      paramViewGroup.a = ((RelativeLayout)paramView.findViewById(2131434917));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131449308));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131446289));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131439327));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131446828));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131433533));
+      paramViewGroup.h = ((LinearLayout)paramView.findViewById(2131433525));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramViewGroup);
+      paramViewGroup.a.setOnClickListener(paramViewGroup);
+      paramViewGroup.e.setOnClickListener(paramViewGroup);
+      paramViewGroup.h.setOnClickListener(paramViewGroup);
     }
     else
     {
       paramViewGroup = (ComponentContentRecommendFollowList.ViewHolder)paramView.getTag();
     }
-    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo = localRecommendFollowInfo;
-    paramViewGroup.jdField_a_of_type_Int = paramInt;
-    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
+    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.b.get(paramInt);
+    paramViewGroup.i = localRecommendFollowInfo;
+    paramViewGroup.j = paramInt;
+    ComponentContentRecommendFollowList.b(this.a).mRecommendFollowInfos.h.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
     if (!TextUtils.isEmpty(localRecommendFollowInfo.headUrl))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = ImageUtil.e();
+      Drawable localDrawable = ImageUtil.j();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
       localObject = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
+      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.b);
       ((URLDrawable)localObject).setFadeInImage(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      paramViewGroup.b.setImageDrawable((Drawable)localObject);
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.e());
+      paramViewGroup.b.setImageDrawable(ImageUtil.j());
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.nickName);
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+    paramViewGroup.e.setText(localRecommendFollowInfo.nickName);
+    paramViewGroup.f.setText(localRecommendFollowInfo.recommendReason);
     if (localRecommendFollowInfo.isFollowed)
     {
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131702525));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849733);
+      paramViewGroup.g.setText(HardCodeUtil.a(2131900520));
+      paramViewGroup.g.setTextColor(-8947849);
+      paramViewGroup.h.setBackgroundResource(2130851442);
     }
     else
     {
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131702515));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130849689);
+      paramViewGroup.g.setText(HardCodeUtil.a(2131899712));
+      paramViewGroup.g.setTextColor(-1);
+      paramViewGroup.h.setBackgroundResource(2130851394);
     }
-    Object localObject = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
+    Object localObject = paramViewGroup.c;
     int i;
     if (localRecommendFollowInfo.isVip) {
       i = 0;
@@ -119,21 +119,21 @@ class ComponentContentRecommendFollowList$FollowListAdapter
       i = 8;
     }
     ((ImageView)localObject).setVisibility(i);
-    paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
+    paramViewGroup = paramViewGroup.d;
     if (localRecommendFollowInfo.isStar) {
       i = j;
     } else {
       i = 8;
     }
     paramViewGroup.setVisibility(i);
-    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList);
-    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList, paramInt, localRecommendFollowInfo);
+    ComponentContentRecommendFollowList.c(this.a);
+    ComponentContentRecommendFollowList.a(this.a, paramInt, localRecommendFollowInfo);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommendFollowList.FollowListAdapter
  * JD-Core Version:    0.7.0.1
  */

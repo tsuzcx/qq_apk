@@ -424,7 +424,7 @@ public class PicEmotionDownloader
     }
     try
     {
-      if (EmosmUtils.b((String)localObject)) {
+      if (EmosmUtils.d((String)localObject)) {
         return decodeGifFile(paramDownloadParams, paramString, (String)localObject);
       }
       if (paramDownloadParams.useApngImage) {
@@ -437,7 +437,7 @@ public class PicEmotionDownloader
         paramDownloadParams.append((String)localObject);
         QLog.d("PicEmotionDownloader", 2, paramDownloadParams.toString());
       }
-      paramDownloadParams = EmosmUtils.b((String)localObject);
+      paramDownloadParams = EmosmUtils.c((String)localObject);
       if (paramDownloadParams != null)
       {
         paramDownloadParams = decodeDecryptFileData((String)localObject, paramDownloadParams);
@@ -655,7 +655,7 @@ public class PicEmotionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PicEmotionDownloader
  * JD-Core Version:    0.7.0.1
  */

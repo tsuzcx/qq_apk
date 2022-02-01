@@ -14,14 +14,14 @@ public class LocalCrashLongClickCallback
 {
   public void a(AIOContext paramAIOContext, View paramView)
   {
-    if ("//findcrash".equals(paramAIOContext.a().a().a().a().toString())) {
+    if ("//findcrash".equals(paramAIOContext.p().d().f().a().toString())) {
       ThreadManager.post(new LocalCrashCollector(paramAIOContext), 8, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.funbtn.LocalCrashLongClickCallback
  * JD-Core Version:    0.7.0.1
  */

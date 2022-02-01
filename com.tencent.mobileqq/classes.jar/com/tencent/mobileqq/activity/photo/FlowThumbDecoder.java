@@ -40,9 +40,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131297102);
-    sFlowItemMaxWidth = localResources.getDimension(2131297100);
-    sFlowItemMinWidth = localResources.getDimension(2131297101);
+    sFlowItemHeight = localResources.getDimension(2131297483);
+    sFlowItemMaxWidth = localResources.getDimension(2131297481);
+    sFlowItemMinWidth = localResources.getDimension(2131297482);
     float f1 = sFlowItemMaxWidth;
     float f2 = sFlowItemHeight;
     sRatioMax = f1 / f2;
@@ -329,7 +329,7 @@ public class FlowThumbDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FlowThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

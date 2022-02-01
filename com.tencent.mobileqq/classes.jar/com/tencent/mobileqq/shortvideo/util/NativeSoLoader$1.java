@@ -7,16 +7,16 @@ final class NativeSoLoader$1
 {
   public void run()
   {
-    if (!NativeSoLoader.a().get())
+    if (!NativeSoLoader.b().get())
     {
       boolean bool = NativeSoLoader.a("TKGLRenderer");
-      NativeSoLoader.a().getAndSet(bool);
+      NativeSoLoader.b().getAndSet(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.NativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

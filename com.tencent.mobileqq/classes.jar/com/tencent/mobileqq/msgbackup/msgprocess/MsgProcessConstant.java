@@ -16,21 +16,21 @@ public abstract class MsgProcessConstant
     this.a = localStringBuilder.toString();
   }
   
-  public void a(String paramString)
+  protected boolean a(String paramString)
+  {
+    return FileUtils.fileExists(paramString);
+  }
+  
+  public void b(String paramString)
   {
     if (MsgBackupUtil.a) {
       QLog.d(this.a, 2, paramString);
     }
   }
-  
-  protected boolean a(String paramString)
-  {
-    return FileUtils.fileExists(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessConstant
  * JD-Core Version:    0.7.0.1
  */

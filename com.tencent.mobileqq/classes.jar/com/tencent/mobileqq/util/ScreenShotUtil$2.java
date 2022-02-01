@@ -17,8 +17,8 @@ final class ScreenShotUtil$2
   {
     try
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().snapshotWholePage(this.jdField_a_of_type_AndroidGraphicsCanvas, false, false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.a.getX5WebViewExtension().snapshotWholePage(this.b, false, false);
+      localObject = this.c.a(this.d);
       ThreadManagerV2.getUIHandlerV2().post(new ScreenShotUtil.2.1(this, localObject));
       return;
     }
@@ -38,7 +38,7 @@ final class ScreenShotUtil$2
       break label49;
     }
     QLog.e("ScreenShotUtil", 1, "snapshotWholePage out of memory ");
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject = this.d;
     if (localObject != null) {
       ((Bitmap)localObject).recycle();
     }
@@ -47,7 +47,7 @@ final class ScreenShotUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.2
  * JD-Core Version:    0.7.0.1
  */

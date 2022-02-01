@@ -27,7 +27,7 @@ import com.tencent.mobileqq.kandian.base.report.DistinctEventReporter.IReporter;
 import com.tencent.mobileqq.kandian.base.utils.RIJStringUtils;
 import com.tencent.mobileqq.kandian.base.view.widget.RecyclerViewWithHeaderFooterFix;
 import com.tencent.mobileqq.kandian.biz.channel.ChannelClassificationListView;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.dislike.SimpleFeedbackPopupWindow;
 import com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelWaterFallViewController;
 import com.tencent.mobileqq.kandian.biz.tab.ReadInjoyXRecyclerView;
@@ -42,7 +42,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
 import com.tencent.mobileqq.kandian.repo.report.BaseReportData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.ArrayList;
@@ -55,48 +54,50 @@ public class ReadInJoyPicWaterFallFragment
   extends ReadInJoyFragmentWithSubChannel<ReadInJoyPicWaterFallFragment.ClassData>
   implements DistinctEventReporter.IReporter
 {
-  static final int d = Color.parseColor("#999999");
-  static final int e = Color.parseColor("#262626");
-  int jdField_a_of_type_Int = 2;
-  private RecyclerView.ItemAnimator jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator;
-  private View jdField_a_of_type_AndroidViewView;
-  protected DistinctEventReporter a;
-  private SimpleFeedbackPopupWindow jdField_a_of_type_ComTencentMobileqqKandianBizDislikeSimpleFeedbackPopupWindow;
-  protected ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface a;
-  protected ReadInJoyPicWaterFallFragment.WaterFallPicAdapter a;
-  protected ReadInjoyXRecyclerView a;
-  ArrayList<ReadInJoyPicWaterFallFragment.ClassData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected Map<Long, BaseReportData> a;
-  protected Set<Long> a;
-  int c;
-  private int jdField_f_of_type_Int = 41522;
-  private boolean jdField_f_of_type_Boolean;
+  static final int v = Color.parseColor("#999999");
+  static final int w = Color.parseColor("#262626");
+  private View A;
+  private SimpleFeedbackPopupWindow B;
+  int m = 2;
+  protected ReadInjoyXRecyclerView n;
+  protected ReadInJoyPicWaterFallFragment.WaterFallPicAdapter o;
+  protected ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface p;
+  int q;
+  ArrayList<ReadInJoyPicWaterFallFragment.ClassData> r = new ArrayList();
+  protected Set<Long> s = null;
+  protected Map<Long, BaseReportData> t = null;
+  protected DistinctEventReporter u;
+  private RecyclerView.ItemAnimator x;
+  private int y = 41522;
+  private boolean z;
   
-  public ReadInJoyPicWaterFallFragment()
+  private void A()
   {
-    this.jdField_a_of_type_JavaUtilSet = null;
-    this.jdField_a_of_type_JavaUtilMap = null;
+    this.x.setAddDuration(120L);
+    this.x.setChangeDuration(250L);
+    this.x.setMoveDuration(250L);
+    this.x.setRemoveDuration(120L);
   }
   
   private void a(View paramView)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131369249);
-    Object localObject = (LinearLayout)paramView.findViewById(2131369251);
-    localObject = (ImageView)paramView.findViewById(2131369250);
-    paramView = (TextView)paramView.findViewById(2131369202);
-    localTextView.setText(a().getIntent().getStringExtra("sub_channel_name"));
+    TextView localTextView = (TextView)paramView.findViewById(2131436227);
+    Object localObject = (LinearLayout)paramView.findViewById(2131436229);
+    localObject = (ImageView)paramView.findViewById(2131436228);
+    paramView = (TextView)paramView.findViewById(2131436180);
+    localTextView.setText(v().getIntent().getStringExtra("sub_channel_name"));
     paramView.setOnClickListener(new ReadInJoyPicWaterFallFragment.5(this));
     if (Build.VERSION.SDK_INT > 10) {
       paramView.setLayerType(0, null);
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       AccessibilityUtil.b(paramView, Button.class.getName());
     }
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2)
   {
-    Object localObject = RIJFeedsType.c(paramAbsBaseArticleInfo);
+    Object localObject = RIJFeedsType.k(paramAbsBaseArticleInfo);
     int i;
     if (paramAbsBaseArticleInfo.hasChannelInfo()) {
       i = paramAbsBaseArticleInfo.mChannelInfoId;
@@ -104,7 +105,7 @@ public class ReadInJoyPicWaterFallFragment
       i = 0;
     }
     boolean bool = TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleFriendLikeText);
-    String str = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, bool ^ true, NetworkUtil.isWifiConnected(null), (String)localObject, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
+    String str = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, bool ^ true, NetworkUtil.isWifiConnected(null), (String)localObject, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo);
     JSONObject localJSONObject = new JSONObject();
     localObject = localJSONObject;
     try
@@ -124,93 +125,69 @@ public class ReadInJoyPicWaterFallFragment
     {
       localObject = localJSONObject;
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, RIJFeedsType.c(paramAbsBaseArticleInfo), "0X8007625", "0X8007625", 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.businessId), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), ((JSONObject)localObject).toString(), false);
+    PublicAccountReportUtils.a(null, RIJFeedsType.k(paramAbsBaseArticleInfo), "0X8007625", "0X8007625", 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.businessId), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), ((JSONObject)localObject).toString(), false);
   }
   
-  private void i()
+  private void z()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setAddDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setChangeDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setMoveDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setRemoveDuration(0L);
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setAddDuration(120L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setChangeDuration(250L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setMoveDuration(250L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator.setRemoveDuration(120L);
+    this.x.setAddDuration(0L);
+    this.x.setChangeDuration(0L);
+    this.x.setMoveDuration(0L);
+    this.x.setRemoveDuration(0L);
   }
   
   protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<ReadInJoyPicWaterFallFragment.ClassData> paramChannelClassificationListView)
   {
-    paramLayoutInflater = LayoutInflater.from(a()).inflate(2131560205, null);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378810);
-    if (f())
+    paramLayoutInflater = LayoutInflater.from(v()).inflate(2131626252, null);
+    this.A = paramLayoutInflater.findViewById(2131447492);
+    if (a())
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.A.setVisibility(0);
       a(paramLayoutInflater);
       Utils.a(this);
     }
-    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131365132);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView = new ReadInJoyPicWaterFallFragment.1(this, paramViewGroup.getContext());
-    paramViewGroup = new ReadInJoyPicWaterFallFragment.2(this, this.jdField_a_of_type_Int, 1);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView != null)
+    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131431280);
+    this.n = new ReadInJoyPicWaterFallFragment.1(this, paramViewGroup.getContext());
+    paramViewGroup = new ReadInJoyPicWaterFallFragment.2(this, this.m, 1);
+    if (this.a != null)
     {
-      paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(a());
+      paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(v());
       paramChannelClassificationListView.setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       paramChannelClassificationListView.setPadding(0, AIOUtils.b(3.0F, getResources()), 0, AIOUtils.b(3.0F, getResources()));
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
       localLayoutParams.gravity = 17;
-      paramChannelClassificationListView.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView, localLayoutParams);
+      paramChannelClassificationListView.addView(this.a, localLayoutParams);
       paramChannelClassificationListView.setMinimumHeight(1);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView.setAdapter(new ReadInJoyPicWaterFallFragment.ClassificationAdapter(this, null));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().a(paramChannelClassificationListView);
+      this.a.setAdapter(new ReadInJoyPicWaterFallFragment.ClassificationAdapter(this, null));
+      this.n.getRecyclerView().a(paramChannelClassificationListView);
     }
     else
     {
-      paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(a());
+      paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(v());
       paramChannelClassificationListView.setPadding(0, AIOUtils.b(3.0F, getResources()), 0, AIOUtils.b(3.0F, getResources()));
       paramChannelClassificationListView.setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       paramChannelClassificationListView.setMinimumHeight(1);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().a(paramChannelClassificationListView);
+      this.n.getRecyclerView().a(paramChannelClassificationListView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().setLayoutManager(paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$WaterFallPicAdapter = new ReadInJoyPicWaterFallFragment.WaterFallPicAdapter(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$WaterFallPicAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().addOnScrollListener(new ReadInJoyPicWaterFallFragment.3(this));
-    this.c = AIOUtils.b(3.0F, getResources());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().addItemDecoration(new ReadInJoyPicWaterFallFragment.SpaceItemDecoration(this, this.c));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator = this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.a().getItemAnimator();
-    i();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.setBackgroundColor(Color.parseColor("#f7f7f7"));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView.setRefreshCallback(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController);
+    this.n.getRecyclerView().setLayoutManager(paramViewGroup);
+    this.o = new ReadInJoyPicWaterFallFragment.WaterFallPicAdapter(this);
+    this.n.getRecyclerView().setAdapter(this.o);
+    this.n.getRecyclerView().addOnScrollListener(new ReadInJoyPicWaterFallFragment.3(this));
+    this.q = AIOUtils.b(3.0F, getResources());
+    this.n.getRecyclerView().addItemDecoration(new ReadInJoyPicWaterFallFragment.SpaceItemDecoration(this, this.q));
+    this.x = this.n.getRecyclerView().getItemAnimator();
+    z();
+    this.n.setBackgroundColor(Color.parseColor("#f7f7f7"));
+    this.n.setRefreshCallback(this.c);
     paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
-    paramBundle.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInjoyXRecyclerView, paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeSimpleFeedbackPopupWindow = new SimpleFeedbackPopupWindow(a(), new ReadInJoyPicWaterFallFragment.4(this));
+    paramBundle.addView(this.n, paramViewGroup);
+    this.B = new SimpleFeedbackPopupWindow(v(), new ReadInJoyPicWaterFallFragment.4(this));
     return paramLayoutInflater;
-  }
-  
-  public ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface = new ReadInJoyPicWaterFallFragment.6(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface;
-  }
-  
-  protected void a()
-  {
-    super.a();
-    Intent localIntent = a().getIntent();
-    this.jdField_f_of_type_Int = localIntent.getIntExtra("channel_id", 41522);
-    this.jdField_f_of_type_Boolean = localIntent.getBooleanExtra("is_sub_channel", false);
   }
   
   protected void a(View paramView, int paramInt)
   {
-    paramView = ((ReadInJoyPicWaterFallFragment.ClassData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
+    paramView = ((ReadInJoyPicWaterFallFragment.ClassData)this.r.get(paramInt)).c;
     if (TextUtils.isEmpty(paramView.mChannelJumpUrl))
     {
       Intent localIntent = new Intent();
@@ -218,7 +195,7 @@ public class ReadInJoyPicWaterFallFragment
       localIntent.putExtra("channel_id", paramView.mChannelCoverId);
       localIntent.putExtra("sub_channel_name", paramView.mChannelCoverName);
       localIntent.putExtra("is_sub_channel", true);
-      QPublicFragmentActivity.start(a(), localIntent, ReadInJoyPicWaterFallFragment.class);
+      QPublicFragmentActivity.start(v(), localIntent, ReadInJoyPicWaterFallFragment.class);
     }
   }
   
@@ -226,66 +203,61 @@ public class ReadInJoyPicWaterFallFragment
   {
     if (paramAbsBaseArticleInfo != null)
     {
-      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      Map localMap = this.t;
       if ((localMap != null) && ((localMap.containsKey(Long.valueOf(paramAbsBaseArticleInfo.mArticleID)) ^ true))) {
-        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramAbsBaseArticleInfo, paramInt, RIJTransMergeKanDianReport.a(), System.currentTimeMillis()), 5, null, true);
+        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramAbsBaseArticleInfo, paramInt, RIJTransMergeKanDianReport.b(), System.currentTimeMillis()), 5, null, true);
       }
     }
   }
   
   public void a(Map<Long, BaseReportData> paramMap, boolean paramBoolean, Map<Long, ReadinjoyReportUtils.ExposureReportItem> paramMap1, String paramString)
   {
-    new RIJFrameworkReportManager().a(paramMap, paramBoolean, paramMap1, paramString, a(), b());
+    new RIJFrameworkReportManager().a(paramMap, paramBoolean, paramMap1, paramString, v(), d());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$WaterFallPicAdapter;
+    paramActivity = this.o;
     if (paramActivity != null) {
       paramActivity.notifyDataSetChanged();
     }
   }
   
-  public int b()
+  protected boolean a()
   {
-    return this.jdField_f_of_type_Int;
+    return this.z;
   }
   
-  protected boolean f()
+  public int d()
   {
-    return this.jdField_f_of_type_Boolean;
+    return this.y;
   }
   
-  public void g()
+  public void n()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelWaterFallViewController.k();
+    if (this.c != null) {
+      this.c.cR_();
     }
-    DistinctEventReporter localDistinctEventReporter = this.jdField_a_of_type_ComTencentMobileqqKandianBaseReportDistinctEventReporter;
+    DistinctEventReporter localDistinctEventReporter = this.u;
     if (localDistinctEventReporter != null)
     {
       localDistinctEventReporter.reportDelay();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseReportDistinctEventReporter.clearAll();
+      this.u.clearAll();
     }
-  }
-  
-  public boolean g()
-  {
-    return a() instanceof SplashActivity;
   }
   
   public boolean onBackEvent()
   {
-    b();
+    f();
     return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseReportDistinctEventReporter = new DistinctEventReporter(this);
-    RIJDtReportHelper.a.a(a());
+    this.u = new DistinctEventReporter(this);
+    RIJDtReportHelper.a.a(v());
   }
   
   public void onDestroy()
@@ -296,11 +268,11 @@ public class ReadInJoyPicWaterFallFragment
   public void onResume()
   {
     super.onResume();
-    ReadInJoyPicWaterFallFragment.WaterFallPicAdapter localWaterFallPicAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$WaterFallPicAdapter;
+    ReadInJoyPicWaterFallFragment.WaterFallPicAdapter localWaterFallPicAdapter = this.o;
     if (localWaterFallPicAdapter != null) {
       localWaterFallPicAdapter.notifyDataSetChanged();
     }
-    if (f()) {
+    if (a()) {
       Utils.a(this);
     }
   }
@@ -315,13 +287,34 @@ public class ReadInJoyPicWaterFallFragment
     if (paramString.equals("exp_subchannel"))
     {
       paramString = (ReadInJoyPicWaterFallFragment.ClassData)paramObject;
-      GalleryReportedUtils.a(a(), "0X8009A70", b(), paramString.a.mChannelCoverId);
+      GalleryReportedUtils.a(v(), "0X8009A70", d(), paramString.c.mChannelCoverId);
     }
+  }
+  
+  protected void w()
+  {
+    super.w();
+    Intent localIntent = v().getIntent();
+    this.y = localIntent.getIntExtra("channel_id", 41522);
+    this.z = localIntent.getBooleanExtra("is_sub_channel", false);
+  }
+  
+  public ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface x()
+  {
+    if (this.p == null) {
+      this.p = new ReadInJoyPicWaterFallFragment.6(this);
+    }
+    return this.p;
+  }
+  
+  public boolean y()
+  {
+    return v() instanceof SplashActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment
  * JD-Core Version:    0.7.0.1
  */

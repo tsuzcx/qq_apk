@@ -21,12 +21,12 @@ class SystemMsgListAdapter$1
     }
     SystemMsgListAdapter.a(this.this$0).loadNewFriendMsg(true, this.a);
     Object localObject = SystemMsgListAdapter.a(this.this$0).getMixedNewFriendDatas();
-    SystemMsgListAdapter.a(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, (ArrayList)localObject));
+    SystemMsgListAdapter.e(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, (ArrayList)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.SystemMsgListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

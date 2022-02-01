@@ -12,10 +12,10 @@ public class PromiseImpl
   public static final int PROMISE_CODE_NORMAN_ERROR = 1;
   public static final int PROMISE_CODE_OTHER_ERROR = 2;
   public static final int PROMISE_CODE_SUCCESS = 0;
-  private String mCallId;
-  private HippyEngineContext mContext;
-  private String mModuleFunc;
-  private String mModuleName;
+  private final String mCallId;
+  private final HippyEngineContext mContext;
+  private final String mModuleFunc;
+  private final String mModuleName;
   private boolean mNeedResolveBySelf = true;
   
   public PromiseImpl(HippyEngineContext paramHippyEngineContext, String paramString1, String paramString2, String paramString3)
@@ -72,7 +72,7 @@ public class PromiseImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.PromiseImpl
  * JD-Core Version:    0.7.0.1
  */

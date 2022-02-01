@@ -1,0 +1,14 @@
+package com.tencent.turingfd.sdk.xq;
+
+public abstract interface RiskDetectResp
+{
+  public abstract long a();
+  
+  public abstract String b();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.turingfd.sdk.xq.RiskDetectResp
+ * JD-Core Version:    0.7.0.1
+ */

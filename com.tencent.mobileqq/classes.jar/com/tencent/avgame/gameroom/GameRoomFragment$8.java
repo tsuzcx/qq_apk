@@ -11,12 +11,12 @@ class GameRoomFragment$8
   
   public void run()
   {
-    if ((!GameEngine.a().e()) && (!GameRoomFragment.b(this.this$0)))
+    if ((!GameEngine.a().v()) && (!GameRoomFragment.e(this.this$0)))
     {
       GameRoomFragment.b(this.this$0, this.a);
       return;
     }
-    GameRoomFragment.a(this.this$0).setVisibility(8);
+    GameRoomFragment.d(this.this$0).setVisibility(8);
   }
 }
 

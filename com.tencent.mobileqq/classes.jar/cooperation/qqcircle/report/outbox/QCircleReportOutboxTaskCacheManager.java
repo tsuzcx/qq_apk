@@ -1,17 +1,17 @@
 package cooperation.qqcircle.report.outbox;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.qcircle.api.db.DbCacheManager;
 import com.tencent.mobileqq.qcircle.api.db.DbCacheService;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleHostStubUtil;
 import java.util.ArrayList;
 
 public class QCircleReportOutboxTaskCacheManager
 {
   private static final String TAG = "QCircleReportOutboxTaskCacheManager";
+  private static final String WHERE_CLAUSE = "cache_key";
   private String mCacheName = "sender_queue";
   private final QCircleReportOutboxTaskCacheManager.CacheHolder mSenderQueueCache = new QCircleReportOutboxTaskCacheManager.CacheHolder();
-  private final String whereClause = "cache_key";
   
   public QCircleReportOutboxTaskCacheManager()
   {
@@ -32,7 +32,7 @@ public class QCircleReportOutboxTaskCacheManager
     if ((l != paramCacheHolder.uin) || (paramCacheHolder.cache == null) || (paramCacheHolder.cache.isClosed()))
     {
       paramCacheHolder.uin = l;
-      paramCacheHolder.cache = DbCacheService.a().a(QCircleReportOutboxTaskCacheData.class, l, this.mCacheName);
+      paramCacheHolder.cache = DbCacheService.c().a(QCircleReportOutboxTaskCacheData.class, l, this.mCacheName);
     }
   }
   
@@ -44,11 +44,10 @@ public class QCircleReportOutboxTaskCacheManager
   
   public void removeTask(QCircleReportOutboxTask paramQCircleReportOutboxTask)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("removeTask id:");
     localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
-    RFLog.i("QCircleReportOutboxTaskCacheManager", i, localStringBuilder.toString());
+    QLog.i("QCircleReportOutboxTaskCacheManager", 1, localStringBuilder.toString());
     ensureCacheHolder(this.mSenderQueueCache);
     this.mSenderQueueCache.cache.deleteData("cache_key=?", new String[] { paramQCircleReportOutboxTask.getCacheKey() });
   }
@@ -76,11 +75,10 @@ public class QCircleReportOutboxTaskCacheManager
           else
           {
             removeTask(localQCircleReportOutboxTask);
-            int j = RFLog.USR;
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("remove null task, id:");
             ((StringBuilder)localObject).append(localQCircleReportOutboxTask.getTaskId());
-            RFLog.w("QCircleReportOutboxTaskCacheManager", j, ((StringBuilder)localObject).toString());
+            QLog.w("QCircleReportOutboxTaskCacheManager", 1, ((StringBuilder)localObject).toString());
           }
         }
         i += 1;
@@ -93,20 +91,18 @@ public class QCircleReportOutboxTaskCacheManager
   {
     if (!paramQCircleReportOutboxTask.isNullTask())
     {
-      i = RFLog.USR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("saveTask id:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
-      RFLog.i("QCircleReportOutboxTaskCacheManager", i, localStringBuilder.toString());
+      QLog.i("QCircleReportOutboxTaskCacheManager", 1, localStringBuilder.toString());
       ensureCacheHolder(this.mSenderQueueCache);
       this.mSenderQueueCache.cache.saveData(new QCircleReportOutboxTaskCacheData(paramQCircleReportOutboxTask), 1);
       return;
     }
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("save null task, id:");
     localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
-    RFLog.w("QCircleReportOutboxTaskCacheManager", i, localStringBuilder.toString());
+    QLog.w("QCircleReportOutboxTaskCacheManager", 1, localStringBuilder.toString());
   }
   
   public void updateTask(QCircleReportOutboxTask paramQCircleReportOutboxTask)
@@ -123,7 +119,7 @@ public class QCircleReportOutboxTaskCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheManager
  * JD-Core Version:    0.7.0.1
  */

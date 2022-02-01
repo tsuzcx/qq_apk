@@ -12,7 +12,7 @@ public class GameBannerVideoInfoController$BannerActivityLifeCycle
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
+      this.a.a.y().finish();
     }
   }
 }

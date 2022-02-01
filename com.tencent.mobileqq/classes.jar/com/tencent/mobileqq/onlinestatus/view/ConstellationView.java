@@ -61,74 +61,69 @@ public final class ConstellationView
   extends BaseStatusCardView
   implements OnLineStatusBlurBg.OnLineStatusBlurBgListener
 {
-  public static final ConstellationView.Companion a;
-  private int jdField_a_of_type_Int;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static final ConstellationView.Companion a = new ConstellationView.Companion(null);
+  private int A;
+  private final AppRuntime B;
+  private BaseApplication C;
   @NotNull
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private Card jdField_a_of_type_ComTencentMobileqqDataCard;
+  private QBaseActivity D;
   @NotNull
-  private OnLineStatusBlurBg jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg;
-  private StatusExtInfoObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver;
-  private BaseApplication jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
-  private String jdField_a_of_type_JavaLangString;
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private final View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView$Companion = new ConstellationView.Companion(null);
-  }
+  private OnLineStatusBlurBg E;
+  private Card b;
+  private BitmapDrawable c;
+  private String d;
+  private String e;
+  private StatusExtInfoObserver f;
+  private int g;
+  private int h;
+  private ImageView o;
+  private ImageView p;
+  private View q;
+  private TextView r;
+  private TextView s;
+  private TextView t;
+  private TextView u;
+  private Button v;
+  private TextView w;
+  private TextView x;
+  private TextView y;
+  private final View z;
   
   public ConstellationView(@NotNull QBaseActivity paramQBaseActivity, @NotNull OnLineStatusBlurBg paramOnLineStatusBlurBg, @NotNull BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
   {
     super((Context)paramQBaseActivity, paramOnDismissCallback);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg = paramOnLineStatusBlurBg;
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    this.D = paramQBaseActivity;
+    this.E = paramOnLineStatusBlurBg;
+    paramQBaseActivity = this.D.getAppRuntime();
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "activity.getAppRuntime()");
-    this.jdField_a_of_type_MqqAppAppRuntime = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication = BaseApplication.context;
+    this.B = paramQBaseActivity;
+    this.C = BaseApplication.context;
     paramQBaseActivity = a();
-    paramQBaseActivity.findViewById(2131376818).setOnClickListener((View.OnClickListener)new ConstellationView..special..inlined.apply.lambda.1(this));
-    this.jdField_b_of_type_AndroidViewView = paramQBaseActivity.findViewById(2131365187);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)ConstellationView.1.2.a);
-    this.jdField_d_of_type_AndroidViewView = paramQBaseActivity;
+    paramQBaseActivity.findViewById(2131445148).setOnClickListener((View.OnClickListener)new ConstellationView..special..inlined.apply.lambda.1(this));
+    this.j = paramQBaseActivity.findViewById(2131431349);
+    this.j.setOnClickListener((View.OnClickListener)ConstellationView.1.2.a);
+    this.z = paramQBaseActivity;
+    d();
     b();
-    a();
-    setContentView(this.jdField_d_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView;
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    setContentView(this.z);
+    this.i = this.z;
+    paramQBaseActivity = this.C;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
-    this.jdField_c_of_type_Int = Utils.a(296.0F, paramQBaseActivity.getResources());
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    this.A = Utils.a(296.0F, paramQBaseActivity.getResources());
+    paramQBaseActivity = this.C;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
     int i = Utils.a(211.0F, paramQBaseActivity.getResources());
     float f1 = 12;
-    float f2 = DeviceInfoUtil.a();
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    float f2 = DeviceInfoUtil.A();
+    paramQBaseActivity = this.C;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
-    paramQBaseActivity = BitmapManager.a(paramQBaseActivity.getResources(), 2130841526, this.jdField_c_of_type_Int, i);
+    paramQBaseActivity = BitmapManager.a(paramQBaseActivity.getResources(), 2130842369, this.A, i);
     if (paramQBaseActivity != null)
     {
-      paramQBaseActivity = BaseImageUtil.d(paramQBaseActivity, f1 * f2, this.jdField_c_of_type_Int, i);
-      paramOnLineStatusBlurBg = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+      paramQBaseActivity = BaseImageUtil.d(paramQBaseActivity, f1 * f2, this.A, i);
+      paramOnLineStatusBlurBg = this.C;
       Intrinsics.checkExpressionValueIsNotNull(paramOnLineStatusBlurBg, "appContext");
-      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(paramOnLineStatusBlurBg.getResources(), paramQBaseActivity);
+      this.c = new BitmapDrawable(paramOnLineStatusBlurBg.getResources(), paramQBaseActivity);
     }
     if (Build.VERSION.SDK_INT >= 24) {
       CompletableFuture.runAsync((Runnable)new ConstellationView.3(this));
@@ -137,7 +132,7 @@ public final class ConstellationView
   
   private final void a(Activity paramActivity, Function0<Unit> paramFunction01, Function0<Unit> paramFunction02)
   {
-    boolean bool = a();
+    boolean bool = i();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -147,7 +142,7 @@ public final class ConstellationView
     }
     if (!bool)
     {
-      paramActivity = DialogUtil.a((Context)paramActivity, 230, paramActivity.getResources().getString(2131698473), paramActivity.getResources().getString(2131698470), 2131698471, 2131698472, (DialogInterface.OnClickListener)new ConstellationView.onProfileVisibleLoaded.dialog.1(paramFunction01), (DialogInterface.OnClickListener)new ConstellationView.onProfileVisibleLoaded.dialog.2(paramFunction02));
+      paramActivity = DialogUtil.a((Context)paramActivity, 230, paramActivity.getResources().getString(2131896413), paramActivity.getResources().getString(2131896410), 2131896411, 2131896412, (DialogInterface.OnClickListener)new ConstellationView.onProfileVisibleLoaded.dialog.1(paramFunction01), (DialogInterface.OnClickListener)new ConstellationView.onProfileVisibleLoaded.dialog.2(paramFunction02));
       try
       {
         paramActivity.show();
@@ -162,20 +157,10 @@ public final class ConstellationView
     paramFunction01.invoke();
   }
   
-  private final boolean a()
-  {
-    IProfileSettingApi localIProfileSettingApi = (IProfileSettingApi)QRoute.api(IProfileSettingApi.class);
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqDataCard;
-    if (localCard == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("selfProfileCard");
-    }
-    return localIProfileSettingApi.getProfileSettingStateFromCard(41609, localCard) != 2;
-  }
-  
   private final boolean a(String paramString, ImageView paramImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+    Object localObject = this.c;
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
     if (paramImageView != null)
@@ -194,84 +179,84 @@ public final class ConstellationView
     {
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       Intrinsics.checkExpressionValueIsNotNull(paramString, "drawable");
-      paramString.setTag(URLDrawableHelper.a(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, (int)(12 * DeviceInfoUtil.a())));
-      paramString.setDecodeHandler(URLDrawableHelper.b);
+      paramString.setTag(URLDrawableHelper.a(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, (int)(12 * DeviceInfoUtil.A())));
+      paramString.setDecodeHandler(URLDrawableHelper.c);
       if (paramImageView != null) {
         paramImageView.setImageDrawable((Drawable)paramString);
       }
       return paramString.getStatus() != 2;
     }
     if (paramImageView != null) {
-      paramImageView.setImageDrawable((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+      paramImageView.setImageDrawable((Drawable)this.c);
     }
     return false;
   }
   
-  private final void b()
+  private final void d()
   {
     Object localObject = (IProfileCardUtil)QRoute.api(IProfileCardUtil.class);
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.B;
     localObject = ((IProfileCardUtil)localObject).initCard(localAppRuntime, localAppRuntime.getCurrentAccountUin());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QRoute.api(IProfileCardU…p, app.currentAccountUin)");
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDataCard;
+    this.b = ((Card)localObject);
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selfProfileCard");
     }
-    this.jdField_b_of_type_Int = ((int)((Card)localObject).lBirthday);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDataCard;
+    this.h = ((int)((Card)localObject).lBirthday);
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selfProfileCard");
     }
-    this.jdField_a_of_type_Int = ((Card)localObject).constellation;
-    this.jdField_a_of_type_JavaLangString = OnlineStatusUtil.b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver = ((StatusExtInfoObserver)new ConstellationView.initData.1(this));
+    this.g = ((Card)localObject).constellation;
+    this.d = OnlineStatusUtil.b(this.g);
+    this.f = ((StatusExtInfoObserver)new ConstellationView.initData.1(this));
   }
   
-  private final void c()
+  private final void e()
   {
     OnLineStatusBlurBg.BlurBgItem localBlurBgItem = new OnLineStatusBlurBg.BlurBgItem();
-    QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    QBaseActivity localQBaseActivity = this.D;
     if (localQBaseActivity != null)
     {
-      localBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = localQBaseActivity;
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg.a(localBlurBgItem, (OnLineStatusBlurBg.OnLineStatusBlurBgListener)this);
+      localBlurBgItem.a = localQBaseActivity;
+      this.E.a(localBlurBgItem, (OnLineStatusBlurBg.OnLineStatusBlurBgListener)this);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QBaseActivity");
   }
   
-  private final void g()
+  private final void f()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    Object localObject1 = this.C;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "appContext");
     localObject1 = ((BaseApplication)localObject1).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "appContext.resources");
     int i;
-    if (this.jdField_a_of_type_Int != 0) {
+    if (this.g != 0) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      localObject2 = ((Resources)localObject1).getString(2131698477);
+      localObject2 = ((Resources)localObject1).getString(2131896417);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "res.getString(R.string.q…nstellation_select_part1)");
-      localObject1 = ((Resources)localObject1).getString(2131698478);
+      localObject1 = ((Resources)localObject1).getString(2131896418);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "res.getString(R.string.q…nstellation_select_part2)");
     }
     else
     {
-      localObject2 = ((Resources)localObject1).getString(2131698475);
+      localObject2 = ((Resources)localObject1).getString(2131896415);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "res.getString(R.string.q…select_no_birthday_part1)");
-      localObject1 = ((Resources)localObject1).getString(2131698476);
+      localObject1 = ((Resources)localObject1).getString(2131896416);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "res.getString(R.string.q…select_no_birthday_part2)");
     }
-    TextView localTextView = this.e;
+    TextView localTextView = this.w;
     if (localTextView != null) {
       localTextView.setText((CharSequence)localObject2);
     }
-    Object localObject2 = this.f;
+    Object localObject2 = this.x;
     if (localObject2 != null)
     {
       ((TextView)localObject2).setText((CharSequence)localObject1);
@@ -280,50 +265,110 @@ public final class ConstellationView
       ((TextView)localObject2).setOnTouchListener((View.OnTouchListener)new AutoStatusSelectView.MyViewAlphaOnTouchListener());
       if (ThemeImageWrapper.isNightMode())
       {
-        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837596, 0);
+        ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837602, 0);
         return;
       }
-      ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837595, 0);
+      ((TextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837601, 0);
     }
+  }
+  
+  private final boolean i()
+  {
+    IProfileSettingApi localIProfileSettingApi = (IProfileSettingApi)QRoute.api(IProfileSettingApi.class);
+    Card localCard = this.b;
+    if (localCard == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("selfProfileCard");
+    }
+    return localIProfileSettingApi.getProfileSettingStateFromCard(41609, localCard) != 2;
   }
   
   @NotNull
   public final View a()
   {
-    View localView = View.inflate((Context)BaseApplication.context, 2131561499, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365103));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365104));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131377160));
-    this.e = ((TextView)localView.findViewById(2131377142));
-    this.f = ((TextView)localView.findViewById(2131377137));
-    this.g = ((TextView)localView.findViewById(2131365100));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365101));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370632));
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131371889);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370648));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378039));
+    View localView = View.inflate((Context)BaseApplication.context, 2131627856, null);
+    this.r = ((TextView)localView.findViewById(2131431250));
+    this.s = ((TextView)localView.findViewById(2131431251));
+    this.v = ((Button)localView.findViewById(2131445538));
+    this.w = ((TextView)localView.findViewById(2131445518));
+    this.x = ((TextView)localView.findViewById(2131445512));
+    this.y = ((TextView)localView.findViewById(2131431247));
+    this.o = ((ImageView)localView.findViewById(2131431248));
+    this.p = ((ImageView)localView.findViewById(2131437907));
+    this.q = localView.findViewById(2131439332);
+    this.t = ((TextView)localView.findViewById(2131437924));
+    this.u = ((TextView)localView.findViewById(2131446539));
     Intrinsics.checkExpressionValueIsNotNull(localView, "view");
     return localView;
   }
   
-  @NotNull
-  public final QBaseActivity a()
+  public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((paramInt1 == ConstellationLauncher.a) && (paramIntent != null))
+    {
+      paramIntent = ConstellationViewKt.a(this.B, paramIntent, this.d);
+      if (this.h != ((Number)paramIntent.getFirst()).intValue()) {
+        QQToast.makeText((Context)BaseApplication.context, 0, 2131888029, 0).show();
+      }
+      this.h = ((Number)paramIntent.getFirst()).intValue();
+      this.d = ((String)paramIntent.getSecond());
+      b();
+    }
   }
   
-  public final void a()
+  public void a(boolean paramBoolean, @Nullable Bitmap paramBitmap, int paramInt)
   {
-    a(ConstellationUtilKt.b(this.jdField_a_of_type_MqqAppAppRuntime), this.jdField_a_of_type_AndroidWidgetImageView);
+    if ((paramBoolean) && (paramBitmap != null))
+    {
+      View localView = this.z;
+      if (localView != null)
+      {
+        localView.setBackgroundDrawable((Drawable)new BitmapDrawable(paramBitmap));
+        return;
+      }
+    }
+    this.z.setBackgroundColor(paramInt);
+  }
+  
+  protected void a(@Nullable int[] paramArrayOfInt)
+  {
+    if (paramArrayOfInt != null)
+    {
+      View localView = this.j;
+      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+      if (localView.getWidth() != 0)
+      {
+        localView = this.j;
+        Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+        if (localView.getHeight() != 0)
+        {
+          localView = this.j;
+          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+          paramArrayOfInt[0] = localView.getWidth();
+          localView = this.j;
+          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+          paramArrayOfInt[1] = localView.getHeight();
+          return;
+        }
+      }
+      paramArrayOfInt[0] = this.A;
+      localView = this.j;
+      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+      paramArrayOfInt[1] = Utils.a(430.0F, localView.getResources());
+    }
+  }
+  
+  public final void b()
+  {
+    a(ConstellationUtilKt.b(this.B), this.o);
     boolean bool1;
-    if (this.jdField_a_of_type_Int != 0) {
+    if (this.g != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     boolean bool2;
     if (bool1) {
-      bool2 = a(ConstellationUtilKt.c(this.jdField_a_of_type_MqqAppAppRuntime), this.jdField_b_of_type_AndroidWidgetImageView);
+      bool2 = a(ConstellationUtilKt.c(this.B), this.p);
     } else {
       bool2 = false;
     }
@@ -338,55 +383,55 @@ public final class ConstellationView
     }
     if (bool2)
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.r;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(0);
       }
-      localObject1 = this.g;
+      localObject1 = this.y;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(0);
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject1 = this.o;
       if (localObject1 != null) {
         ((ImageView)localObject1).setVisibility(0);
       }
-      localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject1 = this.s;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(0);
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.r;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(4);
       }
-      localObject1 = this.g;
+      localObject1 = this.y;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(4);
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject1 = this.o;
       if (localObject1 != null) {
         ((ImageView)localObject1).setVisibility(4);
       }
-      localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject1 = this.s;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(4);
       }
-      localObject1 = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject1 = this.p;
       if (localObject1 != null) {
-        ((ImageView)localObject1).setImageDrawable((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        ((ImageView)localObject1).setImageDrawable((Drawable)this.c);
       }
     }
     Object localObject1 = new Ref.IntRef();
     try
     {
-      localObject2 = ConstellationUtilKt.d(this.jdField_a_of_type_MqqAppAppRuntime);
+      localObject2 = ConstellationUtilKt.e(this.B);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("constellationStr: ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.d);
         localStringBuilder.append(",  textColorFromSp: ");
         localStringBuilder.append((String)localObject2);
         QLog.d("ConstellationView", 2, new Object[] { "bindView: called. ", localStringBuilder.toString() });
@@ -400,150 +445,100 @@ public final class ConstellationView
       break label365;
     }
     ((Ref.IntRef)localObject1).element = -16777216;
-    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject2 = this.r;
     if (localObject2 != null)
     {
-      ((TextView)localObject2).setText((CharSequence)this.jdField_a_of_type_JavaLangString);
+      ((TextView)localObject2).setText((CharSequence)this.d);
       ((TextView)localObject2).setTextColor(((Ref.IntRef)localObject1).element);
     }
-    localObject2 = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject2 = this.s;
     if (localObject2 != null)
     {
-      ((TextView)localObject2).setText((CharSequence)this.jdField_b_of_type_JavaLangString);
+      ((TextView)localObject2).setText((CharSequence)this.e);
       ((TextView)localObject2).setTextColor(((Ref.IntRef)localObject1).element);
     }
-    localObject2 = this.g;
+    localObject2 = this.y;
     if (localObject2 != null)
     {
       ((TextView)localObject2).setText((CharSequence)ConstellationUtilKt.a());
       ((TextView)localObject2).setTextColor(((Ref.IntRef)localObject1).element);
     }
-    localObject1 = this.jdField_a_of_type_AndroidWidgetButton;
+    localObject1 = this.v;
     if (localObject1 != null)
     {
       ((Button)localObject1).setOnClickListener((View.OnClickListener)new ConstellationView.bindView..inlined.apply.lambda.1(this, bool1));
       if (bool1)
       {
-        if (ConstellationUtilKt.b(this.jdField_a_of_type_MqqAppAppRuntime))
+        if (ConstellationUtilKt.i(this.B))
         {
-          ((Button)localObject1).setText(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getText(2131693121));
+          ((Button)localObject1).setText(this.B.getApp().getText(2131890660));
           ((Button)localObject1).setEnabled(false);
         }
         else
         {
-          ((Button)localObject1).setText(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getText(2131694929));
+          ((Button)localObject1).setText(this.B.getApp().getText(2131892656));
           ((Button)localObject1).setEnabled(true);
         }
       }
       else
       {
-        ((Button)localObject1).setText(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getText(2131694929));
+        ((Button)localObject1).setText(this.B.getApp().getText(2131892656));
         ((Button)localObject1).setEnabled(false);
       }
     }
-    g();
+    f();
   }
   
-  public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
+  @NotNull
+  public final QBaseActivity c()
   {
-    if ((paramInt1 == ConstellationLauncher.jdField_a_of_type_Int) && (paramIntent != null))
-    {
-      paramIntent = ConstellationViewKt.a(this.jdField_a_of_type_MqqAppAppRuntime, paramIntent, this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_b_of_type_Int != ((Number)paramIntent.getFirst()).intValue()) {
-        QQToast.a((Context)BaseApplication.context, 0, 2131691083, 0).a();
-      }
-      this.jdField_b_of_type_Int = ((Number)paramIntent.getFirst()).intValue();
-      this.jdField_a_of_type_JavaLangString = ((String)paramIntent.getSecond());
-      a();
-    }
+    return this.D;
   }
   
-  public void a(boolean paramBoolean, @Nullable Bitmap paramBitmap, int paramInt)
+  protected void k()
   {
-    if ((paramBoolean) && (paramBitmap != null))
-    {
-      View localView = this.jdField_d_of_type_AndroidViewView;
-      if (localView != null)
-      {
-        localView.setBackgroundDrawable((Drawable)new BitmapDrawable(paramBitmap));
-        return;
-      }
-    }
-    this.jdField_d_of_type_AndroidViewView.setBackgroundColor(paramInt);
-  }
-  
-  protected void a(@Nullable int[] paramArrayOfInt)
-  {
-    if (paramArrayOfInt != null)
-    {
-      View localView = this.jdField_b_of_type_AndroidViewView;
-      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-      if (localView.getWidth() != 0)
-      {
-        localView = this.jdField_b_of_type_AndroidViewView;
-        Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-        if (localView.getHeight() != 0)
-        {
-          localView = this.jdField_b_of_type_AndroidViewView;
-          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-          paramArrayOfInt[0] = localView.getWidth();
-          localView = this.jdField_b_of_type_AndroidViewView;
-          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-          paramArrayOfInt[1] = localView.getHeight();
-          return;
-        }
-      }
-      paramArrayOfInt[0] = this.jdField_c_of_type_Int;
-      localView = this.jdField_b_of_type_AndroidViewView;
-      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-      paramArrayOfInt[1] = Utils.a(430.0F, localView.getResources());
-    }
-  }
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver);
+    this.B.unRegistObserver((BusinessObserver)this.f);
   }
   
   public void onBackPressed()
   {
     super.onBackPressed();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(1040);
+    this.n.a(1040);
   }
   
   public void show()
   {
     View localView;
-    if (QQTheme.a())
+    if (QQTheme.isNowThemeIsNight())
     {
-      localView = this.jdField_b_of_type_AndroidViewView;
+      localView = this.j;
       if (localView != null) {
-        localView.setBackgroundResource(2130846335);
+        localView.setBackgroundResource(2130847806);
       }
       a(false, null, Color.parseColor("#FF010101"));
-      localView = this.jdField_c_of_type_AndroidViewView;
+      localView = this.q;
       if (localView != null) {
         localView.setVisibility(0);
       }
     }
     else
     {
-      localView = this.jdField_b_of_type_AndroidViewView;
+      localView = this.j;
       if (localView != null) {
-        localView.setBackgroundResource(2130846334);
+        localView.setBackgroundResource(2130847805);
       }
-      c();
-      localView = this.jdField_c_of_type_AndroidViewView;
+      e();
+      localView = this.q;
       if (localView != null) {
         localView.setVisibility(8);
       }
     }
-    this.jdField_a_of_type_MqqAppAppRuntime.registObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver);
-    OnlineStatusExtInfoServlet.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString);
+    this.B.registObserver((BusinessObserver)this.f);
+    OnlineStatusExtInfoServlet.a(this.B, this.d);
     try
     {
-      a(this.jdField_c_of_type_AndroidWidgetTextView);
-      a(this.jdField_d_of_type_AndroidWidgetTextView);
+      a(this.t);
+      a(this.u);
       super.show();
     }
     catch (Exception localException)
@@ -552,12 +547,12 @@ public final class ConstellationView
         QLog.e("ConstellationView", 2, new Object[] { "show: called. ", "", localException });
       }
     }
-    b(true);
+    e(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView
  * JD-Core Version:    0.7.0.1
  */

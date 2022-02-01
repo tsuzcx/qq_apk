@@ -19,14 +19,14 @@ class ProfileCardShareHelper$3
     try
     {
       Bitmap localBitmap;
-      if (FileUtil.b(this.a))
+      if (FileUtil.d(this.a))
       {
-        ProfileCardShareHelper.a(this.this$0, BitmapFactory.decodeFile(ProfileCardShareHelper.b(this.this$0)));
-        localBitmap = ProfileCardShareHelper.a(this.this$0);
+        ProfileCardShareHelper.a(this.this$0, BitmapFactory.decodeFile(ProfileCardShareHelper.c(this.this$0)));
+        localBitmap = ProfileCardShareHelper.h(this.this$0);
       }
       else
       {
-        localBitmap = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130840322);
+        localBitmap = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841061);
         QLog.d("ProfileCardShareHelper", 2, String.format("decodeFace facePath: %s is not exist", new Object[] { this.a }));
       }
       ThreadManager.getUIHandler().post(new ProfileCardShareHelper.3.1(this, localBitmap));
@@ -45,7 +45,7 @@ class ProfileCardShareHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

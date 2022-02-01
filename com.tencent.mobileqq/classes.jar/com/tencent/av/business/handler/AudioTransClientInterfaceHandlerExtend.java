@@ -23,8 +23,8 @@ public class AudioTransClientInterfaceHandlerExtend
   
   protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
-    VideoController localVideoController = ((VideoAppInterface)this.appRuntime).a();
-    SessionInfo localSessionInfo = localVideoController.a();
+    VideoController localVideoController = ((VideoAppInterface)this.appRuntime).b();
+    SessionInfo localSessionInfo = localVideoController.k();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestRecordingAudio, isStart[");
     localStringBuilder.append(paramBoolean);
@@ -45,13 +45,13 @@ public class AudioTransClientInterfaceHandlerExtend
     if (localSessionInfo == null) {
       localObject = str;
     } else {
-      localObject = localSessionInfo.c;
+      localObject = localSessionInfo.s;
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("]");
     QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, localStringBuilder.toString());
     if ((localVideoController != null) && (localSessionInfo != null)) {
-      localVideoController.a(VideoPackageUtils.a(localSessionInfo.c), paramBoolean, paramList, paramLong2);
+      localVideoController.a(VideoPackageUtils.a(localSessionInfo.s), paramBoolean, paramList, paramLong2);
     }
   }
   
@@ -76,13 +76,13 @@ public class AudioTransClientInterfaceHandlerExtend
     Object localObject = (VideoAppInterface)this.appRuntime;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (((VideoAppInterface)localObject).a(0))
+    if (((VideoAppInterface)localObject).d(0))
     {
-      localObject = (EffectZimuManager)((VideoAppInterface)localObject).a(0);
+      localObject = (EffectZimuManager)((VideoAppInterface)localObject).c(0);
       bool1 = bool2;
       if (localObject != null)
       {
-        localObject = (ZimuItem)((EffectZimuManager)localObject).a();
+        localObject = (ZimuItem)((EffectZimuManager)localObject).c();
         bool1 = bool2;
         if (localObject != null)
         {

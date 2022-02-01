@@ -1,6 +1,7 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
+import com.tencent.liteav.g;
 
 class TRTCCloudImpl$32
   implements Runnable
@@ -9,23 +10,27 @@ class TRTCCloudImpl$32
   
   public void run()
   {
-    Object localObject = this.this$0;
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("muteAllRemoteVideoStreams mute ");
+    localStringBuilder.append("muteLocalVideo mute:");
     localStringBuilder.append(this.val$mute);
-    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(String.format("muteAllRemoteVideoStreams mute:%b", new Object[] { Boolean.valueOf(this.val$mute) }));
-    ((StringBuilder)localObject).append(" self:");
-    ((StringBuilder)localObject).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
-    this.this$0.mRoomInfo.muteRemoteVideo = this.val$mute;
-    this.this$0.mRoomInfo.forEachUser(new TRTCCloudImpl.32.1(this));
+    localStringBuilder.append(", pauseImg:");
+    localStringBuilder.append(this.this$0.mConfig.B);
+    localTRTCCloudImpl.apiOnlineLog(localStringBuilder.toString());
+    long l;
+    if (this.val$mute) {
+      l = 1L;
+    } else {
+      l = 0L;
+    }
+    TXCEventRecorderProxy.a("18446744073709551615", 4006, l, -1L, "", 2);
+    localTRTCCloudImpl = this.this$0;
+    localTRTCCloudImpl.muteLocalVideo(this.val$mute, localTRTCCloudImpl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.32
  * JD-Core Version:    0.7.0.1
  */

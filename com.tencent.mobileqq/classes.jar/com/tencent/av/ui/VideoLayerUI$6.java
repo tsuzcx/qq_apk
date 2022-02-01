@@ -12,19 +12,19 @@ class VideoLayerUI$6
   public void a()
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length > this.jdField_a_of_type_Int))
+    if ((this.c.ae != null) && (this.c.ae.length > this.a))
     {
       AVTraceUtil.a("switch_camera", "onSwitchCameraFirstFrame", 3, new Object[0]);
-      localObject = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      VideoLayerUI.b((VideoLayerUI)localObject, localObject.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
+      localObject = this.c;
+      VideoLayerUI.b((VideoLayerUI)localObject, localObject.ae[this.a], this.b);
       return;
     }
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+      localObject = this.c.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSwitchCameraFirstFrame Error : Index = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
   }

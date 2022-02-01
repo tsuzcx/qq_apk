@@ -13,15 +13,15 @@ class QQLSActivity$9
 {
   QQLSActivity$9(QQLSActivity paramQQLSActivity) {}
   
-  public void ac_() {}
-  
   public void b() {}
   
-  public void g_(int paramInt)
+  public void bR_() {}
+  
+  public void i_(int paramInt)
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    if ((paramInt == 0) && (this.a.n.b().size() > 0))
     {
-      Iterator localIterator = this.a.a.a().iterator();
+      Iterator localIterator = this.a.n.b().iterator();
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
@@ -30,8 +30,8 @@ class QQLSActivity$9
           if (QLog.isColorLevel()) {
             QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
           }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
+          this.a.n.b().remove(localRecentBaseData);
+          this.a.c();
         }
       }
     }
@@ -39,7 +39,7 @@ class QQLSActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.9
  * JD-Core Version:    0.7.0.1
  */

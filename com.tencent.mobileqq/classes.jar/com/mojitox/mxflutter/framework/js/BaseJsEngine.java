@@ -8,14 +8,14 @@ import java.util.HashMap;
 public abstract class BaseJsEngine<T extends BaseJsExecutor>
   implements IJsEngine<T>
 {
-  private long jdField_a_of_type_Long = 0L;
-  private T jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsExecutor;
   @NonNull
-  private final HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final HashMap<String, Object> a = new HashMap();
+  private long b = 0L;
+  private T c;
   
   public BaseJsEngine()
   {
-    a();
+    c();
   }
   
   @NonNull
@@ -26,10 +26,8 @@ public abstract class BaseJsEngine<T extends BaseJsExecutor>
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return this.a.get(paramString);
   }
-  
-  protected abstract void a();
   
   protected void a(@NonNull ExecuteScriptCallback paramExecuteScriptCallback)
   {
@@ -39,15 +37,17 @@ public abstract class BaseJsEngine<T extends BaseJsExecutor>
   @NonNull
   public T b()
   {
-    if (this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsExecutor == null) {
-      this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsExecutor = a();
+    if (this.c == null) {
+      this.c = a();
     }
-    return this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsExecutor;
+    return this.c;
   }
+  
+  protected abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.BaseJsEngine
  * JD-Core Version:    0.7.0.1
  */

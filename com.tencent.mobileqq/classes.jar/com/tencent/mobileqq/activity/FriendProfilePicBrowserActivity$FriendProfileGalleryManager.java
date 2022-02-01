@@ -14,33 +14,33 @@ class FriendProfilePicBrowserActivity$FriendProfileGalleryManager
 {
   FriendProfilePicBrowserActivity$FriendProfileGalleryManager(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
   public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    this.a.a = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
-    return this.a.a;
+    this.a.b = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
+    return this.a.b;
   }
   
   public AbstractImageListModel a(Activity paramActivity)
   {
     paramActivity = this.a;
     paramActivity = new PicBrowserModel(paramActivity, FriendProfilePicBrowserActivity.a(paramActivity));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.b(FriendProfilePicBrowserActivity.b(this.a));
     return paramActivity;
   }
   
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public AbstractImageListScene b(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     return null;
+  }
+  
+  public AbstractAnimationManager c(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return super.c(paramActivity, paramAbstractImageListModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity.FriendProfileGalleryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ class WSMarqueeDirector$MarqueeAnimAdapter
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    WSMarqueeDirector.a(this.a).scrollTo(0, 0);
+    WSMarqueeDirector.b(this.a).scrollTo(0, 0);
     WSLog.a("WSMarqueeDirector", "onAnimationEnd: ");
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     super.onAnimationStart(paramAnimator);
-    WSMarqueeDirector.a(this.a).scrollTo(0, 0);
+    WSMarqueeDirector.b(this.a).scrollTo(0, 0);
     WSLog.a("WSMarqueeDirector", "onAnimationStart: ");
   }
   
@@ -35,13 +35,13 @@ class WSMarqueeDirector$MarqueeAnimAdapter
       if (i > WSMarqueeDirector.a(this.a)) {
         return;
       }
-      WSMarqueeDirector.a(this.a).scrollTo(i, 0);
+      WSMarqueeDirector.b(this.a).scrollTo(i, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSMarqueeDirector.MarqueeAnimAdapter
  * JD-Core Version:    0.7.0.1
  */

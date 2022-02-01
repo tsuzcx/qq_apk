@@ -13,23 +13,23 @@ class ReadInJoyNewFeedsActivity$5
   
   public void run()
   {
-    if (this.this$0.a == null)
+    if (this.this$0.k == null)
     {
       FrameLayout localFrameLayout = (FrameLayout)this.this$0.getActivity().getWindow().getDecorView();
       ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = this.this$0;
-      localReadInJoyNewFeedsActivity.a = new ReadInJoySkinGuideView(0, localReadInJoyNewFeedsActivity, localReadInJoyNewFeedsActivity.app, this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new ReadInJoyNewFeedsActivity.5.1(this, localFrameLayout), new ReadInJoyNewFeedsActivity.5.2(this, localFrameLayout));
-      if (this.this$0.a() == 0)
+      localReadInJoyNewFeedsActivity.k = new ReadInJoySkinGuideView(0, localReadInJoyNewFeedsActivity, localReadInJoyNewFeedsActivity.app, this.a.id, this.b, this.c, new ReadInJoyNewFeedsActivity.5.1(this, localFrameLayout), new ReadInJoyNewFeedsActivity.5.2(this, localFrameLayout));
+      if (this.this$0.r() == 0)
       {
-        localFrameLayout.addView(this.this$0.a, -1, -1);
+        localFrameLayout.addView(this.this$0.k, -1, -1);
         return;
       }
-      ReadInJoyNewFeedsActivity.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinGuideData);
+      ReadInJoyNewFeedsActivity.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -87,7 +87,7 @@ public class PictureView
   private boolean dealErrorImage()
   {
     BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "dealErrorImage()");
-    Object localObject = this.mContext.getResources().getDrawable(2130840485);
+    Object localObject = this.mContext.getResources().getDrawable(2130841247);
     this.imageView.setImageDrawable((Drawable)localObject);
     this.imageView.initDrawable((Drawable)localObject, this.mScreenWidthPx, this.mScreenHeightPx, 0);
     localObject = this.picturePresenter;
@@ -204,7 +204,7 @@ public class PictureView
         this.imageView.setPosition(paramInt);
         this.imageView.setImageInfo((RichMediaBrowserInfo)localObject);
         this.imageView.setIgnoreLayout(false);
-        this.imageView.setContentDescription(this.mContext.getString(2131694905));
+        this.imageView.setContentDescription(this.mContext.getString(2131892631));
         URLDrawable localURLDrawable = (URLDrawable)this.picturePresenter.mActiveDrawable.get(Integer.valueOf(paramInt));
         if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1))
         {
@@ -289,7 +289,7 @@ public class PictureView
     }
     else
     {
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559568, paramViewGroup, false));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131625592, paramViewGroup, false));
       initContentView();
     }
     super.getView(paramView, paramViewGroup);
@@ -300,14 +300,14 @@ public class PictureView
   {
     if (this.mBrowserItemView != null)
     {
-      this.controlViewContainer = ((RelativeLayout)this.mBrowserItemView.findViewById(2131365225));
-      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368461));
+      this.controlViewContainer = ((RelativeLayout)this.mBrowserItemView.findViewById(2131431391));
+      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131435357));
       this.imageView.setOnItemEventListener(this);
       this.imageView.setOnLongClickListener(this);
       if (this.picturePresenter.mainBrowserPresenter != null)
       {
-        this.imageView.setDoubleTapEnable(this.picturePresenter.mainBrowserPresenter.getParamsBuilder().a);
-        this.imageView.setScaleEnable(this.picturePresenter.mainBrowserPresenter.getParamsBuilder().b);
+        this.imageView.setDoubleTapEnable(this.picturePresenter.mainBrowserPresenter.getParamsBuilder().d);
+        this.imageView.setScaleEnable(this.picturePresenter.mainBrowserPresenter.getParamsBuilder().e);
       }
     }
   }
@@ -436,7 +436,7 @@ public class PictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.pic.PictureView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,27 +13,27 @@ class QVipTroopFileConfig$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.jdField_a_of_type_JavaLangRunnable.run();
-    if (this.jdField_a_of_type_Boolean) {
+    this.a.run();
+    if (this.b) {
       paramDialogInterface = "0X800AE6B";
     } else {
       paramDialogInterface = "0X800AE65";
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.c;
     String str;
-    if (this.b) {
+    if (this.d) {
       str = "size";
     } else {
       str = "full";
     }
     QVipTroopFileConfig.a(paramDialogInterface, (String)localObject, str);
     localObject = (IMobileReportManager)QRoute.api(IMobileReportManager.class);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       paramDialogInterface = "2";
     } else {
       paramDialogInterface = "3";
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       str = "2";
     } else {
       str = "1";
@@ -43,7 +43,7 @@ class QVipTroopFileConfig$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipTroopFileConfig.4
  * JD-Core Version:    0.7.0.1
  */

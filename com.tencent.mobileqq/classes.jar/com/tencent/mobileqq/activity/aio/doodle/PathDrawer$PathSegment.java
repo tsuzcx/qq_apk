@@ -6,116 +6,111 @@ import android.graphics.Path;
 public class PathDrawer$PathSegment
   implements MyParcelable
 {
-  public static final MyParcelable.Creator<PathSegment> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private float b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new PathDrawer.PathSegment.1();
-  }
+  public static final MyParcelable.Creator<PathSegment> a = new PathDrawer.PathSegment.1();
+  private Path b;
+  private float c;
+  private long d;
+  private float e;
+  private int f = 0;
   
   public PathDrawer$PathSegment(Path paramPath)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramPath;
   }
   
   public PathDrawer$PathSegment(MyParcel paramMyParcel)
   {
-    paramMyParcel.a();
-    this.jdField_a_of_type_Float = paramMyParcel.a();
-    this.jdField_a_of_type_Long = paramMyParcel.a();
-    this.jdField_a_of_type_Int = paramMyParcel.a();
-    this.b = paramMyParcel.a();
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    paramMyParcel.b();
+    this.c = paramMyParcel.d();
+    this.d = paramMyParcel.e();
+    this.f = paramMyParcel.b();
+    this.e = paramMyParcel.d();
   }
   
   public Path a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsPath;
+    return this.b;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public void a(Path paramPath)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramPath;
   }
   
   public void a(MyParcel paramMyParcel, int paramInt)
   {
     paramMyParcel.a(1);
-    paramMyParcel.a(this.jdField_a_of_type_Float);
-    paramMyParcel.a(this.jdField_a_of_type_Long);
-    paramMyParcel.a(this.jdField_a_of_type_Int);
-    paramMyParcel.a(this.b);
+    paramMyParcel.a(this.c);
+    paramMyParcel.a(this.d);
+    paramMyParcel.a(this.f);
+    paramMyParcel.a(this.e);
   }
   
   public void a(PathSegment paramPathSegment)
   {
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.b;
     if (localPath != null)
     {
-      localPath.addPath(paramPathSegment.jdField_a_of_type_AndroidGraphicsPath);
-      this.b += paramPathSegment.b;
+      localPath.addPath(paramPathSegment.b);
+      this.e += paramPathSegment.e;
     }
   }
   
   public float b()
   {
-    return this.b;
+    return this.c;
   }
   
   public void b(float paramFloat)
   {
-    this.b = paramFloat;
+    this.e = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.e;
   }
   
   public void c(float paramFloat)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+    if (this.b == null) {
       return;
     }
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(paramFloat, paramFloat);
     Path localPath = new Path();
-    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
+    localPath.addPath(this.b, localMatrix);
+    this.b = localPath;
+  }
+  
+  public long d()
+  {
+    return this.d;
+  }
+  
+  public int e()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PathDrawer.PathSegment
  * JD-Core Version:    0.7.0.1
  */

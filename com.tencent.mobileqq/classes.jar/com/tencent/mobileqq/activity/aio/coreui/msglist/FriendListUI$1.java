@@ -17,25 +17,25 @@ class FriendListUI$1
   
   public void run()
   {
-    BaseSessionInfo localBaseSessionInfo = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    if (!UinTypeUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageProxy(localBaseSessionInfo.jdField_a_of_type_Int).d(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int))) {
+    BaseSessionInfo localBaseSessionInfo = this.this$0.b.O();
+    if (!UinTypeUtil.a(this.this$0.b.a().getMessageProxy(localBaseSessionInfo.a).g(localBaseSessionInfo.b, localBaseSessionInfo.a))) {
       return;
     }
-    this.this$0.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    ((ChatContext)this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.a).a(this.this$0.jdField_a_of_type_Long);
-    this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
-    this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
-    if (this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.c == 0)
+    this.this$0.i = SystemClock.uptimeMillis();
+    ((ChatContext)this.this$0.h.a).a(this.this$0.i);
+    this.this$0.h.g = false;
+    this.this$0.h.h = true;
+    if (this.this$0.h.n == 0)
     {
-      RefreshMessageContext localRefreshMessageContext = this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext;
-      localRefreshMessageContext.c += 1;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, 15, this.this$0.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
+      RefreshMessageContext localRefreshMessageContext = this.this$0.h;
+      localRefreshMessageContext.n += 1;
+      this.this$0.b.a().getMessageFacade().a(localBaseSessionInfo.b, localBaseSessionInfo.a, 15, this.this$0.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.FriendListUI.1
  * JD-Core Version:    0.7.0.1
  */

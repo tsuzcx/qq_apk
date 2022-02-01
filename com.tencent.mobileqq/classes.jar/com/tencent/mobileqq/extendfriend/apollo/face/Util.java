@@ -21,24 +21,6 @@ import org.jetbrains.annotations.Nullable;
 public class Util
   implements IConst
 {
-  @NotNull
-  private static int a(int paramInt)
-  {
-    int i = 2130845112;
-    if (paramInt != 6)
-    {
-      if (paramInt != 7)
-      {
-        if (paramInt != 8) {
-          return 2130845112;
-        }
-        return 2130845107;
-      }
-      i = 2130845111;
-    }
-    return i;
-  }
-  
   public static int a(int paramInt1, int paramInt2)
   {
     return paramInt1 << 4 | paramInt2;
@@ -72,7 +54,7 @@ public class Util
   
   public static Drawable a(int paramInt)
   {
-    int i = a(paramInt);
+    int i = b(paramInt);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("static://Apollo_Face-");
     ((StringBuilder)localObject).append(paramInt);
@@ -139,6 +121,24 @@ public class Util
     return arrayOfInt;
   }
   
+  @NotNull
+  private static int b(int paramInt)
+  {
+    int i = 2130846549;
+    if (paramInt != 6)
+    {
+      if (paramInt != 7)
+      {
+        if (paramInt != 8) {
+          return 2130846549;
+        }
+        return 2130846544;
+      }
+      i = 2130846548;
+    }
+    return i;
+  }
+  
   public static int b(int paramInt1, int paramInt2)
   {
     if ((paramInt2 == 2) && (paramInt1 == 1)) {
@@ -157,7 +157,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.apollo.face.Util
  * JD-Core Version:    0.7.0.1
  */

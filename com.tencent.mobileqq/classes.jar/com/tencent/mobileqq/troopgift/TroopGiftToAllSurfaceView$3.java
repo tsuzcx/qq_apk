@@ -13,14 +13,14 @@ class TroopGiftToAllSurfaceView$3
   
   public void a()
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localSequenceAction.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
+    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.d(this.a), TroopGiftToAllSurfaceView.d(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.d(this.a) * 0.95F, TroopGiftToAllSurfaceView.d(this.a)) });
+    localSequenceAction.i = true;
+    TroopGiftToAllSurfaceView.e(this.a).a(new Action[] { localSequenceAction });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ns4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/aw5" android:textColor="#ff999999" android:id="@id/ntq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x61" android:includeFontPadding="false" />
+    <RelativeLayout android:id="@id/nsv" android:background="@drawable/dwj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="74.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="@dimen/nj" android:layout_marginRight="16.0dip" android:layout_marginBottom="22.0dip">
+        <com.tencent.mobileqq.guild.widget.RadiusFrameLayout android:layout_gravity="center" android:id="@id/npv" android:layout_width="@dimen/ne" android:layout_height="@dimen/ne" android:layout_marginLeft="@dimen/ms" android:layout_centerVertical="true" app:corner_radius="@dimen/ms">
+            <ImageView android:id="@id/nq8" android:visibility="gone" android:layout_width="@dimen/ne" android:layout_height="@dimen/ne" android:scaleType="fitXY" />
+        </com.tencent.mobileqq.guild.widget.RadiusFrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/npv" android:layout_centerVertical="true">
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ntr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginRight="@dimen/ms" android:includeFontPadding="false" android:fontFamily="PingFangSC-Medium" />
+            <TextView android:textSize="@dimen/aw3" android:textColor="#ff878b99" android:id="@id/ntp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginTop="@dimen/ng" android:layout_marginRight="@dimen/ms" android:includeFontPadding="false" android:layout_below="@id/ntr" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/aw5" android:textColor="#ff999999" android:id="@id/nto" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x5y" android:includeFontPadding="false" />
+</LinearLayout>

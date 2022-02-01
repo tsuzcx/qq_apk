@@ -17,14 +17,14 @@ class TroopSettingActivity$9
   {
     IChatSettingForTroopApi localIChatSettingForTroopApi = (IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class);
     TroopSettingActivity localTroopSettingActivity = this.a;
-    localIChatSettingForTroopApi.doReportTroop(localTroopSettingActivity, localTroopSettingActivity.a, TroopSettingActivity.a(this.a));
-    TroopReportor.a("Grp_set_new", "grpData_admin", "tipoff_click", 0, 0, new String[] { this.a.a.troopUin });
+    localIChatSettingForTroopApi.doReportTroop(localTroopSettingActivity, localTroopSettingActivity.i, TroopSettingActivity.a(this.a));
+    TroopReportor.a("Grp_set_new", "grpData_admin", "tipoff_click", 0, 0, new String[] { this.a.i.troopUin });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.9
  * JD-Core Version:    0.7.0.1
  */

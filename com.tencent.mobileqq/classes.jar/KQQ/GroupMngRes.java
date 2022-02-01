@@ -10,6 +10,7 @@ public final class GroupMngRes
   static int cache_reqtype;
   static byte[] cache_vecBody = (byte[])new byte[1];
   static byte[] cache_vecJoinPrompt;
+  static byte[] cache_vecKaiyangTransInfo;
   public String ErrorString = "";
   public byte cIsInGroup = 0;
   public byte cIsMemInvite = 0;
@@ -23,17 +24,20 @@ public final class GroupMngRes
   public String sJoinQuestion = "";
   public byte[] vecBody = null;
   public byte[] vecJoinPrompt = null;
+  public byte[] vecKaiyangTransInfo = null;
   
   static
   {
     ((byte[])cache_vecBody)[0] = 0;
     cache_vecJoinPrompt = (byte[])new byte[1];
     ((byte[])cache_vecJoinPrompt)[0] = 0;
+    cache_vecKaiyangTransInfo = (byte[])new byte[1];
+    ((byte[])cache_vecKaiyangTransInfo)[0] = 0;
   }
   
   public GroupMngRes() {}
   
-  public GroupMngRes(int paramInt, byte paramByte1, byte[] paramArrayOfByte1, String paramString1, short paramShort, byte paramByte2, String paramString2, byte paramByte3, String paramString3, String paramString4, String paramString5, long paramLong, byte[] paramArrayOfByte2)
+  public GroupMngRes(int paramInt, byte paramByte1, byte[] paramArrayOfByte1, String paramString1, short paramShort, byte paramByte2, String paramString2, byte paramByte3, String paramString3, String paramString4, String paramString5, long paramLong, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
     this.reqtype = paramInt;
     this.result = paramByte1;
@@ -48,6 +52,7 @@ public final class GroupMngRes
     this.sJoinAnswer = paramString5;
     this.dwDis2GrpLimitType = paramLong;
     this.vecJoinPrompt = paramArrayOfByte2;
+    this.vecKaiyangTransInfo = paramArrayOfByte3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -65,6 +70,7 @@ public final class GroupMngRes
     this.sJoinAnswer = paramJceInputStream.readString(10, false);
     this.dwDis2GrpLimitType = paramJceInputStream.read(this.dwDis2GrpLimitType, 11, false);
     this.vecJoinPrompt = ((byte[])paramJceInputStream.read(cache_vecJoinPrompt, 12, false));
+    this.vecKaiyangTransInfo = ((byte[])paramJceInputStream.read(cache_vecKaiyangTransInfo, 13, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -96,6 +102,10 @@ public final class GroupMngRes
     localObject = this.vecJoinPrompt;
     if (localObject != null) {
       paramJceOutputStream.write((byte[])localObject, 12);
+    }
+    localObject = this.vecKaiyangTransInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
   }
 }

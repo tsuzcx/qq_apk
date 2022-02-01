@@ -36,6 +36,7 @@ public abstract interface IProfileCardConst
   public static final String PARAM_SWITCHES_CHANGED = "param_switches_changed";
   public static final int PA_FRIEND_FROM_CONTACT = 30;
   public static final int PA_FRIEND_FROM_DISCUSSION = 45;
+  public static final int PA_FRIEND_FROM_GUILD = 121;
   public static final int PA_FRIEND_FROM_NEAR_PEOPLE = 40;
   public static final int PA_FRIEND_FROM_QZONE = 60;
   public static final int PA_FRIEND_FROM_RICHSTATUS = 55;
@@ -81,6 +82,7 @@ public abstract interface IProfileCardConst
   public static final int PA_STRANGER_FROM_FOLLOW_WEB = 87;
   public static final int PA_STRANGER_FROM_FRESHNEWS = 79;
   public static final int PA_STRANGER_FROM_GROUP_VIDEO_MATCHMAKER = 116;
+  public static final int PA_STRANGER_FROM_GUILD = 122;
   public static final int PA_STRANGER_FROM_HOT_CHAT_TROOP = 58;
   public static final int PA_STRANGER_FROM_KANDIAN = 98;
   public static final int PA_STRANGER_FROM_LIGHTALK = 80;
@@ -150,6 +152,7 @@ public abstract interface IProfileCardConst
   public static final int PROFILE_ENTRY_FNINFO = 34;
   public static final int PROFILE_ENTRY_FNLIST = 35;
   public static final int PROFILE_ENTRY_FRESHNEWS = 32;
+  public static final int PROFILE_ENTRY_GUILD = 129;
   public static final int PROFILE_ENTRY_HCMLIST = 33;
   public static final int PROFILE_ENTRY_HC_AIO = 31;
   public static final int PROFILE_ENTRY_HOTCHAT = 20;
@@ -224,7 +227,7 @@ public abstract interface IProfileCardConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.IProfileCardConst
  * JD-Core Version:    0.7.0.1
  */

@@ -18,23 +18,23 @@ class QIMMusicConfigManager$2
   {
     if ((paramBoolean) && (paramStBatchGetMusicInfoRsp.vecMusic.size() != 0))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraQqstoryApiGetMusicInfoCallback != null)
+      if (this.a != null)
       {
         paramBaseRequest = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
         paramString = new StringBuilder();
         paramString.append("getSingleFullMusicInfo from story success flow info:");
         paramString.append(paramBaseRequest.toString());
         QLog.i("QIMMusicConfigManager", 1, paramString.toString());
-        this.jdField_a_of_type_ComTencentAelightCameraQqstoryApiGetMusicInfoCallback.a(true, paramBaseRequest);
+        this.a.a(true, paramBaseRequest);
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraQqstoryApiGetMusicInfoCallback.a(false, new FlowMusic());
+    this.a.a(false, new FlowMusic());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

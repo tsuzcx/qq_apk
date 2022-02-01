@@ -20,21 +20,21 @@ final class FileOperaterUtils$13
   public void onClick(View paramView)
   {
     ReportController.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if (this.a != null)
     {
-      long l = FileUtil.a(this.jdField_a_of_type_JavaLangString);
+      long l = FileUtil.f(this.b);
       WXShareHelper localWXShareHelper = WXShareHelper.a();
       if (l <= 10485760L)
       {
-        int i = FileManagerUtil.b(this.jdField_a_of_type_JavaLangString);
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
-        localWXShareHelper.a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        int i = FileManagerUtil.i(this.b);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.a.getResources(), i);
+        localWXShareHelper.a(this.b, localBitmap);
         ReportController.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
       }
       else
       {
         ReportController.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
-        FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131698225, new FileOperaterUtils.13.1(this));
+        FMDialogUtil.a(this.a, "", 2131896126, new FileOperaterUtils.13.1(this));
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -42,7 +42,7 @@ final class FileOperaterUtils$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.13
  * JD-Core Version:    0.7.0.1
  */

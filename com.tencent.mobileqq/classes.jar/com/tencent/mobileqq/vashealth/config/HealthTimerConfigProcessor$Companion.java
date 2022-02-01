@@ -13,14 +13,14 @@ public final class HealthTimerConfigProcessor$Companion
   @NotNull
   public final HealthTimerConfigBean a()
   {
-    Object localObject = QConfigManager.a().a(267);
+    Object localObject = QConfigManager.b().b(267);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return (HealthTimerConfigBean)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.config.HealthTimerConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

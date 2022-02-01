@@ -25,12 +25,12 @@ public class RIJLimitFriendHandler
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
     paramFromServiceMsg = paramFromServiceMsg.getServiceCmd();
     paramToServiceMsg = (String)paramToServiceMsg.getAttribute("rowKey");
-    this.a.post(new RIJLimitFriendHandler.1(this, paramFromServiceMsg, i, localRspBody, paramToServiceMsg));
+    this.b.post(new RIJLimitFriendHandler.1(this, paramFromServiceMsg, i, localRspBody, paramToServiceMsg));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJLimitFriendHandler
  * JD-Core Version:    0.7.0.1
  */

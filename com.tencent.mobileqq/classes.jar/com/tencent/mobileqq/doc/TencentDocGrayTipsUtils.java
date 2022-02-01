@@ -23,7 +23,7 @@ public class TencentDocGrayTipsUtils
     String str = paramQQAppInterface.getAccount();
     a = TencentDocEntryUtils.a(paramQQAppInterface);
     int i = TencentDocGrayTipsPref.a(localBaseApplication, str);
-    long l = TencentDocGrayTipsPref.a(localBaseApplication, str);
+    long l = TencentDocGrayTipsPref.b(localBaseApplication, str);
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -49,7 +49,7 @@ public class TencentDocGrayTipsUtils
       QLog.d("TencentDocGrayTipsUtils", 2, ((StringBuilder)localObject1).toString());
     }
     boolean bool1;
-    if (QQAudioHelper.a(10) == 1) {
+    if (QQAudioHelper.b(10) == 1) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -58,41 +58,41 @@ public class TencentDocGrayTipsUtils
     if (bool1)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131714628));
-      ((StringBuilder)localObject1).append(a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131912137));
+      ((StringBuilder)localObject1).append(a.b);
       QQAudioHelper.a(((StringBuilder)localObject1).toString());
-      bool2 = TextUtils.isEmpty(a.jdField_a_of_type_JavaLangString) ^ true;
+      bool2 = TextUtils.isEmpty(a.b) ^ true;
     }
-    if (((a.jdField_a_of_type_Boolean) && (i < a.jdField_a_of_type_Int) && (paramLong1 - l > 30L) && (!paramString2.equals(str))) || (bool2))
+    if (((a.a) && (i < a.d) && (paramLong1 - l > 30L) && (!paramString2.equals(str))) || (bool2))
     {
-      localObject1 = a.jdField_a_of_type_JavaLangString;
+      localObject1 = a.b;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(a.b);
+      ((StringBuilder)localObject2).append(a.c);
       localObject2 = ((StringBuilder)localObject2).toString();
       paramString1 = new UniteGrayTipParam(paramString1, paramString2, (String)localObject2, paramInt, -5040, 3276801, paramLong1);
       paramString2 = new StringBuilder();
       paramString2.append(String.valueOf(paramLong2));
       paramString2.append("_");
       paramString2.append(String.valueOf(paramLong1));
-      paramString1.d = paramString2.toString();
+      paramString1.p = paramString2.toString();
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
         paramString2.append("addGrayTipMsg grayTipParam.grayTipKey = ");
-        paramString2.append(paramString1.d);
+        paramString2.append(paramString1.p);
         QLog.d("TencentDocGrayTipsUtils", 2, paramString2.toString());
       }
       paramString2 = new Bundle();
       paramString2.putInt("key_action", 1);
-      paramString2.putString("key_action_DATA", a.c);
+      paramString2.putString("key_action_DATA", a.e);
       paramString1.a(((String)localObject1).length(), ((String)localObject2).length(), paramString2);
       paramString2 = new MessageForUniteGrayTip();
       paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
       if (UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString2))
       {
-        TencentDocGrayTipsPref.b(localBaseApplication, str, i + 1);
-        TencentDocGrayTipsPref.b(localBaseApplication, str, paramLong1);
+        TencentDocGrayTipsPref.c(localBaseApplication, str, i + 1);
+        TencentDocGrayTipsPref.c(localBaseApplication, str, paramLong1);
         TencentDocUtils.a("0X80094AA");
       }
     }
@@ -103,14 +103,14 @@ public class TencentDocGrayTipsUtils
     if (a == null) {
       a = TencentDocEntryUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
     }
-    if (paramString.equals(a.c)) {
+    if (paramString.equals(a.e)) {
       TencentDocUtils.a("0X80094AB");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocGrayTipsUtils
  * JD-Core Version:    0.7.0.1
  */

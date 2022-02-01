@@ -12,13 +12,13 @@ class WyDownloader$5
   
   public Void a(ThreadPool.JobContext paramJobContext)
   {
-    WyDownloader.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadWyDownloader).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    WyDownloader.a(this.b).sendReq(this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.WyDownloader.5
  * JD-Core Version:    0.7.0.1
  */

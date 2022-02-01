@@ -21,9 +21,9 @@ class QFileMsgForwardManager$TroopUploadTaskExcuter$1
       paramBundle.append("] WorkerId[");
       paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a));
       paramBundle.append("] filename ");
-      paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a));
+      paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.b(this.a));
       QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramBundle.toString());
-      QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).a(QFileMsgForwardManager.a(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a), false), paramBoolean);
+      QFileMsgForwardManager.TroopUploadTaskExcuter.d(this.a).a(QFileMsgForwardManager.a(QFileMsgForwardManager.TroopUploadTaskExcuter.c(this.a), false), paramBoolean);
       return;
     }
     QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a, paramBundle.getLong("fileSize"));
@@ -34,33 +34,33 @@ class QFileMsgForwardManager$TroopUploadTaskExcuter$1
     int i = paramBundle.getInt("height");
     int j = paramBundle.getInt("duration");
     int k = paramBundle.getInt("busiId");
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardMd5", str2);
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardSha", str3);
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardBusType", String.valueOf(k));
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardUuid", str1);
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardSize", String.valueOf(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a)));
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardMd5", str2);
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardSha", str3);
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardBusType", String.valueOf(k));
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardUuid", str1);
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardSize", String.valueOf(QFileMsgForwardManager.TroopUploadTaskExcuter.c(this.a)));
     if (paramInt != 0) {
-      QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(paramInt));
+      QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardImgWidth", String.valueOf(paramInt));
     }
     if (i != 0) {
-      QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(i));
+      QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardImgHeight", String.valueOf(i));
     }
     if (j != 0) {
-      QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardDuration", String.valueOf(j));
+      QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardDuration", String.valueOf(j));
     }
-    QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a).putString("_m_ForwardFileType", String.valueOf(3));
     paramBundle = new StringBuilder();
     paramBundle.append("TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[");
     paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a));
     paramBundle.append("] filename ");
-    paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a));
+    paramBundle.append(QFileMsgForwardManager.TroopUploadTaskExcuter.b(this.a));
     QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramBundle.toString());
-    QFileMsgForwardManager.a(QFileMsgForwardManager.a(this.a.a), QFileMsgForwardManager.TroopUploadTaskExcuter.b(this.a), k, str1, QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a), 0, paramInt, i, j, false, QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a), QFileMsgForwardManager.TroopUploadTaskExcuter.a(this.a));
+    QFileMsgForwardManager.a(QFileMsgForwardManager.a(this.a.a), QFileMsgForwardManager.TroopUploadTaskExcuter.f(this.a), k, str1, QFileMsgForwardManager.TroopUploadTaskExcuter.c(this.a), 0, paramInt, i, j, false, QFileMsgForwardManager.TroopUploadTaskExcuter.e(this.a), QFileMsgForwardManager.TroopUploadTaskExcuter.d(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.TroopUploadTaskExcuter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -102,7 +102,7 @@ public class AnimationUtils
       if ((paramObject != null) && ((paramObject instanceof AIOImageData)))
       {
         paramObject = (AIOImageData)paramObject;
-        if ((paramObject.i != null) && (paramObject.i.length() != 0) && (!paramObject.i.equals("null"))) {
+        if ((paramObject.z != null) && (paramObject.z.length() != 0) && (!paramObject.z.equals("null"))) {
           localRect.offset(0, (int)(BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density * -15.0F * f));
         }
       }
@@ -154,7 +154,7 @@ public class AnimationUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationUtils
  * JD-Core Version:    0.7.0.1
  */

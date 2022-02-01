@@ -7,7 +7,7 @@ class QavSharpnessSVIPHelper$1
   
   public void run()
   {
-    this.this$0.c();
+    this.this$0.d();
   }
 }
 

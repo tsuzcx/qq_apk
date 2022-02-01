@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/pa0" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/lrm" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentTop="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="推荐照片集" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="仅自己可见" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/lqv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/lrm">
-        <com.qzone.album.business.albumlist.ui.recommbar.AlbumRecommViewPager android:id="@id/lqt" android:layout_width="fill_parent" android:layout_height="85.0dip" />
-        <RelativeLayout android:id="@id/loy" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_below="@id/lqt" android:layout_centerInParent="true">
-            <GridView android:gravity="center" android:id="@id/lox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:horizontalSpacing="7.0dip" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/p_z" android:background="@drawable/f4r" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/p_y" android:layout_width="50.0dip" android:layout_height="50.0dip" android:alpha="0.8" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/pa3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y0a" android:alpha="0.9" />
+    </LinearLayout>
 </RelativeLayout>

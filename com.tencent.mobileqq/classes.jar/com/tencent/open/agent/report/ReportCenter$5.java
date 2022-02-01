@@ -11,7 +11,7 @@ class ReportCenter$5
     // Byte code:
     //   0: aload_0
     //   1: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
-    //   4: invokevirtual 43	com/tencent/open/agent/report/ReportCenter:b	()Landroid/os/Bundle;
+    //   4: invokevirtual 43	com/tencent/open/agent/report/ReportCenter:c	()Landroid/os/Bundle;
     //   7: astore 30
     //   9: aload 30
     //   11: ifnonnull +4 -> 15
@@ -36,9 +36,9 @@ class ReportCenter$5
     //   52: aload 31
     //   54: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   57: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   60: invokestatic 76	com/tencent/open/business/viareport/ReportConfig:b	()I
+    //   60: invokestatic 77	com/tencent/open/business/viareport/ReportConfig:f	()I
     //   63: istore 8
-    //   65: invokestatic 82	android/os/SystemClock:elapsedRealtime	()J
+    //   65: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
     //   68: lstore 9
     //   70: iconst_0
     //   71: istore 4
@@ -76,10 +76,10 @@ class ReportCenter$5
     //   123: istore 28
     //   125: iload 22
     //   127: istore 29
-    //   129: ldc 84
-    //   131: ldc 86
+    //   129: ldc 85
+    //   131: ldc 87
     //   133: aload 30
-    //   135: invokestatic 91	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lcom/tencent/open/base/http/HttpBaseUtil$Statistic;
+    //   135: invokestatic 92	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lcom/tencent/open/base/http/HttpBaseUtil$Statistic;
     //   138: astore 31
     //   140: iload 22
     //   142: istore 23
@@ -104,8 +104,8 @@ class ReportCenter$5
     //   176: iload 22
     //   178: istore 29
     //   180: aload 31
-    //   182: getfield 96	com/tencent/open/base/http/HttpBaseUtil$Statistic:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   185: invokestatic 99	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   182: getfield 97	com/tencent/open/base/http/HttpBaseUtil$Statistic:a	Ljava/lang/String;
+    //   185: invokestatic 100	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   188: astore 32
     //   190: iload 22
     //   192: istore 23
@@ -126,8 +126,8 @@ class ReportCenter$5
     //   219: iload 22
     //   221: istore 29
     //   223: aload 32
-    //   225: ldc 101
-    //   227: invokevirtual 107	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   225: ldc 102
+    //   227: invokevirtual 108	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   230: istore_1
     //   231: goto +6 -> 237
     //   234: bipush 252
@@ -161,8 +161,8 @@ class ReportCenter$5
     //   283: iload 22
     //   285: istore 29
     //   287: aload 31
-    //   289: getfield 96	com/tencent/open/base/http/HttpBaseUtil$Statistic:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   292: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   289: getfield 97	com/tencent/open/base/http/HttpBaseUtil$Statistic:a	Ljava/lang/String;
+    //   292: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   295: ifne +6 -> 301
     //   298: goto +497 -> 795
     //   301: iload 21
@@ -188,7 +188,7 @@ class ReportCenter$5
     //   337: iload 21
     //   339: istore 29
     //   341: aload 31
-    //   343: getfield 116	com/tencent/open/base/http/HttpBaseUtil$Statistic:jdField_a_of_type_Long	J
+    //   343: getfield 118	com/tencent/open/base/http/HttpBaseUtil$Statistic:b	J
     //   346: lstore 11
     //   348: iload 21
     //   350: istore 23
@@ -211,7 +211,7 @@ class ReportCenter$5
     //   380: iload 21
     //   382: istore 29
     //   384: aload 31
-    //   386: getfield 118	com/tencent/open/base/http/HttpBaseUtil$Statistic:b	J
+    //   386: getfield 120	com/tencent/open/base/http/HttpBaseUtil$Statistic:c	J
     //   389: lstore 13
     //   391: lload 13
     //   393: lstore 15
@@ -248,7 +248,7 @@ class ReportCenter$5
     //   451: goto +363 -> 814
     //   454: astore 31
     //   456: aload 31
-    //   458: invokestatic 123	com/tencent/open/base/http/HttpCgiAsyncTask:a	(Ljava/io/IOException;)I
+    //   458: invokestatic 125	com/tencent/open/base/http/HttpCgiAsyncTask:a	(Ljava/io/IOException;)I
     //   461: istore_2
     //   462: iload 4
     //   464: istore_1
@@ -261,11 +261,11 @@ class ReportCenter$5
     //   478: iload 24
     //   480: istore 21
     //   482: aload 30
-    //   484: invokevirtual 126	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException:getMessage	()Ljava/lang/String;
-    //   487: ldc 128
-    //   489: ldc 130
-    //   491: invokevirtual 136	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   494: invokestatic 141	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   484: invokevirtual 128	com/tencent/open/base/http/HttpBaseUtil$HttpStatusException:getMessage	()Ljava/lang/String;
+    //   487: ldc 130
+    //   489: ldc 132
+    //   491: invokevirtual 138	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   494: invokestatic 143	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   497: istore_1
     //   498: iload_1
     //   499: istore_3
@@ -287,15 +287,15 @@ class ReportCenter$5
     //   529: monitorenter
     //   530: aload_0
     //   531: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
-    //   534: getfield 144	com/tencent/open/agent/report/ReportCenter:b	Ljava/util/ArrayList;
-    //   537: invokevirtual 149	java/util/ArrayList:clear	()V
+    //   534: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   537: invokevirtual 151	java/util/ArrayList:clear	()V
     //   540: aload 30
     //   542: monitorexit
     //   543: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   546: ifeq +11 -> 557
     //   549: ldc 66
     //   551: iconst_2
-    //   552: ldc 151
+    //   552: ldc 153
     //   554: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   557: return
     //   558: astore 31
@@ -303,7 +303,7 @@ class ReportCenter$5
     //   562: monitorexit
     //   563: aload 31
     //   565: athrow
-    //   566: invokestatic 82	android/os/SystemClock:elapsedRealtime	()J
+    //   566: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
     //   569: lstore 9
     //   571: iload 6
     //   573: istore_1
@@ -312,7 +312,7 @@ class ReportCenter$5
     //   577: iload 26
     //   579: istore 21
     //   581: goto +233 -> 814
-    //   584: invokestatic 82	android/os/SystemClock:elapsedRealtime	()J
+    //   584: invokestatic 83	android/os/SystemClock:elapsedRealtime	()J
     //   587: lstore 9
     //   589: iload 5
     //   591: istore_1
@@ -323,31 +323,31 @@ class ReportCenter$5
     //   599: goto +215 -> 814
     //   602: aload_0
     //   603: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
-    //   606: ldc 84
+    //   606: ldc 85
     //   608: lload 13
     //   610: lload 9
     //   612: lload 11
     //   614: iload_1
-    //   615: invokestatic 156	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   618: invokevirtual 158	com/tencent/open/adapter/CommonDataAdapter:a	()J
-    //   621: ldc 160
+    //   615: invokestatic 158	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
+    //   618: invokevirtual 160	com/tencent/open/adapter/CommonDataAdapter:c	()J
+    //   621: ldc 162
     //   623: aconst_null
     //   624: iconst_0
     //   625: aload_0
     //   626: getfield 16	com/tencent/open/agent/report/ReportCenter$5:a	Z
-    //   629: invokevirtual 163	com/tencent/open/agent/report/ReportCenter:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;ZZ)V
+    //   629: invokevirtual 165	com/tencent/open/agent/report/ReportCenter:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;ZZ)V
     //   632: iload 21
     //   634: ifeq +14 -> 648
-    //   637: invokestatic 168	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
-    //   640: ldc 170
-    //   642: invokevirtual 173	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;)V
+    //   637: invokestatic 170	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
+    //   640: ldc 172
+    //   642: invokevirtual 175	com/tencent/open/agent/report/ReportDatabaseHelper:c	(Ljava/lang/String;)V
     //   645: goto +18 -> 663
-    //   648: invokestatic 168	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
-    //   651: ldc 170
+    //   648: invokestatic 170	com/tencent/open/agent/report/ReportDatabaseHelper:a	()Lcom/tencent/open/agent/report/ReportDatabaseHelper;
+    //   651: ldc 172
     //   653: aload_0
     //   654: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
-    //   657: getfield 144	com/tencent/open/agent/report/ReportCenter:b	Ljava/util/ArrayList;
-    //   660: invokevirtual 176	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   657: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   660: invokevirtual 178	com/tencent/open/agent/report/ReportDatabaseHelper:a	(Ljava/lang/String;Ljava/util/List;)V
     //   663: aload_0
     //   664: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
     //   667: astore 30
@@ -355,8 +355,8 @@ class ReportCenter$5
     //   671: monitorenter
     //   672: aload_0
     //   673: getfield 14	com/tencent/open/agent/report/ReportCenter$5:this$0	Lcom/tencent/open/agent/report/ReportCenter;
-    //   676: getfield 144	com/tencent/open/agent/report/ReportCenter:b	Ljava/util/ArrayList;
-    //   679: invokevirtual 149	java/util/ArrayList:clear	()V
+    //   676: getfield 146	com/tencent/open/agent/report/ReportCenter:d	Ljava/util/ArrayList;
+    //   679: invokevirtual 151	java/util/ArrayList:clear	()V
     //   682: aload 30
     //   684: monitorexit
     //   685: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -366,12 +366,12 @@ class ReportCenter$5
     //   695: invokespecial 52	java/lang/StringBuilder:<init>	()V
     //   698: astore 30
     //   700: aload 30
-    //   702: ldc 178
+    //   702: ldc 180
     //   704: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   707: pop
     //   708: aload 30
     //   710: iload 21
-    //   712: invokevirtual 181	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   712: invokevirtual 183	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   715: pop
     //   716: ldc 66
     //   718: iconst_2
@@ -389,9 +389,9 @@ class ReportCenter$5
     //   741: ifeq +13 -> 754
     //   744: ldc 66
     //   746: iconst_2
-    //   747: ldc 183
+    //   747: ldc 185
     //   749: aload 30
-    //   751: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   751: invokestatic 188	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   754: return
     //   755: astore 31
     //   757: goto -173 -> 584
@@ -565,7 +565,7 @@ class ReportCenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.5
  * JD-Core Version:    0.7.0.1
  */

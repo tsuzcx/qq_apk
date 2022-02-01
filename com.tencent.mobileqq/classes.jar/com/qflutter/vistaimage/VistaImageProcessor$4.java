@@ -10,7 +10,7 @@ class VistaImageProcessor$4
   
   public void a(VistaImageTask paramVistaImageTask)
   {
-    TextureRecord localTextureRecord = (TextureRecord)VistaImageProcessor.access$200(this.a).remove(Long.valueOf(paramVistaImageTask.getTextureId()));
+    TextureRecord localTextureRecord = (TextureRecord)VistaImageProcessor.access$100(this.a).remove(Long.valueOf(paramVistaImageTask.getTextureId()));
     if (localTextureRecord == null)
     {
       new TextureRecord(paramVistaImageTask, "-7", "no texture record").notifyDart();
@@ -22,7 +22,7 @@ class VistaImageProcessor$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageProcessor.4
  * JD-Core Version:    0.7.0.1
  */

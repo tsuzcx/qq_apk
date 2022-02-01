@@ -26,17 +26,17 @@ class PreloadResHandler$6
       j = 0;
     }
     Object localObject;
-    if (((i & j) != 0) && (!StringUtil.a(paramPathResult.filePath)) && (!StringUtil.a(paramPathResult.folderPath)))
+    if (((i & j) != 0) && (!StringUtil.isEmpty(paramPathResult.filePath)) && (!StringUtil.isEmpty(paramPathResult.folderPath)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramPathResult.folderPath);
       ((StringBuilder)localObject).append(File.separator);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      PreloadResHandler.a(((StringBuilder)localObject).toString(), this.b, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryPreloadResHandler.a);
+      ((StringBuilder)localObject).append(this.a);
+      PreloadResHandler.a(((StringBuilder)localObject).toString(), this.b, this.c.c);
     }
     if (QLog.isColorLevel())
     {
-      String str2 = this.jdField_a_of_type_JavaLangString;
+      String str2 = this.a;
       String str3 = this.b;
       String str1 = "null";
       if (paramPathResult == null) {
@@ -55,7 +55,7 @@ class PreloadResHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.PreloadResHandler.6
  * JD-Core Version:    0.7.0.1
  */

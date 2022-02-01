@@ -12,7 +12,7 @@ public class OpenSdkIFrameProcessor
 {
   public static boolean a()
   {
-    OpenSdkIFrameBean localOpenSdkIFrameBean = (OpenSdkIFrameBean)QConfigManager.a().a(675);
+    OpenSdkIFrameBean localOpenSdkIFrameBean = (OpenSdkIFrameBean)QConfigManager.b().b(675);
     boolean bool;
     if (localOpenSdkIFrameBean != null) {
       bool = localOpenSdkIFrameBean.a();
@@ -85,7 +85,7 @@ public class OpenSdkIFrameProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkIFrameProcessor
  * JD-Core Version:    0.7.0.1
  */

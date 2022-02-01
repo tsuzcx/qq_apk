@@ -17,34 +17,34 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
   {
     while (this.this$0.isRunning())
     {
-      FastAnimationDrawable.a(this.this$0).set(FastAnimationDrawable.a(this.this$0).incrementAndGet() % FastAnimationDrawable.a(this.this$0).size());
+      FastAnimationDrawable.b(this.this$0).set(FastAnimationDrawable.b(this.this$0).incrementAndGet() % FastAnimationDrawable.c(this.this$0).size());
       Object localObject1;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("LoopReadWriteRunnable index:");
-        ((StringBuilder)localObject1).append(FastAnimationDrawable.a(this.this$0).get());
+        ((StringBuilder)localObject1).append(FastAnimationDrawable.b(this.this$0).get());
         QLog.d("FastAnimationDrawable", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((this.this$0.a != null) && (this.this$0.a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())) != null))
+      if ((this.this$0.b != null) && (this.this$0.b.get(Integer.valueOf(FastAnimationDrawable.b(this.this$0).get())) != null))
       {
         localObject1 = this.this$0;
-        FastAnimationDrawable.a((FastAnimationDrawable)localObject1, (BitmapDrawable)((FastAnimationDrawable)localObject1).a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())));
+        FastAnimationDrawable.a((FastAnimationDrawable)localObject1, (BitmapDrawable)((FastAnimationDrawable)localObject1).b.get(Integer.valueOf(FastAnimationDrawable.b(this.this$0).get())));
         try
         {
-          Thread.sleep(FastAnimationDrawable.a(this.this$0));
+          Thread.sleep(FastAnimationDrawable.d(this.this$0));
         }
         catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
         }
-        FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
+        FastAnimationDrawable.e(this.this$0).sendEmptyMessage(0);
       }
       else
       {
         long l = System.currentTimeMillis();
         Object localObject2 = this.this$0;
-        localObject2 = FastAnimationDrawable.a((FastAnimationDrawable)localObject2, (String)FastAnimationDrawable.a((FastAnimationDrawable)localObject2).get(FastAnimationDrawable.a(this.this$0).get()));
+        localObject2 = FastAnimationDrawable.a((FastAnimationDrawable)localObject2, (String)FastAnimationDrawable.c((FastAnimationDrawable)localObject2).get(FastAnimationDrawable.b(this.this$0).get()));
         if (localObject2 != null)
         {
           l = System.currentTimeMillis() - l;
@@ -53,22 +53,22 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("LoopReadWriteRunnable decodeBitmap index:");
-            localStringBuilder.append(FastAnimationDrawable.a(this.this$0).get());
+            localStringBuilder.append(FastAnimationDrawable.b(this.this$0).get());
             localStringBuilder.append(" cost:");
             localStringBuilder.append(l);
             localStringBuilder.append(" delay:");
-            localStringBuilder.append(FastAnimationDrawable.a(this.this$0));
+            localStringBuilder.append(FastAnimationDrawable.d(this.this$0));
             QLog.d("FastAnimationDrawable", 2, localStringBuilder.toString());
           }
-          this.this$0.a.put(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get()), localObject2);
-          if ((this.this$0.a.size() == FastAnimationDrawable.a(this.this$0).size()) && (FastAnimationDrawable.a(this.this$0) != null) && (this.this$0.a.size() <= ((IGifAntishakeApi)QRoute.api(IGifAntishakeApi.class)).getMaxGifAntishakeFrameNum())) {
-            FastAnimationDrawable.a(this.this$0).a(this.this$0.a);
+          this.this$0.b.put(Integer.valueOf(FastAnimationDrawable.b(this.this$0).get()), localObject2);
+          if ((this.this$0.b.size() == FastAnimationDrawable.c(this.this$0).size()) && (FastAnimationDrawable.f(this.this$0) != null) && (this.this$0.b.size() <= ((IGifAntishakeApi)QRoute.api(IGifAntishakeApi.class)).getMaxGifAntishakeFrameNum())) {
+            FastAnimationDrawable.f(this.this$0).a(this.this$0.b);
           }
-          if (!FastAnimationDrawable.a(this.this$0).hasMessages(0)) {
-            if (FastAnimationDrawable.a(this.this$0) > l) {
-              FastAnimationDrawable.a(this.this$0).sendEmptyMessageDelayed(0, FastAnimationDrawable.a(this.this$0) - l);
+          if (!FastAnimationDrawable.e(this.this$0).hasMessages(0)) {
+            if (FastAnimationDrawable.d(this.this$0) > l) {
+              FastAnimationDrawable.e(this.this$0).sendEmptyMessageDelayed(0, FastAnimationDrawable.d(this.this$0) - l);
             } else {
-              FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
+              FastAnimationDrawable.e(this.this$0).sendEmptyMessage(0);
             }
           }
         }

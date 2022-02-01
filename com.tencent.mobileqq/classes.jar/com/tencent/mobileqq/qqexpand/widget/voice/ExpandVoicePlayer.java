@@ -17,44 +17,44 @@ import mqq.app.MobileQQ;
 
 public class ExpandVoicePlayer
 {
-  private final AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new ExpandVoicePlayer.1(this);
-  private final AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private final QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private final ExpandVoicePlayer.ExtendFriendVoicePlayerListener jdField_a_of_type_ComTencentMobileqqQqexpandWidgetVoiceExpandVoicePlayer$ExtendFriendVoicePlayerListener;
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final boolean jdField_a_of_type_Boolean = false;
+  private VoicePlayer a;
+  private final QBaseActivity b;
+  private final AudioManager c;
+  private final ExpandVoicePlayer.ExtendFriendVoicePlayerListener d;
+  private final boolean e = false;
+  private final Object f = new Object();
+  private final AudioManager.OnAudioFocusChangeListener g = new ExpandVoicePlayer.1(this);
   
   public ExpandVoicePlayer(ExpandVoicePlayer.ExtendFriendVoicePlayerListener paramExtendFriendVoicePlayerListener, QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetVoiceExpandVoicePlayer$ExtendFriendVoicePlayerListener = paramExtendFriendVoicePlayerListener;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSystemService("audio"));
+    this.d = paramExtendFriendVoicePlayerListener;
+    this.b = paramQBaseActivity;
+    this.c = ((AudioManager)this.b.getSystemService("audio"));
   }
   
-  private String a()
-  {
-    if (a() != null) {
-      return a().getCurrentAccountUin();
-    }
-    return "";
-  }
-  
-  private AppRuntime a()
+  private AppRuntime c()
   {
     return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  private String d()
+  {
+    if (c() != null) {
+      return c().getCurrentAccountUin();
+    }
+    return "";
   }
   
   public void a()
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.f)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+          this.a.f();
+          this.a = null;
         }
         b();
         return;
@@ -73,14 +73,25 @@ public class ExpandVoicePlayer
   
   public void a(String paramString)
   {
-    if (!a(paramString)) {
+    if (!b(paramString)) {
       ThreadManager.executeOnFileThread(new ExpandVoicePlayer.2(this, paramString));
     }
   }
   
-  public boolean a(String arg1)
+  public void b()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
+    }
+    AudioManager localAudioManager = this.c;
+    if (localAudioManager != null) {
+      localAudioManager.abandonAudioFocus(this.g);
+    }
+  }
+  
+  public boolean b(String arg1)
+  {
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (((QBaseActivity)localObject1).isFinishing()))
     {
       QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
@@ -89,12 +100,12 @@ public class ExpandVoicePlayer
     localObject1 = ???;
     try
     {
-      if (!FileUtil.b(???))
+      if (!FileUtil.d(???))
       {
         localObject1 = ???;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null)
+        if (this.b != null)
         {
-          localObject1 = VFSAssistantUtils.getSDKPrivatePath(TransFileUtil.getTransferFilePath(a(), MD5.toMD5(???), 23, null));
+          localObject1 = VFSAssistantUtils.getSDKPrivatePath(TransFileUtil.getTransferFilePath(d(), MD5.toMD5(???), 23, null));
           File localFile = new File((String)localObject1);
           if (localFile.exists()) {
             if (localFile.length() > 0L) {
@@ -110,19 +121,19 @@ public class ExpandVoicePlayer
       }
       for (;;)
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.f)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null)
+          if (this.a != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-            this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+            this.a.f();
+            this.a = null;
           }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer((String)localObject1, new Handler(), 1);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetVoiceExpandVoicePlayer$ExtendFriendVoicePlayerListener);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-          if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-            this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+          this.a = new VoicePlayer((String)localObject1, new Handler(), 1);
+          this.a.h();
+          this.a.a(this.d);
+          this.a.c();
+          if (this.c != null) {
+            this.c.requestAudioFocus(this.g, 3, 2);
           }
           return true;
         }
@@ -137,21 +148,10 @@ public class ExpandVoicePlayer
     label234:
     return false;
   }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
-    }
-    AudioManager localAudioManager = this.jdField_a_of_type_AndroidMediaAudioManager;
-    if (localAudioManager != null) {
-      localAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.voice.ExpandVoicePlayer
  * JD-Core Version:    0.7.0.1
  */

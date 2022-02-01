@@ -1,54 +1,64 @@
 package com.tencent.mobileqq.util;
 
 import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.api.IMobileReportManager;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IGameCardManager;
+import com.tencent.mobileqq.vip.IGameCardManager.GameCardInfo;
+import com.tencent.mobileqq.vip.IGameCardManager.OnResultCallBack;
 
 final class QQSettingUtil$2
-  implements URLDrawable.URLDrawableListener
+  implements IGameCardManager.OnResultCallBack
 {
-  QQSettingUtil$2(View paramView) {}
+  QQSettingUtil$2(View paramView, IGameCardManager.GameCardInfo paramGameCardInfo) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    paramURLDrawable = this.a;
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+    if (this.a != null)
+    {
+      paramURLDrawable = new LinearLayout.LayoutParams(ViewUtils.dip2px(47.0F), ViewUtils.dip2px(15.0F));
+      paramURLDrawable.rightMargin = ViewUtils.dip2px(5.0F);
+      paramURLDrawable.gravity = 16;
+      this.a.setLayoutParams(paramURLDrawable);
+      this.a.setVisibility(0);
+      if (VasUtil.a().getGameCardManager().isSelf(this.b.b)) {
+        paramURLDrawable = "owner";
+      } else {
+        paramURLDrawable = "visitor";
+      }
+      ((IMobileReportManager)QRoute.api(IMobileReportManager.class)).reportAction(String.valueOf(this.b.f), "4", "platform898", "choutiye", paramURLDrawable, 101, 1, System.currentTimeMillis());
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void b(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
     paramURLDrawable = this.a;
     if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+      paramURLDrawable.setVisibility(8);
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void c(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
-    }
     paramURLDrawable = this.a;
     if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
+      paramURLDrawable.setVisibility(8);
     }
+  }
+  
+  public void d(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable.restartDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.2
  * JD-Core Version:    0.7.0.1
  */

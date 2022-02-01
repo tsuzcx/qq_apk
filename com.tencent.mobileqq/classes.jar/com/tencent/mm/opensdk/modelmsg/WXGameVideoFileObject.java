@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXGameVideoFileObject
   implements WXMediaMessage.IMediaObject
@@ -30,7 +30,7 @@ public class WXGameVideoFileObject
   
   private int getFileSize(String paramString)
   {
-    return d.getFileSize(paramString);
+    return b.a(paramString);
   }
   
   public boolean checkArgs()
@@ -87,7 +87,7 @@ public class WXGameVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXGameVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

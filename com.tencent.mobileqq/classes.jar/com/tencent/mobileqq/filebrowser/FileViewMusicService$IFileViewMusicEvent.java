@@ -4,11 +4,11 @@ public abstract interface FileViewMusicService$IFileViewMusicEvent
 {
   public abstract void a(String paramString);
   
-  public abstract void ah_();
+  public abstract void cf_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.FileViewMusicService.IFileViewMusicEvent
  * JD-Core Version:    0.7.0.1
  */

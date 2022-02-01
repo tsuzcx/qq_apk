@@ -32,38 +32,38 @@ public class MultiPicsProtoCallBack
   extends MultiPicsBaseClass
   implements RichProtoProc.RichProtoCallback
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  MessageRecord b;
   
   public MultiPicsProtoCallBack(MultiPicsOperator.MultiPicsUploadTask paramMultiPicsUploadTask, MessageRecord paramMessageRecord, WeakReference<AppInterface> paramWeakReference)
   {
     super(paramMultiPicsUploadTask, paramWeakReference);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.b = paramMessageRecord;
   }
   
   private String a(PicFowardInfo paramPicFowardInfo)
   {
     int i;
-    if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.l == 1) {
+    if (paramPicFowardInfo.b.F == 1) {
       i = 1;
     } else {
       i = 0;
     }
-    if (paramPicFowardInfo.jdField_a_of_type_Int >= 0) {
-      return paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString;
+    if (paramPicFowardInfo.e >= 0) {
+      return paramPicFowardInfo.b.n;
     }
-    boolean bool = FileUtils.fileExistsAndNotEmpty(paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
+    boolean bool = FileUtils.fileExistsAndNotEmpty(paramPicFowardInfo.b.n);
     Object localObject4 = null;
     Object localObject1;
     Object localObject2;
     StringBuilder localStringBuilder;
     if (bool)
     {
-      localObject1 = new CompressInfo(paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString, 0, 1009);
+      localObject1 = new CompressInfo(paramPicFowardInfo.b.n, 0, 1009);
       ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject1);
-      localObject1 = ((CompressInfo)localObject1).e;
-      localObject2 = this.b;
-      localObject3 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = ((CompressInfo)localObject1).l;
+      localObject2 = this.f;
+      localObject3 = this.e;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Compress raw to big compress image at ");
       localStringBuilder.append((String)localObject1);
@@ -84,8 +84,8 @@ public class MultiPicsProtoCallBack
       }
       if (FileUtils.fileExistsAndNotEmpty((String)localObject2))
       {
-        paramPicFowardInfo = this.b;
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        paramPicFowardInfo = this.f;
+        localObject1 = this.e;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("find big compress image at ");
         ((StringBuilder)localObject3).append((String)localObject2);
@@ -105,11 +105,11 @@ public class MultiPicsProtoCallBack
         if (FileUtils.fileExistsAndNotEmpty((String)localObject3))
         {
           localObject1 = new CompressInfo((String)localObject3, 0);
-          ((CompressInfo)localObject1).jdField_a_of_type_Int = 1009;
+          ((CompressInfo)localObject1).b = 1009;
           ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject1);
-          localObject2 = ((CompressInfo)localObject1).e;
-          localObject1 = this.b;
-          localObject3 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = ((CompressInfo)localObject1).l;
+          localObject1 = this.f;
+          localObject3 = this.e;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("Compress raw to big compress image at ");
           localStringBuilder.append((String)localObject2);
@@ -127,8 +127,8 @@ public class MultiPicsProtoCallBack
         localObject3 = localObject2;
         if (FileUtils.fileExistsAndNotEmpty(paramPicFowardInfo))
         {
-          localObject1 = this.b;
-          localObject2 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.f;
+          localObject2 = this.e;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("find thumb image at ");
           ((StringBuilder)localObject3).append(paramPicFowardInfo);
@@ -140,36 +140,36 @@ public class MultiPicsProtoCallBack
     return localObject3;
   }
   
-  private boolean a(PicFowardInfo paramPicFowardInfo)
+  private boolean b(PicFowardInfo paramPicFowardInfo)
   {
     if (paramPicFowardInfo != null)
     {
-      Object localObject = this.b;
-      String str = this.jdField_a_of_type_JavaLangString;
+      Object localObject = this.f;
+      String str = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("info:");
       localStringBuilder.append(paramPicFowardInfo);
       Logger.a((String)localObject, str, "checkFowardPicInfo", localStringBuilder.toString());
-      if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo == null)
+      if (paramPicFowardInfo.b == null)
       {
         paramPicFowardInfo.a("PicFowardInfo.check", "upInfo == null");
         return false;
       }
-      if (((paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1000) || (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1020) || (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1004)) && (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d == null))
+      if (((paramPicFowardInfo.b.c == 1000) || (paramPicFowardInfo.b.c == 1020) || (paramPicFowardInfo.b.c == 1004)) && (paramPicFowardInfo.b.f == null))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("secondId invalid,uinType:");
-        ((StringBuilder)localObject).append(paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b);
+        ((StringBuilder)localObject).append(paramPicFowardInfo.b.c);
         ((StringBuilder)localObject).append(",secondId:");
-        ((StringBuilder)localObject).append(paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d);
+        ((StringBuilder)localObject).append(paramPicFowardInfo.b.f);
         paramPicFowardInfo.a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
         return false;
       }
-      if (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int == -1)
+      if (paramPicFowardInfo.b.s == -1)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("protocolType invalid,protocolType:");
-        ((StringBuilder)localObject).append(paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int);
+        ((StringBuilder)localObject).append(paramPicFowardInfo.b.s);
         paramPicFowardInfo.a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
         return false;
       }
@@ -179,11 +179,11 @@ public class MultiPicsProtoCallBack
       paramPicFowardInfo.a("PicFowardInfo.check", "getForwardMultiMsgPicsTargetFilepath == null");
       return false;
     }
-    Logger.b(this.b, this.jdField_a_of_type_JavaLangString, "checkFowardPicInfo", "info == null");
+    Logger.b(this.f, this.e, "checkFowardPicInfo", "info == null");
     return false;
   }
   
-  private void c()
+  private void d()
   {
     new MultiPicsProtoCallBack.1(this).execute(new Void[0]);
   }
@@ -201,39 +201,39 @@ public class MultiPicsProtoCallBack
     }
     paramInt = 0;
     int j;
-    for (int i = 0; paramInt < this.jdField_a_of_type_JavaUtilArrayList.size(); i = j)
+    for (int i = 0; paramInt < this.h.size(); i = j)
     {
-      localObject1 = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Object localObject2 = (PicResult)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      localObject1 = (PicFowardInfo)this.i.get(paramInt);
+      Object localObject2 = (PicResult)this.h.get(paramInt);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[uploadForwardMultiMsgPics] miao mIsChange  info.upInfo.localPath =  ");
-        localStringBuilder.append(((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
+        localStringBuilder.append(((PicFowardInfo)localObject1).b.n);
         QLog.d("MultiPicsOperator", 2, localStringBuilder.toString());
       }
       j = i;
-      if (((PicResult)localObject2).jdField_a_of_type_Int == -2)
+      if (((PicResult)localObject2).a == -2)
       {
         j = i;
-        if (!a((PicFowardInfo)localObject1))
+        if (!b((PicFowardInfo)localObject1))
         {
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getPicDefaultPath();
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_f_of_type_JavaLangString = FileUtils.calcMd5(((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.l = 1;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.j = 242;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.k = 192;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getPicDefaultSize();
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.h = ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_f_of_type_Int = 192;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.e = 242;
-          ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_f_of_type_JavaLangString = ((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_f_of_type_JavaLangString;
-          ((PicResult)localObject2).b = true;
+          ((PicFowardInfo)localObject1).b.n = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getPicDefaultPath();
+          ((PicFowardInfo)localObject1).b.m = FileUtils.calcMd5(((PicFowardInfo)localObject1).b.n);
+          ((PicFowardInfo)localObject1).b.F = 1;
+          ((PicFowardInfo)localObject1).b.C = 242;
+          ((PicFowardInfo)localObject1).b.D = 192;
+          ((PicFowardInfo)localObject1).b.E = ((IMultiMsg)QRoute.api(IMultiMsg.class)).getPicDefaultSize();
+          ((PicFowardInfo)localObject1).b.o = ((PicFowardInfo)localObject1).b.n;
+          ((PicFowardInfo)localObject1).b.q = 192;
+          ((PicFowardInfo)localObject1).b.p = 242;
+          ((PicFowardInfo)localObject1).c.m = ((PicFowardInfo)localObject1).b.m;
+          ((PicResult)localObject2).f = true;
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("[uploadForwardMultiMsgPics] miao mIsChange  info.upInfo.localPath =  ");
-            ((StringBuilder)localObject2).append(((PicFowardInfo)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((PicFowardInfo)localObject1).b.n);
             QLog.d("MultiPicsOperator", 2, ((StringBuilder)localObject2).toString());
           }
           j = 1;
@@ -241,20 +241,20 @@ public class MultiPicsProtoCallBack
       }
       paramInt += 1;
     }
-    if ((i != 0) && (!this.jdField_a_of_type_Boolean))
+    if ((i != 0) && (!this.a))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqPicOperatorMultipicMultiPicsOperator$MultiPicsUploadTask.a(new Void[0]);
+      this.a = true;
+      this.j.a(new Void[0]);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    c();
+    this.a = false;
+    d();
   }
   
   protected void a(RichProto.RichProtoReq paramRichProtoReq, int paramInt, PicFowardInfo paramPicFowardInfo, PicResult paramPicResult, RichProto.RichProtoResp.C2CPicUpResp paramC2CPicUpResp)
   {
-    Object localObject = this.b;
-    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.f;
+    String str = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("C2CPicUpResp[");
     localStringBuilder.append(paramInt);
@@ -264,12 +264,12 @@ public class MultiPicsProtoCallBack
     if ((paramC2CPicUpResp.result == 0) && (paramC2CPicUpResp.isExist))
     {
       paramRichProtoReq = a((RichProto.RichProtoReq.PicUpReq)paramRichProtoReq.reqs.get(paramInt), paramC2CPicUpResp, paramInt);
-      if ((paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 1) && (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 3000))
+      if ((paramPicFowardInfo.c.c != 1) && (paramPicFowardInfo.c.c != 3000))
       {
         if (paramRichProtoReq != null)
         {
-          paramPicResult.jdField_a_of_type_Int = 0;
-          paramPicResult.jdField_a_of_type_JavaLangObject = paramRichProtoReq;
+          paramPicResult.a = 0;
+          paramPicResult.d = paramRichProtoReq;
           a();
           if (QLog.isColorLevel())
           {
@@ -283,8 +283,8 @@ public class MultiPicsProtoCallBack
       }
       else
       {
-        paramPicFowardInfo = this.b;
-        paramC2CPicUpResp = this.jdField_a_of_type_JavaLangString;
+        paramPicFowardInfo = this.f;
+        paramC2CPicUpResp = this.e;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("convert2CustomFace for [");
         ((StringBuilder)localObject).append(paramInt);
@@ -293,8 +293,8 @@ public class MultiPicsProtoCallBack
         paramRichProtoReq = a(paramRichProtoReq);
         if (paramRichProtoReq != null)
         {
-          paramPicResult.jdField_a_of_type_Int = 0;
-          paramPicResult.jdField_a_of_type_JavaLangObject = paramRichProtoReq;
+          paramPicResult.a = 0;
+          paramPicResult.d = paramRichProtoReq;
           a();
           if (QLog.isColorLevel())
           {
@@ -311,8 +311,8 @@ public class MultiPicsProtoCallBack
   
   protected void a(RichProto.RichProtoReq paramRichProtoReq, int paramInt, PicFowardInfo paramPicFowardInfo, PicResult paramPicResult, RichProto.RichProtoResp.GroupPicUpResp paramGroupPicUpResp)
   {
-    Object localObject = this.b;
-    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.f;
+    String str = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GroupPicUpResp[");
     localStringBuilder.append(paramInt);
@@ -322,10 +322,10 @@ public class MultiPicsProtoCallBack
     if ((paramGroupPicUpResp.result == 0) && (paramGroupPicUpResp.isExist))
     {
       paramRichProtoReq = a((RichProto.RichProtoReq.PicUpReq)paramRichProtoReq.reqs.get(paramInt), paramGroupPicUpResp, paramInt);
-      if ((paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 1) && (paramPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b != 3000))
+      if ((paramPicFowardInfo.c.c != 1) && (paramPicFowardInfo.c.c != 3000))
       {
-        paramPicFowardInfo = this.b;
-        paramGroupPicUpResp = this.jdField_a_of_type_JavaLangString;
+        paramPicFowardInfo = this.f;
+        paramGroupPicUpResp = this.e;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("convert2NotOnlineImage for [");
         ((StringBuilder)localObject).append(paramInt);
@@ -334,8 +334,8 @@ public class MultiPicsProtoCallBack
         paramRichProtoReq = a(paramRichProtoReq);
         if (paramRichProtoReq != null)
         {
-          paramPicResult.jdField_a_of_type_Int = 0;
-          paramPicResult.jdField_a_of_type_JavaLangObject = paramRichProtoReq;
+          paramPicResult.a = 0;
+          paramPicResult.d = paramRichProtoReq;
           a();
           if (QLog.isColorLevel())
           {
@@ -349,8 +349,8 @@ public class MultiPicsProtoCallBack
       }
       else if (paramRichProtoReq != null)
       {
-        paramPicResult.jdField_a_of_type_Int = 0;
-        paramPicResult.jdField_a_of_type_JavaLangObject = paramRichProtoReq;
+        paramPicResult.a = 0;
+        paramPicResult.d = paramRichProtoReq;
         a();
         if (QLog.isColorLevel())
         {
@@ -366,11 +366,11 @@ public class MultiPicsProtoCallBack
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
-    Object localObject1 = this.b;
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.f;
+    Object localObject2 = this.e;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("start,remiao:");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject3).append(this.a);
     Logger.a((String)localObject1, (String)localObject2, "uploadForwardMultiMsgPics.onBusiProtoResp", ((StringBuilder)localObject3).toString());
     if (QLog.isColorLevel())
     {
@@ -384,8 +384,8 @@ public class MultiPicsProtoCallBack
       i = 0;
       while (i < paramRichProtoResp.resps.size())
       {
-        localObject2 = (PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-        localObject3 = (PicResult)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject2 = (PicFowardInfo)this.i.get(i);
+        localObject3 = (PicResult)this.h.get(i);
         localObject1 = (RichProto.RichProtoResp.RespCommon)paramRichProtoResp.resps.get(i);
         if ((localObject1 instanceof RichProto.RichProtoResp.C2CPicUpResp))
         {
@@ -397,8 +397,8 @@ public class MultiPicsProtoCallBack
         }
         else
         {
-          localObject2 = this.b;
-          localObject3 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = this.f;
+          localObject3 = this.e;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("Unkown response type[");
           localStringBuilder.append(i);
@@ -409,7 +409,7 @@ public class MultiPicsProtoCallBack
         i += 1;
       }
     }
-    int i = a();
+    int i = c();
     if (i > 0)
     {
       a(i);
@@ -420,7 +420,7 @@ public class MultiPicsProtoCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.multipic.MultiPicsProtoCallBack
  * JD-Core Version:    0.7.0.1
  */

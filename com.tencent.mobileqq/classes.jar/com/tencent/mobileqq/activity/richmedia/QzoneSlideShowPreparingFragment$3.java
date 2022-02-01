@@ -11,13 +11,13 @@ class QzoneSlideShowPreparingFragment$3
   
   public void onClick(View paramView)
   {
-    QzoneSlideShowPreparingFragment.a(this.a);
+    QzoneSlideShowPreparingFragment.e(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.3
  * JD-Core Version:    0.7.0.1
  */

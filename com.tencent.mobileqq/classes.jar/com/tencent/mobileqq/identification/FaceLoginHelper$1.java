@@ -14,24 +14,24 @@ final class FaceLoginHelper$1
   public void onFailed(int paramInt, String paramString1, String paramString2)
   {
     QLog.d("FaceLoginHelper", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2 });
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    FaceLoginHelper.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConf, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceLoginHelper$IConfInterface);
+    this.a.set(true);
+    FaceLoginHelper.a(this.b, this.c);
   }
   
   public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
     QLog.d("FaceLoginHelper", 1, "getLightInfo success");
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, true))
+    if (this.a.compareAndSet(true, true))
     {
       QLog.d("FaceLoginHelper", 1, "sendPacket isLoading now");
       return;
     }
-    FaceLoginHelper.a(paramYTLiveStyleReq, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConf, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceLoginHelper$IConfInterface);
+    FaceLoginHelper.a(paramYTLiveStyleReq, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceLoginHelper.1
  * JD-Core Version:    0.7.0.1
  */

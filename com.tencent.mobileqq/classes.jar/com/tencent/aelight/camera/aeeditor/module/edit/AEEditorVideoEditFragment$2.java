@@ -1,16 +1,17 @@
 package com.tencent.aelight.camera.aeeditor.module.edit;
 
+import android.text.TextUtils;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.aelight.camera.aeeditor.module.autotemplate.AEAutoTemplateRet;
 import com.tencent.aelight.camera.aeeditor.util.AEQCircleReport;
 import com.tencent.aelight.camera.aeeditor.view.AEEditorLoadingView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qcircle.api.constant.QCircleConstants;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.aeeditor.module.autotemplate.AEAutoTemplateRet;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 class AEEditorVideoEditFragment$2
@@ -23,7 +24,7 @@ class AEEditorVideoEditFragment$2
     if (paramAEAutoTemplateRet == null) {
       return;
     }
-    int i = (int)paramAEAutoTemplateRet.a();
+    int i = paramAEAutoTemplateRet.a();
     if (i != 0)
     {
       if (i != 5)
@@ -33,37 +34,49 @@ class AEEditorVideoEditFragment$2
           if (i != 3) {
             return;
           }
-          QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2064515202), 1).a();
-          if (this.a.a != null)
+          QQToast.makeText(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2064187548), 1).show();
+          if (this.a.j != null)
           {
-            this.a.a.a();
-            this.a.a = null;
+            this.a.j.a();
+            this.a.j = null;
           }
-          AEEditorVideoEditFragment.a(this.a).remove(paramAEAutoTemplateRet.a().id);
-          AEQCircleReport.a().a(paramAEAutoTemplateRet.a().id, QCircleConstants.KEY_VIDEO, "-90000000");
+          AEEditorVideoEditFragment.d(this.a).remove(paramAEAutoTemplateRet.b().id);
+          AEQCircleReport.a().a(paramAEAutoTemplateRet.b().id, QCircleConstants.x, "-90000000");
           return;
         }
-        if (!AEEditorVideoEditFragment.b(this.a).contains(paramAEAutoTemplateRet.a().id))
+        if (!AEEditorVideoEditFragment.e(this.a).contains(paramAEAutoTemplateRet.b().id))
         {
-          paramAEAutoTemplateRet = paramAEAutoTemplateRet.a();
+          paramAEAutoTemplateRet = paramAEAutoTemplateRet.b();
           this.a.a(paramAEAutoTemplateRet);
           this.a.getActivity().runOnUiThread(new AEEditorVideoEditFragment.2.1(this));
-          return;
         }
-        AEEditorVideoEditFragment.b(this.a).remove(paramAEAutoTemplateRet.a().id);
-        return;
+        else
+        {
+          AEEditorVideoEditFragment.e(this.a).remove(paramAEAutoTemplateRet.b().id);
+        }
+        if ((AEEditorVideoEditFragment.f(this.a).booleanValue()) && (TextUtils.isEmpty(AEEditorVideoEditFragment.g(this.a))))
+        {
+          paramAEAutoTemplateRet = this.a;
+          AEEditorVideoEditFragment.a(paramAEAutoTemplateRet, paramAEAutoTemplateRet.af());
+          AEEditorVideoEditFragment.a(this.a, Boolean.valueOf(false));
+        }
       }
-      this.a.a(null);
-      return;
+      else
+      {
+        this.a.a(null);
+      }
     }
-    AEEditorVideoEditFragment.a(this.a).add(paramAEAutoTemplateRet.a().id);
-    AEEditorVideoEditFragment.b(this.a).remove(paramAEAutoTemplateRet.a().id);
-    AEEditorVideoEditFragment.a(this.a, paramAEAutoTemplateRet);
+    else
+    {
+      AEEditorVideoEditFragment.d(this.a).add(paramAEAutoTemplateRet.b().id);
+      AEEditorVideoEditFragment.e(this.a).remove(paramAEAutoTemplateRet.b().id);
+      AEEditorVideoEditFragment.a(this.a, paramAEAutoTemplateRet);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.2
  * JD-Core Version:    0.7.0.1
  */

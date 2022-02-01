@@ -11,7 +11,7 @@ class PicOcrServiceImpl$2$1
   
   public void run()
   {
-    FileUtils.deleteFile(this.a.a.c);
+    FileUtils.deleteFile(this.a.b.d);
     if (QLog.isColorLevel()) {
       QLog.d("PicOcrServiceImpl", 2, "clear path!");
     }
@@ -19,7 +19,7 @@ class PicOcrServiceImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrServiceImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

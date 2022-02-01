@@ -54,7 +54,7 @@ public class JsonORM
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = a(paramClass);
+        localObject1 = b(paramClass);
         a.put(paramClass, localObject1);
       }
     }
@@ -72,39 +72,39 @@ public class JsonORM
           try
           {
             Object localObject3;
-            switch (paramClass.jdField_a_of_type_Int)
+            switch (paramClass.b)
             {
             case 6: 
               continue;
-              localObject3 = paramJSONObject.optJSONArray(paramClass.jdField_a_of_type_JavaLangString);
+              localObject3 = paramJSONObject.optJSONArray(paramClass.a);
               if (localObject3 == null) {
                 break label424;
               }
-              Class localClass = paramClass.jdField_a_of_type_JavaLangReflectField.getType().getComponentType();
+              Class localClass = paramClass.c.getType().getComponentType();
               int k = a(localClass);
               if ((k != 0) && (k != 1) && (k != 2) && (k != 3) && (k != 4)) {
-                paramClass.jdField_a_of_type_JavaLangReflectField.set(localObject2, a((JSONArray)localObject3, localClass));
+                paramClass.c.set(localObject2, a((JSONArray)localObject3, localClass));
               } else {
-                a(k, (JSONArray)localObject3, paramClass.jdField_a_of_type_JavaLangReflectField, localObject2);
+                a(k, (JSONArray)localObject3, paramClass.c, localObject2);
               }
               break;
             case 5: 
-              localObject3 = paramJSONObject.optJSONObject(paramClass.jdField_a_of_type_JavaLangString);
+              localObject3 = paramJSONObject.optJSONObject(paramClass.a);
               if (localObject3 == null) {
                 break label424;
               }
-              paramClass.jdField_a_of_type_JavaLangReflectField.set(localObject2, a((JSONObject)localObject3, paramClass.jdField_a_of_type_JavaLangReflectField.getType()));
+              paramClass.c.set(localObject2, a((JSONObject)localObject3, paramClass.c.getType()));
               break;
             case 0: 
             case 1: 
             case 2: 
             case 3: 
             case 4: 
-              a(paramClass.jdField_a_of_type_Int, paramJSONObject, paramClass.jdField_a_of_type_JavaLangString, paramClass.jdField_a_of_type_JavaLangReflectField, localObject2);
+              a(paramClass.b, paramJSONObject, paramClass.a, paramClass.c, localObject2);
               break label424;
               paramJSONObject = new StringBuilder();
               paramJSONObject.append("un-support type : ");
-              paramJSONObject.append(paramClass.jdField_a_of_type_Int);
+              paramJSONObject.append(paramClass.b);
               throw new JsonORM.JsonParseException(paramJSONObject.toString());
             }
           }
@@ -112,7 +112,7 @@ public class JsonORM
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("access field failed : ");
-            ((StringBuilder)localObject1).append(paramClass.jdField_a_of_type_JavaLangReflectField.getName());
+            ((StringBuilder)localObject1).append(paramClass.c.getName());
             throw new JsonORM.JsonParseException(((StringBuilder)localObject1).toString(), paramJSONObject);
           }
         }
@@ -145,7 +145,7 @@ public class JsonORM
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = a(localClass);
+        localObject1 = b(localClass);
         a.put(localClass, localObject1);
       }
       localObject2 = new JSONObject();
@@ -156,7 +156,7 @@ public class JsonORM
         localClass = localObject1[i];
         try
         {
-          int k = localClass.jdField_a_of_type_Int;
+          int k = localClass.b;
           Object localObject3;
           if (k != 0)
           {
@@ -170,33 +170,33 @@ public class JsonORM
                   {
                     if (k == 5)
                     {
-                      localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
+                      localObject3 = localClass.c.get(paramObject);
                       if (localObject3 != null) {
-                        ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, a(localObject3));
+                        ((JSONObject)localObject2).put(localClass.a, a(localObject3));
                       }
                     }
                   }
                   else {
-                    ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getDouble(paramObject));
+                    ((JSONObject)localObject2).put(localClass.a, localClass.c.getDouble(paramObject));
                   }
                 }
                 else {
-                  ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getLong(paramObject));
+                  ((JSONObject)localObject2).put(localClass.a, localClass.c.getLong(paramObject));
                 }
               }
               else {
-                ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getInt(paramObject));
+                ((JSONObject)localObject2).put(localClass.a, localClass.c.getInt(paramObject));
               }
             }
             else {
-              ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getBoolean(paramObject));
+              ((JSONObject)localObject2).put(localClass.a, localClass.c.getBoolean(paramObject));
             }
           }
           else
           {
-            localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
+            localObject3 = localClass.c.get(paramObject);
             if (localObject3 != null) {
-              ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localObject3);
+              ((JSONObject)localObject2).put(localClass.a, localObject3);
             }
           }
           i += 1;
@@ -339,19 +339,6 @@ public class JsonORM
     }
   }
   
-  private static JsonORM.ColumnInfo[] a(Class<?> paramClass)
-  {
-    ArrayList localArrayList = new ArrayList();
-    while (paramClass != null)
-    {
-      a(paramClass, localArrayList);
-      paramClass = paramClass.getSuperclass();
-    }
-    paramClass = new JsonORM.ColumnInfo[localArrayList.size()];
-    localArrayList.toArray(paramClass);
-    return paramClass;
-  }
-  
   @NonNull
   public static <T> T[] a(JSONArray paramJSONArray, Class<T> paramClass)
   {
@@ -384,6 +371,19 @@ public class JsonORM
     {
       throw paramJSONArray;
     }
+  }
+  
+  private static JsonORM.ColumnInfo[] b(Class<?> paramClass)
+  {
+    ArrayList localArrayList = new ArrayList();
+    while (paramClass != null)
+    {
+      a(paramClass, localArrayList);
+      paramClass = paramClass.getSuperclass();
+    }
+    paramClass = new JsonORM.ColumnInfo[localArrayList.size()];
+    localArrayList.toArray(paramClass);
+    return paramClass;
   }
 }
 

@@ -16,76 +16,40 @@ import mqq.os.MqqHandler;
 public class AutoReplyManagerImpl
   implements IAutoReplyManager
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<AutoReplyText> jdField_a_of_type_JavaUtilList;
+  private AppInterface a;
+  private EntityManager b;
+  private Object c = new Object();
+  private List<AutoReplyText> d;
   
   public AutoReplyManagerImpl(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    b();
+    this.a = paramAppInterface;
+    this.b = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    d();
   }
   
-  private void b()
+  private void d()
   {
     ThreadManager.getFileThreadHandler().post(new AutoReplyManagerImpl.1(this));
   }
   
-  public AutoReplyText a()
-  {
-    List localList = a();
-    Iterator localIterator = localList.iterator();
-    Object localObject1 = null;
-    while (localIterator.hasNext())
-    {
-      localObject2 = (AutoReplyText)localIterator.next();
-      if (((AutoReplyText)localObject2).isChecked()) {
-        localObject1 = localObject2;
-      }
-    }
-    Object localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = (AutoReplyText)localList.get(0);
-      QLog.d("AutoReplyManager", 1, "getCurrentAutoReplyText is null, default check index 0");
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getCurrentAutoReplyText: ");
-      ((StringBuilder)localObject1).append(localObject2);
-      QLog.d("AutoReplyManager", 2, ((StringBuilder)localObject1).toString());
-    }
-    return localObject2;
-  }
-  
   public List<AutoReplyText> a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.d;
     if ((localObject != null) && (((List)localObject).size() > 0)) {
-      return new ArrayList(this.jdField_a_of_type_JavaUtilList);
+      return new ArrayList(this.d);
     }
     localObject = new ArrayList();
-    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131701079), 0));
-    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131701078), 1));
-    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131701076), 2));
-    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131701077), 2147483647));
+    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131899099), 0));
+    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131899098), 1));
+    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131899096), 2));
+    ((List)localObject).add(new AutoReplyText(HardCodeUtil.a(2131899097), 2147483647));
     ((AutoReplyText)((List)localObject).get(0)).mCheckFlag = 1;
     if (QLog.isColorLevel()) {
       QLog.d("AutoReplyManager", 2, "getAutoReplyCache, buffList == null");
     }
-    b();
+    d();
     return localObject;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoReplyManager", 2, "AutoReplyManager onDestroy");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
   
   /* Error */
@@ -100,52 +64,52 @@ public class AutoReplyManagerImpl
     //   7: aconst_null
     //   8: astore 4
     //   10: aload_0
-    //   11: getfield 35	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   14: invokevirtual 169	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   11: getfield 38	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   14: invokevirtual 128	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   17: astore 5
     //   19: aload 5
     //   21: astore 4
     //   23: aload 5
     //   25: astore_3
     //   26: aload 5
-    //   28: invokevirtual 174	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   28: invokevirtual 133	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   31: aload 5
     //   33: astore 4
     //   35: aload 5
     //   37: astore_3
     //   38: aload_0
-    //   39: getfield 35	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   42: ldc 84
-    //   44: invokevirtual 178	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   39: getfield 38	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   42: ldc 79
+    //   44: invokevirtual 137	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
     //   47: pop
     //   48: aload 5
     //   50: astore 4
     //   52: aload 5
     //   54: astore_3
     //   55: aload_1
-    //   56: invokeinterface 72 1 0
+    //   56: invokeinterface 141 1 0
     //   61: astore 6
     //   63: aload 5
     //   65: astore 4
     //   67: aload 5
     //   69: astore_3
     //   70: aload 6
-    //   72: invokeinterface 78 1 0
+    //   72: invokeinterface 146 1 0
     //   77: ifeq +86 -> 163
     //   80: aload 5
     //   82: astore 4
     //   84: aload 5
     //   86: astore_3
     //   87: aload 6
-    //   89: invokeinterface 82 1 0
-    //   94: checkcast 84	com/tencent/mobileqq/data/AutoReplyText
+    //   89: invokeinterface 150 1 0
+    //   94: checkcast 79	com/tencent/mobileqq/data/AutoReplyText
     //   97: astore 7
     //   99: aload 5
     //   101: astore 4
     //   103: aload 5
     //   105: astore_3
     //   106: aload 7
-    //   108: invokevirtual 181	com/tencent/mobileqq/data/AutoReplyText:getTextId	()I
+    //   108: invokevirtual 153	com/tencent/mobileqq/data/AutoReplyText:getTextId	()I
     //   111: iload_2
     //   112: if_icmpne +19 -> 131
     //   115: aload 5
@@ -154,7 +118,7 @@ public class AutoReplyManagerImpl
     //   121: astore_3
     //   122: aload 7
     //   124: iconst_1
-    //   125: putfield 151	com/tencent/mobileqq/data/AutoReplyText:mCheckFlag	I
+    //   125: putfield 104	com/tencent/mobileqq/data/AutoReplyText:mCheckFlag	I
     //   128: goto +16 -> 144
     //   131: aload 5
     //   133: astore 4
@@ -162,35 +126,35 @@ public class AutoReplyManagerImpl
     //   137: astore_3
     //   138: aload 7
     //   140: iconst_0
-    //   141: putfield 151	com/tencent/mobileqq/data/AutoReplyText:mCheckFlag	I
+    //   141: putfield 104	com/tencent/mobileqq/data/AutoReplyText:mCheckFlag	I
     //   144: aload 5
     //   146: astore 4
     //   148: aload 5
     //   150: astore_3
     //   151: aload_0
-    //   152: getfield 35	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   152: getfield 38	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:b	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   155: aload 7
-    //   157: invokevirtual 185	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   157: invokevirtual 157	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   160: goto -97 -> 63
     //   163: aload 5
     //   165: astore 4
     //   167: aload 5
     //   169: astore_3
     //   170: aload 5
-    //   172: invokevirtual 188	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   172: invokevirtual 160	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   175: aload 5
     //   177: astore 4
     //   179: aload 5
     //   181: astore_3
-    //   182: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   182: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   185: ifeq +36 -> 221
     //   188: aload 5
     //   190: astore 4
     //   192: aload 5
     //   194: astore_3
-    //   195: ldc 93
+    //   195: ldc 112
     //   197: iconst_2
-    //   198: ldc 190
+    //   198: ldc 162
     //   200: iconst_2
     //   201: anewarray 4	java/lang/Object
     //   204: dup
@@ -200,10 +164,10 @@ public class AutoReplyManagerImpl
     //   208: dup
     //   209: iconst_1
     //   210: iload_2
-    //   211: invokestatic 196	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   211: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   214: aastore
-    //   215: invokestatic 202	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   218: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: invokestatic 174	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   218: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   221: aload 5
     //   223: ifnull +44 -> 267
     //   226: aload 5
@@ -215,39 +179,39 @@ public class AutoReplyManagerImpl
     //   238: aload_3
     //   239: astore 4
     //   241: aload 5
-    //   243: invokevirtual 205	java/lang/Exception:printStackTrace	()V
+    //   243: invokevirtual 177	java/lang/Exception:printStackTrace	()V
     //   246: aload_3
     //   247: astore 4
-    //   249: ldc 93
+    //   249: ldc 112
     //   251: iconst_1
-    //   252: ldc 207
+    //   252: ldc 179
     //   254: aload 5
-    //   256: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   256: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   259: aload_3
     //   260: ifnull +7 -> 267
     //   263: aload_3
-    //   264: invokevirtual 213	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   264: invokevirtual 185	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   267: aload_0
-    //   268: getfield 19	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   268: getfield 22	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:c	Ljava/lang/Object;
     //   271: astore_3
     //   272: aload_3
     //   273: monitorenter
     //   274: aload_0
-    //   275: getfield 44	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   275: getfield 45	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:d	Ljava/util/List;
     //   278: ifnonnull +17 -> 295
     //   281: aload_0
-    //   282: new 126	java/util/ArrayList
+    //   282: new 73	java/util/ArrayList
     //   285: dup
-    //   286: invokespecial 130	java/util/ArrayList:<init>	()V
-    //   289: putfield 44	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   286: invokespecial 77	java/util/ArrayList:<init>	()V
+    //   289: putfield 45	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:d	Ljava/util/List;
     //   292: goto +12 -> 304
     //   295: aload_0
-    //   296: getfield 44	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   299: invokeinterface 216 1 0
+    //   296: getfield 45	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:d	Ljava/util/List;
+    //   299: invokeinterface 188 1 0
     //   304: aload_0
-    //   305: getfield 44	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   305: getfield 45	com/tencent/mobileqq/onlinestatus/AutoReplyManagerImpl:d	Ljava/util/List;
     //   308: aload_1
-    //   309: invokeinterface 220 2 0
+    //   309: invokeinterface 192 2 0
     //   314: pop
     //   315: aload_3
     //   316: monitorexit
@@ -260,7 +224,7 @@ public class AutoReplyManagerImpl
     //   323: aload 4
     //   325: ifnull +8 -> 333
     //   328: aload 4
-    //   330: invokevirtual 213	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   330: invokevirtual 185	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   333: goto +5 -> 338
     //   336: aload_1
     //   337: athrow
@@ -311,10 +275,46 @@ public class AutoReplyManagerImpl
     //   304	317	318	finally
     //   319	321	318	finally
   }
+  
+  public AutoReplyText b()
+  {
+    List localList = a();
+    Iterator localIterator = localList.iterator();
+    Object localObject1 = null;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (AutoReplyText)localIterator.next();
+      if (((AutoReplyText)localObject2).isChecked()) {
+        localObject1 = localObject2;
+      }
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = (AutoReplyText)localList.get(0);
+      QLog.d("AutoReplyManager", 1, "getCurrentAutoReplyText is null, default check index 0");
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getCurrentAutoReplyText: ");
+      ((StringBuilder)localObject1).append(localObject2);
+      QLog.d("AutoReplyManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    return localObject2;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoReplyManager", 2, "AutoReplyManager onDestroy");
+    }
+    this.b.close();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class VideoBaseItem$5
   
   public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.a.start();
-    this.a.c = 2;
+    this.a.e.start();
+    this.a.g = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.5
  * JD-Core Version:    0.7.0.1
  */

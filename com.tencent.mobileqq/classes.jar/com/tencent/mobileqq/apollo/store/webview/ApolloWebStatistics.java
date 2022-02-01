@@ -4,9 +4,7 @@ import org.json.JSONObject;
 
 public class ApolloWebStatistics
 {
-  public int a;
   public long a;
-  public JSONObject a = new JSONObject();
   public long b;
   public long c;
   public long d;
@@ -14,12 +12,14 @@ public class ApolloWebStatistics
   public long f;
   public long g;
   public long h;
-  public long i;
+  public int i;
   public long j;
+  public long k;
+  public JSONObject l = new JSONObject();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics
  * JD-Core Version:    0.7.0.1
  */

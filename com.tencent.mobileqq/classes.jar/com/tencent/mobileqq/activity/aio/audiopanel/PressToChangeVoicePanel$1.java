@@ -53,9 +53,9 @@ class PressToChangeVoicePanel$1
       QLog.e("PressToChangeVoicePanel", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    this.a.f();
+    this.a.g();
     return;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    if (this.a.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("changevoice", 2, "recored end callback , pie is null !!");
@@ -66,20 +66,20 @@ class PressToChangeVoicePanel$1
       localObject1 = (HashMap)paramMessage.obj;
       paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
       localObject1 = (RecordParams.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
-      this.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      ((AudioPanelAioHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128)).b(paramMessage, (RecordParams.RecorderParam)localObject1);
-      ((IPttPreSendService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPttPreSendService.class)).doPreSendIfIcan(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, (RecordParams.RecorderParam)localObject1);
-      localObject2 = (ListenChangeVoicePanel)this.a.f.findViewById(2131370157);
-      ((ListenChangeVoicePanel)localObject2).d();
+      this.a.c.setVisibility(8);
+      ((AudioPanelAioHelper)this.a.a.q(128)).b(paramMessage, (RecordParams.RecorderParam)localObject1);
+      ((IPttPreSendService)this.a.b.getRuntimeService(IPttPreSendService.class)).doPreSendIfIcan(this.a.a.ah, (RecordParams.RecorderParam)localObject1);
+      localObject2 = (ListenChangeVoicePanel)this.a.k.findViewById(2131437321);
+      ((ListenChangeVoicePanel)localObject2).e();
       ((ListenChangeVoicePanel)localObject2).setVisibility(0);
-      ((ListenChangeVoicePanel)localObject2).setAudioPath(paramMessage, this.a.jdField_a_of_type_Double, (RecordParams.RecorderParam)localObject1);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(4);
+      ((ListenChangeVoicePanel)localObject2).setAudioPath(paramMessage, this.a.n, (RecordParams.RecorderParam)localObject1);
+      this.a.d.setStatus(4);
       this.a.setVisibility(8);
       this.a.setClickable(true);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof PublicAccountChatPie)) {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005850", "0X8005850", 0, 0, "", "", Double.toString(this.a.jdField_a_of_type_Double), "", false);
+      if ((this.a.a instanceof PublicAccountChatPie)) {
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.a.b, "P_CliOper", "Pb_account_lifeservice", "", "0X8005850", "0X8005850", 0, 0, "", "", Double.toString(this.a.n), "", false);
       }
-      paramMessage = (ViewGroup)((ListenChangeVoicePanel)localObject2).findViewById(2131364453);
+      paramMessage = (ViewGroup)((ListenChangeVoicePanel)localObject2).findViewById(2131430490);
       if (VersionUtils.e())
       {
         localObject1 = ObjectAnimator.ofFloat(paramMessage, "scaleX", new float[] { 0.4F, 1.0F });
@@ -94,16 +94,16 @@ class PressToChangeVoicePanel$1
       }
       paramMessage.setVisibility(0);
       return;
-      ((AudioPanelAioHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128)).a((String)paramMessage.obj, null);
-      this.a.f();
+      ((AudioPanelAioHelper)this.a.a.q(128)).a((String)paramMessage.obj, null);
+      this.a.g();
       return;
       localObject1 = (HashMap)paramMessage.obj;
       paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
       localObject1 = (RecordParams.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
-      this.a.f();
-      ((AudioPanelAioHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128)).a(paramMessage, (RecordParams.RecorderParam)localObject1);
+      this.a.g();
+      ((AudioPanelAioHelper)this.a.a.q(128)).a(paramMessage, (RecordParams.RecorderParam)localObject1);
       return;
-      this.a.d();
+      this.a.e();
       return;
       this.a.a();
       return;
@@ -113,7 +113,7 @@ class PressToChangeVoicePanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel.1
  * JD-Core Version:    0.7.0.1
  */

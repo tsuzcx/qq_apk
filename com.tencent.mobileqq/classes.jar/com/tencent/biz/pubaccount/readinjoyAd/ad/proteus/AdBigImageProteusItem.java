@@ -28,7 +28,7 @@ public class AdBigImageProteusItem
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
     paramContainer = paramContainer.getVirtualView();
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.a())))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyModel.k())))
     {
       paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
       if ((paramContainer instanceof ReadInjoyDoubleImageView)) {
@@ -44,7 +44,7 @@ public class AdBigImageProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdBigImageProteusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -61,78 +61,30 @@ import mqq.os.MqqHandler;
 public class MultiRichMediaSaveManager
   implements Handler.Callback, Manager
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
   protected IAIOImageProviderCallBack a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QFileMultiControlManager jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager;
-  private ISaveCallBack jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
-  private ConcurrentHashMap<String, FileSaveResult> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = false;
+  private QQAppInterface b;
+  private ConcurrentHashMap<String, FileSaveResult> c = new ConcurrentHashMap();
+  private ISaveCallBack d;
+  private boolean e = false;
+  private boolean f = false;
+  private boolean g = false;
+  private long h = 0L;
+  private QFileMultiControlManager i;
+  private Handler j;
   
   public MultiRichMediaSaveManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  }
-  
-  private long a()
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-    {
-      this.jdField_a_of_type_Long = 0L;
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)((Iterator)localObject).next()).getValue();
-        if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null)) {
-          switch (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_Int)
-          {
-          default: 
-            break;
-          case 4: 
-          case 5: 
-          case 6: 
-          case 7: 
-            if (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null) {
-              this.jdField_a_of_type_Long += localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
-            }
-            break;
-          case 2: 
-          case 3: 
-            if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null)) {
-              this.jdField_a_of_type_Long += localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
-            }
-            break;
-          case 1: 
-            if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)) {
-              this.jdField_a_of_type_Long += localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.size;
-            }
-            break;
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getTotalFileLength totalFileLength = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-      QLog.i("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
-    }
-    return this.jdField_a_of_type_Long;
+    this.b = paramQQAppInterface;
+    this.j = new Handler(Looper.getMainLooper(), this);
   }
   
   private void a(int paramInt, FileSaveReq paramFileSaveReq)
   {
     FileSaveResult localFileSaveResult = new FileSaveResult();
-    localFileSaveResult.jdField_a_of_type_Int = -1;
-    localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = paramFileSaveReq;
-    localFileSaveResult.b = paramInt;
-    localFileSaveResult.jdField_a_of_type_JavaLangString = FileSaveErrorInfo.a(paramInt);
+    localFileSaveResult.b = -1;
+    localFileSaveResult.g = paramFileSaveReq;
+    localFileSaveResult.c = paramInt;
+    localFileSaveResult.d = FileSaveErrorInfo.a(paramInt);
     b(localFileSaveResult);
   }
   
@@ -160,20 +112,20 @@ public class MultiRichMediaSaveManager
   private void a(QFileMultiSaveReq paramQFileMultiSaveReq)
   {
     if (paramQFileMultiSaveReq != null) {
-      paramQFileMultiSaveReq.a(paramQFileMultiSaveReq.b(), new MultiRichMediaSaveManager.10(this, paramQFileMultiSaveReq));
+      paramQFileMultiSaveReq.a(paramQFileMultiSaveReq.d(), new MultiRichMediaSaveManager.10(this, paramQFileMultiSaveReq));
     }
   }
   
   private void a(FileSaveReq paramFileSaveReq, int paramInt)
   {
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.b != null))
     {
-      paramFileSaveReq = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
+      paramFileSaveReq = a(paramFileSaveReq.b.f);
       FileSaveResult localFileSaveResult = a(paramFileSaveReq);
-      if ((localFileSaveResult != null) && (!localFileSaveResult.jdField_a_of_type_Boolean))
+      if ((localFileSaveResult != null) && (!localFileSaveResult.a))
       {
         paramInt /= 100;
-        localFileSaveResult.c = paramInt;
+        localFileSaveResult.e = paramInt;
         a(paramFileSaveReq, localFileSaveResult);
         c(localFileSaveResult, paramInt);
       }
@@ -182,33 +134,33 @@ public class MultiRichMediaSaveManager
   
   private void a(FileSaveReq paramFileSaveReq, boolean paramBoolean)
   {
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.d != null))
     {
-      Object localObject2 = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
+      Object localObject2 = paramFileSaveReq.d.b();
       Object localObject1 = a((String)localObject2);
-      if ((localObject1 != null) && (!((FileSaveResult)localObject1).jdField_a_of_type_Boolean))
+      if ((localObject1 != null) && (!((FileSaveResult)localObject1).a))
       {
-        ((FileSaveResult)localObject1).jdField_a_of_type_Boolean = true;
-        ((FileSaveResult)localObject1).c = 100;
+        ((FileSaveResult)localObject1).a = true;
+        ((FileSaveResult)localObject1).e = 100;
         a((String)localObject2, (FileSaveResult)localObject1);
         if (paramBoolean)
         {
-          switch (paramFileSaveReq.jdField_a_of_type_Int)
+          switch (paramFileSaveReq.a)
           {
           default: 
             return;
           case 5: 
           case 7: 
           case 9: 
-            a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq);
+            a(paramFileSaveReq.d);
             return;
           }
-          paramFileSaveReq = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.b();
+          paramFileSaveReq = paramFileSaveReq.d.d();
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramFileSaveReq);
           ((StringBuilder)localObject2).append(NetConnInfoCenter.getServerTime());
           localObject2 = Utils.Crc64String(((StringBuilder)localObject2).toString());
-          ((FileSaveResult)localObject1).jdField_a_of_type_Int = 0;
+          ((FileSaveResult)localObject1).b = 0;
           a(paramFileSaveReq, (String)localObject2, (FileSaveResult)localObject1);
           return;
         }
@@ -216,10 +168,10 @@ public class MultiRichMediaSaveManager
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("dealFileMultilDownloadComplete errorType= ");
-          ((StringBuilder)localObject2).append(paramFileSaveReq.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(paramFileSaveReq.a);
           QLog.d("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject2).toString());
         }
-        ((FileSaveResult)localObject1).jdField_a_of_type_Int = -1;
+        ((FileSaveResult)localObject1).b = -1;
         b((FileSaveResult)localObject1);
         return;
       }
@@ -227,7 +179,7 @@ public class MultiRichMediaSaveManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("dealFileMultilDownloadComplete fileType= ");
-        ((StringBuilder)localObject1).append(paramFileSaveReq.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(paramFileSaveReq.a);
         QLog.d("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject1).toString());
       }
     }
@@ -235,37 +187,37 @@ public class MultiRichMediaSaveManager
   
   private void a(FileSaveResult paramFileSaveResult, long paramLong)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
+    Message localMessage = this.j.obtainMessage(4);
     localMessage.obj = paramFileSaveResult;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramLong);
+    this.j.sendMessageDelayed(localMessage, paramLong);
   }
   
   private void a(String paramString1, String paramString2, FileSaveResult paramFileSaveResult)
   {
-    int i;
+    int k;
     if (TextUtils.isEmpty(paramString1)) {
-      i = 10001;
+      k = 10001;
     } else if (TextUtils.isEmpty(paramString2)) {
-      i = 10002;
+      k = 10002;
     } else if (!FileUtils.fileExists(paramString1)) {
-      i = 10003;
+      k = 10003;
     } else {
-      i = 0;
+      k = 0;
     }
-    if (i != 0)
+    if (k != 0)
     {
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
         paramString1.append("savePictureFile fail, errorCode = ");
-        paramString1.append(i);
+        paramString1.append(k);
         QLog.e("MultiRichMediaSaveManager", 2, paramString1.toString());
       }
-      if ((paramFileSaveResult != null) && (paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null))
+      if ((paramFileSaveResult != null) && (paramFileSaveResult.g != null))
       {
-        paramFileSaveResult.jdField_a_of_type_Int = -1;
-        paramFileSaveResult.b = i;
-        paramFileSaveResult.jdField_a_of_type_JavaLangString = FileSaveErrorInfo.a(i);
+        paramFileSaveResult.b = -1;
+        paramFileSaveResult.c = k;
+        paramFileSaveResult.d = FileSaveErrorInfo.a(k);
         b(paramFileSaveResult);
       }
       return;
@@ -282,89 +234,32 @@ public class MultiRichMediaSaveManager
       str = localStringBuilder.toString();
     }
     paramString2 = new File(AppConstants.SDCARD_IMG_SAVE, str);
-    ThreadManager.getFileThreadHandler().post(new FileSaveRunnable(new File(paramString1), paramString2, this.jdField_a_of_type_AndroidOsHandler, paramFileSaveResult, false));
-  }
-  
-  private void a(List<FileSaveReq> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a((FileSaveReq)paramList.next());
-    }
-  }
-  
-  private boolean a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
-        if ((localFileSaveResult == null) || (!localFileSaveResult.jdField_a_of_type_Boolean)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  
-  private void b(FileSaveReq paramFileSaveReq)
-  {
-    if (paramFileSaveReq != null)
-    {
-      switch (paramFileSaveReq.jdField_a_of_type_Int)
-      {
-      default: 
-        break;
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null) {
-          paramFileSaveReq = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
-        }
-        break;
-      case 2: 
-      case 3: 
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) {
-          paramFileSaveReq = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo);
-        }
-        break;
-      case 1: 
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) {
-          paramFileSaveReq = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
-        }
-        break;
-      }
-      paramFileSaveReq = "";
-      a(paramFileSaveReq);
-    }
+    ThreadManager.getFileThreadHandler().post(new FileSaveRunnable(new File(paramString1), paramString2, this.j, paramFileSaveResult, false));
   }
   
   private void b(FileSaveReq paramFileSaveReq, int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.b != null) && (paramFileSaveReq.b.f != null))
     {
-      String str = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
+      String str = a(paramFileSaveReq.b.f);
       FileSaveResult localFileSaveResult = a(str);
-      if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null) && (!localFileSaveResult.jdField_a_of_type_Boolean))
+      if ((localFileSaveResult != null) && (localFileSaveResult.g != null) && (!localFileSaveResult.a))
       {
-        localFileSaveResult.jdField_a_of_type_Boolean = true;
-        localFileSaveResult.jdField_a_of_type_Int = paramInt1;
-        localFileSaveResult.c = 100;
+        localFileSaveResult.a = true;
+        localFileSaveResult.b = paramInt1;
+        localFileSaveResult.e = 100;
         a(str, localFileSaveResult);
         if (paramInt1 == 0)
         {
-          paramFileSaveReq = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.c();
+          paramFileSaveReq = paramFileSaveReq.b.f.f();
           paramString = new StringBuilder();
           paramString.append(paramFileSaveReq);
           paramString.append(NetConnInfoCenter.getServerTime());
           a(paramFileSaveReq, Utils.Crc64String(paramString.toString()), localFileSaveResult);
           return;
         }
-        localFileSaveResult.b = paramInt2;
-        localFileSaveResult.jdField_a_of_type_JavaLangString = paramString;
+        localFileSaveResult.c = paramInt2;
+        localFileSaveResult.d = paramString;
         if (QLog.isColorLevel())
         {
           paramFileSaveReq = new StringBuilder();
@@ -381,45 +276,45 @@ public class MultiRichMediaSaveManager
   
   private void b(FileSaveResult paramFileSaveResult)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+    Message localMessage = this.j.obtainMessage(2);
     localMessage.obj = paramFileSaveResult;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.j.sendMessage(localMessage);
   }
   
   private void b(FileSaveResult paramFileSaveResult, int paramInt)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+    Message localMessage = this.j.obtainMessage(6);
     localMessage.obj = paramFileSaveResult;
     localMessage.arg1 = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.j.sendMessage(localMessage);
   }
   
   private void b(String paramString1, String paramString2, FileSaveResult paramFileSaveResult)
   {
-    int i;
+    int k;
     if (TextUtils.isEmpty(paramString1)) {
-      i = 10001;
+      k = 10001;
     } else if (TextUtils.isEmpty(paramString2)) {
-      i = 10002;
+      k = 10002;
     } else if (!FileUtils.fileExists(paramString1)) {
-      i = 10003;
+      k = 10003;
     } else {
-      i = 0;
+      k = 0;
     }
-    if (i != 0)
+    if (k != 0)
     {
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
         paramString1.append("saveShortVideoFile fail, errorCode = ");
-        paramString1.append(i);
+        paramString1.append(k);
         QLog.e("MultiRichMediaSaveManager", 2, paramString1.toString());
       }
-      if ((paramFileSaveResult != null) && (paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null))
+      if ((paramFileSaveResult != null) && (paramFileSaveResult.g != null))
       {
-        paramFileSaveResult.jdField_a_of_type_Int = -1;
-        paramFileSaveResult.b = i;
-        paramFileSaveResult.jdField_a_of_type_JavaLangString = FileSaveErrorInfo.a(i);
+        paramFileSaveResult.b = -1;
+        paramFileSaveResult.c = k;
+        paramFileSaveResult.d = FileSaveErrorInfo.a(k);
         b(paramFileSaveResult);
       }
       return;
@@ -432,26 +327,189 @@ public class MultiRichMediaSaveManager
     }
     localFile.mkdirs();
     paramString2 = new File(localFile, ShortVideoUtils.getShortVideoSaveFileName(paramString2));
-    ThreadManager.getFileThreadHandler().post(new FileSaveRunnable(new File(paramString1), paramString2, this.jdField_a_of_type_AndroidOsHandler, paramFileSaveResult, false));
+    ThreadManager.getFileThreadHandler().post(new FileSaveRunnable(new File(paramString1), paramString2, this.j, paramFileSaveResult, false));
   }
   
-  private boolean b()
+  private void b(List<FileSaveReq> paramList)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      b((FileSaveReq)paramList.next());
+    }
+  }
+  
+  private void c(FileSaveReq paramFileSaveReq)
+  {
+    if (paramFileSaveReq != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      switch (paramFileSaveReq.a)
       {
-        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
-        if ((localFileSaveResult != null) && (localFileSaveResult.d == 1) && (!localFileSaveResult.jdField_a_of_type_Boolean)) {
-          return true;
+      default: 
+        break;
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+        if (paramFileSaveReq.d != null) {
+          paramFileSaveReq = paramFileSaveReq.d.b();
+        }
+        break;
+      case 2: 
+      case 3: 
+        if (paramFileSaveReq.c != null) {
+          paramFileSaveReq = a(paramFileSaveReq.c.e);
+        }
+        break;
+      case 1: 
+        if (paramFileSaveReq.b != null) {
+          paramFileSaveReq = a(paramFileSaveReq.b.f);
+        }
+        break;
+      }
+      paramFileSaveReq = "";
+      b(paramFileSaveReq);
+    }
+  }
+  
+  private void c(FileSaveResult paramFileSaveResult)
+  {
+    if (paramFileSaveResult != null)
+    {
+      HashMap localHashMap = new HashMap();
+      if (paramFileSaveResult.f == 1) {
+        localHashMap.put("isMultiSave", "1");
+      } else {
+        localHashMap.put("isMultiSave", "0");
+      }
+      if (paramFileSaveResult.b == 0)
+      {
+        localHashMap.put("isSuccess", "0");
+      }
+      else
+      {
+        localHashMap.put("isSuccess", "1");
+        localHashMap.put("errorCode", String.valueOf(paramFileSaveResult.c));
+        localHashMap.put("isSuccess", paramFileSaveResult.d);
+      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "MultiRichMediaFileSave", true, 0L, 0L, localHashMap, "");
+    }
+  }
+  
+  private void c(FileSaveResult paramFileSaveResult, int paramInt)
+  {
+    if (paramFileSaveResult != null)
+    {
+      paramFileSaveResult.e = paramInt;
+      d(paramFileSaveResult, paramInt);
+    }
+  }
+  
+  private void d(FileSaveResult paramFileSaveResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "notifySingleComplete");
+    }
+    if (paramFileSaveResult != null)
+    {
+      a(paramFileSaveResult);
+      if (paramFileSaveResult.h != null)
+      {
+        IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a;
+        if (localIAIOImageProviderCallBack != null) {
+          localIAIOImageProviderCallBack.a(paramFileSaveResult.h.a, paramFileSaveResult.h.b, paramFileSaveResult.h.c, paramFileSaveResult.h.d, paramFileSaveResult.h.e, paramFileSaveResult.h.f);
         }
       }
     }
-    return false;
   }
   
-  private boolean b(FileSaveReq paramFileSaveReq)
+  private void d(FileSaveResult paramFileSaveResult, int paramInt)
+  {
+    Object localObject = this.c.entrySet().iterator();
+    long l1 = 0L;
+    while (((Iterator)localObject).hasNext())
+    {
+      FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if ((localFileSaveResult != null) && (localFileSaveResult.g != null))
+      {
+        label155:
+        float f1;
+        float f2;
+        switch (localFileSaveResult.g.a)
+        {
+        default: 
+          break;
+        case 4: 
+        case 5: 
+        case 6: 
+        case 7: 
+        case 8: 
+        case 9: 
+          if (localFileSaveResult.g.d != null) {
+            if (localFileSaveResult.a)
+            {
+              l2 = localFileSaveResult.g.d.a();
+              l1 += l2;
+            }
+            else
+            {
+              f1 = (float)l1;
+              f2 = (float)localFileSaveResult.g.d.a();
+              paramInt = localFileSaveResult.e;
+            }
+          }
+          break;
+        case 2: 
+        case 3: 
+        case 1: 
+          for (;;)
+          {
+            l1 = (f1 + f2 * (paramInt / 100.0F));
+            break;
+            if ((localFileSaveResult.g.c == null) || (localFileSaveResult.g.c.j == null)) {
+              break;
+            }
+            if (localFileSaveResult.a)
+            {
+              l2 = localFileSaveResult.g.c.j.videoFileSize;
+              break label155;
+            }
+            f1 = (float)l1;
+            f2 = localFileSaveResult.g.c.j.videoFileSize;
+            paramInt = localFileSaveResult.e;
+            continue;
+            if ((localFileSaveResult.g.b == null) || (localFileSaveResult.g.b.l == null)) {
+              break;
+            }
+            if (localFileSaveResult.a)
+            {
+              l2 = localFileSaveResult.g.b.l.size;
+              break label155;
+            }
+            f1 = (float)l1;
+            f2 = (float)localFileSaveResult.g.b.l.size;
+            paramInt = localFileSaveResult.e;
+          }
+        }
+      }
+    }
+    long l2 = this.h;
+    if (l2 > 0L) {
+      paramInt = (int)(l1 * 100L / l2);
+    } else {
+      paramInt = 0;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("calculateWholeProgress totalProgress = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
+    }
+    paramFileSaveResult.f = 0;
+    b(paramFileSaveResult, paramInt);
+  }
+  
+  private boolean d(FileSaveReq paramFileSaveReq)
   {
     boolean bool2 = false;
     boolean bool3 = false;
@@ -464,7 +522,7 @@ public class MultiRichMediaSaveManager
     }
     boolean bool1 = bool2;
     Object localObject;
-    switch (paramFileSaveReq.jdField_a_of_type_Int)
+    switch (paramFileSaveReq.a)
     {
     default: 
       return false;
@@ -475,27 +533,27 @@ public class MultiRichMediaSaveManager
     case 8: 
     case 9: 
       bool1 = bool2;
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null)
+      if (paramFileSaveReq.d != null)
       {
-        bool2 = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.b();
+        bool2 = paramFileSaveReq.d.f();
         bool1 = bool2;
         if (bool2)
         {
-          paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a(new MultiRichMediaSaveManager.5(this, paramFileSaveReq));
-          localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager;
+          paramFileSaveReq.d.a(new MultiRichMediaSaveManager.5(this, paramFileSaveReq));
+          localObject = this.i;
           bool1 = bool2;
           if (localObject != null)
           {
-            ((QFileMultiControlManager)localObject).a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
+            ((QFileMultiControlManager)localObject).a(paramFileSaveReq.d.c());
             return bool2;
           }
         }
       }
       break;
     case 2: 
-      if ((paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo != null))
+      if ((paramFileSaveReq.c != null) && (paramFileSaveReq.c.e != null))
       {
-        localObject = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.c, paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Long);
+        localObject = ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).findProcessor(paramFileSaveReq.c.e.e, paramFileSaveReq.c.e.g);
         bool1 = bool2;
         if (localObject != null)
         {
@@ -503,7 +561,7 @@ public class MultiRichMediaSaveManager
           if ((localObject instanceof BaseDownloadProcessor))
           {
             localObject = (BaseDownloadProcessor)localObject;
-            if ((((BaseDownloadProcessor)localObject).mUiRequest != null) && ((((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 7) || (((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 16) || (((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 18)))
+            if ((((BaseDownloadProcessor)localObject).mUiRequest != null) && ((((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 7) || (((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 16) || (((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 18) || (((BaseDownloadProcessor)localObject).mUiRequest.mFileType == 68)))
             {
               ((BaseDownloadProcessor)localObject).cancel();
               return false;
@@ -525,12 +583,12 @@ public class MultiRichMediaSaveManager
       }
       break;
     case 1: 
-      if ((paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null))
+      if ((paramFileSaveReq.b != null) && (paramFileSaveReq.b.f != null) && (paramFileSaveReq.b.l != null))
       {
-        if ((paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.fileSizeFlag == 1)) {
+        if ((paramFileSaveReq.b.l != null) && (paramFileSaveReq.b.l.fileSizeFlag == 1)) {
           return false;
         }
-        localObject = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.md5, paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uuid, 1));
+        localObject = ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(paramFileSaveReq.b.l.md5, paramFileSaveReq.b.l.uuid, 1));
         bool2 = bool3;
         if (localObject != null)
         {
@@ -564,7 +622,7 @@ public class MultiRichMediaSaveManager
     return bool1;
   }
   
-  private void c(FileSaveReq paramFileSaveReq)
+  private void e(FileSaveReq paramFileSaveReq)
   {
     if (paramFileSaveReq == null)
     {
@@ -579,11 +637,11 @@ public class MultiRichMediaSaveManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("downloadFile fileType = ");
-      ((StringBuilder)localObject).append(paramFileSaveReq.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramFileSaveReq.a);
       QLog.i("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
     }
     StringBuilder localStringBuilder;
-    switch (paramFileSaveReq.jdField_a_of_type_Int)
+    switch (paramFileSaveReq.a)
     {
     default: 
       return;
@@ -593,9 +651,9 @@ public class MultiRichMediaSaveManager
     case 7: 
     case 8: 
     case 9: 
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null)
+      if (paramFileSaveReq.d != null)
       {
-        localObject = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
+        localObject = paramFileSaveReq.d.b();
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -603,20 +661,20 @@ public class MultiRichMediaSaveManager
           localStringBuilder.append((String)localObject);
           QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
         }
-        paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a(new MultiRichMediaSaveManager.9(this, (String)localObject, paramFileSaveReq));
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager;
+        paramFileSaveReq.d.a(new MultiRichMediaSaveManager.9(this, (String)localObject, paramFileSaveReq));
+        localObject = this.i;
         if (localObject != null) {
-          ((QFileMultiControlManager)localObject).a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
+          ((QFileMultiControlManager)localObject).a(paramFileSaveReq.d.c());
         }
-        paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
+        paramFileSaveReq.d.g();
         return;
       }
       a(10007, paramFileSaveReq);
       return;
     case 3: 
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null)
+      if (paramFileSaveReq.c != null)
       {
-        localObject = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo);
+        localObject = a(paramFileSaveReq.c.e);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -624,17 +682,17 @@ public class MultiRichMediaSaveManager
           localStringBuilder.append((String)localObject);
           QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
         }
-        paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Boolean = true;
-        paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback = new MultiRichMediaSaveManager.8(this, paramFileSaveReq, (String)localObject);
-        ((ShortVideoPreDownloaderWithSdkSupport)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).a(paramFileSaveReq);
+        paramFileSaveReq.c.n = true;
+        paramFileSaveReq.c.o = new MultiRichMediaSaveManager.8(this, paramFileSaveReq, (String)localObject);
+        ((ShortVideoPreDownloaderWithSdkSupport)this.b.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).a(paramFileSaveReq);
         return;
       }
       a(10007, paramFileSaveReq);
       return;
     case 2: 
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null)
+      if (paramFileSaveReq.c != null)
       {
-        localObject = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo);
+        localObject = a(paramFileSaveReq.c.e);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -642,16 +700,16 @@ public class MultiRichMediaSaveManager
           localStringBuilder.append((String)localObject);
           QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
         }
-        paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a(new MultiRichMediaSaveManager.7(this, (String)localObject, paramFileSaveReq));
-        ShortVideoBusiManager.a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramFileSaveReq.c.a(new MultiRichMediaSaveManager.7(this, (String)localObject, paramFileSaveReq));
+        ShortVideoBusiManager.a(paramFileSaveReq.c, this.b);
         return;
       }
       a(10007, paramFileSaveReq);
       return;
     }
-    if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null)
+    if (paramFileSaveReq.b != null)
     {
-      localObject = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
+      localObject = a(paramFileSaveReq.b.f);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -659,51 +717,41 @@ public class MultiRichMediaSaveManager
         localStringBuilder.append((String)localObject);
         QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
       }
-      paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.a(new MultiRichMediaSaveManager.6(this, (String)localObject, paramFileSaveReq));
-      ((IPicBus)QRoute.api(IPicBus.class)).launch(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+      paramFileSaveReq.b.a(new MultiRichMediaSaveManager.6(this, (String)localObject, paramFileSaveReq));
+      ((IPicBus)QRoute.api(IPicBus.class)).launch(paramFileSaveReq.b);
       return;
     }
     a(10007, paramFileSaveReq);
   }
   
-  private void c(FileSaveResult paramFileSaveResult)
+  private void e(FileSaveResult paramFileSaveResult)
   {
-    if (paramFileSaveResult != null)
-    {
-      HashMap localHashMap = new HashMap();
-      if (paramFileSaveResult.d == 1) {
-        localHashMap.put("isMultiSave", "1");
-      } else {
-        localHashMap.put("isMultiSave", "0");
-      }
-      if (paramFileSaveResult.jdField_a_of_type_Int == 0)
-      {
-        localHashMap.put("isSuccess", "0");
-      }
-      else
-      {
-        localHashMap.put("isSuccess", "1");
-        localHashMap.put("errorCode", String.valueOf(paramFileSaveResult.b));
-        localHashMap.put("isSuccess", paramFileSaveResult.jdField_a_of_type_JavaLangString);
-      }
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "MultiRichMediaFileSave", true, 0L, 0L, localHashMap, "");
-    }
+    Message localMessage = this.j.obtainMessage(5);
+    localMessage.obj = paramFileSaveResult;
+    this.j.sendMessage(localMessage);
   }
   
-  private void c(FileSaveResult paramFileSaveResult, int paramInt)
+  private boolean e()
   {
-    if (paramFileSaveResult != null)
+    if (!this.c.isEmpty())
     {
-      paramFileSaveResult.c = paramInt;
-      d(paramFileSaveResult, paramInt);
+      Iterator localIterator = this.c.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
+        if ((localFileSaveResult == null) || (!localFileSaveResult.a)) {
+          return false;
+        }
+      }
     }
+    return true;
   }
   
-  private void d(FileSaveReq paramFileSaveReq)
+  private void f(FileSaveReq paramFileSaveReq)
   {
     if (paramFileSaveReq != null)
     {
-      switch (paramFileSaveReq.jdField_a_of_type_Int)
+      switch (paramFileSaveReq.a)
       {
       default: 
         return;
@@ -724,201 +772,153 @@ public class MultiRichMediaSaveManager
     }
   }
   
-  private void d(FileSaveResult paramFileSaveResult)
+  private boolean f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "notifySingleComplete");
-    }
-    if (paramFileSaveResult != null)
+    if (!this.c.isEmpty())
     {
-      a(paramFileSaveResult);
-      if (paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo != null)
+      Iterator localIterator = this.c.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-        if (localIAIOImageProviderCallBack != null) {
-          localIAIOImageProviderCallBack.a(paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.jdField_a_of_type_Long, paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.jdField_a_of_type_Int, paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.b, paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.c, paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.jdField_a_of_type_JavaLangString, paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSavePeakDownloadCallBackInfo.jdField_a_of_type_Boolean);
+        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
+        if ((localFileSaveResult != null) && (localFileSaveResult.f == 1) && (!localFileSaveResult.a)) {
+          return true;
         }
       }
     }
+    return false;
   }
   
-  private void d(FileSaveResult paramFileSaveResult, int paramInt)
+  private long g()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    long l1 = 0L;
-    while (((Iterator)localObject).hasNext())
+    Object localObject;
+    if (!this.c.isEmpty())
     {
-      FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)((Iterator)localObject).next()).getValue();
-      if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null))
+      this.h = 0L;
+      localObject = this.c.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        label155:
-        float f1;
-        float f2;
-        switch (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_Int)
-        {
-        default: 
-          break;
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 9: 
-          if (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null) {
-            if (localFileSaveResult.jdField_a_of_type_Boolean)
-            {
-              l2 = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
-              l1 += l2;
-            }
-            else
-            {
-              f1 = (float)l1;
-              f2 = (float)localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
-              paramInt = localFileSaveResult.c;
-            }
-          }
-          break;
-        case 2: 
-        case 3: 
-        case 1: 
-          for (;;)
+        FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if ((localFileSaveResult != null) && (localFileSaveResult.g != null)) {
+          switch (localFileSaveResult.g.a)
           {
-            l1 = (f1 + f2 * (paramInt / 100.0F));
+          default: 
             break;
-            if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq == null) || (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)) {
-              break;
+          case 4: 
+          case 5: 
+          case 6: 
+          case 7: 
+            if (localFileSaveResult.g.d != null) {
+              this.h += localFileSaveResult.g.d.a();
             }
-            if (localFileSaveResult.jdField_a_of_type_Boolean)
-            {
-              l2 = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
-              break label155;
+            break;
+          case 2: 
+          case 3: 
+            if ((localFileSaveResult.g.c != null) && (localFileSaveResult.g.c.j != null)) {
+              this.h += localFileSaveResult.g.c.j.videoFileSize;
             }
-            f1 = (float)l1;
-            f2 = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
-            paramInt = localFileSaveResult.c;
-            continue;
-            if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq == null) || (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)) {
-              break;
+            break;
+          case 1: 
+            if ((localFileSaveResult.g.b != null) && (localFileSaveResult.g.b.l != null)) {
+              this.h += localFileSaveResult.g.b.l.size;
             }
-            if (localFileSaveResult.jdField_a_of_type_Boolean)
-            {
-              l2 = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.size;
-              break label155;
-            }
-            f1 = (float)l1;
-            f2 = (float)localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.size;
-            paramInt = localFileSaveResult.c;
+            break;
           }
         }
       }
-    }
-    long l2 = this.jdField_a_of_type_Long;
-    if (l2 > 0L) {
-      paramInt = (int)(l1 * 100L / l2);
-    } else {
-      paramInt = 0;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("calculateWholeProgress totalProgress = ");
-      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("getTotalFileLength totalFileLength = ");
+      ((StringBuilder)localObject).append(this.h);
       QLog.i("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
     }
-    paramFileSaveResult.d = 0;
-    b(paramFileSaveResult, paramInt);
+    return this.h;
   }
   
-  private void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "saveBegin");
-    }
-    this.c = true;
-    this.jdField_a_of_type_Long = a();
-    ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
-    if (localISaveCallBack != null) {
-      localISaveCallBack.a();
-    }
-  }
-  
-  private void e(FileSaveReq paramFileSaveReq)
+  private void g(FileSaveReq paramFileSaveReq)
   {
     if (paramFileSaveReq != null)
     {
-      paramFileSaveReq = paramFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      paramFileSaveReq = paramFileSaveReq.e.iterator();
       while (paramFileSaveReq.hasNext()) {
         ((ISingleFileSaveCallBack)paramFileSaveReq.next()).a();
       }
     }
   }
   
-  private void e(FileSaveResult paramFileSaveResult)
-  {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-    localMessage.obj = paramFileSaveResult;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  private void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "saveCancel");
-    }
-    ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
-    if (localISaveCallBack != null) {
-      localISaveCallBack.b();
-    }
-    this.c = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "saveTips");
-    }
-    ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
-    if (localISaveCallBack != null) {
-      localISaveCallBack.c();
-    }
-  }
-  
   private void h()
   {
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator1.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator1.next();
-      FileSaveResult localFileSaveResult = (FileSaveResult)localEntry.getValue();
-      if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null) && (localFileSaveResult.d == 1))
-      {
-        Iterator localIterator2 = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        while (localIterator2.hasNext()) {
-          ((ISingleFileSaveCallBack)localIterator2.next()).a();
-        }
-        localFileSaveResult.d = 0;
-        a((String)localEntry.getKey(), localFileSaveResult);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "saveBegin");
+    }
+    this.g = true;
+    this.h = g();
+    ISaveCallBack localISaveCallBack = this.d;
+    if (localISaveCallBack != null) {
+      localISaveCallBack.a();
     }
   }
   
   private void i()
   {
     if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "saveCancel");
+    }
+    ISaveCallBack localISaveCallBack = this.d;
+    if (localISaveCallBack != null) {
+      localISaveCallBack.b();
+    }
+    this.g = false;
+    this.h = 0L;
+  }
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "saveTips");
+    }
+    ISaveCallBack localISaveCallBack = this.d;
+    if (localISaveCallBack != null) {
+      localISaveCallBack.c();
+    }
+  }
+  
+  private void k()
+  {
+    Iterator localIterator1 = this.c.entrySet().iterator();
+    while (localIterator1.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator1.next();
+      FileSaveResult localFileSaveResult = (FileSaveResult)localEntry.getValue();
+      if ((localFileSaveResult != null) && (localFileSaveResult.g != null) && (localFileSaveResult.f == 1))
+      {
+        Iterator localIterator2 = localFileSaveResult.g.e.iterator();
+        while (localIterator2.hasNext()) {
+          ((ISingleFileSaveCallBack)localIterator2.next()).a();
+        }
+        localFileSaveResult.f = 0;
+        a((String)localEntry.getKey(), localFileSaveResult);
+      }
+    }
+  }
+  
+  private void l()
+  {
+    if (QLog.isColorLevel()) {
       QLog.i("MultiRichMediaSaveManager", 2, "cancelDownloading");
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
+    if (this.c.isEmpty()) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
-      if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null))
+      if ((localFileSaveResult != null) && (localFileSaveResult.g != null))
       {
         Object localObject;
-        switch (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_Int)
+        switch (localFileSaveResult.g.a)
         {
         default: 
           break;
@@ -926,31 +926,31 @@ public class MultiRichMediaSaveManager
         case 5: 
         case 6: 
         case 7: 
-          if (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null) {
-            localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.b();
+          if (localFileSaveResult.g.d != null) {
+            localFileSaveResult.g.d.h();
           }
           break;
         case 3: 
-          if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null)) {
-            ((ShortVideoPreDownloaderWithSdkSupport)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).b(localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq);
+          if ((localFileSaveResult.g.c != null) && (localFileSaveResult.g.c.j != null)) {
+            ((ShortVideoPreDownloaderWithSdkSupport)this.b.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).b(localFileSaveResult.g);
           }
           break;
         case 2: 
-          if (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) {
-            localObject = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo;
+          if (localFileSaveResult.g.c != null) {
+            localObject = localFileSaveResult.g.c.e;
           }
-          localObject = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.c, localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_Long);
+          localObject = ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).findProcessor(localFileSaveResult.g.c.e.e, localFileSaveResult.g.c.e.g);
           if ((localObject instanceof BaseDownloadProcessor)) {
             ((BaseDownloadProcessor)localObject).cancel();
           }
           break;
         case 1: 
-          if ((localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null))
+          if ((localFileSaveResult.g.b != null) && (localFileSaveResult.g.b.l != null))
           {
-            IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.md5, localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uuid, 131075));
+            IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(localFileSaveResult.g.b.l.md5, localFileSaveResult.g.b.l.uuid, 131075));
             localObject = localIHttpCommunicatorListener;
             if (localIHttpCommunicatorListener == null) {
-              localObject = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.md5, localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uuid, 1));
+              localObject = ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(localFileSaveResult.g.b.l.md5, localFileSaveResult.g.b.l.uuid, 1));
             }
             if ((localObject instanceof BaseDownloadProcessor)) {
               ((BaseDownloadProcessor)localObject).cancel();
@@ -962,16 +962,16 @@ public class MultiRichMediaSaveManager
     }
   }
   
-  private void j()
+  private void m()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+    if (!this.c.isEmpty())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      Iterator localIterator = this.c.entrySet().iterator();
       while (localIterator.hasNext())
       {
         FileSaveResult localFileSaveResult = (FileSaveResult)((Map.Entry)localIterator.next()).getValue();
-        if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null)) {
-          localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        if ((localFileSaveResult != null) && (localFileSaveResult.g != null)) {
+          localFileSaveResult.g.e.clear();
         }
       }
     }
@@ -979,7 +979,7 @@ public class MultiRichMediaSaveManager
   
   public FileSaveResult a(String paramString)
   {
-    return (FileSaveResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    return (FileSaveResult)this.c.get(paramString);
   }
   
   public String a(ChatMessage paramChatMessage)
@@ -999,8 +999,8 @@ public class MultiRichMediaSaveManager
     if (paramPicDownloadInfo != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramPicDownloadInfo.c);
-      localStringBuilder.append(paramPicDownloadInfo.jdField_a_of_type_Long);
+      localStringBuilder.append(paramPicDownloadInfo.e);
+      localStringBuilder.append(paramPicDownloadInfo.g);
       return localStringBuilder.toString();
     }
     return "";
@@ -1011,8 +1011,8 @@ public class MultiRichMediaSaveManager
     if (paramShortVideoDownloadInfo != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramShortVideoDownloadInfo.c);
-      localStringBuilder.append(paramShortVideoDownloadInfo.jdField_a_of_type_Long);
+      localStringBuilder.append(paramShortVideoDownloadInfo.e);
+      localStringBuilder.append(paramShortVideoDownloadInfo.g);
       return localStringBuilder.toString();
     }
     return "";
@@ -1020,18 +1020,18 @@ public class MultiRichMediaSaveManager
   
   public void a()
   {
-    i();
+    l();
     d();
   }
   
   public void a(Activity paramActivity, List<FileSaveReq> paramList)
   {
-    a(paramActivity, DialogUtil.a(paramActivity, 230, paramActivity.getString(2131718382), paramActivity.getString(2131718381), new MultiRichMediaSaveManager.1(this, paramList), new MultiRichMediaSaveManager.2(this)));
+    a(paramActivity, DialogUtil.a(paramActivity, 230, paramActivity.getString(2131915874), paramActivity.getString(2131915873), new MultiRichMediaSaveManager.1(this, paramList), new MultiRichMediaSaveManager.2(this)));
   }
   
   public void a(IAIOImageProviderCallBack paramIAIOImageProviderCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack = paramIAIOImageProviderCallBack;
+    this.a = paramIAIOImageProviderCallBack;
   }
   
   public void a(MessageForPic paramMessageForPic, long paramLong, int paramInt1, int paramInt2)
@@ -1065,8 +1065,8 @@ public class MultiRichMediaSaveManager
       if (a(str2) == null)
       {
         FileSaveResult localFileSaveResult = new FileSaveResult();
-        localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = FileSaveReq.a(paramMessageForPic);
-        localFileSaveResult.d = 1;
+        localFileSaveResult.g = FileSaveReq.a(paramMessageForPic);
+        localFileSaveResult.f = 1;
         a(str2, localFileSaveResult);
       }
       ((PicReq)localObject).a(new MultiRichMediaSaveManager.11(this, paramLong, paramInt1, paramInt2, l, str2, str1));
@@ -1108,26 +1108,26 @@ public class MultiRichMediaSaveManager
     }
     try
     {
-      localObject = FileSaveReq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForShortVideo);
-      if ((localObject != null) && (((FileSaveReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null))
+      localObject = FileSaveReq.b(this.b, paramMessageForShortVideo);
+      if ((localObject != null) && (((FileSaveReq)localObject).c != null))
       {
         paramMessageForShortVideo = a(paramMessageForShortVideo.getDownloadInfo(paramMessageForShortVideo.busiType));
         if (a(paramMessageForShortVideo) == null)
         {
           FileSaveResult localFileSaveResult = new FileSaveResult();
-          localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = ((FileSaveReq)localObject);
-          localFileSaveResult.d = 1;
+          localFileSaveResult.g = ((FileSaveReq)localObject);
+          localFileSaveResult.f = 1;
           a(paramMessageForShortVideo, localFileSaveResult);
         }
-        if ((a((FileSaveReq)localObject)) && (((FileSaveReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack != null))
+        if ((a((FileSaveReq)localObject)) && (((FileSaveReq)localObject).c.j != null) && (this.a != null))
         {
-          paramMessageForShortVideo = SVUtils.a(((FileSaveReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramLong, paramInt1, paramInt2, 1, paramMessageForShortVideo, false);
+          paramMessageForShortVideo = SVUtils.a(((FileSaveReq)localObject).c.j, "mp4");
+          this.a.a(paramLong, paramInt1, paramInt2, 1, paramMessageForShortVideo, false);
           return;
         }
-        ((FileSaveReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Boolean = true;
-        ((FileSaveReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback = new MultiRichMediaSaveManager.12(this, paramLong, (FileSaveReq)localObject, paramMessageForShortVideo, paramInt1, paramInt2);
-        ((ShortVideoPreDownloaderWithSdkSupport)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).a((FileSaveReq)localObject);
+        ((FileSaveReq)localObject).c.n = true;
+        ((FileSaveReq)localObject).c.o = new MultiRichMediaSaveManager.12(this, paramLong, (FileSaveReq)localObject, paramMessageForShortVideo, paramInt1, paramInt2);
+        ((ShortVideoPreDownloaderWithSdkSupport)this.b.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).a((FileSaveReq)localObject);
         return;
       }
     }
@@ -1143,77 +1143,21 @@ public class MultiRichMediaSaveManager
     }
   }
   
-  public void a(FileSaveReq paramFileSaveReq)
-  {
-    if (paramFileSaveReq != null)
-    {
-      FileSaveResult localFileSaveResult;
-      switch (paramFileSaveReq.jdField_a_of_type_Int)
-      {
-      default: 
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager = new QFileMultiControlManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager.a();
-        }
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null)
-        {
-          localFileSaveResult = new FileSaveResult();
-          localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = paramFileSaveReq;
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a(), localFileSaveResult);
-          return;
-        }
-        break;
-      case 2: 
-      case 3: 
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null)
-        {
-          localFileSaveResult = new FileSaveResult();
-          localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = paramFileSaveReq;
-          paramFileSaveReq = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo);
-          if (!TextUtils.isEmpty(paramFileSaveReq))
-          {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramFileSaveReq, localFileSaveResult);
-            return;
-          }
-        }
-        break;
-      case 1: 
-        if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq != null)
-        {
-          localFileSaveResult = new FileSaveResult();
-          localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq = paramFileSaveReq;
-          paramFileSaveReq = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
-          if (!TextUtils.isEmpty(paramFileSaveReq)) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramFileSaveReq, localFileSaveResult);
-          }
-        }
-        break;
-      }
-    }
-  }
-  
   public void a(FileSaveReq paramFileSaveReq, int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramFileSaveReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo != null))
+    if ((paramFileSaveReq != null) && (paramFileSaveReq.c != null) && (paramFileSaveReq.c.e != null))
     {
-      Object localObject = a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo);
+      Object localObject = a(paramFileSaveReq.c.e);
       FileSaveResult localFileSaveResult = a((String)localObject);
-      if ((localFileSaveResult != null) && (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null) && (!localFileSaveResult.jdField_a_of_type_Boolean))
+      if ((localFileSaveResult != null) && (localFileSaveResult.g != null) && (!localFileSaveResult.a))
       {
-        localFileSaveResult.jdField_a_of_type_Boolean = true;
-        localFileSaveResult.jdField_a_of_type_Int = paramInt1;
-        localFileSaveResult.c = 100;
+        localFileSaveResult.a = true;
+        localFileSaveResult.b = paramInt1;
+        localFileSaveResult.e = 100;
         a((String)localObject, localFileSaveResult);
         if (paramInt1 == 0)
         {
-          paramFileSaveReq = new File(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.h);
+          paramFileSaveReq = new File(paramFileSaveReq.c.e.o);
           if ((!paramFileSaveReq.exists()) && (QLog.isColorLevel())) {
             QLog.d("MultiRichMediaSaveManager", 2, "dealShortVideoDownloadComplete srcFile not exists");
           }
@@ -1227,8 +1171,8 @@ public class MultiRichMediaSaveManager
           b(paramString, ((StringBuilder)localObject).toString(), localFileSaveResult);
           return;
         }
-        localFileSaveResult.b = paramInt2;
-        localFileSaveResult.jdField_a_of_type_JavaLangString = paramString;
+        localFileSaveResult.c = paramInt2;
+        localFileSaveResult.d = paramString;
         if (QLog.isColorLevel())
         {
           paramFileSaveReq = new StringBuilder();
@@ -1250,31 +1194,31 @@ public class MultiRichMediaSaveManager
     }
     if (paramFileSaveResult != null)
     {
-      if (paramFileSaveResult.d == 1)
+      if (paramFileSaveResult.f == 1)
       {
-        if (paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null)
+        if (paramFileSaveResult.g != null)
         {
-          localObject = paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          localObject = paramFileSaveResult.g.e.iterator();
           while (((Iterator)localObject).hasNext())
           {
             ISingleFileSaveCallBack localISingleFileSaveCallBack = (ISingleFileSaveCallBack)((Iterator)localObject).next();
-            if (paramFileSaveResult.jdField_a_of_type_Int == 0) {
+            if (paramFileSaveResult.b == 0) {
               localISingleFileSaveCallBack.a(paramFileSaveResult, 100);
             }
             localISingleFileSaveCallBack.a(paramFileSaveResult);
           }
         }
-        b(paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq);
+        c(paramFileSaveResult.g);
         c(paramFileSaveResult);
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
+      Object localObject = this.d;
       if (localObject != null) {
         ((ISaveCallBack)localObject).a(paramFileSaveResult);
       }
-      this.c = false;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.g = false;
+      this.h = 0L;
+      this.c.clear();
       c(paramFileSaveResult);
     }
   }
@@ -1284,11 +1228,11 @@ public class MultiRichMediaSaveManager
     if (paramFileSaveResult != null)
     {
       Object localObject;
-      if (paramFileSaveResult.d == 1)
+      if (paramFileSaveResult.f == 1)
       {
-        if (paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null)
+        if (paramFileSaveResult.g != null)
         {
-          localObject = paramFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          localObject = paramFileSaveResult.g.e.iterator();
           while (((Iterator)localObject).hasNext()) {
             ((ISingleFileSaveCallBack)((Iterator)localObject).next()).a(paramFileSaveResult, paramInt);
           }
@@ -1296,7 +1240,7 @@ public class MultiRichMediaSaveManager
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack;
+        localObject = this.d;
         if (localObject != null) {
           ((ISaveCallBack)localObject).a(paramFileSaveResult, paramInt);
         }
@@ -1306,40 +1250,19 @@ public class MultiRichMediaSaveManager
   
   public void a(ISaveCallBack paramISaveCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack = paramISaveCallBack;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("removeFileSaveResult exception = ");
-          localStringBuilder.append(paramString.getMessage());
-          QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
-        }
-      }
-    }
+    this.d = paramISaveCallBack;
   }
   
   public void a(String paramString, FileSaveResult paramFileSaveResult)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramFileSaveResult);
+      this.c.put(paramString, paramFileSaveResult);
     }
   }
   
   public void a(List<FileSaveReq> paramList, int paramInt1, int paramInt2)
   {
-    int j = paramInt2;
+    int m = paramInt2;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       String str;
@@ -1355,46 +1278,46 @@ public class MultiRichMediaSaveManager
         str = "0X8009F89";
       }
       paramList = paramList.iterator();
-      int m = 0;
+      int i1 = 0;
+      int n = 0;
       int k = 0;
-      int i = 0;
       paramInt2 = 0;
       while (paramList.hasNext()) {
-        switch (((FileSaveReq)paramList.next()).jdField_a_of_type_Int)
+        switch (((FileSaveReq)paramList.next()).a)
         {
         default: 
           break;
         case 5: 
         case 7: 
-          m += 1;
+          i1 += 1;
           break;
         case 4: 
         case 6: 
-          k += 1;
+          n += 1;
           break;
         case 2: 
         case 3: 
-          i += 1;
+          k += 1;
           break;
         case 1: 
           paramInt2 += 1;
         }
       }
-      if (j != 0)
+      if (m != 0)
       {
-        if (j != 1)
+        if (m != 1)
         {
-          if ((j != 1008) && (j != 2016)) {
-            if (j != 3000) {
-              if ((j == 1010) || (j == 1011)) {
+          if ((m != 1008) && (m != 2016)) {
+            if (m != 3000) {
+              if ((m == 1010) || (m == 1011)) {
                 break label267;
               }
             }
           }
-          switch (j)
+          switch (m)
           {
           default: 
-            paramInt1 = j;
+            paramInt1 = m;
             break;
             paramInt1 = 3;
             break;
@@ -1418,7 +1341,7 @@ public class MultiRichMediaSaveManager
       }
       if (!TextUtils.isEmpty(str))
       {
-        ReportController.b(null, "dc00898", "", "", str, str, paramInt1, 0, String.valueOf(paramInt2), String.valueOf(i), String.valueOf(k), String.valueOf(m));
+        ReportController.b(null, "dc00898", "", "", str, str, paramInt1, 0, String.valueOf(paramInt2), String.valueOf(k), String.valueOf(n), String.valueOf(i1));
         if (QLog.isColorLevel())
         {
           paramList = new StringBuilder();
@@ -1429,11 +1352,11 @@ public class MultiRichMediaSaveManager
           paramList.append(", picCount = ");
           paramList.append(paramInt2);
           paramList.append(", videoCount = ");
-          paramList.append(i);
-          paramList.append(", filePicCount = ");
           paramList.append(k);
+          paramList.append(", filePicCount = ");
+          paramList.append(n);
           paramList.append(", fileVideoCount = ");
-          paramList.append(m);
+          paramList.append(i1);
           QLog.d("MultiRichMediaSaveManager", 2, paramList.toString());
         }
       }
@@ -1448,24 +1371,24 @@ public class MultiRichMediaSaveManager
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      if (b()) {
-        h();
+      if (f()) {
+        k();
       }
       if ((paramBoolean) && (a(paramList)))
       {
-        g();
+        j();
         return;
       }
-      a(paramList);
-      e();
+      b(paramList);
+      h();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         FileSaveReq localFileSaveReq = (FileSaveReq)paramList.next();
         if (a(localFileSaveReq)) {
-          d(localFileSaveReq);
-        } else if (!b(localFileSaveReq)) {
-          c(localFileSaveReq);
+          f(localFileSaveReq);
+        } else if (!d(localFileSaveReq)) {
+          e(localFileSaveReq);
         }
       }
       return;
@@ -1474,37 +1397,10 @@ public class MultiRichMediaSaveManager
       QLog.d("MultiRichMediaSaveManager", 2, "saveMultiRichMedialFile fileSaveReqList is empty!");
     }
     paramList = new FileSaveResult();
-    paramList.jdField_a_of_type_Int = -1;
-    paramList.b = 10006;
-    paramList.jdField_a_of_type_JavaLangString = FileSaveErrorInfo.a(10006);
+    paramList.b = -1;
+    paramList.c = 10006;
+    paramList.d = FileSaveErrorInfo.a(10006);
     a(paramList);
-  }
-  
-  public boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramChatMessage != null)
-    {
-      paramChatMessage = a(a(paramChatMessage));
-      bool1 = bool2;
-      if (paramChatMessage != null)
-      {
-        bool1 = bool2;
-        if (paramChatMessage.d == 1)
-        {
-          bool1 = bool2;
-          if (!paramChatMessage.jdField_a_of_type_Boolean)
-          {
-            bool1 = bool2;
-            if (paramChatMessage.c < 100) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
   }
   
   public boolean a(FileSaveReq paramFileSaveReq)
@@ -1517,7 +1413,7 @@ public class MultiRichMediaSaveManager
       return false;
     }
     Object localObject;
-    switch (paramFileSaveReq.jdField_a_of_type_Int)
+    switch (paramFileSaveReq.a)
     {
     default: 
       return false;
@@ -1527,21 +1423,21 @@ public class MultiRichMediaSaveManager
     case 7: 
     case 8: 
     case 9: 
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq == null) {
+      if (paramFileSaveReq.d == null) {
         break label276;
       }
-      return paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
+      return paramFileSaveReq.d.e();
     case 2: 
     case 3: 
-      if (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq == null) {
+      if (paramFileSaveReq.c == null) {
         break label276;
       }
-      localObject = SVUtils.a(paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+      localObject = SVUtils.a(paramFileSaveReq.c.j, "mp4");
       if (localObject == null) {
         break label276;
       }
       localObject = new File((String)localObject);
-      if ((!((File)localObject).exists()) || (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (((File)localObject).length() != paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize)) {
+      if ((!((File)localObject).exists()) || (paramFileSaveReq.c.j == null) || (((File)localObject).length() != paramFileSaveReq.c.j.videoFileSize)) {
         break label276;
       }
       if (QLog.isColorLevel()) {
@@ -1552,19 +1448,19 @@ public class MultiRichMediaSaveManager
     for (;;)
     {
       return true;
-      if ((paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq == null) || (paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)) {
+      if ((paramFileSaveReq.b == null) || (paramFileSaveReq.b.l == null)) {
         break;
       }
-      localObject = paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getPicDownloadInfo();
+      localObject = paramFileSaveReq.b.l.getPicDownloadInfo();
       if (localObject == null) {
         break;
       }
-      localObject = ((PicDownloadInfo)localObject).c();
+      localObject = ((PicDownloadInfo)localObject).f();
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break;
       }
       localObject = new File((String)localObject);
-      if ((!((File)localObject).exists()) || (((File)localObject).length() != paramFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.size)) {
+      if ((!((File)localObject).exists()) || (((File)localObject).length() != paramFileSaveReq.b.l.size)) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -1596,7 +1492,7 @@ public class MultiRichMediaSaveManager
             if (!a(localFileSaveReq))
             {
               long l1;
-              switch (localFileSaveReq.jdField_a_of_type_Int)
+              switch (localFileSaveReq.a)
               {
               default: 
                 break;
@@ -1604,8 +1500,8 @@ public class MultiRichMediaSaveManager
               case 5: 
               case 6: 
               case 7: 
-                if (localFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq != null) {
-                  l1 = localFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a();
+                if (localFileSaveReq.d != null) {
+                  l1 = localFileSaveReq.d.a();
                 }
                 break;
               case 2: 
@@ -1615,15 +1511,15 @@ public class MultiRichMediaSaveManager
                 {
                   l2 += l1;
                   break;
-                  if ((localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq == null) || (localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)) {
+                  if ((localFileSaveReq.c == null) || (localFileSaveReq.c.j == null)) {
                     break;
                   }
-                  l1 = localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
+                  l1 = localFileSaveReq.c.j.videoFileSize;
                   continue;
-                  if ((localFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq == null) || (localFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)) {
+                  if ((localFileSaveReq.b == null) || (localFileSaveReq.b.l == null)) {
                     break;
                   }
-                  l1 = localFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.size;
+                  l1 = localFileSaveReq.b.l.size;
                 }
               }
             }
@@ -1647,7 +1543,7 @@ public class MultiRichMediaSaveManager
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack = null;
+    this.d = null;
   }
   
   public void b(MessageForPic paramMessageForPic, long paramLong, int paramInt1, int paramInt2)
@@ -1663,11 +1559,11 @@ public class MultiRichMediaSaveManager
     Object localObject = a(paramMessageForPic);
     if (localObject != null)
     {
-      ((FileSaveResult)localObject).jdField_a_of_type_Boolean = true;
-      ((FileSaveResult)localObject).jdField_a_of_type_Int = -1;
+      ((FileSaveResult)localObject).a = true;
+      ((FileSaveResult)localObject).b = -1;
       a(paramMessageForPic, (FileSaveResult)localObject);
       e((FileSaveResult)localObject);
-      a(paramMessageForPic);
+      b(paramMessageForPic);
     }
   }
   
@@ -1695,18 +1591,122 @@ public class MultiRichMediaSaveManager
     FileSaveResult localFileSaveResult = a((String)localObject);
     if (localFileSaveResult != null)
     {
-      localFileSaveResult.jdField_a_of_type_Boolean = true;
-      localFileSaveResult.jdField_a_of_type_Int = -1;
+      localFileSaveResult.a = true;
+      localFileSaveResult.b = -1;
       a((String)localObject, localFileSaveResult);
       e(localFileSaveResult);
     }
-    ((ShortVideoPreDownloaderWithSdkSupport)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).b(FileSaveReq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForShortVideo));
-    a((String)localObject);
+    ((ShortVideoPreDownloaderWithSdkSupport)this.b.getManager(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER)).b(FileSaveReq.b(this.b, paramMessageForShortVideo));
+    b((String)localObject);
+  }
+  
+  public void b(FileSaveReq paramFileSaveReq)
+  {
+    if (paramFileSaveReq != null)
+    {
+      FileSaveResult localFileSaveResult;
+      switch (paramFileSaveReq.a)
+      {
+      default: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+        if (this.i == null)
+        {
+          this.i = new QFileMultiControlManager(this.b);
+          this.i.a();
+        }
+        if (paramFileSaveReq.d != null)
+        {
+          localFileSaveResult = new FileSaveResult();
+          localFileSaveResult.g = paramFileSaveReq;
+          this.c.put(paramFileSaveReq.d.b(), localFileSaveResult);
+          return;
+        }
+        break;
+      case 2: 
+      case 3: 
+        if (paramFileSaveReq.c != null)
+        {
+          localFileSaveResult = new FileSaveResult();
+          localFileSaveResult.g = paramFileSaveReq;
+          paramFileSaveReq = a(paramFileSaveReq.c.e);
+          if (!TextUtils.isEmpty(paramFileSaveReq))
+          {
+            this.c.put(paramFileSaveReq, localFileSaveResult);
+            return;
+          }
+        }
+        break;
+      case 1: 
+        if (paramFileSaveReq.b != null)
+        {
+          localFileSaveResult = new FileSaveResult();
+          localFileSaveResult.g = paramFileSaveReq;
+          paramFileSaveReq = a(paramFileSaveReq.b.f);
+          if (!TextUtils.isEmpty(paramFileSaveReq)) {
+            this.c.put(paramFileSaveReq, localFileSaveResult);
+          }
+        }
+        break;
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        this.c.remove(paramString);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removeFileSaveResult exception = ");
+          localStringBuilder.append(paramString.getMessage());
+          QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
+        }
+      }
+    }
+  }
+  
+  public boolean b(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramChatMessage != null)
+    {
+      paramChatMessage = a(a(paramChatMessage));
+      bool1 = bool2;
+      if (paramChatMessage != null)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.f == 1)
+        {
+          bool1 = bool2;
+          if (!paramChatMessage.a)
+          {
+            bool1 = bool2;
+            if (paramChatMessage.e < 100) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack = null;
+    this.a = null;
   }
   
   public void d()
@@ -1714,20 +1714,20 @@ public class MultiRichMediaSaveManager
     if (QLog.isColorLevel()) {
       QLog.i("MultiRichMediaSaveManager", 2, "clearFileSaveRequest");
     }
-    j();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveISaveCallBack = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.c = false;
-    this.jdField_a_of_type_Long = 0L;
-    QFileMultiControlManager localQFileMultiControlManager = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager;
+    m();
+    this.c.clear();
+    this.d = null;
+    this.e = false;
+    this.f = false;
+    this.g = false;
+    this.h = 0L;
+    QFileMultiControlManager localQFileMultiControlManager = this.i;
     if (localQFileMultiControlManager != null)
     {
       localQFileMultiControlManager.b();
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager = null;
+      this.i = null;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.j.removeCallbacksAndMessages(null);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1735,7 +1735,7 @@ public class MultiRichMediaSaveManager
     if ((paramMessage.obj instanceof FileSaveResult))
     {
       FileSaveResult localFileSaveResult = (FileSaveResult)paramMessage.obj;
-      if (localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq != null) {
+      if (localFileSaveResult.g != null) {
         switch (paramMessage.what)
         {
         default: 
@@ -1744,9 +1744,9 @@ public class MultiRichMediaSaveManager
           a(localFileSaveResult, paramMessage.arg1);
           return true;
         case 5: 
-          if (localFileSaveResult.d == 1)
+          if (localFileSaveResult.f == 1)
           {
-            e(localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq);
+            g(localFileSaveResult.g);
             return true;
           }
           break;
@@ -1754,63 +1754,63 @@ public class MultiRichMediaSaveManager
           a(localFileSaveResult);
           return true;
         case 3: 
-          paramMessage = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          paramMessage = localFileSaveResult.g.e.iterator();
         case 1: 
         case 2: 
           while (paramMessage.hasNext())
           {
             ((ISingleFileSaveCallBack)paramMessage.next()).b(localFileSaveResult);
             continue;
-            if (localFileSaveResult.d == 1)
+            if (localFileSaveResult.f == 1)
             {
               d(localFileSaveResult);
               return true;
             }
             if (paramMessage.what == 2)
             {
-              this.jdField_a_of_type_Boolean = true;
+              this.e = true;
               if (QLog.isColorLevel())
               {
                 paramMessage = new StringBuilder();
                 paramMessage.append("MSG_TYPE_SAVE_FAIL errorCode = ");
-                paramMessage.append(localFileSaveResult.b);
+                paramMessage.append(localFileSaveResult.c);
                 paramMessage.append(", errorMsg = ");
-                paramMessage.append(localFileSaveResult.jdField_a_of_type_JavaLangString);
+                paramMessage.append(localFileSaveResult.d);
                 QLog.i("MultiRichMediaSaveManager", 2, paramMessage.toString());
               }
             }
             else
             {
-              this.b = true;
+              this.f = true;
             }
-            paramMessage = localFileSaveResult.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+            paramMessage = localFileSaveResult.g.e.iterator();
             while (paramMessage.hasNext()) {
               ((ISingleFileSaveCallBack)paramMessage.next()).a(localFileSaveResult);
             }
-            if (a())
+            if (e())
             {
               b(localFileSaveResult, 100);
-              if ((this.b) && (!this.jdField_a_of_type_Boolean)) {
-                localFileSaveResult.jdField_a_of_type_Int = 0;
-              } else if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
-                localFileSaveResult.jdField_a_of_type_Int = -1;
+              if ((this.f) && (!this.e)) {
+                localFileSaveResult.b = 0;
+              } else if ((this.e) && (!this.f)) {
+                localFileSaveResult.b = -1;
               } else {
-                localFileSaveResult.jdField_a_of_type_Int = 3;
+                localFileSaveResult.b = 3;
               }
               if (QLog.isColorLevel())
               {
                 paramMessage = new StringBuilder();
                 paramMessage.append("last result = ");
-                paramMessage.append(localFileSaveResult.jdField_a_of_type_Int);
+                paramMessage.append(localFileSaveResult.b);
                 QLog.i("MultiRichMediaSaveManager", 2, paramMessage.toString());
               }
-              this.jdField_a_of_type_Boolean = false;
-              this.b = false;
-              paramMessage = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager;
+              this.e = false;
+              this.f = false;
+              paramMessage = this.i;
               if (paramMessage != null)
               {
                 paramMessage.b();
-                this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMultiControlManager = null;
+                this.i = null;
               }
               a(localFileSaveResult, 200L);
             }
@@ -1826,14 +1826,14 @@ public class MultiRichMediaSaveManager
     if (QLog.isColorLevel()) {
       QLog.i("MultiRichMediaSaveManager", 2, "onDestroy");
     }
-    f();
     i();
+    l();
     d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager
  * JD-Core Version:    0.7.0.1
  */

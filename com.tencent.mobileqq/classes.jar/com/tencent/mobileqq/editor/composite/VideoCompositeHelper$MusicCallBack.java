@@ -10,47 +10,47 @@ import com.tencent.mobileqq.videocodec.ffmpeg.ExecuteBinResponseCallback;
 public class VideoCompositeHelper$MusicCallBack
   extends ExecuteBinResponseCallback
 {
-  private int jdField_a_of_type_Int = 941000;
-  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  private VideoCompositeHelper.VideoCompositeCallBack jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack;
-  private String jdField_a_of_type_JavaLangString;
+  private VideoCompositeHelper.VideoCompositeCallBack a;
   private String b;
+  private String c;
+  private long d = SystemClock.elapsedRealtime();
+  private int e = 941000;
   
   public VideoCompositeHelper$MusicCallBack(String paramString1, String paramString2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack = paramVideoCompositeCallBack;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.a = paramVideoCompositeCallBack;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void onFailure(String paramString)
   {
     if (paramString.equals(String.valueOf(941001))) {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack.a(941001, paramString, "");
+      this.a.a(941001, paramString, "");
     } else if (paramString.equals(String.valueOf(941002))) {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack.a(941002, paramString, "");
+      this.a.a(941002, paramString, "");
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack.a(this.jdField_a_of_type_Int, paramString, "");
+      this.a.a(this.e, paramString, "");
     }
-    SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
-    FileUtils.g(this.jdField_a_of_type_JavaLangString);
+    SLog.d(VideoCompositeHelper.a, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.e) });
+    FileUtils.k(this.b);
   }
   
   public void onSuccess(String paramString)
   {
-    SLog.a(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack.a(0, "", this.b);
-    FileUtils.g(this.jdField_a_of_type_JavaLangString);
+    SLog.a(VideoCompositeHelper.a, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.d));
+    this.a.a(0, "", this.c);
+    FileUtils.k(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.VideoCompositeHelper.MusicCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class DownloadCenterImpl$3
     while (i < j)
     {
       localObject = (DownloadInfo)this.a.get(i);
-      if (DownloadManager.a().a((DownloadInfo)localObject)) {
+      if (DownloadManager.b().g((DownloadInfo)localObject)) {
         localArrayList.add(localObject);
       }
       i += 1;
@@ -34,7 +34,7 @@ class DownloadCenterImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.DownloadCenterImpl.3
  * JD-Core Version:    0.7.0.1
  */

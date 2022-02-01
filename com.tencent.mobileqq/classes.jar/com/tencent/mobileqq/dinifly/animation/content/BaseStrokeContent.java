@@ -11,8 +11,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
+import androidx.annotation.CallSuper;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
@@ -139,7 +139,7 @@ public abstract class BaseStrokeContent
     if (paramMatrix == null) {
       f = 0.0F;
     } else {
-      f = ((Float)paramMatrix.getValue()).floatValue();
+      f *= ((Float)paramMatrix.getValue()).floatValue();
     }
     this.paint.setPathEffect(new DashPathEffect(this.dashPatternValues, f));
     L.endSection("StrokeContent#applyDashPattern");
@@ -233,6 +233,10 @@ public abstract class BaseStrokeContent
     }
     if (paramT == LottieProperty.COLOR_FILTER)
     {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
       if (paramLottieValueCallback == null)
       {
         this.colorFilterAnimation = null;
@@ -392,7 +396,7 @@ public abstract class BaseStrokeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.BaseStrokeContent
  * JD-Core Version:    0.7.0.1
  */

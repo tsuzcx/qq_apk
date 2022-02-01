@@ -35,7 +35,7 @@ public class ConfessWebViewBuilder
   implements WebViewPluginContainer, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext, WebUiUtils.WebShareInterface, WebUiUtils.WebUiMethodInterface
 {
   protected Share a;
-  private ConfessShareMenuHandler a;
+  private ConfessShareMenuHandler b;
   
   public ConfessWebViewBuilder(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
@@ -43,7 +43,7 @@ public class ConfessWebViewBuilder
     super.preInitPluginEngine();
     this.mWebview = new TouchWebView(paramContext);
     buildBaseWebView(this.mInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler = new ConfessShareMenuHandler(paramActivity, this.mWebview);
+    this.b = new ConfessShareMenuHandler(paramActivity, this.mWebview);
   }
   
   public TouchWebView a(ViewGroup paramViewGroup)
@@ -52,11 +52,6 @@ public class ConfessWebViewBuilder
       paramViewGroup.addView(this.mWebview);
     }
     return this.mWebview;
-  }
-  
-  public Share a()
-  {
-    return b();
   }
   
   public void a()
@@ -70,14 +65,9 @@ public class ConfessWebViewBuilder
     this.mWebview.loadUrl(this.mUrl);
   }
   
-  protected Share b()
+  public Share b()
   {
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare == null)
-    {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare = new Share(this.mInterface, this.mInActivity);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this);
-    }
-    return this.jdField_a_of_type_ComTencentBizWebviewpluginShare;
+    return c();
   }
   
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
@@ -93,9 +83,19 @@ public class ConfessWebViewBuilder
     }
   }
   
+  protected Share c()
+  {
+    if (this.a == null)
+    {
+      this.a = new Share(this.mInterface, this.mInActivity);
+      this.a.a(this);
+    }
+    return this.a;
+  }
+  
   public void destroy()
   {
-    Share localShare = this.jdField_a_of_type_ComTencentBizWebviewpluginShare;
+    Share localShare = this.a;
     if (localShare != null) {
       localShare.destroy();
     }
@@ -131,7 +131,7 @@ public class ConfessWebViewBuilder
   
   public String getShareUrl()
   {
-    return b().getShareUrl();
+    return c().getShareUrl();
   }
   
   public CustomWebView getWebView()
@@ -173,17 +173,17 @@ public class ConfessWebViewBuilder
   
   public void reset()
   {
-    b().reset();
+    c().reset();
   }
   
   public boolean setShareUrl(String paramString)
   {
-    return b().setShareUrl(paramString);
+    return c().setShareUrl(paramString);
   }
   
   public boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
   {
-    return b().setSummary(paramString1, paramString2, paramString3, paramString4, paramBundle);
+    return c().setSummary(paramString1, paramString2, paramString3, paramString4, paramBundle);
   }
   
   public boolean shareStructMsgForH5(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
@@ -193,7 +193,7 @@ public class ConfessWebViewBuilder
   
   public void showActionSheet()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler.a(b());
+    this.b.a(c());
   }
   
   public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -224,7 +224,7 @@ public class ConfessWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

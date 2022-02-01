@@ -59,12 +59,12 @@ public class HighwayConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfQConfItem[0].a);
+      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("HighwayConfProcessor", 2, localStringBuilder.toString());
       }
       return localHighwayConfBean;
@@ -95,7 +95,7 @@ public class HighwayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HighwayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

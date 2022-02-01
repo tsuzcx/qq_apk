@@ -13,47 +13,47 @@ import java.io.File;
 public abstract class LocalizedSQLiteOpenHelper
   extends SQLiteOpenHelper
 {
-  private final int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final DatabaseErrorHandler jdField_a_of_type_AndroidDatabaseDatabaseErrorHandler;
-  private final SQLiteDatabase.CursorFactory jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase$CursorFactory;
-  private SQLiteDatabase jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private final Context a;
+  private final String b;
+  private final SQLiteDatabase.CursorFactory c;
+  private final int d;
+  private SQLiteDatabase e;
+  private boolean f;
+  private boolean g;
+  private final DatabaseErrorHandler h;
   
   public LocalizedSQLiteOpenHelper(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     super(paramContext, paramString, paramCursorFactory, paramInt, paramDatabaseErrorHandler);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase$CursorFactory = paramCursorFactory;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidDatabaseDatabaseErrorHandler = paramDatabaseErrorHandler;
+    this.a = paramContext;
+    this.b = paramString;
+    this.c = paramCursorFactory;
+    this.d = paramInt;
+    this.h = paramDatabaseErrorHandler;
   }
   
   private SQLiteDatabase a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
+    Object localObject1 = this.e;
     if (localObject1 != null) {
       if (!((SQLiteDatabase)localObject1).isOpen()) {
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = null;
-      } else if ((!paramBoolean) || (!this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.isReadOnly())) {
-        return this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
+        this.e = null;
+      } else if ((!paramBoolean) || (!this.e.isReadOnly())) {
+        return this.e;
       }
     }
     SQLiteDatabase localSQLiteDatabase2;
     Object localObject4;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      localSQLiteDatabase2 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
+      localSQLiteDatabase2 = this.e;
       localObject4 = localSQLiteDatabase2;
     }
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
         Object localObject2;
         if (localSQLiteDatabase2 != null)
         {
@@ -89,7 +89,7 @@ public abstract class LocalizedSQLiteOpenHelper
         else
         {
           localObject4 = localSQLiteDatabase2;
-          if (this.jdField_a_of_type_JavaLangString == null)
+          if (this.b == null)
           {
             localObject4 = localSQLiteDatabase2;
             if (QLog.isColorLevel())
@@ -111,12 +111,12 @@ public abstract class LocalizedSQLiteOpenHelper
                 QLog.d("LocalizedSQLiteOpenHelper", 2, new Object[] { "getDatabaseLocked DEBUG_STRICT_READONLY: ", Boolean.valueOf(false), ", writable: ", Boolean.valueOf(paramBoolean) });
               }
               localObject4 = localSQLiteDatabase2;
-              if (!this.b) {
+              if (!this.g) {
                 break label821;
               }
               i = 8;
               localObject4 = localSQLiteDatabase2;
-              localObject2 = this.jdField_a_of_type_AndroidContentContext.openOrCreateDatabase(this.jdField_a_of_type_JavaLangString, i | 0x10, this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase$CursorFactory, this.jdField_a_of_type_AndroidDatabaseDatabaseErrorHandler);
+              localObject2 = this.a.openOrCreateDatabase(this.b, i | 0x10, this.c, this.h);
             }
             catch (SQLiteException localSQLiteException)
             {
@@ -129,13 +129,13 @@ public abstract class LocalizedSQLiteOpenHelper
             localObject4 = localSQLiteDatabase2;
             localStringBuilder2.append("Couldn't open ");
             localObject4 = localSQLiteDatabase2;
-            localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder2.append(this.b);
             localObject4 = localSQLiteDatabase2;
             localStringBuilder2.append(" for writing (will try read-only):");
             localObject4 = localSQLiteDatabase2;
             QLog.d("LocalizedSQLiteOpenHelper", 1, localStringBuilder2.toString(), localSQLiteException);
             localObject4 = localSQLiteDatabase2;
-            localSQLiteDatabase1 = SQLiteDatabase.openDatabase(this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_a_of_type_JavaLangString).getPath(), this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase$CursorFactory, 17, this.jdField_a_of_type_AndroidDatabaseDatabaseErrorHandler);
+            localSQLiteDatabase1 = SQLiteDatabase.openDatabase(this.a.getDatabasePath(this.b).getPath(), this.c, 17, this.h);
           }
         }
         localObject4 = localSQLiteDatabase1;
@@ -143,7 +143,7 @@ public abstract class LocalizedSQLiteOpenHelper
         localObject4 = localSQLiteDatabase1;
         i = localSQLiteDatabase1.getVersion();
         localObject4 = localSQLiteDatabase1;
-        if (i != this.jdField_a_of_type_Int)
+        if (i != this.d)
         {
           localObject4 = localSQLiteDatabase1;
           if (!localSQLiteDatabase1.isReadOnly())
@@ -155,12 +155,12 @@ public abstract class LocalizedSQLiteOpenHelper
             {
               onCreate(localSQLiteDatabase1);
               continue;
-              if (i > this.jdField_a_of_type_Int) {
-                onDowngrade(localSQLiteDatabase1, i, this.jdField_a_of_type_Int);
+              if (i > this.d) {
+                onDowngrade(localSQLiteDatabase1, i, this.d);
               } else {
-                onUpgrade(localSQLiteDatabase1, i, this.jdField_a_of_type_Int);
+                onUpgrade(localSQLiteDatabase1, i, this.d);
               }
-              localSQLiteDatabase1.setVersion(this.jdField_a_of_type_Int);
+              localSQLiteDatabase1.setVersion(this.d);
               localSQLiteDatabase1.setTransactionSuccessful();
               localObject4 = localSQLiteDatabase1;
               localSQLiteDatabase1.endTransaction();
@@ -183,11 +183,11 @@ public abstract class LocalizedSQLiteOpenHelper
             localObject4 = localSQLiteDatabase1;
             localStringBuilder1.append(" to ");
             localObject4 = localSQLiteDatabase1;
-            localStringBuilder1.append(this.jdField_a_of_type_Int);
+            localStringBuilder1.append(this.d);
             localObject4 = localSQLiteDatabase1;
             localStringBuilder1.append(": ");
             localObject4 = localSQLiteDatabase1;
-            localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder1.append(this.b);
             localObject4 = localSQLiteDatabase1;
             throw new SQLiteException(localStringBuilder1.toString());
           }
@@ -205,7 +205,7 @@ public abstract class LocalizedSQLiteOpenHelper
             localObject4 = localSQLiteDatabase1;
             localStringBuilder1.append("Opened ");
             localObject4 = localSQLiteDatabase1;
-            localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder1.append(this.b);
             localObject4 = localSQLiteDatabase1;
             localStringBuilder1.append(" in read-only mode");
             localObject4 = localSQLiteDatabase1;
@@ -213,9 +213,9 @@ public abstract class LocalizedSQLiteOpenHelper
           }
         }
         localObject4 = localSQLiteDatabase1;
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = localSQLiteDatabase1;
-        this.jdField_a_of_type_Boolean = false;
-        if ((localSQLiteDatabase1 != null) && (localSQLiteDatabase1 != this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase)) {
+        this.e = localSQLiteDatabase1;
+        this.f = false;
+        if ((localSQLiteDatabase1 != null) && (localSQLiteDatabase1 != this.e)) {
           localSQLiteDatabase1.close();
         }
         return localSQLiteDatabase1;
@@ -224,8 +224,8 @@ public abstract class LocalizedSQLiteOpenHelper
       {
         SQLiteDatabase localSQLiteDatabase1;
         StringBuilder localStringBuilder1;
-        this.jdField_a_of_type_Boolean = false;
-        if ((localObject4 == null) || (localObject4 == this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase)) {
+        this.f = false;
+        if ((localObject4 == null) || (localObject4 == this.e)) {
           continue;
         }
         ((SQLiteDatabase)localObject4).close();
@@ -242,12 +242,12 @@ public abstract class LocalizedSQLiteOpenHelper
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
-        if ((this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase != null) && (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.isOpen()))
+        if ((this.e != null) && (this.e.isOpen()))
         {
-          this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-          this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = null;
+          this.e.close();
+          this.e = null;
         }
         return;
       }
@@ -258,7 +258,7 @@ public abstract class LocalizedSQLiteOpenHelper
   
   public String getDatabaseName()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public SQLiteDatabase getReadableDatabase()
@@ -303,15 +303,15 @@ public abstract class LocalizedSQLiteOpenHelper
   {
     try
     {
-      if (this.b != paramBoolean)
+      if (this.g != paramBoolean)
       {
-        if ((this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase != null) && (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.isOpen()) && (!this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.isReadOnly())) {
+        if ((this.e != null) && (this.e.isOpen()) && (!this.e.isReadOnly())) {
           if (paramBoolean) {
-            this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.enableWriteAheadLogging();
+            this.e.enableWriteAheadLogging();
           } else {
             try
             {
-              ReflecterHelper.a(this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase, "disableWriteAheadLogging");
+              ReflecterHelper.a(this.e, "disableWriteAheadLogging");
             }
             catch (Exception localException)
             {
@@ -319,7 +319,7 @@ public abstract class LocalizedSQLiteOpenHelper
             }
           }
         }
-        this.b = paramBoolean;
+        this.g = paramBoolean;
       }
       return;
     }
@@ -328,7 +328,7 @@ public abstract class LocalizedSQLiteOpenHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.localizeddb.LocalizedSQLiteOpenHelper
  * JD-Core Version:    0.7.0.1
  */

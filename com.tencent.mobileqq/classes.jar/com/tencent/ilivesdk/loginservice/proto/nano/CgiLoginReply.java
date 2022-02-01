@@ -9,8 +9,8 @@ public final class CgiLoginReply
   extends MessageNano
 {
   public int a;
-  public CgiResult a;
-  public String a;
+  public String b;
+  public CgiResult c;
   
   public CgiLoginReply()
   {
@@ -19,9 +19,9 @@ public final class CgiLoginReply
   
   public CgiLoginReply a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult = null;
+    this.a = 0;
+    this.b = "";
+    this.c = null;
     this.cachedSize = -1;
     return this;
   }
@@ -46,18 +46,18 @@ public final class CgiLoginReply
           }
           else
           {
-            if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult == null) {
-              this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult = new CgiResult();
+            if (this.c == null) {
+              this.c = new CgiResult();
             }
-            paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult);
+            paramCodedInputByteBufferNano.readMessage(this.c);
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          this.b = paramCodedInputByteBufferNano.readString();
         }
       }
       else {
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readInt32();
+        this.a = paramCodedInputByteBufferNano.readInt32();
       }
     }
     return this;
@@ -66,16 +66,16 @@ public final class CgiLoginReply
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    int k = this.jdField_a_of_type_Int;
+    int k = this.a;
     int i = j;
     if (k != 0) {
       i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
     j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    CgiResult localCgiResult = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult;
+    CgiResult localCgiResult = this.c;
     i = j;
     if (localCgiResult != null) {
       i = j + CodedOutputByteBufferNano.computeMessageSize(3, localCgiResult);
@@ -85,14 +85,14 @@ public final class CgiLoginReply
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 0) {
       paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    CgiResult localCgiResult = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult;
+    CgiResult localCgiResult = this.c;
     if (localCgiResult != null) {
       paramCodedOutputByteBufferNano.writeMessage(3, localCgiResult);
     }
@@ -101,7 +101,7 @@ public final class CgiLoginReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.CgiLoginReply
  * JD-Core Version:    0.7.0.1
  */

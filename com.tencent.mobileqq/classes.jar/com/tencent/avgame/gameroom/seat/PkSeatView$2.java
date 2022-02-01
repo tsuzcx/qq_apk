@@ -14,18 +14,18 @@ class PkSeatView$2
   
   public void onGlobalLayout()
   {
-    if ((PkSeatView.b(this.a) != null) && (PkSeatView.b(this.a).b != null))
+    if ((PkSeatView.c(this.a) != null) && (PkSeatView.c(this.a).e != null))
     {
       Object localObject = new int[2];
       this.a.getLocationInWindow((int[])localObject);
       int[] arrayOfInt = new int[2];
-      PkSeatView.b(this.a).b.getLocationInWindow(arrayOfInt);
+      PkSeatView.c(this.a).e.getLocationInWindow(arrayOfInt);
       PkSeatView localPkSeatView = this.a;
-      PkSeatView.b(localPkSeatView, new RoundEmptyRectRelativeLayout.ClipRoundRect(arrayOfInt[0] - localObject[0], arrayOfInt[1] - localObject[1], PkSeatView.b(localPkSeatView).b.getWidth(), PkSeatView.b(this.a).b.getHeight(), ViewUtils.a(12.0F)));
+      PkSeatView.b(localPkSeatView, new RoundEmptyRectRelativeLayout.ClipRoundRect(arrayOfInt[0] - localObject[0], arrayOfInt[1] - localObject[1], PkSeatView.c(localPkSeatView).e.getWidth(), PkSeatView.c(this.a).e.getHeight(), ViewUtils.dip2px(12.0F)));
       localObject = this.a;
-      ((PkSeatView)localObject).a(PkSeatView.b((PkSeatView)localObject));
+      ((PkSeatView)localObject).a(PkSeatView.d((PkSeatView)localObject));
       if (Build.VERSION.SDK_INT >= 16) {
-        PkSeatView.b(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        PkSeatView.c(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
     }
   }

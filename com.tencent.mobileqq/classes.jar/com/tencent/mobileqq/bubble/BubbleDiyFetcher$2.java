@@ -25,8 +25,8 @@ class BubbleDiyFetcher$2
         BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localBubbleDiyEntity.uinAndDiyId))
         {
-          this.this$0.a.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
-          this.this$0.b.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
+          this.this$0.c.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
+          this.this$0.d.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
         }
       }
       if (QLog.isColorLevel())
@@ -41,7 +41,7 @@ class BubbleDiyFetcher$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.2
  * JD-Core Version:    0.7.0.1
  */

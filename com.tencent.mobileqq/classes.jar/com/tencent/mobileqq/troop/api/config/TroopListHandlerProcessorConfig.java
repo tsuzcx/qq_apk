@@ -13,27 +13,27 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class TroopListHandlerProcessorConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<AbsTroopListHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static final Object b = new Object();
+  private static ArrayList<AbsTroopListHandlerProcessor> c = new ArrayList();
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (a.get()) {
         return;
       }
-      if (TroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList != null)
+      if (TroopCustomizedProcessorRegister.a != null)
       {
-        Iterator localIterator = TroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = TroopCustomizedProcessorRegister.a.iterator();
         while (localIterator.hasNext())
         {
           Object localObject3 = (Class)localIterator.next();
           try
           {
             localObject3 = (AbsTroopListHandlerProcessor)((Class)localObject3).newInstance();
-            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            c.add(localObject3);
           }
           catch (Throwable localThrowable)
           {
@@ -41,7 +41,7 @@ public final class TroopListHandlerProcessorConfig
           }
         }
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      a.set(true);
       return;
     }
     for (;;)
@@ -52,7 +52,7 @@ public final class TroopListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopListHandlerProcessor)localIterator.next()).a(paramAppInterface);
     }
@@ -60,7 +60,7 @@ public final class TroopListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, TroopInfo paramTroopInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopInfo);
     }
@@ -68,7 +68,7 @@ public final class TroopListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, GetTroopListRespV2 paramGetTroopListRespV2)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramGetTroopListRespV2);
     }
@@ -76,7 +76,7 @@ public final class TroopListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, Map<String, Boolean> paramMap)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramMap);
     }
@@ -84,7 +84,7 @@ public final class TroopListHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopListHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

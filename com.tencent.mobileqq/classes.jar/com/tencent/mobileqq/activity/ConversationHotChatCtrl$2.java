@@ -22,31 +22,31 @@ class ConversationHotChatCtrl$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {
+    if (this.a.isWifiHotChat) {
       paramInt = 1;
     } else {
       paramInt = 2;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
+    ReportController.b(this.b, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+    if (!NetworkUtil.isNetSupport(this.c))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), HardCodeUtil.a(2131702773), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.makeText(this.c.getApplicationContext(), HardCodeUtil.a(2131900764), 0).show(this.c.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(ConversationHotChatCtrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl));
-    ((IHotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).exitHotChat(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL_ACTION_DELETE_SHELL);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl;
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    paramDialogInterface.a = new QQProgressDialog(localBaseActivity, localBaseActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.setContentView(2131562765);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692086));
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.setCancelable(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.show();
+    this.c.addObserver(ConversationHotChatCtrl.a(this.d));
+    ((IHotChatHandler)this.b.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).exitHotChat(this.a, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL_ACTION_DELETE_SHELL);
+    paramDialogInterface = this.d;
+    BaseActivity localBaseActivity = this.c;
+    paramDialogInterface.b = new QQProgressDialog(localBaseActivity, localBaseActivity.getTitleBarHeight());
+    this.d.b.setContentView(2131629210);
+    this.d.b.a(this.c.getString(2131889064));
+    this.d.b.setCancelable(true);
+    this.d.b.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationHotChatCtrl.2
  * JD-Core Version:    0.7.0.1
  */

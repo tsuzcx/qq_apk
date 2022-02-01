@@ -51,115 +51,50 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabFeeds;
 public class ReadInJoyProteusFamilyUtil
   implements IForeBackGroundCallback
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static ReadInJoyProteusFamilyUtil jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil;
   public static String a = "https://oa.m.tencent.com/an:kandiandata/api/kd_proteus_card?version=0&is_update=1";
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static int jdField_b_of_type_Int = 0;
-  private static String jdField_b_of_type_JavaLangString = "ReadInJoyProteusFamilyUtil";
-  private static List<AbsBaseArticleInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private static Map<Pair<Long, AbsBaseArticleInfo>, String> jdField_b_of_type_JavaUtilMap;
-  private static JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private static String jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-  private static JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  private static String d;
-  private static String e;
-  private static String f;
-  private static String g;
-  private static String h;
-  private static String i;
-  private static String j;
-  private static String k;
-  private static String l;
-  private static String n;
-  private ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil$OnProteusFamilyDataLoaded;
-  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<Pair<Long, Pair<View, AbsBaseArticleInfo>>, Long> jdField_a_of_type_JavaUtilMap = new TreeMap(new ReadInJoyProteusFamilyUtil.1(this));
-  private List<Long> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private Map<String, Long> jdField_c_of_type_JavaUtilMap = new HashMap();
-  private String m;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 86400000;
-    d = "version";
-    e = "local_data";
-    f = "local_update_time";
-    g = "remote_update_time";
-    h = "family_data";
-    i = "proteus_card_list";
-    j = "card_id";
-    k = "card_value";
-    l = "utime";
-    jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    jdField_b_of_type_OrgJsonJSONObject = new JSONObject();
-    jdField_c_of_type_OrgJsonJSONObject = new JSONObject();
-    jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil = null;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_JavaUtilMap = new TreeMap(new ReadInJoyProteusFamilyUtil.2());
-  }
+  private static String b = "ReadInJoyProteusFamilyUtil";
+  private static String c = a;
+  private static int d = 0;
+  private static int e = 86400000;
+  private static String f = "version";
+  private static String g = "local_data";
+  private static String h = "local_update_time";
+  private static String i = "remote_update_time";
+  private static String j = "family_data";
+  private static String k = "proteus_card_list";
+  private static String l = "card_id";
+  private static String m = "card_value";
+  private static String n = "utime";
+  private static JSONObject o = new JSONObject();
+  private static JSONObject p = new JSONObject();
+  private static JSONObject q = new JSONObject();
+  private static ReadInJoyProteusFamilyUtil r = null;
+  private static boolean t = false;
+  private static String v;
+  private static Map<Pair<Long, AbsBaseArticleInfo>, String> x = new TreeMap(new ReadInJoyProteusFamilyUtil.2());
+  private static List<AbsBaseArticleInfo> z = new ArrayList();
+  private List<Long> A = new ArrayList();
+  private Map<String, Long> B = new HashMap();
+  private ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded s;
+  private String u;
+  private Map<Pair<Long, Pair<View, AbsBaseArticleInfo>>, Long> w = new TreeMap(new ReadInJoyProteusFamilyUtil.1(this));
+  private List<View> y = new ArrayList();
   
   private ReadInJoyProteusFamilyUtil()
   {
-    f();
-    String str = jdField_b_of_type_JavaLangString;
+    n();
+    String str = b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("init mPskey ");
-    localStringBuilder.append(n);
+    localStringBuilder.append(v);
     QLog.d(str, 2, localStringBuilder.toString());
-    e();
+    m();
     ReadinjoySPEventReport.ForeBackGround.a(this);
   }
   
   private static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     return RIJBaseItemViewType.a(paramAbsBaseArticleInfo, paramInt);
-  }
-  
-  private static Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
-    String str = RIJQQAppInterfaceUtil.a();
-    Object localObject2 = (TicketManager)((QQAppInterface)localObject1).getManager(2);
-    localObject1 = ((TicketManager)localObject2).getSkey(str);
-    ((TicketManager)localObject2).getPskey(str, "oa.m.tencent.com");
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("p_skey=");
-    ((StringBuilder)localObject2).append(n);
-    ((StringBuilder)localObject2).toString();
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("uin=o");
-    ((StringBuilder)localObject2).append(str);
-    ((StringBuilder)localObject2).append(";p_skey=");
-    ((StringBuilder)localObject2).append(n);
-    ((StringBuilder)localObject2).append(";p_uin=o");
-    ((StringBuilder)localObject2).append(str);
-    ((StringBuilder)localObject2).append(";skey=");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    localBundle.putString("cookie", ((StringBuilder)localObject2).toString());
-    str = jdField_b_of_type_JavaLangString;
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("cgi req  header : ");
-    ((StringBuilder)localObject1).append(localBundle);
-    QLog.d(str, 2, ((StringBuilder)localObject1).toString());
-    return localBundle;
-  }
-  
-  public static ReadInJoyProteusFamilyUtil a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil = new ReadInJoyProteusFamilyUtil();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil;
   }
   
   private static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -180,33 +115,6 @@ public class ReadInJoyProteusFamilyUtil
       }
     }
     return "";
-  }
-  
-  private static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
-  {
-    int i1 = a(paramAbsBaseArticleInfo, paramInt);
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(i1)) {
-      return String.valueOf(i1);
-    }
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 29)) {
-      paramInt = 1;
-    } else {
-      paramInt = 0;
-    }
-    if ((!ProteusSupportUtil.a(i1)) && (paramInt == 0)) {
-      return "";
-    }
-    if (paramInt == 0) {
-      paramAbsBaseArticleInfo = String.valueOf(i1);
-    } else {
-      paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo);
-    }
-    String str = jdField_b_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getPTSCardViewType ");
-    localStringBuilder.append(paramAbsBaseArticleInfo);
-    QLog.d(str, 2, localStringBuilder.toString());
-    return paramAbsBaseArticleInfo;
   }
   
   public static List<AbsBaseArticleInfo> a(String paramString)
@@ -254,7 +162,7 @@ public class ReadInJoyProteusFamilyUtil
               localObject4 = new oidb_cmd0x68b.RspGetFollowTabFeeds();
               ((oidb_cmd0x68b.RspGetFollowTabFeeds)localObject4).mergeFrom(Arrays.copyOfRange(paramString, 1, paramString.length));
               if ((!((oidb_cmd0x68b.RspGetFollowTabFeeds)localObject4).msg_article_summary.has()) || (!((oidb_cmd0x68b.RspGetFollowTabFeeds)localObject4).uint32_feeds_type.has())) {
-                break label898;
+                break label897;
               }
               localObject1 = ReadInJoyMSFHandlerUtils.a((articlesummary.ArticleSummary)((oidb_cmd0x68b.RspGetFollowTabFeeds)localObject4).msg_article_summary.get(), 70, 0, null);
               paramString = (String)localObject1;
@@ -278,16 +186,16 @@ public class ReadInJoyProteusFamilyUtil
             else
             {
               if (i2 != 2) {
-                break label903;
+                break label902;
               }
               localObject1 = new articlesummary.ArticleSummary();
               ((articlesummary.ArticleSummary)localObject1).mergeFrom(Arrays.copyOfRange(paramString, 1, paramString.length));
               if ((!((articlesummary.ArticleSummary)localObject1).msg_feeds_info.has()) || (((articlesummary.ArticleSummary)localObject1).msg_feeds_info.get() == null) || (!((articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject1).msg_feeds_info.get()).msg_pos_ad_info.has())) {
-                break label903;
+                break label902;
               }
               paramString = (articlesummary.PosAdInfo)((articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject1).msg_feeds_info.get()).msg_pos_ad_info.get();
               if ((paramString == null) || (paramString.int32_ret.get() != 0)) {
-                break label903;
+                break label902;
               }
               i2 = paramString.enum_pos_layout.get();
               long l1 = paramString.uint64_pos_id.get();
@@ -297,18 +205,18 @@ public class ReadInJoyProteusFamilyUtil
               ((AdvertisementInfo)paramString).mAdPosLayout = i2;
               ((AdvertisementInfo)paramString).mAdPosID = l1;
               ((AdvertisementInfo)paramString).mADVideoAutoPlay = l2;
-              if ((paramString == null) || (TextUtils.isEmpty(b(paramString, 8888)))) {
+              if ((paramString == null) || (TextUtils.isEmpty(c(paramString, 8888)))) {
                 continue;
               }
               localArrayList.add(paramString);
-              localObject1 = jdField_b_of_type_JavaLangString;
+              localObject1 = b;
               localObject4 = new StringBuilder();
               ((StringBuilder)localObject4).append("convert2ArticleInfoList  | position : ");
               ((StringBuilder)localObject4).append(i1);
               ((StringBuilder)localObject4).append(" key : ");
               ((StringBuilder)localObject4).append(str);
               ((StringBuilder)localObject4).append(" itemtype :");
-              ((StringBuilder)localObject4).append(a(paramString, 8888));
+              ((StringBuilder)localObject4).append(b(paramString, 8888));
               ((StringBuilder)localObject4).append(" article_title: ");
               ((StringBuilder)localObject4).append(paramString.mTitle);
               QLog.d((String)localObject1, 2, ((StringBuilder)localObject4).toString());
@@ -322,7 +230,7 @@ public class ReadInJoyProteusFamilyUtil
           if (paramString.hasNext())
           {
             localObject1 = (Map.Entry)paramString.next();
-            localObject2 = jdField_b_of_type_JavaLangString;
+            localObject2 = b;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("convert2ArticleInfoList  | cnt key : ");
             ((StringBuilder)localObject3).append((String)((Map.Entry)localObject1).getKey());
@@ -331,7 +239,7 @@ public class ReadInJoyProteusFamilyUtil
             QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
             continue;
           }
-          paramString = jdField_b_of_type_JavaLangString;
+          paramString = b;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("convert2ArticleInfoList  | family num :");
           ((StringBuilder)localObject1).append(localArrayList.size());
@@ -354,10 +262,10 @@ public class ReadInJoyProteusFamilyUtil
       for (;;)
       {
         break;
-        label898:
+        label897:
         paramString = null;
       }
-      label903:
+      label902:
       paramString = null;
     }
   }
@@ -367,9 +275,9 @@ public class ReadInJoyProteusFamilyUtil
     if (paramList == null) {
       return;
     }
-    Object localObject = jdField_b_of_type_JavaUtilList;
+    Object localObject = z;
     if ((localObject != null) && (((List)localObject).size() > 0)) {
-      jdField_b_of_type_JavaUtilList.clear();
+      z.clear();
     }
     paramList = paramList.listIterator();
     while (paramList.hasNext())
@@ -378,17 +286,125 @@ public class ReadInJoyProteusFamilyUtil
       if (localObject != null)
       {
         ((AbsBaseArticleInfo)localObject).articleViewModel = ArticleViewModel.a((AbsBaseArticleInfo)localObject);
-        jdField_b_of_type_JavaUtilList.add(localObject);
+        z.add(localObject);
       }
     }
   }
   
-  public static boolean a()
+  private static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    return false;
+    int i1 = a(paramAbsBaseArticleInfo, paramInt);
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(i1)) {
+      return String.valueOf(i1);
+    }
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 29)) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    if ((!ProteusSupportUtil.a(i1)) && (paramInt == 0)) {
+      return "";
+    }
+    if (paramInt == 0) {
+      paramAbsBaseArticleInfo = String.valueOf(i1);
+    } else {
+      paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo);
+    }
+    String str = b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getPTSCardViewType ");
+    localStringBuilder.append(paramAbsBaseArticleInfo);
+    QLog.d(str, 2, localStringBuilder.toString());
+    return paramAbsBaseArticleInfo;
   }
   
-  private static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  public static ReadInJoyProteusFamilyUtil c()
+  {
+    if (r == null) {
+      try
+      {
+        if (r == null) {
+          r = new ReadInJoyProteusFamilyUtil();
+        }
+      }
+      finally {}
+    }
+    return r;
+  }
+  
+  private static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  {
+    paramAbsBaseArticleInfo = ReadInJoyBaseAdapter.a(paramAbsBaseArticleInfo, paramInt);
+    String str = b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getPtsFamilyCardViewType | viewType : ");
+    localStringBuilder.append(paramAbsBaseArticleInfo);
+    QLog.d(str, 2, localStringBuilder.toString());
+    return paramAbsBaseArticleInfo;
+  }
+  
+  private static String d(String paramString)
+  {
+    try
+    {
+      String str = a;
+      Object localObject = new Bundle();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ((Bundle)localObject).putString("card_id_list", paramString);
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append(d);
+        paramString.append("");
+        ((Bundle)localObject).putString("version", paramString.toString());
+      }
+      paramString = b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cgi req  url: ");
+      localStringBuilder.append(str);
+      localStringBuilder.append("; req params ");
+      localStringBuilder.append(((Bundle)localObject).toString());
+      QLog.d(paramString, 2, localStringBuilder.toString());
+      paramString = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), str, "GET", (Bundle)localObject, p());
+      if (paramString == null) {
+        return "";
+      }
+      paramString = new String(paramString);
+      str = b;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cgi resp : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d(str, 2, ((StringBuilder)localObject).toString());
+      paramString = new JSONObject(paramString);
+      if (Integer.parseInt(paramString.getString(f)) > 0)
+      {
+        int i1 = Integer.parseInt(paramString.getString(f));
+        if (i1 > d)
+        {
+          d = i1;
+          o();
+          z.clear();
+        }
+        RIJSPUtils.a(f, Integer.valueOf(d));
+        str = b;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("update version ");
+        ((StringBuilder)localObject).append(d);
+        QLog.d(str, 2, ((StringBuilder)localObject).toString());
+      }
+      paramString = paramString.optString(k);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  private static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     int i1 = a(paramAbsBaseArticleInfo, paramInt);
     boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(i1);
@@ -400,7 +416,7 @@ public class ReadInJoyProteusFamilyUtil
     if ((ProteusSupportUtil.a(i1)) || (paramInt != 0)) {
       bool = true;
     }
-    paramAbsBaseArticleInfo = jdField_b_of_type_JavaLangString;
+    paramAbsBaseArticleInfo = b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isPtsCard | viewType : ");
     localStringBuilder.append(i1);
@@ -410,35 +426,19 @@ public class ReadInJoyProteusFamilyUtil
     return bool;
   }
   
-  private boolean a(String paramString)
+  public static boolean e()
   {
-    return (!TextUtils.isEmpty(paramString)) || (b(String.valueOf(paramString)));
+    return false;
   }
   
-  private static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  private boolean e(String paramString)
   {
-    paramAbsBaseArticleInfo = ReadInJoyBaseAdapter.a(paramAbsBaseArticleInfo, paramInt);
-    String str = jdField_b_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getPtsFamilyCardViewType | viewType : ");
-    localStringBuilder.append(paramAbsBaseArticleInfo);
-    QLog.d(str, 2, localStringBuilder.toString());
-    return paramAbsBaseArticleInfo;
+    return (!TextUtils.isEmpty(paramString)) || (f(String.valueOf(paramString)));
   }
   
-  private List<AbsBaseArticleInfo> b()
+  private static boolean f(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    List localList = jdField_b_of_type_JavaUtilList;
-    if (localList != null) {
-      localArrayList.addAll(localList);
-    }
-    return localArrayList;
-  }
-  
-  private static boolean b(String paramString)
-  {
-    JSONObject localJSONObject = jdField_c_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = q;
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (localJSONObject != null)
@@ -446,15 +446,15 @@ public class ReadInJoyProteusFamilyUtil
       bool1 = bool2;
       if (!TextUtils.isEmpty(localJSONObject.optString(paramString)))
       {
-        localJSONObject = jdField_a_of_type_OrgJsonJSONObject;
+        localJSONObject = o;
         bool1 = bool2;
         if (localJSONObject != null)
         {
           if (localJSONObject.optLong(paramString) == 0L) {
             return true;
           }
-          long l1 = jdField_a_of_type_OrgJsonJSONObject.optLong(paramString);
-          if (System.currentTimeMillis() - l1 > jdField_b_of_type_Int) {
+          long l1 = o.optLong(paramString);
+          if (System.currentTimeMillis() - l1 > e) {
             return true;
           }
           bool1 = false;
@@ -464,80 +464,19 @@ public class ReadInJoyProteusFamilyUtil
     return bool1;
   }
   
-  private static String c(String paramString)
+  private void m()
   {
-    try
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      Object localObject = new Bundle();
-      if (!TextUtils.isEmpty(paramString))
-      {
-        ((Bundle)localObject).putString("card_id_list", paramString);
-      }
-      else
-      {
-        paramString = new StringBuilder();
-        paramString.append(jdField_a_of_type_Int);
-        paramString.append("");
-        ((Bundle)localObject).putString("version", paramString.toString());
-      }
-      paramString = jdField_b_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("cgi req  url: ");
-      localStringBuilder.append(str);
-      localStringBuilder.append("; req params ");
-      localStringBuilder.append(((Bundle)localObject).toString());
-      QLog.d(paramString, 2, localStringBuilder.toString());
-      paramString = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), str, "GET", (Bundle)localObject, a());
-      if (paramString == null) {
-        return "";
-      }
-      paramString = new String(paramString);
-      str = jdField_b_of_type_JavaLangString;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("cgi resp : ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d(str, 2, ((StringBuilder)localObject).toString());
-      paramString = new JSONObject(paramString);
-      if (Integer.parseInt(paramString.getString(d)) > 0)
-      {
-        int i1 = Integer.parseInt(paramString.getString(d));
-        if (i1 > jdField_a_of_type_Int)
-        {
-          jdField_a_of_type_Int = i1;
-          f();
-          jdField_b_of_type_JavaUtilList.clear();
-        }
-        RIJSPUtils.a(d, Integer.valueOf(jdField_a_of_type_Int));
-        str = jdField_b_of_type_JavaLangString;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("update version ");
-        ((StringBuilder)localObject).append(jdField_a_of_type_Int);
-        QLog.d(str, 2, ((StringBuilder)localObject).toString());
-      }
-      paramString = paramString.optString(i);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  private void e()
-  {
-    jdField_a_of_type_Int = ((Integer)RIJSPUtils.a(d, Integer.valueOf(0))).intValue();
-    String str = jdField_b_of_type_JavaLangString;
+    d = ((Integer)RIJSPUtils.b(f, Integer.valueOf(0))).intValue();
+    String str = b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("local version ");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(d);
     QLog.d(str, 2, localStringBuilder.toString());
     try
     {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)RIJSPUtils.a(f, ""));
-      jdField_b_of_type_OrgJsonJSONObject = new JSONObject((String)RIJSPUtils.a(g, ""));
-      jdField_c_of_type_OrgJsonJSONObject = new JSONObject((String)RIJSPUtils.a(e, ""));
+      o = new JSONObject((String)RIJSPUtils.b(h, ""));
+      p = new JSONObject((String)RIJSPUtils.b(i, ""));
+      q = new JSONObject((String)RIJSPUtils.b(g, ""));
       return;
     }
     catch (Exception localException)
@@ -546,12 +485,12 @@ public class ReadInJoyProteusFamilyUtil
     }
   }
   
-  private static String f()
+  private static String n()
   {
     Object localObject3 = RIJQQAppInterfaceUtil.b();
     if (localObject3 == null)
     {
-      QLog.d(jdField_b_of_type_JavaLangString, 2, "getPskeyFromServer | mApp is null");
+      QLog.d(b, 2, "getPskeyFromServer | mApp is null");
       return "";
     }
     Object localObject1 = (TicketManager)((QQAppInterface)localObject3).getManager(2);
@@ -563,52 +502,92 @@ public class ReadInJoyProteusFamilyUtil
       localObject1 = ((TicketManager)localObject1).getPskey((String)localObject2, 16L, new String[] { "m.tencent.com" }, (WtTicketPromise)localObject3);
       if ((localObject1 != null) && (((Ticket)localObject1)._pskey_map != null) && (((Ticket)localObject1)._pskey_map.get("m.tencent.com") != null))
       {
-        QLog.i(jdField_b_of_type_JavaLangString, 1, "getPskeyFromServerAndRetry get pskey with promise success! isImediately Resend: ");
+        QLog.i(b, 1, "getPskeyFromServerAndRetry get pskey with promise success! isImediately Resend: ");
         str = new String((byte[])((Ticket)localObject1)._pskey_map.get("m.tencent.com"));
       }
       else
       {
-        QLog.i(jdField_b_of_type_JavaLangString, 1, "getPskeyFromServerAndRetry get pskey from server now!");
+        QLog.i(b, 1, "getPskeyFromServerAndRetry get pskey from server now!");
       }
     }
     else
     {
-      QLog.e(jdField_b_of_type_JavaLangString, 1, "getPskeyFromServerAndRetry,ticketmanager is null");
+      QLog.e(b, 1, "getPskeyFromServerAndRetry,ticketmanager is null");
     }
-    n = str;
-    localObject1 = jdField_b_of_type_JavaLangString;
+    v = str;
+    localObject1 = b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getPskeyFromServer mPskey : ");
-    ((StringBuilder)localObject2).append(n);
+    ((StringBuilder)localObject2).append(v);
     QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     return str;
   }
   
-  private static void f()
+  private static void o()
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_JavaUtilList.clear();
-    jdField_b_of_type_JavaUtilMap.clear();
+    t = false;
+    z.clear();
+    x.clear();
   }
   
-  private static void g()
+  private static Bundle p()
   {
-    JSONObject localJSONObject = jdField_a_of_type_OrgJsonJSONObject;
+    Bundle localBundle = new Bundle();
+    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
+    String str = RIJQQAppInterfaceUtil.d();
+    Object localObject2 = (TicketManager)((QQAppInterface)localObject1).getManager(2);
+    localObject1 = ((TicketManager)localObject2).getSkey(str);
+    ((TicketManager)localObject2).getPskey(str, "oa.m.tencent.com");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("p_skey=");
+    ((StringBuilder)localObject2).append(v);
+    ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("uin=o");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(";p_skey=");
+    ((StringBuilder)localObject2).append(v);
+    ((StringBuilder)localObject2).append(";p_uin=o");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(";skey=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localBundle.putString("cookie", ((StringBuilder)localObject2).toString());
+    str = b;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("cgi req  header : ");
+    ((StringBuilder)localObject1).append(localBundle);
+    QLog.d(str, 2, ((StringBuilder)localObject1).toString());
+    return localBundle;
+  }
+  
+  private static void q()
+  {
+    JSONObject localJSONObject = o;
     if (localJSONObject != null)
     {
       if (localJSONObject.length() == 0) {
         return;
       }
-      RIJSPUtils.a(f, jdField_a_of_type_OrgJsonJSONObject.toString());
-      localJSONObject = jdField_c_of_type_OrgJsonJSONObject;
+      RIJSPUtils.a(h, o.toString());
+      localJSONObject = q;
       if (localJSONObject != null)
       {
         if (localJSONObject.length() == 0) {
           return;
         }
-        RIJSPUtils.a(e, jdField_c_of_type_OrgJsonJSONObject.toString());
+        RIJSPUtils.a(g, q.toString());
       }
     }
+  }
+  
+  private List<AbsBaseArticleInfo> r()
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = z;
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    return localArrayList;
   }
   
   public void a() {}
@@ -616,7 +595,7 @@ public class ReadInJoyProteusFamilyUtil
   public void a(int paramInt, List<oidb_cmd0x68b.RspGetFollowTabFeeds> paramList, List<AbsBaseArticleInfo> paramList1)
   {
     if ((paramList != null) && (paramList1 != null) && (paramList.size() == paramList1.size())) {
-      if (jdField_c_of_type_OrgJsonJSONObject == null) {
+      if (q == null) {
         return;
       }
     }
@@ -629,9 +608,9 @@ public class ReadInJoyProteusFamilyUtil
         i1 = 0;
         if (i1 < i2)
         {
-          String str = b((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
-          a((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
-          if (!a(str)) {
+          String str = c((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
+          d((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
+          if (!e(str)) {
             break label218;
           }
           Object localObject = ((oidb_cmd0x68b.RspGetFollowTabFeeds)paramList.get(i1)).toByteArray();
@@ -639,19 +618,19 @@ public class ReadInJoyProteusFamilyUtil
           arrayOfByte[0] = 1;
           System.arraycopy(localObject, 0, arrayOfByte, 1, localObject.length);
           localObject = new String(Base64Util.encode(arrayOfByte, 0));
-          if (jdField_c_of_type_OrgJsonJSONObject != null)
+          if (q != null)
           {
-            jdField_c_of_type_OrgJsonJSONObject.put(str, localObject);
-            this.m = jdField_c_of_type_OrgJsonJSONObject.toString();
+            q.put(str, localObject);
+            this.u = q.toString();
           }
-          if (jdField_a_of_type_OrgJsonJSONObject == null) {
+          if (o == null) {
             break label218;
           }
-          jdField_a_of_type_OrgJsonJSONObject.put(str, System.currentTimeMillis());
+          o.put(str, System.currentTimeMillis());
           break label218;
         }
-        g();
-        QLog.d(jdField_b_of_type_JavaLangString, 2, "collect social card articleinfo ");
+        q();
+        QLog.d(b, 2, "collect social card articleinfo ");
         return;
       }
       catch (JSONException paramList)
@@ -666,13 +645,13 @@ public class ReadInJoyProteusFamilyUtil
   
   public void a(ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded paramOnProteusFamilyDataLoaded)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil$OnProteusFamilyDataLoaded = paramOnProteusFamilyDataLoaded;
+    this.s = paramOnProteusFamilyDataLoaded;
   }
   
   public void a(List<articlesummary.ArticleSummary> paramList, List<AbsBaseArticleInfo> paramList1, int paramInt)
   {
     if ((paramList != null) && (paramList1 != null) && (paramList.size() == paramList1.size())) {
-      if (jdField_c_of_type_OrgJsonJSONObject == null) {
+      if (q == null) {
         return;
       }
     }
@@ -685,9 +664,9 @@ public class ReadInJoyProteusFamilyUtil
         i1 = 0;
         if (i1 < i2)
         {
-          String str = b((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
-          a((AbsBaseArticleInfo)paramList1.get(i1), 0);
-          if (!a(str)) {
+          String str = c((AbsBaseArticleInfo)paramList1.get(i1), paramInt);
+          d((AbsBaseArticleInfo)paramList1.get(i1), 0);
+          if (!e(str)) {
             break label218;
           }
           Object localObject = ((articlesummary.ArticleSummary)paramList.get(i1)).toByteArray();
@@ -695,19 +674,19 @@ public class ReadInJoyProteusFamilyUtil
           arrayOfByte[0] = 0;
           System.arraycopy(localObject, 0, arrayOfByte, 1, localObject.length);
           localObject = new String(Base64Util.encode(arrayOfByte, 0));
-          if (jdField_c_of_type_OrgJsonJSONObject != null)
+          if (q != null)
           {
-            jdField_c_of_type_OrgJsonJSONObject.put(str, localObject);
-            this.m = jdField_c_of_type_OrgJsonJSONObject.toString();
+            q.put(str, localObject);
+            this.u = q.toString();
           }
-          if (jdField_a_of_type_OrgJsonJSONObject == null) {
+          if (o == null) {
             break label218;
           }
-          jdField_a_of_type_OrgJsonJSONObject.put(str, System.currentTimeMillis());
+          o.put(str, System.currentTimeMillis());
           break label218;
         }
-        g();
-        QLog.d(jdField_b_of_type_JavaLangString, 2, "collect normal card articleinfo ");
+        q();
+        QLog.d(b, 2, "collect normal card articleinfo ");
         return;
       }
       catch (JSONException paramList)
@@ -727,9 +706,9 @@ public class ReadInJoyProteusFamilyUtil
     }
     try
     {
-      String str = b(paramAbsBaseArticleInfo, 0);
-      a(paramAbsBaseArticleInfo, 0);
-      if (!a(str)) {
+      String str = c(paramAbsBaseArticleInfo, 0);
+      d(paramAbsBaseArticleInfo, 0);
+      if (!e(str)) {
         return;
       }
       paramArticleSummary = paramArticleSummary.toByteArray();
@@ -737,39 +716,39 @@ public class ReadInJoyProteusFamilyUtil
       paramAbsBaseArticleInfo[0] = 2;
       System.arraycopy(paramArticleSummary, 0, paramAbsBaseArticleInfo, 1, paramArticleSummary.length);
       paramArticleSummary = new String(Base64Util.encode(paramAbsBaseArticleInfo, 0));
-      if (jdField_c_of_type_OrgJsonJSONObject != null)
+      if (q != null)
       {
-        jdField_c_of_type_OrgJsonJSONObject.put(str, paramArticleSummary);
-        this.m = jdField_c_of_type_OrgJsonJSONObject.toString();
+        q.put(str, paramArticleSummary);
+        this.u = q.toString();
       }
-      if (jdField_a_of_type_OrgJsonJSONObject != null) {
-        jdField_a_of_type_OrgJsonJSONObject.put(str, System.currentTimeMillis());
+      if (o != null) {
+        o.put(str, System.currentTimeMillis());
       }
-      g();
-      QLog.d(jdField_b_of_type_JavaLangString, 2, "collect ad card articleinfo ");
+      q();
+      QLog.d(b, 2, "collect ad card articleinfo ");
       return;
     }
     catch (JSONException paramArticleSummary) {}
   }
   
-  public void ax_() {}
+  public void cU_() {}
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil$OnProteusFamilyDataLoaded == null) {
+    if (this.s == null) {
       return;
     }
     ThreadManager.executeOnSubThread(new ReadInJoyProteusFamilyUtil.4(this));
   }
   
-  public void d()
+  public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPtsReadInJoyProteusFamilyUtil$OnProteusFamilyDataLoaded = null;
+    this.s = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.pts.ReadInJoyProteusFamilyUtil
  * JD-Core Version:    0.7.0.1
  */

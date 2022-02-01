@@ -264,7 +264,7 @@ public class LoginInfoActivity
   private void dismissLoginDevGrayView(View paramView)
   {
     paramView.setVisibility(8);
-    SharedPreUtils.d(this, getCurrentAccountUin(), true);
+    SharedPreUtils.c(this, getCurrentAccountUin(), true);
   }
   
   private boolean getShowTime()
@@ -317,11 +317,11 @@ public class LoginInfoActivity
   
   private void initAccountReleaseEntrance()
   {
-    this.mAccountLogoutItem = ((FormSimpleItem)findViewById(2131361924));
-    if (SharedPreUtils.a(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_entrance", false))
+    this.mAccountLogoutItem = ((FormSimpleItem)findViewById(2131427478));
+    if (SharedPreUtils.c(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_entrance", false))
     {
       this.mAccountLogoutItem.setVisibility(0);
-      String str = SharedPreUtils.a(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_url", "");
+      String str = SharedPreUtils.c(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_url", "");
       if (TextUtils.isEmpty(str)) {
         this.mAccountReleaseUrl = "https://ti.qq.com/qqcancel/index.html";
       } else {
@@ -343,7 +343,7 @@ public class LoginInfoActivity
   
   private void initSafetyCenterEntrance()
   {
-    this.mSafetyCenterItem = ((FormSimpleItem)findViewById(2131374308));
+    this.mSafetyCenterItem = ((FormSimpleItem)findViewById(2131442471));
     this.mSafetyCenterItem.setVisibility(0);
     this.mSafetyCenterItem.setOnClickListener(this);
     ReportController.a(this.app, "0X800B7DE");
@@ -360,8 +360,8 @@ public class LoginInfoActivity
   private void logout()
   {
     long l1 = System.currentTimeMillis();
-    Object localObject2 = SharedPreUtils.a(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_success_text", "");
-    String str = SharedPreUtils.a(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_bold_text", "");
+    Object localObject2 = SharedPreUtils.c(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_success_text", "");
+    String str = SharedPreUtils.c(this.app.getApp(), this.app.getCurrentAccountUin(), "account_logout_bold_text", "");
     Object localObject1 = new Intent();
     ((Intent)localObject1).putExtra("logout_intent", true);
     ((Intent)localObject1).putExtra("tab_index", FrameControllerUtil.a);
@@ -370,7 +370,7 @@ public class LoginInfoActivity
     ((Intent)localObject1).putExtra("release_success_text", (String)localObject2);
     ((Intent)localObject1).putExtra("release_bold_text", str);
     ThemeUiPlugin.destroy(this.app);
-    ChatBackgroundManager.b();
+    ChatBackgroundManager.j();
     localObject2 = this.app.getApp().getSharedPreferences("unreadcount", 4).edit();
     ((SharedPreferences.Editor)localObject2).putInt("unread", 0);
     ((SharedPreferences.Editor)localObject2).commit();
@@ -381,7 +381,7 @@ public class LoginInfoActivity
     int i = QQSettingUtil.a(this, this.app.getCurrentAccountUin());
     QQSettingUtil.a(this, this.app.getCurrentAccountUin(), i + 1);
     RouteUtils.a(this, (Intent)localObject1, "/base/login");
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
       localObject1 = new Intent();
       ((Intent)localObject1).setAction("qqplayer_exit_action");
@@ -456,16 +456,16 @@ public class LoginInfoActivity
       EquipmentLockImpl.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
       paramDevlockInfo = this.mStatusView;
       if (this.mIsGrayAccount) {
-        i = 2131691969;
+        i = 2131888936;
       } else {
-        i = 2131691980;
+        i = 2131888947;
       }
       paramDevlockInfo.setText(getString(i));
       paramDevlockInfo = this.mDevlockStatusIconView;
       if (this.mIsGrayAccount) {
-        i = 2130845091;
+        i = 2130846528;
       } else {
-        i = 2130845090;
+        i = 2130846527;
       }
       paramDevlockInfo.setImageResource(i);
     }
@@ -474,16 +474,16 @@ public class LoginInfoActivity
       EquipmentLockImpl.a().a(this.app, this, this.app.getCurrentAccountUin(), false);
       paramDevlockInfo = this.mStatusView;
       if (this.mIsGrayAccount) {
-        i = 2131691978;
+        i = 2131888945;
       } else {
-        i = 2131691983;
+        i = 2131888950;
       }
       paramDevlockInfo.setText(getString(i));
       paramDevlockInfo = this.mDevlockStatusIconView;
       if (this.mIsGrayAccount) {
-        i = 2130845088;
+        i = 2130846525;
       } else {
-        i = 2130845089;
+        i = 2130846526;
       }
       paramDevlockInfo.setImageResource(i);
     }
@@ -493,7 +493,7 @@ public class LoginInfoActivity
   private void onGetDevLockStatusFail()
   {
     this.mProtectDevLayout.setClickable(true);
-    this.mDevProtectTv.setTextColor(getResources().getColorStateList(2131167061));
+    this.mDevProtectTv.setTextColor(getResources().getColorStateList(2131167999));
     this.mStatusLoadingView.setVisibility(4);
   }
   
@@ -508,13 +508,13 @@ public class LoginInfoActivity
         if (i != 2) {
           return;
         }
-        this.mGesturePwdLayout.setRightText(getResources().getString(2131692892));
+        this.mGesturePwdLayout.setRightText(getResources().getString(2131890003));
         return;
       }
-      this.mGesturePwdLayout.setRightText(getResources().getString(2131692883));
+      this.mGesturePwdLayout.setRightText(getResources().getString(2131889994));
       return;
     }
-    this.mGesturePwdLayout.setRightText(getResources().getString(2131692891));
+    this.mGesturePwdLayout.setRightText(getResources().getString(2131890002));
   }
   
   private void refreshUserFaceState(int paramInt)
@@ -525,9 +525,9 @@ public class LoginInfoActivity
       ((oidb_0x5e1.UdcUinData)this.mFaceStatusInfo.rpt_msg_uin_data.get(0)).user_login_guard_face.set(paramInt);
       localObject = this.mTvFaceStatus;
       if (paramInt == 1) {
-        paramInt = 2131692145;
+        paramInt = 2131889128;
       } else {
-        paramInt = 2131692151;
+        paramInt = 2131889137;
       }
       ((TextView)localObject).setText(getString(paramInt));
       return;
@@ -565,21 +565,21 @@ public class LoginInfoActivity
     {
       initImmersiveTitle(-31676);
       if (!paramBoolean2) {
-        this.mDunImageView.setImageResource(2130847248);
+        this.mDunImageView.setImageResource(2130848834);
       } else {
-        this.mDunImageView.setImageResource(2130847246);
+        this.mDunImageView.setImageResource(2130848832);
       }
     }
     else
     {
       initImmersiveTitle(-15550475);
-      this.mDunImageView.setImageResource(2130847247);
+      this.mDunImageView.setImageResource(2130848833);
     }
     int i;
     if (paramBoolean1) {
-      i = 2130847255;
+      i = 2130848841;
     } else {
-      i = 2130847245;
+      i = 2130848831;
     }
     this.mLastSafeBG = this.mCurrentSafeBG;
     this.mCurrentSafeBG = paramBoolean1;
@@ -613,42 +613,42 @@ public class LoginInfoActivity
         SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramList.get(i);
         if (localSvcDevLoginInfo != null)
         {
-          View localView = getLayoutInflater().inflate(2131559320, this.mLoginDevLayout, false);
-          Object localObject = (RelativeLayout)localView.findViewById(2131369090);
+          View localView = getLayoutInflater().inflate(2131625269, this.mLoginDevLayout, false);
+          Object localObject = (RelativeLayout)localView.findViewById(2131436054);
           if (j == 1) {
-            ((RelativeLayout)localObject).setBackgroundResource(2130839433);
+            ((RelativeLayout)localObject).setBackgroundResource(2130839622);
           } else if (i == 0) {
-            ((RelativeLayout)localObject).setBackgroundResource(2130839449);
+            ((RelativeLayout)localObject).setBackgroundResource(2130839638);
           } else if (i == j - 1) {
-            ((RelativeLayout)localObject).setBackgroundResource(2130839440);
+            ((RelativeLayout)localObject).setBackgroundResource(2130839629);
           } else {
-            ((RelativeLayout)localObject).setBackgroundResource(2130839443);
+            ((RelativeLayout)localObject).setBackgroundResource(2130839632);
           }
-          getResources().getString(2131694374);
-          String str = getResources().getString(2131694376);
-          TextView localTextView2 = (TextView)localView.findViewById(2131369677);
-          Button localButton = (Button)localView.findViewById(2131369679);
-          if (AppSetting.d)
+          getResources().getString(2131892052);
+          String str = getResources().getString(2131892054);
+          TextView localTextView2 = (TextView)localView.findViewById(2131436788);
+          Button localButton = (Button)localView.findViewById(2131436790);
+          if (AppSetting.e)
           {
-            localTextView2.setContentDescription(getString(2131694376));
-            localButton.setContentDescription(getString(2131694374));
+            localTextView2.setContentDescription(getString(2131892054));
+            localButton.setContentDescription(getString(2131892052));
           }
-          localObject = (TextView)localView.findViewById(2131371697);
-          TextView localTextView1 = (TextView)localView.findViewById(2131368773);
-          ImageView localImageView = (ImageView)localView.findViewById(2131368343);
+          localObject = (TextView)localView.findViewById(2131439121);
+          TextView localTextView1 = (TextView)localView.findViewById(2131435692);
+          ImageView localImageView = (ImageView)localView.findViewById(2131435219);
           if (i == 0)
           {
             localTextView2.setText(str);
             localTextView2.setClickable(false);
             localButton.setVisibility(8);
             localTextView2.setVisibility(0);
-            localImageView.setImageResource(2130840679);
+            localImageView.setImageResource(2130841456);
           }
           else if (localSvcDevLoginInfo.iProductType == 1L)
           {
             localTextView2.setVisibility(8);
             localButton.setVisibility(8);
-            localImageView.setImageResource(2130840677);
+            localImageView.setImageResource(2130841454);
           }
           else
           {
@@ -656,11 +656,11 @@ public class LoginInfoActivity
             localButton.setVisibility(0);
             localButton.setTag(localSvcDevLoginInfo);
             localButton.setClickable(true);
-            localImageView.setImageResource(2130840678);
+            localImageView.setImageResource(2130841455);
             localButton.setOnClickListener(new LoginInfoActivity.10(this, localButton, i));
           }
           if (TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
-            ((TextView)localObject).setText(2131694379);
+            ((TextView)localObject).setText(2131892057);
           } else {
             ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
           }
@@ -714,7 +714,7 @@ public class LoginInfoActivity
     if (this.leftView != null)
     {
       this.leftView.setTextColor(paramInt);
-      Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(2130850450);
+      Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(2130852246);
       this.leftView.setBackgroundDrawable(localDrawable);
     }
     if (this.leftViewNotBack != null) {
@@ -740,10 +740,10 @@ public class LoginInfoActivity
     int i = localObject1[1];
     int j = ((View)localObject2).getHeight();
     localObject1 = new TextView(this);
-    ((TextView)localObject1).setBackgroundResource(2130845081);
+    ((TextView)localObject1).setBackgroundResource(2130846518);
     ((TextView)localObject1).setIncludeFontPadding(false);
     ((TextView)localObject1).setClickable(false);
-    ((TextView)localObject1).setText(getString(2131691973));
+    ((TextView)localObject1).setText(getString(2131888940));
     ((TextView)localObject1).setTextColor(-1);
     ((TextView)localObject1).setTextSize(12.0F);
     int k = AIOUtils.b(6.0F, getResources());
@@ -851,7 +851,7 @@ public class LoginInfoActivity
     ((AnimationSet)localObject1).setAnimationListener(new LoginInfoActivity.19(this));
     this.mRiskSummaryTv.setVisibility(0);
     this.mRiskSummaryTv.setText(paramString);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       this.mRiskSummaryTv.setContentDescription(paramString);
     }
     paramString = new AnimationSet(false);
@@ -869,7 +869,7 @@ public class LoginInfoActivity
       this.mRightSelectorImageView.startAnimation(paramString);
     }
     this.mRightSelectorImageView.setClickable(paramBoolean ^ true);
-    this.mDunImageView.setImageResource(2130847246);
+    this.mDunImageView.setImageResource(2130848832);
     paramString = new AnimationSet(false);
     localObject1 = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject1).setDuration(500L);
@@ -933,7 +933,7 @@ public class LoginInfoActivity
   private void updateQPIMButtons(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    QSafeManagerBean localQSafeManagerBean = QSafeConfigManager.a().a();
+    QSafeManagerBean localQSafeManagerBean = QSafeConfigManager.a().b();
     String str2 = "";
     String str1;
     if (localQSafeManagerBean == null) {
@@ -1115,7 +1115,7 @@ public class LoginInfoActivity
         if ((paramInt1 == 12) && (paramInt2 == -1) && (paramIntent != null) && (paramIntent.getBooleanExtra("key_face_scan_result", false)))
         {
           refreshUserFaceState(0);
-          QQToast.a(this, getString(2131692009), 0).a();
+          QQToast.makeText(this, getString(2131888976), 0).show();
         }
       }
       else
@@ -1142,10 +1142,10 @@ public class LoginInfoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559319);
-    setTitle(2131699217);
+    super.setContentView(2131625268);
+    setTitle(2131897233);
     setTitleTextColor(-1);
-    paramBundle = SharedPreUtils.h(this, getCurrentAccountUin());
+    paramBundle = SharedPreUtils.aw(this, getCurrentAccountUin());
     if (!TextUtils.isEmpty(paramBundle)) {}
     for (;;)
     {
@@ -1153,19 +1153,19 @@ public class LoginInfoActivity
       {
         paramBundle = new JSONObject(paramBundle);
         if (paramBundle.optInt("securityType", 0) != 0) {
-          break label1599;
+          break label1601;
         }
         bool2 = true;
         this.mIsGrayAccount = bool2;
         if (paramBundle.optInt("showGroy", 0) != 1) {
-          break label1604;
+          break label1606;
         }
         bool2 = true;
         this.mHasGuideView = bool2;
-        bool2 = SharedPreUtils.e(this, getCurrentAccountUin());
+        bool2 = SharedPreUtils.ax(this, getCurrentAccountUin());
         boolean bool3 = this.mHasGuideView;
         if (bool2) {
-          break label1609;
+          break label1611;
         }
         boolean bool1 = true;
         this.mHasGuideView = (bool1 & bool3);
@@ -1176,70 +1176,70 @@ public class LoginInfoActivity
         QLog.e("LoginInfoActivity.AccDevSec", 1, new Object[] { "parse dev gray switch error : ", paramBundle.getMessage() });
       }
       initVerifiedPhone();
-      this.mScrollView = ((BounceScrollView)findViewById(2131376619));
+      this.mScrollView = ((BounceScrollView)findViewById(2131444879));
       this.mScrollView.setScrollListener(this);
       this.mScrollView.setPadding(0, 0, 0, 0);
-      this.mLoginDevLayout = ((LinearLayout)findViewById(2131371599));
-      this.mRiskInfoLayout = ((LinearLayout)findViewById(2131376615));
-      paramBundle = (RelativeLayout)findViewById(2131376608);
-      this.mQieImageView = ((ImageView)findViewById(2131376617));
-      this.mGouImageView = ((ImageView)findViewById(2131376610));
-      this.mInfoImageView = ((ImageView)findViewById(2131376612));
-      this.mDunImageView = ((ImageView)findViewById(2131376609));
-      this.mOuterCircleImageView = ((ImageView)findViewById(2131376622));
-      this.mInnerCircleImageView = ((ImageView)findViewById(2131376616));
-      this.mScanningProgressImageView = ((ImageView)findViewById(2131376623));
-      this.mScanningLineImageView = ((ImageView)findViewById(2131376611));
-      this.mTipTextLayout = ((RelativeLayout)findViewById(2131376621));
-      this.mRiskSummaryTv = ((TextView)findViewById(2131376620));
-      this.mRiskScanningTv = ((TextView)findViewById(2131376618));
-      this.mRightSelectorImageView = ((ImageView)findViewById(2131376606));
-      if (AppSetting.d) {
-        this.mRightSelectorImageView.setContentDescription(getString(2131716730));
+      this.mLoginDevLayout = ((LinearLayout)findViewById(2131439007));
+      this.mRiskInfoLayout = ((LinearLayout)findViewById(2131444875));
+      paramBundle = (RelativeLayout)findViewById(2131444868);
+      this.mQieImageView = ((ImageView)findViewById(2131444877));
+      this.mGouImageView = ((ImageView)findViewById(2131444870));
+      this.mInfoImageView = ((ImageView)findViewById(2131444872));
+      this.mDunImageView = ((ImageView)findViewById(2131444869));
+      this.mOuterCircleImageView = ((ImageView)findViewById(2131444882));
+      this.mInnerCircleImageView = ((ImageView)findViewById(2131444876));
+      this.mScanningProgressImageView = ((ImageView)findViewById(2131444883));
+      this.mScanningLineImageView = ((ImageView)findViewById(2131444871));
+      this.mTipTextLayout = ((RelativeLayout)findViewById(2131444881));
+      this.mRiskSummaryTv = ((TextView)findViewById(2131444880));
+      this.mRiskScanningTv = ((TextView)findViewById(2131444878));
+      this.mRightSelectorImageView = ((ImageView)findViewById(2131444866));
+      if (AppSetting.e) {
+        this.mRightSelectorImageView.setContentDescription(getString(2131914202));
       }
       this.mRiskSummaryTv.setClickable(false);
       this.mRiskSummaryTv.setOnClickListener(this);
       this.mRightSelectorImageView.setClickable(false);
       this.mRightSelectorImageView.setOnClickListener(this);
-      this.mProtectDevLayout = ((RelativeLayout)findViewById(2131370455));
+      this.mProtectDevLayout = ((RelativeLayout)findViewById(2131437725));
       ReportController.a(this.app, "0X800B7DC");
       if (this.mIsGrayAccount) {
         this.mProtectDevLayout.post(new LoginInfoActivity.3(this));
       } else {
-        this.mDevLockRedTouch = new RedTouch(this, this.mProtectDevLayout).d(27).a();
+        this.mDevLockRedTouch = new RedTouch(this, this.mProtectDevLayout).b(27.0F).a();
       }
-      this.mRecentLoginDevTv = ((TextView)findViewById(2131371600));
+      this.mRecentLoginDevTv = ((TextView)findViewById(2131439008));
       this.mProtectDevLayout.setOnClickListener(this);
       this.mRecentLoginDevTv.setOnClickListener(this);
-      this.mDevProtectTv = ((TextView)findViewById(2131365579));
-      this.mFaceLoginLayout = ((RelativeLayout)findViewById(2131366422));
+      this.mDevProtectTv = ((TextView)findViewById(2131431806));
+      this.mFaceLoginLayout = ((RelativeLayout)findViewById(2131432736));
       ReportController.a(this.app, "0X800B7DB");
-      this.mTvFaceStatus = ((TextView)findViewById(2131379661));
-      this.mPbFace = ((ProgressBar)findViewById(2131366442));
-      this.mTvFaceTips = ((TextView)findViewById(2131370458));
+      this.mTvFaceStatus = ((TextView)findViewById(2131448439));
+      this.mPbFace = ((ProgressBar)findViewById(2131432758));
+      this.mTvFaceTips = ((TextView)findViewById(2131437730));
       this.mFaceLoginLayout.setOnClickListener(this);
-      this.mGesturePwdLayout = ((FormSimpleItem)findViewById(2131367625));
+      this.mGesturePwdLayout = ((FormSimpleItem)findViewById(2131434169));
       this.mGesturePwdLayout.setOnClickListener(this);
       ReportController.a(this.app, "0X800B7DD");
-      this.mBothOnline = ((FormSwitchItem)findViewById(2131363697));
-      if (AppSetting.d) {
-        this.mBothOnline.setContentDescription(getString(2131693276));
+      this.mBothOnline = ((FormSwitchItem)findViewById(2131429614));
+      if (AppSetting.e) {
+        this.mBothOnline.setContentDescription(getString(2131890824));
       }
-      this.updateQQPassword = findViewById(2131380219);
+      this.updateQQPassword = findViewById(2131449137);
       this.updateQQPassword.setOnClickListener(this);
       ReportController.a(this.app, "0X800B7DA");
-      this.mChangePwdRedTouch = new RedTouch(this, this.updateQQPassword).d(27).a();
+      this.mChangePwdRedTouch = new RedTouch(this, this.updateQQPassword).b(27.0F).a();
       ReportController.a(null, "dc00898", "", "", "0X800B29B", "0X800B29B", 0, 0, "", "", "", "");
-      this.mPickproof = ((FormSimpleItem)findViewById(2131372745));
+      this.mPickproof = ((FormSimpleItem)findViewById(2131440294));
       this.mPickproof.setOnClickListener(this);
-      this.qqpimsecureDetectLayout = ((FormSimpleItem)findViewById(2131374440));
+      this.qqpimsecureDetectLayout = ((FormSimpleItem)findViewById(2131442610));
       this.qqpimsecureDetectLayout.setOnClickListener(this);
-      if (AppSetting.d) {
-        this.qqpimsecureDetectLayout.setContentDescription(getString(2131718670));
+      if (AppSetting.e) {
+        this.qqpimsecureDetectLayout.setContentDescription(getString(2131916171));
       }
-      this.securityScanCheckBox = ((FormSwitchItem)findViewById(2131377122));
-      if (AppSetting.d) {
-        this.securityScanCheckBox.setContentDescription(getString(2131718687));
+      this.securityScanCheckBox = ((FormSwitchItem)findViewById(2131445493));
+      if (AppSetting.e) {
+        this.securityScanCheckBox.setContentDescription(getString(2131916188));
       }
       this.app.setHandler(getClass(), this.mHandler);
       boolean bool2 = SettingCloneUtil.readValue(this, this.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", true);
@@ -1248,17 +1248,17 @@ public class LoginInfoActivity
       bool2 = SettingCloneUtil.readValue(this, null, "security_scan_key", "qqsetting_security_scan_key", false);
       this.securityScanCheckBox.setChecked(bool2);
       this.securityScanCheckBox.setOnCheckedChangeListener(this.mOnCheckedChangeListener);
-      if (!EquipmentLockImpl.a().b()) {
+      if (!EquipmentLockImpl.a().h()) {
         this.mProtectDevLayout.setVisibility(8);
       }
       this.mRecentLoginDevTv.setMovementMethod(LinkMovementMethod.getInstance());
-      paramBundle = new SpannableString(getResources().getString(2131694377));
-      this.mStatusView = ((TextView)findViewById(2131365577));
-      this.mStatusLoadingView = ((ProgressBar)findViewById(2131373161));
-      this.mDevlockStatusIconView = ((ImageView)findViewById(2131365578));
+      paramBundle = new SpannableString(getResources().getString(2131892055));
+      this.mStatusView = ((TextView)findViewById(2131431804));
+      this.mStatusLoadingView = ((ProgressBar)findViewById(2131440771));
+      this.mDevlockStatusIconView = ((ImageView)findViewById(2131431805));
       int i = paramBundle.length();
       paramBundle.setSpan(new LoginInfoActivity.NoLineClickableSpan(this, null), 0, i, 33);
-      paramBundle.setSpan(new ForegroundColorSpan(getResources().getColor(2131167068)), 0, i, 33);
+      paramBundle.setSpan(new ForegroundColorSpan(getResources().getColor(2131168008)), 0, i, 33);
       this.mRecentLoginDevTv.setText(paramBundle);
       try
       {
@@ -1270,11 +1270,11 @@ public class LoginInfoActivity
       }
       if (this.mIsGrayAccount)
       {
-        this.mDevProtectTv.setText(getString(2131691971));
+        this.mDevProtectTv.setText(getString(2131888938));
         this.mBothOnline.setVisibility(8);
         this.mLoginDevLayout.setVisibility(8);
         this.mRecentLoginDevTv.setVisibility(8);
-        findViewById(2131370456).setVisibility(0);
+        findViewById(2131437726).setVisibility(0);
         if (this.mHasGuideView)
         {
           ReportController.b(null, "dc00898", "", "", "0X800AC59", "0X800AC59", 0, 0, "", "", "", "");
@@ -1308,9 +1308,9 @@ public class LoginInfoActivity
         }
       }
       else {
-        QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+        QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
       }
-      paramBundle = FaceAreaManager.a().a();
+      paramBundle = FaceAreaManager.a().c();
       if (paramBundle != null) {
         paramBundle.a(new View[] { this.mFaceLoginLayout, this.mTvFaceTips });
       }
@@ -1326,13 +1326,13 @@ public class LoginInfoActivity
       initSafetyCenterEntrance();
       this.app.registObserver(this.mGameCenterObserver);
       return true;
-      label1599:
+      label1601:
       bool2 = false;
       continue;
-      label1604:
+      label1606:
       bool2 = false;
       continue;
-      label1609:
+      label1611:
       i = 0;
     }
   }
@@ -1413,7 +1413,7 @@ public class LoginInfoActivity
     {
     default: 
       break;
-    case 2131380219: 
+    case 2131449137: 
       removeChangePwdRedTouch();
       ReportController.a(this.app, "0X800B83E");
       ReportController.a(null, "dc00898", "", "", "0X800B29C", "0X800B29C", 0, 0, "", "", "", "");
@@ -1466,8 +1466,8 @@ public class LoginInfoActivity
         reportModifyPwdData("ClkModifyPwd", 2);
       }
       break;
-    case 2131376606: 
-    case 2131376620: 
+    case 2131444866: 
+    case 2131444880: 
       localObject1 = this.mRiskInfoItems;
       if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
       {
@@ -1482,9 +1482,9 @@ public class LoginInfoActivity
         }
       }
       break;
-    case 2131374440: 
+    case 2131442610: 
       localObject2 = new Intent();
-      localObject3 = QSafeConfigManager.a().a();
+      localObject3 = QSafeConfigManager.a().b();
       if (localObject3 != null) {
         localObject1 = ((QSafeManagerBean)localObject3).b();
       }
@@ -1492,7 +1492,7 @@ public class LoginInfoActivity
       RouteUtils.a(this, (Intent)localObject2, "/base/browser", 2);
       ReportController.a(this.app, "0X800BBA8");
       break;
-    case 2131374308: 
+    case 2131442471: 
       if (!this.mIsClickSafetyCenterItem)
       {
         this.mIsClickSafetyCenterItem = true;
@@ -1505,9 +1505,9 @@ public class LoginInfoActivity
         }
       }
       break;
-    case 2131372745: 
+    case 2131440294: 
       localObject2 = new Intent();
-      localObject3 = QSafeConfigManager.a().a();
+      localObject3 = QSafeConfigManager.a().b();
       if (localObject3 != null) {
         localObject1 = ((QSafeManagerBean)localObject3).a();
       }
@@ -1515,10 +1515,10 @@ public class LoginInfoActivity
       RouteUtils.a(this, (Intent)localObject2, "/base/browser");
       ReportController.a(this.app, "0X800BBA6");
       break;
-    case 2131371600: 
+    case 2131439008: 
       if (!NetworkUtil.isNetSupport(this))
       {
-        QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+        QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
       }
       else
       {
@@ -1526,7 +1526,7 @@ public class LoginInfoActivity
         startActivity(new Intent(this, RecentLoginDevActivity.class));
       }
       break;
-    case 2131370455: 
+    case 2131437725: 
       if (this.mIsGrayAccount) {
         ReportController.b(null, "dc00898", "", "", "0X800AC51", "0X800AC51", 0, 0, "", "", "", "");
       }
@@ -1538,12 +1538,12 @@ public class LoginInfoActivity
       {
         if (!NetworkUtil.isNetSupport(this))
         {
-          QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+          QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
         }
         else
         {
           ReportController.b(null, "dc00898", "", "", "0X800ACBF", "0X800ACBF", 0, 0, "", "", "", "");
-          QQToast.a(this, getString(2131691968), 0).a();
+          QQToast.makeText(this, getString(2131888935), 0).show();
           startGetDevLockStatus();
         }
       }
@@ -1610,16 +1610,16 @@ public class LoginInfoActivity
         }
       }
       break;
-    case 2131367625: 
+    case 2131434169: 
       startActivityForResult(new Intent(this, GesturePWDSettingActivity.class), 1);
       ReportController.a(this.app, "0X800B841");
       break;
-    case 2131366422: 
+    case 2131432736: 
       localObject1 = this.mFaceStatusInfo;
       if (localObject1 == null)
       {
         if (!NetworkUtil.isNetSupport(this)) {
-          QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+          QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
         }
         QLog.e("LoginInfoActivity.AccDevSec", 1, "face_login_layout click error : mFaceStateRsp is null");
       }
@@ -1653,7 +1653,7 @@ public class LoginInfoActivity
         ReportController.a(this.app, "0X800B83F");
       }
       break;
-    case 2131365639: 
+    case 2131431870: 
       try
       {
         dismissSafetyRiskDialog();
@@ -1666,11 +1666,11 @@ public class LoginInfoActivity
       {
         localException.printStackTrace();
       }
-    case 2131365633: 
+    case 2131431864: 
       ReportController.b(null, "dc00898", "", "", "0X800A5D1", "0X800A5D1", 0, 0, "", "", "", "");
       dismissSafetyRiskDialog();
       break;
-    case 2131361924: 
+    case 2131427478: 
       if (!this.mIsClickReleaseItem)
       {
         this.mIsClickReleaseItem = true;
@@ -1716,7 +1716,7 @@ public class LoginInfoActivity
     if (paramInt2 > 0)
     {
       this.mBeingScrollDown = false;
-      this.mScrollView.setBackgroundResource(2130838739);
+      this.mScrollView.setBackgroundResource(2130838958);
       this.mScrollViewBGChanged = false;
       return;
     }
@@ -1737,7 +1737,7 @@ public class LoginInfoActivity
       QQProtectRisks.QQProtectRisksRequest localQQProtectRisksRequest = new QQProtectRisks.QQProtectRisksRequest();
       localQQProtectRisksRequest.uint32_sec_cmd.set(1);
       localQQProtectRisksRequest.str_package_name.set(QPMiscUtils.a());
-      localQQProtectRisksRequest.uint32_app_id.set(AppSetting.a());
+      localQQProtectRisksRequest.uint32_app_id.set(AppSetting.d());
       ProtoUtils.a(this.app, new LoginInfoActivity.18(this), localQQProtectRisksRequest.toByteArray(), "AccountSafeSvc.RiskDetect");
     }
   }
@@ -1747,23 +1747,23 @@ public class LoginInfoActivity
     try
     {
       dismissSafetyRiskDialog();
-      ReportDialog localReportDialog = new ReportDialog(this, 2131756189);
-      localReportDialog.setContentView(2131558954);
-      TextView localTextView1 = (TextView)localReportDialog.findViewById(2131365648);
+      ReportDialog localReportDialog = new ReportDialog(this, 2131953338);
+      localReportDialog.setContentView(2131624587);
+      TextView localTextView1 = (TextView)localReportDialog.findViewById(2131431880);
       if (localTextView1 != null) {
-        localTextView1.setText(getString(2131692047));
+        localTextView1.setText(getString(2131889014));
       }
-      localTextView1 = (TextView)localReportDialog.findViewById(2131365644);
+      localTextView1 = (TextView)localReportDialog.findViewById(2131431876);
       if (localTextView1 != null) {
-        localTextView1.setText(getString(2131692044));
+        localTextView1.setText(getString(2131889011));
       }
-      localTextView1 = (TextView)localReportDialog.findViewById(2131365633);
+      localTextView1 = (TextView)localReportDialog.findViewById(2131431864);
       if (localTextView1 != null) {
-        localTextView1.setText(2131692045);
+        localTextView1.setText(2131889012);
       }
-      TextView localTextView2 = (TextView)localReportDialog.findViewById(2131365639);
+      TextView localTextView2 = (TextView)localReportDialog.findViewById(2131431870);
       if (localTextView2 != null) {
-        localTextView2.setText(2131692046);
+        localTextView2.setText(2131889013);
       }
       localReportDialog.setOnDismissListener(new LoginInfoActivity.13(this));
       if (localTextView1 != null) {
@@ -1809,7 +1809,7 @@ public class LoginInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity
  * JD-Core Version:    0.7.0.1
  */

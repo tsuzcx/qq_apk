@@ -19,27 +19,27 @@ class MultiAioContext$1
   
   public void run()
   {
-    Object localObject1 = MultiAIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    Object localObject1 = MultiAIOHelper.a(this.a, this.b, this.c, this.d, this.e, this.f);
     if (((List)localObject1).size() > 0) {
       ThreadManager.getSubThreadHandler().postDelayed(new MultiAioContext.1.1(this), 100L);
     }
     MultiAioContext.a(this.this$0, (List)localObject1);
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+    QQMessageFacade localQQMessageFacade = this.b.getMessageFacade();
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (RecentBaseData)((Iterator)localObject1).next();
       if ((localObject2 instanceof RecentUserBaseData))
       {
-        localObject2 = ((RecentUserBaseData)localObject2).a();
-        localQQMessageFacade.b(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType(), 8);
+        localObject2 = ((RecentUserBaseData)localObject2).e();
+        localQQMessageFacade.c(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType(), 8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.presenter.MultiAioContext.1
  * JD-Core Version:    0.7.0.1
  */

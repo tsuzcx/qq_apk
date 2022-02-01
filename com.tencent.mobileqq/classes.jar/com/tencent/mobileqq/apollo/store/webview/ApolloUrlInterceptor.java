@@ -37,54 +37,49 @@ import mqq.os.MqqHandler;
 public class ApolloUrlInterceptor
   implements Handler.Callback, BridgeStream.IBridgeStreamCallback
 {
-  private static long jdField_a_of_type_Long = new Random().nextInt(263167);
-  public static String a;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private Message jdField_a_of_type_AndroidOsMessage;
-  private volatile CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-  private volatile ApolloUrlConnection jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection;
-  private ApolloWebStatistics jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics = new ApolloWebStatistics();
-  private volatile InputStream jdField_a_of_type_JavaIoInputStream;
-  private ConcurrentHashMap<String, ApolloUrlInterceptor.PreloadCGITask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  public static String a = HardCodeUtil.a(2131898770);
+  private static long m = new Random().nextInt(263167);
+  private ConcurrentHashMap<String, ApolloUrlInterceptor.PreloadCGITask> A = new ConcurrentHashMap();
   public final String b;
-  private final AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_b_of_type_Boolean = true;
-  private final String jdField_c_of_type_JavaLangString;
-  private final AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private final AtomicBoolean jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString;
-  private final AtomicBoolean jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private String jdField_f_of_type_JavaLangString;
-  private final AtomicBoolean jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private String jdField_g_of_type_JavaLangString;
-  private final AtomicBoolean jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131700744);
-  }
+  private final AtomicInteger c = new AtomicInteger(0);
+  private final AtomicBoolean d = new AtomicBoolean(false);
+  private final AtomicBoolean e = new AtomicBoolean(false);
+  private final AtomicBoolean f = new AtomicBoolean(false);
+  private final AtomicBoolean g = new AtomicBoolean(false);
+  private final AtomicBoolean h = new AtomicBoolean(false);
+  private final AtomicBoolean i = new AtomicBoolean(false);
+  private final AtomicBoolean j = new AtomicBoolean(false);
+  private final String k;
+  private volatile boolean l = false;
+  private String n;
+  private volatile CustomWebView o;
+  private String p;
+  private final Handler q = new Handler(Looper.getMainLooper(), this);
+  private volatile ApolloUrlConnection r;
+  private Message s;
+  private volatile InputStream t;
+  private boolean u = true;
+  private String v;
+  private ApolloWebStatistics w = new ApolloWebStatistics();
+  private boolean x;
+  private String y;
+  private boolean z;
   
   public ApolloUrlInterceptor(String paramString1, String paramString2)
   {
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    long l = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 1L + l;
-    this.jdField_b_of_type_JavaLangString = String.valueOf(l);
-    this.jdField_d_of_type_JavaLangString = ApolloClientUtil.a(paramString1, "apollo_task_id", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    this.jdField_e_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    this.k = paramString2;
+    long l1 = m;
+    m = 1L + l1;
+    this.b = String.valueOf(l1);
+    this.n = ApolloClientUtil.a(paramString1, "apollo_task_id", String.valueOf(this.b));
+    this.p = this.n;
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
       paramString2.append("task(");
-      paramString2.append(this.jdField_b_of_type_JavaLangString);
+      paramString2.append(this.b);
       paramString2.append(") create:id=");
-      paramString2.append(this.jdField_b_of_type_JavaLangString);
+      paramString2.append(this.b);
       paramString2.append(", url = ");
       paramString2.append(paramString1);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramString2.toString());
@@ -93,7 +88,7 @@ public class ApolloUrlInterceptor
   
   public static ApolloUrlInterceptor a(boolean paramBoolean, String paramString)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = (ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class);
@@ -107,7 +102,7 @@ public class ApolloUrlInterceptor
           ((StringBuilder)localObject).append("createInterceptor startSessionNewThread:");
           ((StringBuilder)localObject).append(paramBoolean);
           ((StringBuilder)localObject).append(",use:");
-          ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+          ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
           QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
         }
         paramString.a(paramBoolean);
@@ -119,12 +114,12 @@ public class ApolloUrlInterceptor
   
   private boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(paramInt1, paramInt2))
+    if (this.c.compareAndSet(paramInt1, paramInt2))
     {
       if (paramBoolean) {
-        synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.notify();
+          this.c.notify();
         }
       }
       return true;
@@ -132,15 +127,177 @@ public class ApolloUrlInterceptor
     return false;
   }
   
-  private void b()
+  private boolean a(Message paramMessage)
   {
-    long l = System.currentTimeMillis();
+    int i1 = paramMessage.what;
+    if (i1 != 1)
+    {
+      if (i1 != 2)
+      {
+        if ((i1 != 3) && (i1 != 5))
+        {
+          if (i1 != 255)
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("msg.what ");
+              localStringBuilder.append(paramMessage.what);
+              QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+            }
+            return true;
+          }
+          e();
+        }
+        else
+        {
+          f();
+        }
+      }
+      else if (paramMessage.arg1 == 1) {
+        g();
+      } else if (paramMessage.arg1 == 2) {
+        d(paramMessage);
+      }
+    }
+    else if (paramMessage.arg1 == 1) {
+      h();
+    } else if (paramMessage.arg1 == 2) {
+      e(paramMessage);
+    }
+    return false;
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    int i1 = this.c.get();
+    if (3 == i1) {
+      return;
+    }
+    this.o = null;
+    this.t = null;
+    this.y = null;
+    if (this.s != null) {
+      this.s = null;
+    }
+    if ((!paramBoolean) && (!k()))
+    {
+      this.q.removeMessages(255);
+      if (this.i.compareAndSet(false, true))
+      {
+        this.q.sendEmptyMessageDelayed(10, 6000L);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("task(");
+          ((StringBuilder)???).append(this.b);
+          ((StringBuilder)???).append(") waiting for destroy, current state =");
+          ((StringBuilder)???).append(i1);
+          ((StringBuilder)???).append(".");
+          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)???).toString());
+        }
+      }
+      return;
+    }
+    if ((this.r != null) && (!paramBoolean))
+    {
+      this.r.b();
+      this.r = null;
+    }
+    this.c.set(3);
+    synchronized (this.c)
+    {
+      this.c.notify();
+      this.q.removeMessages(10);
+      this.i.set(false);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("task(");
+        ((StringBuilder)???).append(this.b);
+        ((StringBuilder)???).append(") final destroy, force=");
+        ((StringBuilder)???).append(paramBoolean);
+        ((StringBuilder)???).append(".");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)???).toString());
+      }
+      this.q.removeMessages(255);
+      ??? = this.A.values().iterator();
+      while (((Iterator)???).hasNext()) {
+        ((ApolloUrlInterceptor.PreloadCGITask)((Iterator)???).next()).a();
+      }
+      this.A.clear();
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  private boolean b(Message paramMessage)
+  {
+    if ((paramMessage.what > 0) && (paramMessage.what < 7) && (!this.e.get()))
+    {
+      this.s = Message.obtain(paramMessage);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task(");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(") handleMessage: client not ready, core msg = ");
+        localStringBuilder.append(paramMessage.what);
+        localStringBuilder.append(".");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean c(Message paramMessage)
+  {
+    if (10 == paramMessage.what)
+    {
+      b(true);
+      if (QLog.isColorLevel())
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("task(");
+        paramMessage.append(this.b);
+        paramMessage.append(") handleMessage:force destroy.");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private WebResourceResponse d(String paramString)
+  {
+    ApolloWebDataHandlerImpl localApolloWebDataHandlerImpl = (ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class);
+    if ((this.o != null) && (localApolloWebDataHandlerImpl.isCmdResourceUrl(paramString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getClientResource isCmdResourceUrl url:");
+      localStringBuilder.append(paramString);
+      f(localStringBuilder.toString());
+      paramString = localApolloWebDataHandlerImpl.getApolloCmdResource(paramString, this.k);
+      if (paramString != null) {
+        return paramString;
+      }
+    }
+    return null;
+  }
+  
+  private void d()
+  {
+    long l1 = System.currentTimeMillis();
     Object localObject1 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-    if ((localObject1 != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(this.k)))
     {
       Object localObject2 = (ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class);
-      ((ApolloWebDataHandlerImpl)localObject2).preLoadSSOCmd(BaseApplicationImpl.getContext(), this.jdField_c_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, (AppInterface)localObject1, this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics);
-      localObject1 = ((ApolloWebDataHandlerImpl)localObject2).getCGIConfigs(this.jdField_c_of_type_JavaLangString);
+      ((ApolloWebDataHandlerImpl)localObject2).preLoadSSOCmd(BaseApplicationImpl.getContext(), this.k, this.p, (AppInterface)localObject1, this.w);
+      localObject1 = ((ApolloWebDataHandlerImpl)localObject2).getCGIConfigs(this.k);
       if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
       {
         localObject1 = ((List)localObject1).iterator();
@@ -150,7 +307,7 @@ public class ApolloUrlInterceptor
           if (((ApolloSSOConfig.CGIConfig)localObject2).a())
           {
             ApolloUrlInterceptor.PreloadCGITask localPreloadCGITask = new ApolloUrlInterceptor.PreloadCGITask(this, (ApolloSSOConfig.CGIConfig)localObject2);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ApolloSSOConfig.CGIConfig)localObject2).jdField_a_of_type_JavaLangString, localPreloadCGITask);
+            this.A.put(((ApolloSSOConfig.CGIConfig)localObject2).a, localPreloadCGITask);
             localPreloadCGITask.b();
           }
         }
@@ -160,138 +317,324 @@ public class ApolloUrlInterceptor
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("preloadSSOData use:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
-  private void b(boolean paramBoolean)
+  private void d(Message paramMessage)
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (3 != i)
+    if (this.f.compareAndSet(false, true))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-      this.jdField_a_of_type_JavaIoInputStream = null;
-      this.jdField_g_of_type_JavaLangString = null;
-      if (this.jdField_a_of_type_AndroidOsMessage != null) {
-        this.jdField_a_of_type_AndroidOsMessage = null;
-      }
-      if ((!paramBoolean) && (!c()))
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(255);
-        if (this.jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task(\" + id + \") handleClientCoreMessage_FirstLoad with cache, url:");
+        localStringBuilder.append(this.p);
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+      }
+      this.z = true;
+      this.w.k = System.currentTimeMillis();
+      if (this.o != null)
+      {
+        if (this.o.getX5WebViewExtension() != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, 6000L);
-          if (QLog.isColorLevel())
-          {
-            ??? = new StringBuilder();
-            ((StringBuilder)???).append("task(");
-            ((StringBuilder)???).append(this.jdField_b_of_type_JavaLangString);
-            ((StringBuilder)???).append(") waiting for destroy, current state =");
-            ((StringBuilder)???).append(i);
-            ((StringBuilder)???).append(".");
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)???).toString());
+          this.o.loadDataWithBaseURL(this.p, (String)paramMessage.obj, "text/html", "utf-8", this.p);
+          return;
+        }
+        this.o.loadUrlOriginal(this.p);
+        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 1, "handleMessage CLIENT_CORE_MSG_FIRST_LOAD PRE_LOAD_WITH_CACHE but not x5 Core");
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      paramMessage = new StringBuilder();
+      paramMessage.append("task(");
+      paramMessage.append(this.b);
+      paramMessage.append(") FIRST_LOAD_WITH_CACHE load url was invoked.");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
+    }
+  }
+  
+  private WebResourceResponse e(String paramString)
+  {
+    if ((this.o != null) && (!this.A.isEmpty()))
+    {
+      Iterator localIterator = this.A.values().iterator();
+      while (localIterator.hasNext())
+      {
+        ApolloUrlInterceptor.PreloadCGITask localPreloadCGITask = (ApolloUrlInterceptor.PreloadCGITask)localIterator.next();
+        if (paramString.contains(ApolloUrlInterceptor.PreloadCGITask.a(localPreloadCGITask).a))
+        {
+          WebResourceResponse localWebResourceResponse = localPreloadCGITask.a(paramString);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getClientResource getCGIResource url:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" resourceResponse:");
+          localStringBuilder.append(localWebResourceResponse);
+          f(localStringBuilder.toString());
+          this.A.remove(ApolloUrlInterceptor.PreloadCGITask.a(localPreloadCGITask).a);
+          if (localWebResourceResponse != null) {
+            return localWebResourceResponse;
           }
         }
+      }
+    }
+    return null;
+  }
+  
+  private void e()
+  {
+    if ((this.e.get()) && (!j()) && (!TextUtils.isEmpty(a))) {
+      Toast.makeText(BaseApplicationImpl.getContext(), a, 1).show();
+    }
+  }
+  
+  private void e(Message paramMessage)
+  {
+    if (this.g.compareAndSet(false, true))
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("task(");
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(") handleClientCoreMessage_PreLoad:PRE_LOAD_WITH_CACHE load data.");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
+      }
+      paramMessage = (String)paramMessage.obj;
+      this.w.k = System.currentTimeMillis();
+      if (this.o != null)
+      {
+        if (this.o.getX5WebViewExtension() != null)
+        {
+          localObject = this.o;
+          String str = this.p;
+          ((CustomWebView)localObject).loadDataWithBaseURL(str, paramMessage, "text/html", "utf-8", str);
+          return;
+        }
+        this.o.loadUrlOriginal(this.p);
+        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 1, "handleMessage CLIENT_CORE_MSG_PRE_LOAD PRE_LOAD_WITH_CACHE but not x5 Core");
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      paramMessage = new StringBuilder();
+      paramMessage.append("task(");
+      paramMessage.append(this.b);
+      paramMessage.append(") handleClientCoreMessage_PreLoad:wasLoadDataInvoked = true.");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
+    }
+  }
+  
+  private void f()
+  {
+    if (this.f.compareAndSet(false, true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "handleClientCoreMessage_ConnectionError: load src url.");
+      }
+      if (this.o != null) {
+        this.o.loadUrlOriginal(this.p);
+      }
+    }
+  }
+  
+  private void f(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramString);
+    }
+  }
+  
+  private void g()
+  {
+    StringBuilder localStringBuilder;
+    if (this.d.get())
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task(");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(") handleClientCoreMessage_FirstLoad:FIRST_LOAD_NO_CACHE.");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("task(");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(") handleClientCoreMessage_FirstLoad:url was not invoked.");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private void h()
+  {
+    StringBuilder localStringBuilder;
+    if (this.f.compareAndSet(false, true))
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task(");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(") handleClientCoreMessage_PreLoad:PRE_LOAD_NO_CACHE load url.");
+        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+      }
+      this.w.k = System.currentTimeMillis();
+      if (this.o != null) {
+        this.o.loadUrlOriginal(this.p);
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("task(");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(") handleClientCoreMessage_PreLoad:wasLoadUrlInvoked = true.");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private WebResourceResponse i()
+  {
+    if ((this.t == null) && (!TextUtils.isEmpty(this.y)))
+    {
+      try
+      {
+        this.t = new ByteArrayInputStream(this.y.getBytes("UTF-8"));
+        this.z = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localThrowable, new Object[0]);
+      }
+      f("task(\" + id + \") pendingWebResourceStream is null but mHtmlContent is not null!");
+    }
+    if (this.t != null)
+    {
+      WebResourceResponse localWebResourceResponse;
+      if (!j())
+      {
+        localWebResourceResponse = new WebResourceResponse(ApolloClientUtil.a(this.p), "utf-8", this.t);
+        this.h.set(true);
       }
       else
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection != null) && (!paramBoolean))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection.a();
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection = null;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
-        synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.notify();
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-          this.jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel())
-          {
-            ??? = new StringBuilder();
-            ((StringBuilder)???).append("task(");
-            ((StringBuilder)???).append(this.jdField_b_of_type_JavaLangString);
-            ((StringBuilder)???).append(") final destroy, force=");
-            ((StringBuilder)???).append(paramBoolean);
-            ((StringBuilder)???).append(".");
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)???).toString());
-          }
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(255);
-          ??? = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-          while (((Iterator)???).hasNext()) {
-            ((ApolloUrlInterceptor.PreloadCGITask)((Iterator)???).next()).a();
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          return;
-        }
+        f("task(\" + id + \") getClientResource error: session is destroyed!");
+        localWebResourceResponse = null;
       }
+      if (this.z) {
+        this.z = false;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("task(\" + id + \") getClientResource ret webResourceResponse:");
+      localStringBuilder.append(localWebResourceResponse);
+      f(localStringBuilder.toString());
+      this.t = null;
+      return localWebResourceResponse;
     }
+    return null;
   }
   
-  private boolean b()
+  private boolean j()
   {
-    return (3 == this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) || (this.jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    return (3 == this.c.get()) || (this.i.get());
   }
   
-  private void c()
+  private boolean k()
   {
-    if (1 != this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    if ((!this.j.get()) && (!this.h.get())) {
+      return true;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("task(");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(") canDestroy:false, isWaitingForSessionThread=");
+      localStringBuilder.append(this.j.get());
+      localStringBuilder.append(", isWaitingForBlinkCloseStream=");
+      localStringBuilder.append(this.h.get());
+      localStringBuilder.append(" isWaitingForDestroy:");
+      localStringBuilder.append(this.i);
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+    }
+    return false;
+  }
+  
+  private boolean l()
+  {
+    if ((this.i.get()) && (k()))
+    {
+      this.q.sendEmptyMessage(10);
+      return true;
+    }
+    return false;
+  }
+  
+  private void m()
+  {
+    if (1 != this.c.get())
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         ((StringBuilder)localObject1).append(") runDataTask error:sessionState=");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((StringBuilder)localObject1).append(this.c.get());
         ((StringBuilder)localObject1).append(".");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.x = true;
+      this.j.set(false);
+      this.q.sendEmptyMessage(3);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(255);
+    this.q.removeMessages(255);
     long l1 = System.currentTimeMillis();
-    this.jdField_f_of_type_JavaLangString = ApolloClientUtil.e(this.jdField_e_of_type_JavaLangString);
-    if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+    this.v = ApolloClientUtil.f(this.p);
+    if (TextUtils.isEmpty(this.v))
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         ((StringBuilder)localObject1).append(") runDataTask error:fileName is null");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.x = true;
+      this.j.set(false);
+      this.q.sendEmptyMessage(3);
       return;
     }
-    Object localObject1 = ApolloClientUtil.d(this.jdField_f_of_type_JavaLangString);
+    Object localObject1 = ApolloClientUtil.e(this.v);
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("task(");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(") runDataTask url is ");
-      ((StringBuilder)localObject2).append(this.jdField_e_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.p);
       ((StringBuilder)localObject2).append(" filePath is ");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = new File((String)localObject1);
     localObject1 = ApolloClientUtil.a((File)localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.e = (System.currentTimeMillis() - l1);
+    this.w.e = (System.currentTimeMillis() - l1);
     boolean bool1 = TextUtils.isEmpty((CharSequence)localObject1) ^ true;
     boolean bool2;
     if (bool1)
     {
       long l2 = System.currentTimeMillis();
-      if (!((ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class)).verifyCache(this.jdField_c_of_type_JavaLangString, (String)localObject1))
+      if (!((ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class)).verifyCache(this.k, (String)localObject1))
       {
         localObject1 = null;
         ((File)localObject2).delete();
@@ -299,19 +642,19 @@ public class ApolloUrlInterceptor
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("task(");
-          ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.b);
           ((StringBuilder)localObject2).append(") runDataTask md5 not match delete localFile! url is ");
-          ((StringBuilder)localObject2).append(this.jdField_e_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.p);
           QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.a = 1;
+        this.w.i = 1;
         bool1 = false;
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.a = 2;
+        this.w.i = 2;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.f = (System.currentTimeMillis() - l2);
+      this.w.f = (System.currentTimeMillis() - l2);
       localObject2 = localObject1;
       bool2 = bool1;
       if (QLog.isColorLevel())
@@ -326,7 +669,7 @@ public class ApolloUrlInterceptor
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.a = 0;
+      this.w.i = 0;
       bool2 = bool1;
       localObject2 = localObject1;
     }
@@ -337,23 +680,23 @@ public class ApolloUrlInterceptor
       ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
     }
-    localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    this.jdField_a_of_type_AndroidOsMessage = ((Message)localObject1);
+    localObject1 = this.q.obtainMessage(1);
+    this.s = ((Message)localObject1);
     if (bool2)
     {
       ((Message)localObject1).arg1 = 2;
       ((Message)localObject1).obj = localObject2;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      this.q.sendMessage((Message)localObject1);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         ((StringBuilder)localObject1).append(") runDataTask hasHtmlCache:");
         ((StringBuilder)localObject1).append(bool2);
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_g_of_type_JavaLangString = ((String)localObject2);
+      this.y = ((String)localObject2);
     }
     else
     {
@@ -361,109 +704,88 @@ public class ApolloUrlInterceptor
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("task(");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.b);
         ((StringBuilder)localObject2).append(") runDataTask has no cache, do first load flow.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject2).toString());
       }
       ((Message)localObject1).arg1 = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      this.q.sendMessage((Message)localObject1);
       if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
       {
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(255, 1500L);
+        if (!TextUtils.isEmpty(a)) {
+          this.q.sendEmptyMessageDelayed(255, 1500L);
         }
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("task(");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append(") runDataTask error:network is not valid!");
           QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 1, ((StringBuilder)localObject1).toString());
         }
       }
       else
       {
-        d();
+        n();
       }
     }
     a(1, 2, true);
-    this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if ((d()) && (QLog.isColorLevel()))
+    this.j.set(false);
+    if ((l()) && (QLog.isColorLevel()))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("task(");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(") runDataTask:send force destroy message.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 4, ((StringBuilder)localObject1).toString());
     }
   }
   
-  private boolean c()
-  {
-    if ((!this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!this.jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-      return true;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("task(");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      localStringBuilder.append(") canDestroy:false, isWaitingForSessionThread=");
-      localStringBuilder.append(this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      localStringBuilder.append(", isWaitingForBlinkCloseStream=");
-      localStringBuilder.append(this.jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      localStringBuilder.append(" isWaitingForDestroy:");
-      localStringBuilder.append(this.jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  private void d()
+  private void n()
   {
     long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection = new ApolloUrlConnection(this.jdField_e_of_type_JavaLangString, true, null, null);
+    this.r = new ApolloUrlConnection(this.p, true, null, null);
     long l2 = System.currentTimeMillis();
-    int j = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection.a();
-    int i = j;
+    int i2 = this.r.a();
+    int i1 = i2;
     Object localObject;
-    if (j == 0)
+    if (i2 == 0)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") connection connect cost = ");
         ((StringBuilder)localObject).append(System.currentTimeMillis() - l2);
         ((StringBuilder)localObject).append(" ms.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
       }
       l2 = System.currentTimeMillis();
-      j = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection.b();
+      i2 = this.r.c();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") connection response cost = ");
         ((StringBuilder)localObject).append(System.currentTimeMillis() - l2);
         ((StringBuilder)localObject).append(" ms.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
       }
       l2 = System.currentTimeMillis();
-      Map localMap = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection.a();
+      Map localMap = this.r.d();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") connection get header fields cost = ");
         ((StringBuilder)localObject).append(System.currentTimeMillis() - l2);
         ((StringBuilder)localObject).append(" ms.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
       }
-      i = j;
+      i1 = i2;
       if (localMap != null)
       {
         localObject = "Set-Cookie";
@@ -474,12 +796,12 @@ public class ApolloUrlInterceptor
             localObject = null;
           }
         }
-        i = j;
+        i1 = i2;
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localObject = (List)localMap.get(localObject);
-          ApolloClientUtil.a(this.jdField_e_of_type_JavaLangString, (List)localObject);
-          i = j;
+          ApolloClientUtil.a(this.p, (List)localObject);
+          i1 = i2;
         }
       }
     }
@@ -487,91 +809,81 @@ public class ApolloUrlInterceptor
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("task(");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(") handleFlow_Connection: respCode = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(", cost ");
       ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
       ((StringBuilder)localObject).append(" ms.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 4, ((StringBuilder)localObject).toString());
     }
-    if (b())
+    if (j())
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") handleFlow_Connection: destroy before server response.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 6, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if (200 != i)
+    if (200 != i1)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.u)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-        ((Message)localObject).arg1 = i;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        this.q.removeMessages(1);
+        localObject = this.q.obtainMessage(5);
+        ((Message)localObject).arg1 = i1;
+        this.q.sendMessage((Message)localObject);
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") handleFlow_Connection: response code not 200, response code = ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 4, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    e();
+    o();
   }
   
-  private boolean d()
+  private void o()
   {
-    if ((this.jdField_f_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (c()))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-      return true;
-    }
-    return false;
-  }
-  
-  private void e()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlConnection.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, null);
-    int i = 2;
+    Object localObject1 = this.r.a(this.d, null);
+    int i1 = 2;
     if (localObject1 == null)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         ((StringBuilder)localObject1).append(") handleFlow_FirstLoad error:responseDataTuple is null!");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.x = true;
+      this.q.sendEmptyMessage(3);
       return;
     }
-    this.jdField_a_of_type_JavaIoInputStream = new BridgeStream(this, ((ApolloUrlConnection.ResponseDataTuple)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream, ((ApolloUrlConnection.ResponseDataTuple)localObject1).jdField_a_of_type_JavaIoBufferedInputStream);
+    this.t = new BridgeStream(this, ((ApolloUrlConnection.ResponseDataTuple)localObject1).c, ((ApolloUrlConnection.ResponseDataTuple)localObject1).b);
     Object localObject2;
-    if (((ApolloUrlConnection.ResponseDataTuple)localObject1).jdField_a_of_type_Boolean)
+    if (((ApolloUrlConnection.ResponseDataTuple)localObject1).a)
     {
       try
       {
-        localObject1 = ((ApolloUrlConnection.ResponseDataTuple)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
+        localObject1 = ((ApolloUrlConnection.ResponseDataTuple)localObject1).c.toString("UTF-8");
         try
         {
-          this.jdField_g_of_type_JavaLangString = ((String)localObject1);
+          this.y = ((String)localObject1);
           localObject2 = localObject1;
         }
         catch (Throwable localThrowable1) {}
-        this.jdField_a_of_type_JavaIoInputStream = null;
+        this.t = null;
       }
       catch (Throwable localThrowable2)
       {
@@ -582,7 +894,7 @@ public class ApolloUrlInterceptor
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("task(");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.b);
         ((StringBuilder)localObject2).append(") handleFlow_FirstLoad error:");
         ((StringBuilder)localObject2).append(localThrowable2.getMessage());
         ((StringBuilder)localObject2).append(".");
@@ -599,253 +911,50 @@ public class ApolloUrlInterceptor
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("task(");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(") handleFlow_FirstLoad:hasCacheData=");
       ((StringBuilder)localObject1).append(bool);
       ((StringBuilder)localObject1).append(".");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 4, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+    this.q.removeMessages(1);
+    localObject1 = this.q.obtainMessage(2);
     ((Message)localObject1).obj = localObject2;
     if (!bool) {
-      i = 1;
+      i1 = 1;
     }
-    ((Message)localObject1).arg1 = i;
-    this.jdField_a_of_type_AndroidOsMessage = ((Message)localObject1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
-    if ((bool) && (!this.jdField_a_of_type_Boolean))
+    ((Message)localObject1).arg1 = i1;
+    this.s = ((Message)localObject1);
+    this.q.sendMessage((Message)localObject1);
+    if ((bool) && (!this.l))
     {
-      long l = System.currentTimeMillis();
-      ((ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class)).saveHtml(this.jdField_e_of_type_JavaLangString, (String)localObject2);
-      this.jdField_a_of_type_Boolean = true;
+      long l1 = System.currentTimeMillis();
+      ((ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class)).saveHtml(this.p, (String)localObject2);
+      this.l = true;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         ((StringBuilder)localObject1).append(") handleFlow_FirstLoad :save htmlString ");
-        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
         ((StringBuilder)localObject1).append(" ms.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 4, ((StringBuilder)localObject1).toString());
       }
     }
   }
   
-  public ApolloWebStatistics a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics;
-  }
-  
-  public Object a(String arg1)
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return null;
-    }
-    Object localObject1 = (ApolloWebDataHandlerImpl)QRoute.api(IApolloWebDataHandler.class);
-    Object localObject3;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) && (((ApolloWebDataHandlerImpl)localObject1).isCmdResourceUrl(???)))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("getClientResource isCmdResourceUrl url:");
-        ((StringBuilder)localObject3).append(???);
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject3).toString());
-      }
-      localObject1 = ((ApolloWebDataHandlerImpl)localObject1).getApolloCmdResource(???, this.jdField_c_of_type_JavaLangString);
-      if (localObject1 != null) {
-        return localObject1;
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (ApolloUrlInterceptor.PreloadCGITask)((Iterator)localObject1).next();
-        if (???.contains(ApolloUrlInterceptor.PreloadCGITask.a((ApolloUrlInterceptor.PreloadCGITask)localObject3).jdField_a_of_type_JavaLangString))
-        {
-          WebResourceResponse localWebResourceResponse = ((ApolloUrlInterceptor.PreloadCGITask)localObject3).a(???);
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append("getClientResource getCGIResource url:");
-            localStringBuilder2.append(???);
-            localStringBuilder2.append(" resourceResponse:");
-            localStringBuilder2.append(localWebResourceResponse);
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder2.toString());
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(ApolloUrlInterceptor.PreloadCGITask.a((ApolloUrlInterceptor.PreloadCGITask)localObject3).jdField_a_of_type_JavaLangString);
-          if (localWebResourceResponse != null) {
-            return localWebResourceResponse;
-          }
-        }
-      }
-    }
-    if (!a(???))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("task(");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject1).append(")  getClientResource error:isMatchCurrentUrl false, url = ");
-        ((StringBuilder)localObject1).append(???);
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
-      }
-      return null;
-    }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (QLog.isColorLevel()))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("task(");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject1).append(")  getClientResource error:wasInterceptInvoked true, url = ");
-      ((StringBuilder)localObject1).append(???);
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
-    }
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) && (QLog.isColorLevel()))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("task(");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject1).append(")  onClientRequestResource error:Intercept was already invoked, url = ");
-      ((StringBuilder)localObject1).append(???);
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("task(");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject1).append(")  getClientResource:url = ");
-      ((StringBuilder)localObject1).append(???);
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
-    }
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)
-    {
-      try
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
-        {
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)
-          {
-            if (QLog.isColorLevel())
-            {
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append("task(");
-              ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
-              ((StringBuilder)localObject1).append(") now wait for pendingWebResourceStream!");
-              QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject1).toString());
-            }
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.wait(30000L);
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("task(");
-        ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject3).append(") wait for pendingWebResourceStream failed");
-        ((StringBuilder)localObject3).append(localThrowable.getMessage());
-        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject3).toString());
-      }
-      throw localThrowable;
-    }
-    else if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ???.append("task(");
-      ???.append(this.jdField_b_of_type_JavaLangString);
-      ???.append(") is not in running state: ");
-      ???.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ???.toString());
-    }
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ???.append("task(");
-      ???.append(this.jdField_b_of_type_JavaLangString);
-      ???.append(") have pending stream? -> ");
-      boolean bool;
-      if (this.jdField_a_of_type_JavaIoInputStream != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ???.append(bool);
-      ???.append(", cost ");
-      ???.append(System.currentTimeMillis() - l);
-      ???.append("ms.");
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ???.toString());
-    }
-    if ((this.jdField_a_of_type_JavaIoInputStream == null) && (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)))
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaIoInputStream = new ByteArrayInputStream(this.jdField_g_of_type_JavaLangString.getBytes("UTF-8"));
-        this.jdField_d_of_type_Boolean = true;
-      }
-      catch (Throwable ???)
-      {
-        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ???, new Object[0]);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "task(\" + id + \") pendingWebResourceStream is null but mHtmlContent is not null!");
-      }
-    }
-    if (this.jdField_a_of_type_JavaIoInputStream != null)
-    {
-      if (!b())
-      {
-        ??? = new WebResourceResponse(ApolloClientUtil.a(this.jdField_e_of_type_JavaLangString), "utf-8", this.jdField_a_of_type_JavaIoInputStream);
-        this.jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "task(\" + id + \") getClientResource error: session is destroyed!");
-        }
-        ??? = null;
-      }
-      if (this.jdField_d_of_type_Boolean) {
-        this.jdField_d_of_type_Boolean = false;
-      }
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("task(\" + id + \") getClientResource ret webResourceResponse:");
-        localStringBuilder1.append(???);
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder1.toString());
-      }
-      this.jdField_a_of_type_JavaIoInputStream = null;
-      return ???;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "task(\" + id + \") getClientResource ret webResourceResponse:null ");
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    b(false);
-  }
-  
   public void a(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(0, 1))
+    if (!this.c.compareAndSet(0, 1))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append(") start error:sessionState=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((StringBuilder)localObject).append(this.c.get());
         ((StringBuilder)localObject).append(".");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
       }
@@ -855,38 +964,38 @@ public class ApolloUrlInterceptor
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("task(");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(") now post task flow task.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.j.set(true);
     if (paramBoolean)
     {
-      ThreadManager.postImmediately(new ApolloUrlInterceptor.2(this), null, true);
+      ThreadManager.postImmediately(new ApolloUrlInterceptor.1(this), null, true);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "runDataTask in AsyncThread start!");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics;
-    long l = System.currentTimeMillis();
-    ((ApolloWebStatistics)localObject).g = l;
-    b();
-    c();
+    Object localObject = this.w;
+    long l1 = System.currentTimeMillis();
+    ((ApolloWebStatistics)localObject).g = l1;
+    d();
+    m();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("runDataTask use:");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.h = System.currentTimeMillis();
+    this.w.h = System.currentTimeMillis();
   }
   
   public void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    if (this.jdField_a_of_type_JavaIoInputStream != null) {
-      this.jdField_a_of_type_JavaIoInputStream = null;
+    if (this.t != null) {
+      this.t = null;
     }
     boolean bool2 = QLog.isColorLevel();
     boolean bool1 = true;
@@ -895,22 +1004,22 @@ public class ApolloUrlInterceptor
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("task(");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(") onClose:readComplete:");
       localStringBuilder.append(paramBoolean);
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 1, localStringBuilder.toString());
     }
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     if ((paramBoolean) && (paramByteArrayOutputStream != null))
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new ApolloUrlInterceptor.3(this, paramByteArrayOutputStream), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new ApolloUrlInterceptor.2(this, paramByteArrayOutputStream), 3000L);
       return;
     }
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("task(");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(") onClose error:readComplete =");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", outputStream is null -> ");
@@ -922,12 +1031,12 @@ public class ApolloUrlInterceptor
       localStringBuilder.append(paramBoolean);
       QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 6, localStringBuilder.toString());
     }
-    this.jdField_e_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (d())
+    this.h.set(false);
+    if (l())
     {
       paramByteArrayOutputStream = new StringBuilder();
       paramByteArrayOutputStream.append("task(");
-      paramByteArrayOutputStream.append(this.jdField_b_of_type_JavaLangString);
+      paramByteArrayOutputStream.append(this.b);
       paramByteArrayOutputStream.append(") onClose: postForceDestroyIfNeed send destroy message in chromium_io thread.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramByteArrayOutputStream.toString());
     }
@@ -935,9 +1044,9 @@ public class ApolloUrlInterceptor
     {
       paramByteArrayOutputStream = new StringBuilder();
       paramByteArrayOutputStream.append("task(");
-      paramByteArrayOutputStream.append(this.jdField_b_of_type_JavaLangString);
+      paramByteArrayOutputStream.append(this.b);
       paramByteArrayOutputStream.append(") onClose cost ");
-      paramByteArrayOutputStream.append(System.currentTimeMillis() - l);
+      paramByteArrayOutputStream.append(System.currentTimeMillis() - l1);
       paramByteArrayOutputStream.append(" ms.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 6, paramByteArrayOutputStream.toString());
     }
@@ -945,17 +1054,17 @@ public class ApolloUrlInterceptor
   
   public boolean a()
   {
-    return this.jdField_c_of_type_Boolean ^ true;
+    return this.x ^ true;
   }
   
   public boolean a(CustomWebView paramCustomWebView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)
+    if (this.o == null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
+      this.o = paramCustomWebView;
       paramCustomWebView = new StringBuilder();
       paramCustomWebView.append("task(");
-      paramCustomWebView.append(this.jdField_b_of_type_JavaLangString);
+      paramCustomWebView.append(this.b);
       paramCustomWebView.append(") bind client.");
       QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramCustomWebView.toString());
       return true;
@@ -967,7 +1076,7 @@ public class ApolloUrlInterceptor
   {
     try
     {
-      Uri localUri = Uri.parse(this.jdField_e_of_type_JavaLangString);
+      Uri localUri = Uri.parse(this.p);
       paramString = Uri.parse(paramString);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(localUri.getHost());
@@ -1009,36 +1118,41 @@ public class ApolloUrlInterceptor
     return false;
   }
   
+  public ApolloWebStatistics b()
+  {
+    return this.w;
+  }
+  
   public boolean b(String paramString)
   {
-    boolean bool2 = this.jdField_c_of_type_Boolean;
+    boolean bool2 = this.x;
     boolean bool1 = false;
-    if ((!bool2) && (a(paramString)) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    if ((!bool2) && (a(paramString)) && (this.e.compareAndSet(false, true)))
     {
-      this.jdField_e_of_type_JavaLangString = ApolloClientUtil.a(paramString, "apollo_task_id", String.valueOf(this.jdField_b_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.i = System.currentTimeMillis();
+      this.p = ApolloClientUtil.a(paramString, "apollo_task_id", String.valueOf(this.b));
+      this.w.j = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("task(");
-        paramString.append(this.jdField_b_of_type_JavaLangString);
+        paramString.append(this.b);
         paramString.append(") onWebViewInited: mPendingClientCoreMessage not null:");
-        if (this.jdField_a_of_type_AndroidOsMessage != null) {
+        if (this.s != null) {
           bool1 = true;
         }
         paramString.append(bool1);
         paramString.append(",currUrl:");
-        paramString.append(this.jdField_e_of_type_JavaLangString);
+        paramString.append(this.p);
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramString.toString());
       }
-      paramString = this.jdField_a_of_type_AndroidOsMessage;
+      paramString = this.s;
       if (paramString != null)
       {
-        this.jdField_a_of_type_AndroidOsMessage = null;
+        this.s = null;
         handleMessage(paramString);
         return true;
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
+      if (this.c.get() == 0) {
         a(true);
       }
       return true;
@@ -1046,228 +1160,157 @@ public class ApolloUrlInterceptor
     return false;
   }
   
+  public Object c(String arg1)
+  {
+    if (this.x) {
+      return null;
+    }
+    Object localObject1 = d(???);
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    localObject1 = e(???);
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    if (!a(???))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("task(");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(")  getClientResource error:isMatchCurrentUrl false, url = ");
+      ((StringBuilder)localObject1).append(???);
+      f(((StringBuilder)localObject1).toString());
+      return null;
+    }
+    if (this.d.get())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("task(");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(")  getClientResource error:wasInterceptInvoked true, url = ");
+      ((StringBuilder)localObject1).append(???);
+      f(((StringBuilder)localObject1).toString());
+    }
+    localObject1 = this.d;
+    boolean bool = false;
+    if (!((AtomicBoolean)localObject1).compareAndSet(false, true))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("task(");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(")  onClientRequestResource error:Intercept was already invoked, url = ");
+      ((StringBuilder)localObject1).append(???);
+      f(((StringBuilder)localObject1).toString());
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("task(");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(")  getClientResource:url = ");
+    ((StringBuilder)localObject1).append(???);
+    f(((StringBuilder)localObject1).toString());
+    long l1 = System.currentTimeMillis();
+    if (this.c.get() == 1)
+    {
+      try
+      {
+        synchronized (this.c)
+        {
+          if (this.c.get() == 1)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("task(");
+            ((StringBuilder)localObject1).append(this.b);
+            ((StringBuilder)localObject1).append(") now wait for pendingWebResourceStream!");
+            f(((StringBuilder)localObject1).toString());
+            this.c.wait(30000L);
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task(");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(") wait for pendingWebResourceStream failed");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
+      }
+      throw localThrowable;
+    }
+    else
+    {
+      ??? = new StringBuilder();
+      ???.append("task(");
+      ???.append(this.b);
+      ???.append(") is not in running state: ");
+      ???.append(this.c);
+      f(???.toString());
+    }
+    ??? = new StringBuilder();
+    ???.append("task(");
+    ???.append(this.b);
+    ???.append(") have pending stream? -> ");
+    if (this.t != null) {
+      bool = true;
+    }
+    ???.append(bool);
+    ???.append(", cost ");
+    ???.append(System.currentTimeMillis() - l1);
+    ???.append("ms.");
+    f(???.toString());
+    ??? = i();
+    if (??? != null) {
+      return ???;
+    }
+    f("task(\" + id + \") getClientResource ret webResourceResponse:null ");
+    return null;
+  }
+  
+  public void c()
+  {
+    b(false);
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    if (10 == paramMessage.what)
-    {
-      b(true);
-      if (QLog.isColorLevel())
-      {
-        paramMessage = new StringBuilder();
-        paramMessage.append("task(");
-        paramMessage.append(this.jdField_b_of_type_JavaLangString);
-        paramMessage.append(") handleMessage:force destroy.");
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-      }
+    if (c(paramMessage)) {
       return true;
     }
-    if (b())
+    if (j())
     {
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
         paramMessage.append("task(");
-        paramMessage.append(this.jdField_b_of_type_JavaLangString);
+        paramMessage.append(this.b);
         paramMessage.append(") handleMessage error: is destroyed or waiting for destroy.");
         QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
       }
       return false;
     }
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("task(");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(") handleMessage: msg what = ");
-      ((StringBuilder)localObject).append(paramMessage.what);
-      ((StringBuilder)localObject).append(".");
-      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("task(");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(") handleMessage: msg what = ");
+      localStringBuilder.append(paramMessage.what);
+      localStringBuilder.append(".");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, localStringBuilder.toString());
     }
-    if ((paramMessage.what > 0) && (paramMessage.what < 7) && (!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
-    {
-      this.jdField_a_of_type_AndroidOsMessage = Message.obtain(paramMessage);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("task(");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(") handleMessage: client not ready, core msg = ");
-        ((StringBuilder)localObject).append(paramMessage.what);
-        ((StringBuilder)localObject).append(".");
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
-      }
+    if (b(paramMessage)) {
       return true;
     }
-    if (paramMessage == this.jdField_a_of_type_AndroidOsMessage) {
-      this.jdField_a_of_type_AndroidOsMessage = null;
+    if (paramMessage == this.s) {
+      this.s = null;
     }
-    int i = paramMessage.what;
-    if (i != 1)
-    {
-      if (i != 2)
-      {
-        if ((i != 3) && (i != 5))
-        {
-          if (i != 255)
-          {
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("msg.what ");
-              ((StringBuilder)localObject).append(paramMessage.what);
-              QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
-            }
-            return false;
-          }
-          if ((this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!b()) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
-          {
-            Toast.makeText(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, 1).show();
-            return true;
-          }
-        }
-        else if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "handleClientCoreMessage_ConnectionError: load src url.");
-          }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(this.jdField_e_of_type_JavaLangString);
-            return true;
-          }
-        }
-      }
-      else if (paramMessage.arg1 == 1)
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-        {
-          if (QLog.isColorLevel())
-          {
-            paramMessage = new StringBuilder();
-            paramMessage.append("task(");
-            paramMessage.append(this.jdField_b_of_type_JavaLangString);
-            paramMessage.append(") handleClientCoreMessage_FirstLoad:FIRST_LOAD_NO_CACHE.");
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-            return true;
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          paramMessage = new StringBuilder();
-          paramMessage.append("task(");
-          paramMessage.append(this.jdField_b_of_type_JavaLangString);
-          paramMessage.append(") handleClientCoreMessage_FirstLoad:url was not invoked.");
-          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-          return true;
-        }
-      }
-      else if (paramMessage.arg1 == 2) {
-        if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("task(\" + id + \") handleClientCoreMessage_FirstLoad with cache, url:");
-            ((StringBuilder)localObject).append(this.jdField_e_of_type_JavaLangString);
-            QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
-          }
-          this.jdField_d_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.j = System.currentTimeMillis();
-          if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)
-          {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension() != null)
-            {
-              this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(this.jdField_e_of_type_JavaLangString, (String)paramMessage.obj, "text/html", "utf-8", this.jdField_e_of_type_JavaLangString);
-              return true;
-            }
-            this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(this.jdField_e_of_type_JavaLangString);
-            QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 1, "handleMessage CLIENT_CORE_MSG_FIRST_LOAD PRE_LOAD_WITH_CACHE but not x5 Core");
-            return true;
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          paramMessage = new StringBuilder();
-          paramMessage.append("task(");
-          paramMessage.append(this.jdField_b_of_type_JavaLangString);
-          paramMessage.append(") FIRST_LOAD_WITH_CACHE load url was invoked.");
-          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-          return true;
-        }
-      }
-    }
-    else if (paramMessage.arg1 == 1)
-    {
-      if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        if (QLog.isColorLevel())
-        {
-          paramMessage = new StringBuilder();
-          paramMessage.append("task(");
-          paramMessage.append(this.jdField_b_of_type_JavaLangString);
-          paramMessage.append(") handleClientCoreMessage_PreLoad:PRE_LOAD_NO_CACHE load url.");
-          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.j = System.currentTimeMillis();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(this.jdField_e_of_type_JavaLangString);
-          return true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        paramMessage = new StringBuilder();
-        paramMessage.append("task(");
-        paramMessage.append(this.jdField_b_of_type_JavaLangString);
-        paramMessage.append(") handleClientCoreMessage_PreLoad:wasLoadUrlInvoked = true.");
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-        return true;
-      }
-    }
-    else if (paramMessage.arg1 == 2) {
-      if (this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("task(");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-          ((StringBuilder)localObject).append(") handleClientCoreMessage_PreLoad:PRE_LOAD_WITH_CACHE load data.");
-          QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
-        }
-        paramMessage = (String)paramMessage.obj;
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloWebStatistics.j = System.currentTimeMillis();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)
-        {
-          if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension() != null)
-          {
-            localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-            String str = this.jdField_e_of_type_JavaLangString;
-            ((CustomWebView)localObject).loadDataWithBaseURL(str, paramMessage, "text/html", "utf-8", str);
-            return true;
-          }
-          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(this.jdField_e_of_type_JavaLangString);
-          QLog.e("[cmshow]apollo_client_ApolloUrlInterceptor", 1, "handleMessage CLIENT_CORE_MSG_PRE_LOAD PRE_LOAD_WITH_CACHE but not x5 Core");
-          return true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        paramMessage = new StringBuilder();
-        paramMessage.append("task(");
-        paramMessage.append(this.jdField_b_of_type_JavaLangString);
-        paramMessage.append(") handleClientCoreMessage_PreLoad:wasLoadDataInvoked = true.");
-        QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, paramMessage.toString());
-      }
-    }
-    return true;
+    return a(paramMessage) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor
  * JD-Core Version:    0.7.0.1
  */

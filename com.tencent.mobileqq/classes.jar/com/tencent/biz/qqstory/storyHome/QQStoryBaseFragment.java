@@ -33,19 +33,13 @@ public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
   implements IEventReceiver
 {
-  protected Dialog a;
-  protected Handler a;
-  protected QQStoryBaseFragment.ProgressView a;
-  public AppInterface a;
-  protected Map<Subscriber, String> a;
-  protected final boolean b = false;
-  protected boolean c = false;
-  
-  public QQStoryBaseFragment()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  protected final boolean j = false;
+  protected boolean k = false;
+  protected Map<Subscriber, String> l = new HashMap();
+  protected Handler m = new Handler(Looper.getMainLooper());
+  protected Dialog n;
+  protected QQStoryBaseFragment.ProgressView o;
+  public AppInterface p;
   
   public <T extends View> T a(int paramInt)
   {
@@ -60,31 +54,26 @@ public abstract class QQStoryBaseFragment
     if (paramOnClickListener != null) {
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramString = this.rightViewText;
       paramOnClickListener = new StringBuilder();
       paramOnClickListener.append(this.rightViewText.getText());
-      paramOnClickListener.append(HardCodeUtil.a(2131710751));
+      paramOnClickListener.append(HardCodeUtil.a(2131908431));
       paramString.setContentDescription(paramOnClickListener.toString());
     }
   }
   
   protected void a(@NonNull Map<Subscriber, String> paramMap) {}
   
-  public boolean a()
-  {
-    return (getBaseActivity() != null) && (getBaseActivity().isFinishing());
-  }
-  
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QQStoryContext.a();
     Object localObject1 = new HashMap();
     a((Map)localObject1);
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
-    localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    this.l.clear();
+    this.l.putAll((Map)localObject1);
+    localObject1 = this.l.entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -93,31 +82,36 @@ public abstract class QQStoryBaseFragment
       StoryDispatcher.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.c = true;
+    this.k = true;
     QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
+    this.p = QQStoryContext.k();
     Bosses.get().postLightWeightJob(new QQStoryBaseFragment.1(this), 10);
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null)
+    if (this.n != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new QQStoryBaseFragment.3(this));
+      this.m.removeCallbacksAndMessages(null);
+      this.m.post(new QQStoryBaseFragment.3(this));
     }
+  }
+  
+  public boolean f()
+  {
+    return (getBaseActivity() != null) && (getBaseActivity().isFinishing());
   }
   
   public boolean isValidate()
   {
-    return (this.c) && (!a());
+    return (this.k) && (!f());
   }
   
   public void onDestroyView()
   {
     e();
-    this.c = false;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    this.k = false;
+    Iterator localIterator = this.l.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
@@ -128,7 +122,7 @@ public abstract class QQStoryBaseFragment
   
   public void onStop()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
+    this.m.removeCallbacks(null);
     super.onStop();
   }
 }

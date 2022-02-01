@@ -8,35 +8,35 @@ import android.view.animation.Transformation;
 class QzoneAutoVerticalScrollTextView$Rotate3dAnimation
   extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  private float b;
+  private float c;
+  private final boolean d;
+  private final boolean e;
+  private Camera f;
   
   public QzoneAutoVerticalScrollTextView$Rotate3dAnimation(QzoneAutoVerticalScrollTextView paramQzoneAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    float f1 = this.b;
+    float f2 = this.c;
+    Camera localCamera = this.f;
     int i;
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.e) {
       i = 1;
     } else {
       i = -1;
     }
     paramTransformation = paramTransformation.getMatrix();
     localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+    if (this.d) {
+      localCamera.translate(0.0F, i * this.c * (paramFloat - 1.0F), 0.0F);
     } else {
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+      localCamera.translate(0.0F, i * this.c * paramFloat, 0.0F);
     }
     localCamera.getMatrix(paramTransformation);
     localCamera.restore();
@@ -47,14 +47,14 @@ class QzoneAutoVerticalScrollTextView$Rotate3dAnimation
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getWidth();
+    this.f = new Camera();
+    this.c = this.a.getHeight();
+    this.b = this.a.getWidth();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.QzoneAutoVerticalScrollTextView.Rotate3dAnimation
  * JD-Core Version:    0.7.0.1
  */

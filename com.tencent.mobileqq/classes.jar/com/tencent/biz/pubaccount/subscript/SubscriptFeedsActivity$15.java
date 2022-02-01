@@ -28,14 +28,14 @@ class SubscriptFeedsActivity$15
     }
     if ((paramArrayList != null) && (paramArrayList.size() == 4))
     {
-      if (this.a.a != null)
+      if (this.a.l != null)
       {
         localObject = new Message();
         ((Message)localObject).what = 1003;
         Bundle localBundle = new Bundle();
         localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
         ((Message)localObject).setData(localBundle);
-        this.a.a.removeMessages(1003);
+        this.a.l.removeMessages(1003);
       }
     }
     else if (QLog.isColorLevel()) {
@@ -45,7 +45,7 @@ class SubscriptFeedsActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.15
  * JD-Core Version:    0.7.0.1
  */

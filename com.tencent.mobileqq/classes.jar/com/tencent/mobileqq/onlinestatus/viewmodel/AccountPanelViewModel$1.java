@@ -14,13 +14,13 @@ class AccountPanelViewModel$1
   
   public void run()
   {
-    ((IMessageFacade)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IMessageFacade.class, "")).setReaded(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), 7000);
-    ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanOneSubAccountMessageUnread((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    ((IMessageFacade)this.a.getRuntimeService(IMessageFacade.class, "")).setReaded(this.b.getUin(), 7000);
+    ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanOneSubAccountMessageUnread((AppInterface)this.a, false, null, this.b.getUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel.1
  * JD-Core Version:    0.7.0.1
  */

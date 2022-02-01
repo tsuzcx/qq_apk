@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.kandian.repo.account.IUserLevelCallBack;
+import com.tencent.mobileqq.kandian.repo.account.UserLevelInfo;
+import org.json.JSONObject;
 
 class BridgeModule$6
-  implements DialogInterface.OnCancelListener
+  implements IUserLevelCallBack
 {
-  BridgeModule$6(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
+  BridgeModule$6(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(UserLevelInfo paramUserLevelInfo)
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i == 4) || (i == 11)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.reportVideoShareClick(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, -1, -1, true, this.jdField_a_of_type_Int, this.c, this.d, this.e);
-    }
+    BridgeModuleHelper.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.6
  * JD-Core Version:    0.7.0.1
  */

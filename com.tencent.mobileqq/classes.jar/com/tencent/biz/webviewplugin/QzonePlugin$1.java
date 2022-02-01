@@ -10,13 +10,13 @@ class QzonePlugin$1
   public void run()
   {
     if (QzonePlugin.a(this.this$0) != null) {
-      QzonePlugin.a(this.this$0).postUrl(QzonePlugin.a(this.this$0), this.a);
+      QzonePlugin.a(this.this$0).postUrl(QzonePlugin.b(this.this$0), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzonePlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.qwallet.hb.HbInfo;
-import com.tencent.mobileqq.qwallet.impl.GdtAdServlet;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.MD5;
@@ -19,6 +18,7 @@ import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
+import tencent.im.qqwallet.GdtAdServlet;
 import tencent.im.qqwallet.GetRecommendWords.GetClassifyReq;
 import tencent.im.qqwallet.GetRecommendWords.GetDefaultCopywriterReq;
 
@@ -44,42 +44,6 @@ public class GetRecommendWordUtils
     localStringBuilder.append("qwallet_hongbao_shengpizi_");
     localStringBuilder.append(QWalletHelperImpl.getAppRuntime().getCurrentUin());
     return MD5.toMD5(localStringBuilder.toString());
-  }
-  
-  public static List<GetRecommendWordUtils.RspGroupWordsListInfo> a()
-  {
-    Object localObject2 = new ArrayList();
-    Object localObject1;
-    try
-    {
-      Object localObject3 = FileUtils.readObject(a());
-      localObject1 = localObject2;
-      if ((localObject3 instanceof ArrayList)) {
-        localObject1 = (List)localObject3;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("GetRandomRecommendWordUtils", 2, "", localThrowable);
-        localObject1 = localObject2;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("readFromFile, ");
-      if (localObject1 != null) {
-        localObject2 = localObject1.toString();
-      } else {
-        localObject2 = "null";
-      }
-      localStringBuilder.append((String)localObject2);
-      QLog.d("GetRandomRecommendWordUtils", 2, localStringBuilder.toString());
-    }
-    return localObject1;
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, GetRecommendWordUtils.GetGroupWordsListener paramGetGroupWordsListener)
@@ -138,10 +102,46 @@ public class GetRecommendWordUtils
       QLog.e("GetRandomRecommendWordUtils", 1, paramBaseQQAppInterface, new Object[0]);
     }
   }
+  
+  public static List<GetRecommendWordUtils.RspGroupWordsListInfo> b()
+  {
+    Object localObject2 = new ArrayList();
+    Object localObject1;
+    try
+    {
+      Object localObject3 = FileUtils.readObject(a());
+      localObject1 = localObject2;
+      if ((localObject3 instanceof ArrayList)) {
+        localObject1 = (List)localObject3;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("GetRandomRecommendWordUtils", 2, "", localThrowable);
+        localObject1 = localObject2;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readFromFile, ");
+      if (localObject1 != null) {
+        localObject2 = localObject1.toString();
+      } else {
+        localObject2 = "null";
+      }
+      localStringBuilder.append((String)localObject2);
+      QLog.d("GetRandomRecommendWordUtils", 2, localStringBuilder.toString());
+    }
+    return localObject1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.GetRecommendWordUtils
  * JD-Core Version:    0.7.0.1
  */

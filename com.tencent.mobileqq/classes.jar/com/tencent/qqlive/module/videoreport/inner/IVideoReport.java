@@ -43,6 +43,8 @@ public abstract interface IVideoReport
   
   public abstract void addToDetectionWhitelist(Activity paramActivity);
   
+  public abstract void bindSubmitTarget(View paramView1, View paramView2);
+  
   public abstract void bindVideoPlayerInfo(@NonNull Object paramObject, VideoEntity paramVideoEntity);
   
   public abstract void clearElementExposure(View paramView, boolean paramBoolean);
@@ -50,6 +52,8 @@ public abstract interface IVideoReport
   public abstract void clearPublicParams();
   
   public abstract void doAppOutReport();
+  
+  public abstract void enableScrollExposureReport(Object paramObject, boolean paramBoolean);
   
   public abstract PageInfo findOwnerPage(View paramView);
   
@@ -63,6 +67,10 @@ public abstract interface IVideoReport
   
   @Deprecated
   public abstract ReportPolicy getElementReportPolicy(Object paramObject);
+  
+  public abstract EndExposurePolicy getElementScrollEndExposePolicy(Object paramObject);
+  
+  public abstract ExposurePolicy getElementScrollExposePolicy(Object paramObject);
   
   public abstract PageInfo getPageInfo(View paramView);
   
@@ -120,6 +128,8 @@ public abstract interface IVideoReport
   
   public abstract void setClickReportInterval(View paramView, long paramLong);
   
+  public abstract void setCollectProcessName(boolean paramBoolean);
+  
   public abstract void setDataCollectEnable(boolean paramBoolean);
   
   public abstract void setDebugMode(boolean paramBoolean);
@@ -153,6 +163,10 @@ public abstract interface IVideoReport
   public abstract void setElementReportPolicy(Object paramObject, ReportPolicy paramReportPolicy);
   
   public abstract void setElementReuseIdentifier(Object paramObject, String paramString);
+  
+  public abstract void setElementScrollEndExposePolicy(Object paramObject, EndExposurePolicy paramEndExposurePolicy);
+  
+  public abstract void setElementScrollExposePolicy(Object paramObject, ExposurePolicy paramExposurePolicy);
   
   public abstract void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap);
   
@@ -189,7 +203,13 @@ public abstract interface IVideoReport
   
   public abstract void startWithConfiguration(Application paramApplication, Configuration paramConfiguration);
   
+  public abstract void supportNewPlayType(boolean paramBoolean);
+  
   public abstract void supportPlayerReport(boolean paramBoolean);
+  
+  public abstract void supportSeekReport(boolean paramBoolean);
+  
+  public abstract void supportSpeedRatioReport(boolean paramBoolean);
   
   public abstract void supportWebViewReport(boolean paramBoolean);
   
@@ -212,7 +232,7 @@ public abstract interface IVideoReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.IVideoReport
  * JD-Core Version:    0.7.0.1
  */

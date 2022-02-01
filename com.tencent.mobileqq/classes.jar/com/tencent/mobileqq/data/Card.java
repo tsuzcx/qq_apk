@@ -112,6 +112,7 @@ public class Card
   public long feedPreviewTime;
   public int fontId;
   public int fontType;
+  public int gameCardId = 0;
   public int grayNameplateFlag = 0;
   public int greenLevel = 0;
   public boolean hasFakeData = false;
@@ -796,7 +797,7 @@ public class Card
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 787	com/tencent/mobileqq/data/Card:vOpenPriv	[B
+    //   1: getfield 790	com/tencent/mobileqq/data/Card:vOpenPriv	[B
     //   4: astore_2
     //   5: aconst_null
     //   6: astore 4
@@ -806,26 +807,26 @@ public class Card
     //   12: astore_1
     //   13: aload_2
     //   14: ifnull +144 -> 158
-    //   17: new 616	java/io/ObjectInputStream
+    //   17: new 619	java/io/ObjectInputStream
     //   20: dup
-    //   21: new 618	java/io/ByteArrayInputStream
+    //   21: new 621	java/io/ByteArrayInputStream
     //   24: dup
     //   25: aload_2
-    //   26: invokespecial 621	java/io/ByteArrayInputStream:<init>	([B)V
-    //   29: invokespecial 624	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   26: invokespecial 624	java/io/ByteArrayInputStream:<init>	([B)V
+    //   29: invokespecial 627	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   32: astore_2
     //   33: aload_2
     //   34: astore_1
     //   35: aload_2
-    //   36: invokevirtual 627	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   39: checkcast 440	java/util/ArrayList
+    //   36: invokevirtual 630	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   39: checkcast 443	java/util/ArrayList
     //   42: astore_3
     //   43: aload_2
-    //   44: invokevirtual 771	java/io/ObjectInputStream:close	()V
+    //   44: invokevirtual 774	java/io/ObjectInputStream:close	()V
     //   47: goto +8 -> 55
     //   50: astore_1
     //   51: aload_1
-    //   52: invokevirtual 630	java/lang/Exception:printStackTrace	()V
+    //   52: invokevirtual 633	java/lang/Exception:printStackTrace	()V
     //   55: aload_3
     //   56: astore_1
     //   57: goto +101 -> 158
@@ -841,13 +842,13 @@ public class Card
     //   75: aload_2
     //   76: astore_1
     //   77: aload_3
-    //   78: invokevirtual 788	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   78: invokevirtual 791	java/lang/OutOfMemoryError:printStackTrace	()V
     //   81: aload 4
     //   83: astore_1
     //   84: aload_2
     //   85: ifnull +73 -> 158
     //   88: aload_2
-    //   89: invokevirtual 771	java/io/ObjectInputStream:close	()V
+    //   89: invokevirtual 774	java/io/ObjectInputStream:close	()V
     //   92: aload 4
     //   94: astore_1
     //   95: goto +63 -> 158
@@ -857,19 +858,19 @@ public class Card
     //   101: aload_2
     //   102: astore_1
     //   103: aload_3
-    //   104: invokevirtual 630	java/lang/Exception:printStackTrace	()V
+    //   104: invokevirtual 633	java/lang/Exception:printStackTrace	()V
     //   107: aload 4
     //   109: astore_1
     //   110: aload_2
     //   111: ifnull +47 -> 158
     //   114: aload_2
-    //   115: invokevirtual 771	java/io/ObjectInputStream:close	()V
+    //   115: invokevirtual 774	java/io/ObjectInputStream:close	()V
     //   118: aload 4
     //   120: astore_1
     //   121: goto +37 -> 158
     //   124: astore_1
     //   125: aload_1
-    //   126: invokevirtual 630	java/lang/Exception:printStackTrace	()V
+    //   126: invokevirtual 633	java/lang/Exception:printStackTrace	()V
     //   129: aload 4
     //   131: astore_1
     //   132: goto +26 -> 158
@@ -881,20 +882,20 @@ public class Card
     //   140: aload_3
     //   141: ifnull +15 -> 156
     //   144: aload_3
-    //   145: invokevirtual 771	java/io/ObjectInputStream:close	()V
+    //   145: invokevirtual 774	java/io/ObjectInputStream:close	()V
     //   148: goto +8 -> 156
     //   151: astore_2
     //   152: aload_2
-    //   153: invokevirtual 630	java/lang/Exception:printStackTrace	()V
+    //   153: invokevirtual 633	java/lang/Exception:printStackTrace	()V
     //   156: aload_1
     //   157: athrow
     //   158: aload_1
     //   159: ifnull +5 -> 164
     //   162: aload_1
     //   163: areturn
-    //   164: new 440	java/util/ArrayList
+    //   164: new 443	java/util/ArrayList
     //   167: dup
-    //   168: invokespecial 493	java/util/ArrayList:<init>	()V
+    //   168: invokespecial 496	java/util/ArrayList:<init>	()V
     //   171: areturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1437,7 +1438,7 @@ public class Card
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Card
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ class Face2FaceAddFriendAnim$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim;
-    paramAnimation.jdField_a_of_type_Float = paramAnimation.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    paramAnimation = this.c;
+    paramAnimation.c = paramAnimation.d;
+    ((Face2FaceAddFriendActivity)this.c.C).a(this.a, this.b);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class Face2FaceAddFriendAnim$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim.3
  * JD-Core Version:    0.7.0.1
  */

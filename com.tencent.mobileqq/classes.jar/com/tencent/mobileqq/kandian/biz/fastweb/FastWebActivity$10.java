@@ -28,17 +28,17 @@ class FastWebActivity$10
     paramString.append("onLoadUserInfoSucceed ");
     paramString.append(paramReadInJoyUserInfo);
     QLog.d("FastWebActivity", 1, paramString.toString());
-    if ((paramReadInJoyUserInfo != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null))
+    if ((paramReadInJoyUserInfo != null) && (FastWebActivity.k(this.a) != null) && (FastWebActivity.l(this.a) != null))
     {
-      FastWebPTSDataConverter.a(this.a.a, FastWebActivity.a(this.a).c, paramReadInJoyUserInfo);
-      FastWebRequestUtil.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-      FastWebActivity.e(this.a);
+      FastWebPTSDataConverter.a(this.a.g, FastWebActivity.k(this.a).bb, paramReadInJoyUserInfo);
+      FastWebRequestUtil.a(FastWebActivity.k(this.a), FastWebActivity.m(this.a));
+      FastWebActivity.n(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.10
  * JD-Core Version:    0.7.0.1
  */

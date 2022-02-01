@@ -17,6 +17,8 @@ import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
@@ -297,7 +299,7 @@ public class MfpBuilder
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSimSerialNumber();
+      paramContext = PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)paramContext.getSystemService("phone"));
       return paramContext;
     }
     catch (Exception paramContext)
@@ -312,7 +314,7 @@ public class MfpBuilder
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+      paramContext = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getSystemService("phone"));
       return paramContext;
     }
     catch (Exception paramContext)
@@ -327,7 +329,7 @@ public class MfpBuilder
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+      paramContext = PhoneInfoMonitor.getSubscriberId((TelephonyManager)paramContext.getSystemService("phone"));
       return paramContext;
     }
     catch (Exception paramContext)
@@ -349,7 +351,7 @@ public class MfpBuilder
       if (paramContext == null) {
         return "";
       }
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext != null)
       {
         paramContext = paramContext.getMacAddress();
@@ -366,7 +368,7 @@ public class MfpBuilder
     Object localObject2 = "";
     try
     {
-      Iterator localIterator = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
+      Iterator localIterator = Collections.list(NetworkMonitor.getNetworkInterfaces()).iterator();
       do
       {
         localObject1 = localObject2;
@@ -401,7 +403,7 @@ public class MfpBuilder
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+      paramContext = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getSystemService("phone"));
       return paramContext;
     }
     catch (Exception paramContext)
@@ -543,7 +545,7 @@ public class MfpBuilder
     paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
     try
     {
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext != null)
       {
         paramContext = paramContext.getSSID();
@@ -563,7 +565,7 @@ public class MfpBuilder
     paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
     try
     {
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext != null)
       {
         paramContext = paramContext.getBSSID();
@@ -590,7 +592,7 @@ public class MfpBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.weibo.ssosdk.MfpBuilder
  * JD-Core Version:    0.7.0.1
  */

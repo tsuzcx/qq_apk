@@ -11,14 +11,14 @@ class AIOGalleryScene$19
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (AIOGalleryScene.a(this.a) != null)) {
-      this.a.r();
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (AIOGalleryScene.D(this.a) != null)) {
+      this.a.z();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.19
  * JD-Core Version:    0.7.0.1
  */

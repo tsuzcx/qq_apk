@@ -10,12 +10,12 @@ class AEPhotoListLogicBase$18$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2064515418, 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2064187705, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.18.2
  * JD-Core Version:    0.7.0.1
  */

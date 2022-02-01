@@ -23,15 +23,15 @@ class WatermarkEditListAdapter$2
       WatermarkEditListAdapter.a(paramView, WatermarkEditListAdapter.a(paramView));
       WatermarkEditListAdapter.a(this.a).setTextColor(-1);
     }
-    if (WatermarkEditListAdapter.a(this.a) != null) {
-      WatermarkEditListAdapter.a(this.a).b();
+    if (WatermarkEditListAdapter.b(this.a) != null) {
+      WatermarkEditListAdapter.b(this.a).b();
     }
-    AESelectLocationFragment.a(WatermarkEditListAdapter.a(this.a), 203);
+    AESelectLocationFragment.a(WatermarkEditListAdapter.c(this.a), 203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

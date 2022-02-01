@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/j5a" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/pk5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="20.0dip">
+        <ImageView android:id="@id/pjt" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/j53" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/pju" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:layout_below="@id/pk5">
+        <TextView android:textSize="@dimen/mz" android:textColor="@color/al3" android:id="@id/pk4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播已结束" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pjx" android:layout_width="96.0dip" android:layout_height="96.0dip" android:layout_marginTop="36.0dip" android:layout_below="@id/pk4" android:layout_centerHorizontal="true">
+            <com.tencent.image.URLImageView android:id="@id/pjw" android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/j58" />
+        </com.tencent.mobileqq.widget.RoundRelativeLayout>
+        <TextView android:textSize="@dimen/mz" android:textColor="@color/al3" android:id="@id/pjy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_below="@id/pjx" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/pk1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="42.0dip" android:layout_marginTop="42.0dip" android:layout_marginRight="42.0dip" android:layout_below="@id/pju">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="16.0dip" android:textColor="#ff8a8aff" android:id="@id/pjz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/ms" android:textColor="#ff595980" android:id="@id/pk0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播间人气" android:layout_below="@id/pjz" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:background="#ff7d7db3" android:layout_width="1.0px" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="16.0dip" android:textColor="#ff8a8aff" android:id="@id/pk2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/ms" android:textColor="#ff595980" android:id="@id/pk3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播时长" android:layout_below="@id/pk2" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/pk6" android:background="@drawable/ggm" android:visibility="invisible" android:layout_width="210.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/n8" android:layout_below="@id/pk1" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/mz" android:textColor="@color/al3" android:id="@id/pjv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="关注" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff7d7db3" android:id="@id/pl9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="为你推荐的直播" android:layout_above="@id/pl8" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/pl8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/pl_" android:background="@drawable/ggq" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="1.0">
+            <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pld" android:background="@drawable/j5k" android:layout_width="fill_parent" android:layout_height="87.0dip">
+                <ImageView android:layout_width="8.0dip" android:layout_height="@dimen/mp" android:layout_marginRight="2.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/j5d" android:layout_toLeftOf="@id/plb" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/plb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/pla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="8.0dip" android:text="hello" android:layout_alignParentBottom="true" />
+            </com.tencent.mobileqq.widget.RoundRelativeLayout>
+            <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/plc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:singleLine="true" android:layout_below="@id/pld" />
+            <ImageView android:id="@id/ple" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginBottom="@dimen/ms" android:src="@drawable/j5c" android:layout_below="@id/plc" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/plf" android:background="@drawable/ggq" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+            <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/plj" android:background="@drawable/j5k" android:layout_width="fill_parent" android:layout_height="87.0dip">
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/plg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/plh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                <ImageView android:layout_width="8.0dip" android:layout_height="@dimen/mp" android:layout_marginRight="2.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/j5d" android:layout_toLeftOf="@id/plh" android:layout_alignParentBottom="true" />
+            </com.tencent.mobileqq.widget.RoundRelativeLayout>
+            <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/pli" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:singleLine="true" android:layout_below="@id/plj" />
+            <ImageView android:id="@id/plk" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginBottom="@dimen/ms" android:src="@drawable/j5c" android:layout_below="@id/pli" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

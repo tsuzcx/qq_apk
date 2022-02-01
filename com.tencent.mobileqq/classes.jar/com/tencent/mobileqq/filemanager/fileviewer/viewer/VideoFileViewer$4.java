@@ -15,18 +15,18 @@ class VideoFileViewer$4
     if (Build.VERSION.SDK_INT >= 11)
     {
       float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((VideoFileViewer.a(this.a).getVisibility() == 0) && (Math.abs(VideoFileViewer.a(this.a).getAlpha() - f) >= 0.02F)) {
-        VideoFileViewer.a(this.a).setAlpha(f);
+      if ((VideoFileViewer.c(this.a).getVisibility() == 0) && (Math.abs(VideoFileViewer.c(this.a).getAlpha() - f) >= 0.02F)) {
+        VideoFileViewer.c(this.a).setAlpha(f);
       }
-      if ((VideoFileViewer.a(this.a).getVisibility() == 0) && (Math.abs(VideoFileViewer.a(this.a).getAlpha() - f) >= 0.02F)) {
-        VideoFileViewer.a(this.a).setAlpha(f);
+      if ((VideoFileViewer.c(this.a).getVisibility() == 0) && (Math.abs(VideoFileViewer.c(this.a).getAlpha() - f) >= 0.02F)) {
+        VideoFileViewer.c(this.a).setAlpha(f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer.4
  * JD-Core Version:    0.7.0.1
  */

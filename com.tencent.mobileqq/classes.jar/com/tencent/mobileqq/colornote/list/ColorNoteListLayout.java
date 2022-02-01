@@ -14,13 +14,13 @@ import android.widget.LinearLayout.LayoutParams;
 public class ColorNoteListLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private OnListHideListener jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private int a;
   private int b;
-  private int c = -1;
+  private View c;
+  private RecyclerView d;
+  private OnListHideListener e;
+  private int f = -1;
+  private int[] g = new int[2];
   
   public ColorNoteListLayout(Context paramContext)
   {
@@ -43,18 +43,13 @@ public class ColorNoteListLayout
   private void a(Context paramContext)
   {
     setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = new View(paramContext);
+    this.c = new View(paramContext);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setId(2131364848);
+    addView(this.c, localLayoutParams);
+    this.d = new RecyclerView(paramContext);
+    this.d.setId(2131430973);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramContext);
-  }
-  
-  public RecyclerView a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    addView(this.d, paramContext);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -63,14 +58,19 @@ public class ColorNoteListLayout
     {
       if (paramKeyEvent.getAction() == 1)
       {
-        paramKeyEvent = this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener;
+        paramKeyEvent = this.e;
         if (paramKeyEvent != null) {
-          paramKeyEvent.b();
+          paramKeyEvent.c();
         }
       }
       return true;
     }
     return false;
+  }
+  
+  public RecyclerView getRecyclerView()
+  {
+    return this.d;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -80,14 +80,14 @@ public class ColorNoteListLayout
       return;
     }
     Object localObject;
-    if (this.c < 0)
+    if (this.f < 0)
     {
-      paramInt1 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
+      paramInt1 = this.d.getChildCount();
       paramInt4 = 0;
       if (paramInt1 > 0)
       {
-        paramInt1 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0).getMeasuredHeight();
-        localObject = (RecyclerView.LayoutParams)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0).getLayoutParams();
+        paramInt1 = this.d.getChildAt(0).getMeasuredHeight();
+        localObject = (RecyclerView.LayoutParams)this.d.getChildAt(0).getLayoutParams();
         paramInt1 = paramInt1 + ((RecyclerView.LayoutParams)localObject).topMargin + ((RecyclerView.LayoutParams)localObject).bottomMargin;
       }
       else
@@ -95,13 +95,13 @@ public class ColorNoteListLayout
         paramInt1 = 0;
       }
       paramInt3 = paramInt4;
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() <= 4)
+      if (this.d.getChildCount() <= 4)
       {
-        getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
-        int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() * paramInt1;
-        int i = this.jdField_a_of_type_ArrayOfInt[1];
-        if (((View)getParent()).getMeasuredHeight() - this.jdField_a_of_type_Int - getPaddingBottom() + i >= j) {}
-        for (paramInt2 = this.jdField_a_of_type_Int;; paramInt2 = this.b - j)
+        getLocationOnScreen(this.g);
+        int j = this.d.getChildCount() * paramInt1;
+        int i = this.g[1];
+        if (((View)getParent()).getMeasuredHeight() - this.a - getPaddingBottom() + i >= j) {}
+        for (paramInt2 = this.a;; paramInt2 = this.b - j)
         {
           paramInt3 = paramInt2 - i;
           break;
@@ -113,17 +113,17 @@ public class ColorNoteListLayout
       }
       if (paramInt1 > 0)
       {
-        this.c = paramInt3;
-        localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).height = this.c;
-        this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.f = paramInt3;
+        localObject = (LinearLayout.LayoutParams)this.c.getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject).height = this.f;
+        this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
     else
     {
-      localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).height = this.c;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = (LinearLayout.LayoutParams)this.c.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject).height = this.f;
+      this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -134,18 +134,18 @@ public class ColorNoteListLayout
   
   public void setAnchor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
   }
   
   public void setHideListener(OnListHideListener paramOnListHideListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener = paramOnListHideListener;
+    this.e = paramOnListHideListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListLayout
  * JD-Core Version:    0.7.0.1
  */

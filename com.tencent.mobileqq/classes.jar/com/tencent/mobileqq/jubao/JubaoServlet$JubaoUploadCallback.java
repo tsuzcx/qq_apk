@@ -19,16 +19,16 @@ class JubaoServlet$JubaoUploadCallback
   {
     if (paramSendResult.a == 0)
     {
-      paramSendResult = paramSendResult.c;
+      paramSendResult = paramSendResult.f;
       JubaoIPCServer.a().a(paramSendResult);
       return;
     }
-    JubaoIPCServer.a().a();
+    JubaoIPCServer.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoServlet.JubaoUploadCallback
  * JD-Core Version:    0.7.0.1
  */

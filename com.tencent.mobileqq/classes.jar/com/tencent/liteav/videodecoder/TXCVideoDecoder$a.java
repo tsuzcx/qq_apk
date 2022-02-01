@@ -15,7 +15,7 @@ class TXCVideoDecoder$a
 {
   b a;
   g b;
-  WeakReference<com.tencent.liteav.basic.b.b> c;
+  WeakReference<com.tencent.liteav.basic.c.b> c;
   boolean d;
   boolean e;
   Surface f;
@@ -66,7 +66,7 @@ class TXCVideoDecoder$a
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("play:decode: start decode hwdec: ");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", hevc: ");
+    localStringBuilder.append(", h265: ");
     localStringBuilder.append(this.e);
     TXCLog.w("TXCVideoDecoder", localStringBuilder.toString());
   }
@@ -102,7 +102,7 @@ class TXCVideoDecoder$a
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, Surface paramSurface, ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, g paramg, com.tencent.liteav.basic.b.b paramb)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Surface paramSurface, ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, g paramg, com.tencent.liteav.basic.c.b paramb)
   {
     this.e = paramBoolean1;
     this.d = paramBoolean2;
@@ -157,7 +157,7 @@ class TXCVideoDecoder$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoDecoder.a
  * JD-Core Version:    0.7.0.1
  */

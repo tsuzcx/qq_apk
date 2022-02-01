@@ -17,8 +17,8 @@ import java.util.Map;
 public class WeChatImageJob
   extends Job
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Bitmap a;
+  private Drawable b;
   private boolean c;
   private boolean d;
   
@@ -200,7 +200,7 @@ public class WeChatImageJob
         localBitmap1 = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
       }
       Canvas localCanvas = new Canvas(localBitmap1);
-      Bitmap localBitmap2 = ImageUtil.a(BaseApplicationImpl.sApplication.getResources(), 2130847034);
+      Bitmap localBitmap2 = ImageUtil.a(BaseApplicationImpl.sApplication.getResources(), 2130848586);
       float f1 = paramBitmap.getWidth() / 2.0F;
       float f2 = paramBitmap.getHeight() / 2.0F;
       Object localObject;
@@ -273,14 +273,14 @@ public class WeChatImageJob
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
       localObject3 = c((Bitmap)localObject1);
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject1 = this.b;
       if (localObject1 == null) {
         break label137;
       }
@@ -292,7 +292,7 @@ public class WeChatImageJob
     }
     Object localObject3 = localObject1;
     if (localObject1 == null) {
-      localObject3 = TroopShareUtility.a(ImageUtil.a(0));
+      localObject3 = TroopShareUtility.a(ImageUtil.c(0));
     }
     localObject3 = a((Bitmap)localObject3);
     localObject1 = localObject3;
@@ -323,22 +323,22 @@ public class WeChatImageJob
     if ((paramMap != null) && (!paramMap.isEmpty()))
     {
       if (paramMap.containsKey("WeChatImageJob_in_bitmap")) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)a("WeChatImageJob_in_bitmap"));
+        this.a = ((Bitmap)b("WeChatImageJob_in_bitmap"));
       }
       if (paramMap.containsKey("WeChatImageJob_in_drawable")) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)a("WeChatImageJob_in_drawable"));
+        this.b = ((Drawable)b("WeChatImageJob_in_drawable"));
       }
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null);
+    return (this.a != null) || (this.b != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.WeChatImageJob
  * JD-Core Version:    0.7.0.1
  */

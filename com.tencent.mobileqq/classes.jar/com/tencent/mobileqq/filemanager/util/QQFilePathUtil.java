@@ -22,8 +22,8 @@ public class QQFilePathUtil
 {
   private static File a(String paramString1, String paramString2)
   {
-    paramString1 = QQFileManagerUtilImpl.b(paramString1);
-    QQFileManagerUtilImpl.d(paramString1);
+    paramString1 = QQFileManagerUtilImpl.n(paramString1);
+    QQFileManagerUtilImpl.g(paramString1);
     File localFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(localFile.getAbsolutePath());
@@ -37,7 +37,7 @@ public class QQFilePathUtil
     localStringBuilder.append("/");
     localStringBuilder.append(paramString1);
     localStringBuilder.append(paramString2);
-    paramString1 = new File(QQFileManagerUtilImpl.c(localStringBuilder.toString()));
+    paramString1 = new File(QQFileManagerUtilImpl.o(localStringBuilder.toString()));
     try
     {
       paramString1.createNewFile();
@@ -55,7 +55,7 @@ public class QQFilePathUtil
     if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
       return null;
     }
-    String str = QQFileManagerUtilImpl.b(paramString);
+    String str = QQFileManagerUtilImpl.n(paramString);
     Object localObject4 = "";
     Object localObject3 = str;
     Object localObject2 = localObject4;
@@ -94,7 +94,7 @@ public class QQFilePathUtil
     QLog.e("FilePathUtil<FileAssistant>", 1, "copyMediaFileToMediaStorage: get file ext error");
     localObject2 = localObject1;
     localObject3 = str;
-    i = QQFileManagerUtilImpl.d((String)localObject3);
+    i = QQFileManagerUtilImpl.g((String)localObject3);
     if ((i != 2) && (i != 0))
     {
       paramString = new StringBuilder();
@@ -143,11 +143,6 @@ public class QQFilePathUtil
     return paramString;
   }
   
-  public static boolean a(String paramString)
-  {
-    return FileUtils.fileExistsAndNotEmpty(c(paramString));
-  }
-  
   public static String b(String paramString)
   {
     boolean bool = FileUtils.fileExistsAndNotEmpty(paramString);
@@ -155,7 +150,7 @@ public class QQFilePathUtil
     if (!bool) {
       return null;
     }
-    String str = QQFileManagerUtilImpl.b(paramString);
+    String str = QQFileManagerUtilImpl.n(paramString);
     Object localObject4 = "";
     Object localObject3 = str;
     Object localObject2 = localObject4;
@@ -195,7 +190,7 @@ public class QQFilePathUtil
     localObject2 = localObject1;
     localObject3 = str;
     label163:
-    i = QQFileManagerUtilImpl.d((String)localObject3);
+    i = QQFileManagerUtilImpl.g((String)localObject3);
     if ((i != 2) && (i != 0))
     {
       paramString = new StringBuilder();
@@ -248,10 +243,15 @@ public class QQFilePathUtil
   {
     return paramString;
   }
+  
+  public static boolean d(String paramString)
+  {
+    return FileUtils.fileExistsAndNotEmpty(c(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFilePathUtil
  * JD-Core Version:    0.7.0.1
  */

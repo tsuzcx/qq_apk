@@ -9,14 +9,14 @@ class PhotoView$3
   
   public void run()
   {
-    if (PhotoView.a(this.this$0) != null) {
-      PhotoView.a(this.this$0).onClick(this.this$0);
+    if (PhotoView.h(this.this$0) != null) {
+      PhotoView.h(this.this$0).onClick(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.bm.library.PhotoView.3
  * JD-Core Version:    0.7.0.1
  */

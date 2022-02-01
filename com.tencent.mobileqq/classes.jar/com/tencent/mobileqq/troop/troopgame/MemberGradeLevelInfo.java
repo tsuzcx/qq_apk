@@ -11,6 +11,8 @@ public class MemberGradeLevelInfo
   extends Entity
   implements Serializable
 {
+  public int gameCardId;
+  public int gameCardSwitch;
   public int gradeLevel = 0;
   public String memberuin;
   
@@ -28,12 +30,16 @@ public class MemberGradeLevelInfo
     localStringBuilder.append(this.memberuin);
     localStringBuilder.append(", gradeLevel = ");
     localStringBuilder.append(this.gradeLevel);
+    localStringBuilder.append(", gameCardId = ");
+    localStringBuilder.append(this.gameCardId);
+    localStringBuilder.append(", gameCardSwitch = ");
+    localStringBuilder.append(this.gameCardSwitch);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.MemberGradeLevelInfo
  * JD-Core Version:    0.7.0.1
  */

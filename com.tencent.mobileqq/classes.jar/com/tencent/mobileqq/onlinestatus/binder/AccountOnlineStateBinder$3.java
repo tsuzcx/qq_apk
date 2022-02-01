@@ -11,12 +11,12 @@ class AccountOnlineStateBinder$3
   
   public void a(OnlineStatusData paramOnlineStatusData)
   {
-    AccountOnlineStateBinder.a(this.a).a(paramOnlineStatusData.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusData.jdField_a_of_type_Long);
+    AccountOnlineStateBinder.d(this.a).a(paramOnlineStatusData.a, paramOnlineStatusData.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountOnlineStateBinder.3
  * JD-Core Version:    0.7.0.1
  */

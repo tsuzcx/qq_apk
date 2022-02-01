@@ -9,23 +9,23 @@ import java.lang.ref.WeakReference;
 public class LoginUserGuideHelper$GuideRunnable
   implements Runnable
 {
-  private final LoginUserGuideHelper.LocationListener jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener;
-  private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private final WeakReference<Activity> a;
   private final WeakReference<QQAppInterface> b;
+  private final boolean c;
+  private final LoginUserGuideHelper.LocationListener d;
   
   public LoginUserGuideHelper$GuideRunnable(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, LoginUserGuideHelper.LocationListener paramLocationListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.a = new WeakReference(paramActivity);
     this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener = paramLocationListener;
+    this.c = paramBoolean;
+    this.d = paramLocationListener;
   }
   
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.a.get();
     if (localQQAppInterface != null)
     {
       if (localActivity == null) {
@@ -35,19 +35,19 @@ public class LoginUserGuideHelper$GuideRunnable
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("GuideRunnable : ");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.i("LoginUserGuideHelper", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         ThreadManager.excute(new LoginUserGuideHelper.GuideRunnable.1(this, localQQAppInterface), 16, null, false);
       }
-      LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
+      LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper.GuideRunnable
  * JD-Core Version:    0.7.0.1
  */

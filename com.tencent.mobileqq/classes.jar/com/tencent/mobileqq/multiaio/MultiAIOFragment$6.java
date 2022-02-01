@@ -39,20 +39,20 @@ class MultiAIOFragment$6
         if (paramInt != 2) {
           return;
         }
-        MultiAIOFragment.c(this.a);
+        MultiAIOFragment.e(this.a);
         return;
       }
-      MultiAIOFragment.c(this.a);
+      MultiAIOFragment.e(this.a);
       return;
     }
     Object localObject = this.a;
-    MultiAIOFragment.a((MultiAIOFragment)localObject, MultiAIOFragment.a((MultiAIOFragment)localObject).a());
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    MultiAIOFragment.a((MultiAIOFragment)localObject, MultiAIOFragment.d((MultiAIOFragment)localObject).getCurrentItem());
+    MultiAIOFragment.c(this.a).setViewPagerBusy(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.6
  * JD-Core Version:    0.7.0.1
  */

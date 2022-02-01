@@ -510,13 +510,13 @@ public class GameWnsUtils
     {
       localThrowable.printStackTrace();
     }
-    long l = CommonDataAdapter.a().a() % 100L;
+    long l = CommonDataAdapter.a().c() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.GameWnsUtils
  * JD-Core Version:    0.7.0.1
  */

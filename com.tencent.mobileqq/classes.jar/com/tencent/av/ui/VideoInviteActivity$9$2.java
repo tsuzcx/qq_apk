@@ -7,20 +7,20 @@ class VideoInviteActivity$9$2
   
   public void a()
   {
-    if (this.a.a.a != null)
+    if (this.a.b.Q != null)
     {
-      this.a.a.a.setViewEnable(2131373510, false);
-      this.a.a.a.setViewEnable(2131363119, false);
-      this.a.a.a.setViewEnable(2131363130, false);
-      this.a.a.a.setViewEnable(2131363129, false);
+      this.a.b.Q.setViewEnable(2131441182, false);
+      this.a.b.Q.setViewEnable(2131428972, false);
+      this.a.b.Q.setViewEnable(2131428983, false);
+      this.a.b.Q.setViewEnable(2131428982, false);
     }
   }
   
   public void b()
   {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772219);
+    this.a.b.s = true;
+    this.a.b.finish();
+    this.a.b.overridePendingTransition(0, 2130772285);
   }
 }
 

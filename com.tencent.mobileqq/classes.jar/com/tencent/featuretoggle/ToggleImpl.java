@@ -28,32 +28,27 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ToggleImpl
 {
-  private static volatile ToggleImpl jdField_a_of_type_ComTencentFeaturetoggleToggleImpl;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  public Set<OnObtainToggleListener> a;
-  
-  private ToggleImpl()
-  {
-    this.jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-  }
+  private static volatile ToggleImpl b;
+  private static volatile boolean c = false;
+  public Set<OnObtainToggleListener> a = new CopyOnWriteArraySet();
   
   public static ToggleImpl a()
   {
-    if (jdField_a_of_type_ComTencentFeaturetoggleToggleImpl == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentFeaturetoggleToggleImpl == null) {
-          jdField_a_of_type_ComTencentFeaturetoggleToggleImpl = new ToggleImpl();
+        if (b == null) {
+          b = new ToggleImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentFeaturetoggleToggleImpl;
+    return b;
   }
   
   private void a(long paramLong)
   {
-    if (!ToggleSetting.c()) {
+    if (!ToggleSetting.p()) {
       return;
     }
     LogUtils.b("[SDKInit] 'isDebug' is true , so running in debug model , close it when you release!", new Object[0]);
@@ -62,19 +57,19 @@ public class ToggleImpl
     localStringBuilder.append("[SDKInit] Toggle init finished.");
     localStringBuilder.append("\n\t");
     localStringBuilder.append("SDK_Version is:");
-    localStringBuilder.append(ToggleSetting.g());
+    localStringBuilder.append(ToggleSetting.r());
     localStringBuilder.append("\n\t");
     localStringBuilder.append("Product_ID is:");
-    localStringBuilder.append(ToggleSetting.b());
+    localStringBuilder.append(ToggleSetting.k());
     localStringBuilder.append("\n\t");
     localStringBuilder.append("ProductNameEn is:");
-    localStringBuilder.append(ToggleSetting.c());
+    localStringBuilder.append(ToggleSetting.l());
     localStringBuilder.append("\n\t");
     localStringBuilder.append("MODULE_ID is:");
-    localStringBuilder.append(ToggleSetting.d());
+    localStringBuilder.append(ToggleSetting.m());
     localStringBuilder.append("\n\t");
     localStringBuilder.append("APP_Channel is:");
-    localStringBuilder.append(ToggleSetting.e());
+    localStringBuilder.append(ToggleSetting.n());
     localStringBuilder.append("\n\t");
     localStringBuilder.append("Init duration:");
     localStringBuilder.append(System.currentTimeMillis() - paramLong);
@@ -86,13 +81,13 @@ public class ToggleImpl
   {
     try
     {
-      if (!RepeatEventUtil.a(paramFeatureTriggered.a())) {
+      if (!RepeatEventUtil.a(paramFeatureTriggered.b())) {
         return;
       }
       ThreadUtil.a(new ToggleImpl.2(paramFeatureTriggered, paramDatasetEntity));
-      long l = ToggleSetting.c();
+      long l = ToggleSetting.i();
       ToggleSetting.c(1L + l);
-      if ((l >= 2000L) && (ToggleSetting.b() == 0))
+      if ((l >= 2000L) && (ToggleSetting.A() == 0))
       {
         ReportController.a().a(2006);
         return;
@@ -146,20 +141,20 @@ public class ToggleImpl
   
   private boolean a(String paramString, AbTestInfo paramAbTestInfo)
   {
-    return (paramAbTestInfo != null) && (paramAbTestInfo.a() != null) && (paramAbTestInfo.a().containsKey(paramString));
+    return (paramAbTestInfo != null) && (paramAbTestInfo.b() != null) && (paramAbTestInfo.b().containsKey(paramString));
   }
   
-  private void b()
+  private void e()
   {
     try
     {
-      if (ToggleSetting.a())
+      if (ToggleSetting.f())
       {
         ToggleSetting.c(SpManager.a().c());
-        a(ToggleSetting.f());
-        a(ToggleSetting.i());
+        b(ToggleSetting.o());
+        c(ToggleSetting.t());
         ReportController.a().a(2001);
-        LogUtils.c("Send init event ", new Object[0]);
+        LogUtils.e("Send init event ", new Object[0]);
         return;
       }
       ReportController.a().a(2009);
@@ -175,9 +170,9 @@ public class ToggleImpl
   
   public FeatureResult a(String paramString)
   {
-    if (ToggleSetting.a() == null)
+    if (ToggleSetting.j() == null)
     {
-      LogUtils.b("SDK not init ,return defaultValue", new Object[0]);
+      LogUtils.d("SDK not init ,return defaultValue", new Object[0]);
       return null;
     }
     for (;;)
@@ -187,7 +182,7 @@ public class ToggleImpl
         if (Utils.a(paramString)) {
           return null;
         }
-        localObject1 = CacheManager.a().a();
+        localObject1 = CacheManager.a().c();
         if ((localObject1 != null) && (((LruCache)localObject1).size() > 0))
         {
           Object localObject2 = (FeatureResult)((LruCache)localObject1).get(paramString);
@@ -197,23 +192,23 @@ public class ToggleImpl
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("ToggleIImpl get toggle from Memory, toggleName=");
             ((StringBuilder)localObject1).append(paramString);
-            LogUtils.c(((StringBuilder)localObject1).toString(), new Object[0]);
+            LogUtils.e(((StringBuilder)localObject1).toString(), new Object[0]);
             localObject1 = localObject2;
           }
           localObject2 = localObject1;
           if (localObject1 == null)
           {
             localObject2 = localObject1;
-            if (SpManager.a().a(paramString))
+            if (SpManager.a().f(paramString))
             {
               localObject2 = CacheManager.a().a(paramString);
               if (localObject2 != null) {
-                CacheManager.a().a().put(paramString, localObject2);
+                CacheManager.a().c().put(paramString, localObject2);
               }
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("ToggleImpl get toggle from Sp, toggleName=");
               ((StringBuilder)localObject1).append(paramString);
-              LogUtils.c(((StringBuilder)localObject1).toString(), new Object[0]);
+              LogUtils.e(((StringBuilder)localObject1).toString(), new Object[0]);
             }
           }
           return localObject2;
@@ -232,100 +227,14 @@ public class ToggleImpl
   
   FeatureTriggered a(String paramString1, AbTestInfo paramAbTestInfo, String paramString2)
   {
-    Object localObject = a(paramString1);
-    if (localObject == null)
-    {
-      paramString2 = new FeatureResult(-1, paramString1, paramString2);
-      localObject = paramString2;
-      if (a(paramString1, paramAbTestInfo))
-      {
-        paramString2.result = ((String)paramAbTestInfo.a().get(paramString1));
-        paramString1 = paramAbTestInfo.a();
-        localObject = paramString2;
-        i = 2;
-        break label144;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = "-1";
-      i = 3;
-      break label144;
-      if ((((FeatureResult)localObject).getIsAbtFirst()) && (a(paramString1, paramAbTestInfo)))
-      {
-        ((FeatureResult)localObject).result = ((String)paramAbTestInfo.a().get(paramString1));
-        paramString1 = paramAbTestInfo.a();
-        break;
-      }
-      if (a((FeatureResult)localObject)) {
-        break label137;
-      }
-      ((FeatureResult)localObject).result = paramString2;
-    }
-    label137:
-    paramString1 = "-1";
-    int i = 1;
-    label144:
-    paramString2 = ((FeatureResult)localObject).getDataset();
-    int j = ((FeatureResult)localObject).id;
-    String str = ((FeatureResult)localObject).name;
-    localObject = ((FeatureResult)localObject).result;
-    if (paramString2 != null) {
-      paramAbTestInfo = paramString2.getData();
-    } else {
-      paramAbTestInfo = null;
-    }
-    paramString1 = new FeatureTriggered(j, str, (String)localObject, i, paramString1, paramAbTestInfo);
-    a(paramString1, paramString2);
-    return paramString1;
-  }
-  
-  Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.clear();
-    String[] arrayOfString = SpManager.a().a();
-    if (arrayOfString == null) {
-      return localHashMap;
-    }
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      Object localObject = CacheManager.a().a(str);
-      if (localObject != null)
-      {
-        localHashMap.put(str, ((FeatureResult)localObject).result);
-      }
-      else
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("ToggleImpl 读取开关值失败 ：toggleName=");
-        ((StringBuilder)localObject).append(str);
-        LogUtils.b(((StringBuilder)localObject).toString(), new Object[0]);
-      }
-      i += 1;
-    }
-    return localHashMap;
-  }
-  
-  void a()
-  {
-    if (!a())
-    {
-      LogUtils.b("SDK not init ,updateToggle fail!!!", new Object[0]);
-      return;
-    }
-    ToggleSetting.c(SpManager.a().c());
-    ReportController.a().a(2008);
+    return b(paramString1, paramAbTestInfo, paramString2);
   }
   
   public void a(Context paramContext, ToggleConfig paramToggleConfig)
   {
     try
     {
-      if (ToggleSetting.a() != null)
+      if (ToggleSetting.j() != null)
       {
         LogUtils.b("[SDKInit] toggle sdk already inited ! nothing to do !", new Object[0]);
         return;
@@ -353,7 +262,7 @@ public class ToggleImpl
           TimeChangeReceiver.a().a(localContext);
           ThreadUtil.a(new ToggleImpl.1(this));
           a(l);
-          jdField_a_of_type_Boolean = true;
+          c = true;
           return;
         }
         throw new RuntimeException("[SDKInit] 'productId' , 'moduleId' , 'productNameEn' must be config");
@@ -373,45 +282,15 @@ public class ToggleImpl
   {
     if (paramOnObtainToggleListener != null)
     {
-      Set localSet = this.jdField_a_of_type_JavaUtilSet;
+      Set localSet = this.a;
       if (localSet != null)
       {
         localSet.add(paramOnObtainToggleListener);
-        LogUtils.c("Add OnObtainToggleListener success", new Object[0]);
+        LogUtils.e("Add OnObtainToggleListener success", new Object[0]);
         return;
       }
     }
-    LogUtils.c("Add OnObtainToggleListener fail", new Object[0]);
-  }
-  
-  public void a(String paramString)
-  {
-    if (Utils.a(paramString)) {
-      return;
-    }
-    if (!SpManager.a().e().equals(paramString))
-    {
-      SpManager.a().a(0L);
-      SpManager.a().e(paramString);
-    }
-  }
-  
-  void a(String paramString, boolean paramBoolean)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    ToggleSetting.b(str);
-    LogUtils.b("Set userId=%s", new Object[] { str });
-    if ((a()) && (paramBoolean) && (a(str))) {
-      a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return (jdField_a_of_type_Boolean) && (ToggleSetting.a() != null);
+    LogUtils.e("Add OnObtainToggleListener fail", new Object[0]);
   }
   
   public boolean a(FeatureResult paramFeatureResult)
@@ -424,7 +303,7 @@ public class ToggleImpl
       if (paramFeatureResult.getTimeLimits().isEmpty()) {
         return false;
       }
-      long l = SpManager.a().b();
+      long l = SpManager.a().g();
       Object localObject = paramFeatureResult.timeLimits.iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -434,7 +313,7 @@ public class ToggleImpl
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("timeLimits hit toggleResult");
           ((StringBuilder)localObject).append(paramFeatureResult.name);
-          LogUtils.c(((StringBuilder)localObject).toString(), new Object[0]);
+          LogUtils.e(((StringBuilder)localObject).toString(), new Object[0]);
           return true;
         }
       }
@@ -442,26 +321,156 @@ public class ToggleImpl
     return false;
   }
   
-  public boolean a(String paramString)
+  boolean a(String paramString, boolean paramBoolean)
+  {
+    return Boolean.parseBoolean(b(paramString, null, String.valueOf(paramBoolean)).c());
+  }
+  
+  FeatureTriggered b(String paramString1, AbTestInfo paramAbTestInfo, String paramString2)
+  {
+    Object localObject = a(paramString1);
+    if (localObject == null)
+    {
+      paramString2 = new FeatureResult(-1, paramString1, paramString2);
+      localObject = paramString2;
+      if (a(paramString1, paramAbTestInfo))
+      {
+        paramString2.result = ((String)paramAbTestInfo.b().get(paramString1));
+        paramString1 = paramAbTestInfo.a();
+        localObject = paramString2;
+        i = 2;
+        break label144;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = "-1";
+      i = 3;
+      break label144;
+      if ((((FeatureResult)localObject).getIsAbtFirst()) && (a(paramString1, paramAbTestInfo)))
+      {
+        ((FeatureResult)localObject).result = ((String)paramAbTestInfo.b().get(paramString1));
+        paramString1 = paramAbTestInfo.a();
+        break;
+      }
+      if (a((FeatureResult)localObject)) {
+        break label137;
+      }
+      ((FeatureResult)localObject).result = paramString2;
+    }
+    label137:
+    paramString1 = "-1";
+    int i = 1;
+    label144:
+    DatasetEntity localDatasetEntity = ((FeatureResult)localObject).getDataset();
+    int j = ((FeatureResult)localObject).id;
+    String str1 = ((FeatureResult)localObject).name;
+    String str2 = ((FeatureResult)localObject).result;
+    localObject = null;
+    if (localDatasetEntity != null) {
+      paramAbTestInfo = localDatasetEntity.getData();
+    } else {
+      paramAbTestInfo = null;
+    }
+    if (localDatasetEntity != null) {
+      paramString2 = localDatasetEntity.getType();
+    } else {
+      paramString2 = null;
+    }
+    if (localDatasetEntity != null) {
+      localObject = localDatasetEntity.getValue();
+    }
+    paramString1 = new FeatureTriggered(j, str1, str2, i, paramString1, paramAbTestInfo, paramString2, (String)localObject);
+    a(paramString1, localDatasetEntity);
+    return paramString1;
+  }
+  
+  public void b(String paramString)
+  {
+    if (Utils.a(paramString)) {
+      return;
+    }
+    if (!SpManager.a().e().equals(paramString))
+    {
+      SpManager.a().a(0L);
+      SpManager.a().d(paramString);
+    }
+  }
+  
+  void b(String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    ToggleSetting.b(str);
+    LogUtils.b("Set userId=%s", new Object[] { str });
+    if ((b()) && (paramBoolean) && (c(str))) {
+      c();
+    }
+  }
+  
+  public boolean b()
+  {
+    return (c) && (ToggleSetting.j() != null);
+  }
+  
+  void c()
+  {
+    if (!b())
+    {
+      LogUtils.d("SDK not init ,updateToggle fail!!!", new Object[0]);
+      return;
+    }
+    ToggleSetting.c(SpManager.a().c());
+    ReportController.a().a(2008);
+  }
+  
+  public boolean c(String paramString)
   {
     String str = SpManager.a().d();
     if ((paramString != null) && (!paramString.equals(str)))
     {
       SpManager.a().a(0L);
-      SpManager.a().d(paramString);
+      SpManager.a().c(paramString);
       return true;
     }
     return false;
   }
   
-  boolean a(String paramString, boolean paramBoolean)
+  Map<String, String> d()
   {
-    return Boolean.parseBoolean(a(paramString, null, String.valueOf(paramBoolean)).b());
+    HashMap localHashMap = new HashMap();
+    localHashMap.clear();
+    String[] arrayOfString = SpManager.a().i();
+    if (arrayOfString == null) {
+      return localHashMap;
+    }
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      Object localObject = CacheManager.a().a(str);
+      if (localObject != null)
+      {
+        localHashMap.put(str, ((FeatureResult)localObject).result);
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ToggleImpl 读取开关值失败 ：toggleName=");
+        ((StringBuilder)localObject).append(str);
+        LogUtils.d(((StringBuilder)localObject).toString(), new Object[0]);
+      }
+      i += 1;
+    }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.ToggleImpl
  * JD-Core Version:    0.7.0.1
  */

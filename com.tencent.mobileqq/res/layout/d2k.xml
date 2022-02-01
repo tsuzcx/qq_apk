@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.immersive.views.QFSPageTurnContainer android:id="@id/ngp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePanelLoadingView android:layout_gravity="center" android:id="@id/ngo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/d3g" />
+    <com.tencent.biz.qqcircle.immersive.views.QFSFullScreenHintView android:id="@id/ngj" android:background="@color/black" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="center|top" android:id="@id/nha" android:layout="@layout/d3v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

@@ -22,10 +22,10 @@ class GAudioExitMonitor$AudioExitReceiver
       paramContext.append(l);
       paramContext.append("]");
       QLog.w("GAudioExitMonitor", 1, paramContext.toString());
-      paramContext = GAudioExitMonitor.a(this.a).a();
+      paramContext = GAudioExitMonitor.a(this.a).b();
       if (paramContext != null)
       {
-        paramContext.a(false, 202, new int[] { paramContext.a().j });
+        paramContext.a(false, 202, new int[] { paramContext.k().o });
         paramContext.b(202);
         paramContext.d(1011);
       }

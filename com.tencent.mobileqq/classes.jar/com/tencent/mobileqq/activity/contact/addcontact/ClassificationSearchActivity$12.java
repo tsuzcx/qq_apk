@@ -17,15 +17,15 @@ class ClassificationSearchActivity$12
     if (paramMotionEvent.isActive()) {
       paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
+    this.a.K.clearFocus();
+    paramView = this.a.K.getText().toString();
+    this.a.K.setSelection(paramView.length());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.12
  * JD-Core Version:    0.7.0.1
  */

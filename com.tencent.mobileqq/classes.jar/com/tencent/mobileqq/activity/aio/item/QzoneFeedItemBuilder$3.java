@@ -18,59 +18,59 @@ import mqq.app.NewIntent;
 class QzoneFeedItemBuilder$3
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-  boolean jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
+  boolean a = this.c;
+  int b = this.d;
   
   QzoneFeedItemBuilder$3(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, boolean paramBoolean, int paramInt1, QzoneFeedItemBuilder.Holder paramHolder, String paramString, int paramInt2, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean ^= true;
-    if (this.jdField_a_of_type_Boolean)
+    this.a ^= true;
+    if (this.a)
     {
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder$Holder.i.setText(QzoneFeedItemBuilder.a(this.jdField_a_of_type_Int));
+      this.b += 1;
+      this.e.D.setText(QzoneFeedItemBuilder.a(this.b));
     }
     else
     {
-      this.jdField_a_of_type_Int -= 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder$Holder.i.setText(QzoneFeedItemBuilder.a(this.jdField_a_of_type_Int));
+      this.b -= 1;
+      this.e.D.setText(QzoneFeedItemBuilder.a(this.b));
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder$Holder.d;
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2130847755;
+    Object localObject1 = this.e.E;
+    int j;
+    if (this.a) {
+      j = 2130849416;
     } else {
-      i = 2130847754;
+      j = 2130849415;
     }
-    ((ImageView)localObject1).setImageResource(i);
-    localObject1 = ((IQzoneReq)QRoute.api(IQzoneReq.class)).getLikeIntent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getApplication(), null, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getLongAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.c);
+    ((ImageView)localObject1).setImageResource(j);
+    localObject1 = ((IQzoneReq)QRoute.api(IQzoneReq.class)).getLikeIntent(this.i.a.getApplication(), null, this.i.a.getLongAccountUin(), this.f, this.a, this.g);
     Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putBoolean("like_key", this.jdField_a_of_type_Boolean);
+    ((Bundle)localObject2).putBoolean("like_key", this.a);
     ((NewIntent)localObject1).putExtras((Bundle)localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.startServlet((NewIntent)localObject1);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed;
-    ((MessageForQzoneFeed)localObject1).ulikeNum = this.jdField_a_of_type_Int;
+    this.i.a.startServlet((NewIntent)localObject1);
+    localObject1 = this.h;
+    ((MessageForQzoneFeed)localObject1).ulikeNum = this.b;
     if (((MessageForQzoneFeed)localObject1).mapExt == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt = new HashMap();
+      this.h.mapExt = new HashMap();
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.mapExt;
-    if (this.jdField_a_of_type_Boolean) {
+    localObject2 = this.h.mapExt;
+    if (this.a) {
       localObject1 = "1";
     } else {
       localObject1 = "0";
     }
     ((HashMap)localObject2).put("isliked", localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed, false);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getMessageFacade();
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed;
+    this.i.a.getMessageFacade().a(this.h, false);
+    localObject1 = this.i.a.getMessageFacade();
+    localObject2 = this.h;
     ((QQMessageFacade)localObject1).a((MessageRecord)localObject2, ((MessageForQzoneFeed)localObject2).selfuin);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

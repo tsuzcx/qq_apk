@@ -44,10 +44,10 @@ public class MiniMsgUser
       if (this.mMiniMsgUserParam.entryType == 0)
       {
         paramMiniMsgUserParam = MiniMsgIPCClient.getInstance().getBusinessInfo(i2);
-        if ((paramMiniMsgUserParam != null) && (paramMiniMsgUserParam.jdField_b_of_type_Boolean) && (paramMiniMsgUserParam.c > 0))
+        if ((paramMiniMsgUserParam != null) && (paramMiniMsgUserParam.c) && (paramMiniMsgUserParam.e > 0))
         {
-          i = paramMiniMsgUserParam.c;
-          j = paramMiniMsgUserParam.d;
+          i = paramMiniMsgUserParam.e;
+          j = paramMiniMsgUserParam.f;
         }
       }
       this.mMiniMsgUserParam.unreadCallback = new MiniEntryViewManager(paramActivity, k, n, m, i1, i, j, this);
@@ -130,18 +130,18 @@ public class MiniMsgUser
             if (m != 4) {
               return true;
             }
-            ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean = false;
-            ((MiniMsgBusinessInfo)localObject).a = false;
+            ((MiniMsgBusinessInfo)localObject).c = false;
+            ((MiniMsgBusinessInfo)localObject).b = false;
             this.mIsAttach = false;
-            ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Int = 0;
+            ((MiniMsgBusinessInfo)localObject).d = 0;
             localIMiniMsgUnreadCallback.hide();
             return true;
           }
           localIMiniMsgUnreadCallback.hideUnread();
-          ((MiniMsgBusinessInfo)localObject).a = false;
+          ((MiniMsgBusinessInfo)localObject).b = false;
           return true;
         }
-        bool = ((MiniMsgBusinessInfo)localObject).a ^ true;
+        bool = ((MiniMsgBusinessInfo)localObject).b ^ true;
         if (i == 0) {
           if (k <= 0)
           {
@@ -149,37 +149,37 @@ public class MiniMsgUser
           }
           else
           {
-            ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Int = k;
+            ((MiniMsgBusinessInfo)localObject).d = k;
             return true;
           }
         }
         localIMiniMsgUnreadCallback.updateUnreadCount(k, bool);
-        ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Int = k;
+        ((MiniMsgBusinessInfo)localObject).d = k;
         return true;
       }
-      if ((i != 0) && (!((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean))
+      if ((i != 0) && (!((MiniMsgBusinessInfo)localObject).c))
       {
         this.mIsAttach = localIMiniMsgUnreadCallback.show(k);
-        ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean = this.mIsAttach;
+        ((MiniMsgBusinessInfo)localObject).c = this.mIsAttach;
       }
       else
       {
         localIMiniMsgUnreadCallback.updateUnreadCount(k, false);
       }
-      ((MiniMsgBusinessInfo)localObject).a = true;
-      ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Int = k;
+      ((MiniMsgBusinessInfo)localObject).b = true;
+      ((MiniMsgBusinessInfo)localObject).d = k;
       return true;
     }
     int i = j;
-    if (((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean)
+    if (((MiniMsgBusinessInfo)localObject).c)
     {
       i = j;
-      if (((MiniMsgBusinessInfo)localObject).a) {
-        i = ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Int;
+      if (((MiniMsgBusinessInfo)localObject).b) {
+        i = ((MiniMsgBusinessInfo)localObject).d;
       }
     }
     this.mIsAttach = localIMiniMsgUnreadCallback.show(i);
-    ((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean = this.mIsAttach;
+    ((MiniMsgBusinessInfo)localObject).c = this.mIsAttach;
     return true;
   }
   
@@ -225,8 +225,8 @@ public class MiniMsgUser
           int[] arrayOfInt = ((MiniEntryViewManager)this.mMiniMsgUserParam.unreadCallback).a();
           if (arrayOfInt != null)
           {
-            ((MiniMsgBusinessInfo)localObject).c = arrayOfInt[0];
-            ((MiniMsgBusinessInfo)localObject).d = arrayOfInt[1];
+            ((MiniMsgBusinessInfo)localObject).e = arrayOfInt[0];
+            ((MiniMsgBusinessInfo)localObject).f = arrayOfInt[1];
           }
         }
       }
@@ -286,7 +286,7 @@ public class MiniMsgUser
     if ((localObject != null) && (((MiniMsgUserParam)localObject).accessType == 0))
     {
       localObject = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
-      if ((localObject != null) && (((MiniMsgBusinessInfo)localObject).jdField_b_of_type_Boolean) && (!this.mIsAttach))
+      if ((localObject != null) && (((MiniMsgBusinessInfo)localObject).c) && (!this.mIsAttach))
       {
         this.mUIHandler.obtainMessage(0).sendToTarget();
         MiniMsgIPCClient.getInstance().syncGetUnread();
@@ -361,7 +361,7 @@ public class MiniMsgUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgUser
  * JD-Core Version:    0.7.0.1
  */

@@ -28,12 +28,12 @@ class GamePartyManager$1
     paramMessage.append(localQQAppInterface.getCurrentAccountUin());
     paramMessage = paramMessage.toString();
     this.a.a(paramMessage, null);
-    this.a.b();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.1
  * JD-Core Version:    0.7.0.1
  */

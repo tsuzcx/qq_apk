@@ -13,12 +13,12 @@ class ShareScreenAppInfo$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShareScreenAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoShareScreenAppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    ShareScreenAppInfo.access$000(this.e, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShareScreenAppInfo.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,33 +4,33 @@ import android.graphics.drawable.BitmapDrawable;
 
 class GifAnimationDrawable$Frame
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+  int a;
+  long b;
+  BitmapDrawable c;
   
   public GifAnimationDrawable$Frame(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    this.a = paramInt;
+    this.b = paramLong;
+    this.c = paramBitmapDrawable;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Frame{index=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", targetTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", drawable=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.view.GifAnimationDrawable.Frame
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.crossengine.CESurfaceView;
+import com.tencent.crossengine.CERenderView;
 import com.tencent.mobileqq.apollo.statistics.ApolloQualityReportUtil;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.view.CmShowAESurfaceView;
@@ -33,11 +33,11 @@ class CmShowMakeupFragment$6
   
   public boolean interceptTouchEvent(View paramView, MotionEvent paramMotionEvent)
   {
-    if (CmShowMakeupFragment.a(this.a) != null) {
-      CmShowMakeupFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    if (CmShowMakeupFragment.t(this.a) != null) {
+      CmShowMakeupFragment.t(this.a).onTouchEvent(paramMotionEvent);
     }
-    if ((CmShowMakeupFragment.a(this.a) != null) && (paramMotionEvent.getY() < CmShowMakeupFragment.a(this.a))) {
-      CmShowMakeupFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    if ((CmShowMakeupFragment.q(this.a) != null) && (paramMotionEvent.getY() < CmShowMakeupFragment.e(this.a))) {
+      CmShowMakeupFragment.q(this.a).onTouchEvent(paramMotionEvent);
     }
     return false;
   }
@@ -46,7 +46,7 @@ class CmShowMakeupFragment$6
   {
     super.onDetectedBlankScreen(paramString, paramInt);
     ApolloQualityReportUtil.a("dressup_web_page_bland_screenr", String.valueOf(paramInt));
-    if (CmShowMakeupFragment.c(this.a)) {
+    if (CmShowMakeupFragment.j(this.a)) {
       paramInt = 1004;
     } else {
       paramInt = 1002;
@@ -65,16 +65,16 @@ class CmShowMakeupFragment$6
   public void onInitUIContent(Bundle paramBundle)
   {
     super.onInitUIContent(paramBundle);
-    if (CmShowMakeupFragment.a(this.a) != null)
+    if (CmShowMakeupFragment.l(this.a) != null)
     {
-      CmShowMakeupFragment.b(this.a).setBackgroundColor(0);
-      paramBundle = CmShowMakeupFragment.c(this.a).getBackground();
+      CmShowMakeupFragment.m(this.a).setBackgroundColor(0);
+      paramBundle = CmShowMakeupFragment.n(this.a).getBackground();
       if (paramBundle != null) {
         paramBundle.setAlpha(0);
       }
-      if (CmShowMakeupFragment.d(this.a).getChildCount() > 0)
+      if (CmShowMakeupFragment.o(this.a).getChildCount() > 0)
       {
-        paramBundle = CmShowMakeupFragment.e(this.a).getChildAt(0);
+        paramBundle = CmShowMakeupFragment.p(this.a).getChildAt(0);
         paramBundle.setBackgroundResource(0);
         paramBundle = paramBundle.getBackground();
         if (paramBundle != null) {
@@ -82,16 +82,16 @@ class CmShowMakeupFragment$6
         }
       }
     }
-    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().c != null))
+    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().u != null))
     {
       paramBundle = this.a;
       CmShowMakeupFragment.a(paramBundle, new ImageView(paramBundle.getActivity()));
-      CmShowMakeupFragment.a(this.a).setImageResource(2130839406);
-      CmShowMakeupFragment.a(this.a).setScaleType(ImageView.ScaleType.CENTER);
-      paramBundle = new ViewGroup.LayoutParams(-1, ViewUtils.b() / 2);
-      this.a.getUIStyleHandler().c.addView(CmShowMakeupFragment.a(this.a), 0, paramBundle);
-      if ((CmShowMakeupFragment.a(this.a) != null) && (!CmShowMakeupFragment.d(this.a))) {
-        CmShowMakeupFragment.b(this.a);
+      CmShowMakeupFragment.f(this.a).setImageResource(2130839590);
+      CmShowMakeupFragment.f(this.a).setScaleType(ImageView.ScaleType.CENTER);
+      paramBundle = new ViewGroup.LayoutParams(-1, ViewUtils.getScreenHeight() / 2);
+      this.a.getUIStyleHandler().u.addView(CmShowMakeupFragment.f(this.a), 0, paramBundle);
+      if ((CmShowMakeupFragment.q(this.a) != null) && (!CmShowMakeupFragment.r(this.a))) {
+        CmShowMakeupFragment.s(this.a);
       }
     }
   }
@@ -99,7 +99,7 @@ class CmShowMakeupFragment$6
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    ApolloQualityReportUtil.a("dressup_web_page_finish", String.valueOf(System.currentTimeMillis() - CmShowMakeupFragment.b(this.a)));
+    ApolloQualityReportUtil.a("dressup_web_page_finish", String.valueOf(System.currentTimeMillis() - CmShowMakeupFragment.k(this.a)));
     CmShowMakeupFragment.a(this.a, 0L);
     TraceReportUtil.a(126, 1, 0, new Object[0]);
   }
@@ -108,7 +108,7 @@ class CmShowMakeupFragment$6
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
     CmShowMakeupFragment.a(this.a, System.currentTimeMillis());
-    ApolloQualityReportUtil.a("dressup_web_page_start", String.valueOf(CmShowMakeupFragment.b(this.a)));
+    ApolloQualityReportUtil.a("dressup_web_page_start", String.valueOf(CmShowMakeupFragment.k(this.a)));
     TraceReportUtil.a(126, 1);
   }
   
@@ -126,7 +126,7 @@ class CmShowMakeupFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment.6
  * JD-Core Version:    0.7.0.1
  */

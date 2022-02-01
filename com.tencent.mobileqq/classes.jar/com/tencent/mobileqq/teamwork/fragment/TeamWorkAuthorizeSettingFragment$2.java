@@ -24,19 +24,19 @@ class TeamWorkAuthorizeSettingFragment$2
     this.a.stopTitleProgress();
     if (!paramBoolean)
     {
-      FMToastUtil.a(HardCodeUtil.a(2131714608));
+      FMToastUtil.a(HardCodeUtil.a(2131912117));
       return;
     }
-    if ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
+    if ((this.a.b != paramInt) && (!paramString.equalsIgnoreCase(this.a.a))) {
       return;
     }
     if (QLog.isDevelopLevel()) {
       QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
     }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
+    this.a.h.clear();
     paramString = this.a;
-    paramString.b = 2;
-    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.b);
+    paramString.k = 2;
+    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.k);
     TeamWorkAuthorizeSettingFragment.a(this.a);
     TeamWorkAuthorizeSettingFragment.a(this.a, true);
   }
@@ -46,25 +46,25 @@ class TeamWorkAuthorizeSettingFragment$2
     this.a.stopTitleProgress();
     if (!paramBoolean)
     {
-      FMToastUtil.a(HardCodeUtil.a(2131714596));
+      FMToastUtil.a(HardCodeUtil.a(2131912105));
       return;
     }
-    if (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+    if (!paramString.equalsIgnoreCase(this.a.a)) {
       return;
     }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
+    this.a.h.clear();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
       TeamWorkAuthorizeUinListAdapter.ItemData localItemData = new TeamWorkAuthorizeUinListAdapter.ItemData();
-      localItemData.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
-      localItemData.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.a(localItemData);
+      localItemData.b = String.valueOf(paramList.uint64_uin.get());
+      localItemData.a = paramList;
+      this.a.j.a(localItemData);
     }
     paramString = this.a;
-    paramString.b = paramInt;
-    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.b);
+    paramString.k = paramInt;
+    TeamWorkAuthorizeSettingFragment.a(paramString, paramString.k);
     TeamWorkAuthorizeSettingFragment.a(this.a);
     TeamWorkAuthorizeSettingFragment.a(this.a, true);
   }
@@ -76,10 +76,10 @@ class TeamWorkAuthorizeSettingFragment$2
     this.a.stopTitleProgress();
     if (!paramBoolean)
     {
-      FMToastUtil.a(HardCodeUtil.a(2131714551));
+      FMToastUtil.a(HardCodeUtil.a(2131912060));
       return;
     }
-    FMToastUtil.b(HardCodeUtil.a(2131714553));
+    FMToastUtil.b(HardCodeUtil.a(2131912062));
     this.a.stopTitleProgress();
     Intent localIntent = new Intent();
     localIntent.putExtra("url", paramString);
@@ -93,7 +93,7 @@ class TeamWorkAuthorizeSettingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

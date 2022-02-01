@@ -14,7 +14,7 @@ class QQSettingMe$3
   {
     HashMap localHashMap = new HashMap();
     int i;
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).c())) {
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).h())) {
       i = 1;
     } else {
       i = 0;
@@ -25,7 +25,7 @@ class QQSettingMe$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.3
  * JD-Core Version:    0.7.0.1
  */

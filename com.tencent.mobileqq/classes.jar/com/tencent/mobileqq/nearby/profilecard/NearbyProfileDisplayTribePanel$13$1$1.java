@@ -17,24 +17,24 @@ class NearbyProfileDisplayTribePanel$13$1$1
   
   public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(NearbyProfileDisplayTribePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl)) {
+    if (TextUtils.isEmpty(NearbyProfileDisplayTribePanel.j(this.a.b.this$0).strGodJumpUrl)) {
       return;
     }
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a, QQBrowserActivity.class);
+    paramView = new Intent(this.a.b.this$0.e, QQBrowserActivity.class);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(NearbyProfileDisplayTribePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0).strGodJumpUrl);
+    ((StringBuilder)localObject).append(NearbyProfileDisplayTribePanel.j(this.a.b.this$0).strGodJumpUrl);
     ((StringBuilder)localObject).append("&gender=");
     int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null) {
+    if (this.a.a == null) {
       i = 0;
     } else {
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
+      i = this.a.a.shGender + 1;
     }
     ((StringBuilder)localObject).append(i);
     paramView.putExtra("url", ((StringBuilder)localObject).toString());
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.startActivity(paramView);
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.app;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$13.this$0.a.mMode == 2) {
+    this.a.b.this$0.e.startActivity(paramView);
+    localObject = this.a.b.this$0.e.app;
+    if (this.a.b.this$0.e.mMode == 2) {
       paramView = "1";
     } else {
       paramView = "2";
@@ -44,7 +44,7 @@ class NearbyProfileDisplayTribePanel$13$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13.1.1
  * JD-Core Version:    0.7.0.1
  */

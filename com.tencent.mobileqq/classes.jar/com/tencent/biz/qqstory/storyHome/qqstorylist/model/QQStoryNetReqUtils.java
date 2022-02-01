@@ -5,24 +5,24 @@ import java.io.File;
 
 public class QQStoryNetReqUtils
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final boolean jdField_a_of_type_Boolean;
+  private static final String a;
+  private static final boolean b;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
     localStringBuilder.append("/testEnv/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("testserver");
-    jdField_a_of_type_Boolean = new File(localStringBuilder.toString()).exists();
+    b = new File(localStringBuilder.toString()).exists();
   }
   
   public static boolean a()
   {
-    boolean bool = jdField_a_of_type_Boolean;
+    boolean bool = b;
     return false;
   }
 }

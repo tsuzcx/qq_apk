@@ -24,10 +24,10 @@ public class SnackbarContentLayout
   extends LinearLayout
   implements ContentViewCallback
 {
-  private int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int b;
+  private TextView a;
+  private Button b;
+  private int c;
+  private int d;
   
   public SnackbarContentLayout(@NonNull Context paramContext)
   {
@@ -37,9 +37,9 @@ public class SnackbarContentLayout
   public SnackbarContentLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.at);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.eH, -1);
-    this.b = paramContext.getDimensionPixelSize(R.styleable.eO, -1);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.gP);
+    this.c = paramContext.getDimensionPixelSize(R.styleable.gQ, -1);
+    this.d = paramContext.getDimensionPixelSize(R.styleable.gX, -1);
     paramContext.recycle();
   }
   
@@ -65,9 +65,9 @@ public class SnackbarContentLayout
     {
       bool = false;
     }
-    if ((this.jdField_a_of_type_AndroidWidgetTextView.getPaddingTop() != paramInt2) || (this.jdField_a_of_type_AndroidWidgetTextView.getPaddingBottom() != paramInt3))
+    if ((this.a.getPaddingTop() != paramInt2) || (this.a.getPaddingBottom() != paramInt3))
     {
-      a(this.jdField_a_of_type_AndroidWidgetTextView, paramInt2, paramInt3);
+      a(this.a, paramInt2, paramInt3);
       bool = true;
     }
     return bool;
@@ -75,49 +75,59 @@ public class SnackbarContentLayout
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
-    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetTextView.animate().alpha(1.0F);
+    this.a.setAlpha(0.0F);
+    ViewPropertyAnimator localViewPropertyAnimator = this.a.animate().alpha(1.0F);
     long l1 = paramInt2;
     localViewPropertyAnimator = localViewPropertyAnimator.setDuration(l1);
     long l2 = paramInt1;
     localViewPropertyAnimator.setStartDelay(l2).start();
-    if (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 0)
+    if (this.b.getVisibility() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidWidgetButton.animate().alpha(1.0F).setDuration(l1).setStartDelay(l2).start();
+      this.b.setAlpha(0.0F);
+      this.b.animate().alpha(1.0F).setDuration(l1).setStartDelay(l2).start();
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetTextView.animate().alpha(0.0F);
+    this.a.setAlpha(1.0F);
+    ViewPropertyAnimator localViewPropertyAnimator = this.a.animate().alpha(0.0F);
     long l1 = paramInt2;
     localViewPropertyAnimator = localViewPropertyAnimator.setDuration(l1);
     long l2 = paramInt1;
     localViewPropertyAnimator.setStartDelay(l2).start();
-    if (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 0)
+    if (this.b.getVisibility() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setAlpha(1.0F);
-      this.jdField_a_of_type_AndroidWidgetButton.animate().alpha(0.0F).setDuration(l1).setStartDelay(l2).start();
+      this.b.setAlpha(1.0F);
+      this.b.animate().alpha(0.0F).setDuration(l1).setStartDelay(l2).start();
     }
+  }
+  
+  public Button getActionView()
+  {
+    return this.b;
+  }
+  
+  public TextView getMessageView()
+  {
+    return this.a;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.ad));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(R.id.ac));
+    this.a = ((TextView)findViewById(R.id.ad));
+    this.b = ((Button)findViewById(R.id.ac));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i = paramInt1;
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.c > 0)
     {
       j = getMeasuredWidth();
-      k = this.jdField_a_of_type_Int;
+      k = this.c;
       i = paramInt1;
       if (j > k)
       {
@@ -127,14 +137,14 @@ public class SnackbarContentLayout
     }
     int k = getResources().getDimensionPixelSize(R.dimen.p);
     int m = getResources().getDimensionPixelSize(R.dimen.o);
-    paramInt1 = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineCount();
+    paramInt1 = this.a.getLayout().getLineCount();
     int j = 1;
     if (paramInt1 > 1) {
       paramInt1 = 1;
     } else {
       paramInt1 = 0;
     }
-    if ((paramInt1 != 0) && (this.b > 0) && (this.jdField_a_of_type_AndroidWidgetButton.getMeasuredWidth() > this.b))
+    if ((paramInt1 != 0) && (this.d > 0) && (this.b.getMeasuredWidth() > this.d))
     {
       if (a(1, k, k - m))
       {
@@ -164,12 +174,12 @@ public class SnackbarContentLayout
   
   public void setMaxInlineActionWidth(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.SnackbarContentLayout
  * JD-Core Version:    0.7.0.1
  */

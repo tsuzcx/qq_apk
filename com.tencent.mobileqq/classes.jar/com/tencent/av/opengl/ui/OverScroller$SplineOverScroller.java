@@ -9,35 +9,33 @@ import android.view.animation.AnimationUtils;
 
 class OverScroller$SplineOverScroller
 {
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static final float[] jdField_b_of_type_ArrayOfFloat;
-  private static float jdField_d_of_type_Float;
-  private static float jdField_e_of_type_Float = (float)(Math.log(0.78D) / Math.log(0.9D));
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float = ViewConfiguration.getScrollFriction();
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int jdField_e_of_type_Int;
-  private int f;
-  private int g;
+  private static float o;
+  private static float p = (float)(Math.log(0.78D) / Math.log(0.9D));
+  private static final float[] q = new float[101];
+  private static final float[] r = new float[101];
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  private float e;
+  private float f;
+  private long g;
   private int h;
-  private int i = 0;
+  private int i;
+  private int j;
+  private boolean k = true;
+  private int l;
+  private float m = ViewConfiguration.getScrollFriction();
+  private int n = 0;
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[101];
-    jdField_b_of_type_ArrayOfFloat = new float[101];
     float f1 = 0.0F;
-    int j = 0;
+    int i1 = 0;
     float f2 = 0.0F;
-    if (j < 100)
+    if (i1 < 100)
     {
-      float f5 = j / 100.0F;
+      float f5 = i1 / 100.0F;
       float f3 = 1.0F;
       for (;;)
       {
@@ -48,7 +46,7 @@ class OverScroller$SplineOverScroller
         float f9 = (f6 * 0.175F + f4 * 0.35F) * f7 + f8;
         if (Math.abs(f9 - f5) < 1.E-005D)
         {
-          jdField_a_of_type_ArrayOfFloat[j] = (f7 * (f6 * 0.5F + f4) + f8);
+          q[i1] = (f7 * (f6 * 0.5F + f4) + f8);
           f3 = 1.0F;
           for (;;)
           {
@@ -59,8 +57,8 @@ class OverScroller$SplineOverScroller
             f9 = (f6 * 0.5F + f4) * f7 + f8;
             if (Math.abs(f9 - f5) < 1.E-005D)
             {
-              jdField_b_of_type_ArrayOfFloat[j] = (f7 * (f6 * 0.175F + f4 * 0.35F) + f8);
-              j += 1;
+              r[i1] = (f7 * (f6 * 0.175F + f4 * 0.35F) + f8);
+              i1 += 1;
               break;
             }
             if (f9 > f5) {
@@ -77,14 +75,9 @@ class OverScroller$SplineOverScroller
         }
       }
     }
-    float[] arrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-    jdField_b_of_type_ArrayOfFloat[100] = 1.0F;
+    float[] arrayOfFloat = q;
+    r[100] = 1.0F;
     arrayOfFloat[100] = 1.0F;
-  }
-  
-  private double a(int paramInt)
-  {
-    return Math.log(Math.abs(paramInt) * 0.35F / (this.jdField_c_of_type_Float * jdField_d_of_type_Float));
   }
   
   private static float a(int paramInt)
@@ -95,99 +88,58 @@ class OverScroller$SplineOverScroller
     return 2000.0F;
   }
   
-  private int a(int paramInt)
-  {
-    double d1 = a(paramInt);
-    double d2 = jdField_e_of_type_Float;
-    Double.isNaN(d2);
-    return (int)(Math.exp(d1 / (d2 - 1.0D)) * 1000.0D);
-  }
-  
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int m = 1;
+    int i3 = 1;
     if ((paramInt1 > paramInt2) && (paramInt1 < paramInt3))
     {
       Log.e("OverScroller", "startAfterEdge called from a valid position");
-      this.jdField_a_of_type_Boolean = true;
+      this.k = true;
       return;
     }
-    int j;
+    int i1;
     if (paramInt1 > paramInt3) {
-      j = 1;
+      i1 = 1;
     } else {
-      j = 0;
+      i1 = 0;
     }
-    int k;
-    if (j != 0) {
-      k = paramInt3;
+    int i2;
+    if (i1 != 0) {
+      i2 = paramInt3;
     } else {
-      k = paramInt2;
+      i2 = paramInt2;
     }
-    int n = paramInt1 - k;
-    if (n * paramInt4 < 0) {
-      m = 0;
+    int i4 = paramInt1 - i2;
+    if (i4 * paramInt4 < 0) {
+      i3 = 0;
     }
-    if (m != 0)
+    if (i3 != 0)
     {
-      e(paramInt1, k, paramInt4);
+      e(paramInt1, i2, paramInt4);
       return;
     }
-    if (b(paramInt4) > Math.abs(n))
+    if (c(paramInt4) > Math.abs(i4))
     {
-      if (j == 0) {
+      if (i1 == 0) {
         paramInt2 = paramInt1;
       }
-      if (j != 0) {
+      if (i1 != 0) {
         paramInt3 = paramInt1;
       }
-      a(paramInt1, paramInt4, paramInt2, paramInt3, this.h);
+      a(paramInt1, paramInt4, paramInt2, paramInt3, this.l);
       return;
     }
-    c(paramInt1, k, paramInt4);
+    c(paramInt1, i2, paramInt4);
   }
   
   static void a(Context paramContext)
   {
-    jdField_d_of_type_Float = paramContext.getResources().getDisplayMetrics().density * 160.0F * 386.0878F * 0.84F;
+    o = paramContext.getResources().getDisplayMetrics().density * 160.0F * 386.0878F * 0.84F;
   }
   
   private double b(int paramInt)
   {
-    double d2 = a(paramInt);
-    float f1 = jdField_e_of_type_Float;
-    double d3 = f1;
-    Double.isNaN(d3);
-    double d1 = this.jdField_c_of_type_Float * jdField_d_of_type_Float;
-    double d4 = f1;
-    Double.isNaN(d4);
-    d2 = Math.exp(d4 / (d3 - 1.0D) * d2);
-    Double.isNaN(d1);
-    return d1 * d2;
-  }
-  
-  private void b()
-  {
-    int j = this.jdField_d_of_type_Int;
-    float f2 = j * j / (Math.abs(this.jdField_b_of_type_Float) * 2.0F);
-    float f3 = Math.signum(this.jdField_d_of_type_Int);
-    j = this.h;
-    float f1 = f2;
-    if (f2 > j)
-    {
-      f1 = -f3;
-      int k = this.jdField_d_of_type_Int;
-      this.jdField_b_of_type_Float = (f1 * k * k / (j * 2.0F));
-      f1 = j;
-    }
-    this.h = ((int)f1);
-    this.i = 2;
-    j = this.jdField_a_of_type_Int;
-    if (this.jdField_d_of_type_Int <= 0) {
-      f1 = -f1;
-    }
-    this.jdField_c_of_type_Int = (j + (int)f1);
-    this.jdField_e_of_type_Int = (-(int)(this.jdField_d_of_type_Int * 1000.0F / this.jdField_b_of_type_Float));
+    return Math.log(Math.abs(paramInt) * 0.35F / (this.m * o));
   }
   
   private void b(int paramInt1, int paramInt2, int paramInt3)
@@ -199,137 +151,183 @@ class OverScroller$SplineOverScroller
       float f4 = paramInt1 / 100.0F;
       paramInt2 = paramInt1 + 1;
       float f5 = paramInt2 / 100.0F;
-      float[] arrayOfFloat = jdField_b_of_type_ArrayOfFloat;
+      float[] arrayOfFloat = r;
       float f1 = arrayOfFloat[paramInt1];
       float f2 = arrayOfFloat[paramInt2];
       f3 = (f3 - f4) / (f5 - f4);
-      this.jdField_e_of_type_Int = ((int)(this.jdField_e_of_type_Int * (f1 + f3 * (f2 - f1))));
+      this.h = ((int)(this.h * (f1 + f3 * (f2 - f1))));
     }
+  }
+  
+  private double c(int paramInt)
+  {
+    double d2 = b(paramInt);
+    float f1 = p;
+    double d3 = f1;
+    Double.isNaN(d3);
+    double d1 = this.m * o;
+    double d4 = f1;
+    Double.isNaN(d4);
+    d2 = Math.exp(d4 / (d3 - 1.0D) * d2);
+    Double.isNaN(d1);
+    return d1 * d2;
   }
   
   private void c(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.i = 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
+    this.k = false;
+    this.n = 1;
+    this.a = paramInt1;
+    this.c = paramInt2;
     paramInt1 -= paramInt2;
-    this.jdField_b_of_type_Float = a(paramInt1);
-    this.jdField_d_of_type_Int = (-paramInt1);
-    this.h = Math.abs(paramInt1);
+    this.f = a(paramInt1);
+    this.d = (-paramInt1);
+    this.l = Math.abs(paramInt1);
     double d1 = paramInt1;
     Double.isNaN(d1);
-    double d2 = this.jdField_b_of_type_Float;
+    double d2 = this.f;
     Double.isNaN(d2);
-    this.jdField_e_of_type_Int = ((int)(Math.sqrt(d1 * -2.0D / d2) * 1000.0D));
+    this.h = ((int)(Math.sqrt(d1 * -2.0D / d2) * 1000.0D));
+  }
+  
+  private int d(int paramInt)
+  {
+    double d1 = b(paramInt);
+    double d2 = p;
+    Double.isNaN(d2);
+    return (int)(Math.exp(d1 / (d2 - 1.0D)) * 1000.0D);
+  }
+  
+  private void d()
+  {
+    int i1 = this.d;
+    float f2 = i1 * i1 / (Math.abs(this.f) * 2.0F);
+    float f3 = Math.signum(this.d);
+    i1 = this.l;
+    float f1 = f2;
+    if (f2 > i1)
+    {
+      f1 = -f3;
+      int i2 = this.d;
+      this.f = (f1 * i2 * i2 / (i1 * 2.0F));
+      f1 = i1;
+    }
+    this.l = ((int)f1);
+    this.n = 2;
+    i1 = this.a;
+    if (this.d <= 0) {
+      f1 = -f1;
+    }
+    this.c = (i1 + (int)f1);
+    this.h = (-(int)(this.d * 1000.0F / this.f));
   }
   
   private void d(int paramInt1, int paramInt2, int paramInt3)
   {
     float f2 = -paramInt3;
-    float f1 = this.jdField_b_of_type_Float;
+    float f1 = this.f;
     f2 /= f1;
     double d1 = paramInt3 * paramInt3 / 2.0F / Math.abs(f1) + Math.abs(paramInt2 - paramInt1);
     Double.isNaN(d1);
-    double d2 = Math.abs(this.jdField_b_of_type_Float);
+    double d2 = Math.abs(this.f);
     Double.isNaN(d2);
     f1 = (float)Math.sqrt(d1 * 2.0D / d2);
-    this.jdField_a_of_type_Long -= (int)((f1 - f2) * 1000.0F);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = ((int)(-this.jdField_b_of_type_Float * f1));
+    this.g -= (int)((f1 - f2) * 1000.0F);
+    this.a = paramInt2;
+    this.d = ((int)(-this.f * f1));
   }
   
   private void e(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j;
+    int i1;
     if (paramInt3 == 0) {
-      j = paramInt1 - paramInt2;
+      i1 = paramInt1 - paramInt2;
     } else {
-      j = paramInt3;
+      i1 = paramInt3;
     }
-    this.jdField_b_of_type_Float = a(j);
+    this.f = a(i1);
     d(paramInt1, paramInt2, paramInt3);
-    b();
+    d();
   }
   
   void a()
   {
-    this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Boolean = true;
+    this.b = this.c;
+    this.k = true;
   }
   
   void a(float paramFloat)
   {
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = (j + Math.round(paramFloat * (this.jdField_c_of_type_Int - j)));
+    int i1 = this.a;
+    this.b = (i1 + Math.round(paramFloat * (this.c - i1)));
   }
   
   void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Int = 0;
+    this.k = false;
+    this.a = paramInt1;
+    this.c = (paramInt1 + paramInt2);
+    this.g = AnimationUtils.currentAnimationTimeMillis();
+    this.h = paramInt3;
+    this.f = 0.0F;
+    this.d = 0;
   }
   
   void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.h = paramInt5;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = paramInt2;
+    this.l = paramInt5;
+    this.k = false;
+    this.d = paramInt2;
     float f1 = paramInt2;
-    this.jdField_a_of_type_Float = f1;
-    this.f = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
+    this.e = f1;
+    this.i = 0;
+    this.h = 0;
+    this.g = AnimationUtils.currentAnimationTimeMillis();
+    this.a = paramInt1;
+    this.b = paramInt1;
     if ((paramInt1 <= paramInt4) && (paramInt1 >= paramInt3))
     {
-      this.i = 0;
+      this.n = 0;
       double d1 = 0.0D;
       if (paramInt2 != 0)
       {
-        paramInt5 = a(paramInt2);
-        this.f = paramInt5;
-        this.jdField_e_of_type_Int = paramInt5;
-        d1 = b(paramInt2);
+        paramInt5 = d(paramInt2);
+        this.i = paramInt5;
+        this.h = paramInt5;
+        d1 = c(paramInt2);
       }
       double d2 = Math.signum(f1);
       Double.isNaN(d2);
-      this.g = ((int)(d1 * d2));
-      this.jdField_c_of_type_Int = (paramInt1 + this.g);
-      paramInt1 = this.jdField_c_of_type_Int;
+      this.j = ((int)(d1 * d2));
+      this.c = (paramInt1 + this.j);
+      paramInt1 = this.c;
       if (paramInt1 < paramInt3)
       {
-        b(this.jdField_a_of_type_Int, paramInt1, paramInt3);
-        this.jdField_c_of_type_Int = paramInt3;
+        b(this.a, paramInt1, paramInt3);
+        this.c = paramInt3;
       }
-      paramInt1 = this.jdField_c_of_type_Int;
+      paramInt1 = this.c;
       if (paramInt1 > paramInt4)
       {
-        b(this.jdField_a_of_type_Int, paramInt1, paramInt4);
-        this.jdField_c_of_type_Int = paramInt4;
+        b(this.a, paramInt1, paramInt4);
+        this.c = paramInt4;
       }
       return;
     }
     a(paramInt1, paramInt3, paramInt4, paramInt2);
   }
   
-  boolean a()
+  boolean b()
   {
-    int j = this.i;
-    if (j != 0)
+    int i1 = this.n;
+    if (i1 != 0)
     {
-      if (j != 1)
+      if (i1 != 1)
       {
-        if (j == 2)
+        if (i1 == 2)
         {
-          this.jdField_a_of_type_Long += this.jdField_e_of_type_Int;
-          c(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, 0);
+          this.g += this.h;
+          c(this.c, this.a, 0);
         }
       }
       else {
@@ -338,78 +336,78 @@ class OverScroller$SplineOverScroller
     }
     else
     {
-      if (this.jdField_e_of_type_Int >= this.f) {
+      if (this.h >= this.i) {
         break label118;
       }
-      this.jdField_a_of_type_Int = this.jdField_c_of_type_Int;
-      this.jdField_d_of_type_Int = ((int)this.jdField_a_of_type_Float);
-      this.jdField_b_of_type_Float = a(this.jdField_d_of_type_Int);
-      this.jdField_a_of_type_Long += this.jdField_e_of_type_Int;
-      b();
+      this.a = this.c;
+      this.d = ((int)this.e);
+      this.f = a(this.d);
+      this.g += this.h;
+      d();
     }
-    b();
+    c();
     return true;
     label118:
     return false;
   }
   
-  boolean b()
+  boolean c()
   {
-    long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-    int j = this.jdField_e_of_type_Int;
-    if (l > j) {
+    long l1 = AnimationUtils.currentAnimationTimeMillis() - this.g;
+    int i1 = this.h;
+    if (l1 > i1) {
       return false;
     }
     double d1 = 0.0D;
-    int k = this.i;
+    int i2 = this.n;
     float f1;
     float f2;
     float f3;
-    if (k != 0)
+    if (i2 != 0)
     {
-      if (k != 1)
+      if (i2 != 1)
       {
-        if (k == 2)
+        if (i2 == 2)
         {
-          f1 = (float)l / 1000.0F;
-          j = this.jdField_d_of_type_Int;
-          f2 = j;
-          f3 = this.jdField_b_of_type_Float;
-          this.jdField_a_of_type_Float = (f2 + f3 * f1);
-          d1 = j * f1 + f3 * f1 * f1 / 2.0F;
+          f1 = (float)l1 / 1000.0F;
+          i1 = this.d;
+          f2 = i1;
+          f3 = this.f;
+          this.e = (f2 + f3 * f1);
+          d1 = i1 * f1 + f3 * f1 * f1 / 2.0F;
         }
       }
       else
       {
-        f1 = (float)l / j;
+        f1 = (float)l1 / i1;
         f2 = f1 * f1;
-        f3 = Math.signum(this.jdField_d_of_type_Int);
-        j = this.h;
-        d1 = j * f3 * (3.0F * f2 - 2.0F * f1 * f2);
-        this.jdField_a_of_type_Float = (f3 * j * 6.0F * (-f1 + f2));
+        f3 = Math.signum(this.d);
+        i1 = this.l;
+        d1 = i1 * f3 * (3.0F * f2 - 2.0F * f1 * f2);
+        this.e = (f3 * i1 * 6.0F * (-f1 + f2));
       }
     }
     else
     {
-      f3 = (float)l / this.f;
-      j = (int)(f3 * 100.0F);
+      f3 = (float)l1 / this.i;
+      i1 = (int)(f3 * 100.0F);
       f1 = 1.0F;
       f2 = 0.0F;
-      if (j < 100)
+      if (i1 < 100)
       {
-        f1 = j / 100.0F;
-        k = j + 1;
-        f2 = k / 100.0F;
-        float[] arrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-        float f4 = arrayOfFloat[j];
-        f2 = (arrayOfFloat[k] - f4) / (f2 - f1);
+        f1 = i1 / 100.0F;
+        i2 = i1 + 1;
+        f2 = i2 / 100.0F;
+        float[] arrayOfFloat = q;
+        float f4 = arrayOfFloat[i1];
+        f2 = (arrayOfFloat[i2] - f4) / (f2 - f1);
         f1 = f4 + (f3 - f1) * f2;
       }
-      j = this.g;
-      d1 = f1 * j;
-      this.jdField_a_of_type_Float = (f2 * j / this.f * 1000.0F);
+      i1 = this.j;
+      d1 = f1 * i1;
+      this.e = (f2 * i1 / this.i * 1000.0F);
     }
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int + (int)Math.round(d1));
+    this.b = (this.a + (int)Math.round(d1));
     return true;
   }
 }

@@ -19,13 +19,13 @@ class ListenTogetherManager$9
     if (paramIntent.getIntExtra("pid", Process.myPid()) == Process.myPid())
     {
       QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-      ListenTogetherManager.c(this.a);
+      ListenTogetherManager.n(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.9
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,9 @@ package com.tencent.qqmini.miniapp.core;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 import com.tencent.qqmini.miniapp.core.model.EmbeddedState;
 import com.tencent.qqmini.miniapp.core.page.AppBrandPage;
@@ -20,7 +18,7 @@ import com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.NetworkUtil;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.core.utils.WebViewUtils;
 import com.tencent.qqmini.sdk.launcher.core.action.GetScreenshot.Callback;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MapProxy;
@@ -49,22 +47,7 @@ public class AppBrandRuntime
   public AppBrandRuntime(Context paramContext)
   {
     super(paramContext);
-    try
-    {
-      if ((!webviewDataDirectoryInited) && (Build.VERSION.SDK_INT >= 28))
-      {
-        webviewDataDirectoryInited = true;
-        WebView.setDataDirectorySuffix(AppLoaderFactory.g().getProcessName());
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setDataDirectorySuffix error. ");
-      localStringBuilder.append(paramContext.getMessage());
-      QMLog.e("minisdk-start_AppBrandRuntime", localStringBuilder.toString());
-    }
+    WebViewUtils.a();
   }
   
   private void captureImageForVideoPlayer(ICaptureImageCallback paramICaptureImageCallback, ViewGroup paramViewGroup, View paramView)
@@ -237,7 +220,7 @@ public class AppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

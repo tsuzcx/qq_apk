@@ -9,9 +9,9 @@ public class GestureRecognitionUtils
   
   public static boolean a()
   {
-    boolean bool = GestureMgr.a().a();
+    boolean bool = GestureMgr.e().b();
     if (!bool) {
-      GestureMgr.a().b();
+      GestureMgr.e().c();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GestureRecognitionUtils check gestureResource ready ");
@@ -22,7 +22,7 @@ public class GestureRecognitionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureRecognitionUtils
  * JD-Core Version:    0.7.0.1
  */

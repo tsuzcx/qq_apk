@@ -29,7 +29,7 @@ public class ConversationFacadeImpl
   
   public void calculateNearbyBoxUnreadCount(String paramString, int paramInt)
   {
-    this.mApp.getConversationFacade().e(paramString, paramInt);
+    this.mApp.getConversationFacade().n(paramString, paramInt);
   }
   
   public void cleanUnread(String paramString, int paramInt, long paramLong, boolean paramBoolean)
@@ -64,7 +64,7 @@ public class ConversationFacadeImpl
   
   public ConversationInfo getConversationInfo(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().a(paramString, paramInt);
+    return this.mApp.getConversationFacade().p(paramString, paramInt);
   }
   
   public Set<ConversationInfo> getConversationInfoSet()
@@ -74,12 +74,12 @@ public class ConversationFacadeImpl
   
   public long getLastRead(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().a(paramString, paramInt);
+    return this.mApp.getConversationFacade().e(paramString, paramInt);
   }
   
   public int getPublicAccountConversationRedMask(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().g(paramString, paramInt);
+    return this.mApp.getConversationFacade().h(paramString, paramInt);
   }
   
   public int getReadUnreadCount(String paramString, int paramInt)
@@ -94,7 +94,7 @@ public class ConversationFacadeImpl
   
   public ConversationInfo getTinyConvInfo(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().b(paramString, paramInt);
+    return this.mApp.getConversationFacade().q(paramString, paramInt);
   }
   
   public int getTroopMask(String paramString)
@@ -119,12 +119,12 @@ public class ConversationFacadeImpl
   
   public void increaseUnread(String paramString, int paramInt1, int paramInt2)
   {
-    this.mApp.getConversationFacade().d(paramString, paramInt1, paramInt2);
+    this.mApp.getConversationFacade().e(paramString, paramInt1, paramInt2);
   }
   
   public boolean isInMsgBox(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().a(paramString, paramInt);
+    return this.mApp.getConversationFacade().j(paramString, paramInt);
   }
   
   public boolean isInMsgBox(String paramString1, int paramInt, String paramString2)
@@ -134,12 +134,12 @@ public class ConversationFacadeImpl
   
   public boolean isSyncMsgFinish()
   {
-    return (this.mApp.mAutomator != null) && (this.mApp.mAutomator.c());
+    return (this.mApp.mAutomator != null) && (this.mApp.mAutomator.h());
   }
   
   public boolean isUinInRecentList(String paramString, int paramInt)
   {
-    return this.mApp.getConversationFacade().b(paramString, paramInt);
+    return this.mApp.getConversationFacade().o(paramString, paramInt);
   }
   
   public boolean isUinInRecentNotSubAccount(String paramString)
@@ -172,12 +172,12 @@ public class ConversationFacadeImpl
   
   public void removeUnreadItem(String paramString, int paramInt)
   {
-    this.mApp.getConversationFacade().a(paramString, paramInt);
+    this.mApp.getConversationFacade().i(paramString, paramInt);
   }
   
   public void setSubAccountTroopUnReadMsg(String paramString, int paramInt1, int paramInt2)
   {
-    this.mApp.getConversationFacade().b(paramString, paramInt1, paramInt2);
+    this.mApp.getConversationFacade().c(paramString, paramInt1, paramInt2);
   }
   
   public void setTroopMsgFilterToServer(String paramString, Integer paramInteger)
@@ -187,7 +187,7 @@ public class ConversationFacadeImpl
   
   public void setUnreadMark(String paramString, int paramInt1, int paramInt2)
   {
-    this.mApp.getConversationFacade().a(paramString, paramInt1, paramInt2);
+    this.mApp.getConversationFacade().b(paramString, paramInt1, paramInt2);
   }
   
   public void updateLastRead(String paramString, int paramInt, long paramLong)
@@ -197,7 +197,7 @@ public class ConversationFacadeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.ConversationFacadeImpl
  * JD-Core Version:    0.7.0.1
  */

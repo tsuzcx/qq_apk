@@ -15,36 +15,36 @@ class FileBannerTianshuManger$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    if (this.a != null)
     {
-      if (this.this$0.jdField_a_of_type_MqqUtilWeakReference == null) {
+      if (this.this$0.e == null) {
         return;
       }
       try
       {
-        FileBannerTianshuManger.a(this.this$0, (ViewStub)this.this$0.b.findViewById(2131363405));
+        FileBannerTianshuManger.a(this.this$0, (ViewStub)this.this$0.i.findViewById(2131429295));
         if (FileBannerTianshuManger.a(this.this$0) == null)
         {
           QZLog.e("FileBannerTianshuManger", "mFileAssistantBannerViewStub  is null ");
           return;
         }
         FileBannerTianshuManger.a(this.this$0).inflate();
-        this.this$0.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.this$0.b.findViewById(2131363404));
-        this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.this$0.b.findViewById(2131363403));
-        this.this$0.jdField_a_of_type_AndroidViewView = this.this$0.b.findViewById(2131363402);
-        ViewGroup.LayoutParams localLayoutParams1 = this.this$0.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-        localLayoutParams1.width = this.this$0.a();
-        localLayoutParams1.height = this.this$0.b();
-        this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams1);
-        this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        ViewGroup.LayoutParams localLayoutParams2 = this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+        this.this$0.g = ((URLImageView)this.this$0.i.findViewById(2131429294));
+        this.this$0.h = ((RelativeLayout)this.this$0.i.findViewById(2131429293));
+        this.this$0.f = this.this$0.i.findViewById(2131429292);
+        ViewGroup.LayoutParams localLayoutParams1 = this.this$0.g.getLayoutParams();
+        localLayoutParams1.width = this.this$0.c();
+        localLayoutParams1.height = this.this$0.d();
+        this.this$0.g.setLayoutParams(localLayoutParams1);
+        this.this$0.g.setImageDrawable(this.a);
+        ViewGroup.LayoutParams localLayoutParams2 = this.this$0.h.getLayoutParams();
         localLayoutParams2.width = localLayoutParams1.width;
         localLayoutParams2.height = localLayoutParams1.height;
-        this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams2);
-        this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.this$0.h.setLayoutParams(localLayoutParams2);
+        this.this$0.h.setVisibility(0);
         QZLog.i("FileBannerTianshuManger", "showFileBanner setvisble ");
-        this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(new FileBannerTianshuManger.4.1(this));
-        this.this$0.jdField_a_of_type_AndroidViewView.setOnClickListener(new FileBannerTianshuManger.4.2(this));
+        this.this$0.g.setOnClickListener(new FileBannerTianshuManger.4.1(this));
+        this.this$0.f.setOnClickListener(new FileBannerTianshuManger.4.2(this));
         return;
       }
       catch (Exception localException)
@@ -56,7 +56,7 @@ class FileBannerTianshuManger$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger.4
  * JD-Core Version:    0.7.0.1
  */

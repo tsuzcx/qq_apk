@@ -9,16 +9,16 @@ class ExpandCampusNewFragment$7
   
   public void run()
   {
-    if (ExpandCampusNewFragment.a(this.this$0) != null)
+    if (ExpandCampusNewFragment.g(this.this$0) != null)
     {
-      ExpandCampusNewFragment.a(this.this$0).setVisibility(0);
-      ExpandCampusNewFragment.a(this.this$0).setOnClickListener(new ExpandCampusNewFragment.7.1(this));
+      ExpandCampusNewFragment.g(this.this$0).setVisibility(0);
+      ExpandCampusNewFragment.g(this.this$0).setOnClickListener(new ExpandCampusNewFragment.7.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandCampusNewFragment.7
  * JD-Core Version:    0.7.0.1
  */

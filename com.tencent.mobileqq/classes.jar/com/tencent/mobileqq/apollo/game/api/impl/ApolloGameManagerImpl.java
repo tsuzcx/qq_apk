@@ -4,23 +4,19 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.game.CmGameAudioManager;
+import com.tencent.mobileqq.apollo.bubble.ApolloAioBubblePush;
 import com.tencent.mobileqq.apollo.game.CmGameConnManager;
-import com.tencent.mobileqq.apollo.game.CmGameTempSessionHandler;
 import com.tencent.mobileqq.apollo.game.api.IApolloGameManager;
 import com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler;
 import com.tencent.mobileqq.apollo.model.ApolloGameData;
-import com.tencent.mobileqq.apollo.model.ApolloPanelBubbleData;
-import com.tencent.mobileqq.apollo.model.MessageForApollo;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
-import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
-import com.tencent.mobileqq.apollo.task.ApolloAioBubblePush;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -32,9 +28,7 @@ import com.tencent.pb.apollo.STGameLogin.STGameConfInfo;
 import com.tencent.pb.apollo.STGameLogin.STGameLoginRsp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 
@@ -43,29 +37,16 @@ public class ApolloGameManagerImpl
 {
   public static final String DEFAULT_SSO_CMD_RULES = "^(apollo_game_[_a-zA-Z0-9.]*|apollo_aio_game[_a-zA-Z0-9.]*)";
   public static final int DEFAULT_VAL = -1;
-  public static final int GAME_UPDATE_TIME_INTERVAL_AT_LEAST = 600;
-  public static final int MSG_CODE_DO_BULK_REQ = 5893;
-  public static final int MSG_CODE_FOR_SINGLE_REQ = 5892;
-  public static final int MSG_CODE_UPDATE_GAME_STATUS = 5891;
-  public static final int QUERY_TIME_SLICE = 180;
   public static int REQ_GAME_LIST_FAILED = 3;
   public static int REQ_GAME_LIST_SEND = 1;
   public static int REQ_GAME_LIST_SUCC = 2;
   public static String REQ_KEY = "REQ_GAME_KEY";
   public static String REQ_VAL = "REQ_GAME_VAL";
-  public static final String SENGMSG_TAG = "cmgame.sendmsg";
-  public static final String SP_GAME_JSON_LAST_UPDATE_IN_SEC = "game_json_last_update_in_sec";
-  private Map<Integer, MessageForApollo> gameLoadingMsgs = new HashMap();
   private QQAppInterface mApp;
   public ApolloAioBubblePush mBubblePush;
   public AtomicBoolean mCanTry;
-  private CmGameAudioManager mCmGameAudioManager;
   private CmGameConnManager mCmGameConnManager;
   private long mCreateTime;
-  public int mCurrentBubbleGameId = -1;
-  private ApolloPanelBubbleData mCurrentPanelBubbleGame = new ApolloPanelBubbleData(-1, -1);
-  private CmGameTempSessionHandler mGameTempMsgHandler;
-  private int mLastGameJsonUpdateTime = 0;
   private ApolloGameManagerImpl.ApolloNetInfoHandler mNetInfoHandler;
   protected SharedPreferences mSp;
   
@@ -83,21 +64,6 @@ public class ApolloGameManagerImpl
     return ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
-  public static int getValFromSP(String paramString)
-  {
-    SharedPreferences localSharedPreferences = getReqSp();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getInt(paramString, -1);
-    }
-    return -1;
-  }
-  
-  private boolean isReqUsrGameListSend()
-  {
-    SharedPreferences localSharedPreferences = getReqSp();
-    return (localSharedPreferences != null) && (localSharedPreferences.getInt(REQ_VAL, -1) == REQ_GAME_LIST_SEND);
-  }
-  
   private void setReqUsrGameListSend()
   {
     getReqSp().edit().putInt(REQ_VAL, REQ_GAME_LIST_SEND).apply();
@@ -106,19 +72,6 @@ public class ApolloGameManagerImpl
   private void setReqUsrGameListSuccess()
   {
     getReqSp().edit().putInt(REQ_VAL, REQ_GAME_LIST_SUCC).apply();
-  }
-  
-  public CmGameAudioManager getCmGameAudioManager()
-  {
-    try
-    {
-      if (this.mCmGameAudioManager == null) {
-        this.mCmGameAudioManager = new CmGameAudioManager(this.mApp);
-      }
-      CmGameAudioManager localCmGameAudioManager = this.mCmGameAudioManager;
-      return localCmGameAudioManager;
-    }
-    finally {}
   }
   
   public CmGameConnManager getCmGameConnManager()
@@ -134,35 +87,11 @@ public class ApolloGameManagerImpl
     finally {}
   }
   
-  public ApolloPanelBubbleData getCurrentPanelBubbleGame()
-  {
-    return this.mCurrentPanelBubbleGame;
-  }
-  
-  public MessageForApollo getGameMsgById(int paramInt)
-  {
-    return (MessageForApollo)this.gameLoadingMsgs.get(Integer.valueOf(paramInt));
-  }
-  
-  public CmGameTempSessionHandler getGameTempMsgHandler()
-  {
-    if (this.mGameTempMsgHandler == null) {
-      this.mGameTempMsgHandler = new CmGameTempSessionHandler(this.mApp);
-    }
-    return this.mGameTempMsgHandler;
-  }
-  
-  public boolean isGameAudioManagerCreated()
-  {
-    return this.mCmGameAudioManager != null;
-  }
-  
   public void onAddOrDelGame()
   {
-    QQAppInterface localQQAppInterface = this.mApp;
-    if (localQQAppInterface != null)
+    if (this.mApp != null)
     {
-      ((ApolloResManagerImpl)localQQAppInterface.getRuntimeService(IApolloResManager.class, "all")).notifyJsonDone();
+      ApolloResManagerFacade.a.a(Scene.WEB_STORE_OR_GAME).f();
       return;
     }
     QLog.e("ApolloGameManager", 1, "[onAddOrDelGame] error, appRuntime is null!");
@@ -174,13 +103,12 @@ public class ApolloGameManagerImpl
     {
       this.mApp = ((QQAppInterface)paramAppRuntime);
       this.mCreateTime = NetConnInfoCenter.getServerTimeMillis();
-      this.mLastGameJsonUpdateTime = getValFromSP("game_json_last_update_in_sec");
       if (QLog.isColorLevel())
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("mCreateTime:");
         paramAppRuntime.append(this.mCreateTime);
-        QLog.d("ApolloGameManager", 2, new Object[] { paramAppRuntime.toString(), ",gameJsonUpdateT:", Integer.valueOf(this.mLastGameJsonUpdateTime) });
+        QLog.d("ApolloGameManager", 2, paramAppRuntime.toString());
       }
       this.mCanTry = new AtomicBoolean(false);
       this.mBubblePush = new ApolloAioBubblePush();
@@ -194,22 +122,11 @@ public class ApolloGameManagerImpl
   
   public void onDestroy()
   {
-    this.mCurrentBubbleGameId = -1;
-    Object localObject = this.mGameTempMsgHandler;
-    if (localObject != null) {
-      ((CmGameTempSessionHandler)localObject).a();
-    }
-    localObject = this.mCmGameConnManager;
-    if (localObject != null)
+    CmGameConnManager localCmGameConnManager = this.mCmGameConnManager;
+    if (localCmGameConnManager != null)
     {
-      ((CmGameConnManager)localObject).e();
+      localCmGameConnManager.f();
       this.mCmGameConnManager = null;
-    }
-    localObject = this.mCmGameAudioManager;
-    if (localObject != null)
-    {
-      ((CmGameAudioManager)localObject).b();
-      this.mCmGameAudioManager = null;
     }
     try
     {
@@ -259,10 +176,9 @@ public class ApolloGameManagerImpl
   
   public void onGetGameList()
   {
-    QQAppInterface localQQAppInterface = this.mApp;
-    if (localQQAppInterface != null)
+    if (this.mApp != null)
     {
-      ((ApolloResManagerImpl)localQQAppInterface.getRuntimeService(IApolloResManager.class, "all")).notifyJsonDone();
+      ApolloResManagerFacade.a.a(Scene.WEB_STORE_OR_GAME).f();
       return;
     }
     QLog.e("ApolloGameManager", 1, "[onGetGameList] error, appRuntime is null!");
@@ -325,7 +241,7 @@ public class ApolloGameManagerImpl
       return;
     }
     setReqUsrGameListSend();
-    ((ApolloExtensionHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a();
+    ((ApolloExtensionHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).b();
   }
   
   public void resetReqUsrGameList()
@@ -335,17 +251,10 @@ public class ApolloGameManagerImpl
       localSharedPreferences.edit().putInt(REQ_VAL, -1).apply();
     }
   }
-  
-  public void setCurrentPanelBubbleGame(int paramInt1, int paramInt2)
-  {
-    ApolloPanelBubbleData localApolloPanelBubbleData = this.mCurrentPanelBubbleGame;
-    localApolloPanelBubbleData.gameId = paramInt1;
-    localApolloPanelBubbleData.from = paramInt2;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.api.impl.ApolloGameManagerImpl
  * JD-Core Version:    0.7.0.1
  */

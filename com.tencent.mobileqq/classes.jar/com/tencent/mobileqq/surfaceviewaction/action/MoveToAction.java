@@ -3,31 +3,31 @@ package com.tencent.mobileqq.surfaceviewaction.action;
 public class MoveToAction
   extends Action
 {
-  private float d;
-  private float e;
-  private float f;
-  private float g;
+  private float m;
+  private float n;
+  private float o;
+  private float p;
   
   public MoveToAction(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     super(paramInt, 1, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
-    this.f = paramFloat3;
-    this.g = paramFloat4;
+    this.m = paramFloat1;
+    this.n = paramFloat2;
+    this.o = paramFloat3;
+    this.p = paramFloat4;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    float f1 = this.d;
-    float f2 = this.f;
+    float f1 = this.m;
+    float f2 = this.o;
     this.a = ((f2 - f1) * paramFloat + f1);
-    float f3 = this.e;
-    this.b = (f3 + (this.g - f3) * paramFloat);
+    float f3 = this.n;
+    this.b = (f3 + (this.p - f3) * paramFloat);
     if (f2 - f1 > 0.0F)
     {
       f1 = this.a;
-      f2 = this.f;
+      f2 = this.o;
       if (f1 >= f2) {
         this.a = f2;
       }
@@ -35,15 +35,15 @@ public class MoveToAction
     else
     {
       f1 = this.a;
-      f2 = this.f;
+      f2 = this.o;
       if (f1 <= f2) {
         this.a = f2;
       }
     }
-    if (this.g - this.e > 0.0F)
+    if (this.p - this.n > 0.0F)
     {
       f1 = this.b;
-      f2 = this.g;
+      f2 = this.p;
       if (f1 >= f2) {
         this.b = f2;
       }
@@ -51,22 +51,22 @@ public class MoveToAction
     else
     {
       f1 = this.b;
-      f2 = this.g;
+      f2 = this.p;
       if (f1 <= f2) {
         this.b = f2;
       }
     }
-    if (paramInt >= this.c)
+    if (paramInt >= this.f)
     {
-      this.a = this.f;
-      this.b = this.g;
+      this.a = this.o;
+      this.b = this.p;
     }
     super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.MoveToAction
  * JD-Core Version:    0.7.0.1
  */

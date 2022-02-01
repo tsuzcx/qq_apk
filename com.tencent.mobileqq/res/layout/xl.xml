@@ -7,5 +7,5 @@
     </FrameLayout>
     <TextView android:textSize="8.5dip" android:textColor="@color/s4" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/g90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5a" android:maxWidth="50.0dip" android:singleLine="true" android:layout_below="@id/g8n" android:layout_centerHorizontal="true" />
     <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:layout_marginTop="6.0dip" android:src="@drawable/brb" android:layout_toRightOf="@id/g90" android:layout_below="@id/g8n" />
-    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:layout_marginLeft="1.5dip" android:layout_marginTop="6.0dip" android:src="@drawable/gze" android:layout_toRightOf="@id/g90" android:layout_below="@id/g8n" />
+    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="@dimen/a5m" android:layout_height="@dimen/a5m" android:layout_marginLeft="1.5dip" android:layout_marginTop="6.0dip" android:src="@drawable/ik7" android:layout_toRightOf="@id/g90" android:layout_below="@id/g8n" />
 </RelativeLayout>

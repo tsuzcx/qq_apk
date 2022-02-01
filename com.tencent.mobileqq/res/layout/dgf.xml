@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.timi.game.float_window.impl.animate.WorldScaleLayout android:id="@id/qar" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qa8" android:background="#72000000" android:visibility="invisible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/q9y" android:layout_width="fill_parent" android:layout_height="98.0dip" />
+    </RelativeLayout>
+</com.tencent.timi.game.float_window.impl.animate.WorldScaleLayout>

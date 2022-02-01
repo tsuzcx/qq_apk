@@ -269,16 +269,16 @@ public class IliveDbManager
       return;
     }
     IliveConfigBean localIliveConfigBean = new IliveConfigBean();
-    localIliveConfigBean.jdField_a_of_type_Boolean = IliveEntranceUtil.c();
-    localIliveConfigBean.c = paramQqLiveMsg.anchorUrl;
-    localIliveConfigBean.d = paramQqLiveMsg.anchorUrlMd5;
-    localIliveConfigBean.jdField_a_of_type_JavaLangString = paramQqLiveMsg.viewerUrl;
-    localIliveConfigBean.b = paramQqLiveMsg.viewerUrlMd5;
+    localIliveConfigBean.a = IliveEntranceUtil.c();
+    localIliveConfigBean.d = paramQqLiveMsg.anchorUrl;
+    localIliveConfigBean.e = paramQqLiveMsg.anchorUrlMd5;
+    localIliveConfigBean.b = paramQqLiveMsg.viewerUrl;
+    localIliveConfigBean.c = paramQqLiveMsg.viewerUrlMd5;
     paramQqLiveMsg = new StringBuilder();
     paramQqLiveMsg.append("saveIlivePluginConfig anchorMd5 = ");
-    paramQqLiveMsg.append(localIliveConfigBean.d);
+    paramQqLiveMsg.append(localIliveConfigBean.e);
     paramQqLiveMsg.append(" mWatchPluginMd5 = ");
-    paramQqLiveMsg.append(localIliveConfigBean.b);
+    paramQqLiveMsg.append(localIliveConfigBean.c);
     QLog.e("IliveFileDbManager", 1, paramQqLiveMsg.toString());
     saveIliveConfigBean(1, localIliveConfigBean);
   }
@@ -317,7 +317,7 @@ public class IliveDbManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.manager.IliveDbManager
  * JD-Core Version:    0.7.0.1
  */

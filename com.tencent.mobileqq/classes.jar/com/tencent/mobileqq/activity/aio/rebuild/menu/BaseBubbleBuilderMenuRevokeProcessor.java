@@ -48,15 +48,15 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   
   private void a(QQCustomMenu paramQQCustomMenu, MessageRecord paramMessageRecord, Context paramContext, boolean paramBoolean)
   {
-    paramContext = new QQCustomMenuItem(2131371562, paramContext.getString(2131694322));
-    paramContext.a(2130838920);
+    paramContext = new QQCustomMenuItem(2131438943, paramContext.getString(2131891960));
+    paramContext.a(2130839074);
     paramContext.a(paramBoolean);
     paramQQCustomMenu.a(paramContext);
-    if (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    if (TroopUtils.a(this.a, paramMessageRecord, this.a.getCurrentAccountUin()))
     {
-      paramContext = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_manage").c("recall_msg").d("exp_recallMsg");
+      paramContext = new ReportTask(this.a).a("dc00899").b("Grp_manage").c("recall_msg").d("exp_recallMsg");
       String str = paramMessageRecord.frienduin;
-      if (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+      if (TroopUtils.a(this.a, paramMessageRecord.frienduin, this.a.getCurrentAccountUin())) {
         paramQQCustomMenu = "1";
       } else {
         paramQQCustomMenu = "2";
@@ -95,8 +95,8 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   private boolean b(MessageRecord paramMessageRecord)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    boolean bool = TroopUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return ((l - paramMessageRecord.time * 1000L < 120000L) && (!bool)) || ((bool) && (paramMessageRecord.isSend())) || (paramMessageRecord.msgtype == -2005) || (TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    boolean bool = TroopUtils.c(this.a, paramMessageRecord, this.a.getCurrentAccountUin());
+    return ((l - paramMessageRecord.time * 1000L < 120000L) && (!bool)) || ((bool) && (paramMessageRecord.isSend())) || (paramMessageRecord.msgtype == -2005) || (TroopUtils.a(this.a, paramMessageRecord, this.a.getCurrentAccountUin()));
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -111,10 +111,10 @@ public class BaseBubbleBuilderMenuRevokeProcessor
       Object localObject = ((BaseActivity)paramContext).getChatFragment();
       paramContext = null;
       if (localObject != null) {
-        paramContext = ((ChatFragment)localObject).a();
+        paramContext = ((ChatFragment)localObject).k();
       }
       if (paramContext != null) {
-        ((AIORevokeMsgHelper)paramContext.a(46)).a(paramChatMessage);
+        ((AIORevokeMsgHelper)paramContext.q(46)).a(paramChatMessage);
       }
       int i = 0;
       int k = 0;
@@ -151,9 +151,9 @@ public class BaseBubbleBuilderMenuRevokeProcessor
           break;
         }
       }
-      if (AnonymousChatHelper.a(paramChatMessage))
+      if (AnonymousChatHelper.c(paramChatMessage))
       {
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        paramContext = this.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
         ((StringBuilder)localObject).append(j);
@@ -162,7 +162,7 @@ public class BaseBubbleBuilderMenuRevokeProcessor
       if (AskAnonymousUtil.a(paramChatMessage)) {
         ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "ans_recess", 0, 0, paramChatMessage.frienduin, "0", "", "");
       }
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramChatMessage = this.a;
       paramContext = new StringBuilder();
       paramContext.append("");
       paramContext.append(i);
@@ -172,12 +172,12 @@ public class BaseBubbleBuilderMenuRevokeProcessor
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
   {
-    paramBundle.putBoolean("isInvokeMenuShow", a(paramQQCustomMenu, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramChatMessage, paramBundle));
+    paramBundle.putBoolean("isInvokeMenuShow", a(paramQQCustomMenu, paramContext, this.b.a, paramChatMessage, paramBundle));
   }
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131371562;
+    return paramInt == 2131438943;
   }
   
   protected boolean a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, MessageRecord paramMessageRecord, Bundle paramBundle)
@@ -185,23 +185,23 @@ public class BaseBubbleBuilderMenuRevokeProcessor
     if (!b(paramMessageRecord)) {
       return false;
     }
-    boolean bool = TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    boolean bool = TroopUtils.a(this.a, paramMessageRecord, this.a.getCurrentAccountUin());
     if ((!paramMessageRecord.isSend()) && (!bool)) {
       return false;
     }
-    if ((AnonymousChatHelper.a(paramMessageRecord)) && (!TroopAnonyRevokeConfProcessor.a().a)) {
+    if ((AnonymousChatHelper.c(paramMessageRecord)) && (!TroopAnonyRevokeConfProcessor.a().a)) {
       return false;
     }
-    if (UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) == 1032) {
+    if (UinTypeUtil.e(this.b.a) == 1032) {
       return false;
     }
-    paramBundle = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!paramBundle.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+    paramBundle = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((this.b.a == 0) && (!paramBundle.n(this.b.b))) {
       return false;
     }
     if (paramInt == 1)
     {
-      paramBundle = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      paramBundle = (HotChatManager)this.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       if ((paramBundle != null) && (paramBundle.b(paramMessageRecord.frienduin))) {
         return false;
       }
@@ -226,7 +226,7 @@ public class BaseBubbleBuilderMenuRevokeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuRevokeProcessor
  * JD-Core Version:    0.7.0.1
  */

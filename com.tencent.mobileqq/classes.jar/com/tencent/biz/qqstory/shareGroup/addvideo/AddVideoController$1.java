@@ -10,18 +10,18 @@ class AddVideoController$1
 {
   AddVideoController$1(AddVideoController paramAddVideoController, ActionSheet paramActionSheet, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.a.superDismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+      this.i.b(this.b, this.c, this.d, this.e, this.f, this.g, this.h);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+    this.i.a(this.b, this.c, this.d, this.e, this.f, true, this.g, this.h);
   }
 }
 

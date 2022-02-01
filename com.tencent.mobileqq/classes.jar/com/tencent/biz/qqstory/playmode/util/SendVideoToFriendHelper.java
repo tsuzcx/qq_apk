@@ -38,11 +38,11 @@ import mqq.os.MqqHandler;
 public class SendVideoToFriendHelper
   implements IEventReceiver
 {
-  private static SendVideoToFriendHelper jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilSendVideoToFriendHelper;
+  private static SendVideoToFriendHelper d;
   public Bundle a;
-  public StoryVideoItem a;
-  public String a;
-  private boolean jdField_a_of_type_Boolean = false;
+  public StoryVideoItem b;
+  public String c;
+  private boolean e = false;
   
   private SendVideoToFriendHelper()
   {
@@ -51,10 +51,10 @@ public class SendVideoToFriendHelper
   
   public static SendVideoToFriendHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilSendVideoToFriendHelper == null) {
-      jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilSendVideoToFriendHelper = new SendVideoToFriendHelper();
+    if (d == null) {
+      d = new SendVideoToFriendHelper();
     }
-    return jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilSendVideoToFriendHelper;
+    return d;
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, Intent paramIntent)
@@ -65,9 +65,9 @@ public class SendVideoToFriendHelper
       QLog.d("forward", 2, "handleForwardData");
     }
     Object localObject = ForwardUtils.a(paramIntent);
-    if ((((SessionInfo)localObject).jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(((SessionInfo)localObject).jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean))
+    if ((((SessionInfo)localObject).a == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(((SessionInfo)localObject).b, true).b))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131697407, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramQQAppInterface.getApp(), 2131895180, 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
       return false;
     }
     int j = paramIntent.getIntExtra("forward_type", 2147483647);
@@ -83,7 +83,7 @@ public class SendVideoToFriendHelper
     }
     paramIntent.removeExtra("forward_type");
     paramIntent.getStringExtra("forward_filepath");
-    if (((SessionInfo)localObject).jdField_a_of_type_Int == 9501) {
+    if (((SessionInfo)localObject).a == 9501) {
       return true;
     }
     if (paramIntent.getBooleanExtra("isFromFavorite", false)) {
@@ -105,7 +105,7 @@ public class SendVideoToFriendHelper
       }
     }
     localObject = SVBusiUtil.a(3, i);
-    ((ShortVideoReq)localObject).a(ShortVideoBusiManager.a(i, paramIntent, (ShortVideoReq)localObject));
+    ((ShortVideoReq)localObject).a(ShortVideoBusiManager.b(i, paramIntent, (ShortVideoReq)localObject));
     ShortVideoBusiManager.a((ShortVideoReq)localObject, paramQQAppInterface);
     return true;
   }
@@ -114,7 +114,7 @@ public class SendVideoToFriendHelper
   {
     if ((paramStoryVideoItem.mVideoWidth <= 0) || (paramStoryVideoItem.mVideoHeight <= 0))
     {
-      int[] arrayOfInt = MediaUtil.a(paramStoryVideoItem.mLocalVideoPath);
+      int[] arrayOfInt = MediaUtil.b(paramStoryVideoItem.mLocalVideoPath);
       if ((arrayOfInt[0] > 0) && (arrayOfInt[1] > 0))
       {
         paramStoryVideoItem.mVideoWidth = arrayOfInt[0];
@@ -124,14 +124,6 @@ public class SendVideoToFriendHelper
       }
       SLog.e("SendVideoToFriendHelper", "getVideoSize error, localPath:%s, width:%s, height:%s", new Object[] { paramStoryVideoItem.mLocalVideoPath, Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(Activity paramActivity, String paramString)
@@ -149,19 +141,19 @@ public class SendVideoToFriendHelper
       paramString = new Intent(paramActivity, ForwardRecentActivity.class);
       paramString.putExtras(localBundle);
       paramActivity.startActivity(paramString);
-      a();
+      c();
       return;
     }
     SLog.e("SendVideoToFriendHelper", "start forward activity failed.");
-    a();
+    c();
   }
   
   public void a(Activity paramActivity, String paramString, StoryVideoItem paramStoryVideoItem, int paramInt)
   {
     if ((paramActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramStoryVideoItem != null) && (paramInt > 0))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+      this.c = paramString;
+      this.b = paramStoryVideoItem;
       paramStoryVideoItem = new Bundle();
       paramStoryVideoItem.putInt("forward_type", 21);
       paramStoryVideoItem.putString("forward_thumb", paramString);
@@ -173,7 +165,7 @@ public class SendVideoToFriendHelper
       return;
     }
     SLog.e("SendVideoToFriendHelper", "start forward activity failed.");
-    a();
+    c();
   }
   
   public void a(Bundle paramBundle)
@@ -181,21 +173,21 @@ public class SendVideoToFriendHelper
     if (paramBundle == null)
     {
       SLog.e("SendVideoToFriendHelper", "start forward activity failed.");
-      a();
+      c();
       return;
     }
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    this.a = paramBundle;
+    a(this.b);
   }
   
   public void a(Bundle paramBundle, StoryVideoItem paramStoryVideoItem, String paramString1, String paramString2)
   {
     if ((paramBundle != null) && (paramStoryVideoItem != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      String str1 = MD5.a(paramString2);
-      String str2 = MD5.a(paramString1);
+      String str1 = MD5.b(paramString2);
+      String str2 = MD5.b(paramString1);
       paramBundle.putInt("forward_type", 21);
-      paramBundle.putString("from_uin", PlayModeUtils.a().getCurrentUin());
+      paramBundle.putString("from_uin", PlayModeUtils.b().getCurrentUin());
       paramBundle.putString("file_uuid", paramStoryVideoItem.mVid);
       paramBundle.putString("file_send_path", paramString2);
       paramBundle.putString("file_shortvideo_md5", str1);
@@ -215,33 +207,41 @@ public class SendVideoToFriendHelper
       paramString1 = AIOUtils.a(new Intent(BaseApplicationImpl.getContext(), SplashActivity.class), null);
       paramString1.putExtras(paramBundle);
       a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString1);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131713706), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, HardCodeUtil.a(2131911249), 0).show();
       StoryReportor.a("play_video", "suc_friend", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
-      a();
+      c();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131713705), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131911248), 0).show();
     SLog.e("SendVideoToFriendHelper", "send video to friend failed because data is not validate.");
-    a();
+    c();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     ThreadManager.post(new SendVideoToFriendHelper.3(this, paramStoryVideoItem), 10, null, false);
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, String paramString)
   {
-    a();
+    c();
     long l = System.currentTimeMillis();
     SLog.d("SendVideoToFriendHelper", "generateShareThumb start: %d.", new Object[] { Long.valueOf(l) });
     ThreadManager.post(new SendVideoToFriendHelper.1(this, l, paramStoryVideoItem, paramString), 10, null, false);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
+  }
+  
+  public void c()
+  {
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.e = false;
   }
   
   public boolean isValidate()
@@ -251,7 +251,7 @@ public class SendVideoToFriendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper
  * JD-Core Version:    0.7.0.1
  */

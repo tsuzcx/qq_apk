@@ -4,22 +4,20 @@ import android.util.SparseArray;
 
 public class ClearMemoryConfig
 {
-  public int a;
-  public SparseArray<ClearMemoryConfig.MemoryLevelInfo> a;
   public String a;
-  public boolean a;
-  public int b = 4;
+  public boolean b = true;
+  public int c;
+  public int d = 4;
+  public SparseArray<ClearMemoryConfig.MemoryLevelInfo> e = new SparseArray(3);
   
   public ClearMemoryConfig(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public ClearMemoryConfig.MemoryLevelInfo a(int paramInt)
   {
-    ClearMemoryConfig.MemoryLevelInfo localMemoryLevelInfo2 = (ClearMemoryConfig.MemoryLevelInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    ClearMemoryConfig.MemoryLevelInfo localMemoryLevelInfo2 = (ClearMemoryConfig.MemoryLevelInfo)this.e.get(paramInt);
     ClearMemoryConfig.MemoryLevelInfo localMemoryLevelInfo1 = localMemoryLevelInfo2;
     if (localMemoryLevelInfo2 == null)
     {
@@ -41,23 +39,23 @@ public class ClearMemoryConfig
   {
     StringBuilder localStringBuilder = new StringBuilder("ClearMemoryConfig{");
     localStringBuilder.append("DpcConfigId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isClearEnable=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", delay=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", clearStep=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", delay=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", clearStep=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", clearLevels=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidUtilSparseArray);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.ClearMemoryConfig
  * JD-Core Version:    0.7.0.1
  */

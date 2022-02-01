@@ -9,45 +9,45 @@ public class ArVideoResourceInfo
 {
   public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new ArVideoResourceInfo.1();
   public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public long b;
   public String c;
-  public int d;
   public String d;
   public String e;
+  public int f;
+  public int g;
+  public int h;
+  public String i;
+  public String j;
   
   public ArVideoResourceInfo() {}
   
   protected ArVideoResourceInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readLong();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
     this.e = paramParcel.readString();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readInt();
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readString();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 0;
+    return this.a == 0;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return this.a == 2;
   }
   
   public int describeContents()
@@ -57,21 +57,21 @@ public class ArVideoResourceInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeLong(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArVideoResourceInfo
  * JD-Core Version:    0.7.0.1
  */

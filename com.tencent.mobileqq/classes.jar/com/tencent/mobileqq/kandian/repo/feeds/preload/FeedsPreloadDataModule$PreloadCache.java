@@ -6,80 +6,80 @@ import java.util.List;
 
 public class FeedsPreloadDataModule$PreloadCache
 {
-  public int a;
   public ToServiceMsg a;
-  public String a;
-  public List<AbsBaseArticleInfo> a;
-  public boolean a;
-  public byte[] a;
   public int b;
-  public List<AbsBaseArticleInfo> b;
-  public boolean b;
+  public int c;
+  public List<AbsBaseArticleInfo> d;
+  public List<AbsBaseArticleInfo> e;
+  public boolean f;
+  public boolean g;
+  public byte[] h;
+  public String i;
   
   public PreloadCache a()
   {
     PreloadCache localPreloadCache = new PreloadCache();
-    localPreloadCache.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg).a(this.jdField_a_of_type_Int).b(this.jdField_b_of_type_Int).a(this.jdField_a_of_type_JavaUtilList).b(this.jdField_b_of_type_JavaUtilList).a(this.jdField_a_of_type_Boolean).b(this.jdField_b_of_type_Boolean).a(this.jdField_a_of_type_ArrayOfByte).a(this.jdField_a_of_type_JavaLangString);
+    localPreloadCache.a(this.a).a(this.b).b(this.c).a(this.d).b(this.e).a(this.f).b(this.g).a(this.h).a(this.i);
     return localPreloadCache;
   }
   
   public PreloadCache a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     return this;
   }
   
   public PreloadCache a(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.a = paramToServiceMsg;
     return this;
   }
   
   public PreloadCache a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
     return this;
   }
   
   public PreloadCache a(List<AbsBaseArticleInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
     return this;
   }
   
   public PreloadCache a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
   public PreloadCache a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.h = paramArrayOfByte;
     return this;
   }
   
   public PreloadCache b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
     return this;
   }
   
   public PreloadCache b(List<AbsBaseArticleInfo> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.e = paramList;
     return this;
   }
   
   public PreloadCache b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadDataModule.PreloadCache
  * JD-Core Version:    0.7.0.1
  */

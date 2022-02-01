@@ -35,8 +35,8 @@ public class VasFontSwitchProcessor
   public VasFontSwitchConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    FontManagerConstants.updateFontSwitch(paramArrayOfQConfItem[0].a);
-    a(localAppRuntime.getApp(), localAppRuntime.getCurrentUin(), "vas_font_switch_config", paramArrayOfQConfItem[0].a);
+    FontManagerConstants.updateFontSwitch(paramArrayOfQConfItem[0].b);
+    a(localAppRuntime.getApp(), localAppRuntime.getCurrentUin(), "vas_font_switch_config", paramArrayOfQConfItem[0].b);
     return new VasFontSwitchConfig();
   }
   
@@ -58,7 +58,7 @@ public class VasFontSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.VasFontSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,6 @@ import com.tencent.open.component.cache.database.DbCacheData.Structure;
 final class HttpCacheData$1
   implements DbCacheData.DbCreator<HttpCacheData>
 {
-  public int a()
-  {
-    return 1;
-  }
-  
   public HttpCacheData a(Cursor paramCursor)
   {
     try
@@ -37,19 +32,24 @@ final class HttpCacheData$1
     return null;
   }
   
-  public String a()
-  {
-    return null;
-  }
-  
   public DbCacheData.Structure[] a()
   {
     return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
   }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.HttpCacheData.1
  * JD-Core Version:    0.7.0.1
  */

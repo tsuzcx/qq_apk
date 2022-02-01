@@ -8,11 +8,6 @@ class AEOldShortVideoResManager$2$1
 {
   AEOldShortVideoResManager$2$1(AEOldShortVideoResManager.2 param2) {}
   
-  public void a()
-  {
-    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
-  }
-  
   public void a(String paramString1, int paramInt, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,10 +24,15 @@ class AEOldShortVideoResManager$2$1
       QuicResDownload.a = true;
     }
   }
+  
+  public void b()
+  {
+    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.2.1
  * JD-Core Version:    0.7.0.1
  */

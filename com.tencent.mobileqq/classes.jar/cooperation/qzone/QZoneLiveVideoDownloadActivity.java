@@ -75,8 +75,8 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717339);
-      QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131914812);
+      QQToast.makeText(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).show();
       return;
     }
     this.mPluginManager = paramPluginManagerClient;
@@ -93,8 +93,8 @@ public class QZoneLiveVideoDownloadActivity
       paramPluginManagerClient.append("[onPluginManagerLoaded] PluginBaseInfo is null, isReady=");
       paramPluginManagerClient.append(this.mPluginManager.isReady());
       QLog.w("QZoneLiveVideoDownloadActivity", 2, paramPluginManagerClient.toString());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717339);
-      QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131914812);
+      QQToast.makeText(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).show();
       return;
     }
     if (QZLog.isColorLevel())
@@ -162,7 +162,7 @@ public class QZoneLiveVideoDownloadActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -17,11 +17,11 @@ public final class UserActionEvent
   extends BaseReportEvent
 {
   @Nullable
-  private GlobalPublisherConfig jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
+  private GlobalPublisherConfig a;
   @Nullable
-  private PublishArticleInfo jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo;
+  private PublishArticleInfo b;
   @Nullable
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private JSONObject c;
   
   public UserActionEvent() {}
   
@@ -32,37 +32,37 @@ public final class UserActionEvent
     a(paramReportEventKey);
     a(paramReportEventPage);
     a(paramReportEventElement);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig = paramGlobalPublisherConfig;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo = paramPublishArticleInfo;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-  }
-  
-  @Nullable
-  public final GlobalPublisherConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
-  }
-  
-  @Nullable
-  public final PublishArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPublishArticleInfo;
-  }
-  
-  @Nullable
-  public final JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
+    this.a = paramGlobalPublisherConfig;
+    this.b = paramPublishArticleInfo;
+    this.c = paramJSONObject;
   }
   
   public final void a(@Nullable GlobalPublisherConfig paramGlobalPublisherConfig)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig = paramGlobalPublisherConfig;
+    this.a = paramGlobalPublisherConfig;
+  }
+  
+  @Nullable
+  public final GlobalPublisherConfig d()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public final PublishArticleInfo e()
+  {
+    return this.b;
+  }
+  
+  @Nullable
+  public final JSONObject f()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.UserActionEvent
  * JD-Core Version:    0.7.0.1
  */

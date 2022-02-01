@@ -34,40 +34,40 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class BaseTabbar
   extends LinearLayout
 {
-  private static int jdField_b_of_type_Int;
-  private static final int jdField_c_of_type_Int;
-  private static final int d;
-  private static final int e = 14;
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 1;
-  public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new BaseTabbar.1(this);
-  private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
+  private static int f;
+  private static final int i;
+  private static final int j;
+  private static final int k = 14;
+  private List<String> A = new ArrayList();
+  private Handler B = new BaseTabbar.1(this);
   public BaseTabbar.OnTabChangeListener a;
-  private List<BaseTabbar.TabHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean = true;
   public final Paint b;
-  private List<RelativeLayout> jdField_b_of_type_JavaUtilList = new ArrayList();
-  Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-  private List<String> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private int f = jdField_c_of_type_Int;
-  private int g = d;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
-  private int n = e;
-  private int o = -1;
-  private int p = -1;
+  public final Paint c;
+  int d = 1;
+  Paint e = new Paint();
+  private boolean g = true;
+  private AtomicBoolean h = new AtomicBoolean(false);
+  private int l = i;
+  private int m = j;
+  private int n;
+  private int o;
+  private int p;
+  private int q;
+  private int r;
+  private int s;
+  private int t = k;
+  private float u;
+  private int v = -1;
+  private int w = -1;
+  private LinearLayout.LayoutParams x;
+  private List<BaseTabbar.TabHolder> y = new ArrayList();
+  private List<RelativeLayout> z = new ArrayList();
   
   static
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_c_of_type_Int = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 40.0F + 0.5F);
-    d = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 4.0F + 0.5F);
+    i = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 40.0F + 0.5F);
+    j = (int)(localBaseApplication.getResources().getDisplayMetrics().density * 4.0F + 0.5F);
   }
   
   public BaseTabbar(Context paramContext)
@@ -78,25 +78,25 @@ public abstract class BaseTabbar
   public BaseTabbar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.h = paramContext.getResources().getColor(2131167064);
-    this.i = paramContext.getResources().getColor(2131167056);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.h);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
-    paramContext = this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
+    this.n = paramContext.getResources().getColor(2131168002);
+    this.o = paramContext.getResources().getColor(2131167993);
+    this.c = new Paint();
+    this.c.setColor(this.n);
+    this.x = new LinearLayout.LayoutParams(0, -1);
+    paramContext = this.x;
     paramContext.weight = 1.0F;
     paramContext.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130850760));
-    if (jdField_b_of_type_Int == 0) {
-      jdField_b_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
+    setBackgroundDrawable(getResources().getDrawable(2130852582));
+    if (f == 0) {
+      f = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-8355712);
-    int i1 = ViewUtils.a();
+    this.b = new Paint();
+    this.b.setColor(-8355712);
+    int i1 = ViewUtils.getScreenWidth();
     if (i1 > 480) {
-      this.jdField_a_of_type_Int = 1;
+      this.d = 1;
     } else {
-      this.jdField_a_of_type_Int = 2;
+      this.d = 2;
     }
     if (QLog.isColorLevel())
     {
@@ -104,7 +104,7 @@ public abstract class BaseTabbar
       paramContext.append("width:");
       paramContext.append(i1);
       paramContext.append("mode:");
-      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append(this.d);
       QLog.d("TabBarView", 2, paramContext.toString());
     }
   }
@@ -143,16 +143,16 @@ public abstract class BaseTabbar
     Object localObject = (AccessibilityManager)getContext().getSystemService("accessibility");
     if ((localObject != null) && (((AccessibilityManager)localObject).isEnabled()))
     {
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
+      int i2 = this.y.size();
       int i1 = 0;
       while (i1 < i2)
       {
-        localObject = ((BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView;
+        localObject = ((BaseTabbar.TabHolder)this.y.get(i1)).a;
         if (localObject != null)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(((RedDotTextView)localObject).getText());
-          localStringBuilder.append(getContext().getString(2131691115));
+          localStringBuilder.append(getContext().getString(2131888061));
           ((RedDotTextView)localObject).setContentDescription(localStringBuilder.toString());
         }
         i1 += 1;
@@ -162,15 +162,10 @@ public abstract class BaseTabbar
   
   private void b(int paramInt1, int paramInt2)
   {
-    BaseTabbar.OnTabChangeListener localOnTabChangeListener = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$OnTabChangeListener;
+    BaseTabbar.OnTabChangeListener localOnTabChangeListener = this.a;
     if (localOnTabChangeListener != null) {
       localOnTabChangeListener.a(paramInt1, paramInt2);
     }
-  }
-  
-  public int a()
-  {
-    return this.p;
   }
   
   public BaseTabbar.TabHolder a(int paramInt, String paramString)
@@ -181,35 +176,35 @@ public abstract class BaseTabbar
       if (!a(paramInt)) {
         localRelativeLayout.setVisibility(8);
       }
-      Object localObject = LayoutInflater.from(getContext()).inflate(2131560101, localRelativeLayout, true);
+      Object localObject = LayoutInflater.from(getContext()).inflate(2131626148, localRelativeLayout, true);
       BaseTabbar.TabHolder localTabHolder = new BaseTabbar.TabHolder();
-      localTabHolder.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131378219);
-      localTabHolder.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView = ((RedDotTextView)((View)localObject).findViewById(2131378460));
-      localTabHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131376320));
-      localTabHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131372042));
-      localTabHolder.b = ((ImageView)((View)localObject).findViewById(2131368461));
-      localTabHolder.c = ((ImageView)((View)localObject).findViewById(2131377645));
-      localObject = localTabHolder.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView;
+      localTabHolder.d = ((View)localObject).findViewById(2131446737);
+      localTabHolder.a = ((RedDotTextView)((View)localObject).findViewById(2131447062));
+      localTabHolder.b = ((ImageView)((View)localObject).findViewById(2131444531));
+      localTabHolder.c = ((TextView)((View)localObject).findViewById(2131439505));
+      localTabHolder.e = ((ImageView)((View)localObject).findViewById(2131435357));
+      localTabHolder.f = ((ImageView)((View)localObject).findViewById(2131446057));
+      localObject = localTabHolder.a;
       ((RedDotTextView)localObject).setText(paramString);
-      ((RedDotTextView)localObject).setTextSize(2, this.n);
-      ((RedDotTextView)localObject).setTextColor(this.i);
-      ((RedDotTextView)localObject).setPadding(this.j, this.l, this.k, this.m);
+      ((RedDotTextView)localObject).setTextSize(2, this.t);
+      ((RedDotTextView)localObject).setTextColor(this.o);
+      ((RedDotTextView)localObject).setPadding(this.p, this.r, this.q, this.s);
       ((RedDotTextView)localObject).setSingleLine();
       ((RedDotTextView)localObject).setFocusable(true);
       ((RedDotTextView)localObject).setContentDescription(paramString);
       ((RedDotTextView)localObject).setGravity(17);
-      localTabHolder.b.setContentDescription(paramString);
-      int i1 = this.jdField_a_of_type_Int;
+      localTabHolder.e.setContentDescription(paramString);
+      int i1 = this.d;
       if (i1 == 1) {
-        localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, FontSettingManager.systemMetrics.density * 10.0F);
+        localTabHolder.c.setTextSize(0, FontSettingManager.systemMetrics.density * 10.0F);
       } else if (i1 == 2) {
-        localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, FontSettingManager.systemMetrics.density * 7.0F);
+        localTabHolder.c.setTextSize(0, FontSettingManager.systemMetrics.density * 7.0F);
       }
       ViewCompat.setAccessibilityDelegate((View)localObject, new BaseTabbar.2(this));
-      this.jdField_a_of_type_JavaUtilList.add(localTabHolder);
-      this.jdField_b_of_type_JavaUtilList.add(localRelativeLayout);
-      this.jdField_c_of_type_JavaUtilList.add(paramString);
-      if (this.jdField_a_of_type_JavaUtilList.size() == 2) {
+      this.y.add(localTabHolder);
+      this.z.add(localRelativeLayout);
+      this.A.add(paramString);
+      if (this.y.size() == 2) {
         setGravity(1);
       } else {
         setGravity(8388627);
@@ -226,37 +221,24 @@ public abstract class BaseTabbar
     throw new IllegalArgumentException("position is not legal, please check!");
   }
   
-  public void a(int paramInt)
-  {
-    if (paramInt >= 0)
-    {
-      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-        return;
-      }
-      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      localTabHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.y;
     if (localObject == null) {
       return;
     }
     if ((paramInt1 >= 0) && (paramInt1 < ((List)localObject).size()))
     {
-      localObject = (BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+      localObject = (BaseTabbar.TabHolder)this.y.get(paramInt1);
       if (localObject != null) {
-        ((BaseTabbar.TabHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(this.i);
+        ((BaseTabbar.TabHolder)localObject).a.setTextColor(this.o);
       }
     }
-    if ((paramInt2 >= 0) && (paramInt2 < this.jdField_a_of_type_JavaUtilList.size()))
+    if ((paramInt2 >= 0) && (paramInt2 < this.y.size()))
     {
-      localObject = (BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+      localObject = (BaseTabbar.TabHolder)this.y.get(paramInt2);
       if (localObject != null) {
-        ((BaseTabbar.TabHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(this.h);
+        ((BaseTabbar.TabHolder)localObject).a.setTextColor(this.n);
       }
     }
   }
@@ -265,107 +247,130 @@ public abstract class BaseTabbar
   {
     if (paramInt1 >= 0)
     {
-      if (paramInt1 >= this.jdField_a_of_type_JavaUtilList.size()) {
+      if (paramInt1 >= this.y.size()) {
         return;
       }
-      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.y.get(paramInt1);
       if (paramInt2 == 0)
       {
-        localTabHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        localTabHolder.b.setVisibility(8);
+        localTabHolder.c.setVisibility(8);
         return;
       }
       if (paramBoolean)
       {
         if (paramInt2 > 99)
         {
-          TextView localTextView = localTabHolder.jdField_a_of_type_AndroidWidgetTextView;
+          TextView localTextView = localTabHolder.c;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(String.valueOf(99));
           localStringBuilder.append("+");
           localTextView.setText(localStringBuilder.toString());
-          if (this.jdField_a_of_type_Int == 1) {
-            localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, FontSettingManager.systemMetrics.density * 8.5F);
+          if (this.d == 1) {
+            localTabHolder.c.setTextSize(0, FontSettingManager.systemMetrics.density * 8.5F);
           }
         }
         else
         {
-          localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt2));
-          if (this.jdField_a_of_type_Int == 1) {
-            localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, FontSettingManager.systemMetrics.density * 10.0F);
+          localTabHolder.c.setText(String.valueOf(paramInt2));
+          if (this.d == 1) {
+            localTabHolder.c.setTextSize(0, FontSettingManager.systemMetrics.density * 10.0F);
           }
         }
-        localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        localTabHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localTabHolder.c.setVisibility(0);
+        localTabHolder.b.setVisibility(8);
         return;
       }
-      localTabHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localTabHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localTabHolder.b.setVisibility(0);
+      localTabHolder.c.setVisibility(8);
     }
   }
   
   protected abstract boolean a(int paramInt);
   
+  public void b(int paramInt)
+  {
+    if (paramInt >= 0)
+    {
+      if (paramInt >= this.y.size()) {
+        return;
+      }
+      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.y.get(paramInt);
+      localTabHolder.c.setVisibility(8);
+      localTabHolder.b.setVisibility(8);
+    }
+  }
+  
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    View localView1 = getChildAt(this.p);
-    View localView2 = getChildAt(this.o);
+    View localView1 = getChildAt(this.w);
+    View localView2 = getChildAt(this.v);
     if (localView1 != null)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(this.n * getContext().getResources().getDisplayMetrics().density + 0.5F);
+      this.e.setTextSize(this.t * getContext().getResources().getDisplayMetrics().density + 0.5F);
       int i3 = localView1.getLeft();
       int i2 = localView1.getRight();
-      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.jdField_a_of_type_JavaUtilList.get(this.p);
+      BaseTabbar.TabHolder localTabHolder = (BaseTabbar.TabHolder)this.y.get(this.w);
       int i1 = i2;
       if (localTabHolder.a())
       {
         i1 = i2;
-        if (this.jdField_a_of_type_Float > 0.0F)
+        if (this.u > 0.0F)
         {
           boolean bool;
-          if (this.p < this.o) {
+          if (this.w < this.v) {
             bool = true;
           } else {
             bool = false;
           }
-          i2 = (int)(localView1.getLeft() + a(this.jdField_a_of_type_Float, bool) * (localView2.getLeft() - localView1.getLeft()));
-          i1 = (int)(localView1.getRight() + a(this.jdField_a_of_type_Float, bool ^ true) * (localView2.getRight() - localView1.getRight()));
+          i2 = (int)(localView1.getLeft() + a(this.u, bool) * (localView2.getLeft() - localView1.getLeft()));
+          i1 = (int)(localView1.getRight() + a(this.u, bool ^ true) * (localView2.getRight() - localView1.getRight()));
           i3 = i2;
         }
-        paramCanvas.drawRect(i3, getHeight() - this.g, i1, getHeight(), this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRect(i3, getHeight() - this.m, i1, getHeight(), this.c);
       }
       i2 = (localView2.getLeft() + localView2.getRight()) / 2;
-      i3 = localTabHolder.jdField_a_of_type_AndroidViewView.getTop();
-      int i4 = localTabHolder.jdField_a_of_type_AndroidViewView.getBottom();
+      i3 = localTabHolder.d.getTop();
+      int i4 = localTabHolder.d.getBottom();
       int i5 = (i3 + i4) / 2;
       float f1 = (localView2.getRight() - localView2.getLeft()) / 2;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)((1.0F - this.jdField_a_of_type_Float) * 96.0F));
+      this.b.setAlpha((int)((1.0F - this.u) * 96.0F));
       paramCanvas.clipRect(0, i3, i1, i4);
-      paramCanvas.drawCircle(i2, i5, f1 * 1.2F * this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(i2, i5, f1 * 1.2F * this.u, this.b);
     }
+  }
+  
+  public int getSelectedTabIndex()
+  {
+    return this.w;
+  }
+  
+  public int getTabHeight()
+  {
+    return this.l;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.f, 1073741824));
-    setMeasuredDimension(getMeasuredWidth(), this.f);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.l, 1073741824));
+    setMeasuredDimension(getMeasuredWidth(), this.l);
   }
   
   public void setEnableRepeatedClick(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void setOnTabChangeListener(BaseTabbar.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$OnTabChangeListener = paramOnTabChangeListener;
+    this.a = paramOnTabChangeListener;
   }
   
   public void setSelectColor(int paramInt)
   {
-    this.h = paramInt;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.h);
+    this.n = paramInt;
+    this.c.setColor(this.n);
     invalidate();
   }
   
@@ -381,40 +386,40 @@ public abstract class BaseTabbar
   
   public void setTabHeight(int paramInt)
   {
-    this.f = paramInt;
+    this.l = paramInt;
   }
   
   public void setTabLayoutParams(LinearLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = paramLayoutParams;
+    this.x = paramLayoutParams;
   }
   
   public void setTabTextSize(int paramInt)
   {
-    this.n = paramInt;
+    this.t = paramInt;
   }
   
   public void setTextPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.j = paramInt1;
-    this.l = paramInt2;
-    this.k = paramInt3;
-    this.m = paramInt4;
+    this.p = paramInt1;
+    this.r = paramInt2;
+    this.q = paramInt3;
+    this.s = paramInt4;
   }
   
   public void setUnderLineHeight(int paramInt)
   {
-    this.g = paramInt;
+    this.m = paramInt;
   }
   
   public void setUnselectColor(int paramInt)
   {
-    this.i = paramInt;
+    this.o = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BaseTabbar
  * JD-Core Version:    0.7.0.1
  */

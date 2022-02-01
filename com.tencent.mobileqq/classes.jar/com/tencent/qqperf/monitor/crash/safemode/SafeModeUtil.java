@@ -18,12 +18,12 @@ import mqq.os.MqqHandler;
 
 public class SafeModeUtil
 {
-  private static final int jdField_a_of_type_Int;
   public static long a;
-  private static final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
-  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static boolean jdField_a_of_type_Boolean = false;
-  public static long b;
+  public static long b = -1L;
+  private static final int c;
+  private static final AtomicBoolean d;
+  private static final CountDownLatch e;
+  private static boolean f = false;
   
   static
   {
@@ -33,20 +33,19 @@ public class SafeModeUtil
     } else {
       i = 15;
     }
-    jdField_a_of_type_Int = i;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(2);
-    b = -1L;
+    c = i;
+    d = new AtomicBoolean(false);
+    e = new CountDownLatch(2);
   }
   
   public static void a()
   {
-    QConfigJourney.a().c();
+    QConfigJourney.a().d();
   }
   
   public static void a(Context paramContext, int paramInt)
   {
-    if ((QQCrashReportManager.c) && (paramContext.getSharedPreferences("pref_safemode_not_exit", 4).getBoolean("key_not_exit_enable", false))) {
+    if ((QQCrashReportManager.i) && (paramContext.getSharedPreferences("pref_safemode_not_exit", 4).getBoolean("key_not_exit_enable", false))) {
       return;
     }
     Object localObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
@@ -59,23 +58,23 @@ public class SafeModeUtil
       if (paramInt > 0)
       {
         ((SharedPreferences)localObject).edit().putInt("key_count_start_fail", 0).commit();
-        if ((a()) && (paramInt > 3))
+        if ((f()) && (paramInt > 3))
         {
           paramContext = StatisticCollector.getInstance(paramContext);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("exitSafeModeStart_");
-          ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(c);
           paramContext.collectPerformance("", ((StringBuilder)localObject).toString(), true, 0L, 0L, null, null);
         }
       }
-      QConfigJourney.a().b();
+      QConfigJourney.a().c();
       return;
     }
     paramInt = ((SharedPreferences)localObject).getInt("key_count_crash", 0);
     if (paramInt > 0)
     {
       ((SharedPreferences)localObject).edit().putInt("key_count_crash", 0).commit();
-      if ((a()) && (paramInt > 3)) {
+      if ((f()) && (paramInt > 3)) {
         StatisticCollector.getInstance(paramContext).collectPerformance("", "exitSafeModeCrash", true, 0L, 0L, null, null);
       }
     }
@@ -83,22 +82,22 @@ public class SafeModeUtil
   
   public static void a(Context paramContext, Object paramObject)
   {
-    if ((paramObject != null) && (paramObject.toString().contains("Activity")) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    if ((paramObject != null) && (paramObject.toString().contains("Activity")) && (d.compareAndSet(false, true)))
     {
       paramObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
       int i = paramObject.getInt("key_count_start_fail", 0);
-      if ((i > 3) && (a()))
+      if ((i > 3) && (f()))
       {
         StatisticCollector localStatisticCollector = StatisticCollector.getInstance(paramContext);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("enterSafeModeStart_");
-        localStringBuilder.append(jdField_a_of_type_Int);
+        localStringBuilder.append(c);
         localStatisticCollector.collectPerformance("", localStringBuilder.toString(), true, 0L, 0L, null, null);
       }
-      QConfigJourney.a().jdField_a_of_type_Boolean = true;
+      QConfigJourney.a().a = true;
       QConfigJourney.a().b = true;
       paramObject.edit().putInt("key_count_start_fail", i + 1).commit();
-      ThreadManager.getSubThreadHandler().postDelayed(new SafeModeUtil.1(paramContext), jdField_a_of_type_Int * 1000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new SafeModeUtil.1(paramContext), c * 1000L);
     }
   }
   
@@ -118,7 +117,7 @@ public class SafeModeUtil
       }
       else if (i <= 3)
       {
-        if ((i == 3) && (a())) {
+        if ((i == 3) && (f())) {
           StatisticCollector.getInstance(paramContext).collectPerformance("", "enterSafeModeCrash", true, 0L, 0L, null, null);
         }
         QConfigJourney.a().a(false);
@@ -136,11 +135,6 @@ public class SafeModeUtil
   }
   
   public static void a(String paramString) {}
-  
-  private static boolean a()
-  {
-    return true;
-  }
   
   public static boolean a(Context paramContext)
   {
@@ -176,7 +170,7 @@ public class SafeModeUtil
         Object localObject2 = ((SharedPreferences)localObject1).getString("key_not_exit_crash_type", null);
         localObject1 = ((SharedPreferences)localObject1).getString("key_not_exit_crash_stack", null);
         if ((localObject2 == null) || (TextUtils.isEmpty(paramString1))) {
-          break label304;
+          break label306;
         }
         localObject2 = ((String)localObject2).split("\\|");
         int m = localObject2.length;
@@ -187,11 +181,11 @@ public class SafeModeUtil
         {
           Object localObject3 = localObject2[k];
           if (!paramString1.equals(localObject3)) {
-            break label295;
+            break label297;
           }
           QLog.e("SafeModeUtil", 1, new Object[] { "crashType = ", paramString1, ",crash = ", localObject3 });
           i = 1;
-          break label295;
+          break label297;
         }
         if ((localObject1 != null) && (!TextUtils.isEmpty(paramString2)))
         {
@@ -223,10 +217,10 @@ public class SafeModeUtil
         QLog.e("SafeModeUtil", 1, "isNotExitSafeMode has some error", paramString1);
       }
       return false;
-      label295:
+      label297:
       k += 1;
       continue;
-      label304:
+      label306:
       int j = 0;
     }
   }
@@ -235,7 +229,7 @@ public class SafeModeUtil
   {
     try
     {
-      jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await(10000L, TimeUnit.MILLISECONDS);
+      e.await(10000L, TimeUnit.MILLISECONDS);
       return;
     }
     catch (InterruptedException localInterruptedException) {}
@@ -243,16 +237,21 @@ public class SafeModeUtil
   
   public static void c()
   {
-    jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    e.countDown();
   }
   
   public static void d() {}
   
   public static void e() {}
+  
+  private static boolean f()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.safemode.SafeModeUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ class TroopGiftManager$3
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)) {}
+    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.b != null)) {}
     for (;;)
     {
       try
@@ -58,7 +58,7 @@ class TroopGiftManager$3
               {
                 localObject2 = (oidb_0x6c3.StockItem)((List)localObject1).get(paramInt);
                 TroopGiftManager.GiveGift localGiveGift = new TroopGiftManager.GiveGift();
-                localGiveGift.jdField_a_of_type_Int = ((oidb_0x6c3.StockItem)localObject2).int32_productid.get();
+                localGiveGift.a = ((oidb_0x6c3.StockItem)localObject2).int32_productid.get();
                 localGiveGift.b = ((oidb_0x6c3.StockItem)localObject2).int32_amount.get();
                 localGiveGift.c = ((oidb_0x6c3.StockItem)localObject2).int32_free_limit_chance.get();
                 paramBundle.add(localGiveGift);
@@ -67,7 +67,7 @@ class TroopGiftManager$3
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte.int32_count.get(), paramArrayOfByte.int32_give_count.get(), paramArrayOfByte.bytes_give_info.get().toStringUtf8(), paramBundle);
+          this.b.a(paramArrayOfByte.int32_count.get(), paramArrayOfByte.int32_give_count.get(), paramArrayOfByte.bytes_give_info.get().toStringUtf8(), paramBundle);
           paramBundle = new SparseArray();
           if (paramArrayOfByte.msg_imgshow_config.has())
           {
@@ -77,26 +77,26 @@ class TroopGiftManager$3
             {
               localObject1 = (oidb_0x6c3.ImgShowItem)paramArrayOfByte.msg_imgshow_config.msg_imgshow_item.get(paramInt);
               localObject2 = new TroopGiftManager.ShowPicPrice();
-              ((TroopGiftManager.ShowPicPrice)localObject2).jdField_a_of_type_Int = ((oidb_0x6c3.ImgShowItem)localObject1).uint32_price.get();
-              ((TroopGiftManager.ShowPicPrice)localObject2).jdField_a_of_type_JavaLangString = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_wording.get().toStringUtf8();
-              ((TroopGiftManager.ShowPicPrice)localObject2).b = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_cut_wording.get().toStringUtf8();
+              ((TroopGiftManager.ShowPicPrice)localObject2).a = ((oidb_0x6c3.ImgShowItem)localObject1).uint32_price.get();
+              ((TroopGiftManager.ShowPicPrice)localObject2).b = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_wording.get().toStringUtf8();
+              ((TroopGiftManager.ShowPicPrice)localObject2).c = ((oidb_0x6c3.ImgShowItem)localObject1).bytes_cut_wording.get().toStringUtf8();
               paramBundle.put(((oidb_0x6c3.ImgShowItem)localObject1).uint32_productid.get(), localObject2);
               paramInt += 1;
               continue;
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle);
+          this.b.a(paramBundle);
           return;
           if (((oidb_0x6c3.RspBody)localObject1).msg_extra_data.has())
           {
             paramArrayOfByte = (oidb_0x6c3.GetExtraDataRsp)((oidb_0x6c3.RspBody)localObject1).msg_extra_data.get();
-            paramBundle = TroopGiftAioPanelData.a(((oidb_0x6c3.RspBody)localObject1).exclusive_gift_list.get());
+            paramBundle = TroopGiftAioPanelData.b(((oidb_0x6c3.RspBody)localObject1).exclusive_gift_list.get());
             paramInt = ((oidb_0x6c3.RspBody)localObject1).msg_extra_data.int32_version_seq.get();
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt);
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt, paramBundle);
+            this.b.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt);
+            this.b.a(paramArrayOfByte.bytes_shop_config.get().toStringUtf8(), paramInt, paramBundle);
             return;
           }
-          paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+          paramArrayOfByte = this.b;
           paramBundle = new StringBuilder();
           paramBundle.append("Invalid RspData. subCmd:");
           paramBundle.append(paramInt);
@@ -104,7 +104,7 @@ class TroopGiftManager$3
           return;
         }
         paramArrayOfByte = ((oidb_0x6c3.RspBody)localObject1).bytes_msg.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramArrayOfByte);
+        this.b.a(paramInt, paramArrayOfByte);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -116,7 +116,7 @@ class TroopGiftManager$3
           paramBundle.append(paramArrayOfByte);
           QLog.i(".troop.send_gift", 2, paramBundle.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
+        this.b.a(-1, "InvalidProtocolBufferMicroException");
         return;
       }
       if (QLog.isColorLevel())
@@ -127,10 +127,10 @@ class TroopGiftManager$3
         paramBundle.append(" data=");
         paramBundle.append(paramArrayOfByte);
         paramBundle.append(" callback=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
+        paramBundle.append(this.b);
         QLog.i(".troop.send_gift", 2, paramBundle.toString());
       }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+      paramArrayOfByte = this.b;
       if (paramArrayOfByte != null) {
         paramArrayOfByte.a(paramInt, "sso request error or callback is null.");
       }
@@ -144,7 +144,7 @@ class TroopGiftManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.3
  * JD-Core Version:    0.7.0.1
  */

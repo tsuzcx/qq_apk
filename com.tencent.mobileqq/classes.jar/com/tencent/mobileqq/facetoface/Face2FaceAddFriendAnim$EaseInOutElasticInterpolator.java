@@ -37,7 +37,7 @@ class Face2FaceAddFriendAnim$EaseInOutElasticInterpolator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim.EaseInOutElasticInterpolator
  * JD-Core Version:    0.7.0.1
  */

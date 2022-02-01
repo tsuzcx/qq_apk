@@ -45,10 +45,10 @@ class QRDisplayActivity$30
             }
             else
             {
-              if (QFileAssistantUtils.a())
+              if (QFileAssistantUtils.b())
               {
                 paramActionSheetItem = this.a;
-                QRDisplayActivity.a(paramActionSheetItem, 0, QFileAssistantUtils.a(paramActionSheetItem.app));
+                QRDisplayActivity.a(paramActionSheetItem, 0, QFileAssistantUtils.b(paramActionSheetItem.app));
                 return;
               }
               QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
@@ -57,28 +57,28 @@ class QRDisplayActivity$30
           else
           {
             paramActionSheetItem = this.a;
-            paramActionSheetItem.i = 3;
-            QRDisplayActivity.a(paramActionSheetItem);
+            paramActionSheetItem.aN = 3;
+            QRDisplayActivity.c(paramActionSheetItem);
           }
         }
         else
         {
           paramActionSheetItem = this.a;
-          paramActionSheetItem.i = 2;
-          QRDisplayActivity.a(paramActionSheetItem);
+          paramActionSheetItem.aN = 2;
+          QRDisplayActivity.c(paramActionSheetItem);
         }
       }
       else
       {
         paramActionSheetItem = this.a;
-        paramActionSheetItem.i = 1;
-        QRDisplayActivity.a(paramActionSheetItem);
+        paramActionSheetItem.aN = 1;
+        QRDisplayActivity.c(paramActionSheetItem);
         return;
       }
     }
     paramActionSheetItem = this.a;
-    paramActionSheetItem.i = 0;
-    QRDisplayActivity.a(paramActionSheetItem);
+    paramActionSheetItem.aN = 0;
+    QRDisplayActivity.c(paramActionSheetItem);
   }
 }
 

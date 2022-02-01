@@ -15,10 +15,10 @@ import org.json.JSONObject;
 public class WeizhengquanJsPlugin
   extends JsWebViewPlugin
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  String jdField_a_of_type_JavaLangString = "";
-  private final String b = "getPayAdInfo";
-  private final String c = "pushMusicInfo";
+  Activity a;
+  String b = "";
+  private final String c = "getPayAdInfo";
+  private final String d = "pushMusicInfo";
   
   private String a(String... paramVarArgs)
   {
@@ -30,7 +30,7 @@ public class WeizhengquanJsPlugin
       QLog.i("WeizhengquanJsPlugin", 2, localStringBuilder.toString());
       try
       {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramVarArgs[0]).optString("callback");
+        this.b = new JSONObject(paramVarArgs[0]).optString("callback");
       }
       catch (JSONException paramVarArgs)
       {
@@ -38,9 +38,9 @@ public class WeizhengquanJsPlugin
       }
       paramVarArgs = new StringBuilder();
       paramVarArgs.append("parameter callback = ");
-      paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+      paramVarArgs.append(this.b);
       QLog.i("WeizhengquanJsPlugin", 2, paramVarArgs.toString());
-      return this.jdField_a_of_type_JavaLangString;
+      return this.b;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("parameter error...");
@@ -54,15 +54,15 @@ public class WeizhengquanJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("WeizhengquanJsPlugin", 2, "prosGetPayAdInfo...");
     }
-    if (!(this.mRuntime.a() instanceof QwJsInterface))
+    if (!(this.mRuntime.b() instanceof QwJsInterface))
     {
       paramJsBridgeListener = new StringBuilder();
       paramJsBridgeListener.append("activity error : ");
-      paramJsBridgeListener.append(this.jdField_a_of_type_AndroidAppActivity);
+      paramJsBridgeListener.append(this.a);
       QLog.i("WeizhengquanJsPlugin", 2, paramJsBridgeListener.toString());
       return;
     }
-    int i = ((QwJsInterface)this.mRuntime.a()).a();
+    int i = ((QwJsInterface)this.mRuntime.b()).b();
     paramJsBridgeListener = new StringBuilder();
     paramJsBridgeListener.append("bzCode = ");
     paramJsBridgeListener.append(i);
@@ -70,7 +70,7 @@ public class WeizhengquanJsPlugin
     if (1 != i) {
       return;
     }
-    paramVarArgs = (Bundle)((QwJsInterface)this.mRuntime.a()).b();
+    paramVarArgs = (Bundle)((QwJsInterface)this.mRuntime.b()).d();
     if (paramVarArgs == null)
     {
       QLog.i("WeizhengquanJsPlugin", 2, "error bundle is null...");
@@ -100,11 +100,11 @@ public class WeizhengquanJsPlugin
       paramVarArgs.put("display", localJSONObject);
       paramVarArgs.put("paySuccJsonData", paramJsBridgeListener);
       paramJsBridgeListener = new StringBuilder();
-      paramJsBridgeListener.append(this.jdField_a_of_type_JavaLangString);
+      paramJsBridgeListener.append(this.b);
       paramJsBridgeListener.append(" => ");
       paramJsBridgeListener.append(paramVarArgs);
       QLog.i("WeizhengquanJsPlugin", 2, paramJsBridgeListener.toString());
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramVarArgs.toString() });
+      callJs(this.b, new String[] { paramVarArgs.toString() });
       return;
     }
     catch (JSONException paramJsBridgeListener)
@@ -128,7 +128,7 @@ public class WeizhengquanJsPlugin
       paramJsBridgeListener = new JSONObject();
       paramJsBridgeListener.put("ret_code", "0");
       paramJsBridgeListener.put("ret_msg", "success");
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramJsBridgeListener.toString() });
+      callJs(this.b, new String[] { paramJsBridgeListener.toString() });
     }
     catch (JSONException paramJsBridgeListener)
     {
@@ -136,8 +136,8 @@ public class WeizhengquanJsPlugin
     }
     paramJsBridgeListener = new Intent();
     paramJsBridgeListener.putExtra("h5arg", paramVarArgs[0]);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramJsBridgeListener);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.a.setResult(-1, paramJsBridgeListener);
+    this.a.finish();
   }
   
   protected String getNameSpace()
@@ -160,8 +160,8 @@ public class WeizhengquanJsPlugin
     if (!getNameSpace().equals(paramString2)) {
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = a(paramVarArgs);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.b = a(paramVarArgs);
+    if (TextUtils.isEmpty(this.b))
     {
       QLog.d("WeizhengquanJsPlugin", 2, "function name is null...");
       return true;
@@ -181,12 +181,12 @@ public class WeizhengquanJsPlugin
   
   public void onCreate()
   {
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    this.a = this.mRuntime.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WeizhengquanJsPlugin
  * JD-Core Version:    0.7.0.1
  */

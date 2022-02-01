@@ -29,29 +29,29 @@ class SubscribePersonalDetailFragment$2
       {
         SLog.c("SubscribePersonalDetail", "sendRequest GetMainPage success");
         SubscribePersonalDetailFragment.a(this.a, paramStGetMainPageRsp);
-        if ((this.a.a != null) && (SubscribePersonalDetailFragment.a(this.a).user != null)) {
-          this.a.a.poster.set(SubscribePersonalDetailFragment.a(this.a).user.get());
+        if ((this.a.a != null) && (SubscribePersonalDetailFragment.c(this.a).user != null)) {
+          this.a.a.poster.set(SubscribePersonalDetailFragment.c(this.a).user.get());
         }
         SubscribeGlobalInfo.a(paramStGetMainPageRsp);
         SubscribePersonalDetailFragment.a(this.a, paramString);
-        SubscribePersonalDetailFragment.a(this.a);
-        SubscribePersonalDetailFragment.a(this.a).d(true);
+        SubscribePersonalDetailFragment.d(this.a);
+        SubscribePersonalDetailFragment.e(this.a).d(true);
         if (paramStGetMainPageRsp.user.type.get() == 0) {
           VSReporter.b(paramStGetMainPageRsp.user.id.get(), "auth_person", "user_exp", 0, 0, new String[0]);
         }
       }
-      VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
+      VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - SubscribePersonalDetailFragment.f(this.a)));
       return;
     }
     SLog.c("SubscribePersonalDetail", "sendRequest GetMainPage error");
     paramBaseRequest = paramString;
     if (!TextUtils.isEmpty(paramString)) {
-      paramBaseRequest = HardCodeUtil.a(2131714444);
+      paramBaseRequest = HardCodeUtil.a(2131911954);
     }
     if (this.a.getBaseActivity() != null) {
-      QQToast.a(this.a.getBaseActivity(), paramBaseRequest, 0).a();
+      QQToast.makeText(this.a.getBaseActivity(), paramBaseRequest, 0).show();
     }
-    VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
+    VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.f(this.a)));
   }
 }
 

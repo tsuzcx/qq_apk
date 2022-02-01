@@ -37,14 +37,14 @@ public class VipImageUploadManager
     if (!UploadServiceBuilder.getInstance().isInitialized()) {
       b(paramQQAppInterface, paramVipUploadConfigImpl);
     }
-    paramVipBaseUploadTask.a();
+    paramVipBaseUploadTask.c();
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.task.VipImageUploadManager
  * JD-Core Version:    0.7.0.1
  */

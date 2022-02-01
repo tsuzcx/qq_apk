@@ -8,9 +8,9 @@ public class QVipPrettyAccountProcessor
   extends BaseQVipConfigProcessor<QVipPrettyAccountConfig>
 {
   @NonNull
-  public static QVipPrettyAccountConfig c()
+  public static QVipPrettyAccountConfig e()
   {
-    QVipPrettyAccountConfig localQVipPrettyAccountConfig2 = (QVipPrettyAccountConfig)QConfigManager.a().a(665);
+    QVipPrettyAccountConfig localQVipPrettyAccountConfig2 = (QVipPrettyAccountConfig)QConfigManager.b().b(665);
     QVipPrettyAccountConfig localQVipPrettyAccountConfig1 = localQVipPrettyAccountConfig2;
     if (localQVipPrettyAccountConfig2 == null) {
       localQVipPrettyAccountConfig1 = new QVipPrettyAccountConfig();
@@ -27,7 +27,7 @@ public class QVipPrettyAccountProcessor
   @NonNull
   public QVipPrettyAccountConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    return QVipPrettyAccountConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipPrettyAccountConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -48,7 +48,7 @@ public class QVipPrettyAccountProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipPrettyAccountProcessor
  * JD-Core Version:    0.7.0.1
  */

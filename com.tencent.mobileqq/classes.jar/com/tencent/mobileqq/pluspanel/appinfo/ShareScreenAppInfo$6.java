@@ -1,30 +1,39 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import com.tencent.av.ReqGroupVideo.ReqScreenShareAsk;
-import com.tencent.av.ReqGroupVideo.RspScreenShareAsk;
-import com.tencent.av.business.handler.MessageHandler;
-import com.tencent.av.business.handler.MessageHandler.MsgListener;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.av.screenshare.ScreenShareReportHelper;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class ShareScreenAppInfo$6
-  extends MessageHandler.MsgListener<ReqGroupVideo.ReqScreenShareAsk, ReqGroupVideo.RspScreenShareAsk>
+  implements ActionSheet.OnButtonClickListener
 {
-  ShareScreenAppInfo$6(ShareScreenAppInfo paramShareScreenAppInfo) {}
+  ShareScreenAppInfo$6(ShareScreenAppInfo paramShareScreenAppInfo, PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, ActionSheet paramActionSheet) {}
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqScreenShareAsk paramReqScreenShareAsk, ReqGroupVideo.RspScreenShareAsk paramRspScreenShareAsk, Object paramObject)
+  public void onClick(View paramView, int paramInt)
   {
-    int i = MessageHandler.a((common.ErrorInfo)paramRspScreenShareAsk.result.get());
-    paramReqScreenShareAsk = new StringBuilder();
-    paramReqScreenShareAsk.append("onSendMsgRsp RspScreenShareAsk errCode[");
-    paramReqScreenShareAsk.append(i);
-    paramReqScreenShareAsk.append("]");
-    QLog.d("ShareScreenAppInfo", 1, paramReqScreenShareAsk.toString());
+    if (paramInt != 0)
+    {
+      if (paramInt == 1)
+      {
+        ShareScreenAppInfo.access$200(this.e, this.b, this.c);
+        ScreenShareReportHelper.a("0X800B89F", 1);
+      }
+    }
+    else
+    {
+      ShareScreenAppInfo.access$100(this.e, this.a, this.b, this.c);
+      ScreenShareReportHelper.a("0X800AD8E", 1);
+    }
+    this.d.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShareScreenAppInfo.6
  * JD-Core Version:    0.7.0.1
  */

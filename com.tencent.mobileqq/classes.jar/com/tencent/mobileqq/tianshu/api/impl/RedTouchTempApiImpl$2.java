@@ -14,36 +14,36 @@ class RedTouchTempApiImpl$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.a.get())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+      this.b.setVisibility(0);
+      this.c.startAnimation(this.d);
+      this.b.startAnimation(this.e);
     }
     else
     {
       ApngImage.pauseByTag(39);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.jdField_c_of_type_AndroidViewAnimationAnimation);
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.d);
+      this.c.setVisibility(0);
+      this.c.startAnimation(this.f);
+      this.b.startAnimation(this.g);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      RedTouchTempApiImpl.access$000(this.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    if (this.h) {
+      RedTouchTempApiImpl.access$000(this.this$0, this.i, this.j, this.k, this.a);
     }
-    AtomicBoolean localAtomicBoolean = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    AtomicBoolean localAtomicBoolean = this.a;
     localAtomicBoolean.set(localAtomicBoolean.get() ^ true);
-    long l;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      l = this.jdField_a_of_type_Long;
+    long l1;
+    if (!this.a.get()) {
+      l1 = this.l;
     } else {
-      l = this.jdField_b_of_type_Long;
+      l1 = this.m;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, l);
+    this.n.postDelayed(this, l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchTempApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ class ApolloPanel$13
   
   public void run()
   {
-    if (ApolloPanel.a(this.this$0) != null)
+    if (ApolloPanel.v(this.this$0) != null)
     {
-      if (ApolloPanel.a(this.this$0) == null) {
+      if (ApolloPanel.u(this.this$0) == null) {
         return;
       }
       if (QLog.isColorLevel())
@@ -23,16 +23,16 @@ class ApolloPanel$13
         localStringBuilder.append(Thread.currentThread().getId());
         QLog.d("[cmshow]ApolloPanel", 2, localStringBuilder.toString());
       }
-      ApolloPanel.b(this.this$0).clear();
-      ApolloPanel.b(this.this$0).add(ApolloPanel.a(this.this$0));
-      ApolloPanel.a(this.this$0).setVisibility(8);
-      ApolloPanel.a(this.this$0).notifyDataSetChanged();
+      ApolloPanel.r(this.this$0).clear();
+      ApolloPanel.r(this.this$0).add(ApolloPanel.n(this.this$0));
+      ApolloPanel.t(this.this$0).setVisibility(8);
+      ApolloPanel.v(this.this$0).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.13
  * JD-Core Version:    0.7.0.1
  */

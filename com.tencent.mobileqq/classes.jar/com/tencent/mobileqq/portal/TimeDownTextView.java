@@ -16,17 +16,10 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class TimeDownTextView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  protected TextPaint a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence = "";
-  private int c;
-  private int d;
+  protected TextPaint a = new TextPaint(1);
+  boolean b = false;
+  private CharSequence c = "";
+  private Rect d;
   private int e;
   private int f;
   private int g;
@@ -34,6 +27,13 @@ public class TimeDownTextView
   private int i;
   private int j;
   private int k;
+  private int l;
+  private int m;
+  private int n;
+  private Rect o;
+  private CharSequence p = "";
+  private TextPaint q;
+  private int r;
   
   public TimeDownTextView(Context paramContext)
   {
@@ -43,97 +43,96 @@ public class TimeDownTextView
   public TimeDownTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
     paramContext = Typeface.createFromAsset(paramContext.getAssets(), "fonts/DS-DIGIB.TTF");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramContext);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#FCD383"));
+    this.a.setTypeface(paramContext);
+    this.a.setColor(Color.parseColor("#FCD383"));
     setTextSize(1, 18.0F);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#FFFFFF"));
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(16.0F, getResources()));
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.k = AIOUtils.b(5.0F, getResources());
+    this.d = new Rect();
+    this.q = new TextPaint(1);
+    this.q.setColor(Color.parseColor("#FFFFFF"));
+    this.q.setTextSize(AIOUtils.b(16.0F, getResources()));
+    this.o = new Rect();
+    this.r = AIOUtils.b(5.0F, getResources());
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      localCharSequence = this.jdField_b_of_type_JavaLangCharSequence;
-      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.g, this.h, this.jdField_b_of_type_AndroidTextTextPaint);
+      localCharSequence = this.p;
+      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.k, this.l, this.q);
     }
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
-    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.e, this.f, this.jdField_a_of_type_AndroidTextTextPaint);
+    CharSequence localCharSequence = this.c;
+    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.i, this.j, this.a);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (!this.jdField_a_of_type_Boolean)
+    this.e = paramInt1;
+    this.f = paramInt2;
+    if (!this.b)
     {
-      this.e = (this.jdField_a_of_type_Int / 2 - this.c / 2);
-      this.f = (this.jdField_b_of_type_Int / 2 + this.d / 2);
+      this.i = (this.e / 2 - this.g / 2);
+      this.j = (this.f / 2 + this.h / 2);
       return;
     }
-    this.g = (this.jdField_a_of_type_Int / 2 - (this.i + this.k + this.c) / 2);
-    this.h = (this.jdField_b_of_type_Int / 2 + (this.j + this.d) / 2);
+    this.k = (this.e / 2 - (this.m + this.r + this.g) / 2);
+    this.l = (this.f / 2 + (this.n + this.h) / 2);
   }
   
   public void setText(CharSequence paramCharSequence)
   {
-    if (paramCharSequence.length() != this.jdField_a_of_type_JavaLangCharSequence.length())
+    if (paramCharSequence.length() != this.c.length())
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(paramCharSequence.toString(), 0, paramCharSequence.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      this.c = this.jdField_a_of_type_AndroidGraphicsRect.width();
-      this.d = this.jdField_a_of_type_AndroidGraphicsRect.height();
-      this.e = (this.jdField_a_of_type_Int / 2 - this.c / 2);
-      this.f = (this.jdField_b_of_type_Int / 2 + this.d / 2);
-      Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
-      this.f = ((this.jdField_b_of_type_Int - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
+      this.a.getTextBounds(paramCharSequence.toString(), 0, paramCharSequence.length(), this.d);
+      this.g = this.d.width();
+      this.h = this.d.height();
+      this.i = (this.e / 2 - this.g / 2);
+      this.j = (this.f / 2 + this.h / 2);
+      Paint.FontMetricsInt localFontMetricsInt = this.a.getFontMetricsInt();
+      this.j = ((this.f - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
     }
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Boolean = false;
+    this.c = paramCharSequence;
+    this.b = false;
     invalidate();
   }
   
   public void setText2(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    if ((paramCharSequence2.length() != this.jdField_b_of_type_JavaLangCharSequence.length()) || (paramCharSequence1.length() != this.jdField_a_of_type_JavaLangCharSequence.length()))
+    if ((paramCharSequence2.length() != this.p.length()) || (paramCharSequence1.length() != this.c.length()))
     {
-      this.jdField_b_of_type_AndroidTextTextPaint.getTextBounds(paramCharSequence2.toString(), 0, paramCharSequence2.length(), this.jdField_b_of_type_AndroidGraphicsRect);
-      this.i = this.jdField_b_of_type_AndroidGraphicsRect.width();
-      this.j = this.jdField_b_of_type_AndroidGraphicsRect.height();
-      this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds(paramCharSequence1.toString(), 0, paramCharSequence1.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      this.c = this.jdField_a_of_type_AndroidGraphicsRect.width();
-      this.d = this.jdField_a_of_type_AndroidGraphicsRect.height();
-      this.g = (this.jdField_a_of_type_Int / 2 - (this.i + this.c) / 2);
-      Paint.FontMetricsInt localFontMetricsInt = this.jdField_b_of_type_AndroidTextTextPaint.getFontMetricsInt();
-      this.h = ((this.jdField_b_of_type_Int - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
-      this.e = (this.g + this.i + this.k);
-      localFontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
-      this.f = ((this.jdField_b_of_type_Int - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
+      this.q.getTextBounds(paramCharSequence2.toString(), 0, paramCharSequence2.length(), this.o);
+      this.m = this.o.width();
+      this.n = this.o.height();
+      this.a.getTextBounds(paramCharSequence1.toString(), 0, paramCharSequence1.length(), this.d);
+      this.g = this.d.width();
+      this.h = this.d.height();
+      this.k = (this.e / 2 - (this.m + this.g) / 2);
+      Paint.FontMetricsInt localFontMetricsInt = this.q.getFontMetricsInt();
+      this.l = ((this.f - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
+      this.i = (this.k + this.m + this.r);
+      localFontMetricsInt = this.a.getFontMetricsInt();
+      this.j = ((this.f - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2 - localFontMetricsInt.top);
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence2;
+    this.b = true;
+    this.c = paramCharSequence1;
+    this.p = paramCharSequence2;
     invalidate();
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
+    this.a.setColor(paramInt);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(paramInt, paramFloat, getResources().getDisplayMetrics()));
+    this.a.setTextSize(TypedValue.applyDimension(paramInt, paramFloat, getResources().getDisplayMetrics()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.TimeDownTextView
  * JD-Core Version:    0.7.0.1
  */

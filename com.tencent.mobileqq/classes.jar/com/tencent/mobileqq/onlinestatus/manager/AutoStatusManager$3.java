@@ -20,22 +20,22 @@ class AutoStatusManager$3
       this.this$0.d("schedule");
       return;
     }
-    this.this$0.a.b();
-    if ((Constant.jdField_a_of_type_AndroidUtilSparseArray == null) || (Constant.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {
-      AutoStatusManager.a(this.this$0);
-    }
-    if ((Constant.jdField_a_of_type_JavaUtilList == null) || (Constant.jdField_a_of_type_JavaUtilList.isEmpty())) {
+    this.this$0.b.b();
+    if ((Constant.U == null) || (Constant.U.size() == 0)) {
       AutoStatusManager.b(this.this$0);
     }
-    if ((Constant.jdField_a_of_type_AndroidUtilSparseArray != null) && (Constant.jdField_a_of_type_AndroidUtilSparseArray.size() > 0) && (Constant.jdField_a_of_type_JavaUtilList != null) && (!Constant.jdField_a_of_type_JavaUtilList.isEmpty())) {
+    if ((Constant.S == null) || (Constant.S.isEmpty())) {
       AutoStatusManager.c(this.this$0);
     }
-    AutoStatusManager.a(this.this$0).postDelayed(this, Constant.c);
+    if ((Constant.U != null) && (Constant.U.size() > 0) && (Constant.S != null) && (!Constant.S.isEmpty())) {
+      AutoStatusManager.d(this.this$0);
+    }
+    AutoStatusManager.e(this.this$0).postDelayed(this, Constant.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager.3
  * JD-Core Version:    0.7.0.1
  */

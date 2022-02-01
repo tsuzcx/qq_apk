@@ -14,23 +14,23 @@ class C2CShortcutBarStoreView$3
   {
     if (paramBoolean1)
     {
-      if ((C2CShortcutBarStoreView.a(this.a) != null) && (paramBoolean2 != C2CShortcutBarStoreView.a(this.a).a()))
+      if ((C2CShortcutBarStoreView.e(this.a) != null) && (paramBoolean2 != C2CShortcutBarStoreView.e(this.a).a()))
       {
-        C2CShortcutBarStoreView.a(this.a).setOnCheckedChangeListener(null);
-        C2CShortcutBarStoreView.a(this.a).setChecked(paramBoolean2);
-        C2CShortcutBarStoreView.a(this.a).setOnCheckedChangeListener(this.a);
+        C2CShortcutBarStoreView.e(this.a).setOnCheckedChangeListener(null);
+        C2CShortcutBarStoreView.e(this.a).setChecked(paramBoolean2);
+        C2CShortcutBarStoreView.e(this.a).setOnCheckedChangeListener(this.a);
       }
     }
     else
     {
-      paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690712, 0);
-      paramString.b(paramString.b());
+      paramString = QQToast.makeText(BaseApplication.getContext(), 1, 2131887632, 0);
+      paramString.show(paramString.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView.3
  * JD-Core Version:    0.7.0.1
  */

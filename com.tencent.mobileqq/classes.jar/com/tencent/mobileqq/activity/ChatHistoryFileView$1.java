@@ -15,8 +15,8 @@ class ChatHistoryFileView$1
     //   7: astore 8
     //   9: aload_0
     //   10: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
-    //   13: getfield 32	com/tencent/mobileqq/activity/ChatHistoryFileView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   16: invokestatic 38	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   13: getfield 33	com/tencent/mobileqq/activity/ChatHistoryFileView:c	Landroid/content/Context;
+    //   16: invokestatic 39	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
     //   19: istore_1
     //   20: aconst_null
     //   21: astore 6
@@ -32,36 +32,36 @@ class ChatHistoryFileView$1
     //   35: astore_2
     //   36: iload_1
     //   37: ifne +303 -> 340
-    //   40: new 40	java/io/File
+    //   40: new 41	java/io/File
     //   43: dup
     //   44: aload_0
     //   45: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
-    //   48: getfield 32	com/tencent/mobileqq/activity/ChatHistoryFileView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   51: invokevirtual 46	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   54: ldc 48
-    //   56: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   48: getfield 33	com/tencent/mobileqq/activity/ChatHistoryFileView:c	Landroid/content/Context;
+    //   51: invokevirtual 47	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   54: ldc 49
+    //   56: invokespecial 52	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   59: astore_3
     //   60: aload_3
-    //   61: invokevirtual 55	java/io/File:exists	()Z
+    //   61: invokevirtual 56	java/io/File:exists	()Z
     //   64: ifeq +108 -> 172
-    //   67: new 57	java/io/BufferedReader
+    //   67: new 58	java/io/BufferedReader
     //   70: dup
-    //   71: new 59	java/io/FileReader
+    //   71: new 60	java/io/FileReader
     //   74: dup
     //   75: aload_3
-    //   76: invokespecial 62	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   79: invokespecial 65	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   76: invokespecial 63	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   79: invokespecial 66	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   82: astore_3
     //   83: aload_3
     //   84: astore_2
-    //   85: new 67	java/lang/StringBuilder
+    //   85: new 68	java/lang/StringBuilder
     //   88: dup
-    //   89: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   89: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   92: astore 4
     //   94: aload_3
     //   95: astore_2
     //   96: aload_3
-    //   97: invokevirtual 72	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   97: invokevirtual 73	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   100: astore 7
     //   102: aload 7
     //   104: ifnull +16 -> 120
@@ -69,16 +69,16 @@ class ChatHistoryFileView$1
     //   108: astore_2
     //   109: aload 4
     //   111: aload 7
-    //   113: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: pop
     //   117: goto -23 -> 94
     //   120: aload_3
     //   121: astore_2
-    //   122: new 78	org/json/JSONObject
+    //   122: new 79	org/json/JSONObject
     //   125: dup
     //   126: aload 4
-    //   128: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokespecial 84	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   128: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   131: invokespecial 85	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   134: astore 4
     //   136: aload 4
     //   138: astore_2
@@ -112,13 +112,13 @@ class ChatHistoryFileView$1
     //   182: aload_2
     //   183: astore_3
     //   184: aload 4
-    //   186: invokevirtual 87	java/io/BufferedReader:close	()V
+    //   186: invokevirtual 88	java/io/BufferedReader:close	()V
     //   189: aload_2
     //   190: astore_3
     //   191: goto +113 -> 304
     //   194: astore_2
     //   195: aload_2
-    //   196: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   196: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   199: goto +105 -> 304
     //   202: astore_2
     //   203: aconst_null
@@ -130,7 +130,7 @@ class ChatHistoryFileView$1
     //   212: aload 4
     //   214: astore_2
     //   215: aload_3
-    //   216: invokevirtual 91	org/json/JSONException:printStackTrace	()V
+    //   216: invokevirtual 92	org/json/JSONException:printStackTrace	()V
     //   219: aload 5
     //   221: astore_3
     //   222: aload 4
@@ -138,7 +138,7 @@ class ChatHistoryFileView$1
     //   227: aload 6
     //   229: astore_3
     //   230: aload 4
-    //   232: invokevirtual 87	java/io/BufferedReader:close	()V
+    //   232: invokevirtual 88	java/io/BufferedReader:close	()V
     //   235: aload 5
     //   237: astore_3
     //   238: goto +66 -> 304
@@ -148,7 +148,7 @@ class ChatHistoryFileView$1
     //   245: aload 4
     //   247: astore_2
     //   248: aload_3
-    //   249: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   249: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   252: aload 5
     //   254: astore_3
     //   255: aload 4
@@ -156,7 +156,7 @@ class ChatHistoryFileView$1
     //   260: aload 6
     //   262: astore_3
     //   263: aload 4
-    //   265: invokevirtual 87	java/io/BufferedReader:close	()V
+    //   265: invokevirtual 88	java/io/BufferedReader:close	()V
     //   268: aload 5
     //   270: astore_3
     //   271: goto +33 -> 304
@@ -166,7 +166,7 @@ class ChatHistoryFileView$1
     //   278: aload 4
     //   280: astore_2
     //   281: aload_3
-    //   282: invokevirtual 92	java/io/FileNotFoundException:printStackTrace	()V
+    //   282: invokevirtual 93	java/io/FileNotFoundException:printStackTrace	()V
     //   285: aload 5
     //   287: astore_3
     //   288: aload 4
@@ -174,14 +174,14 @@ class ChatHistoryFileView$1
     //   293: aload 6
     //   295: astore_3
     //   296: aload 4
-    //   298: invokevirtual 87	java/io/BufferedReader:close	()V
+    //   298: invokevirtual 88	java/io/BufferedReader:close	()V
     //   301: aload 5
     //   303: astore_3
     //   304: aload_0
     //   305: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
     //   308: aload_3
     //   309: aload 8
-    //   311: invokestatic 95	com/tencent/mobileqq/activity/ChatHistoryFileView:a	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
+    //   311: invokestatic 96	com/tencent/mobileqq/activity/ChatHistoryFileView:a	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
     //   314: return
     //   315: astore 4
     //   317: aload_2
@@ -191,103 +191,103 @@ class ChatHistoryFileView$1
     //   322: aload_3
     //   323: ifnull +15 -> 338
     //   326: aload_3
-    //   327: invokevirtual 87	java/io/BufferedReader:close	()V
+    //   327: invokevirtual 88	java/io/BufferedReader:close	()V
     //   330: goto +8 -> 338
     //   333: astore_3
     //   334: aload_3
-    //   335: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   335: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   338: aload_2
     //   339: athrow
     //   340: aload_0
     //   341: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
-    //   344: getfield 98	com/tencent/mobileqq/activity/ChatHistoryFileView:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   347: getstatic 104	com/tencent/mobileqq/app/BusinessHandlerFactory:TEAM_WORK_HANDLER	Ljava/lang/String;
-    //   350: invokevirtual 110	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   353: checkcast 112	com/tencent/mobileqq/teamwork/api/ITeamWorkHandler
+    //   344: getfield 100	com/tencent/mobileqq/activity/ChatHistoryFileView:b	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   347: getstatic 106	com/tencent/mobileqq/app/BusinessHandlerFactory:TEAM_WORK_HANDLER	Ljava/lang/String;
+    //   350: invokevirtual 112	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   353: checkcast 114	com/tencent/mobileqq/teamwork/api/ITeamWorkHandler
     //   356: aload_0
     //   357: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
-    //   360: invokestatic 115	com/tencent/mobileqq/activity/ChatHistoryFileView:a	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;)Ljava/lang/String;
-    //   363: invokeinterface 119 2 0
+    //   360: invokestatic 117	com/tencent/mobileqq/activity/ChatHistoryFileView:b	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;)Ljava/lang/String;
+    //   363: invokeinterface 121 2 0
     //   368: astore 5
-    //   370: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   370: invokestatic 126	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   373: ifeq +73 -> 446
-    //   376: new 67	java/lang/StringBuilder
+    //   376: new 68	java/lang/StringBuilder
     //   379: dup
-    //   380: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   380: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   383: astore_2
     //   384: aload_2
-    //   385: ldc 126
-    //   387: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   385: ldc 128
+    //   387: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   390: pop
     //   391: aload_2
     //   392: aload 8
-    //   394: invokevirtual 132	java/util/LinkedHashMap:size	()I
-    //   397: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   394: invokevirtual 134	java/util/LinkedHashMap:size	()I
+    //   397: invokevirtual 137	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   400: pop
-    //   401: ldc 137
+    //   401: ldc 139
     //   403: iconst_1
     //   404: aload_2
-    //   405: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   408: invokestatic 141	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   411: new 67	java/lang/StringBuilder
+    //   405: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   408: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   411: new 68	java/lang/StringBuilder
     //   414: dup
-    //   415: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   415: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   418: astore_2
     //   419: aload_2
-    //   420: ldc 143
-    //   422: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: ldc 145
+    //   422: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   425: pop
     //   426: aload_2
     //   427: aload 5
-    //   429: invokevirtual 144	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   432: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   429: invokevirtual 146	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   432: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: pop
-    //   436: ldc 137
+    //   436: ldc 139
     //   438: iconst_1
     //   439: aload_2
-    //   440: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokestatic 141	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   440: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   443: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   446: aload_0
     //   447: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
     //   450: aload 5
     //   452: aload 8
-    //   454: invokestatic 95	com/tencent/mobileqq/activity/ChatHistoryFileView:a	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
+    //   454: invokestatic 96	com/tencent/mobileqq/activity/ChatHistoryFileView:a	(Lcom/tencent/mobileqq/activity/ChatHistoryFileView;Lorg/json/JSONObject;Ljava/util/LinkedHashMap;)V
     //   457: aload_3
     //   458: astore_2
-    //   459: new 40	java/io/File
+    //   459: new 41	java/io/File
     //   462: dup
     //   463: aload_0
     //   464: getfield 12	com/tencent/mobileqq/activity/ChatHistoryFileView$1:this$0	Lcom/tencent/mobileqq/activity/ChatHistoryFileView;
-    //   467: getfield 32	com/tencent/mobileqq/activity/ChatHistoryFileView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   470: invokevirtual 46	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   473: ldc 48
-    //   475: invokespecial 51	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   467: getfield 33	com/tencent/mobileqq/activity/ChatHistoryFileView:c	Landroid/content/Context;
+    //   470: invokevirtual 47	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   473: ldc 49
+    //   475: invokespecial 52	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   478: astore 6
     //   480: aload_3
     //   481: astore_2
     //   482: aload 6
-    //   484: invokevirtual 55	java/io/File:exists	()Z
+    //   484: invokevirtual 56	java/io/File:exists	()Z
     //   487: ifne +11 -> 498
     //   490: aload_3
     //   491: astore_2
     //   492: aload 6
-    //   494: invokevirtual 147	java/io/File:createNewFile	()Z
+    //   494: invokevirtual 149	java/io/File:createNewFile	()Z
     //   497: pop
     //   498: aload_3
     //   499: astore_2
-    //   500: new 149	java/io/FileWriter
+    //   500: new 151	java/io/FileWriter
     //   503: dup
     //   504: aload 6
-    //   506: invokespecial 150	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   506: invokespecial 152	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   509: astore_3
     //   510: aload_3
     //   511: aload 5
-    //   513: invokevirtual 144	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   516: invokevirtual 153	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   513: invokevirtual 146	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   516: invokevirtual 155	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   519: aload_3
-    //   520: invokevirtual 156	java/io/FileWriter:flush	()V
+    //   520: invokevirtual 158	java/io/FileWriter:flush	()V
     //   523: aload_3
-    //   524: invokevirtual 157	java/io/FileWriter:close	()V
+    //   524: invokevirtual 159	java/io/FileWriter:close	()V
     //   527: return
     //   528: astore 4
     //   530: aload_3
@@ -309,11 +309,11 @@ class ChatHistoryFileView$1
     //   559: aload_3
     //   560: astore_2
     //   561: aload 4
-    //   563: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   563: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   566: aload_3
     //   567: ifnull +34 -> 601
     //   570: aload_3
-    //   571: invokevirtual 157	java/io/FileWriter:close	()V
+    //   571: invokevirtual 159	java/io/FileWriter:close	()V
     //   574: return
     //   575: astore 4
     //   577: aload 7
@@ -321,24 +321,24 @@ class ChatHistoryFileView$1
     //   580: aload_3
     //   581: astore_2
     //   582: aload 4
-    //   584: invokevirtual 92	java/io/FileNotFoundException:printStackTrace	()V
+    //   584: invokevirtual 93	java/io/FileNotFoundException:printStackTrace	()V
     //   587: aload_3
     //   588: ifnull +13 -> 601
     //   591: aload_3
-    //   592: invokevirtual 157	java/io/FileWriter:close	()V
+    //   592: invokevirtual 159	java/io/FileWriter:close	()V
     //   595: return
     //   596: astore_2
     //   597: aload_2
-    //   598: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   598: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   601: return
     //   602: aload_2
     //   603: ifnull +15 -> 618
     //   606: aload_2
-    //   607: invokevirtual 157	java/io/FileWriter:close	()V
+    //   607: invokevirtual 159	java/io/FileWriter:close	()V
     //   610: goto +8 -> 618
     //   613: astore_2
     //   614: aload_2
-    //   615: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   615: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   618: goto +5 -> 623
     //   621: aload_3
     //   622: athrow
@@ -435,7 +435,7 @@ class ChatHistoryFileView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileView.1
  * JD-Core Version:    0.7.0.1
  */

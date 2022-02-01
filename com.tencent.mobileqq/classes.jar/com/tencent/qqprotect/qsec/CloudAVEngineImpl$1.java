@@ -21,7 +21,7 @@ class CloudAVEngineImpl$1
       {
         paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
-        CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
+        CloudAVEngineImpl.b(this.a).sendMessage(CloudAVEngineImpl.b(this.a).obtainMessage(4, paramToServiceMsg));
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -33,7 +33,7 @@ class CloudAVEngineImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.1
  * JD-Core Version:    0.7.0.1
  */

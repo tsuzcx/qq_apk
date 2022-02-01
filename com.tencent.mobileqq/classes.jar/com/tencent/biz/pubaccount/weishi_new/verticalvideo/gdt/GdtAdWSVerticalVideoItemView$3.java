@@ -16,16 +16,16 @@ class GdtAdWSVerticalVideoItemView$3
   
   public void run()
   {
-    AdExposureChecker localAdExposureChecker2 = new AdExposureChecker(null, new WeakReference(this.this$0.jdField_a_of_type_AndroidViewView));
+    AdExposureChecker localAdExposureChecker2 = new AdExposureChecker(null, new WeakReference(this.this$0.h));
     AdExposureChecker localAdExposureChecker1 = localAdExposureChecker2;
-    if ((GdtAdWSVerticalVideoItemView.a(this.this$0) instanceof WSVerticalItemData))
+    if ((GdtAdWSVerticalVideoItemView.c(this.this$0) instanceof WSVerticalItemData))
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = GdtAdWSVerticalVideoItemView.a(this.this$0).a();
+      stSimpleMetaFeed localstSimpleMetaFeed = GdtAdWSVerticalVideoItemView.c(this.this$0).b();
       localAdExposureChecker1 = localAdExposureChecker2;
       if ((localstSimpleMetaFeed instanceof stSimpleMetaFeed))
       {
         localstSimpleMetaFeed = (stSimpleMetaFeed)localstSimpleMetaFeed;
-        stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = GdtAdWSVerticalVideoItemView.a(this.this$0).a();
+        stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = GdtAdWSVerticalVideoItemView.c(this.this$0).e();
         localAdExposureChecker1 = localAdExposureChecker2;
         if (localstSimpleMetaFeed != null)
         {
@@ -37,16 +37,16 @@ class GdtAdWSVerticalVideoItemView$3
             {
               if ((localstSimpleMetaGdtAdInfo != null) && (!localstSimpleMetaGdtAdInfo.isGdtAdOriginalImpressionReport))
               {
-                GdtAdUtil.b(this.this$0.jdField_a_of_type_AndroidContentContext, GdtAdWSVerticalVideoItemView.a(this.this$0));
+                GdtAdUtil.b(this.this$0.g, GdtAdWSVerticalVideoItemView.c(this.this$0));
                 localstSimpleMetaGdtAdInfo.isGdtAdOriginalImpressionReport = true;
               }
-              localAdExposureChecker1 = new AdExposureChecker(new GdtAd(GdtAdUtil.a(localstSimpleMetaFeed)), new WeakReference(this.this$0.jdField_a_of_type_AndroidViewView));
-              if (this.this$0.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-                this.this$0.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalVideoItemView.3.1(this);
+              localAdExposureChecker1 = new AdExposureChecker(new GdtAd(GdtAdUtil.a(localstSimpleMetaFeed)), new WeakReference(this.this$0.h));
+              if (this.this$0.b == null) {
+                this.this$0.b = new GdtAdWSVerticalVideoItemView.3.1(this);
               }
-              localAdExposureChecker1.setCallback(new WeakReference(this.this$0.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+              localAdExposureChecker1.setCallback(new WeakReference(this.this$0.b));
               QZLog.w("AdExposureChecker", "startonExposure");
-              this.this$0.jdField_a_of_type_JavaUtilArrayList.add(localAdExposureChecker1);
+              this.this$0.a.add(localAdExposureChecker1);
             }
           }
         }
@@ -57,7 +57,7 @@ class GdtAdWSVerticalVideoItemView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalVideoItemView.3
  * JD-Core Version:    0.7.0.1
  */

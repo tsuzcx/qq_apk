@@ -7,26 +7,26 @@ import java.util.Iterator;
 
 public class ETTextLine
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<ETFragment> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
+  private ArrayList<ETFragment> a = new ArrayList(4);
   private int b;
   private int c;
   private int d;
   private int e;
+  private int f;
   
   public int a()
   {
-    return this.d;
+    return this.e;
   }
   
   public ETFragment a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    int i = this.b;
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      int j = localETFragment.c() + i;
+      int j = localETFragment.e() + i;
       if ((i <= paramInt) && (paramInt < j)) {
         return localETFragment;
       }
@@ -35,93 +35,93 @@ public class ETTextLine
     return null;
   }
   
-  public ArrayList<ETFragment> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      localETFragment.a(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localETFragment.c();
+      localETFragment.a(paramCanvas, paramInt1, paramInt2, this.e);
+      paramInt1 += localETFragment.e();
     }
   }
   
   public void a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = 0;
-    this.d = paramInt3;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = 0;
+    this.e = paramInt3;
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      if (localETFragment.d() > this.d) {
-        this.d = localETFragment.d();
+      if (localETFragment.f() > this.e) {
+        this.e = localETFragment.f();
       }
-      this.c += localETFragment.c();
+      this.d += localETFragment.e();
     }
-    this.e = 0;
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.f = 0;
+    localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       paramInt1 = ((ETFragment)localIterator.next()).a(paramETEngine);
-      if (paramInt1 > this.e) {
-        this.e = paramInt1;
+      if (paramInt1 > this.f) {
+        this.f = paramInt1;
       }
     }
   }
   
   public void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      localETFragment.a(paramETEngine, paramBitmap, paramETDecoration, paramInt1, this.d - localETFragment.d() + paramInt2 - (this.e - localETFragment.a(paramETEngine)));
-      paramInt1 += localETFragment.c();
+      localETFragment.a(paramETEngine, paramBitmap, paramETDecoration, paramInt1, this.e - localETFragment.f() + paramInt2 - (this.f - localETFragment.a(paramETEngine)));
+      paramInt1 += localETFragment.e();
     }
   }
   
   public void a(ETFragment paramETFragment)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramETFragment);
+    this.a.add(paramETFragment);
   }
   
   public int b()
   {
-    return this.c;
+    return this.d;
   }
   
   public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ETFragment localETFragment = (ETFragment)localIterator.next();
-      localETFragment.b(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localETFragment.c();
+      localETFragment.b(paramCanvas, paramInt1, paramInt2, this.e);
+      paramInt1 += localETFragment.e();
     }
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public int d()
   {
-    return this.b;
+    return this.c;
   }
   
   public int e()
   {
-    return this.e;
+    return this.f;
+  }
+  
+  public ArrayList<ETFragment> f()
+  {
+    return this.a;
   }
 }
 

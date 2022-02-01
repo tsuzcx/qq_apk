@@ -4,6 +4,7 @@
     <bool name="f">false</bool>
     <bool name="g">true</bool>
     <bool name="a">false</bool>
+    <bool name="h">true</bool>
     <bool name="b">true</bool>
     <bool name="c">true</bool>
     <bool name="d">false</bool>

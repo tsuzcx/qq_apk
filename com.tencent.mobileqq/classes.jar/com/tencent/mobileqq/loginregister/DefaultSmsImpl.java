@@ -10,9 +10,9 @@ import mqq.observer.WtloginObserver;
 public class DefaultSmsImpl
   implements IAuthDevVerifyApi
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private String b;
+  private WtloginObserver c;
   
   public void a() {}
   
@@ -26,17 +26,46 @@ public class DefaultSmsImpl
       QLog.d("DefaultSmsImpl", 1, "sendSms, intent is null");
       return;
     }
-    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("from_login", false);
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("keyFrom");
-    this.jdField_a_of_type_MqqObserverWtloginObserver = new DefaultSmsImpl.OpenDevLockObserver(paramQBaseActivity, paramICommonSmsView);
+    this.a = localIntent.getBooleanExtra("from_login", false);
+    this.b = localIntent.getStringExtra("keyFrom");
+    this.c = new DefaultSmsImpl.OpenDevLockObserver(paramQBaseActivity, paramICommonSmsView);
   }
   
-  public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
+  public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView, String paramString)
   {
-    if ((!"f_SetFaceData".equals(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_Boolean))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkSms smsCode=");
+    localStringBuilder.append(paramString);
+    QLog.d("DefaultSmsImpl", 1, localStringBuilder.toString());
+    if (!"f_SetFaceData".equals(this.b))
+    {
+      if (this.a) {
+        return false;
+      }
+      int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), paramQBaseActivity.getCurrentAccountUinFromRuntime(), paramString, null, this.c);
+      if (i == 0)
+      {
+        paramICommonSmsView.showLoadingDialog();
+        return true;
+      }
+      paramICommonSmsView = new StringBuilder();
+      paramICommonSmsView.append("checkSms failed ret=");
+      paramICommonSmsView.append(i);
+      QLog.d("DefaultSmsImpl", 1, paramICommonSmsView.toString());
+      QQToast.makeText(paramQBaseActivity, 1, 2131914114, 0).show();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b() {}
+  
+  public boolean b(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
+  {
+    if ((!"f_SetFaceData".equals(this.b)) && (!this.a))
     {
       QLog.d("DefaultSmsImpl", 1, "sendSms : AskDevLockSms");
-      int i = EquipmentLockImpl.a().c(paramQBaseActivity.getAppRuntime(), paramQBaseActivity.getCurrentAccountUinFromRuntime(), this.jdField_a_of_type_MqqObserverWtloginObserver);
+      int i = EquipmentLockImpl.a().c(paramQBaseActivity.getAppRuntime(), paramQBaseActivity.getCurrentAccountUinFromRuntime(), this.c);
       if (i == 0)
       {
         paramICommonSmsView.showLoadingDialog();
@@ -51,43 +80,14 @@ public class DefaultSmsImpl
     return false;
   }
   
-  public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView, String paramString)
+  public boolean c(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("checkSms smsCode=");
-    localStringBuilder.append(paramString);
-    QLog.d("DefaultSmsImpl", 1, localStringBuilder.toString());
-    if (!"f_SetFaceData".equals(this.jdField_a_of_type_JavaLangString))
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return false;
-      }
-      int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), paramQBaseActivity.getCurrentAccountUinFromRuntime(), paramString, null, this.jdField_a_of_type_MqqObserverWtloginObserver);
-      if (i == 0)
-      {
-        paramICommonSmsView.showLoadingDialog();
-        return true;
-      }
-      paramICommonSmsView = new StringBuilder();
-      paramICommonSmsView.append("checkSms failed ret=");
-      paramICommonSmsView.append(i);
-      QLog.d("DefaultSmsImpl", 1, paramICommonSmsView.toString());
-      QQToast.a(paramQBaseActivity, 1, 2131716651, 0).a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b() {}
-  
-  public boolean b(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
-  {
-    return a(paramQBaseActivity, paramICommonSmsView);
+    return b(paramQBaseActivity, paramICommonSmsView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DefaultSmsImpl
  * JD-Core Version:    0.7.0.1
  */

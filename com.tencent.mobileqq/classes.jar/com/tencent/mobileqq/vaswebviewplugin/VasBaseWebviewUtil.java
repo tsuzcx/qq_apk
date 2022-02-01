@@ -191,13 +191,13 @@ public class VasBaseWebviewUtil
   
   public static void reportX5SpeedData(SwiftBrowserStatistics paramSwiftBrowserStatistics)
   {
-    if ((paramSwiftBrowserStatistics != null) && (!paramSwiftBrowserStatistics.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramSwiftBrowserStatistics.jdField_a_of_type_JavaLangString)) && (paramSwiftBrowserStatistics.e != 0L))
+    if ((paramSwiftBrowserStatistics != null) && (!paramSwiftBrowserStatistics.f) && (!TextUtils.isEmpty(paramSwiftBrowserStatistics.g)) && (paramSwiftBrowserStatistics.h != 0L))
     {
-      paramSwiftBrowserStatistics.jdField_a_of_type_Boolean = true;
-      String str3 = paramSwiftBrowserStatistics.jdField_a_of_type_JavaLangString;
+      paramSwiftBrowserStatistics.f = true;
+      String str3 = paramSwiftBrowserStatistics.g;
       String str4 = HttpUtil.getNetWorkTypeByStr();
       int j = QbSdk.getTbsVersion(BaseApplication.getContext());
-      String str2 = paramSwiftBrowserStatistics.jdField_c_of_type_JavaLangString;
+      String str2 = paramSwiftBrowserStatistics.aw;
       boolean bool = TextUtils.isEmpty(str2);
       int i = 0;
       String str1 = str2;
@@ -208,18 +208,18 @@ public class VasBaseWebviewUtil
           str1 = str2.substring(0, str2.indexOf("?"));
         }
       }
-      int k = paramSwiftBrowserStatistics.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry.b;
-      if (paramSwiftBrowserStatistics.t) {
+      int k = paramSwiftBrowserStatistics.aW.d;
+      if (paramSwiftBrowserStatistics.aH) {
         i = 2;
-      } else if (SwiftBrowserStatistics.p) {
+      } else if (SwiftBrowserStatistics.aD) {
         i = 1;
       }
-      long l1 = paramSwiftBrowserStatistics.b;
-      long l2 = paramSwiftBrowserStatistics.jdField_c_of_type_Long;
-      long l3 = paramSwiftBrowserStatistics.r;
-      long l4 = paramSwiftBrowserStatistics.f;
-      long l5 = paramSwiftBrowserStatistics.g;
-      long l6 = paramSwiftBrowserStatistics.e;
+      long l1 = paramSwiftBrowserStatistics.c;
+      long l2 = paramSwiftBrowserStatistics.d;
+      long l3 = paramSwiftBrowserStatistics.u;
+      long l4 = paramSwiftBrowserStatistics.i;
+      long l5 = paramSwiftBrowserStatistics.j;
+      long l6 = paramSwiftBrowserStatistics.h;
       if (QLog.isColorLevel()) {
         QLog.d("VasBaseWebviewUtil", 2, "reportX5SpeedData");
       }
@@ -229,7 +229,7 @@ public class VasBaseWebviewUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBaseWebviewUtil
  * JD-Core Version:    0.7.0.1
  */

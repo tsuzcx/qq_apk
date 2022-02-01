@@ -39,7 +39,13 @@ public class PicAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839142;
+    if (isGuildLiveChannel()) {
+      return 2130840918;
+    }
+    if (isGuild()) {
+      return 2130840972;
+    }
+    return 2130839298;
   }
   
   public int getAppID()
@@ -48,6 +54,14 @@ public class PicAppInfo
       return 217;
     }
     return 1104864054;
+  }
+  
+  public String getDTElementId()
+  {
+    if (isGuild()) {
+      return "em_sgrp_aio_plus_pic";
+    }
+    return "";
   }
   
   public int getManageConfigID()
@@ -68,16 +82,16 @@ public class PicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719743);
+    return BaseApplicationImpl.getContext().getString(2131917346);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     int i;
-    if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
+    if (paramSessionInfo.a == 9501) {
       try
       {
-        paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.a, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
+        paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.d, Long.parseLong(paramSessionInfo.b));
         if (paramPlusPanelViewModel != null) {
           i = paramPlusPanelViewModel.productId;
         }
@@ -89,43 +103,43 @@ public class PicAppInfo
     } else {
       i = 0;
     }
-    if ((!SimpleUIUtil.a()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.a()))
+    if ((!SimpleUIUtil.e()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.h()))
     {
-      QQAppInterface localQQAppInterface = paramBaseChatPie.a;
-      int j = paramSessionInfo.jdField_a_of_type_Int;
+      QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+      int j = paramSessionInfo.a;
       Object localObject = null;
       if (j == 9501)
       {
         paramPlusPanelViewModel = new Intent();
-        paramPlusPanelViewModel.putExtra("isdevicesupportmultiupload", DeviceMsgChatPie.H ^ true);
-        PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo, null, paramPlusPanelViewModel);
-        SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 3, 0, i);
+        paramPlusPanelViewModel.putExtra("isdevicesupportmultiupload", DeviceMsgChatPie.br ^ true);
+        PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo, null, paramPlusPanelViewModel);
+        SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.b), "Usr_AIO_SendMsg", 3, 0, i);
       }
       else
       {
         paramPlusPanelViewModel = localObject;
-        if (paramSessionInfo.jdField_a_of_type_Int == 1)
+        if (paramSessionInfo.a == 1)
         {
           paramPlusPanelViewModel = localObject;
-          if (((HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString))
+          if (((HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.b))
           {
             paramPlusPanelViewModel = new Intent();
             paramPlusPanelViewModel.putExtra("filter_photolist_troopalbum_toolbar", true);
           }
         }
-        PlusPanelUtils.a(paramBaseChatPie.a(), paramSessionInfo, localQQAppInterface, paramPlusPanelViewModel);
+        PlusPanelUtils.a(paramBaseChatPie.aX(), paramSessionInfo, localQQAppInterface, paramPlusPanelViewModel);
       }
       paramPlusPanelViewModel = (ITroopPhotoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_PHOTO_HANDLER);
-      if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
-        paramPlusPanelViewModel.a(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
+      if ((!TextUtils.isEmpty(paramSessionInfo.b)) && (paramSessionInfo.a == 1)) {
+        paramPlusPanelViewModel.a(paramSessionInfo.b, true);
       }
-      paramBaseChatPie.a().setCanLock(false);
-      AIOPanelUtiles.a(localQQAppInterface, "0X8004079", paramSessionInfo.jdField_a_of_type_Int);
-      if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
-        SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 3, 0, i);
+      paramBaseChatPie.aX().setCanLock(false);
+      AIOPanelUtiles.a(localQQAppInterface, "0X8004079", paramSessionInfo.a);
+      if (paramSessionInfo.a == 9501) {
+        SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.b), "Usr_AIO_SendMsg", 3, 0, i);
       }
-      if (AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-        ReportController.b(localQQAppInterface, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_pic", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      if (AnonymousChatHelper.a().a(paramSessionInfo.b)) {
+        ReportController.b(localQQAppInterface, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_pic", 0, 0, paramSessionInfo.b, "", "", "");
       }
     }
     else
@@ -134,7 +148,7 @@ public class PicAppInfo
       if (QLog.isColorLevel()) {
         QLog.d("PicAppInfo", 2, "report() called with plus from simple!");
       }
-      if (SimpleUIUtil.a()) {
+      if (SimpleUIUtil.e()) {
         ReportController.b(null, "dc00898", "", "", "0X800A113", "0X800A113", 0, 0, "", "", "", "");
       }
       if ((paramBaseChatPie instanceof RobotChatPie)) {
@@ -145,7 +159,7 @@ public class PicAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.PicAppInfo
  * JD-Core Version:    0.7.0.1
  */

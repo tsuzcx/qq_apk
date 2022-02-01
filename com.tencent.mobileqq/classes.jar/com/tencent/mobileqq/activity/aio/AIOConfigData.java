@@ -8,19 +8,17 @@ public class AIOConfigData
 {
   @Alias(a="structmsg_switch")
   public int a;
-  @Alias(a="msf_http_monitor_ban")
-  public boolean a;
   @Alias(a="structmsg_sampling")
   public int b;
   @Alias(a="structmsg_filternumber")
   public int c;
+  @Alias(a="msf_http_monitor_ban")
+  public boolean d;
   @Alias(a="switch_background_start_activity")
-  public int d;
-  @Alias(a="switch_open_third_app")
   public int e;
-  @Alias(a="switch_imei")
+  @Alias(a="switch_open_third_app")
   public int f;
-  @Alias(a="switch_msg_separate")
+  @Alias(a="switch_imei")
   public int g;
   
   public JSONObject a()
@@ -35,7 +33,7 @@ public class AIOConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOConfigData
  * JD-Core Version:    0.7.0.1
  */

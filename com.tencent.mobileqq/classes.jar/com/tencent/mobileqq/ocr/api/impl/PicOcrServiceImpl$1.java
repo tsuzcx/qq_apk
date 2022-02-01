@@ -109,12 +109,12 @@ class PicOcrServiceImpl$1
     }
     if (!TextUtils.isEmpty(paramMessage))
     {
-      PicOcrServiceImpl.access$000(this.a).f = paramMessage;
+      PicOcrServiceImpl.access$000(this.a).l = paramMessage;
       if (PicOcrServiceImpl.access$100(this.a) != null)
       {
-        paramMessage = (PicOcrHandler)PicOcrServiceImpl.access$100(this.a).getBusinessHandler(PicOcrHandler.jdField_a_of_type_JavaLangString);
+        paramMessage = (PicOcrHandler)PicOcrServiceImpl.access$100(this.a).getBusinessHandler(PicOcrHandler.a);
         if (paramMessage != null) {
-          paramMessage.a(PicOcrServiceImpl.access$000(this.a).f, PicOcrServiceImpl.access$000(this.a).jdField_b_of_type_Long, PicOcrServiceImpl.access$000(this.a).d, PicOcrServiceImpl.access$000(this.a).e, PicOcrServiceImpl.access$000(this.a).jdField_a_of_type_Int, (int)PicOcrServiceImpl.access$000(this.a).jdField_a_of_type_Long, PicOcrServiceImpl.access$000(this.a).jdField_b_of_type_Int, PicOcrServiceImpl.access$000(this.a).c, PicOcrServiceImpl.access$000(this.a).jdField_a_of_type_Boolean, PicOcrServiceImpl.access$000(this.a).jdField_a_of_type_JavaLangString);
+          paramMessage.a(PicOcrServiceImpl.access$000(this.a).l, PicOcrServiceImpl.access$000(this.a).k, PicOcrServiceImpl.access$000(this.a).f, PicOcrServiceImpl.access$000(this.a).g, PicOcrServiceImpl.access$000(this.a).b, (int)PicOcrServiceImpl.access$000(this.a).e, PicOcrServiceImpl.access$000(this.a).i, PicOcrServiceImpl.access$000(this.a).j, PicOcrServiceImpl.access$000(this.a).h, PicOcrServiceImpl.access$000(this.a).a);
         }
       }
     }
@@ -122,7 +122,7 @@ class PicOcrServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

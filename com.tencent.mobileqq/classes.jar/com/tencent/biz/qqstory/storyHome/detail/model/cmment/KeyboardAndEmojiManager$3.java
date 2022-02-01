@@ -13,8 +13,8 @@ class KeyboardAndEmojiManager$3
   
   public void delete()
   {
-    if (KeyboardAndEmojiManager.a(this.a) != null) {
-      TextUtils.backspace(KeyboardAndEmojiManager.a(this.a));
+    if (KeyboardAndEmojiManager.d(this.a) != null) {
+      TextUtils.backspace(KeyboardAndEmojiManager.d(this.a));
     }
   }
   
@@ -33,8 +33,8 @@ class KeyboardAndEmojiManager$3
   
   public void send(EmoticonInfo paramEmoticonInfo)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.a(this.a) != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(KeyboardAndEmojiManager.a(), KeyboardAndEmojiManager.a(this.a), KeyboardAndEmojiManager.a(this.a), null);
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.d(this.a) != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(KeyboardAndEmojiManager.d(), KeyboardAndEmojiManager.e(this.a), KeyboardAndEmojiManager.d(this.a), null);
     }
   }
   

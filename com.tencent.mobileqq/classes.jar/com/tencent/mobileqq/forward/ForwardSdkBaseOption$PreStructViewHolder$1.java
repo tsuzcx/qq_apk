@@ -16,9 +16,9 @@ class ForwardSdkBaseOption$PreStructViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+    if (this.a.d.am != null)
     {
-      String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
+      String str = this.a.d.am.mMsgUrl.trim();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -26,20 +26,20 @@ class ForwardSdkBaseOption$PreStructViewHolder$1
         ((StringBuilder)localObject).append(str);
         QLog.e("ForwardOption.ForwardSdkBaseOption", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+      Object localObject = new Intent(this.a.d.s, QQBrowserDelegationActivity.class);
       ((Intent)localObject).putExtra("param_force_internal_browser", true);
       ((Intent)localObject).putExtra("reqType", 7);
       ((Intent)localObject).putExtra("hide_more_button", true);
       ((Intent)localObject).putExtra("url", str);
-      WebAccelerator.a(this.a.a.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, str);
-      this.a.a.G();
+      WebAccelerator.a(this.a.d.s, (Intent)localObject, str);
+      this.a.d.aq();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.PreStructViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

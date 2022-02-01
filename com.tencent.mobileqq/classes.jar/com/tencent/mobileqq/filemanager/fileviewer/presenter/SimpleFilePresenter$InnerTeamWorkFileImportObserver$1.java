@@ -13,14 +13,14 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver$1
   
   public void run()
   {
-    JSONObject localJSONObject = TeamWorkHandlerUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$InnerTeamWorkFileImportObserver.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.m());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$InnerTeamWorkFileImportObserver.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new SimpleFilePresenter.InnerTeamWorkFileImportObserver.1.1(this));
-    SimpleFilePresenter.InnerTeamWorkFileImportObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$InnerTeamWorkFileImportObserver, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.jdField_a_of_type_JavaLangString);
+    JSONObject localJSONObject = TeamWorkHandlerUtils.a(this.a, this.c.a.c.ag());
+    this.c.a.d.runOnUiThread(new SimpleFilePresenter.InnerTeamWorkFileImportObserver.1.1(this));
+    SimpleFilePresenter.InnerTeamWorkFileImportObserver.a(this.c, localJSONObject, this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.InnerTeamWorkFileImportObserver.1
  * JD-Core Version:    0.7.0.1
  */

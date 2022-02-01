@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
 import androidx.annotation.CheckResult;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class KeyPath
 {
+  public static final KeyPath COMPOSITION = new KeyPath(new String[] { "COMPOSITION" });
   private final List<String> keys;
   @Nullable
   private KeyPathElement resolvedElement;
@@ -35,8 +36,8 @@ public class KeyPath
     return "__container".equals(paramString);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   @CheckResult
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public KeyPath addKey(String paramString)
   {
     KeyPath localKeyPath = new KeyPath(this);
@@ -44,7 +45,7 @@ public class KeyPath
     return localKeyPath;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public boolean fullyResolvesTo(String paramString, int paramInt)
   {
     int i = this.keys.size();
@@ -119,13 +120,13 @@ public class KeyPath
   }
   
   @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public KeyPathElement getResolvedElement()
   {
     return this.resolvedElement;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public int incrementDepthBy(String paramString, int paramInt)
   {
     if (isContainer(paramString)) {
@@ -148,7 +149,7 @@ public class KeyPath
     return this.keys.toString();
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public boolean matches(String paramString, int paramInt)
   {
     if (isContainer(paramString)) {
@@ -163,7 +164,7 @@ public class KeyPath
     return true;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public boolean propagateToChildren(String paramString, int paramInt)
   {
     boolean bool2 = "__container".equals(paramString);
@@ -181,7 +182,7 @@ public class KeyPath
     return bool1;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public KeyPath resolve(KeyPathElement paramKeyPathElement)
   {
     KeyPath localKeyPath = new KeyPath(this);
@@ -208,7 +209,7 @@ public class KeyPath
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.KeyPath
  * JD-Core Version:    0.7.0.1
  */

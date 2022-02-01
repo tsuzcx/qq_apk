@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.ae.camera.core;
 
-import com.tencent.qqcamerakit.capture.CameraProxy;
+import com.tencent.aelight.camera.ae.camera.testpkg.IProxyForTestCap;
 
 class AECameraManager$10
   implements Runnable
@@ -14,7 +14,7 @@ class AECameraManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraManager.10
  * JD-Core Version:    0.7.0.1
  */

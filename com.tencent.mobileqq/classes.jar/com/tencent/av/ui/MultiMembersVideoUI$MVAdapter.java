@@ -33,58 +33,58 @@ class MultiMembersVideoUI$MVAdapter
   MultiMembersUI.Holder a(View paramView)
   {
     MultiMembersUI.Holder localHolder = new MultiMembersUI.Holder();
-    localHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131373412));
-    localHolder.d = ((ImageView)paramView.findViewById(2131373409));
-    localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373425));
-    localHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373427));
-    localHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373411));
-    localHolder.e = ((ImageView)paramView.findViewById(2131373424));
-    localHolder.f = ((ImageView)paramView.findViewById(2131373410));
-    if ((this.a.jdField_b_of_type_Boolean) && (localHolder.jdField_a_of_type_AndroidWidgetTextView != null) && (localHolder.d != null))
+    localHolder.f = ((ViewGroup)paramView.findViewById(2131441086));
+    localHolder.g = ((ImageView)paramView.findViewById(2131441083));
+    localHolder.h = ((TextView)paramView.findViewById(2131441099));
+    localHolder.c = ((ImageView)paramView.findViewById(2131441101));
+    localHolder.i = ((TextView)paramView.findViewById(2131441085));
+    localHolder.m = ((ImageView)paramView.findViewById(2131441098));
+    localHolder.p = ((ImageView)paramView.findViewById(2131441084));
+    if ((this.a.o) && (localHolder.h != null) && (localHolder.g != null))
     {
       float f = MultiMembersVideoUI.a(this.a).getDisplayMetrics().density;
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
+      localHolder.h.setTextSize(12.0F);
       double d = f;
       Double.isNaN(d);
       int i = (int)(d * 1.5D);
-      localHolder.d.setPadding(i, i, i, i);
+      localHolder.g.setPadding(i, i, i, i);
     }
-    if (localHolder.jdField_a_of_type_AndroidWidgetTextView != null) {
-      if (this.a.jdField_a_of_type_Boolean) {
-        localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166062));
+    if (localHolder.h != null) {
+      if (this.a.d) {
+        localHolder.h.setTextColor(this.a.getResources().getColor(2131166789));
       } else {
-        localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166062));
+        localHolder.h.setTextColor(this.a.getResources().getColor(2131166789));
       }
     }
-    if (localHolder.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (localHolder.f != null)
     {
-      paramView = (RelativeLayout.LayoutParams)localHolder.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      if (this.a.jdField_a_of_type_Boolean)
+      paramView = (RelativeLayout.LayoutParams)localHolder.f.getLayoutParams();
+      if (this.a.d)
       {
-        paramView.width = this.a.getResources().getDimensionPixelSize(2131297882);
-        paramView.height = this.a.getResources().getDimensionPixelSize(2131297881);
+        paramView.width = this.a.getResources().getDimensionPixelSize(2131298552);
+        paramView.height = this.a.getResources().getDimensionPixelSize(2131298551);
       }
       else
       {
-        paramView.width = this.a.getResources().getDimensionPixelSize(2131297888);
-        paramView.height = this.a.getResources().getDimensionPixelSize(2131297886);
+        paramView.width = this.a.getResources().getDimensionPixelSize(2131298558);
+        paramView.height = this.a.getResources().getDimensionPixelSize(2131298556);
       }
-      localHolder.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramView);
+      localHolder.f.setLayoutParams(paramView);
     }
     return localHolder;
   }
   
   public int getCount()
   {
-    if (((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8)) {
+    if (((this.a.c == 1) || (this.a.c == 2)) && (this.a.l.size() > 8)) {
       return 8;
     }
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.l.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.l.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -101,7 +101,7 @@ class MultiMembersVideoUI$MVAdapter
         Object localObject1;
         if (localObject2 == null)
         {
-          paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559733, null);
+          paramView = this.a.k.inflate(2131625773, null);
           localObject1 = a(paramView);
           paramView.setTag(localObject1);
         }
@@ -116,50 +116,50 @@ class MultiMembersVideoUI$MVAdapter
             paramView = (View)localObject2;
           }
         }
-        Object localObject3 = (MultiMembersUI.MVMembersInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        if ((((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString == null) || (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap == null) || (!((MultiMembersUI.MVMembersInfo)localObject3).d)) {
-          if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_Int == 0)
+        Object localObject3 = (MultiMembersUI.MVMembersInfo)this.a.l.get(paramInt);
+        if ((((MultiMembersUI.MVMembersInfo)localObject3).g == null) || (((MultiMembersUI.MVMembersInfo)localObject3).i == null) || (!((MultiMembersUI.MVMembersInfo)localObject3).f)) {
+          if (((MultiMembersUI.MVMembersInfo)localObject3).j == 0)
           {
-            localObject2 = String.valueOf(((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Long);
-            ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentAvVideoController.a((String)localObject2, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_Int);
-            if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString.compareTo((String)localObject2) != 0) {
-              ((MultiMembersUI.MVMembersInfo)localObject3).d = true;
+            localObject2 = String.valueOf(((MultiMembersUI.MVMembersInfo)localObject3).a);
+            ((MultiMembersUI.MVMembersInfo)localObject3).g = this.a.j.a((String)localObject2, String.valueOf(this.a.b), this.a.c);
+            if (((MultiMembersUI.MVMembersInfo)localObject3).g.compareTo((String)localObject2) != 0) {
+              ((MultiMembersUI.MVMembersInfo)localObject3).f = true;
             } else {
-              ((MultiMembersUI.MVMembersInfo)localObject3).d = false;
+              ((MultiMembersUI.MVMembersInfo)localObject3).f = false;
             }
-            localObject2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a((String)localObject2, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_Int, false, true);
+            localObject2 = this.a.j.a((String)localObject2, String.valueOf(this.a.b), this.a.c, false, true);
             if (localObject2 != null)
             {
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+              ((MultiMembersUI.MVMembersInfo)localObject3).i = ((Bitmap)localObject2);
             }
             else
             {
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = null;
-              ((MultiMembersUI.MVMembersInfo)localObject3).d = false;
+              ((MultiMembersUI.MVMembersInfo)localObject3).i = null;
+              ((MultiMembersUI.MVMembersInfo)localObject3).f = false;
             }
           }
           else
           {
-            long l = ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Long;
-            if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo != null) {
-              localObject2 = ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
+            long l = ((MultiMembersUI.MVMembersInfo)localObject3).a;
+            if (((MultiMembersUI.MVMembersInfo)localObject3).l != null) {
+              localObject2 = ((MultiMembersUI.MVMembersInfo)localObject3).l;
             } else {
-              localObject2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(l, this.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
+              localObject2 = this.a.j.b(l, this.a.j.k().bm);
             }
             Object localObject4;
             if ((localObject2 != null) && (((AVPhoneUserInfo)localObject2).telInfo.mobile != null))
             {
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString = ((AVPhoneUserInfo)localObject2).telInfo.mobile;
-              localObject4 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(((AVPhoneUserInfo)localObject2).telInfo.mobile);
+              ((MultiMembersUI.MVMembersInfo)localObject3).g = ((AVPhoneUserInfo)localObject2).telInfo.mobile;
+              localObject4 = this.a.j.d(((AVPhoneUserInfo)localObject2).telInfo.mobile);
               if (localObject4 != null)
               {
-                ((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_JavaLangString = ContactUtils.a((String)localObject4);
-                ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject4);
+                ((MultiMembersUI.MVMembersInfo)localObject3).h = ContactUtils.b((String)localObject4);
+                ((MultiMembersUI.MVMembersInfo)localObject3).g = ((String)localObject4);
               }
               else
               {
-                ((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_JavaLangString = null;
-                ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString = PstnUtils.a(((AVPhoneUserInfo)localObject2).telInfo.mobile, 4);
+                ((MultiMembersUI.MVMembersInfo)localObject3).h = null;
+                ((MultiMembersUI.MVMembersInfo)localObject3).g = PstnUtils.a(((AVPhoneUserInfo)localObject2).telInfo.mobile, 4);
               }
             }
             else
@@ -171,106 +171,106 @@ class MultiMembersVideoUI$MVAdapter
                 ((StringBuilder)localObject4).append(((AVPhoneUserInfo)localObject2).toString());
                 QLog.d("MultiMembersVideoUI", 2, ((StringBuilder)localObject4).toString());
               }
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_JavaLangString = null;
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString = MultiMembersVideoUI.b(this.a).getString(2131693109);
+              ((MultiMembersUI.MVMembersInfo)localObject3).h = null;
+              ((MultiMembersUI.MVMembersInfo)localObject3).g = MultiMembersVideoUI.b(this.a).getString(2131890648);
             }
-            ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)MultiMembersVideoUI.c(this.a).getDrawable(2130842202)).getBitmap();
-            ((MultiMembersUI.MVMembersInfo)localObject3).d = true;
+            ((MultiMembersUI.MVMembersInfo)localObject3).i = ((BitmapDrawable)MultiMembersVideoUI.c(this.a).getDrawable(2130843137)).getBitmap();
+            ((MultiMembersUI.MVMembersInfo)localObject3).f = true;
           }
         }
-        if (((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)) && (paramInt == 7) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8))
+        if (((this.a.c == 1) || (this.a.c == 2)) && (paramInt == 7) && (this.a.l.size() > 8))
         {
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_Boolean = false;
+          ((MultiMembersUI.Holder)localObject1).l = false;
           localObject2 = new GradientDrawable();
           ((GradientDrawable)localObject2).setShape(1);
           ((GradientDrawable)localObject2).setColor(Color.parseColor("#4C000000"));
-          ((MultiMembersUI.Holder)localObject1).d.setImageDrawable((Drawable)localObject2);
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373411));
+          ((MultiMembersUI.Holder)localObject1).g.setImageDrawable((Drawable)localObject2);
+          ((MultiMembersUI.Holder)localObject1).i = ((TextView)paramView.findViewById(2131441085));
           localObject2 = new StringBuilder("");
-          ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaUtilArrayList.size() - 8 + 1);
+          ((StringBuilder)localObject2).append(this.a.l.size() - 8 + 1);
           ((StringBuilder)localObject2).append("+");
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject2).toString());
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("");
-          paramView.setContentDescription(MultiMembersVideoUI.d(this.a).getString(2131693108));
+          ((MultiMembersUI.Holder)localObject1).i.setText(((StringBuilder)localObject2).toString());
+          ((MultiMembersUI.Holder)localObject1).i.setTextColor(-1);
+          ((MultiMembersUI.Holder)localObject1).i.setVisibility(0);
+          ((MultiMembersUI.Holder)localObject1).h.setText("");
+          paramView.setContentDescription(MultiMembersVideoUI.d(this.a).getString(2131890647));
           localObject2 = paramView;
         }
         else
         {
-          ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_Boolean = true;
-          ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Long = ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Long;
-          if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString != null) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_JavaLangString);
+          ((MultiMembersUI.Holder)localObject1).l = true;
+          ((MultiMembersUI.Holder)localObject1).a = ((MultiMembersUI.MVMembersInfo)localObject3).a;
+          if (((MultiMembersUI.MVMembersInfo)localObject3).g != null) {
+            ((MultiMembersUI.Holder)localObject1).h.setText(((MultiMembersUI.MVMembersInfo)localObject3).g);
           } else {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Long));
+            ((MultiMembersUI.Holder)localObject1).h.setText(String.valueOf(((MultiMembersUI.MVMembersInfo)localObject3).a));
           }
-          if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap != null)
+          if (((MultiMembersUI.MVMembersInfo)localObject3).i != null)
           {
-            if ((((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_Int != 0) && (((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_JavaLangString != null))
+            if ((((MultiMembersUI.MVMembersInfo)localObject3).j != 0) && (((MultiMembersUI.MVMembersInfo)localObject3).h != null))
             {
-              ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-              ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_JavaLangString);
-              localObject2 = ((BitmapDrawable)MultiMembersVideoUI.e(this.a).getDrawable(2130842159)).getBitmap();
-              ((MultiMembersUI.Holder)localObject1).d.setImageBitmap((Bitmap)localObject2);
+              ((MultiMembersUI.Holder)localObject1).i.setVisibility(0);
+              ((MultiMembersUI.Holder)localObject1).i.setText(((MultiMembersUI.MVMembersInfo)localObject3).h);
+              localObject2 = ((BitmapDrawable)MultiMembersVideoUI.e(this.a).getDrawable(2130843087)).getBitmap();
+              ((MultiMembersUI.Holder)localObject1).g.setImageBitmap((Bitmap)localObject2);
             }
             else
             {
-              ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-              ((MultiMembersUI.Holder)localObject1).d.setImageBitmap(((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_AndroidGraphicsBitmap);
+              ((MultiMembersUI.Holder)localObject1).i.setVisibility(8);
+              ((MultiMembersUI.Holder)localObject1).g.setImageBitmap(((MultiMembersUI.MVMembersInfo)localObject3).i);
             }
           }
           else
           {
-            ((MultiMembersUI.Holder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-            ((MultiMembersUI.Holder)localObject1).d.setImageResource(2130840321);
+            ((MultiMembersUI.Holder)localObject1).i.setVisibility(8);
+            ((MultiMembersUI.Holder)localObject1).g.setImageResource(2130841060);
           }
-          if (((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 1) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().j == 10)) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().E == 2)) {
-            if (((MultiMembersUI.MVMembersInfo)localObject3).e)
+          if (((this.a.j.k().aQ == 1) && (this.a.j.k().o == 10)) || (this.a.j.k().aQ == 2)) {
+            if (((MultiMembersUI.MVMembersInfo)localObject3).m)
             {
-              if (((MultiMembersUI.Holder)localObject1).e.getVisibility() != 0) {
-                ((MultiMembersUI.Holder)localObject1).e.setVisibility(0);
+              if (((MultiMembersUI.Holder)localObject1).m.getVisibility() != 0) {
+                ((MultiMembersUI.Holder)localObject1).m.setVisibility(0);
               }
-              if (((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-                ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              if (((MultiMembersUI.Holder)localObject1).c.getVisibility() == 0) {
+                ((MultiMembersUI.Holder)localObject1).c.setVisibility(8);
               }
-              ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Boolean = false;
+              ((MultiMembersUI.MVMembersInfo)localObject3).b = false;
             }
-            else if (((MultiMembersUI.Holder)localObject1).e.getVisibility() == 0)
+            else if (((MultiMembersUI.Holder)localObject1).m.getVisibility() == 0)
             {
-              ((MultiMembersUI.Holder)localObject1).e.setVisibility(8);
+              ((MultiMembersUI.Holder)localObject1).m.setVisibility(8);
             }
           }
-          ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Boolean = ((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Boolean;
-          if (((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Boolean) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          ((MultiMembersUI.Holder)localObject1).k = ((MultiMembersUI.MVMembersInfo)localObject3).b;
+          if (((MultiMembersUI.Holder)localObject1).k) {
+            ((MultiMembersUI.Holder)localObject1).c.setVisibility(0);
           } else {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            ((MultiMembersUI.Holder)localObject1).c.setVisibility(8);
           }
-          if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Int == 2) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Int = 5;
+          if (((MultiMembersUI.MVMembersInfo)localObject3).d == 2) {
+            ((MultiMembersUI.Holder)localObject1).b = 5;
+          } else if (((MultiMembersUI.MVMembersInfo)localObject3).e) {
+            ((MultiMembersUI.Holder)localObject1).b = 3;
+          } else if (((MultiMembersUI.MVMembersInfo)localObject3).d == 1) {
+            ((MultiMembersUI.Holder)localObject1).b = 2;
           } else if (((MultiMembersUI.MVMembersInfo)localObject3).c) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Int = 3;
-          } else if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_a_of_type_Int == 1) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Int = 2;
-          } else if (((MultiMembersUI.MVMembersInfo)localObject3).jdField_b_of_type_Boolean) {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Int = 1;
+            ((MultiMembersUI.Holder)localObject1).b = 1;
           } else {
-            ((MultiMembersUI.Holder)localObject1).jdField_a_of_type_Int = 0;
+            ((MultiMembersUI.Holder)localObject1).b = 0;
           }
           localObject2 = paramView;
-          if (((MultiMembersUI.Holder)localObject1).d != null) {
-            if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().E != 1) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().j != 10))
+          if (((MultiMembersUI.Holder)localObject1).g != null) {
+            if ((this.a.j.k().aQ != 1) || (this.a.j.k().o != 10))
             {
               localObject2 = paramView;
-              if (this.a.jdField_a_of_type_Int != 2) {}
+              if (this.a.c != 2) {}
             }
             else
             {
               localObject2 = paramView;
-              if (!((MultiMembersUI.MVMembersInfo)localObject3).f)
+              if (!((MultiMembersUI.MVMembersInfo)localObject3).o)
               {
-                localObject3 = ((MultiMembersUI.Holder)localObject1).d.getDrawable();
+                localObject3 = ((MultiMembersUI.Holder)localObject1).g.getDrawable();
                 localObject2 = paramView;
                 if (localObject3 != null)
                 {
@@ -278,7 +278,7 @@ class MultiMembersVideoUI$MVAdapter
                   if ((localObject3 instanceof BitmapDrawable))
                   {
                     localObject2 = ImageUtil.a(((BitmapDrawable)localObject3).getBitmap(), true);
-                    ((MultiMembersUI.Holder)localObject1).d.setImageBitmap((Bitmap)localObject2);
+                    ((MultiMembersUI.Holder)localObject1).g.setImageBitmap((Bitmap)localObject2);
                     localObject2 = paramView;
                   }
                 }

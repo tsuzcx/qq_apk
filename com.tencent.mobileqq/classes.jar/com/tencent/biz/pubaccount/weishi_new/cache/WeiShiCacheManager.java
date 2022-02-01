@@ -33,19 +33,149 @@ import org.jetbrains.annotations.NotNull;
 
 public class WeiShiCacheManager
 {
-  private List<WSFriendItemData> jdField_a_of_type_JavaUtilList;
-  private Map<String, Set<String>> jdField_a_of_type_JavaUtilMap;
+  private List<WSFriendItemData> a;
+  private Map<String, Set<String>> b;
   
-  private stSimpleGetFeedListRsp a()
+  @NotNull
+  private stSimpleGetFeedListRsp a(boolean paramBoolean)
   {
-    if ((a(8)) && (a() >= 8))
+    WSLog.b("WeiShiCacheManager", "读取瀑布流缓存数据");
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = new stSimpleGetFeedListRsp();
+    localstSimpleGetFeedListRsp1.feeds = new ArrayList();
+    if (paramBoolean)
+    {
+      localstSimpleGetFeedListRsp2 = d(4);
+      if ((localstSimpleGetFeedListRsp2 != null) && (localstSimpleGetFeedListRsp2.feeds != null)) {
+        localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
+      }
+    }
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = d(1);
+    if ((localstSimpleGetFeedListRsp2 != null) && (localstSimpleGetFeedListRsp2.feeds != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("瀑布流缓存数量 = ");
+      localStringBuilder.append(localstSimpleGetFeedListRsp2.feeds.size());
+      WSLog.b("WeiShiCacheManager", localStringBuilder.toString());
+      localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
+    }
+    return localstSimpleGetFeedListRsp1;
+  }
+  
+  private <T extends JceStruct> T a(T paramT, int paramInt)
+  {
+    String str;
+    if (paramInt == 1) {
+      str = i();
+    } else if (paramInt == 2) {
+      str = k();
+    } else if (paramInt == 5) {
+      str = l();
+    } else if (paramInt == 3) {
+      str = n();
+    } else if (paramInt == 4) {
+      str = j();
+    } else if (paramInt == 6) {
+      str = m();
+    } else if (paramInt == 7) {
+      str = o();
+    } else {
+      str = "";
+    }
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    return WSFileUtils.b(paramT, str);
+  }
+  
+  public static WeiShiCacheManager a()
+  {
+    return WeiShiCacheManager.SingletonHolder.a();
+  }
+  
+  private boolean a(JceStruct paramJceStruct, String paramString, int paramInt)
+  {
+    if (paramInt <= 0) {
+      return false;
+    }
+    return WSFileUtils.a(paramJceStruct, paramString);
+  }
+  
+  public static String b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_red_msg_valid_feed_id");
+    localStringBuilder.append(paramInt);
+    return WSSharePreferencesUtil.b(localStringBuilder.toString(), "");
+  }
+  
+  @NotNull
+  private Set<String> b(String paramString)
+  {
+    if (this.b == null) {
+      this.b = new HashMap();
+    }
+    Set localSet = (Set)this.b.get(paramString);
+    Object localObject = localSet;
+    if (localSet == null)
+    {
+      localObject = new HashSet();
+      this.b.put(paramString, localObject);
+    }
+    return localObject;
+  }
+  
+  private stSimpleGetFeedListRsp d(int paramInt)
+  {
+    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), paramInt);
+  }
+  
+  private boolean d(List<stSimpleMetaFeed> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return true;
+      }
+      int i = ((stSimpleMetaFeed)paramList.get(paramList.size() - 1)).hashCode();
+      if (i == WSInitializeHelper.a().g())
+      {
+        WSLog.e("WeiShiCacheManager", "[onPause][handleCacheData] has been cached，not cache again");
+        return true;
+      }
+      WSInitializeHelper.a().a(i);
+      return false;
+    }
+    return true;
+  }
+  
+  private String e(int paramInt)
+  {
+    if (paramInt == 13) {
+      return l();
+    }
+    return k();
+  }
+  
+  private int f()
+  {
+    return WSGlobalConfig.a().n();
+  }
+  
+  private int g()
+  {
+    return WSFeedDataManager.a().e;
+  }
+  
+  private stSimpleGetFeedListRsp h()
+  {
+    if ((a(8)) && (b() >= 8))
     {
       WSLog.b("WeiShiCacheManager", "仅读取红点缓存");
-      return a(2);
+      return d(2);
     }
     WSLog.b("WeiShiCacheManager", "读取红点缓存和瀑布流缓存");
-    Object localObject = a(2);
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = a(1);
+    Object localObject = d(2);
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = d(1);
     stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = new stSimpleGetFeedListRsp();
     localstSimpleGetFeedListRsp2.feeds = new ArrayList();
     if ((localObject != null) && (((stSimpleGetFeedListRsp)localObject).feeds != null))
@@ -67,68 +197,7 @@ public class WeiShiCacheManager
     return localstSimpleGetFeedListRsp2;
   }
   
-  private stSimpleGetFeedListRsp a(int paramInt)
-  {
-    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), paramInt);
-  }
-  
-  @NotNull
-  private stSimpleGetFeedListRsp a(boolean paramBoolean)
-  {
-    WSLog.b("WeiShiCacheManager", "读取瀑布流缓存数据");
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp1 = new stSimpleGetFeedListRsp();
-    localstSimpleGetFeedListRsp1.feeds = new ArrayList();
-    if (paramBoolean)
-    {
-      localstSimpleGetFeedListRsp2 = a(4);
-      if ((localstSimpleGetFeedListRsp2 != null) && (localstSimpleGetFeedListRsp2.feeds != null)) {
-        localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
-      }
-    }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp2 = a(1);
-    if ((localstSimpleGetFeedListRsp2 != null) && (localstSimpleGetFeedListRsp2.feeds != null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("瀑布流缓存数量 = ");
-      localStringBuilder.append(localstSimpleGetFeedListRsp2.feeds.size());
-      WSLog.b("WeiShiCacheManager", localStringBuilder.toString());
-      localstSimpleGetFeedListRsp1.feeds.addAll(localstSimpleGetFeedListRsp2.feeds);
-    }
-    return localstSimpleGetFeedListRsp1;
-  }
-  
-  private <T extends JceStruct> T a(T paramT, int paramInt)
-  {
-    String str;
-    if (paramInt == 1) {
-      str = a();
-    } else if (paramInt == 2) {
-      str = c();
-    } else if (paramInt == 5) {
-      str = d();
-    } else if (paramInt == 3) {
-      str = f();
-    } else if (paramInt == 4) {
-      str = b();
-    } else if (paramInt == 6) {
-      str = e();
-    } else if (paramInt == 7) {
-      str = g();
-    } else {
-      str = "";
-    }
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return WSFileUtils.a(paramT, str);
-  }
-  
-  public static WeiShiCacheManager a()
-  {
-    return WeiShiCacheManager.SingletonHolder.a();
-  }
-  
-  private String a()
+  private String i()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
@@ -136,63 +205,7 @@ public class WeiShiCacheManager
     return localStringBuilder.toString();
   }
   
-  public static String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_red_msg_valid_feed_id");
-    localStringBuilder.append(paramInt);
-    return WSSharePreferencesUtil.a(localStringBuilder.toString(), "");
-  }
-  
-  @NotNull
-  private Set<String> a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    }
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    Object localObject = localSet;
-    if (localSet == null)
-    {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-    }
-    return localObject;
-  }
-  
-  private boolean a(JceStruct paramJceStruct, String paramString, int paramInt)
-  {
-    if (paramInt <= 0) {
-      return false;
-    }
-    return WSFileUtils.a(paramJceStruct, paramString);
-  }
-  
-  private boolean a(List<stSimpleMetaFeed> paramList)
-  {
-    if (paramList != null)
-    {
-      if (paramList.size() <= 0) {
-        return true;
-      }
-      int i = ((stSimpleMetaFeed)paramList.get(paramList.size() - 1)).hashCode();
-      if (i == WSInitializeHelper.a().a())
-      {
-        WSLog.e("WeiShiCacheManager", "[onPause][handleCacheData] has been cached，not cache again");
-        return true;
-      }
-      WSInitializeHelper.a().a(i);
-      return false;
-    }
-    return true;
-  }
-  
-  private int b()
-  {
-    return WSGlobalConfig.a().d();
-  }
-  
-  private String b()
+  private String j()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
@@ -200,20 +213,7 @@ public class WeiShiCacheManager
     return localStringBuilder.toString();
   }
   
-  private String b(int paramInt)
-  {
-    if (paramInt == 13) {
-      return d();
-    }
-    return c();
-  }
-  
-  private int c()
-  {
-    return WSFeedDataManager.a().a;
-  }
-  
-  private String c()
+  private String k()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
@@ -221,7 +221,7 @@ public class WeiShiCacheManager
     return localStringBuilder.toString();
   }
   
-  private String d()
+  private String l()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
@@ -229,60 +229,31 @@ public class WeiShiCacheManager
     return localStringBuilder.toString();
   }
   
-  private String e()
+  private String m()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
     localStringBuilder.append("/file/weishi/ws_tabs_info_");
-    localStringBuilder.append(WeishiUtils.a());
+    localStringBuilder.append(WeishiUtils.c());
     return localStringBuilder.toString();
   }
   
-  private String f()
+  private String n()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
     localStringBuilder.append("/file/weishi/ws_follow_data_");
-    localStringBuilder.append(WeishiUtils.a());
+    localStringBuilder.append(WeishiUtils.c());
     return localStringBuilder.toString();
   }
   
-  private String g()
+  private String o()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
     localStringBuilder.append("/file/weishi/ws_follow_drama_data_");
-    localStringBuilder.append(WeishiUtils.a());
+    localStringBuilder.append(WeishiUtils.c());
     return localStringBuilder.toString();
-  }
-  
-  public int a()
-  {
-    return WSSharePreferencesUtil.a("key_red_msg_valid_count", 0);
-  }
-  
-  public List<WSFriendItemData> a()
-  {
-    List localList2 = this.jdField_a_of_type_JavaUtilList;
-    List localList1 = localList2;
-    if (localList2 == null) {
-      localList1 = Collections.emptyList();
-    }
-    return localList1;
-  }
-  
-  public Set<String> a()
-  {
-    return a(WeishiUtils.a());
-  }
-  
-  public void a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WeiShiCacheManager.java][clearRedDotPreloadCache] scene:");
-    localStringBuilder.append(paramInt);
-    WSLog.e("WeiShiCacheManager", localStringBuilder.toString());
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.13(this, paramInt));
   }
   
   public void a(@Nullable stGetFollowedDramasRsp paramstGetFollowedDramasRsp)
@@ -314,12 +285,12 @@ public class WeiShiCacheManager
   
   public void a(String paramString)
   {
-    a(WeishiUtils.a()).add(paramString);
+    b(WeishiUtils.c()).add(paramString);
   }
   
   public void a(List<stFeed> paramList)
   {
-    if (c() == 0)
+    if (g() == 0)
     {
       ThreadManager.executeOnFileThread(new WeiShiCacheManager.5(this));
       return;
@@ -332,7 +303,7 @@ public class WeiShiCacheManager
   
   public void a(List<stSimpleMetaFeed> paramList, int paramInt)
   {
-    if (b() == 0)
+    if (f() == 0)
     {
       ThreadManager.executeOnFileThread(new WeiShiCacheManager.7(this));
       return;
@@ -352,12 +323,12 @@ public class WeiShiCacheManager
       ThreadManager.executeOnFileThread(new WeiShiCacheManager.12(this, localstSimpleGetFeedListRsp, paramInt, localArrayList, paramList, paramLong));
       return;
     }
-    a(paramInt);
+    c(paramInt);
   }
   
   public void a(List<stSimpleMetaFeed> paramList, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt, String paramString)
   {
-    if (a(paramList)) {
+    if (d(paramList)) {
       return;
     }
     WSLog.e("WeiShiCacheManager", "[onPause][handleCacheData] to cache");
@@ -370,17 +341,12 @@ public class WeiShiCacheManager
     ThreadManager.post(new WeiShiCacheManager.1(this, paramBoolean, paramIWeiShiCacheCallback), 8, null, true);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_red_msg_valid_timestamp");
     localStringBuilder.append(paramInt);
-    long l1 = WSSharePreferencesUtil.a(localStringBuilder.toString(), 0L);
+    long l1 = WSSharePreferencesUtil.b(localStringBuilder.toString(), 0L);
     long l2 = System.currentTimeMillis();
     long l3 = l1 - l2;
     localStringBuilder = new StringBuilder();
@@ -392,6 +358,11 @@ public class WeiShiCacheManager
     localStringBuilder.append(l3);
     WSLog.d("WeiShiCacheManager", localStringBuilder.toString());
     return l3 > 0L;
+  }
+  
+  public int b()
+  {
+    return WSSharePreferencesUtil.b("key_red_msg_valid_count", 0);
   }
   
   public void b(IWeiShiCacheCallback paramIWeiShiCacheCallback)
@@ -410,6 +381,15 @@ public class WeiShiCacheManager
     }
   }
   
+  public void c(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WeiShiCacheManager.java][clearRedDotPreloadCache] scene:");
+    localStringBuilder.append(paramInt);
+    WSLog.e("WeiShiCacheManager", localStringBuilder.toString());
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.13(this, paramInt));
+  }
+  
   public void c(IWeiShiCacheCallback paramIWeiShiCacheCallback)
   {
     ThreadManager.post(new WeiShiCacheManager.4(this, paramIWeiShiCacheCallback), 8, null, true);
@@ -417,16 +397,36 @@ public class WeiShiCacheManager
   
   public void c(List<WSFriendItemData> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public Set<String> d()
+  {
+    return b(WeishiUtils.c());
   }
   
   public void d(IWeiShiCacheCallback paramIWeiShiCacheCallback)
   {
     ThreadManager.executeOnFileThread(new WeiShiCacheManager.11(this, paramIWeiShiCacheCallback));
+  }
+  
+  public List<WSFriendItemData> e()
+  {
+    List localList2 = this.a;
+    List localList1 = localList2;
+    if (localList2 == null) {
+      localList1 = Collections.emptyList();
+    }
+    return localList1;
   }
   
   public void e(IWeiShiCacheCallback paramIWeiShiCacheCallback)
@@ -436,7 +436,7 @@ public class WeiShiCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager
  * JD-Core Version:    0.7.0.1
  */

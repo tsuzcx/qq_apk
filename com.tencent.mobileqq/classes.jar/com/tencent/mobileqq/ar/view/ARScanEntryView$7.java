@@ -22,17 +22,17 @@ class ARScanEntryView$7
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("PopUp onEnd  needReportRedDot = ");
-      localStringBuilder.append(ARScanEntryView.b(this.a));
+      localStringBuilder.append(ARScanEntryView.h(this.a));
       QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.7.1(this));
+    if (ARScanEntryView.d(this.a) != null) {
+      ARScanEntryView.d(this.a).post(new ARScanEntryView.7.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.7
  * JD-Core Version:    0.7.0.1
  */

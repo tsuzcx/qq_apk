@@ -37,44 +37,44 @@ class MsgBackupManager$4
       i = paramInt1;
     }
     String str;
-    if (MsgBackupManager.a(this.a) == 1)
+    if (MsgBackupManager.b(this.a) == 1)
     {
-      str = BaseApplication.getContext().getResources().getString(2131690577);
+      str = BaseApplication.getContext().getResources().getString(2131887488);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
-    else if (MsgBackupManager.a(this.a) == 3)
+    else if (MsgBackupManager.b(this.a) == 3)
     {
-      str = BaseApplication.getContext().getResources().getString(2131690579);
+      str = BaseApplication.getContext().getResources().getString(2131887490);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
     else
     {
-      str = BaseApplication.getContext().getResources().getString(2131690579);
+      str = BaseApplication.getContext().getResources().getString(2131887490);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.a(this.a)));
+    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.c(this.a)));
     localStringBuilder.append("B/s");
     Object localObject = String.format(str, new Object[] { localObject, localStringBuilder.toString() });
-    int i = MsgBackupAuthProcessor.a().a();
+    int i = MsgBackupAuthProcessor.a().c();
     if (paramInt1 == paramInt2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
       }
-      MsgBackupManager.m();
+      MsgBackupManager.q();
       this.a.a(QBaseActivity.sTopActivity, i);
       return;
     }
@@ -91,44 +91,44 @@ class MsgBackupManager$4
       QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
     }
     MsgBackupManager.a(this.a, paramLong);
-    int j = MsgBackupManager.b(this.a);
+    int j = MsgBackupManager.d(this.a);
     int i = j;
-    if (j != MsgBackupManager.b) {
+    if (j != MsgBackupManager.i) {
       i = j + 1;
     }
     String str;
-    if (MsgBackupManager.a(this.a) == 1)
+    if (MsgBackupManager.b(this.a) == 1)
     {
-      str = BaseApplication.getContext().getString(2131690577);
+      str = BaseApplication.getContext().getString(2131887488);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
-    else if (MsgBackupManager.a(this.a) == 3)
+    else if (MsgBackupManager.b(this.a) == 3)
     {
-      str = BaseApplication.getContext().getResources().getString(2131690579);
+      str = BaseApplication.getContext().getResources().getString(2131887490);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
     else
     {
-      str = BaseApplication.getContext().getResources().getString(2131690579);
+      str = BaseApplication.getContext().getResources().getString(2131887490);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      ((StringBuilder)localObject).append(MsgBackupManager.i);
       localObject = ((StringBuilder)localObject).toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.a(this.a)));
+    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.c(this.a)));
     localStringBuilder.append("B/S");
     Object localObject = String.format(str, new Object[] { localObject, localStringBuilder.toString() });
-    this.a.b(MsgBackupAuthProcessor.a().a(), (String)localObject);
+    this.a.b(MsgBackupAuthProcessor.a().c(), (String)localObject);
   }
   
   public void a(boolean paramBoolean) {}
@@ -142,11 +142,11 @@ class MsgBackupManager$4
     MsgBackupTimeStats.a(null, "total_transport_cost");
   }
   
-  public void h_(boolean paramBoolean) {}
+  public void m_(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager.4
  * JD-Core Version:    0.7.0.1
  */

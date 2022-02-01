@@ -17,29 +17,29 @@ public class WaveView
 {
   public static int a;
   public static int b;
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new WaveView.1(this));
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;
   public int d;
   public int e;
-  private int f = -1249807;
+  private float f;
   private int g = -1249807;
-  private int h;
+  private int h = -1249807;
   private int i;
   private int j;
-  private int k;
-  private int l;
-  private int m;
-  private int n;
+  private Path k;
+  private Path l;
+  private Paint m;
+  private Paint n;
   private int o;
   private int p;
   private int q;
   private int r;
   private int s;
+  private int t;
+  private int u;
+  private int v;
+  private int w;
+  private int x;
+  private Handler y = new Handler(new WaveView.1(this));
   
   public WaveView(Context paramContext)
   {
@@ -55,97 +55,97 @@ public class WaveView
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(102);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(38);
-    this.i = getResources().getDisplayMetrics().widthPixels;
-    this.h = getResources().getDimensionPixelSize(2131298348);
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    double d1 = this.jdField_a_of_type_Float * 4.0F;
+    this.l = new Path();
+    this.k = new Path();
+    this.m = new Paint();
+    this.m.setAntiAlias(true);
+    this.m.setColor(this.g);
+    this.m.setAlpha(102);
+    this.n = new Paint();
+    this.n.setAntiAlias(true);
+    this.n.setColor(this.h);
+    this.n.setAlpha(38);
+    this.j = getResources().getDisplayMetrics().widthPixels;
+    this.i = getResources().getDimensionPixelSize(2131299049);
+    this.f = getResources().getDisplayMetrics().density;
+    double d1 = this.f * 4.0F;
     Double.isNaN(d1);
-    jdField_a_of_type_Int = (int)(d1 + 0.5D);
-    int i1 = jdField_a_of_type_Int;
+    a = (int)(d1 + 0.5D);
+    int i1 = a;
     this.c = i1;
     this.d = (i1 * 3);
     this.e = (this.d - this.c);
-    i1 = this.i;
+    i1 = this.j;
     int i2 = i1 / 125;
-    jdField_b_of_type_Int = i2;
-    this.s = i2;
-    this.k = 0;
-    this.j = (-i1);
-    this.l = (i1 / 4);
-    this.m = (i1 / 2);
-    this.n = (i1 * 3 / 4);
-    this.o = (i1 * 5 / 4);
-    this.p = (i1 * 3 / 2);
-    this.q = (i1 * 7 / 4);
-    this.r = (i1 * 2);
+    b = i2;
+    this.x = i2;
+    this.p = 0;
+    this.o = (-i1);
+    this.q = (i1 / 4);
+    this.r = (i1 / 2);
+    this.s = (i1 * 3 / 4);
+    this.t = (i1 * 5 / 4);
+    this.u = (i1 * 3 / 2);
+    this.v = (i1 * 7 / 4);
+    this.w = (i1 * 2);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.j, this.d);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    int i1 = this.j;
-    float f1 = this.l + i1;
+    this.k.reset();
+    this.k.moveTo(this.o, this.d);
+    Path localPath = this.k;
+    int i1 = this.o;
+    float f1 = this.q + i1;
     int i2 = this.d;
-    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.m, i2);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    i1 = this.j;
-    f1 = this.n + i1;
+    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.r, i2);
+    localPath = this.k;
+    i1 = this.o;
+    f1 = this.s + i1;
     i2 = this.d;
-    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.i, i2);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    i1 = this.j;
-    f1 = this.o + i1;
+    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.j, i2);
+    localPath = this.k;
+    i1 = this.o;
+    f1 = this.t + i1;
     i2 = this.d;
-    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.p, i2);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    i1 = this.j;
-    f1 = this.q + i1;
+    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.u, i2);
+    localPath = this.k;
+    i1 = this.o;
+    f1 = this.v + i1;
     i2 = this.d;
-    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.r, i2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.j + this.r, this.h);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.j, this.h);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.w, i2);
+    this.k.lineTo(this.o + this.w, this.i);
+    this.k.lineTo(this.o, this.i);
+    this.k.close();
   }
   
   private void c()
   {
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(this.k, this.e);
-    Path localPath = this.jdField_b_of_type_AndroidGraphicsPath;
-    int i1 = this.k;
-    float f1 = this.l + i1;
+    this.l.reset();
+    this.l.moveTo(this.p, this.e);
+    Path localPath = this.l;
+    int i1 = this.p;
+    float f1 = this.q + i1;
     int i2 = this.e;
-    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.m, i2);
-    localPath = this.jdField_b_of_type_AndroidGraphicsPath;
-    i1 = this.k;
-    f1 = this.n + i1;
+    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.r, i2);
+    localPath = this.l;
+    i1 = this.p;
+    f1 = this.s + i1;
     i2 = this.e;
-    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.i, i2);
-    localPath = this.jdField_b_of_type_AndroidGraphicsPath;
-    i1 = this.k;
-    f1 = this.o + i1;
+    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.j, i2);
+    localPath = this.l;
+    i1 = this.p;
+    f1 = this.t + i1;
     i2 = this.e;
-    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.p, i2);
-    localPath = this.jdField_b_of_type_AndroidGraphicsPath;
-    i1 = this.k;
-    f1 = this.q + i1;
+    localPath.quadTo(f1, i2 - this.c * 2, i1 + this.u, i2);
+    localPath = this.l;
+    i1 = this.p;
+    f1 = this.v + i1;
     i2 = this.e;
-    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.r, i2);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(this.k + this.r, this.h);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(this.k, this.h);
-    this.jdField_b_of_type_AndroidGraphicsPath.close();
+    localPath.quadTo(f1, this.c * 2 + i2, i1 + this.w, i2);
+    this.l.lineTo(this.p + this.w, this.i);
+    this.l.lineTo(this.p, this.i);
+    this.l.close();
   }
   
   private void d()
@@ -153,7 +153,7 @@ public class WaveView
     if (!VersionUtils.e()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    this.y.sendEmptyMessage(1001);
   }
   
   private void e()
@@ -161,7 +161,7 @@ public class WaveView
     if (!VersionUtils.e()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
+    this.y.sendEmptyMessage(1003);
   }
   
   protected void onAttachedToWindow()
@@ -187,13 +187,13 @@ public class WaveView
     super.onDraw(paramCanvas);
     b();
     c();
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.l, this.n);
+    paramCanvas.drawPath(this.k, this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.WaveView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public final class ScreenCaptureHelper$captureAndUpload$1
   
   public void a()
   {
-    IImageUploadListener localIImageUploadListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener;
+    IImageUploadListener localIImageUploadListener = this.b;
     if (localIImageUploadListener != null) {
       localIImageUploadListener.a(1, "");
     }
@@ -23,12 +23,12 @@ public final class ScreenCaptureHelper$captureAndUpload$1
   public void a(@NotNull Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
-    ScreenCaptureHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedbackScreenCaptureHelper, paramBitmap, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener);
+    ScreenCaptureHelper.a(this.a, paramBitmap, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeedback.ScreenCaptureHelper.captureAndUpload.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,26 +18,26 @@ import java.util.List;
 class IntimateContentItemGiftView$FriendGiftAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 0;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private List<String> b;
+  private int c = 0;
   
   private IntimateContentItemGiftView$FriendGiftAdapter(IntimateContentItemGiftView paramIntimateContentItemGiftView) {}
   
   public void a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_Int == 0)
+    this.b = paramList;
+    if (this.c == 0)
     {
-      this.jdField_a_of_type_Int = ((ViewUtils.a() - ViewUtils.a(40.0F) - 80) / ViewUtils.a(60.0F));
+      this.c = ((ViewUtils.getScreenWidth() - ViewUtils.dip2px(40.0F) - 80) / ViewUtils.dip2px(60.0F));
       if (QLog.isColorLevel())
       {
         paramList = new StringBuilder();
         paramList.append("gif mark max count: ");
-        paramList.append(this.jdField_a_of_type_Int);
+        paramList.append(this.c);
         QLog.d("intimate_relationship", 2, paramList.toString());
       }
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Int = 5;
+      if (this.c <= 0) {
+        this.c = 5;
       }
     }
     notifyDataSetChanged();
@@ -45,21 +45,21 @@ class IntimateContentItemGiftView$FriendGiftAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
     int i = localList.size();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.c;
     if (i > j) {
       return j;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -72,15 +72,15 @@ class IntimateContentItemGiftView$FriendGiftAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView.a).inflate(2131559269, null);
+      localView = LayoutInflater.from(this.a.a).inflate(2131625190, null);
     }
-    ImageView localImageView = (ImageView)localView.findViewById(2131367338);
-    paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ImageView localImageView = (ImageView)localView.findViewById(2131433795);
+    paramView = (String)this.b.get(paramInt);
     if (!TextUtils.isEmpty(paramView)) {
       try
       {
         localObject = URLDrawable.getDrawable(paramView, null);
-        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.x);
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.y);
         localImageView.setImageDrawable((Drawable)localObject);
       }
       catch (Exception localException)
@@ -97,7 +97,7 @@ class IntimateContentItemGiftView$FriendGiftAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemGiftView.FriendGiftAdapter
  * JD-Core Version:    0.7.0.1
  */

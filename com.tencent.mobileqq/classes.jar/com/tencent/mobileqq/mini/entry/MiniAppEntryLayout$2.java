@@ -26,7 +26,7 @@ class MiniAppEntryLayout$2
         paramDownloadParams = localBitmap;
         localRect.right = paramBitmap.getWidth();
         paramDownloadParams = localBitmap;
-        int i = ViewUtils.a(240.0F);
+        int i = ViewUtils.dip2px(240.0F);
         paramDownloadParams = localBitmap;
         localRect.bottom = Math.min(paramBitmap.getHeight(), i);
         paramDownloadParams = localBitmap;
@@ -73,7 +73,7 @@ class MiniAppEntryLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryLayout.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,33 +24,33 @@ class ReadInJoyFastWebBottomSocialViewNew$1$1
       {
         localObject = paramViewBase.getEventAttachedData();
         i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-        AbsBaseArticleInfo localAbsBaseArticleInfo = this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.b;
-        FastWebArticleInfo localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.a;
+        AbsBaseArticleInfo localAbsBaseArticleInfo = this.a.a.aQ;
+        FastWebArticleInfo localFastWebArticleInfo = this.a.a.aR;
         if (i != 1129) {}
         switch (i)
         {
         case 1004: 
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            RIJJumpUtils.a(this.a.jdField_a_of_type_AndroidContentContext, (String)localObject);
+            RIJJumpUtils.c(this.a.b, (String)localObject);
             return;
-            ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo, 1);
+            ReadInJoyFastWebBottomSocialViewNew.a(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo, 1);
             return;
-            ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo);
+            ReadInJoyFastWebBottomSocialViewNew.d(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo);
             return;
-            ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo);
+            ReadInJoyFastWebBottomSocialViewNew.e(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo);
             return;
-            ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo);
+            ReadInJoyFastWebBottomSocialViewNew.a(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo);
             return;
           }
           break;
         case 1003: 
-          ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo);
+          ReadInJoyFastWebBottomSocialViewNew.b(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo);
           return;
         case 1002: 
-          ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_AndroidContentContext, localAbsBaseArticleInfo, localFastWebArticleInfo);
+          ReadInJoyFastWebBottomSocialViewNew.c(this.a.c, this.a.b, localAbsBaseArticleInfo, localFastWebArticleInfo);
           return;
-          ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew, paramViewBase, localAbsBaseArticleInfo, localFastWebArticleInfo, 7);
+          ReadInJoyFastWebBottomSocialViewNew.a(this.a.c, paramViewBase, localAbsBaseArticleInfo, localFastWebArticleInfo, 7);
           return;
         }
       }
@@ -70,7 +70,7 @@ class ReadInJoyFastWebBottomSocialViewNew$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew.1.1
  * JD-Core Version:    0.7.0.1
  */

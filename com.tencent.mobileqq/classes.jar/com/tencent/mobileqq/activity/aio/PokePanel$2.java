@@ -16,11 +16,11 @@ class PokePanel$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.PokePanel", 2, "[pokepanel]start parsing config");
     }
-    PokePanel.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    PokePanel.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
-    ArrayList localArrayList = PokeItemHelper.a(PokePanel.a(this.this$0), this.this$0.a);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+    PokePanel.a(this.this$0, this.a);
+    PokePanel.a(this.this$0, this.b);
+    ArrayList localArrayList = PokeItemHelper.b(PokePanel.a(this.this$0), this.this$0.g);
+    this.b.addAll(localArrayList);
+    if (this.b.size() > 0) {
       ThreadManager.getUIHandler().post(new PokePanel.2.1(this));
     }
     if (QLog.isColorLevel()) {
@@ -30,7 +30,7 @@ class PokePanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.2
  * JD-Core Version:    0.7.0.1
  */

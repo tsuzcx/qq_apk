@@ -12,15 +12,15 @@ class DocFileBrowserView$3
   {
     Object localObject = LocalTbsViewManager.a();
     DocFileBrowserView localDocFileBrowserView = this.this$0;
-    DocFileBrowserView.a(localDocFileBrowserView, ((LocalTbsViewManager)localObject).a(localDocFileBrowserView.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback));
+    DocFileBrowserView.a(localDocFileBrowserView, ((LocalTbsViewManager)localObject).a(localDocFileBrowserView.e, this.a, this.b));
     localObject = this.this$0;
-    DocFileBrowserView.a((DocFileBrowserView)localObject, null, DocFileBrowserView.a((DocFileBrowserView)localObject));
-    DocFileBrowserView.b(this.this$0);
+    DocFileBrowserView.a((DocFileBrowserView)localObject, null, DocFileBrowserView.b((DocFileBrowserView)localObject));
+    DocFileBrowserView.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.3
  * JD-Core Version:    0.7.0.1
  */

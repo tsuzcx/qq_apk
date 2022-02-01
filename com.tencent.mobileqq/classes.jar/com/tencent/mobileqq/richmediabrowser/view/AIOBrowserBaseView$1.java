@@ -13,14 +13,14 @@ class AIOBrowserBaseView$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.a.a != null)) {
-      this.a.a.a.updateSystemUIVisablity();
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.a.c != null)) {
+      this.a.a.c.updateSystemUIVisablity();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOBrowserBaseView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent;
 import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent.PlayerState;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.lite.IliveLiteMonitorUtil;
+import cooperation.ilive.lite.IliveMetricsReportUtil;
 import cooperation.ilive.lite.heart.IliveRoomHeartController;
 
 class IliveReportModule$2
@@ -20,8 +21,8 @@ class IliveReportModule$2
       if (paramPlayerStateEvent.playerState == null) {
         return;
       }
-      IliveReportModule.a(this.a).a(paramPlayerStateEvent.playerState);
-      IliveReportModule.a(this.a).a(false, IliveReportModule.a(this.a));
+      IliveReportModule.b(this.a).a(paramPlayerStateEvent.playerState);
+      IliveReportModule.b(this.a).a(false, IliveReportModule.a(this.a));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("PlayerStateEvent = ");
       localStringBuilder.append(paramPlayerStateEvent.playerState.toString());
@@ -30,17 +31,27 @@ class IliveReportModule$2
       localStringBuilder.append(" roomId = ");
       localStringBuilder.append(IliveReportModule.a(this.a));
       localStringBuilder.append(" mIsFirstFrame = ");
-      localStringBuilder.append(IliveReportModule.a(this.a));
+      localStringBuilder.append(IliveReportModule.c(this.a));
+      localStringBuilder.append(" mIsRtmpStop = ");
+      localStringBuilder.append(IliveReportModule.d(this.a));
+      localStringBuilder.append(" mAnchorNickName = ");
+      localStringBuilder.append(IliveReportModule.e(this.a));
       QLog.e("IliveReportModule", 1, localStringBuilder.toString());
-      if ((IliveReportModule.b(this.a)) && (!IliveReportModule.c(this.a)) && (paramPlayerStateEvent.playerState == PlayerStateEvent.PlayerState.PLAY_ERROR) && (!IliveReportModule.a(this.a))) {
+      if ((IliveReportModule.f(this.a)) && (!IliveReportModule.d(this.a)) && (paramPlayerStateEvent.playerState == PlayerStateEvent.PlayerState.PLAY_ERROR) && (!IliveReportModule.c(this.a)))
+      {
         IliveLiteMonitorUtil.a(IliveReportModule.a(this.a));
+        paramPlayerStateEvent = new StringBuilder();
+        paramPlayerStateEvent.append(String.valueOf(IliveReportModule.a(this.a)));
+        paramPlayerStateEvent.append("_");
+        paramPlayerStateEvent.append(IliveReportModule.e(this.a));
+        IliveMetricsReportUtil.a(paramPlayerStateEvent.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.2
  * JD-Core Version:    0.7.0.1
  */

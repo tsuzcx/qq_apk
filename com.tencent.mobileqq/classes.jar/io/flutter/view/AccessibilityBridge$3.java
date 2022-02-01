@@ -35,23 +35,17 @@ class AccessibilityBridge$3
     } else {
       i = 0;
     }
-    if (i != 0)
-    {
-      paramUri = this.this$0;
-      i = AccessibilityBridge.access$1000(paramUri) | AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value;
+    if (i != 0) {
+      AccessibilityBridge.access$1076(this.this$0, AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value);
+    } else {
+      AccessibilityBridge.access$1072(this.this$0, AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value ^ 0xFFFFFFFF);
     }
-    else
-    {
-      paramUri = this.this$0;
-      i = AccessibilityBridge.access$1000(paramUri) & (AccessibilityBridge.AccessibilityFeature.DISABLE_ANIMATIONS.value ^ 0xFFFFFFFF);
-    }
-    AccessibilityBridge.access$1002(paramUri, i);
     AccessibilityBridge.access$1100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.3
  * JD-Core Version:    0.7.0.1
  */

@@ -33,13 +33,13 @@ import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast.IToastValidListener;
+import com.tencent.qcircle.tavcut.bean.SolidData;
+import com.tencent.qcircle.tavcut.bean.TextItem;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.effect.StickerModel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tavcut.bean.SolidData;
-import com.tencent.tavcut.bean.TextItem;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.effect.StickerModel;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -56,26 +56,26 @@ import org.json.JSONObject;
 public class AEEditorImageTemplatePanel
   extends FrameLayout
 {
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
   public static final String a = "AEEditorImageTemplatePanel";
-  private static boolean jdField_a_of_type_Boolean = true;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  public final SparseArray<String> a;
-  private ImageTemplateControlListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
-  private TemplateMaterialContentAdapter jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter;
-  private AEEditorStickerViewModel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel;
-  private AEEditorTextViewModel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel;
-  private MaterialClassifierView jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
-  private TAVCutImageSession jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final List<MetaCategory> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ConcurrentHashMap<String, MetaMaterial> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private long jdField_b_of_type_Long = -1L;
-  private HashMap<Integer, Boolean> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private final List<MetaMaterial> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private List<AEEditorImageInfo> c;
+  private static boolean k = true;
+  private static Boolean t;
+  public final SparseArray<String> b = new SparseArray();
+  private MaterialClassifierView c;
+  private TemplateMaterialContentAdapter d;
+  private TAVCutImageSession e;
+  private ImageTemplateControlListener f;
+  private final List<MetaCategory> g = new ArrayList();
+  private final List<MetaMaterial> h = new ArrayList();
+  private int i = -1;
+  private List<AEEditorImageInfo> j;
+  private long l = -1L;
+  private AEEditorTextViewModel m;
+  private AEEditorStickerViewModel n;
+  private ConcurrentHashMap<String, MetaMaterial> o;
+  private boolean p;
+  private long q = -1L;
+  private HashMap<Integer, String> r = new HashMap();
+  private HashMap<Integer, Boolean> s = new HashMap();
   
   public AEEditorImageTemplatePanel(@NonNull Context paramContext)
   {
@@ -90,13 +90,7 @@ public class AEEditorImageTemplatePanel
   public AEEditorImageTemplatePanel(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     a(paramContext);
-  }
-  
-  private ApplyMaterialLocalTask a()
-  {
-    return new AEEditorImageTemplatePanel.3(this);
   }
   
   private List<String> a(JSONArray paramJSONArray)
@@ -104,10 +98,10 @@ public class AEEditorImageTemplatePanel
     ArrayList localArrayList = new ArrayList();
     if (paramJSONArray != null)
     {
-      int i = 0;
-      while (i < paramJSONArray.length())
+      int i1 = 0;
+      while (i1 < paramJSONArray.length())
       {
-        JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
+        JSONObject localJSONObject = paramJSONArray.optJSONObject(i1);
         if (localJSONObject != null)
         {
           String str2 = localJSONObject.optString("id");
@@ -126,7 +120,7 @@ public class AEEditorImageTemplatePanel
             localArrayList.add(str1);
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
     return localArrayList;
@@ -134,7 +128,7 @@ public class AEEditorImageTemplatePanel
   
   private void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.p) {
       return;
     }
     paramMetaMaterial = new AEEditorImageTemplatePanel.5(this, paramMetaMaterial, System.currentTimeMillis(), paramInt);
@@ -189,8 +183,8 @@ public class AEEditorImageTemplatePanel
           paramMetaMaterial.append(localAEFilterExtendBean.getMotionID());
           paramMetaMaterial = paramMetaMaterial.toString();
         }
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateTemplateAEKitModel(paramInt, f1, paramJSONObject, f2, localMap, paramMetaMaterial);
-        paramMetaMaterial = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
+        this.e.updateTemplateAEKitModel(paramInt, f1, paramJSONObject, f2, localMap, paramMetaMaterial);
+        paramMetaMaterial = this.f;
         if (paramMetaMaterial != null) {
           paramMetaMaterial.a(str1, paramJSONObject, f1);
         }
@@ -200,24 +194,24 @@ public class AEEditorImageTemplatePanel
   
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView = ((MaterialClassifierView)View.inflate(paramContext, 2064318570, this).findViewById(2064122044));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter = new TemplateMaterialContentAdapter(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter.a(a());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setup(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setCategoryItemListener(new AEEditorImageTemplatePanel.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setOnClearButtonClickListener(new AEEditorImageTemplatePanel.2(this));
-    long l = LocalMultiProcConfig.getLong("sp_key_use_template", this.jdField_a_of_type_Long);
-    if (System.currentTimeMillis() - l > QzoneConfig.getShowUseTemplateDialog()) {
-      jdField_a_of_type_Boolean = true;
+    this.c = ((MaterialClassifierView)View.inflate(paramContext, 2064056442, this).findViewById(2063990967));
+    this.d = new TemplateMaterialContentAdapter(paramContext);
+    this.d.a(d());
+    this.c.setup(this.d, this.g, this.h);
+    this.c.setCategoryItemListener(new AEEditorImageTemplatePanel.1(this));
+    this.c.setOnClearButtonClickListener(new AEEditorImageTemplatePanel.2(this));
+    long l1 = LocalMultiProcConfig.getLong("sp_key_use_template", this.l);
+    if (System.currentTimeMillis() - l1 > QzoneConfig.getShowUseTemplateDialog()) {
+      k = true;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.o = new ConcurrentHashMap();
   }
   
   private void a(@NonNull MetaMaterial paramMetaMaterial)
   {
     boolean bool2 = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener != null)
+    this.p = false;
+    if (this.f != null)
     {
       boolean bool1 = bool2;
       if (!ImageTemplateMaterialExKt.a(paramMetaMaterial))
@@ -227,40 +221,16 @@ public class AEEditorImageTemplatePanel
           bool1 = true;
         }
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener.d(bool1);
+      this.f.d(bool1);
     }
   }
   
   private void a(@NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.p) {
       return;
     }
     ThreadManager.excute(new AEEditorImageTemplatePanel.4(this, paramMetaMaterial, paramMaterialStatusCallback), 64, null, false);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    ImageTemplateControlListener localImageTemplateControlListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
-    if (localImageTemplateControlListener != null) {
-      localImageTemplateControlListener.e(paramBoolean);
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_JavaLangBoolean == null) {
-      if (!Build.HARDWARE.matches("qcom")) {
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-      } else if (Build.VERSION.SDK_INT < 21) {
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-      } else if (Build.VERSION.SDK_INT >= 23) {
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(Process.is64Bit());
-      } else {
-        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-      }
-    }
-    return jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
   
   private boolean a(List<String> paramList, Map<String, MetaMaterial> paramMap)
@@ -295,10 +265,10 @@ public class AEEditorImageTemplatePanel
     if (paramJSONObject != null)
     {
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
+      int i1 = 0;
+      while (i1 < paramJSONObject.length())
       {
-        Object localObject = paramJSONObject.optJSONObject(i);
+        Object localObject = paramJSONObject.optJSONObject(i1);
         if (localObject != null)
         {
           String str1 = ((JSONObject)localObject).optString("id");
@@ -347,67 +317,38 @@ public class AEEditorImageTemplatePanel
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
       if (localArrayList.size() > 0)
       {
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.addSticker(paramInt, localArrayList, false);
+        this.e.addSticker(paramInt, localArrayList, false);
         return;
       }
     }
   }
   
-  private boolean b(int paramInt)
+  private void b(boolean paramBoolean)
   {
-    if (paramInt == 0) {
-      return true;
+    ImageTemplateControlListener localImageTemplateControlListener = this.f;
+    if (localImageTemplateControlListener != null) {
+      localImageTemplateControlListener.e(paramBoolean);
     }
-    paramInt = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    QzoneConfig.getInstance();
-    if (paramInt < QzoneConfig.getAEPicTemPlateFilterCount()) {
-      return true;
-    }
-    paramInt = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    QzoneConfig.getInstance();
-    if ((paramInt == QzoneConfig.getAEPicTemPlateFilterCount()) && (this.jdField_a_of_type_AndroidUtilSparseArray.get(0) != null)) {
-      return true;
-    }
-    if (a())
-    {
-      paramInt = ParamsUtil.a();
-      QzoneConfig.getInstance();
-      if (paramInt <= QzoneConfig.getAEPicTemPlateFilterLevelForQcom())
-      {
-        AEQLog.d(jdField_a_of_type_JavaLangString, "qcom not apply filter");
-        return false;
-      }
-    }
-    paramInt = ParamsUtil.a();
-    QzoneConfig.getInstance();
-    if (paramInt <= QzoneConfig.getAEPicTemPlateFilterLevel())
-    {
-      AEQLog.d(jdField_a_of_type_JavaLangString, "low level not apply filter");
-      return false;
-    }
-    QzoneConfig.getInstance();
-    String str = QzoneConfig.getAEPicTemPlateFilterBlackList();
-    if ((!TextUtils.isEmpty(str)) && (str.contains(Build.MODEL)))
-    {
-      AEQLog.d(jdField_a_of_type_JavaLangString, "blacklist not apply filter");
-      return false;
-    }
-    return true;
   }
   
-  private void c()
+  public static boolean b()
   {
-    d();
-    TAVCutImageSession localTAVCutImageSession = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-    localTAVCutImageSession.updateAndRenderTemplate(localTAVCutImageSession.getCurrentIndex());
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter.b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setClearButtonEnable(false);
-    this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex()), Boolean.valueOf(true));
+    if (t == null) {
+      if (!Build.HARDWARE.matches("qcom")) {
+        t = Boolean.valueOf(false);
+      } else if (Build.VERSION.SDK_INT < 21) {
+        t = Boolean.valueOf(false);
+      } else if (Build.VERSION.SDK_INT >= 23) {
+        t = Boolean.valueOf(Process.is64Bit());
+      } else {
+        t = Boolean.valueOf(false);
+      }
+    }
+    return t.booleanValue();
   }
   
   private void c(int paramInt, JSONObject paramJSONObject, MetaMaterial paramMetaMaterial)
@@ -416,10 +357,10 @@ public class AEEditorImageTemplatePanel
     if (localJSONArray != null)
     {
       ArrayList localArrayList1 = new ArrayList();
-      int i = 0;
-      while (i < localJSONArray.length())
+      int i1 = 0;
+      while (i1 < localJSONArray.length())
       {
-        JSONObject localJSONObject = localJSONArray.optJSONObject(i);
+        JSONObject localJSONObject = localJSONArray.optJSONObject(i1);
         if (localJSONObject != null)
         {
           Object localObject = localJSONObject.optString("id");
@@ -427,13 +368,13 @@ public class AEEditorImageTemplatePanel
           {
             paramJSONObject = AEEditorResourceManager.a().d(paramMetaMaterial, (String)localObject);
             if ("text_default".equals(localObject)) {
-              paramJSONObject = AEEditorResourceManager.a().c();
+              paramJSONObject = AEEditorResourceManager.a().C();
             } else if ("__default__".equals(localObject)) {
-              paramJSONObject = AEEditorResourceManager.a().c();
+              paramJSONObject = AEEditorResourceManager.a().C();
             }
             if (TextUtils.isEmpty(paramJSONObject))
             {
-              paramJSONObject = jdField_a_of_type_JavaLangString;
+              paramJSONObject = a;
               paramMetaMaterial = new StringBuilder();
               paramMetaMaterial.append("applyText error, pag file is null， textId = ");
               paramMetaMaterial.append((String)localObject);
@@ -498,40 +439,28 @@ public class AEEditorImageTemplatePanel
                 localArrayList2.add(localTextItem);
                 localStickerModel.setTextItems(localArrayList2);
               }
-              paramJSONObject = (MetaMaterial)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+              paramJSONObject = (MetaMaterial)this.o.get(localObject);
               if (paramJSONObject != null)
               {
                 localObject = new SolidData();
-                ((SolidData)localObject).setColor(TextMetaMaterialKt.c(paramJSONObject));
+                ((SolidData)localObject).setColor(TextMetaMaterialKt.i(paramJSONObject));
                 localStickerModel.getSolidItems().put("bgcolor", localObject);
               }
               localArrayList1.add(localStickerModel);
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
       if (localArrayList1.size() > 0) {
-        this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.addSticker(paramInt, localArrayList1, false);
+        this.e.addSticker(paramInt, localArrayList1, false);
       }
     }
   }
   
-  private void d()
+  private ApplyMaterialLocalTask d()
   {
-    if (((MediaModel)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModels().get(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex())).getMediaEffectModel().getPreSegModel() != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener.G();
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession;
-    ((TAVCutImageSession)localObject).clearAllWithoutUpdate(((TAVCutImageSession)localObject).getCurrentIndex());
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
-    if (localObject != null)
-    {
-      ((ImageTemplateControlListener)localObject).F();
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener.E();
-    }
-    this.jdField_a_of_type_AndroidUtilSparseArray.delete(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex());
-    AEBaseReportParam.a().a().d.put(Integer.valueOf(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getCurrentIndex()), "none");
+    return new AEEditorImageTemplatePanel.3(this);
   }
   
   private void d(int paramInt, JSONObject paramJSONObject, MetaMaterial paramMetaMaterial)
@@ -545,11 +474,64 @@ public class AEEditorImageTemplatePanel
         paramJSONObject = AEEditorResourceManager.a().b(paramMetaMaterial, paramJSONObject);
         if (new File(paramJSONObject).exists())
         {
-          this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.applyPreSeg(paramInt, paramJSONObject);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener.G();
+          this.e.applyPreSeg(paramInt, paramJSONObject);
+          this.f.X();
         }
       }
     }
+  }
+  
+  private boolean d(int paramInt)
+  {
+    if (paramInt == 0) {
+      return true;
+    }
+    paramInt = this.b.size();
+    QzoneConfig.getInstance();
+    if (paramInt < QzoneConfig.getAEPicTemPlateFilterCount()) {
+      return true;
+    }
+    paramInt = this.b.size();
+    QzoneConfig.getInstance();
+    if ((paramInt == QzoneConfig.getAEPicTemPlateFilterCount()) && (this.b.get(0) != null)) {
+      return true;
+    }
+    if (b())
+    {
+      paramInt = ParamsUtil.b();
+      QzoneConfig.getInstance();
+      if (paramInt <= QzoneConfig.getAEPicTemPlateFilterLevelForQcom())
+      {
+        AEQLog.d(a, "qcom not apply filter");
+        return false;
+      }
+    }
+    paramInt = ParamsUtil.b();
+    QzoneConfig.getInstance();
+    if (paramInt <= QzoneConfig.getAEPicTemPlateFilterLevel())
+    {
+      AEQLog.d(a, "low level not apply filter");
+      return false;
+    }
+    QzoneConfig.getInstance();
+    String str = QzoneConfig.getAEPicTemPlateFilterBlackList();
+    if ((!TextUtils.isEmpty(str)) && (str.contains(Build.MODEL)))
+    {
+      AEQLog.d(a, "blacklist not apply filter");
+      return false;
+    }
+    return true;
+  }
+  
+  private void e()
+  {
+    f();
+    TAVCutImageSession localTAVCutImageSession = this.e;
+    localTAVCutImageSession.updateAndRenderTemplate(localTAVCutImageSession.getCurrentIndex());
+    this.i = 0;
+    this.d.b(this.i);
+    this.c.setClearButtonEnable(false);
+    this.s.put(Integer.valueOf(this.e.getCurrentIndex()), Boolean.valueOf(true));
   }
   
   private void e(int paramInt, JSONObject paramJSONObject, MetaMaterial paramMetaMaterial)
@@ -565,50 +547,57 @@ public class AEEditorImageTemplatePanel
         if (new File((String)localObject2).exists())
         {
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateTemplateFrame(paramInt, (String)localObject2);
+            this.e.updateTemplateFrame(paramInt, (String)localObject2);
           } else {
-            this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.updateTemplateFrame(paramInt, (String)localObject2, String.valueOf(Color.parseColor((String)localObject1)));
+            this.e.updateTemplateFrame(paramInt, (String)localObject2, String.valueOf(Color.parseColor((String)localObject1)));
           }
-          localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener;
+          localObject2 = this.f;
           if (localObject2 != null) {
             ((ImageTemplateControlListener)localObject2).b(paramJSONObject, (String)localObject1);
           }
         }
       }
       if (paramMetaMaterial != null) {
-        AEBaseReportParam.a().a().d.put(Integer.valueOf(paramInt), paramMetaMaterial.id);
+        AEBaseReportParam.a().n().h.put(Integer.valueOf(paramInt), paramMetaMaterial.id);
       }
     }
   }
   
-  public String a(int paramInt)
+  private void f()
   {
-    return (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public List<MetaMaterial> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
+    if (((MediaModel)this.e.getMediaModels().get(this.e.getCurrentIndex())).getMediaEffectModel().getPreSegModel() != null) {
+      this.f.X();
+    }
+    Object localObject = this.e;
+    ((TAVCutImageSession)localObject).clearAllWithoutUpdate(((TAVCutImageSession)localObject).getCurrentIndex());
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((ImageTemplateControlListener)localObject).W();
+      this.f.V();
+    }
+    this.b.delete(this.e.getCurrentIndex());
+    AEBaseReportParam.a().n().h.put(Integer.valueOf(this.e.getCurrentIndex()), "none");
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.p = true;
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "pic scrolled, updateSelectIndex");
+      QLog.i(a, 2, "pic scrolled, updateSelectIndex");
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter != null)
+    if (this.d != null)
     {
-      String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      String str = (String)this.b.get(paramInt);
       boolean bool = TextUtils.isEmpty(str);
-      int i = 0;
+      int i1 = 0;
       if (bool)
       {
-        if ((this.jdField_b_of_type_JavaUtilHashMap.size() > paramInt) && (((Boolean)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).booleanValue()))
+        if ((this.s.size() > paramInt) && (((Boolean)this.s.get(Integer.valueOf(paramInt))).booleanValue()))
         {
           setSelectedIndex(0);
           return;
@@ -616,27 +605,22 @@ public class AEEditorImageTemplatePanel
         setSelectedIndex(-1);
         return;
       }
-      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      while (i1 < this.h.size())
       {
-        MetaMaterial localMetaMaterial = (MetaMaterial)this.jdField_b_of_type_JavaUtilList.get(i);
+        MetaMaterial localMetaMaterial = (MetaMaterial)this.h.get(i1);
         if ((localMetaMaterial != null) && (str.equals(localMetaMaterial.id)))
         {
-          setSelectedIndex(i);
+          setSelectedIndex(i1);
           return;
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
-  public boolean a(int paramInt)
-  {
-    return TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)) ^ true;
-  }
-  
   public boolean a(String paramString)
   {
-    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter;
+    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.d;
     if (localTemplateMaterialContentAdapter != null) {
       return localTemplateMaterialContentAdapter.a(paramString);
     }
@@ -645,30 +629,45 @@ public class AEEditorImageTemplatePanel
   
   public boolean a(String paramString, boolean paramBoolean)
   {
-    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter;
+    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.d;
     if (localTemplateMaterialContentAdapter != null) {
       return localTemplateMaterialContentAdapter.a(paramString, paramBoolean);
     }
     return false;
   }
   
-  public void b()
+  public boolean b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    long l = this.jdField_a_of_type_Long;
-    if (l != -1L) {
-      LocalMultiProcConfig.putLong("sp_key_use_template", l);
+    return TextUtils.isEmpty((CharSequence)this.b.get(paramInt)) ^ true;
+  }
+  
+  public String c(int paramInt)
+  {
+    return (String)this.b.get(paramInt);
+  }
+  
+  public void c()
+  {
+    this.b.clear();
+    long l1 = this.l;
+    if (l1 != -1L) {
+      LocalMultiProcConfig.putLong("sp_key_use_template", l1);
     }
+  }
+  
+  public List<MetaMaterial> getTemplateMaterials()
+  {
+    return this.h;
   }
   
   public void setControlListener(ImageTemplateControlListener paramImageTemplateControlListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateImageTemplateControlListener = paramImageTemplateControlListener;
+    this.f = paramImageTemplateControlListener;
   }
   
   public void setImageInfos(List<AEEditorImageInfo> paramList)
   {
-    this.c = paramList;
+    this.j = paramList;
   }
   
   public void setSelectedIndex(int paramInt)
@@ -680,15 +679,15 @@ public class AEEditorImageTemplatePanel
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("template select position:");
       localStringBuilder.append(paramInt);
       QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter.a(paramInt, paramBoolean);
-    this.jdField_a_of_type_Int = paramInt;
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
+    this.d.a(paramInt, paramBoolean);
+    this.i = paramInt;
+    Object localObject = this.c;
     if (paramInt != -1) {
       paramBoolean = true;
     } else {
@@ -699,22 +698,22 @@ public class AEEditorImageTemplatePanel
   
   public void setTavCutImageSession(TAVCutImageSession paramTAVCutImageSession)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession = paramTAVCutImageSession;
-    int j = paramTAVCutImageSession.getMediaModelsMd5().size();
-    int i = 0;
-    while (i < j)
+    this.e = paramTAVCutImageSession;
+    int i2 = paramTAVCutImageSession.getMediaModelsMd5().size();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), this.jdField_a_of_type_ComTencentTavcutSessionTAVCutImageSession.getMediaModelsMd5().get(i));
-      this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Boolean.valueOf(false));
-      i += 1;
+      this.r.put(Integer.valueOf(i1), this.e.getMediaModelsMd5().get(i1));
+      this.s.put(Integer.valueOf(i1), Boolean.valueOf(false));
+      i1 += 1;
     }
   }
   
   public void setTemplateMaterials(List<MetaCategory> paramList, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.g.clear();
+    this.g.addAll(paramList);
+    this.h.clear();
     paramList = paramList.iterator();
     boolean bool1 = true;
     while (paramList.hasNext())
@@ -736,11 +735,11 @@ public class AEEditorImageTemplatePanel
             MetaMaterialKt.a(localMetaMaterial, ((MetaCategory)localObject1).id);
             if (paramBoolean)
             {
-              if ((FilterMetaMaterialKt.e(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.a(localMetaMaterial))) {
+              if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.h(localMetaMaterial))) {
                 ((Iterator)localObject2).remove();
               }
             }
-            else if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.b(localMetaMaterial))) {
+            else if ((FilterMetaMaterialKt.g(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.i(localMetaMaterial))) {
               ((Iterator)localObject2).remove();
             }
           }
@@ -756,7 +755,7 @@ public class AEEditorImageTemplatePanel
             {
               MetaMaterialKt.a((MetaMaterial)localObject2, true);
               MetaMaterialKt.b((MetaMaterial)localObject2, false);
-              this.jdField_b_of_type_JavaUtilList.add(localObject2);
+              this.h.add(localObject2);
             }
           }
         }
@@ -767,21 +766,21 @@ public class AEEditorImageTemplatePanel
       paramList = new MetaMaterial();
       paramList.id = "TEMPLATE_NON_ID";
       paramList.thumbUrl = "thumbNon";
-      this.jdField_b_of_type_JavaUtilList.add(0, paramList);
+      this.h.add(0, paramList);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setCategoryLayoutVisibility(bool1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.a();
+    this.c.setCategoryLayoutVisibility(bool1);
+    this.c.a();
   }
   
   public void setTextViewModel(AEEditorTextViewModel paramAEEditorTextViewModel, AEEditorStickerViewModel paramAEEditorStickerViewModel)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel = paramAEEditorTextViewModel;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel = paramAEEditorStickerViewModel;
+    this.m = paramAEEditorTextViewModel;
+    this.n = paramAEEditorStickerViewModel;
   }
   
   public void setToastValidListener(QQToast.IToastValidListener paramIToastValidListener)
   {
-    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleImagetemplateTemplateMaterialContentAdapter;
+    TemplateMaterialContentAdapter localTemplateMaterialContentAdapter = this.d;
     if (localTemplateMaterialContentAdapter != null) {
       localTemplateMaterialContentAdapter.a(paramIToastValidListener);
     }
@@ -789,7 +788,7 @@ public class AEEditorImageTemplatePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.AEEditorImageTemplatePanel
  * JD-Core Version:    0.7.0.1
  */

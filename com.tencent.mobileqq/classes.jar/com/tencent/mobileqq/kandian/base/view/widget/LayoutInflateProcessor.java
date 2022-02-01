@@ -14,13 +14,13 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class LayoutInflateProcessor
 {
-  private SparseArray<ArrayBlockingQueue<View>> jdField_a_of_type_AndroidUtilSparseArray;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private LayoutInflater a;
+  private SparseArray<ArrayBlockingQueue<View>> b;
   
   public LayoutInflateProcessor(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.a = LayoutInflater.from(paramContext);
+    this.b = new SparseArray();
   }
   
   private void a(LayoutInflateProcessor.InflateParams paramInflateParams)
@@ -28,12 +28,12 @@ public class LayoutInflateProcessor
     if (paramInflateParams == null) {
       return;
     }
-    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(LayoutInflateProcessor.InflateParams.a(paramInflateParams));
+    ArrayBlockingQueue localArrayBlockingQueue2 = (ArrayBlockingQueue)this.b.get(LayoutInflateProcessor.InflateParams.a(paramInflateParams));
     ArrayBlockingQueue localArrayBlockingQueue1;
     if (localArrayBlockingQueue2 == null)
     {
       localArrayBlockingQueue1 = new ArrayBlockingQueue(9);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(LayoutInflateProcessor.InflateParams.a(paramInflateParams), localArrayBlockingQueue1);
+      this.b.put(LayoutInflateProcessor.InflateParams.a(paramInflateParams), localArrayBlockingQueue1);
     }
     else
     {
@@ -48,7 +48,7 @@ public class LayoutInflateProcessor
   @NonNull
   public View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
   {
-    Object localObject = (ArrayBlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (ArrayBlockingQueue)this.b.get(paramInt);
     if (localObject != null)
     {
       localObject = (View)((ArrayBlockingQueue)localObject).poll();
@@ -58,7 +58,7 @@ public class LayoutInflateProcessor
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("inflate: hit cache! resid=");
-          localStringBuilder.append(this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(paramInt));
+          localStringBuilder.append(this.a.getContext().getResources().getResourceEntryName(paramInt));
           QLog.d("LayoutPreloadInflater", 2, localStringBuilder.toString());
         }
         ((View)localObject).setLayoutParams(paramLayoutParams);
@@ -69,14 +69,14 @@ public class LayoutInflateProcessor
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("inflate: miss cache, resid=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(paramInt));
+      ((StringBuilder)localObject).append(this.a.getContext().getResources().getResourceEntryName(paramInt));
       ((StringBuilder)localObject).append(" faultTolerant=");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("LayoutPreloadInflater", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null, false);
+      localObject = this.a.inflate(paramInt, null, false);
       ((View)localObject).setLayoutParams(paramLayoutParams);
       return localObject;
     }
@@ -86,7 +86,7 @@ public class LayoutInflateProcessor
   @UiThread
   public void a()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.b.clear();
   }
   
   @UiThread
@@ -99,12 +99,12 @@ public class LayoutInflateProcessor
       a(paramArrayOfInflateParams[i]);
       i += 1;
     }
-    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfInflateParams, this.jdField_a_of_type_AndroidViewLayoutInflater), 16, null, true);
+    ThreadManager.excute(new LayoutInflateProcessor.InflateTask(paramArrayOfInflateParams, this.a), 16, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.LayoutInflateProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -51,34 +51,18 @@ public class ProteusItemView
   extends RelativeLayout
   implements IPlayableView, IProteusItemView
 {
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ProteusItemView.3(this);
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private ComponentLastRead jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead;
-  private final ProteusItemHelper jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper = new ProteusItemHelper(this);
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ProteusItemView.2(this);
-  private List<ProteusItemView.OnItemDrawFinishedListener> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Container a;
+  private ComponentLastRead b;
+  private ViewBase c;
+  private final ProteusItemHelper d = new ProteusItemHelper(this);
+  private List<ProteusItemView.OnItemDrawFinishedListener> e = new ArrayList();
+  private ReadInJoyObserver f = new ProteusItemView.2(this);
+  private ViewTreeObserver.OnGlobalLayoutListener g = new ProteusItemView.3(this);
   
   public ProteusItemView(Context paramContext)
   {
     super(paramContext);
-    e();
-  }
-  
-  public static ReadInJoyVideoView a(Container paramContainer)
-  {
-    if (paramContainer != null)
-    {
-      paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
-      while (paramContainer.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramContainer.next();
-        if (((localEntry.getValue() instanceof ReadInJoyVideoView)) && (((ViewBase)localEntry.getValue()).isVisible())) {
-          return (ReadInJoyVideoView)localEntry.getValue();
-        }
-      }
-    }
-    return null;
+    f();
   }
   
   private void a(View paramView, boolean paramBoolean)
@@ -105,9 +89,9 @@ public class ProteusItemView
       QLog.d("ProteusItemView", 1, "dealFlowGuideSeparator, view is null.");
       return;
     }
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null))
     {
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
       if (TextUtils.isEmpty(paramIReadInJoyModel.proteusItemsData)) {
         return;
       }
@@ -208,17 +192,17 @@ public class ProteusItemView
           if (paramInt != 7) {
             return false;
           }
-          paramComponentPGCShortContentBig.e();
+          paramComponentPGCShortContentBig.f();
           return false;
         }
-        paramComponentPGCShortContentBig.c();
+        paramComponentPGCShortContentBig.d();
         return false;
       }
-      paramComponentPGCShortContentBig.d();
+      paramComponentPGCShortContentBig.e();
       return false;
     }
     QLog.d("gifvideo.ProteusItemView", 2, "shortcontent to play");
-    return paramComponentPGCShortContentBig.a();
+    return paramComponentPGCShortContentBig.c();
   }
   
   private boolean a(Map.Entry<String, ViewBase> paramEntry, int paramInt)
@@ -260,24 +244,40 @@ public class ProteusItemView
     return false;
   }
   
+  public static ReadInJoyVideoView b(Container paramContainer)
+  {
+    if (paramContainer != null)
+    {
+      paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+      while (paramContainer.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramContainer.next();
+        if (((localEntry.getValue() instanceof ReadInJoyVideoView)) && (((ViewBase)localEntry.getValue()).isVisible())) {
+          return (ReadInJoyVideoView)localEntry.getValue();
+        }
+      }
+    }
+    return null;
+  }
+  
   private boolean b(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper;
-    if ((localObject1 != null) && (((ProteusItemHelper)localObject1).a() != null))
+    Object localObject1 = this.d;
+    if ((localObject1 != null) && (((ProteusItemHelper)localObject1).b() != null))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(" proteusitemhelper celltype: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper.a().d());
+      ((StringBuilder)localObject1).append(this.d.b().o());
       QLog.d("gifvideo.ProteusItemView", 2, ((StringBuilder)localObject1).toString());
     }
     else
     {
       QLog.d("gifvideo.ProteusItemView", 2, "proteusitemhelper celltype: null");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null)
+    if (this.a != null)
     {
       QLog.d("ProteusItemView", 1, "type pgc gif");
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_middle_body_content");
+      localObject1 = this.a.getVirtualView().findViewBaseByName("id_middle_body_content");
       Object localObject2;
       if ((localObject1 instanceof ReadInJoyMiddleBodyView))
       {
@@ -286,7 +286,7 @@ public class ProteusItemView
         if ((localObject1 instanceof NativeMiddleBodyView))
         {
           QLog.d("ProteusItemView", 2, "NativeMiddleBodyView");
-          localObject1 = ((NativeMiddleBodyView)localObject1).a();
+          localObject1 = ((NativeMiddleBodyView)localObject1).getContent();
           if ((localObject1 instanceof ComponentPGCShortContentBig)) {
             return a((ComponentPGCShortContentBig)localObject1, paramInt);
           }
@@ -303,7 +303,7 @@ public class ProteusItemView
           QLog.d("gifvideo.ProteusItemView", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getViewIdMapping().entrySet().iterator();
+      localObject1 = this.a.getViewIdMapping().entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -323,7 +323,7 @@ public class ProteusItemView
     paramEntry = ((ViewBase)paramEntry.getValue()).getNativeView();
     if ((paramEntry instanceof NativeMiddleBodyView))
     {
-      paramEntry = ((NativeMiddleBodyView)paramEntry).a();
+      paramEntry = ((NativeMiddleBodyView)paramEntry).getContent();
       if ((paramEntry instanceof ComponentPGCShortContentBig)) {
         return a((ComponentPGCShortContentBig)paramEntry, paramInt);
       }
@@ -365,73 +365,30 @@ public class ProteusItemView
     return false;
   }
   
-  private void e()
-  {
-    QLog.d("ProteusItemView", 2, "addDestroyObserver");
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-  }
-  
   private void f()
   {
-    QLog.d("ProteusItemView", 2, "removeDestroyObserver");
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    QLog.d("ProteusItemView", 2, "addDestroyObserver");
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.f);
   }
   
   private void g()
   {
-    if (getViewTreeObserver() != null) {
-      getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    }
+    QLog.d("ProteusItemView", 2, "removeDestroyObserver");
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.f);
   }
   
   private void h()
   {
+    if (getViewTreeObserver() != null) {
+      getViewTreeObserver().addOnGlobalLayoutListener(this.g);
+    }
+  }
+  
+  private void i()
+  {
     if ((Build.VERSION.SDK_INT >= 16) && (getViewTreeObserver() != null)) {
-      getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      getViewTreeObserver().removeOnGlobalLayoutListener(this.g);
     }
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public TemplateBean a()
-  {
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-    if (localContainer != null) {
-      return (TemplateBean)localContainer.getTag(2131376110);
-    }
-    return null;
-  }
-  
-  public Container a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  }
-  
-  public ProteusItemHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper;
-  }
-  
-  public AbsBaseArticleInfo a()
-  {
-    ProteusItemHelper localProteusItemHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper;
-    if ((localProteusItemHelper != null) && (localProteusItemHelper.a() != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper.a().a();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public IReadInJoyModel a()
-  {
-    ProteusItemHelper localProteusItemHelper = a();
-    if (localProteusItemHelper != null) {
-      return localProteusItemHelper.a();
-    }
-    return null;
   }
   
   public void a()
@@ -443,20 +400,15 @@ public class ProteusItemView
   {
     Object localObject = paramContainer.getVirtualView().getComLayoutParams();
     localObject = new RelativeLayout.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
+    this.a = paramContainer;
     paramContainer.setId(1);
-    setBackgroundColor(getResources().getColor(2131167333));
+    setBackgroundColor(getResources().getColor(2131168376));
     addView(paramContainer, (ViewGroup.LayoutParams)localObject);
   }
   
   public void a(ProteusItemView.OnItemDrawFinishedListener paramOnItemDrawFinishedListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramOnItemDrawFinishedListener);
-  }
-  
-  public boolean a()
-  {
-    return a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer) != null;
+    this.e.add(paramOnItemDrawFinishedListener);
   }
   
   public boolean a(int paramInt)
@@ -469,43 +421,91 @@ public class ProteusItemView
     b(5);
   }
   
-  public void c()
+  public boolean c()
   {
-    removeAllViews();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead = null;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = null;
+    return b(this.a) != null;
   }
   
   public void d()
   {
-    b(7);
-    f();
+    removeAllViews();
+    this.a = null;
+    this.b = null;
+    this.a = null;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    paramCanvas = this.jdField_a_of_type_JavaUtilList;
+    paramCanvas = this.e;
     if ((paramCanvas != null) && (!paramCanvas.isEmpty()))
     {
-      paramCanvas = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramCanvas = this.e.iterator();
       while (paramCanvas.hasNext()) {
         ((ProteusItemView.OnItemDrawFinishedListener)paramCanvas.next()).a();
       }
     }
   }
   
+  public void e()
+  {
+    b(7);
+    g();
+  }
+  
+  public AbsBaseArticleInfo getArticleInfo()
+  {
+    ProteusItemHelper localProteusItemHelper = this.d;
+    if ((localProteusItemHelper != null) && (localProteusItemHelper.b() != null)) {
+      return this.d.b().k();
+    }
+    return null;
+  }
+  
+  public Container getContainer()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public IReadInJoyModel getModel()
+  {
+    ProteusItemHelper localProteusItemHelper = getProteusItemHelper();
+    if (localProteusItemHelper != null) {
+      return localProteusItemHelper.b();
+    }
+    return null;
+  }
+  
+  public ProteusItemHelper getProteusItemHelper()
+  {
+    return this.d;
+  }
+  
+  public View getProteusItemView()
+  {
+    return this;
+  }
+  
+  public TemplateBean getTemplateBean()
+  {
+    Container localContainer = this.a;
+    if (localContainer != null) {
+      return (TemplateBean)localContainer.getTag(2131444313);
+    }
+    return null;
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    g();
+    h();
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    h();
+    i();
   }
   
   public void setInternalTag(int paramInt, @NotNull Object paramObject)
@@ -520,36 +520,36 @@ public class ProteusItemView
   
   public void setModel(IReadInJoyModel paramIReadInJoyModel, OnLastReadRefreshListener paramOnLastReadRefreshListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewHelperProteusItemHelper.a(paramIReadInJoyModel);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead == null)
+    this.d.a(paramIReadInJoyModel);
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead = new ComponentLastRead(getContext());
+      this.b = new ComponentLastRead(getContext());
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(3, 1);
-      addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead, (ViewGroup.LayoutParams)localObject);
+      addView(this.b, (ViewGroup.LayoutParams)localObject);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_separator");
+    if (this.c == null) {
+      this.c = this.a.getVirtualView().findViewBaseByName("id_separator");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    Object localObject = this.c;
     if ((localObject != null) && (((ViewBase)localObject).getNativeView() != null)) {
-      if (paramIReadInJoyModel.g())
+      if (paramIReadInJoyModel.i())
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setVisibility(8);
+        this.c.getNativeView().setVisibility(8);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setVisibility(0);
-        a(paramIReadInJoyModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
+        this.c.getNativeView().setVisibility(0);
+        a(paramIReadInJoyModel, this.c.getNativeView());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead.a(paramIReadInJoyModel);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead.a(new ProteusItemView.1(this, paramOnLastReadRefreshListener));
+    this.b.a(paramIReadInJoyModel);
+    this.b.a(new ProteusItemView.1(this, paramOnLastReadRefreshListener));
   }
   
   public void setPressed(boolean paramBoolean)
   {
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+    Container localContainer = this.a;
     if (localContainer == null) {
       return;
     }
@@ -559,10 +559,10 @@ public class ProteusItemView
   
   public void setTemplateBean(TemplateBean paramTemplateBean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      ((Container)localObject).setTag(2131376110, paramTemplateBean);
+      ((Container)localObject).setTag(2131444313, paramTemplateBean);
       setPressed(false);
       return;
     }
@@ -574,7 +574,7 @@ public class ProteusItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ProteusItemView
  * JD-Core Version:    0.7.0.1
  */

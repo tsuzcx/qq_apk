@@ -36,25 +36,25 @@ public abstract class VasWebviewUiPlugin
   
   void OnActivityDestroy()
   {
-    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
+    if (DeviceApiPlugin.b) {
       DeviceApiPlugin.a(false, null, false);
     }
-    if (DeviceApiPlugin.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
-      DeviceApiPlugin.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
+    if (DeviceApiPlugin.a != null) {
+      DeviceApiPlugin.a = null;
     }
   }
   
   void OnActivityPause()
   {
-    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
+    if (DeviceApiPlugin.b) {
       DeviceApiPlugin.a(false, null, true);
     }
   }
   
   void OnActivityResume()
   {
-    if (DeviceApiPlugin.jdField_a_of_type_Boolean) {
-      DeviceApiPlugin.a(true, this.mRuntime.a(), true);
+    if (DeviceApiPlugin.b) {
+      DeviceApiPlugin.a(true, this.mRuntime.d(), true);
     }
   }
   
@@ -67,7 +67,7 @@ public abstract class VasWebviewUiPlugin
       ((StringBuilder)localObject).append(paramString);
       QLog.i("VasWebviewUiPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    Object localObject = paramString.replace("[uin]", this.activity.getAppRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "8.8.17.5770").replace("[sid]", "").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     Intent localIntent = this.activity.getIntent();
     String str1 = localIntent.getStringExtra("updateTime");
     paramString = (String)localObject;
@@ -108,10 +108,10 @@ public abstract class VasWebviewUiPlugin
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 85	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:activity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
+    //   1: getfield 87	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:activity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
     //   4: ifnull +245 -> 249
     //   7: aload_0
-    //   8: getfield 197	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:business	J
+    //   8: getfield 199	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:business	J
     //   11: aload_0
     //   12: invokevirtual 22	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:getPluginBusiness	()J
     //   15: land
@@ -120,112 +120,112 @@ public abstract class VasWebviewUiPlugin
     //   18: ifne +5 -> 23
     //   21: iconst_0
     //   22: ireturn
-    //   23: new 66	java/lang/StringBuilder
+    //   23: new 68	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   27: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   30: astore 6
     //   32: aload 6
-    //   34: ldc 199
-    //   36: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: ldc 201
+    //   36: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload 6
     //   42: lload_2
-    //   43: invokevirtual 202	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 204	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 6
-    //   49: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   52: astore 6
     //   54: aconst_null
     //   55: aload 6
-    //   57: invokestatic 207	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: invokestatic 209	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   60: lload_2
     //   61: lconst_1
     //   62: lcmp
     //   63: ifne +10 -> 73
     //   66: aload_0
-    //   67: invokevirtual 209	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityCreate	()V
+    //   67: invokevirtual 211	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityCreate	()V
     //   70: goto +140 -> 210
     //   73: lload_2
-    //   74: ldc2_w 210
+    //   74: ldc2_w 212
     //   77: lcmp
     //   78: ifne +10 -> 88
     //   81: aload_0
-    //   82: invokevirtual 213	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityDestroy	()V
+    //   82: invokevirtual 215	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityDestroy	()V
     //   85: goto +125 -> 210
     //   88: lload_2
-    //   89: ldc2_w 214
+    //   89: ldc2_w 216
     //   92: lcmp
     //   93: ifne +10 -> 103
     //   96: aload_0
-    //   97: invokevirtual 217	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityResume	()V
+    //   97: invokevirtual 219	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityResume	()V
     //   100: goto +110 -> 210
     //   103: lload_2
-    //   104: ldc2_w 218
+    //   104: ldc2_w 220
     //   107: lcmp
     //   108: ifne +151 -> 259
     //   111: aload_0
-    //   112: invokevirtual 221	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityPause	()V
+    //   112: invokevirtual 223	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:OnActivityPause	()V
     //   115: goto +95 -> 210
     //   118: lload_2
-    //   119: ldc2_w 222
+    //   119: ldc2_w 224
     //   122: lcmp
     //   123: ifne +60 -> 183
     //   126: aload_0
     //   127: aload 4
-    //   129: ldc 225
-    //   131: invokeinterface 231 2 0
-    //   136: checkcast 233	java/lang/Integer
-    //   139: invokevirtual 236	java/lang/Integer:intValue	()I
+    //   129: ldc 227
+    //   131: invokeinterface 233 2 0
+    //   136: checkcast 235	java/lang/Integer
+    //   139: invokevirtual 238	java/lang/Integer:intValue	()I
     //   142: aload 4
-    //   144: ldc 238
-    //   146: invokeinterface 231 2 0
-    //   151: checkcast 233	java/lang/Integer
-    //   154: invokevirtual 236	java/lang/Integer:intValue	()I
+    //   144: ldc 240
+    //   146: invokeinterface 233 2 0
+    //   151: checkcast 235	java/lang/Integer
+    //   154: invokevirtual 238	java/lang/Integer:intValue	()I
     //   157: aload 4
-    //   159: ldc 240
-    //   161: invokeinterface 231 2 0
-    //   166: checkcast 138	android/content/Intent
-    //   169: invokevirtual 244	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:onActivityResult	(IILandroid/content/Intent;)Z
+    //   159: ldc 242
+    //   161: invokeinterface 233 2 0
+    //   166: checkcast 140	android/content/Intent
+    //   169: invokevirtual 246	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:onActivityResult	(IILandroid/content/Intent;)Z
     //   172: istore 5
     //   174: aload 6
     //   176: aconst_null
-    //   177: invokestatic 207	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   177: invokestatic 209	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   180: iload 5
     //   182: ireturn
     //   183: lload_2
-    //   184: ldc2_w 245
+    //   184: ldc2_w 247
     //   187: lcmp
     //   188: ifne +10 -> 198
     //   191: aload_0
-    //   192: invokevirtual 248	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:doBeforeFinish	()V
+    //   192: invokevirtual 250	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:doBeforeFinish	()V
     //   195: goto +15 -> 210
     //   198: lload_2
-    //   199: ldc2_w 249
+    //   199: ldc2_w 251
     //   202: lcmp
     //   203: ifne +7 -> 210
     //   206: aload_0
-    //   207: invokevirtual 252	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:doAfterFinish	()V
+    //   207: invokevirtual 254	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:doAfterFinish	()V
     //   210: aload_0
     //   211: aload_1
     //   212: lload_2
     //   213: aload 4
-    //   215: invokevirtual 254	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:excuteEvent	(Ljava/lang/String;JLjava/util/Map;)Z
+    //   215: invokevirtual 256	com/tencent/mobileqq/vaswebviewplugin/VasWebviewUiPlugin:excuteEvent	(Ljava/lang/String;JLjava/util/Map;)Z
     //   218: istore 5
     //   220: aload 6
     //   222: aconst_null
-    //   223: invokestatic 207	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   223: invokestatic 209	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   226: iload 5
     //   228: ireturn
     //   229: aload_1
-    //   230: invokevirtual 257	java/lang/Exception:printStackTrace	()V
+    //   230: invokevirtual 259	java/lang/Exception:printStackTrace	()V
     //   233: aload 6
     //   235: aconst_null
-    //   236: invokestatic 207	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   236: invokestatic 209	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   239: iconst_0
     //   240: ireturn
     //   241: aload 6
     //   243: aconst_null
-    //   244: invokestatic 207	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: invokestatic 209	com/tencent/mobileqq/utils/StartupTracker:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   247: aload_1
     //   248: athrow
     //   249: iconst_0
@@ -235,7 +235,7 @@ public abstract class VasWebviewUiPlugin
     //   255: astore_1
     //   256: goto -27 -> 229
     //   259: lload_2
-    //   260: ldc2_w 258
+    //   260: ldc2_w 260
     //   263: lcmp
     //   264: ifne -146 -> 118
     //   267: goto -57 -> 210
@@ -276,8 +276,8 @@ public abstract class VasWebviewUiPlugin
   protected void onCreate()
   {
     super.onCreate();
-    if ((this.mRuntime.a() instanceof QQBrowserActivity)) {
-      this.activity = ((QQBrowserActivity)this.mRuntime.a());
+    if ((this.mRuntime.d() instanceof QQBrowserActivity)) {
+      this.activity = ((QQBrowserActivity)this.mRuntime.d());
     }
   }
   
@@ -289,7 +289,7 @@ public abstract class VasWebviewUiPlugin
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131715803), 0).show();
+        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131913260), 0).show();
       }
     }
     else
@@ -322,7 +322,7 @@ public abstract class VasWebviewUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewUiPlugin
  * JD-Core Version:    0.7.0.1
  */

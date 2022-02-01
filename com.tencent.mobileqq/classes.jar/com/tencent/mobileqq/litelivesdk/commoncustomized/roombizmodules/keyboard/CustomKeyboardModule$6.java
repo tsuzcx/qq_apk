@@ -10,7 +10,7 @@ class CustomKeyboardModule$6
   
   public void a(boolean paramBoolean)
   {
-    String str = CustomKeyboardModule.a();
+    String str = CustomKeyboardModule.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onInputMethodChange  isShow = ");
     localStringBuilder.append(paramBoolean);
@@ -18,12 +18,12 @@ class CustomKeyboardModule$6
     if (paramBoolean) {
       return;
     }
-    CustomKeyboardModule.b(this.a);
+    CustomKeyboardModule.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.keyboard.CustomKeyboardModule.6
  * JD-Core Version:    0.7.0.1
  */

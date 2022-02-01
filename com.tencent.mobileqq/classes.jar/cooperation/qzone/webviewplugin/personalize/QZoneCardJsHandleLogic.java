@@ -58,7 +58,7 @@ public class QZoneCardJsHandleLogic
     ((Bundle)localObject3).putString("cmd", "downloadcard");
     ((Bundle)localObject3).putString("cardDownloadUrl", localObject2);
     paramVarArgs.putExtras((Bundle)localObject3);
-    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.d(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
   }
   
   /* Error */
@@ -78,49 +78,49 @@ public class QZoneCardJsHandleLogic
     //   16: invokespecial 33	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   19: astore 18
     //   21: aload 18
-    //   23: ldc 115
+    //   23: ldc 114
     //   25: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   28: astore_0
     //   29: aload 18
-    //   31: ldc 117
+    //   31: ldc 116
     //   33: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   36: astore_2
     //   37: aload 18
-    //   39: ldc 119
+    //   39: ldc 118
     //   41: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore 11
     //   46: aload 18
-    //   48: ldc 121
-    //   50: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   48: ldc 120
+    //   50: invokevirtual 124	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   53: istore_3
     //   54: aload 18
-    //   56: ldc 127
+    //   56: ldc 126
     //   58: iconst_0
-    //   59: invokevirtual 131	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   59: invokevirtual 130	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
     //   62: istore 8
     //   64: aload 18
-    //   66: ldc 133
-    //   68: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   66: ldc 132
+    //   68: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 12
     //   73: aload 18
-    //   75: ldc 138
-    //   77: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   75: ldc 137
+    //   77: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   80: astore 13
     //   82: aload 18
-    //   84: ldc 140
-    //   86: invokevirtual 144	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   84: ldc 139
+    //   86: invokevirtual 143	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   89: lstore 9
     //   91: aload 18
-    //   93: ldc 146
-    //   95: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   93: ldc 145
+    //   95: invokevirtual 124	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   98: istore 5
     //   100: aload 18
-    //   102: ldc 148
-    //   104: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   102: ldc 147
+    //   104: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   107: astore 17
     //   109: aload 18
-    //   111: ldc 150
-    //   113: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   111: ldc 149
+    //   113: invokevirtual 124	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   116: istore 4
     //   118: iload 4
     //   120: iconst_1
@@ -136,30 +136,30 @@ public class QZoneCardJsHandleLogic
     //   140: aload_2
     //   141: astore 15
     //   143: aload 18
-    //   145: ldc 152
-    //   147: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: ldc 151
+    //   147: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   150: astore_2
     //   151: aload_2
     //   152: astore 15
     //   154: aload 18
-    //   156: ldc 154
-    //   158: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: ldc 153
+    //   158: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   161: astore 14
     //   163: aload 18
-    //   165: ldc 156
-    //   167: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: ldc 155
+    //   167: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   170: astore 16
     //   172: aload 18
-    //   174: ldc 158
-    //   176: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   174: ldc 157
+    //   176: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   179: astore 21
     //   181: aload 18
-    //   183: ldc 160
-    //   185: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   183: ldc 159
+    //   185: invokevirtual 135	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   188: astore 22
     //   190: aload 18
-    //   192: ldc 162
-    //   194: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   192: ldc 161
+    //   194: invokevirtual 124	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   197: istore 6
     //   199: aload_2
     //   200: astore 15
@@ -584,7 +584,7 @@ public class QZoneCardJsHandleLogic
     //   994: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   997: astore_0
     //   998: aload_0
-    //   999: ldc 164
+    //   999: ldc 163
     //   1001: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1004: pop
     //   1005: aload_0
@@ -592,7 +592,7 @@ public class QZoneCardJsHandleLogic
     //   1008: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1011: pop
     //   1012: aload_0
-    //   1013: ldc 166
+    //   1013: ldc 165
     //   1015: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1018: pop
     //   1019: aload_0
@@ -614,8 +614,8 @@ public class QZoneCardJsHandleLogic
     //   1047: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1050: goto +3 -> 1053
     //   1053: aload 23
-    //   1055: ldc 168
-    //   1057: invokevirtual 174	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1055: ldc 167
+    //   1057: invokevirtual 173	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1060: ifeq +311 -> 1371
     //   1063: new 73	android/content/Intent
     //   1066: dup
@@ -627,65 +627,65 @@ public class QZoneCardJsHandleLogic
     //   1077: invokespecial 79	android/os/Bundle:<init>	()V
     //   1080: astore_2
     //   1081: aload_2
-    //   1082: ldc 119
+    //   1082: ldc 118
     //   1084: aload 17
     //   1086: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1089: aload_2
-    //   1090: ldc 176
+    //   1090: ldc 175
     //   1092: lconst_0
-    //   1093: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1093: invokevirtual 179	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1096: aload_2
-    //   1097: ldc 117
+    //   1097: ldc 116
     //   1099: aload 16
     //   1101: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1104: aload_2
-    //   1105: ldc 182
+    //   1105: ldc 181
     //   1107: lload 9
-    //   1109: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1109: invokevirtual 179	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1112: aload_2
-    //   1113: ldc 184
+    //   1113: ldc 183
     //   1115: ldc 28
     //   1117: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1120: aload_2
-    //   1121: ldc 138
+    //   1121: ldc 137
     //   1123: aload 18
     //   1125: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1128: aload_2
-    //   1129: ldc 146
+    //   1129: ldc 145
     //   1131: iload 6
-    //   1133: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1133: invokevirtual 187	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1136: aload_2
-    //   1137: ldc 133
+    //   1137: ldc 132
     //   1139: aload 15
     //   1141: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1144: aload_2
-    //   1145: ldc 121
+    //   1145: ldc 120
     //   1147: iload 5
-    //   1149: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1149: invokevirtual 187	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1152: aload_2
-    //   1153: ldc 148
+    //   1153: ldc 147
     //   1155: aload 14
     //   1157: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1160: aload_2
-    //   1161: ldc 154
+    //   1161: ldc 153
     //   1163: aload 19
     //   1165: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1168: aload_2
-    //   1169: ldc 156
+    //   1169: ldc 155
     //   1171: aload 20
     //   1173: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1176: aload_2
-    //   1177: ldc 158
+    //   1177: ldc 157
     //   1179: aload 21
     //   1181: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1184: aload_2
-    //   1185: ldc 160
+    //   1185: ldc 159
     //   1187: aload 22
     //   1189: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1192: aload_2
-    //   1193: ldc 162
+    //   1193: ldc 161
     //   1195: iload_3
-    //   1196: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1196: invokevirtual 187	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1199: iload 8
     //   1201: ifeq +8 -> 1209
     //   1204: iconst_1
@@ -694,12 +694,12 @@ public class QZoneCardJsHandleLogic
     //   1209: iconst_0
     //   1210: istore_3
     //   1211: aload_2
-    //   1212: ldc 127
+    //   1212: ldc 126
     //   1214: iload_3
-    //   1215: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1215: invokevirtual 187	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1218: aload_2
     //   1219: ldc 81
-    //   1221: ldc 190
+    //   1221: ldc 189
     //   1223: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1226: aload_0
     //   1227: aload_2
@@ -712,32 +712,32 @@ public class QZoneCardJsHandleLogic
     //   1242: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   1245: astore_2
     //   1246: aload_2
-    //   1247: ldc 192
+    //   1247: ldc 191
     //   1249: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1252: pop
     //   1253: aload_2
     //   1254: aload_0
-    //   1255: invokevirtual 195	android/content/Intent:getAction	()Ljava/lang/String;
+    //   1255: invokevirtual 194	android/content/Intent:getAction	()Ljava/lang/String;
     //   1258: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1261: pop
     //   1262: aload_2
-    //   1263: ldc 197
+    //   1263: ldc 196
     //   1265: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1268: pop
     //   1269: aload_2
     //   1270: lload 9
-    //   1272: invokevirtual 200	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1272: invokevirtual 199	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1275: pop
     //   1276: aload_2
-    //   1277: ldc 202
+    //   1277: ldc 201
     //   1279: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1282: pop
     //   1283: aload_2
     //   1284: iload 5
-    //   1286: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1286: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1289: pop
     //   1290: aload_2
-    //   1291: ldc 207
+    //   1291: ldc 206
     //   1293: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1296: pop
     //   1297: aload_2
@@ -750,14 +750,14 @@ public class QZoneCardJsHandleLogic
     //   1308: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1311: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1314: aload_1
-    //   1315: invokevirtual 99	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   1318: invokestatic 105	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   1315: invokevirtual 98	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   1318: invokestatic 104	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   1321: aload_0
-    //   1322: invokestatic 111	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
+    //   1322: invokestatic 110	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
     //   1325: ldc 8
     //   1327: iconst_0
     //   1328: aload_1
-    //   1329: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   1329: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
     //   1332: invokevirtual 215	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1335: invokestatic 221	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
     //   1338: invokevirtual 225	java/lang/Long:longValue	()J
@@ -765,10 +765,10 @@ public class QZoneCardJsHandleLogic
     //   1344: iload 4
     //   1346: ifeq +25 -> 1371
     //   1349: aload_1
-    //   1350: invokevirtual 99	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   1353: invokestatic 105	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   1350: invokevirtual 98	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   1353: invokestatic 104	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   1356: aload_1
-    //   1357: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   1357: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
     //   1360: invokevirtual 234	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
     //   1363: iconst_0
     //   1364: iconst_0
@@ -845,7 +845,7 @@ public class QZoneCardJsHandleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCardJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

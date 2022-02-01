@@ -7,22 +7,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 
 public class b
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      label15:
-      break label15;
-    }
-    f.a("can not find app: %s , get version code failed.", new Object[] { paramString });
-    return 0;
-  }
-  
   public static String a(Context paramContext, String paramString)
   {
     paramContext = paramContext.getPackageManager();
@@ -43,10 +27,26 @@ public class b
     }
     return paramString;
   }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
+      return i;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label15:
+      break label15;
+    }
+    f.a("can not find app: %s , get version code failed.", new Object[] { paramString });
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.b.b
  * JD-Core Version:    0.7.0.1
  */

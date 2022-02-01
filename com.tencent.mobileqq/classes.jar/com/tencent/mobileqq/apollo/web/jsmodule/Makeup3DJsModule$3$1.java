@@ -2,7 +2,9 @@ package com.tencent.mobileqq.apollo.web.jsmodule;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,18 +17,18 @@ class Makeup3DJsModule$3$1
   
   public void run()
   {
-    Object localObject = CMGetResPathUtil.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = ApolloResManagerFacade.a.a(Scene.MAKE_UP_3D).b(this.a);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] fileJsonFilePath is null!");
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_JavaLangString, "file face.json is not exists!");
+      this.b.c.a(this.b.a, "file face.json is not exists!");
       return;
     }
     localObject = new File((String)localObject);
     if (!((File)localObject).exists())
     {
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] file face.json is not exists!");
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_JavaLangString, "file face.json is not exists!");
+      this.b.c.a(this.b.a, "file face.json is not exists!");
       return;
     }
     try
@@ -36,23 +38,23 @@ class Makeup3DJsModule$3$1
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put(ApolloConstant.b, new JSONObject((String)localObject));
-        this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_JavaLangString, localJSONObject);
+        this.b.c.a(this.b.a, localJSONObject);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_JavaLangString, "file face.json is empty!");
+      this.b.c.a(this.b.a, "file face.json is empty!");
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] file face.json is empty!");
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$3.jdField_a_of_type_JavaLangString, localException.getMessage());
+      this.b.c.a(this.b.a, localException.getMessage());
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] read file face.json error!", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule.3.1
  * JD-Core Version:    0.7.0.1
  */

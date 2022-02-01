@@ -10,12 +10,12 @@ class MessageHandler$11
   
   public void run()
   {
-    FileUtils.delete(AIOShareActionSheet.a, true);
+    FileUtils.delete(AIOShareActionSheet.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.11
  * JD-Core Version:    0.7.0.1
  */

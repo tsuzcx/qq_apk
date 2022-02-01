@@ -16,9 +16,9 @@ class IceBreakingMng$1
   {
     if (paramBoolean)
     {
-      FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      FriendsManager localFriendsManager = (FriendsManager)this.a.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
       int j = 1;
-      ExtensionInfo localExtensionInfo = localFriendsManager.a(paramString2, true);
+      ExtensionInfo localExtensionInfo = localFriendsManager.d(paramString2, true);
       int i = 0;
       Object localObject = localExtensionInfo;
       if (localExtensionInfo == null)
@@ -48,7 +48,7 @@ class IceBreakingMng$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingMng.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,34 +13,34 @@ class VideoViewVideoHolder$VideoPrepareSegment$5
   
   public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.isCanceled()) {
+    if (this.b.isCanceled()) {
       return true;
     }
-    SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    SLog.e(this.b.b.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
     if (paramInt2 == 102)
     {
-      paramIVideoView.d();
+      paramIVideoView.g();
       return true;
     }
-    VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, 7);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, paramInt2);
-    paramIVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment;
-    paramInt3 = VideoViewVideoHolder.b(paramIVideoView.a);
+    VideoViewVideoHolder.c(this.b.b, 7);
+    VideoViewVideoHolder.a(this.b.b, false);
+    VideoViewVideoHolder.b(this.b.b, paramInt2);
+    paramIVideoView = this.b;
+    paramInt3 = VideoViewVideoHolder.c(paramIVideoView.b);
     paramString = new StringBuilder();
     paramString.append("wht=");
     paramString.append(paramInt2);
     paramString.append(", mod=");
     paramString.append(paramInt1);
     paramString.append(", ");
-    paramString.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    paramString.append(this.a.mVid);
     VideoViewVideoHolder.VideoPrepareSegment.b(paramIVideoView, new ErrorMessage(paramInt3, paramString.toString()));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.5
  * JD-Core Version:    0.7.0.1
  */

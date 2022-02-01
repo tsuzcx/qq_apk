@@ -79,7 +79,12 @@ public class Layer
       reCacheViews();
     }
     calcCenters();
-    double d = Math.toRadians(this.mGroupRotateAngle);
+    double d;
+    if (Float.isNaN(this.mGroupRotateAngle)) {
+      d = 0.0D;
+    } else {
+      d = Math.toRadians(this.mGroupRotateAngle);
+    }
     float f1 = (float)Math.sin(d);
     float f2 = (float)Math.cos(d);
     float f3 = this.mScaleX;
@@ -99,7 +104,9 @@ public class Layer
       localView.setTranslationY(f6 * (f3 * f1) + f4 * f2 * f7 - f7 + f9);
       localView.setScaleY(this.mScaleY);
       localView.setScaleX(this.mScaleX);
-      localView.setRotation(this.mGroupRotateAngle);
+      if (!Float.isNaN(this.mGroupRotateAngle)) {
+        localView.setRotation(this.mGroupRotateAngle);
+      }
       i += 1;
     }
   }
@@ -169,6 +176,7 @@ public class Layer
         }
         i += 1;
       }
+      paramAttributeSet.recycle();
     }
   }
   
@@ -268,9 +276,7 @@ public class Layer
     paramConstraintLayout.setHeight(0);
     calcCenters();
     layout((int)this.mComputedMinX - getPaddingLeft(), (int)this.mComputedMinY - getPaddingTop(), (int)this.mComputedMaxX + getPaddingRight(), (int)this.mComputedMaxY + getPaddingBottom());
-    if (!Float.isNaN(this.mGroupRotateAngle)) {
-      transform();
-    }
+    transform();
   }
   
   public void updatePreDraw(ConstraintLayout paramConstraintLayout)
@@ -290,7 +296,7 @@ public class Layer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.helper.widget.Layer
  * JD-Core Version:    0.7.0.1
  */

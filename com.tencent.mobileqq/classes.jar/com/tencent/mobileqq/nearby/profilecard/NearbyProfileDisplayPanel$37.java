@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.nearby.now.NowSmallVideoObserver;
 
 class NearbyProfileDisplayPanel$37
-  implements Runnable
+  extends NowSmallVideoObserver
 {
   NearbyProfileDisplayPanel$37(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("COM_TENCENT_MOBILEQQ_NEARBY_PROFILE_ONRESUME");
-    localIntent.setPackage("com.tencent.mobileqq");
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    paramString = this.a;
+    paramString.T = paramBoolean;
+    paramString.c(1, 60);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.37
  * JD-Core Version:    0.7.0.1
  */

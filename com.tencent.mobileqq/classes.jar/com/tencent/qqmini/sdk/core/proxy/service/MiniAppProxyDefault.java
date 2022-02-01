@@ -9,6 +9,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.ResultReceiver;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
 import com.tencent.qqmini.sdk.core.manager.HttpServer;
@@ -38,11 +39,6 @@ public class MiniAppProxyDefault
   extends MiniAppProxy
 {
   private static final String TAG = "MiniAppProxyDefault";
-  
-  public boolean VerifyFile(int paramInt, String paramString)
-  {
-    return true;
-  }
   
   public boolean addShortcut(Context paramContext, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult)
   {
@@ -122,7 +118,7 @@ public class MiniAppProxyDefault
       localObject = paramContext.getBestProvider((Criteria)localObject, true);
       if (localObject != null)
       {
-        paramContext = paramContext.getLastKnownLocation((String)localObject);
+        paramContext = LocationMonitor.getLastKnownLocation(paramContext, (String)localObject);
         if (paramContext == null) {
           return "";
         }
@@ -314,10 +310,15 @@ public class MiniAppProxyDefault
   {
     return false;
   }
+  
+  public boolean verifyFile(int paramInt, String paramString)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

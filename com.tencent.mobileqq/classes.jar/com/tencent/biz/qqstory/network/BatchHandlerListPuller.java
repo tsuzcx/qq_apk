@@ -15,54 +15,48 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BatchHandlerListPuller
 {
-  protected BatchHandlerListPuller.IPullResultCallback a;
-  protected String a;
-  protected List<BatchNetHandler> a;
-  protected AtomicBoolean a;
-  protected boolean a;
-  protected List<BatchNetHandler> b;
-  protected AtomicBoolean b;
+  protected String a = "Q.qqstory.net:BatchHandlerListPuller";
+  protected List<BatchNetHandler> b = new ArrayList();
   protected List<BatchNetHandler> c = new ArrayList();
   protected List<BatchNetHandler> d = new ArrayList();
+  protected List<BatchNetHandler> e = new ArrayList();
+  protected AtomicBoolean f = new AtomicBoolean(false);
+  protected AtomicBoolean g = new AtomicBoolean(false);
+  protected boolean h = false;
+  protected BatchHandlerListPuller.IPullResultCallback i;
   
   public BatchHandlerListPuller(List<BatchNetHandler> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.net:BatchHandlerListPuller";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Boolean = false;
     if ((paramList != null) && (paramList.size() != 0))
     {
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext()) {
         ((BatchNetHandler)localIterator.next()).a(this);
       }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+      this.b = new ArrayList(paramList);
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.h = true;
+    this.g.set(true);
   }
   
   public static BatchHandlerListPuller a(ArrayList<String> paramArrayList)
   {
     ArrayList localArrayList1 = new ArrayList();
-    int j;
-    for (int i = 0; i < paramArrayList.size(); i = j)
+    int k;
+    for (int j = 0; j < paramArrayList.size(); j = k)
     {
-      j = Math.min(paramArrayList.size(), i + 20);
-      if (i >= j) {
+      k = Math.min(paramArrayList.size(), j + 20);
+      if (j >= k) {
         break;
       }
-      List localList = paramArrayList.subList(i, j);
+      List localList = paramArrayList.subList(j, k);
       ArrayList localArrayList2 = new ArrayList();
-      i = 0;
-      while (i < localList.size())
+      j = 0;
+      while (j < localList.size())
       {
-        localArrayList2.add(new QQUserUIItem.UserID("", (String)localList.get(i)));
-        i += 1;
+        localArrayList2.add(new QQUserUIItem.UserID("", (String)localList.get(j)));
+        j += 1;
       }
       localArrayList1.add(new GetUserInfoHandler(1, localArrayList2));
     }
@@ -86,14 +80,14 @@ public class BatchHandlerListPuller
       }
     }
     paramList = new ArrayList();
-    int j;
-    for (int i = 0; i < localArrayList.size(); i = j)
+    int k;
+    for (int j = 0; j < localArrayList.size(); j = k)
     {
-      j = Math.min(localArrayList.size(), i + 20);
-      if (i >= j) {
+      k = Math.min(localArrayList.size(), j + 20);
+      if (j >= k) {
         break;
       }
-      paramList.add(new VidToBasicInfoHandler(localArrayList.subList(i, j)));
+      paramList.add(new VidToBasicInfoHandler(localArrayList.subList(j, k)));
     }
     return new BatchHandlerListPuller(paramList);
   }
@@ -102,8 +96,8 @@ public class BatchHandlerListPuller
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback = null;
+      this.f.set(false);
+      this.i = null;
       return;
     }
     finally
@@ -115,7 +109,7 @@ public class BatchHandlerListPuller
   
   public void a(BatchHandlerListPuller.IPullResultCallback paramIPullResultCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback = paramIPullResultCallback;
+    this.i = paramIPullResultCallback;
   }
   
   public void a(BatchNetHandler paramBatchNetHandler)
@@ -124,29 +118,29 @@ public class BatchHandlerListPuller
     {
       try
       {
-        this.jdField_b_of_type_JavaUtilList.remove(paramBatchNetHandler);
-        this.c.add(paramBatchNetHandler);
-        paramBatchNetHandler = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if ((this.jdField_b_of_type_JavaUtilList.size() == 0) && (this.d.size() == 0))
+        this.c.remove(paramBatchNetHandler);
+        this.d.add(paramBatchNetHandler);
+        paramBatchNetHandler = this.g;
+        if ((this.c.size() == 0) && (this.e.size() == 0))
         {
           bool = true;
           paramBatchNetHandler.set(bool);
-          if (this.jdField_b_of_type_JavaUtilList.size() == 0)
+          if (this.c.size() == 0)
           {
-            if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback != null) {
-              this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback.a(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+            if (this.i != null) {
+              this.i.a(this.g.get());
             }
-            String str = this.jdField_a_of_type_JavaLangString;
+            String str = this.a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("All finish !");
-            if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+            if (this.g.get())
             {
               paramBatchNetHandler = "Every task succeed !";
             }
             else
             {
               paramBatchNetHandler = new StringBuilder();
-              paramBatchNetHandler.append(this.d.size());
+              paramBatchNetHandler.append(this.e.size());
               paramBatchNetHandler.append(" task fail");
               paramBatchNetHandler = paramBatchNetHandler.toString();
             }
@@ -166,57 +160,37 @@ public class BatchHandlerListPuller
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append(":BatchHandlerListPuller");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      int i = this.jdField_b_of_type_JavaUtilList.size();
-      boolean bool;
-      if (i > 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a = localStringBuilder.toString();
   }
   
   public void b()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      boolean bool = this.f.get();
       if (bool) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if (this.jdField_a_of_type_Boolean)
+      this.f.set(true);
+      if (this.h)
       {
-        SLog.d(this.jdField_a_of_type_JavaLangString, "Task list is empty , return result now");
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback.a(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+        SLog.d(this.a, "Task list is empty , return result now");
+        if (this.i != null) {
+          this.i.a(this.g.get());
         }
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
+      Iterator localIterator = this.b.iterator();
+      int j = 0;
       while (localIterator.hasNext())
       {
         BatchNetHandler localBatchNetHandler = (BatchNetHandler)localIterator.next();
-        this.jdField_b_of_type_JavaUtilList.add(localBatchNetHandler);
+        this.c.add(localBatchNetHandler);
         localBatchNetHandler.a();
-        i += 1;
+        j += 1;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      SLog.d(this.jdField_a_of_type_JavaLangString, "Run! Request count = %d", new Object[] { Integer.valueOf(i) });
+      this.b.clear();
+      SLog.d(this.a, "Run! Request count = %d", new Object[] { Integer.valueOf(j) });
       return;
     }
     finally {}
@@ -232,38 +206,38 @@ public class BatchHandlerListPuller
     {
       try
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (this.f.get())
         {
-          bool = paramBatchNetHandler.a();
+          bool = paramBatchNetHandler.b();
           if (!bool)
           {
-            this.jdField_b_of_type_JavaUtilList.remove(paramBatchNetHandler);
-            this.d.add(paramBatchNetHandler);
-            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-            if (this.jdField_b_of_type_JavaUtilList.size() == 0)
+            this.c.remove(paramBatchNetHandler);
+            this.e.add(paramBatchNetHandler);
+            this.g.set(false);
+            if (this.c.size() == 0)
             {
-              if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback != null) {
-                this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller$IPullResultCallback.a(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+              if (this.i != null) {
+                this.i.a(this.g.get());
               }
-              String str = this.jdField_a_of_type_JavaLangString;
+              String str = this.a;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("All finish !");
               Object localObject;
-              if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+              if (this.g.get())
               {
                 localObject = "Every task succeed !";
               }
               else
               {
                 localObject = new StringBuilder();
-                ((StringBuilder)localObject).append(this.d.size());
+                ((StringBuilder)localObject).append(this.e.size());
                 ((StringBuilder)localObject).append(" task fail");
                 localObject = ((StringBuilder)localObject).toString();
               }
               localStringBuilder.append((String)localObject);
               SLog.d(str, localStringBuilder.toString());
             }
-            SLog.d(this.jdField_a_of_type_JavaLangString, String.format("Fail ! Handler = %s", new Object[] { paramBatchNetHandler }));
+            SLog.d(this.a, String.format("Fail ! Handler = %s", new Object[] { paramBatchNetHandler }));
           }
           return;
         }
@@ -273,14 +247,34 @@ public class BatchHandlerListPuller
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    try
+    {
+      int j = this.c.size();
+      boolean bool;
+      if (j > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean d()
+  {
+    return this.g.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.BatchHandlerListPuller
  * JD-Core Version:    0.7.0.1
  */

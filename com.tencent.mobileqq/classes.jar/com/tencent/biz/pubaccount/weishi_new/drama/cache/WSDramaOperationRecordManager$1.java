@@ -26,13 +26,13 @@ final class WSDramaOperationRecordManager$1
     localStringBuilder.append("reportDramaWatchRecord() req failed. errCode = ");
     localStringBuilder.append(paramWSServiceErrorInfo.a());
     localStringBuilder.append(", errMsg = ");
-    localStringBuilder.append(paramWSServiceErrorInfo.a());
+    localStringBuilder.append(paramWSServiceErrorInfo.b());
     WSLog.a("WSDramaOperationRecordManager", localStringBuilder.toString());
   }
   
   protected void a(String paramString)
   {
-    paramString = new WSDramaWatchRecordEvent(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    paramString = new WSDramaWatchRecordEvent(this.a, this.b, this.c);
     WSSimpleEventBus.a().a(paramString);
   }
   
@@ -40,7 +40,7 @@ final class WSDramaOperationRecordManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaOperationRecordManager.1
  * JD-Core Version:    0.7.0.1
  */

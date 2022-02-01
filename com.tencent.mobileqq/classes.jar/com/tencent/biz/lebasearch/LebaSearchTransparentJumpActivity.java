@@ -55,11 +55,11 @@ public class LebaSearchTransparentJumpActivity
   {
     super.doOnDestroy();
     FunctionModuleConfigManager localFunctionModuleConfigManager = (FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER);
-    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel != null) {
-      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = null;
+    if (localFunctionModuleConfigManager.d != null) {
+      localFunctionModuleConfigManager.d = null;
     }
-    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem != null) {
-      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem = null;
+    if (localFunctionModuleConfigManager.e != null) {
+      localFunctionModuleConfigManager.e = null;
     }
   }
   
@@ -94,7 +94,7 @@ public class LebaSearchTransparentJumpActivity
             String str = this.app.getCurrentNickname();
             localObject1 = str;
             if (TextUtils.isEmpty(str)) {
-              localObject1 = ContactUtils.e(this.app, String.valueOf(l));
+              localObject1 = ContactUtils.f(this.app, String.valueOf(l));
             }
             localUserInfo.nickname = ((String)localObject1);
             QZoneHelper.forwardFromSearchToPersonalAlbum(this, localUserInfo, Long.valueOf(l), 0, false, -1);
@@ -105,7 +105,7 @@ public class LebaSearchTransparentJumpActivity
             return;
           }
         case 4: 
-          localException1.putExtra("selfSet_leftViewText", getString(2131690706));
+          localException1.putExtra("selfSet_leftViewText", getString(2131887625));
           QfavHelper.a(this, this.app.getAccount(), localException1, -1, false);
           break;
         case 3: 
@@ -124,7 +124,7 @@ public class LebaSearchTransparentJumpActivity
           break;
         }
       } else {
-        ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem.a(this.a);
+        ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).e.a(this.a);
       }
     }
     else
@@ -141,8 +141,8 @@ public class LebaSearchTransparentJumpActivity
     }
     catch (Exception localException2)
     {
-      label432:
-      break label432;
+      label433:
+      break label433;
     }
     i = j;
     if (QLog.isColorLevel())
@@ -150,10 +150,10 @@ public class LebaSearchTransparentJumpActivity
       QLog.e("IphoneTitleBarActivity", 2, " local result idStr parse error!");
       i = j;
     }
-    Object localObject2 = ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
+    Object localObject2 = ((FunctionModuleConfigManager)this.app.getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER)).d;
     if (localObject2 != null)
     {
-      this.a.setTag(2131380885, Integer.valueOf(i));
+      this.a.setTag(2131449868, Integer.valueOf(i));
       ((ISearchResultModel)localObject2).a(this.a);
     }
     else
@@ -172,7 +172,7 @@ public class LebaSearchTransparentJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchTransparentJumpActivity
  * JD-Core Version:    0.7.0.1
  */

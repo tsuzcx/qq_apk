@@ -34,9 +34,9 @@ class BaseAuthorityPresenter$3
     ((StringBuilder)localObject).append(AuthorityUtil.a(paramString));
     SSOLog.a("BaseAuthorityPresenter", new Object[] { ((StringBuilder)localObject).toString() });
     localObject = this.a;
-    ((BaseAuthorityPresenter)localObject).jdField_a_of_type_ComTencentOpenModelAccountInfo = AuthModelUtil.a(((BaseAuthorityPresenter)localObject).jdField_a_of_type_MqqManagerWtloginManager, paramString, paramArrayOfByte, paramInt, paramBundle);
+    ((BaseAuthorityPresenter)localObject).w = AuthModelUtil.a(((BaseAuthorityPresenter)localObject).D, paramString, paramArrayOfByte, paramInt, paramBundle);
     localObject = this.a;
-    ((BaseAuthorityPresenter)localObject).d = ((BaseAuthorityPresenter)localObject).jdField_a_of_type_ComTencentOpenModelAccountInfo.a;
+    ((BaseAuthorityPresenter)localObject).v = ((BaseAuthorityPresenter)localObject).w.a;
     BaseAuthorityPresenter.a(this.a, paramString, paramArrayOfByte, paramBundle);
     this.a.a(paramString, paramInt, paramBundle);
   }
@@ -48,15 +48,15 @@ class BaseAuthorityPresenter$3
     paramBundle.append(AuthorityUtil.a(paramString));
     SSOLog.a("BaseAuthorityPresenter", new Object[] { paramBundle.toString() });
     paramBundle = this.a;
-    paramBundle.jdField_a_of_type_Int = 0;
-    paramBundle.c = SystemClock.elapsedRealtime();
+    paramBundle.h = 0;
+    paramBundle.d = SystemClock.elapsedRealtime();
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString, false);
-    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.jdField_a_of_type_Long, null, false);
+    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", paramString, this.a.b, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.BaseAuthorityPresenter.3
  * JD-Core Version:    0.7.0.1
  */

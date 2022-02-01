@@ -18,9 +18,9 @@ import android.os.Process;
 import android.text.format.Formatter;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.c.e.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.e;
+import com.tencent.mobileqq.msf.core.d.e.a;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
@@ -1057,7 +1057,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.l
  * JD-Core Version:    0.7.0.1
  */

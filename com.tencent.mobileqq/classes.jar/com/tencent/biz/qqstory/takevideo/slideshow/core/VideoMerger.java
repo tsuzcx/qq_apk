@@ -39,49 +39,49 @@ import java.util.List;
 public class VideoMerger
   extends ToVideoConverter
 {
-  long jdField_a_of_type_Long;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private boolean jdField_a_of_type_Boolean = false;
+  long a;
+  private MediaFormat b;
+  private boolean c = false;
   
   public void a(VideoMerger.MergeContext paramMergeContext)
   {
     if (QLog.isColorLevel()) {
       QLog.i("VideoMerger", 2, "start combine");
     }
-    if (paramMergeContext.jdField_a_of_type_JavaUtilList == null) {
+    if (paramMergeContext.a == null) {
       return;
     }
     Object localObject2 = new QimSegmentMergeUtil();
-    Object localObject1 = new ArrayList(paramMergeContext.jdField_a_of_type_JavaUtilList.size());
-    Object localObject6 = new ArrayList(paramMergeContext.jdField_a_of_type_JavaUtilList.size());
-    Object localObject4 = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
+    Object localObject1 = new ArrayList(paramMergeContext.a.size());
+    Object localObject6 = new ArrayList(paramMergeContext.a.size());
+    Object localObject4 = (TransitionHandler)QQStoryContext.k().getBusinessHandler(PeakAppInterface.c);
     Object localObject7 = new ArrayList();
-    Object localObject5 = paramMergeContext.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject5 = paramMergeContext.a.iterator();
     boolean bool2 = false;
     Object localObject8;
     while (((Iterator)localObject5).hasNext())
     {
       localObject8 = (SlideItemInfo)((Iterator)localObject5).next();
-      Object localObject9 = ((TransitionHandler)localObject4).a(((SlideItemInfo)localObject8).jdField_b_of_type_JavaLangString);
+      Object localObject9 = ((TransitionHandler)localObject4).a(((SlideItemInfo)localObject8).f);
       if (localObject9 != null)
       {
         ((List)localObject1).add(((LocalMediaInfo)localObject9).path);
         ((List)localObject7).add(((LocalMediaInfo)localObject9).mAudioPath);
-        ((SlideItemInfo)localObject8).jdField_c_of_type_JavaLangString = ((LocalMediaInfo)localObject9).path;
-        ((SlideItemInfo)localObject8).d = ((LocalMediaInfo)localObject9).mAudioPath;
-        ((SlideItemInfo)localObject8).jdField_a_of_type_Boolean = ((LocalMediaInfo)localObject9).mHasAudioTrack;
-        ((SlideItemInfo)localObject8).jdField_c_of_type_Int = ((LocalMediaInfo)localObject9).mSampleRate;
+        ((SlideItemInfo)localObject8).k = ((LocalMediaInfo)localObject9).path;
+        ((SlideItemInfo)localObject8).l = ((LocalMediaInfo)localObject9).mAudioPath;
+        ((SlideItemInfo)localObject8).m = ((LocalMediaInfo)localObject9).mHasAudioTrack;
+        ((SlideItemInfo)localObject8).n = ((LocalMediaInfo)localObject9).mSampleRate;
         ((List)localObject6).add(localObject8);
-        if (((SlideItemInfo)localObject8).jdField_b_of_type_Int == 1)
+        if (((SlideItemInfo)localObject8).e == 1)
         {
-          if (((SlideItemInfo)localObject8).jdField_a_of_type_Boolean) {
+          if (((SlideItemInfo)localObject8).m) {
             bool2 = true;
           }
           localObject9 = new StringBuilder();
           ((StringBuilder)localObject9).append("mergeRunnable hasAudioTrack=");
-          ((StringBuilder)localObject9).append(((SlideItemInfo)localObject8).jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject9).append(((SlideItemInfo)localObject8).m);
           ((StringBuilder)localObject9).append(" mSampleRate:");
-          ((StringBuilder)localObject9).append(((SlideItemInfo)localObject8).jdField_c_of_type_Int);
+          ((StringBuilder)localObject9).append(((SlideItemInfo)localObject8).n);
           QLog.i("VideoMerger", 1, ((StringBuilder)localObject9).toString());
         }
       }
@@ -91,11 +91,11 @@ public class VideoMerger
       a(9, "", null, null, null, paramMergeContext);
       return;
     }
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null)
+    if (this.b == null)
     {
       if (((TransitionHandler)localObject4).a() != null)
       {
-        this.jdField_a_of_type_AndroidMediaMediaFormat = ((TransitionHandler)localObject4).a();
+        this.b = ((TransitionHandler)localObject4).a();
         if (QLog.isColorLevel()) {
           QLog.d("VideoMerger", 2, "transHandler.getMediaFormat");
         }
@@ -104,7 +104,7 @@ public class VideoMerger
       {
         if (((List)localObject1).size() > 0)
         {
-          this.jdField_a_of_type_AndroidMediaMediaFormat = ImageToVideo.a((String)((List)localObject1).get(0));
+          this.b = ImageToVideo.a((String)((List)localObject1).get(0));
           if (QLog.isColorLevel())
           {
             localObject4 = new StringBuilder();
@@ -113,9 +113,9 @@ public class VideoMerger
             QLog.d("VideoMerger", 2, ((StringBuilder)localObject4).toString());
           }
         }
-        if (this.jdField_a_of_type_AndroidMediaMediaFormat == null)
+        if (this.b == null)
         {
-          this.jdField_a_of_type_AndroidMediaMediaFormat = ImageToVideo.a();
+          this.b = ImageToVideo.a();
           if (QLog.isColorLevel()) {
             QLog.d("VideoMerger", 2, "ImageToVideo.getVideoFormatDefault");
           }
@@ -125,8 +125,8 @@ public class VideoMerger
     else if (QLog.isColorLevel()) {
       QLog.d("VideoMerger", 2, "mVideoFormat not null");
     }
-    if (paramMergeContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$VideoMergeListener != null) {
-      paramMergeContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$VideoMergeListener.a(bool2);
+    if (paramMergeContext.b != null) {
+      paramMergeContext.b.a(bool2);
     }
     localObject5 = SlideShowUtils.a();
     localObject4 = new StringBuilder();
@@ -147,7 +147,7 @@ public class VideoMerger
         ((List)localObject7).clear();
         localObject8 = ((List)localObject6).iterator();
         while (((Iterator)localObject8).hasNext()) {
-          ((List)localObject7).add(((SlideItemInfo)((Iterator)localObject8).next()).d);
+          ((List)localObject7).add(((SlideItemInfo)((Iterator)localObject8).next()).l);
         }
         bool1 = ((QimSegmentMergeUtil)localObject2).a((List)localObject7, (String)localObject4);
       }
@@ -177,10 +177,10 @@ public class VideoMerger
           break;
         }
         localObject7 = (SlideItemInfo)((Iterator)localObject6).next();
-        if (((SlideItemInfo)localObject7).jdField_b_of_type_Int == 0) {
-          ((List)localObject1).add(((SlideItemInfo)localObject7).jdField_c_of_type_JavaLangString);
+        if (((SlideItemInfo)localObject7).e == 0) {
+          ((List)localObject1).add(((SlideItemInfo)localObject7).k);
         }
-        ((List)localObject1).add(((SlideItemInfo)localObject7).jdField_c_of_type_JavaLangString);
+        ((List)localObject1).add(((SlideItemInfo)localObject7).k);
       }
     }
     localObject6 = ((List)localObject1).iterator();
@@ -197,7 +197,7 @@ public class VideoMerger
     if (bool3)
     {
       l1 = System.currentTimeMillis();
-      bool1 = ((QimSegmentMergeUtil)localObject2).a((List)localObject1, (String)localObject5, 720, 1280, this.jdField_a_of_type_AndroidMediaMediaFormat);
+      bool1 = ((QimSegmentMergeUtil)localObject2).a((List)localObject1, (String)localObject5, 720, 1280, this.b);
       l2 = System.currentTimeMillis();
       localObject6 = new StringBuilder();
       ((StringBuilder)localObject6).append("merge video result ");
@@ -218,8 +218,8 @@ public class VideoMerger
     localObject6 = new LocalMediaInfo();
     ((LocalMediaInfo)localObject6).path = ((String)localObject5);
     ((LocalMediaInfo)localObject6).mMimeType = "video";
-    if (QQAudioHelper.d()) {
-      ((LocalMediaInfo)localObject6).mTransferPosList = ((QimSegmentMergeUtil)localObject2).a((List)localObject1, (String)localObject5);
+    if (QQAudioHelper.g()) {
+      ((LocalMediaInfo)localObject6).mTransferPosList = ((QimSegmentMergeUtil)localObject2).b((List)localObject1, (String)localObject5);
     } else {
       ((LocalMediaInfo)localObject6).mTransferPosList = ((QimSegmentMergeUtil)localObject2).a((List)localObject1);
     }
@@ -236,13 +236,13 @@ public class VideoMerger
     if (bool1)
     {
       l1 = System.currentTimeMillis();
-      l2 = this.jdField_a_of_type_Long;
+      l2 = this.a;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(l1 - l2);
       ((StringBuilder)localObject3).append("");
       localObject3 = ((StringBuilder)localObject3).toString();
       localObject7 = new StringBuilder();
-      ((StringBuilder)localObject7).append(paramMergeContext.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject7).append(paramMergeContext.a.size());
       ((StringBuilder)localObject7).append("");
       StoryReportor.a("actAlbumTime", new String[] { localObject3, ((StringBuilder)localObject7).toString() });
       localObject7 = new CameraCaptureView.VideoCaptureResult();
@@ -254,7 +254,7 @@ public class VideoMerger
       }
       ((CameraCaptureView.VideoCaptureResult)localObject7).videoMp4FilePath = ((String)localObject5);
       localObject1 = null;
-      localObject3 = paramMergeContext.jdField_a_of_type_AndroidAppActivity.getIntent();
+      localObject3 = paramMergeContext.c.getIntent();
       if (localObject3 != null) {
         localObject1 = ((Intent)localObject3).getBundleExtra("state");
       }
@@ -262,48 +262,48 @@ public class VideoMerger
       if (localObject1 == null) {
         localObject3 = new Bundle();
       }
-      localObject4 = paramMergeContext.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
+      localObject4 = paramMergeContext.c.getIntent().getExtras();
       localObject1 = localObject4;
       if (localObject4 == null) {
         localObject1 = new Bundle();
       }
-      localObject4 = paramMergeContext.jdField_a_of_type_AndroidAppActivity.getIntent();
+      localObject4 = paramMergeContext.c.getIntent();
       int i = ((Intent)localObject4).getIntExtra("entrance_type", 99);
       bool2 = ((Intent)localObject4).getBooleanExtra("PhotoConst.IS_FROM_EDIT", false);
       int j = ((Bundle)localObject1).getInt("qq_sub_business_id", 2);
       int k = ((Bundle)localObject1).getInt("edit_video_type", 10002);
-      ((ILaunchVideoEditorForAlbum)QRoute.api(ILaunchVideoEditorForAlbum.class)).setVideoParams(k, i, j, SlideShowPhotoListManager.a().a());
+      ((ILaunchVideoEditorForAlbum)QRoute.api(ILaunchVideoEditorForAlbum.class)).setVideoParams(k, i, j, SlideShowPhotoListManager.a().d());
       ((Bundle)localObject1).putBoolean("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW", true);
       ((Bundle)localObject1).putString("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA", (String)localObject5);
       ((Bundle)localObject1).putInt("extra_transiton_src_from", 1);
-      ((Bundle)localObject1).putInt("extra_slide_entrance", paramMergeContext.jdField_a_of_type_Int);
-      ((Bundle)localObject1).putInt("extra_slide_sticker_id", paramMergeContext.jdField_b_of_type_Int);
-      ((Bundle)localObject1).putString("extra_slide_sticker_str", paramMergeContext.jdField_a_of_type_JavaLangString);
-      if (paramMergeContext.jdField_a_of_type_JavaUtilList.size() > 0)
+      ((Bundle)localObject1).putInt("extra_slide_entrance", paramMergeContext.e);
+      ((Bundle)localObject1).putInt("extra_slide_sticker_id", paramMergeContext.f);
+      ((Bundle)localObject1).putString("extra_slide_sticker_str", paramMergeContext.g);
+      if (paramMergeContext.a.size() > 0)
       {
-        ((Bundle)localObject1).putString("extra_transiton_default", ((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).e);
+        ((Bundle)localObject1).putString("extra_transiton_default", ((SlideItemInfo)paramMergeContext.a.get(0)).r);
         if (QLog.isColorLevel())
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("doMerge mTransId=");
-          ((StringBuilder)localObject4).append(((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).e);
+          ((StringBuilder)localObject4).append(((SlideItemInfo)paramMergeContext.a.get(0)).r);
           QLog.d("VideoMerger", 2, ((StringBuilder)localObject4).toString());
         }
-        if (((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum != null)
+        if (((SlideItemInfo)paramMergeContext.a.get(0)).b != null)
         {
-          ((Bundle)localObject1).putInt("extra_ablum_type", ((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum.jdField_a_of_type_Int);
+          ((Bundle)localObject1).putInt("extra_ablum_type", ((SlideItemInfo)paramMergeContext.a.get(0)).b.b);
           if (QLog.isColorLevel())
           {
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("doMerge mAlbumType=");
-            ((StringBuilder)localObject4).append(((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum.jdField_a_of_type_Int);
+            ((StringBuilder)localObject4).append(((SlideItemInfo)paramMergeContext.a.get(0)).b.b);
             QLog.d("VideoMerger", 2, ((StringBuilder)localObject4).toString());
           }
         }
-        localObject4 = SlideShowConfigManager.a(paramMergeContext.jdField_a_of_type_AndroidAppActivity).a(((SlideItemInfo)paramMergeContext.jdField_a_of_type_JavaUtilList.get(0)).e);
+        localObject4 = SlideShowConfigManager.a(paramMergeContext.c).a(((SlideItemInfo)paramMergeContext.a.get(0)).r);
         if ((localObject4 != null) && (((List)localObject4).size() > 0))
         {
-          localObject4 = ((IAELaunchMusicConfigManager)QRoute.api(IAELaunchMusicConfigManager.class)).getMusicItemById(((SlideShowConfigManager.Music)((List)localObject4).get(0)).jdField_a_of_type_Int, ((SlideShowConfigManager.Music)((List)localObject4).get(0)).jdField_b_of_type_Int);
+          localObject4 = ((IAELaunchMusicConfigManager)QRoute.api(IAELaunchMusicConfigManager.class)).getMusicItemById(((SlideShowConfigManager.Music)((List)localObject4).get(0)).a, ((SlideShowConfigManager.Music)((List)localObject4).get(0)).b);
           if (localObject4 != null)
           {
             localObject5 = new Bundle();
@@ -326,21 +326,21 @@ public class VideoMerger
         }
       }
       ((Bundle)localObject1).putBoolean("PhotoConst.IS_FROM_EDIT", bool2);
-      if (SlideShowPhotoListManager.a().a() == 13) {
+      if (SlideShowPhotoListManager.a().d() == 13) {
         ((IQimMusicPlayer)QRoute.api(IQimMusicPlayer.class)).clearMusic();
       }
-      paramMergeContext.jdField_a_of_type_AndroidOsHandler.post(new VideoMerger.1(this, paramMergeContext, (CameraCaptureView.VideoCaptureResult)localObject7, (LocalMediaInfo)localObject6, (Bundle)localObject3, (Bundle)localObject1));
-      localObject1 = paramMergeContext.jdField_a_of_type_JavaUtilList.iterator();
+      paramMergeContext.d.post(new VideoMerger.1(this, paramMergeContext, (CameraCaptureView.VideoCaptureResult)localObject7, (LocalMediaInfo)localObject6, (Bundle)localObject3, (Bundle)localObject1));
+      localObject1 = paramMergeContext.a.iterator();
       i = 0;
       while (((Iterator)localObject1).hasNext()) {
-        if (((SlideItemInfo)((Iterator)localObject1).next()).jdField_b_of_type_Int == 1) {
+        if (((SlideItemInfo)((Iterator)localObject1).next()).e == 1) {
           i += 1;
         }
       }
-      j = paramMergeContext.jdField_a_of_type_JavaUtilList.size();
-      bool2 = this.jdField_a_of_type_Boolean;
+      j = paramMergeContext.a.size();
+      bool2 = this.c;
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramMergeContext.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append(paramMergeContext.a.size());
       ((StringBuilder)localObject1).append("");
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject3 = new StringBuilder();
@@ -355,10 +355,10 @@ public class VideoMerger
     }
     else
     {
-      paramMergeContext.jdField_a_of_type_AndroidOsHandler.post(new VideoMerger.2(this, paramMergeContext));
+      paramMergeContext.d.post(new VideoMerger.2(this, paramMergeContext));
     }
-    if (paramMergeContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$VideoMergeListener != null) {
-      paramMergeContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoMerger$VideoMergeListener.g();
+    if (paramMergeContext.b != null) {
+      paramMergeContext.b.n();
     }
     if (QLog.isColorLevel())
     {

@@ -11,7 +11,7 @@ class TroopSysMsgDependApiServiceImpl$2
   
   protected void a(boolean paramBoolean, long paramLong, IPublicAccountDetail paramIPublicAccountDetail)
   {
-    ITroopSysMsgDependApiService.ITransitTroopProtocolOnGetInfoObserver localITransitTroopProtocolOnGetInfoObserver = this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopSysMsgDependApiService$ITransitTroopProtocolOnGetInfoObserver;
+    ITroopSysMsgDependApiService.ITransitTroopProtocolOnGetInfoObserver localITransitTroopProtocolOnGetInfoObserver = this.a;
     if ((localITransitTroopProtocolOnGetInfoObserver != null) && (paramIPublicAccountDetail != null)) {
       localITransitTroopProtocolOnGetInfoObserver.a(paramBoolean, paramLong, paramIPublicAccountDetail.getName());
     }
@@ -19,7 +19,7 @@ class TroopSysMsgDependApiServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopSysMsgDependApiServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

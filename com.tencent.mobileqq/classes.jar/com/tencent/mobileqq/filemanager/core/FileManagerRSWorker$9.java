@@ -20,116 +20,116 @@ class FileManagerRSWorker$9
   
   public void a(String paramString, long paramLong, WeiyunDownloadStatusInfo paramWeiyunDownloadStatusInfo, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask == null) {
+    if (this.a.U == null) {
       return;
     }
     if (paramBoolean)
     {
-      if (paramWeiyunDownloadStatusInfo.jdField_a_of_type_Int == 2)
+      if (paramWeiyunDownloadStatusInfo.a == 2)
       {
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append("WeiYun download is onStarted[");
-          paramString.append(this.a.c);
+          paramString.append(this.a.r);
           paramString.append("]");
           QLog.i("FileManagerRSWorker<FileAssistant>", 2, paramString.toString());
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+        this.a.a.getFileManagerNotifyCenter().a(this.a.q, this.a.r, this.a.f, this.a.g, 16, null, 0, null);
         return;
       }
-      if (paramWeiyunDownloadStatusInfo.jdField_a_of_type_Int == 5)
+      if (paramWeiyunDownloadStatusInfo.a == 5)
       {
-        if (paramWeiyunDownloadStatusInfo.jdField_b_of_type_Int == 1810002)
+        if (paramWeiyunDownloadStatusInfo.b == 1810002)
         {
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
             paramString.append("WeiYun download is canceled[");
-            paramString.append(this.a.c);
+            paramString.append(this.a.r);
             paramString.append("],set trafficData size[");
-            paramString.append(this.a.jdField_a_of_type_Long);
+            paramString.append(this.a.o);
             paramString.append("]");
             QLog.i("FileManagerRSWorker<FileAssistant>", 2, paramString.toString());
           }
           if (NetworkUtil.getNetworkType(BaseApplication.getContext()) != 1) {}
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
+          this.a.a.getFileManagerNotifyCenter().a(this.a.q, this.a.r, this.a.f, this.a.g, 3, null, 0, null);
           return;
         }
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append("WeiYun download is onFailed[");
-          paramString.append(this.a.c);
+          paramString.append(this.a.r);
           paramString.append("],set trafficData size[");
-          paramString.append(this.a.jdField_a_of_type_Long);
+          paramString.append(this.a.o);
           paramString.append("]");
           QLog.i("FileManagerRSWorker<FileAssistant>", 2, paramString.toString());
         }
         if (NetworkUtil.getNetworkType(BaseApplication.getContext()) != 1) {}
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 36, null, paramWeiyunDownloadStatusInfo.jdField_b_of_type_Int, paramWeiyunDownloadStatusInfo.jdField_a_of_type_JavaLangString);
+        this.a.B.status = 0;
+        this.a.B.isReaded = false;
+        this.a.a.getFileManagerDataCenter().a();
+        this.a.a.getFileManagerDataCenter().c(this.a.B);
+        this.a.a.getFileManagerNotifyCenter().a(this.a.q, this.a.r, this.a.f, this.a.g, 36, null, paramWeiyunDownloadStatusInfo.b, paramWeiyunDownloadStatusInfo.c);
         return;
       }
-      if (paramWeiyunDownloadStatusInfo.jdField_a_of_type_Int == 4)
+      if (paramWeiyunDownloadStatusInfo.a == 4)
       {
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
           paramString.append("WeiYun download is onSucceed[");
-          paramString.append(this.a.c);
+          paramString.append(this.a.r);
           paramString.append("],set trafficData size[");
-          paramString.append(this.a.jdField_a_of_type_Long);
+          paramString.append(this.a.o);
           paramString.append("]");
           QLog.i("FileManagerRSWorker<FileAssistant>", 2, paramString.toString());
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramWeiyunDownloadStatusInfo.jdField_b_of_type_JavaLangString);
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-        this.a.h = System.currentTimeMillis();
+        this.a.B.setFilePath(paramWeiyunDownloadStatusInfo.f);
+        this.a.B.fProgress = 1.0F;
+        this.a.B.isReaded = false;
+        this.a.B.setCloudType(3);
+        this.a.B.status = 1;
+        this.a.B.fileName = FileManagerUtil.a(this.a.B.getFilePath());
+        this.a.D = System.currentTimeMillis();
         if (NetworkUtil.getNetworkType(BaseApplication.getContext()) != 1) {}
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 35, null, 0, null);
+        this.a.a.getFileManagerDataCenter().c(this.a.B);
+        this.a.a.getFileManagerNotifyCenter().a(this.a.q, this.a.r, this.a.f, this.a.g, 35, null, 0, null);
         paramString = new FileManagerReporter.FileAssistantReportData();
-        paramString.jdField_b_of_type_JavaLangString = "rece_file_suc";
-        paramString.jdField_a_of_type_Int = 1;
-        FileManagerReporter.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+        paramString.b = "rece_file_suc";
+        paramString.c = 1;
+        FileManagerReporter.a(this.a.a.getCurrentAccountUin(), paramString);
       }
     }
     else
     {
       paramLong = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Long = paramWeiyunDownloadStatusInfo.jdField_b_of_type_Long;
-      if (paramLong - this.a.f < 1000L) {
+      this.a.o = paramWeiyunDownloadStatusInfo.e;
+      if (paramLong - this.a.y < 1000L) {
         return;
       }
-      this.a.f = paramLong;
+      this.a.y = paramLong;
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("Id[");
-        paramString.append(this.a.c);
+        paramString.append(this.a.r);
         paramString.append("]WeiYun download is onProgressChange mtransferedSize[");
-        paramString.append(this.a.jdField_a_of_type_Long);
+        paramString.append(this.a.o);
         paramString.append("/");
-        paramString.append(this.a.d);
+        paramString.append(this.a.s);
         paramString.append("]");
         QLog.i("FileManagerRSWorker<FileAssistant>", 2, paramString.toString());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+      this.a.B.fProgress = ((float)this.a.o / (float)this.a.s);
+      this.a.a.getFileManagerNotifyCenter().a(this.a.q, this.a.r, this.a.f, this.a.g, 16, null, 0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.9
  * JD-Core Version:    0.7.0.1
  */

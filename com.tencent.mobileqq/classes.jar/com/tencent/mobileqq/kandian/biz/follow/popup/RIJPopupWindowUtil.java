@@ -27,7 +27,7 @@ public final class RIJPopupWindowUtil
   {
     Object localObject = paramRIJBottomDialog.a();
     if (localObject != null) {
-      localObject = (ImageView)((View)localObject).findViewById(2131363892);
+      localObject = (ImageView)((View)localObject).findViewById(2131429842);
     } else {
       localObject = null;
     }
@@ -41,7 +41,7 @@ public final class RIJPopupWindowUtil
     paramRIJBottomDialog = paramRIJBottomDialog.a();
     Object localObject2 = null;
     if (paramRIJBottomDialog != null) {
-      paramRIJBottomDialog = (TextView)paramRIJBottomDialog.findViewById(2131379930);
+      paramRIJBottomDialog = (TextView)paramRIJBottomDialog.findViewById(2131448814);
     } else {
       paramRIJBottomDialog = null;
     }
@@ -49,7 +49,7 @@ public final class RIJPopupWindowUtil
     localStringBuilder.append("[setRecommendTitle] recommendTitle = ");
     Object localObject1 = paramAbsBaseArticleInfo.mRecommendFollowInfos;
     if (localObject1 != null) {
-      localObject1 = ((RecommendFollowInfos)localObject1).a;
+      localObject1 = ((RecommendFollowInfos)localObject1).e;
     } else {
       localObject1 = null;
     }
@@ -57,7 +57,7 @@ public final class RIJPopupWindowUtil
     QLog.i("RIJPopupWindowUtil", 1, localStringBuilder.toString());
     localObject1 = paramAbsBaseArticleInfo.mRecommendFollowInfos;
     if (localObject1 != null) {
-      localObject1 = ((RecommendFollowInfos)localObject1).a;
+      localObject1 = ((RecommendFollowInfos)localObject1).e;
     } else {
       localObject1 = null;
     }
@@ -66,7 +66,7 @@ public final class RIJPopupWindowUtil
       localObject1 = paramAbsBaseArticleInfo.mRecommendFollowInfos;
       paramAbsBaseArticleInfo = localObject2;
       if (localObject1 != null) {
-        paramAbsBaseArticleInfo = ((RecommendFollowInfos)localObject1).a;
+        paramAbsBaseArticleInfo = ((RecommendFollowInfos)localObject1).e;
       }
       paramRIJBottomDialog.setText((CharSequence)paramAbsBaseArticleInfo);
     }
@@ -75,7 +75,7 @@ public final class RIJPopupWindowUtil
   public final void a(@Nullable Context paramContext, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if (!FastWebPTSDataConverter.a(paramAbsBaseArticleInfo))
+    if (!FastWebPTSDataConverter.b(paramAbsBaseArticleInfo))
     {
       QLog.i("RIJPopupWindowUtil", 1, "showFollowRecommendPopup error! no recommend data!");
       return;
@@ -90,7 +90,7 @@ public final class RIJPopupWindowUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJPopupWindowUtil
  * JD-Core Version:    0.7.0.1
  */

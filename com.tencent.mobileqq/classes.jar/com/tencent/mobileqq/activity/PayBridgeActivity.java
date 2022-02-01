@@ -243,7 +243,7 @@ public class PayBridgeActivity
         localStringBuilder.append(getRequestCode());
         localStringBuilder.append("&json=");
         localStringBuilder.append(getJson());
-        VACDReportUtil.a(null, "qqwallet", "PayBridge", "click.mobileqq", localStringBuilder.toString(), 0, null);
+        VACDReportUtil.b(null, "qqwallet", "PayBridge", "click.mobileqq", localStringBuilder.toString(), 0, null);
         this.payLogic.end();
       }
     }
@@ -408,7 +408,7 @@ public class PayBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PayBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

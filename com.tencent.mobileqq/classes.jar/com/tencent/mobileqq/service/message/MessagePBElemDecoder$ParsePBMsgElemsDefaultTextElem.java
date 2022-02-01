@@ -26,20 +26,12 @@ class MessagePBElemDecoder$ParsePBMsgElemsDefaultTextElem
     super(paramStringBuilder1, paramLong, ???, paramArrayList, paramAtTroopMemberInfo1, paramAtTroopMemberInfo2, paramArrayOfByte, paramStringBuilder2, paramBoolean, paramElem, localElem1);
   }
   
-  private void b()
+  private boolean g()
   {
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType:NewSysFaceMsg;\n");
+      this.b.append("elemType: bankcode_ctrlinfo;\n");
     }
-    this.b.append(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessagePBElemDecoder.a((im_msg_body.CommonElem)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.common_elem.get()));
-  }
-  
-  private boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType: bankcode_ctrlinfo;\n");
-    }
-    byte[] arrayOfByte = this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.bankcode_ctrl_info.get().toByteArray();
+    byte[] arrayOfByte = this.h.bankcode_ctrl_info.get().toByteArray();
     int i = arrayOfByte[0];
     int j = arrayOfByte[(arrayOfByte.length - 1)];
     if ((i == 40) && (j == 41))
@@ -51,36 +43,44 @@ class MessagePBElemDecoder$ParsePBMsgElemsDefaultTextElem
       if (i <= 0) {
         return true;
       }
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      System.arraycopy(arrayOfByte, 6, this.jdField_a_of_type_ArrayOfByte, 0, i);
+      this.e = new byte[i];
+      System.arraycopy(arrayOfByte, 6, this.e, 0, i);
       return false;
     }
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType: bankcode_ctrlinfo buffer error;\n");
+      this.b.append("elemType: bankcode_ctrlinfo buffer error;\n");
     }
     return true;
   }
   
-  private void c()
+  private void h()
   {
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType:OnlineImage;\n");
+      this.b.append("elemType:NewSysFaceMsg;\n");
     }
-    this.b.append(BaseApplication.getContext().getString(2131694606));
+    this.f.append(this.a.a((im_msg_body.CommonElem)this.h.common_elem.get()));
   }
   
-  private void d()
+  private void i()
   {
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType:small_emoji;\n");
+      this.b.append("elemType:OnlineImage;\n");
     }
-    if (!((im_msg_body.SmallEmoji)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.get()).packIdSum.has()) {
+    this.f.append(BaseApplication.getContext().getString(2131892290));
+  }
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      this.b.append("elemType:small_emoji;\n");
+    }
+    if (!((im_msg_body.SmallEmoji)this.h.small_emoji.get()).packIdSum.has()) {
       return;
     }
-    int i = (((im_msg_body.SmallEmoji)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.get()).packIdSum.get() & 0xFFFF0000) >> 16;
-    int j = ((im_msg_body.SmallEmoji)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.get()).packIdSum.get() & 0xFFFF;
+    int i = (((im_msg_body.SmallEmoji)this.h.small_emoji.get()).packIdSum.get() & 0xFFFF0000) >> 16;
+    int j = ((im_msg_body.SmallEmoji)this.h.small_emoji.get()).packIdSum.get() & 0xFFFF;
     char[] arrayOfChar = EmosmUtils.b(i, j);
-    if ((((im_msg_body.SmallEmoji)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.get()).imageType.has()) && ((0xFFFF & ((im_msg_body.SmallEmoji)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.get()).imageType.get()) == 2))
+    if ((((im_msg_body.SmallEmoji)this.h.small_emoji.get()).imageType.has()) && ((0xFFFF & ((im_msg_body.SmallEmoji)this.h.small_emoji.get()).imageType.get()) == 2))
     {
       arrayOfChar[3] = 'ǿ';
       if (QLog.isColorLevel())
@@ -93,60 +93,60 @@ class MessagePBElemDecoder$ParsePBMsgElemsDefaultTextElem
         QLog.d("DecodeMsg", 2, localStringBuilder.toString());
       }
     }
-    this.b.append('\024');
-    this.b.append(arrayOfChar[3]);
-    this.b.append(arrayOfChar[2]);
-    this.b.append(arrayOfChar[1]);
-    this.b.append(arrayOfChar[0]);
-    this.jdField_a_of_type_Boolean = true;
+    this.f.append('\024');
+    this.f.append(arrayOfChar[3]);
+    this.f.append(arrayOfChar[2]);
+    this.f.append(arrayOfChar[1]);
+    this.f.append(arrayOfChar[0]);
+    this.g = true;
   }
   
-  private void e()
+  private void k()
   {
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType:Face;\n");
+      this.b.append("elemType:Face;\n");
     }
-    if (!((im_msg_body.Face)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.face.get()).index.has()) {
+    if (!((im_msg_body.Face)this.h.face.get()).index.has()) {
       return;
     }
-    int i = QQSysFaceUtil.convertToLocal(((im_msg_body.Face)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.face.get()).index.get());
+    int i = QQSysFaceUtil.convertToLocal(((im_msg_body.Face)this.h.face.get()).index.get());
     if (i < 0) {
       return;
     }
-    this.b.append('\024');
-    this.b.append((char)i);
+    this.f.append('\024');
+    this.f.append((char)i);
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.face.has())
+    if (this.h.face.has())
     {
-      e();
+      k();
       return;
     }
-    if (this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.small_emoji.has())
+    if (this.h.small_emoji.has())
     {
-      d();
+      j();
       return;
     }
-    if (this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.online_image.has())
+    if (this.h.online_image.has())
     {
-      c();
+      i();
       return;
     }
-    if (this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.bankcode_ctrl_info.has())
+    if (this.h.bankcode_ctrl_info.has())
     {
-      b();
+      g();
       return;
     }
-    if ((this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.common_elem.has()) && (33 == this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.common_elem.uint32_service_type.get())) {
-      b();
+    if ((this.h.common_elem.has()) && (33 == this.h.common_elem.uint32_service_type.get())) {
+      h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessagePBElemDecoder.ParsePBMsgElemsDefaultTextElem
  * JD-Core Version:    0.7.0.1
  */

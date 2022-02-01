@@ -129,6 +129,11 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
     return this;
   }
   
+  public void setIsGuildLiveChannel(boolean paramBoolean)
+  {
+    this.mPanelParams.isInGuildLiveChannel = paramBoolean;
+  }
+  
   public EmoticonPanelBuilder setIsOnlySysEmotion(boolean paramBoolean)
   {
     this.mPanelParams.mIsOnlySysEmotion = paramBoolean;
@@ -169,10 +174,16 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
   {
     this.mPanelParams.show();
   }
+  
+  public EmoticonPanelBuilder showDescribeInPreview(boolean paramBoolean)
+  {
+    this.mPanelParams.showDescInPreview = paramBoolean;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel.EmoticonPanelBuilder
  * JD-Core Version:    0.7.0.1
  */

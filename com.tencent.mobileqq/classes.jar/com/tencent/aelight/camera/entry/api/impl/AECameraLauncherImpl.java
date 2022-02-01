@@ -25,6 +25,11 @@ public class AECameraLauncherImpl
     AECameraLauncher.a(paramActivity, paramInt, paramBundle);
   }
   
+  public void launchAEMultiCameraFromFlash(Context paramContext, @Nullable Bundle paramBundle)
+  {
+    AECameraLauncher.d(paramContext, paramBundle);
+  }
+  
   public void launchAEMutiCameraFromCircle(Context paramContext, @Nullable Bundle paramBundle)
   {
     AECameraLauncher.c(paramContext, paramBundle);
@@ -32,7 +37,7 @@ public class AECameraLauncherImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.entry.api.impl.AECameraLauncherImpl
  * JD-Core Version:    0.7.0.1
  */

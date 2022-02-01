@@ -21,72 +21,13 @@ public class AROnlineVideoUtil
 {
   public static volatile ISPlayerPreDownloader a;
   
-  public static Pair<Long, String> a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("parseFileSize, str=");
-      localStringBuilder.append(paramString);
-      QLog.d("AROnlineVideoUtil", 2, localStringBuilder.toString());
-    }
-    boolean bool = TextUtils.isEmpty(paramString);
-    StringBuilder localStringBuilder = null;
-    if (bool) {
-      return null;
-    }
-    String[] arrayOfString = paramString.split("\\|");
-    paramString = localStringBuilder;
-    if (arrayOfString != null)
-    {
-      if (arrayOfString.length != 2) {
-        return null;
-      }
-      long l;
-      try
-      {
-        l = Long.parseLong(arrayOfString[0]);
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          paramString.printStackTrace();
-        }
-        l = -1L;
-      }
-      if (l == -1L) {
-        return null;
-      }
-      paramString = new Pair(Long.valueOf(l), arrayOfString[1]);
-    }
-    return paramString;
-  }
-  
-  private static String a()
-  {
-    if (SystemUtil.a())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(AppConstants.SDCARD_PATH);
-      localStringBuilder.append("iar");
-      localStringBuilder.append(File.separator);
-      return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("iar");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
   public static String a(String paramString)
   {
     try
     {
       paramString = MD5Utils.toMD5(paramString);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a());
+      localStringBuilder.append(b());
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
       return paramString;
@@ -129,9 +70,9 @@ public class AROnlineVideoUtil
   
   public static void a(Context paramContext, ArVideoResourceInfo paramArVideoResourceInfo)
   {
-    if ((paramArVideoResourceInfo != null) && (!TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
+    if ((paramArVideoResourceInfo != null) && (!TextUtils.isEmpty(paramArVideoResourceInfo.i)))
     {
-      if (paramArVideoResourceInfo.jdField_d_of_type_Int != 4) {
+      if (paramArVideoResourceInfo.h != 4) {
         return;
       }
       int i = NetworkUtil.getNetworkType(BaseApplication.getContext());
@@ -152,11 +93,11 @@ public class AROnlineVideoUtil
       if (a == null) {
         a = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 108);
       }
-      if (!TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramArVideoResourceInfo.i))
       {
-        paramContext = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
+        paramContext = paramArVideoResourceInfo.i;
         String str = a(paramContext);
-        bool = a(str);
+        bool = c(str);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -169,14 +110,73 @@ public class AROnlineVideoUtil
           QLog.d("AROnlineVideoUtil", 2, localStringBuilder.toString());
         }
         paramContext = SuperPlayerFactory.createVideoInfoForUrl(paramContext, 101, MD5Utils.toMD5(paramContext));
-        if (paramArVideoResourceInfo.a > 4L) {
-          a.startPreDownload(paramContext, paramArVideoResourceInfo.a / 4L);
+        if (paramArVideoResourceInfo.b > 4L) {
+          a.startPreDownload(paramContext, paramArVideoResourceInfo.b / 4L);
         }
       }
     }
   }
   
-  private static boolean a(String paramString)
+  public static Pair<Long, String> b(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseFileSize, str=");
+      localStringBuilder.append(paramString);
+      QLog.d("AROnlineVideoUtil", 2, localStringBuilder.toString());
+    }
+    boolean bool = TextUtils.isEmpty(paramString);
+    StringBuilder localStringBuilder = null;
+    if (bool) {
+      return null;
+    }
+    String[] arrayOfString = paramString.split("\\|");
+    paramString = localStringBuilder;
+    if (arrayOfString != null)
+    {
+      if (arrayOfString.length != 2) {
+        return null;
+      }
+      long l;
+      try
+      {
+        l = Long.parseLong(arrayOfString[0]);
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          paramString.printStackTrace();
+        }
+        l = -1L;
+      }
+      if (l == -1L) {
+        return null;
+      }
+      paramString = new Pair(Long.valueOf(l), arrayOfString[1]);
+    }
+    return paramString;
+  }
+  
+  private static String b()
+  {
+    if (SystemUtil.a())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppConstants.SDCARD_PATH);
+      localStringBuilder.append("iar");
+      localStringBuilder.append(File.separator);
+      return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("iar");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  private static boolean c(String paramString)
   {
     paramString = new File(paramString);
     return (paramString.exists()) && (paramString.length() > 0L);
@@ -184,7 +184,7 @@ public class AROnlineVideoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.online_video.AROnlineVideoUtil
  * JD-Core Version:    0.7.0.1
  */

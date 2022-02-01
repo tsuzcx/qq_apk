@@ -4,11 +4,7 @@ import java.util.List;
 
 public abstract interface IAVGameMediaPlayerCtrl
 {
-  public abstract long a();
-  
   public abstract String a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
@@ -22,15 +18,13 @@ public abstract interface IAVGameMediaPlayerCtrl
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public abstract long b();
   
   public abstract void b(IAVGameMediaPlayerCtrl.PushDecodeMsg paramPushDecodeMsg);
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract void c();
+  public abstract boolean c();
   
   public abstract void d();
   
@@ -41,6 +35,12 @@ public abstract interface IAVGameMediaPlayerCtrl
   public abstract void g();
   
   public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

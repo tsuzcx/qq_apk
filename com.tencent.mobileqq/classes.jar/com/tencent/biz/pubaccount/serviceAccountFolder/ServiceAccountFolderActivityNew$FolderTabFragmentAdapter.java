@@ -15,20 +15,20 @@ public class ServiceAccountFolderActivityNew$FolderTabFragmentAdapter
   
   public BaseFragment a(int paramInt)
   {
-    if (ServiceAccountFolderActivityNew.a(this.a).size() > paramInt) {
-      return (BaseFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt);
+    if (ServiceAccountFolderActivityNew.j(this.a).size() > paramInt) {
+      return (BaseFragment)ServiceAccountFolderActivityNew.j(this.a).get(paramInt);
     }
     return null;
   }
   
   public int getCount()
   {
-    return ServiceAccountFolderActivityNew.a(this.a).size();
+    return ServiceAccountFolderActivityNew.j(this.a).size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.FolderTabFragmentAdapter
  * JD-Core Version:    0.7.0.1
  */

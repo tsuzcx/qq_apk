@@ -27,440 +27,440 @@ public class ShortVideoItemHolder
   extends VideoItemHolder
 {
   @Nullable
-  private ViewGroup A;
+  private TextView A;
   @Nullable
-  private ViewGroup B;
+  private TextView B;
+  @Nullable
+  private ImageView C;
+  @Nullable
+  private TextView D;
+  @Nullable
+  private TextView E;
+  @Nullable
+  private TextView F;
+  @Nullable
+  private KandianUrlImageView G;
+  @Nullable
+  private ImageView H;
   @NotNull
-  private ViewGroup C;
+  private ViewGroup I;
+  @NotNull
+  private ImageView J;
   @Nullable
-  private ViewGroup D;
+  private TextView K;
   @Nullable
-  private ViewGroup E;
+  private ViewGroup L;
   @Nullable
-  private TextView P;
-  @JvmField
+  private TextView M;
   @Nullable
-  public View a;
+  private ImageView N;
+  @Nullable
+  private ViewStub O;
+  @Nullable
+  private ViewGroup P;
+  @Nullable
+  private TextView Q;
+  @Nullable
+  private TextView R;
   @JvmField
   @NotNull
   public ImageView a;
   @JvmField
   @Nullable
-  public TextView a;
-  @NotNull
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  @JvmField
-  @Nullable
-  public CircleCountdownView a;
-  @Nullable
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  @Nullable
-  private VideoFeedsAioGuideView jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAioGuideView;
-  @NotNull
-  private VideoFeedsGradientMaskView jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsGradientMaskView;
-  @JvmField
-  @Nullable
   public View b;
-  @NotNull
-  private ViewStub jdField_b_of_type_AndroidViewViewStub;
-  @JvmField
-  @Nullable
-  public ImageView b;
-  @JvmField
-  @Nullable
-  public TextView b;
-  @Nullable
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   @JvmField
   @Nullable
   public View c;
-  @Nullable
-  private ViewStub c;
-  @JvmField
-  @NotNull
-  public ImageView c;
   @JvmField
   @Nullable
-  public TextView c;
-  @NotNull
-  private View jdField_d_of_type_AndroidViewView;
-  @NotNull
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
+  public View d;
   @JvmField
   @Nullable
-  public TextView d;
-  @Nullable
-  private View jdField_e_of_type_AndroidViewView;
-  @NotNull
-  private FrameLayout jdField_e_of_type_AndroidWidgetFrameLayout;
-  @Nullable
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
+  public ImageView e;
   @JvmField
   @Nullable
-  public TextView e;
+  public TextView f;
+  @JvmField
   @Nullable
-  private ImageView jdField_f_of_type_AndroidWidgetImageView;
+  public TextView g;
+  @JvmField
   @Nullable
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
+  public TextView h;
+  @JvmField
   @Nullable
-  private TextView g;
-  @Nullable
-  private TextView h;
-  @Nullable
-  private TextView i;
-  @Nullable
-  private TextView jdField_j_of_type_AndroidWidgetTextView;
-  @Nullable
-  private URLImageView jdField_j_of_type_ComTencentImageURLImageView;
-  @Nullable
-  private TextView k;
-  @Nullable
-  private TextView l;
-  @Nullable
-  private TextView m;
-  @Nullable
-  private TextView n;
+  public CircleCountdownView i;
+  @JvmField
   @NotNull
-  private ImageView p;
+  public ImageView j;
+  @JvmField
   @Nullable
-  private ImageView q;
+  public TextView k;
+  @JvmField
+  @Nullable
+  public TextView l;
   @NotNull
-  private ViewGroup z;
+  private ViewGroup m;
+  @NotNull
+  private View n;
+  @NotNull
+  private ImageView o;
+  @NotNull
+  private VideoFeedsGradientMaskView p;
+  @Nullable
+  private VideoFeedsAioGuideView q;
+  @NotNull
+  private URLImageView r;
+  @Nullable
+  private TextView s;
+  @NotNull
+  private FrameLayout t;
+  @NotNull
+  private ViewStub u;
+  @Nullable
+  private View v;
+  @Nullable
+  private ViewGroup w;
+  @Nullable
+  private ViewGroup x;
+  @Nullable
+  private URLImageView y;
+  @Nullable
+  private URLImageView z;
   
   public ShortVideoItemHolder(@NotNull View paramView)
   {
     super(paramView, 2);
-    View localView = paramView.findViewById(2131368865);
+    View localView = paramView.findViewById(2131435799);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.inner_footer_view_group_bg)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)localView);
-    localView = paramView.findViewById(2131368102);
+    this.p = ((VideoFeedsGradientMaskView)localView);
+    localView = paramView.findViewById(2131434956);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.h…_account_vicon_imageview)");
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    this.jdField_a_of_type_AndroidViewView = VideoFeedsAccessibilityHelper.a.a(paramView);
-    localView = paramView.findViewById(2131363353);
+    this.o = ((ImageView)localView);
+    this.b = VideoFeedsAccessibilityHelper.a.a(paramView);
+    localView = paramView.findViewById(2131429242);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.background_imageview)");
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView);
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380694));
-    localView = paramView.findViewById(2131370470);
+    this.r = ((URLImageView)localView);
+    this.s = ((TextView)paramView.findViewById(2131449654));
+    localView = paramView.findViewById(2131437742);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.logo_imageview)");
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramView.findViewById(2131368097);
+    this.j = ((ImageView)localView);
+    localView = paramView.findViewById(2131434951);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.header_account_icon_layout)");
-    this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView);
-    localView = paramView.findViewById(2131380592);
+    this.t = ((FrameLayout)localView);
+    localView = paramView.findViewById(2131449550);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.v…eeds_fl_inner_video_area)");
-    this.z = ((ViewGroup)localView);
-    localView = paramView.findViewById(2131380635);
+    this.m = ((ViewGroup)localView);
+    localView = paramView.findViewById(2131449593);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.v…o_feeds_vs_column_banner)");
-    this.jdField_b_of_type_AndroidViewViewStub = ((ViewStub)localView);
-    localView = paramView.findViewById(2131368098);
+    this.u = ((ViewStub)localView);
+    localView = paramView.findViewById(2131434952);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.header_account_icon_living)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramView.findViewById(2131367143);
+    this.a = ((ImageView)localView);
+    localView = paramView.findViewById(2131433597);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.footer_send_coin_layout)");
-    this.C = ((ViewGroup)localView);
-    localView = paramView.findViewById(2131367142);
+    this.I = ((ViewGroup)localView);
+    localView = paramView.findViewById(2131433596);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.footer_send_coin_icon)");
-    this.p = ((ImageView)localView);
-    this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367144));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380628));
-    this.D = ((ViewGroup)paramView.findViewById(2131380597));
-    this.q = ((ImageView)paramView.findViewById(2131380596));
-    this.m = ((TextView)paramView.findViewById(2131380595));
-    this.jdField_c_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131380634));
-    localView = paramView.findViewById(2131380612);
+    this.J = ((ImageView)localView);
+    this.K = ((TextView)paramView.findViewById(2131433598));
+    this.l = ((TextView)paramView.findViewById(2131449586));
+    this.L = ((ViewGroup)paramView.findViewById(2131449555));
+    this.N = ((ImageView)paramView.findViewById(2131449554));
+    this.M = ((TextView)paramView.findViewById(2131449553));
+    this.O = ((ViewStub)paramView.findViewById(2131449592));
+    localView = paramView.findViewById(2131449570);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.v…ove_auto_seekbar_content)");
-    this.jdField_d_of_type_AndroidViewView = localView;
+    this.n = localView;
     if (Aladdin.getConfig(327).getIntegerFromString("is_show_your_follow", 0) == 1) {
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380629));
+      this.k = ((TextView)paramView.findViewById(2131449587));
     }
     int i1 = (int)(Aladdin.getConfig(263).getFloatFromString("bottom_mask_alpha", 0.7F) * 'ÿ');
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsGradientMaskView.setMaskAlpha(i1);
-    if (this.jdField_l_of_type_AndroidViewViewGroup != null) {
-      VideoFeedsHelper.a(this.jdField_l_of_type_AndroidViewViewGroup);
+    this.p.setMaskAlpha(i1);
+    if (this.aN != null) {
+      VideoFeedsHelper.a(this.aN);
     }
   }
   
-  @NotNull
-  public final View a()
+  @Nullable
+  public final ImageView A()
   {
-    return this.jdField_d_of_type_AndroidViewView;
+    return this.N;
+  }
+  
+  @Nullable
+  public final ViewStub B()
+  {
+    return this.O;
+  }
+  
+  @Nullable
+  public final ViewGroup C()
+  {
+    return this.P;
+  }
+  
+  @Nullable
+  public final TextView D()
+  {
+    return this.Q;
+  }
+  
+  @Nullable
+  public final TextView E()
+  {
+    return this.R;
   }
   
   @NotNull
   public final ViewGroup a()
   {
-    return this.z;
-  }
-  
-  @NotNull
-  public final ViewStub a()
-  {
-    return this.jdField_b_of_type_AndroidViewViewStub;
-  }
-  
-  @NotNull
-  public final FrameLayout a()
-  {
-    return this.jdField_e_of_type_AndroidWidgetFrameLayout;
-  }
-  
-  @NotNull
-  public final ImageView a()
-  {
-    return this.jdField_d_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView a()
-  {
-    return this.jdField_f_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  @Nullable
-  public final KandianUrlImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  }
-  
-  @Nullable
-  public final VideoFeedsAioGuideView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAioGuideView;
-  }
-  
-  @NotNull
-  public final VideoFeedsGradientMaskView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsGradientMaskView;
+    return this.m;
   }
   
   public final void a(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "<set-?>");
-    this.jdField_d_of_type_AndroidViewView = paramView;
+    this.n = paramView;
   }
   
   public final void a(@Nullable ViewGroup paramViewGroup)
   {
-    this.A = paramViewGroup;
+    this.w = paramViewGroup;
   }
   
   public final void a(@Nullable ImageView paramImageView)
   {
-    this.jdField_e_of_type_AndroidWidgetImageView = paramImageView;
+    this.C = paramImageView;
   }
   
   public final void a(@Nullable TextView paramTextView)
   {
-    this.g = paramTextView;
+    this.A = paramTextView;
   }
   
   public final void a(@Nullable URLImageView paramURLImageView)
   {
-    this.jdField_b_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.y = paramURLImageView;
   }
   
   public final void a(@Nullable KandianUrlImageView paramKandianUrlImageView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = paramKandianUrlImageView;
+    this.G = paramKandianUrlImageView;
   }
   
   public final void a(@Nullable VideoFeedsAioGuideView paramVideoFeedsAioGuideView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAioGuideView = paramVideoFeedsAioGuideView;
+    this.q = paramVideoFeedsAioGuideView;
   }
   
-  @Nullable
+  @NotNull
   public final View b()
   {
-    return this.jdField_e_of_type_AndroidViewView;
-  }
-  
-  @Nullable
-  public final ViewGroup b()
-  {
-    return this.A;
-  }
-  
-  @Nullable
-  public final ViewStub b()
-  {
-    return this.jdField_c_of_type_AndroidViewViewStub;
-  }
-  
-  @Nullable
-  public final ImageView b()
-  {
-    return this.jdField_e_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView b()
-  {
-    return this.g;
-  }
-  
-  @Nullable
-  public final URLImageView b()
-  {
-    return this.jdField_b_of_type_ComTencentImageURLImageView;
+    return this.n;
   }
   
   public final void b(@Nullable View paramView)
   {
-    this.jdField_e_of_type_AndroidViewView = paramView;
+    this.v = paramView;
   }
   
   public final void b(@Nullable ViewGroup paramViewGroup)
   {
-    this.B = paramViewGroup;
+    this.x = paramViewGroup;
   }
   
   public final void b(@Nullable ImageView paramImageView)
   {
-    this.jdField_f_of_type_AndroidWidgetImageView = paramImageView;
+    this.H = paramImageView;
   }
   
   public final void b(@Nullable TextView paramTextView)
   {
-    this.h = paramTextView;
+    this.B = paramTextView;
   }
   
   public final void b(@Nullable URLImageView paramURLImageView)
   {
-    this.jdField_j_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.z = paramURLImageView;
   }
   
   @NotNull
-  public final ViewGroup c()
-  {
-    return this.C;
-  }
-  
-  @Nullable
   public final ImageView c()
   {
-    return this.jdField_f_of_type_AndroidWidgetImageView;
-  }
-  
-  @Nullable
-  public final TextView c()
-  {
-    return this.h;
-  }
-  
-  @Nullable
-  public final URLImageView c()
-  {
-    return this.jdField_j_of_type_ComTencentImageURLImageView;
+    return this.o;
   }
   
   public final void c(@Nullable ViewGroup paramViewGroup)
   {
-    this.E = paramViewGroup;
+    this.P = paramViewGroup;
   }
   
   public final void c(@Nullable TextView paramTextView)
   {
-    this.i = paramTextView;
-  }
-  
-  @Nullable
-  public final ViewGroup d()
-  {
-    return this.D;
+    this.D = paramTextView;
   }
   
   @NotNull
-  public final ImageView d()
+  public final VideoFeedsGradientMaskView d()
   {
     return this.p;
   }
   
-  @Nullable
-  public final TextView d()
-  {
-    return this.i;
-  }
-  
   public final void d(@Nullable TextView paramTextView)
   {
-    this.jdField_j_of_type_AndroidWidgetTextView = paramTextView;
+    this.E = paramTextView;
   }
   
   @Nullable
-  public final ViewGroup e()
-  {
-    return this.E;
-  }
-  
-  @Nullable
-  public final ImageView e()
+  public final VideoFeedsAioGuideView e()
   {
     return this.q;
   }
   
-  @Nullable
-  public final TextView e()
-  {
-    return this.jdField_j_of_type_AndroidWidgetTextView;
-  }
-  
   public final void e(@Nullable TextView paramTextView)
   {
-    this.k = paramTextView;
+    this.F = paramTextView;
   }
   
-  @Nullable
-  public final TextView f()
+  @NotNull
+  public final URLImageView f()
   {
-    return this.k;
+    return this.r;
   }
   
   public final void f(@Nullable TextView paramTextView)
   {
-    this.n = paramTextView;
+    this.Q = paramTextView;
   }
   
   @Nullable
   public final TextView g()
   {
-    return this.jdField_l_of_type_AndroidWidgetTextView;
+    return this.s;
   }
   
   public final void g(@Nullable TextView paramTextView)
   {
-    this.P = paramTextView;
+    this.R = paramTextView;
+  }
+  
+  @NotNull
+  public final FrameLayout h()
+  {
+    return this.t;
+  }
+  
+  @NotNull
+  public final ViewStub i()
+  {
+    return this.u;
   }
   
   @Nullable
-  public final TextView h()
+  public final View j()
   {
-    return this.m;
+    return this.v;
   }
   
   @Nullable
-  public final TextView i()
+  public final ViewGroup k()
   {
-    return this.n;
+    return this.w;
   }
   
   @Nullable
-  public final TextView j()
+  public final URLImageView l()
   {
-    return this.P;
+    return this.y;
+  }
+  
+  @Nullable
+  public final URLImageView m()
+  {
+    return this.z;
+  }
+  
+  @Nullable
+  public final TextView n()
+  {
+    return this.A;
+  }
+  
+  @Nullable
+  public final TextView o()
+  {
+    return this.B;
+  }
+  
+  @Nullable
+  public final ImageView p()
+  {
+    return this.C;
+  }
+  
+  @Nullable
+  public final TextView q()
+  {
+    return this.D;
+  }
+  
+  @Nullable
+  public final TextView r()
+  {
+    return this.E;
+  }
+  
+  @Nullable
+  public final TextView s()
+  {
+    return this.F;
+  }
+  
+  @Nullable
+  public final KandianUrlImageView t()
+  {
+    return this.G;
+  }
+  
+  @Nullable
+  public final ImageView u()
+  {
+    return this.H;
+  }
+  
+  @NotNull
+  public final ViewGroup v()
+  {
+    return this.I;
+  }
+  
+  @NotNull
+  public final ImageView w()
+  {
+    return this.J;
+  }
+  
+  @Nullable
+  public final TextView x()
+  {
+    return this.K;
+  }
+  
+  @Nullable
+  public final ViewGroup y()
+  {
+    return this.L;
+  }
+  
+  @Nullable
+  public final TextView z()
+  {
+    return this.M;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.videofeeds.ShortVideoItemHolder
  * JD-Core Version:    0.7.0.1
  */

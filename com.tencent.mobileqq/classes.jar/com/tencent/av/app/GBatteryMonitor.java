@@ -7,21 +7,21 @@ import mqq.app.MobileQQ;
 
 public class GBatteryMonitor
 {
-  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new GBatteryMonitor.1(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  private static String b = "GBatteryMonitor";
+  BroadcastReceiver a = new GBatteryMonitor.1(this);
+  private VideoAppInterface c;
+  private boolean d;
   
   public GBatteryMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.c = paramVideoAppInterface;
   }
   
   public void a()
   {
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.c.getApplication().registerReceiver(this.a, localIntentFilter) != null) {
+      this.d = true;
     }
   }
   
@@ -29,16 +29,16 @@ public class GBatteryMonitor
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_Boolean = false;
+        this.c.getApplication().unregisterReceiver(this.a);
+        this.d = false;
         return;
       }
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
+      QLog.d(b, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
     }
   }
 }

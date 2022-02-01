@@ -29,28 +29,22 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class PluginIphoneTitleBarActivity
   extends PluginBaseActivity
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  protected ViewGroup a;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  protected float b;
-  protected View.OnClickListener c = new PluginIphoneTitleBarActivity.1(this);
-  public RelativeLayout e;
-  protected ImageView f;
-  protected TextView h;
-  protected TextView i;
-  protected TextView j;
-  protected TextView k;
-  protected TextView l;
-  public View r;
-  protected boolean r;
-  
-  public PluginIphoneTitleBarActivity()
-  {
-    this.jdField_r_of_type_AndroidViewView = null;
-    this.jdField_r_of_type_Boolean = true;
-  }
+  private boolean a;
+  protected TextView aN;
+  protected TextView aO;
+  protected TextView aP;
+  protected TextView aQ;
+  protected TextView aR;
+  protected ImageView aS;
+  protected ViewGroup aT;
+  public View aU = null;
+  public RelativeLayout aV;
+  protected float aW;
+  protected boolean aX = true;
+  protected View.OnClickListener aY = new PluginIphoneTitleBarActivity.1(this);
+  private Drawable b;
+  private Drawable[] c;
+  private int d;
   
   @TargetApi(11)
   public static void f(View paramView)
@@ -63,23 +57,66 @@ public class PluginIphoneTitleBarActivity
     }
   }
   
-  protected View a()
+  protected View H()
   {
-    this.j = ((TextView)findViewById(2131369233));
-    this.f = ((ImageView)findViewById(2131369216));
-    this.l = ((TextView)findViewById(2131379495));
-    f(this.j);
-    f(this.f);
-    return this.j;
+    this.aP = ((TextView)findViewById(2131436211));
+    this.aS = ((ImageView)findViewById(2131436194));
+    this.aR = ((TextView)findViewById(2131448242));
+    f(this.aP);
+    f(this.aS);
+    return this.aP;
   }
   
-  protected String a()
+  protected View M()
   {
-    TextView localTextView = this.i;
-    if ((localTextView != null) && (localTextView.getText() != null) && (this.i.getText().length() != 0)) {
-      return this.i.getText().toString();
+    this.aN = ((TextView)findViewById(2131436180));
+    TextView localTextView = this.aN;
+    if (localTextView != null)
+    {
+      localTextView.setOnClickListener(this.aY);
+      f(this.aN);
     }
-    return getString(2131690706);
+    return this.aN;
+  }
+  
+  protected View N()
+  {
+    this.aO = ((TextView)findViewById(2131436227));
+    return this.aO;
+  }
+  
+  protected boolean O()
+  {
+    if (this.b == null)
+    {
+      this.b = getResources().getDrawable(2130839590);
+      this.c = this.aO.getCompoundDrawables();
+      this.d = this.aO.getCompoundDrawablePadding();
+      this.aO.setCompoundDrawablePadding(10);
+      TextView localTextView = this.aO;
+      Drawable localDrawable = this.b;
+      Drawable[] arrayOfDrawable = this.c;
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      ((Animatable)this.b).start();
+      return true;
+    }
+    return false;
+  }
+  
+  protected boolean P()
+  {
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      ((Animatable)localObject).stop();
+      this.b = null;
+      this.aO.setCompoundDrawablePadding(this.d);
+      localObject = this.aO;
+      Drawable[] arrayOfDrawable = this.c;
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      return true;
+    }
+    return false;
   }
   
   protected void a(int paramInt, View.OnClickListener paramOnClickListener)
@@ -89,26 +126,26 @@ public class PluginIphoneTitleBarActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130850439));
-    if (this.h == null)
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130852235));
+    if (this.aN == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376636));
-      f(this.jdField_a_of_type_AndroidViewViewGroup);
-      b();
-      c();
-      a();
-      b(paramIntent);
+      this.aT = ((ViewGroup)findViewById(2131444897));
+      f(this.aT);
+      M();
+      N();
+      H();
+      c(paramIntent);
     }
   }
   
   public void a(View paramView, boolean paramBoolean)
   {
-    this.b = getResources().getDisplayMetrics().density;
+    this.aW = getResources().getDisplayMetrics().density;
     if (paramBoolean)
     {
       requestWindowFeature(7);
       super.setContentView(paramView);
-      getWindow().setFeatureInt(7, 2131558946);
+      getWindow().setFeatureInt(7, 2131624579);
       a(getIntent());
       return;
     }
@@ -118,72 +155,54 @@ public class PluginIphoneTitleBarActivity
   
   protected void a(CharSequence paramCharSequence, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.j.setVisibility(0);
-    this.j.setText(paramCharSequence);
-    this.j.setEnabled(true);
+    this.a = false;
+    this.aP.setVisibility(0);
+    this.aP.setText(paramCharSequence);
+    this.aP.setEnabled(true);
     if (paramOnClickListener != null) {
-      this.j.setOnClickListener(paramOnClickListener);
+      this.aP.setOnClickListener(paramOnClickListener);
     }
   }
   
-  protected boolean a()
+  protected boolean bB_()
   {
     finish();
     return false;
   }
   
-  protected View b()
+  protected void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
-    this.h = ((TextView)findViewById(2131369202));
-    TextView localTextView = this.h;
-    if (localTextView != null)
+    this.aN.setVisibility(8);
+    this.aN = ((TextView)findViewById(2131436182));
+    f(this.aN);
+    this.aN.setVisibility(0);
+    this.aN.setText(paramInt);
+    if (paramOnClickListener == null)
     {
-      localTextView.setOnClickListener(this.c);
-      f(this.h);
+      this.aN.setOnClickListener(this.aY);
+      return;
     }
-    return this.h;
+    this.aN.setOnClickListener(paramOnClickListener);
   }
   
-  protected void b(Intent paramIntent)
+  protected void c(Intent paramIntent)
   {
-    Object localObject = this.h;
+    Object localObject = this.aN;
     if ((localObject != null) && ((localObject instanceof TextView)) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
-      TextView localTextView = this.h;
+      TextView localTextView = this.aN;
       localObject = paramIntent.getExtras().getString("leftViewText");
       paramIntent = (Intent)localObject;
       if (localObject == null) {
-        paramIntent = getString(2131690706);
+        paramIntent = getString(2131887625);
       }
-      if (this.jdField_r_of_type_Boolean)
+      if (this.aX)
       {
         localTextView.setText("  ");
         return;
       }
       localTextView.setText(paramIntent);
     }
-  }
-  
-  protected View c()
-  {
-    this.i = ((TextView)findViewById(2131369249));
-    return this.i;
-  }
-  
-  protected void c(int paramInt, View.OnClickListener paramOnClickListener)
-  {
-    this.h.setVisibility(8);
-    this.h = ((TextView)findViewById(2131369204));
-    f(this.h);
-    this.h.setVisibility(0);
-    this.h.setText(paramInt);
-    if (paramOnClickListener == null)
-    {
-      this.h.setOnClickListener(this.c);
-      return;
-    }
-    this.h.setOnClickListener(paramOnClickListener);
   }
   
   public void c(View paramView)
@@ -210,38 +229,13 @@ public class PluginIphoneTitleBarActivity
     super.setContentView(paramView);
   }
   
-  protected boolean e()
+  protected String f()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839406);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.i.getCompoundDrawables();
-      this.jdField_a_of_type_Int = this.i.getCompoundDrawablePadding();
-      this.i.setCompoundDrawablePadding(10);
-      TextView localTextView = this.i;
-      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      return true;
+    TextView localTextView = this.aO;
+    if ((localTextView != null) && (localTextView.getText() != null) && (this.aO.getText().length() != 0)) {
+      return this.aO.getText().toString();
     }
-    return false;
-  }
-  
-  protected boolean f()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localObject != null)
-    {
-      ((Animatable)localObject).stop();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      this.i.setCompoundDrawablePadding(this.jdField_a_of_type_Int);
-      localObject = this.i;
-      Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      return true;
-    }
-    return false;
+    return getString(2131887625);
   }
   
   public void g(int paramInt)
@@ -251,11 +245,11 @@ public class PluginIphoneTitleBarActivity
   
   protected void h(int paramInt)
   {
-    Object localObject = this.h;
+    Object localObject = this.aN;
     if ((localObject != null) && ((localObject instanceof TextView)))
     {
       String str = getString(paramInt);
-      TextView localTextView = this.h;
+      TextView localTextView = this.aN;
       if (str != null)
       {
         localObject = str;
@@ -263,23 +257,15 @@ public class PluginIphoneTitleBarActivity
       }
       else
       {
-        localObject = getString(2131690706);
+        localObject = getString(2131887625);
       }
-      if (this.jdField_r_of_type_Boolean)
+      if (this.aX)
       {
         localTextView.setText("  ");
         return;
       }
       localTextView.setText((CharSequence)localObject);
     }
-  }
-  
-  public void m_(int paramInt)
-  {
-    this.b = getResources().getDisplayMetrics().density;
-    requestWindowFeature(1);
-    super.setContentView(paramInt);
-    a(getIntent());
   }
   
   @Override
@@ -289,45 +275,53 @@ public class PluginIphoneTitleBarActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
+  public void s_(int paramInt)
+  {
+    this.aW = getResources().getDisplayMetrics().density;
+    requestWindowFeature(1);
+    super.setContentView(paramInt);
+    a(getIntent());
+  }
+  
   public void setContentView(int paramInt)
   {
     Object localObject1 = getIntent();
-    int m = 1;
+    int i = 1;
     boolean bool;
     if (localObject1 != null) {
       bool = ((Intent)localObject1).getBooleanExtra("showTitleBar", true);
     } else {
       bool = true;
     }
-    if (!this.v)
+    if (!this.aM)
     {
       if (bool) {
         requestWindowFeature(7);
       }
       super.setContentView(paramInt);
       if (bool) {
-        getWindow().setFeatureInt(7, 2131558946);
+        getWindow().setFeatureInt(7, 2131624579);
       }
     }
     else if (bool)
     {
       Object localObject3 = LayoutInflater.from(this);
-      localObject1 = ((LayoutInflater)localObject3).inflate(2131558948, null);
+      localObject1 = ((LayoutInflater)localObject3).inflate(2131624581, null);
       try
       {
         localObject3 = ((LayoutInflater)localObject3).inflate(paramInt, (ViewGroup)localObject1, false);
-        this.e = ((RelativeLayout)((View)localObject1).findViewById(2131378893));
+        this.aV = ((RelativeLayout)((View)localObject1).findViewById(2131447595));
         if (ImmersiveUtils.isSupporImmersive() == 1)
         {
-          this.e.setFitsSystemWindows(true);
-          this.e.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+          this.aV.setFitsSystemWindows(true);
+          this.aV.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
         }
         localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131376636);
-        this.e.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131444897);
+        this.aV.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
         this.mContentView = ((View)localObject3);
-        super.setContentView(this.e);
-        m = 0;
+        super.setContentView(this.aV);
+        i = 0;
       }
       catch (RuntimeException localRuntimeException)
       {
@@ -337,7 +331,7 @@ public class PluginIphoneTitleBarActivity
       {
         localInflateException.printStackTrace();
       }
-      if (m != 0)
+      if (i != 0)
       {
         if (QLog.isColorLevel())
         {
@@ -347,12 +341,12 @@ public class PluginIphoneTitleBarActivity
           QLog.e("IphoneTitleBarActivity", 2, ((StringBuilder)localObject2).toString());
         }
         super.setContentView(paramInt);
-        getWindow().setFeatureInt(7, 2131558946);
-        Object localObject2 = this.jdField_r_of_type_AndroidViewView;
+        getWindow().setFeatureInt(7, 2131624579);
+        Object localObject2 = this.aU;
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(0);
         }
-        this.b = getResources().getDisplayMetrics().density;
+        this.aW = getResources().getDisplayMetrics().density;
         a(getIntent());
       }
     }
@@ -360,7 +354,7 @@ public class PluginIphoneTitleBarActivity
     {
       super.setContentView(paramInt);
     }
-    this.b = getResources().getDisplayMetrics().density;
+    this.aW = getResources().getDisplayMetrics().density;
     if (bool) {
       a(getIntent());
     }
@@ -378,7 +372,7 @@ public class PluginIphoneTitleBarActivity
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    TextView localTextView = this.i;
+    TextView localTextView = this.aO;
     if ((localTextView != null) && ((localTextView instanceof TextView)))
     {
       localTextView.setText(paramCharSequence);
@@ -388,7 +382,7 @@ public class PluginIphoneTitleBarActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginIphoneTitleBarActivity
  * JD-Core Version:    0.7.0.1
  */

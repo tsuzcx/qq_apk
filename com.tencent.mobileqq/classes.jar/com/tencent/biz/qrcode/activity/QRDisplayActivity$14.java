@@ -11,7 +11,7 @@ class QRDisplayActivity$14
     // Byte code:
     //   0: aload_0
     //   1: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
-    //   4: getfield 31	com/tencent/biz/qrcode/activity/QRDisplayActivity:b	Landroid/graphics/Bitmap;
+    //   4: getfield 31	com/tencent/biz/qrcode/activity/QRDisplayActivity:k	Landroid/graphics/Bitmap;
     //   7: astore 11
     //   9: aconst_null
     //   10: astore 8
@@ -276,31 +276,31 @@ class QRDisplayActivity$14
     //   578: astore 4
     //   580: aload_0
     //   581: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
-    //   584: getfield 138	com/tencent/biz/qrcode/activity/QRDisplayActivity:jdField_c_of_type_Int	I
+    //   584: getfield 138	com/tencent/biz/qrcode/activity/QRDisplayActivity:t	I
     //   587: iconst_2
     //   588: if_icmpne +67 -> 655
     //   591: aload_0
     //   592: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
-    //   595: getfield 140	com/tencent/biz/qrcode/activity/QRDisplayActivity:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   595: getfield 141	com/tencent/biz/qrcode/activity/QRDisplayActivity:n	Ljava/lang/String;
     //   598: astore 6
     //   600: aload_0
     //   601: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
-    //   604: getfield 143	com/tencent/biz/qrcode/activity/QRDisplayActivity:a	I
+    //   604: getfield 144	com/tencent/biz/qrcode/activity/QRDisplayActivity:q	I
     //   607: istore_1
     //   608: iload_2
     //   609: ifeq +10 -> 619
-    //   612: ldc 145
+    //   612: ldc 146
     //   614: astore 5
     //   616: goto +7 -> 623
-    //   619: ldc 147
+    //   619: ldc 148
     //   621: astore 5
-    //   623: ldc 149
-    //   625: ldc 151
-    //   627: ldc 153
+    //   623: ldc 150
+    //   625: ldc 152
+    //   627: ldc 154
     //   629: iconst_0
     //   630: iconst_0
     //   631: iconst_3
-    //   632: anewarray 155	java/lang/String
+    //   632: anewarray 156	java/lang/String
     //   635: dup
     //   636: iconst_0
     //   637: aload 6
@@ -308,22 +308,22 @@ class QRDisplayActivity$14
     //   640: dup
     //   641: iconst_1
     //   642: iload_1
-    //   643: invokestatic 159	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   643: invokestatic 160	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   646: aastore
     //   647: dup
     //   648: iconst_2
     //   649: aload 5
     //   651: aastore
-    //   652: invokestatic 164	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   652: invokestatic 166	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
     //   655: aload_0
     //   656: getfield 12	com/tencent/biz/qrcode/activity/QRDisplayActivity$14:this$0	Lcom/tencent/biz/qrcode/activity/QRDisplayActivity;
-    //   659: new 166	com/tencent/biz/qrcode/activity/QRDisplayActivity$14$1
+    //   659: new 168	com/tencent/biz/qrcode/activity/QRDisplayActivity$14$1
     //   662: dup
     //   663: aload_0
     //   664: iload_2
     //   665: aload 4
-    //   667: invokespecial 169	com/tencent/biz/qrcode/activity/QRDisplayActivity$14$1:<init>	(Lcom/tencent/biz/qrcode/activity/QRDisplayActivity$14;ZLjava/lang/String;)V
-    //   670: invokevirtual 173	com/tencent/biz/qrcode/activity/QRDisplayActivity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   667: invokespecial 171	com/tencent/biz/qrcode/activity/QRDisplayActivity$14$1:<init>	(Lcom/tencent/biz/qrcode/activity/QRDisplayActivity$14;ZLjava/lang/String;)V
+    //   670: invokevirtual 175	com/tencent/biz/qrcode/activity/QRDisplayActivity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   673: return
     // Local variable table:
     //   start	length	slot	name	signature

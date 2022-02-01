@@ -34,14 +34,14 @@ class ShortVideoCommentsView$10
   {
     if (paramInt == 0)
     {
-      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.mComments.a.size() > 0) && (!ShortVideoCommentsView.access$1100(this.a)) && (!ShortVideoCommentsView.access$1200(this.a))) {
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.mComments.c.size() > 0) && (!ShortVideoCommentsView.access$1100(this.a)) && (!ShortVideoCommentsView.access$1200(this.a))) {
         ShortVideoCommentsView.access$1300(this.a);
       }
       if (ShortVideoCommentsView.access$000(this.a) != null) {
-        paramAbsListView = ShortVideoCommentsView.access$000(this.a).jdField_a_of_type_JavaLangString;
+        paramAbsListView = ShortVideoCommentsView.access$000(this.a).c;
       }
       if (ShortVideoCommentsView.access$000(this.a) != null) {
-        long l = ShortVideoCommentsView.access$000(this.a).jdField_a_of_type_Long;
+        long l = ShortVideoCommentsView.access$000(this.a).i;
       }
       paramInt = ShortVideoCommentsView.access$1400(this.a);
       if ((paramInt >= ShortVideoCommentsView.access$1500(this.a)) && (paramInt >= UITools.a(this.a.getContext(), 40.0F)))
@@ -49,7 +49,7 @@ class ShortVideoCommentsView$10
         if (!ShortVideoCommentsView.access$1600(this.a))
         {
           ShortVideoCommentsView.access$1602(this.a, true);
-          int i = ShortVideoCommentsView.access$000(this.a).k;
+          int i = ShortVideoCommentsView.access$000(this.a).G;
         }
         this.a.showBottomeArea();
       }
@@ -69,7 +69,7 @@ class ShortVideoCommentsView$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10
  * JD-Core Version:    0.7.0.1
  */

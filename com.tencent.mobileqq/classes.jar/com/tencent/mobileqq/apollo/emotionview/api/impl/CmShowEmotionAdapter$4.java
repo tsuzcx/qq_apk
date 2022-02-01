@@ -1,26 +1,22 @@
 package com.tencent.mobileqq.apollo.emotionview.api.impl;
 
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.OnSendListener;
-import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
-import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
+import android.os.Handler;
+import com.tencent.mobileqq.apollo.listener.ApolloRspCallback;
 
 class CmShowEmotionAdapter$4
-  implements ApolloLinearLayout.OnSendListener
+  implements ApolloRspCallback
 {
   CmShowEmotionAdapter$4(CmShowEmotionAdapter paramCmShowEmotionAdapter) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    AIOEmoticonUIHelper localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)CmShowEmotionAdapter.a(this.a).a(105);
-    if (localAIOEmoticonUIHelper != null) {
-      localAIOEmoticonUIHelper.c().onPullDown();
-    }
+    CmShowEmotionAdapter.d(this.a).removeCallbacks(CmShowEmotionAdapter.c(this.a));
+    CmShowEmotionAdapter.d(this.a).post(new CmShowEmotionAdapter.4.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.emotionview.api.impl.CmShowEmotionAdapter.4
  * JD-Core Version:    0.7.0.1
  */

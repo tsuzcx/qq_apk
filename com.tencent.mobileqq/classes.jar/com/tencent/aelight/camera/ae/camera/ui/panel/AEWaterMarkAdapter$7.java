@@ -27,7 +27,7 @@ final class AEWaterMarkAdapter$7
   
   protected int calculateTimeForScrolling(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return 100;
     }
     return Math.min(200, super.calculateTimeForScrolling(paramInt));
@@ -35,8 +35,8 @@ final class AEWaterMarkAdapter$7
   
   public PointF computeScrollVectorForPosition(int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+    int i = this.a.findFirstVisibleItemPosition();
+    int j = this.a.findLastVisibleItemPosition();
     float f;
     if (paramInt < i)
     {
@@ -48,9 +48,9 @@ final class AEWaterMarkAdapter$7
     }
     else
     {
-      View localView = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt);
+      View localView = this.a.findViewByPosition(paramInt);
       if (localView != null) {
-        f = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getWidth() / 2.0F - (localView.getLeft() + localView.getRight()) / 2.0F;
+        f = this.a.getWidth() / 2.0F - (localView.getLeft() + localView.getRight()) / 2.0F;
       } else {
         f = 0.0F;
       }
@@ -60,7 +60,7 @@ final class AEWaterMarkAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkAdapter.7
  * JD-Core Version:    0.7.0.1
  */

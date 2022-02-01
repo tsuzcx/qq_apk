@@ -13,16 +13,16 @@ class TranslateFragment$4
   {
     if ((paramOptionItem != null) && (!TextUtils.isEmpty(paramOptionItem.b)))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.c.equalsIgnoreCase(paramOptionItem.b)) {
-        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.b, paramOptionItem.b);
+      if (!this.a.e.equalsIgnoreCase(paramOptionItem.b)) {
+        TranslateFragment.a(this.b, this.a.d, paramOptionItem.b);
       }
-      OCRPerformUtil.a("0X800AD31", OCRPerformUtil.a(paramOptionItem.b));
+      OCRPerformUtil.a("0X800AD31", OCRPerformUtil.c(paramOptionItem.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateFragment.4
  * JD-Core Version:    0.7.0.1
  */

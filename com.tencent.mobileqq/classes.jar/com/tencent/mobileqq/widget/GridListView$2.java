@@ -12,14 +12,14 @@ class GridListView$2
   
   public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag(2131361816)).intValue();
-    this.a.a.onItemClick(this.a, paramView, i, 0L);
+    int i = ((Integer)paramView.getTag(2131427368)).intValue();
+    this.a.e.onItemClick(this.a, paramView, i, 0L);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView.2
  * JD-Core Version:    0.7.0.1
  */

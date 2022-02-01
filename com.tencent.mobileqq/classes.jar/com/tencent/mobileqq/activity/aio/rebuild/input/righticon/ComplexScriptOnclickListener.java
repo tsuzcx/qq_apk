@@ -13,21 +13,21 @@ import com.tencent.mobileqq.widget.QQToast;
 public class ComplexScriptOnclickListener
   implements IOnRightIconClickListener
 {
-  public void a(AIOContext paramAIOContext, View paramView) {}
-  
   public boolean a(AIOContext paramAIOContext, View paramView)
   {
-    if (TextUtils.isContainComplexScript(paramAIOContext.a().a().a().a().toString()))
+    if (TextUtils.isContainComplexScript(paramAIOContext.p().d().f().a().toString()))
     {
-      QQToast.a(paramAIOContext.a(), HardCodeUtil.a(2131701174), 0).a();
+      QQToast.makeText(paramAIOContext.b(), HardCodeUtil.a(2131899189), 0).show();
       return true;
     }
     return false;
   }
+  
+  public void b(AIOContext paramAIOContext, View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.righticon.ComplexScriptOnclickListener
  * JD-Core Version:    0.7.0.1
  */

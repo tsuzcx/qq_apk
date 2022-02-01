@@ -10,21 +10,24 @@ class AEFilterProcessTex$3
   
   public void run()
   {
-    if (AEFilterProcessTex.a(this.this$0) != null)
+    if (AEFilterProcessTex.c(this.this$0) != null)
     {
-      AEFilterProcessTex.a(this.this$0).switchAbilityInLightNode("ai.segmentation.bg.enable", this.a);
-      if (this.a)
+      AEFilterProcessTex.c(this.this$0).switchAbilityInLightNode("ai.segmentation.bg.enable", this.a);
+      if (AEFilterProcessTex.d(this.this$0).e())
       {
-        AEFilterProcessTex.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 0);
-        return;
+        if (this.a)
+        {
+          AEFilterProcessTex.c(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 0);
+          return;
+        }
+        AEFilterProcessTex.c(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 50);
       }
-      AEFilterProcessTex.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 50);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.filter.AEFilterProcessTex.3
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ class MediaPlayerManager$5
   
   public void run()
   {
-    if (MediaPlayerManager.a(this.this$0) != null) {
-      MediaPlayerManager.a(this.this$0).c(this.a);
+    if (MediaPlayerManager.f(this.this$0) != null) {
+      MediaPlayerManager.f(this.this$0).c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.5
  * JD-Core Version:    0.7.0.1
  */

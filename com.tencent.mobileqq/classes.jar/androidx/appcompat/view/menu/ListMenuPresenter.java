@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.layout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -81,7 +82,7 @@ public class ListMenuPresenter
   {
     if (this.mMenuView == null)
     {
-      this.mMenuView = ((ExpandedMenuView)this.mInflater.inflate(2131558413, paramViewGroup, false));
+      this.mMenuView = ((ExpandedMenuView)this.mInflater.inflate(R.layout.abc_expanded_menu_layout, paramViewGroup, false));
       if (this.mAdapter == null) {
         this.mAdapter = new ListMenuPresenter.MenuAdapter(this);
       }

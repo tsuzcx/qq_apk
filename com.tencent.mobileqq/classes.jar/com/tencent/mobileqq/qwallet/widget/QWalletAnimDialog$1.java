@@ -14,10 +14,10 @@ class QWalletAnimDialog$1
   
   public void onAnimationRepeat(AnimationView paramAnimationView)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (!this.a.b)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).gotoF2FRedpack(this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_AndroidAppActivity, this.a.c, true, this.a.jdField_a_of_type_Long);
+      this.a.b = true;
+      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).gotoF2FRedpack(this.a.c, this.a.d, this.a.f, this.a.e, true, this.a.a);
     }
   }
   
@@ -25,7 +25,7 @@ class QWalletAnimDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.widget.QWalletAnimDialog.1
  * JD-Core Version:    0.7.0.1
  */

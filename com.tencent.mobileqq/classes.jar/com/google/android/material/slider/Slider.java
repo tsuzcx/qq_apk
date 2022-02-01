@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.R.attr;
+import java.util.List;
 
 public class Slider
   extends BaseSlider<Slider, Slider.OnChangeListener, Slider.OnSliderTouchListener>
@@ -17,7 +18,7 @@ public class Slider
   
   public Slider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.H);
+    this(paramContext, paramAttributeSet, R.attr.P);
   }
   
   public Slider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -32,11 +33,16 @@ public class Slider
   
   protected boolean b()
   {
-    if (a() != -1) {
+    if (getActiveThumbIndex() != -1) {
       return true;
     }
-    a(0);
+    setActiveThumbIndex(0);
     return true;
+  }
+  
+  public float getValue()
+  {
+    return ((Float)getValues().get(0)).floatValue();
   }
   
   public void setValue(float paramFloat)
@@ -46,7 +52,7 @@ public class Slider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.Slider
  * JD-Core Version:    0.7.0.1
  */

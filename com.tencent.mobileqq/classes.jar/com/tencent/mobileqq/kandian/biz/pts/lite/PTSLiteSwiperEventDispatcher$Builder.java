@@ -12,17 +12,17 @@ import org.jetbrains.annotations.Nullable;
 public final class PTSLiteSwiperEventDispatcher$Builder
 {
   @Nullable
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
+  private ReadInJoyBaseAdapter a;
   @NotNull
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, Integer> b = new HashMap();
   @NotNull
-  private HashMap<String, AbsBaseArticleInfo> b = new HashMap();
+  private HashMap<String, AbsBaseArticleInfo> c = new HashMap();
   
   @NotNull
   public final Builder a(@NotNull ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
+    this.a = paramReadInJoyBaseAdapter;
     return this;
   }
   
@@ -30,7 +30,7 @@ public final class PTSLiteSwiperEventDispatcher$Builder
   public final Builder a(@NotNull HashMap<String, Integer> paramHashMap)
   {
     Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.b = paramHashMap;
     return this;
   }
   
@@ -38,9 +38,9 @@ public final class PTSLiteSwiperEventDispatcher$Builder
   public final PTSLiteSwiperEventDispatcher a()
   {
     PTSLiteSwiperEventDispatcher localPTSLiteSwiperEventDispatcher = new PTSLiteSwiperEventDispatcher(null);
-    PTSLiteSwiperEventDispatcher.a(localPTSLiteSwiperEventDispatcher, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
-    PTSLiteSwiperEventDispatcher.a(localPTSLiteSwiperEventDispatcher, this.jdField_a_of_type_JavaUtilHashMap);
-    PTSLiteSwiperEventDispatcher.b(localPTSLiteSwiperEventDispatcher, this.b);
+    PTSLiteSwiperEventDispatcher.a(localPTSLiteSwiperEventDispatcher, this.a);
+    PTSLiteSwiperEventDispatcher.a(localPTSLiteSwiperEventDispatcher, this.b);
+    PTSLiteSwiperEventDispatcher.b(localPTSLiteSwiperEventDispatcher, this.c);
     return localPTSLiteSwiperEventDispatcher;
   }
   
@@ -48,13 +48,13 @@ public final class PTSLiteSwiperEventDispatcher$Builder
   public final Builder b(@NotNull HashMap<String, AbsBaseArticleInfo> paramHashMap)
   {
     Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
-    this.b = paramHashMap;
+    this.c = paramHashMap;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteSwiperEventDispatcher.Builder
  * JD-Core Version:    0.7.0.1
  */

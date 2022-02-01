@@ -16,115 +16,115 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 public abstract class AbsWSGridItemView
   extends AbsWSItemView<stSimpleMetaFeed>
 {
-  private static final int jdField_a_of_type_Int = ScreenUtil.dip2px(10.0F);
-  protected stSimpleMetaFeed a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final WSRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-  private View b;
-  private View c;
+  private static final int e = ScreenUtil.dip2px(10.0F);
+  protected stSimpleMetaFeed d;
+  private View f;
+  private View g;
+  private RelativeLayout h;
+  private final WSRecommendAdapter i;
   
   public AbsWSGridItemView(Context paramContext, View paramView, WSRecommendAdapter paramWSRecommendAdapter)
   {
     super(paramContext, paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
-    e();
+    this.i = paramWSRecommendAdapter;
+    j();
   }
   
-  private void e()
+  private void j()
   {
-    a(2131369023, new WSGridFeedCoverController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter));
-    if (c()) {
-      a(2131369039, new WSGridFeedInnerTagController(this.jdField_a_of_type_AndroidContentContext));
+    a(2131435986, new WSGridFeedCoverController(this.b, this.a, g(), this.i));
+    if (i()) {
+      a(2131436002, new WSGridFeedInnerTagController(this.b));
     }
-    a(2131369029, new WSGridFeedInnerMaskController(this.jdField_a_of_type_AndroidContentContext));
+    a(2131435992, new WSGridFeedInnerMaskController(this.b));
   }
   
-  private void f()
+  private void k()
   {
-    View localView = this.b;
-    int i;
-    if (a()) {
-      i = 0;
+    View localView = this.f;
+    int j;
+    if (e()) {
+      j = 0;
     } else {
-      i = 8;
+      j = 8;
     }
-    localView.setVisibility(i);
-    this.b.setBackgroundResource(b());
+    localView.setVisibility(j);
+    this.f.setBackgroundResource(h());
   }
   
-  private void g()
+  private void l()
   {
-    View localView = this.c;
-    int i;
-    if (b()) {
-      i = 0;
+    View localView = this.g;
+    int j;
+    if (f()) {
+      j = 0;
     } else {
-      i = 8;
+      j = 8;
     }
-    localView.setVisibility(i);
+    localView.setVisibility(j);
   }
   
-  private void h()
+  private void m()
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int i;
-    if (a())
+    int j;
+    if (e())
     {
-      localLayoutParams.addRule(2, 2131369024);
-      i = jdField_a_of_type_Int;
-      localLayoutParams.setMargins(i, 0, i, 0);
+      localLayoutParams.addRule(2, 2131435987);
+      j = e;
+      localLayoutParams.setMargins(j, 0, j, 0);
     }
     else
     {
-      localLayoutParams.addRule(8, 2131369040);
-      i = jdField_a_of_type_Int;
-      localLayoutParams.setMargins(i, 0, i, i);
+      localLayoutParams.addRule(8, 2131436003);
+      j = e;
+      localLayoutParams.setMargins(j, 0, j, j);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+    this.h.setLayoutParams(localLayoutParams);
   }
-  
-  protected abstract int a();
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
-    f();
-    g();
-    h();
+    this.d = paramstSimpleMetaFeed;
+    k();
+    l();
+    m();
     super.a(paramstSimpleMetaFeed);
-  }
-  
-  protected abstract boolean a();
-  
-  @DrawableRes
-  protected int b()
-  {
-    return 2130841892;
   }
   
   public void b()
   {
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131369024);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131369025);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369041));
+    this.f = this.a.findViewById(2131435987);
+    this.g = this.a.findViewById(2131435988);
+    this.h = ((RelativeLayout)this.a.findViewById(2131436004));
   }
-  
-  protected abstract boolean b();
   
   public void c() {}
-  
-  protected boolean c()
-  {
-    return true;
-  }
   
   public void d() {}
   
   public void d(int paramInt) {}
+  
+  protected abstract boolean e();
+  
+  protected abstract boolean f();
+  
+  protected abstract int g();
+  
+  @DrawableRes
+  protected int h()
+  {
+    return 2130842810;
+  }
+  
+  protected boolean i()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.AbsWSGridItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ public class ScreenShareReportHelper
   
   public static int a(SessionInfo paramSessionInfo)
   {
-    int j = paramSessionInfo.d;
+    int j = paramSessionInfo.g;
     int i = j;
-    if (paramSessionInfo.b != null)
+    if (paramSessionInfo.f != null)
     {
       i = j;
-      if (paramSessionInfo.b.startsWith(String.valueOf(100)))
+      if (paramSessionInfo.f.startsWith(String.valueOf(100)))
       {
         if (j == 3) {
           return 1;
@@ -39,7 +39,7 @@ public class ScreenShareReportHelper
     if (paramString == null) {
       return 0;
     }
-    return paramString.jdField_a_of_type_Int;
+    return paramString.a;
   }
   
   private static ScreenShareReportHelper.ScreenShareReportInfo a(String paramString, boolean paramBoolean)
@@ -61,11 +61,6 @@ public class ScreenShareReportHelper
     return localScreenShareReportInfo1;
   }
   
-  public static void a(String paramString)
-  {
-    a(paramString, a(SessionMgr.a().a()));
-  }
-  
   public static void a(String paramString, int paramInt)
   {
     b(paramString, paramInt, "");
@@ -75,7 +70,7 @@ public class ScreenShareReportHelper
   {
     ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo = a(paramString1, true);
     if (localScreenShareReportInfo != null) {
-      localScreenShareReportInfo.jdField_a_of_type_Int = paramInt;
+      localScreenShareReportInfo.a = paramInt;
     }
     if (QLog.isColorLevel())
     {
@@ -95,14 +90,14 @@ public class ScreenShareReportHelper
   public static void a(String paramString1, String paramString2)
   {
     ScreenShareReportHelper.ScreenShareReportInfo localScreenShareReportInfo = a(paramString1, true);
-    if ((localScreenShareReportInfo != null) && (localScreenShareReportInfo.jdField_a_of_type_Int == 0)) {
-      localScreenShareReportInfo.jdField_a_of_type_Int = 2;
+    if ((localScreenShareReportInfo != null) && (localScreenShareReportInfo.a == 0)) {
+      localScreenShareReportInfo.a = 2;
     }
     if ((localScreenShareReportInfo != null) && (!localScreenShareReportInfo.a()))
     {
-      localScreenShareReportInfo.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      if (!ScreenShareCtrl.a(SessionMgr.a().c(paramString1))) {
-        b("0X800BA72", 0, String.valueOf(localScreenShareReportInfo.jdField_a_of_type_Int));
+      localScreenShareReportInfo.b = SystemClock.elapsedRealtime();
+      if (!ScreenShareCtrl.b(SessionMgr.a().d(paramString1))) {
+        b("0X800BA72", 0, String.valueOf(localScreenShareReportInfo.a));
       }
     }
     if (QLog.isColorLevel())
@@ -116,6 +111,11 @@ public class ScreenShareReportHelper
       localStringBuilder.append(localScreenShareReportInfo);
       QLog.i("ScreenShareReportHelper", 2, localStringBuilder.toString());
     }
+  }
+  
+  public static void b(String paramString)
+  {
+    a(paramString, a(SessionMgr.a().b()));
   }
   
   public static void b(String paramString1, int paramInt, String paramString2)
@@ -133,9 +133,9 @@ public class ScreenShareReportHelper
     long l2 = l1;
     if (localScreenShareReportInfo != null)
     {
-      if (localScreenShareReportInfo.jdField_a_of_type_Long != 0L)
+      if (localScreenShareReportInfo.b != 0L)
       {
-        l1 = Math.abs(localScreenShareReportInfo.jdField_a_of_type_Long - SystemClock.elapsedRealtime()) / 1000L;
+        l1 = Math.abs(localScreenShareReportInfo.b - SystemClock.elapsedRealtime()) / 1000L;
         b("0X800BA73", 0, String.valueOf(l1));
       }
       a.remove(paramString1);

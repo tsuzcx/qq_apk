@@ -36,99 +36,94 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/push/mvp/RIJPushNotifyDialog;", "", "parent", "Landroid/view/ViewGroup;", "param", "Lcom/tencent/mobileqq/kandian/biz/push/RIJPushNotifyParam;", "(Landroid/view/ViewGroup;Lcom/tencent/mobileqq/kandian/biz/push/RIJPushNotifyParam;)V", "avatarImageView", "Landroid/widget/ImageView;", "buttonLayout", "closeIcon", "closeTextView", "Landroid/widget/TextView;", "contentView", "Landroid/view/View;", "defaultOpenTextView", "handler", "Landroid/os/Handler;", "isSelected", "", "isShowing", "maskView", "observer", "Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "openTextView", "rejectTextView", "titleTextView", "dismiss", "", "needAnimation", "initCallback", "initListener", "initUI", "playAnimation", "isShow", "callback", "Lkotlin/Function0;", "show", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJPushNotifyDialog
 {
-  public static final RIJPushNotifyDialog.Companion a;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final RIJPushNotifyParam jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam;
-  private final ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver;
-  private boolean jdField_a_of_type_Boolean;
-  private final View jdField_b_of_type_AndroidViewView;
-  private final ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private final ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private final TextView c;
-  private final TextView d;
-  private final TextView e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPushMvpRIJPushNotifyDialog$Companion = new RIJPushNotifyDialog.Companion(null);
-  }
+  public static final RIJPushNotifyDialog.Companion a = new RIJPushNotifyDialog.Companion(null);
+  private final View b;
+  private final View c;
+  private boolean d;
+  private final ImageView e;
+  private final TextView f;
+  private final TextView g;
+  private final TextView h;
+  private final TextView i;
+  private final ImageView j;
+  private boolean k;
+  private final ReadInJoyObserver l;
+  private final TextView m;
+  private final ViewGroup n;
+  private final Handler o;
+  private final ViewGroup p;
+  private final RIJPushNotifyParam q;
   
   public RIJPushNotifyDialog(@NotNull ViewGroup paramViewGroup, @NotNull RIJPushNotifyParam paramRIJPushNotifyParam)
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam = paramRIJPushNotifyParam;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_b_of_type_AndroidViewViewGroup.getContext()).inflate(2131562706, this.jdField_b_of_type_AndroidViewViewGroup, false);
-    paramViewGroup = this.jdField_b_of_type_AndroidViewView;
+    this.p = paramViewGroup;
+    this.q = paramRIJPushNotifyParam;
+    this.o = new Handler(Looper.getMainLooper());
+    this.c = LayoutInflater.from(this.p.getContext()).inflate(2131629139, this.p, false);
+    paramViewGroup = this.c;
     paramRIJPushNotifyParam = null;
     if (paramViewGroup != null) {
-      paramViewGroup = paramViewGroup.findViewById(2131373291);
+      paramViewGroup = paramViewGroup.findViewById(2131440900);
     } else {
       paramViewGroup = null;
     }
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
+    this.b = paramViewGroup;
+    paramViewGroup = this.b;
     if (paramViewGroup != null) {
-      paramViewGroup = (ImageView)paramViewGroup.findViewById(2131373285);
-    } else {
-      paramViewGroup = null;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (TextView)paramViewGroup.findViewById(2131373295);
-    } else {
-      paramViewGroup = null;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (TextView)paramViewGroup.findViewById(2131373289);
-    } else {
-      paramViewGroup = null;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (TextView)paramViewGroup.findViewById(2131365464);
-    } else {
-      paramViewGroup = null;
-    }
-    this.c = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (TextView)paramViewGroup.findViewById(2131373293);
-    } else {
-      paramViewGroup = null;
-    }
-    this.d = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (ImageView)paramViewGroup.findViewById(2131364719);
-    } else {
-      paramViewGroup = null;
-    }
-    this.jdField_b_of_type_AndroidWidgetImageView = paramViewGroup;
-    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-    if (paramViewGroup != null) {
-      paramViewGroup = (TextView)paramViewGroup.findViewById(2131373290);
+      paramViewGroup = (ImageView)paramViewGroup.findViewById(2131440894);
     } else {
       paramViewGroup = null;
     }
     this.e = paramViewGroup;
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131440904);
+    } else {
+      paramViewGroup = null;
+    }
+    this.f = paramViewGroup;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131440898);
+    } else {
+      paramViewGroup = null;
+    }
+    this.g = paramViewGroup;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131431679);
+    } else {
+      paramViewGroup = null;
+    }
+    this.h = paramViewGroup;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131440902);
+    } else {
+      paramViewGroup = null;
+    }
+    this.i = paramViewGroup;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (ImageView)paramViewGroup.findViewById(2131430825);
+    } else {
+      paramViewGroup = null;
+    }
+    this.j = paramViewGroup;
+    paramViewGroup = this.b;
+    if (paramViewGroup != null) {
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131440899);
+    } else {
+      paramViewGroup = null;
+    }
+    this.m = paramViewGroup;
+    View localView = this.b;
     paramViewGroup = paramRIJPushNotifyParam;
     if (localView != null) {
-      paramViewGroup = (ViewGroup)localView.findViewById(2131373288);
+      paramViewGroup = (ViewGroup)localView.findViewById(2131440897);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = ((ReadInJoyObserver)new RIJPushNotifyDialog.1(this));
+    this.n = paramViewGroup;
+    this.l = ((ReadInJoyObserver)new RIJPushNotifyDialog.1(this));
     b();
     c();
     a();
@@ -136,7 +131,7 @@ public final class RIJPushNotifyDialog
   
   private final void a()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView != null) {
       localView.addOnAttachStateChangeListener((View.OnAttachStateChangeListener)new RIJPushNotifyDialog.initCallback.1(this));
     }
@@ -146,9 +141,9 @@ public final class RIJPushNotifyDialog
   {
     TranslateAnimation localTranslateAnimation;
     if (paramBoolean) {
-      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, DisplayUtil.a(this.jdField_b_of_type_AndroidViewViewGroup.getContext(), 152.0F), 0.0F);
+      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, DisplayUtil.a(this.p.getContext(), 152.0F), 0.0F);
     } else {
-      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, DisplayUtil.a(this.jdField_b_of_type_AndroidViewViewGroup.getContext(), 152.0F));
+      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, DisplayUtil.a(this.p.getContext(), 152.0F));
     }
     localTranslateAnimation.setDuration(300L);
     AlphaAnimation localAlphaAnimation;
@@ -163,7 +158,7 @@ public final class RIJPushNotifyDialog
     localAnimationSet.addAnimation((Animation)localTranslateAnimation);
     localAnimationSet.setAnimationListener((Animation.AnimationListener)new RIJPushNotifyDialog.playAnimation.1(paramFunction0));
     localAnimationSet.setFillAfter(true);
-    paramFunction0 = this.jdField_a_of_type_AndroidViewView;
+    paramFunction0 = this.b;
     if (paramFunction0 != null) {
       paramFunction0.startAnimation((Animation)localAnimationSet);
     }
@@ -172,26 +167,26 @@ public final class RIJPushNotifyDialog
   private final void b()
   {
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    int j = 0;
+    int i2 = 0;
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)new ColorDrawable(0));
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)new ColorDrawable(0));
-    Object localObject3 = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
+    Object localObject3 = this.e;
+    int i1;
     if (localObject3 != null)
     {
-      if (((CharSequence)this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.a()).length() == 0) {
-        i = 1;
+      if (((CharSequence)this.q.c()).length() == 0) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      if (i != 0) {
+      if (i1 != 0) {
         localObject1 = "https://pub.idqqimg.com/pc/misc/files/20200610/b0f587d6911f4930ae03a1817e90ac00.png";
       } else {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.a();
+        localObject1 = this.q.c();
       }
       ((ImageView)localObject3).setImageDrawable((Drawable)URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2));
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+    Object localObject1 = this.b;
     Object localObject4 = null;
     localObject3 = null;
     if (localObject1 != null) {
@@ -205,82 +200,82 @@ public final class RIJPushNotifyDialog
     }
     localObject1 = (RelativeLayout.LayoutParams)localObject2;
     if (localObject1 != null) {
-      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.b();
+      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = this.q.e();
     }
-    localObject1 = this.c;
+    localObject1 = this.h;
     if (localObject1 != null) {
       ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getCheckBoxText());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.a() == 1)
+    if (this.q.a() == 1)
     {
-      localObject1 = this.d;
+      localObject1 = this.i;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getType1HeaderText());
       }
-      localObject1 = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject1 = this.j;
       if (localObject1 != null) {
         ((ImageView)localObject1).setVisibility(0);
       }
-      localObject1 = this.e;
+      localObject1 = this.m;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(0);
       }
-      localObject1 = this.e;
+      localObject1 = this.m;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getType1ButtonText());
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject1 = this.n;
       if (localObject1 != null) {
         ((ViewGroup)localObject1).setVisibility(8);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.a() == 2)
+    else if (this.q.a() == 2)
     {
-      localObject1 = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject1 = this.j;
       if (localObject1 != null) {
         ((ImageView)localObject1).setVisibility(8);
       }
-      localObject1 = this.e;
+      localObject1 = this.m;
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(8);
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject1 = this.n;
       if (localObject1 != null) {
         ((ViewGroup)localObject1).setVisibility(0);
       }
-      localObject1 = this.d;
+      localObject1 = this.i;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getType2HeaderText());
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.f;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getType2LeftButtonText());
       }
-      localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject1 = this.g;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)RIJPushNotifyManager.Companion.a().getType2RightButtonText());
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.a())
+    if (this.q.b())
     {
-      localObject1 = this.c;
+      localObject1 = this.h;
       if (localObject1 != null) {
-        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130849727, 0, 0, 0);
+        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130851436, 0, 0, 0);
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((View)localObject1).setBackgroundColor(Color.parseColor("#FF333333"));
       }
-      localObject2 = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject2 = this.j;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849723);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851432);
             break label522;
           }
         }
@@ -288,24 +283,24 @@ public final class RIJPushNotifyDialog
         label522:
         ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
       }
-      localObject1 = this.d;
+      localObject1 = this.i;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FFFFFFFF"));
       }
-      localObject1 = this.c;
+      localObject1 = this.h;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FFD8D8D8"));
       }
-      localObject2 = this.e;
+      localObject2 = this.m;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849729);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851438);
             break label611;
           }
         }
@@ -313,16 +308,16 @@ public final class RIJPushNotifyDialog
         label611:
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject2 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject2 = this.g;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849729);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851438);
             break label662;
           }
         }
@@ -330,46 +325,46 @@ public final class RIJPushNotifyDialog
         label662:
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject2 = this.f;
       if (localObject2 != null)
       {
-        localObject4 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject4 = this.p.getContext();
         localObject1 = localObject3;
         if (localObject4 != null)
         {
           localObject4 = ((Context)localObject4).getResources();
           localObject1 = localObject3;
           if (localObject4 != null) {
-            localObject1 = ((Resources)localObject4).getDrawable(2130849725);
+            localObject1 = ((Resources)localObject4).getDrawable(2130851434);
           }
         }
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.f;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FFFFFFFF"));
       }
     }
     else
     {
-      localObject1 = this.c;
+      localObject1 = this.h;
       if (localObject1 != null) {
-        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130849728, 0, 0, 0);
+        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(2130851437, 0, 0, 0);
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((View)localObject1).setBackgroundColor(Color.parseColor("#FFFFFFFF"));
       }
-      localObject2 = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject2 = this.j;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849724);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851433);
             break label831;
           }
         }
@@ -377,24 +372,24 @@ public final class RIJPushNotifyDialog
         label831:
         ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
       }
-      localObject1 = this.d;
+      localObject1 = this.i;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FF000000"));
       }
-      localObject1 = this.c;
+      localObject1 = this.h;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FFA8A8A8"));
       }
-      localObject2 = this.e;
+      localObject2 = this.m;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849719);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851428);
             break label920;
           }
         }
@@ -402,16 +397,16 @@ public final class RIJPushNotifyDialog
         label920:
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject2 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject2 = this.g;
       if (localObject2 != null)
       {
-        localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject1 = this.p.getContext();
         if (localObject1 != null)
         {
           localObject1 = ((Context)localObject1).getResources();
           if (localObject1 != null)
           {
-            localObject1 = ((Resources)localObject1).getDrawable(2130849719);
+            localObject1 = ((Resources)localObject1).getDrawable(2130851428);
             break label971;
           }
         }
@@ -419,61 +414,61 @@ public final class RIJPushNotifyDialog
         label971:
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject2 = this.f;
       if (localObject2 != null)
       {
-        localObject3 = this.jdField_b_of_type_AndroidViewViewGroup.getContext();
+        localObject3 = this.p.getContext();
         localObject1 = localObject4;
         if (localObject3 != null)
         {
           localObject3 = ((Context)localObject3).getResources();
           localObject1 = localObject4;
           if (localObject3 != null) {
-            localObject1 = ((Resources)localObject3).getDrawable(2130849720);
+            localObject1 = ((Resources)localObject3).getDrawable(2130851429);
           }
         }
         ((TextView)localObject2).setBackgroundDrawable((Drawable)localObject1);
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.f;
       if (localObject1 != null) {
         ((TextView)localObject1).setTextColor(Color.parseColor("#FF000000"));
       }
     }
-    localObject1 = this.jdField_b_of_type_AndroidViewView;
+    localObject1 = this.c;
     if (localObject1 != null)
     {
-      localObject1 = ((View)localObject1).findViewById(2131371888);
+      localObject1 = ((View)localObject1).findViewById(2131439331);
       if (localObject1 != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyParam.b()) {
-          i = j;
+        if (this.q.f()) {
+          i1 = i2;
         } else {
-          i = 8;
+          i1 = 8;
         }
-        ((View)localObject1).setVisibility(i);
+        ((View)localObject1).setVisibility(i1);
       }
     }
   }
   
   private final void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.f;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener((View.OnClickListener)new RIJPushNotifyDialog.initListener.1(this));
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.g;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener((View.OnClickListener)new RIJPushNotifyDialog.initListener.2(this));
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    localObject = this.j;
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener((View.OnClickListener)new RIJPushNotifyDialog.initListener.3(this));
     }
-    localObject = this.e;
+    localObject = this.m;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener((View.OnClickListener)new RIJPushNotifyDialog.initListener.4(this));
     }
-    localObject = this.c;
+    localObject = this.h;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener((View.OnClickListener)new RIJPushNotifyDialog.initListener.5(this));
     }
@@ -484,19 +479,19 @@ public final class RIJPushNotifyDialog
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(toString());
     localStringBuilder.append(" show isShowing: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" needAnimation: ");
     localStringBuilder.append(paramBoolean);
     QLog.i("RIJPushNotifyDialog", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
+    this.p.addView(this.c);
     if (paramBoolean) {
       a(this, true, null, 2, null);
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)new RIJPushNotifyDialog.show.1(this), RIJPushNotifyManager.Companion.a().getDialogShowDuration());
+    this.d = true;
+    this.o.postDelayed((Runnable)new RIJPushNotifyDialog.show.1(this), RIJPushNotifyManager.Companion.a().getDialogShowDuration());
   }
   
   public final void b(boolean paramBoolean)
@@ -504,11 +499,11 @@ public final class RIJPushNotifyDialog
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(toString());
     ((StringBuilder)localObject).append(" dismiss isShowing: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(" needAnimation: ");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.i("RIJPushNotifyDialog", 1, ((StringBuilder)localObject).toString());
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     if (paramBoolean)
@@ -517,19 +512,19 @@ public final class RIJPushNotifyDialog
     }
     else
     {
-      localObject = this.jdField_b_of_type_AndroidViewView;
+      localObject = this.c;
       if (localObject != null) {
         ((View)localObject).setVisibility(8);
       }
-      this.jdField_b_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidViewView);
+      this.p.removeView(this.c);
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d = false;
+    this.o.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog
  * JD-Core Version:    0.7.0.1
  */

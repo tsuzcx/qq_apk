@@ -21,14 +21,14 @@ class ActionSheetShareUI$1
     if (ActionSheetShareUI.a(this.a).getActionSheet().isShowing()) {
       ActionSheetShareUI.a(this.a).getActionSheet().dismiss();
     }
-    int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).a.action;
+    int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).c.action;
     if ((j == 9) || (j == 10))
     {
       int i;
-      if (!WXShareHelper.a().a()) {
-        i = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        i = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i = 2131918155;
       } else {
         i = -1;
       }
@@ -38,14 +38,14 @@ class ActionSheetShareUI$1
         break label117;
       }
     }
-    this.a.a(j);
+    this.a.c(j);
     label117:
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI.1
  * JD-Core Version:    0.7.0.1
  */

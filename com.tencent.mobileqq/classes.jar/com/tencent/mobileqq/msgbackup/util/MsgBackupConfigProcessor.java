@@ -32,7 +32,7 @@ public class MsgBackupConfigProcessor
   
   private static boolean b()
   {
-    Object localObject2 = (MsgBackupConfigProcessor.MsgBackupConfigData)QConfigManager.a().a(522);
+    Object localObject2 = (MsgBackupConfigProcessor.MsgBackupConfigData)QConfigManager.b().b(522);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -69,10 +69,10 @@ public class MsgBackupConfigProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("MsgBackupConfigProcessor", 2, localStringBuilder.toString());
       }
-      return MsgBackupConfigProcessor.MsgBackupConfigData.a(paramArrayOfQConfItem[0].a);
+      return MsgBackupConfigProcessor.MsgBackupConfigData.a(paramArrayOfQConfItem[0].b);
     }
     return new MsgBackupConfigProcessor.MsgBackupConfigData();
   }
@@ -134,7 +134,7 @@ public class MsgBackupConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ final class FileOperaterUtils$2
     try
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      localQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-      FMToastUtil.d(QBaseActivity.sTopActivity.getString(2131692690));
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c())) {
-        FileManagerUtil.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      localQQAppInterface.getFileManagerEngine().a(this.a, this.a.peerUin);
+      FMToastUtil.d(QBaseActivity.sTopActivity.getString(2131889761));
+      if ((this.b != null) && (this.b.g())) {
+        FileManagerUtil.a(localQQAppInterface, this.a.nSessionId);
       }
       label70:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -38,7 +38,7 @@ final class FileOperaterUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.2
  * JD-Core Version:    0.7.0.1
  */

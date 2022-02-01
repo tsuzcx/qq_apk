@@ -17,27 +17,27 @@ public class ScreeShotImpl
   
   public void a()
   {
-    this.a.a();
-  }
-  
-  public boolean a()
-  {
-    return this.a.a();
+    this.a.d();
   }
   
   public boolean b()
   {
-    return this.a.c();
+    return this.a.a();
   }
   
   public boolean c()
+  {
+    return this.a.c();
+  }
+  
+  public boolean d()
   {
     return this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.api.impl.ScreeShotImpl
  * JD-Core Version:    0.7.0.1
  */

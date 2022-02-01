@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ibi" android:background="@drawable/jj" android:paddingBottom="6.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip"
+<RelativeLayout android:id="@id/ibi" android:background="@drawable/common_list_item_background" android:paddingBottom="6.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.widget.FixSizeImageView android:id="@id/d" android:clickable="false" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="12.0dip" android:scaleType="fitXY" android:contentDescription="@null" />
     <TextView android:id="@id/nickname" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="100.0dip" android:text="nickname" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/d" style="@style/o4" />

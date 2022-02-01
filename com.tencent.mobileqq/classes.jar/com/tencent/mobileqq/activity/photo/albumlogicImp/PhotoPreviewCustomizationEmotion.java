@@ -22,23 +22,23 @@ public class PhotoPreviewCustomizationEmotion
   public void a()
   {
     super.a();
-    a().a.setOnClickListener(new PhotoPreviewCustomizationEmotion.1(this));
+    s().l.setOnClickListener(new PhotoPreviewCustomizationEmotion.1(this));
   }
   
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.customSendBtnText = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getString(2131694887);
+    this.f.customSendBtnText = this.c.getString(2131892590);
   }
   
-  public boolean a()
+  public boolean g()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.isEmpty());
+    return (this.f.selectedPhotoList != null) && (!this.f.selectedPhotoList.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationEmotion
  * JD-Core Version:    0.7.0.1
  */

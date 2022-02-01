@@ -12,13 +12,13 @@ class Conversation$UICallBack$8
   
   public void onClick(View paramView)
   {
-    this.a.a.a.b.performLongClick();
+    this.a.a.Y.ae.performLongClick();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.8
  * JD-Core Version:    0.7.0.1
  */

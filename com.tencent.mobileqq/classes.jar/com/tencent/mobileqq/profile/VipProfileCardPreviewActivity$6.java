@@ -23,8 +23,8 @@ class VipProfileCardPreviewActivity$6
   public void run()
   {
     long l = SystemClock.elapsedRealtime();
-    Bitmap localBitmap1 = this.this$0.a(ProfileCardUtil.a((String)this.jdField_a_of_type_JavaUtilList.get(1)), true);
-    Bitmap localBitmap2 = this.this$0.a(ProfileCardUtil.a((String)this.jdField_a_of_type_JavaUtilList.get(0)), true);
+    Bitmap localBitmap1 = this.this$0.a(ProfileCardUtil.c((String)this.a.get(1)), true);
+    Bitmap localBitmap2 = this.this$0.a(ProfileCardUtil.c((String)this.a.get(0)), true);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -46,17 +46,17 @@ class VipProfileCardPreviewActivity$6
     if (localObject1 != null)
     {
       localObject1 = new Pair(localObject1, Integer.valueOf(Utils.a(localBitmap1) + Utils.a(localBitmap2)));
-      GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, localObject1);
-      localObject1 = this.this$0.a.obtainMessage();
+      GlobalImageCache.a.put(this.b, localObject1);
+      localObject1 = this.this$0.y.obtainMessage();
       ((Message)localObject1).what = 29;
-      ((Message)localObject1).arg1 = this.jdField_a_of_type_Int;
-      this.this$0.a.sendMessage((Message)localObject1);
+      ((Message)localObject1).arg1 = this.c;
+      this.this$0.y.sendMessage((Message)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

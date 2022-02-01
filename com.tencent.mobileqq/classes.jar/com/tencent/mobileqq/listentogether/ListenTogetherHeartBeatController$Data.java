@@ -8,35 +8,35 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/listentogether/ListenTogetherHeartBeatController$Data;", "", "type", "", "uin", "", "(ILjava/lang/String;)V", "sessionType", "getSessionType", "()I", "setSessionType", "(I)V", "getUin", "()Ljava/lang/String;", "setUin", "(Ljava/lang/String;)V", "equals", "", "other", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class ListenTogetherHeartBeatController$Data
 {
-  private int jdField_a_of_type_Int;
+  private int a;
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
   public ListenTogetherHeartBeatController$Data(int paramInt, @NotNull String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    return this.b;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -48,10 +48,10 @@ public final class ListenTogetherHeartBeatController$Data
     {
       paramObject = (Data)paramObject;
       bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      if (paramObject.a == this.a)
       {
         bool1 = bool2;
-        if (StringsKt.equals$default(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false, 2, null)) {
+        if (StringsKt.equals$default(paramObject.b, this.b, false, 2, null)) {
           bool1 = true;
         }
       }
@@ -61,7 +61,7 @@ public final class ListenTogetherHeartBeatController$Data
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherHeartBeatController.Data
  * JD-Core Version:    0.7.0.1
  */

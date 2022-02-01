@@ -22,12 +22,7 @@ public class QLinkTransingBannerProcessor
   extends BaseBannerProcessor
   implements IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.O;
-  }
+  public static final int a = BannerTypeCollections.P;
   
   public QLinkTransingBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -36,36 +31,36 @@ public class QLinkTransingBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131560886, null);
+    paramBanner = View.inflate(this.f, 2131627209, null);
     paramBanner.setOnClickListener(new QLinkTransingBannerProcessor.1(this));
-    paramBanner.findViewById(2131374019).setVisibility(8);
+    paramBanner.findViewById(2131442085).setVisibility(8);
     return paramBanner;
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    Object localObject = paramBanner.a.findViewById(2131374019);
-    paramMessage = (TextView)paramBanner.a.findViewById(2131374020);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() != null))
+    Object localObject = paramBanner.c.findViewById(2131442085);
+    paramMessage = (TextView)paramBanner.c.findViewById(2131442086);
+    if ((this.f != null) && (this.f.getAppRuntime() != null))
     {
-      int i = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a();
+      int i = ((QQAppInterface)this.f.getAppRuntime()).getQQProxyForQlink().h();
       if (i != 0)
       {
         ((View)localObject).setVisibility(0);
-        int j = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a().mMode;
-        paramBanner = HardCodeUtil.a(2131701140);
+        int j = ((QQAppInterface)this.f.getAppRuntime()).getQQProxyForQlink().a().mMode;
+        paramBanner = HardCodeUtil.a(2131899157);
         if (1 == j) {
-          paramBanner = HardCodeUtil.a(2131701150);
+          paramBanner = HardCodeUtil.a(2131899167);
         } else if (2 == j) {
-          paramBanner = HardCodeUtil.a(2131701139);
+          paramBanner = HardCodeUtil.a(2131899156);
         }
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698449));
+        ((StringBuilder)localObject).append(this.f.getString(2131896373));
         ((StringBuilder)localObject).append(paramBanner);
         ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698450));
+        ((StringBuilder)localObject).append(this.f.getString(2131896374));
         paramMessage.setText(((StringBuilder)localObject).toString());
-        ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EE1", "0X8009EE1", 3, 0, "", "", "", "");
+        ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EE1", "0X8009EE1", 3, 0, "", "", "", "");
         return;
       }
       ((View)localObject).setVisibility(8);
@@ -78,12 +73,12 @@ public class QLinkTransingBannerProcessor
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void d()
   {
-    int i = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a();
+    int i = ((QQAppInterface)this.f.getAppRuntime()).getQQProxyForQlink().h();
     int j = 0;
     if (i != 0) {
       i = 1;
@@ -91,7 +86,7 @@ public class QLinkTransingBannerProcessor
       i = 0;
     }
     BannerManager localBannerManager = BannerManager.a();
-    int k = jdField_a_of_type_Int;
+    int k = a;
     if (i != 0) {
       j = 2;
     }
@@ -100,7 +95,7 @@ public class QLinkTransingBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.QLinkTransingBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

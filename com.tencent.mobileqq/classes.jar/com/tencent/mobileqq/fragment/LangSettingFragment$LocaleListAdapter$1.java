@@ -14,22 +14,22 @@ class LangSettingFragment$LocaleListAdapter$1
   
   public void onClick(View paramView)
   {
-    if (LangSettingFragment.LocaleListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment$LocaleListAdapter, this.jdField_a_of_type_Int))
+    if (LangSettingFragment.LocaleListAdapter.a(this.b, this.a))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localQQAppInterface != null) {
         ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
       }
     }
-    if (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment$LocaleListAdapter.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment$LocaleListAdapter.a, ((Integer)paramView.getTag()).intValue());
+    if (LangSettingFragment.a(this.b.a) != ((Integer)paramView.getTag()).intValue()) {
+      LangSettingFragment.a(this.b.a, ((Integer)paramView.getTag()).intValue());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.LocaleListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

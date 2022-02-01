@@ -5,15 +5,15 @@ import com.tencent.commonsdk.soload.SoLoadUtilNew;
 
 public class AudioHelper
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static int b;
   
   public static long a(Context paramContext, byte[] paramArrayOfByte, int paramInt, float paramFloat)
   {
     try
     {
       a(paramContext);
-      if (jdField_a_of_type_Boolean)
+      if (a)
       {
         long l = enlargeVolum(paramArrayOfByte, paramInt, paramFloat);
         return l;
@@ -29,13 +29,13 @@ public class AudioHelper
   
   protected static void a(Context paramContext)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
-      int i = jdField_a_of_type_Int;
+      int i = b;
       if (i < 3)
       {
-        jdField_a_of_type_Int = i + 1;
-        jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(paramContext, "audiohelper");
+        b = i + 1;
+        a = SoLoadUtilNew.loadSoByName(paramContext, "audiohelper");
       }
     }
   }
@@ -45,7 +45,7 @@ public class AudioHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioHelper
  * JD-Core Version:    0.7.0.1
  */

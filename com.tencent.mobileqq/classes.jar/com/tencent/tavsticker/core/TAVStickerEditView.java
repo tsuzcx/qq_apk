@@ -776,24 +776,24 @@ public class TAVStickerEditView
     }
   }
   
-  public void setLayerColor(int paramInt1, int paramInt2)
+  public void setLayerColor(String paramString, int paramInt)
   {
-    Object localObject1 = this.pagView;
-    if (localObject1 != null)
+    PAGView localPAGView = this.pagView;
+    if (localPAGView != null)
     {
-      localObject1 = ((PAGFile)((PAGView)localObject1).getComposition()).getLayersByEditableIndex(paramInt1, 2);
-      if (localObject1 == null) {
+      paramString = ((PAGFile)localPAGView.getComposition()).getLayersByName(paramString);
+      if (paramString == null) {
         return;
       }
-      int i = localObject1.length;
-      paramInt1 = 0;
-      while (paramInt1 < i)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        Object localObject2 = localObject1[paramInt1];
-        if ((localObject2 instanceof PAGSolidLayer)) {
-          ((PAGSolidLayer)localObject2).setSolidColor(paramInt2);
+        localPAGView = paramString[i];
+        if ((localPAGView instanceof PAGSolidLayer)) {
+          ((PAGSolidLayer)localPAGView).setSolidColor(paramInt);
         }
-        paramInt1 += 1;
+        i += 1;
       }
     }
   }
@@ -916,7 +916,7 @@ public class TAVStickerEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerEditView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,61 +8,55 @@ import com.tencent.av.tips.data.AvTipsItemBase;
 public class TipsViewTimerRunnable
   implements Runnable
 {
-  volatile long jdField_a_of_type_Long = 0L;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  volatile AvTipsItemBase jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  volatile boolean jdField_a_of_type_Boolean = false;
-  volatile long jdField_b_of_type_Long = 0L;
-  volatile AvTipsItemBase jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
+  VideoAppInterface a;
+  Object b = new Object();
+  volatile long c = 0L;
+  volatile AvTipsItemBase d = null;
+  volatile long e = 0L;
+  volatile AvTipsItemBase f = null;
+  volatile boolean g = false;
   
   public TipsViewTimerRunnable(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
   private boolean a(AvTipsItemBase paramAvTipsItemBase, long paramLong)
   {
     int i = 0;
-    if (paramAvTipsItemBase != null)
-    {
-      if (paramAvTipsItemBase.a()) {
-        return false;
-      }
-      if (SystemClock.elapsedRealtime() - paramLong >= paramAvTipsItemBase.c() * 1000) {
-        i = 1;
-      }
-      return i ^ 0x1;
+    if (paramAvTipsItemBase == null) {
+      return false;
     }
-    return false;
+    if (paramAvTipsItemBase.g()) {
+      return true;
+    }
+    if (SystemClock.elapsedRealtime() - paramLong >= paramAvTipsItemBase.c() * 1000) {
+      i = 1;
+    }
+    return i ^ 0x1;
   }
   
-  private void c()
+  private void e()
   {
-    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    VideoAppInterface localVideoAppInterface = this.a;
     if (localVideoAppInterface == null) {
       return;
     }
     localVideoAppInterface.a().removeCallbacks(this);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
-  }
-  
-  public AvTipsItemBase a()
-  {
-    return this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase;
+    this.a.a().postDelayed(this, 1000L);
   }
   
   public void a()
   {
-    AvTipsItemBase localAvTipsItemBase = this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase;
-    this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-    this.jdField_a_of_type_Long = 0L;
-    TipsManager localTipsManager = (TipsManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    AvTipsItemBase localAvTipsItemBase = this.d;
+    this.d = null;
+    this.c = 0L;
+    TipsManager localTipsManager = (TipsManager)this.a.c(11);
     if (localTipsManager != null) {
-      localTipsManager.a(localAvTipsItemBase);
+      localTipsManager.b(localAvTipsItemBase);
     }
   }
   
@@ -71,31 +65,26 @@ public class TipsViewTimerRunnable
     if (paramAvTipsItemBase == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = paramAvTipsItemBase;
-    if (!paramAvTipsItemBase.a())
+    this.d = paramAvTipsItemBase;
+    if (!paramAvTipsItemBase.g())
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = true;
-      c();
+      this.c = SystemClock.elapsedRealtime();
+      this.g = true;
+      e();
       return true;
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.c = 0L;
     return true;
-  }
-  
-  public AvTipsItemBase b()
-  {
-    return this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase;
   }
   
   public void b()
   {
-    AvTipsItemBase localAvTipsItemBase = this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase;
-    this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-    this.jdField_b_of_type_Long = 0L;
-    TipsManager localTipsManager = (TipsManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
+    AvTipsItemBase localAvTipsItemBase = this.f;
+    this.f = null;
+    this.e = 0L;
+    TipsManager localTipsManager = (TipsManager)this.a.c(11);
     if (localTipsManager != null) {
-      localTipsManager.b(localAvTipsItemBase);
+      localTipsManager.c(localAvTipsItemBase);
     }
   }
   
@@ -104,22 +93,32 @@ public class TipsViewTimerRunnable
     if (paramAvTipsItemBase == null) {
       return false;
     }
-    this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = paramAvTipsItemBase;
-    if (!paramAvTipsItemBase.a())
+    this.f = paramAvTipsItemBase;
+    if (!paramAvTipsItemBase.g())
     {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = true;
-      c();
+      this.e = SystemClock.elapsedRealtime();
+      this.g = true;
+      e();
       return true;
     }
-    this.jdField_b_of_type_Long = 0L;
+    this.e = 0L;
     return true;
+  }
+  
+  public AvTipsItemBase c()
+  {
+    return this.d;
+  }
+  
+  public AvTipsItemBase d()
+  {
+    return this.f;
   }
   
   public void run()
   {
     boolean bool;
-    if (a(this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase, this.jdField_a_of_type_Long))
+    if (a(this.d, this.c))
     {
       bool = true;
     }
@@ -128,13 +127,13 @@ public class TipsViewTimerRunnable
       a();
       bool = false;
     }
-    if (a(this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase, this.jdField_b_of_type_Long)) {
+    if (a(this.f, this.e)) {
       bool = true;
     } else {
       b();
     }
-    this.jdField_a_of_type_Boolean = bool;
-    c();
+    this.g = bool;
+    e();
   }
 }
 

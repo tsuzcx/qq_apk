@@ -16,7 +16,7 @@ class MoreLyricLayout$LyricScrollListener
     localStringBuilder.append("onScroll() position => ");
     localStringBuilder.append(paramLong);
     AEQLog.a("MoreLyricLayout", localStringBuilder.toString());
-    MoreLyricLayout.a(this.a);
+    MoreLyricLayout.b(this.a);
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -24,8 +24,8 @@ class MoreLyricLayout$LyricScrollListener
     MoreLyricLayout.a(this.a, paramLong1);
     String str = LyricWithBuoyView.a((int)paramLong1);
     TextView localTextView;
-    if (MoreLyricLayout.a(this.a) != null) {
-      localTextView = MoreLyricLayout.a(this.a).a();
+    if (MoreLyricLayout.c(this.a) != null) {
+      localTextView = MoreLyricLayout.c(this.a).getMusicCurrentTime();
     } else {
       localTextView = null;
     }
@@ -36,7 +36,7 @@ class MoreLyricLayout$LyricScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.interaction.MoreLyricLayout.LyricScrollListener
  * JD-Core Version:    0.7.0.1
  */

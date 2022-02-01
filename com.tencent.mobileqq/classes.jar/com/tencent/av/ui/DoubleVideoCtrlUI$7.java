@@ -13,9 +13,9 @@ class DoubleVideoCtrlUI$7
   
   public void onClick(View paramView)
   {
-    QLog.d(this.a.d, 1, "quit double screen from reset clicker");
-    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
-      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    QLog.d(this.a.X, 1, "quit double screen from reset clicker");
+    if ((this.a.ak != null) && (this.a.ak.get() != null) && ((this.a.ak.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.ak.get()).BtnOnClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

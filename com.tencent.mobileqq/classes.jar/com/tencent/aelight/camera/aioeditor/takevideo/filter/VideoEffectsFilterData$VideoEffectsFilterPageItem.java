@@ -11,49 +11,47 @@ import android.widget.TextView;
 public class VideoEffectsFilterData$VideoEffectsFilterPageItem
   extends FilterData.FilterPageItem<VideoEffectsFilterData>
 {
-  public final ImageView a;
-  public final TextView a;
-  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378530);
+  public final TextView d = (TextView)this.a.findViewById(2131447062);
+  public final ImageView e = (ImageView)this.a.findViewById(2131435357);
+  public final TextView f = (TextView)this.a.findViewById(2131447151);
   
   VideoEffectsFilterData$VideoEffectsFilterPageItem(VideoEffectsFilterData paramVideoEffectsFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
     super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378460));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
   }
   
   protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561672, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2131628051, paramViewGroup, false);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.d.setVisibility(4);
+    this.e.setVisibility(4);
   }
   
   public void a(VideoEffectsFilterData paramVideoEffectsFilterData, int paramInt)
   {
     super.a(paramVideoEffectsFilterData, paramInt);
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData != null) && (((VideoEffectsFilterData)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData).c != 0) && (((VideoEffectsFilterData)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData).a != null))
+    if ((this.b != null) && (((VideoEffectsFilterData)this.b).e != 0) && (((VideoEffectsFilterData)this.b).b != null))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((VideoEffectsFilterData)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData).c);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((VideoEffectsFilterData)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData).a);
-      this.b.setText(((VideoEffectsFilterData)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData).b);
+      this.e.setVisibility(0);
+      this.e.setImageResource(((VideoEffectsFilterData)this.b).e);
+      this.d.setVisibility(0);
+      this.d.setText(((VideoEffectsFilterData)this.b).b);
+      this.f.setText(((VideoEffectsFilterData)this.b).d);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.b.setText("");
+    this.e.setVisibility(4);
+    this.d.setVisibility(4);
+    this.f.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.filter.VideoEffectsFilterData.VideoEffectsFilterPageItem
  * JD-Core Version:    0.7.0.1
  */

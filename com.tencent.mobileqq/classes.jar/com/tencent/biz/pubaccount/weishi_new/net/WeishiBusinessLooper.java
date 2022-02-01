@@ -13,39 +13,39 @@ import cooperation.qzone.statistic.Singleton;
 public class WeishiBusinessLooper
   implements Handler.Callback
 {
-  private static final Singleton<WeishiBusinessLooper, Void> jdField_a_of_type_CooperationQzoneStatisticSingleton = new WeishiBusinessLooper.1();
-  private static String jdField_a_of_type_JavaLangString = null;
+  private static final Singleton<WeishiBusinessLooper, Void> b = new WeishiBusinessLooper.1();
+  private static String c = null;
   public Handler a;
   
   public static WeishiBusinessLooper a()
   {
-    return (WeishiBusinessLooper)jdField_a_of_type_CooperationQzoneStatisticSingleton.get(null);
+    return (WeishiBusinessLooper)b.get(null);
   }
   
   private static void c(WeishiTask paramWeishiTask)
   {
-    if ((paramWeishiTask != null) && (paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest != null))
+    if ((paramWeishiTask != null) && (paramWeishiTask.g != null))
     {
-      if (TextUtils.isEmpty(paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.d())) {
+      if (TextUtils.isEmpty(paramWeishiTask.g.i())) {
         return;
       }
       try
       {
-        if (jdField_a_of_type_JavaLangString == null) {
-          jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
+        if (c == null) {
+          c = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
         }
-        localObject = paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.d();
-        if ((jdField_a_of_type_JavaLangString.contains((CharSequence)localObject)) && (paramWeishiTask.b != 0))
+        localObject = paramWeishiTask.g.i();
+        if ((c.contains((CharSequence)localObject)) && (paramWeishiTask.e != 0))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("cmd error report! cmd=");
           localStringBuilder.append((String)localObject);
           localStringBuilder.append(" retCode=");
-          localStringBuilder.append(paramWeishiTask.b);
+          localStringBuilder.append(paramWeishiTask.e);
           localStringBuilder.append(" msg=");
-          localStringBuilder.append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(paramWeishiTask.c);
           localStringBuilder.append(" duration=");
-          localStringBuilder.append(System.currentTimeMillis() - paramWeishiTask.jdField_a_of_type_Long);
+          localStringBuilder.append(System.currentTimeMillis() - paramWeishiTask.k);
           WSLog.d("WeishiBusinessLooper", localStringBuilder.toString());
           return;
         }
@@ -62,45 +62,45 @@ public class WeishiBusinessLooper
   
   public void a(WeishiTask paramWeishiTask)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper(), this);
     }
     Message localMessage = Message.obtain();
     localMessage.what = 0;
     localMessage.obj = paramWeishiTask;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.a.sendMessage(localMessage);
   }
   
   public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper(), this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    this.a.post(paramRunnable);
   }
   
   public void a(Runnable paramRunnable, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper(), this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+    this.a.postDelayed(paramRunnable, paramLong);
   }
   
   public void b(WeishiTask paramWeishiTask)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper(), this);
     }
     Message localMessage = Message.obtain();
     localMessage.what = 1;
     localMessage.obj = paramWeishiTask;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.a.sendMessage(localMessage);
   }
   
   public void b(Runnable paramRunnable)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null) {
       localHandler.removeCallbacks(paramRunnable);
     }
@@ -125,18 +125,18 @@ public class WeishiBusinessLooper
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("completeTask resultCode:");
-          localStringBuilder.append(paramMessage.b);
+          localStringBuilder.append(paramMessage.e);
           localStringBuilder.append(", cmd=");
-          if (paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest != null) {
-            localObject = paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.getCmdString();
+          if (paramMessage.g != null) {
+            localObject = paramMessage.g.getCmdString();
           }
           localStringBuilder.append((String)localObject);
           WSLog.c("weishi-BusinessLooper", localStringBuilder.toString());
-          if (paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiServiceListener != null) {
+          if (paramMessage.b != null) {
             try
             {
               c(paramMessage);
-              paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiServiceListener.a(paramMessage);
+              paramMessage.b.a(paramMessage);
             }
             catch (Exception paramMessage)
             {
@@ -156,8 +156,8 @@ public class WeishiBusinessLooper
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("runTask cmd=");
-        if (paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest != null) {
-          localObject = paramMessage.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.getCmdString();
+        if (paramMessage.g != null) {
+          localObject = paramMessage.g.getCmdString();
         }
         localStringBuilder.append((String)localObject);
         WSLog.a("weishi-BusinessLooper", localStringBuilder.toString());
@@ -169,7 +169,7 @@ public class WeishiBusinessLooper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper
  * JD-Core Version:    0.7.0.1
  */

@@ -23,14 +23,14 @@ public class StoryGuideLineView
   public static int b;
   public static int c;
   public static int d;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PressDarkImageView jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView;
-  private View jdField_b_of_type_AndroidViewView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private View jdField_c_of_type_AndroidViewView;
-  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
+  private PressDarkImageView e;
+  private TextView f;
+  private LinearLayout g;
+  private LinearLayout h;
+  private LinearLayout i;
+  private View j;
+  private View k;
+  private View l;
   
   public StoryGuideLineView(Context paramContext)
   {
@@ -52,41 +52,41 @@ public class StoryGuideLineView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562862, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374482));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374586));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378289));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368752));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374526));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131374527);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131374535);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131374532);
-    setViewAlpha(this.jdField_c_of_type_AndroidWidgetLinearLayout);
+    LayoutInflater.from(paramContext).inflate(2131629313, this, true);
+    this.e = ((PressDarkImageView)findViewById(2131442652));
+    this.f = ((TextView)findViewById(2131442756));
+    this.g = ((LinearLayout)findViewById(2131446808));
+    this.h = ((LinearLayout)findViewById(2131435669));
+    this.i = ((LinearLayout)findViewById(2131442696));
+    this.j = findViewById(2131442697);
+    this.l = findViewById(2131442705);
+    this.k = findViewById(2131442702);
+    setViewAlpha(this.i);
   }
   
   public void a()
   {
-    if (this.jdField_c_of_type_AndroidWidgetLinearLayout != null)
+    if (this.i != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.j;
       if (localView != null)
       {
         localView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        this.i.setVisibility(8);
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_AndroidWidgetLinearLayout != null)
+    if (this.i != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.j;
       if (localView != null)
       {
         localView.setVisibility(0);
         if (paramBoolean) {
-          this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.i.setVisibility(0);
         }
       }
     }
@@ -94,7 +94,7 @@ public class StoryGuideLineView
   
   public void b()
   {
-    View localView = this.jdField_c_of_type_AndroidViewView;
+    View localView = this.l;
     if (localView != null) {
       localView.setVisibility(0);
     }
@@ -102,7 +102,7 @@ public class StoryGuideLineView
   
   public void c()
   {
-    View localView = this.jdField_c_of_type_AndroidViewView;
+    View localView = this.l;
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -110,7 +110,7 @@ public class StoryGuideLineView
   
   public void d()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.k;
     if (localView != null) {
       localView.setVisibility(0);
     }
@@ -118,7 +118,7 @@ public class StoryGuideLineView
   
   public void e()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.k;
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -134,20 +134,20 @@ public class StoryGuideLineView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    measureChild(this.jdField_c_of_type_AndroidWidgetLinearLayout, paramInt1, paramInt2);
+    measureChild(this.i, paramInt1, paramInt2);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
-    jdField_a_of_type_Int = this.jdField_b_of_type_AndroidViewView.getMeasuredWidth();
-    jdField_b_of_type_Int = localDisplayMetrics.widthPixels - this.jdField_c_of_type_AndroidViewView.getMeasuredWidth();
-    jdField_c_of_type_Int = 0;
-    d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+    a = this.k.getMeasuredWidth();
+    b = localDisplayMetrics.widthPixels - this.l.getMeasuredWidth();
+    c = 0;
+    d = localDisplayMetrics.heightPixels - this.i.getMeasuredHeight();
     if (LiuHaiUtils.b()) {
-      d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() - LiuHaiUtils.e - LiuHaiUtils.jdField_a_of_type_Int;
+      d = localDisplayMetrics.heightPixels - this.i.getMeasuredHeight() - LiuHaiUtils.j - LiuHaiUtils.d;
     }
   }
   
   public void setUserHead(Bitmap paramBitmap)
   {
-    PressDarkImageView localPressDarkImageView = this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView;
+    PressDarkImageView localPressDarkImageView = this.e;
     if (localPressDarkImageView != null) {
       localPressDarkImageView.setImageBitmap(paramBitmap);
     }
@@ -155,21 +155,21 @@ public class StoryGuideLineView
   
   public void setUserName(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if ((this.f != null) && (!TextUtils.isEmpty(paramString))) {
+      this.f.setText(paramString);
     }
   }
   
   public void setViewAlpha(ViewGroup paramViewGroup)
   {
-    int j = paramViewGroup.getChildCount();
-    if (j == 0) {
+    int n = paramViewGroup.getChildCount();
+    if (n == 0) {
       return;
     }
-    int i = 0;
-    while (i < j)
+    int m = 0;
+    while (m < n)
     {
-      View localView = paramViewGroup.getChildAt(i);
+      View localView = paramViewGroup.getChildAt(m);
       if ((localView instanceof ViewGroup)) {
         setViewAlpha((ViewGroup)localView);
       }
@@ -177,13 +177,13 @@ public class StoryGuideLineView
         localView.getBackground().mutate().setAlpha(60);
       }
       localView.setAlpha(0.6F);
-      i += 1;
+      m += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.widget.StoryGuideLineView
  * JD-Core Version:    0.7.0.1
  */

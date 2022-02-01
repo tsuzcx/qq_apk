@@ -9,55 +9,48 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/tweetTopic/TopicListAdapter$TopicViewHolder;", "", "layout", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "descView", "Landroid/widget/TextView;", "getDescView", "()Landroid/widget/TextView;", "setDescView", "(Landroid/widget/TextView;)V", "dividerView", "Landroid/view/View;", "getDividerView", "()Landroid/view/View;", "setDividerView", "(Landroid/view/View;)V", "iconView", "Landroid/widget/ImageView;", "getIconView", "()Landroid/widget/ImageView;", "setIconView", "(Landroid/widget/ImageView;)V", "nameView", "getNameView", "setNameView", "operationView", "getOperationView", "setOperationView", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/tweetTopic/TopicListAdapter$TopicViewHolder;", "", "layout", "Landroid/view/ViewGroup;", "(Landroid/view/ViewGroup;)V", "discussView", "Landroid/widget/TextView;", "getDiscussView", "()Landroid/widget/TextView;", "dividerView", "Landroid/view/View;", "getDividerView", "()Landroid/view/View;", "iconView", "Landroid/widget/ImageView;", "getIconView", "()Landroid/widget/ImageView;", "setIconView", "(Landroid/widget/ImageView;)V", "nameView", "getNameView", "operationView", "getOperationView", "readingStrView", "getReadingStrView", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class TopicListAdapter$TopicViewHolder
 {
   @NotNull
-  private View jdField_a_of_type_AndroidViewView;
+  private ImageView a;
   @NotNull
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final TextView b;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final TextView c;
   @NotNull
-  private TextView b;
+  private final View d;
   @NotNull
-  private TextView c;
+  private final TextView e;
+  @NotNull
+  private final TextView f;
   
   public TopicListAdapter$TopicViewHolder(@NotNull ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(R.id.f);
+    View localView = paramViewGroup.findViewById(R.id.c);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.iv_icon)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramViewGroup.findViewById(R.id.q);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
+    this.a = ((ImageView)localView);
     localView = paramViewGroup.findViewById(R.id.m);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_desc)");
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_title)");
     this.b = ((TextView)localView);
-    localView = paramViewGroup.findViewById(R.id.r);
+    localView = paramViewGroup.findViewById(R.id.i);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_discuss)");
+    this.c = ((TextView)localView);
+    localView = paramViewGroup.findViewById(R.id.n);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.view_divider)");
-    this.jdField_a_of_type_AndroidViewView = localView;
-    paramViewGroup = paramViewGroup.findViewById(R.id.p);
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "layout.findViewById(R.id.tv_operation)");
-    this.c = ((TextView)paramViewGroup);
-  }
-  
-  @NotNull
-  public final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.d = localView;
+    localView = paramViewGroup.findViewById(R.id.k);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.tv_operation)");
+    this.e = ((TextView)localView);
+    paramViewGroup = paramViewGroup.findViewById(R.id.l);
+    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "layout.findViewById(R.id.tv_read)");
+    this.f = ((TextView)paramViewGroup);
   }
   
   @NotNull
   public final ImageView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a;
   }
   
   @NotNull
@@ -71,10 +64,28 @@ public final class TopicListAdapter$TopicViewHolder
   {
     return this.c;
   }
+  
+  @NotNull
+  public final View d()
+  {
+    return this.d;
+  }
+  
+  @NotNull
+  public final TextView e()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final TextView f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TopicListAdapter.TopicViewHolder
  * JD-Core Version:    0.7.0.1
  */

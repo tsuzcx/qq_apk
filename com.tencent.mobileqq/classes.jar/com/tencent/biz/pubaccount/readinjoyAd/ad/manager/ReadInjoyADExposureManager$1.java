@@ -12,12 +12,12 @@ class ReadInjoyADExposureManager$1
   
   public void run()
   {
-    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataAdRequestData);
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(this.a, 4, 0, 10000, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.ReadInjoyADExposureManager.1
  * JD-Core Version:    0.7.0.1
  */

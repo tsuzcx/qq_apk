@@ -16,9 +16,9 @@ class CommonConfigBase$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     Object localObject;
-    if (paramDownloadTask.a == 0)
+    if (paramDownloadTask.c == 0)
     {
-      paramDownloadTask = paramDownloadTask.a().getString("file_path");
+      paramDownloadTask = paramDownloadTask.b().getString("file_path");
       try
       {
         localObject = new File(paramDownloadTask);
@@ -49,7 +49,7 @@ class CommonConfigBase$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onError(), errorCode = ");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.c);
       QLog.d("CommonConfigBase", 2, ((StringBuilder)localObject).toString());
     }
   }

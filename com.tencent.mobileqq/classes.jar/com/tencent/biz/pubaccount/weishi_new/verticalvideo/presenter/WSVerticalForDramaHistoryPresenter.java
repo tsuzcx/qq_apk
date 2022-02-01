@@ -33,7 +33,7 @@ public class WSVerticalForDramaHistoryPresenter
       Object localObject = (WSVerticalItemData)paramWSVerticalPageAdapter.get(i);
       if (localObject != null)
       {
-        localObject = ((WSVerticalItemData)localObject).a();
+        localObject = ((WSVerticalItemData)localObject).b();
         if ((localObject != null) && (paramString.equals(((stSimpleMetaFeed)localObject).id))) {
           return i;
         }
@@ -53,16 +53,16 @@ public class WSVerticalForDramaHistoryPresenter
     super.c(paramList, paramBoolean1, paramBoolean2, paramObject);
     if (paramBoolean2)
     {
-      int i = a(this.b, a());
-      if ((i != -1) && (a() != null) && (a().a() != null)) {
-        a().a().scrollToPosition(i);
+      int i = a(this.b, J());
+      if ((i != -1) && (z() != null) && (z().c() != null)) {
+        z().c().scrollToPosition(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForDramaHistoryPresenter
  * JD-Core Version:    0.7.0.1
  */

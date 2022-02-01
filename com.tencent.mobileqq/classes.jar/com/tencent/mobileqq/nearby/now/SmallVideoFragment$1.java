@@ -16,14 +16,14 @@ class SmallVideoFragment$1
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null) {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
+    if (this.a.a.getCurrentVideoData() != null) {
+      localObject = this.a.a.getCurrentVideoData().c;
     } else {
       localObject = "0";
     }
     long l;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null) {
-      l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;
+    if (this.a.a.getCurrentVideoData() != null) {
+      l = this.a.a.getCurrentVideoData().i;
     } else {
       l = 0L;
     }
@@ -36,16 +36,16 @@ class SmallVideoFragment$1
       localStringBuilder.append(l);
       QLog.i("Native_ShortVideo_Report", 2, localStringBuilder.toString());
     }
-    Object localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
-    if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof IShortVideoCommentsView)) {
-      ((CommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).hideInputKeyboard();
+    Object localObject = (VideoPlayerPagerAdapter)this.a.d.getAdapter();
+    if ((((VideoPlayerPagerAdapter)localObject).d(this.a.d.getCurrentItem()) instanceof IShortVideoCommentsView)) {
+      ((CommentsView)((VideoPlayerPagerAdapter)localObject).d(this.a.d.getCurrentItem())).hideInputKeyboard();
     }
-    this.a.d();
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.SmallVideoFragment.1
  * JD-Core Version:    0.7.0.1
  */

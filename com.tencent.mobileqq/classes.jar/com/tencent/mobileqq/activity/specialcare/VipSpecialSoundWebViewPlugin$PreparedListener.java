@@ -8,29 +8,29 @@ import org.json.JSONObject;
 public class VipSpecialSoundWebViewPlugin$PreparedListener
   implements MediaPlayer.OnPreparedListener
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  JSONObject a;
+  String b;
+  boolean c;
   
   public VipSpecialSoundWebViewPlugin$PreparedListener(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramJSONObject;
+    this.b = paramString;
+    this.c = paramBoolean;
   }
   
   public void a()
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      this.a.put("code", 2);
+      this.a.put("errorMessage", "can't play");
+      this.d.callJs(this.b, new String[] { this.a.toString() });
       return;
     }
     catch (Exception localException1)
     {
-      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin;
+      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("-->handleJsRequest exception:");
       localStringBuilder.append(localException1.toString());
@@ -40,7 +40,7 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("code", 2);
         localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.d.callJs(this.b, new String[] { localJSONObject.toString() });
         return;
       }
       catch (Exception localException2)
@@ -52,25 +52,25 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).a()) {}
+    if (VipSpecialSoundWebViewPlugin.a(this.d).b()) {}
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+        this.a.put("code", 0);
       }
       else
       {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+        VipSpecialSoundWebViewPlugin.a(this.d, "-->play failed");
+        this.a.put("code", 2);
+        this.a.put("errorMessage", "can't play");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      this.d.callJs(this.b, new String[] { this.a.toString() });
       return;
     }
     catch (Exception paramMediaPlayer)
     {
-      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin;
+      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("-->handleJsRequest exception:");
       localStringBuilder.append(paramMediaPlayer.toString());
@@ -80,7 +80,7 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
         paramMediaPlayer = new JSONObject();
         paramMediaPlayer.put("code", 2);
         paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        this.d.callJs(this.b, new String[] { paramMediaPlayer.toString() });
         return;
       }
       catch (Exception paramMediaPlayer)
@@ -92,7 +92,7 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.PreparedListener
  * JD-Core Version:    0.7.0.1
  */

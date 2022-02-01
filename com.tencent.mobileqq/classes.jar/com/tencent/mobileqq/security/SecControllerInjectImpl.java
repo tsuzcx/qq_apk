@@ -34,18 +34,9 @@ import org.json.JSONObject;
 public class SecControllerInjectImpl
   implements ISecControllerInterface
 {
-  public ArrayList<String> a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    paramBaseQQAppInterface = (ISubAccountService)paramBaseQQAppInterface.getRuntimeService(ISubAccountService.class, "");
-    if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.getAllSubUin();
-    }
-    return null;
-  }
-  
   public void a(Activity paramActivity, String paramString)
   {
-    MyAppApi.a().a(paramString, new SecControllerInjectImpl.1(this, paramActivity), paramActivity);
+    MyAppApi.l().a(paramString, new SecControllerInjectImpl.1(this, paramActivity), paramActivity);
   }
   
   public void a(Activity paramActivity, JSONObject paramJSONObject)
@@ -69,7 +60,7 @@ public class SecControllerInjectImpl
   {
     if (paramBoolean1)
     {
-      if (QQPlayerService.a()) {
+      if (QQPlayerService.b()) {
         paramContext.sendBroadcast(new Intent("qqplayer_exit_action"));
       }
     }
@@ -85,7 +76,7 @@ public class SecControllerInjectImpl
   {
     paramBaseQQAppInterface = (ConfigHandler)paramBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
     if (paramBaseQQAppInterface != null) {
-      paramBaseQQAppInterface.b();
+      paramBaseQQAppInterface.c();
     }
   }
   
@@ -127,10 +118,19 @@ public class SecControllerInjectImpl
     }
     paramQBaseActivity.finish();
   }
+  
+  public ArrayList<String> b(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    paramBaseQQAppInterface = (ISubAccountService)paramBaseQQAppInterface.getRuntimeService(ISubAccountService.class, "");
+    if (paramBaseQQAppInterface != null) {
+      return paramBaseQQAppInterface.getAllSubUin();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.security.SecControllerInjectImpl
  * JD-Core Version:    0.7.0.1
  */

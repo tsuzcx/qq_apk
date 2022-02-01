@@ -17,17 +17,22 @@ import java.util.List;
 public class RecentTabHaloRequest
   extends NetworkRequest<RecentTabHaloResponse>
 {
-  private static final String jdField_a_of_type_JavaLangString = StoryApi.a("StoryLrSvc.msglist_head_node");
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private int c;
+  private static final String e = StoryApi.a("StoryLrSvc.msglist_head_node");
+  private String f;
+  private List<Long> g;
+  private int h;
   
-  public int a()
+  public String a()
   {
-    return this.c;
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public int b()
+  {
+    return this.h;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspMsgListHeadNode localRspMsgListHeadNode = new qqstory_service.RspMsgListHeadNode();
     try
@@ -47,22 +52,17 @@ public class RecentTabHaloRequest
     return new RecentTabHaloResponse(localRspMsgListHeadNode);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
     PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
-    String str = this.b;
+    String str = this.f;
     if (str == null) {
       str = "";
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-    localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
-    localReqMsgListHeadNode.source.set(this.c);
+    localReqMsgListHeadNode.uin_list.set(this.g);
+    localReqMsgListHeadNode.source.set(this.h);
     localReqMsgListHeadNode.setHasFlag(true);
     return localReqMsgListHeadNode.toByteArray();
   }
@@ -71,19 +71,19 @@ public class RecentTabHaloRequest
   {
     StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
     localStringBuilder.append("mCurrentSeq='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mUins=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", mWhen=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.RecentTabHaloRequest
  * JD-Core Version:    0.7.0.1
  */

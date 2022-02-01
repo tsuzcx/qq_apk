@@ -24,22 +24,22 @@ public class SearchTypeFragment
   extends BaseFragment
   implements View.OnClickListener
 {
-  public int a;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private IQFileSearchTypeController jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchtypeIQFileSearchTypeController;
-  private SearchFileFlowLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout;
-  public String a;
   public List<Integer> a;
-  private SparseIntArray b = new SparseIntArray();
+  public int b;
+  public String c;
+  private SearchFileFlowLayout d;
+  private SparseIntArray e = new SparseIntArray();
+  private SparseIntArray f = new SparseIntArray();
+  private View g;
+  private IQFileSearchTypeController h;
   
   public View a(int paramInt1, int paramInt2, int paramInt3)
   {
-    FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(getActivity()).inflate(2131560809, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
-    LinearLayout localLinearLayout = (LinearLayout)localFrameLayout.findViewById(2131370303);
-    TextView localTextView = (TextView)localFrameLayout.findViewById(2131379869);
-    ((ImageView)localFrameLayout.findViewById(2131369488)).setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1)));
-    localTextView.setText(this.b.get(paramInt1));
+    FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(getActivity()).inflate(2131627067, (ViewGroup)this.g, false);
+    LinearLayout localLinearLayout = (LinearLayout)localFrameLayout.findViewById(2131437550);
+    TextView localTextView = (TextView)localFrameLayout.findViewById(2131448727);
+    ((ImageView)localFrameLayout.findViewById(2131436559)).setImageDrawable(getResources().getDrawable(this.e.get(paramInt1)));
+    localTextView.setText(this.f.get(paramInt1));
     localLinearLayout.setTag(Integer.valueOf(paramInt1));
     localLinearLayout.setOnClickListener(this);
     ((FrameLayout.LayoutParams)localFrameLayout.getLayoutParams()).width = (paramInt2 / paramInt3);
@@ -48,21 +48,21 @@ public class SearchTypeFragment
   
   public void a(IQFileSearchTypeController paramIQFileSearchTypeController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchtypeIQFileSearchTypeController = paramIQFileSearchTypeController;
+    this.h = paramIQFileSearchTypeController;
   }
   
   public void a(List<Integer> paramList, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout;
+    Object localObject = this.d;
     if ((localObject != null) && (paramList != null))
     {
       ((SearchFileFlowLayout)localObject).setMaxNumInLineAndAlignMode(0, paramInt);
-      int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout.getMeasuredWidth();
+      int i = this.d.getMeasuredWidth();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         localObject = (FrameLayout)a(((Integer)paramList.next()).intValue(), i, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout.addView((View)localObject);
+        this.d.addView((View)localObject);
       }
     }
   }
@@ -70,7 +70,7 @@ public class SearchTypeFragment
   public void onClick(View paramView)
   {
     Integer localInteger = (Integer)paramView.getTag();
-    IQFileSearchTypeController localIQFileSearchTypeController = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchtypeIQFileSearchTypeController;
+    IQFileSearchTypeController localIQFileSearchTypeController = this.h;
     if (localIQFileSearchTypeController != null) {
       localIQFileSearchTypeController.a(localInteger.intValue());
     }
@@ -80,33 +80,33 @@ public class SearchTypeFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(13, 2130843980);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 2130844427);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 2130844431);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(0, 2130844430);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 2130844428);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(11, 2130844429);
-    this.b.put(13, 2131697366);
-    this.b.put(3, 2131697364);
-    this.b.put(2, 2131697369);
-    this.b.put(0, 2131697365);
-    this.b.put(1, 2131697367);
-    this.b.put(11, 2131697368);
+    this.e.put(13, 2130844935);
+    this.e.put(3, 2130845745);
+    this.e.put(2, 2130845749);
+    this.e.put(0, 2130845748);
+    this.e.put(1, 2130845746);
+    this.e.put(11, 2130845747);
+    this.f.put(13, 2131895139);
+    this.f.put(3, 2131895137);
+    this.f.put(2, 2131895142);
+    this.f.put(0, 2131895138);
+    this.f.put(1, 2131895140);
+    this.f.put(11, 2131895141);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560807, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout = ((SearchFileFlowLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366939));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSearchFileFlowLayout.post(new SearchTypeFragment.1(this));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.g = paramLayoutInflater.inflate(2131627065, paramViewGroup, false);
+    this.d = ((SearchFileFlowLayout)this.g.findViewById(2131433292));
+    this.d.post(new SearchTypeFragment.1(this));
+    paramLayoutInflater = this.g;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.SearchTypeFragment
  * JD-Core Version:    0.7.0.1
  */

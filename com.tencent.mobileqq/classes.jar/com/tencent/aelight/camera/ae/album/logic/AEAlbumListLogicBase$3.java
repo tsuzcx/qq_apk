@@ -16,15 +16,15 @@ class AEAlbumListLogicBase$3
   public void run()
   {
     LogTag.a();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter.b(((AEAbstractAlbumListFragment)this.this$0.a.get()).getActivity(), 2147483647, -1, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, -1, false, null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter.c((QQAlbumInfo)localObject);
+    Object localObject = this.a.b(((AEAbstractAlbumListFragment)this.this$0.a.get()).getActivity(), 2147483647, -1, this.b, -1, false, null);
+    this.a.c((QQAlbumInfo)localObject);
     LogTag.a("PEAK", "queryRecentBucket");
     LogTag.a();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter;
+    localObject = this.b;
     if ((localObject != null) && (((MediaFileFilter)localObject).showVideo()))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter.a(((AEAbstractAlbumListFragment)this.this$0.a.get()).getActivity());
-      this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter.e((QQAlbumInfo)localObject);
+      localObject = this.a.a(((AEAbstractAlbumListFragment)this.this$0.a.get()).getActivity());
+      this.a.e((QQAlbumInfo)localObject);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -38,7 +38,7 @@ class AEAlbumListLogicBase$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEAlbumListLogicBase.3
  * JD-Core Version:    0.7.0.1
  */

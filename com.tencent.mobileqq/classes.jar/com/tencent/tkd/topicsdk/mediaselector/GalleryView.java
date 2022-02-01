@@ -31,78 +31,83 @@ import org.jetbrains.annotations.Nullable;
 public final class GalleryView
   extends RelativeLayout
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private PhotoView jdField_a_of_type_ComBmLibraryPhotoView;
-  private PagerAdapterProxy jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy;
-  private final ViewPagerProxy jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private final ViewPagerProxy a;
+  private final ArrayList<String> b = new ArrayList();
+  private View.OnClickListener c;
+  private Function1<? super Integer, Unit> d;
+  private PhotoView e;
   @Nullable
-  private Function2<? super String, ? super ImageView, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
+  private Function1<? super Integer, Unit> f;
   @Nullable
-  private Function1<? super Integer, Unit> b;
+  private Function2<? super String, ? super ImageView, Unit> g;
+  private PagerAdapterProxy h;
   
   public GalleryView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy = ((PagerAdapterProxy)new GalleryView.mAdapter.1(this, paramContext));
-    LayoutInflater.from(paramContext).inflate(R.layout.n, (ViewGroup)this);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy = new ViewPagerProxy(paramContext, TopicSDK.a.a().a().a());
-    addView(this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a(this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a((OnPageChangeListenerProxy)new GalleryView.1(this));
+    this.h = ((PagerAdapterProxy)new GalleryView.mAdapter.1(this, paramContext));
+    LayoutInflater.from(paramContext).inflate(R.layout.i, (ViewGroup)this);
+    this.a = new ViewPagerProxy(paramContext, TopicSDK.a.a().b().p());
+    addView(this.a.a(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.a.a(this.h);
+    this.a.a((OnPageChangeListenerProxy)new GalleryView.1(this));
+  }
+  
+  public final int getCurrentPage()
+  {
+    return this.a.b();
   }
   
   @Nullable
-  public final Function1<Integer, Unit> a()
+  public final Function1<Integer, Unit> getOnPageSelectListener()
   {
-    return this.b;
+    return this.f;
   }
   
   @Nullable
-  public final Function2<String, ImageView, Unit> a()
+  public final Function2<String, ImageView, Unit> getPicLoader()
   {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+    return this.g;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a();
+    this.a.c();
   }
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.c = paramOnClickListener;
   }
   
   public final void setOnItemLongClickListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.d = paramFunction1;
   }
   
   public final void setOnPageSelectListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.b = paramFunction1;
+    this.f = paramFunction1;
   }
   
   public final void setPhotos(@NotNull ArrayList<String> paramArrayList, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "list");
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)paramArrayList);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy.a();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a(paramInt);
+    this.b.clear();
+    this.b.addAll((Collection)paramArrayList);
+    this.h.b();
+    this.a.a(paramInt);
   }
   
   public final void setPicLoader(@Nullable Function2<? super String, ? super ImageView, Unit> paramFunction2)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
+    this.g = paramFunction2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.GalleryView
  * JD-Core Version:    0.7.0.1
  */

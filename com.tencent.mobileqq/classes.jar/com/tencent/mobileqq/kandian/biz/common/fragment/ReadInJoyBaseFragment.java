@@ -38,24 +38,18 @@ public abstract class ReadInJoyBaseFragment
   extends QPublicBaseFragment
   implements MessageObserver
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected LayoutInflater a;
-  public ReadInJoyBaseFragment.OnNofityVisibleCallback a;
-  public CallHotwordChange a;
-  public boolean a;
-  public int b;
-  protected boolean b;
-  protected boolean c = false;
-  public boolean d = false;
+  private int a = -1;
+  private Bundle b;
+  protected LayoutInflater e;
+  public boolean f = false;
+  protected boolean g = false;
+  protected boolean h = false;
+  public ReadInJoyBaseFragment.OnNofityVisibleCallback i;
+  public CallHotwordChange j;
+  public int k;
+  public boolean l = false;
   
-  public ReadInJoyBaseFragment()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public static int a(int paramInt)
+  public static int c(int paramInt)
   {
     Integer localInteger = ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).get(paramInt);
     if (localInteger != null) {
@@ -70,8 +64,8 @@ public abstract class ReadInJoyBaseFragment
       return;
     }
     d(paramMessageRecord);
-    a().kandianMergeMessageReaded(paramMessageRecord);
-    a().notificationTabRedNumsChange();
+    u().kandianMergeMessageReaded(paramMessageRecord);
+    u().notificationTabRedNumsChange();
   }
   
   private void d(MessageRecord paramMessageRecord)
@@ -81,41 +75,10 @@ public abstract class ReadInJoyBaseFragment
     }
   }
   
-  private int e()
+  private void w()
   {
-    int i;
-    try
-    {
-      Resources localResources = getActivity().getResources();
-      i = localResources.getDimensionPixelSize(2131299168);
-      j = localResources.getDimensionPixelSize(2131298861);
-      int k = localResources.getDimensionPixelSize(2131298863);
-      int m = ImmersiveUtils.getStatusBarHeight(getActivity());
-      i = i + j + k + m;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      i = 0;
-    }
-    int j = i;
-    if (i <= 0)
-    {
-      i = ViewUtils.b(80.5F);
-      j = ImmersiveUtils.getStatusBarHeight(getActivity()) + i;
-    }
-    return j;
-  }
-  
-  private int f()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle.getInt("channel_padding_top", e());
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_AndroidOsBundle = getArguments();
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    this.b = getArguments();
+    Bundle localBundle = this.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localBundle != null)
@@ -125,53 +88,61 @@ public abstract class ReadInJoyBaseFragment
         bool1 = true;
       }
     }
-    this.d = bool1;
+    this.l = bool1;
   }
   
-  private void j()
+  private void x()
   {
     View localView = getView();
     if (localView != null)
     {
-      int i;
-      if (a()) {
-        i = a();
+      int m;
+      if (c()) {
+        m = b();
       } else {
-        i = 0;
+        m = 0;
       }
-      int j;
-      if (e()) {
-        j = c();
+      int n;
+      if (q()) {
+        n = r();
       } else {
-        j = 0;
+        n = 0;
       }
-      if ((i > 0) || (j > 0)) {
-        localView.setPadding(0, i, 0, j);
+      if ((m > 0) || (n > 0)) {
+        localView.setPadding(0, m, 0, n);
       }
     }
   }
   
-  public int a()
+  private int y()
   {
-    if (this.d) {
-      return f();
+    int m;
+    try
+    {
+      Resources localResources = getActivity().getResources();
+      m = localResources.getDimensionPixelSize(2131299920);
+      n = localResources.getDimensionPixelSize(2131299578);
+      int i1 = localResources.getDimensionPixelSize(2131299580);
+      int i2 = ImmersiveUtils.getStatusBarHeight(getActivity());
+      m = m + n + i1 + i2;
     }
-    return e();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      m = 0;
+    }
+    int n = m;
+    if (m <= 0)
+    {
+      m = ViewUtils.dpToPx(80.5F);
+      n = ImmersiveUtils.getStatusBarHeight(getActivity()) + m;
+    }
+    return n;
   }
   
-  public Activity a()
+  private int z()
   {
-    return getQBaseActivity();
-  }
-  
-  protected IKanDianMergeManager a()
-  {
-    return (IKanDianMergeManager)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getRuntimeService(IKanDianMergeManager.class, "");
-  }
-  
-  public String a()
-  {
-    return "0";
+    return this.b.getInt("channel_padding_top", y());
   }
   
   public void a(int paramInt) {}
@@ -192,20 +163,20 @@ public abstract class ReadInJoyBaseFragment
   
   public void a(ReadInJoyBaseFragment.OnNofityVisibleCallback paramOnNofityVisibleCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment$OnNofityVisibleCallback = paramOnNofityVisibleCallback;
+    this.i = paramOnNofityVisibleCallback;
   }
   
   public void a(CallHotwordChange paramCallHotwordChange, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange = paramCallHotwordChange;
-    this.jdField_b_of_type_Int = paramInt;
+    this.j = paramCallHotwordChange;
+    this.k = paramInt;
   }
   
   public void a(Constants.LogoutReason paramLogoutReason) {}
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
@@ -215,64 +186,56 @@ public abstract class ReadInJoyBaseFragment
     paramBundle.append(getClass().getSimpleName());
     paramBundle.append(" notifyShowSelf");
     QLog.d(paramActivity, 2, paramBundle.toString());
-    if (a() != null) {
-      a().addMsgObserver(this);
+    if (u() != null) {
+      u().addMsgObserver(this);
     }
-    ((IVideoAutoPlayController)QRoute.api(IVideoAutoPlayController.class)).setChannelId(b());
-    if (this.c)
+    ((IVideoAutoPlayController)QRoute.api(IVideoAutoPlayController.class)).setChannelId(d());
+    if (this.h)
     {
-      int i = b();
-      if (i != -1)
+      int m = d();
+      if (m != -1)
       {
-        ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).enterChannel(i);
-        paramActivity = (Integer)RIJChannelViewpagerEnterPathHelper.a().remove(Integer.valueOf(i));
+        ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).enterChannel(m);
+        paramActivity = (Integer)RIJChannelViewpagerEnterPathHelper.a().remove(Integer.valueOf(m));
         if (paramActivity != null)
         {
-          ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).put(i, paramActivity.intValue());
+          ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).put(m, paramActivity.intValue());
           if ((((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) && (paramActivity.intValue() == 0)) {
-            ((IRIJChannelReporter)QRoute.api(IRIJChannelReporter.class)).reportForEnterChannel(i, "306");
+            ((IRIJChannelReporter)QRoute.api(IRIJChannelReporter.class)).reportForEnterChannel(m, "306");
           }
         }
         else
         {
-          ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).put(i, 2);
-          ((IRIJChannelReporter)QRoute.api(IRIJChannelReporter.class)).reportForEnterChannel(i, "301");
+          ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).put(m, 2);
+          ((IRIJChannelReporter)QRoute.api(IRIJChannelReporter.class)).reportForEnterChannel(m, "301");
         }
-        QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "notifyShowSelf, channelID = ", Integer.valueOf(i), ", entryPath = ", Integer.valueOf(a(i)) });
+        QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "notifyShowSelf, channelID = ", Integer.valueOf(m), ", entryPath = ", Integer.valueOf(c(m)) });
       }
     }
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment$OnNofityVisibleCallback;
+    paramActivity = this.i;
     if (paramActivity != null) {
-      paramActivity.e_(true);
+      paramActivity.j_(true);
     }
-    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).adSuperMaskServiceSetChannelId(b());
+    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).adSuperMaskServiceSetChannelId(d());
     paramActivity = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
     paramBundle = new StringBuilder();
     paramBundle.append("setSuperMaskChannelId ");
-    paramBundle.append(b());
+    paramBundle.append(d());
     paramBundle.append(" notifyShowSelf ");
     paramActivity.adSuperMaskLog(paramBundle.toString());
   }
   
-  public boolean a()
+  public int b()
   {
-    return (this.c) && ((((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyViolaChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyBBCircleFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyFragmentWithSubChannel(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyAdHippyFragment(this)) || (this.d));
-  }
-  
-  public void aA_() {}
-  
-  public void az_() {}
-  
-  public abstract int b();
-  
-  public void b()
-  {
-    getActivity().finish();
+    if (this.l) {
+      return z();
+    }
+    return y();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void b(MessageRecord paramMessageRecord)
@@ -281,76 +244,70 @@ public abstract class ReadInJoyBaseFragment
     c(paramMessageRecord);
   }
   
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    try
-    {
-      int i = getActivity().getResources().getDimensionPixelSize(2131297336);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 0;
-  }
-  
   public boolean c()
   {
-    return false;
+    return (this.h) && ((((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyViolaChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyBBCircleFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyFragmentWithSubChannel(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyAdHippyFragment(this)) || (this.l));
   }
   
-  public int d()
+  public abstract int d();
+  
+  public boolean e()
   {
-    return this.jdField_a_of_type_Int;
+    return this.g;
   }
   
-  public void d() {}
-  
-  public boolean d()
+  public void f()
   {
-    return false;
+    getActivity().finish();
   }
   
-  public void e()
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k()
   {
     Object localObject = ReadInJoyBaseFragment.class.getSimpleName();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append(" notifyHideSelf");
     QLog.d((String)localObject, 2, localStringBuilder.toString());
-    if (a() != null) {
-      a().removeMsgObserver(this);
+    if (u() != null) {
+      u().removeMsgObserver(this);
     }
-    if (this.c)
+    if (this.h)
     {
-      int i = b();
-      if ((i != -1) && (((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).isChannelShow(i))) {
-        g();
+      int m = d();
+      if ((m != -1) && (((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).isChannelShow(m))) {
+        n();
       }
-      if (i != -1) {
-        ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).exitChannel(i, this.jdField_a_of_type_Int, a());
+      if (m != -1) {
+        ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).exitChannel(m, this.a, p());
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment$OnNofityVisibleCallback;
+    localObject = this.i;
     if (localObject != null) {
-      ((ReadInJoyBaseFragment.OnNofityVisibleCallback)localObject).e_(false);
+      ((ReadInJoyBaseFragment.OnNofityVisibleCallback)localObject).j_(false);
     }
   }
   
-  public boolean e()
+  public void l() {}
+  
+  public boolean m()
   {
-    return (this.c) && ((((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyViolaChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyFragmentWithSubChannel(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoySubChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyAdHippyFragment(this)));
+    return false;
   }
   
-  public void f() {}
+  public void n() {}
   
-  public void g() {}
+  public boolean o()
+  {
+    return false;
+  }
   
   public boolean onBackEvent()
   {
@@ -366,12 +323,12 @@ public abstract class ReadInJoyBaseFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    i();
+    w();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.e = paramLayoutInflater;
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -387,15 +344,15 @@ public abstract class ReadInJoyBaseFragment
     {
       localException.printStackTrace();
     }
-    if (a() != null) {
-      a().removeMsgObserver(this);
+    if (u() != null) {
+      u().removeMsgObserver(this);
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    j();
+    x();
   }
   
   public void onStop()
@@ -403,23 +360,64 @@ public abstract class ReadInJoyBaseFragment
     super.onStop();
   }
   
+  public String p()
+  {
+    return "0";
+  }
+  
+  public boolean q()
+  {
+    return (this.h) && ((((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyViolaChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyFragmentWithSubChannel(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoySubChannelFragment(this)) || (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isReadInJoyAdHippyFragment(this)));
+  }
+  
+  public int r()
+  {
+    try
+    {
+      int m = getActivity().getResources().getDimensionPixelSize(2131297771);
+      return m;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public int s()
+  {
+    return this.a;
+  }
+  
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "setUserVisibleHint, isVisibleToUser = ", Boolean.valueOf(paramBoolean), ", mIsShowingSelf = ", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "setUserVisibleHint, mChannelID = ", Integer.valueOf(b()) });
+    QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "setUserVisibleHint, isVisibleToUser = ", Boolean.valueOf(paramBoolean), ", mIsShowingSelf = ", Boolean.valueOf(this.g) });
+    this.g = paramBoolean;
+    QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "setUserVisibleHint, mChannelID = ", Integer.valueOf(d()) });
     if (paramBoolean)
     {
       a(false, getActivity(), null);
       return;
     }
-    e();
+    k();
+  }
+  
+  public void t() {}
+  
+  protected IKanDianMergeManager u()
+  {
+    return (IKanDianMergeManager)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getRuntimeService(IKanDianMergeManager.class, "");
+  }
+  
+  public Activity v()
+  {
+    return getQBaseActivity();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

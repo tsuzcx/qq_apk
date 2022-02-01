@@ -29,23 +29,23 @@ class HotChatAnnounceActivity$1
     HotChatAnnounceActivity.a(this.a);
     if ((paramBoolean) && (paramInt == 0))
     {
-      paramString1 = ((HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.a.a);
+      paramString1 = ((HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(this.a.g);
       if (paramString1 != null)
       {
-        paramString1.memo = this.a.d;
-        paramString1.memoUrl = this.a.e;
+        paramString1.memo = this.a.k;
+        paramString1.memoUrl = this.a.l;
         paramString1.memoShowed = false;
       }
-      QQToast.a(this.a, 2, HardCodeUtil.a(2131705625), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2, HardCodeUtil.a(2131903511), 0).show(this.a.getTitleBarHeight());
       this.a.setResult(-1);
       this.a.finish();
       return;
     }
-    paramString1 = HardCodeUtil.a(2131705628);
+    paramString1 = HardCodeUtil.a(2131903514);
     if (paramInt == 1282) {
-      paramString1 = HardCodeUtil.a(2131705633);
+      paramString1 = HardCodeUtil.a(2131903519);
     }
-    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, 1, paramString1, 0).show(this.a.getTitleBarHeight());
   }
   
   public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
@@ -64,28 +64,28 @@ class HotChatAnnounceActivity$1
     HotChatAnnounceActivity.a(this.a);
     if ((paramBoolean) && (paramInt == 0))
     {
-      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.a.a);
+      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(this.a.g);
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte.memo = this.a.d;
-        paramArrayOfByte.memoUrl = this.a.e;
+        paramArrayOfByte.memo = this.a.k;
+        paramArrayOfByte.memoUrl = this.a.l;
         paramArrayOfByte.memoShowed = false;
       }
-      QQToast.a(this.a, 2, HardCodeUtil.a(2131705632), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2, HardCodeUtil.a(2131903518), 0).show(this.a.getTitleBarHeight());
       this.a.setResult(-1);
       this.a.finish();
       return;
     }
-    paramArrayOfByte = HardCodeUtil.a(2131705626);
+    paramArrayOfByte = HardCodeUtil.a(2131903512);
     if (paramInt == 1288) {
-      paramArrayOfByte = HardCodeUtil.a(2131705630);
+      paramArrayOfByte = HardCodeUtil.a(2131903516);
     }
-    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, 1, paramArrayOfByte, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HotChatAnnounceActivity.1
  * JD-Core Version:    0.7.0.1
  */

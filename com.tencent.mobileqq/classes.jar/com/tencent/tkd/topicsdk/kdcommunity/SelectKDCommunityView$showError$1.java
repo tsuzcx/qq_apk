@@ -12,12 +12,12 @@ final class SelectKDCommunityView$showError$1
   
   public final void onClick(View paramView)
   {
-    this.a.a().b();
+    this.a.getPresenter().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.kdcommunity.SelectKDCommunityView.showError.1
  * JD-Core Version:    0.7.0.1
  */

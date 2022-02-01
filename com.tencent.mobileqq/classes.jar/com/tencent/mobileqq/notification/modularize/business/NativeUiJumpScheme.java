@@ -3,9 +3,9 @@ package com.tencent.mobileqq.notification.modularize.business;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.notification.modularize.BaseJumpScheme;
 import com.tencent.mobileqq.notification.modularize.PushComponent;
+import com.tencent.mobileqq.settings.message.NotifyPushSettingFragment;
 import com.tencent.qphone.base.util.BaseApplication;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -32,7 +32,7 @@ public final class NativeUiJumpScheme
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     Context localContext = (Context)BaseApplication.context;
-    Intent localIntent = new Intent(localContext, NotifyPushSettingActivity.class);
+    Intent localIntent = new Intent(localContext, NotifyPushSettingFragment.class);
     localIntent.addFlags(268435456);
     paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.d, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
@@ -41,7 +41,7 @@ public final class NativeUiJumpScheme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.NativeUiJumpScheme
  * JD-Core Version:    0.7.0.1
  */

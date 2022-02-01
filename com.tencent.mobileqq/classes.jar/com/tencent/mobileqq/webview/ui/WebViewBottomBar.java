@@ -9,25 +9,25 @@ import java.util.List;
 @SuppressLint({"UseSparseArrays"})
 public class WebViewBottomBar
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  WebViewBottomBar.BarAdapter jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar$BarAdapter;
-  WebViewBottomBar.OnBottomBarItemListener jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar$OnBottomBarItemListener;
-  HashMap<Integer, WebViewBottomBar.RedTouch> jdField_a_of_type_JavaUtilHashMap;
-  List<WebViewBottomBar.ViewHolder> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  List<WebViewBottomBar.BottomItem> jdField_b_of_type_JavaUtilList;
+  WebViewBottomBar.BarAdapter a;
+  Context b;
+  WebViewBottomBar.OnBottomBarItemListener c;
+  int d;
+  List<WebViewBottomBar.ViewHolder> e;
+  List<WebViewBottomBar.BottomItem> f;
+  HashMap<Integer, WebViewBottomBar.RedTouch> g;
+  int h;
   
   WebViewBottomBar.ViewHolder a(int paramInt)
   {
-    Object localObject = this.a;
+    Object localObject = this.e;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localObject = this.a.iterator();
+      localObject = this.e.iterator();
       while (((Iterator)localObject).hasNext())
       {
         WebViewBottomBar.ViewHolder localViewHolder = (WebViewBottomBar.ViewHolder)((Iterator)localObject).next();
-        if (paramInt == localViewHolder.a) {
+        if (paramInt == localViewHolder.f) {
           return localViewHolder;
         }
       }
@@ -37,7 +37,7 @@ public class WebViewBottomBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewBottomBar
  * JD-Core Version:    0.7.0.1
  */

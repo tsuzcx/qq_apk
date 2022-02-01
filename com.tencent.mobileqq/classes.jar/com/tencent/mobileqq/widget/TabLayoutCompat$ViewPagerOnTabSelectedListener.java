@@ -12,7 +12,7 @@ public class TabLayoutCompat$ViewPagerOnTabSelectedListener
   
   public void a(TabLayoutCompat.Tab paramTab)
   {
-    this.a.setCurrentItem(paramTab.a());
+    this.a.setCurrentItem(paramTab.d());
   }
   
   public void b(TabLayoutCompat.Tab paramTab) {}
@@ -21,7 +21,7 @@ public class TabLayoutCompat$ViewPagerOnTabSelectedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat.ViewPagerOnTabSelectedListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,19 +12,19 @@ public class QuestionOptionsAdapter
   extends BaseAdapter
 {
   protected Context a;
-  protected LayoutInflater a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected IQuestionOptionPresenter a;
-  private QuestionOptionsDataSource jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource;
+  protected LayoutInflater b;
+  protected IQuestionOptionPresenter c;
+  private QuestionOptionsDataSource d;
+  private ViewGroup e;
   
   public QuestionOptionsAdapter(Context paramContext, IQuestionOptionPresenter paramIQuestionOptionPresenter)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = paramIQuestionOptionPresenter;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource = new QuestionOptionsDataSource();
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(this);
+    this.a = paramContext;
+    this.c = paramIQuestionOptionPresenter;
+    this.b = LayoutInflater.from(paramContext);
+    this.d = new QuestionOptionsDataSource();
+    this.c.a(this.d);
+    this.c.a(this);
   }
   
   private View a(int paramInt, View paramView)
@@ -41,11 +41,11 @@ public class QuestionOptionsAdapter
       }
       return paramView;
     }
-    QuestionOptionInfo localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
+    QuestionOptionInfo localQuestionOptionInfo = this.d.a(paramInt);
     Object localObject2;
     if (!(paramView instanceof QuestionOptionItemView))
     {
-      paramView = (QuestionOptionItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558658, null);
+      paramView = (QuestionOptionItemView)this.b.inflate(2131624275, null);
       paramView.a();
       localObject1 = paramView;
       localObject2 = paramView;
@@ -62,13 +62,13 @@ public class QuestionOptionsAdapter
   public void a(int paramInt)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource != null) && (paramInt >= 0))
+    if ((this.d != null) && (paramInt >= 0))
     {
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject = this.e;
       if (localObject != null)
       {
         localObject = (QuestionOptionItemView)((ViewGroup)localObject).getChildAt(paramInt);
-        QuestionOptionInfo localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
+        QuestionOptionInfo localQuestionOptionInfo = this.d.a(paramInt);
         if (localObject == null)
         {
           if (QLog.isDevelopLevel()) {
@@ -96,7 +96,7 @@ public class QuestionOptionsAdapter
   
   public Object getItem(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource;
+    Object localObject = this.d;
     if (localObject == null) {
       return new QuestionOptionInfo();
     }
@@ -120,7 +120,7 @@ public class QuestionOptionsAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.e = paramViewGroup;
     View localView = a(paramInt, paramView);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;

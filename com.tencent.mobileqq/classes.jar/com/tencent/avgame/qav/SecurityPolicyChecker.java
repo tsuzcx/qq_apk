@@ -11,35 +11,35 @@ import mqq.util.WeakReference;
 
 public class SecurityPolicyChecker
 {
-  private static SecurityPolicyChecker jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker;
-  private Runnable jdField_a_of_type_JavaLangRunnable = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static SecurityPolicyChecker a;
   private boolean b = false;
+  private boolean c = false;
+  private String d = null;
+  private Runnable e = null;
   
   public static SecurityPolicyChecker a()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker == null) {
-          jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker = new SecurityPolicyChecker();
+        if (a == null) {
+          a = new SecurityPolicyChecker();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker;
+    return a;
   }
   
   public void a(EngineData paramEngineData, String paramString)
   {
     if (paramEngineData != null)
     {
-      int i = paramEngineData.a();
+      int i = paramEngineData.j();
       if ((i != 0) && (i != 10))
       {
-        Player localPlayer = paramEngineData.b();
-        if ((localPlayer != null) && (paramEngineData.b(localPlayer.uin)))
+        Player localPlayer = paramEngineData.r();
+        if ((localPlayer != null) && (paramEngineData.d(localPlayer.uin)))
         {
           paramEngineData = localPlayer.uin;
           break label53;
@@ -50,26 +50,26 @@ public class SecurityPolicyChecker
     label53:
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+    if (TextUtils.equals(this.d, paramString))
     {
       bool1 = bool2;
-      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEngineData)) {
+      if (!TextUtils.equals(this.d, paramEngineData)) {
         bool1 = true;
       }
     }
-    this.jdField_a_of_type_JavaLangString = paramEngineData;
+    this.d = paramEngineData;
     if (bool1)
     {
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        this.jdField_a_of_type_JavaLangRunnable = new SecurityPolicyChecker.CheckCameraTask(null);
+      if (this.e == null) {
+        this.e = new SecurityPolicyChecker.CheckCameraTask(null);
       }
-      AVGameHandler.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      AVGameHandler.a().c().postDelayed(this.e, 1000L);
     }
     if (QLog.isColorLevel())
     {
       paramEngineData = new StringBuilder();
       paramEngineData.append("setPlayer1, [");
-      paramEngineData.append(this.jdField_a_of_type_JavaLangString);
+      paramEngineData.append(this.d);
       paramEngineData.append(",");
       paramEngineData.append(bool1);
       paramEngineData.append("]");
@@ -84,43 +84,43 @@ public class SecurityPolicyChecker
   
   public void a(String paramString)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+    if (!TextUtils.equals(this.d, paramString))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setPlayer2, [");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.d);
         localStringBuilder.append("-->");
         localStringBuilder.append(paramString);
         localStringBuilder.append("]");
         QLog.i("SecurityPolicyChecker", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.d = paramString;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.b;
   }
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(paramLong));
+    if (this.b) {
+      return TextUtils.equals(this.d, String.valueOf(paramLong));
     }
     return true;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public boolean b(long paramLong)
   {
-    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(paramLong));
+    return TextUtils.equals(this.d, String.valueOf(paramLong));
+  }
+  
+  public boolean c()
+  {
+    return this.b;
   }
 }
 

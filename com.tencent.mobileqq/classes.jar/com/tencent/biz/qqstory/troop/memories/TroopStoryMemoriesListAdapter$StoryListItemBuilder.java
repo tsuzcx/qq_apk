@@ -39,7 +39,7 @@ class TroopStoryMemoriesListAdapter$StoryListItemBuilder
       paramSwipItemBaseHolder.rightMenuItems[paramInt].menuView = null;
       paramInt += 1;
     }
-    paramSwipItemBaseHolder.leftView = paramView.findViewById(2131369736);
+    paramSwipItemBaseHolder.leftView = paramView.findViewById(2131436854);
     return paramView;
   }
   
@@ -49,8 +49,8 @@ class TroopStoryMemoriesListAdapter$StoryListItemBuilder
     paramArrayOfSwipRightMenuItem[0].menuId = 0;
     paramArrayOfSwipRightMenuItem[1].menuType = -1;
     paramArrayOfSwipRightMenuItem[1].menuId = -1;
-    String str = QQStoryContext.a().a();
-    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    String str = QQStoryContext.a().g();
+    if ((this.a.g) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
     {
       paramArrayOfSwipRightMenuItem[1].menuType = 1;
       paramArrayOfSwipRightMenuItem[1].menuId = 1;

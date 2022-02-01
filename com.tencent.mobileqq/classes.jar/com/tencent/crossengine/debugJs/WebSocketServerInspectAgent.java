@@ -8,27 +8,27 @@ import org.java_websocket.WebSocket;
 public class WebSocketServerInspectAgent
   implements InspectorAgent
 {
-  private final int jdField_a_of_type_Int = (int)(Math.random() * 10000.0D);
-  private InspectorAgent.DebuggerMessageListener jdField_a_of_type_ComTencentCrossengineDebugJsInspectorAgent$DebuggerMessageListener;
-  private final WebSocketServerInspectAgent.AgentServer jdField_a_of_type_ComTencentCrossengineDebugJsWebSocketServerInspectAgent$AgentServer;
-  private String jdField_a_of_type_JavaLangString;
-  private WebSocket jdField_a_of_type_OrgJava_websocketWebSocket;
+  private final int a = (int)(Math.random() * 10000.0D);
+  private final WebSocketServerInspectAgent.AgentServer b;
+  private WebSocket c;
+  private InspectorAgent.DebuggerMessageListener d;
+  private String e;
   
   public WebSocketServerInspectAgent(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentCrossengineDebugJsWebSocketServerInspectAgent$AgentServer = new WebSocketServerInspectAgent.AgentServer(this, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentCrossengineDebugJsWebSocketServerInspectAgent$AgentServer.start();
+    this.e = paramString;
+    this.b = new WebSocketServerInspectAgent.AgentServer(this, this.a);
+    this.b.start();
   }
   
   public void a(@Nullable InspectorAgent.DebuggerMessageListener paramDebuggerMessageListener)
   {
-    this.jdField_a_of_type_ComTencentCrossengineDebugJsInspectorAgent$DebuggerMessageListener = paramDebuggerMessageListener;
+    this.d = paramDebuggerMessageListener;
   }
   
   public void a(@NonNull String paramString)
   {
-    Object localObject = this.jdField_a_of_type_OrgJava_websocketWebSocket;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((WebSocket)localObject).send(paramString);
@@ -41,7 +41,7 @@ public class WebSocketServerInspectAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.debugJs.WebSocketServerInspectAgent
  * JD-Core Version:    0.7.0.1
  */

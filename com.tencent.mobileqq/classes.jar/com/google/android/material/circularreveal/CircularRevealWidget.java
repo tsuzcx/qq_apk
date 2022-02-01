@@ -7,15 +7,15 @@ import androidx.annotation.Nullable;
 public abstract interface CircularRevealWidget
   extends CircularRevealHelper.Delegate
 {
-  @ColorInt
-  public abstract int a();
-  
-  @Nullable
-  public abstract CircularRevealWidget.RevealInfo a();
-  
   public abstract void a();
   
   public abstract void b();
+  
+  @ColorInt
+  public abstract int getCircularRevealScrimColor();
+  
+  @Nullable
+  public abstract CircularRevealWidget.RevealInfo getRevealInfo();
   
   public abstract void setCircularRevealOverlayDrawable(@Nullable Drawable paramDrawable);
   
@@ -25,7 +25,7 @@ public abstract interface CircularRevealWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.circularreveal.CircularRevealWidget
  * JD-Core Version:    0.7.0.1
  */

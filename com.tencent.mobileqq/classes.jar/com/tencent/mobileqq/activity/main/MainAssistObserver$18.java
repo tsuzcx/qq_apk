@@ -1,112 +1,131 @@
 package com.tencent.mobileqq.activity.main;
 
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.upgrade.UpgradeController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class MainAssistObserver$18
-  extends Handler
+  implements Runnable
 {
-  MainAssistObserver$18(MainAssistObserver paramMainAssistObserver, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  MainAssistObserver$18(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app != null))
+    for (;;)
     {
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin()) {
+      try
+      {
+        IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.a.getRuntimeService(IRedTouchManager.class, "");
+        Object localObject2 = localIRedTouchManager.getRedTouchInfoByAppSet(1);
+        if (localObject2 == null)
+        {
+          Object localObject3 = (LocalRedTouchManager)this.a.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+          ((LocalRedTouchManager)localObject3).b(100601, false);
+          boolean bool1 = ((LocalRedTouchManager)localObject3).b(10015, false);
+          boolean bool2 = ((LocalRedTouchManager)localObject3).b(10016, false);
+          ProfileCardUtil.c(this.a);
+          Object localObject1 = ((LocalRedTouchManager)localObject3).a(-3);
+          if (((LocalRedTouchManager)localObject3).a((RedTouchItem)localObject1, true))
+          {
+            localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+            if ((bool1 | bool2)) {
+              MainAssistObserver.a(this.this$0, this.a);
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("updateTabSettingNotify me count=");
+            ((StringBuilder)localObject3).append(((RedTouchItem)localObject1).count);
+            QLog.d("MainAssistObserver", 1, ((StringBuilder)localObject3).toString());
+            j = 1;
+            localObject1 = localObject2;
+            int i = j;
+            if (localObject2 == null)
+            {
+              localObject1 = localObject2;
+              i = j;
+              if (UpgradeController.b(this.a))
+              {
+                localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
+                i = 2;
+              }
+            }
+            localObject3 = (CardHandler)this.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+            localObject2 = localObject1;
+            j = i;
+            if (localObject1 == null)
+            {
+              localObject2 = localObject1;
+              j = i;
+              if (!((CardHandler)localObject3).h())
+              {
+                localObject2 = localObject1;
+                j = i;
+                if (((CardHandler)localObject3).g())
+                {
+                  localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+                  j = 3;
+                }
+              }
+            }
+            localObject1 = localObject2;
+            i = j;
+            if (localObject2 == null)
+            {
+              localObject1 = localObject2;
+              i = j;
+              if (PrivacyPolicyHelper.a(1))
+              {
+                localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
+                i = 4;
+              }
+            }
+            j = localIRedTouchManager.getNumRedShowNumByAppSet(1);
+            if (localObject1 != null) {
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(0);
+            }
+            if (j > 0)
+            {
+              localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(0);
+              i = 5;
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("updateTabSettingNotify: showRedFromWhere=");
+              ((StringBuilder)localObject2).append(i);
+              QLog.d("MainAssistObserver", 2, ((StringBuilder)localObject2).toString());
+            }
+            localObject2 = this.this$0.j.obtainMessage(0);
+            ((Message)localObject2).obj = localObject1;
+            this.this$0.j.sendMessage((Message)localObject2);
+            return;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
         return;
       }
-      int i = paramMessage.what;
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 3)
-          {
-            if (i != 28929) {
-              return;
-            }
-            paramMessage = paramMessage.getData();
-            if (paramMessage == null) {
-              return;
-            }
-            i = paramMessage.getInt("result");
-            if ((i != -1) && (i != -2))
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-              }
-            }
-            else
-            {
-              String str;
-              if (i == -1)
-              {
-                str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131718581);
-                paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131718580);
-              }
-              else
-              {
-                str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131718583);
-                paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131718582);
-              }
-              try
-              {
-                if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-                {
-                  if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-                    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-                  }
-                  this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-                }
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, paramMessage, new MainAssistObserver.18.1(this), null);
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new MainAssistObserver.18.2(this));
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new MainAssistObserver.18.3(this));
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-                return;
-              }
-              catch (Exception paramMessage)
-              {
-                if (!QLog.isColorLevel()) {
-                  return;
-                }
-              }
-              paramMessage.printStackTrace();
-            }
-          }
-          else
-          {
-            paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-            this.a.a(33, paramMessage);
-          }
-        }
-        else
-        {
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(34, paramMessage);
-        }
-      }
-      else
-      {
-        paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-        this.a.a(35, paramMessage);
-      }
+      int j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.18
  * JD-Core Version:    0.7.0.1
  */

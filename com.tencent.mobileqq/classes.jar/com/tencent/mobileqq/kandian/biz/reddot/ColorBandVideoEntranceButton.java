@@ -73,85 +73,72 @@ public class ColorBandVideoEntranceButton
   extends FrameLayout
   implements View.OnClickListener, URLDrawable.URLDrawableListener2, RedDotView<IEntranceButtonDataSource>, ReadInJoySkinManager.OnSkinChangedListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  Animator jdField_a_of_type_AndroidAnimationAnimator;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  protected Drawable a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View jdField_a_of_type_AndroidViewView;
+  private View.OnClickListener A;
+  private ApngDrawable.OnPlayRepeatListener B;
+  private boolean C = false;
+  private boolean D = false;
+  private ImageView E;
+  private KanDianUrlRoundCornerImageView F;
+  private RelativeLayout G;
+  private RelativeLayout H;
+  private ImageView I;
+  private TextView J;
+  private TextView K;
+  private TextView L;
+  private LinearLayout M;
+  private boolean N = false;
+  private AnimatorSet O;
+  private AnimatorSet P;
+  private URLDrawableDownListener Q = new ColorBandVideoEntranceButton.1(this);
+  private Function1<Canvas, Unit> R = new ColorBandVideoEntranceButton.14(this);
+  private Function1<Canvas, Unit> S = new ColorBandVideoEntranceButton.15(this);
   protected ImageView a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ApngDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener;
-  protected URLDrawable a;
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new ColorBandVideoEntranceButton.1(this);
-  protected URLImageView a;
-  protected KanDianUrlRoundCornerImageView a;
-  private IEntranceButtonDataSource jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource;
-  ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ColorBandVideoEntranceButton.10(this);
-  Runnable jdField_a_of_type_JavaLangRunnable = new ColorBandVideoEntranceButton.12(this);
-  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new ColorBandVideoEntranceButton.14(this);
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  Animator jdField_b_of_type_AndroidAnimationAnimator;
-  private AnimatorSet jdField_b_of_type_AndroidAnimationAnimatorSet;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   protected ImageView b;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
-  private KanDianUrlRoundCornerImageView jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
-  Runnable jdField_b_of_type_JavaLangRunnable = new ColorBandVideoEntranceButton.13(this);
-  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new ColorBandVideoEntranceButton.15(this);
-  private boolean jdField_b_of_type_Boolean;
-  Animator jdField_c_of_type_AndroidAnimationAnimator;
-  private AnimatorSet jdField_c_of_type_AndroidAnimationAnimatorSet;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean = false;
-  Animator jdField_d_of_type_AndroidAnimationAnimator;
-  private AnimatorSet jdField_d_of_type_AndroidAnimationAnimatorSet;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private boolean jdField_d_of_type_Boolean = false;
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
-  private boolean jdField_e_of_type_Boolean = false;
-  private ImageView f;
+  protected KanDianUrlRoundCornerImageView c;
+  protected URLImageView d;
+  protected URLDrawable e;
+  protected Drawable f;
+  public boolean g = false;
+  Animator h;
+  Animator i;
+  Animator j;
+  Animator k;
+  ReadInJoyObserver l = new ColorBandVideoEntranceButton.10(this);
+  Runnable m = new ColorBandVideoEntranceButton.12(this);
+  Runnable n = new ColorBandVideoEntranceButton.13(this);
+  private View o;
+  private ImageView p;
+  private ImageView q;
+  private Drawable r;
+  private AnimatorSet s;
+  private AnimatorSet t;
+  private boolean u;
+  private IEntranceButtonDataSource v;
+  private int w;
+  private int x;
+  private URLDrawable y;
+  private long z;
   
   public ColorBandVideoEntranceButton(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
     j();
   }
   
   public ColorBandVideoEntranceButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
     j();
-  }
-  
-  private Drawable a()
-  {
-    int i;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = RecommendFeedsDiandianEntranceManager.getDefaultFeedsIconSrcId();
-    } else {
-      i = 2130842890;
-    }
-    return getResources().getDrawable(i);
   }
   
   private Drawable a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a();
-    } else if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a();
+      this.f = getImageDrawable();
+    } else if (this.f == null) {
+      this.f = getImageDrawable();
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.f;
   }
   
   private String a(int paramInt)
@@ -163,64 +150,31 @@ public class ColorBandVideoEntranceButton
         if (paramInt != 2) {
           return "";
         }
-        return HardCodeUtil.a(2131718313);
+        return HardCodeUtil.a(2131915805);
       }
-      return HardCodeUtil.a(2131718315);
+      return HardCodeUtil.a(2131915807);
     }
-    return HardCodeUtil.a(2131718314);
+    return HardCodeUtil.a(2131915806);
   }
   
   private String a(EntranceIconInfo paramEntranceIconInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramEntranceIconInfo.d));
+    localStringBuilder.append(b(paramEntranceIconInfo.g));
     localStringBuilder.append(" ");
-    localStringBuilder.append(a(paramEntranceIconInfo.jdField_b_of_type_Int));
+    localStringBuilder.append(a(paramEntranceIconInfo.h));
     return localStringBuilder.toString();
-  }
-  
-  private String a(String paramString)
-  {
-    int i = 0;
-    float f1 = 0.0F;
-    while (i < paramString.length())
-    {
-      float f2;
-      if (StringUtil.c(paramString.charAt(i))) {
-        f2 = 2.0F;
-      } else {
-        f2 = 1.0F;
-      }
-      f1 += f2;
-      if (f1 > 16.0F)
-      {
-        j = 1;
-        break label62;
-      }
-      i += 1;
-    }
-    int j = 0;
-    label62:
-    Object localObject = paramString;
-    if (j != 0)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString.substring(0, i));
-      ((StringBuilder)localObject).append("...");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    return localObject;
   }
   
   private void a(View paramView)
   {
-    if (a())
+    if (s())
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.z = System.currentTimeMillis();
       c();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_b_of_type_ComTencentImageURLDrawable = null;
-      View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      this.u = false;
+      this.y = null;
+      View.OnClickListener localOnClickListener = this.A;
       if (localOnClickListener != null) {
         localOnClickListener.onClick(paramView);
       }
@@ -240,68 +194,58 @@ public class ColorBandVideoEntranceButton
   private void a(ImageView paramImageView)
   {
     paramImageView = paramImageView.getLayoutParams();
-    this.jdField_a_of_type_Int = paramImageView.width;
-    this.jdField_b_of_type_Int = paramImageView.height;
+    this.w = paramImageView.width;
+    this.x = paramImageView.height;
     if (QLog.isColorLevel())
     {
       paramImageView = new StringBuilder();
       paramImageView.append("initCoverImageSize, width: ");
-      paramImageView.append(this.jdField_a_of_type_Int);
+      paramImageView.append(this.w);
       paramImageView.append(", height: ");
-      paramImageView.append(this.jdField_b_of_type_Int);
+      paramImageView.append(this.x);
       QLog.d("ColorBandVideoEntranceButton", 2, paramImageView.toString());
     }
   }
   
   private void a(ApngDrawable paramApngDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener == null) {
-      this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener = new ColorBandVideoEntranceButton.11(this);
+    if (this.B == null) {
+      this.B = new ColorBandVideoEntranceButton.11(this);
     }
-    paramApngDrawable.setOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageApngDrawable$OnPlayRepeatListener);
+    paramApngDrawable.setOnPlayRepeatListener(this.B);
     paramApngDrawable.repaly();
   }
   
   private void a(URLDrawable paramURLDrawable)
   {
     if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof ApngDrawable))) {
-      postDelayed(this.jdField_b_of_type_JavaLangRunnable, 1800L);
-    }
-  }
-  
-  private void a(EntranceIconInfo paramEntranceIconInfo)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(a(paramEntranceIconInfo));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      n();
+      postDelayed(this.n, 1800L);
     }
   }
   
   private void a(RIJColumnDataSource paramRIJColumnDataSource)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
     if (paramRIJColumnDataSource != null)
     {
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramRIJColumnDataSource.a))) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramRIJColumnDataSource.a);
+      if ((this.J != null) && (!TextUtils.isEmpty(paramRIJColumnDataSource.a))) {
+        this.J.setText(paramRIJColumnDataSource.a);
       }
-      if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramRIJColumnDataSource.jdField_b_of_type_JavaLangString))) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramRIJColumnDataSource.jdField_b_of_type_JavaLangString);
+      if ((this.K != null) && (!TextUtils.isEmpty(paramRIJColumnDataSource.b))) {
+        this.K.setText(paramRIJColumnDataSource.b);
       }
     }
   }
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView == null) {
+    if (this.c == null) {
       return;
     }
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.2F, 1.0F }) });
+    localAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.o, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.o, "scaleY", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.c, "scaleX", new float[] { 0.2F, 1.0F }), ObjectAnimator.ofFloat(this.c, "scaleY", new float[] { 0.2F, 1.0F }) });
     localAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
     localAnimatorSet.setDuration(400L);
     if (!TextUtils.isEmpty(paramString)) {
@@ -322,52 +266,15 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    b(paramBoolean);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
-    if (paramBoolean) {
-      i = 8;
-    } else {
-      i = 0;
-    }
-    ((ImageView)localObject).setVisibility(i);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    if (paramBoolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      t();
-      a(this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-    }
-    else
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-      ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    }
-    a(true);
-    a(this.jdField_a_of_type_Boolean, false);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showColumnDiandian! showColumnDiandian=");
-    ((StringBuilder)localObject).append(paramBoolean);
-    QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
-  }
-  
   private void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;
+    localURLDrawableOptions.mLoadingDrawable = this.r;
+    localURLDrawableOptions.mRequestWidth = this.w;
+    localURLDrawableOptions.mRequestHeight = this.x;
     if (paramBoolean1)
     {
       localURLDrawableOptions.mUseApngImage = true;
@@ -392,28 +299,28 @@ public class ColorBandVideoEntranceButton
   {
     Object localObject;
     if (paramBoolean1) {
-      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+      localObject = this.H;
     } else if (paramBoolean2) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
+      localObject = this.c;
     } else {
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject = this.a;
     }
     try
     {
       localObject = (FrameLayout.LayoutParams)((View)localObject).getLayoutParams();
-      int i = ((FrameLayout.LayoutParams)localObject).bottomMargin;
-      int k = ((FrameLayout.LayoutParams)localObject).rightMargin;
-      int j = ((FrameLayout.LayoutParams)localObject).width;
-      localObject = (FrameLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
-      k -= DisplayUtil.a(getContext(), 12.0F);
-      i = DisplayUtil.a(getContext(), 30.0F) - ((FrameLayout.LayoutParams)localObject).width + j + i;
-      ((FrameLayout.LayoutParams)localObject).bottomMargin = i;
-      ((FrameLayout.LayoutParams)localObject).rightMargin = k;
-      this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (FrameLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).bottomMargin = i;
-      ((FrameLayout.LayoutParams)localObject).rightMargin = k;
-      this.jdField_d_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      int i1 = ((FrameLayout.LayoutParams)localObject).bottomMargin;
+      int i3 = ((FrameLayout.LayoutParams)localObject).rightMargin;
+      int i2 = ((FrameLayout.LayoutParams)localObject).width;
+      localObject = (FrameLayout.LayoutParams)this.p.getLayoutParams();
+      i3 -= DisplayUtil.a(getContext(), 12.0F);
+      i1 = DisplayUtil.a(getContext(), 30.0F) - ((FrameLayout.LayoutParams)localObject).width + i2 + i1;
+      ((FrameLayout.LayoutParams)localObject).bottomMargin = i1;
+      ((FrameLayout.LayoutParams)localObject).rightMargin = i3;
+      this.p.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = (FrameLayout.LayoutParams)this.q.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).bottomMargin = i1;
+      ((FrameLayout.LayoutParams)localObject).rightMargin = i3;
+      this.q.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
     catch (Exception localException)
@@ -425,38 +332,64 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private boolean a()
+  private String b(String paramString)
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L;
-  }
-  
-  private boolean a(IEntranceButtonDataSource paramIEntranceButtonDataSource)
-  {
-    return paramIEntranceButtonDataSource instanceof EntranceIconInfo;
+    int i1 = 0;
+    float f1 = 0.0F;
+    while (i1 < paramString.length())
+    {
+      float f2;
+      if (StringUtil.isChinese(paramString.charAt(i1))) {
+        f2 = 2.0F;
+      } else {
+        f2 = 1.0F;
+      }
+      f1 += f2;
+      if (f1 > 16.0F)
+      {
+        i2 = 1;
+        break label63;
+      }
+      i1 += 1;
+    }
+    int i2 = 0;
+    label63:
+    Object localObject = paramString;
+    if (i2 != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString.substring(0, i1));
+      ((StringBuilder)localObject).append("...");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   private void b(URLDrawable paramURLDrawable)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof ApngDrawable))
     {
-      QLog.d("ColorBandVideoEntranceButton", 1, "has no red dot");
-      return;
-    }
-    QLog.d("ColorBandVideoEntranceButton", 1, "isHasRedDot updateAnimation");
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage() != null))
-    {
-      Bitmap localBitmap = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage().getCurrentFrame();
-      if (localBitmap != null) {
-        localBitmap.eraseColor(0);
+      this.E.setImageDrawable(paramURLDrawable);
+      if ((this.v instanceof RIJColumnDataSource)) {
+        this.D = true;
+      } else {
+        this.N = true;
       }
     }
-    if (paramURLDrawable != null)
+    else
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-      if (paramURLDrawable.getStatus() == 1) {
-        a(paramURLDrawable);
+      this.F.setImageDrawable(paramURLDrawable);
+      this.C = true;
+    }
+    if ((this.C) && (this.D))
+    {
+      paramURLDrawable = this.E.getDrawable();
+      if ((paramURLDrawable instanceof ApngDrawable))
+      {
+        a((ApngDrawable)paramURLDrawable);
+        this.C = false;
+        this.D = false;
       }
     }
   }
@@ -464,69 +397,45 @@ public class ColorBandVideoEntranceButton
   private void b(IEntranceButtonDataSource paramIEntranceButtonDataSource)
   {
     if ((paramIEntranceButtonDataSource instanceof EntranceIconInfo)) {
-      a(URLUtil.a(((EntranceIconInfo)paramIEntranceButtonDataSource).c));
+      a(URLUtil.a(((EntranceIconInfo)paramIEntranceButtonDataSource).d));
     }
-  }
-  
-  private void b(String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("loadUpdateAnimation: ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
-    localObject = new ApngOptions();
-    ((ApngOptions)localObject).a(new ColorDrawable(7));
-    ((ApngOptions)localObject).b(this.jdField_a_of_type_Int);
-    ((ApngOptions)localObject).c(this.jdField_b_of_type_Int);
-    ((ApngOptions)localObject).a(1);
-    b(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramString, (ApngOptions)localObject));
   }
   
   private void b(boolean paramBoolean)
   {
-    this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(a());
-    ImageView localImageView = this.jdField_e_of_type_AndroidWidgetImageView;
-    int i;
+    c(paramBoolean);
+    Object localObject = this.a;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 8;
     } else {
-      i = 4;
+      i1 = 0;
     }
-    localImageView.setVisibility(i);
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    a(this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, 0.0F);
-    a(this.f, 0.0F);
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(false);
-  }
-  
-  private void c(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable instanceof ApngDrawable))
+    ((ImageView)localObject).setVisibility(i1);
+    this.c.setVisibility(4);
+    this.o.setVisibility(4);
+    this.b.setVisibility(4);
+    if (paramBoolean)
     {
-      this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource instanceof RIJColumnDataSource)) {
-        this.jdField_d_of_type_Boolean = true;
-      } else {
-        this.jdField_e_of_type_Boolean = true;
-      }
+      ReadInJoyLogicEngineEventDispatcher.a().a(this.l);
+      this.G.setOnClickListener(this);
+      this.H.setOnClickListener(this);
+      u();
+      a(this.F);
+      this.F.setCorner(this.w / 2);
     }
     else
     {
-      this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_c_of_type_Boolean = true;
+      a(this.c);
+      this.c.setCorner(this.w / 2);
+      ReadInJoyLogicEngineEventDispatcher.a().b(this.l);
     }
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
-    {
-      paramURLDrawable = this.jdField_e_of_type_AndroidWidgetImageView.getDrawable();
-      if ((paramURLDrawable instanceof ApngDrawable))
-      {
-        a((ApngDrawable)paramURLDrawable);
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-      }
-    }
+    a(true);
+    a(this.g, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showColumnDiandian! showColumnDiandian=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
   }
   
   private void c(IEntranceButtonDataSource paramIEntranceButtonDataSource)
@@ -536,12 +445,44 @@ public class ColorBandVideoEntranceButton
   
   private void c(String paramString)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadUpdateAnimation: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
+    localObject = new ApngOptions();
+    ((ApngOptions)localObject).a(new ColorDrawable(7));
+    ((ApngOptions)localObject).b(this.w);
+    ((ApngOptions)localObject).c(this.x);
+    ((ApngOptions)localObject).a(1);
+    setUpdateImageAnimation(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramString, (ApngOptions)localObject));
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    this.E.setImageDrawable(getImageDrawable());
+    ImageView localImageView = this.E;
+    int i1;
+    if (paramBoolean) {
+      i1 = 0;
+    } else {
+      i1 = 4;
+    }
+    localImageView.setVisibility(i1);
+    a(this.G, 0.0F);
+    a(this.F, 0.0F);
+    a(this.I, 0.0F);
+    removeCallbacks(this.m);
+    this.G.setClickable(false);
+  }
+  
+  private void d(String paramString)
+  {
     Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_b_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.w;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.x;
     }
     try
     {
@@ -562,17 +503,9 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  private void d(IEntranceButtonDataSource paramIEntranceButtonDataSource)
+  private boolean d(IEntranceButtonDataSource paramIEntranceButtonDataSource)
   {
-    if (paramIEntranceButtonDataSource == null) {
-      return;
-    }
-    if (paramIEntranceButtonDataSource.b())
-    {
-      e(paramIEntranceButtonDataSource);
-      return;
-    }
-    c(paramIEntranceButtonDataSource.b());
+    return paramIEntranceButtonDataSource instanceof EntranceIconInfo;
   }
   
   private void e(IEntranceButtonDataSource paramIEntranceButtonDataSource)
@@ -580,14 +513,27 @@ public class ColorBandVideoEntranceButton
     if (paramIEntranceButtonDataSource == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (paramIEntranceButtonDataSource.c())
+    {
+      f(paramIEntranceButtonDataSource);
+      return;
+    }
+    d(paramIEntranceButtonDataSource.d());
+  }
+  
+  private void f(IEntranceButtonDataSource paramIEntranceButtonDataSource)
+  {
+    if (paramIEntranceButtonDataSource == null) {
+      return;
+    }
+    if (this.g)
     {
       if ((paramIEntranceButtonDataSource instanceof RIJColumnDataSource))
       {
         a((RIJColumnDataSource)paramIEntranceButtonDataSource);
-        u();
-        a(true, RIJColumnDataSource.g, true);
-        a(false, paramIEntranceButtonDataSource.b(), true);
+        v();
+        a(true, RIJColumnDataSource.i, true);
+        a(false, paramIEntranceButtonDataSource.d(), true);
       }
     }
     else
@@ -595,18 +541,18 @@ public class ColorBandVideoEntranceButton
       Object localObject;
       if (paramIEntranceButtonDataSource.a())
       {
-        if (!TextUtils.isEmpty(paramIEntranceButtonDataSource.a()))
+        if (!TextUtils.isEmpty(paramIEntranceButtonDataSource.b()))
         {
           try
           {
             URLDrawable.URLDrawableOptions localURLDrawableOptions1 = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions1.mLoadingDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-            localURLDrawableOptions1.mRequestWidth = this.jdField_a_of_type_Int;
-            localURLDrawableOptions1.mRequestHeight = this.jdField_b_of_type_Int;
+            localURLDrawableOptions1.mLoadingDrawable = this.r;
+            localURLDrawableOptions1.mRequestWidth = this.w;
+            localURLDrawableOptions1.mRequestHeight = this.x;
             localURLDrawableOptions1.mPlayGifImage = true;
-            this.jdField_b_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramIEntranceButtonDataSource.a(), localURLDrawableOptions1);
-            this.jdField_b_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-            this.jdField_b_of_type_ComTencentImageURLDrawable.startDownload();
+            this.y = URLDrawable.getDrawable(paramIEntranceButtonDataSource.b(), localURLDrawableOptions1);
+            this.y.setURLDrawableListener(this);
+            this.y.startDownload();
           }
           catch (Exception localException1)
           {
@@ -624,10 +570,10 @@ public class ColorBandVideoEntranceButton
           QLog.d("ColorBandVideoEntranceButton", 2, "url is null");
         }
         label199:
-        c(paramIEntranceButtonDataSource.b());
+        d(paramIEntranceButtonDataSource.d());
         return;
       }
-      String str = paramIEntranceButtonDataSource.b();
+      String str = paramIEntranceButtonDataSource.d();
       if (!TextUtils.isEmpty(str))
       {
         if (QLog.isColorLevel())
@@ -637,33 +583,33 @@ public class ColorBandVideoEntranceButton
           ((StringBuilder)localObject).append(str);
           QLog.d("ColorBandVideoEntranceButton", 2, ((StringBuilder)localObject).toString());
         }
-        str = RIJSmartCropUtils.a(str, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        str = RIJSmartCropUtils.a(str, this.w, this.x);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("showCover(): startDownload smartCutUrl: ");
           ((StringBuilder)localObject).append(str);
           ((StringBuilder)localObject).append("，mWidth:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.w);
           ((StringBuilder)localObject).append(", mHeight:");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.x);
           QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
         }
         try
         {
           localObject = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(str, (URLDrawable.URLDrawableOptions)localObject);
-          if ((this.jdField_b_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_b_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.r;
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.w;
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.x;
+          this.y = URLDrawable.getDrawable(str, (URLDrawable.URLDrawableOptions)localObject);
+          if ((this.y.getStatus() == 1) && ((this.y.getCurrDrawable() instanceof RegionDrawable)))
           {
-            onLoadSuccessed(this.jdField_b_of_type_ComTencentImageURLDrawable);
+            onLoadSuccessed(this.y);
           }
           else
           {
-            this.jdField_b_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-            this.jdField_b_of_type_ComTencentImageURLDrawable.startDownload();
+            this.y.setURLDrawableListener(this);
+            this.y.startDownload();
           }
           paramIEntranceButtonDataSource.a(str);
         }
@@ -683,82 +629,93 @@ public class ColorBandVideoEntranceButton
         QLog.d("ColorBandVideoEntranceButton", 2, "url is null");
       }
       label504:
-      if ((paramIEntranceButtonDataSource.c()) && (!TextUtils.isEmpty(paramIEntranceButtonDataSource.c())))
+      if ((paramIEntranceButtonDataSource.e()) && (!TextUtils.isEmpty(paramIEntranceButtonDataSource.f())))
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions2 = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions2.mLoadingDrawable = a(false);
-        localURLDrawableOptions2.mRequestWidth = this.jdField_a_of_type_Int;
-        localURLDrawableOptions2.mRequestHeight = this.jdField_b_of_type_Int;
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramIEntranceButtonDataSource.c(), localURLDrawableOptions2);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+        localURLDrawableOptions2.mRequestWidth = this.w;
+        localURLDrawableOptions2.mRequestHeight = this.x;
+        this.e = URLDrawable.getDrawable(paramIEntranceButtonDataSource.f(), localURLDrawableOptions2);
+        this.e.startDownload();
       }
     }
   }
   
+  private Drawable getImageDrawable()
+  {
+    int i1;
+    if (!this.g) {
+      i1 = RecommendFeedsDiandianEntranceManager.getDefaultFeedsIconSrcId();
+    } else {
+      i1 = 2130843846;
+    }
+    return getResources().getDrawable(i1);
+  }
+  
   private void j()
   {
-    inflate(getContext(), 2131560109, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380830);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376092));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369480));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131376094));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setOnClickListener(this);
-    a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setCorner(this.jdField_a_of_type_Int / 2);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380868));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380867));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840491);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131376093));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371883));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371882));
+    inflate(getContext(), 2131626156, this);
+    this.o = findViewById(2131449802);
+    this.a = ((ImageView)findViewById(2131444295));
+    this.a.setOnClickListener(this);
+    this.b = ((ImageView)findViewById(2131436551));
+    this.c = ((KanDianUrlRoundCornerImageView)findViewById(2131444297));
+    this.c.setOnClickListener(this);
+    a(this.c);
+    this.c.setCorner(this.w / 2);
+    this.p = ((ImageView)findViewById(2131449850));
+    this.q = ((ImageView)findViewById(2131449849));
+    this.r = getResources().getDrawable(2130841253);
+    this.d = ((URLImageView)findViewById(2131444296));
+    this.L = ((TextView)findViewById(2131439326));
+    this.M = ((LinearLayout)findViewById(2131439325));
     l();
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364871));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)findViewById(2131364865));
-    this.f = ((ImageView)findViewById(2131376320));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364875));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364874));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364879));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364878));
+    this.E = ((ImageView)findViewById(2131430996));
+    this.F = ((KanDianUrlRoundCornerImageView)findViewById(2131430990));
+    this.I = ((ImageView)findViewById(2131444531));
+    this.G = ((RelativeLayout)findViewById(2131431000));
+    this.H = ((RelativeLayout)findViewById(2131430999));
+    this.J = ((TextView)findViewById(2131431004));
+    this.K = ((TextView)findViewById(2131431003));
   }
   
   private void k()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView != null))
+    Object localObject = this.o;
+    if ((localObject != null) && (this.c != null))
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      if (this.a == null) {
         return;
       }
       ((View)localObject).setScaleX(0.2F);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(0.2F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setScaleX(0.2F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setScaleY(0.2F);
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, AIOUtils.b(21.0F, getResources()) });
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, AIOUtils.b(21.0F, getResources()) });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.38F });
-      ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.38F });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(333L);
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }) });
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.setDuration(400L);
+      this.o.setScaleY(0.2F);
+      this.c.setScaleX(0.2F);
+      this.c.setScaleY(0.2F);
+      localObject = ObjectAnimator.ofFloat(this.a, "translationX", new float[] { 0.0F, AIOUtils.b(21.0F, getResources()) });
+      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.a, "translationY", new float[] { 0.0F, AIOUtils.b(21.0F, getResources()) });
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.a, "scaleX", new float[] { 1.0F, 0.38F });
+      ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.a, "scaleY", new float[] { 1.0F, 0.38F });
+      this.s = new AnimatorSet();
+      this.s.playTogether(new Animator[] { localObject, localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
+      this.s.setDuration(333L);
+      this.t = new AnimatorSet();
+      this.t.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.o, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.o, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.c, "scaleX", new float[] { 0.2F, 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.c, "scaleY", new float[] { 0.2F, 1.1F, 1.0F }) });
+      this.t.setDuration(400L);
       ((ObjectAnimator)localObject).addUpdateListener(new ColorBandVideoEntranceButton.3(this));
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+      this.s.start();
     }
   }
   
   private void l()
   {
-    Object localObject = (ReadInJoySkinManager)ReadInJoyUtils.a().getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
+    Object localObject = (ReadInJoySkinManager)ReadInJoyUtils.b().getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
     BaseSkinRes localBaseSkinRes = ((ReadInJoySkinManager)localObject).a(3);
     if (localBaseSkinRes != null) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(localBaseSkinRes.a());
+      this.p.setImageDrawable(localBaseSkinRes.a());
     }
     localObject = ((ReadInJoySkinManager)localObject).a(2);
     if (localObject != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(((BaseSkinRes)localObject).a());
+      this.q.setImageDrawable(((BaseSkinRes)localObject).a());
     }
   }
   
@@ -770,53 +727,53 @@ public class ColorBandVideoEntranceButton
   
   private void n()
   {
-    AnimatorSet localAnimatorSet = this.jdField_c_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.O;
     if ((localAnimatorSet != null) && (localAnimatorSet.isStarted())) {
-      this.jdField_c_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.O.cancel();
     }
-    this.jdField_c_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_c_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "scaleX", new float[] { 0.5F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "scaleY", new float[] { 0.5F, 1.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "translationX", new float[] { 2.0F, 0.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "translationY", new float[] { 40.0F, 20.0F, 0.0F }) });
-    this.jdField_c_of_type_AndroidAnimationAnimatorSet.setDuration(300L);
-    this.jdField_c_of_type_AndroidAnimationAnimatorSet.addListener(new ColorBandVideoEntranceButton.7(this));
-    this.jdField_c_of_type_AndroidAnimationAnimatorSet.start();
+    this.O = new AnimatorSet();
+    this.O.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.M, "scaleX", new float[] { 0.5F, 1.0F }), ObjectAnimator.ofFloat(this.M, "scaleY", new float[] { 0.5F, 1.0F }), ObjectAnimator.ofFloat(this.M, "translationX", new float[] { 2.0F, 0.0F }), ObjectAnimator.ofFloat(this.M, "translationY", new float[] { 40.0F, 20.0F, 0.0F }) });
+    this.O.setDuration(300L);
+    this.O.addListener(new ColorBandVideoEntranceButton.7(this));
+    this.O.start();
   }
   
   private void o()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = this.M;
     ((LinearLayout)localObject).setPivotX(((LinearLayout)localObject).getWidth());
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject = this.M;
     ((LinearLayout)localObject).setPivotY(((LinearLayout)localObject).getHeight());
-    localObject = this.jdField_d_of_type_AndroidAnimationAnimatorSet;
+    localObject = this.P;
     if ((localObject != null) && (((AnimatorSet)localObject).isStarted())) {
-      this.jdField_d_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.P.cancel();
     }
-    this.jdField_d_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_d_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "scaleX", new float[] { 1.0F, 0.5F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "scaleY", new float[] { 1.0F, 0.5F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "translationX", new float[] { 0.0F, 2.0F }), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "translationY", new float[] { 0.0F, 20.0F, 40.0F }) });
-    this.jdField_d_of_type_AndroidAnimationAnimatorSet.setDuration(300L);
-    this.jdField_d_of_type_AndroidAnimationAnimatorSet.addListener(new ColorBandVideoEntranceButton.8(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.postDelayed(new ColorBandVideoEntranceButton.9(this), 2500L);
+    this.P = new AnimatorSet();
+    this.P.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.M, "scaleX", new float[] { 1.0F, 0.5F }), ObjectAnimator.ofFloat(this.M, "scaleY", new float[] { 1.0F, 0.5F }), ObjectAnimator.ofFloat(this.M, "translationX", new float[] { 0.0F, 2.0F }), ObjectAnimator.ofFloat(this.M, "translationY", new float[] { 0.0F, 20.0F, 40.0F }) });
+    this.P.setDuration(300L);
+    this.P.addListener(new ColorBandVideoEntranceButton.8(this));
+    this.M.postDelayed(new ColorBandVideoEntranceButton.9(this), 2500L);
   }
   
   private void p()
   {
-    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.s;
     if ((localAnimatorSet != null) && (localAnimatorSet.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.s.cancel();
     }
-    localAnimatorSet = this.jdField_b_of_type_AndroidAnimationAnimatorSet;
+    localAnimatorSet = this.t;
     if ((localAnimatorSet != null) && (localAnimatorSet.isRunning())) {
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.t.cancel();
     }
   }
   
   private void q()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (!this.jdField_b_of_type_Boolean)
+    this.a.setVisibility(0);
+    if (!this.u)
     {
       k();
-      this.jdField_b_of_type_Boolean = true;
+      this.u = true;
       return;
     }
     a(null);
@@ -824,91 +781,112 @@ public class ColorBandVideoEntranceButton
   
   private void r()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource;
+    this.a.setVisibility(8);
+    Object localObject = this.v;
     if ((localObject instanceof EntranceIconInfo)) {
-      localObject = ((EntranceIconInfo)localObject).jdField_b_of_type_JavaLangString;
+      localObject = ((EntranceIconInfo)localObject).c;
     } else {
       localObject = "https://pub.idqqimg.com/pc/misc/files/20200805/6b42a020cbde489889a5c7ea52bdd5ed.png";
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.u)
     {
       a((String)localObject);
-      this.jdField_b_of_type_Boolean = true;
+      this.u = true;
       return;
     }
     a((String)localObject);
   }
   
-  private void s()
+  private boolean s()
   {
-    if (ReadInJoyHelper.v())
+    return System.currentTimeMillis() - this.z > 1000L;
+  }
+  
+  private void setNicknamePopupAttributes(EntranceIconInfo paramEntranceIconInfo)
+  {
+    if (this.M != null)
     {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(this.jdField_a_of_type_Boolean);
-        setDataSource(null);
-        this.jdField_e_of_type_Boolean = false;
+      this.L.setText(a(paramEntranceIconInfo));
+      this.M.setVisibility(0);
+      n();
+    }
+  }
+  
+  private void setUpdateImageAnimation(URLDrawable paramURLDrawable)
+  {
+    if (!this.u)
+    {
+      QLog.d("ColorBandVideoEntranceButton", 1, "has no red dot");
+      return;
+    }
+    QLog.d("ColorBandVideoEntranceButton", 1, "isHasRedDot updateAnimation");
+    this.d.setVisibility(0);
+    if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage() != null))
+    {
+      Bitmap localBitmap = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage().getCurrentFrame();
+      if (localBitmap != null) {
+        localBitmap.eraseColor(0);
       }
     }
-    else if (this.jdField_a_of_type_Boolean)
+    if (paramURLDrawable != null)
     {
-      this.jdField_a_of_type_Boolean = false;
-      a(this.jdField_a_of_type_Boolean);
+      this.d.setURLDrawableDownListener(this.Q);
+      this.d.setImageDrawable(paramURLDrawable);
+      if (paramURLDrawable.getStatus() == 1) {
+        a(paramURLDrawable);
+      }
     }
   }
   
   private void t()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_a_of_type_AndroidAnimationAnimator = AnimatorInflater.loadAnimator(getContext(), 2130903042);
+    if (ReadInJoyHelper.L())
+    {
+      if (!this.g)
+      {
+        this.g = true;
+        b(this.g);
+        setDataSource(null);
+        this.N = false;
+      }
     }
-    if (this.jdField_b_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_b_of_type_AndroidAnimationAnimator = AnimatorInflater.loadAnimator(getContext(), 2130903043);
-    }
-    if (this.jdField_c_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_c_of_type_AndroidAnimationAnimator = AnimatorInflater.loadAnimator(getContext(), 2130903044);
-    }
-    if (this.jdField_d_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_d_of_type_AndroidAnimationAnimator = AnimatorInflater.loadAnimator(getContext(), 2130903041);
+    else if (this.g)
+    {
+      this.g = false;
+      b(this.g);
     }
   }
   
   private void u()
   {
-    a(this.jdField_e_of_type_AndroidWidgetImageView, 1.0F);
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    a(this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, 0.0F);
-    a(this.f, 0.0F);
+    if (this.h == null) {
+      this.h = AnimatorInflater.loadAnimator(getContext(), 2130903063);
+    }
+    if (this.i == null) {
+      this.i = AnimatorInflater.loadAnimator(getContext(), 2130903064);
+    }
+    if (this.j == null) {
+      this.j = AnimatorInflater.loadAnimator(getContext(), 2130903065);
+    }
+    if (this.k == null) {
+      this.k = AnimatorInflater.loadAnimator(getContext(), 2130903062);
+    }
   }
   
-  public int a()
+  private void v()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public IEntranceButtonDataSource a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource;
+    a(this.E, 1.0F);
+    a(this.G, 0.0F);
+    a(this.F, 0.0F);
+    a(this.I, 0.0F);
   }
   
   public void a()
   {
     d();
-    this.jdField_b_of_type_Boolean = false;
-    a(this.jdField_a_of_type_Boolean, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    this.u = false;
+    a(this.g, false);
+    this.d.setVisibility(8);
   }
   
   public void a(IEntranceButtonDataSource paramIEntranceButtonDataSource)
@@ -918,15 +896,10 @@ public class ColorBandVideoEntranceButton
     }
   }
   
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
   public void b()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if ((localImageView != null) && (!this.jdField_a_of_type_Boolean)) {
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && (!this.g)) {
       onClick(localImageView);
     }
   }
@@ -938,13 +911,13 @@ public class ColorBandVideoEntranceButton
     int[] arrayOfInt1 = new int[2];
     getLocationOnScreen(arrayOfInt1);
     int[] arrayOfInt2 = new int[2];
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.o;
+    if (this.g) {
+      localObject = this.H;
     }
     ((View)localObject).getLocationOnScreen(arrayOfInt2);
-    setPivotX(arrayOfInt2[0] - arrayOfInt1[0] + this.jdField_a_of_type_Int / 2);
-    setPivotY(arrayOfInt2[1] - arrayOfInt1[1] + this.jdField_b_of_type_Int / 2);
+    setPivotX(arrayOfInt2[0] - arrayOfInt1[0] + this.w / 2);
+    setPivotY(arrayOfInt2[1] - arrayOfInt1[1] + this.x / 2);
     localAnimatorSet.setDuration(600L);
     localAnimatorSet.setInterpolator(new OvershootInterpolator());
     localAnimatorSet.addListener(new ColorBandVideoEntranceButton.4(this));
@@ -953,58 +926,58 @@ public class ColorBandVideoEntranceButton
   
   protected void d()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.g;
     if (bool)
     {
-      b(bool);
+      c(bool);
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (this.o.getVisibility() == 0) {
+      this.o.setVisibility(4);
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.getVisibility() != 0) {
+      this.a.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-    KanDianUrlRoundCornerImageView localKanDianUrlRoundCornerImageView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
+    this.a.setTranslationX(0.0F);
+    this.a.setTranslationY(0.0F);
+    this.a.setScaleX(1.0F);
+    this.a.setScaleY(1.0F);
+    KanDianUrlRoundCornerImageView localKanDianUrlRoundCornerImageView = this.c;
     if ((localKanDianUrlRoundCornerImageView != null) && (localKanDianUrlRoundCornerImageView.getVisibility() != 8))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setImageDrawable(null);
+      this.c.setVisibility(8);
+      this.c.setImageDrawable(null);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(false));
+    this.a.setImageDrawable(a(false));
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
+    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.S);
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    RIJBlackWhiteModeHelper.a.a(paramCanvas, true, this.R);
   }
   
   public void e()
   {
-    s();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource == null)
+    t();
+    if (this.v == null)
     {
       p();
       d();
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-        a(true, RIJColumnDataSource.h, true);
+      if ((!this.N) && (this.g)) {
+        a(true, RIJColumnDataSource.j, true);
       }
     }
   }
   
   public void f()
   {
-    IEntranceButtonDataSource localIEntranceButtonDataSource = this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource;
+    IEntranceButtonDataSource localIEntranceButtonDataSource = this.v;
     if ((localIEntranceButtonDataSource != null) && (localIEntranceButtonDataSource.a()))
     {
       AbstractGifImage.pauseAll();
@@ -1014,7 +987,7 @@ public class ColorBandVideoEntranceButton
   
   public void g()
   {
-    IEntranceButtonDataSource localIEntranceButtonDataSource = this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource;
+    IEntranceButtonDataSource localIEntranceButtonDataSource = this.v;
     if ((localIEntranceButtonDataSource != null) && (localIEntranceButtonDataSource.a()))
     {
       AbstractGifImage.resumeAll();
@@ -1022,29 +995,54 @@ public class ColorBandVideoEntranceButton
     }
   }
   
+  public View getAnchorView()
+  {
+    return this.c;
+  }
+  
+  public int getCoverHeight()
+  {
+    return this.x;
+  }
+  
+  public int getCoverWidth()
+  {
+    return this.w;
+  }
+  
+  public IEntranceButtonDataSource getDataSource()
+  {
+    return this.v;
+  }
+  
+  public ImageView getRefreshIcon()
+  {
+    return this.b;
+  }
+  
   public void h()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource instanceof RIJColumnDataSource)))
+    if ((this.G != null) && ((this.v instanceof RIJColumnDataSource)))
     {
-      t();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-      RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      u();
+      this.G.setClickable(true);
+      RelativeLayout localRelativeLayout = this.G;
       localRelativeLayout.setPivotX(localRelativeLayout.getWidth());
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      localRelativeLayout = this.G;
       localRelativeLayout.setPivotY(localRelativeLayout.getHeight() / 2);
-      this.jdField_a_of_type_AndroidAnimationAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidAnimationAnimator.start();
-      this.jdField_b_of_type_AndroidAnimationAnimator.setTarget(this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView);
-      this.jdField_b_of_type_AndroidAnimationAnimator.start();
-      this.jdField_c_of_type_AndroidAnimationAnimator.setTarget(this.f);
-      this.jdField_c_of_type_AndroidAnimationAnimator.start();
-      postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+      this.h.setTarget(this.G);
+      this.h.start();
+      this.i.setTarget(this.F);
+      this.i.start();
+      this.j.setTarget(this.I);
+      this.j.start();
+      postDelayed(this.m, 3000L);
     }
   }
   
   public void i()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.l);
   }
   
   public void onClick(View paramView)
@@ -1053,8 +1051,8 @@ public class ColorBandVideoEntranceButton
     {
     default: 
       return;
-    case 2131364875: 
-      paramView.setTag(Integer.valueOf(RIJColumnDataSource.c));
+    case 2131431000: 
+      paramView.setTag(Integer.valueOf(RIJColumnDataSource.l));
       a(paramView);
       return;
     }
@@ -1063,7 +1061,7 @@ public class ColorBandVideoEntranceButton
   
   public void onFileDownloaded(URLDrawable paramURLDrawable)
   {
-    this.jdField_b_of_type_ComTencentImageURLDrawable = null;
+    this.y = null;
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
@@ -1071,7 +1069,7 @@ public class ColorBandVideoEntranceButton
     if (QLog.isColorLevel()) {
       QLog.e("ColorBandVideoEntranceButton", 2, "onLoadCanceled");
     }
-    this.jdField_b_of_type_ComTencentImageURLDrawable = null;
+    this.y = null;
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
@@ -1091,39 +1089,39 @@ public class ColorBandVideoEntranceButton
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("loadSuccess, start setImage, dataSource=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource);
+    ((StringBuilder)localObject).append(this.v);
     QLog.d("ColorBandVideoEntranceButton", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      c(paramURLDrawable);
+      b(paramURLDrawable);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource == null) {
+    if (this.v == null) {
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.o;
     if ((localObject != null) && (((View)localObject).getVisibility() != 0)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.o.setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
+    localObject = this.c;
     if ((localObject != null) && (((KanDianUrlRoundCornerImageView)localObject).getVisibility() != 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setVisibility(0);
+      this.c.setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
+    localObject = this.c;
     if (localObject != null)
     {
       ((KanDianUrlRoundCornerImageView)localObject).setImageDrawable(paramURLDrawable);
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource instanceof EntranceIconInfo)) {
+      if ((this.v instanceof EntranceIconInfo)) {
         r();
       } else {
         q();
       }
-      a(this.jdField_a_of_type_Boolean, true);
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource.c()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource.c()))) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      a(this.g, true);
+      if ((this.a != null) && (this.v.e()) && (!TextUtils.isEmpty(this.v.f()))) {
+        this.a.setImageDrawable(this.e);
       }
     }
-    this.jdField_b_of_type_ComTencentImageURLDrawable = null;
+    this.y = null;
   }
   
   public void setDataSource(IEntranceButtonDataSource paramIEntranceButtonDataSource)
@@ -1132,22 +1130,22 @@ public class ColorBandVideoEntranceButton
     localStringBuilder.append("setDataSource: ");
     localStringBuilder.append(paramIEntranceButtonDataSource);
     QLog.d("ColorBandVideoEntranceButton", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoDiandianIEntranceButtonDataSource = paramIEntranceButtonDataSource;
+    this.v = paramIEntranceButtonDataSource;
     b(paramIEntranceButtonDataSource);
   }
   
   public void setDefaultDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.f = paramDrawable;
+    this.a.setImageDrawable(this.f);
   }
   
   public void setDefaultIconBigMode(int paramInt1, int paramInt2)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.a.getLayoutParams();
     localLayoutParams.width = AIOUtils.b(paramInt1, getContext().getResources());
     localLayoutParams.height = AIOUtils.b(paramInt2, getContext().getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.a.setLayoutParams(localLayoutParams);
   }
   
   public void setNotMsg()
@@ -1157,12 +1155,12 @@ public class ColorBandVideoEntranceButton
   
   public void setOnVideoCoverClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.A = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ColorBandVideoEntranceButton
  * JD-Core Version:    0.7.0.1
  */

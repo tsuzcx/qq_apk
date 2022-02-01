@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="200.0dip"
+<RelativeLayout android:id="@id/o2w" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troop.widget.RoundRectUrlImageView android:id="@id/a7v" android:background="@drawable/eou" android:layout_width="fill_parent" android:layout_height="200.0dip" android:scaleType="centerCrop" />
-    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="24.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="left" android:id="@id/ojj" android:background="@drawable/eq4" android:padding="1.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
-        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:layout_gravity="left" android:id="@id/lvc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
-        <LinearLayout android:layout_gravity="left" android:orientation="horizontal" android:id="@id/obw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
-            <com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/obv" android:background="@drawable/eq1" android:layout_width="38.0dip" android:layout_height="38.0dip" />
-            <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/obu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text=":" />
-            <com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/obx" android:background="@drawable/eq1" android:layout_width="38.0dip" android:layout_height="38.0dip" />
-            <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/oby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text=":" />
-            <com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/obz" android:background="@drawable/eq1" android:layout_width="38.0dip" android:layout_height="38.0dip" />
-        </LinearLayout>
-        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/mqw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/mqt" android:background="@drawable/eq6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="164.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/mqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/mqs" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="4.0dip" />
-    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/o2u" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/jkd" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/xa2" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/o2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/zq2" android:layout_toRightOf="@id/o2u" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/o2v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/zq0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </RelativeLayout>

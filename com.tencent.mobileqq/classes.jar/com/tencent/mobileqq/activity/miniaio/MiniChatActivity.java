@@ -51,7 +51,7 @@ public class MiniChatActivity
     localIntent.putExtra("public_fragment_window_feature", 1);
     PublicFragmentActivity.Launcher.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130772008, 2130772009);
+      paramActivity.overridePendingTransition(2130772011, 2130772012);
     }
   }
   
@@ -68,7 +68,7 @@ public class MiniChatActivity
     localIntent.putExtra("key_mini_aio_barrage_time_location", paramLong2);
     PublicFragmentActivity.Launcher.a(paramActivity, localIntent, MiniChatActivity.class, MiniChatFragment.class, 1);
     if (paramBoolean) {
-      paramActivity.overridePendingTransition(2130772008, 2130772009);
+      paramActivity.overridePendingTransition(2130772011, 2130772012);
     }
   }
   
@@ -79,7 +79,7 @@ public class MiniChatActivity
     PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, MiniChatActivity.class, MiniMsgTabFragment.class, paramInt);
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return a;
   }
@@ -110,7 +110,7 @@ public class MiniChatActivity
       getWindow().setDimAmount(0.0F);
     }
     if (getIntent().getBooleanExtra("isLandscape", false)) {
-      findViewById(16908290).setBackgroundResource(2130841231);
+      findViewById(16908290).setBackgroundResource(2130842022);
     }
     return super.doOnCreate(paramBundle);
   }
@@ -136,7 +136,7 @@ public class MiniChatActivity
   public void finish()
   {
     if (getIntent().getBooleanExtra("key_mini_need_update_unread", false)) {
-      MiniMsgIPCServer.a().b();
+      MiniMsgIPCServer.a().d();
     }
     getIntent().getIntExtra("key_mini_from", 0);
     super.finish();
@@ -151,7 +151,7 @@ public class MiniChatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatActivity
  * JD-Core Version:    0.7.0.1
  */

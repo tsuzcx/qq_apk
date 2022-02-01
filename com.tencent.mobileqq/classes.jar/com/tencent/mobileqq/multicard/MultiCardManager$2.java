@@ -13,7 +13,7 @@ class MultiCardManager$2
   
   public void run()
   {
-    HashMap localHashMap = this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    HashMap localHashMap = this.this$0.b(this.a, this.b);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,7 +32,7 @@ class MultiCardManager$2
       }
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       QLog.d("MultiCardManager", 2, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new MultiCardManager.2.1(this, localHashMap));
@@ -40,7 +40,7 @@ class MultiCardManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class BaseTransientBottomBar$14
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setScaleX(f);
-    this.a.a.setScaleY(f);
+    this.a.b.setScaleX(f);
+    this.a.b.setScaleY(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.14
  * JD-Core Version:    0.7.0.1
  */

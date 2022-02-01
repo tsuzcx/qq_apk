@@ -9,36 +9,27 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class AppidRouteConfig
   extends MessageNano
 {
-  private static volatile AppidRouteConfig[] a;
-  public String a;
+  private static volatile AppidRouteConfig[] d;
   public long[] a;
   public String b;
+  public String c;
   
   public AppidRouteConfig()
   {
-    a();
+    b();
   }
   
   public static AppidRouteConfig[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoAppidRouteConfig == null) {
+    if (d == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoAppidRouteConfig == null) {
-          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoAppidRouteConfig = new AppidRouteConfig[0];
+        if (d == null) {
+          d = new AppidRouteConfig[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoAppidRouteConfig;
-  }
-  
-  public AppidRouteConfig a()
-  {
-    this.jdField_a_of_type_ArrayOfLong = WireFormatNano.EMPTY_LONG_ARRAY;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.cachedSize = -1;
-    return this;
+    return d;
   }
   
   public AppidRouteConfig a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -64,11 +55,11 @@ public final class AppidRouteConfig
               }
             }
             else {
-              this.b = paramCodedInputByteBufferNano.readString();
+              this.c = paramCodedInputByteBufferNano.readString();
             }
           }
           else {
-            this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+            this.b = paramCodedInputByteBufferNano.readString();
           }
         }
         else
@@ -82,7 +73,7 @@ public final class AppidRouteConfig
             j += 1;
           }
           paramCodedInputByteBufferNano.rewindToPosition(i);
-          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          arrayOfLong = this.a;
           if (arrayOfLong == null) {
             i = 0;
           } else {
@@ -92,7 +83,7 @@ public final class AppidRouteConfig
           j = i;
           if (i != 0)
           {
-            System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, i);
+            System.arraycopy(this.a, 0, arrayOfLong, 0, i);
             j = i;
           }
           while (j < arrayOfLong.length)
@@ -100,14 +91,14 @@ public final class AppidRouteConfig
             arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
             j += 1;
           }
-          this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
+          this.a = arrayOfLong;
           paramCodedInputByteBufferNano.popLimit(k);
         }
       }
       else
       {
         j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 8);
-        arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+        arrayOfLong = this.a;
         if (arrayOfLong == null) {
           i = 0;
         } else {
@@ -117,7 +108,7 @@ public final class AppidRouteConfig
         j = i;
         if (i != 0)
         {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, i);
+          System.arraycopy(this.a, 0, arrayOfLong, 0, i);
           j = i;
         }
         while (j < arrayOfLong.length - 1)
@@ -127,16 +118,25 @@ public final class AppidRouteConfig
           j += 1;
         }
         arrayOfLong[j] = paramCodedInputByteBufferNano.readUInt64();
-        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
+        this.a = arrayOfLong;
       }
     }
+    return this;
+  }
+  
+  public AppidRouteConfig b()
+  {
+    this.a = WireFormatNano.EMPTY_LONG_ARRAY;
+    this.b = "";
+    this.c = "";
+    this.cachedSize = -1;
     return this;
   }
   
   protected int computeSerializedSize()
   {
     int k = super.computeSerializedSize();
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.a;
     int i = k;
     if (arrayOfLong != null)
     {
@@ -147,7 +147,7 @@ public final class AppidRouteConfig
         j = 0;
         for (;;)
         {
-          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          arrayOfLong = this.a;
           if (i >= arrayOfLong.length) {
             break;
           }
@@ -158,25 +158,25 @@ public final class AppidRouteConfig
       }
     }
     int j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
     i = j;
-    if (!this.b.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.b);
+    if (!this.c.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.c);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.a;
     if ((arrayOfLong != null) && (arrayOfLong.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+        arrayOfLong = this.a;
         if (i >= arrayOfLong.length) {
           break;
         }
@@ -184,18 +184,18 @@ public final class AppidRouteConfig
         i += 1;
       }
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
-    }
     if (!this.b.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(3, this.b);
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
+    }
+    if (!this.c.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(3, this.c);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.AppidRouteConfig
  * JD-Core Version:    0.7.0.1
  */

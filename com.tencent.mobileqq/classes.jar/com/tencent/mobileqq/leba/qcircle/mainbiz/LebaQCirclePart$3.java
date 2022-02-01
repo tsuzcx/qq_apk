@@ -14,7 +14,7 @@ class LebaQCirclePart$3
   
   public View makeView()
   {
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    ImageView localImageView = new ImageView(this.a);
     localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     return localImageView;
@@ -22,7 +22,7 @@ class LebaQCirclePart$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mainbiz.LebaQCirclePart.3
  * JD-Core Version:    0.7.0.1
  */

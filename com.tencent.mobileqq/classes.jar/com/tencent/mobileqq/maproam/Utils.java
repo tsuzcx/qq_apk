@@ -13,13 +13,13 @@ public class Utils
 {
   public static ProgressDialog a(Context paramContext, String paramString)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130849933);
-    paramContext = new ReportProgressDialog(paramContext, 2131756189);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130851670);
+    paramContext = new ReportProgressDialog(paramContext, 2131953338);
     paramContext.show();
-    paramContext.getWindow().setContentView(2131558463);
-    paramContext.setContentView(2131558463);
-    ((TextView)paramContext.findViewById(2131365644)).setText(paramString);
-    ((ProgressBar)paramContext.findViewById(2131367113)).setIndeterminateDrawable(localDrawable);
+    paramContext.getWindow().setContentView(2131623999);
+    paramContext.setContentView(2131623999);
+    ((TextView)paramContext.findViewById(2131431876)).setText(paramString);
+    ((ProgressBar)paramContext.findViewById(2131433567)).setIndeterminateDrawable(localDrawable);
     return paramContext;
   }
 }

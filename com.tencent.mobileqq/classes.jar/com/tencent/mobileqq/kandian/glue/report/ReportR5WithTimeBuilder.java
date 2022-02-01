@@ -61,25 +61,25 @@ public class ReportR5WithTimeBuilder
 {
   JSONObject a = new JSONObject();
   
-  public static long a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static long r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
       return 0L;
     }
     if ((!RIJItemViewTypeUtils.t(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.u(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)))
     {
-      if ((RIJFeedsType.z(paramAbsBaseArticleInfo)) && ((paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 7) || (paramAbsBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 8))) {
-        return paramAbsBaseArticleInfo.mPolymericInfo.f;
+      if ((RIJFeedsType.F(paramAbsBaseArticleInfo)) && ((paramAbsBaseArticleInfo.mPolymericInfo.e == 7) || (paramAbsBaseArticleInfo.mPolymericInfo.e == 8))) {
+        return paramAbsBaseArticleInfo.mPolymericInfo.m;
       }
       return paramAbsBaseArticleInfo.businessId;
     }
-    return b(paramAbsBaseArticleInfo);
+    return s(paramAbsBaseArticleInfo);
   }
   
-  static long b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  static long s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0) != null)) {
-      return ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).jdField_a_of_type_Int;
+    if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.size() > 0) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0) != null)) {
+      return ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0)).a;
     }
     return 0L;
   }
@@ -153,11 +153,11 @@ public class ReportR5WithTimeBuilder
     if (paramInt != 41695) {
       return this;
     }
-    Object localObject = ReadInJoyLogicEngine.a().a();
+    Object localObject = ReadInJoyLogicEngine.a().j();
     if (localObject == null) {
       return this;
     }
-    localObject = ((SelectPositionModule)localObject).a();
+    localObject = ((SelectPositionModule)localObject).b();
     if (localObject == null) {
       return this;
     }
@@ -174,9 +174,14 @@ public class ReportR5WithTimeBuilder
   public ReportR5WithTimeBuilder G(int paramInt)
   {
     if (DailyModeConfigHandler.c(paramInt)) {
-      r(ReadInJoyHelper.c());
+      r(ReadInJoyHelper.O());
     }
     return this;
+  }
+  
+  boolean G(String paramString)
+  {
+    return this.a.has(paramString);
   }
   
   public ReportR5WithTimeBuilder H(int paramInt)
@@ -193,53 +198,13 @@ public class ReportR5WithTimeBuilder
     {
       String str;
       if (paramInt == 0) {
-        str = ReadinjoyReportUtils.jdField_a_of_type_JavaLangString;
+        str = ReadinjoyReportUtils.i;
       } else {
-        str = KandianDailyReportUtils.jdField_a_of_type_JavaLangString;
+        str = KandianDailyReportUtils.b;
       }
       f(str);
     }
     return this;
-  }
-  
-  int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList != null))
-    {
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() > 1) {
-        return 2;
-      }
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.size() == 1) {
-        return 1;
-      }
-      if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaLangString)) {
-        return 1;
-      }
-    }
-    else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaLangString))
-    {
-      return 1;
-    }
-    return 0;
-  }
-  
-  JsonArray a(long paramLong)
-  {
-    Object localObject = RecycleViewAdapterHelper.a(paramLong);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      JsonArray localJsonArray = new JsonArray();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
-        if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mProteusTemplateBean.getData() != null)) {
-          localJsonArray.add(localAbsBaseArticleInfo.mProteusTemplateBean.getData().optString("rowkey"));
-        }
-      }
-      return localJsonArray;
-    }
-    return null;
   }
   
   public ReportR5WithTimeBuilder a()
@@ -300,12 +265,12 @@ public class ReportR5WithTimeBuilder
     {
       o(paramAbsBaseArticleInfo.mSubscribeID);
       c(paramLong);
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.a != null)) {
-        k(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.a.jdField_a_of_type_Int);
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v != null)) {
+        k(paramAbsBaseArticleInfo.mSocialFeedInfo.x.v.d);
       }
       p(paramString);
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.a != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.a.jdField_a_of_type_JavaLangString))) {
-        g(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.a.jdField_a_of_type_JavaLangString);
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x.v != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.x.v.a))) {
+        g(paramAbsBaseArticleInfo.mSocialFeedInfo.x.v.a);
       }
     }
     return this;
@@ -322,7 +287,7 @@ public class ReportR5WithTimeBuilder
     if ((paramAbsBaseArticleInfo.mFeedType == 38) || (paramAbsBaseArticleInfo.mFeedType == 39))
     {
       if (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) {
-        F(paramAbsBaseArticleInfo.mSmallMiniGameInfo.a());
+        F(paramAbsBaseArticleInfo.mSmallMiniGameInfo.b());
       }
       a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getSmallGameReportType(paramAbsBaseArticleInfo));
     }
@@ -354,9 +319,9 @@ public class ReportR5WithTimeBuilder
   
   public ReportR5WithTimeBuilder a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean, int paramInt)
   {
-    if ((!a("jump_src")) && (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.jdField_a_of_type_Int)))
+    if ((!G("jump_src")) && (ReadInJoySrtHandler.a().a(paramAbsBaseArticleInfo, false, ReadInJoySrtHandler.a)))
     {
-      v(UGRuleManager.a(paramAbsBaseArticleInfo));
+      v(UGRuleManager.g(paramAbsBaseArticleInfo));
       return this;
     }
     if ((paramAbsBaseArticleInfo != null) && (paramBoolean)) {
@@ -426,16 +391,6 @@ public class ReportR5WithTimeBuilder
     return this;
   }
   
-  public JSONObject a()
-  {
-    return this.a;
-  }
-  
-  boolean a(String paramString)
-  {
-    return this.a.has(paramString);
-  }
-  
   public ReportR5WithTimeBuilder b()
   {
     VideoReporter.a(this.a);
@@ -498,12 +453,12 @@ public class ReportR5WithTimeBuilder
     if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
     {
       int i;
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList != null) {
-        i = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaUtilList.size();
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.d != null) {
+        i = paramAbsBaseArticleInfo.mSocialFeedInfo.d.size();
       } else {
         i = 0;
       }
-      a(i + 1, a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.mSocialFeedInfo.b, paramAbsBaseArticleInfo.mSocialFeedInfo.d, paramAbsBaseArticleInfo.mSocialFeedInfo.f);
+      a(i + 1, v(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.mSocialFeedInfo.h, paramAbsBaseArticleInfo.mSocialFeedInfo.j, paramAbsBaseArticleInfo.mSocialFeedInfo.l);
     }
     return this;
   }
@@ -518,18 +473,6 @@ public class ReportR5WithTimeBuilder
   {
     this.a.put("column_id", paramString1);
     this.a.put("subscribe_flag", paramString2);
-    return this;
-  }
-  
-  public ReportR5WithTimeBuilder c()
-  {
-    String str;
-    if (((Boolean)RIJSPUtils.a("kd_topic_recommend_card_jump_switch", Boolean.valueOf(false))).booleanValue()) {
-      str = "2";
-    } else {
-      str = "1";
-    }
-    j(str);
     return this;
   }
   
@@ -565,6 +508,23 @@ public class ReportR5WithTimeBuilder
     return this;
   }
   
+  public JSONObject c()
+  {
+    return this.a;
+  }
+  
+  public ReportR5WithTimeBuilder d()
+  {
+    String str;
+    if (((Boolean)RIJSPUtils.b("kd_topic_recommend_card_jump_switch", Boolean.valueOf(false))).booleanValue()) {
+      str = "2";
+    } else {
+      str = "1";
+    }
+    j(str);
+    return this;
+  }
+  
   public ReportR5WithTimeBuilder d(int paramInt)
   {
     this.a.put("reddot_style", paramInt);
@@ -579,7 +539,7 @@ public class ReportR5WithTimeBuilder
   
   public ReportR5WithTimeBuilder d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$TopicEntranceInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$TopicEntranceInfo.uint32_is_topic.has()))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.N != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.N.uint32_is_topic.has()))
     {
       B(1);
       return this;
@@ -594,6 +554,25 @@ public class ReportR5WithTimeBuilder
     return this;
   }
   
+  JsonArray e(long paramLong)
+  {
+    Object localObject = RecycleViewAdapterHelper.a(paramLong);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      JsonArray localJsonArray = new JsonArray();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
+        if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mProteusTemplateBean.getData() != null)) {
+          localJsonArray.add(localAbsBaseArticleInfo.mProteusTemplateBean.getData().optString("rowkey"));
+        }
+      }
+      return localJsonArray;
+    }
+    return null;
+  }
+  
   public ReportR5WithTimeBuilder e(int paramInt)
   {
     this.a.put("kandian_mode", paramInt);
@@ -605,12 +584,12 @@ public class ReportR5WithTimeBuilder
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.columnEntrances != null) && (paramAbsBaseArticleInfo.columnEntrances.size() > 0))
     {
       VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)paramAbsBaseArticleInfo.columnEntrances.get(0);
-      if (localVideoColumnInfo.jdField_a_of_type_Int != 0)
+      if (localVideoColumnInfo.b != 0)
       {
         paramAbsBaseArticleInfo = "1";
         E("1");
-        int i = localVideoColumnInfo.jdField_a_of_type_Int;
-        if (!localVideoColumnInfo.jdField_a_of_type_Boolean) {
+        int i = localVideoColumnInfo.b;
+        if (!localVideoColumnInfo.h) {
           paramAbsBaseArticleInfo = "2";
         }
         b(String.valueOf(i), paramAbsBaseArticleInfo);
@@ -639,10 +618,10 @@ public class ReportR5WithTimeBuilder
     String str1;
     try
     {
-      if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleBasicInfo.jdField_a_of_type_JavaLangString)) {
-        str1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleBasicInfo.jdField_a_of_type_JavaLangString;
-      } else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.f)) {
-        str1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.f;
+      if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.L.b.a)) {
+        str1 = paramAbsBaseArticleInfo.mSocialFeedInfo.L.b.a;
+      } else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.L.c.j)) {
+        str1 = paramAbsBaseArticleInfo.mSocialFeedInfo.L.c.j;
       } else {
         str1 = "";
       }
@@ -650,10 +629,10 @@ public class ReportR5WithTimeBuilder
       str2 = str1;
       try
       {
-        if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityOutsideLinkInfo.b)) {
+        if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.L.d.b)) {
           break label177;
         }
-        localObject = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityOutsideLinkInfo.b;
+        localObject = paramAbsBaseArticleInfo.mSocialFeedInfo.L.d.b;
         str2 = str1;
       }
       catch (NullPointerException paramAbsBaseArticleInfo) {}
@@ -688,14 +667,14 @@ public class ReportR5WithTimeBuilder
   
   public ReportR5WithTimeBuilder g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 15))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.d == 15))
     {
-      a(paramAbsBaseArticleInfo.mNewPolymericInfo.c, paramAbsBaseArticleInfo.mNewPolymericInfo.b, paramAbsBaseArticleInfo.mNewPolymericInfo.d);
-      if (paramAbsBaseArticleInfo.mNewPolymericInfo.b == 3) {
-        a(paramAbsBaseArticleInfo.mNewPolymericInfo.d, paramAbsBaseArticleInfo.mNewPolymericInfo.e);
+      a(paramAbsBaseArticleInfo.mNewPolymericInfo.k, paramAbsBaseArticleInfo.mNewPolymericInfo.j, paramAbsBaseArticleInfo.mNewPolymericInfo.n);
+      if (paramAbsBaseArticleInfo.mNewPolymericInfo.j == 3) {
+        a(paramAbsBaseArticleInfo.mNewPolymericInfo.n, paramAbsBaseArticleInfo.mNewPolymericInfo.o);
       }
       B(paramAbsBaseArticleInfo.mReportCommonData);
-      paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo.mArticleID);
+      paramAbsBaseArticleInfo = e(paramAbsBaseArticleInfo.mArticleID);
       if (paramAbsBaseArticleInfo != null) {
         b(paramAbsBaseArticleInfo);
       }
@@ -749,8 +728,8 @@ public class ReportR5WithTimeBuilder
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(localScripCmsInfo.a);
-      a(str, localStringBuilder.toString(), paramAbsBaseArticleInfo.innerUniqueID, ReadInJoyNoteCardUtil.a(BaseApplicationImpl.getApplication(), str), ScripCmsInfo.c, localScripCmsInfo.j, localScripCmsInfo.b);
+      localStringBuilder.append(localScripCmsInfo.k);
+      a(str, localStringBuilder.toString(), paramAbsBaseArticleInfo.innerUniqueID, ReadInJoyNoteCardUtil.a(BaseApplicationImpl.getApplication(), str), ScripCmsInfo.n, localScripCmsInfo.l, localScripCmsInfo.m);
     }
     return this;
   }
@@ -771,10 +750,10 @@ public class ReportR5WithTimeBuilder
   {
     if (paramAbsBaseArticleInfo != null)
     {
-      if ((ChannelCoverInfoModule.a() != -1) && (ChannelCoverInfoModule.a() != 0))
+      if ((ChannelCoverInfoModule.g() != -1) && (ChannelCoverInfoModule.g() != 0))
       {
-        w(ChannelCoverInfoModule.a());
-        z(ChannelCoverInfoModule.a());
+        w(ChannelCoverInfoModule.g());
+        z(ChannelCoverInfoModule.h());
         return this;
       }
       w(0);
@@ -847,11 +826,11 @@ public class ReportR5WithTimeBuilder
       paramAbsBaseArticleInfo.clickArea = 0;
       v(paramAbsBaseArticleInfo.clickJumpTarget);
       paramAbsBaseArticleInfo.clickJumpTarget = "-1";
-      w(ComponentPGCShortContentBig.jdField_a_of_type_JavaLangString);
+      w(ComponentPGCShortContentBig.g);
       if (paramAbsBaseArticleInfo.isShowGif)
       {
         r(1);
-        s(ComponentPGCShortContentBig.jdField_a_of_type_Int);
+        s(ComponentPGCShortContentBig.f);
         return this;
       }
       r(0);
@@ -893,10 +872,10 @@ public class ReportR5WithTimeBuilder
       }
       else
       {
-        Map localMap = ReadinjoyReportUtils.a(paramAbsBaseArticleInfo.mChannelID);
+        Map localMap = ReadinjoyReportUtils.b(paramAbsBaseArticleInfo.mChannelID);
         if ((localMap != null) && (localMap.get(Long.valueOf(paramAbsBaseArticleInfo.mArticleID)) != null))
         {
-          d(((ReadinjoyReportUtils.ExposureReportItem)localMap.get(Long.valueOf(paramAbsBaseArticleInfo.mArticleID))).a);
+          d(((ReadinjoyReportUtils.ExposureReportItem)localMap.get(Long.valueOf(paramAbsBaseArticleInfo.mArticleID))).b);
           bool1 = bool2;
         }
         else
@@ -961,9 +940,9 @@ public class ReportR5WithTimeBuilder
   {
     if (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo))
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.n;
       if (paramAbsBaseArticleInfo != null) {
-        a(paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangLong);
+        a(paramAbsBaseArticleInfo.b);
       }
     }
     return this;
@@ -988,8 +967,8 @@ public class ReportR5WithTimeBuilder
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.hotWordInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 28))
     {
       int i;
-      if (paramAbsBaseArticleInfo.hotWordInfo.jdField_a_of_type_JavaUtilList != null) {
-        i = paramAbsBaseArticleInfo.hotWordInfo.jdField_a_of_type_JavaUtilList.size();
+      if (paramAbsBaseArticleInfo.hotWordInfo.a != null) {
+        i = paramAbsBaseArticleInfo.hotWordInfo.a.size();
       } else {
         i = 0;
       }
@@ -1010,20 +989,6 @@ public class ReportR5WithTimeBuilder
     return this;
   }
   
-  public ReportR5WithTimeBuilder r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return this;
-    }
-    if ((paramAbsBaseArticleInfo.recommendedFlag & 0x1000) != 0)
-    {
-      l("1");
-      return this;
-    }
-    l("0");
-    return this;
-  }
-  
   public ReportR5WithTimeBuilder r(String paramString)
   {
     this.a.put("cmd", paramString);
@@ -1033,14 +998,6 @@ public class ReportR5WithTimeBuilder
   public ReportR5WithTimeBuilder s(int paramInt)
   {
     this.a.put("gif_playmode", paramInt);
-    return this;
-  }
-  
-  public ReportR5WithTimeBuilder s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.feedsFirstExposurePos != -1)) {
-      i(paramAbsBaseArticleInfo.feedsFirstExposurePos);
-    }
     return this;
   }
   
@@ -1061,7 +1018,12 @@ public class ReportR5WithTimeBuilder
     if (paramAbsBaseArticleInfo == null) {
       return this;
     }
-    PTSLiteDataFactory.a.a(paramAbsBaseArticleInfo, this.a);
+    if ((paramAbsBaseArticleInfo.recommendedFlag & 0x1000) != 0)
+    {
+      l("1");
+      return this;
+    }
+    l("0");
     return this;
   }
   
@@ -1077,10 +1039,39 @@ public class ReportR5WithTimeBuilder
     return this;
   }
   
+  public ReportR5WithTimeBuilder u(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.feedsFirstExposurePos != -1)) {
+      i(paramAbsBaseArticleInfo.feedsFirstExposurePos);
+    }
+    return this;
+  }
+  
   public ReportR5WithTimeBuilder u(String paramString)
   {
     this.a.put("device_type", paramString);
     return this;
+  }
+  
+  int v(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.n != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a != null))
+    {
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a.size() > 1) {
+        return 2;
+      }
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.n.a.size() == 1) {
+        return 1;
+      }
+      if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.e)) {
+        return 1;
+      }
+    }
+    else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.e))
+    {
+      return 1;
+    }
+    return 0;
   }
   
   public ReportR5WithTimeBuilder v(int paramInt)
@@ -1098,6 +1089,15 @@ public class ReportR5WithTimeBuilder
   public ReportR5WithTimeBuilder w(int paramInt)
   {
     this.a.put("mainfeeds_showcase", paramInt);
+    return this;
+  }
+  
+  public ReportR5WithTimeBuilder w(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return this;
+    }
+    PTSLiteDataFactory.a.a(paramAbsBaseArticleInfo, this.a);
     return this;
   }
   
@@ -1145,7 +1145,7 @@ public class ReportR5WithTimeBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReportR5WithTimeBuilder
  * JD-Core Version:    0.7.0.1
  */

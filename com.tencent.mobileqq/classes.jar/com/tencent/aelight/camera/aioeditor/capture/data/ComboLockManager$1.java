@@ -15,13 +15,13 @@ class ComboLockManager$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager;
-    paramDialogInterface.b(paramDialogInterface.a.a);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager;
-    paramDialogInterface.a = null;
+    paramDialogInterface = this.b;
+    paramDialogInterface.d(paramDialogInterface.h.b);
+    paramDialogInterface = this.b;
+    paramDialogInterface.h = null;
     if (paramInt == 1)
     {
-      paramDialogInterface.c = true;
+      paramDialogInterface.j = true;
       if ((BaseActivity.sTopActivity instanceof SplashActivity))
       {
         paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
@@ -36,13 +36,13 @@ class ComboLockManager$1
       paramDialogInterface.putExtra("tab_index", FrameControllerUtil.a);
       paramDialogInterface.putExtra("fragment_id", 1);
       paramDialogInterface.setFlags(67108864);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.ComboLockManager.1
  * JD-Core Version:    0.7.0.1
  */

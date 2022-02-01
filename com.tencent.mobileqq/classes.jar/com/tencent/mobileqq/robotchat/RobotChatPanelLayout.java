@@ -37,25 +37,25 @@ public class RobotChatPanelLayout
   
   private String a(String paramString1, String paramString2, RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, ITroopRobotService paramITroopRobotService)
   {
-    boolean bool = paramRobotPanelItemData.jdField_b_of_type_Boolean;
+    boolean bool = paramRobotPanelItemData.d;
     paramITroopRobotService = "";
     int i;
     if (bool)
     {
-      paramRobotPanelItemData.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService.closeTalking();
-      i = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.indexOf("content=");
+      paramRobotPanelItemData.d = false;
+      this.e.closeTalking();
+      i = paramRobotPanelItemData.b.c.indexOf("content=");
       paramString2 = paramITroopRobotService;
       if (i > 0) {
-        paramString2 = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.substring(i + 8);
+        paramString2 = paramRobotPanelItemData.b.c.substring(i + 8);
       }
-      paramITroopRobotService = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.jdField_a_of_type_JavaLangString;
+      paramITroopRobotService = paramRobotPanelItemData.b.a;
     }
     else
     {
-      String str = paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString;
-      paramRobotPanelItemData.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService.openTalking(paramString1, paramString2);
+      String str = paramRobotPanelItemData.a.a;
+      paramRobotPanelItemData.d = true;
+      this.e.openTalking(paramString1, paramString2);
       i = paramRobotPanelItemData.a.c.indexOf("content=");
       paramString2 = paramITroopRobotService;
       paramITroopRobotService = str;
@@ -71,10 +71,10 @@ public class RobotChatPanelLayout
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService == null) {
+    if (this.e == null) {
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService.readRobotPanelData("1", paramString);
+    paramString = this.e.readRobotPanelData("1", paramString);
     if (paramString != null)
     {
       try
@@ -110,14 +110,14 @@ public class RobotChatPanelLayout
   
   public String a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService == null)
+    if (this.e == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
       }
       return null;
     }
-    paramRobotPanelItemData = a(this.jdField_a_of_type_JavaLangString, this.b, paramRobotPanelItemData, this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService);
+    paramRobotPanelItemData = a(this.a, this.b, paramRobotPanelItemData, this.e);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -128,43 +128,19 @@ public class RobotChatPanelLayout
     return paramRobotPanelItemData;
   }
   
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
-      }
-      return;
-    }
-    a(getContext(), paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("send to robot: ");
-      localStringBuilder.append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
-      QLog.d("RobotChatPanelLayout", 2, localStringBuilder.toString());
-    }
-  }
-  
   public void a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a() instanceof QQAppInterface)) {
-      RobotUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(), "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
+    if ((this.c.c() instanceof QQAppInterface)) {
+      RobotUtils.a((QQAppInterface)this.c.c(), "0X800A48C", this.a, paramString);
     }
   }
   
   public void a(String paramString1, String paramString2, AIOShortcutBarContext paramAIOShortcutBarContext, RobotPanelLayoutBase.GetListDataCallback paramGetListDataCallback)
   {
     super.a(paramString1, paramString2, paramAIOShortcutBarContext, paramGetListDataCallback);
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService == null)
+    if (this.e == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
@@ -186,20 +162,44 @@ public class RobotChatPanelLayout
     if (l == 0L) {
       return;
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1))) {
+    if ((!TextUtils.isEmpty(this.a)) && (!this.a.equals(paramString1))) {
       a(false);
     }
     paramString2 = getContext();
     paramAIOShortcutBarContext = new StringBuilder();
     paramAIOShortcutBarContext.append("1_");
     paramAIOShortcutBarContext.append(paramString1);
-    i = SharedPreUtils.ak(paramString2, paramAIOShortcutBarContext.toString());
-    this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService.reqPanelList(l, i, new RobotChatPanelLayout.1(this, l, i, paramString1, paramGetListDataCallback));
+    i = SharedPreUtils.aR(paramString2, paramAIOShortcutBarContext.toString());
+    this.e.reqPanelList(l, i, new RobotChatPanelLayout.1(this, l, i, paramString1, paramGetListDataCallback));
+  }
+  
+  public void b()
+  {
+    super.b();
   }
   
   public void b(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService == null)
+    if (this.e == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
+      }
+      return;
+    }
+    a(getContext(), paramRobotPanelItemData.a.a, this.a, this.b, false, this.c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send to robot: ");
+      localStringBuilder.append(paramRobotPanelItemData.a.a);
+      QLog.d("RobotChatPanelLayout", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void c(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
+  {
+    if (this.e == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
@@ -211,20 +211,20 @@ public class RobotChatPanelLayout
     if (i > 0) {
       localObject = paramRobotPanelItemData.a.c.substring(i + 8);
     }
-    a(getContext(), paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext);
-    a("1", this.jdField_a_of_type_JavaLangString, (String)localObject, paramRobotPanelItemData);
+    a(getContext(), paramRobotPanelItemData.a.a, this.a, this.b, true, this.c);
+    a("1", this.a, (String)localObject, paramRobotPanelItemData);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("send to server: ");
-      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.a);
       QLog.d("RobotChatPanelLayout", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatPanelLayout
  * JD-Core Version:    0.7.0.1
  */

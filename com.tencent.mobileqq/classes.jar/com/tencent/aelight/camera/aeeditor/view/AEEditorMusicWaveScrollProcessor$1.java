@@ -15,8 +15,8 @@ class AEEditorMusicWaveScrollProcessor$1
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (AEEditorMusicWaveScrollProcessor.a(this.a) != null) {
-      AEEditorMusicWaveScrollProcessor.a(this.a).a();
+    if (AEEditorMusicWaveScrollProcessor.f(this.a) != null) {
+      AEEditorMusicWaveScrollProcessor.f(this.a).a();
     }
     return true;
   }
@@ -50,11 +50,11 @@ class AEEditorMusicWaveScrollProcessor$1
       if (a(paramFloat1 - paramFloat2, 0.0F)) {
         return true;
       }
-      if (AEEditorMusicWaveScrollProcessor.a(this.a) != null) {
-        AEEditorMusicWaveScrollProcessor.a(this.a).a();
+      if (AEEditorMusicWaveScrollProcessor.e(this.a) != null) {
+        AEEditorMusicWaveScrollProcessor.e(this.a).a();
       }
-      if (AEEditorMusicWaveScrollProcessor.a(this.a) != null) {
-        AEEditorMusicWaveScrollProcessor.a(this.a).a(this.a.f(), this.a.g());
+      if (AEEditorMusicWaveScrollProcessor.f(this.a) != null) {
+        AEEditorMusicWaveScrollProcessor.f(this.a).a(this.a.g(), this.a.h());
       }
       return true;
     }
@@ -69,7 +69,7 @@ class AEEditorMusicWaveScrollProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorMusicWaveScrollProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mtt.hippy.uimanager;
 public class DiffUtils$DeletePatch
   extends DiffUtils.Patch
 {
-  int mId;
-  String mPClassName;
-  int mPid;
+  final int mId;
+  final String mPClassName;
+  final int mPid;
   
   public DiffUtils$DeletePatch(int paramInt1, int paramInt2, String paramString)
   {
@@ -24,7 +24,7 @@ public class DiffUtils$DeletePatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.DeletePatch
  * JD-Core Version:    0.7.0.1
  */

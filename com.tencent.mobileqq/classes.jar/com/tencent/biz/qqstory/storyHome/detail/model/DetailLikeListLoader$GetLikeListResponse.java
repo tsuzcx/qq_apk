@@ -17,17 +17,17 @@ import java.util.List;
 public class DetailLikeListLoader$GetLikeListResponse
   extends BaseResponse
 {
-  public List<LikeEntry> a;
+  public int a;
   public int b;
-  public int c;
+  public List<LikeEntry> e;
   
   public DetailLikeListLoader$GetLikeListResponse(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
     super(paramRspFeedLikeList.result);
     paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
-    this.a = a(paramRspFeedLikeList);
-    this.b = paramRspFeedLikeList.like_total_count.get();
-    this.c = paramRspFeedLikeList.has_like.get();
+    this.e = a(paramRspFeedLikeList);
+    this.a = paramRspFeedLikeList.like_total_count.get();
+    this.b = paramRspFeedLikeList.has_like.get();
   }
   
   public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)

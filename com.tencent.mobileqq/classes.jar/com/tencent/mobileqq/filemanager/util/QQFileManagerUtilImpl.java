@@ -141,24 +141,147 @@ import org.json.JSONObject;
 
 public class QQFileManagerUtilImpl
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = null;
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static final char[] jdField_a_of_type_ArrayOfChar = { '…' };
-  private static HashMap<String, String> b;
-  private static HashMap<Integer, String> c = new HashMap();
+  private static final char[] a = { '…' };
+  private static final String b = new String(a);
+  private static HashMap<String, Integer> c = null;
+  private static HashMap<String, String> d = null;
+  private static ArrayList<Long> e = null;
+  private static HashMap<Integer, String> f = new HashMap();
+  private static Drawable g;
   
-  static
+  public static HashMap<String, String> A(String paramString)
   {
-    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
-    jdField_a_of_type_JavaUtilHashMap = null;
-    b = null;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      int i = 0;
+      while (i < paramString.length)
+      {
+        String[] arrayOfString = paramString[i].split("_");
+        if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1]))) {
+          localHashMap.put(arrayOfString[0], arrayOfString[1]);
+        }
+        i += 1;
+      }
+    }
+    return localHashMap;
   }
   
-  public static int a(int paramInt)
+  public static long B(String paramString)
   {
-    return a(paramInt, 2);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (TextUtils.isEmpty(paramString)) {
+          return 0L;
+        }
+        paramString = x(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          return 0L;
+        }
+        l = 20971520L;
+        if ("txt".equals(paramString.toLowerCase())) {
+          l = 102400L;
+        }
+        localObject = TencentDocImportFileInfoProcessor.a().c();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return l;
+        }
+        localObject = ((String)localObject).split("#");
+        if (localObject.length != 0) {
+          break label177;
+        }
+        return l;
+      }
+      catch (Exception paramString)
+      {
+        long l;
+        String[] arrayOfString;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" get docs import file max size exception =");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.e("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        return 0L;
+      }
+      if (i < localObject.length)
+      {
+        arrayOfString = localObject[i].split("_");
+        if (!arrayOfString[0].contains(paramString)) {
+          if (!arrayOfString[0].contains(paramString.toLowerCase())) {
+            break label182;
+          }
+        }
+        l = Long.parseLong(arrayOfString[1]);
+        return l;
+      }
+      else
+      {
+        return 0L;
+        label177:
+        i = 0;
+        continue;
+      }
+      label182:
+      i += 1;
+    }
+  }
+  
+  private static int E(String paramString)
+  {
+    if (paramString == null) {
+      return 4;
+    }
+    if (paramString.equalsIgnoreCase("com.tencent.mtt")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("send_to_wx")) {
+      return 2;
+    }
+    if (paramString.equalsIgnoreCase("cn.wps.moffice_eng")) {
+      return 3;
+    }
+    return 4;
+  }
+  
+  private static String F(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("userClickOnceEvent")) {
+      return "0X800AE45";
+    }
+    if (paramString.equalsIgnoreCase("userClickAlwaysEvent")) {
+      return "0X800AE44";
+    }
+    if (paramString.equalsIgnoreCase("userMenuClickEvent")) {
+      return "0X800AE43";
+    }
+    return null;
+  }
+  
+  private static void G(String paramString)
+  {
+    QQFMToastUtil.a(paramString);
+  }
+  
+  private static int[] H(String paramString)
+  {
+    if (FileUtils.fileExistsAndNotEmpty(paramString))
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).decodeFileWithBufferedStream(paramString, localOptions);
+      int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExifRotation(paramString);
+      if ((i != 90) && (i != 270)) {
+        return new int[] { localOptions.outWidth, localOptions.outHeight };
+      }
+      return new int[] { localOptions.outHeight, localOptions.outWidth };
+    }
+    return new int[] { 0, 0 };
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -168,47 +291,47 @@ public class QQFileManagerUtilImpl
     case 11: 
     case 13: 
     default: 
-      return 2130844437;
+      return 2130845755;
     case 21: 
-      return 2130844410;
+      return 2130845728;
     case 20: 
-      return 2130844390;
+      return 2130845707;
     case 19: 
-      return 2130844389;
+      return 2130845706;
     case 18: 
-      return 2130844388;
+      return 2130845705;
     case 17: 
-      return 2130844364;
+      return 2130845681;
     case 16: 
-      return 2130844354;
+      return 2130845671;
     case 15: 
-      return 2130844343;
+      return 2130845660;
     case 14: 
-      return 2130844323;
+      return 2130845640;
     case 12: 
-      return 2130844400;
+      return 2130845717;
     case 10: 
-      return 2130844426;
+      return 2130845744;
     case 9: 
-      return 2130844391;
+      return 2130845708;
     case 8: 
-      return 2130844344;
+      return 2130845661;
     case 7: 
-      return 2130844393;
+      return 2130845710;
     case 6: 
-      return 2130844448;
+      return 2130845766;
     case 5: 
-      return 2130844325;
+      return 2130845642;
     case 4: 
-      return 2130844449;
+      return 2130845767;
     case 3: 
-      return 2130844340;
+      return 2130845657;
     case 2: 
-      return 2130844438;
+      return 2130845756;
     case 1: 
-      return 2130844379;
+      return 2130845696;
     }
-    return 2130844363;
+    return 2130845680;
   }
   
   public static int a(ChatMessage paramChatMessage)
@@ -218,89 +341,13 @@ public class QQFileManagerUtilImpl
       paramChatMessage = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileName");
       if (!TextUtils.isEmpty(paramChatMessage))
       {
-        int i = d(paramChatMessage);
+        int i = g(paramChatMessage);
         if ((i == 2) || (i == 0)) {
           return i;
         }
       }
     }
     return -1;
-  }
-  
-  public static int a(FileManagerEntity paramFileManagerEntity)
-  {
-    int i = paramFileManagerEntity.status;
-    int k = 0;
-    if ((-1 != i) && (1 != paramFileManagerEntity.status)) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    int j = k;
-    if (paramFileManagerEntity.bSend)
-    {
-      j = k;
-      if (8 != paramFileManagerEntity.nOpType)
-      {
-        j = k;
-        if (5 != paramFileManagerEntity.nOpType)
-        {
-          j = k;
-          if (1 != paramFileManagerEntity.nOpType) {
-            j = 1;
-          }
-        }
-      }
-    }
-    if (3 == paramFileManagerEntity.getCloudType())
-    {
-      if ((j == 0) || ((j != 0) && (i != 0)))
-      {
-        if ((!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) && (paramFileManagerEntity.peerType != 6000)) {
-          return 1;
-        }
-        if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId)) {
-          return 2;
-        }
-        if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFilePath)) {
-          return 4;
-        }
-      }
-      return 3;
-    }
-    if (((2 == paramFileManagerEntity.getCloudType()) || (1 == paramFileManagerEntity.getCloudType()) || ((4 == paramFileManagerEntity.getCloudType()) && (paramFileManagerEntity.nOpType != 24))) && (j != 0) && (i == 0) && (!TextUtils.isEmpty(paramFileManagerEntity.getFilePath()))) {
-      return 3;
-    }
-    return paramFileManagerEntity.getCloudType();
-  }
-  
-  @TargetApi(9)
-  public static int a(String paramString)
-  {
-    if (paramString == null) {
-      return -1;
-    }
-    Object localObject = FileUtil.b(paramString);
-    if (b().equalsIgnoreCase((String)localObject)) {
-      return 0;
-    }
-    try
-    {
-      localObject = BaseApplication.getContext().getSharedPreferences("ExternalFileOfFM", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString(paramString, "-");
-      if (Build.VERSION.SDK_INT < 9)
-      {
-        ((SharedPreferences.Editor)localObject).commit();
-        return 0;
-      }
-      ((SharedPreferences.Editor)localObject).apply();
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -2;
   }
   
   public static int a(List<FileInfo> paramList, long paramLong)
@@ -311,9 +358,9 @@ public class QQFileManagerUtilImpl
     {
       int k = i + j >>> 1;
       FileInfo localFileInfo = (FileInfo)paramList.get(k);
-      if (localFileInfo.b() > paramLong) {
+      if (localFileInfo.g() > paramLong) {
         i = k + 1;
-      } else if (localFileInfo.b() < paramLong) {
+      } else if (localFileInfo.g() < paramLong) {
         j = k - 1;
       } else {
         return k;
@@ -322,82 +369,9 @@ public class QQFileManagerUtilImpl
     return i;
   }
   
-  public static long a()
-  {
-    int i = MobileQQService.seq;
-    MobileQQService.seq = i + 1;
-    return i;
-  }
-  
-  public static long a(int paramInt)
-  {
-    if (paramInt != 1000)
-    {
-      if (paramInt != 1001)
-      {
-        if (paramInt != 1004)
-        {
-          if (paramInt != 1006)
-          {
-            if (paramInt != 1010)
-            {
-              if (paramInt != 10002)
-              {
-                if ((paramInt != 1024) && (paramInt != 1025)) {
-                  return -1L;
-                }
-                return 124L;
-              }
-              return 127L;
-            }
-            return 109L;
-          }
-          return 102L;
-        }
-        return 105L;
-      }
-      return 100L;
-    }
-    return 104L;
-  }
-  
-  public static long a(long paramLong)
-  {
-    return paramLong | 0x80000000;
-  }
-  
   private static long a(long paramLong, TimeZone paramTimeZone)
   {
     return (paramTimeZone.getOffset(paramLong) + paramLong) / 86400000L;
-  }
-  
-  public static long a(String paramString)
-  {
-    if (paramString == null)
-    {
-      QLog.e("FileManagerUtil<FileAssistant>", 1, "getFileSizes: filePath is null");
-      return 0L;
-    }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("file ");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" is not exists");
-      QLog.w("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-      return 0L;
-    }
-    long l = ((File)localObject).length();
-    if (0L == l)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("file ");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" len is 0");
-      QLog.w("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    }
-    return l;
   }
   
   public static Bitmap a(Context paramContext, Bitmap paramBitmap, int paramInt)
@@ -409,10 +383,10 @@ public class QQFileManagerUtilImpl
     {
       try
       {
-        float f = paramContext.getResources().getDisplayMetrics().density;
+        float f1 = paramContext.getResources().getDisplayMetrics().density;
         int i1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(paramInt, paramContext.getResources());
-        paramInt = (int)(paramBitmap.getWidth() * f);
-        int k = (int)(paramBitmap.getHeight() * f);
+        paramInt = (int)(paramBitmap.getWidth() * f1);
+        int k = (int)(paramBitmap.getHeight() * f1);
         int i = paramBitmap.getWidth();
         m = paramBitmap.getHeight();
         if (i > m)
@@ -420,7 +394,7 @@ public class QQFileManagerUtilImpl
           j = (i - m) / 2;
           paramInt = k;
           i = m;
-          break label291;
+          break label290;
         }
         if (m > i)
         {
@@ -439,8 +413,8 @@ public class QQFileManagerUtilImpl
           localPaint.setFilterBitmap(true);
           localCanvas.drawARGB(0, 0, 0, 0);
           localPaint.setColor(-12434878);
-          f = i1;
-          localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+          f1 = i1;
+          localCanvas.drawRoundRect(localRectF, f1, f1, localPaint);
           localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
           localCanvas.drawBitmap(paramBitmap, localRect1, localRect2, localPaint);
           return paramContext;
@@ -452,7 +426,7 @@ public class QQFileManagerUtilImpl
         return null;
       }
       int j = 0;
-      label291:
+      label290:
       int n = m;
       int m = 0;
     }
@@ -472,67 +446,6 @@ public class QQFileManagerUtilImpl
     }
     catch (Exception paramString2) {}
     return paramString1;
-  }
-  
-  public static BaseQQAppInterface a()
-  {
-    int i = MobileQQ.sProcessId;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (i == 1)
-    {
-      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      localObject1 = localObject2;
-      if (localAppRuntime != null)
-      {
-        localObject1 = localObject2;
-        if ((localAppRuntime instanceof BaseQQAppInterface)) {
-          localObject1 = (BaseQQAppInterface)localAppRuntime;
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static FileManagerEntity a()
-  {
-    Object localObject3 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles();
-    Object localObject2 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles();
-    Object localObject1 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getWeiYunFiles();
-    if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
-    {
-      localObject3 = ((ArrayList)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject3).next();
-        if (localFileManagerEntity.nFileType == 0) {
-          return localFileManagerEntity;
-        }
-      }
-    }
-    if ((localObject2 != null) && (((Set)localObject2).size() > 0))
-    {
-      localObject2 = ((Set)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (FileInfo)((Iterator)localObject2).next();
-        if (((FileInfo)localObject3).a() == 0) {
-          return a((FileInfo)localObject3);
-        }
-      }
-    }
-    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
-    {
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (WeiYunFileInfo)((Iterator)localObject1).next();
-        if (d(((WeiYunFileInfo)localObject2).jdField_c_of_type_JavaLangString) == 0) {
-          return a((WeiYunFileInfo)localObject2);
-        }
-      }
-    }
-    return null;
   }
   
   public static FileManagerEntity a(Bundle paramBundle)
@@ -632,7 +545,7 @@ public class QQFileManagerUtilImpl
         label358:
         a(paramBaseQQAppInterface, (FileManagerEntity)localObject);
         ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertToMemMapByFileManagerProxy(paramBaseQQAppInterface, (FileManagerEntity)localObject);
-        if (a(paramChatMessage)) {
+        if (c(paramChatMessage)) {
           ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertToFMList(paramBaseQQAppInterface, (FileManagerEntity)localObject);
         }
         return localObject;
@@ -661,7 +574,7 @@ public class QQFileManagerUtilImpl
         ((StringBuilder)localObject2).append("], messageId[");
         ((StringBuilder)localObject2).append(((FileManagerEntity)localObject1).uniseq);
         ((StringBuilder)localObject2).append("], peerUin[");
-        ((StringBuilder)localObject2).append(e(((FileManagerEntity)localObject1).peerUin));
+        ((StringBuilder)localObject2).append(t(((FileManagerEntity)localObject1).peerUin));
         ((StringBuilder)localObject2).append("], peerType[");
         ((StringBuilder)localObject2).append(((FileManagerEntity)localObject1).peerType);
         ((StringBuilder)localObject2).append("]");
@@ -671,7 +584,7 @@ public class QQFileManagerUtilImpl
       if (!((String)localObject2).equals("")) {
         ((FileManagerEntity)localObject1).Uuid = ((String)localObject2);
       }
-      ((FileManagerEntity)localObject1).status = b(paramMessageForFile.status);
+      ((FileManagerEntity)localObject1).status = f(paramMessageForFile.status);
       if (paramMessageForFile.isSend())
       {
         ((FileManagerEntity)localObject1).setCloudType(3);
@@ -711,25 +624,25 @@ public class QQFileManagerUtilImpl
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.nSessionId = a().longValue();
     localFileManagerEntity.setCloudType(3);
-    localFileManagerEntity.fileName = paramFileInfo.d();
-    localFileManagerEntity.setFilePath(paramFileInfo.c());
-    localFileManagerEntity.fileSize = paramFileInfo.a();
-    if (paramFileInfo.a() == 5)
+    localFileManagerEntity.fileName = paramFileInfo.e();
+    localFileManagerEntity.setFilePath(paramFileInfo.d());
+    localFileManagerEntity.fileSize = paramFileInfo.f();
+    if (paramFileInfo.l() == 5)
     {
       localFileManagerEntity.nFileType = 5;
-      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getApkPackageInfo(paramFileInfo.c(), new QQFileManagerUtilImpl.10(localFileManagerEntity));
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getApkPackageInfo(paramFileInfo.d(), new QQFileManagerUtilImpl.10(localFileManagerEntity));
     }
     else
     {
-      localFileManagerEntity.nFileType = d(paramFileInfo.d());
+      localFileManagerEntity.nFileType = g(paramFileInfo.e());
     }
     localFileManagerEntity.status = -1;
-    BaseQQAppInterface localBaseQQAppInterface = a();
+    BaseQQAppInterface localBaseQQAppInterface = l();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("=_= create new Entity[");
     localStringBuilder.append(localFileManagerEntity.nSessionId);
     localStringBuilder.append("] fileName[");
-    localStringBuilder.append(paramFileInfo.d());
+    localStringBuilder.append(paramFileInfo.e());
     localStringBuilder.append("]by local size(");
     localStringBuilder.append(localFileManagerEntity.imgHeight);
     localStringBuilder.append(":");
@@ -743,22 +656,22 @@ public class QQFileManagerUtilImpl
   public static FileManagerEntity a(OfflineFileInfo paramOfflineFileInfo, int paramInt)
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    BaseQQAppInterface localBaseQQAppInterface = a();
+    BaseQQAppInterface localBaseQQAppInterface = l();
     localFileManagerEntity.nSessionId = a().longValue();
-    localFileManagerEntity.Uuid = paramOfflineFileInfo.jdField_a_of_type_JavaLangString;
-    localFileManagerEntity.fileIdCrc = paramOfflineFileInfo.jdField_b_of_type_JavaLangString;
+    localFileManagerEntity.Uuid = paramOfflineFileInfo.b;
+    localFileManagerEntity.fileIdCrc = paramOfflineFileInfo.c;
     localFileManagerEntity.setCloudType(1);
-    localFileManagerEntity.strThumbPath = paramOfflineFileInfo.e;
-    localFileManagerEntity.peerUin = String.valueOf(paramOfflineFileInfo.jdField_a_of_type_Long);
+    localFileManagerEntity.strThumbPath = paramOfflineFileInfo.k;
+    localFileManagerEntity.peerUin = String.valueOf(paramOfflineFileInfo.d);
     localFileManagerEntity.peerNick = a(localBaseQQAppInterface, localFileManagerEntity.peerUin, null, paramInt);
     localFileManagerEntity.peerType = paramInt;
-    localFileManagerEntity.fileName = paramOfflineFileInfo.jdField_c_of_type_JavaLangString;
-    localFileManagerEntity.fileSize = paramOfflineFileInfo.jdField_b_of_type_Long;
-    localFileManagerEntity.nFileType = d(paramOfflineFileInfo.jdField_c_of_type_JavaLangString);
-    localFileManagerEntity.lastTime = paramOfflineFileInfo.jdField_c_of_type_Long;
+    localFileManagerEntity.fileName = paramOfflineFileInfo.f;
+    localFileManagerEntity.fileSize = paramOfflineFileInfo.g;
+    localFileManagerEntity.nFileType = g(paramOfflineFileInfo.f);
+    localFileManagerEntity.lastTime = paramOfflineFileInfo.h;
     localFileManagerEntity.status = -1;
-    localFileManagerEntity.srvTime = paramOfflineFileInfo.d;
-    localFileManagerEntity.bSend = paramOfflineFileInfo.jdField_a_of_type_Boolean;
+    localFileManagerEntity.srvTime = paramOfflineFileInfo.i;
+    localFileManagerEntity.bSend = paramOfflineFileInfo.a;
     if ((localFileManagerEntity.Uuid == null) || (localFileManagerEntity.Uuid.length() == 0)) {
       localFileManagerEntity.nWeiYunSrcType = -1;
     }
@@ -766,7 +679,7 @@ public class QQFileManagerUtilImpl
     localStringBuilder.append("=_= create new Entity[");
     localStringBuilder.append(localFileManagerEntity.nSessionId);
     localStringBuilder.append("] fileName[");
-    localStringBuilder.append(paramOfflineFileInfo.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(paramOfflineFileInfo.f);
     localStringBuilder.append("] by offlinefile size(");
     localStringBuilder.append(localFileManagerEntity.imgHeight);
     localStringBuilder.append(":");
@@ -781,25 +694,25 @@ public class QQFileManagerUtilImpl
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.nSessionId = a().longValue();
-    localFileManagerEntity.WeiYunFileId = paramWeiYunFileInfo.jdField_a_of_type_JavaLangString;
-    localFileManagerEntity.fileName = paramWeiYunFileInfo.jdField_c_of_type_JavaLangString;
-    localFileManagerEntity.fileSize = paramWeiYunFileInfo.jdField_a_of_type_Long;
-    localFileManagerEntity.nFileType = d(paramWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-    localFileManagerEntity.strThumbPath = paramWeiYunFileInfo.h;
+    localFileManagerEntity.WeiYunFileId = paramWeiYunFileInfo.a;
+    localFileManagerEntity.fileName = paramWeiYunFileInfo.c;
+    localFileManagerEntity.fileSize = paramWeiYunFileInfo.d;
+    localFileManagerEntity.nFileType = g(paramWeiYunFileInfo.c);
+    localFileManagerEntity.strThumbPath = paramWeiYunFileInfo.l;
     localFileManagerEntity.setCloudType(2);
-    localFileManagerEntity.nWeiYunSrcType = paramWeiYunFileInfo.jdField_a_of_type_Int;
+    localFileManagerEntity.nWeiYunSrcType = paramWeiYunFileInfo.f;
     if (localFileManagerEntity.nWeiYunSrcType == 2) {
-      localFileManagerEntity.strLargeThumPath = paramWeiYunFileInfo.e;
+      localFileManagerEntity.strLargeThumPath = paramWeiYunFileInfo.i;
     }
-    localFileManagerEntity.lastTime = paramWeiYunFileInfo.jdField_b_of_type_Long;
+    localFileManagerEntity.lastTime = paramWeiYunFileInfo.e;
     localFileManagerEntity.bSend = false;
     localFileManagerEntity.status = -1;
-    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
-    localFileManagerEntity.strFileMd5 = paramWeiYunFileInfo.i;
-    localFileManagerEntity.WeiYunDirKey = paramWeiYunFileInfo.jdField_b_of_type_JavaLangString;
-    localFileManagerEntity.strFileSHA = paramWeiYunFileInfo.j;
-    BaseQQAppInterface localBaseQQAppInterface = a();
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileManagerEntityByWeiYunFileIdForMemory(localBaseQQAppInterface, paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+    localFileManagerEntity.srvTime = (MessageCache.c() * 1000L);
+    localFileManagerEntity.strFileMd5 = paramWeiYunFileInfo.m;
+    localFileManagerEntity.WeiYunDirKey = paramWeiYunFileInfo.b;
+    localFileManagerEntity.strFileSHA = paramWeiYunFileInfo.n;
+    BaseQQAppInterface localBaseQQAppInterface = l();
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileManagerEntityByWeiYunFileIdForMemory(localBaseQQAppInterface, paramWeiYunFileInfo.a);
     if (localObject != null)
     {
       localFileManagerEntity.imgWidth = ((FileManagerEntity)localObject).imgWidth;
@@ -809,7 +722,7 @@ public class QQFileManagerUtilImpl
     ((StringBuilder)localObject).append("=_= create new Entity[");
     ((StringBuilder)localObject).append(localFileManagerEntity.nSessionId);
     ((StringBuilder)localObject).append("] fileName[");
-    ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramWeiYunFileInfo.c);
     ((StringBuilder)localObject).append("] by WeiYun size(");
     ((StringBuilder)localObject).append(localFileManagerEntity.imgHeight);
     ((StringBuilder)localObject).append(":");
@@ -828,12 +741,12 @@ public class QQFileManagerUtilImpl
     localFileManagerEntity.strFavId = paramString1;
     localFileManagerEntity.fileName = paramString4;
     localFileManagerEntity.fileSize = paramLong;
-    localFileManagerEntity.nFileType = d(paramString4);
+    localFileManagerEntity.nFileType = g(paramString4);
     localFileManagerEntity.setCloudType(10);
     localFileManagerEntity.setFilePath(paramString3);
     localFileManagerEntity.bSend = false;
     localFileManagerEntity.status = -1;
-    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
+    localFileManagerEntity.srvTime = (MessageCache.c() * 1000L);
     localFileManagerEntity.strFileMd5 = paramString5;
     localFileManagerEntity.peerType = paramInt;
     localFileManagerEntity.peerUin = paramString6;
@@ -844,7 +757,7 @@ public class QQFileManagerUtilImpl
     } else if (paramInt == 7) {
       localFileManagerEntity.nOpType = 38;
     }
-    paramString1 = a();
+    paramString1 = l();
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertToMemMap(paramString1, localFileManagerEntity);
     return localFileManagerEntity;
   }
@@ -854,509 +767,14 @@ public class QQFileManagerUtilImpl
     return new QQFileManagerUtilImpl.14(paramBaseQQAppInterface, paramInt);
   }
   
-  /* Error */
-  public static QQFileManagerUtil.VideoThumbInfo a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 827	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:f	(Ljava/lang/String;)Ljava/lang/String;
-    //   4: astore 4
-    //   6: new 829	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo
-    //   9: dup
-    //   10: invokespecial 830	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:<init>	()V
-    //   13: astore 5
-    //   15: aload 5
-    //   17: iconst_0
-    //   18: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   21: aload 4
-    //   23: invokestatic 833	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
-    //   26: ifeq +62 -> 88
-    //   29: new 835	android/graphics/BitmapFactory$Options
-    //   32: dup
-    //   33: invokespecial 836	android/graphics/BitmapFactory$Options:<init>	()V
-    //   36: astore_0
-    //   37: aload_0
-    //   38: iconst_1
-    //   39: putfield 839	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   42: ldc_w 298
-    //   45: invokestatic 304	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   48: checkcast 298	com/tencent/mobileqq/filemanager/api/IQQFileTempUtils
-    //   51: aload 4
-    //   53: aload_0
-    //   54: invokeinterface 843 3 0
-    //   59: pop
-    //   60: aload 5
-    //   62: aload_0
-    //   63: getfield 846	android/graphics/BitmapFactory$Options:outWidth	I
-    //   66: putfield 848	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:b	I
-    //   69: aload 5
-    //   71: aload_0
-    //   72: getfield 851	android/graphics/BitmapFactory$Options:outHeight	I
-    //   75: putfield 853	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:c	I
-    //   78: aload 5
-    //   80: aload 4
-    //   82: putfield 854	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   85: aload 5
-    //   87: areturn
-    //   88: aload_0
-    //   89: iconst_1
-    //   90: invokestatic 860	android/media/ThumbnailUtils:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   93: astore_0
-    //   94: aload_0
-    //   95: astore_2
-    //   96: aload_0
-    //   97: ifnonnull +25 -> 122
-    //   100: aload 5
-    //   102: iconst_m1
-    //   103: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   106: aload 5
-    //   108: areturn
-    //   109: astore_1
-    //   110: goto +6 -> 116
-    //   113: astore_1
-    //   114: aconst_null
-    //   115: astore_0
-    //   116: aload_1
-    //   117: invokevirtual 179	java/lang/Exception:printStackTrace	()V
-    //   120: aload_0
-    //   121: astore_2
-    //   122: new 252	java/lang/StringBuilder
-    //   125: dup
-    //   126: invokespecial 253	java/lang/StringBuilder:<init>	()V
-    //   129: astore_0
-    //   130: aload_0
-    //   131: invokestatic 865	com/tencent/mobileqq/filemanager/settings/FMSettings:a	()Lcom/tencent/mobileqq/filemanager/api/IFMSettings;
-    //   134: invokeinterface 870 1 0
-    //   139: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: pop
-    //   143: aload_0
-    //   144: invokestatic 875	java/lang/System:currentTimeMillis	()J
-    //   147: invokevirtual 646	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: pop
-    //   151: aload_0
-    //   152: ldc_w 877
-    //   155: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: pop
-    //   159: aload_0
-    //   160: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: astore 6
-    //   165: new 252	java/lang/StringBuilder
-    //   168: dup
-    //   169: invokespecial 253	java/lang/StringBuilder:<init>	()V
-    //   172: astore_0
-    //   173: aload_0
-    //   174: invokestatic 865	com/tencent/mobileqq/filemanager/settings/FMSettings:a	()Lcom/tencent/mobileqq/filemanager/api/IFMSettings;
-    //   177: invokeinterface 870 1 0
-    //   182: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: pop
-    //   186: aload_0
-    //   187: ldc_w 879
-    //   190: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: pop
-    //   194: aload_0
-    //   195: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   198: invokestatic 882	com/tencent/mobileqq/utils/FileUtils:createFileIfNotExits	(Ljava/lang/String;)V
-    //   201: new 884	com/tencent/mm/vfs/VFSFile
-    //   204: dup
-    //   205: aload 6
-    //   207: invokespecial 885	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   210: astore 7
-    //   212: aload 7
-    //   214: invokevirtual 888	com/tencent/mm/vfs/VFSFile:getParent	()Ljava/lang/String;
-    //   217: astore_0
-    //   218: aload_0
-    //   219: ifnonnull +6 -> 225
-    //   222: aload 5
-    //   224: areturn
-    //   225: new 884	com/tencent/mm/vfs/VFSFile
-    //   228: dup
-    //   229: aload_0
-    //   230: invokespecial 885	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   233: astore_0
-    //   234: aload_0
-    //   235: invokevirtual 889	com/tencent/mm/vfs/VFSFile:exists	()Z
-    //   238: ifeq +10 -> 248
-    //   241: aload_0
-    //   242: invokevirtual 892	com/tencent/mm/vfs/VFSFile:isDirectory	()Z
-    //   245: ifne +8 -> 253
-    //   248: aload_0
-    //   249: invokevirtual 895	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
-    //   252: pop
-    //   253: aload 7
-    //   255: invokevirtual 889	com/tencent/mm/vfs/VFSFile:exists	()Z
-    //   258: ifeq +11 -> 269
-    //   261: aload 7
-    //   263: invokevirtual 898	com/tencent/mm/vfs/VFSFile:isFile	()Z
-    //   266: ifne +17 -> 283
-    //   269: aload 7
-    //   271: invokevirtual 901	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
-    //   274: pop
-    //   275: goto +8 -> 283
-    //   278: astore_0
-    //   279: aload_0
-    //   280: invokevirtual 902	java/io/IOException:printStackTrace	()V
-    //   283: new 904	java/io/BufferedOutputStream
-    //   286: dup
-    //   287: new 906	com/tencent/mm/vfs/VFSFileOutputStream
-    //   290: dup
-    //   291: aload 7
-    //   293: invokespecial 909	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
-    //   296: invokespecial 912	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   299: astore_1
-    //   300: aload_2
-    //   301: ifnull +25 -> 326
-    //   304: aload_1
-    //   305: astore_0
-    //   306: aload_2
-    //   307: getstatic 918	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   310: bipush 80
-    //   312: aload_1
-    //   313: invokevirtual 922	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   316: pop
-    //   317: aload_1
-    //   318: astore_0
-    //   319: aload_1
-    //   320: invokevirtual 925	java/io/BufferedOutputStream:flush	()V
-    //   323: goto +11 -> 334
-    //   326: aload_1
-    //   327: astore_0
-    //   328: aload 5
-    //   330: iconst_m1
-    //   331: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   334: aload_1
-    //   335: invokevirtual 928	java/io/BufferedOutputStream:close	()V
-    //   338: goto +203 -> 541
-    //   341: goto +200 -> 541
-    //   344: astore_3
-    //   345: goto +16 -> 361
-    //   348: astore_3
-    //   349: goto +100 -> 449
-    //   352: astore_1
-    //   353: aconst_null
-    //   354: astore_0
-    //   355: goto +265 -> 620
-    //   358: astore_3
-    //   359: aconst_null
-    //   360: astore_1
-    //   361: aload_1
-    //   362: astore_0
-    //   363: aload 5
-    //   365: bipush 254
-    //   367: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   370: aload_1
-    //   371: astore_0
-    //   372: invokestatic 641	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   375: ifeq +269 -> 644
-    //   378: aload_1
-    //   379: astore_0
-    //   380: new 252	java/lang/StringBuilder
-    //   383: dup
-    //   384: invokespecial 253	java/lang/StringBuilder:<init>	()V
-    //   387: astore 8
-    //   389: aload_1
-    //   390: astore_0
-    //   391: aload 8
-    //   393: ldc_w 930
-    //   396: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   399: pop
-    //   400: aload_1
-    //   401: astore_0
-    //   402: aload 8
-    //   404: aload 6
-    //   406: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   409: pop
-    //   410: aload_1
-    //   411: astore_0
-    //   412: aload 8
-    //   414: ldc_w 932
-    //   417: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: pop
-    //   421: aload_1
-    //   422: astore_0
-    //   423: aload 8
-    //   425: aload_3
-    //   426: invokevirtual 935	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   429: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: pop
-    //   433: aload_1
-    //   434: astore_0
-    //   435: ldc 234
-    //   437: iconst_2
-    //   438: aload 8
-    //   440: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   446: goto +198 -> 644
-    //   449: aload_1
-    //   450: astore_0
-    //   451: aload 5
-    //   453: bipush 254
-    //   455: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   458: aload_1
-    //   459: astore_0
-    //   460: invokestatic 641	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   463: ifeq +71 -> 534
-    //   466: aload_1
-    //   467: astore_0
-    //   468: new 252	java/lang/StringBuilder
-    //   471: dup
-    //   472: invokespecial 253	java/lang/StringBuilder:<init>	()V
-    //   475: astore 8
-    //   477: aload_1
-    //   478: astore_0
-    //   479: aload 8
-    //   481: ldc_w 930
-    //   484: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   487: pop
-    //   488: aload_1
-    //   489: astore_0
-    //   490: aload 8
-    //   492: aload 6
-    //   494: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   497: pop
-    //   498: aload_1
-    //   499: astore_0
-    //   500: aload 8
-    //   502: ldc_w 937
-    //   505: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   508: pop
-    //   509: aload_1
-    //   510: astore_0
-    //   511: aload 8
-    //   513: aload_3
-    //   514: invokevirtual 938	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   517: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: pop
-    //   521: aload_1
-    //   522: astore_0
-    //   523: ldc 234
-    //   525: iconst_2
-    //   526: aload 8
-    //   528: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   531: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   534: aload_1
-    //   535: ifnull +6 -> 541
-    //   538: goto -204 -> 334
-    //   541: aload 7
-    //   543: invokevirtual 889	com/tencent/mm/vfs/VFSFile:exists	()Z
-    //   546: ifeq +49 -> 595
-    //   549: aload 6
-    //   551: aload 4
-    //   553: invokestatic 942	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   556: pop
-    //   557: aload 6
-    //   559: invokestatic 944	com/tencent/mobileqq/filemanager/util/FileUtil:c	(Ljava/lang/String;)Z
-    //   562: pop
-    //   563: aload 5
-    //   565: aload 4
-    //   567: putfield 854	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   570: aload_2
-    //   571: ifnull +45 -> 616
-    //   574: aload 5
-    //   576: aload_2
-    //   577: invokevirtual 313	android/graphics/Bitmap:getWidth	()I
-    //   580: putfield 848	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:b	I
-    //   583: aload 5
-    //   585: aload_2
-    //   586: invokevirtual 316	android/graphics/Bitmap:getHeight	()I
-    //   589: putfield 853	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:c	I
-    //   592: aload 5
-    //   594: areturn
-    //   595: aload 5
-    //   597: iconst_m1
-    //   598: putfield 831	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:jdField_a_of_type_Int	I
-    //   601: invokestatic 641	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   604: ifeq +12 -> 616
-    //   607: ldc 234
-    //   609: iconst_2
-    //   610: ldc_w 946
-    //   613: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   616: aload 5
-    //   618: areturn
-    //   619: astore_1
-    //   620: aload_0
-    //   621: ifnull +7 -> 628
-    //   624: aload_0
-    //   625: invokevirtual 928	java/io/BufferedOutputStream:close	()V
-    //   628: goto +5 -> 633
-    //   631: aload_1
-    //   632: athrow
-    //   633: goto -2 -> 631
-    //   636: astore_0
-    //   637: goto -296 -> 341
-    //   640: astore_0
-    //   641: goto -13 -> 628
-    //   644: aload_1
-    //   645: ifnull -104 -> 541
-    //   648: goto -314 -> 334
-    //   651: astore_3
-    //   652: aconst_null
-    //   653: astore_1
-    //   654: goto -205 -> 449
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	657	0	paramString	String
-    //   109	1	1	localException1	Exception
-    //   113	4	1	localException2	Exception
-    //   299	36	1	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   352	1	1	localObject1	Object
-    //   360	175	1	localObject2	Object
-    //   619	26	1	localObject3	Object
-    //   653	1	1	localObject4	Object
-    //   95	491	2	str1	String
-    //   344	1	3	localIOException1	IOException
-    //   348	1	3	localFileNotFoundException1	FileNotFoundException
-    //   358	156	3	localIOException2	IOException
-    //   651	1	3	localFileNotFoundException2	FileNotFoundException
-    //   4	562	4	str2	String
-    //   13	604	5	localVideoThumbInfo	QQFileManagerUtil.VideoThumbInfo
-    //   163	395	6	str3	String
-    //   210	332	7	localVFSFile	VFSFile
-    //   387	140	8	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   100	106	109	java/lang/Exception
-    //   88	94	113	java/lang/Exception
-    //   269	275	278	java/io/IOException
-    //   306	317	344	java/io/IOException
-    //   319	323	344	java/io/IOException
-    //   328	334	344	java/io/IOException
-    //   306	317	348	java/io/FileNotFoundException
-    //   319	323	348	java/io/FileNotFoundException
-    //   328	334	348	java/io/FileNotFoundException
-    //   283	300	352	finally
-    //   283	300	358	java/io/IOException
-    //   306	317	619	finally
-    //   319	323	619	finally
-    //   328	334	619	finally
-    //   363	370	619	finally
-    //   372	378	619	finally
-    //   380	389	619	finally
-    //   391	400	619	finally
-    //   402	410	619	finally
-    //   412	421	619	finally
-    //   423	433	619	finally
-    //   435	446	619	finally
-    //   451	458	619	finally
-    //   460	466	619	finally
-    //   468	477	619	finally
-    //   479	488	619	finally
-    //   490	498	619	finally
-    //   500	509	619	finally
-    //   511	521	619	finally
-    //   523	534	619	finally
-    //   334	338	636	java/io/IOException
-    //   624	628	640	java/io/IOException
-    //   283	300	651	java/io/FileNotFoundException
-  }
-  
-  public static TimeoutParam a()
-  {
-    Object localObject = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
-    boolean bool = false;
-    int i;
-    int k;
-    if (localObject != null)
-    {
-      j = ((NetworkInfo)localObject).getType();
-      i = j;
-      if (j == 1)
-      {
-        k = 1;
-        i = j;
-        j = k;
-        break label51;
-      }
-    }
-    else
-    {
-      i = -1;
-    }
-    int j = 0;
-    label51:
-    int m = MobileQQ.sMobileQQ.getMsfConnectedNetType();
-    if (m == 2) {
-      k = 1;
-    } else {
-      k = 0;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getNetworkInfo,systemType:");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(" msfType:");
-      ((StringBuilder)localObject).append(m);
-      ((StringBuilder)localObject).append(" isSameNet:");
-      if (j == k) {
-        bool = true;
-      }
-      ((StringBuilder)localObject).append(bool);
-      QLog.i("FileManagerUtil<FileAssistant>.NetDebug", 1, ((StringBuilder)localObject).toString());
-    }
-    if (j != k)
-    {
-      localObject = new TimeoutParam();
-      ((TimeoutParam)localObject).readTimeoutFor2G = 20000;
-      ((TimeoutParam)localObject).readTimeoutFor3G = 15000;
-      ((TimeoutParam)localObject).readTimeoutForWifi = 10000;
-      ((TimeoutParam)localObject).connectTimeoutFor2G = 10000;
-      ((TimeoutParam)localObject).connectTimeoutFor3G = 5000;
-      ((TimeoutParam)localObject).connectTimeoutForWifi = 5000;
-      return localObject;
-    }
-    return null;
-  }
-  
-  private static IUniformDownloadMgr a()
-  {
-    return (IUniformDownloadMgr)a().getRuntimeService(IUniformDownloadMgr.class, "all");
-  }
-  
   public static Long a()
   {
     return Long.valueOf((int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt()));
   }
   
-  public static String a()
-  {
-    try
-    {
-      String str = FileUtils.printStack();
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public static String a(int paramInt)
   {
     return HardCodeUtil.a(paramInt);
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 != 0)
-    {
-      if (paramInt1 != 1)
-      {
-        if (paramInt1 != 2)
-        {
-          if (paramInt1 != 3) {
-            return String.valueOf(0);
-          }
-          return String.valueOf(1);
-        }
-        return String.valueOf(3);
-      }
-      if (paramInt2 == 0) {
-        return String.valueOf(2);
-      }
-      return String.valueOf(4);
-    }
-    return String.valueOf(7);
   }
   
   public static String a(long paramLong)
@@ -1394,17 +812,17 @@ public class QQFileManagerUtilImpl
       }
     }
     Object localObject = new Date(paramLong + l1);
-    Date localDate = new Date(MessageCache.a() * 1000L);
+    Date localDate = new Date(MessageCache.c() * 1000L);
     paramInt = (int)((((Date)localObject).getTime() - localDate.getTime()) / 86400000L);
     if (paramInt < 0) {
-      return a(2131704631);
+      return a(2131902535);
     }
     if (paramInt == 0) {
-      return a(2131704637);
+      return a(2131902541);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramInt);
-    ((StringBuilder)localObject).append(a(2131704634));
+    ((StringBuilder)localObject).append(a(2131902538));
     return ((StringBuilder)localObject).toString();
   }
   
@@ -1429,7 +847,7 @@ public class QQFileManagerUtilImpl
         }
         paramString1 = new StringBuilder();
         paramString1.append(paramString2.substring(0, i));
-        paramString1.append(jdField_a_of_type_JavaLangString);
+        paramString1.append(b);
         paramString1 = paramString1.toString();
         paramTextView = paramTextView.replace(paramString2, paramString1);
         if (localTextPaint.measureText(paramTextView) < f2) {
@@ -1475,7 +893,7 @@ public class QQFileManagerUtilImpl
       return null;
     }
     if (paramBaseQQAppInterface.nFileType == -1) {
-      paramBaseQQAppInterface.nFileType = d(paramBaseQQAppInterface.getFilePath());
+      paramBaseQQAppInterface.nFileType = g(paramBaseQQAppInterface.getFilePath());
     }
     paramMessage = b(paramBaseQQAppInterface.nFileType);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1493,7 +911,7 @@ public class QQFileManagerUtilImpl
       return null;
     }
     if (paramBaseQQAppInterface.nFileType == -1) {
-      paramBaseQQAppInterface.nFileType = d(paramBaseQQAppInterface.getFilePath());
+      paramBaseQQAppInterface.nFileType = g(paramBaseQQAppInterface.getFilePath());
     }
     paramMessageRecord = b(paramBaseQQAppInterface.nFileType);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1507,35 +925,15 @@ public class QQFileManagerUtilImpl
   public static String a(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
     if (AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(paramString1)) {
-      return HardCodeUtil.a(2131694380);
+      return HardCodeUtil.a(2131892059);
     }
     if (AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(paramString1)) {
-      return HardCodeUtil.a(2131693780);
+      return HardCodeUtil.a(2131891355);
     }
     if (AppConstants.FM_EXTERNAL_SAVEFILE_UIN.equalsIgnoreCase(paramString1)) {
       return "";
     }
     return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getNickName(paramBaseQQAppInterface, paramString1, paramInt);
-  }
-  
-  public static String a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage != null)
-    {
-      if (!paramChatMessage.isMultiMsg) {
-        return "";
-      }
-      String str = paramChatMessage.getExtInfoFromExtStr("_f_thumb_path_750_");
-      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("_f_thumb_path_384_");
-      if ((!TextUtils.isEmpty(str)) && (FileUtils.fileExistsAndNotEmpty(str))) {
-        return str;
-      }
-      if ((!TextUtils.isEmpty(str)) && (FileUtils.fileExistsAndNotEmpty(paramChatMessage))) {
-        return paramChatMessage;
-      }
-      return "";
-    }
-    return "";
   }
   
   public static String a(FileManagerEntity paramFileManagerEntity)
@@ -1547,7 +945,7 @@ public class QQFileManagerUtilImpl
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramFileManagerEntity);
       localStringBuilder.append((String)localObject);
-      paramFileManagerEntity = MD5.a(localStringBuilder.toString());
+      paramFileManagerEntity = MD5.b(localStringBuilder.toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(FMSettings.a().getDefaultThumbPath());
       ((StringBuilder)localObject).append("x-zip-");
@@ -1572,14 +970,14 @@ public class QQFileManagerUtilImpl
         }
       }
       if ((paramFileManagerEntity.nFileType == 13) && (paramFileManagerEntity.selfUin.equals(paramFileManagerEntity.peerUin))) {
-        return paramContext.getString(2131692268);
+        return paramContext.getString(2131889255);
       }
-      return paramContext.getString(2131692341);
+      return paramContext.getString(2131889329);
     }
     label90:
-    paramString = paramContext.getString(2131692306);
+    paramString = paramContext.getString(2131889294);
     if (paramFileManagerEntity.bSend) {
-      paramString = paramContext.getString(2131692341);
+      paramString = paramContext.getString(2131889329);
     }
     return paramString;
   }
@@ -1601,12 +999,12 @@ public class QQFileManagerUtilImpl
     if (paramFileManagerEntity.bSend)
     {
       paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(paramContext.getString(2131692272));
+      paramFileManagerEntity.append(paramContext.getString(2131889260));
       paramFileManagerEntity.append(paramString);
       return paramFileManagerEntity.toString();
     }
     paramFileManagerEntity = new StringBuilder();
-    paramFileManagerEntity.append(paramContext.getString(2131692270));
+    paramFileManagerEntity.append(paramContext.getString(2131889257));
     paramFileManagerEntity.append(paramString);
     return paramFileManagerEntity.toString();
   }
@@ -1617,10 +1015,10 @@ public class QQFileManagerUtilImpl
     if (paramString1 != null)
     {
       str = paramString2;
-      if (!paramString1.equals(paramContext.getString(2131692313)))
+      if (!paramString1.equals(paramContext.getString(2131889301)))
       {
         str = paramString2;
-        if (!paramString1.equals(paramContext.getString(2131692307))) {
+        if (!paramString1.equals(paramContext.getString(2131889295))) {
           str = paramFileManagerEntity.peerNick;
         }
       }
@@ -1655,117 +1053,6 @@ public class QQFileManagerUtilImpl
     return "";
   }
   
-  public static String a(String paramString)
-  {
-    if (b == null)
-    {
-      b = new HashMap();
-      b.put("OnlinePreViewRotateScreenFunctionalSwitch", "1");
-      b.put("OnlinePreViewLocalPreviewFunctionalSwitch", "0");
-      b.put("OnlinePreViewAutoPreviewFunctionSwitch", "1");
-      b.put("OnlinePreViewAutoPreviewWiFiMaxSize", "1000");
-      b.put("OnlinePreViewAutoPreview3GMaxSize", "0");
-      b.put("OnlinePreViewAutoPreviewWiFiGroupMaxSize", "1000");
-      b.put("OnlinePreViewAutoPreview3GGroupMaxSize", "0");
-      b.put("OnlinePreViewdocFileMaxSize", "10");
-      b.put("OnlinePreViewdocFileType", "1");
-      b.put("OnlinePreViewdocInterfacePage", "qq_document_previewer_v2.html");
-      b.put("OnlinePreViewdocPreviewMode", "0");
-      b.put("OnlinePreViewdocxFileMaxSize", "10");
-      b.put("OnlinePreViewdocxFileType", "2");
-      b.put("OnlinePreViewdocxInterfacePage", "qq_document_previewer_v2.html");
-      b.put("OnlinePreViewdocxPreviewMode", "0");
-      b.put("OnlinePreViewrtfFileMaxSize", "10");
-      b.put("OnlinePreViewrtfFileType", "7");
-      b.put("OnlinePreViewrtfInterfacePage", "qq_document_previewer_v2.html");
-      b.put("OnlinePreViewrtfPreviewMode", "0");
-      b.put("OnlinePreViewpptFileMaxSize", "10");
-      b.put("OnlinePreViewpptFileType", "5");
-      b.put("OnlinePreViewpptInterfacePage", "qq_ppt_previewer_v2.html");
-      b.put("OnlinePreViewpptPreviewMode", "4");
-      b.put("OnlinePreViewpptxFileMaxSize", "10");
-      b.put("OnlinePreViewpptxFileType", "6");
-      b.put("OnlinePreViewpptxInterfacePage", "qq_ppt_previewer_v2.html");
-      b.put("OnlinePreViewpptxPreviewMode", "5");
-      b.put("OnlinePreViewpdfFileMaxSize", "10");
-      b.put("OnlinePreViewpdfFileType", "8");
-      b.put("OnlinePreViewpdfInterfacePage", "qq_pdf_previewer_v2.html");
-      b.put("OnlinePreViewpdfPreviewMode", "3");
-      b.put("OnlinePreViewzipFileMaxSize", "100");
-      b.put("OnlinePreViewzipFileType", "13");
-      b.put("OnlinePreViewzipInterfacePage", "qq_compress_previewer_v2.html");
-      b.put("OnlinePreViewzipPreviewMode", "1");
-      b.put("OnlinePreViewrarFileMaxSize", "100");
-      b.put("OnlinePreViewrarFileType", "14");
-      b.put("OnlinePreViewrarInterfacePage", "qq_compress_previewer_v2.html");
-      b.put("OnlinePreViewrarPreviewMode", "1");
-      b.put("OnlinePreView7zFileMaxSize", "100");
-      b.put("OnlinePreView7zFileType", "15");
-      b.put("OnlinePreView7zInterfacePage", "qq_compress_previewer_v2.html");
-      b.put("OnlinePreView7zPreviewMode", "1");
-      b.put("OnlinePreViewtxtFileMaxSize", "10");
-      b.put("OnlinePreViewtxtFileType", "16");
-      b.put("OnlinePreViewtxtInterfacePage", "qq_txt_previewer_v2.html");
-      b.put("OnlinePreViewtxtPreviewMode", "2");
-      b.put("OfflineConfigFlowSize", "1024");
-      b.put("OfflineConfigFlowTime", "30");
-      b.put("OfflineConfigFtnThumbMaxSize", "32768");
-    }
-    String str = (String)b.get(paramString);
-    if ((str == null) && (QLog.isColorLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key[");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("],value null!");
-      QLog.e("FileManagerUtil<FileAssistant>", 2, localStringBuilder.toString());
-    }
-    return str;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.getBytes().length >= paramInt))
-    {
-      int i = paramInt / 2;
-      int k = paramInt / 4;
-      Object localObject = paramString.toCharArray();
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      paramInt = 0;
-      while (paramInt < localObject.length)
-      {
-        localStringBuilder1.append(localObject[paramInt]);
-        if (localStringBuilder1.toString().getBytes().length > i) {
-          break;
-        }
-        paramInt += 1;
-      }
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      int j = localObject.length - 1;
-      paramInt = localObject.length - 1;
-      for (;;)
-      {
-        i = j;
-        if (paramInt <= 0) {
-          break;
-        }
-        localStringBuilder2.append(localObject[paramInt]);
-        if (localStringBuilder2.toString().getBytes().length > k)
-        {
-          i = paramInt;
-          break;
-        }
-        paramInt -= 1;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(localStringBuilder1.toString());
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(paramString.substring(i));
-      return ((StringBuilder)localObject).toString();
-    }
-    return "";
-  }
-  
   public static String a(String paramString, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult)
   {
     if (TextUtils.isEmpty(paramString))
@@ -1781,20 +1068,20 @@ public class QQFileManagerUtilImpl
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(FMSettings.a().getDefaultThumbPath());
-    ((StringBuilder)localObject).append(b(paramString));
+    ((StringBuilder)localObject).append(n(paramString));
     ((StringBuilder)localObject).append(".JPG");
     localObject = ((StringBuilder)localObject).toString();
-    if (FileUtil.a((String)localObject))
+    if (FileUtil.b((String)localObject))
     {
       if (paramIThumbResult != null) {
         paramIThumbResult.a((String)localObject);
       }
       return localObject;
     }
-    int i = d(paramString);
+    int i = g(paramString);
     if (i == 0)
     {
-      if (!b(paramString, paramInt1, paramInt2, paramIThumbResult, (String)localObject)) {
+      if (!c(paramString, paramInt1, paramInt2, paramIThumbResult, (String)localObject)) {
         return null;
       }
     }
@@ -1803,7 +1090,7 @@ public class QQFileManagerUtilImpl
       if (i != 2) {
         break label166;
       }
-      a(paramString, paramInt1, paramInt2, paramIThumbResult, (String)localObject);
+      b(paramString, paramInt1, paramInt2, paramIThumbResult, (String)localObject);
     }
     return localObject;
     label166:
@@ -1811,17 +1098,6 @@ public class QQFileManagerUtilImpl
       paramIThumbResult.a(null);
     }
     return null;
-  }
-  
-  private static String a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
   }
   
   public static String a(String paramString, boolean paramBoolean, int paramInt1, TextPaint paramTextPaint, int paramInt2)
@@ -1886,7 +1162,7 @@ public class QQFileManagerUtilImpl
             break label328;
           }
           n = m + 1;
-          if (paramString.substring(m, n).equals(jdField_a_of_type_JavaLangString)) {
+          if (paramString.substring(m, n).equals(b)) {
             k = 1;
           }
           if (m == arrayOfChar.length - j - 1) {
@@ -1903,7 +1179,7 @@ public class QQFileManagerUtilImpl
         {
           paramTextPaint = new StringBuilder();
           paramTextPaint.append(paramString.substring(0, paramInt1));
-          paramTextPaint.append(jdField_a_of_type_JavaLangString);
+          paramTextPaint.append(b);
           paramTextPaint.append((String)localObject);
           return paramTextPaint.toString();
         }
@@ -1966,7 +1242,7 @@ public class QQFileManagerUtilImpl
   
   public static ArrayList<FileInfo> a(boolean paramBoolean, int paramInt)
   {
-    Object localObject2 = new VFSFile(b()).listFiles();
+    Object localObject2 = new VFSFile(i()).listFiles();
     if (localObject2 == null) {
       return null;
     }
@@ -2004,13 +1280,13 @@ public class QQFileManagerUtilImpl
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (String)((Map.Entry)((Iterator)localObject1).next()).getKey();
-          if (FileUtil.b((String)localObject2))
+          if (FileUtil.d((String)localObject2))
           {
             localObject2 = new VFSFile((String)localObject2);
             localObject3 = new FileInfo();
             ((FileInfo)localObject3).d(((VFSFile)localObject2).getName());
             ((FileInfo)localObject3).b(((VFSFile)localObject2).isDirectory());
-            ((FileInfo)localObject3).e(((VFSFile)localObject2).getPath());
+            ((FileInfo)localObject3).f(((VFSFile)localObject2).getPath());
             ((FileInfo)localObject3).a(((VFSFile)localObject2).length());
             ((FileInfo)localObject3).b(((VFSFile)localObject2).lastModified());
             localArrayList.add(localObject3);
@@ -2029,62 +1305,6 @@ public class QQFileManagerUtilImpl
       }
       Collections.sort(localArrayList, new FileCompare());
     }
-  }
-  
-  public static HashMap<String, String> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("&");
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      int i = 0;
-      while (i < paramString.length)
-      {
-        String[] arrayOfString = paramString[i].split("_");
-        if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1]))) {
-          localHashMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static LinkedHashMap a(String paramString)
-  {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if (paramString == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerUtil<FileAssistant>", 1, "jsonToMap but jsonString is null!");
-      }
-      return localLinkedHashMap;
-    }
-    Object localObject = paramString.replace("\"", "");
-    paramString = (String)localObject;
-    if (((String)localObject).startsWith("{")) {
-      paramString = ((String)localObject).substring(1);
-    }
-    localObject = paramString;
-    if (paramString.endsWith("}")) {
-      localObject = paramString.substring(0, paramString.length() - 1);
-    }
-    paramString = ((String)localObject).split(",");
-    int i = 0;
-    while (i < paramString.length)
-    {
-      localObject = paramString[i].split(":");
-      if (localObject.length == 1) {
-        localLinkedHashMap.put(localObject[0].toLowerCase(), "");
-      } else {
-        localLinkedHashMap.put(localObject[0].toLowerCase(), localObject[1]);
-      }
-      i += 1;
-    }
-    return localLinkedHashMap;
   }
   
   @TargetApi(9)
@@ -2200,21 +1420,6 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public static void a()
-  {
-    ThreadManager.post(new QQFileManagerUtilImpl.5(), 8, null, false);
-  }
-  
-  public static void a(int paramInt)
-  {
-    QQFMToastUtil.a(paramInt);
-  }
-  
   private static void a(int paramInt, String paramString, BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
     if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt))
@@ -2235,40 +1440,15 @@ public class QQFileManagerUtilImpl
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      a(paramString);
+      p(paramString);
       return;
     }
     a(11, paramFileManagerEntity.fileName);
   }
   
-  public static void a(long paramLong)
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      boolean bool = jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong));
-      if (bool) {
-        return;
-      }
-      jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("nSessionID[");
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append("]加入不显示取消按钮队列");
-        QLog.e("##########", 2, localStringBuilder.toString());
-      }
-      return;
-    }
-    finally {}
-  }
-  
   public static void a(long paramLong, int paramInt, String paramString)
   {
-    BaseQQAppInterface localBaseQQAppInterface = a();
+    BaseQQAppInterface localBaseQQAppInterface = l();
     FileManagerEntity localFileManagerEntity = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileEntityBySessionId(localBaseQQAppInterface, paramLong);
     if (localFileManagerEntity == null) {
       return;
@@ -2311,19 +1491,19 @@ public class QQFileManagerUtilImpl
   
   public static void a(Activity paramActivity, TextView paramTextView)
   {
-    if ((paramTextView != null) && (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+    if ((paramTextView != null) && (g == null))
     {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramActivity.getResources().getDrawable(2130839399);
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-      ((Animatable)jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
+      g = paramActivity.getResources().getDrawable(2130839583);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(g, null, null, null);
+      ((Animatable)g).start();
     }
   }
   
   public static void a(Activity paramActivity, String paramString)
   {
-    if ((paramString != null) && (FileUtil.b(paramString)))
+    if ((paramString != null) && (FileUtil.d(paramString)))
     {
-      if (d(paramString) == 5)
+      if (g(paramString) == 5)
       {
         c(paramActivity, paramString);
         return;
@@ -2334,11 +1514,11 @@ public class QQFileManagerUtilImpl
       Bundle localBundle1 = new Bundle();
       localBundle1.putString("ChannelId", "biz_src_jc_file");
       WXShareHelper localWXShareHelper = WXShareHelper.a();
-      if ((localWXShareHelper.a()) && (localWXShareHelper.d()))
+      if ((localWXShareHelper.b()) && (localWXShareHelper.g()))
       {
         Bundle localBundle2 = new Bundle();
         localBundle2.putString("name", "send_to_wx");
-        localBundle2.putInt("resource_id", 2130844444);
+        localBundle2.putInt("resource_id", 2130845762);
         localBundle2.putString("value", "发送到微信");
         Bundle localBundle3 = new Bundle();
         localBundle3.putBundle("weixin", localBundle2);
@@ -2347,12 +1527,7 @@ public class QQFileManagerUtilImpl
       QbSdk.openFileReaderListWithQBDownload(paramActivity, paramString, localBundle1, new QQFileManagerUtilImpl.6(localWeakReference, paramString, localWXShareHelper));
       return;
     }
-    a(2131692717);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext.getSharedPreferences("LAST_CHOOSE_", 0).edit().clear().commit();
+    e(2131889788);
   }
   
   public static void a(Context paramContext, FileManagerEntity paramFileManagerEntity, BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
@@ -2364,7 +1539,7 @@ public class QQFileManagerUtilImpl
   {
     if (!new VFSFile(paramString).exists())
     {
-      QQFMToastUtil.a(paramContext, 0, 2131692737);
+      QQFMToastUtil.a(paramContext, 0, 2131889808);
       return;
     }
     ThreadManager.post(new QQFileManagerUtilImpl.4(paramString, paramContext), 8, null, true);
@@ -2372,10 +1547,10 @@ public class QQFileManagerUtilImpl
   
   public static void a(Context paramContext, String paramString, Bundle paramBundle)
   {
-    if (a().getApp() == null)
+    if (p().getApp() == null)
     {
       localBundle1 = new Bundle();
-      localBundle1.putString("_filename_from_dlg", paramContext.getString(2131694576));
+      localBundle1.putString("_filename_from_dlg", paramContext.getString(2131892260));
       localBundle1.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
       Bundle localBundle2 = new Bundle();
       localBundle2.putAll(paramBundle);
@@ -2398,7 +1573,7 @@ public class QQFileManagerUtilImpl
   {
     Drawable localDrawable;
     if (paramFileManagerEntity.nFileType == 13) {
-      localDrawable = BaseApplication.getContext().getResources().getDrawable(2130844437);
+      localDrawable = BaseApplication.getContext().getResources().getDrawable(2130845755);
     }
     try
     {
@@ -2420,10 +1595,10 @@ public class QQFileManagerUtilImpl
     paramFileManagerEntity = FileUtil.a(paramFileManagerEntity.fileName);
     if (paramFileManagerEntity == null)
     {
-      paramImageView.setImageResource(2130844437);
+      paramImageView.setImageResource(2130845755);
       return;
     }
-    paramImageView.setImageResource(c(paramFileManagerEntity));
+    paramImageView.setImageResource(f(paramFileManagerEntity));
   }
   
   public static void a(ImageView paramImageView, String paramString)
@@ -2431,21 +1606,21 @@ public class QQFileManagerUtilImpl
     paramString = FileUtil.a(paramString);
     if (paramString == null)
     {
-      paramImageView.setImageResource(2130844437);
+      paramImageView.setImageResource(2130845755);
       return;
     }
-    paramImageView.setImageResource(c(paramString));
+    paramImageView.setImageResource(f(paramString));
   }
   
   public static void a(TextView paramTextView)
   {
     if (paramTextView != null)
     {
-      Drawable localDrawable = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable localDrawable = g;
       if (localDrawable != null)
       {
         ((Animatable)localDrawable).stop();
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+        g = null;
         paramTextView.setCompoundDrawables(null, null, null, null);
       }
     }
@@ -2483,7 +1658,7 @@ public class QQFileManagerUtilImpl
       }
       return;
     }
-    int j = d(((FileManagerEntity)localObject).fileName);
+    int j = g(((FileManagerEntity)localObject).fileName);
     if (j != -1)
     {
       i = j;
@@ -2491,7 +1666,7 @@ public class QQFileManagerUtilImpl
     }
     else
     {
-      i = d(((FileManagerEntity)localObject).getFilePath());
+      i = g(((FileManagerEntity)localObject).getFilePath());
     }
     if ((i != 3) && (i != 6))
     {
@@ -2523,7 +1698,7 @@ public class QQFileManagerUtilImpl
       return;
     }
     paramLong = localSharedPreferences.getLong(str, 0L);
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     if (l - paramLong < 86400000L)
     {
       if (QLog.isColorLevel()) {
@@ -2548,7 +1723,7 @@ public class QQFileManagerUtilImpl
       paramBaseQQAppInterface.append("lastShowTime[");
       paramBaseQQAppInterface.append(l);
       paramBaseQQAppInterface.append("],[");
-      paramBaseQQAppInterface.append(e(((FileManagerEntity)localObject).peerUin));
+      paramBaseQQAppInterface.append(t(((FileManagerEntity)localObject).peerUin));
       paramBaseQQAppInterface.append("]add new aiograyTips!");
       QLog.i("FileManagerUtil<FileAssistant>_TimTips", 1, paramBaseQQAppInterface.toString());
     }
@@ -2583,7 +1758,7 @@ public class QQFileManagerUtilImpl
         int n;
         long l1;
         long l2;
-        float f;
+        float f1;
         int i1;
         int i2;
         int j;
@@ -2622,8 +1797,8 @@ public class QQFileManagerUtilImpl
       l2 = l3;
       if (paramLong3 >= 1024L)
       {
-        f = (float)l1 / 1000.0F;
-        l2 = ((float)paramLong3 / f);
+        f1 = (float)l1 / 1000.0F;
+        l2 = ((float)paramLong3 / f1);
       }
     }
     localHashMap.put("param_speed", String.valueOf(l2));
@@ -2724,7 +1899,7 @@ public class QQFileManagerUtilImpl
         int i;
         int n;
         long l2;
-        float f;
+        float f1;
         long l3;
         int i1;
         int i2;
@@ -2796,8 +1971,8 @@ public class QQFileManagerUtilImpl
     }
     if ((l2 > 0L) && (paramLong4 >= 1024L))
     {
-      f = (float)l2 / 1000.0F;
-      l3 = ((float)paramLong4 / f);
+      f1 = (float)l2 / 1000.0F;
+      l3 = ((float)paramLong4 / f1);
     }
     else
     {
@@ -2883,14 +2058,14 @@ public class QQFileManagerUtilImpl
     if (!paramFileManagerEntity.bSend)
     {
       paramBaseQQAppInterface = new QQFileManagerUtilImpl.7();
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698384), paramContext.getString(2131698383), 2131720490, 2131694583, paramBaseQQAppInterface, null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131896308), paramContext.getString(2131896307), 2131918207, 2131892267, paramBaseQQAppInterface, null).show();
       return;
     }
-    paramBaseQQAppInterface = paramContext.getString(2131692311);
-    paramFileManagerEntity = paramContext.getString(2131692310);
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
+    paramBaseQQAppInterface = paramContext.getString(2131889299);
+    paramFileManagerEntity = paramContext.getString(2131889298);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(paramContext, null);
     localActionSheet.addButton(paramBaseQQAppInterface);
-    localActionSheet.addCancelButton(paramContext.getString(2131690728));
+    localActionSheet.addCancelButton(paramContext.getString(2131887648));
     localActionSheet.setMainTitle(paramFileManagerEntity);
     localActionSheet.setOnButtonClickListener(new QQFileManagerUtilImpl.8(localActionSheet));
     localActionSheet.show();
@@ -2899,18 +2074,6 @@ public class QQFileManagerUtilImpl
   public static void a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
   {
     ThreadManager.post(new QQFileManagerUtilImpl.17(paramContext, paramInt, paramString1, paramBaseQQAppInterface, paramString2), 2, null, true);
-  }
-  
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
-  {
-    if (paramChatMessage == null) {
-      return;
-    }
-    if (!(paramChatMessage instanceof MessageForFile)) {
-      return;
-    }
-    paramChatMessage = a(paramBaseQQAppInterface, (MessageForFile)paramChatMessage);
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFileToDataline(paramBaseQQAppInterface, paramContext, paramChatMessage);
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity)
@@ -2923,7 +2086,7 @@ public class QQFileManagerUtilImpl
     if (localObject != null) {
       i = ((Friends)localObject).iTermType;
     }
-    int j = d(paramFileManagerEntity.fileName);
+    int j = g(paramFileManagerEntity.fileName);
     if (j == 0)
     {
       localObject = new StringBuilder();
@@ -2941,7 +2104,7 @@ public class QQFileManagerUtilImpl
     else
     {
       if (j != 2) {
-        break label642;
+        break label635;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("PreloadThumb Id[");
@@ -2955,7 +2118,7 @@ public class QQFileManagerUtilImpl
       ((StringBuilder)localObject).append("]");
       QLog.i("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
-    if ((!b()) && (a())) {
+    if ((!e()) && (d())) {
       return;
     }
     if (j == 0)
@@ -2987,7 +2150,7 @@ public class QQFileManagerUtilImpl
           ((StringBuilder)localObject).append("]");
           QLog.i("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
         }
-        if (!a())
+        if (!d())
         {
           paramFileManagerEntity.strThumbPath = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).downLoadDiscThumb(paramBaseQQAppInterface, paramFileManagerEntity, 7);
           if (QLog.isColorLevel())
@@ -3020,7 +2183,7 @@ public class QQFileManagerUtilImpl
       }
     }
     return;
-    label642:
+    label635:
     QLog.i("FileManagerUtil<FileAssistant>", 1, "not pic or video!");
   }
   
@@ -3076,21 +2239,16 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    ThreadManager.post(new QQFileManagerUtilImpl.16(paramString2, paramBaseQQAppInterface, paramInt, paramString1), 8, null, true);
-  }
-  
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
   {
     if (paramFileManagerEntity == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileManagerUtil<FileAssistant>", 2, a());
+        QLog.e("FileManagerUtil<FileAssistant>", 2, h());
       }
       return;
     }
-    int i = (int)a(paramFileManagerEntity.peerType);
+    int i = (int)g(paramFileManagerEntity.peerType);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("=_= Id[");
     localStringBuilder.append(paramFileManagerEntity.nSessionId);
@@ -3135,57 +2293,6 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static void a(FileManagerEntity paramFileManagerEntity)
-  {
-    if (paramFileManagerEntity == null) {
-      return;
-    }
-    boolean bool = FileUtil.b(paramFileManagerEntity.getFilePath());
-    if ((bool) && (b(paramFileManagerEntity.nOpType)))
-    {
-      paramFileManagerEntity.cloudType = 3;
-      paramFileManagerEntity.status = 1;
-      return;
-    }
-    if (paramFileManagerEntity.getCloudType() != 3) {
-      return;
-    }
-    if ((bool) && ((paramFileManagerEntity.nOpType == 0) || (paramFileManagerEntity.nOpType == 6))) {
-      return;
-    }
-    if ((bool) && (paramFileManagerEntity.nOpType == 51))
-    {
-      if (paramFileManagerEntity.status == 16) {
-        paramFileManagerEntity.status = 0;
-      }
-      return;
-    }
-    if (paramFileManagerEntity.nFileType == 5) {
-      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramFileManagerEntity);
-    }
-    if (paramFileManagerEntity.status == 1)
-    {
-      paramFileManagerEntity.status = 16;
-      if (paramFileManagerEntity.peerType == 6000)
-      {
-        paramFileManagerEntity.setCloudType(6);
-        paramFileManagerEntity.status = 16;
-        return;
-      }
-      if ((paramFileManagerEntity.Uuid != null) && (paramFileManagerEntity.Uuid.length() > 0))
-      {
-        paramFileManagerEntity.setCloudType(1);
-        paramFileManagerEntity.status = -1;
-        return;
-      }
-      if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId))
-      {
-        paramFileManagerEntity.setCloudType(2);
-        paramFileManagerEntity.status = -1;
-      }
-    }
-  }
-  
   public static void a(FileManagerEntity paramFileManagerEntity, BaseQQAppInterface paramBaseQQAppInterface, Activity paramActivity, int paramInt)
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
@@ -3205,13 +2312,13 @@ public class QQFileManagerUtilImpl
     paramBaseQQAppInterface.putExtra("forward_type", ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getForwardUtilsForwardTypeFILE());
     paramBaseQQAppInterface.putExtra("forward_filepath", localFileManagerEntity.getFilePath());
     paramFileManagerEntity = new StringBuilder();
-    paramFileManagerEntity.append(a(2131704647));
-    paramFileManagerEntity.append(d(localFileManagerEntity.fileName));
-    paramFileManagerEntity.append(a(2131704640));
+    paramFileManagerEntity.append(a(2131902551));
+    paramFileManagerEntity.append(q(localFileManagerEntity.fileName));
+    paramFileManagerEntity.append(a(2131902544));
     paramFileManagerEntity.append(FileUtil.a(localFileManagerEntity.fileSize));
     paramFileManagerEntity.append("。");
     paramBaseQQAppInterface.putExtra("forward_text", paramFileManagerEntity.toString());
-    paramBaseQQAppInterface.putExtra("k_favorites", c(localFileManagerEntity));
+    paramBaseQQAppInterface.putExtra("k_favorites", i(localFileManagerEntity));
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).startForwardActivityForResult(paramActivity, paramBaseQQAppInterface, 103);
   }
   
@@ -3222,7 +2329,7 @@ public class QQFileManagerUtilImpl
   
   public static void a(AsyncImageView paramAsyncImageView, FileManagerEntity paramFileManagerEntity)
   {
-    b(paramFileManagerEntity);
+    e(paramFileManagerEntity);
     String str = paramFileManagerEntity.getFilePath();
     if (paramFileManagerEntity.nFileType == 0)
     {
@@ -3258,10 +2365,10 @@ public class QQFileManagerUtilImpl
   
   public static void a(AsyncImageView paramAsyncImageView, String paramString)
   {
-    int i = d(paramString);
+    int i = g(paramString);
     try
     {
-      paramAsyncImageView.setImageResource(a(i));
+      paramAsyncImageView.setImageResource(d(i));
       return;
     }
     catch (Exception paramAsyncImageView)
@@ -3280,22 +2387,22 @@ public class QQFileManagerUtilImpl
         {
           if (paramInt != 13)
           {
-            paramAsyncImageView.setDefaultImage(a(paramInt));
+            paramAsyncImageView.setDefaultImage(d(paramInt));
             return;
           }
-          paramAsyncImageView.setDefaultImage(2130844437);
+          paramAsyncImageView.setDefaultImage(2130845755);
           paramAsyncImageView.setUrlIconAsyncImage(paramString);
           return;
         }
-        paramAsyncImageView.setDefaultImage(2130844325);
-        if (!FileUtil.a(paramString)) {
+        paramAsyncImageView.setDefaultImage(2130845642);
+        if (!FileUtil.b(paramString)) {
           return;
         }
         paramAsyncImageView.setApkIconAsyncImage(paramString);
         return;
       }
-      paramAsyncImageView.setDefaultImage(2130844438);
-      if (!FileUtil.a(paramString)) {
+      paramAsyncImageView.setDefaultImage(2130845756);
+      if (!FileUtil.b(paramString)) {
         return;
       }
       try
@@ -3309,7 +2416,7 @@ public class QQFileManagerUtilImpl
         return;
       }
     }
-    paramAsyncImageView.setDefaultImage(2130844363);
+    paramAsyncImageView.setDefaultImage(2130845680);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -3318,30 +2425,25 @@ public class QQFileManagerUtilImpl
     String str = FileUtil.a(paramString);
     if (str == null)
     {
-      paramAsyncImageView.setImageResource(2130844437);
+      paramAsyncImageView.setImageResource(2130845755);
       return;
     }
-    paramAsyncImageView.setImageResource(c(paramString));
+    paramAsyncImageView.setImageResource(f(paramString));
     if (paramBoolean)
     {
-      int i = d(str);
+      int i = g(str);
       if (i != 0)
       {
         if (i != 2) {
           return;
         }
-        paramAsyncImageView.setDefaultImage(2130844438);
+        paramAsyncImageView.setDefaultImage(2130845756);
         paramAsyncImageView.setAsyncImage(paramString);
         return;
       }
-      paramAsyncImageView.setDefaultImage(2130844363);
+      paramAsyncImageView.setDefaultImage(2130845680);
       paramAsyncImageView.setAsyncImage(paramString);
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    QQFMToastUtil.a(paramString);
   }
   
   public static void a(String paramString, int paramInt)
@@ -3354,16 +2456,11 @@ public class QQFileManagerUtilImpl
     localSharedPreferences.edit().putInt(paramString, paramInt).commit();
   }
   
-  private static void a(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
-  {
-    a(paramString1, true, paramInt1, paramInt2, 3, new QQFileManagerUtilImpl.11(paramIThumbResult, paramString2, paramString1));
-  }
-  
   private static void a(String paramString, FileManagerEntity paramFileManagerEntity)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      a(paramString);
+      p(paramString);
       return;
     }
     a(13, paramFileManagerEntity.fileName);
@@ -3418,13 +2515,13 @@ public class QQFileManagerUtilImpl
             localForwardFileInfo.d(((FileManagerEntity)localObject).fileSize);
             localForwardFileInfo.a(((FileManagerEntity)localObject).getFilePath());
             localForwardFileInfo.b(((FileManagerEntity)localObject).Uuid);
-            localForwardFileInfo.jdField_a_of_type_Int = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getForwardId();
+            localForwardFileInfo.a = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getForwardId();
             if ((((FileManagerEntity)localObject).getCloudType() == 3) && (((FileManagerEntity)localObject).getFilePath() != null) && (((FileManagerEntity)localObject).getFilePath().length() > 0)) {
               localArrayList2.add(Uri.parse(((FileManagerEntity)localObject).getFilePath()));
             } else {
               localArrayList2.add(Uri.parse(""));
             }
-            l1 += localForwardFileInfo.d();
+            l1 += localForwardFileInfo.j();
             localArrayList1.add(localForwardFileInfo);
           }
         }
@@ -3440,25 +2537,25 @@ public class QQFileManagerUtilImpl
     ((Intent)localObject).putExtras(paramList);
     ((Intent)localObject).putExtra("foward_editbar", true);
     ((Intent)localObject).putExtra("forward_type", ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getForwardUtilsForwardTypeFILE());
-    paramList = a(2131704660);
+    paramList = a(2131902564);
     if (localArrayList1.size() == 1)
     {
       paramList = new StringBuilder();
-      paramList.append(a(2131704642));
-      paramList.append(d(((ForwardFileInfo)localArrayList1.get(0)).d()));
-      paramList.append(a(2131704652));
-      paramList.append(FileUtil.a(((ForwardFileInfo)localArrayList1.get(0)).d()));
+      paramList.append(a(2131902546));
+      paramList.append(q(((ForwardFileInfo)localArrayList1.get(0)).i()));
+      paramList.append(a(2131902556));
+      paramList.append(FileUtil.a(((ForwardFileInfo)localArrayList1.get(0)).j()));
       paramList.append("。");
       paramList = paramList.toString();
     }
     else if (localArrayList1.size() > 1)
     {
       paramList = new StringBuilder();
-      paramList.append(a(2131704636));
-      paramList.append(d(((ForwardFileInfo)localArrayList1.get(0)).d()));
-      paramList.append(a(2131704649));
+      paramList.append(a(2131902540));
+      paramList.append(q(((ForwardFileInfo)localArrayList1.get(0)).i()));
+      paramList.append(a(2131902553));
       paramList.append(localArrayList1.size());
-      paramList.append(a(2131704653));
+      paramList.append(a(2131902557));
       paramList.append(FileUtil.a(l2));
       paramList.append("。");
       paramList = paramList.toString();
@@ -3477,10 +2574,10 @@ public class QQFileManagerUtilImpl
   {
     if (!NetworkUtil.isNetSupportHw(BaseApplication.getContext()))
     {
-      a(2131693191);
+      e(2131890731);
       return;
     }
-    if (!a())
+    if (!d())
     {
       paramFMDialogInterface.a();
       return;
@@ -3492,31 +2589,21 @@ public class QQFileManagerUtilImpl
     }
     if (bool1)
     {
-      int i = 2131692566;
-      if ((paramInt == 0) && (KingCardProcessor.c().a.jdField_a_of_type_Boolean) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isKingCard()))
+      int i = 2131889589;
+      if ((paramInt == 0) && (KingCardProcessor.e().a.a) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isKingCard()))
       {
         if (!paramBoolean) {
-          i = 2131692563;
+          i = 2131889586;
         }
         String str = paramContext.getString(i);
-        FMDialogUtil.a(paramContext, paramContext.getString(2131692561), KingCardProcessor.c().a.a(paramContext, str), paramFMDialogInterface);
+        FMDialogUtil.a(paramContext, paramContext.getString(2131889584), KingCardProcessor.e().a.a(paramContext, str), paramFMDialogInterface);
         return;
       }
       if (!paramBoolean) {
-        i = 2131692563;
+        i = 2131889586;
       }
-      FMDialogUtil.a(paramContext, 2131692561, i, paramFMDialogInterface);
+      FMDialogUtil.a(paramContext, 2131889584, i, paramFMDialogInterface);
     }
-  }
-  
-  public static boolean a()
-  {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == FMConstants.b;
   }
   
   public static boolean a(int paramInt, String paramString)
@@ -3536,82 +2623,82 @@ public class QQFileManagerUtilImpl
       }
       break;
     case 16: 
-      a(2131692708);
+      e(2131889779);
       return true;
     case 15: 
-      a(2131694600);
+      e(2131892284);
       return true;
     case 13: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 12: 
       if (QLog.isDevelopLevel()) {
-        a();
+        h();
       }
-      a(2131692744);
+      e(2131889815);
       return true;
     case 11: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 10: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 9: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 7: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 6: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 5: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 4: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692717));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889788));
+      G(localStringBuilder.toString());
       return true;
     case 3: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692717));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889788));
+      G(localStringBuilder.toString());
       return true;
     case 2: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692747));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889818));
+      G(localStringBuilder.toString());
       return true;
     case 1: 
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d(paramString));
-      localStringBuilder.append(d(2131692717));
-      b(localStringBuilder.toString());
+      localStringBuilder.append(q(paramString));
+      localStringBuilder.append(j(2131889788));
+      G(localStringBuilder.toString());
     case 0: 
       return true;
     }
@@ -3624,22 +2711,9 @@ public class QQFileManagerUtilImpl
     return (l < 86400000L) && (l > -86400000L) && (a(paramLong1, paramTimeZone) == a(paramLong2, paramTimeZone));
   }
   
-  public static boolean a(Context paramContext)
-  {
-    return ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).isImportLocaFilesForH5(paramContext);
-  }
-  
   public static boolean a(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    return (a(paramContext)) && ((paramFileManagerEntity.fileSize > b(paramFileManagerEntity.fileName)) || (!a(paramFileManagerEntity.fileName, TencentDocConfig.a().jdField_a_of_type_JavaLangString)) || ((!((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).isSelected(paramFileManagerEntity)) && (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles().size() != 0)));
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    if (Build.VERSION.SDK_INT < 26) {
-      return ShortcutUtils.a(paramContext, new String[] { paramString });
-    }
-    return a(paramString, (ShortcutManager)paramContext.getSystemService(ShortcutManager.class));
+    return (c(paramContext)) && ((paramFileManagerEntity.fileSize > B(paramFileManagerEntity.fileName)) || (!a(paramFileManagerEntity.fileName, TencentDocConfig.a().a)) || ((!((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).isSelected(paramFileManagerEntity)) && (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles().size() != 0)));
   }
   
   public static boolean a(Context paramContext, String paramString, long paramLong)
@@ -3653,27 +2727,6 @@ public class QQFileManagerUtilImpl
       bool = true;
     }
     return bool;
-  }
-  
-  public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramChatMessage != null)
-    {
-      if (!paramChatMessage.isMultiMsg) {
-        return false;
-      }
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramChatMessage.senderuin))
-      {
-        bool1 = bool2;
-        if (paramChatMessage.senderuin.equals(paramBaseQQAppInterface.getCurrentAccountUin())) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
   }
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
@@ -3701,7 +2754,7 @@ public class QQFileManagerUtilImpl
           return false;
         }
         if (!paramBoolean) {
-          FMToastUtil.d(paramContext.getString(2131692690));
+          FMToastUtil.d(paramContext.getString(2131889761));
         }
         ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).startSave2Weiyun();
         ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendLocalFile(paramBaseQQAppInterface, localFileManagerEntity.getFilePath(), null, paramBaseQQAppInterface.getAccount(), 0, false);
@@ -3726,7 +2779,7 @@ public class QQFileManagerUtilImpl
       paramChatMessage = localMessageForFile.frienduin;
     }
     if (!paramBoolean) {
-      FMToastUtil.d(paramContext.getString(2131692690));
+      FMToastUtil.d(paramContext.getString(2131889761));
     }
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).saveOfflineFile2WeiYun(paramBaseQQAppInterface, localFileManagerEntity, paramChatMessage);
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).updateFileEntity(paramBaseQQAppInterface, localFileManagerEntity);
@@ -3741,10 +2794,10 @@ public class QQFileManagerUtilImpl
       QLog.i("@-@", 1, paramChatMessage.toString());
     }
     paramChatMessage = new FileManagerReporter.FileAssistantReportData();
-    paramChatMessage.jdField_b_of_type_JavaLangString = "file_to_weiyun";
-    paramChatMessage.jdField_a_of_type_Int = 9;
-    paramChatMessage.jdField_a_of_type_Long = localFileManagerEntity.fileSize;
-    paramChatMessage.jdField_c_of_type_JavaLangString = FileUtil.a(localFileManagerEntity.fileName);
+    paramChatMessage.b = "file_to_weiyun";
+    paramChatMessage.c = 9;
+    paramChatMessage.e = localFileManagerEntity.fileSize;
+    paramChatMessage.d = FileUtil.a(localFileManagerEntity.fileName);
     FileManagerReporter.a(paramBaseQQAppInterface.getCurrentAccountUin(), paramChatMessage);
     return true;
   }
@@ -3789,29 +2842,6 @@ public class QQFileManagerUtilImpl
     return bool2;
   }
   
-  private static boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramChatMessage != null)
-    {
-      if (!QQFileUtilsImpl.a(paramChatMessage)) {
-        return false;
-      }
-      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileStatus");
-      if (!TextUtils.isEmpty(paramChatMessage))
-      {
-        bool1 = bool2;
-        if (Integer.parseInt(paramChatMessage) != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
   public static boolean a(ChatMessage paramChatMessage, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     if (paramChatMessage != null)
@@ -3822,41 +2852,18 @@ public class QQFileManagerUtilImpl
       String str = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileStatus");
       if ((!TextUtils.isEmpty(str)) && (Integer.parseInt(str) == 4))
       {
-        QQToast.a(paramContext, 2131692570, 0).a();
+        QQToast.makeText(paramContext, 2131889593, 0).show();
         return false;
       }
       paramChatMessage = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getPrimaryStructMsg(paramBaseQQAppInterface, paramChatMessage);
       if ((paramChatMessage != null) && (paramChatMessage.extraflag == 32768))
       {
-        QQToast.a(paramContext, 2131692569, 0).a();
+        QQToast.makeText(paramContext, 2131889592, 0).show();
         return false;
       }
       return true;
     }
     return false;
-  }
-  
-  public static boolean a(FileManagerEntity paramFileManagerEntity)
-  {
-    boolean bool = false;
-    if (paramFileManagerEntity == null) {
-      return false;
-    }
-    long l3 = paramFileManagerEntity.srvTime;
-    int i = paramFileManagerEntity.peerType;
-    long l2 = 604800000L;
-    long l1 = l2;
-    if (i != 0) {
-      if (i != 3000) {
-        l1 = l2;
-      } else {
-        l1 = 2592000000L;
-      }
-    }
-    if (l3 + l1 <= MessageCache.a() * 1000L) {
-      bool = true;
-    }
-    return bool;
   }
   
   public static boolean a(File paramFile1, File paramFile2)
@@ -3912,11 +2919,6 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static boolean a(String paramString)
-  {
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isContainChinese(paramString);
-  }
-  
   @RequiresApi(api=25)
   public static boolean a(String paramString, ShortcutManager paramShortcutManager)
   {
@@ -3953,7 +2955,7 @@ public class QQFileManagerUtilImpl
       if (TextUtils.isEmpty(paramString2)) {
         return false;
       }
-      paramString1 = QQFileUtil.a(paramString1);
+      paramString1 = QQFileUtil.f(paramString1);
       bool1 = bool2;
       if (paramString1 != null)
       {
@@ -4006,15 +3008,15 @@ public class QQFileManagerUtilImpl
             if (paramInt != 127) {
               return null;
             }
-            return paramBaseQQAppInterface.j(paramString);
+            return paramBaseQQAppInterface.o(paramString);
           }
-          return paramBaseQQAppInterface.d(paramString);
+          return paramBaseQQAppInterface.i(paramString);
         }
-        return paramBaseQQAppInterface.p(paramString);
+        return paramBaseQQAppInterface.u(paramString);
       }
       return null;
     }
-    return paramBaseQQAppInterface.m(paramString);
+    return paramBaseQQAppInterface.r(paramString);
   }
   
   /* Error */
@@ -4022,66 +3024,66 @@ public class QQFileManagerUtilImpl
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 2805	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:a	(Ljava/lang/String;)J
+    //   1: invokestatic 2433	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:j	(Ljava/lang/String;)J
     //   4: lstore 12
     //   6: lload 12
-    //   8: ldc2_w 2806
+    //   8: ldc2_w 2434
     //   11: lcmp
     //   12: ifge +5 -> 17
     //   15: aconst_null
     //   16: areturn
     //   17: lload 12
-    //   19: ldc2_w 2808
+    //   19: ldc2_w 2436
     //   22: ldiv
-    //   23: ldc2_w 1052
+    //   23: ldc2_w 808
     //   26: lsub
     //   27: lstore 10
     //   29: lload 12
-    //   31: ldc2_w 2808
+    //   31: ldc2_w 2436
     //   34: ldiv
-    //   35: ldc2_w 1052
+    //   35: ldc2_w 808
     //   38: ladd
     //   39: lconst_1
     //   40: lsub
     //   41: lstore 14
     //   43: lload 12
-    //   45: ldc2_w 1056
+    //   45: ldc2_w 812
     //   48: lsub
     //   49: lstore 4
-    //   51: ldc_w 2811
-    //   54: invokestatic 2816	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   51: ldc_w 2439
+    //   54: invokestatic 2444	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   57: astore 17
-    //   59: new 2818	java/io/BufferedInputStream
+    //   59: new 2446	java/io/BufferedInputStream
     //   62: dup
-    //   63: new 2820	java/io/FileInputStream
+    //   63: new 2448	java/io/FileInputStream
     //   66: dup
     //   67: aload_0
-    //   68: invokespecial 2821	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   71: invokespecial 2824	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   68: invokespecial 2449	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   71: invokespecial 2452	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   74: astore 16
     //   76: iconst_0
     //   77: istore_1
     //   78: lconst_0
     //   79: lstore 6
-    //   81: ldc2_w 2825
+    //   81: ldc2_w 2453
     //   84: lload 6
     //   86: lsub
     //   87: lconst_1
     //   88: ladd
-    //   89: ldc2_w 2827
-    //   92: invokestatic 2832	java/lang/Math:min	(JJ)J
+    //   89: ldc2_w 2455
+    //   92: invokestatic 2460	java/lang/Math:min	(JJ)J
     //   95: l2i
     //   96: newarray byte
     //   98: astore_0
     //   99: aload 16
     //   101: aload_0
-    //   102: invokevirtual 2838	java/io/InputStream:read	([B)I
+    //   102: invokevirtual 2466	java/io/InputStream:read	([B)I
     //   105: istore_2
     //   106: aload 17
     //   108: aload_0
     //   109: iconst_0
     //   110: iload_2
-    //   111: invokevirtual 2842	java/security/MessageDigest:update	([BII)V
+    //   111: invokevirtual 2470	java/security/MessageDigest:update	([BII)V
     //   114: lload 6
     //   116: iload_2
     //   117: i2l
@@ -4092,16 +3094,16 @@ public class QQFileManagerUtilImpl
     //   123: iadd
     //   124: istore_1
     //   125: lload 6
-    //   127: ldc2_w 1056
+    //   127: ldc2_w 812
     //   130: lcmp
     //   131: iflt +256 -> 387
     //   134: aload 16
     //   136: lload 10
-    //   138: ldc2_w 2825
+    //   138: ldc2_w 2453
     //   141: lsub
     //   142: lconst_1
     //   143: lsub
-    //   144: invokevirtual 2845	java/io/InputStream:skip	(J)J
+    //   144: invokevirtual 2474	java/io/InputStream:skip	(J)J
     //   147: pop2
     //   148: lconst_0
     //   149: lstore 8
@@ -4116,20 +3118,20 @@ public class QQFileManagerUtilImpl
     //   166: lsub
     //   167: lconst_1
     //   168: ladd
-    //   169: ldc2_w 2827
-    //   172: invokestatic 2832	java/lang/Math:min	(JJ)J
+    //   169: ldc2_w 2455
+    //   172: invokestatic 2460	java/lang/Math:min	(JJ)J
     //   175: l2i
     //   176: newarray byte
     //   178: astore_0
     //   179: aload 16
     //   181: aload_0
-    //   182: invokevirtual 2838	java/io/InputStream:read	([B)I
+    //   182: invokevirtual 2466	java/io/InputStream:read	([B)I
     //   185: istore_2
     //   186: aload 17
     //   188: aload_0
     //   189: iconst_0
     //   190: iload_2
-    //   191: invokevirtual 2842	java/security/MessageDigest:update	([BII)V
+    //   191: invokevirtual 2470	java/security/MessageDigest:update	([BII)V
     //   194: lload 8
     //   196: iload_2
     //   197: i2l
@@ -4151,7 +3153,7 @@ public class QQFileManagerUtilImpl
     //   221: lsub
     //   222: lconst_1
     //   223: lsub
-    //   224: invokevirtual 2845	java/io/InputStream:skip	(J)J
+    //   224: invokevirtual 2474	java/io/InputStream:skip	(J)J
     //   227: pop2
     //   228: lconst_0
     //   229: lstore 6
@@ -4166,14 +3168,14 @@ public class QQFileManagerUtilImpl
     //   244: lsub
     //   245: lconst_1
     //   246: ladd
-    //   247: ldc2_w 2827
-    //   250: invokestatic 2832	java/lang/Math:min	(JJ)J
+    //   247: ldc2_w 2455
+    //   250: invokestatic 2460	java/lang/Math:min	(JJ)J
     //   253: l2i
     //   254: newarray byte
     //   256: astore_0
     //   257: aload 16
     //   259: aload_0
-    //   260: invokevirtual 2838	java/io/InputStream:read	([B)I
+    //   260: invokevirtual 2466	java/io/InputStream:read	([B)I
     //   263: istore_2
     //   264: iload_2
     //   265: ifgt +6 -> 271
@@ -4182,7 +3184,7 @@ public class QQFileManagerUtilImpl
     //   273: aload_0
     //   274: iconst_0
     //   275: iload_2
-    //   276: invokevirtual 2842	java/security/MessageDigest:update	([BII)V
+    //   276: invokevirtual 2470	java/security/MessageDigest:update	([BII)V
     //   279: lload 6
     //   281: iload_2
     //   282: i2l
@@ -4215,34 +3217,34 @@ public class QQFileManagerUtilImpl
     //   323: aload_0
     //   324: iconst_0
     //   325: bipush 8
-    //   327: invokevirtual 2842	java/security/MessageDigest:update	([BII)V
-    //   330: new 252	java/lang/StringBuilder
+    //   327: invokevirtual 2470	java/security/MessageDigest:update	([BII)V
+    //   330: new 111	java/lang/StringBuilder
     //   333: dup
-    //   334: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   334: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   337: astore_0
     //   338: aload_0
-    //   339: ldc_w 2847
-    //   342: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: ldc_w 2476
+    //   342: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: pop
     //   346: aload_0
     //   347: iload_1
-    //   348: invokevirtual 657	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   348: invokevirtual 587	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   351: pop
-    //   352: ldc 234
+    //   352: ldc 123
     //   354: iconst_1
     //   355: aload_0
-    //   356: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 749	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   359: invokestatic 688	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   362: aload 17
-    //   364: invokevirtual 2850	java/security/MessageDigest:digest	()[B
+    //   364: invokevirtual 2479	java/security/MessageDigest:digest	()[B
     //   367: astore_0
     //   368: aload 16
-    //   370: invokevirtual 2851	java/io/InputStream:close	()V
+    //   370: invokevirtual 2482	java/io/InputStream:close	()V
     //   373: aload_0
     //   374: areturn
     //   375: astore 16
     //   377: aload 16
-    //   379: invokevirtual 902	java/io/IOException:printStackTrace	()V
+    //   379: invokevirtual 2483	java/io/IOException:printStackTrace	()V
     //   382: aload_0
     //   383: areturn
     //   384: goto -229 -> 155
@@ -4263,15 +3265,15 @@ public class QQFileManagerUtilImpl
     //   415: aconst_null
     //   416: astore_0
     //   417: aload 16
-    //   419: invokevirtual 179	java/lang/Exception:printStackTrace	()V
+    //   419: invokevirtual 973	java/lang/Exception:printStackTrace	()V
     //   422: aload_0
     //   423: ifnull +15 -> 438
     //   426: aload_0
-    //   427: invokevirtual 2851	java/io/InputStream:close	()V
+    //   427: invokevirtual 2482	java/io/InputStream:close	()V
     //   430: goto +8 -> 438
     //   433: astore_0
     //   434: aload_0
-    //   435: invokevirtual 902	java/io/IOException:printStackTrace	()V
+    //   435: invokevirtual 2483	java/io/IOException:printStackTrace	()V
     //   438: aconst_null
     //   439: areturn
     //   440: astore 17
@@ -4282,11 +3284,11 @@ public class QQFileManagerUtilImpl
     //   448: aload 16
     //   450: ifnull +18 -> 468
     //   453: aload 16
-    //   455: invokevirtual 2851	java/io/InputStream:close	()V
+    //   455: invokevirtual 2482	java/io/InputStream:close	()V
     //   458: goto +10 -> 468
     //   461: astore 16
     //   463: aload 16
-    //   465: invokevirtual 902	java/io/IOException:printStackTrace	()V
+    //   465: invokevirtual 2483	java/io/IOException:printStackTrace	()V
     //   468: goto +5 -> 473
     //   471: aload_0
     //   472: athrow
@@ -4312,7 +3314,7 @@ public class QQFileManagerUtilImpl
     //   503: imul
     //   504: isub
     //   505: lshr
-    //   506: ldc2_w 2852
+    //   506: ldc2_w 2484
     //   509: land
     //   510: l2i
     //   511: i2b
@@ -4373,49 +3375,49 @@ public class QQFileManagerUtilImpl
   public static byte[] a(String paramString, long paramLong)
   {
     // Byte code:
-    //   0: new 2820	java/io/FileInputStream
+    //   0: new 2448	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 2821	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 2449	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   8: astore 4
     //   10: lload_1
-    //   11: ldc2_w 2855
+    //   11: ldc2_w 2487
     //   14: lcmp
     //   15: ifge +6 -> 21
     //   18: goto +7 -> 25
-    //   21: ldc2_w 2855
+    //   21: ldc2_w 2487
     //   24: lstore_1
     //   25: aload 4
     //   27: astore_3
     //   28: aload_0
     //   29: lload_1
-    //   30: invokestatic 2861	com/tencent/qphone/base/util/MD5:getPartfileMd5	(Ljava/lang/String;J)[B
+    //   30: invokestatic 2493	com/tencent/qphone/base/util/MD5:getPartfileMd5	(Ljava/lang/String;J)[B
     //   33: astore_0
     //   34: aload 4
-    //   36: invokevirtual 2862	java/io/FileInputStream:close	()V
+    //   36: invokevirtual 2494	java/io/FileInputStream:close	()V
     //   39: aload_0
     //   40: areturn
     //   41: astore_3
     //   42: aload_3
-    //   43: invokevirtual 902	java/io/IOException:printStackTrace	()V
-    //   46: new 252	java/lang/StringBuilder
+    //   43: invokevirtual 2483	java/io/IOException:printStackTrace	()V
+    //   46: new 111	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   53: astore 4
     //   55: aload 4
-    //   57: ldc_w 2864
-    //   60: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc_w 2496
+    //   60: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: pop
     //   64: aload 4
     //   66: aload_3
-    //   67: invokevirtual 2865	java/io/IOException:toString	()Ljava/lang/String;
-    //   70: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 2497	java/io/IOException:toString	()Ljava/lang/String;
+    //   70: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: pop
-    //   74: ldc 234
+    //   74: ldc 123
     //   76: iconst_1
     //   77: aload 4
-    //   79: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: aload_0
     //   86: areturn
     //   87: astore_3
@@ -4433,86 +3435,86 @@ public class QQFileManagerUtilImpl
     //   106: astore_0
     //   107: aload_0
     //   108: astore_3
-    //   109: new 252	java/lang/StringBuilder
+    //   109: new 111	java/lang/StringBuilder
     //   112: dup
-    //   113: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   113: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   116: astore 5
     //   118: aload_0
     //   119: astore_3
     //   120: aload 5
-    //   122: ldc_w 2867
-    //   125: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: ldc_w 2499
+    //   125: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: pop
     //   129: aload_0
     //   130: astore_3
     //   131: aload 5
     //   133: aload 4
-    //   135: invokevirtual 2865	java/io/IOException:toString	()Ljava/lang/String;
-    //   138: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 2497	java/io/IOException:toString	()Ljava/lang/String;
+    //   138: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload_0
     //   143: astore_3
-    //   144: ldc 234
+    //   144: ldc 123
     //   146: iconst_1
     //   147: aload 5
-    //   149: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   149: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   155: aload_0
     //   156: ifnull +49 -> 205
     //   159: aload_0
-    //   160: invokevirtual 2862	java/io/FileInputStream:close	()V
+    //   160: invokevirtual 2494	java/io/FileInputStream:close	()V
     //   163: aconst_null
     //   164: areturn
     //   165: astore_0
     //   166: aload_0
-    //   167: invokevirtual 902	java/io/IOException:printStackTrace	()V
-    //   170: new 252	java/lang/StringBuilder
+    //   167: invokevirtual 2483	java/io/IOException:printStackTrace	()V
+    //   170: new 111	java/lang/StringBuilder
     //   173: dup
-    //   174: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   174: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   177: astore_3
     //   178: aload_3
-    //   179: ldc_w 2864
-    //   182: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: ldc_w 2496
+    //   182: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   185: pop
     //   186: aload_3
     //   187: aload_0
-    //   188: invokevirtual 2865	java/io/IOException:toString	()Ljava/lang/String;
-    //   191: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 2497	java/io/IOException:toString	()Ljava/lang/String;
+    //   191: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: pop
-    //   195: ldc 234
+    //   195: ldc 123
     //   197: iconst_1
     //   198: aload_3
-    //   199: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   199: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   205: aconst_null
     //   206: areturn
     //   207: astore_0
     //   208: aload_3
     //   209: ifnull +54 -> 263
     //   212: aload_3
-    //   213: invokevirtual 2862	java/io/FileInputStream:close	()V
+    //   213: invokevirtual 2494	java/io/FileInputStream:close	()V
     //   216: goto +47 -> 263
     //   219: astore_3
     //   220: aload_3
-    //   221: invokevirtual 902	java/io/IOException:printStackTrace	()V
-    //   224: new 252	java/lang/StringBuilder
+    //   221: invokevirtual 2483	java/io/IOException:printStackTrace	()V
+    //   224: new 111	java/lang/StringBuilder
     //   227: dup
-    //   228: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   228: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   231: astore 4
     //   233: aload 4
-    //   235: ldc_w 2864
-    //   238: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: ldc_w 2496
+    //   238: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: pop
     //   242: aload 4
     //   244: aload_3
-    //   245: invokevirtual 2865	java/io/IOException:toString	()Ljava/lang/String;
-    //   248: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 2497	java/io/IOException:toString	()Ljava/lang/String;
+    //   248: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: pop
-    //   252: ldc 234
+    //   252: ldc 123
     //   254: iconst_1
     //   255: aload 4
-    //   257: invokevirtual 264	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: invokestatic 242	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   260: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   263: aload_0
     //   264: athrow
     // Local variable table:
@@ -4543,320 +3545,11 @@ public class QQFileManagerUtilImpl
     //   212	216	219	java/io/IOException
   }
   
-  /* Error */
-  private static byte[] a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: new 2818	java/io/BufferedInputStream
-    //   3: dup
-    //   4: new 2820	java/io/FileInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 2821	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   12: invokespecial 2824	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   15: astore_0
-    //   16: sipush 10240
-    //   19: newarray byte
-    //   21: astore_3
-    //   22: aload_1
-    //   23: invokestatic 2816	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   26: astore_1
-    //   27: goto +10 -> 37
-    //   30: astore_1
-    //   31: aload_1
-    //   32: invokevirtual 2871	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   35: aconst_null
-    //   36: astore_1
-    //   37: aload_0
-    //   38: aload_3
-    //   39: invokevirtual 2838	java/io/InputStream:read	([B)I
-    //   42: istore_2
-    //   43: iload_2
-    //   44: ifle +13 -> 57
-    //   47: aload_1
-    //   48: aload_3
-    //   49: iconst_0
-    //   50: iload_2
-    //   51: invokevirtual 2842	java/security/MessageDigest:update	([BII)V
-    //   54: goto -17 -> 37
-    //   57: aload_0
-    //   58: invokevirtual 2851	java/io/InputStream:close	()V
-    //   61: aload_1
-    //   62: ifnull +14 -> 76
-    //   65: aload_1
-    //   66: invokevirtual 2850	java/security/MessageDigest:digest	()[B
-    //   69: astore_1
-    //   70: aload_0
-    //   71: invokevirtual 2851	java/io/InputStream:close	()V
-    //   74: aload_1
-    //   75: areturn
-    //   76: aload_0
-    //   77: invokevirtual 2851	java/io/InputStream:close	()V
-    //   80: aconst_null
-    //   81: areturn
-    //   82: astore_3
-    //   83: aload_0
-    //   84: astore_1
-    //   85: aload_3
-    //   86: astore_0
-    //   87: goto +6 -> 93
-    //   90: astore_0
-    //   91: aconst_null
-    //   92: astore_1
-    //   93: aload_1
-    //   94: ifnull +7 -> 101
-    //   97: aload_1
-    //   98: invokevirtual 2851	java/io/InputStream:close	()V
-    //   101: aload_0
-    //   102: athrow
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload_0
-    //   106: ifnull +18 -> 124
-    //   109: aload_0
-    //   110: invokevirtual 2851	java/io/InputStream:close	()V
-    //   113: aconst_null
-    //   114: areturn
-    //   115: aconst_null
-    //   116: astore_0
-    //   117: aload_0
-    //   118: ifnull +6 -> 124
-    //   121: goto -12 -> 109
-    //   124: aconst_null
-    //   125: areturn
-    //   126: astore_0
-    //   127: goto -12 -> 115
-    //   130: astore_0
-    //   131: goto -28 -> 103
-    //   134: astore_1
-    //   135: goto -18 -> 117
-    //   138: astore_1
-    //   139: goto -34 -> 105
-    //   142: astore_3
-    //   143: goto -82 -> 61
-    //   146: astore_0
-    //   147: aload_1
-    //   148: areturn
-    //   149: astore_0
-    //   150: aconst_null
-    //   151: areturn
-    //   152: astore_1
-    //   153: goto -52 -> 101
-    //   156: astore_0
-    //   157: aconst_null
-    //   158: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	159	0	paramString1	String
-    //   0	159	1	paramString2	String
-    //   42	9	2	i	int
-    //   21	28	3	arrayOfByte	byte[]
-    //   82	4	3	localObject	Object
-    //   142	1	3	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   22	27	30	java/security/NoSuchAlgorithmException
-    //   16	22	82	finally
-    //   22	27	82	finally
-    //   31	35	82	finally
-    //   37	43	82	finally
-    //   47	54	82	finally
-    //   57	61	82	finally
-    //   65	70	82	finally
-    //   0	16	90	finally
-    //   0	16	126	java/io/FileNotFoundException
-    //   0	16	130	java/io/IOException
-    //   16	22	134	java/io/FileNotFoundException
-    //   22	27	134	java/io/FileNotFoundException
-    //   31	35	134	java/io/FileNotFoundException
-    //   37	43	134	java/io/FileNotFoundException
-    //   47	54	134	java/io/FileNotFoundException
-    //   57	61	134	java/io/FileNotFoundException
-    //   65	70	134	java/io/FileNotFoundException
-    //   16	22	138	java/io/IOException
-    //   22	27	138	java/io/IOException
-    //   31	35	138	java/io/IOException
-    //   37	43	138	java/io/IOException
-    //   47	54	138	java/io/IOException
-    //   65	70	138	java/io/IOException
-    //   57	61	142	java/io/IOException
-    //   70	74	146	java/io/IOException
-    //   76	80	149	java/io/IOException
-    //   97	101	152	java/io/IOException
-    //   109	113	156	java/io/IOException
-  }
-  
-  public static int[] a(String paramString)
-  {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
-      return new int[] { 0, 0 };
-    }
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    SafeBitmapFactory.decodeFile(paramString, localOptions);
-    int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExifRotation(paramString);
-    int j;
-    if ((i != 90) && (i != 270))
-    {
-      j = localOptions.outWidth;
-      i = localOptions.outHeight;
-    }
-    else
-    {
-      i = localOptions.outWidth;
-      j = localOptions.outHeight;
-    }
-    return new int[] { j, i };
-  }
-  
-  public static int b(int paramInt)
-  {
-    int j = 0;
-    int i;
-    if (paramInt != -1)
-    {
-      i = j;
-      if (paramInt == 0) {
-        return i;
-      }
-      if (paramInt != 1) {
-        if (paramInt != 2) {
-          if (paramInt != 3)
-          {
-            if (paramInt == 2008) {
-              break label133;
-            }
-            if (paramInt != 4001) {
-              i = j;
-            }
-          }
-        }
-      }
-    }
-    switch (paramInt)
-    {
-    default: 
-      i = j;
-      switch (paramInt)
-      {
-      }
-      break;
-    case 1004: 
-      return 3;
-    case 1001: 
-    case 1002: 
-      return 2;
-    case 1003: 
-      return 1;
-    case 1000: 
-      label133:
-      i = -1;
-    }
-    return i;
-  }
-  
-  public static int b(FileManagerEntity paramFileManagerEntity)
-  {
-    paramFileManagerEntity = paramFileManagerEntity.fileName.toUpperCase();
-    if (paramFileManagerEntity.endsWith(".ZIP")) {
-      return 13;
-    }
-    if (paramFileManagerEntity.endsWith(".RAR")) {
-      return 14;
-    }
-    if (paramFileManagerEntity.endsWith(".7Z")) {
-      return 15;
-    }
-    return -1;
-  }
-  
-  public static int b(String paramString)
-  {
-    if (paramString == null) {
-      return -1;
-    }
-    Object localObject = FileUtil.b(paramString);
-    if (b().equalsIgnoreCase((String)localObject)) {
-      return 0;
-    }
-    try
-    {
-      localObject = BaseApplication.getContext().getSharedPreferences("ExternalFileOfFM", 0).edit();
-      ((SharedPreferences.Editor)localObject).remove(paramString);
-      ((SharedPreferences.Editor)localObject).commit();
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -2;
-  }
-  
   public static long b()
   {
-    return MessageUtils.a(MessageUtils.a());
-  }
-  
-  public static long b(String paramString)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (TextUtils.isEmpty(paramString)) {
-          return 0L;
-        }
-        paramString = g(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          return 0L;
-        }
-        l = 20971520L;
-        if ("txt".equals(paramString.toLowerCase())) {
-          l = 102400L;
-        }
-        localObject = TencentDocImportFileInfoProcessor.a().b();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          return l;
-        }
-        localObject = ((String)localObject).split("#");
-        if (localObject.length != 0) {
-          break label181;
-        }
-        return l;
-      }
-      catch (Exception paramString)
-      {
-        long l;
-        String[] arrayOfString;
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(" get docs import file max size exception =");
-        ((StringBuilder)localObject).append(paramString.toString());
-        QLog.e("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-        return 0L;
-      }
-      if (i < localObject.length)
-      {
-        arrayOfString = localObject[i].split("_");
-        if (!arrayOfString[0].contains(paramString)) {
-          if (!arrayOfString[0].contains(paramString.toLowerCase())) {
-            break label186;
-          }
-        }
-        l = Long.parseLong(arrayOfString[1]);
-        return l;
-      }
-      else
-      {
-        return 0L;
-        label181:
-        i = 0;
-        continue;
-      }
-      label186:
-      i += 1;
-    }
+    int i = MobileQQService.seq;
+    MobileQQService.seq = i + 1;
+    return i;
   }
   
   private static long b(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3, BaseQQAppInterface paramBaseQQAppInterface, int paramInt4)
@@ -4949,11 +3642,6 @@ public class QQFileManagerUtilImpl
     return null;
   }
   
-  public static String b()
-  {
-    return FMSettings.a().getDefaultRecvPath();
-  }
-  
   public static String b(int paramInt)
   {
     if (paramInt != 0)
@@ -4966,25 +3654,77 @@ public class QQFileManagerUtilImpl
             if (paramInt != 5)
             {
               if ((paramInt != 6) && (paramInt != 7) && (paramInt != 9)) {
-                return a(2131704635);
+                return a(2131902539);
               }
             }
             else {
-              return a(2131704658);
+              return a(2131902562);
             }
           }
-          return a(2131704638);
+          return a(2131902542);
         }
-        return a(2131704651);
+        return a(2131902555);
       }
-      return a(2131704629);
+      return a(2131902533);
     }
-    return a(2131704645);
+    return a(2131902549);
+  }
+  
+  public static String b(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 != 0)
+    {
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2)
+        {
+          if (paramInt1 != 3) {
+            return String.valueOf(0);
+          }
+          return String.valueOf(1);
+        }
+        return String.valueOf(3);
+      }
+      if (paramInt2 == 0) {
+        return String.valueOf(2);
+      }
+      return String.valueOf(4);
+    }
+    return String.valueOf(7);
+  }
+  
+  private static String b(Context paramContext, FileManagerEntity paramFileManagerEntity)
+  {
+    paramContext = paramContext.getResources().getString(2131890378);
+    if (!TextUtils.isEmpty(paramFileManagerEntity.guildName)) {
+      paramContext = paramFileManagerEntity.guildName;
+    }
+    return paramContext;
+  }
+  
+  public static String b(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage != null)
+    {
+      if (!paramChatMessage.isMultiMsg) {
+        return "";
+      }
+      String str = paramChatMessage.getExtInfoFromExtStr("_f_thumb_path_750_");
+      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("_f_thumb_path_384_");
+      if ((!TextUtils.isEmpty(str)) && (FileUtils.fileExistsAndNotEmpty(str))) {
+        return str;
+      }
+      if ((!TextUtils.isEmpty(str)) && (FileUtils.fileExistsAndNotEmpty(paramChatMessage))) {
+        return paramChatMessage;
+      }
+      return "";
+    }
+    return "";
   }
   
   public static String b(FileManagerEntity paramFileManagerEntity)
   {
-    if (!ZhuoXusManager.a().i())
+    if (!ZhuoXusManager.a().l())
     {
       paramFileManagerEntity.strQRUrl = "";
       return "";
@@ -5009,7 +3749,7 @@ public class QQFileManagerUtilImpl
     else
     {
       if (!FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.strLargeThumPath)) {
-        break label234;
+        break label233;
       }
       localObject2 = new File(paramFileManagerEntity.strLargeThumPath);
       localObject1 = "larg";
@@ -5030,7 +3770,7 @@ public class QQFileManagerUtilImpl
       return paramFileManagerEntity.strQRUrl;
     }
     return "";
-    label234:
+    label233:
     return null;
   }
   
@@ -5040,39 +3780,57 @@ public class QQFileManagerUtilImpl
     if (paramFileManagerEntity.bSend)
     {
       paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(paramContext.getString(2131692271));
+      paramFileManagerEntity.append(paramContext.getString(2131889258));
       paramFileManagerEntity.append(paramString);
       return paramFileManagerEntity.toString();
     }
     paramFileManagerEntity = new StringBuilder();
-    paramFileManagerEntity.append(paramContext.getString(2131692269));
+    paramFileManagerEntity.append(paramContext.getString(2131889256));
     paramFileManagerEntity.append(paramString);
     return paramFileManagerEntity.toString();
   }
   
-  public static String b(String paramString)
+  public static String b(String paramString, int paramInt)
   {
-    return FileUtils.getFileName(paramString);
-  }
-  
-  public static void b()
-  {
-    BaseQQAppInterface localBaseQQAppInterface = a();
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryMaxRecentReocrds(localBaseQQAppInterface);
-    if (localObject == null) {
-      return;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.getBytes().length >= paramInt))
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localFileManagerEntity.Uuid))
+      int i = paramInt / 2;
+      int k = paramInt / 4;
+      Object localObject = paramString.toCharArray();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      paramInt = 0;
+      while (paramInt < localObject.length)
       {
-        localFileManagerEntity.status = 16;
-        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteOfflineFile(localBaseQQAppInterface, localFileManagerEntity.peerUin, localFileManagerEntity.fileName, localFileManagerEntity.Uuid, localFileManagerEntity.fileIdCrc, localFileManagerEntity.bSend);
+        localStringBuilder1.append(localObject[paramInt]);
+        if (localStringBuilder1.toString().getBytes().length > i) {
+          break;
+        }
+        paramInt += 1;
       }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      int j = localObject.length - 1;
+      paramInt = localObject.length - 1;
+      for (;;)
+      {
+        i = j;
+        if (paramInt <= 0) {
+          break;
+        }
+        localStringBuilder2.append(localObject[paramInt]);
+        if (localStringBuilder2.toString().getBytes().length > k)
+        {
+          i = paramInt;
+          break;
+        }
+        paramInt -= 1;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localStringBuilder1.toString());
+      ((StringBuilder)localObject).append(b);
+      ((StringBuilder)localObject).append(paramString.substring(i));
+      return ((StringBuilder)localObject).toString();
     }
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).clearAllData(localBaseQQAppInterface);
+    return "";
   }
   
   private static void b(int paramInt, String paramString, BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity)
@@ -5101,42 +3859,50 @@ public class QQFileManagerUtilImpl
     }
     if ((paramString != null) && (paramString.length() > 0))
     {
-      a(paramString);
+      p(paramString);
       return;
     }
     paramString = new StringBuilder();
-    paramString.append(d(paramFileManagerEntity.fileName));
-    paramString.append(d(2131692689));
-    a(paramString.toString());
+    paramString.append(q(paramFileManagerEntity.fileName));
+    paramString.append(j(2131889760));
+    p(paramString.toString());
   }
   
   public static void b(long paramLong)
   {
     try
     {
-      Object localObject1 = jdField_a_of_type_JavaUtilArrayList;
-      if (localObject1 == null) {
+      if (e == null) {
+        e = new ArrayList();
+      }
+      boolean bool = e.contains(Long.valueOf(paramLong));
+      if (bool) {
         return;
       }
-      jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong));
+      e.add(Long.valueOf(paramLong));
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("nSessionID[");
-        ((StringBuilder)localObject1).append(paramLong);
-        ((StringBuilder)localObject1).append("]移除不显示取消按钮队列");
-        QLog.e("##########", 2, ((StringBuilder)localObject1).toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("nSessionID[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]加入不显示取消按钮队列");
+        QLog.e("##########", 2, localStringBuilder.toString());
       }
       return;
     }
     finally {}
   }
   
+  public static void b(Context paramContext)
+  {
+    paramContext.getSharedPreferences("LAST_CHOOSE_", 0).edit().clear().commit();
+  }
+  
   public static void b(Context paramContext, String paramString)
   {
-    if (!FileUtil.b(paramString))
+    if (!FileUtil.d(paramString))
     {
-      a(2131693702);
+      e(2131891277);
       return;
     }
     String str = MimeTypesTools.getMimeType(paramContext, paramString);
@@ -5162,19 +3928,19 @@ public class QQFileManagerUtilImpl
       label153:
       break label153;
     }
-    QQFMToastUtil.a(2131693702);
+    QQFMToastUtil.a(2131891277);
     return;
-    QQFMToastUtil.a(2131693702);
+    QQFMToastUtil.a(2131891277);
   }
   
   private static void b(Context paramContext, String paramString, Bundle paramBundle)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("_filename_from_dlg", paramContext.getString(2131694576));
+    localBundle.putString("_filename_from_dlg", paramContext.getString(2131892260));
     localBundle.putString("big_brother_source_key", "biz_src_jc_file");
     localBundle.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
     localBundle.putBundle("_user_data", paramBundle);
-    a().startDownloadNoSzie(paramString, localBundle);
+    p().startDownloadNoSzie(paramString, localBundle);
     paramContext = new StringBuilder();
     paramContext.append("downloadQQBrowser:");
     paramContext.append(paramString);
@@ -5198,7 +3964,7 @@ public class QQFileManagerUtilImpl
           localIntent.putExtra(paramString1, true);
           localIntent.setClassName(paramContext, ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getJumpActivityName());
           localIntent.setFlags(337641472);
-          if ((!TextUtils.isEmpty(paramString2)) && (paramString2.equals(paramContext.getString(2131694380)))) {
+          if ((!TextUtils.isEmpty(paramString2)) && (paramString2.equals(paramContext.getString(2131892059)))) {
             paramString1 = "my-dataline-shortcut";
           } else {
             paramString1 = "my-shortcut";
@@ -5209,62 +3975,21 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static void b(FileManagerEntity paramFileManagerEntity)
+  public static void b(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
   {
-    if (paramFileManagerEntity == null)
-    {
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "entity null!");
+    if (paramChatMessage == null) {
       return;
     }
-    String str;
-    if (!paramFileManagerEntity.isCheckPrivateDir)
-    {
-      paramFileManagerEntity.isCheckPrivateDir = true;
-      str = paramFileManagerEntity.getFilePath();
-      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
-        paramFileManagerEntity.setFilePath(VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.getFilePath()));
-      }
-      str = paramFileManagerEntity.strThumbPath;
-      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
-        paramFileManagerEntity.strThumbPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strThumbPath);
-      }
-      str = paramFileManagerEntity.strMiddleThumPath;
-      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
-        paramFileManagerEntity.strMiddleThumPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strMiddleThumPath);
-      }
-      str = paramFileManagerEntity.strLargeThumPath;
-      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
-        paramFileManagerEntity.strLargeThumPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strLargeThumPath);
-      }
+    if (!(paramChatMessage instanceof MessageForFile)) {
+      return;
     }
-    if ((paramFileManagerEntity.nFileType == -1) || (paramFileManagerEntity.nFileType == 5))
-    {
-      str = paramFileManagerEntity.getFilePath();
-      if (str != null)
-      {
-        paramFileManagerEntity.nFileType = d(str);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(AppConstants.SDCARD_PATH);
-        localStringBuilder.append("/Android/data/com.tencent.mobileqq");
-        if (str.startsWith(localStringBuilder.toString())) {
-          paramFileManagerEntity.setFilePath(VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.getFilePath()));
-        }
-      }
-      else
-      {
-        if ((paramFileManagerEntity.getCloudType() != 3) && (paramFileManagerEntity.getCloudType() != 5))
-        {
-          if ((paramFileManagerEntity.strSrcName != null) && (paramFileManagerEntity.strSrcName.length() > 0))
-          {
-            paramFileManagerEntity.nFileType = d(paramFileManagerEntity.strSrcName);
-            return;
-          }
-          paramFileManagerEntity.nFileType = d(paramFileManagerEntity.fileName);
-          return;
-        }
-        paramFileManagerEntity.nFileType = d(paramFileManagerEntity.fileName);
-      }
-    }
+    paramChatMessage = a(paramBaseQQAppInterface, (MessageForFile)paramChatMessage);
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFileToDataline(paramBaseQQAppInterface, paramContext, paramChatMessage);
+  }
+  
+  public static void b(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    ThreadManager.post(new QQFileManagerUtilImpl.16(paramString2, paramBaseQQAppInterface, paramInt, paramString1), 8, null, true);
   }
   
   private static void b(FileManagerEntity paramFileManagerEntity, QQFileManagerUtil.CheckResult paramCheckResult, BaseQQAppInterface paramBaseQQAppInterface)
@@ -5308,7 +4033,7 @@ public class QQFileManagerUtilImpl
   
   public static void b(AsyncImageView paramAsyncImageView, FileManagerEntity paramFileManagerEntity)
   {
-    b(paramFileManagerEntity);
+    e(paramFileManagerEntity);
     if (paramFileManagerEntity.nFileType == 0)
     {
       String str2 = paramFileManagerEntity.strLargeThumPath;
@@ -5319,7 +4044,7 @@ public class QQFileManagerUtilImpl
       if (FileUtils.fileExistsAndNotEmpty(str1))
       {
         paramFileManagerEntity.strLargeThumPath = str1;
-        paramAsyncImageView.setDefaultImage(2130844363);
+        paramAsyncImageView.setDefaultImage(2130845680);
         paramAsyncImageView.setAsyncImage(str1);
         return;
       }
@@ -5327,9 +4052,9 @@ public class QQFileManagerUtilImpl
     a(paramAsyncImageView, paramFileManagerEntity.fileName);
   }
   
-  private static void b(String paramString)
+  private static void b(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
   {
-    QQFMToastUtil.a(paramString);
+    a(paramString1, false, paramInt1, paramInt2, 3, new QQFileManagerUtilImpl.11(paramIThumbResult, paramString2, paramString1));
   }
   
   private static void b(boolean paramBoolean, long paramLong, int paramInt, String paramString, BaseQQAppInterface paramBaseQQAppInterface)
@@ -5337,77 +4062,25 @@ public class QQFileManagerUtilImpl
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).onResultByDataLineHandler(paramBoolean, paramLong, paramInt, paramString, paramBaseQQAppInterface);
   }
   
-  public static boolean b()
+  public static boolean b(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage)
   {
-    return FMConfig.c();
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    boolean bool2 = true;
+    boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramInt != 8)
+    if (paramChatMessage != null)
     {
+      if (!paramChatMessage.isMultiMsg) {
+        return false;
+      }
       bool1 = bool2;
-      if (paramInt != 190)
+      if (!TextUtils.isEmpty(paramChatMessage.senderuin))
       {
         bool1 = bool2;
-        if (paramInt != 1)
-        {
-          bool1 = bool2;
-          if (paramInt != 16)
-          {
-            bool1 = bool2;
-            if (paramInt != 14)
-            {
-              bool1 = bool2;
-              if (paramInt != 15)
-              {
-                bool1 = bool2;
-                if (paramInt != 17)
-                {
-                  bool1 = bool2;
-                  if (paramInt != 18)
-                  {
-                    bool1 = bool2;
-                    if (paramInt != 19)
-                    {
-                      bool1 = bool2;
-                      if (paramInt != 5)
-                      {
-                        bool1 = bool2;
-                        if (paramInt != 50)
-                        {
-                          if (paramInt == -1) {
-                            return true;
-                          }
-                          bool1 = false;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+        if (paramChatMessage.senderuin.equals(paramBaseQQAppInterface.getCurrentAccountUin())) {
+          bool1 = true;
         }
       }
     }
     return bool1;
-  }
-  
-  public static boolean b(FileManagerEntity paramFileManagerEntity)
-  {
-    if (paramFileManagerEntity == null) {
-      return false;
-    }
-    if (FileUtil.a(paramFileManagerEntity.strLargeThumPath)) {
-      return true;
-    }
-    if (FileUtil.a(paramFileManagerEntity.strMiddleThumPath)) {
-      return true;
-    }
-    return FileUtil.a(paramFileManagerEntity.strThumbPath);
   }
   
   private static boolean b(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
@@ -5430,29 +4103,6 @@ public class QQFileManagerUtilImpl
     return (paramFileManagerEntity2.str10Md5 != null) && (paramFileManagerEntity2.str10Md5.equals(paramFileManagerEntity1.str10Md5));
   }
   
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return new VFSFile(paramString).exists();
-  }
-  
-  private static boolean b(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      if (c(paramString1, paramInt1, paramInt2, paramIThumbResult, paramString2)) {
-        return false;
-      }
-    }
-    else {
-      QQFileManagerUtil.FileExecutor.a().execute(new QQFileManagerUtilImpl.12(paramString2, paramIThumbResult, paramString1, paramInt1, paramInt2));
-    }
-    return true;
-  }
-  
   public static boolean b(String paramString1, String paramString2)
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0);
@@ -5469,44 +4119,9 @@ public class QQFileManagerUtilImpl
     return a(paramString);
   }
   
-  private static int[] b(String paramString)
+  public static long c()
   {
-    if (FileUtils.fileExistsAndNotEmpty(paramString))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).decodeFileWithBufferedStream(paramString, localOptions);
-      int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExifRotation(paramString);
-      if ((i != 90) && (i != 270)) {
-        return new int[] { localOptions.outWidth, localOptions.outHeight };
-      }
-      return new int[] { localOptions.outHeight, localOptions.outWidth };
-    }
-    return new int[] { 0, 0 };
-  }
-  
-  public static int c(FileManagerEntity paramFileManagerEntity)
-  {
-    paramFileManagerEntity = paramFileManagerEntity.fileName.toUpperCase();
-    if (paramFileManagerEntity.endsWith(".ZIP")) {
-      return 13;
-    }
-    if (paramFileManagerEntity.endsWith(".RAR")) {
-      return 14;
-    }
-    if (paramFileManagerEntity.endsWith(".7Z")) {
-      return 15;
-    }
-    return -1;
-  }
-  
-  public static int c(String paramString)
-  {
-    paramString = FileUtil.a(paramString);
-    if (paramString == null) {
-      return 2130844437;
-    }
-    return a(d(paramString));
+    return MessageUtils.a(MessageUtils.a());
   }
   
   public static String c(int paramInt)
@@ -5542,7 +4157,1084 @@ public class QQFileManagerUtilImpl
     return "image";
   }
   
-  public static String c(FileManagerEntity paramFileManagerEntity)
+  private static void c(int paramInt, String paramString, FileManagerEntity paramFileManagerEntity)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      p(paramString);
+      return;
+    }
+    if (!a(paramInt, paramFileManagerEntity.fileName)) {
+      a(13, paramFileManagerEntity.fileName);
+    }
+  }
+  
+  public static void c(long paramLong)
+  {
+    try
+    {
+      Object localObject1 = e;
+      if (localObject1 == null) {
+        return;
+      }
+      e.remove(Long.valueOf(paramLong));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("nSessionID[");
+        ((StringBuilder)localObject1).append(paramLong);
+        ((StringBuilder)localObject1).append("]移除不显示取消按钮队列");
+        QLog.e("##########", 2, ((StringBuilder)localObject1).toString());
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static void c(Context paramContext, String paramString)
+  {
+    if (!FileUtils.fileExistsAndNotEmpty(paramString))
+    {
+      QQFMToastUtil.a(2131889788);
+      return;
+    }
+    paramString = FileProvider7Helper.openApkIntent(paramContext, paramString);
+    paramString.putExtra("big_brother_source_key", "biz_src_jc_file");
+    List localList = paramContext.getPackageManager().queryIntentActivities(paramString, 65536);
+    int j = localList.size();
+    int i = 1;
+    if ((j != 1) || (!((ResolveInfo)localList.get(0)).activityInfo.name.equals("com.tencent.mobileqq.activity.JumpActivity"))) {
+      i = 0;
+    }
+    if ((localList.size() > 0) && (i == 0)) {}
+    try
+    {
+      paramContext.startActivity(paramString);
+      return;
+    }
+    catch (ActivityNotFoundException paramContext)
+    {
+      label110:
+      break label110;
+    }
+    QQFMToastUtil.a(2131891277);
+    return;
+    QQFMToastUtil.a(2131891277);
+  }
+  
+  private static void c(TextView paramTextView, FileManagerEntity paramFileManagerEntity)
+  {
+    String str1 = QfileTimeUtils.b(paramFileManagerEntity.srvTime);
+    String str2 = l(paramFileManagerEntity);
+    String str4 = FileUtil.a(paramFileManagerEntity.fileSize);
+    String str5 = k(paramFileManagerEntity);
+    String str3 = BaseApplication.getContext().getString(2131889334);
+    int i = paramTextView.getWidth();
+    TextPaint localTextPaint = paramTextView.getPaint();
+    if (paramFileManagerEntity.nFileType == 13)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getString(2131889286));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(str4);
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(str5);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    float f1 = localTextPaint.measureText((String)localObject) + 30.0F;
+    float f2 = i;
+    if (f1 < f2)
+    {
+      paramTextView.setText((CharSequence)localObject);
+      return;
+    }
+    float f3 = i * 2;
+    StringBuilder localStringBuilder;
+    if (f1 > f3)
+    {
+      int j = str2.length();
+      i = 1;
+      for (;;)
+      {
+        int k = j - i;
+        if (k <= 0) {
+          break;
+        }
+        localObject = str2.substring(0, k);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str3);
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(b);
+        localStringBuilder.append(str3);
+        localStringBuilder.append(str4);
+        localStringBuilder.append(str3);
+        localStringBuilder.append(str5);
+        if (localTextPaint.measureText(localStringBuilder.toString()) + 30.0F < f3)
+        {
+          paramTextView.setVisibility(0);
+          if (paramFileManagerEntity.nFileType == 13)
+          {
+            paramFileManagerEntity = new StringBuilder();
+            paramFileManagerEntity.append(str1);
+            paramFileManagerEntity.append(" ");
+            paramFileManagerEntity.append(str2);
+            paramFileManagerEntity.append(b);
+            paramFileManagerEntity.append(" ");
+            paramFileManagerEntity.append(BaseApplication.getContext().getString(2131889286));
+            paramTextView.setText(paramFileManagerEntity.toString());
+            return;
+          }
+          paramFileManagerEntity = new StringBuilder();
+          paramFileManagerEntity.append(str1);
+          paramFileManagerEntity.append(str3);
+          paramFileManagerEntity.append((String)localObject);
+          paramFileManagerEntity.append(b);
+          paramFileManagerEntity.append(str3);
+          paramFileManagerEntity.append(str4);
+          paramFileManagerEntity.append(str3);
+          paramFileManagerEntity.append(str5);
+          paramTextView.setText(paramFileManagerEntity.toString());
+          return;
+        }
+        i += 1;
+      }
+      if (paramFileManagerEntity.nFileType == 13)
+      {
+        paramFileManagerEntity = new StringBuilder();
+        paramFileManagerEntity.append(str1);
+        paramFileManagerEntity.append(" ");
+        paramFileManagerEntity.append(str2);
+        paramFileManagerEntity.append("\n");
+        paramFileManagerEntity.append(BaseApplication.getContext().getString(2131889286));
+        paramTextView.setText(paramFileManagerEntity.toString());
+        return;
+      }
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append(str1);
+      paramFileManagerEntity.append(str3);
+      paramFileManagerEntity.append(str2);
+      paramFileManagerEntity.append("\n");
+      paramFileManagerEntity.append(str4);
+      paramFileManagerEntity.append(str3);
+      paramFileManagerEntity.append(str5);
+      paramTextView.setText(paramFileManagerEntity.toString());
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(str3);
+    ((StringBuilder)localObject).append(str2);
+    if (localTextPaint.measureText(((StringBuilder)localObject).toString()) + 30.0F > f2)
+    {
+      i = 4;
+      while (i <= str2.length())
+      {
+        localObject = str2.substring(0, i);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str3);
+        localStringBuilder.append((String)localObject);
+        if (localTextPaint.measureText(localStringBuilder.toString()) + 30.0F > f2)
+        {
+          localObject = str2.substring(0, i - 1);
+          str2 = str2.replace((CharSequence)localObject, "");
+          if (paramFileManagerEntity.nFileType == 13)
+          {
+            paramFileManagerEntity = new StringBuilder();
+            paramFileManagerEntity.append(str1);
+            paramFileManagerEntity.append(" ");
+            paramFileManagerEntity.append((String)localObject);
+            paramFileManagerEntity.append("\n");
+            paramFileManagerEntity.append(str2);
+            paramFileManagerEntity.append(str3);
+            paramFileManagerEntity.append(BaseApplication.getContext().getString(2131889286));
+            paramTextView.setText(paramFileManagerEntity.toString());
+          }
+          else
+          {
+            paramFileManagerEntity = new StringBuilder();
+            paramFileManagerEntity.append(str1);
+            paramFileManagerEntity.append(str3);
+            paramFileManagerEntity.append((String)localObject);
+            paramFileManagerEntity.append("\n");
+            paramFileManagerEntity.append(str2);
+            paramFileManagerEntity.append(str3);
+            paramFileManagerEntity.append(str4);
+            paramFileManagerEntity.append(str3);
+            paramFileManagerEntity.append(str5);
+            paramTextView.setText(paramFileManagerEntity.toString());
+          }
+          paramTextView.setVisibility(0);
+          return;
+        }
+        i += 1;
+      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(str3);
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(str3);
+    ((StringBuilder)localObject).append(str4);
+    if (localTextPaint.measureText(((StringBuilder)localObject).toString()) + 30.0F > f2)
+    {
+      if (paramFileManagerEntity.nFileType == 13)
+      {
+        paramFileManagerEntity = new StringBuilder();
+        paramFileManagerEntity.append(str1);
+        paramFileManagerEntity.append(" ");
+        paramFileManagerEntity.append(str2);
+        paramFileManagerEntity.append("\n");
+        paramFileManagerEntity.append(BaseApplication.getContext().getString(2131889286));
+        paramTextView.setText(paramFileManagerEntity.toString());
+      }
+      else
+      {
+        paramFileManagerEntity = new StringBuilder();
+        paramFileManagerEntity.append(str1);
+        paramFileManagerEntity.append(str3);
+        paramFileManagerEntity.append(str2);
+        paramFileManagerEntity.append("\n");
+        paramFileManagerEntity.append(str4);
+        paramFileManagerEntity.append(str3);
+        paramFileManagerEntity.append(str5);
+        paramTextView.setText(paramFileManagerEntity.toString());
+      }
+      paramTextView.setVisibility(0);
+      return;
+    }
+    if (paramFileManagerEntity.nFileType == 13)
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append(str1);
+      paramFileManagerEntity.append(" ");
+      paramFileManagerEntity.append(str2);
+      paramFileManagerEntity.append(BaseApplication.getContext().getString(2131889286));
+      paramTextView.setText(paramFileManagerEntity.toString());
+    }
+    else
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append(str1);
+      paramFileManagerEntity.append(str3);
+      paramFileManagerEntity.append(str2);
+      paramFileManagerEntity.append(str3);
+      paramFileManagerEntity.append(str4);
+      paramFileManagerEntity.append(str3);
+      paramFileManagerEntity.append(str5);
+      paramTextView.setText(paramFileManagerEntity.toString());
+    }
+    paramTextView.setVisibility(0);
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    return ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).isImportLocaFilesForH5(paramContext);
+  }
+  
+  private static boolean c(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramChatMessage != null)
+    {
+      if (!QQFileUtilsImpl.a(paramChatMessage)) {
+        return false;
+      }
+      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileStatus");
+      if (!TextUtils.isEmpty(paramChatMessage))
+      {
+        bool1 = bool2;
+        if (Integer.parseInt(paramChatMessage) != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean c(FileManagerEntity paramFileManagerEntity)
+  {
+    boolean bool = false;
+    if (paramFileManagerEntity == null) {
+      return false;
+    }
+    long l3 = paramFileManagerEntity.srvTime;
+    int i = paramFileManagerEntity.peerType;
+    long l2 = 604800000L;
+    long l1 = l2;
+    if (i != 0) {
+      if (i != 3000) {
+        l1 = l2;
+      } else {
+        l1 = 2592000000L;
+      }
+    }
+    if (l3 + l1 <= MessageCache.c() * 1000L) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static boolean c(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      if (d(paramString1, paramInt1, paramInt2, paramIThumbResult, paramString2)) {
+        return false;
+      }
+    }
+    else {
+      QQFileManagerUtil.FileExecutor.a().execute(new QQFileManagerUtilImpl.12(paramString2, paramIThumbResult, paramString1, paramInt1, paramInt2));
+    }
+    return true;
+  }
+  
+  public static byte[] c(String paramString)
+  {
+    return a(paramString, j(paramString));
+  }
+  
+  /* Error */
+  private static byte[] c(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: new 2446	java/io/BufferedInputStream
+    //   3: dup
+    //   4: new 2448	java/io/FileInputStream
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 2449	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: invokespecial 2452	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   15: astore_0
+    //   16: sipush 10240
+    //   19: newarray byte
+    //   21: astore_3
+    //   22: aload_1
+    //   23: invokestatic 2444	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   26: astore_1
+    //   27: goto +10 -> 37
+    //   30: astore_1
+    //   31: aload_1
+    //   32: invokevirtual 2895	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   35: aconst_null
+    //   36: astore_1
+    //   37: aload_0
+    //   38: aload_3
+    //   39: invokevirtual 2466	java/io/InputStream:read	([B)I
+    //   42: istore_2
+    //   43: iload_2
+    //   44: ifle +13 -> 57
+    //   47: aload_1
+    //   48: aload_3
+    //   49: iconst_0
+    //   50: iload_2
+    //   51: invokevirtual 2470	java/security/MessageDigest:update	([BII)V
+    //   54: goto -17 -> 37
+    //   57: aload_0
+    //   58: invokevirtual 2482	java/io/InputStream:close	()V
+    //   61: aload_1
+    //   62: ifnull +14 -> 76
+    //   65: aload_1
+    //   66: invokevirtual 2479	java/security/MessageDigest:digest	()[B
+    //   69: astore_1
+    //   70: aload_0
+    //   71: invokevirtual 2482	java/io/InputStream:close	()V
+    //   74: aload_1
+    //   75: areturn
+    //   76: aload_0
+    //   77: invokevirtual 2482	java/io/InputStream:close	()V
+    //   80: aconst_null
+    //   81: areturn
+    //   82: astore_3
+    //   83: aload_0
+    //   84: astore_1
+    //   85: aload_3
+    //   86: astore_0
+    //   87: goto +6 -> 93
+    //   90: astore_0
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: aload_1
+    //   94: ifnull +7 -> 101
+    //   97: aload_1
+    //   98: invokevirtual 2482	java/io/InputStream:close	()V
+    //   101: aload_0
+    //   102: athrow
+    //   103: aconst_null
+    //   104: astore_0
+    //   105: aload_0
+    //   106: ifnull +18 -> 124
+    //   109: aload_0
+    //   110: invokevirtual 2482	java/io/InputStream:close	()V
+    //   113: aconst_null
+    //   114: areturn
+    //   115: aconst_null
+    //   116: astore_0
+    //   117: aload_0
+    //   118: ifnull +6 -> 124
+    //   121: goto -12 -> 109
+    //   124: aconst_null
+    //   125: areturn
+    //   126: astore_0
+    //   127: goto -12 -> 115
+    //   130: astore_0
+    //   131: goto -28 -> 103
+    //   134: astore_1
+    //   135: goto -18 -> 117
+    //   138: astore_1
+    //   139: goto -34 -> 105
+    //   142: astore_3
+    //   143: goto -82 -> 61
+    //   146: astore_0
+    //   147: aload_1
+    //   148: areturn
+    //   149: astore_0
+    //   150: aconst_null
+    //   151: areturn
+    //   152: astore_1
+    //   153: goto -52 -> 101
+    //   156: astore_0
+    //   157: aconst_null
+    //   158: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	paramString1	String
+    //   0	159	1	paramString2	String
+    //   42	9	2	i	int
+    //   21	28	3	arrayOfByte	byte[]
+    //   82	4	3	localObject	Object
+    //   142	1	3	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   22	27	30	java/security/NoSuchAlgorithmException
+    //   16	22	82	finally
+    //   22	27	82	finally
+    //   31	35	82	finally
+    //   37	43	82	finally
+    //   47	54	82	finally
+    //   57	61	82	finally
+    //   65	70	82	finally
+    //   0	16	90	finally
+    //   0	16	126	java/io/FileNotFoundException
+    //   0	16	130	java/io/IOException
+    //   16	22	134	java/io/FileNotFoundException
+    //   22	27	134	java/io/FileNotFoundException
+    //   31	35	134	java/io/FileNotFoundException
+    //   37	43	134	java/io/FileNotFoundException
+    //   47	54	134	java/io/FileNotFoundException
+    //   57	61	134	java/io/FileNotFoundException
+    //   65	70	134	java/io/FileNotFoundException
+    //   16	22	138	java/io/IOException
+    //   22	27	138	java/io/IOException
+    //   31	35	138	java/io/IOException
+    //   37	43	138	java/io/IOException
+    //   47	54	138	java/io/IOException
+    //   65	70	138	java/io/IOException
+    //   57	61	142	java/io/IOException
+    //   70	74	146	java/io/IOException
+    //   76	80	149	java/io/IOException
+    //   97	101	152	java/io/IOException
+    //   109	113	156	java/io/IOException
+  }
+  
+  public static int d(int paramInt)
+  {
+    return a(paramInt, 2);
+  }
+  
+  @TargetApi(9)
+  public static int d(String paramString)
+  {
+    if (paramString == null) {
+      return -1;
+    }
+    Object localObject = FileUtil.c(paramString);
+    if (i().equalsIgnoreCase((String)localObject)) {
+      return 0;
+    }
+    try
+    {
+      localObject = BaseApplication.getContext().getSharedPreferences("ExternalFileOfFM", 0).edit();
+      ((SharedPreferences.Editor)localObject).putString(paramString, "-");
+      if (Build.VERSION.SDK_INT < 9)
+      {
+        ((SharedPreferences.Editor)localObject).commit();
+        return 0;
+      }
+      ((SharedPreferences.Editor)localObject).apply();
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -2;
+  }
+  
+  private static String d(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
+  }
+  
+  public static void d(long paramLong)
+  {
+    Object localObject = l();
+    localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileEntityBySessionId((BaseQQAppInterface)localObject, paramLong);
+    if (localObject == null) {
+      return;
+    }
+    int i = ((FileManagerEntity)localObject).nOpType;
+    if ((i != -1) && (i != 0))
+    {
+      if (i != 1) {
+        if (i == 20) {}
+      }
+      switch (i)
+      {
+      default: 
+      case 4: 
+      case 6: 
+        if (((FileManagerEntity)localObject).nOpType == 6)
+        {
+          QQFMToastUtil.c(BaseApplication.getContext().getString(2131895162));
+          return;
+        }
+        if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(0))
+        {
+          QQFMToastUtil.c(BaseApplication.getContext().getString(2131895162));
+          return;
+        }
+        break;
+      case 5: 
+      case 8: 
+        localObject = q(((FileManagerEntity)localObject).fileName);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(j(2131889302));
+        localStringBuilder.append(FMSettings.a().getDefaultRecvPath());
+        QQFMToastUtil.c(localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public static void d(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {
+      return;
+    }
+    boolean bool = FileUtil.d(paramFileManagerEntity.getFilePath());
+    if ((bool) && (i(paramFileManagerEntity.nOpType)))
+    {
+      paramFileManagerEntity.cloudType = 3;
+      paramFileManagerEntity.status = 1;
+      return;
+    }
+    if (paramFileManagerEntity.getCloudType() != 3) {
+      return;
+    }
+    if ((bool) && ((paramFileManagerEntity.nOpType == 0) || (paramFileManagerEntity.nOpType == 6) || (paramFileManagerEntity.nOpType == 52))) {
+      return;
+    }
+    if ((bool) && (paramFileManagerEntity.nOpType == 51))
+    {
+      if (paramFileManagerEntity.status == 16) {
+        paramFileManagerEntity.status = 0;
+      }
+      return;
+    }
+    if (paramFileManagerEntity.nFileType == 5) {
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramFileManagerEntity);
+    }
+    if (paramFileManagerEntity.status == 1)
+    {
+      paramFileManagerEntity.status = 16;
+      if (paramFileManagerEntity.peerType == 6000)
+      {
+        paramFileManagerEntity.setCloudType(6);
+        paramFileManagerEntity.status = 16;
+        return;
+      }
+      if (paramFileManagerEntity.peerType == 10014)
+      {
+        paramFileManagerEntity.setCloudType(12);
+        paramFileManagerEntity.status = -1;
+        return;
+      }
+      if ((paramFileManagerEntity.Uuid != null) && (paramFileManagerEntity.Uuid.length() > 0))
+      {
+        paramFileManagerEntity.setCloudType(1);
+        paramFileManagerEntity.status = -1;
+        return;
+      }
+      if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId))
+      {
+        paramFileManagerEntity.setCloudType(2);
+        paramFileManagerEntity.status = -1;
+      }
+    }
+  }
+  
+  public static boolean d()
+  {
+    return AppNetConnInfo.isMobileConn();
+  }
+  
+  public static boolean d(Context paramContext, String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 26) {
+      return ShortcutUtils.a(paramContext, new String[] { paramString });
+    }
+    return a(paramString, (ShortcutManager)paramContext.getSystemService(ShortcutManager.class));
+  }
+  
+  private static boolean d(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
+  {
+    Bitmap localBitmap = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageThumbnail(paramString1, paramInt1, paramInt2);
+    if (localBitmap == null)
+    {
+      if (paramIThumbResult != null) {
+        paramIThumbResult.a(null);
+      }
+      return true;
+    }
+    try
+    {
+      FileUtil.a(localBitmap, paramString2);
+      localBitmap.recycle();
+      paramInt1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageDegree(paramString1);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setImageDegree(paramString2, paramInt1);
+      if (paramIThumbResult != null) {
+        paramIThumbResult.a(paramString2);
+      }
+      return false;
+    }
+    catch (OutOfMemoryError paramString1)
+    {
+      paramString1.printStackTrace();
+      paramString2 = new StringBuilder();
+      paramString2.append("createThumbnail OutOfMemoryError:");
+      paramString2.append(paramString1.getMessage());
+      QLog.w("FileManagerUtil<FileAssistant>", 1, paramString2.toString());
+      if (paramIThumbResult != null) {
+        paramIThumbResult.a(null);
+      }
+      return true;
+    }
+    catch (IOException paramString1)
+    {
+      b(paramIThumbResult, paramString1, "createThumbnail IOException:");
+      return true;
+    }
+    catch (FileNotFoundException paramString1)
+    {
+      b(paramIThumbResult, paramString1, "createThumbnail FileNotFoundException:");
+    }
+    return true;
+  }
+  
+  public static int e(String paramString)
+  {
+    if (paramString == null) {
+      return -1;
+    }
+    Object localObject = FileUtil.c(paramString);
+    if (i().equalsIgnoreCase((String)localObject)) {
+      return 0;
+    }
+    try
+    {
+      localObject = BaseApplication.getContext().getSharedPreferences("ExternalFileOfFM", 0).edit();
+      ((SharedPreferences.Editor)localObject).remove(paramString);
+      ((SharedPreferences.Editor)localObject).commit();
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -2;
+  }
+  
+  public static long e(long paramLong)
+  {
+    return paramLong | 0x80000000;
+  }
+  
+  public static void e(int paramInt)
+  {
+    QQFMToastUtil.a(paramInt);
+  }
+  
+  public static void e(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null)
+    {
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "entity null!");
+      return;
+    }
+    String str;
+    if (!paramFileManagerEntity.isCheckPrivateDir)
+    {
+      paramFileManagerEntity.isCheckPrivateDir = true;
+      str = paramFileManagerEntity.getFilePath();
+      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
+        paramFileManagerEntity.setFilePath(VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.getFilePath()));
+      }
+      str = paramFileManagerEntity.strThumbPath;
+      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
+        paramFileManagerEntity.strThumbPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strThumbPath);
+      }
+      str = paramFileManagerEntity.strMiddleThumPath;
+      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
+        paramFileManagerEntity.strMiddleThumPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strMiddleThumPath);
+      }
+      str = paramFileManagerEntity.strLargeThumPath;
+      if ((str != null) && (str.contains("/Tencent/QQfile_recv/"))) {
+        paramFileManagerEntity.strLargeThumPath = VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.strLargeThumPath);
+      }
+    }
+    if ((paramFileManagerEntity.nFileType == -1) || (paramFileManagerEntity.nFileType == 5))
+    {
+      str = paramFileManagerEntity.getFilePath();
+      if (str != null)
+      {
+        paramFileManagerEntity.nFileType = g(str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(AppConstants.SDCARD_PATH);
+        localStringBuilder.append("/Android/data/com.tencent.mobileqq");
+        if (str.startsWith(localStringBuilder.toString())) {
+          paramFileManagerEntity.setFilePath(VFSAssistantUtils.getSDKPrivatePath(paramFileManagerEntity.getFilePath()));
+        }
+      }
+      else
+      {
+        if ((paramFileManagerEntity.getCloudType() != 3) && (paramFileManagerEntity.getCloudType() != 5))
+        {
+          if ((paramFileManagerEntity.strSrcName != null) && (paramFileManagerEntity.strSrcName.length() > 0))
+          {
+            paramFileManagerEntity.nFileType = g(paramFileManagerEntity.strSrcName);
+            return;
+          }
+          paramFileManagerEntity.nFileType = g(paramFileManagerEntity.fileName);
+          return;
+        }
+        paramFileManagerEntity.nFileType = g(paramFileManagerEntity.fileName);
+      }
+    }
+  }
+  
+  public static boolean e()
+  {
+    return FMConfig.e();
+  }
+  
+  public static int f(int paramInt)
+  {
+    int j = 0;
+    int i;
+    if (paramInt != -1)
+    {
+      i = j;
+      if (paramInt == 0) {
+        return i;
+      }
+      if (paramInt != 1) {
+        if (paramInt != 2) {
+          if (paramInt != 3)
+          {
+            if (paramInt == 2008) {
+              break label133;
+            }
+            if (paramInt != 4001) {
+              i = j;
+            }
+          }
+        }
+      }
+    }
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+      switch (paramInt)
+      {
+      }
+      break;
+    case 1004: 
+      return 3;
+    case 1001: 
+    case 1002: 
+      return 2;
+    case 1003: 
+      return 1;
+    case 1000: 
+      label133:
+      i = -1;
+    }
+    return i;
+  }
+  
+  public static int f(String paramString)
+  {
+    paramString = FileUtil.a(paramString);
+    if (paramString == null) {
+      return 2130845755;
+    }
+    return d(g(paramString));
+  }
+  
+  public static void f()
+  {
+    ThreadManager.post(new QQFileManagerUtilImpl.5(), 8, null, false);
+  }
+  
+  public static boolean f(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {
+      return false;
+    }
+    if (FileUtil.b(paramFileManagerEntity.strLargeThumPath)) {
+      return true;
+    }
+    if (FileUtil.b(paramFileManagerEntity.strMiddleThumPath)) {
+      return true;
+    }
+    return FileUtil.b(paramFileManagerEntity.strThumbPath);
+  }
+  
+  public static int g(String paramString)
+  {
+    try
+    {
+      Object localObject = FileUtil.a(paramString);
+      if ((localObject != null) && (((String)localObject).length() != 0))
+      {
+        localObject = ((String)localObject).toLowerCase();
+        if (c == null)
+        {
+          c = new HashMap();
+          c.put(".mp3", Integer.valueOf(1));
+          c.put(".3gpp", Integer.valueOf(1));
+          c.put(".flac", Integer.valueOf(1));
+          c.put(".ogg", Integer.valueOf(1));
+          c.put(".wav", Integer.valueOf(1));
+          c.put(".m4a", Integer.valueOf(1));
+          c.remove(".flv");
+          c.remove(".m");
+          c.remove(".webp");
+          c.remove(".vcf");
+          c.put(".bmp", Integer.valueOf(0));
+          c.put(".jpg", Integer.valueOf(0));
+          c.put(".jpeg", Integer.valueOf(0));
+          c.put(".png", Integer.valueOf(0));
+          c.put(".gif", Integer.valueOf(0));
+          c.put(".webp", Integer.valueOf(0));
+          c.put(".psd", Integer.valueOf(12));
+          c.put(".swf", Integer.valueOf(2));
+          c.put(".mov", Integer.valueOf(2));
+          c.put(".mp4", Integer.valueOf(2));
+          c.put(".3gp", Integer.valueOf(2));
+          c.put(".avi", Integer.valueOf(2));
+          c.put(".rmvb", Integer.valueOf(2));
+          c.put(".mpg", Integer.valueOf(2));
+          c.put(".rm", Integer.valueOf(2));
+          c.put(".asf", Integer.valueOf(2));
+          c.put(".mpeg", Integer.valueOf(2));
+          c.put(".mkv", Integer.valueOf(2));
+          c.put(".wmv", Integer.valueOf(2));
+          c.put(".flv", Integer.valueOf(2));
+          c.put(".f4v", Integer.valueOf(2));
+          c.put(".webm", Integer.valueOf(2));
+          c.put(".mod", Integer.valueOf(2));
+          c.put(".mpe", Integer.valueOf(2));
+          c.put(".fla", Integer.valueOf(2));
+          c.put(".m4r", Integer.valueOf(2));
+          c.put(".m4u", Integer.valueOf(2));
+          c.put(".m4v", Integer.valueOf(2));
+          c.put(".vob", Integer.valueOf(2));
+          c.put(".doc", Integer.valueOf(3));
+          c.put(".docx", Integer.valueOf(3));
+          c.put(".wps", Integer.valueOf(3));
+          c.put(".pages", Integer.valueOf(3));
+          c.put(".zip", Integer.valueOf(4));
+          c.put(".rar", Integer.valueOf(4));
+          c.put(".7z", Integer.valueOf(4));
+          c.put(".tar", Integer.valueOf(4));
+          c.put(".iso", Integer.valueOf(4));
+          c.put(".gz", Integer.valueOf(4));
+          c.put(".apk", Integer.valueOf(5));
+          c.put(".apk.rename", Integer.valueOf(5));
+          c.put(".xls", Integer.valueOf(6));
+          c.put(".xlsx", Integer.valueOf(6));
+          c.put(".csv", Integer.valueOf(6));
+          c.put(".numbers", Integer.valueOf(6));
+          c.put(".et", Integer.valueOf(6));
+          c.put(".ppt", Integer.valueOf(7));
+          c.put(".pptx", Integer.valueOf(7));
+          c.put(".pps", Integer.valueOf(7));
+          c.put(".dps", Integer.valueOf(7));
+          c.put(".keynotes", Integer.valueOf(7));
+          c.put(".htm", Integer.valueOf(8));
+          c.put(".html", Integer.valueOf(8));
+          c.put(".php", Integer.valueOf(8));
+          c.put(".pdf", Integer.valueOf(9));
+          c.put(".txt", Integer.valueOf(10));
+          c.put(".epub", Integer.valueOf(10));
+          c.put(".rtf", Integer.valueOf(10));
+          c.put(".c", Integer.valueOf(10));
+          c.put(".conf", Integer.valueOf(10));
+          c.put(".cpp", Integer.valueOf(10));
+          c.put(".h", Integer.valueOf(10));
+          c.put(".java", Integer.valueOf(10));
+          c.put(".log", Integer.valueOf(10));
+          c.put(".prop", Integer.valueOf(10));
+          c.put(".rc", Integer.valueOf(10));
+          c.put(".sh", Integer.valueOf(10));
+          c.put(".csv", Integer.valueOf(10));
+          c.put(".xml", Integer.valueOf(10));
+          c.put(".ai", Integer.valueOf(14));
+          c.put(".font", Integer.valueOf(15));
+          c.put(".ipa", Integer.valueOf(16));
+          c.put(".keynote", Integer.valueOf(17));
+          c.put(".note", Integer.valueOf(18));
+          c.put(".numbers", Integer.valueOf(19));
+          c.put(".pages", Integer.valueOf(20));
+          c.put(".sketch", Integer.valueOf(21));
+        }
+        if (c.containsKey(((String)localObject).toLowerCase()))
+        {
+          int i = ((Integer)c.get(((String)localObject).toLowerCase())).intValue();
+          return i;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Unknow file Type[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("]");
+          QLog.w("FileManagerUtil<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+        }
+        return 11;
+      }
+      return -1;
+    }
+    finally {}
+  }
+  
+  public static long g(int paramInt)
+  {
+    if (paramInt != 1000)
+    {
+      if (paramInt != 1001)
+      {
+        if (paramInt != 1004)
+        {
+          if (paramInt != 1006)
+          {
+            if (paramInt != 1010)
+            {
+              if (paramInt != 10002)
+              {
+                if ((paramInt != 1024) && (paramInt != 1025)) {
+                  return -1L;
+                }
+                return 124L;
+              }
+              return 127L;
+            }
+            return 109L;
+          }
+          return 102L;
+        }
+        return 105L;
+      }
+      return 100L;
+    }
+    return 104L;
+  }
+  
+  public static TimeoutParam g()
+  {
+    Object localObject = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+    boolean bool = false;
+    int i;
+    int k;
+    if (localObject != null)
+    {
+      j = ((NetworkInfo)localObject).getType();
+      i = j;
+      if (j == 1)
+      {
+        k = 1;
+        i = j;
+        j = k;
+        break label51;
+      }
+    }
+    else
+    {
+      i = -1;
+    }
+    int j = 0;
+    label51:
+    int m = MobileQQ.sMobileQQ.getMsfConnectedNetType();
+    if (m == 2) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getNetworkInfo,systemType:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" msfType:");
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(" isSameNet:");
+      if (j == k) {
+        bool = true;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.i("FileManagerUtil<FileAssistant>.NetDebug", 1, ((StringBuilder)localObject).toString());
+    }
+    if (j != k)
+    {
+      localObject = new TimeoutParam();
+      ((TimeoutParam)localObject).readTimeoutFor2G = 20000;
+      ((TimeoutParam)localObject).readTimeoutFor3G = 15000;
+      ((TimeoutParam)localObject).readTimeoutForWifi = 10000;
+      ((TimeoutParam)localObject).connectTimeoutFor2G = 10000;
+      ((TimeoutParam)localObject).connectTimeoutFor3G = 5000;
+      ((TimeoutParam)localObject).connectTimeoutForWifi = 5000;
+      return localObject;
+    }
+    return null;
+  }
+  
+  public static String g(FileManagerEntity paramFileManagerEntity)
   {
     if (paramFileManagerEntity == null) {
       return "";
@@ -5588,9 +5280,9 @@ public class QQFileManagerUtilImpl
       localStringBuilder.append("], peerType[");
       localStringBuilder.append(paramFileManagerEntity.peerType);
       localStringBuilder.append("], peerUin[");
-      localStringBuilder.append(e(paramFileManagerEntity.peerUin));
+      localStringBuilder.append(t(paramFileManagerEntity.peerUin));
       localStringBuilder.append("], selfUin[");
-      localStringBuilder.append(e(paramFileManagerEntity.selfUin));
+      localStringBuilder.append(t(paramFileManagerEntity.selfUin));
       localStringBuilder.append("], srvTime[");
       localStringBuilder.append(paramFileManagerEntity.srvTime);
       localStringBuilder.append("], status[");
@@ -5634,7 +5326,685 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static String c(String paramString)
+  public static int h(FileManagerEntity paramFileManagerEntity)
+  {
+    int i = paramFileManagerEntity.status;
+    int k = 0;
+    if ((-1 != i) && (1 != paramFileManagerEntity.status)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    int j = k;
+    if (paramFileManagerEntity.bSend)
+    {
+      j = k;
+      if (8 != paramFileManagerEntity.nOpType)
+      {
+        j = k;
+        if (5 != paramFileManagerEntity.nOpType)
+        {
+          j = k;
+          if (1 != paramFileManagerEntity.nOpType) {
+            j = 1;
+          }
+        }
+      }
+    }
+    if (3 == paramFileManagerEntity.getCloudType())
+    {
+      if ((j == 0) || ((j != 0) && (i != 0)))
+      {
+        if ((!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) && (paramFileManagerEntity.peerType != 6000)) {
+          return 1;
+        }
+        if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId)) {
+          return 2;
+        }
+        if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFilePath)) {
+          return 4;
+        }
+      }
+      return 3;
+    }
+    if (((2 == paramFileManagerEntity.getCloudType()) || (1 == paramFileManagerEntity.getCloudType()) || ((4 == paramFileManagerEntity.getCloudType()) && (paramFileManagerEntity.nOpType != 24))) && (j != 0) && (i == 0) && (!TextUtils.isEmpty(paramFileManagerEntity.getFilePath()))) {
+      return 3;
+    }
+    return paramFileManagerEntity.getCloudType();
+  }
+  
+  public static String h()
+  {
+    try
+    {
+      String str = FileUtils.printStack();
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static String h(String paramString)
+  {
+    if (d == null)
+    {
+      d = new HashMap();
+      d.put("OnlinePreViewRotateScreenFunctionalSwitch", "1");
+      d.put("OnlinePreViewLocalPreviewFunctionalSwitch", "0");
+      d.put("OnlinePreViewAutoPreviewFunctionSwitch", "1");
+      d.put("OnlinePreViewAutoPreviewWiFiMaxSize", "1000");
+      d.put("OnlinePreViewAutoPreview3GMaxSize", "0");
+      d.put("OnlinePreViewAutoPreviewWiFiGroupMaxSize", "1000");
+      d.put("OnlinePreViewAutoPreview3GGroupMaxSize", "0");
+      d.put("OnlinePreViewdocFileMaxSize", "10");
+      d.put("OnlinePreViewdocFileType", "1");
+      d.put("OnlinePreViewdocInterfacePage", "qq_document_previewer_v2.html");
+      d.put("OnlinePreViewdocPreviewMode", "0");
+      d.put("OnlinePreViewdocxFileMaxSize", "10");
+      d.put("OnlinePreViewdocxFileType", "2");
+      d.put("OnlinePreViewdocxInterfacePage", "qq_document_previewer_v2.html");
+      d.put("OnlinePreViewdocxPreviewMode", "0");
+      d.put("OnlinePreViewrtfFileMaxSize", "10");
+      d.put("OnlinePreViewrtfFileType", "7");
+      d.put("OnlinePreViewrtfInterfacePage", "qq_document_previewer_v2.html");
+      d.put("OnlinePreViewrtfPreviewMode", "0");
+      d.put("OnlinePreViewpptFileMaxSize", "10");
+      d.put("OnlinePreViewpptFileType", "5");
+      d.put("OnlinePreViewpptInterfacePage", "qq_ppt_previewer_v2.html");
+      d.put("OnlinePreViewpptPreviewMode", "4");
+      d.put("OnlinePreViewpptxFileMaxSize", "10");
+      d.put("OnlinePreViewpptxFileType", "6");
+      d.put("OnlinePreViewpptxInterfacePage", "qq_ppt_previewer_v2.html");
+      d.put("OnlinePreViewpptxPreviewMode", "5");
+      d.put("OnlinePreViewpdfFileMaxSize", "10");
+      d.put("OnlinePreViewpdfFileType", "8");
+      d.put("OnlinePreViewpdfInterfacePage", "qq_pdf_previewer_v2.html");
+      d.put("OnlinePreViewpdfPreviewMode", "3");
+      d.put("OnlinePreViewzipFileMaxSize", "100");
+      d.put("OnlinePreViewzipFileType", "13");
+      d.put("OnlinePreViewzipInterfacePage", "qq_compress_previewer_v2.html");
+      d.put("OnlinePreViewzipPreviewMode", "1");
+      d.put("OnlinePreViewrarFileMaxSize", "100");
+      d.put("OnlinePreViewrarFileType", "14");
+      d.put("OnlinePreViewrarInterfacePage", "qq_compress_previewer_v2.html");
+      d.put("OnlinePreViewrarPreviewMode", "1");
+      d.put("OnlinePreView7zFileMaxSize", "100");
+      d.put("OnlinePreView7zFileType", "15");
+      d.put("OnlinePreView7zInterfacePage", "qq_compress_previewer_v2.html");
+      d.put("OnlinePreView7zPreviewMode", "1");
+      d.put("OnlinePreViewtxtFileMaxSize", "10");
+      d.put("OnlinePreViewtxtFileType", "16");
+      d.put("OnlinePreViewtxtInterfacePage", "qq_txt_previewer_v2.html");
+      d.put("OnlinePreViewtxtPreviewMode", "2");
+      d.put("OfflineConfigFlowSize", "1024");
+      d.put("OfflineConfigFlowTime", "30");
+      d.put("OfflineConfigFtnThumbMaxSize", "32768");
+    }
+    String str = (String)d.get(paramString);
+    if ((str == null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("],value null!");
+      QLog.e("FileManagerUtil<FileAssistant>", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public static boolean h(int paramInt)
+  {
+    return paramInt == FMConstants.b;
+  }
+  
+  public static String i()
+  {
+    return FMSettings.a().getDefaultRecvPath();
+  }
+  
+  private static boolean i(int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 8)
+    {
+      bool1 = bool2;
+      if (paramInt != 190)
+      {
+        bool1 = bool2;
+        if (paramInt != 1)
+        {
+          bool1 = bool2;
+          if (paramInt != 16)
+          {
+            bool1 = bool2;
+            if (paramInt != 14)
+            {
+              bool1 = bool2;
+              if (paramInt != 15)
+              {
+                bool1 = bool2;
+                if (paramInt != 17)
+                {
+                  bool1 = bool2;
+                  if (paramInt != 18)
+                  {
+                    bool1 = bool2;
+                    if (paramInt != 19)
+                    {
+                      bool1 = bool2;
+                      if (paramInt != 5)
+                      {
+                        bool1 = bool2;
+                        if (paramInt != 50)
+                        {
+                          bool1 = bool2;
+                          if (paramInt != -1)
+                          {
+                            if (paramInt == 53) {
+                              return true;
+                            }
+                            bool1 = false;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean i(FileManagerEntity paramFileManagerEntity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramFileManagerEntity == null) {
+      return false;
+    }
+    if (paramFileManagerEntity.isZipInnerFile) {
+      return false;
+    }
+    int i = h(paramFileManagerEntity);
+    if ((i != 1) && (i != 2)) {
+      if (i != 3)
+      {
+        if (i != 4)
+        {
+          if (i != 6) {
+            return false;
+          }
+          if (paramFileManagerEntity.nFileType == 0) {
+            bool1 = true;
+          }
+          return bool1;
+        }
+      }
+      else
+      {
+        bool1 = bool2;
+        if (paramFileManagerEntity.nFileType == 0) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+    }
+    return true;
+  }
+  
+  public static boolean i(String paramString)
+  {
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isContainChinese(paramString);
+  }
+  
+  public static long j(String paramString)
+  {
+    if (paramString == null)
+    {
+      QLog.e("FileManagerUtil<FileAssistant>", 1, "getFileSizes: filePath is null");
+      return 0L;
+    }
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" is not exists");
+      QLog.w("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      return 0L;
+    }
+    long l = ((File)localObject).length();
+    if (0L == l)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" len is 0");
+      QLog.w("FileManagerUtil<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    }
+    return l;
+  }
+  
+  public static FileManagerEntity j()
+  {
+    Object localObject3 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles();
+    Object localObject2 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles();
+    Object localObject1 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getWeiYunFiles();
+    if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+    {
+      localObject3 = ((ArrayList)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject3).next();
+        if (localFileManagerEntity.nFileType == 0) {
+          return localFileManagerEntity;
+        }
+      }
+    }
+    if ((localObject2 != null) && (((Set)localObject2).size() > 0))
+    {
+      localObject2 = ((Set)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (FileInfo)((Iterator)localObject2).next();
+        if (((FileInfo)localObject3).l() == 0) {
+          return a((FileInfo)localObject3);
+        }
+      }
+    }
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+    {
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (WeiYunFileInfo)((Iterator)localObject1).next();
+        if (g(((WeiYunFileInfo)localObject2).c) == 0) {
+          return a((WeiYunFileInfo)localObject2);
+        }
+      }
+    }
+    return null;
+  }
+  
+  private static String j(int paramInt)
+  {
+    return BaseApplication.getContext().getString(paramInt);
+  }
+  
+  public static boolean j(FileManagerEntity paramFileManagerEntity)
+  {
+    boolean bool2 = false;
+    if (paramFileManagerEntity == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (paramFileManagerEntity.TroopUin != 0L)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFileID))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFilePath)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static String k(FileManagerEntity paramFileManagerEntity)
+  {
+    Object localObject = BaseApplication.getContext();
+    String str3 = ((Context)localObject).getString(2131889334);
+    int i = paramFileManagerEntity.getCloudType();
+    String str1 = null;
+    if (i != 0) {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if ((i != 3) && (i == 5))
+          {
+            localObject = ((Context)localObject).getString(2131896326);
+            break label94;
+          }
+        }
+        else
+        {
+          localObject = ((Context)localObject).getString(2131889363);
+          break label94;
+        }
+      }
+      else
+      {
+        localObject = ((Context)localObject).getString(2131889284);
+        str1 = a(paramFileManagerEntity.srvTime, paramFileManagerEntity.peerType);
+        break label94;
+      }
+    }
+    localObject = null;
+    label94:
+    String str2 = "";
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(d(str3, str1));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    if ((paramFileManagerEntity.getCloudType() == 2) && (3 == paramFileManagerEntity.nOpType)) {
+      return localObject;
+    }
+    if (paramFileManagerEntity.getCloudType() == 5) {
+      return localObject;
+    }
+    if (paramFileManagerEntity.TroopUin != 0L) {
+      return localObject;
+    }
+    if (paramFileManagerEntity.peerType == 10014) {
+      str1 = "";
+    }
+    paramFileManagerEntity = str2;
+    if (str1 != null) {
+      paramFileManagerEntity = str1;
+    }
+    return paramFileManagerEntity;
+  }
+  
+  public static boolean k()
+  {
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getFavFiles();
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (g(((FavFileInfo)((Iterator)localObject).next()).d) == 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static int[] k(String paramString)
+  {
+    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
+      return new int[] { 0, 0 };
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    SafeBitmapFactory.decodeFile(paramString, localOptions);
+    int i = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExifRotation(paramString);
+    int j;
+    if ((i != 90) && (i != 270))
+    {
+      j = localOptions.outWidth;
+      i = localOptions.outHeight;
+    }
+    else
+    {
+      i = localOptions.outWidth;
+      j = localOptions.outHeight;
+    }
+    return new int[] { j, i };
+  }
+  
+  public static BaseQQAppInterface l()
+  {
+    int i = MobileQQ.sProcessId;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (i == 1)
+    {
+      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      localObject1 = localObject2;
+      if (localAppRuntime != null)
+      {
+        localObject1 = localObject2;
+        if ((localAppRuntime instanceof BaseQQAppInterface)) {
+          localObject1 = (BaseQQAppInterface)localAppRuntime;
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public static String l(FileManagerEntity paramFileManagerEntity)
+  {
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    if (f.size() == 0)
+    {
+      f.put(Integer.valueOf(1), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(9), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(10), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(11), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(12), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(13), localBaseApplication.getString(2131889294));
+      f.put(Integer.valueOf(6), localBaseApplication.getString(2131889301));
+      f.put(Integer.valueOf(4), localBaseApplication.getString(2131889301));
+      f.put(Integer.valueOf(20), localBaseApplication.getString(2131889301));
+      f.put(Integer.valueOf(22), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(21), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(0), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(7), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(3), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(24), localBaseApplication.getString(2131889329));
+      f.put(Integer.valueOf(5), localBaseApplication.getString(2131889295));
+      f.put(Integer.valueOf(50), localBaseApplication.getString(2131889295));
+      f.put(Integer.valueOf(14), localBaseApplication.getString(2131917700));
+      f.put(Integer.valueOf(15), localBaseApplication.getString(2131917701));
+      f.put(Integer.valueOf(16), localBaseApplication.getString(2131917707));
+      f.put(Integer.valueOf(17), localBaseApplication.getString(2131917704));
+      f.put(Integer.valueOf(18), localBaseApplication.getString(2131917703));
+      f.put(Integer.valueOf(19), localBaseApplication.getString(2131917705));
+      f.put(Integer.valueOf(190), localBaseApplication.getString(2131917708));
+      f.put(Integer.valueOf(40), localBaseApplication.getString(2131917706));
+      f.put(Integer.valueOf(52), localBaseApplication.getString(2131889259));
+      f.put(Integer.valueOf(53), localBaseApplication.getString(2131917702));
+    }
+    localObject1 = a(paramFileManagerEntity, localBaseApplication, (String)f.get(Integer.valueOf(paramFileManagerEntity.nOpType)));
+    if (paramFileManagerEntity.getCloudType() == 0) {
+      localObject1 = localBaseApplication.getString(2131889294);
+    }
+    if (paramFileManagerEntity.getCloudType() == 5)
+    {
+      localObject1 = localBaseApplication.getString(2131889294);
+      if (paramFileManagerEntity.bSend) {
+        localObject1 = localBaseApplication.getString(2131889329);
+      }
+      localObject2 = paramFileManagerEntity.peerNick;
+    }
+    else
+    {
+      localObject2 = null;
+    }
+    Object localObject2 = a(paramFileManagerEntity, localBaseApplication, (String)localObject1, (String)localObject2);
+    Object localObject3 = localObject1;
+    if (paramFileManagerEntity.nOpType == 1)
+    {
+      localObject3 = localObject1;
+      if (paramFileManagerEntity.bSend) {
+        localObject3 = localBaseApplication.getString(2131889329);
+      }
+    }
+    localObject5 = localObject3;
+    localObject1 = localObject2;
+    try
+    {
+      BaseQQAppInterface localBaseQQAppInterface = l();
+      localObject5 = localObject3;
+      localObject1 = localObject2;
+      localObject6 = a(localBaseQQAppInterface, paramFileManagerEntity.peerUin, "", paramFileManagerEntity.peerType);
+      localObject2 = localObject3;
+      localObject4 = localObject6;
+      localObject5 = localObject3;
+      localObject1 = localObject6;
+      if (paramFileManagerEntity.TroopUin != 0L)
+      {
+        localObject5 = localObject3;
+        localObject1 = localObject6;
+        localObject4 = a(paramFileManagerEntity, localBaseApplication, (String)localObject6, localBaseQQAppInterface);
+        localObject2 = null;
+      }
+      localObject3 = localObject4;
+      if (localObject2 != null)
+      {
+        localObject3 = localObject4;
+        localObject5 = localObject2;
+        localObject1 = localObject4;
+        if (((String)localObject2).equals(localBaseApplication.getString(2131889301))) {
+          localObject3 = null;
+        }
+      }
+      localObject6 = localObject2;
+      localObject4 = localObject3;
+      localObject5 = localObject2;
+      localObject1 = localObject3;
+      if (paramFileManagerEntity.peerType == 3000)
+      {
+        if (localObject2 != null)
+        {
+          localObject5 = localObject2;
+          localObject1 = localObject3;
+          if (!((String)localObject2).equals(localBaseApplication.getString(2131889301))) {}
+        }
+        else
+        {
+          localObject6 = localObject2;
+          localObject4 = localObject3;
+          localObject5 = localObject2;
+          localObject1 = localObject3;
+          if (paramFileManagerEntity.nOpType != 28) {
+            break label860;
+          }
+        }
+        localObject5 = localObject2;
+        localObject1 = localObject3;
+        localObject4 = b(paramFileManagerEntity, localBaseApplication, (String)localObject3, localBaseQQAppInterface);
+        localObject6 = null;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        label860:
+        Object localObject6 = localObject5;
+        Object localObject4 = localObject1;
+      }
+    }
+    if (!TextUtils.isEmpty(paramFileManagerEntity.guildId)) {
+      localObject4 = b(localBaseApplication, paramFileManagerEntity);
+    }
+    if ((localObject6 != null) && (((String)localObject6).equalsIgnoreCase(localBaseApplication.getString(2131889295))) && (paramFileManagerEntity.bSend))
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append(localBaseApplication.getString(2131889329));
+      paramFileManagerEntity.append(" ");
+      paramFileManagerEntity.append((String)localObject4);
+      return paramFileManagerEntity.toString();
+    }
+    if ((localObject6 != null) && (localObject4 != null))
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append((String)localObject6);
+      paramFileManagerEntity.append(" ");
+      paramFileManagerEntity.append((String)localObject4);
+      return paramFileManagerEntity.toString();
+    }
+    if (localObject6 != null) {
+      return localObject6;
+    }
+    return localObject4;
+  }
+  
+  public static boolean l(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return new VFSFile(paramString).exists();
+  }
+  
+  public static int m(FileManagerEntity paramFileManagerEntity)
+  {
+    paramFileManagerEntity = paramFileManagerEntity.fileName.toUpperCase();
+    if (paramFileManagerEntity.endsWith(".ZIP")) {
+      return 13;
+    }
+    if (paramFileManagerEntity.endsWith(".RAR")) {
+      return 14;
+    }
+    if (paramFileManagerEntity.endsWith(".7Z")) {
+      return 15;
+    }
+    return -1;
+  }
+  
+  public static int m(String paramString)
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qlink_new_count_");
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+  }
+  
+  public static AppRuntime m()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public static int n(FileManagerEntity paramFileManagerEntity)
+  {
+    paramFileManagerEntity = paramFileManagerEntity.fileName.toUpperCase();
+    if (paramFileManagerEntity.endsWith(".ZIP")) {
+      return 13;
+    }
+    if (paramFileManagerEntity.endsWith(".RAR")) {
+      return 14;
+    }
+    if (paramFileManagerEntity.endsWith(".7Z")) {
+      return 15;
+    }
+    return -1;
+  }
+  
+  public static String n(String paramString)
+  {
+    return FileUtils.getFileName(paramString);
+  }
+  
+  public static void n()
+  {
+    BaseQQAppInterface localBaseQQAppInterface = l();
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryMaxRecentReocrds(localBaseQQAppInterface);
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+      if (!TextUtils.isEmpty(localFileManagerEntity.Uuid))
+      {
+        localFileManagerEntity.status = 16;
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteOfflineFile(localBaseQQAppInterface, localFileManagerEntity.peerUin, localFileManagerEntity.fileName, localFileManagerEntity.Uuid, localFileManagerEntity.fileIdCrc, localFileManagerEntity.bSend);
+      }
+    }
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).clearAllData(localBaseQQAppInterface);
+  }
+  
+  public static String o(String paramString)
   {
     int i = paramString.lastIndexOf("/");
     int j = paramString.lastIndexOf(".");
@@ -5680,309 +6050,7 @@ public class QQFileManagerUtilImpl
     return str3;
   }
   
-  private static void c(int paramInt, String paramString, FileManagerEntity paramFileManagerEntity)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      a(paramString);
-      return;
-    }
-    if (!a(paramInt, paramFileManagerEntity.fileName)) {
-      a(13, paramFileManagerEntity.fileName);
-    }
-  }
-  
-  public static void c(long paramLong)
-  {
-    Object localObject = a();
-    localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileEntityBySessionId((BaseQQAppInterface)localObject, paramLong);
-    if (localObject == null) {
-      return;
-    }
-    int i = ((FileManagerEntity)localObject).nOpType;
-    if ((i != -1) && (i != 0))
-    {
-      if (i != 1) {
-        if (i == 20) {}
-      }
-      switch (i)
-      {
-      default: 
-      case 4: 
-      case 6: 
-        if (((FileManagerEntity)localObject).nOpType == 6)
-        {
-          QQFMToastUtil.c(BaseApplication.getContext().getString(2131697389));
-          return;
-        }
-        if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(0))
-        {
-          QQFMToastUtil.c(BaseApplication.getContext().getString(2131697389));
-          return;
-        }
-        break;
-      case 5: 
-      case 8: 
-        localObject = d(((FileManagerEntity)localObject).fileName);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append(d(2131692314));
-        localStringBuilder.append(FMSettings.a().getDefaultRecvPath());
-        QQFMToastUtil.c(localStringBuilder.toString());
-      }
-    }
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString))
-    {
-      QQFMToastUtil.a(2131692717);
-      return;
-    }
-    paramString = FileProvider7Helper.openApkIntent(paramContext, paramString);
-    paramString.putExtra("big_brother_source_key", "biz_src_jc_file");
-    List localList = paramContext.getPackageManager().queryIntentActivities(paramString, 65536);
-    int j = localList.size();
-    int i = 1;
-    if ((j != 1) || (!((ResolveInfo)localList.get(0)).activityInfo.name.equals("com.tencent.mobileqq.activity.JumpActivity"))) {
-      i = 0;
-    }
-    if ((localList.size() > 0) && (i == 0)) {}
-    try
-    {
-      paramContext.startActivity(paramString);
-      return;
-    }
-    catch (ActivityNotFoundException paramContext)
-    {
-      label110:
-      break label110;
-    }
-    QQFMToastUtil.a(2131693702);
-    return;
-    QQFMToastUtil.a(2131693702);
-  }
-  
-  private static void c(TextView paramTextView, FileManagerEntity paramFileManagerEntity)
-  {
-    String str1 = QfileTimeUtils.b(paramFileManagerEntity.srvTime);
-    String str2 = e(paramFileManagerEntity);
-    String str4 = FileUtil.a(paramFileManagerEntity.fileSize);
-    String str5 = d(paramFileManagerEntity);
-    String str3 = BaseApplication.getContext().getString(2131692346);
-    int i = paramTextView.getWidth();
-    TextPaint localTextPaint = paramTextView.getPaint();
-    if (paramFileManagerEntity.nFileType == 13)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(str1);
-      ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(str2);
-      ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(BaseApplication.getContext().getString(2131692298));
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    else
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(str1);
-      ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(str2);
-      ((StringBuilder)localObject).append(str3);
-      ((StringBuilder)localObject).append(str4);
-      ((StringBuilder)localObject).append(str3);
-      ((StringBuilder)localObject).append(str5);
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    float f1 = localTextPaint.measureText((String)localObject) + 30.0F;
-    float f2 = i;
-    if (f1 < f2)
-    {
-      paramTextView.setText((CharSequence)localObject);
-      return;
-    }
-    float f3 = i * 2;
-    StringBuilder localStringBuilder;
-    if (f1 > f3)
-    {
-      int j = str2.length();
-      i = 1;
-      for (;;)
-      {
-        int k = j - i;
-        if (k <= 0) {
-          break;
-        }
-        localObject = str2.substring(0, k);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str1);
-        localStringBuilder.append(str3);
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append(jdField_a_of_type_JavaLangString);
-        localStringBuilder.append(str3);
-        localStringBuilder.append(str4);
-        localStringBuilder.append(str3);
-        localStringBuilder.append(str5);
-        if (localTextPaint.measureText(localStringBuilder.toString()) + 30.0F < f3)
-        {
-          paramTextView.setVisibility(0);
-          if (paramFileManagerEntity.nFileType == 13)
-          {
-            paramFileManagerEntity = new StringBuilder();
-            paramFileManagerEntity.append(str1);
-            paramFileManagerEntity.append(" ");
-            paramFileManagerEntity.append(str2);
-            paramFileManagerEntity.append(jdField_a_of_type_JavaLangString);
-            paramFileManagerEntity.append(" ");
-            paramFileManagerEntity.append(BaseApplication.getContext().getString(2131692298));
-            paramTextView.setText(paramFileManagerEntity.toString());
-            return;
-          }
-          paramFileManagerEntity = new StringBuilder();
-          paramFileManagerEntity.append(str1);
-          paramFileManagerEntity.append(str3);
-          paramFileManagerEntity.append((String)localObject);
-          paramFileManagerEntity.append(jdField_a_of_type_JavaLangString);
-          paramFileManagerEntity.append(str3);
-          paramFileManagerEntity.append(str4);
-          paramFileManagerEntity.append(str3);
-          paramFileManagerEntity.append(str5);
-          paramTextView.setText(paramFileManagerEntity.toString());
-          return;
-        }
-        i += 1;
-      }
-      if (paramFileManagerEntity.nFileType == 13)
-      {
-        paramFileManagerEntity = new StringBuilder();
-        paramFileManagerEntity.append(str1);
-        paramFileManagerEntity.append(" ");
-        paramFileManagerEntity.append(str2);
-        paramFileManagerEntity.append("\n");
-        paramFileManagerEntity.append(BaseApplication.getContext().getString(2131692298));
-        paramTextView.setText(paramFileManagerEntity.toString());
-        return;
-      }
-      paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(str1);
-      paramFileManagerEntity.append(str3);
-      paramFileManagerEntity.append(str2);
-      paramFileManagerEntity.append("\n");
-      paramFileManagerEntity.append(str4);
-      paramFileManagerEntity.append(str3);
-      paramFileManagerEntity.append(str5);
-      paramTextView.setText(paramFileManagerEntity.toString());
-      return;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(str1);
-    ((StringBuilder)localObject).append(str3);
-    ((StringBuilder)localObject).append(str2);
-    if (localTextPaint.measureText(((StringBuilder)localObject).toString()) + 30.0F > f2)
-    {
-      i = 4;
-      while (i <= str2.length())
-      {
-        localObject = str2.substring(0, i);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str1);
-        localStringBuilder.append(str3);
-        localStringBuilder.append((String)localObject);
-        if (localTextPaint.measureText(localStringBuilder.toString()) + 30.0F > f2)
-        {
-          localObject = str2.substring(0, i - 1);
-          str2 = str2.replace((CharSequence)localObject, "");
-          if (paramFileManagerEntity.nFileType == 13)
-          {
-            paramFileManagerEntity = new StringBuilder();
-            paramFileManagerEntity.append(str1);
-            paramFileManagerEntity.append(" ");
-            paramFileManagerEntity.append((String)localObject);
-            paramFileManagerEntity.append("\n");
-            paramFileManagerEntity.append(str2);
-            paramFileManagerEntity.append(str3);
-            paramFileManagerEntity.append(BaseApplication.getContext().getString(2131692298));
-            paramTextView.setText(paramFileManagerEntity.toString());
-          }
-          else
-          {
-            paramFileManagerEntity = new StringBuilder();
-            paramFileManagerEntity.append(str1);
-            paramFileManagerEntity.append(str3);
-            paramFileManagerEntity.append((String)localObject);
-            paramFileManagerEntity.append("\n");
-            paramFileManagerEntity.append(str2);
-            paramFileManagerEntity.append(str3);
-            paramFileManagerEntity.append(str4);
-            paramFileManagerEntity.append(str3);
-            paramFileManagerEntity.append(str5);
-            paramTextView.setText(paramFileManagerEntity.toString());
-          }
-          paramTextView.setVisibility(0);
-          return;
-        }
-        i += 1;
-      }
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(str1);
-    ((StringBuilder)localObject).append(str3);
-    ((StringBuilder)localObject).append(str2);
-    ((StringBuilder)localObject).append(str3);
-    ((StringBuilder)localObject).append(str4);
-    if (localTextPaint.measureText(((StringBuilder)localObject).toString()) + 30.0F > f2)
-    {
-      if (paramFileManagerEntity.nFileType == 13)
-      {
-        paramFileManagerEntity = new StringBuilder();
-        paramFileManagerEntity.append(str1);
-        paramFileManagerEntity.append(" ");
-        paramFileManagerEntity.append(str2);
-        paramFileManagerEntity.append("\n");
-        paramFileManagerEntity.append(BaseApplication.getContext().getString(2131692298));
-        paramTextView.setText(paramFileManagerEntity.toString());
-      }
-      else
-      {
-        paramFileManagerEntity = new StringBuilder();
-        paramFileManagerEntity.append(str1);
-        paramFileManagerEntity.append(str3);
-        paramFileManagerEntity.append(str2);
-        paramFileManagerEntity.append("\n");
-        paramFileManagerEntity.append(str4);
-        paramFileManagerEntity.append(str3);
-        paramFileManagerEntity.append(str5);
-        paramTextView.setText(paramFileManagerEntity.toString());
-      }
-      paramTextView.setVisibility(0);
-      return;
-    }
-    if (paramFileManagerEntity.nFileType == 13)
-    {
-      paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(str1);
-      paramFileManagerEntity.append(" ");
-      paramFileManagerEntity.append(str2);
-      paramFileManagerEntity.append(BaseApplication.getContext().getString(2131692298));
-      paramTextView.setText(paramFileManagerEntity.toString());
-    }
-    else
-    {
-      paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(str1);
-      paramFileManagerEntity.append(str3);
-      paramFileManagerEntity.append(str2);
-      paramFileManagerEntity.append(str3);
-      paramFileManagerEntity.append(str4);
-      paramFileManagerEntity.append(str3);
-      paramFileManagerEntity.append(str5);
-      paramTextView.setText(paramFileManagerEntity.toString());
-    }
-    paramTextView.setVisibility(0);
-  }
-  
-  public static void c(FileManagerEntity paramFileManagerEntity)
+  public static void o(FileManagerEntity paramFileManagerEntity)
   {
     Object localObject;
     if (paramFileManagerEntity.nFileType == 0)
@@ -5991,7 +6059,7 @@ public class QQFileManagerUtilImpl
       {
         if (FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.getFilePath()))
         {
-          localObject = b(paramFileManagerEntity.getFilePath());
+          localObject = H(paramFileManagerEntity.getFilePath());
           paramFileManagerEntity.imgWidth = localObject[0];
           paramFileManagerEntity.imgHeight = localObject[1];
         }
@@ -6009,7 +6077,7 @@ public class QQFileManagerUtilImpl
       if (localObject != null) {
         ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getDrawable((URL)localObject).downloadImediatly();
       }
-      if ((ZhuoXusManager.a().i()) && (b(paramFileManagerEntity.strMiddleThumPath)))
+      if ((ZhuoXusManager.a().l()) && (l(paramFileManagerEntity.strMiddleThumPath)))
       {
         localObject = new File(paramFileManagerEntity.strMiddleThumPath);
         localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getQRCodeResult(BaseApplication.getContext(), (File)localObject);
@@ -6037,11 +6105,11 @@ public class QQFileManagerUtilImpl
     }
     else if (paramFileManagerEntity.nFileType == 2)
     {
-      localObject = a(paramFileManagerEntity.getFilePath());
-      if (((QQFileManagerUtil.VideoThumbInfo)localObject).jdField_a_of_type_Int == -1) {
+      localObject = y(paramFileManagerEntity.getFilePath());
+      if (((QQFileManagerUtil.VideoThumbInfo)localObject).a == -1) {
         return;
       }
-      paramFileManagerEntity.strLargeThumPath = ((QQFileManagerUtil.VideoThumbInfo)localObject).jdField_a_of_type_JavaLangString;
+      paramFileManagerEntity.strLargeThumPath = ((QQFileManagerUtil.VideoThumbInfo)localObject).b;
       if ((paramFileManagerEntity.imgHeight > 0) && (paramFileManagerEntity.imgWidth > 0))
       {
         if (QLog.isColorLevel())
@@ -6059,8 +6127,8 @@ public class QQFileManagerUtilImpl
       }
       else
       {
-        paramFileManagerEntity.imgWidth = ((QQFileManagerUtil.VideoThumbInfo)localObject).b;
-        paramFileManagerEntity.imgHeight = ((QQFileManagerUtil.VideoThumbInfo)localObject).c;
+        paramFileManagerEntity.imgWidth = ((QQFileManagerUtil.VideoThumbInfo)localObject).c;
+        paramFileManagerEntity.imgHeight = ((QQFileManagerUtil.VideoThumbInfo)localObject).d;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -6086,298 +6154,51 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static boolean c()
+  public static boolean o()
   {
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getFavFiles();
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (d(((FavFileInfo)((Iterator)localObject).next()).jdField_c_of_type_JavaLangString) == 0) {
-          return true;
-        }
-      }
-    }
     return false;
   }
   
-  public static boolean c(FileManagerEntity paramFileManagerEntity)
+  private static IUniformDownloadMgr p()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
+    return (IUniformDownloadMgr)m().getRuntimeService(IUniformDownloadMgr.class, "all");
+  }
+  
+  public static void p(String paramString)
+  {
+    QQFMToastUtil.a(paramString);
+  }
+  
+  public static boolean p(FileManagerEntity paramFileManagerEntity)
+  {
     if (paramFileManagerEntity == null) {
       return false;
     }
-    if (paramFileManagerEntity.isZipInnerFile) {
-      return false;
-    }
-    int i = a(paramFileManagerEntity);
-    if ((i != 1) && (i != 2)) {
-      if (i != 3)
-      {
-        if (i != 4)
-        {
-          if (i != 6) {
-            return false;
-          }
-          if (paramFileManagerEntity.nFileType == 0) {
-            bool1 = true;
-          }
-          return bool1;
-        }
-      }
-      else
-      {
-        bool1 = bool2;
-        if (paramFileManagerEntity.nFileType == 0) {
-          bool1 = true;
-        }
-        return bool1;
-      }
-    }
-    return true;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return QQFileUtil.b(paramString);
-  }
-  
-  private static boolean c(String paramString1, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult, String paramString2)
-  {
-    Bitmap localBitmap = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageThumbnail(paramString1, paramInt1, paramInt2);
-    if (localBitmap == null)
-    {
-      if (paramIThumbResult != null) {
-        paramIThumbResult.a(null);
-      }
+    if (FileUtil.b(paramFileManagerEntity.getFilePath())) {
       return true;
     }
-    try
-    {
-      FileUtil.a(localBitmap, paramString2);
-      localBitmap.recycle();
-      paramInt1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getImageDegree(paramString1);
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setImageDegree(paramString2, paramInt1);
-      if (paramIThumbResult != null) {
-        paramIThumbResult.a(paramString2);
-      }
-      return false;
-    }
-    catch (OutOfMemoryError paramString1)
-    {
-      paramString1.printStackTrace();
-      paramString2 = new StringBuilder();
-      paramString2.append("createThumbnail OutOfMemoryError:");
-      paramString2.append(paramString1.getMessage());
-      QLog.w("FileManagerUtil<FileAssistant>", 1, paramString2.toString());
-      if (paramIThumbResult != null) {
-        paramIThumbResult.a(null);
-      }
+    if (FileUtil.b(paramFileManagerEntity.strMiddleThumPath)) {
       return true;
     }
-    catch (IOException paramString1)
-    {
-      b(paramIThumbResult, paramString1, "createThumbnail IOException:");
+    if (FileUtil.b(paramFileManagerEntity.strLargeThumPath)) {
       return true;
     }
-    catch (FileNotFoundException paramString1)
-    {
-      b(paramIThumbResult, paramString1, "createThumbnail FileNotFoundException:");
+    if (FileUtil.b(paramFileManagerEntity.strThumbPath)) {
+      return true;
     }
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Id[");
+    localStringBuilder.append(paramFileManagerEntity.nSessionId);
+    localStringBuilder.append("] no Thumb!");
+    QLog.i("FileManagerUtil<FileAssistant>", 1, localStringBuilder.toString());
+    return false;
   }
   
-  public static byte[] c(String paramString)
-  {
-    return a(paramString, a(paramString));
-  }
-  
-  public static int d(String paramString)
-  {
-    try
-    {
-      Object localObject = FileUtil.a(paramString);
-      if ((localObject != null) && (((String)localObject).length() != 0))
-      {
-        localObject = ((String)localObject).toLowerCase();
-        if (jdField_a_of_type_JavaUtilHashMap == null)
-        {
-          jdField_a_of_type_JavaUtilHashMap = new HashMap();
-          jdField_a_of_type_JavaUtilHashMap.put(".mp3", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.put(".3gpp", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.put(".flac", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.put(".ogg", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.put(".wav", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.put(".m4a", Integer.valueOf(1));
-          jdField_a_of_type_JavaUtilHashMap.remove(".flv");
-          jdField_a_of_type_JavaUtilHashMap.remove(".m");
-          jdField_a_of_type_JavaUtilHashMap.remove(".webp");
-          jdField_a_of_type_JavaUtilHashMap.remove(".vcf");
-          jdField_a_of_type_JavaUtilHashMap.put(".bmp", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".jpg", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".jpeg", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".png", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".gif", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".webp", Integer.valueOf(0));
-          jdField_a_of_type_JavaUtilHashMap.put(".psd", Integer.valueOf(12));
-          jdField_a_of_type_JavaUtilHashMap.put(".swf", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mov", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mp4", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".3gp", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".avi", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".rmvb", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mpg", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".rm", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".asf", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mpeg", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mkv", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".wmv", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".flv", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".f4v", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".webm", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mod", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".mpe", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".fla", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".m4r", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".m4u", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".m4v", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".vob", Integer.valueOf(2));
-          jdField_a_of_type_JavaUtilHashMap.put(".doc", Integer.valueOf(3));
-          jdField_a_of_type_JavaUtilHashMap.put(".docx", Integer.valueOf(3));
-          jdField_a_of_type_JavaUtilHashMap.put(".wps", Integer.valueOf(3));
-          jdField_a_of_type_JavaUtilHashMap.put(".pages", Integer.valueOf(3));
-          jdField_a_of_type_JavaUtilHashMap.put(".zip", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".rar", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".7z", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".tar", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".iso", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".gz", Integer.valueOf(4));
-          jdField_a_of_type_JavaUtilHashMap.put(".apk", Integer.valueOf(5));
-          jdField_a_of_type_JavaUtilHashMap.put(".apk.rename", Integer.valueOf(5));
-          jdField_a_of_type_JavaUtilHashMap.put(".xls", Integer.valueOf(6));
-          jdField_a_of_type_JavaUtilHashMap.put(".xlsx", Integer.valueOf(6));
-          jdField_a_of_type_JavaUtilHashMap.put(".csv", Integer.valueOf(6));
-          jdField_a_of_type_JavaUtilHashMap.put(".numbers", Integer.valueOf(6));
-          jdField_a_of_type_JavaUtilHashMap.put(".et", Integer.valueOf(6));
-          jdField_a_of_type_JavaUtilHashMap.put(".ppt", Integer.valueOf(7));
-          jdField_a_of_type_JavaUtilHashMap.put(".pptx", Integer.valueOf(7));
-          jdField_a_of_type_JavaUtilHashMap.put(".pps", Integer.valueOf(7));
-          jdField_a_of_type_JavaUtilHashMap.put(".dps", Integer.valueOf(7));
-          jdField_a_of_type_JavaUtilHashMap.put(".keynotes", Integer.valueOf(7));
-          jdField_a_of_type_JavaUtilHashMap.put(".htm", Integer.valueOf(8));
-          jdField_a_of_type_JavaUtilHashMap.put(".html", Integer.valueOf(8));
-          jdField_a_of_type_JavaUtilHashMap.put(".php", Integer.valueOf(8));
-          jdField_a_of_type_JavaUtilHashMap.put(".pdf", Integer.valueOf(9));
-          jdField_a_of_type_JavaUtilHashMap.put(".txt", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".epub", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".rtf", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".c", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".conf", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".cpp", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".h", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".java", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".log", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".prop", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".rc", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".sh", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".csv", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".xml", Integer.valueOf(10));
-          jdField_a_of_type_JavaUtilHashMap.put(".ai", Integer.valueOf(14));
-          jdField_a_of_type_JavaUtilHashMap.put(".font", Integer.valueOf(15));
-          jdField_a_of_type_JavaUtilHashMap.put(".ipa", Integer.valueOf(16));
-          jdField_a_of_type_JavaUtilHashMap.put(".keynote", Integer.valueOf(17));
-          jdField_a_of_type_JavaUtilHashMap.put(".note", Integer.valueOf(18));
-          jdField_a_of_type_JavaUtilHashMap.put(".numbers", Integer.valueOf(19));
-          jdField_a_of_type_JavaUtilHashMap.put(".pages", Integer.valueOf(20));
-          jdField_a_of_type_JavaUtilHashMap.put(".sketch", Integer.valueOf(21));
-        }
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(((String)localObject).toLowerCase()))
-        {
-          int i = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(((String)localObject).toLowerCase())).intValue();
-          return i;
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("Unknow file Type[");
-          ((StringBuilder)localObject).append(paramString);
-          ((StringBuilder)localObject).append("]");
-          QLog.w("FileManagerUtil<FileAssistant>", 2, ((StringBuilder)localObject).toString());
-        }
-        return 11;
-      }
-      return -1;
-    }
-    finally {}
-  }
-  
-  private static String d(int paramInt)
-  {
-    return BaseApplication.getContext().getString(paramInt);
-  }
-  
-  public static String d(FileManagerEntity paramFileManagerEntity)
-  {
-    Object localObject = BaseApplication.getContext();
-    String str3 = ((Context)localObject).getString(2131692346);
-    int i = paramFileManagerEntity.getCloudType();
-    String str1 = null;
-    if (i != 0) {
-      if (i != 1)
-      {
-        if (i != 2)
-        {
-          if ((i != 3) && (i == 5))
-          {
-            localObject = ((Context)localObject).getString(2131698402);
-            break label94;
-          }
-        }
-        else
-        {
-          localObject = ((Context)localObject).getString(2131692375);
-          break label94;
-        }
-      }
-      else
-      {
-        localObject = ((Context)localObject).getString(2131692296);
-        str1 = a(paramFileManagerEntity.srvTime, paramFileManagerEntity.peerType);
-        break label94;
-      }
-    }
-    localObject = null;
-    label94:
-    String str2 = "";
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(a(str3, str1));
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    if ((paramFileManagerEntity.getCloudType() == 2) && (3 == paramFileManagerEntity.nOpType)) {
-      return localObject;
-    }
-    if (paramFileManagerEntity.getCloudType() == 5) {
-      return localObject;
-    }
-    if (paramFileManagerEntity.TroopUin != 0L) {
-      return localObject;
-    }
-    paramFileManagerEntity = str2;
-    if (str1 != null) {
-      paramFileManagerEntity = str1;
-    }
-    return paramFileManagerEntity;
-  }
-  
-  public static String d(String paramString)
+  public static String q(String paramString)
   {
     if ((paramString != null) && (paramString.length() != 0))
     {
-      boolean bool = a(paramString);
+      boolean bool = i(paramString);
       if (FontSettingManager.getFontLevel() >= 20.0F) {
         if (bool)
         {
@@ -6427,7 +6248,7 @@ public class QQFileManagerUtilImpl
     return "";
   }
   
-  public static void d(FileManagerEntity paramFileManagerEntity)
+  public static void q(FileManagerEntity paramFileManagerEntity)
   {
     for (;;)
     {
@@ -6438,7 +6259,7 @@ public class QQFileManagerUtilImpl
         {
           paramFileManagerEntity = new StringBuilder();
           paramFileManagerEntity.append("entity is nll,stack:");
-          paramFileManagerEntity.append(a());
+          paramFileManagerEntity.append(h());
           localStringBuilder.append(paramFileManagerEntity.toString());
           QLog.i("FileManagerUtil<FileAssistant>", 1, localStringBuilder.toString());
           return;
@@ -6466,10 +6287,10 @@ public class QQFileManagerUtilImpl
         }
         Object localObject1 = paramFileManagerEntity.getFilePath();
         Object localObject2;
-        if (FileUtil.a((String)localObject1))
+        if (FileUtil.b((String)localObject1))
         {
           if (i != 2) {
-            break label674;
+            break label672;
           }
           bool = false;
           localStringBuilder.append("entity[");
@@ -6479,34 +6300,34 @@ public class QQFileManagerUtilImpl
         else
         {
           localObject1 = paramFileManagerEntity.strLargeThumPath;
-          if (FileUtil.a((String)localObject1))
+          if (FileUtil.b((String)localObject1))
           {
             localStringBuilder.append("entity[");
             localStringBuilder.append(paramFileManagerEntity.nSessionId);
             localStringBuilder.append("] is cloude , use largThumb calc size!");
-            break label679;
+            break label677;
           }
           localObject1 = paramFileManagerEntity.strMiddleThumPath;
-          if (FileUtil.a((String)localObject1))
+          if (FileUtil.b((String)localObject1))
           {
             localStringBuilder.append("entity[");
             localStringBuilder.append(paramFileManagerEntity.nSessionId);
             localStringBuilder.append("] is cloud , use middleThumb calc size!,becarefull middle must createByLarge!!!");
-            break label679;
+            break label677;
           }
           if (i != 2) {
-            break label679;
+            break label677;
           }
           localObject2 = paramFileManagerEntity.strThumbPath;
           localObject1 = localObject2;
-          if (!FileUtil.a((String)localObject2)) {
-            break label679;
+          if (!FileUtil.b((String)localObject2)) {
+            break label677;
           }
           localStringBuilder.append("entity[");
           localStringBuilder.append(paramFileManagerEntity.nSessionId);
           localStringBuilder.append("] video is cloud , use thumb calc size!");
           localObject1 = localObject2;
-          break label679;
+          break label677;
         }
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
@@ -6535,7 +6356,7 @@ public class QQFileManagerUtilImpl
         }
         else if (i == 2)
         {
-          c(paramFileManagerEntity);
+          o(paramFileManagerEntity);
         }
         localStringBuilder.append(" calc size over size(wh)[");
         localStringBuilder.append(paramFileManagerEntity.imgWidth);
@@ -6548,199 +6369,30 @@ public class QQFileManagerUtilImpl
         return;
       }
       finally {}
-      label674:
+      label672:
       boolean bool = true;
       continue;
-      label679:
+      label677:
       bool = true;
     }
   }
   
-  public static boolean d()
+  public static boolean r(FileManagerEntity paramFileManagerEntity)
   {
-    return false;
+    return QQFileUtil.f(paramFileManagerEntity.getFilePath()).equalsIgnoreCase(".mov") ^ true;
   }
   
-  public static boolean d(FileManagerEntity paramFileManagerEntity)
+  public static byte[] r(String paramString)
   {
-    boolean bool2 = false;
-    if (paramFileManagerEntity == null) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if (paramFileManagerEntity.TroopUin != 0L)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFileID))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramFileManagerEntity.strTroopFilePath)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return c(paramString, "SHA-1");
   }
   
-  public static byte[] d(String paramString)
+  public static byte[] s(String paramString)
   {
-    return a(paramString, "SHA-1");
+    return c(paramString, "MD5");
   }
   
-  public static int e(String paramString)
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("qlink_new_count_");
-    localStringBuilder.append(paramString);
-    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-  }
-  
-  public static String e(FileManagerEntity paramFileManagerEntity)
-  {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (c.size() == 0)
-    {
-      c.put(Integer.valueOf(1), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(9), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(10), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(11), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(12), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(13), localBaseApplication.getString(2131692306));
-      c.put(Integer.valueOf(6), localBaseApplication.getString(2131692313));
-      c.put(Integer.valueOf(4), localBaseApplication.getString(2131692313));
-      c.put(Integer.valueOf(20), localBaseApplication.getString(2131692313));
-      c.put(Integer.valueOf(22), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(21), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(0), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(7), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(3), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(24), localBaseApplication.getString(2131692341));
-      c.put(Integer.valueOf(5), localBaseApplication.getString(2131692307));
-      c.put(Integer.valueOf(50), localBaseApplication.getString(2131692307));
-      c.put(Integer.valueOf(14), localBaseApplication.getString(2131720078));
-      c.put(Integer.valueOf(15), localBaseApplication.getString(2131720079));
-      c.put(Integer.valueOf(16), localBaseApplication.getString(2131720084));
-      c.put(Integer.valueOf(17), localBaseApplication.getString(2131720081));
-      c.put(Integer.valueOf(18), localBaseApplication.getString(2131720080));
-      c.put(Integer.valueOf(19), localBaseApplication.getString(2131720082));
-      c.put(Integer.valueOf(190), localBaseApplication.getString(2131720085));
-      c.put(Integer.valueOf(40), localBaseApplication.getString(2131720083));
-    }
-    localObject1 = a(paramFileManagerEntity, localBaseApplication, (String)c.get(Integer.valueOf(paramFileManagerEntity.nOpType)));
-    if (paramFileManagerEntity.getCloudType() == 0) {
-      localObject1 = localBaseApplication.getString(2131692306);
-    }
-    if (paramFileManagerEntity.getCloudType() == 5)
-    {
-      localObject1 = localBaseApplication.getString(2131692306);
-      if (paramFileManagerEntity.bSend) {
-        localObject1 = localBaseApplication.getString(2131692341);
-      }
-      localObject2 = paramFileManagerEntity.peerNick;
-    }
-    else
-    {
-      localObject2 = null;
-    }
-    Object localObject2 = a(paramFileManagerEntity, localBaseApplication, (String)localObject1, (String)localObject2);
-    Object localObject3 = localObject1;
-    if (paramFileManagerEntity.nOpType == 1)
-    {
-      localObject3 = localObject1;
-      if (paramFileManagerEntity.bSend) {
-        localObject3 = localBaseApplication.getString(2131692341);
-      }
-    }
-    localObject5 = localObject3;
-    localObject1 = localObject2;
-    try
-    {
-      BaseQQAppInterface localBaseQQAppInterface = a();
-      localObject5 = localObject3;
-      localObject1 = localObject2;
-      localObject6 = a(localBaseQQAppInterface, paramFileManagerEntity.peerUin, "", paramFileManagerEntity.peerType);
-      localObject2 = localObject3;
-      localObject4 = localObject6;
-      localObject5 = localObject3;
-      localObject1 = localObject6;
-      if (paramFileManagerEntity.TroopUin != 0L)
-      {
-        localObject5 = localObject3;
-        localObject1 = localObject6;
-        localObject4 = a(paramFileManagerEntity, localBaseApplication, (String)localObject6, localBaseQQAppInterface);
-        localObject2 = null;
-      }
-      localObject3 = localObject4;
-      if (localObject2 != null)
-      {
-        localObject3 = localObject4;
-        localObject5 = localObject2;
-        localObject1 = localObject4;
-        if (((String)localObject2).equals(localBaseApplication.getString(2131692313))) {
-          localObject3 = null;
-        }
-      }
-      localObject6 = localObject2;
-      localObject4 = localObject3;
-      localObject5 = localObject2;
-      localObject1 = localObject3;
-      if (paramFileManagerEntity.peerType == 3000)
-      {
-        if (localObject2 != null)
-        {
-          localObject5 = localObject2;
-          localObject1 = localObject3;
-          if (!((String)localObject2).equals(localBaseApplication.getString(2131692313))) {}
-        }
-        else
-        {
-          localObject6 = localObject2;
-          localObject4 = localObject3;
-          localObject5 = localObject2;
-          localObject1 = localObject3;
-          if (paramFileManagerEntity.nOpType != 28) {
-            break label820;
-          }
-        }
-        localObject5 = localObject2;
-        localObject1 = localObject3;
-        localObject4 = b(paramFileManagerEntity, localBaseApplication, (String)localObject3, localBaseQQAppInterface);
-        localObject6 = null;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        label820:
-        Object localObject6 = localObject5;
-        Object localObject4 = localObject1;
-      }
-    }
-    if ((localObject6 != null) && (((String)localObject6).equalsIgnoreCase(localBaseApplication.getString(2131692307))) && (paramFileManagerEntity.bSend))
-    {
-      paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append(localBaseApplication.getString(2131692341));
-      paramFileManagerEntity.append(" ");
-      paramFileManagerEntity.append((String)localObject4);
-      return paramFileManagerEntity.toString();
-    }
-    if ((localObject6 != null) && (localObject4 != null))
-    {
-      paramFileManagerEntity = new StringBuilder();
-      paramFileManagerEntity.append((String)localObject6);
-      paramFileManagerEntity.append(" ");
-      paramFileManagerEntity.append((String)localObject4);
-      return paramFileManagerEntity.toString();
-    }
-    if (localObject6 != null) {
-      return localObject6;
-    }
-    return localObject4;
-  }
-  
-  public static String e(String paramString)
+  public static String t(String paramString)
   {
     if (paramString == null) {
       return "";
@@ -6782,37 +6434,41 @@ public class QQFileManagerUtilImpl
     }
   }
   
-  public static boolean e(FileManagerEntity paramFileManagerEntity)
+  public static LinkedHashMap u(String paramString)
   {
-    if (paramFileManagerEntity == null) {
-      return false;
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerUtil<FileAssistant>", 1, "jsonToMap but jsonString is null!");
+      }
+      return localLinkedHashMap;
     }
-    if (FileUtil.a(paramFileManagerEntity.getFilePath())) {
-      return true;
+    Object localObject = paramString.replace("\"", "");
+    paramString = (String)localObject;
+    if (((String)localObject).startsWith("{")) {
+      paramString = ((String)localObject).substring(1);
     }
-    if (FileUtil.a(paramFileManagerEntity.strMiddleThumPath)) {
-      return true;
+    localObject = paramString;
+    if (paramString.endsWith("}")) {
+      localObject = paramString.substring(0, paramString.length() - 1);
     }
-    if (FileUtil.a(paramFileManagerEntity.strLargeThumPath)) {
-      return true;
+    paramString = ((String)localObject).split(",");
+    int i = 0;
+    while (i < paramString.length)
+    {
+      localObject = paramString[i].split(":");
+      if (localObject.length == 1) {
+        localLinkedHashMap.put(localObject[0].toLowerCase(), "");
+      } else {
+        localLinkedHashMap.put(localObject[0].toLowerCase(), localObject[1]);
+      }
+      i += 1;
     }
-    if (FileUtil.a(paramFileManagerEntity.strThumbPath)) {
-      return true;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Id[");
-    localStringBuilder.append(paramFileManagerEntity.nSessionId);
-    localStringBuilder.append("] no Thumb!");
-    QLog.i("FileManagerUtil<FileAssistant>", 1, localStringBuilder.toString());
-    return false;
+    return localLinkedHashMap;
   }
   
-  public static byte[] e(String paramString)
-  {
-    return a(paramString, "MD5");
-  }
-  
-  public static String f(String paramString)
+  public static String v(String paramString)
   {
     paramString = c(paramString);
     if (paramString == null) {
@@ -6826,29 +6482,12 @@ public class QQFileManagerUtilImpl
     return localStringBuilder.toString();
   }
   
-  public static boolean f(FileManagerEntity paramFileManagerEntity)
+  public static boolean w(String paramString)
   {
-    return QQFileUtil.a(paramFileManagerEntity.getFilePath()).equalsIgnoreCase(".mov") ^ true;
+    return QQFileUtil.b(paramString);
   }
   
-  private static int g(String paramString)
-  {
-    if (paramString == null) {
-      return 4;
-    }
-    if (paramString.equalsIgnoreCase("com.tencent.mtt")) {
-      return 1;
-    }
-    if (paramString.equalsIgnoreCase("send_to_wx")) {
-      return 2;
-    }
-    if (paramString.equalsIgnoreCase("cn.wps.moffice_eng")) {
-      return 3;
-    }
-    return 4;
-  }
-  
-  public static String g(String paramString)
+  public static String x(String paramString)
   {
     if (paramString == null) {
       return "";
@@ -6860,7 +6499,402 @@ public class QQFileManagerUtilImpl
     return "";
   }
   
-  public static String h(String paramString)
+  /* Error */
+  public static QQFileManagerUtil.VideoThumbInfo y(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 3712	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:v	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: astore 4
+    //   6: new 3599	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo
+    //   9: dup
+    //   10: invokespecial 3713	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:<init>	()V
+    //   13: astore 5
+    //   15: aload 5
+    //   17: iconst_0
+    //   18: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   21: aload 4
+    //   23: invokestatic 995	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
+    //   26: ifeq +61 -> 87
+    //   29: new 175	android/graphics/BitmapFactory$Options
+    //   32: dup
+    //   33: invokespecial 176	android/graphics/BitmapFactory$Options:<init>	()V
+    //   36: astore_0
+    //   37: aload_0
+    //   38: iconst_1
+    //   39: putfield 180	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   42: ldc 182
+    //   44: invokestatic 188	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   47: checkcast 182	com/tencent/mobileqq/filemanager/api/IQQFileTempUtils
+    //   50: aload 4
+    //   52: aload_0
+    //   53: invokeinterface 192 3 0
+    //   58: pop
+    //   59: aload 5
+    //   61: aload_0
+    //   62: getfield 199	android/graphics/BitmapFactory$Options:outWidth	I
+    //   65: putfield 3606	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:c	I
+    //   68: aload 5
+    //   70: aload_0
+    //   71: getfield 202	android/graphics/BitmapFactory$Options:outHeight	I
+    //   74: putfield 3608	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:d	I
+    //   77: aload 5
+    //   79: aload 4
+    //   81: putfield 3601	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:b	Ljava/lang/String;
+    //   84: aload 5
+    //   86: areturn
+    //   87: aload_0
+    //   88: iconst_1
+    //   89: invokestatic 3719	android/media/ThumbnailUtils:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   92: astore_0
+    //   93: aload_0
+    //   94: astore_2
+    //   95: aload_0
+    //   96: ifnonnull +25 -> 121
+    //   99: aload 5
+    //   101: iconst_m1
+    //   102: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   105: aload 5
+    //   107: areturn
+    //   108: astore_1
+    //   109: goto +6 -> 115
+    //   112: astore_1
+    //   113: aconst_null
+    //   114: astore_0
+    //   115: aload_1
+    //   116: invokevirtual 973	java/lang/Exception:printStackTrace	()V
+    //   119: aload_0
+    //   120: astore_2
+    //   121: new 111	java/lang/StringBuilder
+    //   124: dup
+    //   125: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   128: astore_0
+    //   129: aload_0
+    //   130: invokestatic 920	com/tencent/mobileqq/filemanager/settings/FMSettings:a	()Lcom/tencent/mobileqq/filemanager/api/IFMSettings;
+    //   133: invokeinterface 925 1 0
+    //   138: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload_0
+    //   143: invokestatic 774	java/lang/System:currentTimeMillis	()J
+    //   146: invokevirtual 575	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload_0
+    //   151: ldc_w 3011
+    //   154: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload_0
+    //   159: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   162: astore 6
+    //   164: new 111	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   171: astore_0
+    //   172: aload_0
+    //   173: invokestatic 920	com/tencent/mobileqq/filemanager/settings/FMSettings:a	()Lcom/tencent/mobileqq/filemanager/api/IFMSettings;
+    //   176: invokeinterface 925 1 0
+    //   181: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload_0
+    //   186: ldc_w 3721
+    //   189: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload_0
+    //   194: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: invokestatic 3724	com/tencent/mobileqq/utils/FileUtils:createFileIfNotExits	(Ljava/lang/String;)V
+    //   200: new 979	com/tencent/mm/vfs/VFSFile
+    //   203: dup
+    //   204: aload 6
+    //   206: invokespecial 981	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   209: astore 7
+    //   211: aload 7
+    //   213: invokevirtual 3727	com/tencent/mm/vfs/VFSFile:getParent	()Ljava/lang/String;
+    //   216: astore_0
+    //   217: aload_0
+    //   218: ifnonnull +6 -> 224
+    //   221: aload 5
+    //   223: areturn
+    //   224: new 979	com/tencent/mm/vfs/VFSFile
+    //   227: dup
+    //   228: aload_0
+    //   229: invokespecial 981	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   232: astore_0
+    //   233: aload_0
+    //   234: invokevirtual 984	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   237: ifeq +10 -> 247
+    //   240: aload_0
+    //   241: invokevirtual 1119	com/tencent/mm/vfs/VFSFile:isDirectory	()Z
+    //   244: ifne +8 -> 252
+    //   247: aload_0
+    //   248: invokevirtual 987	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   251: pop
+    //   252: aload 7
+    //   254: invokevirtual 984	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   257: ifeq +11 -> 268
+    //   260: aload 7
+    //   262: invokevirtual 3730	com/tencent/mm/vfs/VFSFile:isFile	()Z
+    //   265: ifne +17 -> 282
+    //   268: aload 7
+    //   270: invokevirtual 3733	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
+    //   273: pop
+    //   274: goto +8 -> 282
+    //   277: astore_0
+    //   278: aload_0
+    //   279: invokevirtual 2483	java/io/IOException:printStackTrace	()V
+    //   282: new 3735	java/io/BufferedOutputStream
+    //   285: dup
+    //   286: new 3737	com/tencent/mm/vfs/VFSFileOutputStream
+    //   289: dup
+    //   290: aload 7
+    //   292: invokespecial 3740	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   295: invokespecial 3743	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   298: astore_1
+    //   299: aload_2
+    //   300: ifnull +25 -> 325
+    //   303: aload_1
+    //   304: astore_0
+    //   305: aload_2
+    //   306: getstatic 3749	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   309: bipush 80
+    //   311: aload_1
+    //   312: invokevirtual 3753	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   315: pop
+    //   316: aload_1
+    //   317: astore_0
+    //   318: aload_1
+    //   319: invokevirtual 3756	java/io/BufferedOutputStream:flush	()V
+    //   322: goto +11 -> 333
+    //   325: aload_1
+    //   326: astore_0
+    //   327: aload 5
+    //   329: iconst_m1
+    //   330: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   333: aload_1
+    //   334: invokevirtual 3757	java/io/BufferedOutputStream:close	()V
+    //   337: goto +203 -> 540
+    //   340: goto +200 -> 540
+    //   343: astore_3
+    //   344: goto +16 -> 360
+    //   347: astore_3
+    //   348: goto +100 -> 448
+    //   351: astore_1
+    //   352: aconst_null
+    //   353: astore_0
+    //   354: goto +265 -> 619
+    //   357: astore_3
+    //   358: aconst_null
+    //   359: astore_1
+    //   360: aload_1
+    //   361: astore_0
+    //   362: aload 5
+    //   364: bipush 254
+    //   366: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   369: aload_1
+    //   370: astore_0
+    //   371: invokestatic 570	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   374: ifeq +269 -> 643
+    //   377: aload_1
+    //   378: astore_0
+    //   379: new 111	java/lang/StringBuilder
+    //   382: dup
+    //   383: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   386: astore 8
+    //   388: aload_1
+    //   389: astore_0
+    //   390: aload 8
+    //   392: ldc_w 3759
+    //   395: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: pop
+    //   399: aload_1
+    //   400: astore_0
+    //   401: aload 8
+    //   403: aload 6
+    //   405: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   408: pop
+    //   409: aload_1
+    //   410: astore_0
+    //   411: aload 8
+    //   413: ldc_w 3761
+    //   416: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   419: pop
+    //   420: aload_1
+    //   421: astore_0
+    //   422: aload 8
+    //   424: aload_3
+    //   425: invokevirtual 2786	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   428: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: pop
+    //   432: aload_1
+    //   433: astore_0
+    //   434: ldc 123
+    //   436: iconst_2
+    //   437: aload 8
+    //   439: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   445: goto +198 -> 643
+    //   448: aload_1
+    //   449: astore_0
+    //   450: aload 5
+    //   452: bipush 254
+    //   454: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   457: aload_1
+    //   458: astore_0
+    //   459: invokestatic 570	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   462: ifeq +71 -> 533
+    //   465: aload_1
+    //   466: astore_0
+    //   467: new 111	java/lang/StringBuilder
+    //   470: dup
+    //   471: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   474: astore 8
+    //   476: aload_1
+    //   477: astore_0
+    //   478: aload 8
+    //   480: ldc_w 3759
+    //   483: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   486: pop
+    //   487: aload_1
+    //   488: astore_0
+    //   489: aload 8
+    //   491: aload 6
+    //   493: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   496: pop
+    //   497: aload_1
+    //   498: astore_0
+    //   499: aload 8
+    //   501: ldc_w 3763
+    //   504: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   507: pop
+    //   508: aload_1
+    //   509: astore_0
+    //   510: aload 8
+    //   512: aload_3
+    //   513: invokevirtual 3764	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   516: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   519: pop
+    //   520: aload_1
+    //   521: astore_0
+    //   522: ldc 123
+    //   524: iconst_2
+    //   525: aload 8
+    //   527: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   530: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   533: aload_1
+    //   534: ifnull +6 -> 540
+    //   537: goto -204 -> 333
+    //   540: aload 7
+    //   542: invokevirtual 984	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   545: ifeq +49 -> 594
+    //   548: aload 6
+    //   550: aload 4
+    //   552: invokestatic 3767	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   555: pop
+    //   556: aload 6
+    //   558: invokestatic 3769	com/tencent/mobileqq/filemanager/util/FileUtil:e	(Ljava/lang/String;)Z
+    //   561: pop
+    //   562: aload 5
+    //   564: aload 4
+    //   566: putfield 3601	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:b	Ljava/lang/String;
+    //   569: aload_2
+    //   570: ifnull +45 -> 615
+    //   573: aload 5
+    //   575: aload_2
+    //   576: invokevirtual 295	android/graphics/Bitmap:getWidth	()I
+    //   579: putfield 3606	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:c	I
+    //   582: aload 5
+    //   584: aload_2
+    //   585: invokevirtual 298	android/graphics/Bitmap:getHeight	()I
+    //   588: putfield 3608	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:d	I
+    //   591: aload 5
+    //   593: areturn
+    //   594: aload 5
+    //   596: iconst_m1
+    //   597: putfield 3600	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil$VideoThumbInfo:a	I
+    //   600: invokestatic 570	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   603: ifeq +12 -> 615
+    //   606: ldc 123
+    //   608: iconst_2
+    //   609: ldc_w 3771
+    //   612: invokestatic 129	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   615: aload 5
+    //   617: areturn
+    //   618: astore_1
+    //   619: aload_0
+    //   620: ifnull +7 -> 627
+    //   623: aload_0
+    //   624: invokevirtual 3757	java/io/BufferedOutputStream:close	()V
+    //   627: goto +5 -> 632
+    //   630: aload_1
+    //   631: athrow
+    //   632: goto -2 -> 630
+    //   635: astore_0
+    //   636: goto -296 -> 340
+    //   639: astore_0
+    //   640: goto -13 -> 627
+    //   643: aload_1
+    //   644: ifnull -104 -> 540
+    //   647: goto -314 -> 333
+    //   650: astore_3
+    //   651: aconst_null
+    //   652: astore_1
+    //   653: goto -205 -> 448
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	656	0	paramString	String
+    //   108	1	1	localException1	Exception
+    //   112	4	1	localException2	Exception
+    //   298	36	1	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   351	1	1	localObject1	Object
+    //   359	175	1	localObject2	Object
+    //   618	26	1	localObject3	Object
+    //   652	1	1	localObject4	Object
+    //   94	491	2	str1	String
+    //   343	1	3	localIOException1	IOException
+    //   347	1	3	localFileNotFoundException1	FileNotFoundException
+    //   357	156	3	localIOException2	IOException
+    //   650	1	3	localFileNotFoundException2	FileNotFoundException
+    //   4	561	4	str2	String
+    //   13	603	5	localVideoThumbInfo	QQFileManagerUtil.VideoThumbInfo
+    //   162	395	6	str3	String
+    //   209	332	7	localVFSFile	VFSFile
+    //   386	140	8	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   99	105	108	java/lang/Exception
+    //   87	93	112	java/lang/Exception
+    //   268	274	277	java/io/IOException
+    //   305	316	343	java/io/IOException
+    //   318	322	343	java/io/IOException
+    //   327	333	343	java/io/IOException
+    //   305	316	347	java/io/FileNotFoundException
+    //   318	322	347	java/io/FileNotFoundException
+    //   327	333	347	java/io/FileNotFoundException
+    //   282	299	351	finally
+    //   282	299	357	java/io/IOException
+    //   305	316	618	finally
+    //   318	322	618	finally
+    //   327	333	618	finally
+    //   362	369	618	finally
+    //   371	377	618	finally
+    //   379	388	618	finally
+    //   390	399	618	finally
+    //   401	409	618	finally
+    //   411	420	618	finally
+    //   422	432	618	finally
+    //   434	445	618	finally
+    //   450	457	618	finally
+    //   459	465	618	finally
+    //   467	476	618	finally
+    //   478	487	618	finally
+    //   489	497	618	finally
+    //   499	508	618	finally
+    //   510	520	618	finally
+    //   522	533	618	finally
+    //   333	337	635	java/io/IOException
+    //   623	627	639	java/io/IOException
+    //   282	299	650	java/io/FileNotFoundException
+  }
+  
+  public static String z(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -6871,24 +6905,10 @@ public class QQFileManagerUtilImpl
     localStringBuilder.append("size=750&");
     return localStringBuilder.toString();
   }
-  
-  private static String j(String paramString)
-  {
-    if (paramString.equalsIgnoreCase("userClickOnceEvent")) {
-      return "0X800AE45";
-    }
-    if (paramString.equalsIgnoreCase("userClickAlwaysEvent")) {
-      return "0X800AE44";
-    }
-    if (paramString.equalsIgnoreCase("userMenuClickEvent")) {
-      return "0X800AE43";
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl
  * JD-Core Version:    0.7.0.1
  */

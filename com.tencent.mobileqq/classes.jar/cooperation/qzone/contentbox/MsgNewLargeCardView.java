@@ -41,7 +41,7 @@ public class MsgNewLargeCardView
   private static final int AVATAR_GAP;
   private static final int BACKGROUND_HEIGHT;
   private static final int BACKGROUND_WIDTH = ;
-  private static final int CARD_RADIUS = ViewUtils.b(8.0F);
+  private static final int CARD_RADIUS = ViewUtils.dpToPx(8.0F);
   private static final int HOUR_OF_ONE_DAY = 24;
   private static final int LARGE_PHOTO_HEIGHT;
   private static final int LIST_AVATAR_LENGTH;
@@ -74,15 +74,15 @@ public class MsgNewLargeCardView
   
   static
   {
-    BACKGROUND_HEIGHT = ViewUtils.b(197.0F);
-    LIST_AVATAR_LENGTH = ViewUtils.b(40.0F);
-    AVATAR_GAP = ViewUtils.b(30.0F);
-    LIST_MARGIN_TOP = ViewUtils.b(35.0F);
-    LIST_MARGIN_LEFT = ViewUtils.b(12.0F);
-    LIST_MARGIN_RIGHT = ViewUtils.b(12.0F);
-    LIST_ITEM_MARGIN_TOP = ViewUtils.b(10.0F);
-    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.b(18.0F);
-    LARGE_PHOTO_HEIGHT = ViewUtils.b(230.0F);
+    BACKGROUND_HEIGHT = ViewUtils.dpToPx(197.0F);
+    LIST_AVATAR_LENGTH = ViewUtils.dpToPx(40.0F);
+    AVATAR_GAP = ViewUtils.dpToPx(30.0F);
+    LIST_MARGIN_TOP = ViewUtils.dpToPx(35.0F);
+    LIST_MARGIN_LEFT = ViewUtils.dpToPx(12.0F);
+    LIST_MARGIN_RIGHT = ViewUtils.dpToPx(12.0F);
+    LIST_ITEM_MARGIN_TOP = ViewUtils.dpToPx(10.0F);
+    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.dpToPx(18.0F);
+    LARGE_PHOTO_HEIGHT = ViewUtils.dpToPx(230.0F);
   }
   
   public MsgNewLargeCardView(Context paramContext, QQAppInterface paramQQAppInterface)
@@ -376,9 +376,9 @@ public class MsgNewLargeCardView
   {
     TextView localTextView = (TextView)findViewById(2080571475);
     if (this.isNightMode) {
-      localTextView.setBackgroundResource(2130848710);
+      localTextView.setBackgroundResource(2130850377);
     } else {
-      localTextView.setBackgroundResource(2130848709);
+      localTextView.setBackgroundResource(2130850376);
     }
     setTitleTextColor(localTextView);
     return localTextView;
@@ -389,7 +389,7 @@ public class MsgNewLargeCardView
     if (this.isNightMode) {
       this.feedsContainer.setBackgroundColor(Color.parseColor("#171717"));
     } else {
-      this.feedsContainer.setBackgroundColor(getResources().getColor(2131167394));
+      this.feedsContainer.setBackgroundColor(getResources().getColor(2131168464));
     }
     return this.feedsContainer;
   }
@@ -481,7 +481,7 @@ public class MsgNewLargeCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgNewLargeCardView
  * JD-Core Version:    0.7.0.1
  */

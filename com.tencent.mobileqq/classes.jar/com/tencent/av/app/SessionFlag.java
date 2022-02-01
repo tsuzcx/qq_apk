@@ -4,54 +4,48 @@ import java.util.HashMap;
 
 public class SessionFlag
 {
-  private static volatile SessionFlag a;
-  public int a;
-  protected HashMap<String, Integer> a;
-  
-  public SessionFlag()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-  }
+  private static volatile SessionFlag c;
+  public int a = 0;
+  protected HashMap<String, Integer> b = null;
   
   public static SessionFlag a()
   {
-    if (jdField_a_of_type_ComTencentAvAppSessionFlag == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvAppSessionFlag == null) {
-          jdField_a_of_type_ComTencentAvAppSessionFlag = new SessionFlag();
+        if (c == null) {
+          c = new SessionFlag();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvAppSessionFlag;
+    return c;
   }
   
   public int a(String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if (localHashMap == null) {
       return 0;
     }
     if (!localHashMap.containsKey(paramString)) {
       return 0;
     }
-    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_Int = 0;
+    return ((Integer)this.b.get(paramString)).intValue();
   }
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.b == null) {
+      this.b = new HashMap();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
+    this.b.put(paramString, Integer.valueOf(paramInt));
+  }
+  
+  public void b()
+  {
+    this.b = null;
+    this.a = 0;
   }
 }
 

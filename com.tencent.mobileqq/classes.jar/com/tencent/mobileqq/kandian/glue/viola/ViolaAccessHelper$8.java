@@ -33,11 +33,11 @@ final class ViolaAccessHelper$8
         if (QLog.isColorLevel()) {
           QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
         }
-        ViolaAccessHelper.jdField_a_of_type_JavaLangString = RIJQQAppInterfaceUtil.a();
-        ViolaAccessHelper.jdField_a_of_type_Long = System.currentTimeMillis();
+        ViolaAccessHelper.c = RIJQQAppInterfaceUtil.d();
+        ViolaAccessHelper.b = System.currentTimeMillis();
         if (paramString.has("use_main"))
         {
-          ViolaAccessHelper.jdField_a_of_type_Boolean = ((Boolean)paramString.get("use_main")).booleanValue();
+          ViolaAccessHelper.d = ((Boolean)paramString.get("use_main")).booleanValue();
           return;
         }
       }
@@ -57,7 +57,7 @@ final class ViolaAccessHelper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.8
  * JD-Core Version:    0.7.0.1
  */

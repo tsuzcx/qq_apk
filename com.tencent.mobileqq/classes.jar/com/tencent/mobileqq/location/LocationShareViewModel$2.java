@@ -16,7 +16,7 @@ class LocationShareViewModel$2
   
   public Pair<LocationRoom.RoomKey, LocationRoom.Venue> a()
   {
-    return new Pair(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+    return new Pair(LocationShareViewModel.a(this.b), this.a);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -29,7 +29,7 @@ class LocationShareViewModel$2
       ((StringBuilder)localObject).append(" venue: ");
       ((StringBuilder)localObject).append(paramVenue);
       ((StringBuilder)localObject).append(" mRoomKey: ");
-      ((StringBuilder)localObject).append(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel));
+      ((StringBuilder)localObject).append(LocationShareViewModel.a(this.b));
       ((StringBuilder)localObject).append(" optType: ");
       ((StringBuilder)localObject).append(paramInt1);
       localObject = ((StringBuilder)localObject).toString();
@@ -40,7 +40,7 @@ class LocationShareViewModel$2
       localStringBuilder.append(paramInt2);
       QLog.d("Q.LocationShare", 2, new Object[] { localObject, localStringBuilder.toString() });
     }
-    if (paramRoomKey.equals(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel)))
+    if (paramRoomKey.equals(LocationShareViewModel.a(this.b)))
     {
       if (paramVenue == null) {
         return;
@@ -53,18 +53,18 @@ class LocationShareViewModel$2
         }
       }
       paramRoomKey = new VenueOptBean();
-      paramRoomKey.b = 1;
-      paramRoomKey.c = 2;
-      paramRoomKey.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue;
-      paramRoomKey.jdField_a_of_type_Boolean = paramBoolean;
-      paramRoomKey.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.c.postValue(paramRoomKey);
+      paramRoomKey.d = 1;
+      paramRoomKey.e = 2;
+      paramRoomKey.a = this.a;
+      paramRoomKey.b = paramBoolean;
+      paramRoomKey.c = paramInt2;
+      this.b.c.postValue(paramRoomKey);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareViewModel.2
  * JD-Core Version:    0.7.0.1
  */

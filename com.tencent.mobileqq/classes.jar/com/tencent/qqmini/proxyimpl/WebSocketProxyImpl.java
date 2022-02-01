@@ -21,10 +21,10 @@ public class WebSocketProxyImpl
   public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
   {
     WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.a.get(Integer.valueOf(paramInt1));
-    if ((localWebSocketTask != null) && (localWebSocketTask.a != null)) {
+    if ((localWebSocketTask != null) && (localWebSocketTask.d != null)) {
       try
       {
-        localWebSocketTask.a.close(paramInt2, paramString);
+        localWebSocketTask.d.close(paramInt2, paramString);
         ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localWebSocketTask, paramInt1, paramInt2, paramString), 1000L);
       }
       catch (Exception paramString)
@@ -46,11 +46,11 @@ public class WebSocketProxyImpl
   public boolean send(int paramInt, String paramString)
   {
     WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.a.get(Integer.valueOf(paramInt));
-    if ((localWebSocketTask != null) && (localWebSocketTask.a != null)) {
+    if ((localWebSocketTask != null) && (localWebSocketTask.d != null)) {
       try
       {
         MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-        localWebSocketTask.a.send(paramString);
+        localWebSocketTask.d.send(paramString);
         return true;
       }
       catch (Exception paramString)
@@ -64,10 +64,10 @@ public class WebSocketProxyImpl
   public boolean send(int paramInt, byte[] paramArrayOfByte)
   {
     WebSocketProxyImpl.WebSocketTask localWebSocketTask = (WebSocketProxyImpl.WebSocketTask)this.a.get(Integer.valueOf(paramInt));
-    if ((localWebSocketTask != null) && (localWebSocketTask.a != null)) {
+    if ((localWebSocketTask != null) && (localWebSocketTask.d != null)) {
       try
       {
-        localWebSocketTask.a.send(ByteString.of(paramArrayOfByte));
+        localWebSocketTask.d.send(ByteString.of(paramArrayOfByte));
         return true;
       }
       catch (Exception paramArrayOfByte)
@@ -80,7 +80,7 @@ public class WebSocketProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl
  * JD-Core Version:    0.7.0.1
  */

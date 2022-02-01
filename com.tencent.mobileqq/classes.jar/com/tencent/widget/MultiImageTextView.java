@@ -14,9 +14,9 @@ import java.util.Iterator;
 public class MultiImageTextView
   extends ColorNickTextView
 {
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private ArrayList<SpanAdapter> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean b = false;
+  private ArrayList<SpanAdapter> c = new ArrayList();
+  private StringBuilder d = new StringBuilder();
   
   public MultiImageTextView(Context paramContext)
   {
@@ -58,26 +58,26 @@ public class MultiImageTextView
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append(this.c.size());
     localStringBuilder.append("]");
     paramSpanAdapter.apendString = localStringBuilder.toString();
-    paramSpanAdapter.start = this.jdField_a_of_type_JavaLangStringBuilder.length();
+    paramSpanAdapter.start = this.d.length();
     paramSpanAdapter.end = (paramSpanAdapter.start + paramSpanAdapter.apendString.length());
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramSpanAdapter.apendString);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramSpanAdapter);
+    this.d.append(paramSpanAdapter.apendString);
+    this.c.add(paramSpanAdapter);
   }
   
   public void append(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramCharSequence, paramInt1, paramInt2);
+    this.d.append(paramCharSequence, paramInt1, paramInt2);
     this.b = true;
     super.append(paramCharSequence, paramInt1, paramInt2);
   }
   
   public void c()
   {
-    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangStringBuilder);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    SpannableString localSpannableString = new SpannableString(this.d);
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((SpanAdapter)localIterator.next()).getSpan(localSpannableString);
     }
@@ -88,11 +88,11 @@ public class MultiImageTextView
   {
     if (!this.b)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.c;
       if (localArrayList != null) {
         localArrayList.clear();
       }
-      this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(paramCharSequence);
+      this.d = new StringBuilder(paramCharSequence);
     }
     else
     {
@@ -103,7 +103,7 @@ public class MultiImageTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.MultiImageTextView
  * JD-Core Version:    0.7.0.1
  */

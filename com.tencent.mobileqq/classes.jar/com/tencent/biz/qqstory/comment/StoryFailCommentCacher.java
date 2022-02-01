@@ -11,67 +11,67 @@ import java.util.List;
 
 public class StoryFailCommentCacher
 {
-  private static StoryFailCommentCacher jdField_a_of_type_ComTencentBizQqstoryCommentStoryFailCommentCacher;
-  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static HashSet<String> a;
+  private static HashMap<String, Integer> b;
+  private static StoryFailCommentCacher c;
   
   public static StoryFailCommentCacher a()
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryCommentStoryFailCommentCacher == null)
+    if (c == null)
     {
-      jdField_a_of_type_ComTencentBizQqstoryCommentStoryFailCommentCacher = new StoryFailCommentCacher();
-      jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      Iterator localIterator = ((CommentManager)SuperManager.a(17)).a().iterator();
+      c = new StoryFailCommentCacher();
+      a = new HashSet();
+      b = new HashMap();
+      Iterator localIterator = ((CommentManager)SuperManager.a(17)).c().iterator();
       while (localIterator.hasNext())
       {
         CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        if (!a.contains(localCommentEntry.feedId))
         {
-          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+          a.add(localCommentEntry.feedId);
+          b.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
         }
       }
     }
-    return jdField_a_of_type_ComTencentBizQqstoryCommentStoryFailCommentCacher;
+    return c;
   }
   
   public int a(String paramString)
   {
-    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (Integer)b.get(paramString);
     if (paramString == null) {
       return -1;
     }
     return paramString.intValue();
   }
   
-  public void a()
+  public void b()
   {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Iterator localIterator = ((CommentManager)SuperManager.a(17)).a().iterator();
+    a.clear();
+    b.clear();
+    Iterator localIterator = ((CommentManager)SuperManager.a(17)).c().iterator();
     while (localIterator.hasNext())
     {
       CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
-      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      if (!a.contains(localCommentEntry.feedId))
       {
-        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
-        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        a.add(localCommentEntry.feedId);
+        b.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
       }
     }
-    SLog.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
+    SLog.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(a.size()) });
   }
   
-  public void b()
+  public void c()
   {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    jdField_a_of_type_ComTencentBizQqstoryCommentStoryFailCommentCacher = null;
+    a.clear();
+    b.clear();
+    c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryFailCommentCacher
  * JD-Core Version:    0.7.0.1
  */

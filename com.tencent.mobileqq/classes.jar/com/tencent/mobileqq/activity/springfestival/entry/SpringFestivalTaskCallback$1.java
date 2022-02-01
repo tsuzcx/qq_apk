@@ -30,20 +30,20 @@ class SpringFestivalTaskCallback$1
       if (QLog.isColorLevel()) {
         QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "handleMessage ,MSG_HIDE_NORMAL_BREATH_LIGHT");
       }
-      SpringFestivalTaskCallback.a(this.a).a.a();
+      SpringFestivalTaskCallback.a(this.a).aa.a();
       SpringFestivalTaskCallback.a(this.a, false);
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "handleMessage MSG_GRAB_FAKE_EVENT 11");
     }
-    SpringFestivalTaskCallback.a(this.a).a.a(false, HardCodeUtil.a(2131708339), null);
+    SpringFestivalTaskCallback.a(this.a).aa.a(false, HardCodeUtil.a(2131906127), null);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalTaskCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ import mqq.app.AppRuntime;
 
 public class GatewayUtil
 {
-  private static int a(Context paramContext)
+  protected static int a(Context paramContext)
   {
     if (paramContext == null) {
       return -1;
     }
-    if (!a(paramContext)) {
+    if (!e(paramContext)) {
       return 0;
     }
     if (Build.VERSION.SDK_INT >= 26) {
@@ -83,19 +83,6 @@ public class GatewayUtil
     }
   }
   
-  private static boolean a(Context paramContext)
-  {
-    int i = ((TelephonyManager)paramContext.getSystemService("phone")).getSimState();
-    boolean bool;
-    if ((i != 0) && (i != 1)) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    QLog.d("GatewayReportUtil", 1, new Object[] { "hasSimCard result : ", Boolean.valueOf(bool) });
-    return bool;
-  }
-  
   @RequiresApi(api=22)
   private static int b(Context paramContext)
   {
@@ -154,12 +141,12 @@ public class GatewayUtil
     //   0: iconst_2
     //   1: istore_2
     //   2: aload_0
-    //   3: ldc 79
-    //   5: invokevirtual 85	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   8: checkcast 87	android/telephony/TelephonyManager
+    //   3: ldc 118
+    //   5: invokevirtual 90	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   8: checkcast 120	android/telephony/TelephonyManager
     //   11: astore_0
     //   12: aload_0
-    //   13: invokevirtual 91	android/telephony/TelephonyManager:getSimState	()I
+    //   13: invokevirtual 134	android/telephony/TelephonyManager:getSimState	()I
     //   16: istore_1
     //   17: iload_1
     //   18: iconst_5
@@ -169,15 +156,15 @@ public class GatewayUtil
     //   24: goto +5 -> 29
     //   27: iconst_0
     //   28: istore_1
-    //   29: ldc 87
-    //   31: ldc 142
+    //   29: ldc 120
+    //   31: ldc 135
     //   33: iconst_1
-    //   34: anewarray 144	java/lang/Class
+    //   34: anewarray 137	java/lang/Class
     //   37: dup
     //   38: iconst_0
-    //   39: getstatic 148	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   39: getstatic 141	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   42: aastore
-    //   43: invokevirtual 152	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   43: invokevirtual 145	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   46: aload_0
     //   47: iconst_1
     //   48: anewarray 4	java/lang/Object
@@ -186,9 +173,9 @@ public class GatewayUtil
     //   53: iconst_1
     //   54: invokestatic 50	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   57: aastore
-    //   58: invokevirtual 158	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   58: invokevirtual 151	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   61: checkcast 46	java/lang/Integer
-    //   64: invokevirtual 161	java/lang/Integer:intValue	()I
+    //   64: invokevirtual 154	java/lang/Integer:intValue	()I
     //   67: istore_3
     //   68: iload_3
     //   69: iconst_5
@@ -205,13 +192,13 @@ public class GatewayUtil
     //   88: astore_0
     //   89: goto +121 -> 210
     //   92: astore_0
-    //   93: ldc 32
+    //   93: ldc 33
     //   95: iconst_1
     //   96: iconst_4
     //   97: anewarray 4	java/lang/Object
     //   100: dup
     //   101: iconst_0
-    //   102: ldc 163
+    //   102: ldc 156
     //   104: aastore
     //   105: dup
     //   106: iconst_1
@@ -220,26 +207,26 @@ public class GatewayUtil
     //   111: aastore
     //   112: dup
     //   113: iconst_2
-    //   114: ldc 165
+    //   114: ldc 158
     //   116: aastore
     //   117: dup
     //   118: iconst_3
     //   119: aload_0
-    //   120: invokevirtual 126	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   120: invokevirtual 112	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   123: aastore
-    //   124: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   124: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   127: iconst_m1
     //   128: ireturn
     //   129: astore_0
     //   130: iconst_0
     //   131: istore_1
-    //   132: ldc 32
+    //   132: ldc 33
     //   134: iconst_1
     //   135: iconst_4
     //   136: anewarray 4	java/lang/Object
     //   139: dup
     //   140: iconst_0
-    //   141: ldc 167
+    //   141: ldc 160
     //   143: aastore
     //   144: dup
     //   145: iconst_1
@@ -248,26 +235,26 @@ public class GatewayUtil
     //   150: aastore
     //   151: dup
     //   152: iconst_2
-    //   153: ldc 165
+    //   153: ldc 158
     //   155: aastore
     //   156: dup
     //   157: iconst_3
     //   158: aload_0
-    //   159: invokevirtual 168	java/lang/reflect/InvocationTargetException:getMessage	()Ljava/lang/String;
+    //   159: invokevirtual 161	java/lang/reflect/InvocationTargetException:getMessage	()Ljava/lang/String;
     //   162: aastore
-    //   163: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   163: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   166: iload_1
     //   167: ireturn
     //   168: astore_0
     //   169: iconst_0
     //   170: istore_1
-    //   171: ldc 32
+    //   171: ldc 33
     //   173: iconst_1
     //   174: iconst_4
     //   175: anewarray 4	java/lang/Object
     //   178: dup
     //   179: iconst_0
-    //   180: ldc 170
+    //   180: ldc 163
     //   182: aastore
     //   183: dup
     //   184: iconst_1
@@ -276,26 +263,26 @@ public class GatewayUtil
     //   189: aastore
     //   190: dup
     //   191: iconst_2
-    //   192: ldc 165
+    //   192: ldc 158
     //   194: aastore
     //   195: dup
     //   196: iconst_3
     //   197: aload_0
-    //   198: invokevirtual 171	java/lang/IllegalAccessException:getMessage	()Ljava/lang/String;
+    //   198: invokevirtual 164	java/lang/IllegalAccessException:getMessage	()Ljava/lang/String;
     //   201: aastore
-    //   202: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   202: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   205: iload_1
     //   206: ireturn
     //   207: astore_0
     //   208: iconst_0
     //   209: istore_1
-    //   210: ldc 32
+    //   210: ldc 33
     //   212: iconst_1
     //   213: iconst_4
     //   214: anewarray 4	java/lang/Object
     //   217: dup
     //   218: iconst_0
-    //   219: ldc 173
+    //   219: ldc 166
     //   221: aastore
     //   222: dup
     //   223: iconst_1
@@ -304,14 +291,14 @@ public class GatewayUtil
     //   228: aastore
     //   229: dup
     //   230: iconst_2
-    //   231: ldc 165
+    //   231: ldc 158
     //   233: aastore
     //   234: dup
     //   235: iconst_3
     //   236: aload_0
-    //   237: invokevirtual 174	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
+    //   237: invokevirtual 167	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
     //   240: aastore
-    //   241: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   241: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   244: iload_1
     //   245: ireturn
     // Local variable table:
@@ -331,10 +318,23 @@ public class GatewayUtil
     //   2	17	168	java/lang/IllegalAccessException
     //   2	17	207	java/lang/NoSuchMethodException
   }
+  
+  private static boolean e(Context paramContext)
+  {
+    int i = ((TelephonyManager)paramContext.getSystemService("phone")).getSimState();
+    boolean bool;
+    if ((i != 0) && (i != 1)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    QLog.d("GatewayReportUtil", 1, new Object[] { "hasSimCard result : ", Boolean.valueOf(bool) });
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.GatewayUtil
  * JD-Core Version:    0.7.0.1
  */

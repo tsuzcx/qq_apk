@@ -10,23 +10,23 @@ class FastWebActivity$CommentNumChangedlistener
   
   public void onCommentNumChanged(long paramLong)
   {
-    if (FastWebActivity.a(this.a) != null)
+    if (FastWebActivity.d(this.a) != null)
     {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
+      FastWebActivity.d(this.a).d = paramLong;
+      if (FastWebActivity.d(this.a).d <= 0L)
       {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
+        FastWebActivity.d(this.a).d = 0L;
+        this.a.f();
       }
-      ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = FastWebActivity.a(this.a);
+      ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = FastWebActivity.p(this.a);
       FastWebActivity localFastWebActivity = this.a;
-      localReadInJoyFastWebBottomSocialViewNew.a(localFastWebActivity, FastWebActivity.a(localFastWebActivity), this.a.a);
+      localReadInJoyFastWebBottomSocialViewNew.a(localFastWebActivity, FastWebActivity.d(localFastWebActivity), this.a.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.CommentNumChangedlistener
  * JD-Core Version:    0.7.0.1
  */

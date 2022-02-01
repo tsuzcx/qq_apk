@@ -4,8 +4,9 @@ import android.graphics.Bitmap;
 
 class b$a
 {
-  public float A;
-  public String B;
+  public Bitmap A;
+  public float B;
+  public String C;
   public int a;
   public int b;
   public int c;
@@ -29,15 +30,15 @@ class b$a
   public int u;
   public int v;
   public int w;
-  public String x;
-  public boolean y;
-  public Bitmap z;
+  public int x;
+  public String y;
+  public boolean z;
   
   b$a(b paramb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a
  * JD-Core Version:    0.7.0.1
  */

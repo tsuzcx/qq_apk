@@ -28,7 +28,7 @@ import com.tencent.mobileqq.emoticon.IEmojiListenerManager;
 import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
 import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
 import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -43,8 +43,10 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.os.MqqHandler;
@@ -55,91 +57,109 @@ public class MessengerService
   extends AppService
   implements IPCConstants
 {
-  Bundle jdField_a_of_type_AndroidOsBundle = null;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  Messenger jdField_a_of_type_AndroidOsMessenger = null;
-  VipSpecialCareHandler jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler = new MessengerService.8(this);
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new MessengerService.6(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new MessengerService.10(this);
-  QWalletAuthObserver jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$QWalletMsgHandler);
-  private MessengerService.IncomingHandler jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler;
-  MessengerService.QWalletMsgHandler jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$QWalletMsgHandler = new MessengerService.QWalletMsgHandler(this);
-  public EmojiStickerManager.StickerRecallListener a;
-  public EmoticonPackageDownloadListener a;
-  ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new MessengerService.7(this);
-  IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new MessengerService.9(this);
-  TeamWorkFileImportObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new MessengerService.3(this);
-  VipFunCallObserver jdField_a_of_type_ComTencentMobileqqVasVipavVipFunCallObserver = new MessengerService.4(this);
-  IPCDownloadListener jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = new MessengerService.5(this);
-  QidianBusinessObserver jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new MessengerService.11(this);
-  public List<Bundle> a;
-  Bundle jdField_b_of_type_AndroidOsBundle = null;
-  Messenger jdField_b_of_type_AndroidOsMessenger;
-  Bundle c = null;
-  Bundle d = null;
-  
-  public MessengerService()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new MessengerService.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener = new MessengerService.2(this);
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  }
+  Messenger b = null;
+  Messenger c;
+  public EmoticonPackageDownloadListener d = new MessengerService.1(this);
+  public EmojiStickerManager.StickerRecallListener e = new MessengerService.2(this);
+  TeamWorkFileImportObserver f = new MessengerService.3(this);
+  VipFunCallObserver g = new MessengerService.4(this);
+  IPCDownloadListener h = new MessengerService.5(this);
+  MessengerService.QWalletMsgHandler i = new MessengerService.QWalletMsgHandler(this);
+  QWalletAuthObserver j = new QWalletAuthObserver(this.i);
+  public List<Bundle> k = Collections.synchronizedList(new ArrayList());
+  Bundle l = null;
+  CardObserver m = new MessengerService.6(this);
+  ProfileCardObserver n = new MessengerService.7(this);
+  VipSpecialCareHandler o = new MessengerService.8(this);
+  Bundle p = null;
+  Bundle q = null;
+  Handler r = new Handler(Looper.getMainLooper());
+  IStatusListener s = new MessengerService.9(this);
+  FriendListObserver t = new MessengerService.10(this);
+  QidianBusinessObserver u = new MessengerService.11(this);
+  Bundle v = null;
+  private HandlerThread w;
+  private MessengerService.IncomingHandler x;
   
   public static Bundle a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = (IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("result", 0);
-    paramQQAppInterface.putInt("cnt", ((IGameMsgManagerService)localObject).getUnreadCnt4MsgTab());
+    String str1 = "";
+    paramQQAppInterface = (IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    localBundle.putInt("cnt", paramQQAppInterface.getUnreadCnt4MsgTab());
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      HashMap localHashMap = paramQQAppInterface.getUnreadForEachGame();
+      paramQQAppInterface = str1;
+      if (localHashMap != null)
+      {
+        paramQQAppInterface = localHashMap.keySet().iterator();
+        while (paramQQAppInterface.hasNext())
+        {
+          String str2 = (String)paramQQAppInterface.next();
+          localJSONObject.put(str2, localHashMap.get(str2));
+        }
+        paramQQAppInterface = localJSONObject.toString();
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("Q.emoji.web.MessengerService", 1, paramQQAppInterface, new Object[0]);
+      paramQQAppInterface = str1;
+    }
+    if (!TextUtils.isEmpty(paramQQAppInterface)) {
+      localBundle.putString("singleUnread", paramQQAppInterface);
+    }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[handleMessage] cmd:ipc_cmd_gamecenter_get_unread_total,data:");
-      ((StringBuilder)localObject).append(paramQQAppInterface);
-      QLog.i("Q.emoji.web.MessengerService", 2, ((StringBuilder)localObject).toString());
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("[handleMessage] cmd:ipc_cmd_gamecenter_get_unread_total,data:");
+      paramQQAppInterface.append(localBundle);
+      QLog.i("Q.emoji.web.MessengerService", 2, paramQQAppInterface.toString());
     }
-    return paramQQAppInterface;
+    return localBundle;
   }
   
-  public static Bundle a(QQAppInterface paramQQAppInterface, int paramInt)
+  public static Bundle a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     Bundle localBundle = new Bundle();
     try
     {
-      Object localObject2 = ((IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getSessionInfoList(paramInt, "");
-      localObject1 = new JSONArray();
+      Object localObject = ((IGameMsgManagerService)paramQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getSessionInfoList(paramInt, paramString);
+      paramString = new JSONArray();
       paramQQAppInterface = new JSONObject();
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          JSONObject localJSONObject = ((GameCenterSessionInfo)((Iterator)localObject2).next()).a();
+          JSONObject localJSONObject = ((GameCenterSessionInfo)((Iterator)localObject).next()).p();
           if (localJSONObject != null) {
-            ((JSONArray)localObject1).put(localJSONObject);
+            paramString.put(localJSONObject);
           }
         }
       }
-      paramQQAppInterface.put("session", localObject1);
+      paramQQAppInterface.put("session", paramString);
       localBundle.putInt("result", 0);
       localBundle.putString("data", paramQQAppInterface.toString());
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[handleMessage] cmd:ipc_cmd_gamecenter_get_session_info,data:");
-        ((StringBuilder)localObject1).append(paramQQAppInterface.toString());
-        QLog.i("Q.emoji.web.MessengerService", 2, ((StringBuilder)localObject1).toString());
+        paramString = new StringBuilder();
+        paramString.append("[handleMessage] cmd:ipc_cmd_gamecenter_get_session_info,data:");
+        paramString.append(paramQQAppInterface.toString());
+        QLog.i("Q.emoji.web.MessengerService", 2, paramString.toString());
         return localBundle;
       }
     }
     catch (Throwable paramQQAppInterface)
     {
       localBundle.putInt("result", -1);
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getGameCenterSessionInfo e:");
-      ((StringBuilder)localObject1).append(paramQQAppInterface);
-      QLog.e("Q.emoji.web.MessengerService", 1, ((StringBuilder)localObject1).toString());
+      paramString = new StringBuilder();
+      paramString.append("getGameCenterSessionInfo e:");
+      paramString.append(paramQQAppInterface);
+      QLog.e("Q.emoji.web.MessengerService", 1, paramString.toString());
     }
     return localBundle;
   }
@@ -156,7 +176,7 @@ public class MessengerService
     }
     else
     {
-      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).enterGameMsgChatPie(paramQQAppInterface, paramString, localGameCenterSessionInfo.c(), localGameCenterSessionInfo.b());
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).enterGameMsgChatPie(paramQQAppInterface, paramString, localGameCenterSessionInfo.e(), localGameCenterSessionInfo.b(), 1);
       ((Bundle)localObject).putInt("result", 0);
     }
     if (QLog.isColorLevel())
@@ -205,7 +225,7 @@ public class MessengerService
   static void b(MessengerService paramMessengerService)
   {
     if (paramMessengerService != null) {
-      int i = Build.VERSION.SDK_INT;
+      int i1 = Build.VERSION.SDK_INT;
     }
   }
   
@@ -222,7 +242,7 @@ public class MessengerService
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          JSONObject localJSONObject = ((GameCenterSessionInfo)((Iterator)localObject).next()).a();
+          JSONObject localJSONObject = ((GameCenterSessionInfo)((Iterator)localObject).next()).p();
           if (localJSONObject != null) {
             paramString.put(localJSONObject);
           }
@@ -253,12 +273,12 @@ public class MessengerService
   
   public void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidOsMessenger != null) {
+    if (this.b != null) {
       try
       {
         Message localMessage = Message.obtain(null, 4);
         localMessage.setData(paramBundle);
-        this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+        this.b.send(localMessage);
         return;
       }
       catch (RemoteException paramBundle)
@@ -295,7 +315,7 @@ public class MessengerService
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onBind");
     }
-    paramIntent = this.jdField_b_of_type_AndroidOsMessenger;
+    paramIntent = this.c;
     if (paramIntent != null) {
       return paramIntent.getBinder();
     }
@@ -310,13 +330,13 @@ public class MessengerService
     try
     {
       super.onCreate();
-      this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Vas_MessengerServiceWorkerThread", -2);
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler = new MessengerService.IncomingHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler);
+      this.w = ThreadManager.newFreeHandlerThread("Vas_MessengerServiceWorkerThread", -2);
+      this.w.start();
+      this.x = new MessengerService.IncomingHandler(this.w.getLooper(), this);
+      this.c = new Messenger(this.x);
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
-        ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler);
+        ((QQAppInterface)this.app).addObserver(this.o);
         return;
       }
       if (this.app == null)
@@ -347,23 +367,23 @@ public class MessengerService
   public void onDestroy()
   {
     Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler != null)
+    if (this.x != null)
     {
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
         localObject1 = (QQAppInterface)this.app;
         localObject1 = (IVasQuickUpdateService)this.app.getRuntimeService(IVasQuickUpdateService.class, "");
         if (localObject1 != null) {
-          ((IVasQuickUpdateService)localObject1).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler.a);
+          ((IVasQuickUpdateService)localObject1).removeCallBacker(this.x.a);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler.getLooper().quit();
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$IncomingHandler = null;
+      this.x.getLooper().quit();
+      this.x = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    if (this.w != null) {
+      this.w = null;
     }
-    this.jdField_a_of_type_AndroidOsMessenger = null;
+    this.b = null;
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService destroied");
     }
@@ -372,62 +392,62 @@ public class MessengerService
       localObject1 = (QQAppInterface)this.app;
       Object localObject2 = (IEmojiManagerService)((QQAppInterface)localObject1).getRuntimeService(IEmojiManagerService.class);
       if (localObject2 != null) {
-        ((IEmojiManagerService)localObject2).getEmojiListenerManager().removeEmoticonPackageDownloadListener(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener);
+        ((IEmojiManagerService)localObject2).getEmojiListenerManager().removeEmoticonPackageDownloadListener(this.d);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver;
+      localObject2 = this.j;
       if (localObject2 != null)
       {
         ((QWalletAuthObserver)localObject2).a();
-        ((QQAppInterface)localObject1).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver);
-        this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = null;
+        ((QQAppInterface)localObject1).removeObserver(this.j);
+        this.j = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$QWalletMsgHandler = null;
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppCardObserver;
+      this.i = null;
+      localObject2 = this.m;
       if (localObject2 != null)
       {
         ((QQAppInterface)localObject1).removeObserver((BusinessObserver)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = null;
+        this.m = null;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver;
+      localObject2 = this.n;
       if (localObject2 != null)
       {
         ((QQAppInterface)localObject1).removeObserver((BusinessObserver)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = null;
+        this.n = null;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqVasVipavVipFunCallObserver;
+      localObject2 = this.g;
       if (localObject2 != null)
       {
         ((QQAppInterface)localObject1).removeObserver((BusinessObserver)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqVasVipavVipFunCallObserver = null;
+        this.g = null;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver;
+      localObject2 = this.f;
       if (localObject2 != null)
       {
         ((QQAppInterface)localObject1).removeObserver((BusinessObserver)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = null;
+        this.f = null;
       }
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler.a();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+      ((QQAppInterface)this.app).removeObserver(this.o);
+      this.o.a();
+      localObject2 = this.t;
       if (localObject2 != null)
       {
         ((QQAppInterface)localObject1).removeObserver((BusinessObserver)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
+        this.t = null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener != null)
+      if (this.s != null)
       {
         localObject1 = (StatusManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.STATUS_MANAGER);
         if (localObject1 != null)
         {
-          ((StatusManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener);
-          this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = null;
+          ((StatusManager)localObject1).b(this.s);
+          this.s = null;
         }
       }
-      localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+      localObject1 = this.r;
       if (localObject1 != null)
       {
         ((Handler)localObject1).removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
+        this.r = null;
       }
     }
   }
@@ -448,7 +468,7 @@ public class MessengerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnClickListener;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
@@ -38,175 +35,154 @@ import java.util.Queue;
 
 public class QavDoubleVideoSharpnessMangaer
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QavDoubleVideoSharpnessMangaer.1(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new QavDoubleVideoSharpnessMangaer.2(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity;
-  private QavSharpnessSVIPHelper jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper;
-  private Queue<Long> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[4];
-  private int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 2;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
-  private boolean e = false;
+  private RelativeLayout a;
+  private View b;
+  private ViewStub c;
+  private int d;
+  private int e = -1;
+  private ImageView[] f = new ImageView[4];
+  private VideoController g;
+  private AVActivity h;
+  private long i = -1L;
+  private Queue<Long> j = new LinkedList();
+  private boolean k = false;
+  private QavSharpnessSVIPHelper l;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private boolean p = false;
+  private int q = 2;
+  private BroadcastReceiver r = new QavDoubleVideoSharpnessMangaer.1(this);
+  private View.OnTouchListener s = new QavDoubleVideoSharpnessMangaer.2(this);
   
   public QavDoubleVideoSharpnessMangaer(View paramView, ViewStub paramViewStub, int paramInt, VideoController paramVideoController, AVActivity paramAVActivity)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper = new QavSharpnessSVIPHelper(paramVideoController, paramAVActivity);
-    this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper.a();
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("tencent.video.q2v.SVIP.PAY"));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373443);
-    String str = this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getString(2131695564);
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a.getApp();
-    int i;
-    if (paramBoolean) {
-      i = 2131695563;
-    } else {
-      i = 2131695562;
-    }
-    localObject = ((BaseApplication)localObject).getString(i);
-    QavDoubleVideoSharpnessMangaer.QavClickableSpan localQavClickableSpan = new QavDoubleVideoSharpnessMangaer.QavClickableSpan(this);
-    SpannableString localSpannableString = new SpannableString((CharSequence)localObject);
-    localSpannableString.setSpan(localQavClickableSpan, 0, ((String)localObject).length(), 18);
-    localSpannableString.setSpan(new ForegroundColorSpan(-11692801), 0, ((String)localObject).length(), 17);
-    localTextView.setText(str);
-    localTextView.append(localSpannableString);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-  }
-  
-  private void h()
-  {
-    Object localObject4 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373598);
-    Object localObject3 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373601);
-    Object localObject2 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373607);
-    Object localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373603);
-    int i = (int)UITools.a(this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getApplicationContext(), 4.0F);
-    int j = (int)UITools.a(this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getApplicationContext(), 132.0F);
-    int k = (int)UITools.a(this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getApplicationContext(), 8.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.width = j;
-    ((RelativeLayout)localObject4).setLayoutParams(localLayoutParams);
-    localObject4 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131373598);
-    ((RelativeLayout.LayoutParams)localObject4).leftMargin = i;
-    ((RelativeLayout.LayoutParams)localObject4).width = j;
-    ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-    localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(5, 2131373598);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(7, 2131373598);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131373598);
-    ((RelativeLayout.LayoutParams)localObject3).topMargin = i;
-    ((RelativeLayout.LayoutParams)localObject3).width = j;
-    ((RelativeLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131373601);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131373601);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131373601);
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = i;
-    ((RelativeLayout.LayoutParams)localObject2).width = j;
-    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131373609);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
-    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = k;
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373610)).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131373605);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
-    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = k;
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373606)).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
-    {
-      this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373599));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373602));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373609));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373610)).setText(this.jdField_a_of_type_ComTencentAvVideoController.a().m);
-      if (AndroidCodec.sIsSupportHwCodec1080P)
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373603).setVisibility(0);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373605));
-        this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3].setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-        ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373606)).setText(this.jdField_a_of_type_ComTencentAvVideoController.a().m);
-        h();
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new QavDoubleVideoSharpnessMangaer.5(this));
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper.a();
-    }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAvVideoController.a().w;
-    j();
+    this.b = paramView;
+    this.c = paramViewStub;
+    this.d = paramInt;
+    this.g = paramVideoController;
+    this.h = paramAVActivity;
+    this.l = new QavSharpnessSVIPHelper(paramVideoController, paramAVActivity);
+    this.l.a();
+    this.h.registerReceiver(this.r, new IntentFilter("tencent.video.q2v.SVIP.PAY"));
   }
   
   private void j()
   {
-    ImageView localImageView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0];
-    Resources localResources = this.jdField_a_of_type_AndroidViewView.getResources();
-    int i;
-    if (this.jdField_b_of_type_Int == 0) {
-      i = 2130842329;
-    } else {
-      i = 2130842328;
-    }
-    localImageView.setBackgroundDrawable(localResources.getDrawable(i));
-    localImageView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1];
-    localResources = this.jdField_a_of_type_AndroidViewView.getResources();
-    if (this.jdField_b_of_type_Int == 1) {
-      i = 2130842327;
-    } else {
-      i = 2130842326;
-    }
-    localImageView.setBackgroundDrawable(localResources.getDrawable(i));
-    localImageView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2];
-    localResources = this.jdField_a_of_type_AndroidViewView.getResources();
-    if (this.jdField_b_of_type_Int == 2) {
-      i = 2130842333;
-    } else {
-      i = 2130842332;
-    }
-    localImageView.setBackgroundDrawable(localResources.getDrawable(i));
-    if (AndroidCodec.sIsSupportHwCodec1080P)
-    {
-      localImageView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3];
-      localResources = this.jdField_a_of_type_AndroidViewView.getResources();
-      if (this.jdField_b_of_type_Int == 3) {
-        i = 2130842331;
-      } else {
-        i = 2130842330;
-      }
-      localImageView.setBackgroundDrawable(localResources.getDrawable(i));
-    }
+    Object localObject4 = (RelativeLayout)this.a.findViewById(2131441263);
+    Object localObject3 = (RelativeLayout)this.a.findViewById(2131441266);
+    Object localObject2 = (RelativeLayout)this.a.findViewById(2131441272);
+    Object localObject1 = (RelativeLayout)this.a.findViewById(2131441268);
+    int i1 = (int)UITools.a(this.g.e.getApp().getApplicationContext(), 4.0F);
+    int i2 = (int)UITools.a(this.g.e.getApp().getApplicationContext(), 132.0F);
+    int i3 = (int)UITools.a(this.g.e.getApp().getApplicationContext(), 8.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.width = i2;
+    ((RelativeLayout)localObject4).setLayoutParams(localLayoutParams);
+    localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131441263);
+    ((RelativeLayout.LayoutParams)localObject4).leftMargin = i1;
+    ((RelativeLayout.LayoutParams)localObject4).width = i2;
+    ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(5, 2131441263);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(7, 2131441263);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131441263);
+    ((RelativeLayout.LayoutParams)localObject3).topMargin = i1;
+    ((RelativeLayout.LayoutParams)localObject3).width = i2;
+    ((RelativeLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131441266);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131441266);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131441266);
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = i1;
+    ((RelativeLayout.LayoutParams)localObject2).width = i2;
+    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131441274);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
+    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = i3;
+    ((TextView)this.a.findViewById(2131441275)).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131441270);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
+    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = i3;
+    ((TextView)this.a.findViewById(2131441271)).setLayoutParams((ViewGroup.LayoutParams)localObject1);
   }
   
   private void k()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (this.a == null)
+    {
+      this.c.inflate();
+      this.a = ((RelativeLayout)this.b.findViewById(this.d));
+      this.f[0] = ((ImageView)this.a.findViewById(2131441264));
+      this.f[0].setOnTouchListener(this.s);
+      this.f[1] = ((ImageView)this.a.findViewById(2131441267));
+      this.f[1].setOnTouchListener(this.s);
+      this.f[2] = ((ImageView)this.a.findViewById(2131441274));
+      this.f[2].setOnTouchListener(this.s);
+      ((TextView)this.a.findViewById(2131441275)).setText(this.g.k().al);
+      if (AndroidCodec.sIsSupportHwCodec1080P)
+      {
+        this.a.findViewById(2131441268).setVisibility(0);
+        this.f[3] = ((ImageView)this.a.findViewById(2131441270));
+        this.f[3].setOnTouchListener(this.s);
+        ((TextView)this.a.findViewById(2131441271)).setText(this.g.k().al);
+        j();
+      }
+      this.a.setOnClickListener(new QavDoubleVideoSharpnessMangaer.5(this));
+      this.e = 0;
+      this.a.setVisibility(8);
+      this.l.b();
+    }
+    this.e = this.g.k().ai;
+    l();
+  }
+  
+  private void l()
+  {
+    ImageView localImageView = this.f[0];
+    Resources localResources = this.b.getResources();
+    int i1;
+    if (this.e == 0) {
+      i1 = 2130843273;
+    } else {
+      i1 = 2130843272;
+    }
+    localImageView.setBackgroundDrawable(localResources.getDrawable(i1));
+    localImageView = this.f[1];
+    localResources = this.b.getResources();
+    if (this.e == 1) {
+      i1 = 2130843271;
+    } else {
+      i1 = 2130843270;
+    }
+    localImageView.setBackgroundDrawable(localResources.getDrawable(i1));
+    localImageView = this.f[2];
+    localResources = this.b.getResources();
+    if (this.e == 2) {
+      i1 = 2130843277;
+    } else {
+      i1 = 2130843276;
+    }
+    localImageView.setBackgroundDrawable(localResources.getDrawable(i1));
+    if (AndroidCodec.sIsSupportHwCodec1080P)
+    {
+      localImageView = this.f[3];
+      localResources = this.b.getResources();
+      if (this.e == 3) {
+        i1 = 2130843275;
+      } else {
+        i1 = 2130843274;
+      }
+      localImageView.setBackgroundDrawable(localResources.getDrawable(i1));
+    }
+  }
+  
+  private void m()
+  {
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout != null)
     {
       if (localRelativeLayout.getVisibility() != 0) {
@@ -216,115 +192,42 @@ public class QavDoubleVideoSharpnessMangaer
     }
   }
   
-  private void l()
+  private void n()
   {
-    j();
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController;
+    l();
+    Object localObject = this.g;
     if (localObject != null)
     {
-      localObject = ((VideoController)localObject).a();
+      localObject = ((VideoController)localObject).k();
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a(Long.valueOf(((SessionInfo)localObject).c).longValue(), this.jdField_b_of_type_Int);
+        this.g.a(Long.valueOf(((SessionInfo)localObject).s).longValue(), this.e);
       }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int + 1;
   }
   
   public void a()
   {
-    i();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity;
-      if ((localObject != null) && (((AVActivity)localObject).a != null))
-      {
-        if (this.jdField_a_of_type_AndroidViewView == null) {
-          return;
-        }
-        localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-        if ((localObject != null) && (((SessionInfo)localObject).d == 2))
-        {
-          if (((SessionInfo)localObject).r()) {
-            return;
-          }
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
-            return;
-          }
-          if ((this.jdField_a_of_type_ComTencentAvVideoController.a().w != 0) && (this.jdField_a_of_type_ComTencentAvVideoController.a().w != 2)) {
-            return;
-          }
-          if (this.jdField_a_of_type_ComTencentAvUiAVActivity.b() != 2) {
-            return;
-          }
-          localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131373524);
-          if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
-            return;
-          }
-          if (this.jdField_a_of_type_AndroidViewView.findViewById(2131373634).getVisibility() != 0) {
-            return;
-          }
-          if (paramInt >= 2)
-          {
-            if ((AndroidCodec.sIsSupportHwCodec1080P) && (!this.jdField_c_of_type_Boolean))
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("onNetworkQualityChanged. networkQuality = ");
-              ((StringBuilder)localObject).append(paramInt);
-              QLog.i("QavDoubleVideoSharpnessMangaer", 1, ((StringBuilder)localObject).toString());
-              this.jdField_a_of_type_ComTencentAvUiAVActivity.a.N();
-              this.jdField_a_of_type_ComTencentAvUiAVActivity.a.C(AudioHelper.b());
-              localObject = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373442);
-              a(true);
-              ((RelativeLayout)localObject).setVisibility(0);
-              this.jdField_c_of_type_Boolean = true;
-              ReportController.b(null, "CliOper", "", "", "0X800AA5D", "0X800AA5D", 4, 0, "", "", "", "");
-            }
-          }
-          else if ((paramInt >= 1) && (!this.jdField_b_of_type_Boolean))
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("onNetworkQualityChanged. networkQuality = ");
-            ((StringBuilder)localObject).append(paramInt);
-            QLog.i("QavDoubleVideoSharpnessMangaer", 1, ((StringBuilder)localObject).toString());
-            this.jdField_a_of_type_ComTencentAvUiAVActivity.a.N();
-            this.jdField_a_of_type_ComTencentAvUiAVActivity.a.C(AudioHelper.b());
-            localObject = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373442);
-            a(true);
-            ((RelativeLayout)localObject).setVisibility(0);
-            this.jdField_b_of_type_Boolean = true;
-            ReportController.b(null, "CliOper", "", "", "0X800AA5D", "0X800AA5D", 3, 0, "", "", "", "");
-          }
-        }
-      }
-    }
+    k();
+    this.a.setVisibility(0);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController;
+    Object localObject = this.g;
     if (localObject != null)
     {
-      if (((VideoController)localObject).a == null) {
+      if (((VideoController)localObject).e == null) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-      if ((localObject != null) && (((SessionInfo)localObject).d == 2))
+      localObject = this.g.k();
+      if ((localObject != null) && (((SessionInfo)localObject).g == 2))
       {
         if (((SessionInfo)localObject).r()) {
           return;
         }
         if ((paramInt1 >= 1920) && (paramInt2 >= 1080))
         {
-          if (!this.e)
+          if (!this.p)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("onRecvVideoResolutionChanged. w = ");
@@ -332,12 +235,12 @@ public class QavDoubleVideoSharpnessMangaer
             ((StringBuilder)localObject).append(", h = ");
             ((StringBuilder)localObject).append(paramInt2);
             QLog.i("QavDoubleVideoSharpnessMangaer", 1, ((StringBuilder)localObject).toString());
-            TipsUtil.a(this.jdField_a_of_type_ComTencentAvVideoController.a, 1058, this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getString(2131695787));
-            this.e = true;
+            TipsUtil.a(this.g.e, 1058, this.g.e.getApp().getString(2131893546));
+            this.p = true;
             ReportController.b(null, "CliOper", "", "", "0X800AA60", "0X800AA60", 4, 0, "", "", "", "");
           }
         }
-        else if ((paramInt1 >= 1280) && (paramInt2 >= 720) && (!this.d))
+        else if ((paramInt1 >= 1280) && (paramInt2 >= 720) && (!this.o))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("onRecvVideoResolutionChanged. w = ");
@@ -345,8 +248,8 @@ public class QavDoubleVideoSharpnessMangaer
           ((StringBuilder)localObject).append(", h = ");
           ((StringBuilder)localObject).append(paramInt2);
           QLog.i("QavDoubleVideoSharpnessMangaer", 1, ((StringBuilder)localObject).toString());
-          TipsUtil.a(this.jdField_a_of_type_ComTencentAvVideoController.a, 1058, this.jdField_a_of_type_ComTencentAvVideoController.a.getApp().getString(2131695788));
-          this.d = true;
+          TipsUtil.a(this.g.e, 1058, this.g.e.getApp().getString(2131893547));
+          this.o = true;
           ReportController.b(null, "CliOper", "", "", "0X800AA60", "0X800AA60", 3, 0, "", "", "", "");
         }
       }
@@ -355,31 +258,31 @@ public class QavDoubleVideoSharpnessMangaer
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.jdField_a_of_type_JavaUtilQueue.size() < 5)
+    if (this.j.size() < 5)
     {
-      this.jdField_a_of_type_JavaUtilQueue.offer(Long.valueOf(paramLong2));
+      this.j.offer(Long.valueOf(paramLong2));
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilQueue.poll();
-      this.jdField_a_of_type_JavaUtilQueue.offer(Long.valueOf(paramLong2));
+      this.j.poll();
+      this.j.offer(Long.valueOf(paramLong2));
     }
-    if (this.jdField_a_of_type_JavaUtilQueue.size() == 5)
+    if (this.j.size() == 5)
     {
       paramLong1 = 0L;
-      Object localObject = this.jdField_a_of_type_JavaUtilQueue.iterator();
+      Object localObject = this.j.iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (((Long)((Iterator)localObject).next()).longValue() < QAVConfigUtils.b()) {
+        if (((Long)((Iterator)localObject).next()).longValue() < QAVConfigUtils.f()) {
           paramLong1 += 1L;
         }
       }
       if (paramLong1 >= 4L)
       {
         paramLong2 = System.currentTimeMillis();
-        if (paramLong2 - this.jdField_a_of_type_Long > 10000L)
+        if (paramLong2 - this.i > 10000L)
         {
-          this.jdField_a_of_type_Long = paramLong2;
-          TipsUtil.a(this.jdField_a_of_type_ComTencentAvVideoController.a, 1057, HardCodeUtil.a(2131708899));
+          this.i = paramLong2;
+          TipsUtil.a(this.g.e, 1057, HardCodeUtil.a(2131906668));
           ReportController.b(null, "CliOper", "", "", "0X800A346", "0X800A346", 0, 0, "", "", "", "");
         }
         if (QLog.isColorLevel())
@@ -408,21 +311,21 @@ public class QavDoubleVideoSharpnessMangaer
     if (!paramBoolean)
     {
       if ((paramInt1 != 0) && (!TextUtils.isEmpty(paramString))) {
-        TipsUtil.a(this.jdField_a_of_type_ComTencentAvVideoController.a, 1057, paramString);
+        TipsUtil.a(this.g.e, 1057, paramString);
       }
     }
     else
     {
-      int i;
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().w != paramInt2) {
-        i = 1;
+      int i1;
+      if (this.g.k().ai != paramInt2) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
       if ((paramInt1 == 0) && (paramInt2 >= 0) && (paramInt2 < 4))
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().w = paramInt2;
-        this.jdField_a_of_type_JavaUtilQueue.clear();
+        this.g.k().ai = paramInt2;
+        this.j.clear();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onReceiveFrameModeResultInfo. newSharpnessMode = ");
         localStringBuilder.append(paramInt2);
@@ -439,28 +342,22 @@ public class QavDoubleVideoSharpnessMangaer
         ReportController.b(null, "CliOper", "", "", "0X800AA5F", "0X800AA5F", 4, 0, "", "", "", "");
       }
       if (!TextUtils.isEmpty(paramString)) {
-        TipsUtil.a(this.jdField_a_of_type_ComTencentAvVideoController.a, 1057, paramString);
+        TipsUtil.a(this.g.e, 1057, paramString);
       }
-      if ((paramInt1 == 0) && (i != 0))
+      if ((paramInt1 == 0) && (i1 != 0))
       {
-        k();
-        long l = AudioHelper.b();
-        this.jdField_a_of_type_ComTencentAvUiAVActivity.a.i(l, 1024);
+        m();
+        long l1 = AudioHelper.c();
+        this.h.K.f(l1, 1024);
       }
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAvVideoController.a().w;
+      this.e = this.g.k().ai;
     }
-  }
-  
-  public boolean a()
-  {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    return (localRelativeLayout != null) && (localRelativeLayout.getVisibility() == 0);
   }
   
   public void b()
   {
-    i();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+    k();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.a, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(500L);
     localObjectAnimator.setStartDelay(300L);
     localObjectAnimator.addListener(new QavDoubleVideoSharpnessMangaer.3(this));
@@ -469,86 +366,96 @@ public class QavDoubleVideoSharpnessMangaer
   
   public void c()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(8);
     }
   }
   
-  public void d()
+  public int d()
   {
-    ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373442)).setVisibility(4);
-    i();
-    boolean bool1 = this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper.a();
-    int k = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
+    return this.e + 1;
+  }
+  
+  public boolean e()
+  {
+    RelativeLayout localRelativeLayout = this.a;
+    return (localRelativeLayout != null) && (localRelativeLayout.getVisibility() == 0);
+  }
+  
+  public void f()
+  {
+    k();
+    boolean bool1 = this.l.b();
+    int i3 = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("switchToHDMode. curMinute = ");
-    ((StringBuilder)localObject).append(k);
+    ((StringBuilder)localObject).append(i3);
     ((StringBuilder)localObject).append(", startTime = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvVideoController.a().x);
+    ((StringBuilder)localObject).append(this.g.k().aj);
     ((StringBuilder)localObject).append(", endTime = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvVideoController.a().y);
+    ((StringBuilder)localObject).append(this.g.k().ak);
     ((StringBuilder)localObject).append(", tips = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvVideoController.a().m);
+    ((StringBuilder)localObject).append(this.g.k().al);
     ((StringBuilder)localObject).append(", m1080PHDModeTipsHasShowed = ");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.n);
     QLog.i("QavDoubleVideoSharpnessMangaer", 1, ((StringBuilder)localObject).toString());
-    boolean bool2 = this.jdField_c_of_type_Boolean;
-    int j = 3;
-    int i;
+    boolean bool2 = this.n;
+    int i2 = 3;
+    int i1;
     if (bool2) {
-      i = 3;
+      i1 = 3;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    ReportController.b(null, "CliOper", "", "", "0X800AA5E", "0X800AA5E", i + 1, 0, "", "", "", "");
-    if ((!bool1) && ((this.jdField_a_of_type_ComTencentAvVideoController.a().x > k) || (k >= this.jdField_a_of_type_ComTencentAvVideoController.a().y)))
+    ReportController.b(null, "CliOper", "", "", "0X800AA5E", "0X800AA5E", i1 + 1, 0, "", "", "", "");
+    if ((!bool1) && ((this.g.k().aj > i3) || (i3 >= this.g.k().ak)))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.k = true;
       localObject = new QavDoubleVideoSharpnessMangaer.4(this);
-      localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentAvUiAVActivity, 0, HardCodeUtil.a(2131708894), null, HardCodeUtil.a(2131708895), HardCodeUtil.a(2131708896), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+      localObject = DialogUtil.a(this.h, 0, HardCodeUtil.a(2131906665), null, HardCodeUtil.a(2131898212), HardCodeUtil.a(2131906666), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
       if (localObject != null) {
         ((QQCustomDialog)localObject).show();
       }
       ReportController.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
       return;
     }
-    if (this.jdField_c_of_type_Boolean) {
-      i = j;
+    if (this.n) {
+      i1 = i2;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    this.jdField_b_of_type_Int = i;
-    l();
-  }
-  
-  public void e()
-  {
-    QavSharpnessSVIPHelper localQavSharpnessSVIPHelper = this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper;
-    if (localQavSharpnessSVIPHelper != null) {
-      localQavSharpnessSVIPHelper.b();
-    }
-  }
-  
-  public void f()
-  {
-    QavSharpnessSVIPHelper localQavSharpnessSVIPHelper = this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper;
-    if (localQavSharpnessSVIPHelper != null) {
-      localQavSharpnessSVIPHelper.d();
-    }
+    this.e = i1;
+    n();
   }
   
   public void g()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper;
+    QavSharpnessSVIPHelper localQavSharpnessSVIPHelper = this.l;
+    if (localQavSharpnessSVIPHelper != null) {
+      localQavSharpnessSVIPHelper.c();
+    }
+  }
+  
+  public void h()
+  {
+    QavSharpnessSVIPHelper localQavSharpnessSVIPHelper = this.l;
+    if (localQavSharpnessSVIPHelper != null) {
+      localQavSharpnessSVIPHelper.e();
+    }
+  }
+  
+  public void i()
+  {
+    Object localObject = this.l;
     if (localObject != null)
     {
-      ((QavSharpnessSVIPHelper)localObject).e();
-      this.jdField_a_of_type_ComTencentAvUiQavSharpnessSVIPHelper = null;
+      ((QavSharpnessSVIPHelper)localObject).f();
+      this.l = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity;
+    localObject = this.h;
     if (localObject != null) {
-      ((AVActivity)localObject).unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      ((AVActivity)localObject).unregisterReceiver(this.r);
     }
     if (QLog.isColorLevel()) {
       QLog.w("QavDoubleVideoSharpnessMangaer", 1, "doDestroy");

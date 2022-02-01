@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.Surface;
-import com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo.Section;
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.api.ISuperPlayer.OnAudioFrameOutputListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
@@ -24,6 +23,7 @@ import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.utils.CodecReuseHelper;
 import com.tencent.superplayer.utils.CommonUtil;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.TVideoUtil;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.vinfo.VInfoGetter;
 import com.tencent.thumbplayer.api.ITPPlayer;
@@ -34,9 +34,6 @@ import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoInfo.Builder;
-import com.tencent.thumbplayer.api.composition.ITPMediaTrack;
-import com.tencent.thumbplayer.api.composition.ITPMediaTrackClip;
-import com.tencent.thumbplayer.api.composition.TPMediaCompositionFactory;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
@@ -44,8 +41,6 @@ import com.tencent.thumbplayer.api.report.TPDefaultReportInfo;
 import com.tencent.thumbplayer.api.report.TPLiveReportInfo;
 import com.tencent.thumbplayer.api.report.TPVodReportInfo;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -61,6 +56,7 @@ public class SuperPlayerWrapper
   private boolean mIsBuffering;
   private boolean mIsLoopback;
   private boolean mIsOutputMute;
+  private boolean mIsSwitchingTVideoDefn;
   private SuperPlayerListenerCallBack mListenerCallback;
   private SuperPlayerListenerMgr mListenerMgr;
   private Looper mLooper;
@@ -73,9 +69,11 @@ public class SuperPlayerWrapper
   private long mSkipEndMilSec;
   private long mStartPositionMilSec;
   private Surface mSurface;
+  private final AtomicInteger mSwitchDefnId = new AtomicInteger(1);
   private String mTAG;
   private ITPPlayer mTPPlayer;
   private SuperPlayerWrapper.TPPlayerListenerAdapter mTPPlayerListenerAdapter;
+  private int mTVdieoSwitchDefnMode;
   private VInfoGetter mVInfoGetter;
   private SuperPlayerVideoInfo mVideoInfo;
   
@@ -102,8 +100,8 @@ public class SuperPlayerWrapper
     this.mListenerMgr = new SuperPlayerListenerMgr(this.mPlayerTag);
     this.mListenerCallback = new SuperPlayerListenerCallBack(this, this.mListenerMgr, this.mLooper);
     this.mTPPlayerListenerAdapter = new SuperPlayerWrapper.TPPlayerListenerAdapter(this, this.mListenerCallback);
-    CommonUtil.a(CommonUtil.a(this.mSceneId));
-    this.mTPPlayer.getPlayerProxy().setProxyServiceType(CommonUtil.a(this.mSceneId));
+    CommonUtil.a(CommonUtil.b(this.mSceneId));
+    this.mTPPlayer.getPlayerProxy().setProxyServiceType(CommonUtil.b(this.mSceneId));
     this.mTPPlayer.setOnPreparedListener(this.mTPPlayerListenerAdapter);
     this.mTPPlayer.setOnCompletionListener(this.mTPPlayerListenerAdapter);
     this.mTPPlayer.setOnInfoListener(this.mTPPlayerListenerAdapter);
@@ -171,45 +169,32 @@ public class SuperPlayerWrapper
   
   private void innerDoOpenMediaPlayer(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, SuperPlayerOption paramSuperPlayerOption)
   {
-    Object localObject1 = this.mTAG;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("api call : innerDoOpenMediaPlayer mSurface == null is ");
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : innerDoOpenMediaPlayer mSurface == null is ");
     boolean bool;
     if (this.mSurface == null) {
       bool = true;
     } else {
       bool = false;
     }
-    ((StringBuilder)localObject2).append(bool);
-    LogUtil.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localStringBuilder.append(bool);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
     try
     {
-      localObject1 = new TPVideoInfo.Builder();
-      ((TPVideoInfo.Builder)localObject1).fileId(CommonUtil.a(paramSuperPlayerVideoInfo));
-      ((TPVideoInfo.Builder)localObject1).downloadParam(innerInitDownloadParamData(paramSuperPlayerVideoInfo, paramSuperPlayerOption));
-      this.mTPPlayer.setVideoInfo(((TPVideoInfo.Builder)localObject1).build());
+      localObject = new TPVideoInfo.Builder();
+      ((TPVideoInfo.Builder)localObject).fileId(CommonUtil.a(paramSuperPlayerVideoInfo));
+      ((TPVideoInfo.Builder)localObject).downloadParam(innerInitDownloadParamData(paramSuperPlayerVideoInfo, paramSuperPlayerOption));
+      this.mTPPlayer.setVideoInfo(((TPVideoInfo.Builder)localObject).build());
       innerConfigPlayerOption(paramSuperPlayerVideoInfo, paramSuperPlayerOption);
       if (paramSuperPlayerOption.isPrePlay) {
         this.mTPPlayer.setIsActive(false);
       }
-      if (paramSuperPlayerVideoInfo.getFormat() == 303)
-      {
-        paramSuperPlayerOption = TPMediaCompositionFactory.createMediaTrack(1);
-        paramSuperPlayerVideoInfo = paramSuperPlayerVideoInfo.getTVideoSectionList().iterator();
-        while (paramSuperPlayerVideoInfo.hasNext())
-        {
-          localObject1 = (TVKVideoInfo.Section)paramSuperPlayerVideoInfo.next();
-          if (TextUtils.isEmpty(((TVKVideoInfo.Section)localObject1).getUrl())) {
-            return;
-          }
-          localObject2 = TPMediaCompositionFactory.createMediaTrackClip(((TVKVideoInfo.Section)localObject1).getUrl(), 1, 0L, 0L);
-          ((ITPMediaTrackClip)localObject2).setOriginalDurationMs((((TVKVideoInfo.Section)localObject1).getDuration() * 1000.0D));
-          paramSuperPlayerOption.addTrackClip((ITPMediaTrackClip)localObject2);
-        }
-        this.mTPPlayer.setDataSource(paramSuperPlayerOption);
-      }
-      else
-      {
+      if (paramSuperPlayerVideoInfo.getFormat() == 303) {
+        this.mTPPlayer.setDataSource(TVideoUtil.a(paramSuperPlayerVideoInfo));
+      } else if (paramSuperPlayerVideoInfo.getMediaAssert() != null) {
+        this.mTPPlayer.setDataSource(paramSuperPlayerVideoInfo.getMediaAssert());
+      } else {
         this.mTPPlayer.setDataSource(paramSuperPlayerVideoInfo.getPlayUrl(), paramSuperPlayerOption.httpHeader);
       }
       if (this.mSurface != null) {
@@ -221,10 +206,10 @@ public class SuperPlayerWrapper
     catch (IOException paramSuperPlayerVideoInfo)
     {
       paramSuperPlayerOption = this.mTAG;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("handleOpenMediaPlayerByUrl:");
-      ((StringBuilder)localObject1).append(paramSuperPlayerVideoInfo.getMessage());
-      LogUtil.e(paramSuperPlayerOption, ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleOpenMediaPlayerByUrl:");
+      ((StringBuilder)localObject).append(paramSuperPlayerVideoInfo.getMessage());
+      LogUtil.e(paramSuperPlayerOption, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -369,7 +354,7 @@ public class SuperPlayerWrapper
   
   private void setReportInfo(int paramInt)
   {
-    if (CommonUtil.b(paramInt)) {
+    if (CommonUtil.c(paramInt)) {
       this.mReportInfo = new TPLiveReportInfo();
     } else {
       this.mReportInfo = new TPVodReportInfo();
@@ -682,7 +667,7 @@ public class SuperPlayerWrapper
   
   public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.mTPPlayer.setBusinessDownloadStrategy(CommonUtil.a(this.mSceneId), paramInt1, paramInt2, paramInt3, paramInt4);
+    this.mTPPlayer.setBusinessDownloadStrategy(CommonUtil.b(this.mSceneId), paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setLoopback(boolean paramBoolean)
@@ -864,20 +849,30 @@ public class SuperPlayerWrapper
     this.mPlayState.changeStateAndNotify(8);
   }
   
-  public void switchDefinition(String paramString)
+  public void switchDefinition(String paramString, int paramInt)
   {
     SuperPlayerVideoInfo localSuperPlayerVideoInfo = this.mVideoInfo;
     if ((localSuperPlayerVideoInfo != null) && (localSuperPlayerVideoInfo.getVideoSource() == 1))
     {
-      long l = getCurrentPositionMs();
-      this.mTPPlayer.stop();
-      this.mTPPlayer.reset();
-      this.mTPPlayer.setSurface(this.mSurface);
+      if (this.mIsSwitchingTVideoDefn)
+      {
+        LogUtil.e(this.mTAG, "api call : switchDefinition error, is switching defn");
+        return;
+      }
+      this.mIsSwitchingTVideoDefn = true;
+      this.mTVdieoSwitchDefnMode = paramInt;
       this.mVideoInfo.setRequestDefinition(paramString);
-      openMediaPlayer(this.mContext, this.mVideoInfo, l, this.mPlayerOption);
+      this.mVInfoGetter.doGetVInfo(this.mVideoInfo);
       return;
     }
-    LogUtil.e(this.mTAG, "api call : switchDefinition error");
+    LogUtil.e(this.mTAG, "api call : switchDefinition error, videoInfo invalid");
+  }
+  
+  public void switchDefinitionForUrl(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.mTPPlayer.switchDefinition(paramString, this.mSwitchDefnId.getAndIncrement(), null, paramInt);
+    }
   }
   
   public void updateIsPreloadingStatus(boolean paramBoolean)
@@ -915,7 +910,7 @@ public class SuperPlayerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper
  * JD-Core Version:    0.7.0.1
  */

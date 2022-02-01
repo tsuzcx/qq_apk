@@ -11,10 +11,11 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
@@ -83,7 +84,7 @@ public class ETDIYUtil
         b(paramFile, str, paramString3);
         return;
       }
-      ((IJce)QRoute.api(IJce.class)).build("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.diyfont", "stReq", "stRsp").request("GetUserDiyFont", new GetUserDiyFontReq(Long.parseLong(paramString2), VipUtils.a(paramString1, 0)), new GetUserDiyFontRsp(), new ETDIYUtil.1(paramFile, paramString3), true);
+      VasUtil.a().getJceRequset().build("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.diyfont", "stReq", "stRsp").request("GetUserDiyFont", new GetUserDiyFontReq(Long.parseLong(paramString2), VipUtils.a(paramString1, 0)), new GetUserDiyFontRsp(), new ETDIYUtil.1(paramFile, paramString3), true);
     }
   }
   
@@ -111,12 +112,12 @@ public class ETDIYUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 199	java/io/File:isFile	()Z
+    //   1: invokevirtual 204	java/io/File:isFile	()Z
     //   4: ifeq +195 -> 199
-    //   7: new 201	java/io/FileInputStream
+    //   7: new 206	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 204	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 209	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   15: astore_3
     //   16: aload_3
     //   17: astore_2
@@ -125,15 +126,15 @@ public class ETDIYUtil
     //   23: astore 4
     //   25: aload_3
     //   26: astore_2
-    //   27: new 206	java/io/ByteArrayOutputStream
+    //   27: new 211	java/io/ByteArrayOutputStream
     //   30: dup
-    //   31: invokespecial 207	java/io/ByteArrayOutputStream:<init>	()V
+    //   31: invokespecial 212	java/io/ByteArrayOutputStream:<init>	()V
     //   34: astore 5
     //   36: aload_3
     //   37: astore_2
     //   38: aload_3
     //   39: aload 4
-    //   41: invokevirtual 211	java/io/FileInputStream:read	([B)I
+    //   41: invokevirtual 216	java/io/FileInputStream:read	([B)I
     //   44: istore_1
     //   45: iload_1
     //   46: iconst_m1
@@ -144,23 +145,23 @@ public class ETDIYUtil
     //   54: aload 4
     //   56: iconst_0
     //   57: iload_1
-    //   58: invokevirtual 215	java/io/ByteArrayOutputStream:write	([BII)V
+    //   58: invokevirtual 220	java/io/ByteArrayOutputStream:write	([BII)V
     //   61: goto -25 -> 36
     //   64: aload_3
     //   65: astore_2
     //   66: aload 5
-    //   68: invokevirtual 216	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   68: invokevirtual 221	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   71: astore 4
     //   73: aload_3
-    //   74: invokevirtual 219	java/io/FileInputStream:close	()V
+    //   74: invokevirtual 224	java/io/FileInputStream:close	()V
     //   77: aload 4
     //   79: areturn
     //   80: astore_0
     //   81: ldc 97
     //   83: iconst_1
     //   84: aload_0
-    //   85: invokevirtual 222	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   88: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   85: invokevirtual 227	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   88: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   91: aload 4
     //   93: areturn
     //   94: astore_0
@@ -180,14 +181,14 @@ public class ETDIYUtil
     //   117: aload_3
     //   118: astore_2
     //   119: aload 4
-    //   121: ldc 227
+    //   121: ldc 232
     //   123: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: aload_3
     //   128: astore_2
     //   129: aload 4
     //   131: aload_0
-    //   132: invokevirtual 230	java/io/File:getPath	()Ljava/lang/String;
+    //   132: invokevirtual 235	java/io/File:getPath	()Ljava/lang/String;
     //   135: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: pop
     //   139: aload_3
@@ -196,32 +197,32 @@ public class ETDIYUtil
     //   143: iconst_1
     //   144: aload 4
     //   146: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   149: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   152: aload_3
     //   153: ifnull +20 -> 173
     //   156: aload_3
-    //   157: invokevirtual 219	java/io/FileInputStream:close	()V
+    //   157: invokevirtual 224	java/io/FileInputStream:close	()V
     //   160: aconst_null
     //   161: areturn
     //   162: astore_0
     //   163: ldc 97
     //   165: iconst_1
     //   166: aload_0
-    //   167: invokevirtual 222	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   170: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: invokevirtual 227	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   170: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aconst_null
     //   174: areturn
     //   175: aload_2
     //   176: ifnull +21 -> 197
     //   179: aload_2
-    //   180: invokevirtual 219	java/io/FileInputStream:close	()V
+    //   180: invokevirtual 224	java/io/FileInputStream:close	()V
     //   183: goto +14 -> 197
     //   186: astore_2
     //   187: ldc 97
     //   189: iconst_1
     //   190: aload_2
-    //   191: invokevirtual 222	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   194: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: invokevirtual 227	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   194: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   197: aload_0
     //   198: athrow
     //   199: new 85	java/lang/StringBuilder
@@ -229,19 +230,19 @@ public class ETDIYUtil
     //   203: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   206: astore_2
     //   207: aload_2
-    //   208: ldc 232
+    //   208: ldc 237
     //   210: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: pop
     //   214: aload_2
     //   215: aload_0
-    //   216: invokevirtual 230	java/io/File:getPath	()Ljava/lang/String;
+    //   216: invokevirtual 235	java/io/File:getPath	()Ljava/lang/String;
     //   219: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: pop
     //   223: ldc 97
     //   225: iconst_1
     //   226: aload_2
     //   227: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   230: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   233: aconst_null
     //   234: areturn
     //   235: astore_2
@@ -300,7 +301,7 @@ public class ETDIYUtil
     }
     Bundle localBundle = new Bundle();
     paramString1 = new DownloadTask(paramString1, paramFile);
-    paramString1.d = 60L;
+    paramString1.u = 60L;
     ((DownloaderFactory)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(paramString1, new ETDIYUtil.2(paramFile, paramString2), localBundle);
   }
 }

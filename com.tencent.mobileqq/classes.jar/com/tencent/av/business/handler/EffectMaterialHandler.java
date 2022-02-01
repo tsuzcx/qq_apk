@@ -20,24 +20,19 @@ import java.util.Set;
 public class EffectMaterialHandler
   extends BusinessHandler
 {
-  private EffectMaterialService jdField_a_of_type_ComTencentAvBusinessServletEffectMaterialService;
-  private List<BaseProtocolReceiver<EffectMaterialHandler>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<BaseProtocolReceiver<EffectMaterialHandler>> a = new ArrayList();
+  private EffectMaterialService b;
   
   protected EffectMaterialHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessServletEffectMaterialService = new EffectMaterialService(paramAppInterface);
+    this.b = new EffectMaterialService(paramAppInterface);
     a();
-  }
-  
-  public EffectMaterialService a()
-  {
-    return this.jdField_a_of_type_ComTencentAvBusinessServletEffectMaterialService;
   }
   
   void a()
   {
-    this.jdField_a_of_type_JavaUtilList.add(new EffectMaterialReceiver(this.appRuntime, this));
+    this.a.add(new EffectMaterialReceiver(this.appRuntime, this));
   }
   
   public void a(String paramString1, String paramString2)
@@ -55,7 +50,12 @@ public class EffectMaterialHandler
     Bundle localBundle = ((ToServiceMsg)localObject).extraData;
     localBundle.putString("ServiceId", paramString1);
     localBundle.putString("GroupId", paramString2);
-    this.jdField_a_of_type_ComTencentAvBusinessServletEffectMaterialService.a((ToServiceMsg)localObject);
+    this.b.a((ToServiceMsg)localObject);
+  }
+  
+  public EffectMaterialService b()
+  {
+    return this.b;
   }
   
   public Set<String> getCommandList()
@@ -84,7 +84,7 @@ public class EffectMaterialHandler
         ((StringBuilder)localObject).append(paramToServiceMsg.getServiceCmd());
         QLog.i("EffectMaterialHandler", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         BaseProtocolReceiver localBaseProtocolReceiver = (BaseProtocolReceiver)((Iterator)localObject).next();

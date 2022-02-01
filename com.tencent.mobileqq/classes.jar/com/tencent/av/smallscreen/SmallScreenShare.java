@@ -10,26 +10,26 @@ public class SmallScreenShare
   
   public SmallScreenShare(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
-    this.i = 2013396994;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297965);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297964);
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
-    super.a();
+    this.l = "SmallScreenShare";
+    this.o = 2013396994;
+    this.p = paramContext.getResources().getDimensionPixelSize(2131298635);
+    this.q = paramContext.getResources().getDimensionPixelSize(2131298634);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    super.a(paramBoolean, jdField_a_of_type_Int);
+    super.a(paramBoolean, a);
+  }
+  
+  public void b()
+  {
+    a = this.m.getCurPosition();
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenShare
  * JD-Core Version:    0.7.0.1
  */

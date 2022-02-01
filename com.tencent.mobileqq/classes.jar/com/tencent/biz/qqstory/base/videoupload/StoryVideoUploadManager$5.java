@@ -25,18 +25,18 @@ class StoryVideoUploadManager$5
   
   public void onPreRun()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b))
+    if (!TextUtils.isEmpty(this.a.h))
     {
-      boolean bool1 = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.a().getBooleanExtra("landscape_video", false);
-      boolean bool2 = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.a().isLocalPublish;
-      boolean bool3 = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.a().getBooleanExtra("is_hw_encode", false);
+      boolean bool1 = this.a.e().getBooleanExtra("landscape_video", false);
+      boolean bool2 = this.a.e().isLocalPublish;
+      boolean bool3 = this.a.e().getBooleanExtra("is_hw_encode", false);
       int i;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.a().businessId == 1) {
+      if (this.a.e().businessId == 1) {
         i = 1;
       } else {
         i = 0;
       }
-      int j = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.a().getIntExtra("thumb_rotation", 0);
+      int j = this.a.e().getIntExtra("thumb_rotation", 0);
       if (bool2) {
         j = 0;
       } else {
@@ -45,19 +45,19 @@ class StoryVideoUploadManager$5
       if ((i != 0) && (bool3) && ((!bool2) || (bool1)) && (j != 0)) {
         try
         {
-          BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b));
+          BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(this.a.h));
           Bitmap localBitmap1 = BitmapFactory.decodeStream(localBufferedInputStream);
           Bitmap localBitmap2 = BitmapUtils.a(localBitmap1, j);
-          bool1 = BitmapUtils.a(localBitmap2, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b);
+          bool1 = BitmapUtils.a(localBitmap2, this.a.h);
           if (localBitmap2 != null) {
             localBitmap2.recycle();
           }
           localBitmap1.recycle();
           localBufferedInputStream.close();
           if (!bool1) {
-            SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "compress file fail, %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b });
+            SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "compress file fail, %s", new Object[] { this.a.h });
           } else {
-            SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video local file exist %b, %s", new Object[] { Boolean.valueOf(FileUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b)), this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.b });
+            SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video local file exist %b, %s", new Object[] { Boolean.valueOf(FileUtils.c(this.a.h)), this.a.h });
           }
         }
         catch (OutOfMemoryError localOutOfMemoryError)
@@ -74,13 +74,13 @@ class StoryVideoUploadManager$5
         }
       }
     }
-    StoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager);
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
+    StoryVideoUploadManager.a(this.b);
+    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.5
  * JD-Core Version:    0.7.0.1
  */

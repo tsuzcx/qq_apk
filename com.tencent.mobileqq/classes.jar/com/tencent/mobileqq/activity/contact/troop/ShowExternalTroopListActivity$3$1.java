@@ -14,37 +14,37 @@ class ShowExternalTroopListActivity$3$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.a.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.jdField_a_of_type_Boolean)
+    this.c.a.setText(this.a);
+    if (this.c.this$0.l)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(HardCodeUtil.a(2131713975));
+      this.c.b.setText(HardCodeUtil.a(2131911506));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(HardCodeUtil.a(2131713974));
+    this.c.b.setText(HardCodeUtil.a(2131911505));
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.b != null)
+    if (this.c.this$0.o != null)
     {
-      localObject = ((IBizTroopMemberInfoService)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.app.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberCard(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.b, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.this$0.jdField_a_of_type_JavaLangString);
+      localObject = ((IBizTroopMemberInfoService)this.c.this$0.app.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberCard(this.c.this$0.o, this.c.this$0.n);
       if (localObject != null)
       {
         if (((TroopMemberCard)localObject).sex == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(HardCodeUtil.a(2131713976));
+          this.c.b.setText(HardCodeUtil.a(2131911507));
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.a.setText(((TroopMemberCard)localObject).nick);
+        this.c.a.setText(((TroopMemberCard)localObject).nick);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataCard;
+      localObject = this.b;
       if ((localObject != null) && (((Card)localObject).shGender == 1)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity$3.b.setText(HardCodeUtil.a(2131713977));
+        this.c.b.setText(HardCodeUtil.a(2131911508));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

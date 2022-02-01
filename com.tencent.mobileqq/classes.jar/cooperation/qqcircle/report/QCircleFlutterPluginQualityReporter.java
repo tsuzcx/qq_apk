@@ -45,7 +45,7 @@ public class QCircleFlutterPluginQualityReporter
     FeedCloudCommon.Entry localEntry1 = QCircleReportHelper.newEntry("host_uin", QCircleHostStubUtil.getCurrentAccount());
     FeedCloudCommon.Entry localEntry2 = QCircleReportHelper.newEntry("qua", paramReportData.getQua());
     FeedCloudCommon.Entry localEntry3 = QCircleReportHelper.newEntry("network_type", paramReportData.getNetWorkTyp());
-    FeedCloudCommon.Entry localEntry4 = QCircleReportHelper.newEntry("event_id", paramReportData.getEvent_id());
+    FeedCloudCommon.Entry localEntry4 = QCircleReportHelper.newEntry("event_id", paramReportData.getEventId());
     FeedCloudCommon.Entry localEntry5 = QCircleReportHelper.newEntry("ret_code", String.valueOf(paramReportData.getRetCode()));
     FeedCloudCommon.Entry localEntry6 = QCircleReportHelper.newEntry("md5", String.valueOf(paramReportData.getMd5()));
     FeedCloudCommon.Entry localEntry7 = QCircleReportHelper.newEntry("url", paramReportData.getUrl());
@@ -70,7 +70,7 @@ public class QCircleFlutterPluginQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleFlutterPluginQualityReporter
  * JD-Core Version:    0.7.0.1
  */

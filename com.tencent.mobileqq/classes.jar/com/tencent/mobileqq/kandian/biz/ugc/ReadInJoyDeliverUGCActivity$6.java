@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.widget.EditText;
+import com.tencent.mobileqq.kandian.biz.biu.BiuEditText;
 import com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxItem.PicData;
 import com.tencent.mobileqq.kandian.repo.ugc.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 import com.tencent.mobileqq.text.QQText;
@@ -20,29 +20,29 @@ class ReadInJoyDeliverUGCActivity$6
   
   public void run()
   {
-    if (this.this$0.b != null)
+    if (this.this$0.Y != null)
     {
       Object localObject = this.this$0;
-      ReadInJoyDeliverUGCActivity.a((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).b.topicId);
+      ((ReadInJoyDeliverUGCActivity)localObject).G = ((ReadInJoyDeliverUGCActivity)localObject).Y.topicId;
       localObject = this.this$0;
-      ReadInJoyDeliverUGCActivity.b((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).b.adTag);
+      ((ReadInJoyDeliverUGCActivity)localObject).J = ((ReadInJoyDeliverUGCActivity)localObject).Y.adTag;
       localObject = this.this$0;
-      ReadInJoyDeliverUGCActivity.b((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).b.ugcEditCookie);
+      ReadInJoyDeliverUGCActivity.a((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).Y.ugcEditCookie);
       localObject = this.this$0;
-      ReadInJoyDeliverUGCActivity.a((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).b.multiBiuStruct);
-      ReadInJoyDeliverUGCActivity.b(this.this$0);
-      if ((this.this$0.b.adapterList != null) && (this.this$0.b.adapterList.size() > 0))
+      ReadInJoyDeliverUGCActivity.a((ReadInJoyDeliverUGCActivity)localObject, ((ReadInJoyDeliverUGCActivity)localObject).Y.multiBiuStruct);
+      ReadInJoyDeliverUGCActivity.g(this.this$0);
+      if ((this.this$0.Y.adapterList != null) && (this.this$0.Y.adapterList.size() > 0))
       {
         localObject = new ArrayList();
-        Iterator localIterator = this.this$0.b.adapterList.iterator();
+        Iterator localIterator = this.this$0.Y.adapterList.iterator();
         while (localIterator.hasNext())
         {
           ReadInJoyDraftboxItem.PicData localPicData = (ReadInJoyDraftboxItem.PicData)localIterator.next();
           if (localPicData != null) {
-            if (localPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData != null) {
-              ((List)localObject).add(localPicData.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData);
-            } else if ((!TextUtils.isEmpty(localPicData.jdField_a_of_type_JavaLangString)) && (new File(localPicData.jdField_a_of_type_JavaLangString).exists())) {
-              ((List)localObject).add(localPicData.jdField_a_of_type_JavaLangString);
+            if (localPicData.a != null) {
+              ((List)localObject).add(localPicData.a);
+            } else if ((!TextUtils.isEmpty(localPicData.b)) && (new File(localPicData.b).exists())) {
+              ((List)localObject).add(localPicData.b);
             }
           }
         }
@@ -51,16 +51,16 @@ class ReadInJoyDeliverUGCActivity$6
         }
       }
       int i = this.this$0.getResources().getDisplayMetrics().widthPixels;
-      int j = this.this$0.a.getPaddingLeft();
-      int k = this.this$0.a.getPaddingRight();
+      int j = this.this$0.e.getPaddingLeft();
+      int k = this.this$0.e.getPaddingRight();
       localObject = this.this$0;
-      localObject = ((ReadInJoyDeliverUGCActivity)localObject).a(((ReadInJoyDeliverUGCActivity)localObject).b.multiBiuStruct, this.this$0.getBaseContext(), this.this$0.a, i - j - k);
+      localObject = ((ReadInJoyDeliverUGCActivity)localObject).a(((ReadInJoyDeliverUGCActivity)localObject).Y.multiBiuStruct, this.this$0.getBaseContext(), this.this$0.e, i - j - k);
       if (localObject != null)
       {
-        this.this$0.a.getEditableText().clear();
-        this.this$0.a.getEditableText().insert(0, new QQText((CharSequence)localObject, 7));
+        this.this$0.e.getEditableText().clear();
+        this.this$0.e.getEditableText().insert(0, new QQText((CharSequence)localObject, 7));
       }
-      if ((ReadInJoyDeliverUGCActivity.a(this.this$0) <= 0) && (this.this$0.a.getText().toString().length() <= 0))
+      if ((ReadInJoyDeliverUGCActivity.d(this.this$0) <= 0) && (this.this$0.e.getText().toString().length() <= 0))
       {
         this.this$0.a(false);
         return;
@@ -71,7 +71,7 @@ class ReadInJoyDeliverUGCActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.6
  * JD-Core Version:    0.7.0.1
  */

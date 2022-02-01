@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mk_" android:background="#ff8d66ff" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="80.0dip"
+<com.tencent.mobileqq.widget.InputMethodLinearLayout android:orientation="vertical" android:background="@drawable/e1h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#fffeffff" android:ellipsize="end" android:id="@id/mkl" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="21.0dip" android:layout_marginTop="13.0dip" android:text="房间号" android:singleLine="true" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mkm" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="人数" android:singleLine="true" android:layout_alignBaseline="@id/mkl" android:layout_alignParentRight="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mkk" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/mkl" android:layout_alignLeft="@id/mkl" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/nq0" android:background="@drawable/e1j" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/aqg" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+        <com.tencent.mobileqq.guild.widget.CharacterCountEditText android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/nq1" android:background="@null" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="15.0dip" android:hint="@string/zbt" />
+        <TextView android:textSize="12.0sp" android:id="@id/nt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="75.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/nq1" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <View android:background="@color/aqg" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/n8v" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:id="@id/mtf" android:background="@drawable/asw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bv_" android:background="@color/al3" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_below="@id/n8v" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.InputMethodLinearLayout>

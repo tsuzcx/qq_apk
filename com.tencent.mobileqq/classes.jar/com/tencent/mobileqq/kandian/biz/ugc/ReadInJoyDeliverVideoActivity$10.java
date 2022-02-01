@@ -8,14 +8,14 @@ class ReadInJoyDeliverVideoActivity$10
 {
   public void run()
   {
-    ReadInJoyDeliverVideoActivity.a(this.this$0).showAtLocation(ReadInJoyDeliverVideoActivity.b(this.this$0), 8388691, 0, (int)ReadInJoyDeliverVideoActivity.b(this.this$0).getY() + ReadInJoyDeliverVideoActivity.b(this.this$0).getHeight());
+    ReadInJoyDeliverVideoActivity.n(this.this$0).showAtLocation(ReadInJoyDeliverVideoActivity.m(this.this$0), 8388691, 0, (int)ReadInJoyDeliverVideoActivity.m(this.this$0).getY() + ReadInJoyDeliverVideoActivity.m(this.this$0).getHeight());
     ReadInJoyDeliverVideoActivity.b(this.this$0, false);
-    ReadInJoyDeliverVideoActivity.b(this.this$0).postDelayed(new ReadInJoyDeliverVideoActivity.10.1(this), 3000L);
+    ReadInJoyDeliverVideoActivity.m(this.this$0).postDelayed(new ReadInJoyDeliverVideoActivity.10.1(this), 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.10
  * JD-Core Version:    0.7.0.1
  */

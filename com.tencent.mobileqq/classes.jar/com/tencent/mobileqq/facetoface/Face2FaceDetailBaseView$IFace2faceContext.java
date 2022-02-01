@@ -6,8 +6,6 @@ public abstract interface Face2FaceDetailBaseView$IFace2faceContext
 {
   public abstract QQAppInterface a();
   
-  public abstract void a();
-  
   public abstract void a(Face2FaceGroupProfile paramFace2FaceGroupProfile);
   
   public abstract boolean a(Face2FaceGroupProfile paramFace2FaceGroupProfile, int paramInt);
@@ -19,10 +17,12 @@ public abstract interface Face2FaceDetailBaseView$IFace2faceContext
   public abstract void c();
   
   public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext
  * JD-Core Version:    0.7.0.1
  */

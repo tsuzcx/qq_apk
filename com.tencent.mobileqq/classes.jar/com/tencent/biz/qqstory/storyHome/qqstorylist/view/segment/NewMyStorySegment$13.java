@@ -15,14 +15,14 @@ class NewMyStorySegment$13
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return;
     }
-    if (paramView.getId() == 2131378489)
+    if (paramView.getId() == 2131447104)
     {
       StoryReportor.a("mystory", "clk_all_story", 0, 0, new String[0]);
-      paramView = QQStoryContext.a().b();
-      StoryApi.a(NewMyStorySegment.c(this.a), 1, paramView);
+      paramView = QQStoryContext.a().i();
+      StoryApi.a(NewMyStorySegment.g(this.a), 1, paramView);
     }
   }
 }

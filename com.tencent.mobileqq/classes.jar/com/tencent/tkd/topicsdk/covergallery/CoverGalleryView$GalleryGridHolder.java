@@ -18,30 +18,30 @@ import org.jetbrains.annotations.NotNull;
 public final class CoverGalleryView$GalleryGridHolder
 {
   @NotNull
-  private final View jdField_a_of_type_AndroidViewView;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final RelativeLayout b;
+  private final ImageView c;
   @NotNull
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private final View d;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private final View e;
   @NotNull
-  private final View b;
+  private String f;
   
   public CoverGalleryView$GalleryGridHolder(ViewGroup paramViewGroup)
   {
-    Object localObject2 = ((ViewGroup)localObject1).findViewById(R.id.T);
+    Object localObject2 = ((ViewGroup)localObject1).findViewById(R.id.A);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "layout.findViewById(R.id.item_container)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
-    localObject2 = ((ViewGroup)localObject1).findViewById(R.id.Z);
+    this.b = ((RelativeLayout)localObject2);
+    localObject2 = ((ViewGroup)localObject1).findViewById(R.id.E);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "layout.findViewById(R.id.iv_cover)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
-    localObject2 = ((ViewGroup)localObject1).findViewById(R.id.bz);
+    this.c = ((ImageView)localObject2);
+    localObject2 = ((ViewGroup)localObject1).findViewById(R.id.aX);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "layout.findViewById(R.id.view_stroke)");
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject2);
-    Object localObject1 = ((ViewGroup)localObject1).findViewById(R.id.by);
+    this.d = ((View)localObject2);
+    Object localObject1 = ((ViewGroup)localObject1).findViewById(R.id.aW);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "layout.findViewById(R.id.view_shadow)");
-    this.b = ((View)localObject1);
-    this.jdField_a_of_type_JavaLangString = "";
+    this.e = ((View)localObject1);
+    this.f = "";
     localObject1 = DisplayUtils.a;
     localObject2 = paramViewGroup.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
@@ -50,28 +50,22 @@ public final class CoverGalleryView$GalleryGridHolder
     paramViewGroup = paramViewGroup.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "context");
     i = (((DisplayUtils)localObject1).a(paramViewGroup) - i * 3) / 4;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(i, i));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-  }
-  
-  @NotNull
-  public final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.b.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(i, i));
+    this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
   
   @NotNull
   public final RelativeLayout a()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    return this.b;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
     int i;
-    if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() > 0) {
+    if (((CharSequence)this.f).length() > 0) {
       i = 1;
     } else {
       i = 0;
@@ -79,21 +73,27 @@ public final class CoverGalleryView$GalleryGridHolder
     if (i != 0)
     {
       com.tencent.tkd.topicsdk.framework.bridge.ImageLoader localImageLoader = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
-      Context localContext = this.jdField_a_of_type_AndroidWidgetImageView.getContext();
+      Context localContext = this.c.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "coverImageView.context");
-      localImageLoader.a(localContext).a(this.jdField_a_of_type_AndroidWidgetImageView).a(this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight()).a(paramString);
+      localImageLoader.a(localContext).a(this.c).a(this.c.getWidth(), this.c.getHeight()).a(paramString);
     }
   }
   
   @NotNull
   public final View b()
   {
-    return this.b;
+    return this.d;
+  }
+  
+  @NotNull
+  public final View c()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridHolder
  * JD-Core Version:    0.7.0.1
  */

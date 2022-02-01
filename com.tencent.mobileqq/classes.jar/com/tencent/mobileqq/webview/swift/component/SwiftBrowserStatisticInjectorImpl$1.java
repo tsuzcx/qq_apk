@@ -17,17 +17,17 @@ class SwiftBrowserStatisticInjectorImpl$1
     {
       boolean bool = QQUtils.a(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.isBackgroundStop) });
+        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.a.isBackgroundStop) });
       }
-      if ((bool) || (this.jdField_a_of_type_MqqAppAppRuntime.isBackgroundStop))
+      if ((bool) || (this.a.isBackgroundStop))
       {
-        if (this.this$0.b)
+        if (this.this$0.c)
         {
-          SwiftBrowserStatisticInjectorImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+          SwiftBrowserStatisticInjectorImpl.a(this.this$0, this.b);
           return;
         }
         if (SwiftBrowserStatisticInjectorImpl.a(this.this$0)) {
-          SwiftBrowserStatisticInjectorImpl.b(this.this$0, this.jdField_a_of_type_JavaLangString);
+          SwiftBrowserStatisticInjectorImpl.b(this.this$0, this.b);
         }
       }
     }
@@ -35,7 +35,7 @@ class SwiftBrowserStatisticInjectorImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatisticInjectorImpl.1
  * JD-Core Version:    0.7.0.1
  */

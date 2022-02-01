@@ -29,7 +29,7 @@ class AVGameActivity$6
     if (i == 0)
     {
       if ((!TextUtils.isEmpty(AVGameActivity.access$000(this.this$0))) && (AVGameActivity.access$400(this.this$0) != null)) {
-        AVGameActivity.access$400(this.this$0).a().a(1, AVGameActivity.access$000(this.this$0));
+        AVGameActivity.access$400(this.this$0).a().b(1, AVGameActivity.access$000(this.this$0));
       }
     }
     else if (i != 5)
@@ -37,7 +37,7 @@ class AVGameActivity$6
       if (i == 6) {
         return;
       }
-      if ((GameEngine.a().i()) && (GameEngine.a().g())) {
+      if ((GameEngine.a().D()) && (GameEngine.a().B())) {
         AVGameExceptionReporter.a().a(8, null, String.valueOf(this.a), null);
       }
       AVGameActivity.access$100(this.this$0, 2, this.a);

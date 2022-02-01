@@ -52,9 +52,9 @@ final class FriendService$sendRequest$requestTask$1
     if (i != 0)
     {
       this.a.extraData.putLong("KEY_REQUEST_TIME", System.currentTimeMillis());
-      localObject1 = new NewIntent((Context)FriendService.a(this.this$0).getApplication(), FriendServlet.class);
+      localObject1 = new NewIntent((Context)FriendService.b(this.this$0).getApplication(), FriendServlet.class);
       ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)this.a);
-      FriendService.a(this.this$0).startServlet((NewIntent)localObject1);
+      FriendService.b(this.this$0).startServlet((NewIntent)localObject1);
       return;
     }
     localObject1 = new FromServiceMsg(this.a.getUin(), (String)localObject1);
@@ -63,7 +63,7 @@ final class FriendService$sendRequest$requestTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.FriendService.sendRequest.requestTask.1
  * JD-Core Version:    0.7.0.1
  */

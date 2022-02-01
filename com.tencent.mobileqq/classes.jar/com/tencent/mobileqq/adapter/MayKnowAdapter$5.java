@@ -10,7 +10,7 @@ class MayKnowAdapter$5
   
   public void run()
   {
-    View localView = MayKnowAdapter.a(this.this$0);
+    View localView = MayKnowAdapter.b(this.this$0);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -28,7 +28,7 @@ class MayKnowAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.5
  * JD-Core Version:    0.7.0.1
  */

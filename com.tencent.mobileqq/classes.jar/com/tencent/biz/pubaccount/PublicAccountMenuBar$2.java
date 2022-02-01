@@ -11,27 +11,27 @@ class PublicAccountMenuBar$2
 {
   PublicAccountMenuBar$2(PublicAccountMenuBar paramPublicAccountMenuBar, List paramList, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     try
     {
-      if (PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar)) {
+      if (PublicAccountMenuBar.a(this.c)) {
         return;
       }
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, true);
+      PublicAccountMenuBar.a(this.c, true);
       if (paramInt == 0)
       {
-        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
+        PublicAccountMenuBar.a(this.c, false);
         return;
       }
-      paramView = (MenuItem)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+      paramView = (MenuItem)this.a.get(paramInt - 1);
       if (paramView == null)
       {
-        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
+        PublicAccountMenuBar.a(this.c, false);
         return;
       }
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      PublicAccountMenuBar.a(this.c, paramView);
+      this.b.dismiss();
       return;
     }
     catch (Exception paramView)
@@ -42,7 +42,7 @@ class PublicAccountMenuBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountMenuBar.2
  * JD-Core Version:    0.7.0.1
  */

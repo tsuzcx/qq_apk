@@ -54,13 +54,13 @@ import trpc.qq_av_together.room_manager.WTogetherRoomMng.CmdUserQuitRoomRsp;
 public class WTogetherHandler
   extends BusinessHandler
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "OidbSvc.0xe37_1200", "QQRTCSvc.RoomManager-StartAvTogether", "QQRTCSvc.RoomManager-CloseAvTogether", "QQRTCSvc.RoomManager-GetRoomInfo", "QQRTCSvc.RoomManager-ChangeVideoStatus", "QQRTCSvc.RoomManager-ChangeVideoFile", "QQRTCSvc.RoomManager-SyncPlayTime", "QQRTCSvc.RoomManager-UserQuitRoom", "QQRTCSvc.RoomManager-UserEnterRoom" };
-  private final VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private static final String[] a = { "OidbSvc.0xe37_1200", "QQRTCSvc.RoomManager-StartAvTogether", "QQRTCSvc.RoomManager-CloseAvTogether", "QQRTCSvc.RoomManager-GetRoomInfo", "QQRTCSvc.RoomManager-ChangeVideoStatus", "QQRTCSvc.RoomManager-ChangeVideoFile", "QQRTCSvc.RoomManager-SyncPlayTime", "QQRTCSvc.RoomManager-UserQuitRoom", "QQRTCSvc.RoomManager-UserEnterRoom" };
+  private final VideoAppInterface b;
   
   public WTogetherHandler(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -80,17 +80,17 @@ public class WTogetherHandler
       paramToServiceMsg = localResp0xe37.bytes_cmd_0x346_rsp_body.get().toByteArray();
     }
     paramObject = new WTReqUrlResult(i, l, j, localWTFileInfo, k, bool);
-    WTogetherUtil.a(paramFromServiceMsg.getResultCode(), paramToServiceMsg, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), paramObject);
-    if ((paramObject.b) && (k < 3) && (k >= 0))
+    WTogetherUtil.a(paramFromServiceMsg.getResultCode(), paramToServiceMsg, this.b.getAccount(), paramObject);
+    if ((paramObject.g) && (k < 3) && (k >= 0))
     {
       a(i, l, j, localWTFileInfo, bool, k);
       return;
     }
-    paramToServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
+    paramToServiceMsg = (WTogetherMng)this.b.c(17);
     if (paramToServiceMsg != null) {
       paramToServiceMsg.a(paramObject);
     }
-    notifyUI(1, paramObject.c, paramObject);
+    notifyUI(1, paramObject.l, paramObject);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -103,7 +103,7 @@ public class WTogetherHandler
   
   public static String[] a()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -136,19 +136,19 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label168:
-    paramFromServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
-    if ((!localReqComResult.a) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(localReqComResult, 0L, 6)))
+    paramFromServiceMsg = (WTogetherMng)this.b.c(17);
+    if ((!localReqComResult.c) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(localReqComResult, 0L, 6)))
     {
       a(i, l, localChooseFileInfo, arrayOfLong, j);
       return;
     }
-    if ((localReqComResult.a) && (paramToServiceMsg == null))
+    if ((localReqComResult.c) && (paramToServiceMsg == null))
     {
-      localReqComResult.a = false;
+      localReqComResult.c = false;
       QLog.i("WTogether.Handler", 1, "handleStartWTogether, room info is null.");
     }
     paramFromServiceMsg.a(localReqComResult, localChooseFileInfo, paramToServiceMsg);
-    notifyUI(2, localReqComResult.a, localReqComResult);
+    notifyUI(2, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -180,17 +180,17 @@ public class WTogetherHandler
       }
       paramToServiceMsg.a((WTogetherCommon.Result)paramFromServiceMsg.res.get());
     }
-    if (paramToServiceMsg.jdField_b_of_type_Int == 1009) {
-      paramToServiceMsg.a = true;
+    if (paramToServiceMsg.d == 1009) {
+      paramToServiceMsg.c = true;
     }
-    paramFromServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
-    if ((!paramToServiceMsg.a) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(paramToServiceMsg, 0L, 7)))
+    paramFromServiceMsg = (WTogetherMng)this.b.c(17);
+    if ((!paramToServiceMsg.c) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(paramToServiceMsg, 0L, 7)))
     {
       a(i, l, j);
       return;
     }
     paramFromServiceMsg.a(paramToServiceMsg);
-    notifyUI(3, paramToServiceMsg.a, paramToServiceMsg);
+    notifyUI(3, paramToServiceMsg.c, paramToServiceMsg);
     if (QLog.isDevelopLevel())
     {
       paramFromServiceMsg = new StringBuilder();
@@ -226,8 +226,8 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label138:
-    ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16)).a(localReqComResult, paramToServiceMsg);
-    notifyUI(4, localReqComResult.a, localReqComResult);
+    ((WTogetherMng)this.b.c(17)).a(localReqComResult, paramToServiceMsg);
+    notifyUI(4, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -267,14 +267,14 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label161:
-    paramFromServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
-    if ((!localReqComResult.a) && (j > 0) && (j < 3) && (localReqVideoAction != null) && (paramFromServiceMsg.a(localReqComResult, localReqVideoAction.jdField_a_of_type_Long, localReqVideoAction.jdField_a_of_type_Int)))
+    paramFromServiceMsg = (WTogetherMng)this.b.c(17);
+    if ((!localReqComResult.c) && (j > 0) && (j < 3) && (localReqVideoAction != null) && (paramFromServiceMsg.a(localReqComResult, localReqVideoAction.a, localReqVideoAction.b)))
     {
       a(i, l, localReqVideoAction, j);
       return;
     }
     paramFromServiceMsg.a(localReqComResult, localReqVideoAction, paramToServiceMsg);
-    notifyUI(5, localReqComResult.a, localReqComResult);
+    notifyUI(5, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -314,8 +314,8 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label158:
-    ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16)).b(localReqComResult, localChooseFileInfo, paramToServiceMsg);
-    notifyUI(6, localReqComResult.a, localReqComResult);
+    ((WTogetherMng)this.b.c(17)).b(localReqComResult, localChooseFileInfo, paramToServiceMsg);
+    notifyUI(6, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -354,8 +354,8 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label145:
-    ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16)).a(localReqComResult, l2, paramToServiceMsg);
-    notifyUI(7, localReqComResult.a, localReqComResult);
+    ((WTogetherMng)this.b.c(17)).a(localReqComResult, l2, paramToServiceMsg);
+    notifyUI(7, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -390,17 +390,17 @@ public class WTogetherHandler
         paramFromServiceMsg = (WTogetherCommon.RoomInfo)paramFromServiceMsg.room_info.get();
       }
     }
-    if (paramToServiceMsg.jdField_b_of_type_Int == 1009) {
-      paramToServiceMsg.a = true;
+    if (paramToServiceMsg.d == 1009) {
+      paramToServiceMsg.c = true;
     }
-    paramFromServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
-    if ((!paramToServiceMsg.a) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(paramToServiceMsg, 0L, 10)))
+    paramFromServiceMsg = (WTogetherMng)this.b.c(17);
+    if ((!paramToServiceMsg.c) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(paramToServiceMsg, 0L, 10)))
     {
       b(i, l, j);
       return;
     }
     paramFromServiceMsg.b(paramToServiceMsg);
-    notifyUI(8, paramToServiceMsg.a, paramToServiceMsg);
+    notifyUI(8, paramToServiceMsg.c, paramToServiceMsg);
     if (QLog.isDevelopLevel())
     {
       paramFromServiceMsg = new StringBuilder();
@@ -439,14 +439,14 @@ public class WTogetherHandler
     }
     paramToServiceMsg = null;
     label144:
-    paramFromServiceMsg = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16);
-    if ((!localReqComResult.a) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(localReqComResult, 0L, 9)))
+    paramFromServiceMsg = (WTogetherMng)this.b.c(17);
+    if ((!localReqComResult.c) && (j < 3) && (j > 0) && (paramFromServiceMsg.a(localReqComResult, 0L, 9)))
     {
       c(i, l, j);
       return;
     }
     paramFromServiceMsg.b(localReqComResult, paramToServiceMsg);
-    notifyUI(9, localReqComResult.a, localReqComResult);
+    notifyUI(9, localReqComResult.c, localReqComResult);
     if (QLog.isDevelopLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -508,7 +508,7 @@ public class WTogetherHandler
     long l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+      long l2 = Long.parseLong(this.b.getCurrentAccountUin());
       l1 = l2;
     }
     catch (Throwable localThrowable)
@@ -519,12 +519,12 @@ public class WTogetherHandler
     }
     localObject2 = new cmd0x346.ApplyDownloadReq();
     ((cmd0x346.ApplyDownloadReq)localObject2).uint64_uin.set(l1);
-    ((cmd0x346.ApplyDownloadReq)localObject2).bytes_uuid.set(ByteStringMicro.copyFrom(paramWTFileInfo.b.getBytes()));
+    ((cmd0x346.ApplyDownloadReq)localObject2).bytes_uuid.set(ByteStringMicro.copyFrom(paramWTFileInfo.c.getBytes()));
     if (paramBoolean) {
       ((cmd0x346.ApplyDownloadReq)localObject2).uint32_need_https_url.set(1);
     }
-    if (!TextUtils.isEmpty(paramWTFileInfo.c)) {
-      ((cmd0x346.ApplyDownloadReq)localObject2).str_fileid.set(paramWTFileInfo.c);
+    if (!TextUtils.isEmpty(paramWTFileInfo.d)) {
+      ((cmd0x346.ApplyDownloadReq)localObject2).str_fileid.set(paramWTFileInfo.d);
     }
     ((cmd0x346.ApplyDownloadReq)localObject2).uint32_owner_type.set(2);
     Object localObject1 = new cmd0x346.ReqBody();
@@ -588,8 +588,8 @@ public class WTogetherHandler
     ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).room_id.set(paramLong1);
     ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).seq.set(paramLong2);
     ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).video_status.set(paramWTSyncPlayInfo.a());
-    ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).cur_play_time.set(paramWTSyncPlayInfo.a());
-    ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).cur_play_rate.set((int)(paramWTSyncPlayInfo.a() * 100.0F));
+    ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).cur_play_time.set(paramWTSyncPlayInfo.b());
+    ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).cur_play_rate.set((int)(paramWTSyncPlayInfo.c() * 100.0F));
     ((WTogetherRoomMng.CmdSyncPlayTimeReq)localObject).client_type.set(104);
     ToServiceMsg localToServiceMsg = createToServiceMsg("QQRTCSvc.RoomManager-SyncPlayTime");
     localToServiceMsg.extraData.putInt("qav_together_from", paramInt);
@@ -618,15 +618,15 @@ public class WTogetherHandler
     if (paramChooseFileInfo == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+    Object localObject = this.b.getCurrentAccountUin();
     WTogetherRoomMng.CmdStartAvTogetherReq localCmdStartAvTogetherReq = new WTogetherRoomMng.CmdStartAvTogetherReq();
     localCmdStartAvTogetherReq.from.set(paramInt1);
-    localCmdStartAvTogetherReq.creator_uin.set(AVUtil.a((String)localObject));
+    localCmdStartAvTogetherReq.creator_uin.set(AVUtil.c((String)localObject));
     localCmdStartAvTogetherReq.room_id.set(paramLong);
     localCmdStartAvTogetherReq.client_type.set(104);
     WTogetherCommon.RoomUserInfo localRoomUserInfo = new WTogetherCommon.RoomUserInfo();
     localRoomUserInfo.role.set(1);
-    localRoomUserInfo.uin.set(AVUtil.a((String)localObject));
+    localRoomUserInfo.uin.set(AVUtil.c((String)localObject));
     localCmdStartAvTogetherReq.users.add(localRoomUserInfo);
     if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0))
     {
@@ -695,11 +695,11 @@ public class WTogetherHandler
     Object localObject = new WTogetherRoomMng.CmdChangeVideoStatusReq();
     ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).from.set(paramInt1);
     ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).room_id.set(paramLong);
-    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).seq.set(paramReqVideoAction.jdField_a_of_type_Long);
-    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).video_action.set(paramReqVideoAction.jdField_a_of_type_Int);
-    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).cur_play_time.set(paramReqVideoAction.jdField_b_of_type_Long);
-    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).cur_play_rate.set((int)(paramReqVideoAction.jdField_a_of_type_Float * 100.0F));
-    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).video_status.set(paramReqVideoAction.jdField_b_of_type_Int);
+    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).seq.set(paramReqVideoAction.a);
+    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).video_action.set(paramReqVideoAction.b);
+    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).cur_play_time.set(paramReqVideoAction.c);
+    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).cur_play_rate.set((int)(paramReqVideoAction.d * 100.0F));
+    ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).video_status.set(paramReqVideoAction.e);
     ((WTogetherRoomMng.CmdChangeVideoStatusReq)localObject).client_type.set(104);
     ToServiceMsg localToServiceMsg = createToServiceMsg("QQRTCSvc.RoomManager-ChangeVideoStatus");
     localToServiceMsg.extraData.putInt("qav_together_from", paramInt1);

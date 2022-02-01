@@ -52,16 +52,15 @@ public class ImageUtil
       catch (Throwable paramBitmap)
       {
         Bitmap localBitmap;
-        Canvas localCanvas;
         Paint localPaint;
         Rect localRect1;
         Rect localRect2;
         RectF localRectF;
+        Canvas localCanvas;
         paramBitmap.printStackTrace();
         return null;
       }
       localBitmap = Bitmap.createBitmap(n, i1, Bitmap.Config.ARGB_8888);
-      localCanvas = new Canvas(localBitmap);
       localPaint = new Paint();
       localRect1 = new Rect(j, k, paramInt2 + j, m + k);
       localRect2 = new Rect(0, 0, n, i1);
@@ -69,6 +68,7 @@ public class ImageUtil
       localPaint.setAntiAlias(true);
       localPaint.setDither(true);
       localPaint.setFilterBitmap(true);
+      localCanvas = new Canvas(localBitmap);
       localCanvas.drawARGB(0, 0, 0, 0);
       localPaint.setColor(-12434878);
       localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
@@ -133,7 +133,7 @@ public class ImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

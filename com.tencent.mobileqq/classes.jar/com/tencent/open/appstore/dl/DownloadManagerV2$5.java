@@ -16,7 +16,7 @@ class DownloadManagerV2$5
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = AppNotificationManager.a().a();
+    ConcurrentHashMap localConcurrentHashMap = AppNotificationManager.a().b();
     if (localConcurrentHashMap == null) {
       return;
     }
@@ -29,8 +29,8 @@ class DownloadManagerV2$5
         Object localObject = DownloadManagerV2.a(this.this$0, localNoticeIdentity.b);
         if ((localObject != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject).d)))
         {
-          localObject = this.this$0.a(((DownloadInfo)localObject).d);
-          if ((localObject != null) && (4 != DownloadManagerV2.a(((TMAssistantDownloadTaskInfo)localObject).mState))) {
+          localObject = this.this$0.g(((DownloadInfo)localObject).d);
+          if ((localObject != null) && (4 != DownloadManagerV2.b(((TMAssistantDownloadTaskInfo)localObject).mState))) {
             AppNotificationManager.a().a(localNoticeIdentity.a);
           }
         }
@@ -40,7 +40,7 @@ class DownloadManagerV2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.5
  * JD-Core Version:    0.7.0.1
  */

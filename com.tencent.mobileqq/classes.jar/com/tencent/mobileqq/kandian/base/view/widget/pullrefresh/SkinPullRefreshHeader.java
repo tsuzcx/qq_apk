@@ -24,34 +24,33 @@ public class SkinPullRefreshHeader
   extends RelativeLayout
   implements IPullRefreshHeader
 {
-  private static final int jdField_b_of_type_Int = Color.parseColor("#f7f7f7");
-  private int jdField_a_of_type_Int = 0;
-  public long a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, new int[] { Color.parseColor("#59000000"), 0 });
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View jdField_b_of_type_AndroidViewView;
+  private static final int k = Color.parseColor("#f7f7f7");
+  public long a = 0L;
+  GradientDrawable b = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, new int[] { Color.parseColor("#59000000"), 0 });
+  private int c = 0;
+  private Context d;
+  private RelativeLayout e;
+  private ImageView f;
+  private ProgressBar g;
+  private TextView h;
+  private View i;
+  private View j;
   
   public SkinPullRefreshHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setBackgroundColor(jdField_b_of_type_Int);
+    this.d = paramContext;
+    setBackgroundColor(k);
   }
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
     localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.c == 0)
     {
       a((RelativeLayout.LayoutParams)localObject, 10);
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
@@ -61,7 +60,7 @@ public class SkinPullRefreshHeader
       a((RelativeLayout.LayoutParams)localObject, 12);
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
   @TargetApi(17)
@@ -75,25 +74,15 @@ public class SkinPullRefreshHeader
     paramLayoutParams.addRule(12, 0);
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    this.g.setVisibility(4);
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    this.h.setVisibility(0);
+    this.g.setVisibility(4);
     Drawable localDrawable;
     if (paramInt != 0)
     {
@@ -102,20 +91,20 @@ public class SkinPullRefreshHeader
         if (paramInt != 2) {
           localDrawable = null;
         } else {
-          localDrawable = getResources().getDrawable(2130849865);
+          localDrawable = getResources().getDrawable(2130851572);
         }
       }
       else {
-        localDrawable = getResources().getDrawable(2130849864);
+        localDrawable = getResources().getDrawable(2130851571);
       }
     }
     else {
-      localDrawable = getResources().getDrawable(2130849866);
+      localDrawable = getResources().getDrawable(2130851573);
     }
     Object localObject = paramString;
     if (localDrawable != null)
     {
-      paramInt = (int)this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() + 2;
+      paramInt = (int)this.h.getTextSize() + 2;
       localDrawable.setBounds(0, 0, paramInt, paramInt);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[O]");
@@ -124,27 +113,27 @@ public class SkinPullRefreshHeader
       localObject = new SpannableString(((StringBuilder)localObject).toString());
       ((SpannableString)localObject).setSpan(new ImageSpan(localDrawable, 0), 0, 3, 17);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.h.setText((CharSequence)localObject);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    this.g.setVisibility(0);
   }
   
   public void a(Drawable paramDrawable, boolean paramBoolean)
   {
     if (paramDrawable != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-      setBackgroundColor(jdField_b_of_type_Int);
-      paramDrawable = this.jdField_a_of_type_AndroidViewView;
+      this.f.setImageDrawable(paramDrawable);
+      setBackgroundColor(k);
+      paramDrawable = this.i;
       if (paramDrawable != null)
       {
         if (paramBoolean)
         {
           paramDrawable.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
+          this.i.setBackgroundDrawable(this.b);
           return;
         }
         paramDrawable.setVisibility(8);
@@ -156,32 +145,42 @@ public class SkinPullRefreshHeader
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.h.setVisibility(0);
+      this.h.setText(paramString);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719252);
+    this.h.setText(2131916804);
   }
   
   public void c(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.g.setVisibility(4);
+    this.h.setVisibility(4);
   }
   
   public void f()
   {
-    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    ProgressBar localProgressBar = this.g;
     if (localProgressBar != null)
     {
       localProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.g.setVisibility(0);
     }
+  }
+  
+  public long g()
+  {
+    return this.a;
+  }
+  
+  public View getHeaderView()
+  {
+    return this;
   }
   
   protected void onAttachedToWindow() {}
@@ -189,27 +188,27 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365169));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376345));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376346));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376344));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376341);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376347);
+    this.e = ((RelativeLayout)findViewById(2131431322));
+    this.g = ((ProgressBar)findViewById(2131444560));
+    this.f = ((ImageView)findViewById(2131444561));
+    this.h = ((TextView)findViewById(2131444559));
+    this.i = findViewById(2131444555);
+    this.j = findViewById(2131444562);
     c(0L);
   }
   
   public void setAdTabVisibility(boolean paramBoolean)
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.j;
     if (localView != null)
     {
-      int i;
+      int m;
       if (paramBoolean) {
-        i = 0;
+        m = 0;
       } else {
-        i = 8;
+        m = 8;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(m);
     }
   }
   
@@ -236,9 +235,9 @@ public class SkinPullRefreshHeader
   
   public void setPullType(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.c != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.c = paramInt;
       a();
     }
   }
@@ -247,7 +246,7 @@ public class SkinPullRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.SkinPullRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

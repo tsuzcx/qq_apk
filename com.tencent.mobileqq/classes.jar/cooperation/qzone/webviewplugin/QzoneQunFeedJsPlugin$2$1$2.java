@@ -18,19 +18,19 @@ class QzoneQunFeedJsPlugin$2$1$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.this$2.this$1.this$0.parentPlugin.mRuntime.a().getAccount();
+    paramDialogInterface = this.this$2.this$1.this$0.parentPlugin.mRuntime.b().getAccount();
     Intent localIntent = new Intent();
-    String str = this.this$2.this$1.this$0.parentPlugin.mRuntime.a().getResources().getString(2131717187);
+    String str = this.this$2.this$1.this$0.parentPlugin.mRuntime.d().getResources().getString(2131914660);
     QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);
     localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(this.this$2.this$1.this$0.parentPlugin.mRuntime.a(), paramDialogInterface, localIntent, 4);
+    QzonePluginProxyActivity.launchPluingActivityForResult(this.this$2.this$1.this$0.parentPlugin.mRuntime.d(), paramDialogInterface, localIntent, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1.2
  * JD-Core Version:    0.7.0.1
  */

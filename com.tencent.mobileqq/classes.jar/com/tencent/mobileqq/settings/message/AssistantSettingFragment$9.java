@@ -12,14 +12,14 @@ class AssistantSettingFragment$9
   
   public void run()
   {
-    if ((this.this$0.getBaseActivity() != null) && ("haibao".equals(this.this$0.getBaseActivity().getIntent().getStringExtra("jumpTo"))) && (AssistantSettingFragment.d(this.this$0) != null) && (AssistantSettingFragment.d(this.this$0).getVisibility() == 0)) {
-      this.this$0.a.scrollTo(0, AssistantSettingFragment.d(this.this$0).getTop());
+    if ((this.this$0.getBaseActivity() != null) && ("haibao".equals(this.this$0.getBaseActivity().getIntent().getStringExtra("jumpTo"))) && (AssistantSettingFragment.i(this.this$0) != null) && (AssistantSettingFragment.i(this.this$0).getVisibility() == 0)) {
+      this.this$0.b.scrollTo(0, AssistantSettingFragment.i(this.this$0).getTop());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

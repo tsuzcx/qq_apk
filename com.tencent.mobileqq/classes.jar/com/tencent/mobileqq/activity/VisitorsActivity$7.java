@@ -28,9 +28,9 @@ class VisitorsActivity$7
         }
         if (Build.VERSION.SDK_INT >= 16)
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
+          this.a.z.setAlpha(255);
+          this.a.B.setAlpha(1.0F);
+          this.a.A.setAlpha(255);
           return true;
         }
       }
@@ -38,32 +38,32 @@ class VisitorsActivity$7
       {
         if (Build.VERSION.SDK_INT >= 16)
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
+          this.a.z.setAlpha(255);
+          this.a.B.setAlpha(1.0F);
+          this.a.A.setAlpha(255);
         }
         ReportController.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
-        LikeRankingUtil.a(this.a, QFlutterDPC.a().b());
-        this.a.d.setVisibility(8);
-        this.a.f.clearAnimation();
+        LikeRankingUtil.a(this.a, QFlutterDPC.a().d());
+        this.a.F.setVisibility(8);
+        this.a.L.clearAnimation();
         paramView = this.a;
-        paramView.c = 0;
-        paramView.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        paramView.M = 0;
+        paramView.ar.removeCallbacks(this.a.N);
         return true;
       }
     }
     else if (Build.VERSION.SDK_INT >= 16)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      this.a.b.setAlpha(127);
+      this.a.z.setAlpha(127);
+      this.a.B.setAlpha(0.5F);
+      this.a.A.setAlpha(127);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.7
  * JD-Core Version:    0.7.0.1
  */

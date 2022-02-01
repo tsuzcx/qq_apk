@@ -17,16 +17,16 @@ public class TabJumpHelper$LebaFramePlugin
   public void a(FrameFragment paramFrameFragment, Bundle paramBundle, int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CampusNoticeManager", 2, String.format(Locale.getDefault(), "back from campus_notice %d", new Object[] { Integer.valueOf(DrawerFrame.a) }));
+      QLog.d("CampusNoticeManager", 2, String.format(Locale.getDefault(), "back from campus_notice %d", new Object[] { Integer.valueOf(DrawerFrame.b) }));
     }
-    if (DrawerFrame.a == 0) {
-      DrawerFrame.a = 3;
+    if (DrawerFrame.b == 0) {
+      DrawerFrame.b = 3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper.LebaFramePlugin
  * JD-Core Version:    0.7.0.1
  */

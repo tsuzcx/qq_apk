@@ -32,22 +32,22 @@ class GdtGetUserInfoHandler$1
     paramBundle = paramBundle.toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleJsCallRequest() called with: webPlugin = [");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdWebPlugin);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], callback = [");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], args = [");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("], result = [");
     localStringBuilder.append(paramBundle);
     localStringBuilder.append("]");
     GdtLog.a("GdtGetUserInfoHandler", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdWebPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+    this.a.callJs(this.b, new String[] { paramBundle });
+    this.d.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtGetUserInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

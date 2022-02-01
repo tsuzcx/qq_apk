@@ -8,81 +8,81 @@ import com.tencent.qphone.base.util.QLog;
 public class GameMsgAppDrawer
   extends BaseChatDrawer
 {
-  private GameMsgAppContainer a;
+  private GameMsgAppContainer h;
   
   public GameMsgAppDrawer(GameMsgChatPie paramGameMsgChatPie)
   {
     super(paramGameMsgChatPie);
   }
   
-  protected View a()
+  protected View b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer = new GameMsgAppDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, (GameMsgChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
+    this.h = new GameMsgAppDrawer.1(this, this.a, this.b, this.c, (GameMsgChatPie)this.e);
+    this.h.a();
+    return this.h.a();
   }
   
-  public void b() {}
+  public void c() {}
   
-  public boolean b()
+  public boolean h()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer != null) && (a()))
+    if ((this.h != null) && (d()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer.a();
+      this.h.e();
       return true;
     }
     return false;
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onDrawerStartOpen");
-    }
-    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
-    if (localGameMsgAppContainer != null) {
-      localGameMsgAppContainer.a();
-    }
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onDrawerOpened");
-    }
-    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
-    if (localGameMsgAppContainer != null) {
-      localGameMsgAppContainer.b();
-    }
   }
   
   public void i()
   {
     super.i();
     if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onDrawerClosed");
+      QLog.d("intimate_relationship", 2, "onDrawerStartOpen");
     }
-    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    GameMsgAppContainer localGameMsgAppContainer = this.h;
     if (localGameMsgAppContainer != null) {
-      localGameMsgAppContainer.c();
+      localGameMsgAppContainer.b();
     }
   }
   
   public void k()
   {
-    GameMsgAppContainer localGameMsgAppContainer = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer;
+    super.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onDrawerOpened");
+    }
+    GameMsgAppContainer localGameMsgAppContainer = this.h;
+    if (localGameMsgAppContainer != null) {
+      localGameMsgAppContainer.c();
+    }
+  }
+  
+  public void l()
+  {
+    super.l();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onDrawerClosed");
+    }
+    GameMsgAppContainer localGameMsgAppContainer = this.h;
+    if (localGameMsgAppContainer != null) {
+      localGameMsgAppContainer.d();
+    }
+  }
+  
+  public void n()
+  {
+    GameMsgAppContainer localGameMsgAppContainer = this.h;
     if (localGameMsgAppContainer != null)
     {
-      localGameMsgAppContainer.d();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppContainer = null;
+      localGameMsgAppContainer.f();
+      this.h = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.GameMsgAppDrawer
  * JD-Core Version:    0.7.0.1
  */

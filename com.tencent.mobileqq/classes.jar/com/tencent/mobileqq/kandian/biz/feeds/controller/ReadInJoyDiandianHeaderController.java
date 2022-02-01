@@ -24,50 +24,48 @@ import java.util.List;
 public class ReadInJoyDiandianHeaderController
   extends HeaderViewController
 {
-  protected int a;
   protected Context a;
-  public ColorDrawable a;
-  protected Handler a;
-  protected View a;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private RollViewPager jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager;
-  private ReadInJoyDiandianHeaderController.ViewPagerAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController$ViewPagerAdapter;
-  private SubscribedListHeaderController jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerSubscribedListHeaderController;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyDiandianHeaderController.2(this);
-  private List<DiandianTopConfig> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private View jdField_b_of_type_AndroidViewView;
-  private List<MeasureGridView> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private View c;
+  protected int b;
+  public ColorDrawable c = new ColorDrawable(Color.parseColor("#e7e7e7"));
+  protected View d;
+  protected Handler e = new ReadInJoyDiandianHeaderController.1(this, Looper.getMainLooper());
+  private View f;
+  private View g;
+  private RollViewPager h;
+  private ReadInJoyDiandianHeaderController.ViewPagerAdapter i;
+  private FrameLayout j;
+  private SubscribedListHeaderController k;
+  private List<DiandianTopConfig> l = new ArrayList();
+  private List<MeasureGridView> m = new ArrayList();
+  private View[] n;
+  private boolean o = true;
+  private boolean p = false;
+  private ReadInJoyObserver q = new ReadInJoyDiandianHeaderController.2(this);
   
   public ReadInJoyDiandianHeaderController(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    this.jdField_a_of_type_AndroidOsHandler = new ReadInJoyDiandianHeaderController.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560177, null);
-    this.c = this.jdField_b_of_type_AndroidViewView.findViewById(2131379042);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager = ((RollViewPager)this.jdField_b_of_type_AndroidViewView.findViewById(2131380851));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController$ViewPagerAdapter = new ReadInJoyDiandianHeaderController.ViewPagerAdapter(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController$ViewPagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnPageChangeListener(new ReadInJoyDiandianHeaderController.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnTouchStateChangeListener(new ReadInJoyDiandianHeaderController.3(this));
-    ViewPagerScroller localViewPagerScroller = new ViewPagerScroller(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    this.a = paramContext;
+    this.f = LayoutInflater.from(paramContext).inflate(2131626224, null);
+    this.g = this.f.findViewById(2131447765);
+    this.h = ((RollViewPager)this.f.findViewById(2131449829));
+    this.i = new ReadInJoyDiandianHeaderController.ViewPagerAdapter(this);
+    this.h.setAdapter(this.i);
+    this.h.setOnPageChangeListener(new ReadInJoyDiandianHeaderController.RollerChangeListener(this));
+    this.h.setOnTouchStateChangeListener(new ReadInJoyDiandianHeaderController.3(this));
+    ViewPagerScroller localViewPagerScroller = new ViewPagerScroller(this.a, new LinearInterpolator());
     localViewPagerScroller.a(600);
-    localViewPagerScroller.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131368110);
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131378081));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerSubscribedListHeaderController = new SubscribedListHeaderController((Activity)paramContext, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    localViewPagerScroller.a(this.h);
+    this.d = this.f.findViewById(2131434964);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.q);
+    this.j = ((FrameLayout)this.f.findViewById(2131446587));
+    this.k = new SubscribedListHeaderController((Activity)paramContext, this.j);
   }
   
   private View a(int paramInt)
   {
-    MeasureGridView localMeasureGridView = new MeasureGridView(this.jdField_a_of_type_AndroidContentContext);
+    MeasureGridView localMeasureGridView = new MeasureGridView(this.a);
     localMeasureGridView.setSelector(new ColorDrawable(0));
-    ReadInJoyDiandianHeaderController.HeaderListAdapter localHeaderListAdapter = new ReadInJoyDiandianHeaderController.HeaderListAdapter(this, this.jdField_a_of_type_JavaUtilList, paramInt);
+    ReadInJoyDiandianHeaderController.HeaderListAdapter localHeaderListAdapter = new ReadInJoyDiandianHeaderController.HeaderListAdapter(this, this.l, paramInt);
     localMeasureGridView.setNumColumns(2);
     localMeasureGridView.setAdapter(localHeaderListAdapter);
     return localMeasureGridView;
@@ -75,20 +73,20 @@ public class ReadInJoyDiandianHeaderController
   
   private void h()
   {
-    DiandianTopConfigManager.a().a();
+    DiandianTopConfigManager.a().b();
   }
   
   protected void a() {}
   
   public void a(ListView paramListView)
   {
-    paramListView.addHeaderView(this.jdField_b_of_type_AndroidViewView, 2);
+    paramListView.addHeaderView(this.f, 2);
     h();
   }
   
   public void b()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.q);
   }
   
   public void c()
@@ -104,21 +102,21 @@ public class ReadInJoyDiandianHeaderController
   
   protected void f()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.o = false;
+    this.e.removeCallbacksAndMessages(null);
+    Handler localHandler = this.e;
     localHandler.sendMessageDelayed(localHandler.obtainMessage(), 3000L);
   }
   
   protected void g()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.o = true;
+    this.e.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyDiandianHeaderController
  * JD-Core Version:    0.7.0.1
  */

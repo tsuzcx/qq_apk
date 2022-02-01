@@ -14,14 +14,14 @@ class QQSettingMsgClearFragment$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     DeepCleanConfigReporter.a(2);
-    QQSettingMsgClearFragment.b(this.a);
     QQSettingMsgClearFragment.c(this.a);
-    QQToast.a(this.a.getBaseActivity(), this.a.getString(2131691843), 0).b(this.a.getBaseActivity().getTitleBarHeight());
+    QQSettingMsgClearFragment.d(this.a);
+    QQToast.makeText(this.a.getBaseActivity(), this.a.getString(2131888808), 0).show(this.a.getBaseActivity().getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.4
  * JD-Core Version:    0.7.0.1
  */

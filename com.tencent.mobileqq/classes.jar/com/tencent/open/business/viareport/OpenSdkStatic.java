@@ -62,7 +62,7 @@ public class OpenSdkStatic
       CommonDataAdapter.a().a(Integer.valueOf(paramString1).intValue());
       label14:
       Object localObject = ReportConfig.a();
-      String str = String.valueOf(CommonDataAdapter.a().a());
+      String str = String.valueOf(CommonDataAdapter.a().c());
       if (!((String)localObject).equals(str))
       {
         ReportManager.a().a((String)localObject, new BatchReportInfo(), null, true, paramBoolean2);
@@ -71,7 +71,7 @@ public class OpenSdkStatic
       localObject = new BatchReportInfo();
       ((BatchReportInfo)localObject).c = paramString4;
       ((BatchReportInfo)localObject).a = paramString2;
-      ((BatchReportInfo)localObject).f = APNUtil.a(CommonDataAdapter.a().a());
+      ((BatchReportInfo)localObject).f = APNUtil.a(CommonDataAdapter.a().b());
       ((BatchReportInfo)localObject).e = paramString5;
       ((BatchReportInfo)localObject).d = paramString1;
       ((BatchReportInfo)localObject).b = paramString3;
@@ -97,17 +97,17 @@ public class OpenSdkStatic
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2)
   {
-    a(paramString1, paramString2, paramString3, paramString4, CommonDataAdapter.a().f(), null, paramString5, paramBoolean1, paramBoolean2);
+    a(paramString1, paramString2, paramString3, paramString4, CommonDataAdapter.a().l(), null, paramString5, paramBoolean1, paramBoolean2);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    a(paramString1, paramString2, paramString3, paramString4, CommonDataAdapter.a().f(), null, "", paramBoolean, false);
+    a(paramString1, paramString2, paramString3, paramString4, CommonDataAdapter.a().l(), null, "", paramBoolean, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.OpenSdkStatic
  * JD-Core Version:    0.7.0.1
  */

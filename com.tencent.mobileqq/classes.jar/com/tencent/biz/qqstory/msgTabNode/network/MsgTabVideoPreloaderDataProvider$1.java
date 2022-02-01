@@ -10,8 +10,8 @@ class MsgTabVideoPreloaderDataProvider$1
 {
   public void a()
   {
-    QLog.e("MsgTabVideoPreloaderDataProvider", 1, new Object[] { "pull video info failed, vidList=", this.jdField_a_of_type_JavaUtilList });
-    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    QLog.e("MsgTabVideoPreloaderDataProvider", 1, new Object[] { "pull video info failed, vidList=", this.b });
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.a;
     if (localDataProviderListener != null) {
       localDataProviderListener.a(null, new Error());
     }
@@ -19,7 +19,7 @@ class MsgTabVideoPreloaderDataProvider$1
   
   public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.a;
     if (localDataProviderListener != null) {
       localDataProviderListener.a(null, paramArrayList);
     }
@@ -27,7 +27,7 @@ class MsgTabVideoPreloaderDataProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.1
  * JD-Core Version:    0.7.0.1
  */

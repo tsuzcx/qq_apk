@@ -27,7 +27,7 @@ class VasFaceManager$1
       ((StringBuilder)localObject).append("getFace need download: ");
       ((StringBuilder)localObject).append(this.b);
       QLog.d("Q.qqhead.VasFaceManager", 1, ((StringBuilder)localObject).toString());
-      localObject = (IVasQuickUpdateService)this.this$0.a.getRuntimeService(IVasQuickUpdateService.class, "");
+      localObject = (IVasQuickUpdateService)this.this$0.b.getRuntimeService(IVasQuickUpdateService.class, "");
       if (localObject != null)
       {
         ((IVasQuickUpdateService)localObject).downloadItem(23L, this.b, "Q.qqhead.VasFaceManager");
@@ -42,7 +42,7 @@ class VasFaceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.1
  * JD-Core Version:    0.7.0.1
  */

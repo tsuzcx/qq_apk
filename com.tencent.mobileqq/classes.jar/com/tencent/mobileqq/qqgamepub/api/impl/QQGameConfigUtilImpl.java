@@ -5,6 +5,7 @@ import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qqgamepub.config.QQGameConfBean;
 import com.tencent.mobileqq.qqgamepub.config.QQGameConfProcessor;
 import com.tencent.mobileqq.qqgamepub.config.QQGamePreloadConfBean;
@@ -53,8 +54,8 @@ public class QQGameConfigUtilImpl
   public boolean checkGamePubAccountConfig()
   {
     boolean bool = isPubFeedByWeb();
-    IQQGameHelper localIQQGameHelper = (IQQGameHelper)QRoute.api(IQQGameHelper.class);
-    int i = localIQQGameHelper.canOpenHippyByModuleName(localIQQGameHelper.getGamePaHippyModuleName());
+    IQQGameHippyApi localIQQGameHippyApi = (IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class);
+    int i = localIQQGameHippyApi.canOpenHippyByModuleName(localIQQGameHippyApi.getGamePaHippyModuleName());
     if ((!bool) && (i != 0)) {
       bool = false;
     } else {
@@ -71,7 +72,7 @@ public class QQGameConfigUtilImpl
     if (isDebugMode()) {
       return "https://hao.gamecenter.qq.com/sgame-official-account";
     }
-    String str2 = QQGameConfProcessor.a().jdField_a_of_type_JavaLangString;
+    String str2 = QQGameConfProcessor.a().d;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "";
@@ -81,7 +82,7 @@ public class QQGameConfigUtilImpl
   
   public String getGamePubUrl()
   {
-    String str = QQGameConfProcessor.a().jdField_b_of_type_JavaLangString;
+    String str = QQGameConfProcessor.a().e;
     if (TextUtils.isEmpty(str)) {
       return "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
     }
@@ -94,20 +95,20 @@ public class QQGameConfigUtilImpl
   public boolean getHippySoDownload()
   {
     QQGameConfBean localQQGameConfBean = QQGameConfProcessor.a();
-    return (localQQGameConfBean != null) && (localQQGameConfBean.jdField_b_of_type_Boolean);
+    return (localQQGameConfBean != null) && (localQQGameConfBean.g);
   }
   
   public boolean getHippySwitch()
   {
     QQGameConfBean localQQGameConfBean = QQGameConfProcessor.a();
-    return (localQQGameConfBean != null) && (localQQGameConfBean.jdField_a_of_type_Boolean);
+    return (localQQGameConfBean != null) && (localQQGameConfBean.f);
   }
   
   public List<String> getInterceptAdIdList()
   {
     QQGamePreloadConfBean localQQGamePreloadConfBean = QQGamePreloadConfProcessor.a();
-    if (localQQGamePreloadConfBean.jdField_a_of_type_JavaUtilList != null) {
-      return localQQGamePreloadConfBean.jdField_a_of_type_JavaUtilList;
+    if (localQQGamePreloadConfBean.f != null) {
+      return localQQGamePreloadConfBean.f;
     }
     return null;
   }
@@ -117,7 +118,7 @@ public class QQGameConfigUtilImpl
     if (isDebugMode()) {
       return isDebugSwitchByGamePubType("2");
     }
-    return QQGamePreloadConfProcessor.a().jdField_a_of_type_Int == 1;
+    return QQGamePreloadConfProcessor.a().a == 1;
   }
   
   public boolean getNewPAHippyV2Switch()
@@ -132,7 +133,7 @@ public class QQGameConfigUtilImpl
   {
     QQGamePreloadConfBean localQQGamePreloadConfBean = QQGamePreloadConfProcessor.a();
     if (localQQGamePreloadConfBean != null) {
-      return localQQGamePreloadConfBean.g;
+      return localQQGamePreloadConfBean.i;
     }
     return 0;
   }
@@ -140,14 +141,14 @@ public class QQGameConfigUtilImpl
   public boolean getPreloadFeedsSwitch()
   {
     QQGamePreloadConfBean localQQGamePreloadConfBean = QQGamePreloadConfProcessor.a();
-    return (localQQGamePreloadConfBean != null) && (localQQGamePreloadConfBean.f == 1);
+    return (localQQGamePreloadConfBean != null) && (localQQGamePreloadConfBean.g == 1);
   }
   
   public String getPreloadFeedsUrl()
   {
     QQGamePreloadConfBean localQQGamePreloadConfBean = QQGamePreloadConfProcessor.a();
-    if ((localQQGamePreloadConfBean != null) && (!TextUtils.isEmpty(localQQGamePreloadConfBean.jdField_a_of_type_JavaLangString))) {
-      return localQQGamePreloadConfBean.jdField_a_of_type_JavaLangString;
+    if ((localQQGamePreloadConfBean != null) && (!TextUtils.isEmpty(localQQGamePreloadConfBean.h))) {
+      return localQQGamePreloadConfBean.h;
     }
     return "https://hao.gamecenter.qq.com/sgame-official-account/cgi-bin/gamedatalist";
   }
@@ -164,18 +165,19 @@ public class QQGameConfigUtilImpl
   
   public boolean isFlutterPreLoad()
   {
-    return QQGamePreloadConfProcessor.a().e == 1;
+    QQGamePreloadConfBean localQQGamePreloadConfBean = QQGamePreloadConfProcessor.a();
+    return (localQQGamePreloadConfBean != null) && (localQQGamePreloadConfBean.e == 1);
   }
   
   public boolean isGameCenterPreloadByTab()
   {
     QQGameConfBean localQQGameConfBean = QQGameConfProcessor.a();
-    return (localQQGameConfBean != null) && (localQQGameConfBean.e == 1);
+    return (localQQGameConfBean != null) && (localQQGameConfBean.i == 1);
   }
   
   public boolean isNeedPreloadByInterval()
   {
-    long l1 = GameCenterSpUtils.a("key_game_pa_hippy_preload_time");
+    long l1 = GameCenterSpUtils.c("key_game_pa_hippy_preload_time");
     long l2 = NetConnInfoCenter.getServerTimeMillis();
     long l3 = ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getPreloadIntervalDay() * 24 * 60 * 60 * 1000;
     if (QLog.isColorLevel()) {
@@ -203,7 +205,7 @@ public class QQGameConfigUtilImpl
   public boolean isPubAccountSwitch()
   {
     QQGameConfBean localQQGameConfBean = QQGameConfProcessor.a();
-    if ((localQQGameConfBean != null) && (localQQGameConfBean.jdField_a_of_type_Int == 1))
+    if ((localQQGameConfBean != null) && (localQQGameConfBean.a == 1))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQGamePub_QQGameConfigUtilImpl", 2, "isPubAccountSwitch = true");
@@ -229,7 +231,7 @@ public class QQGameConfigUtilImpl
       bool1 = bool2;
       if (((QQGameConfBean)localObject).c == 1)
       {
-        localObject = ((QQGameConfBean)localObject).jdField_a_of_type_JavaLangString;
+        localObject = ((QQGameConfBean)localObject).d;
         bool1 = bool2;
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
@@ -246,12 +248,12 @@ public class QQGameConfigUtilImpl
   public boolean isUpdateHippyJsBundleByHttp()
   {
     QQGameConfBean localQQGameConfBean = QQGameConfProcessor.a();
-    return (localQQGameConfBean != null) && (localQQGameConfBean.d == 2);
+    return (localQQGameConfBean != null) && (localQQGameConfBean.h == 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameConfigUtilImpl
  * JD-Core Version:    0.7.0.1
  */

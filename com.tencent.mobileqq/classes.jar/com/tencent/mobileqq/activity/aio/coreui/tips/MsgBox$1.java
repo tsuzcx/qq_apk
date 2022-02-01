@@ -30,57 +30,57 @@ class MsgBox$1
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentImcoreMessageMessage.frienduin)) && ((this.jdField_a_of_type_ComTencentImcoreMessageMessage.senderuin == null) || (!this.jdField_a_of_type_ComTencentImcoreMessageMessage.senderuin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.h()))
+    if ((!this.a.O().b.equals(this.b.frienduin)) && ((this.b.senderuin == null) || (!this.b.senderuin.equalsIgnoreCase(this.c.getCurrentAccountUin()))) && (!this.a.B()))
     {
       if (MsgBox.a(this.this$0) == null)
       {
-        MsgBox.a(this.this$0, new View(this.jdField_a_of_type_AndroidAppActivity));
-        MsgBox.a(this.this$0).setId(2131371577);
-        MsgBox.a(this.this$0).setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166476));
+        MsgBox.a(this.this$0, new View(this.d));
+        MsgBox.b(this.this$0).setId(2131438958);
+        MsgBox.b(this.this$0).setBackgroundColor(this.d.getResources().getColor(2131167318));
         localObject = new RelativeLayout.LayoutParams(-1, 1);
-        this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(MsgBox.a(this.this$0), (ViewGroup.LayoutParams)localObject);
-        MsgBox.a(this.this$0, new TextView(this.jdField_a_of_type_AndroidAppActivity));
-        MsgBox.a(this.this$0).setId(2131371574);
+        this.this$0.a.addView(MsgBox.b(this.this$0), (ViewGroup.LayoutParams)localObject);
+        MsgBox.a(this.this$0, new TextView(this.d));
+        MsgBox.a(this.this$0).setId(2131438955);
         MsgBox.a(this.this$0).setSingleLine();
-        MsgBox.a(this.this$0).setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839106));
+        MsgBox.a(this.this$0).setBackgroundDrawable(this.d.getResources().getDrawable(2130839262));
         MsgBox.a(this.this$0).setGravity(17);
         MsgBox.a(this.this$0).setTextSize(2, 14.0F);
-        MsgBox.a(this.this$0).setBackgroundResource(2130839106);
-        MsgBox.a(this.this$0).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131167134));
-        float f = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getDisplayMetrics().density;
+        MsgBox.a(this.this$0).setBackgroundResource(2130839262);
+        MsgBox.a(this.this$0).setTextColor(this.d.getResources().getColorStateList(2131168114));
+        float f1 = this.c.getApplication().getResources().getDisplayMetrics().density;
         localObject = MsgBox.a(this.this$0);
-        int i = (int)(f * 10.0F);
+        int i = (int)(f1 * 10.0F);
         ((TextView)localObject).setPadding(i, MsgBox.a(this.this$0).getPaddingTop(), i, MsgBox.a(this.this$0).getPaddingBottom());
-        localObject = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131297080));
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131371577);
-        this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(MsgBox.a(this.this$0), (ViewGroup.LayoutParams)localObject);
+        localObject = new RelativeLayout.LayoutParams(-1, (int)this.d.getResources().getDimension(2131297461));
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131438958);
+        this.this$0.a.addView(MsgBox.a(this.this$0), (ViewGroup.LayoutParams)localObject);
         MsgBox.a(this.this$0).setOnClickListener(this.this$0);
       }
-      if ((!ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_Int)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.g())) {
-        MsgBox.a(this.this$0).setVisibility(8);
+      if ((!ChatActivityUtils.a(this.a.O().a)) && (!this.a.A())) {
+        MsgBox.b(this.this$0).setVisibility(8);
       } else {
-        MsgBox.a(this.this$0).setVisibility(0);
+        MsgBox.b(this.this$0).setVisibility(0);
       }
       MsgBox.a(this.this$0).setVisibility(0);
       ThreadManager.postImmediately(new MsgBox.1.1(this), null, true);
       MsgBox.a(this.this$0).requestLayout();
-      MsgBox.a(this.this$0).setTag(this.jdField_a_of_type_AndroidContentIntent);
+      MsgBox.a(this.this$0).setTag(this.e);
       Object localObject = MsgBox.a(this.this$0).getHandler();
       if (localObject != null)
       {
-        ((Handler)localObject).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
-        ((Handler)localObject).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 10000L);
+        ((Handler)localObject).removeCallbacks(this.this$0.b);
+        ((Handler)localObject).postDelayed(this.this$0.b, 10000L);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().b().iterator();
+      localObject = this.a.z().a().b().iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((IMsgTipsListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, this.jdField_a_of_type_ComTencentImcoreMessageMessage);
+        ((IMsgTipsListener)((Iterator)localObject).next()).a(this.a, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.tips.MsgBox.1
  * JD-Core Version:    0.7.0.1
  */

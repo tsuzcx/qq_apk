@@ -12,8 +12,8 @@ import android.view.View;
 public class ExtendFriendGradientFootView
   extends View
 {
-  LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  LinearGradient a;
+  private final Paint b = new Paint();
   
   public ExtendFriendGradientFootView(Context paramContext)
   {
@@ -33,19 +33,19 @@ public class ExtendFriendGradientFootView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.b);
   }
   
   public void setColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(0.0F, 0.0F, 0.0F, getHeight(), 0, paramInt, Shader.TileMode.CLAMP);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
+    this.a = new LinearGradient(0.0F, 0.0F, 0.0F, getHeight(), 0, paramInt, Shader.TileMode.CLAMP);
+    this.b.setShader(this.a);
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendGradientFootView
  * JD-Core Version:    0.7.0.1
  */

@@ -52,10 +52,10 @@ public class FavoriteEmoticonInfoSender
         sendStructMsgForImage(paramAppRuntime, paramEditText, paramParcelable, paramFavoriteEmoticonInfo);
         return;
       }
-      if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramEditText.jdField_a_of_type_Int, paramEditText.jdField_a_of_type_JavaLangString)))
+      if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramEditText.a, paramEditText.b)))
       {
         paramFavoriteEmoticonInfo = (QBaseActivity)paramContext;
-        QQToast.a(paramAppRuntime.getApp(), HardCodeUtil.a(2131701523), 0).b(paramFavoriteEmoticonInfo.getTitleBarHeight());
+        QQToast.makeText(paramAppRuntime.getApp(), HardCodeUtil.a(2131899546), 0).show(paramFavoriteEmoticonInfo.getTitleBarHeight());
         return;
       }
       CustomEmotionSenderUtil.sendCustomEmotion(paramAppRuntime, paramContext, paramEditText, paramParcelable, true, TextUtils.isEmpty(str) ^ true, str, null);
@@ -77,7 +77,7 @@ public class FavoriteEmoticonInfoSender
     localBundle.putInt("forward_type", -3);
     localBundle.putString("pkg_name", "com.tencent.mobileqq");
     localBundle.putInt("req_type", 5);
-    localBundle.putString("brief_key", HardCodeUtil.a(2131699760));
+    localBundle.putString("brief_key", HardCodeUtil.a(2131897793));
     localBundle.putString("app_name", "QQ动漫");
     localBundle.putString("struct_share_key_content_action_DATA", paramString2);
     ((IEmosmService)QRoute.api(IEmosmService.class)).sendStructMsgForImage(paramBaseQQAppInterface, paramString2, localBundle, paramBaseSessionInfo);
@@ -85,7 +85,7 @@ public class FavoriteEmoticonInfoSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.FavoriteEmoticonInfoSender
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,12 @@ import java.util.List;
 
 public class MiniCard
 {
-  public AnonymousQuestion a;
   public MiniCard.BaseProfile a;
-  public MiniCard.QZoneInfo a;
-  public MiniCard.Sign a;
-  public List<String> a;
-  public List<MiniCard.NicePicInfo> b = new ArrayList();
-  
-  public MiniCard()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<String> b = new ArrayList();
+  public MiniCard.QZoneInfo c;
+  public List<MiniCard.NicePicInfo> d = new ArrayList();
+  public MiniCard.Sign e;
+  public AnonymousQuestion f;
   
   @NonNull
   public String toString()
@@ -26,34 +21,34 @@ public class MiniCard
     StringBuilder localStringBuilder = new StringBuilder(1024);
     localStringBuilder.append("baseProfile");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$BaseProfile);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|\n");
     localStringBuilder.append("personalLabels");
     localStringBuilder.append("=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()));
+    localStringBuilder.append(Arrays.toString(this.b.toArray()));
     localStringBuilder.append("|\n");
     localStringBuilder.append("qZoneInfo");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|\n");
     localStringBuilder.append("nicePics");
     localStringBuilder.append("=");
-    localStringBuilder.append(Arrays.toString(this.b.toArray()));
+    localStringBuilder.append(Arrays.toString(this.d.toArray()));
     localStringBuilder.append("|\n");
     localStringBuilder.append("sign");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("|\n");
     localStringBuilder.append("askAnonymously");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("|\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.MiniCard
  * JD-Core Version:    0.7.0.1
  */

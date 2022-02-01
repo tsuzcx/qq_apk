@@ -45,9 +45,9 @@ public class PTTPreDownloaderImpl
       QLog.d("PTTPreDownloader", 2, "cancelCache");
     }
     int i = 0;
-    while (i < paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < paramCacheInfo.b.size())
     {
-      MessageForPtt localMessageForPtt = (MessageForPtt)paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.get(i);
+      MessageForPtt localMessageForPtt = (MessageForPtt)paramCacheInfo.b.get(i);
       if (this.mStrategy.b(localMessageForPtt))
       {
         long l;
@@ -130,9 +130,9 @@ public class PTTPreDownloaderImpl
     paramMessageForPtt = getCache(paramMessageForPtt);
     if (paramMessageForPtt != null)
     {
-      paramMessageForPtt.jdField_a_of_type_Int -= 1;
-      if (paramMessageForPtt.jdField_a_of_type_Int < 0) {
-        paramMessageForPtt.jdField_a_of_type_Int = 0;
+      paramMessageForPtt.a -= 1;
+      if (paramMessageForPtt.a < 0) {
+        paramMessageForPtt.a = 0;
       }
       startDownloadCache(paramMessageForPtt);
     }
@@ -170,7 +170,7 @@ public class PTTPreDownloaderImpl
       if (localObject != null) {
         if (this.mAddrProviderReady)
         {
-          if ((((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_Int < 3) && (this.mStrategy.a(paramMessageForPtt)))
+          if ((((PTTPreDownloaderImpl.CacheInfo)localObject).a < 3) && (this.mStrategy.a(paramMessageForPtt)))
           {
             if (!startDownload(paramMessageForPtt))
             {
@@ -188,15 +188,15 @@ public class PTTPreDownloaderImpl
               }
             }
             else {
-              ((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_Int += 1;
+              ((PTTPreDownloaderImpl.CacheInfo)localObject).a += 1;
             }
           }
           else
           {
-            i = ((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size();
+            i = ((PTTPreDownloaderImpl.CacheInfo)localObject).b.size();
             localObject.getClass();
             if (i + 1 < 99) {
-              ((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
+              ((PTTPreDownloaderImpl.CacheInfo)localObject).b.add(paramMessageForPtt);
             }
           }
           if (paramMessageForPtt.voiceChangeFlag == 1)
@@ -211,10 +211,10 @@ public class PTTPreDownloaderImpl
         }
         else
         {
-          i = ((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size();
+          i = ((PTTPreDownloaderImpl.CacheInfo)localObject).b.size();
           localObject.getClass();
           if (i + 1 < 99) {
-            ((PTTPreDownloaderImpl.CacheInfo)localObject).jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
+            ((PTTPreDownloaderImpl.CacheInfo)localObject).b.add(paramMessageForPtt);
           }
         }
       }
@@ -327,9 +327,9 @@ public class PTTPreDownloaderImpl
       boolean bool = false;
       label17:
       MessageForPtt localMessageForPtt;
-      if ((paramCacheInfo.jdField_a_of_type_Int < 3) && (paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramCacheInfo.a < 3) && (paramCacheInfo.b.size() > 0))
       {
-        localMessageForPtt = (MessageForPtt)paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localMessageForPtt = (MessageForPtt)paramCacheInfo.b.get(0);
         if (this.mStrategy.a(localMessageForPtt)) {
           if (!startDownload(localMessageForPtt)) {
             if (this.mStrategy.b(localMessageForPtt))
@@ -350,10 +350,10 @@ public class PTTPreDownloaderImpl
         localMessageForPtt.serial();
         label127:
         ((IPttTempApi)QRoute.api(IPttTempApi.class)).updateMsgContentByUniseq(this.mApp, localMessageForPtt.frienduin, localMessageForPtt.istroop, localMessageForPtt.uniseq, localMessageForPtt.msgData);
-        paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        paramCacheInfo.b.remove(0);
         continue;
-        paramCacheInfo.jdField_a_of_type_Int += 1;
-        paramCacheInfo.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        paramCacheInfo.a += 1;
+        paramCacheInfo.b.remove(0);
         bool = true;
         break label17;
         return bool;
@@ -471,7 +471,7 @@ public class PTTPreDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PTTPreDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

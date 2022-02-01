@@ -3,6 +3,7 @@ package com.tencent.av.redtouch;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.av.VideoController;
+import com.tencent.av.abtest.QavAvatar2dEntranceABTestUtils;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.opengl.effects.EffectsRenderController;
@@ -26,13 +27,13 @@ public class AVRedTouchUtil
       return null;
     }
     int j = 0;
-    Object localObject = paramVideoAppInterface.a();
+    Object localObject = paramVideoAppInterface.b();
     int i = j;
     if (localObject != null)
     {
       i = j;
-      if (((VideoController)localObject).a() != null) {
-        i = ((VideoController)localObject).a().d;
+      if (((VideoController)localObject).k() != null) {
+        i = ((VideoController)localObject).k().g;
       }
     }
     localObject = a(paramInt);
@@ -63,7 +64,7 @@ public class AVRedTouchUtil
   public static BusinessInfoCheckUpdate.AppInfo a(VideoAppInterface paramVideoAppInterface, String paramString)
   {
     if (paramVideoAppInterface != null) {
-      return paramVideoAppInterface.a(paramString);
+      return paramVideoAppInterface.j(paramString);
     }
     return null;
   }
@@ -83,13 +84,13 @@ public class AVRedTouchUtil
         if ((localObject instanceof RedTouch)) {
           localObject = (RedTouch)localObject;
         } else {
-          localObject = new RedTouch(paramVideoAppInterface.getApplication(), paramView).b(53).a();
+          localObject = new RedTouch(paramVideoAppInterface.getApplication(), paramView).c(53).a();
         }
         ((RedTouch)localObject).a(localAppInfo);
         if ("105000.105100".equals(str)) {
-          paramVideoAppInterface.e(a);
+          paramVideoAppInterface.l(a);
         }
-        paramVideoAppInterface.e(str);
+        paramVideoAppInterface.l(str);
         paramVideoAppInterface = new StringBuilder();
         paramVideoAppInterface.append("tryGetRedTouchAndShowRedDot suc. appId[");
         paramVideoAppInterface.append(str);
@@ -120,6 +121,14 @@ public class AVRedTouchUtil
     {
     default: 
       return null;
+    case 14: 
+      return "105000.105200.105230.105232";
+    case 13: 
+      return "105000.105200.105230.105231";
+    case 12: 
+      return "105000.105200.105230";
+    case 11: 
+      return "105000.105200";
     case 10: 
       return "105000.105100.105150";
     case 9: 
@@ -166,11 +175,11 @@ public class AVRedTouchUtil
       BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramVideoAppInterface, str);
       if (a(localAppInfo))
       {
-        if ("105000.105100".equals(str)) {
-          paramVideoAppInterface.d(a);
+        if (("105000.105100".equals(str)) || ("105000.105200".equals(str))) {
+          paramVideoAppInterface.k(a);
         }
-        paramVideoAppInterface.d(str);
-        paramRedTouch.d();
+        paramVideoAppInterface.k(str);
+        paramRedTouch.g();
         paramVideoAppInterface = new StringBuilder();
         paramVideoAppInterface.append("clearRedDot successfully. appId[");
         paramVideoAppInterface.append(str);
@@ -194,71 +203,123 @@ public class AVRedTouchUtil
     }
   }
   
-  private static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    String str = a(paramInt);
-    if (TextUtils.isEmpty(str))
-    {
-      paramVideoAppInterface = new StringBuilder();
-      paramVideoAppInterface.append("hasRedDot falied. appId = ");
-      paramVideoAppInterface.append(str);
-      QLog.d("AVRedTouchUtil", 1, paramVideoAppInterface.toString());
-      return false;
-    }
-    paramVideoAppInterface = a(paramVideoAppInterface, str);
-    if (a(paramVideoAppInterface)) {
-      return true;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hasRedDot falied. appId = ");
-    localStringBuilder.append(str);
-    localStringBuilder.append(", appInfo = ");
-    localStringBuilder.append(paramVideoAppInterface);
-    localStringBuilder.append(", hasRedDot = false");
-    QLog.d("AVRedTouchUtil", 1, localStringBuilder.toString());
-    return false;
-  }
-  
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
   {
     boolean bool5 = false;
     boolean bool6 = false;
     boolean bool7 = false;
-    boolean bool2 = false;
+    boolean bool8 = false;
+    boolean bool9 = false;
+    boolean bool10 = false;
     boolean bool3 = false;
+    boolean bool2 = false;
     if (paramVideoAppInterface == null) {
       return false;
     }
     boolean bool4 = true;
-    boolean bool1 = bool2;
+    boolean bool1 = bool3;
     switch (paramInt1)
     {
     default: 
+      bool1 = bool3;
+      break;
+    case 14: 
+      if ((paramInt2 == 2) || (paramInt2 == 1)) {
+        bool2 = true;
+      }
       bool1 = bool2;
+      if (bool2) {
+        bool1 = c(paramVideoAppInterface, 14);
+      }
+      break;
+    case 13: 
+      if (paramInt2 != 2)
+      {
+        bool2 = bool5;
+        if (paramInt2 != 1) {}
+      }
+      else
+      {
+        bool2 = true;
+      }
+      bool1 = bool2;
+      if (bool2) {
+        bool1 = c(paramVideoAppInterface, 13);
+      }
+      break;
+    case 12: 
+      if (paramInt2 != 2)
+      {
+        bool1 = bool6;
+        if (paramInt2 != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = c(paramVideoAppInterface, 12);
+      }
+      bool1 = bool2;
+      if (bool2)
+      {
+        bool2 = a(paramVideoAppInterface, 13, paramInt2);
+        bool1 = bool2;
+        if (!bool2) {
+          bool1 = a(paramVideoAppInterface, 14, paramInt2);
+        }
+      }
+      break;
+    case 11: 
+      if ((paramInt2 != 2) && (paramInt2 != 1)) {
+        bool1 = false;
+      } else {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = c(paramVideoAppInterface, 11);
+      }
+      if (bool2)
+      {
+        bool1 = bool3;
+        if (a(paramVideoAppInterface, 12, paramInt2))
+        {
+          bool1 = bool3;
+          if (QavAvatar2dEntranceABTestUtils.a(paramVideoAppInterface.getCurrentAccountUin())) {
+            bool1 = true;
+          }
+        }
+      }
+      else
+      {
+        bool1 = bool2;
+      }
       break;
     case 10: 
       if (paramInt2 != 1)
       {
-        bool1 = bool2;
+        bool1 = bool3;
         if (paramInt2 != 2) {
           break;
         }
       }
       else
       {
-        bool1 = bool2;
-        if (QAVConfigUtils.j()) {
-          bool1 = a(paramVideoAppInterface, 10);
+        bool1 = bool3;
+        if (QAVConfigUtils.r()) {
+          bool1 = c(paramVideoAppInterface, 10);
         }
       }
       break;
     case 9: 
-      bool1 = a(paramVideoAppInterface, 9);
+      bool1 = c(paramVideoAppInterface, 9);
       break;
     case 8: 
       if (paramInt2 != 2)
       {
-        bool2 = bool3;
+        bool2 = bool7;
         if (paramInt2 != 4) {}
       }
       else
@@ -267,22 +328,22 @@ public class AVRedTouchUtil
       }
       bool1 = bool2;
       if (bool2) {
-        bool1 = EffectsRenderController.b();
+        bool1 = EffectsRenderController.c();
       }
       break;
     case 7: 
       if (paramInt2 != 2)
       {
-        bool1 = bool5;
+        bool1 = bool8;
         if (paramInt2 != 4) {}
       }
       else
       {
-        bool1 = EffectsRenderController.b();
+        bool1 = EffectsRenderController.c();
       }
       bool2 = bool1;
       if (bool1) {
-        bool2 = a(paramVideoAppInterface, 7);
+        bool2 = c(paramVideoAppInterface, 7);
       }
       bool1 = bool2;
       if (bool2) {
@@ -290,7 +351,7 @@ public class AVRedTouchUtil
       }
       break;
     case 6: 
-      bool1 = a(paramVideoAppInterface, 6);
+      bool1 = c(paramVideoAppInterface, 6);
       break;
     case 5: 
       if (paramInt2 == 2) {
@@ -299,16 +360,16 @@ public class AVRedTouchUtil
         bool1 = false;
       }
       if (bool1) {
-        bool1 = a(paramVideoAppInterface, 5);
+        bool1 = c(paramVideoAppInterface, 5);
       }
       if (bool1) {
-        bool1 = bool2;
+        bool1 = bool3;
       }
       break;
     case 3: 
       if (paramInt2 != 2)
       {
-        bool1 = bool6;
+        bool1 = bool9;
         if (paramInt2 != 4) {}
       }
       else
@@ -317,7 +378,7 @@ public class AVRedTouchUtil
       }
       bool2 = bool1;
       if (bool1) {
-        bool2 = a(paramVideoAppInterface, 3);
+        bool2 = c(paramVideoAppInterface, 3);
       }
       bool1 = bool2;
       if (bool2)
@@ -332,7 +393,7 @@ public class AVRedTouchUtil
     case 2: 
       if (paramInt2 != 2)
       {
-        bool1 = bool7;
+        bool1 = bool10;
         if (paramInt2 != 4) {}
       }
       else
@@ -341,7 +402,7 @@ public class AVRedTouchUtil
       }
       bool2 = bool1;
       if (bool1) {
-        bool2 = a(paramVideoAppInterface, 2);
+        bool2 = c(paramVideoAppInterface, 2);
       }
       bool1 = bool2;
       if (bool2) {
@@ -349,7 +410,7 @@ public class AVRedTouchUtil
       }
       break;
     case 1: 
-      bool2 = a(paramVideoAppInterface, 1);
+      bool2 = c(paramVideoAppInterface, 1);
       bool1 = bool2;
       if (bool2)
       {
@@ -378,7 +439,7 @@ public class AVRedTouchUtil
           else
           {
             bool1 = bool3;
-            if (!QAVConfigUtils.j()) {
+            if (!QAVConfigUtils.r()) {
               break;
             }
           }
@@ -425,6 +486,71 @@ public class AVRedTouchUtil
         return paramAppInfo.red_display_info.red_type_info.get().size() != 0;
       }
     }
+    return false;
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    String str = a(paramInt);
+    if (TextUtils.isEmpty(str))
+    {
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append("clearRedDot falied. appId[");
+      paramVideoAppInterface.append(str);
+      paramVideoAppInterface.append("]");
+      QLog.d("AVRedTouchUtil", 1, paramVideoAppInterface.toString());
+      return;
+    }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = a(paramVideoAppInterface, str);
+    if (a(localAppInfo))
+    {
+      if (("105000.105100".equals(str)) || ("105000.105200".equals(str))) {
+        paramVideoAppInterface.k(a);
+      }
+      paramVideoAppInterface.k(str);
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append("clearRedDot successfully. appId[");
+      paramVideoAppInterface.append(str);
+      paramVideoAppInterface.append("]");
+      QLog.d("AVRedTouchUtil", 1, paramVideoAppInterface.toString());
+      return;
+    }
+    paramVideoAppInterface = new StringBuilder();
+    paramVideoAppInterface.append("clearRedDot falied. appId[");
+    paramVideoAppInterface.append(str);
+    paramVideoAppInterface.append("], appInfo[");
+    paramVideoAppInterface.append(localAppInfo);
+    paramVideoAppInterface.append("], hasRedDot[");
+    paramVideoAppInterface.append(a(localAppInfo));
+    paramVideoAppInterface.append("]");
+    QLog.d("AVRedTouchUtil", 1, paramVideoAppInterface.toString());
+  }
+  
+  private static boolean c(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    String str = a(paramInt);
+    if (TextUtils.isEmpty(str))
+    {
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append("hasRedDot falied. appId = ");
+      paramVideoAppInterface.append(str);
+      QLog.d("AVRedTouchUtil", 1, paramVideoAppInterface.toString());
+      return false;
+    }
+    paramVideoAppInterface = a(paramVideoAppInterface, str);
+    if (a(paramVideoAppInterface)) {
+      return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasRedDot falied. appId = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", appInfo = ");
+    localStringBuilder.append(paramVideoAppInterface);
+    localStringBuilder.append(", hasRedDot = false");
+    QLog.d("AVRedTouchUtil", 1, localStringBuilder.toString());
     return false;
   }
 }

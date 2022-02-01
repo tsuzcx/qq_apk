@@ -70,7 +70,7 @@ public class JSONParseUtils
     return null;
   }
   
-  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  public static JSONObject b(JSONObject paramJSONObject, String... paramVarArgs)
   {
     int i;
     if (paramJSONObject != null) {
@@ -96,7 +96,7 @@ public class JSONParseUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.config.JSONParseUtils
  * JD-Core Version:    0.7.0.1
  */

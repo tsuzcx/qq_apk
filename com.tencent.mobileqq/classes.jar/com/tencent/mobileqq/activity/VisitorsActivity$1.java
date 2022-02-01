@@ -37,7 +37,7 @@ class VisitorsActivity$1
       this.a.b(paramMessage.arg1);
       return;
     case 12: 
-      this.a.jdField_j_of_type_Boolean = false;
+      this.a.ap = false;
       return;
     case 11: 
       int j = paramMessage.arg1;
@@ -52,7 +52,7 @@ class VisitorsActivity$1
         if ((paramMessage != null) && (paramMessage.length == 2))
         {
           j = ((Integer)paramMessage[0]).intValue();
-          localObject = this.a.jdField_a_of_type_ComTencentWidgetSwipListView;
+          localObject = this.a.e;
           int i1 = ((XListView)localObject).getFirstVisiblePosition();
           int i2 = ((XListView)localObject).getLastVisiblePosition();
           if ((j >= i1) && (j <= i2))
@@ -60,40 +60,40 @@ class VisitorsActivity$1
             localObject = ((XListView)localObject).getChildAt(j - i1 + ((XListView)localObject).getHeaderViewsCount());
             if (localObject != null)
             {
-              localObject = (TextView)((View)localObject).findViewById(2131379975);
+              localObject = (TextView)((View)localObject).findViewById(2131448874);
               if (localObject != null)
               {
                 int[] arrayOfInt = new int[2];
                 ((TextView)localObject).getLocationInWindow(arrayOfInt);
                 PraiseInfo localPraiseInfo = (PraiseInfo)paramMessage[1];
-                if (TextUtils.isEmpty(localPraiseInfo.jdField_b_of_type_JavaLangString)) {
+                if (TextUtils.isEmpty(localPraiseInfo.c)) {
                   j = 1;
                 } else {
-                  j = localPraiseInfo.jdField_b_of_type_JavaLangString.length() + 1;
+                  j = localPraiseInfo.c.length() + 1;
                 }
                 if (!TextUtils.isEmpty(((TextView)localObject).getText())) {
                   k = ((TextView)localObject).getText().length() * 2;
                 }
                 float f1 = arrayOfInt[0] + ((TextView)localObject).getWidth() * j / k;
-                float f2 = arrayOfInt[1] - this.a.jdField_j_of_type_Int + ((TextView)localObject).getPaddingTop();
-                if ((n > 0) && (localPraiseInfo.c != null)) {
-                  this.a.jdField_a_of_type_ComTencentMobileqqWidgetNearbyZanAnimLayout.a(localPraiseInfo, localPraiseInfo.c, f1, f2);
+                float f2 = arrayOfInt[1] - this.a.at + ((TextView)localObject).getPaddingTop();
+                if ((n > 0) && (localPraiseInfo.j != null)) {
+                  this.a.ab.a(localPraiseInfo, localPraiseInfo.j, f1, f2);
                 } else {
-                  this.a.jdField_a_of_type_ComTencentMobileqqWidgetNearbyZanAnimLayout.a(localPraiseInfo, localPraiseInfo.jdField_b_of_type_AndroidGraphicsBitmap, f1, f2);
+                  this.a.ab.a(localPraiseInfo, localPraiseInfo.h, f1, f2);
                 }
                 i -= 1;
                 if (i > 0)
                 {
-                  paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(11, i, n, paramMessage);
-                  if (this.a.jdField_a_of_type_JavaUtilRandom == null) {
-                    this.a.jdField_a_of_type_JavaUtilRandom = new Random();
+                  paramMessage = this.a.ar.obtainMessage(11, i, n, paramMessage);
+                  if (this.a.ao == null) {
+                    this.a.ao = new Random();
                   }
-                  i = com.tencent.mobileqq.dating.NewVoteAnimHelper.a[this.a.jdField_a_of_type_JavaUtilRandom.nextInt(com.tencent.mobileqq.dating.NewVoteAnimHelper.a.length)];
-                  this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, i * 5);
+                  i = com.tencent.mobileqq.dating.NewVoteAnimHelper.a[this.a.ao.nextInt(com.tencent.mobileqq.dating.NewVoteAnimHelper.a.length)];
+                  this.a.ar.sendMessageDelayed(paramMessage, i * 5);
                   i = m;
                   break label535;
                 }
-                this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(12, 2000L);
+                this.a.ar.sendEmptyMessageDelayed(12, 2000L);
                 i = m;
                 break label535;
               }
@@ -104,7 +104,7 @@ class VisitorsActivity$1
       i = 1;
       if (i != 0)
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(12, 100L);
+        this.a.ar.sendEmptyMessageDelayed(12, 100L);
         return;
       }
       break;
@@ -113,24 +113,24 @@ class VisitorsActivity$1
       return;
     case 9: 
       paramMessage = (CardProfile)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramMessage);
+      this.a.c.b(paramMessage);
       return;
     case 8: 
       if (QLog.isColorLevel()) {
         QLog.d("VisitorsActivity", 2, "setDataSet fresh fav data");
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
+      this.a.f.a(this.a.d);
+      this.a.f.notifyDataSetChanged();
       return;
     case 7: 
       if (QLog.isColorLevel()) {
         QLog.d("VisitorsActivity", 2, "setDataSet fresh fav data");
       }
-      this.a.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.a(this.a.jdField_b_of_type_JavaUtilArrayList);
-      this.a.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
+      this.a.k.a(this.a.l);
+      this.a.k.notifyDataSetChanged();
       return;
     case 6: 
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.b();
+      this.a.c.b();
       return;
     case 5: 
       paramMessage = paramMessage.obj;
@@ -139,55 +139,55 @@ class VisitorsActivity$1
         localObject = (Object[])paramMessage;
         paramMessage = (ArrayList)localObject[0];
         localObject = (ArrayList)localObject[1];
-        this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMessage);
-        this.a.jdField_b_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+        this.a.d.addAll(paramMessage);
+        this.a.l.addAll((Collection)localObject);
         if (QLog.isColorLevel()) {
           QLog.d("VisitorsActivity", 2, "setDataSet visitor UI_ONINIT");
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.f.a(this.a.d);
         if (QLog.isColorLevel()) {
           QLog.d("VisitorsActivity", 2, "setDataSet favor UI_ONINIT");
         }
-        this.a.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.a(this.a.jdField_b_of_type_JavaUtilArrayList);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
-        this.a.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
+        this.a.k.a(this.a.l);
+        this.a.f.notifyDataSetChanged();
+        this.a.k.notifyDataSetChanged();
       }
       paramMessage = this.a;
-      paramMessage.jdField_h_of_type_Boolean = true;
+      paramMessage.af = true;
       if (!NetworkUtil.isNetSupport(paramMessage))
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1000L);
+        this.a.ar.sendEmptyMessageDelayed(2, 1000L);
         return;
       }
-      this.a.a(true);
+      this.a.b(true);
       return;
     case 4: 
-      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.springBackOverScrollHeaderView();
+      this.a.e.springBackOverScrollHeaderView();
       return;
     case 3: 
-      if (this.a.jdField_h_of_type_Int == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
+      if (this.a.ac == 0) {
+        this.a.f.notifyDataSetChanged();
       } else {
-        this.a.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter.notifyDataSetChanged();
+        this.a.k.notifyDataSetChanged();
       }
-      this.a.e = SystemClock.uptimeMillis();
+      this.a.av = SystemClock.uptimeMillis();
       return;
     case 2: 
       this.a.stopTitleProgress();
-      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.springBackOverScrollHeaderView();
-      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.springBackOverScrollHeaderView();
+      this.a.e.springBackOverScrollHeaderView();
+      this.a.e.springBackOverScrollHeaderView();
       paramMessage = this.a;
-      paramMessage.a(1, paramMessage.getString(2131694424));
+      paramMessage.a(1, paramMessage.getString(2131892104));
       return;
     case 1: 
       label535:
-      this.a.jdField_a_of_type_ComTencentWidgetSwipListView.springBackOverScrollHeaderView();
+      this.a.e.springBackOverScrollHeaderView();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.1
  * JD-Core Version:    0.7.0.1
  */

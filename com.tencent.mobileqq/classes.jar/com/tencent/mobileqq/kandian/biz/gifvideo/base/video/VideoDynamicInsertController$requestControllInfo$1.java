@@ -16,9 +16,9 @@ final class VideoDynamicInsertController$requestControllInfo$1
   {
     QLog.d(this.this$0.a(), 1, "requestControllInfo preloadWatchInfoInMainFeeds");
     RIJFeedsDynamicInsertController localRIJFeedsDynamicInsertController = RIJFeedsDynamicInsertController.INSTANCE;
-    Object localObject = this.this$0.a();
+    Object localObject = this.this$0.c();
     if (localObject != null) {
-      localObject = ((VideoPlayController)localObject).a();
+      localObject = ((VideoPlayController)localObject).k();
     } else {
       localObject = null;
     }
@@ -27,7 +27,7 @@ final class VideoDynamicInsertController$requestControllInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoDynamicInsertController.requestControllInfo.1
  * JD-Core Version:    0.7.0.1
  */

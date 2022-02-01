@@ -29,16 +29,16 @@ public final class AdRequestExtKt
 {
   public static final void a(@Nullable AdRequestData paramAdRequestData, @Nullable JSONObject paramJSONObject)
   {
-    if ((paramAdRequestData != null) && (paramAdRequestData.h == 1))
+    if ((paramAdRequestData != null) && (paramAdRequestData.j == 1))
     {
       if (paramJSONObject != null) {
-        paramJSONObject.put("reqTimeVideoAdload", paramAdRequestData.h);
+        paramJSONObject.put("reqTimeVideoAdload", paramAdRequestData.j);
       }
       if (paramJSONObject != null) {
-        paramJSONObject.put("videoSceneId", paramAdRequestData.i);
+        paramJSONObject.put("videoSceneId", paramAdRequestData.k);
       }
       if (paramJSONObject != null) {
-        paramJSONObject.put("videoTimeAdLoadLastAdPos", paramAdRequestData.j);
+        paramJSONObject.put("videoTimeAdLoadLastAdPos", paramAdRequestData.l);
       }
       ReadInJoyAdLog.a("AdDataLink", "request time load ad");
     }
@@ -46,16 +46,16 @@ public final class AdRequestExtKt
   
   public static final void a(@Nullable AdRequestData paramAdRequestData, @Nullable JSONObject paramJSONObject, int paramInt)
   {
-    if ((paramAdRequestData != null) && (paramAdRequestData.d == 1) && (paramInt == 1))
+    if ((paramAdRequestData != null) && (paramAdRequestData.f == 1) && (paramInt == 1))
     {
       if (paramJSONObject != null) {
-        paramJSONObject.put("videoPatchAdFlag", paramAdRequestData.d);
+        paramJSONObject.put("videoPatchAdFlag", paramAdRequestData.f);
       }
       if (paramJSONObject != null) {
-        paramJSONObject.put("prePatchAdCount", paramAdRequestData.e);
+        paramJSONObject.put("prePatchAdCount", paramAdRequestData.g);
       }
       if (paramJSONObject != null) {
-        paramJSONObject.put("postPatchAdCount", paramAdRequestData.f);
+        paramJSONObject.put("postPatchAdCount", paramAdRequestData.h);
       }
       ReadInJoyAdLog.a("AdDataLink", "request patch ad");
     }
@@ -65,14 +65,14 @@ public final class AdRequestExtKt
   {
     if (paramAdRequestData != null)
     {
-      if ((paramAdRequestData.b) && (paramInt2 == 1))
+      if ((paramAdRequestData.m) && (paramInt2 == 1))
       {
         if (SuperMaskStepUtil.a.a("[REQUEST]", new SuperMaskStep[] { (SuperMaskStep)new LearnModeCheckStep(), (SuperMaskStep)new AladdinCheckStep(), (SuperMaskStep)new ShowIntervalCheckStep(paramInt1), (SuperMaskStep)new PopCheckStep() })) {}
       }
-      else if ((SuperMaskConfigMgr.a.a() != 1) || (!paramAdRequestData.b)) {
+      else if ((SuperMaskConfigMgr.a.c() != 1) || (!paramAdRequestData.m)) {
         return;
       }
-      Object localObject = SuperMaskResMgr.a.a();
+      Object localObject = SuperMaskResMgr.a.b();
       if ((((Map)localObject).isEmpty() ^ true))
       {
         paramAdRequestData = new JSONArray();
@@ -111,10 +111,10 @@ public final class AdRequestExtKt
   
   public static final void b(@Nullable AdRequestData paramAdRequestData, @Nullable JSONObject paramJSONObject, int paramInt)
   {
-    if ((paramAdRequestData != null) && (paramAdRequestData.g == 1) && (paramInt == 1))
+    if ((paramAdRequestData != null) && (paramAdRequestData.i == 1) && (paramInt == 1))
     {
       if (paramJSONObject != null) {
-        paramJSONObject.put("social_card_flag", paramAdRequestData.g);
+        paramJSONObject.put("social_card_flag", paramAdRequestData.i);
       }
       ReadInJoyAdLog.a("AdDataLink", "request social small ad");
     }
@@ -122,7 +122,7 @@ public final class AdRequestExtKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.ext.AdRequestExtKt
  * JD-Core Version:    0.7.0.1
  */

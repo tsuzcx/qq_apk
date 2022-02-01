@@ -16,7 +16,7 @@ import mqq.os.MqqHandler;
 class QQStoryShieldListActivity$1
   extends QQStoryObserver
 {
-  private List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<QQStoryUserInfo> b = new ArrayList();
   
   QQStoryShieldListActivity$1(QQStoryShieldListActivity paramQQStoryShieldListActivity) {}
   
@@ -27,57 +27,57 @@ class QQStoryShieldListActivity$1
   
   public void a(boolean paramBoolean1, List<QQStoryUserInfo> paramList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString)
   {
-    if (!TextUtils.equals(QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity), paramString)) {
+    if (!TextUtils.equals(QQStoryShieldListActivity.a(this.a), paramString)) {
       return;
     }
     if (paramBoolean1)
     {
       if (!paramBoolean2)
       {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        paramList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
+        this.b.addAll(paramList);
+        paramList = this.a.g;
+        if (this.a.a == 2) {
           paramBoolean1 = true;
         } else {
           paramBoolean1 = false;
         }
-        paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity));
+        paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.a));
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(this.jdField_a_of_type_JavaUtilList);
-      paramList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilList = paramList;
+      this.b.addAll(paramList);
+      this.a.a(this.b);
+      paramList = new ArrayList(this.b);
+      if (this.a.a == 2) {
+        this.a.f.z = paramList;
       } else {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_a_of_type_JavaUtilList = paramList;
+        this.a.f.y = paramList;
       }
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.f.A.clear();
       paramArrayOfByte = paramList.iterator();
       while (paramArrayOfByte.hasNext())
       {
         paramString = (QQStoryUserInfo)paramArrayOfByte.next();
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.uin, paramString);
+        this.a.f.A.put(paramString.uin, paramString);
       }
       a(paramList);
-      QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      this.jdField_a_of_type_JavaUtilList.clear();
+      QQStoryShieldListActivity.b(this.a);
+      this.b.clear();
       return;
     }
-    QQStoryShieldListActivity.b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-    this.jdField_a_of_type_JavaUtilList.clear();
+    QQStoryShieldListActivity.c(this.a);
+    this.b.clear();
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
+    this.a.i.b();
     if (paramBoolean1)
     {
-      List localList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramBoolean3);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(localList);
+      List localList = this.a.f.j(paramBoolean3);
+      this.a.a(localList);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity, 2131694712, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getTitleBarHeight());
+    QQToast.makeText(this.a, 2131892409, 0).show(this.a.getTitleBarHeight());
   }
 }
 

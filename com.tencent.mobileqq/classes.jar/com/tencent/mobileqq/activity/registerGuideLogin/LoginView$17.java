@@ -16,9 +16,9 @@ class LoginView$17
   public void onAnimationEnd(Animator paramAnimator)
   {
     paramAnimator = this.a;
-    LoginView.a(paramAnimator, LoginView.b(paramAnimator), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
-    if (this.a.a != null) {
-      this.a.a.e();
+    LoginView.a(paramAnimator, LoginView.f(paramAnimator), LoginView.h(this.a), LoginView.j(this.a), LoginView.l(this.a), 1.0F);
+    if (this.a.k != null) {
+      this.a.k.e();
     }
     LoginView.c(this.a, false);
   }
@@ -29,7 +29,7 @@ class LoginView$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.17
  * JD-Core Version:    0.7.0.1
  */

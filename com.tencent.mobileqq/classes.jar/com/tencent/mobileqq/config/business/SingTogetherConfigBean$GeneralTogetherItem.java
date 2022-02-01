@@ -4,31 +4,24 @@ import org.json.JSONObject;
 
 public class SingTogetherConfigBean$GeneralTogetherItem
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 1;
-  public int d = -1;
-  
-  public SingTogetherConfigBean$GeneralTogetherItem()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public boolean a = false;
+  public boolean b = false;
+  public int c;
+  public int d;
+  public int e = 1;
+  public int f = -1;
+  public String g = "";
   
   public static GeneralTogetherItem a(JSONObject paramJSONObject)
   {
     GeneralTogetherItem localGeneralTogetherItem = new GeneralTogetherItem();
-    localGeneralTogetherItem.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
-    localGeneralTogetherItem.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
-    localGeneralTogetherItem.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
-    localGeneralTogetherItem.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
-    localGeneralTogetherItem.c = paramJSONObject.optInt("version", -1);
-    localGeneralTogetherItem.d = paramJSONObject.optInt("appid", -1);
-    localGeneralTogetherItem.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
+    localGeneralTogetherItem.a = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
+    localGeneralTogetherItem.b = paramJSONObject.optBoolean("show_group_chat_setting", false);
+    localGeneralTogetherItem.c = paramJSONObject.optInt("service_type", -1);
+    localGeneralTogetherItem.d = paramJSONObject.optInt("jumpType", -1);
+    localGeneralTogetherItem.e = paramJSONObject.optInt("version", -1);
+    localGeneralTogetherItem.f = paramJSONObject.optInt("appid", -1);
+    localGeneralTogetherItem.g = paramJSONObject.optString("jumpUrl", "");
     return localGeneralTogetherItem;
   }
   
@@ -36,25 +29,25 @@ public class SingTogetherConfigBean$GeneralTogetherItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showC2CChatSetting=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" showGroupChatSetting=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" serviceType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" jumpType=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" version=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(" appId=");
+    localStringBuilder.append(" jumpType=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(" version=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" appId=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" jumpUrl=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SingTogetherConfigBean.GeneralTogetherItem
  * JD-Core Version:    0.7.0.1
  */

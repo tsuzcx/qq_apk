@@ -15,77 +15,77 @@ import com.tencent.widget.MaxHeightRelativelayout;
 
 public abstract class ForwardPreviewBaseController
 {
-  protected Context a;
   protected View a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected QQCustomDialog a;
-  protected MaxHeightRelativelayout a;
+  protected Context b;
+  protected MaxHeightRelativelayout c;
+  protected QQCustomDialog d;
+  private TextView e;
+  private RelativeLayout f;
+  private ImageView g;
   
   public ForwardPreviewBaseController(QQCustomDialog paramQQCustomDialog)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = paramQQCustomDialog;
-    this.jdField_a_of_type_AndroidContentContext = paramQQCustomDialog.getContext();
+    this.d = paramQQCustomDialog;
+    this.b = paramQQCustomDialog.getContext();
     a();
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(paramQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297115), AIOUtils.b(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
+    this.c.setMaxHeight(Math.max(paramQQCustomDialog.getRootViewHeight() - this.b.getResources().getDimensionPixelSize(2131297496), AIOUtils.b(d(), this.b.getResources())));
   }
-  
-  protected int a()
-  {
-    return 380;
-  }
-  
-  protected abstract View a();
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558959, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380094));
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376667));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368719));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376699));
-    View localView = a();
+    this.a = LayoutInflater.from(this.b).inflate(2131624592, null);
+    this.e = ((TextView)this.a.findViewById(2131449007));
+    this.c = ((MaxHeightRelativelayout)this.a.findViewById(2131444933));
+    this.g = ((ImageView)this.a.findViewById(2131435632));
+    this.f = ((RelativeLayout)this.a.findViewById(2131444979));
+    View localView = c();
     if (localView != null) {
-      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(localView);
+      this.c.addView(localView);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ForwardPreviewBaseController.1(this));
-    int i = ViewUtils.a(15.0F);
-    AIOUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131704872));
+    this.g.setOnClickListener(new ForwardPreviewBaseController.1(this));
+    int i = ViewUtils.dip2px(15.0F);
+    AIOUtils.a(this.g, i, i, i, i);
+    this.g.setContentDescription(HardCodeUtil.a(2131901576));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public View b()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.e.setText(paramString);
   }
   
   public void b()
   {
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.removePreviewView();
+    e();
+    this.d.removePreviewView();
   }
   
-  protected void c() {}
+  protected abstract View c();
   
-  protected void d()
+  protected int d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    return 380;
   }
   
-  protected void e()
+  protected void e() {}
+  
+  public View f()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    return this.a;
+  }
+  
+  protected void g()
+  {
+    this.f.setVisibility(0);
+  }
+  
+  protected void h()
+  {
+    this.f.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewBaseController
  * JD-Core Version:    0.7.0.1
  */

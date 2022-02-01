@@ -18,15 +18,15 @@ public final class RIJUserLevelDenyCallback
   {
     c(paramContext, paramUserLevelInfo);
     RIJUserLevelDialog.DialogSettingInfo localDialogSettingInfo = new RIJUserLevelDialog.DialogSettingInfo();
-    localDialogSettingInfo.jdField_a_of_type_JavaLangString = paramUserLevelInfo.errorDialogTitle;
+    localDialogSettingInfo.a = paramUserLevelInfo.errorDialogTitle;
     localDialogSettingInfo.c = paramUserLevelInfo.errorDialogContent;
-    localDialogSettingInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick = ((RIJUserLevelDialog.DialogClick)new RIJUserLevelDenyCallback.showErrorDialog.1(paramContext, paramUserLevelInfo));
+    localDialogSettingInfo.j = ((RIJUserLevelDialog.DialogClick)new RIJUserLevelDenyCallback.showErrorDialog.1(paramContext, paramUserLevelInfo));
     ReadInJoyUtils.a(paramContext, localDialogSettingInfo);
   }
   
   private final void c(Context paramContext, UserLevelInfo paramUserLevelInfo)
   {
-    String str2 = paramContext.getString(2131699866);
+    String str2 = paramContext.getString(2131897919);
     int i = paramUserLevelInfo.currentOpType;
     String str1;
     if (i != 1)
@@ -35,29 +35,29 @@ public final class RIJUserLevelDenyCallback
       {
         if (i != 3)
         {
-          str1 = paramContext.getString(2131699895);
+          str1 = paramContext.getString(2131897948);
           Intrinsics.checkExpressionValueIsNotNull(str1, "context.getString(R.stri…joy_window_allow_publish)");
         }
         else
         {
-          str2 = paramContext.getString(2131699865);
-          str1 = paramContext.getString(2131699894);
+          str2 = paramContext.getString(2131897918);
+          str1 = paramContext.getString(2131897947);
           Intrinsics.checkExpressionValueIsNotNull(str1, "context.getString(R.stri…dinjoy_window_allow_like)");
         }
       }
       else
       {
-        str1 = paramContext.getString(2131699892);
+        str1 = paramContext.getString(2131897945);
         Intrinsics.checkExpressionValueIsNotNull(str1, "context.getString(R.stri…adinjoy_window_allow_biu)");
       }
     }
     else
     {
-      str1 = paramContext.getString(2131699893);
+      str1 = paramContext.getString(2131897946);
       Intrinsics.checkExpressionValueIsNotNull(str1, "context.getString(R.stri…joy_window_allow_comment)");
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext.getString(2131699854));
+    localStringBuilder.append(paramContext.getString(2131897903));
     localStringBuilder.append(paramUserLevelInfo.level);
     localStringBuilder.append(str1);
     paramUserLevelInfo.errorDialogContent = localStringBuilder.toString();
@@ -73,7 +73,7 @@ public final class RIJUserLevelDenyCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.account.RIJUserLevelDenyCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class QIMPtvTemplateManagerImpl
 {
   public String getDoodleConfigAbsolutePath()
   {
-    return QIMPtvTemplateManager.a.getAbsolutePath();
+    return QIMPtvTemplateManager.e.getAbsolutePath();
   }
   
   public String getTempFaceConfigZip()
@@ -25,12 +25,12 @@ public class QIMPtvTemplateManagerImpl
   
   public boolean isConfigFileExist()
   {
-    return QIMPtvTemplateManager.a();
+    return QIMPtvTemplateManager.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.QIMPtvTemplateManagerImpl
  * JD-Core Version:    0.7.0.1
  */

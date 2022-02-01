@@ -10,14 +10,14 @@ class ChatHistoryC2CDateFragment$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.this$0.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.a, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$2.b, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.b.this$0.t != null) {
+      this.b.this$0.t.a(this.b.a, this.b.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

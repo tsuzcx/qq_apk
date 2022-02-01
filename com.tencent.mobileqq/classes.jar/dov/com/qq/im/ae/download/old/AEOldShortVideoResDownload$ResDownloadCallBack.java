@@ -5,26 +5,28 @@ import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 class AEOldShortVideoResDownload$ResDownloadCallBack
   implements AEOldShortVideoResManager.INet_ShortVideoResource
 {
-  AEOldShortVideoResDownload jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
+  boolean a = true;
   boolean b = true;
   boolean c = true;
+  AEOldShortVideoResDownload d;
+  private String e;
   
   public AEOldShortVideoResDownload$ResDownloadCallBack(String paramString, AEOldShortVideoResDownload paramAEOldShortVideoResDownload)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload = paramAEOldShortVideoResDownload;
+    this.e = paramString;
+    this.d = paramAEOldShortVideoResDownload;
   }
   
   public void a()
   {
-    VideoEnvironment.LogDownLoad(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
+    if ((this.a) && (this.b)) {
+      AEOldShortVideoResDownload.a(this.d);
+    }
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onDownloadFinish| name=");
     localStringBuilder.append(paramString1);
@@ -34,19 +36,19 @@ class AEOldShortVideoResDownload$ResDownloadCallBack
     localStringBuilder.append(paramString2);
     VideoEnvironment.LogDownLoad(str, localStringBuilder.toString(), null);
     if (paramString1.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     } else if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
       this.b = true;
     } else if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
       this.c = true;
     }
-    b();
+    a();
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
     int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("name=");
     localStringBuilder.append(paramString);
@@ -61,14 +63,12 @@ class AEOldShortVideoResDownload$ResDownloadCallBack
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      AEOldShortVideoResDownload.a(this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResDownload);
-    }
+    VideoEnvironment.LogDownLoad(this.e, "onNetWorkNone...", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResDownload.ResDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

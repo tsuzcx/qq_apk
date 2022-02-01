@@ -14,19 +14,19 @@ import java.util.List;
 class OpenSelectPermissionFragment$PermissionAdapter
   extends AgentBaseAdapter
 {
-  List<Permission> jdField_a_of_type_JavaUtilList;
+  List<Permission> a;
   
   private OpenSelectPermissionFragment$PermissionAdapter(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
   public void a(List<Permission> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -35,9 +35,9 @@ class OpenSelectPermissionFragment$PermissionAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.a.get(paramInt);
     }
     return null;
   }
@@ -49,14 +49,14 @@ class OpenSelectPermissionFragment$PermissionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Permission localPermission = (Permission)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Permission localPermission = (Permission)this.a.get(paramInt);
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentOpenAgentOpenSelectPermissionFragment.getQBaseActivity().getLayoutInflater().inflate(2131559679, paramViewGroup, false);
+      localView = this.b.getQBaseActivity().getLayoutInflater().inflate(2131625710, paramViewGroup, false);
       paramView = new OpenSelectPermissionFragment.PermissionViewHolder(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372462));
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131372461));
+      paramView.a = ((TextView)localView.findViewById(2131439984));
+      paramView.b = ((Switch)localView.findViewById(2131439983));
       localView.setTag(paramView);
     }
     else
@@ -65,16 +65,16 @@ class OpenSelectPermissionFragment$PermissionAdapter
       localView = paramView;
       paramView = localPermissionViewHolder;
     }
-    paramView.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(localPermission.b);
-    paramView.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new OpenSelectPermissionFragment.PermissionAdapter.1(this, localPermission));
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localPermission.a);
+    paramView.b.setChecked(localPermission.f);
+    paramView.b.setOnCheckedChangeListener(new OpenSelectPermissionFragment.PermissionAdapter.1(this, localPermission));
+    paramView.a.setText(localPermission.b);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment.PermissionAdapter
  * JD-Core Version:    0.7.0.1
  */

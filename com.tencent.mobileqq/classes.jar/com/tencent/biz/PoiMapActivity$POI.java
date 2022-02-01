@@ -2,24 +2,21 @@ package com.tencent.biz;
 
 public class PoiMapActivity$POI
 {
-  public int a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public int c;
   public String c;
   public String d;
   public String e;
   public String f;
-  public String g;
+  public int g;
   public String h;
   public String i;
+  public String j;
+  public int k;
+  public int l;
+  public boolean m = false;
   
-  public PoiMapActivity$POI(PoiMapActivity paramPoiMapActivity)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public PoiMapActivity$POI(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

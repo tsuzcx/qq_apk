@@ -21,15 +21,15 @@ class InstallStateReceiver$1
     if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.r)))
     {
       DownloadManagerV2.a().a(true);
-      MyAppApi.a().h();
+      MyAppApi.l().o();
     }
     localObject = DownloadManagerV2.a().c(this.b);
-    DownloadManagerV2.a().d((DownloadInfo)localObject);
+    DownloadManagerV2.a().f((DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver.1
  * JD-Core Version:    0.7.0.1
  */

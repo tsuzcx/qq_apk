@@ -5,18 +5,18 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class LayoutInflateProcessor$InflateParams
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LayoutInflateProcessor.OnInflateFinishedListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor$OnInflateFinishedListener;
-  ArrayBlockingQueue jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue;
+  ArrayBlockingQueue a;
   private int b;
+  private int c;
+  private ViewGroup d;
+  private LayoutInflateProcessor.OnInflateFinishedListener e;
   
   public LayoutInflateProcessor$InflateParams(int paramInt1, int paramInt2, ViewGroup paramViewGroup, LayoutInflateProcessor.OnInflateFinishedListener paramOnInflateFinishedListener)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor$OnInflateFinishedListener = paramOnInflateFinishedListener;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramViewGroup;
+    this.e = paramOnInflateFinishedListener;
   }
   
   public LayoutInflateProcessor$InflateParams(int paramInt, ViewGroup paramViewGroup, LayoutInflateProcessor.OnInflateFinishedListener paramOnInflateFinishedListener)
@@ -26,7 +26,7 @@ public class LayoutInflateProcessor$InflateParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.LayoutInflateProcessor.InflateParams
  * JD-Core Version:    0.7.0.1
  */

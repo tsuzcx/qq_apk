@@ -1,7 +1,7 @@
 package com.tencent.liteav.trtc.impl;
 
-import android.os.Handler;
 import com.tencent.liteav.audio.TXCAudioEngine;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.trtc.TRTCCloudDef.TRTCVolumeInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -42,14 +42,14 @@ class TRTCCloudImpl$VolumeLevelNotifyTask
       i = TXCAudioEngine.getMixingPlayoutVolumeLevel();
       ((TRTCCloudImpl)localObject).runOnListenerThread(new TRTCCloudImpl.VolumeLevelNotifyTask.2(this, ((TRTCCloudImpl)localObject).mTRTCListener, localArrayList, i));
       if (((TRTCCloudImpl)localObject).mAudioVolumeEvalInterval > 0) {
-        ((TRTCCloudImpl)localObject).mSDKHandler.postDelayed(TRTCCloudImpl.access$4800((TRTCCloudImpl)localObject), ((TRTCCloudImpl)localObject).mAudioVolumeEvalInterval);
+        ((TRTCCloudImpl)localObject).mSDKHandler.postDelayed(TRTCCloudImpl.access$5500((TRTCCloudImpl)localObject), ((TRTCCloudImpl)localObject).mAudioVolumeEvalInterval);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.VolumeLevelNotifyTask
  * JD-Core Version:    0.7.0.1
  */

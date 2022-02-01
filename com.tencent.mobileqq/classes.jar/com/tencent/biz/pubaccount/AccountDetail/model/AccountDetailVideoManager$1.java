@@ -10,13 +10,13 @@ class AccountDetailVideoManager$1
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.a.start();
+    this.a.g.start();
     new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.1
  * JD-Core Version:    0.7.0.1
  */

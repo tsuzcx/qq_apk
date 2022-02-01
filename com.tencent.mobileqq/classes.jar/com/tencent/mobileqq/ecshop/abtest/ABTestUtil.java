@@ -6,20 +6,13 @@ import com.tencent.mobileqq.ecshop.utils.AppUtils;
 import com.tencent.mobileqq.ecshop.utils.SharedPreferencesUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class ABTestUtil
 {
-  private static final String[] a = { "expQQShopPageStyle" };
-  
-  @Nullable
-  public static ABTestInfo a(String paramString)
-  {
-    return (ABTestInfo)a().get(paramString);
-  }
-  
   public static Map<String, ABTestInfo> a()
   {
     HashMap localHashMap = new HashMap();
@@ -60,17 +53,14 @@ public class ABTestUtil
     try
     {
       paramString = new JSONObject(paramString).optJSONObject("MBucketTest");
-      String[] arrayOfString = a;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
       {
-        String str = arrayOfString[i];
+        String str = (String)localIterator.next();
         JSONObject localJSONObject = paramString.optJSONObject(str);
         if (localJSONObject != null) {
           paramMap.put(str, ABTestInfo.a(localJSONObject));
         }
-        i += 1;
       }
       return;
     }
@@ -79,10 +69,16 @@ public class ABTestUtil
       QLog.e("Ecshop_ABTestUtil", 1, paramMap, new Object[0]);
     }
   }
+  
+  @Nullable
+  public static ABTestInfo b(String paramString)
+  {
+    return (ABTestInfo)a().get(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.abtest.ABTestUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.support.v4.util.LruCache;
 
 public class ExtendLruCache<K, V>
 {
-  private int jdField_a_of_type_Int;
-  private final LruCache<K, V> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  private final LruCache<K, V> a;
   private int b;
+  private int c;
   
   protected int a(K paramK, V paramV)
   {
@@ -23,20 +23,20 @@ public class ExtendLruCache<K, V>
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    int i = this.jdField_a_of_type_Int;
-    float f2 = this.b + i;
+    int i = this.b;
+    float f2 = this.c + i;
     float f1 = 0.0F;
     if (f2 != 0.0F) {
       f1 = i * 100 / f2;
     }
-    Object localObject = String.format("ExtendLruCache[hits=%d,misses=%d,hitRate=%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), String.valueOf(f1) });
-    this.jdField_a_of_type_Int = 0;
+    Object localObject = String.format("ExtendLruCache[hits=%d,misses=%d,hitRate=%s]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.c), String.valueOf(f1) });
     this.b = 0;
+    this.c = 0;
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("\n");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV4UtilLruCache.toString());
-    i = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size() / 1024;
-    int j = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.maxSize() / 1024;
+    localStringBuilder.append(this.a.toString());
+    i = this.a.size() / 1024;
+    int j = this.a.maxSize() / 1024;
     localStringBuilder.append("\n");
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Lru Size Info:");
@@ -50,7 +50,7 @@ public class ExtendLruCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.cache.common.ExtendLruCache
  * JD-Core Version:    0.7.0.1
  */

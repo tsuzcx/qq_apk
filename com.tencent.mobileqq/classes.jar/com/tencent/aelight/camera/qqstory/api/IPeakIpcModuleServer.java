@@ -10,6 +10,14 @@ public abstract interface IPeakIpcModuleServer
 {
   public static final String NAME = "PeakIpcModuleServer";
   
+  public abstract String ACTION_QCIRCLE_PICKER_COST_REPORT();
+  
+  public abstract String ACTION_QCIRCLE_PICKER_EXIT_CANCEL();
+  
+  public abstract String ACTION_QCIRCLE_PICKER_EXIT_NORMAL();
+  
+  public abstract String ACTION_QCIRCLE_PICKER_READY();
+  
   public abstract QIPCModule getPeakIpcModuleServerModule();
 }
 

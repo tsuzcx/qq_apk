@@ -10,58 +10,58 @@ import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 public class IconWordingInfo
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
   public String d;
+  public int e;
+  public String f;
+  public int g;
   
   public static IconWordingInfo a(feeds_info.IconWordingInfo paramIconWordingInfo)
   {
     IconWordingInfo localIconWordingInfo = new IconWordingInfo();
-    localIconWordingInfo.jdField_a_of_type_Int = PBFieldUtils.a(paramIconWordingInfo.uint32_type);
+    localIconWordingInfo.a = PBFieldUtils.a(paramIconWordingInfo.uint32_type);
     if (paramIconWordingInfo.bytes_icon_url.has()) {
-      localIconWordingInfo.jdField_a_of_type_JavaLangString = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
+      localIconWordingInfo.b = paramIconWordingInfo.bytes_icon_url.get().toStringUtf8();
     }
     if (paramIconWordingInfo.bytes_wording.has()) {
-      localIconWordingInfo.jdField_b_of_type_JavaLangString = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
+      localIconWordingInfo.c = paramIconWordingInfo.bytes_wording.get().toStringUtf8();
     }
     if (paramIconWordingInfo.bytes_status_icon_url.has()) {
-      localIconWordingInfo.jdField_c_of_type_JavaLangString = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
+      localIconWordingInfo.d = paramIconWordingInfo.bytes_status_icon_url.get().toStringUtf8();
     }
-    localIconWordingInfo.jdField_b_of_type_Int = PBFieldUtils.a(paramIconWordingInfo.uint32_status);
+    localIconWordingInfo.e = PBFieldUtils.a(paramIconWordingInfo.uint32_status);
     if (paramIconWordingInfo.bytes_status.has()) {
-      localIconWordingInfo.d = paramIconWordingInfo.bytes_status.get().toStringUtf8();
+      localIconWordingInfo.f = paramIconWordingInfo.bytes_status.get().toStringUtf8();
     }
-    localIconWordingInfo.jdField_c_of_type_Int = PBFieldUtils.a(paramIconWordingInfo.uint32_icon_show_mode);
+    localIconWordingInfo.g = PBFieldUtils.a(paramIconWordingInfo.uint32_icon_show_mode);
     return localIconWordingInfo;
   }
   
   public feeds_info.IconWordingInfo a()
   {
     feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
-    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localIconWordingInfo.uint32_type.set(this.a);
+    if (!TextUtils.isEmpty(this.b)) {
+      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.b));
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.c)) {
+      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.c));
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
-    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
     if (!TextUtils.isEmpty(this.d)) {
-      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
+      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    localIconWordingInfo.uint32_status.set(this.e);
+    localIconWordingInfo.uint32_icon_show_mode.set(this.g);
+    if (!TextUtils.isEmpty(this.f)) {
+      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.f));
     }
     return localIconWordingInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.IconWordingInfo
  * JD-Core Version:    0.7.0.1
  */

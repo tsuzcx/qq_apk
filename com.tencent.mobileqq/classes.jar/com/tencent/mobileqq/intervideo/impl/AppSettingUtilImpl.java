@@ -7,12 +7,12 @@ public class AppSettingUtilImpl
 {
   public String getSubVersion()
   {
-    return "8.7.0";
+    return "8.8.17";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.impl.AppSettingUtilImpl
  * JD-Core Version:    0.7.0.1
  */

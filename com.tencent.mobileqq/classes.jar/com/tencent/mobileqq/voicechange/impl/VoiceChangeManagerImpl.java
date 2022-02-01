@@ -257,7 +257,7 @@ public class VoiceChangeManagerImpl
       if ((i == 0) || (!((JSONObject)localObject6).has("QQVersion"))) {
         break label1824;
       }
-      if (((IVoiceChangeTempApi)QRoute.api(IVoiceChangeTempApi.class)).isLaterVersion(((JSONObject)localObject6).getString("QQVersion"), "8.7.0"))
+      if (((IVoiceChangeTempApi)QRoute.api(IVoiceChangeTempApi.class)).isLaterVersion(((JSONObject)localObject6).getString("QQVersion"), "8.8.17"))
       {
         if (!QLog.isColorLevel()) {
           break label1818;
@@ -274,7 +274,7 @@ public class VoiceChangeManagerImpl
       localObject4 = paramAppRuntime;
       if (i == 0)
       {
-        ((VoiceChangeData)localObject5).jdField_b_of_type_Int = i;
+        ((VoiceChangeData)localObject5).d = i;
         paramJSONObject = this;
         paramAppRuntime = (AppRuntime)localObject4;
       }
@@ -312,13 +312,13 @@ public class VoiceChangeManagerImpl
           }
           paramAppRuntime = this;
           paramJSONObject = paramAppRuntime;
-          ((VoiceChangeData)localObject5).jdField_b_of_type_Int = i;
+          ((VoiceChangeData)localObject5).d = i;
           if (1 == i)
           {
             paramJSONObject = paramAppRuntime;
-            ((VoiceChangeData)localObject5).d = 1;
+            ((VoiceChangeData)localObject5).f = 1;
             paramJSONObject = paramAppRuntime;
-            ((VoiceChangeData)localObject5).c = 0;
+            ((VoiceChangeData)localObject5).e = 0;
           }
           else
           {
@@ -330,7 +330,7 @@ public class VoiceChangeManagerImpl
             paramJSONObject = paramAppRuntime;
             i = ((JSONObject)localObject6).getInt((String)localObject8);
             paramJSONObject = paramAppRuntime;
-            ((VoiceChangeData)localObject5).d = i;
+            ((VoiceChangeData)localObject5).f = i;
             paramJSONObject = paramAppRuntime;
             if (!((JSONObject)localObject6).has("tag")) {
               break label1839;
@@ -339,14 +339,14 @@ public class VoiceChangeManagerImpl
             i = ((JSONObject)localObject6).getInt("tag");
             label1178:
             paramJSONObject = paramAppRuntime;
-            ((VoiceChangeData)localObject5).c = i;
+            ((VoiceChangeData)localObject5).e = i;
           }
           localObject6 = localObject3;
           paramJSONObject = paramAppRuntime;
           if (TextUtils.isEmpty(localJSONObject2.getString((String)localObject6)))
           {
             paramJSONObject = paramAppRuntime;
-            localObject6 = ((VoiceChangeData)localObject5).jdField_a_of_type_JavaLangString;
+            localObject6 = ((VoiceChangeData)localObject5).b;
           }
           else
           {
@@ -354,12 +354,12 @@ public class VoiceChangeManagerImpl
             localObject6 = localJSONObject2.getString((String)localObject6);
           }
           paramJSONObject = paramAppRuntime;
-          ((VoiceChangeData)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject6);
+          ((VoiceChangeData)localObject5).b = ((String)localObject6);
           paramJSONObject = paramAppRuntime;
           if (TextUtils.isEmpty(localJSONObject2.getString("description")))
           {
             paramJSONObject = paramAppRuntime;
-            localObject6 = ((VoiceChangeData)localObject5).jdField_b_of_type_JavaLangString;
+            localObject6 = ((VoiceChangeData)localObject5).c;
           }
           else
           {
@@ -367,9 +367,9 @@ public class VoiceChangeManagerImpl
             localObject6 = localJSONObject2.getString("description");
           }
           paramJSONObject = paramAppRuntime;
-          ((VoiceChangeData)localObject5).jdField_b_of_type_JavaLangString = ((String)localObject6);
+          ((VoiceChangeData)localObject5).c = ((String)localObject6);
           paramJSONObject = paramAppRuntime;
-          ((VoiceChangeData)localObject5).jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeData$IconData.jdField_a_of_type_JavaLangString = ((String)localObject7);
+          ((VoiceChangeData)localObject5).g.a = ((String)localObject7);
           paramJSONObject = paramAppRuntime;
           paramAppRuntime = (AppRuntime)localObject4;
         }
@@ -566,26 +566,26 @@ public class VoiceChangeManagerImpl
         }
         return false;
       }
-      if (((VoiceChangeParams)localObject).jdField_a_of_type_Boolean)
+      if (((VoiceChangeParams)localObject).e)
       {
-        ((IVoiceTuneUtil)QRoute.api(IVoiceTuneUtil.class)).deleteOtherTmpFiles(paramString, ((VoiceChangeParams)localObject).jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, ((VoiceChangeParams)localObject).jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.f);
+        ((IVoiceTuneUtil)QRoute.api(IVoiceTuneUtil.class)).deleteOtherTmpFiles(paramString, ((VoiceChangeParams)localObject).a.a, ((VoiceChangeParams)localObject).a.g);
         this.taskStateRecord.remove(paramString);
-        paramIOnCompressFinish.onCompressFinished(paramString, ((VoiceChangeParams)localObject).jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e, ((VoiceChangeParams)localObject).jdField_a_of_type_Int);
+        paramIOnCompressFinish.onCompressFinished(paramString, ((VoiceChangeParams)localObject).a.f, ((VoiceChangeParams)localObject).d);
         if (QLog.isColorLevel())
         {
           paramIOnCompressFinish = new StringBuilder();
           paramIOnCompressFinish.append("queryStateByPath onCompressFinished filePath=");
           paramIOnCompressFinish.append(paramString);
           paramIOnCompressFinish.append(" time=");
-          paramIOnCompressFinish.append(((VoiceChangeParams)localObject).jdField_a_of_type_Int);
+          paramIOnCompressFinish.append(((VoiceChangeParams)localObject).d);
           paramIOnCompressFinish.append(" voiceType=");
-          paramIOnCompressFinish.append(((VoiceChangeParams)localObject).jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams.e);
+          paramIOnCompressFinish.append(((VoiceChangeParams)localObject).a.f);
           QLog.d("VoiceChangeManager", 2, paramIOnCompressFinish.toString());
         }
       }
       else
       {
-        ((VoiceChangeParams)localObject).jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeHelper$IOnCompressFinish = paramIOnCompressFinish;
+        ((VoiceChangeParams)localObject).f = paramIOnCompressFinish;
       }
       return true;
     }
@@ -594,30 +594,30 @@ public class VoiceChangeManagerImpl
   
   public void requestToCancel(VoiceChangeBasicParams paramVoiceChangeBasicParams)
   {
-    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
+    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.a);
     if (localVoiceChangeParams != null)
     {
-      localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.d();
-      this.taskStateRecord.remove(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
+      localVoiceChangeParams.c.d();
+      this.taskStateRecord.remove(paramVoiceChangeBasicParams.a);
     }
   }
   
   public void requestToPause(VoiceChangeBasicParams paramVoiceChangeBasicParams)
   {
-    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
+    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.a);
     if (localVoiceChangeParams != null)
     {
-      localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
-      this.taskStateRecord.remove(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
+      localVoiceChangeParams.c.a = false;
+      this.taskStateRecord.remove(paramVoiceChangeBasicParams.a);
     }
   }
   
   public void requestToSend(Context paramContext, VoiceChangeBasicParams paramVoiceChangeBasicParams, String paramString, IVoiceChangeListener paramIVoiceChangeListener)
   {
-    if ((VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString) == null) {
+    if ((VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.a) == null) {
       requestToStart(paramContext, paramVoiceChangeBasicParams, paramString, paramIVoiceChangeListener);
     }
-    ((VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString)).jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.c();
+    ((VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.a)).c.c();
   }
   
   public void requestToStart(Context paramContext, VoiceChangeBasicParams paramVoiceChangeBasicParams, String paramString, IVoiceChangeListener paramIVoiceChangeListener)
@@ -627,16 +627,16 @@ public class VoiceChangeManagerImpl
   
   public void requestToStart(Context paramContext, VoiceChangeBasicParams paramVoiceChangeBasicParams, String paramString, IVoiceChangeListener paramIVoiceChangeListener, VoiceChangeModeParams paramVoiceChangeModeParams)
   {
-    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString);
+    VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramVoiceChangeBasicParams.a);
     if (localVoiceChangeParams != null) {
-      localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.jdField_a_of_type_Boolean = false;
+      localVoiceChangeParams.c.a = false;
     }
     localVoiceChangeParams = new VoiceChangeParams();
-    localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeBasicParams = paramVoiceChangeBasicParams;
-    localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeVoiceChangeModeParams = paramVoiceChangeModeParams;
-    localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread = new QQVoiceChangerThread(paramContext, paramVoiceChangeBasicParams, paramVoiceChangeModeParams, paramString, paramIVoiceChangeListener);
-    this.taskStateRecord.put(paramVoiceChangeBasicParams.jdField_a_of_type_JavaLangString, localVoiceChangeParams);
-    localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread.start();
+    localVoiceChangeParams.a = paramVoiceChangeBasicParams;
+    localVoiceChangeParams.b = paramVoiceChangeModeParams;
+    localVoiceChangeParams.c = new QQVoiceChangerThread(paramContext, paramVoiceChangeBasicParams, paramVoiceChangeModeParams, paramString, paramIVoiceChangeListener);
+    this.taskStateRecord.put(paramVoiceChangeBasicParams.a, localVoiceChangeParams);
+    localVoiceChangeParams.c.start();
   }
   
   public void voiceChangeEnd(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
@@ -645,10 +645,10 @@ public class VoiceChangeManagerImpl
     VoiceChangeParams localVoiceChangeParams = (VoiceChangeParams)this.taskStateRecord.get(paramString1);
     if (localVoiceChangeParams != null)
     {
-      if (localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeHelper$IOnCompressFinish != null)
+      if (localVoiceChangeParams.f != null)
       {
         ((IVoiceTuneUtil)QRoute.api(IVoiceTuneUtil.class)).deleteOtherTmpFiles(paramString1, paramString2, paramInt2);
-        localVoiceChangeParams.jdField_a_of_type_ComTencentMobileqqVoicechangeIVoiceChangeHelper$IOnCompressFinish.onCompressFinished(paramString1, paramInt3, paramInt1);
+        localVoiceChangeParams.f.onCompressFinished(paramString1, paramInt3, paramInt1);
         if (QLog.isColorLevel())
         {
           paramString2 = new StringBuilder();
@@ -663,14 +663,14 @@ public class VoiceChangeManagerImpl
         this.taskStateRecord.remove(paramString1);
         return;
       }
-      localVoiceChangeParams.jdField_a_of_type_Boolean = true;
-      localVoiceChangeParams.jdField_a_of_type_Int = paramInt1;
+      localVoiceChangeParams.e = true;
+      localVoiceChangeParams.d = paramInt1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.impl.VoiceChangeManagerImpl
  * JD-Core Version:    0.7.0.1
  */

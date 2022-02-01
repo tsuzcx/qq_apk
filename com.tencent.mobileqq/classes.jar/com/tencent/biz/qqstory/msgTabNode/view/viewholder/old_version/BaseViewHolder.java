@@ -12,26 +12,21 @@ import java.util.List;
 public class BaseViewHolder
   extends com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder<MsgTabNodeInfo>
 {
-  protected ImageView a;
-  protected TextView a;
-  protected RotateCircleImageView a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c = (ImageView)a(2131376272);
+  protected RotateCircleImageView a = (RotateCircleImageView)a(2131430724);
+  protected ImageView b = (ImageView)a(2131434889);
+  protected ImageView c = (ImageView)a(2131446694);
+  protected TextView d = (TextView)a(2131447463);
+  protected TextView e = (TextView)a(2131444481);
+  protected ImageView f = (ImageView)a(2131444480);
   
   public BaseViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131364638));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131368041));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131378180));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378784));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376273));
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+    this.a.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
     int[] arrayOfInt = new int[paramInt1];
     int i = 0;
     while (i < paramInt1)
@@ -43,19 +38,19 @@ public class BaseViewHolder
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(arrayOfInt);
+    this.a.setBorderColors(arrayOfInt);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    if ((paramMsgTabNodeInfo.a != null) && (!paramMsgTabNodeInfo.a.isEmpty())) {
-      a(paramMsgTabNodeInfo.a.size(), paramMsgTabNodeInfo.b);
+    if ((paramMsgTabNodeInfo.e != null) && (!paramMsgTabNodeInfo.e.isEmpty())) {
+      a(paramMsgTabNodeInfo.e.size(), paramMsgTabNodeInfo.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.BaseViewHolder
  * JD-Core Version:    0.7.0.1
  */

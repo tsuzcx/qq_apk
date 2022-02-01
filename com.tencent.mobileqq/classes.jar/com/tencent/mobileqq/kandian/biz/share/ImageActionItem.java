@@ -10,17 +10,17 @@ public final class ImageActionItem
 {
   @JvmField
   @NotNull
-  public String b;
+  public String d;
   
   public ImageActionItem(@NotNull String paramString1, int paramInt, boolean paramBoolean, @NotNull String paramString2)
   {
     super(paramString1, paramInt, paramBoolean);
-    this.b = paramString2;
+    this.d = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ImageActionItem
  * JD-Core Version:    0.7.0.1
  */

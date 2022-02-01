@@ -26,8 +26,8 @@ import org.jetbrains.annotations.NotNull;
 public class VipProcessor
   extends AbsProfileCommonProcessor
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 23105, 23106, 23107 };
-  private long jdField_a_of_type_Long = 0L;
+  private static final int[] a = { 23105, 23106, 23107 };
+  private long b = 0L;
   
   public VipProcessor(AppRuntime paramAppRuntime)
   {
@@ -84,8 +84,8 @@ public class VipProcessor
   
   private void a(ByteStringMicro paramByteStringMicro, FriendsManager paramFriendsManager, Friends paramFriends)
   {
-    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.jdField_a_of_type_Long));
-    paramFriendsManager.a(a(paramByteStringMicro, paramFriends));
+    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.b));
+    paramFriendsManager.b(a(paramByteStringMicro, paramFriends));
     if (bool)
     {
       a();
@@ -173,8 +173,8 @@ public class VipProcessor
   
   private void b(ByteStringMicro paramByteStringMicro, FriendsManager paramFriendsManager, Friends paramFriends)
   {
-    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.jdField_a_of_type_Long));
-    paramFriendsManager.a(b(paramByteStringMicro, paramFriends));
+    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.b));
+    paramFriendsManager.b(b(paramByteStringMicro, paramFriends));
     if (bool) {
       a();
     }
@@ -190,7 +190,7 @@ public class VipProcessor
   
   private void c(ByteStringMicro paramByteStringMicro, FriendsManager paramFriendsManager, Friends paramFriends)
   {
-    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.jdField_a_of_type_Long));
+    boolean bool = this.appRuntime.getCurrentAccountUin().equals(Long.toString(this.b));
     paramFriends = (Friends)paramFriends.clone();
     int i;
     if ((paramByteStringMicro.byteAt(5) & 0x20) != 0) {
@@ -199,7 +199,7 @@ public class VipProcessor
       i = 0;
     }
     paramFriends.superVipInfo = (i << 24 | paramFriends.superVipInfo & 0xFFFFFF);
-    paramFriendsManager.a(paramFriends);
+    paramFriendsManager.b(paramFriends);
     if (bool)
     {
       a();
@@ -209,9 +209,9 @@ public class VipProcessor
   
   private void d()
   {
-    QVipConfigManager.a(this.appRuntime, "last_pull_pay_rule", 0L);
+    QVipConfigManager.b(this.appRuntime, "last_pull_pay_rule", 0L);
     String str = ((TicketManager)this.appRuntime.getManager(2)).getSkey(this.appRuntime.getCurrentAccountUin());
-    ((VipInfoHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, Long.toString(this.jdField_a_of_type_Long));
+    ((VipInfoHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a(str, Long.toString(this.b));
   }
   
   public String getProcessorKey()
@@ -221,7 +221,7 @@ public class VipProcessor
   
   public boolean interceptProfileModifyPush(int paramInt)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -240,18 +240,18 @@ public class VipProcessor
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onProcessProfileModifyPush uin = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(" type = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" value = ");
       ((StringBuilder)localObject).append(Arrays.toString(paramByteStringMicro.toByteArray()));
       QLog.d("VipProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Long <= 0L) {
+    if (this.b <= 0L) {
       return;
     }
     Object localObject = (FriendsManager)this.appRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Friends localFriends = ((FriendsManager)localObject).e(String.valueOf(this.jdField_a_of_type_Long));
+    Friends localFriends = ((FriendsManager)localObject).m(String.valueOf(this.b));
     if (localFriends == null) {
       return;
     }
@@ -271,17 +271,17 @@ public class VipProcessor
   
   public void onProcessProfileModifyPushBegin(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void onProcessProfileModifyPushEnd()
   {
-    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.VipProcessor
  * JD-Core Version:    0.7.0.1
  */

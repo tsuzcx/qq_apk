@@ -29,27 +29,27 @@ public class FacePreloadBaseAdapterHelperImpl
     paramEntity = (RelationTroopEntity)paramEntity;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramContext).inflate(2131560455, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramContext).inflate(2131626500, paramViewGroup, false);
       paramViewGroup = new SelectBuddyChildTag();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368343));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131371697));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364613));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379859);
+      paramViewGroup.A = ((ImageView)paramView.findViewById(2131435219));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131439121));
+      paramViewGroup.g = ((CheckBox)paramView.findViewById(2131430688));
+      paramViewGroup.a = paramView.findViewById(2131448716);
       if (paramOnClickListener != null) {
         paramView.setOnClickListener(paramOnClickListener);
       }
-      paramView.findViewById(2131379732).setVisibility(8);
+      paramView.findViewById(2131448537).setVisibility(8);
       paramView.setTag(paramViewGroup);
     }
     else
     {
       paramViewGroup = (SelectBuddyChildTag)paramView.getTag();
-      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      paramViewGroup.e.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_JavaLangObject = paramEntity;
-    paramViewGroup.jdField_a_of_type_JavaLangString = paramEntity.troopInfo.troopuin;
+    paramViewGroup.g.setVisibility(8);
+    paramViewGroup.a.setVisibility(8);
+    paramViewGroup.h = paramEntity;
+    paramViewGroup.y = paramEntity.troopInfo.troopuin;
     int i;
     if (paramEntity.troopInfo.hasSetTroopHead()) {
       i = 4;
@@ -57,9 +57,9 @@ public class FacePreloadBaseAdapterHelperImpl
       i = 113;
     }
     paramContext = FaceDrawable.getFaceDrawable(this.mApp, i, paramEntity.troopInfo.troopuin, 3, FaceDrawable.getDefaultDrawable(4, 3), FaceDrawable.getDefaultDrawable(4, 3));
-    paramViewGroup.c.setImageDrawable(paramContext);
+    paramViewGroup.A.setImageDrawable(paramContext);
     paramContext = paramEntity.troopInfo.getTroopDisplayName();
-    paramViewGroup.d.setText(paramContext);
+    paramViewGroup.e.setText(paramContext);
     return paramView;
   }
   
@@ -68,27 +68,27 @@ public class FacePreloadBaseAdapterHelperImpl
     paramEntity = (RelationTroopEntity)paramEntity;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramContext).inflate(2131560455, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramContext).inflate(2131626500, paramViewGroup, false);
       paramViewGroup = new ContactListAdapter.SelectBuddyChildTag();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368343));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131371697));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364613));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379859);
+      paramViewGroup.A = ((ImageView)paramView.findViewById(2131435219));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131439121));
+      paramViewGroup.g = ((CheckBox)paramView.findViewById(2131430688));
+      paramViewGroup.a = paramView.findViewById(2131448716);
       if (paramOnClickListener != null) {
         paramView.setOnClickListener(paramOnClickListener);
       }
-      paramView.findViewById(2131379732).setVisibility(8);
+      paramView.findViewById(2131448537).setVisibility(8);
       paramView.setTag(paramViewGroup);
     }
     else
     {
       paramViewGroup = (ContactListAdapter.SelectBuddyChildTag)paramView.getTag();
-      paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      paramViewGroup.e.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    paramViewGroup.jdField_a_of_type_JavaLangObject = paramEntity;
-    paramViewGroup.jdField_a_of_type_JavaLangString = paramEntity.troopInfo.troopuin;
+    paramViewGroup.g.setVisibility(8);
+    paramViewGroup.a.setVisibility(8);
+    paramViewGroup.h = paramEntity;
+    paramViewGroup.y = paramEntity.troopInfo.troopuin;
     int i;
     if (paramEntity.troopInfo.hasSetTroopHead()) {
       i = 4;
@@ -96,9 +96,9 @@ public class FacePreloadBaseAdapterHelperImpl
       i = 113;
     }
     paramContext = FaceDrawable.getFaceDrawable(this.mApp, i, paramEntity.troopInfo.troopuin, 3, FaceDrawable.getDefaultDrawable(4, 3), FaceDrawable.getDefaultDrawable(4, 3));
-    paramViewGroup.c.setImageDrawable(paramContext);
+    paramViewGroup.A.setImageDrawable(paramContext);
     paramContext = paramEntity.troopInfo.getTroopDisplayName();
-    paramViewGroup.d.setText(paramContext);
+    paramViewGroup.e.setText(paramContext);
     return paramView;
   }
   
@@ -111,7 +111,7 @@ public class FacePreloadBaseAdapterHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.FacePreloadBaseAdapterHelperImpl
  * JD-Core Version:    0.7.0.1
  */

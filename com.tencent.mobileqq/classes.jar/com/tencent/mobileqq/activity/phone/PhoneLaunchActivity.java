@@ -19,17 +19,17 @@ public class PhoneLaunchActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
   public ContactBindObserver a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private Button b;
   private boolean c = false;
   private boolean d = false;
   private boolean e = false;
+  private boolean f = false;
+  private boolean g = false;
   
   private void b()
   {
-    ContactUtils.a(2);
+    ContactUtils.d(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -61,7 +61,7 @@ public class PhoneLaunchActivity
         finish();
       }
     }
-    else if ((paramInt2 == 2) && (this.jdField_a_of_type_Boolean) && (this.mPhoneContactService.isBindContactOk())) {
+    else if ((paramInt2 == 2) && (this.c) && (this.mPhoneContactService.isBindContactOk())) {
       finish();
     }
   }
@@ -71,29 +71,29 @@ public class PhoneLaunchActivity
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
     boolean bool = getIntent().hasExtra("needAlert");
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromStopAndMatch", false);
-    this.b = getIntent().getBooleanExtra("fromCall", false);
-    this.c = getIntent().getBooleanExtra("fromPermiPriv", false);
-    this.d = getIntent().getBooleanExtra("fromAVCallInvite", false);
-    this.e = getIntent().getBooleanExtra("returnAndFinish", false);
+    this.c = getIntent().getBooleanExtra("fromStopAndMatch", false);
+    this.d = getIntent().getBooleanExtra("fromCall", false);
+    this.e = getIntent().getBooleanExtra("fromPermiPriv", false);
+    this.f = getIntent().getBooleanExtra("fromAVCallInvite", false);
+    this.g = getIntent().getBooleanExtra("returnAndFinish", false);
     if ((!bool) && (paramBundle == null))
     {
       finish();
       return false;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", HardCodeUtil.a(2131708011));
+        getIntent().putExtra("leftViewText", HardCodeUtil.a(2131905820));
       }
     }
     else {
-      getIntent().putExtra("leftViewText", HardCodeUtil.a(2131708013));
+      getIntent().putExtra("leftViewText", HardCodeUtil.a(2131905822));
     }
-    setContentView(2131559548);
-    setTitle(HardCodeUtil.a(2131708007));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372509));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    setContentView(2131625570);
+    setTitle(HardCodeUtil.a(2131905816));
+    this.b = ((Button)findViewById(2131440033));
+    this.b.setOnClickListener(this);
     if (getIntent().getBooleanExtra("k_start_number", false)) {
       b();
     }
@@ -103,14 +103,14 @@ public class PhoneLaunchActivity
   public void finish()
   {
     super.finish();
-    if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130772004, 2130772344);
+    if (!this.c) {
+      overridePendingTransition(2130772007, 2130772436);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.b)
     {
       int i = this.mPhoneContactService.getSelfBindState();
       if ((i != 1) && (i != 2) && (i != 3) && (i != 4))
@@ -123,18 +123,18 @@ public class PhoneLaunchActivity
         }
         else if (i == 7)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+          this.b.setEnabled(false);
           a();
         }
         else
         {
-          showConfirmFinish(HardCodeUtil.a(2131708009), HardCodeUtil.a(2131708008));
+          showConfirmFinish(HardCodeUtil.a(2131905818), HardCodeUtil.a(2131905817));
         }
       }
       else {
         b();
       }
-      if (this.d) {
+      if (this.f) {
         ReportController.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
       }
     }
@@ -154,7 +154,7 @@ public class PhoneLaunchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity
  * JD-Core Version:    0.7.0.1
  */

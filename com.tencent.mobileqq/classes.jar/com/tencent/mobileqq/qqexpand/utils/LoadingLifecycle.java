@@ -16,9 +16,12 @@ public final class LoadingLifecycle
     this.a = paramOnApplicationBackgroundListener;
   }
   
-  public void G_() {}
+  public final void a()
+  {
+    this.a = ((OnApplicationBackgroundListener)null);
+  }
   
-  public void H_()
+  public void onApplicationBackground()
   {
     OnApplicationBackgroundListener localOnApplicationBackgroundListener = this.a;
     if (localOnApplicationBackgroundListener != null) {
@@ -26,22 +29,19 @@ public final class LoadingLifecycle
     }
   }
   
-  public void a(long paramLong) {}
+  public void onApplicationForeground() {}
   
-  public void a(boolean paramBoolean) {}
+  public void onBackgroundTimeTick(long paramLong) {}
   
-  public void b(long paramLong) {}
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
   
-  public final void c()
-  {
-    this.a = ((OnApplicationBackgroundListener)null);
-  }
+  public void onLiteTimeTick(long paramLong) {}
   
-  public void c(long paramLong) {}
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.LoadingLifecycle
  * JD-Core Version:    0.7.0.1
  */

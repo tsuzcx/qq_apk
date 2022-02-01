@@ -14,9 +14,9 @@ class GuessSongGameRecordCtrl$4
   
   public void run()
   {
-    if (this.this$0.d())
+    if (this.this$0.k())
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       float f1 = (i >> 16 & 0xFF) / 255.0F;
       float f2 = (i >> 8 & 0xFF) / 255.0F;
       float f3 = (i & 0xFF) / 255.0F;
@@ -26,16 +26,16 @@ class GuessSongGameRecordCtrl$4
       } else {
         this.this$0.a(false, 0.0F, 0.0F, 0.0F, 0.0F);
       }
-      this.jdField_a_of_type_AndroidViewView.destroyDrawingCache();
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
+      this.b.destroyDrawingCache();
+      Bitmap localBitmap = this.b.getDrawingCache();
       if (localBitmap != null)
       {
-        Context localContext = (Context)this.this$0.a.get();
+        Context localContext = (Context)this.this$0.e.get();
         if (localContext != null)
         {
           f1 = 720.0F / localContext.getResources().getDisplayMetrics().widthPixels;
-          i = (int)(this.jdField_a_of_type_AndroidViewView.getWidth() * f1);
-          int j = (int)(this.jdField_a_of_type_AndroidViewView.getHeight() * f1);
+          i = (int)(this.b.getWidth() * f1);
+          int j = (int)(this.b.getHeight() * f1);
           int k = (720 - i) / 2;
           int m = (720 - j) / 2;
           this.this$0.b(localBitmap, i, j, k, m);

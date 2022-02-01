@@ -20,42 +20,23 @@ import org.json.JSONObject;
 
 public class PTSStyleManager
 {
-  private static volatile PTSStyleManager jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSStyleManager;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "native_article", "default_feeds" };
-  private HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, Boolean> b = new HashMap();
-  
-  private int a(String paramString1, String paramString2)
-  {
-    paramString1 = b(paramString1);
-    paramString2 = b(paramString2);
-    int j = Math.min(paramString1.size(), paramString2.size());
-    int i = 0;
-    while (i < j)
-    {
-      if (((Integer)paramString1.get(i)).intValue() > ((Integer)paramString2.get(i)).intValue()) {
-        return 1;
-      }
-      if (((Integer)paramString1.get(i)).intValue() < ((Integer)paramString2.get(i)).intValue()) {
-        return -1;
-      }
-      i += 1;
-    }
-    return 0;
-  }
+  private static volatile PTSStyleManager a;
+  private static final String[] b = { "native_article", "default_feeds" };
+  private HashMap<String, List<String>> c = new HashMap();
+  private HashMap<String, Boolean> d = new HashMap();
   
   public static PTSStyleManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSStyleManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSStyleManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSStyleManager = new PTSStyleManager();
+        if (a == null) {
+          a = new PTSStyleManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoPtsPTSStyleManager;
+    return a;
   }
   
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -79,21 +60,23 @@ public class PTSStyleManager
     return null;
   }
   
-  private String a(String paramString)
+  private void a(String paramString, boolean paramBoolean)
   {
-    String str;
-    if (TextUtils.equals(paramString, "native_article")) {
-      str = RIJProteusOfflineBidSp.a("native_proteus_offline_bid");
-    } else {
-      str = "";
+    Object localObject = PTSFileUtil.getFileContent(paramString, BaseApplicationImpl.getContext(), paramBoolean);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramBoolean = c((String)localObject, "8.8.17");
+      this.d.put(paramString, Boolean.valueOf(paramBoolean));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[checkFrameTreeVersion] frameTreeJsonPath = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("isValid = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("PTSStyleManager", 1, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.equals(paramString, "default_feeds")) {
-      str = RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid");
-    }
-    return str;
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     if (localBaseApplication != null)
@@ -164,7 +147,7 @@ public class PTSStyleManager
           if (PTSFileUtil.isFileInMap((String)localObject3))
           {
             a((String)localObject3, true);
-            a(str, paramString);
+            b(str, paramString);
             if ((QLog.isColorLevel()) || (QLog.isDebugVersion()))
             {
               localStringBuilder1 = new StringBuilder();
@@ -189,9 +172,9 @@ public class PTSStyleManager
     }
   }
   
-  private void a(String paramString1, String paramString2)
+  private void b(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.c;
     if (localObject == null) {
       return;
     }
@@ -200,100 +183,19 @@ public class PTSStyleManager
     if (localList == null)
     {
       localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, localObject);
+      this.c.put(paramString2, localObject);
     }
     ((List)localObject).add(paramString1);
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  private void c(String paramString)
   {
-    Object localObject = PTSFileUtil.getFileContent(paramString, BaseApplicationImpl.getContext(), paramBoolean);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramBoolean = a((String)localObject, "8.7.0");
-      this.b.put(paramString, Boolean.valueOf(paramBoolean));
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[checkFrameTreeVersion] frameTreeJsonPath = ");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("isValid = ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      QLog.i("PTSStyleManager", 1, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      Object localObject = new JSONObject(paramString1);
-      paramString1 = ((JSONObject)localObject).optString("max_version", "");
-      localObject = ((JSONObject)localObject).optString("min_version", "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[isVersionValid] currentVersion = ");
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append(", minVersion = ");
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(", maxVersion = ");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(", timeCost = ");
-      localStringBuilder.append(System.currentTimeMillis() - l);
-      PTSLog.i("PTSStyleManager", localStringBuilder.toString());
-      if ((!TextUtils.isEmpty(paramString1)) && (a(paramString2, paramString1) > 0)) {
-        return false;
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        int i = a(paramString2, (String)localObject);
-        if (i < 0) {
-          return false;
-        }
-      }
-    }
-    catch (JSONException paramString1)
-    {
-      paramString2 = new StringBuilder();
-      paramString2.append("[isVersionValid] e = ");
-      paramString2.append(paramString1);
-      PTSLog.e("PTSStyleManager", paramString2.toString());
-    }
-    return true;
-  }
-  
-  private List<Integer> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    paramString = paramString.split("\\.");
-    int i = 0;
-    while (i < paramString.length)
-    {
-      try
-      {
-        localArrayList.add(Integer.valueOf(Integer.parseInt(paramString[i])));
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[getVersionArray] e =");
-        localStringBuilder.append(localException);
-        PTSLog.e("PTSStyleManager", localStringBuilder.toString());
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  private void b(String paramString)
-  {
-    Object localObject1 = a(paramString);
+    Object localObject1 = d(paramString);
     Object localObject2;
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("0")))
     {
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(OfflineEnvHelper.a((String)localObject1));
+      ((StringBuilder)localObject2).append(OfflineEnvHelper.b((String)localObject1));
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject1 = ((StringBuilder)localObject2).toString();
       localObject2 = new StringBuilder();
@@ -309,8 +211,8 @@ public class PTSStyleManager
       QLog.i("PTSStyleManager", 1, ((StringBuilder)localObject2).toString());
     }
     int i;
-    label464:
-    label480:
+    label459:
+    label475:
     for (;;)
     {
       try
@@ -322,7 +224,7 @@ public class PTSStyleManager
           int j = localObject2.length;
           i = 0;
           if (i >= j) {
-            break label464;
+            break label459;
           }
           str = localObject2[i].getName();
           localObject3 = new StringBuilder();
@@ -367,7 +269,7 @@ public class PTSStyleManager
       if (PTSFileUtil.isFileInMap((String)localObject3))
       {
         a((String)localObject3, false);
-        a(str, paramString);
+        b(str, paramString);
         if ((QLog.isColorLevel()) || (QLog.isDebugVersion()))
         {
           localStringBuilder1 = new StringBuilder();
@@ -376,7 +278,7 @@ public class PTSStyleManager
           localStringBuilder1.append(", frameTreeJsonPath = ");
           localStringBuilder1.append((String)localObject3);
           QLog.i("PTSStyleManager", 2, localStringBuilder1.toString());
-          break label480;
+          break label475;
           QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], pages directory does not exists.");
           return;
           return;
@@ -387,15 +289,113 @@ public class PTSStyleManager
     }
   }
   
+  private boolean c(String paramString1, String paramString2)
+  {
+    try
+    {
+      long l = System.currentTimeMillis();
+      Object localObject = new JSONObject(paramString1);
+      paramString1 = ((JSONObject)localObject).optString("max_version", "");
+      localObject = ((JSONObject)localObject).optString("min_version", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[isVersionValid] currentVersion = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", minVersion = ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", maxVersion = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", timeCost = ");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      PTSLog.i("PTSStyleManager", localStringBuilder.toString());
+      if ((!TextUtils.isEmpty(paramString1)) && (d(paramString2, paramString1) > 0)) {
+        return false;
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        int i = d(paramString2, (String)localObject);
+        if (i < 0) {
+          return false;
+        }
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("[isVersionValid] e = ");
+      paramString2.append(paramString1);
+      PTSLog.e("PTSStyleManager", paramString2.toString());
+    }
+    return true;
+  }
+  
+  private int d(String paramString1, String paramString2)
+  {
+    paramString1 = e(paramString1);
+    paramString2 = e(paramString2);
+    int j = Math.min(paramString1.size(), paramString2.size());
+    int i = 0;
+    while (i < j)
+    {
+      if (((Integer)paramString1.get(i)).intValue() > ((Integer)paramString2.get(i)).intValue()) {
+        return 1;
+      }
+      if (((Integer)paramString1.get(i)).intValue() < ((Integer)paramString2.get(i)).intValue()) {
+        return -1;
+      }
+      i += 1;
+    }
+    return 0;
+  }
+  
+  private String d(String paramString)
+  {
+    String str;
+    if (TextUtils.equals(paramString, "native_article")) {
+      str = RIJProteusOfflineBidSp.a("native_proteus_offline_bid");
+    } else {
+      str = "";
+    }
+    if (TextUtils.equals(paramString, "default_feeds")) {
+      str = RIJProteusOfflineBidSp.a("default_feeds_proteus_offline_bid");
+    }
+    return str;
+  }
+  
+  private List<Integer> e(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
+    }
+    paramString = paramString.split("\\.");
+    int i = 0;
+    while (i < paramString.length)
+    {
+      try
+      {
+        localArrayList.add(Integer.valueOf(Integer.parseInt(paramString[i])));
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[getVersionArray] e =");
+        localStringBuilder.append(localException);
+        PTSLog.e("PTSStyleManager", localStringBuilder.toString());
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
   public String a(String paramString1, String paramString2)
   {
     boolean bool = TextUtils.isEmpty(paramString1);
     Object localObject2 = "";
     if ((!bool) && (!TextUtils.isEmpty(paramString2)))
     {
-      Object localObject1 = a(paramString1);
+      Object localObject1 = d(paramString1);
       Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(OfflineEnvHelper.a((String)localObject1));
+      ((StringBuilder)localObject3).append(OfflineEnvHelper.b((String)localObject1));
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(File.separator);
       ((StringBuilder)localObject3).append("pages");
@@ -403,7 +403,7 @@ public class PTSStyleManager
       if (PTSFileUtil.isFileInMap((String)localObject4))
       {
         localObject3 = PTSFileUtil.getFileContent((String)localObject4, null, false);
-        Boolean localBoolean = (Boolean)this.b.get(localObject4);
+        Boolean localBoolean = (Boolean)this.d.get(localObject4);
         localObject1 = localObject3;
         if (localBoolean != null)
         {
@@ -433,7 +433,7 @@ public class PTSStyleManager
         if (PTSFileUtil.isFileInMap((String)localObject3))
         {
           localObject1 = PTSFileUtil.getFileContent((String)localObject3, BaseApplicationImpl.getContext(), true);
-          localObject4 = (Boolean)this.b.get(localObject3);
+          localObject4 = (Boolean)this.d.get(localObject3);
           if ((localObject4 != null) && (!((Boolean)localObject4).booleanValue()))
           {
             localObject1 = new StringBuilder();
@@ -462,30 +462,30 @@ public class PTSStyleManager
   
   public List<String> a(String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.c;
     if (localHashMap == null) {
       return null;
     }
     return (List)localHashMap.get(paramString);
   }
   
-  public void a()
+  public void b()
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = b;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
-      a(str);
       b(str);
+      c(str);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.PTSStyleManager
  * JD-Core Version:    0.7.0.1
  */

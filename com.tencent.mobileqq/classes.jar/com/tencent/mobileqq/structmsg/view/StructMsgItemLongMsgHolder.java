@@ -39,21 +39,21 @@ public class StructMsgItemLongMsgHolder
     paramContext = new TextView(paramContext);
     if (i != 0)
     {
-      ((ImageView)localObject).setImageResource(2130841746);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696429));
+      ((ImageView)localObject).setImageResource(2130842663);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131894201));
     }
     else
     {
-      ((ImageView)localObject).setImageResource(2130841745);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696428));
+      ((ImageView)localObject).setImageResource(2130842662);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131894200));
     }
-    ((ImageView)localObject).setId(2131377980);
+    ((ImageView)localObject).setId(2131446467);
     ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(AIOUtils.b(23.5F, paramOnLongClickAndTouchListener), AIOUtils.b(22.5F, paramOnLongClickAndTouchListener)));
     paramBundle.addView((View)localObject);
     paramContext.setTextSize(2, 14.0F);
     paramContext.setTextColor(Color.parseColor("#777777"));
     localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131377980);
+    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131446467);
     ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(7.5F, paramOnLongClickAndTouchListener);
     paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
     return paramView;
@@ -61,7 +61,7 @@ public class StructMsgItemLongMsgHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLongMsgHolder
  * JD-Core Version:    0.7.0.1
  */

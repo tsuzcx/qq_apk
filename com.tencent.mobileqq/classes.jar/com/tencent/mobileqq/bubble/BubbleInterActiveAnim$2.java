@@ -11,14 +11,14 @@ class BubbleInterActiveAnim$2
   
   public void run()
   {
-    Object localObject1 = AIOUtils.a(AIOUtils.a(BubbleInterActiveAnim.a(this.this$0), AIOUtils.a(this.a, BubbleInterActiveAnim.b(this.this$0).getAdapter())));
+    Object localObject1 = AIOUtils.b(AIOUtils.a(BubbleInterActiveAnim.a(this.this$0), AIOUtils.a(this.a, BubbleInterActiveAnim.b(this.this$0).getAdapter())));
     Object localObject3 = null;
     if ((localObject1 != null) && ((localObject1 instanceof BaseBubbleBuilder.ViewHolder))) {
       localObject1 = (BaseBubbleBuilder.ViewHolder)localObject1;
     } else {
       localObject1 = null;
     }
-    Object localObject4 = AIOUtils.a(AIOUtils.a(BubbleInterActiveAnim.c(this.this$0), AIOUtils.a(this.b, BubbleInterActiveAnim.d(this.this$0).getAdapter())));
+    Object localObject4 = AIOUtils.b(AIOUtils.a(BubbleInterActiveAnim.c(this.this$0), AIOUtils.a(this.b, BubbleInterActiveAnim.d(this.this$0).getAdapter())));
     Object localObject2 = localObject3;
     if (localObject4 != null)
     {
@@ -35,7 +35,7 @@ class BubbleInterActiveAnim$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.2
  * JD-Core Version:    0.7.0.1
  */

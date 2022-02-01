@@ -1,15 +1,17 @@
 package com.tencent.ad.tangram.settings;
 
+import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.json.AdJSON;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
+import com.tencent.ad.tangram.statistics.a;
 import java.nio.charset.Charset;
 import org.json.JSONObject;
 
-public final class b
+final class b
 {
   private static final String TAG = "AdSettingsUtil";
   
@@ -35,33 +37,34 @@ public final class b
     return false;
   }
   
-  public static gdt_settings.Settings load(String paramString)
+  public static gdt_settings.Settings load(Context paramContext, int paramInt, String paramString)
   {
     AdLog.i("AdSettingsUtil", String.format("load %s", new Object[] { paramString }));
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = new AdHttp.Params();
-      ((AdHttp.Params)localObject).setUrl(paramString);
-      ((AdHttp.Params)localObject).method = "GET";
-      ((AdHttp.Params)localObject).contentType = "application/json";
-      ((AdHttp.Params)localObject).connectTimeoutMillis = 3000;
-      ((AdHttp.Params)localObject).readTimeoutMillis = 3000;
-      if (((AdHttp.Params)localObject).canSend())
+      AdHttp.Params localParams = new AdHttp.Params();
+      localParams.setUrl(paramString);
+      localParams.method = "GET";
+      localParams.contentType = "application/json";
+      localParams.connectTimeoutMillis = 3000;
+      localParams.readTimeoutMillis = 3000;
+      if (localParams.canSend())
       {
-        AdHttp.send((AdHttp.Params)localObject);
-        if ((((AdHttp.Params)localObject).isSuccess()) && (((AdHttp.Params)localObject).responseData != null)) {
+        AdHttp.send(localParams);
+        a.reportForSettingsStatisticsEnd(paramContext, null, localParams, paramInt);
+        if ((localParams.isSuccess()) && (localParams.responseData != null)) {
           try
           {
-            Charset localCharset = Charset.forName("UTF-8");
-            if (localCharset != null)
+            paramContext = Charset.forName("UTF-8");
+            if (paramContext != null)
             {
-              localObject = toObject(new String(((AdHttp.Params)localObject).responseData, localCharset));
-              return localObject;
+              paramContext = toObject(new String(localParams.responseData, paramContext));
+              return paramContext;
             }
           }
-          catch (Throwable localThrowable)
+          catch (Throwable paramContext)
           {
-            AdLog.e("AdSettingsUtil", "load", localThrowable);
+            AdLog.e("AdSettingsUtil", "load", paramContext);
           }
         }
       }

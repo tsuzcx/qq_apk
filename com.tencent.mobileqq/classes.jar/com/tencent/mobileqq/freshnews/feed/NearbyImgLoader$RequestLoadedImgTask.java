@@ -16,28 +16,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 class NearbyImgLoader$RequestLoadedImgTask
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  URL jdField_a_of_type_JavaNetURL;
+  int a = 0;
+  URL b;
   
   public NearbyImgLoader$RequestLoadedImgTask(NearbyImgLoader paramNearbyImgLoader, URL paramURL)
   {
-    paramNearbyImgLoader.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_JavaNetURL = paramURL;
+    paramNearbyImgLoader.g.getAndIncrement();
+    this.b = paramURL;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaNetURL != null)
+    if (this.b != null)
     {
       Object localObject1 = new DownloadParams();
-      ??? = this.jdField_a_of_type_JavaNetURL;
+      ??? = this.b;
       ((DownloadParams)localObject1).url = ((URL)???);
       ((DownloadParams)localObject1).urlStr = ((URL)???).toString();
       String str = ((DownloadParams)localObject1).urlStr;
       ??? = new NearbyImgLoader.RequestLoadedImgTask.1(this);
       try
       {
-        Object localObject5 = this.this$0.jdField_a_of_type_ComTencentMobileqqTransfileNearbyImgDownloader.loadImageFile((DownloadParams)localObject1, (URLDrawableHandler)???);
+        Object localObject5 = this.this$0.d.loadImageFile((DownloadParams)localObject1, (URLDrawableHandler)???);
         ??? = null;
         localObject1 = ???;
         Object localObject2;
@@ -47,7 +47,7 @@ class NearbyImgLoader$RequestLoadedImgTask
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("task run. file exist, url = ");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaNetURL.toString());
+            ((StringBuilder)localObject1).append(this.b.toString());
             QLog.d("Q.nearby.freshNews", 2, ((StringBuilder)localObject1).toString());
           }
           localObject1 = new BitmapFactory.Options();
@@ -60,8 +60,8 @@ class NearbyImgLoader$RequestLoadedImgTask
           {
             localOutOfMemoryError2.printStackTrace();
           }
-          if (((BitmapFactory.Options)localObject1).outWidth > DeviceInfoUtil.i()) {
-            ((BitmapFactory.Options)localObject1).inSampleSize = ((int)(DeviceInfoUtil.i() / ((BitmapFactory.Options)localObject1).outWidth));
+          if (((BitmapFactory.Options)localObject1).outWidth > DeviceInfoUtil.D()) {
+            ((BitmapFactory.Options)localObject1).inSampleSize = ((int)(DeviceInfoUtil.D() / ((BitmapFactory.Options)localObject1).outWidth));
           }
           ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
           try
@@ -77,19 +77,19 @@ class NearbyImgLoader$RequestLoadedImgTask
             localObject2 = ???;
           }
         }
-        synchronized (this.this$0.jdField_a_of_type_JavaUtilArrayList)
+        synchronized (this.this$0.f)
         {
-          localObject5 = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject5 = this.this$0.f.iterator();
           while (((Iterator)localObject5).hasNext())
           {
             NearbyImgLoader.OnLoadNearbyImgsCallback localOnLoadNearbyImgsCallback = (NearbyImgLoader.OnLoadNearbyImgsCallback)((Iterator)localObject5).next();
             if (localOnLoadNearbyImgsCallback != null) {
               if (localObject2 == null)
               {
-                if (this.jdField_a_of_type_Int < 3)
+                if (this.a < 3)
                 {
                   this.this$0.a(new URL(str));
-                  this.jdField_a_of_type_Int += 1;
+                  this.a += 1;
                 }
                 else
                 {
@@ -102,19 +102,19 @@ class NearbyImgLoader$RequestLoadedImgTask
             }
           }
         }
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndDecrement();
+        this.this$0.g.getAndDecrement();
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
-    this.this$0.a();
+    this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class WSFriendLikeParser
 {
-  private static int jdField_a_of_type_Int = ScreenUtil.getRealWidth(BaseApplicationImpl.context) - ScreenUtil.dip2px(30.0F);
-  private static String jdField_a_of_type_JavaLangString = "、";
+  private static int a = ScreenUtil.getRealWidth(BaseApplicationImpl.context) - ScreenUtil.dip2px(30.0F);
+  private static String b = "、";
   
   @NotNull
   private static WSFriendLikeParser.FriendClickableSpan a(stSimpleMetaFeed paramstSimpleMetaFeed, stFriendLike paramstFriendLike, int paramInt)
@@ -46,7 +46,7 @@ public class WSFriendLikeParser
           int i = ((stFriendLikes)localObject2).likeFriends.size();
           int n = (int)((TextPaint)localObject1).measureText(a());
           int i1 = (int)((TextPaint)localObject1).measureText(a(m));
-          int i2 = jdField_a_of_type_Int;
+          int i2 = a;
           float f = 0.0F;
           int k = 0;
           localObject1 = localObject2;
@@ -62,7 +62,7 @@ public class WSFriendLikeParser
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append(str);
-              ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(b);
               localObject2 = ((StringBuilder)localObject2).toString();
             }
             localSpannableStringBuilder.append((CharSequence)localObject2);
@@ -124,7 +124,7 @@ public class WSFriendLikeParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSFriendLikeParser
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class PresenceInterfaceImpl$9
   public void onInstalledFailed(int paramInt)
   {
     PresenceInterfaceImpl.a = false;
-    this.a.a(HardCodeUtil.a(2131708394));
+    this.a.a(HardCodeUtil.a(2131906182));
     if (QLog.isColorLevel()) {
       QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
@@ -25,7 +25,7 @@ class PresenceInterfaceImpl$9
   public void onInstalledSuccessed()
   {
     PresenceInterfaceImpl.a = false;
-    if (!this.a.c)
+    if (!this.a.m)
     {
       ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
       QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
@@ -35,7 +35,7 @@ class PresenceInterfaceImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9
  * JD-Core Version:    0.7.0.1
  */

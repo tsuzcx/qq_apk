@@ -45,6 +45,7 @@ public abstract class VirtualLayout
         }
         i += 1;
       }
+      paramAttributeSet.recycle();
     }
   }
   
@@ -99,7 +100,7 @@ public abstract class VirtualLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.widget.VirtualLayout
  * JD-Core Version:    0.7.0.1
  */

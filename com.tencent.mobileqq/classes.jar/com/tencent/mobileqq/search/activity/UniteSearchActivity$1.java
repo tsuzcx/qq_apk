@@ -26,34 +26,34 @@ class UniteSearchActivity$1
   
   public void handleAssociateResult(String paramString, int paramInt, List<AssociateSearchWordsFragment.AssociateItem> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    if (paramString.equals(this.a.f))
+    if (paramString.equals(this.a.p))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
+      if (this.a.z == null) {
+        this.a.z = new AssociateSearchWordsFragment();
       }
       paramSuggestUrlItem = new ArrayList();
       AssociateSearchWordsFragment.AssociateItem localAssociateItem1 = new AssociateSearchWordsFragment.AssociateItem();
-      localAssociateItem1.jdField_a_of_type_Int = 1;
+      localAssociateItem1.a = 1;
       paramList1 = new StringBuilder("");
       if ((paramList != null) && (paramList.size() > 0))
       {
         int i;
         for (paramInt = 0; paramInt < paramList.size(); paramInt = i)
         {
-          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).b;
           AssociateSearchWordsFragment.AssociateItem localAssociateItem2 = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem2.jdField_a_of_type_JavaLangString = str;
-          if ((this.a.jdField_c_of_type_Int != 25) && (this.a.jdField_c_of_type_Int != 26)) {
-            localAssociateItem2.jdField_a_of_type_Int = 3;
+          localAssociateItem2.b = str;
+          if ((this.a.e != 25) && (this.a.e != 26)) {
+            localAssociateItem2.a = 3;
           } else {
-            localAssociateItem2.jdField_a_of_type_Int = 6;
+            localAssociateItem2.a = 6;
           }
           i = paramInt + 1;
-          localAssociateItem2.d = i;
+          localAssociateItem2.i = i;
           paramSuggestUrlItem.add(localAssociateItem2);
           if (paramInt != paramList.size() - 1)
           {
-            if ((this.a.jdField_c_of_type_Int != 25) && (this.a.jdField_c_of_type_Int != 26))
+            if ((this.a.e != 25) && (this.a.e != 26))
             {
               paramSuggestUrlItem.add(localAssociateItem1);
             }
@@ -74,19 +74,19 @@ class UniteSearchActivity$1
           }
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramSuggestUrlItem);
+      this.a.z.a(true);
+      this.a.z.a(paramString);
+      this.a.z.a(paramSuggestUrlItem);
       paramString = new StringBuilder();
       paramString.append(this.a.getCurrentAccountUin());
       paramString.append(System.currentTimeMillis());
-      UniteSearchActivity.e = paramString.toString();
-      paramString = new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.a()).ver2(UniteSearchReportController.a(this.a.jdField_c_of_type_Int)).ver3(UniteSearchActivity.jdField_d_of_type_JavaLangString).ver6(UniteSearchActivity.jdField_c_of_type_JavaLangString);
+      UniteSearchActivity.k = paramString.toString();
+      paramString = new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.h()).ver2(UniteSearchReportController.a(this.a.e)).ver3(UniteSearchActivity.j).ver6(UniteSearchActivity.i);
       paramList = new StringBuilder();
       paramList.append("{experiment_id:");
       paramList.append(UniteSearchReportController.b);
       paramList.append("}");
-      UniteSearchReportController.a(null, paramString.ver7(paramList.toString()).session_id(UniteSearchActivity.e).ver4(paramList1.toString()));
+      UniteSearchReportController.a(null, paramString.ver7(paramList.toString()).session_id(UniteSearchActivity.k).ver4(paramList1.toString()));
     }
   }
   
@@ -96,42 +96,42 @@ class UniteSearchActivity$1
   
   public void handleSearchDiscoveryResult(List<SearchEntryDataModel> paramList, int paramInt)
   {
-    if (paramInt != this.a.c()) {
+    if (paramInt != this.a.s()) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment.refreshDataModels(paramList, false);
+    if (this.a.y != null) {
+      this.a.y.refreshDataModels(paramList, false);
     }
   }
   
   public void handleUniteSearchError(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2)) {
+    if (!this.a.x.h.equals(paramString2)) {
       return;
     }
-    if (!this.a.f.equals(paramString1)) {
+    if (!this.a.p.equals(paramString1)) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramInt, paramString3);
-    this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    this.a.x.a(paramString1, paramInt, paramString3);
+    this.a.Q.setVisibility(0);
   }
   
   public void handleUniteSearchResult(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<GroupTabModel> paramList, List<ISearchResultGroupModel> paramList1, int paramInt)
   {
     try
     {
-      boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2);
+      boolean bool = this.a.x.h.equals(paramString2);
       if (!bool) {
         return;
       }
-      if ((this.a.f != null) && (this.a.f.equals(paramString1)))
+      if ((this.a.p != null) && (this.a.p.equals(paramString1)))
       {
         if (!paramBoolean1)
         {
-          this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
+          this.a.A = paramArrayOfByte;
+          this.a.x.a(paramArrayOfByte);
           paramString2 = SearchUtil.a(paramList1, paramBoolean1);
-          this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
+          this.a.x.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
           return;
         }
         if (paramList == null)
@@ -139,15 +139,15 @@ class UniteSearchActivity$1
           handleUniteSearchError(paramString1, paramBoolean1, paramString2, -1, "tabList == null");
           return;
         }
-        if ((paramList.size() > 0) && ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaLangString.equals(HardCodeUtil.a(2131715668))) || ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList != null) && (((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList.size() == 0)))) {
+        if ((paramList.size() > 0) && ((((GroupTabModel)paramList.get(0)).a.equals(HardCodeUtil.a(2131913136))) || ((((GroupTabModel)paramList.get(0)).b != null) && (((GroupTabModel)paramList.get(0)).b.size() == 0)))) {
           paramList.remove(0);
         }
-        this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
+        this.a.Q.setVisibility(0);
+        this.a.A = paramArrayOfByte;
+        this.a.x.a(paramArrayOfByte);
         paramString2 = SearchUtil.a(paramList1, paramBoolean1);
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
-        UniteSearchActivity.jdField_d_of_type_Boolean = true;
+        this.a.x.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
+        UniteSearchActivity.I = true;
         return;
       }
       return;
@@ -157,7 +157,7 @@ class UniteSearchActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.1
  * JD-Core Version:    0.7.0.1
  */

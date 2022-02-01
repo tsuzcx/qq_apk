@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/oa0" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
-</LinearLayout>
+    <FrameLayout android:id="@id/po2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:id="@id/po3" android:layout_width="142.0dip" android:layout_height="142.0dip" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/po4" android:layout_width="17.5dip" android:layout_height="17.5dip" android:indeterminate="true" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/po1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/pnp" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        <TextView android:textSize="13.0sp" android:gravity="center" android:id="@id/pnq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.799988dip" />
+    </LinearLayout>
+</FrameLayout>

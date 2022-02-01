@@ -20,12 +20,12 @@ class DiscussionInfoCardActivity$10
     {
       this.a.a();
       paramString1 = this.a;
-      DiscussionInfoCardActivity.a(paramString1, DiscussionInfoCardActivity.b(paramString1));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      DiscussionInfoCardActivity.a(paramString1, DiscussionInfoCardActivity.k(paramString1));
+      DiscussionInfoCardActivity.r(this.a).notifyDataSetChanged();
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.a.i != null) && (this.a.i.isShowing()) && (!this.a.isFinishing())) {
+      this.a.i.dismiss();
     }
   }
   
@@ -33,15 +33,15 @@ class DiscussionInfoCardActivity$10
   {
     if (paramBoolean)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      if ((this.a.h != null) && (this.a.h.ownerUin != null))
       {
         paramString = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin);
+        localStringBuilder.append(this.a.h.ownerUin);
         localStringBuilder.append("");
-        paramString = paramString.e(localStringBuilder.toString());
+        paramString = paramString.m(localStringBuilder.toString());
         if (paramString != null) {
-          this.a.d = paramString.name;
+          this.a.s = paramString.name;
         }
       }
     }
@@ -52,7 +52,7 @@ class DiscussionInfoCardActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.10
  * JD-Core Version:    0.7.0.1
  */

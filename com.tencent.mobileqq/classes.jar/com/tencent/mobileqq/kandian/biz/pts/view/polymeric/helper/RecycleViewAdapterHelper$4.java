@@ -12,14 +12,14 @@ class RecycleViewAdapterHelper$4
   
   public void onClick(ViewBase paramViewBase)
   {
-    if ((RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper) instanceof RIJFollowPackUtils.RIJFollowPackData)) {
-      RIJFollowPackUtils.a.a(this.jdField_a_of_type_Int, this.b, (RIJFollowPackUtils.RIJFollowPackData)RecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper));
+    if ((RecycleViewAdapterHelper.e(this.c) instanceof RIJFollowPackUtils.RIJFollowPackData)) {
+      RIJFollowPackUtils.a.a(this.a, this.b, (RIJFollowPackUtils.RIJFollowPackData)RecycleViewAdapterHelper.e(this.c));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper.4
  * JD-Core Version:    0.7.0.1
  */

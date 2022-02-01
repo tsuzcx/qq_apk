@@ -11,27 +11,36 @@ import androidx.annotation.Nullable;
 
 public class MotionTiming
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
+  private long a = 0L;
+  private long b = 300L;
   @Nullable
-  private TimeInterpolator jdField_a_of_type_AndroidAnimationTimeInterpolator = null;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long = 300L;
+  private TimeInterpolator c = null;
+  private int d = 0;
+  private int e = 1;
   
   public MotionTiming(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
   
   public MotionTiming(long paramLong1, long paramLong2, @NonNull TimeInterpolator paramTimeInterpolator)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_AndroidAnimationTimeInterpolator = paramTimeInterpolator;
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.c = paramTimeInterpolator;
   }
   
-  private static TimeInterpolator a(@NonNull ValueAnimator paramValueAnimator)
+  @NonNull
+  static MotionTiming a(@NonNull ValueAnimator paramValueAnimator)
+  {
+    MotionTiming localMotionTiming = new MotionTiming(paramValueAnimator.getStartDelay(), paramValueAnimator.getDuration(), b(paramValueAnimator));
+    localMotionTiming.d = paramValueAnimator.getRepeatCount();
+    localMotionTiming.e = paramValueAnimator.getRepeatMode();
+    return localMotionTiming;
+  }
+  
+  private static TimeInterpolator b(@NonNull ValueAnimator paramValueAnimator)
   {
     TimeInterpolator localTimeInterpolator = paramValueAnimator.getInterpolator();
     if ((!(localTimeInterpolator instanceof AccelerateDecelerateInterpolator)) && (localTimeInterpolator != null))
@@ -48,56 +57,47 @@ public class MotionTiming
     return AnimationUtils.b;
   }
   
-  @NonNull
-  static MotionTiming a(@NonNull ValueAnimator paramValueAnimator)
-  {
-    MotionTiming localMotionTiming = new MotionTiming(paramValueAnimator.getStartDelay(), paramValueAnimator.getDuration(), a(paramValueAnimator));
-    localMotionTiming.jdField_a_of_type_Int = paramValueAnimator.getRepeatCount();
-    localMotionTiming.jdField_b_of_type_Int = paramValueAnimator.getRepeatMode();
-    return localMotionTiming;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public TimeInterpolator a()
-  {
-    TimeInterpolator localTimeInterpolator = this.jdField_a_of_type_AndroidAnimationTimeInterpolator;
-    if (localTimeInterpolator != null) {
-      return localTimeInterpolator;
-    }
-    return AnimationUtils.b;
+    return this.a;
   }
   
   public void a(@NonNull Animator paramAnimator)
   {
     paramAnimator.setStartDelay(a());
     paramAnimator.setDuration(b());
-    paramAnimator.setInterpolator(a());
+    paramAnimator.setInterpolator(c());
     if ((paramAnimator instanceof ValueAnimator))
     {
       paramAnimator = (ValueAnimator)paramAnimator;
-      paramAnimator.setRepeatCount(a());
-      paramAnimator.setRepeatMode(b());
+      paramAnimator.setRepeatCount(d());
+      paramAnimator.setRepeatMode(e());
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.b;
+  }
+  
+  @Nullable
+  public TimeInterpolator c()
+  {
+    TimeInterpolator localTimeInterpolator = this.c;
+    if (localTimeInterpolator != null) {
+      return localTimeInterpolator;
+    }
+    return AnimationUtils.b;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public int e()
+  {
+    return this.e;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -115,18 +115,18 @@ public class MotionTiming
     if (b() != paramObject.b()) {
       return false;
     }
-    if (a() != paramObject.a()) {
+    if (d() != paramObject.d()) {
       return false;
     }
-    if (b() != paramObject.b()) {
+    if (e() != paramObject.e()) {
       return false;
     }
-    return a().getClass().equals(paramObject.a().getClass());
+    return c().getClass().equals(paramObject.c().getClass());
   }
   
   public int hashCode()
   {
-    return ((((int)(a() ^ a() >>> 32) * 31 + (int)(b() ^ b() >>> 32)) * 31 + a().getClass().hashCode()) * 31 + a()) * 31 + b();
+    return ((((int)(a() ^ a() >>> 32) * 31 + (int)(b() ^ b() >>> 32)) * 31 + c().getClass().hashCode()) * 31 + d()) * 31 + e();
   }
   
   @NonNull
@@ -142,18 +142,18 @@ public class MotionTiming
     localStringBuilder.append(" duration: ");
     localStringBuilder.append(b());
     localStringBuilder.append(" interpolator: ");
-    localStringBuilder.append(a().getClass());
+    localStringBuilder.append(c().getClass());
     localStringBuilder.append(" repeatCount: ");
-    localStringBuilder.append(a());
+    localStringBuilder.append(d());
     localStringBuilder.append(" repeatMode: ");
-    localStringBuilder.append(b());
+    localStringBuilder.append(e());
     localStringBuilder.append("}\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.animation.MotionTiming
  * JD-Core Version:    0.7.0.1
  */

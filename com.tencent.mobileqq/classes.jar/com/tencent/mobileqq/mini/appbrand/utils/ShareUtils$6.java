@@ -45,7 +45,7 @@ final class ShareUtils$6
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848661);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130850326);
         }
         localObject1 = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
         paramJSONObject = (JSONObject)localObject1;
@@ -86,7 +86,7 @@ final class ShareUtils$6
         ((StringBuilder)localObject1).append("startShareToWeChat. get an exception when handling URLbmp:");
         ((StringBuilder)localObject1).append(paramJSONObject);
         QLog.e("ShareUtils", 1, ((StringBuilder)localObject1).toString());
-        paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848661));
+        paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130850326));
       }
       int i = this.val$shareType;
       if (i == 3)
@@ -141,7 +141,7 @@ final class ShareUtils$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShareUtils.6
  * JD-Core Version:    0.7.0.1
  */

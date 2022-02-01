@@ -43,9 +43,9 @@ public class TtsControllerImpl
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("AND_");
-    ((StringBuilder)localObject).append(AppSetting.a());
+    ((StringBuilder)localObject).append(AppSetting.d());
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append("8.7.0");
+    ((StringBuilder)localObject).append("8.8.17");
     localObject = ((StringBuilder)localObject).toString();
     return new TtsNetStreamParam.Builder().a("201908021016").a(Long.parseLong(this.myUin)).b(Long.parseLong(paramString2)).b(paramString1).c(MD5Utils.toMD5(paramString1)).d((String)localObject).a(NetworkUtil.getNetWorkType()).b(this.businessId).e(this.secretKey).a();
   }
@@ -56,7 +56,7 @@ public class TtsControllerImpl
     if (localObject != null) {
       return localObject;
     }
-    localObject = TtsDataSource.a();
+    localObject = TtsDataSource.b();
     paramString1 = buildRequestParam(paramString1, paramString2);
     try
     {
@@ -158,7 +158,7 @@ public class TtsControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.impl.TtsControllerImpl
  * JD-Core Version:    0.7.0.1
  */

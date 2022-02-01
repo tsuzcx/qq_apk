@@ -57,7 +57,7 @@ public class b
     StatStdReport localStatStdReport = new StatStdReport();
     localStatStdReport.name = paramString3;
     localStatStdReport.time = System.currentTimeMillis();
-    localStatStdReport.versionInfo = "1.0";
+    localStatStdReport.versionInfo = "1.3";
     localStatStdReport.extraData = paramString1;
     localStatStdReport.traceId = paramString2;
     return localStatStdReport;
@@ -80,7 +80,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.b
  * JD-Core Version:    0.7.0.1
  */

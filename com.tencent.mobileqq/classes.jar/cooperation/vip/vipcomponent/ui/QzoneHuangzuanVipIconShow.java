@@ -21,9 +21,9 @@ public class QzoneHuangzuanVipIconShow
   public static int ANUAL_ICON_MARGIN_LEFT = 0;
   public static int ANUAL_ICON_MARGIN_LEFT_IF_LV9 = 0;
   public static final int HIGHEST_LEVEL = 8;
-  public static int ICON_ADJUST_ANNUALVIP_MARGIN_TOP = (int)(ViewUtils.a() * 9.0F);
+  public static int ICON_ADJUST_ANNUALVIP_MARGIN_TOP = (int)(ViewUtils.getDensity() * 9.0F);
   public static int ICON_ANNUALVIP_HEIGHT = 0;
-  public static int ICON_ANNUALVIP_WIDTH = (int)(ViewUtils.a() * 27.0F);
+  public static int ICON_ANNUALVIP_WIDTH = (int)(ViewUtils.getDensity() * 27.0F);
   public static int ICON_DEFAULT_SIZE = AdapterConst.b;
   public static final int LOWEST_LEVEL = 1;
   public static int LV9_GUAN_ICON_HEIGHT = 0;
@@ -40,7 +40,7 @@ public class QzoneHuangzuanVipIconShow
   public static int PERSONALIZED_ICON_HEAD_WIDTH = 0;
   public static int PERSONALIZED_ICON_LV_HEIGHT = 0;
   public static int PERSONALIZED_ICON_LV_MARGIN_TOP = 0;
-  public static int PERSONALIZED_ICON_LV_WIDTH = (int)(ViewUtils.a() * 26.0F);
+  public static int PERSONALIZED_ICON_LV_WIDTH = (int)(ViewUtils.getDensity() * 26.0F);
   public static int PERSONALIZED_ICON_YEAR_HEIGHT = 0;
   public static int PERSONALIZED_ICON_YEAR_WIDTH = 0;
   private static final int RES_BG = 1;
@@ -68,33 +68,33 @@ public class QzoneHuangzuanVipIconShow
   
   static
   {
-    PERSONALIZED_ICON_LV_HEIGHT = (int)(ViewUtils.a() * 9.0F);
-    PERSONALIZED_ICON_HEAD_HEIGHT = (int)(ViewUtils.a() * 23.0F);
-    PERSONALIZED_ICON_HEAD_WIDTH = (int)(ViewUtils.a() * 11.0F);
-    PERSONALIZED_ICON_YEAR_WIDTH = (int)(ViewUtils.a() * 40.0F);
-    PERSONALIZED_ICON_YEAR_HEIGHT = (int)(ViewUtils.a() * 24.0F);
-    PERSONALIZED_ICON_LV_MARGIN_TOP = (int)(ViewUtils.a() * 21.0F);
-    RIBBON_ICON_BG_MARGIN_LEFT = (int)(ViewUtils.a() * 1.0F);
-    ANUAL_ICON_MARGIN_LEFT = (int)(ViewUtils.a() * 2.0F);
-    ANUAL_ICON_MARGIN_LEFT_IF_LV9 = (int)(ViewUtils.a() * 5.0F);
-    PERSONALIZED_ICON_AVATAR_TOP = (int)(ViewUtils.a() * 1.0F);
-    LV9_GUAN_ICON_MARGIN_LEFT = (int)(ViewUtils.a() * 1.0F);
-    LV9_GUAN_ICON_MARGIN_TOP = (int)(ViewUtils.a() * -3.0F);
-    LV9_GUAN_ICON_WIDTH = (int)(ViewUtils.a() * 22.0F);
-    double d = ViewUtils.a();
+    PERSONALIZED_ICON_LV_HEIGHT = (int)(ViewUtils.getDensity() * 9.0F);
+    PERSONALIZED_ICON_HEAD_HEIGHT = (int)(ViewUtils.getDensity() * 23.0F);
+    PERSONALIZED_ICON_HEAD_WIDTH = (int)(ViewUtils.getDensity() * 11.0F);
+    PERSONALIZED_ICON_YEAR_WIDTH = (int)(ViewUtils.getDensity() * 40.0F);
+    PERSONALIZED_ICON_YEAR_HEIGHT = (int)(ViewUtils.getDensity() * 24.0F);
+    PERSONALIZED_ICON_LV_MARGIN_TOP = (int)(ViewUtils.getDensity() * 21.0F);
+    RIBBON_ICON_BG_MARGIN_LEFT = (int)(ViewUtils.getDensity() * 1.0F);
+    ANUAL_ICON_MARGIN_LEFT = (int)(ViewUtils.getDensity() * 2.0F);
+    ANUAL_ICON_MARGIN_LEFT_IF_LV9 = (int)(ViewUtils.getDensity() * 5.0F);
+    PERSONALIZED_ICON_AVATAR_TOP = (int)(ViewUtils.getDensity() * 1.0F);
+    LV9_GUAN_ICON_MARGIN_LEFT = (int)(ViewUtils.getDensity() * 1.0F);
+    LV9_GUAN_ICON_MARGIN_TOP = (int)(ViewUtils.getDensity() * -3.0F);
+    LV9_GUAN_ICON_WIDTH = (int)(ViewUtils.getDensity() * 22.0F);
+    double d = ViewUtils.getDensity();
     Double.isNaN(d);
     LV9_GUAN_ICON_HEIGHT = (int)(d * 10.5D);
-    d = ViewUtils.a();
+    d = ViewUtils.getDensity();
     Double.isNaN(d);
     LV9_WINDS_MARGIN_TOP = (int)(d * 4.5D);
-    LV9_WINDS_MARGIN_LEFT = (int)(ViewUtils.a() * -8.0F);
-    d = ViewUtils.a();
+    LV9_WINDS_MARGIN_LEFT = (int)(ViewUtils.getDensity() * -8.0F);
+    d = ViewUtils.getDensity();
     Double.isNaN(d);
     LV9_WINDS_HEIGHT = (int)(d * 9.5D);
-    LV9_WINDS_WIDTH = (int)(ViewUtils.a() * 40.0F);
-    PERSONALIZED_ICON_ANUAL_LEFT = (int)(ViewUtils.a() * 10.0F);
-    RIBBON_ICON_LEVEL_MARGIN_TOP = (int)(ViewUtils.a() * 6.0F);
-    ICON_ANNUALVIP_HEIGHT = (int)(ViewUtils.a() * 12.0F);
+    LV9_WINDS_WIDTH = (int)(ViewUtils.getDensity() * 40.0F);
+    PERSONALIZED_ICON_ANUAL_LEFT = (int)(ViewUtils.getDensity() * 10.0F);
+    RIBBON_ICON_LEVEL_MARGIN_TOP = (int)(ViewUtils.getDensity() * 6.0F);
+    ICON_ANNUALVIP_HEIGHT = (int)(ViewUtils.getDensity() * 12.0F);
   }
   
   public QzoneHuangzuanVipIconShow(Context paramContext)
@@ -130,7 +130,7 @@ public class QzoneHuangzuanVipIconShow
     localStringBuilder.append(paramInt5);
     paramString = localStringBuilder.toString();
     if (paramDiamondIconDrawable != null) {
-      this.layerCache.put(paramString, paramDiamondIconDrawable.a());
+      this.layerCache.put(paramString, paramDiamondIconDrawable.d());
     }
   }
   
@@ -413,9 +413,9 @@ public class QzoneHuangzuanVipIconShow
       paramDiamondIconDrawable.append(paramDrawable.getIntrinsicHeight());
       paramDiamondIconDrawable.append(" bitmapwith =");
       paramDrawable = (BitmapDrawable)paramDrawable;
-      paramDiamondIconDrawable.append((int)(paramDrawable.getBitmap().getWidth() / 2 * ViewUtils.a()));
+      paramDiamondIconDrawable.append((int)(paramDrawable.getBitmap().getWidth() / 2 * ViewUtils.getDensity()));
       paramDiamondIconDrawable.append("bitmapheight =");
-      paramDiamondIconDrawable.append((int)(paramDrawable.getBitmap().getHeight() / 2 * ViewUtils.a()));
+      paramDiamondIconDrawable.append((int)(paramDrawable.getBitmap().getHeight() / 2 * ViewUtils.getDensity()));
       VLog.b("@vipIcon KINGBG", paramDiamondIconDrawable.toString());
       return;
     case 8: 
@@ -662,7 +662,7 @@ public class QzoneHuangzuanVipIconShow
   
   public float getDensity()
   {
-    return ViewUtils.a();
+    return ViewUtils.getDensity();
   }
   
   public Drawable getLayers(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, String paramString, VipResourcesListener paramVipResourcesListener, int paramInt5)
@@ -768,7 +768,7 @@ public class QzoneHuangzuanVipIconShow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow
  * JD-Core Version:    0.7.0.1
  */

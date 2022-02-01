@@ -52,11 +52,6 @@ public class VideoCompressUtil
     return i;
   }
   
-  public static long a(int paramInt1, int paramInt2)
-  {
-    return VideoCompressConfig.a(a(paramInt1, paramInt2)) * 1024;
-  }
-  
   public static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder(a);
@@ -73,7 +68,7 @@ public class VideoCompressUtil
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString1);
       localStringBuilder.append(System.currentTimeMillis());
-      String str = MD5.a(localStringBuilder.toString());
+      String str = MD5.b(localStringBuilder.toString());
       localStringBuilder = new StringBuilder(a());
       localStringBuilder.append(str);
       localStringBuilder.append(".");
@@ -92,45 +87,29 @@ public class VideoCompressUtil
     return null;
   }
   
-  public static boolean a()
-  {
-    return DeviceInfoUtils.a();
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isExceedResolutionLimit(): width:");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append(", height:");
-    localStringBuilder.append(paramInt2);
-    QLog.d("VideoConvertUtils", 1, localStringBuilder.toString());
-    return paramInt1 * paramInt2 > 3110400.0F;
-  }
-  
   public static boolean a(VideoMediaInfo paramVideoMediaInfo)
   {
     if (paramVideoMediaInfo == null) {
       return false;
     }
-    if ((paramVideoMediaInfo.d >= VideoCompressConfig.a()) && (paramVideoMediaInfo.d <= VideoCompressConfig.b()))
+    if ((paramVideoMediaInfo.g >= VideoCompressConfig.a()) && (paramVideoMediaInfo.g <= VideoCompressConfig.b()))
     {
-      if (a(paramVideoMediaInfo.a, paramVideoMediaInfo.jdField_b_of_type_Int))
+      if (b(paramVideoMediaInfo.a, paramVideoMediaInfo.b))
       {
         QLog.d("VideoConvertUtils", 1, "needCompress(): true! isExceedResolutionLimit");
         return true;
       }
-      if (!a())
+      if (!c())
       {
         QLog.d("VideoConvertUtils", 1, "needCompress(): false! not High Profile Device");
         return false;
       }
-      long l = a(paramVideoMediaInfo.a, paramVideoMediaInfo.jdField_b_of_type_Int);
-      if ((l > 0L) && (paramVideoMediaInfo.jdField_b_of_type_Long > 3L * l))
+      long l = c(paramVideoMediaInfo.a, paramVideoMediaInfo.b);
+      if ((l > 0L) && (paramVideoMediaInfo.d > 3L * l))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("needCompress(): true! sourceBitRate:");
-        localStringBuilder.append(paramVideoMediaInfo.jdField_b_of_type_Long);
+        localStringBuilder.append(paramVideoMediaInfo.d);
         localStringBuilder.append(", targetBitRate:");
         localStringBuilder.append(l);
         QLog.d("VideoConvertUtils", 1, localStringBuilder.toString());
@@ -138,7 +117,7 @@ public class VideoCompressUtil
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("needCompress(): false, bitrate not match, sourceBitRate:");
-      localStringBuilder.append(paramVideoMediaInfo.jdField_b_of_type_Long);
+      localStringBuilder.append(paramVideoMediaInfo.d);
       localStringBuilder.append(", targetBitRate:");
       localStringBuilder.append(l);
       QLog.d("VideoConvertUtils", 1, localStringBuilder.toString());
@@ -146,7 +125,7 @@ public class VideoCompressUtil
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("needCompress(): false! fileSize not match, size=");
-    localStringBuilder.append(paramVideoMediaInfo.d);
+    localStringBuilder.append(paramVideoMediaInfo.g);
     QLog.d("VideoConvertUtils", 1, localStringBuilder.toString());
     return false;
   }
@@ -174,10 +153,31 @@ public class VideoCompressUtil
     localStringBuilder.append("GB");
     return localStringBuilder.toString();
   }
+  
+  public static boolean b(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isExceedResolutionLimit(): width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramInt2);
+    QLog.d("VideoConvertUtils", 1, localStringBuilder.toString());
+    return paramInt1 * paramInt2 > 3110400.0F;
+  }
+  
+  public static long c(int paramInt1, int paramInt2)
+  {
+    return VideoCompressConfig.a(a(paramInt1, paramInt2)) * 1024;
+  }
+  
+  public static boolean c()
+  {
+    return DeviceInfoUtils.isHighPerfDevice();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.compress.VideoCompressUtil
  * JD-Core Version:    0.7.0.1
  */

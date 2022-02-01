@@ -9,25 +9,25 @@ final class LocalMediaInfo$1
   public LocalMediaInfo a(Parcel paramParcel)
   {
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.c = paramParcel.readLong();
+    localLocalMediaInfo.d = paramParcel.readString();
+    localLocalMediaInfo.e = paramParcel.readLong();
+    localLocalMediaInfo.f = paramParcel.readLong();
+    localLocalMediaInfo.g = paramParcel.readLong();
     localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.l = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readLong();
+    localLocalMediaInfo.b = paramParcel.readInt();
+    localLocalMediaInfo.o = paramParcel.readInt();
+    localLocalMediaInfo.p = paramParcel.readInt();
+    localLocalMediaInfo.q = paramParcel.readInt();
+    localLocalMediaInfo.r = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.s = paramParcel.readString();
+    localLocalMediaInfo.t = paramParcel.readString();
     localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
+    localLocalMediaInfo.k = paramParcel.readInt();
+    localLocalMediaInfo.n = paramParcel.readInt();
+    localLocalMediaInfo.m = paramParcel.readInt();
     return localLocalMediaInfo;
   }
   
@@ -38,7 +38,7 @@ final class LocalMediaInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.LocalMediaInfo.1
  * JD-Core Version:    0.7.0.1
  */

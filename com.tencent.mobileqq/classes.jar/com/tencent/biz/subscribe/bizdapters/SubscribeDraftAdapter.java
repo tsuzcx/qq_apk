@@ -28,25 +28,15 @@ public class SubscribeDraftAdapter
   extends MultiViewBlock<SubscribeDraftBean>
   implements SimpleEventReceiver
 {
-  public static int a = 0;
   public static String a = "SubscribeDraftAdapter";
-  private int jdField_b_of_type_Int = ImmersiveUtils.dpToPx(19.0F);
-  private String jdField_b_of_type_JavaLangString;
-  private int c = ImmersiveUtils.dpToPx(3.0F);
-  
-  static
-  {
-    jdField_a_of_type_Int = ImmersiveUtils.dpToPx(4.0F);
-  }
+  public static int b = ImmersiveUtils.dpToPx(4.0F);
+  private int c = ImmersiveUtils.dpToPx(19.0F);
+  private int d = ImmersiveUtils.dpToPx(3.0F);
+  private String e;
   
   public SubscribeDraftAdapter(Bundle paramBundle)
   {
     super(paramBundle);
-  }
-  
-  public int a()
-  {
-    return 1;
   }
   
   public int a(int paramInt)
@@ -58,15 +48,15 @@ public class SubscribeDraftAdapter
   {
     if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
     {
-      paramRect.left = jdField_a_of_type_Int;
-      paramRect.right = (this.c / 2);
+      paramRect.left = b;
+      paramRect.right = (this.d / 2);
     }
     else
     {
-      paramRect.left = (this.c / 2);
-      paramRect.right = jdField_a_of_type_Int;
+      paramRect.left = (this.d / 2);
+      paramRect.right = b;
     }
-    paramRect.bottom = this.jdField_b_of_type_Int;
+    paramRect.bottom = this.c;
   }
   
   public void a(Bundle paramBundle) {}
@@ -74,7 +64,7 @@ public class SubscribeDraftAdapter
   public void a(LoadInfo paramLoadInfo)
   {
     if ((paramLoadInfo.d()) || (paramLoadInfo.c())) {
-      b();
+      d();
     }
   }
   
@@ -83,17 +73,22 @@ public class SubscribeDraftAdapter
     return true;
   }
   
-  public void b()
+  public int c()
   {
-    if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
+    return 1;
+  }
+  
+  public void d()
+  {
+    if ((B() != null) && (H() != null) && (((PublicFragmentActivity)H()).app != null))
     {
-      this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
-      if (SubscribeDraftManager.a().a(this.jdField_b_of_type_JavaLangString))
+      this.e = ((PublicFragmentActivity)H()).app.getAccount();
+      if (SubscribeDraftManager.a().a(this.e))
       {
-        SubscribeDraftManager.a().a(this.jdField_b_of_type_JavaLangString, new SubscribeDraftAdapter.1(this));
+        SubscribeDraftManager.a().a(this.e, new SubscribeDraftAdapter.1(this));
         return;
       }
-      a();
+      b();
       notifyDataSetChanged();
     }
   }
@@ -107,13 +102,13 @@ public class SubscribeDraftAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.j.size();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if ((paramViewHolder instanceof SubscribeDraftAdapter.DraftVH)) {
-      ((SubscribeDraftAdapter.DraftVH)paramViewHolder).a((SubscribeDraftBean)b().get(paramInt));
+      ((SubscribeDraftAdapter.DraftVH)paramViewHolder).a((SubscribeDraftBean)N().get(paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
@@ -132,7 +127,7 @@ public class SubscribeDraftAdapter
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof SubDraftChangeEvent)) {
-      b();
+      d();
     }
   }
   

@@ -6,16 +6,16 @@ import java.util.ArrayList;
 public final class SendVidPollDataHandler$SendVidPollDataResultEvent
   extends BaseEvent
 {
-  public int a;
-  public long a;
   public String a;
-  public ArrayList<Integer> a;
-  public int b;
   public String b;
+  public ArrayList<Integer> c;
+  public int d;
+  public long e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.SendVidPollDataHandler.SendVidPollDataResultEvent
  * JD-Core Version:    0.7.0.1
  */

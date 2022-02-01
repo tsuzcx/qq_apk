@@ -9,46 +9,7 @@ import java.lang.ref.WeakReference;
 public class VipVideoManager
 {
   public static int a = 0;
-  private static boolean a = false;
-  
-  public static void a(Context paramContext)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init video plugin context ");
-      String str;
-      if (paramContext != null) {
-        str = "is not null";
-      } else {
-        str = "is null";
-      }
-      localStringBuilder.append(str);
-      QLog.d("VipVideoManager", 2, localStringBuilder.toString());
-    }
-    try
-    {
-      try
-      {
-        if (!jdField_a_of_type_Boolean)
-        {
-          TVK_SDKMgr.setOnLogListener(new VipVideoManager.1());
-          if (paramContext != null)
-          {
-            TVK_SDKMgr.initSdk(paramContext, "ZDJ2DK+QcEksd+C8RIzfwQhjkPCNDsewhQBcxciUfYyphf1ntN4M1sXu5waGVy3CMB36XLopJFqaMtHxKS4BXScewkVRuSfBoAJVDEJHZv+opKWeviyxuUnc4R4MlMmTO2M2de47GRD6te9FtjtFCd1KLUPZuW QBq8aXUxi+IyhmKBZoXWUxLkdfIZ7Gleriirf7ewcykmS64TG7zbV1uMCdIaO9hwDhVJbRlGN2si1sepphKPCuuOoAdZz52edGEfp5oIgA7THflGFidFnsrPksn8nGbr+OYOI8kcixjzblTIjBAqHHFRJnIQhh74pVkqtiqE7iz46FclQB17JJmg==", "");
-            jdField_a_of_type_Boolean = true;
-          }
-        }
-        return;
-      }
-      finally {}
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
+  private static boolean b = false;
   
   public static void a(Context paramContext, TVK_SDKMgr.InstallListener paramInstallListener)
   {
@@ -65,7 +26,7 @@ public class VipVideoManager
       }
       localStringBuilder.append(str1);
       localStringBuilder.append(",mMediaSdkInited");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(b);
       localStringBuilder.append(",listener=");
       if (paramInstallListener == null) {
         str1 = str2;
@@ -78,10 +39,10 @@ public class VipVideoManager
     if ((paramContext != null) && (paramInstallListener != null)) {
       try
       {
-        if (!jdField_a_of_type_Boolean) {
-          a(paramContext);
+        if (!b) {
+          b(paramContext);
         }
-        jdField_a_of_type_Int = 0;
+        a = 0;
         TVK_SDKMgr.installPlugin(paramContext, (TVK_SDKMgr.InstallListener)new WeakReference(paramInstallListener).get());
         return;
       }
@@ -118,10 +79,49 @@ public class VipVideoManager
     }
     return (paramContext != null) && (TVK_SDKMgr.isInstalled(paramContext));
   }
+  
+  public static void b(Context paramContext)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init video plugin context ");
+      String str;
+      if (paramContext != null) {
+        str = "is not null";
+      } else {
+        str = "is null";
+      }
+      localStringBuilder.append(str);
+      QLog.d("VipVideoManager", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      try
+      {
+        if (!b)
+        {
+          TVK_SDKMgr.setOnLogListener(new VipVideoManager.1());
+          if (paramContext != null)
+          {
+            TVK_SDKMgr.initSdk(paramContext, "ZDJ2DK+QcEksd+C8RIzfwQhjkPCNDsewhQBcxciUfYyphf1ntN4M1sXu5waGVy3CMB36XLopJFqaMtHxKS4BXScewkVRuSfBoAJVDEJHZv+opKWeviyxuUnc4R4MlMmTO2M2de47GRD6te9FtjtFCd1KLUPZuW QBq8aXUxi+IyhmKBZoXWUxLkdfIZ7Gleriirf7ewcykmS64TG7zbV1uMCdIaO9hwDhVJbRlGN2si1sepphKPCuuOoAdZz52edGEfp5oIgA7THflGFidFnsrPksn8nGbr+OYOI8kcixjzblTIjBAqHHFRJnIQhh74pVkqtiqE7iz46FclQB17JJmg==", "");
+            b = true;
+          }
+        }
+        return;
+      }
+      finally {}
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoManager
  * JD-Core Version:    0.7.0.1
  */

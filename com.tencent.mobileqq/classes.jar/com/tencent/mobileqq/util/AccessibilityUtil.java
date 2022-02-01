@@ -27,12 +27,12 @@ public class AccessibilityUtil
         if ((bool1) && (bool2))
         {
           bool1 = true;
-          AppSetting.d = bool1;
+          AppSetting.e = bool1;
           if (QLog.isColorLevel())
           {
             paramContext = new StringBuilder();
             paramContext.append("setTalkbackSwitch: ");
-            paramContext.append(AppSetting.d);
+            paramContext.append(AppSetting.e);
             QLog.d("AccessibilityUtil", 2, paramContext.toString());
           }
           return;
@@ -74,14 +74,14 @@ public class AccessibilityUtil
   
   public static void a(View paramView, String paramString)
   {
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       paramView.setContentDescription(paramString);
     }
   }
   
   public static void a(View paramView, boolean paramBoolean)
   {
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT >= 16))
     {
       if (paramBoolean)
       {
@@ -95,16 +95,11 @@ public class AccessibilityUtil
   @TargetApi(14)
   public static void a(EditText paramEditText, String paramString)
   {
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 14))
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT >= 14))
     {
       paramEditText.setContentDescription(paramString);
       paramEditText.setAccessibilityDelegate(new AccessibilityUtil.1());
     }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return ((AccessibilityManager)paramContext.getSystemService("accessibility")).isEnabled();
   }
   
   @TargetApi(16)
@@ -144,6 +139,11 @@ public class AccessibilityUtil
     ViewCompat.setImportantForAccessibility(paramView, 2);
   }
   
+  public static boolean b(Context paramContext)
+  {
+    return ((AccessibilityManager)paramContext.getSystemService("accessibility")).isEnabled();
+  }
+  
   @TargetApi(16)
   public static void c(View paramView)
   {
@@ -154,7 +154,7 @@ public class AccessibilityUtil
       }
       return;
     }
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT > 15))
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT > 15))
     {
       Object localObject1 = paramView.getClass().getMethods();
       int j = localObject1.length;
@@ -188,7 +188,7 @@ public class AccessibilityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil
  * JD-Core Version:    0.7.0.1
  */

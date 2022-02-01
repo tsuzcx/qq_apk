@@ -1694,7 +1694,7 @@ public final class FMTSrvAddrProvider
     //   135: astore 12
     //   137: aload 9
     //   139: iconst_0
-    //   140: invokestatic 953	com/tencent/mobileqq/util/Utils:a	([BI)S
+    //   140: invokestatic 954	com/tencent/mobileqq/util/Utils:b	([BI)S
     //   143: istore 6
     //   145: aload 11
     //   147: astore 14
@@ -1722,21 +1722,21 @@ public final class FMTSrvAddrProvider
     //   189: astore 15
     //   191: aload 8
     //   193: astore 12
-    //   195: new 955	java/io/ByteArrayInputStream
+    //   195: new 956	java/io/ByteArrayInputStream
     //   198: dup
     //   199: aload_1
     //   200: iload_3
     //   201: iload 6
-    //   203: invokespecial 957	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   203: invokespecial 958	java/io/ByteArrayInputStream:<init>	([BII)V
     //   206: astore 9
     //   208: aload 9
     //   210: astore 11
     //   212: aload 9
     //   214: astore 12
-    //   216: new 959	java/io/DataInputStream
+    //   216: new 960	java/io/DataInputStream
     //   219: dup
     //   220: aload 9
-    //   222: invokespecial 962	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   222: invokespecial 963	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   225: astore 10
     //   227: aload 10
     //   229: astore 13
@@ -1748,7 +1748,7 @@ public final class FMTSrvAddrProvider
     //   241: astore 12
     //   243: aload 16
     //   245: aload 10
-    //   247: invokevirtual 965	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   247: invokevirtual 966	java/io/DataInputStream:readUTF	()Ljava/lang/String;
     //   250: putfield 635	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:wifiIdentifier	Ljava/lang/String;
     //   253: goto +349 -> 602
     //   256: astore_1
@@ -1782,21 +1782,21 @@ public final class FMTSrvAddrProvider
     //   312: astore 15
     //   314: aload 8
     //   316: astore 12
-    //   318: new 955	java/io/ByteArrayInputStream
+    //   318: new 956	java/io/ByteArrayInputStream
     //   321: dup
     //   322: aload_1
     //   323: iload_3
     //   324: iload 6
-    //   326: invokespecial 957	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   326: invokespecial 958	java/io/ByteArrayInputStream:<init>	([BII)V
     //   329: astore 10
     //   331: aload 10
     //   333: astore 11
     //   335: aload 10
     //   337: astore 12
-    //   339: new 959	java/io/DataInputStream
+    //   339: new 960	java/io/DataInputStream
     //   342: dup
     //   343: aload 10
-    //   345: invokespecial 962	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   345: invokespecial 963	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   348: astore 9
     //   350: aload 9
     //   352: astore 13
@@ -1808,7 +1808,7 @@ public final class FMTSrvAddrProvider
     //   364: astore 12
     //   366: aload 16
     //   368: aload 9
-    //   370: invokevirtual 965	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   370: invokevirtual 966	java/io/DataInputStream:readUTF	()Ljava/lang/String;
     //   373: putfield 646	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:xGIdentifier	Ljava/lang/String;
     //   376: aload 9
     //   378: astore 13
@@ -1818,29 +1818,29 @@ public final class FMTSrvAddrProvider
     //   386: astore 14
     //   388: aload 10
     //   390: astore 12
-    //   392: new 955	java/io/ByteArrayInputStream
+    //   392: new 956	java/io/ByteArrayInputStream
     //   395: dup
     //   396: aload_1
     //   397: iload_3
     //   398: iload 6
-    //   400: invokespecial 957	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   400: invokespecial 958	java/io/ByteArrayInputStream:<init>	([BII)V
     //   403: astore 8
-    //   405: new 959	java/io/DataInputStream
+    //   405: new 960	java/io/DataInputStream
     //   408: dup
     //   409: aload 8
-    //   411: invokespecial 962	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   411: invokespecial 963	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   414: astore 10
     //   416: aload 16
-    //   418: getfield 969	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:xGError	[I
+    //   418: getfield 970	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:xGError	[I
     //   421: iconst_0
     //   422: aload 10
-    //   424: invokevirtual 972	java/io/DataInputStream:readInt	()I
+    //   424: invokevirtual 973	java/io/DataInputStream:readInt	()I
     //   427: iastore
     //   428: aload 16
-    //   430: getfield 969	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:xGError	[I
+    //   430: getfield 970	com/tencent/mobileqq/transfile/FMTSrvAddrProvider$PttIpList:xGError	[I
     //   433: iconst_1
     //   434: aload 10
-    //   436: invokevirtual 972	java/io/DataInputStream:readInt	()I
+    //   436: invokevirtual 973	java/io/DataInputStream:readInt	()I
     //   439: iastore
     //   440: aload 8
     //   442: astore 9
@@ -1879,23 +1879,23 @@ public final class FMTSrvAddrProvider
     //   509: astore 15
     //   511: aload 8
     //   513: astore 12
-    //   515: new 955	java/io/ByteArrayInputStream
+    //   515: new 956	java/io/ByteArrayInputStream
     //   518: dup
     //   519: aload_1
     //   520: iload_3
     //   521: iload 6
-    //   523: invokespecial 957	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   523: invokespecial 958	java/io/ByteArrayInputStream:<init>	([BII)V
     //   526: astore 9
-    //   528: new 959	java/io/DataInputStream
+    //   528: new 960	java/io/DataInputStream
     //   531: dup
     //   532: aload 9
-    //   534: invokespecial 962	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   534: invokespecial 963	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   537: astore 10
     //   539: aload 10
-    //   541: invokevirtual 972	java/io/DataInputStream:readInt	()I
+    //   541: invokevirtual 973	java/io/DataInputStream:readInt	()I
     //   544: istore 7
     //   546: aload 10
-    //   548: invokevirtual 965	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   548: invokevirtual 966	java/io/DataInputStream:readUTF	()Ljava/lang/String;
     //   551: astore 8
     //   553: iload 5
     //   555: iconst_3
@@ -1930,7 +1930,7 @@ public final class FMTSrvAddrProvider
     //   619: aload 10
     //   621: astore 12
     //   623: aload 9
-    //   625: invokevirtual 973	java/io/ByteArrayInputStream:close	()V
+    //   625: invokevirtual 974	java/io/ByteArrayInputStream:close	()V
     //   628: aload 10
     //   630: ifnull +24 -> 654
     //   633: aload 9
@@ -1942,7 +1942,7 @@ public final class FMTSrvAddrProvider
     //   645: aload 10
     //   647: astore 12
     //   649: aload 10
-    //   651: invokevirtual 974	java/io/DataInputStream:close	()V
+    //   651: invokevirtual 975	java/io/DataInputStream:close	()V
     //   654: iload_3
     //   655: iload 6
     //   657: iadd
@@ -2019,12 +2019,12 @@ public final class FMTSrvAddrProvider
     //   794: aload 10
     //   796: astore 9
     //   798: aload 8
-    //   800: invokevirtual 973	java/io/ByteArrayInputStream:close	()V
+    //   800: invokevirtual 974	java/io/ByteArrayInputStream:close	()V
     //   803: goto +91 -> 894
     //   806: aload 10
     //   808: astore 9
     //   810: aload_1
-    //   811: invokevirtual 974	java/io/DataInputStream:close	()V
+    //   811: invokevirtual 975	java/io/DataInputStream:close	()V
     //   814: aload 10
     //   816: areturn
     //   817: astore 10
@@ -2035,11 +2035,11 @@ public final class FMTSrvAddrProvider
     //   825: aload 8
     //   827: ifnull +8 -> 835
     //   830: aload 8
-    //   832: invokevirtual 973	java/io/ByteArrayInputStream:close	()V
+    //   832: invokevirtual 974	java/io/ByteArrayInputStream:close	()V
     //   835: aload 9
     //   837: ifnull +8 -> 845
     //   840: aload 9
-    //   842: invokevirtual 974	java/io/DataInputStream:close	()V
+    //   842: invokevirtual 975	java/io/DataInputStream:close	()V
     //   845: aload_1
     //   846: athrow
     //   847: aconst_null
@@ -2051,7 +2051,7 @@ public final class FMTSrvAddrProvider
     //   857: aload_1
     //   858: astore 9
     //   860: aload 10
-    //   862: invokevirtual 973	java/io/ByteArrayInputStream:close	()V
+    //   862: invokevirtual 974	java/io/ByteArrayInputStream:close	()V
     //   865: aload_1
     //   866: astore 9
     //   868: aload 8
@@ -2262,7 +2262,7 @@ public final class FMTSrvAddrProvider
         j += 1;
         arrayOfByte = new byte[2];
         System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 2);
-        j = j + 2 + Utils.a(arrayOfByte, 0);
+        j = j + 2 + Utils.b(arrayOfByte, 0);
         if (j > paramArrayOfByte.length) {
           return false;
         }
@@ -2290,7 +2290,7 @@ public final class FMTSrvAddrProvider
   
   public void onDestroy()
   {
-    this.mRichMediaIpSaver.a();
+    this.mRichMediaIpSaver.b();
     this.mLongMsgIpSaver.destroy();
   }
   
@@ -2319,7 +2319,7 @@ public final class FMTSrvAddrProvider
   {
     paramArrayOfByte = getIpListFromPb(paramArrayOfByte);
     String str = this.mRichMediaIpSaver.a();
-    boolean bool = this.mRichMediaIpSaver.a();
+    boolean bool = this.mRichMediaIpSaver.c();
     FMTSrvAddrProvider.PttIpList localPttIpList = this.mGroupPttIpList;
     if (localPttIpList != null) {
       if (bool)
@@ -2375,7 +2375,7 @@ public final class FMTSrvAddrProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FMTSrvAddrProvider
  * JD-Core Version:    0.7.0.1
  */

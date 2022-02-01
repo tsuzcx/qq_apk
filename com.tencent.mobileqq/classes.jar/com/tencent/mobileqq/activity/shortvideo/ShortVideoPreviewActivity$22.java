@@ -47,7 +47,7 @@ class ShortVideoPreviewActivity$22
       if (this.a.getPlayState() == 2) {
         this.a.resume();
       }
-      this.a.operatorBtnSeekBar.setImageResource(2130846309);
+      this.a.operatorBtnSeekBar.setImageResource(2130847780);
       this.a.mMediaPlayer.a();
       this.a.mMediaPlayer.a(i);
       this.a.updateBarHandler.post(this.a.updateSeekBarThread);
@@ -59,7 +59,7 @@ class ShortVideoPreviewActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.22
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ class CaptureVideoFilterManager$MyHttpListenerforBeauty
     AVLog.printColorLog("CaptureVideoFilterManager", "download file successed.");
     try
     {
-      localObject = CaptureVideoFilterManager.a();
+      localObject = CaptureVideoFilterManager.d();
       FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
       FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
       return;
@@ -51,7 +51,7 @@ class CaptureVideoFilterManager$MyHttpListenerforBeauty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.CaptureVideoFilterManager.MyHttpListenerforBeauty
  * JD-Core Version:    0.7.0.1
  */

@@ -2,50 +2,35 @@ package com.tencent.mobileqq.qqexpand.ipc;
 
 import android.os.Bundle;
 import com.google.gson.Gson;
-import com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandEmotionHelper;
+import com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository.GetConversationListCallback;
+import com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandConverListResponse;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 class ExpandFlutterIPCServer$6
-  implements Runnable
+  implements ExpandChatRepository.GetConversationListCallback
 {
-  ExpandFlutterIPCServer$6(ExpandFlutterIPCServer paramExpandFlutterIPCServer, Bundle paramBundle, int paramInt) {}
+  ExpandFlutterIPCServer$6(ExpandFlutterIPCServer paramExpandFlutterIPCServer, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ExpandConverListResponse paramExpandConverListResponse)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("data");
-    if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
-    {
-      localObject1 = new HashMap(ExpandEmotionHelper.a((List)localObject1));
-      localObject2 = new Gson().toJson(localObject1);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("data", (String)localObject2);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("get sys emoj file path ");
-        localStringBuilder.append((String)localObject2);
-        QLog.d("expand.ipc.ExpandFlutterIPCServer", 1, localStringBuilder.toString());
-      }
-      localObject2 = new EIPCResult();
-      ((EIPCResult)localObject2).data = ((Bundle)localObject1);
-      this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject2);
-      return;
-    }
-    QLog.w("expand.ipc.ExpandFlutterIPCServer", 1, "METHOD_GET_SYS_EMOJI_FILE_PATHparams error");
-    localObject1 = new EIPCResult();
-    Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("data", "");
-    ((EIPCResult)localObject1).data = ((Bundle)localObject2);
-    this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject1);
+    paramString = new StringBuilder();
+    paramString.append("getConversationList response ");
+    paramString.append(paramInt);
+    paramString.append(" callbackId");
+    paramString.append(this.a);
+    QLog.d("expand.ipc.ExpandFlutterIPCServer", 2, paramString.toString());
+    paramExpandConverListResponse = new Gson().toJson(paramExpandConverListResponse);
+    paramString = new Bundle();
+    paramString.putString("response", paramExpandConverListResponse);
+    paramExpandConverListResponse = new EIPCResult();
+    paramExpandConverListResponse.data = paramString;
+    this.b.callbackResult(this.a, paramExpandConverListResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.ipc.ExpandFlutterIPCServer.6
  * JD-Core Version:    0.7.0.1
  */

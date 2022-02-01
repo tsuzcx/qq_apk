@@ -16,17 +16,17 @@ import java.util.List;
 class NetSearchEngine$ParseTask
   implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ISearchListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<byte[]> a;
+  private WeakReference<ISearchListener> b;
+  private String c;
   
   public NetSearchEngine$ParseTask(String paramString, ArrayList<byte[]> paramArrayList, ISearchListener paramISearchListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = paramISearchListener;
+    this.c = paramArrayList;
+    this.a = paramISearchListener;
     Object localObject;
     if (localObject != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
+      this.b = new WeakReference(localObject);
     }
   }
   
@@ -104,8 +104,8 @@ class NetSearchEngine$ParseTask
   
   public void run()
   {
-    List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    List localList = a(this.c, this.a);
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = (ISearchListener)((WeakReference)localObject).get();
@@ -117,7 +117,7 @@ class NetSearchEngine$ParseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask
  * JD-Core Version:    0.7.0.1
  */

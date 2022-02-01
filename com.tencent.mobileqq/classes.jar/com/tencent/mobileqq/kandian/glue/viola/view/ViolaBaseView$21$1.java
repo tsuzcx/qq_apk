@@ -11,26 +11,25 @@ class ViolaBaseView$21$1
   
   public void run()
   {
-    String str2 = ViolaBaseView.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadJSSource process from downJsFromOfflineForNext url: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView$21.a.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b.c.a);
     localStringBuilder.append(" , js source Md5 :");
-    String str1;
-    if (!TextUtils.isEmpty(ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView$21.a))) {
-      str1 = ViolaBaseView.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView$21.a);
+    String str;
+    if (!TextUtils.isEmpty(ViolaBaseView.s(this.b.c))) {
+      str = ViolaBaseView.s(this.b.c);
     } else {
-      str1 = "";
+      str = "";
     }
-    localStringBuilder.append(MD5Utils.toMD5(str1));
+    localStringBuilder.append(MD5Utils.toMD5(str));
     localStringBuilder.append(" js down source MD5 ");
-    localStringBuilder.append(MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString));
-    QLog.d(str2, 2, localStringBuilder.toString());
+    localStringBuilder.append(MD5Utils.toMD5(this.a));
+    QLog.d("ViolaBaseView", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.21.1
  * JD-Core Version:    0.7.0.1
  */

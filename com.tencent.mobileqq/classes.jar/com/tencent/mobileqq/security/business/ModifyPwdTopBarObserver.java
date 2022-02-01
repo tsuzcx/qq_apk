@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ModifyPwdTopBarObserver
   implements BusinessObserver
 {
-  public final String b = "ModifyPwdTopBarObserver";
+  public final String f = "ModifyPwdTopBarObserver";
   
   private void a(boolean paramBoolean, Object paramObject)
   {
@@ -36,7 +36,7 @@ public class ModifyPwdTopBarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.security.business.ModifyPwdTopBarObserver
  * JD-Core Version:    0.7.0.1
  */

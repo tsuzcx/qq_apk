@@ -16,10 +16,10 @@ class ChannelCoverView$4
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      paramView = this.jdField_a_of_type_AndroidContentContext;
+      paramView = this.a;
       int i;
       if ((paramView != null) && ((paramView instanceof Activity)) && (((Activity)paramView).getIntent() != null)) {
-        i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);
+        i = ((Activity)this.a).getIntent().getIntExtra("channel_from", -1);
       } else {
         i = 0;
       }
@@ -30,7 +30,7 @@ class ChannelCoverView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelcover.ChannelCoverView.4
  * JD-Core Version:    0.7.0.1
  */

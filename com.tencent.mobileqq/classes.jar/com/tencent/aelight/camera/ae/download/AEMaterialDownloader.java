@@ -33,22 +33,22 @@ public class AEMaterialDownloader
       if (paramAppInterface == null) {
         return;
       }
-      paramAEMaterialMetaData.a = System.currentTimeMillis();
-      paramAEMaterialMetaData.f = true;
+      paramAEMaterialMetaData.D = System.currentTimeMillis();
+      paramAEMaterialMetaData.B = true;
       HttpNetReq localHttpNetReq = new HttpNetReq();
       localHttpNetReq.mCallback = new AEMaterialDownloader.DownloadListener(paramAEMaterialMetaData, paramString, paramMaterialDownloadListener);
-      localHttpNetReq.mReqUrl = paramAEMaterialMetaData.n;
+      localHttpNetReq.mReqUrl = paramAEMaterialMetaData.r;
       localHttpNetReq.mHttpMethod = 0;
-      if (paramAEMaterialMetaData.p == null)
+      if (paramAEMaterialMetaData.t == null)
       {
         paramAppInterface = a;
         paramString = new StringBuilder();
         paramString.append("startDownloadMaterial fail, info.name is null, url:");
-        paramString.append(paramAEMaterialMetaData.n);
+        paramString.append(paramAEMaterialMetaData.r);
         QLog.i(paramAppInterface, 1, paramString.toString());
         return;
       }
-      localHttpNetReq.mOutPath = new File(paramString, paramAEMaterialMetaData.p).getPath();
+      localHttpNetReq.mOutPath = new File(paramString, paramAEMaterialMetaData.t).getPath();
       localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
       localHttpNetReq.mExcuteTimeLimit = 60000L;
       try
@@ -67,7 +67,7 @@ public class AEMaterialDownloader
         paramAppInterface = a;
         paramString = new StringBuilder();
         paramString.append("startDownloadMaterial url: ");
-        paramString.append(paramAEMaterialMetaData.n);
+        paramString.append(paramAEMaterialMetaData.r);
         QLog.i(paramAppInterface, 2, paramString.toString());
       }
     }
@@ -75,7 +75,7 @@ public class AEMaterialDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEMaterialDownloader
  * JD-Core Version:    0.7.0.1
  */

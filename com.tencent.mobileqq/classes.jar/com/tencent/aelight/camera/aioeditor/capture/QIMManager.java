@@ -22,13 +22,13 @@ import mqq.app.AppRuntime;
 
 public class QIMManager
 {
+  private final IQIMManager[] a = new IQIMManager[15];
   @SuppressLint({"UseSparseArrays"})
-  private final HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final IQIMManager[] jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager = new IQIMManager[15];
+  private final HashMap<Integer, Object> b = new HashMap();
   
   public static IQIMManager a(int paramInt)
   {
-    return QIMManager.InstanceHolder.a().c(paramInt);
+    return QIMManager.InstanceHolder.a().d(paramInt);
   }
   
   public static QIMManager a()
@@ -36,21 +36,17 @@ public class QIMManager
     return QIMManager.InstanceHolder.a();
   }
   
-  public static AppInterface a()
+  public static IQIMManager b(int paramInt)
   {
-    return (AppInterface)a();
+    return QIMManager.InstanceHolder.a().a[paramInt];
   }
   
-  private static AppRuntime a()
+  public static AppInterface c()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return localAppRuntime;
-    }
-    return BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+    return (AppInterface)e();
   }
   
-  private boolean a()
+  private boolean d()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (QLog.isColorLevel())
@@ -63,33 +59,37 @@ public class QIMManager
     return ((localAppRuntime instanceof QQAppInterface)) || ((localAppRuntime instanceof ToolRuntimePeak));
   }
   
-  public static IQIMManager b(int paramInt)
+  private static AppRuntime e()
   {
-    return QIMManager.InstanceHolder.a().jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[paramInt];
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return localAppRuntime;
+    }
+    return BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
   }
   
-  public void a()
+  public void b()
   {
     int i = 0;
     for (;;)
     {
-      Object localObject3 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager;
+      Object localObject3 = this.a;
       if (i < localObject3.length) {
         try
         {
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new Object());
+          if (!this.b.containsKey(Integer.valueOf(i))) {
+            this.b.put(Integer.valueOf(i), new Object());
           }
-          Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+          Object localObject1 = this.b.get(Integer.valueOf(i));
           try
           {
-            localObject3 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[i];
+            localObject3 = this.a[i];
             if (localObject3 != null)
             {
               SLog.b("QIMManager", "destroy manager : %s", localObject3);
-              ((IQIMManager)localObject3).b();
+              ((IQIMManager)localObject3).d();
             }
-            this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[i] = null;
+            this.a[i] = null;
             i += 1;
             continue;
           }
@@ -101,31 +101,31 @@ public class QIMManager
     }
   }
   
-  public boolean a(int paramInt)
+  public boolean c(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[paramInt] != null;
+    return this.a[paramInt] != null;
   }
   
-  public IQIMManager c(int paramInt)
+  public IQIMManager d(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager;
+    Object localObject1 = this.a;
     Object localObject3 = localObject1[paramInt];
     if (localObject3 == null) {}
     for (;;)
     {
       try
       {
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new Object());
+        if (!this.b.containsKey(Integer.valueOf(paramInt))) {
+          this.b.put(Integer.valueOf(paramInt), new Object());
         }
-        localObject3 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        localObject3 = this.b.get(Integer.valueOf(paramInt));
         try
         {
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[paramInt];
+          localObject1 = this.a[paramInt];
           if (localObject1 != null) {
             return localObject1;
           }
-          if (a()) {}
+          if (d()) {}
           switch (paramInt)
           {
           case 14: 
@@ -157,10 +157,10 @@ public class QIMManager
             break;
           case 1: 
             localObject1 = new QIMPasterConfigManager();
-            this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureIQIMManager[paramInt] = localObject1;
+            this.a[paramInt] = localObject1;
             if (localObject1 != null)
             {
-              ((IQIMManager)localObject1).a();
+              ((IQIMManager)localObject1).c();
               SLog.b("QIMManager", "onInit manager : %s", localObject1);
             }
             return localObject1;
@@ -176,7 +176,7 @@ public class QIMManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.QIMManager
  * JD-Core Version:    0.7.0.1
  */

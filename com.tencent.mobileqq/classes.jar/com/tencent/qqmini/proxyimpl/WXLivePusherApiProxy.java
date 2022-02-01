@@ -26,38 +26,43 @@ import org.json.JSONObject;
 public class WXLivePusherApiProxy
   implements IWXLivePusherProxy
 {
-  private final WXLivePushConfig jdField_a_of_type_ComTencentRtmpWXLivePushConfig = new WXLivePushConfig();
-  private WXLivePusher jdField_a_of_type_ComTencentRtmpWXLivePusher;
+  private WXLivePusher a;
+  private final WXLivePushConfig b = new WXLivePushConfig();
   
   public void enableAGC(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.enableAGC(paramBoolean);
+    this.b.enableAGC(paramBoolean);
   }
   
   public void enableANS(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.enableANS(paramBoolean);
+    this.b.enableANS(paramBoolean);
   }
   
   public void enableAudioEarMonitoring(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.enableAudioEarMonitoring(paramBoolean);
+    this.b.enableAudioEarMonitoring(paramBoolean);
   }
   
   public void enablePureAudioPush(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.enablePureAudioPush(paramBoolean);
+    this.b.enablePureAudioPush(paramBoolean);
   }
   
   public void initInstance(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher = new WXLivePusher(paramContext);
-    setConfig();
+    try
+    {
+      this.a = new WXLivePusher(paramContext);
+      setConfig();
+      return;
+    }
+    finally {}
   }
   
   public boolean isPushing()
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.isPushing();
+    return this.a.isPushing();
   }
   
   public Object newITXLivePushListener(TXLivePushListenerReflect.ITXLivePushListener paramITXLivePushListener)
@@ -83,111 +88,111 @@ public class WXLivePusherApiProxy
   
   public boolean pauseBGM()
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.pauseBGM();
+    return this.a.pauseBGM();
   }
   
   public void pausePusher()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.pausePusher();
+    this.a.pausePusher();
   }
   
   public boolean playBGM(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.playBGM(paramString);
+    return this.a.playBGM(paramString);
   }
   
   public boolean resumeBGM()
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.resumeBGM();
+    return this.a.resumeBGM();
   }
   
   public void resumePusher()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.resumePusher();
+    this.a.resumePusher();
   }
   
   public boolean sendMessageEx(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.sendMessageEx(paramArrayOfByte);
+    return this.a.sendMessageEx(paramArrayOfByte);
   }
   
   public void setAudioSampleRate(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setAudioSampleRate(paramInt);
+    this.b.setAudioSampleRate(paramInt);
   }
   
   public void setBGMNofify(Object paramObject)
   {
     if ((paramObject instanceof TXLivePusher.OnBGMNotify)) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setBGMNofify((TXLivePusher.OnBGMNotify)paramObject);
+      this.a.setBGMNofify((TXLivePusher.OnBGMNotify)paramObject);
     }
   }
   
   public void setBGMPosition(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setBGMPosition(paramInt);
+    this.a.setBGMPosition(paramInt);
   }
   
   public boolean setBGMVolume(float paramFloat)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setBGMVolume(paramFloat);
+    return this.a.setBGMVolume(paramFloat);
   }
   
   public void setBeautyFilter(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setBeautyFilter(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.setBeautyFilter(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setConfig()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setConfig(this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig);
+    this.a.setConfig(this.b);
   }
   
   public void setEnableCamera(JSONObject paramJSONObject, Object paramObject)
   {
     if ((paramJSONObject != null) && (paramJSONObject.optBoolean("enable-camera", true)) && ((paramObject instanceof TXCloudVideoView))) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.startCameraPreview((TXCloudVideoView)paramObject);
+      this.a.startCameraPreview((TXCloudVideoView)paramObject);
     }
   }
   
   public void setEnableZoom(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setEnableZoom(paramBoolean);
+    this.b.setEnableZoom(paramBoolean);
   }
   
   public void setFrontCamera(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setFrontCamera(paramBoolean);
+    this.b.setFrontCamera(paramBoolean);
   }
   
   public void setHomeOrientation(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setHomeOrientation(paramInt);
+    this.b.setHomeOrientation(paramInt);
   }
   
   public void setLocalVideoMirrorType(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setLocalVideoMirrorType(paramInt);
+    this.b.setLocalVideoMirrorType(paramInt);
   }
   
   public void setMaxVideoBitrate(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setMaxVideoBitrate(paramInt);
+    this.b.setMaxVideoBitrate(paramInt);
   }
   
   public void setMicVolume(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setMicVolume(paramFloat);
+    this.a.setMicVolume(paramFloat);
   }
   
   public void setMinVideoBitrate(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setMinVideoBitrate(paramInt);
+    this.b.setMinVideoBitrate(paramInt);
   }
   
   public void setMirror(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setMirror(paramBoolean);
+    this.a.setMirror(paramBoolean);
   }
   
   public void setMode(JSONObject paramJSONObject)
@@ -215,156 +220,179 @@ public class WXLivePusherApiProxy
         localStringBuilder.append(paramJSONObject);
         QMLog.w("WXLivePusherApiProxy", localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setVideoQuality(i, true, true);
+      this.a.setVideoQuality(i, true, true);
     }
   }
   
   public void setMuted(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setMute(paramBoolean);
+    this.a.setMute(paramBoolean);
   }
   
   public void setPauseFlag(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setPauseFlag(paramInt);
+    this.b.setPauseFlag(paramInt);
   }
   
   public void setPauseImg(Bitmap paramBitmap)
   {
     if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setPauseImg(paramBitmap);
+      this.b.setPauseImg(paramBitmap);
     }
   }
   
   public void setPushListener(Object paramObject)
   {
     if ((paramObject instanceof ITXLivePushListener)) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setPushListener((ITXLivePushListener)paramObject);
+      this.a.setPushListener((ITXLivePushListener)paramObject);
     }
   }
   
   public void setPusherUrl(String paramString)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setPusherUrl(paramString);
+    this.a.setPusherUrl(paramString);
   }
   
   public void setRenderRotation(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setRenderRotation(paramInt);
+    this.a.setRenderRotation(paramInt);
   }
   
   public void setReverb(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setReverb(paramInt);
+    this.a.setReverb(paramInt);
   }
   
   public void setSurface(Surface paramSurface)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setSurface(paramSurface);
+    this.a.setSurface(paramSurface);
   }
   
   public void setSurfaceSize(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setSurfaceSize(paramInt1, paramInt2);
+    this.a.setSurfaceSize(paramInt1, paramInt2);
   }
   
   public void setTouchFocus(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setTouchFocus(paramBoolean);
+    this.b.setTouchFocus(paramBoolean);
   }
   
   public void setVideoEncodeGop(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setVideoEncodeGop(paramInt);
+    this.b.setVideoEncodeGop(paramInt);
   }
   
   public void setVideoQuality(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.setVideoQuality(paramInt, paramBoolean1, paramBoolean2);
+    this.a.setVideoQuality(paramInt, paramBoolean1, paramBoolean2);
   }
   
   public void setVideoResolution(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setVideoResolution(paramInt);
+    this.b.setVideoResolution(paramInt);
   }
   
   public void setVideoResolution(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setVideoResolution(paramInt1, paramInt2);
+    this.b.setVideoResolution(paramInt1, paramInt2);
   }
   
   public void setVolumeType(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setVolumeType(paramInt);
+    this.b.setVolumeType(paramInt);
   }
   
   public void setWatermark(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePushConfig.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
+    this.b.setWatermark(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void showDebugLog(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.showDebugLog(paramBoolean);
+    this.a.showDebugLog(paramBoolean);
   }
   
   public void snapshot(Object paramObject)
   {
     if ((paramObject instanceof TXLivePusher.ITXSnapshotListener)) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.snapshot((TXLivePusher.ITXSnapshotListener)paramObject);
+      this.a.snapshot((TXLivePusher.ITXSnapshotListener)paramObject);
     }
   }
   
   public void startAudioRecord()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.startAudioRecord();
+    this.a.startAudioRecord();
   }
   
   public void startCameraPreview(Object paramObject)
   {
-    if ((paramObject instanceof TXCloudVideoView)) {
-      this.jdField_a_of_type_ComTencentRtmpWXLivePusher.startCameraPreview((TXCloudVideoView)paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startCameraPreview: ");
+    localStringBuilder.append(paramObject);
+    QMLog.e("WXLivePusherApiProxy", localStringBuilder.toString());
+    if (!(paramObject instanceof TXCloudVideoView))
+    {
+      this.a.startCameraPreview(null);
+      return;
     }
+    this.a.startCameraPreview((TXCloudVideoView)paramObject);
   }
   
   public int startDumpAudioData(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.startDumpAudioData(paramString);
+    return this.a.startDumpAudioData(paramString);
   }
   
   public boolean startPusher(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.startPusher(paramString) == 0;
+    return this.a.startPusher(paramString) == 0;
   }
   
   public void stopAudioRecord()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.stopAudioRecord();
+    this.a.stopAudioRecord();
   }
   
   public boolean stopBGM()
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.stopBGM();
+    return this.a.stopBGM();
   }
   
   public void stopCameraPreview(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.stopCameraPreview(paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopCameraPreview: ");
+    localStringBuilder.append(paramBoolean);
+    QMLog.e("WXLivePusherApiProxy", localStringBuilder.toString());
+    this.a.stopCameraPreview(paramBoolean);
   }
   
   public void stopDumpAudioData()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.stopDumpAudioData();
+    this.a.stopDumpAudioData();
   }
   
   public void stopPusher()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.stopPusher();
+    try
+    {
+      this.a.stopPusher();
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop pusher exception: ");
+      localStringBuilder.append(localException.getMessage());
+      QMLog.i("WXLivePusherApiProxy", localStringBuilder.toString());
+    }
   }
   
   public void switchCamera()
   {
-    this.jdField_a_of_type_ComTencentRtmpWXLivePusher.switchCamera();
+    QMLog.e("WXLivePusherApiProxy", "switchCamera...");
+    this.a.switchCamera();
   }
   
   public void toggleTorch(Object paramObject)
@@ -374,7 +402,7 @@ public class WXLivePusherApiProxy
   
   public boolean turnOnFlashLight(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentRtmpWXLivePusher.turnOnFlashLight(paramBoolean);
+    return this.a.turnOnFlashLight(paramBoolean);
   }
   
   public void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
@@ -393,7 +421,7 @@ public class WXLivePusherApiProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WXLivePusherApiProxy
  * JD-Core Version:    0.7.0.1
  */

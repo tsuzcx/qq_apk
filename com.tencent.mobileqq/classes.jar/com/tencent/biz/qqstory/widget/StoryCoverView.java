@@ -19,7 +19,7 @@ public class StoryCoverView
   extends FrameLayout
 {
   public ImageView a;
-  public PollContainerLayout a;
+  public PollContainerLayout b;
   
   public StoryCoverView(@NonNull Context paramContext)
   {
@@ -29,23 +29,23 @@ public class StoryCoverView
   public StoryCoverView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.a = new ImageView(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
     FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1);
     FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(-1, -1);
     new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams1);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout = new PollContainerLayout(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(true);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.setClickable(false);
-    addView(this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout, localLayoutParams2);
+    addView(this.a, localLayoutParams1);
+    this.b = new PollContainerLayout(paramContext);
+    this.b.a(true);
+    this.b.setClickable(false);
+    addView(this.b, localLayoutParams2);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 0 });
     int i = paramContext.getInt(0, -1);
     if (i >= 0)
     {
       paramAttributeSet = ImageView.ScaleType.values();
       if (paramAttributeSet.length > i) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(paramAttributeSet[i]);
+        this.a.setScaleType(paramAttributeSet[i]);
       }
     }
     paramContext.recycle();
@@ -59,7 +59,7 @@ public class StoryCoverView
   
   public void setCoverUrl(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Qim_Profile_Story");
     localStringBuilder.append(paramInt1);
@@ -72,12 +72,12 @@ public class StoryCoverView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.a.setImageDrawable(paramDrawable);
   }
   
   public void setPollLayout(StoryVideoItem.PollLayout paramPollLayout, int paramInt, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(paramPollLayout, paramInt, paramArrayOfInt);
+    this.b.a(paramPollLayout, paramInt, paramArrayOfInt);
   }
   
   public void setRateLayout(StoryVideoItem.InteractPasterLayout paramInteractPasterLayout, int paramInt1, long paramLong, int paramInt2)

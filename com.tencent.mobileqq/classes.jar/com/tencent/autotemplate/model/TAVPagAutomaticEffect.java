@@ -97,7 +97,7 @@ public class TAVPagAutomaticEffect
     if (f2 < 0.0F) {
       f1 = 0.0F;
     }
-    localTAVMovieSticker.setTimeRange(new CMTimeRange(new CMTime(f1 / 1000.0F), new CMTime(paramFloat / 1000.0F)));
+    localTAVMovieSticker.setTimeRange(CMTimeRange.fromMs(f1, paramFloat));
     return localTAVMovieSticker;
   }
   

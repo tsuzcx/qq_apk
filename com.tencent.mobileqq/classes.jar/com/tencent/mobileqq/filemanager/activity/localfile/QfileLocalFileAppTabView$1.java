@@ -10,7 +10,7 @@ class QfileLocalFileAppTabView$1
   
   public void run()
   {
-    if (this.this$0.a())
+    if (this.this$0.getAccessAppListPermission())
     {
       QfileLocalFileAppTabView.a(this.this$0);
       return;
@@ -20,7 +20,7 @@ class QfileLocalFileAppTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1
  * JD-Core Version:    0.7.0.1
  */

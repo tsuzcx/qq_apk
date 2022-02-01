@@ -13,13 +13,13 @@ class ReadInJoySettingActivity$12
     if (!paramCompoundButton.isPressed()) {
       return;
     }
-    ReadInJoySettingActivity.c(this.a, paramBoolean ^ true);
-    ReadInJoySettingActivity.d(this.a, paramBoolean);
+    ReadInJoySettingActivity.f(this.a, paramBoolean ^ true);
+    ReadInJoySettingActivity.g(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.12
  * JD-Core Version:    0.7.0.1
  */

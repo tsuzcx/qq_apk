@@ -24,22 +24,12 @@ import org.jetbrains.annotations.Nullable;
 public final class VasAdvWSVerticalViewHolder
   extends WSVerticalCommonVideoHolder
 {
-  public static final VasAdvWSVerticalViewHolder.Companion a;
-  private VasAdvWSVerticalItemView a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoVasVasAdvWSVerticalViewHolder$Companion = new VasAdvWSVerticalViewHolder.Companion(null);
-  }
+  public static final VasAdvWSVerticalViewHolder.Companion a = new VasAdvWSVerticalViewHolder.Companion(null);
+  private VasAdvWSVerticalItemView b;
   
   public VasAdvWSVerticalViewHolder(@Nullable ViewGroup paramViewGroup, int paramInt, @Nullable WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
-  
-  public int a()
-  {
-    return 0;
   }
   
   public int a(@Nullable stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -47,95 +37,90 @@ public final class VasAdvWSVerticalViewHolder
     return -1;
   }
   
+  protected boolean a()
+  {
+    return true;
+  }
+  
   @Nullable
-  public AbsWSVideoItemView a(int paramInt)
+  public AbsWSVideoItemView b(int paramInt)
   {
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoVasVasAdvWSVerticalItemView = new VasAdvWSVerticalItemView(localContext, (WSVerticalVideoHolder)this);
-    return (AbsWSVideoItemView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoVasVasAdvWSVerticalItemView;
+    this.b = new VasAdvWSVerticalItemView(localContext, (WSVerticalVideoHolder)this);
+    return (AbsWSVideoItemView)this.b;
   }
   
-  public void a()
+  public void c()
   {
-    super.a();
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    super.c();
+    if (this.e != null)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangObject;
+      Object localObject = this.e;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "mItemData");
-      stSimpleMetaFeed localstSimpleMetaFeed = ((WSVerticalItemData)localObject).a();
+      stSimpleMetaFeed localstSimpleMetaFeed = ((WSVerticalItemData)localObject).b();
       localObject = localstSimpleMetaFeed;
       if (!(localstSimpleMetaFeed instanceof stSimpleMetaFeed)) {
         localObject = null;
       }
       if ((localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoVasVasAdvWSVerticalItemView;
+        localObject = this.b;
         if (localObject != null) {
           ((VasAdvWSVerticalItemView)localObject).e();
         }
-        localObject = this.jdField_a_of_type_JavaLangObject;
+        localObject = this.e;
         Intrinsics.checkExpressionValueIsNotNull(localObject, "mItemData");
-        ((WSVerticalItemData)localObject).a().isGdtAdVidoReport = false;
+        ((WSVerticalItemData)localObject).e().isGdtAdVidoReport = false;
       }
     }
     WSLog.a("VasAdWSVerticalViewHolder", "onDoResume: ");
   }
   
-  protected boolean a()
+  public void d()
   {
-    return true;
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    super.d();
+    if (this.e != null)
     {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      Object localObject1 = this.e;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mItemData");
-      Object localObject2 = ((WSVerticalItemData)localObject1).a();
+      Object localObject2 = ((WSVerticalItemData)localObject1).b();
       localObject1 = localObject2;
       if (!(localObject2 instanceof stSimpleMetaFeed)) {
         localObject1 = null;
       }
-      localObject2 = this.jdField_a_of_type_JavaLangObject;
+      localObject2 = this.e;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "mItemData");
-      if ((((WSVerticalItemData)localObject2).a() != null) && (localObject1 != null) && (((stSimpleMetaFeed)localObject1).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject1).gdt_ad_info != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null))
+      if ((((WSVerticalItemData)localObject2).e() != null) && (localObject1 != null) && (((stSimpleMetaFeed)localObject1).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject1).gdt_ad_info != null) && (this.f != null) && (this.f.d != null))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangObject;
+        localObject1 = this.e;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "mItemData");
-        if (((WSVerticalItemData)localObject1).a().isGdtAdclicked)
+        if (((WSVerticalItemData)localObject1).e().isGdtAdclicked)
         {
-          GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false, 2);
-          localObject1 = this.jdField_a_of_type_JavaLangObject;
+          GdtAdWsVideoReport.a((WSVerticalItemData)this.e, this.f, false, 2);
+          localObject1 = this.e;
           Intrinsics.checkExpressionValueIsNotNull(localObject1, "mItemData");
-          ((WSVerticalItemData)localObject1).a().isGdtAdclicked = false;
+          ((WSVerticalItemData)localObject1).e().isGdtAdclicked = false;
         }
         else
         {
-          GdtAdWsVideoReport.a((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false, 3);
+          GdtAdWsVideoReport.a((WSVerticalItemData)this.e, this.f, false, 3);
         }
-        localObject1 = this.jdField_a_of_type_JavaLangObject;
+        localObject1 = this.e;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "mItemData");
-        ((WSVerticalItemData)localObject1).a().isGdtAdVidoReport = true;
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
+        ((WSVerticalItemData)localObject1).e().isGdtAdVidoReport = true;
+        localObject1 = this.f;
+        localObject2 = this.f.d;
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "mPlayerParam.mVideoPlayer");
-        ((WSPlayerParam)localObject1).jdField_a_of_type_Long = ((WSPlayerWrapper)localObject2).a();
+        ((WSPlayerParam)localObject1).g = ((WSPlayerWrapper)localObject2).m();
       }
     }
     WSLog.a("VasAdWSVerticalViewHolder", "onDoPause: ");
   }
   
-  protected boolean b()
+  public void e()
   {
-    return false;
-  }
-  
-  public void c()
-  {
-    VasAdvWSVerticalItemView localVasAdvWSVerticalItemView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoVasVasAdvWSVerticalItemView;
+    VasAdvWSVerticalItemView localVasAdvWSVerticalItemView = this.b;
     if (localVasAdvWSVerticalItemView != null)
     {
       ((IVasAdvWeb)QRoute.api(IVasAdvWeb.class)).unsubscribeAll("ws_video_ad_h5_cover");
@@ -144,12 +129,22 @@ public final class VasAdvWSVerticalViewHolder
     ((IVasAdvWeb)QRoute.api(IVasAdvWeb.class)).removeWebView();
     ((IVasAdvApi)QRoute.api(IVasAdvApi.class)).unregisterAppReceiver();
     WSLog.a("VasAdWSVerticalViewHolder", "onDoDestroy: ");
-    super.c();
+    super.e();
+  }
+  
+  public int f()
+  {
+    return 0;
+  }
+  
+  protected boolean g()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.vas.VasAdvWSVerticalViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ class TroopPickerViewHelper$2
   
   public void onClick(View paramView)
   {
-    if ((TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).isShowing())) {
-      TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).dismiss();
+    if ((TroopPickerViewHelper.d(this.b) != null) && (TroopPickerViewHelper.d(this.b).isShowing())) {
+      TroopPickerViewHelper.d(this.b).dismiss();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener.a(TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).getTimeInMillis());
+    if ((this.a != null) && (TroopPickerViewHelper.b(this.b) != null)) {
+      this.a.a(TroopPickerViewHelper.b(this.b).getTimeInMillis());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.2
  * JD-Core Version:    0.7.0.1
  */

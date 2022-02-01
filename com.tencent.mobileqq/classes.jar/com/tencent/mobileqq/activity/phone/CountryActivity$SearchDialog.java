@@ -22,12 +22,12 @@ class CountryActivity$SearchDialog
   extends ReportDialog
   implements TextWatcher, View.OnClickListener, View.OnTouchListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CountryActivity.SearchAdapter jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  EditText a;
+  ImageButton b;
+  private ListView d;
+  private CountryActivity.SearchAdapter e;
+  private TextView f;
+  private View g;
   
   public CountryActivity$SearchDialog(CountryActivity paramCountryActivity, Context paramContext)
   {
@@ -35,60 +35,60 @@ class CountryActivity$SearchDialog
     requestWindowFeature(1);
     getWindow().setSoftInputMode(36);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131558927);
+    setContentView(2131624557);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;
     paramContext.width = -1;
     paramContext.windowAnimations = 16973824;
     paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131363868);
+    this.a = ((EditText)findViewById(2131432634));
+    this.a.addTextChangedListener(this);
+    this.a.setSelection(0);
+    this.a.requestFocus();
+    this.b = ((ImageButton)findViewById(2131435215));
+    this.b.setOnClickListener(this);
+    paramContext = (Button)findViewById(2131429816);
     paramContext.setVisibility(0);
     paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376483);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371921));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718604);
-    findViewById(2131377060).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131377082));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter = new CountryActivity.SearchAdapter(paramCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+    this.g = findViewById(2131444724);
+    this.f = ((TextView)findViewById(2131439366));
+    this.f.setCompoundDrawables(null, null, null, null);
+    this.f.setText(2131916105);
+    findViewById(2131445429).setVisibility(8);
+    this.d = ((ListView)findViewById(2131445451));
+    this.e = new CountryActivity.SearchAdapter(paramCountryActivity, null);
+    this.d.setAdapter(this.e);
+    this.d.setOnTouchListener(this);
   }
   
   void a(String paramString)
   {
     if ((!paramString.equals("")) && (paramString.trim().length() != 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter.a(paramString);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter.getCount() == 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setVisibility(0);
+      this.e.a(paramString);
+      if (this.e.getCount() == 0) {
+        this.f.setVisibility(0);
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.f.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchAdapter.notifyDataSetChanged();
+      this.e.notifyDataSetChanged();
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    paramEditable = this.a.getText().toString().trim();
     a(paramEditable);
     if (paramEditable.equals(""))
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.b.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.b.setVisibility(0);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -98,13 +98,13 @@ class CountryActivity$SearchDialog
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 200	android/app/Dialog:dismiss	()V
+    //   1: invokespecial 206	android/app/Dialog:dismiss	()V
     //   4: aload_0
-    //   5: invokestatic 205	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 211	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_1
     //   10: aload_0
-    //   11: invokestatic 205	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 211	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   14: aload_1
     //   15: athrow
     //   16: astore_1
@@ -123,10 +123,10 @@ class CountryActivity$SearchDialog
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131363868)
+    if (i != 2131429816)
     {
-      if (i == 2131368340) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      if (i == 2131435215) {
+        this.a.setText("");
       }
     }
     else {
@@ -139,13 +139,13 @@ class CountryActivity$SearchDialog
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    ((InputMethodManager)this.c.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.CountryActivity.SearchDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -12,52 +12,52 @@ public class NearbyRedDotCustomInfoImpl
   
   public String getContentMsg()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_a_of_type_JavaLangString;
+    return this.mNearbyRedDotCustomInfo.f;
   }
   
   public int getContentType()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_b_of_type_Int;
+    return this.mNearbyRedDotCustomInfo.d;
   }
   
   public String getFaceUrl()
   {
-    return this.mNearbyRedDotCustomInfo.d;
+    return this.mNearbyRedDotCustomInfo.i;
   }
   
   public boolean getIsOfficialNotify()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_b_of_type_Boolean;
+    return this.mNearbyRedDotCustomInfo.c;
   }
   
   public boolean getIsOfficialNum()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_a_of_type_Boolean;
+    return this.mNearbyRedDotCustomInfo.b;
   }
   
   public String getRecommendPeopleMsgId()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_c_of_type_JavaLangString;
+    return this.mNearbyRedDotCustomInfo.h;
   }
   
   public int getRedDotNum()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_a_of_type_Int;
+    return this.mNearbyRedDotCustomInfo.a;
   }
   
   public String getTopicId()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_b_of_type_JavaLangString;
+    return this.mNearbyRedDotCustomInfo.g;
   }
   
   public long getUin()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_a_of_type_Long;
+    return this.mNearbyRedDotCustomInfo.j;
   }
   
   public int getUserType()
   {
-    return this.mNearbyRedDotCustomInfo.jdField_c_of_type_Int;
+    return this.mNearbyRedDotCustomInfo.e;
   }
   
   public void parse(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
@@ -72,7 +72,7 @@ public class NearbyRedDotCustomInfoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.impl.NearbyRedDotCustomInfoImpl
  * JD-Core Version:    0.7.0.1
  */

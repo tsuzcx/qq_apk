@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.recent.bannerprocessor;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import com.tencent.mobileqq.upgrade.NewUpgradeConfig;
 import com.tencent.mobileqq.upgrade.NewUpgradeConfig.Dialog;
 import com.tencent.mobileqq.upgrade.UpgradeController;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.utils.QQTheme;
 import java.util.Date;
 import mqq.app.AppRuntime;
 
@@ -23,12 +25,7 @@ import mqq.app.AppRuntime;
 public class UpgradeBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.o;
-  }
+  public static final int a = BannerTypeCollections.o;
   
   public UpgradeBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -37,34 +34,36 @@ public class UpgradeBannerProcessor
   
   private void a(Message paramMessage)
   {
-    UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().a();
-    if (localUpgradeDetailWrapper.a == null) {
+    UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().d();
+    if (localUpgradeDetailWrapper.f == null) {
       return;
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getPreferences();
+    SharedPreferences localSharedPreferences = this.f.getAppRuntime().getPreferences();
     long l1 = localSharedPreferences.getLong("YELLOW_BAR_LAST_SHOW", 0L);
     long l2 = new Date().getTime();
-    if (l2 - l1 > localUpgradeDetailWrapper.a.dialog.b * 24 * 60 * 60 * 1000)
+    if (l2 - l1 > localUpgradeDetailWrapper.f.dialog.j * 24 * 60 * 60 * 1000)
     {
-      BannerManager.a().a(jdField_a_of_type_Int, 2, paramMessage);
+      BannerManager.a().a(a, 2, paramMessage);
       localSharedPreferences.edit().putLong("YELLOW_BAR_LAST_SHOW", l2);
     }
   }
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131563012, null);
-    TextView localTextView = (TextView)paramBanner.findViewById(2131380229);
+    paramBanner = View.inflate(this.f, 2131629620, null);
+    TextView localTextView = (TextView)paramBanner.findViewById(2131449147);
     localTextView.setOnClickListener(new UpgradeBannerProcessor.1(this));
-    localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131720137));
-    ((ImageView)paramBanner.findViewById(2131364728)).setOnClickListener(new UpgradeBannerProcessor.2(this));
-    paramBanner.findViewById(2131380228).setVisibility(8);
+    localTextView.setText(this.f.getString(2131917767));
+    ImageView localImageView = (ImageView)paramBanner.findViewById(2131430835);
+    if (QQTheme.isNowThemeSimpleNight())
+    {
+      localTextView.setTextColor(Color.parseColor("#FFFFFF"));
+      localTextView.setBackgroundColor(Color.parseColor("#1A1A1A"));
+      localImageView.setBackgroundColor(Color.parseColor("#999999"));
+    }
+    localImageView.setOnClickListener(new UpgradeBannerProcessor.2(this));
+    paramBanner.findViewById(2131449146).setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
@@ -76,17 +75,22 @@ public class UpgradeBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.findViewById(2131380228).setVisibility(0);
+    paramBanner.c.findViewById(2131449146).setVisibility(0);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -30,15 +30,10 @@ import org.json.JSONObject;
 public final class NewPtsViewCreator
   implements ItemCreator
 {
-  public static final NewPtsViewCreator.Companion a;
-  private final PtsItemViewEventListener jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemPtsItemViewEventListener = new PtsItemViewEventListener();
-  private final ArrayList<PtsData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemNewPtsViewCreator$Companion = new NewPtsViewCreator.Companion(null);
-  }
+  public static final NewPtsViewCreator.Companion a = new NewPtsViewCreator.Companion(null);
+  private final HashMap<String, Integer> b = new HashMap();
+  private final PtsItemViewEventListener c = new PtsItemViewEventListener();
+  private final ArrayList<PtsData> d = new ArrayList();
   
   private final String a(String paramString)
   {
@@ -52,27 +47,6 @@ public final class NewPtsViewCreator
       localObject = paramString.toString();
     }
     return localObject;
-  }
-  
-  public int a(@Nullable BaseData paramBaseData)
-  {
-    Object localObject = paramBaseData;
-    if (!(paramBaseData instanceof PtsData)) {
-      localObject = null;
-    }
-    paramBaseData = (PtsData)localObject;
-    if (paramBaseData != null)
-    {
-      localObject = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramBaseData.b);
-      if (localObject != null) {
-        return ((Integer)localObject).intValue();
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[getViewType] error, pageName = ");
-      ((StringBuilder)localObject).append(paramBaseData.b);
-      QLog.e("NewPtsViewCreator", 1, ((StringBuilder)localObject).toString());
-    }
-    return -1;
   }
   
   @Nullable
@@ -92,7 +66,7 @@ public final class NewPtsViewCreator
       paramContext = new PTSItemView(paramContext);
       paramViewGroup = paramViewGroup.a;
       if (paramViewGroup != null) {
-        paramViewGroup.layoutToView(paramContext, (IPTSLiteEventListener)this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemPtsItemViewEventListener, true);
+        paramViewGroup.layoutToView(paramContext, (IPTSLiteEventListener)this.c, true);
       }
       paramViewGroup = paramContext.getLayoutParams();
       if (paramViewGroup != null) {
@@ -111,14 +85,14 @@ public final class NewPtsViewCreator
       QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], pageNameList is null");
       return;
     }
-    int i = BaseItemViewHolder.a + 1;
+    int i = BaseItemViewHolder.e + 1;
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       String str = (String)((Iterator)localObject1).next();
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+      if (!this.b.containsKey(str))
       {
-        Object localObject2 = (Map)this.jdField_a_of_type_JavaUtilHashMap;
+        Object localObject2 = (Map)this.b;
         Intrinsics.checkExpressionValueIsNotNull(str, "pageName");
         ((Map)localObject2).put(str, Integer.valueOf(i));
         localObject2 = new StringBuilder();
@@ -130,10 +104,10 @@ public final class NewPtsViewCreator
       }
       i += 1;
     }
-    BaseItemViewHolder.a += this.jdField_a_of_type_JavaUtilHashMap.size() + 1;
+    BaseItemViewHolder.e += this.b.size() + 1;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[initPtsLiteTypeCount], view type count = ");
-    ((StringBuilder)localObject1).append(BaseItemViewHolder.a);
+    ((StringBuilder)localObject1).append(BaseItemViewHolder.e);
     QLog.i("NewPtsViewCreator", 1, ((StringBuilder)localObject1).toString());
   }
   
@@ -147,13 +121,13 @@ public final class NewPtsViewCreator
         paramPtsData.triggerExposureEvent();
       }
     }
-    else if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramPtsData))
+    else if (!this.d.contains(paramPtsData))
     {
       PTSComposer localPTSComposer = paramPtsData.a;
       if (localPTSComposer != null) {
         localPTSComposer.triggerExposureEvent();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramPtsData);
+      this.d.add(paramPtsData);
     }
   }
   
@@ -161,10 +135,31 @@ public final class NewPtsViewCreator
   {
     return paramBaseData instanceof PtsData;
   }
+  
+  public int b(@Nullable BaseData paramBaseData)
+  {
+    Object localObject = paramBaseData;
+    if (!(paramBaseData instanceof PtsData)) {
+      localObject = null;
+    }
+    paramBaseData = (PtsData)localObject;
+    if (paramBaseData != null)
+    {
+      localObject = (Integer)this.b.get(paramBaseData.d);
+      if (localObject != null) {
+        return ((Integer)localObject).intValue();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getViewType] error, pageName = ");
+      ((StringBuilder)localObject).append(paramBaseData.d);
+      QLog.e("NewPtsViewCreator", 1, ((StringBuilder)localObject).toString());
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.NewPtsViewCreator
  * JD-Core Version:    0.7.0.1
  */

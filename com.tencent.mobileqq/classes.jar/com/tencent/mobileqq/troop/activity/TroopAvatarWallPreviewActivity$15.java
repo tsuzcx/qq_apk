@@ -1,22 +1,38 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopAvatarWallPreviewActivity$15
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  TroopAvatarWallPreviewActivity$15(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  TroopAvatarWallPreviewActivity$15(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopAvatarWallPreviewActivity.access$1600(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    switch (paramView.getId())
+    {
+    default: 
+      break;
+    case 2131439675: 
+      TroopAvatarWallPreviewActivity.access$1400(this.a);
+      break;
+    case 2131439643: 
+      TroopAvatarWallPreviewActivity.access$1100(this.a);
+      break;
+    case 2131439641: 
+      TroopAvatarWallPreviewActivity.access$1300(this.a);
+      break;
+    case 2131439640: 
+      TroopAvatarWallPreviewActivity.access$1200(this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.15
  * JD-Core Version:    0.7.0.1
  */

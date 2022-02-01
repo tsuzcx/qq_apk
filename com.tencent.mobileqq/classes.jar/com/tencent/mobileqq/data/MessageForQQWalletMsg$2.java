@@ -25,11 +25,12 @@ final class MessageForQQWalletMsg$2
     put(Integer.valueOf(27), localInteger1);
     put(Integer.valueOf(28), Integer.valueOf(7));
     put(Integer.valueOf(29), Integer.valueOf(8));
+    put(Integer.valueOf(30), Integer.valueOf(9));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletMsg.2
  * JD-Core Version:    0.7.0.1
  */

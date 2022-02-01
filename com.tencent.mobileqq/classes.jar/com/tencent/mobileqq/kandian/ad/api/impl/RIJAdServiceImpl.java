@@ -53,7 +53,10 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameListProteus
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameNewStyleProteusItem;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameTripleImgProteusItem;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameVideoProteusItem;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdShakeVideoProteusItem;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdSmallImageProteusItem;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdSmallVideoProteusItem;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdSurpriseVideoProteusItem;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdTripleProteusItem;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskDataMgr;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskUIMgr;
@@ -74,6 +77,7 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdCommonBlurImage
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdExpandCardPic.Builder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdInnerOperateView.Builder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVpngVideo.Builder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.Builder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyBlurImageView.Builder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyIconText.Builder;
@@ -123,7 +127,7 @@ public class RIJAdServiceImpl
 {
   public boolean checkSuperMaskVideoAdState()
   {
-    boolean bool2 = SuperMaskDataMgr.a.a();
+    boolean bool2 = SuperMaskDataMgr.a.d();
     boolean bool1 = true;
     if (!bool2)
     {
@@ -285,7 +289,7 @@ public class RIJAdServiceImpl
   
   public Object getAdCache(int paramInt)
   {
-    return ReadinjoyAdCache.a(paramInt);
+    return ReadinjoyAdCache.b(paramInt);
   }
   
   public Class getAdMaterialResManagerClz()
@@ -326,6 +330,7 @@ public class RIJAdServiceImpl
     localHashMap.put("ReadInJoyAdBrandOptimizationView", new ReadInJoyAdBrandOptimizationView.Builder());
     localHashMap.put("ReadInJoyArticleBottomVideoView", new ReadInJoyArticleBottomVideoView.Builder());
     localHashMap.put("ReadInJoyAdExpandCardPic", new ReadInJoyAdExpandCardPic.Builder());
+    localHashMap.put("ReadInJoyAdVpngVideo", new ReadInJoyAdVpngVideo.Builder());
     return localHashMap;
   }
   
@@ -348,6 +353,9 @@ public class RIJAdServiceImpl
     localHashMap.put(Integer.valueOf(148), new AdLiveExpandCardProteusItem());
     localHashMap.put(Integer.valueOf(149), new AdLiveExpandCardProteusItem());
     localHashMap.put(Integer.valueOf(150), new AdExpandCardProteusItem());
+    localHashMap.put(Integer.valueOf(151), new AdSmallVideoProteusItem());
+    localHashMap.put(Integer.valueOf(152), new AdSurpriseVideoProteusItem());
+    localHashMap.put(Integer.valueOf(153), new AdShakeVideoProteusItem());
     return localHashMap;
   }
   
@@ -380,12 +388,12 @@ public class RIJAdServiceImpl
   
   public boolean needReportNew()
   {
-    return AdReportManager.a().a();
+    return AdReportManager.a().b();
   }
   
   public boolean needReportSoftNew()
   {
-    return AdReportManager.a().b();
+    return AdReportManager.a().c();
   }
   
   public void preRequestPatchAd()
@@ -430,7 +438,7 @@ public class RIJAdServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdServiceImpl
  * JD-Core Version:    0.7.0.1
  */

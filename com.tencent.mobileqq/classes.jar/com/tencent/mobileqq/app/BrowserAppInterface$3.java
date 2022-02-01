@@ -22,14 +22,14 @@ class BrowserAppInterface$3
     QLog.d("TBS_update", 1, ((StringBuilder)localObject).toString());
     if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
     {
-      if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+      if (BrowserAppInterface.c.compareAndSet(true, false))
       {
         QbSdk.setTbsListener(null);
-        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+        int i = this.a.getInt("tbs_download_count", 0);
+        long l1 = this.a.getLong("tbs_download_cost", 0L);
         long l2 = System.currentTimeMillis();
-        long l3 = this.jdField_a_of_type_Long;
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        long l3 = this.b;
+        localObject = this.a.edit();
         ((SharedPreferences.Editor)localObject).putInt("tbs_download_count", i + 1);
         ((SharedPreferences.Editor)localObject).putLong("tbs_download_cost", l1 + (l2 - l3));
         ((SharedPreferences.Editor)localObject).commit();
@@ -42,15 +42,15 @@ class BrowserAppInterface$3
           QLog.d("TBS_update", 2, ((StringBuilder)localObject).toString());
         }
       }
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.a.edit();
       ((SharedPreferences.Editor)localObject).putInt("tbs_download_complete", paramInt);
       ((SharedPreferences.Editor)localObject).remove("tbs_downloading");
       ((SharedPreferences.Editor)localObject).remove("tbs_download_progress");
       ((SharedPreferences.Editor)localObject).commit();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean)
+      if (this.c.e)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
-        BrowserAppInterface.a((BrowserAppInterface)localObject, ((BrowserAppInterface)localObject).jdField_a_of_type_AndroidContentIntent);
+        localObject = this.c;
+        BrowserAppInterface.a((BrowserAppInterface)localObject, ((BrowserAppInterface)localObject).g);
       }
     }
     else
@@ -82,7 +82,7 @@ class BrowserAppInterface$3
     if (paramInt == 200) {
       return;
     }
-    if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    if (BrowserAppInterface.c.compareAndSet(true, false))
     {
       QbSdk.setTbsListener(null);
       int i;
@@ -91,11 +91,11 @@ class BrowserAppInterface$3
       long l3;
       if ((paramInt != 232) && (paramInt != 220))
       {
-        i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+        i = this.a.getInt("tbs_download_count", 0);
+        l1 = this.a.getLong("tbs_download_cost", 0L);
         l2 = System.currentTimeMillis();
-        l3 = this.jdField_a_of_type_Long;
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        l3 = this.b;
+        localObject = this.a.edit();
         ((SharedPreferences.Editor)localObject).putInt("tbs_download_count", i + 1);
         ((SharedPreferences.Editor)localObject).putLong("tbs_download_cost", l1 + (l2 - l3));
         ((SharedPreferences.Editor)localObject).commit();
@@ -110,11 +110,11 @@ class BrowserAppInterface$3
       }
       else
       {
-        i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
+        i = this.a.getInt("tbs_download_count", 0);
+        l1 = this.a.getLong("tbs_download_cost", 0L);
         l2 = System.currentTimeMillis();
-        l3 = this.jdField_a_of_type_Long;
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        l3 = this.b;
+        localObject = this.a.edit();
         ((SharedPreferences.Editor)localObject).remove("tbs_download_count");
         ((SharedPreferences.Editor)localObject).remove("tbs_download_cost");
         ((SharedPreferences.Editor)localObject).commit();
@@ -128,22 +128,22 @@ class BrowserAppInterface$3
         }
         WebpSoLoader.a(false);
       }
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.a.edit();
       ((SharedPreferences.Editor)localObject).putInt("tbs_download_complete", paramInt);
       ((SharedPreferences.Editor)localObject).remove("tbs_downloading");
       ((SharedPreferences.Editor)localObject).remove("tbs_download_progress");
       ((SharedPreferences.Editor)localObject).commit();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean)
+    if (this.c.e)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
-      BrowserAppInterface.a((BrowserAppInterface)localObject, ((BrowserAppInterface)localObject).jdField_a_of_type_AndroidContentIntent);
+      localObject = this.c;
+      BrowserAppInterface.a((BrowserAppInterface)localObject, ((BrowserAppInterface)localObject).g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BrowserAppInterface.3
  * JD-Core Version:    0.7.0.1
  */

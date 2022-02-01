@@ -20,24 +20,24 @@ class WxShareHelperFromReadInjoy$1
   {
     Object localObject1 = new WXMiniProgramObject();
     ((WXMiniProgramObject)localObject1).withShareTicket = true;
-    ((WXMiniProgramObject)localObject1).webpageUrl = this.jdField_a_of_type_JavaLangString;
+    ((WXMiniProgramObject)localObject1).webpageUrl = this.a;
     ((WXMiniProgramObject)localObject1).userName = this.b;
     ((WXMiniProgramObject)localObject1).path = this.c;
     WXMediaMessage localWXMediaMessage = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject1);
     localWXMediaMessage.title = this.d;
     localWXMediaMessage.description = this.e;
-    localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject1 = this.f;
     if (localObject1 != null)
     {
       int i = ((Bitmap)localObject1).getWidth();
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      int j = this.f.getHeight();
       j = Math.min(i / 5, j / 4);
       i = j * 5;
       j *= 4;
       if (this.c.startsWith("/pages/index/index?share=1&share_type=1")) {
-        localObject1 = BitmapUtils.a(BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841819), true);
+        localObject1 = BitmapUtils.a(BitmapUtils.a(this.f, i, j, false, true), BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842736), true);
       } else {
-        localObject1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false, true);
+        localObject1 = BitmapUtils.a(this.f, i, j, false, true);
       }
       if (localObject1 != null)
       {
@@ -70,13 +70,13 @@ class WxShareHelperFromReadInjoy$1
       ((StringBuilder)localObject1).append(", path = ");
       ((StringBuilder)localObject1).append(this.c);
       ((StringBuilder)localObject1).append(", webPageUrl = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(", id = ");
       ((StringBuilder)localObject1).append(this.b);
       QLog.e("WxShareHelperFromReadInjoy", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject1).transaction = this.f;
+    ((SendMessageToWX.Req)localObject1).transaction = this.g;
     ((SendMessageToWX.Req)localObject1).message = localWXMediaMessage;
     ((SendMessageToWX.Req)localObject1).scene = 0;
     WxShareHelperFromReadInjoy.access$100(this.this$0, (SendMessageToWX.Req)localObject1);
@@ -84,7 +84,7 @@ class WxShareHelperFromReadInjoy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.WxShareHelperFromReadInjoy.1
  * JD-Core Version:    0.7.0.1
  */

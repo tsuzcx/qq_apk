@@ -2,9 +2,9 @@ package com.tencent.avgame.gamelogic.listener;
 
 public abstract interface HeartBeatListener
 {
-  public abstract long a();
+  public abstract long c();
   
-  public abstract long b();
+  public abstract long d();
 }
 
 

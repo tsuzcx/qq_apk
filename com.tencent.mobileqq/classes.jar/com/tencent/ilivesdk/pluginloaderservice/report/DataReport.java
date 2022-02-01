@@ -5,7 +5,6 @@ import com.tencent.falco.base.libapi.datareport.QualityReportTask;
 
 public class DataReport
 {
-  private static DataReportInterface a;
   public static String a = "event_install_fail";
   public static String b = "get_version_fail";
   public static String c = "get_version_success";
@@ -25,28 +24,29 @@ public class DataReport
   public static String q = "loader_class_success";
   public static String r = "install_finish_install";
   public static String s = "zt_str1";
+  private static DataReportInterface t;
   
   public static void a()
   {
-    jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface = null;
+    t = null;
   }
   
   public static void a(DataReportInterface paramDataReportInterface)
   {
-    jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface = paramDataReportInterface;
+    t = paramDataReportInterface;
   }
   
   public static void a(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface == null) {
-      localDataReportInterface.newQualityTask().setActType(jdField_a_of_type_JavaLangString).addKeyValue(s, paramString).send();
+      localDataReportInterface.newQualityTask().setActType(a).addKeyValue(s, paramString).send();
     }
   }
   
   public static void b(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(b).addKeyValue(s, paramString).send();
     }
@@ -54,7 +54,7 @@ public class DataReport
   
   public static void c(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(c).addKeyValue(s, paramString).send();
     }
@@ -62,7 +62,7 @@ public class DataReport
   
   public static void d(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(d).addKeyValue(s, paramString).send();
     }
@@ -70,7 +70,7 @@ public class DataReport
   
   public static void e(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(e).addKeyValue(s, paramString).send();
     }
@@ -78,7 +78,7 @@ public class DataReport
   
   public static void f(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(f).addKeyValue(s, paramString).send();
     }
@@ -86,7 +86,7 @@ public class DataReport
   
   public static void g(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(g).addKeyValue(s, paramString).send();
     }
@@ -94,7 +94,7 @@ public class DataReport
   
   public static void h(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(h).addKeyValue(s, paramString).send();
     }
@@ -102,7 +102,7 @@ public class DataReport
   
   public static void i(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(i).addKeyValue(s, paramString).send();
     }
@@ -110,7 +110,7 @@ public class DataReport
   
   public static void j(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(j).addKeyValue(s, paramString).send();
     }
@@ -118,7 +118,7 @@ public class DataReport
   
   public static void k(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(l).addKeyValue(s, paramString).send();
     }
@@ -126,7 +126,7 @@ public class DataReport
   
   public static void l(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(k).addKeyValue(s, paramString).send();
     }
@@ -134,7 +134,7 @@ public class DataReport
   
   public static void m(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(r).addKeyValue(s, paramString).send();
     }
@@ -142,7 +142,7 @@ public class DataReport
   
   public static void n(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(n).addKeyValue(s, paramString).send();
     }
@@ -150,7 +150,7 @@ public class DataReport
   
   public static void o(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(o).addKeyValue(s, paramString).send();
     }
@@ -158,7 +158,7 @@ public class DataReport
   
   public static void p(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(p).addKeyValue(s, paramString).send();
     }
@@ -166,7 +166,7 @@ public class DataReport
   
   public static void q(String paramString)
   {
-    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    DataReportInterface localDataReportInterface = t;
     if (localDataReportInterface != null) {
       localDataReportInterface.newQualityTask().setActType(q).addKeyValue(s, paramString).send();
     }
@@ -174,7 +174,7 @@ public class DataReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.report.DataReport
  * JD-Core Version:    0.7.0.1
  */

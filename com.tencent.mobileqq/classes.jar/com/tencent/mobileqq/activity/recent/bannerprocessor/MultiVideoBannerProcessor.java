@@ -20,12 +20,7 @@ public class MultiVideoBannerProcessor
   extends BaseBannerProcessor
   implements IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.N;
-  }
+  public static final int a = BannerTypeCollections.O;
   
   public MultiVideoBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -34,28 +29,23 @@ public class MultiVideoBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131559472, null);
+    paramBanner = View.inflate(this.f, 2131625463, null);
     paramBanner.setOnClickListener(new MultiVideoBannerProcessor.1(this));
-    paramBanner.findViewById(2131371605).setVisibility(8);
+    paramBanner.findViewById(2131439017).setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    c();
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
   {
     if (paramMessage.what == 2000) {
-      c();
+      e();
     }
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      MultiVideoBarHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), paramBanner.a, paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.isResume());
+    if (this.f != null) {
+      MultiVideoBarHelper.a((QQAppInterface)this.f.getAppRuntime(), paramBanner.c, paramMessage, this.f.isResume());
     }
   }
   
@@ -63,56 +53,61 @@ public class MultiVideoBannerProcessor
   
   public int b()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    c();
+    return a;
   }
   
   public void c()
   {
+    e();
+  }
+  
+  public void d()
+  {
+    e();
+  }
+  
+  public void e()
+  {
     QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localQQAppInterface != null)
     {
-      if (localQQAppInterface.getAVNotifyCenter().b() > 0)
+      if (localQQAppInterface.getAVNotifyCenter().j() > 0)
       {
-        BannerManager.a().a(jdField_a_of_type_Int, 2);
+        BannerManager.a().a(a, 2);
         return;
       }
       if (localQQAppInterface.isVideoChatting())
       {
-        int i = localQQAppInterface.getAVNotifyCenter().e();
+        int i = localQQAppInterface.getAVNotifyCenter().t();
         if (i == 3)
         {
-          if (localQQAppInterface.getAVNotifyCenter().b() > 0L)
+          if (localQQAppInterface.getAVNotifyCenter().g() > 0L)
           {
-            BannerManager.a().a(jdField_a_of_type_Int, 2);
+            BannerManager.a().a(a, 2);
             return;
           }
-          BannerManager.a().a(jdField_a_of_type_Int, 0);
+          BannerManager.a().a(a, 0);
           return;
         }
         if (i == 1)
         {
-          BannerManager.a().a(jdField_a_of_type_Int, 2);
+          BannerManager.a().a(a, 2);
           return;
         }
         if (i == 2) {
-          BannerManager.a().a(jdField_a_of_type_Int, 2);
+          BannerManager.a().a(a, 2);
         }
       }
       else
       {
-        BannerManager.a().a(jdField_a_of_type_Int, 0);
+        BannerManager.a().a(a, 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MultiVideoBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ class WebProteusViewCreator$ProteusItemViewHolder$12
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    FastWebProteusReportUtils.a(paramProteusItemData.a, paramViewBase);
+    FastWebProteusReportUtils.a(paramProteusItemData.bd, paramViewBase);
     paramViewBase = paramViewBase.getEventAttachedData();
     if (!TextUtils.isEmpty(paramViewBase)) {
-      RIJJumpUtils.a(paramContext, paramViewBase);
+      RIJJumpUtils.c(paramContext, paramViewBase);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.12
  * JD-Core Version:    0.7.0.1
  */

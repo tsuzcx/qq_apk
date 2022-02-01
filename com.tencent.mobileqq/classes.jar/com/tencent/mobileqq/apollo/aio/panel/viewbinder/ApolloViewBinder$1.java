@@ -31,18 +31,18 @@ class ApolloViewBinder$1
     } else if (ApolloViewBinder.a(this.a) > i) {
       paramInt = 1;
     }
-    if ((paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((paramInt >= 0) && (this.a.m != null))
     {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "slideupdown", "", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.a.d, new String[] { String.valueOf(paramInt) });
-      if (this.a.d == 9) {
-        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "y_bqtabupdown", "", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" });
+      VipUtils.a(this.a.j, "cmshow", "Apollo", "slideupdown", "", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.a.m.a), this.a.n, new String[] { String.valueOf(paramInt) });
+      if (this.a.n == 9) {
+        VipUtils.a(this.a.j, "cmshow", "Apollo", "y_bqtabupdown", "", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.a.m.a), 0, new String[] { "" });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloViewBinder.1
  * JD-Core Version:    0.7.0.1
  */

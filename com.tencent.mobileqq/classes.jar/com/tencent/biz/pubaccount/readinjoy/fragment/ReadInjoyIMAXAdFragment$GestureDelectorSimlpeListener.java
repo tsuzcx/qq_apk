@@ -21,7 +21,7 @@ class ReadInjoyIMAXAdFragment$GestureDelectorSimlpeListener
     if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
     {
       ReadInjoyIMAXAdFragment.a(this.a, true);
-      ReadInjoyIMAXAdFragment.a(this.a);
+      ReadInjoyIMAXAdFragment.b(this.a);
       paramMotionEvent1 = this.a;
       ReadInjoyIMAXAdFragment.a(paramMotionEvent1, paramMotionEvent1.getBaseActivity().app, 17);
     }
@@ -34,19 +34,19 @@ class ReadInjoyIMAXAdFragment$GestureDelectorSimlpeListener
       return true;
     }
     ReadInjoyIMAXAdFragment.a(this.a, true);
-    ReadInjoyIMAXAdFragment.a(this.a);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
+    ReadInjoyIMAXAdFragment.b(this.a);
+    if (ReadInjoyIMAXAdFragment.c(this.a) != null)
     {
       paramMotionEvent = this.a;
-      ReadInjoyIMAXAdFragment.a(paramMotionEvent, (int)ReadInjoyIMAXAdFragment.a(paramMotionEvent).getCurrentPostion());
+      ReadInjoyIMAXAdFragment.a(paramMotionEvent, (int)ReadInjoyIMAXAdFragment.c(paramMotionEvent).getCurrentPostion());
     }
     paramMotionEvent = this.a;
-    ReadInjoyIMAXAdFragment.a(paramMotionEvent, ReadInjoyIMAXAdFragment.a(paramMotionEvent), 19);
+    ReadInjoyIMAXAdFragment.a(paramMotionEvent, ReadInjoyIMAXAdFragment.d(paramMotionEvent), 19);
     ReadInjoyIMAXAdFragment.b(this.a, 2);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
+    if (ReadInjoyIMAXAdFragment.c(this.a) != null)
     {
       paramMotionEvent = this.a;
-      ReadInjoyIMAXAdFragment.c(paramMotionEvent, (int)ReadInjoyIMAXAdFragment.a(paramMotionEvent).getCurrentPostion());
+      ReadInjoyIMAXAdFragment.c(paramMotionEvent, (int)ReadInjoyIMAXAdFragment.c(paramMotionEvent).getCurrentPostion());
     }
     ReadInjoyIMAXAdFragment.d(this.a, 0);
     return true;
@@ -54,7 +54,7 @@ class ReadInjoyIMAXAdFragment$GestureDelectorSimlpeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.GestureDelectorSimlpeListener
  * JD-Core Version:    0.7.0.1
  */

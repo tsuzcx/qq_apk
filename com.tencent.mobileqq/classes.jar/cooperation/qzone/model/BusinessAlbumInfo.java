@@ -138,23 +138,23 @@ public class BusinessAlbumInfo
       paramInt = 0;
       break;
     case 8: 
-      paramInt = 2131717107;
+      paramInt = 2131914580;
       break;
     case 6: 
-      paramInt = 2131717111;
+      paramInt = 2131914584;
       break;
     case 4: 
-      paramInt = 2131717108;
+      paramInt = 2131914581;
       break;
     case 3: 
-      paramInt = 2131717363;
+      paramInt = 2131914836;
       break;
     case 2: 
     case 5: 
-      paramInt = 2131717106;
+      paramInt = 2131914579;
       break;
     case 1: 
-      paramInt = 2131717362;
+      paramInt = 2131914835;
     }
     if (paramInt == 0) {
       return null;
@@ -245,7 +245,7 @@ public class BusinessAlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.BusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

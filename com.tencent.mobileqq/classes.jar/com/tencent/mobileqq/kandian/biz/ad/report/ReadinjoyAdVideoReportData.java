@@ -5,21 +5,21 @@ public class ReadinjoyAdVideoReportData
   public static int a = 1;
   public static int b = 2;
   public static int c = 3;
-  public boolean a;
-  public boolean b;
-  public boolean c;
   public int d;
-  public boolean d;
   public int e;
-  public boolean e;
-  public int f;
-  public int g;
-  public int h;
+  public boolean f;
+  public boolean g;
+  public boolean h;
   public int i;
+  public int j;
+  public boolean k;
+  public boolean l;
+  public int m;
+  public int n;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.report.ReadinjoyAdVideoReportData
  * JD-Core Version:    0.7.0.1
  */

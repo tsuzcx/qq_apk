@@ -7,59 +7,59 @@ import com.tencent.tkd.topicsdk.videoprocess.mediacodec.ttpic.TextureRender;
 @TargetApi(14)
 public class EncodeInputSurface
 {
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private EglCore jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore;
-  private EglSurfaceBase jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase;
-  private TextureRender jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender;
+  private EglSurfaceBase a;
+  private EglCore b;
+  private TextureRender c;
+  private Surface d;
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewSurface;
+    Object localObject = this.d;
     if (localObject != null)
     {
       ((Surface)localObject).release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
+      this.d = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase;
+    localObject = this.a;
     if (localObject != null)
     {
       ((EglSurfaceBase)localObject).a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase = null;
+      this.a = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore;
+    localObject = this.b;
     if (localObject != null)
     {
       ((EglCore)localObject).a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore = null;
+      this.b = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender;
+    localObject = this.c;
     if (localObject != null)
     {
       ((TextureRender)localObject).a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender = null;
+      this.c = null;
     }
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase.a(paramLong);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase.a();
+    this.c.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.a.a(paramLong);
+    this.a.c();
   }
   
   public void a(EncodeConfig paramEncodeConfig, Surface paramSurface)
   {
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore = new EglCore(paramEncodeConfig.a(), 1);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase = new EglSurfaceBase(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase.a(paramSurface);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase.b();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender = new TextureRender();
+    this.d = paramSurface;
+    this.b = new EglCore(paramEncodeConfig.a(), 1);
+    this.a = new EglSurfaceBase(this.b);
+    this.a.a(paramSurface);
+    this.a.b();
+    this.c = new TextureRender();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EncodeInputSurface
  * JD-Core Version:    0.7.0.1
  */

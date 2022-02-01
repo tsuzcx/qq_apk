@@ -1,10 +1,10 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.core.view.ViewPropertyAnimatorListener;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 
 class EnhanceItemAnimator$6
@@ -17,25 +17,25 @@ class EnhanceItemAnimator$6
   
   public void onAnimationCancel(View paramView)
   {
-    if (this.jdField_a_of_type_Int != 0) {
+    if (this.b != 0) {
       ViewCompat.setTranslationX(paramView, 0.0F);
     }
-    if (this.b != 0) {
+    if (this.c != 0) {
       ViewCompat.setTranslationY(paramView, 0.0F);
     }
   }
   
   public void onAnimationEnd(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator.dispatchMoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    EnhanceItemAnimator.f(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    EnhanceItemAnimator.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator);
+    this.d.setListener((ViewPropertyAnimatorListener)null);
+    this.e.dispatchMoveFinished(this.a);
+    EnhanceItemAnimator.g(this.e).remove(this.a);
+    EnhanceItemAnimator.e(this.e);
   }
   
   public void onAnimationStart(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator.dispatchMoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    this.e.dispatchMoveStarting(this.a);
   }
 }
 

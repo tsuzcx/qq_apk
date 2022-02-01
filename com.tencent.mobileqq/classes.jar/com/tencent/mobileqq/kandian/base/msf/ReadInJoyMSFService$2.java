@@ -77,7 +77,7 @@ class ReadInJoyMSFService$2
     }
     if (i != 0)
     {
-      localObject = new NewIntent(RIJQQAppInterfaceUtil.a().getApplication(), ReadInJoyMSFServlet.class);
+      localObject = new NewIntent(RIJQQAppInterfaceUtil.e().getApplication(), ReadInJoyMSFServlet.class);
       ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
       if (this.a.getAttributes().get("req_enable_msf_retry") == null) {
         break label474;
@@ -93,7 +93,7 @@ class ReadInJoyMSFService$2
         ((NewIntent)localObject).putExtra("quickSendStrategy", 0);
         QLog.d("ReadInJoyMSFService", 2, "handleRequest | MSF retry enabled");
       }
-      RIJQQAppInterfaceUtil.a().startServlet((NewIntent)localObject);
+      RIJQQAppInterfaceUtil.e().startServlet((NewIntent)localObject);
       l = System.currentTimeMillis();
       this.a.extraData.putLong("sendtimekey", l);
       return;
@@ -115,7 +115,7 @@ class ReadInJoyMSFService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService.2
  * JD-Core Version:    0.7.0.1
  */

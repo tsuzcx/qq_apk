@@ -8,6 +8,7 @@ import com.tencent.mobileqq.ark.api.IArkThreadManager;
 import com.tencent.mobileqq.ark.api.module.ArkAppQQModuleBase;
 import com.tencent.mobileqq.ark.module.ArkModuleMethod;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.statistics.ReportController;
 import java.lang.ref.WeakReference;
 
@@ -114,137 +115,127 @@ public class ArkAppModule
     this.a = new WeakReference(paramArkAppModuleEvent);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     if (localQQAppInterface == null) {
       return false;
     }
-    String str = localQQAppInterface.getCurrentAccountUin();
-    Object localObject3 = paramArrayOfVariantWrapper[0].GetString();
-    Object localObject2 = paramArrayOfVariantWrapper[1].GetString();
-    paramVariantWrapper = "";
-    Object localObject1 = paramVariantWrapper;
-    long l2 = 0L;
-    long l1 = l2;
-    int k = 0;
-    int i = 0;
+    String str2 = localQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = paramArrayOfVariantWrapper[0].GetString();
+    paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+    String str1 = "";
+    Object localObject2 = str1;
     int j = 0;
-    while (j < paramArrayOfVariantWrapper.length)
+    int i = 0;
+    long l2 = 0L;
+    long l1 = 0L;
+    int k = 0;
+    while (k < paramArrayOfVariantWrapper.length)
     {
-      Object localObject4;
-      Object localObject5;
+      if (k == 0) {
+        localObject1 = paramArrayOfVariantWrapper[0].GetString();
+      }
+      Object localObject3;
+      ark.VariantWrapper localVariantWrapper;
       int m;
       int n;
       long l3;
       long l4;
-      Object localObject6;
-      if (j == 0)
+      Object localObject4;
+      for (;;)
       {
-        localObject4 = paramArrayOfVariantWrapper[0].GetString();
-        localObject5 = localObject2;
-        m = k;
+        localObject3 = localObject1;
+        localVariantWrapper = paramVariantWrapper;
+        m = j;
         n = i;
         l3 = l2;
         l4 = l1;
-        localObject6 = paramVariantWrapper;
+        localObject4 = localObject2;
+        break label355;
+        if (k == 1)
+        {
+          paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+        }
+        else if (k == 2)
+        {
+          j = a(paramArrayOfVariantWrapper[2], 0);
+        }
+        else
+        {
+          if (k != 3) {
+            break;
+          }
+          i = a(paramArrayOfVariantWrapper[3], 0);
+        }
       }
-      else if (j == 1)
-      {
-        localObject5 = paramArrayOfVariantWrapper[1].GetString();
-        localObject4 = localObject3;
-        m = k;
-        n = i;
-        l3 = l2;
-        l4 = l1;
-        localObject6 = paramVariantWrapper;
-      }
-      else if (j == 2)
-      {
-        m = a(paramArrayOfVariantWrapper[2], 0);
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        n = i;
-        l3 = l2;
-        l4 = l1;
-        localObject6 = paramVariantWrapper;
-      }
-      else if (j == 3)
-      {
-        n = a(paramArrayOfVariantWrapper[3], 0);
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        m = k;
-        l3 = l2;
-        l4 = l1;
-        localObject6 = paramVariantWrapper;
-      }
-      else if (j == 4)
+      if (k == 4)
       {
         l3 = a(paramArrayOfVariantWrapper[4], 0L);
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        m = k;
+        localObject3 = localObject1;
+        localVariantWrapper = paramVariantWrapper;
+        m = j;
         n = i;
         l4 = l1;
-        localObject6 = paramVariantWrapper;
+        localObject4 = localObject2;
       }
-      else if (j == 5)
+      else if (k == 5)
       {
         l4 = a(paramArrayOfVariantWrapper[5], 0L);
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        m = k;
+        localObject3 = localObject1;
+        localVariantWrapper = paramVariantWrapper;
+        m = j;
         n = i;
         l3 = l2;
-        localObject6 = paramVariantWrapper;
+        localObject4 = localObject2;
       }
-      else if (j == 6)
+      else if (k == 6)
       {
-        localObject6 = paramArrayOfVariantWrapper[6].GetString();
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        m = k;
+        localObject4 = paramArrayOfVariantWrapper[6].GetString();
+        localObject3 = localObject1;
+        localVariantWrapper = paramVariantWrapper;
+        m = j;
         n = i;
         l3 = l2;
         l4 = l1;
       }
       else
       {
-        localObject4 = localObject3;
-        localObject5 = localObject2;
-        m = k;
+        localObject3 = localObject1;
+        localVariantWrapper = paramVariantWrapper;
+        m = j;
         n = i;
         l3 = l2;
         l4 = l1;
-        localObject6 = paramVariantWrapper;
-        if (j == 7)
+        localObject4 = localObject2;
+        if (k == 7)
         {
-          localObject1 = paramArrayOfVariantWrapper[7].GetString();
-          localObject6 = paramVariantWrapper;
+          str1 = paramArrayOfVariantWrapper[7].GetString();
+          localObject4 = localObject2;
           l4 = l1;
           l3 = l2;
           n = i;
-          m = k;
-          localObject5 = localObject2;
-          localObject4 = localObject3;
+          m = j;
+          localVariantWrapper = paramVariantWrapper;
+          localObject3 = localObject1;
         }
       }
-      j += 1;
-      localObject3 = localObject4;
-      localObject2 = localObject5;
-      k = m;
+      label355:
+      k += 1;
+      localObject1 = localObject3;
+      paramVariantWrapper = localVariantWrapper;
+      j = m;
       i = n;
       l2 = l3;
       l1 = l4;
-      paramVariantWrapper = (ark.VariantWrapper)localObject6;
+      localObject2 = localObject4;
     }
-    ReportController.b(localQQAppInterface, "CliOper", "", str, (String)localObject3, (String)localObject2, k, i, String.valueOf(l2), String.valueOf(l1), paramVariantWrapper, (String)localObject1);
+    if ((!"0X8009D41".equals(paramVariantWrapper)) && (!"0X8009D2D".equals(paramVariantWrapper))) {
+      break label419;
+    }
+    str1 = UniteSearchReportController.b();
+    label419:
+    ReportController.b(localQQAppInterface, "CliOper", "", str2, (String)localObject1, paramVariantWrapper, j, i, String.valueOf(l2), String.valueOf(l1), (String)localObject2, str1);
     return true;
   }
   
@@ -269,6 +260,11 @@ public class ArkAppModule
     return true;
   }
   
+  public boolean c()
+  {
+    return true;
+  }
+  
   protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
     if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
@@ -283,7 +279,7 @@ public class ArkAppModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppModule
  * JD-Core Version:    0.7.0.1
  */

@@ -8,31 +8,31 @@ import java.util.Arrays;
 
 class AdExposeFreshManager$CacheAd
 {
-  double jdField_a_of_type_Double;
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  AdData jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData;
-  VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+  long a = System.currentTimeMillis();
   long b;
+  double c;
+  AdvertisementInfo d;
+  VideoInfo e;
+  AdData f;
   
   public AdExposeFreshManager$CacheAd(AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.d = paramAdvertisementInfo;
     this.b = paramAdvertisementInfo.mAdAid;
-    this.jdField_a_of_type_Double = paramAdvertisementInfo.ecpm;
+    this.c = paramAdvertisementInfo.ecpm;
   }
   
   public AdExposeFreshManager$CacheAd(AdData paramAdData)
   {
-    this(paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData = paramAdData;
+    this(paramAdData.j);
+    this.f = paramAdData;
   }
   
   public AdExposeFreshManager$CacheAd(VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo = paramVideoInfo;
-    this.b = paramVideoInfo.a.e;
-    this.jdField_a_of_type_Double = paramVideoInfo.a.jdField_a_of_type_Double;
+    this.e = paramVideoInfo;
+    this.b = paramVideoInfo.as.G;
+    this.c = paramVideoInfo.as.az;
   }
   
   public boolean a()
@@ -63,7 +63,7 @@ class AdExposeFreshManager$CacheAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdExposeFreshManager.CacheAd
  * JD-Core Version:    0.7.0.1
  */

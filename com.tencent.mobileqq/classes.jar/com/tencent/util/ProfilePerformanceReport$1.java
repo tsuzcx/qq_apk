@@ -12,7 +12,7 @@ class ProfilePerformanceReport$1
   
   public void run()
   {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, ProfilePerformanceReport.a(this.this$0), true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a, ProfilePerformanceReport.a(this.this$0), true, this.b, 0L, this.c, "");
     if (QLog.isDevelopLevel()) {
       QLog.i("ProfilePerformanceReport", 4, "end of report");
     }
@@ -20,7 +20,7 @@ class ProfilePerformanceReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.ProfilePerformanceReport.1
  * JD-Core Version:    0.7.0.1
  */

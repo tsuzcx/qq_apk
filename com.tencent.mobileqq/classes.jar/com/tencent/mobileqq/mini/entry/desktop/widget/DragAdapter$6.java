@@ -15,10 +15,10 @@ class DragAdapter$6
   {
     Object localObject = DragAdapter.access$600(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131703677));
-    localStringBuilder.append(MiniAppConfProcessor.a());
-    localStringBuilder.append(HardCodeUtil.a(2131703676));
-    QQToast.a((Context)localObject, localStringBuilder.toString(), 0).a();
+    localStringBuilder.append(HardCodeUtil.a(2131901626));
+    localStringBuilder.append(MiniAppConfProcessor.f());
+    localStringBuilder.append(HardCodeUtil.a(2131901625));
+    QQToast.makeText((Context)localObject, localStringBuilder.toString(), 0).show();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);
@@ -30,7 +30,7 @@ class DragAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ class DoubleVideoCtrlUI$12
   
   public void run()
   {
-    if (this.this$0.h()) {
+    if (this.this$0.V()) {
       return;
     }
-    String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P;
-    String str2 = this.this$0.d;
+    String str1 = this.this$0.al.getCurrentAccountUin();
+    int i = this.this$0.am.k().bS;
+    String str2 = this.this$0.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onResume, setGlass, nCurrentSwitch[");
     localStringBuilder.append(i);
     localStringBuilder.append("]");
     QLog.w(str2, 1, localStringBuilder.toString());
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str1, Integer.valueOf(i) });
+    this.this$0.al.a(new Object[] { Integer.valueOf(42), str1, Integer.valueOf(i) });
     DoubleVideoCtrlUI.a(this.this$0, true);
   }
 }

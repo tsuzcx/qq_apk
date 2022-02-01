@@ -15,15 +15,15 @@ import java.util.List;
 public class ProteusRecycleView
   extends RecyclerViewWithHeaderFooter
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ProteusRecycleView.OnStateChangeListener jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener;
-  private SideBarView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView;
-  private List<ProteusRecycleView.OnDispatchTouchEventListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c = false;
+  private float a;
+  private float b;
+  private boolean c;
+  private boolean d;
+  private SideBarView e;
+  private int f;
+  private boolean g = false;
+  private ProteusRecycleView.OnStateChangeListener h;
+  private List<ProteusRecycleView.OnDispatchTouchEventListener> i;
   
   public ProteusRecycleView(Context paramContext)
   {
@@ -33,26 +33,26 @@ public class ProteusRecycleView
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView != null)
+    if (this.e != null)
     {
       setClipToPadding(false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView.a(new ProteusRecycleView.1(this));
+      this.e.a(new ProteusRecycleView.1(this));
     }
   }
   
   private void a(int paramInt)
   {
-    SideBarView localSideBarView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView;
+    SideBarView localSideBarView = this.e;
     if (localSideBarView != null)
     {
-      localSideBarView.a(paramInt, localSideBarView.d());
-      int i = (int)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView.a();
-      int j = this.jdField_a_of_type_Int;
-      paramInt = i;
-      if (i >= j)
+      localSideBarView.a(paramInt, localSideBarView.getCenterY());
+      int j = (int)this.e.getCenterX();
+      int k = this.f;
+      paramInt = j;
+      if (j >= k)
       {
-        this.c = true;
-        paramInt = j;
+        this.g = true;
+        paramInt = k;
       }
       scrollBy(paramInt, 0);
       setPadding(0, 0, paramInt, 0);
@@ -61,38 +61,33 @@ public class ProteusRecycleView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = ((int)DisplayUtils.a(paramContext, 28.0F));
+    this.f = ((int)DisplayUtils.a(paramContext, 28.0F));
     setOverScrollMode(2);
   }
   
   private void b()
   {
-    if (this.c)
+    if (this.g)
     {
-      this.c = false;
-      ProteusRecycleView.OnStateChangeListener localOnStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener;
+      this.g = false;
+      ProteusRecycleView.OnStateChangeListener localOnStateChangeListener = this.h;
       if (localOnStateChangeListener != null) {
         localOnStateChangeListener.a();
       }
     }
   }
   
-  public SideBarView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView;
-  }
-  
   public void a(ProteusRecycleView.OnDispatchTouchEventListener paramOnDispatchTouchEventListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.i == null) {
+      this.i = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnDispatchTouchEventListener);
+    this.i.add(paramOnDispatchTouchEventListener);
   }
   
   public void b(ProteusRecycleView.OnDispatchTouchEventListener paramOnDispatchTouchEventListener)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.i;
     if (localList != null) {
       localList.remove(paramOnDispatchTouchEventListener);
     }
@@ -100,7 +95,7 @@ public class ProteusRecycleView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.i;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -108,37 +103,37 @@ public class ProteusRecycleView
         ((ProteusRecycleView.OnDispatchTouchEventListener)((Iterator)localObject).next()).a(paramMotionEvent);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener == null) {
+    if (this.h == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    int i = paramMotionEvent.getAction();
+    int j = paramMotionEvent.getAction();
     float f2 = paramMotionEvent.getX();
     float f1 = paramMotionEvent.getY();
-    if (i == 0)
+    if (j == 0)
     {
-      this.jdField_a_of_type_Float = f2;
-      this.jdField_b_of_type_Float = f1;
-      this.jdField_a_of_type_Boolean = true;
+      this.a = f2;
+      this.b = f1;
+      this.c = true;
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    if (i == 2)
+    if (j == 2)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("dispatchTouchEvent:ACTION_MOVE. mIsPress=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.c);
         QLog.d("ProteusRecycleView", 2, ((StringBuilder)localObject).toString());
       }
       boolean bool;
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.d) {
         bool = canScrollHorizontally(1) ^ true;
       } else {
         bool = false;
       }
-      f2 -= this.jdField_a_of_type_Float;
-      f1 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > DisplayUtil.a(getContext(), 3.0F)))
+      f2 -= this.a;
+      f1 -= this.b;
+      if ((this.c) && (Math.abs(f1) * 5.0F > Math.abs(f2) * 4.0F) && (Math.abs(f1) > DisplayUtil.a(getContext(), 3.0F)))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
         bool = false;
@@ -153,59 +148,64 @@ public class ProteusRecycleView
         ((StringBuilder)localObject).append("dispatchTouchEvent:bottom");
         ((StringBuilder)localObject).append(bool);
         ((StringBuilder)localObject).append(" isCurShowSideBarView ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.d);
         ((StringBuilder)localObject).append(" dY:");
         ((StringBuilder)localObject).append(f1);
         ((StringBuilder)localObject).append(" dX:");
         ((StringBuilder)localObject).append(f2);
         QLog.d("ProteusRecycleView", 2, ((StringBuilder)localObject).toString());
       }
-      if ((bool) || (this.jdField_b_of_type_Boolean))
+      if ((bool) || (this.d))
       {
         getParent().requestDisallowInterceptTouchEvent(true);
-        this.jdField_b_of_type_Boolean = true;
+        this.d = true;
         a((int)-f2);
       }
     }
-    else if ((i == 3) || (i == 1))
+    else if ((j == 3) || (j == 1))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("dispatchTouchEvent:ACTION_CANCEL or UP. action=");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(j);
         ((StringBuilder)localObject).append(" mIsPress=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" isCurShowSideBarView:");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("ProteusRecycleView", 2, ((StringBuilder)localObject).toString());
       }
       getParent().requestDisallowInterceptTouchEvent(false);
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_b_of_type_Boolean) {
+      this.c = false;
+      if (this.d) {
         a();
       }
-      this.jdField_b_of_type_Boolean = false;
-      if (f2 - this.jdField_a_of_type_Float < -ViewUtils.b(15.0F)) {
+      this.d = false;
+      if (f2 - this.a < -ViewUtils.dpToPx(15.0F)) {
         b();
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
+  public SideBarView getSideBarView()
+  {
+    return this.e;
+  }
+  
   public void setOnStateChangeListener(ProteusRecycleView.OnStateChangeListener paramOnStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener = paramOnStateChangeListener;
+    this.h = paramOnStateChangeListener;
   }
   
   public void setSideBarView(SideBarView paramSideBarView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericSideBarView = paramSideBarView;
+    this.e = paramSideBarView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.ProteusRecycleView
  * JD-Core Version:    0.7.0.1
  */

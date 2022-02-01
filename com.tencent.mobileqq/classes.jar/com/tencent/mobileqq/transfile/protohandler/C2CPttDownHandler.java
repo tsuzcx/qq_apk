@@ -73,29 +73,26 @@ public class C2CPttDownHandler
           if (k != 1020)
           {
             if (k == 9999) {
-              break label400;
+              break label385;
             }
             if ((k == 10002) || (k == 10004)) {
-              break label394;
-            }
-            if (k == 10009) {
-              break label387;
+              break label379;
             }
             if (k != 1000)
             {
               if (k == 1001) {
-                break label394;
+                break label379;
               }
               if (k != 1008) {
                 if (k != 1009)
                 {
                   i = j;
                   if (k == 1023) {
-                    break label403;
+                    break label388;
                   }
                   i = j;
                   if (k == 1024) {
-                    break label403;
+                    break label388;
                   }
                   i = j;
                 }
@@ -119,17 +116,14 @@ public class C2CPttDownHandler
             break;
             i = 104;
             break;
-            label387:
-            i = 130;
-            break;
-            label394:
+            label379:
             i = 100;
             break;
-            label400:
+            label385:
             i = 114;
           }
         }
-        label403:
+        label388:
         ((cmd0x346.ExtensionReq)localObject).uint64_type.set(i);
         ((cmd0x346.ExtensionReq)localObject).uint32_ptt_format.set(paramList.voiceType);
         ((cmd0x346.ExtensionReq)localObject).uint32_file_type.set(paramList.busiType);
@@ -313,7 +307,7 @@ public class C2CPttDownHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.C2CPttDownHandler
  * JD-Core Version:    0.7.0.1
  */

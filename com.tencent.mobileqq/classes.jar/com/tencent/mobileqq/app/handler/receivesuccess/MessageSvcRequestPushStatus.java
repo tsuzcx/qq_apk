@@ -32,14 +32,14 @@ public class MessageSvcRequestPushStatus
           paramFromServiceMsg.append(paramToServiceMsg.cDataLine);
           QLog.d("Q.msg.MessageHandler", 2, paramFromServiceMsg.toString());
         }
-        paramFromServiceMsg = (RegisterProxySvcPackHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+        paramFromServiceMsg = (RegisterProxySvcPackHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
         int i;
         if (paramToServiceMsg.cStatus == 1)
         {
           if (QLog.isDevelopLevel()) {
             QLog.d("Q.msg.MessageHandler", 4, "PConline now");
           }
-          paramMessageHandler.j();
+          paramMessageHandler.o();
           i = 1;
         }
         else
@@ -49,16 +49,16 @@ public class MessageSvcRequestPushStatus
             if (QLog.isDevelopLevel()) {
               QLog.d("Q.msg.MessageHandler", 4, "PCoffline now");
             }
-            paramMessageHandler.b(0);
+            paramMessageHandler.g(0);
           }
           i = 0;
         }
-        if ((i == 1) && (QFileAssistantUtils.c(paramMessageHandler.a)))
+        if ((i == 1) && (QFileAssistantUtils.g(paramMessageHandler.n)))
         {
-          QFileAssistantUtils.a(paramMessageHandler.a, 0, true);
-          QFileAssistantUtils.b(paramMessageHandler.a);
+          QFileAssistantUtils.a(paramMessageHandler.n, 0, true);
+          QFileAssistantUtils.h(paramMessageHandler.n);
         }
-        int j = (byte)((LoginDevicesManager)paramMessageHandler.a.getManager(QQManagerFactory.LOGIN_DEVICES_MANAGER)).a(paramToServiceMsg.vecInstanceList);
+        int j = (byte)((LoginDevicesManager)paramMessageHandler.n.getManager(QQManagerFactory.LOGIN_DEVICES_MANAGER)).a(paramToServiceMsg.vecInstanceList);
         paramFromServiceMsg.b(i);
         paramFromServiceMsg.e(paramToServiceMsg.cDataLine);
         paramFromServiceMsg.f(paramToServiceMsg.cPrintable);
@@ -69,7 +69,7 @@ public class MessageSvcRequestPushStatus
         paramFromServiceMsg.a(j);
         paramFromServiceMsg.c();
         paramFromServiceMsg.h(i);
-        paramMessageHandler = (DataLineHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+        paramMessageHandler = (DataLineHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
         paramMessageHandler.b(paramToServiceMsg.vecInstanceList);
         paramMessageHandler.a().a(i, paramToServiceMsg.cDataLine, paramToServiceMsg.cPrintable, paramToServiceMsg.cViewFile, paramToServiceMsg.nPCVer);
         return;
@@ -82,7 +82,7 @@ public class MessageSvcRequestPushStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcRequestPushStatus
  * JD-Core Version:    0.7.0.1
  */

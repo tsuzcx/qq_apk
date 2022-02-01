@@ -23,7 +23,7 @@ public class PtsAladdinKeyConfigHandler
   private static Set<String> b()
   {
     HashSet localHashSet = new HashSet();
-    Object localObject = (String)RIJSPUtils.a("default_feeds_aladdin_keys", "");
+    Object localObject = (String)RIJSPUtils.b("default_feeds_aladdin_keys", "");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return localHashSet;
     }
@@ -70,7 +70,7 @@ public class PtsAladdinKeyConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.PtsAladdinKeyConfigHandler
  * JD-Core Version:    0.7.0.1
  */

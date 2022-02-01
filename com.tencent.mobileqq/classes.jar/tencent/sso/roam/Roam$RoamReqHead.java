@@ -30,7 +30,7 @@ public final class Roam$RoamReqHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.sso.roam.Roam.RoamReqHead
  * JD-Core Version:    0.7.0.1
  */

@@ -26,13 +26,13 @@ final class ConstellationView$bindView$$inlined$apply$lambda$1$1
       ExtensionBizInfoHelper.a.a(ConstellationView.a(this.this$0.a), 1040);
       return;
     }
-    QQToast.a((Context)this.this$0.a.a(), 1, 2131719223, 0).a();
-    this.this$0.a.a.a(1040);
+    QQToast.makeText((Context)this.this$0.a.c(), 1, 2131916775, 0).show();
+    this.this$0.a.n.a(1040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView.bindView..inlined.apply.lambda.1.1
  * JD-Core Version:    0.7.0.1
  */

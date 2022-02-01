@@ -20,16 +20,16 @@ public class SheetItemClickProcessor$FriendAioAction
   {
     if (!TextUtils.isEmpty(paramString3))
     {
-      paramString1 = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      paramString1 = AIOUtils.a(new Intent(this.b, SplashActivity.class), null);
       paramString1.putExtra("uin", paramString3);
       paramString1.putExtra("uintype", 0);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+      this.b.startActivity(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.SheetItemClickProcessor.FriendAioAction
  * JD-Core Version:    0.7.0.1
  */

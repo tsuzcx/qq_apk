@@ -12,32 +12,29 @@ import tencent.im.oidb.channel_button.channel_button.Section;
 public class ChannelSection
 {
   public long a;
-  public String a;
-  public List<TabChannelCoverInfo> a;
   public String b;
+  public String c;
+  public List<TabChannelCoverInfo> d = new ArrayList();
   
   public ChannelSection(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = paramLong;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   public ChannelSection(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("id");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    this.b = paramJSONObject.optString("text");
+    this.a = paramJSONObject.optLong("id");
+    this.b = paramJSONObject.optString("name");
+    this.c = paramJSONObject.optString("text");
   }
   
   public ChannelSection(channel_button.Section paramSection)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramSection.uint64_section_id.get();
-    this.jdField_a_of_type_JavaLangString = paramSection.str_section_name.get();
-    this.b = paramSection.str_note_text.get();
+    this.a = paramSection.uint64_section_id.get();
+    this.b = paramSection.str_section_name.get();
+    this.c = paramSection.str_note_text.get();
   }
   
   public JSONObject a()
@@ -45,9 +42,9 @@ public class ChannelSection
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("id", this.jdField_a_of_type_Long);
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("text", this.b);
+      localJSONObject.put("id", this.a);
+      localJSONObject.put("name", this.b);
+      localJSONObject.put("text", this.c);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -59,7 +56,7 @@ public class ChannelSection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.ChannelSection
  * JD-Core Version:    0.7.0.1
  */

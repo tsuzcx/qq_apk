@@ -9,8 +9,8 @@ class GuideHelper$LottieDrawableHelper$1$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper$LottieDrawableHelper$1.a != null) {
-      this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper$LottieDrawableHelper$1.a.a(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (this.b.c != null) {
+      this.b.c.a(this.a);
     }
   }
 }

@@ -19,21 +19,21 @@ class FriendFragment$MyFriendListObserver
   
   protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -45,35 +45,35 @@ class FriendFragment$MyFriendListObserver
   
   protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -88,8 +88,8 @@ class FriendFragment$MyFriendListObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("contacts.fragment.FriendFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.b != null) {
+      this.a.b.notifyDataSetChanged();
     }
     if ((paramBoolean) && (this.a.isResumed())) {
       try
@@ -103,10 +103,10 @@ class FriendFragment$MyFriendListObserver
         {
           if (paramArrayOfObject[0] != 0)
           {
-            QQToast.a(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131704967), 0).a();
+            QQToast.makeText(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131902858), 0).show();
             return;
           }
-          QQToast.a(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131704968), 0).a();
+          QQToast.makeText(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131902859), 0).show();
           return;
         }
       }
@@ -121,7 +121,7 @@ class FriendFragment$MyFriendListObserver
   
   protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -142,7 +142,7 @@ class FriendFragment$MyFriendListObserver
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -166,26 +166,26 @@ class FriendFragment$MyFriendListObserver
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.d("contacts.fragment.FriendFragment", 2, ((StringBuilder)localObject).toString());
     }
-    paramBoolean2 = FriendFragment.a(this.a);
-    if (FriendFragment.a(this.a))
+    paramBoolean2 = FriendFragment.b(this.a);
+    if (FriendFragment.b(this.a))
     {
-      if (FriendFragment.b(this.a))
+      if (FriendFragment.c(this.a))
       {
         FriendFragment.b(this.a, false);
-        if (FriendFragment.a(this.a) != null) {
-          FriendFragment.b(this.a).a(this.a.b(), paramBoolean1, null);
+        if (FriendFragment.d(this.a) != null) {
+          FriendFragment.e(this.a).a(this.a.i(), paramBoolean1, null);
         }
       }
       localObject = this.a;
       long l;
-      if (FriendFragment.b((FriendFragment)localObject)) {
+      if (FriendFragment.c((FriendFragment)localObject)) {
         l = 0L;
       } else {
         l = 1400L;
       }
       FriendFragment.a((FriendFragment)localObject, l, true);
     }
-    if ((!paramBoolean2) && (FriendFragment.b(this.a))) {
+    if ((!paramBoolean2) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -211,7 +211,7 @@ class FriendFragment$MyFriendListObserver
   
   protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if ((paramString != null) && (FriendFragment.b(this.a))) {
+    if ((paramString != null) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
@@ -225,14 +225,14 @@ class FriendFragment$MyFriendListObserver
   
   protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
   
   protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+    if ((paramBoolean) && (FriendFragment.c(this.a))) {
       FriendFragment.a(this.a, 1400L, false);
     }
   }
@@ -248,14 +248,14 @@ class FriendFragment$MyFriendListObserver
       paramList.append(paramBoolean2);
       QLog.d("contacts.fragment.FriendFragment", 2, paramList.toString());
     }
-    if ((paramBoolean1) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    if ((paramBoolean1) && (this.a.b != null)) {
+      this.a.b.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

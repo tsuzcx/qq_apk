@@ -58,10 +58,10 @@ import msg.blessing_helper.blessing_helper.msg;
 public class UncommonMessageProcessor
   extends BaseMessageProcessor
 {
-  private EmojiStickerManager.StickerRecallListener a;
-  private final int q = 12;
-  private final int r = 6;
-  private final int s = 1080000;
+  private EmojiStickerManager.StickerRecallListener t;
+  private final int u = 12;
+  private final int v = 6;
+  private final int w = 1080000;
   
   public UncommonMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
@@ -107,7 +107,7 @@ public class UncommonMessageProcessor
       QLog.d("Q.msg.UncommonMessageProcessor", 1, new Object[] { "deleteMsgFromServerInner error, istroop:", Integer.valueOf(paramMessageRecord.istroop), " msgtype:", Integer.valueOf(paramMessageRecord.msgtype) });
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("PbMessageSvc.PbDelOneRoamMsg");
+    Object localObject1 = this.r.createToServiceMsg("PbMessageSvc.PbDelOneRoamMsg");
     ((ToServiceMsg)localObject1).extraData.putLong("timeOut", paramLong2);
     ((ToServiceMsg)localObject1).extraData.putLong("startTime", l);
     ((ToServiceMsg)localObject1).extraData.putInt("retryIndex", paramInt);
@@ -146,7 +146,7 @@ public class UncommonMessageProcessor
     {
       paramInt = (short)(int)paramMessageRecord.shmsgseq;
       ((ToServiceMsg)localObject1).extraData.putInt("msgrandom", i);
-      String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      String str = this.q.getCurrentAccountUin();
       localObject2 = new msg_svc.PbDelRoamMsgReq.C2CMsg();
       ((msg_svc.PbDelRoamMsgReq.C2CMsg)localObject2).peer_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
       ((msg_svc.PbDelRoamMsgReq.C2CMsg)localObject2).from_uin.set(Long.valueOf(str).longValue());
@@ -156,7 +156,7 @@ public class UncommonMessageProcessor
       localPbDelRoamMsgReq.c2c_msg.set((MessageMicro)localObject2);
       if (paramMessageRecord.msgtype == -2005)
       {
-        paramMessageRecord = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, 0);
+        paramMessageRecord = ((QQAppInterface)this.q).getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, 0);
         if ((paramMessageRecord != null) && (paramMessageRecord.nOLfileSessionId != 0L))
         {
           ((msg_svc.PbDelRoamMsgReq.C2CMsg)localObject2).msg_time.set((int)paramMessageRecord.msgTime);
@@ -169,7 +169,7 @@ public class UncommonMessageProcessor
     ((ToServiceMsg)localObject1).putWupBuffer(localPbDelRoamMsgReq.toByteArray());
     ((ToServiceMsg)localObject1).setTimeout(paramLong2);
     ((ToServiceMsg)localObject1).setEnableFastResend(true);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((ToServiceMsg)localObject1);
+    this.r.a((ToServiceMsg)localObject1);
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -213,18 +213,18 @@ public class UncommonMessageProcessor
       }
       if (l2 > 0L)
       {
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("MessageSvc.PbMultiMsgSend");
+        paramFromServiceMsg = this.r.createToServiceMsg("MessageSvc.PbMultiMsgSend");
         paramFromServiceMsg.extraData.putLong("uniseq", l1);
         paramFromServiceMsg.extraData.putInt("msgtype", i);
         paramFromServiceMsg.extraData.putLong("key_msg_info_time_start", System.currentTimeMillis());
         paramFromServiceMsg.setTimeout(l2);
         paramFromServiceMsg.putWupBuffer(paramToServiceMsg.getWupBuffer());
         paramFromServiceMsg.setEnableFastResend(true);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramFromServiceMsg);
+        this.r.a(paramFromServiceMsg);
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8019, false, new Object[] { Integer.valueOf(j), Long.valueOf(0L), Boolean.valueOf(false) });
+    this.r.a(8019, false, new Object[] { Integer.valueOf(j), Long.valueOf(0L), Boolean.valueOf(false) });
   }
   
   private void a(ArrayList<RevokeMsgInfo> paramArrayList, int paramInt, String paramString)
@@ -233,15 +233,15 @@ public class UncommonMessageProcessor
     while (paramArrayList.hasNext())
     {
       RevokeMsgInfo localRevokeMsgInfo = (RevokeMsgInfo)paramArrayList.next();
-      localRevokeMsgInfo.g = paramInt;
-      localRevokeMsgInfo.f = paramString;
+      localRevokeMsgInfo.p = paramInt;
+      localRevokeMsgInfo.q = paramString;
     }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     long l = paramToServiceMsg.extraData.getLong("bless_sendreq_time");
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8018, false, new Object[] { Integer.valueOf(0) });
+    this.r.a(8018, false, new Object[] { Integer.valueOf(0) });
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.UncommonMessageProcessor", 2, String.format("handleSendDirtyBlessTextCheckError, time: %d", new Object[] { Long.valueOf(l) }));
     }
@@ -304,7 +304,7 @@ public class UncommonMessageProcessor
     {
       bool1 = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8019, bool1, new Object[] { Integer.valueOf(i), Long.valueOf(l1), Boolean.valueOf(bool2) });
+    this.r.a(8019, bool1, new Object[] { Integer.valueOf(i), Long.valueOf(l1), Boolean.valueOf(bool2) });
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.UncommonMessageProcessor", 2, String.format("<---handleSendBlessMessageResp : ----replyCode: %d isSuc: %s uniseq: %d msgSeq: %d msgType: %d waitTime: %d ssoseq: %d  appseq: %d isRedBagVideo:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(j), Long.valueOf(l1), Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), Integer.valueOf(paramFromServiceMsg.getAppSeq()), Boolean.valueOf(bool2) }));
     }
@@ -332,11 +332,11 @@ public class UncommonMessageProcessor
     if (i == 1)
     {
       ArrayList localArrayList = paramToServiceMsg.extraData.getParcelableArrayList("key_msg_info_revoke");
-      String str = ((RevokeMsgInfo)localArrayList.get(0)).jdField_a_of_type_JavaLangString;
-      i = ((RevokeMsgInfo)localArrayList.get(0)).jdField_a_of_type_Int;
-      l1 = ((RevokeMsgInfo)localArrayList.get(0)).b;
-      l2 = ((RevokeMsgInfo)localArrayList.get(0)).jdField_a_of_type_Long;
-      long l3 = ((RevokeMsgInfo)localArrayList.get(0)).c;
+      String str = ((RevokeMsgInfo)localArrayList.get(0)).c;
+      i = ((RevokeMsgInfo)localArrayList.get(0)).a;
+      l1 = ((RevokeMsgInfo)localArrayList.get(0)).f;
+      l2 = ((RevokeMsgInfo)localArrayList.get(0)).b;
+      long l3 = ((RevokeMsgInfo)localArrayList.get(0)).g;
       int j = paramFromServiceMsg.getResultCode();
       if (j == 2901)
       {
@@ -352,14 +352,14 @@ public class UncommonMessageProcessor
         }
         if (l4 > 0L)
         {
-          paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("PbMessageSvc.PbMsgWithDraw");
+          paramFromServiceMsg = this.r.createToServiceMsg("PbMessageSvc.PbMsgWithDraw");
           paramFromServiceMsg.setTimeout(l4);
           paramFromServiceMsg.putWupBuffer(paramToServiceMsg.getWupBuffer());
           paramFromServiceMsg.extraData.putLong("key_msg_info_time_start", System.currentTimeMillis());
           paramFromServiceMsg.extraData.putParcelableArrayList("key_msg_info_revoke", localArrayList);
           paramFromServiceMsg.extraData.putInt("MARK_REQUEST_REVOKE_OR_DELETEMULTI ", 1);
           paramFromServiceMsg.setEnableFastResend(true);
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramFromServiceMsg);
+          this.r.a(paramFromServiceMsg);
           return;
         }
       }
@@ -373,19 +373,19 @@ public class UncommonMessageProcessor
     {
       l1 = paramToServiceMsg.extraData.getLong("msgSeq");
       l2 = paramToServiceMsg.extraData.getLong("timeOut");
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1);
+      this.r.b(paramToServiceMsg, paramFromServiceMsg);
+      paramToServiceMsg = this.r.b(l1);
       if (paramToServiceMsg != null)
       {
-        if ((paramFromServiceMsg.getResultCode() == 2901) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, "msf"))) {
+        if ((paramFromServiceMsg.getResultCode() == 2901) && (this.r.a(paramToServiceMsg, "msf"))) {
           return;
         }
-        if ((1080000L == l2) || (paramToServiceMsg.a()))
+        if ((1080000L == l2) || (paramToServiceMsg.b()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.UncommonMessageProcessor", 2, "<---handleMultiDeleteMsgError : Failed at last.");
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1);
+          this.r.c(l1);
         }
       }
     }
@@ -410,7 +410,7 @@ public class UncommonMessageProcessor
       QLog.d("Q.msg.UncommonMessageProcessor", 2, String.format("handleSendDirtyBlessTextCheckResp, parse data error", new Object[0]));
     }
     i = -1;
-    paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
+    paramToServiceMsg = this.r;
     if (i == 0) {
       bool = true;
     } else {
@@ -450,19 +450,19 @@ public class UncommonMessageProcessor
       localStringBuilder.append(l4);
       QLog.d("Q.msg.UncommonMessageProcessor", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l4);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    paramToServiceMsg = this.r.b(l4);
     if (paramToServiceMsg != null)
     {
-      if ((paramFromServiceMsg.getResultCode() == 2901) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, "msf"))) {
+      if ((paramFromServiceMsg.getResultCode() == 2901) && (this.r.a(paramToServiceMsg, "msf"))) {
         return;
       }
-      if ((1080000L == l3) || (paramToServiceMsg.a()))
+      if ((1080000L == l3) || (paramToServiceMsg.b()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.UncommonMessageProcessor", 2, "<---handleDeleteMsgError : Failed at last.");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l4);
+        this.r.c(l4);
       }
     }
   }
@@ -491,12 +491,12 @@ public class UncommonMessageProcessor
           {
             localObject1 = (msg_svc.PbC2CMsgWithDrawResp)paramObject.next();
             k = ((msg_svc.PbC2CMsgWithDrawResp)localObject1).result.get();
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l);
-            this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
+            localObject2 = this.r.b(l);
+            this.r.b(paramToServiceMsg, paramFromServiceMsg);
             j = i;
             if (k == 255)
             {
-              this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((SendMessageHandler)localObject2, "server");
+              this.r.a((SendMessageHandler)localObject2, "server");
               j = 0;
             }
             localObject1 = ((msg_svc.PbC2CMsgWithDrawResp)localObject1).errmsg.get();
@@ -526,12 +526,12 @@ public class UncommonMessageProcessor
             }
             localObject1 = (msg_svc.PbGroupMsgWithDrawResp)paramObject.next();
             k = ((msg_svc.PbGroupMsgWithDrawResp)localObject1).result.get();
-            this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l);
+            this.r.b(paramToServiceMsg, paramFromServiceMsg);
+            localObject2 = this.r.b(l);
             j = i;
             if (k == 255)
             {
-              this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((SendMessageHandler)localObject2, "server");
+              this.r.a((SendMessageHandler)localObject2, "server");
               j = 0;
             }
             localObject1 = ((msg_svc.PbGroupMsgWithDrawResp)localObject1).errmsg.get();
@@ -549,7 +549,7 @@ public class UncommonMessageProcessor
       if (j == 0) {
         break label1400;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l);
+      this.r.c(l);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -565,14 +565,14 @@ public class UncommonMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.e("Q.msg.UncommonMessageProcessor", 2, "<---handleDeleteMultiMsgResp : ParseFrom PbMsgWithDrawResp Error.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l);
+    this.r.c(l);
     return;
     if (i == 1)
     {
       localObject1 = paramToServiceMsg.extraData.getParcelableArrayList("key_msg_info_revoke");
       if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
       {
-        m = ((RevokeMsgInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_Int;
+        m = ((RevokeMsgInfo)((ArrayList)localObject1).get(0)).a;
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = ((ArrayList)localObject1).iterator();
@@ -610,13 +610,13 @@ public class UncommonMessageProcessor
                   i = paramFromServiceMsg.result.get();
                   if ((i >= 0) && (i <= 1000))
                   {
-                    ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getMessageFacade().a((ArrayList)localObject1);
+                    ((QQAppInterface)this.q).getMessageFacade().a((ArrayList)localObject1);
                     paramFromServiceMsg = paramToServiceMsg;
                   }
                   else
                   {
                     paramFromServiceMsg = paramFromServiceMsg.errmsg.get();
-                    a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_JavaLangString, m, c, i);
+                    a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).c, m, c, i);
                   }
                   paramToServiceMsg = paramFromServiceMsg;
                   if (!QLog.isColorLevel()) {
@@ -704,14 +704,14 @@ public class UncommonMessageProcessor
           }
           if (j != 0)
           {
-            ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getMessageFacade().a((ArrayList)localObject1);
+            ((QQAppInterface)this.q).getMessageFacade().a((ArrayList)localObject1);
           }
           else
           {
             paramToServiceMsg = ((msg_svc.PbGroupMsgWithDrawResp)localObject2).errmsg.get();
-            a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_JavaLangString, m, c, i);
+            a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).c, m, c, i);
             continue;
-            ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getMessageFacade().a((ArrayList)localObject1);
+            ((QQAppInterface)this.q).getMessageFacade().a((ArrayList)localObject1);
           }
           if (QLog.isColorLevel()) {
             QLog.d("revokeMsg", 2, String.format("handleRevokeMsgResp,result: %s, errorMsg: %s", new Object[] { Integer.valueOf(n), paramToServiceMsg }));
@@ -721,7 +721,7 @@ public class UncommonMessageProcessor
         if (QLog.isColorLevel()) {
           QLog.e("Q.msg.UncommonMessageProcessor", 2, "<---handleRevokeMsgResp : ParseFrom PbMsgWithDrawResp Error.");
         }
-        a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_JavaLangString, m, c, n);
+        a(((RevokeMsgInfo)((ArrayList)localObject1).get(0)).c, m, c, n);
         return;
       }
       a(" ", 0, c, m);
@@ -770,8 +770,8 @@ public class UncommonMessageProcessor
       QLog.e("Q.msg.UncommonMessageProcessor", 2, "<---handleDeleteMsgResp : ParseFrom PbDelRoamMsgResp Error.");
     }
     paramObject = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l3);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    paramToServiceMsg = this.r.b(l3);
     if (paramToServiceMsg == null)
     {
       if (QLog.isColorLevel())
@@ -796,10 +796,10 @@ public class UncommonMessageProcessor
       }
       if ((i != 17) && (i != -102) && (i != 255))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l3);
+        this.r.c(l3);
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, "server")) {}
+      if (!this.r.a(paramToServiceMsg, "server")) {}
     }
   }
   
@@ -903,7 +903,7 @@ public class UncommonMessageProcessor
                 if (QLog.isColorLevel()) {
                   QLog.d("Q.msg.UncommonMessageProcessor", 2, "--->deleteMsgFromServer : delete a sending C2C msg, waitting for the response to complete.");
                 }
-                ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(paramMessageRecord);
+                ((MessageCache)this.q.getMsgCache()).c(paramMessageRecord);
                 return;
               }
               if (!QLog.isColorLevel()) {
@@ -920,7 +920,7 @@ public class UncommonMessageProcessor
           MobileQQService.seq = j + 1;
           long l = j;
           localObject1 = new SendMessageHandler();
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l, (SendMessageHandler)localObject1);
+          this.r.a(l, (SendMessageHandler)localObject1);
           j = 0;
           while (j < 12)
           {
@@ -965,13 +965,13 @@ public class UncommonMessageProcessor
   
   public void a(MessageRecord paramMessageRecord, ArrayList<String> paramArrayList, ChatActivityFacade.HongbaoParams paramHongbaoParams)
   {
-    paramArrayList = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageRecord, paramArrayList, paramHongbaoParams);
+    paramArrayList = MessageHandlerUtils.a(this.q, paramMessageRecord, paramArrayList, paramHongbaoParams);
     if (paramArrayList == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg error, msgReq is null!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8019, false, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false) });
+      this.r.a(8019, false, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false) });
       return;
     }
     a(false, true, true, 0L, new UncommonMessageProcessor.1(this, paramMessageRecord, paramArrayList));
@@ -979,18 +979,18 @@ public class UncommonMessageProcessor
   
   public void a(EmojiStickerManager.StickerRecallListener paramStickerRecallListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener = paramStickerRecallListener;
+    this.t = paramStickerRecallListener;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).e())
+    if (((MessageCache)this.q.getMsgCache()).D())
     {
-      EmojiStickerManager.StickerRecallListener localStickerRecallListener = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener;
+      EmojiStickerManager.StickerRecallListener localStickerRecallListener = this.t;
       if (localStickerRecallListener != null) {
         localStickerRecallListener.a(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8016, false, null);
+      this.r.a(8016, false, null);
       b(paramString, paramInt1, paramInt2, paramInt3);
     }
   }
@@ -1001,7 +1001,7 @@ public class UncommonMessageProcessor
     MobileQQService.seq = i + 1;
     long l = i;
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l, localSendMessageHandler);
+    this.r.a(l, localSendMessageHandler);
     paramList = a(paramList, 2);
     if (paramList == null) {
       return;
@@ -1033,11 +1033,11 @@ public class UncommonMessageProcessor
   
   public void a(List<MessageRecord> paramList, boolean paramBoolean)
   {
-    EmojiStickerManager.StickerRecallListener localStickerRecallListener = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener;
+    EmojiStickerManager.StickerRecallListener localStickerRecallListener = this.t;
     if (localStickerRecallListener != null) {
       localStickerRecallListener.a(true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(8016, true, new Object[] { paramList, Boolean.valueOf(paramBoolean) });
+    this.r.a(8016, true, new Object[] { paramList, Boolean.valueOf(paramBoolean), Boolean.valueOf(false) });
   }
   
   public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -1058,10 +1058,15 @@ public class UncommonMessageProcessor
     }
     a(paramToServiceMsg, paramFromServiceMsg);
   }
+  
+  public void b(List<MessageRecord> paramList, boolean paramBoolean)
+  {
+    this.r.a(8016, true, new Object[] { paramList, Boolean.valueOf(paramBoolean), Boolean.valueOf(true) });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.UncommonMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

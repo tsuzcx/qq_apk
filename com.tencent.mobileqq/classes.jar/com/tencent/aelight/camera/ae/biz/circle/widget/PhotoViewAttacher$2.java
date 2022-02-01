@@ -17,8 +17,8 @@ class PhotoViewAttacher$2
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).onLongClick(PhotoViewAttacher.a(this.a));
+    if (PhotoViewAttacher.k(this.a) != null) {
+      PhotoViewAttacher.k(this.a).onLongClick(PhotoViewAttacher.h(this.a));
     }
   }
   
@@ -32,15 +32,15 @@ class PhotoViewAttacher$2
     QLog.d("PhotoViewAttacher", 4, paramMotionEvent1.toString());
     paramFloat1 = 0.0F - paramFloat1;
     paramFloat2 = 0.0F - paramFloat2;
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a(paramFloat1, paramFloat2);
+    if (PhotoViewAttacher.j(this.a) != null) {
+      PhotoViewAttacher.j(this.a).a(paramFloat1, paramFloat2);
     }
     return this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.PhotoViewAttacher.2
  * JD-Core Version:    0.7.0.1
  */

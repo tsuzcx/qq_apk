@@ -18,8 +18,8 @@ public class HotChatRecentUserMgr
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getProxyManager().a();
-    paramString = paramQQAppInterface.b(paramString, 1);
+    paramQQAppInterface = paramQQAppInterface.getProxyManager().g();
+    paramString = paramQQAppInterface.c(paramString, 1);
     if (paramString != null) {
       paramQQAppInterface.a(paramString);
     }
@@ -27,7 +27,7 @@ public class HotChatRecentUserMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.HotChatRecentUserMgr
  * JD-Core Version:    0.7.0.1
  */

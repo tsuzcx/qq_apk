@@ -77,29 +77,9 @@ public class ShortcutUtils
     return localObject;
   }
   
-  private static String a(Context paramContext)
-  {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      paramContext = localPackageManager.getPackageInfo(paramContext.getApplicationContext().getPackageName(), 0);
-      if (paramContext == null) {
-        return null;
-      }
-      paramContext = paramContext.applicationInfo.loadLabel(localPackageManager).toString();
-      return paramContext;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      label40:
-      break label40;
-    }
-    return "";
-  }
-  
   public static void a(Activity paramActivity)
   {
-    paramActivity = ShortcutUtils.PermissionDialog.a(paramActivity, HardCodeUtil.a(2131713886), HardCodeUtil.a(2131713899), HardCodeUtil.a(2131713901), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
+    paramActivity = ShortcutUtils.PermissionDialog.a(paramActivity, HardCodeUtil.a(2131911419), HardCodeUtil.a(2131898212), HardCodeUtil.a(2131911432), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
     paramActivity.a(false);
     paramActivity.show();
   }
@@ -117,7 +97,7 @@ public class ShortcutUtils
       {
         a(paramActivity);
         if (paramAddShortcutCallback != null) {
-          paramAddShortcutCallback.a(2, HardCodeUtil.a(2131713880));
+          paramAddShortcutCallback.a(2, HardCodeUtil.a(2131911413));
         }
         return;
       }
@@ -173,36 +153,6 @@ public class ShortcutUtils
       QLog.i("Shortcut", 1, paramContext.getMessage(), paramContext);
     }
     return 3;
-  }
-  
-  private static Intent b(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setClassName(paramActivity, JumpActivity.class.getName());
-    localIntent.putExtra("CONFIG_APPID", paramMiniAppInfo.appId);
-    localIntent.putExtra("CONFIG_APPNAME", paramMiniAppInfo.name);
-    localIntent.putExtra("CONFIG_APPICON", paramMiniAppInfo.iconUrl);
-    localIntent.putExtra("CONFIG_REPORTTYPE", paramMiniAppInfo.getReportType());
-    localIntent.putExtra("CONFIG_ENGINETYPE", paramMiniAppInfo.getEngineType());
-    localIntent.putExtra("MINI_CONFIG_SCENE", 1023);
-    localIntent.putExtra("MINI_CONFIG_DEV_DESC", paramMiniAppInfo.developerDesc);
-    localIntent.putExtra("CONFIG_VER_TYPE", paramMiniAppInfo.verType);
-    return localIntent;
-  }
-  
-  private static Bitmap b(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
-  {
-    paramMiniAppInfo = ImageUtil.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
-    int i = (int)paramActivity.getResources().getDimension(17104896);
-    int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
-    if (j > i) {
-      i = j;
-    }
-    paramActivity = a(paramMiniAppInfo, i, i);
-    double d = i;
-    Double.isNaN(d);
-    return ImageUtil.a(paramActivity, (int)(d * 0.15D));
   }
   
   public static void b(Activity paramActivity)
@@ -382,30 +332,30 @@ public class ShortcutUtils
   public static int c(@NonNull Context paramContext)
   {
     // Byte code:
-    //   0: ldc 177
+    //   0: ldc 130
     //   2: iconst_1
-    //   3: ldc_w 523
-    //   6: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc_w 383
+    //   6: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
-    //   10: invokevirtual 527	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   10: invokevirtual 387	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   13: astore_3
     //   14: aload_3
     //   15: ifnonnull +14 -> 29
-    //   18: ldc 177
+    //   18: ldc 130
     //   20: iconst_1
-    //   21: ldc_w 529
-    //   24: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   21: ldc_w 389
+    //   24: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   27: iconst_3
     //   28: ireturn
-    //   29: ldc_w 531
-    //   32: invokestatic 535	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   29: ldc_w 391
+    //   32: invokestatic 395	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   35: astore 4
-    //   37: getstatic 540	android/os/Build$VERSION:SDK_INT	I
+    //   37: getstatic 401	android/os/Build$VERSION:SDK_INT	I
     //   40: bipush 23
     //   42: if_icmplt +37 -> 79
     //   45: aload_0
-    //   46: ldc_w 542
-    //   49: invokevirtual 546	android/content/Context:checkSelfPermission	(Ljava/lang/String;)I
+    //   46: ldc_w 403
+    //   49: invokevirtual 407	android/content/Context:checkSelfPermission	(Ljava/lang/String;)I
     //   52: ifne +8 -> 60
     //   55: iconst_1
     //   56: istore_1
@@ -414,11 +364,11 @@ public class ShortcutUtils
     //   61: istore_1
     //   62: iload_1
     //   63: ifne +16 -> 79
-    //   66: ldc 177
+    //   66: ldc 130
     //   68: iconst_1
-    //   69: ldc_w 548
-    //   72: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   75: invokestatic 550	com/tencent/qqmini/proxyimpl/ShortcutUtils:a	()I
+    //   69: ldc_w 409
+    //   72: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: invokestatic 411	com/tencent/qqmini/proxyimpl/ShortcutUtils:a	()I
     //   78: ireturn
     //   79: aconst_null
     //   80: astore_2
@@ -428,82 +378,82 @@ public class ShortcutUtils
     //   85: aconst_null
     //   86: aconst_null
     //   87: aconst_null
-    //   88: invokevirtual 556	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   88: invokevirtual 417	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   91: astore_3
     //   92: aload_3
     //   93: astore_2
     //   94: goto +14 -> 108
     //   97: astore_3
-    //   98: ldc 177
+    //   98: ldc 130
     //   100: iconst_1
-    //   101: ldc_w 558
+    //   101: ldc_w 419
     //   104: aload_3
-    //   105: invokestatic 560	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   105: invokestatic 421	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   108: aload_2
     //   109: ifnonnull +14 -> 123
-    //   112: ldc 177
+    //   112: ldc 130
     //   114: iconst_1
-    //   115: ldc_w 562
-    //   118: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: ldc_w 423
+    //   118: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   121: iconst_3
     //   122: ireturn
     //   123: aload_2
-    //   124: invokeinterface 567 1 0
+    //   124: invokeinterface 428 1 0
     //   129: ifeq +171 -> 300
     //   132: aload_2
     //   133: aload_2
-    //   134: ldc_w 569
-    //   137: invokeinterface 572 2 0
-    //   142: invokeinterface 575 2 0
+    //   134: ldc_w 430
+    //   137: invokeinterface 433 2 0
+    //   142: invokeinterface 436 2 0
     //   147: astore_3
-    //   148: new 270	java/lang/StringBuilder
+    //   148: new 231	java/lang/StringBuilder
     //   151: dup
-    //   152: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   152: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   155: astore 4
     //   157: aload 4
-    //   159: ldc_w 577
-    //   162: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: ldc_w 438
+    //   162: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload 4
     //   168: aload_3
-    //   169: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: pop
-    //   173: ldc 177
+    //   173: ldc 130
     //   175: iconst_1
     //   176: aload 4
-    //   178: invokevirtual 281	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   178: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   184: aload_3
-    //   185: invokestatic 582	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   185: invokestatic 443	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   188: ifne -65 -> 123
     //   191: aload_3
     //   192: aload_0
-    //   193: invokestatic 584	com/tencent/qqmini/proxyimpl/ShortcutUtils:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   196: invokevirtual 232	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   193: invokestatic 447	com/tencent/qqmini/proxyimpl/ShortcutUtils:f	(Landroid/content/Context;)Ljava/lang/String;
+    //   196: invokevirtual 193	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   199: ifeq -76 -> 123
     //   202: aload_2
     //   203: aload_2
-    //   204: ldc_w 586
-    //   207: invokeinterface 572 2 0
-    //   212: invokeinterface 590 2 0
+    //   204: ldc_w 449
+    //   207: invokeinterface 433 2 0
+    //   212: invokeinterface 453 2 0
     //   217: istore_1
-    //   218: new 270	java/lang/StringBuilder
+    //   218: new 231	java/lang/StringBuilder
     //   221: dup
-    //   222: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   222: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   225: astore_3
     //   226: aload_3
-    //   227: ldc_w 592
-    //   230: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: ldc_w 455
+    //   230: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: pop
     //   234: aload_3
     //   235: iload_1
-    //   236: invokevirtual 504	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   239: pop
-    //   240: ldc 177
+    //   240: ldc 130
     //   242: iconst_1
     //   243: aload_3
-    //   244: invokevirtual 281	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   247: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   244: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   250: iload_1
     //   251: iconst_1
     //   252: if_icmpeq +40 -> 292
@@ -515,36 +465,36 @@ public class ShortcutUtils
     //   265: bipush 16
     //   267: if_icmpne +11 -> 278
     //   270: aload_2
-    //   271: invokeinterface 595 1 0
+    //   271: invokeinterface 458 1 0
     //   276: iconst_0
     //   277: ireturn
     //   278: iload_1
     //   279: bipush 18
     //   281: if_icmpne -158 -> 123
     //   284: aload_2
-    //   285: invokeinterface 595 1 0
+    //   285: invokeinterface 458 1 0
     //   290: iconst_2
     //   291: ireturn
     //   292: aload_2
-    //   293: invokeinterface 595 1 0
+    //   293: invokeinterface 458 1 0
     //   298: iconst_1
     //   299: ireturn
     //   300: aload_2
-    //   301: invokeinterface 595 1 0
+    //   301: invokeinterface 458 1 0
     //   306: iconst_3
     //   307: ireturn
     //   308: astore_0
     //   309: goto +18 -> 327
     //   312: astore_0
-    //   313: ldc 177
+    //   313: ldc 130
     //   315: iconst_1
     //   316: aload_0
-    //   317: invokevirtual 596	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   317: invokevirtual 459	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   320: aload_0
-    //   321: invokestatic 287	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   321: invokestatic 250	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   324: goto -24 -> 300
     //   327: aload_2
-    //   328: invokeinterface 595 1 0
+    //   328: invokeinterface 458 1 0
     //   333: goto +5 -> 338
     //   336: aload_0
     //   337: athrow
@@ -609,6 +559,22 @@ public class ShortcutUtils
     return 3;
   }
   
+  private static Intent d(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setClassName(paramActivity, JumpActivity.class.getName());
+    localIntent.putExtra("CONFIG_APPID", paramMiniAppInfo.appId);
+    localIntent.putExtra("CONFIG_APPNAME", paramMiniAppInfo.name);
+    localIntent.putExtra("CONFIG_APPICON", paramMiniAppInfo.iconUrl);
+    localIntent.putExtra("CONFIG_REPORTTYPE", paramMiniAppInfo.getReportType());
+    localIntent.putExtra("CONFIG_ENGINETYPE", paramMiniAppInfo.getEngineType());
+    localIntent.putExtra("MINI_CONFIG_SCENE", 1023);
+    localIntent.putExtra("MINI_CONFIG_DEV_DESC", paramMiniAppInfo.developerDesc);
+    localIntent.putExtra("CONFIG_VER_TYPE", paramMiniAppInfo.verType);
+    return localIntent;
+  }
+  
   private static void d(Activity paramActivity)
   {
     AppBrandTask.runTaskOnUiThread(new ShortcutUtils.4(paramActivity));
@@ -618,136 +584,136 @@ public class ShortcutUtils
   public static int e(@NonNull Context paramContext)
   {
     // Byte code:
-    //   0: ldc 177
+    //   0: ldc 130
     //   2: iconst_1
-    //   3: ldc_w 645
-    //   6: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc_w 576
+    //   6: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
-    //   10: invokevirtual 527	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   10: invokevirtual 387	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   13: astore_2
     //   14: aload_2
     //   15: ifnonnull +14 -> 29
-    //   18: ldc 177
+    //   18: ldc 130
     //   20: iconst_1
-    //   21: ldc_w 529
-    //   24: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   21: ldc_w 389
+    //   24: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   27: iconst_3
     //   28: ireturn
     //   29: aload_2
-    //   30: ldc_w 647
-    //   33: invokestatic 535	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   30: ldc_w 578
+    //   33: invokestatic 395	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   36: aconst_null
     //   37: aconst_null
     //   38: aconst_null
     //   39: aconst_null
-    //   40: invokevirtual 556	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   40: invokevirtual 417	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   43: astore_2
     //   44: aload_2
     //   45: ifnonnull +14 -> 59
-    //   48: ldc 177
+    //   48: ldc 130
     //   50: iconst_1
-    //   51: ldc_w 649
-    //   54: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   51: ldc_w 580
+    //   54: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: iconst_3
     //   58: ireturn
     //   59: aload_0
-    //   60: invokevirtual 104	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   63: invokevirtual 107	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   60: invokevirtual 477	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   63: invokevirtual 478	android/content/Context:getPackageName	()Ljava/lang/String;
     //   66: astore_0
     //   67: aload_2
-    //   68: invokeinterface 567 1 0
+    //   68: invokeinterface 428 1 0
     //   73: ifeq +156 -> 229
     //   76: aload_2
     //   77: aload_2
-    //   78: ldc_w 651
-    //   81: invokeinterface 654 2 0
-    //   86: invokeinterface 575 2 0
+    //   78: ldc_w 582
+    //   81: invokeinterface 585 2 0
+    //   86: invokeinterface 436 2 0
     //   91: astore_3
-    //   92: new 270	java/lang/StringBuilder
+    //   92: new 231	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   96: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   99: astore 4
     //   101: aload 4
-    //   103: ldc_w 592
-    //   106: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 455
+    //   106: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload 4
     //   112: aload_3
-    //   113: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: pop
-    //   117: ldc 177
+    //   117: ldc 130
     //   119: iconst_1
     //   120: aload 4
-    //   122: invokevirtual 281	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   122: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 202	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: aload_3
-    //   129: invokestatic 582	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   129: invokestatic 443	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   132: ifne -65 -> 67
-    //   135: new 270	java/lang/StringBuilder
+    //   135: new 231	java/lang/StringBuilder
     //   138: dup
-    //   139: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   139: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   142: astore 4
     //   144: aload 4
     //   146: aload_0
-    //   147: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aload 4
-    //   153: ldc_w 656
-    //   156: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: ldc_w 587
+    //   156: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload_3
     //   161: aload 4
-    //   163: invokevirtual 281	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   166: invokevirtual 40	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   169: istore_1
     //   170: iload_1
     //   171: ifeq +11 -> 182
     //   174: aload_2
-    //   175: invokeinterface 595 1 0
+    //   175: invokeinterface 458 1 0
     //   180: iconst_0
     //   181: ireturn
-    //   182: new 270	java/lang/StringBuilder
+    //   182: new 231	java/lang/StringBuilder
     //   185: dup
-    //   186: invokespecial 271	java/lang/StringBuilder:<init>	()V
+    //   186: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   189: astore 4
     //   191: aload 4
     //   193: aload_0
-    //   194: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: pop
     //   198: aload 4
-    //   200: ldc_w 658
-    //   203: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: ldc_w 589
+    //   203: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: pop
     //   207: aload_3
     //   208: aload 4
-    //   210: invokevirtual 281	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   210: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   213: invokevirtual 40	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   216: istore_1
     //   217: iload_1
     //   218: ifeq -151 -> 67
     //   221: aload_2
-    //   222: invokeinterface 595 1 0
+    //   222: invokeinterface 458 1 0
     //   227: iconst_1
     //   228: ireturn
     //   229: aload_2
-    //   230: invokeinterface 595 1 0
+    //   230: invokeinterface 458 1 0
     //   235: iconst_3
     //   236: ireturn
     //   237: astore_0
     //   238: goto +23 -> 261
     //   241: astore_0
-    //   242: ldc 177
+    //   242: ldc 130
     //   244: iconst_1
     //   245: aload_0
-    //   246: invokevirtual 596	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   246: invokevirtual 459	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   249: aload_0
-    //   250: invokestatic 287	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   250: invokestatic 250	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   253: aload_2
-    //   254: invokeinterface 595 1 0
+    //   254: invokeinterface 458 1 0
     //   259: iconst_3
     //   260: ireturn
     //   261: aload_2
-    //   262: invokeinterface 595 1 0
+    //   262: invokeinterface 458 1 0
     //   267: goto +5 -> 272
     //   270: aload_0
     //   271: athrow
@@ -769,10 +735,44 @@ public class ShortcutUtils
     //   67	170	241	java/lang/Exception
     //   182	217	241	java/lang/Exception
   }
+  
+  private static Bitmap e(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  {
+    paramMiniAppInfo = ImageUtil.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
+    int i = (int)paramActivity.getResources().getDimension(17104896);
+    int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
+    if (j > i) {
+      i = j;
+    }
+    paramActivity = a(paramMiniAppInfo, i, i);
+    double d = i;
+    Double.isNaN(d);
+    return ImageUtil.a(paramActivity, (int)(d * 0.15D));
+  }
+  
+  private static String f(Context paramContext)
+  {
+    try
+    {
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = localPackageManager.getPackageInfo(paramContext.getApplicationContext().getPackageName(), 0);
+      if (paramContext == null) {
+        return null;
+      }
+      paramContext = paramContext.applicationInfo.loadLabel(localPackageManager).toString();
+      return paramContext;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label40:
+      break label40;
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils
  * JD-Core Version:    0.7.0.1
  */

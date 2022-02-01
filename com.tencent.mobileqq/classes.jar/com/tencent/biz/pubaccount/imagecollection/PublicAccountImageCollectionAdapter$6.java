@@ -17,7 +17,7 @@ class PublicAccountImageCollectionAdapter$6
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
     }
-    PublicAccountImageCollectionAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageCollectionAdapter, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+    PublicAccountImageCollectionAdapter.a(this.d, this.c, paramInt);
   }
   
   public void a(URL paramURL, Object paramObject)
@@ -25,10 +25,10 @@ class PublicAccountImageCollectionAdapter$6
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).doStatisticReportForImageTime(true, this.jdField_a_of_type_Long);
+    if (!this.a) {
+      ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).doStatisticReportForImageTime(true, this.b);
     }
-    PublicAccountImageCollectionAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageCollectionAdapter, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    PublicAccountImageCollectionAdapter.a(this.d, this.c);
   }
   
   public void a(URL paramURL, Throwable paramThrowable)
@@ -36,15 +36,15 @@ class PublicAccountImageCollectionAdapter$6
     if (QLog.isColorLevel()) {
       QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).doStatisticReportForImageTime(false, this.jdField_a_of_type_Long);
+    if (!this.a) {
+      ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).doStatisticReportForImageTime(false, this.b);
     }
-    PublicAccountImageCollectionAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageCollectionAdapter, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    PublicAccountImageCollectionAdapter.a(this.d, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.6
  * JD-Core Version:    0.7.0.1
  */

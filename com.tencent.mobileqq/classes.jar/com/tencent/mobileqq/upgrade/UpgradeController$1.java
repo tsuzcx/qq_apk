@@ -17,35 +17,35 @@ class UpgradeController$1
   
   public void run()
   {
-    if ((UpgradeController.a(this.this$0) != null) && (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig != null))
+    if ((UpgradeController.a(this.this$0) != null) && (UpgradeController.a(this.this$0).f != null))
     {
-      if (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null) {
+      if (UpgradeController.a(this.this$0).f.dialog == null) {
         return;
       }
-      if (UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e.equals("1"))
+      if (UpgradeController.a(this.this$0).f.dialog.h.equals("1"))
       {
         if (QLog.isColorLevel()) {
           QLog.d("UpgradeController", 2, "showUpgradeTip config do not allow to tip");
         }
         return;
       }
-      if (MessageCache.a() < UpgradeController.a(this.this$0).jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.b / 1000L)
+      if (MessageCache.c() < UpgradeController.a(this.this$0).f.dialog.d / 1000L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("UpgradeController", 2, "showUpgradeTip want to tip but is not time to show");
         }
         return;
       }
-      Object localObject = (QQAppInterface)UpgradeController.a(this.this$0).getRuntime();
+      Object localObject = (QQAppInterface)UpgradeController.b(this.this$0).getRuntime();
       if (localObject == null) {
         return;
       }
-      if ((this.this$0.a() == 4) && (this.this$0.b()))
+      if ((this.this$0.b() == 4) && (this.this$0.j()))
       {
-        if ((UpgradeController.a(this.this$0) != null) && (!TextUtils.isEmpty(UpgradeController.a(this.this$0).l)))
+        if ((UpgradeController.c(this.this$0) != null) && (!TextUtils.isEmpty(UpgradeController.c(this.this$0).q)))
         {
           UpgradeController.a(this.this$0, true);
-          localObject = new File(UpgradeController.a(this.this$0).l);
+          localObject = new File(UpgradeController.c(this.this$0).q);
           if (((File)localObject).exists())
           {
             ((File)localObject).delete();
@@ -58,7 +58,7 @@ class UpgradeController$1
       }
       UpgradeManager.a((QQAppInterface)localObject);
       boolean bool;
-      if (!ConfigHandler.b((QQAppInterface)localObject))
+      if (!ConfigHandler.d((QQAppInterface)localObject))
       {
         bool = UpgradeController.a(this.this$0, (QQAppInterface)localObject);
         if (QLog.isColorLevel()) {
@@ -72,7 +72,7 @@ class UpgradeController$1
         this.this$0.a((QQAppInterface)localObject);
         return;
       }
-      if ((UpgradeController.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (UpgradeController.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType == 1))
+      if ((UpgradeController.a(this.this$0).b != null) && (UpgradeController.a(this.this$0).b.iUpgradeType == 1))
       {
         bool = UpgradeController.a(this.this$0, (QQAppInterface)localObject);
         if (QLog.isColorLevel()) {
@@ -90,7 +90,7 @@ class UpgradeController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeController.1
  * JD-Core Version:    0.7.0.1
  */

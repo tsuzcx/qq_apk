@@ -47,7 +47,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a(paramMessageRecord);
+      return localFontManager.b(paramMessageRecord);
     }
     return false;
   }
@@ -56,7 +56,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.a((ChatMessage)paramObject);
+      localFontManager.c((ChatMessage)paramObject);
     }
   }
   
@@ -72,7 +72,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a(paramInt1, paramInt2);
+      return localFontManager.b(paramInt1, paramInt2);
     }
     return null;
   }
@@ -81,7 +81,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.c();
+      return localFontManager.f();
     }
     return false;
   }
@@ -90,7 +90,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_c_of_type_JavaLangString;
+      return localFontManager.p;
     }
     return "";
   }
@@ -99,7 +99,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_c_of_type_Float;
+      return localFontManager.n;
     }
     return 0.0F;
   }
@@ -108,7 +108,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.d;
+      return localFontManager.q;
     }
     return "";
   }
@@ -117,7 +117,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_Float;
+      return localFontManager.l;
     }
     return 0.0F;
   }
@@ -126,7 +126,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_b_of_type_Float;
+      return localFontManager.m;
     }
     return 0.0F;
   }
@@ -135,7 +135,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a();
+      return localFontManager.g();
     }
     return null;
   }
@@ -144,7 +144,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_b_of_type_Int;
+      return localFontManager.r;
     }
     return 0;
   }
@@ -162,7 +162,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a(paramInt);
+      return localFontManager.c(paramInt);
     }
     return null;
   }
@@ -171,7 +171,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.b();
+      return localFontManager.e();
     }
     return false;
   }
@@ -180,7 +180,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a();
+      return localFontManager.d();
     }
     return false;
   }
@@ -189,7 +189,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_AndroidOsHandlerThread;
+      return localFontManager.i;
     }
     return null;
   }
@@ -198,7 +198,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a();
+      return localFontManager.i();
     }
     return null;
   }
@@ -207,7 +207,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_JavaLangString;
+      return localFontManager.g;
     }
     return "";
   }
@@ -216,7 +216,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_Int;
+      return localFontManager.f;
     }
     return 0;
   }
@@ -255,7 +255,7 @@ public class FontManagerServiceImpl
   
   public boolean isAnonymousMsg(MessageRecord paramMessageRecord)
   {
-    return AnonymousChatHelper.a(paramMessageRecord);
+    return AnonymousChatHelper.c(paramMessageRecord);
   }
   
   public boolean isFontLoaded(int paramInt)
@@ -271,7 +271,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_Boolean;
+      return localFontManager.a;
     }
     return false;
   }
@@ -280,7 +280,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      return localFontManager.e.get();
     }
     return false;
   }
@@ -358,7 +358,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a(paramInt1, paramInt2);
+      return localFontManager.c(paramInt1, paramInt2);
     }
     return null;
   }
@@ -367,7 +367,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.b(paramInt1, paramInt2);
+      localFontManager.d(paramInt1, paramInt2);
     }
   }
   
@@ -391,7 +391,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.b((ChatMessage)paramObject);
+      localFontManager.d((ChatMessage)paramObject);
     }
   }
   
@@ -399,7 +399,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.d();
+      localFontManager.h();
     }
   }
   
@@ -422,7 +422,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.jdField_b_of_type_JavaLangString = paramString;
+      localFontManager.k = paramString;
     }
   }
   
@@ -430,7 +430,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      localFontManager.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+      localFontManager.h.set(paramBoolean);
     }
   }
   
@@ -454,7 +454,7 @@ public class FontManagerServiceImpl
   {
     FontManager localFontManager = this.mFontManager;
     if (localFontManager != null) {
-      return localFontManager.a(paramInt);
+      return localFontManager.b(paramInt);
     }
     return 0;
   }
@@ -493,7 +493,7 @@ public class FontManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.font.api.impl.FontManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,33 +16,33 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AdReqFreshManager
 {
-  private static AdReqFreshManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager;
-  private static final Map<String, Map<Long, Long>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private int jdField_b_of_type_Int;
-  private Map<Long, Long> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static final Map<String, Map<Long, Long>> a = new ConcurrentHashMap();
+  private static AdReqFreshManager b;
+  private Map<Long, Long> c = new ConcurrentHashMap();
+  private long d;
+  private int e;
+  private int f;
   
   private AdReqFreshManager()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(373);
-    this.jdField_a_of_type_Long = (localAladdinConfig.getIntegerFromString("over_time", 300) * 1000L);
-    this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("max_size", 5);
-    this.jdField_b_of_type_Int = localAladdinConfig.getIntegerFromString("expose_rate", 20);
+    this.d = (localAladdinConfig.getIntegerFromString("over_time", 300) * 1000L);
+    this.e = localAladdinConfig.getIntegerFromString("max_size", 5);
+    this.f = localAladdinConfig.getIntegerFromString("expose_rate", 20);
   }
   
   public static AdReqFreshManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager == null) {
-          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager = new AdReqFreshManager();
+        if (b == null) {
+          b = new AdReqFreshManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdManagerAdReqFreshManager;
+    return b;
   }
   
   private static String a(Set<Long> paramSet)
@@ -61,32 +61,32 @@ public class AdReqFreshManager
     return "";
   }
   
-  private static Map<Long, Long> a(String paramString)
+  private static Map<Long, Long> b(String paramString)
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "DEFAULT_EMPTY";
     }
-    Map localMap = (Map)jdField_a_of_type_JavaUtilMap.get(str);
+    Map localMap = (Map)a.get(str);
     paramString = localMap;
     if (localMap == null) {
       paramString = new ConcurrentHashMap();
     }
-    jdField_a_of_type_JavaUtilMap.put(str, paramString);
+    a.put(str, paramString);
     return paramString;
   }
   
-  private void a()
+  private void e()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {
+    if (this.c.isEmpty()) {
       return;
     }
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (l > ((Long)localEntry.getValue()).longValue() + this.jdField_a_of_type_Long)
+      if (l > ((Long)localEntry.getValue()).longValue() + this.d)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("removeExpiredAd,adId:");
@@ -97,19 +97,19 @@ public class AdReqFreshManager
     }
   }
   
-  private void b()
+  private void f()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.isEmpty()) {
+    if (this.c.isEmpty()) {
       return;
     }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext()) {
         return;
       }
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      Object localObject = jdField_a_of_type_JavaUtilMap.values().iterator();
+      Object localObject = a.values().iterator();
       if (((Iterator)localObject).hasNext())
       {
         Map localMap = (Map)((Iterator)localObject).next();
@@ -125,53 +125,23 @@ public class AdReqFreshManager
     }
   }
   
-  private void c()
+  private void g()
   {
-    if (this.jdField_b_of_type_JavaUtilMap.size() <= this.jdField_a_of_type_Int) {
+    if (this.c.size() <= this.e) {
       return;
     }
-    ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilMap.entrySet());
+    ArrayList localArrayList = new ArrayList(this.c.entrySet());
     Collections.sort(localArrayList, new AdReqFreshManager.1(this));
-    int i = this.jdField_a_of_type_Int;
+    int i = this.e;
     while (i < localArrayList.size())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("removeRedundantAd,adId:");
       localStringBuilder.append(((Map.Entry)localArrayList.get(i)).getKey());
       QLog.i("AdFreshManager", 3, localStringBuilder.toString());
-      this.jdField_b_of_type_JavaUtilMap.remove(((Map.Entry)localArrayList.get(i)).getKey());
+      this.c.remove(((Map.Entry)localArrayList.get(i)).getKey());
       i += 1;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return a(a());
-  }
-  
-  public Set<Long> a()
-  {
-    try
-    {
-      a();
-      b();
-      c();
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AdFreshManager", 0, "getRequestAdIds,", localException);
-    }
-    Set localSet = this.jdField_b_of_type_JavaUtilMap.keySet();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getRequestAdIds,result:");
-    localStringBuilder.append(a(localSet));
-    QLog.i("AdFreshManager", 3, localStringBuilder.toString());
-    return localSet;
   }
   
   public void a(Long paramLong)
@@ -179,7 +149,7 @@ public class AdReqFreshManager
     if (paramLong.longValue() == 0L) {
       return;
     }
-    Object localObject = jdField_a_of_type_JavaUtilMap.values().iterator();
+    Object localObject = a.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map localMap = (Map)((Iterator)localObject).next();
@@ -198,8 +168,8 @@ public class AdReqFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_b_of_type_JavaUtilMap.putAll(a(paramString));
-    a(paramString).clear();
+    this.c.putAll(b(paramString));
+    b(paramString).clear();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("flushSceneAds,scene:");
     localStringBuilder.append(paramString);
@@ -211,7 +181,7 @@ public class AdReqFreshManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    a(paramString).put(paramLong, Long.valueOf(System.currentTimeMillis()));
+    b(paramString).put(paramLong, Long.valueOf(System.currentTimeMillis()));
     paramString = new StringBuilder();
     paramString.append("addAdId,adId:");
     paramString.append(paramLong);
@@ -236,14 +206,44 @@ public class AdReqFreshManager
         localStringBuilder.append(",adId:");
         localStringBuilder.append(localLong);
         QLog.i("AdFreshManager", 3, localStringBuilder.toString());
-        a(paramString).put(localLong, Long.valueOf(l));
+        b(paramString).put(localLong, Long.valueOf(l));
       }
     }
+  }
+  
+  public int b()
+  {
+    return this.f;
+  }
+  
+  public Set<Long> c()
+  {
+    try
+    {
+      e();
+      f();
+      g();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AdFreshManager", 0, "getRequestAdIds,", localException);
+    }
+    Set localSet = this.c.keySet();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRequestAdIds,result:");
+    localStringBuilder.append(a(localSet));
+    QLog.i("AdFreshManager", 3, localStringBuilder.toString());
+    return localSet;
+  }
+  
+  public String d()
+  {
+    return a(c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdReqFreshManager
  * JD-Core Version:    0.7.0.1
  */

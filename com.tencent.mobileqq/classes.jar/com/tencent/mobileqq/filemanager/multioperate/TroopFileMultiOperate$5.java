@@ -13,15 +13,15 @@ class TroopFileMultiOperate$5
   
   public void a()
   {
-    FMToastUtil.d(TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate).getString(2131692690));
-    TroopFileUtils.a(TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate), TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate), this.jdField_a_of_type_JavaUtilList);
+    FMToastUtil.d(TroopFileMultiOperate.b(this.b).getString(2131889761));
+    TroopFileUtils.a(TroopFileMultiOperate.a(this.b), TroopFileMultiOperate.c(this.b), this.a);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.TroopFileMultiOperate.5
  * JD-Core Version:    0.7.0.1
  */

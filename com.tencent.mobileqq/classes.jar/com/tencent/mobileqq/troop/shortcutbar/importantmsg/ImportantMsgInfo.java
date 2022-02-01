@@ -5,53 +5,53 @@ import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
 public class ImportantMsgInfo
   extends ShortcutBarInfo
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private long b;
+  private long c;
   
   public ImportantMsgInfo()
   {
     super(0L, "", "", 0);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0L;
+    this.a = "";
   }
   
   public ImportantMsgInfo(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, long paramLong3, int paramInt)
   {
     super(paramLong3, paramString1, paramString2, paramInt);
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    this.b = paramLong1;
+    this.b = paramLong2;
+    this.a = paramString3;
+    this.c = paramLong1;
   }
   
-  public int a()
+  public long b()
   {
-    return 1;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    return this.b;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
   
   public void c(long paramLong)
   {
-    this.b = paramLong;
+    this.c = paramLong;
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgInfo
  * JD-Core Version:    0.7.0.1
  */

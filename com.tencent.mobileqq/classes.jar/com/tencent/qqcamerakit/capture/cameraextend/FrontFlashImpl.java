@@ -9,45 +9,44 @@ import com.tencent.qqcamerakit.common.QLog;
 
 public class FrontFlashImpl
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  public boolean a = false;
+  private View b;
+  private int c;
+  private int d;
+  private boolean e = false;
+  private Activity f;
   
   public FrontFlashImpl(Activity paramActivity)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.f = paramActivity;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidAppActivity);
+      if (this.b == null) {
+        this.b = new View(this.f);
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.7F);
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+      this.b.setBackgroundColor(-1);
+      this.b.setAlpha(0.7F);
+      if (this.b.getParent() != null) {
+        ((ViewGroup)this.b.getParent()).removeView(this.b);
       }
-      this.jdField_a_of_type_AndroidAppActivity.addContentView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
+      this.f.addContentView(this.b, new ViewGroup.LayoutParams(-1, -1));
       try
       {
-        this.jdField_a_of_type_Int = Settings.System.getInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness_mode");
-        Settings.System.putInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness_mode", 0);
-        this.jdField_b_of_type_Int = Settings.System.getInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness");
-        Settings.System.putInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness", 255);
-        this.jdField_b_of_type_Boolean = true;
+        this.c = Settings.System.getInt(this.f.getContentResolver(), "screen_brightness_mode");
+        Settings.System.putInt(this.f.getContentResolver(), "screen_brightness_mode", 0);
+        this.d = Settings.System.getInt(this.f.getContentResolver(), "screen_brightness");
+        Settings.System.putInt(this.f.getContentResolver(), "screen_brightness", 255);
+        this.e = true;
         return;
       }
       catch (Exception localException)
       {
-        this.jdField_a_of_type_Int = 1;
-        this.jdField_b_of_type_Int = 100;
+        this.c = 1;
+        this.d = 100;
         if (!QLog.a()) {
           return;
         }
@@ -57,22 +56,22 @@ public class FrontFlashImpl
     }
     else
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.e)
       {
-        Settings.System.putInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness", this.jdField_b_of_type_Int);
-        Settings.System.putInt(this.jdField_a_of_type_AndroidAppActivity.getContentResolver(), "screen_brightness_mode", this.jdField_a_of_type_Int);
-        this.jdField_b_of_type_Boolean = false;
+        Settings.System.putInt(this.f.getContentResolver(), "screen_brightness", this.d);
+        Settings.System.putInt(this.f.getContentResolver(), "screen_brightness_mode", this.c);
+        this.e = false;
       }
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.b;
       if ((localView != null) && (localView.getParent() != null)) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)this.b.getParent()).removeView(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.cameraextend.FrontFlashImpl
  * JD-Core Version:    0.7.0.1
  */

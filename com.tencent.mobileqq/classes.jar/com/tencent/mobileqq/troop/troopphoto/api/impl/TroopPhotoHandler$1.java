@@ -15,7 +15,7 @@ class TroopPhotoHandler$1
   
   public void onGet0x88d_Result(boolean paramBoolean, String paramString1, String paramString2, oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if ((paramString1.equals(this.jdField_a_of_type_JavaLangString)) && (paramString2.equals("SUBCMD_GET_PRIVILEGE")))
+    if ((paramString1.equals(this.a)) && (paramString2.equals("SUBCMD_GET_PRIVILEGE")))
     {
       if ((paramBoolean) && (paramGroupInfo != null))
       {
@@ -34,32 +34,32 @@ class TroopPhotoHandler$1
           } else {
             bool2 = false;
           }
-          paramGroupInfo = (ITroopInfoService)TroopPhotoHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopphotoApiImplTroopPhotoHandler).getRuntimeService(ITroopInfoService.class, "");
-          paramString2 = paramGroupInfo.findTroopInfo(this.jdField_a_of_type_JavaLangString);
+          paramGroupInfo = (ITroopInfoService)TroopPhotoHandler.a(this.c).getRuntimeService(ITroopInfoService.class, "");
+          paramString2 = paramGroupInfo.findTroopInfo(this.a);
           paramString1 = paramString2;
           if (paramString2 == null)
           {
             paramString1 = new TroopInfo();
-            paramString1.troopuin = this.jdField_a_of_type_JavaLangString;
+            paramString1.troopuin = this.a;
           }
           paramString1.troopPrivilegeFlag = i;
           paramGroupInfo.saveTroopInfo(paramString1);
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopTroopphotoApiImplTroopPhotoHandler.b(this.jdField_a_of_type_JavaLangString);
+          if (this.b) {
+            this.c.b(this.a);
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopphotoApiImplTroopPhotoHandler.notifyUI(TroopPhotoObserver.a, paramBoolean, new Object[] { Boolean.valueOf(paramString1.isAdmin()), Boolean.valueOf(bool1), Boolean.valueOf(bool2), this.jdField_a_of_type_JavaLangString });
+          this.c.notifyUI(TroopPhotoObserver.c, paramBoolean, new Object[] { Boolean.valueOf(paramString1.isAdmin()), Boolean.valueOf(bool1), Boolean.valueOf(bool2), this.a });
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopphotoApiImplTroopPhotoHandler.notifyUI(TroopPhotoObserver.a, paramBoolean, new Object[] { Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString });
+        this.c.notifyUI(TroopPhotoObserver.c, paramBoolean, new Object[] { Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), this.a });
       }
-      TroopPhotoHandler.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopphotoApiImplTroopPhotoHandler).removeObserver(this);
+      TroopPhotoHandler.b(this.c).removeObserver(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopphoto.api.impl.TroopPhotoHandler.1
  * JD-Core Version:    0.7.0.1
  */

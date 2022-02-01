@@ -18,7 +18,6 @@ import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
 import com.tencent.mobileqq.app.asyncdb.CacheManager;
 import com.tencent.mobileqq.app.hiddenchat.HiddenChatManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.qqdaily.FrontBackReportManager;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
@@ -26,6 +25,7 @@ import com.tencent.mobileqq.confess.ConfessManager;
 import com.tencent.mobileqq.data.FeedsManager;
 import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.guild.temp.api.GuildManagerProvider;
 import com.tencent.mobileqq.kandian.biz.common.api.KanDianClassProvider;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
@@ -77,7 +77,7 @@ public class QQManagerCoreRegister
     paramSparseArray.put(QQManagerFactory.READINJOY_MANAGER, KanDianClassProvider.j());
     paramSparseArray.put(QQManagerFactory.LOGIN_WELCOME_MANAGER, LoginWelcomeManager.class);
     paramSparseArray.put(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER, MayknowRecommendManager.class);
-    paramSparseArray.put(QQManagerFactory.LOCAL_REDTOUCH_MANAGER, QQNearbyManager.k());
+    paramSparseArray.put(QQManagerFactory.LOCAL_REDTOUCH_MANAGER, QQNearbyManager.l());
     paramSparseArray.put(QQManagerFactory.WEISHI_MANAGER, WeishiManager.class);
     paramSparseArray.put(QQManagerFactory.KANDIAN_MERGE_MANAGER, KanDianClassProvider.i());
     paramSparseArray.put(QQManagerFactory.QIDIAN_MANAGER, QidianManager.class);
@@ -112,25 +112,25 @@ public class QQManagerCoreRegister
     paramSparseArray.put(QQManagerFactory.SHORT_VIDEO_PREDOWNLOAD_MANAGER, ShortVideoPreDownloaderWithSdkSupport.class);
     paramSparseArray.put(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER, TroopBindPublicAccountMgr.class);
     paramSparseArray.put(QQManagerFactory.MESSAGE_NOTIFICATION_SETTING_MANAGER, MessageNotificationSettingManager.class);
-    paramSparseArray.put(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER, QQNearbyManager.o());
+    paramSparseArray.put(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER, QQNearbyManager.p());
     paramSparseArray.put(QQManagerFactory.HIDDENCHAT_MANAGER, HiddenChatManager.class);
     paramSparseArray.put(QQManagerFactory.QZONE_NEW_STATUS_MANAGER, FeedsManager.class);
     paramSparseArray.put(QQManagerFactory.BEANCURD_MANAGER, BeancurdManager.class);
-    paramSparseArray.put(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER, ExpandClassManager.b());
+    paramSparseArray.put(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER, ExpandClassManager.c());
     paramSparseArray.put(QQManagerFactory.APPLETS_ACCOUNT_MANAGER, AppletsFolderManager.class);
     paramSparseArray.put(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER, QQMiniManager.getMiniAppExposureManagerClass());
     paramSparseArray.put(QQManagerFactory.LOGIN_DEVICES_MANAGER, LoginDevicesManager.class);
     paramSparseArray.put(QQManagerFactory.MINI_APP_DESKTOP_MANAGER, QQMiniManager.getDesktopDataManagerClass());
     paramSparseArray.put(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER, TogetherControlManager.class);
-    paramSparseArray.put(QQManagerFactory.FRONT_BACK_REPORT_MANAGER, FrontBackReportManager.class);
     paramSparseArray.put(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR, TroopAioNavigateBarManager.class);
+    paramSparseArray.put(QQManagerFactory.GUILD_AIO_NAVIGATE_BAR, GuildManagerProvider.b());
     paramSparseArray.put(QQManagerFactory.VAS_QUICKUPDATE_MANAGER, VasQuickUpdateManager.class);
     paramSparseArray.put(QQManagerFactory.STUDY_MODE_SWITCHER_MANAGER, ModeSwitchManager.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerCoreRegister
  * JD-Core Version:    0.7.0.1
  */

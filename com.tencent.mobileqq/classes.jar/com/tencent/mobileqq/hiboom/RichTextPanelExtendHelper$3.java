@@ -13,18 +13,18 @@ class RichTextPanelExtendHelper$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
+    if (i == this.a) {
       AbstractGifImage.resumeAll();
     }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper.a.getParent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper.a.getParent().requestLayout();
+    com.tencent.widget.XPanelContainer.a = i;
+    if (this.b.f.getParent() != null) {
+      this.b.f.getParent().requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanelExtendHelper.3
  * JD-Core Version:    0.7.0.1
  */

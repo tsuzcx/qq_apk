@@ -18,14 +18,14 @@ class TroopFileUploadingManager$1
   
   protected void a(Object paramObject)
   {
-    if (this.a.a == null) {
+    if (this.a.b == null) {
       return;
     }
     paramObject = (TroopFileStatusInfo)paramObject;
-    if (paramObject.jdField_b_of_type_Int == 12)
+    if (paramObject.e == 12)
     {
-      long l = paramObject.jdField_b_of_type_Long;
-      Iterator localIterator = this.a.a.getMessageFacade().b(String.valueOf(l), 1).iterator();
+      long l = paramObject.d;
+      Iterator localIterator = this.a.b.getMessageFacade().o(String.valueOf(l), 1).iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (ChatMessage)localIterator.next();
@@ -33,9 +33,9 @@ class TroopFileUploadingManager$1
         {
           localObject = (MessageForTroopFile)localObject;
           if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.a.toString()))) {
-            this.a.a.getMessageFacade().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-          } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
-            this.a.a.getMessageFacade().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            this.a.b.getMessageFacade().h(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+          } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.r)) && (((MessageForTroopFile)localObject).url.equals(paramObject.r))) {
+            this.a.b.getMessageFacade().h(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
           }
         }
       }
@@ -44,7 +44,7 @@ class TroopFileUploadingManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileUploadingManager.1
  * JD-Core Version:    0.7.0.1
  */

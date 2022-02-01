@@ -78,7 +78,7 @@ public class ODCsChannelImpl
     localcommRequest.seq.set(mCommRequestSequence.getAndAdd(1L));
     localcommRequest.app_name.set(this.mAppName);
     localcommRequest.microtime.set(System.currentTimeMillis());
-    localcommRequest.client_release.set("8.7.0");
+    localcommRequest.client_release.set("8.8.17");
     localcommRequest.from_id.set(this.mFromId);
     localcommRequest.version.set(2);
     localcommRequest.client_type.set(2);
@@ -294,7 +294,7 @@ public class ODCsChannelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.cschannel.impl.ODCsChannelImpl
  * JD-Core Version:    0.7.0.1
  */

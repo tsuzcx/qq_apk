@@ -2,25 +2,16 @@ package com.tencent.qqprotect.singleupdate;
 
 public class QPSinlgeUpdInfo
 {
-  public int a;
-  public String a;
-  public QPSinlgeUpdInfo.FileItem[] a;
-  public int b;
-  public String b;
+  public int a = 0;
+  public int b = 0;
   public int c = 0;
-  
-  public QPSinlgeUpdInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfComTencentQqprotectSingleupdateQPSinlgeUpdInfo$FileItem = null;
-  }
+  public String d = null;
+  public String e = null;
+  public QPSinlgeUpdInfo.FileItem[] f = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSinlgeUpdInfo
  * JD-Core Version:    0.7.0.1
  */

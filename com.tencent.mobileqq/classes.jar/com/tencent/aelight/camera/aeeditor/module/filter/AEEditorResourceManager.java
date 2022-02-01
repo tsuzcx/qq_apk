@@ -34,71 +34,167 @@ import java.util.Map;
 public final class AEEditorResourceManager
   extends AEEditorResourceDownloader
 {
-  private static volatile AEEditorResourceManager jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorResourceManager;
-  public static final String d;
-  private static final String jdField_e_of_type_JavaLangString;
-  private final MutableLiveData<List<MetaCategory>> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private final int jdField_b_of_type_Int = ((Integer)ParamsUtil.b(Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(7))).intValue();
-  private final MutableLiveData<List<MetaCategory>> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private final MutableLiveData<List<MetaCategory>> c;
-  protected volatile boolean c;
-  private final MutableLiveData<List<MetaCategory>> jdField_d_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  public static final String l;
+  private static final String m;
+  private static volatile AEEditorResourceManager n;
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> jdField_d_of_type_JavaUtilMap = new LinkedHashMap();
-  protected volatile boolean d;
-  private final MutableLiveData<List<MetaCategory>> jdField_e_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  private final Map<String, AEEditorDownloadResBean> A = new LinkedHashMap();
+  private final int B = ((Integer)ParamsUtil.b(Integer.valueOf(3), Integer.valueOf(5), Integer.valueOf(7))).intValue();
+  protected volatile boolean j = false;
+  protected volatile boolean k = false;
+  private final MutableLiveData<List<MetaCategory>> o = new MutableLiveData();
+  private final MutableLiveData<List<MetaCategory>> p = new MutableLiveData();
+  private final MutableLiveData<List<MetaCategory>> q = new MutableLiveData();
+  private final MutableLiveData<List<MetaCategory>> r = new MutableLiveData();
+  private final MutableLiveData<List<MetaCategory>> s = new MutableLiveData();
+  private final MutableLiveData<List<MetaCategory>> t = new MutableLiveData();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> jdField_e_of_type_JavaUtilMap = new LinkedHashMap();
-  private final MutableLiveData<List<MetaCategory>> jdField_f_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  private final Map<String, AEEditorDownloadResBean> u = new LinkedHashMap();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> jdField_f_of_type_JavaUtilMap = new LinkedHashMap();
+  private final Map<String, AEEditorDownloadResBean> v = new LinkedHashMap();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> g = new LinkedHashMap();
+  private final Map<String, AEEditorDownloadResBean> w = new LinkedHashMap();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> h = new LinkedHashMap();
+  private final Map<String, AEEditorDownloadResBean> x = new LinkedHashMap();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> i = new LinkedHashMap();
+  private final Map<String, AEEditorDownloadResBean> y = new LinkedHashMap();
   @NonNull
-  private final Map<String, AEEditorDownloadResBean> j = new LinkedHashMap();
+  private final Map<String, AEEditorDownloadResBean> z = new LinkedHashMap();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.FILES.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.FILES.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("text");
-    jdField_e_of_type_JavaLangString = localStringBuilder.toString();
+    m = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.FILES.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.FILES.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("frame");
-    jdField_d_of_type_JavaLangString = localStringBuilder.toString();
+    l = localStringBuilder.toString();
   }
   
   private AEEditorResourceManager()
   {
-    super("camera/ae_camera_editor_download_resources.json", AEEditorPath.EDITOR.FILES.jdField_b_of_type_JavaLangString, 4, "[AEEditor2]AEEditorResourceManager");
-    this.jdField_c_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    super("camera/ae_camera_editor_download_resources.json", AEEditorPath.EDITOR.FILES.b, 4, "[AEEditor2]AEEditorResourceManager");
+  }
+  
+  @WorkerThread
+  private void E()
+  {
+    a(AEPath.Editor.FILES.d, "editor_filter_update_template.json", "camera/ae_camera_editor_display_effects.json", this.x);
+    a(AEPath.Editor.FILES.d, "editor_text_sticker_update_template.json", "camera/editor_text_stickers_default.json", this.A);
+    a(AEPath.Editor.FILES.e, "editor_frame_update_template.json", "camera/ae_camera_editor_frame.json", this.z);
+    a(AEPath.Editor.FILES.f, "editor_pic_template_update_template.json", "camera/ae_camera_editor_pic_template.json", this.y);
+    a(AEPath.Editor.FILES.g, "editor_text_update_template.json", "camera/ae_camera_editor_text.json", this.w);
+  }
+  
+  @WorkerThread
+  private void F()
+  {
+    synchronized (this.u)
+    {
+      if (this.j) {
+        return;
+      }
+      this.j = true;
+      Object localObject1 = a("camera/ae_camera_editor_fonts.json");
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        AEQLog.d(this.d, "setupFontListConfig---read assets json content empty");
+        return;
+      }
+      Object localObject3 = (List)GsonUtils.json2Obj((String)localObject1, new AEEditorResourceManager.1(this).getType());
+      String str = this.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setupFontListConfig---size = ");
+      if (localObject3 == null) {
+        localObject1 = "null";
+      } else {
+        localObject1 = Integer.valueOf(((List)localObject3).size());
+      }
+      localStringBuilder.append(localObject1);
+      AEQLog.b(str, localStringBuilder.toString());
+      if (localObject3 != null)
+      {
+        localObject1 = ((List)localObject3).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = (AEEditorDownloadResBean)((Iterator)localObject1).next();
+          this.u.put(((AEEditorDownloadResBean)localObject3).getId(), localObject3);
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  @WorkerThread
+  private void G()
+  {
+    synchronized (this.w)
+    {
+      if (this.k) {
+        return;
+      }
+      this.k = true;
+      Iterator localIterator1 = a().B().iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((MetaCategory)localIterator1.next()).materials.iterator();
+        while (localIterator2.hasNext())
+        {
+          MetaMaterial localMetaMaterial = (MetaMaterial)localIterator2.next();
+          AEEditorDownloadResBean localAEEditorDownloadResBean = new AEEditorDownloadResBean();
+          localAEEditorDownloadResBean.setId(localMetaMaterial.id);
+          localAEEditorDownloadResBean.setUrl(localMetaMaterial.packageUrl);
+          localAEEditorDownloadResBean.setMd5(localMetaMaterial.packageMd5);
+          String str = (String)localMetaMaterial.additionalFields.get("preDownload");
+          if (!TextUtils.isEmpty(str)) {
+            localAEEditorDownloadResBean.setPreDownload(Integer.parseInt(str));
+          }
+          this.w.put(localMetaMaterial.id, localAEEditorDownloadResBean);
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  @WorkerThread
+  private void H()
+  {
+    if (new File("camera/text").exists())
+    {
+      AEQLog.b("[AEEditor2]AEEditorResourceManager", "ensureSetupTextConfig---pag file is already copied");
+      return;
+    }
+    FileUtils.a(BaseApplicationImpl.getContext(), "camera/text", m);
   }
   
   public static AEEditorResourceManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorResourceManager == null) {
+    if (n == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorResourceManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorResourceManager = new AEEditorResourceManager();
+        if (n == null) {
+          n = new AEEditorResourceManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorResourceManager;
+    return n;
   }
   
   @Nullable
-  private String b(@NonNull AEEditorDownloadResBean paramAEEditorDownloadResBean)
+  private String c(@NonNull AEEditorDownloadResBean paramAEEditorDownloadResBean)
   {
     Object localObject = a(paramAEEditorDownloadResBean);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -126,162 +222,32 @@ public final class AEEditorResourceManager
     return null;
   }
   
-  @WorkerThread
-  private void k()
+  public List<MetaCategory> A()
   {
-    a(AEPath.Editor.FILES.jdField_d_of_type_JavaLangString, "editor_filter_update_template.json", "camera/ae_camera_editor_display_effects.json", this.g);
-    a(AEPath.Editor.FILES.jdField_d_of_type_JavaLangString, "editor_text_sticker_update_template.json", "camera/editor_text_stickers_default.json", this.j);
-    a(AEPath.Editor.FILES.jdField_e_of_type_JavaLangString, "editor_frame_update_template.json", "camera/ae_camera_editor_frame.json", this.i);
-    a(AEPath.Editor.FILES.f, "editor_pic_template_update_template.json", "camera/ae_camera_editor_pic_template.json", this.h);
-    a(AEPath.Editor.FILES.g, "editor_text_update_template.json", "camera/ae_camera_editor_text.json", this.jdField_f_of_type_JavaUtilMap);
+    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.b, "editor_text_sticker_update_template.json", "camera/editor_text_stickers_default.json", false);
   }
   
-  @WorkerThread
-  private void l()
+  public List<MetaCategory> B()
   {
-    synchronized (this.jdField_d_of_type_JavaUtilMap)
-    {
-      if (this.jdField_c_of_type_Boolean) {
-        return;
-      }
-      this.jdField_c_of_type_Boolean = true;
-      Object localObject1 = a("camera/ae_camera_editor_fonts.json");
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        AEQLog.d(this.jdField_c_of_type_JavaLangString, "setupFontListConfig---read assets json content empty");
-        return;
-      }
-      Object localObject3 = (List)GsonUtils.json2Obj((String)localObject1, new AEEditorResourceManager.1(this).getType());
-      String str = this.jdField_c_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setupFontListConfig---size = ");
-      if (localObject3 == null) {
-        localObject1 = "null";
-      } else {
-        localObject1 = Integer.valueOf(((List)localObject3).size());
-      }
-      localStringBuilder.append(localObject1);
-      AEQLog.b(str, localStringBuilder.toString());
-      if (localObject3 != null)
-      {
-        localObject1 = ((List)localObject3).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (AEEditorDownloadResBean)((Iterator)localObject1).next();
-          this.jdField_d_of_type_JavaUtilMap.put(((AEEditorDownloadResBean)localObject3).getId(), localObject3);
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject2;
-    }
+    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.g, "editor_text_update_template.json", "camera/ae_camera_editor_text.json", false);
   }
   
-  @WorkerThread
-  private void m()
+  public String C()
   {
-    synchronized (this.jdField_f_of_type_JavaUtilMap)
-    {
-      if (this.jdField_d_of_type_Boolean) {
-        return;
-      }
-      this.jdField_d_of_type_Boolean = true;
-      Iterator localIterator1 = a().f().iterator();
-      while (localIterator1.hasNext())
-      {
-        Iterator localIterator2 = ((MetaCategory)localIterator1.next()).materials.iterator();
-        while (localIterator2.hasNext())
-        {
-          MetaMaterial localMetaMaterial = (MetaMaterial)localIterator2.next();
-          AEEditorDownloadResBean localAEEditorDownloadResBean = new AEEditorDownloadResBean();
-          localAEEditorDownloadResBean.setId(localMetaMaterial.id);
-          localAEEditorDownloadResBean.setUrl(localMetaMaterial.packageUrl);
-          localAEEditorDownloadResBean.setMd5(localMetaMaterial.packageMd5);
-          String str = (String)localMetaMaterial.additionalFields.get("preDownload");
-          if (!TextUtils.isEmpty(str)) {
-            localAEEditorDownloadResBean.setPreDownload(Integer.parseInt(str));
-          }
-          this.jdField_f_of_type_JavaUtilMap.put(localMetaMaterial.id, localAEEditorDownloadResBean);
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(m);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("main.pag");
+    return localStringBuilder.toString();
   }
   
-  @WorkerThread
-  private void n()
+  public String D()
   {
-    if (new File("camera/text").exists())
-    {
-      AEQLog.b("[AEEditor2]AEEditorResourceManager", "ensureSetupTextConfig---pag file is already copied");
-      return;
-    }
-    FileUtils.a(BaseApplicationImpl.getContext(), "camera/text", jdField_e_of_type_JavaLangString);
-  }
-  
-  @NonNull
-  public Pair<String, String> a(@NonNull String paramString, int paramInt)
-  {
-    Object localObject = a(paramString);
-    if (localObject != null) {
-      localObject = b((AEEditorDownloadResBean)localObject);
-    } else {
-      localObject = null;
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      AEQLog.d("[AEEditor2]AEEditorResourceManager", "font not find.");
-      return new Pair(localObject, "ERROR_CANNOT_FIND_VALID_FONT");
-    }
-    if (paramInt == 1) {
-      return new Pair(localObject, "SUCCESS_GET_VALID_FONT");
-    }
-    if (a(paramString))
-    {
-      AEQLog.d("[AEEditor2]AEEditorResourceManager", "fontExceededLimit.");
-      return new Pair(localObject, "ERROR_EXCEEDED_FONT_LIMIT");
-    }
-    synchronized (this.jdField_e_of_type_JavaUtilMap)
-    {
-      AEEditorDownloadResBean localAEEditorDownloadResBean = b(paramString);
-      if (localAEEditorDownloadResBean != null) {
-        this.jdField_e_of_type_JavaUtilMap.put(paramString, localAEEditorDownloadResBean);
-      }
-      paramString = new Pair(localObject, "SUCCESS_GET_VALID_FONT");
-      return paramString;
-    }
-  }
-  
-  public MutableLiveData<List<MetaCategory>> a()
-  {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  @Nullable
-  public AEEditorDownloadResBean a(@NonNull String paramString)
-  {
-    l();
-    m();
-    return b(paramString);
-  }
-  
-  @Nullable
-  @WorkerThread
-  public AEEditorPagStickerConfig a(@NonNull String paramString)
-  {
-    return (AEEditorPagStickerConfig)GsonUtils.json2Obj(b(paramString), new AEEditorResourceManager.2(this).getType());
-  }
-  
-  public String a()
-  {
-    a();
-    return a((AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get("AIPhotoConfig"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(m);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("params.json");
+    return localStringBuilder.toString();
   }
   
   public String a(MetaMaterial paramMetaMaterial, String paramString)
@@ -298,38 +264,26 @@ public final class AEEditorResourceManager
   @Nullable
   public String a(String paramString, int paramInt)
   {
-    return (String)a(paramString, paramInt).first;
-  }
-  
-  public List<MetaCategory> a()
-  {
-    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.jdField_d_of_type_JavaLangString, "editor_filter_update_template.json", "camera/ae_camera_editor_display_effects.json", false);
-  }
-  
-  @NonNull
-  public Map<String, AEEditorDownloadResBean> a()
-  {
-    l();
-    return new HashMap(this.jdField_d_of_type_JavaUtilMap);
+    return (String)b(paramString, paramInt).first;
   }
   
   public void a(String paramString1, String paramString2, String paramString3, Map<String, AEEditorDownloadResBean> paramMap)
   {
-    Object localObject1 = this.jdField_c_of_type_JavaLangString;
+    Object localObject1 = this.d;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("checkNeedDownload... json:");
     ((StringBuilder)localObject2).append(paramString2);
     ((StringBuilder)localObject2).append(" defaultJson:");
     ((StringBuilder)localObject2).append(paramString3);
     AEQLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     try
     {
       paramString1 = AEditorMaterialManager.a().a(paramString1, paramString2, paramString3, true);
       if ((paramString1 != null) && (paramString1.size() != 0))
       {
         paramMap.clear();
-        paramString2 = this.jdField_c_of_type_JavaLangString;
+        paramString2 = this.d;
         paramString3 = new StringBuilder();
         paramString3.append("checkNeedDownload... groupList size:");
         paramString3.append(paramString1.size());
@@ -352,14 +306,14 @@ public final class AEEditorResourceManager
             paramMap.put(paramString3.id, localObject1);
           }
         }
-        paramString1 = this.jdField_c_of_type_JavaLangString;
+        paramString1 = this.d;
         paramString2 = new StringBuilder();
         paramString2.append("checkNeedDownload... cost:");
-        paramString2.append(System.currentTimeMillis() - l);
+        paramString2.append(System.currentTimeMillis() - l1);
         AEQLog.a(paramString1, paramString2.toString());
         return;
       }
-      AEQLog.d(this.jdField_c_of_type_JavaLangString, "checkNeedDownload... groupList is empty.");
+      AEQLog.d(this.d, "checkNeedDownload... groupList is empty.");
       return;
     }
     finally {}
@@ -371,29 +325,29 @@ public final class AEEditorResourceManager
   
   protected void a(@NonNull List<AEEditorDownloadResBean> paramList)
   {
-    k();
-    Iterator localIterator = this.g.values().iterator();
+    E();
+    Iterator localIterator = this.x.values().iterator();
     AEEditorDownloadResBean localAEEditorDownloadResBean;
     while (localIterator.hasNext())
     {
       localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
         paramList.add(localAEEditorDownloadResBean);
       }
     }
-    localIterator = this.h.values().iterator();
+    localIterator = this.y.values().iterator();
     while (localIterator.hasNext())
     {
       localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
         paramList.add(localAEEditorDownloadResBean);
       }
     }
-    localIterator = this.i.values().iterator();
+    localIterator = this.z.values().iterator();
     while (localIterator.hasNext())
     {
       localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
         paramList.add(localAEEditorDownloadResBean);
       }
     }
@@ -401,15 +355,15 @@ public final class AEEditorResourceManager
   
   protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {}
+    if (this.e.containsKey(paramString)) {}
     String str;
-    while (this.g.containsKey(paramString))
+    while (this.x.containsKey(paramString))
     {
       str = "AEEditorFilter";
       break;
     }
-    if (this.jdField_d_of_type_JavaUtilMap.containsKey(paramString)) {}
-    while (this.jdField_f_of_type_JavaUtilMap.containsKey(paramString))
+    if (this.u.containsKey(paramString)) {}
+    while (this.w.containsKey(paramString))
     {
       str = "AEEditorFont";
       break;
@@ -424,62 +378,92 @@ public final class AEEditorResourceManager
     }
   }
   
-  public boolean a()
+  @NonNull
+  public Pair<String, String> b(@NonNull String paramString, int paramInt)
   {
-    return new File(a()).exists();
-  }
-  
-  public boolean a(@NonNull String paramString)
-  {
-    synchronized (this.jdField_e_of_type_JavaUtilMap)
+    Object localObject = e(paramString);
+    if (localObject != null) {
+      localObject = c((AEEditorDownloadResBean)localObject);
+    } else {
+      localObject = null;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramString = (AEEditorDownloadResBean)this.jdField_e_of_type_JavaUtilMap.get(paramString);
-      boolean bool = false;
-      if (paramString != null) {
-        return false;
+      AEQLog.d("[AEEditor2]AEEditorResourceManager", "font not find.");
+      return new Pair(localObject, "ERROR_CANNOT_FIND_VALID_FONT");
+    }
+    if (paramInt == 1) {
+      return new Pair(localObject, "SUCCESS_GET_VALID_FONT");
+    }
+    if (g(paramString))
+    {
+      AEQLog.d("[AEEditor2]AEEditorResourceManager", "fontExceededLimit.");
+      return new Pair(localObject, "ERROR_EXCEEDED_FONT_LIMIT");
+    }
+    synchronized (this.v)
+    {
+      AEEditorDownloadResBean localAEEditorDownloadResBean = f(paramString);
+      if (localAEEditorDownloadResBean != null) {
+        this.v.put(paramString, localAEEditorDownloadResBean);
       }
-      if (this.jdField_e_of_type_JavaUtilMap.size() >= this.jdField_b_of_type_Int) {
-        bool = true;
+      paramString = new Pair(localObject, "SUCCESS_GET_VALID_FONT");
+      return paramString;
+    }
+  }
+  
+  public String b(MetaMaterial paramMetaMaterial, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramMetaMaterial));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("segmentation");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  protected void b(@NonNull List<AEEditorDownloadResBean> paramList)
+  {
+    Iterator localIterator = this.A.values().iterator();
+    AEEditorDownloadResBean localAEEditorDownloadResBean;
+    while (localIterator.hasNext())
+    {
+      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
+        paramList.add(localAEEditorDownloadResBean);
       }
-      return bool;
+    }
+    F();
+    localIterator = this.u.values().iterator();
+    while (localIterator.hasNext())
+    {
+      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
+        paramList.add(localAEEditorDownloadResBean);
+      }
+    }
+    G();
+    localIterator = this.w.values().iterator();
+    while (localIterator.hasNext())
+    {
+      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
+      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!b(localAEEditorDownloadResBean))) {
+        paramList.add(localAEEditorDownloadResBean);
+      }
     }
   }
   
-  public MutableLiveData<List<MetaCategory>> b()
+  public String c(MetaMaterial paramMetaMaterial)
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public AEEditorDownloadResBean b(String paramString)
-  {
-    Map localMap = this.jdField_d_of_type_JavaUtilMap;
-    if ((localMap != null) && (localMap.get(paramString) != null)) {
-      return (AEEditorDownloadResBean)this.jdField_d_of_type_JavaUtilMap.get(paramString);
-    }
-    localMap = this.jdField_f_of_type_JavaUtilMap;
-    if ((localMap != null) && (localMap.get(paramString) != null)) {
-      return (AEEditorDownloadResBean)this.jdField_f_of_type_JavaUtilMap.get(paramString);
-    }
-    return null;
-  }
-  
-  public String b()
-  {
-    a();
-    return a((AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get("AIVideoConfig"));
-  }
-  
-  public String b(MetaMaterial paramMetaMaterial)
-  {
-    paramMetaMaterial = FilterMetaMaterialKt.a(paramMetaMaterial);
+    paramMetaMaterial = FilterMetaMaterialKt.m(paramMetaMaterial);
     if (paramMetaMaterial.isEmpty()) {
       return null;
     }
-    a();
-    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get(paramMetaMaterial);
+    b();
+    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.e.get(paramMetaMaterial);
     if (localAEEditorDownloadResBean == null)
     {
-      localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.g.get(paramMetaMaterial);
+      localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.x.get(paramMetaMaterial);
       if (localAEEditorDownloadResBean == null) {
         return null;
       }
@@ -495,81 +479,6 @@ public final class AEEditorResourceManager
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramMetaMaterial);
     localStringBuilder.append(".png");
-    return localStringBuilder.toString();
-  }
-  
-  public String b(MetaMaterial paramMetaMaterial, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramMetaMaterial));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("segmentation");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public List<MetaCategory> b()
-  {
-    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.jdField_e_of_type_JavaLangString, "editor_frame_update_template.json", "camera/ae_camera_editor_frame.json", false);
-  }
-  
-  protected void b(@NonNull List<AEEditorDownloadResBean> paramList)
-  {
-    Iterator localIterator = this.j.values().iterator();
-    AEEditorDownloadResBean localAEEditorDownloadResBean;
-    while (localIterator.hasNext())
-    {
-      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
-        paramList.add(localAEEditorDownloadResBean);
-      }
-    }
-    l();
-    localIterator = this.jdField_d_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
-        paramList.add(localAEEditorDownloadResBean);
-      }
-    }
-    m();
-    localIterator = this.jdField_f_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean != null) && (localAEEditorDownloadResBean.getPreDownload() == 1) && (!a(localAEEditorDownloadResBean))) {
-        paramList.add(localAEEditorDownloadResBean);
-      }
-    }
-  }
-  
-  public boolean b()
-  {
-    return new File(b()).exists();
-  }
-  
-  public MutableLiveData<List<MetaCategory>> c()
-  {
-    return this.jdField_c_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("main.pag");
-    return localStringBuilder.toString();
-  }
-  
-  public String c(MetaMaterial paramMetaMaterial)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramMetaMaterial));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("effectInfo.json");
     return localStringBuilder.toString();
   }
   
@@ -590,8 +499,8 @@ public final class AEEditorResourceManager
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    a();
-    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    b();
+    AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.e.get(paramString);
     if (localAEEditorDownloadResBean == null) {
       return null;
     }
@@ -603,42 +512,25 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public List<MetaCategory> c()
-  {
-    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.f, "editor_pic_template_update_template.json", "camera/ae_camera_editor_pic_template.json", false);
-  }
-  
-  public void c()
-  {
-    a("AIPhotoConfig", null);
-  }
-  
   public MutableLiveData<List<MetaCategory>> d()
   {
-    return this.jdField_d_of_type_AndroidxLifecycleMutableLiveData;
+    return this.o;
   }
   
-  public String d()
+  @Nullable
+  @WorkerThread
+  public AEEditorPagStickerConfig d(@NonNull String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("params.json");
-    return localStringBuilder.toString();
+    return (AEEditorPagStickerConfig)GsonUtils.json2Obj(b(paramString), new AEEditorResourceManager.2(this).getType());
   }
   
   public String d(MetaMaterial paramMetaMaterial)
   {
-    String str = FilterMetaMaterialKt.b(paramMetaMaterial);
-    if (!str.isEmpty())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a(paramMetaMaterial));
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append(str);
-      return localStringBuilder.toString();
-    }
-    return "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramMetaMaterial));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("effectInfo.json");
+    return localStringBuilder.toString();
   }
   
   public String d(MetaMaterial paramMetaMaterial, String paramString)
@@ -654,29 +546,31 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public List<MetaCategory> d()
-  {
-    return AEditorMaterialManager.a().a();
-  }
-  
-  public void d()
-  {
-    AEQLog.b(this.jdField_c_of_type_JavaLangString, "loadAssets");
-    ThreadManager.excute(new AEEditorResourceManager.4(this), 64, null, true);
-  }
-  
   public MutableLiveData<List<MetaCategory>> e()
   {
-    return this.jdField_e_of_type_AndroidxLifecycleMutableLiveData;
+    return this.p;
   }
   
-  public String e(@NonNull MetaMaterial paramMetaMaterial)
+  @Nullable
+  public AEEditorDownloadResBean e(@NonNull String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramMetaMaterial));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("params.json");
-    return localStringBuilder.toString();
+    F();
+    G();
+    return f(paramString);
+  }
+  
+  public String e(MetaMaterial paramMetaMaterial)
+  {
+    String str = FilterMetaMaterialKt.o(paramMetaMaterial);
+    if (!str.isEmpty())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramMetaMaterial));
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
+    }
+    return "";
   }
   
   public String e(MetaMaterial paramMetaMaterial, String paramString)
@@ -692,29 +586,39 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public List<MetaCategory> e()
-  {
-    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.jdField_b_of_type_JavaLangString, "editor_text_sticker_update_template.json", "camera/editor_text_stickers_default.json", false);
-  }
-  
-  public void e()
-  {
-    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadFilter...");
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      ThreadManager.excute(new AEEditorResourceManager.5(this), 64, null, true);
-      return;
-    }
-    List localList = a();
-    a().postValue(localList);
-  }
-  
   public MutableLiveData<List<MetaCategory>> f()
   {
-    return this.jdField_f_of_type_AndroidxLifecycleMutableLiveData;
+    return this.q;
+  }
+  
+  public AEEditorDownloadResBean f(String paramString)
+  {
+    Map localMap = this.u;
+    if ((localMap != null) && (localMap.get(paramString) != null)) {
+      return (AEEditorDownloadResBean)this.u.get(paramString);
+    }
+    localMap = this.w;
+    if ((localMap != null) && (localMap.get(paramString) != null)) {
+      return (AEEditorDownloadResBean)this.w.get(paramString);
+    }
+    return null;
   }
   
   public String f(@NonNull MetaMaterial paramMetaMaterial)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramMetaMaterial));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("params.json");
+    return localStringBuilder.toString();
+  }
+  
+  public MutableLiveData<List<MetaCategory>> g()
+  {
+    return this.r;
+  }
+  
+  public String g(@NonNull MetaMaterial paramMetaMaterial)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramMetaMaterial));
@@ -723,24 +627,28 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public List<MetaCategory> f()
+  public boolean g(@NonNull String paramString)
   {
-    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.g, "editor_text_update_template.json", "camera/ae_camera_editor_text.json", false);
-  }
-  
-  public void f()
-  {
-    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadFrame...");
-    if (Looper.getMainLooper() == Looper.myLooper())
+    synchronized (this.v)
     {
-      ThreadManager.excute(new AEEditorResourceManager.6(this), 64, null, true);
-      return;
+      paramString = (AEEditorDownloadResBean)this.v.get(paramString);
+      boolean bool = false;
+      if (paramString != null) {
+        return false;
+      }
+      if (this.v.size() >= this.B) {
+        bool = true;
+      }
+      return bool;
     }
-    List localList = b();
-    b().postValue(localList);
   }
   
-  public String g(@NonNull MetaMaterial paramMetaMaterial)
+  public MutableLiveData<List<MetaCategory>> h()
+  {
+    return this.s;
+  }
+  
+  public String h(@NonNull MetaMaterial paramMetaMaterial)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramMetaMaterial));
@@ -749,19 +657,12 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public void g()
+  public MutableLiveData<List<MetaCategory>> i()
   {
-    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadPicTemplate...");
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      ThreadManager.excute(new AEEditorResourceManager.7(this), 64, null, true);
-      return;
-    }
-    List localList = c();
-    c().postValue(localList);
+    return this.t;
   }
   
-  public String h(@NonNull MetaMaterial paramMetaMaterial)
+  public String i(@NonNull MetaMaterial paramMetaMaterial)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramMetaMaterial));
@@ -770,19 +671,7 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public void h()
-  {
-    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadAutoTemplate...");
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      ThreadManager.excute(new AEEditorResourceManager.8(this), 64, null, true);
-      return;
-    }
-    List localList = d();
-    d().postValue(localList);
-  }
-  
-  public String i(MetaMaterial paramMetaMaterial)
+  public String j(MetaMaterial paramMetaMaterial)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramMetaMaterial));
@@ -791,19 +680,12 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public void i()
+  public void j()
   {
-    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadSticker...");
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      ThreadManager.excute(new AEEditorResourceManager.9(this), 64, null, true);
-      return;
-    }
-    List localList = e();
-    e().postValue(localList);
+    a("AIPhotoConfig", null);
   }
   
-  public String j(MetaMaterial paramMetaMaterial)
+  public String k(MetaMaterial paramMetaMaterial)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramMetaMaterial));
@@ -812,7 +694,102 @@ public final class AEEditorResourceManager
     return localStringBuilder.toString();
   }
   
-  public void j()
+  public boolean k()
+  {
+    return new File(l()).exists();
+  }
+  
+  public String l()
+  {
+    b();
+    return a((AEEditorDownloadResBean)this.e.get("AIPhotoConfig"));
+  }
+  
+  public boolean m()
+  {
+    return new File(n()).exists();
+  }
+  
+  public String n()
+  {
+    b();
+    return a((AEEditorDownloadResBean)this.e.get("AIVideoConfig"));
+  }
+  
+  @NonNull
+  public Map<String, AEEditorDownloadResBean> o()
+  {
+    F();
+    return new HashMap(this.u);
+  }
+  
+  public void p()
+  {
+    AEQLog.b(this.d, "loadAssets");
+    ThreadManager.excute(new AEEditorResourceManager.4(this), 64, null, true);
+  }
+  
+  public void q()
+  {
+    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadFilter...");
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManager.excute(new AEEditorResourceManager.5(this), 64, null, true);
+      return;
+    }
+    List localList = w();
+    d().postValue(localList);
+  }
+  
+  public void r()
+  {
+    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadFrame...");
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManager.excute(new AEEditorResourceManager.6(this), 64, null, true);
+      return;
+    }
+    List localList = x();
+    e().postValue(localList);
+  }
+  
+  public void s()
+  {
+    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadPicTemplate...");
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManager.excute(new AEEditorResourceManager.7(this), 64, null, true);
+      return;
+    }
+    List localList = y();
+    f().postValue(localList);
+  }
+  
+  public void t()
+  {
+    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadAutoTemplate...");
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManager.excute(new AEEditorResourceManager.8(this), 64, null, true);
+      return;
+    }
+    List localList = z();
+    g().postValue(localList);
+  }
+  
+  public void u()
+  {
+    AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadSticker...");
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManager.excute(new AEEditorResourceManager.9(this), 64, null, true);
+      return;
+    }
+    List localList = A();
+    h().postValue(localList);
+  }
+  
+  public void v()
   {
     AEQLog.a("[AEEditor2]AEEditorResourceManager", "loadText...");
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -820,13 +797,33 @@ public final class AEEditorResourceManager
       ThreadManager.excute(new AEEditorResourceManager.10(this), 64, null, true);
       return;
     }
-    List localList = f();
-    f().postValue(localList);
+    List localList = B();
+    i().postValue(localList);
+  }
+  
+  public List<MetaCategory> w()
+  {
+    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.d, "editor_filter_update_template.json", "camera/ae_camera_editor_display_effects.json", false);
+  }
+  
+  public List<MetaCategory> x()
+  {
+    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.e, "editor_frame_update_template.json", "camera/ae_camera_editor_frame.json", false);
+  }
+  
+  public List<MetaCategory> y()
+  {
+    return AEditorMaterialManager.a().a(AEPath.Editor.FILES.f, "editor_pic_template_update_template.json", "camera/ae_camera_editor_pic_template.json", false);
+  }
+  
+  public List<MetaCategory> z()
+  {
+    return AEditorMaterialManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
@@ -26,32 +26,36 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qqcontext.R.styleable;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.theme.SkinnableBitmapDrawable;
 
 public class TipsBar
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View jdField_a_of_type_AndroidViewView;
-  protected Button a;
-  protected ImageView a;
   protected TextView a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
   protected ImageView b;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private int d;
+  protected ImageView c;
+  protected Button d;
   private int e;
-  private int f;
-  private int g;
-  private int h;
+  private final int f = ScreenUtil.dip2px(44.0F);
+  private final int g = ScreenUtil.dip2px(28.0F);
+  private final int h = ScreenUtil.dip2px(28.0F);
+  private final int i = ScreenUtil.dip2px(16.0F);
+  private final int j = ScreenUtil.dip2px(8.0F);
+  private final int k = ScreenUtil.dip2px(12.0F);
+  private final int l = ScreenUtil.dip2px(16.0F);
+  private final int m = ScreenUtil.dip2px(16.0F);
+  private final int n = ScreenUtil.dip2px(16.0F);
+  private String o;
+  private Drawable p;
+  private String q;
+  private final boolean r;
+  private ImageView s;
+  private final float t = getResources().getDisplayMetrics().density;
+  private View.OnClickListener u;
+  private View v;
+  private View w;
   
   public TipsBar(Context paramContext)
   {
@@ -61,166 +65,187 @@ public class TipsBar
   public TipsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    Resources localResources = getResources();
-    this.jdField_a_of_type_Float = localResources.getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131298534);
-    this.e = localResources.getDimensionPixelSize(2131298536);
-    this.f = localResources.getDimensionPixelSize(2131298538);
-    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131298537);
-    this.d = localResources.getDimensionPixelSize(2131298537);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bM);
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(R.styleable.j);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(R.styleable.i);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(R.styleable.e);
-    this.jdField_a_of_type_Int = paramContext.getInt(R.styleable.d, 2);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.h, false);
-    this.g = paramContext.getDimensionPixelSize(R.styleable.g, this.jdField_c_of_type_Int);
-    this.h = paramContext.getDimensionPixelSize(R.styleable.f, this.d);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bQ);
+    this.o = paramContext.getString(R.styleable.bV);
+    this.p = paramContext.getDrawable(R.styleable.bU);
+    this.q = paramContext.getString(R.styleable.bS);
+    this.e = paramContext.getInt(R.styleable.bR, 2);
+    this.r = paramContext.getBoolean(R.styleable.bT, false);
     paramContext.recycle();
-    d();
+    f();
   }
   
   protected static ColorStateList a(Resources paramResources, int paramInt)
   {
     if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 6)) {
-      return paramResources.getColorStateList(2131167091);
+      return paramResources.getColorStateList(2131168043);
     }
-    return paramResources.getColorStateList(2131167091);
+    return paramResources.getColorStateList(2131168043);
   }
   
-  public static Drawable a(Resources paramResources, int paramInt)
+  public static Drawable a(Resources paramResources)
   {
-    return paramResources.getDrawable(2130839314);
+    return paramResources.getDrawable(2130839494);
   }
   
-  protected static ColorStateList b(Resources paramResources, int paramInt)
+  private boolean a(int paramInt)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 1)
+    {
+      bool1 = bool2;
+      if (paramInt != 2)
+      {
+        bool1 = bool2;
+        if (paramInt != 3)
+        {
+          bool1 = bool2;
+          if (paramInt != 4)
+          {
+            bool1 = bool2;
+            if (paramInt != 5)
+            {
+              if (paramInt == 6) {
+                return true;
+              }
+              bool1 = false;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  protected static ColorStateList d(Resources paramResources, int paramInt)
   {
     if (paramInt != 4)
     {
       if (paramInt != 5) {
-        return paramResources.getColorStateList(2131167063);
+        return paramResources.getColorStateList(2131168001);
       }
-      return paramResources.getColorStateList(2131167063);
+      return paramResources.getColorStateList(2131168001);
     }
-    return paramResources.getColorStateList(2131167214);
+    return paramResources.getColorStateList(2131168204);
   }
   
-  private Button b()
+  private Drawable e(Resources paramResources, int paramInt)
+  {
+    if (paramInt == 5) {
+      paramResources = paramResources.getDrawable(2130839450);
+    } else {
+      paramResources = paramResources.getDrawable(2130839450);
+    }
+    return a(paramResources);
+  }
+  
+  private void f()
+  {
+    setFocusable(true);
+    setClickable(true);
+    Resources localResources = getResources();
+    this.s = new ImageView(getContext());
+    this.s.setId(2131447449);
+    this.s.setScaleType(ImageView.ScaleType.FIT_XY);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.g, this.h);
+    localLayoutParams.leftMargin = this.i;
+    localLayoutParams.addRule(9);
+    localLayoutParams.addRule(15);
+    addView(this.s, localLayoutParams);
+    this.a = new TextView(getContext());
+    this.a.setId(2131447451);
+    this.a.setSingleLine(true);
+    this.a.setGravity(8388627);
+    this.a.setEllipsize(TextUtils.TruncateAt.END);
+    this.a.setTextSize(2, 14.0F);
+    this.a.setTextColor(d(localResources, this.e));
+    this.a.setDuplicateParentStateEnabled(true);
+    if (!TextUtils.isEmpty(this.o))
+    {
+      this.a.setText(this.o);
+      this.a.setContentDescription(this.o);
+    }
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
+    int i1;
+    if (this.p != null) {
+      i1 = this.j;
+    } else {
+      i1 = this.i;
+    }
+    localLayoutParams.leftMargin = i1;
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(1, 2131447449);
+    localLayoutParams.addRule(0, 2131447453);
+    addView(this.a, localLayoutParams);
+    this.s.setVisibility(8);
+    setTipsIcon(this.p);
+    this.d = i();
+    this.c = c();
+    this.b = g();
+    if (!TextUtils.isEmpty(this.q)) {
+      e();
+    } else if (this.r) {
+      d();
+    } else {
+      h();
+    }
+    this.w = new View(getContext());
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.w.setBackgroundTintList(getResources().getColorStateList(2131168106));
+    }
+    localLayoutParams = new RelativeLayout.LayoutParams(-1, 1);
+    localLayoutParams.addRule(12);
+    addView(this.w, localLayoutParams);
+    setBackgroundDrawable(b(localResources, this.e));
+    a();
+  }
+  
+  private ImageView g()
+  {
+    Resources localResources = getResources();
+    ImageView localImageView = new ImageView(getContext());
+    localImageView.setScaleType(ImageView.ScaleType.CENTER);
+    localImageView.setImageDrawable(c(localResources, this.e));
+    return localImageView;
+  }
+  
+  private void h()
+  {
+    this.b.setId(2131447453);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.m, this.n);
+    localLayoutParams.rightMargin = this.l;
+    localLayoutParams.leftMargin = this.k;
+    localLayoutParams.addRule(11);
+    localLayoutParams.addRule(15);
+    addView(this.b, localLayoutParams);
+  }
+  
+  private Button i()
   {
     Resources localResources = getResources();
     Button localButton = new Button(getContext());
-    localButton.setText(this.jdField_b_of_type_JavaLangString);
-    localButton.setContentDescription(this.jdField_b_of_type_JavaLangString);
+    localButton.setText(this.q);
+    localButton.setContentDescription(this.q);
     localButton.setTextSize(2, 14.0F);
-    localButton.setTextColor(a(localResources, this.jdField_a_of_type_Int));
-    double d1 = this.jdField_a_of_type_Float * 48.0F;
+    localButton.setTextColor(a(localResources, this.e));
+    double d1 = this.t * 48.0F;
     Double.isNaN(d1);
     localButton.setMinWidth((int)(d1 + 0.5D));
-    d1 = this.jdField_a_of_type_Float * 24.0F;
+    d1 = this.t * 24.0F;
     Double.isNaN(d1);
     localButton.setMinHeight((int)(d1 + 0.5D));
     localButton.setSingleLine(true);
     localButton.setEllipsize(TextUtils.TruncateAt.END);
     localButton.setGravity(17);
-    localButton.setBackgroundDrawable(a(localResources, this.jdField_a_of_type_Int));
-    d1 = this.jdField_a_of_type_Float * 10.0F;
+    localButton.setBackgroundDrawable(a(localResources));
+    d1 = this.t * 10.0F;
     Double.isNaN(d1);
-    int i = (int)(d1 + 0.5D);
-    int j = i / 2;
-    localButton.setPadding(i, j, i, j);
-    localButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    int i1 = (int)(d1 + 0.5D);
+    int i2 = i1 / 2;
+    localButton.setPadding(i1, i2, i1, i2);
+    localButton.setOnClickListener(this.u);
     return localButton;
-  }
-  
-  private ImageView c()
-  {
-    Resources localResources = getResources();
-    ImageView localImageView = new ImageView(getContext());
-    localImageView.setScaleType(ImageView.ScaleType.CENTER);
-    localImageView.setImageDrawable(c(localResources, this.jdField_a_of_type_Int));
-    return localImageView;
-  }
-  
-  private Drawable d(Resources paramResources, int paramInt)
-  {
-    if (paramInt != 5) {
-      paramResources = paramResources.getDrawable(2130839470);
-    } else {
-      paramResources = paramResources.getDrawable(2130839470);
-    }
-    return a(paramResources);
-  }
-  
-  private void d()
-  {
-    setFocusable(true);
-    setClickable(true);
-    Resources localResources = getResources();
-    this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_c_of_type_AndroidWidgetImageView.setId(2131378774);
-    this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    Object localObject = new RelativeLayout.LayoutParams(this.g, this.h);
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = this.e;
-    ((RelativeLayout.LayoutParams)localObject).addRule(9);
-    ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    addView(this.jdField_c_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378775);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(localResources, this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
-    }
-    localObject = new RelativeLayout.LayoutParams(-2, -1);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.f;
-    } else {
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.e;
-    }
-    ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131378774);
-    ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131378776);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localObject != null) {
-      setTipsIcon((Drawable)localObject, this.g, this.h);
-    }
-    this.jdField_a_of_type_AndroidWidgetButton = b();
-    this.jdField_b_of_type_AndroidWidgetImageView = a();
-    this.jdField_a_of_type_AndroidWidgetImageView = c();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      c();
-    } else if (this.jdField_a_of_type_Boolean) {
-      b();
-    } else {
-      e();
-    }
-    setBackgroundDrawable(b(localResources, this.jdField_a_of_type_Int));
-    a();
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131378776);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    int i = this.e;
-    localLayoutParams.rightMargin = i;
-    localLayoutParams.leftMargin = i;
-    localLayoutParams.addRule(11);
-    localLayoutParams.addRule(15);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   Drawable a(Drawable paramDrawable)
@@ -229,108 +254,53 @@ public class TipsBar
     if ((!bool) && (!(paramDrawable instanceof BitmapDrawable))) {
       return paramDrawable;
     }
-    Object localObject1 = null;
     if (bool) {
       localObject1 = ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
-    } else if ((paramDrawable instanceof BitmapDrawable)) {
+    } else {
       localObject1 = ((BitmapDrawable)paramDrawable).getBitmap();
     }
     Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject1);
     Resources localResources = getResources();
-    if (localResources != null)
-    {
-      if ((localObject1 != null) && (localBitmap == null))
-      {
-        localObject2 = localObject1;
-      }
-      else
-      {
-        localObject2 = localBitmap;
-        if (localObject1 == null)
-        {
-          localObject2 = localBitmap;
-          if (localBitmap == null) {
-            return paramDrawable;
-          }
-        }
-      }
-      paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject1);
-      localObject1 = new BitmapDrawable(localResources, (Bitmap)localObject2);
-      ((BitmapDrawable)localObject1).setAlpha(127);
-      Object localObject2 = new StateListDrawable();
-      ((StateListDrawable)localObject2).addState(new int[] { 16842919, 16842910 }, (Drawable)localObject1);
-      ((StateListDrawable)localObject2).addState(new int[] { 16842908 }, paramDrawable);
-      ((StateListDrawable)localObject2).addState(new int[0], paramDrawable);
-      return localObject2;
+    if (localResources == null) {
+      return paramDrawable;
     }
-    return paramDrawable;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  protected ImageView a()
-  {
-    Object localObject = getResources();
-    ImageView localImageView = new ImageView(getContext());
-    localImageView.setScaleType(ImageView.ScaleType.CENTER);
-    localObject = d((Resources)localObject, this.jdField_a_of_type_Int);
-    localImageView.setPadding(15, 15, 15, 15);
-    localImageView.setImageDrawable((Drawable)localObject);
-    localImageView.setOnClickListener(new TipsBar.1(this));
-    if (AppSetting.d) {
-      localImageView.setContentDescription(HardCodeUtil.a(2131714790));
-    }
-    return localImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a()
-  {
-    Object localObject;
-    if (QQTheme.a())
+    if ((localObject1 != null) && (localBitmap == null))
     {
-      if (this.jdField_a_of_type_AndroidViewView == null)
-      {
-        localObject = new RelativeLayout.LayoutParams(-1, -1);
-        this.jdField_a_of_type_AndroidViewView = new View(getContext());
-        this.jdField_a_of_type_AndroidViewView.setId(2131378773);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#7f000000"));
-        addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-      }
+      localObject2 = localObject1;
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject != null)
+      localObject2 = localBitmap;
+      if (localObject1 == null)
       {
-        removeView((View)localObject);
-        this.jdField_a_of_type_AndroidViewView = null;
+        localObject2 = localBitmap;
+        if (localBitmap == null) {
+          return paramDrawable;
+        }
       }
     }
+    paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject1);
+    Object localObject1 = new BitmapDrawable(localResources, (Bitmap)localObject2);
+    ((BitmapDrawable)localObject1).setAlpha(127);
+    Object localObject2 = new StateListDrawable();
+    ((StateListDrawable)localObject2).addState(new int[] { 16842919, 16842910 }, (Drawable)localObject1);
+    ((StateListDrawable)localObject2).addState(new int[] { 16842908 }, paramDrawable);
+    ((StateListDrawable)localObject2).addState(new int[0], paramDrawable);
+    return localObject2;
   }
+  
+  public void a() {}
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = c();
+    if (this.b == null) {
+      this.b = g();
     }
-    removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    removeView(this.jdField_a_of_type_AndroidWidgetButton);
-    removeView(this.jdField_b_of_type_AndroidWidgetImageView);
+    removeView(this.b);
+    removeView(this.d);
+    removeView(this.c);
     if (paramBoolean) {
-      e();
+      h();
     }
   }
   
@@ -339,144 +309,188 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      paramResources = paramResources.getDrawable(2130839393);
+      paramResources = paramResources.getDrawable(2130839577);
       break;
     case 6: 
-      paramResources = paramResources.getDrawable(2130839394);
+      paramResources = paramResources.getDrawable(2130839578);
       break;
     case 5: 
-      paramResources = paramResources.getDrawable(2130839462);
+      paramResources = paramResources.getDrawable(2130839651);
       break;
     case 2: 
     case 3: 
-      paramResources = paramResources.getDrawable(2130839393);
+      paramResources = paramResources.getDrawable(2130839577);
       break;
     case 1: 
     case 4: 
-      paramResources = paramResources.getDrawable(2130839466);
+      paramResources = paramResources.getDrawable(2130839655);
     }
     return a(paramResources);
   }
   
-  public ImageView b()
+  public View b()
   {
-    return this.jdField_c_of_type_AndroidWidgetImageView;
-  }
-  
-  protected void b()
-  {
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-    if (localObject != null)
-    {
-      ((ImageView)localObject).setId(2131378776);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      int i = this.e;
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = i;
-      ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    }
+    return this.v;
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
-      this.jdField_b_of_type_AndroidWidgetImageView = a();
+    if (this.c == null) {
+      this.c = c();
     }
-    removeView(this.jdField_b_of_type_AndroidWidgetImageView);
-    removeView(this.jdField_a_of_type_AndroidWidgetButton);
-    removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    removeView(this.c);
+    removeView(this.d);
+    removeView(this.b);
     if (paramBoolean) {
-      b();
+      d();
     }
   }
   
   protected Drawable c(Resources paramResources, int paramInt)
   {
-    if (paramInt != 5) {
-      paramResources = paramResources.getDrawable(2130850483);
+    if (paramInt == 5) {
+      paramResources = paramResources.getDrawable(2130839650);
     } else {
-      paramResources = paramResources.getDrawable(2130839461);
+      paramResources = paramResources.getDrawable(2130839449);
     }
     return a(paramResources);
   }
   
-  protected void c()
+  protected ImageView c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetButton != null)
+    Object localObject = getResources();
+    ImageView localImageView = new ImageView(getContext());
+    localImageView.setScaleType(ImageView.ScaleType.CENTER);
+    localObject = e((Resources)localObject, this.e);
+    localImageView.setPadding(15, 15, 15, 15);
+    localImageView.setImageDrawable((Drawable)localObject);
+    localImageView.setOnClickListener(new TipsBar.1(this));
+    if (AppSetting.e) {
+      localImageView.setContentDescription(HardCodeUtil.a(2131912293));
+    }
+    return localImageView;
+  }
+  
+  protected void d()
+  {
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      ((ImageView)localObject).setId(2131447453);
+      localObject = new RelativeLayout.LayoutParams(this.m, this.n);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = this.l;
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.k;
+      ((RelativeLayout.LayoutParams)localObject).addRule(11);
+      ((RelativeLayout.LayoutParams)localObject).addRule(15);
+      addView(this.c, (ViewGroup.LayoutParams)localObject);
+    }
+  }
+  
+  protected void e()
+  {
+    if (this.d != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      int i = this.e;
-      localLayoutParams.rightMargin = i;
-      localLayoutParams.leftMargin = i;
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378776);
+      localLayoutParams.rightMargin = this.l;
+      localLayoutParams.leftMargin = this.k;
+      this.d.setId(2131447453);
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
-      addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
+      addView(this.d, localLayoutParams);
     }
+  }
+  
+  public int getBarType()
+  {
+    return this.e;
+  }
+  
+  public Button getButton()
+  {
+    return this.d;
+  }
+  
+  public TextView getTextView()
+  {
+    return this.a;
+  }
+  
+  public ImageView getTipsIconView()
+  {
+    return this.s;
+  }
+  
+  public String getTipsText()
+  {
+    return this.o;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.jdField_b_of_type_Int, 1073741824));
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_b_of_type_Int);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.f, 1073741824));
+    setMeasuredDimension(getMeasuredWidth(), this.f);
   }
   
   public void setBarType(int paramInt)
   {
-    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
-      throw new RuntimeException("Parameter bgType is illegal!");
-    }
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (a(paramInt))
+    {
+      if (paramInt == this.e) {
+        return;
+      }
+      this.e = paramInt;
+      Object localObject1 = getResources();
+      Object localObject2 = this.a;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setTextColor(d((Resources)localObject1, this.e));
+      }
+      setBackgroundDrawable(b((Resources)localObject1, this.e));
+      if (this.b != null)
+      {
+        localObject2 = c((Resources)localObject1, this.e);
+        this.b.setImageDrawable((Drawable)localObject2);
+      }
+      if (this.c != null)
+      {
+        localObject2 = e((Resources)localObject1, this.e);
+        this.c.setImageDrawable((Drawable)localObject2);
+      }
+      localObject2 = this.d;
+      if (localObject2 != null)
+      {
+        ((Button)localObject2).setTextColor(a((Resources)localObject1, this.e));
+        this.d.setBackgroundDrawable(a((Resources)localObject1));
+      }
+      localObject1 = this.w;
+      if (localObject1 != null) {
+        ((View)localObject1).setBackgroundTintList(getResources().getColorStateList(2131168106));
+      }
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    Resources localResources = getResources();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null) {
-      ((TextView)localObject).setTextColor(b(localResources, this.jdField_a_of_type_Int));
-    }
-    setBackgroundDrawable(b(localResources, this.jdField_a_of_type_Int));
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      localObject = c(localResources, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null)
-    {
-      localObject = d(localResources, this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetButton;
-    if (localObject != null)
-    {
-      ((Button)localObject).setTextColor(a(localResources, this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(localResources, this.jdField_a_of_type_Int));
-    }
+    throw new RuntimeException("Parameter bgType is illegal!");
   }
   
   public void setButtonText(CharSequence paramCharSequence)
   {
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      if (this.jdField_a_of_type_AndroidWidgetButton == null) {
-        this.jdField_a_of_type_AndroidWidgetButton = b();
-      }
-      removeView(this.jdField_a_of_type_AndroidWidgetButton);
-      removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-      removeView(this.jdField_b_of_type_AndroidWidgetImageView);
-      this.jdField_b_of_type_JavaLangString = paramCharSequence.toString();
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_b_of_type_JavaLangString);
-      c();
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      return;
     }
+    if (this.d == null) {
+      this.d = i();
+    }
+    removeView(this.d);
+    removeView(this.b);
+    removeView(this.c);
+    this.q = paramCharSequence.toString();
+    this.d.setText(this.q);
+    e();
   }
   
   public void setCloseListener(View.OnClickListener paramOnClickListener)
   {
     if (paramOnClickListener != null)
     {
-      ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.c;
       if (localImageView != null) {
         localImageView.setOnClickListener(paramOnClickListener);
       }
@@ -485,17 +499,17 @@ public class TipsBar
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    this.u = paramOnClickListener;
+    if (!TextUtils.isEmpty(this.q))
     {
-      paramOnClickListener = this.jdField_a_of_type_AndroidWidgetButton;
+      paramOnClickListener = this.d;
       if (paramOnClickListener != null)
       {
-        paramOnClickListener.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramOnClickListener.setOnClickListener(this.u);
         return;
       }
     }
-    super.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    super.setOnClickListener(this.u);
   }
   
   public void setOriginalOnClickListener(View.OnClickListener paramOnClickListener)
@@ -508,54 +522,30 @@ public class TipsBar
     if (paramDrawable == null) {
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    localLayoutParams.leftMargin = this.f;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramDrawable);
-    int i = paramDrawable.getIntrinsicHeight();
-    paramDrawable.setBounds(0, 0, this.jdField_c_of_type_Int, this.d);
-    if (i > this.jdField_b_of_type_Int)
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    localLayoutParams.leftMargin = this.j;
+    this.a.setLayoutParams(localLayoutParams);
+    this.s.setVisibility(0);
+    if (QQTheme.isNowThemeSimpleNight())
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.s.setImageDrawable(paramDrawable);
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
-  
-  public void setTipsIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    if ((paramDrawable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramInt1 >= 0))
-    {
-      if (paramInt2 < 0) {
-        return;
-      }
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      if ((paramInt1 > 0) && (paramInt2 > 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramDrawable);
-        this.g = paramInt1;
-        this.h = Math.min(this.jdField_b_of_type_Int, paramInt2);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.g, this.h);
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        return;
-      }
-      if ((paramInt1 == 0) || (paramInt2 == 0)) {
-        setTipsIcon(paramDrawable);
-      }
-    }
+    this.p = a(paramDrawable);
+    paramDrawable.setBounds(0, 0, this.g, this.h);
+    this.s.setImageDrawable(this.p);
   }
   
   public void setTipsText(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
+    this.o = paramCharSequence.toString();
+    this.a.setText(this.o);
+    this.a.setContentDescription(this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.banner.TipsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -26,14 +26,6 @@ public class LocationPlugin
     this.mPluginNameSpace = "location";
   }
   
-  private String a(String paramString)
-  {
-    if ((paramString != null) && (!"Unknown".equals(paramString))) {
-      return paramString;
-    }
-    return "";
-  }
-  
   private void a(SosoLbsInfo paramSosoLbsInfo, String paramString)
   {
     if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
@@ -43,15 +35,15 @@ public class LocationPlugin
       {
         localJSONObject1.put("lat", paramSosoLbsInfo.mLocation.mLat02);
         localJSONObject1.put("lon", paramSosoLbsInfo.mLocation.mLon02);
-        localJSONObject1.put("nation", a(paramSosoLbsInfo.mLocation.nation));
-        localJSONObject1.put("province", a(paramSosoLbsInfo.mLocation.province));
-        localJSONObject1.put("city", a(paramSosoLbsInfo.mLocation.city));
-        localJSONObject1.put("adcode", a(paramSosoLbsInfo.mLocation.cityCode));
-        localJSONObject1.put("district", a(paramSosoLbsInfo.mLocation.district));
-        localJSONObject1.put("town", a(paramSosoLbsInfo.mLocation.town));
-        localJSONObject1.put("village", a(paramSosoLbsInfo.mLocation.village));
-        localJSONObject1.put("street", a(paramSosoLbsInfo.mLocation.street));
-        localJSONObject1.put("streetNo", a(paramSosoLbsInfo.mLocation.streetNo));
+        localJSONObject1.put("nation", b(paramSosoLbsInfo.mLocation.nation));
+        localJSONObject1.put("province", b(paramSosoLbsInfo.mLocation.province));
+        localJSONObject1.put("city", b(paramSosoLbsInfo.mLocation.city));
+        localJSONObject1.put("adcode", b(paramSosoLbsInfo.mLocation.cityCode));
+        localJSONObject1.put("district", b(paramSosoLbsInfo.mLocation.district));
+        localJSONObject1.put("town", b(paramSosoLbsInfo.mLocation.town));
+        localJSONObject1.put("village", b(paramSosoLbsInfo.mLocation.village));
+        localJSONObject1.put("street", b(paramSosoLbsInfo.mLocation.street));
+        localJSONObject1.put("streetNo", b(paramSosoLbsInfo.mLocation.streetNo));
         Object localObject = paramSosoLbsInfo.mLocation.poi;
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
@@ -61,10 +53,10 @@ public class LocationPlugin
           {
             TencentPoi localTencentPoi = (TencentPoi)((Iterator)localObject).next();
             JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("name", a(localTencentPoi.getName()));
-            localJSONObject2.put("addr", a(localTencentPoi.getAddress()));
+            localJSONObject2.put("name", b(localTencentPoi.getName()));
+            localJSONObject2.put("addr", b(localTencentPoi.getAddress()));
             localJSONObject2.put("distance", localTencentPoi.getDistance());
-            localJSONObject2.put("catalog", a(localTencentPoi.getCatalog()));
+            localJSONObject2.put("catalog", b(localTencentPoi.getCatalog()));
             localJSONObject2.put("lat", localTencentPoi.getLatitude());
             localJSONObject2.put("lon", localTencentPoi.getLongitude());
             paramSosoLbsInfo.put(localJSONObject2);
@@ -84,6 +76,14 @@ public class LocationPlugin
     callJs(paramString, new String[] { "-4", "{}" });
   }
   
+  private String b(String paramString)
+  {
+    if ((paramString != null) && (!"Unknown".equals(paramString))) {
+      return paramString;
+    }
+    return "";
+  }
+  
   public void a(String paramString)
   {
     Object localObject;
@@ -101,7 +101,7 @@ public class LocationPlugin
       }
       return;
     }
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
       localObject = paramString;
@@ -153,7 +153,7 @@ public class LocationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.LocationPlugin
  * JD-Core Version:    0.7.0.1
  */

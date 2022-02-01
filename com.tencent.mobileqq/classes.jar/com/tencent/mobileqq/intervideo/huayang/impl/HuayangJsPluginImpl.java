@@ -554,7 +554,7 @@ public class HuayangJsPluginImpl
     //   839: getfield 101	com/tencent/mobileqq/intervideo/huayang/impl/HuayangJsPluginImpl:appType	Ljava/lang/String;
     //   842: invokeinterface 402 2 0
     //   847: checkcast 304	com/tencent/mobileqq/intervideo/huayang/MonitorConfig
-    //   850: getfield 405	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:h	I
+    //   850: getfield 405	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:i	I
     //   853: invokestatic 408	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   856: invokestatic 411	com/tencent/mobileqq/intervideo/huayang/Monitor:b	(Ljava/lang/String;)V
     //   859: aload_0
@@ -672,8 +672,8 @@ public class HuayangJsPluginImpl
   {
     super.onCreate();
     this.mClient = TroopMemberApiClient.a();
-    this.mClient.a();
-    this.mContext = this.mRuntime.a().getApplicationContext();
+    this.mClient.e();
+    this.mContext = this.mRuntime.d().getApplicationContext();
     log(" onCreate");
   }
   
@@ -683,7 +683,7 @@ public class HuayangJsPluginImpl
     if (localTroopMemberApiClient != null)
     {
       localTroopMemberApiClient.c(this.pluginPackageName, this.appType);
-      this.mClient.b();
+      this.mClient.f();
     }
     super.onDestroy();
     if (QLog.isColorLevel()) {
@@ -696,7 +696,7 @@ public class HuayangJsPluginImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangJsPluginImpl
  * JD-Core Version:    0.7.0.1
  */

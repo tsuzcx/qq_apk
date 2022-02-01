@@ -8,55 +8,55 @@ import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 public class TroopFilePreviewController
   extends FilePreViewControllerBase
 {
-  long jdField_a_of_type_Long;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopFileStatusInfo jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo;
+  QQAppInterface b;
+  TroopFileStatusInfo c;
+  long d;
+  BizTroopObserver e = null;
   
   public TroopFilePreviewController(QQAppInterface paramQQAppInterface, long paramLong, TroopFileStatusInfo paramTroopFileStatusInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = paramTroopFileStatusInfo;
-    this.jdField_a_of_type_Long = paramLong;
-    b();
+    this.b = paramQQAppInterface;
+    this.c = paramTroopFileStatusInfo;
+    this.d = paramLong;
+    d();
   }
   
-  private void b()
+  private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopFilePreviewController.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public void a()
-  {
-    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
-    if (localBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localBizTroopObserver);
-    }
+    this.e = new TroopFilePreviewController.1(this);
+    this.b.addObserver(this.e);
   }
   
   public boolean a()
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b, this.d);
     if (localTroopFileTransferManager == null) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a != null) {
-      localTroopFileTransferManager.e(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a);
+    if (this.c.a != null) {
+      localTroopFileTransferManager.f(this.c.a);
     } else {
-      localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h);
+      localTroopFileTransferManager.a(this.c.r, this.c.t, this.c.u);
     }
     return true;
+  }
+  
+  public void b()
+  {
+    BizTroopObserver localBizTroopObserver = this.e;
+    if (localBizTroopObserver != null) {
+      this.b.removeObserver(localBizTroopObserver);
+    }
+  }
+  
+  public int c()
+  {
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFilePreviewController
  * JD-Core Version:    0.7.0.1
  */

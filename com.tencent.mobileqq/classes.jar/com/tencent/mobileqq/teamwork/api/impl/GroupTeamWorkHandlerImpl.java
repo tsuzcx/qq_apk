@@ -301,7 +301,7 @@ public class GroupTeamWorkHandlerImpl
         }
         try
         {
-          paramObject = ((GroupTeamWorkManager)((IManagerFactoryService)this.app.getRuntimeService(IManagerFactoryService.class, "")).getManager(GroupTeamWorkManager.class)).a();
+          paramObject = ((GroupTeamWorkManager)((IManagerFactoryService)this.app.getRuntimeService(IManagerFactoryService.class, "")).getManager(GroupTeamWorkManager.class)).e();
           j = i;
           paramFromServiceMsg = paramToServiceMsg;
           if (TextUtils.isEmpty(str)) {
@@ -578,7 +578,7 @@ public class GroupTeamWorkHandlerImpl
     //   430: istore 4
     //   432: aload 10
     //   434: aload 9
-    //   436: invokevirtual 569	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:a	(Ljava/util/List;)V
+    //   436: invokevirtual 570	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:a	(Ljava/util/List;)V
     //   439: aload_1
     //   440: astore_3
     //   441: iload 6
@@ -604,7 +604,7 @@ public class GroupTeamWorkHandlerImpl
     //   477: iload 6
     //   479: istore 4
     //   481: aload 10
-    //   483: ldc_w 571
+    //   483: ldc_w 572
     //   486: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   489: pop
     //   490: aload_1
@@ -613,7 +613,7 @@ public class GroupTeamWorkHandlerImpl
     //   494: istore 4
     //   496: aload 10
     //   498: aload_3
-    //   499: invokevirtual 572	java/lang/Exception:toString	()Ljava/lang/String;
+    //   499: invokevirtual 573	java/lang/Exception:toString	()Ljava/lang/String;
     //   502: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   505: pop
     //   506: aload_1
@@ -1042,12 +1042,12 @@ public class GroupTeamWorkHandlerImpl
     //   233: ldc_w 641
     //   236: lload 13
     //   238: invokestatic 639	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   241: invokestatic 650	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   241: invokestatic 651	com/tencent/mobileqq/teamworkforgroup/GroupTeamWorkManager:b	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   244: iload 8
     //   246: istore 7
-    //   248: ldc_w 652
+    //   248: ldc_w 653
     //   251: invokestatic 494	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   254: checkcast 652	com/tencent/mobileqq/teamwork/api/IGetExternalInterface
+    //   254: checkcast 653	com/tencent/mobileqq/teamwork/api/IGetExternalInterface
     //   257: aload_0
     //   258: getfield 21	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:app	Lcom/tencent/common/app/AppInterface;
     //   261: aload_0
@@ -1055,9 +1055,9 @@ public class GroupTeamWorkHandlerImpl
     //   265: invokevirtual 636	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   268: lload 11
     //   270: invokestatic 639	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   273: ldc_w 654
+    //   273: ldc_w 655
     //   276: iconst_1
-    //   277: invokeinterface 658 6 0
+    //   277: invokeinterface 659 6 0
     //   282: iload 9
     //   284: istore 6
     //   286: goto +141 -> 427
@@ -1086,14 +1086,14 @@ public class GroupTeamWorkHandlerImpl
     //   330: iload 6
     //   332: istore 7
     //   334: aload 15
-    //   336: ldc_w 571
+    //   336: ldc_w 572
     //   339: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   342: pop
     //   343: iload 6
     //   345: istore 7
     //   347: aload 15
     //   349: aload_2
-    //   350: invokevirtual 572	java/lang/Exception:toString	()Ljava/lang/String;
+    //   350: invokevirtual 573	java/lang/Exception:toString	()Ljava/lang/String;
     //   353: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: pop
     //   357: iload 6
@@ -1147,7 +1147,7 @@ public class GroupTeamWorkHandlerImpl
     //   448: dup
     //   449: iconst_2
     //   450: iload 6
-    //   452: invokestatic 663	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   452: invokestatic 664	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   455: aastore
     //   456: invokevirtual 516	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
     //   459: return
@@ -1281,9 +1281,9 @@ public class GroupTeamWorkHandlerImpl
     //   178: astore_2
     //   179: iload 4
     //   181: istore 6
-    //   183: new 666	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody
+    //   183: new 667	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody
     //   186: dup
-    //   187: invokespecial 667	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:<init>	()V
+    //   187: invokespecial 668	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:<init>	()V
     //   190: astore_3
     //   191: aload_1
     //   192: astore_2
@@ -1294,16 +1294,16 @@ public class GroupTeamWorkHandlerImpl
     //   200: getfield 312	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   203: invokevirtual 66	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   206: invokevirtual 535	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   209: invokevirtual 668	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   209: invokevirtual 669	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   212: pop
     //   213: aload_1
     //   214: astore_2
     //   215: iload 4
     //   217: istore 6
     //   219: aload_3
-    //   220: getfield 672	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:search_doc_rsp	Ltencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp;
-    //   223: invokevirtual 675	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   226: checkcast 674	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp
+    //   220: getfield 673	tencent/im/oidb/cmd0xaef/Oidb_0xaef$RspBody:search_doc_rsp	Ltencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp;
+    //   223: invokevirtual 676	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   226: checkcast 675	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp
     //   229: astore_3
     //   230: aload_3
     //   231: ifnonnull +32 -> 263
@@ -1319,7 +1319,7 @@ public class GroupTeamWorkHandlerImpl
     //   250: istore 6
     //   252: getstatic 362	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:TAG	Ljava/lang/String;
     //   255: iconst_2
-    //   256: ldc_w 677
+    //   256: ldc_w 678
     //   259: invokestatic 381	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   262: return
     //   263: aload_1
@@ -1327,11 +1327,11 @@ public class GroupTeamWorkHandlerImpl
     //   265: iload 4
     //   267: istore 6
     //   269: aload_3
-    //   270: getfield 678	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:next	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   270: getfield 679	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:next	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   273: invokevirtual 95	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   276: istore 5
     //   278: aload_3
-    //   279: getfield 681	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:is_end	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   279: getfield 682	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:is_end	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   282: invokevirtual 95	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   285: istore 6
     //   287: iload 6
@@ -1343,7 +1343,7 @@ public class GroupTeamWorkHandlerImpl
     //   299: iconst_0
     //   300: istore 8
     //   302: aload_3
-    //   303: getfield 682	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:doc_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   303: getfield 683	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchDocRsp:doc_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   306: invokevirtual 551	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   309: astore_2
     //   310: aload_2
@@ -1368,18 +1368,18 @@ public class GroupTeamWorkHandlerImpl
     //   354: aload_2
     //   355: iload 6
     //   357: invokeinterface 560 2 0
-    //   362: checkcast 684	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem
+    //   362: checkcast 685	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem
     //   365: astore 14
     //   367: aload_3
     //   368: aload 14
-    //   370: getfield 688	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem:doc_info	Ltencent/im/oidb/cmd0xae9/group_online_docs$DocInfo;
-    //   373: invokevirtual 689	tencent/im/oidb/cmd0xae9/group_online_docs$DocInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   370: getfield 689	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem:doc_info	Ltencent/im/oidb/cmd0xae9/group_online_docs$DocInfo;
+    //   373: invokevirtual 690	tencent/im/oidb/cmd0xae9/group_online_docs$DocInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   376: checkcast 25	tencent/im/oidb/cmd0xae9/group_online_docs$DocInfo
     //   379: lload 10
     //   381: invokestatic 605	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:buildPadInfo	(Lcom/tencent/mobileqq/teamworkforgroup/GPadInfo;Ltencent/im/oidb/cmd0xae9/group_online_docs$DocInfo;J)V
     //   384: aload 14
-    //   386: getfield 693	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem:match_word	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   389: invokevirtual 696	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
+    //   386: getfield 694	tencent/im/oidb/cmd0xaef/Oidb_0xaef$SearchItem:match_word	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   389: invokevirtual 697	com/tencent/mobileqq/pb/PBRepeatField:get	()Ljava/util/List;
     //   392: astore 14
     //   394: aload 14
     //   396: ifnull +60 -> 456
@@ -1406,9 +1406,9 @@ public class GroupTeamWorkHandlerImpl
     //   451: istore 7
     //   453: goto -41 -> 412
     //   456: aload_3
-    //   457: getfield 700	com/tencent/mobileqq/teamworkforgroup/GPadInfo:searchKeyWordList	Ljava/util/List;
+    //   457: getfield 701	com/tencent/mobileqq/teamworkforgroup/GPadInfo:searchKeyWordList	Ljava/util/List;
     //   460: aload 12
-    //   462: invokeinterface 704 2 0
+    //   462: invokeinterface 705 2 0
     //   467: pop
     //   468: aload 13
     //   470: aload_3
@@ -1423,7 +1423,7 @@ public class GroupTeamWorkHandlerImpl
     //   492: invokespecial 365	java/lang/StringBuilder:<init>	()V
     //   495: astore 14
     //   497: aload 14
-    //   499: ldc_w 706
+    //   499: ldc_w 707
     //   502: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   505: pop
     //   506: aload 14
@@ -1462,12 +1462,12 @@ public class GroupTeamWorkHandlerImpl
     //   570: invokespecial 365	java/lang/StringBuilder:<init>	()V
     //   573: astore 12
     //   575: aload 12
-    //   577: ldc_w 708
+    //   577: ldc_w 709
     //   580: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   583: pop
     //   584: aload 12
     //   586: aload_2
-    //   587: invokevirtual 572	java/lang/Exception:toString	()Ljava/lang/String;
+    //   587: invokevirtual 573	java/lang/Exception:toString	()Ljava/lang/String;
     //   590: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   593: pop
     //   594: aload_3
@@ -1504,7 +1504,7 @@ public class GroupTeamWorkHandlerImpl
     //   648: ifeq +13 -> 661
     //   651: getstatic 362	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:TAG	Ljava/lang/String;
     //   654: iconst_2
-    //   655: ldc_w 710
+    //   655: ldc_w 711
     //   658: invokestatic 507	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   661: aload_2
     //   662: invokevirtual 510	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
@@ -1534,7 +1534,7 @@ public class GroupTeamWorkHandlerImpl
     //   698: dup
     //   699: iconst_4
     //   700: iload 8
-    //   702: invokestatic 663	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   702: invokestatic 664	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   705: aastore
     //   706: invokevirtual 516	com/tencent/mobileqq/teamwork/api/impl/GroupTeamWorkHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
     //   709: invokestatic 360	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1546,7 +1546,7 @@ public class GroupTeamWorkHandlerImpl
     //   723: invokespecial 365	java/lang/StringBuilder:<init>	()V
     //   726: astore_3
     //   727: aload_3
-    //   728: ldc_w 712
+    //   728: ldc_w 713
     //   731: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   734: pop
     //   735: aload_3
@@ -1570,7 +1570,7 @@ public class GroupTeamWorkHandlerImpl
     //   767: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   770: pop
     //   771: aload_3
-    //   772: ldc_w 714
+    //   772: ldc_w 715
     //   775: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   778: pop
     //   779: aload_3
@@ -1578,7 +1578,7 @@ public class GroupTeamWorkHandlerImpl
     //   782: invokevirtual 422	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   785: pop
     //   786: aload_3
-    //   787: ldc_w 716
+    //   787: ldc_w 717
     //   790: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   793: pop
     //   794: aload_3
@@ -1721,7 +1721,7 @@ public class GroupTeamWorkHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.GroupTeamWorkHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

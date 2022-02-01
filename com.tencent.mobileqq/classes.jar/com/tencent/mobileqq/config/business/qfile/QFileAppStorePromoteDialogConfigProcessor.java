@@ -27,7 +27,7 @@ public class QFileAppStorePromoteDialogConfigProcessor
   {
     QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileAppStorePromoteDialogConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileAppStorePromoteDialogConfigBean.class);
+      return (QFileAppStorePromoteDialogConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileAppStorePromoteDialogConfigBean.class);
     }
     return null;
   }
@@ -40,7 +40,7 @@ public class QFileAppStorePromoteDialogConfigProcessor
       return;
     }
     QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate");
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     if (localBaseQQAppInterface != null)
     {
       Object localObject = localBaseQQAppInterface.getApplicationContext();
@@ -48,7 +48,7 @@ public class QFileAppStorePromoteDialogConfigProcessor
       localStringBuilder.append("file_config_");
       localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
       localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("yyb_promote_dialog_key", paramQFileAppStorePromoteDialogConfigBean.a);
+      ((SharedPreferences.Editor)localObject).putString("yyb_promote_dialog_key", paramQFileAppStorePromoteDialogConfigBean.b);
       ((SharedPreferences.Editor)localObject).apply();
       QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileAppStorePromoteDialogConfigBean);
     }
@@ -83,7 +83,7 @@ public class QFileAppStorePromoteDialogConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteDialogConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

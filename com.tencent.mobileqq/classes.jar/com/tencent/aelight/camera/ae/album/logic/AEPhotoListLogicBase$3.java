@@ -11,14 +11,14 @@ class AEPhotoListLogicBase$3
   
   public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.b()) {
-      AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoVH);
+    if (!this.c.l()) {
+      AEPhotoListLogicBase.a(this.c, this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.3
  * JD-Core Version:    0.7.0.1
  */

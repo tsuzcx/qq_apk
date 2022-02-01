@@ -8,25 +8,25 @@ import com.tencent.common.app.BaseApplicationImpl;
 
 public class ScanTask
 {
-  private Context a = QQStoryContext.a().a().getBaseContext();
+  private Context a = QQStoryContext.a().c().getBaseContext();
   
   private boolean a(StoryAlbum.PicInfo paramPicInfo)
   {
-    if ((paramPicInfo.jdField_a_of_type_Int > 240) && (paramPicInfo.jdField_b_of_type_Int > 240))
+    if ((paramPicInfo.d > 240) && (paramPicInfo.e > 240))
     {
-      if (paramPicInfo.jdField_b_of_type_Int / paramPicInfo.jdField_a_of_type_Int <= 0.2F)
+      if (paramPicInfo.e / paramPicInfo.d <= 0.2F)
       {
-        SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.jdField_a_of_type_Int), Integer.valueOf(paramPicInfo.jdField_b_of_type_Int), paramPicInfo.jdField_a_of_type_JavaLangString);
+        SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.d), Integer.valueOf(paramPicInfo.e), paramPicInfo.b);
         return false;
       }
-      if (paramPicInfo.jdField_b_of_type_Int / paramPicInfo.jdField_a_of_type_Int >= 2.2F)
+      if (paramPicInfo.e / paramPicInfo.d >= 2.2F)
       {
-        SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.jdField_a_of_type_Int), Integer.valueOf(paramPicInfo.jdField_b_of_type_Int), paramPicInfo.jdField_a_of_type_JavaLangString);
+        SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.d), Integer.valueOf(paramPicInfo.e), paramPicInfo.b);
         return false;
       }
       return true;
     }
-    SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.jdField_a_of_type_Int), Integer.valueOf(paramPicInfo.jdField_b_of_type_Int), paramPicInfo.jdField_a_of_type_JavaLangString);
+    SLog.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramPicInfo.d), Integer.valueOf(paramPicInfo.e), paramPicInfo.b);
     return false;
   }
   
@@ -34,31 +34,31 @@ public class ScanTask
   public java.util.List<StoryAlbum.PicInfo> a(Context paramContext, long paramLong, boolean paramBoolean, int paramInt)
   {
     // Byte code:
-    //   0: new 61	java/lang/StringBuilder
+    //   0: new 64	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   7: astore 17
     //   9: aload 17
-    //   11: ldc 64
-    //   13: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: ldc 67
+    //   13: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload 17
     //   19: lload_2
-    //   20: invokevirtual 71	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 74	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 17
-    //   26: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   29: astore 17
-    //   31: ldc 39
+    //   31: ldc 41
     //   33: astore 20
-    //   35: ldc 39
+    //   35: ldc 41
     //   37: aload 17
-    //   39: invokestatic 79	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: getstatic 84	android/os/Environment:DIRECTORY_DCIM	Ljava/lang/String;
-    //   45: invokestatic 88	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
-    //   48: invokevirtual 94	java/io/File:listFiles	()[Ljava/io/File;
+    //   39: invokestatic 81	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   42: getstatic 86	android/os/Environment:DIRECTORY_DCIM	Ljava/lang/String;
+    //   45: invokestatic 90	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
+    //   48: invokevirtual 96	java/io/File:listFiles	()[Ljava/io/File;
     //   51: astore 19
-    //   53: ldc 96
+    //   53: ldc 98
     //   55: astore 18
     //   57: aload 18
     //   59: astore 17
@@ -79,30 +79,30 @@ public class ScanTask
     //   89: aaload
     //   90: astore 17
     //   92: aload 17
-    //   94: invokevirtual 99	java/io/File:getName	()Ljava/lang/String;
-    //   97: invokevirtual 104	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   100: ldc 106
-    //   102: invokestatic 112	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   94: invokevirtual 101	java/io/File:getName	()Ljava/lang/String;
+    //   97: invokevirtual 106	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   100: ldc 108
+    //   102: invokestatic 114	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   105: ifeq +49 -> 154
-    //   108: new 61	java/lang/StringBuilder
+    //   108: new 64	java/lang/StringBuilder
     //   111: dup
-    //   112: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   112: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   115: astore 18
     //   117: aload 18
-    //   119: ldc 96
-    //   121: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: ldc 98
+    //   121: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
     //   125: aload 18
     //   127: aload 17
-    //   129: invokevirtual 99	java/io/File:getName	()Ljava/lang/String;
-    //   132: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokevirtual 101	java/io/File:getName	()Ljava/lang/String;
+    //   132: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: pop
     //   136: aload 18
-    //   138: ldc 114
-    //   140: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc 116
+    //   140: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: pop
     //   144: aload 18
-    //   146: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   149: astore 17
     //   151: goto +12 -> 163
     //   154: iload 6
@@ -110,60 +110,60 @@ public class ScanTask
     //   157: iadd
     //   158: istore 6
     //   160: goto -86 -> 74
-    //   163: new 116	java/util/ArrayList
+    //   163: new 118	java/util/ArrayList
     //   166: dup
-    //   167: invokespecial 117	java/util/ArrayList:<init>	()V
+    //   167: invokespecial 119	java/util/ArrayList:<init>	()V
     //   170: astore 21
     //   172: invokestatic 15	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/biz/qqstory/app/QQStoryContext;
-    //   175: invokevirtual 120	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   178: invokevirtual 126	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   175: invokevirtual 122	com/tencent/biz/qqstory/app/QQStoryContext:d	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   178: invokevirtual 128	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   181: astore 23
-    //   183: new 61	java/lang/StringBuilder
+    //   183: new 64	java/lang/StringBuilder
     //   186: dup
-    //   187: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   187: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   190: astore 18
     //   192: aload 18
-    //   194: ldc 128
-    //   196: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: ldc 130
+    //   196: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: pop
     //   200: aload 18
     //   202: lload_2
-    //   203: invokevirtual 71	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 74	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   206: pop
     //   207: aload 18
-    //   209: ldc 130
-    //   211: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: ldc 132
+    //   211: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   214: pop
     //   215: aload 18
-    //   217: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   220: astore 19
-    //   222: new 61	java/lang/StringBuilder
+    //   222: new 64	java/lang/StringBuilder
     //   225: dup
-    //   226: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   226: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   229: astore 18
     //   231: aload 18
-    //   233: ldc 132
-    //   235: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: ldc 134
+    //   235: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: pop
     //   239: aload 18
     //   241: aload 17
-    //   243: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: pop
     //   247: aload 18
-    //   249: ldc 134
-    //   251: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: ldc 136
+    //   251: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: pop
     //   255: aload 18
-    //   257: ldc 136
-    //   259: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: ldc 138
+    //   259: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: pop
     //   263: aload 18
-    //   265: ldc 137
-    //   267: invokestatic 142	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   270: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: ldc 139
+    //   267: invokestatic 144	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   270: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: pop
     //   274: aload 18
-    //   276: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   276: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   279: astore 18
     //   281: aload 18
     //   283: astore 17
@@ -171,128 +171,128 @@ public class ScanTask
     //   286: lconst_0
     //   287: lcmp
     //   288: ifle +35 -> 323
-    //   291: new 61	java/lang/StringBuilder
+    //   291: new 64	java/lang/StringBuilder
     //   294: dup
-    //   295: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   295: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   298: astore 17
     //   300: aload 17
     //   302: aload 19
-    //   304: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: pop
     //   308: aload 17
     //   310: aload 18
-    //   312: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload 17
-    //   318: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   318: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   321: astore 17
     //   323: aconst_null
     //   324: astore 22
     //   326: iload 4
     //   328: ifeq +38 -> 366
-    //   331: new 61	java/lang/StringBuilder
+    //   331: new 64	java/lang/StringBuilder
     //   334: dup
-    //   335: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   335: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   338: astore 18
     //   340: aload 18
-    //   342: ldc 144
-    //   344: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: ldc 146
+    //   344: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   347: pop
     //   348: aload 18
     //   350: iload 5
-    //   352: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   352: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   355: pop
     //   356: aload 18
-    //   358: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   358: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   361: astore 24
     //   363: goto +31 -> 394
-    //   366: new 61	java/lang/StringBuilder
+    //   366: new 64	java/lang/StringBuilder
     //   369: dup
-    //   370: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   370: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   373: astore 18
     //   375: aload 18
-    //   377: ldc 149
-    //   379: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: ldc 151
+    //   379: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   382: pop
     //   383: aload 18
     //   385: iload 5
-    //   387: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   390: pop
     //   391: goto -35 -> 356
     //   394: aload_1
-    //   395: invokevirtual 155	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   395: invokevirtual 157	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   398: astore 18
-    //   400: getstatic 161	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   400: getstatic 163	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   403: astore 19
-    //   405: new 61	java/lang/StringBuilder
+    //   405: new 64	java/lang/StringBuilder
     //   408: dup
-    //   409: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   409: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   412: astore_1
     //   413: aload_1
-    //   414: ldc 163
-    //   416: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: ldc 165
+    //   416: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: pop
     //   420: aload_1
     //   421: aload 24
-    //   423: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   426: pop
     //   427: aload_1
-    //   428: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   428: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   431: astore 24
-    //   433: ldc 165
+    //   433: ldc 167
     //   435: astore_1
     //   436: aload 18
     //   438: aload 19
     //   440: bipush 11
-    //   442: anewarray 101	java/lang/String
+    //   442: anewarray 103	java/lang/String
     //   445: dup
     //   446: iconst_0
-    //   447: ldc 167
+    //   447: ldc 169
     //   449: aastore
     //   450: dup
     //   451: iconst_1
-    //   452: ldc 136
+    //   452: ldc 138
     //   454: aastore
     //   455: dup
     //   456: iconst_2
-    //   457: ldc 169
+    //   457: ldc 171
     //   459: aastore
     //   460: dup
     //   461: iconst_3
-    //   462: ldc 163
+    //   462: ldc 165
     //   464: aastore
     //   465: dup
     //   466: iconst_4
-    //   467: ldc 171
+    //   467: ldc 173
     //   469: aastore
     //   470: dup
     //   471: iconst_5
-    //   472: ldc 173
+    //   472: ldc 175
     //   474: aastore
     //   475: dup
     //   476: bipush 6
-    //   478: ldc 175
+    //   478: ldc 177
     //   480: aastore
     //   481: dup
     //   482: bipush 7
-    //   484: ldc 165
+    //   484: ldc 167
     //   486: aastore
     //   487: dup
     //   488: bipush 8
-    //   490: ldc 177
+    //   490: ldc 179
     //   492: aastore
     //   493: dup
     //   494: bipush 9
-    //   496: ldc 179
+    //   496: ldc 181
     //   498: aastore
     //   499: dup
     //   500: bipush 10
-    //   502: ldc 181
+    //   502: ldc 183
     //   504: aastore
     //   505: aload 17
     //   507: aconst_null
     //   508: aload 24
-    //   510: invokevirtual 187	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   510: invokevirtual 189	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   513: astore 17
     //   515: aload 17
     //   517: astore 22
@@ -300,54 +300,54 @@ public class ScanTask
     //   522: astore 17
     //   524: goto +16 -> 540
     //   527: astore 17
-    //   529: ldc 165
+    //   529: ldc 167
     //   531: astore_1
     //   532: goto +8 -> 540
     //   535: astore 17
-    //   537: ldc 165
+    //   537: ldc 167
     //   539: astore_1
-    //   540: new 61	java/lang/StringBuilder
+    //   540: new 64	java/lang/StringBuilder
     //   543: dup
-    //   544: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   544: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   547: astore 18
     //   549: aload 18
-    //   551: ldc 189
-    //   553: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   551: ldc 191
+    //   553: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   556: pop
     //   557: aload 18
     //   559: aload 17
-    //   561: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   561: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   564: pop
-    //   565: ldc 39
+    //   565: ldc 41
     //   567: aload 18
-    //   569: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   572: invokestatic 195	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   569: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   572: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   575: aload 22
     //   577: ifnonnull +6 -> 583
     //   580: aload 21
     //   582: areturn
-    //   583: new 61	java/lang/StringBuilder
+    //   583: new 64	java/lang/StringBuilder
     //   586: dup
-    //   587: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   587: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   590: astore 17
     //   592: aload 17
-    //   594: ldc 197
-    //   596: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   594: ldc 198
+    //   596: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   599: pop
     //   600: aload 17
     //   602: aload 22
-    //   604: invokeinterface 203 1 0
-    //   609: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   604: invokeinterface 204 1 0
+    //   609: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   612: pop
-    //   613: ldc 39
+    //   613: ldc 41
     //   615: aload 17
-    //   617: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   620: invokestatic 79	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   617: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   620: invokestatic 81	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   623: aload 22
-    //   625: invokeinterface 203 1 0
+    //   625: invokeinterface 204 1 0
     //   630: ifne +13 -> 643
     //   633: aload 22
-    //   635: invokeinterface 206 1 0
+    //   635: invokeinterface 207 1 0
     //   640: aload 21
     //   642: areturn
     //   643: aload 21
@@ -355,62 +355,62 @@ public class ScanTask
     //   647: aload 20
     //   649: astore 19
     //   651: aload 23
-    //   653: invokevirtual 212	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   656: invokevirtual 217	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   653: invokevirtual 213	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   656: invokevirtual 218	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   659: aload 21
     //   661: astore 18
     //   663: aload 20
     //   665: astore 19
     //   667: aload 22
-    //   669: invokeinterface 221 1 0
+    //   669: invokeinterface 222 1 0
     //   674: pop
     //   675: aload 21
     //   677: astore 18
     //   679: aload 20
     //   681: astore 19
     //   683: aload 22
-    //   685: ldc 167
-    //   687: invokeinterface 225 2 0
+    //   685: ldc 169
+    //   687: invokeinterface 226 2 0
     //   692: istore 5
     //   694: aload 21
     //   696: astore 18
     //   698: aload 20
     //   700: astore 19
     //   702: aload 22
-    //   704: ldc 163
-    //   706: invokeinterface 225 2 0
+    //   704: ldc 165
+    //   706: invokeinterface 226 2 0
     //   711: istore 6
     //   713: aload 21
     //   715: astore 18
     //   717: aload 20
     //   719: astore 19
     //   721: aload 22
-    //   723: ldc 171
-    //   725: invokeinterface 225 2 0
+    //   723: ldc 173
+    //   725: invokeinterface 226 2 0
     //   730: istore 7
     //   732: aload 21
     //   734: astore 18
     //   736: aload 20
     //   738: astore 19
     //   740: aload 22
-    //   742: ldc 173
-    //   744: invokeinterface 225 2 0
+    //   742: ldc 175
+    //   744: invokeinterface 226 2 0
     //   749: istore 8
     //   751: aload 21
     //   753: astore 18
     //   755: aload 20
     //   757: astore 19
     //   759: aload 22
-    //   761: ldc 175
-    //   763: invokeinterface 225 2 0
+    //   761: ldc 177
+    //   763: invokeinterface 226 2 0
     //   768: istore 9
     //   770: aload 21
     //   772: astore 18
     //   774: aload 20
     //   776: astore 19
     //   778: aload 22
-    //   780: ldc 177
-    //   782: invokeinterface 225 2 0
+    //   780: ldc 179
+    //   782: invokeinterface 226 2 0
     //   787: istore 10
     //   789: aload 21
     //   791: astore 18
@@ -418,39 +418,39 @@ public class ScanTask
     //   795: astore 19
     //   797: aload 22
     //   799: aload_1
-    //   800: invokeinterface 225 2 0
+    //   800: invokeinterface 226 2 0
     //   805: istore 11
     //   807: aload 21
     //   809: astore 18
     //   811: aload 20
     //   813: astore 19
     //   815: aload 22
-    //   817: ldc 179
-    //   819: invokeinterface 225 2 0
+    //   817: ldc 181
+    //   819: invokeinterface 226 2 0
     //   824: istore 12
     //   826: aload 21
     //   828: astore 18
     //   830: aload 20
     //   832: astore 19
     //   834: aload 22
-    //   836: ldc 136
-    //   838: invokeinterface 225 2 0
+    //   836: ldc 138
+    //   838: invokeinterface 226 2 0
     //   843: istore 13
     //   845: aload 21
     //   847: astore 18
     //   849: aload 20
     //   851: astore 19
     //   853: aload 22
-    //   855: ldc 181
-    //   857: invokeinterface 225 2 0
+    //   855: ldc 183
+    //   857: invokeinterface 226 2 0
     //   862: istore 14
     //   864: aload 21
     //   866: astore 18
     //   868: aload 20
     //   870: astore 19
     //   872: aload 22
-    //   874: ldc 169
-    //   876: invokeinterface 225 2 0
+    //   874: ldc 171
+    //   876: invokeinterface 226 2 0
     //   881: istore 15
     //   883: aload 20
     //   885: astore 17
@@ -460,110 +460,110 @@ public class ScanTask
     //   891: astore 18
     //   893: aload 17
     //   895: astore 19
-    //   897: new 30	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo
+    //   897: new 31	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo
     //   900: dup
-    //   901: invokespecial 226	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:<init>	()V
+    //   901: invokespecial 227	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:<init>	()V
     //   904: astore 20
     //   906: aload 22
     //   908: iload 5
-    //   910: invokeinterface 230 2 0
+    //   910: invokeinterface 231 2 0
     //   915: istore 16
     //   917: iload 16
     //   919: i2l
     //   920: lstore_2
     //   921: aload 20
     //   923: lload_2
-    //   924: putfield 233	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_a_of_type_Long	J
+    //   924: putfield 234	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:a	J
     //   927: aload 20
     //   929: aload 22
     //   931: iload 6
-    //   933: invokeinterface 237 2 0
-    //   938: putfield 239	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_b_of_type_Long	J
+    //   933: invokeinterface 238 2 0
+    //   938: putfield 241	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:g	J
     //   941: aload 20
     //   943: aload 22
     //   945: iload 7
-    //   947: invokeinterface 243 2 0
-    //   952: putfield 246	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_a_of_type_Double	D
+    //   947: invokeinterface 245 2 0
+    //   952: putfield 249	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:j	D
     //   955: aload 20
     //   957: aload 22
     //   959: iload 8
-    //   961: invokeinterface 243 2 0
-    //   966: putfield 248	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_b_of_type_Double	D
+    //   961: invokeinterface 245 2 0
+    //   966: putfield 252	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:k	D
     //   969: aload 20
     //   971: aload 22
     //   973: iload 10
-    //   975: invokeinterface 230 2 0
-    //   980: putfield 36	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_b_of_type_Int	I
+    //   975: invokeinterface 231 2 0
+    //   980: putfield 38	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:e	I
     //   983: aload 20
     //   985: aload 22
     //   987: iload 11
-    //   989: invokeinterface 230 2 0
-    //   994: putfield 33	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_a_of_type_Int	I
+    //   989: invokeinterface 231 2 0
+    //   994: putfield 35	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:d	I
     //   997: aload 20
     //   999: aload 22
     //   1001: iload 12
-    //   1003: invokeinterface 230 2 0
-    //   1008: putfield 251	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_c_of_type_Int	I
+    //   1003: invokeinterface 231 2 0
+    //   1008: putfield 255	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:f	I
     //   1011: aload 20
     //   1013: aload 22
     //   1015: iload 13
-    //   1017: invokeinterface 254 2 0
-    //   1022: putfield 50	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1017: invokeinterface 258 2 0
+    //   1022: putfield 53	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:b	Ljava/lang/String;
     //   1025: aload 20
     //   1027: aload 22
     //   1029: iload 9
-    //   1031: invokeinterface 237 2 0
-    //   1036: putfield 256	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:e	J
+    //   1031: invokeinterface 238 2 0
+    //   1036: putfield 261	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:m	J
     //   1039: aload 20
-    //   1041: ldc_w 258
-    //   1044: putfield 260	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1041: ldc_w 263
+    //   1044: putfield 265	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:c	Ljava/lang/String;
     //   1047: aload 20
     //   1049: aload 22
     //   1051: iload 14
-    //   1053: invokeinterface 254 2 0
-    //   1058: putfield 262	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   1053: invokeinterface 258 2 0
+    //   1058: putfield 268	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:n	Ljava/lang/String;
     //   1061: aload 20
     //   1063: aload 22
     //   1065: iload 15
-    //   1067: invokeinterface 237 2 0
-    //   1072: putfield 264	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_c_of_type_Long	J
+    //   1067: invokeinterface 238 2 0
+    //   1072: putfield 271	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:h	J
     //   1075: aload 20
     //   1077: aload 20
-    //   1079: getfield 239	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_b_of_type_Long	J
-    //   1082: putfield 266	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_d_of_type_Long	J
+    //   1079: getfield 241	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:g	J
+    //   1082: putfield 274	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:i	J
     //   1085: aload 20
-    //   1087: getfield 50	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1090: invokestatic 271	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
+    //   1087: getfield 53	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:b	Ljava/lang/String;
+    //   1090: invokestatic 279	com/tencent/mobileqq/filemanager/util/FileUtil:b	(Ljava/lang/String;)Z
     //   1093: istore 4
     //   1095: iload 4
     //   1097: ifne +6 -> 1103
     //   1100: goto +32 -> 1132
     //   1103: aload_0
     //   1104: aload 20
-    //   1106: invokespecial 273	com/tencent/biz/qqstory/album/ScanTask:a	(Lcom/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo;)Z
+    //   1106: invokespecial 281	com/tencent/biz/qqstory/album/ScanTask:a	(Lcom/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo;)Z
     //   1109: ifne +6 -> 1115
     //   1112: goto -12 -> 1100
     //   1115: aload 23
     //   1117: aload 20
-    //   1119: invokevirtual 276	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:a	()Lcom/tencent/biz/qqstory/database/StoryAlbumPicEntry;
-    //   1122: invokevirtual 280	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   1119: invokevirtual 284	com/tencent/biz/qqstory/album/model/StoryAlbum$PicInfo:b	()Lcom/tencent/biz/qqstory/database/StoryAlbumPicEntry;
+    //   1122: invokevirtual 288	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   1125: aload_1
     //   1126: aload 20
-    //   1128: invokevirtual 284	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1128: invokevirtual 292	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1131: pop
     //   1132: aload_1
     //   1133: astore 18
     //   1135: aload 22
-    //   1137: invokeinterface 287 1 0
+    //   1137: invokeinterface 295 1 0
     //   1142: ifne +32 -> 1174
     //   1145: aload 23
-    //   1147: invokevirtual 212	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   1150: invokevirtual 290	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   1147: invokevirtual 213	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   1150: invokevirtual 298	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   1153: aload 22
-    //   1155: invokeinterface 206 1 0
+    //   1155: invokeinterface 207 1 0
     //   1160: aload 23
-    //   1162: invokevirtual 212	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   1165: invokevirtual 293	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   1162: invokevirtual 213	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   1165: invokevirtual 301	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   1168: aload 18
     //   1170: astore_1
     //   1171: goto +101 -> 1272
@@ -587,60 +587,60 @@ public class ScanTask
     //   1212: astore_1
     //   1213: aload 20
     //   1215: astore 18
-    //   1217: new 61	java/lang/StringBuilder
+    //   1217: new 64	java/lang/StringBuilder
     //   1220: dup
-    //   1221: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   1221: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   1224: astore 19
     //   1226: aload 19
-    //   1228: ldc_w 295
-    //   1231: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1228: ldc_w 303
+    //   1231: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1234: pop
     //   1235: aload 19
     //   1237: aload 18
-    //   1239: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1239: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1242: pop
     //   1243: aload 19
-    //   1245: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1245: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1248: astore 18
     //   1250: aload 17
     //   1252: aload 18
-    //   1254: invokestatic 195	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1254: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1257: aload 22
-    //   1259: invokeinterface 206 1 0
+    //   1259: invokeinterface 207 1 0
     //   1264: aload 23
-    //   1266: invokevirtual 212	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   1269: invokevirtual 293	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   1272: new 61	java/lang/StringBuilder
+    //   1266: invokevirtual 213	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   1269: invokevirtual 301	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   1272: new 64	java/lang/StringBuilder
     //   1275: dup
-    //   1276: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   1276: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   1279: astore 18
     //   1281: aload 18
-    //   1283: ldc_w 297
-    //   1286: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1283: ldc_w 305
+    //   1286: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1289: pop
     //   1290: aload 18
     //   1292: aload_1
-    //   1293: invokevirtual 300	java/util/ArrayList:size	()I
-    //   1296: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1293: invokevirtual 308	java/util/ArrayList:size	()I
+    //   1296: invokevirtual 149	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1299: pop
     //   1300: aload 17
     //   1302: aload 18
-    //   1304: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1307: invokestatic 79	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1304: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1307: invokestatic 81	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1310: aload_1
     //   1311: areturn
     //   1312: astore_1
     //   1313: aload 22
-    //   1315: invokeinterface 206 1 0
+    //   1315: invokeinterface 207 1 0
     //   1320: aload 23
-    //   1322: invokevirtual 212	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   1325: invokevirtual 293	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   1322: invokevirtual 213	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   1325: invokevirtual 301	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   1328: goto +5 -> 1333
     //   1331: aload_1
     //   1332: athrow
     //   1333: goto -2 -> 1331
     //   1336: astore 17
-    //   1338: ldc 165
+    //   1338: ldc 167
     //   1340: astore_1
     //   1341: goto -801 -> 540
     // Local variable table:
@@ -735,7 +735,7 @@ public class ScanTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.ScanTask
  * JD-Core Version:    0.7.0.1
  */

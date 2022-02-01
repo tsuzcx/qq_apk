@@ -6,8 +6,6 @@ public abstract interface IAVGameRoomCenterFragment
 {
   public abstract AppInterface a();
   
-  public abstract void a();
-  
   public abstract void a(int paramInt);
   
   public abstract void a(int paramInt, boolean paramBoolean);
@@ -15,8 +13,6 @@ public abstract interface IAVGameRoomCenterFragment
   public abstract void a(String paramString);
   
   public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract boolean a();
   
   public abstract void b();
   
@@ -29,6 +25,10 @@ public abstract interface IAVGameRoomCenterFragment
   public abstract void c(int paramInt, boolean paramBoolean);
   
   public abstract void d();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

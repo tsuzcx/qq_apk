@@ -14,12 +14,12 @@ class LebaQzoneAndPluginPart$18
     localStringBuilder.append("ExpandObserver onUpdateRedPoint ");
     localStringBuilder.append(paramInt);
     QLog.i("LebaBusinessPartImpl", 1, localStringBuilder.toString());
-    this.a.a();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.18
  * JD-Core Version:    0.7.0.1
  */

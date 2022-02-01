@@ -27,10 +27,10 @@ import mqq.app.AppRuntime;
 public class FileAssistantExt
   implements IFileAssistantExt
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new FileAssistantExt.1(this);
-  private PopupMenuDialog jdField_a_of_type_ComTencentWidgetPopupMenuDialog;
-  private FileBannerTianshuManger jdField_a_of_type_CooperationVipManagerFileBannerTianshuManger;
+  private PopupMenuDialog a;
+  private FileBannerTianshuManger b;
+  private Handler c;
+  private GameCenterObserver d = new FileAssistantExt.1(this);
   
   FileAssistantExt()
   {
@@ -60,18 +60,18 @@ public class FileAssistantExt
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.getWidth();
+    return this.a.getWidth();
   }
   
   public void a(Activity paramActivity, View paramView)
   {
-    this.jdField_a_of_type_CooperationVipManagerFileBannerTianshuManger = new FileBannerTianshuManger(paramActivity, paramView, 1);
-    this.jdField_a_of_type_CooperationVipManagerFileBannerTianshuManger.a();
+    this.b = new FileBannerTianshuManger(paramActivity, paramView, 1);
+    this.b.a();
   }
   
   public void a(Activity paramActivity, BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean, BaseQQAppInterface paramBaseQQAppInterface, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog != null) {
+    if (this.a != null) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -96,29 +96,29 @@ public class FileAssistantExt
       localArrayList.add(localMenuItem);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.build(paramActivity, localArrayList, new FileAssistantExt.2(this, paramBoolean, paramActivity, paramBaseQQAppInterface, paramAppInfo), null, ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(210, paramActivity.getResources()));
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.setTouchInterceptor(new FileAssistantExt.3(this));
+    this.a = PopupMenuDialog.build(paramActivity, localArrayList, new FileAssistantExt.2(this, paramBoolean, paramActivity, paramBaseQQAppInterface, paramAppInfo), null, ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).dp2px(210, paramActivity.getResources()));
+    this.a.setTouchInterceptor(new FileAssistantExt.3(this));
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown(paramView, paramInt1, paramInt2);
+    this.a.showAsDropDown(paramView, paramInt1, paramInt2);
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
+    paramAppRuntime.unRegistObserver(this.d);
   }
   
   public void a(AppRuntime paramAppRuntime, Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    paramAppRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
+    this.c = paramHandler;
+    paramAppRuntime.registObserver(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileAssistantExt
  * JD-Core Version:    0.7.0.1
  */

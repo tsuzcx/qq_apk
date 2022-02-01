@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface TPSubtitleFrameBuffer$TP_SUBTITLE_FRAME_FORMAT_ID {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPSubtitleFrameBuffer.TP_SUBTITLE_FRAME_FORMAT_ID
  * JD-Core Version:    0.7.0.1
  */

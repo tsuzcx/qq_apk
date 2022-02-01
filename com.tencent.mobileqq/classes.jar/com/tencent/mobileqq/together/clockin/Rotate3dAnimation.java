@@ -8,58 +8,58 @@ import android.view.animation.Transformation;
 public class Rotate3dAnimation
   extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private boolean jdField_a_of_type_Boolean;
+  private float a;
   private float b;
   private float c;
   private float d;
   private float e;
-  private float f = 0.0F;
+  private boolean f;
+  private Camera g;
+  private float h = 0.0F;
   
   public Rotate3dAnimation()
   {
-    this.jdField_a_of_type_Float = 0.0F;
+    this.a = 0.0F;
     this.b = 0.0F;
     this.c = 0.0F;
     this.d = 0.0F;
     this.e = 0.0F;
-    this.f = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
+    this.h = 0.0F;
+    this.f = false;
   }
   
   public Rotate3dAnimation(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = paramFloat2;
+    this.a = paramFloat2;
     this.b = paramFloat3;
     this.c = paramFloat4;
     this.d = paramFloat5;
     this.e = paramFloat6;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.f = paramFloat1;
+    this.f = paramBoolean;
+    this.h = paramFloat1;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = paramFloat2;
+    this.a = paramFloat2;
     this.b = paramFloat3;
     this.c = paramFloat4;
     this.d = paramFloat5;
     this.e = paramFloat6;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.f = paramFloat1;
+    this.f = paramBoolean;
+    this.h = paramFloat1;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f3 = this.jdField_a_of_type_Float;
+    float f3 = this.a;
     float f4 = this.b;
     float f1 = this.c;
     float f2 = this.d;
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsCamera;
+    Object localObject = this.g;
     paramTransformation = paramTransformation.getMatrix();
     ((Camera)localObject).save();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       ((Camera)localObject).translate(0.0F, 0.0F, this.e * paramFloat);
     } else {
       ((Camera)localObject).translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
@@ -70,7 +70,7 @@ public class Rotate3dAnimation
     localObject = new float[9];
     paramTransformation.getValues((float[])localObject);
     paramFloat = localObject[6];
-    f3 = this.f;
+    f3 = this.h;
     localObject[6] = (paramFloat / f3);
     localObject[7] /= f3;
     paramTransformation.setValues((float[])localObject);
@@ -81,12 +81,12 @@ public class Rotate3dAnimation
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.g = new Camera();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.Rotate3dAnimation
  * JD-Core Version:    0.7.0.1
  */

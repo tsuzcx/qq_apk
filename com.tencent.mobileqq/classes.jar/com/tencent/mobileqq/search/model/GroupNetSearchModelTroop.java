@@ -15,50 +15,40 @@ import java.net.URLEncoder;
 import java.util.List;
 
 public class GroupNetSearchModelTroop
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<ISearchResultModel> a;
+  private String b;
+  private boolean c;
   
   public GroupNetSearchModelTroop(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramBoolean;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705443);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return HardCodeUtil.a(2131903331);
   }
   
   public void a(View paramView)
   {
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    SearchUtils.a(this.b, 80, 0, paramView);
+    new Intent().putExtra("last_key_words", this.b);
     long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
     long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=");
-    ((StringBuilder)localObject1).append(URLEncoder.encode(this.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject1).append(URLEncoder.encode(this.b));
     ((StringBuilder)localObject1).append("&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=");
     ((StringBuilder)localObject1).append(Long.valueOf(l2));
     ((StringBuilder)localObject1).append("&lat=");
     ((StringBuilder)localObject1).append(Long.valueOf(l1));
     Object localObject2 = ((StringBuilder)localObject1).toString();
     localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append((String)localObject2);
@@ -69,7 +59,7 @@ public class GroupNetSearchModelTroop
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("lastKeywords = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(" jump url is : ");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("search", 2, ((StringBuilder)localObject2).toString());
@@ -84,14 +74,24 @@ public class GroupNetSearchModelTroop
     paramView.getContext().startActivity((Intent)localObject2);
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelTroop
  * JD-Core Version:    0.7.0.1
  */

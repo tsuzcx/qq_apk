@@ -21,9 +21,9 @@ class SystemMsgListAdapter$1$1
   
   public void run()
   {
-    SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).clear();
-    SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    SystemMsgListAdapter.b(this.b.this$0).clear();
+    SystemMsgListAdapter.c(this.b.this$0).clear();
+    Iterator localIterator = this.a.iterator();
     boolean bool1 = false;
     int i = 0;
     Object localObject;
@@ -34,20 +34,20 @@ class SystemMsgListAdapter$1$1
       boolean bool2;
       if ((localObject instanceof MayKnowMessage))
       {
-        localObject = new MayKnowRecommendBuilder(SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0), SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0), this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0, (NewFriendMessage)localObject, SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0));
+        localObject = new MayKnowRecommendBuilder(SystemMsgListAdapter.d(this.b.this$0), SystemMsgListAdapter.e(this.b.this$0), this.b.this$0, (NewFriendMessage)localObject, SystemMsgListAdapter.f(this.b.this$0));
         ((MayKnowRecommendBuilder)localObject).a(i);
         j = i + 1;
         bool2 = bool1;
       }
       else if ((localObject instanceof NewFriendTabInfoMessage))
       {
-        localObject = new NewFriendTabInfoBuilder(SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0), SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0), this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0, (NewFriendMessage)localObject);
+        localObject = new NewFriendTabInfoBuilder(SystemMsgListAdapter.d(this.b.this$0), SystemMsgListAdapter.e(this.b.this$0), this.b.this$0, (NewFriendMessage)localObject);
         bool2 = true;
         j = i;
       }
       else
       {
-        localObject = SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0, (NewFriendMessage)localObject, this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.a);
+        localObject = SystemMsgListAdapter.a(this.b.this$0, (NewFriendMessage)localObject, this.b.a);
         j = i;
         bool2 = bool1;
       }
@@ -55,7 +55,7 @@ class SystemMsgListAdapter$1$1
       i = j;
       if (localObject != null)
       {
-        SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).add(localObject);
+        SystemMsgListAdapter.c(this.b.this$0).add(localObject);
         bool1 = bool2;
         i = j;
       }
@@ -66,36 +66,36 @@ class SystemMsgListAdapter$1$1
       ((StringBuilder)localObject).append("hasMayKnowData = ");
       ((StringBuilder)localObject).append(bool1);
       ((StringBuilder)localObject).append("mCurrentTabLayoutStatus =");
-      ((StringBuilder)localObject).append(SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0));
+      ((StringBuilder)localObject).append(SystemMsgListAdapter.g(this.b.this$0));
       ((StringBuilder)localObject).append("， recommendPos =");
       ((StringBuilder)localObject).append(i);
       QLog.d("SystemMsgListAdapter", 2, ((StringBuilder)localObject).toString());
     }
     if (bool1)
     {
-      SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).a();
-      SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0, i, this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.a);
+      SystemMsgListAdapter.g(this.b.this$0).b();
+      SystemMsgListAdapter.a(this.b.this$0, i, this.b.a);
     }
     else
     {
-      SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).b();
+      SystemMsgListAdapter.g(this.b.this$0).c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0.a.i();
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0.notifyDataSetChanged();
-    if (SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0))
+    this.b.this$0.e.j();
+    this.b.this$0.notifyDataSetChanged();
+    if (SystemMsgListAdapter.h(this.b.this$0))
     {
-      if ((SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0) == 2) && (SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).getUnreadSystemMessageCount() == 0) && (SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).getAllUnreadMessageCount() > 0) && (SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).getRceommendShowCount() >= 3))
+      if ((SystemMsgListAdapter.f(this.b.this$0) == 2) && (SystemMsgListAdapter.a(this.b.this$0).getUnreadSystemMessageCount() == 0) && (SystemMsgListAdapter.a(this.b.this$0).getAllUnreadMessageCount() > 0) && (SystemMsgListAdapter.a(this.b.this$0).getRceommendShowCount() >= 3))
       {
-        i = SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0).getRecommendSubTitleIndex();
-        this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0.a.setSelection(i);
+        i = SystemMsgListAdapter.a(this.b.this$0).getRecommendSubTitleIndex();
+        this.b.this$0.e.setSelection(i);
       }
-      SystemMsgListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListAdapter$1.this$0, false);
+      SystemMsgListAdapter.a(this.b.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.SystemMsgListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

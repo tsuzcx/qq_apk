@@ -21,24 +21,24 @@ public class NowRecordInfo
   extends BusinessHandler
 {
   public static String a = "NowRecordInfo";
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  NowRecordInfo.GetRecordCallBack jdField_a_of_type_ComTencentBizNowNowRecordInfo$GetRecordCallBack;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = false;
-  String b;
+  NowRecordInfo.GetRecordCallBack b;
+  long c = 0L;
+  boolean d = false;
+  int e;
+  String f;
+  private QQAppInterface g;
   
   public NowRecordInfo(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.g = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int j = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
+    this.d = false;
+    this.c = 0L;
     int i = j;
     if (paramFromServiceMsg.isSuccess())
     {
@@ -49,9 +49,9 @@ public class NowRecordInfo
     }
     if (i == 0)
     {
-      this.jdField_a_of_type_Int = paramFromServiceMsg.getBusinessFailCode();
-      this.b = paramFromServiceMsg.getBusinessFailMsg();
-      a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
+      this.e = paramFromServiceMsg.getBusinessFailCode();
+      this.f = paramFromServiceMsg.getBusinessFailMsg();
+      a(true, "", "", System.currentTimeMillis() - this.c, "");
       return;
     }
     paramToServiceMsg = new pb_now_proxy.ForwardRsp();
@@ -63,8 +63,8 @@ public class NowRecordInfo
         a(paramToServiceMsg.busi_error_code.get(), paramToServiceMsg.busi_buf.get().toByteArray());
         return;
       }
-      this.jdField_a_of_type_Int = paramToServiceMsg.busi_error_code.get();
-      a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
+      this.e = paramToServiceMsg.busi_error_code.get();
+      a(true, "", "", System.currentTimeMillis() - this.c, "");
       return;
     }
     catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -72,12 +72,12 @@ public class NowRecordInfo
       label172:
       break label172;
     }
-    a(true, "", "", System.currentTimeMillis() - this.jdField_a_of_type_Long, "");
+    a(true, "", "", System.currentTimeMillis() - this.c, "");
   }
   
   private void a(byte[] paramArrayOfByte, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.g == null) {
       return;
     }
     paramString = new ToServiceMsg("mobileqq.service", paramString, "NowGetRecordInfoSvr.get_record_info");
@@ -87,19 +87,14 @@ public class NowRecordInfo
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.b;
+    return this.e;
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 0, "拉取录播信息成功");
-    this.jdField_a_of_type_Int = 0;
-    this.b = "";
+    QLog.i(a, 0, "拉取录播信息成功");
+    this.e = 0;
+    this.f = "";
     try
     {
       localObject = new ilive_get_record_info_svr.GetRoomStateRsp();
@@ -123,23 +118,23 @@ public class NowRecordInfo
         boolean bool = false;
       }
     }
-    a(bool, paramArrayOfByte, str, System.currentTimeMillis() - this.jdField_a_of_type_Long, (String)localObject);
+    a(bool, paramArrayOfByte, str, System.currentTimeMillis() - this.c, (String)localObject);
     return;
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "NowRecordObserver InvalidProtocolBufferMicroException! ");
+    QLog.e(a, 1, "NowRecordObserver InvalidProtocolBufferMicroException! ");
   }
   
   public void a(String paramString1, long paramLong, String paramString2, NowRecordInfo.GetRecordCallBack paramGetRecordCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizNowNowRecordInfo$GetRecordCallBack = null;
-    this.jdField_a_of_type_ComTencentBizNowNowRecordInfo$GetRecordCallBack = paramGetRecordCallBack;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    this.b = null;
+    this.b = paramGetRecordCallBack;
+    this.c = System.currentTimeMillis();
+    if (this.g == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "getRecordInfo fail,app is null ");
+      QLog.e(a, 1, "getRecordInfo fail,app is null ");
       a(true, "", "", 0L, "");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     paramGetRecordCallBack = new ilive_get_record_info_svr.GetRoomStateReq();
     paramGetRecordCallBack.source.set(paramString1);
     paramGetRecordCallBack.roomid.set((int)paramLong);
@@ -157,10 +152,15 @@ public class NowRecordInfo
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    NowRecordInfo.GetRecordCallBack localGetRecordCallBack = this.jdField_a_of_type_ComTencentBizNowNowRecordInfo$GetRecordCallBack;
+    NowRecordInfo.GetRecordCallBack localGetRecordCallBack = this.b;
     if (localGetRecordCallBack != null) {
       localGetRecordCallBack.a(paramBoolean, paramString2, paramString1, paramLong, paramString3);
     }
+  }
+  
+  public String b()
+  {
+    return this.f;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -172,14 +172,14 @@ public class NowRecordInfo
   {
     if ("NowGetRecordInfoSvr.get_record_info".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "onReceive called.");
+      QLog.i(a, 1, "onReceive called.");
       a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowRecordInfo
  * JD-Core Version:    0.7.0.1
  */

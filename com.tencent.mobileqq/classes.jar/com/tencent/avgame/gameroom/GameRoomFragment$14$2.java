@@ -11,8 +11,8 @@ class GameRoomFragment$14$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.a.b != null) {
-      this.a.b.onClick(paramDialogInterface, paramInt);
+    if (this.a.e != null) {
+      this.a.e.onClick(paramDialogInterface, paramInt);
     }
   }
 }

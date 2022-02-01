@@ -10,13 +10,13 @@ class QFileAppStorePromoteManager$2$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a.a();
-    QFileAppStorePromoteManager.IGetAppDetailCallback localIGetAppDetailCallback = (QFileAppStorePromoteManager.IGetAppDetailCallback)QFileAppStorePromoteManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+    this.b.b.a();
+    QFileAppStorePromoteManager.IGetAppDetailCallback localIGetAppDetailCallback = (QFileAppStorePromoteManager.IGetAppDetailCallback)QFileAppStorePromoteManager.b(this.b.this$0).remove(Integer.valueOf(this.a));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("request appInfo time limit. remove reqId[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("] result[");
       boolean bool;
       if (localIGetAppDetailCallback != null) {
@@ -32,7 +32,7 @@ class QFileAppStorePromoteManager$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class ReLinkerInstance$2
   
   public boolean accept(File paramFile, String paramString)
   {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
+    return paramString.startsWith(this.a);
   }
 }
 

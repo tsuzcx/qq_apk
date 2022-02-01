@@ -18,20 +18,20 @@ class TextLayer$TextItem$4
   {
     SLog.b(TextLayer.a, "scaleAnimator end!");
     paramAnimator = this.a;
-    paramAnimator.p = 1.0F;
-    paramAnimator.e = false;
-    paramAnimator.a.k();
+    paramAnimator.K = 1.0F;
+    paramAnimator.J = false;
+    paramAnimator.m.u();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     SLog.b(TextLayer.a, "scaleAnimator start!");
-    this.a.e = true;
+    this.a.J = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.TextLayer.TextItem.4
  * JD-Core Version:    0.7.0.1
  */

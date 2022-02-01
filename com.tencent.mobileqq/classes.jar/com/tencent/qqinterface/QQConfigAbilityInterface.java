@@ -4,6 +4,8 @@ import org.json.JSONObject;
 
 public abstract interface QQConfigAbilityInterface
 {
+  public static final int STUDY_ROOM_FUNCTION_ENTER_ROOM = 4;
+  public static final int STUDY_ROOM_FUNCTION_EXIT_ROOM = 3;
   public static final int STUDY_ROOM_FUNCTION_PIC_UPLOAD = 1;
   public static final int STUDY_ROOM_FUNCTION_PIC_UPLOAD_CANCEL = 2;
   
@@ -17,7 +19,7 @@ public abstract interface QQConfigAbilityInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqinterface.QQConfigAbilityInterface
  * JD-Core Version:    0.7.0.1
  */

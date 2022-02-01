@@ -32,72 +32,72 @@ import java.util.Map;
 public final class MaterialContainerTransform
   extends Transition
 {
-  private static final MaterialContainerTransform.ProgressThresholdsGroup jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.0F, 0.25F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.75F), null);
-  private static final String jdField_a_of_type_JavaLangString = "MaterialContainerTransform";
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "materialContainerTransition:bounds", "materialContainerTransition:shapeAppearance" };
-  private static final MaterialContainerTransform.ProgressThresholdsGroup jdField_b_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.6F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.3F, 0.9F), null);
-  private static final MaterialContainerTransform.ProgressThresholdsGroup jdField_c_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.1F, 0.4F), new MaterialContainerTransform.ProgressThresholds(0.1F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.1F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.1F, 0.9F), null);
-  private static final MaterialContainerTransform.ProgressThresholdsGroup jdField_d_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.6F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.2F, 0.9F), null);
-  private float jdField_a_of_type_Float;
+  private static final String a = "MaterialContainerTransform";
+  private static final String[] b = { "materialContainerTransition:bounds", "materialContainerTransition:shapeAppearance" };
+  private static final MaterialContainerTransform.ProgressThresholdsGroup c = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.0F, 0.25F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.75F), null);
+  private static final MaterialContainerTransform.ProgressThresholdsGroup d = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.6F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.3F, 0.9F), null);
+  private static final MaterialContainerTransform.ProgressThresholdsGroup e = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.1F, 0.4F), new MaterialContainerTransform.ProgressThresholds(0.1F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.1F, 1.0F), new MaterialContainerTransform.ProgressThresholds(0.1F, 0.9F), null);
+  private static final MaterialContainerTransform.ProgressThresholdsGroup f = new MaterialContainerTransform.ProgressThresholdsGroup(new MaterialContainerTransform.ProgressThresholds(0.6F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.0F, 0.9F), new MaterialContainerTransform.ProgressThresholds(0.2F, 0.9F), null);
+  private boolean A;
+  private float B;
+  private float C;
+  private boolean g;
+  private boolean h;
   @IdRes
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  @Nullable
-  private ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  @Nullable
-  private MaterialContainerTransform.ProgressThresholds jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  @IdRes
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private View jdField_b_of_type_AndroidViewView;
-  @Nullable
-  private ShapeAppearanceModel jdField_b_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  @Nullable
-  private MaterialContainerTransform.ProgressThresholds jdField_b_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds;
-  private boolean jdField_b_of_type_Boolean;
-  @IdRes
-  private int jdField_c_of_type_Int;
-  @Nullable
-  private MaterialContainerTransform.ProgressThresholds jdField_c_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds;
-  private boolean jdField_c_of_type_Boolean;
-  @ColorInt
-  private int jdField_d_of_type_Int;
-  @Nullable
-  private MaterialContainerTransform.ProgressThresholds jdField_d_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds;
-  @ColorInt
-  private int e;
-  @ColorInt
-  private int f;
-  @ColorInt
-  private int g;
-  private int h;
   private int i;
+  @IdRes
   private int j;
+  @IdRes
+  private int k;
+  @ColorInt
+  private int l;
+  @ColorInt
+  private int m;
+  @ColorInt
+  private int n;
+  @ColorInt
+  private int o;
+  private int p;
+  private int q;
+  private int r;
+  @Nullable
+  private View s;
+  @Nullable
+  private View t;
+  @Nullable
+  private ShapeAppearanceModel u;
+  @Nullable
+  private ShapeAppearanceModel v;
+  @Nullable
+  private MaterialContainerTransform.ProgressThresholds w;
+  @Nullable
+  private MaterialContainerTransform.ProgressThresholds x;
+  @Nullable
+  private MaterialContainerTransform.ProgressThresholds y;
+  @Nullable
+  private MaterialContainerTransform.ProgressThresholds z;
   
   public MaterialContainerTransform()
   {
     boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 16908290;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0;
-    this.f = 0;
-    this.g = 1375731712;
-    this.h = 0;
-    this.i = 0;
-    this.j = 0;
+    this.g = false;
+    this.h = false;
+    this.i = 16908290;
+    this.j = -1;
+    this.k = -1;
+    this.l = 0;
+    this.m = 0;
+    this.n = 0;
+    this.o = 1375731712;
+    this.p = 0;
+    this.q = 0;
+    this.r = 0;
     if (Build.VERSION.SDK_INT >= 28) {
       bool = true;
     }
-    this.jdField_c_of_type_Boolean = bool;
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Float = -1.0F;
+    this.A = bool;
+    this.B = -1.0F;
+    this.C = -1.0F;
     setInterpolator(AnimationUtils.b);
   }
   
@@ -112,17 +112,17 @@ public final class MaterialContainerTransform
   @StyleRes
   private static int a(Context paramContext)
   {
-    paramContext = paramContext.obtainStyledAttributes(new int[] { R.attr.U });
-    int k = paramContext.getResourceId(0, -1);
+    paramContext = paramContext.obtainStyledAttributes(new int[] { R.attr.af });
+    int i1 = paramContext.getResourceId(0, -1);
     paramContext.recycle();
-    return k;
+    return i1;
   }
   
   private static RectF a(View paramView1, @Nullable View paramView2, float paramFloat1, float paramFloat2)
   {
     if (paramView2 != null)
     {
-      paramView1 = TransitionUtils.b(paramView2);
+      paramView1 = TransitionUtils.c(paramView2);
       paramView1.offset(paramFloat1, paramFloat2);
       return paramView1;
     }
@@ -143,23 +143,14 @@ public final class MaterialContainerTransform
       return (ShapeAppearanceModel)paramView.getTag(R.id.R);
     }
     paramShapeAppearanceModel = paramView.getContext();
-    int k = a(paramShapeAppearanceModel);
-    if (k != -1) {
-      return ShapeAppearanceModel.a(paramShapeAppearanceModel, k, 0).a();
+    int i1 = a(paramShapeAppearanceModel);
+    if (i1 != -1) {
+      return ShapeAppearanceModel.a(paramShapeAppearanceModel, i1, 0).a();
     }
     if ((paramView instanceof Shapeable)) {
-      return ((Shapeable)paramView).a();
+      return ((Shapeable)paramView).getShapeAppearanceModel();
     }
     return ShapeAppearanceModel.a().a();
-  }
-  
-  private MaterialContainerTransform.ProgressThresholdsGroup a(boolean paramBoolean)
-  {
-    PathMotion localPathMotion = getPathMotion();
-    if ((!(localPathMotion instanceof ArcMotion)) && (!(localPathMotion instanceof MaterialArcMotion))) {
-      return a(paramBoolean, jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup, jdField_b_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup);
-    }
-    return a(paramBoolean, jdField_c_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup, jdField_d_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholdsGroup);
   }
   
   private MaterialContainerTransform.ProgressThresholdsGroup a(boolean paramBoolean, MaterialContainerTransform.ProgressThresholdsGroup paramProgressThresholdsGroup1, MaterialContainerTransform.ProgressThresholdsGroup paramProgressThresholdsGroup2)
@@ -167,7 +158,7 @@ public final class MaterialContainerTransform
     if (!paramBoolean) {
       paramProgressThresholdsGroup1 = paramProgressThresholdsGroup2;
     }
-    return new MaterialContainerTransform.ProgressThresholdsGroup((MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds, MaterialContainerTransform.ProgressThresholdsGroup.a(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.jdField_b_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds, MaterialContainerTransform.ProgressThresholdsGroup.b(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.jdField_c_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds, MaterialContainerTransform.ProgressThresholdsGroup.c(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.jdField_d_of_type_ComGoogleAndroidMaterialTransitionPlatformMaterialContainerTransform$ProgressThresholds, MaterialContainerTransform.ProgressThresholdsGroup.d(paramProgressThresholdsGroup1)), null);
+    return new MaterialContainerTransform.ProgressThresholdsGroup((MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.w, MaterialContainerTransform.ProgressThresholdsGroup.a(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.x, MaterialContainerTransform.ProgressThresholdsGroup.b(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.y, MaterialContainerTransform.ProgressThresholdsGroup.c(paramProgressThresholdsGroup1)), (MaterialContainerTransform.ProgressThresholds)TransitionUtils.a(this.z, MaterialContainerTransform.ProgressThresholdsGroup.d(paramProgressThresholdsGroup1)), null);
   }
   
   private static void a(@NonNull TransitionValues paramTransitionValues, @Nullable View paramView, @IdRes int paramInt, @Nullable ShapeAppearanceModel paramShapeAppearanceModel)
@@ -192,7 +183,7 @@ public final class MaterialContainerTransform
       if (localView.getParent() == null) {
         paramView = TransitionUtils.a(localView);
       } else {
-        paramView = TransitionUtils.b(localView);
+        paramView = TransitionUtils.c(localView);
       }
       paramTransitionValues.values.put("materialContainerTransition:bounds", paramView);
       paramTransitionValues.values.put("materialContainerTransition:shapeAppearance", a(localView, paramView, paramShapeAppearanceModel));
@@ -201,18 +192,18 @@ public final class MaterialContainerTransform
   
   private boolean a(@NonNull RectF paramRectF1, @NonNull RectF paramRectF2)
   {
-    int k = this.h;
+    int i1 = this.p;
     boolean bool = false;
-    if (k != 0)
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k == 2) {
+        if (i1 == 2) {
           return false;
         }
         paramRectF1 = new StringBuilder();
         paramRectF1.append("Invalid transition direction: ");
-        paramRectF1.append(this.h);
+        paramRectF1.append(this.p);
         throw new IllegalArgumentException(paramRectF1.toString());
       }
       return true;
@@ -223,19 +214,28 @@ public final class MaterialContainerTransform
     return bool;
   }
   
+  private MaterialContainerTransform.ProgressThresholdsGroup b(boolean paramBoolean)
+  {
+    PathMotion localPathMotion = getPathMotion();
+    if ((!(localPathMotion instanceof ArcMotion)) && (!(localPathMotion instanceof MaterialArcMotion))) {
+      return a(paramBoolean, c, d);
+    }
+    return a(paramBoolean, e, f);
+  }
+  
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void captureEndValues(@NonNull TransitionValues paramTransitionValues)
   {
-    a(paramTransitionValues, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int, this.jdField_b_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
+    a(paramTransitionValues, this.t, this.k, this.v);
   }
   
   public void captureStartValues(@NonNull TransitionValues paramTransitionValues)
   {
-    a(paramTransitionValues, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
+    a(paramTransitionValues, this.s, this.j, this.u);
   }
   
   @Nullable
@@ -261,7 +261,7 @@ public final class MaterialContainerTransform
           } else {
             paramViewGroup = localView;
           }
-          if (this.jdField_a_of_type_Int == paramViewGroup.getId())
+          if (this.i == paramViewGroup.getId())
           {
             localObject = (View)paramViewGroup.getParent();
             paramTransitionValues1 = paramViewGroup;
@@ -269,27 +269,27 @@ public final class MaterialContainerTransform
           }
           else
           {
-            paramViewGroup = TransitionUtils.b(paramViewGroup, this.jdField_a_of_type_Int);
+            paramViewGroup = TransitionUtils.b(paramViewGroup, this.i);
             paramTransitionValues1 = null;
           }
-          Object localObject = TransitionUtils.b(paramViewGroup);
+          Object localObject = TransitionUtils.c(paramViewGroup);
           float f1 = -((RectF)localObject).left;
           float f2 = -((RectF)localObject).top;
           paramTransitionValues1 = a(paramViewGroup, paramTransitionValues1, f1, f2);
           localRectF1.offset(f1, f2);
           localRectF2.offset(f1, f2);
           boolean bool = a(localRectF1, localRectF2);
-          localObject = new MaterialContainerTransform.TransitionDrawable(getPathMotion(), localView, localRectF1, localShapeAppearanceModel1, a(this.jdField_a_of_type_Float, localView), paramTransitionValues2, localRectF2, localShapeAppearanceModel2, a(this.jdField_b_of_type_Float, paramTransitionValues2), this.jdField_d_of_type_Int, this.e, this.f, this.g, bool, this.jdField_c_of_type_Boolean, FadeModeEvaluators.a(this.i, bool), FitModeEvaluators.a(this.j, bool, localRectF1, localRectF2), a(bool), this.jdField_a_of_type_Boolean, null);
+          localObject = new MaterialContainerTransform.TransitionDrawable(getPathMotion(), localView, localRectF1, localShapeAppearanceModel1, a(this.B, localView), paramTransitionValues2, localRectF2, localShapeAppearanceModel2, a(this.C, paramTransitionValues2), this.l, this.m, this.n, this.o, bool, this.A, FadeModeEvaluators.a(this.q, bool), FitModeEvaluators.a(this.r, bool, localRectF1, localRectF2), b(bool), this.g, null);
           ((MaterialContainerTransform.TransitionDrawable)localObject).setBounds(Math.round(paramTransitionValues1.left), Math.round(paramTransitionValues1.top), Math.round(paramTransitionValues1.right), Math.round(paramTransitionValues1.bottom));
           paramTransitionValues1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
           paramTransitionValues1.addUpdateListener(new MaterialContainerTransform.1(this, (MaterialContainerTransform.TransitionDrawable)localObject));
           addListener(new MaterialContainerTransform.2(this, paramViewGroup, (MaterialContainerTransform.TransitionDrawable)localObject, localView, paramTransitionValues2));
           return paramTransitionValues1;
         }
-        Log.w(jdField_a_of_type_JavaLangString, "Skipping due to null end bounds. Ensure end view is laid out and measured.");
+        Log.w(a, "Skipping due to null end bounds. Ensure end view is laid out and measured.");
         return null;
       }
-      Log.w(jdField_a_of_type_JavaLangString, "Skipping due to null start bounds. Ensure start view is laid out and measured.");
+      Log.w(a, "Skipping due to null start bounds. Ensure start view is laid out and measured.");
     }
     return null;
   }
@@ -297,12 +297,12 @@ public final class MaterialContainerTransform
   @Nullable
   public String[] getTransitionProperties()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialContainerTransform
  * JD-Core Version:    0.7.0.1
  */

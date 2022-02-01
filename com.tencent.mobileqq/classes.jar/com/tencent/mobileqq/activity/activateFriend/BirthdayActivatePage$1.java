@@ -22,8 +22,8 @@ class BirthdayActivatePage$1
     if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
     {
       Object localObject2 = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
-      long[] arrayOfLong = this.a.a.a();
-      String[] arrayOfString = this.a.a.a();
+      long[] arrayOfLong = this.a.i.getCheckedFriends();
+      String[] arrayOfString = this.a.i.getCheckedFriendsTimeThisYear();
       Object localObject1 = localObject2;
       if (arrayOfLong.length > 0)
       {
@@ -78,7 +78,7 @@ class BirthdayActivatePage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage.1
  * JD-Core Version:    0.7.0.1
  */

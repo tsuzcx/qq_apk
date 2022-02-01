@@ -9,12 +9,12 @@ class AIOVideoView$1
   
   public void run()
   {
-    AIOVideoView.a(this.this$0, this.a.i, this.a.f);
+    AIOVideoView.a(this.this$0, this.a.C, this.a.v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.1
  * JD-Core Version:    0.7.0.1
  */

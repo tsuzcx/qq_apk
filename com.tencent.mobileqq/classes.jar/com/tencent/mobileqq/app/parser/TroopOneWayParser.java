@@ -11,9 +11,9 @@ public class TroopOneWayParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new TroopOneWayAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "commonBuddyGroup";
-    paramBaseQQAppInterface.c = "open";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "commonBuddyGroup";
+    paramBaseQQAppInterface.e = "open";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -34,7 +34,7 @@ public class TroopOneWayParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TroopOneWayParser
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ class GrayTipsItemBuilder$14
   
   public void onClick(View paramView)
   {
-    Object localObject = UITools.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
-    ReportController.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    Object localObject = UITools.a(this.c.a, this.a.frienduin);
+    ReportController.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.b, 0, "", "", "", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,14 +32,14 @@ class GrayTipsItemBuilder$14
     }
     else
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695710, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2131893469, 0).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.14
  * JD-Core Version:    0.7.0.1
  */

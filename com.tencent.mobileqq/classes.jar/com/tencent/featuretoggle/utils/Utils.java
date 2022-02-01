@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.security.MessageDigest;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -25,22 +24,6 @@ public class Utils
     {
       if (!LogUtils.a(localThrowable)) {
         localThrowable.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = a(MessageDigest.getInstance("MD5").digest(paramString.getBytes("UTF-8")));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (!LogUtils.a(paramString)) {
-        paramString.printStackTrace();
       }
     }
     return null;
@@ -67,26 +50,6 @@ public class Utils
     return "fail";
   }
   
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() == 1) {
-        localStringBuilder.append("0");
-      }
-      localStringBuilder.append(str);
-      i += 1;
-    }
-    return localStringBuilder.toString().toUpperCase();
-  }
-  
   public static void a(long paramLong)
   {
     try
@@ -104,7 +67,7 @@ public class Utils
   
   public static boolean a(int paramInt)
   {
-    return Build.VERSION.SDK_INT >= paramInt;
+    return Build.VERSION.SDK_INT < paramInt;
   }
   
   public static boolean a(String paramString)
@@ -135,11 +98,6 @@ public class Utils
       }
     }
     return null;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return Build.VERSION.SDK_INT < paramInt;
   }
   
   public static byte[] b(byte[] paramArrayOfByte)
@@ -179,7 +137,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

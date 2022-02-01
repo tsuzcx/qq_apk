@@ -11,11 +11,11 @@ final class KeyBoardUtil$2
   
   public void run()
   {
-    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender;
+    ApolloRender localApolloRender = this.a;
     localApolloRender.mShowEditWindow = true;
     try
     {
-      KeyBoardUtil.a(this.jdField_a_of_type_AndroidViewView, localApolloRender);
+      KeyBoardUtil.a(this.b, localApolloRender);
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ final class KeyBoardUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil.2
  * JD-Core Version:    0.7.0.1
  */

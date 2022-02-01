@@ -23,27 +23,27 @@ import java.util.List;
 public class FileCategoryAdapter
   extends BaseAdapter
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
-  private List<FileCategoryEntity> jdField_a_of_type_JavaUtilList;
+  private List<FileCategoryEntity> a;
+  private BaseFileAssistantActivity b;
+  private LayoutInflater c;
+  private View.OnClickListener d;
   
   public FileCategoryAdapter(BaseFileAssistantActivity paramBaseFileAssistantActivity, List<FileCategoryEntity> paramList, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramBaseFileAssistantActivity;
+    this.a = paramList;
+    this.c = LayoutInflater.from(this.b);
+    this.d = paramOnClickListener;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -53,13 +53,13 @@ public class FileCategoryAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (((FileCategoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int == 0) {
+    if (((FileCategoryEntity)this.a.get(paramInt)).a == 0) {
       return 0;
     }
-    if (((FileCategoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int == 3) {
+    if (((FileCategoryEntity)this.a.get(paramInt)).a == 3) {
       return 3;
     }
-    if (((FileCategoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int == 2) {
+    if (((FileCategoryEntity)this.a.get(paramInt)).a == 2) {
       return 2;
     }
     return 1;
@@ -67,7 +67,7 @@ public class FileCategoryAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)this.a.get(paramInt);
     Object localObject1 = null;
     Object localObject2;
     if (localFileCategoryEntity == null)
@@ -80,34 +80,34 @@ public class FileCategoryAdapter
       if (paramView == null)
       {
         localObject2 = new FileCategoryAdapter.ItemHolder(this);
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(localFileCategoryEntity.jdField_b_of_type_Int, paramViewGroup, false);
-        localObject3 = new RedTouch(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView).d(30).a();
+        paramView = this.c.inflate(localFileCategoryEntity.b, paramViewGroup, false);
+        localObject3 = new RedTouch(this.b, paramView).b(30.0F).a();
         ((View)localObject3).setTag(localObject2);
-        if ((localFileCategoryEntity.jdField_a_of_type_Int != 0) && (localFileCategoryEntity.jdField_a_of_type_Int != 3))
+        if ((localFileCategoryEntity.a != 0) && (localFileCategoryEntity.a != 3))
         {
-          if (localFileCategoryEntity.jdField_a_of_type_Int != 1)
+          if (localFileCategoryEntity.a != 1)
           {
             paramView = (View)localObject3;
             localObject1 = localObject2;
-            if (localFileCategoryEntity.jdField_a_of_type_Int != 4) {}
+            if (localFileCategoryEntity.a != 4) {}
           }
           else
           {
-            ((FileCategoryAdapter.ItemHolder)localObject2).d = ((TextView)((View)localObject3).findViewById(2131365754));
-            ((FileCategoryAdapter.ItemHolder)localObject2).e = ((TextView)((View)localObject3).findViewById(2131378475));
+            ((FileCategoryAdapter.ItemHolder)localObject2).i = ((TextView)((View)localObject3).findViewById(2131431997));
+            ((FileCategoryAdapter.ItemHolder)localObject2).j = ((TextView)((View)localObject3).findViewById(2131447089));
             paramView = (View)localObject3;
             localObject1 = localObject2;
           }
         }
         else
         {
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_a_of_type_AndroidViewView = ((View)localObject3).findViewById(2131364361);
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject3).findViewById(2131364360));
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject3).findViewById(2131376316));
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject3).findViewById(2131364362));
-          ((FileCategoryAdapter.ItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject3).findViewById(2131372043));
-          ((FileCategoryAdapter.ItemHolder)localObject2).c = ((TextView)((View)localObject3).findViewById(2131377840));
+          ((FileCategoryAdapter.ItemHolder)localObject2).a = ((View)localObject3).findViewById(2131430389);
+          ((FileCategoryAdapter.ItemHolder)localObject2).a.setOnClickListener(this.d);
+          ((FileCategoryAdapter.ItemHolder)localObject2).b = ((ImageView)((View)localObject3).findViewById(2131430388));
+          ((FileCategoryAdapter.ItemHolder)localObject2).c = ((ImageView)((View)localObject3).findViewById(2131444527));
+          ((FileCategoryAdapter.ItemHolder)localObject2).e = ((TextView)((View)localObject3).findViewById(2131430390));
+          ((FileCategoryAdapter.ItemHolder)localObject2).d = ((TextView)((View)localObject3).findViewById(2131439506));
+          ((FileCategoryAdapter.ItemHolder)localObject2).f = ((TextView)((View)localObject3).findViewById(2131446312));
           paramView = (View)localObject3;
           localObject1 = localObject2;
         }
@@ -116,45 +116,45 @@ public class FileCategoryAdapter
       {
         localObject1 = (FileCategoryAdapter.ItemHolder)paramView.getTag();
       }
-      ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_Int = localFileCategoryEntity.e;
-      ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_JavaLangString = localFileCategoryEntity.jdField_c_of_type_JavaLangString;
-      if (localFileCategoryEntity.jdField_a_of_type_Int == 0)
+      ((FileCategoryAdapter.ItemHolder)localObject1).g = localFileCategoryEntity.g;
+      ((FileCategoryAdapter.ItemHolder)localObject1).h = localFileCategoryEntity.k;
+      if (localFileCategoryEntity.a == 0)
       {
-        if (localFileCategoryEntity.jdField_c_of_type_Boolean) {
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        } else {
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        if (localFileCategoryEntity.jdField_b_of_type_Boolean)
-        {
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(localFileCategoryEntity.jdField_c_of_type_Int);
-        }
-        else
-        {
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        if (!TextUtils.isEmpty(localFileCategoryEntity.jdField_b_of_type_JavaLangString))
-        {
-          ((FileCategoryAdapter.ItemHolder)localObject1).c.setText(localFileCategoryEntity.jdField_b_of_type_JavaLangString);
+        if (localFileCategoryEntity.j) {
           ((FileCategoryAdapter.ItemHolder)localObject1).c.setVisibility(0);
-        }
-        else
-        {
+        } else {
           ((FileCategoryAdapter.ItemHolder)localObject1).c.setVisibility(8);
         }
-        ((FileCategoryAdapter.ItemHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(localFileCategoryEntity.jdField_a_of_type_JavaLangString);
-        ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setTag(localObject1);
-        if (localFileCategoryEntity.jdField_a_of_type_Boolean)
+        if (localFileCategoryEntity.i)
         {
-          localObject2 = ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView;
+          ((FileCategoryAdapter.ItemHolder)localObject1).b.setVisibility(0);
+          ((FileCategoryAdapter.ItemHolder)localObject1).b.setBackgroundResource(localFileCategoryEntity.c);
+        }
+        else
+        {
+          ((FileCategoryAdapter.ItemHolder)localObject1).b.setVisibility(8);
+        }
+        if (!TextUtils.isEmpty(localFileCategoryEntity.h))
+        {
+          ((FileCategoryAdapter.ItemHolder)localObject1).f.setText(localFileCategoryEntity.h);
+          ((FileCategoryAdapter.ItemHolder)localObject1).f.setVisibility(0);
+        }
+        else
+        {
+          ((FileCategoryAdapter.ItemHolder)localObject1).f.setVisibility(8);
+        }
+        ((FileCategoryAdapter.ItemHolder)localObject1).e.setText(localFileCategoryEntity.d);
+        ((FileCategoryAdapter.ItemHolder)localObject1).a.setTag(localObject1);
+        if (localFileCategoryEntity.f)
+        {
+          localObject2 = ((FileCategoryAdapter.ItemHolder)localObject1).d;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("(");
-          ((StringBuilder)localObject3).append(localFileCategoryEntity.d);
+          ((StringBuilder)localObject3).append(localFileCategoryEntity.e);
           ((StringBuilder)localObject3).append(")");
           ((TextView)localObject2).setText(((StringBuilder)localObject3).toString());
         }
-        int i = localFileCategoryEntity.f;
+        int i = localFileCategoryEntity.l;
         if (i != 1)
         {
           if (i != 2)
@@ -162,67 +162,67 @@ public class FileCategoryAdapter
             if (i != 3)
             {
               if (i != 4) {
-                ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839433);
+                ((FileCategoryAdapter.ItemHolder)localObject1).a.setBackgroundResource(2130839622);
               } else {
-                ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839440);
+                ((FileCategoryAdapter.ItemHolder)localObject1).a.setBackgroundResource(2130839629);
               }
             }
             else {
-              ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839443);
+              ((FileCategoryAdapter.ItemHolder)localObject1).a.setBackgroundResource(2130839632);
             }
           }
           else {
-            ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839449);
+            ((FileCategoryAdapter.ItemHolder)localObject1).a.setBackgroundResource(2130839638);
           }
         }
         else {
-          ((FileCategoryAdapter.ItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839433);
+          ((FileCategoryAdapter.ItemHolder)localObject1).a.setBackgroundResource(2130839622);
         }
-        if ((16 != localFileCategoryEntity.e) && (17 != localFileCategoryEntity.e)) {
-          if (22 == localFileCategoryEntity.e)
+        if ((16 != localFileCategoryEntity.g) && (17 != localFileCategoryEntity.g)) {
+          if (22 == localFileCategoryEntity.g)
           {
-            localObject2 = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("100160.100163");
+            localObject2 = ((IRedTouchManager)this.b.p.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("100160.100163");
             localObject3 = (RedTouch)paramView;
             ((RedTouch)localObject3).a((BusinessInfoCheckUpdate.AppInfo)localObject2);
-            if (((RedTouch)localObject3).c()) {
-              ((FileCategoryAdapter.ItemHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+            if (((RedTouch)localObject3).h()) {
+              ((FileCategoryAdapter.ItemHolder)localObject1).c.setVisibility(4);
             } else {
-              ((FileCategoryAdapter.ItemHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              ((FileCategoryAdapter.ItemHolder)localObject1).c.setVisibility(8);
             }
           }
           else
           {
-            ((RedTouch)paramView).d();
+            ((RedTouch)paramView).g();
           }
         }
       }
-      else if (localFileCategoryEntity.jdField_a_of_type_Int == 1)
+      else if (localFileCategoryEntity.a == 1)
       {
-        if (localFileCategoryEntity.jdField_a_of_type_Boolean) {
-          ((FileCategoryAdapter.ItemHolder)localObject1).e.setText(localFileCategoryEntity.jdField_a_of_type_JavaLangString);
+        if (localFileCategoryEntity.f) {
+          ((FileCategoryAdapter.ItemHolder)localObject1).j.setText(localFileCategoryEntity.d);
         } else {
-          ((FileCategoryAdapter.ItemHolder)localObject1).e.setVisibility(4);
+          ((FileCategoryAdapter.ItemHolder)localObject1).j.setVisibility(4);
         }
       }
-      else if (localFileCategoryEntity.jdField_a_of_type_Int == 4)
+      else if (localFileCategoryEntity.a == 4)
       {
-        if (localFileCategoryEntity.jdField_a_of_type_Boolean)
+        if (localFileCategoryEntity.f)
         {
-          ((FileCategoryAdapter.ItemHolder)localObject1).e.setGravity(17);
+          ((FileCategoryAdapter.ItemHolder)localObject1).j.setGravity(17);
           localObject2 = (IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class);
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
-          if (!((IQQFileTempUtils)localObject2).hasShortCut((Activity)localObject3, new String[] { ((BaseFileAssistantActivity)localObject3).getString(2131692363) }))
+          localObject3 = this.b;
+          if (!((IQQFileTempUtils)localObject2).hasShortCut((Activity)localObject3, new String[] { ((BaseFileAssistantActivity)localObject3).getString(2131889351) }))
           {
-            localObject2 = QQFileManagerUtil.a(localFileCategoryEntity.jdField_a_of_type_JavaLangString, localFileCategoryEntity.jdField_a_of_type_JavaLangString, null);
-            ((FileCategoryAdapter.ItemHolder)localObject1).e.setClickable(true);
-            ((FileCategoryAdapter.ItemHolder)localObject1).e.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-            ((FileCategoryAdapter.ItemHolder)localObject1).e.setText((CharSequence)localObject2);
-            ((FileCategoryAdapter.ItemHolder)localObject1).e.setTag(localObject1);
+            localObject2 = QQFileManagerUtil.a(localFileCategoryEntity.d, localFileCategoryEntity.d, null);
+            ((FileCategoryAdapter.ItemHolder)localObject1).j.setClickable(true);
+            ((FileCategoryAdapter.ItemHolder)localObject1).j.setOnClickListener(this.d);
+            ((FileCategoryAdapter.ItemHolder)localObject1).j.setText((CharSequence)localObject2);
+            ((FileCategoryAdapter.ItemHolder)localObject1).j.setTag(localObject1);
           }
         }
         else
         {
-          ((FileCategoryAdapter.ItemHolder)localObject1).e.setVisibility(4);
+          ((FileCategoryAdapter.ItemHolder)localObject1).j.setVisibility(4);
         }
       }
       localObject2 = paramView;
@@ -239,7 +239,7 @@ public class FileCategoryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileCategoryAdapter
  * JD-Core Version:    0.7.0.1
  */

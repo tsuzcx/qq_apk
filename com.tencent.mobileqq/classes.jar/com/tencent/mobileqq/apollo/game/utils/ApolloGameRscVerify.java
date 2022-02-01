@@ -2,13 +2,10 @@ package com.tencent.mobileqq.apollo.game.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.game.process.data.CmGameInitParams;
 import com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher;
 import com.tencent.mobileqq.apollo.model.ApolloGameData;
-import com.tencent.mobileqq.apollo.model.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.RSAVerify;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,18 +22,18 @@ import org.json.JSONObject;
 
 public class ApolloGameRscVerify
 {
-  public int a;
   public long a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private ApolloGameRscVerify.OnVerifyResultCallback jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int c;
-  private int d = 0;
+  public int b;
+  private JSONObject c = null;
+  private AtomicBoolean d = new AtomicBoolean(false);
+  private AtomicBoolean e = new AtomicBoolean(false);
+  private SharedPreferences f;
+  private int g;
+  private int h;
+  private String i;
+  private String j;
+  private int k = 0;
+  private ApolloGameRscVerify.OnVerifyResultCallback l;
   
   public ApolloGameRscVerify(int paramInt)
   {
@@ -45,49 +42,49 @@ public class ApolloGameRscVerify
   
   public ApolloGameRscVerify(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
+    this.i = paramString1;
+    this.h = paramInt2;
+    this.j = paramString2;
+    this.b = 0;
+    this.a = 0L;
+    this.g = paramInt1;
+    this.f = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
   }
   
   private void a(String paramString, int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("gameId:");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append(",failType:");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(",fileName:");
     ((StringBuilder)localObject).append(paramString);
     QLog.w("cmgame_process.ApolloGameRscVerify", 1, ((StringBuilder)localObject).toString());
-    if ((this.jdField_a_of_type_AndroidContentSharedPreferences != null) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null))
+    if ((this.f != null) && (this.e != null))
     {
-      this.d = paramInt;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback;
+      this.k = paramInt;
+      localObject = this.l;
       if (localObject != null) {
         ((ApolloGameRscVerify.OnVerifyResultCallback)localObject).a(paramInt);
       }
-      int i = this.c;
-      if (i != 3)
+      int m = this.h;
+      if (m != 3)
       {
-        if (i == 4) {
+        if (m == 4) {
           return;
         }
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localObject = this.f.edit();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("apollo_sp_game_rsc_verify_");
-        localStringBuilder.append(a());
+        localStringBuilder.append(c());
         ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), true).commit();
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.e.set(true);
         localObject = new HashMap();
-        ((HashMap)localObject).put("gameId", Integer.toString(this.jdField_b_of_type_Int));
+        ((HashMap)localObject).put("gameId", Integer.toString(this.g));
         ((HashMap)localObject).put("rscPath", paramString);
         ((HashMap)localObject).put("errType", Integer.toString(paramInt));
-        paramString = b();
+        paramString = d();
         StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString, "cmshow_game_rsc_error", true, -1L, -1L, (HashMap)localObject, "", true);
       }
       return;
@@ -95,26 +92,23 @@ public class ApolloGameRscVerify
     QLog.e("cmgame_process.ApolloGameRscVerify", 1, "[onVerifyFailure] fails, param is wrong");
   }
   
-  @Deprecated
   public static boolean a(int paramInt)
   {
     try
     {
-      Object localObject = CmGameUtil.a(paramInt);
-      if (localObject == null)
+      CmGameLauncher localCmGameLauncher = CmGameUtil.a(paramInt);
+      if (localCmGameLauncher == null)
       {
         QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], launcher is null.");
         return false;
       }
-      CmGameInitParams localCmGameInitParams = ((CmGameLauncher)localObject).a();
-      if (localCmGameInitParams != null) {
-        return a(localCmGameInitParams.isWhiteUsr, paramInt);
+      if (localCmGameLauncher.d() != null) {
+        return true;
       }
-      localObject = ((CmGameLauncher)localObject).a();
-      if (localObject != null)
+      if (localCmGameLauncher.c() != null)
       {
         QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams is null use startCheckParam check");
-        return a(((StartCheckParam)localObject).isWhiteUsr, paramInt);
+        return true;
       }
       QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams and startCheckParam is null.");
       return true;
@@ -126,72 +120,39 @@ public class ApolloGameRscVerify
     return true;
   }
   
-  @Deprecated
-  public static boolean a(boolean paramBoolean, int paramInt)
-  {
-    return true;
-  }
-  
-  private String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(500);
-    int i = this.c;
-    if (i == 0)
-    {
-      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-    }
-    else if (i == 1)
-    {
-      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      localStringBuilder.append("/");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    }
-    else
-    {
-      if ((i == 3) || (i == 4)) {
-        break label97;
-      }
-    }
-    return localStringBuilder.toString();
-    label97:
-    return SOPreLoader.b();
-  }
-  
-  private boolean c()
+  private boolean f()
   {
     try
     {
-      if (!a(this.jdField_b_of_type_Int, this.c))
+      if (!a(this.g, this.h))
       {
         if (QLog.isColorLevel()) {
           QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
         }
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback != null)
+        this.e.set(false);
+        if (this.l != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback.a(0);
+          this.l.a(0);
           return false;
         }
       }
       else
       {
-        new ApolloGameData().gameId = this.jdField_b_of_type_Int;
-        Object localObject = new File(c(), d());
+        new ApolloGameData().gameId = this.g;
+        Object localObject = new File(g(), h());
         if (!((File)localObject).exists())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("game checklist NOT exist, gameId:");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.g);
           QLog.w("cmgame_process.ApolloGameRscVerify", 1, ((StringBuilder)localObject).toString());
           a("checkList", 2);
           return false;
         }
-        if ((this.c == 0) || (this.c == 1))
+        if ((this.h == 0) || (this.h == 1))
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(c());
+          localStringBuilder.append(g());
           localStringBuilder.append("/checkList.sig");
           if (!new RSAVerify(localStringBuilder.toString(), ((File)localObject).getAbsolutePath()).a(0))
           {
@@ -199,8 +160,8 @@ public class ApolloGameRscVerify
             return false;
           }
         }
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(FileUtils.readFileToString((File)localObject));
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.c = new JSONObject(FileUtils.readFileToString((File)localObject));
+        this.d.set(true);
         return true;
       }
     }
@@ -212,24 +173,39 @@ public class ApolloGameRscVerify
     return false;
   }
   
-  private String d()
+  private String g()
   {
-    if (this.c == 4) {
+    StringBuilder localStringBuilder = new StringBuilder(500);
+    int m = this.h;
+    if (m == 0)
+    {
+      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
+      localStringBuilder.append(this.g);
+    }
+    else if (m == 1)
+    {
+      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append("/");
+      localStringBuilder.append(this.j);
+    }
+    else
+    {
+      if ((m == 3) || (m == 4)) {
+        break label100;
+      }
+    }
+    return localStringBuilder.toString();
+    label100:
+    return SOPreLoader.b();
+  }
+  
+  private String h()
+  {
+    if (this.h == 4) {
       return "checkList_jsc";
     }
     return "checkList";
-  }
-  
-  public String a()
-  {
-    if (this.c == 0) {
-      return String.valueOf(this.jdField_b_of_type_Int);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("_");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
   }
   
   public void a()
@@ -239,64 +215,9 @@ public class ApolloGameRscVerify
   
   public void a(ApolloGameRscVerify.OnVerifyResultCallback paramOnVerifyResultCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback = paramOnVerifyResultCallback;
+    this.l = paramOnVerifyResultCallback;
   }
   
-  public boolean a()
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      if (!a(this.jdField_b_of_type_Int, this.c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback.a(0);
-          return true;
-        }
-      }
-      else
-      {
-        if (!c()) {
-          return false;
-        }
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-          return false;
-        }
-        Iterator localIterator = this.jdField_a_of_type_OrgJsonJSONObject.keys();
-        StringBuilder localStringBuilder = new StringBuilder(200);
-        while (localIterator.hasNext())
-        {
-          this.jdField_a_of_type_Int += 1;
-          String str = (String)localIterator.next();
-          localStringBuilder.delete(0, localStringBuilder.length());
-          localStringBuilder.append(c());
-          localStringBuilder.append("/");
-          localStringBuilder.append(str);
-          if (!a(localStringBuilder.toString(), str)) {
-            return false;
-          }
-        }
-        this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameUtilsApolloGameRscVerify$OnVerifyResultCallback.a(0);
-        }
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
-      return false;
-    }
-    return true;
-  }
-  
-  @Deprecated
   public boolean a(int paramInt1, int paramInt2)
   {
     if ((paramInt2 != 4) && (paramInt2 != 3)) {
@@ -305,36 +226,30 @@ public class ApolloGameRscVerify
     return true;
   }
   
-  public boolean a(String paramString)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    return (localJSONObject != null) && (!TextUtils.isEmpty(localJSONObject.optString(paramString)));
-  }
-  
   /* Error */
   public boolean a(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 35	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   4: invokevirtual 345	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   1: getfield 43	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:d	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   4: invokevirtual 290	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   7: ifeq +299 -> 306
     //   10: aload_0
-    //   11: getfield 28	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   11: getfield 36	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:c	Lorg/json/JSONObject;
     //   14: ifnull +292 -> 306
     //   17: aload_2
-    //   18: invokestatic 340	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   21: ifne +285 -> 306
     //   24: aload_1
-    //   25: invokestatic 340	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   25: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   28: ifne +278 -> 306
     //   31: aload_0
-    //   32: getfield 37	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   32: getfield 45	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:e	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   35: astore_3
     //   36: aload_3
     //   37: ifnull +269 -> 306
     //   40: aload_3
-    //   41: invokevirtual 345	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   41: invokevirtual 290	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   44: ifeq +5 -> 49
     //   47: iconst_0
     //   48: ireturn
@@ -342,82 +257,82 @@ public class ApolloGameRscVerify
     //   50: astore 6
     //   52: aconst_null
     //   53: astore 4
-    //   55: new 231	java/io/File
+    //   55: new 215	java/io/File
     //   58: dup
     //   59: aload_1
-    //   60: invokespecial 346	java/io/File:<init>	(Ljava/lang/String;)V
+    //   60: invokespecial 297	java/io/File:<init>	(Ljava/lang/String;)V
     //   63: astore 7
     //   65: aload 4
     //   67: astore_3
     //   68: aload 7
-    //   70: invokevirtual 241	java/io/File:exists	()Z
+    //   70: invokevirtual 225	java/io/File:exists	()Z
     //   73: ifne +14 -> 87
     //   76: aload 4
     //   78: astore_3
     //   79: aload_0
     //   80: aload_2
     //   81: iconst_1
-    //   82: invokespecial 247	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
+    //   82: invokespecial 231	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
     //   85: iconst_0
     //   86: ireturn
     //   87: aload 4
     //   89: astore_3
     //   90: aload_0
-    //   91: getfield 28	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   91: getfield 36	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:c	Lorg/json/JSONObject;
     //   94: aload_2
-    //   95: invokevirtual 334	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   95: invokevirtual 301	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   98: astore 5
     //   100: aload 4
     //   102: astore_3
-    //   103: new 348	java/io/FileInputStream
+    //   103: new 303	java/io/FileInputStream
     //   106: dup
     //   107: aload_1
-    //   108: invokespecial 349	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   108: invokespecial 304	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   111: astore 4
     //   113: aload 4
     //   115: aload 7
-    //   117: invokevirtual 351	java/io/File:length	()J
-    //   120: invokestatic 357	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   123: invokestatic 363	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   117: invokevirtual 308	java/io/File:length	()J
+    //   120: invokestatic 314	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   123: invokestatic 320	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   126: astore_3
     //   127: aload_3
-    //   128: invokestatic 340	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   128: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   131: ifne +52 -> 183
     //   134: aload 5
-    //   136: invokestatic 340	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   136: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   139: ifne +44 -> 183
     //   142: aload_3
-    //   143: invokevirtual 366	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   143: invokevirtual 325	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   146: aload 5
-    //   148: invokevirtual 366	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   151: invokevirtual 370	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   148: invokevirtual 325	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   151: invokevirtual 329	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   154: ifne +29 -> 183
     //   157: aload_0
     //   158: aload_2
     //   159: iconst_4
-    //   160: invokespecial 247	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
+    //   160: invokespecial 231	com/tencent/mobileqq/apollo/game/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
     //   163: aload 4
-    //   165: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   165: invokevirtual 332	java/io/FileInputStream:close	()V
     //   168: iconst_0
     //   169: ireturn
     //   170: astore_1
-    //   171: ldc 84
+    //   171: ldc 92
     //   173: iconst_1
-    //   174: ldc_w 375
+    //   174: ldc_w 334
     //   177: aload_1
-    //   178: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   178: invokestatic 259	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   181: iconst_0
     //   182: ireturn
     //   183: aload 4
-    //   185: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   185: invokevirtual 332	java/io/FileInputStream:close	()V
     //   188: iconst_1
     //   189: ireturn
     //   190: astore_1
-    //   191: ldc 84
+    //   191: ldc 92
     //   193: iconst_1
-    //   194: ldc_w 375
+    //   194: ldc_w 334
     //   197: aload_1
-    //   198: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   198: invokestatic 259	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   201: iconst_1
     //   202: ireturn
     //   203: astore_1
@@ -433,13 +348,13 @@ public class ApolloGameRscVerify
     //   223: astore 4
     //   225: aload 4
     //   227: astore_3
-    //   228: ldc 84
+    //   228: ldc 92
     //   230: iconst_1
     //   231: bipush 6
     //   233: anewarray 4	java/lang/Object
     //   236: dup
     //   237: iconst_0
-    //   238: ldc_w 377
+    //   238: ldc_w 336
     //   241: aastore
     //   242: dup
     //   243: iconst_1
@@ -447,7 +362,7 @@ public class ApolloGameRscVerify
     //   246: aastore
     //   247: dup
     //   248: iconst_2
-    //   249: ldc_w 379
+    //   249: ldc_w 338
     //   252: aastore
     //   253: dup
     //   254: iconst_3
@@ -455,30 +370,30 @@ public class ApolloGameRscVerify
     //   256: aastore
     //   257: dup
     //   258: iconst_4
-    //   259: ldc_w 381
+    //   259: ldc_w 340
     //   262: aastore
     //   263: dup
     //   264: iconst_5
     //   265: aload_2
     //   266: aastore
-    //   267: invokestatic 384	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   267: invokestatic 343	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   270: aload 4
     //   272: ifnull +8 -> 280
     //   275: aload 4
-    //   277: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   277: invokevirtual 332	java/io/FileInputStream:close	()V
     //   280: iconst_1
     //   281: ireturn
     //   282: aload_3
     //   283: ifnull +21 -> 304
     //   286: aload_3
-    //   287: invokevirtual 373	java/io/FileInputStream:close	()V
+    //   287: invokevirtual 332	java/io/FileInputStream:close	()V
     //   290: goto +14 -> 304
     //   293: astore_2
-    //   294: ldc 84
+    //   294: ldc 92
     //   296: iconst_1
-    //   297: ldc_w 375
+    //   297: ldc_w 334
     //   300: aload_2
-    //   301: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   301: invokestatic 259	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   304: aload_1
     //   305: athrow
     //   306: iconst_0
@@ -514,7 +429,73 @@ public class ApolloGameRscVerify
     //   286	290	293	java/io/IOException
   }
   
-  public String b()
+  public boolean b()
+  {
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      if (!a(this.g, this.h))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
+        }
+        this.e.set(false);
+        if (this.l != null)
+        {
+          this.l.a(0);
+          return true;
+        }
+      }
+      else
+      {
+        if (!f()) {
+          return false;
+        }
+        if (this.c == null) {
+          return false;
+        }
+        Iterator localIterator = this.c.keys();
+        StringBuilder localStringBuilder = new StringBuilder(200);
+        while (localIterator.hasNext())
+        {
+          this.b += 1;
+          String str = (String)localIterator.next();
+          localStringBuilder.delete(0, localStringBuilder.length());
+          localStringBuilder.append(g());
+          localStringBuilder.append("/");
+          localStringBuilder.append(str);
+          if (!a(localStringBuilder.toString(), str)) {
+            return false;
+          }
+        }
+        this.a = (System.currentTimeMillis() - l1);
+        if (this.l != null) {
+          this.l.a(0);
+        }
+        return true;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
+      return false;
+    }
+    return true;
+  }
+  
+  public String c()
+  {
+    if (this.h == 0) {
+      return String.valueOf(this.g);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.i);
+    return localStringBuilder.toString();
+  }
+  
+  public String d()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
@@ -523,39 +504,34 @@ public class ApolloGameRscVerify
     return "";
   }
   
-  public void b()
+  public void e()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.b == 0)
     {
       QLog.w("cmgame_process.ApolloGameRscVerify", 1, "mTotalFiles is 0.");
       return;
     }
     Object localObject = new StringBuilder(200);
-    float f = (float)this.jdField_a_of_type_Long * 1.0F / this.jdField_a_of_type_Int;
+    float f1 = (float)this.a * 1.0F / this.b;
     ((StringBuilder)localObject).append("gameId:");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.g);
     ((StringBuilder)localObject).append(",totalCost:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(",totalFiles:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(",avgCost:");
-    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append(f1);
     QLog.i("cmgame_process.ApolloGameRscVerify", 1, ((StringBuilder)localObject).toString());
     localObject = new HashMap();
-    ((HashMap)localObject).put("gameId", Integer.toString(this.jdField_b_of_type_Int));
-    ((HashMap)localObject).put("avgCost", Float.toString(f));
-    String str = b();
+    ((HashMap)localObject).put("gameId", Integer.toString(this.g));
+    ((HashMap)localObject).put("avgCost", Float.toString(f1));
+    String str = d();
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "cmshow_game_rsc_avg_cost", true, -1L, -1L, (HashMap)localObject, "", true);
-  }
-  
-  public boolean b()
-  {
-    return c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.utils.ApolloGameRscVerify
  * JD-Core Version:    0.7.0.1
  */

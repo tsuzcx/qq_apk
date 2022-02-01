@@ -6,25 +6,25 @@ import android.view.View;
 class DragSortListView$DropAnimator
   extends DragSortListView.SmoothAnimator
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
   
   public DragSortListView$DropAnimator(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
   {
     super(paramDragSortListView, paramFloat, paramInt);
   }
   
-  private int a()
+  private int e()
   {
     int i = this.this$0.getFirstVisiblePosition();
-    int j = (this.this$0.h + this.this$0.getDividerHeight()) / 2;
-    View localView = this.this$0.getChildAt(this.jdField_a_of_type_Int - i);
+    int j = (this.this$0.i + this.this$0.getDividerHeight()) / 2;
+    View localView = this.this$0.getChildAt(this.b - i);
     if (localView != null)
     {
-      i = this.jdField_a_of_type_Int;
-      int k = this.jdField_b_of_type_Int;
+      i = this.b;
+      int k = this.c;
       if (i == k) {
         return localView.getTop();
       }
@@ -35,7 +35,7 @@ class DragSortListView$DropAnimator
       else
       {
         i = localView.getBottom() + j;
-        j = this.this$0.i;
+        j = this.this$0.j;
       }
       return i - j;
     }
@@ -45,26 +45,26 @@ class DragSortListView$DropAnimator
   
   public void a()
   {
-    this.jdField_a_of_type_Int = this.this$0.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = this.this$0.e;
+    this.b = this.this$0.c;
+    this.c = this.this$0.f;
     DragSortListView localDragSortListView = this.this$0;
-    localDragSortListView.g = 2;
-    this.jdField_a_of_type_Float = (localDragSortListView.a.y - a());
-    this.jdField_b_of_type_Float = (this.this$0.a.x - this.this$0.getPaddingLeft());
+    localDragSortListView.h = 2;
+    this.d = (localDragSortListView.a.y - e());
+    this.e = (this.this$0.a.x - this.this$0.getPaddingLeft());
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    int i = a();
+    int i = e();
     int j = this.this$0.getPaddingLeft();
     paramFloat1 = this.this$0.a.y - i;
     float f = this.this$0.a.x - j;
     paramFloat2 = 1.0F - paramFloat2;
-    if ((paramFloat2 < Math.abs(paramFloat1 / this.jdField_a_of_type_Float)) || (paramFloat2 < Math.abs(f / this.jdField_b_of_type_Float)))
+    if ((paramFloat2 < Math.abs(paramFloat1 / this.d)) || (paramFloat2 < Math.abs(f / this.e)))
     {
-      this.this$0.a.y = (i + (int)(this.jdField_a_of_type_Float * paramFloat2));
-      this.this$0.a.x = (this.this$0.getPaddingLeft() + (int)(this.jdField_b_of_type_Float * paramFloat2));
-      this.this$0.a(true);
+      this.this$0.a.y = (i + (int)(this.d * paramFloat2));
+      this.this$0.a.x = (this.this$0.getPaddingLeft() + (int)(this.e * paramFloat2));
+      this.this$0.b(true);
     }
   }
   
@@ -75,7 +75,7 @@ class DragSortListView$DropAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.DropAnimator
  * JD-Core Version:    0.7.0.1
  */

@@ -40,16 +40,16 @@ public class LargeTouchAreaButton
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.as);
-    int i = (int)paramContext.getDimension(R.styleable.a, 0.0F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ar);
+    int i = (int)paramContext.getDimension(R.styleable.as, 0.0F);
     this.e = i;
     this.f = i;
     this.g = i;
     this.h = i;
-    this.e = ((int)paramContext.getDimension(R.styleable.b, this.e));
-    this.f = ((int)paramContext.getDimension(R.styleable.c, this.f));
-    this.g = ((int)paramContext.getDimension(R.styleable.d, this.g));
-    this.h = ((int)paramContext.getDimension(R.styleable.e, this.h));
+    this.e = ((int)paramContext.getDimension(R.styleable.at, this.e));
+    this.f = ((int)paramContext.getDimension(R.styleable.au, this.f));
+    this.g = ((int)paramContext.getDimension(R.styleable.av, this.g));
+    this.h = ((int)paramContext.getDimension(R.styleable.aw, this.h));
     paramContext.recycle();
   }
   
@@ -68,7 +68,7 @@ public class LargeTouchAreaButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.layout.LargeTouchAreaButton
  * JD-Core Version:    0.7.0.1
  */

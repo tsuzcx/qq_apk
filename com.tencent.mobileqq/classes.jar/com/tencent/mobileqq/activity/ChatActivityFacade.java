@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
@@ -49,8 +48,6 @@ import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinMD5Cache;
 import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.activity.aio.AIOConfigData;
-import com.tencent.mobileqq.activity.aio.AIOConfigManager;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.BeancurdManager;
@@ -101,6 +98,7 @@ import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.FeedsManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.HiBoomMessage;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
@@ -147,7 +145,7 @@ import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.gamecenter.message.TinyMsgCodec;
+import com.tencent.mobileqq.gamecenter.util.RoleIdUtil;
 import com.tencent.mobileqq.managers.PasswdRedBagFoldManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.multimsg.LongArkMsgManager;
@@ -182,6 +180,7 @@ import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.streamtransfile.StreamDataManager;
@@ -212,7 +211,6 @@ import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 import com.tencent.mobileqq.troop.troopgag.data.SelfGagInfo;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.util.BusinessUtils;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ForwardSendPicUtil;
@@ -226,14 +224,13 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateConfig;
-import com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateProcessor;
 import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.mobileqq.vas.font.api.IFontManagerService;
+import com.tencent.mobileqq.vas.graytips.api.IVasGrayTips;
 import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
-import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.AioVipDonateHelper;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
@@ -249,9 +246,7 @@ import feedcloud.FeedCloudMeta.StShare;
 import feedcloud.FeedCloudMeta.StUser;
 import feedcloud.FeedCloudMeta.StVideo;
 import feedcloud.FeedCloudRead.StGetC2CFeedRsp;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.data.AtTroopMemberInfo;>;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -267,23 +262,13 @@ import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
 public class ChatActivityFacade
 {
   public static long a = -1L;
-  private static ChatActivityFacade.QZoneNewestAioStoryFeedObserver jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$QZoneNewestAioStoryFeedObserver;
-  public static ChatMessage a;
-  public static QQToast a;
-  public static ActionSheet a;
-  public static List<ChatMessage> a;
-  private static ConcurrentHashMap<String, ChatActivityFacade.QZoneNewestFeedObserver> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public static ActionSheet b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$QZoneNewestAioStoryFeedObserver = new ChatActivityFacade.QZoneNewestAioStoryFeedObserver();
-    jdField_a_of_type_ComTencentMobileqqWidgetQQToast = null;
-    jdField_a_of_type_ComTencentWidgetActionSheet = null;
-    jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-    b = null;
-    jdField_a_of_type_JavaUtilList = null;
-  }
+  public static QQToast b = null;
+  public static ActionSheet c = null;
+  public static ChatMessage d = null;
+  public static ActionSheet e = null;
+  public static List<ChatMessage> f = null;
+  private static ConcurrentHashMap<String, ChatActivityFacade.QZoneNewestFeedObserver> g = new ConcurrentHashMap();
+  private static ChatActivityFacade.QZoneNewestAioStoryFeedObserver h = new ChatActivityFacade.QZoneNewestAioStoryFeedObserver();
   
   private static int a(BaseSessionInfo paramBaseSessionInfo, int paramInt, FriendsManager paramFriendsManager)
   {
@@ -296,31 +281,9 @@ public class ChatActivityFacade
     else
     {
       i = paramInt;
-      if (paramFriendsManager.b(paramBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (paramFriendsManager.n(paramBaseSessionInfo.b)) {
         i = 0;
       }
-    }
-    return i;
-  }
-  
-  private static int a(BaseSessionInfo paramBaseSessionInfo, String paramString)
-  {
-    int i;
-    if ((!QVipDiyTemplateProcessor.c().jdField_b_of_type_Boolean) && ((paramBaseSessionInfo.jdField_a_of_type_Int == 3000) || (paramBaseSessionInfo.jdField_a_of_type_Int == 1)))
-    {
-      paramString = Utils.a(paramString);
-      int j = paramString[0];
-      i = j;
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1) {
-        return j + paramString[1] * 2;
-      }
-    }
-    else
-    {
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 0) {
-        return Utils.a(paramString)[0];
-      }
-      i = paramString.getBytes("utf-8").length;
     }
     return i;
   }
@@ -339,7 +302,7 @@ public class ChatActivityFacade
       ((StringBuilder)localObject1).append(" createMsgQueueAndSend start, currenttime:");
       ((StringBuilder)localObject1).append(System.currentTimeMillis());
       ((StringBuilder)localObject1).append(" sessionInfo.entrance:");
-      ((StringBuilder)localObject1).append(paramBaseSessionInfo.c);
+      ((StringBuilder)localObject1).append(paramBaseSessionInfo.s);
       QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramString != null) {
@@ -354,107 +317,102 @@ public class ChatActivityFacade
       paramString.append(System.currentTimeMillis());
       QLog.d("SendMsgBtn", 2, paramString.toString());
     }
-    paramInt1 = paramBaseSessionInfo.jdField_a_of_type_Int;
+    paramInt1 = paramBaseSessionInfo.a;
     Object localObject2 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramInt1 = a(paramBaseSessionInfo, paramInt1, (FriendsManager)localObject2);
+    int k = a(paramBaseSessionInfo, paramInt1, (FriendsManager)localObject2);
     Object localObject3;
     Object localObject4;
-    if (paramSendMsgParams.jdField_e_of_type_Long != 0L)
+    if (paramSendMsgParams.u != 0L)
     {
       paramString = new MessageForWantGiftMsg();
       localObject2 = (MessageForWantGiftMsg)paramString;
-      ((MessageForWantGiftMsg)localObject2).wantGiftSenderUin = paramSendMsgParams.jdField_e_of_type_Long;
+      ((MessageForWantGiftMsg)localObject2).wantGiftSenderUin = paramSendMsgParams.u;
       localObject3 = MessageForWantGiftMsg.GIFT_SENDER_UIN;
       localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(paramSendMsgParams.jdField_e_of_type_Long);
+      ((StringBuilder)localObject4).append(paramSendMsgParams.u);
       ((StringBuilder)localObject4).append("");
       ((MessageForWantGiftMsg)localObject2).saveExtInfoToExtStr((String)localObject3, ((StringBuilder)localObject4).toString());
       paramString.msgtype = -2056;
     }
-    for (;;)
+    else if ((paramSendMsgParams.r != null) && (PasswdRedBagFoldManager.a(paramQQAppInterface)))
     {
-      break;
-      int m = paramInt1;
-      if ((paramSendMsgParams.jdField_c_of_type_JavaLangString != null) && (PasswdRedBagFoldManager.a(paramQQAppInterface)))
-      {
-        paramString = new MessageForFoldMsg();
-        ((MessageForFoldMsg)paramString).init(false, paramSendMsgParams.jdField_c_of_type_JavaLangString, paramSendMsgParams.jdField_d_of_type_JavaLangString, paramSendMsgParams.jdField_d_of_type_Long, true);
+      paramString = new MessageForFoldMsg();
+      ((MessageForFoldMsg)paramString).init(false, paramSendMsgParams.r, paramSendMsgParams.s, paramSendMsgParams.p, true);
+    }
+    else if ((paramSendMsgParams.h == null) && (paramSendMsgParams.v) && (LongTextMsgManager.a(paramQQAppInterface)))
+    {
+      paramString = (ChatMessage)MessageRecordFactory.a(-1051);
+    }
+    else
+    {
+      int i;
+      if (paramSendMsgParams.h != null) {
+        i = -1049;
+      } else {
+        i = -1000;
       }
-      else if ((paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null) && (paramSendMsgParams.f) && (LongTextMsgManager.a(paramQQAppInterface)))
+      paramString = (ChatMessage)MessageRecordFactory.a(i);
+      localObject3 = ((FriendsManager)localObject2).d(paramQQAppInterface.getCurrentUin(), false);
+      if (localObject3 != null)
       {
-        paramString = (ChatMessage)MessageRecordFactory.a(-1051);
-      }
-      else
-      {
-        int j;
-        if (paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null) {
-          j = -1049;
+        localObject4 = (IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "");
+        paramString.saveExtInfoToExtStr("vip_font_id", String.valueOf(FontManagerConstants.generateFontValue((ExtensionInfo)localObject3)));
+        paramString.saveExtInfoToExtStr("vip_sub_font_id", String.valueOf(((IFontManagerService)localObject4).getVariedStyleIndex(((ExtensionInfo)localObject3).uVipFont)));
+        if (1 == ((ExtensionInfo)localObject3).magicFont) {
+          paramString.saveExtInfoToExtStr("vip_font_effect_id", String.valueOf(0));
         } else {
-          j = -1000;
+          paramString.saveExtInfoToExtStr("vip_font_effect_id", String.valueOf(((ExtensionInfo)localObject3).fontEffect));
         }
-        paramString = (ChatMessage)MessageRecordFactory.a(j);
-        localObject3 = ((FriendsManager)localObject2).a(paramQQAppInterface.getCurrentUin(), false);
-        if (localObject3 != null)
+      }
+      localObject2 = ((FriendsManager)localObject2).c(paramQQAppInterface.getCurrentAccountUin());
+      if (localObject2 != null)
+      {
+        if (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB))
         {
-          localObject4 = (IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "");
-          paramString.saveExtInfoToExtStr("vip_font_id", String.valueOf(FontManagerConstants.generateFontValue((ExtensionInfo)localObject3)));
-          paramString.saveExtInfoToExtStr("vip_sub_font_id", String.valueOf(((IFontManagerService)localObject4).getVariedStyleIndex(((ExtensionInfo)localObject3).uVipFont)));
-          if (1 == ((ExtensionInfo)localObject3).magicFont) {
-            paramString.saveExtInfoToExtStr("vip_font_effect_id", String.valueOf(0));
+          if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_BIGCLUB) == 1) {
+            paramInt1 = 3;
           } else {
-            paramString.saveExtInfoToExtStr("vip_font_effect_id", String.valueOf(((ExtensionInfo)localObject3).fontEffect));
+            paramInt1 = 1;
           }
+          paramString.saveExtInfoToExtStr("bigClub_type", String.valueOf(paramInt1));
+          paramString.saveExtInfoToExtStr("bigClub_level", String.valueOf(((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_BIGCLUB)));
+          paramString.saveExtInfoToExtStr("vip_card_id", String.valueOf(((Friends)localObject2).bigClubTemplateId));
+          paramString.saveExtInfoToExtStr("vip_ext_card_id", String.valueOf(((Friends)localObject2).bigClubExtTemplateId));
         }
-        localObject2 = ((FriendsManager)localObject2).b(paramQQAppInterface.getCurrentAccountUin());
-        if (localObject2 != null)
+        if ((((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) || (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)))
         {
-          int i;
-          if (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_BIGCLUB))
+          int j;
+          if (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
           {
-            if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_BIGCLUB) == 1) {
-              i = 3;
+            paramInt1 = 256;
+            if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_SUPERVIP) == 1) {
+              paramInt1 = 258;
+            }
+            j = ((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_SUPERVIP);
+          }
+          else
+          {
+            if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_QQVIP) == 1) {
+              paramInt1 = 3;
             } else {
-              i = 1;
+              paramInt1 = 1;
             }
-            paramString.saveExtInfoToExtStr("bigClub_type", String.valueOf(i));
-            paramString.saveExtInfoToExtStr("bigClub_level", String.valueOf(((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_BIGCLUB)));
-            paramString.saveExtInfoToExtStr("vip_card_id", String.valueOf(((Friends)localObject2).bigClubTemplateId));
-            paramString.saveExtInfoToExtStr("vip_ext_card_id", String.valueOf(((Friends)localObject2).bigClubExtTemplateId));
+            j = ((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_QQVIP);
           }
-          if ((((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) || (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)))
-          {
-            int k;
-            if (((Friends)localObject2).isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP))
-            {
-              i = 256;
-              if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_SUPERVIP) == 1) {
-                i = 258;
-              }
-              k = ((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_SUPERVIP);
-            }
-            else
-            {
-              if (((Friends)localObject2).getServiceType(EVIPSPEC.E_SP_QQVIP) == 1) {
-                i = 3;
-              } else {
-                i = 1;
-              }
-              k = ((Friends)localObject2).getServiceLevel(EVIPSPEC.E_SP_QQVIP);
-            }
-            paramString.saveExtInfoToExtStr("vip_type", String.valueOf(i));
-            paramString.saveExtInfoToExtStr("vip_level", String.valueOf(k));
-          }
-          paramString.saveExtInfoToExtStr("vip_diy_font_id", String.valueOf(((Friends)localObject2).diyFontId));
+          paramString.saveExtInfoToExtStr("vip_type", String.valueOf(paramInt1));
+          paramString.saveExtInfoToExtStr("vip_level", String.valueOf(j));
         }
-        if (paramArrayList != null) {
-          AtTroopMemberSpan.a(m, paramArrayList, paramString);
-        }
-        if ((j == -1000) && (paramSendMsgParams.h)) {
-          paramString.saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(1));
-        }
+        paramString.saveExtInfoToExtStr("game_card_id", String.valueOf(((Friends)localObject2).gameCardId));
+        paramString.saveExtInfoToExtStr("vip_diy_font_id", String.valueOf(((Friends)localObject2).diyFontId));
+      }
+      if (paramArrayList != null) {
+        AtTroopMemberSpan.a(k, paramArrayList, paramString);
+      }
+      if ((i == -1000) && (paramSendMsgParams.x)) {
+        paramString.saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(1));
       }
     }
-    MessageRecordFactory.a(paramQQAppInterface, paramString, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_b_of_type_JavaLangString, paramInt1);
+    MessageRecordFactory.a(paramQQAppInterface, paramString, paramBaseSessionInfo.b, paramBaseSessionInfo.c, k);
     paramString.msg = ((String)localObject1);
     paramString.msgUid = MessageUtils.a(paramInt2);
     paramString.longMsgCount = paramByte1;
@@ -462,25 +420,25 @@ public class ChatActivityFacade
     paramString.longMsgId = paramShort;
     paramString.mAnimFlag = true;
     paramString.mNewAnimFlag = true;
-    if (paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqEmoticonStickerInfo != null)
+    if (paramSendMsgParams.B != null)
     {
-      paramString.saveExtInfoToExtStr("sticker_info", paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqEmoticonStickerInfo.toJsonString());
+      paramString.saveExtInfoToExtStr("sticker_info", paramSendMsgParams.B.toJsonString());
       EmojiStickerManager.a(paramString, null);
       EmojiStickerManager.a().a(paramString);
     }
-    if (paramSendMsgParams.i) {
+    if (paramSendMsgParams.y) {
       paramString.mRobotFlag = -1;
     }
-    if (paramSendMsgParams.jdField_g_of_type_Int != -1) {
-      paramString.saveExtInfoToExtStr("robot_news_class_id", String.valueOf(paramSendMsgParams.jdField_g_of_type_Int));
+    if (paramSendMsgParams.z != -1) {
+      paramString.saveExtInfoToExtStr("robot_news_class_id", String.valueOf(paramSendMsgParams.z));
     }
     if ((paramString instanceof MessageForReplyText))
     {
       localObject1 = (MessageForReplyText)paramString;
-      ((MessageForReplyText)localObject1).msgVia = paramBaseSessionInfo.c;
-      ((MessageForReplyText)localObject1).isBarrageMsg = paramSendMsgParams.jdField_d_of_type_Boolean;
-      ((MessageForReplyText)localObject1).barrageTimeLocation = paramSendMsgParams.jdField_b_of_type_Long;
-      ((MessageForReplyText)localObject1).barrageSourceMsgType = paramSendMsgParams.jdField_d_of_type_Int;
+      ((MessageForReplyText)localObject1).msgVia = paramBaseSessionInfo.s;
+      ((MessageForReplyText)localObject1).isBarrageMsg = paramSendMsgParams.i;
+      ((MessageForReplyText)localObject1).barrageTimeLocation = paramSendMsgParams.j;
+      ((MessageForReplyText)localObject1).barrageSourceMsgType = paramSendMsgParams.k;
       if (((MessageForReplyText)localObject1).isBarrageMsg)
       {
         ((MessageForReplyText)localObject1).saveExtInfoToExtStr("barrage_time_location", String.valueOf(((MessageForReplyText)localObject1).barrageTimeLocation));
@@ -491,65 +449,66 @@ public class ChatActivityFacade
       }
       try
       {
-        paramArrayList = HexUtil.bytes2HexStr(MessagePkgUtils.a(paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo));
-        ((MessageForReplyText)localObject1).mSourceMsgInfo = paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo;
+        paramArrayList = HexUtil.bytes2HexStr(MessagePkgUtils.a(paramSendMsgParams.h));
+        ((MessageForReplyText)localObject1).mSourceMsgInfo = paramSendMsgParams.h;
         ((MessageForReplyText)localObject1).saveExtInfoToExtStr("sens_msg_source_msg_info", paramArrayList);
         ((MessageForReplyText)localObject1).extLong |= 0x1;
         if (((MessageForReplyText)localObject1).mSourceMsgInfo.getSourceMsg() != null) {
           ((MessageForReplyText)localObject1).setSourceMessageRecord(((MessageForReplyText)localObject1).mSourceMsgInfo.unPackSourceMsg(paramQQAppInterface));
         }
-        if ((!android.text.TextUtils.isEmpty(paramSendMsgParams.jdField_a_of_type_JavaLangString)) && (!android.text.TextUtils.isEmpty(paramSendMsgParams.jdField_b_of_type_JavaLangString)))
+        if ((!android.text.TextUtils.isEmpty(paramSendMsgParams.l)) && (!android.text.TextUtils.isEmpty(paramSendMsgParams.m)))
         {
-          ((MessageForReplyText)localObject1).saveExtInfoToExtStr("sens_reply_special_msg", paramSendMsgParams.jdField_a_of_type_JavaLangString);
-          ((MessageForReplyText)localObject1).saveExtInfoToExtStr("sens_reply_special_at_list", paramSendMsgParams.jdField_b_of_type_JavaLangString);
+          ((MessageForReplyText)localObject1).saveExtInfoToExtStr("sens_reply_special_msg", paramSendMsgParams.l);
+          ((MessageForReplyText)localObject1).saveExtInfoToExtStr("sens_reply_special_at_list", paramSendMsgParams.m);
         }
-        if (paramSendMsgParams.jdField_e_of_type_Int <= 0) {
-          break label1210;
+        if (paramSendMsgParams.n > 0) {
+          ForwardOrderManager.a().a(paramString.uniseq, paramSendMsgParams.o, paramSendMsgParams.n);
         }
-        ForwardOrderManager.a().a(paramString.uniseq, paramSendMsgParams.jdField_c_of_type_Long, paramSendMsgParams.jdField_e_of_type_Int);
       }
       catch (Exception paramArrayList)
       {
-        if (!QLog.isColorLevel()) {
-          break label1210;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Save sourceMsgInfo exception:");
+          ((StringBuilder)localObject1).append(paramArrayList.getMessage());
+          QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
+          break label1216;
         }
       }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("Save sourceMsgInfo exception:");
-      ((StringBuilder)localObject1).append(paramArrayList.getMessage());
-      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
     }
     else
     {
       localObject1 = (MessageForText)paramString;
-      ((MessageForText)localObject1).msgVia = paramBaseSessionInfo.c;
+      ((MessageForText)localObject1).msgVia = paramBaseSessionInfo.s;
       if (paramArrayList != null) {
         ((MessageForText)localObject1).atInfoList = paramArrayList;
       }
       ((MessageForText)localObject1).setSendMsgParams(paramSendMsgParams);
     }
-    label1210:
+    label1216:
+    paramArrayList = "SendMsgBtn";
     if (paramString.istroop == 1) {
       AnonymousChatHelper.a().a(paramString);
-    } else if (AnonymousChatHelper.a().jdField_a_of_type_Boolean) {
-      AnonymousChatHelper.a().jdField_a_of_type_Boolean = false;
+    } else if (AnonymousChatHelper.a().j) {
+      AnonymousChatHelper.a().j = false;
     }
-    if (paramSendMsgParams.jdField_b_of_type_Boolean) {
-      DatingUtil.a(paramString);
+    if (paramSendMsgParams.b) {
+      DatingUtil.b(paramString);
     }
     if ((paramString.istroop != 1033) && (paramString.istroop != 1034))
     {
-      if (paramBaseSessionInfo.j) {
-        ConfessMsgUtil.a(paramQQAppInterface, paramString, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      } else if (paramBaseSessionInfo.k) {
-        ConfessMsgUtil.b(paramQQAppInterface, paramString, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramBaseSessionInfo.x) {
+        ConfessMsgUtil.a(paramQQAppInterface, paramString, paramBaseSessionInfo.b);
+      } else if (paramBaseSessionInfo.y) {
+        ConfessMsgUtil.b(paramQQAppInterface, paramString, paramBaseSessionInfo.b);
       }
     }
     else {
-      ConfessMsgUtil.a(paramQQAppInterface, paramString, paramString.frienduin, paramString.istroop, paramBaseSessionInfo.jdField_e_of_type_Int);
+      ConfessMsgUtil.a(paramQQAppInterface, paramString, paramString.frienduin, paramString.istroop, paramBaseSessionInfo.v);
     }
-    if (paramInt1 == 10007) {
-      TinyMsgCodec.a(paramQQAppInterface, paramString, paramString.frienduin, paramString.istroop);
+    if (k == 10007) {
+      RoleIdUtil.a(paramQQAppInterface, paramString, paramString.frienduin, paramString.istroop);
     }
     if (QLog.isColorLevel())
     {
@@ -560,38 +519,15 @@ public class ChatActivityFacade
       paramBaseSessionInfo.append(paramString.senderuin);
       paramBaseSessionInfo.append(" msgUid = ");
       paramBaseSessionInfo.append(paramString.msgUid);
-      QLog.d("SendMsgBtn", 2, paramBaseSessionInfo.toString());
+      QLog.d(paramArrayList, 2, paramBaseSessionInfo.toString());
     }
-    paramBoolean1 = paramSendMsgParams.f;
-    if ((!paramSendMsgParams.jdField_g_of_type_Boolean) || (paramBoolean1)) {}
-    try
-    {
-      ((LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(paramQQAppInterface, paramString, false);
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      label1496:
-      break label1496;
-    }
-    if (paramBoolean2)
-    {
-      paramQQAppInterface.getMessageFacade().b(paramString);
-    }
-    else
-    {
-      paramQQAppInterface.getMessageFacade().a(paramString, null);
-      break label1530;
-      QLog.e("ChatActivityFacade", 1, "life circle:", paramQQAppInterface);
-      break label1530;
-      ThreadManager.post(new ChatActivityFacade.13(paramBoolean1, paramQQAppInterface, paramString, paramBoolean2), 10, null, false);
-    }
-    label1530:
+    a(paramQQAppInterface, paramBoolean2, paramString, paramSendMsgParams);
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(" createMsgQueueAndSend end, currenttime:");
       paramQQAppInterface.append(System.currentTimeMillis());
-      QLog.d("SendMsgBtn", 2, paramQQAppInterface.toString());
+      QLog.d(paramArrayList, 2, paramQQAppInterface.toString());
     }
     return paramString.uniseq;
   }
@@ -606,7 +542,7 @@ public class ChatActivityFacade
       int i = MobileQQService.seq;
       MobileQQService.seq = i + 1;
       l1 = i;
-      paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, str, paramSessionInfo.jdField_a_of_type_JavaLangString, str, paramSessionInfo.jdField_a_of_type_Int, l1, paramArrayList);
+      paramSessionInfo = MessageRecordFactory.c(paramQQAppInterface, str, paramSessionInfo.b, str, paramSessionInfo.a, l1, paramArrayList);
       long l2 = paramSessionInfo.uniseq;
       paramSessionInfo.msgUid = MessageUtils.a(paramInt);
       l1 = l2;
@@ -621,25 +557,6 @@ public class ChatActivityFacade
       l1 = -1L;
     }
     return l1;
-  }
-  
-  public static long a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    MessageForPtt localMessageForPtt = (MessageForPtt)a(paramQQAppInterface, paramString, paramSessionInfo, -3, 0);
-    if (localMessageForPtt != null)
-    {
-      long l = localMessageForPtt.uniseq;
-      if (l != -1L)
-      {
-        int i = ((IQQRecorderTempApi)QRoute.api(IQQRecorderTempApi.class)).getFilePlayTime(localMessageForPtt);
-        int j = RecordParams.a(paramString);
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("DiyTextId", localMessageForPtt.vipBubbleDiyTextId);
-        a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramString, l, true, i * 1000, j, true, 0, 0, true, localMessageForPtt.vipSubBubbleId, localBundle);
-      }
-      return l;
-    }
-    return 0L;
   }
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
@@ -671,7 +588,7 @@ public class ChatActivityFacade
     }
     if (paramString != null)
     {
-      localMessageForPic = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+      localMessageForPic = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a);
       localMessageForPic.path = paramString;
       localMessageForPic.size = 0L;
       localMessageForPic.type = 1;
@@ -690,7 +607,7 @@ public class ChatActivityFacade
       ((StringBuilder)localObject1).append(" createMsgQueueAndSend start, currenttime:");
       ((StringBuilder)localObject1).append(System.currentTimeMillis());
       ((StringBuilder)localObject1).append(" sessionInfo.entrance:");
-      ((StringBuilder)localObject1).append(paramSessionInfo.c);
+      ((StringBuilder)localObject1).append(paramSessionInfo.s);
       QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramString != null) {
@@ -707,36 +624,36 @@ public class ChatActivityFacade
     }
     Object localObject2;
     Object localObject3;
-    if (paramSendMsgParams.jdField_e_of_type_Long != 0L)
+    if (paramSendMsgParams.u != 0L)
     {
       paramString = new MessageForWantGiftMsg();
       localObject2 = (MessageForWantGiftMsg)paramString;
-      ((MessageForWantGiftMsg)localObject2).wantGiftSenderUin = paramSendMsgParams.jdField_e_of_type_Long;
+      ((MessageForWantGiftMsg)localObject2).wantGiftSenderUin = paramSendMsgParams.u;
       localObject3 = MessageForWantGiftMsg.GIFT_SENDER_UIN;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramSendMsgParams.jdField_e_of_type_Long);
+      localStringBuilder.append(paramSendMsgParams.u);
       localStringBuilder.append("");
       ((MessageForWantGiftMsg)localObject2).saveExtInfoToExtStr((String)localObject3, localStringBuilder.toString());
       paramString.msgtype = -2056;
     }
-    else if ((paramSendMsgParams.jdField_c_of_type_JavaLangString != null) && (PasswdRedBagFoldManager.a(paramQQAppInterface)))
+    else if ((paramSendMsgParams.r != null) && (PasswdRedBagFoldManager.a(paramQQAppInterface)))
     {
       paramString = new MessageForFoldMsg();
-      ((MessageForFoldMsg)paramString).init(false, paramSendMsgParams.jdField_c_of_type_JavaLangString, paramSendMsgParams.jdField_d_of_type_JavaLangString, paramSendMsgParams.jdField_d_of_type_Long, true);
+      ((MessageForFoldMsg)paramString).init(false, paramSendMsgParams.r, paramSendMsgParams.s, paramSendMsgParams.p, true);
     }
-    else if ((paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo == null) && (paramSendMsgParams.f) && (LongTextMsgManager.a(paramQQAppInterface)))
+    else if ((paramSendMsgParams.h == null) && (paramSendMsgParams.v) && (LongTextMsgManager.a(paramQQAppInterface)))
     {
       paramString = (ChatMessage)MessageRecordFactory.a(-1051);
     }
     else
     {
-      if (paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null) {
+      if (paramSendMsgParams.h != null) {
         paramInt1 = -1049;
       } else {
         paramInt1 = -1000;
       }
       paramString = (ChatMessage)MessageRecordFactory.a(paramInt1);
-      localObject2 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramQQAppInterface.getCurrentUin(), false);
+      localObject2 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramQQAppInterface.getCurrentUin(), false);
       if (localObject2 != null)
       {
         localObject3 = (IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "");
@@ -749,13 +666,13 @@ public class ChatActivityFacade
         }
       }
       if (paramArrayList != null) {
-        AtTroopMemberSpan.a(paramSessionInfo.jdField_a_of_type_Int, paramArrayList, paramString);
+        AtTroopMemberSpan.a(paramSessionInfo.a, paramArrayList, paramString);
       }
-      if ((paramInt1 == -1000) && (paramSendMsgParams.h)) {
+      if ((paramInt1 == -1000) && (paramSendMsgParams.x)) {
         paramString.saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(1));
       }
     }
-    MessageRecordFactory.a(paramQQAppInterface, paramString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+    MessageRecordFactory.a(paramQQAppInterface, paramString, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a);
     paramString.msg = ((String)localObject1);
     paramString.msgUid = MessageUtils.a(paramInt2);
     paramString.longMsgCount = paramByte1;
@@ -763,26 +680,26 @@ public class ChatActivityFacade
     paramString.longMsgId = paramShort;
     paramString.mAnimFlag = true;
     paramString.mNewAnimFlag = true;
-    if (paramSendMsgParams.i) {
+    if (paramSendMsgParams.y) {
       paramString.mRobotFlag = -1;
     }
-    paramString.saveExtInfoToExtStr("robot_news_class_id", String.valueOf(paramSendMsgParams.jdField_g_of_type_Int));
+    paramString.saveExtInfoToExtStr("robot_news_class_id", String.valueOf(paramSendMsgParams.z));
     if ((paramString instanceof MessageForReplyText))
     {
       paramQQAppInterface = (MessageForReplyText)paramString;
-      paramQQAppInterface.msgVia = paramSessionInfo.c;
+      paramQQAppInterface.msgVia = paramSessionInfo.s;
       if (paramArrayList != null) {
         paramQQAppInterface.atInfoList = paramArrayList;
       }
       try
       {
-        paramQQAppInterface.saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(MessagePkgUtils.a(paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo)));
-        if ((!android.text.TextUtils.isEmpty(paramSendMsgParams.jdField_a_of_type_JavaLangString)) && (!android.text.TextUtils.isEmpty(paramSendMsgParams.jdField_b_of_type_JavaLangString)))
+        paramQQAppInterface.saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(MessagePkgUtils.a(paramSendMsgParams.h)));
+        if ((!android.text.TextUtils.isEmpty(paramSendMsgParams.l)) && (!android.text.TextUtils.isEmpty(paramSendMsgParams.m)))
         {
-          paramQQAppInterface.saveExtInfoToExtStr("sens_reply_special_msg", paramSendMsgParams.jdField_a_of_type_JavaLangString);
-          paramQQAppInterface.saveExtInfoToExtStr("sens_reply_special_at_list", paramSendMsgParams.jdField_b_of_type_JavaLangString);
+          paramQQAppInterface.saveExtInfoToExtStr("sens_reply_special_msg", paramSendMsgParams.l);
+          paramQQAppInterface.saveExtInfoToExtStr("sens_reply_special_at_list", paramSendMsgParams.m);
         }
-        paramQQAppInterface.mSourceMsgInfo = paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo;
+        paramQQAppInterface.mSourceMsgInfo = paramSendMsgParams.h;
         paramQQAppInterface.extLong |= 0x1;
       }
       catch (Exception paramQQAppInterface)
@@ -799,7 +716,7 @@ public class ChatActivityFacade
     else
     {
       paramQQAppInterface = (MessageForText)paramString;
-      paramQQAppInterface.msgVia = paramSessionInfo.c;
+      paramQQAppInterface.msgVia = paramSessionInfo.s;
       if (paramArrayList != null) {
         paramQQAppInterface.atInfoList = paramArrayList;
       }
@@ -808,11 +725,11 @@ public class ChatActivityFacade
     label752:
     if (paramString.istroop == 1) {
       AnonymousChatHelper.a().a(paramString);
-    } else if (AnonymousChatHelper.a().jdField_a_of_type_Boolean) {
-      AnonymousChatHelper.a().jdField_a_of_type_Boolean = false;
+    } else if (AnonymousChatHelper.a().j) {
+      AnonymousChatHelper.a().j = false;
     }
-    if (paramSendMsgParams.jdField_b_of_type_Boolean) {
-      DatingUtil.a(paramString);
+    if (paramSendMsgParams.b) {
+      DatingUtil.b(paramString);
     }
     if (QLog.isColorLevel())
     {
@@ -841,120 +758,37 @@ public class ChatActivityFacade
     if (str == null) {
       return null;
     }
+    paramString = new ArrayList();
     Object localObject = new ArrayList();
     Random localRandom = new Random();
-    for (;;)
+    ((ArrayList)localObject).add(str);
+    paramString.add(paramArrayList);
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        bool = a(paramSendMsgParams, false);
-        if (bool)
-        {
-          paramArrayList = b(str, paramArrayList, paramSendMsgParams, (ArrayList)localObject);
-          paramString = paramArrayList;
-          if (QLog.isColorLevel())
-          {
-            paramString = new StringBuilder();
-            paramString.append(" createTextMessage step 1, partAtInfoArrayLists.size() = ");
-            paramString.append(((ArrayList)localObject).size());
-            paramString.append(" mSourceMsgInfo:true, symbolLens:");
-            paramString.append(str.getBytes("utf-8").length);
-            paramString.append(" currenttime:");
-            paramString.append(System.currentTimeMillis());
-            QLog.d("SendMsgBtn", 2, paramString.toString());
-            paramString = paramArrayList;
-          }
-        }
-        else if (a(paramQQAppInterface, paramSessionInfo, str, paramSendMsgParams))
-        {
-          paramArrayList = a(str, paramArrayList, paramSendMsgParams, (ArrayList)localObject);
-          paramString = paramArrayList;
-          if (QLog.isColorLevel())
-          {
-            paramString = new StringBuilder();
-            paramString.append(" createTextMessage step 1, partAtInfoArrayLists.size() = ");
-            paramString.append(((ArrayList)localObject).size());
-            paramString.append(" isLongTextMsg:true, symbolLens:");
-            paramString.append(str.getBytes("utf-8").length);
-            paramString.append(" currenttime:");
-            paramString.append(System.currentTimeMillis());
-            QLog.d("SendMsgBtn", 2, paramString.toString());
-            paramString = paramArrayList;
-          }
-        }
-        else
-        {
-          paramString = BusinessUtils.a(str, 560, 20, paramArrayList, (ArrayList)localObject);
-          if (paramString.size() <= 1) {
-            break label638;
-          }
-          bool = true;
-          AIOConfigData localAIOConfigData = AIOConfigManager.a;
-          if (((localAIOConfigData == null) || (localAIOConfigData.jdField_g_of_type_Int == 0)) && (bool))
-          {
-            localObject = new ArrayList();
-            paramString = a(str, paramArrayList, paramSendMsgParams, (ArrayList)localObject);
-            s = 0;
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject;
-          }
-          else
-          {
-            if (QLog.isColorLevel())
-            {
-              paramArrayList = new StringBuilder();
-              paramArrayList.append(" createTextMessage step 1, partAtInfoArrayLists.size() = ");
-              paramArrayList.append(((ArrayList)localObject).size());
-              paramArrayList.append(" partArray.size() = ");
-              paramArrayList.append(paramString.size());
-              paramArrayList.append(" isDivide = ");
-              paramArrayList.append(bool);
-              paramArrayList.append(" currenttime:");
-              paramArrayList.append(System.currentTimeMillis());
-              QLog.d("SendMsgBtn", 2, paramArrayList.toString());
-            }
-            s = a(paramQQAppInterface, paramSessionInfo, bool, (short)0, localRandom);
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(" createTextMessage step 2, currenttime:");
-            ((StringBuilder)localObject).append(System.currentTimeMillis());
-            QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject).toString());
-          }
-          int i = Math.abs(localRandom.nextInt());
-          localObject = (String)paramString.get(0);
-          if (paramArrayList.size() > 0) {
-            paramArrayList = (ArrayList)paramArrayList.get(0);
-          } else {
-            paramArrayList = null;
-          }
-          if ((paramSessionInfo.jdField_a_of_type_Int == 3000) || (paramSessionInfo.jdField_a_of_type_Int == 1)) {
-            i = Math.abs(localRandom.nextInt());
-          }
-          return a(paramQQAppInterface, paramSessionInfo, (String)localObject, -1000, bool, (byte)paramString.size(), (byte)0, s, i, paramArrayList, paramSendMsgParams);
-        }
-      }
-      catch (UnsupportedEncodingException paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return null;
-      }
-      short s = 0;
-      boolean bool = false;
-      paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject;
-      continue;
-      label638:
-      bool = false;
+      paramArrayList = new StringBuilder();
+      paramArrayList.append(" createTextMessage step 2, currenttime:");
+      paramArrayList.append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, paramArrayList.toString());
     }
+    int i = Math.abs(localRandom.nextInt());
+    paramArrayList = (String)((ArrayList)localObject).get(0);
+    if (paramString.size() > 0) {
+      paramString = (ArrayList)paramString.get(0);
+    } else {
+      paramString = null;
+    }
+    if ((paramSessionInfo.a == 3000) || (paramSessionInfo.a == 1)) {
+      i = Math.abs(localRandom.nextInt());
+    }
+    return a(paramQQAppInterface, paramSessionInfo, paramArrayList, -1000, false, (byte)((ArrayList)localObject).size(), (byte)0, (short)0, i, paramString, paramSendMsgParams);
   }
   
   public static MessageForPtt a(QQAppInterface paramQQAppInterface, String paramString, BaseSessionInfo paramBaseSessionInfo, int paramInt1, int paramInt2)
   {
     if ((!android.text.TextUtils.isEmpty(paramString)) && (paramBaseSessionInfo != null))
     {
-      int i = paramBaseSessionInfo.jdField_a_of_type_Int;
-      MessageForPtt localMessageForPtt = MessageRecordFactory.a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_b_of_type_JavaLangString, i);
+      int i = paramBaseSessionInfo.a;
+      MessageForPtt localMessageForPtt = MessageRecordFactory.e(paramQQAppInterface, paramBaseSessionInfo.b, paramBaseSessionInfo.c, i);
       localMessageForPtt.url = MessageForPtt.getMsgFilePath(paramInt2, paramString);
       localMessageForPtt.fileSize = paramInt1;
       localMessageForPtt.itemType = 2;
@@ -967,41 +801,20 @@ public class ChatActivityFacade
       localMessageForPtt.voiceType = paramInt2;
       localMessageForPtt.longPttVipFlag = VipUtils.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin());
       AnonymousChatHelper.a().a(localMessageForPtt);
-      if ((paramBaseSessionInfo.jdField_a_of_type_Int != 1033) && ((paramBaseSessionInfo.jdField_a_of_type_Int != 1034) || (paramBaseSessionInfo.jdField_e_of_type_Int <= 0)))
+      if ((paramBaseSessionInfo.a != 1033) && ((paramBaseSessionInfo.a != 1034) || (paramBaseSessionInfo.v <= 0)))
       {
-        if (paramBaseSessionInfo.j) {
-          ConfessMsgUtil.a(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-        } else if (paramBaseSessionInfo.k) {
-          ConfessMsgUtil.b(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramBaseSessionInfo.x) {
+          ConfessMsgUtil.a(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.b);
+        } else if (paramBaseSessionInfo.y) {
+          ConfessMsgUtil.b(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.b);
         }
       }
       else {
-        ConfessMsgUtil.a(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_e_of_type_Int);
+        ConfessMsgUtil.a(paramQQAppInterface, localMessageForPtt, paramBaseSessionInfo.b, paramBaseSessionInfo.a, paramBaseSessionInfo.v);
       }
       localMessageForPtt.serial();
       ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForPtt);
       return localMessageForPtt;
-    }
-    return null;
-  }
-  
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (UinTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int))
-    {
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()))
-      {
-        int i = paramQQAppInterface.size() - 1;
-        while (i >= 0)
-        {
-          paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
-          if (!MessageRecordInfo.b(paramSessionInfo.issend)) {
-            return paramSessionInfo;
-          }
-          i -= 1;
-        }
-      }
     }
     return null;
   }
@@ -1023,7 +836,7 @@ public class ChatActivityFacade
     paramString = a(paramQQAppInterface, paramString, paramSessionInfo, paramInt1, paramInt2);
     if (paramString != null)
     {
-      paramString.msgVia = paramSessionInfo.c;
+      paramString.msgVia = paramSessionInfo.s;
       paramQQAppInterface.getMessageFacade().a(paramString, paramQQAppInterface.getCurrentAccountUin());
       return paramString;
     }
@@ -1063,7 +876,7 @@ public class ChatActivityFacade
           localObject4 = (ChatMessage)paramList.get(k);
           if (paramBoolean)
           {
-            localObject1 = (String)paramMap.get(MsgProxyUtils.a((MessageRecord)localObject4));
+            localObject1 = (String)paramMap.get(MsgProxyUtils.d((MessageRecord)localObject4));
             paramString = (String)localObject1;
             if (((ChatMessage)localObject4).istroop == 1) {
               paramString = com.tencent.mobileqq.text.TextUtils.removeColorNickCode((String)localObject1);
@@ -1091,7 +904,7 @@ public class ChatActivityFacade
           }
           else
           {
-            localObject1 = MultiMsgUtil.a(((ChatMessage)localObject4).senderuin);
+            localObject1 = MultiMsgUtil.b(((ChatMessage)localObject4).senderuin);
           }
           if ((localObject4 instanceof MessageForPic)) {
             paramString = ((ChatMessage)localObject4).getSummaryMsg();
@@ -1103,9 +916,9 @@ public class ChatActivityFacade
             if ((localObject4 instanceof MessageForShortVideo))
             {
               if (((ChatMessage)localObject4).msgtype == -2071) {
-                paramString = HardCodeUtil.a(2131701770);
+                paramString = HardCodeUtil.a(2131899788);
               } else {
-                paramString = HardCodeUtil.a(2131701779);
+                paramString = HardCodeUtil.a(2131899797);
               }
             }
             else if ((localObject4 instanceof MessageForText))
@@ -1176,7 +989,7 @@ public class ChatActivityFacade
                 if (!(localObject4 instanceof MessageForPtt)) {
                   break;
                 }
-                paramString = HardCodeUtil.a(2131701787);
+                paramString = HardCodeUtil.a(2131899805);
               }
             }
             else
@@ -1196,8 +1009,8 @@ public class ChatActivityFacade
           }
           k += 1;
         }
-        paramString = paramContext.getString(2131690793);
-        localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(35).a(HardCodeUtil.a(2131701786)).a(3).a("viewMultiMsg", "", null, null, null).a(paramString, null).a();
+        paramString = paramContext.getString(2131887723);
+        localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(35).a(HardCodeUtil.a(2131899804)).a(3).a("viewMultiMsg", "", null, null, null).a(paramString, null).a();
         Object localObject4 = new StructMsgItemLayout1();
         ChatMessage localChatMessage1 = (ChatMessage)paramList.get(0);
         if ((localChatMessage1.istroop != 1) && (localChatMessage1.istroop != 3000))
@@ -1238,12 +1051,12 @@ public class ChatActivityFacade
             else
             {
               QLog.d("MultiMsg_TAG", 2, "firstNick is null !!!");
-              paramString = MultiMsgUtil.a(localChatMessage1.senderuin);
+              paramString = MultiMsgUtil.b(localChatMessage1.senderuin);
             }
             if (((str == null) || (str.trim().length() == 0)) && (!paramBoolean))
             {
               QLog.d("MultiMsg_TAG", 2, "!hasOnlyOneSender !!! empty nick for receiver");
-              localObject1 = MultiMsgUtil.a((String)localObject1);
+              localObject1 = MultiMsgUtil.b((String)localObject1);
             }
             else
             {
@@ -1264,21 +1077,21 @@ public class ChatActivityFacade
           }
         }
         else {
-          paramContext = HardCodeUtil.a(2131701767);
+          paramContext = HardCodeUtil.a(2131899785);
         }
         paramString = paramContext;
         if (android.text.TextUtils.isEmpty(paramContext))
         {
           QLog.w("ChatActivityFacade", 1, "generateMultiMsgForwardStructMsg: titleStr is null");
-          paramString = HardCodeUtil.a(2131701783);
+          paramString = HardCodeUtil.a(2131899801);
         }
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG.Nest", 2, String.format("step.generateStructMsgContent:titleStr = %s,listSize = %d,firstMsg.istroop = %d", new Object[] { paramString, Integer.valueOf(paramList.size()), Integer.valueOf(localChatMessage1.istroop) }));
         }
         paramContext = new StructMsgItemTitle(paramString);
-        paramContext.f("34");
-        paramContext.g("12");
-        paramContext.h("2");
+        paramContext.g("34");
+        paramContext.h("12");
+        paramContext.i("2");
         ((AbsStructMsgItem)localObject4).a(paramContext);
         paramContext = localArrayList.iterator();
         while (paramContext.hasNext())
@@ -1287,17 +1100,17 @@ public class ChatActivityFacade
           if ((paramString instanceof AbsStructMsgTextElement))
           {
             paramMap = (AbsStructMsgTextElement)paramString;
-            paramMap.f("26");
-            paramMap.e("#777777");
-            paramMap.g("12");
-            paramMap.h("4");
+            paramMap.g("26");
+            paramMap.f("#777777");
+            paramMap.h("12");
+            paramMap.i("4");
           }
           ((AbsStructMsgItem)localObject4).a(paramString);
         }
         ((AbsStructMsgItem)localObject4).a(new StructMsgItemHr());
-        paramContext = new StructMsgItemSummary(String.format(HardCodeUtil.a(2131701764), new Object[] { Integer.valueOf(paramList.size()) }));
-        paramContext.f("26");
-        paramContext.e("#777777");
+        paramContext = new StructMsgItemSummary(String.format(HardCodeUtil.a(2131899782), new Object[] { Integer.valueOf(paramList.size()) }));
+        paramContext.g("26");
+        paramContext.f("#777777");
         ((AbsStructMsgItem)localObject4).a(paramContext);
         ((AbsShareMsg)localObject2).addItem((AbsStructMsgElement)localObject4);
         ((AbsShareMsg)localObject2).mTSum = paramList.size();
@@ -1350,7 +1163,7 @@ public class ChatActivityFacade
         if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramString)) {
           str = com.tencent.mobileqq.text.TextUtils.Symbol2FavoriteSymbol(paramString);
         }
-        if (!AnonymousChatHelper.a(paramMessageRecord)) {
+        if (!AnonymousChatHelper.c(paramMessageRecord)) {
           i = 60;
         }
         paramMessageRecord = a(paramContext, (int)(BaseChatItemLayout.f * 0.8F), 2, i, str).toString();
@@ -1367,7 +1180,7 @@ public class ChatActivityFacade
         if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramString)) {
           str = com.tencent.mobileqq.text.TextUtils.Symbol2FavoriteSymbol(paramString);
         }
-        if (!AnonymousChatHelper.a(paramMessageRecord)) {
+        if (!AnonymousChatHelper.c(paramMessageRecord)) {
           i = 60;
         }
         paramMessageRecord = a(paramContext, (int)(BaseChatItemLayout.f * 0.8F), 2, i, str).toString();
@@ -1378,11 +1191,11 @@ public class ChatActivityFacade
     if (paramMessageRecord.length() > 30) {
       paramString = paramMessageRecord.substring(0, 30);
     }
-    paramMessageRecord = paramContext.getString(2131690793);
-    paramContext = (StructMsgForGeneralShare)new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(35).a(paramString).a(3).a("viewMultiMsg", "", null, null, null).a(paramMessageRecord, null).d(paramContext.getResources().getString(2131694350)).a();
+    paramMessageRecord = paramContext.getString(2131887723);
+    paramContext = (StructMsgForGeneralShare)new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(35).a(paramString).a(3).a("viewMultiMsg", "", null, null, null).a(paramMessageRecord, null).d(paramContext.getResources().getString(2131892024)).a();
     paramMessageRecord = new StructMsgItemLayout1(localArrayList);
     paramMessageRecord.a(new StructMsgItemHr());
-    paramMessageRecord.a(new StructMsgItemSummary(HardCodeUtil.a(2131701766)));
+    paramMessageRecord.a(new StructMsgItemSummary(HardCodeUtil.a(2131899784)));
     paramContext.addItem(paramMessageRecord);
     return paramContext;
   }
@@ -1406,11 +1219,11 @@ public class ChatActivityFacade
         break;
       }
       j = i + 1;
-      float f = Layout.getDesiredWidth(paramCharSequence, 0, j, localTextPaint);
-      if ((f > paramInt1) && (paramArrayOfBoolean != null) && (paramArrayOfBoolean.length > 0)) {
+      float f1 = Layout.getDesiredWidth(paramCharSequence, 0, j, localTextPaint);
+      if ((f1 > paramInt1) && (paramArrayOfBoolean != null) && (paramArrayOfBoolean.length > 0)) {
         paramArrayOfBoolean[0] = true;
       }
-      if (f > paramInt2 * paramInt1)
+      if (f1 > paramInt2 * paramInt1)
       {
         j = i - 1;
         break;
@@ -1450,15 +1263,15 @@ public class ChatActivityFacade
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString1);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131701772));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131899790));
     ((StringBuilder)localObject).append(paramString2);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131701765));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131899783));
     localObject = ((StringBuilder)localObject).toString();
     if (paramBoolean)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString1);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131701789));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131899807));
       localObject = ((StringBuilder)localObject).toString();
     }
     TextView localTextView = new TextView(paramContext);
@@ -1490,7 +1303,7 @@ public class ChatActivityFacade
         {
           paramContext = new StringBuilder();
           paramContext.append((String)localObject);
-          paramContext.append(HardCodeUtil.a(2131701792));
+          paramContext.append(HardCodeUtil.a(2131899810));
           paramContext = paramContext.toString();
         }
         else
@@ -1505,7 +1318,7 @@ public class ChatActivityFacade
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramContext);
-          ((StringBuilder)localObject).append(HardCodeUtil.a(2131701780));
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131899798));
           paramContext = ((StringBuilder)localObject).toString();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramContext);
@@ -1521,7 +1334,7 @@ public class ChatActivityFacade
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramContext);
-          ((StringBuilder)localObject).append(HardCodeUtil.a(2131701788));
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131899806));
           paramContext = ((StringBuilder)localObject).toString();
         }
         localTextView.setText(paramContext);
@@ -1545,18 +1358,6 @@ public class ChatActivityFacade
       }
     }
     return localObject;
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    paramQQAppInterface = paramQQAppInterface.getCurrentUin();
-    paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    paramString = new StringBuilder(paramString);
-    paramString.append("_");
-    paramString.append(paramQQAppInterface);
-    paramString.append("_");
-    paramString.append(paramSessionInfo);
-    return paramString.toString();
   }
   
   private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -1624,13 +1425,13 @@ public class ChatActivityFacade
       {
         StringBuilder localStringBuilder2 = new StringBuilder();
         Object localObject2 = (ChatMessage)paramList.get(j);
-        Object localObject1 = (String)paramMap.get(MsgProxyUtils.a((MessageRecord)localObject2));
+        Object localObject1 = (String)paramMap.get(MsgProxyUtils.d((MessageRecord)localObject2));
         if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
           localObject1 = " ";
         }
         if ((localObject2 instanceof MessageForPic))
         {
-          localObject2 = HardCodeUtil.a(2131701790);
+          localObject2 = HardCodeUtil.a(2131899808);
           localStringBuilder2.append((String)localObject1);
           localStringBuilder2.append(": ");
           localStringBuilder2.append((String)localObject2);
@@ -1639,7 +1440,7 @@ public class ChatActivityFacade
         }
         else if ((localObject2 instanceof MessageForShortVideo))
         {
-          localObject2 = HardCodeUtil.a(2131701778);
+          localObject2 = HardCodeUtil.a(2131899796);
           localStringBuilder2.append((String)localObject1);
           localStringBuilder2.append(": ");
           localStringBuilder2.append((String)localObject2);
@@ -1717,22 +1518,12 @@ public class ChatActivityFacade
     return null;
   }
   
-  @NonNull
-  private static ArrayList<String> a(String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams, ArrayList<ArrayList<AtTroopMemberInfo>> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    paramArrayList1.add(paramArrayList);
-    paramSendMsgParams.f = true;
-    return localArrayList;
-  }
-  
   public static JSONObject a(NewestFeedInfo paramNewestFeedInfo, boolean paramBoolean, int paramInt)
   {
     if (paramNewestFeedInfo == null) {
       return null;
     }
-    Object localObject = HardCodeUtil.a(2131701785);
+    Object localObject = HardCodeUtil.a(2131899803);
     paramNewestFeedInfo.strTitle = paramNewestFeedInfo.strTitle.replaceAll("\\[em\\]e\\d{1,}\\[/em\\]", (String)localObject);
     paramNewestFeedInfo.strSummary = paramNewestFeedInfo.strSummary.replaceAll("\\[em\\]e\\d{1,}\\[/em\\]", (String)localObject);
     paramNewestFeedInfo.strContent = paramNewestFeedInfo.strContent.replaceAll("\\[em\\]e\\d{1,}\\[/em\\]", (String)localObject);
@@ -1783,7 +1574,7 @@ public class ChatActivityFacade
     if (paramStFeed == null) {
       return null;
     }
-    Object localObject1 = HardCodeUtil.a(2131701785);
+    Object localObject1 = HardCodeUtil.a(2131899803);
     paramStFeed.title.set(paramStFeed.title.get().replaceAll("\\[em\\]e\\d+\\[/em\\]", (String)localObject1));
     paramStFeed.content.set(paramStFeed.content.get().replaceAll("\\[em\\]e\\d+\\[/em\\]", (String)localObject1));
     localObject1 = new JSONObject();
@@ -1839,87 +1630,58 @@ public class ChatActivityFacade
     return null;
   }
   
-  private static short a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, boolean paramBoolean, short paramShort, Random paramRandom)
-  {
-    if (paramBoolean)
-    {
-      int i = MobileQQService.seq;
-      MobileQQService.seq = i + 1;
-      paramShort = (short)(byte)i;
-      i = 0;
-      short s;
-      for (;;)
-      {
-        s = paramShort;
-        if (!paramQQAppInterface.getMsgCache().a(paramQQAppInterface.getAccount(), paramBaseSessionInfo.jdField_a_of_type_Int, paramShort)) {
-          break;
-        }
-        if (i > 10)
-        {
-          s = (short)(byte)paramQQAppInterface.getMsgCache().a(paramQQAppInterface.getAccount(), paramBaseSessionInfo.jdField_a_of_type_Int);
-          break;
-        }
-        paramShort = (short)(byte)Math.abs(paramRandom.nextInt());
-        i += 1;
-      }
-      paramQQAppInterface.getMsgCache().a(paramQQAppInterface.getAccount(), paramBaseSessionInfo.jdField_a_of_type_Int, s);
-      paramShort = s;
-    }
-    return paramShort;
-  }
-  
   public static void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ChatActivityFacade", 2, "go to dismissActionSheet()!");
     }
-    ActionSheet localActionSheet1 = jdField_a_of_type_ComTencentWidgetActionSheet;
+    ActionSheet localActionSheet1 = c;
     if ((localActionSheet1 != null) && (localActionSheet1.isShowing())) {
       try
       {
-        jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        c.dismiss();
       }
       catch (Exception localException1)
       {
         localException1.printStackTrace();
       }
     }
-    jdField_a_of_type_ComTencentWidgetActionSheet = null;
-    ActionSheet localActionSheet2 = b;
+    c = null;
+    ActionSheet localActionSheet2 = e;
     if ((localActionSheet2 != null) && (localActionSheet2.isShowing())) {
       try
       {
-        b.dismiss();
+        e.dismiss();
       }
       catch (Exception localException2)
       {
         localException2.printStackTrace();
       }
     }
-    b = null;
+    e = null;
   }
   
   private static void a(int paramInt, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramInt);
-    j(paramQQAppInterface, paramSessionInfo);
+    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).c(paramSessionInfo.b, paramSessionInfo.a, paramInt);
+    x(paramQQAppInterface, paramSessionInfo);
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, Bundle paramBundle)
   {
     String str = SubString.a(paramString4, 45, "UTF-8", "...");
     paramString4 = SubString.a(paramString5, 90, "UTF-8", "...");
-    if (!paramContext.getResources().getString(2131696092).equals(str))
+    if (!paramContext.getResources().getString(2131893857).equals(str))
     {
       paramString3 = new StringBuilder();
-      paramString3.append(paramContext.getResources().getString(2131691285));
+      paramString3.append(paramContext.getResources().getString(2131888235));
       paramString3.append(" ");
       paramString3.append(str);
       paramString3 = paramString3.toString();
     }
     else
     {
-      paramString3 = paramContext.getResources().getString(2131691285);
+      paramString3 = paramContext.getResources().getString(2131888235);
     }
     paramString5 = new StringBuilder();
     paramString5.append("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=");
@@ -1934,15 +1696,15 @@ public class ChatActivityFacade
     paramString5.append(paramString6);
     paramString5 = paramString5.toString();
     paramString3 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(32).a(paramString3).d("").a("plugin", "", paramString5, "", "").a();
-    paramString5 = StructMsgElementFactory.a(2);
-    paramString5.a("https://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", str, paramString4);
-    paramString3.addItem(paramString5);
+    paramString6 = StructMsgElementFactory.a(2);
+    paramString6.a("https://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", str, paramString4);
+    paramString3.addItem(paramString6);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramSessionInfo != null)
     {
       bool1 = bool2;
-      if (paramSessionInfo.jdField_a_of_type_Int == 1008)
+      if (paramSessionInfo.a == 1008)
       {
         bool1 = bool2;
         if ((paramContext instanceof BaseActivity))
@@ -1951,16 +1713,16 @@ public class ChatActivityFacade
           bool1 = bool2;
           if (paramContext != null)
           {
-            paramContext = paramContext.a();
+            paramContext = paramContext.k();
             bool1 = bool2;
             if (paramContext != null)
             {
               bool1 = bool2;
-              if (paramContext.a != null)
+              if (paramContext.ah != null)
               {
                 bool1 = bool2;
                 if ((paramContext instanceof PublicAccountChatPie)) {
-                  bool1 = ((PublicAccountChatPie)paramContext).ac;
+                  bool1 = ((PublicAccountChatPie)paramContext).cG;
                 }
               }
             }
@@ -1968,13 +1730,13 @@ public class ChatActivityFacade
         }
       }
     }
-    if ((paramSessionInfo != null) && ((paramSessionInfo.jdField_a_of_type_Int == 1025) || (paramSessionInfo.jdField_a_of_type_Int == 1024) || ((paramSessionInfo.jdField_a_of_type_Int == 0) && (BmqqSegmentUtil.c(paramSessionInfo.jdField_a_of_type_JavaLangString))) || (bool1)))
+    if ((paramSessionInfo != null) && ((paramSessionInfo.a == 1025) || (paramSessionInfo.a == 1024) || ((paramSessionInfo.a == 0) && (BmqqSegmentUtil.c(paramSessionInfo.b))) || (bool1)))
     {
       paramContext = MessageRecordFactory.a(-1000);
-      long l = MessageCache.a();
-      int i = paramSessionInfo.jdField_a_of_type_Int;
+      long l = MessageCache.c();
+      int i = paramSessionInfo.a;
       paramString3 = new StringBuilder();
-      paramString3.append(ChatActivityConstants.jdField_a_of_type_JavaLangString);
+      paramString3.append(ChatActivityConstants.a);
       paramString3.append("http://maps.google.com/maps?q=");
       paramString3.append(paramString1);
       paramString3.append(",");
@@ -1983,7 +1745,7 @@ public class ChatActivityFacade
       paramString3.append(paramString4);
       paramString3.append(")");
       paramString1 = paramString3.toString();
-      paramContext.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), paramString1, l, -1000, i, l);
+      paramContext.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.b, paramQQAppInterface.getCurrentAccountUin(), paramString1, l, -1000, i, l);
       paramContext.issend = 1;
       paramQQAppInterface.getMessageFacade().a(paramContext, null);
       return;
@@ -1995,9 +1757,11 @@ public class ChatActivityFacade
       }
       if (a(paramSessionInfo, paramString4, paramBundle))
       {
+        a(paramString5, paramSessionInfo, paramString1, paramString2, str, paramString4, paramString3, paramString7, paramString8, paramString9);
         a(paramQQAppInterface, paramSessionInfo, paramString1, paramString2, str, paramString4, paramString3, paramString7, paramString8, paramString9);
         return;
       }
+      a(paramString5, paramSessionInfo, paramString3);
       a(paramQQAppInterface, paramSessionInfo, paramString3);
     }
   }
@@ -2008,11 +1772,11 @@ public class ChatActivityFacade
     if (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity)))
     {
       Object localObject = (BaseActivity)paramContext;
-      if ((((BaseActivity)localObject).getChatFragment() != null) && (((BaseActivity)localObject).getChatFragment().a() != null))
+      if ((((BaseActivity)localObject).getChatFragment() != null) && (((BaseActivity)localObject).getChatFragment().k() != null))
       {
-        ((BaseActivity)localObject).getChatFragment().a().a(paramChatMessage);
+        ((BaseActivity)localObject).getChatFragment().k().a(paramChatMessage);
         if ((paramChatMessage instanceof MessageForArkApp)) {
-          ArkTipsManager.a().a(paramChatMessage.uniseq);
+          ArkTipsManager.b().a(paramChatMessage.uniseq);
         }
         if (((StructLongMessageDownloadProcessor.isPALongMsg(paramChatMessage)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(paramChatMessage))) && ((paramChatMessage instanceof MessageForStructing))) {
           StructLongMessageDownloadProcessor.deleteTask(paramQQAppInterface, ((MessageForStructing)paramChatMessage).uniseq);
@@ -2023,7 +1787,7 @@ public class ChatActivityFacade
         if ((paramChatMessage instanceof MessageForFile))
         {
           paramContext = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramChatMessage);
-          paramQQAppInterface.getFileManagerEngine().b(paramContext.nSessionId);
+          paramQQAppInterface.getFileManagerEngine().c(paramContext.nSessionId);
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "6", "", "", "");
         }
         paramContext = paramChatMessage.getExtInfoFromExtStr("tim_aio_gary_uniseq");
@@ -2050,7 +1814,7 @@ public class ChatActivityFacade
             QLog.e("ChatActivityFacade", 1, paramContext.toString());
           }
         }
-        ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(paramChatMessage);
+        ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d.b(paramChatMessage);
         return;
       }
     }
@@ -2083,9 +1847,9 @@ public class ChatActivityFacade
   
   public static void a(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    boolean bool = paramSessionInfo.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin());
-    ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A2CE", "0X800A2CE", 0, 0, ChatActivityUtils.b(paramSessionInfo.jdField_a_of_type_Int), "", "", "");
+    String str = paramSessionInfo.b;
+    boolean bool = paramSessionInfo.b.equals(paramQQAppInterface.getCurrentAccountUin());
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A2CE", "0X800A2CE", 0, 0, ChatActivityUtils.c(paramSessionInfo.a), "", "", "");
     int i = 0;
     Object localObject;
     if (bool)
@@ -2094,104 +1858,104 @@ public class ChatActivityFacade
     }
     else
     {
-      if (paramSessionInfo.jdField_a_of_type_Int == 1024) {
-        CrmUtils.a(paramActivity, null, paramSessionInfo.jdField_a_of_type_JavaLangString, true, -1, true, 2000);
+      if (paramSessionInfo.a == 1024) {
+        CrmUtils.a(paramActivity, null, paramSessionInfo.b, true, -1, true, 2000);
       }
       for (;;)
       {
         localObject = null;
         i = 1;
         break label679;
-        if (paramSessionInfo.jdField_a_of_type_Int == 1001)
+        if (paramSessionInfo.a == 1001)
         {
           localObject = new AllInOne(str, 42);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 10002)
+        if (paramSessionInfo.a == 10002)
         {
           localObject = new AllInOne(str, 86);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 10004)
+        if (paramSessionInfo.a == 10004)
         {
           localObject = new AllInOne(str, 94);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 0)
+        if (paramSessionInfo.a == 0)
         {
           localObject = new AllInOne(str, 70);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1000)
+        if (paramSessionInfo.a == 1000)
         {
           localObject = new AllInOne(str, 22);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1020)
+        if (paramSessionInfo.a == 1020)
         {
           localObject = new AllInOne(str, 58);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1001)
+        if (paramSessionInfo.a == 1001)
         {
           localObject = new AllInOne(str, 42);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 10002)
+        if (paramSessionInfo.a == 10002)
         {
           localObject = new AllInOne(str, 86);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1004)
+        if (paramSessionInfo.a == 1004)
         {
           localObject = new AllInOne(str, 47);
-          ((AllInOne)localObject).discussUin = paramSessionInfo.jdField_b_of_type_JavaLangString;
+          ((AllInOne)localObject).discussUin = paramSessionInfo.c;
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1005)
+        if (paramSessionInfo.a == 1005)
         {
           localObject = new AllInOne(str, 2);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1023)
+        if (paramSessionInfo.a == 1023)
         {
           localObject = new AllInOne(str, 74);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1006)
+        if (paramSessionInfo.a == 1006)
         {
           localObject = new AllInOne(str, 34);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1009)
+        if (paramSessionInfo.a == 1009)
         {
           localObject = new AllInOne(str, 57);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1021)
+        if (paramSessionInfo.a == 1021)
         {
           localObject = new AllInOne(str, 72);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int == 1022)
+        if (paramSessionInfo.a == 1022)
         {
           localObject = new AllInOne(str, 27);
           break label679;
         }
-        if (paramSessionInfo.jdField_a_of_type_Int != 1025) {
+        if (paramSessionInfo.a != 1025) {
           break;
         }
         localObject = new Intent(paramActivity, ChatSettingActivity.class);
-        ((Intent)localObject).putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("uinname", paramSessionInfo.jdField_d_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("uin", paramSessionInfo.b);
+        ((Intent)localObject).putExtra("uinname", paramSessionInfo.e);
+        ((Intent)localObject).putExtra("uintype", paramSessionInfo.a);
         paramActivity.startActivity((Intent)localObject);
       }
-      if ((paramSessionInfo.jdField_a_of_type_Int != 1044) && (paramSessionInfo.jdField_a_of_type_Int != 1045))
+      if ((paramSessionInfo.a != 1044) && (paramSessionInfo.a != 1045))
       {
-        if (paramSessionInfo.jdField_a_of_type_Int == 10008) {
+        if (paramSessionInfo.a == 10008) {
           localObject = new AllInOne(str, 115);
-        } else if (paramSessionInfo.jdField_a_of_type_Int == 10010) {
+        } else if (paramSessionInfo.a == 10010) {
           localObject = new AllInOne(str, 117);
         } else {
           localObject = new AllInOne(str, 19);
@@ -2205,36 +1969,36 @@ public class ChatActivityFacade
     if (i == 0)
     {
       if (android.text.TextUtils.isEmpty(((AllInOne)localObject).nickname)) {
-        ((AllInOne)localObject).nickname = paramSessionInfo.jdField_d_of_type_JavaLangString;
+        ((AllInOne)localObject).nickname = paramSessionInfo.e;
       }
       ((AllInOne)localObject).reportExtra = NewReportPlugin.a(paramSessionInfo);
-      ((AllInOne)localObject).preWinUin = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      ((AllInOne)localObject).preWinType = paramSessionInfo.jdField_a_of_type_Int;
-      if ((paramSessionInfo.jdField_a_of_type_Int == 1000) || (paramSessionInfo.jdField_a_of_type_Int == 1020)) {
-        ((AllInOne)localObject).troopUin = paramSessionInfo.jdField_b_of_type_JavaLangString;
+      ((AllInOne)localObject).preWinUin = paramSessionInfo.b;
+      ((AllInOne)localObject).preWinType = paramSessionInfo.a;
+      if ((paramSessionInfo.a == 1000) || (paramSessionInfo.a == 1020)) {
+        ((AllInOne)localObject).troopUin = paramSessionInfo.c;
       }
       ((AllInOne)localObject).lastActivity = 2;
-      if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      if (paramSessionInfo.a == 0) {
         ((AllInOne)localObject).profileEntryType = 1;
       } else {
         ((AllInOne)localObject).profileEntryType = 106;
       }
-      if ((paramSessionInfo.jdField_a_of_type_Int != 1001) && (paramSessionInfo.jdField_a_of_type_Int != 1010) && (paramSessionInfo.jdField_a_of_type_Int != 10002))
+      if ((paramSessionInfo.a != 1001) && (paramSessionInfo.a != 1010) && (paramSessionInfo.a != 10002))
       {
         ProfileUtils.openProfileCard(paramActivity, (AllInOne)localObject);
         return;
       }
       Intent localIntent = new Intent(paramActivity, NearbyProfileCardConstants.class);
-      if (paramSessionInfo.jdField_a_of_type_Int == 1001)
+      if (paramSessionInfo.a == 1001)
       {
         ((AllInOne)localObject).profileEntryType = 10;
         localIntent.putExtra("frome_where", 21);
       }
-      else if (paramSessionInfo.jdField_a_of_type_Int == 1010)
+      else if (paramSessionInfo.a == 1010)
       {
         ((AllInOne)localObject).profileEntryType = 11;
       }
-      else if (paramSessionInfo.jdField_a_of_type_Int == 10002)
+      else if (paramSessionInfo.a == 10002)
       {
         localIntent.putExtra("frome_where", 22);
       }
@@ -2273,19 +2037,19 @@ public class ChatActivityFacade
         return;
       }
       paramBaseChatPie = AioVipDonateHelper.a();
-      int i = paramSessionInfo.jdField_a_of_type_Int;
+      int i = paramSessionInfo.a;
       boolean bool1 = paramBaseChatPie.a(paramQQAppInterface);
       boolean bool2 = paramBaseChatPie.b(paramQQAppInterface);
-      boolean bool3 = paramBaseChatPie.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString);
+      boolean bool3 = paramBaseChatPie.a(paramQQAppInterface, paramSessionInfo.b);
       if ((i == 0) && (bool1) && (bool2) && (bool3))
       {
-        Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences(AioVipDonateHelper.jdField_a_of_type_JavaLangString, 0);
+        Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences(AioVipDonateHelper.a, 0);
         if (!paramBoolean)
         {
-          long l1 = paramBaseChatPie.a(paramQQAppInterface);
+          long l1 = paramBaseChatPie.c(paramQQAppInterface);
           Object localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(AioVipDonateHelper.jdField_b_of_type_JavaLangString);
-          ((StringBuilder)localObject2).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(AioVipDonateHelper.b);
+          ((StringBuilder)localObject2).append(paramSessionInfo.b);
           long l2 = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L);
           if ((l1 > 0L) && (System.currentTimeMillis() - l2 > l1))
           {
@@ -2296,12 +2060,12 @@ public class ChatActivityFacade
               paramBaseChatPie.iSend = 0;
               paramBaseChatPie.sAid = "";
               paramBaseChatPie.sUin = paramQQAppInterface.getCurrentAccountUin();
-              paramBaseChatPie.sFriendUin = paramSessionInfo.jdField_a_of_type_JavaLangString;
+              paramBaseChatPie.sFriendUin = paramSessionInfo.b;
               ((VIPAioSendHandler)localObject2).a(paramBaseChatPie);
               paramBaseChatPie = ((SharedPreferences)localObject1).edit();
               paramQQAppInterface = new StringBuilder();
-              paramQQAppInterface.append(AioVipDonateHelper.jdField_b_of_type_JavaLangString);
-              paramQQAppInterface.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+              paramQQAppInterface.append(AioVipDonateHelper.b);
+              paramQQAppInterface.append(paramSessionInfo.b);
               paramBaseChatPie.putLong(paramQQAppInterface.toString(), System.currentTimeMillis());
               if (Build.VERSION.SDK_INT <= 8)
               {
@@ -2313,15 +2077,15 @@ public class ChatActivityFacade
             }
           }
         }
-        localObject1 = paramBaseChatPie.a(paramQQAppInterface);
-        if ((paramBaseChatPie.c(paramQQAppInterface)) && (!android.text.TextUtils.isEmpty((CharSequence)localObject1)))
+        localObject1 = paramBaseChatPie.e(paramQQAppInterface);
+        if ((paramBaseChatPie.d(paramQQAppInterface)) && (!android.text.TextUtils.isEmpty((CharSequence)localObject1)))
         {
-          if (!localFriendChatPie.D) {
+          if (!localFriendChatPie.bl) {
             return;
           }
           paramBaseChatPie.a(paramQQAppInterface, 0);
-          FileManagerDataCenter.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, -4022);
-          paramQQAppInterface.getFileManagerDataCenter().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_Int, -4022, (String)localObject1);
+          FileManagerDataCenter.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.a, -4022);
+          paramQQAppInterface.getFileManagerDataCenter().a(paramSessionInfo.b, paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.a, -4022, (String)localObject1);
         }
       }
     }
@@ -2330,7 +2094,7 @@ public class ChatActivityFacade
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, long paramLong1, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2, int paramInt4, int paramInt5, boolean paramBoolean3, long paramLong2, Bundle paramBundle)
   {
     boolean bool = true;
-    if ((!paramBoolean2) && (!a(paramQQAppInterface, paramString1, paramInt1, paramLong1)) && (!paramBoolean1) && (StreamDataManager.a(paramString2) >= 1))
+    if ((!paramBoolean2) && (!a(paramQQAppInterface, paramString1, paramInt1, paramLong1)) && (!paramBoolean1) && (StreamDataManager.c(paramString2) >= 1))
     {
       StreamDataManager.a(paramString2, paramQQAppInterface, paramString1, paramLong1, paramInt2, paramInt3, paramLong2, paramBundle);
       return;
@@ -2382,7 +2146,7 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, long paramLong1, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2, int paramInt4, int paramInt5, boolean paramBoolean3, long paramLong2, Bundle paramBundle, ArrayList<AtTroopMemberInfo> paramArrayList, String paramString3, boolean paramBoolean4, MessageRecord paramMessageRecord, int paramInt6)
   {
-    if ((!paramBoolean2) && (!a(paramQQAppInterface, paramString1, paramInt1, paramLong1)) && (!paramBoolean1) && (StreamDataManager.a(paramString2) >= 1))
+    if ((!paramBoolean2) && (!a(paramQQAppInterface, paramString1, paramInt1, paramLong1)) && (!paramBoolean1) && (StreamDataManager.c(paramString2) >= 1))
     {
       StreamDataManager.a(paramString2, paramQQAppInterface, paramString1, paramLong1, paramInt2, paramInt3, paramLong2, paramBundle);
       return;
@@ -2453,7 +2217,7 @@ public class ChatActivityFacade
     }
     if (((paramEmoticon.jobType == 0) || (paramEmoticon.jobType == 2) || (paramEmoticon.jobType == 4)) && (!paramEmoticon.hasEncryptKey()))
     {
-      Toast.makeText(paramContext, paramContext.getString(2131692131), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131889112), 0).show();
       a(paramQQAppInterface, paramEmoticon);
       paramQQAppInterface = paramEmoticon.epId;
       paramBaseSessionInfo = paramEmoticon.eId;
@@ -2495,24 +2259,24 @@ public class ChatActivityFacade
     if (paramString == null) {
       return;
     }
-    ImageUtil.a(-1L, paramBaseSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.sendIMEEXpression");
+    ImageUtil.a(-1L, paramBaseSessionInfo.a, true, "image_send_prepare", "ChatActivity.sendIMEEXpression");
     if (!FileUtils.fileExistsAndNotEmpty(paramString))
     {
-      ChatActivityUtils.a(paramContext, 2131694909, 0);
-      ImageUtil.a(-1L, paramBaseSessionInfo.jdField_a_of_type_Int, true, "image_send_prepared_failed", "ChatActivity.sendIMEEXpression");
+      ChatActivityUtils.a(paramContext, 2131892635, 0);
+      ImageUtil.a(-1L, paramBaseSessionInfo.a, true, "image_send_prepared_failed", "ChatActivity.sendIMEEXpression");
       return;
     }
     paramContext = new PicUploadInfo.Builder();
     paramContext.a(paramString);
     paramContext.d(paramInt);
-    paramContext.d(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    paramContext.d(paramBaseSessionInfo.b);
     paramContext.c(0);
-    paramContext.e(paramBaseSessionInfo.jdField_b_of_type_JavaLangString);
+    paramContext.e(paramBaseSessionInfo.c);
     paramContext.c(paramQQAppInterface.getCurrentAccountUin());
-    paramContext.e(paramBaseSessionInfo.jdField_a_of_type_Int);
-    paramContext.l(paramBaseSessionInfo.jdField_e_of_type_Int);
+    paramContext.e(paramBaseSessionInfo.a);
+    paramContext.l(paramBaseSessionInfo.v);
     PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, paramInt);
-    localPicReq.a(paramContext.a());
+    localPicReq.a(paramContext.k());
     ((IPicBus)QRoute.api(IPicBus.class)).launch(localPicReq);
     ThreadManager.post(new ChatActivityFacade.11(paramString, paramBaseSessionInfo, paramQQAppInterface), 5, null, false);
   }
@@ -2537,10 +2301,10 @@ public class ChatActivityFacade
       }
       return;
     }
-    ImageUtil.a(-1L, paramBaseSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.sendCustomEmotion");
+    ImageUtil.a(-1L, paramBaseSessionInfo.a, true, "image_send_prepare", "ChatActivity.sendCustomEmotion");
     if (!FileUtils.fileExistsAndNotEmpty(paramString1))
     {
-      ChatActivityUtils.a(paramContext, 2131694909, 0);
+      ChatActivityUtils.a(paramContext, 2131892635, 0);
       if (paramBoolean1) {
         VasReportUtils.a("emotionType", "emotionActionSend", "6", "", "", "", "", "", "", "");
       }
@@ -2553,16 +2317,16 @@ public class ChatActivityFacade
     Object localObject1 = new PicUploadInfo.Builder();
     ((PicUploadInfo.Builder)localObject1).a(paramString1);
     ((PicUploadInfo.Builder)localObject1).d(1006);
-    ((PicUploadInfo.Builder)localObject1).d(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    ((PicUploadInfo.Builder)localObject1).d(paramBaseSessionInfo.b);
     ((PicUploadInfo.Builder)localObject1).c(0);
-    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.jdField_b_of_type_JavaLangString);
+    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.c);
     ((PicUploadInfo.Builder)localObject1).c(paramQQAppInterface.getCurrentAccountUin());
-    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.jdField_a_of_type_Int);
-    ((PicUploadInfo.Builder)localObject1).l(paramBaseSessionInfo.jdField_e_of_type_Int);
+    ((PicUploadInfo.Builder)localObject1).e(paramBaseSessionInfo.a);
+    ((PicUploadInfo.Builder)localObject1).l(paramBaseSessionInfo.v);
     Object localObject2 = (IPicBus)QRoute.api(IPicBus.class);
     int i = 2;
     localObject2 = ((IPicBus)localObject2).createPicReq(2, 1006);
-    ((PicReq)localObject2).a(((PicUploadInfo.Builder)localObject1).a());
+    ((PicReq)localObject2).a(((PicUploadInfo.Builder)localObject1).k());
     PicMessageExtraData localPicMessageExtraData = new PicMessageExtraData();
     localObject1 = "";
     if (paramBoolean3)
@@ -2598,13 +2362,13 @@ public class ChatActivityFacade
     }
     else if (paramBoolean3)
     {
-      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131691280);
+      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131888230);
     }
     else
     {
-      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131691279);
+      localPicMessageExtraData.textSummary = paramContext.getResources().getString(2131888229);
     }
-    ((PicReq)localObject2).jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData = localPicMessageExtraData;
+    ((PicReq)localObject2).i = localPicMessageExtraData;
     ((IPicBus)QRoute.api(IPicBus.class)).launch((PicReq)localObject2);
     if (paramBoolean1) {
       ThreadManager.post(new ChatActivityFacade.12(paramString1, paramBaseSessionInfo, paramQQAppInterface), 5, null, false);
@@ -2613,7 +2377,7 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (1024 == paramSessionInfo.jdField_a_of_type_Int) {
+    if (1024 == paramSessionInfo.a) {
       return;
     }
     int i = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getLocalSelfAddFriendSetting(paramQQAppInterface);
@@ -2622,7 +2386,7 @@ public class ChatActivityFacade
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("single way add allow insert ");
-      ((StringBuilder)localObject1).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramSessionInfo.b);
       ((StringBuilder)localObject1).append(" settingValue:");
       ((StringBuilder)localObject1).append(i);
       QLog.d("ChatActivityFacade", 4, ((StringBuilder)localObject1).toString());
@@ -2641,7 +2405,7 @@ public class ChatActivityFacade
       }
       if (!ChatActivityUtils.a(paramContext, paramSessionInfo, (String)localObject1))
       {
-        Object localObject2 = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, 0).iterator();
+        Object localObject2 = paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, 0).iterator();
         while (((Iterator)localObject2).hasNext()) {
           if (((MessageRecord)((Iterator)localObject2).next()).msgtype == i)
           {
@@ -2655,7 +2419,7 @@ public class ChatActivityFacade
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("single way add allow insert ");
-          ((StringBuilder)localObject2).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(paramSessionInfo.b);
           ((StringBuilder)localObject2).append(" hasInserted:");
           ((StringBuilder)localObject2).append(bool);
           QLog.d("ChatActivityFacade", 4, ((StringBuilder)localObject2).toString());
@@ -2664,8 +2428,8 @@ public class ChatActivityFacade
         {
           ChatActivityUtils.b(paramContext, paramSessionInfo, (String)localObject1);
           paramContext = (MessageForGrayTips)MessageRecordFactory.a(i);
-          long l = MessageCache.a() + 1L;
-          paramContext.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, "", l, i, paramSessionInfo.jdField_a_of_type_Int, l);
+          long l = MessageCache.c() + 1L;
+          paramContext.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.b, paramSessionInfo.b, "", l, i, paramSessionInfo.a, l);
           paramContext.setTextGravity(17);
           paramContext.isread = true;
           if (!MessageHandlerUtils.a(paramQQAppInterface, paramContext, false)) {
@@ -2685,7 +2449,7 @@ public class ChatActivityFacade
     paramContext.pokeemoPressCount = paramInt2;
     paramContext.summary = PEPanelHelper.a(paramInt1);
     paramContext.initMsg();
-    MessageRecordFactory.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+    MessageRecordFactory.a(paramQQAppInterface, paramContext, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a);
     paramQQAppInterface.getMessageFacade().a(paramContext, null);
     if (QLog.isColorLevel()) {
       QLog.d("ChatActivityFacade", 2, String.format(" sendPokeEmoMsg.pokeemoID = %d,count = %d,summary = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
@@ -2701,18 +2465,18 @@ public class ChatActivityFacade
   {
     if (!PokeItemHelper.a(paramQQAppInterface, paramSessionInfo))
     {
-      if (jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null)
+      if (b == null)
       {
-        jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(paramContext, 2131689926, 0);
-        PokeItemAnimationManager.a().a(3);
-        PokeItemAnimationManager.a().a(6);
-        PokeItemAnimationManager.a().a(12);
-        PokeItemAnimationManager.a().a(15);
-        PokeItemAnimationManager.a().a(18);
-        PokeItemAnimationManager.a().a(9);
+        b = QQToast.makeText(paramContext, 2131886567, 0);
+        PokeItemAnimationManager.c().a(3);
+        PokeItemAnimationManager.c().a(6);
+        PokeItemAnimationManager.c().a(12);
+        PokeItemAnimationManager.c().a(15);
+        PokeItemAnimationManager.c().a(18);
+        PokeItemAnimationManager.c().a(9);
       }
-      if (!jdField_a_of_type_ComTencentMobileqqWidgetQQToast.d()) {
-        jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
+      if (!b.isShowing()) {
+        b.show();
       }
       return;
     }
@@ -2723,7 +2487,7 @@ public class ChatActivityFacade
     paramContext.subId = paramInt2;
     paramContext.name = paramString1;
     paramContext.minVersion = paramString2;
-    paramContext.strength = PokeItemAnimationManager.a().a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramContext.interactType, paramInt3, -1);
+    paramContext.strength = PokeItemAnimationManager.c().a(paramQQAppInterface, paramSessionInfo.b, paramContext.interactType, paramInt3, -1);
     if ((paramInt3 == 3) || (paramInt3 == 4))
     {
       paramInt2 = paramContext.flag;
@@ -2735,7 +2499,7 @@ public class ChatActivityFacade
       paramContext.flag = (paramInt2 | paramInt1);
       paramContext.isPlayed = true;
     }
-    MessageRecordFactory.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+    MessageRecordFactory.a(paramQQAppInterface, paramContext, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a);
     paramContext.initMsg();
     if (QLog.isColorLevel())
     {
@@ -2765,11 +2529,11 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, long paramLong)
   {
-    paramContext = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+    paramContext = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, paramSessionInfo.a, paramLong);
     if ((paramContext != null) && (paramContext.isSendFromLocal())) {
       ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(paramContext.frienduin, paramContext.uniseq));
     }
-    paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+    paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a, paramLong);
     paramContext = MessageRecordFactory.a(paramContext);
     paramQQAppInterface.getMessageFacade().a(paramContext, null, true);
   }
@@ -2781,10 +2545,10 @@ public class ChatActivityFacade
     if ((!bool1) && (!bool2)) {
       return;
     }
-    if (paramForwardFileInfo.jdField_a_of_type_Int > 0) {
-      paramInt = paramForwardFileInfo.jdField_a_of_type_Int;
+    if (paramForwardFileInfo.a > 0) {
+      paramInt = paramForwardFileInfo.a;
     }
-    paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.b(), paramForwardFileInfo.e(), paramForwardFileInfo.a(), Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), paramSessionInfo.jdField_a_of_type_Int, paramForwardFileInfo.a(), paramForwardFileInfo.c(), paramInt);
+    paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.e(), paramForwardFileInfo.k(), paramForwardFileInfo.b(), Long.parseLong(paramSessionInfo.b), paramSessionInfo.a, paramForwardFileInfo.a(), paramForwardFileInfo.f(), paramInt);
     if (paramIntent.getBooleanExtra("not_forward", false))
     {
       paramIntent.removeExtra("not_forward");
@@ -2801,7 +2565,7 @@ public class ChatActivityFacade
   {
     int i;
     if ((paramInt <= 0) && (paramForwardFileInfo != null)) {
-      i = paramForwardFileInfo.jdField_a_of_type_Int;
+      i = paramForwardFileInfo.a;
     } else {
       i = paramInt;
     }
@@ -2819,7 +2583,7 @@ public class ChatActivityFacade
       }
       return;
     }
-    if ((paramForwardFileInfo != null) && (paramForwardFileInfo.b() == 10006) && (android.text.TextUtils.isEmpty(paramForwardFileInfo.a())))
+    if ((paramForwardFileInfo != null) && (paramForwardFileInfo.c() == 10006) && (android.text.TextUtils.isEmpty(paramForwardFileInfo.d())))
     {
       a(paramQQAppInterface, paramContext, paramSessionInfo, paramIntent, paramString, paramForwardFileInfo, paramInt);
       return;
@@ -2829,12 +2593,12 @@ public class ChatActivityFacade
       if (paramIntent.getBooleanExtra("sendMultiple", false)) {
         return;
       }
-      if (paramSessionInfo.jdField_a_of_type_Int == 1)
+      if (paramSessionInfo.a == 1)
       {
-        paramQQAppInterface.getFileManagerEngine().a(paramString, paramSessionInfo.jdField_a_of_type_JavaLangString, 0L, i);
+        paramQQAppInterface.getFileManagerEngine().a(paramString, paramSessionInfo.b, 0L, i);
         return;
       }
-      paramQQAppInterface.getFileManagerEngine().a(paramString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true, 0L, i);
+      paramQQAppInterface.getFileManagerEngine().a(paramString, paramSessionInfo.c, paramSessionInfo.b, paramSessionInfo.a, true, 0L, i);
       return;
     }
     if (!paramIntent.getBooleanExtra("not_forward", false)) {
@@ -2842,12 +2606,12 @@ public class ChatActivityFacade
     }
     paramString = null;
     if (paramForwardFileInfo != null) {
-      paramString = paramQQAppInterface.getFileManagerDataCenter().b(paramForwardFileInfo.b());
+      paramString = paramQQAppInterface.getFileManagerDataCenter().b(paramForwardFileInfo.e());
     }
     String str = paramString;
     if (paramString == null)
     {
-      paramString = QfavHelper.a(paramIntent.getExtras(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+      paramString = QfavHelper.a(paramIntent.getExtras(), paramSessionInfo.b, paramSessionInfo.a);
       str = paramString;
       if (paramString != null)
       {
@@ -2859,11 +2623,11 @@ public class ChatActivityFacade
     {
       paramString = new StringBuilder();
       paramString.append("there has a Bug!,sissionId[");
-      paramString.append(paramForwardFileInfo.b());
+      paramString.append(paramForwardFileInfo.e());
       paramString.append("]");
       QLog.e("ChatActivityFacade", 2, paramString.toString());
     }
-    paramInt = paramForwardFileInfo.b();
+    paramInt = paramForwardFileInfo.c();
     if (paramInt != 10006)
     {
       if (paramInt != 10013)
@@ -2878,133 +2642,133 @@ public class ChatActivityFacade
       default: 
         break;
       case 10003: 
-        paramContext = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
-        paramQQAppInterface.getFileManagerEngine().b(paramContext, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, i);
+        paramContext = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.e());
+        paramQQAppInterface.getFileManagerEngine().b(paramContext, paramSessionInfo.c, paramSessionInfo.b, paramSessionInfo.a, i);
         break;
       case 10002: 
-        if (paramSessionInfo.jdField_a_of_type_Int == 1)
+        if (paramSessionInfo.a == 1)
         {
-          if (FileUtil.a(paramForwardFileInfo.a()))
+          if (FileUtil.b(paramForwardFileInfo.d()))
           {
-            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.a(), paramSessionInfo.jdField_a_of_type_JavaLangString);
+            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.d(), paramSessionInfo.b);
           }
           else
           {
-            paramForwardFileInfo.b();
-            paramContext = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
+            paramForwardFileInfo.e();
+            paramContext = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.e());
             if ((paramContext != null) && (paramContext.peerType == 3000))
             {
-              paramSessionInfo = paramQQAppInterface.getFileManagerEngine().a(paramContext, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramContext.peerType, false);
+              paramSessionInfo = paramQQAppInterface.getFileManagerEngine().a(paramContext, paramSessionInfo.c, paramSessionInfo.b, paramContext.peerType, false);
               paramSessionInfo.selfUin = paramContext.peerUin;
-              paramQQAppInterface.getFileManagerEngine().a(paramSessionInfo, 27, paramForwardFileInfo.c(), i);
+              paramQQAppInterface.getFileManagerEngine().a(paramSessionInfo, 27, paramForwardFileInfo.f(), i);
             }
             else
             {
-              paramQQAppInterface.getFileManagerEngine().a(3, paramForwardFileInfo.b(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramForwardFileInfo.c(), i);
+              paramQQAppInterface.getFileManagerEngine().a(3, paramForwardFileInfo.e(), paramSessionInfo.b, paramForwardFileInfo.f(), i);
             }
           }
         }
         else
         {
-          paramString = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
+          paramString = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.e());
           if ((paramString != null) && (paramString.status == 16))
           {
             if (paramContext != null) {
-              FileManagerUtil.a(paramContext.getResources().getString(2131692717));
+              FileManagerUtil.l(paramContext.getResources().getString(2131889788));
             }
             return;
           }
           paramContext = paramQQAppInterface.getCurrentAccountUin();
-          if ((paramSessionInfo.jdField_a_of_type_Int == 1004) || (paramSessionInfo.jdField_a_of_type_Int == 1000)) {
-            paramContext = paramSessionInfo.jdField_b_of_type_JavaLangString;
+          if ((paramSessionInfo.a == 1004) || (paramSessionInfo.a == 1000)) {
+            paramContext = paramSessionInfo.c;
           }
           if ((paramString != null) && (paramString.peerType == 3000))
           {
-            paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true, paramForwardFileInfo.c(), i);
+            paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.b, paramSessionInfo.a, true, paramForwardFileInfo.f(), i);
             paramContext.selfUin = paramString.peerUin;
-            if ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1006) && (paramSessionInfo.jdField_a_of_type_Int != 1004) && (paramSessionInfo.jdField_a_of_type_Int != 1000) && (paramSessionInfo.jdField_a_of_type_Int != 1001) && (paramSessionInfo.jdField_a_of_type_Int != 10002) && (paramSessionInfo.jdField_a_of_type_Int != 1006))
+            if ((paramSessionInfo.a != 0) && (paramSessionInfo.a != 1006) && (paramSessionInfo.a != 1004) && (paramSessionInfo.a != 1000) && (paramSessionInfo.a != 1001) && (paramSessionInfo.a != 10002) && (paramSessionInfo.a != 1006))
             {
-              if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+              if (paramSessionInfo.a == 3000)
               {
                 paramContext.nOpType = 22;
-                paramQQAppInterface.getFileManagerEngine().a(paramContext, 22);
+                paramQQAppInterface.getFileManagerEngine().c(paramContext, 22);
               }
             }
             else
             {
               paramContext.nOpType = 21;
-              paramQQAppInterface.getFileManagerEngine().a(paramContext, 21);
+              paramQQAppInterface.getFileManagerEngine().c(paramContext, 21);
             }
             paramQQAppInterface.getFileManagerDataCenter().c(paramContext);
           }
           else
           {
-            paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true, paramForwardFileInfo.c(), i);
-            if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+            paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.b, paramSessionInfo.a, true, paramForwardFileInfo.f(), i);
+            if (paramSessionInfo.a == 3000) {
               paramContext.nOpType = 28;
             }
-            paramQQAppInterface.getFileManagerEngine().a(paramContext);
+            paramQQAppInterface.getFileManagerEngine().e(paramContext);
             paramQQAppInterface.getFileManagerDataCenter().c(paramContext);
           }
         }
         break;
       case 10001: 
       case 10004: 
-        if (paramSessionInfo.jdField_a_of_type_Int == 1)
+        if (paramSessionInfo.a == 1)
         {
-          if (FileUtil.a(paramForwardFileInfo.a()))
+          if (FileUtil.b(paramForwardFileInfo.d()))
           {
-            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, 0L, i);
+            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.d(), paramSessionInfo.b, 0L, i);
           }
           else
           {
-            paramString = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
+            paramString = paramQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.e());
             paramContext = paramQQAppInterface.getCurrentAccountUin();
-            if ((paramSessionInfo.jdField_a_of_type_Int == 1004) || (paramSessionInfo.jdField_a_of_type_Int == 1000)) {
-              paramContext = paramSessionInfo.jdField_b_of_type_JavaLangString;
+            if ((paramSessionInfo.a == 1004) || (paramSessionInfo.a == 1000)) {
+              paramContext = paramSessionInfo.c;
             }
             if ((paramString != null) && (paramString.peerType == 3000))
             {
-              paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.jdField_a_of_type_JavaLangString, paramString.peerType, false);
+              paramContext = paramQQAppInterface.getFileManagerEngine().a(paramString, paramContext, paramSessionInfo.b, paramString.peerType, false);
               paramContext.selfUin = paramString.peerUin;
-              paramQQAppInterface.getFileManagerEngine().a(paramContext, 27);
+              paramQQAppInterface.getFileManagerEngine().c(paramContext, 27);
             }
             else
             {
-              paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.b(), paramSessionInfo.jdField_a_of_type_JavaLangString, i);
+              paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.e(), paramSessionInfo.b, i);
             }
           }
         }
         else
         {
-          paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.b(), paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true, i);
+          paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.e(), paramSessionInfo.c, paramSessionInfo.b, paramSessionInfo.a, true, i);
           break;
-          if (paramSessionInfo.jdField_a_of_type_Int == 1)
+          if (paramSessionInfo.a == 1)
           {
-            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.b(), paramSessionInfo.jdField_a_of_type_JavaLangString);
+            paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.e(), paramSessionInfo.b);
           }
-          else if (paramSessionInfo.jdField_a_of_type_Int == 0)
+          else if (paramSessionInfo.a == 0)
           {
-            paramQQAppInterface.getFileManagerEngine().b(paramForwardFileInfo.b(), paramSessionInfo.jdField_a_of_type_JavaLangString);
+            paramQQAppInterface.getFileManagerEngine().b(paramForwardFileInfo.e(), paramSessionInfo.b);
           }
-          else if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+          else if (paramSessionInfo.a == 3000)
           {
-            paramQQAppInterface.getFileManagerEngine().c(paramForwardFileInfo.b(), paramSessionInfo.jdField_a_of_type_JavaLangString);
+            paramQQAppInterface.getFileManagerEngine().c(paramForwardFileInfo.e(), paramSessionInfo.b);
             break;
-            paramQQAppInterface.getFileManagerEngine().a(str, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, i);
+            paramQQAppInterface.getFileManagerEngine().a(str, paramSessionInfo.b, paramSessionInfo.a, i);
           }
         }
         break;
       }
     }
     label1249:
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
-      paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramForwardFileInfo.c(), i);
+      paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.d(), paramSessionInfo.b, paramForwardFileInfo.f(), i);
     }
     else
     {
-      paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.a(), paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true, paramForwardFileInfo.c(), i);
+      paramQQAppInterface = paramQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.d(), paramSessionInfo.c, paramSessionInfo.b, paramSessionInfo.a, true, paramForwardFileInfo.f(), i);
       if (str != null) {
         paramQQAppInterface.lastSuccessTime = str.lastSuccessTime;
       }
@@ -3018,10 +2782,10 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, long paramLong)
   {
-    paramContext = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+    paramContext = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, paramSessionInfo.a, paramLong);
     if (paramContext != null)
     {
-      paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+      paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a, paramLong);
       paramContext = MessageRecordFactory.a(paramContext);
       paramQQAppInterface.getMessageFacade().a(paramContext, null, true);
       paramQQAppInterface = (IEmoticonManagerService)paramQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
@@ -3063,7 +2827,7 @@ public class ChatActivityFacade
     }
     if (((paramEmoticon.jobType == 0) || (paramEmoticon.jobType == 2) || (paramEmoticon.jobType == 4)) && (!paramEmoticon.hasEncryptKey()))
     {
-      Toast.makeText(paramContext, paramContext.getString(2131692131), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131889112), 0).show();
       a(paramQQAppInterface, paramEmoticon);
       paramQQAppInterface = paramEmoticon.epId;
       paramSessionInfo = paramEmoticon.eId;
@@ -3103,8 +2867,8 @@ public class ChatActivityFacade
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
   {
     ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
-    localSendMsgParams.jdField_a_of_type_Boolean = false;
-    localSendMsgParams.jdField_b_of_type_Boolean = true;
+    localSendMsgParams.a = false;
+    localSendMsgParams.b = true;
     a(paramQQAppInterface, paramContext, paramSessionInfo, paramString, null, localSendMsgParams);
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.nearby_bank", 4, "AIO---sendShowLoveMessage");
@@ -3116,13 +2880,13 @@ public class ChatActivityFacade
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      ChatActivityUtils.a(paramContext, 2131692183, 0);
+      ChatActivityUtils.a(paramContext, 2131889169, 0);
       return;
     }
     paramSessionInfo = paramQQAppInterface.getMessageFacade().a(paramString, paramInt, paramLong);
     if (paramSessionInfo == null)
     {
-      ChatActivityUtils.a(paramContext, 2131718739, 0);
+      ChatActivityUtils.a(paramContext, 2131916242, 0);
       return;
     }
     ThreadManager.post(new ChatActivityFacade.23(paramSessionInfo, paramQQAppInterface, paramString, paramInt, paramLong), 10, null, true);
@@ -3130,10 +2894,10 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString, long paramLong)
   {
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean) && ((paramContext instanceof BaseActivity)))
+    if ((paramSessionInfo.a == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramSessionInfo.b, true).b) && ((paramContext instanceof BaseActivity)))
     {
       paramContext = (BaseActivity)paramContext;
-      QQToast.a(paramQQAppInterface.getApp(), 2131697407, 0).b(paramContext.getTitleBarHeight());
+      QQToast.makeText(paramQQAppInterface.getApp(), 2131895180, 0).show(paramContext.getTitleBarHeight());
       return;
     }
     ThreadManager.post(new ChatActivityFacade.22(paramQQAppInterface, paramSessionInfo, paramLong), 10, null, true);
@@ -3148,10 +2912,10 @@ public class ChatActivityFacade
   {
     if (FileUtils.fileExistsAndNotEmpty(paramString1))
     {
-      ForwardSendPicUtil.a(paramQQAppInterface, paramString1, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_b_of_type_JavaLangString, false, paramContext, paramInt2);
+      ForwardSendPicUtil.a(paramQQAppInterface, paramString1, paramSessionInfo.b, paramSessionInfo.a, paramSessionInfo.c, false, paramContext, paramInt2);
       return;
     }
-    long l1 = a(paramQQAppInterface, paramString1, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramString2, paramString3, paramLong, paramInt1);
+    long l1 = a(paramQQAppInterface, paramString1, paramSessionInfo.b, paramSessionInfo.a, paramString2, paramString3, paramLong, paramInt1);
     paramContext = ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).findProcessor(paramString3, paramLong);
     Object localObject;
     if (QLog.isColorLevel())
@@ -3187,15 +2951,15 @@ public class ChatActivityFacade
       if ((l2 == 2000L) || (l2 == 2001L) || (l2 == 2002L))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramSessionInfo.b);
         ((StringBuilder)localObject).append(l1);
         localObject = ((StringBuilder)localObject).toString();
         ITransFileController localITransFileController = (ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class);
-        IHttpCommunicatorListener localIHttpCommunicatorListener = localITransFileController.findProcessor(paramSessionInfo.jdField_a_of_type_JavaLangString, l1);
+        IHttpCommunicatorListener localIHttpCommunicatorListener = localITransFileController.findProcessor(paramSessionInfo.b, l1);
         if ((localIHttpCommunicatorListener instanceof ForwardImageProcessor)) {
           ((ForwardImageProcessor)localIHttpCommunicatorListener).stopListening();
         }
-        localITransFileController.addProcessor((String)localObject, new ForwardImageProcessor(l1, paramString4, paramQQAppInterface, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramLong, paramInt1));
+        localITransFileController.addProcessor((String)localObject, new ForwardImageProcessor(l1, paramString4, paramQQAppInterface, paramSessionInfo.a, paramSessionInfo.b, paramString1, paramString2, paramString3, paramLong, paramInt1));
         paramContext.getFileMsg().forwardTaskKey = paramString4;
       }
     }
@@ -3223,14 +2987,14 @@ public class ChatActivityFacade
             Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
             if ((((JSONObject)localObject2).has("uin")) && (((JSONObject)localObject2).has("type")) && (((JSONObject)localObject2).getString("uin").equals(UinMD5Cache.a(str))))
             {
-              localObject2 = paramQQAppInterface.getMessageFacade().a(str, 0);
+              localObject2 = paramQQAppInterface.getMessageFacade().h(str, 0);
               ChatActivityUtils.a(paramContext, str, 0, "single_way_friend_list");
               localObject2 = ((List)localObject2).iterator();
               while (((Iterator)localObject2).hasNext())
               {
                 MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject2).next();
                 if (localMessageRecord.msgtype == -2019) {
-                  paramQQAppInterface.getMessageFacade().b(str, localMessageRecord.istroop, localMessageRecord.uniseq);
+                  paramQQAppInterface.getMessageFacade().h(str, localMessageRecord.istroop, localMessageRecord.uniseq);
                 }
               }
             }
@@ -3250,22 +3014,22 @@ public class ChatActivityFacade
   {
     try
     {
-      Long.valueOf(paramBaseSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      long l = paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int);
+      Long.valueOf(paramBaseSessionInfo.b).longValue();
+      long l = paramQQAppInterface.getMessageFacade().i(paramBaseSessionInfo.b, paramBaseSessionInfo.a);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.sendReadConfirm_PB", 2, String.format("ChatActivityFacade,uin: %s, uinType: %d, id: %d", new Object[] { paramBaseSessionInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(paramBaseSessionInfo.jdField_a_of_type_Int), Long.valueOf(l) }));
+        QLog.d("Q.msg.sendReadConfirm_PB", 2, String.format("ChatActivityFacade,uin: %s, uinType: %d, id: %d", new Object[] { paramBaseSessionInfo.b, Integer.valueOf(paramBaseSessionInfo.a), Long.valueOf(l) }));
       }
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1036) {
+      if (paramBaseSessionInfo.a == 1036) {
         return;
       }
       if (l != -1L)
       {
-        if (l == paramBaseSessionInfo.jdField_a_of_type_Long) {
+        if (l == paramBaseSessionInfo.h) {
           return;
         }
-        paramBaseSessionInfo.jdField_a_of_type_Long = l;
-        String str = ProcessorDispatcher.a(paramBaseSessionInfo.jdField_a_of_type_Int);
-        paramQQAppInterface.getMsgHandler().a(str).a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, l);
+        paramBaseSessionInfo.h = l;
+        String str = ProcessorDispatcher.a(paramBaseSessionInfo.a);
+        paramQQAppInterface.getMsgHandler().a(str).a(paramBaseSessionInfo.b, paramBaseSessionInfo.a, l);
       }
       return;
     }
@@ -3277,12 +3041,46 @@ public class ChatActivityFacade
     }
   }
   
+  public static void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForAniSticker paramMessageForAniSticker, int paramInt)
+  {
+    if (paramMessageForAniSticker == null) {
+      return;
+    }
+    MessageRecordFactory.a(paramQQAppInterface, paramMessageForAniSticker, paramBaseSessionInfo.b, paramBaseSessionInfo.c, paramBaseSessionInfo.a);
+    paramMessageForAniSticker.mIsParsed = true;
+    paramMessageForAniSticker.msg = paramMessageForAniSticker.text;
+    paramMessageForAniSticker.msgVia = paramBaseSessionInfo.s;
+    paramMessageForAniSticker.msgtype = -8018;
+    paramMessageForAniSticker.msgData = paramMessageForAniSticker.serializeMsgData();
+    if (paramMessageForAniSticker.istroop == 1) {
+      AnonymousChatHelper.a().a(paramMessageForAniSticker);
+    } else if (AnonymousChatHelper.a().j) {
+      AnonymousChatHelper.a().j = false;
+    }
+    if (UinTypeUtil.e(paramBaseSessionInfo.a) == 1032) {
+      ConfessMsgUtil.a(paramQQAppInterface, paramMessageForAniSticker, paramBaseSessionInfo.b, paramBaseSessionInfo.a, paramBaseSessionInfo.v);
+    } else if (paramBaseSessionInfo.x) {
+      ConfessMsgUtil.a(paramQQAppInterface, paramMessageForAniSticker, paramBaseSessionInfo.b);
+    } else if (paramBaseSessionInfo.y) {
+      ConfessMsgUtil.b(paramQQAppInterface, paramMessageForAniSticker, paramBaseSessionInfo.b);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBaseSessionInfo = new StringBuilder();
+      paramBaseSessionInfo.append("ChatActivityFacade#sendAniSticker:");
+      paramBaseSessionInfo.append(paramMessageForAniSticker.toString());
+      QLog.d("MessageForAniSticker", 2, paramBaseSessionInfo.toString());
+    }
+    ForwardOrderManager.a().a(paramMessageForAniSticker.uniseq, 0L, paramInt);
+    paramQQAppInterface.getMessageFacade().a(paramMessageForAniSticker, null);
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, String paramString, int paramInt, long paramLong)
   {
     if (paramLong != -1L)
     {
-      int i = paramBaseSessionInfo.jdField_a_of_type_Int;
-      Object localObject = paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, i, paramLong);
+      int i = paramBaseSessionInfo.a;
+      Object localObject = paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.b, i, paramLong);
       if ((localObject instanceof MessageForPtt))
       {
         localObject = (MessageForPtt)localObject;
@@ -3291,15 +3089,15 @@ public class ChatActivityFacade
         ((MessageForPtt)localObject).isread = false;
         ((MessageForPtt)localObject).itemType = 2;
         ((MessageForPtt)localObject).serial();
-        paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, i, paramLong, ((MessageForPtt)localObject).msgData);
-        paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, i, paramLong, "extStr", ((MessageForPtt)localObject).extStr);
+        paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.b, i, paramLong, ((MessageForPtt)localObject).msgData);
+        paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.b, i, paramLong, "extStr", ((MessageForPtt)localObject).extStr);
       }
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 0) {
+    if (paramSessionInfo.a != 0) {
       return;
     }
     ThreadManager.post(new ChatActivityFacade.4(paramQQAppInterface, paramSessionInfo), 5, null, true);
@@ -3325,7 +3123,7 @@ public class ChatActivityFacade
     localMessageForPokeEmo.emoString = paramSystemAndEmojiEmoticonInfo;
     localMessageForPokeEmo.emoCompat = paramSystemAndEmojiEmoticonInfo;
     localMessageForPokeEmo.initMsg();
-    MessageRecordFactory.a(paramQQAppInterface, localMessageForPokeEmo, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+    MessageRecordFactory.a(paramQQAppInterface, localMessageForPokeEmo, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a);
     paramQQAppInterface.getMessageFacade().a(localMessageForPokeEmo, null);
     if (QLog.isColorLevel()) {
       QLog.d("ChatActivityFacade", 2, String.format(" sendPopEmoMsg.emoIndex = %d,count = %d,summary = %s", new Object[] { Integer.valueOf(localMessageForPokeEmo.emoIndex), Integer.valueOf(paramInt), paramSystemAndEmojiEmoticonInfo }));
@@ -3345,7 +3143,7 @@ public class ChatActivityFacade
         return;
       }
       QLog.i("ChatActivityFacade.QZoneFeeds", 2, String.format("Story帖子创建时间：%d", new Object[] { Long.valueOf(paramLong) }));
-      paramSessionInfo = a(paramQQAppInterface, paramSessionInfo, "key_last_story_feed_create_time_for_aio");
+      paramSessionInfo = j(paramQQAppInterface, paramSessionInfo, "key_last_story_feed_create_time_for_aio");
       paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putLong(paramSessionInfo, paramLong).apply();
     }
   }
@@ -3361,14 +3159,14 @@ public class ChatActivityFacade
       if (localArrayList.isEmpty()) {
         return;
       }
-      if (android.text.TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (android.text.TextUtils.isEmpty(paramSessionInfo.b)) {
         return;
       }
       try
       {
         int i = Integer.valueOf(paramIntent.getStringExtra("key_upload_client_key")).intValue();
         long l = a(paramQQAppInterface, paramSessionInfo, i, localArrayList);
-        ((TroopQZoneUploadAlbumHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_QZONE_UPLOAD_ALBUM_PROGRESS_HANDLER)).a(i, paramSessionInfo.jdField_a_of_type_JavaLangString, l);
+        ((TroopQZoneUploadAlbumHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_QZONE_UPLOAD_ALBUM_PROGRESS_HANDLER)).a(i, paramSessionInfo.b, l);
         return;
       }
       catch (NumberFormatException paramQQAppInterface)
@@ -3383,12 +3181,12 @@ public class ChatActivityFacade
     if ((paramQQAppInterface != null) && (paramSessionInfo != null) && (paramMessageForPic != null))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("troop_uin", paramSessionInfo.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-      localIntent.putExtra("FORWARD_UIN_TYPE", paramSessionInfo.jdField_a_of_type_Int);
-      localIntent.putExtra("SENDER_TROOP_UIN", paramSessionInfo.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("FORWARD_PEER_UIN", paramSessionInfo.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("uin", paramSessionInfo.b);
+      localIntent.putExtra("troop_uin", paramSessionInfo.c);
+      localIntent.putExtra("uintype", paramSessionInfo.a);
+      localIntent.putExtra("FORWARD_UIN_TYPE", paramSessionInfo.a);
+      localIntent.putExtra("SENDER_TROOP_UIN", paramSessionInfo.c);
+      localIntent.putExtra("FORWARD_PEER_UIN", paramSessionInfo.b);
       localIntent.putExtra("FORWARD_SELF_UIN", paramQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("forward_image_width", paramMessageForPic.width);
       localIntent.putExtra("forward_image_height", paramMessageForPic.height);
@@ -3413,8 +3211,8 @@ public class ChatActivityFacade
       paramQQAppInterface = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfo(1009, localIntent);
       paramSessionInfo = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(3, 1009);
       paramSessionInfo.a(paramQQAppInterface);
-      paramSessionInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-      paramSessionInfo.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData = paramMessageForPic.picExtraData;
+      paramSessionInfo.l = paramMessageForPic;
+      paramSessionInfo.i = paramMessageForPic.picExtraData;
       paramMessageForPic.forwardId.put(paramSessionInfo, Integer.valueOf(paramInt));
       ((IPicBus)QRoute.api(IPicBus.class)).launch(paramSessionInfo);
       return;
@@ -3427,9 +3225,9 @@ public class ChatActivityFacade
     if ((paramQQAppInterface != null) && (paramMessageForShortVideo != null))
     {
       Object localObject = new Intent();
-      ((Intent)localObject).putExtra("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject).putExtra("troop_uin", paramSessionInfo.jdField_b_of_type_JavaLangString);
-      ((Intent)localObject).putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
+      ((Intent)localObject).putExtra("uin", paramSessionInfo.b);
+      ((Intent)localObject).putExtra("troop_uin", paramSessionInfo.c);
+      ((Intent)localObject).putExtra("uintype", paramSessionInfo.a);
       ((Intent)localObject).putExtra("from_uin", SVUtils.a(paramMessageForShortVideo));
       ((Intent)localObject).putExtra("from_uin_type", paramMessageForShortVideo.istroop);
       ((Intent)localObject).putExtra("from_session_uin", paramMessageForShortVideo.frienduin);
@@ -3488,11 +3286,11 @@ public class ChatActivityFacade
       ((Intent)localObject).putExtra("widgetinfo", paramMessageForShortVideo.templateId);
       ((Intent)localObject).putExtra("key_camera_material_name", paramMessageForShortVideo.templateName);
       paramSessionInfo = SVBusiUtil.a(3, i);
-      localObject = ShortVideoBusiManager.a(i, localObject, paramSessionInfo);
+      localObject = ShortVideoBusiManager.b(i, localObject, paramSessionInfo);
       if (localObject != null)
       {
-        ((ShortVideoForwardInfo)localObject).jdField_a_of_type_Long = paramMessageForShortVideo.uniseq;
-        ((ShortVideoForwardInfo)localObject).p = paramMessageForShortVideo.forwardID;
+        ((ShortVideoForwardInfo)localObject).g = paramMessageForShortVideo.uniseq;
+        ((ShortVideoForwardInfo)localObject).G = paramMessageForShortVideo.forwardID;
         paramSessionInfo.a((ShortVideoForwardInfo)localObject);
       }
       ShortVideoBusiManager.a(paramSessionInfo, paramQQAppInterface);
@@ -3509,35 +3307,30 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AbsStructMsg paramAbsStructMsg)
   {
-    int i = paramSessionInfo.jdField_a_of_type_Int;
+    int i = paramSessionInfo.a;
     if ((i != 1000) && (i != 1004) && (i != 1020)) {}
-    for (String str1 = paramQQAppInterface.getCurrentAccountUin();; str1 = paramSessionInfo.jdField_b_of_type_JavaLangString) {
+    for (String str1 = paramQQAppInterface.getCurrentAccountUin();; str1 = paramSessionInfo.c) {
       break;
     }
     String str2 = paramQQAppInterface.getCurrentAccountUin();
-    String str3 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    i = paramSessionInfo.jdField_a_of_type_Int;
+    String str3 = paramSessionInfo.b;
+    i = paramSessionInfo.a;
     int j = MobileQQService.seq;
     MobileQQService.seq = j + 1;
-    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, str2, str3, str1, i, j, paramAbsStructMsg);
+    paramSessionInfo = MessageRecordFactory.c(paramQQAppInterface, str2, str3, str1, i, j, paramAbsStructMsg);
     ForwardOrderManager.a().a(paramSessionInfo.uniseq, paramAbsStructMsg.parentUniseq, paramAbsStructMsg.forwardID);
     paramQQAppInterface.getMessageFacade().a(paramSessionInfo, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    a(paramQQAppInterface, paramSessionInfo, paramString, 1010, false, (byte)1, (byte)0, (short)0, Math.abs(new Random().nextInt()), null, new ChatActivityFacade.SendMsgParams());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, String paramString2, String paramString3)
   {
     if (paramSessionInfo != null)
     {
-      if (android.text.TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (android.text.TextUtils.isEmpty(paramSessionInfo.b)) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(ChatActivityConstants.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(ChatActivityConstants.a);
       localStringBuilder.append("http://maps.google.com/maps?q=");
       localStringBuilder.append(paramString1);
       localStringBuilder.append(",");
@@ -3545,7 +3338,7 @@ public class ChatActivityFacade
       localStringBuilder.append("&iwloc=A&hl=zh-CN (");
       localStringBuilder.append(paramString3);
       localStringBuilder.append(")");
-      a(paramQQAppInterface, paramSessionInfo, localStringBuilder.toString());
+      b(paramQQAppInterface, paramSessionInfo, localStringBuilder.toString());
     }
   }
   
@@ -3553,7 +3346,7 @@ public class ChatActivityFacade
   {
     paramString7 = new ArkAppMessage();
     paramString6 = (ArkAIKeyWordConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkAIKeyWordConfBean.class);
-    if ((paramString6 != null) && (paramString6.a().jdField_a_of_type_Boolean)) {}
+    if ((paramString6 != null) && (paramString6.c().a)) {}
     for (;;)
     {
       try
@@ -3567,25 +3360,25 @@ public class ChatActivityFacade
           paramString7.appDesc = ((String)paramString6.get("desc"));
           paramString7.appMinVersion = ((String)paramString6.get("version"));
         }
-        paramString6 = HardCodeUtil.a(2131701763);
+        paramString6 = HardCodeUtil.a(2131899781);
         if ((android.text.TextUtils.isEmpty(paramString7.appDesc)) || (paramString7.appDesc.equals(paramString7.appName))) {
           paramString7.appDesc = paramString6;
         }
-        i = paramSessionInfo.jdField_a_of_type_Int;
+        i = paramSessionInfo.a;
         if ((i != 1000) && (i != 1004) && (i != 1020)) {
           paramString6 = paramQQAppInterface.getCurrentAccountUin();
         } else {
-          paramString6 = paramSessionInfo.jdField_b_of_type_JavaLangString;
+          paramString6 = paramSessionInfo.c;
         }
       }
       catch (Exception paramString1) {}
       String str1 = paramQQAppInterface.getCurrentAccountUin();
-      String str2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      int i = paramSessionInfo.jdField_a_of_type_Int;
+      String str2 = paramSessionInfo.b;
+      int i = paramSessionInfo.a;
       int j = MobileQQService.seq;
       MobileQQService.seq = j + 1;
-      paramString7.containStructMsg = MessageRecordFactory.a(paramQQAppInterface, str1, str2, paramString6, i, j, paramAbsShareMsg);
-      paramString7.promptText = String.format(HardCodeUtil.a(2131701776), new Object[] { paramString7.appDesc });
+      paramString7.containStructMsg = MessageRecordFactory.c(paramQQAppInterface, str1, str2, paramString6, i, j, paramAbsShareMsg);
+      paramString7.promptText = String.format(HardCodeUtil.a(2131899794), new Object[] { paramString7.appDesc });
       paramString7.from = 1;
       paramString7.metaList = a(paramString5, paramString3, paramString4, paramString1, paramString2);
       paramString1 = new JSONObject();
@@ -3623,7 +3416,7 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 0) {
+    if (paramSessionInfo.a != 0) {
       return;
     }
     ThreadManager.post(new ChatActivityFacade.2(paramSessionInfo, paramQQAppInterface, paramBoolean), 5, null, true);
@@ -3631,7 +3424,7 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramQQAppInterface.getMessageFacade().b(paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage.uniseq);
+    paramQQAppInterface.getMessageFacade().h(paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage.uniseq);
     if (paramChatMessage.isSendFromLocal()) {
       ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(paramChatMessage.frienduin, paramChatMessage.uniseq));
     }
@@ -3668,7 +3461,7 @@ public class ChatActivityFacade
   {
     try
     {
-      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).d(Long.valueOf(paramString).longValue());
+      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).f(Long.valueOf(paramString).longValue());
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -3713,7 +3506,7 @@ public class ChatActivityFacade
     MobileQQService.seq = i + 1;
     long l1 = i;
     i = Math.abs(new Random().nextInt());
-    int j = (int)MessageCache.a();
+    int j = (int)MessageCache.c();
     String str = paramQQAppInterface.getCurrentAccountUin();
     long l2 = MessageUtils.a(i);
     ChatMessage localChatMessage = (ChatMessage)MessageRecordFactory.a(-1000);
@@ -3731,20 +3524,75 @@ public class ChatActivityFacade
     paramQQAppInterface.getMessageFacade().a(paramQQAppInterface, localChatMessage, paramArrayList, paramHongbaoParams);
   }
   
+  private static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, MessageRecord paramMessageRecord, ChatActivityFacade.SendMsgParams paramSendMsgParams)
+  {
+    if (paramSendMsgParams.w)
+    {
+      b(paramQQAppInterface, paramBoolean, paramMessageRecord);
+      return;
+    }
+    ThreadManager.post(new ChatActivityFacade.13(paramQQAppInterface, paramBoolean, paramMessageRecord), 10, null, false);
+  }
+  
   public static void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt)
   {
-    if ((!AppSetting.j) && (paramInt == 0)) {
+    if ((!AppSetting.o) && (paramInt == 0)) {
       return;
     }
-    if (UinTypeUtil.a(paramInt) == 1032) {
+    if (UinTypeUtil.e(paramInt) == 1032) {
       return;
     }
-    paramQQCustomMenu.a(2131365480, paramContext.getString(2131690788), 2130838907);
+    paramQQCustomMenu.a(2131431695, paramContext.getString(2131887718), 2130839061);
+  }
+  
+  private static void a(String paramString, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg)
+  {
+    paramAbsShareMsg = new StringBuilder();
+    paramAbsShareMsg.append("sendStrcutReportLog， actionData:");
+    paramAbsShareMsg.append(paramString);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("sessionInfo type: ");
+    paramAbsShareMsg.append(paramSessionInfo.a);
+    paramAbsShareMsg.append("\n");
+    QLog.d("LBS.ChatActivityFacade", 1, paramAbsShareMsg.toString());
+  }
+  
+  private static void a(String paramString1, SessionInfo paramSessionInfo, String paramString2, String paramString3, String paramString4, String paramString5, AbsShareMsg paramAbsShareMsg, String paramString6, String paramString7, String paramString8)
+  {
+    paramAbsShareMsg = new StringBuilder();
+    paramAbsShareMsg.append("sendArkStructMapLog， actionData:");
+    paramAbsShareMsg.append(paramString1);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("sessionInfo type: ");
+    paramAbsShareMsg.append(paramSessionInfo.a);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("forwardLat: ");
+    paramAbsShareMsg.append(paramString2);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("forwardLon: ");
+    paramAbsShareMsg.append(paramString3);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("title: ");
+    paramAbsShareMsg.append(paramString4);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("summary: ");
+    paramAbsShareMsg.append(paramString5);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("poiId: ");
+    paramAbsShareMsg.append(paramString6);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("latSpan: ");
+    paramAbsShareMsg.append(paramString7);
+    paramAbsShareMsg.append("\n");
+    paramAbsShareMsg.append("lngSpan: ");
+    paramAbsShareMsg.append(paramString8);
+    paramAbsShareMsg.append("\n");
+    QLog.d("LBS.ChatActivityFacade", 1, paramAbsShareMsg.toString());
   }
   
   public static void a(List<ChatMessage> paramList)
   {
-    if ((jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (paramList != null) && (paramList.size() > 0))
+    if ((d != null) && (paramList != null) && (paramList.size() > 0))
     {
       int j = 0;
       int i = j;
@@ -3759,12 +3607,12 @@ public class ChatActivityFacade
             break;
           }
           localChatMessage = (ChatMessage)localIterator.next();
-        } while ((localChatMessage.shmsgseq != jdField_a_of_type_ComTencentMobileqqDataChatMessage.shmsgseq) || (localChatMessage.msgUid != jdField_a_of_type_ComTencentMobileqqDataChatMessage.msgUid));
+        } while ((localChatMessage.shmsgseq != d.shmsgseq) || (localChatMessage.msgUid != d.msgUid));
         i = 1;
       }
-      if ((i != 0) || (paramList.contains(jdField_a_of_type_ComTencentMobileqqDataChatMessage)))
+      if ((i != 0) || (paramList.contains(d)))
       {
-        paramList = jdField_a_of_type_ComTencentWidgetActionSheet;
+        paramList = c;
         if (paramList != null) {
           paramList.dismiss();
         }
@@ -3772,29 +3620,9 @@ public class ChatActivityFacade
     }
   }
   
-  private static boolean a(ChatActivityFacade.SendMsgParams paramSendMsgParams, boolean paramBoolean)
-  {
-    if (paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo != null)
-    {
-      byte[] arrayOfByte = paramSendMsgParams.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.getSourceMsg();
-      if ((arrayOfByte != null) && (arrayOfByte.length >= 560))
-      {
-        paramSendMsgParams.f = true;
-        return false;
-      }
-      if ((paramBoolean) && (paramSendMsgParams.f)) {
-        return true;
-      }
-      if ((!paramBoolean) && (!paramSendMsgParams.f)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   private static boolean a(SessionInfo paramSessionInfo)
   {
-    int i = paramSessionInfo.jdField_a_of_type_Int;
+    int i = paramSessionInfo.a;
     if ((i != 0) && (i != 3000)) {
       return i == 1;
     }
@@ -3841,7 +3669,7 @@ public class ChatActivityFacade
           if (paramMessageForLongMsg.isSendFromLocal()) {
             ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(paramMessageForLongMsg.frienduin, paramMessageForLongMsg.uniseq));
           }
-          paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramMessageForLongMsg.uniseq);
+          paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a, paramMessageForLongMsg.uniseq);
           if (paramMessageForLongMsg.msgtype == -1000)
           {
             paramMessageForLongMsg = MessageRecordFactory.a(paramMessageForLongMsg);
@@ -3854,27 +3682,9 @@ public class ChatActivityFacade
     return false;
   }
   
-  private static boolean a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, String paramString, ChatActivityFacade.SendMsgParams paramSendMsgParams)
-  {
-    boolean bool2 = LongTextMsgManager.a(paramQQAppInterface);
-    boolean bool1 = true;
-    if ((bool2) && (LongTextMsgManager.a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      if (a(paramBaseSessionInfo, paramString) > 560) {
-        break label53;
-      }
-      if (a(paramSendMsgParams, true)) {
-        return true;
-      }
-    }
-    bool1 = false;
-    label53:
-    return bool1;
-  }
-  
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkAppMessage paramArkAppMessage)
   {
-    MessageForArkApp localMessageForArkApp = MessageRecordFactory.b(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramArkAppMessage);
+    MessageForArkApp localMessageForArkApp = MessageRecordFactory.b(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a, paramArkAppMessage);
     ForwardOrderManager.a().a(localMessageForArkApp.uniseq, paramArkAppMessage.uniSeq, paramArkAppMessage.forwardID);
     if (localMessageForArkApp.istroop == 1) {
       AnonymousChatHelper.a().a(localMessageForArkApp);
@@ -3903,7 +3713,7 @@ public class ChatActivityFacade
   
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkAppMessage paramArkAppMessage, int paramInt)
   {
-    MessageForArkApp localMessageForArkApp = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramArkAppMessage);
+    MessageForArkApp localMessageForArkApp = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a, paramArkAppMessage);
     int i = paramInt;
     if (paramInt == 0) {
       i = paramArkAppMessage.forwardID;
@@ -3940,7 +3750,7 @@ public class ChatActivityFacade
   
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkFlashChatMessage paramArkFlashChatMessage, int paramInt)
   {
-    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramArkFlashChatMessage);
+    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a, paramArkFlashChatMessage);
     int i = paramInt;
     if (paramInt == 0) {
       i = paramArkFlashChatMessage.forwardID;
@@ -3960,7 +3770,7 @@ public class ChatActivityFacade
   
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, HiBoomMessage paramHiBoomMessage, MessageObserver paramMessageObserver, int paramInt)
   {
-    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramHiBoomMessage);
+    paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.c, paramSessionInfo.a, paramHiBoomMessage);
     ForwardOrderManager.a().a(paramSessionInfo.uniseq, 0L, paramInt);
     if (paramSessionInfo.istroop == 1) {
       AnonymousChatHelper.a().a(paramSessionInfo);
@@ -3989,11 +3799,11 @@ public class ChatActivityFacade
     }
     if ((paramString != null) && (paramString.length() != 0) && (paramSendMsgParams != null) && (paramBaseSessionInfo != null))
     {
-      if (android.text.TextUtils.isEmpty(paramBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (android.text.TextUtils.isEmpty(paramBaseSessionInfo.b)) {
         return null;
       }
       paramContext = a(paramQQAppInterface, paramBaseSessionInfo, paramString, paramArrayList, paramSendMsgParams);
-      if ((paramSendMsgParams != null) && (paramSendMsgParams.k) && (paramBaseSessionInfo != null) && (paramBaseSessionInfo.jdField_a_of_type_Int == 1))
+      if ((paramSendMsgParams != null) && (paramSendMsgParams.C) && (paramBaseSessionInfo != null) && (paramBaseSessionInfo.a == 1))
       {
         paramString = (TroopEssenceMsgManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER);
         int j = paramContext.length;
@@ -4001,7 +3811,7 @@ public class ChatActivityFacade
         while (i < j)
         {
           long l = paramContext[i];
-          paramString.a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, l);
+          paramString.a(paramBaseSessionInfo.b, l);
           i += 1;
         }
       }
@@ -4020,423 +3830,46 @@ public class ChatActivityFacade
   
   public static long[] a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
-    boolean bool = QLog.isColorLevel();
-    String str = "SendMsgBtn";
-    Object localObject1;
-    if (bool)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(" createTextMessageToshow start, currenttime:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis());
-      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
-    }
-    Object localObject4 = a(paramString, paramArrayList);
-    if (localObject4 == null) {
-      return null;
-    }
-    Object localObject2 = new ArrayList();
-    Object localObject3 = new Random();
-    for (;;)
-    {
-      try
-      {
-        bool = a(paramSendMsgParams, false);
-        if (bool)
-        {
-          localObject1 = b((String)localObject4, paramArrayList, paramSendMsgParams, (ArrayList)localObject2);
-          paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-          paramString = (String)localObject1;
-          try
-          {
-            if (QLog.isColorLevel())
-            {
-              paramString = (String)localObject1;
-              paramArrayList = new StringBuilder();
-              paramString = (String)localObject1;
-              paramArrayList.append(" createTextMessage step 1, partAtInfoArrayLists.size() = ");
-              paramString = (String)localObject1;
-              paramArrayList.append(((ArrayList)localObject2).size());
-              paramString = (String)localObject1;
-              paramArrayList.append(" mSourceMsgInfo:true, symbolLens:");
-              paramString = (String)localObject1;
-              paramArrayList.append(((String)localObject4).getBytes("utf-8").length);
-              paramString = (String)localObject1;
-              paramArrayList.append(" currenttime:");
-              paramString = (String)localObject1;
-              paramArrayList.append(System.currentTimeMillis());
-              paramString = (String)localObject1;
-              QLog.d("SendMsgBtn", 2, paramArrayList.toString());
-              paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-            }
-            s = 0;
-            bool = false;
-            localObject1 = localObject2;
-            paramString = paramArrayList;
-          }
-          catch (UnsupportedEncodingException paramArrayList)
-          {
-            continue;
-          }
-        }
-        else
-        {
-          bool = a(paramQQAppInterface, paramBaseSessionInfo, (String)localObject4, paramSendMsgParams);
-          if (bool)
-          {
-            localObject1 = a((String)localObject4, paramArrayList, paramSendMsgParams, (ArrayList)localObject2);
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-            paramString = (String)localObject1;
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            paramString = (String)localObject1;
-            paramArrayList = new StringBuilder();
-            paramString = (String)localObject1;
-            paramArrayList.append(" createTextMessageToshow step 1, partAtInfoArrayLists.size() = ");
-            paramString = (String)localObject1;
-            paramArrayList.append(((ArrayList)localObject2).size());
-            paramString = (String)localObject1;
-            paramArrayList.append(" isLongTextMsg:true, symbolLens:");
-            paramString = (String)localObject1;
-            paramArrayList.append(((String)localObject4).getBytes("utf-8").length);
-            paramString = (String)localObject1;
-            paramArrayList.append(" currenttime:");
-            paramString = (String)localObject1;
-            paramArrayList.append(System.currentTimeMillis());
-            paramString = (String)localObject1;
-            QLog.d("SendMsgBtn", 2, paramArrayList.toString());
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-            continue;
-          }
-          localObject1 = BusinessUtils.a((String)localObject4, 560, 20, paramArrayList, (ArrayList)localObject2);
-          paramString = (String)localObject1;
-          i = ((ArrayList)localObject1).size();
-          if (i > 1) {
-            bool = true;
-          } else {
-            bool = false;
-          }
-        }
-        try
-        {
-          if (paramBaseSessionInfo.jdField_a_of_type_Int == 1024) {
-            break label894;
-          }
-          if (paramBaseSessionInfo.jdField_a_of_type_Int != 1025) {
-            break label888;
-          }
-        }
-        catch (UnsupportedEncodingException paramArrayList)
-        {
-          paramString = (String)localObject2;
-          break label641;
-        }
-        paramString = AIOConfigManager.a;
-        if (((paramString == null) || (paramString.jdField_g_of_type_Int == 0)) && (bool) && (i == 0))
-        {
-          paramString = new ArrayList();
-          try
-          {
-            paramArrayList = a((String)localObject4, paramArrayList, paramSendMsgParams, paramString);
-            s = 0;
-            localObject1 = paramString;
-            paramString = paramArrayList;
-          }
-          catch (UnsupportedEncodingException paramArrayList)
-          {
-            break label641;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel())
-          {
-            paramString = new StringBuilder();
-            paramString.append(" createTextMessageToshow step 1, partAtInfoArrayLists.size() = ");
-            paramString.append(((ArrayList)localObject2).size());
-            paramString.append(" partArray.size() = ");
-            paramString.append(((ArrayList)localObject1).size());
-            paramString.append(" isDivide = ");
-            paramString.append(bool);
-            paramString.append(" currenttime:");
-            paramString.append(System.currentTimeMillis());
-            QLog.d("SendMsgBtn", 2, paramString.toString());
-          }
-          s = a(paramQQAppInterface, paramBaseSessionInfo, bool, (short)0, (Random)localObject3);
-          paramString = (String)localObject1;
-          localObject1 = localObject2;
-        }
-        paramArrayList = paramString;
-        paramString = (String)localObject1;
-      }
-      catch (UnsupportedEncodingException paramArrayList)
-      {
-        paramString = null;
-        bool = false;
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-      }
-      label641:
-      paramArrayList.printStackTrace();
-      paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-      short s = 0;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(" createTextMessageToshow step 2, currenttime:");
-        ((StringBuilder)localObject1).append(System.currentTimeMillis());
-        QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
-      }
-      int i = Math.abs(((Random)localObject3).nextInt());
-      localObject4 = new long[paramArrayList.size()];
-      int j = 0;
-      localObject1 = localObject3;
-      localObject2 = paramString;
-      paramString = (String)localObject4;
-      while (j < paramArrayList.size())
-      {
-        localObject4 = (String)paramArrayList.get(j);
-        if (((ArrayList)localObject2).size() > j) {
-          localObject3 = (ArrayList)((ArrayList)localObject2).get(j);
-        } else {
-          localObject3 = null;
-        }
-        if (paramBaseSessionInfo.jdField_a_of_type_Int != 3000) {
-          if (paramBaseSessionInfo.jdField_a_of_type_Int != 1) {
-            break label805;
-          }
-        }
-        i = Math.abs(((Random)localObject1).nextInt());
-        label805:
-        paramString[j] = a(paramQQAppInterface, paramBaseSessionInfo, (String)localObject4, -1000, bool, (byte)paramArrayList.size(), (byte)j, s, i, (ArrayList)localObject3, paramSendMsgParams);
-        j += 1;
-      }
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(" createTextMessageToshow step 3, currenttime:");
-        paramQQAppInterface.append(System.currentTimeMillis());
-        QLog.d(str, 2, paramQQAppInterface.toString());
-      }
-      return paramString;
-      label888:
-      i = 0;
-      continue;
-      label894:
-      i = 1;
-    }
-  }
-  
-  public static long[] a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" sendMessage start currenttime:");
-      localStringBuilder.append(System.currentTimeMillis());
-      QLog.d("SendMsgBtn", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" createTextMessageToshow start, currenttime:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramString != null) && (paramString.length() != 0) && (paramSessionInfo != null))
-    {
-      if (android.text.TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-        return null;
-      }
-      paramString = a(paramQQAppInterface, paramSessionInfo, paramString, null, localSendMsgParams);
-      ThreadManager.post(new ChatActivityFacade.14(localSendMsgParams, paramQQAppInterface, paramSessionInfo), 8, null, true);
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(" sendMessage end currenttime:");
-        paramQQAppInterface.append(System.currentTimeMillis());
-        QLog.d("SendMsgBtn", 2, paramQQAppInterface.toString());
-      }
-      return paramString;
-    }
-    return null;
-  }
-  
-  public static long[] a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams)
-  {
-    boolean bool = QLog.isColorLevel();
-    String str = "SendMsgBtn";
-    if (bool)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(" createTextMessageToshow start, currenttime:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis());
-      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
-    }
-    Object localObject4 = a(paramString, paramArrayList);
-    if (localObject4 == null) {
+    Object localObject = a(paramString, paramArrayList);
+    if (localObject == null) {
       return null;
     }
-    Object localObject2 = new ArrayList();
-    Object localObject3 = new Random();
-    try
-    {
-      bool = a(paramSendMsgParams, false);
-      if (bool)
-      {
-        localObject1 = b((String)localObject4, paramArrayList, paramSendMsgParams, (ArrayList)localObject2);
-        paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-        paramString = (String)localObject1;
-      }
-      for (;;)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            paramString = (String)localObject1;
-            paramArrayList = new StringBuilder();
-            paramString = (String)localObject1;
-            paramArrayList.append(" createTextMessage step 1, partAtInfoArrayLists.size() = ");
-            paramString = (String)localObject1;
-            paramArrayList.append(((ArrayList)localObject2).size());
-            paramString = (String)localObject1;
-            paramArrayList.append(" mSourceMsgInfo:true, symbolLens:");
-            paramString = (String)localObject1;
-            paramArrayList.append(((String)localObject4).getBytes("utf-8").length);
-            paramString = (String)localObject1;
-            paramArrayList.append(" currenttime:");
-            paramString = (String)localObject1;
-            paramArrayList.append(System.currentTimeMillis());
-            paramString = (String)localObject1;
-            QLog.d("SendMsgBtn", 2, paramArrayList.toString());
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-          }
-          s = 0;
-          bool = false;
-          localObject1 = localObject2;
-          paramString = paramArrayList;
-        }
-        catch (UnsupportedEncodingException paramArrayList)
-        {
-          break label604;
-        }
-        bool = a(paramQQAppInterface, paramSessionInfo, (String)localObject4, paramSendMsgParams);
-        if (bool)
-        {
-          localObject1 = a((String)localObject4, paramArrayList, paramSendMsgParams, (ArrayList)localObject2);
-          paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-          paramString = (String)localObject1;
-          if (QLog.isColorLevel())
-          {
-            paramString = (String)localObject1;
-            paramArrayList = new StringBuilder();
-            paramString = (String)localObject1;
-            paramArrayList.append(" createTextMessageToshow step 1, partAtInfoArrayLists.size() = ");
-            paramString = (String)localObject1;
-            paramArrayList.append(((ArrayList)localObject2).size());
-            paramString = (String)localObject1;
-            paramArrayList.append(" isLongTextMsg:true, symbolLens:");
-            paramString = (String)localObject1;
-            paramArrayList.append(((String)localObject4).getBytes("utf-8").length);
-            paramString = (String)localObject1;
-            paramArrayList.append(" currenttime:");
-            paramString = (String)localObject1;
-            paramArrayList.append(System.currentTimeMillis());
-            paramString = (String)localObject1;
-            QLog.d("SendMsgBtn", 2, paramArrayList.toString());
-            paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-          }
-        }
-        else
-        {
-          localObject1 = BusinessUtils.a((String)localObject4, 560, 20, paramArrayList, (ArrayList)localObject2);
-          paramString = (String)localObject1;
-          i = ((ArrayList)localObject1).size();
-          if (i > 1) {
-            bool = true;
-          } else {
-            bool = false;
-          }
-        }
-      }
-      try
-      {
-        paramString = AIOConfigManager.a;
-        if (((paramString == null) || (paramString.jdField_g_of_type_Int == 0)) && (bool))
-        {
-          paramString = new ArrayList();
-          try
-          {
-            paramArrayList = a((String)localObject4, paramArrayList, paramSendMsgParams, paramString);
-            s = 0;
-            localObject1 = paramString;
-            paramString = paramArrayList;
-          }
-          catch (UnsupportedEncodingException paramArrayList)
-          {
-            break label613;
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel())
-          {
-            paramString = new StringBuilder();
-            paramString.append(" createTextMessageToshow step 1, partAtInfoArrayLists.size() = ");
-            paramString.append(((ArrayList)localObject2).size());
-            paramString.append(" partArray.size() = ");
-            paramString.append(((ArrayList)localObject1).size());
-            paramString.append(" isDivide = ");
-            paramString.append(bool);
-            paramString.append(" currenttime:");
-            paramString.append(System.currentTimeMillis());
-            QLog.d("SendMsgBtn", 2, paramString.toString());
-          }
-          s = a(paramQQAppInterface, paramSessionInfo, bool, (short)0, (Random)localObject3);
-          paramString = (String)localObject1;
-          localObject1 = localObject2;
-        }
-        paramArrayList = paramString;
-        paramString = (String)localObject1;
-      }
-      catch (UnsupportedEncodingException paramArrayList)
-      {
-        paramString = (String)localObject2;
-      }
-      label604:
-      paramArrayList.printStackTrace();
-    }
-    catch (UnsupportedEncodingException paramArrayList)
-    {
-      paramString = null;
-      bool = false;
-      localObject1 = paramString;
-      paramString = (String)localObject2;
-    }
-    label613:
-    paramArrayList = (ArrayList<AtTroopMemberInfo>)localObject1;
-    short s = 0;
+    ArrayList localArrayList = new ArrayList();
+    paramString = new ArrayList();
+    Random localRandom = new Random();
+    paramString.add(localObject);
+    localArrayList.add(paramArrayList);
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(" createTextMessageToshow step 2, currenttime:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis());
-      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
+      paramArrayList = new StringBuilder();
+      paramArrayList.append(" createTextMessageToshow step 2, currenttime:");
+      paramArrayList.append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, paramArrayList.toString());
     }
-    int i = Math.abs(((Random)localObject3).nextInt());
-    localObject4 = new long[paramArrayList.size()];
+    int i = Math.abs(localRandom.nextInt());
+    localObject = new long[paramString.size()];
     int j = 0;
-    Object localObject1 = str;
-    localObject2 = localObject3;
-    str = paramString;
-    paramString = (String)localObject4;
+    paramArrayList = paramString;
+    paramString = (String)localObject;
     while (j < paramArrayList.size())
     {
-      localObject4 = (String)paramArrayList.get(j);
-      if (str.size() > j) {
-        localObject3 = (ArrayList)str.get(j);
+      String str = (String)paramArrayList.get(j);
+      if (localArrayList.size() > j) {
+        localObject = (ArrayList)localArrayList.get(j);
       } else {
-        localObject3 = null;
+        localObject = null;
       }
-      if ((paramSessionInfo.jdField_a_of_type_Int == 3000) || (paramSessionInfo.jdField_a_of_type_Int == 1)) {
-        i = Math.abs(((Random)localObject2).nextInt());
+      if ((paramBaseSessionInfo.a == 3000) || (paramBaseSessionInfo.a == 1)) {
+        i = Math.abs(localRandom.nextInt());
       }
-      paramString[j] = a(paramQQAppInterface, paramSessionInfo, (String)localObject4, -1000, bool, (byte)paramArrayList.size(), (byte)j, s, i, (ArrayList)localObject3, paramSendMsgParams, true);
+      paramString[j] = a(paramQQAppInterface, paramBaseSessionInfo, str, -1000, false, (byte)paramArrayList.size(), (byte)j, 0, i, (ArrayList)localObject, paramSendMsgParams);
       j += 1;
     }
     if (QLog.isColorLevel())
@@ -4444,67 +3877,9 @@ public class ChatActivityFacade
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(" createTextMessageToshow step 3, currenttime:");
       paramQQAppInterface.append(System.currentTimeMillis());
-      QLog.d((String)localObject1, 2, paramQQAppInterface.toString());
+      QLog.d("SendMsgBtn", 2, paramQQAppInterface.toString());
     }
     return paramString;
-  }
-  
-  private static long b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return 0L;
-      }
-      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getLong(a(paramQQAppInterface, paramSessionInfo, paramString), 0L);
-    }
-    return 0L;
-  }
-  
-  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (UinTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int))
-    {
-      List localList = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-      if ((localList != null) && (!localList.isEmpty()))
-      {
-        int i = localList.size() - 1;
-        while (i >= 0)
-        {
-          paramSessionInfo = (MessageRecord)localList.get(i);
-          if (!MessageRecordInfo.b(paramSessionInfo.issend))
-          {
-            paramQQAppInterface = paramSessionInfo;
-            if (paramSessionInfo.msgtype != -1034) {
-              return paramQQAppInterface;
-            }
-          }
-          i -= 1;
-        }
-      }
-    }
-    paramQQAppInterface = null;
-    return paramQQAppInterface;
-  }
-  
-  private static String b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return "";
-      }
-      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getString(a(paramQQAppInterface, paramSessionInfo, "key_request_troop_qcircle_msg_attache_data"), "");
-    }
-    return "";
-  }
-  
-  private static ArrayList<String> b(String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams, ArrayList<ArrayList<AtTroopMemberInfo>> paramArrayList1)
-  {
-    paramSendMsgParams = new ArrayList();
-    paramSendMsgParams.add(paramString);
-    paramArrayList1.add(paramArrayList);
-    return paramSendMsgParams;
   }
   
   public static void b(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
@@ -4540,16 +3915,16 @@ public class ChatActivityFacade
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      ChatActivityUtils.a(paramContext, 2131692183, 0);
+      ChatActivityUtils.a(paramContext, 2131889169, 0);
       return;
     }
-    MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+    MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, paramSessionInfo.a, paramLong);
     if (localMessageRecord == null)
     {
-      ChatActivityUtils.a(paramContext, 2131718739, 0);
+      ChatActivityUtils.a(paramContext, 2131916242, 0);
       return;
     }
-    paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
+    paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a, paramLong);
     paramContext = MessageRecordFactory.a(localMessageRecord);
     paramQQAppInterface.getMessageFacade().a(paramContext, null, true);
   }
@@ -4561,7 +3936,7 @@ public class ChatActivityFacade
   
   public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 0) {
+    if (paramSessionInfo.a != 0) {
       return;
     }
     ThreadManager.post(new ChatActivityFacade.5(paramQQAppInterface, paramSessionInfo), 5, null, true);
@@ -4621,7 +3996,7 @@ public class ChatActivityFacade
       if (QLog.isColorLevel()) {
         QLog.i("ChatActivityFacade.QZoneFeeds", 2, "newestFeed.uOpFlag==1  需要清理本地缓存");
       }
-      k(paramQQAppInterface, paramSessionInfo);
+      y(paramQQAppInterface, paramSessionInfo);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -4691,6 +4066,11 @@ public class ChatActivityFacade
     QLog.i("ChatActivityFacade.QCircleFeeds", 2, "addQCircleFeedMessageV2 没有拉到feeds信息");
   }
   
+  public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    a(paramQQAppInterface, paramSessionInfo, paramString, 1010, false, (byte)1, (byte)0, (short)0, Math.abs(new Random().nextInt()), null, new ChatActivityFacade.SendMsgParams());
+  }
+  
   public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
     if (!QzoneConfig.isQQCircleShowAIOFeedEntrance())
@@ -4698,7 +4078,7 @@ public class ChatActivityFacade
       QLog.e("ChatActivityFacade.QCircleFeeds", 2, "insertQCircleNewestFeedIfNeeded: QzoneConfig.isQQCircleShowLebaEntrance()==false");
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int != 0)
+    if (paramSessionInfo.a != 0)
     {
       QLog.e("ChatActivityFacade.QCircleFeeds", 2, "insertQCircleNewestFeedIfNeeded failed: sessionInfo.curType == AppConstants.VALUE.UIN_TYPE_FRIEND");
       return;
@@ -4720,15 +4100,15 @@ public class ChatActivityFacade
       if (localFileManagerEntity != null)
       {
         if (localFileManagerEntity.getCloudType() == 0) {
-          paramQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
+          paramQQAppInterface.getOnlineFileSessionCenter().c(localFileManagerEntity.nSessionId);
         } else {
           paramQQAppInterface.getFileManagerRSCenter().a(localFileManagerEntity.nSessionId);
         }
-        paramQQAppInterface.getFileManagerDataCenter().b(localFileManagerEntity);
+        paramQQAppInterface.getFileManagerDataCenter().f(localFileManagerEntity);
         if (localFileManagerEntity.getCloudType() == 0) {
-          paramQQAppInterface.getOnlineFileSessionCenter().d(localFileManagerEntity.nSessionId);
+          paramQQAppInterface.getOnlineFileSessionCenter().f(localFileManagerEntity.nSessionId);
         }
-        paramQQAppInterface.getFileManagerEngine().b(localFileManagerEntity.nSessionId);
+        paramQQAppInterface.getFileManagerEngine().c(localFileManagerEntity.nSessionId);
       }
     }
     else
@@ -4744,21 +4124,37 @@ public class ChatActivityFacade
     }
   }
   
+  private static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean, MessageRecord paramMessageRecord)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      paramQQAppInterface.getMessageFacade().c(paramMessageRecord);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ChatActivityFacade", 1, "doSendMsg life circle:", paramQQAppInterface);
+    }
+    paramQQAppInterface.getMessageFacade().a(paramMessageRecord, null);
+    return;
+  }
+  
   public static void b(List<ChatMessage> paramList)
   {
-    if ((jdField_a_of_type_JavaUtilList != null) && (paramList != null) && (paramList.size() > 0) && (jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((f != null) && (paramList != null) && (paramList.size() > 0) && (f.size() > 0))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         ChatMessage localChatMessage1 = (ChatMessage)paramList.next();
-        if (jdField_a_of_type_JavaUtilList.contains(localChatMessage1))
+        if (f.contains(localChatMessage1))
         {
-          jdField_a_of_type_JavaUtilList.remove(localChatMessage1);
+          f.remove(localChatMessage1);
         }
         else if (localChatMessage1.isLongMsg())
         {
-          Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+          Iterator localIterator = f.iterator();
           while (localIterator.hasNext())
           {
             ChatMessage localChatMessage2 = (ChatMessage)localIterator.next();
@@ -4768,9 +4164,9 @@ public class ChatActivityFacade
           }
         }
       }
-      if (jdField_a_of_type_JavaUtilList.size() == 0)
+      if (f.size() == 0)
       {
-        paramList = b;
+        paramList = e;
         if (paramList != null) {
           paramList.dismiss();
         }
@@ -4778,24 +4174,109 @@ public class ChatActivityFacade
     }
   }
   
-  private static boolean b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (FeedsManager.isShowStatus(paramSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      j(paramQQAppInterface, paramSessionInfo);
-      i(paramQQAppInterface, paramSessionInfo);
-      return true;
-    }
-    return false;
-  }
-  
   public static boolean b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkAppMessage paramArkAppMessage)
   {
     return a(paramQQAppInterface, paramSessionInfo, paramArkAppMessage, 0);
   }
   
+  public static long[] b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList, ChatActivityFacade.SendMsgParams paramSendMsgParams)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(" createTextMessageToshow start, currenttime:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = a(paramString, paramArrayList);
+    if (localObject2 == null) {
+      return null;
+    }
+    paramString = new ArrayList();
+    Object localObject1 = new ArrayList();
+    Random localRandom = new Random();
+    ((ArrayList)localObject1).add(localObject2);
+    paramString.add(paramArrayList);
+    if (QLog.isColorLevel())
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append(" createTextMessageToshow step 2, currenttime:");
+      paramArrayList.append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, paramArrayList.toString());
+    }
+    int i = Math.abs(localRandom.nextInt());
+    paramArrayList = new long[((ArrayList)localObject1).size()];
+    int j = 0;
+    while (j < ((ArrayList)localObject1).size())
+    {
+      String str = (String)((ArrayList)localObject1).get(j);
+      if (paramString.size() > j) {
+        localObject2 = (ArrayList)paramString.get(j);
+      } else {
+        localObject2 = null;
+      }
+      if ((paramSessionInfo.a == 3000) || (paramSessionInfo.a == 1)) {
+        i = Math.abs(localRandom.nextInt());
+      }
+      paramArrayList[j] = a(paramQQAppInterface, paramSessionInfo, str, -1000, false, (byte)((ArrayList)localObject1).size(), (byte)j, 0, i, (ArrayList)localObject2, paramSendMsgParams, true);
+      j += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append(" createTextMessageToshow step 3, currenttime:");
+      paramQQAppInterface.append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, paramQQAppInterface.toString());
+    }
+    return paramArrayList;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (paramSessionInfo.a != 0) {
+      return;
+    }
+    ThreadManager.post(new ChatActivityFacade.6(paramQQAppInterface, paramSessionInfo), 5, null, true);
+  }
+  
   @TargetApi(9)
-  private static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  public static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("ChatActivityFacade", 1, "insertRenewalTailTipMsgIfNeeded app == null");
+      return;
+    }
+    if (SimpleUIUtil.e()) {
+      return;
+    }
+    int i = paramSessionInfo.a;
+    if ((i == 0) || (i == 1) || (i == 3000))
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4);
+      if (!paramBoolean)
+      {
+        long l = localSharedPreferences.getLong("last_pull_individual_expire_info_time", 0L);
+        if (System.currentTimeMillis() - l <= 86400000L) {
+          return;
+        }
+        paramQQAppInterface = (IApolloExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface.a(((IVasGrayTips)QRoute.api(IVasGrayTips.class)).transformFrom(i), paramSessionInfo.b);
+          if (Build.VERSION.SDK_INT <= 8)
+          {
+            localSharedPreferences.edit().putLong("last_pull_individual_expire_info_time", System.currentTimeMillis()).commit();
+            return;
+          }
+          localSharedPreferences.edit().putLong("last_pull_individual_expire_info_time", System.currentTimeMillis()).apply();
+        }
+      }
+    }
+  }
+  
+  @TargetApi(9)
+  private static boolean c(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (!android.text.TextUtils.isEmpty(paramString))
     {
@@ -4836,84 +4317,301 @@ public class ChatActivityFacade
     return false;
   }
   
-  private static long c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public static long[] c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" sendMessage start currenttime:");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("SendMsgBtn", 2, localStringBuilder.toString());
+    }
+    if ((paramString != null) && (paramString.length() != 0) && (paramSessionInfo != null))
+    {
+      if (android.text.TextUtils.isEmpty(paramSessionInfo.b)) {
+        return null;
+      }
+      paramString = b(paramQQAppInterface, paramSessionInfo, paramString, null, localSendMsgParams);
+      ThreadManager.post(new ChatActivityFacade.14(localSendMsgParams, paramQQAppInterface, paramSessionInfo), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append(" sendMessage end currenttime:");
+        paramQQAppInterface.append(System.currentTimeMillis());
+        QLog.d("SendMsgBtn", 2, paramQQAppInterface.toString());
+      }
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static long d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    MessageForPtt localMessageForPtt = (MessageForPtt)a(paramQQAppInterface, paramString, paramSessionInfo, -3, 0);
+    if (localMessageForPtt != null)
+    {
+      long l = localMessageForPtt.uniseq;
+      if (l != -1L)
+      {
+        int i = ((IQQRecorderTempApi)QRoute.api(IQQRecorderTempApi.class)).getFilePlayTime(localMessageForPtt);
+        int j = RecordParams.a(paramString);
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("DiyTextId", localMessageForPtt.vipBubbleDiyTextId);
+        a(paramQQAppInterface, paramSessionInfo.a, paramSessionInfo.b, paramString, l, true, i * 1000, j, true, 0, 0, true, localMessageForPtt.vipSubBubbleId, localBundle);
+      }
+      return l;
+    }
+    return 0L;
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    MessageRecord localMessageRecord = MessageRecordFactory.a(-4005);
+    long l = MessageCache.c();
+    localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.b, paramSessionInfo.b, BaseApplicationImpl.getContext().getString(2131891530), l, -4005, paramSessionInfo.a, l);
+    localMessageRecord.isread = true;
+    if (!MessageHandlerUtils.a(paramQQAppInterface, localMessageRecord, false)) {
+      paramQQAppInterface.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
+    }
+  }
+  
+  public static MessageRecord e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (UinTypeUtil.b(paramSessionInfo.a))
+    {
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a);
+      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()))
+      {
+        int i = paramQQAppInterface.size() - 1;
+        while (i >= 0)
+        {
+          paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
+          if (!MessageRecordInfo.c(paramSessionInfo.issend)) {
+            return paramSessionInfo;
+          }
+          i -= 1;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static MessageRecord f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (UinTypeUtil.b(paramSessionInfo.a))
+    {
+      List localList = paramQQAppInterface.getMessageFacade().h(paramSessionInfo.b, paramSessionInfo.a);
+      if ((localList != null) && (!localList.isEmpty()))
+      {
+        int i = localList.size() - 1;
+        while (i >= 0)
+        {
+          paramSessionInfo = (MessageRecord)localList.get(i);
+          if (!MessageRecordInfo.c(paramSessionInfo.issend))
+          {
+            paramQQAppInterface = paramSessionInfo;
+            if (paramSessionInfo.msgtype != -1034) {
+              return paramQQAppInterface;
+            }
+          }
+          i -= 1;
+        }
+      }
+    }
+    paramQQAppInterface = null;
+    return paramQQAppInterface;
+  }
+  
+  private static long g(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
   {
     if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
     {
       if (paramSessionInfo == null) {
         return 0L;
       }
-      paramSessionInfo = a(paramQQAppInterface, paramSessionInfo, "key_last_story_feed_create_time_for_aio");
-      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getLong(paramSessionInfo, 0L);
+      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getLong(j(paramQQAppInterface, paramSessionInfo, paramString), 0L);
     }
     return 0L;
   }
   
-  public static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public static void g(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 0) {
-      return;
-    }
-    ThreadManager.post(new ChatActivityFacade.6(paramQQAppInterface, paramSessionInfo), 5, null, true);
+    Object localObject1 = new EventItem(18, null);
+    ((EventItem)localObject1).eventType = 538052865;
+    Object localObject2 = new JceOutputStream();
+    ((JceOutputStream)localObject2).setServerEncoding("utf-8");
+    ((EventItem)localObject1).writeTo((JceOutputStream)localObject2);
+    localObject1 = new String(((JceOutputStream)localObject2).toByteArray());
+    localObject2 = paramQQAppInterface.getMsgHandler();
+    paramSessionInfo = paramSessionInfo.b;
+    paramQQAppInterface = paramQQAppInterface.getCurrentNickname();
+    int i = MobileQQService.seq;
+    MobileQQService.seq = i + 1;
+    ((MessageHandler)localObject2).a(paramSessionInfo, (String)localObject1, (byte)18, paramQQAppInterface, i, -1L);
   }
   
-  @TargetApi(9)
-  public static void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
+  private static boolean g(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (paramQQAppInterface == null)
+    if (paramQQAppInterface != null)
     {
-      QLog.e("ChatActivityFacade", 1, "insertRenewalTailTipMsgIfNeeded app == null");
-      return;
-    }
-    int i = paramSessionInfo.jdField_a_of_type_Int;
-    if ((i == 0) || (i == 1) || (i == 3000) || (i == 1001) || (i == 10002) || (i == 10004) || (i == 1006) || (i == 1004) || (i == 1000) || (i == 10010) || (i == 3))
-    {
-      Object localObject1 = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4);
-      if (!paramBoolean)
+      if (paramSessionInfo == null) {
+        return false;
+      }
+      if (QZoneHelper.hideAioFeeds())
       {
-        long l = ((SharedPreferences)localObject1).getLong("last_pull_individual_expire_info_time", 0L);
-        if (System.currentTimeMillis() - l > 86400000L)
+        if (QLog.isColorLevel()) {
+          QLog.i("ChatActivityFacade.QZoneFeeds", 2, "wns 下发配置 要隐藏aio feeds，所以也不发请求了");
+        }
+        return false;
+      }
+      if (paramBoolean) {
+        return p(paramQQAppInterface, paramSessionInfo);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private static void h(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
+    {
+      if (paramSessionInfo == null) {
+        return;
+      }
+      paramSessionInfo = j(paramQQAppInterface, paramSessionInfo, paramString);
+      paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putLong(paramSessionInfo, NetConnInfoCenter.getServerTimeMillis()).apply();
+    }
+  }
+  
+  private static boolean h(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramSessionInfo == null) {
+        return false;
+      }
+      if (!QCircleConfigHelper.c(StudyModeManager.h()))
+      {
+        QLog.i("ChatActivityFacade.QCircleFeeds", 2, "isNeedInsertQCircleNewestFeeds==false: 非小世界灰度用户");
+        return false;
+      }
+      if (QZoneHelper.hideAioQCircleFeeds())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ChatActivityFacade.QCircleFeeds", 2, "wns 下发配置 要隐藏aio qcircle feeds，所以也不发请求了");
+        }
+        return false;
+      }
+      if (paramBoolean) {
+        return q(paramQQAppInterface, paramSessionInfo);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private static void i(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
+    {
+      if (paramSessionInfo == null) {
+        return;
+      }
+      paramSessionInfo = j(paramQQAppInterface, paramSessionInfo, "key_request_troop_qcircle_msg_attache_data");
+      paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putString(paramSessionInfo, paramString).apply();
+    }
+  }
+  
+  private static boolean i(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramSessionInfo == null) {
+        return false;
+      }
+      if (QZoneHelper.disableAioStoryFeedReq()) {
+        return false;
+      }
+      if (paramBoolean) {
+        return r(paramQQAppInterface, paramSessionInfo);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private static String j(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    paramQQAppInterface = paramQQAppInterface.getCurrentUin();
+    paramSessionInfo = paramSessionInfo.b;
+    paramString = new StringBuilder(paramString);
+    paramString.append("_");
+    paramString.append(paramQQAppInterface);
+    paramString.append("_");
+    paramString.append(paramSessionInfo);
+    return paramString.toString();
+  }
+  
+  private static void n(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramSessionInfo == null) {
+        return;
+      }
+      Object localObject1 = paramQQAppInterface.getMessageFacade();
+      Object localObject2 = paramSessionInfo.b;
+      int j = 0;
+      int i = 0;
+      localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, 0, new int[] { -2015 });
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        for (;;)
         {
-          localObject2 = (IApolloExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
-          if (localObject2 != null)
+          j = i;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+          if ((localObject2 != null) && ((localObject2 instanceof MessageForQzoneFeed)) && (((MessageForQzoneFeed)localObject2).isOldStructMsg))
           {
-            ((IApolloExtensionHandler)localObject2).a(1);
-            if (Build.VERSION.SDK_INT <= 8)
-            {
-              ((SharedPreferences)localObject1).edit().putLong("last_pull_individual_expire_info_time", System.currentTimeMillis()).commit();
-              return;
+            if (QLog.isColorLevel()) {
+              QLog.i("ChatActivityFacade.QZoneFeeds", 2, "删除老结构的feeds");
             }
-            ((SharedPreferences)localObject1).edit().putLong("last_pull_individual_expire_info_time", System.currentTimeMillis()).apply();
-            return;
+            paramQQAppInterface.getMessageFacade().a(((MessageRecord)localObject2).frienduin, 0, ((MessageRecord)localObject2).msgtype, ((MessageRecord)localObject2).uniseq);
+            paramQQAppInterface.getMessageFacade().h(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
+            i = 1;
           }
         }
       }
-      i = ((SharedPreferences)localObject1).getInt("renewal_tail_tip_exit", 0);
-      if (i == 0) {
-        return;
+      if (j != 0) {
+        t(paramQQAppInterface, paramSessionInfo);
       }
-      Object localObject2 = ((SharedPreferences)localObject1).getString("renewal_tail_tip", "");
-      localObject1 = ((SharedPreferences)localObject1).edit();
-      ((SharedPreferences.Editor)localObject1).putInt("renewal_tail_tip_exit", 0);
-      if (Build.VERSION.SDK_INT <= 8) {
-        ((SharedPreferences.Editor)localObject1).commit();
-      } else {
-        ((SharedPreferences.Editor)localObject1).apply();
-      }
-      FileManagerDataCenter.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, -4020);
-      paramQQAppInterface.getFileManagerDataCenter().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_Int, -4020, (String)localObject2);
-      VasWebviewUtil.a(paramSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_show", "", 1, 0, 0, "", String.valueOf(i), "");
     }
   }
   
-  private static boolean c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static boolean o(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (FeedsManager.isShowStatus(paramSessionInfo.b))
+    {
+      x(paramQQAppInterface, paramSessionInfo);
+      t(paramQQAppInterface, paramSessionInfo);
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean p(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
     {
       if (paramSessionInfo == null) {
         return false;
       }
-      long l1 = b(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_feeds_time");
+      long l1 = g(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_feeds_time");
       l1 = NetConnInfoCenter.getServerTimeMillis() - l1;
       long l2 = QzoneConfig.getInstance().getConfig("QZoneSetting", "requestAIOFeedsDiv", 900000);
       if (l1 > l2)
@@ -4930,90 +4628,14 @@ public class ChatActivityFacade
     return false;
   }
   
-  private static long d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatActivityFacade.QZoneFeeds", 2, "getLastFeedsPublishTimeV2   start");
-    }
-    BeancurdMsg localBeancurdMsg = ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, 12);
-    long l1;
-    if (localBeancurdMsg != null)
-    {
-      try
-      {
-        l1 = new JSONObject(localBeancurdMsg.buffer).optLong("time", 0L);
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("ChatActivityFacade.QZoneFeeds", 1, "", localJSONException);
-        l1 = 0L;
-      }
-    }
-    else
-    {
-      Object localObject = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, 0, new int[] { -2015 });
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = (MessageForQzoneFeed)((List)localObject).get(((List)localObject).size() - 1);
-        if (localObject != null)
-        {
-          ((MessageForQzoneFeed)localObject).parse();
-          l1 = ((MessageForQzoneFeed)localObject).feedTime;
-          break label167;
-        }
-      }
-      l1 = 0L;
-      label167:
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getLastFeedsPublishTimeV2   没有qzone历史豆腐块,sessionInfo.curFriendUin=");
-        ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(",sessionInfo.curType=");
-        ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_Int);
-        ((StringBuilder)localObject).append(" busiID=");
-        ((StringBuilder)localObject).append(2);
-        QLog.i("ChatActivityFacade.QZoneFeeds", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    long l2 = l1;
-    if (l1 == 0L) {
-      l2 = e(paramQQAppInterface, paramSessionInfo);
-    }
-    return l2;
-  }
-  
-  public static void d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-4005);
-    long l = MessageCache.a();
-    localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getContext().getString(2131693905), l, -4005, paramSessionInfo.jdField_a_of_type_Int, l);
-    localMessageRecord.isread = true;
-    if (!MessageHandlerUtils.a(paramQQAppInterface, localMessageRecord, false)) {
-      paramQQAppInterface.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
-    }
-  }
-  
-  private static void d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return;
-      }
-      paramSessionInfo = a(paramQQAppInterface, paramSessionInfo, paramString);
-      paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putLong(paramSessionInfo, NetConnInfoCenter.getServerTimeMillis()).apply();
-    }
-  }
-  
-  private static boolean d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static boolean q(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
     {
       if (paramSessionInfo == null) {
         return false;
       }
-      long l1 = b(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_qcircle_feeds_time");
+      long l1 = g(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_qcircle_feeds_time");
       l1 = NetConnInfoCenter.getServerTimeMillis() - l1;
       long l2 = QzoneConfig.getInstance().getConfig("QZoneSetting", "requestAIOQCircleFeedsDiv", 900000);
       if (l1 > l2)
@@ -5030,31 +4652,123 @@ public class ChatActivityFacade
     return false;
   }
   
-  private static boolean d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
+  private static boolean r(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (paramQQAppInterface != null)
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
     {
       if (paramSessionInfo == null) {
         return false;
       }
-      if (QZoneHelper.hideAioFeeds())
+      long l = g(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_story_feed_time");
+      l = NetConnInfoCenter.getServerTimeMillis() - l;
+      if (l > 900000L)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("ChatActivityFacade.QZoneFeeds", 2, "wns 下发配置 要隐藏aio feeds，所以也不发请求了");
+          QLog.i("ChatActivityFacade.QZoneFeeds", 2, String.format("Story与上一次请求间隔%d ms  大于等于 下发配置：%d ms,将返回true，可以进行请求", new Object[] { Long.valueOf(l), Long.valueOf(900000L) }));
         }
-        return false;
+        return true;
       }
-      if (paramBoolean) {
-        return c(paramQQAppInterface, paramSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivityFacade.QZoneFeeds", 2, String.format("Story与上一次请求间隔%d ms  小于 下发配置：%d ms,将返回false，触发了频率控制，不可以进行请求", new Object[] { Long.valueOf(l), Long.valueOf(900000L) }));
       }
-      return true;
     }
     return false;
   }
   
-  private static long e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static String s(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, 0, new int[] { -2015 });
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
+    {
+      if (paramSessionInfo == null) {
+        return "";
+      }
+      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getString(j(paramQQAppInterface, paramSessionInfo, "key_request_troop_qcircle_msg_attache_data"), "");
+    }
+    return "";
+  }
+  
+  private static void t(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
+    {
+      if (paramSessionInfo == null) {
+        return;
+      }
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0);
+      paramQQAppInterface = j(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_feeds_time");
+      localSharedPreferences.edit().remove(paramQQAppInterface).apply();
+    }
+  }
+  
+  private static long u(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
+    {
+      if (paramSessionInfo == null) {
+        return 0L;
+      }
+      paramSessionInfo = j(paramQQAppInterface, paramSessionInfo, "key_last_story_feed_create_time_for_aio");
+      return paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).getLong(paramSessionInfo, 0L);
+    }
+    return 0L;
+  }
+  
+  private static long v(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ChatActivityFacade.QZoneFeeds", 2, "getLastFeedsPublishTimeV2   start");
+    }
+    BeancurdMsg localBeancurdMsg = ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramSessionInfo.b, paramSessionInfo.a, 12);
+    long l1;
+    if (localBeancurdMsg != null)
+    {
+      try
+      {
+        l1 = new JSONObject(localBeancurdMsg.buffer).optLong("time", 0L);
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ChatActivityFacade.QZoneFeeds", 1, "", localJSONException);
+        l1 = 0L;
+      }
+    }
+    else
+    {
+      Object localObject = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, 0, new int[] { -2015 });
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (MessageForQzoneFeed)((List)localObject).get(((List)localObject).size() - 1);
+        if (localObject != null)
+        {
+          ((MessageForQzoneFeed)localObject).parse();
+          l1 = ((MessageForQzoneFeed)localObject).feedTime;
+          break label167;
+        }
+      }
+      l1 = 0L;
+      label167:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getLastFeedsPublishTimeV2   没有qzone历史豆腐块,sessionInfo.curFriendUin=");
+        ((StringBuilder)localObject).append(paramSessionInfo.b);
+        ((StringBuilder)localObject).append(",sessionInfo.curType=");
+        ((StringBuilder)localObject).append(paramSessionInfo.a);
+        ((StringBuilder)localObject).append(" busiID=");
+        ((StringBuilder)localObject).append(2);
+        QLog.i("ChatActivityFacade.QZoneFeeds", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    long l2 = l1;
+    if (l1 == 0L) {
+      l2 = w(paramQQAppInterface, paramSessionInfo);
+    }
+    return l2;
+  }
+  
+  private static long w(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, 0, new int[] { -2015 });
     if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
     {
       paramQQAppInterface = (MessageRecord)paramQQAppInterface.get(0);
@@ -5088,157 +4802,9 @@ public class ChatActivityFacade
     return 0L;
   }
   
-  public static void e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static void x(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    Object localObject1 = new EventItem(18, null);
-    ((EventItem)localObject1).eventType = 538052865;
-    Object localObject2 = new JceOutputStream();
-    ((JceOutputStream)localObject2).setServerEncoding("utf-8");
-    ((EventItem)localObject1).writeTo((JceOutputStream)localObject2);
-    localObject1 = new String(((JceOutputStream)localObject2).toByteArray());
-    localObject2 = paramQQAppInterface.getMsgHandler();
-    paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    paramQQAppInterface = paramQQAppInterface.getCurrentNickname();
-    int i = MobileQQService.seq;
-    MobileQQService.seq = i + 1;
-    ((MessageHandler)localObject2).a(paramSessionInfo, (String)localObject1, (byte)18, paramQQAppInterface, i, -1L);
-  }
-  
-  private static void e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return;
-      }
-      paramSessionInfo = a(paramQQAppInterface, paramSessionInfo, "key_request_troop_qcircle_msg_attache_data");
-      paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putString(paramSessionInfo, paramString).apply();
-    }
-  }
-  
-  private static boolean e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return false;
-      }
-      long l = b(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_story_feed_time");
-      l = NetConnInfoCenter.getServerTimeMillis() - l;
-      if (l > 900000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatActivityFacade.QZoneFeeds", 2, String.format("Story与上一次请求间隔%d ms  大于等于 下发配置：%d ms,将返回true，可以进行请求", new Object[] { Long.valueOf(l), Long.valueOf(900000L) }));
-        }
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivityFacade.QZoneFeeds", 2, String.format("Story与上一次请求间隔%d ms  小于 下发配置：%d ms,将返回false，触发了频率控制，不可以进行请求", new Object[] { Long.valueOf(l), Long.valueOf(900000L) }));
-      }
-    }
-    return false;
-  }
-  
-  private static boolean e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (paramSessionInfo == null) {
-        return false;
-      }
-      if (!QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a()))
-      {
-        QLog.i("ChatActivityFacade.QCircleFeeds", 2, "isNeedInsertQCircleNewestFeeds==false: 非小世界灰度用户");
-        return false;
-      }
-      if (QZoneHelper.hideAioQCircleFeeds())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatActivityFacade.QCircleFeeds", 2, "wns 下发配置 要隐藏aio qcircle feeds，所以也不发请求了");
-        }
-        return false;
-      }
-      if (paramBoolean) {
-        return d(paramQQAppInterface, paramSessionInfo);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  private static boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, boolean paramBoolean)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (paramSessionInfo == null) {
-        return false;
-      }
-      if (QZoneHelper.disableAioStoryFeedReq()) {
-        return false;
-      }
-      if (paramBoolean) {
-        return e(paramQQAppInterface, paramSessionInfo);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  private static void h(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (paramSessionInfo == null) {
-        return;
-      }
-      Object localObject1 = paramQQAppInterface.getMessageFacade();
-      Object localObject2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      int j = 0;
-      int i = 0;
-      localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, 0, new int[] { -2015 });
-      if (localObject1 != null)
-      {
-        localObject1 = ((List)localObject1).iterator();
-        for (;;)
-        {
-          j = i;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (MessageRecord)((Iterator)localObject1).next();
-          if ((localObject2 != null) && ((localObject2 instanceof MessageForQzoneFeed)) && (((MessageForQzoneFeed)localObject2).isOldStructMsg))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("ChatActivityFacade.QZoneFeeds", 2, "删除老结构的feeds");
-            }
-            paramQQAppInterface.getMessageFacade().a(((MessageRecord)localObject2).frienduin, 0, ((MessageRecord)localObject2).msgtype, ((MessageRecord)localObject2).uniseq);
-            paramQQAppInterface.getMessageFacade().b(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-            i = 1;
-          }
-        }
-      }
-      if (j != 0) {
-        i(paramQQAppInterface, paramSessionInfo);
-      }
-    }
-  }
-  
-  private static void i(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null))
-    {
-      if (paramSessionInfo == null) {
-        return;
-      }
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("qzone_sp_in_qq", 0);
-      paramQQAppInterface = a(paramQQAppInterface, paramSessionInfo, "key_last_req_aio_feeds_time");
-      localSharedPreferences.edit().remove(paramQQAppInterface).apply();
-    }
-  }
-  
-  private static void j(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    paramSessionInfo = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, 0, new int[] { -2015 });
+    paramSessionInfo = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, 0, new int[] { -2015 });
     if (paramSessionInfo != null)
     {
       paramSessionInfo = paramSessionInfo.iterator();
@@ -5248,23 +4814,23 @@ public class ChatActivityFacade
         if (localMessageRecord != null)
         {
           paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          paramQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().h(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
           SharedPreUtils.a(paramQQAppInterface.getCurrentUin(), localMessageRecord.frienduin, 0L);
         }
       }
     }
   }
   
-  private static void k(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static void y(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     a(12, paramQQAppInterface, paramSessionInfo);
   }
   
-  private static void l(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private static void z(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     QLog.i("ChatActivityFacade.QZoneStoryFeeds", 2, "hasNewFlag == 1,且storyFeeds.size =0 ,视为后台让客户端，需要清理本地缓存");
-    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, 7);
-    Object localObject = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, 0, new int[] { -2074 });
+    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).c(paramSessionInfo.b, paramSessionInfo.a, 7);
+    Object localObject = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.b, 0, new int[] { -2074 });
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -5274,7 +4840,7 @@ public class ChatActivityFacade
         if (localMessageRecord != null)
         {
           paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          paramQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().h(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
         }
       }
     }
@@ -5283,7 +4849,7 @@ public class ChatActivityFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade
  * JD-Core Version:    0.7.0.1
  */

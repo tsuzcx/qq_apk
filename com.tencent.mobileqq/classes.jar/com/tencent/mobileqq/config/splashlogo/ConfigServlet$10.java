@@ -20,10 +20,10 @@ class ConfigServlet$10
   
   public void run()
   {
-    IPasswdRedBagService localIPasswdRedBagService = (IPasswdRedBagService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPasswdRedBagService.class);
+    IPasswdRedBagService localIPasswdRedBagService = (IPasswdRedBagService)this.a.getRuntimeService(IPasswdRedBagService.class);
     HashSet localHashSet = new HashSet();
-    int j = SharedPreUtils.E(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), ConfigServlet.a);
-    int i = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get();
+    int j = SharedPreUtils.N(this.a.getApp(), ConfigServlet.a);
+    int i = this.b.version.get();
     int m;
     StringBuilder localStringBuilder;
     if (i != j)
@@ -31,9 +31,9 @@ class ConfigServlet$10
       if (i == j) {
         i = j;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list != null) && (this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.size() > 0))
+      if ((this.b.content_list != null) && (this.b.content_list.size() > 0))
       {
-        int n = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.size();
+        int n = this.b.content_list.size();
         int k = 0;
         for (;;)
         {
@@ -41,7 +41,7 @@ class ConfigServlet$10
           if (k >= n) {
             break;
           }
-          Object localObject1 = (String)this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.get(k);
+          Object localObject1 = (String)this.b.content_list.get(k);
           Object localObject2;
           if (QLog.isColorLevel())
           {
@@ -49,7 +49,7 @@ class ConfigServlet$10
             ((StringBuilder)localObject2).append("receiveAllConfigs|type: 56,content: ");
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append(",version: ");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+            ((StringBuilder)localObject2).append(this.b.version.get());
             QLog.d("SPLASH_ConfigServlet", 2, ((StringBuilder)localObject2).toString());
           }
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -94,7 +94,7 @@ class ConfigServlet$10
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("receiveAllConfigs|type: 56,content_list is empty ,version: ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+        localStringBuilder.append(this.b.version.get());
         QLog.d("SPLASH_ConfigServlet", 2, localStringBuilder.toString());
         m = i;
       }
@@ -115,7 +115,7 @@ class ConfigServlet$10
     if (m != j) {
       try
       {
-        SharedPreUtils.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), ConfigServlet.a, m);
+        SharedPreUtils.l(this.a.getApp(), ConfigServlet.a, m);
         localIPasswdRedBagService.updatePasswdConfig(localHashSet);
         i = 1;
       }
@@ -136,7 +136,7 @@ class ConfigServlet$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.10
  * JD-Core Version:    0.7.0.1
  */

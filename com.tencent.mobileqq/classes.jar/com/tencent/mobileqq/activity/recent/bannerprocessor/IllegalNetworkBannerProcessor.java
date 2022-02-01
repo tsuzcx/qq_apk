@@ -19,12 +19,7 @@ public class IllegalNetworkBannerProcessor
   extends BaseBannerProcessor
   implements IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.l;
-  }
+  public static final int a = BannerTypeCollections.l;
   
   public IllegalNetworkBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -38,9 +33,9 @@ public class IllegalNetworkBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131694427));
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838218));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsText(this.f.getString(2131892107));
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839452));
     paramBanner.setOnClickListener(new IllegalNetworkBannerProcessor.1(this));
     paramBanner.setVisibility(8);
     return paramBanner;
@@ -48,22 +43,22 @@ public class IllegalNetworkBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.setVisibility(0);
-    ((TipsBar)paramBanner.a).setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131691080));
+    paramBanner.c.setVisibility(0);
+    ((TipsBar)paramBanner.c).setTipsText(this.f.getString(2131888026));
   }
   
   public void a(AppRuntime paramAppRuntime) {}
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void d()
   {
-    boolean bool = LoadingStateManager.a().d();
+    boolean bool = LoadingStateManager.b().e();
     BannerManager localBannerManager = BannerManager.a();
-    int j = jdField_a_of_type_Int;
+    int j = a;
     int i;
     if (bool) {
       i = 2;
@@ -71,12 +66,12 @@ public class IllegalNetworkBannerProcessor
       i = 0;
     }
     localBannerManager.a(j, i);
-    LoadingStateManager.a().b(bool);
+    LoadingStateManager.b().b(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.IllegalNetworkBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

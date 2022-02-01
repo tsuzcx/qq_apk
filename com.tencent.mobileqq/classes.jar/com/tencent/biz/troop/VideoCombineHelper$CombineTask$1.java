@@ -22,30 +22,30 @@ class VideoCombineHelper$CombineTask$1
     Object localObject = new File(paramString1);
     if ((paramBoolean) && (((File)localObject).exists()))
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a)
+      if (this.a.a)
       {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
+        this.b.f.b(this.b);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.jdField_a_of_type_JavaLangString != null)
+      if (this.b.b != null)
       {
         l = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a(paramString1, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.jdField_a_of_type_JavaLangString, new VideoCombineHelper.CombineTask.1.1(this, l));
+        this.b.e.a(paramString1, this.b.b, new VideoCombineHelper.CombineTask.1.1(this, l));
         return;
       }
       long l = System.currentTimeMillis();
-      paramString1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask;
-      paramString1.a((File)localObject, paramString1.b, new VideoCombineHelper.CombineTask.1.2(this, l));
+      paramString1 = this.b;
+      paramString1.a((File)localObject, paramString1.c, new VideoCombineHelper.CombineTask.1.2(this, l));
       return;
     }
-    paramString1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask;
-    paramString1.d = paramString2;
-    paramString1.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
+    paramString1 = this.b;
+    paramString1.i = paramString2;
+    paramString1.f.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1
  * JD-Core Version:    0.7.0.1
  */

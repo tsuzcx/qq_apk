@@ -5,7 +5,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.d.d;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.msf.service.MsfService;
@@ -201,7 +201,7 @@ public class MonitorSocketStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat
  * JD-Core Version:    0.7.0.1
  */

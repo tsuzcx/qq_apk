@@ -35,7 +35,7 @@ public class BiuAnswerProteusItem
   {
     if ((paramViewBase != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
@@ -57,14 +57,14 @@ public class BiuAnswerProteusItem
   public JSONObject a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     long l;
-    if (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null) {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.a.a;
+    if (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) {
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
     } else {
       l = 0L;
     }
     JSONObject localJSONObject = new ProteusItemDataBuilder().a(paramAbsBaseArticleInfo).b(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, l).f(paramAbsBaseArticleInfo).g(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, "Biu了").i(paramAbsBaseArticleInfo).j(paramAbsBaseArticleInfo).k(paramAbsBaseArticleInfo).n(paramAbsBaseArticleInfo).m(paramAbsBaseArticleInfo).o(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).v(paramAbsBaseArticleInfo).w(paramAbsBaseArticleInfo).x(paramAbsBaseArticleInfo).D(paramAbsBaseArticleInfo).C(paramAbsBaseArticleInfo).G(paramAbsBaseArticleInfo).a("ReadInjoy_biu_cell").E(paramAbsBaseArticleInfo).s(paramAbsBaseArticleInfo).I(paramAbsBaseArticleInfo).a();
     if (!ArticleInfoHelper.a(paramAbsBaseArticleInfo)) {
-      AnswerProteusItem.a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131701370), localJSONObject);
+      AnswerProteusItem.a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131899399), localJSONObject);
     }
     return localJSONObject;
   }
@@ -77,7 +77,7 @@ public class BiuAnswerProteusItem
     {
       Object localObject2 = (NativeMiddleBodyView)((ReadInJoyMiddleBodyView)localObject1).getNativeView();
       Object localObject3;
-      if ((localObject2 != null) && (((NativeMiddleBodyView)localObject2).a() == null))
+      if ((localObject2 != null) && (((NativeMiddleBodyView)localObject2).getContent() == null))
       {
         localObject3 = new RelativeLayout.LayoutParams(-2, -2);
         LinearLayout localLinearLayout = new LinearLayout(paramContainer.getContext());
@@ -89,8 +89,8 @@ public class BiuAnswerProteusItem
       }
       if (localObject2 != null)
       {
-        localObject1 = (ViewGroup)((NativeMiddleBodyView)localObject2).a();
-        localObject2 = paramIReadInJoyModel.a();
+        localObject1 = (ViewGroup)((NativeMiddleBodyView)localObject2).getContent();
+        localObject2 = paramIReadInJoyModel.k();
         paramInt1 = AnswerProteusItem.a((AbsBaseArticleInfo)localObject2);
         localObject2 = AnswerProteusItem.a((AbsBaseArticleInfo)localObject2, paramInt1);
         if (paramInt1 == 0)
@@ -136,7 +136,7 @@ public class BiuAnswerProteusItem
     if ((localObject1 != null) && (((NativeButton)localObject1).getNativeView() != null) && ((((NativeButton)localObject1).getNativeView() instanceof NativeButtonImp))) {
       ((NativeButtonImp)((NativeButton)localObject1).getNativeView()).setTextColor(-1);
     }
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     Util.a(localViewBase, paramIReadInJoyModel);
     a(localViewBase, paramIReadInJoyModel, paramContainer);
     Util.b(localViewBase, paramIReadInJoyModel);
@@ -150,7 +150,7 @@ public class BiuAnswerProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuAnswerProteusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -95,7 +95,7 @@ public class QQAvatarUtilApiImpl
   
   public Drawable getDefaultDiscusionFaceDrawable()
   {
-    return BaseImageUtil.d();
+    return BaseImageUtil.h();
   }
   
   public Drawable getDefaultFaceDrawable(boolean paramBoolean)
@@ -105,7 +105,7 @@ public class QQAvatarUtilApiImpl
   
   public Drawable getDefaultTroopFaceDrawable()
   {
-    return BaseImageUtil.c();
+    return BaseImageUtil.f();
   }
   
   public Bitmap getDrawableBitmap(Drawable paramDrawable)
@@ -115,7 +115,7 @@ public class QQAvatarUtilApiImpl
   
   public String getIp(String paramString, boolean paramBoolean)
   {
-    boolean bool = HeadDpcCfg.a().a();
+    boolean bool = HeadDpcCfg.a().c();
     int j = NetConnInfoCenter.getActiveNetIpFamily(true);
     int i = 28;
     Object localObject;
@@ -200,7 +200,7 @@ public class QQAvatarUtilApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

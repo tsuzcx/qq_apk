@@ -2,7 +2,9 @@ package com.tencent.mobileqq.qqgamepub.api.impl;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService;
@@ -14,6 +16,7 @@ import com.tencent.mobileqq.qqgamepub.config.QQGamePreloadConfBean;
 import com.tencent.mobileqq.qqgamepub.config.QQGamePreloadConfProcessor;
 import com.tencent.mobileqq.qqgamepub.data.GamePubAccountMessage;
 import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -23,16 +26,57 @@ import java.util.List;
 import java.util.Observable;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 public class GamePubAccountMsgServiceImpl
   extends Observable
   implements IGamePubAccountMsgService
 {
+  public static final String KEY_MESSAGE_NOTICE_FLAG = "game_pa_notice_msg_flag";
+  private static final String MESSAGE_NOTICE_FLAG = "1";
+  private static final int MSG_NOTICE_DISPLAY = 1;
   private static final int MSG_TYPE_ALL = 0;
   private static final int MSG_TYPE_ARK = 1;
   private static final int MSG_TYPE_STRUCT = 2;
   public static final String TAG = "QQGamePub_GamePubAccountMsgServiceImpl";
   private AppRuntime mApp;
+  
+  private boolean canShowMsgSummary(JSONObject paramJSONObject)
+  {
+    boolean bool3 = false;
+    for (;;)
+    {
+      try
+      {
+        boolean bool4 = GamePubAccountHelper.b();
+        if (paramJSONObject.optJSONObject("outer").optInt("display") == 1)
+        {
+          bool1 = true;
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("canHandle--->is hippy v2 : ");
+          paramJSONObject.append(bool4);
+          paramJSONObject.append(" isDisplay: ");
+          paramJSONObject.append(bool1);
+          QLog.i("QQGamePub_GamePubAccountMsgServiceImpl", 1, paramJSONObject.toString());
+          boolean bool2 = bool3;
+          if (bool4)
+          {
+            bool2 = bool3;
+            if (bool1) {
+              bool2 = true;
+            }
+          }
+          return bool2;
+        }
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("QQGamePub_GamePubAccountMsgServiceImpl", 1, paramJSONObject, new Object[0]);
+        return false;
+      }
+      boolean bool1 = false;
+    }
+  }
   
   private ArrayList<QQGameMsgInfo> findMessageFromCache(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -114,9 +158,9 @@ public class GamePubAccountMsgServiceImpl
       return true;
     }
     Object localObject = QQGamePreloadConfProcessor.a();
-    if (((QQGamePreloadConfBean)localObject).a != null)
+    if (((QQGamePreloadConfBean)localObject).f != null)
     {
-      Iterator localIterator = ((QQGamePreloadConfBean)localObject).a.iterator();
+      Iterator localIterator = ((QQGamePreloadConfBean)localObject).f.iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
@@ -132,6 +176,21 @@ public class GamePubAccountMsgServiceImpl
       }
     }
     return false;
+  }
+  
+  private void showNoticeMsgSummaryAndRedPoint(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("outer");
+    MessageRecord localMessageRecord = new MessageRecord();
+    localMessageRecord.selfuin = this.mApp.getCurrentAccountUin();
+    localMessageRecord.frienduin = "2747277822";
+    localMessageRecord.senderuin = "";
+    localMessageRecord.time = paramJSONObject.optLong("ts");
+    localMessageRecord.msg = localJSONObject.optString("text");
+    localMessageRecord.saveExtInfoToExtStr("game_pa_notice_msg_flag", "1");
+    paramJSONObject = new ArrayList();
+    paramJSONObject.add(localMessageRecord);
+    ((IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "")).addMessage(paramJSONObject, this.mApp.getCurrentAccountUin(), this.mApp.isBackgroundStop);
   }
   
   public void clearUnreadMsg(String paramString)
@@ -227,6 +286,13 @@ public class GamePubAccountMsgServiceImpl
               }
             }
           }
+          if (QLog.isColorLevel())
+          {
+            paramList = new StringBuilder();
+            paramList.append("onGameNewMsg qqGameMsgInfoList=");
+            paramList.append(localObject1);
+            QLog.d("QQGamePub_GamePubAccountMsgServiceImpl", 1, paramList.toString());
+          }
           if (((ArrayList)localObject1).size() > 0)
           {
             setChanged();
@@ -248,7 +314,6 @@ public class GamePubAccountMsgServiceImpl
       }
       catch (Throwable paramList)
       {
-        paramList.printStackTrace();
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
@@ -264,10 +329,67 @@ public class GamePubAccountMsgServiceImpl
   {
     ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).saveGalleryDataToMsg(this.mApp, paramBundle);
   }
+  
+  public void showFirstOperationMsg()
+  {
+    IMessageFacade localIMessageFacade = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
+    Object localObject1 = localIMessageFacade.getAllMessages("2747277822", 1008, new int[0]);
+    if (!((List)localObject1).isEmpty())
+    {
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("current msg size: ");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        QLog.i("QQGamePub_GamePubAccountMsgServiceImpl", 2, ((StringBuilder)localObject2).toString());
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        String str = ((MessageRecord)localObject2).getExtInfoFromExtStr("game_pa_notice_msg_flag");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((MessageRecord)localObject2).msg);
+          localStringBuilder.append("--->");
+          localStringBuilder.append(((MessageRecord)localObject2).extStr);
+          QLog.i("QQGamePub_GamePubAccountMsgServiceImpl", 2, localStringBuilder.toString());
+        }
+        if ("1".equals(str)) {
+          localIMessageFacade.removeMsgByMessageRecord((MessageRecord)localObject2, true);
+        }
+      }
+    }
+  }
+  
+  public void startShowGamePaNoticeMsgByPush(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      QLog.i("QQGamePub_GamePubAccountMsgServiceImpl", 2, "startShowGamePaNoticeMsgByPush --> param notice is empty!!!");
+      return;
+    }
+    boolean bool = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).isPubAccountReceiveMsg((AppInterface)this.mApp);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startShowGamePaNoticeMsgByPush --> isFlowPa: ");
+    localStringBuilder.append(bool);
+    QLog.i("QQGamePub_GamePubAccountMsgServiceImpl", 2, localStringBuilder.toString());
+    if (!bool) {
+      return;
+    }
+    if (canShowMsgSummary(paramJSONObject)) {
+      showNoticeMsgSummaryAndRedPoint(paramJSONObject);
+    }
+    if (GamePubAccountHelper.b()) {
+      GamePubAccountHelper.a(paramJSONObject);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.GamePubAccountMsgServiceImpl
  * JD-Core Version:    0.7.0.1
  */

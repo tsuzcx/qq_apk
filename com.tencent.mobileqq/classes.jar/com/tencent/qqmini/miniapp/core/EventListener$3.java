@@ -44,7 +44,7 @@ class EventListener$3
         QMLog.e("EventListener", paramString.toString());
       }
       EventListener.access$202(this.this$0, this.val$miniAppInfo);
-      EventListener.access$200(this.this$0).forceReroad = 2;
+      EventListener.access$200(this.this$0).launchParam.forceReload = 2;
       EventListener.access$200(this.this$0).launchParam.tempState = 0;
       return;
     }
@@ -66,7 +66,7 @@ class EventListener$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.EventListener.3
  * JD-Core Version:    0.7.0.1
  */

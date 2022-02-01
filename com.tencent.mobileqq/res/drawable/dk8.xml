@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="72.0dip" android:width="72.0dip" android:viewportWidth="72.0" android:viewportHeight="72.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/hd1" />
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/hd2" />
-    <item android:state_focused="true" android:state_enabled="true" android:drawable="@drawable/hd2" />
-    <item android:state_enabled="true" android:drawable="@drawable/hd2" />
-</selector>
+    <path android:fillColor="#ff2e2f36" android:pathData="M36,0L36,0A36,36 0,0 1,72 36L72,36A36,36 0,0 1,36 72L36,72A36,36 0,0 1,0 36L0,36A36,36 0,0 1,36 0z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:strokeAlpha="0.5" android:fillAlpha="0.5" android:fillType="evenOdd" />
+    <path android:fillColor="#ffe0e0e0" android:pathData="M23,40C23.5523,40 24,40.4477 24,41L24,48L31.1111,48C31.602,48 32,48.398 32,48.8889L32,51.1111C32,51.602 31.602,52 31.1111,52L20.8889,52C20.398,52 20,51.602 20,51.1111L20,41C20,40.4477 20.4477,40 21,40L23,40ZM51,40C51.5523,40 52,40.4477 52,41L52,41L52,51.1111C52,51.602 51.602,52 51.1111,52L51.1111,52L40.8889,52C40.398,52 40,51.602 40,51.1111L40,51.1111L40,48.8889C40,48.398 40.398,48 40.8889,48L40.8889,48L48,48L48,41C48,40.4477 48.4477,40 49,40L49,40ZM31.1111,20C31.602,20 32,20.398 32,20.8889L32,20.8889L32,23.1111C32,23.602 31.602,24 31.1111,24L31.1111,24L24,24L24,31C24,31.5523 23.5523,32 23,32L23,32L21,32C20.4477,32 20,31.5523 20,31L20,31L20,20.8889C20,20.398 20.398,20 20.8889,20L20.8889,20ZM51.1111,20C51.602,20 52,20.398 52,20.8889L52,31C52,31.5523 51.5523,32 51,32L49,32C48.4477,32 48,31.5523 48,31L48,24L40.8889,24C40.398,24 40,23.602 40,23.1111L40,20.8889C40,20.398 40.398,20 40.8889,20L51.1111,20Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+</vector>

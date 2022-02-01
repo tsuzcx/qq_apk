@@ -39,7 +39,7 @@ class ProfileLogicContainer$1
   {
     if ((paramBoolean) && (((ProfileCardInfo)ProfileLogicContainer.access$000(this.this$0)).allInOne.uin.equals(String.valueOf(paramObject))))
     {
-      ProfileCardUtils.notifyUser(2, 2131691465);
+      ProfileCardUtils.notifyUser(2, 2131888423);
       ProfileLogicContainer.access$100(this.this$0).finish();
     }
   }
@@ -51,7 +51,7 @@ class ProfileLogicContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileLogicContainer.1
  * JD-Core Version:    0.7.0.1
  */

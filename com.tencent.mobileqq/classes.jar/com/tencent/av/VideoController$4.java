@@ -6,7 +6,7 @@ import android.view.OrientationEventListener;
 class VideoController$4
   extends OrientationEventListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   VideoController$4(VideoController paramVideoController, Context paramContext, int paramInt)
   {
@@ -19,26 +19,26 @@ class VideoController$4
       return;
     }
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {
+    if (l - this.b < 50L) {
       return;
     }
-    this.jdField_a_of_type_Long = l;
+    this.b = l;
     if ((paramInt <= 315) && (paramInt > 45))
     {
       if ((paramInt > 45) && (paramInt <= 135))
       {
-        VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+        VideoController.a(this.a, 2);
         return;
       }
       if ((paramInt > 135) && (paramInt <= 225))
       {
-        VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+        VideoController.a(this.a, 3);
         return;
       }
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
+      VideoController.a(this.a, 4);
       return;
     }
-    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+    VideoController.a(this.a, 1);
   }
 }
 

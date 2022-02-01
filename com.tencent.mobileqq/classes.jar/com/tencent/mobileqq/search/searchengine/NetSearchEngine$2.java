@@ -16,20 +16,20 @@ class NetSearchEngine$2
   public void a(List paramList, int paramInt)
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.a.addAll(paramList);
     }
-    SearchUtils.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
+    SearchUtils.c();
+    NetSearchEngine.c(this.b).a.countDown();
   }
   
   public void a(List paramList, SearchRespData paramSearchRespData)
   {
-    a(paramList, paramSearchRespData.a);
+    a(paramList, paramSearchRespData.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.2
  * JD-Core Version:    0.7.0.1
  */

@@ -27,50 +27,48 @@ import mqq.os.MqqHandler;
 
 public class PopOutAnimViewHolder
 {
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  public Context a;
-  public RelativeLayout a;
-  private StickerBubbleAnimationView.StickerBubbleAnimationCallback jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback = new PopOutAnimViewHolder.4(this);
-  private StickerBubbleAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<StickerBubbleAnimationView.StickerBubbleAnimationCallback>> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private StickerBubbleAnimationView.StickerBubbleAnimationCallback jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback = new PopOutAnimViewHolder.5(this);
-  private StickerBubbleAnimationView jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-  private List<WeakReference<StickerBubbleAnimationView.StickerBubbleAnimationCallback>> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private static Random c = new Random();
+  public Context a = MobileQQ.getContext();
+  public RelativeLayout b = (RelativeLayout)LayoutInflater.from(this.a).inflate(2131624090, null);
+  private StickerBubbleAnimationView d;
+  private boolean e;
+  private List<WeakReference<StickerBubbleAnimationView.StickerBubbleAnimationCallback>> f = new CopyOnWriteArrayList();
+  private StickerBubbleAnimationView g;
+  private boolean h;
+  private List<WeakReference<StickerBubbleAnimationView.StickerBubbleAnimationCallback>> i = new CopyOnWriteArrayList();
+  private StickerBubbleAnimationView.StickerBubbleAnimationCallback j = new PopOutAnimViewHolder.4(this);
+  private StickerBubbleAnimationView.StickerBubbleAnimationCallback k = new PopOutAnimViewHolder.5(this);
   
   private PopOutAnimViewHolder()
   {
-    this.jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558537, null));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusableInTouchMode(false);
-    PopOutAnimViewHelper.a(new PopOutAnimViewHolder.1(this, (DiniFlyAnimationView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377848)));
-    PopOutAnimViewHelper.b(new PopOutAnimViewHolder.2(this, (DiniFlyAnimationView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366851)));
+    this.b.setClickable(false);
+    this.b.setFocusable(false);
+    this.b.setFocusableInTouchMode(false);
+    PopOutAnimViewHelper.a(new PopOutAnimViewHolder.1(this, (DiniFlyAnimationView)this.b.findViewById(2131446324)));
+    PopOutAnimViewHelper.b(new PopOutAnimViewHolder.2(this, (DiniFlyAnimationView)this.b.findViewById(2131433178)));
   }
   
   public static AddItemRequest a(int paramInt, String paramString, boolean paramBoolean)
   {
     AddItemRequest localAddItemRequest = new AddItemRequest().a(new Point(paramInt / 2, 0)).a(paramString).a(paramBoolean);
-    int i = 2000;
+    int m = 2000;
     if (paramBoolean) {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(2000) + 1000;
+      paramInt = -c.nextInt(2000) + 1000;
     } else {
-      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
+      paramInt = -c.nextInt(8000) + 4000;
     }
-    double d = paramInt;
+    double d1 = paramInt;
     if (paramBoolean)
     {
-      paramString = jdField_a_of_type_JavaUtilRandom;
+      paramString = c;
       paramInt = 500;
     }
     else
     {
-      paramString = jdField_a_of_type_JavaUtilRandom;
-      paramInt = i;
+      paramString = c;
+      paramInt = m;
     }
-    return localAddItemRequest.a(new ItemStatus.Velocity(d, paramString.nextInt(paramInt))).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(49);
+    return localAddItemRequest.a(new ItemStatus.Velocity(d1, paramString.nextInt(paramInt))).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(49);
   }
   
   public static PopOutAnimViewHolder a()
@@ -122,71 +120,50 @@ public class PopOutAnimViewHolder
   
   private StickerBubbleAnimationView b(Typeface paramTypeface)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    if (this.g == null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false, paramTypeface);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.a();
+      this.g = new StickerBubbleAnimationView(this.a);
+      this.g.setShowText(false, paramTypeface);
+      this.g.setAnimationCallback(this.j);
+      this.g.a();
     }
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+    return this.g;
   }
   
   public AddItemRequest a(@NonNull Point paramPoint, @NonNull String paramString, boolean paramBoolean)
   {
     paramPoint = new AddItemRequest().a(paramPoint).a(paramString).a(paramBoolean);
-    int i;
+    int m;
     if (paramBoolean) {
-      i = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+      m = -c.nextInt(1500) + 750;
     } else {
-      i = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
+      m = -c.nextInt(6000) + 3000;
     }
-    double d = i;
+    double d1 = m;
     if (paramBoolean) {
-      i = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);
+      m = -1000 - c.nextInt(500);
     } else {
-      i = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000);
+      m = -2000 - c.nextInt(1000);
     }
-    return paramPoint.a(new ItemStatus.Velocity(d, i)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(85);
-  }
-  
-  public StickerBubbleAnimationView a()
-  {
-    StickerBubbleAnimationView localStickerBubbleAnimationView = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (localStickerBubbleAnimationView != null)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("hideSendAnimationView: ");
-          localStringBuilder.append(localStickerBubbleAnimationView);
-          QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
-        }
-        PopOutEmoticonUtil.a(localStickerBubbleAnimationView);
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
-    return localStickerBubbleAnimationView;
+    return paramPoint.a(new ItemStatus.Velocity(d1, m)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(85);
   }
   
   public StickerBubbleAnimationView a(Typeface paramTypeface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(true, paramTypeface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.a();
+      this.d = new StickerBubbleAnimationView(this.a);
+      this.d.setShowText(true, paramTypeface);
+      this.d.setAnimationCallback(this.k);
+      this.d.a();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
+    return this.d;
   }
   
   public StickerBubbleAnimationView a(ViewGroup paramViewGroup, Typeface paramTypeface)
   {
     paramTypeface = a(paramTypeface);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
       if (QLog.isColorLevel())
       {
@@ -198,14 +175,9 @@ public class PopOutAnimViewHolder
         QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
       }
       PopOutEmoticonUtil.a(paramViewGroup, paramTypeface);
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
     }
     return paramTypeface;
-  }
-  
-  public void a()
-  {
-    ThreadManager.getUIHandler().post(new PopOutAnimViewHolder.3(this));
   }
   
   public void a(StickerBubbleAnimationView.StickerBubbleAnimationCallback paramStickerBubbleAnimationCallback, boolean paramBoolean)
@@ -213,9 +185,9 @@ public class PopOutAnimViewHolder
     if (paramBoolean) {}
     try
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.f;
       break label19;
-      localList = this.jdField_b_of_type_JavaUtilList;
+      localList = this.i;
       label19:
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
@@ -239,31 +211,10 @@ public class PopOutAnimViewHolder
     }
   }
   
-  public StickerBubbleAnimationView b()
-  {
-    StickerBubbleAnimationView localStickerBubbleAnimationView = this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (localStickerBubbleAnimationView != null)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("hideReceiveAnimationView: ");
-          localStringBuilder.append(localStickerBubbleAnimationView);
-          QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
-        }
-        PopOutEmoticonUtil.a(localStickerBubbleAnimationView);
-      }
-      this.jdField_b_of_type_Boolean = false;
-    }
-    return localStickerBubbleAnimationView;
-  }
-  
   public StickerBubbleAnimationView b(ViewGroup paramViewGroup, Typeface paramTypeface)
   {
     paramTypeface = b(paramTypeface);
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.h)
     {
       if (QLog.isColorLevel())
       {
@@ -275,24 +226,14 @@ public class PopOutAnimViewHolder
         QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
       }
       PopOutEmoticonUtil.a(paramViewGroup, paramTypeface);
-      this.jdField_b_of_type_Boolean = true;
+      this.h = true;
     }
     return paramTypeface;
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PopOutAnimViewHolder", 2, "cleanView");
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      b();
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      a();
-    }
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = null;
+    ThreadManager.getUIHandler().post(new PopOutAnimViewHolder.3(this));
   }
   
   public void b(StickerBubbleAnimationView.StickerBubbleAnimationCallback paramStickerBubbleAnimationCallback, boolean paramBoolean)
@@ -300,9 +241,9 @@ public class PopOutAnimViewHolder
     if (paramBoolean) {}
     try
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.f;
       break label19;
-      localList = this.jdField_b_of_type_JavaUtilList;
+      localList = this.i;
       label19:
       CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
       Iterator localIterator = localList.iterator();
@@ -322,10 +263,67 @@ public class PopOutAnimViewHolder
       throw paramStickerBubbleAnimationCallback;
     }
   }
+  
+  public StickerBubbleAnimationView c()
+  {
+    StickerBubbleAnimationView localStickerBubbleAnimationView = this.d;
+    if (this.e)
+    {
+      if (localStickerBubbleAnimationView != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("hideSendAnimationView: ");
+          localStringBuilder.append(localStickerBubbleAnimationView);
+          QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
+        }
+        PopOutEmoticonUtil.a(localStickerBubbleAnimationView);
+      }
+      this.e = false;
+    }
+    return localStickerBubbleAnimationView;
+  }
+  
+  public StickerBubbleAnimationView d()
+  {
+    StickerBubbleAnimationView localStickerBubbleAnimationView = this.g;
+    if (this.h)
+    {
+      if (localStickerBubbleAnimationView != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("hideReceiveAnimationView: ");
+          localStringBuilder.append(localStickerBubbleAnimationView);
+          QLog.d("PopOutAnimViewHolder", 2, localStringBuilder.toString());
+        }
+        PopOutEmoticonUtil.a(localStickerBubbleAnimationView);
+      }
+      this.h = false;
+    }
+    return localStickerBubbleAnimationView;
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PopOutAnimViewHolder", 2, "cleanView");
+    }
+    if (this.h) {
+      d();
+    }
+    if (this.e) {
+      c();
+    }
+    this.g = null;
+    this.d = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.PopOutAnimViewHolder
  * JD-Core Version:    0.7.0.1
  */

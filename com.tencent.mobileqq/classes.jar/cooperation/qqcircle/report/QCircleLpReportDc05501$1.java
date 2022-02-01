@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,20 +69,19 @@ final class QCircleLpReportDc05501$1
       QCircleReporter.getInstance().add((QQCircleReport.SingleDcData)localObject1, QCircleLpReportDc05501.access$2800(QCircleLpReportDc05501.DataBuilder.access$100(this.val$builder), QCircleLpReportDc05501.DataBuilder.access$200(this.val$builder)));
       return;
     }
-    int i = RFLog.USR;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("QCircleLpReportDc05501 report miss Session: actiontype:");
     ((StringBuilder)localObject2).append(QCircleLpReportDc05501.DataBuilder.access$100(this.val$builder));
     ((StringBuilder)localObject2).append(",subActionType:");
     ((StringBuilder)localObject2).append(QCircleLpReportDc05501.DataBuilder.access$200(this.val$builder));
     ((StringBuilder)localObject2).append(",add Miss Session report cache list");
-    RFLog.w("QCircleReporter", i, ((StringBuilder)localObject2).toString());
+    QLog.w("QCircleReporter", 1, ((StringBuilder)localObject2).toString());
     QCircleReporter.getInstance().addMissSessionReportDataCache((QQCircleReport.SingleDcData)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05501.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ class SwiftBrowserScreenShotHandler$2
   public void onGlobalLayout()
   {
     Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - ((Rect)localObject).height();
+    this.a.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.getRootView().getHeight() - ((Rect)localObject).height();
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -24,19 +24,19 @@ class SwiftBrowserScreenShotHandler$2
     }
     if (i > 150)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler;
-      ((SwiftBrowserScreenShotHandler)localObject).c = true;
+      localObject = this.b;
+      ((SwiftBrowserScreenShotHandler)localObject).o = true;
       ((SwiftBrowserScreenShotHandler)localObject).a(false, 0);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.c) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.c = false;
+    if (this.b.o) {
+      this.b.o = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,18 +19,18 @@ class VideoTextureView$2
     }
     if (VideoTextureView.a() != null)
     {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+      VideoTextureView.a().onVideoStart(VideoTextureView.c(this.a));
       VideoTextureView.a().onVideoProgressUpdate(0);
       VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
     }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
+    if (VideoTextureView.b(this.a) != null) {
+      VideoTextureView.b(this.a).post(this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView.2
  * JD-Core Version:    0.7.0.1
  */

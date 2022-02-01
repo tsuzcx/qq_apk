@@ -23,27 +23,27 @@ final class VasQZoneApiImpl$getRequestAdvRunnable$1
   public final void run()
   {
     vac_adv_get.VacAdvReq localVacAdvReq = new vac_adv_get.VacAdvReq();
-    localVacAdvReq.qq.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaParam.getUin());
-    localVacAdvReq.adv_pos.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaParam.getAdvPos());
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaParam.getQzoneBusiInfo();
+    localVacAdvReq.qq.set(this.a.getUin());
+    localVacAdvReq.adv_pos.set(this.a.getAdvPos());
+    Object localObject = this.a.getQzoneBusiInfo();
     if (localObject != null) {
       localVacAdvReq.qzone_busi_info.set((MessageMicro)localObject);
     }
-    localObject = VasAdvSupport.a.a().a("1018ec");
+    localObject = VasAdvSupport.a.a().b("1018ec");
     if (localObject != null) {
       localVacAdvReq.device_info.set((MessageMicro)localObject);
     }
     if (localVacAdvReq.device_info.get() == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneCallbackVasAdMetaCallback.onGetAdInfoResponse(VasAdvServiceCode.CREATE_REQUEST_ERR, null, null);
+      this.b.onGetAdInfoResponse(VasAdvServiceCode.CREATE_REQUEST_ERR, null, null);
       return;
     }
-    VasQZoneApiImpl.access$requestAd(this.this$0, localVacAdvReq, this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseVasAdvBizCallback);
+    VasQZoneApiImpl.access$requestAd(this.this$0, localVacAdvReq, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.api.impl.VasQZoneApiImpl.getRequestAdvRunnable.1
  * JD-Core Version:    0.7.0.1
  */

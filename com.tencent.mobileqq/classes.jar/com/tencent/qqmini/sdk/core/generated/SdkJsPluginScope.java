@@ -26,6 +26,7 @@ import com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin;
 import com.tencent.qqmini.sdk.plugins.PayJsPlugin;
 import com.tencent.qqmini.sdk.plugins.PersonalizeJsPlugin;
 import com.tencent.qqmini.sdk.plugins.PreCacheJsPlugin;
+import com.tencent.qqmini.sdk.plugins.PreloadPackageJsPlugin;
 import com.tencent.qqmini.sdk.plugins.QQFriendJsPlugin;
 import com.tencent.qqmini.sdk.plugins.ReportPlugin;
 import com.tencent.qqmini.sdk.plugins.RequestJsPlugin;
@@ -55,8 +56,8 @@ public final class SdkJsPluginScope
   static
   {
     EVENT_HANDLERS = new HashMap();
-    PRELOAD_PLUGINS.add(NetworkJsPlugin.class);
     PRELOAD_PLUGINS.add(ScreenJsPlugin.class);
+    PRELOAD_PLUGINS.add(NetworkJsPlugin.class);
     EVENT_HANDLERS.put("setEnableDebug", LogJsPlugin.class);
     EVENT_HANDLERS.put("startDownloadAppTask", AppJsPlugin.class);
     EVENT_HANDLERS.put("cancelDownloadAppTask", AppJsPlugin.class);
@@ -91,14 +92,17 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("hideKeyboard", InputJsPlugin.class);
     EVENT_HANDLERS.put("updateInput", InputJsPlugin.class);
     EVENT_HANDLERS.put("setKeyboardValue", InputJsPlugin.class);
+    EVENT_HANDLERS.put("operateInterstitialAd", InterstitialAdPlugin.class);
     EVENT_HANDLERS.put("createBannerAd", BannerAdPlugin.class);
     EVENT_HANDLERS.put("operateBannerAd", BannerAdPlugin.class);
     EVENT_HANDLERS.put("updateBannerAdSize", BannerAdPlugin.class);
-    EVENT_HANDLERS.put("operateInterstitialAd", InterstitialAdPlugin.class);
     EVENT_HANDLERS.put("getLocation", MapJsPlugin.class);
     EVENT_HANDLERS.put("openLocation", MapJsPlugin.class);
     EVENT_HANDLERS.put("chooseLocation", MapJsPlugin.class);
     EVENT_HANDLERS.put("getNetworkType", NetworkJsPlugin.class);
+    EVENT_HANDLERS.put("setBackgroundFetchToken", PreCacheJsPlugin.class);
+    EVENT_HANDLERS.put("getBackgroundFetchToken", PreCacheJsPlugin.class);
+    EVENT_HANDLERS.put("getBackgroundFetchData", PreCacheJsPlugin.class);
     EVENT_HANDLERS.put("createFileSystemInstance", FileJsPlugin.class);
     EVENT_HANDLERS.put("createDownloadTask", FileJsPlugin.class);
     EVENT_HANDLERS.put("operateDownloadTask", FileJsPlugin.class);
@@ -133,9 +137,6 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("writeFile", FileJsPlugin.class);
     EVENT_HANDLERS.put("writeFileSync", FileJsPlugin.class);
     EVENT_HANDLERS.put("getSavedFileInfo", FileJsPlugin.class);
-    EVENT_HANDLERS.put("setBackgroundFetchToken", PreCacheJsPlugin.class);
-    EVENT_HANDLERS.put("getBackgroundFetchToken", PreCacheJsPlugin.class);
-    EVENT_HANDLERS.put("getBackgroundFetchData", PreCacheJsPlugin.class);
     EVENT_HANDLERS.put("setStorage", StorageJsPlugin.class);
     EVENT_HANDLERS.put("setStorageSync", StorageJsPlugin.class);
     EVENT_HANDLERS.put("getStorage", StorageJsPlugin.class);
@@ -157,8 +158,6 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("openSetting", SettingsJsPlugin.class);
     EVENT_HANDLERS.put("getSetting", SettingsJsPlugin.class);
     EVENT_HANDLERS.put("openAddress", SettingsJsPlugin.class);
-    EVENT_HANDLERS.put("login", AuthJsPlugin.class);
-    EVENT_HANDLERS.put("refreshSession", AuthJsPlugin.class);
     EVENT_HANDLERS.put("showToast", UIJsPlugin.class);
     EVENT_HANDLERS.put("hideToast", UIJsPlugin.class);
     EVENT_HANDLERS.put("hideLoading", UIJsPlugin.class);
@@ -169,6 +168,8 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("removeTextArea", UIJsPlugin.class);
     EVENT_HANDLERS.put("getMenuButtonBoundingClientRect", UIJsPlugin.class);
     EVENT_HANDLERS.put("hideHomeButton", UIJsPlugin.class);
+    EVENT_HANDLERS.put("login", AuthJsPlugin.class);
+    EVENT_HANDLERS.put("refreshSession", AuthJsPlugin.class);
     EVENT_HANDLERS.put("updateVoIPChatMuteConfig", VoIPJsPlugin.class);
     EVENT_HANDLERS.put("joinVoIPChat", VoIPJsPlugin.class);
     EVENT_HANDLERS.put("exitVoIPChat", VoIPJsPlugin.class);
@@ -177,6 +178,13 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("saveImageToPhotosAlbum", ImageJsPlugin.class);
     EVENT_HANDLERS.put("getImageInfo", ImageJsPlugin.class);
     EVENT_HANDLERS.put("compressImage", ImageJsPlugin.class);
+    EVENT_HANDLERS.put("preloadPackage", PreloadPackageJsPlugin.class);
+    EVENT_HANDLERS.put("notifyNative", InternalJSPlugin.class);
+    EVENT_HANDLERS.put("getStoreAppList", InternalJSPlugin.class);
+    EVENT_HANDLERS.put("getQua", InternalJSPlugin.class);
+    EVENT_HANDLERS.put("openUrl", InternalJSPlugin.class);
+    EVENT_HANDLERS.put("private_openUrl", InternalJSPlugin.class);
+    EVENT_HANDLERS.put("launchApplication", InternalJSPlugin.class);
     EVENT_HANDLERS.put("openQzonePublish", ShareJsPlugin.class);
     EVENT_HANDLERS.put("shareAppMessageDirectly", ShareJsPlugin.class);
     EVENT_HANDLERS.put("shareAppPictureMessageDirectly", ShareJsPlugin.class);
@@ -189,15 +197,9 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("updateShareMenuShareTicket", ShareJsPlugin.class);
     EVENT_HANDLERS.put("showActionSheet", ShareJsPlugin.class);
     EVENT_HANDLERS.put("shareInvite", ShareJsPlugin.class);
-    EVENT_HANDLERS.put("notifyNative", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("getStoreAppList", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("getQua", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("openUrl", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("private_openUrl", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("launchApplication", InternalJSPlugin.class);
-    EVENT_HANDLERS.put("openScheme", SchemeJsPlugin.class);
     EVENT_HANDLERS.put("getBatteryInfo", BatteryJsPlugin.class);
     EVENT_HANDLERS.put("getBatteryInfoSync", BatteryJsPlugin.class);
+    EVENT_HANDLERS.put("openScheme", SchemeJsPlugin.class);
     EVENT_HANDLERS.put("saveAppToDesktop", MiscJsPlugin.class);
     EVENT_HANDLERS.put("getPhoneNumber", TelephonyJsPlugin.class);
     EVENT_HANDLERS.put("makePhoneCall", TelephonyJsPlugin.class);
@@ -216,6 +218,8 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("enterContact", CustomerJsPlugin.class);
     EVENT_HANDLERS.put("openCustomerServiceConversation", CustomerJsPlugin.class);
     EVENT_HANDLERS.put("updateQQApp", UpdateAppJsPlugin.class);
+    EVENT_HANDLERS.put("createRewardedVideoAd", RewardedVideoAdPlugin.class);
+    EVENT_HANDLERS.put("operateRewardedAd", RewardedVideoAdPlugin.class);
     EVENT_HANDLERS.put("scanCode", DataJsPlugin.class);
     EVENT_HANDLERS.put("invokeGroupJSApi", DataJsPlugin.class);
     EVENT_HANDLERS.put("getNativeWeRunData", DataJsPlugin.class);
@@ -235,8 +239,6 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("getShareInfo", DataJsPlugin.class);
     EVENT_HANDLERS.put("getUserInfoExtra", DataJsPlugin.class);
     EVENT_HANDLERS.put("getPerformance", DataJsPlugin.class);
-    EVENT_HANDLERS.put("createRewardedVideoAd", RewardedVideoAdPlugin.class);
-    EVENT_HANDLERS.put("operateRewardedAd", RewardedVideoAdPlugin.class);
     EVENT_HANDLERS.put("enableAccelerometer", SensorJsPlugin.class);
     EVENT_HANDLERS.put("enableCompass", SensorJsPlugin.class);
     EVENT_HANDLERS.put("enableGyroscope", SensorJsPlugin.class);
@@ -247,7 +249,15 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("operateUDPTask", UDPJsPlugin.class);
     EVENT_HANDLERS.put("addToFavorites", FavoritesJsPlugin.class);
     EVENT_HANDLERS.put("addFavorites", FavoritesJsPlugin.class);
-    EVENT_HANDLERS.put("openNativePage", NativePageJsPlugin.class);
+    EVENT_HANDLERS.put("createRequestTask", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("operateRequestTask", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("createSocketTask", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("operateSocketTask", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("wnsRequest", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("wnsCgiRequest", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("wnsGroupRequest", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("getGroupAppStatus", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("addGroupApp", RequestJsPlugin.class);
     EVENT_HANDLERS.put("requestPayment", PayJsPlugin.class);
     EVENT_HANDLERS.put("requestMidasPayment", PayJsPlugin.class);
     EVENT_HANDLERS.put("requestWxPayment", PayJsPlugin.class);
@@ -261,20 +271,12 @@ public final class SdkJsPluginScope
     EVENT_HANDLERS.put("requestMidasPaymentByH5", PayJsPlugin.class);
     EVENT_HANDLERS.put("checkH5PayStatus", PayJsPlugin.class);
     EVENT_HANDLERS.put("requestFriendPayment", PayJsPlugin.class);
-    EVENT_HANDLERS.put("createRequestTask", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("operateRequestTask", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("createSocketTask", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("operateSocketTask", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("wnsRequest", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("wnsCgiRequest", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("wnsGroupRequest", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("getGroupAppStatus", RequestJsPlugin.class);
-    EVENT_HANDLERS.put("addGroupApp", RequestJsPlugin.class);
+    EVENT_HANDLERS.put("openNativePage", NativePageJsPlugin.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

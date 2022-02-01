@@ -15,10 +15,10 @@ class TroopPluginManager$InstallRunable$2
   {
     if (QLog.isColorLevel())
     {
-      paramString = TroopPluginManager.jdField_a_of_type_JavaLangString;
+      paramString = TroopPluginManager.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Troop plugin onInstallBegin...  pluginId = ");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a.b);
       QLog.d(paramString, 2, localStringBuilder.toString());
     }
   }
@@ -27,10 +27,10 @@ class TroopPluginManager$InstallRunable$2
   {
     if (QLog.isColorLevel())
     {
-      paramString = TroopPluginManager.jdField_a_of_type_JavaLangString;
+      paramString = TroopPluginManager.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Troop plugin onInstallDownloadProgress... pluginId = ");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a.b);
       QLog.d(paramString, 2, localStringBuilder.toString());
     }
   }
@@ -39,14 +39,14 @@ class TroopPluginManager$InstallRunable$2
   {
     if (QLog.isColorLevel())
     {
-      String str = TroopPluginManager.jdField_a_of_type_JavaLangString;
+      String str = TroopPluginManager.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Troop plugin onInstallError... = ");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a.b);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
+    this.a.this$0.c.remove(paramString);
+    this.a.c.sendEmptyMessage(1002);
     ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 1, null, null, null, null);
   }
   
@@ -54,20 +54,20 @@ class TroopPluginManager$InstallRunable$2
   {
     if (QLog.isColorLevel())
     {
-      String str = TroopPluginManager.jdField_a_of_type_JavaLangString;
+      String str = TroopPluginManager.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Troop plugin onInstallFinish...   pluginId = ");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a.b);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    this.a.this$0.c.remove(paramString);
+    this.a.c.sendEmptyMessage(1001);
     ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 0, null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.InstallRunable.2
  * JD-Core Version:    0.7.0.1
  */

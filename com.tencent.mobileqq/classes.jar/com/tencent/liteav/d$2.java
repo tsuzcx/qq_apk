@@ -11,13 +11,13 @@ class d$2
   {
     TXCloudVideoView localTXCloudVideoView = this.a;
     if (localTXCloudVideoView != null) {
-      localTXCloudVideoView.start(d.e(this.b).K, d.e(this.b).L, d.f(this.b));
+      localTXCloudVideoView.start(d.e(this.b).L, d.e(this.b).M, d.f(this.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.2
  * JD-Core Version:    0.7.0.1
  */

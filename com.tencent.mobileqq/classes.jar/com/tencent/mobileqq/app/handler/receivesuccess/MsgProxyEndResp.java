@@ -36,42 +36,42 @@ public class MsgProxyEndResp
         QLog.d("Q.msg.MessageHandler", 2, new Object[] { ???.toString(), ", uInterval_forbid_pulldown=", Long.valueOf(paramToServiceMsg.uInterval_forbid_pulldown) });
       }
       long l;
-      if (paramToServiceMsg.uEndSeq == paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.c)
+      if (paramToServiceMsg.uEndSeq == paramMessageHandler.e.j)
       {
         l = 0L;
-        paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_AndroidUtilPair = new Pair(paramToServiceMsg, Long.valueOf(0L));
-        paramMessageHandler.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        paramMessageHandler.c(paramToServiceMsg.uInterval_forbid_pulldown);
+        paramMessageHandler.e.g = new Pair(paramToServiceMsg, Long.valueOf(0L));
+        paramMessageHandler.h = SystemClock.uptimeMillis();
+        paramMessageHandler.e(paramToServiceMsg.uInterval_forbid_pulldown);
       }
       else
       {
-        if (paramToServiceMsg.uEndSeq != paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.d) {
+        if (paramToServiceMsg.uEndSeq != paramMessageHandler.e.k) {
           return;
         }
-        paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_AndroidUtilPair = new Pair(paramToServiceMsg, Long.valueOf(1L));
+        paramMessageHandler.e.g = new Pair(paramToServiceMsg, Long.valueOf(1L));
         l = 1L;
       }
-      if ((paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.e != 0) && (paramToServiceMsg.uEndSeq == paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.e))
+      if ((paramMessageHandler.e.n != 0) && (paramToServiceMsg.uEndSeq == paramMessageHandler.e.n))
       {
-        paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c(false);
-        paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.e = 0;
+        paramMessageHandler.n.getMsgCache().c(false);
+        paramMessageHandler.e.n = 0;
       }
-      if (((paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.a()) && (paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.b())) || (!RegisterProxyHandler.b)) {
-        synchronized (paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      if (((paramMessageHandler.e.c()) && (paramMessageHandler.e.d())) || (!RegisterProxyHandler.d)) {
+        synchronized (paramMessageHandler.e.q)
         {
-          if (paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_AndroidUtilPair != null)
+          if (paramMessageHandler.e.g != null)
           {
-            paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_AndroidUtilPair = null;
-            if ((l == 1L) || (!paramMessageHandler.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.c()) || (!paramMessageHandler.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.b()))
+            paramMessageHandler.e.g = null;
+            if ((l == 1L) || (!paramMessageHandler.g.y()) || (!paramMessageHandler.g.w()))
             {
-              paramMessageHandler.c();
+              paramMessageHandler.f();
               if (QLog.isColorLevel()) {
                 QLog.d("Q.msg.MessageHandler", 2, "registerproxy->handleMsgProxyEndResp RegPrxySvc.NoticeEnd notify");
               }
               paramMessageHandler.notifyUI(4013, true, new Long[] { Long.valueOf(paramToServiceMsg.ulTimeOutFlag), Long.valueOf(l) });
             }
-            paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-            paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+            paramMessageHandler.e.q.set(true);
+            paramMessageHandler.e.q.notifyAll();
           }
           return;
         }
@@ -81,7 +81,7 @@ public class MsgProxyEndResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MsgProxyEndResp
  * JD-Core Version:    0.7.0.1
  */

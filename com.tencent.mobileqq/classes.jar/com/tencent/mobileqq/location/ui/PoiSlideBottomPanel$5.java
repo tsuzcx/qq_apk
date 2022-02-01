@@ -14,8 +14,8 @@ class PoiSlideBottomPanel$5
     PoiSlideBottomPanel.h(this.a, false);
     PoiSlideBottomPanel.i(this.a, false);
     PoiSlideBottomPanel.j(this.a, false);
-    if (PoiSlideBottomPanel.k(this.a) != null) {
-      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
+    if (PoiSlideBottomPanel.m(this.a) != null) {
+      PoiSlideBottomPanel.n(this.a).hidePanelFinish();
     }
   }
   
@@ -24,8 +24,8 @@ class PoiSlideBottomPanel$5
     PoiSlideBottomPanel.e(this.a, false);
     PoiSlideBottomPanel.f(this.a, false);
     PoiSlideBottomPanel.g(this.a, false);
-    if (PoiSlideBottomPanel.i(this.a) != null) {
-      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    if (PoiSlideBottomPanel.k(this.a) != null) {
+      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
     }
   }
   
@@ -38,7 +38,7 @@ class PoiSlideBottomPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel.5
  * JD-Core Version:    0.7.0.1
  */

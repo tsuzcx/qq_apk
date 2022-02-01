@@ -27,24 +27,24 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class BlessSelectMemberActivity$BlessPTVProcessTask
   extends AsyncTask<Void, Void, Integer>
 {
-  int jdField_a_of_type_Int;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  WeakReference<QBaseActivity> jdField_b_of_type_JavaLangRefWeakReference;
-  int c;
+  WeakReference<AppInterface> a;
+  WeakReference<QBaseActivity> b;
+  Intent c;
+  String d;
+  int e;
+  int f;
+  int g;
+  MessageForShortVideo h;
   
   public BlessSelectMemberActivity$BlessPTVProcessTask(AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQBaseActivity);
-    this.jdField_a_of_type_AndroidContentIntent = paramQBaseActivity.getIntent();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_entrance", 0);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    this.jdField_b_of_type_Int = ((IBlessApi)QRoute.api(IBlessApi.class)).getSVBusiUtil_BUSI_TYPE_SHORTVIDEO_PTV_Value();
-    this.c = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
+    this.a = new WeakReference(paramAppInterface);
+    this.b = new WeakReference(paramQBaseActivity);
+    this.c = paramQBaseActivity.getIntent();
+    this.e = this.c.getIntExtra("param_entrance", 0);
+    this.d = this.c.getStringExtra("thumbfile_send_path");
+    this.f = ((IBlessApi)QRoute.api(IBlessApi.class)).getSVBusiUtil_BUSI_TYPE_SHORTVIDEO_PTV_Value();
+    this.g = this.c.getIntExtra("uintype", -1);
     if (QLog.isColorLevel()) {
       QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: create");
     }
@@ -58,46 +58,46 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
       QLog.e("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: doInBackground start");
     }
     long l = SystemClock.elapsedRealtime();
-    ??? = (QBaseActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    ??? = (QBaseActivity)this.b.get();
     if (??? == null) {
       return Integer.valueOf(5);
     }
-    if (!TextUtils.isEmpty(BlessSelectMemberActivity.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(BlessSelectMemberActivity.a))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BlessSelectMemberActivity", 2, "BlessPTVProcessTask: currVideoPath is not null");
       }
       return Integer.valueOf(1);
     }
-    ((IBlessApi)QRoute.api(IBlessApi.class)).getEncodeQualityParamForSendTask(this.jdField_a_of_type_AndroidContentIntent);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    int j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
+    ((IBlessApi)QRoute.api(IBlessApi.class)).getEncodeQualityParamForSendTask(this.c);
+    int i = this.c.getIntExtra("sv_total_frame_count", 0);
+    int j = this.c.getIntExtra("sv_total_record_time", 0);
     ((IBlessApi)QRoute.api(IBlessApi.class)).setCodecParam(i, j);
-    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (!FileUtils.fileExistsAndNotEmpty(this.d)) {
       return localObject1;
     }
     Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    localObject3 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject3);
+    localObject3 = URLDrawable.getDrawable(new File(this.d), (URLDrawable.URLDrawableOptions)localObject3);
     ((URLDrawable)localObject3).downloadImediatly();
     if (((URLDrawable)localObject3).getStatus() == 1)
     {
       localObject1 = new ShortVideoReq();
-      ((ShortVideoReq)localObject1).jdField_a_of_type_Int = 0;
-      ((ShortVideoReq)localObject1).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localObject3 = (ShortVideoUploadInfo)((IBlessApi)QRoute.api(IBlessApi.class)).createShortVideoUploadInfo(this.jdField_a_of_type_AndroidContentIntent, localObject1);
+      ((ShortVideoReq)localObject1).a = 0;
+      ((ShortVideoReq)localObject1).b = this.f;
+      localObject3 = (ShortVideoUploadInfo)((IBlessApi)QRoute.api(IBlessApi.class)).createShortVideoUploadInfo(this.c, localObject1);
       if (localObject3 == null) {
         return Integer.valueOf(5);
       }
-      ((ShortVideoUploadInfo)localObject3).e = true;
-      ((ShortVideoUploadInfo)localObject3).b = false;
-      if ((((ShortVideoUploadInfo)localObject3).r != null) && (((ShortVideoUploadInfo)localObject3).r.length() == 39)) {
-        ((ShortVideoUploadInfo)localObject3).r = ((ShortVideoUploadInfo)localObject3).r.substring(0, 28);
+      ((ShortVideoUploadInfo)localObject3).B = true;
+      ((ShortVideoUploadInfo)localObject3).w = false;
+      if ((((ShortVideoUploadInfo)localObject3).O != null) && (((ShortVideoUploadInfo)localObject3).O.length() == 39)) {
+        ((ShortVideoUploadInfo)localObject3).O = ((ShortVideoUploadInfo)localObject3).O.substring(0, 28);
       }
       ((ShortVideoReq)localObject1).a((ShortVideoUploadInfo)localObject3);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getAioShortVideoSendOperator((BaseQQAppInterface)???.getAppRuntime()).a((ShortVideoUploadInfo)localObject3));
-      ??? = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+      this.h = ((MessageForShortVideo)((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getAioShortVideoSendOperator((BaseQQAppInterface)???.getAppRuntime()).a((ShortVideoUploadInfo)localObject3));
+      ??? = this.h;
       if ((??? instanceof MessageForBlessPTV)) {
-        ((MessageForBlessPTV)???).videoFileName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("bless_ptv_mp4_path");
+        ((MessageForBlessPTV)???).videoFileName = this.c.getStringExtra("bless_ptv_mp4_path");
       }
       if (QLog.isColorLevel())
       {
@@ -107,18 +107,18 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
         QLog.d("BlessSelectMemberActivity", 2, ???.toString());
       }
       l = SystemClock.elapsedRealtime();
-      ((IBlessApi)QRoute.api(IBlessApi.class)).setPtvMessage((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      if (BlessSelectMemberActivity.a() != null) {
-        BlessSelectMemberActivity.a().sendEmptyMessage(3);
+      ((IBlessApi)QRoute.api(IBlessApi.class)).setPtvMessage((AppInterface)this.a.get(), this.h);
+      if (BlessSelectMemberActivity.g() != null) {
+        BlessSelectMemberActivity.g().sendEmptyMessage(3);
       } else {
         QLog.e("BlessSelectMemberActivity", 1, "mUIHandler is null!");
       }
       try
       {
-        synchronized (BlessSelectMemberActivity.a())
+        synchronized (BlessSelectMemberActivity.h())
         {
-          BlessSelectMemberActivity.a().wait(BlessSelectMemberActivity.a());
-          BlessSelectMemberActivity.b(SystemClock.elapsedRealtime() - l);
+          BlessSelectMemberActivity.h().wait(BlessSelectMemberActivity.i());
+          BlessSelectMemberActivity.c(SystemClock.elapsedRealtime() - l);
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
@@ -126,10 +126,10 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
             ((StringBuilder)localObject1).append(SystemClock.elapsedRealtime() - l);
             QLog.d("BlessSelectMemberActivity", 2, ((StringBuilder)localObject1).toString());
           }
-          if (BlessSelectMemberActivity.b() >= BlessSelectMemberActivity.a()) {
+          if (BlessSelectMemberActivity.j() >= BlessSelectMemberActivity.i()) {
             return Integer.valueOf(9);
           }
-          return Integer.valueOf(BlessSelectMemberActivity.a());
+          return Integer.valueOf(BlessSelectMemberActivity.k());
         }
         StringBuilder localStringBuilder;
         return localStringBuilder;
@@ -159,10 +159,10 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
       QLog.i("BlessSelectMemberActivity", 1, localStringBuilder.toString());
     }
     BlessSelectMemberActivity.b(???.intValue());
-    synchronized (BlessSelectMemberActivity.b())
+    synchronized (BlessSelectMemberActivity.l())
     {
-      BlessSelectMemberActivity.b().set(true);
-      BlessSelectMemberActivity.b().notifyAll();
+      BlessSelectMemberActivity.l().set(true);
+      BlessSelectMemberActivity.l().notifyAll();
       return;
     }
   }
@@ -172,7 +172,7 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
     if (((IBlessApi)QRoute.api(IBlessApi.class)).isVideoSoLibLoaded()) {
       return true;
     }
-    ((IBlessApi)QRoute.api(IBlessApi.class)).loadShortVideoSo((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    ((IBlessApi)QRoute.api(IBlessApi.class)).loadShortVideoSo((AppInterface)this.a.get());
     return ((IBlessApi)QRoute.api(IBlessApi.class)).isVideoSoLibLoaded();
   }
   
@@ -184,13 +184,13 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
     localStringBuilder.append("Is video useable:");
     localStringBuilder.append(a());
     localStringBuilder.append(", mEntrance:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     QLog.d("BlessSelectMemberActivity", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.BlessPTVProcessTask
  * JD-Core Version:    0.7.0.1
  */

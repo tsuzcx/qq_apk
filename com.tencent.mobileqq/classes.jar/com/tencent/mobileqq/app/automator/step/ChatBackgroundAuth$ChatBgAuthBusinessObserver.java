@@ -37,8 +37,8 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
       if (paramObject.ret == 0)
       {
         ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
-        localChatBackgroundManager.a();
-        localChatBackgroundManager.b();
+        localChatBackgroundManager.e();
+        localChatBackgroundManager.f();
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "bg and effect id clear");
         }
@@ -98,7 +98,7 @@ class ChatBackgroundAuth$ChatBgAuthBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth.ChatBgAuthBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

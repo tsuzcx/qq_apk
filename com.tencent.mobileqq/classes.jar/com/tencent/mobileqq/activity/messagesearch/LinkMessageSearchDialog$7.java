@@ -26,30 +26,30 @@ class LinkMessageSearchDialog$7
       paramAdapterView.append(paramInt);
       QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchLinkMessageResultAdapter.getCount() > 0)
+    if (this.a.o.getCount() > 0)
     {
       if (paramInt <= 0) {
         return;
       }
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchLinkMessageResultAdapter.getItem(paramInt - 1);
+      paramAdapterView = (MessageItem)this.a.o.getItem(paramInt - 1);
       if (paramAdapterView == null) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.a.l = paramAdapterView.b;
       if (QLog.isColorLevel())
       {
         paramAdapterView = new StringBuilder();
         paramAdapterView.append("onItemClick, mRecordCount = ");
-        paramAdapterView.append(this.a.jdField_a_of_type_Int);
+        paramAdapterView.append(this.a.k);
         paramAdapterView.append(",needSearchInCloud:");
-        paramAdapterView.append(this.a.b);
+        paramAdapterView.append(this.a.m);
         QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
       }
       paramView = null;
     }
     try
     {
-      Object localObject = GroupUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      Object localObject = GroupUtil.a(this.a.l.msgData);
       paramAdapterView = paramView;
       if (localObject != null) {
         paramAdapterView = (TroopLinkElement)localObject;
@@ -64,16 +64,16 @@ class LinkMessageSearchDialog$7
     }
     if (paramAdapterView != null)
     {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = new Intent(this.a.c, QQBrowserActivity.class);
       paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.a.c.startActivity(paramView);
     }
     this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.LinkMessageSearchDialog.7
  * JD-Core Version:    0.7.0.1
  */

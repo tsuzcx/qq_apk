@@ -12,7 +12,7 @@ public class RichmediaHttpsConfProcessor
 {
   public static RichmediaHttpsConfProcessor.RichmediaHttpsConfigBean a()
   {
-    return (RichmediaHttpsConfProcessor.RichmediaHttpsConfigBean)QConfigManager.a().a(647);
+    return (RichmediaHttpsConfProcessor.RichmediaHttpsConfigBean)QConfigManager.b().b(647);
   }
   
   @NonNull
@@ -71,7 +71,7 @@ public class RichmediaHttpsConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RichmediaHttpsConfProcessor
  * JD-Core Version:    0.7.0.1
  */

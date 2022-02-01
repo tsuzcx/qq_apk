@@ -9,13 +9,13 @@ class BottomAppBar$8
   
   public void run()
   {
-    ActionMenuView localActionMenuView = this.jdField_a_of_type_AndroidxAppcompatWidgetActionMenuView;
-    localActionMenuView.setTranslationX(this.this$0.a(localActionMenuView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean));
+    ActionMenuView localActionMenuView = this.a;
+    localActionMenuView.setTranslationX(this.this$0.a(localActionMenuView, this.b, this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.8
  * JD-Core Version:    0.7.0.1
  */

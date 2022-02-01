@@ -26,82 +26,76 @@ public class TroopFileSearchFragment
   implements ISearchViewBinder, AbsListView.OnScrollListener
 {
   public int a;
-  public long a;
-  protected BizTroopObserver a;
-  private TroopFileSearchEngine jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine;
-  private TroopFileSearchFragment.TroopFileSearchAdapter jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchFragment$TroopFileSearchAdapter;
-  private QFileListPullMoreLayout jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout;
-  private int b = 0;
-  private int c;
-  
-  public TroopFileSearchFragment()
-  {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopFileSearchFragment.1(this);
-  }
+  public long b;
+  protected BizTroopObserver c = new TroopFileSearchFragment.1(this);
+  private TroopFileSearchEngine d;
+  private TroopFileSearchFragment.TroopFileSearchAdapter e;
+  private int f = 0;
+  private int g = 0;
+  private QFileListPullMoreLayout h;
   
   private void d(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextLeftDrawable(2130839401);
+      this.h.setVisibility(0);
+      this.h.setTextLeftDrawable(2130839585);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.a();
+    this.h.setVisibility(8);
+    this.h.a();
   }
   
-  protected BaseMvpAdapter a()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchFragment$TroopFileSearchAdapter = new TroopFileSearchFragment.TroopFileSearchAdapter(this);
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchFragment$TroopFileSearchAdapter;
+    return this.q;
   }
   
-  protected ISearchEngine a()
+  protected BaseMvpAdapter b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine = new TroopFileSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, getQBaseActivity(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine.a(1);
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine;
+    this.e = new TroopFileSearchFragment.TroopFileSearchAdapter(this);
+    return this.e;
   }
   
-  protected String b()
+  protected ISearchEngine c()
   {
-    return HardCodeUtil.a(2131701272);
+    this.d = new TroopFileSearchEngine((QQAppInterface)this.p, getQBaseActivity(), this.b, this.a, this);
+    this.d.a(1);
+    return this.d;
   }
   
-  public String c()
+  protected String e()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return HardCodeUtil.a(2131899282);
   }
   
-  protected void c_(boolean paramBoolean)
+  protected void h_(boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine.a(this.jdField_c_of_type_JavaLangString)) && (paramBoolean))
+    if ((!this.d.b(this.q)) && (paramBoolean))
     {
       d(true);
       return;
     }
     d(false);
-    super.c_(paramBoolean);
+    super.h_(paramBoolean);
   }
   
-  protected void j_(boolean paramBoolean)
+  protected void o_(boolean paramBoolean)
   {
     d(false);
-    super.j_(paramBoolean);
+    super.o_(paramBoolean);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131368087).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout = new QFileListPullMoreLayout(getQBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setBackgroundResource(2130838739);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setTextColor(getResources().getColor(2131167056));
-    this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileListPullMoreLayout.setVisibility(8);
+    this.k.findViewById(2131434940).setVisibility(8);
+    this.l.setOnScrollListener(this);
+    this.h = new QFileListPullMoreLayout(getQBaseActivity());
+    this.h.setBackgroundResource(2130838958);
+    this.h.setTextColor(getResources().getColor(2131167993));
+    this.l.addFooterView(this.h);
+    this.h.setVisibility(8);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -109,59 +103,59 @@ public class TroopFileSearchFragment
   public void onDestroy()
   {
     super.onDestroy();
-    TroopFileSearchEngine localTroopFileSearchEngine = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine;
+    TroopFileSearchEngine localTroopFileSearchEngine = this.d;
     if (localTroopFileSearchEngine != null) {
       localTroopFileSearchEngine.e();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    if (this.c != null) {
+      this.p.removeObserver(this.c);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    TroopFileSearchEngine localTroopFileSearchEngine = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine;
+    TroopFileSearchEngine localTroopFileSearchEngine = this.d;
     if (localTroopFileSearchEngine != null) {
       localTroopFileSearchEngine.c();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    if (this.c != null) {
+      this.p.removeObserver(this.c);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    TroopFileSearchEngine localTroopFileSearchEngine = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine;
+    TroopFileSearchEngine localTroopFileSearchEngine = this.d;
     if (localTroopFileSearchEngine != null) {
       localTroopFileSearchEngine.d();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    if (this.c != null) {
+      this.p.addObserver(this.c);
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_c_of_type_Int = paramInt3;
-    this.b = (paramInt1 + paramInt2 - 1 - 1);
+    this.g = paramInt3;
+    this.f = (paramInt1 + paramInt2 - 1 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (this.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_c_of_type_JavaUtilList.isEmpty()) && (this.b == this.jdField_c_of_type_Int - 2))
+    if ((paramInt == 0) && (this.r != null) && (!this.r.isEmpty()) && (this.f == this.g - 2))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine.a(this.jdField_c_of_type_JavaLangString)) {
+      if (this.d.b(this.q)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchTroopTroopFileSearchEngine.a(this.jdField_c_of_type_JavaLangString);
+      this.d.a(this.q);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment
  * JD-Core Version:    0.7.0.1
  */

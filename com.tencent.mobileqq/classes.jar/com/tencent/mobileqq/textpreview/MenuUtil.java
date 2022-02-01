@@ -64,10 +64,22 @@ public class MenuUtil
     paramString.putExtra("direct_send_if_dataline_forward", true);
     ForwardBaseOption.a(paramActivity, paramString, 21);
   }
+  
+  public static void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 48);
+    localBundle.putString("forward_text", paramString);
+    localBundle.putInt("forward_extra", paramInt);
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    paramString.putExtra("direct_send_if_dataline_forward", true);
+    ForwardBaseOption.a(paramActivity, paramString, 21);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.textpreview.MenuUtil
  * JD-Core Version:    0.7.0.1
  */

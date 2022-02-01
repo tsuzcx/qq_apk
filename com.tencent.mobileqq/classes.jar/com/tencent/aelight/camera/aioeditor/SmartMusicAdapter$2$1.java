@@ -11,16 +11,16 @@ class SmartMusicAdapter$2$1
   
   public void run()
   {
-    if ((SmartMusicAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter) != null) && (SmartMusicAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter) != null))
+    if ((SmartMusicAdapter.a(this.a.b) != null) && (SmartMusicAdapter.d(this.a.b) != null))
     {
-      int i = SmartMusicAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).a() % this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter.a();
-      SmartMusicAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).a((VsMusicItemInfo)SmartMusicAdapter.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter).get(i), i, this.a.jdField_a_of_type_Boolean);
+      int i = SmartMusicAdapter.d(this.a.b).a() % this.a.b.b();
+      SmartMusicAdapter.a(this.a.b).a((VsMusicItemInfo)SmartMusicAdapter.c(this.a.b).get(i), i, this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

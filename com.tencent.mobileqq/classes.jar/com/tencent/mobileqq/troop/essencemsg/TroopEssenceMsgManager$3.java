@@ -15,7 +15,7 @@ class TroopEssenceMsgManager$3
     if (paramHashMap == null) {
       return;
     }
-    paramHashMap = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.get(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgItemKey);
+    paramHashMap = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.get(this.a);
     if ((paramHashMap != null) && (paramHashMap.a == 1))
     {
       if (QLog.isColorLevel())
@@ -25,13 +25,13 @@ class TroopEssenceMsgManager$3
         paramHashMap.append(paramLong);
         QLog.i("TroopEssenceMsgManager", 2, paramHashMap.toString());
       }
-      TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, paramLong);
+      TroopEssenceMsgManager.a(this.b, paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.3
  * JD-Core Version:    0.7.0.1
  */

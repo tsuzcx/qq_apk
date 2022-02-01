@@ -11,12 +11,12 @@ final class HtmlOffline$5
   
   public void run()
   {
-    HtmlOffline.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.c, new HtmlOffline.5.1(this), this.jdField_a_of_type_JavaUtilHashMap);
+    HtmlOffline.e.a(this.a, this.b, this.c, this.d, new HtmlOffline.5.1(this), this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.5
  * JD-Core Version:    0.7.0.1
  */

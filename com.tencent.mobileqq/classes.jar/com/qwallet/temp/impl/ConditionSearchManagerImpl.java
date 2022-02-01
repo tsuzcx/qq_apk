@@ -52,7 +52,7 @@ public class ConditionSearchManagerImpl
     if (checkAppRuntimeInValid()) {
       return 0;
     }
-    return getManager().a();
+    return getManager().d();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -96,7 +96,7 @@ public class ConditionSearchManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.ConditionSearchManagerImpl
  * JD-Core Version:    0.7.0.1
  */

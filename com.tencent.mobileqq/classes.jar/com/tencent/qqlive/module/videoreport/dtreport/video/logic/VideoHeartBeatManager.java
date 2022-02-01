@@ -1,14 +1,11 @@
 package com.tencent.qqlive.module.videoreport.dtreport.video.logic;
 
-import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.dtreport.time.base.HeartBeatProcessor;
 import com.tencent.qqlive.module.videoreport.dtreport.video.VideoEventReporter;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
-import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
-import com.tencent.qqlive.module.videoreport.utils.JsonUtils;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -123,80 +120,8 @@ public class VideoHeartBeatManager
         return;
       }
       ((VideoSession)localObject3).stagingEnd(VideoReportPlayerUtils.getCurrentPosition(localObject2), 4);
-      VideoEventReporter.getInstance().saveEndEvent((VideoSession)localObject3);
+      VideoEventReporter.getInstance().stashVideoEnd(localObject2, (VideoSession)localObject3);
     }
-  }
-  
-  private void supplementReportEndEvents()
-  {
-    Log.i("VideoHeartBeatManager", "supplementReportEndEvents");
-    Object localObject1 = VideoHeartBeatSpUtils.getEndEvent();
-    if (localObject1 != null)
-    {
-      if (((Map)localObject1).isEmpty()) {
-        return;
-      }
-      localObject1 = ((Map)localObject1).values().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (localObject2 != null)
-        {
-          String str = (String)localObject2;
-          if (!TextUtils.isEmpty(str))
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("supplementReportEndEvents sessionJson：");
-            localStringBuilder.append(localObject2);
-            Log.i("VideoHeartBeatManager", localStringBuilder.toString());
-            localObject2 = JsonUtils.getMapForJson(str);
-            if (localObject2 != null) {
-              VideoEventReporter.getInstance().reportVideoEnd(null, (Map)localObject2);
-            }
-          }
-        }
-      }
-      VideoHeartBeatSpUtils.clearEndEvents();
-    }
-  }
-  
-  private void supplementReportStartEvents()
-  {
-    Log.i("VideoHeartBeatManager", "supplementReportStartEvents");
-    Object localObject1 = VideoHeartBeatSpUtils.getStartedEvent();
-    if (localObject1 != null)
-    {
-      if (((Map)localObject1).isEmpty()) {
-        return;
-      }
-      localObject1 = ((Map)localObject1).values().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (localObject2 != null)
-        {
-          String str = (String)localObject2;
-          if (!TextUtils.isEmpty(str))
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("supplementReportStartEvents sessionJson：");
-            localStringBuilder.append(localObject2);
-            Log.i("VideoHeartBeatManager", localStringBuilder.toString());
-            localObject2 = JsonUtils.getMapForJson(str);
-            if (localObject2 != null) {
-              VideoEventReporter.getInstance().reportVideoStart(null, (Map)localObject2);
-            }
-          }
-        }
-      }
-      VideoHeartBeatSpUtils.clearStartedEvents();
-    }
-  }
-  
-  public void saveStartEvent(VideoSession paramVideoSession)
-  {
-    Log.i("VideoHeartBeatManager", "saveStartEvent");
-    ThreadUtils.execTask(new VideoHeartBeatManager.2(this, paramVideoSession));
   }
   
   public void startStagingHeartBeat()
@@ -219,15 +144,10 @@ public class VideoHeartBeatManager
       this.isHeartBeatStarted = false;
     }
   }
-  
-  public void supplementReportsEvent()
-  {
-    ThreadUtils.execTask(new VideoHeartBeatManager.3(this));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoHeartBeatManager
  * JD-Core Version:    0.7.0.1
  */

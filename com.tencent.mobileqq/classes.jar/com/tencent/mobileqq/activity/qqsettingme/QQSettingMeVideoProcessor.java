@@ -12,36 +12,36 @@ import mqq.app.AppRuntime;
 public class QQSettingMeVideoProcessor
   extends QQSettingMeBaseMenuProcessor
 {
-  public String a()
-  {
-    return "d_video";
-  }
-  
   public void a(View paramView)
   {
-    QQStoryMemoriesActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2, QQStoryContext.a().b(), true);
-    com.tencent.mobileqq.activity.recent.DrawerFrame.a = QQSettingMe.a;
+    QQStoryMemoriesActivity.a(this.d, 2, QQStoryContext.a().i(), true);
+    com.tencent.mobileqq.activity.recent.DrawerFrame.b = QQSettingMe.a;
   }
   
   public void a(QQSettingMe paramQQSettingMe) {}
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean) {}
   
-  public void b()
+  public String b()
   {
-    super.b();
-    QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.QQSTORY_MANAGER);
-    if ((localQQStoryManager != null) && (localQQStoryManager.e()))
+    return "d_video";
+  }
+  
+  public void d()
+  {
+    super.d();
+    QQStoryManager localQQStoryManager = (QQStoryManager)this.c.getManager(QQManagerFactory.QQSTORY_MANAGER);
+    if ((localQQStoryManager != null) && (localQQStoryManager.h()))
     {
-      QQSettingMe.a("d_video").setVisibility(0);
+      QQSettingMe.b("d_video").setVisibility(0);
       return;
     }
-    QQSettingMe.a("d_video").setVisibility(8);
+    QQSettingMe.b("d_video").setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeVideoProcessor
  * JD-Core Version:    0.7.0.1
  */

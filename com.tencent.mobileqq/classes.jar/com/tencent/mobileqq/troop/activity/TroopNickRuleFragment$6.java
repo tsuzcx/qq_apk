@@ -11,13 +11,13 @@ class TroopNickRuleFragment$6
   
   public void onClick(View paramView)
   {
-    TroopNickRuleFragment.a(this.a);
+    TroopNickRuleFragment.b(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.6
  * JD-Core Version:    0.7.0.1
  */

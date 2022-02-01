@@ -7,39 +7,39 @@ import com.tencent.image.URLImageView;
 
 public class TransitionProviderGridAdapter$ConvertViewTag
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TransitionCategoryItem jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataTransitionCategoryItem;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  boolean jdField_a_of_type_Boolean = false;
+  URLImageView a;
+  View b;
+  TextView c;
+  TransitionCategoryItem d;
+  boolean e = false;
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataTransitionCategoryItem != null))
+    View localView = this.b;
+    if ((localView != null) && (this.d != null))
     {
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.e)
         {
-          localView.setBackgroundResource(2130844496);
+          localView.setBackgroundResource(2130845869);
           return;
         }
-        localView.setBackgroundResource(2130844515);
+        localView.setBackgroundResource(2130845888);
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
         localView.setBackgroundResource(0);
         return;
       }
-      localView.setBackgroundResource(2130844512);
+      localView.setBackgroundResource(2130845885);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.TransitionProviderGridAdapter.ConvertViewTag
  * JD-Core Version:    0.7.0.1
  */

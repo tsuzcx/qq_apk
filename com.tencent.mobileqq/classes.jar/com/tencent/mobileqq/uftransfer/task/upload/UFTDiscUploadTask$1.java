@@ -15,14 +15,14 @@ class UFTDiscUploadTask$1
     if (UFTDiscUploadTask.a(this.this$0)) {
       return;
     }
-    this.this$0.a.a(UFTDiscUploadTask.a(this.this$0), 1, null);
-    String str = this.this$0.a();
+    this.this$0.k.a(UFTDiscUploadTask.b(this.this$0), 1, null);
+    String str = this.this$0.i();
     StringBuilder localStringBuilder;
-    if (!UFTDependFeatureApi.a())
+    if (!UFTDependFeatureApi.c())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TId[");
-      localStringBuilder.append(this.this$0.a());
+      localStringBuilder.append(this.this$0.m());
       localStringBuilder.append("] send local file[");
       localStringBuilder.append(str);
       localStringBuilder.append("] no network");
@@ -34,7 +34,7 @@ class UFTDiscUploadTask$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TId[");
-      localStringBuilder.append(this.this$0.a());
+      localStringBuilder.append(this.this$0.m());
       localStringBuilder.append("] send local file[");
       localStringBuilder.append(str);
       localStringBuilder.append("] strFilePath is null");
@@ -42,11 +42,11 @@ class UFTDiscUploadTask$1
       this.this$0.a(9005, "strFilePath is null", null);
       return;
     }
-    if (!UFTTransferUtility.a(str))
+    if (!UFTTransferUtility.b(str))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TId[");
-      localStringBuilder.append(this.this$0.a());
+      localStringBuilder.append(this.this$0.m());
       localStringBuilder.append("] send local file[");
       localStringBuilder.append(str);
       localStringBuilder.append("] strFilePath is not exist");
@@ -58,7 +58,7 @@ class UFTDiscUploadTask$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("TId[");
-      localStringBuilder.append(this.this$0.a());
+      localStringBuilder.append(this.this$0.m());
       localStringBuilder.append("] send local file[");
       localStringBuilder.append(str);
       localStringBuilder.append("] strFilePath is empty file");
@@ -66,12 +66,12 @@ class UFTDiscUploadTask$1
       this.this$0.a(9071, "fileExistsEmpty", null);
       return;
     }
-    this.this$0.a();
+    this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTDiscUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

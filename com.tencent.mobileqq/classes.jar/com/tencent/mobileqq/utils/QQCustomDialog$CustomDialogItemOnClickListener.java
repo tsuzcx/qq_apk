@@ -8,25 +8,25 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQCustomDialog$CustomDialogItemOnClickListener
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  int a;
   
   public QQCustomDialog$CustomDialogItemOnClickListener(QQCustomDialog paramQQCustomDialog, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null)
+    if (this.b.onArrayItemClick != null)
     {
-      DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick;
-      QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-      localOnClickListener.onClick(localQQCustomDialog, localQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
+      DialogInterface.OnClickListener localOnClickListener = this.b.onArrayItemClick;
+      QQCustomDialog localQQCustomDialog = this.b;
+      localOnClickListener.onClick(localQQCustomDialog, localQQCustomDialog.customWhichToCallBack(this.a));
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label55:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -40,7 +40,7 @@ class QQCustomDialog$CustomDialogItemOnClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog.CustomDialogItemOnClickListener
  * JD-Core Version:    0.7.0.1
  */

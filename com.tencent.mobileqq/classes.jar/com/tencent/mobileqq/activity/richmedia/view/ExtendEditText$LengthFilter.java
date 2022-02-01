@@ -6,23 +6,23 @@ import android.text.Spanned;
 class ExtendEditText$LengthFilter
   implements InputFilter
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public ExtendEditText$LengthFilter(ExtendEditText paramExtendEditText, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private void a()
   {
-    if (ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
+    if (ExtendEditText.b(this.a) != null) {
+      ExtendEditText.b(this.a).a(this.b);
     }
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    ExtendEditText.LengthConvertor localLengthConvertor = ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText);
+    ExtendEditText.LengthConvertor localLengthConvertor = ExtendEditText.a(this.a);
     if (localLengthConvertor == null)
     {
       paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
@@ -37,7 +37,7 @@ class ExtendEditText$LengthFilter
     } else {
       paramInt2 = localLengthConvertor.a(paramCharSequence, paramInt1, paramInt2);
     }
-    paramInt3 = this.jdField_a_of_type_Int - paramInt3;
+    paramInt3 = this.b - paramInt3;
     if (paramInt3 <= 0)
     {
       a();
@@ -71,7 +71,7 @@ class ExtendEditText$LengthFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,25 @@ public class ARLocalFaceRecogResult
   extends ARLocalRecogResultBase
 {
   public long a;
-  public ArrayList<DrawView2.FaceData> a;
-  public boolean a;
+  public boolean b;
+  public ArrayList<DrawView2.FaceData> c = null;
   
   public ARLocalFaceRecogResult()
   {
-    this.b = 4L;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.j = 4L;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARLocalFaceRecogResult{recogType = ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(",isTimeOut = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",frameIdx = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", faceDatas.size = ");
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.c;
     int i;
     if (localArrayList != null) {
       i = localArrayList.size();
@@ -40,7 +39,7 @@ public class ARLocalFaceRecogResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalFaceRecogResult
  * JD-Core Version:    0.7.0.1
  */

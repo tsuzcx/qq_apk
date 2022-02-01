@@ -20,12 +20,12 @@ class MineWSPanel$3
       return;
     }
     EntityManager localEntityManager = MineWSPanel.a(this.this$0).getAppRuntime().getEntityManagerFactory().createEntityManager();
-    WSPersonalEntity localWSPersonalEntity2 = (WSPersonalEntity)localEntityManager.find(WSPersonalEntity.class, MineWSPanel.a(this.this$0));
+    WSPersonalEntity localWSPersonalEntity2 = (WSPersonalEntity)localEntityManager.find(WSPersonalEntity.class, MineWSPanel.c(this.this$0));
     WSPersonalEntity localWSPersonalEntity1 = localWSPersonalEntity2;
     if (localWSPersonalEntity2 == null) {
       localWSPersonalEntity1 = new WSPersonalEntity();
     }
-    localWSPersonalEntity1.updateWeiShiFeedListEntity(MineWSPanel.a(this.this$0), this.a);
+    localWSPersonalEntity1.updateWeiShiFeedListEntity(MineWSPanel.c(this.this$0), this.a);
     if (localWSPersonalEntity1.getStatus() == 1000) {
       localEntityManager.persist(localWSPersonalEntity1);
     } else {
@@ -36,7 +36,7 @@ class MineWSPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel.3
  * JD-Core Version:    0.7.0.1
  */

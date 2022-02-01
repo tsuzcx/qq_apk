@@ -14,9 +14,9 @@ class DatalineChatPie$5
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDatalineChatPie.a != null)
+    if (this.b.f != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDatalineChatPie.a.isFinishing()) {
+      if (this.b.f.isFinishing()) {
         return false;
       }
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
@@ -29,10 +29,10 @@ class DatalineChatPie$5
         }
         if (Build.VERSION.SDK_INT >= 16)
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageAlpha(i);
+          this.a.setImageAlpha(i);
           return false;
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAlpha(i);
+        this.a.setAlpha(i);
       }
     }
     return false;
@@ -40,7 +40,7 @@ class DatalineChatPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.5
  * JD-Core Version:    0.7.0.1
  */

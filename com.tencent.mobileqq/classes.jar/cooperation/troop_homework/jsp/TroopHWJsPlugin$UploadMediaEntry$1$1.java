@@ -12,7 +12,7 @@ class TroopHWJsPlugin$UploadMediaEntry$1$1
   {
     if (paramBoolean)
     {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      JSONObject localJSONObject = this.a.a.k.a(this.a.a.a.c, this.a.a.c, this.a.a.i, "uploaded", this.a.a.e, 0);
       try
       {
         localJSONObject.put("result", 0);
@@ -22,7 +22,7 @@ class TroopHWJsPlugin$UploadMediaEntry$1$1
         paramString.append("upload thumb success:");
         paramString.append(localJSONObject.toString());
         QLog.e("TroopHWJsPlugin", 2, paramString.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.a.a.k.callJs(this.a.a.a.a, new String[] { localJSONObject.toString() });
         return;
       }
       catch (Exception paramString)
@@ -37,7 +37,7 @@ class TroopHWJsPlugin$UploadMediaEntry$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,58 @@ import java.io.File;
 
 public class ArNativeSoLoaderBase
 {
-  public static int a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static String a()
+  {
+    if (BaseApplicationImpl.sApplication.getFilesDir() == null)
+    {
+      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "getARNativeSoRootDir. ARNativeSoRootDir is null.");
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir());
+    localStringBuilder.append("/pddata/prd");
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramString1));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramString3);
+    paramString1 = localStringBuilder.toString();
+    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
+    paramString2.putString(paramString1, paramString4);
+    paramString2.commit();
+    paramString2 = new StringBuilder();
+    paramString2.append("saveMd5. key = ");
+    paramString2.append(paramString1);
+    paramString2.append(", md5 = ");
+    paramString2.append(paramString4);
+    QLog.i("AREngine_ArNativeSoLoaderBase", 2, paramString2.toString());
+  }
+  
+  public static int b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     try
     {
@@ -73,57 +124,6 @@ public class ArNativeSoLoaderBase
     finally {}
   }
   
-  public static String a()
-  {
-    if (BaseApplicationImpl.sApplication.getFilesDir() == null)
-    {
-      QLog.i("AREngine_ArNativeSoLoaderBase", 2, "getARNativeSoRootDir. ARNativeSoRootDir is null.");
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir());
-    localStringBuilder.append("/pddata/prd");
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramString1));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append(paramString3);
-    paramString1 = localStringBuilder.toString();
-    paramString2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    paramString2.putString(paramString1, paramString4);
-    paramString2.commit();
-    paramString2 = new StringBuilder();
-    paramString2.append("saveMd5. key = ");
-    paramString2.append(paramString1);
-    paramString2.append(", md5 = ");
-    paramString2.append(paramString4);
-    QLog.i("AREngine_ArNativeSoLoaderBase", 2, paramString2.toString());
-  }
-  
   public static String b(String paramString1, String paramString2, String paramString3)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -143,7 +143,7 @@ public class ArNativeSoLoaderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoLoaderBase
  * JD-Core Version:    0.7.0.1
  */

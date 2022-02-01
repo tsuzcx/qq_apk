@@ -80,12 +80,12 @@ public class IPSiteListGoodsAdapter
       localObject3 = (IPSiteModel.Goods)this.mGoodsList.get(paramInt);
       if (paramView == null)
       {
-        paramView = LayoutInflater.from(this.mContext).inflate(2131561600, null, false);
+        paramView = LayoutInflater.from(this.mContext).inflate(2131627963, null, false);
         localObject1 = new IPSiteListGoodsAdapter.Holder(this, null);
         ((IPSiteListGoodsAdapter.Holder)localObject1).itemLayout = ((RelativeLayout)paramView);
-        ((IPSiteListGoodsAdapter.Holder)localObject1).cover = ((ImageView)paramView.findViewById(2131362395));
-        ((IPSiteListGoodsAdapter.Holder)localObject1).title = ((TextView)paramView.findViewById(2131362396));
-        ((IPSiteListGoodsAdapter.Holder)localObject1).desc = ((TextView)paramView.findViewById(2131362394));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).cover = ((ImageView)paramView.findViewById(2131428003));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).title = ((TextView)paramView.findViewById(2131428004));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).desc = ((TextView)paramView.findViewById(2131428002));
         paramView.setTag(localObject1);
       }
       else
@@ -105,7 +105,7 @@ public class IPSiteListGoodsAdapter
         localObject4 = ((IPSiteListGoodsAdapter.Holder)localObject1).desc;
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append((String)localObject2);
-        ((StringBuilder)localObject5).append(this.mContext.getString(2131699711));
+        ((StringBuilder)localObject5).append(this.mContext.getString(2131897744));
         ((TextView)localObject4).setText(((StringBuilder)localObject5).toString());
         ((IPSiteListGoodsAdapter.Holder)localObject1).itemLayout.setOnClickListener(new IPSiteListGoodsAdapter.1(this, (IPSiteModel.Goods)localObject3));
         localObject2 = paramView;
@@ -126,15 +126,15 @@ public class IPSiteListGoodsAdapter
       ((RelativeLayout.LayoutParams)localObject3).addRule(14);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       localObject3 = new TextView(this.mContext);
-      ((TextView)localObject3).setId(2131362404);
+      ((TextView)localObject3).setId(2131428012);
       ((TextView)localObject3).setTextSize(12.0F);
       ((TextView)localObject3).setTextColor(Color.parseColor("#777777"));
-      ((TextView)localObject3).setText(this.mContext.getString(2131699737));
+      ((TextView)localObject3).setText(this.mContext.getString(2131897770));
       ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
       localObject4 = new ImageView(this.mContext);
-      ((ImageView)localObject4).setImageResource(2130846444);
+      ((ImageView)localObject4).setImageResource(2130847917);
       localObject5 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131362404);
+      ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131428012);
       ((RelativeLayout.LayoutParams)localObject5).addRule(15);
       ((RelativeLayout.LayoutParams)localObject5).leftMargin = EmotionUtils.a(2.0F, this.mContext.getResources());
       ((ImageView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
@@ -149,7 +149,7 @@ public class IPSiteListGoodsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter
  * JD-Core Version:    0.7.0.1
  */

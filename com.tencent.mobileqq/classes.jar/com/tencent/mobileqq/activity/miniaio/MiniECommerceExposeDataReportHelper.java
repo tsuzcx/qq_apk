@@ -9,20 +9,20 @@ import mqq.os.MqqHandler;
 public class MiniECommerceExposeDataReportHelper
   implements ILifeCycleHelper
 {
-  private AIOMessageRecordExposeLogic jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic;
-  private MiniPie jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private MiniPie a;
   private boolean b = false;
+  private boolean c = false;
+  private AIOMessageRecordExposeLogic d;
+  private Runnable e = new MiniECommerceExposeDataReportHelper.1(this);
   
   MiniECommerceExposeDataReportHelper(MiniPie paramMiniPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie = paramMiniPie;
+    this.a = paramMiniPie;
   }
   
   private ListView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    return this.a.i;
   }
   
   public String getTag()
@@ -46,32 +46,32 @@ public class MiniECommerceExposeDataReportHelper
           if (paramInt != 20) {
             return;
           }
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.b(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+          if (this.b) {
+            this.d.b(this.a.d, a());
           }
         }
         else
         {
-          this.jdField_a_of_type_Boolean = false;
           this.b = false;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = null;
-          ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+          this.c = false;
+          this.d = null;
+          ThreadManager.getUIHandler().removeCallbacks(this.e);
         }
       }
-      else if (!this.b)
+      else if (!this.c)
       {
-        this.b = true;
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        this.c = true;
+        ThreadManager.getUIHandler().postDelayed(this.e, 800L);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = new AIOMessageRecordExposeLogic();
+      this.d = new AIOMessageRecordExposeLogic();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -133,7 +133,7 @@ public final class GdtCanvasJSONJsCallHandler
       long l2 = System.currentTimeMillis();
       paramString = localObject2;
       if (paramGdtAdWebPlugin != null) {
-        paramString = paramGdtAdWebPlugin.a();
+        paramString = paramGdtAdWebPlugin.b();
       }
       AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "getCanvasJson", paramString, localGdtAd, l2 - l1);
       return true;
@@ -144,7 +144,7 @@ public final class GdtCanvasJSONJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtCanvasJSONJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

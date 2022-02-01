@@ -40,28 +40,25 @@ import java.util.Set;
 public class ContactSearchResultPresenter
   extends SearchResultPresenter
 {
-  private ContactSearchResultPresenter.OnActionListener a;
   protected Set<String> a;
+  private ContactSearchResultPresenter.OnActionListener b = null;
   
   public ContactSearchResultPresenter(IFaceDecoder paramIFaceDecoder)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = null;
   }
   
   public ContactSearchResultPresenter(IFaceDecoder paramIFaceDecoder, ContactSearchResultPresenter.OnActionListener paramOnActionListener)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = paramOnActionListener;
+    this.b = paramOnActionListener;
   }
   
   public ContactSearchResultPresenter(IFaceDecoder paramIFaceDecoder, ContactSearchResultPresenter.OnActionListener paramOnActionListener, Set<String> paramSet)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = paramOnActionListener;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.b = paramOnActionListener;
+    this.a = paramSet;
   }
   
   private void a(Activity paramActivity, String paramString)
@@ -83,16 +80,16 @@ public class ContactSearchResultPresenter
     if (((paramISearchResultView instanceof ContactSearchResultView)) && ((paramISearchResultModel instanceof ContactSearchModelTroop)))
     {
       Object localObject = (ContactSearchModelTroop)paramISearchResultModel;
-      if ((((ContactSearchModelTroop)localObject).a == 3) && (paramISearchResultView.a() != null))
+      if ((((ContactSearchModelTroop)localObject).a == 3) && (paramISearchResultView.h() != null))
       {
-        paramISearchResultModel = (TextView)paramISearchResultView.a().findViewById(2131376389);
-        localObject = ((ContactSearchModelTroop)localObject).f();
+        paramISearchResultModel = (TextView)paramISearchResultView.h().findViewById(2131444605);
+        localObject = ((ContactSearchModelTroop)localObject).s();
         if ((paramISearchResultModel != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
         {
           paramISearchResultModel.setVisibility(0);
           paramISearchResultModel.setText((CharSequence)localObject);
         }
-        paramISearchResultModel = paramISearchResultView.a();
+        paramISearchResultModel = paramISearchResultView.b();
         if (paramISearchResultModel != null)
         {
           paramISearchResultView = (RelativeLayout.LayoutParams)paramISearchResultModel.getLayoutParams();
@@ -111,92 +108,92 @@ public class ContactSearchResultPresenter
     super.a(paramISearchResultModel, paramISearchResultView);
     if (((paramISearchResultModel instanceof ContactSearchModelTool)) && (paramISearchResultModel.a() == null))
     {
-      if (paramISearchResultView.c() != null) {
-        paramISearchResultView.c().setVisibility(8);
-      }
-      if (paramISearchResultView.a() != null) {
-        paramISearchResultView.a().setVisibility(8);
+      if (paramISearchResultView.d() != null) {
+        paramISearchResultView.d().setVisibility(8);
       }
       if (paramISearchResultView.b() != null) {
         paramISearchResultView.b().setVisibility(8);
       }
-      localObject1 = ((ContactSearchResultView)paramISearchResultView).e();
+      if (paramISearchResultView.c() != null) {
+        paramISearchResultView.c().setVisibility(8);
+      }
+      localObject1 = ((ContactSearchResultView)paramISearchResultView).k();
       if (localObject1 != null)
       {
         ((TextView)localObject1).setVisibility(0);
-        ((TextView)localObject1).setText(paramISearchResultModel.b());
+        ((TextView)localObject1).setText(paramISearchResultModel.d());
       }
     }
     else
     {
-      if ((paramISearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a()))) {
-        paramISearchResultView.c().setVisibility(0);
-      } else if (paramISearchResultView.c() != null) {
-        paramISearchResultView.c().setVisibility(8);
+      if ((paramISearchResultView.d() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a()))) {
+        paramISearchResultView.d().setVisibility(0);
+      } else if (paramISearchResultView.d() != null) {
+        paramISearchResultView.d().setVisibility(8);
       }
-      if (paramISearchResultView.a() != null) {
-        paramISearchResultView.a().setVisibility(0);
-      }
-      if ((paramISearchResultView.b() != null) && (paramISearchResultModel.c() != null))
-      {
+      if (paramISearchResultView.b() != null) {
         paramISearchResultView.b().setVisibility(0);
+      }
+      if ((paramISearchResultView.c() != null) && (paramISearchResultModel.e() != null))
+      {
+        paramISearchResultView.c().setVisibility(0);
         if ((!(paramISearchResultModel instanceof ContactSearchModelFriend)) && (!(paramISearchResultModel instanceof ContactSearchModelDiscussionMember)) && (!(paramISearchResultModel instanceof ContactSearchModelNewTroopMember)))
         {
-          paramISearchResultView.b().setCompoundDrawables(null, null, null, null);
+          paramISearchResultView.c().setCompoundDrawables(null, null, null, null);
         }
         else
         {
-          localObject1 = paramISearchResultModel.a();
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (Utils.b((String)localObject1)))
+          localObject1 = paramISearchResultModel.c();
+          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (Utils.c((String)localObject1)))
           {
-            localObject1 = paramISearchResultView.b().getContext().getResources().getDrawable(2130841838);
-            ((Drawable)localObject1).setBounds(0, 0, SearchUtils.a(15.0F, paramISearchResultView.b().getContext().getResources()), SearchUtils.a(15.0F, paramISearchResultView.b().getContext().getResources()));
+            localObject1 = paramISearchResultView.c().getContext().getResources().getDrawable(2130842755);
+            ((Drawable)localObject1).setBounds(0, 0, SearchUtils.a(15.0F, paramISearchResultView.c().getContext().getResources()), SearchUtils.a(15.0F, paramISearchResultView.c().getContext().getResources()));
             ThemeUtil.setThemeFilter((Drawable)localObject1, ThemeUtil.curThemeId);
-            paramISearchResultView.b().setCompoundDrawables(null, null, (Drawable)localObject1, null);
+            paramISearchResultView.c().setCompoundDrawables(null, null, (Drawable)localObject1, null);
           }
           else
           {
-            paramISearchResultView.b().setCompoundDrawables(null, null, null, null);
+            paramISearchResultView.c().setCompoundDrawables(null, null, null, null);
           }
         }
       }
-      else if (paramISearchResultView.b() != null)
+      else if (paramISearchResultView.c() != null)
       {
-        paramISearchResultView.b().setVisibility(8);
+        paramISearchResultView.c().setVisibility(8);
       }
-      localObject1 = ((ContactSearchResultView)paramISearchResultView).e();
+      localObject1 = ((ContactSearchResultView)paramISearchResultView).k();
       if (localObject1 != null) {
         ((TextView)localObject1).setVisibility(8);
       }
     }
-    Object localObject1 = paramISearchResultView.a().findViewById(2131379859);
+    Object localObject1 = paramISearchResultView.h().findViewById(2131448716);
     Object localObject2;
     if (localObject1 != null)
     {
       ((View)localObject1).setVisibility(8);
       if (((paramISearchResultModel instanceof ContactSearchModelGlobalTroopMember)) || ((paramISearchResultModel instanceof ContactSearchModelRecentUser)) || ((paramISearchResultModel instanceof ContactSearchModelFriend)))
       {
-        localObject2 = paramISearchResultModel.a();
+        localObject2 = paramISearchResultModel.c();
         if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isRobotUin((String)localObject2)) {
           ((View)localObject1).setVisibility(0);
         }
       }
     }
-    if (paramISearchResultView.c() != null)
+    if (paramISearchResultView.d() != null)
     {
-      localObject1 = paramISearchResultModel.a();
-      localObject2 = this.jdField_a_of_type_JavaUtilSet;
+      localObject1 = paramISearchResultModel.c();
+      localObject2 = this.a;
       if ((localObject2 != null) && (((Set)localObject2).contains(localObject1))) {
-        paramISearchResultView.c().setText(HardCodeUtil.a(2131702742));
+        paramISearchResultView.d().setText(HardCodeUtil.a(2131900732));
       }
     }
     e(paramISearchResultModel, paramISearchResultView);
-    if ((SearchUtils.a) && (paramISearchResultView.a() != null) && ((paramISearchResultModel instanceof IContactSearchModel))) {
-      paramISearchResultView.a().setOnLongClickListener(new ContactSearchResultPresenter.1(this, paramISearchResultModel));
+    if ((SearchUtils.a) && (paramISearchResultView.h() != null) && ((paramISearchResultModel instanceof IContactSearchModel))) {
+      paramISearchResultView.h().setOnLongClickListener(new ContactSearchResultPresenter.1(this, paramISearchResultModel));
     }
-    if ((paramISearchResultView.a() != null) && ((paramISearchResultModel instanceof ContactSearchModelFriend)))
+    if ((paramISearchResultView.f() != null) && ((paramISearchResultModel instanceof ContactSearchModelFriend)))
     {
-      int i = ((ContactSearchModelFriend)paramISearchResultModel).f();
+      int i = ((ContactSearchModelFriend)paramISearchResultModel).s();
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -206,9 +203,9 @@ public class ContactSearchResultPresenter
       }
       if ((i == 21) || (i == 1) || (i == 2))
       {
-        paramISearchResultView = paramISearchResultView.a();
-        paramISearchResultView.setContentDescription(paramISearchResultView.getContext().getString(2131699207));
-        paramISearchResultView.setImageResource(2130846210);
+        paramISearchResultView = paramISearchResultView.f();
+        paramISearchResultView.setContentDescription(paramISearchResultView.getContext().getString(2131897223));
+        paramISearchResultView.setImageResource(2130847680);
         paramISearchResultView.setOnClickListener(new ContactSearchResultPresenter.2(this, paramISearchResultModel));
       }
     }
@@ -216,10 +213,10 @@ public class ContactSearchResultPresenter
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView, Bitmap paramBitmap)
   {
-    if (paramISearchResultModel.a() == 103)
+    if (paramISearchResultModel.b() == 103)
     {
-      if (paramISearchResultView.b() != null) {
-        paramISearchResultView.b().setImageDrawable(SearchUtils.a(paramBitmap));
+      if (paramISearchResultView.g() != null) {
+        paramISearchResultView.g().setImageDrawable(SearchUtils.a(paramBitmap));
       }
     }
     else {
@@ -229,22 +226,22 @@ public class ContactSearchResultPresenter
   
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener != null)
+    if (this.b != null)
     {
-      if (paramISearchResultView.a() != null)
+      if (paramISearchResultView.h() != null)
       {
         boolean bool = paramISearchResultModel instanceof ContactSearchModelTroop;
         String str2 = "";
         String str1;
         if (bool) {
-          str1 = ((ContactSearchModelTroop)paramISearchResultModel).a().getTroopDisplayName();
+          str1 = ((ContactSearchModelTroop)paramISearchResultModel).t().getTroopDisplayName();
         } else {
           str1 = "";
         }
         if (bool) {
-          str2 = ((ContactSearchModelTroop)paramISearchResultModel).a().getTroopUin();
+          str2 = ((ContactSearchModelTroop)paramISearchResultModel).t().getTroopUin();
         }
-        paramISearchResultView.a().setOnClickListener(new ContactSearchResultPresenter.3(this, str1, str2));
+        paramISearchResultView.h().setOnClickListener(new ContactSearchResultPresenter.3(this, str1, str2));
       }
     }
     else {
@@ -254,7 +251,7 @@ public class ContactSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

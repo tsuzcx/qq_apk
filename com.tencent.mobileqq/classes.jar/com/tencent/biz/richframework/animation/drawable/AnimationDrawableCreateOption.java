@@ -6,77 +6,77 @@ import com.tencent.qcircle.cooperation.config.download.QCircleDownloadConfig;
 
 public class AnimationDrawableCreateOption
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private RFWDownloadStrategy jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private String a;
+  private boolean b;
+  private long c;
+  private int d;
+  private int e;
+  private RFWDownloadStrategy f;
+  private boolean g;
   
   private AnimationDrawableCreateOption(AnimationDrawableCreateOption.Builder paramBuilder)
   {
     if (!TextUtils.isEmpty(AnimationDrawableCreateOption.Builder.a(paramBuilder))) {
-      this.jdField_a_of_type_JavaLangString = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+      this.a = AnimationDrawableCreateOption.Builder.a(paramBuilder);
     }
-    this.jdField_a_of_type_Boolean = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    this.b = AnimationDrawableCreateOption.Builder.b(paramBuilder);
     long l;
-    if (AnimationDrawableCreateOption.Builder.a(paramBuilder) > 0L) {
-      l = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    if (AnimationDrawableCreateOption.Builder.c(paramBuilder) > 0L) {
+      l = AnimationDrawableCreateOption.Builder.c(paramBuilder);
     } else {
       l = 1000L;
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_Int = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    this.c = l;
+    this.d = AnimationDrawableCreateOption.Builder.d(paramBuilder);
     int i;
-    if (AnimationDrawableCreateOption.Builder.b(paramBuilder) > 0) {
-      i = AnimationDrawableCreateOption.Builder.b(paramBuilder);
+    if (AnimationDrawableCreateOption.Builder.e(paramBuilder) > 0) {
+      i = AnimationDrawableCreateOption.Builder.e(paramBuilder);
     } else {
       i = 50;
     }
-    this.jdField_b_of_type_Int = i;
-    this.jdField_b_of_type_Boolean = AnimationDrawableCreateOption.Builder.b(paramBuilder);
-    if (AnimationDrawableCreateOption.Builder.a(paramBuilder) != null) {
-      paramBuilder = AnimationDrawableCreateOption.Builder.a(paramBuilder);
+    this.e = i;
+    this.g = AnimationDrawableCreateOption.Builder.f(paramBuilder);
+    if (AnimationDrawableCreateOption.Builder.g(paramBuilder) != null) {
+      paramBuilder = AnimationDrawableCreateOption.Builder.g(paramBuilder);
     } else {
       paramBuilder = QCircleDownloadConfig.a();
     }
-    this.jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy = paramBuilder;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public RFWDownloadStrategy a()
-  {
-    return this.jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy;
+    this.f = paramBuilder;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.a;
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.b;
+  }
+  
+  public long c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public int e()
+  {
+    return this.e;
+  }
+  
+  public boolean f()
+  {
+    return this.g;
+  }
+  
+  public RFWDownloadStrategy g()
+  {
+    return this.f;
   }
 }
 

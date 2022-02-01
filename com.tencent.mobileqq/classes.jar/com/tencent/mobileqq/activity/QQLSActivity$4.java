@@ -12,13 +12,13 @@ class QQLSActivity$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
+    QQLSActivity.g(this.a).setCursorVisible(true);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.4
  * JD-Core Version:    0.7.0.1
  */

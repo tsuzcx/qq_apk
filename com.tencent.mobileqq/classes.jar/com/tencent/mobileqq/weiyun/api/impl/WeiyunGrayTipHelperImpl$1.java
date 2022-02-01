@@ -16,24 +16,24 @@ class WeiyunGrayTipHelperImpl$1
   
   public void run()
   {
-    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return;
     }
     Process.setThreadPriority(10);
-    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, MessageCache.a());
+    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.b, this.c, this.d, this.e, -5023, 2424833, MessageCache.c());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 1);
-    ((Bundle)localObject).putString("key_action_DATA", this.d);
-    int i = this.jdField_b_of_type_Int;
-    localUniteGrayTipParam.a(i, this.e.length() + i, (Bundle)localObject);
+    ((Bundle)localObject).putString("key_action_DATA", this.f);
+    int i = this.g;
+    localUniteGrayTipParam.a(i, this.h.length() + i, (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, localUniteGrayTipParam);
-    UniteGrayTipMsgUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (MessageForUniteGrayTip)localObject);
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg((QQAppInterface)this.a, localUniteGrayTipParam);
+    UniteGrayTipMsgUtil.a((QQAppInterface)this.a, (MessageForUniteGrayTip)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunGrayTipHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

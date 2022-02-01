@@ -53,7 +53,7 @@ public class FabTransformationScrimBehavior
   }
   
   @NonNull
-  protected AnimatorSet a(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2)
+  protected AnimatorSet b(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
     paramView1 = new ArrayList();
     a(paramView2, paramBoolean1, paramBoolean2, paramView1, new ArrayList());
@@ -75,7 +75,7 @@ public class FabTransformationScrimBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationScrimBehavior
  * JD-Core Version:    0.7.0.1
  */

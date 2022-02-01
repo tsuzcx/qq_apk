@@ -55,12 +55,12 @@ public class WXShareHelperImpl
   
   public boolean isWXInstalled()
   {
-    return WXShareHelper.a().a();
+    return WXShareHelper.a().b();
   }
   
   public boolean isWXsupportApi()
   {
-    return WXShareHelper.a().b();
+    return WXShareHelper.a().c();
   }
   
   public void removeObserver(IWXShareHelperListener paramIWXShareHelperListener)
@@ -90,7 +90,7 @@ public class WXShareHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.api.impl.WXShareHelperImpl
  * JD-Core Version:    0.7.0.1
  */

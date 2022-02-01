@@ -37,13 +37,13 @@ public class MatchEmptyItemBuilder
     }
     else
     {
-      paramView = LayoutInflater.from(paramContext).inflate(2131561087, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131627435, null);
       paramRecentFaceDecoder = new MatchEmptyItemBuilder.ViewHolder();
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369736));
-      paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368343));
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379994));
+      paramRecentFaceDecoder.a = ((ViewGroup)paramView.findViewById(2131436854));
+      paramRecentFaceDecoder.b = ((ThemeImageView)paramView.findViewById(2131435219));
+      paramRecentFaceDecoder.c = ((TextView)paramView.findViewById(2131448897));
       paramView.setTag(paramRecentFaceDecoder);
-      this.a = (paramOnClickListener.getDimensionPixelSize(2131298354) + paramOnClickListener.getDimensionPixelSize(2131298356) + paramOnClickListener.getDimensionPixelSize(2131298355));
+      this.a = (paramOnClickListener.getDimensionPixelSize(2131299068) + paramOnClickListener.getDimensionPixelSize(2131299070) + paramOnClickListener.getDimensionPixelSize(2131299069));
     }
     paramInt = paramViewGroup.getMeasuredHeight();
     int j = this.a;
@@ -65,29 +65,29 @@ public class MatchEmptyItemBuilder
       paramInt = ((Integer)paramObject).intValue();
       if (paramInt == 20)
       {
-        paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageResource(2130839406);
-        if ((paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
-          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).start();
+        paramRecentFaceDecoder.b.setImageResource(2130839590);
+        if ((paramRecentFaceDecoder.b.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.b.getDrawable()).start();
         }
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131699002);
+        paramRecentFaceDecoder.c.setText(2131897006);
         return paramView;
       }
       if (paramInt == 21)
       {
-        if ((paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable() instanceof Animatable)) {
-          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.getDrawable()).stop();
+        if ((paramRecentFaceDecoder.b.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.b.getDrawable()).stop();
         }
-        paramObject = BitmapManager.a(paramContext.getResources(), 2130845131);
+        paramObject = BitmapManager.a(paramContext.getResources(), 2130846571);
         if (paramObject != null)
         {
-          paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageBitmap(paramObject);
-          paramRecentFaceDecoder.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(ThemeImageWrapper.MODE_SQURE);
+          paramRecentFaceDecoder.b.setImageBitmap(paramObject);
+          paramRecentFaceDecoder.b.setMaskShape(ThemeImageWrapper.MODE_SQURE);
         }
         else
         {
           QLog.e("MatchEmptyItemBuilder", 1, "image qq_extend_friend_empty_normal decode failed.");
         }
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131699001);
+        paramRecentFaceDecoder.c.setText(2131897005);
       }
     }
     return paramView;

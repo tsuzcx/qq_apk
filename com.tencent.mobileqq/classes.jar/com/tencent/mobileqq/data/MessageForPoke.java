@@ -72,25 +72,25 @@ public class MessageForPoke
       switch (i)
       {
       default: 
-        this.msg = HardCodeUtil.a(2131706655);
+        this.msg = HardCodeUtil.a(2131904506);
         return;
       case 6: 
-        this.msg = HardCodeUtil.a(2131706632);
+        this.msg = HardCodeUtil.a(2131904483);
         return;
       case 5: 
         this.msg = "[666]";
         return;
       case 4: 
-        this.msg = HardCodeUtil.a(2131706617);
+        this.msg = HardCodeUtil.a(2131904468);
         return;
       case 3: 
-        this.msg = HardCodeUtil.a(2131706630);
+        this.msg = HardCodeUtil.a(2131904481);
         return;
       case 2: 
-        this.msg = HardCodeUtil.a(2131706629);
+        this.msg = HardCodeUtil.a(2131904480);
         return;
       }
-      this.msg = HardCodeUtil.a(2131706650);
+      this.msg = HardCodeUtil.a(2131904501);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -150,7 +150,7 @@ public class MessageForPoke
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPoke
  * JD-Core Version:    0.7.0.1
  */

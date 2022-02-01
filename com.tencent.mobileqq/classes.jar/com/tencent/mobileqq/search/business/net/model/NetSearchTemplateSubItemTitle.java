@@ -22,7 +22,7 @@ public class NetSearchTemplateSubItemTitle
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a(String paramString)
+  public void o_(String paramString)
   {
     try
     {
@@ -32,14 +32,14 @@ public class NetSearchTemplateSubItemTitle
     catch (JSONException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(c, 2, paramString.toString());
+        QLog.d(g, 2, paramString.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateSubItemTitle
  * JD-Core Version:    0.7.0.1
  */

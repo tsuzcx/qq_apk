@@ -24,15 +24,15 @@ class CheckAuthLoginAction$1$1
     if (k > 0)
     {
       localIntent = new Intent("android.intent.action.VIEW");
-      localIntent.setData(Uri.parse(this.a.jdField_a_of_type_JavaLangString));
+      localIntent.setData(Uri.parse(this.a.b));
       i = j;
     }
     try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity(localIntent);
+      this.a.a.startActivity(localIntent);
       i = 1;
       j = 1;
-      ReportController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8006798", "0X8006798", 0, 0, "", "", "", "");
+      ReportController.a(this.a.a.getAppRuntime(), "dc00898", "", "", "0X8006798", "0X8006798", 0, 0, "", "", "", "");
       i = j;
     }
     catch (Exception localException)
@@ -42,17 +42,17 @@ class CheckAuthLoginAction$1$1
     }
     if (i == 0)
     {
-      ReportController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8006799", "0X8006799", 0, 0, "", "", "", "");
-      localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, OpenWriteCodeQQBrowserActivity.class);
-      localIntent.putExtra("url", this.a.b);
-      DownloadApi.a(new AuthCodeWriter(this.a.c, null));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity(localIntent);
+      ReportController.a(this.a.a.getAppRuntime(), "dc00898", "", "", "0X8006799", "0X8006799", 0, 0, "", "", "", "");
+      localIntent = new Intent(this.a.a, OpenWriteCodeQQBrowserActivity.class);
+      localIntent.putExtra("url", this.a.c);
+      DownloadApi.a(new AuthCodeWriter(this.a.d, null));
+      this.a.a.startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.CheckAuthLoginAction.1.1
  * JD-Core Version:    0.7.0.1
  */

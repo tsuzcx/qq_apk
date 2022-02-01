@@ -5,31 +5,21 @@ import android.graphics.RectF;
 
 public class ItemStatus
 {
-  public double a;
-  public int a;
-  public long a;
-  public RectF a;
-  public ItemStatus.Acceleration a;
-  public ItemStatus.Velocity a;
-  
-  public ItemStatus()
-  {
-    this.jdField_a_of_type_Double = 0.0D;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity = new ItemStatus.Velocity(0.0D, 0.0D);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration = new ItemStatus.Acceleration(0.0D, 0.0D);
-    this.jdField_a_of_type_Int = 0;
-  }
+  public RectF a = new RectF();
+  public ItemStatus.Velocity b = new ItemStatus.Velocity(0.0D, 0.0D);
+  public ItemStatus.Acceleration c = new ItemStatus.Acceleration(0.0D, 0.0D);
+  public int d = 0;
+  public double e = 0.0D;
+  public long f = 0L;
   
   public void a(Point paramPoint, double paramDouble1, double paramDouble2, int paramInt)
   {
     if (paramInt == 85)
     {
-      localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      d = paramPoint.x;
-      Double.isNaN(d);
-      f1 = (float)(d - paramDouble1);
+      localRectF = this.a;
+      d1 = paramPoint.x;
+      Double.isNaN(d1);
+      f1 = (float)(d1 - paramDouble1);
       paramDouble1 = paramPoint.y;
       Double.isNaN(paramDouble1);
       localRectF.set(f1, (float)(paramDouble1 - paramDouble2), paramPoint.x, paramPoint.y);
@@ -37,28 +27,28 @@ public class ItemStatus
     }
     if (paramInt == 81)
     {
-      localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      d = paramPoint.x;
+      localRectF = this.a;
+      d1 = paramPoint.x;
       paramDouble1 /= 2.0D;
-      Double.isNaN(d);
-      f1 = (float)(d - paramDouble1);
-      d = paramPoint.y;
-      Double.isNaN(d);
-      f2 = (float)(d - paramDouble2);
+      Double.isNaN(d1);
+      f1 = (float)(d1 - paramDouble1);
+      d1 = paramPoint.y;
+      Double.isNaN(d1);
+      f2 = (float)(d1 - paramDouble2);
       paramDouble2 = paramPoint.x;
       Double.isNaN(paramDouble2);
       localRectF.set(f1, f2, (float)(paramDouble2 + paramDouble1), paramPoint.y);
       return;
     }
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    double d = paramPoint.x;
+    RectF localRectF = this.a;
+    double d1 = paramPoint.x;
     paramDouble1 /= 2.0D;
-    Double.isNaN(d);
-    float f1 = (float)(d - paramDouble1);
+    Double.isNaN(d1);
+    float f1 = (float)(d1 - paramDouble1);
     float f2 = paramPoint.y;
-    d = paramPoint.x;
-    Double.isNaN(d);
-    float f3 = (float)(d + paramDouble1);
+    d1 = paramPoint.x;
+    Double.isNaN(d1);
+    float f3 = (float)(d1 + paramDouble1);
     paramDouble1 = paramPoint.y;
     Double.isNaN(paramDouble1);
     localRectF.set(f1, f2, f3, (float)(paramDouble1 + paramDouble2));
@@ -70,18 +60,18 @@ public class ItemStatus
     localStringBuilder.append("ItemStatus{hashCode=");
     localStringBuilder.append(hashCode());
     localStringBuilder.append(", rect=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRectF);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", velocity=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", acceleration=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus
  * JD-Core Version:    0.7.0.1
  */

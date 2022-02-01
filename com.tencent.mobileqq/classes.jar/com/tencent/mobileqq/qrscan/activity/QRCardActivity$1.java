@@ -15,20 +15,20 @@ class QRCardActivity$1
     if (paramMessage.what != 0) {
       return;
     }
-    if ((!this.a.jdField_a_of_type_Boolean) && ((paramMessage.obj instanceof Bitmap)))
+    if ((!this.a.a) && ((paramMessage.obj instanceof Bitmap)))
     {
       paramMessage = (Bitmap)paramMessage.obj;
       if (paramMessage != null)
       {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+        this.a.d.setBackgroundResource(0);
+        this.a.d.setImageBitmap(paramMessage);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.1
  * JD-Core Version:    0.7.0.1
  */

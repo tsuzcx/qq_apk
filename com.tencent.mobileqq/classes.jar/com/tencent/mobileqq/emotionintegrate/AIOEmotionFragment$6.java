@@ -18,8 +18,8 @@ class AIOEmotionFragment$6
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateMsgEmoticonPreviewData.a();
+      this.b.m.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      paramView = this.a.h();
       if (QLog.isColorLevel())
       {
         paramMotionEvent = new StringBuilder();
@@ -27,22 +27,22 @@ class AIOEmotionFragment$6
         paramMotionEvent.append(paramView);
         QLog.i("AIOEmotionFragment", 2, paramMotionEvent.toString());
       }
-      ((IJumpUtil)QRoute.api(IJumpUtil.class)).jumpToCameraForTakeSameGif((Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, paramView);
-      paramView = (Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a;
+      ((IJumpUtil)QRoute.api(IJumpUtil.class)).jumpToCameraForTakeSameGif((Activity)this.b.b, paramView);
+      paramView = (Activity)this.b.b;
       if ((paramView != null) && (!paramView.isFinishing())) {
         paramView.finish();
       }
     }
     else if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+      this.b.m.setBackgroundColor(Color.parseColor("#DEDEDE"));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.6
  * JD-Core Version:    0.7.0.1
  */

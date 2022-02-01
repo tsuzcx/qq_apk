@@ -6,22 +6,22 @@ import java.util.List;
 
 public class ZhituReportRequest
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
   @JSONUtils.GenericType(a=String.class)
-  List<String> jdField_a_of_type_JavaUtilList;
-  String b;
+  List<String> a;
+  int b;
+  String c;
+  String d;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ZhituReportRequest{, type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", md5='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", text='");
-    localStringBuilder.append(MD5.a(this.b));
+    localStringBuilder.append(MD5.b(this.d));
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -29,7 +29,7 @@ public class ZhituReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituReportRequest
  * JD-Core Version:    0.7.0.1
  */

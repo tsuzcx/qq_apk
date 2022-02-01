@@ -109,7 +109,7 @@ public class QGuardUtils
   
   public static void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = GuardManager.a;
+    Object localObject = GuardManager.sInstance;
     if (localObject == null) {
       return;
     }
@@ -121,7 +121,7 @@ public class QGuardUtils
     localIntent.putExtra("qq_mode_foreground", paramBoolean);
     localIntent.putStringArrayListExtra("procNameList", localArrayList);
     localIntent.putExtra("verify", a(localArrayList, false));
-    ((GuardManager)localObject).a().sendBroadcast(localIntent);
+    ((GuardManager)localObject).getContext().sendBroadcast(localIntent);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -137,14 +137,14 @@ public class QGuardUtils
   
   public static void a(boolean paramBoolean, String... paramVarArgs)
   {
-    GuardManager localGuardManager = GuardManager.a;
+    GuardManager localGuardManager = GuardManager.sInstance;
     if (localGuardManager == null) {
       return;
     }
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
-    Object localObject = (ActivityManager)localGuardManager.a().getSystemService("activity");
+    Object localObject = (ActivityManager)localGuardManager.getContext().getSystemService("activity");
     ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = null;
     try
     {
@@ -195,7 +195,7 @@ public class QGuardUtils
             localArrayList1.add(str1);
             PreloadProcHitMgr.b(str1);
             if (str1.endsWith(":qzone")) {
-              StatisticHitRateCollector.a().d(StatisticHitRateCollector.a());
+              StatisticHitRateCollector.a().d(StatisticHitRateCollector.b());
             }
           }
           else
@@ -225,7 +225,7 @@ public class QGuardUtils
       paramVarArgs.putExtra("qq_mode_foreground", paramBoolean);
       paramVarArgs.putStringArrayListExtra("procNameList", localArrayList1);
       paramVarArgs.putExtra("verify", a(localArrayList1, false));
-      localGuardManager.a().sendBroadcast(paramVarArgs);
+      localGuardManager.getContext().sendBroadcast(paramVarArgs);
     }
   }
   
@@ -244,7 +244,7 @@ public class QGuardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QGuardUtils
  * JD-Core Version:    0.7.0.1
  */

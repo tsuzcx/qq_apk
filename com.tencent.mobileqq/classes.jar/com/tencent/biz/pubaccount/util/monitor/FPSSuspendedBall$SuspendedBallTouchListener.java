@@ -9,10 +9,10 @@ import android.view.WindowManager.LayoutParams;
 class FPSSuspendedBall$SuspendedBallTouchListener
   implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
   
   private FPSSuspendedBall$SuspendedBallTouchListener(FPSSuspendedBall paramFPSSuspendedBall) {}
   
@@ -23,24 +23,24 @@ class FPSSuspendedBall$SuspendedBallTouchListener
     {
       if ((i != 1) && (i == 2))
       {
-        FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-        FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-        FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
+        FPSSuspendedBall.a(this.a).x = (this.b + (int)(this.d - paramMotionEvent.getRawX()));
+        FPSSuspendedBall.a(this.a).y = (this.c + (int)(paramMotionEvent.getRawY() - this.e));
+        FPSSuspendedBall.b(this.a).updateViewLayout(paramView, FPSSuspendedBall.a(this.a));
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
-      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      this.b = FPSSuspendedBall.a(this.a).x;
+      this.c = FPSSuspendedBall.a(this.a).y;
+      this.d = paramMotionEvent.getRawX();
+      this.e = paramMotionEvent.getRawY();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall.SuspendedBallTouchListener
  * JD-Core Version:    0.7.0.1
  */

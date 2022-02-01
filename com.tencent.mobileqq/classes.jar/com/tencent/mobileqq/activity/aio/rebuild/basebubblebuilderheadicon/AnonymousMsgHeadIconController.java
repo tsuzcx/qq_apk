@@ -15,23 +15,18 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class AnonymousMsgHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  public boolean a()
-  {
-    return AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-  }
-  
   protected void b()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843811);
-    Object localObject2 = AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    localObject1 = URLDrawable.getDrawable(AnonymousChatHelper.a(((AnonymousChatHelper.AnonymousExtInfo)localObject2).b), (Drawable)localObject1, (Drawable)localObject1);
-    localObject2 = ((AnonymousChatHelper.AnonymousExtInfo)localObject2).c;
+    Object localObject1 = this.c.getResources().getDrawable(2130844765);
+    Object localObject2 = AnonymousChatHelper.g(this.a);
+    localObject1 = URLDrawable.getDrawable(AnonymousChatHelper.a(((AnonymousChatHelper.AnonymousExtInfo)localObject2).d), (Drawable)localObject1, (Drawable)localObject1);
+    localObject2 = ((AnonymousChatHelper.AnonymousExtInfo)localObject2).f;
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       try
       {
-        int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
+        int i = DisplayUtil.a(this.c, 1.0F);
         ((URLDrawable)localObject1).setTag(new int[] { Color.parseColor((String)localObject2), i });
-        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.p);
+        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.q);
       }
       catch (Exception localException)
       {
@@ -43,7 +38,7 @@ public class AnonymousMsgHeadIconController
   
   protected void c()
   {
-    a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    a(this.h);
   }
   
   protected void d()
@@ -52,10 +47,15 @@ public class AnonymousMsgHeadIconController
   }
   
   protected void g() {}
+  
+  public boolean h()
+  {
+    return AnonymousChatHelper.c(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.AnonymousMsgHeadIconController
  * JD-Core Version:    0.7.0.1
  */

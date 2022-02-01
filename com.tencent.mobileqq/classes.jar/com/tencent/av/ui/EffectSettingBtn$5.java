@@ -14,9 +14,9 @@ class EffectSettingBtn$5
   
   public void onClick(View paramView)
   {
-    this.a.a.a().a().al = true;
-    UITools.a(this.a.a);
-    EffectSettingBtn.b(this.a);
+    this.a.b.b().k().bJ = true;
+    UITools.b(this.a.b);
+    EffectSettingBtn.c(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

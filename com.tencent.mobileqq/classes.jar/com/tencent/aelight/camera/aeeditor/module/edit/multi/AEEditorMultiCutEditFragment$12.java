@@ -15,19 +15,19 @@ class AEEditorMultiCutEditFragment$12
     if (AEFastClickThrottle.a(paramView)) {
       return;
     }
-    if (AEEditorMultiCutEditFragment.a(this.a).a())
+    if (AEEditorMultiCutEditFragment.e(this.a).a())
     {
-      AEEditorMultiCutEditFragment.d(this.a, false);
-      AEEditorMultiCutEditFragment.a(this.a).b();
+      AEEditorMultiCutEditFragment.e(this.a, false);
+      AEEditorMultiCutEditFragment.e(this.a).c();
       return;
     }
-    AEEditorMultiCutEditFragment.d(this.a, true);
-    AEEditorMultiCutEditFragment.a(this.a).a();
+    AEEditorMultiCutEditFragment.e(this.a, true);
+    AEEditorMultiCutEditFragment.e(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.12
  * JD-Core Version:    0.7.0.1
  */

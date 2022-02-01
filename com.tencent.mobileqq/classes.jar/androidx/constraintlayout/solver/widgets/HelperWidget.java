@@ -1,5 +1,8 @@
 package androidx.constraintlayout.solver.widgets;
 
+import androidx.constraintlayout.solver.widgets.analyzer.Grouping;
+import androidx.constraintlayout.solver.widgets.analyzer.WidgetGroup;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -29,6 +32,27 @@ public class HelperWidget
     }
   }
   
+  public void addDependents(ArrayList<WidgetGroup> paramArrayList, int paramInt, WidgetGroup paramWidgetGroup)
+  {
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.mWidgetsCount) {
+        break;
+      }
+      paramWidgetGroup.add(this.mWidgets[i]);
+      i += 1;
+    }
+    while (j < this.mWidgetsCount)
+    {
+      Grouping.findDependents(this.mWidgets[j], paramInt, paramArrayList, paramWidgetGroup);
+      j += 1;
+    }
+  }
+  
   public void copy(ConstraintWidget paramConstraintWidget, HashMap<ConstraintWidget, ConstraintWidget> paramHashMap)
   {
     super.copy(paramConstraintWidget, paramHashMap);
@@ -43,6 +67,23 @@ public class HelperWidget
     }
   }
   
+  public int findGroupInDependents(int paramInt)
+  {
+    int i = 0;
+    while (i < this.mWidgetsCount)
+    {
+      ConstraintWidget localConstraintWidget = this.mWidgets[i];
+      if ((paramInt == 0) && (localConstraintWidget.horizontalGroup != -1)) {
+        return localConstraintWidget.horizontalGroup;
+      }
+      if ((paramInt == 1) && (localConstraintWidget.verticalGroup != -1)) {
+        return localConstraintWidget.verticalGroup;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
   public void removeAllIds()
   {
     this.mWidgetsCount = 0;
@@ -53,7 +94,7 @@ public class HelperWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.HelperWidget
  * JD-Core Version:    0.7.0.1
  */

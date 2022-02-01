@@ -44,20 +44,20 @@ public class WebViewJumpPlugin
   extends WebViewPlugin
 {
   public static final String a = "WebViewJumpPlugin";
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = true;
+  WebView b;
+  QQAppInterface c = null;
+  private boolean d;
+  private boolean e;
+  private boolean f = true;
   
   public WebViewJumpPlugin()
   {
-    this.mPluginNameSpace = jdField_a_of_type_JavaLangString;
+    this.mPluginNameSpace = a;
   }
   
   private Activity a()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
@@ -66,9 +66,9 @@ public class WebViewJumpPlugin
     if (this.mRuntime == null) {
       return;
     }
-    if (this.mRuntime.a() != null)
+    if (this.mRuntime.d() != null)
     {
-      this.mRuntime.a().startActivity(paramIntent);
+      this.mRuntime.d().startActivity(paramIntent);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -80,7 +80,7 @@ public class WebViewJumpPlugin
   {
     if ((paramString.startsWith("http:")) || (paramString.startsWith("https:")))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      Object localObject = this.b;
       if (localObject != null)
       {
         localObject = ((WebView)localObject).getUrl();
@@ -91,7 +91,7 @@ public class WebViewJumpPlugin
   
   private void c(String paramString)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     if (localObject == null) {
       return;
     }
@@ -103,7 +103,7 @@ public class WebViewJumpPlugin
       a((Intent)localObject);
       return;
     }
-    paramString = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject, paramString);
+    paramString = JumpParser.a(this.c, (Context)localObject, paramString);
     if (paramString != null) {
       paramString.a();
     }
@@ -127,7 +127,7 @@ public class WebViewJumpPlugin
   
   public void a(String paramString)
   {
-    paramString = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString);
+    paramString = JumpParser.a(this.c, this.mRuntime.d(), paramString);
     if (paramString != null) {
       paramString.a();
     }
@@ -141,21 +141,21 @@ public class WebViewJumpPlugin
     HashMap localHashMap = new HashMap();
     localHashMap.put("KEY_PID", String.valueOf(50079));
     localHashMap.put("KEY_EUSESTAT", String.valueOf(5));
-    paramString = MttLoader.getValidQBUrl(this.mRuntime.a(), paramString);
-    int i = MttLoader.loadUrl(this.mRuntime.a(), paramString, localHashMap, null);
+    paramString = MttLoader.getValidQBUrl(this.mRuntime.d(), paramString);
+    int i = MttLoader.loadUrl(this.mRuntime.d(), paramString, localHashMap, null);
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_ComTencentSmttSdkWebView == null) && (QLog.isColorLevel()))
+      if ((this.b == null) && (QLog.isColorLevel()))
       {
         QLog.d("WebViewJumpPlugin", 2, "webview is null");
         return true;
       }
       if (4 == i) {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
+        this.b.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
       } else if (5 == i) {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
+        this.b.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
       } else if (i != 0) {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
+        this.b.loadUrl("https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079");
       }
     }
     return i == 0;
@@ -175,28 +175,28 @@ public class WebViewJumpPlugin
   {
     if (paramLong == 2L)
     {
-      this.c = true;
+      this.f = true;
       return false;
     }
     if (paramLong == 8589934597L)
     {
-      this.c = false;
+      this.f = false;
       return false;
     }
     if (paramLong == 8589934601L)
     {
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.contains("chatplay/hall")) || (paramString.contains("avwithstranger/avchathall")) || (paramString.contains("chatplay/avchathall"))) && (paramString.endsWith("#child")))
       {
-        if ((paramString.contains("adtag=client.tab")) && (this.mRuntime != null) && (this.mRuntime.a() != null)) {
-          if ((this.mRuntime.a() instanceof IphoneTitleBarActivity))
+        if ((paramString.contains("adtag=client.tab")) && (this.mRuntime != null) && (this.mRuntime.d() != null)) {
+          if ((this.mRuntime.d() instanceof IphoneTitleBarActivity))
           {
-            ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131719441);
+            ((IphoneTitleBarActivity)this.mRuntime.d()).setLeftViewName(2131917001);
           }
-          else if (((this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter)) && (!SwiftWebViewUtils.a()))
+          else if (((this.mRuntime.d() instanceof SwiftWebViewFragmentSupporter)) && (!SwiftWebViewUtils.d()))
           {
-            paramString = (WebViewFragment)this.mRuntime.a();
-            if ((paramString != null) && (paramString.getSwiftTitleUI().a != null)) {
-              paramString.getSwiftTitleUI().a.setText(2131719441);
+            paramString = (WebViewFragment)this.mRuntime.f();
+            if ((paramString != null) && (paramString.getSwiftTitleUI().d != null)) {
+              paramString.getSwiftTitleUI().d.setText(2131917001);
             }
           }
         }
@@ -207,18 +207,18 @@ public class WebViewJumpPlugin
         }
       }
     }
-    else if ((paramLong == 8589934594L) && (!TextUtils.isEmpty(paramString)) && ((paramString.contains("chatplay/hall")) || (paramString.contains("avwithstranger/avchathall")) || (paramString.contains("chatplay/avchathall"))) && (paramString.endsWith("#child")) && (paramString.contains("adtag=client.tab")) && (this.mRuntime != null) && (this.mRuntime.a() != null))
+    else if ((paramLong == 8589934594L) && (!TextUtils.isEmpty(paramString)) && ((paramString.contains("chatplay/hall")) || (paramString.contains("avwithstranger/avchathall")) || (paramString.contains("chatplay/avchathall"))) && (paramString.endsWith("#child")) && (paramString.contains("adtag=client.tab")) && (this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      if ((this.mRuntime.a() instanceof IphoneTitleBarActivity))
+      if ((this.mRuntime.d() instanceof IphoneTitleBarActivity))
       {
-        ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131690706);
+        ((IphoneTitleBarActivity)this.mRuntime.d()).setLeftViewName(2131887625);
         return false;
       }
-      if (((this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter)) && (!SwiftWebViewUtils.a()))
+      if (((this.mRuntime.d() instanceof SwiftWebViewFragmentSupporter)) && (!SwiftWebViewUtils.d()))
       {
-        paramString = (WebViewFragment)this.mRuntime.a();
-        if ((paramString != null) && (paramString.getSwiftTitleUI().a != null)) {
-          paramString.getSwiftTitleUI().a.setText(2131690706);
+        paramString = (WebViewFragment)this.mRuntime.f();
+        if ((paramString != null) && (paramString.getSwiftTitleUI().d != null)) {
+          paramString.getSwiftTitleUI().d.setText(2131887625);
         }
       }
     }
@@ -229,17 +229,17 @@ public class WebViewJumpPlugin
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = this.TAG;
+      localObject1 = this.mTAG;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("handleSchemaRequest-->url:");
       ((StringBuilder)localObject2).append(paramString1);
       ((StringBuilder)localObject2).append(",scheme:");
       ((StringBuilder)localObject2).append(paramString2);
       ((StringBuilder)localObject2).append("mActive=");
-      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append(this.f);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (!this.c) {
+    if (!this.f) {
       return false;
     }
     if ((com.tencent.mobileqq.qrscan.utils.QRUtils.a(paramString1)) && (com.tencent.biz.qrcode.util.QRUtils.a(paramString1))) {
@@ -260,7 +260,7 @@ public class WebViewJumpPlugin
     {
       paramString1 = new Intent("android.intent.action.DIAL", Uri.parse(paramString1));
       paramString1.putExtra("big_brother_source_key", paramString2);
-      if ((!MobileIssueSettings.jdField_a_of_type_Boolean) && (KapalaiAdapterUtil.a().a())) {
+      if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().b())) {
         KapalaiAdapterUtil.a().a(paramString1);
       }
       a(paramString1);
@@ -291,7 +291,7 @@ public class WebViewJumpPlugin
     {
       if (QLog.isColorLevel())
       {
-        paramString2 = this.TAG;
+        paramString2 = this.mTAG;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("enter WebViewJumpPlugin classicHeadActivity url=");
         ((StringBuilder)localObject1).append(paramString1);
@@ -309,12 +309,12 @@ public class WebViewJumpPlugin
           l1 = Long.parseLong(localObject2[1]);
           long l2 = Long.parseLong(paramString2[1]);
           paramString2 = new Intent("com.tencent.qqhead.refreshheadreq");
-          paramString2.setPackage(this.mRuntime.a().getPackageName());
+          paramString2.setPackage(this.mRuntime.d().getPackageName());
           paramString2.putExtra("faceType", 1);
           paramString2.putExtra("uin", paramString1);
           paramString2.putExtra("headSystemId", l2);
           paramString2.putExtra("faceFlag", l1);
-          this.mRuntime.a().sendBroadcast(paramString2);
+          this.mRuntime.d().sendBroadcast(paramString2);
           return true;
         }
       }
@@ -324,24 +324,24 @@ public class WebViewJumpPlugin
       if (paramString1.startsWith("mqqapi://tenpay/pay?"))
       {
         i = getRequestCode((byte)3);
-        if ((i != -1) && (!this.b))
+        if ((i != -1) && (!this.e))
         {
-          this.b = true;
-          paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+          this.e = true;
+          paramString1 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
           if (paramString1 != null)
           {
-            paramString1.b("webview");
+            paramString1.c("webview");
             paramString1.a("k_requestcode", String.valueOf(i));
             paramString1.a("url_app_info", QWalletPayJsPlugin.getPayAppInfo());
             paramString1.a();
-            this.jdField_a_of_type_Boolean = true;
-            this.b = false;
+            this.d = true;
+            this.e = false;
           }
         }
         return true;
       }
       if ((com.tencent.biz.qrcode.util.QRUtils.a(paramString1)) || (paramString1.startsWith("mqqopensdkapi:"))) {
-        break label1993;
+        break label2003;
       }
       if (paramString1.startsWith("https://buluo.qq.com/cgi-bin/bar/jump?jump_type=xqquncard"))
       {
@@ -353,13 +353,13 @@ public class WebViewJumpPlugin
         paramString2.append("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity&uin=");
         paramString2.append(paramString1);
         paramString1 = paramString2.toString();
-        paramString2 = this.mRuntime.a();
+        paramString2 = this.mRuntime.d();
         if (paramString2 != null)
         {
-          paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1);
+          paramString1 = JumpParser.a(this.c, paramString2, paramString1);
           if (paramString1 != null)
           {
-            paramString1.b("webview");
+            paramString1.c("webview");
             paramString1.a();
           }
           new Handler().postDelayed(new WebViewJumpPlugin.2(this), 2000L);
@@ -368,12 +368,12 @@ public class WebViewJumpPlugin
       }
       if (paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/"))
       {
-        if ((this.jdField_a_of_type_ComTencentSmttSdkWebView == null) && (QLog.isColorLevel()))
+        if ((this.b == null) && (QLog.isColorLevel()))
         {
           QLog.d("WebViewJumpPlugin", 2, "webview is null");
           return true;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl();
+        localObject1 = this.b.getUrl();
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           paramString2 = Util.b(paramString1, new String[0]);
@@ -387,68 +387,68 @@ public class WebViewJumpPlugin
       }
       if (paramString1.startsWith("mqqapi://readinjoy"))
       {
-        paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString1 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString1 != null)
         {
-          paramString1.b("webview");
+          paramString1.c("webview");
           paramString1.a();
         }
         return true;
       }
       if (paramString1.startsWith("mqqapi://now/playmedia"))
       {
-        paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString1 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString1 != null)
         {
-          paramString1.b("webview");
+          paramString1.c("webview");
           paramString1.a();
         }
         return true;
       }
       if (paramString1.startsWith("mqqapi://now/playmedia"))
       {
-        paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString1 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString1 != null)
         {
-          paramString1.b("webview");
-          paramString1.a(this.mRuntime.a());
+          paramString1.c("webview");
+          paramString1.a(this.mRuntime.b());
           paramString1.a();
         }
         return true;
       }
       if (paramString1.startsWith("mqqapi://now/openSmallVideoRecord"))
       {
-        paramString1 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString1 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString1 != null)
         {
-          paramString1.b("webview");
-          paramString1.a(this.mRuntime.a());
+          paramString1.c("webview");
+          paramString1.a(this.mRuntime.b());
           paramString1.a();
         }
         return true;
       }
-      if ((paramString1.startsWith("mqqapi://")) || (paramString1.startsWith("qqfav://operation/")) || (paramString1.startsWith("nowmqqapi://now/openroom"))) {
-        break label1922;
+      if ((paramString1.startsWith("mqqapi://")) || (paramString1.startsWith("qqfav://operation/")) || (paramString1.startsWith("nowmqqapi://now/openroom")) || (paramString1.startsWith("mqqguild://"))) {
+        break label1932;
       }
       if (paramString1.startsWith("qb"))
       {
         if ((!a(paramString1, false)) && (this.mRuntime != null))
         {
-          if (this.mRuntime.a() == null) {
+          if (this.mRuntime.d() == null) {
             return true;
           }
-          paramString1 = MttLoader.getValidQBUrl(this.mRuntime.a(), paramString1);
-          if ((this.jdField_a_of_type_ComTencentSmttSdkWebView == null) && (QLog.isColorLevel()))
+          paramString1 = MttLoader.getValidQBUrl(this.mRuntime.d(), paramString1);
+          if ((this.b == null) && (QLog.isColorLevel()))
           {
             QLog.d("WebViewJumpPlugin", 2, "webview is null");
             return true;
           }
-          this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramString1);
+          this.b.loadUrl(paramString1);
         }
         return true;
       }
       if ((paramString1.startsWith("mqqflyticket://")) || (com.tencent.biz.qrcode.util.QRUtils.b(paramString1))) {
-        break label1915;
+        break label1925;
       }
       if (paramString1.startsWith("mqqwpa://im"))
       {
@@ -460,7 +460,7 @@ public class WebViewJumpPlugin
       }
       if (paramString1.startsWith("mqqapi://pay_for_emosm_success"))
       {
-        paramString2 = this.mRuntime.a();
+        paramString2 = this.mRuntime.d();
         if (paramString2 != null)
         {
           paramString2.setResult(8213);
@@ -495,14 +495,14 @@ public class WebViewJumpPlugin
             paramString2 = new Intent();
             paramString2.putExtra("qqid", l1);
             QzonePluginProxyActivity.setActivityNameToIntent(paramString2, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
-            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramString2, 0);
+            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramString2, 0);
           }
           else
           {
             paramString2 = QZoneHelper.QZoneFamousSpaceHomeConstants.getFamousSpaceHomeActionUrl();
             if (QLog.isColorLevel())
             {
-              localObject1 = this.TAG;
+              localObject1 = this.mTAG;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("handleJumpToFamousSpace-->famous uin:");
               ((StringBuilder)localObject2).append(l1);
@@ -510,13 +510,13 @@ public class WebViewJumpPlugin
               ((StringBuilder)localObject2).append(paramString2);
               QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
             }
-            localObject1 = this.mRuntime.a();
+            localObject1 = this.mRuntime.d();
             localObject2 = new Intent();
             ((Intent)localObject2).putExtra("qqid", l1);
             ((Intent)localObject2).putExtra("refer", "famous");
             ((Intent)localObject2).putExtra("famous_space_webview_url", paramString2);
             QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject2, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
-            QzonePluginProxyActivity.launchPluingActivityForResult((Context)localObject1, this.mRuntime.a().getAccount(), (Intent)localObject2, 0);
+            QzonePluginProxyActivity.launchPluingActivityForResult((Context)localObject1, this.mRuntime.b().getAccount(), (Intent)localObject2, 0);
           }
           new Handler().postDelayed(new WebViewJumpPlugin.3(this), 2000L);
           return true;
@@ -528,26 +528,26 @@ public class WebViewJumpPlugin
       }
       else if (paramString1.startsWith("mqqconferenceflyticket://"))
       {
-        this.mRuntime.a();
+        this.mRuntime.d();
       }
       else if (paramString1.startsWith("mqqapi://groupvideo"))
       {
-        paramString2 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString2 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString2 != null) {
           paramString2.a();
         }
       }
       else if (paramString1.startsWith("mqqapi://stickynote"))
       {
-        paramString2 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.mRuntime.a(), paramString1);
+        paramString2 = JumpParser.a(this.c, this.mRuntime.d(), paramString1);
         if (paramString2 != null) {
           paramString2.a();
         }
       }
       else if (paramString1.startsWith("auth://tauth.qq.com/?#"))
       {
-        paramString2 = this.mRuntime.a();
-        QLog.d(this.TAG, 1, new Object[] { "qrcode login end activity=", paramString2 });
+        paramString2 = this.mRuntime.d();
+        QLog.d(this.mTAG, 1, new Object[] { "qrcode login end activity=", paramString2 });
         if (paramString2 != null)
         {
           localObject1 = new Intent("mqq.intent.action.QRCODE_LOGIN_FINISH");
@@ -561,11 +561,11 @@ public class WebViewJumpPlugin
     }
     b(paramString1);
     return false;
-    label1915:
+    label1925:
     c(paramString1);
     return true;
-    label1922:
-    localObject1 = new Intent(this.mRuntime.a(), JumpActivity.class);
+    label1932:
+    localObject1 = new Intent(this.mRuntime.d(), JumpActivity.class);
     ((Intent)localObject1).setData(Uri.parse(paramString1));
     ((Intent)localObject1).putExtra("from", "webview");
     if (!TextUtils.isEmpty(paramString2)) {
@@ -574,14 +574,14 @@ public class WebViewJumpPlugin
     a((Intent)localObject1);
     d(paramString1);
     return true;
-    label1993:
-    paramString2 = this.mRuntime.a();
+    label2003:
+    paramString2 = this.mRuntime.d();
     if (paramString2 != null)
     {
-      paramString2 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1);
+      paramString2 = JumpParser.a(this.c, paramString2, paramString1);
       if (paramString2 != null)
       {
-        paramString2.b("webview");
+        paramString2.c("webview");
         paramString2.a();
       }
       if ((paramString1.startsWith("http:")) || (paramString1.startsWith("https:"))) {
@@ -593,10 +593,10 @@ public class WebViewJumpPlugin
   
   public void onActivityReady()
   {
-    if ((this.mRuntime.a() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.mRuntime.a());
+    if ((this.mRuntime.b() instanceof QQAppInterface)) {
+      this.c = ((QQAppInterface)this.mRuntime.b());
     }
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    this.b = this.mRuntime.a();
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -605,7 +605,7 @@ public class WebViewJumpPlugin
     {
       if (paramInt == -1)
       {
-        if ((this.jdField_a_of_type_Boolean) && (paramIntent != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+        if ((this.d) && (paramIntent != null) && (this.b != null))
         {
           String str = paramIntent.getStringExtra("callback_type");
           if ("javascript".equals(str))
@@ -614,43 +614,43 @@ public class WebViewJumpPlugin
           }
           else if ("url".equals(str))
           {
-            if ((this.jdField_a_of_type_ComTencentSmttSdkWebView == null) && (QLog.isColorLevel()))
+            if ((this.b == null) && (QLog.isColorLevel()))
             {
               QLog.d("WebViewJumpPlugin", 2, "webview is null");
               return;
             }
-            this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramIntent.getStringExtra("callback_url"));
+            this.b.loadUrl(paramIntent.getStringExtra("callback_url"));
           }
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
         return;
       }
       if (paramInt == 0) {
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
       }
     }
   }
   
   protected void onCreate()
   {
-    TroopMemberApiClient.a().a();
+    TroopMemberApiClient.a().e();
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    TroopMemberApiClient.a().b();
+    TroopMemberApiClient.a().f();
   }
   
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramCustomWebView;
+    this.b = paramCustomWebView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,8 @@ public class StickerRecReportData
       localJSONObject2.put("mobile_type", this.j);
       localJSONObject2.put("to_user_id", this.d);
       localJSONObject2.put("passthough", this.k);
-      localJSONObject1.put("dcId", this.l);
+      localJSONObject2.put("session_id", this.l);
+      localJSONObject1.put("dcId", this.m);
       localJSONObject1.put("data", localJSONObject2);
       return localJSONObject1;
     }
@@ -47,7 +48,7 @@ public class StickerRecReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,11 +21,11 @@ public class RIJChannelHelper
     if ((paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.redPoint != null))
     {
       QLog.d("RIJChannelHelper", 2, new Object[] { "getRedDotType, info = ", paramTabChannelCoverInfo.toString() });
-      if (paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean)
+      if (paramTabChannelCoverInfo.redPoint.a)
       {
         long l = System.currentTimeMillis() / 1000L;
-        if ((l >= paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Long) && (l <= paramTabChannelCoverInfo.redPoint.b)) {
-          return paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Int;
+        if ((l >= paramTabChannelCoverInfo.redPoint.b) && (l <= paramTabChannelCoverInfo.redPoint.c)) {
+          return paramTabChannelCoverInfo.redPoint.e;
         }
       }
       return -1;
@@ -41,7 +41,7 @@ public class RIJChannelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJChannelHelper
  * JD-Core Version:    0.7.0.1
  */

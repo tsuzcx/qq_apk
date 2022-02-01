@@ -20,46 +20,46 @@ public class TranslateSelectableMenu
   protected void a(ContainerView paramContainerView)
   {
     super.a(paramContainerView);
-    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
+    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.d.get();
     if (localTextPreviewTranslateActivity != null) {
-      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376999));
+      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131445363));
     }
-    paramContainerView.jdField_a_of_type_Boolean = false;
-    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
+    paramContainerView.e = false;
+    paramContainerView.c.post(new TranslateSelectableMenu.1(this, paramContainerView));
   }
   
   protected void a(ContainerView paramContainerView, View paramView)
   {
     super.a(paramContainerView, paramView);
-    ReportController.b((AppRuntime)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
+    ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
   }
   
   public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.c.get();
     switch (paramView.getId())
     {
     default: 
       break;
-    case 2131377136: 
+    case 2131445511: 
       AIOSelectableDelegateImpl.a().a(null);
-      ReportController.b((AppRuntime)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
+      ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
       break;
-    case 2131367180: 
+    case 2131433636: 
       MenuUtil.a((Activity)paramView.getContext(), a());
-      ReportController.b((AppRuntime)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
+      ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
       break;
-    case 2131366494: 
+    case 2131432813: 
       if (localQQAppInterface != null) {
         MenuUtil.a((Activity)paramView.getContext(), localQQAppInterface, a());
       }
-      ReportController.b((AppRuntime)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
+      ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
       break;
-    case 2131365311: 
+    case 2131431492: 
       try
       {
         MenuUtil.copy(a(), "TextPreview");
-        ReportController.b((AppRuntime)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
+        ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
       }
       catch (Exception localException)
       {
@@ -70,8 +70,8 @@ public class TranslateSelectableMenu
       QLog.e("TranslateSelectableMenu", 2, localException.toString());
       break;
     }
-    if ((paramView.getId() != 2131377136) && (AIOSelectableDelegateImpl.a().c())) {
-      AIOSelectableDelegateImpl.a().d();
+    if ((paramView.getId() != 2131445511) && (AIOSelectableDelegateImpl.a().l())) {
+      AIOSelectableDelegateImpl.a().n();
     }
     label296:
     EventCollector.getInstance().onViewClicked(paramView);
@@ -79,7 +79,7 @@ public class TranslateSelectableMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu
  * JD-Core Version:    0.7.0.1
  */

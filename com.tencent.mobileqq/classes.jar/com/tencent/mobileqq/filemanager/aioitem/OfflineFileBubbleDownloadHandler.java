@@ -64,24 +64,13 @@ public class OfflineFileBubbleDownloadHandler
     return FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.getFilePath()) ^ true;
   }
   
-  protected FileManagerEntity a(ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForFile))
-    {
-      paramChatMessage = (MessageForFile)paramChatMessage;
-      return FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-    }
-    QLog.i("OfflineFileBubbleDownloadHandler", 1, "getFileManagerEntityByMsg:  msg is not message for file.");
-    return null;
-  }
-  
   protected CircleFileStateView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
     if (paramViewHolder == null) {
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v;
     }
     return null;
   }
@@ -99,25 +88,25 @@ public class OfflineFileBubbleDownloadHandler
     if (paramInt == -1) {
       return;
     }
-    paramView = a(paramChatMessage);
+    paramView = c(paramChatMessage);
     if (paramView == null) {
       return;
     }
     if (paramInt == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
       if (paramView.getCloudType() == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramView.nSessionId);
+        this.b.getOnlineFileSessionCenter().c(paramView.nSessionId);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView.nSessionId);
+      this.b.getFileManagerEngine().a(paramView.nSessionId);
       return;
     }
     if (paramInt == 1)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
-      FileModel.a(paramView).a(false, this.jdField_a_of_type_AndroidContentContext, new OfflineFileBubbleDownloadHandler.1(this, paramView));
+      ReportController.b(this.b, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+      FileModel.a(paramView).a(false, this.a, new OfflineFileBubbleDownloadHandler.1(this, paramView));
     }
   }
   
@@ -127,7 +116,7 @@ public class OfflineFileBubbleDownloadHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).v = paramCircleFileStateView;
     }
   }
   
@@ -137,11 +126,11 @@ public class OfflineFileBubbleDownloadHandler
     if (paramChatMessage == null) {
       return false;
     }
-    paramChatMessage = a(paramChatMessage);
+    paramChatMessage = c(paramChatMessage);
     if (paramChatMessage == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramChatMessage.fileName);
+    int i = FileManagerUtil.c(paramChatMessage.fileName);
     if (i != 0)
     {
       if (i == 2) {
@@ -220,11 +209,11 @@ public class OfflineFileBubbleDownloadHandler
     if (paramChatMessage == null) {
       return false;
     }
-    paramChatMessage = a(paramChatMessage);
+    paramChatMessage = c(paramChatMessage);
     if (paramChatMessage == null) {
       return false;
     }
-    int i = FileManagerUtil.a(paramChatMessage.fileName);
+    int i = FileManagerUtil.c(paramChatMessage.fileName);
     boolean bool1 = bool2;
     if (i != 0)
     {
@@ -256,10 +245,21 @@ public class OfflineFileBubbleDownloadHandler
     }
     return bool1;
   }
+  
+  protected FileManagerEntity c(ChatMessage paramChatMessage)
+  {
+    if ((paramChatMessage instanceof MessageForFile))
+    {
+      paramChatMessage = (MessageForFile)paramChatMessage;
+      return FileManagerUtil.a(this.b, paramChatMessage);
+    }
+    QLog.i("OfflineFileBubbleDownloadHandler", 1, "getFileManagerEntityByMsg:  msg is not message for file.");
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
 import com.tencent.mobileqq.utils.ContactUtils;
 
 public class TroopAioMsgNavigateSpecial
@@ -18,68 +17,68 @@ public class TroopAioMsgNavigateSpecial
   public TroopAioMsgNavigateSpecial(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
-    this.jdField_a_of_type_Int = 17;
+    this.c = 17;
   }
   
-  public void a(int paramInt1, TroopAioAgent.Message paramMessage, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
+  public void a(int paramInt1, AioAgent.Message paramMessage, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
   {
     super.a(paramInt1, paramMessage, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
-    if (paramLong != TroopAioMsgNavigateBar.a) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong);
+    if (paramLong != TroopAioMsgNavigateBar.b) {
+      paramString = this.d.getMessageFacade().d(this.f.b, this.f.a, paramLong);
     } else {
       paramString = null;
     }
     if (paramString != null) {
-      paramTextView1.setText(ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, paramString.senderuin));
+      paramTextView1.setText(ContactUtils.b(this.d, this.f.b, paramString.senderuin));
     }
     if (((paramString instanceof MessageForQQWalletMsg)) && (MessageForQQWalletMsg.isRedPacketMsg(paramString)))
     {
       paramString = (MessageForQQWalletMsg)paramString;
       if ((paramString.messageType != 7) && (paramString.messageType != 8))
       {
-        paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718742));
-        paramMessage.a = true;
+        paramTextView2.setText(this.e.getString(2131916248));
+        paramMessage.g = true;
         return;
       }
-      paramTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718758));
-      paramMessage.b = true;
+      paramTextView2.setText(this.e.getString(2131916264));
+      paramMessage.h = true;
       return;
     }
     if (paramInt2 > 0)
     {
-      paramMessage.a = false;
-      paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
+      paramMessage.g = false;
+      paramString = this.e.getResources();
       if (paramInt2 > 99) {
         paramMessage = "99+";
       } else {
         paramMessage = Integer.valueOf(paramInt2);
       }
-      paramTextView2.setText(paramString.getString(2131694358, new Object[] { paramMessage }));
+      paramTextView2.setText(paramString.getString(2131892032, new Object[] { paramMessage }));
     }
   }
   
   public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (((paramObject instanceof TroopAioAgent.Message)) && (((TroopAioAgent.Message)paramObject).a)) {
+    if (((paramObject instanceof AioAgent.Message)) && (((AioAgent.Message)paramObject).g)) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     if (paramInt != 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_hongbao", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      ReportController.b(this.d, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_hongbao", 0, 0, this.f.b, "", "", "");
+      ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_hongbao", 0, 0, this.f.b, "", "", "");
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_sf", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_special_focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    ReportController.b(this.d, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_sf", 0, 0, this.f.b, "", "", "");
+    ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_special_focus", 0, 0, this.f.b, "", "", "");
   }
   
   public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateSpecial
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
 package com.tencent.mobileqq.qqgamepub.hippy.fragment;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.qqgamepub.mvp.model.buisness.QQGameHippyModel;
+import com.tencent.mobileqq.qqgamepub.mvp.presenter.buisness.QQGameHippyPresenterV2;
 
 class GamePAHippyFragmentV2$4
-  implements View.OnClickListener
+  implements Runnable
 {
   GamePAHippyFragmentV2$4(GamePAHippyFragmentV2 paramGamePAHippyFragmentV2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = this.a;
-    ((GamePAHippyFragmentV2)localObject).b(((GamePAHippyFragmentV2)localObject).a);
-    localObject = this.a.getQBaseActivity();
-    if (localObject != null) {
-      ((QBaseActivity)localObject).finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.this$0.a).b()).b("0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragmentV2.4
  * JD-Core Version:    0.7.0.1
  */

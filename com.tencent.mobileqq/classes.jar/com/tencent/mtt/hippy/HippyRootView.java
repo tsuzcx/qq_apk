@@ -18,13 +18,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HippyRootView
   extends FrameLayout
 {
-  private static AtomicInteger ID_COUNTER = new AtomicInteger(0);
+  private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
   private static final int ROOT_VIEW_TAG_INCREMENT = 10;
   private HippyEngineContext mEngineContext;
   private HippyRootView.GlobalLayoutListener mGlobalLayoutListener;
-  private int mInstanceId = 0;
+  private final int mInstanceId;
   protected boolean mLoadCompleted = false;
-  private HippyEngine.ModuleLoadParams mLoadParams;
+  private final HippyEngine.ModuleLoadParams mLoadParams;
   private HippyRootView.OnLoadCompleteListener mOnLoadCompleteListener;
   private HippyRootView.OnResumeAndPauseListener mOnResumeAndPauseListener;
   HippyRootView.OnSizeChangedListener mSizeChangListener;
@@ -216,7 +216,7 @@ public class HippyRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootView
  * JD-Core Version:    0.7.0.1
  */

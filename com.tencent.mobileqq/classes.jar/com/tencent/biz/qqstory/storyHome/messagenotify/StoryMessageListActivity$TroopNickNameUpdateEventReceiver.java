@@ -16,12 +16,12 @@ class StoryMessageListActivity$TroopNickNameUpdateEventReceiver
   
   public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
   {
-    if (paramTroopNickNameUpdateEvent.a.isSuccess())
+    if (paramTroopNickNameUpdateEvent.g.isSuccess())
     {
       if (QLog.isDevelopLevel()) {
         QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
       }
-      paramStoryMessageListActivity.e();
+      paramStoryMessageListActivity.f();
     }
   }
   

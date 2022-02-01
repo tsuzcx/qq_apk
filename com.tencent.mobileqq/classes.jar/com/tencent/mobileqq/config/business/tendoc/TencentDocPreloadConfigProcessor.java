@@ -11,7 +11,7 @@ public class TencentDocPreloadConfigProcessor
 {
   public static TencentDocPreloadConfigBean a()
   {
-    return (TencentDocPreloadConfigBean)QConfigManager.a().a(437);
+    return (TencentDocPreloadConfigBean)QConfigManager.b().b(437);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TencentDocPreloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

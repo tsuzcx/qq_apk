@@ -17,16 +17,16 @@ class WatchTogetherMediaPlayCtrl$6
   public void run()
   {
     WatchTogetherMediaPlayCtrl.a(this.this$0, 9);
-    Object localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    Object localObject = WatchTogetherMediaPlayCtrl.e(this.this$0).iterator();
     while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+        ((WatchTogetherMediaPlayerStatusCallback)localWeakReference.get()).a(this.a, this.b, this.c, this.d);
       }
     }
-    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).a;
-    AVUtil.a("0X800B62F", ((WTFileInfo)localObject).a(), 0, String.valueOf(this.c), WTDataReportUtil.a(), ((WTFileInfo)localObject).a(), ((WTFileInfo)localObject).b());
+    localObject = WatchTogetherMediaPlayCtrl.f(this.this$0).a;
+    AVUtil.a("0X800B62F", ((WTFileInfo)localObject).b(), 0, String.valueOf(this.c), WTDataReportUtil.c(), ((WTFileInfo)localObject).c(), ((WTFileInfo)localObject).d());
   }
 }
 

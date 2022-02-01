@@ -23,30 +23,30 @@ public class ScreenShotFragment$ActionSheetItemAdapter
   extends BaseAdapter
   implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ScreenShotFragment.ActionSheetItemAdapter.IconFactory jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory;
-  private List<ShareActionSheetBuilder.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  private List<ShareActionSheetBuilder.ActionSheetItem> a;
+  private LayoutInflater b;
+  private int c = 0;
+  private ScreenShotFragment.ActionSheetItemAdapter.IconFactory d;
+  private Resources e;
   
   public ScreenShotFragment$ActionSheetItemAdapter(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.a = paramList;
+    this.b = LayoutInflater.from(paramContext);
   }
   
   public ShareActionSheetBuilder.ActionSheetItem a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.a != null)
     {
       if (paramInt < 0) {
         return null;
       }
       int j = -1;
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.a.size())
       {
-        ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(i);
+        ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.a.get(i);
         int k = j;
         if (localActionSheetItem != null)
         {
@@ -67,7 +67,7 @@ public class ScreenShotFragment$ActionSheetItemAdapter
   
   public int getCount()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     int i = 0;
     if (localObject == null) {
       return 0;
@@ -90,23 +90,23 @@ public class ScreenShotFragment$ActionSheetItemAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_AndroidContentResResources == null) {
-      this.jdField_a_of_type_AndroidContentResResources = paramViewGroup.getContext().getResources();
+    if (this.e == null) {
+      this.e = paramViewGroup.getContext().getResources();
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131296796));
+    if (this.c == 0) {
+      this.c = ((int)this.e.getDimension(2131297127));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory = new ScreenShotFragment.ActionSheetItemAdapter.IconFactory(paramViewGroup.getContext());
+    if (this.d == null) {
+      this.d = new ScreenShotFragment.ActionSheetItemAdapter.IconFactory(paramViewGroup.getContext());
     }
     int j = 0;
     Object localObject1;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558904, paramViewGroup, false);
+      paramView = this.b.inflate(2131624526, paramViewGroup, false);
       localObject1 = new ScreenShotFragment.ActionSheetItemViewHolder();
-      ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377364));
-      ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377365));
+      ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b = ((ImageView)paramView.findViewById(2131445759));
+      ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).a = ((TextView)paramView.findViewById(2131445760));
       paramView.setTag(localObject1);
       paramView.setFocusable(true);
     }
@@ -114,8 +114,8 @@ public class ScreenShotFragment$ActionSheetItemAdapter
     {
       localObject1 = (ScreenShotFragment.ActionSheetItemViewHolder)paramView.getTag();
     }
-    ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem = a(paramInt);
-    if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem == null)
+    ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c = a(paramInt);
+    if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c == null)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ShareActionSheetBuilder.ActionSheetItemAdapter.getView() getItem(");
@@ -125,77 +125,77 @@ public class ScreenShotFragment$ActionSheetItemAdapter
     }
     else
     {
-      paramView.setId(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.id);
-      Object localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView;
-      Object localObject3 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label;
-      if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.firstLineCount > 0) {
-        i = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.firstLineCount;
+      paramView.setId(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.id);
+      Object localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).a;
+      Object localObject3 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.label;
+      if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.firstLineCount > 0) {
+        i = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.firstLineCount;
       } else {
         i = 6;
       }
       ((TextView)localObject2).setText(ScreenShotFragment.a((String)localObject3, i));
       int i = -8947849;
-      localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView;
-      if (!((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable) {
+      localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).a;
+      if (!((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.enable) {
         i = 2138535799;
       }
       ((TextView)localObject2).setTextColor(i);
-      if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconNeedBg)
+      if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconNeedBg)
       {
-        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable != null) {
-          localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable;
+        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconDrawable != null) {
+          localObject2 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconDrawable;
         } else {
-          localObject2 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
+          localObject2 = this.e.getDrawable(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.icon);
         }
         i = ((Drawable)localObject2).getIntrinsicWidth();
         int k = ((Drawable)localObject2).getIntrinsicHeight();
-        int m = this.jdField_a_of_type_Int;
+        int m = this.c;
         if (m > i) {
           i = (int)((m - i) / 2.0F);
         } else {
           i = 0;
         }
-        m = this.jdField_a_of_type_Int;
+        m = this.c;
         if (m > k) {
           j = (int)((m - k) / 2.0F);
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory.a((Drawable)localObject2, i, j);
-        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable)
+        localObject2 = this.d.a((Drawable)localObject2, i, j);
+        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.enable)
         {
-          localObject3 = ScreenShotFragment.ActionSheetItemAdapter.IconFactory.a(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory, (Drawable)localObject2);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory.a((Drawable)localObject2, (Drawable)localObject3);
-          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          localObject3 = ScreenShotFragment.ActionSheetItemAdapter.IconFactory.a(this.d, (Drawable)localObject2);
+          localObject2 = this.d.a((Drawable)localObject2, (Drawable)localObject3);
+          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setImageDrawable((Drawable)localObject2);
         }
         else
         {
-          localObject2 = ScreenShotFragment.ActionSheetItemAdapter.IconFactory.b(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotFragment$ActionSheetItemAdapter$IconFactory, (Drawable)localObject2);
-          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          localObject2 = ScreenShotFragment.ActionSheetItemAdapter.IconFactory.b(this.d, (Drawable)localObject2);
+          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setImageDrawable((Drawable)localObject2);
         }
         if (Build.VERSION.SDK_INT >= 16) {
-          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackground(null);
+          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setBackground(null);
         } else {
-          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setBackgroundDrawable(null);
         }
       }
       else
       {
-        ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837649);
-        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable != null)
+        ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setImageResource(2130837657);
+        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconDrawable != null)
         {
           if (Build.VERSION.SDK_INT >= 16) {
-            ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackground(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
+            ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setBackground(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconDrawable);
           } else {
-            ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
+            ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setBackgroundDrawable(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.iconDrawable);
           }
         }
         else {
-          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
+          ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).b.setBackgroundResource(((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.icon);
         }
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
-        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label != null) {
-          localObject1 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label;
+        if (((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.label != null) {
+          localObject1 = ((ScreenShotFragment.ActionSheetItemViewHolder)localObject1).c.label;
         } else {
           localObject1 = "";
         }
@@ -210,7 +210,7 @@ public class ScreenShotFragment$ActionSheetItemAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.ActionSheetItemAdapter
  * JD-Core Version:    0.7.0.1
  */

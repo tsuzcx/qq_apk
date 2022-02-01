@@ -14,19 +14,19 @@ import java.util.HashMap;
 
 class ApolloPanelExtendHelper
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private int b = 0;
-  private int c;
+  private ViewGroup a;
+  private int b;
+  private int c = 0;
+  private int d;
+  private HashMap<String, String> e;
   
   public ApolloPanelExtendHelper(ViewGroup paramViewGroup, QQAppInterface paramQQAppInterface, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    double d = paramQQAppInterface.getApp().getResources().getDisplayMetrics().heightPixels;
-    Double.isNaN(d);
-    this.jdField_a_of_type_Int = ((int)(d * 0.6D));
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.a = paramViewGroup;
+    double d1 = paramQQAppInterface.getApp().getResources().getDisplayMetrics().heightPixels;
+    Double.isNaN(d1);
+    this.b = ((int)(d1 * 0.6D));
+    this.e = paramHashMap;
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
@@ -41,22 +41,22 @@ class ApolloPanelExtendHelper
   {
     if (paramBoolean)
     {
-      ApolloDtReportUtil.a("panel", "bigpanel", "expose", this.jdField_a_of_type_JavaUtilHashMap);
+      ApolloDtReportUtil.a("panel", "bigpanel", "expose", this.e);
       return;
     }
-    ApolloDtReportUtil.a("panel", "smallpanel", "expose", this.jdField_a_of_type_JavaUtilHashMap);
+    ApolloDtReportUtil.a("panel", "smallpanel", "expose", this.e);
   }
   
-  private boolean b()
+  private boolean f()
   {
-    return this.jdField_a_of_type_Int > this.c;
+    return this.b > this.d;
   }
   
   void a()
   {
-    this.c = XPanelContainer.jdField_a_of_type_Int;
+    this.d = XPanelContainer.a;
     boolean bool;
-    if (this.jdField_a_of_type_Int > this.c) {
+    if (this.b > this.d) {
       bool = true;
     } else {
       bool = false;
@@ -65,9 +65,9 @@ class ApolloPanelExtendHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onShow ");
-      localStringBuilder.append(AppSetting.g());
+      localStringBuilder.append(AppSetting.i());
       localStringBuilder.append(" init panelH ");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(" needExtendPanel");
       localStringBuilder.append(bool);
       QLog.d("[cmshow]ApolloPanelExtendHelper", 2, localStringBuilder.toString());
@@ -78,8 +78,8 @@ class ApolloPanelExtendHelper
   {
     if (paramInt == 0)
     {
-      d();
-      b(a());
+      e();
+      b(d());
       return;
     }
     a(false);
@@ -92,32 +92,27 @@ class ApolloPanelExtendHelper
     }
     if (!paramBoolean)
     {
-      XPanelContainer.jdField_a_of_type_Int = this.c;
+      XPanelContainer.a = this.d;
     }
     else
     {
-      int i = this.b;
+      int i = this.c;
       if (i != 0) {
-        XPanelContainer.jdField_a_of_type_Int = i;
+        XPanelContainer.a = i;
       }
     }
-    this.b = 0;
-  }
-  
-  public boolean a()
-  {
-    return XPanelContainer.jdField_a_of_type_Int == this.jdField_a_of_type_Int;
+    this.c = 0;
   }
   
   public void b()
   {
-    if (!b()) {
+    if (!f()) {
       return;
     }
-    if (XPanelContainer.jdField_a_of_type_Int == this.c)
+    if (XPanelContainer.a == this.d)
     {
       b(true);
-      a(200, XPanelContainer.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      a(200, XPanelContainer.a, this.b);
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloPanelExtendHelper", 2, "onPullUp");
       }
@@ -126,31 +121,36 @@ class ApolloPanelExtendHelper
   
   public void c()
   {
-    if (!b()) {
+    if (!f()) {
       return;
     }
-    if (XPanelContainer.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+    if (XPanelContainer.a == this.b)
     {
       b(false);
-      a(250, XPanelContainer.jdField_a_of_type_Int, this.c);
+      a(250, XPanelContainer.a, this.d);
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloPanelExtendHelper", 2, "onPullDown");
       }
     }
   }
   
-  public void d()
+  public boolean d()
+  {
+    return XPanelContainer.a == this.b;
+  }
+  
+  public void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloPanelExtendHelper", 2, "onShow.");
     }
-    this.b = 0;
+    this.c = 0;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelExtendHelper
  * JD-Core Version:    0.7.0.1
  */

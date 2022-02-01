@@ -21,27 +21,27 @@ class ContactListView$ContactListObserver
       localStringBuilder.append(paramBoolean);
       QLog.d("ContactListView", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
-      this.a.j();
+    if ((paramBoolean) && (this.a.c == 5)) {
+      this.a.k();
     }
   }
   
   protected void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.getSelfBindState();
+    int i = this.a.e.getSelfBindState();
     if (!paramBoolean1)
     {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption instanceof ForwardShareCardOption))) && (this.a.b == 0)) {
-        this.a.a(2131718218, 3000L);
+      this.a.j();
+      this.a.h();
+      if (((i == 0) || (i == 7)) && ((this.a.c != 2) || (!(this.a.t instanceof ForwardShareCardOption))) && (this.a.n == 0)) {
+        this.a.a(2131915700, 3000L);
       }
     }
     else
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.isAutoUploadContacts()) {
-        this.a.a(2131718766, 0L, false);
+      this.a.g.setEnabled(true);
+      if (this.a.e.isAutoUploadContacts()) {
+        this.a.a(2131916272, 0L, false);
       }
     }
   }
@@ -50,18 +50,18 @@ class ContactListView$ContactListObserver
   {
     if (paramBoolean)
     {
-      this.a.i();
+      this.a.j();
       ContactListView.a(this.a, true);
       if ((paramInt & 0x1) == 0) {
-        this.a.g();
+        this.a.h();
       }
     }
     else
     {
-      this.a.g();
+      this.a.h();
     }
-    if (this.a.jdField_a_of_type_Int == 6) {
-      this.a.f();
+    if (this.a.c == 6) {
+      this.a.g();
     }
   }
   
@@ -69,14 +69,14 @@ class ContactListView$ContactListObserver
   {
     if ((!paramBoolean) || (!NetworkUtil.isNetSupport(this.a.getContext())))
     {
-      this.a.i();
-      this.a.g();
+      this.a.j();
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.ContactListObserver
  * JD-Core Version:    0.7.0.1
  */

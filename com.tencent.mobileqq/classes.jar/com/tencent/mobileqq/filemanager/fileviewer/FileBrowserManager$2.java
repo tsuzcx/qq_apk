@@ -22,14 +22,14 @@ class FileBrowserManager$2
       paramActionSheetItem.listener.onClick(null);
       return;
     }
-    if (FileBrowserManager.a(this.a) != null) {
-      FileBrowserManager.a(this.a).a(paramActionSheetItem);
+    if (FileBrowserManager.b(this.a) != null) {
+      FileBrowserManager.b(this.a).a(paramActionSheetItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.2
  * JD-Core Version:    0.7.0.1
  */

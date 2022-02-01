@@ -19,36 +19,36 @@ class TroopAppServiceImpl$2
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopAIOAppInfo.class);
+      localObject1 = this.a.query(TroopAIOAppInfo.class);
       localObject2 = this.this$0;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("before updateEntity(");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(")");
       TroopAppServiceImpl.access$000((TroopAppServiceImpl)localObject2, ".troop.troop_appVASH", localStringBuilder.toString(), (List)localObject1);
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.c.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (TroopAIOAppInfo)((Iterator)localObject1).next();
-      TroopAppServiceImpl.access$100(this.this$0, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (Entity)localObject2);
+      TroopAppServiceImpl.access$100(this.this$0, this.a, (Entity)localObject2);
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopAIOAppInfo.class);
+      localObject1 = this.a.query(TroopAIOAppInfo.class);
       localObject2 = this.this$0;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("after updateEntity(");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(")");
       TroopAppServiceImpl.access$000((TroopAppServiceImpl)localObject2, ".troop.troop_appVASH", localStringBuilder.toString(), (List)localObject1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.a.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAppServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

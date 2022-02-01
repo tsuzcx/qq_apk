@@ -36,10 +36,10 @@ final class GdtWebReportAction
   private void a(int paramInt)
   {
     Object localObject1 = this.a;
-    if ((localObject1 != null) && (((GdtWebReportPlugin)localObject1).a() != null) && (this.a.a().getIntent() != null))
+    if ((localObject1 != null) && (((GdtWebReportPlugin)localObject1).b() != null) && (this.a.b().getIntent() != null))
     {
-      Object localObject3 = this.a.a().getIntent().getStringExtra("GdtWebReportQQ_TRACE_ID");
-      localObject1 = this.a.a().getIntent().getStringExtra("GdtWebReportQQ_ACTION_URL");
+      Object localObject3 = this.a.b().getIntent().getStringExtra("GdtWebReportQQ_TRACE_ID");
+      localObject1 = this.a.b().getIntent().getStringExtra("GdtWebReportQQ_ACTION_URL");
       if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
       {
         Object localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo();
@@ -51,8 +51,8 @@ final class GdtWebReportAction
         ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.set((MessageMicro)localObject3);
         localObject1 = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
         localObject2 = new GdtActionReporter.Params();
-        ((GdtActionReporter.Params)localObject2).jdField_a_of_type_ComTencentAdTangramAd = ((Ad)localObject1);
-        ((GdtActionReporter.Params)localObject2).jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(paramInt);
+        ((GdtActionReporter.Params)localObject2).a = ((Ad)localObject1);
+        ((GdtActionReporter.Params)localObject2).b.landing_page_action_type.set(paramInt);
         GdtActionReporter.a((GdtActionReporter.Params)localObject2);
         return;
       }
@@ -86,7 +86,7 @@ final class GdtWebReportAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtWebReportAction
  * JD-Core Version:    0.7.0.1
  */

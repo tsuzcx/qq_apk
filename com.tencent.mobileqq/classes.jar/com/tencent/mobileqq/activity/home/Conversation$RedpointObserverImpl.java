@@ -17,20 +17,21 @@ class Conversation$RedpointObserverImpl
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
+      QLog.d("Q.recent", 2, "redTouchObserver notify dataChanged");
     }
     Conversation localConversation = (Conversation)this.a.get();
     if (localConversation != null)
     {
+      localConversation.J();
       localConversation.f(false);
-      Conversation.h(localConversation);
-      localConversation.r();
+      Conversation.p(localConversation);
+      localConversation.w();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.RedpointObserverImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -30,6 +30,7 @@ import java.lang.reflect.Method;
 @MiniKeep
 public class DisplayUtil
 {
+  public static final boolean IS_IMMERSIVE_SUPPORTED = false;
   private static final String NAVIGATION = "navigationBarBackground";
   private static final String NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME = "navigation_bar_height_landscape";
   private static final String NAV_BAR_HEIGHT_RES_NAME = "navigation_bar_height";
@@ -37,7 +38,6 @@ public class DisplayUtil
   public static final String STATUS_BAR_HEIGHT = "status_bar_height";
   public static final String TAG = "DisplayUtil";
   private static float density = 0.0F;
-  public static final boolean isImmersiveSupported = false;
   private static boolean mInPortrait = true;
   private static int mhasNavBar = -1;
   private static String sNavBarOverride;
@@ -62,7 +62,7 @@ public class DisplayUtil
     sNavBarOverride = null;
     if (Build.VERSION.SDK_INT < 19)
     {
-      isImmersiveSupported = false;
+      IS_IMMERSIVE_SUPPORTED = false;
       return;
     }
     localObject1 = Build.MANUFACTURER.toUpperCase();
@@ -73,7 +73,7 @@ public class DisplayUtil
     localObject2 = ((StringBuilder)localObject2).toString();
     if ((!((String)localObject1).endsWith("BBK")) && ((!((String)localObject1).endsWith("VIVO")) || (Build.VERSION.SDK_INT >= 20)) && (!((String)localObject2).equals("OPPO-3007")))
     {
-      isImmersiveSupported = true;
+      IS_IMMERSIVE_SUPPORTED = true;
       return;
     }
   }
@@ -745,7 +745,7 @@ public class DisplayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

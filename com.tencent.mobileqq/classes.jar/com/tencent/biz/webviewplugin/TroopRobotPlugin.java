@@ -175,7 +175,7 @@ public class TroopRobotPlugin
       }
       if (i == 1)
       {
-        localObject1 = this.mRuntime.a();
+        localObject1 = this.mRuntime.d();
         paramBundle = paramBundle.getBundle("request");
         RobotUtils.a(null, (Activity)localObject1, null, paramBundle.getString("robotuin"), paramBundle.getString("robotname"), 21);
       }
@@ -190,7 +190,7 @@ public class TroopRobotPlugin
         ((StringBuilder)localObject2).append((String)localObject1);
         QLog.d("TroopRobotPlugin", 2, ((StringBuilder)localObject2).toString());
       }
-      Object localObject2 = this.mRuntime.a();
+      Object localObject2 = this.mRuntime.d();
       Object localObject3 = paramBundle.getBundle("request");
       i = ((Bundle)localObject3).getInt("isrobotbuddy");
       paramBundle = ((Bundle)localObject3).getString("onurl");
@@ -213,7 +213,7 @@ public class TroopRobotPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.TroopRobotPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,17 @@ import android.widget.TextView;
 class TroopMemRecommendRclAdapter$BottomViewHolder
   extends RecyclerView.ViewHolder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
   
   public TroopMemRecommendRclAdapter$BottomViewHolder(TroopMemRecommendRclAdapter paramTroopMemRecommendRclAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379948));
+    this.a = ((TextView)paramView.findViewById(2131448836));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopMemRecommendRclAdapter.BottomViewHolder
  * JD-Core Version:    0.7.0.1
  */

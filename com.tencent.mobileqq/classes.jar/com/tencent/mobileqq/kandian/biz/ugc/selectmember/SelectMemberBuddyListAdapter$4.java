@@ -14,12 +14,12 @@ class SelectMemberBuddyListAdapter$4
   public void onClick(View paramView)
   {
     GroupManagerActivity.a((Activity)this.a.a);
-    ReportController.b(SelectMemberBuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    ReportController.b(SelectMemberBuddyListAdapter.b(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.SelectMemberBuddyListAdapter.4
  * JD-Core Version:    0.7.0.1
  */

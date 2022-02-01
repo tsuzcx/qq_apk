@@ -25,6 +25,7 @@ import com.tencent.mobileqq.data.MessageForTroopPobing;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
@@ -36,9 +37,9 @@ public class TroopPobingItemBuilder
   extends BaseBubbleBuilder
 {
   public static int a = 0;
-  public static String a = "";
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new TroopPobingItemBuilder.2(this);
-  private TroopPobingItemBuilder.Callback jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback = new TroopPobingItemBuilder.1(this);
+  public static String w = "";
+  private TroopPobingItemBuilder.Callback x = new TroopPobingItemBuilder.1(this);
+  private View.OnClickListener y = new TroopPobingItemBuilder.2(this);
   
   public TroopPobingItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
@@ -50,22 +51,22 @@ public class TroopPobingItemBuilder
   {
     if (paramMessageForTroopPobing.mTemplateId == 2003)
     {
-      localObject = new TroopPobingEffectItemView(this.jdField_a_of_type_AndroidContentContext);
-      ((TroopPobingEffectItemView)localObject).a(paramMessageForTroopPobing.mBrief, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback);
+      localObject = new TroopPobingEffectItemView(this.e);
+      ((TroopPobingEffectItemView)localObject).a(paramMessageForTroopPobing.mBrief, paramView, this.x);
       ((TroopPobingEffectItemView)localObject).a(paramMessageForTroopPobing.mTemplateId, paramChatMessage.uniseq, paramChatMessage.isSend());
       return localObject;
     }
-    Object localObject = new TroopPobingItemView(this.jdField_a_of_type_AndroidContentContext);
-    ((TroopPobingItemView)localObject).a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback);
-    ((TextView)((TroopPobingItemView)localObject).findViewById(2131372882)).setText(paramMessageForTroopPobing.mBrief);
+    Object localObject = new TroopPobingItemView(this.e);
+    ((TroopPobingItemView)localObject).a(paramView, this.x);
+    ((TextView)((TroopPobingItemView)localObject).findViewById(2131440445)).setText(paramMessageForTroopPobing.mBrief);
     ((TroopPobingItemView)localObject).a(paramMessageForTroopPobing.mTemplateId, paramChatMessage.isSend());
     return localObject;
   }
   
   public static void a(View paramView, boolean paramBoolean)
   {
-    View localView = paramView.findViewById(2131369149);
-    paramView = (FrameLayout)paramView.findViewById(2131380939);
+    View localView = paramView.findViewById(2131436120);
+    paramView = (FrameLayout)paramView.findViewById(2131449929);
     int j = 8;
     if (paramBoolean) {
       i = 8;
@@ -82,7 +83,7 @@ public class TroopPobingItemBuilder
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, ArrayList<AtTroopMemberInfo> paramArrayList, String paramString2)
   {
-    if (jdField_a_of_type_Int == 0) {
+    if (a == 0) {
       return;
     }
     if (paramArrayList.size() == 1) {
@@ -96,10 +97,10 @@ public class TroopPobingItemBuilder
       {
         paramArrayList = (AtTroopMemberInfo)paramArrayList.get(0);
         long l1 = paramArrayList.uin;
-        long l2 = Long.parseLong(jdField_a_of_type_JavaLangString);
+        long l2 = Long.parseLong(w);
         if (l1 != l2)
         {
-          jdField_a_of_type_Int = 0;
+          a = 0;
           return;
         }
         i = paramArrayList.textLen;
@@ -119,11 +120,11 @@ public class TroopPobingItemBuilder
     try
     {
       paramArrayList = paramString1.substring(i).trim();
-      i = jdField_a_of_type_Int;
+      i = a;
       if (i != 1) {
         break label247;
       }
-      if (!TroopManager.b.contains(paramArrayList)) {
+      if (!TroopManager.t.contains(paramArrayList)) {
         break label501;
       }
       localObject1 = paramArrayList;
@@ -138,32 +139,32 @@ public class TroopPobingItemBuilder
       paramArrayList = "";
       break label343;
     }
-    new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_welcome_suc").a(new String[] { paramString2, localObject1, jdField_a_of_type_JavaLangString }).a();
+    new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_welcome_suc").a(new String[] { paramString2, localObject1, w }).a();
     localObject2 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_text_suc");
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(TroopUtils.b(paramQQAppInterface, paramString2));
+    localStringBuilder.append(TroopUtils.c(paramQQAppInterface, paramString2));
     ((ReportTask)localObject2).a(new String[] { paramString2, "", localStringBuilder.toString(), localObject1 }).a();
     label247:
-    if (jdField_a_of_type_Int == 2)
+    if (a == 2)
     {
-      if (TroopManager.c.contains(paramArrayList))
+      if (TroopManager.u.contains(paramArrayList))
       {
         localObject1 = paramArrayList;
-        new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_play_suc").a(new String[] { paramString2, localObject1, jdField_a_of_type_JavaLangString }).a();
+        new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_play_suc").a(new String[] { paramString2, localObject1, w }).a();
       }
     }
     else
     {
-      if (jdField_a_of_type_Int == 3)
+      if (a == 3)
       {
-        if (!TroopManager.c.contains(paramArrayList)) {
+        if (!TroopManager.u.contains(paramArrayList)) {
           break label515;
         }
         localObject1 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_bartext_suc");
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(TroopUtils.b(paramQQAppInterface, paramString2));
+        ((StringBuilder)localObject2).append(TroopUtils.c(paramQQAppInterface, paramString2));
         ((ReportTask)localObject1).a(new String[] { paramString2, "", ((StringBuilder)localObject2).toString(), paramArrayList }).a();
         break label481;
         if (QLog.isColorLevel())
@@ -174,9 +175,9 @@ public class TroopPobingItemBuilder
           QLog.d("TroopPobingItemBuilder", 2, paramQQAppInterface.toString());
         }
       }
-      jdField_a_of_type_Int = 0;
+      a = 0;
       return;
-      jdField_a_of_type_Int = 0;
+      a = 0;
       throw paramQQAppInterface;
       return;
     }
@@ -184,12 +185,12 @@ public class TroopPobingItemBuilder
   
   private boolean a(MessageForTroopPobing paramMessageForTroopPobing)
   {
-    return (paramMessageForTroopPobing.mTemplateId != 2000) && (!SimpleUIUtil.a()) && (VasUpdateUtil.a());
+    return (paramMessageForTroopPobing.mTemplateId != 2000) && (!SimpleUIUtil.e()) && (VasUpdateUtil.a());
   }
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString1, ArrayList<AtTroopMemberInfo> paramArrayList, String paramString2)
   {
-    if (jdField_a_of_type_Int == 0) {
+    if (a == 0) {
       return;
     }
     if (paramArrayList.size() == 1) {
@@ -203,10 +204,10 @@ public class TroopPobingItemBuilder
       {
         paramArrayList = (AtTroopMemberInfo)paramArrayList.get(0);
         long l1 = paramArrayList.uin;
-        long l2 = Long.parseLong(jdField_a_of_type_JavaLangString);
+        long l2 = Long.parseLong(w);
         if (l1 != l2)
         {
-          jdField_a_of_type_Int = 0;
+          a = 0;
           return;
         }
         i = paramArrayList.textLen;
@@ -226,11 +227,11 @@ public class TroopPobingItemBuilder
     try
     {
       paramArrayList = paramString1.substring(i).trim();
-      i = jdField_a_of_type_Int;
+      i = a;
       if (i != 1) {
         break label194;
       }
-      if (!TroopManager.b.contains(paramArrayList)) {
+      if (!TroopManager.t.contains(paramArrayList)) {
         break label372;
       }
       localObject1 = paramArrayList;
@@ -246,19 +247,19 @@ public class TroopPobingItemBuilder
     localObject2 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_pic_suc");
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(TroopUtils.b(paramQQAppInterface, paramString2));
+    localStringBuilder.append(TroopUtils.c(paramQQAppInterface, paramString2));
     ((ReportTask)localObject2).a(new String[] { paramString2, "", localStringBuilder.toString(), localObject1 }).a();
     label194:
-    if (jdField_a_of_type_Int == 3)
+    if (a == 3)
     {
-      if (!TroopManager.c.contains(paramArrayList)) {
+      if (!TroopManager.u.contains(paramArrayList)) {
         break label379;
       }
       label214:
       localObject1 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("send_barpic_suc");
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(TroopUtils.b(paramQQAppInterface, paramString2));
+      ((StringBuilder)localObject2).append(TroopUtils.c(paramQQAppInterface, paramString2));
       ((ReportTask)localObject1).a(new String[] { paramString2, "", ((StringBuilder)localObject2).toString(), paramArrayList }).a();
       break label352;
       if (QLog.isColorLevel())
@@ -271,39 +272,41 @@ public class TroopPobingItemBuilder
     }
     label312:
     label352:
-    jdField_a_of_type_Int = 0;
+    a = 0;
     return;
-    jdField_a_of_type_Int = 0;
+    a = 0;
     throw paramQQAppInterface;
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 3;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     TroopPobingItemBuilder.TroopPobingViewHolder localTroopPobingViewHolder = (TroopPobingItemBuilder.TroopPobingViewHolder)paramViewHolder;
-    boolean bool = paramChatMessage.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    boolean bool = paramChatMessage.senderuin.equals(this.d.getCurrentUin());
     Context localContext = paramBaseChatItemLayout.getContext();
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558838, paramBaseChatItemLayout, false);
-      localTroopPobingViewHolder.a = ((TextView)paramViewHolder.findViewById(2131363798));
-      localTroopPobingViewHolder.b = ((TextView)paramViewHolder.findViewById(2131363820));
-      localTroopPobingViewHolder.c = paramViewHolder.findViewById(2131365626);
-      localTroopPobingViewHolder.d = paramViewHolder.findViewById(2131363966);
-      paramView = paramViewHolder.findViewById(2131369149);
+      paramViewHolder = LayoutInflater.from(this.e).inflate(2131624458, paramBaseChatItemLayout, false);
+      localTroopPobingViewHolder.a = ((TextView)paramViewHolder.findViewById(2131429731));
+      localTroopPobingViewHolder.b = ((TextView)paramViewHolder.findViewById(2131429755));
+      localTroopPobingViewHolder.c = paramViewHolder.findViewById(2131431857);
+      localTroopPobingViewHolder.d = paramViewHolder.findViewById(2131429922);
+      paramView = paramViewHolder.findViewById(2131436120);
       paramBaseChatItemLayout = paramView.getLayoutParams();
       paramBaseChatItemLayout.width = (BaseChatItemLayout.e - AIOUtils.b(24.0F, localContext.getResources()));
       paramView.setLayoutParams(paramBaseChatItemLayout);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
     }
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131298194);
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131298195);
+    paramView = paramViewHolder.findViewById(2131436120);
+    if (QQTheme.isNowSimpleUI()) {
+      i = 2130838376;
+    } else {
+      i = 2130838372;
+    }
+    paramView.setBackgroundResource(i);
+    int m = this.e.getResources().getDimensionPixelOffset(2131298893);
+    int k = this.e.getResources().getDimensionPixelOffset(2131298894);
     int j = m;
     int i = k;
     if (paramChatMessage.isSend())
@@ -320,14 +323,14 @@ public class TroopPobingItemBuilder
     {
       localTroopPobingViewHolder.c.setVisibility(0);
       localTroopPobingViewHolder.d.setVisibility(0);
-      localTroopPobingViewHolder.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localTroopPobingViewHolder.b.setOnClickListener(this.y);
     }
     else
     {
       localTroopPobingViewHolder.c.setVisibility(8);
       localTroopPobingViewHolder.d.setVisibility(8);
     }
-    paramBaseChatItemLayout = (FrameLayout)paramViewHolder.findViewById(2131380939);
+    paramBaseChatItemLayout = (FrameLayout)paramViewHolder.findViewById(2131449929);
     paramBaseChatItemLayout.removeAllViews();
     a(paramViewHolder, false);
     if (a(paramView)) {
@@ -341,19 +344,14 @@ public class TroopPobingItemBuilder
     return new TroopPobingItemBuilder.TroopPobingViewHolder();
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return paramChatMessage.getSummaryMsg();
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131365480)
+    if (paramInt != 2131431695)
     {
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
-    ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    ChatActivityFacade.b(this.e, this.d, paramChatMessage);
   }
   
   protected void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
@@ -363,29 +361,39 @@ public class TroopPobingItemBuilder
     {
       if (paramChatMessage.isSend())
       {
-        paramViewHolder.a.setBackgroundResource(2130850341);
+        paramViewHolder.h.setBackgroundResource(2130852132);
         return;
       }
-      paramViewHolder.a.setBackgroundResource(2130850165);
+      paramViewHolder.h.setBackgroundResource(2130851950);
       return;
     }
-    paramViewHolder.a.setBackgroundResource(0);
+    paramViewHolder.h.setBackgroundResource(0);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     paramView = AIOUtils.a(paramView);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376417, paramView, null);
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131376430, paramView, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return localQQCustomMenu.a();
+    a(localQQCustomMenu, this.e, 2131444634, paramView, null);
+    ChatActivityFacade.a(localQQCustomMenu, this.e, this.f.a);
+    a(localQQCustomMenu, this.e, 2131444651, paramView, null);
+    super.a(localQQCustomMenu, this.e, 2131428089, null, null);
+    return localQQCustomMenu.d();
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 3;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return paramChatMessage.getSummaryMsg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder
  * JD-Core Version:    0.7.0.1
  */

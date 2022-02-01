@@ -16,11 +16,11 @@ public class StoryUserBadgeView$UserIconUpdateReceiver
   
   public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull GetUserIconHandler.UserIconUpdateEvent paramUserIconUpdateEvent)
   {
-    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
+    if (paramUserIconUpdateEvent.g.isFail()) {
       return;
     }
-    if (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) != null) {
-      paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+    if (paramUserIconUpdateEvent.a.get(paramStoryUserBadgeView.getUnionID()) != null) {
+      paramStoryUserBadgeView.setUnionID(paramStoryUserBadgeView.getUnionID());
     }
   }
   

@@ -22,39 +22,39 @@ import org.jetbrains.annotations.Nullable;
 public final class ProfileBasePrivacySettingAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private final ProfileBasePrivacySettingAdapter.PrivacySettingClickListener jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener;
-  private final ArrayList<ProfileDisplaySettingItem> jdField_a_of_type_JavaUtilArrayList;
+  private final Context a;
+  private final ArrayList<ProfileDisplaySettingItem> b;
+  private final LayoutInflater c;
+  private final ProfileBasePrivacySettingAdapter.PrivacySettingClickListener d;
   
   public ProfileBasePrivacySettingAdapter(@NotNull Context paramContext, @Nullable ProfileBasePrivacySettingAdapter.PrivacySettingClickListener paramPrivacySettingClickListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramContext;
+    this.b = new ArrayList();
     paramContext = LayoutInflater.from(paramContext);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(context)");
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener = paramPrivacySettingClickListener;
+    this.c = paramContext;
+    this.d = paramPrivacySettingClickListener;
   }
   
   public final void a(@Nullable List<ProfileDisplaySettingItem> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)paramList);
+      this.b.clear();
+      this.b.addAll((Collection)paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public int getItemViewType(int paramInt)
   {
-    return ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    return ((ProfileDisplaySettingItem)this.b.get(paramInt)).a();
   }
   
   public void onBindViewHolder(@NotNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -74,78 +74,78 @@ public final class ProfileBasePrivacySettingAdapter
               return;
             }
             paramViewHolder = (ProfileBasePrivacySettingAdapter.ProfileTitleHolder)paramViewHolder;
-            paramInt = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c();
+            paramInt = ((ProfileDisplaySettingItem)this.b.get(paramInt)).c();
             if (paramInt != -1) {
-              paramViewHolder.a().setText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(paramInt));
+              paramViewHolder.a().setText((CharSequence)this.a.getString(paramInt));
             }
           }
         }
         else
         {
           paramViewHolder = (ProfileBasePrivacySettingAdapter.ProfileOtherWithSecondHolder)paramViewHolder;
-          i = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c();
-          int j = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).d();
+          i = ((ProfileDisplaySettingItem)this.b.get(paramInt)).c();
+          int j = ((ProfileDisplaySettingItem)this.b.get(paramInt)).d();
           if ((i != -1) && (j != -1))
           {
-            paramViewHolder.a().setText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(i));
-            paramViewHolder.a().setText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(j));
+            paramViewHolder.a().setText((CharSequence)this.a.getString(i));
+            paramViewHolder.b().setText((CharSequence)this.a.getString(j));
           }
-          paramViewHolder.a().setChecked(((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b());
-          if (((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f() != -1) {
-            paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f());
+          paramViewHolder.a().setChecked(((ProfileDisplaySettingItem)this.b.get(paramInt)).h());
+          if (((ProfileDisplaySettingItem)this.b.get(paramInt)).g() != -1) {
+            paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.b.get(paramInt)).g());
           }
-          localPrivacySettingClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener;
+          localPrivacySettingClickListener = this.d;
           if (localPrivacySettingClickListener != null) {
-            paramViewHolder.a().a().setOnClickListener((View.OnClickListener)new ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.3(localPrivacySettingClickListener, this, paramViewHolder, paramInt));
+            paramViewHolder.a().getSwitch().setOnClickListener((View.OnClickListener)new ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.3(localPrivacySettingClickListener, this, paramViewHolder, paramInt));
           }
         }
       }
       else
       {
         paramViewHolder = (ProfileBasePrivacySettingAdapter.ProfileOtherHolder)paramViewHolder;
-        i = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c();
+        i = ((ProfileDisplaySettingItem)this.b.get(paramInt)).c();
         if (i != -1) {
-          paramViewHolder.a().setText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(i));
+          paramViewHolder.a().setText((CharSequence)this.a.getString(i));
         }
-        paramViewHolder.a().setChecked(((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b());
-        if (((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f() != -1) {
-          paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f());
+        paramViewHolder.a().setChecked(((ProfileDisplaySettingItem)this.b.get(paramInt)).h());
+        if (((ProfileDisplaySettingItem)this.b.get(paramInt)).g() != -1) {
+          paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.b.get(paramInt)).g());
         }
-        localPrivacySettingClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener;
+        localPrivacySettingClickListener = this.d;
         if (localPrivacySettingClickListener != null) {
-          paramViewHolder.a().a().setOnClickListener((View.OnClickListener)new ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.2(localPrivacySettingClickListener, this, paramViewHolder, paramInt));
+          paramViewHolder.a().getSwitch().setOnClickListener((View.OnClickListener)new ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.2(localPrivacySettingClickListener, this, paramViewHolder, paramInt));
         }
       }
     }
     else
     {
       paramViewHolder = (ProfileBasePrivacySettingAdapter.ProfileBaseHolder)paramViewHolder;
-      i = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c();
+      i = ((ProfileDisplaySettingItem)this.b.get(paramInt)).c();
       if (i != -1) {
-        paramViewHolder.a().setLeftText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(i));
+        paramViewHolder.a().setLeftText((CharSequence)this.a.getString(i));
       }
-      i = ((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).g();
+      i = ((ProfileDisplaySettingItem)this.b.get(paramInt)).i();
       if (i != 0)
       {
         if (i != 1)
         {
           if (i != 2) {
-            paramViewHolder.a().setRightText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(2131695086));
+            paramViewHolder.a().setRightText((CharSequence)this.a.getString(2131892814));
           } else {
-            paramViewHolder.a().setRightText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(2131695104));
+            paramViewHolder.a().setRightText((CharSequence)this.a.getString(2131892832));
           }
         }
         else {
-          paramViewHolder.a().setRightText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(2131695103));
+          paramViewHolder.a().setRightText((CharSequence)this.a.getString(2131892831));
         }
       }
       else {
-        paramViewHolder.a().setRightText((CharSequence)this.jdField_a_of_type_AndroidContentContext.getString(2131695086));
+        paramViewHolder.a().setRightText((CharSequence)this.a.getString(2131892814));
       }
-      if (((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f() != -1) {
-        paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).f());
+      if (((ProfileDisplaySettingItem)this.b.get(paramInt)).g() != -1) {
+        paramViewHolder.a().setBgType(((ProfileDisplaySettingItem)this.b.get(paramInt)).g());
       }
-      localPrivacySettingClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener;
+      localPrivacySettingClickListener = this.d;
       if (localPrivacySettingClickListener != null) {
         paramViewHolder.a().setOnClickListener((View.OnClickListener)new ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.1(localPrivacySettingClickListener, this, paramViewHolder, paramInt));
       }
@@ -166,34 +166,34 @@ public final class ProfileBasePrivacySettingAdapter
           {
             if (paramInt != 5)
             {
-              paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561329, paramViewGroup, false);
+              paramViewGroup = this.c.inflate(2131627685, paramViewGroup, false);
               Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…k_item, viewGroup, false)");
               return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileBlankHolder(paramViewGroup);
             }
-            paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561332, paramViewGroup, false);
+            paramViewGroup = this.c.inflate(2131627688, paramViewGroup, false);
             Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…e_item, viewGroup, false)");
             return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileTitleHolder(paramViewGroup);
           }
-          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561329, paramViewGroup, false);
+          paramViewGroup = this.c.inflate(2131627685, paramViewGroup, false);
           Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…k_item, viewGroup, false)");
           return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileBlankHolder(paramViewGroup);
         }
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561331, paramViewGroup, false);
+        paramViewGroup = this.c.inflate(2131627687, paramViewGroup, false);
         Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…d_item, viewGroup, false)");
         return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileOtherWithSecondHolder(paramViewGroup);
       }
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561330, paramViewGroup, false);
+      paramViewGroup = this.c.inflate(2131627686, paramViewGroup, false);
       Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…e_item, viewGroup, false)");
       return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileOtherHolder(paramViewGroup);
     }
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561328, paramViewGroup, false);
+    paramViewGroup = this.c.inflate(2131627684, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "mInflater.inflate(R.layo…e_item, viewGroup, false)");
     return (RecyclerView.ViewHolder)new ProfileBasePrivacySettingAdapter.ProfileBaseHolder(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter
  * JD-Core Version:    0.7.0.1
  */

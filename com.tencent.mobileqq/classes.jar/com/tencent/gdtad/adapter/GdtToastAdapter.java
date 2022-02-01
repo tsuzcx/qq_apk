@@ -17,12 +17,12 @@ public class GdtToastAdapter
     } else {
       paramInt1 = 0;
     }
-    QQToast.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
+    QQToast.makeText(paramContext, paramInt1, paramCharSequence, paramInt2).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtToastAdapter
  * JD-Core Version:    0.7.0.1
  */

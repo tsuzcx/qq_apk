@@ -57,7 +57,7 @@ public class ResDownloadManger
   {
     ZipPath = getStorePath("qzonereszip");
     ResPath = getStorePath("qzoneres");
-    this.mMemoryCache = new LruCache((int)(MemoryManager.a() / 8L));
+    this.mMemoryCache = new LruCache((int)(MemoryManager.d() / 8L));
   }
   
   private boolean addPendingRequest(String paramString, ResEntry paramResEntry)
@@ -295,7 +295,7 @@ public class ResDownloadManger
   
   public static int getQzoneSkinFeedDropMenuResId()
   {
-    if (QQTheme.d()) {
+    if (QQTheme.isNowThemeIsNightForQzone()) {
       return 13;
     }
     return 8;
@@ -399,7 +399,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.c());
+      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
       return paramString;
     }
     return null;
@@ -412,7 +412,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.c());
+      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
       return paramString;
     }
     if (QLog.isColorLevel()) {
@@ -428,7 +428,7 @@ public class ResDownloadManger
     {
       paramString.setDensity(320);
       paramString = new BitmapDrawable(paramString);
-      paramString.setTargetDensity((int)ViewUtils.c());
+      paramString.setTargetDensity((int)ViewUtils.getDensityDpi());
       return paramString;
     }
     return null;
@@ -440,7 +440,7 @@ public class ResDownloadManger
     {
       paramBitmap.setDensity(320);
       paramBitmap = new BitmapDrawable(paramBitmap);
-      paramBitmap.setTargetDensity((int)ViewUtils.c());
+      paramBitmap.setTargetDensity((int)ViewUtils.getDensityDpi());
       return paramBitmap;
     }
     return null;
@@ -701,7 +701,7 @@ public class ResDownloadManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.ResDownloadManger
  * JD-Core Version:    0.7.0.1
  */

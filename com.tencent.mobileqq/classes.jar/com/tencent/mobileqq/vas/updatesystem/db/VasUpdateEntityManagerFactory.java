@@ -99,7 +99,7 @@ public class VasUpdateEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, "vas_update_system_database.db", 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, "vas_update_system_database.db", 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -130,7 +130,7 @@ public class VasUpdateEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.db.VasUpdateEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

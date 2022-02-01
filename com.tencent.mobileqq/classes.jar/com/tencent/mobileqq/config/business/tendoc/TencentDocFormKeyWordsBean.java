@@ -13,14 +13,8 @@ import org.json.JSONObject;
 
 public class TencentDocFormKeyWordsBean
 {
-  public List<TencentDocFormKeyWordsBean.KeyWordsInfo> a;
-  public Map<String, Long> a;
-  
-  public TencentDocFormKeyWordsBean()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public List<TencentDocFormKeyWordsBean.KeyWordsInfo> a = new ArrayList();
+  public Map<String, Long> b = new HashMap();
   
   public static TencentDocFormKeyWordsBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -31,7 +25,7 @@ public class TencentDocFormKeyWordsBean
       int i = 0;
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         Object localObject1;
         Object localObject2;
         if (paramArrayOfQConfItem.has("collection"))
@@ -40,7 +34,7 @@ public class TencentDocFormKeyWordsBean
           while (i < ((JSONArray)localObject1).length())
           {
             localObject2 = new TencentDocFormKeyWordsBean.KeyWordsInfo(((JSONArray)localObject1).getJSONObject(i));
-            localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilList.add(localObject2);
+            localTencentDocFormKeyWordsBean.a.add(localObject2);
             i += 1;
           }
         }
@@ -51,7 +45,7 @@ public class TencentDocFormKeyWordsBean
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (String)((Iterator)localObject1).next();
-            localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilMap.put(localObject2, Long.valueOf(paramArrayOfQConfItem.getLong((String)localObject2)));
+            localTencentDocFormKeyWordsBean.b.put(localObject2, Long.valueOf(paramArrayOfQConfItem.getLong((String)localObject2)));
           }
         }
         return localTencentDocFormKeyWordsBean;
@@ -67,9 +61,9 @@ public class TencentDocFormKeyWordsBean
   public boolean a(String paramString)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      TencentDocFormKeyWordsBean.KeyWordsInfo localKeyWordsInfo = (TencentDocFormKeyWordsBean.KeyWordsInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+      TencentDocFormKeyWordsBean.KeyWordsInfo localKeyWordsInfo = (TencentDocFormKeyWordsBean.KeyWordsInfo)this.a.get(i);
       String str;
       if (localKeyWordsInfo.a != null)
       {
@@ -110,7 +104,7 @@ public class TencentDocFormKeyWordsBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocFormKeyWordsBean
  * JD-Core Version:    0.7.0.1
  */

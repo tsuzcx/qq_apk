@@ -16,36 +16,36 @@ class ConfigServlet$9
   public void run()
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list != null) && (this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version != null))
+    if ((this.a.content_list != null) && (this.a.content_list.size() > 0) && (this.a.version != null))
     {
-      localObject = (String)this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.content_list.get(0);
-      int i = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get();
-      int j = SharedPreUtils.u(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      localObject = (String)this.a.content_list.get(0);
+      int i = this.a.version.get();
+      int j = SharedPreUtils.F(this.b.getApp());
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("receiveAllConfigs|type: 63,content: ");
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(",version: ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+        localStringBuilder.append(this.a.version.get());
         QLog.d("SPLASH_ConfigServlet", 2, localStringBuilder.toString());
       }
       if (i > j) {
-        DynamicSplashManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, i);
+        DynamicSplashManager.a(this.b, (String)localObject, i);
       }
     }
     else if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("receiveAllConfigs|type: 63,content_list is empty ,version: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+      ((StringBuilder)localObject).append(this.a.version.get());
       QLog.d("SPLASH_ConfigServlet", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.9
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class StartAppCheckHandler$2
       return;
     }
     paramMessage = (StartAppCheckHandler.PendingAPP)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    this.a.e.remove(paramMessage);
+    paramMessage.b.startActivity(paramMessage.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.2
  * JD-Core Version:    0.7.0.1
  */

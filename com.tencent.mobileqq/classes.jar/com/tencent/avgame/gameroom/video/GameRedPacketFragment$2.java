@@ -31,13 +31,13 @@ class GameRedPacketFragment$2
       if (this.a.getActivity().getIntent() == null) {
         return;
       }
-      if (GameRedPacketFragment.a(this.a).getIntExtra("key_dialog_type", -1) != -1)
+      if (GameRedPacketFragment.e(this.a).getIntExtra("key_dialog_type", -1) != -1)
       {
         this.a.getActivity().getWindow().setFlags(1024, 1024);
-        this.a.getUIStyleHandler().a.setVisibility(8);
+        this.a.getUIStyleHandler().v.setVisibility(8);
         this.a.getUIStyle().a = true;
         WebViewUIUtils.b(this.a.getActivity());
-        this.a.getWebTitleBarInterface().e(false);
+        this.a.getWebTitleBarInterface().f(false);
       }
     }
   }
@@ -45,12 +45,12 @@ class GameRedPacketFragment$2
   public void onInitUIContent(Bundle paramBundle)
   {
     super.onInitUIContent(paramBundle);
-    this.a.getActivity().getWindow().setBackgroundDrawableResource(2131167333);
-    if ((this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup).a(false);
+    this.a.getActivity().getWindow().setBackgroundDrawableResource(2131168376);
+    if ((this.a.getUIStyleHandler().u instanceof RefreshView)) {
+      ((RefreshView)this.a.getUIStyleHandler().u).a(false);
     }
-    if (this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewView != null) {
-      this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.getUIStyleHandler().D != null) {
+      this.a.getUIStyleHandler().D.setVisibility(8);
     }
     if (GameRedPacketFragment.a(this.a).getX5WebViewExtension() != null) {
       try

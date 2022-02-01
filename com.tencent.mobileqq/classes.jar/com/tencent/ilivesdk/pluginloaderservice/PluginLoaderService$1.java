@@ -16,20 +16,20 @@ class PluginLoaderService$1
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      DataReport.e(String.format("get plugin[%s] success", new Object[] { this.jdField_a_of_type_JavaLangString }));
-      PluginLoaderService.a(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderservicePluginLoaderService).addAll(paramList);
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderservicePluginLoaderService.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesClassLoaderListener);
+      DataReport.e(String.format("get plugin[%s] success", new Object[] { this.b }));
+      PluginLoaderService.a(this.d).addAll(paramList);
+      this.d.a(this.a, this.b, this.c);
       return;
     }
-    PluginLoaderService.a(this.jdField_a_of_type_ComTencentIlivesdkPluginloaderservicePluginLoaderService, null, this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesClassLoaderListener);
-    paramList = String.format("load: the to install plugin is empty. classname[%s]", new Object[] { this.jdField_a_of_type_JavaLangString });
+    PluginLoaderService.a(this.d, null, this.a, this.b, this.c);
+    paramList = String.format("load: the to install plugin is empty. classname[%s]", new Object[] { this.b });
     DataReport.d(paramList);
     LogUtil.b("PluginLoaderService", paramList, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginLoaderService.1
  * JD-Core Version:    0.7.0.1
  */

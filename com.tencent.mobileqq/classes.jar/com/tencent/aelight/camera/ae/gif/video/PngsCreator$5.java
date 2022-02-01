@@ -15,22 +15,22 @@ class PngsCreator$5
   
   public void run()
   {
-    PngsCreator.a(this.this$0).b();
-    if (PngsCreator.a(this.this$0) != null) {
-      PngsCreator.a(this.this$0).release();
+    PngsCreator.e(this.this$0).c();
+    if (PngsCreator.d(this.this$0) != null) {
+      PngsCreator.d(this.this$0).release();
     }
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = PngsCreator.a(this.this$0);
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    PngsCreator.a(this.this$0).clearGLSLSelf();
-    PngsCreator.a(this.this$0).b();
-    PngsCreator.a(this.this$0).clear();
-    PngsCreator.a(this.this$0).getLooper().quit();
+    PngsCreator.b(this.this$0).clearGLSLSelf();
+    PngsCreator.c(this.this$0).b();
+    PngsCreator.f(this.this$0).clear();
+    PngsCreator.g(this.this$0).getLooper().quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator.5
  * JD-Core Version:    0.7.0.1
  */

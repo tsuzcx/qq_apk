@@ -12,20 +12,20 @@ import mqq.os.MqqHandler;
 public class MostUsedSearchResultManager
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MostUsedCache jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache = new MostUsedCache("Cahce_");
+  private QQAppInterface a;
+  private MostUsedCache b = new MostUsedCache("Cahce_");
   
   public MostUsedSearchResultManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public ArrayList<MostUsedCache.MostUsedSearchItemModel> a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      localObject = ((MostUsedCache)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      localObject = ((MostUsedCache)localObject).a(this.a, paramString);
       paramString = (String)localObject;
       if (localObject != null)
       {
@@ -51,10 +51,10 @@ public class MostUsedSearchResultManager
   
   public void a()
   {
-    MostUsedCache localMostUsedCache = this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache;
+    MostUsedCache localMostUsedCache = this.b;
     if (localMostUsedCache != null)
     {
-      localMostUsedCache.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localMostUsedCache.b(this.a);
       QLog.d("MostUsedSearchResultManager", 2, "init");
       return;
     }
@@ -103,7 +103,7 @@ public class MostUsedSearchResultManager
   
   public void b()
   {
-    MostUsedCache localMostUsedCache = this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache;
+    MostUsedCache localMostUsedCache = this.b;
     if (localMostUsedCache != null) {
       localMostUsedCache.a();
     }
@@ -112,13 +112,13 @@ public class MostUsedSearchResultManager
   public void onDestroy()
   {
     b();
-    this.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedCache = null;
+    this.b = null;
     QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager
  * JD-Core Version:    0.7.0.1
  */

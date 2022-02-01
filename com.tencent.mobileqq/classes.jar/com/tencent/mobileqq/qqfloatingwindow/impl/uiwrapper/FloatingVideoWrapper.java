@@ -50,227 +50,363 @@ public class FloatingVideoWrapper
 {
   public static final String CLASS_NAME = "com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper";
   public static final String TAG = "FloatingVideoWrapper";
-  private int jdField_a_of_type_Int = 0;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IFullScreenEnterListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIFullScreenEnterListener;
-  private IVideoInnerStatusListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FloatingVideoWrapper.12(this);
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private Formatter jdField_a_of_type_JavaUtilFormatter;
-  private List<View> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 0;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int = -1;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int = -1;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private int jdField_e_of_type_Int = -1;
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private int jdField_f_of_type_Int = 0;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private int g = 0;
-  private int h = 0;
-  private int i = 0;
-  private int j = 0;
+  private StringBuilder A;
+  private Formatter B;
+  private int C = 0;
+  private int D = 0;
+  private int E = 0;
+  private int F = 0;
+  private IVideoInnerStatusListener a;
+  private IFullScreenEnterListener b;
+  private FrameLayout c;
+  private ImageView d;
+  private ImageView e;
+  private ImageView f;
+  private TextView g;
+  private TextView h;
+  private LinearLayout i;
+  private ImageView j;
+  private SeekBar k;
+  private TextView l;
+  private ImageView m;
   public IFullScreenViewClickListener mFullScreenViewClickListener;
+  private TextView n;
+  private TextView o;
+  private int p = 0;
+  private int q = 0;
+  private TextView r;
+  private TextView s;
+  private List<View> t;
+  private int u = -1;
+  private int v = -1;
+  private int w = -1;
+  private int x = 0;
+  private ObjectAnimator y;
+  private Runnable z = new FloatingVideoWrapper.12(this);
   
   public FloatingVideoWrapper(Context paramContext)
   {
     super(paramContext);
   }
   
-  private String a(long paramLong)
+  private void B()
   {
-    if (this.jdField_a_of_type_JavaUtilFormatter == null)
+    if (this.q == 0)
     {
-      this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      this.jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
-    }
-    this.g = ((int)(paramLong / 1000L));
-    int k = this.g;
-    this.h = (k % 60);
-    this.i = (k / 60 % 60);
-    this.j = (k / 3600);
-    this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-    k = this.j;
-    if (k > 0) {
-      return this.jdField_a_of_type_JavaUtilFormatter.format("%d:%02d:%02d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.i), Integer.valueOf(this.h) }).toString();
-    }
-    return this.jdField_a_of_type_JavaUtilFormatter.format("%02d:%02d", new Object[] { Integer.valueOf(this.i), Integer.valueOf(this.h) }).toString();
-  }
-  
-  private void a(Bitmap paramBitmap)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if ((localImageView != null) && (paramBitmap != null))
-    {
-      localImageView.setImageBitmap(paramBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 401) || (paramInt == 402) || (paramInt == 403);
-  }
-  
-  private void b(Drawable paramDrawable)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if ((localImageView != null) && (paramDrawable != null))
-    {
-      localImageView.setImageDrawable(paramDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-  }
-  
-  private void c(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0) {
-      this.jdField_d_of_type_Int = paramInt1;
-    }
-    if (paramInt2 > 0) {
-      this.jdField_e_of_type_Int = paramInt2;
-    }
-    if (d()) {
-      a(b() ^ true, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, false);
-    }
-  }
-  
-  private void e(int paramInt)
-  {
-    a(false, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_d_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_e_of_type_AndroidWidgetImageView });
-    a(true, new View[] { this.jdField_b_of_type_AndroidWidgetTextView });
-    b(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetSeekBar });
-    g();
-    this.jdField_c_of_type_Int = 0;
-    t();
-    if (paramInt > 0)
-    {
-      if (this.jdField_b_of_type_Int == paramInt) {
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingVideoWrapper", 2, "showFinishTime() mAllTime == 0");
       }
-      this.jdField_b_of_type_Int = paramInt;
-      TextView localTextView = this.jdField_f_of_type_AndroidWidgetTextView;
-      if (localTextView != null) {
-        localTextView.setText(a(this.jdField_b_of_type_Int));
-      }
+      a(false, new View[] { this.o });
+      return;
+    }
+    a(true, new View[] { this.o });
+    TextView localTextView = this.o;
+    if (localTextView != null) {
+      localTextView.setText(a(this.q));
     }
   }
   
-  private void f(int paramInt)
+  private void C()
   {
-    int k;
-    if (paramInt < 0)
-    {
-      k = 0;
-    }
-    else
-    {
-      int m = this.jdField_b_of_type_Int;
-      k = paramInt;
-      if (paramInt > m) {
-        k = m;
-      }
-    }
-    double d1 = k;
-    Double.isNaN(d1);
-    double d2 = this.jdField_b_of_type_Int;
-    Double.isNaN(d2);
-    this.jdField_a_of_type_Int = ((int)(d1 * 100.0D / d2));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_a_of_type_Int);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(a(k));
+    i(400);
+    b(true, new View[] { this.g, this.h, this.k });
+    this.u = 3;
   }
   
-  private void f(boolean paramBoolean)
+  private void D()
   {
-    a(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_d_of_type_AndroidWidgetImageView });
-    a(false, new View[] { this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_e_of_type_AndroidWidgetImageView });
-    a(paramBoolean, new View[] { this.jdField_a_of_type_AndroidWidgetImageView });
-    b(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView });
-    b(false, new View[] { this.jdField_a_of_type_AndroidWidgetSeekBar });
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(100);
-    this.jdField_c_of_type_Int = 1;
-    t();
+    i(401);
+    b(false, new View[] { this.g, this.h, this.k });
+    this.u = 2;
   }
   
-  private static boolean f()
+  private static boolean E()
   {
     return Looper.myLooper() == Looper.getMainLooper();
   }
   
+  private void F()
+  {
+    if (!n())
+    {
+      if (!w()) {
+        return;
+      }
+      if (o())
+      {
+        if ((x()) || (!d(q(), r())))
+        {
+          IFullScreenEnterListener localIFullScreenEnterListener = this.b;
+          if (localIFullScreenEnterListener != null) {
+            localIFullScreenEnterListener.onEnter(q(), r());
+          } else {
+            G();
+          }
+        }
+        FloatingScreenReporter.e();
+        return;
+      }
+      if (p()) {
+        K();
+      }
+    }
+  }
+  
+  private void G()
+  {
+    if (!n())
+    {
+      if (!o()) {
+        return;
+      }
+      a(true, this.v, this.w, true);
+      y();
+      h(true);
+      g(true);
+      a(false, new View[] { this.n });
+      b(false);
+    }
+    I();
+    i(false);
+    J();
+  }
+  
+  private void H()
+  {
+    if (!n())
+    {
+      if (!p()) {
+        return;
+      }
+      a(false, this.v, this.w, false);
+      z();
+      h(false);
+      g(false);
+      b(true);
+    }
+    IFullScreenViewClickListener localIFullScreenViewClickListener = this.mFullScreenViewClickListener;
+    if (localIFullScreenViewClickListener != null) {
+      localIFullScreenViewClickListener.a();
+    }
+    this.y = null;
+    i(true);
+    J();
+    if (this.u == 4) {
+      B();
+    }
+  }
+  
+  private void I()
+  {
+    A();
+    b(1.0F);
+    this.x = 0;
+  }
+  
+  private void J()
+  {
+    if (n()) {
+      return;
+    }
+    Context localContext = m();
+    if (localContext == null) {
+      return;
+    }
+    if (o())
+    {
+      i1 = this.u;
+      if ((i1 != 1) && (i1 != 4))
+      {
+        b(localContext.getResources().getString(2131897819));
+        return;
+      }
+      b(localContext.getResources().getString(2131897831));
+      return;
+    }
+    int i1 = this.x;
+    if (i1 == 0)
+    {
+      b(localContext.getResources().getString(2131897840));
+      return;
+    }
+    if (i1 == 1) {
+      b(localContext.getResources().getString(2131897820));
+    }
+  }
+  
+  private void K()
+  {
+    int i1 = this.x;
+    if (i1 != 0)
+    {
+      if (i1 != 1) {
+        return;
+      }
+      k(0);
+      return;
+    }
+    i1 = this.u;
+    if ((i1 == 0) || (i1 == 1) || (i1 == 4)) {
+      k(1);
+    }
+  }
+  
+  private void L()
+  {
+    onVideoStart(this.q);
+    IVideoInnerStatusListener localIVideoInnerStatusListener = this.a;
+    if (localIVideoInnerStatusListener != null) {
+      localIVideoInnerStatusListener.notifyVideoStart();
+    }
+  }
+  
+  private void M()
+  {
+    onVideoStop();
+    IVideoInnerStatusListener localIVideoInnerStatusListener = this.a;
+    if (localIVideoInnerStatusListener != null) {
+      localIVideoInnerStatusListener.notifyVideoStop();
+    }
+  }
+  
+  private String a(long paramLong)
+  {
+    if (this.B == null)
+    {
+      this.A = new StringBuilder();
+      this.B = new Formatter(this.A, Locale.getDefault());
+    }
+    this.C = ((int)(paramLong / 1000L));
+    int i1 = this.C;
+    this.D = (i1 % 60);
+    this.E = (i1 / 60 % 60);
+    this.F = (i1 / 3600);
+    this.A.setLength(0);
+    i1 = this.F;
+    if (i1 > 0) {
+      return this.B.format("%d:%02d:%02d", new Object[] { Integer.valueOf(i1), Integer.valueOf(this.E), Integer.valueOf(this.D) }).toString();
+    }
+    return this.B.format("%02d:%02d", new Object[] { Integer.valueOf(this.E), Integer.valueOf(this.D) }).toString();
+  }
+  
+  private void a(Bitmap paramBitmap)
+  {
+    ImageView localImageView = this.d;
+    if ((localImageView != null) && (paramBitmap != null))
+    {
+      localImageView.setImageBitmap(paramBitmap);
+      this.d.setVisibility(0);
+    }
+  }
+  
+  private void b(Drawable paramDrawable)
+  {
+    ImageView localImageView = this.d;
+    if ((localImageView != null) && (paramDrawable != null))
+    {
+      localImageView.setImageDrawable(paramDrawable);
+      this.d.setVisibility(0);
+    }
+  }
+  
+  private void d()
+  {
+    Object localObject = m();
+    if ((localObject != null) && (this.i != null) && (FloatingScreenUtils.b((Context)localObject)))
+    {
+      int i1 = FloatingScreenUtils.c((Context)localObject);
+      int i2 = FloatingScreenUtils.d((Context)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("screenRealHeight = ");
+        localStringBuilder.append(i1);
+        localStringBuilder.append(" screenPureHeight = ");
+        localStringBuilder.append(i2);
+        QLog.d("FloatingVideoWrapper", 2, localStringBuilder.toString());
+      }
+      if (i1 > 0)
+      {
+        if (i2 <= 0) {
+          return;
+        }
+        i1 = Math.min(Math.max(i1 - i2, 0), 100);
+        i2 = FloatingScreenUtils.a(16.0F, ((Context)localObject).getResources());
+        localObject = (RelativeLayout.LayoutParams)this.i.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = (i2 + i1);
+        this.i.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+    }
+  }
+  
+  private void e()
+  {
+    a(true, new View[] { this.g, this.j });
+    a(false, new View[] { this.h, this.l, this.m });
+    b(true, new View[] { this.g, this.h, this.k });
+    this.u = 1;
+    J();
+  }
+  
+  private void e(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {
+      this.v = paramInt1;
+    }
+    if (paramInt2 > 0) {
+      this.w = paramInt2;
+    }
+    if (w()) {
+      a(o() ^ true, this.v, this.w, false);
+    }
+  }
+  
+  private void f(boolean paramBoolean)
+  {
+    a(true, new View[] { this.g, this.j });
+    a(false, new View[] { this.h, this.l, this.m });
+    a(paramBoolean, new View[] { this.d });
+    b(true, new View[] { this.g, this.h });
+    b(false, new View[] { this.k });
+    this.r.setText(a(this.q));
+    this.k.setProgress(100);
+    this.u = 4;
+    J();
+    if (o()) {
+      B();
+    }
+  }
+  
   private void g(int paramInt)
   {
-    s();
-    if (!a()) {
-      h(c());
-    }
-    a(false, new View[] { this.jdField_d_of_type_AndroidWidgetImageView });
-    a(true, new View[] { this.jdField_c_of_type_AndroidWidgetTextView });
-    if (paramInt != 400)
+    a(false, new View[] { this.g, this.j, this.l, this.m, this.o });
+    a(true, new View[] { this.h });
+    b(true, new View[] { this.g, this.h, this.k });
+    v();
+    this.u = 0;
+    J();
+    if (paramInt > 0)
     {
-      localObject = a();
-      if (localObject != null) {
-        c(((Context)localObject).getResources().getColor(2131167004));
-      }
-    }
-    if (this.jdField_e_of_type_AndroidWidgetImageView != null) {
-      if (a(paramInt))
-      {
-        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130846472);
-        this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      else
-      {
-        this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-    }
-    Object localObject = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (localObject != null)
-    {
-      if (paramInt == 400)
-      {
-        ((TextView)localObject).setText(2131699800);
+      if (this.q == paramInt) {
         return;
       }
-      if (paramInt == 401)
-      {
-        ((TextView)localObject).setText(2131699801);
-        return;
+      this.q = paramInt;
+      TextView localTextView = this.s;
+      if (localTextView != null) {
+        localTextView.setText(a(this.q));
       }
-      if (paramInt == 402)
-      {
-        ((TextView)localObject).setText(2131699803);
-        return;
-      }
-      if (paramInt == 403)
-      {
-        ((TextView)localObject).setText(2131699802);
-        return;
-      }
-      ((TextView)localObject).setText(2131699801);
     }
   }
   
   private void g(boolean paramBoolean)
   {
-    Object localObject1 = a();
+    Object localObject1 = m();
     if (localObject1 == null) {
       return;
     }
     localObject1 = ((Context)localObject1).getResources();
-    Object localObject2 = this.jdField_d_of_type_AndroidWidgetImageView;
-    int n = -2;
+    Object localObject2 = this.j;
+    int i3 = -2;
     if (localObject2 != null)
     {
       localObject2 = ((ImageView)localObject2).getLayoutParams();
@@ -278,47 +414,47 @@ public class FloatingVideoWrapper
       {
         ((ViewGroup.LayoutParams)localObject2).width = -2;
         ((ViewGroup.LayoutParams)localObject2).height = -2;
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130838000);
+        this.j.setImageResource(2130838024);
       }
       else
       {
         ((ViewGroup.LayoutParams)localObject2).width = -1;
         ((ViewGroup.LayoutParams)localObject2).height = -1;
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130846473);
+        this.j.setImageResource(2130847946);
       }
-      this.jdField_d_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.j.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    localObject2 = this.jdField_e_of_type_AndroidWidgetImageView;
+    localObject2 = this.m;
     if (localObject2 != null)
     {
       localObject2 = (LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams();
-      int m;
+      int i2;
       if (paramBoolean)
       {
-        k = 32;
-        m = n;
+        i1 = 32;
+        i2 = i3;
         if (localObject1 != null)
         {
-          k = FloatingScreenUtils.a(16.0F, (Resources)localObject1);
-          m = n;
+          i1 = FloatingScreenUtils.a(16.0F, (Resources)localObject1);
+          i2 = i3;
         }
       }
       else
       {
-        m = 40;
-        k = 16;
+        i2 = 40;
+        i1 = 16;
         if (localObject1 != null)
         {
-          m = FloatingScreenUtils.a(20.0F, (Resources)localObject1);
-          k = FloatingScreenUtils.a(8.0F, (Resources)localObject1);
+          i2 = FloatingScreenUtils.a(20.0F, (Resources)localObject1);
+          i1 = FloatingScreenUtils.a(8.0F, (Resources)localObject1);
         }
       }
-      ((LinearLayout.LayoutParams)localObject2).width = m;
-      ((LinearLayout.LayoutParams)localObject2).height = m;
-      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, 0, k);
-      this.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      ((LinearLayout.LayoutParams)localObject2).width = i2;
+      ((LinearLayout.LayoutParams)localObject2).height = i2;
+      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, 0, i1);
+      this.m.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    localObject2 = this.jdField_c_of_type_AndroidWidgetTextView;
+    localObject2 = this.l;
     if (localObject2 != null) {
       if (paramBoolean) {
         ((TextView)localObject2).setTextSize(17.0F);
@@ -326,50 +462,51 @@ public class FloatingVideoWrapper
         ((TextView)localObject2).setTextSize(12.0F);
       }
     }
-    int k = this.jdField_c_of_type_Int;
-    if ((k != 2) && (k != 3))
+    int i1 = this.u;
+    if ((i1 != 2) && (i1 != 3))
     {
       if ((Build.VERSION.SDK_INT >= 23) && (paramBoolean))
       {
-        d(2130846474);
+        f(2130847947);
         return;
       }
       if (localObject1 != null) {
-        c(((Resources)localObject1).getColor(2131167333));
+        e(((Resources)localObject1).getColor(2131168376));
       }
     }
     else if (localObject1 != null)
     {
-      c(((Resources)localObject1).getColor(2131167004));
+      e(((Resources)localObject1).getColor(2131167939));
     }
   }
   
   private void h(int paramInt)
   {
-    float f1 = 1.0F;
-    float f2 = 0.0F;
-    if (paramInt == 0)
+    int i1;
+    if (paramInt < 0)
     {
-      f1 = 0.0F;
-      f2 = 1.0F;
+      i1 = 0;
     }
-    else if (paramInt != 1)
+    else
     {
-      return;
+      int i2 = this.q;
+      i1 = paramInt;
+      if (paramInt > i2) {
+        i1 = i2;
+      }
     }
-    View localView = a();
-    if (localView != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(localView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("alpha", new float[] { f1, f2 }) });
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new FloatingVideoWrapper.13(this, f1, f2, localView));
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new FloatingVideoWrapper.14(this, paramInt, localView));
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(300L).start();
-    }
+    double d1 = i1;
+    Double.isNaN(d1);
+    double d2 = this.q;
+    Double.isNaN(d2);
+    this.p = ((int)(d1 * 100.0D / d2));
+    this.k.setProgress(this.p);
+    this.r.setText(a(i1));
   }
   
   private void h(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.t.iterator();
     while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
@@ -383,11 +520,64 @@ public class FloatingVideoWrapper
     }
   }
   
+  private void i(int paramInt)
+  {
+    I();
+    if (!n()) {
+      h(p());
+    }
+    a(false, new View[] { this.j });
+    a(true, new View[] { this.l });
+    if (paramInt != 400)
+    {
+      localObject = m();
+      if (localObject != null) {
+        e(((Context)localObject).getResources().getColor(2131167939));
+      }
+    }
+    if (this.m != null) {
+      if (j(paramInt))
+      {
+        this.m.setImageResource(2130847945);
+        this.m.setVisibility(0);
+      }
+      else
+      {
+        this.m.setVisibility(8);
+      }
+    }
+    Object localObject = this.l;
+    if (localObject != null)
+    {
+      if (paramInt == 400)
+      {
+        ((TextView)localObject).setText(2131897835);
+        return;
+      }
+      if (paramInt == 401)
+      {
+        ((TextView)localObject).setText(2131897836);
+        return;
+      }
+      if (paramInt == 402)
+      {
+        ((TextView)localObject).setText(2131897838);
+        return;
+      }
+      if (paramInt == 403)
+      {
+        ((TextView)localObject).setText(2131897837);
+        return;
+      }
+      ((TextView)localObject).setText(2131897836);
+    }
+  }
+  
   private void i(boolean paramBoolean)
   {
     d(paramBoolean);
     e(paramBoolean);
-    Context localContext = a();
+    Context localContext = m();
     if (localContext != null)
     {
       if (localContext.getResources() == null) {
@@ -395,313 +585,154 @@ public class FloatingVideoWrapper
       }
       if (paramBoolean)
       {
-        a(localContext.getResources().getDrawable(2130846468));
+        a(localContext.getResources().getDrawable(2130847941));
         return;
       }
-      a(localContext.getResources().getDrawable(2130846467));
+      a(localContext.getResources().getDrawable(2130847940));
     }
   }
   
-  private void l()
+  private boolean j(int paramInt)
   {
-    Object localObject = a();
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (FloatingScreenUtils.b((Context)localObject)))
+    return (paramInt == 401) || (paramInt == 402) || (paramInt == 403);
+  }
+  
+  private void k(int paramInt)
+  {
+    float f1 = 1.0F;
+    float f2 = 0.0F;
+    if (paramInt == 0)
     {
-      int k = FloatingScreenUtils.a((Context)localObject);
-      int m = FloatingScreenUtils.b((Context)localObject);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("screenRealHeight = ");
-        localStringBuilder.append(k);
-        localStringBuilder.append(" screenPureHeight = ");
-        localStringBuilder.append(m);
-        QLog.d("FloatingVideoWrapper", 2, localStringBuilder.toString());
-      }
-      if (k > 0)
-      {
-        if (m <= 0) {
-          return;
-        }
-        k = Math.min(Math.max(k - m, 0), 100);
-        m = FloatingScreenUtils.a(16.0F, ((Context)localObject).getResources());
-        localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = (m + k);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
+      f1 = 0.0F;
+      f2 = 1.0F;
     }
-  }
-  
-  private void m()
-  {
-    a(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_d_of_type_AndroidWidgetImageView });
-    a(false, new View[] { this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_e_of_type_AndroidWidgetImageView });
-    b(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetSeekBar });
-    this.jdField_c_of_type_Int = 1;
-    t();
-  }
-  
-  private void n()
-  {
-    g(400);
-    b(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetSeekBar });
-    this.jdField_c_of_type_Int = 3;
-  }
-  
-  private void o()
-  {
-    g(401);
-    b(false, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetSeekBar });
-    this.jdField_c_of_type_Int = 2;
-  }
-  
-  private void p()
-  {
-    if (!a())
+    else if (paramInt != 1)
     {
-      if (!d()) {
-        return;
-      }
-      if (b())
-      {
-        if ((e()) || (!a(b(), c())))
-        {
-          IFullScreenEnterListener localIFullScreenEnterListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIFullScreenEnterListener;
-          if (localIFullScreenEnterListener != null) {
-            localIFullScreenEnterListener.onEnter(b(), c());
-          } else {
-            q();
-          }
-        }
-        FloatingScreenReporter.e();
-        return;
-      }
-      if (c()) {
-        u();
-      }
-    }
-  }
-  
-  private void q()
-  {
-    if (!a())
-    {
-      if (!b()) {
-        return;
-      }
-      a(true, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, true);
-      h();
-      h(true);
-      g(true);
-      a(false, new View[] { this.jdField_d_of_type_AndroidWidgetTextView });
-      b(false);
-    }
-    s();
-    i(false);
-    t();
-  }
-  
-  private void r()
-  {
-    if (!a())
-    {
-      if (!c()) {
-        return;
-      }
-      a(false, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, false);
-      i();
-      h(false);
-      g(false);
-      b(true);
-    }
-    IFullScreenViewClickListener localIFullScreenViewClickListener = this.mFullScreenViewClickListener;
-    if (localIFullScreenViewClickListener != null) {
-      localIFullScreenViewClickListener.a();
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    i(true);
-    t();
-  }
-  
-  private void s()
-  {
-    j();
-    b(1.0F);
-    this.jdField_f_of_type_Int = 0;
-  }
-  
-  private void t()
-  {
-    if (a()) {
       return;
     }
-    Context localContext = a();
-    if (localContext == null) {
-      return;
-    }
-    if (b())
+    View localView = l();
+    if (localView != null)
     {
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        b(localContext.getResources().getString(2131699796));
-        return;
-      }
-      b(localContext.getResources().getString(2131699786));
-      return;
-    }
-    int k = this.jdField_f_of_type_Int;
-    if (k == 0)
-    {
-      b(localContext.getResources().getString(2131699805));
-      return;
-    }
-    if (k == 1) {
-      b(localContext.getResources().getString(2131699787));
-    }
-  }
-  
-  private void u()
-  {
-    int k = this.jdField_f_of_type_Int;
-    if (k != 0)
-    {
-      if (k != 1) {
-        return;
-      }
-      h(0);
-      return;
-    }
-    k = this.jdField_c_of_type_Int;
-    if ((k == 0) || (k == 1)) {
-      h(1);
-    }
-  }
-  
-  private void v()
-  {
-    onVideoStart(this.jdField_b_of_type_Int);
-    IVideoInnerStatusListener localIVideoInnerStatusListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
-    if (localIVideoInnerStatusListener != null) {
-      localIVideoInnerStatusListener.notifyVideoStart();
-    }
-  }
-  
-  private void w()
-  {
-    onVideoStop();
-    IVideoInnerStatusListener localIVideoInnerStatusListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
-    if (localIVideoInnerStatusListener != null) {
-      localIVideoInnerStatusListener.notifyVideoStop();
+      this.y = ObjectAnimator.ofPropertyValuesHolder(localView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("alpha", new float[] { f1, f2 }) });
+      this.y.addUpdateListener(new FloatingVideoWrapper.13(this, f1, f2, localView));
+      this.y.addListener(new FloatingVideoWrapper.14(this, paramInt, localView));
+      this.y.setDuration(300L).start();
     }
   }
   
   public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
   {
-    int k = super.a(paramFloatingScreenParams, paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
+    int i1 = super.a(paramFloatingScreenParams, paramView);
+    paramView = this.a;
     if (paramView != null)
     {
       paramView.notifyVideoClose(6);
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener = null;
+      this.a = null;
     }
     else
     {
       FloatingScreenReporter.a();
-      if ((k == 0) && (paramFloatingScreenParams != null) && (paramFloatingScreenParams.getCanZoom())) {
-        k();
+      if ((i1 == 0) && (paramFloatingScreenParams != null) && (paramFloatingScreenParams.getCanZoom())) {
+        b();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIFullScreenEnterListener = null;
-    this.jdField_b_of_type_Int = 0;
-    return k;
+    this.b = null;
+    this.q = 0;
+    return i1;
   }
   
   public IVideoOuterStatusListener a(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener = paramIVideoInnerStatusListener;
+    this.a = paramIVideoInnerStatusListener;
     return this;
   }
   
-  public void a()
+  public void a(int paramInt)
   {
-    b(3);
-    FloatingScreenReporter.g();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
+    if ((!n()) && (o())) {
+      ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).saveFloatingCenter(q(), r());
+    }
+    IVideoInnerStatusListener localIVideoInnerStatusListener = this.a;
+    if (localIVideoInnerStatusListener != null)
+    {
+      localIVideoInnerStatusListener.notifyVideoClose(paramInt);
+      this.a = null;
+    }
+    this.b = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.z);
+    super.a(paramInt);
   }
   
   public void a(Context paramContext)
   {
     super.a(paramContext);
     a(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131374415);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131374400);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131374405));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131699785));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)a(2131374403));
-    this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131699784));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131374411));
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramContext.getResources().getString(2131699797));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131374410));
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramContext.getResources().getString(2131699789));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131374408));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)a(2131374406));
-    this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getResources().getString(2131699796));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131374412));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)a(2131374407));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131374414));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131374413));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131374404));
-    this.jdField_d_of_type_AndroidWidgetTextView.setShadowLayer(3.0F, 1.0F, 1.0F, -16777216);
-    a(this, new View[] { this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_d_of_type_AndroidWidgetImageView });
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131374417));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(paramContext.getResources().getDrawable(2130850094));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgressDrawable(paramContext.getResources().getDrawable(2130846221));
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(4);
+    this.c = new FrameLayout(paramContext);
+    this.c.setId(2131442582);
+    this.d = new ImageView(paramContext);
+    this.d.setId(2131442566);
+    this.d.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.e = ((ImageView)d(2131442571));
+    this.e.setContentDescription(paramContext.getResources().getString(2131897818));
+    this.f = ((ImageView)d(2131442569));
+    this.f.setContentDescription(paramContext.getResources().getString(2131897817));
+    this.g = ((TextView)d(2131442578));
+    this.g.setContentDescription(paramContext.getResources().getString(2131897832));
+    this.h = ((TextView)d(2131442577));
+    this.h.setContentDescription(paramContext.getResources().getString(2131897822));
+    this.i = ((LinearLayout)d(2131442575));
+    this.j = ((ImageView)d(2131442573));
+    this.j.setContentDescription(paramContext.getResources().getString(2131897831));
+    this.l = ((TextView)d(2131442579));
+    this.m = ((ImageView)d(2131442574));
+    this.r = ((TextView)d(2131442581));
+    this.s = ((TextView)d(2131442580));
+    this.n = ((TextView)d(2131442570));
+    this.n.setShadowLayer(3.0F, 1.0F, 1.0F, -16777216);
+    this.o = ((TextView)d(2131442572));
+    a(this, new View[] { this.e, this.f, this.g, this.h, this.j });
+    this.k = ((SeekBar)d(2131442584));
+    this.k.setOnSeekBarChangeListener(this);
+    this.k.setThumb(paramContext.getResources().getDrawable(2130851863));
+    this.k.setProgressDrawable(paramContext.getResources().getDrawable(2130847691));
+    if (this.t == null) {
+      this.t = new ArrayList(4);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_AndroidWidgetImageView);
+    this.t.clear();
+    this.t.add(this.i);
+    this.t.add(this.e);
+    this.t.add(this.f);
     if (LiuHaiUtils.b())
     {
-      RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.e.getLayoutParams();
       localLayoutParams1.addRule(10, -1);
-      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
       localLayoutParams2.addRule(10, -1);
-      int k = LiuHaiUtils.jdField_a_of_type_Int - FloatingScreenUtils.a(12.0F, paramContext.getResources());
-      localLayoutParams1.topMargin = k;
-      localLayoutParams2.topMargin = k;
+      int i1 = LiuHaiUtils.d - FloatingScreenUtils.a(12.0F, paramContext.getResources());
+      localLayoutParams1.topMargin = i1;
+      localLayoutParams2.topMargin = i1;
     }
-    l();
+    d();
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    this.c.removeAllViews();
     b(paramView);
-    paramView.setId(2131374418);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
-    b(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, new FrameLayout.LayoutParams(-1, -1));
-    f();
-    b(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, new FrameLayout.LayoutParams(-1, -1));
-    e();
+    paramView.setId(2131442585);
+    this.c.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+    b(this.d);
+    this.c.addView(this.d, new FrameLayout.LayoutParams(-1, -1));
+    u();
+    b(this.c);
+    a(this.c, new FrameLayout.LayoutParams(-1, -1));
+    t();
     a(new FrameLayout.LayoutParams(-1, -1));
   }
   
   public void a(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIFullScreenEnterListener = paramIFullScreenEnterListener;
+    this.b = paramIFullScreenEnterListener;
   }
   
   public void a(IFullScreenViewClickListener paramIFullScreenViewClickListener)
@@ -714,89 +745,79 @@ public class FloatingVideoWrapper
     super.a(paramIWindowClickListener);
   }
   
-  public void aT_()
+  public void b()
   {
-    a(true, new View[] { this.jdField_b_of_type_AndroidWidgetTextView });
-    a(true);
-    b(true);
-    a(false, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_e_of_type_AndroidWidgetImageView, this.jdField_d_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetImageView });
-    b(true, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetSeekBar });
-    s();
-    g(false);
-    h(false);
-    t();
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((!a()) && (b())) {
-      ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).saveFloatingCenter(b(), c());
-    }
-    IVideoInnerStatusListener localIVideoInnerStatusListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
-    if (localIVideoInnerStatusListener != null)
-    {
-      localIVideoInnerStatusListener.notifyVideoClose(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIFullScreenEnterListener = null;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    super.b(paramInt);
-  }
-  
-  public void c()
-  {
-    a(0, new FloatingVideoWrapper.1(this));
-  }
-  
-  public void k()
-  {
-    Context localContext = a();
+    Context localContext = m();
     if (localContext == null) {
       return;
     }
     if (!((Boolean)BaseSharedPreUtil.a(localContext, "", "key_float_video_has_show_tips", Boolean.valueOf(false))).booleanValue())
     {
-      a(true, new View[] { this.jdField_d_of_type_AndroidWidgetTextView });
+      a(true, new View[] { this.n });
       BaseSharedPreUtil.a(localContext, "", true, "key_float_video_has_show_tips", Boolean.valueOf(true));
       ThreadManager.getUIHandler().postDelayed(new FloatingVideoWrapper.2(this), 3000L);
     }
   }
   
+  public void c()
+  {
+    a(3);
+    FloatingScreenReporter.g();
+  }
+  
+  public void dz_()
+  {
+    a(true, new View[] { this.h });
+    a(true);
+    b(true);
+    a(false, new View[] { this.g, this.l, this.m, this.j, this.d });
+    b(true, new View[] { this.g, this.h, this.k });
+    I();
+    g(false);
+    h(false);
+    J();
+  }
+  
+  public void j()
+  {
+    a(0, new FloatingVideoWrapper.1(this));
+  }
+  
   public void onClick(View paramView)
   {
-    int k = paramView.getId();
-    if (k == 2131374402)
+    int i1 = paramView.getId();
+    if (i1 == 2131442568)
     {
-      b(1);
+      a(1);
       FloatingScreenReporter.d();
     }
-    else if (k == 2131374403)
+    else if (i1 == 2131442569)
     {
-      b(2);
+      a(2);
       FloatingScreenReporter.k();
     }
-    else if (k == 2131374405)
+    else if (i1 == 2131442571)
     {
-      r();
+      H();
       FloatingScreenReporter.f();
     }
-    else if (k == 2131374411)
+    else if (i1 == 2131442578)
     {
-      v();
+      L();
       FloatingScreenReporter.h();
     }
-    else if (k == 2131374410)
+    else if (i1 == 2131442577)
     {
-      w();
+      M();
       FloatingScreenReporter.h();
     }
-    else if (k == 2131374406)
+    else if (i1 == 2131442573)
     {
-      v();
+      L();
     }
-    else if (k == 2131374409)
+    else if (i1 == 2131442576)
     {
-      p();
+      F();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -808,13 +829,13 @@ public class FloatingVideoWrapper
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramSeekBar = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoInnerStatusListener;
+    this.p = paramInt;
+    paramSeekBar = this.a;
     if ((paramSeekBar != null) && (paramBoolean))
     {
-      paramSeekBar.notifyVideoSeek(this.jdField_a_of_type_Int);
-      double d1 = this.jdField_a_of_type_Int;
-      double d2 = this.jdField_b_of_type_Int;
+      paramSeekBar.notifyVideoSeek(this.p);
+      double d1 = this.p;
+      double d2 = this.q;
       Double.isNaN(d1);
       Double.isNaN(d2);
       onVideoProgressUpdate((int)(d1 * d2 / 100.0D));
@@ -823,7 +844,7 @@ public class FloatingVideoWrapper
   
   public void onSetVideoCover(Bitmap paramBitmap)
   {
-    if (f())
+    if (E())
     {
       a(paramBitmap);
       return;
@@ -833,7 +854,7 @@ public class FloatingVideoWrapper
   
   public void onSetVideoCover(Drawable paramDrawable)
   {
-    if (f())
+    if (E())
     {
       b(paramDrawable);
       return;
@@ -847,9 +868,9 @@ public class FloatingVideoWrapper
   
   public void onVideoBuffering()
   {
-    if (f())
+    if (E())
     {
-      n();
+      C();
       return;
     }
     ThreadManager.getUIHandler().post(new FloatingVideoWrapper.7(this));
@@ -857,12 +878,12 @@ public class FloatingVideoWrapper
   
   public void onVideoComplete(boolean paramBoolean)
   {
-    if (b()) {
+    if (o()) {
       FloatingScreenReporter.i();
     } else {
       FloatingScreenReporter.j();
     }
-    if (f())
+    if (E())
     {
       f(paramBoolean);
       return;
@@ -872,9 +893,9 @@ public class FloatingVideoWrapper
   
   public void onVideoError(int paramInt)
   {
-    if (f())
+    if (E())
     {
-      o();
+      D();
       return;
     }
     ThreadManager.getUIHandler().post(new FloatingVideoWrapper.8(this));
@@ -882,12 +903,12 @@ public class FloatingVideoWrapper
   
   public void onVideoProgressUpdate(int paramInt)
   {
-    if (this.jdField_b_of_type_Int == 0) {
+    if (this.q == 0) {
       return;
     }
-    if (f())
+    if (E())
     {
-      f(paramInt);
+      h(paramInt);
       return;
     }
     ThreadManager.getUIHandler().post(new FloatingVideoWrapper.6(this, paramInt));
@@ -895,9 +916,9 @@ public class FloatingVideoWrapper
   
   public void onVideoSize(int paramInt1, int paramInt2)
   {
-    if (f())
+    if (E())
     {
-      c(paramInt1, paramInt2);
+      e(paramInt1, paramInt2);
       return;
     }
     ThreadManager.getUIHandler().post(new FloatingVideoWrapper.9(this, paramInt1, paramInt2));
@@ -905,22 +926,22 @@ public class FloatingVideoWrapper
   
   public void onVideoStart(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt) {
-      FloatingScreenReporter.c(paramInt);
+    if (this.q != paramInt) {
+      FloatingScreenReporter.d(paramInt);
     }
-    if (f()) {
-      e(paramInt);
+    if (E()) {
+      g(paramInt);
     } else {
       ThreadManager.getUIHandler().post(new FloatingVideoWrapper.3(this, paramInt));
     }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+    ThreadManager.getUIHandler().postDelayed(this.z, 300L);
   }
   
   public void onVideoStop()
   {
-    if (f())
+    if (E())
     {
-      m();
+      e();
       return;
     }
     ThreadManager.getUIHandler().post(new FloatingVideoWrapper.4(this));
@@ -928,7 +949,7 @@ public class FloatingVideoWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingVideoWrapper
  * JD-Core Version:    0.7.0.1
  */

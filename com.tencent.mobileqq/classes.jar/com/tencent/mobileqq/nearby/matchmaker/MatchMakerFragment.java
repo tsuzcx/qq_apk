@@ -16,25 +16,25 @@ import com.tencent.smtt.sdk.WebView;
 public class MatchMakerFragment
   extends CommonTabFragment
 {
-  private long jdField_a_of_type_Long = 0L;
-  private boolean jdField_a_of_type_Boolean = false;
-  private long b = 0L;
+  private long g = 0L;
+  private long h = 0L;
+  private boolean i = false;
   
-  private void f()
+  private void i()
   {
-    if (a() == null) {
+    if (f() == null) {
       return;
     }
-    INearbyProcManager localINearbyProcManager = a().getNearbyProcManager();
-    if ((localINearbyProcManager != null) && (localINearbyProcManager.a())) {
-      localINearbyProcManager.d();
+    INearbyProcManager localINearbyProcManager = f().getNearbyProcManager();
+    if ((localINearbyProcManager != null) && (localINearbyProcManager.h())) {
+      localINearbyProcManager.f();
     }
   }
   
   protected void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
     if (QLog.isColorLevel())
     {
       paramWebView = new StringBuilder();
@@ -44,8 +44,8 @@ public class MatchMakerFragment
     }
     if (!"about:blank".equals(paramString))
     {
-      ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("page_load_end").setRes1(System.currentTimeMillis() - this.b).setExtCol1(String.valueOf(isDetached())).setUin(a().getCurrentAccountUin()).report();
-      this.b = System.currentTimeMillis();
+      ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("page_load_end").setRes1(System.currentTimeMillis() - this.h).setExtCol1(String.valueOf(isDetached())).setUin(f().getCurrentAccountUin()).report();
+      this.h = System.currentTimeMillis();
     }
   }
   
@@ -56,49 +56,52 @@ public class MatchMakerFragment
     paramWebView.append("onPageStarted: url=");
     paramWebView.append(paramString);
     QLog.d("MatchMakerFragment", 2, paramWebView.toString());
-    this.b = System.currentTimeMillis();
+    this.h = System.currentTimeMillis();
     if (!"about:blank".equals(paramString)) {
-      ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("page_load_start").setRes1(String.valueOf(this.b - this.jdField_a_of_type_Long)).setUin(a().getCurrentAccountUin()).report();
+      ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("page_load_start").setRes1(String.valueOf(this.h - this.g)).setUin(f().getCurrentAccountUin()).report();
     }
   }
   
-  protected void e()
+  protected void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(HardCodeUtil.a(2131707229)).a(new MatchMakerFragment.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+    if (this.aj == null) {
+      return;
+    }
+    this.aj.a(HardCodeUtil.a(2131905060)).a(new MatchMakerFragment.1(this));
+    this.aj.a();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     QLog.d("MatchMakerFragment", 2, "onPageStarted: onCreate");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("tab_page_create").setUin(a().getCurrentAccountUin()).report();
+    this.g = System.currentTimeMillis();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("tab_page_create").setUin(f().getCurrentAccountUin()).report();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("tab_page_destroy").setUin(a().getCurrentAccountUin()).setRes1(String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long)).setExtCol1(String.valueOf(this.jdField_a_of_type_Boolean)).setExtCol2(String.valueOf(System.currentTimeMillis() - this.b)).setExtCol3(String.valueOf(MatchMakerPlugin.a())).report();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("tab_page_destroy").setUin(f().getCurrentAccountUin()).setRes1(String.valueOf(System.currentTimeMillis() - this.g)).setExtCol1(String.valueOf(this.i)).setExtCol2(String.valueOf(System.currentTimeMillis() - this.h)).setExtCol3(String.valueOf(MatchMakerPlugin.b())).report();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (a()) {
-      f();
+    if (g()) {
+      i();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    e();
+    h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.matchmaker.MatchMakerFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/mj1" android:padding="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="156.0dip" android:layout_height="156.0dip" android:minHeight="156.0dip"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/e1h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/mhm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/mhn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/mho" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" />
-</FrameLayout>
+    <Button android:layout_gravity="center" android:id="@id/npr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:text="第三方App - 加入小站" />
+</LinearLayout>

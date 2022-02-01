@@ -19,12 +19,12 @@ class ForwardFriendListActivity$6
   {
     paramEditable = paramEditable.toString();
     if (TextUtils.isEmpty(paramEditable)) {
-      ForwardFriendListActivity.a(this.a).setVisibility(8);
+      ForwardFriendListActivity.e(this.a).setVisibility(8);
     } else {
-      ForwardFriendListActivity.a(this.a).setVisibility(0);
+      ForwardFriendListActivity.e(this.a).setVisibility(0);
     }
-    if (ForwardFriendListActivity.a(this.a) != null) {
-      ForwardFriendListActivity.a(this.a).a(paramEditable);
+    if (ForwardFriendListActivity.c(this.a) != null) {
+      ForwardFriendListActivity.c(this.a).a(paramEditable);
     }
   }
   
@@ -33,24 +33,24 @@ class ForwardFriendListActivity$6
     if (paramResultRecord != null) {
       ForwardFriendListActivity.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
     }
-    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
+    ForwardFriendListActivity.b(this.a).notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
+    if ((paramBoolean) && (ForwardFriendListActivity.c(this.a) == null))
     {
       Object localObject = this.a;
-      ForwardFriendListActivity.a((ForwardFriendListActivity)localObject, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a((ForwardFriendListActivity)localObject)));
+      ForwardFriendListActivity.a((ForwardFriendListActivity)localObject, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.d((ForwardFriendListActivity)localObject)));
       localObject = this.a.getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).add(2131376483, ForwardFriendListActivity.a(this.a));
+      ((FragmentTransaction)localObject).add(2131444724, ForwardFriendListActivity.c(this.a));
       ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.6
  * JD-Core Version:    0.7.0.1
  */

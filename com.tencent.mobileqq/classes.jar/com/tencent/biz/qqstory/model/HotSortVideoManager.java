@@ -14,19 +14,19 @@ import java.util.List;
 public class HotSortVideoManager
   implements IManager
 {
-  private EntityManager a()
-  {
-    return QQStoryContext.a().a().createEntityManager();
-  }
-  
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
+  private EntityManager c()
+  {
+    return QQStoryContext.a().d().createEntityManager();
+  }
+  
   public List<HotSortVideoEntry> a(String paramString)
   {
-    List localList = a(a(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
+    List localList = a(c(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
     Object localObject = localList;
     if (localList == null) {
       localObject = new ArrayList();
@@ -39,14 +39,14 @@ public class HotSortVideoManager
   
   public void a(HotSortVideoEntry paramHotSortVideoEntry)
   {
-    EntityManager localEntityManager = a();
+    EntityManager localEntityManager = c();
     paramHotSortVideoEntry.setStatus(1001);
     localEntityManager.update(paramHotSortVideoEntry);
   }
   
   public void a(List<HotSortVideoEntry> paramList)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
@@ -73,7 +73,7 @@ public class HotSortVideoManager
   
   public void a(List<HotSortVideoEntry> paramList, String paramString, boolean paramBoolean)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     if (paramBoolean) {}
     try
@@ -117,7 +117,7 @@ public class HotSortVideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.HotSortVideoManager
  * JD-Core Version:    0.7.0.1
  */

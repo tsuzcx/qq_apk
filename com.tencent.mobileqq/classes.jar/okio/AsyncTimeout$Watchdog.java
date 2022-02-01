@@ -1,9 +1,13 @@
 package okio;
 
+import kotlin.Metadata;
+import kotlin.Unit;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/AsyncTimeout$Watchdog;", "Ljava/lang/Thread;", "()V", "run", "", "okio"}, k=1, mv={1, 1, 16})
 final class AsyncTimeout$Watchdog
   extends Thread
 {
-  AsyncTimeout$Watchdog()
+  public AsyncTimeout$Watchdog()
   {
     super("Okio Watchdog");
     setDaemon(true);
@@ -15,16 +19,19 @@ final class AsyncTimeout$Watchdog
     {
       for (;;)
       {
+        AsyncTimeout localAsyncTimeout = (AsyncTimeout)null;
         try
         {
-          AsyncTimeout localAsyncTimeout = AsyncTimeout.awaitTimeout();
-          if (localAsyncTimeout == null) {}
-          if (localAsyncTimeout == AsyncTimeout.head)
+          localAsyncTimeout = AsyncTimeout.Companion.awaitTimeout$okio();
+          if (localAsyncTimeout == AsyncTimeout.access$getHead$cp())
           {
-            AsyncTimeout.head = null;
+            AsyncTimeout.access$setHead$cp((AsyncTimeout)null);
             return;
           }
-          localAsyncTimeout.timedOut();
+          Unit localUnit = Unit.INSTANCE;
+          if (localAsyncTimeout != null) {
+            localAsyncTimeout.timedOut();
+          }
         }
         finally
         {
@@ -40,7 +47,7 @@ final class AsyncTimeout$Watchdog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.AsyncTimeout.Watchdog
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,8 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/framework/eventdispatch/DispatchManager;", "", "()V", "M_OBSERVERS_MAP", "Ljava/util/HashMap;", "Ljava/lang/Class;", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEventObserver;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEvent;", "Lkotlin/collections/HashMap;", "Lkotlin/collections/ArrayList;", "addObserver", "", "eventCls", "observer", "dispatchEvent", "T", "event", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEvent;)V", "isRunOnMainThread", "", "(Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEvent;Z)V", "dispatchEventInner", "removeObserver", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
 public final class DispatchManager
 {
-  public static final DispatchManager a;
-  private static final HashMap<Class<?>, ArrayList<IEventObserver<? extends IEvent>>> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventdispatchDispatchManager = new DispatchManager();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static final DispatchManager a = new DispatchManager();
+  private static final HashMap<Class<?>, ArrayList<IEventObserver<? extends IEvent>>> b = new HashMap();
   
   private final <T extends IEvent> void a(T paramT, boolean paramBoolean)
   {
@@ -33,7 +27,7 @@ public final class DispatchManager
   
   private final <T extends IEvent> void b(T paramT)
   {
-    Object localObject = (ArrayList)jdField_a_of_type_JavaUtilHashMap.get(paramT.getClass());
+    Object localObject = (ArrayList)b.get(paramT.getClass());
     if (localObject != null)
     {
       Iterator localIterator = ((Iterable)localObject).iterator();
@@ -73,7 +67,7 @@ public final class DispatchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.eventdispatch.DispatchManager
  * JD-Core Version:    0.7.0.1
  */

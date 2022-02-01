@@ -16,7 +16,7 @@ class TroopNickFontAdapter$1
   
   public void run()
   {
-    Object localObject = TroopNickFontAdapter.a(this.a, this.b);
+    Object localObject = TroopNickFontAdapter.c(this.a, this.b);
     if (TroopNickFontAdapter.a(this.this$0, (Typeface)localObject)) {
       return;
     }
@@ -32,7 +32,7 @@ class TroopNickFontAdapter$1
     localObject = str1;
     if (this.b == 1)
     {
-      if ((!ETEngine.isSOLoaded.get()) && (TroopNickFontAdapter.a() < 5))
+      if ((!ETEngine.isSOLoaded.get()) && (TroopNickFontAdapter.c() < 5))
       {
         this.this$0.a();
         if (QLog.isColorLevel()) {
@@ -51,13 +51,13 @@ class TroopNickFontAdapter$1
     {
       localObject = Typeface.createFromFile((File)localObject);
       TroopNickFontAdapter.a(this.this$0, (Typeface)localObject);
-      TroopNickFontAdapter.a.put(TroopNickFontAdapter.a(this.a, this.b), localObject);
+      TroopNickFontAdapter.f.put(TroopNickFontAdapter.e(this.a, this.b), localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter.1
  * JD-Core Version:    0.7.0.1
  */

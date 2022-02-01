@@ -15,18 +15,18 @@ class MixSearchWebFragment$2
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
-    this.a.a.requestFocus();
+    this.a.b.setText("");
+    this.a.b.requestFocus();
     InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
     if (localInputMethodManager != null) {
-      localInputMethodManager.showSoftInput(this.a.a, 0);
+      localInputMethodManager.showSoftInput(this.a.b, 0);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MixSearchWebFragment.2
  * JD-Core Version:    0.7.0.1
  */

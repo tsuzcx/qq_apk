@@ -11,7 +11,7 @@ class PersonalityLabelShareActivity$2
     // Byte code:
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity$2:this$0	Lcom/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity;
-    //   4: getfield 31	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:c	Landroid/graphics/Bitmap;
+    //   4: getfield 31	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:l	Landroid/graphics/Bitmap;
     //   7: astore 12
     //   9: aconst_null
     //   10: astore 9
@@ -376,7 +376,7 @@ class PersonalityLabelShareActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity.2
  * JD-Core Version:    0.7.0.1
  */

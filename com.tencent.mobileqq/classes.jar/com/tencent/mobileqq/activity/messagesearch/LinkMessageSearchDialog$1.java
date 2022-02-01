@@ -16,32 +16,32 @@ class LinkMessageSearchDialog$1
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    paramEditable = this.a.d.getText().toString().trim();
     if (paramEditable.length() == 0)
     {
       paramEditable = this.a;
-      paramEditable.jdField_b_of_type_JavaLangString = "";
-      paramEditable.findViewById(2131368340).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchLinkMessageResultAdapter.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      paramEditable.A = "";
+      paramEditable.findViewById(2131435215).setVisibility(8);
+      this.a.q.setVisibility(8);
+      this.a.o.a();
+      this.a.u.setVisibility(8);
       return;
     }
-    if (!this.a.jdField_b_of_type_JavaLangString.equals(paramEditable))
+    if (!this.a.A.equals(paramEditable))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("afterTextChanged, lastChangedKeyword = ");
-        ((StringBuilder)localObject).append(this.a.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.a.A);
         ((StringBuilder)localObject).append(",lastKeyWord:");
         ((StringBuilder)localObject).append(paramEditable);
         QLog.i("LinkMessageSearchDialog", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = this.a;
-      ((LinkMessageSearchDialog)localObject).jdField_b_of_type_JavaLangString = paramEditable;
-      ((LinkMessageSearchDialog)localObject).findViewById(2131368340).setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      ((LinkMessageSearchDialog)localObject).A = paramEditable;
+      ((LinkMessageSearchDialog)localObject).findViewById(2131435215).setVisibility(0);
+      this.a.b.setVisibility(0);
       this.a.a();
     }
   }
@@ -52,7 +52,7 @@ class LinkMessageSearchDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.LinkMessageSearchDialog.1
  * JD-Core Version:    0.7.0.1
  */

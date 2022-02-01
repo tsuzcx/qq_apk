@@ -16,13 +16,13 @@ class BrowserAppInterface$TBSLogRunnable
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      QQToast.a(this.this$0.getApp(), this.a, 1).a();
+      QQToast.makeText(this.this$0.getApp(), this.a, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable
  * JD-Core Version:    0.7.0.1
  */

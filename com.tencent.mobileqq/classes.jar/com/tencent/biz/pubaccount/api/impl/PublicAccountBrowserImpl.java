@@ -16,10 +16,10 @@ import com.tencent.biz.webviewbase.WebAIOController;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IRIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.reward.api.IRIJRewardTaskArticleTimer;
 import com.tencent.mobileqq.kandian.biz.reward.api.IRIJRewardTaskConfig;
+import com.tencent.mobileqq.kandian.biz.xtab.api.IRIJXTabFrameUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
@@ -35,7 +35,7 @@ public class PublicAccountBrowserImpl
   extends QQBrowserActivity
   implements IPublicAccountBrowser
 {
-  private static final String BANNER_TIPS = HardCodeUtil.a(2131708765);
+  private static final String BANNER_TIPS = HardCodeUtil.a(2131906544);
   public static final long CONNECT_APPID = 100298324L;
   public static final String FULL_TEXT_URL = "http://s.p.qq.com/pub/msg";
   public static final String FULL_TEXT_URL2 = "http://s.p.qq.com/pub/show";
@@ -74,9 +74,9 @@ public class PublicAccountBrowserImpl
         paramString = this.rightSecondButton;
         if (paramString != null)
         {
-          paramString.setImageResource(2130850474);
+          paramString.setImageResource(2130852270);
           this.rightSecondButton.setOnClickListener(new PublicAccountBrowserImpl.2(this));
-          this.rightSecondButton.setContentDescription(super.getText(2131696425));
+          this.rightSecondButton.setContentDescription(super.getText(2131894197));
           this.rightSecondButton.setVisibility(0);
         }
       }
@@ -86,7 +86,7 @@ public class PublicAccountBrowserImpl
   private void initRightButton()
   {
     if (this.rightSecondButton == null) {
-      this.rightSecondButton = ((FadeIconImageView)findViewById(2131369221));
+      this.rightSecondButton = ((FadeIconImageView)findViewById(2131436199));
     }
   }
   
@@ -179,7 +179,7 @@ public class PublicAccountBrowserImpl
   {
     super.finish();
     if (getIntent().getBooleanExtra("public_account_finish_animation_out_to_bottom", false)) {
-      overridePendingTransition(0, 2130771992);
+      overridePendingTransition(0, 2130771995);
     }
   }
   
@@ -201,7 +201,7 @@ public class PublicAccountBrowserImpl
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131381075);
+    TouchWebView localTouchWebView = (TouchWebView)findViewById(2131450088);
     if (localTouchWebView != null) {
       localTouchWebView.addScrollChangedListener(new PublicAccountBrowserImpl.3(this));
     }
@@ -209,7 +209,7 @@ public class PublicAccountBrowserImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl
  * JD-Core Version:    0.7.0.1
  */

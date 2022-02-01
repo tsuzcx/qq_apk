@@ -14,14 +14,14 @@ class MsgBackupTransportProcessor$3
   
   public void run()
   {
-    MsgBackupManager.a().g();
+    MsgBackupManager.a().j();
     Object localObject = BaseApplication.getContext();
     MsgBackupTransportProcessor.a(this.this$0, (Context)localObject);
-    this.this$0.jdField_a_of_type_Int = 2;
+    this.this$0.c = 2;
     int i = NetConnInfoCenter.getActiveNetIpFamily(true);
     localObject = this.this$0;
-    ((MsgBackupTransportProcessor)localObject).jdField_a_of_type_Long = ((MsgBackupTransportProcessor)localObject).jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(2, Long.parseLong(this.a), i, this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
-    if (this.this$0.a())
+    ((MsgBackupTransportProcessor)localObject).k = ((MsgBackupTransportProcessor)localObject).a.createSession(2, Long.parseLong(this.a), i, this.this$0.b);
+    if (this.this$0.j())
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "confirmOnlinePush11b: backup session is invalidate panic error!");
@@ -32,29 +32,29 @@ class MsgBackupTransportProcessor$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("confirmOnlinePush11b: backup createSession = ");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.this$0.k);
       QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, this.this$0.b, this.this$0.c, this.this$0.d);
+    i = this.this$0.a.start(this.this$0.k, this.this$0.g, this.this$0.h, this.this$0.i);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("confirmOnlinePush11b: backup start ret = ");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(", ip = ");
-      ((StringBuilder)localObject).append(this.this$0.b[0]);
+      ((StringBuilder)localObject).append(this.this$0.g[0]);
       ((StringBuilder)localObject).append(", udpport = ");
-      ((StringBuilder)localObject).append(this.this$0.c);
+      ((StringBuilder)localObject).append(this.this$0.h);
       ((StringBuilder)localObject).append(", tcpport = ");
-      ((StringBuilder)localObject).append(this.this$0.d);
+      ((StringBuilder)localObject).append(this.this$0.i);
       QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    MsgBackupAuthProcessor.a().a();
+    MsgBackupAuthProcessor.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor.3
  * JD-Core Version:    0.7.0.1
  */

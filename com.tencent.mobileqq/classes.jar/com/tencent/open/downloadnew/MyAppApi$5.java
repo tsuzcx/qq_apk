@@ -9,7 +9,7 @@ class MyAppApi$5
   
   public void run()
   {
-    if ((this.this$0.e) && (this.this$0.a != null))
+    if ((this.this$0.p) && (this.this$0.q != null))
     {
       this.this$0.d(this.a);
       return;
@@ -19,7 +19,7 @@ class MyAppApi$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.5
  * JD-Core Version:    0.7.0.1
  */

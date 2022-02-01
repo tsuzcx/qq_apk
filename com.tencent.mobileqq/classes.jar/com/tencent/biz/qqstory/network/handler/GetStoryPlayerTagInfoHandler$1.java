@@ -27,18 +27,18 @@ final class GetStoryPlayerTagInfoHandler$1
   {
     SLog.b("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond");
     GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent localGetStoryPlayerTagInfoEvent = new GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent();
-    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList = new ArrayList(paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList);
-    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localGetStoryPlayerTagInfoEvent.a = new ArrayList(paramGetStoryPlayerTagInfoRequest.e);
+    localGetStoryPlayerTagInfoEvent.g = paramErrorMessage;
     if ((!paramErrorMessage.isFail()) && (paramGetStoryPlayerTagInfoResponse != null))
     {
-      SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, vid list:%s, response list:%s", this.jdField_a_of_type_JavaUtilList, paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+      SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, vid list:%s, response list:%s", this.a, paramGetStoryPlayerTagInfoResponse.a);
       paramErrorMessage = (StoryManager)SuperManager.a(5);
-      paramGetStoryPlayerTagInfoRequest = paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetStoryPlayerTagInfoRequest = paramGetStoryPlayerTagInfoRequest.e.iterator();
       while (paramGetStoryPlayerTagInfoRequest.hasNext())
       {
         Object localObject = (String)paramGetStoryPlayerTagInfoRequest.next();
         StoryVideoItem localStoryVideoItem = paramErrorMessage.a((String)localObject);
-        localObject = GetStoryPlayerTagInfoHandler.a((String)localObject, paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+        localObject = GetStoryPlayerTagInfoHandler.a((String)localObject, paramGetStoryPlayerTagInfoResponse.a);
         if (localStoryVideoItem != null)
         {
           if (localObject == null)
@@ -50,18 +50,18 @@ final class GetStoryPlayerTagInfoHandler$1
           }
           else
           {
-            localStoryVideoItem.mTagInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
-            localStoryVideoItem.mCompInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoTagCompInfoBase;
-            localStoryVideoItem.mOALinkInfoJson = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).b;
+            localStoryVideoItem.mTagInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).b;
+            localStoryVideoItem.mCompInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).c;
+            localStoryVideoItem.mOALinkInfoJson = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).d;
             localStoryVideoItem.mOALinkInfo = VideoLinkInfo.a(localStoryVideoItem.mOALinkInfoJson);
           }
           if (localStoryVideoItem.mTagInfoBase != null) {
-            localStoryVideoItem.mTagInfoBase.b = System.currentTimeMillis();
+            localStoryVideoItem.mTagInfoBase.e = System.currentTimeMillis();
           }
           paramErrorMessage.a(localStoryVideoItem);
         }
       }
-      localGetStoryPlayerTagInfoEvent.b = new ArrayList(paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+      localGetStoryPlayerTagInfoEvent.b = new ArrayList(paramGetStoryPlayerTagInfoResponse.a);
       StoryDispatcher.a().dispatch(localGetStoryPlayerTagInfoEvent);
       return;
     }
@@ -71,7 +71,7 @@ final class GetStoryPlayerTagInfoHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetStoryPlayerTagInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

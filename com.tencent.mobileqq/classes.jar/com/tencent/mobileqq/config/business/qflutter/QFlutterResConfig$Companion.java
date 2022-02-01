@@ -39,8 +39,8 @@ public final class QFlutterResConfig$Companion
   @NotNull
   public final Gson a()
   {
-    Lazy localLazy = QFlutterResConfig.a();
-    Companion localCompanion = QFlutterResConfig.a;
+    Lazy localLazy = QFlutterResConfig.c();
+    Companion localCompanion = QFlutterResConfig.b;
     return (Gson)localLazy.getValue();
   }
   
@@ -64,14 +64,14 @@ public final class QFlutterResConfig$Companion
         localStringBuilder.append('[');
         localStringBuilder.append(i);
         localStringBuilder.append("][");
-        localStringBuilder.append(((QConfItem)localObject3).jdField_a_of_type_Int);
+        localStringBuilder.append(((QConfItem)localObject3).a);
         localStringBuilder.append("] Parse json: ");
-        localStringBuilder.append(((QConfItem)localObject3).jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(((QConfItem)localObject3).b);
         ((ILog)localObject1).a("QFlutterResConfig", 2, localStringBuilder.toString());
       }
-      localObject1 = QFlutterResConfig.a.a(((QConfItem)localObject3).jdField_a_of_type_JavaLangString);
+      localObject1 = QFlutterResConfig.b.a(((QConfItem)localObject3).b);
       if (localObject1 != null) {
-        ((QFlutterResConfig)localObject1).a(((QConfItem)localObject3).jdField_a_of_type_Int);
+        ((QFlutterResConfig)localObject1).a(((QConfItem)localObject3).a);
       } else {
         localObject1 = null;
       }
@@ -86,7 +86,7 @@ public final class QFlutterResConfig$Companion
     {
       localObject2 = ((Iterator)localObject1).next();
       localObject3 = (QFlutterResConfig)localObject2;
-      i = ((CharSequence)((QFlutterResConfig)localObject3).a()).length();
+      i = ((CharSequence)((QFlutterResConfig)localObject3).b()).length();
       k = 1;
       if (i == 0) {
         i = 1;
@@ -95,7 +95,7 @@ public final class QFlutterResConfig$Companion
       }
       j = k;
       if (i == 0) {
-        if (Intrinsics.areEqual(((QFlutterResConfig)localObject3).a(), "feature/_8.4.17_ExtendFriend")) {
+        if (Intrinsics.areEqual(((QFlutterResConfig)localObject3).b(), "feature/_8.4.17_ExtendFriend")) {
           j = k;
         } else {
           j = 0;
@@ -124,7 +124,7 @@ public final class QFlutterResConfig$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.QFlutterResConfig.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.qqgamepub.fragment;
 
-import com.tencent.mobileqq.qqgamepub.web.view.QQGameIndicator2;
-import com.tencent.mobileqq.qqgamepub.web.view.UnreadTipLayout;
+import android.view.View;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.OnGetPathListener;
+import com.tencent.mobileqq.qwallet.preload.IPreloadService.PathResult;
 
 class QQGameFeedWebFragment$3
-  implements Runnable
+  implements IPreloadService.OnGetPathListener
 {
-  QQGameFeedWebFragment$3(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  QQGameFeedWebFragment$3(QQGameFeedWebFragment paramQQGameFeedWebFragment, View paramView) {}
   
-  public void run()
+  public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    QQGameFeedWebFragment.a(this.this$0).setVisibility(4);
-    QQGameFeedWebFragment.a(this.this$0).a();
+    QQGameFeedWebFragment.a(this.b, paramInt, paramPathResult, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.fragment.QQGameFeedWebFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -190,7 +190,7 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.mLayout.a(paramInt1, paramInt2);
+    Object localObject1 = this.mLayout.c(paramInt1, paramInt2);
     if ((localObject1 instanceof EmoticonSpan)) {
       localObject1 = (EmoticonSpan)localObject1;
     } else {
@@ -198,8 +198,8 @@ public class ETTextView
     }
     if (localObject1 != null)
     {
-      localObject1 = (BubbleInfo)getTag(2131364116);
-      Object localObject2 = (ChatMessage)getTag(2131364568);
+      localObject1 = (BubbleInfo)getTag(2131430083);
+      Object localObject2 = (ChatMessage)getTag(2131430627);
       Resources localResources = getResources();
       boolean bool = false;
       if (localObject2 != null) {
@@ -208,15 +208,15 @@ public class ETTextView
       localObject2 = getBackground();
       if ((localObject2 != null) && ((localObject2 instanceof VipBubbleDrawable)))
       {
-        ((VipBubbleDrawable)localObject2).jdField_a_of_type_Boolean = true;
+        ((VipBubbleDrawable)localObject2).a = true;
         return;
       }
       if ((localObject2 != null) && (localObject1 != null))
       {
         if (bool) {
-          paramInt1 = 2130850335;
+          paramInt1 = 2130852126;
         } else {
-          paramInt1 = 2130850159;
+          paramInt1 = 2130851944;
         }
         ((BubbleInfo)localObject1).a(this, localResources.getDrawable(paramInt1));
       }
@@ -310,7 +310,7 @@ public class ETTextView
     if (this.mFounderColorLayout != null)
     {
       this.mMsgId = System.currentTimeMillis();
-      this.mFounderColorLayout.i();
+      this.mFounderColorLayout.j();
     }
   }
   
@@ -403,7 +403,7 @@ public class ETTextView
       {
         i = getTextGraphMap().a(startIndex());
         j = getTextGraphMap().a(endIndex());
-        ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).a(i, j);
+        ((FounderBaseLayout.FounderHighlightInterface)this.mFounderColorLayout).b(i, j);
       }
     }
     else if (isUsingHYFont())
@@ -434,7 +434,7 @@ public class ETTextView
   public boolean isDrawDefaultByHY()
   {
     ETFont localETFont = this.mFont;
-    return (localETFont != null) && (localETFont.mFontId == 9999) && (!android.text.TextUtils.isEmpty(this.mFont.mFontPath)) && (VasShieldFont.jdField_a_of_type_Int == 4);
+    return (localETFont != null) && (localETFont.mFontId == 9999) && (!android.text.TextUtils.isEmpty(this.mFont.mFontPath)) && (VasShieldFont.b == 4);
   }
   
   public boolean isUseExpressFont()
@@ -483,7 +483,7 @@ public class ETTextView
     if (hasHYFont())
     {
       ETLayout localETLayout = this.mLayout;
-      if ((localETLayout != null) && (localETLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+      if ((localETLayout != null) && (localETLayout.k.get())) {
         return true;
       }
     }
@@ -497,22 +497,22 @@ public class ETTextView
     if (bool1)
     {
       Object localObject1 = ((BaseActivity)getContext()).getChatFragment();
-      if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
+      if ((localObject1 != null) && (((ChatFragment)localObject1).k() != null) && (((ChatFragment)localObject1).k().U != null))
       {
-        localObject1 = ((ChatFragment)localObject1).a().a;
+        localObject1 = ((ChatFragment)localObject1).k().U;
         localObject1 = AIOUtils.a((ListView)localObject1, AIOUtils.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
         if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof TextItemBuilder.Holder)))
         {
           localObject2 = (TextItemBuilder.Holder)((View)localObject1).getTag();
-          if ((((TextItemBuilder.Holder)localObject2).d != null) && (((TextItemBuilder.Holder)localObject2).d.getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299168))) {
+          if ((((TextItemBuilder.Holder)localObject2).v != null) && (((TextItemBuilder.Holder)localObject2).v.getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299920))) {
             return true;
           }
         }
-        else if ((localObject1 != null) && ((AIOUtils.a((View)localObject1) instanceof RichStatItemBuilder.Holder)))
+        else if ((localObject1 != null) && ((AIOUtils.b((View)localObject1) instanceof RichStatItemBuilder.Holder)))
         {
-          localObject2 = (RichStatItemBuilder.Holder)AIOUtils.a((View)localObject1);
-          if (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299168)) {
+          localObject2 = (RichStatItemBuilder.Holder)AIOUtils.b((View)localObject1);
+          if (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299920)) {
             return true;
           }
         }
@@ -625,7 +625,7 @@ public class ETTextView
       ??? = this.mTextSelection;
       if (??? != null)
       {
-        ??? = ((ETTextSelection)???).a();
+        ??? = ((ETTextSelection)???).b();
         this.mSelectPaint.setColor(highlightBackgroundColor());
         if (??? != null)
         {
@@ -638,7 +638,7 @@ public class ETTextView
           }
         }
       }
-      this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
+      this.mLayout.c.setColor(getCurrentTextColor());
     }
     for (;;)
     {
@@ -798,7 +798,7 @@ public class ETTextView
           int k = View.MeasureSpec.getSize(paramInt2);
           Object localObject3 = this.mLayout;
           localObject1 = null;
-          if ((localObject3 == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
+          if ((localObject3 == null) || (this.mLayout.b != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.c))) || (!this.mCacheMeasureResult) || (this.mLayout.h != this.mMagicFont))
           {
             this.mDecorRunning = false;
             this.mLayout = new ETLayout();
@@ -829,9 +829,9 @@ public class ETTextView
             float f1 = ((Paint.FontMetrics)localObject3).descent;
             float f2 = ((Paint.FontMetrics)localObject3).ascent;
             float f3 = ((Paint.FontMetrics)localObject3).leading;
-            this.mLayout.jdField_a_of_type_Int = ((int)(f1 - f2 + f3));
-            this.mLayout.jdField_a_of_type_Long = this.mMsgId;
-            this.mLayout.jdField_b_of_type_Boolean = this.mMagicFont;
+            this.mLayout.a = ((int)(f1 - f2 + f3));
+            this.mLayout.b = this.mMsgId;
+            this.mLayout.h = this.mMagicFont;
             this.mLayout.a(this.mLinkBackcolor);
             localObject3 = new ETFont(this.mFont.mFontId, this.mFont.mFontPath, getTextSize());
             ((ETFont)localObject3).copy(this.mFont);
@@ -844,7 +844,7 @@ public class ETTextView
             if (i1 == -2147483648) {
               i = Math.min(m, j);
             }
-            if (this.mLayout.jdField_b_of_type_Boolean)
+            if (this.mLayout.h)
             {
               f1 = FontManagerConstants.magicFontNormalSize1;
               if (FontSettingManager.getFontLevel() == 18.0F) {
@@ -867,17 +867,17 @@ public class ETTextView
             if (!bool)
             {
               this.mFont.mFontId = 0;
-              this.mLayout.jdField_a_of_type_Long = -1L;
+              this.mLayout.b = -1L;
               super.onMeasure(paramInt1, paramInt2);
               return;
             }
-            if ((this.mLayout.jdField_b_of_type_Int >= 2048) || (this.mLayout.c >= 2048)) {
+            if ((this.mLayout.e >= 2048) || (this.mLayout.f >= 2048)) {
               continue;
             }
-            if (!this.mLayout.jdField_a_of_type_Boolean)
+            if (!this.mLayout.g)
             {
-              i = this.mLayout.jdField_b_of_type_Int;
-              j = this.mLayout.c;
+              i = this.mLayout.e;
+              j = this.mLayout.f;
               if (this.mDecoration == null) {
                 break label1425;
               }
@@ -894,7 +894,7 @@ public class ETTextView
             }
             localObject1 = this.mDecoration.mMargins;
             break label1431;
-            j = this.mLayout.jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
+            j = this.mLayout.e + getPaddingLeft() + getPaddingRight();
             i = j;
             if (localObject1 != null) {
               i = j + (((Rect)localObject1).left + ((Rect)localObject1).right);
@@ -906,7 +906,7 @@ public class ETTextView
             }
             else
             {
-              j = this.mLayout.c + getPaddingTop() + getPaddingBottom();
+              j = this.mLayout.f + getPaddingTop() + getPaddingBottom();
               i = j;
               if (localObject1 != null) {
                 i = j + (((Rect)localObject1).top + ((Rect)localObject1).bottom);
@@ -933,7 +933,7 @@ public class ETTextView
         QLog.e("ETTextView", 1, "measure fail ", localThrowable);
         localThrowable.printStackTrace();
         this.mFont.mFontId = 0;
-        this.mLayout.jdField_a_of_type_Long = -1L;
+        this.mLayout.b = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
           VasMonitorHandler.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
@@ -1101,7 +1101,7 @@ public class ETTextView
   {
     FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
     if (localFounderBaseLayout != null) {
-      localFounderBaseLayout.f();
+      localFounderBaseLayout.g();
     }
   }
   
@@ -1109,7 +1109,7 @@ public class ETTextView
   {
     FounderBaseLayout localFounderBaseLayout = this.mFounderColorLayout;
     if (localFounderBaseLayout != null) {
-      localFounderBaseLayout.g();
+      localFounderBaseLayout.h();
     }
   }
   
@@ -1125,17 +1125,17 @@ public class ETTextView
   public void setDefaultFont(Typeface paramTypeface, long paramLong)
   {
     setTypeface(paramTypeface);
-    if (VasShieldFont.jdField_a_of_type_Int == 4)
+    if (VasShieldFont.b == 4)
     {
       paramTypeface = this.mFont;
       if (paramTypeface == null)
       {
-        this.mFont = new ETFont(9999, VasShieldFont.a(), getTextSize());
+        this.mFont = new ETFont(9999, VasShieldFont.b(), getTextSize());
       }
       else
       {
         paramTypeface.mFontId = 9999;
-        paramTypeface.setPath(VasShieldFont.a());
+        paramTypeface.setPath(VasShieldFont.b());
         this.mFont.setSize(getTextSize());
       }
       this.mMsgId = paramLong;
@@ -1364,8 +1364,8 @@ public class ETTextView
       {
         if ((this.mFounderColorLayout != null) && ((this.shouldStartAnimation) || (paramBoolean1) || (paramBoolean2)))
         {
-          i = this.mFounderColorLayout.e;
-          localObject = this.mFounderColorLayout.i;
+          i = this.mFounderColorLayout.s;
+          localObject = this.mFounderColorLayout.p;
           if (localObject != null)
           {
             j = localObject[0];
@@ -1398,8 +1398,8 @@ public class ETTextView
         localObject = this.mFounderColorLayout;
         if (localObject != null)
         {
-          i = ((FounderBaseLayout)localObject).e;
-          localObject = this.mFounderColorLayout.i;
+          i = ((FounderBaseLayout)localObject).s;
+          localObject = this.mFounderColorLayout.p;
           if (localObject != null)
           {
             j = localObject[0];
@@ -1446,7 +1446,7 @@ public class ETTextView
       localObject = this.mFounderColorLayout;
       if ((localObject instanceof FounderBaseLayout.FounderHighlightInterface))
       {
-        paramInt1 = ((FounderBaseLayout.FounderHighlightInterface)localObject).a(paramInt1, paramInt2);
+        paramInt1 = ((FounderBaseLayout.FounderHighlightInterface)localObject).c(paramInt1, paramInt2);
         return getTextGraphMap().b(paramInt1);
       }
       return -1;
@@ -1456,7 +1456,7 @@ public class ETTextView
       localObject = this.mTextSelection;
       if (localObject != null)
       {
-        paramInt1 = ((ETTextSelection)localObject).a(paramInt1, paramInt2);
+        paramInt1 = ((ETTextSelection)localObject).b(paramInt1, paramInt2);
         return getTextGraphMap().b(paramInt1);
       }
       return -1;

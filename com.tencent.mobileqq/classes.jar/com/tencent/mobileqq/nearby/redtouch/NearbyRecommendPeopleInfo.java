@@ -5,28 +5,28 @@ import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
 
 public class NearbyRecommendPeopleInfo
 {
-  public static String a = "0";
   public static List<oidb_0x8dd.NearbyPeople> a;
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
+  public static String b = "0";
   
   public static List<oidb_0x8dd.NearbyPeople> a()
   {
-    return jdField_a_of_type_JavaUtilList;
+    return a;
   }
   
   public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
   {
-    jdField_a_of_type_JavaUtilList = paramList;
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramList;
+    b = paramString;
+  }
+  
+  public static String b()
+  {
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyRecommendPeopleInfo
  * JD-Core Version:    0.7.0.1
  */

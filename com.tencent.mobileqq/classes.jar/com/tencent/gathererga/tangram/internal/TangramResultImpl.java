@@ -6,39 +6,34 @@ import com.tencent.gathererga.tangram.TangramResult;
 public class TangramResultImpl
   implements TangramResult
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -2147483648L;
-  private Object jdField_a_of_type_JavaLangObject = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private long a = -2147483648L;
   private long b = -1L;
+  private boolean c = false;
+  private Object d = null;
+  private String e = null;
+  private int f = -1;
   
   public TangramResultImpl(ProviderResult paramProviderResult, String paramString)
   {
     if (paramProviderResult != null)
     {
-      this.jdField_a_of_type_Long = paramProviderResult.a();
-      this.jdField_a_of_type_Boolean = paramProviderResult.a();
-      this.jdField_a_of_type_Int = paramProviderResult.a();
-      if (this.jdField_a_of_type_Int == 2)
+      this.a = paramProviderResult.a();
+      this.c = paramProviderResult.c();
+      this.f = paramProviderResult.d();
+      if (this.f == 2)
       {
-        if ((paramProviderResult.a() instanceof String)) {
-          this.jdField_a_of_type_JavaLangString = ((String)paramProviderResult.a());
+        if ((paramProviderResult.b() instanceof String)) {
+          this.e = ((String)paramProviderResult.b());
         }
-        this.jdField_a_of_type_JavaLangObject = null;
+        this.d = null;
       }
       else
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_JavaLangObject = paramProviderResult.a();
+        this.e = paramString;
+        this.d = paramProviderResult.b();
       }
-      this.b = paramProviderResult.b();
+      this.b = paramProviderResult.e();
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public long a()
@@ -46,24 +41,29 @@ public class TangramResultImpl
     return this.b;
   }
   
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public long b()
   {
-    return this.jdField_a_of_type_Long;
+    return this.a;
+  }
+  
+  public Object c()
+  {
+    return this.d;
+  }
+  
+  public String d()
+  {
+    return this.e;
+  }
+  
+  public int e()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.tangram.internal.TangramResultImpl
  * JD-Core Version:    0.7.0.1
  */

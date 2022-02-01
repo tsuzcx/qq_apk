@@ -15,7 +15,7 @@ class ShareGroupManager$1
   public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
     Object localObject;
-    if (this.jdField_a_of_type_Int == paramVideoCollectionItem.videoVidList.size())
+    if (this.d == paramVideoCollectionItem.videoVidList.size())
     {
       boolean bool = true;
       paramBoolean = bool;
@@ -31,12 +31,12 @@ class ShareGroupManager$1
     if (paramBoolean)
     {
       localObject = new ShareGroupManager.GetFeedIdVidListEvent();
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).jdField_a_of_type_JavaUtilArrayList = paramVideoCollectionItem.videoVidList;
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).a = this.e;
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).b = paramVideoCollectionItem.videoVidList;
       StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupManager.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.g.a(this.e, this.f);
   }
 }
 

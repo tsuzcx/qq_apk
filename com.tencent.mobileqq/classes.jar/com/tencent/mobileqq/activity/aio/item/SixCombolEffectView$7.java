@@ -12,22 +12,22 @@ class SixCombolEffectView$7
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+    if (!SixCombolEffectView.i) {
       return;
     }
-    SixCombolEffectView.jdField_a_of_type_Int = 4;
+    SixCombolEffectView.j = 4;
     if (QLog.isColorLevel())
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("Animation 4 ,mAnimationState = ");
-      paramAnimator.append(SixCombolEffectView.jdField_a_of_type_Int);
+      paramAnimator.append(SixCombolEffectView.j);
       QLog.w("SixCombolEffectView", 2, paramAnimator.toString());
     }
-    if (SixCombolEffectView.a(this.a) != null)
+    if (SixCombolEffectView.d(this.a) != null)
     {
-      paramAnimator = SixCombolEffectView.a(this.a);
+      paramAnimator = SixCombolEffectView.e(this.a);
       if (paramAnimator != null) {
-        SixCombolEffectView.a(this.a).a(paramAnimator);
+        SixCombolEffectView.d(this.a).a(paramAnimator);
       }
     }
   }
@@ -38,19 +38,19 @@ class SixCombolEffectView$7
     if (SixCombolEffectView.a(this.a)) {
       return;
     }
-    SixCombolEffectView.jdField_a_of_type_Int = 3;
+    SixCombolEffectView.j = 3;
     if (QLog.isColorLevel())
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("Animation 3 ,mAnimationState = ");
-      paramAnimator.append(SixCombolEffectView.jdField_a_of_type_Int);
+      paramAnimator.append(SixCombolEffectView.j);
       QLog.w("SixCombolEffectView", 2, paramAnimator.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.7
  * JD-Core Version:    0.7.0.1
  */

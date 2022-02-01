@@ -55,10 +55,10 @@ public class HotChatSCMng
   private HotChatNote findShowHotChatNote(HotChatSCMng.HotchatNotice paramHotchatNotice, HotChatNote paramHotChatNote1, HotChatNote paramHotChatNote2, long paramLong, int paramInt)
   {
     HotChatNote localHotChatNote = paramHotChatNote1;
-    if (paramHotchatNotice.jdField_a_of_type_Int >= 0)
+    if (paramHotchatNotice.b >= 0)
     {
       localHotChatNote = paramHotChatNote1;
-      if (paramHotchatNotice.jdField_a_of_type_Int < paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size())
+      if (paramHotchatNotice.b < paramHotchatNotice.c.size())
       {
         int i;
         if (paramInt != 0)
@@ -71,15 +71,15 @@ public class HotChatSCMng
             }
             else
             {
-              i = paramHotchatNotice.jdField_a_of_type_Int;
+              i = paramHotchatNotice.b;
               for (;;)
               {
                 paramHotChatNote2 = paramHotChatNote1;
-                if (i >= paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size()) {
+                if (i >= paramHotchatNotice.c.size()) {
                   break;
                 }
-                paramHotChatNote2 = (HotChatNote)paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.get(i);
-                if ((paramHotChatNote2 != null) && (!paramHotChatNote2.jdField_a_of_type_Boolean)) {
+                paramHotChatNote2 = (HotChatNote)paramHotchatNotice.c.get(i);
+                if ((paramHotChatNote2 != null) && (!paramHotChatNote2.g)) {
                   break;
                 }
                 i += 1;
@@ -88,12 +88,12 @@ public class HotChatSCMng
           }
           else
           {
-            localHotChatNote = (HotChatNote)paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.get(paramHotchatNotice.jdField_a_of_type_Int);
+            localHotChatNote = (HotChatNote)paramHotchatNotice.c.get(paramHotchatNotice.b);
             paramHotChatNote2 = paramHotChatNote1;
-            if (paramLong >= localHotChatNote.jdField_a_of_type_Long)
+            if (paramLong >= localHotChatNote.e)
             {
               paramHotChatNote2 = paramHotChatNote1;
-              if (paramLong <= localHotChatNote.jdField_b_of_type_Long)
+              if (paramLong <= localHotChatNote.f)
               {
                 paramHotChatNote2 = paramHotChatNote1;
                 if (checkHasGrabHbTask(localHotChatNote)) {
@@ -105,17 +105,17 @@ public class HotChatSCMng
         }
         else
         {
-          i = paramHotchatNotice.jdField_a_of_type_Int;
+          i = paramHotchatNotice.b;
           for (;;)
           {
             paramHotChatNote2 = paramHotChatNote1;
-            if (i >= paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size()) {
+            if (i >= paramHotchatNotice.c.size()) {
               break;
             }
-            paramHotChatNote2 = (HotChatNote)paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if ((paramHotChatNote2 != null) && (!paramHotChatNote2.jdField_a_of_type_Boolean) && (paramLong >= paramHotChatNote2.jdField_a_of_type_Long) && (paramLong <= paramHotChatNote2.jdField_b_of_type_Long) && (checkHasGrabHbTask(paramHotChatNote2)))
+            paramHotChatNote2 = (HotChatNote)paramHotchatNotice.c.get(i);
+            if ((paramHotChatNote2 != null) && (!paramHotChatNote2.g) && (paramLong >= paramHotChatNote2.e) && (paramLong <= paramHotChatNote2.f) && (checkHasGrabHbTask(paramHotChatNote2)))
             {
-              paramHotchatNotice.jdField_a_of_type_Int = i;
+              paramHotchatNotice.b = i;
               break;
             }
             i += 1;
@@ -124,7 +124,7 @@ public class HotChatSCMng
         localHotChatNote = paramHotChatNote2;
         if (QLog.isDevelopLevel())
         {
-          NearbyUtils.a("HotchatSCMng", "findShowHotChatNote", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramHotchatNotice.jdField_a_of_type_Int), paramHotChatNote2 });
+          NearbyUtils.a("HotchatSCMng", "findShowHotChatNote", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramHotchatNotice.b), paramHotChatNote2 });
           localHotChatNote = paramHotChatNote2;
         }
       }
@@ -137,7 +137,7 @@ public class HotChatSCMng
   private String[] getConfigs()
   {
     // Byte code:
-    //   0: ldc 113
+    //   0: ldc 117
     //   2: astore 6
     //   4: aconst_null
     //   5: astore 7
@@ -147,22 +147,22 @@ public class HotChatSCMng
     //   12: astore 4
     //   14: aload_0
     //   15: getfield 52	com/tencent/mobileqq/hotchat/HotChatSCMng:mApp	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   18: invokevirtual 119	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   21: invokestatic 125	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   18: invokevirtual 123	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   21: invokestatic 129	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
     //   24: astore 8
     //   26: aload 5
     //   28: astore 4
-    //   30: getstatic 130	android/os/Build$VERSION:SDK_INT	I
+    //   30: getstatic 134	android/os/Build$VERSION:SDK_INT	I
     //   33: bipush 11
     //   35: if_icmplt +81 -> 116
     //   38: aload 5
     //   40: astore 4
     //   42: aload 8
     //   44: ldc 12
-    //   46: new 132	java/util/HashSet
+    //   46: new 136	java/util/HashSet
     //   49: dup
-    //   50: invokespecial 133	java/util/HashSet:<init>	()V
-    //   53: invokeinterface 139 3 0
+    //   50: invokespecial 137	java/util/HashSet:<init>	()V
+    //   53: invokeinterface 143 3 0
     //   58: astore 8
     //   60: aload 7
     //   62: astore_3
@@ -173,25 +173,25 @@ public class HotChatSCMng
     //   72: aload 7
     //   74: astore_3
     //   75: aload 8
-    //   77: invokeinterface 142 1 0
+    //   77: invokeinterface 146 1 0
     //   82: ifle +145 -> 227
     //   85: aload 5
     //   87: astore 4
     //   89: aload 8
     //   91: aload 8
-    //   93: invokeinterface 142 1 0
-    //   98: anewarray 144	java/lang/String
-    //   101: invokeinterface 148 2 0
-    //   106: checkcast 150	[Ljava/lang/String;
-    //   109: checkcast 150	[Ljava/lang/String;
+    //   93: invokeinterface 146 1 0
+    //   98: anewarray 148	java/lang/String
+    //   101: invokeinterface 152 2 0
+    //   106: checkcast 154	[Ljava/lang/String;
+    //   109: checkcast 154	[Ljava/lang/String;
     //   112: astore_3
     //   113: goto +114 -> 227
     //   116: aload 5
     //   118: astore 4
     //   120: aload 8
-    //   122: ldc 152
+    //   122: ldc 156
     //   124: iconst_0
-    //   125: invokeinterface 156 3 0
+    //   125: invokeinterface 160 3 0
     //   130: istore_2
     //   131: aload 7
     //   133: astore_3
@@ -200,7 +200,7 @@ public class HotChatSCMng
     //   138: aload 5
     //   140: astore 4
     //   142: iload_2
-    //   143: anewarray 144	java/lang/String
+    //   143: anewarray 148	java/lang/String
     //   146: astore 5
     //   148: iconst_0
     //   149: istore_1
@@ -211,21 +211,21 @@ public class HotChatSCMng
     //   155: if_icmpge +72 -> 227
     //   158: aload 5
     //   160: astore 4
-    //   162: new 158	java/lang/StringBuilder
+    //   162: new 162	java/lang/StringBuilder
     //   165: dup
-    //   166: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   166: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   169: astore_3
     //   170: aload 5
     //   172: astore 4
     //   174: aload_3
-    //   175: ldc 161
-    //   177: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: ldc 165
+    //   177: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 5
     //   183: astore 4
     //   185: aload_3
     //   186: iload_1
-    //   187: invokevirtual 168	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   190: pop
     //   191: aload 5
     //   193: astore 4
@@ -233,9 +233,9 @@ public class HotChatSCMng
     //   197: iload_1
     //   198: aload 8
     //   200: aload_3
-    //   201: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: ldc 113
-    //   206: invokeinterface 176 3 0
+    //   201: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: ldc 117
+    //   206: invokeinterface 180 3 0
     //   211: aastore
     //   212: iload_1
     //   213: iconst_1
@@ -244,19 +244,19 @@ public class HotChatSCMng
     //   216: goto -66 -> 150
     //   219: astore_3
     //   220: aload_3
-    //   221: invokevirtual 179	java/lang/Throwable:printStackTrace	()V
+    //   221: invokevirtual 183	java/lang/Throwable:printStackTrace	()V
     //   224: aload 4
     //   226: astore_3
-    //   227: invokestatic 182	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   227: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   230: ifeq +67 -> 297
     //   233: aload_3
     //   234: ifnonnull +10 -> 244
-    //   237: ldc 184
+    //   237: ldc 188
     //   239: astore 4
     //   241: goto +10 -> 251
     //   244: aload_3
     //   245: arraylength
-    //   246: invokestatic 99	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   246: invokestatic 102	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   249: astore 4
     //   251: aload 6
     //   253: astore 5
@@ -276,7 +276,7 @@ public class HotChatSCMng
     //   276: anewarray 4	java/lang/Object
     //   279: dup
     //   280: iconst_0
-    //   281: ldc 185
+    //   281: ldc 189
     //   283: aastore
     //   284: dup
     //   285: iconst_1
@@ -286,7 +286,7 @@ public class HotChatSCMng
     //   290: iconst_2
     //   291: aload 5
     //   293: aastore
-    //   294: invokestatic 188	com/tencent/mobileqq/nearby/NearbyUtils:a	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   294: invokestatic 192	com/tencent/mobileqq/nearby/NearbyUtils:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   297: aload_3
     //   298: areturn
     // Local variable table:
@@ -436,26 +436,26 @@ public class HotChatSCMng
   
   private HotChatSCMng.HotchatNotice sortHotChatNotice(HotChatSCMng.HotchatNotice paramHotchatNotice, HotChatNote paramHotChatNote, long paramLong, String paramString)
   {
-    if (paramHotchatNotice.jdField_a_of_type_Int >= 0) {
+    if (paramHotchatNotice.b >= 0) {
       return paramHotchatNotice;
     }
     if (this.mComparator == null) {
       this.mComparator = new HotChatSCMng.1(this);
     }
-    Collections.sort(paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList, this.mComparator);
+    Collections.sort(paramHotchatNotice.c, this.mComparator);
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("HotchatSCMng", "sort start", new Object[] { paramString });
     }
     int i = 0;
-    while (i < paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < paramHotchatNotice.c.size())
     {
-      paramHotChatNote = (HotChatNote)paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.get(i);
+      paramHotChatNote = (HotChatNote)paramHotchatNotice.c.get(i);
       if (paramHotChatNote != null)
       {
-        if ((paramHotchatNotice.jdField_a_of_type_Int < 0) && (paramLong <= paramHotChatNote.jdField_b_of_type_Long)) {
-          paramHotchatNotice.jdField_a_of_type_Int = i;
-        } else if ((paramLong <= paramHotChatNote.jdField_b_of_type_Long) && (paramHotChatNote.jdField_a_of_type_Boolean)) {
-          paramHotchatNotice.jdField_a_of_type_Int = i;
+        if ((paramHotchatNotice.b < 0) && (paramLong <= paramHotChatNote.f)) {
+          paramHotchatNotice.b = i;
+        } else if ((paramLong <= paramHotChatNote.f) && (paramHotChatNote.g)) {
+          paramHotchatNotice.b = i;
         }
         if (QLog.isDevelopLevel()) {
           NearbyUtils.a("HotchatSCMng", String.valueOf(i), new Object[] { paramHotChatNote });
@@ -463,14 +463,14 @@ public class HotChatSCMng
       }
       i += 1;
     }
-    if (paramHotchatNotice.jdField_a_of_type_Int < 0) {
-      paramHotchatNotice.jdField_a_of_type_Int = paramHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramHotchatNotice.b < 0) {
+      paramHotchatNotice.b = paramHotchatNotice.c.size();
     }
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("HotchatSCMng", "sort end", new Object[] { paramString });
     }
     if (QLog.isDevelopLevel()) {
-      NearbyUtils.a("HotchatSCMng", "sortHotChatNotice", new Object[] { Integer.valueOf(paramHotchatNotice.jdField_a_of_type_Int) });
+      NearbyUtils.a("HotchatSCMng", "sortHotChatNotice", new Object[] { Integer.valueOf(paramHotchatNotice.b) });
     }
     return paramHotchatNotice;
   }
@@ -514,10 +514,10 @@ public class HotChatSCMng
   
   public boolean checkHasGrabHbTask(HotChatNote paramHotChatNote)
   {
-    if ((paramHotChatNote != null) && (!TextUtils.isEmpty(paramHotChatNote.jdField_b_of_type_JavaLangString)))
+    if ((paramHotChatNote != null) && (!TextUtils.isEmpty(paramHotChatNote.d)))
     {
       PortalManager localPortalManager = (PortalManager)this.mApp.getManager(QQManagerFactory.MGR_PORTAL);
-      if ((localPortalManager == null) || (!localPortalManager.a()))
+      if ((localPortalManager == null) || (!localPortalManager.f()))
       {
         bool = false;
         break label52;
@@ -549,17 +549,17 @@ public class HotChatSCMng
       boolean bool1;
       if (paramString.exists())
       {
-        if (!TextUtils.isEmpty(paramConfigData.jdField_b_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramConfigData.b))
         {
           localObject = MD5.getFileMD5(paramString);
-          bool2 = paramConfigData.jdField_b_of_type_JavaLangString.equals(localObject);
+          bool2 = paramConfigData.b.equals(localObject);
           bool1 = bool2;
           if (!bool2)
           {
             bool1 = bool2;
             if (QLog.isColorLevel())
             {
-              NearbyUtils.a("download", new Object[] { "cache md5 confilict", localObject, paramConfigData.jdField_b_of_type_JavaLangString });
+              NearbyUtils.a("download", new Object[] { "cache md5 confilict", localObject, paramConfigData.b });
               bool1 = bool2;
             }
           }
@@ -580,17 +580,17 @@ public class HotChatSCMng
         if (bool1)
         {
           bool2 = bool1;
-          if (!TextUtils.isEmpty(paramConfigData.jdField_b_of_type_JavaLangString))
+          if (!TextUtils.isEmpty(paramConfigData.b))
           {
             localObject = MD5.getFileMD5(paramString);
-            bool1 = paramConfigData.jdField_b_of_type_JavaLangString.equals(localObject);
+            bool1 = paramConfigData.b.equals(localObject);
             bool2 = bool1;
             if (!bool1)
             {
               bool2 = bool1;
               if (QLog.isColorLevel())
               {
-                NearbyUtils.a("download", new Object[] { "md5 conflict", paramConfigData.jdField_b_of_type_JavaLangString, localObject });
+                NearbyUtils.a("download", new Object[] { "md5 conflict", paramConfigData.b, localObject });
                 bool2 = bool1;
               }
             }
@@ -665,7 +665,7 @@ public class HotChatSCMng
     if (localHotchatNotice != null)
     {
       localObject1 = localObject2;
-      if (localHotchatNotice.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      if (localHotchatNotice.c.size() > 0) {
         localObject1 = findShowHotChatNote(sortHotChatNotice(localHotchatNotice, null, paramLong, paramString), null, null, paramLong, paramInt);
       }
     }
@@ -812,13 +812,13 @@ public class HotChatSCMng
         }
         NearbyUtils.a("HotchatSCMng", new Object[] { "parseNotice exception", paramString.toString() });
       }
-      paramString = new HotChatSCMng.ParserHandler(this, (HotChatSCMng.HotchatNotice)localObject1, (HotChatNote)localObject3, localXmlPullParser).b();
+      paramString = new HotChatSCMng.ParserHandler(this, (HotChatSCMng.HotchatNotice)localObject1, (HotChatNote)localObject3, localXmlPullParser).d();
       localObject1 = paramString.a();
-      paramString = paramString.a();
+      paramString = paramString.b();
       break label341;
-      paramString = new HotChatSCMng.ParserHandler(this, (HotChatSCMng.HotchatNotice)localObject1, (HotChatNote)localObject3, localXmlPullParser).a();
+      paramString = new HotChatSCMng.ParserHandler(this, (HotChatSCMng.HotchatNotice)localObject1, (HotChatNote)localObject3, localXmlPullParser).c();
       localObject1 = paramString.a();
-      paramString = paramString.a();
+      paramString = paramString.b();
       break label341;
     }
     for (;;)
@@ -992,7 +992,7 @@ public class HotChatSCMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatSCMng
  * JD-Core Version:    0.7.0.1
  */

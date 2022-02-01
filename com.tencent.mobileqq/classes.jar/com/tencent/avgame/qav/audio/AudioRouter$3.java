@@ -10,11 +10,11 @@ class AudioRouter$3
   
   public void run()
   {
-    boolean bool = "android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED".equals(this.jdField_a_of_type_AndroidContentIntent.getAction());
+    boolean bool = "android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED".equals(this.a.getAction());
     int i = -1;
     if (bool)
     {
-      int j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
+      int j = this.a.getIntExtra("android.bluetooth.profile.extra.STATE", 10);
       QLog.d("AudioRouter", 1, String.format("onReceive ACTION_AUDIO_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(j) }));
       if (j == 12)
       {
@@ -29,9 +29,9 @@ class AudioRouter$3
         AudioRouter.a(this.this$0, 2);
       }
     }
-    else if ("android.intent.action.HEADSET_PLUG".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("android.intent.action.HEADSET_PLUG".equals(this.b))
     {
-      i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("state", -1);
+      i = this.a.getIntExtra("state", -1);
       QLog.d("AudioRouter", 1, String.format("onReceive ACTION_HEADSET_PLUG state=%s", new Object[] { Integer.valueOf(i) }));
       if (i == 0)
       {
@@ -42,9 +42,9 @@ class AudioRouter$3
         AudioRouter.a(this.this$0, 0, 3);
       }
     }
-    else if ("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(this.b))
     {
-      i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
+      i = this.a.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
       QLog.d("AudioRouter", 1, String.format("onReceive ACTION_CONNECTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
       if (i == 2)
       {
@@ -55,9 +55,9 @@ class AudioRouter$3
         AudioRouter.a(this.this$0, 2);
       }
     }
-    else if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(this.jdField_a_of_type_JavaLangString))
+    else if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(this.b))
     {
-      i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
+      i = this.a.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
       QLog.d("AudioRouter", 1, String.format("onReceive ACTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
       if ((i == 10) || (i == 13)) {
         AudioRouter.a(this.this$0, 2);

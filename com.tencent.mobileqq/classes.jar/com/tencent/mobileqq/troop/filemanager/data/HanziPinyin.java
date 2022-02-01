@@ -4,26 +4,26 @@ import android.content.Context;
 
 public class HanziPinyin
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
+  int c;
   
   public HanziPinyin(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramString2.length();
+    this.c = paramString2.length();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2;
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append(", hanzi = ");
-      localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder2.append(this.a);
       localStringBuilder1.append(localStringBuilder2.toString());
     }
     if (this.b != null)
@@ -38,7 +38,7 @@ public class HanziPinyin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.HanziPinyin
  * JD-Core Version:    0.7.0.1
  */

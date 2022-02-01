@@ -46,161 +46,161 @@ import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 public class ARLBSPOIDialog
   extends ReportDialog
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ARCloudLBSLocationCheckResult.POIInfo jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo;
-  private ARScanEntryView jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView;
-  MapView jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  View jdField_b_of_type_AndroidViewView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  View jdField_c_of_type_AndroidViewView;
-  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View d;
+  Activity a;
+  MapView b;
+  RelativeLayout c;
+  RelativeLayout d;
+  URLImageView e;
+  TextView f;
+  TextView g;
+  URLImageView h;
+  ImageView i;
+  TextView j;
+  Button k;
+  ProgressBar l;
+  View m;
+  View n;
+  RelativeLayout o;
+  View p;
+  View q;
+  int r;
+  int s;
+  Context t;
+  boolean u;
+  ARCloudLBSLocationCheckResult.POIInfo v;
+  private ARScanEntryView w;
   
   public ARLBSPOIDialog(Activity paramActivity, MapView paramMapView, ARScanEntryView paramARScanEntryView)
   {
-    super(paramActivity, 2131756189);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = paramARScanEntryView;
+    super(paramActivity, 2131953338);
+    this.a = paramActivity;
+    this.t = paramActivity;
+    this.w = paramARScanEntryView;
     c();
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView = paramMapView;
+    this.b = paramMapView;
     paramMapView = getWindow();
     paramARScanEntryView = paramMapView.getAttributes();
     paramARScanEntryView.width = paramActivity.getResources().getDisplayMetrics().widthPixels;
     paramARScanEntryView.height = paramActivity.getResources().getDisplayMetrics().heightPixels;
     paramMapView.setAttributes(paramARScanEntryView);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new ARLBSPOIDialog.1(this), 1500L);
+    this.l.postDelayed(new ARLBSPOIDialog.1(this), 1500L);
   }
   
   private void a(ARCloudLBSLocationCheckResult.POIInfo paramPOIInfo)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (((MapView)localObject1).getParent() != null))
     {
-      if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap() == null) {
+      if (this.b.getMap() == null) {
         return;
       }
-      localObject1 = new RelativeLayout.LayoutParams(-1, AIOUtils.b(210.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131368851);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView, (ViewGroup.LayoutParams)localObject1);
-      this.d = getLayoutInflater().inflate(2131560977, null);
-      localObject1 = (TextView)this.d.findViewById(2131372899);
-      Object localObject3 = (TextView)this.d.findViewById(2131365750);
-      Object localObject2 = (TextView)this.d.findViewById(2131372898);
-      ((TextView)localObject1).setText(HardCodeUtil.a(2131700948));
-      if (paramPOIInfo.c < 1000)
+      localObject1 = new RelativeLayout.LayoutParams(-1, AIOUtils.b(210.0F, this.t.getResources()));
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131435785);
+      this.o.addView(this.b, (ViewGroup.LayoutParams)localObject1);
+      this.q = getLayoutInflater().inflate(2131627318, null);
+      localObject1 = (TextView)this.q.findViewById(2131440462);
+      Object localObject3 = (TextView)this.q.findViewById(2131431993);
+      Object localObject2 = (TextView)this.q.findViewById(2131440461);
+      ((TextView)localObject1).setText(HardCodeUtil.a(2131898972));
+      if (paramPOIInfo.e < 1000)
       {
-        ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698646, new Object[] { String.valueOf(paramPOIInfo.c) }));
+        ((TextView)localObject3).setText(this.t.getString(2131896595, new Object[] { String.valueOf(paramPOIInfo.e) }));
       }
       else
       {
-        float f = Math.round(paramPOIInfo.c / 1000.0F * 100.0F) / 100.0F;
-        ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698644, new Object[] { String.valueOf(f) }));
+        float f1 = Math.round(paramPOIInfo.e / 1000.0F * 100.0F) / 100.0F;
+        ((TextView)localObject3).setText(this.t.getString(2131896593, new Object[] { String.valueOf(f1) }));
       }
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(paramPOIInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(paramPOIInfo.c);
       ((StringBuilder)localObject3).append("|");
-      if (TextUtils.isEmpty(paramPOIInfo.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramPOIInfo.d)) {
         localObject1 = "";
       } else {
-        localObject1 = paramPOIInfo.jdField_b_of_type_JavaLangString;
+        localObject1 = paramPOIInfo.d;
       }
       ((StringBuilder)localObject3).append((String)localObject1);
       localObject1 = ((StringBuilder)localObject3).toString();
-      if (!TextUtils.isEmpty(paramPOIInfo.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramPOIInfo.c))
       {
         localObject1 = new SpannableString((CharSequence)localObject1);
-        ((SpannableString)localObject1).setSpan(new StyleSpan(1), 0, paramPOIInfo.jdField_a_of_type_JavaLangString.length(), 17);
+        ((SpannableString)localObject1).setSpan(new StyleSpan(1), 0, paramPOIInfo.c.length(), 17);
         ((TextView)localObject2).setText((CharSequence)localObject1);
       }
       else
       {
         ((TextView)localObject2).setText((CharSequence)localObject1);
       }
-      this.d.setOnClickListener(new ARLBSPOIDialog.3(this));
-      localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap();
+      this.q.setOnClickListener(new ARLBSPOIDialog.3(this));
+      localObject1 = this.b.getMap();
       ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.zoomTo(16.0F));
-      double d1 = paramPOIInfo.jdField_a_of_type_Int;
+      double d1 = paramPOIInfo.a;
       Double.isNaN(d1);
       d1 = d1 * 1.0D / 1000000.0D;
-      double d2 = paramPOIInfo.jdField_b_of_type_Int;
+      double d2 = paramPOIInfo.b;
       Double.isNaN(d2);
       paramPOIInfo = new LatLng(d1, d2 * 1.0D / 1000000.0D);
       ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.newLatLng(paramPOIInfo));
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(this.d)).position(paramPOIInfo));
-      if (this.jdField_a_of_type_AndroidAppActivity != null)
+      this.b.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(this.q)).position(paramPOIInfo));
+      if (this.a != null)
       {
-        paramPOIInfo = this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView;
-        if ((paramPOIInfo != null) && (paramPOIInfo.b))
+        paramPOIInfo = this.w;
+        if ((paramPOIInfo != null) && (paramPOIInfo.o))
         {
-          paramPOIInfo = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getProjection();
+          paramPOIInfo = this.b.getMap().getProjection();
           if ((paramPOIInfo != null) && (((TencentMap)localObject1).getCameraPosition() != null))
           {
             localObject2 = paramPOIInfo.toScreenLocation(((TencentMap)localObject1).getCameraPosition().target);
-            ((Point)localObject2).offset(0, AIOUtils.b(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * -1);
+            ((Point)localObject2).offset(0, AIOUtils.b(60.0F, this.t.getResources()) * -1);
             ((TencentMap)localObject1).moveCamera(CameraUpdateFactory.newLatLng(paramPOIInfo.fromScreenLocation((Point)localObject2)));
           }
         }
       }
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.onResume();
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.b.onResume();
+      this.p.setVisibility(8);
+      this.n.setVisibility(8);
+      this.m.setVisibility(8);
+      this.o.setVisibility(0);
     }
   }
   
   private void c()
   {
-    setContentView(2131560973);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368851));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131372901));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372910));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378331));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366748));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131373072));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373073));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373132));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364711));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ARLBSPOIDialog.2(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365203));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372903);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131363767);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131370662);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370661));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    setContentView(2131627314);
+    this.d = ((RelativeLayout)findViewById(2131435785));
+    this.e = ((URLImageView)findViewById(2131440464));
+    this.f = ((TextView)findViewById(2131440473));
+    this.g = ((TextView)findViewById(2131446853));
+    this.i = ((ImageView)findViewById(2131433070));
+    this.h = ((URLImageView)findViewById(2131440658));
+    this.j = ((TextView)findViewById(2131440659));
+    this.l = ((ProgressBar)findViewById(2131440737));
+    this.k = ((Button)findViewById(2131430817));
+    this.k.setOnClickListener(new ARLBSPOIDialog.2(this));
+    this.c = ((RelativeLayout)findViewById(2131431368));
+    this.m = findViewById(2131440466);
+    this.n = findViewById(2131429698);
+    this.p = findViewById(2131437939);
+    this.o = ((RelativeLayout)findViewById(2131437938));
+    this.i.setVisibility(8);
   }
   
   public void a()
   {
     super.show();
-    int i = getWindow().getAttributes().width;
-    int j = getWindow().getAttributes().height;
-    int k = (i - AIOUtils.b(320.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
-    int m = (j - AIOUtils.b(420.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
-    this.jdField_a_of_type_Int = (i / 2);
-    this.jdField_b_of_type_Int = (j / 2);
+    int i1 = getWindow().getAttributes().width;
+    int i2 = getWindow().getAttributes().height;
+    int i3 = (i1 - AIOUtils.b(320.0F, this.t.getResources())) / 2;
+    int i4 = (i2 - AIOUtils.b(420.0F, this.t.getResources())) / 2;
+    this.r = (i1 / 2);
+    this.s = (i2 / 2);
     AnimationSet localAnimationSet = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 0, this.jdField_a_of_type_Int - k, 0, this.jdField_b_of_type_Int - m);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 0, this.r - i3, 0, this.s - i4);
     localScaleAnimation.setInterpolator(new AccelerateInterpolator(1.5F));
     localScaleAnimation.setDuration(350L);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
+    this.c.startAnimation(localAnimationSet);
   }
   
   public void a(ARCloudLBSLocationCheckResult.POIInfo paramPOIInfo, ArLBSActivity paramArLBSActivity)
@@ -208,66 +208,66 @@ public class ARLBSPOIDialog
     if (QLog.isColorLevel()) {
       QLog.d("ARLBSPOIDialog", 2, "bindView");
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo = paramPOIInfo;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    this.v = paramPOIInfo;
+    this.u = true;
+    this.l.setVisibility(8);
     Object localObject;
     if (!TextUtils.isEmpty(paramArLBSActivity.d))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(140.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(170.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.b(140.0F, this.t.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.b(170.0F, this.t.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.t.getResources().getDrawable(2130853309);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.t.getResources().getDrawable(2130853309);
       localObject = URLDrawable.getDrawable(paramArLBSActivity.d, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      this.h.setImageDrawable((Drawable)localObject);
     }
-    if (!TextUtils.isEmpty(paramArLBSActivity.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramArLBSActivity.b))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      int i = AIOUtils.b(31.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
-      localObject = URLDrawable.getDrawable(paramArLBSActivity.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      int i1 = AIOUtils.b(31.0F, this.t.getResources());
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i1;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i1;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.t.getResources().getDrawable(2130853309);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.t.getResources().getDrawable(2130853309);
+      localObject = URLDrawable.getDrawable(paramArLBSActivity.b, (URLDrawable.URLDrawableOptions)localObject);
+      this.e.setImageDrawable((Drawable)localObject);
     }
     if (!TextUtils.isEmpty(paramArLBSActivity.c))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130851078);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.t.getResources().getDrawable(2130853309);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.t.getResources().getDrawable(2130853309);
       localObject = URLDrawable.getDrawable(paramArLBSActivity.c, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable((Drawable)localObject);
+      this.d.setBackgroundDrawable((Drawable)localObject);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArLBSActivity.jdField_a_of_type_JavaLangString);
+    this.f.setText(paramArLBSActivity.a);
     if (!TextUtils.isEmpty(paramArLBSActivity.e)) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramArLBSActivity.e);
+      this.j.setText(paramArLBSActivity.e);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700949));
+    this.g.setText(HardCodeUtil.a(2131898973));
     a(paramPOIInfo);
   }
   
   public void b()
   {
-    int j = getWindow().getAttributes().width;
-    int i = getWindow().getAttributes().height;
-    j = (j - AIOUtils.b(320.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
-    i = (i - AIOUtils.b(420.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    int i2 = getWindow().getAttributes().width;
+    int i1 = getWindow().getAttributes().height;
+    i2 = (i2 - AIOUtils.b(320.0F, this.t.getResources())) / 2;
+    i1 = (i1 - AIOUtils.b(420.0F, this.t.getResources())) / 2;
     AnimationSet localAnimationSet = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 0, this.jdField_a_of_type_Int - j, 0, this.jdField_b_of_type_Int - i);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 0, this.r - i2, 0, this.s - i1);
     localScaleAnimation.setInterpolator(new AccelerateInterpolator());
     localScaleAnimation.setDuration(350L);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
+    this.c.startAnimation(localAnimationSet);
     localAnimationSet.setAnimationListener(new ARLBSPOIDialog.4(this));
   }
   
   public void dismiss()
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (!this.a.isFinishing()) {
       super.dismiss();
     }
   }
@@ -275,28 +275,28 @@ public class ARLBSPOIDialog
   protected void onStop()
   {
     super.onStop();
-    Object localObject = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
+    Object localObject = this.b;
     if ((localObject != null) && (((MapView)localObject).getParent() != null))
     {
-      localObject = this.d;
+      localObject = this.q;
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.removeView((View)localObject);
+        this.b.removeView((View)localObject);
       }
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView);
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.onPause();
+      this.o.removeView(this.b);
+      this.b.onPause();
     }
   }
   
   public void show()
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (!this.a.isFinishing()) {
       super.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSPOIDialog
  * JD-Core Version:    0.7.0.1
  */

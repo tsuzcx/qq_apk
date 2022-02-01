@@ -9,10 +9,10 @@ class AVGameControlUIImpl$6
   
   public void run()
   {
-    if (this.this$0.a()) {
+    if (this.this$0.d()) {
       return;
     }
-    if (AVGameBusinessCtrl.b().a() == 1) {
+    if (AVGameBusinessCtrl.b().i() == 1) {
       AVGameControlUIImpl.b(this.this$0, 7);
     }
   }

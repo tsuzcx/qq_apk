@@ -18,15 +18,15 @@ class SelectMemberActivity$7
   {
     paramDialogInterface.dismiss();
     paramDialogInterface = ((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopMngHandlerName();
-    ((ITroopMngHandler)this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.app.getBusinessHandler(paramDialogInterface)).a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mGroupCode, this.jdField_a_of_type_JavaUtilList, "");
-    SelectMemberActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.pd.show();
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.reportInviteFriend("Clk_invite");
+    ((ITroopMngHandler)this.b.app.getBusinessHandler(paramDialogInterface)).a(this.b.mGroupCode, this.a, "");
+    SelectMemberActivity.access$200(this.b);
+    this.b.pd.show();
+    this.b.reportInviteFriend("Clk_invite");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity.7
  * JD-Core Version:    0.7.0.1
  */

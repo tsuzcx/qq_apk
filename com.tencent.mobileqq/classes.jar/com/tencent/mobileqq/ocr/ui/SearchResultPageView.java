@@ -23,32 +23,32 @@ import java.util.List;
 public class SearchResultPageView
   implements SearchResultAdapter.OnResultItemClickedListener
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  View jdField_a_of_type_AndroidViewView = null;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TabItem jdField_a_of_type_ComTencentMobileqqOcrTabItem;
   public BaseOCRTextSearchFragment.SearchActivityInterface a;
-  BaseOCRTextSearchFragment jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment;
-  SearchResultAdapter jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter;
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
+  BaseOCRTextSearchFragment b;
+  XListView c;
+  TextView d;
+  LinearLayout e;
+  SearchResultAdapter f;
+  View g = null;
+  boolean h = false;
+  boolean i = false;
+  Handler j = new Handler(Looper.getMainLooper());
+  boolean k = false;
+  ProgressBar l;
+  boolean m = false;
+  int n = 0;
+  TabItem o;
   
   public SearchResultPageView(BaseOCRTextSearchFragment.SearchActivityInterface paramSearchActivityInterface, SearchResultFragment paramSearchResultFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface = paramSearchActivityInterface;
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment = paramSearchResultFragment;
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter = new SearchResultAdapter(paramSearchActivityInterface.a(), this);
+    this.a = paramSearchActivityInterface;
+    this.b = paramSearchResultFragment;
+    this.f = new SearchResultAdapter(paramSearchActivityInterface.a(), this);
   }
   
   private void a(String paramString1, String paramString2)
   {
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(), "/base/browser");
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.a.a(), "/base/browser");
     localActivityURIRequest.extra().putString("uin", paramString1);
     localActivityURIRequest.extra().putString("url", paramString2);
     localActivityURIRequest.extra().putBoolean("hide_more_button", true);
@@ -57,19 +57,19 @@ public class SearchResultPageView
   
   public View a(Context paramContext, TabItem paramTabItem)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.g == null)
     {
-      paramContext = LayoutInflater.from(paramContext).inflate(2131561259, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramContext.findViewById(2131377082));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131378241));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371921));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment.a);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370355));
-      this.jdField_a_of_type_AndroidViewView = paramContext;
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131627615, null);
+      this.c = ((XListView)paramContext.findViewById(2131445451));
+      this.l = ((ProgressBar)paramContext.findViewById(2131446760));
+      this.d = ((TextView)paramContext.findViewById(2131439366));
+      this.c.setOnTouchListener(this.b.b);
+      this.e = ((LinearLayout)paramContext.findViewById(2131437617));
+      this.g = paramContext;
+      this.c.setAdapter(this.f);
     }
     a(paramTabItem);
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.g;
   }
   
   public void a() {}
@@ -84,56 +84,56 @@ public class SearchResultPageView
         {
           if (paramInt == 1)
           {
-            this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-            this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            this.l.setVisibility(0);
+            this.c.setVisibility(8);
+            this.d.setVisibility(8);
           }
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+          this.l.setVisibility(8);
+          this.d.setVisibility(8);
+          this.c.setVisibility(0);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696037);
+        this.l.setVisibility(8);
+        this.c.setVisibility(8);
+        this.d.setVisibility(0);
+        this.d.setText(2131893799);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699084);
+      this.l.setVisibility(8);
+      this.c.setVisibility(8);
+      this.d.setVisibility(0);
+      this.d.setText(2131897093);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(null);
+    this.a.a(null);
   }
   
   protected void a(TabItem paramTabItem)
   {
-    if (this.d) {
+    if (this.m) {
       return;
     }
-    this.d = true;
-    this.jdField_a_of_type_ComTencentMobileqqOcrTabItem = paramTabItem;
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrTabItem.b == 0) && (this.jdField_a_of_type_ComTencentMobileqqOcrTabItem.a != null))
+    this.m = true;
+    this.o = paramTabItem;
+    if ((this.o.d == 0) && (this.o.c != null))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("results: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqOcrTabItem.a.size());
+        ((StringBuilder)localObject).append(this.o.c.size());
         QLog.d("Q.ocr.SearchResultFragment", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTabItem.a;
+      Object localObject = this.o.c;
       if (((List)localObject).size() != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqOcrTabItem, (List)localObject, false, false);
+        this.f.a(this.o, (List)localObject, false, false);
       }
       else
       {
@@ -142,7 +142,7 @@ public class SearchResultPageView
       }
     }
     b();
-    a(paramTabItem.b);
+    a(paramTabItem.d);
   }
   
   public void a(SearchResultAdapter.ListItem paramListItem)
@@ -150,9 +150,9 @@ public class SearchResultPageView
     if (paramListItem == null) {
       return;
     }
-    if ((paramListItem.b == 2049) && (paramListItem.jdField_a_of_type_Int == 0))
+    if ((paramListItem.f == 2049) && (paramListItem.a == 0))
     {
-      paramListItem = (OCRTextSearchInfo.SougouSearchInfo)paramListItem.jdField_a_of_type_JavaLangObject;
+      paramListItem = (OCRTextSearchInfo.SougouSearchInfo)paramListItem.b;
       if ((paramListItem != null) && (!TextUtils.isEmpty(paramListItem.jumpURL))) {
         a(OCRAccountUtil.a(), paramListItem.jumpURL);
       }
@@ -162,12 +162,12 @@ public class SearchResultPageView
   
   public void a(boolean paramBoolean)
   {
-    this.d = false;
-    this.jdField_a_of_type_Int = 0;
-    this.c = false;
-    this.b = false;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    SearchResultAdapter localSearchResultAdapter = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter;
+    this.m = false;
+    this.n = 0;
+    this.k = false;
+    this.i = false;
+    this.h = paramBoolean;
+    SearchResultAdapter localSearchResultAdapter = this.f;
     if (localSearchResultAdapter != null) {
       localSearchResultAdapter.a();
     }
@@ -175,12 +175,12 @@ public class SearchResultPageView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SearchResultPageView.1(this), 50L);
+    this.j.postDelayed(new SearchResultPageView.1(this), 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultPageView
  * JD-Core Version:    0.7.0.1
  */

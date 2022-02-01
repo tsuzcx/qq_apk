@@ -1,36 +1,22 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import com.tencent.biz.pubaccount.weishi_new.view.WSViewPager;
-import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabItemViewHolder;
-import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout.TabContentClickListener;
-import com.tencent.mobileqq.widget.TabLayoutCompat.Tab;
+import UserGrowth.stPublisherRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class WSHomeFragment$6
-  implements WSTabLayout.TabContentClickListener
+  implements View.OnClickListener
 {
-  WSHomeFragment$6(WSHomeFragment paramWSHomeFragment) {}
+  WSHomeFragment$6(WSHomeFragment paramWSHomeFragment, stPublisherRsp paramstPublisherRsp) {}
   
-  public void a(WSTabItemViewHolder paramWSTabItemViewHolder)
+  public void onClick(View paramView)
   {
-    WSHomeFragment.c(this.a, false);
-    if (WSHomeFragment.a(this.a) != null)
-    {
-      if (WSHomeFragment.b(this.a) == null) {
-        return;
-      }
-      if (paramWSTabItemViewHolder != null)
-      {
-        if (paramWSTabItemViewHolder.a() == null) {
-          return;
-        }
-        WSHomeFragment.a(this.a).setCurrentItem(paramWSTabItemViewHolder.a().a());
-      }
-    }
+    WSHomeFragment.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.6
  * JD-Core Version:    0.7.0.1
  */

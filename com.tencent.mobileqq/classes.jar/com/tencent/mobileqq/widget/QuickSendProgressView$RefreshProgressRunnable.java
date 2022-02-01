@@ -9,15 +9,10 @@ import java.lang.ref.WeakReference;
 class QuickSendProgressView$RefreshProgressRunnable
   implements Runnable
 {
-  private volatile long jdField_a_of_type_Long = -1L;
-  private WeakReference<QuickSendProgressView> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private long b = 800L;
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  private WeakReference<QuickSendProgressView> a;
+  private volatile long b = -1L;
+  private long c = 800L;
+  private volatile boolean d = true;
   
   public void a(QuickSendProgressView paramQuickSendProgressView)
   {
@@ -26,49 +21,54 @@ class QuickSendProgressView$RefreshProgressRunnable
       if (paramQuickSendProgressView == null) {
         return;
       }
-      this.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQuickSendProgressView);
+      this.b = -1L;
+      this.d = false;
+      this.a = new WeakReference(paramQuickSendProgressView);
       ViewCompat.postOnAnimation(paramQuickSendProgressView, this);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean ^ true;
+    return this.d ^ true;
+  }
+  
+  public void b()
+  {
+    this.d = true;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
       if (QLog.isColorLevel()) {
         QLog.e("QuickSendProgressView", 2, " stopAnim in isStopped");
       }
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.a = null;
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = (QuickSendProgressView)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        if (this.jdField_a_of_type_Long == -1L) {
-          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        if (this.b == -1L) {
+          this.b = SystemClock.uptimeMillis();
         }
-        long l1 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-        long l2 = this.b;
+        long l1 = SystemClock.uptimeMillis() - this.b;
+        long l2 = this.c;
         if (l1 >= l2)
         {
           QuickSendProgressView.a((QuickSendProgressView)localObject, 1.0F);
-          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+          this.b = SystemClock.uptimeMillis();
         }
         else
         {
           QuickSendProgressView.a((QuickSendProgressView)localObject, (float)l1 * 1.0F / (float)l2);
         }
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.d) {
           ViewCompat.postOnAnimation((View)localObject, this);
         }
         return;
@@ -77,13 +77,13 @@ class QuickSendProgressView$RefreshProgressRunnable
     if (QLog.isColorLevel()) {
       QLog.e("QuickSendProgressView", 2, "mView is null, stopAnim in isStopped");
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.d = true;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QuickSendProgressView.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

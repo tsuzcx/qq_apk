@@ -17,11 +17,11 @@ public class QAPMLooperWrapper
   extends AbstractMagnifierItem
   implements ILooperListener
 {
-  private ArrayList<ILooperListener> a;
+  private ArrayList<ILooperListener> b;
   
   private void a(LooperMeta paramLooperMeta)
   {
-    Object localObject = this.a;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -38,17 +38,17 @@ public class QAPMLooperWrapper
   
   public void a(ILooperListener paramILooperListener)
   {
-    if (this.a == null) {
-      this.a = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
-    if (!this.a.contains(paramILooperListener)) {
-      this.a.add(paramILooperListener);
+    if (!this.b.contains(paramILooperListener)) {
+      this.b.add(paramILooperListener);
     }
   }
   
   protected void a(APMModuleConfig paramAPMModuleConfig) {}
   
-  public void b()
+  public void j()
   {
     QAPM.setProperty(116, this);
   }
@@ -66,7 +66,7 @@ public class QAPMLooperWrapper
         String str = (String)localIterator.next();
         localHashMap.put(str, paramLooperMeta.getString(str));
       }
-      int i = QAPMIniter.a();
+      int i = QAPMIniter.b();
       int j = paramLooperMeta.getInt("cost_time");
       UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, localHashMap);
       return;
@@ -79,7 +79,7 @@ public class QAPMLooperWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.looper.QAPMLooperWrapper
  * JD-Core Version:    0.7.0.1
  */

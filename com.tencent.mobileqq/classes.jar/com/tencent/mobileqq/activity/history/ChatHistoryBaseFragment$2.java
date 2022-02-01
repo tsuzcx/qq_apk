@@ -20,24 +20,24 @@ class ChatHistoryBaseFragment$2
             if (paramInt != 5) {
               return;
             }
-            this.a.o();
+            this.a.t();
             return;
           }
-          this.a.n();
+          this.a.s();
           return;
         }
-        this.a.l();
+        this.a.q();
         return;
       }
-      this.a.m();
+      this.a.r();
       return;
     }
-    this.a.k();
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

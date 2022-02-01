@@ -15,14 +15,14 @@ class DiscussionInfoCardActivity$12
     } else {
       paramObject = null;
     }
-    if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+    if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.r(this.a) != null)) {
+      DiscussionInfoCardActivity.r(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.12
  * JD-Core Version:    0.7.0.1
  */

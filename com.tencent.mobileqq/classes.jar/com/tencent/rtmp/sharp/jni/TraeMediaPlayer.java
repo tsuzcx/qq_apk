@@ -455,9 +455,9 @@ public class TraeMediaPlayer
     //   445: checkcast 82	android/media/AudioManager
     //   448: astore 11
     //   450: aload_0
-    //   451: new 176	android/media/MediaPlayer
+    //   451: new 249	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   454: dup
-    //   455: invokespecial 248	android/media/MediaPlayer:<init>	()V
+    //   455: invokespecial 250	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
     //   458: putfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   461: aload_0
     //   462: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
@@ -473,11 +473,11 @@ public class TraeMediaPlayer
     //   482: aload_0
     //   483: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   486: aload_0
-    //   487: invokevirtual 252	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   487: invokevirtual 254	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   490: aload_0
     //   491: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   494: aload_0
-    //   495: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
+    //   495: invokevirtual 258	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
     //   498: iload_1
     //   499: ifeq +174 -> 673
     //   502: iload_1
@@ -493,7 +493,7 @@ public class TraeMediaPlayer
     //   522: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   525: astore_3
     //   526: aload_3
-    //   527: ldc_w 258
+    //   527: ldc_w 260
     //   530: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   533: pop
     //   534: aload_3
@@ -519,7 +519,7 @@ public class TraeMediaPlayer
     //   575: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   578: astore_3
     //   579: aload_3
-    //   580: ldc_w 260
+    //   580: ldc_w 262
     //   583: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   586: pop
     //   587: aload_3
@@ -534,7 +534,7 @@ public class TraeMediaPlayer
     //   604: aload_0
     //   605: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   608: aload 4
-    //   610: invokevirtual 263	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   610: invokevirtual 265	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
     //   613: goto +189 -> 802
     //   616: invokestatic 101	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   619: ifeq +39 -> 658
@@ -543,7 +543,7 @@ public class TraeMediaPlayer
     //   626: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   629: astore 4
     //   631: aload 4
-    //   633: ldc_w 265
+    //   633: ldc_w 267
     //   636: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   639: pop
     //   640: aload 4
@@ -560,7 +560,7 @@ public class TraeMediaPlayer
     //   662: aload_0
     //   663: getfield 62	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_context	Landroid/content/Context;
     //   666: aload_3
-    //   667: invokevirtual 268	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
+    //   667: invokevirtual 270	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
     //   670: goto +132 -> 802
     //   673: invokestatic 101	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   676: ifeq +35 -> 711
@@ -569,7 +569,7 @@ public class TraeMediaPlayer
     //   683: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   686: astore_3
     //   687: aload_3
-    //   688: ldc_w 270
+    //   688: ldc_w 272
     //   691: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   694: pop
     //   695: aload_3
@@ -583,9 +583,9 @@ public class TraeMediaPlayer
     //   708: invokestatic 131	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   711: aload_0
     //   712: getfield 62	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_context	Landroid/content/Context;
-    //   715: invokevirtual 274	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   715: invokevirtual 276	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   718: iload_2
-    //   719: invokevirtual 280	android/content/res/Resources:openRawResourceFd	(I)Landroid/content/res/AssetFileDescriptor;
+    //   719: invokevirtual 282	android/content/res/Resources:openRawResourceFd	(I)Landroid/content/res/AssetFileDescriptor;
     //   722: astore_3
     //   723: aload_3
     //   724: ifnonnull +55 -> 779
@@ -596,7 +596,7 @@ public class TraeMediaPlayer
     //   737: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   740: astore_3
     //   741: aload_3
-    //   742: ldc_w 282
+    //   742: ldc_w 284
     //   745: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   748: pop
     //   749: aload_3
@@ -619,14 +619,14 @@ public class TraeMediaPlayer
     //   779: aload_0
     //   780: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   783: aload_3
-    //   784: invokevirtual 288	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   784: invokevirtual 290	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   787: aload_3
-    //   788: invokevirtual 292	android/content/res/AssetFileDescriptor:getStartOffset	()J
+    //   788: invokevirtual 294	android/content/res/AssetFileDescriptor:getStartOffset	()J
     //   791: aload_3
-    //   792: invokevirtual 295	android/content/res/AssetFileDescriptor:getLength	()J
-    //   795: invokevirtual 298	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   792: invokevirtual 297	android/content/res/AssetFileDescriptor:getLength	()J
+    //   795: invokevirtual 300	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
     //   798: aload_3
-    //   799: invokevirtual 301	android/content/res/AssetFileDescriptor:close	()V
+    //   799: invokevirtual 303	android/content/res/AssetFileDescriptor:close	()V
     //   802: aload_0
     //   803: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   806: ifnonnull +5 -> 811
@@ -647,7 +647,7 @@ public class TraeMediaPlayer
     //   834: aload_0
     //   835: iconst_0
     //   836: putfield 44	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_streamType	I
-    //   839: getstatic 306	android/os/Build$VERSION:SDK_INT	I
+    //   839: getstatic 308	android/os/Build$VERSION:SDK_INT	I
     //   842: bipush 11
     //   844: if_icmplt +611 -> 1455
     //   847: iconst_3
@@ -666,14 +666,14 @@ public class TraeMediaPlayer
     //   872: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   875: aload_0
     //   876: getfield 44	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_streamType	I
-    //   879: invokevirtual 310	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   879: invokevirtual 312	android/media/MediaPlayer:setAudioStreamType	(I)V
     //   882: aload_0
     //   883: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   886: invokevirtual 313	android/media/MediaPlayer:prepare	()V
+    //   886: invokevirtual 315	android/media/MediaPlayer:prepare	()V
     //   889: aload_0
     //   890: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   893: iload 5
-    //   895: invokevirtual 317	android/media/MediaPlayer:setLooping	(Z)V
+    //   895: invokevirtual 319	android/media/MediaPlayer:setLooping	(Z)V
     //   898: aload_0
     //   899: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
     //   902: invokevirtual 195	android/media/MediaPlayer:start	()V
@@ -699,7 +699,7 @@ public class TraeMediaPlayer
     //   940: getfield 52	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_loopCount	I
     //   943: aload_0
     //   944: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   947: invokevirtual 319	android/media/MediaPlayer:getDuration	()I
+    //   947: invokevirtual 321	android/media/MediaPlayer:getDuration	()I
     //   950: imul
     //   951: putfield 50	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_durationMS	I
     //   954: aload_0
@@ -713,20 +713,20 @@ public class TraeMediaPlayer
     //   968: ifne +9 -> 977
     //   971: aload 11
     //   973: iload_1
-    //   974: invokevirtual 322	android/media/AudioManager:setMode	(I)V
+    //   974: invokevirtual 324	android/media/AudioManager:setMode	(I)V
     //   977: aload_0
     //   978: getfield 50	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_durationMS	I
     //   981: ifle +46 -> 1027
     //   984: aload_0
     //   985: new 244	java/util/Timer
     //   988: dup
-    //   989: invokespecial 323	java/util/Timer:<init>	()V
+    //   989: invokespecial 325	java/util/Timer:<init>	()V
     //   992: putfield 56	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
     //   995: aload_0
-    //   996: new 325	com/tencent/rtmp/sharp/jni/TraeMediaPlayer$1
+    //   996: new 327	com/tencent/rtmp/sharp/jni/TraeMediaPlayer$1
     //   999: dup
     //   1000: aload_0
-    //   1001: invokespecial 328	com/tencent/rtmp/sharp/jni/TraeMediaPlayer$1:<init>	(Lcom/tencent/rtmp/sharp/jni/TraeMediaPlayer;)V
+    //   1001: invokespecial 330	com/tencent/rtmp/sharp/jni/TraeMediaPlayer$1:<init>	(Lcom/tencent/rtmp/sharp/jni/TraeMediaPlayer;)V
     //   1004: putfield 58	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_watchTimertask	Ljava/util/TimerTask;
     //   1007: aload_0
     //   1008: getfield 56	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_watchTimer	Ljava/util/Timer;
@@ -737,7 +737,7 @@ public class TraeMediaPlayer
     //   1019: sipush 1000
     //   1022: iadd
     //   1023: i2l
-    //   1024: invokevirtual 332	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
+    //   1024: invokevirtual 334	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
     //   1027: invokestatic 101	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   1030: ifeq +55 -> 1085
     //   1033: new 103	java/lang/StringBuilder
@@ -745,13 +745,13 @@ public class TraeMediaPlayer
     //   1037: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1040: astore_3
     //   1041: aload_3
-    //   1042: ldc_w 334
+    //   1042: ldc_w 336
     //   1045: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1048: pop
     //   1049: aload_3
     //   1050: aload_0
     //   1051: getfield 42	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:mMediaPlay	Landroid/media/MediaPlayer;
-    //   1054: invokevirtual 319	android/media/MediaPlayer:getDuration	()I
+    //   1054: invokevirtual 321	android/media/MediaPlayer:getDuration	()I
     //   1057: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1060: pop
     //   1061: aload_3
@@ -785,21 +785,21 @@ public class TraeMediaPlayer
     //   1114: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1117: astore 4
     //   1119: aload 4
-    //   1121: ldc_w 336
+    //   1121: ldc_w 338
     //   1124: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1127: pop
     //   1128: aload 4
     //   1130: aload_3
-    //   1131: invokevirtual 339	java/lang/SecurityException:getLocalizedMessage	()Ljava/lang/String;
+    //   1131: invokevirtual 341	java/lang/SecurityException:getLocalizedMessage	()Ljava/lang/String;
     //   1134: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1137: pop
     //   1138: aload 4
-    //   1140: ldc_w 341
+    //   1140: ldc_w 343
     //   1143: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1146: pop
     //   1147: aload 4
     //   1149: aload_3
-    //   1150: invokevirtual 342	java/lang/SecurityException:getMessage	()Ljava/lang/String;
+    //   1150: invokevirtual 344	java/lang/SecurityException:getMessage	()Ljava/lang/String;
     //   1153: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1156: pop
     //   1157: ldc 123
@@ -815,21 +815,21 @@ public class TraeMediaPlayer
     //   1181: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1184: astore 4
     //   1186: aload 4
-    //   1188: ldc_w 344
+    //   1188: ldc_w 346
     //   1191: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1194: pop
     //   1195: aload 4
     //   1197: aload_3
-    //   1198: invokevirtual 345	java/lang/IllegalArgumentException:getLocalizedMessage	()Ljava/lang/String;
+    //   1198: invokevirtual 347	java/lang/IllegalArgumentException:getLocalizedMessage	()Ljava/lang/String;
     //   1201: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1204: pop
     //   1205: aload 4
-    //   1207: ldc_w 341
+    //   1207: ldc_w 343
     //   1210: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1213: pop
     //   1214: aload 4
     //   1216: aload_3
-    //   1217: invokevirtual 346	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
+    //   1217: invokevirtual 348	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
     //   1220: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1223: pop
     //   1224: ldc 123
@@ -845,21 +845,21 @@ public class TraeMediaPlayer
     //   1248: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1251: astore 4
     //   1253: aload 4
-    //   1255: ldc_w 348
+    //   1255: ldc_w 350
     //   1258: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1261: pop
     //   1262: aload 4
     //   1264: aload_3
-    //   1265: invokevirtual 349	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+    //   1265: invokevirtual 351	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
     //   1268: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1271: pop
     //   1272: aload 4
-    //   1274: ldc_w 341
+    //   1274: ldc_w 343
     //   1277: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1280: pop
     //   1281: aload 4
     //   1283: aload_3
-    //   1284: invokevirtual 350	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1284: invokevirtual 352	java/io/IOException:getMessage	()Ljava/lang/String;
     //   1287: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1290: pop
     //   1291: ldc 123
@@ -875,21 +875,21 @@ public class TraeMediaPlayer
     //   1315: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1318: astore 4
     //   1320: aload 4
-    //   1322: ldc_w 352
+    //   1322: ldc_w 354
     //   1325: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1328: pop
     //   1329: aload 4
     //   1331: aload_3
-    //   1332: invokevirtual 353	java/lang/IllegalStateException:getLocalizedMessage	()Ljava/lang/String;
+    //   1332: invokevirtual 355	java/lang/IllegalStateException:getLocalizedMessage	()Ljava/lang/String;
     //   1335: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1338: pop
     //   1339: aload 4
-    //   1341: ldc_w 341
+    //   1341: ldc_w 343
     //   1344: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1347: pop
     //   1348: aload 4
     //   1350: aload_3
-    //   1351: invokevirtual 354	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   1351: invokevirtual 356	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
     //   1354: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1357: pop
     //   1358: ldc 123
@@ -906,16 +906,16 @@ public class TraeMediaPlayer
     //   1383: invokespecial 104	java/lang/StringBuilder:<init>	()V
     //   1386: astore 4
     //   1388: aload 4
-    //   1390: ldc_w 356
+    //   1390: ldc_w 358
     //   1393: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1396: pop
     //   1397: aload 4
     //   1399: aload_3
-    //   1400: invokevirtual 357	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   1400: invokevirtual 359	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   1403: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1406: pop
     //   1407: aload 4
-    //   1409: ldc_w 341
+    //   1409: ldc_w 343
     //   1412: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1415: pop
     //   1416: aload 4
@@ -1159,7 +1159,7 @@ public class TraeMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

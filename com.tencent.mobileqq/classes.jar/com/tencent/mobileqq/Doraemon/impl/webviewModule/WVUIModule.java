@@ -19,8 +19,8 @@ public class WVUIModule
 {
   private boolean a(APICallback paramAPICallback)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof WebUiUtils.WebShareInterface)) {
-      localObject = (WebUiUtils.WebShareInterface)this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    if ((this.b.d() instanceof WebUiUtils.WebShareInterface)) {
+      localObject = (WebUiUtils.WebShareInterface)this.b.d();
     } else {
       localObject = null;
     }
@@ -38,8 +38,8 @@ public class WVUIModule
   private boolean a(JSONObject paramJSONObject)
   {
     WebUiUtils.WebShareInterface localWebShareInterface;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof WebUiUtils.WebShareInterface)) {
-      localWebShareInterface = (WebUiUtils.WebShareInterface)this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    if ((this.b.d() instanceof WebUiUtils.WebShareInterface)) {
+      localWebShareInterface = (WebUiUtils.WebShareInterface)this.b.d();
     } else {
       localWebShareInterface = null;
     }
@@ -51,11 +51,11 @@ public class WVUIModule
     String str2 = paramJSONObject.optString("desc");
     String str3 = paramJSONObject.optString("shareUrl");
     paramJSONObject = paramJSONObject.optString("imageUrl");
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a().b;
+    String str4 = this.a.f().d;
     if (!TextUtils.isEmpty(str4))
     {
       localBundle.putString("source_name", str4);
-      localBundle.putString("source_icon", this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a().e);
+      localBundle.putString("source_icon", this.a.f().g);
     }
     localBundle.putInt("extra_url_info_from", 1);
     return localWebShareInterface.setSummary(str1, str2, str3, paramJSONObject, localBundle);
@@ -92,7 +92,7 @@ public class WVUIModule
       return true;
     }
     DoraemonUtil.a(paramAPICallback, APIParam.a);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+    paramString = this.a.h();
     if ((paramString != null) && (!paramString.isFinishing()))
     {
       paramString.finish();
@@ -104,7 +104,7 @@ public class WVUIModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webviewModule.WVUIModule
  * JD-Core Version:    0.7.0.1
  */

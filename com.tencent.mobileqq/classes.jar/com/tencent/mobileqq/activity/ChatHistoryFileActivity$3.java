@@ -11,14 +11,14 @@ class ChatHistoryFileActivity$3
   
   public void a()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    FileManagerUtil.a(this.a, this.b);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.3
  * JD-Core Version:    0.7.0.1
  */

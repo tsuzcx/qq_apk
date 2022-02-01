@@ -16,7 +16,7 @@ public class StructMsgSubImageVideo$ImageItem
   
   private static ImageItem a(StructMsgNode paramStructMsgNode)
   {
-    Iterator localIterator = paramStructMsgNode.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramStructMsgNode.d.iterator();
     Object localObject1 = null;
     Object localObject2 = localObject1;
     while (localIterator.hasNext())
@@ -38,7 +38,7 @@ public class StructMsgSubImageVideo$ImageItem
     if (localObject2 == null) {
       paramStructMsgNode = "";
     } else {
-      paramStructMsgNode = localObject2.jdField_a_of_type_JavaLangString;
+      paramStructMsgNode = localObject2.a;
     }
     ((ImageItem)localObject3).title = paramStructMsgNode;
     ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
@@ -101,7 +101,7 @@ public class StructMsgSubImageVideo$ImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem
  * JD-Core Version:    0.7.0.1
  */

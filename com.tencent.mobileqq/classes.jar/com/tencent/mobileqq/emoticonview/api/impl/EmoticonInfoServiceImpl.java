@@ -74,7 +74,7 @@ public class EmoticonInfoServiceImpl
       localArrayList.add(new SystemAndEmojiEmoticonInfo(7, 3, -1, SystemAndEmojiEmoticonInfo.TITLE_OFTEN, false));
       i += 1;
     }
-    int n = QQSysAndEmojiConfProcessor.a();
+    int n = QQSysAndEmojiConfProcessor.c();
     paramIEmoticonMainPanelApp = ((CommonUsedSystemEmojiManagerServiceProxy)paramIEmoticonMainPanelApp.getRuntimeService(ICommonUsedSystemEmojiManagerService.class)).getCommonUsedSystemEmojiInfo();
     int j;
     if ((paramIEmoticonMainPanelApp != null) && (paramIEmoticonMainPanelApp.size() > 1))
@@ -286,7 +286,7 @@ public class EmoticonInfoServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.EmoticonInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

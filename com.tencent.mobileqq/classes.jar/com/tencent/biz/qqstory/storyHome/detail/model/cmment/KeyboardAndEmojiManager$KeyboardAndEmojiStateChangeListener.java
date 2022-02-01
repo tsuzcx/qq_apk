@@ -4,11 +4,11 @@ public abstract interface KeyboardAndEmojiManager$KeyboardAndEmojiStateChangeLis
 {
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
-  
   public abstract void c(boolean paramBoolean);
   
-  public abstract void d();
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

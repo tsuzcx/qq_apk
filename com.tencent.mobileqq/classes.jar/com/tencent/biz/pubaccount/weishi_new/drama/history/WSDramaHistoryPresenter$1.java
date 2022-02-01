@@ -11,40 +11,40 @@ class WSDramaHistoryPresenter$1
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter) != null) {
-      WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataFetcherParams.a(), paramInt, paramString);
+    if (WSDramaHistoryPresenter.a(this.b) != null) {
+      WSDramaHistoryPresenter.a(this.b).a(this.a.a(), paramInt, paramString);
     }
   }
   
   public void a(List<WSDramaHistoryData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
     if ((paramObject instanceof Boolean)) {
-      WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter, ((Boolean)paramObject).booleanValue());
+      WSDramaHistoryPresenter.a(this.b, ((Boolean)paramObject).booleanValue());
     }
-    if (WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter) != null)
+    if (WSDramaHistoryPresenter.a(this.b) != null)
     {
-      paramObject = WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter);
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataFetcherParams.a()) {
-        paramList = WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter, paramList);
+      paramObject = WSDramaHistoryPresenter.a(this.b);
+      if (!this.a.a()) {
+        paramList = WSDramaHistoryPresenter.a(this.b, paramList);
       }
-      paramObject.a(paramList, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataFetcherParams.a(), WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter));
+      paramObject.a(paramList, this.a.a(), WSDramaHistoryPresenter.b(this.b));
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataFetcherParams.a()) && (WSDramaHistoryPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter) != null))
+    if ((this.a.a()) && (WSDramaHistoryPresenter.c(this.b) != null))
     {
-      if (WSDramaHistoryPresenter.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter))
+      if (WSDramaHistoryPresenter.d(this.b))
       {
-        paramList = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter;
-        WSDramaHistoryPresenter.a(paramList, WSDramaHistoryPresenter.a(paramList).a);
+        paramList = this.b;
+        WSDramaHistoryPresenter.a(paramList, WSDramaHistoryPresenter.c(paramList).a);
         return;
       }
-      paramList = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryPresenter;
-      WSDramaHistoryPresenter.b(paramList, WSDramaHistoryPresenter.a(paramList).a);
+      paramList = this.b;
+      WSDramaHistoryPresenter.b(paramList, WSDramaHistoryPresenter.c(paramList).a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryPresenter.1
  * JD-Core Version:    0.7.0.1
  */

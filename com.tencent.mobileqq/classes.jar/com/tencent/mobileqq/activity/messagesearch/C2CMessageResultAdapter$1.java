@@ -18,7 +18,7 @@ class C2CMessageResultAdapter$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    Object localObject = this.this$0.h.getMessageFacade().a(this.a, this.this$0.g.b, this.this$0.g.a, this.this$0.g.e);
     int j = 0;
     int i;
     MessageRecord localMessageRecord;
@@ -29,14 +29,14 @@ class C2CMessageResultAdapter$1
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (this.this$0.a(localMessageRecord)) {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+          this.this$0.a.add(new MessageItem(this.this$0.h, localMessageRecord));
         }
         i += 1;
       }
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = this.this$0.h.getMessageFacade().b(this.this$0.g.b, this.this$0.g.a, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
@@ -44,7 +44,7 @@ class C2CMessageResultAdapter$1
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (this.this$0.a(localMessageRecord)) {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+            this.this$0.a.add(new MessageItem(this.this$0.h, localMessageRecord));
           }
           i += 1;
         }
@@ -54,19 +54,19 @@ class C2CMessageResultAdapter$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("localCacheMsgs size: ");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.this$0.a.size());
       QLog.d("C2CMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(6, localObject).sendToTarget();
+    ((HashMap)localObject).put("keyword", this.a);
+    ((HashMap)localObject).put("sequence", Long.valueOf(this.b));
+    ((HashMap)localObject).put("data", this.c);
+    this.this$0.f.obtainMessage(6, localObject).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

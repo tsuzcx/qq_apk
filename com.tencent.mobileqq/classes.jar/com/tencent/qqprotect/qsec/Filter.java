@@ -9,27 +9,27 @@ import org.json.JSONObject;
 
 public class Filter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3600L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Predicate> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b;
+  private long a = 3600L;
+  private String b = "";
+  private List<Predicate> c = new ArrayList();
+  private int d;
+  private List<String> e;
   
   public Filter(JSONObject paramJSONObject)
   {
     int j = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.b = new ArrayList();
+    this.d = 0;
+    this.e = new ArrayList();
     if (paramJSONObject != null) {}
     for (;;)
     {
       int i;
       try
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
+        this.b = paramJSONObject.getString("type");
         long l = paramJSONObject.getLong("interval");
         if ((l > 0L) && (l < 604800L)) {
-          this.jdField_a_of_type_Long = l;
+          this.a = l;
         }
         Object localObject = paramJSONObject.getJSONArray("filter");
         if (localObject != null)
@@ -41,7 +41,7 @@ public class Filter
             if (localJSONObject == null) {
               break label253;
             }
-            this.jdField_a_of_type_JavaUtilList.add(new Predicate(localJSONObject));
+            this.c.add(new Predicate(localJSONObject));
             break label253;
           }
         }
@@ -53,7 +53,7 @@ public class Filter
             i = paramJSONObject.getInt("id");
             if (i > 100000)
             {
-              this.jdField_a_of_type_Int = i;
+              this.d = i;
               paramJSONObject = paramJSONObject.getJSONArray("fields");
               if (paramJSONObject != null)
               {
@@ -62,7 +62,7 @@ public class Filter
                 {
                   localObject = paramJSONObject.getString(i);
                   if ((localObject != null) && (!((String)localObject).isEmpty())) {
-                    this.b.add(localObject);
+                    this.e.add(localObject);
                   }
                   i += 1;
                   continue;
@@ -84,26 +84,16 @@ public class Filter
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public List<String> a()
-  {
-    return this.b;
+    return this.d;
   }
   
   public boolean a(Object paramObject)
   {
-    boolean bool2 = this.jdField_a_of_type_JavaUtilList.isEmpty();
+    boolean bool2 = this.c.isEmpty();
     boolean bool1 = false;
     if (!bool2)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         Predicate localPredicate = (Predicate)localIterator.next();
@@ -118,10 +108,20 @@ public class Filter
     }
     return bool1;
   }
+  
+  public long b()
+  {
+    return this.a;
+  }
+  
+  public List<String> c()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.Filter
  * JD-Core Version:    0.7.0.1
  */

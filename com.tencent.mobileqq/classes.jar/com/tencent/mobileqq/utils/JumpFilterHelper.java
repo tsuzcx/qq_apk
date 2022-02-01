@@ -17,10 +17,10 @@ import org.xmlpull.v1.XmlPullParser;
 public class JumpFilterHelper
   extends BaseConfigFileParser
 {
-  private static volatile JumpFilterHelper jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("qq_safe_jump_whitelist", 0);
-  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile JumpFilterHelper f;
+  private SharedPreferences c = BaseApplication.getContext().getSharedPreferences("qq_safe_jump_whitelist", 0);
+  private List<Pair<String, String>> d = new ArrayList();
+  private boolean e = false;
   
   static
   {
@@ -29,25 +29,11 @@ public class JumpFilterHelper
     localStringBuilder.append(((Context)localObject).getFilesDir().getAbsoluteFile());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("jumpConfig/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     ((StringBuilder)localObject).append("qq_safe_jump_whitelist.xml");
     b = ((StringBuilder)localObject).toString();
-  }
-  
-  public static JumpFilterHelper a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper = new JumpFilterHelper();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper;
   }
   
   private void a(String paramString1, String paramString2)
@@ -66,22 +52,23 @@ public class JumpFilterHelper
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "JumpIllegal", true, 0L, 0L, (HashMap)localObject, null);
   }
   
-  protected int a()
+  public static JumpFilterHelper b()
   {
-    return 2131886093;
+    if (f == null) {
+      try
+      {
+        if (f == null) {
+          f = new JumpFilterHelper();
+        }
+      }
+      finally {}
+    }
+    return f;
   }
   
-  public long a()
+  protected int a()
   {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getConfigVersion version=");
-      localStringBuilder.append(l);
-      QLog.d("JumpFilterHelper", 2, localStringBuilder.toString());
-    }
-    return l;
+    return 2132082703;
   }
   
   protected Object a(XmlPullParser paramXmlPullParser)
@@ -132,27 +119,27 @@ public class JumpFilterHelper
       paramBaseQQAppInterface.append(paramLong);
       QLog.d("JumpFilterHelper", 2, paramBaseQQAppInterface.toString());
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
+    this.c.edit().putLong("key_jump_whitelist_version", paramLong).commit();
   }
   
   protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
-    this.jdField_a_of_type_Boolean = true;
+    this.d = ((List)paramObject);
+    this.e = true;
   }
   
   public boolean a(Context paramContext, String paramString1, String paramString2)
   {
     Pair localPair = new Pair(paramString1, paramString2);
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (jdField_a_of_type_ComTencentMobileqqUtilsJumpFilterHelper)
+    if (!this.e) {
+      synchronized (f)
       {
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.e) {
           a(paramContext);
         }
       }
     }
-    if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
+    if (!this.d.contains(localPair))
     {
       a(paramString1, paramString2);
       return true;
@@ -168,10 +155,23 @@ public class JumpFilterHelper
     }
     return false;
   }
+  
+  public long c()
+  {
+    long l = this.c.getLong("key_jump_whitelist_version", 0L);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfigVersion version=");
+      localStringBuilder.append(l);
+      QLog.d("JumpFilterHelper", 2, localStringBuilder.toString());
+    }
+    return l;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpFilterHelper
  * JD-Core Version:    0.7.0.1
  */

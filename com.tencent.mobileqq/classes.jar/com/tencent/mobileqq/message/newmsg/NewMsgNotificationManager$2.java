@@ -15,18 +15,18 @@ class NewMsgNotificationManager$2
   
   public void onClick(View paramView)
   {
-    NewMsgNotificationManager.a(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    NewMsgNotificationManager.a(this.b, this.a);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.a.getApp().getResources().getColor(2131167064));
+    paramTextPaint.setColor(this.b.a.getApp().getResources().getColor(2131168002));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager.2
  * JD-Core Version:    0.7.0.1
  */

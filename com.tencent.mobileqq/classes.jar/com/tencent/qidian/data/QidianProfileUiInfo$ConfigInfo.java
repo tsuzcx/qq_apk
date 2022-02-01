@@ -7,77 +7,61 @@ import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
 
 public class QidianProfileUiInfo$ConfigInfo
 {
-  public int a;
-  public QidianProfileUiInfo.ConfigCorpSimpleInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public int a = 1;
+  public int b = 0;
+  public String c = "";
   public String d = "";
   public String e = "";
   public String f = "";
-  public String g = "";
+  public boolean g = false;
+  public QidianProfileUiInfo.ConfigCorpSimpleInfo h;
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public int l = 0;
   
-  public QidianProfileUiInfo$ConfigInfo()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-  }
+  public QidianProfileUiInfo$ConfigInfo() {}
   
   public QidianProfileUiInfo$ConfigInfo(mobileqq_qidian.ConfigInfo paramConfigInfo)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
     if (paramConfigInfo.uint32_type.has()) {
-      this.jdField_a_of_type_Int = paramConfigInfo.uint32_type.get();
+      this.a = paramConfigInfo.uint32_type.get();
     }
     if (paramConfigInfo.uint32_event.has()) {
-      this.jdField_b_of_type_Int = paramConfigInfo.uint32_event.get();
+      this.b = paramConfigInfo.uint32_event.get();
     }
     if (paramConfigInfo.str_title.has()) {
-      this.jdField_a_of_type_JavaLangString = paramConfigInfo.str_title.get();
+      this.c = paramConfigInfo.str_title.get();
     }
     if (paramConfigInfo.str_content.has()) {
-      this.jdField_b_of_type_JavaLangString = paramConfigInfo.str_content.get();
+      this.d = paramConfigInfo.str_content.get();
     }
     if (paramConfigInfo.str_action.has()) {
-      this.jdField_c_of_type_JavaLangString = paramConfigInfo.str_action.get();
+      this.e = paramConfigInfo.str_action.get();
     }
     if (paramConfigInfo.str_aaction.has()) {
-      this.d = paramConfigInfo.str_aaction.get();
+      this.f = paramConfigInfo.str_aaction.get();
     }
     if (paramConfigInfo.msg_corp_simple.has()) {
-      this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo$ConfigCorpSimpleInfo = new QidianProfileUiInfo.ConfigCorpSimpleInfo(paramConfigInfo.msg_corp_simple);
+      this.h = new QidianProfileUiInfo.ConfigCorpSimpleInfo(paramConfigInfo.msg_corp_simple);
     }
     if (paramConfigInfo.str_url.has()) {
-      this.e = paramConfigInfo.str_url.get();
+      this.i = paramConfigInfo.str_url.get();
     }
     if (paramConfigInfo.str_lat.has()) {
-      this.f = paramConfigInfo.str_lat.get();
+      this.j = paramConfigInfo.str_lat.get();
     }
     if (paramConfigInfo.str_log.has()) {
-      this.g = paramConfigInfo.str_log.get();
+      this.k = paramConfigInfo.str_log.get();
     }
     if (paramConfigInfo.uint32_title_type.has()) {
-      this.jdField_c_of_type_Int = paramConfigInfo.uint32_title_type.get();
+      this.l = paramConfigInfo.uint32_title_type.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.data.QidianProfileUiInfo.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

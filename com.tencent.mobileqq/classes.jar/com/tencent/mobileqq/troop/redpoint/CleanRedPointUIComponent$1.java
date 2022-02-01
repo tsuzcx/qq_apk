@@ -21,19 +21,19 @@ class CleanRedPointUIComponent$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initClickLogic: onClick  mUin = ");
-      localStringBuilder.append(CleanRedPointUIComponent.a(this.a));
-      localStringBuilder.append(", mUinType = ");
       localStringBuilder.append(CleanRedPointUIComponent.b(this.a));
+      localStringBuilder.append(", mUinType = ");
+      localStringBuilder.append(CleanRedPointUIComponent.c(this.a));
       QLog.d("CleanRedPointUIComponent", 2, localStringBuilder.toString());
     }
-    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).cleanRedPointInfoByIds(CleanRedPointUIComponent.a(this.a), CleanRedPointUIComponent.a(this.a), CleanRedPointUIComponent.b(this.a), CleanRedPointUIComponent.a(this.a));
-    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).notifyRedPointViewClick(CleanRedPointUIComponent.a(this.a), CleanRedPointUIComponent.a(this.a), CleanRedPointUIComponent.b(this.a), CleanRedPointUIComponent.a(this.a));
+    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).cleanRedPointInfoByIds(CleanRedPointUIComponent.d(this.a), CleanRedPointUIComponent.b(this.a), CleanRedPointUIComponent.c(this.a), CleanRedPointUIComponent.e(this.a));
+    ((IRedPointUtilsApi)QRoute.api(IRedPointUtilsApi.class)).notifyRedPointViewClick(CleanRedPointUIComponent.d(this.a), CleanRedPointUIComponent.b(this.a), CleanRedPointUIComponent.c(this.a), CleanRedPointUIComponent.f(this.a));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.CleanRedPointUIComponent.1
  * JD-Core Version:    0.7.0.1
  */

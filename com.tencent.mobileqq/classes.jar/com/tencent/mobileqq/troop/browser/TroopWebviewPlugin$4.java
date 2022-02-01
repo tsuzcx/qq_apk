@@ -10,14 +10,14 @@ class TroopWebviewPlugin$4
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (paramDialogInterface == this.a.e) {
+      this.a.e = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin.4
  * JD-Core Version:    0.7.0.1
  */

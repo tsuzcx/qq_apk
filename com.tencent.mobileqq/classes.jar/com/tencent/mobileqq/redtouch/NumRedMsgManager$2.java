@@ -19,15 +19,15 @@ class NumRedMsgManager$2
   {
     if (!NumRedMsgManager.a(this.this$0))
     {
-      int i = this.jdField_a_of_type_ArrayOfLong.length;
+      int i = this.a.length;
       int j = 1;
       if (i >= 1)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback == null) {
+        if (this.b == null) {
           return;
         }
-        if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.a))) {
-          this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.a), this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback);
+        if (!this.this$0.c.containsKey(Integer.valueOf(this.b.c))) {
+          this.this$0.c.put(Integer.valueOf(this.b.c), this.b);
         }
         ArrayList localArrayList1 = new ArrayList();
         ArrayList localArrayList2 = new ArrayList();
@@ -41,12 +41,12 @@ class NumRedMsgManager$2
           if (localObject != null)
           {
             i = 0;
-            while (i < this.jdField_a_of_type_ArrayOfLong.length)
+            while (i < this.a.length)
             {
               j = 0;
               while (j < ((List)localObject).size())
               {
-                if (((NumRedMsg.NumMsgBusi)((List)localObject).get(j)).ui64_msgid.get() == this.jdField_a_of_type_ArrayOfLong[i])
+                if (((NumRedMsg.NumMsgBusi)((List)localObject).get(j)).ui64_msgid.get() == this.a[i])
                 {
                   localArrayList1.add(((List)localObject).get(j));
                   j = 1;
@@ -59,7 +59,7 @@ class NumRedMsgManager$2
               if (j == 0)
               {
                 NumRedMsg.NumMsgBusi localNumMsgBusi = new NumRedMsg.NumMsgBusi();
-                localNumMsgBusi.ui64_msgid.set(this.jdField_a_of_type_ArrayOfLong[i]);
+                localNumMsgBusi.ui64_msgid.set(this.a[i]);
                 localArrayList2.add(localNumMsgBusi);
               }
               i += 1;
@@ -70,27 +70,27 @@ class NumRedMsgManager$2
         if (i != 0)
         {
           i = k;
-          while (i < this.jdField_a_of_type_ArrayOfLong.length)
+          while (i < this.a.length)
           {
             localObject = new NumRedMsg.NumMsgBusi();
-            ((NumRedMsg.NumMsgBusi)localObject).ui64_msgid.set(this.jdField_a_of_type_ArrayOfLong[i]);
+            ((NumRedMsg.NumMsgBusi)localObject).ui64_msgid.set(this.a[i]);
             localArrayList2.add(localObject);
             i += 1;
           }
         }
-        if ((localArrayList1.size() != this.jdField_a_of_type_ArrayOfLong.length) && (!this.jdField_a_of_type_Boolean))
+        if ((localArrayList1.size() != this.a.length) && (!this.c))
         {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppNumRedMsgHandler.a(localArrayList2, this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
+          this.this$0.b.a(localArrayList2, this.b.c, this.d, this.a);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqTianshuDataNumRedGetMsgCallback.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
+        this.b.a(this.d, localArrayList1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.NumRedMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -25,38 +25,11 @@ import org.jetbrains.annotations.Nullable;
 @IgnoreDenyDependencyToSelf
 public abstract interface IReadInJoyBaseAdapter
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
   @Nullable
   public abstract Activity a();
   
   @Nullable
-  public abstract AnimationSet a();
-  
-  @Nullable
-  public abstract IFaceDecoder a();
-  
-  @Nullable
-  public abstract IExposureSupplementManager a();
-  
-  @Nullable
-  public abstract IVideoPlayManager a();
-  
-  @Nullable
   public abstract AbsBaseArticleInfo a(int paramInt);
-  
-  @Nullable
-  public abstract ListView a();
-  
-  @Nullable
-  public abstract Object a();
-  
-  @Nullable
-  public abstract List<AbsBaseArticleInfo> a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt, @Nullable ArrayList<AbsBaseArticleInfo> paramArrayList, @Nullable ArrayList<DislikeInfo> paramArrayList1, @Nullable Object paramObject, boolean paramBoolean1, boolean paramBoolean2);
   
@@ -76,25 +49,26 @@ public abstract interface IReadInJoyBaseAdapter
   
   public abstract void a(@NotNull HashMap<String, Long> paramHashMap);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
   @Nullable
   public abstract AbsBaseArticleInfo b(int paramInt);
-  
-  @Nullable
-  public abstract Object b();
   
   @Nullable
   public abstract List<AbsBaseArticleInfo> b();
   
   public abstract void b(long paramLong);
   
+  public abstract int c();
+  
   @Nullable
-  public abstract Object c();
+  public abstract ListView d();
+  
+  @Nullable
+  public abstract IVideoPlayManager e();
+  
+  public abstract long f();
+  
+  @Nullable
+  public abstract Object g();
   
   public abstract int getCount();
   
@@ -106,11 +80,37 @@ public abstract interface IReadInJoyBaseAdapter
   @Nullable
   public abstract View getView(int paramInt, @Nullable View paramView, @Nullable ViewGroup paramViewGroup);
   
+  @Nullable
+  public abstract List<AbsBaseArticleInfo> h();
+  
+  public abstract int i();
+  
+  public abstract boolean j();
+  
+  @Nullable
+  public abstract AnimationSet k();
+  
+  @Nullable
+  public abstract IFaceDecoder l();
+  
+  public abstract long m();
+  
+  public abstract void n();
+  
   public abstract void notifyDataSetChanged();
+  
+  @Nullable
+  public abstract IExposureSupplementManager o();
+  
+  @Nullable
+  public abstract Object p();
+  
+  @Nullable
+  public abstract Object q();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

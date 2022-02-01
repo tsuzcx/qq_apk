@@ -16,8 +16,8 @@ class VasMonitorHandler$2
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    Object localObject1 = this.a;
+    boolean bool2 = this.b;
     boolean bool1 = true;
     Object localObject3 = VasUpdateUtil.a((AppRuntime)localObject1, "monitorAppid", bool2 ^ true, null);
     if (localObject3 != null) {}
@@ -25,18 +25,18 @@ class VasMonitorHandler$2
     {
       try
       {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        this.this$0.a.clear();
         localObject1 = ((JSONObject)localObject3).optJSONArray("allAppidControl");
         int i = 0;
         if (localObject1 != null)
         {
           localObject1 = ((JSONArray)localObject1).optJSONObject(0);
-          AtomicBoolean localAtomicBoolean = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+          AtomicBoolean localAtomicBoolean = this.this$0.b;
           if ((localObject1 == null) || (!((JSONObject)localObject1).optBoolean("stopAllReport"))) {
             break label239;
           }
           localAtomicBoolean.set(bool1);
-          if (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          if (this.this$0.b.get()) {
             return;
           }
           localObject3 = ((JSONObject)localObject3).optJSONArray("individualMonitorAppidList");
@@ -49,7 +49,7 @@ class VasMonitorHandler$2
               }
               localObject1 = ((JSONObject)localObject1).optString("appid");
               if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject1);
+                this.this$0.a.add(localObject1);
               }
               i += 1;
               continue;
@@ -77,7 +77,7 @@ class VasMonitorHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler.2
  * JD-Core Version:    0.7.0.1
  */

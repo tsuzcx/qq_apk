@@ -1,39 +1,27 @@
 package com.tencent.mobileqq.utils.abtest;
 
-import com.tencent.mtt.abtestsdk.entity.ExpEntity;
-import com.tencent.mtt.abtestsdk.listener.GetExperimentListener;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class ABTestController$3
-  implements GetExperimentListener
+  implements ThreadExcutor.IThreadListener
 {
   ABTestController$3(ABTestController paramABTestController) {}
   
-  public void getExperimentFailed(int paramInt, String paramString)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("abtest api load exp failed. i:");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(". s:");
-    localStringBuilder.append(paramString);
-    ABTestUtil.a("ABTestController", localStringBuilder.toString());
+    if (ABTestController.b(this.a).get() == 1) {
+      ABTestController.b(this.a).set(0);
+    }
   }
   
-  public void getExperimentSucceed(List<ExpEntity> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      synchronized (ABTestController.a(this.a))
-      {
-        ABTestController.a(this.a, paramList);
-        return;
-      }
-    }
-    ABTestUtil.a("ABTestController", "load exp failed. list empty");
-  }
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.abtest.ABTestController.3
  * JD-Core Version:    0.7.0.1
  */

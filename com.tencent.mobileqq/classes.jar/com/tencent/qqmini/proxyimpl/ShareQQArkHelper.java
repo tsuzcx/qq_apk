@@ -32,7 +32,7 @@ public class ShareQQArkHelper
   private static int a(MiniArkShareModel paramMiniArkShareModel)
   {
     int i;
-    if ((!StringUtil.a(paramMiniArkShareModel.getTemplateId())) && (!StringUtil.a(paramMiniArkShareModel.getTemplateData()))) {
+    if ((!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateId())) && (!StringUtil.isEmpty(paramMiniArkShareModel.getTemplateData()))) {
       i = 2;
     } else {
       i = 0;
@@ -45,8 +45,8 @@ public class ShareQQArkHelper
   
   private static QQProgressDialog a(Activity paramActivity)
   {
-    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
-    paramActivity.c(2131708458);
+    paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299920));
+    paramActivity.c(2131906244);
     paramActivity.show();
     return paramActivity;
   }
@@ -80,7 +80,7 @@ public class ShareQQArkHelper
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      QQToast.a(MobileQQ.sMobileQQ, 1, 2131719012, 0).a();
+      QQToast.makeText(MobileQQ.sMobileQQ, 1, 2131916547, 0).show();
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new ShareQQArkHelper.6());
@@ -182,7 +182,7 @@ public class ShareQQArkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper
  * JD-Core Version:    0.7.0.1
  */

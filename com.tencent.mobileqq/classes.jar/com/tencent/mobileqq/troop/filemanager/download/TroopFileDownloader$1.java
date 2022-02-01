@@ -11,9 +11,9 @@ class TroopFileDownloader$1
   
   public void run()
   {
-    if (this.this$0.a)
+    if (this.this$0.h)
     {
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[");
       localStringBuilder.append(this.this$0.b);
@@ -21,10 +21,10 @@ class TroopFileDownloader$1
       TroopFileTransferUtil.Log.b("TroopFileDownloader", i, localStringBuilder.toString());
       return;
     }
-    if (this.this$0.a()) {
+    if (this.this$0.c()) {
       return;
     }
-    if (!this.this$0.c())
+    if (!this.this$0.f())
     {
       this.this$0.a(true, -5001, "file open exception", "");
       return;
@@ -39,7 +39,7 @@ class TroopFileDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

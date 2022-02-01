@@ -12,18 +12,18 @@ import org.jetbrains.annotations.NotNull;
 public class TopRecommendBannerAdapter
   extends RecommendBannerContentAdaper
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
-  private List<RecommendInfoItem> b = new ArrayList();
+  private List<RecommendInfoItem> c = new ArrayList();
+  private boolean d;
+  private RecyclerView e;
   
   public TopRecommendBannerAdapter(@NotNull RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.e = paramRecyclerView;
   }
   
-  private void a()
+  private void f()
   {
-    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    RecyclerView localRecyclerView = this.e;
     if (localRecyclerView != null)
     {
       if (localRecyclerView.isComputingLayout())
@@ -35,72 +35,56 @@ public class TopRecommendBannerAdapter
     }
   }
   
-  private void b()
+  private void g()
   {
-    this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
+    this.c.clear();
+    this.c.addAll(this.a.subList(0, 10));
+    this.a = this.a.subList(10, this.a.size());
   }
   
   public List<RecommendInfoItem> a()
   {
-    return this.b;
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    if (paramInt < this.b.size())
+    if (paramInt < this.c.size())
     {
-      this.b.remove(paramInt);
-      notifyItemRemoved(a() + paramInt);
-      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
+      this.c.remove(paramInt);
+      notifyItemRemoved(b() + paramInt);
+      notifyItemRangeChanged(b() + paramInt, this.c.size() - paramInt);
     }
   }
   
   public void a(CertifiedAccountMeta.StEntry paramStEntry, List<RecommendInfoItem> paramList)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b = paramStEntry;
+    if (this.a != null) {
+      this.a.addAll(paramList);
     } else {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.a = paramList;
     }
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 10)
+      if (this.a.size() >= 10)
       {
-        b();
-        a();
+        g();
+        f();
         return;
       }
-      this.b.addAll(paramList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      a();
+      this.c.addAll(paramList);
+      this.a.clear();
+      f();
     }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
-    {
-      b();
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
   }
   
   public boolean c()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.a != null) && (this.a.size() >= 10))
     {
-      this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
-      notifyItemInserted(this.b.size());
+      g();
+      f();
       return true;
     }
     return false;
@@ -108,16 +92,32 @@ public class TopRecommendBannerAdapter
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
+  }
+  
+  public boolean d()
+  {
+    return (this.d) && (this.a != null) && (this.a.size() < 10);
+  }
+  
+  public boolean e()
+  {
+    if ((this.a != null) && (this.a.size() > 0))
+    {
+      this.c.add(this.a.remove(0));
+      notifyItemInserted(this.c.size());
+      return true;
+    }
+    return false;
   }
   
   public int getItemCount()
   {
-    List localList = this.b;
+    List localList = this.c;
     if (localList != null) {
-      return localList.size() + a();
+      return localList.size() + b();
     }
-    return a();
+    return b();
   }
 }
 

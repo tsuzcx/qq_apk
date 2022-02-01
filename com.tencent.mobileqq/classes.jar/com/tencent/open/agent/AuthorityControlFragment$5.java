@@ -33,14 +33,14 @@ class AuthorityControlFragment$5
     {
       AuthorityControlFragment.a(this.a, paramList);
       int i = paramList.size();
-      paramList = String.format(HardCodeUtil.a(2131701020), new Object[] { Integer.valueOf(i) });
-      QQToast.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
+      paramList = String.format(HardCodeUtil.a(2131899041), new Object[] { Integer.valueOf(i) });
+      QQToast.makeText(AuthorityControlFragment.e(this.a), 2, paramList, 0).show();
     }
     else
     {
-      QQToast.a(AuthorityControlFragment.a(this.a), 1, HardCodeUtil.a(2131701024), 0).a();
+      QQToast.makeText(AuthorityControlFragment.e(this.a), 1, HardCodeUtil.a(2131899045), 0).show();
     }
-    Object localObject = AuthorityControlFragment.a(this.a);
+    Object localObject = AuthorityControlFragment.b(this.a);
     if (paramBoolean) {
       paramList = "0";
     } else {
@@ -66,28 +66,28 @@ class AuthorityControlFragment$5
       if (paramList == null) {
         paramString = new ArrayList();
       }
-      AuthorityControlFragment.a(this.a).a(paramString);
+      AuthorityControlFragment.d(this.a).a(paramString);
       AuthorityControlFragment.a(this.a, new ArrayList(paramString));
-      if (AuthorityControlFragment.a(this.a).getCount() == 0)
+      if (AuthorityControlFragment.d(this.a).getCount() == 0)
       {
-        AuthorityControlFragment.a(this.a);
+        AuthorityControlFragment.f(this.a);
       }
       else
       {
-        AuthorityControlFragment.a(this.a).setVisibility(0);
+        AuthorityControlFragment.g(this.a).setVisibility(0);
         paramList = this.a;
-        paramList.setRightButton(2131690225, paramList);
+        paramList.setRightButton(2131887125, paramList);
       }
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      AuthorityControlFragment.d(this.a).notifyDataSetChanged();
     }
     else
     {
-      AuthorityControlFragment.a(this.a);
+      AuthorityControlFragment.f(this.a);
     }
-    if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
+    if ((AuthorityControlFragment.h(this.a).isShowing()) && (!this.a.isRemoving())) {}
     try
     {
-      AuthorityControlFragment.a(this.a).dismiss();
+      AuthorityControlFragment.h(this.a).dismiss();
       label194:
       AuthorityControlFragment.a(this.a, paramBoolean);
       return;
@@ -100,7 +100,7 @@ class AuthorityControlFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlFragment.5
  * JD-Core Version:    0.7.0.1
  */

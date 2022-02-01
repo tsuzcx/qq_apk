@@ -10,31 +10,25 @@ import mqq.app.MobileQQ;
 
 public class StatisticHitRateCollector
 {
-  public static StatisticHitRateCollector a;
-  private final String a;
-  public Map<String, Boolean> a;
+  public static StatisticHitRateCollector a = new StatisticHitRateCollector("qzone");
   public Map<String, Boolean> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqStatisticsStatisticHitRateCollector = new StatisticHitRateCollector("qzone");
-  }
+  public Map<String, Boolean> c = new ConcurrentHashMap();
+  private final String d;
   
   public StatisticHitRateCollector(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StatisticHitRateCollector_");
     localStringBuilder.append(paramString);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.d = localStringBuilder.toString();
   }
   
   public static StatisticHitRateCollector a()
   {
-    return jdField_a_of_type_ComTencentMobileqqStatisticsStatisticHitRateCollector;
+    return a;
   }
   
-  public static String a()
+  public static String b()
   {
     Object localObject = MobileQQ.getMobileQQ();
     if (localObject != null) {
@@ -58,16 +52,16 @@ public class StatisticHitRateCollector
   
   public void a(String paramString1, String paramString2)
   {
-    Object localObject = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    Object localObject = (Boolean)this.b.get(paramString2);
     if ((localObject == null) || (!((Boolean)localObject).booleanValue()))
     {
-      localObject = (Boolean)this.b.get(paramString2);
+      localObject = (Boolean)this.c.get(paramString2);
       if ((localObject != null) && (((Boolean)localObject).booleanValue()))
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+        this.b.put(paramString2, Boolean.valueOf(true));
         if (QLog.isColorLevel())
         {
-          localObject = this.jdField_a_of_type_JavaLangString;
+          localObject = this.d;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("hitEnd sucess action = ");
           localStringBuilder.append(paramString2);
@@ -76,8 +70,8 @@ public class StatisticHitRateCollector
           QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
         StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, null, null);
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
         this.b.remove(paramString2);
+        this.c.remove(paramString2);
       }
     }
   }
@@ -86,7 +80,7 @@ public class StatisticHitRateCollector
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("preloadMark preloadAction = ");
       localStringBuilder.append(paramString);
@@ -95,10 +89,10 @@ public class StatisticHitRateCollector
       QLog.d(str, 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
-      b(a(), paramString);
+      b(b(), paramString);
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
-    this.b.put(paramString, Boolean.valueOf(true));
+    this.b.put(paramString, Boolean.valueOf(false));
+    this.c.put(paramString, Boolean.valueOf(true));
   }
   
   public void b(String paramString)
@@ -110,16 +104,16 @@ public class StatisticHitRateCollector
   {
     if (paramString2 != null)
     {
-      Object localObject = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+      Object localObject = (Boolean)this.b.get(paramString2);
       if ((localObject == null) || (!((Boolean)localObject).booleanValue()))
       {
-        localObject = (Boolean)this.b.get(paramString2);
+        localObject = (Boolean)this.c.get(paramString2);
         if ((localObject != null) && (((Boolean)localObject).booleanValue()))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+          this.b.put(paramString2, Boolean.valueOf(true));
           if (QLog.isColorLevel())
           {
-            localObject = this.jdField_a_of_type_JavaLangString;
+            localObject = this.d;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("hitEnd action = ");
             localStringBuilder.append(paramString2);
@@ -128,8 +122,8 @@ public class StatisticHitRateCollector
             QLog.d((String)localObject, 2, localStringBuilder.toString());
           }
           StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, false, 0L, 0L, null, null);
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
           this.b.remove(paramString2);
+          this.c.remove(paramString2);
         }
       }
     }
@@ -142,7 +136,7 @@ public class StatisticHitRateCollector
   
   public void d(String paramString)
   {
-    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
+    Iterator localIterator = new ArrayList(this.c.keySet()).iterator();
     while (localIterator.hasNext()) {
       b(paramString, (String)localIterator.next());
     }
@@ -150,7 +144,7 @@ public class StatisticHitRateCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticHitRateCollector
  * JD-Core Version:    0.7.0.1
  */

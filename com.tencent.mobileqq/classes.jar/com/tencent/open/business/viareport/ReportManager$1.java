@@ -10,40 +10,40 @@ class ReportManager$1
   
   public void run()
   {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.a;
     boolean bool1 = false;
-    if ((bool2) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo == null))
+    if ((bool2) && (this.b == null))
     {
-      localObject = this.jdField_a_of_type_AndroidOsBundle;
+      localObject = this.c;
       if ((localObject != null) && (this.this$0.b(((Bundle)localObject).getString("appid_for_getting_config")))) {
-        this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, false, this.b);
+        this.this$0.a(this.d, this.c, false, this.e);
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo;
-    if ((localObject != null) && (((BatchReportInfo)localObject).a()) && (this.this$0.b(null))) {
-      ReportDbHelper.a().a("table_new_data", this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo);
+    Object localObject = this.b;
+    if ((localObject != null) && (((BatchReportInfo)localObject).b()) && (this.this$0.b(null))) {
+      ReportDbHelper.a().a("table_new_data", this.b);
     }
-    if (this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.e)
     {
       LogUtility.b("viareport", "isUploading ---return");
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (!this.this$0.a(this.jdField_a_of_type_JavaLangString)) && (!this.this$0.a())) {
+    if ((!this.a) && (!this.this$0.a(this.d)) && (!this.this$0.c())) {
       return;
     }
     localObject = this.this$0;
-    String str = this.jdField_a_of_type_JavaLangString;
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) {
+    String str = this.d;
+    Bundle localBundle = this.c;
+    if (this.b != null) {
       bool1 = true;
     }
-    ((ReportManager)localObject).a(str, localBundle, bool1, this.b);
+    ((ReportManager)localObject).a(str, localBundle, bool1, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportManager.1
  * JD-Core Version:    0.7.0.1
  */

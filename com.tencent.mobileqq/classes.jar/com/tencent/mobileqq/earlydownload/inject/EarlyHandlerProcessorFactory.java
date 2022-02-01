@@ -36,48 +36,48 @@ import mqq.app.AppRuntime;
 public class EarlyHandlerProcessorFactory
 {
   @ConfigInject(configPath="Business/qq-earlydownload-impl/src/main/resources/Inject_QQEarlyDownloadProcessor.yml", version=1)
-  private static ArrayList<Class<? extends BaseEarlyHandlerProcessor>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<Class<? extends BaseEarlyHandlerProcessor>> a = new ArrayList();
   @ConfigInject(configPath="Business/qq-earlydownload-impl/src/main/resources/Inject_QQEarlyDownloadProcessor.yml", version=1)
   private static ArrayList<Class<? extends BaseEarlyHandlerProcessor>> b;
-  private static ArrayList<BaseEarlyHandlerProcessor> c = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static ArrayList<BaseEarlyHandlerProcessor> d = new ArrayList();
+  private volatile boolean c = false;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(AppleEmojiProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArNativeSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ChirpSoProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(FaceModelsDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(FaceScanNativeSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(HotFriendResProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(JpegSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MiniScanDecodeSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MiniScanDetectModelsDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MiniScanDetectSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QBarModelDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PokeResProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PrecoverProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PttSilkAndChangeVoiceSoProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PttTransitionAnimProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QavGAudioSoundProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QavImageProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QavSoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QavVideoDownloadProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QFlutterAppDataProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QFlutterEngineDataProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQDingdongSoundProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(SystemFaceProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ViolaBizLibProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ViolaLibProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(WebSoDownloadProcessor.class);
+    a.add(AppleEmojiProcessor.class);
+    a.add(ArNativeSoDownloadProcessor.class);
+    a.add(ChirpSoProcessor.class);
+    a.add(FaceModelsDownloadProcessor.class);
+    a.add(FaceScanNativeSoDownloadProcessor.class);
+    a.add(HotFriendResProcessor.class);
+    a.add(JpegSoDownloadProcessor.class);
+    a.add(MiniScanDecodeSoDownloadProcessor.class);
+    a.add(MiniScanDetectModelsDownloadProcessor.class);
+    a.add(MiniScanDetectSoDownloadProcessor.class);
+    a.add(QBarModelDownloadProcessor.class);
+    a.add(PokeResProcessor.class);
+    a.add(PrecoverProcessor.class);
+    a.add(PttSilkAndChangeVoiceSoProcessor.class);
+    a.add(PttTransitionAnimProcessor.class);
+    a.add(QavGAudioSoundProcessor.class);
+    a.add(QavImageProcessor.class);
+    a.add(QavSoDownloadProcessor.class);
+    a.add(QavVideoDownloadProcessor.class);
+    a.add(QFlutterAppDataProcessor.class);
+    a.add(QFlutterEngineDataProcessor.class);
+    a.add(QQDingdongSoundProcessor.class);
+    a.add(SystemFaceProcessor.class);
+    a.add(ViolaBizLibProcessor.class);
+    a.add(ViolaLibProcessor.class);
+    a.add(WebSoDownloadProcessor.class);
     b = new ArrayList();
     b.add(ArNativeSoDownloadProcessor.class);
   }
   
-  private void a(AppRuntime paramAppRuntime)
+  private void b(AppRuntime paramAppRuntime)
   {
-    c.clear();
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    d.clear();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       paramAppRuntime = (Class)localIterator.next();
@@ -98,7 +98,7 @@ public class EarlyHandlerProcessorFactory
         paramAppRuntime = null;
       }
       if (paramAppRuntime != null) {
-        c.add(paramAppRuntime);
+        d.add(paramAppRuntime);
       }
     }
   }
@@ -119,17 +119,17 @@ public class EarlyHandlerProcessorFactory
   
   public ArrayList<BaseEarlyHandlerProcessor> a(AppRuntime paramAppRuntime)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      a(paramAppRuntime);
-      this.jdField_a_of_type_Boolean = true;
+      b(paramAppRuntime);
+      this.c = true;
     }
-    return c;
+    return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.inject.EarlyHandlerProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

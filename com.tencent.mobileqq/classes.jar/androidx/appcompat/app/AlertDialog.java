@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.attr;
 
 public class AlertDialog
   extends AppCompatDialog
@@ -49,7 +50,7 @@ public class AlertDialog
       return paramInt;
     }
     TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2131034181, localTypedValue, true);
+    paramContext.getTheme().resolveAttribute(R.attr.alertDialogTheme, localTypedValue, true);
     return localTypedValue.resourceId;
   }
   

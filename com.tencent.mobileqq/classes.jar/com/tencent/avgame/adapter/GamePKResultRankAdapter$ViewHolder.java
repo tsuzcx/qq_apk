@@ -9,18 +9,18 @@ import android.widget.TextView;
 public class GamePKResultRankAdapter$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView a;
   private TextView b;
+  private ImageView c;
+  private LinearLayout d;
   
   public GamePKResultRankAdapter$ViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363266));
-    this.b = ((TextView)paramView.findViewById(2131363268));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363252));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363257));
+    this.a = ((TextView)paramView.findViewById(2131429140));
+    this.b = ((TextView)paramView.findViewById(2131429142));
+    this.c = ((ImageView)paramView.findViewById(2131429126));
+    this.d = ((LinearLayout)paramView.findViewById(2131429131));
   }
 }
 

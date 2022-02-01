@@ -14,22 +14,22 @@ class SingleDateSelector$1
   
   void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerOnSelectionChangedListener.a();
+    this.a.a();
   }
   
   void a(@Nullable Long paramLong)
   {
     if (paramLong == null) {
-      SingleDateSelector.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerSingleDateSelector);
+      SingleDateSelector.a(this.b);
     } else {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerSingleDateSelector.a(paramLong.longValue());
+      this.b.a(paramLong.longValue());
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerOnSelectionChangedListener.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerSingleDateSelector.a());
+    this.a.a(this.b.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.SingleDateSelector.1
  * JD-Core Version:    0.7.0.1
  */

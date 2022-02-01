@@ -735,7 +735,7 @@ public class MiniAppUserAppInfoListManager
       if (((List)localObject2).size() <= 0) {
         return localHashMap;
       }
-      boolean bool = MiniAppConfProcessor.e();
+      boolean bool = MiniAppConfProcessor.h();
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -936,7 +936,7 @@ public class MiniAppUserAppInfoListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class VSWaterMarkProcessor
   public VSWaterMarkConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return VSWaterMarkConfBean.a(paramArrayOfQConfItem[0].a);
+      return VSWaterMarkConfBean.b(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -70,7 +70,7 @@ public class VSWaterMarkProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSWaterMarkProcessor
  * JD-Core Version:    0.7.0.1
  */

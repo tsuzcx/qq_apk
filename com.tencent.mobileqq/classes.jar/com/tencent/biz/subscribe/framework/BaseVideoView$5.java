@@ -11,11 +11,11 @@ class BaseVideoView$5
   
   public void run()
   {
-    if (BaseVideoView.a(this.this$0) != null) {
-      BaseVideoView.a(this.this$0).setXYaxis(0);
+    if (BaseVideoView.d(this.this$0) != null) {
+      BaseVideoView.d(this.this$0).setXYaxis(0);
     }
-    if (this.this$0.a() != null) {
-      this.this$0.a().setMax((int)this.this$0.a().getDurationMs());
+    if (this.this$0.getProgressBar() != null) {
+      this.this$0.getProgressBar().setMax((int)this.this$0.getSuperPlayer().getDurationMs());
     }
   }
 }

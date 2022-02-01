@@ -13,20 +13,20 @@ class ApolloNewActionFloatViewController$5
   
   public void onClick(View paramView)
   {
-    if (ApolloNewActionFloatViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloNewActionFloatViewController) != null)
+    if (ApolloNewActionFloatViewController.b(this.f) != null)
     {
       paramView = new ApolloInfo();
-      paramView.mAction = this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData;
-      ApolloNewActionFloatViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloNewActionFloatViewController).b(ApolloNewActionFloatViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloNewActionFloatViewController), paramView);
+      paramView.mAction = this.a;
+      ApolloNewActionFloatViewController.b(this.f).b(ApolloNewActionFloatViewController.a(this.f), paramView);
     }
-    if (this.jdField_a_of_type_Int == ApolloNewActionFloatViewController.a()) {
-      ApolloTianshuReportUtil.a(124, String.valueOf(this.jdField_b_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    if (this.b == ApolloNewActionFloatViewController.b()) {
+      ApolloTianshuReportUtil.a(124, String.valueOf(this.c), this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloNewActionFloatViewController.5
  * JD-Core Version:    0.7.0.1
  */

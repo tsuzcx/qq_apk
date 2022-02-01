@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.playfeeds;
 
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.VideoPlayDianZanObserver;
+import com.tencent.mobileqq.kandian.repo.playfeeds.VideoPlayDianZanObserver;
 
 class VideoFeedsRecommendFragment$DianZanObserver
   extends VideoPlayDianZanObserver
@@ -24,22 +24,22 @@ class VideoFeedsRecommendFragment$DianZanObserver
       if (localObject == null) {
         return;
       }
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a((String)localObject);
+      paramBundle = VideoFeedsRecommendFragment.d(this.a).b((String)localObject);
       if (paramBundle != null)
       {
         if (i == 1) {
-          paramBundle.q = true;
+          paramBundle.am = true;
         } else if (i == 0) {
-          paramBundle.q = false;
+          paramBundle.am = false;
         }
-        VideoFeedsRecommendFragment.a(this.a).a(paramBundle);
+        VideoFeedsRecommendFragment.d(this.a).a(paramBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.DianZanObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -8,28 +8,28 @@ abstract class ReceiptOidbCallback<T>
   extends ProtoUtils.TroopProtocolObserver
 {
   protected T a;
-  private WeakReference<T> a;
+  private WeakReference<T> b;
   
   ReceiptOidbCallback(T paramT)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
+    this.b = new WeakReference(paramT);
   }
   
   abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
   
   public final void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_JavaLangObject == null) {
+    this.a = this.b.get();
+    if (this.a == null) {
       return;
     }
     a(paramInt, paramArrayOfByte, paramBundle);
-    this.jdField_a_of_type_JavaLangObject = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptOidbCallback
  * JD-Core Version:    0.7.0.1
  */

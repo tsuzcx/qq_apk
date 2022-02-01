@@ -12,8 +12,8 @@ import java.util.List;
 public class MsgTabStoryNodeAdapter
   extends BaseAdapter<MsgTabNodeInfo, BaseViewHolder<MsgTabNodeInfo>>
 {
-  private int jdField_a_of_type_Int = -1;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int f = -1;
+  private boolean g = false;
   
   public MsgTabStoryNodeAdapter(Context paramContext)
   {
@@ -22,31 +22,31 @@ public class MsgTabStoryNodeAdapter
   
   public int a(int paramInt)
   {
-    MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)a(paramInt);
+    MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)b(paramInt);
     if (localMsgTabNodeInfo != null) {
-      return localMsgTabNodeInfo.jdField_a_of_type_Int;
+      return localMsgTabNodeInfo.b;
     }
     return 0;
   }
   
   public int a(String paramString)
   {
-    List localList = a();
+    List localList = b();
     int i = 0;
     while (i < localList.size())
     {
-      if (TextUtils.equals(((MsgTabNodeInfo)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
-        return i + b();
+      if (TextUtils.equals(((MsgTabNodeInfo)localList.get(i)).d, paramString)) {
+        return i + d();
       }
       i += 1;
     }
-    return b();
+    return d();
   }
   
   public void a(BaseViewHolder<MsgTabNodeInfo> paramBaseViewHolder)
   {
     super.onViewDetachedFromWindow(paramBaseViewHolder);
-    paramBaseViewHolder.a();
+    paramBaseViewHolder.b();
   }
   
   public BaseViewHolder b(ViewGroup paramViewGroup, int paramInt)
@@ -56,12 +56,12 @@ public class MsgTabStoryNodeAdapter
   
   public void b(BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    paramBaseViewHolder.a((MsgTabNodeInfo)a(paramInt));
+    paramBaseViewHolder.a((MsgTabNodeInfo)b(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter
  * JD-Core Version:    0.7.0.1
  */

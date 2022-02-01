@@ -15,9 +15,9 @@ public class EndAnimState
   
   public void a(BaseState paramBaseState)
   {
-    this.a.a();
-    this.a.a.stopShakeAnimation();
-    PopOutAnimViewHolder.a().a();
+    this.c.a();
+    this.c.c.stopShakeAnimation();
+    PopOutAnimViewHolder.a().b();
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -32,7 +32,7 @@ public class EndAnimState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.EndAnimState
  * JD-Core Version:    0.7.0.1
  */

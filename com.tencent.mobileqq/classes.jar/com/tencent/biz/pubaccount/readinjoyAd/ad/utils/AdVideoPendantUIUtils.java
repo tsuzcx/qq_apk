@@ -25,11 +25,11 @@ public class AdVideoPendantUIUtils
     ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    if (paramADVideoItemHolder.a.a.a.K != null) {
+    if (paramADVideoItemHolder.az.c.as.ay != null) {
       try
       {
-        localObject = URLDrawable.getDrawable(new URL(paramADVideoItemHolder.a.a.a.K), (URLDrawable.URLDrawableOptions)localObject);
-        paramADVideoItemHolder.b.setImageDrawable((Drawable)localObject);
+        localObject = URLDrawable.getDrawable(new URL(paramADVideoItemHolder.az.c.as.ay), (URLDrawable.URLDrawableOptions)localObject);
+        paramADVideoItemHolder.S.setImageDrawable((Drawable)localObject);
         return;
       }
       catch (MalformedURLException paramADVideoItemHolder)
@@ -51,30 +51,30 @@ public class AdVideoPendantUIUtils
       {
         int i = AIOUtils.b(15.0F, BaseApplication.getContext().getResources());
         int j = AIOUtils.b(202.0F, BaseApplication.getContext().getResources());
-        paramVideoItemHolder.d.setPadding(i, 0, 0, j);
+        paramVideoItemHolder.T.setPadding(i, 0, 0, j);
       }
-      paramVideoItemHolder.b.setVisibility(0);
+      paramVideoItemHolder.S.setVisibility(0);
       a(paramVideoItemHolder);
     }
     else
     {
-      paramVideoItemHolder.b.setVisibility(8);
+      paramVideoItemHolder.S.setVisibility(8);
     }
-    if (paramVideoItemHolder.b != null)
+    if (paramVideoItemHolder.S != null)
     {
-      paramVideoItemHolder.b.setOnClickListener(paramOnClickListener);
-      paramVideoItemHolder.b.setTag(paramVideoItemHolder);
+      paramVideoItemHolder.S.setOnClickListener(paramOnClickListener);
+      paramVideoItemHolder.S.setTag(paramVideoItemHolder);
     }
   }
   
   public static boolean a(VideoInfo paramVideoInfo)
   {
-    return (paramVideoInfo != null) && (paramVideoInfo.a != null) && (paramVideoInfo.a.t == 1);
+    return (paramVideoInfo != null) && (paramVideoInfo.as != null) && (paramVideoInfo.as.ax == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideoPendantUIUtils
  * JD-Core Version:    0.7.0.1
  */

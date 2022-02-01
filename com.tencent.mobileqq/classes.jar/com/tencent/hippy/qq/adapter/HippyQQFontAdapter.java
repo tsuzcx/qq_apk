@@ -1,13 +1,19 @@
 package com.tencent.hippy.qq.adapter;
 
 import android.text.TextUtils;
+import com.tencent.hippy.qq.utils.HippyUtils;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mtt.hippy.adapter.font.HippyFontScaleAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class HippyQQFontAdapter
   implements HippyFontScaleAdapter
 {
+  private static final String[] FONT_EXTENSIONS = { ".ttf", ".otf" };
+  private static final String TAG = "HippyQQFontAdapter";
+  
   private StringBuilder decodeEmojiFromString(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -41,6 +47,35 @@ public class HippyQQFontAdapter
     return localStringBuilder;
   }
   
+  public String getCustomFontFilePath(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getCustomFontFilePath fontFamilyName = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("HippyQQFontAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = HippyUtils.getHippyFontRootDir();
+    String[] arrayOfString = FONT_EXTENSIONS;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      String str = arrayOfString[paramInt];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(str);
+      str = localStringBuilder.toString();
+      if (new File(str).exists()) {
+        return str;
+      }
+      paramInt += 1;
+    }
+    return null;
+  }
+  
   public CharSequence getEmoticonText(CharSequence paramCharSequence, int paramInt)
   {
     if (TextUtils.isEmpty(paramCharSequence)) {
@@ -59,7 +94,7 @@ public class HippyQQFontAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQFontAdapter
  * JD-Core Version:    0.7.0.1
  */

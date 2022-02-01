@@ -22,30 +22,30 @@ class TroopSettingActivity$40
       }
       if (paramMap != null)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null) {
+        if (this.a.t == null) {
           return;
         }
         if (!paramBoolean)
         {
-          if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin) != null) {
-            QQToast.a(TroopSettingActivity.a(this.a).getApp(), 1, this.a.getString(2131719975), 0).b(this.a.getTitleBarHeight());
+          if (paramMap.get(this.a.t.troopuin) != null) {
+            QQToast.makeText(TroopSettingActivity.a(this.a).getApp(), 1, this.a.getString(2131917580), 0).show(this.a.getTitleBarHeight());
           }
         }
         else
         {
-          paramString = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+          paramString = (Integer)paramMap.get(this.a.t.troopuin);
           if (paramString != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopmask = paramString.intValue();
+            this.a.t.troopmask = paramString.intValue();
           }
         }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(17);
+        this.a.aD.sendEmptyMessage(17);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.40
  * JD-Core Version:    0.7.0.1
  */

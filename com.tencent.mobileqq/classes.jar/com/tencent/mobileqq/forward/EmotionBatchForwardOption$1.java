@@ -12,18 +12,18 @@ class EmotionBatchForwardOption$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    if (this.a.A != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hideSoftInputFromWindow();
+      this.a.A.hideSoftInputFromWindow();
       EmotionBatchForwardOption localEmotionBatchForwardOption = this.a;
-      EmotionBatchForwardOption.a(localEmotionBatchForwardOption, localEmotionBatchForwardOption.jdField_a_of_type_JavaUtilArrayList);
+      EmotionBatchForwardOption.a(localEmotionBatchForwardOption, localEmotionBatchForwardOption.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.EmotionBatchForwardOption.1
  * JD-Core Version:    0.7.0.1
  */

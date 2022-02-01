@@ -8,20 +8,20 @@ class MsgTabStoryNodeListManager$15
 {
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Int == 0)
+    if (this.this$0.q == 0)
     {
-      if (MsgTabStoryNodeListManager.a(this.this$0)) {
-        this.this$0.jdField_a_of_type_JavaLangRunnable = null;
+      if (MsgTabStoryNodeListManager.c(this.this$0)) {
+        this.this$0.I = null;
       }
     }
     else {
-      ThreadManager.getUIHandler().post(this.this$0.jdField_a_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandler().post(this.this$0.I);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.15
  * JD-Core Version:    0.7.0.1
  */

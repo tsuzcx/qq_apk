@@ -19,13 +19,13 @@ public class VideoCoverListGroupHolder
   extends GroupHolderBase
   implements IEventReceiver
 {
-  private long jdField_a_of_type_Long = 0L;
-  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
-  private HoriziotalVideoCoverListDataProvider jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider;
-  private VideoCoverListGroupHolder.GetVideoBasicListReceiver jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver;
-  private volatile boolean c = false;
-  private boolean d = false;
-  private boolean e = false;
+  private VideoCoverListBar i;
+  private volatile boolean j = false;
+  private HoriziotalVideoCoverListDataProvider k;
+  private long l = 0L;
+  private VideoCoverListGroupHolder.GetVideoBasicListReceiver m;
+  private boolean n = false;
+  private boolean o = false;
   
   public VideoCoverListGroupHolder(@NonNull ViewGroup paramViewGroup)
   {
@@ -34,73 +34,73 @@ public class VideoCoverListGroupHolder
   
   protected View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131380572));
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
+    this.i = ((VideoCoverListBar)paramViewGroup.findViewById(2131449529));
+    return this.i;
   }
   
   public void a(int paramInt, IDataProvider.GroupInfo paramGroupInfo, @NonNull ArrayList<StoryPlayerVideoData> paramArrayList)
   {
     SLog.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramGroupInfo);
-    boolean bool = this.b;
+    boolean bool = this.h;
     super.a(paramInt, paramGroupInfo, paramArrayList);
     if (!bool)
     {
-      this.e = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver = new VideoCoverListGroupHolder.GetVideoBasicListReceiver(this);
+      this.o = true;
+      if (this.m == null) {
+        this.m = new VideoCoverListGroupHolder.GetVideoBasicListReceiver(this);
       }
-      StoryDispatcher.a().registerSubscriber("", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver);
+      StoryDispatcher.a().registerSubscriber("", this.m);
     }
     if (!paramGroupInfo.c())
     {
       if (paramGroupInfo.b()) {
         return;
       }
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a(paramInt, paramArrayList, paramGroupInfo.a);
-      if (i != this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+      int i1 = this.k.a().size();
+      this.k.a(paramInt, paramArrayList, paramGroupInfo.b);
+      if (i1 != this.k.a().size()) {
+        this.i.a();
       }
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
+    this.i.a(paramString);
   }
   
-  protected void b()
+  protected void e()
   {
-    super.b();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider = new HoriziotalVideoCoverListDataProvider(a().mUIStyle.showVideoCoverList);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new VideoCoverListGroupHolder.1(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new VideoCoverListGroupHolder.2(this));
+    super.e();
+    this.k = new HoriziotalVideoCoverListDataProvider(i().mUIStyle.showVideoCoverList);
+    this.i.a(this.k);
+    this.i.setOnVideoClickListener(new VideoCoverListGroupHolder.1(this));
+    this.i.setOnScrollListener(new VideoCoverListGroupHolder.2(this));
   }
   
-  public void c()
+  public void f()
   {
-    super.c();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver != null)
+    super.f();
+    if (this.m != null)
     {
-      this.e = false;
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver);
+      this.o = false;
+      StoryDispatcher.a().unRegisterSubscriber(this.m);
     }
   }
   
-  public void d()
+  public void h()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
+    this.i.b();
   }
   
   public boolean isValidate()
   {
-    return this.e;
+    return this.o;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoCoverListGroupHolder
  * JD-Core Version:    0.7.0.1
  */

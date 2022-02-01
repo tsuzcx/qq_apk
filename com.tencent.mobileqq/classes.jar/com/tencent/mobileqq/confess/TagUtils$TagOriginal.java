@@ -8,42 +8,41 @@ import java.util.Set;
 
 public class TagUtils$TagOriginal
 {
-  public float a;
-  public int a;
-  public String a;
-  public ArrayList<Pair<String, Float>> a;
-  Set<Integer> a;
-  public boolean a;
+  public String a = null;
   public int b;
-  public int c;
+  public boolean c;
+  public ArrayList<Pair<String, Float>> d;
+  public float e;
+  public int f;
+  public int g;
+  Set<Integer> h;
   
   public TagUtils$TagOriginal(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = null;
     int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Float = 1.0F;
     this.b = 0;
-    this.c = 36;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = TagUtils.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Float = TagUtils.a(paramString);
-    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.c = a(this.b);
-    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-    if (this.jdField_a_of_type_Boolean)
+    this.c = false;
+    this.d = new ArrayList();
+    this.e = 1.0F;
+    this.f = 0;
+    this.g = 36;
+    this.h = new HashSet();
+    this.a = paramString;
+    this.c = TagUtils.a(paramString, this.d);
+    this.e = TagUtils.b(paramString);
+    this.f = this.d.size();
+    this.g = a(this.f);
+    this.h.add(Integer.valueOf(1));
+    if (this.c)
     {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
-      if (this.b % 2 == 0) {
+      this.h.add(Integer.valueOf(this.f));
+      if (this.f % 2 == 0) {
         i = 1;
       }
       if (i != 0)
       {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+        this.h.add(Integer.valueOf(2));
+        this.h.add(Integer.valueOf(this.f / 2));
       }
     }
   }
@@ -51,40 +50,40 @@ public class TagUtils$TagOriginal
   private int a(int paramInt)
   {
     if (paramInt <= 2) {
-      paramInt = TagUtils.a.nextInt(8) - 4 + 74;
+      paramInt = TagUtils.b.nextInt(8) - 4 + 74;
     } else if (paramInt <= 4) {
-      paramInt = TagUtils.a.nextInt(8) - 4 + 70;
+      paramInt = TagUtils.b.nextInt(8) - 4 + 70;
     } else if (paramInt <= 6) {
-      paramInt = TagUtils.a.nextInt(8) - 4 + 66;
+      paramInt = TagUtils.b.nextInt(8) - 4 + 66;
     } else if (paramInt <= 8) {
-      paramInt = TagUtils.a.nextInt(8) - 4 + 62;
+      paramInt = TagUtils.b.nextInt(8) - 4 + 62;
     } else {
-      paramInt = TagUtils.a.nextInt(8) - 4 + 60;
+      paramInt = TagUtils.b.nextInt(8) - 4 + 60;
     }
     return paramInt / 4 * 4;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       int i;
-      if (this.b % 3 == 0) {
+      if (this.f % 3 == 0) {
         i = 1;
       } else {
         i = 0;
       }
       if (i != 0)
       {
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
+        this.h.add(Integer.valueOf(3));
+        this.h.add(Integer.valueOf(this.f / 3));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils.TagOriginal
  * JD-Core Version:    0.7.0.1
  */

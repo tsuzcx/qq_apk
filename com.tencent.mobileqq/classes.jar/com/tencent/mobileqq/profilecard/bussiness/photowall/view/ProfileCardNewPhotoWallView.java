@@ -159,7 +159,7 @@ public class ProfileCardNewPhotoWallView
   
   private void init()
   {
-    int i = getResources().getDimensionPixelSize(2131297593);
+    int i = getResources().getDimensionPixelSize(2131298257);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.mScale = localDisplayMetrics.density;
     this.width = (localDisplayMetrics.widthPixels - i * 2);
@@ -285,7 +285,7 @@ public class ProfileCardNewPhotoWallView
     if (localObject2 != null)
     {
       if (this.mDefaultD == null) {
-        this.mDefaultD = getResources().getDrawable(2131166392);
+        this.mDefaultD = getResources().getDrawable(2131167228);
       }
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable;
@@ -294,8 +294,8 @@ public class ProfileCardNewPhotoWallView
       localObject1 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
     }
     localObject2 = (ViewGroup)getImageViewLayout();
-    URLImageView localURLImageView = (URLImageView)((ViewGroup)localObject2).findViewById(2131368680);
-    View localView = ((ViewGroup)localObject2).findViewById(2131368689);
+    URLImageView localURLImageView = (URLImageView)((ViewGroup)localObject2).findViewById(2131435593);
+    View localView = ((ViewGroup)localObject2).findViewById(2131435602);
     setNightMode(localURLImageView);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -303,7 +303,7 @@ public class ProfileCardNewPhotoWallView
     localStateListDrawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(0));
     ((ViewGroup)localObject2).setLayoutParams(localLayoutParams);
     localURLImageView.setImageDrawable((Drawable)localObject1);
-    localURLImageView.setContentDescription(String.format(HardCodeUtil.a(2131708450), new Object[] { Integer.valueOf(paramInt3 + 1) }));
+    localURLImageView.setContentDescription(String.format(HardCodeUtil.a(2131906236), new Object[] { Integer.valueOf(paramInt3 + 1) }));
     localView.setBackgroundDrawable(localStateListDrawable);
     ((ViewGroup)localObject2).setOnClickListener(new ProfileCardNewPhotoWallView.1(this, localProfilePhotoWall, paramInt3, localURLImageView));
     return localObject2;
@@ -311,7 +311,7 @@ public class ProfileCardNewPhotoWallView
   
   protected View getImageViewLayout()
   {
-    return this.mLayoutInflater.inflate(2131561360, null);
+    return this.mLayoutInflater.inflate(2131627716, null);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -336,7 +336,7 @@ public class ProfileCardNewPhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardNewPhotoWallView
  * JD-Core Version:    0.7.0.1
  */

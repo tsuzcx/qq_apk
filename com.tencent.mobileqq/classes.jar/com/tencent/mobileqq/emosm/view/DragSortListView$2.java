@@ -9,7 +9,7 @@ class DragSortListView$2
   
   private void a()
   {
-    if (this.a.g == 4) {
+    if (this.a.h == 4) {
       this.a.a();
     }
   }
@@ -26,7 +26,7 @@ class DragSortListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.2
  * JD-Core Version:    0.7.0.1
  */

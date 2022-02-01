@@ -21,8 +21,8 @@ import java.util.List;
 public class QRecentC2CAVFileListContentView
   extends QBaseFileListContentView
 {
-  private C2CFileClickListener jdField_a_of_type_ComTencentAvWtogetherCallbackC2CFileClickListener;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new QRecentC2CAVFileListContentView.2(this);
+  private C2CFileClickListener j;
+  private FileTransferObserver k = new QRecentC2CAVFileListContentView.2(this);
   
   public QRecentC2CAVFileListContentView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,12 +37,7 @@ public class QRecentC2CAVFileListContentView
   public QRecentC2CAVFileListContentView(Context paramContext, C2CFileClickListener paramC2CFileClickListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAvWtogetherCallbackC2CFileClickListener = paramC2CFileClickListener;
-  }
-  
-  protected QfileBaseExpandableListAdapter a()
-  {
-    return new QVideoC2CFileExpandableListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap, this.jdField_a_of_type_ComTencentAvWtogetherCallbackC2CFileClickListener);
+    this.j = paramC2CFileClickListener;
   }
   
   public void a()
@@ -58,17 +53,17 @@ public class QRecentC2CAVFileListContentView
     while (paramList.hasNext())
     {
       Object localObject1 = (OfflineFileInfo)paramList.next();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject2 = this.f.iterator();
       if (((Iterator)localObject2).hasNext())
       {
         FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject2).next();
-        String str = ((OfflineFileInfo)localObject1).jdField_a_of_type_JavaLangString.replace("/offline", "");
+        String str = ((OfflineFileInfo)localObject1).b.replace("/offline", "");
         if ((localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.equalsIgnoreCase(str))) {}
         for (;;)
         {
           i = 1;
           break label197;
-          if ((Math.abs(localFileManagerEntity.srvTime - ((OfflineFileInfo)localObject1).jdField_d_of_type_Long) >= 60000L) || (localFileManagerEntity.fileSize != ((OfflineFileInfo)localObject1).b) || (localFileManagerEntity.peerUin == null) || (!localFileManagerEntity.peerUin.equalsIgnoreCase(String.valueOf(((OfflineFileInfo)localObject1).jdField_a_of_type_Long))) || (localFileManagerEntity.fileName == null) || (!localFileManagerEntity.fileName.equalsIgnoreCase(((OfflineFileInfo)localObject1).c))) {
+          if ((Math.abs(localFileManagerEntity.srvTime - ((OfflineFileInfo)localObject1).i) >= 60000L) || (localFileManagerEntity.fileSize != ((OfflineFileInfo)localObject1).g) || (localFileManagerEntity.peerUin == null) || (!localFileManagerEntity.peerUin.equalsIgnoreCase(String.valueOf(((OfflineFileInfo)localObject1).d))) || (localFileManagerEntity.fileName == null) || (!localFileManagerEntity.fileName.equalsIgnoreCase(((OfflineFileInfo)localObject1).f))) {
             break;
           }
         }
@@ -78,15 +73,15 @@ public class QRecentC2CAVFileListContentView
       if (i == 0)
       {
         localObject2 = FileManagerUtil.a((OfflineFileInfo)localObject1, 0);
-        ((FileManagerEntity)localObject2).strFileMd5 = ((OfflineFileInfo)localObject1).jdField_d_of_type_JavaLangString;
+        ((FileManagerEntity)localObject2).strFileMd5 = ((OfflineFileInfo)localObject1).j;
         ((FileManagerEntity)localObject2).cloudType = 3;
         if (((FileManagerEntity)localObject2).nFileType == 0)
         {
-          ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getFileManagerEngine().a((FileManagerEntity)localObject2, 5);
+          ((QQAppInterface)this.b).getFileManagerEngine().a((FileManagerEntity)localObject2, 5);
         }
         else if (((FileManagerEntity)localObject2).nFileType == 2)
         {
-          localObject1 = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getFileManagerEngine().a((FileManagerEntity)localObject2);
+          localObject1 = ((QQAppInterface)this.b).getFileManagerEngine().b((FileManagerEntity)localObject2);
           if (localObject1 != null) {
             ((FileManagerEntity)localObject2).strThumbPath = ((String)localObject1);
           }
@@ -115,13 +110,18 @@ public class QRecentC2CAVFileListContentView
   
   protected void e()
   {
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getFileTransferHandler().b(0, 30, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver, 3);
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getFileTransferHandler().a(0, 30, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver, 3);
+    ((QQAppInterface)this.b).getFileTransferHandler().b(0, 30, this.k, 3);
+    ((QQAppInterface)this.b).getFileTransferHandler().a(0, 30, this.k, 3);
+  }
+  
+  protected QfileBaseExpandableListAdapter getAdapter()
+  {
+    return new QVideoC2CFileExpandableListAdapter(this.a, this.h, this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QRecentC2CAVFileListContentView
  * JD-Core Version:    0.7.0.1
  */

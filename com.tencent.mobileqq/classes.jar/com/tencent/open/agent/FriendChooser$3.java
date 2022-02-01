@@ -17,30 +17,30 @@ class FriendChooser$3
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramAdapterView = (Friend)this.a.A.get(paramInt);
     if (paramAdapterView != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a)) {
+      if (this.a.C.b(paramAdapterView.a)) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.jdField_a_of_type_Int)
+      if (this.a.C.d() >= this.a.K)
       {
-        this.a.h();
+        this.a.j();
         return;
       }
-      paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-      this.a.b.add(paramAdapterView);
-      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
-      this.a.e();
+      paramView = (OpenFrame)this.a.h.getCurrentView();
+      this.a.B.add(paramAdapterView);
+      this.a.C.c(paramAdapterView.a);
+      this.a.f();
       paramView.g();
       this.a.b(false);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      this.a.p.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.3
  * JD-Core Version:    0.7.0.1
  */

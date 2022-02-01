@@ -28,42 +28,42 @@ import java.util.List;
 public class AppletsListAdapter
   extends BaseAdapter
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new AppletsListAdapter.1(this);
   protected QQAppInterface a;
-  private AppletsSettingFragment.OnChangeSwitchListener jdField_a_of_type_ComTencentMobileqqFragmentAppletsSettingFragment$OnChangeSwitchListener;
-  protected List<Object> a;
+  protected List<Object> b;
+  private LayoutInflater c;
+  private Activity d;
+  private Drawable e;
+  private AppletsSettingFragment.OnChangeSwitchListener f;
+  private CompoundButton.OnCheckedChangeListener g = new AppletsListAdapter.1(this);
   
   public AppletsListAdapter(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, AppletsSettingFragment.OnChangeSwitchListener paramOnChangeSwitchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramBaseActivity.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseActivity.getResources().getDrawable(2130845494);
-    this.jdField_a_of_type_ComTencentMobileqqFragmentAppletsSettingFragment$OnChangeSwitchListener = paramOnChangeSwitchListener;
+    this.a = paramQQAppInterface;
+    this.c = ((LayoutInflater)paramBaseActivity.getSystemService("layout_inflater"));
+    this.b = new ArrayList();
+    this.d = paramBaseActivity;
+    this.e = paramBaseActivity.getResources().getDrawable(2130846957);
+    this.f = paramOnChangeSwitchListener;
   }
   
   public void a(List<AppletItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -83,44 +83,44 @@ public class AppletsListAdapter
       if (paramView == null)
       {
         localViewHolder = new AppletsListAdapter.ViewHolder();
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561433, paramViewGroup, false);
-        localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362870));
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362869));
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362871));
-        localViewHolder.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131362872));
+        paramView = this.c.inflate(2131627789, paramViewGroup, false);
+        localViewHolder.b = ((RelativeLayout)paramView.findViewById(2131428668));
+        localViewHolder.c = ((URLImageView)paramView.findViewById(2131428667));
+        localViewHolder.d = ((TextView)paramView.findViewById(2131428669));
+        localViewHolder.e = ((Switch)paramView.findViewById(2131428670));
         paramView.setTag(localViewHolder);
       }
       else
       {
         localViewHolder = (AppletsListAdapter.ViewHolder)paramView.getTag();
       }
-      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839433);
-      Object localObject2 = localViewHolder.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (((AppletItem)localObject1).b() == 1) {
+      localViewHolder.b.setBackgroundResource(2130839622);
+      Object localObject2 = localViewHolder.e;
+      if (((AppletItem)localObject1).e() == 1) {
         bool = true;
       }
       ((Switch)localObject2).setChecked(bool);
-      localViewHolder.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      localViewHolder.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(paramInt));
+      localViewHolder.e.setOnCheckedChangeListener(this.g);
+      localViewHolder.e.setTag(Integer.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("AppletsListAdapter", 2, ((AppletItem)localObject1).toString());
       }
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((AppletItem)localObject1).a());
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem = ((AppletItem)localObject1);
-      if (!TextUtils.isEmpty(((AppletItem)localObject1).b()))
+      localViewHolder.d.setText(((AppletItem)localObject1).b());
+      localViewHolder.a = ((AppletItem)localObject1);
+      if (!TextUtils.isEmpty(((AppletItem)localObject1).c()))
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = AIOUtils.b(localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.getMeasuredWidth(), this.jdField_a_of_type_AndroidAppActivity.getResources());
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = AIOUtils.b(localViewHolder.c.getMeasuredWidth(), this.d.getResources());
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth;
-        Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        Drawable localDrawable = this.e;
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localDrawable;
         ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localDrawable;
-        localObject1 = URLDrawable.getDrawable(((AppletItem)localObject1).b(), (URLDrawable.URLDrawableOptions)localObject2);
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+        localObject1 = URLDrawable.getDrawable(((AppletItem)localObject1).c(), (URLDrawable.URLDrawableOptions)localObject2);
+        localViewHolder.c.setImageDrawable((Drawable)localObject1);
       }
       else
       {
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localViewHolder.c.setImageDrawable(this.e);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -129,7 +129,7 @@ public class AppletsListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AppletsListAdapter
  * JD-Core Version:    0.7.0.1
  */

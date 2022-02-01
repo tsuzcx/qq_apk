@@ -2,6 +2,8 @@ package com.tencent.mobileqq.activity.photo;
 
 public abstract interface VideoPlayController$VideoPlayerStateListener
 {
+  public abstract void F();
+  
   public abstract void a(VideoPlayMedioInfo paramVideoPlayMedioInfo);
   
   public abstract void a(VideoPlayMedioInfo paramVideoPlayMedioInfo, int paramInt);
@@ -19,12 +21,10 @@ public abstract interface VideoPlayController$VideoPlayerStateListener
   public abstract void c(VideoPlayMedioInfo paramVideoPlayMedioInfo);
   
   public abstract void d(VideoPlayMedioInfo paramVideoPlayMedioInfo);
-  
-  public abstract void v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayController.VideoPlayerStateListener
  * JD-Core Version:    0.7.0.1
  */

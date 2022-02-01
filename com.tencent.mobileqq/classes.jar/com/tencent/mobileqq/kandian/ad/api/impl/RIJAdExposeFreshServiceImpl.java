@@ -32,12 +32,12 @@ public class RIJAdExposeFreshServiceImpl
   
   public void handleExposedAd(String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
-    AdExposeFreshManager.a().a(paramString, paramAdvertisementInfo);
+    AdExposeFreshManager.a().b(paramString, paramAdvertisementInfo);
   }
   
   public void handleExposedAd(String paramString, Object paramObject)
   {
-    AdExposeFreshManager.a().a(paramString, (VideoInfo)paramObject);
+    AdExposeFreshManager.a().b(paramString, (VideoInfo)paramObject);
   }
   
   public boolean isExposed(long paramLong)
@@ -62,12 +62,12 @@ public class RIJAdExposeFreshServiceImpl
   
   public boolean reqRefreshSwitch()
   {
-    return AdExposeFreshManager.a().a();
+    return AdExposeFreshManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdExposeFreshServiceImpl
  * JD-Core Version:    0.7.0.1
  */

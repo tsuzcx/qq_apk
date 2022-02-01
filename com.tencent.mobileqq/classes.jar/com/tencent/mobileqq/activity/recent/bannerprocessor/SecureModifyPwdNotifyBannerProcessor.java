@@ -19,12 +19,7 @@ public class SecureModifyPwdNotifyBannerProcessor
   extends BaseBannerProcessor
   implements IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.c;
-  }
+  public static final int a = BannerTypeCollections.c;
   
   public SecureModifyPwdNotifyBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -38,31 +33,31 @@ public class SecureModifyPwdNotifyBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    return ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).initModifyPwdBanner((BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
+    return ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).initModifyPwdBanner((BaseQQAppInterface)this.f.getAppRuntime(), this.f);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.setVisibility(0);
+    paramBanner.c.setVisibility(0);
   }
   
   public void a(AppRuntime paramAppRuntime) {}
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
+  }
+  
+  public void d()
   {
     BaseQQAppInterface localBaseQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      localBaseQQAppInterface = (BaseQQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (this.f != null) {
+      localBaseQQAppInterface = (BaseQQAppInterface)this.f.getAppRuntime();
     } else {
       localBaseQQAppInterface = null;
     }
@@ -71,7 +66,7 @@ public class SecureModifyPwdNotifyBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SecureModifyPwdNotifyBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

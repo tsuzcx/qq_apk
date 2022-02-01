@@ -19,17 +19,17 @@ import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 public class MiniAppActivity
   extends BaseActivity
 {
-  protected int a;
-  public MiniAppInfo a;
-  private MiniAppBaseFragment a;
   protected String a;
+  protected int b;
+  public MiniAppInfo c;
+  private MiniAppBaseFragment d;
   
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131367211, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131433667, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
+    this.d = paramMiniAppBaseFragment;
   }
   
   @Override
@@ -45,19 +45,19 @@ public class MiniAppActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558485);
+    super.setContentView(2131624032);
     paramBundle = getIntent().getExtras();
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
     a((MiniAppBaseFragment)localObject);
     MiniAppManager.a();
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_appid");
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("key_appType", 0);
+    this.a = getIntent().getStringExtra("key_appid");
+    this.b = getIntent().getIntExtra("key_appType", 0);
     paramBundle = (MiniAppOptions)getIntent().getParcelableExtra("key_options");
     localObject = new MiniAppEvent();
-    ((MiniAppEvent)localObject).jdField_a_of_type_Int = 2;
-    ((MiniAppEvent)localObject).jdField_a_of_type_Boolean = true;
-    ((MiniAppEvent)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
+    ((MiniAppEvent)localObject).c = 2;
+    ((MiniAppEvent)localObject).b = true;
+    ((MiniAppEvent)localObject).e = new Object[] { this, this.a, Integer.valueOf(this.b), paramBundle };
     StoryDispatcher.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
     return true;
   }
@@ -66,9 +66,9 @@ public class MiniAppActivity
   {
     super.doOnDestroy();
     MiniAppEvent localMiniAppEvent = new MiniAppEvent();
-    localMiniAppEvent.jdField_a_of_type_Int = 3;
-    localMiniAppEvent.jdField_a_of_type_Boolean = true;
-    localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
+    localMiniAppEvent.c = 3;
+    localMiniAppEvent.b = true;
+    localMiniAppEvent.e = new Object[] { this.a, Integer.valueOf(this.b) };
     StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
   }
   
@@ -80,7 +80,7 @@ public class MiniAppActivity
   protected boolean onBackEvent()
   {
     moveTaskToBack(true);
-    overridePendingTransition(2130772343, 2130772004);
+    overridePendingTransition(2130772435, 2130772007);
     return true;
   }
   
@@ -93,7 +93,7 @@ public class MiniAppActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppActivity
  * JD-Core Version:    0.7.0.1
  */

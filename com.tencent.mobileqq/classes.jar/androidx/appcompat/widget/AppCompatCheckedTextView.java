@@ -7,6 +7,8 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.CheckedTextView;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.widget.TextViewCompat;
 
@@ -14,21 +16,23 @@ public class AppCompatCheckedTextView
   extends CheckedTextView
 {
   private static final int[] TINT_ATTRS = { 16843016 };
-  private final AppCompatTextHelper mTextHelper = new AppCompatTextHelper(this);
+  private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatCheckedTextView(Context paramContext)
+  public AppCompatCheckedTextView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatCheckedTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 16843720);
   }
   
-  public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatCheckedTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mTextHelper = new AppCompatTextHelper(this);
     this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mTextHelper.applyCompoundDrawablesTints();
     paramContext = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, TINT_ATTRS, paramInt, 0);

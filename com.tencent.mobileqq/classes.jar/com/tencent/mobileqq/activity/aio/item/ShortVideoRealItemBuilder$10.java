@@ -10,20 +10,20 @@ class ShortVideoRealItemBuilder$10
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask == null))
+    if ((this.a) && (this.b != null) && (this.c.progressTask == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask = new ShortVideoRealItemBuilder.10.1(this);
-      ShortVideoRealItemBuilder.a(this.this$0).removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask);
-      ShortVideoRealItemBuilder.a(this.this$0).post(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask);
+      this.c.progressTask = new ShortVideoRealItemBuilder.10.1(this);
+      ShortVideoRealItemBuilder.a(this.this$0).removeCallbacks(this.c.progressTask);
+      ShortVideoRealItemBuilder.a(this.this$0).post(this.c.progressTask);
     }
-    if (this.b) {
-      ShortVideoRealItemBuilder.a(this.this$0);
+    if (this.d) {
+      ShortVideoRealItemBuilder.b(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.10
  * JD-Core Version:    0.7.0.1
  */

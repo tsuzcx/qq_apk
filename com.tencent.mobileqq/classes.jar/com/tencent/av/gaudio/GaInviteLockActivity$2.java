@@ -13,24 +13,24 @@ class GaInviteLockActivity$2
   
   public void run()
   {
-    if (GaInviteLockActivity.a(this.this$0) == null) {
+    if (GaInviteLockActivity.b(this.this$0) == null) {
       return;
     }
     Object localObject1;
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.this$0.b;
+      localObject1 = this.this$0.l;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("mTaskCheckRunnable before");
-      ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.this$0));
+      ((StringBuilder)localObject2).append(GaInviteLockActivity.c(this.this$0));
       ((StringBuilder)localObject2).append(";currentMemberSize=");
       ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.this$0).size());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (GaInviteLockActivity.a(this.this$0))
+    if (GaInviteLockActivity.c(this.this$0))
     {
-      long l = QQAudioHelper.a() / 1000L;
+      long l = QQAudioHelper.c() / 1000L;
       localObject1 = new ArrayList();
       localObject2 = GaInviteLockActivity.a(this.this$0).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -42,7 +42,7 @@ class GaInviteLockActivity$2
         }
         else if (QLog.isColorLevel())
         {
-          String str = this.this$0.b;
+          String str = this.this$0.l;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("mTaskCheckRunnable ");
           localStringBuilder.append(localMemberinfo.b);
@@ -53,13 +53,13 @@ class GaInviteLockActivity$2
       }
       GaInviteLockActivity.a(this.this$0, (ArrayList)localObject1);
     }
-    GaInviteLockActivity.a(this.this$0).postDelayed(GaInviteLockActivity.a(this.this$0), 10000L);
+    GaInviteLockActivity.b(this.this$0).postDelayed(GaInviteLockActivity.d(this.this$0), 10000L);
     if (QLog.isColorLevel())
     {
-      localObject1 = this.this$0.b;
+      localObject1 = this.this$0.l;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("mTaskCheckRunnable after");
-      ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.this$0));
+      ((StringBuilder)localObject2).append(GaInviteLockActivity.c(this.this$0));
       ((StringBuilder)localObject2).append(";currentMemberSize=");
       ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.this$0).size());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());

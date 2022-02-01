@@ -38,7 +38,7 @@ class ResourceGrabView$2
     {
       paramActivity = ((BaseActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
       if ((paramActivity instanceof ResourceGrabFragment)) {
-        ((ResourceGrabFragment)paramActivity).c();
+        ((ResourceGrabFragment)paramActivity).d();
       }
     }
     ResourceGrabView.a(this.a, null);
@@ -57,8 +57,8 @@ class ResourceGrabView$2
     }
     ResourceGrabView.a(this.a, new WeakReference(paramActivity));
     paramActivity = this.a;
-    paramActivity.a(ResourceGrabView.a(paramActivity));
-    ResourceGrabView.a(this.a);
+    paramActivity.a(ResourceGrabView.d(paramActivity));
+    ResourceGrabView.e(this.a);
   }
   
   public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -69,7 +69,7 @@ class ResourceGrabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -49,67 +49,45 @@ public class WSEpisodeChoicePanel
   extends PopupWindow
   implements View.OnKeyListener, IWSEpisodeChoiceView, WSDragLayout.TouchListener
 {
-  private static final float jdField_a_of_type_Float = WSFeedUtils.a(10.0F);
-  private static final int jdField_a_of_type_Int = WSFeedUtils.a(88.0F);
-  private final RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new WSEpisodeChoicePanel.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private WSChoiceVideoAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter;
-  private WSVerticalItemData jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData;
-  private AbsWSVerticalChoiceVideoPresenter jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterAbsWSVerticalChoiceVideoPresenter;
-  private WSDragLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout;
-  private WSXRecyclerView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private TextView b;
-  private TextView c;
-  private TextView d;
+  private static final float a = WSFeedUtils.a(10.0F);
+  private static final int b = WSFeedUtils.a(88.0F);
+  private final WSVerticalPageFragment c;
+  private WSDragLayout d;
+  private WSXRecyclerView e;
+  private RelativeLayout f;
+  private TextView g;
+  private TextView h;
+  private View i;
+  private TextView j;
+  private TextView k;
+  private WSChoiceVideoAdapter l;
+  private AbsWSVerticalChoiceVideoPresenter m;
+  private WSVerticalItemData n;
+  private boolean o = false;
+  private final RecyclerView.OnScrollListener p = new WSEpisodeChoicePanel.1(this);
   
   private WSEpisodeChoicePanel(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(LayoutInflater.from(paramWSVerticalPageFragment.getActivity()).inflate(1929641986, null, false), -1, -1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    i();
-    j();
-    k();
-    l();
+    super(LayoutInflater.from(paramWSVerticalPageFragment.getActivity()).inflate(1929773062, null, false), -1, -1);
+    this.c = paramWSVerticalPageFragment;
+    o();
+    p();
+    q();
+    s();
   }
   
-  private int a()
+  private void A()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData = a();
-    if ((b()) && (WSExpABTestManager.a().h()))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a().a().dramaInfo.isFollowed;
-      int i;
-      if (bool) {
-        i = 2;
-      } else {
-        i = 1;
-      }
-      c(bool);
-      return i;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    return 0;
-  }
-  
-  private Activity a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity();
-  }
-  
-  private Context a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getContext();
+    Map localMap = g().n();
+    localMap.putAll(this.l.c());
+    localMap.put("close_type", "2");
+    WSVerticalCollectionBeaconReport.c(this.c.k(), this.c.l(), this.c.F(), localMap);
   }
   
   private GradientDrawable a(String paramString)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(WeishiUIUtil.j);
+    localGradientDrawable.setCornerRadius(WeishiUIUtil.l);
     localGradientDrawable.setColor(Color.parseColor(paramString));
     return localGradientDrawable;
   }
@@ -119,70 +97,58 @@ public class WSEpisodeChoicePanel
     return new WSEpisodeChoicePanel(paramWSVerticalPageFragment);
   }
   
-  private WSVerticalItemData a()
-  {
-    if ((a() != null) && (a().a().a().getDataList().size() != 0)) {
-      return (WSVerticalItemData)a().a().a().getDataList().get(0);
-    }
-    return null;
-  }
-  
-  @NotNull
-  private XRecyclerView.RefreshCallback a()
-  {
-    return new WSEpisodeChoicePanel.4(this);
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
-    Map localMap = a().b();
+    Map localMap = g().n();
     localMap.put("btn_status", String.valueOf(paramInt1));
-    WSVerticalCollectionBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), paramInt2, localMap);
+    WSVerticalCollectionBeaconReport.a(this.c.k(), this.c.l(), this.c.F(), paramInt2, localMap);
   }
   
   private void a(Window paramWindow)
   {
-    int i;
-    if ((SystemBarTintManager.hasNavBar(a())) && (ScreenUtil.isNavigationBarExist(a()))) {
-      i = SystemBarTintManager.getNavigationBarHeight(a());
-    } else {
-      i = 0;
+    Activity localActivity = m();
+    if (localActivity == null) {
+      return;
     }
-    showAtLocation(paramWindow.getDecorView(), 80, 0, i);
+    int i1;
+    if ((SystemBarTintManager.hasNavBar(localActivity)) && (ScreenUtil.isNavigationBarExist(localActivity))) {
+      i1 = SystemBarTintManager.getNavigationBarHeight(localActivity);
+    } else {
+      i1 = 0;
+    }
+    showAtLocation(paramWindow.getDecorView(), 80, 0, i1);
   }
   
   private void a(WSVerticalItemData paramWSVerticalItemData)
   {
-    Map localMap = a().b();
-    localMap.putAll(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a());
-    localMap.putAll(a().a(paramWSVerticalItemData));
+    Map localMap = g().n();
+    localMap.putAll(this.l.c());
+    localMap.putAll(g().a(paramWSVerticalItemData));
     localMap.put("close_type", "1");
-    WSVerticalCollectionBeaconReport.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), localMap);
+    WSVerticalCollectionBeaconReport.b(this.c.k(), this.c.l(), this.c.F(), localMap);
   }
   
   private void b(float paramFloat)
   {
-    Window localWindow = a().getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+    Object localObject = m();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((Activity)localObject).getWindow();
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
     localLayoutParams.alpha = paramFloat;
-    localWindow.addFlags(2);
-    localWindow.setAttributes(localLayoutParams);
+    ((Window)localObject).addFlags(2);
+    ((Window)localObject).setAttributes(localLayoutParams);
   }
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.post(new WSEpisodeChoicePanel.7(this, paramInt));
-  }
-  
-  private boolean b()
-  {
-    WSVerticalItemData localWSVerticalItemData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData;
-    return (localWSVerticalItemData != null) && (localWSVerticalItemData.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a().a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a().a().dramaInfo != null);
+    this.e.post(new WSEpisodeChoicePanel.7(this, paramInt));
   }
   
   private void c(int paramInt)
   {
-    LoadingMoreHelper localLoadingMoreHelper = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getLoadMoreLayoutHelper();
+    LoadingMoreHelper localLoadingMoreHelper = this.e.getLoadMoreLayoutHelper();
     if (localLoadingMoreHelper != null) {
       localLoadingMoreHelper.setPreLoaderCount(paramInt);
     }
@@ -192,47 +158,57 @@ public class WSEpisodeChoicePanel
   {
     if (!paramBoolean)
     {
-      this.d.setBackgroundDrawable(a("#7A46FF"));
-      this.d.setTextColor(-1);
-      this.d.setText(a().getResources().getString(1929707530));
-      this.c.setText(a().getResources().getString(1929707529));
+      this.k.setBackgroundDrawable(a("#7A46FF"));
+      this.k.setTextColor(-1);
+      this.k.setText(n().getResources().getString(1929838612));
+      this.j.setText(n().getResources().getString(1929838611));
       return;
     }
-    this.d.setBackgroundDrawable(a("#FFFFFF"));
-    this.d.setTextColor(Color.parseColor("#7A46FF"));
-    this.d.setText(a().getResources().getString(1929707527));
-    this.c.setText(a().getResources().getString(1929707528));
+    this.k.setBackgroundDrawable(a("#FFFFFF"));
+    this.k.setTextColor(Color.parseColor("#7A46FF"));
+    this.k.setText(n().getResources().getString(1929838609));
+    this.j.setText(n().getResources().getString(1929838610));
   }
   
   private void d(int paramInt)
   {
-    Map localMap = a().b();
+    Map localMap = g().n();
     localMap.put("btn_status", String.valueOf(paramInt));
-    WSVerticalCollectionBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), localMap);
+    WSVerticalCollectionBeaconReport.a(this.c.k(), this.c.l(), this.c.F(), localMap);
   }
   
-  private void g()
+  private void k()
   {
-    if (!a().f())
+    if (!g().v())
     {
       if (!isShowing()) {
         return;
       }
-      h();
+      l();
       WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][addOnScrollListener]");
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+      this.e.getRecyclerView().addOnScrollListener(this.p);
     }
   }
   
-  private void h()
+  private void l()
   {
     WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][removeOnScrollListener]");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().removeOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+    this.e.getRecyclerView().removeOnScrollListener(this.p);
   }
   
-  private void i()
+  private Activity m()
   {
-    setAnimationStyle(2131755835);
+    return this.c.getActivity();
+  }
+  
+  private Context n()
+  {
+    return this.c.getContext();
+  }
+  
+  private void o()
+  {
+    setAnimationStyle(2131952946);
     setFocusable(true);
     setInputMethodMode(1);
     setSoftInputMode(16);
@@ -240,59 +216,65 @@ public class WSEpisodeChoicePanel
     setOutsideTouchable(true);
   }
   
-  private void j()
+  private void p()
   {
     View localView = getContentView();
     localView.setOnKeyListener(this);
     WSEpisodeChoicePanel.2 local2 = new WSEpisodeChoicePanel.2(this);
     localView.setOnClickListener(local2);
-    localView.findViewById(1929576448).setOnClickListener(local2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(1929576465));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(WeishiUIUtil.a(jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(1929576452));
-    this.b = ((TextView)localView.findViewById(1929576451));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout = ((WSDragLayout)localView.findViewById(1929576449));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView = ((WSXRecyclerView)localView.findViewById(1929576455));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setDisableMinScrollY(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setControlLitTongue(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setPullHeaderBgDrawable(new ColorDrawable(-16777216));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setContentView(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setTouchListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setMode(1);
+    localView.findViewById(1929707523).setOnClickListener(local2);
+    this.f = ((RelativeLayout)localView.findViewById(1929707580));
+    this.f.setBackgroundDrawable(WeishiUIUtil.a(a));
+    this.g = ((TextView)localView.findViewById(1929707527));
+    this.h = ((TextView)localView.findViewById(1929707526));
+    this.d = ((WSDragLayout)localView.findViewById(1929707524));
+    this.e = ((WSXRecyclerView)localView.findViewById(1929707530));
+    this.d.setDisableMinScrollY(true);
+    this.d.setControlLitTongue(false);
+    this.e.setPullHeaderBgDrawable(new ColorDrawable(-16777216));
+    this.d.setContentView(this.e.getRecyclerView());
+    this.d.setTouchListener(this);
+    this.d.setMode(1);
   }
   
-  private void k()
+  private void q()
   {
     c(10);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setIsAutoScrolling(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setRefreshCallback(a());
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView();
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(a());
+    this.e.setIsAutoScrolling(true);
+    this.e.setRefreshCallback(r());
+    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = this.e.getRecyclerView();
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(n());
     localRecyclerViewWithHeaderFooter.setItemAnimator(null);
     localRecyclerViewWithHeaderFooter.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter = new WSChoiceVideoAdapter(a(), localRecyclerViewWithHeaderFooter);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a(new WSEpisodeChoicePanel.3(this));
-    localRecyclerViewWithHeaderFooter.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter);
+    this.l = new WSChoiceVideoAdapter(n(), localRecyclerViewWithHeaderFooter);
+    this.l.a(new WSEpisodeChoicePanel.3(this));
+    localRecyclerViewWithHeaderFooter.setAdapter(this.l);
   }
   
-  private void l()
+  @NotNull
+  private XRecyclerView.RefreshCallback r()
   {
-    this.jdField_a_of_type_AndroidViewView = getContentView().findViewById(1929576456);
-    this.c = ((TextView)getContentView().findViewById(1929576467));
-    this.d = ((TextView)getContentView().findViewById(1929576466));
-    this.d.setOnClickListener(new WSEpisodeChoicePanel.5(this));
+    return new WSEpisodeChoicePanel.4(this);
   }
   
-  private void m()
+  private void s()
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.getDataList().size();
-    int j = ((LinearLayoutManager)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().getLayoutManager()).findLastVisibleItemPosition();
-    boolean bool1 = a().f();
-    boolean bool2 = a().e();
-    int k = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a();
+    this.i = getContentView().findViewById(1929707535);
+    this.j = ((TextView)getContentView().findViewById(1929707586));
+    this.k = ((TextView)getContentView().findViewById(1929707585));
+    this.k.setOnClickListener(new WSEpisodeChoicePanel.5(this));
+  }
+  
+  private void t()
+  {
+    int i1 = this.l.getDataList().size();
+    int i2 = ((LinearLayoutManager)this.e.getRecyclerView().getLayoutManager()).findLastVisibleItemPosition();
+    boolean bool1 = g().v();
+    boolean bool2 = g().u();
+    int i3 = this.l.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSEpisodeChoicePanel.java][preloadData] checkedPosition:");
-    localStringBuilder.append(k);
+    localStringBuilder.append(i3);
     localStringBuilder.append(", loadMoreUpFinish:");
     localStringBuilder.append(bool1);
     localStringBuilder.append(", loadMoreDownFinish:");
@@ -301,95 +283,106 @@ public class WSEpisodeChoicePanel
     if ((bool2) && (bool1)) {
       return;
     }
-    if ((!bool2) && ((bool1) || (k != 1) || (i < 6)))
+    if ((!bool2) && ((bool1) || (i3 != 1) || (i1 < 6)))
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.getDataList().size() - j <= 10)
+      if (this.l.getDataList().size() - i2 <= 10)
       {
         WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][preloadData] loadDataDown");
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getLoadMoreLayoutHelper().setLoadMore(true);
+        this.e.getLoadMoreLayoutHelper().setLoadMore(true);
       }
     }
     else
     {
       WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][preloadData] loadDataUp");
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.startMachineRefresh();
+      this.e.startMachineRefresh();
     }
   }
   
-  private void n()
+  private void u()
   {
-    o();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a().a());
-    this.b.setText(a().b());
+    v();
+    this.g.setText(g().w());
+    this.h.setText(g().x());
   }
   
-  private void o()
+  private void v()
   {
-    Object localObject = a().a().a().a();
+    Object localObject = g().z().b().b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSEpisodeChoicePanel.java][scrollToPositionWhenShow] playingVideoHolder:");
     localStringBuilder.append(localObject);
     WSLog.e("WSEpisodeChoicePanel", localStringBuilder.toString());
     if (localObject != null)
     {
-      int i = a().a().a().getDataList().indexOf(((WSVerticalVideoHolder)localObject).a);
+      int i1 = g().z().b().getDataList().indexOf(((WSVerticalVideoHolder)localObject).e);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSEpisodeChoicePanel.java][scrollToPositionWhenShow] position:");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       WSLog.e("WSEpisodeChoicePanel", ((StringBuilder)localObject).toString());
-      ((LinearLayoutManager)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.getRecyclerView().getLayoutManager()).scrollToPositionWithOffset(i, jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a(i);
+      ((LinearLayoutManager)this.e.getRecyclerView().getLayoutManager()).scrollToPositionWithOffset(i1, b);
+      this.l.a(i1);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.post(new WSEpisodeChoicePanel.6(this));
+    this.e.post(new WSEpisodeChoicePanel.6(this));
   }
   
-  private void p()
+  private int w()
   {
-    if (WeishiUtils.c()) {
+    this.n = x();
+    if ((y()) && (WSExpABTestManager.a().t()))
+    {
+      this.i.setVisibility(0);
+      boolean bool = this.n.g().d().dramaInfo.isFollowed;
+      int i1;
+      if (bool) {
+        i1 = 2;
+      } else {
+        i1 = 1;
+      }
+      c(bool);
+      return i1;
+    }
+    this.i.setVisibility(8);
+    return 0;
+  }
+  
+  private WSVerticalItemData x()
+  {
+    if ((g() != null) && (g().z().b().getDataList().size() != 0)) {
+      return (WSVerticalItemData)g().z().b().getDataList().get(0);
+    }
+    return null;
+  }
+  
+  private boolean y()
+  {
+    WSVerticalItemData localWSVerticalItemData = this.n;
+    return (localWSVerticalItemData != null) && (localWSVerticalItemData.g() != null) && (this.n.g().d() != null) && (this.n.g().d().dramaInfo != null);
+  }
+  
+  private void z()
+  {
+    if (WeishiUtils.o()) {
       return;
     }
-    if (!b()) {
+    if (!y()) {
       return;
     }
-    WSDramaEpisodeInfo localWSDramaEpisodeInfo = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a();
-    boolean bool = localWSDramaEpisodeInfo.a().dramaInfo.isFollowed;
-    int i;
-    int j;
+    WSDramaEpisodeInfo localWSDramaEpisodeInfo = this.n.g();
+    boolean bool = localWSDramaEpisodeInfo.d().dramaInfo.isFollowed;
+    int i1;
+    int i2;
     if (bool)
     {
-      i = 2;
-      j = 1003038;
+      i1 = 2;
+      i2 = 1003038;
     }
     else
     {
-      i = 1;
-      j = 1003030;
+      i1 = 1;
+      i2 = 1003030;
     }
-    a(i, j);
-    WSDramaOperationRecordManager.a(localWSDramaEpisodeInfo.a(), i, new WSEpisodeChoicePanel.8(this, bool));
-  }
-  
-  private void q()
-  {
-    Map localMap = a().b();
-    localMap.putAll(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a());
-    localMap.put("close_type", "2");
-    WSVerticalCollectionBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), localMap);
-  }
-  
-  public WSChoiceVideoAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter;
-  }
-  
-  public AbsWSVerticalChoiceVideoPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterAbsWSVerticalChoiceVideoPresenter;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
+    a(i1, i2);
+    WSDramaOperationRecordManager.a(localWSDramaEpisodeInfo.a(), i1, new WSEpisodeChoicePanel.8(this, bool));
   }
   
   public void a() {}
@@ -412,98 +405,102 @@ public class WSEpisodeChoicePanel
   
   public void a(AbsWSVerticalChoiceVideoPresenter paramAbsWSVerticalChoiceVideoPresenter)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterAbsWSVerticalChoiceVideoPresenter = paramAbsWSVerticalChoiceVideoPresenter;
+    this.m = paramAbsWSVerticalChoiceVideoPresenter;
   }
   
   public void a(List<WSVerticalItemData> paramList)
   {
     WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][fillData]");
-    a().fillList(paramList);
-    g();
+    i().fillList(paramList);
+    k();
   }
   
   public void a(boolean paramBoolean) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    a().a(paramBoolean1, paramBoolean2, a());
-  }
-  
-  public boolean a()
-  {
-    return a().f() ^ true;
-  }
-  
-  public void b()
-  {
-    Window localWindow = a().getWindow();
-    if (localWindow != null)
-    {
-      localWindow.setDimAmount(0.5F);
-      a(localWindow);
-      a(0.0F);
-      n();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(0);
-    }
-    d(a());
+    g().a(paramBoolean1, paramBoolean2, h());
   }
   
   public void b(List<WSVerticalItemData> paramList)
   {
     WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][setData]");
-    a().a(paramList);
-    g();
+    i().a(paramList);
+    k();
   }
   
   public void b(boolean paramBoolean)
   {
     WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][hideLoadMoreView]");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.loadMoreComplete(true, paramBoolean);
-    if (a().f()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setRefreshEnable(false);
+    this.e.loadMoreComplete(true, paramBoolean);
+    if (g().v()) {
+      this.e.setRefreshEnable(false);
     }
+  }
+  
+  public boolean b()
+  {
+    return g().v() ^ true;
   }
   
   public void c()
   {
-    WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][hideRefreshingView]");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.pullRefreshCompleted(true);
-    if (a().f()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSXRecyclerView.setRefreshEnable(false);
+    Object localObject = m();
+    if (localObject == null) {
+      return;
     }
+    localObject = ((Activity)localObject).getWindow();
+    if (localObject != null)
+    {
+      ((Window)localObject).setDimAmount(0.5F);
+      a((Window)localObject);
+      a(0.0F);
+      u();
+      this.c.a(0);
+    }
+    d(w());
   }
   
   public void c(List<WSVerticalItemData> paramList)
   {
     WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][insertDataToTop]");
-    a().b(paramList);
-    g();
+    i().b(paramList);
+    k();
   }
   
   public void d()
   {
-    g();
+    WSLog.e("WSEpisodeChoicePanel", "[WSEpisodeChoicePanel.java][hideRefreshingView]");
+    this.e.pullRefreshCompleted(true);
+    if (g().v()) {
+      this.e.setRefreshEnable(false);
+    }
   }
   
   public void dismiss()
   {
     super.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(0);
+    this.c.b(0);
     b(1.0F);
-    WSDragLayout localWSDragLayout = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout;
+    WSDragLayout localWSDragLayout = this.d;
     if (localWSDragLayout != null) {
       localWSDragLayout.a(0);
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.o)
     {
-      q();
-      this.jdField_a_of_type_Boolean = false;
+      A();
+      this.o = false;
     }
   }
   
   public void e()
   {
-    Object localObject = a().a().a().a();
+    k();
+  }
+  
+  public void f()
+  {
+    Object localObject = g().z().b().b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSEpisodeChoicePanel.java][scrollToPosition] playingVideoHolder:");
     localStringBuilder.append(localObject);
@@ -511,18 +508,33 @@ public class WSEpisodeChoicePanel
     if (localObject == null) {
       return;
     }
-    int i = a().a().a().getDataList().indexOf(((WSVerticalVideoHolder)localObject).a);
+    int i1 = g().z().b().getDataList().indexOf(((WSVerticalVideoHolder)localObject).e);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSEpisodeChoicePanel.java][scrollToPosition] position:");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(i1);
     WSLog.e("WSEpisodeChoicePanel", ((StringBuilder)localObject).toString());
-    b(i);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSChoiceVideoAdapter.a(i);
+    b(i1);
+    this.l.a(i1);
   }
   
-  public void f()
+  public AbsWSVerticalChoiceVideoPresenter g()
   {
-    a().a(a());
+    return this.m;
+  }
+  
+  public String h()
+  {
+    return this.c.k();
+  }
+  
+  public WSChoiceVideoAdapter i()
+  {
+    return this.l;
+  }
+  
+  public void j()
+  {
+    g().a(h());
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
@@ -537,7 +549,7 @@ public class WSEpisodeChoicePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.WSEpisodeChoicePanel
  * JD-Core Version:    0.7.0.1
  */

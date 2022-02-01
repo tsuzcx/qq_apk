@@ -23,18 +23,18 @@ class UncommonlyUsedContactsActivity$1
 {
   UncommonlyUsedContactsActivity$1(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, UncommonlyUsedContactsActivity.ListItem paramListItem, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof Friends))
+    if ((this.a.b instanceof Friends))
     {
-      paramView = ((Friends)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a).uin;
+      paramView = ((Friends)this.a.b).uin;
     }
     else
     {
-      if (!(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof PhoneContact)) {
+      if (!(this.a.b instanceof PhoneContact)) {
         return;
       }
-      paramView = ((PhoneContact)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a).mobileCode;
+      paramView = ((PhoneContact)this.a.b).mobileCode;
     }
     Object localObject = null;
     if (paramInt != 0)
@@ -45,35 +45,35 @@ class UncommonlyUsedContactsActivity$1
         {
           if (paramInt == 3)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(paramView);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C54", "0X8004C54", 0, 0, "", "", "", "");
+            this.c.a(paramView);
+            ReportController.b(this.c.app, "CliOper", "", "", "0X8004C54", "0X8004C54", 0, 0, "", "", "", "");
           }
         }
         else
         {
-          if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity()))
+          if (NetworkUtil.isNetSupport(this.c.getActivity()))
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof Friends))
+            if ((this.a.b instanceof Friends))
             {
-              localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+              localObject = (FriendListHandler)this.c.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
               ArrayList localArrayList = new ArrayList();
               localArrayList.add(paramView);
               ((FriendListHandler)localObject).gatherContacts((short)1, localArrayList, false);
             }
-            else if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof PhoneContact))
+            else if ((this.a.b instanceof PhoneContact))
             {
-              ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getRuntimeService(IPhoneContactService.class, "")).hideContact(((PhoneContact)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a).mobileCode, false);
+              ((IPhoneContactService)this.c.app.getRuntimeService(IPhoneContactService.class, "")).hideContact(((PhoneContact)this.a.b).mobileCode, false);
             }
           }
           else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131694476, 0);
+            this.c.a(2131892158, 0);
           }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C53", "0X8004C53", 0, 0, "", "", "", "");
+          ReportController.b(this.c.app, "CliOper", "", "", "0X8004C53", "0X8004C53", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof Friends))
+        if ((this.a.b instanceof Friends))
         {
           paramView = new AllInOne(paramView, 1);
           paramView.profileEntryType = 59;
@@ -82,45 +82,45 @@ class UncommonlyUsedContactsActivity$1
         else
         {
           paramView = (View)localObject;
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof PhoneContact))
+          if ((this.a.b instanceof PhoneContact))
           {
-            localObject = (PhoneContact)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a;
+            localObject = (PhoneContact)this.a.b;
             paramView = new AllInOne(((PhoneContact)localObject).mobileCode, 34);
             paramView.profileEntryType = 59;
             paramView.nickname = ((PhoneContact)localObject).name;
             paramView.chatEntrance = 2;
           }
         }
-        ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), paramView);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C52", "0X8004C52", 0, 0, "", "", "", "");
+        ProfileUtils.openProfileCard(this.c.getActivity(), paramView);
+        ReportController.b(this.c.app, "CliOper", "", "", "0X8004C52", "0X8004C52", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      localObject = AIOUtils.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), SplashActivity.class), null);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof Friends))
+      localObject = AIOUtils.a(new Intent(this.c.getActivity(), SplashActivity.class), null);
+      if ((this.a.b instanceof Friends))
       {
         ((Intent)localObject).putExtra("uintype", 0);
         ((Intent)localObject).putExtra("uin", paramView);
-        ((Intent)localObject).putExtra("uinname", ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, paramView));
+        ((Intent)localObject).putExtra("uinname", ContactUtils.g(this.c.app, paramView));
         ((Intent)localObject).putExtra("entrance", 2);
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a instanceof PhoneContact))
+      else if ((this.a.b instanceof PhoneContact))
       {
         ((Intent)localObject).putExtra("uintype", 1006);
         ((Intent)localObject).putExtra("uin", paramView);
-        ((Intent)localObject).putExtra("uinname", ((PhoneContact)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity$ListItem.a).name);
+        ((Intent)localObject).putExtra("uinname", ((PhoneContact)this.a.b).name);
         ((Intent)localObject).putExtra("entrance", 2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.startActivity((Intent)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C51", "0X8004C51", 0, 0, "", "", "", "");
+      this.c.startActivity((Intent)localObject);
+      ReportController.b(this.c.app, "CliOper", "", "", "0X8004C51", "0X8004C51", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.1
  * JD-Core Version:    0.7.0.1
  */

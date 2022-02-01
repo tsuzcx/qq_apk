@@ -24,15 +24,15 @@ class DoodleLayout$TextLayerListener
         localStringBuilder.append(paramFloat);
         QLog.d("DoodleLayout", 2, localStringBuilder.toString());
       }
-      if ((this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog.a(this.a.a().a(), this.a.a().a().b());
+      if ((this.a.A != null) && (this.a.getTextLayer() != null) && (this.a.getTextLayer().o() != null)) {
+        this.a.A.a(this.a.getTextLayer().o(), this.a.getTextLayer().o().g());
       }
     }
   }
   
   public void a(DynamicTextItem paramDynamicTextItem)
   {
-    if (DoodleLayout.a(this.a))
+    if (DoodleLayout.d(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
@@ -40,11 +40,11 @@ class DoodleLayout$TextLayerListener
       return;
     }
     long l = SystemClock.uptimeMillis();
-    if (l - this.a.jdField_a_of_type_Long > 500L)
+    if (l - this.a.H > 500L)
     {
       DoodleLayout localDoodleLayout = this.a;
-      localDoodleLayout.jdField_a_of_type_Long = l;
-      localDoodleLayout.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1);
+      localDoodleLayout.H = l;
+      localDoodleLayout.a(paramDynamicTextItem, paramDynamicTextItem.g(), 1);
     }
   }
   
@@ -55,7 +55,7 @@ class DoodleLayout$TextLayerListener
   
   public boolean a(TextLayer.TextItem paramTextItem)
   {
-    if ((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) {
+    if ((DoodleLayout.e(this.a)) && (!DoodleLayout.f(this.a))) {
       return false;
     }
     return this.a.a(paramTextItem, true);
@@ -63,7 +63,7 @@ class DoodleLayout$TextLayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.TextLayerListener
  * JD-Core Version:    0.7.0.1
  */

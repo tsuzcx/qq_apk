@@ -1,35 +1,49 @@
 package com.tencent.gdtad.basics.motivevideo;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.ResultReceiver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
 import com.tencent.qphone.base.util.QLog;
 
-final class GdtMotiveVideoFragment$1
-  implements Runnable
+class GdtMotiveVideoFragment$1
+  implements GdtMvViewController.Listener
 {
-  GdtMotiveVideoFragment$1(Activity paramActivity, Intent paramIntent, ResultReceiver paramResultReceiver) {}
+  GdtMotiveVideoFragment$1(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    try
+    QLog.i("GdtMotiveVideoFragment", 4, "[onClickChangeVideo]");
+    if (GdtMotiveVideoFragment.a(this.a) == null)
     {
-      GdtMotiveVideoDialog localGdtMotiveVideoDialog = new GdtMotiveVideoDialog(this.jdField_a_of_type_AndroidAppActivity);
-      localGdtMotiveVideoDialog.a(this.jdField_a_of_type_AndroidContentIntent);
-      localGdtMotiveVideoDialog.a(this.jdField_a_of_type_AndroidOsResultReceiver);
-      localGdtMotiveVideoDialog.show();
+      QLog.e("GdtMotiveVideoFragment", 4, "[onClickChangeVideo] mRootView is null");
       return;
     }
-    catch (Exception localException)
+    GdtMotiveVideoFragment.a(this.a, true);
+    if (GdtMotiveVideoFragment.b(this.a) == null)
     {
-      QLog.i("GdtMotiveVideoFragment", 1, "GdtMotiveVideoDialog.show()", localException);
-      GdtMotiveVideoFragment.a(this.jdField_a_of_type_AndroidOsResultReceiver);
+      QLog.e("GdtMotiveVideoFragment", 4, "[onClickChangeVideo] mSecondVideoData is null");
+      return;
     }
+    Object localObject = this.a;
+    GdtMotiveVideoFragment.a((GdtMotiveVideoFragment)localObject, new GdtMotiveVideoModel(GdtMotiveVideoFragment.b((GdtMotiveVideoFragment)localObject)));
+    localObject = this.a;
+    localObject = ((GdtMotiveVideoFragment)localObject).a(LayoutInflater.from(((GdtMotiveVideoFragment)localObject).getContext()), GdtMotiveVideoFragment.a(this.a), 2);
+    if (localObject == null)
+    {
+      QLog.e("GdtMotiveVideoFragment", 4, "[onClickChangeVideo] childViews is null");
+      return;
+    }
+    GdtMotiveVideoFragment.c(this.a).a(paramLong);
+    GdtMotiveVideoFragment.a(this.a).removeAllViews();
+    GdtMotiveVideoFragment.a(this.a).addView((View)localObject);
+    GdtMotiveVideoFragment.c(this.a).l();
+    QLog.e("GdtMotiveVideoFragment", 4, "[onClickChangeVideo] childViews is added");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoFragment.1
  * JD-Core Version:    0.7.0.1
  */

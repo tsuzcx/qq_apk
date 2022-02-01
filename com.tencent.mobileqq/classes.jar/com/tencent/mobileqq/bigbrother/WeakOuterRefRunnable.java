@@ -9,16 +9,16 @@ import java.lang.reflect.Field;
 public class WeakOuterRefRunnable
   implements JefsClass.IdSetter, Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Object> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 1;
+  private WeakReference<Object> a;
+  private Runnable b;
+  private String c;
+  private int d;
+  private int e = 1;
+  private boolean f;
   
   public WeakOuterRefRunnable(Runnable paramRunnable, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.b = paramRunnable;
     if (paramBoolean) {
       a();
     }
@@ -26,7 +26,7 @@ public class WeakOuterRefRunnable
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRunnable;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -35,8 +35,8 @@ public class WeakOuterRefRunnable
     {
       localObject = ((Class)localObject).getDeclaredField("this$0");
       ((Field)localObject).setAccessible(true);
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(((Field)localObject).get(this.jdField_a_of_type_JavaLangRunnable));
-      ((Field)localObject).set(this.jdField_a_of_type_JavaLangRunnable, null);
+      this.a = new WeakReference(((Field)localObject).get(this.b));
+      ((Field)localObject).set(this.b, null);
       return;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -55,10 +55,10 @@ public class WeakOuterRefRunnable
     }
   }
   
-  private boolean a()
+  private boolean b()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localObject != null) && (this.jdField_a_of_type_JavaLangRunnable != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (this.b != null))
     {
       localObject = ((WeakReference)localObject).get();
       if (localObject == null) {
@@ -66,9 +66,9 @@ public class WeakOuterRefRunnable
       }
       try
       {
-        Field localField = this.jdField_a_of_type_JavaLangRunnable.getClass().getDeclaredField("this$0");
+        Field localField = this.b.getClass().getDeclaredField("this$0");
         localField.setAccessible(true);
-        localField.set(this.jdField_a_of_type_JavaLangRunnable, localObject);
+        localField.set(this.b, localObject);
         return true;
       }
       catch (IllegalAccessException localIllegalAccessException)
@@ -92,35 +92,35 @@ public class WeakOuterRefRunnable
   
   public void a(int paramInt)
   {
-    this.b = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = true;
+    this.c = paramString;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void run()
   {
     int i;
-    if ((this.jdField_a_of_type_JavaLangRunnable != null) && (a()))
+    if ((this.b != null) && (b()))
     {
       i = 1;
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      TeleScreen.a().a(this.jdField_a_of_type_Int, this.b);
+      this.b.run();
+      TeleScreen.a().a(this.d, this.e);
     }
     else
     {
-      TeleScreen.a().a(this.jdField_a_of_type_Int, -3);
+      TeleScreen.a().a(this.d, -3);
       i = 0;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       String str1;
       if (i != 0) {
@@ -134,7 +134,7 @@ public class WeakOuterRefRunnable
       } else {
         str2 = "1";
       }
-      String str3 = this.jdField_a_of_type_JavaLangString;
+      String str3 = this.c;
       if (str3 == null) {
         str3 = "";
       }
@@ -144,7 +144,7 @@ public class WeakOuterRefRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.WeakOuterRefRunnable
  * JD-Core Version:    0.7.0.1
  */

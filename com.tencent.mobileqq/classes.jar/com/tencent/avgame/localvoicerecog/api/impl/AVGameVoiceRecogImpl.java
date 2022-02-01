@@ -51,7 +51,7 @@ public class AVGameVoiceRecogImpl
   private boolean isLocalVoiceModelPreloadReady(int paramInt)
   {
     Object localObject1 = AvGameResPreloadManager.a();
-    Object localObject3 = AvGameResPreloadManager.a();
+    Object localObject3 = AvGameResPreloadManager.b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("isLocalVoiceModelPreloadReady getinfo fro sp. pathinfo:");
     ((StringBuilder)localObject2).append(localObject1);
@@ -113,8 +113,8 @@ public class AVGameVoiceRecogImpl
     } else {
       localObject2 = "AVGameVoiceRecogAILabModel";
     }
-    String str1 = ResMgr.a().b((String)localObject1);
-    String str2 = ResMgr.a().b((String)localObject2);
+    String str1 = ResMgr.a().c((String)localObject1);
+    String str2 = ResMgr.a().c((String)localObject2);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("init. soFullFileName = ");
     ((StringBuilder)localObject3).append(str1);
@@ -123,17 +123,17 @@ public class AVGameVoiceRecogImpl
     ((StringBuilder)localObject3).append("Txlib:");
     ((StringBuilder)localObject3).append(AVSoUtils.b());
     QLog.i("AVGameVoiceRecogImpl", 1, ((StringBuilder)localObject3).toString());
-    localObject3 = ResMgr.a().a((String)localObject1);
-    ResInfo localResInfo = ResMgr.a().a((String)localObject2);
+    localObject3 = ResMgr.a().f((String)localObject1);
+    ResInfo localResInfo = ResMgr.a().f((String)localObject2);
     if ((localObject3 != null) && (localResInfo != null))
     {
-      if (!ResMgr.a().b((String)localObject1))
+      if (!ResMgr.a().g((String)localObject1))
       {
         ResMgr.a().a((String)localObject1);
         QLog.e("AVGameVoiceRecogImpl", 1, "init failed. so file no exist.");
         return false;
       }
-      if (!ResMgr.a().b((String)localObject2))
+      if (!ResMgr.a().g((String)localObject2))
       {
         ResMgr.a().a((String)localObject2);
         QLog.e("AVGameVoiceRecogImpl", 1, "init failed. model file no exist.");
@@ -143,7 +143,7 @@ public class AVGameVoiceRecogImpl
       {
         System.load(str1);
         localObject1 = new File(str2);
-        paramInt = VoiceRecogEngineFactory.a().a(((File)localObject1).getParent(), ((File)localObject1).getName());
+        paramInt = VoiceRecogEngineFactory.b().a(((File)localObject1).getParent(), ((File)localObject1).getName());
         if (paramInt < 0)
         {
           localObject1 = new StringBuilder();
@@ -179,7 +179,7 @@ public class AVGameVoiceRecogImpl
   {
     MobileQQ.sMobileQQ.getSharedPreferences("av_game_sp", 4);
     Object localObject1 = AvGameResPreloadManager.a();
-    Object localObject3 = AvGameResPreloadManager.a();
+    Object localObject3 = AvGameResPreloadManager.b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("loadLocalVoiceModelResByPreload getinfo fro sp. pathinfo:");
     ((StringBuilder)localObject2).append(localObject1);
@@ -202,7 +202,7 @@ public class AVGameVoiceRecogImpl
     else
     {
       if (paramInt != 3) {
-        break label664;
+        break label666;
       }
       QLog.d("AVGameVoiceRecogImpl", 1, "loadLocalVoiceModelResByPreload use ailab type");
       localObject2 = ((IAvGameResPreloadManager.PathInfo)localObject1).d;
@@ -247,7 +247,7 @@ public class AVGameVoiceRecogImpl
       {
         System.load(str2);
         localObject1 = new File((String)localObject2);
-        paramInt = VoiceRecogEngineFactory.a().a(((File)localObject1).getParent(), ((File)localObject1).getName());
+        paramInt = VoiceRecogEngineFactory.b().a(((File)localObject1).getParent(), ((File)localObject1).getName());
         if (paramInt < 0)
         {
           localObject1 = new StringBuilder();
@@ -288,7 +288,7 @@ public class AVGameVoiceRecogImpl
     ((StringBuilder)localObject3).append(localUnsatisfiedLinkError);
     QLog.w("AVGameVoiceRecogImpl", 1, ((StringBuilder)localObject3).toString());
     return false;
-    label664:
+    label666:
     QLog.w("AVGameVoiceRecogImpl", 1, "loadLocalVoiceModelResByPreload use remote type");
     return false;
   }
@@ -300,7 +300,7 @@ public class AVGameVoiceRecogImpl
       this.mGrammarState = 1;
       try
       {
-        int i = VoiceRecogEngineFactory.a().a();
+        int i = VoiceRecogEngineFactory.b().b();
         if (i < 0) {
           return false;
         }
@@ -329,7 +329,7 @@ public class AVGameVoiceRecogImpl
       if (i != -1) {
         try
         {
-          if (VoiceRecogEngineFactory.a().c() == 0)
+          if (VoiceRecogEngineFactory.b().e() == 0)
           {
             this.mGrammarState = -1;
             return true;
@@ -352,7 +352,7 @@ public class AVGameVoiceRecogImpl
       this.mGrammarState = 0;
       try
       {
-        int i = VoiceRecogEngineFactory.a().b();
+        int i = VoiceRecogEngineFactory.b().c();
         if (i < 0) {
           return false;
         }
@@ -383,8 +383,8 @@ public class AVGameVoiceRecogImpl
         {
           long l = Long.valueOf(((AppRuntime)localObject3).getCurrentAccountUin()).longValue();
           bool = ((AvGameConfBean)localObject1).a(l);
-          VoiceRecogEngineFactory.a(((AvGameConfBean)localObject1).a(l));
           VoiceRecogEngineFactory.a(((AvGameConfBean)localObject1).b(l));
+          VoiceRecogEngineFactory.a(((AvGameConfBean)localObject1).c(l));
           if (!bool)
           {
             QLog.e("AVGameVoiceRecogImpl", 1, "init failed. isUseLocalVoiceRecog = false.");
@@ -405,13 +405,13 @@ public class AVGameVoiceRecogImpl
             QLog.i("AVGameVoiceRecogImpl", 1, ((StringBuilder)localObject1).toString());
             return false;
           }
-          if (((AvGameConfBean)localObject1).a() > 0.0F)
+          if (((AvGameConfBean)localObject1).l() > 0.0F)
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("setSceneWordsThredhold ");
-            ((StringBuilder)localObject3).append(((AvGameConfBean)localObject1).a());
+            ((StringBuilder)localObject3).append(((AvGameConfBean)localObject1).l());
             QLog.i("AVGameVoiceRecogImpl", 1, ((StringBuilder)localObject3).toString());
-            VoiceRecogEngineFactory.a().a(((AvGameConfBean)localObject1).a());
+            VoiceRecogEngineFactory.b().a(((AvGameConfBean)localObject1).l());
           }
           this.mGrammarState = 0;
           this.mUpdateWordSuc = true;
@@ -433,7 +433,7 @@ public class AVGameVoiceRecogImpl
       localObject2 = MobileQQ.sMobileQQ.peekAppRuntime();
       if ((localObject2 != null) && (MobileQQ.sMobileQQ.getQQProcessName().equals("avgame")))
       {
-        i = ((AvGameConfBean)localObject1).a(Long.valueOf(((AppRuntime)localObject2).getCurrentAccountUin()).longValue());
+        i = ((AvGameConfBean)localObject1).b(Long.valueOf(((AppRuntime)localObject2).getCurrentAccountUin()).longValue());
         break label54;
       }
     }
@@ -459,24 +459,24 @@ public class AVGameVoiceRecogImpl
     } else {
       localObject2 = "AVGameVoiceRecogAILabModel";
     }
-    Object localObject3 = ResMgr.a().b((String)localObject1);
-    Object localObject4 = ResMgr.a().b((String)localObject2);
+    Object localObject3 = ResMgr.a().c((String)localObject1);
+    Object localObject4 = ResMgr.a().c((String)localObject2);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isLocalVoiceModelReady. soFullFileName = ");
     localStringBuilder.append((String)localObject3);
     localStringBuilder.append(", modelFullFileName = ");
     localStringBuilder.append((String)localObject4);
     QLog.i("AVGameVoiceRecogImpl", 1, localStringBuilder.toString());
-    localObject3 = ResMgr.a().a((String)localObject1);
-    localObject4 = ResMgr.a().a((String)localObject2);
+    localObject3 = ResMgr.a().f((String)localObject1);
+    localObject4 = ResMgr.a().f((String)localObject2);
     if ((localObject3 != null) && (localObject4 != null))
     {
-      if (!ResMgr.a().b((String)localObject1))
+      if (!ResMgr.a().g((String)localObject1))
       {
         QLog.e("AVGameVoiceRecogImpl", 1, "isLocalVoiceModelReady failed. so file no exist.");
         return false;
       }
-      if (!ResMgr.a().b((String)localObject2))
+      if (!ResMgr.a().g((String)localObject2))
       {
         QLog.e("AVGameVoiceRecogImpl", 1, "isLocalVoiceModelReady failed. model file no exist.");
         return false;
@@ -496,7 +496,7 @@ public class AVGameVoiceRecogImpl
       }
       try
       {
-        int i = VoiceRecogEngineFactory.a().a(paramArrayOfByte, paramInt);
+        int i = VoiceRecogEngineFactory.b().a(paramArrayOfByte, paramInt);
         paramInt = i;
         if (i >= 0) {
           return paramInt;
@@ -521,7 +521,7 @@ public class AVGameVoiceRecogImpl
     try
     {
       paramString = getSimplifiedPwd(paramString);
-      if (VoiceRecogEngineFactory.a().a(paramString) == 0)
+      if (VoiceRecogEngineFactory.b().a(paramString) == 0)
       {
         this.mUpdateWordSuc = true;
         return true;

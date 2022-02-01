@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
@@ -37,7 +37,7 @@ public final class WXMediaMessage
     this.mediaObject = paramIMediaObject;
   }
   
-  final boolean checkArgs()
+  boolean checkArgs()
   {
     Object localObject;
     if (getType() == 8)
@@ -51,61 +51,68 @@ public final class WXMediaMessage
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", (String)localObject);
       return false;
-      if (d.a(getType()))
+      if ((getType() == 76) && (b.b(this.title)))
       {
-        localObject = this.thumbData;
-        if ((localObject == null) || (localObject.length > 131072))
-        {
-          localObject = "checkArgs fail, thumbData should not be null or exceed 128kb";
-          continue;
-        }
-      }
-      if (!d.a(getType()))
-      {
-        localObject = this.thumbData;
-        if ((localObject != null) && (localObject.length > 65536))
-        {
-          localObject = "checkArgs fail, thumbData is invalid";
-          continue;
-        }
-      }
-      localObject = this.title;
-      if ((localObject != null) && (((String)localObject).length() > 512))
-      {
-        localObject = "checkArgs fail, title is invalid";
+        localObject = "checkArgs fail, Type = Music Video, but title == null";
       }
       else
       {
-        localObject = this.description;
-        if ((localObject != null) && (((String)localObject).length() > 1024))
+        if (b.a(getType()))
         {
-          localObject = "checkArgs fail, description is invalid";
+          localObject = this.thumbData;
+          if ((localObject == null) || (localObject.length > 131072))
+          {
+            localObject = "checkArgs fail, thumbData should not be null or exceed 128kb";
+            continue;
+          }
         }
-        else if (this.mediaObject == null)
+        if (!b.a(getType()))
         {
-          localObject = "checkArgs fail, mediaObject is null";
+          localObject = this.thumbData;
+          if ((localObject != null) && (localObject.length > 65536))
+          {
+            localObject = "checkArgs fail, thumbData is invalid";
+            continue;
+          }
+        }
+        localObject = this.title;
+        if ((localObject != null) && (((String)localObject).length() > 512))
+        {
+          localObject = "checkArgs fail, title is invalid";
         }
         else
         {
-          localObject = this.mediaTagName;
-          if ((localObject != null) && (((String)localObject).length() > 64))
+          localObject = this.description;
+          if ((localObject != null) && (((String)localObject).length() > 1024))
           {
-            localObject = "checkArgs fail, mediaTagName is too long";
+            localObject = "checkArgs fail, description is invalid";
+          }
+          else if (this.mediaObject == null)
+          {
+            localObject = "checkArgs fail, mediaObject is null";
           }
           else
           {
-            localObject = this.messageAction;
-            if ((localObject != null) && (((String)localObject).length() > 2048))
+            localObject = this.mediaTagName;
+            if ((localObject != null) && (((String)localObject).length() > 64))
             {
-              localObject = "checkArgs fail, messageAction is too long";
+              localObject = "checkArgs fail, mediaTagName is too long";
             }
             else
             {
-              localObject = this.messageExt;
-              if ((localObject == null) || (((String)localObject).length() <= 2048)) {
-                break;
+              localObject = this.messageAction;
+              if ((localObject != null) && (((String)localObject).length() > 2048))
+              {
+                localObject = "checkArgs fail, messageAction is too long";
               }
-              localObject = "checkArgs fail, messageExt is too long";
+              else
+              {
+                localObject = this.messageExt;
+                if ((localObject == null) || (((String)localObject).length() <= 2048)) {
+                  break;
+                }
+                localObject = "checkArgs fail, messageExt is too long";
+              }
             }
           }
         }
@@ -114,7 +121,7 @@ public final class WXMediaMessage
     return this.mediaObject.checkArgs();
   }
   
-  public final int getType()
+  public int getType()
   {
     WXMediaMessage.IMediaObject localIMediaObject = this.mediaObject;
     if (localIMediaObject == null) {
@@ -123,7 +130,7 @@ public final class WXMediaMessage
     return localIMediaObject.type();
   }
   
-  public final void setThumbImage(Bitmap paramBitmap)
+  public void setThumbImage(Bitmap paramBitmap)
   {
     try
     {
@@ -135,7 +142,8 @@ public final class WXMediaMessage
     }
     catch (Exception paramBitmap)
     {
-      Object localObject = new StringBuilder("setThumbImage exception:");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setThumbImage exception:");
       ((StringBuilder)localObject).append(paramBitmap.getMessage());
       Log.e("MicroMsg.SDK.WXMediaMessage", ((StringBuilder)localObject).toString());
     }
@@ -143,7 +151,7 @@ public final class WXMediaMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ public final class R$anim
   public static final int abc_slide_in_top = 2130771975;
   public static final int abc_slide_out_bottom = 2130771976;
   public static final int abc_slide_out_top = 2130771977;
-  public static final int fragment_close_enter = 2130772076;
-  public static final int fragment_close_exit = 2130772077;
-  public static final int fragment_fade_enter = 2130772080;
-  public static final int fragment_fade_exit = 2130772081;
-  public static final int fragment_fast_out_extra_slow_in = 2130772082;
-  public static final int fragment_open_enter = 2130772085;
-  public static final int fragment_open_exit = 2130772086;
+  public static final int fragment_close_enter = 2130772106;
+  public static final int fragment_close_exit = 2130772107;
+  public static final int fragment_fade_enter = 2130772110;
+  public static final int fragment_fade_exit = 2130772111;
+  public static final int fragment_fast_out_extra_slow_in = 2130772112;
+  public static final int fragment_open_enter = 2130772115;
+  public static final int fragment_open_exit = 2130772116;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.api.R.anim
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class HotChatPie$1
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if ((this.a.m != 2) && (paramBoolean) && (this.a.jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
-      this.a.jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(true);
+    if ((this.a.cn != 2) && (paramBoolean) && (this.a.cg != null) && (this.a.bR != null) && (this.a.bR.troopUin.equals(paramString)) && (this.a.bR.hasPostRedPoint())) {
+      this.a.cg.a(true);
     }
     if (QLog.isColorLevel())
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a.c);
       ((StringBuilder)localObject).append("Q.hotchat.aio_post_red_point");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -30,7 +30,7 @@ class HotChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,86 @@
 package com.tencent.smtt.sdk;
 
-import com.tencent.smtt.utils.TbsLog;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import com.tencent.smtt.utils.c;
+import java.util.UnknownFormatConversionException;
 
 public class e
 {
-  private static String a = "SDKEcService";
-  private static e b;
-  private Map<Integer, e.a> c = new LinkedHashMap();
-  private Map<Integer, String> d = new LinkedHashMap();
-  private int e = -1;
+  static int a = 5;
+  static int b = 16;
+  static char[] c = new char[b];
+  static String d = "dex2oat-cmdline";
+  static long e = 4096L;
   
-  public static e a()
+  public static String a(Context paramContext, String paramString)
   {
-    if (b == null) {
-      b = new e();
+    paramContext = new c(paramString);
+    paramContext.a(c);
+    int i = c[a];
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
     }
-    return b;
+    paramContext.a(bool);
+    paramContext.a(e);
+    return a(new String(a(paramContext)));
   }
   
-  public void a(int paramInt, e.a parama)
+  private static String a(String paramString)
   {
-    Object localObject2;
-    if (this.d.containsKey(Integer.valueOf(paramInt)))
+    paramString = paramString.split(new String(""));
+    int j;
+    for (int i = 0; i < paramString.length; i = j + 1)
     {
-      localObject1 = (String)this.d.get(Integer.valueOf(paramInt));
-      this.d.remove(Integer.valueOf(paramInt));
-      parama.a((String)localObject1);
-      parama = a;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("Executed command: ");
-      ((StringBuilder)localObject2).append(paramInt);
-      ((StringBuilder)localObject2).append(", extra: ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(", emergency configuration has requested");
-    }
-    for (Object localObject1 = ((StringBuilder)localObject2).toString();; localObject1 = ((StringBuilder)localObject1).toString())
-    {
-      TbsLog.i(parama, (String)localObject1);
-      return;
-      if (this.e == -1)
-      {
-        this.c.put(Integer.valueOf(paramInt), parama);
-        parama = a;
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("Emergency configuration has not yet dispatched. Command query: ");
-        ((StringBuilder)localObject1).append(paramInt);
-        localObject2 = " has been suspended";
+      j = i + 1;
+      Object localObject = paramString[i];
+      String str = paramString[j];
+      if (localObject.equals(d)) {
+        return str;
       }
-      else
-      {
-        parama = a;
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("Emergency configuration has been dispatched, status: ");
-        ((StringBuilder)localObject1).append(this.e);
-        ((StringBuilder)localObject1).append(". Command query: ");
-        ((StringBuilder)localObject1).append(paramInt);
-        localObject2 = " ignored";
-      }
-      ((StringBuilder)localObject1).append((String)localObject2);
     }
+    return "";
   }
   
-  public void a(int paramInt, Map<Integer, String> paramMap)
+  public static char[] a(c paramc)
   {
-    Object localObject1 = a;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("Handle emergency commands in sdk, status: ");
-    ((StringBuilder)localObject2).append(paramInt);
-    TbsLog.i((String)localObject1, ((StringBuilder)localObject2).toString());
-    localObject2 = new LinkedHashMap();
-    if (paramInt == 0)
+    char[] arrayOfChar1 = new char[4];
+    char[] arrayOfChar2 = new char[4];
+    paramc.a(arrayOfChar1);
+    if ((arrayOfChar1[0] == 'o') && (arrayOfChar1[1] == 'a') && (arrayOfChar1[2] == 't'))
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
+      paramc.a(arrayOfChar2);
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      if (arrayOfChar2[1] <= '4')
       {
-        Integer localInteger = (Integer)localIterator.next();
-        if (this.c.containsKey(localInteger))
-        {
-          localObject1 = (e.a)this.c.get(localInteger);
-          if (localObject1 != null) {
-            ((e.a)localObject1).a((String)paramMap.get(localInteger));
-          }
-        }
-        else
-        {
-          localObject1 = (String)paramMap.get(localInteger);
-          if (localObject1 == null) {
-            localObject1 = "";
-          }
-          ((Map)localObject2).put(localInteger, localObject1);
-        }
+        paramc.b();
+        paramc.b();
+        paramc.b();
       }
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      paramc.b();
+      arrayOfChar1 = new char[paramc.b()];
+      paramc.a(arrayOfChar1);
+      return arrayOfChar1;
     }
-    this.c.clear();
-    paramMap = a;
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("Handle emergency commands failed, ignore all unhandled emergencies, status: ");
-    ((StringBuilder)localObject1).append(paramInt);
-    TbsLog.i(paramMap, ((StringBuilder)localObject1).toString());
-    this.d = ((Map)localObject2);
-    this.e = paramInt;
+    throw new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.e
  * JD-Core Version:    0.7.0.1
  */

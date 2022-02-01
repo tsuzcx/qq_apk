@@ -28,7 +28,7 @@ public class DefaultItemBuilder
   
   private void a(Context paramContext, ColorNoteListAdapter.ViewHolder paramViewHolder, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof LottieWrapper))
+    if ((paramViewHolder.i instanceof LottieWrapper))
     {
       if (!paramBoolean) {
         a(paramViewHolder);
@@ -40,15 +40,15 @@ public class DefaultItemBuilder
   
   private void a(ColorNoteListAdapter.ViewHolder paramViewHolder)
   {
-    if ((paramViewHolder != null) && (paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((paramViewHolder != null) && (paramViewHolder.i != null))
     {
       QLog.d("DefaultItemBuilder", 4, "play animation");
-      LottieDrawable localLottieDrawable = (LottieDrawable)paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      LottieDrawable localLottieDrawable = (LottieDrawable)paramViewHolder.i;
       localLottieDrawable.setRepeatCount(-1);
       localLottieDrawable.playAnimation();
-      int i = Utils.a(24.0F, paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getResources());
+      int i = Utils.a(24.0F, paramViewHolder.e.getResources());
       localLottieDrawable.setBounds(new Rect(0, 0, i, i));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+      paramViewHolder.e.setCompoundDrawablesWithIntrinsicBounds(null, null, paramViewHolder.i, null);
       return;
     }
     QLog.e("DefaultItemBuilder", 1, "lottie loaded but still null");
@@ -68,19 +68,19 @@ public class DefaultItemBuilder
             if (i != 17104896)
             {
               if ((i != 17170432) && (i != 17235968) && (i != 17301504)) {
-                return 2130844437;
+                return 2130845755;
               }
-              return 2130840321;
+              return 2130841060;
             }
-            return 2130844168;
+            return 2130845485;
           }
-          return 2130839210;
+          return 2130839382;
         }
-        return 2130844379;
+        return 2130845696;
       }
-      return 2130839212;
+      return 2130839384;
     }
-    return 2130839211;
+    return 2130839383;
   }
   
   public int a(ColorNote paramColorNote, boolean paramBoolean)
@@ -107,18 +107,18 @@ public class DefaultItemBuilder
                 }
                 if (paramBoolean)
                 {
-                  i = 2130839233;
+                  i = 2130839405;
                   break label160;
                 }
-                i = 2130839234;
+                i = 2130839406;
                 break label160;
               }
               if (paramBoolean)
               {
-                i = 2130839226;
+                i = 2130839398;
                 break label160;
               }
-              i = 2130839227;
+              i = 2130839399;
               break label160;
             }
           }
@@ -126,10 +126,10 @@ public class DefaultItemBuilder
           {
             if (paramBoolean)
             {
-              i = 2130839217;
+              i = 2130839389;
               break label160;
             }
-            i = 2130839218;
+            i = 2130839390;
             break label160;
           }
         }
@@ -137,34 +137,34 @@ public class DefaultItemBuilder
         {
           if (paramBoolean)
           {
-            i = 2130839223;
+            i = 2130839395;
             break label160;
           }
-          i = 2130839224;
+          i = 2130839396;
           break label160;
         }
       }
       if (paramBoolean)
       {
-        i = 2130839229;
+        i = 2130839401;
         break label160;
       }
-      i = 2130839230;
+      i = 2130839402;
       break label160;
     }
     label147:
     if (paramBoolean) {
-      i = 2130839220;
+      i = 2130839392;
     } else {
-      i = 2130839221;
+      i = 2130839393;
     }
     label160:
-    if (ColorNoteUtils.b(paramColorNote))
+    if (ColorNoteUtils.d(paramColorNote))
     {
       if (paramBoolean) {
-        return 2130839231;
+        return 2130839403;
       }
-      i = 2130839232;
+      i = 2130839404;
     }
     return i;
   }
@@ -224,7 +224,7 @@ public class DefaultItemBuilder
   public void a(ColorNoteListAdapter.ViewHolder paramViewHolder, int paramInt, boolean paramBoolean)
   {
     ColorNote localColorNote = paramViewHolder.a(paramInt);
-    Resources localResources = paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources();
+    Resources localResources = paramViewHolder.d.getContext().getResources();
     paramInt = a(localColorNote);
     try
     {
@@ -265,8 +265,8 @@ public class DefaultItemBuilder
       localObject = localResources.getDrawable(paramInt);
       QLog.e("DefaultItemBuilder", 1, localThrowable2, new Object[0]);
     }
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    boolean bool = ColorNoteUtils.b(localColorNote);
+    paramViewHolder.d.setImageDrawable((Drawable)localObject);
+    boolean bool = ColorNoteUtils.d(localColorNote);
     paramInt = ColorNoteUtils.a(localColorNote.getServiceType() & 0xFFFF0000);
     if (paramInt != 16842752)
     {
@@ -284,105 +284,105 @@ public class DefaultItemBuilder
                   if (paramInt == 17301504) {
                     break label636;
                   }
-                  paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+                  paramViewHolder.e.setCompoundDrawables(null, null, null, null);
                   break label682;
                 }
-                localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+                localObject = paramViewHolder.b;
                 if (paramBoolean) {
-                  paramInt = 2130839233;
+                  paramInt = 2130839405;
                 } else {
-                  paramInt = 2130839234;
+                  paramInt = 2130839406;
                 }
                 ((View)localObject).setBackgroundResource(paramInt);
-                paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839241);
-                if (ColorNoteUtils.c(localColorNote))
+                paramViewHolder.c.setBackgroundResource(2130839413);
+                if (ColorNoteUtils.h(localColorNote))
                 {
-                  a(paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramViewHolder, "colornote/data_black.json", "colornote/images", false);
+                  a(paramViewHolder.d.getContext(), paramViewHolder, "colornote/data_black.json", "colornote/images", false);
                   break label682;
                 }
-                paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+                paramViewHolder.e.setCompoundDrawables(null, null, null, null);
                 break label682;
               }
-              paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-              localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+              paramViewHolder.e.setCompoundDrawables(null, null, null, null);
+              localObject = paramViewHolder.b;
               if (paramBoolean) {
-                paramInt = 2130839226;
+                paramInt = 2130839398;
               } else {
-                paramInt = 2130839227;
+                paramInt = 2130839399;
               }
               ((View)localObject).setBackgroundResource(paramInt);
-              paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839238);
+              paramViewHolder.c.setBackgroundResource(2130839410);
               break label682;
             }
           }
           else
           {
-            paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-            localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+            paramViewHolder.e.setCompoundDrawables(null, null, null, null);
+            localObject = paramViewHolder.b;
             if (paramBoolean) {
-              paramInt = 2130839217;
+              paramInt = 2130839389;
             } else {
-              paramInt = 2130839218;
+              paramInt = 2130839390;
             }
             ((View)localObject).setBackgroundResource(paramInt);
-            paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839235);
+            paramViewHolder.c.setBackgroundResource(2130839407);
             break label682;
           }
         }
         else
         {
-          paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-          ((FloatingWindowDrawable)paramViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a(300);
-          localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+          paramViewHolder.e.setCompoundDrawablesWithIntrinsicBounds(null, null, paramViewHolder.i, null);
+          ((FloatingWindowDrawable)paramViewHolder.i).a(300);
+          localObject = paramViewHolder.b;
           if (paramBoolean) {
-            paramInt = 2130839223;
+            paramInt = 2130839395;
           } else {
-            paramInt = 2130839224;
+            paramInt = 2130839396;
           }
           ((View)localObject).setBackgroundResource(paramInt);
-          paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839237);
+          paramViewHolder.c.setBackgroundResource(2130839409);
           break label682;
         }
       }
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+      paramViewHolder.e.setCompoundDrawables(null, null, null, null);
+      localObject = paramViewHolder.b;
       if (paramBoolean) {
-        paramInt = 2130839229;
+        paramInt = 2130839401;
       } else {
-        paramInt = 2130839230;
+        paramInt = 2130839402;
       }
       ((View)localObject).setBackgroundResource(paramInt);
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839239);
+      paramViewHolder.c.setBackgroundResource(2130839411);
       break label682;
     }
     label636:
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    Object localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+    paramViewHolder.e.setCompoundDrawables(null, null, null, null);
+    Object localObject = paramViewHolder.b;
     if (paramBoolean) {
-      paramInt = 2130839220;
+      paramInt = 2130839392;
     } else {
-      paramInt = 2130839221;
+      paramInt = 2130839393;
     }
     ((View)localObject).setBackgroundResource(paramInt);
-    paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839236);
+    paramViewHolder.c.setBackgroundResource(2130839408);
     label682:
     if (bool)
     {
-      localObject = paramViewHolder.jdField_a_of_type_AndroidViewView;
+      localObject = paramViewHolder.b;
       if (paramBoolean) {
-        paramInt = 2130839231;
+        paramInt = 2130839403;
       } else {
-        paramInt = 2130839232;
+        paramInt = 2130839404;
       }
       ((View)localObject).setBackgroundResource(paramInt);
     }
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localColorNote.getMainTitle());
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(localColorNote.getSubTitle());
+    paramViewHolder.e.setText(localColorNote.getMainTitle());
+    paramViewHolder.f.setText(localColorNote.getSubTitle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.DefaultItemBuilder
  * JD-Core Version:    0.7.0.1
  */

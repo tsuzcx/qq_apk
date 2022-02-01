@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadPoolParams;
 import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
@@ -17,7 +18,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.util.TuringSdkInitHelper;
+import com.tencent.mobileqq.util.TuringSdkManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
@@ -31,18 +32,18 @@ import java.util.concurrent.ExecutorService;
 
 public class MMApkFileSafeChecker
 {
-  static int jdField_a_of_type_Int = 1;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MMApkFileSafeChecker.ISafeCheckerProxy jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$ISafeCheckerProxy = new MMApkFileSafeChecker.1(this);
-  Map<String, MMApkFileSafeChecker.CheckTask> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private boolean jdField_a_of_type_Boolean = true;
-  private Map<String, MMApkFileSafeChecker.FileDigestInfo> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = true;
+  static int a = 1;
+  QQAppInterface b;
+  Map<String, MMApkFileSafeChecker.CheckTask> c = new HashMap();
+  private Executor d;
+  private Map<String, MMApkFileSafeChecker.FileDigestInfo> e = new HashMap();
+  private MMApkFileSafeChecker.ISafeCheckerProxy f = new MMApkFileSafeChecker.1(this);
+  private boolean g = true;
+  private boolean h = true;
   
   public MMApkFileSafeChecker(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private MMApkFileSafeChecker.CheckTask a(String paramString1, String paramString2, Signature[] paramArrayOfSignature, long paramLong, MMApkFileSafeChecker.FileBusiInfo paramFileBusiInfo, MMApkFileSafeChecker.ISafeCheckerProxy paramISafeCheckerProxy)
@@ -75,40 +76,15 @@ public class MMApkFileSafeChecker
     return new MMApkFileSafeChecker.CheckTask(this, paramString1, paramString2, paramArrayOfSignature, paramLong, paramFileBusiInfo, paramISafeCheckerProxy);
   }
   
-  private MMApkFileSafeChecker.FileDigestInfo a(String paramString)
-  {
-    try
-    {
-      paramString = (MMApkFileSafeChecker.FileDigestInfo)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[MMApkCheck] remTask size:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append(" filePath:");
-    localStringBuilder.append(paramString);
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
-  }
-  
   private void a(String paramString, MMApkFileSafeChecker.CheckTask paramCheckTask)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+    if (this.c.containsKey(paramString)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramCheckTask);
+    this.c.put(paramString, paramCheckTask);
     paramCheckTask = new StringBuilder();
     paramCheckTask.append("[MMApkCheck] addTask size:");
-    paramCheckTask.append(this.jdField_a_of_type_JavaUtilMap.size());
+    paramCheckTask.append(this.c.size());
     paramCheckTask.append(" filePath:");
     paramCheckTask.append(paramString);
     QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, paramCheckTask.toString());
@@ -118,25 +94,25 @@ public class MMApkFileSafeChecker
   {
     try
     {
-      if (this.jdField_b_of_type_JavaUtilMap.size() > 50)
+      if (this.e.size() > 50)
       {
         long l = 9223372036854775807L;
         String str = "";
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+        Iterator localIterator = this.e.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((MMApkFileSafeChecker.FileDigestInfo)localEntry.getValue()).jdField_b_of_type_Long < l)
+          if (((MMApkFileSafeChecker.FileDigestInfo)localEntry.getValue()).d < l)
           {
-            l = ((MMApkFileSafeChecker.FileDigestInfo)localEntry.getValue()).jdField_b_of_type_Long;
+            l = ((MMApkFileSafeChecker.FileDigestInfo)localEntry.getValue()).d;
             str = (String)localEntry.getKey();
           }
         }
         if (!TextUtils.isEmpty(str)) {
-          this.jdField_b_of_type_JavaUtilMap.remove(str);
+          this.e.remove(str);
         }
       }
-      this.jdField_b_of_type_JavaUtilMap.put(paramString, paramFileDigestInfo);
+      this.e.put(paramString, paramFileDigestInfo);
       return;
     }
     finally {}
@@ -148,7 +124,7 @@ public class MMApkFileSafeChecker
   
   private void a(String paramString, MMApkFileSafeChecker.ICheckResult paramICheckResult)
   {
-    paramString = (MMApkFileSafeChecker.CheckTask)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (MMApkFileSafeChecker.CheckTask)this.c.get(paramString);
     if (paramString != null) {
       paramString.a(paramICheckResult);
     }
@@ -156,12 +132,12 @@ public class MMApkFileSafeChecker
   
   private boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+    return this.c.containsKey(paramString);
   }
   
   private boolean a(String paramString, MMApkFileSafeChecker.FileBusiInfo paramFileBusiInfo, MMApkFileSafeChecker.ICheckResult paramICheckResult)
   {
-    if (5 != FileManagerUtil.a(paramString)) {
+    if (5 != FileManagerUtil.c(paramString)) {
       return false;
     }
     Object localObject1 = new StringBuilder();
@@ -176,12 +152,12 @@ public class MMApkFileSafeChecker
       a(paramString, paramICheckResult);
       return true;
     }
-    if (!FileUtil.b(paramString))
+    if (!FileUtil.d(paramString))
     {
       QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] startCheckLocalApk. file not exists");
       return false;
     }
-    long l = FileManagerUtil.a(paramString);
+    long l = FileManagerUtil.h(paramString);
     localObject1 = null;
     try
     {
@@ -194,7 +170,7 @@ public class MMApkFileSafeChecker
       } else {
         localObject2 = "";
       }
-      paramFileBusiInfo = a(paramString, (String)localObject2, (Signature[])localObject1, l, paramFileBusiInfo, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$ISafeCheckerProxy);
+      paramFileBusiInfo = a(paramString, (String)localObject2, (Signature[])localObject1, l, paramFileBusiInfo, this.f);
       if (paramFileBusiInfo == null) {
         return false;
       }
@@ -215,28 +191,28 @@ public class MMApkFileSafeChecker
   
   private boolean a(String paramString, MMApkFileSafeChecker.IGetDigestResult paramIGetDigestResult)
   {
-    MMApkFileSafeChecker.FileDigestInfo localFileDigestInfo = a(paramString);
-    if ((localFileDigestInfo != null) && (localFileDigestInfo.jdField_a_of_type_ArrayOfByte != null) && (localFileDigestInfo.jdField_b_of_type_ArrayOfByte != null))
+    MMApkFileSafeChecker.FileDigestInfo localFileDigestInfo = d(paramString);
+    if ((localFileDigestInfo != null) && (localFileDigestInfo.a != null) && (localFileDigestInfo.b != null))
     {
-      if (FileUtil.a(paramString) == localFileDigestInfo.jdField_a_of_type_Long)
+      if (FileUtil.f(paramString) == localFileDigestInfo.c)
       {
         paramIGetDigestResult.a(true, localFileDigestInfo);
         return true;
       }
-      b(paramString);
+      c(paramString);
     }
-    c();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new MMApkFileSafeChecker.6(this, paramString, paramIGetDigestResult));
+    f();
+    this.d.execute(new MMApkFileSafeChecker.6(this, paramString, paramIGetDigestResult));
     return true;
   }
   
   private void b(long paramLong, TroopFileTransferManager.Item paramItem)
   {
     MMApkFileSafeChecker.FileBusiInfo localFileBusiInfo = new MMApkFileSafeChecker.FileBusiInfo(this, null);
-    localFileBusiInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localFileBusiInfo.jdField_a_of_type_Int = 2;
-    localFileBusiInfo.c = String.valueOf(paramLong);
-    localFileBusiInfo.e = paramItem.FilePath;
+    localFileBusiInfo.b = this.b.getCurrentAccountUin();
+    localFileBusiInfo.a = 2;
+    localFileBusiInfo.d = String.valueOf(paramLong);
+    localFileBusiInfo.f = paramItem.FilePath;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[MMApkCheck] checkLocalApk. Item.Id=");
     localStringBuilder.append(paramItem.getId());
@@ -249,15 +225,15 @@ public class MMApkFileSafeChecker
   private void b(FileManagerEntity paramFileManagerEntity)
   {
     MMApkFileSafeChecker.FileBusiInfo localFileBusiInfo = new MMApkFileSafeChecker.FileBusiInfo(this, null);
-    localFileBusiInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localFileBusiInfo.jdField_a_of_type_Int = 1;
+    localFileBusiInfo.b = this.b.getCurrentAccountUin();
+    localFileBusiInfo.a = 1;
     if ((paramFileManagerEntity.peerType != 0) && (paramFileManagerEntity.peerType != 3) && (paramFileManagerEntity.peerType != 1000))
     {
       QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] interCheckLocalApk err. is no buddy apk");
       return;
     }
-    localFileBusiInfo.b = paramFileManagerEntity.peerUin;
-    localFileBusiInfo.d = paramFileManagerEntity.Uuid;
+    localFileBusiInfo.c = paramFileManagerEntity.peerUin;
+    localFileBusiInfo.e = paramFileManagerEntity.Uuid;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[MMApkCheck] interCheckLocalApk. nSessionId=");
     localStringBuilder.append(paramFileManagerEntity.nSessionId);
@@ -269,9 +245,20 @@ public class MMApkFileSafeChecker
   
   private void b(String paramString)
   {
+    this.c.remove(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MMApkCheck] remTask size:");
+    localStringBuilder.append(this.c.size());
+    localStringBuilder.append(" filePath:");
+    localStringBuilder.append(paramString);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
+  }
+  
+  private void c(String paramString)
+  {
     try
     {
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
+      this.e.remove(paramString);
       return;
     }
     finally
@@ -281,9 +268,28 @@ public class MMApkFileSafeChecker
     }
   }
   
-  private void c()
+  private MMApkFileSafeChecker.FileDigestInfo d(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+    try
+    {
+      paramString = (MMApkFileSafeChecker.FileDigestInfo)this.e.get(paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private boolean e()
+  {
+    return ((IQFileConfigManager)this.b.getRuntimeService(IQFileConfigManager.class, "")).isMMApkFileCheckEnable();
+  }
+  
+  private void f()
+  {
+    if (this.d == null)
     {
       QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] start DigestGet pool");
       try
@@ -291,7 +297,7 @@ public class MMApkFileSafeChecker
         ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
         localThreadPoolParams.priority = 5;
         localThreadPoolParams.poolThreadName = "FileDigestGetPool";
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+        this.d = ThreadManager.newFreeThreadPool(localThreadPoolParams);
         return;
       }
       catch (Exception localException)
@@ -304,20 +310,15 @@ public class MMApkFileSafeChecker
     }
   }
   
-  private boolean c()
+  private void g()
   {
-    return ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).isMMApkFileCheckEnable();
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor != null)
+    if (this.d != null)
     {
       QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] close DigestGet pool");
       try
       {
-        if ((this.jdField_a_of_type_JavaUtilConcurrentExecutor instanceof ExecutorService)) {
-          ((ExecutorService)this.jdField_a_of_type_JavaUtilConcurrentExecutor).shutdown();
+        if ((this.d instanceof ExecutorService)) {
+          ((ExecutorService)this.d).shutdown();
         }
       }
       catch (Exception localException)
@@ -327,15 +328,15 @@ public class MMApkFileSafeChecker
         localStringBuilder.append(localException.toString());
         QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = null;
+      this.d = null;
     }
   }
   
-  private void e()
+  private void h()
   {
     try
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
+      this.e.clear();
       return;
     }
     finally
@@ -348,23 +349,12 @@ public class MMApkFileSafeChecker
   public void a()
   {
     QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] init.");
-    try
-    {
-      TuringSdkInitHelper.a(PrivacyPolicyHelper.a());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[MMApkCheck] initTuringSdk exception.");
-      localStringBuilder.append(localThrowable.toString());
-      QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
-    }
+    ((TuringSdkManager)this.b.getManager(QQManagerFactory.TURINGSDK_MANAGER)).a(PrivacyPolicyHelper.d(), false);
   }
   
   public void a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    if (!c()) {
+    if (!e()) {
       return;
     }
     if (paramItem == null)
@@ -383,7 +373,7 @@ public class MMApkFileSafeChecker
   
   public void a(FileManagerEntity paramFileManagerEntity)
   {
-    if (!c()) {
+    if (!e()) {
       return;
     }
     if (paramFileManagerEntity == null)
@@ -406,40 +396,40 @@ public class MMApkFileSafeChecker
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.g = paramBoolean;
   }
   
   public void b()
   {
     QLog.w("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] release.");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.c.values().iterator();
     while (localIterator.hasNext()) {
       ((MMApkFileSafeChecker.CheckTask)localIterator.next()).c();
     }
-    d();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    g();
+    this.c.clear();
+    h();
+    this.b = null;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.g;
+  }
+  
+  public boolean d()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker
  * JD-Core Version:    0.7.0.1
  */

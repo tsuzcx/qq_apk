@@ -9,8 +9,8 @@ class StoryPickerFragment$1
   
   public void a(String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
+    if (this.a.e != null) {
+      this.a.e.a(paramString);
     }
   }
 }

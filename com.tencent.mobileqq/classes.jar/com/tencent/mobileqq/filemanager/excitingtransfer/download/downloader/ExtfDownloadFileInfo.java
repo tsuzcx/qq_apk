@@ -7,71 +7,56 @@ import java.util.List;
 
 public class ExtfDownloadFileInfo
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b = null;
-  private String c = null;
-  private String d = null;
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
+  private String a;
+  private long b = 0L;
+  private byte[] c;
+  private List<ExcitingTransferHostInfo> d = null;
+  private String e = null;
+  private String f = null;
+  private boolean g = false;
+  private String h = null;
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(List<ExcitingTransferHostInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFilePath is null");
       return false;
     }
-    if (0L == this.jdField_a_of_type_Long)
+    if (0L == this.b)
     {
       QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
       return false;
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if ((localList != null) && (localList.size() != 0))
     {
-      if (TextUtils.isEmpty(this.b))
+      if (TextUtils.isEmpty(this.e))
       {
         QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
         return false;
       }
-      if (TextUtils.isEmpty(this.c))
+      if (TextUtils.isEmpty(this.f))
       {
         QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
         return false;
@@ -82,49 +67,64 @@ public class ExtfDownloadFileInfo
     return false;
   }
   
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
   public String b()
   {
-    return this.b;
+    return this.a;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.e = paramString;
   }
   
-  public boolean b()
+  public long c()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.c;
+    return this.b;
   }
   
   public void c(String paramString)
   {
-    this.c = paramString;
-  }
-  
-  public String d()
-  {
-    return this.d;
+    this.f = paramString;
   }
   
   public void d(String paramString)
   {
-    this.d = paramString;
+    this.h = paramString;
+  }
+  
+  public byte[] d()
+  {
+    return this.c;
+  }
+  
+  public List<ExcitingTransferHostInfo> e()
+  {
+    return this.d;
+  }
+  
+  public String f()
+  {
+    return this.e;
+  }
+  
+  public String g()
+  {
+    return this.f;
+  }
+  
+  public boolean h()
+  {
+    return this.g;
+  }
+  
+  public String i()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfDownloadFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ class ContactsDeviceAdapter$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    DialogUtil.a(this.b);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ContactsDeviceAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsDeviceContactsDeviceAdapter, this.jdField_a_of_type_AndroidViewView);
+    ContactsDeviceAdapter.a(this.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.ContactsDeviceAdapter.1
  * JD-Core Version:    0.7.0.1
  */

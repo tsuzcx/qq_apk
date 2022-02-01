@@ -2,33 +2,24 @@ package com.tencent.av.gaudio;
 
 public class VideoViewInfo
 {
-  public int a;
   public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
+  public int b = 0;
   public boolean c = false;
   public boolean d = false;
   public boolean e = false;
   public boolean f = false;
-  public boolean g = false;
-  
-  public VideoViewInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public long g = 4L;
+  public String h = "";
+  public boolean i = false;
+  public boolean j = false;
+  public boolean k = false;
   
   public boolean equals(Object paramObject)
   {
     if ((paramObject != null) && ((paramObject instanceof VideoViewInfo)))
     {
       paramObject = (VideoViewInfo)paramObject;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+      if (this.a == paramObject.a) {
         return true;
       }
     }
@@ -39,21 +30,21 @@ public class VideoViewInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Uin[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], VideoSrcType[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], isBig[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("], isRender[");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("], isNeedRequest[");
     localStringBuilder.append(this.c);
-    localStringBuilder.append("], hasRecvData[");
+    localStringBuilder.append("], isRender[");
     localStringBuilder.append(this.d);
+    localStringBuilder.append("], isNeedRequest[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], hasRecvData[");
+    localStringBuilder.append(this.f);
     localStringBuilder.append("], inviteId[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("], isMirror[");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

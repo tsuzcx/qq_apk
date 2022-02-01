@@ -48,7 +48,7 @@ public class AnonymousMsgPbSendReqHandler
             break label248;
           }
         }
-        Friends localFriends = paramFriendsManager.e(paramQQAppInterface.getCurrentAccountUin());
+        Friends localFriends = paramFriendsManager.m(paramQQAppInterface.getCurrentAccountUin());
         j = 0;
         i = 0;
         if (localFriends != null)
@@ -65,7 +65,7 @@ public class AnonymousMsgPbSendReqHandler
         }
         else
         {
-          paramQQAppInterface = paramFriendsManager.a(paramQQAppInterface.getCurrentAccountUin());
+          paramQQAppInterface = paramFriendsManager.f(paramQQAppInterface.getCurrentAccountUin());
           if (paramQQAppInterface == null) {
             break label266;
           }
@@ -100,7 +100,7 @@ public class AnonymousMsgPbSendReqHandler
   
   private void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText)
   {
-    if (AnonymousChatHelper.a(paramMessageRecord))
+    if (AnonymousChatHelper.c(paramMessageRecord))
     {
       a(paramMessageRecord, paramRichText);
       return;
@@ -149,9 +149,9 @@ public class AnonymousMsgPbSendReqHandler
       localObject1 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       Object localObject2 = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       b(paramMessageRecord, paramRichText);
-      localObject2 = ((HotChatManager)localObject2).a(paramMessageRecord.frienduin);
+      localObject2 = ((HotChatManager)localObject2).c(paramMessageRecord.frienduin);
       TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((localObject2 != null) || (localTroopManager.e(paramMessageRecord.frienduin)))
+      if ((localObject2 != null) || (localTroopManager.s(paramMessageRecord.frienduin)))
       {
         localObject2 = new im_msg_body.PubGroup();
         a(paramQQAppInterface, (FriendsManager)localObject1, (im_msg_body.PubGroup)localObject2);
@@ -167,18 +167,18 @@ public class AnonymousMsgPbSendReqHandler
   {
     im_msg_body.Elem localElem = new im_msg_body.Elem();
     im_msg_body.AnonymousGroupMsg localAnonymousGroupMsg = new im_msg_body.AnonymousGroupMsg();
-    AnonymousChatHelper.AnonymousExtInfo localAnonymousExtInfo = AnonymousChatHelper.a(paramMessageRecord);
-    localAnonymousGroupMsg.uint32_flags.set(localAnonymousExtInfo.jdField_a_of_type_Int);
-    if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_a_of_type_JavaLangString)) {
-      localAnonymousGroupMsg.str_anon_id.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_a_of_type_JavaLangString.getBytes()));
+    AnonymousChatHelper.AnonymousExtInfo localAnonymousExtInfo = AnonymousChatHelper.g(paramMessageRecord);
+    localAnonymousGroupMsg.uint32_flags.set(localAnonymousExtInfo.a);
+    if (!TextUtils.isEmpty(localAnonymousExtInfo.b)) {
+      localAnonymousGroupMsg.str_anon_id.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.b.getBytes()));
     }
-    if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_b_of_type_JavaLangString)) {
-      localAnonymousGroupMsg.str_anon_nick.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_b_of_type_JavaLangString.getBytes()));
+    if (!TextUtils.isEmpty(localAnonymousExtInfo.c)) {
+      localAnonymousGroupMsg.str_anon_nick.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.c.getBytes()));
     }
-    localAnonymousGroupMsg.uint32_head_portrait.set(localAnonymousExtInfo.jdField_b_of_type_Int);
-    localAnonymousGroupMsg.uint32_expire_time.set(localAnonymousExtInfo.jdField_c_of_type_Int);
-    if (!TextUtils.isEmpty(localAnonymousExtInfo.jdField_c_of_type_JavaLangString)) {
-      localAnonymousGroupMsg.str_rank_color.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.jdField_c_of_type_JavaLangString.getBytes()));
+    localAnonymousGroupMsg.uint32_head_portrait.set(localAnonymousExtInfo.d);
+    localAnonymousGroupMsg.uint32_expire_time.set(localAnonymousExtInfo.e);
+    if (!TextUtils.isEmpty(localAnonymousExtInfo.f)) {
+      localAnonymousGroupMsg.str_rank_color.set(ByteStringMicro.copyFrom(localAnonymousExtInfo.f.getBytes()));
     }
     localAnonymousGroupMsg.uint32_bubble_id.set((int)paramMessageRecord.vipBubbleID);
     localElem.anon_group_msg.set(localAnonymousGroupMsg);
@@ -212,7 +212,7 @@ public class AnonymousMsgPbSendReqHandler
   {
     if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("ext_key_group_chat_confess_info")))
     {
-      paramMessageRecord = ConfessMsgUtil.b(paramMessageRecord);
+      paramMessageRecord = ConfessMsgUtil.e(paramMessageRecord);
       if (paramMessageRecord != null) {
         paramRichText.elems.add(paramMessageRecord);
       }
@@ -234,7 +234,7 @@ public class AnonymousMsgPbSendReqHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.pbsendhandler.AnonymousMsgPbSendReqHandler
  * JD-Core Version:    0.7.0.1
  */

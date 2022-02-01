@@ -41,137 +41,119 @@ import java.util.List;
 
 public class NearbyFragmentEnterAdapter
 {
-  protected float a;
-  protected int a;
-  protected Drawable a;
-  protected GradientDrawable a;
-  protected Handler a;
-  protected View.OnClickListener a;
-  protected LinearLayout a;
-  protected NearbyFragmentEnterAdapter.OnItemClickListener a;
-  Runnable a;
-  protected ArrayList<NearbyFragmentEnterAdapter.EnterItem> a;
-  protected List<ilive_feeds_near_anchor.NearAnchorInfo> a;
+  protected ArrayList<NearbyFragmentEnterAdapter.EnterItem> a = new ArrayList();
   protected int b;
+  protected GradientDrawable c;
+  protected List<ilive_feeds_near_anchor.NearAnchorInfo> d;
+  protected int e = 0;
+  protected Handler f;
+  protected Drawable g;
+  protected float h;
+  protected LinearLayout i;
+  protected NearbyFragmentEnterAdapter.OnItemClickListener j;
+  Runnable k = new NearbyFragmentEnterAdapter.1(this);
+  protected View.OnClickListener l = new NearbyFragmentEnterAdapter.3(this);
   
   public NearbyFragmentEnterAdapter(Context paramContext, LinearLayout paramLinearLayout)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new NearbyFragmentEnterAdapter.1(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new NearbyFragmentEnterAdapter.3(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_Float = ((float)(DeviceInfoUtil.i() * 2L / 9L));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float - DisplayUtil.a(paramContext, 20.0F)));
-    int i = DisplayUtil.a(paramContext, 80.0F);
-    if (this.jdField_a_of_type_Int > i) {
-      this.jdField_a_of_type_Int = i;
+    this.i = paramLinearLayout;
+    this.h = ((float)(DeviceInfoUtil.D() * 2L / 9L));
+    this.f = new Handler(Looper.getMainLooper());
+    this.b = ((int)(this.h - DisplayUtil.a(paramContext, 20.0F)));
+    int m = DisplayUtil.a(paramContext, 80.0F);
+    if (this.b > m) {
+      this.b = m;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840323);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor("#FFDDDFE2"));
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(this.jdField_a_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(0);
-    paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-    i = this.jdField_a_of_type_Int;
-    paramContext.setSize(i, i);
+    this.g = paramContext.getResources().getDrawable(2130841062);
+    this.c = new GradientDrawable();
+    this.c.setColor(Color.parseColor("#FFDDDFE2"));
+    this.c.setCornerRadius(this.b / 2);
+    this.c.setShape(0);
+    paramContext = this.c;
+    m = this.b;
+    paramContext.setSize(m, m);
   }
   
   public View a(Context paramContext, int paramInt)
   {
-    NearbyFragmentEnterAdapter.EnterItem localEnterItem = (NearbyFragmentEnterAdapter.EnterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    View localView = LayoutInflater.from(paramContext).inflate(2131559484, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    NearbyFragmentEnterAdapter.EnterItem localEnterItem = (NearbyFragmentEnterAdapter.EnterItem)this.a.get(paramInt);
+    View localView = LayoutInflater.from(paramContext).inflate(2131625504, this.i, false);
     NearbyFragmentEnterAdapter.ViewHolder localViewHolder = new NearbyFragmentEnterAdapter.ViewHolder();
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368343));
-    localViewHolder.b = ((URLImageView)localView.findViewById(2131368344));
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379994));
-    localViewHolder.c = ((URLImageView)localView.findViewById(2131368366));
-    localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131380035));
-    localViewHolder.jdField_a_of_type_Int = paramInt;
+    localViewHolder.c = ((URLImageView)localView.findViewById(2131435219));
+    localViewHolder.d = ((URLImageView)localView.findViewById(2131435220));
+    localViewHolder.b = ((TextView)localView.findViewById(2131448897));
+    localViewHolder.e = ((URLImageView)localView.findViewById(2131435245));
+    localViewHolder.a = ((LinearLayout)localView.findViewById(2131448941));
+    localViewHolder.g = paramInt;
     localView.setTag(localViewHolder);
-    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    Object localObject = (RelativeLayout.LayoutParams)localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = ((int)this.jdField_a_of_type_Float);
-    localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (RelativeLayout.LayoutParams)localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    paramInt = this.jdField_a_of_type_Int;
+    localView.setOnClickListener(this.l);
+    Object localObject = (RelativeLayout.LayoutParams)localViewHolder.a.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = ((int)this.h);
+    localViewHolder.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)localViewHolder.c.getLayoutParams();
+    paramInt = this.b;
     ((RelativeLayout.LayoutParams)localObject).width = paramInt;
     ((RelativeLayout.LayoutParams)localObject).height = paramInt;
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (RelativeLayout.LayoutParams)localViewHolder.b.getLayoutParams();
-    paramInt = this.jdField_a_of_type_Int;
+    localViewHolder.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)localViewHolder.d.getLayoutParams();
+    paramInt = this.b;
     ((RelativeLayout.LayoutParams)localObject).width = paramInt;
     ((RelativeLayout.LayoutParams)localObject).height = paramInt;
-    localViewHolder.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localViewHolder.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localObject = (View)localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+    localViewHolder.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localViewHolder.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localViewHolder.d.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localObject = (View)localViewHolder.a.getParent();
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
-    localLayoutParams.width = ((int)this.jdField_a_of_type_Float);
+    localLayoutParams.width = ((int)this.h);
     ((View)localObject).setLayoutParams(localLayoutParams);
-    localView.setTag(2131378259, Integer.valueOf(localEnterItem.jdField_a_of_type_Int));
-    if (localEnterItem.jdField_b_of_type_Int != 0)
+    localView.setTag(2131446778, Integer.valueOf(localEnterItem.d));
+    if (localEnterItem.e != 0)
     {
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramContext, localViewHolder.jdField_a_of_type_ComTencentImageURLImageView);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b(53).a();
-      localView.setTag(2131376320, Integer.valueOf(localEnterItem.jdField_b_of_type_Int));
+      localViewHolder.f = new RedTouch(paramContext, localViewHolder.c);
+      localViewHolder.f.c(53).a();
+      localView.setTag(2131444531, Integer.valueOf(localEnterItem.e));
     }
-    if (localEnterItem.jdField_a_of_type_Int == 1)
+    if (localEnterItem.d == 1)
     {
-      paramContext = this.jdField_a_of_type_JavaUtilList;
+      paramContext = this.d;
       if (paramContext != null) {
-        a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)paramContext.get(this.jdField_b_of_type_Int));
+        a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)paramContext.get(this.e));
       } else {
-        a(localViewHolder.b, localEnterItem.jdField_b_of_type_JavaLangString);
+        a(localViewHolder.d, localEnterItem.b);
       }
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#05d380"));
-      localViewHolder.c.setVisibility(0);
+      localViewHolder.b.setTextColor(Color.parseColor("#05d380"));
+      localViewHolder.e.setVisibility(0);
       paramContext = URLDrawable.URLDrawableOptions.obtain();
       paramContext.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171219/4ed0e5a61d2f4024ac6886ee826ac51c.gif", paramContext);
-      localViewHolder.c.setImageDrawable(paramContext);
-      localViewHolder.c.setAdjustViewBounds(true);
-      localViewHolder.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
+      localViewHolder.e.setImageDrawable(paramContext);
+      localViewHolder.e.setAdjustViewBounds(true);
+      localViewHolder.e.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localViewHolder.c.setVisibility(4);
     }
     else
     {
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-      localViewHolder.c.setVisibility(8);
-      a(localViewHolder.jdField_a_of_type_ComTencentImageURLImageView, localEnterItem.jdField_b_of_type_JavaLangString);
+      localViewHolder.c.setVisibility(0);
+      localViewHolder.b.setTextColor(Color.parseColor("#777777"));
+      localViewHolder.e.setVisibility(8);
+      a(localViewHolder.c, localEnterItem.b);
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localEnterItem.c);
+    localViewHolder.b.setText(localEnterItem.c);
     return localView;
-  }
-  
-  protected NearbyFragmentEnterAdapter.ViewHolder a()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
-    {
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView != null) && (((Integer)localView.getTag(2131378259)).intValue() == 1)) {
-        return (NearbyFragmentEnterAdapter.ViewHolder)localView.getTag();
-      }
-      i += 1;
-    }
-    return null;
   }
   
   public ilive_feeds_near_anchor.NearAnchorInfo a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList != null) {
-      return (ilive_feeds_near_anchor.NearAnchorInfo)localList.get(this.jdField_b_of_type_Int);
+      return (ilive_feeds_near_anchor.NearAnchorInfo)localList.get(this.e);
     }
     return null;
   }
   
   public Object a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public void a(ImageView paramImageView, String paramString)
@@ -184,13 +166,13 @@ public class NearbyFragmentEnterAdapter
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.b;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.b;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.c;
       localURLDrawable1 = localURLDrawable2;
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.c;
       localURLDrawable1 = localURLDrawable2;
       ((URLDrawable.URLDrawableOptions)localObject1).mMemoryCacheKeySuffix = "nearby_fragment_enter_icon";
       localURLDrawable1 = localURLDrawable2;
@@ -199,9 +181,9 @@ public class NearbyFragmentEnterAdapter
         localURLDrawable1 = localURLDrawable2;
         localURLDrawable2 = URLDrawable.getDrawable(NearbyImgDownloader.convertURL(paramString), (URLDrawable.URLDrawableOptions)localObject1);
         localURLDrawable1 = localURLDrawable2;
-        localURLDrawable2.setTag(URLDrawableDecodeHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
+        localURLDrawable2.setTag(URLDrawableDecodeHandler.a(this.b, this.b));
         localURLDrawable1 = localURLDrawable2;
-        localURLDrawable2.setDecodeHandler(URLDrawableDecodeHandler.a);
+        localURLDrawable2.setDecodeHandler(URLDrawableDecodeHandler.b);
         localURLDrawable1 = localURLDrawable2;
         if (localURLDrawable2.getStatus() != 2)
         {
@@ -237,7 +219,7 @@ public class NearbyFragmentEnterAdapter
     }
     catch (Exception localException)
     {
-      paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
+      paramImageView.setImageDrawable(this.c);
       localObject1 = localURLDrawable1;
       if (QLog.isColorLevel())
       {
@@ -252,40 +234,40 @@ public class NearbyFragmentEnterAdapter
     }
     paramString = (String)localObject1;
     if (localObject1 == null) {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+      paramString = this.c;
     }
     paramImageView.setImageDrawable(paramString);
   }
   
   public void a(NearbyFragmentEnterAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.j = paramOnItemClickListener;
   }
   
   @RequiresApi(api=11)
   protected void a(NearbyFragmentEnterAdapter.ViewHolder paramViewHolder, ilive_feeds_near_anchor.NearAnchorInfo paramNearAnchorInfo)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.g;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-    int i = this.jdField_a_of_type_Int;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+    int m = this.b;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = m;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = m;
     ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_fragment_live_avatar";
     paramNearAnchorInfo = URLDrawable.getDrawable(paramNearAnchorInfo.cover_url.get().toStringUtf8(), (URLDrawable.URLDrawableOptions)localObject);
-    i = this.jdField_a_of_type_Int;
-    paramNearAnchorInfo.setTag(URLDrawableDecodeHandler.a(i, i));
-    paramNearAnchorInfo.setDecodeHandler(URLDrawableDecodeHandler.a);
-    if (this.jdField_a_of_type_JavaUtilList.size() != 1)
+    m = this.b;
+    paramNearAnchorInfo.setTag(URLDrawableDecodeHandler.a(m, m));
+    paramNearAnchorInfo.setDecodeHandler(URLDrawableDecodeHandler.b);
+    if (this.d.size() != 1)
     {
-      localObject = ObjectAnimator.ofFloat(paramViewHolder.b, "alpha", new float[] { 1.0F, 0.2F });
+      localObject = ObjectAnimator.ofFloat(paramViewHolder.d, "alpha", new float[] { 1.0F, 0.2F });
       ((ObjectAnimator)localObject).setInterpolator(new AccelerateInterpolator());
       ((ObjectAnimator)localObject).addListener(new NearbyFragmentEnterAdapter.2(this, paramViewHolder, paramNearAnchorInfo));
       ((ObjectAnimator)localObject).setDuration(300L).start();
       return;
     }
-    paramViewHolder.b.setImageDrawable(paramNearAnchorInfo);
+    paramViewHolder.d.setImageDrawable(paramNearAnchorInfo);
   }
   
   public void a(INearbyAppInterface paramINearbyAppInterface)
@@ -294,21 +276,21 @@ public class NearbyFragmentEnterAdapter
     if (localINearbyProcManager == null) {
       return;
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    int m = 0;
+    while (m < this.i.getChildCount())
     {
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      Object localObject2 = this.i.getChildAt(m);
       if ((localObject2 != null) && (((View)localObject2).getTag() != null))
       {
         NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)((View)localObject2).getTag();
-        Object localObject1 = (Integer)((View)localObject2).getTag(2131376320);
-        localObject2 = (Integer)((View)localObject2).getTag(2131378259);
+        Object localObject1 = (Integer)((View)localObject2).getTag(2131444531);
+        localObject2 = (Integer)((View)localObject2).getTag(2131446778);
         if ((localObject1 != null) && (localObject2 != null))
         {
           localObject1 = localINearbyProcManager.a(((Integer)localObject1).intValue());
-          boolean bool1 = localViewHolder.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.c();
-          localViewHolder.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject1);
-          boolean bool2 = localViewHolder.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.c();
+          boolean bool1 = localViewHolder.f.h();
+          localViewHolder.f.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject1);
+          boolean bool2 = localViewHolder.f.h();
           if ((bool1) && (!bool2)) {
             NearbyUtils.b((AppInterface)paramINearbyAppInterface, "op_red_clear", ((Integer)localObject2).intValue());
           } else if ((!bool1) && (bool2)) {
@@ -316,42 +298,56 @@ public class NearbyFragmentEnterAdapter
           }
         }
       }
-      i += 1;
+      m += 1;
     }
   }
   
   public void a(List<NearbyFragmentEnterAdapter.EnterItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.a.addAll(paramList);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    this.i.removeAllViews();
+    int n = this.a.size();
+    int m = 0;
+    while (m < n)
     {
-      paramList = a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext(), i);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramList);
-      i += 1;
+      paramList = a(this.i.getContext(), m);
+      this.i.addView(paramList);
+      m += 1;
     }
+  }
+  
+  protected NearbyFragmentEnterAdapter.ViewHolder b()
+  {
+    int m = 0;
+    while (m < this.i.getChildCount())
+    {
+      View localView = this.i.getChildAt(m);
+      if ((localView != null) && (((Integer)localView.getTag(2131446778)).intValue() == 1)) {
+        return (NearbyFragmentEnterAdapter.ViewHolder)localView.getTag();
+      }
+      m += 1;
+    }
+    return null;
   }
   
   public void b(List<ilive_feeds_near_anchor.NearAnchorInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    paramList = this.jdField_a_of_type_JavaUtilList;
+    this.d = paramList;
+    this.f.removeCallbacksAndMessages(null);
+    paramList = this.d;
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      this.e = 0;
+      this.f.post(this.k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter
  * JD-Core Version:    0.7.0.1
  */

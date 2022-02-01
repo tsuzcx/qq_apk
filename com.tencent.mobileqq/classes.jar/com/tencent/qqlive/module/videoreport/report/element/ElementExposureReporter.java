@@ -1,13 +1,17 @@
 package com.tencent.qqlive.module.videoreport.report.element;
 
+import android.app.Dialog;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 import android.view.View;
+import android.view.Window;
 import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.apm.DTApmManager;
 import com.tencent.qqlive.module.videoreport.exposure.ExposureDetector;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import com.tencent.qqlive.module.videoreport.page.DialogListUtil;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
 import com.tencent.qqlive.module.videoreport.page.PageManager;
 import com.tencent.qqlive.module.videoreport.page.PageManager.IPageListener;
@@ -17,12 +21,15 @@ import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
 import com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
+import com.tencent.qqlive.module.videoreport.utils.UIUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -88,14 +95,50 @@ public class ElementExposureReporter
       localRect1 = null;
     }
     this.mFrontPageInfo = paramPageInfo;
-    run(localView.getRootView(), -VideoReportInner.getInstance().getConfiguration().getPageExposureMinTime(), localRect1);
+    boolean bool = run(getAllEntryViews(localView), -VideoReportInner.getInstance().getConfiguration().getPageExposureMinTime(), localRect1);
     this.mListenerMgr.startNotify(this.mTraverseEndCallback);
-    SimpleTracer.end("ElementExposureReporter.elementReport");
+    long l = SimpleTracer.end("ElementExposureReporter.elementReport");
+    DTApmManager.getInstance().onElementDetect(bool, l);
   }
   
   private boolean exposureNotReported(long paramLong)
   {
     return this.mExposureRecorder.isExposed(paramLong) ^ true;
+  }
+  
+  private List<View> getAllEntryViews(View paramView)
+  {
+    View localView = paramView.getRootView();
+    paramView = UIUtils.findAttachedActivity(paramView);
+    if (paramView == null) {
+      return Collections.singletonList(localView);
+    }
+    List localList = DialogListUtil.getDialogList(paramView);
+    LinkedList localLinkedList = new LinkedList();
+    if (localList != null)
+    {
+      int i = localList.size() - 1;
+      while (i >= 0)
+      {
+        paramView = (WeakReference)localList.get(i);
+        if (paramView == null) {
+          paramView = null;
+        } else {
+          paramView = (Dialog)paramView.get();
+        }
+        if ((paramView != null) && (paramView.getWindow() != null))
+        {
+          paramView = paramView.getWindow().getDecorView();
+          if (paramView == localView) {
+            break;
+          }
+          localLinkedList.add(paramView);
+        }
+        i -= 1;
+      }
+    }
+    localLinkedList.add(localView);
+    return new ArrayList(localLinkedList);
   }
   
   public static ElementExposureReporter getInstance()
@@ -110,7 +153,7 @@ public class ElementExposureReporter
     this.mPendingQueue.setOnQueueListener(new ElementExposureReporter.2(this));
   }
   
-  private void makeDirty(Set<Long> paramSet)
+  private boolean makeDirty(Set<Long> paramSet)
   {
     HashSet localHashSet = new HashSet();
     Iterator localIterator = this.mExposureRecorder.getExposedRecords().keySet().iterator();
@@ -122,6 +165,7 @@ public class ElementExposureReporter
       }
     }
     this.mExposureRecorder.markUnexposed(localHashSet);
+    return localHashSet.size() > 0;
   }
   
   private void markUnexposed(PageInfo paramPageInfo)
@@ -194,31 +238,47 @@ public class ElementExposureReporter
     }
   }
   
-  private void run(View paramView, long paramLong, Rect paramRect)
+  private boolean run(@NonNull List<View> paramList, long paramLong, Rect paramRect)
   {
     clearPreExposedContent();
-    detect(paramView, paramRect);
+    boolean bool1 = false;
+    int i = 0;
+    while (i < paramList.size())
+    {
+      View localView = (View)paramList.get(i);
+      Rect localRect;
+      if (i == paramList.size() - 1) {
+        localRect = paramRect;
+      } else {
+        localRect = null;
+      }
+      detect(localView, localRect);
+      i += 1;
+    }
     if (VideoReportInner.getInstance().isDebugMode())
     {
-      paramView = new StringBuilder();
-      paramView.append("run: delayDelta = ");
-      paramView.append(paramLong);
-      paramView.append(", ");
+      paramList = new StringBuilder();
+      paramList.append("run: delayDelta = ");
+      paramList.append(paramLong);
+      paramList.append(", ");
       paramRect = this.mPreExposedViewInfoList;
-      int i;
       if (paramRect == null) {
         i = 0;
       } else {
         i = paramRect.size();
       }
-      paramView.append(i);
-      paramView.append(" exposed view found");
-      Log.d("ElementExposureReporter", paramView.toString());
+      paramList.append(i);
+      paramList.append(" exposed view found");
+      Log.d("ElementExposureReporter", paramList.toString());
     }
     printDebug();
-    makeDirty(this.mExposedIds.keySet());
+    boolean bool2 = makeDirty(this.mExposedIds.keySet());
     this.mPendingQueue.enqueue(this.mPreExposedViewInfoList, paramLong);
+    if ((bool2) || (this.mPreExposedViewInfoList.size() > 0)) {
+      bool1 = true;
+    }
     clearPreExposedContent();
+    return bool1;
   }
   
   public void onAppIn() {}
@@ -282,7 +342,7 @@ public class ElementExposureReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementExposureReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class ExtendFriendSearchFragment$6$1
   {
     try
     {
-      this.a.a.a.a(0, true);
+      this.a.a.m.a(0, true);
       return;
     }
     catch (Exception localException)
@@ -22,7 +22,7 @@ class ExtendFriendSearchFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

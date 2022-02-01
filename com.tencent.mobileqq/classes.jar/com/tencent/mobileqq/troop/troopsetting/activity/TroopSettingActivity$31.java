@@ -12,33 +12,33 @@ class TroopSettingActivity$31
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((paramString1 != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin != null))
+    if ((paramString1 != null) && (this.a.i.troopUin != null))
     {
-      if (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin)) {
+      if (!paramString1.equals(this.a.i.troopUin)) {
         return;
       }
       if (paramInt2 == 512)
       {
         if (paramBoolean)
         {
-          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).updateHiddenChat(TroopSettingActivity.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).updateHiddenChat(TroopSettingActivity.a(this.a), this.a.t);
           return;
         }
-        TroopSettingActivity.p(this.a);
+        TroopSettingActivity.s(this.a);
       }
     }
   }
   
   protected void b(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin))) {
-      this.a.h = paramInt;
+    if ((paramBoolean) && (paramString.equals(this.a.i.troopUin))) {
+      this.a.ad = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.31
  * JD-Core Version:    0.7.0.1
  */

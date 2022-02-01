@@ -55,11 +55,11 @@ public class MessageForTofuAioMiniProfile
       return null;
     }
     MiniCard.BaseProfile localBaseProfile = new MiniCard.BaseProfile();
-    localBaseProfile.jdField_a_of_type_Int = paramJSONObject.optInt("age", -1);
-    localBaseProfile.jdField_b_of_type_Int = paramJSONObject.optInt("gender", -1);
-    localBaseProfile.jdField_a_of_type_JavaLangString = paramJSONObject.optString("place", "");
-    localBaseProfile.jdField_b_of_type_JavaLangString = paramJSONObject.optString("addfrd_src", "");
-    localBaseProfile.c = paramJSONObject.optInt("commfrd_num", -1);
+    localBaseProfile.a = paramJSONObject.optInt("age", -1);
+    localBaseProfile.b = paramJSONObject.optInt("gender", -1);
+    localBaseProfile.c = paramJSONObject.optString("place", "");
+    localBaseProfile.d = paramJSONObject.optString("addfrd_src", "");
+    localBaseProfile.e = paramJSONObject.optInt("commfrd_num", -1);
     return localBaseProfile;
   }
   
@@ -78,8 +78,8 @@ public class MessageForTofuAioMiniProfile
       {
         MiniCard.NicePicInfo localNicePicInfo = new MiniCard.NicePicInfo();
         JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        localNicePicInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("ori", "");
-        localNicePicInfo.jdField_b_of_type_JavaLangString = localJSONObject.optString("medium", "");
+        localNicePicInfo.a = localJSONObject.optString("ori", "");
+        localNicePicInfo.b = localJSONObject.optString("medium", "");
         localArrayList.add(localNicePicInfo);
         i += 1;
       }
@@ -120,8 +120,8 @@ public class MessageForTofuAioMiniProfile
       return null;
     }
     MiniCard.QZoneInfo localQZoneInfo = new MiniCard.QZoneInfo();
-    localQZoneInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("space_name", "");
-    localQZoneInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("update_content", "");
+    localQZoneInfo.a = paramJSONObject.optString("space_name", "");
+    localQZoneInfo.b = paramJSONObject.optString("update_content", "");
     paramJSONObject = paramJSONObject.optJSONArray("img_urls");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
@@ -132,7 +132,7 @@ public class MessageForTofuAioMiniProfile
         localArrayList.add(paramJSONObject.optString(i));
         i += 1;
       }
-      localQZoneInfo.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+      localQZoneInfo.c.addAll(localArrayList);
     }
     return localQZoneInfo;
   }
@@ -148,9 +148,9 @@ public class MessageForTofuAioMiniProfile
       return null;
     }
     MiniCard.Sign localSign = new MiniCard.Sign();
-    localSign.jdField_a_of_type_Int = paramJSONObject.optInt("actionId", 0);
-    localSign.jdField_a_of_type_JavaLangString = paramJSONObject.optString("actionAndData", "");
-    localSign.jdField_b_of_type_JavaLangString = paramJSONObject.optString("plainText", "");
+    localSign.a = paramJSONObject.optInt("actionId", 0);
+    localSign.b = paramJSONObject.optString("actionAndData", "");
+    localSign.c = paramJSONObject.optString("plainText", "");
     return localSign;
   }
   
@@ -160,12 +160,12 @@ public class MessageForTofuAioMiniProfile
     {
       JSONObject localJSONObject = new JSONObject(this.msg);
       this.miniCard = new MiniCard();
-      this.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$BaseProfile = getBaseProfile(localJSONObject);
-      this.miniCard.jdField_a_of_type_JavaUtilList.addAll(getPersonalLabels(localJSONObject));
-      this.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$QZoneInfo = getQZoneInfo(localJSONObject);
-      this.miniCard.b.addAll(getNicePics(localJSONObject));
-      this.miniCard.jdField_a_of_type_ComTencentMobileqqRelationxIcebreakingBeanMiniCard$Sign = getSign(localJSONObject);
-      this.miniCard.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousBeanAnonymousQuestion = getAskAnonymously(localJSONObject);
+      this.miniCard.a = getBaseProfile(localJSONObject);
+      this.miniCard.b.addAll(getPersonalLabels(localJSONObject));
+      this.miniCard.c = getQZoneInfo(localJSONObject);
+      this.miniCard.d.addAll(getNicePics(localJSONObject));
+      this.miniCard.e = getSign(localJSONObject);
+      this.miniCard.f = getAskAnonymously(localJSONObject);
     }
     catch (Exception localException)
     {
@@ -179,7 +179,7 @@ public class MessageForTofuAioMiniProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuAioMiniProfile
  * JD-Core Version:    0.7.0.1
  */

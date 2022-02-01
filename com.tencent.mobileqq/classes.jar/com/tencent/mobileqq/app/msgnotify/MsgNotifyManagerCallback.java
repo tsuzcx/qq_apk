@@ -10,7 +10,7 @@ public class MsgNotifyManagerCallback
 {
   public int a(Message paramMessage, MsgNotifyManager paramMsgNotifyManager)
   {
-    paramMsgNotifyManager = (ISubAccountService)((QQAppInterface)paramMsgNotifyManager.a()).getRuntimeService(ISubAccountService.class, null);
+    paramMsgNotifyManager = (ISubAccountService)((QQAppInterface)paramMsgNotifyManager.g()).getRuntimeService(ISubAccountService.class, null);
     if (paramMsgNotifyManager != null) {
       return paramMsgNotifyManager.getUnNotifySenderNum(paramMessage.frienduin);
     }
@@ -19,20 +19,20 @@ public class MsgNotifyManagerCallback
   
   public void a(int paramInt, Message paramMessage, MsgNotifyManager paramMsgNotifyManager)
   {
-    ((QQAppInterface)paramMsgNotifyManager.a()).showReadedMsgNotification(paramMessage, null);
+    ((QQAppInterface)paramMsgNotifyManager.g()).showReadedMsgNotification(paramMessage, null);
   }
   
   public void a(Message paramMessage1, Message paramMessage2, MsgNotifyManager paramMsgNotifyManager)
   {
-    ((QQAppInterface)paramMsgNotifyManager.a()).showReadedMsgNotification(paramMessage2, paramMessage1);
+    ((QQAppInterface)paramMsgNotifyManager.g()).showReadedMsgNotification(paramMessage2, paramMessage1);
   }
   
   public void a(String paramString, int paramInt, Message paramMessage, MsgNotifyManager paramMsgNotifyManager)
   {
-    paramMsgNotifyManager = (QQAppInterface)paramMsgNotifyManager.a();
+    paramMsgNotifyManager = (QQAppInterface)paramMsgNotifyManager.g();
     if (NotifyIdManager.a(paramInt, paramString))
     {
-      NotifyIdManager.a(paramMsgNotifyManager).b(paramString);
+      NotifyIdManager.a(paramMsgNotifyManager).c(paramString);
       return;
     }
     paramMsgNotifyManager.showReadedMsgNotification(paramMessage, null);
@@ -45,7 +45,7 @@ public class MsgNotifyManagerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyManagerCallback
  * JD-Core Version:    0.7.0.1
  */

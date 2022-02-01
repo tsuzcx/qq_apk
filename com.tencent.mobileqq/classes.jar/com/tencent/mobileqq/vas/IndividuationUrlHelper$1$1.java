@@ -10,13 +10,13 @@ class IndividuationUrlHelper$1$1
   
   public void run()
   {
-    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqVasIndividuationUrlHelper$IconExtendData.a.getResources();
-    IndividuationUrlHelper.1.a(this.this$0, localResources, this.jdField_a_of_type_ComTencentMobileqqVasIndividuationUrlHelper$IconExtendData, this.jdField_a_of_type_JavaLangString);
+    Resources localResources = this.a.a.getResources();
+    IndividuationUrlHelper.1.a(this.this$0, localResources, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

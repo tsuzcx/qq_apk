@@ -13,11 +13,11 @@ class QQStoryMainController$9
   {
     if (paramInt == 1)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a();
+      this.a.i.b();
       return;
     }
     if (paramInt == 7) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
+      this.a.b.n();
     }
   }
 }

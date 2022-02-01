@@ -14,15 +14,15 @@ class StructingMsgItemBuilder$21
   
   public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {
+    if (this.a.uniseq != paramLong) {
       return;
     }
-    paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+    paramView = (StructMsgForGeneralShare)this.a.structingMsg;
     if (paramInt1 != 1001) {
       paramInt2 = 100;
     }
     paramView.setProgress(paramInt2);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377967);
+    paramView = this.b.findViewById(2131446454);
     if ((paramView instanceof ProgressBar))
     {
       ((ProgressBar)paramView).setProgress(paramInt2);
@@ -37,7 +37,7 @@ class StructingMsgItemBuilder$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.21
  * JD-Core Version:    0.7.0.1
  */

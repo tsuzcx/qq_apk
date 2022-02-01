@@ -7,64 +7,64 @@ import org.tensorflow.lite.Interpreter;
 
 public abstract class LiteClassifier
 {
-  public List<String> a;
   protected Interpreter a;
+  public List<String> b;
   
   /* Error */
   public LiteClassifier(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 15	java/lang/Object:<init>	()V
+    //   1: invokespecial 16	java/lang/Object:<init>	()V
     //   4: aload_0
-    //   5: new 17	java/util/ArrayList
+    //   5: new 18	java/util/ArrayList
     //   8: dup
-    //   9: invokespecial 18	java/util/ArrayList:<init>	()V
-    //   12: putfield 20	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   9: invokespecial 19	java/util/ArrayList:<init>	()V
+    //   12: putfield 21	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:b	Ljava/util/List;
     //   15: aload_0
-    //   16: new 22	org/tensorflow/lite/Interpreter
+    //   16: new 23	org/tensorflow/lite/Interpreter
     //   19: dup
     //   20: aload_0
     //   21: aload_1
-    //   22: invokespecial 25	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:a	(Ljava/lang/String;)Ljava/nio/MappedByteBuffer;
-    //   25: invokespecial 28	org/tensorflow/lite/Interpreter:<init>	(Ljava/nio/MappedByteBuffer;)V
-    //   28: putfield 30	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:jdField_a_of_type_OrgTensorflowLiteInterpreter	Lorg/tensorflow/lite/Interpreter;
+    //   22: invokespecial 26	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:a	(Ljava/lang/String;)Ljava/nio/MappedByteBuffer;
+    //   25: invokespecial 29	org/tensorflow/lite/Interpreter:<init>	(Ljava/nio/MappedByteBuffer;)V
+    //   28: putfield 31	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:a	Lorg/tensorflow/lite/Interpreter;
     //   31: aload_2
-    //   32: invokestatic 36	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   32: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   35: ifne +83 -> 118
-    //   38: new 38	java/io/File
+    //   38: new 39	java/io/File
     //   41: dup
     //   42: aload_2
-    //   43: invokespecial 41	java/io/File:<init>	(Ljava/lang/String;)V
-    //   46: invokevirtual 45	java/io/File:exists	()Z
+    //   43: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
+    //   46: invokevirtual 46	java/io/File:exists	()Z
     //   49: ifeq +69 -> 118
-    //   52: new 47	java/io/BufferedReader
+    //   52: new 48	java/io/BufferedReader
     //   55: dup
-    //   56: new 49	java/io/FileReader
+    //   56: new 50	java/io/FileReader
     //   59: dup
     //   60: aload_2
-    //   61: invokespecial 50	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   64: invokespecial 53	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   61: invokespecial 51	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   64: invokespecial 54	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   67: astore_1
     //   68: aload_1
-    //   69: invokevirtual 57	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   69: invokevirtual 58	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   72: astore_2
     //   73: aload_2
     //   74: ifnull +26 -> 100
     //   77: aload_2
-    //   78: ldc 59
-    //   80: invokevirtual 65	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   78: ldc 60
+    //   80: invokevirtual 66	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   83: iconst_0
     //   84: aaload
     //   85: astore_2
     //   86: aload_0
-    //   87: getfield 20	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   87: getfield 21	com/tencent/mobileqq/qwallet/hb/grap/draw/impl/LiteClassifier:b	Ljava/util/List;
     //   90: aload_2
-    //   91: invokeinterface 71 2 0
+    //   91: invokeinterface 72 2 0
     //   96: pop
     //   97: goto -29 -> 68
     //   100: aload_1
-    //   101: invokevirtual 74	java/io/BufferedReader:close	()V
+    //   101: invokevirtual 75	java/io/BufferedReader:close	()V
     //   104: return
     //   105: astore_2
     //   106: goto +6 -> 112
@@ -72,7 +72,7 @@ public abstract class LiteClassifier
     //   110: aload_2
     //   111: athrow
     //   112: aload_1
-    //   113: invokevirtual 74	java/io/BufferedReader:close	()V
+    //   113: invokevirtual 75	java/io/BufferedReader:close	()V
     //   116: aload_2
     //   117: athrow
     //   118: return
@@ -102,46 +102,46 @@ public abstract class LiteClassifier
     //   7: astore 4
     //   9: aconst_null
     //   10: astore 8
-    //   12: new 38	java/io/File
+    //   12: new 39	java/io/File
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 41	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 42	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore 9
-    //   22: new 77	java/io/FileInputStream
+    //   22: new 78	java/io/FileInputStream
     //   25: dup
     //   26: aload 9
-    //   28: invokespecial 80	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 81	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   31: astore 5
     //   33: aload 8
     //   35: astore_1
     //   36: aload 7
     //   38: astore 4
     //   40: aload 5
-    //   42: invokevirtual 84	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   42: invokevirtual 85	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   45: astore 6
     //   47: aload 6
     //   49: astore_1
     //   50: aload 6
     //   52: astore 4
     //   54: aload 9
-    //   56: invokevirtual 88	java/io/File:length	()J
+    //   56: invokevirtual 89	java/io/File:length	()J
     //   59: lstore_2
     //   60: aload 6
     //   62: astore_1
     //   63: aload 6
     //   65: astore 4
     //   67: aload 6
-    //   69: getstatic 94	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   69: getstatic 95	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
     //   72: lconst_0
     //   73: lload_2
-    //   74: invokevirtual 100	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   74: invokevirtual 101	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
     //   77: astore 7
     //   79: aload 6
     //   81: ifnull +8 -> 89
     //   84: aload 6
-    //   86: invokevirtual 101	java/nio/channels/FileChannel:close	()V
+    //   86: invokevirtual 102	java/nio/channels/FileChannel:close	()V
     //   89: aload 5
-    //   91: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   91: invokevirtual 103	java/io/FileInputStream:close	()V
     //   94: aload 7
     //   96: areturn
     //   97: astore 4
@@ -179,11 +179,11 @@ public abstract class LiteClassifier
     //   156: aload_1
     //   157: ifnull +7 -> 164
     //   160: aload_1
-    //   161: invokevirtual 101	java/nio/channels/FileChannel:close	()V
+    //   161: invokevirtual 102	java/nio/channels/FileChannel:close	()V
     //   164: aload 5
     //   166: ifnull +8 -> 174
     //   169: aload 5
-    //   171: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   171: invokevirtual 103	java/io/FileInputStream:close	()V
     //   174: aload 4
     //   176: athrow
     // Local variable table:
@@ -220,14 +220,28 @@ public abstract class LiteClassifier
   
   public abstract String a();
   
-  public void a()
+  public abstract boolean a(DoodleItem paramDoodleItem, String paramString, float paramFloat1, int paramInt, float paramFloat2);
+  
+  public float[] a(float[][][][] paramArrayOfFloat)
+  {
+    Object localObject = this.b;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = (float[][])Array.newInstance(Float.TYPE, new int[] { 1, this.b.size() });
+      this.a.run(paramArrayOfFloat, localObject);
+      return localObject[0];
+    }
+    return null;
+  }
+  
+  public void b()
   {
     try
     {
-      if (this.jdField_a_of_type_OrgTensorflowLiteInterpreter != null) {
-        this.jdField_a_of_type_OrgTensorflowLiteInterpreter.close();
+      if (this.a != null) {
+        this.a.close();
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       return;
     }
     catch (Throwable localThrowable)
@@ -235,24 +249,10 @@ public abstract class LiteClassifier
       localThrowable.printStackTrace();
     }
   }
-  
-  public abstract boolean a(DoodleItem paramDoodleItem, String paramString, float paramFloat1, int paramInt, float paramFloat2);
-  
-  public float[] a(float[][][][] paramArrayOfFloat)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = (float[][])Array.newInstance(Float.TYPE, new int[] { 1, this.jdField_a_of_type_JavaUtilList.size() });
-      this.jdField_a_of_type_OrgTensorflowLiteInterpreter.run(paramArrayOfFloat, localObject);
-      return localObject[0];
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.LiteClassifier
  * JD-Core Version:    0.7.0.1
  */

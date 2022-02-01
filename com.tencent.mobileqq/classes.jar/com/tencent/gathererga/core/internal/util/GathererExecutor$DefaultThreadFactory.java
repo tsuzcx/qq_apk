@@ -6,10 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GathererExecutor$DefaultThreadFactory
   implements ThreadFactory
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger b = new AtomicInteger(1);
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
   public GathererExecutor$DefaultThreadFactory()
   {
@@ -19,20 +19,20 @@ public class GathererExecutor$DefaultThreadFactory
     } else {
       localObject = Thread.currentThread().getThreadGroup();
     }
-    this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+    this.b = ((ThreadGroup)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("gatherer-");
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    ((StringBuilder)localObject).append(a.getAndIncrement());
     ((StringBuilder)localObject).append("-thread");
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    this.d = ((StringBuilder)localObject).toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    ThreadGroup localThreadGroup = this.jdField_a_of_type_JavaLangThreadGroup;
+    ThreadGroup localThreadGroup = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(this.b.getAndIncrement());
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.c.getAndIncrement());
     paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
@@ -45,7 +45,7 @@ public class GathererExecutor$DefaultThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.GathererExecutor.DefaultThreadFactory
  * JD-Core Version:    0.7.0.1
  */

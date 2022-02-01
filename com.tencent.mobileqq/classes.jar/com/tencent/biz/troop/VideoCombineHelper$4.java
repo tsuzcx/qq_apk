@@ -39,12 +39,12 @@ class VideoCombineHelper$4
     localArrayList.add(((File)localObject2).getAbsolutePath());
     localArrayList.add(((File)localObject3).getAbsolutePath());
     localArrayList.add(((File)localObject1).getAbsolutePath());
-    new VideoCombineHelper.CombineTask(this.this$0, new VideoCombineHelper.4.1(this), "key", localArrayList, ((File)localObject5).getAbsolutePath(), HardCodeUtil.a(2131715867)).a();
+    new VideoCombineHelper.CombineTask(this.this$0, new VideoCombineHelper.4.1(this), "key", localArrayList, ((File)localObject5).getAbsolutePath(), HardCodeUtil.a(2131913324)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.4
  * JD-Core Version:    0.7.0.1
  */

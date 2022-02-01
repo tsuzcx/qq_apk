@@ -19,34 +19,34 @@ class ConfigServlet$7
     try
     {
       Object localObject;
-      if (HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
+      if (HttpDownloadUtil.download(this.a, this.b, this.c))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("file download succeed. url=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.b);
           QLog.d("nearby_aio_operation_gray_tips", 2, ((StringBuilder)localObject).toString());
         }
-        localObject = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile);
-        if ((StringUtil.a(this.b)) || ((localObject != null) && (this.b.equals(((String)localObject).toLowerCase()))))
+        localObject = MD5.getFileMD5(this.c);
+        if ((StringUtil.isEmpty(this.d)) || ((localObject != null) && (this.d.equals(((String)localObject).toLowerCase()))))
         {
-          localObject = NearbyGrayTipsManager.a(this.jdField_a_of_type_JavaIoFile);
+          localObject = NearbyGrayTipsManager.a(this.c);
           if (localObject != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject);
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.b((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
-            NearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject);
+            this.e.a((NearbyGrayTipsManager.GrayTipsConfig)localObject);
+            this.e.a((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
+            this.e.b((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
+            NearbyGrayTipsManager.b((NearbyGrayTipsManager.GrayTipsConfig)localObject);
           }
-          this.jdField_a_of_type_JavaIoFile.delete();
+          this.c.delete();
         }
       }
       else if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("file download failed. url=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         QLog.d("nearby_aio_operation_gray_tips", 2, ((StringBuilder)localObject).toString());
         return;
       }
@@ -61,7 +61,7 @@ class ConfigServlet$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.7
  * JD-Core Version:    0.7.0.1
  */

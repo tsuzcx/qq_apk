@@ -5,58 +5,58 @@ import android.view.MotionEvent;
 
 public class RotationGestureDetector
 {
-  private float jdField_a_of_type_Float;
-  private final RotationGestureDetector.OnRotationGestureListener jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
+  private final RotationGestureDetector.OnRotationGestureListener a;
+  private float b;
   private float c;
   private float d;
   private float e;
+  private float f;
+  private boolean g;
+  private boolean h;
   
   public RotationGestureDetector(Context paramContext, RotationGestureDetector.OnRotationGestureListener paramOnRotationGestureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener = paramOnRotationGestureListener;
+    this.a = paramOnRotationGestureListener;
   }
   
-  private float a(MotionEvent paramMotionEvent)
+  private float b(MotionEvent paramMotionEvent)
   {
     return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
   }
   
-  private void a()
+  private void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.g)
     {
-      if (Math.abs(this.c - this.d) < 5.0F) {
+      if (Math.abs(this.d - this.e) < 5.0F) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.b(this);
+      this.g = true;
+      this.h = this.a.b(this);
     }
   }
   
-  private boolean a()
+  private void e()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.a(this));
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_b_of_type_Boolean)
+    this.g = false;
+    if (this.h)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector$OnRotationGestureListener.a(this);
-      this.jdField_b_of_type_Boolean = false;
+      this.a.c(this);
+      this.h = false;
     }
+  }
+  
+  private boolean f()
+  {
+    return (this.g) && (this.h) && (this.a.a(this));
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.b;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -64,7 +64,7 @@ public class RotationGestureDetector
     int i = paramMotionEvent.getActionMasked();
     if ((i != 0) && (i != 1))
     {
-      float f;
+      float f1;
       if (i != 2)
       {
         if (i != 3)
@@ -77,59 +77,59 @@ public class RotationGestureDetector
             if (paramMotionEvent.getPointerCount() != 2) {
               break label195;
             }
-            b();
+            e();
             return true;
           }
           if (paramMotionEvent.getPointerCount() != 2) {
             break label195;
           }
-          f = a(paramMotionEvent);
-          this.d = f;
-          this.e = f;
-          this.c = f;
+          f1 = b(paramMotionEvent);
+          this.e = f1;
+          this.f = f1;
+          this.d = f1;
           return true;
         }
       }
       else
       {
-        if ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))) {
+        if ((paramMotionEvent.getPointerCount() < 2) || ((this.g) && (!this.h))) {
           break label195;
         }
-        this.d = a(paramMotionEvent);
-        f = paramMotionEvent.getX(1);
+        this.e = b(paramMotionEvent);
+        f1 = paramMotionEvent.getX(1);
         i = 0;
-        this.jdField_a_of_type_Float = ((f + paramMotionEvent.getX(0)) * 0.5F);
-        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
-        boolean bool = this.jdField_a_of_type_Boolean;
-        a();
-        if ((!bool) || (a())) {
+        this.b = ((f1 + paramMotionEvent.getX(0)) * 0.5F);
+        this.c = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
+        boolean bool = this.g;
+        d();
+        if ((!bool) || (f())) {
           i = 1;
         }
         if (i == 0) {
           break label195;
         }
-        this.e = this.d;
+        this.f = this.e;
         return true;
       }
     }
-    b();
+    e();
     label195:
     return true;
   }
   
   public float b()
   {
-    return this.jdField_b_of_type_Float;
+    return this.c;
   }
   
   public float c()
   {
-    return this.d - this.e;
+    return this.e - this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.detector.RotationGestureDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -8,44 +8,24 @@ import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.List;
 
 public class GroupSearchModelLocalContact
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private ISearchResultModel jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
+  public static final String b = HardCodeUtil.a(2131903349);
   public List<ISearchResultModel> a;
-  private String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705461);
-  }
+  private String c;
+  private int d;
+  private ISearchResultModel e;
   
   public GroupSearchModelLocalContact(List<ISearchResultModel> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return SearchEntryConfigManager.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public ISearchResultModel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
+    this.a = paramList;
+    this.c = paramString;
+    this.d = paramInt;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return b;
   }
   
   public void a(View paramView)
@@ -55,22 +35,37 @@ public class GroupSearchModelLocalContact
   
   public void a(ISearchResultModel paramISearchResultModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = paramISearchResultModel;
+    this.e = paramISearchResultModel;
   }
   
-  public int b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public String b()
+  public String c()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return SearchEntryConfigManager.a("fts_native_contactor_maxnum", 3);
+  }
+  
+  public ISearchResultModel e()
+  {
+    return this.e;
+  }
+  
+  public int f()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelLocalContact
  * JD-Core Version:    0.7.0.1
  */

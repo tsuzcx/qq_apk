@@ -19,7 +19,7 @@ public final class DisplayUtils
 {
   public static final DisplayUtils a = new DisplayUtils();
   
-  private final int[] a(Context paramContext)
+  private final int[] c(Context paramContext)
   {
     paramContext = paramContext.getSystemService("window");
     if (paramContext != null)
@@ -45,7 +45,7 @@ public final class DisplayUtils
   public final int a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return a(paramContext)[0];
+    return c(paramContext)[0];
   }
   
   public final int a(@NotNull Context paramContext, float paramFloat)
@@ -126,12 +126,12 @@ public final class DisplayUtils
   public final int b(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return a(paramContext)[1];
+    return c(paramContext)[1];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

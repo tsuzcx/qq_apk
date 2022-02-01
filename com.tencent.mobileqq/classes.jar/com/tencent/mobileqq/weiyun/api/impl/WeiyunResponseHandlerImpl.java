@@ -62,29 +62,29 @@ public class WeiyunResponseHandlerImpl
     {
       if (sErrorCode == 1127)
       {
-        paramContext = paramContext.getString(2131694494);
+        paramContext = paramContext.getString(2131892177);
         return paramContext;
       }
       if (sErrorCode == 22000)
       {
-        paramContext = paramContext.getString(2131694494);
+        paramContext = paramContext.getString(2131892177);
         return paramContext;
       }
       if ((sErrorCode != 1053) && (sErrorCode != -20001))
       {
         if (sErrorCode == 22081)
         {
-          paramContext = paramContext.getString(2131720303);
+          paramContext = paramContext.getString(2131917938);
           return paramContext;
         }
         if (sErrorCode == 22121)
         {
-          paramContext = paramContext.getString(2131719394);
+          paramContext = paramContext.getString(2131916949);
           return paramContext;
         }
         return null;
       }
-      paramContext = paramContext.getString(2131694495);
+      paramContext = paramContext.getString(2131892178);
       return paramContext;
     }
     finally {}
@@ -192,7 +192,7 @@ public class WeiyunResponseHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunResponseHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

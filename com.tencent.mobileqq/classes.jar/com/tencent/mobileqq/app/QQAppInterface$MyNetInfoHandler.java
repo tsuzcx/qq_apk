@@ -3,6 +3,7 @@ package com.tencent.mobileqq.app;
 import android.os.Message;
 import com.tencent.biz.now.NowVideoController;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.NetStateTipsObserver;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
@@ -77,17 +78,18 @@ class QQAppInterface$MyNetInfoHandler
       }
       localObject = ((QQAppInterface)mApp.get()).getHandler(Conversation.class);
       if (localObject != null) {
-        ((MqqHandler)localObject).obtainMessage(10003, QQAppInterface.access$800((QQAppInterface)mApp.get()).getString(2131692183)).sendToTarget();
+        ((MqqHandler)localObject).obtainMessage(10003, QQAppInterface.access$900((QQAppInterface)mApp.get()).getString(2131889169)).sendToTarget();
       }
+      ((QQAppInterface)mApp.get()).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       localObject = ((QQAppInterface)mApp.get()).getHandler(ChatHistoryC2CAllFragment.class);
       if (localObject != null) {
         ((MqqHandler)localObject).obtainMessage(28, null).sendToTarget();
       }
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)mApp.get()).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(1);
-      if (QQAppInterface.access$900((QQAppInterface)mApp.get()) != null) {
-        QQAppInterface.access$1000((QQAppInterface)mApp.get()).onNetMobile2None();
+      if (QQAppInterface.access$1000((QQAppInterface)mApp.get()) != null) {
+        QQAppInterface.access$1100((QQAppInterface)mApp.get()).onNetMobile2None();
       }
     }
   }
@@ -111,11 +113,12 @@ class QQAppInterface$MyNetInfoHandler
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(10003, null).sendToTarget();
       }
+      ((QQAppInterface)localObject).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(1);
-      if (QQAppInterface.access$600((QQAppInterface)localObject) != null) {
-        QQAppInterface.access$700((QQAppInterface)localObject).onNetMobile2Wifi(paramString);
+      if (QQAppInterface.access$700((QQAppInterface)localObject) != null) {
+        QQAppInterface.access$800((QQAppInterface)localObject).onNetMobile2Wifi(paramString);
       }
       ((QQAppInterface)localObject).tryReuploadQfavItems();
       paramString = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
@@ -149,6 +152,8 @@ class QQAppInterface$MyNetInfoHandler
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(10003, null).sendToTarget();
       }
+      QQAppInterface.access$000((QQAppInterface)localObject);
+      ((QQAppInterface)localObject).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       localMqqHandler = ((QQAppInterface)localObject).getHandler(ChatHistory.class);
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(6, null).sendToTarget();
@@ -158,10 +163,10 @@ class QQAppInterface$MyNetInfoHandler
         localMqqHandler.obtainMessage(27).sendToTarget();
       }
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(2);
-      if (QQAppInterface.access$000((QQAppInterface)localObject) != null) {
-        QQAppInterface.access$100((QQAppInterface)localObject).onNetNone2Mobile(paramString);
+      if (QQAppInterface.access$100((QQAppInterface)localObject) != null) {
+        QQAppInterface.access$200((QQAppInterface)localObject).onNetNone2Mobile(paramString);
       }
       paramString = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
       if (paramString != null) {
@@ -175,7 +180,7 @@ class QQAppInterface$MyNetInfoHandler
         }
         paramString.obtainMessage(4).sendToTarget();
       }
-      NowVideoController.a().b();
+      NowVideoController.a().c();
     }
   }
   
@@ -194,6 +199,8 @@ class QQAppInterface$MyNetInfoHandler
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(10003, null).sendToTarget();
       }
+      QQAppInterface.access$000((QQAppInterface)localObject);
+      ((QQAppInterface)localObject).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       localMqqHandler = ((QQAppInterface)localObject).getHandler(ChatHistory.class);
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(6, null).sendToTarget();
@@ -203,10 +210,10 @@ class QQAppInterface$MyNetInfoHandler
         localMqqHandler.obtainMessage(27).sendToTarget();
       }
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(1);
-      if (QQAppInterface.access$400((QQAppInterface)localObject) != null) {
-        QQAppInterface.access$500((QQAppInterface)localObject).onNetNone2Wifi(paramString);
+      if (QQAppInterface.access$500((QQAppInterface)localObject) != null) {
+        QQAppInterface.access$600((QQAppInterface)localObject).onNetNone2Wifi(paramString);
       }
       ((QQAppInterface)localObject).tryReuploadQfavItems();
       paramString = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
@@ -228,9 +235,9 @@ class QQAppInterface$MyNetInfoHandler
   public void onNetWifi2Mobile(String paramString)
   {
     onNetChange4RawPhoto(1, "onNetWifi2Mobile");
-    Object localObject = PresendPicMgrService.a();
+    Object localObject = PresendPicMgrService.e();
     if (localObject != null) {
-      ((PresendPicMgrService)localObject).b();
+      ((PresendPicMgrService)localObject).f();
     }
     ReportLog.a("Network", "onNetWifi2Mobile()");
     localObject = mApp;
@@ -248,11 +255,12 @@ class QQAppInterface$MyNetInfoHandler
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(10003, null).sendToTarget();
       }
+      ((QQAppInterface)localObject).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(2);
-      if (QQAppInterface.access$200((QQAppInterface)localObject) != null) {
-        QQAppInterface.access$300((QQAppInterface)localObject).onNetWifi2Mobile(paramString);
+      if (QQAppInterface.access$300((QQAppInterface)localObject) != null) {
+        QQAppInterface.access$400((QQAppInterface)localObject).onNetWifi2Mobile(paramString);
       }
       paramString = (IEarlyDownloadService)((QQAppInterface)localObject).getRuntimeService(IEarlyDownloadService.class, "");
       if (paramString != null) {
@@ -266,7 +274,7 @@ class QQAppInterface$MyNetInfoHandler
         }
         paramString.obtainMessage(4).sendToTarget();
       }
-      NowVideoController.a().b();
+      NowVideoController.a().c();
     }
   }
   
@@ -287,24 +295,25 @@ class QQAppInterface$MyNetInfoHandler
       }
       localMqqHandler = ((QQAppInterface)localObject).getHandler(Conversation.class);
       if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10003, QQAppInterface.access$1100((QQAppInterface)localObject).getString(2131692183)).sendToTarget();
+        localMqqHandler.obtainMessage(10003, QQAppInterface.access$1200((QQAppInterface)localObject).getString(2131889169)).sendToTarget();
       }
+      ((QQAppInterface)localObject).notifyObservers(NetStateTipsObserver.class, 1, true, null);
       localMqqHandler = ((QQAppInterface)localObject).getHandler(ChatHistoryC2CAllFragment.class);
       if (localMqqHandler != null) {
         localMqqHandler.obtainMessage(28, null).sendToTarget();
       }
       FMTSrvAddrProvider.getInstance().clear();
-      SosoSrvAddrProvider.a().a();
+      SosoSrvAddrProvider.a().b();
       ((HttpCommunicator)((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).getCommunicator()).setCouncurrentNumber(1);
-      if (QQAppInterface.access$1200((QQAppInterface)localObject) != null) {
-        QQAppInterface.access$1300((QQAppInterface)localObject).onNetWifi2None();
+      if (QQAppInterface.access$1300((QQAppInterface)localObject) != null) {
+        QQAppInterface.access$1400((QQAppInterface)localObject).onNetWifi2None();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.MyNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

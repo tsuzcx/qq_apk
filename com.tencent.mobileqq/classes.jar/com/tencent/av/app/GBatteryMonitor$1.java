@@ -14,9 +14,9 @@ class GBatteryMonitor$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("level", 0);
-    if ((GBatteryMonitor.a(this.a) != null) && (GBatteryMonitor.a(this.a).a != null))
+    if ((GBatteryMonitor.a(this.a) != null) && (GBatteryMonitor.a(this.a).e != null))
     {
-      ((VideoNodeReporter)GBatteryMonitor.a(this.a).a(4)).a(i);
+      ((VideoNodeReporter)GBatteryMonitor.a(this.a).c(4)).a(i);
       VideoNodeManager.a(18, i);
     }
   }

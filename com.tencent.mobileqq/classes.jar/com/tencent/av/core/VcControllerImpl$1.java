@@ -8,7 +8,7 @@ class VcControllerImpl$1
   public void run()
   {
     if ((VcControllerImpl.access$000(this.this$0) != 0) && (VcControllerImpl.access$100(this.this$0) != null)) {
-      VcControllerImpl.access$100(this.this$0).g(VcControllerImpl.access$200(this.this$0));
+      VcControllerImpl.access$100(this.this$0).i(VcControllerImpl.access$200(this.this$0));
     }
   }
 }

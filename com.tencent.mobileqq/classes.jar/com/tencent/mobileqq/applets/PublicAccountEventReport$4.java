@@ -11,7 +11,7 @@ final class PublicAccountEventReport$4
   
   public void run()
   {
-    Object localObject = PublicAccountEventReport.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = PublicAccountEventReport.b(this.a);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       int i = (int)(System.currentTimeMillis() / 1000L);
@@ -19,24 +19,24 @@ final class PublicAccountEventReport$4
       localStringBuilder.append(this.b);
       localStringBuilder.append("_");
       localStringBuilder.append(i);
-      localObject = new TianShuReportData(localStringBuilder.toString(), 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
-      ((TianShuReportData)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((TianShuReportData)localObject).jdField_f_of_type_JavaLangString = "vab_push";
-      if (this.jdField_a_of_type_Boolean) {
+      localObject = new TianShuReportData(localStringBuilder.toString(), 1, this.c, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
+      ((TianShuReportData)localObject).s = this.a;
+      ((TianShuReportData)localObject).g = "vab_push";
+      if (this.d) {
         i = 6;
       } else {
         i = -1;
       }
-      ((TianShuReportData)localObject).jdField_f_of_type_Int = i;
-      ((TianShuReportData)localObject).m = this.c;
-      ((TianShuReportData)localObject).k = this.d;
+      ((TianShuReportData)localObject).r = i;
+      ((TianShuReportData)localObject).t = this.e;
+      ((TianShuReportData)localObject).l = this.f;
       TianShuManager.getInstance().report((TianShuReportData)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.4
  * JD-Core Version:    0.7.0.1
  */

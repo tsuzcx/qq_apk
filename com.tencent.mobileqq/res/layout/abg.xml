@@ -10,9 +10,9 @@
             </LinearLayout>
             <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/cq1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="全屏模式标题" android:layout_weight="1.0" android:lineSpacingExtra="1.0dip" />
         </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center|right" android:orientation="vertical" android:id="@id/onj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip">
-            <ImageView android:layout_gravity="center_horizontal" android:id="@id/oni" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/ig2" android:scaleType="centerCrop" />
-            <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/gg" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yfc" android:shadowColor="#33000000" android:shadowDy="4.0" android:shadowRadius="4.0" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center|right" android:orientation="vertical" android:id="@id/qxf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/qxe" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/jca" android:scaleType="centerCrop" />
+            <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/gg" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/z_q" android:shadowColor="#33000000" android:shadowDy="4.0" android:shadowRadius="4.0" />
         </LinearLayout>
         <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsInterceptTouchLayout android:layout_gravity="bottom" android:id="@id/acm" android:layout_width="fill_parent" android:layout_height="90.0dip">
             <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentBottom="true">

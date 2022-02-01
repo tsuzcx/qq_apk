@@ -24,42 +24,22 @@ import mqq.manager.TicketManager;
 
 public class ODWebCookieManager
 {
-  private static ODWebCookieManager jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odODWebCookieManager = new ODWebCookieManager();
-  private String jdField_a_of_type_JavaLangString = "0";
+  private static ODWebCookieManager a = new ODWebCookieManager();
+  private String b = "0";
   
   public ODWebCookieManager()
   {
-    a();
+    b();
   }
   
   public static ODWebCookieManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odODWebCookieManager;
+    return a;
   }
   
-  private List<String> a(String paramString)
+  private void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = UriUtil.a(paramString);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(";Domain=");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append(";Path=/;");
-    paramString = ((StringBuilder)localObject).toString();
-    localObject = DeviceInfoUtil.c();
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.jdField_a_of_type_JavaLangString, paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(406), paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", localObject, paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
-    return localArrayList;
-  }
-  
-  private void a()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "0"))) {
+    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.equals(this.b, "0"))) {
       return;
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
@@ -69,7 +49,27 @@ public class ODWebCookieManager
     localTicketManager.getPskey((String)localObject, 16L, new String[] { "now.qq.com" }, local1);
   }
   
-  private List<String> b(String paramString)
+  private List<String> c(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = UriUtil.a(paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(";Domain=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(";Path=/;");
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = DeviceInfoUtil.e();
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.b, paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(406), paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", localObject, paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
+    return localArrayList;
+  }
+  
+  private List<String> d(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     paramString = UriUtil.a(paramString);
@@ -80,9 +80,9 @@ public class ODWebCookieManager
     paramString = ((StringBuilder)localObject).toString();
     localObject = DeviceUtil.getDeviceId(BaseApplicationImpl.getContext());
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    String str1 = BusinessManager.a.a().e;
-    String str2 = DeviceInfoUtil.c();
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.jdField_a_of_type_JavaLangString, paramString }));
+    String str1 = BusinessManager.a.b().j;
+    String str2 = DeviceInfoUtil.e();
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.b, paramString }));
     Locale localLocale = Locale.ENGLISH;
     Integer localInteger = Integer.valueOf(405);
     localArrayList.add(String.format(localLocale, "%s=%d%s", new Object[] { "__client_type", localInteger, paramString }));
@@ -129,7 +129,7 @@ public class ODWebCookieManager
     CookieSyncManager.createInstance(BaseApplicationImpl.getContext());
     CookieManager localCookieManager = CookieManager.getInstance();
     localCookieManager.setAcceptCookie(true);
-    Iterator localIterator = b(paramString).iterator();
+    Iterator localIterator = d(paramString).iterator();
     while (localIterator.hasNext()) {
       localCookieManager.setCookie(paramString, (String)localIterator.next());
     }
@@ -142,7 +142,7 @@ public class ODWebCookieManager
     CookieSyncManager.createInstance(BaseApplicationImpl.getContext());
     CookieManager localCookieManager = CookieManager.getInstance();
     localCookieManager.setAcceptCookie(true);
-    Iterator localIterator = a(paramString).iterator();
+    Iterator localIterator = c(paramString).iterator();
     while (localIterator.hasNext()) {
       localCookieManager.setCookie(paramString, (String)localIterator.next());
     }
@@ -152,7 +152,7 @@ public class ODWebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.ODWebCookieManager
  * JD-Core Version:    0.7.0.1
  */

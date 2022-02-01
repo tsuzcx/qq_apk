@@ -13,21 +13,20 @@ import mqq.app.AppRuntime;
 public final class PreDownloadParams
   implements BaseConstants.NetType
 {
-  protected static boolean a;
-  protected static PreDownloadParams.Params[] a;
+  protected static PreDownloadParams.Params[] a = new PreDownloadParams.Params[4];
+  protected static boolean b;
   
   static
   {
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params = new PreDownloadParams.Params[4];
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[1] = new PreDownloadParams.Params();
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[2] = new PreDownloadParams.Params();
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[3] = new PreDownloadParams.Params();
+    a[1] = new PreDownloadParams.Params();
+    a[2] = new PreDownloadParams.Params();
+    a[3] = new PreDownloadParams.Params();
   }
   
   public static PreDownloadParams.Params a(AppRuntime paramAppRuntime, int paramInt)
   {
     a(paramAppRuntime, false);
-    return jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[paramInt];
+    return a[paramInt];
   }
   
   protected static String a(AppRuntime paramAppRuntime)
@@ -97,11 +96,11 @@ public final class PreDownloadParams
   
   public static void a()
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params = new PreDownloadParams.Params[4];
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[1] = new PreDownloadParams.Params();
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[2] = new PreDownloadParams.Params();
-    jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[3] = new PreDownloadParams.Params();
+    b = false;
+    a = new PreDownloadParams.Params[4];
+    a[1] = new PreDownloadParams.Params();
+    a[2] = new PreDownloadParams.Params();
+    a[3] = new PreDownloadParams.Params();
   }
   
   protected static void a(String paramString, PreDownloadParams.Params paramParams)
@@ -112,7 +111,7 @@ public final class PreDownloadParams
       if (paramString.length < 2) {
         return;
       }
-      paramParams.jdField_a_of_type_Int = Integer.parseInt(paramString[0]);
+      paramParams.a = Integer.parseInt(paramString[0]);
       int i = 1;
       while (i < paramString.length)
       {
@@ -125,7 +124,7 @@ public final class PreDownloadParams
         }
         int j = Integer.parseInt(arrayOfString[0]);
         int k = Integer.parseInt(arrayOfString[1]);
-        paramParams.jdField_a_of_type_ArrayOfInt[j] = k;
+        paramParams.b[j] = k;
         i += 1;
       }
     }
@@ -137,14 +136,14 @@ public final class PreDownloadParams
     ((StringBuilder)localObject1).append("##");
     ((StringBuilder)localObject1).append(paramInt);
     ((StringBuilder)localObject1).append(':');
-    ((StringBuilder)localObject1).append(paramParams.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(paramParams.a);
     int i = 0;
     while (i <= 5)
     {
       ((StringBuilder)localObject1).append('#');
       ((StringBuilder)localObject1).append(i);
       ((StringBuilder)localObject1).append('_');
-      ((StringBuilder)localObject1).append(paramParams.jdField_a_of_type_ArrayOfInt[i]);
+      ((StringBuilder)localObject1).append(paramParams.b[i]);
       i += 1;
     }
     paramAppRuntime = paramAppRuntime.getCurrentAccountUin();
@@ -214,10 +213,10 @@ public final class PreDownloadParams
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    if (((jdField_a_of_type_Boolean) && (!paramBoolean)) || (paramAppRuntime == null)) {
+    if (((b) && (!paramBoolean)) || (paramAppRuntime == null)) {
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    b = true;
     try
     {
       paramAppRuntime = a(paramAppRuntime);
@@ -247,9 +246,9 @@ public final class PreDownloadParams
             if ((localObject != null) && (localObject.length >= 2))
             {
               int j = Integer.parseInt(localObject[0]);
-              if ((j >= 1) && (j < jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params.length))
+              if ((j >= 1) && (j < a.length))
               {
-                PreDownloadParams.Params localParams = jdField_a_of_type_ArrayOfComTencentMobileqqPttPreopPreDownloadParams$Params[j];
+                PreDownloadParams.Params localParams = a[j];
                 a(localObject[1], localParams);
               }
             }
@@ -264,7 +263,7 @@ public final class PreDownloadParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PreDownloadParams
  * JD-Core Version:    0.7.0.1
  */

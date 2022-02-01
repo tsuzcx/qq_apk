@@ -81,7 +81,7 @@ public abstract class IAVServiceForQQ$Stub
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
-        paramParcel1 = a(paramParcel1.createByteArray());
+        paramParcel1 = d(paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {

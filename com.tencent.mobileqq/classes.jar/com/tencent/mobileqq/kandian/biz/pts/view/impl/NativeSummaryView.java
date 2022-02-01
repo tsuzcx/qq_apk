@@ -51,8 +51,8 @@ public class NativeSummaryView
   extends ReadInJoyYAFolderTextView
   implements IView, Observer<CharSequence>
 {
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
-  private Observable<CharSequence> jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
+  CmpCtxt d = new CmpCtxt();
+  private Observable<CharSequence> e;
   
   public NativeSummaryView(Context paramContext)
   {
@@ -61,10 +61,10 @@ public class NativeSummaryView
   
   private static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, SpannableStringBuilder paramSpannableStringBuilder, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
   {
-    String str = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_JavaLangString;
-    if (RIJFeedsType.a(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo))
+    String str = paramAbsBaseArticleInfo.mSocialFeedInfo.s.f;
+    if (RIJFeedsType.a(paramAbsBaseArticleInfo.mSocialFeedInfo.s))
     {
-      a(paramAbsBaseArticleInfo, paramSpannableStringBuilder, paramRefreshUserInfoCallBack);
+      b(paramAbsBaseArticleInfo, paramSpannableStringBuilder, paramRefreshUserInfoCallBack);
       return 4;
     }
     if ((CmpCtxt.c(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo))) {
@@ -80,8 +80,8 @@ public class NativeSummaryView
   
   private static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, IReadInJoyModel paramIReadInJoyModel, SpannableStringBuilder paramSpannableStringBuilder, boolean paramBoolean)
   {
-    int i = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
-    if (paramIReadInJoyModel.a().isPGCShortContent())
+    int i = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
+    if (paramIReadInJoyModel.k().isPGCShortContent())
     {
       a(paramAbsBaseArticleInfo, paramSpannableStringBuilder);
       return 7;
@@ -108,50 +108,31 @@ public class NativeSummaryView
     return 1;
   }
   
-  private static String a(@NotNull IReadInJoyModel paramIReadInJoyModel)
-  {
-    if (paramIReadInJoyModel.d() == 33) {
-      return HardCodeUtil.a(2131707115);
-    }
-    if ((!CmpCtxt.e(paramIReadInJoyModel)) && (!CmpCtxt.g(paramIReadInJoyModel)) && (!CmpCtxt.h(paramIReadInJoyModel)))
-    {
-      if ((!CmpCtxt.f(paramIReadInJoyModel)) && (!CmpCtxt.i(paramIReadInJoyModel)))
-      {
-        if (CmpCtxt.a(paramIReadInJoyModel)) {
-          return HardCodeUtil.a(2131707112);
-        }
-        return HardCodeUtil.a(2131707110);
-      }
-      return HardCodeUtil.a(2131707111);
-    }
-    return HardCodeUtil.a(2131707113);
-  }
-  
   public static void a(int paramInt, IReadInJoyModel paramIReadInJoyModel, SpannableStringBuilder paramSpannableStringBuilder, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Object localObject = paramIReadInJoyModel.a();
+    Object localObject = paramIReadInJoyModel.k();
     if (!RIJItemViewTypeUtils.h((AbsBaseArticleInfo)localObject)) {
       localSpannableStringBuilder.append("@");
     }
     long l1;
-    if ((!RIJItemViewTypeUtils.c((AbsBaseArticleInfo)localObject)) && (!RIJItemViewTypeUtils.s((AbsBaseArticleInfo)localObject)) && (!RIJItemViewTypeUtils.a(paramIReadInJoyModel.d())) && (!RIJItemViewTypeUtils.h((AbsBaseArticleInfo)localObject)))
+    if ((!RIJItemViewTypeUtils.c((AbsBaseArticleInfo)localObject)) && (!RIJItemViewTypeUtils.s((AbsBaseArticleInfo)localObject)) && (!RIJItemViewTypeUtils.a(paramIReadInJoyModel.o())) && (!RIJItemViewTypeUtils.h((AbsBaseArticleInfo)localObject)))
     {
       if ((RIJItemViewTypeUtils.e((AbsBaseArticleInfo)localObject)) && (RIJItemViewTypeUtils.l((AbsBaseArticleInfo)localObject)))
       {
-        l1 = ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Long;
+        l1 = ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.s.e;
         paramRefreshUserInfoCallBack = ReadInJoyUserInfoModule.a(l1, paramRefreshUserInfoCallBack);
         if (paramRefreshUserInfoCallBack != null) {
           paramRefreshUserInfoCallBack = paramRefreshUserInfoCallBack.nick;
         } else {
-          paramRefreshUserInfoCallBack = ReadInJoyUserInfoModule.a();
+          paramRefreshUserInfoCallBack = ReadInJoyUserInfoModule.d();
         }
         if (!TextUtils.isEmpty(paramRefreshUserInfoCallBack))
         {
           localSpannableStringBuilder.append(RIJStringUtils.a(paramRefreshUserInfoCallBack));
-          localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.a(), paramInt), 0, localSpannableStringBuilder.length(), 33);
+          localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.k(), paramInt), 0, localSpannableStringBuilder.length(), 33);
         }
-        if (RIJFeedsType.x((AbsBaseArticleInfo)localObject)) {
+        if (RIJFeedsType.D((AbsBaseArticleInfo)localObject)) {
           localSpannableStringBuilder.append(" 回答了");
         }
         localSpannableStringBuilder.append(": ");
@@ -159,23 +140,23 @@ public class NativeSummaryView
     }
     else
     {
-      paramRefreshUserInfoCallBack = paramIReadInJoyModel.a().mSubscribeName;
-      int i = paramIReadInJoyModel.d();
+      paramRefreshUserInfoCallBack = paramIReadInJoyModel.k().mSubscribeName;
+      int i = paramIReadInJoyModel.o();
       l1 = 0L;
       long l2;
-      if ((i == 33) && (paramIReadInJoyModel.a().mSocialFeedInfo != null) && (paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo != null))
+      if ((i == 33) && (paramIReadInJoyModel.k().mSocialFeedInfo != null) && (paramIReadInJoyModel.k().mSocialFeedInfo.v != null))
       {
-        if (paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.b == 0L)
+        if (paramIReadInJoyModel.k().mSocialFeedInfo.v.c == 0L)
         {
-          localObject = paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_JavaLangString;
+          localObject = paramIReadInJoyModel.k().mSocialFeedInfo.v.d;
         }
         else
         {
-          localObject = String.valueOf(paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.b);
-          if (RIJQQAppInterfaceUtil.a()) {
-            paramRefreshUserInfoCallBack = ContactUtils.a((QQAppInterface)ReadInJoyUtils.a(), (String)localObject, true);
+          localObject = String.valueOf(paramIReadInJoyModel.k().mSocialFeedInfo.v.c);
+          if (RIJQQAppInterfaceUtil.g()) {
+            paramRefreshUserInfoCallBack = ContactUtils.a((QQAppInterface)ReadInJoyUtils.b(), (String)localObject, true);
           } else {
-            paramRefreshUserInfoCallBack = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.a()).a(paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.b);
+            paramRefreshUserInfoCallBack = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.u()).e(paramIReadInJoyModel.k().mSocialFeedInfo.v.c);
           }
         }
         localSpannableStringBuilder.append(paramRefreshUserInfoCallBack);
@@ -188,11 +169,11 @@ public class NativeSummaryView
         {
           paramRefreshUserInfoCallBack.printStackTrace();
         }
-        localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.a(), paramInt), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.k(), paramInt), 0, localSpannableStringBuilder.length(), 33);
       }
-      else if (paramIReadInJoyModel.a().mAccountLess == 0)
+      else if (paramIReadInJoyModel.k().mAccountLess == 0)
       {
-        localObject = paramIReadInJoyModel.a().mSubscribeID;
+        localObject = paramIReadInJoyModel.k().mSubscribeID;
         try
         {
           l2 = Long.valueOf((String)localObject).longValue();
@@ -203,7 +184,7 @@ public class NativeSummaryView
           localNumberFormatException.printStackTrace();
         }
         localSpannableStringBuilder.append(paramRefreshUserInfoCallBack);
-        localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.a(), paramInt), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new UserSpan(l1, "2", paramIReadInJoyModel.k(), paramInt), 0, localSpannableStringBuilder.length(), 33);
       }
       else
       {
@@ -227,24 +208,9 @@ public class NativeSummaryView
     paramSpannableStringBuilder.append(paramAbsBaseArticleInfo);
   }
   
-  private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (!paramAbsBaseArticleInfo.isPGCShortContent()) {
-      setSpanText(HardCodeUtil.a(2131707114));
-    }
-    setMaxLines(a(paramAbsBaseArticleInfo));
-    setMoreSpan(new NativeSummaryView.MoreSpan(this, paramAbsBaseArticleInfo, this.jdField_a_of_type_Int));
-    if ((RIJFeedsType.s(paramAbsBaseArticleInfo)) || (RIJFeedsType.t(paramAbsBaseArticleInfo)))
-    {
-      setSpanText("");
-      setMoreSpan(null);
-    }
-    setCustomViewLinkTextColor(this.jdField_a_of_type_Int);
-  }
-  
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    if ((RIJFeedsType.j(paramAbsBaseArticleInfo)) || (RIJFeedsType.k(paramAbsBaseArticleInfo)))
+    if ((RIJFeedsType.p(paramAbsBaseArticleInfo)) || (RIJFeedsType.q(paramAbsBaseArticleInfo)))
     {
       RIJJumpUtils.a(paramContext, paramAbsBaseArticleInfo, 1, false, 4, false);
       RIJFrameworkReportManager.b(paramAbsBaseArticleInfo, (int)paramAbsBaseArticleInfo.mChannelID);
@@ -254,8 +220,8 @@ public class NativeSummaryView
   
   private static void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString))) {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString;
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.t.c))) {
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.t.c;
     } else if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mTitle))) {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mTitle;
     } else {
@@ -264,41 +230,33 @@ public class NativeSummaryView
     paramSpannableStringBuilder.append(paramAbsBaseArticleInfo);
   }
   
-  private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, SpannableStringBuilder paramSpannableStringBuilder, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
-  {
-    paramAbsBaseArticleInfo = SocializeFeedsInfoUtils.a(paramAbsBaseArticleInfo, "2", paramRefreshUserInfoCallBack, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a);
-    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo)) {
-      paramSpannableStringBuilder.append(paramAbsBaseArticleInfo);
-    }
-  }
-  
   private static void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SpannableStringBuilder paramSpannableStringBuilder, @NotNull IReadInJoyModel paramIReadInJoyModel)
   {
-    Object localObject1 = paramIReadInJoyModel.a().mSummary;
-    if ((CmpCtxt.f(paramIReadInJoyModel)) || (CmpCtxt.i(paramIReadInJoyModel))) {
-      localObject1 = paramIReadInJoyModel.a().mTitle;
+    Object localObject1 = paramIReadInJoyModel.k().mSummary;
+    if ((CmpCtxt.g(paramIReadInJoyModel)) || (CmpCtxt.j(paramIReadInJoyModel))) {
+      localObject1 = paramIReadInJoyModel.k().mTitle;
     }
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = a(paramIReadInJoyModel);
+      localObject2 = c(paramIReadInJoyModel);
     }
     paramSpannableStringBuilder.append((CharSequence)localObject2);
-    if ((paramIReadInJoyModel.d() == 33) && (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)))
+    if ((paramIReadInJoyModel.o() == 33) && (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)))
     {
-      paramIReadInJoyModel = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0);
+      paramIReadInJoyModel = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.v.g.get(0);
       localObject1 = paramSpannableStringBuilder.append("“");
-      boolean bool = TextUtils.isEmpty(paramIReadInJoyModel.c);
+      boolean bool = TextUtils.isEmpty(paramIReadInJoyModel.d);
       paramSpannableStringBuilder = "";
       if (bool) {
         paramAbsBaseArticleInfo = "";
       } else {
-        paramAbsBaseArticleInfo = paramIReadInJoyModel.c;
+        paramAbsBaseArticleInfo = paramIReadInJoyModel.d;
       }
       localObject1 = ((SpannableStringBuilder)localObject1).append(paramAbsBaseArticleInfo);
-      if (TextUtils.isEmpty(paramIReadInJoyModel.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramIReadInJoyModel.b)) {
         paramAbsBaseArticleInfo = paramSpannableStringBuilder;
       } else {
-        paramAbsBaseArticleInfo = paramIReadInJoyModel.jdField_a_of_type_JavaLangString;
+        paramAbsBaseArticleInfo = paramIReadInJoyModel.b;
       }
       ((SpannableStringBuilder)localObject1).append(paramAbsBaseArticleInfo).append("”");
     }
@@ -306,31 +264,31 @@ public class NativeSummaryView
   
   private void a(IReadInJoyModel paramIReadInJoyModel)
   {
-    if (paramIReadInJoyModel.a() == null) {
+    if (paramIReadInJoyModel.k() == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable = paramIReadInJoyModel.a().articleViewModel.b();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a(this);
-    setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a());
-    a(paramIReadInJoyModel.a());
+    this.e = paramIReadInJoyModel.k().articleViewModel.d();
+    this.e.a(this);
+    setText((CharSequence)this.e.a());
+    setTextWhetherHaveNoMoreData(paramIReadInJoyModel.k());
   }
   
   public static void a(IReadInJoyModel paramIReadInJoyModel, SpannableStringBuilder paramSpannableStringBuilder, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if (ArticleInfoHelper.a(localAbsBaseArticleInfo))
     {
-      paramSpannableStringBuilder.append(localAbsBaseArticleInfo.mSocialFeedInfo.e);
+      paramSpannableStringBuilder.append(localAbsBaseArticleInfo.mSocialFeedInfo.D);
       return;
     }
-    boolean bool = a(paramIReadInJoyModel);
+    boolean bool = b(paramIReadInJoyModel);
     if (RIJItemViewTypeUtils.h(localAbsBaseArticleInfo))
     {
       a(paramSpannableStringBuilder, localAbsBaseArticleInfo);
     }
     else
     {
-      if ((RIJItemViewTypeUtils.c(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.s(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.a(paramIReadInJoyModel.d()))) {
+      if ((RIJItemViewTypeUtils.c(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.s(localAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.a(paramIReadInJoyModel.o()))) {
         break label116;
       }
       if ((RIJItemViewTypeUtils.e(localAbsBaseArticleInfo)) && (RIJItemViewTypeUtils.l(localAbsBaseArticleInfo)))
@@ -356,34 +314,20 @@ public class NativeSummaryView
   
   private static void a(String paramString, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    paramSpannableStringBuilder.append(new QQText(EmotionCodecUtils.b(paramString), 3, 16));
-  }
-  
-  private static boolean a(IReadInJoyModel paramIReadInJoyModel)
-  {
-    boolean bool = false;
-    if (paramIReadInJoyModel != null)
-    {
-      int i = paramIReadInJoyModel.d();
-      if ((i != 27) && (i != 28) && (i != 49) && (i != 62) && (i != 63)) {
-        return false;
-      }
-      bool = true;
-    }
-    return bool;
+    paramSpannableStringBuilder.append(new QQText(EmotionCodecUtils.c(paramString), 3, 16));
   }
   
   private static void b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull SpannableStringBuilder paramSpannableStringBuilder)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString != null))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.c != null))
     {
-      localSpannableStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString);
+      localSpannableStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.t.c);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("Comment String: ");
-        localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramAbsBaseArticleInfo.mSocialFeedInfo.t.c);
         QLog.d("Q.readinjoy.ui", 2, localStringBuilder.toString());
       }
     }
@@ -392,6 +336,62 @@ public class NativeSummaryView
       localSpannableStringBuilder.append(paramAbsBaseArticleInfo.mTitle);
     }
     paramSpannableStringBuilder.append(localSpannableStringBuilder);
+  }
+  
+  private static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, SpannableStringBuilder paramSpannableStringBuilder, IReadInJoyUserInfoModule.RefreshUserInfoCallBack paramRefreshUserInfoCallBack)
+  {
+    paramAbsBaseArticleInfo = SocializeFeedsInfoUtils.a(paramAbsBaseArticleInfo, "2", paramRefreshUserInfoCallBack, paramAbsBaseArticleInfo.mSocialFeedInfo.s.h.a);
+    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo)) {
+      paramSpannableStringBuilder.append(paramAbsBaseArticleInfo);
+    }
+  }
+  
+  private static boolean b(IReadInJoyModel paramIReadInJoyModel)
+  {
+    boolean bool = false;
+    if (paramIReadInJoyModel != null)
+    {
+      int i = paramIReadInJoyModel.o();
+      if ((i != 27) && (i != 28) && (i != 49) && (i != 62) && (i != 63)) {
+        return false;
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static String c(@NotNull IReadInJoyModel paramIReadInJoyModel)
+  {
+    if (paramIReadInJoyModel.o() == 33) {
+      return HardCodeUtil.a(2131904953);
+    }
+    if ((!CmpCtxt.f(paramIReadInJoyModel)) && (!CmpCtxt.h(paramIReadInJoyModel)) && (!CmpCtxt.i(paramIReadInJoyModel)))
+    {
+      if ((!CmpCtxt.g(paramIReadInJoyModel)) && (!CmpCtxt.j(paramIReadInJoyModel)))
+      {
+        if (CmpCtxt.b(paramIReadInJoyModel)) {
+          return HardCodeUtil.a(2131904950);
+        }
+        return HardCodeUtil.a(2131904948);
+      }
+      return HardCodeUtil.a(2131904949);
+    }
+    return HardCodeUtil.a(2131904951);
+  }
+  
+  private void setTextWhetherHaveNoMoreData(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (!paramAbsBaseArticleInfo.isPGCShortContent()) {
+      setSpanText(HardCodeUtil.a(2131904952));
+    }
+    setMaxLines(a(paramAbsBaseArticleInfo));
+    setMoreSpan(new NativeSummaryView.MoreSpan(this, paramAbsBaseArticleInfo, this.c));
+    if ((RIJFeedsType.y(paramAbsBaseArticleInfo)) || (RIJFeedsType.z(paramAbsBaseArticleInfo)))
+    {
+      setSpanText("");
+      setMoreSpan(null);
+    }
+    setCustomViewLinkTextColor(this.c);
   }
   
   public void a(Observable<CharSequence> paramObservable)
@@ -433,7 +433,7 @@ public class NativeSummaryView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
+    Observable localObservable = this.e;
     if (localObservable != null) {
       localObservable.b(this);
     }
@@ -442,7 +442,7 @@ public class NativeSummaryView
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
+    Observable localObservable = this.e;
     if (localObservable != null) {
       localObservable.b(this);
     }
@@ -450,9 +450,9 @@ public class NativeSummaryView
   
   public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramIReadInJoyModel);
+    this.d.a(paramIReadInJoyModel);
     setShouldCallClick(false);
-    int i = paramIReadInJoyModel.d();
+    int i = paramIReadInJoyModel.o();
     if ((i == 49) || (i == 62) || (i == 63)) {
       setShouldCallClick(true);
     }
@@ -461,7 +461,7 @@ public class NativeSummaryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeSummaryView
  * JD-Core Version:    0.7.0.1
  */

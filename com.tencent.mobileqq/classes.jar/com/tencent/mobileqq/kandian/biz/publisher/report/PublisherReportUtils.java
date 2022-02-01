@@ -15,7 +15,7 @@ public final class PublisherReportUtils
   
   private final String a(ReportEventPage paramReportEventPage, ReportEventElement paramReportEventElement)
   {
-    int i = PublisherReportUtils.WhenMappings.e[paramReportEventPage.ordinal()];
+    int i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$4[paramReportEventPage.ordinal()];
     String str = "0X800BB31";
     switch (i)
     {
@@ -25,7 +25,7 @@ public final class PublisherReportUtils
       for (;;)
       {
         return "";
-        i = PublisherReportUtils.WhenMappings.d[paramReportEventElement.ordinal()];
+        i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$3[paramReportEventElement.ordinal()];
         paramReportEventPage = str;
         if (i == 1) {
           break;
@@ -35,7 +35,7 @@ public final class PublisherReportUtils
           break;
         }
         continue;
-        switch (PublisherReportUtils.WhenMappings.c[paramReportEventElement.ordinal()])
+        switch (PublisherReportUtils.WhenMappings.$EnumSwitchMapping$2[paramReportEventElement.ordinal()])
         {
         }
       }
@@ -49,7 +49,7 @@ public final class PublisherReportUtils
       return "0X800AC5F";
       return "0X800AC60";
       return "0X800AD2E";
-      i = PublisherReportUtils.WhenMappings.b[paramReportEventElement.ordinal()];
+      i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$1[paramReportEventElement.ordinal()];
       if (i == 1) {
         break label206;
       }
@@ -66,13 +66,13 @@ public final class PublisherReportUtils
   
   private final String b(ReportEventPage paramReportEventPage, ReportEventElement paramReportEventElement)
   {
-    int i = PublisherReportUtils.WhenMappings.g[paramReportEventPage.ordinal()];
+    int i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$6[paramReportEventPage.ordinal()];
     if ((i != 1) && (i != 2))
     {
       if (i != 3) {
         return "";
       }
-      i = PublisherReportUtils.WhenMappings.f[paramReportEventElement.ordinal()];
+      i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$5[paramReportEventElement.ordinal()];
       if (i != 1)
       {
         if (i != 2)
@@ -123,7 +123,7 @@ public final class PublisherReportUtils
     Intrinsics.checkParameterIsNotNull(paramReportEventKey, "userActionKey");
     Intrinsics.checkParameterIsNotNull(paramReportEventPage, "pageId");
     Intrinsics.checkParameterIsNotNull(paramReportEventElement, "element");
-    if (PublisherReportUtils.WhenMappings.a[paramReportEventKey.ordinal()] != 1) {
+    if (PublisherReportUtils.WhenMappings.$EnumSwitchMapping$0[paramReportEventKey.ordinal()] != 1) {
       return a(paramReportEventPage, paramReportEventElement);
     }
     return b(paramReportEventPage, paramReportEventElement);
@@ -133,7 +133,7 @@ public final class PublisherReportUtils
   public final String a(@NotNull EditObject.EditObjectType paramEditObjectType, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramEditObjectType, "editObjectType");
-    int i = PublisherReportUtils.WhenMappings.h[paramEditObjectType.ordinal()];
+    int i = PublisherReportUtils.WhenMappings.$EnumSwitchMapping$7[paramEditObjectType.ordinal()];
     if (i != 1)
     {
       if (i != 2) {
@@ -160,13 +160,19 @@ public final class PublisherReportUtils
   
   public final int b(int paramInt)
   {
-    int i = 8;
+    int i = 9;
     if (paramInt != 1)
     {
       if (paramInt != 5)
       {
-        if (paramInt != 8) {
-          return 0;
+        if (paramInt != 8)
+        {
+          if (paramInt != 9) {
+            return 0;
+          }
+        }
+        else {
+          return 8;
         }
       }
       else {
@@ -181,7 +187,7 @@ public final class PublisherReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.report.PublisherReportUtils
  * JD-Core Version:    0.7.0.1
  */

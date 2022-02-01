@@ -10,27 +10,27 @@ import com.tencent.aelight.camera.aioeditor.capture.view.QIMCommonLoadingView;
 class AEFilterListAdapter$VH
   extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QIMCommonLoadingView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView;
+  private ImageView a;
   private ImageView b;
   private ImageView c;
+  private TextView d;
+  private RelativeLayout e;
+  private QIMCommonLoadingView f;
   
   public AEFilterListAdapter$VH(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131362285));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376640));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369190));
-    this.b = ((ImageView)paramView.findViewById(2131369193));
-    this.c = ((ImageView)paramView.findViewById(2131369189));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379480));
+    this.f = ((QIMCommonLoadingView)paramView.findViewById(2131427872));
+    this.e = ((RelativeLayout)paramView.findViewById(2131444901));
+    this.a = ((ImageView)paramView.findViewById(2131436167));
+    this.b = ((ImageView)paramView.findViewById(2131436171));
+    this.c = ((ImageView)paramView.findViewById(2131436166));
+    this.d = ((TextView)paramView.findViewById(2131448223));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.AEFilterListAdapter.VH
  * JD-Core Version:    0.7.0.1
  */

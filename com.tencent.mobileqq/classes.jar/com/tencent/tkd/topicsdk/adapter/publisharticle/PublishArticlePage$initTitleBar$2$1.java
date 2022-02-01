@@ -23,12 +23,12 @@ final class PublishArticlePage$initTitleBar$2$1
   {
     Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "publishArticleInfo");
     PublishArticlePage.a(this.this$0.a, paramPublishArticleInfo);
-    BasePublishArticleReportUtils.a.a(PublishArticlePage.a(this.this$0.a), paramPublishArticleInfo);
+    BasePublishArticleReportUtils.a.a(PublishArticlePage.c(this.this$0.a), paramPublishArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initTitleBar.2.1
  * JD-Core Version:    0.7.0.1
  */

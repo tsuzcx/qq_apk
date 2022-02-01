@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.photo.album.photolist;
 
 import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,15 +19,18 @@ public class QueryPhotoTask
   
   protected List<LocalMediaInfo> a(Object... paramVarArgs)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "QueryPhotoTask,doInBackground");
+    }
     PhotoListCustomization localPhotoListCustomization = (PhotoListCustomization)this.a.get();
     List localList = null;
     if (localPhotoListCustomization == null) {
       return null;
     }
-    if (localPhotoListCustomization.a.a.compareAndSet(false, true))
+    if (localPhotoListCustomization.g.L.compareAndSet(false, true))
     {
       localList = localPhotoListCustomization.a(paramVarArgs);
-      localPhotoListCustomization.a.a.set(false);
+      localPhotoListCustomization.g.L.set(false);
     }
     return localList;
   }
@@ -47,7 +51,7 @@ public class QueryPhotoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.QueryPhotoTask
  * JD-Core Version:    0.7.0.1
  */

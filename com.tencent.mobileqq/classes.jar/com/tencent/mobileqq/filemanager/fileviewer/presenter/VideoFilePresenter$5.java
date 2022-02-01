@@ -20,16 +20,16 @@ class VideoFilePresenter$5
     {
       paramSeekBar = this.a;
       VideoFilePresenter.a(paramSeekBar, VideoFilePresenter.b(paramSeekBar, paramInt));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(VideoFilePresenter.a(this.a));
+      this.a.a.b(VideoFilePresenter.h(this.a));
       if (QLog.isDevelopLevel())
       {
         paramSeekBar = new StringBuilder();
         paramSeekBar.append("onProgressChanged userPos[");
-        paramSeekBar.append(VideoFilePresenter.a(this.a));
+        paramSeekBar.append(VideoFilePresenter.h(this.a));
         paramSeekBar.append("]");
         QLog.d("#@#@", 1, paramSeekBar.toString());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(false);
+      this.a.a.d(false);
     }
   }
   
@@ -38,16 +38,16 @@ class VideoFilePresenter$5
   {
     if ((VideoFilePresenter.a(this.a) != null) && (VideoFilePresenter.a(this.a).isPlaying()))
     {
-      VideoFilePresenter.d(this.a);
-      VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      VideoFilePresenter.i(this.a);
+      VideoFilePresenter.b(this.a).removeCallbacks(this.a.k);
       paramSeekBar = this.a;
-      paramSeekBar.jdField_a_of_type_Boolean = VideoFilePresenter.a(paramSeekBar).isPlaying();
+      paramSeekBar.j = VideoFilePresenter.a(paramSeekBar).isPlaying();
       VideoFilePresenter.a(this.a).pause();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(null);
+      this.a.a.a(null);
       VideoFilePresenter.a(this.a, true);
       return;
     }
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.j = false;
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
@@ -60,15 +60,15 @@ class VideoFilePresenter$5
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("mMediaPlayer sekTo [");
-        ((StringBuilder)localObject).append(VideoFilePresenter.a(this.a));
+        ((StringBuilder)localObject).append(VideoFilePresenter.h(this.a));
         ((StringBuilder)localObject).append("]");
         QLog.d("##########", 1, ((StringBuilder)localObject).toString());
       }
-      VideoFilePresenter.a(this.a).seekTo(VideoFilePresenter.a(this.a));
-      if (this.a.jdField_a_of_type_Boolean)
+      VideoFilePresenter.a(this.a).seekTo(VideoFilePresenter.h(this.a));
+      if (this.a.j)
       {
-        VideoFilePresenter.a(this.a).post(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(true);
+        VideoFilePresenter.b(this.a).post(this.a.k);
+        this.a.a.d(true);
         VideoFilePresenter.a(this.a).play();
       }
     }
@@ -77,7 +77,7 @@ class VideoFilePresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.5
  * JD-Core Version:    0.7.0.1
  */

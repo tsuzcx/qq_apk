@@ -12,14 +12,14 @@ class StoryPlayControllerImpl$2$2
 {
   public void onClick(View paramView)
   {
-    this.a.a.mPlayListDataModel.a();
-    this.a.a.stuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a.stuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.a.mPlayListDataModel.b();
+    this.a.a.stuffContainerView.j.setVisibility(8);
+    this.a.a.stuffContainerView.m.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl.2.2
  * JD-Core Version:    0.7.0.1
  */

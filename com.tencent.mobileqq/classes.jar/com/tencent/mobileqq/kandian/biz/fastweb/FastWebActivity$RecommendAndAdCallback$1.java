@@ -10,8 +10,8 @@ class FastWebActivity$RecommendAndAdCallback$1
   
   public void run()
   {
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    Object localObject2 = this.a;
+    List localList = this.b;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
@@ -20,12 +20,12 @@ class FastWebActivity$RecommendAndAdCallback$1
     if (localList == null) {
       localObject2 = new ArrayList();
     }
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, (List)localObject1, (List)localObject2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean);
+    FastWebActivity.a(this.c, this.d, this.e, (List)localObject1, (List)localObject2, this.f, this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.RecommendAndAdCallback.1
  * JD-Core Version:    0.7.0.1
  */

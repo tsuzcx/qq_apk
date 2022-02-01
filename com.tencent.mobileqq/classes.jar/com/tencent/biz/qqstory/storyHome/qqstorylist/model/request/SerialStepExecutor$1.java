@@ -12,41 +12,41 @@ class SerialStepExecutor$1
   {
     if (SerialStepExecutor.a(this.this$0).size() == 0)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null) {
-        this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+      if (this.this$0.h != null) {
+        this.this$0.h.a();
       }
       SerialStepExecutor.a(this.this$0, 2);
-      this.this$0.d();
+      this.this$0.h();
       return;
     }
     Object localObject = this.this$0;
-    ((SerialStepExecutor)localObject).jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep = ((Step)SerialStepExecutor.a((SerialStepExecutor)localObject).poll());
-    if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep == null)
+    ((SerialStepExecutor)localObject).a = ((Step)SerialStepExecutor.a((SerialStepExecutor)localObject).poll());
+    if (this.this$0.a == null)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null) {
-        this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+      if (this.this$0.h != null) {
+        this.this$0.h.a();
       }
       SerialStepExecutor.a(this.this$0, 2);
-      this.this$0.d();
+      this.this$0.h();
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.b();
+    this.this$0.a.e();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("剩下step:");
     ((StringBuilder)localObject).append(SerialStepExecutor.a(this.this$0).size());
     SLog.b("Q.qqstory.home.SerialStepExecutor", ((StringBuilder)localObject).toString());
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.this$0);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.this$0);
-    if (this.this$0.jdField_a_of_type_JavaLangObject == null)
+    this.this$0.a.a(this.this$0);
+    this.this$0.a.a(this.this$0);
+    if (this.this$0.c == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("step:");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a());
+      ((StringBuilder)localObject).append(this.this$0.a.c());
       ((StringBuilder)localObject).append(",return null result");
       SLog.e("Q.qqstory.home.SerialStepExecutor", ((StringBuilder)localObject).toString());
     }
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.this$0.jdField_a_of_type_JavaLangObject);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
+    this.this$0.a.a(this.this$0.c);
+    this.this$0.a.b();
   }
 }
 

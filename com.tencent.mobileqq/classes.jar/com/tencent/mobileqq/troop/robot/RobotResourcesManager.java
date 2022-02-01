@@ -5,15 +5,13 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class RobotResourcesManager
 {
-  private static RobotResourcesManager jdField_a_of_type_ComTencentMobileqqTroopRobotRobotResourcesManager = new RobotResourcesManager();
-  String jdField_a_of_type_JavaLangString;
+  private static RobotResourcesManager b = new RobotResourcesManager();
+  String a;
   
   public static RobotResourcesManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqTroopRobotRobotResourcesManager;
+    return b;
   }
-  
-  public void a() {}
   
   public void a(BaseChatPie paramBaseChatPie) {}
   
@@ -23,29 +21,31 @@ public class RobotResourcesManager
   
   public void a(String paramString1, String paramString2, String paramString3) {}
   
-  public boolean a()
-  {
-    return TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString) ^ true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return true;
-  }
-  
   public void b() {}
   
   public boolean b(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    return true;
+  }
+  
+  public void c() {}
+  
+  public boolean c(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.a))) {
+      return paramString.equals(this.a);
     }
     return false;
+  }
+  
+  public boolean d()
+  {
+    return TextUtils.isEmpty(this.a) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.RobotResourcesManager
  * JD-Core Version:    0.7.0.1
  */

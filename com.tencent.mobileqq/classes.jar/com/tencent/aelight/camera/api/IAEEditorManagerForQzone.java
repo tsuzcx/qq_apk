@@ -18,6 +18,8 @@ public abstract interface IAEEditorManagerForQzone
   
   public abstract void cancelMission(String paramString);
   
+  public abstract void cancelQFSMission(String paramString);
+  
   public abstract boolean checkAEResVersionOKForAEBasePackage();
   
   public abstract Class getAECoverSelectFragmentClass();
@@ -38,6 +40,8 @@ public abstract interface IAEEditorManagerForQzone
   
   public abstract void launchAEMutiCameraFromCircle(Context paramContext, Bundle paramBundle);
   
+  public abstract void launchAEMutiCameraFromFS(Context paramContext, Bundle paramBundle);
+  
   public abstract void launchQQPhotoSelect(Context paramContext, Intent paramIntent);
   
   public abstract void removeCallbackListener(@Nullable IAEEditorUICallbackListener paramIAEEditorUICallbackListener);
@@ -49,6 +53,8 @@ public abstract interface IAEEditorManagerForQzone
   public abstract void requestGenerateVideo(String paramString);
   
   public abstract void retryMission(String paramString);
+  
+  public abstract void retryQFSMission(String paramString);
   
   public abstract void saveMission(String paramString);
 }

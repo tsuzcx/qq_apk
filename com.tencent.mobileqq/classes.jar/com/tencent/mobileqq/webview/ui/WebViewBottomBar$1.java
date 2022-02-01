@@ -10,14 +10,14 @@ class WebViewBottomBar$1
 {
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_Int != paramLong)
+    if (this.a.d != paramLong)
     {
       WebViewBottomBar localWebViewBottomBar = this.a;
       int i = (int)paramLong;
-      localWebViewBottomBar.jdField_a_of_type_Int = i;
-      localWebViewBottomBar.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar$BarAdapter.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar$OnBottomBarItemListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar$OnBottomBarItemListener.a(i);
+      localWebViewBottomBar.d = i;
+      localWebViewBottomBar.a.notifyDataSetChanged();
+      if (this.a.c != null) {
+        this.a.c.a(i);
       }
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
@@ -25,7 +25,7 @@ class WebViewBottomBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewBottomBar.1
  * JD-Core Version:    0.7.0.1
  */

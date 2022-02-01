@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/bpf" android:layout_height="@dimen/bpf" android:layout_marginRight="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mxp" android:layout_width="@dimen/bql" android:layout_height="@dimen/bql" android:scaleType="center" />
+    <View android:id="@id/qsv" android:background="@drawable/gh1" android:layout_width="@dimen/bpf" android:layout_height="@dimen/bpf" />
+</RelativeLayout>

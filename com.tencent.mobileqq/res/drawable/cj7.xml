@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="17.0dip" />
-</shape>
+    <item android:bottom="10.0dip">
+        <shape>
+            <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+            <solid android:color="#ff1e1e1e" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:bottom="1.0dip" />
+            <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+            <solid android:color="#26e3e5e8" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+            <solid android:color="#ff1e1e1e" />
+        </shape>
+    </item>
+</layer-list>

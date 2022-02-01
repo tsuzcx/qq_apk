@@ -14,15 +14,15 @@ class ShortVideoItemBuilder$11
     ShortVideoItemBuilder.Holder localHolder = ShortVideoItemBuilder.a(this.this$0, this.a.uniseq);
     if (localHolder != null)
     {
-      localHolder.a.setVisibility(8);
-      localHolder.d.setVisibility(8);
-      ShortVideoItemBuilder.a(this.this$0, localHolder, 2131718343);
+      localHolder.s.setVisibility(8);
+      localHolder.t.setVisibility(8);
+      ShortVideoItemBuilder.a(this.this$0, localHolder, 2131915835);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.11
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ class EmoView$1
       int i = EmoView.a(this.a) + 1;
       if (i <= 4)
       {
-        if (EmoView.a(this.a)[EmoView.a(this.a)] != 0) {
+        if (EmoView.b(this.a)[EmoView.a(this.a)] != 0) {
           return;
         }
         EmoView.a(this.a, i);
-        EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+        EmoView.b(this.a)[EmoView.a(this.a)] = 1;
       }
     }
   }

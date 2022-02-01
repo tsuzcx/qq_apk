@@ -10,18 +10,18 @@ class AEEditorStickerControlPanel$3
 {
   AEEditorStickerControlPanel$3(AEEditorStickerControlPanel paramAEEditorStickerControlPanel) {}
   
-  public void a(@NonNull View paramView, float paramFloat) {}
+  public void onSlide(@NonNull View paramView, float paramFloat) {}
   
-  public void a(@NonNull View paramView, int paramInt)
+  public void onStateChanged(@NonNull View paramView, int paramInt)
   {
     if (paramInt == 3) {
-      AEReportUtils.e(AEEditorStickerControlPanel.a(this.a));
+      AEReportUtils.d(AEEditorStickerControlPanel.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerControlPanel.3
  * JD-Core Version:    0.7.0.1
  */

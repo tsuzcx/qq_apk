@@ -24,7 +24,7 @@ public class PastablePwdEditText
     setClearButtonVisible(false);
   }
   
-  protected boolean a()
+  protected boolean b()
   {
     return true;
   }
@@ -42,7 +42,7 @@ public class PastablePwdEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PastablePwdEditText
  * JD-Core Version:    0.7.0.1
  */

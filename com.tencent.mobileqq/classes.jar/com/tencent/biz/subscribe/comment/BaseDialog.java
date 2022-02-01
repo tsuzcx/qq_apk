@@ -19,7 +19,7 @@ public class BaseDialog
   }
   
   @TargetApi(19)
-  public void D_()
+  public void aF_()
   {
     int j = Build.VERSION.SDK_INT;
     int i = 0;

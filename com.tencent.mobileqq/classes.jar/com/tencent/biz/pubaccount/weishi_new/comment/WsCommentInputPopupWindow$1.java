@@ -11,14 +11,14 @@ class WsCommentInputPopupWindow$1
   
   public void a(View paramView)
   {
-    if (this.a.isShowing()) {
-      WsCommentInputPopupWindow.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
+    if ((this.a.isShowing()) && (!WsCommentInputPopupWindow.a(this.a).isFinishing())) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

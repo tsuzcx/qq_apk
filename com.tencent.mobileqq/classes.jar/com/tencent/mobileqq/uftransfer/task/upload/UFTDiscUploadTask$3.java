@@ -10,14 +10,14 @@ class UFTDiscUploadTask$3
   
   public void a(UFTBaseOp.OpRetData paramOpRetData)
   {
-    if (!UFTDiscUploadTask.c(this.a)) {
-      this.a.a(paramOpRetData.a(), paramOpRetData.a());
+    if (!UFTDiscUploadTask.d(this.a)) {
+      this.a.a(paramOpRetData.a(), paramOpRetData.b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTDiscUploadTask.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter$1
   
   public void onClick(View paramView)
   {
-    MiniGamePlayTogetherHandler.a(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo, IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter), IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter), this.jdField_a_of_type_Boolean);
+    MiniGamePlayTogetherHandler.a(paramView.getContext(), this.a.appMetaInfo, IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.a(this.c), IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.b(this.c), this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class VideoLayerUIBase$1
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.Z != null)
     {
-      Object localObject = this.this$0.a.a();
-      if (((SessionInfo)localObject).k == 1011) {
-        int i = ((SessionInfo)localObject).H;
+      Object localObject = this.this$0.Z.k();
+      if (((SessionInfo)localObject).p == 1011) {
+        int i = ((SessionInfo)localObject).aY;
       }
-      localObject = ((SessionInfo)localObject).c;
-      this.this$0.a.c((String)localObject);
+      localObject = ((SessionInfo)localObject).s;
+      this.this$0.Z.c((String)localObject);
     }
   }
 }

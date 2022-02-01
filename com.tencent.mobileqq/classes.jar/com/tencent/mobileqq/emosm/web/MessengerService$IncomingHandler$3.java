@@ -21,19 +21,19 @@ class MessengerService$IncomingHandler$3
         paramObject = (List)paramObject;
         if (!paramObject.isEmpty())
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
-          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
-          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+          this.a.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
+          this.a.putString("isDiy", "1");
+          this.a.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
+          this.a.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
+          this.a.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
+          this.a.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
+        this.a.putString("diyText", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+      this.b.a(this.c);
       return;
     }
     catch (Exception paramObject)
@@ -46,7 +46,7 @@ class MessengerService$IncomingHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.3
  * JD-Core Version:    0.7.0.1
  */

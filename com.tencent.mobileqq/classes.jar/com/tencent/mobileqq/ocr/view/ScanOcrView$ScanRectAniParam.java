@@ -4,29 +4,24 @@ import android.graphics.Rect;
 
 class ScanOcrView$ScanRectAniParam
 {
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect;
-  int jdField_c_of_type_Int;
-  Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
+  Rect a = new Rect();
+  Rect b = new Rect();
+  int c;
   int d;
   int e;
   int f;
-  
-  ScanOcrView$ScanRectAniParam()
-  {
-    this.b = new Rect();
-  }
+  Rect g = new Rect();
+  int h;
+  int i;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("currAlpha = ");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("\n");
     localStringBuilder.append("currRect = ");
-    Object localObject = this.jdField_c_of_type_AndroidGraphicsRect;
+    Object localObject = this.g;
     String str = "";
     if (localObject != null) {
       localObject = ((Rect)localObject).toShortString();
@@ -36,10 +31,10 @@ class ScanOcrView$ScanRectAniParam
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("\n");
     localStringBuilder.append("radomAreaIndex = ");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("\n");
     localStringBuilder.append("radomRect = ");
-    localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    localObject = this.a;
     if (localObject != null) {
       localObject = ((Rect)localObject).toShortString();
     } else {
@@ -48,7 +43,7 @@ class ScanOcrView$ScanRectAniParam
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("\n");
     localStringBuilder.append("gapDuration = ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\n");
     localStringBuilder.append("startRect = ");
     Rect localRect = this.b;
@@ -59,14 +54,14 @@ class ScanOcrView$ScanRectAniParam
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("\n");
     localStringBuilder.append("edageWidth = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.ScanOcrView.ScanRectAniParam
  * JD-Core Version:    0.7.0.1
  */

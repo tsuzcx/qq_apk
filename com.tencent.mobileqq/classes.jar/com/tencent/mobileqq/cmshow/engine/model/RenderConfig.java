@@ -5,44 +5,36 @@ import com.tencent.mobileqq.cmshow.engine.render.RenderMode;
 
 public class RenderConfig
 {
-  public int a;
-  public Pair<Integer, Integer> a;
-  public RenderMode a;
   public boolean a;
-  public boolean b;
+  public int b;
   public boolean c;
   public boolean d;
-  public boolean e = true;
-  
-  public RenderConfig()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderRenderMode = RenderMode.ON_SCREEN;
-  }
+  public boolean e;
+  public RenderMode f = RenderMode.ON_SCREEN;
+  public Pair<Integer, Integer> g;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RenderConfig{needTextureView=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", initHeight=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", destroyOnAsync=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", disableDuplicateCreateRender=");
+    localStringBuilder.append(", destroyOnAsync=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(", fastTouchCheck=");
+    localStringBuilder.append(", disableDuplicateCreateRender=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", renderMode=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineRenderRenderMode);
-    localStringBuilder.append(", zOrderOnTop=");
+    localStringBuilder.append(", fastTouchCheck=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", renderMode=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.model.RenderConfig
  * JD-Core Version:    0.7.0.1
  */

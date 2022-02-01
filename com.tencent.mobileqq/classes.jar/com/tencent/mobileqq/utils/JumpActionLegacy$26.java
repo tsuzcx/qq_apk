@@ -12,10 +12,10 @@ class JumpActionLegacy$26
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.H == null) {
       return;
     }
-    String str = this.this$0.a.getCurrentAccountUin();
+    String str = this.this$0.H.getCurrentAccountUin();
     if (TextUtils.isEmpty(str)) {
       return;
     }
@@ -27,7 +27,7 @@ class JumpActionLegacy$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.26
  * JD-Core Version:    0.7.0.1
  */

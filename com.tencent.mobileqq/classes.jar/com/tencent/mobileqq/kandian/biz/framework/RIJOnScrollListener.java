@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.ad.api.IRIJADExposureService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.ThreadPriorityUtil;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager;
@@ -31,75 +31,34 @@ import mqq.os.MqqHandler;
 public class RIJOnScrollListener
   implements AbsListView.OnScrollListener
 {
-  double jdField_a_of_type_Double = 0.0D;
-  int jdField_a_of_type_Int = -1;
-  private View jdField_a_of_type_AndroidViewView;
-  FeedExposureHelper jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper;
-  ThreadPriorityUtil jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsThreadPriorityUtil = new ThreadPriorityUtil();
-  RIJDataManager jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new RIJOnScrollListener.1(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler();
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  boolean jdField_b_of_type_Boolean = false;
-  private int c;
+  boolean a;
+  boolean b = false;
+  int c = -1;
+  double d = 0.0D;
+  RIJDataManager e;
+  FeedExposureHelper f;
+  MqqHandler g = new MqqHandler();
+  ThreadPriorityUtil h = new ThreadPriorityUtil();
+  private View i;
+  private View j;
+  private int k;
+  private int l;
+  private Runnable m = new RIJOnScrollListener.1(this);
   
   public RIJOnScrollListener(RIJDataManager paramRIJDataManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager = paramRIJDataManager;
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper = new RIJOnScrollListener.2(this, paramRIJDataManager);
-  }
-  
-  private String a()
-  {
-    if (PTSLiteSwitchManager.a().b()) {
-      return "list_readinjoy_daily_lite";
-    }
-    return "list_readinjoy_daily";
-  }
-  
-  private void a()
-  {
-    if (RIJQQAppInterfaceUtil.a())
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b();
-      if (i != 0)
-      {
-        if (i != 56)
-        {
-          if (i != 70)
-          {
-            if (DailyModeConfigHandler.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b()))
-            {
-              DropFrameMonitor.a().a(a());
-              return;
-            }
-            DropFrameMonitor localDropFrameMonitor = DropFrameMonitor.a();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("list_kandian_channel_");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b());
-            localDropFrameMonitor.a(localStringBuilder.toString());
-            return;
-          }
-          DropFrameMonitor.a().a("list_subscript");
-          return;
-        }
-        DropFrameMonitor.a().a("list_video_kandian");
-        return;
-      }
-      DropFrameMonitor.a().a("list_new_kandian");
-    }
+    this.e = paramRIJDataManager;
+    this.f = new RIJOnScrollListener.2(this, paramRIJDataManager);
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b()))
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(this.e.a().B()))
     {
-      Pair localPair = ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b(), paramInt1 + paramInt2 - 1);
+      Pair localPair = ReadInJoyLogicEngine.a().f(this.e.a().B(), paramInt1 + paramInt2 - 1);
       if (localPair != null)
       {
-        ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b(), ((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+        ReadInJoyLogicEngine.a().a(this.e.a().B(), ((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
         ThreadManager.executeOnSubThread(new RIJOnScrollListener.3(this, localPair));
       }
     }
@@ -107,99 +66,140 @@ public class RIJOnScrollListener
   
   private void a(AbsListView paramAbsListView)
   {
-    if ((this.jdField_a_of_type_Int == 2) && (Build.VERSION.SDK_INT < 21))
+    if ((this.c == 2) && (Build.VERSION.SDK_INT < 21))
     {
-      if (a(paramAbsListView))
+      if (b(paramAbsListView))
       {
-        ((IImageManager)QRoute.api(IImageManager.class)).pauseDownload();
+        ImageManager.get().pauseDownload();
         return;
       }
-      ((IImageManager)QRoute.api(IImageManager.class)).resume();
+      ImageManager.get().resume();
     }
   }
   
   private void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_b_of_type_Int < paramInt1)
+    if (this.k < paramInt1)
     {
-      VideoPlayControlUtils.a(this.jdField_a_of_type_AndroidViewView);
+      VideoPlayControlUtils.a(this.i);
       return;
     }
-    if (paramInt1 + paramInt2 - 1 < this.c) {
-      VideoPlayControlUtils.a(this.jdField_b_of_type_AndroidViewView);
+    if (paramInt1 + paramInt2 - 1 < this.l) {
+      VideoPlayControlUtils.a(this.j);
     }
-  }
-  
-  private boolean a(AbsListView paramAbsListView)
-  {
-    float f1 = paramAbsListView.getFlingVelocity();
-    float f2 = (float)DeviceInfoUtil.j();
-    return (f1 > 0.0F) && (f1 > f2 * 1.0F);
   }
   
   private void b()
   {
-    if (RIJQQAppInterfaceUtil.a())
+    if (RIJQQAppInterfaceUtil.g())
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b();
-      if (i != 0)
+      int n = this.e.a().B();
+      if (n != 0)
       {
-        if (i != 56)
+        if (n != 56)
         {
-          if (i != 70)
+          if (n != 70)
           {
-            if (DailyModeConfigHandler.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b()))
+            if (DailyModeConfigHandler.c(this.e.a().B()))
             {
-              DropFrameMonitor.a().a(a(), false);
+              DropFrameMonitor.b().a(d());
               return;
             }
-            DropFrameMonitor localDropFrameMonitor = DropFrameMonitor.a();
+            DropFrameMonitor localDropFrameMonitor = DropFrameMonitor.b();
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("list_kandian_channel_");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b());
+            localStringBuilder.append(this.e.a().B());
+            localDropFrameMonitor.a(localStringBuilder.toString());
+            return;
+          }
+          DropFrameMonitor.b().a("list_subscript");
+          return;
+        }
+        DropFrameMonitor.b().a("list_video_kandian");
+        return;
+      }
+      DropFrameMonitor.b().a("list_new_kandian");
+    }
+  }
+  
+  private boolean b(AbsListView paramAbsListView)
+  {
+    float f1 = paramAbsListView.getFlingVelocity();
+    float f2 = (float)DeviceInfoUtil.E();
+    return (f1 > 0.0F) && (f1 > f2 * 1.0F);
+  }
+  
+  private void c()
+  {
+    if (RIJQQAppInterfaceUtil.g())
+    {
+      int n = this.e.a().B();
+      if (n != 0)
+      {
+        if (n != 56)
+        {
+          if (n != 70)
+          {
+            if (DailyModeConfigHandler.c(this.e.a().B()))
+            {
+              DropFrameMonitor.b().a(d(), false);
+              return;
+            }
+            DropFrameMonitor localDropFrameMonitor = DropFrameMonitor.b();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("list_kandian_channel_");
+            localStringBuilder.append(this.e.a().B());
             localDropFrameMonitor.a(localStringBuilder.toString(), false);
             return;
           }
-          DropFrameMonitor.a().a("list_subscript", false);
+          DropFrameMonitor.b().a("list_subscript", false);
           return;
         }
-        DropFrameMonitor.a().a("list_video_kandian", false);
+        DropFrameMonitor.b().a("list_video_kandian", false);
         return;
       }
-      DropFrameMonitor.a().a("list_new_kandian", false);
+      DropFrameMonitor.b().a("list_new_kandian", false);
     }
+  }
+  
+  private String d()
+  {
+    if (PTSLiteSwitchManager.a().c()) {
+      return "list_readinjoy_daily_lite";
+    }
+    return "list_readinjoy_daily";
   }
   
   public FeedExposureHelper a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper;
+    return this.f;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     IRIJADExposureService localIRIJADExposureService = (IRIJADExposureService)RIJQQAppInterfaceUtil.a().getRuntimeService(IRIJADExposureService.class);
-    if ((localIRIJADExposureService.checkAndReportAdExposure(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), (Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a())) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), (Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a());
+    if ((localIRIJADExposureService.checkAndReportAdExposure(this.e.a().v(), (Activity)this.e.a().A(), true)) && (this.e.a().b() != null)) {
+      this.e.a().b().a(this.e.a().v(), (Activity)this.e.a().A());
     }
     a(paramInt1, paramInt2);
-    int i = this.jdField_b_of_type_Int;
-    if (paramInt1 > i) {
-      this.jdField_a_of_type_Boolean = true;
-    } else if (paramInt1 < i) {
-      this.jdField_a_of_type_Boolean = false;
+    int n = this.k;
+    if (paramInt1 > n) {
+      this.a = true;
+    } else if (paramInt1 < n) {
+      this.a = false;
     }
-    localIRIJADExposureService.checkADScrollAction(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), (Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Double);
+    localIRIJADExposureService.checkADScrollAction(this.e.a().v(), (Activity)this.e.a().A(), this.a, this.d);
     a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = (paramInt1 + paramInt2 - 1);
-    this.jdField_a_of_type_AndroidViewView = paramAbsListView.getChildAt(0);
-    this.jdField_b_of_type_AndroidViewView = paramAbsListView.getChildAt(paramInt2 - 1);
+    this.k = paramInt1;
+    this.l = (paramInt1 + paramInt2 - 1);
+    this.i = paramAbsListView.getChildAt(0);
+    this.j = paramAbsListView.getChildAt(paramInt2 - 1);
     a(paramAbsListView);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -217,35 +217,35 @@ public class RIJOnScrollListener
     }
     if (paramInt == 0)
     {
-      b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsThreadPriorityUtil.b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().a(this.jdField_a_of_type_Boolean, paramAbsListView.getCount(), paramAbsListView.getLastVisiblePosition(), this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager);
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      c();
+      this.h.b();
+      this.e.a().h().a(this.a, paramAbsListView.getCount(), paramAbsListView.getLastVisiblePosition(), this.e.a().c(), this.e);
+      this.g.postDelayed(this.m, 1000L);
     }
     else
     {
-      a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsThreadPriorityUtil.a();
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      b();
+      this.h.a();
+      this.g.removeCallbacks(this.m);
     }
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a()))
+    if ((paramInt == 2) && (this.e.a().a()))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.b = true;
     }
-    else if ((paramInt != 2) && (this.jdField_b_of_type_Boolean))
+    else if ((paramInt != 2) && (this.b))
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().g(false);
+      this.b = false;
+      this.e.a().g(false);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilFeedExposureHelper.a(paramAbsListView, paramInt);
-    if ((paramInt == 0) && ((paramAbsListView instanceof ReadInJoyXListView)) && (!((ReadInJoyXListView)paramAbsListView).a())) {
+    this.f.a(paramAbsListView, paramInt);
+    if ((paramInt == 0) && ((paramAbsListView instanceof ReadInJoyXListView)) && (!((ReadInJoyXListView)paramAbsListView).c())) {
       VideoPlayControlUtils.a(paramAbsListView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

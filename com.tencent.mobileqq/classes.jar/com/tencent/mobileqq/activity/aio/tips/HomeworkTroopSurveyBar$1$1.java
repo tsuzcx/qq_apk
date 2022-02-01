@@ -9,12 +9,12 @@ class HomeworkTroopSurveyBar$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar$1.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar$1.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar$1.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
+    this.b.c.a(this.b.a, this.b.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,38 +13,32 @@ import java.util.Locale;
 public class AIOImageListModel
   implements AbstractImageListModel
 {
-  public static final Object a;
-  public static final Object b;
-  int jdField_a_of_type_Int;
-  AIORichExpandInfo jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo = new AIORichExpandInfo();
-  AIORichMediaInfo jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-  private String jdField_a_of_type_JavaLangString = null;
-  private Calendar jdField_a_of_type_JavaUtilCalendar = null;
-  List<AIORichMediaInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  AIORichMediaInfo jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-  List<AIORichMediaInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  List<AIORichMediaInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int = 0;
-  List<Object> jdField_d_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_d_of_type_Boolean = false;
-  int jdField_e_of_type_Int = -1;
-  boolean jdField_e_of_type_Boolean = false;
-  int f;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_b_of_type_JavaLangObject = new Object();
-  }
+  public static final Object j = new Object();
+  public static final Object k = new Object();
+  AIORichMediaInfo a;
+  AIORichMediaInfo b;
+  int c;
+  int d;
+  int e;
+  List<AIORichMediaInfo> f = new ArrayList();
+  List<AIORichMediaInfo> g = new ArrayList();
+  List<AIORichMediaInfo> h = new ArrayList();
+  boolean i = false;
+  List<Object> l = new ArrayList();
+  int m = 0;
+  int n = -1;
+  int o;
+  boolean p = false;
+  boolean q = false;
+  boolean r = false;
+  boolean s = false;
+  AIORichExpandInfo t = new AIORichExpandInfo();
+  private Calendar u = null;
+  private String v = null;
   
   public AIOImageListModel(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
   }
   
   private void a(int paramInt, String paramString, AIOFilePicData paramAIOFilePicData)
@@ -58,13 +52,13 @@ public class AIOImageListModel
           if (paramInt != 20) {
             return;
           }
-          paramAIOFilePicData.jdField_b_of_type_Boolean = true;
+          paramAIOFilePicData.h = true;
           return;
         }
-        paramAIOFilePicData.jdField_a_of_type_Boolean = true;
+        paramAIOFilePicData.g = true;
         return;
       }
-      paramAIOFilePicData.jdField_c_of_type_Boolean = true;
+      paramAIOFilePicData.i = true;
       return;
     }
     if (paramInt != 16)
@@ -74,13 +68,13 @@ public class AIOImageListModel
         if (paramInt != 20) {
           return;
         }
-        paramAIOFilePicData.d = paramString;
+        paramAIOFilePicData.e = paramString;
         return;
       }
-      paramAIOFilePicData.jdField_c_of_type_JavaLangString = paramString;
+      paramAIOFilePicData.d = paramString;
       return;
     }
-    paramAIOFilePicData.jdField_b_of_type_JavaLangString = paramString;
+    paramAIOFilePicData.c = paramString;
   }
   
   private void a(int paramInt, String paramString, AIOImageData paramAIOImageData)
@@ -94,13 +88,13 @@ public class AIOImageListModel
           if (paramInt != 4) {
             return;
           }
-          paramAIOImageData.jdField_c_of_type_Boolean = true;
+          paramAIOImageData.g = true;
           return;
         }
-        paramAIOImageData.jdField_b_of_type_Boolean = true;
+        paramAIOImageData.f = true;
         return;
       }
-      paramAIOImageData.jdField_a_of_type_Boolean = true;
+      paramAIOImageData.e = true;
       return;
     }
     if (paramInt != 1)
@@ -115,27 +109,27 @@ public class AIOImageListModel
           paramAIOImageData.d = paramString;
           return;
         }
-        paramAIOImageData.jdField_c_of_type_JavaLangString = paramString;
+        paramAIOImageData.c = paramString;
         return;
       }
-      paramAIOImageData.jdField_b_of_type_JavaLangString = paramString;
-      if (!paramAIOImageData.g)
+      paramAIOImageData.b = paramString;
+      if (!paramAIOImageData.t)
       {
         paramString = new StringBuilder();
-        paramString.append(paramAIOImageData.jdField_a_of_type_JavaLangString);
+        paramString.append(paramAIOImageData.a);
         paramString.append("_hd");
         if (new File(paramString.toString()).exists())
         {
           paramString = new StringBuilder();
-          paramString.append(paramAIOImageData.jdField_a_of_type_JavaLangString);
+          paramString.append(paramAIOImageData.a);
           paramString.append("_hd");
-          paramAIOImageData.jdField_a_of_type_JavaLangString = paramString.toString();
+          paramAIOImageData.a = paramString.toString();
         }
       }
     }
     else
     {
-      paramAIOImageData.jdField_a_of_type_JavaLangString = paramString;
+      paramAIOImageData.a = paramString;
     }
   }
   
@@ -148,10 +142,10 @@ public class AIOImageListModel
         if (paramInt != 1) {
           return;
         }
-        paramAIOShortVideoData.jdField_b_of_type_Boolean = true;
+        paramAIOShortVideoData.f = true;
         return;
       }
-      paramAIOShortVideoData.jdField_a_of_type_Boolean = true;
+      paramAIOShortVideoData.e = true;
       return;
     }
     if (paramInt != 0)
@@ -159,15 +153,15 @@ public class AIOImageListModel
       if (paramInt != 1) {
         return;
       }
-      paramAIOShortVideoData.jdField_b_of_type_JavaLangString = paramString;
+      paramAIOShortVideoData.b = paramString;
       return;
     }
-    paramAIOShortVideoData.jdField_a_of_type_JavaLangString = paramString;
+    paramAIOShortVideoData.a = paramString;
   }
   
   public int a()
   {
-    List localList = this.jdField_b_of_type_JavaUtilList;
+    List localList = this.g;
     if (localList != null) {
       return localList.size();
     }
@@ -178,63 +172,58 @@ public class AIOImageListModel
   {
     List localList;
     if (paramBoolean) {
-      localList = this.jdField_d_of_type_JavaUtilList;
+      localList = this.l;
     } else {
-      localList = this.jdField_b_of_type_JavaUtilList;
+      localList = this.g;
     }
-    int i = 0;
-    while (i < localList.size())
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      Object localObject = localList.get(i);
+      Object localObject = localList.get(i1);
       if ((!paramBoolean) || (AIORichMediaInfo.class.isInstance(localObject)))
       {
         localObject = ((AIORichMediaInfo)localObject).a;
         if (AIOImageData.class.isInstance(localObject))
         {
           localObject = (AIOImageData)localObject;
-          if ((((AIOImageData)localObject).jdField_f_of_type_Long == paramLong) && (((AIOImageData)localObject).jdField_f_of_type_Int == paramInt1))
+          if ((((AIOImageData)localObject).L == paramLong) && (((AIOImageData)localObject).M == paramInt1))
           {
             a(paramInt2, paramString, (AIOImageData)localObject);
-            return i;
+            return i1;
           }
         }
         else if (AIOShortVideoData.class.isInstance(localObject))
         {
           localObject = (AIOShortVideoData)localObject;
-          if (((AIOShortVideoData)localObject).jdField_f_of_type_Long == paramLong)
+          if (((AIOShortVideoData)localObject).L == paramLong)
           {
             a(paramInt2, paramString, (AIOShortVideoData)localObject);
-            return i;
+            return i1;
           }
         }
         else if (AIOFilePicData.class.isInstance(localObject))
         {
           localObject = (AIOFilePicData)localObject;
-          if (((AIOFilePicData)localObject).jdField_f_of_type_Long == paramLong)
+          if (((AIOFilePicData)localObject).L == paramLong)
           {
             a(paramInt2, paramString, (AIOFilePicData)localObject);
-            return i;
+            return i1;
           }
         }
-        else if ((AIOFileVideoData.class.isInstance(localObject)) && (((AIOFileVideoData)localObject).jdField_f_of_type_Long == paramLong))
+        else if ((AIOFileVideoData.class.isInstance(localObject)) && (((AIOFileVideoData)localObject).L == paramLong))
         {
-          return i;
+          return i1;
         }
       }
-      i += 1;
+      i1 += 1;
     }
     return -1;
   }
   
-  public AIORichMediaInfo a()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-  }
-  
   public AIORichMediaInfo a(int paramInt)
   {
-    if ((paramInt < this.jdField_b_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
-      return (AIORichMediaInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt < this.g.size()) && (paramInt >= 0)) {
+      return (AIORichMediaInfo)this.g.get(paramInt);
     }
     return null;
   }
@@ -244,7 +233,7 @@ public class AIOImageListModel
     Object localObject3 = null;
     try
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.g.iterator();
       Object localObject1;
       do
       {
@@ -253,12 +242,12 @@ public class AIOImageListModel
           break;
         }
         localObject1 = (AIORichMediaInfo)localIterator.next();
-      } while (((AIORichMediaInfo)localObject1).a.jdField_f_of_type_Long != paramLong);
+      } while (((AIORichMediaInfo)localObject1).a.L != paramLong);
       if (localObject1 != null)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(localObject1);
-        this.jdField_b_of_type_JavaUtilList.remove(localObject1);
-        a(true, this.jdField_a_of_type_JavaUtilList);
+        this.f.remove(localObject1);
+        this.g.remove(localObject1);
+        a(true, this.f);
       }
       return localObject1;
     }
@@ -269,33 +258,23 @@ public class AIOImageListModel
     }
   }
   
-  public Object a(int paramInt)
-  {
-    return this.jdField_d_of_type_JavaUtilList.get(paramInt);
-  }
-  
   String a(Calendar paramCalendar, long paramLong)
   {
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong * 1000L);
-    int i = paramCalendar.get(1);
-    int j = localCalendar.get(1);
-    int k = localCalendar.get(2);
-    if ((i == j) && (paramCalendar.get(6) - localCalendar.get(6) < 7)) {
+    int i1 = paramCalendar.get(1);
+    int i2 = localCalendar.get(1);
+    int i3 = localCalendar.get(2);
+    if ((i1 == i2) && (paramCalendar.get(6) - localCalendar.get(6) < 7)) {
       return "7天内";
     }
-    return String.format(Locale.CHINA, "%d年%d月", new Object[] { Integer.valueOf(j), Integer.valueOf(k + 1) });
-  }
-  
-  public List<AIORichMediaInfo> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
+    return String.format(Locale.CHINA, "%d年%d月", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3 + 1) });
   }
   
   public List<AIORichMediaInfo> a(List<AIORichMediaInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_d_of_type_Boolean)
+    if (this.r)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
@@ -310,109 +289,93 @@ public class AIOImageListModel
     return localArrayList;
   }
   
-  public void a()
-  {
-    if ((this.jdField_d_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      a(false, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_f_of_type_Int = this.jdField_d_of_type_JavaUtilList.indexOf(this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = a(paramInt);
-    this.jdField_f_of_type_Int = this.jdField_d_of_type_JavaUtilList.indexOf(this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-  }
-  
   public void a(AIORichMediaInfo paramAIORichMediaInfo)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = paramAIORichMediaInfo;
-    AIORichMediaInfo localAIORichMediaInfo = this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-    localAIORichMediaInfo.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = localAIORichMediaInfo;
-    this.jdField_a_of_type_JavaUtilList.add(paramAIORichMediaInfo);
-    this.jdField_b_of_type_JavaUtilList.add(paramAIORichMediaInfo);
-    a(false, this.jdField_a_of_type_JavaUtilList);
+    this.f.clear();
+    this.g.clear();
+    this.c = 0;
+    this.b = paramAIORichMediaInfo;
+    AIORichMediaInfo localAIORichMediaInfo = this.b;
+    localAIORichMediaInfo.i = true;
+    this.a = localAIORichMediaInfo;
+    this.f.add(paramAIORichMediaInfo);
+    this.g.add(paramAIORichMediaInfo);
+    a(false, this.f);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.p != paramBoolean)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      Collections.reverse(this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_Int = (this.jdField_b_of_type_JavaUtilList.size() - 1 - this.jdField_a_of_type_Int);
+      this.p = paramBoolean;
+      Collections.reverse(this.g);
+      this.c = (this.g.size() - 1 - this.c);
     }
   }
   
   public void a(boolean paramBoolean, List<AIORichMediaInfo> paramList)
   {
-    int i = this.jdField_d_of_type_Int;
-    if (i == 0) {
+    int i1 = this.m;
+    if (i1 == 0) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_d_of_type_JavaUtilList.clear();
-      this.jdField_e_of_type_Int = -1;
-      this.jdField_a_of_type_JavaLangString = null;
+      this.l.clear();
+      this.n = -1;
+      this.v = null;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(this.jdField_d_of_type_JavaUtilList, i);
+      this.t.b(this.l, i1);
     }
-    if (this.jdField_a_of_type_JavaUtilCalendar == null)
+    if (this.u == null)
     {
-      this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(MessageCache.a() * 1000L);
+      this.u = Calendar.getInstance();
+      this.u.setTimeInMillis(MessageCache.c() * 1000L);
     }
-    i = paramList.size();
+    i1 = paramList.size();
     boolean bool2 = true;
-    i -= 1;
+    i1 -= 1;
     for (;;)
     {
-      int k = 0;
-      if (i < 0) {
+      int i3 = 0;
+      if (i1 < 0) {
         break;
       }
-      localObject = (AIORichMediaInfo)paramList.get(i);
-      String str = a(this.jdField_a_of_type_JavaUtilCalendar, ((AIORichMediaInfo)localObject).a.g);
-      if (!str.equals(this.jdField_a_of_type_JavaLangString))
+      localObject = (AIORichMediaInfo)paramList.get(i1);
+      String str = a(this.u, ((AIORichMediaInfo)localObject).a.N);
+      if (!str.equals(this.v))
       {
-        this.jdField_a_of_type_JavaLangString = str;
-        int j = this.jdField_e_of_type_Int;
-        if (j != -1)
+        this.v = str;
+        int i2 = this.n;
+        if (i2 != -1)
         {
-          int m = j % this.jdField_d_of_type_Int;
-          if (m > 0)
+          int i4 = i2 % this.m;
+          if (i4 > 0)
           {
-            j = 0;
-            while (j < this.jdField_d_of_type_Int - m)
+            i2 = 0;
+            while (i2 < this.m - i4)
             {
-              this.jdField_d_of_type_JavaUtilList.add(jdField_b_of_type_JavaLangObject);
-              j += 1;
+              this.l.add(k);
+              i2 += 1;
             }
           }
         }
-        this.jdField_e_of_type_Int = 0;
-        this.jdField_d_of_type_JavaUtilList.add(str);
-        j = k;
-        while (j < this.jdField_d_of_type_Int - 1)
+        this.n = 0;
+        this.l.add(str);
+        i2 = i3;
+        while (i2 < this.m - 1)
         {
-          this.jdField_d_of_type_JavaUtilList.add(jdField_a_of_type_JavaLangObject);
-          j += 1;
+          this.l.add(j);
+          i2 += 1;
         }
       }
-      this.jdField_d_of_type_JavaUtilList.add(localObject);
-      this.jdField_e_of_type_Int += 1;
-      i -= 1;
+      this.l.add(localObject);
+      this.n += 1;
+      i1 -= 1;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo;
+    Object localObject = this.t;
     boolean bool1 = bool2;
     if (!paramBoolean) {
       if (paramList.isEmpty()) {
@@ -421,199 +384,230 @@ public class AIOImageListModel
         bool1 = false;
       }
     }
-    ((AIORichExpandInfo)localObject).a(bool1, this.jdField_d_of_type_Int, this.jdField_d_of_type_JavaUtilList);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(this.jdField_d_of_type_JavaUtilList, this.jdField_d_of_type_Int);
+    ((AIORichExpandInfo)localObject).a(bool1, this.m, this.l);
   }
   
   public boolean a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    int i = paramArrayOfAIORichMediaData.length - 1;
+    int i1 = paramArrayOfAIORichMediaData.length - 1;
     Object localObject;
-    if (i >= 0)
+    if (i1 >= 0)
     {
-      localObject = paramArrayOfAIORichMediaData[i];
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo == null) || (this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo == null))
+      localObject = paramArrayOfAIORichMediaData[i1];
+      if ((this.a == null) || (this.b == null))
       {
         localObject = new AIORichMediaInfo((AIORichMediaData)localObject);
-        this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = ((AIORichMediaInfo)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = ((AIORichMediaInfo)localObject);
+        this.b = ((AIORichMediaInfo)localObject);
+        this.a = ((AIORichMediaInfo)localObject);
       }
     }
-    i = 0;
-    while (i < paramArrayOfAIORichMediaData.length)
+    i1 = 0;
+    while (i1 < paramArrayOfAIORichMediaData.length)
     {
-      localObject = paramArrayOfAIORichMediaData[i];
-      if (this.jdField_a_of_type_Boolean)
+      localObject = paramArrayOfAIORichMediaData[i1];
+      if (this.i)
       {
         localArrayList.add(new AIORichMediaInfo((AIORichMediaData)localObject));
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.jdField_f_of_type_Long == ((AIORichMediaData)localObject).jdField_f_of_type_Long) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.jdField_f_of_type_Int == ((AIORichMediaData)localObject).jdField_f_of_type_Int))
+      else if ((this.a.a.L == ((AIORichMediaData)localObject).L) && (this.a.a.M == ((AIORichMediaData)localObject).M))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-        ((AIORichMediaInfo)localObject).jdField_c_of_type_Boolean = true;
-        if (localObject == this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo) {
-          this.jdField_c_of_type_Boolean = true;
+        localObject = this.a;
+        ((AIORichMediaInfo)localObject).i = true;
+        if (localObject == this.b) {
+          this.q = true;
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+        localArrayList.add(this.a);
       }
-      else if ((this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.jdField_f_of_type_Long == ((AIORichMediaData)localObject).jdField_f_of_type_Long) && (this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.jdField_f_of_type_Int == ((AIORichMediaData)localObject).jdField_f_of_type_Int))
+      else if ((this.b.a.L == ((AIORichMediaData)localObject).L) && (this.b.a.M == ((AIORichMediaData)localObject).M))
       {
-        localArrayList.add(this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+        localArrayList.add(this.b);
       }
       else
       {
         localArrayList.add(new AIORichMediaInfo((AIORichMediaData)localObject));
       }
-      i += 1;
+      i1 += 1;
     }
     if (paramInt >= 0) {
       paramInt = paramArrayOfAIORichMediaData.length;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_c_of_type_JavaUtilList.addAll(0, localArrayList);
+      this.h.addAll(0, localArrayList);
       return false;
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.q) {
       return false;
     }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_b_of_type_JavaUtilList = a(localArrayList);
-    if (this.jdField_b_of_type_Boolean) {
-      Collections.reverse(this.jdField_b_of_type_JavaUtilList);
+    this.f = localArrayList;
+    this.g = a(localArrayList);
+    if (this.p) {
+      Collections.reverse(this.g);
     }
-    paramArrayOfAIORichMediaData = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
+    paramArrayOfAIORichMediaData = this.a;
     if (paramArrayOfAIORichMediaData != null) {
-      this.jdField_a_of_type_Int = this.jdField_b_of_type_JavaUtilList.indexOf(paramArrayOfAIORichMediaData);
+      this.c = this.g.indexOf(paramArrayOfAIORichMediaData);
     }
-    paramInt = this.jdField_a_of_type_Int;
-    if ((paramInt < 0) || (paramInt >= this.jdField_b_of_type_JavaUtilList.size())) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+    paramInt = this.c;
+    if ((paramInt < 0) || (paramInt >= this.g.size())) {
+      this.c = this.f.indexOf(this.a);
     }
-    a(true, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Boolean = true;
+    a(true, this.f);
+    this.i = true;
     return true;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public AIORichMediaInfo b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo;
-  }
-  
-  public void b()
-  {
-    a(true, this.jdField_a_of_type_JavaUtilList);
+    return this.c;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
+    this.b = a(paramInt);
+    this.o = this.l.indexOf(this.b);
   }
   
   public void b(AIORichMediaInfo paramAIORichMediaInfo)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramAIORichMediaInfo);
-    this.jdField_b_of_type_JavaUtilList.remove(paramAIORichMediaInfo);
-    a(true, this.jdField_a_of_type_JavaUtilList);
+    this.f.remove(paramAIORichMediaInfo);
+    this.g.remove(paramAIORichMediaInfo);
+    a(true, this.f);
   }
   
-  public boolean b()
+  public AIORichMediaInfo c()
   {
-    if (!this.jdField_c_of_type_Boolean) {
-      return false;
-    }
-    int i = this.jdField_c_of_type_JavaUtilList.size();
-    if (i > 0)
-    {
-      this.jdField_b_of_type_Int += i;
-      this.jdField_c_of_type_Int += i;
-      this.jdField_a_of_type_JavaUtilList.addAll(0, this.jdField_c_of_type_JavaUtilList);
-      List localList = a(this.jdField_c_of_type_JavaUtilList);
-      a(false, localList);
-      if (this.jdField_b_of_type_Boolean)
-      {
-        Collections.reverse(localList);
-        this.jdField_b_of_type_JavaUtilList.addAll(localList);
-      }
-      else
-      {
-        this.jdField_a_of_type_Int += localList.size();
-        this.jdField_b_of_type_JavaUtilList.addAll(0, localList);
-      }
-      this.jdField_c_of_type_JavaUtilList.clear();
-      return true;
-    }
-    return false;
+    return this.b;
   }
   
-  public int c()
+  public void d(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    this.d = paramInt;
+  }
+  
+  public AIORichMediaInfo e()
+  {
+    return this.a;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public int f()
+  {
+    List localList = this.f;
     if (localList != null) {
       return localList.size();
     }
     return 0;
   }
   
-  public void c(int paramInt)
+  public void f(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
-  public int d()
+  public void g(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public int e()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-    Object localObject = a(paramInt);
+    this.o = paramInt;
+    Object localObject = h(paramInt);
     if (!AIORichMediaInfo.class.isInstance(localObject)) {
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo = ((AIORichMediaInfo)localObject);
-    this.jdField_a_of_type_Int = this.jdField_b_of_type_JavaUtilList.indexOf(this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+    this.b = ((AIORichMediaInfo)localObject);
+    this.c = this.g.indexOf(this.b);
   }
   
-  public int f()
+  public boolean g()
   {
-    return this.jdField_f_of_type_Int;
+    return this.t.a(this.l, this.m);
   }
   
-  public int g()
+  public Object h(int paramInt)
   {
-    return this.jdField_d_of_type_JavaUtilList.size();
+    return this.l.get(paramInt);
   }
   
-  public int h()
+  public boolean h()
   {
-    return g() + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a();
+    if (!this.q) {
+      return false;
+    }
+    int i1 = this.h.size();
+    if (i1 > 0)
+    {
+      this.d += i1;
+      this.e += i1;
+      this.f.addAll(0, this.h);
+      List localList = a(this.h);
+      a(false, localList);
+      if (this.p)
+      {
+        Collections.reverse(localList);
+        this.g.addAll(localList);
+      }
+      else
+      {
+        this.c += localList.size();
+        this.g.addAll(0, localList);
+      }
+      this.h.clear();
+      return true;
+    }
+    return false;
+  }
+  
+  public List<AIORichMediaInfo> i()
+  {
+    return this.g;
+  }
+  
+  public int j()
+  {
+    return this.d;
+  }
+  
+  public int k()
+  {
+    return this.e;
+  }
+  
+  public int l()
+  {
+    return this.o;
+  }
+  
+  public int m()
+  {
+    return this.l.size();
+  }
+  
+  public int n()
+  {
+    return m() + this.t.a();
+  }
+  
+  public void o()
+  {
+    if ((this.l.size() == 0) && (this.f.size() > 0))
+    {
+      a(false, this.f);
+      this.o = this.l.indexOf(this.b);
+    }
+  }
+  
+  public void p()
+  {
+    a(true, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListModel
  * JD-Core Version:    0.7.0.1
  */

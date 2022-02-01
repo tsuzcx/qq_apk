@@ -16,35 +16,35 @@ public class AdDislikeInfo
   
   public AdDislikeInfo(articlesummary.NegFeedback paramNegFeedback)
   {
-    this.c = 7;
-    this.jdField_a_of_type_Long = paramNegFeedback.uint64_type_id.get();
-    this.jdField_a_of_type_Int = paramNegFeedback.uint32_id.get();
-    this.jdField_b_of_type_Int = paramNegFeedback.uint32_f_id.get();
-    this.jdField_a_of_type_JavaLangString = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
-    this.jdField_b_of_type_JavaLangString = "";
+    this.d = 7;
+    this.e = paramNegFeedback.uint64_type_id.get();
+    this.a = paramNegFeedback.uint32_id.get();
+    this.b = paramNegFeedback.uint32_f_id.get();
+    this.c = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
+    this.f = "";
   }
   
   public AdDislikeInfo(oidb_0x885.NegFeedback paramNegFeedback)
   {
-    this.c = 7;
-    this.jdField_a_of_type_Long = paramNegFeedback.uint64_type_id.get();
-    this.jdField_a_of_type_Int = paramNegFeedback.uint32_id.get();
-    this.jdField_b_of_type_Int = paramNegFeedback.uint32_f_id.get();
-    this.jdField_a_of_type_JavaLangString = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
-    this.jdField_b_of_type_JavaLangString = "";
+    this.d = 7;
+    this.e = paramNegFeedback.uint64_type_id.get();
+    this.a = paramNegFeedback.uint32_id.get();
+    this.b = paramNegFeedback.uint32_f_id.get();
+    this.c = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
+    this.f = "";
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AdDislikeInfo{id=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", f_id=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", tagID=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", describe='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -52,7 +52,7 @@ public class AdDislikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo
  * JD-Core Version:    0.7.0.1
  */

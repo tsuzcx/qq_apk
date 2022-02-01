@@ -22,33 +22,33 @@ import org.json.JSONObject;
 public class EaseInInfoStickerDrawable
   extends InfoStickerDrawable
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int = 0;
-  private Typeface jdField_b_of_type_AndroidGraphicsTypeface = null;
-  private String jdField_b_of_type_JavaLangString = "27";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "OCT";
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString = "2017";
-  private int e;
-  private int h;
-  private int i;
-  private int j;
+  private float A = 0.0F;
+  private float B = 0.0F;
+  private Paint a = new Paint();
+  private TextPaint b = new TextPaint();
+  private Rect c = new Rect();
+  private int d = 0;
+  private int e = 0;
+  private PorterDuffXfermode n = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+  private Path o = new Path();
+  private Typeface p = null;
+  private Typeface q = null;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
+  private int v;
+  private int w;
+  private String x = "27";
+  private String y = "OCT";
+  private String z = "2017";
   
   public EaseInInfoStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.i);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -77,87 +77,87 @@ public class EaseInInfoStickerDrawable
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int k = a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources()) + 0;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(49.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
+    int i = a(8.5F, this.h.getResources()) + 0;
+    this.b.setTypeface(this.p);
+    this.b.setTextSize(a(49.0F, this.h.getResources()));
+    float f1 = Math.abs(this.b.getFontMetrics().ascent);
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
+      this.b.setLetterSpacing(0.0F);
     }
-    Object localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    String str = this.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Float = ((TextPaint)localObject).measureText(str, 0, str.length());
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(((Integer)paramArrayList.get(this.jdField_c_of_type_Int)).intValue());
-    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.jdField_c_of_type_Int)).intValue(), this.jdField_a_of_type_AndroidTextTextPaint);
-    localObject = this.jdField_b_of_type_JavaLangString;
-    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.jdField_a_of_type_AndroidGraphicsRect.width() - this.jdField_b_of_type_Float) / 2.0F, k + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    k = k + a(49.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(12.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    f1 = this.jdField_a_of_type_Float;
-    float f2 = k;
-    paramCanvas.drawLine(f1, f2, f1 + ((Integer)paramArrayList.get(this.jdField_d_of_type_Int)).intValue(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Object localObject = this.b;
+    String str = this.x;
+    this.B = ((TextPaint)localObject).measureText(str, 0, str.length());
+    this.b.setAlpha(((Integer)paramArrayList.get(this.r)).intValue());
+    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.r)).intValue(), this.b);
+    localObject = this.x;
+    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.c.width() - this.B) / 2.0F, i + f1, this.b);
+    i = i + a(49.0F, this.h.getResources()) + a(12.5F, this.h.getResources());
+    this.a.setColor(-1);
+    this.a.setStrokeWidth(a(2.0F, this.h.getResources()));
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    f1 = this.A;
+    float f2 = i;
+    paramCanvas.drawLine(f1, f2, f1 + ((Integer)paramArrayList.get(this.s)).intValue(), f2, this.a);
     if (Build.VERSION.SDK_INT >= 21) {
-      if (((Integer)paramArrayList.get(this.jdField_d_of_type_Int)).intValue() == (int)(this.jdField_a_of_type_AndroidGraphicsRect.width() - this.jdField_a_of_type_Float * 2.0F)) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      if (((Integer)paramArrayList.get(this.s)).intValue() == (int)(this.c.width() - this.A * 2.0F)) {
+        this.a.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+        this.a.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
       }
     }
-    k += a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(19.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
+    i += a(10.0F, this.h.getResources());
+    this.b.setTextSize(a(19.0F, this.h.getResources()));
+    f1 = Math.abs(this.b.getFontMetrics().ascent);
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.1F);
+      this.b.setLetterSpacing(0.1F);
     }
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    str = this.jdField_c_of_type_JavaLangString;
-    this.jdField_b_of_type_Float = ((TextPaint)localObject).measureText(str, 0, str.length());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_b_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(19.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(((Integer)paramArrayList.get(this.e)).intValue());
-    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.e)).intValue(), this.jdField_a_of_type_AndroidTextTextPaint);
-    localObject = this.jdField_c_of_type_JavaLangString;
-    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.jdField_a_of_type_AndroidGraphicsRect.width() - this.jdField_b_of_type_Float) / 2.0F, k + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    int m = a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_b_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(19.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
+    localObject = this.b;
+    str = this.y;
+    this.B = ((TextPaint)localObject).measureText(str, 0, str.length());
+    this.b.setTypeface(this.q);
+    this.b.setTextSize(a(19.0F, this.h.getResources()));
+    this.b.setAlpha(((Integer)paramArrayList.get(this.t)).intValue());
+    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.t)).intValue(), this.b);
+    localObject = this.y;
+    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.c.width() - this.B) / 2.0F, i + f1, this.b);
+    int j = a(10.0F, this.h.getResources());
+    int k = a(9.0F, this.h.getResources());
+    this.b.setTypeface(this.q);
+    this.b.setTextSize(a(19.0F, this.h.getResources()));
+    f1 = Math.abs(this.b.getFontMetrics().ascent);
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
+      this.b.setLetterSpacing(0.0F);
     }
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    str = this.jdField_d_of_type_JavaLangString;
-    this.jdField_b_of_type_Float = ((TextPaint)localObject).measureText(str, 0, str.length());
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(((Integer)paramArrayList.get(this.h)).intValue());
-    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.h)).intValue(), this.jdField_a_of_type_AndroidTextTextPaint);
-    localObject = this.jdField_d_of_type_JavaLangString;
-    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.jdField_a_of_type_AndroidGraphicsRect.width() - this.jdField_b_of_type_Float) / 2.0F, k + m + n + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    k = paramCanvas.saveLayer(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height());
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRect.width(), ((Integer)paramArrayList.get(this.j)).intValue());
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(((Integer)paramArrayList.get(this.i)).intValue(), this.jdField_a_of_type_AndroidGraphicsRect.height());
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    localObject = this.b;
+    str = this.z;
+    this.B = ((TextPaint)localObject).measureText(str, 0, str.length());
+    this.b.setAlpha(((Integer)paramArrayList.get(this.u)).intValue());
+    PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.u)).intValue(), this.b);
+    localObject = this.z;
+    paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), (this.c.width() - this.B) / 2.0F, i + j + k + f1, this.b);
+    i = paramCanvas.saveLayer(0.0F, 0.0F, this.c.width(), this.c.height(), this.a, 31);
+    this.a.setStyle(Paint.Style.STROKE);
+    this.a.setStrokeWidth(a(3.0F, this.h.getResources()));
+    paramCanvas.drawRect(this.c, this.a);
+    this.a.setXfermode(this.n);
+    this.a.setColor(-65536);
+    this.a.setStrokeWidth(a(3.0F, this.h.getResources()));
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.o.reset();
+    this.o.moveTo(this.c.width(), this.c.height());
+    this.o.lineTo(this.c.width(), ((Integer)paramArrayList.get(this.w)).intValue());
+    this.o.lineTo(((Integer)paramArrayList.get(this.v)).intValue(), this.c.height());
+    this.o.close();
     if (Build.VERSION.SDK_INT >= 21) {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == this.i) && (this.jdField_a_of_type_AndroidGraphicsRect.height() == this.j)) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      if ((this.c.width() == this.v) && (this.c.height() == this.w)) {
+        this.a.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+        this.a.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
       }
     }
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    paramCanvas.restoreToCount(k);
+    paramCanvas.drawPath(this.o, this.a);
+    this.a.setXfermode(null);
+    paramCanvas.restoreToCount(i);
   }
   
   public String[] a(String paramString)
@@ -173,30 +173,30 @@ public class EaseInInfoStickerDrawable
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("first_line", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("second_line", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("third_line", "");
+      this.j = paramString.optInt("type", 0);
+      this.x = paramString.optString("first_line", "");
+      this.y = paramString.optString("second_line", "");
+      this.z = paramString.optString("third_line", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString };
+    return new String[] { this.x, this.y, this.z };
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_Int = a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_b_of_type_Int = a(130.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setDither(true);
+    this.a.setColor(-1);
+    this.b = new TextPaint();
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
+    this.b.setColor(-1);
+    this.d = a(70.0F, this.h.getResources());
+    this.e = a(130.0F, this.h.getResources());
+    this.c = new Rect(0, 0, this.d, this.e);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-medium.ttf");
+      this.p = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-medium.ttf");
     }
     catch (Exception localException1)
     {
@@ -204,38 +204,38 @@ public class EaseInInfoStickerDrawable
       label178:
       break label148;
     }
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
+    this.p = Typeface.DEFAULT;
     try
     {
-      this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
+      this.q = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
     }
     catch (Exception localException2)
     {
       break label178;
     }
-    this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
-    this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 0L, 700L, -this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.width(), new LinearInterpolator());
-    this.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("Y", 0L, 700L, -this.jdField_a_of_type_AndroidGraphicsRect.height(), this.jdField_a_of_type_AndroidGraphicsRect.height(), new LinearInterpolator());
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("firstFont", 500L, 200L, 0, 255, new LinearInterpolator());
-    this.jdField_a_of_type_Float = a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("secondLine", 600L, 400L, 0, (int)(this.jdField_a_of_type_AndroidGraphicsRect.width() - this.jdField_a_of_type_Float * 2.0F), new LinearInterpolator());
-    this.e = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("thirdFont", 800L, 500L, 0, 255, new LinearInterpolator());
-    this.h = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("fourthFont", 900L, 500L, 0, 255, new LinearInterpolator());
+    this.q = Typeface.DEFAULT;
+    this.v = this.f.a("X", 0L, 700L, -this.c.width(), this.c.width(), new LinearInterpolator());
+    this.w = this.f.a("Y", 0L, 700L, -this.c.height(), this.c.height(), new LinearInterpolator());
+    this.r = this.f.a("firstFont", 500L, 200L, 0, 255, new LinearInterpolator());
+    this.A = a(10.0F, this.h.getResources());
+    this.s = this.f.a("secondLine", 600L, 400L, 0, (int)(this.c.width() - this.A * 2.0F), new LinearInterpolator());
+    this.t = this.f.a("thirdFont", 800L, 500L, 0, 255, new LinearInterpolator());
+    this.u = this.f.a("fourthFont", 900L, 500L, 0, 255, new LinearInterpolator());
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.e;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.EaseInInfoStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

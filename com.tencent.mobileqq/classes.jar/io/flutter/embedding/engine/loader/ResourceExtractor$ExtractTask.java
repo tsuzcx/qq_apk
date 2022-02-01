@@ -40,199 +40,156 @@ class ResourceExtractor$ExtractTask
     //   0: aload_0
     //   1: getfield 25	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mResources	Ljava/util/HashSet;
     //   4: invokevirtual 50	java/util/HashSet:iterator	()Ljava/util/Iterator;
-    //   7: astore 5
-    //   9: aload 5
-    //   11: invokeinterface 56 1 0
-    //   16: ifeq +251 -> 267
-    //   19: aload 5
-    //   21: invokeinterface 60 1 0
-    //   26: checkcast 62	java/lang/String
-    //   29: astore_3
-    //   30: new 64	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: ldc 67
-    //   41: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: pop
-    //   45: aload_2
+    //   7: astore_2
+    //   8: aload_2
+    //   9: invokeinterface 56 1 0
+    //   14: ifeq +198 -> 212
+    //   17: aload_2
+    //   18: invokeinterface 60 1 0
+    //   23: checkcast 62	java/lang/String
+    //   26: astore_3
+    //   27: new 64	java/lang/StringBuilder
+    //   30: dup
+    //   31: invokespecial 65	java/lang/StringBuilder:<init>	()V
+    //   34: astore 4
+    //   36: aload 4
+    //   38: ldc 67
+    //   40: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: aload 4
     //   46: aload_3
     //   47: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
-    //   51: aload_2
-    //   52: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: pop
-    //   56: new 77	java/io/File
-    //   59: dup
-    //   60: aload_1
-    //   61: aload_3
-    //   62: invokespecial 80	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   65: astore_2
-    //   66: aload_2
-    //   67: invokevirtual 83	java/io/File:exists	()Z
-    //   70: ifeq +6 -> 76
-    //   73: goto -64 -> 9
-    //   76: aload_2
-    //   77: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
-    //   80: ifnull +11 -> 91
-    //   83: aload_2
-    //   84: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
-    //   87: invokevirtual 90	java/io/File:mkdirs	()Z
-    //   90: pop
-    //   91: aload_0
-    //   92: getfield 27	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mAssetManager	Landroid/content/res/AssetManager;
-    //   95: aload_3
-    //   96: invokevirtual 96	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   99: astore 6
-    //   101: aconst_null
-    //   102: astore 4
-    //   104: aload 4
-    //   106: astore_3
-    //   107: new 98	java/io/FileOutputStream
-    //   110: dup
-    //   111: aload_2
-    //   112: invokespecial 101	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   115: astore 7
-    //   117: aload 6
-    //   119: aload 7
-    //   121: invokestatic 107	io/flutter/embedding/engine/loader/ResourceExtractor:access$200	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
-    //   124: aload 4
-    //   126: astore_3
-    //   127: aload 7
-    //   129: invokevirtual 112	java/io/OutputStream:close	()V
-    //   132: aload 6
-    //   134: ifnull -125 -> 9
-    //   137: aload 6
-    //   139: invokevirtual 115	java/io/InputStream:close	()V
-    //   142: goto -133 -> 9
-    //   145: astore_2
-    //   146: aconst_null
-    //   147: astore_3
-    //   148: goto +7 -> 155
-    //   151: astore_3
-    //   152: aload_3
-    //   153: athrow
-    //   154: astore_2
-    //   155: aload_3
-    //   156: ifnull +14 -> 170
-    //   159: aload 4
-    //   161: astore_3
-    //   162: aload 7
-    //   164: invokevirtual 112	java/io/OutputStream:close	()V
-    //   167: goto +11 -> 178
-    //   170: aload 4
-    //   172: astore_3
-    //   173: aload 7
-    //   175: invokevirtual 112	java/io/OutputStream:close	()V
-    //   178: aload 4
-    //   180: astore_3
-    //   181: aload_2
-    //   182: athrow
-    //   183: astore_2
-    //   184: goto +8 -> 192
-    //   187: astore_2
+    //   51: aload 4
+    //   53: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: pop
+    //   57: new 77	java/io/File
+    //   60: dup
+    //   61: aload_1
+    //   62: aload_3
+    //   63: invokespecial 80	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   66: astore 4
+    //   68: aload 4
+    //   70: invokevirtual 83	java/io/File:exists	()Z
+    //   73: ifeq +6 -> 79
+    //   76: goto -68 -> 8
+    //   79: aload 4
+    //   81: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
+    //   84: ifnull +12 -> 96
+    //   87: aload 4
+    //   89: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
+    //   92: invokevirtual 90	java/io/File:mkdirs	()Z
+    //   95: pop
+    //   96: aload_0
+    //   97: getfield 27	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mAssetManager	Landroid/content/res/AssetManager;
+    //   100: aload_3
+    //   101: invokevirtual 96	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   104: astore_3
+    //   105: new 98	java/io/FileOutputStream
+    //   108: dup
+    //   109: aload 4
+    //   111: invokespecial 101	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   114: astore 5
+    //   116: aload_3
+    //   117: aload 5
+    //   119: invokestatic 107	io/flutter/embedding/engine/loader/ResourceExtractor:access$200	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   122: aload 5
+    //   124: invokevirtual 112	java/io/OutputStream:close	()V
+    //   127: aload_3
+    //   128: ifnull -120 -> 8
+    //   131: aload_3
+    //   132: invokevirtual 115	java/io/InputStream:close	()V
+    //   135: goto -127 -> 8
+    //   138: astore 4
+    //   140: aload 5
+    //   142: invokevirtual 112	java/io/OutputStream:close	()V
+    //   145: aload 4
+    //   147: athrow
+    //   148: astore 4
+    //   150: aload_3
+    //   151: ifnull +7 -> 158
+    //   154: aload_3
+    //   155: invokevirtual 115	java/io/InputStream:close	()V
+    //   158: aload 4
+    //   160: athrow
+    //   161: astore_1
+    //   162: new 64	java/lang/StringBuilder
+    //   165: dup
+    //   166: invokespecial 65	java/lang/StringBuilder:<init>	()V
+    //   169: astore_2
+    //   170: aload_2
+    //   171: ldc 117
+    //   173: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: pop
+    //   177: aload_2
+    //   178: aload_1
+    //   179: invokevirtual 120	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   182: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: ldc 122
     //   188: aload_2
-    //   189: astore_3
-    //   190: aload_2
-    //   191: athrow
-    //   192: aload 6
-    //   194: ifnull +20 -> 214
-    //   197: aload_3
-    //   198: ifnull +11 -> 209
-    //   201: aload 6
-    //   203: invokevirtual 115	java/io/InputStream:close	()V
-    //   206: goto +8 -> 214
-    //   209: aload 6
-    //   211: invokevirtual 115	java/io/InputStream:close	()V
-    //   214: aload_2
-    //   215: athrow
-    //   216: astore_1
-    //   217: new 64	java/lang/StringBuilder
-    //   220: dup
-    //   221: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   224: astore_2
-    //   225: aload_2
-    //   226: ldc 117
-    //   228: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   231: pop
-    //   232: aload_2
-    //   233: aload_1
-    //   234: invokevirtual 120	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   237: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   240: pop
-    //   241: ldc 122
-    //   243: aload_2
-    //   244: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   247: invokestatic 128	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   250: pop
-    //   251: aload_0
-    //   252: getfield 23	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mDataDirPath	Ljava/lang/String;
-    //   255: aload_0
-    //   256: getfield 25	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mResources	Ljava/util/HashSet;
-    //   259: invokestatic 132	io/flutter/embedding/engine/loader/ResourceExtractor:access$100	(Ljava/lang/String;Ljava/util/HashSet;)V
-    //   262: iconst_0
-    //   263: ireturn
-    //   264: goto -255 -> 9
-    //   267: iconst_1
-    //   268: ireturn
-    //   269: astore_2
-    //   270: goto -6 -> 264
-    //   273: astore_3
-    //   274: goto -96 -> 178
-    //   277: astore_3
-    //   278: goto -64 -> 214
+    //   189: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokestatic 128	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   195: pop
+    //   196: aload_0
+    //   197: getfield 23	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mDataDirPath	Ljava/lang/String;
+    //   200: aload_0
+    //   201: getfield 25	io/flutter/embedding/engine/loader/ResourceExtractor$ExtractTask:mResources	Ljava/util/HashSet;
+    //   204: invokestatic 132	io/flutter/embedding/engine/loader/ResourceExtractor:access$100	(Ljava/lang/String;Ljava/util/HashSet;)V
+    //   207: iconst_0
+    //   208: ireturn
+    //   209: goto -201 -> 8
+    //   212: iconst_1
+    //   213: ireturn
+    //   214: astore_3
+    //   215: goto -6 -> 209
+    //   218: astore 5
+    //   220: goto -75 -> 145
+    //   223: astore_3
+    //   224: goto -66 -> 158
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	281	0	this	ExtractTask
-    //   0	281	1	paramFile	File
-    //   37	75	2	localObject1	java.lang.Object
-    //   145	1	2	localObject2	java.lang.Object
-    //   154	28	2	localObject3	java.lang.Object
-    //   183	1	2	localObject4	java.lang.Object
-    //   187	28	2	localThrowable1	java.lang.Throwable
-    //   224	20	2	localStringBuilder	java.lang.StringBuilder
-    //   269	1	2	localFileNotFoundException	java.io.FileNotFoundException
-    //   29	119	3	localObject5	java.lang.Object
-    //   151	5	3	localThrowable2	java.lang.Throwable
-    //   161	37	3	localObject6	java.lang.Object
-    //   273	1	3	localThrowable3	java.lang.Throwable
-    //   277	1	3	localThrowable4	java.lang.Throwable
-    //   102	77	4	localObject7	java.lang.Object
-    //   7	13	5	localIterator	java.util.Iterator
-    //   99	111	6	localInputStream	java.io.InputStream
-    //   115	59	7	localFileOutputStream	java.io.FileOutputStream
+    //   0	227	0	this	ExtractTask
+    //   0	227	1	paramFile	File
+    //   7	182	2	localObject1	java.lang.Object
+    //   26	129	3	localObject2	java.lang.Object
+    //   214	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   223	1	3	localThrowable1	java.lang.Throwable
+    //   34	76	4	localObject3	java.lang.Object
+    //   138	8	4	localThrowable2	java.lang.Throwable
+    //   148	11	4	localThrowable3	java.lang.Throwable
+    //   114	27	5	localFileOutputStream	java.io.FileOutputStream
+    //   218	1	5	localThrowable4	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   117	124	145	finally
-    //   117	124	151	java/lang/Throwable
-    //   152	154	154	finally
-    //   107	117	183	finally
-    //   127	132	183	finally
-    //   162	167	183	finally
-    //   173	178	183	finally
-    //   181	183	183	finally
-    //   190	192	183	finally
-    //   107	117	187	java/lang/Throwable
-    //   127	132	187	java/lang/Throwable
-    //   173	178	187	java/lang/Throwable
-    //   181	183	187	java/lang/Throwable
-    //   30	73	216	java/io/IOException
-    //   76	91	216	java/io/IOException
-    //   91	101	216	java/io/IOException
-    //   137	142	216	java/io/IOException
-    //   201	206	216	java/io/IOException
-    //   209	214	216	java/io/IOException
-    //   214	216	216	java/io/IOException
-    //   30	73	269	java/io/FileNotFoundException
-    //   76	91	269	java/io/FileNotFoundException
-    //   91	101	269	java/io/FileNotFoundException
-    //   137	142	269	java/io/FileNotFoundException
-    //   201	206	269	java/io/FileNotFoundException
-    //   209	214	269	java/io/FileNotFoundException
-    //   214	216	269	java/io/FileNotFoundException
-    //   162	167	273	java/lang/Throwable
-    //   201	206	277	java/lang/Throwable
+    //   116	122	138	java/lang/Throwable
+    //   105	116	148	java/lang/Throwable
+    //   122	127	148	java/lang/Throwable
+    //   145	148	148	java/lang/Throwable
+    //   27	76	161	java/io/IOException
+    //   79	96	161	java/io/IOException
+    //   96	105	161	java/io/IOException
+    //   105	116	161	java/io/IOException
+    //   116	122	161	java/io/IOException
+    //   122	127	161	java/io/IOException
+    //   131	135	161	java/io/IOException
+    //   140	145	161	java/io/IOException
+    //   145	148	161	java/io/IOException
+    //   154	158	161	java/io/IOException
+    //   158	161	161	java/io/IOException
+    //   27	76	214	java/io/FileNotFoundException
+    //   79	96	214	java/io/FileNotFoundException
+    //   96	105	214	java/io/FileNotFoundException
+    //   105	116	214	java/io/FileNotFoundException
+    //   116	122	214	java/io/FileNotFoundException
+    //   122	127	214	java/io/FileNotFoundException
+    //   131	135	214	java/io/FileNotFoundException
+    //   140	145	214	java/io/FileNotFoundException
+    //   145	148	214	java/io/FileNotFoundException
+    //   154	158	214	java/io/FileNotFoundException
+    //   158	161	214	java/io/FileNotFoundException
+    //   140	145	218	java/lang/Throwable
+    //   154	158	223	java/lang/Throwable
   }
   
   protected Void doInBackground(Void... paramVarArgs)
@@ -263,7 +220,7 @@ class ResourceExtractor$ExtractTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.ResourceExtractor.ExtractTask
  * JD-Core Version:    0.7.0.1
  */

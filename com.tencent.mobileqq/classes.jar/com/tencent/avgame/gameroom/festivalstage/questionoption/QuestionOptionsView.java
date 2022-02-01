@@ -11,10 +11,10 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class QuestionOptionsView
   extends GridView
 {
-  private int jdField_a_of_type_Int = -1;
-  private IQuestionOptionPresenter jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
-  private QuestionOptionItemConfig jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig = null;
-  private QuestionOptionsAdapter jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsAdapter;
+  private QuestionOptionsAdapter a;
+  private IQuestionOptionPresenter b;
+  private int c = -1;
+  private QuestionOptionItemConfig d = null;
   
   public QuestionOptionsView(Context paramContext)
   {
@@ -32,36 +32,31 @@ public class QuestionOptionsView
     c();
   }
   
-  public static RelativeLayout.LayoutParams a()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.b(97.0F));
-    localLayoutParams.addRule(12);
-    localLayoutParams.addRule(1);
-    localLayoutParams.bottomMargin = ViewUtils.b(16.0F);
-    localLayoutParams.leftMargin = ViewUtils.b(16.0F);
-    localLayoutParams.rightMargin = ViewUtils.b(16.0F);
-    return localLayoutParams;
-  }
-  
   private void c()
   {
     setNumColumns(2);
     setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter = new QuestionOptionsPresenterImpl(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsAdapter = new QuestionOptionsAdapter(getContext(), this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter);
+    this.b = new QuestionOptionsPresenterImpl(this);
+    this.a = new QuestionOptionsAdapter(getContext(), this.b);
   }
   
-  public IQuestionOptionPresenter a()
+  public static RelativeLayout.LayoutParams getDefaultLayoutParams()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dpToPx(97.0F));
+    localLayoutParams.addRule(12);
+    localLayoutParams.addRule(1);
+    localLayoutParams.bottomMargin = ViewUtils.dpToPx(16.0F);
+    localLayoutParams.leftMargin = ViewUtils.dpToPx(16.0F);
+    localLayoutParams.rightMargin = ViewUtils.dpToPx(16.0F);
+    return localLayoutParams;
   }
   
   public void a()
   {
-    setHorizontalSpacing(ViewUtils.b(15.0F));
-    setVerticalSpacing(ViewUtils.b(7.0F));
+    setHorizontalSpacing(ViewUtils.dpToPx(15.0F));
+    setVerticalSpacing(ViewUtils.dpToPx(7.0F));
     setVerticalScrollBarEnabled(false);
-    setAdapter(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsAdapter);
+    setAdapter(this.a);
     setSelector(new ColorDrawable(0));
     setOnItemClickListener(new QuestionOptionsView.1(this));
     post(new QuestionOptionsView.2(this));
@@ -88,9 +83,14 @@ public class QuestionOptionsView
     }
   }
   
+  public IQuestionOptionPresenter getPresenter()
+  {
+    return this.b;
+  }
+  
   public void setConfig(QuestionOptionItemConfig paramQuestionOptionItemConfig)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig = paramQuestionOptionItemConfig;
+    this.d = paramQuestionOptionItemConfig;
     int i = 0;
     while (i < getChildCount())
     {

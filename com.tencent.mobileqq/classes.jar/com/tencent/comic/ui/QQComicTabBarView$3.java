@@ -14,21 +14,21 @@ class QQComicTabBarView$3
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    paramInt1 = this.a.a();
-    if ((this.a.jdField_a_of_type_JavaUtilList != null) && (paramInt1 >= 0))
+    paramInt1 = this.a.getSelectedTabIndex();
+    if ((this.a.g != null) && (paramInt1 >= 0))
     {
-      if (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+      if (paramInt1 >= this.a.g.size()) {
         return;
       }
-      paramInt2 = VipComicJumpActivity.getIndexByTag("fav", this.a.jdField_a_of_type_JavaUtilList);
+      paramInt2 = VipComicJumpActivity.getIndexByTag("fav", this.a.g);
       if ((paramBoolean) && (paramInt1 != paramInt2))
       {
         this.a.a(paramInt2);
         return;
       }
-      RedTouchUI localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_ComTencentComicUtilsSimpleBiMap.get("1113.100801");
-      RedAppInfo localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-      if ((localRedTouchUI != null) && (localRedTouchUI.c()) && (localRedAppInfo != null) && (localRedTouchUI.a == localRedAppInfo)) {
+      RedTouchUI localRedTouchUI = (RedTouchUI)this.a.e.get("1113.100801");
+      RedAppInfo localRedAppInfo = (RedAppInfo)this.a.d.get(paramInt2);
+      if ((localRedTouchUI != null) && (localRedTouchUI.h()) && (localRedAppInfo != null) && (localRedTouchUI.a == localRedAppInfo)) {
         this.a.a(paramInt2, true);
       }
     }
@@ -36,7 +36,7 @@ class QQComicTabBarView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,12 +24,12 @@ public class PicUtilImpl
   
   public int getImageType(String paramString)
   {
-    return PicBusUtil.a(paramString);
+    return PicBusUtil.c(paramString);
   }
   
   public ArrayList<Integer> getSliceInfos(String paramString)
   {
-    return PicBusUtil.a(paramString);
+    return PicBusUtil.b(paramString);
   }
   
   public boolean isDynamicImg(int paramInt)
@@ -49,7 +49,7 @@ public class PicUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicUtilImpl
  * JD-Core Version:    0.7.0.1
  */

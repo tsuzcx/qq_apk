@@ -9,24 +9,24 @@ import java.lang.ref.WeakReference;
 class WallpaperHelper$ConfigChangeListener
   implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  private VipWallpaperService.WallpaperConfig jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig;
-  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<WallpaperHelper> a;
+  private VipWallpaperService.WallpaperConfig b;
   
   WallpaperHelper$ConfigChangeListener(WallpaperHelper paramWallpaperHelper)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
+    this.a = new WeakReference(paramWallpaperHelper);
   }
   
   public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (WallpaperHelper)this.a.get();
     if (paramString != null)
     {
       paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
-      VipWallpaperService.WallpaperConfig localWallpaperConfig = this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig;
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = this.b;
       if ((localWallpaperConfig == null) || (!localWallpaperConfig.equals(paramSharedPreferences)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig = paramSharedPreferences;
+        this.b = paramSharedPreferences;
         ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
       }
     }
@@ -34,7 +34,7 @@ class WallpaperHelper$ConfigChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener
  * JD-Core Version:    0.7.0.1
  */

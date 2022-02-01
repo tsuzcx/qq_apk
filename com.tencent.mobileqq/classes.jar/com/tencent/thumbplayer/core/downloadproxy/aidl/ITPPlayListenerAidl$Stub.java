@@ -26,6 +26,7 @@ public abstract class ITPPlayListenerAidl$Stub
   static final int TRANSACTION_onDownloadProgressUpdate = 1;
   static final int TRANSACTION_onDownloadProtocolUpdate = 9;
   static final int TRANSACTION_onDownloadStatusUpdate = 8;
+  static final int TRANSACTION_onPcdnDownloadFailed = 22;
   static final int TRANSACTION_onPlayCallback = 4;
   static final int TRANSACTION_onQuicDownloadStatusUpdate = 10;
   static final int TRANSACTION_onReadData = 17;
@@ -63,6 +64,11 @@ public abstract class ITPPlayListenerAidl$Stub
       {
       default: 
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 22: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
+        onPcdnDownloadFailed(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
       case 21: 
         paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl");
         paramParcel1 = getContentType(paramParcel1.readInt(), paramParcel1.readString());
@@ -187,7 +193,7 @@ public abstract class ITPPlayListenerAidl$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPlayListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

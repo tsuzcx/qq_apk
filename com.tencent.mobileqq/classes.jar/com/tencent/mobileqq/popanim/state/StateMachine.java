@@ -8,30 +8,66 @@ import com.tencent.qphone.base.util.QLog;
 
 public class StateMachine
 {
-  private PopOutEmoticonGesture jdField_a_of_type_ComTencentMobileqqPopanimPopOutEmoticonGesture;
-  private BaseState jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState;
-  private BlurMaskState jdField_a_of_type_ComTencentMobileqqPopanimStateBlurMaskState;
-  private EndAnimState jdField_a_of_type_ComTencentMobileqqPopanimStateEndAnimState;
-  private PopAnimState jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState;
-  private PopDeleteState jdField_a_of_type_ComTencentMobileqqPopanimStatePopDeleteState;
-  private StateContext jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext;
-  private TouchUpState jdField_a_of_type_ComTencentMobileqqPopanimStateTouchUpState;
-  private boolean jdField_a_of_type_Boolean;
-  private BaseState b;
+  private BlurMaskState a;
+  private PopAnimState b;
+  private PopDeleteState c;
+  private TouchUpState d;
+  private EndAnimState e;
+  private StateContext f;
+  private BaseState g;
+  private BaseState h;
+  private boolean i;
+  private PopOutEmoticonGesture j;
   
   public StateMachine(PopOutEmoticonGesture paramPopOutEmoticonGesture, StateContext paramStateContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutEmoticonGesture = paramPopOutEmoticonGesture;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext = paramStateContext;
-    paramPopOutEmoticonGesture = PopOutAnimViewHolder.a().a;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateBlurMaskState = new BlurMaskState(paramPopOutEmoticonGesture, paramStateContext);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState = new PopAnimState(paramPopOutEmoticonGesture, paramStateContext);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopDeleteState = new PopDeleteState(paramPopOutEmoticonGesture, paramStateContext);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateTouchUpState = new TouchUpState(paramPopOutEmoticonGesture, paramStateContext);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateEndAnimState = new EndAnimState(paramPopOutEmoticonGesture, paramStateContext);
+    this.j = paramPopOutEmoticonGesture;
+    this.f = paramStateContext;
+    paramPopOutEmoticonGesture = PopOutAnimViewHolder.a().b;
+    this.a = new BlurMaskState(paramPopOutEmoticonGesture, paramStateContext);
+    this.b = new PopAnimState(paramPopOutEmoticonGesture, paramStateContext);
+    this.c = new PopDeleteState(paramPopOutEmoticonGesture, paramStateContext);
+    this.d = new TouchUpState(paramPopOutEmoticonGesture, paramStateContext);
+    this.e = new EndAnimState(paramPopOutEmoticonGesture, paramStateContext);
   }
   
-  private BaseState a(int paramInt)
+  private void a(int paramInt)
+  {
+    BaseState localBaseState1 = b(paramInt);
+    if (localBaseState1 != this.g)
+    {
+      if (this.i) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramInt = hashCode();
+        String str = null;
+        if (localBaseState1 != null) {
+          localObject = localBaseState1.getClass().getSimpleName();
+        } else {
+          localObject = null;
+        }
+        BaseState localBaseState2 = this.g;
+        if (localBaseState2 != null) {
+          str = localBaseState2.getClass().getSimpleName();
+        }
+        QLog.d("PopOut_StateMachine", 2, new Object[] { "transition state, hashCode:", Integer.valueOf(paramInt), " newState = ", localObject, " preState:", str });
+      }
+      this.h = this.g;
+      this.g = localBaseState1;
+      Object localObject = this.h;
+      if (localObject != null) {
+        ((BaseState)localObject).b(this.g);
+      }
+      localObject = this.g;
+      if (localObject != null) {
+        ((BaseState)localObject).a(this.h);
+      }
+    }
+  }
+  
+  private BaseState b(int paramInt)
   {
     if (paramInt != 1)
     {
@@ -52,76 +88,47 @@ public class StateMachine
               }
               return null;
             }
-            return this.jdField_a_of_type_ComTencentMobileqqPopanimStateEndAnimState;
+            return this.e;
           }
-          return this.jdField_a_of_type_ComTencentMobileqqPopanimStateTouchUpState;
+          return this.d;
         }
-        return this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopDeleteState;
+        return this.c;
       }
-      return this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState;
+      return this.b;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPopanimStateBlurMaskState;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("transitionToState type = ");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("PopOut_StateMachine", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = a(paramInt);
-    BaseState localBaseState = this.jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState;
-    if (localObject != localBaseState)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-      this.b = localBaseState;
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState = ((BaseState)localObject);
-      localObject = this.b;
-      if (localObject != null) {
-        ((BaseState)localObject).b(this.jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState;
-      if (localObject != null) {
-        ((BaseState)localObject).a(this.b);
-      }
-    }
+    return this.a;
   }
   
   public void a()
   {
     a(4);
     a(5);
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void a(EmoticonInfo paramEmoticonInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo = paramEmoticonInfo;
+    this.i = false;
+    this.f.b = paramEmoticonInfo;
     a(1);
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3) && (!this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.c))
+    if ((paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3) && (!this.f.j))
     {
-      if (paramMotionEvent.getAction() == 2)
+      if ((paramMotionEvent.getAction() == 2) && (!this.f.b()))
       {
-        StateContext localStateContext = this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext;
+        StateContext localStateContext = this.f;
         boolean bool;
-        if ((!localStateContext.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutEmoticonGesture.b(paramMotionEvent))) {
+        if ((!localStateContext.h) && (this.j.b(paramMotionEvent))) {
           bool = false;
         } else {
           bool = true;
         }
-        localStateContext.jdField_a_of_type_Boolean = bool;
-        if (this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_Boolean) {
-          if (this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutEmoticonGesture.c(paramMotionEvent)) {
+        localStateContext.h = bool;
+        if (this.f.h) {
+          if (this.j.c(paramMotionEvent)) {
             a(3);
           } else {
             a(2);
@@ -132,13 +139,13 @@ public class StateMachine
     else {
       a(4);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateBaseState.a(paramMotionEvent);
+    this.g.a(paramMotionEvent);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.StateMachine
  * JD-Core Version:    0.7.0.1
  */

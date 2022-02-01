@@ -8,15 +8,15 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract class ChatLayoutBubbleBgExecutor
 {
-  protected Context a;
-  protected SessionInfo a;
   protected QQAppInterface a;
+  protected SessionInfo b;
+  protected Context c;
   
   public ChatLayoutBubbleBgExecutor(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramQQAppInterface;
+    this.b = paramSessionInfo;
+    this.c = paramContext;
   }
   
   public abstract int a();
@@ -27,7 +27,7 @@ public abstract class ChatLayoutBubbleBgExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.bubblebghandlerexecutor.ChatLayoutBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

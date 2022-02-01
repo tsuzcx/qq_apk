@@ -30,7 +30,7 @@ class FollowingListFragment$FollowListAdapter
   {
     Map localMap = (Map)getItem(paramInt);
     ResultRecord localResultRecord = ResultRecord.a((String)localMap.get("key_uin"), (String)localMap.get("key_name"));
-    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
+    if (FollowingListFragment.b(this.a).contains(localResultRecord)) {
       localMap.put("key_checked", Boolean.valueOf(true));
     } else {
       localMap.put("key_checked", Boolean.valueOf(false));
@@ -43,16 +43,16 @@ class FollowingListFragment$FollowListAdapter
   public void setViewImage(ImageView paramImageView, String paramString)
   {
     super.setViewImage(paramImageView, paramString);
-    if (paramImageView.getId() == 2131368343) {
+    if (paramImageView.getId() == 2131435219) {
       try
       {
-        localObject = this.a.getResources().getDrawable(2130840321);
+        localObject = this.a.getResources().getDrawable(2130841060);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
         localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
         ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(140, 140));
-        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.n);
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.o);
         paramImageView.setImageDrawable((Drawable)localObject);
         return;
       }
@@ -68,7 +68,7 @@ class FollowingListFragment$FollowListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.FollowingListFragment.FollowListAdapter
  * JD-Core Version:    0.7.0.1
  */

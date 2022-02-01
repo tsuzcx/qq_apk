@@ -12,24 +12,24 @@ public class FeedItemCellTypeProteus
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
-  {
-    return this;
-  }
-  
-  public FeedItemCell d()
+  public FeedItemCell b()
   {
     return this;
   }
   
   public FeedItemCell e()
   {
+    return this;
+  }
+  
+  public FeedItemCell f()
+  {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeProteus
  * JD-Core Version:    0.7.0.1
  */

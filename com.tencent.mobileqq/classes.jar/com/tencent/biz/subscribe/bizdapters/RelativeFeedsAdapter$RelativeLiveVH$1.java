@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
@@ -19,31 +20,39 @@ class RelativeFeedsAdapter$RelativeLiveVH$1
   
   public void onClick(View paramView)
   {
-    Object localObject1 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live;
-    String str2 = "";
-    if ((localObject1 != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomId.has())) {
-      localObject1 = String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomId.get());
-    } else {
-      localObject1 = "";
-    }
-    RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeLiveVH.a, (String)localObject1);
-    String str1;
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL.has())) {
-      str1 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.rtmpURL.get();
-    } else {
-      str1 = "";
-    }
-    Iterator localIterator = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.live.roomIcon.get().iterator();
-    do
+    Object localObject1 = this.a;
+    if (localObject1 == null)
     {
-      localObject2 = str2;
-      if (!localIterator.hasNext()) {
-        break;
+      QLog.e("RelativeFeedsAdapter", 1, "onClick feed is null");
+    }
+    else
+    {
+      localObject1 = ((CertifiedAccountMeta.StFeed)localObject1).live;
+      String str2 = "";
+      if ((localObject1 != null) && (this.a.live.roomId.has())) {
+        localObject1 = String.valueOf(this.a.live.roomId.get());
+      } else {
+        localObject1 = "";
       }
-      localObject2 = (CertifiedAccountMeta.StLive.RoomIcon)localIterator.next();
-    } while (!"1:1".equals(((CertifiedAccountMeta.StLive.RoomIcon)localObject2).size.get()));
-    Object localObject2 = ((CertifiedAccountMeta.StLive.RoomIcon)localObject2).url.get();
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeLiveVH.a.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeLiveVH.itemView.getContext(), (String)localObject1, str1, this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeLiveVH.a.a(), RelativeFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeLiveVH.a), (String)localObject2);
+      RelativeFeedsAdapter.a(this.b.r, (String)localObject1);
+      String str1;
+      if ((this.a.live != null) && (this.a.live.rtmpURL != null) && (this.a.live.rtmpURL.has())) {
+        str1 = this.a.live.rtmpURL.get();
+      } else {
+        str1 = "";
+      }
+      Iterator localIterator = this.a.live.roomIcon.get().iterator();
+      do
+      {
+        localObject2 = str2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (CertifiedAccountMeta.StLive.RoomIcon)localIterator.next();
+      } while (!"1:1".equals(((CertifiedAccountMeta.StLive.RoomIcon)localObject2).size.get()));
+      Object localObject2 = ((CertifiedAccountMeta.StLive.RoomIcon)localObject2).url.get();
+      this.b.r.a(this.b.itemView.getContext(), (String)localObject1, str1, this.b.r.g(), RelativeFeedsAdapter.d(this.b.r), (String)localObject2, "0", "0", "0", "0");
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -11,12 +11,12 @@ class AddFriendLogicActivity$3$1
   
   public void run()
   {
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendLogicActivity$3.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).addFriendToFriendList(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    ((FriendListHandler)this.b.a.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).addFriendToFriendList(this.a, 0, 3999, "", true, false, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendLogicActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

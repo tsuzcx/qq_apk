@@ -20,13 +20,13 @@ import org.jetbrains.annotations.NotNull;
 public final class GifEngine
   implements IEngine
 {
-  private final InputStreamProvider jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider;
-  private final File jdField_a_of_type_JavaIoFile;
+  private final InputStreamProvider a;
+  private final File b;
   
   public GifEngine(@NotNull InputStreamProvider paramInputStreamProvider, @NotNull File paramFile)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider = paramInputStreamProvider;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramInputStreamProvider;
+    this.b = paramFile;
   }
   
   private final List<GifEngine.Frame> a(StandardGifDecoder paramStandardGifDecoder, int paramInt, float paramFloat)
@@ -35,7 +35,7 @@ public final class GifEngine
     if (paramInt <= 0) {
       i = 1;
     }
-    int j = paramStandardGifDecoder.a();
+    int j = paramStandardGifDecoder.b();
     Object localObject2 = (Iterable)RangesKt.until(0, j);
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -61,7 +61,7 @@ public final class GifEngine
       localObject2 = null;
       localObject1 = (Bitmap)null;
       if (paramInt % i == 0) {
-        localObject1 = paramStandardGifDecoder.a();
+        localObject1 = paramStandardGifDecoder.c();
       }
       if (localObject1 != null) {
         localObject2 = new Pair(localObject1, Integer.valueOf(paramInt));
@@ -101,138 +101,138 @@ public final class GifEngine
   }
   
   /* Error */
-  private final byte[] a()
+  private final byte[] b()
   {
     // Byte code:
-    //   0: new 173	java/io/File
+    //   0: new 175	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: getfield 51	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider	Lcom/tencent/tkd/topicsdk/imagecompress/InputStreamProvider;
-    //   8: invokeinterface 178 1 0
-    //   13: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
-    //   16: invokestatic 187	kotlin/io/FilesKt:readBytes	(Ljava/io/File;)[B
+    //   5: getfield 52	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	Lcom/tencent/tkd/topicsdk/imagecompress/InputStreamProvider;
+    //   8: invokeinterface 181 1 0
+    //   13: invokespecial 184	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: invokestatic 190	kotlin/io/FilesKt:readBytes	(Ljava/io/File;)[B
     //   19: astore_1
-    //   20: new 58	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder
+    //   20: new 59	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder
     //   23: dup
-    //   24: new 189	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifBitmapProvider
+    //   24: new 192	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifBitmapProvider
     //   27: dup
-    //   28: new 191	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPoolAdapter
+    //   28: new 194	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPoolAdapter
     //   31: dup
-    //   32: invokespecial 192	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPoolAdapter:<init>	()V
-    //   35: checkcast 194	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPool
-    //   38: invokespecial 197	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifBitmapProvider:<init>	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPool;)V
-    //   41: checkcast 199	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifDecoder$BitmapProvider
-    //   44: invokespecial 202	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder:<init>	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifDecoder$BitmapProvider;)V
+    //   32: invokespecial 195	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPoolAdapter:<init>	()V
+    //   35: checkcast 197	com/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPool
+    //   38: invokespecial 200	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifBitmapProvider:<init>	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/BitmapPool;)V
+    //   41: checkcast 202	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifDecoder$BitmapProvider
+    //   44: invokespecial 205	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder:<init>	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifDecoder$BitmapProvider;)V
     //   47: astore_2
-    //   48: new 204	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser
+    //   48: new 207	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser
     //   51: dup
-    //   52: invokespecial 205	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:<init>	()V
+    //   52: invokespecial 208	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:<init>	()V
     //   55: astore_3
     //   56: aload_3
     //   57: aload_1
-    //   58: invokevirtual 208	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:a	([B)Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser;
+    //   58: invokevirtual 211	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:a	([B)Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser;
     //   61: pop
     //   62: aload_3
-    //   63: invokevirtual 211	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:a	()Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeader;
+    //   63: invokevirtual 214	com/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeaderParser:a	()Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeader;
     //   66: astore_3
     //   67: aload_3
-    //   68: ldc 213
-    //   70: invokestatic 216	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   68: ldc 216
+    //   70: invokestatic 219	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   73: aload_2
     //   74: aload_3
     //   75: aload_1
-    //   76: invokevirtual 219	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder:a	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeader;[B)V
+    //   76: invokevirtual 222	com/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder:a	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/GifHeader;[B)V
     //   79: aload_0
     //   80: aload_2
     //   81: iconst_1
-    //   82: ldc 220
-    //   84: invokespecial 222	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder;IF)Ljava/util/List;
+    //   82: ldc 223
+    //   84: invokespecial 225	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	(Lcom/tencent/tkd/topicsdk/imagecompress/encodedecode/StandardGifDecoder;IF)Ljava/util/List;
     //   87: astore 6
-    //   89: new 224	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder
+    //   89: new 227	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder
     //   92: dup
-    //   93: invokespecial 225	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:<init>	()V
+    //   93: invokespecial 228	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:<init>	()V
     //   96: astore 4
     //   98: aconst_null
-    //   99: checkcast 227	[B
+    //   99: checkcast 230	[B
     //   102: astore_1
-    //   103: new 229	java/io/ByteArrayOutputStream
+    //   103: new 232	java/io/ByteArrayOutputStream
     //   106: dup
-    //   107: invokespecial 230	java/io/ByteArrayOutputStream:<init>	()V
-    //   110: checkcast 232	java/io/Closeable
+    //   107: invokespecial 233	java/io/ByteArrayOutputStream:<init>	()V
+    //   110: checkcast 235	java/io/Closeable
     //   113: astore_3
     //   114: aconst_null
-    //   115: checkcast 171	java/lang/Throwable
+    //   115: checkcast 173	java/lang/Throwable
     //   118: astore_2
     //   119: aload_2
     //   120: astore_1
     //   121: aload_3
-    //   122: checkcast 229	java/io/ByteArrayOutputStream
+    //   122: checkcast 232	java/io/ByteArrayOutputStream
     //   125: astore 5
     //   127: aload_2
     //   128: astore_1
     //   129: aload 4
     //   131: aload 5
-    //   133: checkcast 234	java/io/OutputStream
-    //   136: invokevirtual 237	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Ljava/io/OutputStream;)Z
+    //   133: checkcast 237	java/io/OutputStream
+    //   136: invokevirtual 240	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Ljava/io/OutputStream;)Z
     //   139: pop
     //   140: aload_2
     //   141: astore_1
     //   142: aload 4
     //   144: iconst_0
-    //   145: invokevirtual 240	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:b	(I)V
+    //   145: invokevirtual 242	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:b	(I)V
     //   148: aload_2
     //   149: astore_1
     //   150: aload 6
-    //   152: checkcast 69	java/lang/Iterable
-    //   155: invokeinterface 78 1 0
+    //   152: checkcast 70	java/lang/Iterable
+    //   155: invokeinterface 79 1 0
     //   160: astore 6
     //   162: aload_2
     //   163: astore_1
     //   164: aload 6
-    //   166: invokeinterface 84 1 0
+    //   166: invokeinterface 85 1 0
     //   171: ifeq +55 -> 226
     //   174: aload_2
     //   175: astore_1
     //   176: aload 6
-    //   178: invokeinterface 88 1 0
-    //   183: checkcast 163	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame
+    //   178: invokeinterface 89 1 0
+    //   183: checkcast 165	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame
     //   186: astore 7
     //   188: aload_2
     //   189: astore_1
     //   190: aload 4
     //   192: aload 7
-    //   194: invokevirtual 241	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()I
-    //   197: invokevirtual 243	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(I)V
+    //   194: invokevirtual 243	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:b	()I
+    //   197: invokevirtual 245	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(I)V
     //   200: aload_2
     //   201: astore_1
     //   202: aload 4
     //   204: aload 7
-    //   206: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
-    //   209: invokevirtual 247	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Landroid/graphics/Bitmap;)Z
+    //   206: invokevirtual 247	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
+    //   209: invokevirtual 250	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	(Landroid/graphics/Bitmap;)Z
     //   212: pop
     //   213: aload_2
     //   214: astore_1
     //   215: aload 7
-    //   217: invokevirtual 244	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
-    //   220: invokevirtual 250	android/graphics/Bitmap:recycle	()V
+    //   217: invokevirtual 247	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine$Frame:a	()Landroid/graphics/Bitmap;
+    //   220: invokevirtual 253	android/graphics/Bitmap:recycle	()V
     //   223: goto -61 -> 162
     //   226: aload_2
     //   227: astore_1
     //   228: aload 4
-    //   230: invokevirtual 252	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	()Z
+    //   230: invokevirtual 255	com/tencent/tkd/topicsdk/imagecompress/encodedecode/AnimatedGifEncoder:a	()Z
     //   233: pop
     //   234: aload_2
     //   235: astore_1
     //   236: aload 5
-    //   238: invokevirtual 255	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   238: invokevirtual 258	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   241: astore 4
     //   243: aload_2
     //   244: astore_1
-    //   245: getstatic 161	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   245: getstatic 163	kotlin/Unit:INSTANCE	Lkotlin/Unit;
     //   248: astore 5
     //   250: aload_3
     //   251: aload_2
-    //   252: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   252: invokestatic 264	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   255: aload 4
     //   257: areturn
     //   258: astore_2
@@ -244,7 +244,7 @@ public final class GifEngine
     //   266: athrow
     //   267: aload_3
     //   268: aload_1
-    //   269: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   269: invokestatic 264	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   272: goto +5 -> 277
     //   275: aload_2
     //   276: athrow
@@ -296,35 +296,35 @@ public final class GifEngine
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 264	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	()[B
+    //   1: invokespecial 267	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:b	()[B
     //   4: astore 4
     //   6: aload 4
     //   8: ifnull +67 -> 75
-    //   11: new 266	java/io/FileOutputStream
+    //   11: new 269	java/io/FileOutputStream
     //   14: dup
     //   15: aload_0
-    //   16: getfield 53	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   19: invokespecial 269	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   22: checkcast 232	java/io/Closeable
+    //   16: getfield 54	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:b	Ljava/io/File;
+    //   19: invokespecial 272	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   22: checkcast 235	java/io/Closeable
     //   25: astore_3
     //   26: aconst_null
-    //   27: checkcast 171	java/lang/Throwable
+    //   27: checkcast 173	java/lang/Throwable
     //   30: astore_2
     //   31: aload_2
     //   32: astore_1
     //   33: aload_3
-    //   34: checkcast 266	java/io/FileOutputStream
+    //   34: checkcast 269	java/io/FileOutputStream
     //   37: aload 4
-    //   39: invokevirtual 273	java/io/FileOutputStream:write	([B)V
+    //   39: invokevirtual 276	java/io/FileOutputStream:write	([B)V
     //   42: aload_2
     //   43: astore_1
-    //   44: getstatic 161	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   44: getstatic 163	kotlin/Unit:INSTANCE	Lkotlin/Unit;
     //   47: astore 4
     //   49: aload_3
     //   50: aload_2
-    //   51: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   51: invokestatic 264	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   54: aload_0
-    //   55: getfield 53	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   55: getfield 54	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:b	Ljava/io/File;
     //   58: areturn
     //   59: astore_2
     //   60: goto +8 -> 68
@@ -335,15 +335,15 @@ public final class GifEngine
     //   67: athrow
     //   68: aload_3
     //   69: aload_1
-    //   70: invokestatic 261	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   70: invokestatic 264	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   73: aload_2
     //   74: athrow
-    //   75: new 173	java/io/File
+    //   75: new 175	java/io/File
     //   78: dup
     //   79: aload_0
-    //   80: getfield 51	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider	Lcom/tencent/tkd/topicsdk/imagecompress/InputStreamProvider;
-    //   83: invokeinterface 178 1 0
-    //   88: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   80: getfield 52	com/tencent/tkd/topicsdk/imagecompress/engine/GifEngine:a	Lcom/tencent/tkd/topicsdk/imagecompress/InputStreamProvider;
+    //   83: invokeinterface 181 1 0
+    //   88: invokespecial 184	java/io/File:<init>	(Ljava/lang/String;)V
     //   91: areturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -365,7 +365,7 @@ public final class GifEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.GifEngine
  * JD-Core Version:    0.7.0.1
  */

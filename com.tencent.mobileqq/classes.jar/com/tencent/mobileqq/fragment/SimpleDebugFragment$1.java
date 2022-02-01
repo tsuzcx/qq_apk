@@ -12,10 +12,10 @@ class SimpleDebugFragment$1
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId();
-    if (i != 2131367785)
+    int i = this.a.getCheckedRadioButtonId();
+    if (i != 2131434356)
     {
-      if (i == 2131381110) {
+      if (i == 2131450128) {
         SimpleUIProtocolUtil.a(0);
       }
     }
@@ -27,7 +27,7 @@ class SimpleDebugFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment.1
  * JD-Core Version:    0.7.0.1
  */

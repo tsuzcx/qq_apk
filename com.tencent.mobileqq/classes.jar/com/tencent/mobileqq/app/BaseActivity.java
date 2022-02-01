@@ -10,6 +10,10 @@ import android.view.MotionEvent;
 import androidx.fragment.app.FragmentManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.guild.api.IGuildContextApi;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
@@ -18,11 +22,24 @@ import mqq.app.AppRuntime;
 public class BaseActivity
   extends QBaseActivity
 {
+  public static int CHAT_FRAGMENT_TYPE = 1;
+  public static int GUILDCHAT_FRAGMENT_TYPE = 2;
+  public static int GUILD_LIVE_CHAT_FRAGMENT_TYPE = 3;
   public static final String TAG = "qqBaseActivity";
   public static BaseActivity sTopActivity;
   public QQAppInterface app;
+  private int chatFragmentType = CHAT_FRAGMENT_TYPE;
   private String className = getClass().getSimpleName();
   QBaseFragment.IFragmentAttachCallback mIFragmentAttachCallback;
+  
+  private ChatFragment getGuildChatFragmentByTagName(String paramString)
+  {
+    paramString = (ChatFragment)((IGuildContextApi)QRoute.api(IGuildContextApi.class)).getChildFragmentManager(this).findFragmentByTag(paramString);
+    if (paramString == null) {
+      QLog.e("qqBaseActivity", 1, "getChatFragment() return null!");
+    }
+    return paramString;
+  }
   
   protected void beforeDoOnCreate()
   {
@@ -106,9 +123,35 @@ public class BaseActivity
   @Nullable
   public ChatFragment getChatFragment()
   {
-    QBaseFragment localQBaseFragment = (QBaseFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-    if (localQBaseFragment != null) {
-      return (ChatFragment)localQBaseFragment;
+    Object localObject = ChatFragment.class.getName();
+    int i = this.chatFragmentType;
+    if (i == CHAT_FRAGMENT_TYPE)
+    {
+      localObject = ChatFragment.class.getName();
+    }
+    else
+    {
+      String str;
+      if (i == GUILDCHAT_FRAGMENT_TYPE)
+      {
+        str = ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getGuildChatFragmentClassName();
+        localObject = str;
+        if ((this instanceof SplashActivity)) {
+          return getGuildChatFragmentByTagName(str);
+        }
+      }
+      else if (i == GUILD_LIVE_CHAT_FRAGMENT_TYPE)
+      {
+        str = ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getGuildLiveChannelChatFragmentClassName();
+        localObject = str;
+        if ((this instanceof SplashActivity)) {
+          return getGuildChatFragmentByTagName(str);
+        }
+      }
+    }
+    localObject = (QBaseFragment)getSupportFragmentManager().findFragmentByTag((String)localObject);
+    if (localObject != null) {
+      return (ChatFragment)localObject;
     }
     return null;
   }
@@ -132,7 +175,7 @@ public class BaseActivity
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131299168);
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
   protected void onAccountChanged()
@@ -161,6 +204,15 @@ public class BaseActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
+  public void setChatFragmentType(int paramInt)
+  {
+    this.chatFragmentType = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setChatFragmentType type=");
+    localStringBuilder.append(this.chatFragmentType);
+    QLog.i("qqBaseActivity", 1, localStringBuilder.toString());
+  }
+  
   public void setFragmentAttachListener(QBaseFragment.IFragmentAttachCallback paramIFragmentAttachCallback)
   {
     this.mIFragmentAttachCallback = paramIFragmentAttachCallback;
@@ -183,7 +235,7 @@ public class BaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseActivity
  * JD-Core Version:    0.7.0.1
  */

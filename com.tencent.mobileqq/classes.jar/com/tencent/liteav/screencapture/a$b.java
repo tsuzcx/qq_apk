@@ -7,14 +7,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.Surface;
-import com.tencent.liteav.basic.c.i;
-import com.tencent.liteav.basic.c.j;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.k;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.e;
 import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 
 public class a$b
   extends Handler
@@ -29,8 +29,8 @@ public class a$b
   protected boolean h = false;
   protected long i = 0L;
   protected long j = 0L;
-  protected com.tencent.liteav.basic.c.b k = null;
-  protected i l = null;
+  protected com.tencent.liteav.basic.opengl.b k = null;
+  protected k l = null;
   float[] m = new float[16];
   private boolean o = true;
   
@@ -46,7 +46,7 @@ public class a$b
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("EVT_MSG", "Screen recording started successfully");
-      f.a(a.a(this.n), 1004, localBundle);
+      h.a(a.a(this.n), 1004, localBundle);
       this.n.c(0);
     }
     this.o = false;
@@ -82,17 +82,17 @@ public class a$b
   protected boolean b()
   {
     TXCLog.i("TXCScreenCapture", String.format("init egl size[%d/%d]", new Object[] { Integer.valueOf(this.e), Integer.valueOf(this.f) }));
-    this.k = com.tencent.liteav.basic.c.b.a(null, null, null, this.e, this.f);
+    this.k = com.tencent.liteav.basic.opengl.b.a(null, null, null, this.e, this.f);
     if (this.k == null) {
       return false;
     }
-    this.l = new i();
+    this.l = new k();
     if (!this.l.a()) {
       return false;
     }
     this.l.a(true);
     this.l.a(this.e, this.f);
-    this.l.a(l.e, l.a(k.a, false, false));
+    this.l.a(m.e, m.a(l.a, false, false));
     e();
     return true;
   }
@@ -103,13 +103,13 @@ public class a$b
     Object localObject = this.l;
     if (localObject != null)
     {
-      ((i)localObject).d();
+      ((k)localObject).d();
       this.l = null;
     }
     localObject = this.k;
     if (localObject != null)
     {
-      ((com.tencent.liteav.basic.c.b)localObject).c();
+      ((com.tencent.liteav.basic.opengl.b)localObject).c();
       this.k = null;
     }
   }
@@ -173,7 +173,7 @@ public class a$b
   
   protected void d()
   {
-    new e(Looper.getMainLooper()).a(new a.b.1(this));
+    new f(Looper.getMainLooper()).a(new a.b.1(this));
     Object localObject = this.c;
     if (localObject != null)
     {
@@ -214,7 +214,7 @@ public class a$b
   protected void e()
   {
     this.b = new int[1];
-    this.b[0] = j.b();
+    this.b[0] = TXCOpenGlUtils.b();
     int[] arrayOfInt = this.b;
     if (arrayOfInt[0] <= 0)
     {
@@ -285,7 +285,7 @@ public class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -28,31 +28,31 @@ public abstract class FileBrowserModelDefault
 {
   public static String a = "https://docs.qq.com/desktop/favicon.ico";
   
-  private QFileAppStorePromoteManager a()
+  private QFileAppStorePromoteManager H()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface)) {
       return null;
     }
-    return ((QQAppInterface)localAppRuntime).getFileManagerEngine().a();
+    return ((QQAppInterface)localAppRuntime).getFileManagerEngine().f();
   }
   
   public String a(Context paramContext)
   {
-    QFileAppStorePromoteManager localQFileAppStorePromoteManager = a();
+    QFileAppStorePromoteManager localQFileAppStorePromoteManager = H();
     if (localQFileAppStorePromoteManager == null) {
       return null;
     }
-    if (!e()) {
+    if (!t()) {
       return null;
     }
-    if (!localQFileAppStorePromoteManager.b()) {
+    if (!localQFileAppStorePromoteManager.g()) {
       return null;
     }
-    if (TextUtils.isEmpty(f())) {
+    if (TextUtils.isEmpty(r())) {
       return null;
     }
-    int i = c();
+    int i = k();
     if ((i != 6) && (i != 2) && (i != 4) && (i != 5)) {
       return localQFileAppStorePromoteManager.a(paramContext);
     }
@@ -67,26 +67,6 @@ public abstract class FileBrowserModelDefault
   public void a(Activity paramActivity, String paramString)
   {
     FileManagerUtil.a(paramActivity, paramString);
-  }
-  
-  public void a(Context paramContext)
-  {
-    QFileAppStorePromoteManager localQFileAppStorePromoteManager = a();
-    if (localQFileAppStorePromoteManager == null) {
-      return;
-    }
-    String str = f();
-    if (localQFileAppStorePromoteManager.a())
-    {
-      if (!TextUtils.isEmpty(str))
-      {
-        QFileAppStorePromoteManager.a(str, 1);
-        return;
-      }
-      QLog.i("FileBrowserModel", 1, "app store has installed, but apk package name is null!");
-      return;
-    }
-    localQFileAppStorePromoteManager.b(paramContext, str);
   }
   
   public void a(Context paramContext, String paramString)
@@ -105,7 +85,7 @@ public abstract class FileBrowserModelDefault
     paramJSONObject.putExtra("key_flag_from_plugin", true);
     paramJSONObject.putExtra("k_forward_show_direct_share_tips", true);
     paramJSONObject.setClass(paramContext, ForwardRecentActivity.class);
-    ShareMsgHelper.a(paramContext, 1001, 95, "web_share", "", localTencentDocData.docIcon, localTencentDocData.title, localTencentDocData.summary, paramContext.getString(2131696401, new Object[] { localTencentDocData.title }), paramString, "web", null, null, null, "web", null, null, null, a, paramContext.getString(2131719569), "", paramJSONObject, 2865, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
+    ShareMsgHelper.a(paramContext, 1001, 95, "web_share", "", localTencentDocData.docIcon, localTencentDocData.title, localTencentDocData.summary, paramContext.getString(2131894173, new Object[] { localTencentDocData.title }), paramString, "web", null, null, null, "web", null, null, null, a, paramContext.getString(2131917132), "", paramJSONObject, 2865, "https://docs.qq.com/desktop/m/index.html?_wv=2097154", -1L);
   }
   
   public void a(JSONObject paramJSONObject, String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Activity paramActivity)
@@ -118,16 +98,36 @@ public abstract class FileBrowserModelDefault
   
   public boolean a(Context paramContext, IFileBrowserModel.OnAppStorePromoteListener paramOnAppStorePromoteListener)
   {
-    QFileAppStorePromoteManager localQFileAppStorePromoteManager = a();
+    QFileAppStorePromoteManager localQFileAppStorePromoteManager = H();
     if (localQFileAppStorePromoteManager == null) {
       return false;
     }
-    return localQFileAppStorePromoteManager.a(paramContext, g(), new FileBrowserModelDefault.1(this, paramOnAppStorePromoteListener));
+    return localQFileAppStorePromoteManager.a(paramContext, s(), new FileBrowserModelDefault.1(this, paramOnAppStorePromoteListener));
+  }
+  
+  public void b(Context paramContext)
+  {
+    QFileAppStorePromoteManager localQFileAppStorePromoteManager = H();
+    if (localQFileAppStorePromoteManager == null) {
+      return;
+    }
+    String str = r();
+    if (localQFileAppStorePromoteManager.b())
+    {
+      if (!TextUtils.isEmpty(str))
+      {
+        QFileAppStorePromoteManager.a(str, 1);
+        return;
+      }
+      QLog.i("FileBrowserModel", 1, "app store has installed, but apk package name is null!");
+      return;
+    }
+    localQFileAppStorePromoteManager.b(paramContext, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileBrowserModelDefault
  * JD-Core Version:    0.7.0.1
  */

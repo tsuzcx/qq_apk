@@ -11,8 +11,8 @@ import org.json.JSONObject;
 
 public class AddFrdHelper$TroopMemberListConfig
 {
-  int jdField_a_of_type_Int = 0;
-  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  final List<Long> a = new ArrayList(5);
+  int b = 0;
   
   public AddFrdHelper$TroopMemberListConfig(String paramString)
   {
@@ -22,18 +22,18 @@ public class AddFrdHelper$TroopMemberListConfig
       if (paramString != null)
       {
         Object localObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        this.b = ((JSONObject)localObject).optInt("maxTroopMemberSize");
         localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
         int i = 0;
         while ((localObject != null) && (i < ((JSONArray)localObject).length()))
         {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          this.a.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
           i += 1;
         }
       }
       if (QLog.isColorLevel())
       {
-        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
+        QLog.i("AddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.b), TextUtils.join(",", this.a), paramString }));
         return;
       }
     }
@@ -45,7 +45,7 @@ public class AddFrdHelper$TroopMemberListConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.memberlist.AddFrdHelper.TroopMemberListConfig
  * JD-Core Version:    0.7.0.1
  */

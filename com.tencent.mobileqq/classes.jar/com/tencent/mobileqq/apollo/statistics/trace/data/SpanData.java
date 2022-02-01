@@ -10,17 +10,17 @@ import java.util.concurrent.BlockingQueue;
 public class SpanData
 {
   public int a;
-  public long a;
-  public ResultData a;
-  public Map<Integer, Long> a;
-  public BlockingQueue<AnnotationData> a;
-  public boolean a;
   public long b;
   public long c;
+  public long d;
+  public ResultData e;
+  public boolean f;
+  public BlockingQueue<AnnotationData> g;
+  public Map<Integer, Long> h;
   
   public SpanData(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public String toString()
@@ -28,14 +28,14 @@ public class SpanData
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("spanId:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",result:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData);
+    localStringBuilder.append(this.e);
     Iterator localIterator;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (this.h != null)
     {
       localStringBuilder.append(",extra:[");
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      localIterator = this.h.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -56,10 +56,10 @@ public class SpanData
       }
       localStringBuilder.append("]");
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    if (this.g != null)
     {
       localStringBuilder.append(",anno:[");
-      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+      localIterator = this.g.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((AnnotationData)localIterator.next()).toString());
       }
@@ -71,7 +71,7 @@ public class SpanData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.data.SpanData
  * JD-Core Version:    0.7.0.1
  */

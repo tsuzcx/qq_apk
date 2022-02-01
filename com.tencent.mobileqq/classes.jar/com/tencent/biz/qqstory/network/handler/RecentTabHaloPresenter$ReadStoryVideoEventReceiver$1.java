@@ -9,12 +9,12 @@ class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1
   
   public void run()
   {
-    RecentTabHaloPresenter.ReadStoryVideoEventReceiver.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter, this.jdField_a_of_type_ComTencentBizQqstoryModelEventsReadStoryVideoEvent);
+    RecentTabHaloPresenter.ReadStoryVideoEventReceiver.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1
  * JD-Core Version:    0.7.0.1
  */

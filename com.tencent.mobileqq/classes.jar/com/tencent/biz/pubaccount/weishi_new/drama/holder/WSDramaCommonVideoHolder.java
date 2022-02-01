@@ -10,7 +10,7 @@ public class WSDramaCommonVideoHolder
 {
   public WSDramaCommonVideoHolder(ViewGroup paramViewGroup, int paramInt, WSDramaPageContract.View paramView)
   {
-    super(paramViewGroup, 2131560001, paramInt, paramView);
+    super(paramViewGroup, 2131626044, paramInt, paramView);
   }
   
   public IWSItemView<WSDramaItemData> a(int paramInt)
@@ -20,7 +20,7 @@ public class WSDramaCommonVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.WSDramaCommonVideoHolder
  * JD-Core Version:    0.7.0.1
  */

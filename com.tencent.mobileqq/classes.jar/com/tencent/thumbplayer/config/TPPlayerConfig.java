@@ -28,6 +28,7 @@ public class TPPlayerConfig
   private static SparseArray<String> mProxyCacheDirs = new SparseArray(1);
   private static String mProxyConfigStr;
   private static SparseArray<String> mProxyDataDirs = new SparseArray(1);
+  private static int mProxyMaxUseMemoryMB;
   private static int mProxyServiceType;
   private static boolean mUseP2P;
   private static boolean mUserIsVip;
@@ -47,6 +48,7 @@ public class TPPlayerConfig
     beacon_policy_host = "";
     beacon_log_host = "";
     host_config = "";
+    mProxyMaxUseMemoryMB = 100;
   }
   
   public static void addProxyCacheDir(int paramInt, String paramString)
@@ -179,6 +181,11 @@ public class TPPlayerConfig
     return (String)mProxyDataDirs.get(paramInt);
   }
   
+  public static int getProxyMaxUseMemoryMB()
+  {
+    return mProxyMaxUseMemoryMB;
+  }
+  
   public static int getProxyServiceType()
   {
     if (mProxyServiceType == -1)
@@ -288,6 +295,11 @@ public class TPPlayerConfig
     mProxyConfigStr = paramString;
   }
   
+  public static void setProxyMaxUseMemoryMB(int paramInt)
+  {
+    mProxyMaxUseMemoryMB = paramInt;
+  }
+  
   public static void setProxyServiceType(int paramInt)
   {
     mProxyServiceType = paramInt;
@@ -320,7 +332,7 @@ public class TPPlayerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.config.TPPlayerConfig
  * JD-Core Version:    0.7.0.1
  */

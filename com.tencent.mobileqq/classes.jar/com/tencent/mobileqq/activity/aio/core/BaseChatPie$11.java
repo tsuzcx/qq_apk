@@ -11,10 +11,10 @@ class BaseChatPie$11
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 1)
+    if (this.this$0.n.getCurrentPanel() != 1)
     {
-      this.this$0.Y();
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 100L);
+      this.this$0.aF();
+      this.this$0.m.postDelayed(this, 100L);
       return;
     }
     this.a.removeExtra("KEY_SHOULD_SHOW_KEYBOARD");
@@ -22,7 +22,7 @@ class BaseChatPie$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.11
  * JD-Core Version:    0.7.0.1
  */

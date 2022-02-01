@@ -13,7 +13,7 @@ public class C2CShortcutBarConfProcessor
   @NonNull
   public static C2CShortcutBarConfBean a()
   {
-    C2CShortcutBarConfBean localC2CShortcutBarConfBean2 = (C2CShortcutBarConfBean)QConfigManager.a().a(670);
+    C2CShortcutBarConfBean localC2CShortcutBarConfBean2 = (C2CShortcutBarConfBean)QConfigManager.b().b(670);
     C2CShortcutBarConfBean localC2CShortcutBarConfBean1 = localC2CShortcutBarConfBean2;
     if (localC2CShortcutBarConfBean2 == null)
     {
@@ -36,7 +36,7 @@ public class C2CShortcutBarConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -98,7 +98,7 @@ public class C2CShortcutBarConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

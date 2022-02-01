@@ -13,68 +13,68 @@ import mqq.app.MobileQQ;
 
 public class AccountPanelViewContainer$AccountItemViewHolder
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  View a;
+  ImageView b;
+  ImageView c;
+  TextView d;
+  DragTextView e;
+  View f;
+  int g;
   
   public AccountPanelViewContainer$AccountItemViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363157));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378048));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371876));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380208));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363152);
+    this.a = paramView;
+    this.b = ((ImageView)paramView.findViewById(2131429022));
+    this.c = ((ImageView)paramView.findViewById(2131446548));
+    this.d = ((TextView)paramView.findViewById(2131439319));
+    this.e = ((DragTextView)paramView.findViewById(2131449126));
+    this.f = paramView.findViewById(2131429017);
   }
   
   private void a()
   {
-    if (!AppSetting.d) {
+    if (!AppSetting.e) {
       return;
     }
     MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject1 = this.d;
     if (localObject1 != null) {
       localObject1 = ((TextView)localObject1).getText().toString();
     } else {
       localObject1 = "";
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+    Object localObject2 = this.e;
     boolean bool2 = false;
     int i;
     if ((localObject2 != null) && ((((DragTextView)localObject2).getTag() instanceof Integer))) {
-      i = ((Integer)this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag()).intValue();
+      i = ((Integer)this.e.getTag()).intValue();
     } else {
       i = 0;
     }
     localObject2 = new StringBuilder();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.g;
     if (j == 2)
     {
-      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131719328, new Object[] { localObject1 }));
-      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131690703));
+      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131916880, new Object[] { localObject1 }));
+      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131887622));
     }
     else if (j == 2)
     {
-      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131719329, new Object[] { localObject1 }));
-      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131690703));
+      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131916881, new Object[] { localObject1 }));
+      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131887622));
     }
     else
     {
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131690703));
+      ((StringBuilder)localObject2).append(localMobileQQ.getString(2131887622));
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+    localObject1 = this.e;
     boolean bool1 = bool2;
     if (localObject1 != null)
     {
       bool1 = bool2;
-      if ((((DragTextView)localObject1).getTag(2131380208) instanceof Boolean)) {
-        bool1 = ((Boolean)this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag(2131380208)).booleanValue();
+      if ((((DragTextView)localObject1).getTag(2131449126) instanceof Boolean)) {
+        bool1 = ((Boolean)this.e.getTag(2131449126)).booleanValue();
       }
     }
     if ((i > 0) && (!bool1))
@@ -97,12 +97,12 @@ public class AccountPanelViewContainer$AccountItemViewHolder
     else if (bool1) {
       ((StringBuilder)localObject2).append(" 有最新消息");
     }
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(((StringBuilder)localObject2).toString());
+    this.a.setContentDescription(((StringBuilder)localObject2).toString());
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -115,42 +115,42 @@ public class AccountPanelViewContainer$AccountItemViewHolder
       } else {
         i = 3;
       }
-      if (this.jdField_a_of_type_Int == 2)
+      if (this.g == 2)
       {
         int j;
         if (paramBoolean) {
-          j = 2130850766;
+          j = 2130852588;
         } else {
-          j = 2130850770;
+          j = 2130852592;
         }
-        WidgetUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, paramInt, j, 99, null);
+        WidgetUtils.a(this.e, i, paramInt, j, 99, null);
       }
       else
       {
-        WidgetUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, paramInt, 2130850773, 99, null);
+        WidgetUtils.a(this.e, i, paramInt, 2130852595, 99, null);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      this.e.setVisibility(0);
+      this.e.setTag(Integer.valueOf(paramInt));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      this.e.setVisibility(8);
+      this.e.setTag(Integer.valueOf(paramInt));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131380208, Boolean.valueOf(paramBoolean));
+    this.e.setTag(2131449126, Boolean.valueOf(paramBoolean));
     a();
   }
   
   public void a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.b.setImageDrawable(paramDrawable);
   }
   
   public void a(CharSequence paramCharSequence)
   {
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.d.setText(paramCharSequence);
       a();
     }
   }
@@ -159,25 +159,25 @@ public class AccountPanelViewContainer$AccountItemViewHolder
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.c.setVisibility(0);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
   }
   
   public void b(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.f.setVisibility(0);
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.f.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AccountPanelViewContainer.AccountItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

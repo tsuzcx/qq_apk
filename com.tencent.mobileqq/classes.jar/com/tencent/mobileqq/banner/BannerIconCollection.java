@@ -11,37 +11,36 @@ import java.util.Map;
 public class BannerIconCollection
 {
   @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_temp_inject.yml", version=2)
-  public static ArrayList<Class<? extends IBannerTempInject>> a;
-  private static final Map<String, Integer> a;
-  public static int[] a;
+  public static ArrayList<Class<? extends IBannerTempInject>> a = new ArrayList();
+  public static int[] b;
+  private static final Map<String, Integer> c;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(BannerTempInjectImpl.class);
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130838318, 2130838308, 2130838310, 2130838319, 2130838479, 2130841363, 2130838320, 2130838307, 2130838312, 2130838309, 2130838306, 2130838313, 2130838314, 2130838316, 2130838317, 2130846271 };
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    Map localMap = jdField_a_of_type_JavaUtilMap;
+    a.add(BannerTempInjectImpl.class);
+    b = new int[] { 2130838366, 2130838356, 2130838358, 2130838367, 2130838543, 2130842164, 2130838368, 2130838355, 2130838360, 2130838357, 2130838354, 2130838361, 2130838362, 2130838364, 2130838365, 2130847741 };
+    c = new HashMap();
+    Map localMap = c;
     Integer localInteger = Integer.valueOf(7);
     localMap.put("m.ke.qq.com", localInteger);
-    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", localInteger);
-    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
-    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
-    localMap = jdField_a_of_type_JavaUtilMap;
+    c.put("ke.qq.com", localInteger);
+    c.put("fudao.qq.com", Integer.valueOf(9));
+    c.put("buluo.qq.com", Integer.valueOf(10));
+    localMap = c;
     localInteger = Integer.valueOf(2);
     localMap.put("m.gamecenter.qq.com", localInteger);
-    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", localInteger);
+    c.put("imgcache.qq.com", localInteger);
   }
   
   @IdRes
   public static int a(int paramInt)
   {
-    return jdField_a_of_type_ArrayOfInt[paramInt];
+    return b[paramInt];
   }
   
   public static int a(String paramString)
   {
-    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger2 = (Integer)c.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       if (a().a(paramString)) {
@@ -56,10 +55,10 @@ public class BannerIconCollection
   static IBannerTempInject a()
   {
     Object localObject1;
-    if ((!jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (jdField_a_of_type_JavaUtilArrayList.get(0) != null)) {
+    if ((!a.isEmpty()) && (a.get(0) != null)) {
       try
       {
-        IBannerTempInject localIBannerTempInject = (IBannerTempInject)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+        IBannerTempInject localIBannerTempInject = (IBannerTempInject)((Class)a.get(0)).newInstance();
       }
       catch (InstantiationException localInstantiationException)
       {
@@ -83,7 +82,7 @@ public class BannerIconCollection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.banner.BannerIconCollection
  * JD-Core Version:    0.7.0.1
  */

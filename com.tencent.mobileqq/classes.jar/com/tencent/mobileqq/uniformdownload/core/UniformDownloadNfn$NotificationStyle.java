@@ -7,40 +7,40 @@ import android.view.WindowManager;
 
 class UniformDownloadNfn$NotificationStyle
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  Integer a = null;
+  float b = 14.0F;
+  Integer c = null;
+  float d = 16.0F;
+  final String e = "SearchForText";
+  final String f = "SearchForTitle";
+  DisplayMetrics g = new DisplayMetrics();
+  int h = 0;
   
   UniformDownloadNfn$NotificationStyle(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
   {
     if (paramContext != null) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.g);
     }
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.b;
   }
   
-  public Integer a()
+  public Integer b()
   {
-    return this.jdField_b_of_type_JavaLangInteger;
+    return this.c;
   }
   
-  public float b()
+  public float c()
   {
-    return this.jdField_b_of_type_Float;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadNfn.NotificationStyle
  * JD-Core Version:    0.7.0.1
  */

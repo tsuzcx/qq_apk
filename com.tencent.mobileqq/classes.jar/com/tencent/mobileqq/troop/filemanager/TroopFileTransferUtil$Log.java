@@ -4,20 +4,20 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TroopFileTransferUtil$Log
 {
-  public static int a = 0;
   public static String a = "<TroopFile> ";
-  public static int b = 1;
-  public static int c = 2;
+  public static int b = 0;
+  public static int c = 1;
+  public static int d = 2;
   
   private static int a(int paramInt)
   {
-    if (jdField_a_of_type_Int == paramInt) {
+    if (b == paramInt) {
       return 1;
     }
-    if (b == paramInt) {
+    if (c == paramInt) {
       return 2;
     }
-    if (c == paramInt) {
+    if (d == paramInt) {
       return 4;
     }
     return 2;
@@ -27,7 +27,7 @@ public class TroopFileTransferUtil$Log
   {
     paramInt = a(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString2);
     QLog.e(paramString1, paramInt, localStringBuilder.toString());
   }
@@ -36,7 +36,7 @@ public class TroopFileTransferUtil$Log
   {
     paramInt = a(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString2);
     QLog.w(paramString1, paramInt, localStringBuilder.toString());
   }
@@ -45,7 +45,7 @@ public class TroopFileTransferUtil$Log
   {
     paramInt = a(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString2);
     QLog.i(paramString1, paramInt, localStringBuilder.toString());
   }
@@ -54,14 +54,14 @@ public class TroopFileTransferUtil$Log
   {
     paramInt = a(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString2);
     QLog.d(paramString1, paramInt, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log
  * JD-Core Version:    0.7.0.1
  */

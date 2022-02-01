@@ -28,23 +28,23 @@ class PublicAccountImageCollectionAdapter$4
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
           }
-          this.a.a = true;
-          PublicAccountImageCollectionAdapter.a(this.a);
+          this.a.h = true;
+          PublicAccountImageCollectionAdapter.d(this.a);
           return;
         }
         if (paramInt == 58)
         {
-          PublicAccountImageCollectionAdapter.a(this.a, 2131695212);
+          PublicAccountImageCollectionAdapter.a(this.a, 2131892946);
           return;
         }
         if (paramInt == 65)
         {
-          PublicAccountImageCollectionAdapter.a(this.a, 2131695185);
+          PublicAccountImageCollectionAdapter.a(this.a, 2131892918);
           return;
         }
-        PublicAccountImageCollectionAdapter.a(this.a, 2131695217);
+        PublicAccountImageCollectionAdapter.a(this.a, 2131892951);
         return;
-        PublicAccountImageCollectionAdapter.a(this.a, 2131695217);
+        PublicAccountImageCollectionAdapter.a(this.a, 2131892951);
       }
       return;
     }
@@ -53,7 +53,7 @@ class PublicAccountImageCollectionAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.4
  * JD-Core Version:    0.7.0.1
  */

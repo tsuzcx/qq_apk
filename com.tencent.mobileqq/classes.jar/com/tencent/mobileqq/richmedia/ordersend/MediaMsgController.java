@@ -60,17 +60,6 @@ public class MediaMsgController
     return i;
   }
   
-  public String a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return ((MessageForShortVideo)paramMessageRecord).videoFileName;
-    }
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return ((MessageForPic)paramMessageRecord).path;
-    }
-    return null;
-  }
-  
   public void a(long paramLong)
   {
     VideoCompressProcessor.a().a(paramLong);
@@ -84,7 +73,93 @@ public class MediaMsgController
     }
   }
   
-  public void a(MessageRecord paramMessageRecord)
+  public void a(MessageRecord paramMessageRecord, BaseMessageObserver paramBaseMessageObserver, IOrderMediaMsgService.IMsgSendingListener paramIMsgSendingListener)
+  {
+    if (paramMessageRecord == null) {
+      return;
+    }
+    if (paramIMsgSendingListener != null) {
+      paramIMsgSendingListener.onSendBegin(paramMessageRecord);
+    }
+    paramBaseMessageObserver = new MediaMsgController.1(this, paramBaseMessageObserver, paramMessageRecord);
+    this.a.getMessageFacade().b(paramMessageRecord, paramBaseMessageObserver);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    File localFile = new File(paramString);
+    if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
+      }
+      return true;
+    }
+    int i = ((IPicUtil)QRoute.api(IPicUtil.class)).getImageType(paramString);
+    if ((i != 2000) && (i != 3)) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
+    }
+    return true;
+  }
+  
+  public String b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return ((MessageForShortVideo)paramMessageRecord).videoFileName;
+    }
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return ((MessageForPic)paramMessageRecord).path;
+    }
+    return null;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
+  }
+  
+  public boolean c(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
+      return true;
+    }
+    int j = 0;
+    int i;
+    if ((paramMessageRecord instanceof MessageForShortVideo))
+    {
+      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
+    }
+    else
+    {
+      i = j;
+      if ((paramMessageRecord instanceof MessageForPic))
+      {
+        i = j;
+        if (((MessageForPic)paramMessageRecord).size <= 0L)
+        {
+          j = f(paramMessageRecord);
+          i = j;
+          if (j == -1) {
+            return true;
+          }
+        }
+      }
+    }
+    return a(i);
+  }
+  
+  public void d(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord != null)
     {
@@ -115,77 +190,17 @@ public class MediaMsgController
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, BaseMessageObserver paramBaseMessageObserver, IOrderMediaMsgService.IMsgSendingListener paramIMsgSendingListener)
+  public boolean e(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (paramIMsgSendingListener != null) {
-      paramIMsgSendingListener.onSendBegin(paramMessageRecord);
-    }
-    paramBaseMessageObserver = new MediaMsgController.1(this, paramBaseMessageObserver, paramMessageRecord);
-    this.a.getMessageFacade().b(paramMessageRecord, paramBaseMessageObserver);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
+    if (g(paramMessageRecord))
+    {
+      h(paramMessageRecord);
       return true;
     }
-    int j = 0;
-    int i;
-    if ((paramMessageRecord instanceof MessageForShortVideo))
-    {
-      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
-    }
-    else
-    {
-      i = j;
-      if ((paramMessageRecord instanceof MessageForPic))
-      {
-        i = j;
-        if (((MessageForPic)paramMessageRecord).size <= 0L)
-        {
-          j = b(paramMessageRecord);
-          i = j;
-          if (j == -1) {
-            return true;
-          }
-        }
-      }
-    }
-    return a(i);
+    return false;
   }
   
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    File localFile = new File(paramString);
-    if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
-      }
-      return true;
-    }
-    int i = ((IPicUtil)QRoute.api(IPicUtil.class)).getImageType(paramString);
-    if ((i != 2000) && (i != 3)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
-    }
-    return true;
-  }
-  
-  public int b(MessageRecord paramMessageRecord)
+  public int f(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord != null)
     {
@@ -197,29 +212,7 @@ public class MediaMsgController
     return -1;
   }
   
-  protected void b(MessageRecord paramMessageRecord)
-  {
-    Object localObject = this.a;
-    localObject = new VideoCompressProcessor.CompressTask((QQAppInterface)localObject, ((QQAppInterface)localObject).getApplication(), (MessageForShortVideo)paramMessageRecord, null);
-    VideoCompressProcessor.a().a(paramMessageRecord.uniseq, (VideoCompressProcessor.CompressTask)localObject);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
-  }
-  
-  public boolean b(MessageRecord paramMessageRecord)
-  {
-    if (c(paramMessageRecord))
-    {
-      b(paramMessageRecord);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean c(MessageRecord paramMessageRecord)
+  public boolean g(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof MessageForShortVideo))
     {
@@ -240,10 +233,17 @@ public class MediaMsgController
     boolean bool = false;
     return bool;
   }
+  
+  protected void h(MessageRecord paramMessageRecord)
+  {
+    Object localObject = this.a;
+    localObject = new VideoCompressProcessor.CompressTask((QQAppInterface)localObject, ((QQAppInterface)localObject).getApplication(), (MessageForShortVideo)paramMessageRecord, null);
+    VideoCompressProcessor.a().a(paramMessageRecord.uniseq, (VideoCompressProcessor.CompressTask)localObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.MediaMsgController
  * JD-Core Version:    0.7.0.1
  */

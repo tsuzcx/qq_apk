@@ -54,7 +54,7 @@ public class WebViewUtil
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramWebViewPlugin.toString());
     ((StringBuilder)localObject).append(" have no namespace!!!!");
-    a(((StringBuilder)localObject).toString());
+    b(((StringBuilder)localObject).toString());
     return -1;
   }
   
@@ -62,7 +62,7 @@ public class WebViewUtil
   {
     if (TextUtils.isEmpty(paramString))
     {
-      a("have no namespace!!!!");
+      b("have no namespace!!!!");
       return -1;
     }
     if (WebViewPluginFactory.a.containsKey(paramString))
@@ -70,7 +70,7 @@ public class WebViewUtil
       paramString = (Class)WebViewPluginFactory.a.get(paramString);
       return ((Integer)WebViewPluginFactory.b.get(paramString)).intValue();
     }
-    a("have no namespace!!!!");
+    b("have no namespace!!!!");
     return -1;
   }
   
@@ -90,14 +90,14 @@ public class WebViewUtil
     QRoute.startUri(paramActivityURIRequest);
   }
   
-  private static void a(String paramString)
+  private static void b(String paramString)
   {
     QLog.e("WebViewUtil", 1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewUtil
  * JD-Core Version:    0.7.0.1
  */

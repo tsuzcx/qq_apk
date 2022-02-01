@@ -16,7 +16,7 @@ public class QVipServiceAccountFolderProcessor
 {
   public static QVipServiceAccountFolderConfig a()
   {
-    QVipServiceAccountFolderConfig localQVipServiceAccountFolderConfig2 = (QVipServiceAccountFolderConfig)QConfigManager.a().a(722);
+    QVipServiceAccountFolderConfig localQVipServiceAccountFolderConfig2 = (QVipServiceAccountFolderConfig)QConfigManager.b().b(722);
     QVipServiceAccountFolderConfig localQVipServiceAccountFolderConfig1 = localQVipServiceAccountFolderConfig2;
     if (localQVipServiceAccountFolderConfig2 == null) {
       localQVipServiceAccountFolderConfig1 = new QVipServiceAccountFolderConfig();
@@ -28,11 +28,11 @@ public class QVipServiceAccountFolderProcessor
   public QVipServiceAccountFolderConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.SDK.QVipServiceAccountFolderProcessor", 1, paramArrayOfQConfItem[0].a);
+      QLog.d("QVIP.SDK.QVipServiceAccountFolderProcessor", 1, paramArrayOfQConfItem[0].b);
     }
     try
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
       {
         paramArrayOfQConfItem = (QVipServiceAccountFolderConfig)JSONConverter.a(paramArrayOfQConfItem, QVipServiceAccountFolderConfig.class);
@@ -58,15 +58,15 @@ public class QVipServiceAccountFolderProcessor
     return new QVipServiceAccountFolderConfig();
   }
   
-  @NonNull
-  public QVipServiceAccountFolderConfig c()
-  {
-    return new QVipServiceAccountFolderConfig();
-  }
-  
   public Class<QVipServiceAccountFolderConfig> clazz()
   {
     return QVipServiceAccountFolderConfig.class;
+  }
+  
+  @NonNull
+  public QVipServiceAccountFolderConfig e()
+  {
+    return new QVipServiceAccountFolderConfig();
   }
   
   public int type()
@@ -76,7 +76,7 @@ public class QVipServiceAccountFolderProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipServiceAccountFolderProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -9,27 +9,21 @@ import org.json.JSONObject;
 public class QFileIPv6ConfigBean
   implements IQStorageSafable<String>
 {
-  public int a;
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
   public boolean c = false;
   public boolean d = false;
   public boolean e = false;
-  
-  public QFileIPv6ConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int f = 0;
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     this.b = false;
     this.c = false;
     this.d = false;
     this.e = false;
-    this.jdField_a_of_type_Int = 0;
+    this.f = 0;
   }
   
   public void a(String paramString)
@@ -55,9 +49,9 @@ public class QFileIPv6ConfigBean
       if (paramString != null)
       {
         if (paramString.has("allswitch")) {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("allswitch");
+          this.a = paramString.getBoolean("allswitch");
         } else {
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
         }
         if (paramString.has("c2cenable")) {
           this.b = paramString.getBoolean("c2cenable");
@@ -81,10 +75,10 @@ public class QFileIPv6ConfigBean
         }
         if (paramString.has("strategy"))
         {
-          this.jdField_a_of_type_Int = paramString.getInt("strategy");
+          this.f = paramString.getInt("strategy");
           return;
         }
-        this.jdField_a_of_type_Int = 0;
+        this.f = 0;
         return;
       }
       QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
@@ -99,7 +93,7 @@ public class QFileIPv6ConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileIPv6ConfigBean
  * JD-Core Version:    0.7.0.1
  */

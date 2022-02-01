@@ -5,17 +5,12 @@ import java.lang.ref.WeakReference;
 
 public class ETTextView$DecorationHolder
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public ETLayout a;
   public WeakReference<ETTextView> a;
-  public long b = 0L;
-  
-  public ETTextView$DecorationHolder()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public long b;
+  public long c = 0L;
+  public int d = -1;
+  public ETLayout e;
+  public Bitmap f;
   
   static DecorationHolder a(ETTextView paramETTextView)
   {
@@ -23,12 +18,12 @@ public class ETTextView$DecorationHolder
       return null;
     }
     DecorationHolder localDecorationHolder = new DecorationHolder();
-    localDecorationHolder.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramETTextView);
-    localDecorationHolder.jdField_a_of_type_Long = paramETTextView.mMsgId;
-    localDecorationHolder.jdField_a_of_type_ComEtrumpMixlayoutETLayout = paramETTextView.mLayout;
-    localDecorationHolder.jdField_a_of_type_Int = ETTextView.access$600(paramETTextView).currentFrameIndex();
-    localDecorationHolder.jdField_a_of_type_AndroidGraphicsBitmap = ETTextView.access$400(paramETTextView).a();
-    localDecorationHolder.b = System.currentTimeMillis();
+    localDecorationHolder.a = new WeakReference(paramETTextView);
+    localDecorationHolder.b = paramETTextView.mMsgId;
+    localDecorationHolder.e = paramETTextView.mLayout;
+    localDecorationHolder.d = ETTextView.access$600(paramETTextView).currentFrameIndex();
+    localDecorationHolder.f = ETTextView.access$400(paramETTextView).a();
+    localDecorationHolder.c = System.currentTimeMillis();
     return localDecorationHolder;
   }
 }

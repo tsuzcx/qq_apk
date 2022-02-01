@@ -13,6 +13,7 @@ import com.tencent.mobileqq.vassplash.common.VasSplashCacheManager;
 import com.tencent.mobileqq.vassplash.common.VasSplashUtil;
 import com.tencent.mobileqq.vassplash.model.SplashItem;
 import com.tencent.mobileqq.vassplash.model.SplashItem.Builder;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
@@ -40,7 +41,8 @@ public class TianshuSplashManager
   {
     if ((paramAdItem != null) && (paramQQAppInterface != null))
     {
-      SplashADUtil.a(paramQQAppInterface.getApp(), VasSplashUtil.a(paramString));
+      QLog.i("splash.tag.TianshuSplashManager", 1, "[convertTianshuSplashData]");
+      SplashADUtil.a(paramQQAppInterface.getApp(), VasSplashUtil.e(paramString));
       Object localObject2 = new HashMap();
       paramQQAppInterface = paramAdItem.argList.get().iterator();
       while (paramQQAppInterface.hasNext())
@@ -64,39 +66,39 @@ public class TianshuSplashManager
             if (i == 2)
             {
               paramQQAppInterface = (String)((HashMap)localObject2).get("videoURL");
-              break label215;
+              break label223;
             }
           }
           else
           {
             paramQQAppInterface = (String)((HashMap)localObject2).get("gifURL");
-            break label215;
+            break label223;
           }
         }
         else
         {
           paramQQAppInterface = (String)((HashMap)localObject2).get("imageURL");
-          break label215;
+          break label223;
         }
       }
       paramQQAppInterface = "";
-      label215:
-      int k = VasSplashUtil.a((String)((HashMap)localObject2).get("androidMinimumMemorySize"));
-      int m = VasSplashUtil.a((String)((HashMap)localObject2).get("androidMinimumOSVersion"));
-      int n = VasSplashUtil.a((String)((HashMap)localObject2).get("linkType"));
-      int i1 = VasSplashUtil.a((String)((HashMap)localObject2).get("thirdPartyReportPlatform"));
-      int i2 = VasSplashUtil.a((String)((HashMap)localObject2).get("showPriority"));
+      label223:
+      int n = VasSplashUtil.d((String)((HashMap)localObject2).get("androidMinimumMemorySize"));
+      int i1 = VasSplashUtil.d((String)((HashMap)localObject2).get("androidMinimumOSVersion"));
+      int i2 = VasSplashUtil.d((String)((HashMap)localObject2).get("linkType"));
+      int i3 = VasSplashUtil.d((String)((HashMap)localObject2).get("thirdPartyReportPlatform"));
+      int i4 = VasSplashUtil.d((String)((HashMap)localObject2).get("showPriority"));
       String str4 = (String)((HashMap)localObject2).get("thirdPartyReportURLForExposure");
       String str5 = (String)((HashMap)localObject2).get("bannertype");
-      int i3 = VasSplashUtil.a((String)((HashMap)localObject2).get("shouldShowAdMark"));
+      int i5 = VasSplashUtil.d((String)((HashMap)localObject2).get("shouldShowAdMark"));
       int j;
-      if ((m == 0) && (k == 0)) {
+      if ((i1 == 0) && (n == 0)) {
         j = 0;
       } else {
         j = 1;
       }
       Object localObject1 = (String)((HashMap)localObject2).get("linkURL");
-      if ((n == 1) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).startsWith("http")))
+      if ((i2 == 1) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).startsWith("http")))
       {
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("https://");
@@ -105,13 +107,29 @@ public class TianshuSplashManager
       }
       Object localObject3 = (String)((HashMap)localObject2).get("entryText");
       String str6 = (String)((HashMap)localObject2).get("entryColor");
-      localObject2 = (String)((HashMap)localObject2).get("entryBgColor");
-      boolean bool = VasSplashUtil.a(j, k, m);
+      String str7 = (String)((HashMap)localObject2).get("entryBgColor");
+      int m = VasSplashUtil.d((String)((HashMap)localObject2).get("btnResourceType"));
+      localObject2 = (String)((HashMap)localObject2).get("btnShowURL");
+      int k = m;
+      if (m == 2)
+      {
+        QLog.i("splash.tag.TianshuSplashManager", 1, "DYNAMIC_IMG NOT support, convert it into default mode.");
+        k = 0;
+      }
+      boolean bool = VasSplashUtil.a(j, n, i1);
       paramString = localBuilder.h(paramString);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramAdItem.iAdId.get());
       localStringBuilder.append("");
-      paramString.b(localStringBuilder.toString()).c(str1).d(str2).c(i).e(paramQQAppInterface).d(n).f((String)localObject1).b(bool).g(str4).b(i2).e(i1).i(str3).j("").a(i3).a(str5).k((String)localObject3).l(str6).m((String)localObject2);
+      paramString.b(localStringBuilder.toString()).c(str1).d(str2).c(i).e(paramQQAppInterface).d(i2).f((String)localObject1).b(bool).g(str4).b(i4).e(i3).i(str3).j("").a(i5).a(str5).k((String)localObject3).l(str6).m(str7).f(k).n((String)localObject2);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("id:");
+      paramQQAppInterface.append(paramAdItem.iAdId.get());
+      paramQQAppInterface.append(",entryBtnType:");
+      paramQQAppInterface.append(k);
+      paramQQAppInterface.append(",btnUrl:");
+      paramQQAppInterface.append((String)localObject2);
+      QLog.i("splash.tag.TianshuSplashManager", 1, paramQQAppInterface.toString());
       return localBuilder.a();
     }
     return null;
@@ -206,7 +224,7 @@ public class TianshuSplashManager
         if (localObject2 != null)
         {
           localArrayList.add(localObject2);
-          localObject1 = VasADBannerConfigInfo.a(a((TianShuAccess.AdItem)localObject1), ((SplashItem)localObject2).l);
+          localObject1 = VasADBannerConfigInfo.a(a((TianShuAccess.AdItem)localObject1), ((SplashItem)localObject2).s);
           VasADBannerResDownloadManager.a().c(this.a, (VasADBannerConfigInfo)localObject1);
           ((VasADBannerConfigInfo)localObject1).a(this.a.getCurrentUin());
         }
@@ -215,7 +233,7 @@ public class TianshuSplashManager
       VasSplashCacheManager.a(paramList, paramList.getCurrentUin(), localArrayList);
       return;
     }
-    VasSplashUtil.a(BaseApplicationImpl.getContext(), VasSplashUtil.a(this.a.getCurrentUin()), false);
+    VasSplashUtil.a(BaseApplicationImpl.getContext(), VasSplashUtil.e(this.a.getCurrentUin()), false);
   }
   
   private void b(List<TianShuAccess.AdItem> paramList)
@@ -238,11 +256,6 @@ public class TianshuSplashManager
     VasSplashCacheManager.a(paramList, paramList.getCurrentUin(), localArrayList);
   }
   
-  public void a()
-  {
-    this.a = null;
-  }
-  
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.a = paramQQAppInterface;
@@ -250,15 +263,20 @@ public class TianshuSplashManager
   
   public void a(String paramString)
   {
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       return;
     }
     TianShuManager.getInstance().requestAdv(a(), new TianshuSplashManager.TianShuGetSplashCallback(this, paramString));
   }
+  
+  public void b()
+  {
+    this.a = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuSplashManager
  * JD-Core Version:    0.7.0.1
  */

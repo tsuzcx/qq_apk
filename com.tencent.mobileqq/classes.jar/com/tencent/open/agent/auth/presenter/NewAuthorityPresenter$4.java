@@ -17,16 +17,16 @@ class NewAuthorityPresenter$4
     SSOLog.a("NewAuthorityPresenter", new Object[] { "onTaskCompleted uin=", AuthorityUtil.a(paramString), ", bitmap=", paramBitmap });
     if (paramBitmap != null)
     {
-      if (!paramString.equals(this.a.a.a)) {
+      if (!paramString.equals(this.a.w.a)) {
         return;
       }
-      NewAuthorityPresenter.a(this.a).sendEmptyMessage(2);
+      NewAuthorityPresenter.d(this.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.NewAuthorityPresenter.4
  * JD-Core Version:    0.7.0.1
  */

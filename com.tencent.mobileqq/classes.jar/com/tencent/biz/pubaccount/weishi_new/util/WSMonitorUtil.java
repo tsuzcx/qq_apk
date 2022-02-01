@@ -9,17 +9,17 @@ public class WSMonitorUtil
   
   public static void a(Activity paramActivity, String paramString)
   {
-    DropFrameMonitor.a().a(paramString);
+    DropFrameMonitor.b().a(paramString);
   }
   
   public static void a(String paramString)
   {
-    DropFrameMonitor.a().a(paramString, false);
+    DropFrameMonitor.b().a(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSMonitorUtil
  * JD-Core Version:    0.7.0.1
  */

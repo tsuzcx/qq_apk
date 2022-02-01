@@ -15,42 +15,42 @@ import mqq.observer.BusinessObserver;
 public class ContactImpl
   implements IContactInterface
 {
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
-  private String c;
+  private ContactBindObserver a;
+  private boolean b;
+  private QBaseActivity c;
+  private String d;
+  private String e;
+  private String f;
+  private byte[] g;
   
-  private ContactBindObserver a(IRegisterView paramIRegisterView)
+  private ContactBindObserver b(IRegisterView paramIRegisterView)
   {
     return new ContactImpl.2(this, paramIRegisterView);
   }
   
   public BusinessObserver a(IRegisterView paramIRegisterView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = a(paramIRegisterView);
+    if (this.a == null) {
+      this.a = b(paramIRegisterView);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
+    return this.a;
   }
   
   public void a(QBaseActivity paramQBaseActivity, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("phonenum");
-    this.b = paramIntent.getStringExtra("key");
-    this.jdField_a_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("key_register_sign");
-    this.c = paramIntent.getStringExtra("uin");
+    this.c = paramQBaseActivity;
+    this.d = paramIntent.getStringExtra("phonenum");
+    this.e = paramIntent.getStringExtra("key");
+    this.g = paramIntent.getByteArrayExtra("key_register_sign");
+    this.f = paramIntent.getStringExtra("uin");
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       ThreadManager.executeOnNetWorkThread(new ContactImpl.1(this, paramAppRuntime));
-      QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131701059), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131899080), 0).show();
     }
   }
   
@@ -61,12 +61,12 @@ public class ContactImpl
   
   public void a(AppRuntime paramAppRuntime, byte[] paramArrayOfByte, String paramString)
   {
-    ContactBindServlet.a(paramAppRuntime, this.jdField_a_of_type_ArrayOfByte, this.c);
+    ContactBindServlet.a(paramAppRuntime, this.g, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.ContactImpl
  * JD-Core Version:    0.7.0.1
  */

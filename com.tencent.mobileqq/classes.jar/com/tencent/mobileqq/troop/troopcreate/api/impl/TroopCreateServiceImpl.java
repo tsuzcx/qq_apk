@@ -67,7 +67,7 @@ public class TroopCreateServiceImpl
     i = 0;
     if (!bool)
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694424, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, 2131892104, 0).show();
       terminateLogic();
       return;
     }
@@ -154,7 +154,7 @@ public class TroopCreateServiceImpl
     this.mApp.addObserver(this.mTroopMngObserver);
     this.mCreateCallback = paramTroopCreateCallback;
     ((ITroopMngHandler)this.mApp.getBusinessHandler(TroopMngHandler.class.getName())).a(this.mTroopCreateInfo.groupUin, this.mTroopCreateInfo.troopSize, l3, this.mTroopCreateInfo.verifyType, this.mTroopCreateInfo.name, this.mTroopCreateInfo.introduction, this.mTroopCreateInfo.classify, j, l1, l2, i, paramList, this.mTroopCreateInfo.signOriginal);
-    TroopCreateUtils.a(paramActivity, HardCodeUtil.a(2131715063));
+    TroopCreateUtils.a(paramActivity, HardCodeUtil.a(2131912551));
     return;
     label425:
     terminateLogic();
@@ -204,7 +204,7 @@ public class TroopCreateServiceImpl
         {
           ITroopCreateService.NameForCompare localNameForCompare = new ITroopCreateService.NameForCompare();
           localNameForCompare.a = localResultRecord.name;
-          localNameForCompare.b = ChnToSpell.a(localResultRecord.name, 2);
+          localNameForCompare.b = ChnToSpell.b(localResultRecord.name, 2);
           localArrayList.add(localNameForCompare);
         }
       }
@@ -213,7 +213,7 @@ public class TroopCreateServiceImpl
       localObject = (ITroopSearchService)this.mApp.getRuntimeService(ITroopSearchService.class, "");
       this.mCreateCallback = paramTroopCreateCallback;
       this.mTroopCreateInfo.inviteMembers = Collections.synchronizedList(TroopCreateUtils.a(paramArrayList));
-      TroopCreateUtils.a(paramActivity, HardCodeUtil.a(2131715064));
+      TroopCreateUtils.a(paramActivity, HardCodeUtil.a(2131912552));
       ((ITroopSearchService)localObject).search(paramArrayList, true, new TroopCreateServiceImpl.1(this, localArrayList, paramActivity, paramTroopCreateCallback, paramArrayList));
     }
   }
@@ -287,7 +287,7 @@ public class TroopCreateServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.api.impl.TroopCreateServiceImpl
  * JD-Core Version:    0.7.0.1
  */

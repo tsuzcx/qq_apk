@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.Map;
 
 @QAPI(process={"all"})
 public abstract interface IAEResUtil
@@ -32,6 +33,8 @@ public abstract interface IAEResUtil
   public abstract String getLightAssetsDir();
   
   public abstract String getLightBundleDir(@NonNull AEResInfo paramAEResInfo);
+  
+  public abstract Map<AEResInfo, String> getLightBundleMap();
   
   public abstract String getLightEmptyMaterialConfigPath();
   

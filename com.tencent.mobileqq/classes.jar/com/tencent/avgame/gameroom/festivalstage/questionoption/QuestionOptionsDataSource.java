@@ -9,7 +9,7 @@ public class QuestionOptionsDataSource
 {
   private List<QuestionOptionInfo> a = new CopyOnWriteArrayList();
   
-  private String a()
+  private String b()
   {
     int i = this.a.size();
     if (i != 0)
@@ -55,7 +55,7 @@ public class QuestionOptionsDataSource
       {
         String str = (String)paramList.next();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(a());
+        localStringBuilder.append(b());
         localStringBuilder.append(str);
         int i = a(localStringBuilder.toString());
         if (i >= 0) {

@@ -19,22 +19,22 @@ class GameRoomInviteActivity$8
   {
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      GameRoomInviteActivity localGameRoomInviteActivity = this.b;
       boolean bool;
-      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.b.app.getLongAccountUin())) {
         bool = false;
       } else {
         bool = true;
       }
-      localGameRoomInviteActivity.showMyInviteDialog(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, HardCodeUtil.a(2131705209));
+      localGameRoomInviteActivity.showMyInviteDialog(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, HardCodeUtil.a(2131903095));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mRoomNum, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mZoneId, new GameRoomInviteActivity.8.1(this));
+    this.a.b(this.b.mRoomNum, this.b.mZoneId, new GameRoomInviteActivity.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.8
  * JD-Core Version:    0.7.0.1
  */

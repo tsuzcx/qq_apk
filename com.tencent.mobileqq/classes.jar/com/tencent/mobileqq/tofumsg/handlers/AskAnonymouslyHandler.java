@@ -35,12 +35,7 @@ import tencent.im.oidb.cmd0xec4.oidb_0xec4.RspBody;
 public final class AskAnonymouslyHandler
   extends TofuDataBaseHandler
 {
-  public static final AskAnonymouslyHandler.Companion a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqTofumsgHandlersAskAnonymouslyHandler$Companion = new AskAnonymouslyHandler.Companion(null);
-  }
+  public static final AskAnonymouslyHandler.Companion b = new AskAnonymouslyHandler.Companion(null);
   
   public AskAnonymouslyHandler(@NotNull QQAppInterface paramQQAppInterface)
   {
@@ -73,14 +68,14 @@ public final class AskAnonymouslyHandler
   
   private final String a(oidb_0xec4.RspBody paramRspBody)
   {
-    paramRspBody = a(paramRspBody);
+    paramRspBody = b(paramRspBody);
     if (paramRspBody != null) {
       return paramRspBody.toString();
     }
     return null;
   }
   
-  private final JSONObject a(oidb_0xec4.RspBody paramRspBody)
+  private final JSONObject b(oidb_0xec4.RspBody paramRspBody)
   {
     if (!paramRspBody.has())
     {
@@ -178,10 +173,59 @@ public final class AskAnonymouslyHandler
     return 13;
   }
   
-  @Nullable
-  public String a(@Nullable TofuItem paramTofuItem)
+  public boolean a(int paramInt)
   {
-    Object localObject = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return (paramInt == 0) || (paramInt == 3);
+  }
+  
+  public boolean a(@NotNull BeancurdMsg paramBeancurdMsg)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBeancurdMsg, "msg");
+    int i = BeancurdManager.a(13);
+    Object localObject = this.a;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "app");
+    localObject = ((QQAppInterface)localObject).getMessageFacade().a(paramBeancurdMsg.frienduin, 0, new int[] { i });
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
+      String str = a(((MessageRecord)localObject).msg);
+      paramBeancurdMsg = a(paramBeancurdMsg.buffer);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isRepeat oldMsgQuestId = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" and newMsgQuestId = ");
+        localStringBuilder.append(paramBeancurdMsg);
+        QLog.i("AskAnonymouslyHandler", 2, localStringBuilder.toString());
+      }
+      if ((localObject != null) && (StringsKt.equals$default(str, paramBeancurdMsg, false, 2, null))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  @NotNull
+  public byte[] b(@Nullable TofuItem paramTofuItem)
+  {
+    if (paramTofuItem != null)
+    {
+      oidb_0xec4.ReqBody localReqBody = new oidb_0xec4.ReqBody();
+      localReqBody.uint64_uin.set(paramTofuItem.frdUin);
+      localReqBody.uint64_quest_num.set(1L);
+      localReqBody.uint32_fetch_type.set(1);
+      paramTofuItem = localReqBody.toByteArray();
+      Intrinsics.checkExpressionValueIsNotNull(paramTofuItem, "busReqBody.toByteArray()");
+      return paramTofuItem;
+    }
+    return new byte[0];
+  }
+  
+  @Nullable
+  public String c(@Nullable TofuItem paramTofuItem)
+  {
+    Object localObject = (AppInterface)this.a;
     String str = null;
     if (!new ProfileConfig((AppInterface)localObject, null).isSwitchEnable(13)) {
       return null;
@@ -228,7 +272,7 @@ public final class AskAnonymouslyHandler
     return str;
   }
   
-  protected void a(@Nullable TofuItem paramTofuItem)
+  protected void d(@Nullable TofuItem paramTofuItem)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -240,7 +284,7 @@ public final class AskAnonymouslyHandler
     }
     if (paramTofuItem != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+      localObject = this.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
       if (localObject != null)
       {
         ((BeancurdManager)localObject).a(String.valueOf(paramTofuItem.frdUin), 0, a());
@@ -249,59 +293,10 @@ public final class AskAnonymouslyHandler
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.activity.aio.BeancurdManager");
     }
   }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 3);
-  }
-  
-  public boolean a(@NotNull BeancurdMsg paramBeancurdMsg)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBeancurdMsg, "msg");
-    int i = BeancurdManager.a(13);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "app");
-    localObject = ((QQAppInterface)localObject).getMessageFacade().a(paramBeancurdMsg.frienduin, 0, new int[] { i });
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
-      String str = a(((MessageRecord)localObject).msg);
-      paramBeancurdMsg = a(paramBeancurdMsg.buffer);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isRepeat oldMsgQuestId = ");
-        localStringBuilder.append(str);
-        localStringBuilder.append(" and newMsgQuestId = ");
-        localStringBuilder.append(paramBeancurdMsg);
-        QLog.i("AskAnonymouslyHandler", 2, localStringBuilder.toString());
-      }
-      if ((localObject != null) && (StringsKt.equals$default(str, paramBeancurdMsg, false, 2, null))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  @NotNull
-  public byte[] a(@Nullable TofuItem paramTofuItem)
-  {
-    if (paramTofuItem != null)
-    {
-      oidb_0xec4.ReqBody localReqBody = new oidb_0xec4.ReqBody();
-      localReqBody.uint64_uin.set(paramTofuItem.frdUin);
-      localReqBody.uint64_quest_num.set(1L);
-      localReqBody.uint32_fetch_type.set(1);
-      paramTofuItem = localReqBody.toByteArray();
-      Intrinsics.checkExpressionValueIsNotNull(paramTofuItem, "busReqBody.toByteArray()");
-      return paramTofuItem;
-    }
-    return new byte[0];
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.handlers.AskAnonymouslyHandler
  * JD-Core Version:    0.7.0.1
  */

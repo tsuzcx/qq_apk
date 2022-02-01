@@ -35,10 +35,10 @@ class PublicAccountListActivity$16
       {
         paramInnerPAInfo1 = ChnToSpell.a(c1, i);
         paramInnerPAInfo2 = ChnToSpell.a(c2, i);
-        if (paramInnerPAInfo1.jdField_a_of_type_Int == paramInnerPAInfo2.jdField_a_of_type_Int) {
-          return paramInnerPAInfo1.jdField_a_of_type_JavaLangString.compareTo(paramInnerPAInfo2.jdField_a_of_type_JavaLangString);
+        if (paramInnerPAInfo1.a == paramInnerPAInfo2.a) {
+          return paramInnerPAInfo1.b.compareTo(paramInnerPAInfo2.b);
         }
-        return paramInnerPAInfo1.jdField_a_of_type_Int - paramInnerPAInfo2.jdField_a_of_type_Int;
+        return paramInnerPAInfo1.a - paramInnerPAInfo2.a;
       }
       i += 1;
     }
@@ -53,7 +53,7 @@ class PublicAccountListActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.16
  * JD-Core Version:    0.7.0.1
  */

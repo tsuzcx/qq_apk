@@ -9,8 +9,8 @@ class CodeMaskManager$1$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$1.this$0.a) {
-      CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$1.this$0, this.jdField_a_of_type_OrgJsonJSONArray);
+    if (!this.b.this$0.h) {
+      CodeMaskManager.a(this.b.this$0, this.a);
     }
   }
 }

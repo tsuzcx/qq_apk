@@ -8,7 +8,7 @@ class ProgressControler$1
 {
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.a) {
+    if (this.a.e) {
       return;
     }
     paramMessage = this.a;
@@ -17,7 +17,7 @@ class ProgressControler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.ProgressControler.1
  * JD-Core Version:    0.7.0.1
  */

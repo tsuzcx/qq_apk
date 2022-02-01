@@ -21,7 +21,7 @@ class TavPlayer$4
     }
     else
     {
-      if (!TavPlayer.b(this.a)) {
+      if (!TavPlayer.c(this.a)) {
         return;
       }
       if (TavPlayer.a(this.a) != null) {
@@ -32,7 +32,7 @@ class TavPlayer$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayer.4
  * JD-Core Version:    0.7.0.1
  */

@@ -22,11 +22,6 @@ public class WXVoiceRecogEngine
     return a;
   }
   
-  public int a()
-  {
-    return GrammarNative.begin();
-  }
-  
   public int a(String paramString)
   {
     try
@@ -55,10 +50,15 @@ public class WXVoiceRecogEngine
   
   public int b()
   {
-    return GrammarNative.end();
+    return GrammarNative.begin();
   }
   
   public int c()
+  {
+    return GrammarNative.end();
+  }
+  
+  public int e()
   {
     return GrammarNative.destroy();
   }

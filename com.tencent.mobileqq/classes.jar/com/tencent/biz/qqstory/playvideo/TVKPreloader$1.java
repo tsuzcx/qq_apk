@@ -10,15 +10,15 @@ final class TVKPreloader$1
   {
     synchronized ()
     {
-      paramString2 = TVKPreloader.a();
-      TVKPreloader.a().post(new TVKPreloader.1.1(this, paramString2));
+      paramString2 = TVKPreloader.d();
+      TVKPreloader.f().post(new TVKPreloader.1.1(this, paramString2));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader.1
  * JD-Core Version:    0.7.0.1
  */

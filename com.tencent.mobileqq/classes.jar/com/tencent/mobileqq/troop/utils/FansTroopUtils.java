@@ -79,13 +79,13 @@ public class FansTroopUtils
   
   public static boolean a()
   {
-    TroopFansEntryConfig localTroopFansEntryConfig = (TroopFansEntryConfig)QConfigManager.a().a(701);
+    TroopFansEntryConfig localTroopFansEntryConfig = (TroopFansEntryConfig)QConfigManager.b().b(701);
     if (localTroopFansEntryConfig != null)
     {
       if (!localTroopFansEntryConfig.isProfileCardEntranceSwitchOn()) {
         return false;
       }
-      return !StudyModeManager.a();
+      return !StudyModeManager.h();
     }
     return false;
   }
@@ -103,7 +103,7 @@ public class FansTroopUtils
           return false;
         }
         int j = paramTroopInfoExt.starId;
-        paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+        paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
         int i;
         if (paramQQAppInterface != null) {
           i = paramQQAppInterface.getFansTroopStarId();
@@ -138,7 +138,7 @@ public class FansTroopUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.FansTroopUtils
  * JD-Core Version:    0.7.0.1
  */

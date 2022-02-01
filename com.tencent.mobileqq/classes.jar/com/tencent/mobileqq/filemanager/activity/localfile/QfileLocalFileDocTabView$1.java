@@ -20,12 +20,12 @@ class QfileLocalFileDocTabView$1
   {
     HashMap localHashMap = new HashMap();
     boolean bool;
-    if (this.this$0.a.e() != 8) {
+    if (this.this$0.C.E() != 8) {
       bool = true;
     } else {
       bool = false;
     }
-    Object localObject1 = this.this$0.d.iterator();
+    Object localObject1 = this.this$0.m.iterator();
     while (((Iterator)localObject1).hasNext()) {
       FileCategoryUtil.a(bool, ((QfileTabBarView.ScanParams)((Iterator)localObject1).next()).a(), ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
     }
@@ -47,7 +47,7 @@ class QfileLocalFileDocTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,7 @@ import java.util.Set;
 public class PicMultiMsgProcessor
   extends BaseMultiMsgProcessor
 {
-  private static final String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131708158);
-  }
+  private static final String b = HardCodeUtil.a(2131905954);
   
   public PicMultiMsgProcessor(QQAppInterface paramQQAppInterface)
   {
@@ -42,7 +37,7 @@ public class PicMultiMsgProcessor
   {
     if ((paramMessageRecord instanceof MessageForPic))
     {
-      paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfo(7, (MessageForPic)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfo(7, (MessageForPic)paramMessageRecord, paramInt1, paramString1, paramString2, this.a.getAccount());
       if (paramMultiMsgRequest != null)
       {
         paramArrayList.add(paramMultiMsgRequest);
@@ -55,7 +50,7 @@ public class PicMultiMsgProcessor
     }
     else if ((paramMessageRecord instanceof MessageForMixedMsg))
     {
-      paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageForMixedMsg)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageForMixedMsg)paramMessageRecord, paramInt1, paramString1, paramString2, this.a.getAccount());
       if (paramMultiMsgRequest != null)
       {
         paramArrayList.addAll(paramMultiMsgRequest);
@@ -77,7 +72,7 @@ public class PicMultiMsgProcessor
           localObject = (MessageRecord)paramMultiMsgRequest.next();
           if ((localObject instanceof MessageForMixedMsg))
           {
-            localObject = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageForMixedMsg)localObject, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+            localObject = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageForMixedMsg)localObject, paramInt1, paramString1, paramString2, this.a.getAccount());
             if (localObject != null)
             {
               paramArrayList.addAll((Collection)localObject);
@@ -95,14 +90,14 @@ public class PicMultiMsgProcessor
           localObject = paramMultiMsgRequest.getFirstImageElement();
           if (localObject != null)
           {
-            if (((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)
+            if (((StructMsgItemImage)localObject).aF == null)
             {
-              if (((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-                ((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = paramMultiMsgRequest;
+              if (((StructMsgItemImage)localObject).aE == null) {
+                ((StructMsgItemImage)localObject).aE = paramMultiMsgRequest;
               }
-              ((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((StructMsgItemImage)localObject).a();
+              ((StructMsgItemImage)localObject).aF = ((StructMsgItemImage)localObject).d();
             }
-            paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfo(7, ((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramInt2, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+            paramMultiMsgRequest = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfo(7, ((StructMsgItemImage)localObject).aF, paramInt2, paramString1, paramString2, this.a.getAccount());
             if (paramMultiMsgRequest != null)
             {
               paramArrayList.add(paramMultiMsgRequest);
@@ -123,7 +118,7 @@ public class PicMultiMsgProcessor
           if (QLog.isColorLevel()) {
             QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg] MessageForReplyText add to list");
           }
-          if (paramMultiMsgRequest.b == 2) {
+          if (paramMultiMsgRequest.i == 2) {
             paramInt1 = 0;
           } else {
             paramInt1 = paramMessageRecord.istroop;
@@ -147,14 +142,14 @@ public class PicMultiMsgProcessor
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     int i;
-    if (paramMultiMsgRequest.b == 2) {
+    if (paramMultiMsgRequest.i == 2) {
       i = 0;
     } else {
-      i = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      i = paramMultiMsgRequest.a.a;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    Object localObject1 = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    int j = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    String str = this.a.getAccount();
+    Object localObject1 = paramMultiMsgRequest.a.b;
+    int j = paramMultiMsgRequest.a.a;
     Iterator localIterator1 = paramHashMap.keySet().iterator();
     if (localIterator1.hasNext())
     {
@@ -181,7 +176,7 @@ public class PicMultiMsgProcessor
         ((StringBuilder)localObject1).append("], goto requestUploadPics");
         QLog.d("PicMultiMsgProcessor", 2, ((StringBuilder)localObject1).toString());
       }
-      a(paramHashMap, paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, localArrayList2, localArrayList1, paramMultiMsgRequest.b, paramMultiMsgRequest, paramIMultiMsgRichUploadCallback);
+      a(paramHashMap, paramMultiMsgRequest.e, localArrayList2, localArrayList1, paramMultiMsgRequest.i, paramMultiMsgRequest, paramIMultiMsgRichUploadCallback);
       return;
     }
     paramIMultiMsgRichUploadCallback.a(0, 1, paramMultiMsgRequest);
@@ -189,7 +184,7 @@ public class PicMultiMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.PicMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

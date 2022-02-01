@@ -2,6 +2,7 @@ package com.tencent.biz.richframework.animation.drawable;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Application;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -16,6 +17,9 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import com.tencent.biz.richframework.AutoShadowPluginRuntime;
+import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -28,56 +32,49 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-import mqq.app.MobileQQ;
 
 @SuppressLint({"NewApi"})
 public class QQAnimationDrawable
   extends Drawable
   implements Animatable, Runnable
 {
-  public static final ExecutorService a;
-  public static byte[] a;
-  protected int a;
-  private long jdField_a_of_type_Long = 0L;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  final QQAnimationDrawable.InternalHandler jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$InternalHandler = new QQAnimationDrawable.InternalHandler(this, this);
-  private QQAnimationDrawable.QQAnimationListener jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$QQAnimationListener;
-  private volatile QQAnimationDrawable.SerialExecutor jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$SerialExecutor = new QQAnimationDrawable.SerialExecutor(null);
-  private QQAnimationDrawable.WorkerRunnable jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$WorkerRunnable;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<String, SoftReference<Bitmap>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Set<SoftReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
-  private FutureTask<Bitmap> jdField_a_of_type_JavaUtilConcurrentFutureTask;
-  boolean jdField_a_of_type_Boolean = true;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int = 160;
-  private long jdField_b_of_type_Long;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = 0;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = 1;
-  private boolean jdField_d_of_type_Boolean = true;
-  private int jdField_e_of_type_Int = 0;
-  private boolean jdField_e_of_type_Boolean = true;
-  private int jdField_f_of_type_Int = 2;
-  private boolean jdField_f_of_type_Boolean = true;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean = false;
-  private int h;
-  private int i;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    jdField_a_of_type_ArrayOfByte = new byte[24576];
-  }
+  public static final ExecutorService h = ;
+  public static byte[] i = new byte[24576];
+  private String A;
+  private int B;
+  private int C;
+  private QQAnimationDrawable.QQAnimationListener D;
+  private boolean E = false;
+  private Object F = new Object();
+  private long G;
+  private int H;
+  private volatile QQAnimationDrawable.SerialExecutor I = new QQAnimationDrawable.SerialExecutor(null);
+  private FutureTask<Bitmap> J;
+  private Set<SoftReference<Bitmap>> K;
+  protected int a = -1;
+  Bitmap b;
+  Bitmap c;
+  int d = 160;
+  final QQAnimationDrawable.InternalHandler e = new QQAnimationDrawable.InternalHandler(this, this);
+  boolean f = true;
+  boolean g = true;
+  private final Paint j = new Paint(6);
+  private int k = 0;
+  private boolean l = false;
+  private boolean m = true;
+  private int n = 1;
+  private long o = 0L;
+  private Bitmap p;
+  private int q = 0;
+  private boolean r = true;
+  private QQAnimationDrawable.WorkerRunnable s;
+  private int[] t;
+  private String[] u;
+  private BitmapFactory.Options v = new BitmapFactory.Options();
+  private int w = 2;
+  private boolean x = true;
+  private ArrayList<Bitmap> y = new ArrayList();
+  private HashMap<String, SoftReference<Bitmap>> z = new HashMap();
   
   public QQAnimationDrawable()
   {
@@ -86,16 +83,15 @@ public class QQAnimationDrawable
   
   public QQAnimationDrawable(QQAnimationDrawable.QQAnimationListener paramQQAnimationListener)
   {
-    this.jdField_a_of_type_Int = -1;
-    int k = this.jdField_b_of_type_Int;
-    int j = k;
-    if (k == 0) {
-      j = 160;
+    int i2 = this.d;
+    int i1 = i2;
+    if (i2 == 0) {
+      i1 = 160;
     }
-    this.jdField_b_of_type_Int = j;
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$QQAnimationListener = paramQQAnimationListener;
+    this.d = i1;
+    this.D = paramQQAnimationListener;
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+      this.K = Collections.synchronizedSet(new HashSet());
     }
   }
   
@@ -116,18 +112,18 @@ public class QQAnimationDrawable
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    if ((k <= paramInt2) && (m <= paramInt1)) {
+    int i2 = paramOptions.outHeight;
+    int i3 = paramOptions.outWidth;
+    if ((i2 <= paramInt2) && (i3 <= paramInt1)) {
       return 1;
     }
-    int j = 2;
+    int i1 = 2;
     for (;;)
     {
-      if ((k / j <= paramInt2) && (m / j <= paramInt1)) {
-        return j;
+      if ((i2 / i1 <= paramInt2) && (i3 / i1 <= paramInt1)) {
+        return i1;
       }
-      j *= 2;
+      i1 *= 2;
     }
   }
   
@@ -143,90 +139,82 @@ public class QQAnimationDrawable
     //   4: aload_1
     //   5: ifnull +32 -> 37
     //   8: aload_1
-    //   9: getfield 204	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   9: getfield 234	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   12: ifeq +25 -> 37
-    //   15: new 206	java/io/BufferedInputStream
+    //   15: new 236	java/io/BufferedInputStream
     //   18: dup
-    //   19: new 208	java/io/FileInputStream
+    //   19: new 238	java/io/FileInputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 211	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 241	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   27: sipush 8192
-    //   30: invokespecial 214	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   30: invokespecial 244	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   33: astore_0
     //   34: goto +19 -> 53
-    //   37: new 206	java/io/BufferedInputStream
+    //   37: new 236	java/io/BufferedInputStream
     //   40: dup
-    //   41: new 208	java/io/FileInputStream
+    //   41: new 238	java/io/FileInputStream
     //   44: dup
     //   45: aload_0
-    //   46: invokespecial 211	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   49: invokespecial 217	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   46: invokespecial 241	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   49: invokespecial 247	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   52: astore_0
     //   53: aload_0
     //   54: astore_2
     //   55: aload_0
     //   56: aconst_null
     //   57: aload_1
-    //   58: invokestatic 223	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   58: invokestatic 253	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   61: astore_1
     //   62: aload_0
-    //   63: invokevirtual 228	java/io/InputStream:close	()V
+    //   63: invokevirtual 258	java/io/InputStream:close	()V
     //   66: aload_1
     //   67: areturn
     //   68: astore_1
     //   69: goto +10 -> 79
     //   72: astore_0
-    //   73: goto +49 -> 122
+    //   73: goto +39 -> 112
     //   76: astore_1
     //   77: aconst_null
     //   78: astore_0
     //   79: aload_0
     //   80: astore_2
-    //   81: invokestatic 234	com/tencent/biz/richframework/delegate/impl/RFLog:isColorLevel	()Z
-    //   84: ifeq +26 -> 110
+    //   81: invokestatic 264	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   84: ifeq +16 -> 100
     //   87: aload_0
     //   88: astore_2
-    //   89: ldc 236
-    //   91: getstatic 239	com/tencent/biz/richframework/delegate/impl/RFLog:CLR	I
-    //   94: iconst_2
-    //   95: anewarray 115	java/lang/Object
-    //   98: dup
-    //   99: iconst_0
-    //   100: ldc 241
-    //   102: aastore
-    //   103: dup
-    //   104: iconst_1
-    //   105: aload_1
-    //   106: aastore
-    //   107: invokestatic 244	com/tencent/biz/richframework/delegate/impl/RFLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   110: aload_0
-    //   111: ifnull +8 -> 119
-    //   114: aload_3
-    //   115: astore_1
-    //   116: goto -54 -> 62
-    //   119: aconst_null
-    //   120: areturn
-    //   121: astore_0
-    //   122: aload_2
-    //   123: ifnull +7 -> 130
-    //   126: aload_2
-    //   127: invokevirtual 228	java/io/InputStream:close	()V
-    //   130: goto +5 -> 135
-    //   133: aload_0
-    //   134: athrow
-    //   135: goto -2 -> 133
-    //   138: astore_0
-    //   139: aload_1
-    //   140: areturn
-    //   141: astore_1
-    //   142: goto -12 -> 130
+    //   89: ldc_w 266
+    //   92: iconst_2
+    //   93: ldc_w 268
+    //   96: aload_1
+    //   97: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: aload_0
+    //   101: ifnull +8 -> 109
+    //   104: aload_3
+    //   105: astore_1
+    //   106: goto -44 -> 62
+    //   109: aconst_null
+    //   110: areturn
+    //   111: astore_0
+    //   112: aload_2
+    //   113: ifnull +7 -> 120
+    //   116: aload_2
+    //   117: invokevirtual 258	java/io/InputStream:close	()V
+    //   120: goto +5 -> 125
+    //   123: aload_0
+    //   124: athrow
+    //   125: goto -2 -> 123
+    //   128: astore_0
+    //   129: aload_1
+    //   130: areturn
+    //   131: astore_1
+    //   132: goto -12 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	145	0	paramString	String
-    //   0	145	1	paramOptions	BitmapFactory.Options
-    //   1	126	2	str	String
-    //   3	112	3	localObject	Object
+    //   0	135	0	paramString	String
+    //   0	135	1	paramOptions	BitmapFactory.Options
+    //   1	116	2	str	String
+    //   3	102	3	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   55	62	68	java/lang/Exception
@@ -234,39 +222,42 @@ public class QQAnimationDrawable
     //   37	53	72	finally
     //   8	34	76	java/lang/Exception
     //   37	53	76	java/lang/Exception
-    //   55	62	121	finally
-    //   81	87	121	finally
-    //   89	110	121	finally
-    //   62	66	138	java/io/IOException
-    //   126	130	141	java/io/IOException
+    //   55	62	111	finally
+    //   81	87	111	finally
+    //   89	100	111	finally
+    //   62	66	128	java/io/IOException
+    //   116	120	131	java/io/IOException
   }
   
   private Bitmap a(boolean paramBoolean, int paramInt, Bitmap paramBitmap)
   {
-    localObject = paramBitmap;
-    long l;
+    Object localObject3 = paramBitmap;
+    long l1;
     String str;
-    label296:
+    Object localObject1;
+    Object localObject2;
+    label501:
     try
     {
-      if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+      if (this.u != null)
       {
-        localObject = paramBitmap;
-        if (paramInt < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+        localObject3 = paramBitmap;
+        if (paramInt < this.u.length)
         {
-          l = System.currentTimeMillis();
-          str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-          localObject = paramBitmap;
+          l1 = System.currentTimeMillis();
+          str = this.u[paramInt];
+          localObject3 = paramBitmap;
           if (str != null) {
-            if (this.jdField_f_of_type_Boolean)
+            if (this.x)
             {
-              localObject = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-              if ((localObject != null) && (((SoftReference)localObject).get() != null))
+              localObject1 = (SoftReference)this.z.get(str);
+              if ((localObject1 != null) && (((SoftReference)localObject1).get() != null))
               {
-                paramBitmap = (Bitmap)((SoftReference)localObject).get();
+                paramBitmap = (Bitmap)((SoftReference)localObject1).get();
                 return paramBitmap;
               }
-              localBitmap = paramBitmap;
+              localObject1 = paramBitmap;
+              localObject2 = paramBitmap;
             }
           }
         }
@@ -275,53 +266,117 @@ public class QQAnimationDrawable
     finally {}
     try
     {
-      localObject = new BitmapFactory.Options();
-      localBitmap = paramBitmap;
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      localBitmap = paramBitmap;
-      ((BitmapFactory.Options)localObject).inTempStorage = jdField_a_of_type_ArrayOfByte;
-      localBitmap = paramBitmap;
-      BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
-      localBitmap = paramBitmap;
-      paramInt = a((BitmapFactory.Options)localObject, MobileQQ.sMobileQQ.getResources().getDisplayMetrics().widthPixels, MobileQQ.sMobileQQ.getResources().getDisplayMetrics().heightPixels);
-      localBitmap = paramBitmap;
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-      localBitmap = paramBitmap;
-      ((BitmapFactory.Options)localObject).inSampleSize = paramInt;
-      localBitmap = paramBitmap;
+      localObject3 = new BitmapFactory.Options();
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      ((BitmapFactory.Options)localObject3).inJustDecodeBounds = true;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      ((BitmapFactory.Options)localObject3).inTempStorage = i;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject3);
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      paramInt = a((BitmapFactory.Options)localObject3, AutoShadowPluginRuntime.a().b().getResources().getDisplayMetrics().widthPixels, AutoShadowPluginRuntime.a().b().getResources().getDisplayMetrics().heightPixels);
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      ((BitmapFactory.Options)localObject3).inJustDecodeBounds = false;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      ((BitmapFactory.Options)localObject3).inSampleSize = paramInt;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
       if (Build.VERSION.SDK_INT >= 11)
       {
-        localBitmap = paramBitmap;
-        a((BitmapFactory.Options)localObject);
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        b((BitmapFactory.Options)localObject3);
       }
-      localBitmap = paramBitmap;
-      paramBitmap = a(str, (BitmapFactory.Options)localObject);
-      localObject = paramBitmap;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      paramBitmap = SafeBitmapFactory.safeDecode(str, (BitmapFactory.Options)localObject3, true);
+      if (paramBitmap == null)
+      {
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        localStringBuilder.append("decode failed path:");
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        localStringBuilder.append(str);
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        Log.d("QQAnimationDrawable", localStringBuilder.toString());
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        localObject3 = a(str, (BitmapFactory.Options)localObject3);
+        paramBitmap = (Bitmap)localObject3;
+        if (localObject3 == null)
+        {
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          paramBitmap = new StringBuilder();
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          paramBitmap.append("decode failed finally,path:");
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          paramBitmap.append(str);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          Log.d("QQAnimationDrawable", paramBitmap.toString());
+          paramBitmap = (Bitmap)localObject3;
+        }
+      }
+      else
+      {
+        localObject1 = paramBitmap;
+        localObject2 = paramBitmap;
+        Log.d("QQAnimationDrawable", "decode success");
+      }
+      localObject3 = paramBitmap;
       if (paramBitmap == null) {
-        break label296;
+        break label553;
       }
-      localObject = paramBitmap;
-      localBitmap = paramBitmap;
+      localObject3 = paramBitmap;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
       if (paramBitmap.isRecycled()) {
-        break label296;
+        break label553;
       }
-      localObject = paramBitmap;
-      localBitmap = paramBitmap;
+      localObject3 = paramBitmap;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
       if (Build.VERSION.SDK_INT < 11) {
-        break label296;
+        break label553;
       }
-      localBitmap = paramBitmap;
-      this.jdField_a_of_type_JavaUtilSet.add(new SoftReference(paramBitmap));
-      localObject = paramBitmap;
+      localObject1 = paramBitmap;
+      localObject2 = paramBitmap;
+      this.K.add(new SoftReference(paramBitmap));
+      localObject3 = paramBitmap;
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      localObject = localBitmap;
-      break label296;
+      break label518;
     }
-    a(this.jdField_b_of_type_AndroidGraphicsBitmap, l, str);
-    localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    return localObject;
+    catch (Exception paramBitmap)
+    {
+      break label501;
+    }
+    Log.d("QQAnimationDrawable", "decode exception");
+    localObject3 = localObject2;
+    break label553;
+    label518:
+    Log.d("QQAnimationDrawable", "decode outOoMemory");
+    localObject3 = localObject1;
+    break label553;
+    a(this.c, l1, str);
+    localObject3 = this.c;
+    label553:
+    return localObject3;
   }
   
   private void a(Bitmap paramBitmap, long paramLong, int paramInt)
@@ -329,31 +384,31 @@ public class QQAnimationDrawable
     if (paramBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(MobileQQ.sMobileQQ.getResources(), paramInt, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-      Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outWidth, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outHeight, Bitmap.Config.ARGB_8888);
+      this.v.inJustDecodeBounds = true;
+      BitmapFactory.decodeResource(AutoShadowPluginRuntime.a().b().getResources(), paramInt, this.v);
+      Bitmap.createBitmap(this.v.outWidth, this.v.outHeight, Bitmap.Config.ARGB_8888);
       return;
     }
     catch (Exception paramBitmap)
     {
       if (!QLog.isDevelopLevel()) {
-        break label195;
+        break label204;
       }
       QLog.e("QQAnimationDrawable", 4, paramBitmap.getMessage());
       return;
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      break label162;
+      break label169;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inJustDecodeBounds = false;
+    this.v.inJustDecodeBounds = false;
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = paramBitmap;
+      this.v.inBitmap = paramBitmap;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = this.jdField_b_of_type_Int;
-    BitmapFactory.decodeResource(MobileQQ.sMobileQQ.getResources(), paramInt, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+    this.v.inSampleSize = 1;
+    this.v.inDensity = 320;
+    this.v.inTargetDensity = this.d;
+    BitmapFactory.decodeResource(AutoShadowPluginRuntime.a().b().getResources(), paramInt, this.v);
     if (QLog.isDevelopLevel())
     {
       paramBitmap = new StringBuilder();
@@ -361,7 +416,7 @@ public class QQAnimationDrawable
       paramBitmap.append(System.currentTimeMillis() - paramLong);
       QLog.d("QQAnimationDrawable", 4, paramBitmap.toString());
       return;
-      label162:
+      label169:
       if (QLog.isDevelopLevel())
       {
         QLog.e("QQAnimationDrawable", 4, "getBitmapFromFile OOM");
@@ -375,42 +430,42 @@ public class QQAnimationDrawable
     if (paramBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+      this.v.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramString, this.v);
       if (QLog.isDevelopLevel())
       {
         paramBitmap = new StringBuilder();
         paramBitmap.append("getBitmapFromFile ");
         paramBitmap.append(paramString);
         paramBitmap.append(" ");
-        paramBitmap.append(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outWidth);
+        paramBitmap.append(this.v.outWidth);
         paramBitmap.append("——");
-        paramBitmap.append(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outHeight);
+        paramBitmap.append(this.v.outHeight);
         QLog.d("QQAnimationDrawable", 4, paramBitmap.toString());
       }
-      Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outWidth, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outHeight, Bitmap.Config.ARGB_8888);
+      Bitmap.createBitmap(this.v.outWidth, this.v.outHeight, Bitmap.Config.ARGB_8888);
       return;
     }
     catch (Exception paramBitmap)
     {
       if (!QLog.isDevelopLevel()) {
-        break label262;
+        break label266;
       }
       QLog.e("QQAnimationDrawable", 4, paramBitmap.getMessage());
       return;
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      break label229;
+      break label231;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inJustDecodeBounds = false;
+    this.v.inJustDecodeBounds = false;
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = paramBitmap;
+      this.v.inBitmap = paramBitmap;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = this.jdField_b_of_type_Int;
-    BitmapFactory.decodeFile(paramString, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+    this.v.inSampleSize = 1;
+    this.v.inDensity = 320;
+    this.v.inTargetDensity = this.d;
+    BitmapFactory.decodeFile(paramString, this.v);
     if (QLog.isDevelopLevel())
     {
       paramBitmap = new StringBuilder();
@@ -418,7 +473,7 @@ public class QQAnimationDrawable
       paramBitmap.append(System.currentTimeMillis() - paramLong);
       QLog.d("QQAnimationDrawable", 4, paramBitmap.toString());
       return;
-      label229:
+      label231:
       if (QLog.isDevelopLevel())
       {
         QLog.e("QQAnimationDrawable", 4, "getBitmapFromFile OOM");
@@ -427,30 +482,20 @@ public class QQAnimationDrawable
     }
   }
   
-  @TargetApi(11)
-  private void a(BitmapFactory.Options paramOptions)
-  {
-    paramOptions.inMutable = true;
-    Bitmap localBitmap = a(paramOptions);
-    if (localBitmap != null) {
-      paramOptions.inBitmap = localBitmap;
-    }
-  }
-  
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int k = this.jdField_a_of_type_Int + 1;
-    int m = this.jdField_c_of_type_Int;
-    boolean bool = false;
-    int j = k;
-    if (k >= m) {
-      j = 0;
+    int i1 = this.a;
+    boolean bool = true;
+    int i2 = i1 + 1;
+    i1 = i2;
+    if (i2 >= this.k) {
+      i1 = 0;
     }
     if (paramBoolean2) {
       unscheduleSelf(this);
     }
-    if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Int <= 0)) && (j >= this.jdField_c_of_type_Int - 1)) {
-      paramBoolean2 = true;
+    if (((this.l) || (this.n <= 0)) && (i1 >= this.k - 1)) {
+      paramBoolean2 = bool;
     } else {
       paramBoolean2 = false;
     }
@@ -458,39 +503,26 @@ public class QQAnimationDrawable
     ((StringBuilder)localObject).append("animation QQAnimationDrawable loadNextBitmap  playEnd:");
     ((StringBuilder)localObject).append(paramBoolean2);
     ((StringBuilder)localObject).append(",mDecodeNextFrameEnd:");
-    ((StringBuilder)localObject).append(this.jdField_e_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.r);
     ((StringBuilder)localObject).append(",animate:");
     ((StringBuilder)localObject).append(paramBoolean3);
-    QLog.d("QQAnimationDrawable", 4, ((StringBuilder)localObject).toString());
-    if ((!paramBoolean2) && (this.jdField_e_of_type_Boolean) && (paramBoolean3))
+    Log.d("QQAnimationDrawable", ((StringBuilder)localObject).toString());
+    if ((!paramBoolean2) && (this.r) && (paramBoolean3))
     {
-      this.jdField_e_of_type_Boolean = false;
-      long l;
+      this.r = false;
+      long l1;
       if (paramBoolean1) {
-        l = 0L;
+        l1 = 0L;
       } else {
-        l = SystemClock.uptimeMillis() + this.jdField_b_of_type_Long;
+        l1 = SystemClock.uptimeMillis() + this.G;
       }
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$WorkerRunnable = new QQAnimationDrawable.WorkerRunnable(this, j, l);
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$SerialExecutor.execute(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$WorkerRunnable);
+      this.s = new QQAnimationDrawable.WorkerRunnable(this, i1, l1);
+      this.I.execute(this.s);
     }
     if (paramBoolean2)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("playEnd mCountOfFrame");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
-      QLog.d("QQAnimationDrawable", 1, ((StringBuilder)localObject).toString());
       stop();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(hashCode());
-      ((StringBuilder)localObject).append("playEnd listener");
-      paramBoolean1 = bool;
-      if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$QQAnimationListener != null) {
-        paramBoolean1 = true;
-      }
-      ((StringBuilder)localObject).append(String.valueOf(paramBoolean1));
-      QLog.d("QQAnimationDrawable", 1, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$QQAnimationListener;
+      localObject = this.D;
       if (localObject != null) {
         ((QQAnimationDrawable.QQAnimationListener)localObject).a();
       }
@@ -500,10 +532,10 @@ public class QQAnimationDrawable
   @TargetApi(19)
   private static boolean a(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
-    int j = Build.VERSION.SDK_INT;
+    int i1 = Build.VERSION.SDK_INT;
     boolean bool1 = false;
     boolean bool2 = false;
-    if (j < 19)
+    if (i1 < 19)
     {
       bool1 = bool2;
       if (paramBitmap.getWidth() == paramOptions.outWidth)
@@ -525,22 +557,80 @@ public class QQAnimationDrawable
     return bool1;
   }
   
+  private Bitmap b(boolean paramBoolean, int paramInt, Bitmap paramBitmap)
+  {
+    Object localObject = paramBitmap;
+    try
+    {
+      Bitmap localBitmap;
+      if (this.t != null)
+      {
+        localObject = paramBitmap;
+        if (paramInt < this.t.length)
+        {
+          long l1 = System.currentTimeMillis();
+          paramInt = this.t[paramInt];
+          localObject = paramBitmap;
+          if (paramInt > 0) {
+            if (this.x)
+            {
+              localObject = (SoftReference)this.z.get(Integer.valueOf(paramInt));
+              if ((localObject != null) && (((SoftReference)localObject).get() != null))
+              {
+                paramBitmap = (Bitmap)((SoftReference)localObject).get();
+                return paramBitmap;
+              }
+              try
+              {
+                localObject = BitmapFactory.decodeResource(AutoShadowPluginRuntime.a().b().getResources(), paramInt);
+                paramBitmap = (Bitmap)localObject;
+                this.z.put(String.valueOf(paramInt), new SoftReference(localObject));
+              }
+              catch (OutOfMemoryError localOutOfMemoryError)
+              {
+                QLog.e("QQAnimationDrawable", 1, "generateBitmap error", localOutOfMemoryError);
+                localBitmap = paramBitmap;
+              }
+            }
+            else
+            {
+              a(this.c, l1, paramInt);
+              localBitmap = this.c;
+            }
+          }
+        }
+      }
+      return localBitmap;
+    }
+    finally {}
+  }
+  
+  @TargetApi(11)
+  private void b(BitmapFactory.Options paramOptions)
+  {
+    paramOptions.inMutable = true;
+    Bitmap localBitmap = a(paramOptions);
+    if (localBitmap != null) {
+      paramOptions.inBitmap = localBitmap;
+    }
+  }
+  
   /* Error */
-  private Bitmap b(boolean paramBoolean, int paramInt)
+  private Bitmap c(boolean paramBoolean, int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: iload_2
     //   3: aload_0
-    //   4: getfield 102	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   7: invokevirtual 445	java/util/ArrayList:size	()I
+    //   4: getfield 128	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:y	Ljava/util/ArrayList;
+    //   7: invokevirtual 502	java/util/ArrayList:size	()I
     //   10: if_icmpge +26 -> 36
     //   13: aload_0
-    //   14: getfield 102	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   14: getfield 128	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:y	Ljava/util/ArrayList;
     //   17: iload_2
-    //   18: invokevirtual 448	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   21: checkcast 267	android/graphics/Bitmap
+    //   18: invokevirtual 505	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   21: checkcast 294	android/graphics/Bitmap
     //   24: astore 9
     //   26: aload 9
     //   28: ifnull +8 -> 36
@@ -548,24 +638,24 @@ public class QQAnimationDrawable
     //   32: monitorexit
     //   33: aload 9
     //   35: areturn
-    //   36: invokestatic 256	java/lang/System:currentTimeMillis	()J
+    //   36: invokestatic 283	java/lang/System:currentTimeMillis	()J
     //   39: lstore 7
     //   41: aload_0
-    //   42: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
+    //   42: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
     //   45: iconst_1
-    //   46: putfield 204	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   46: putfield 234	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   49: aload_0
-    //   50: getfield 450	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   50: getfield 507	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:A	Ljava/lang/String;
     //   53: aload_0
-    //   54: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   57: invokestatic 273	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   54: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
+    //   57: invokestatic 300	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   60: pop
     //   61: aload_0
-    //   62: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   65: getfield 194	android/graphics/BitmapFactory$Options:outWidth	I
+    //   62: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
+    //   65: getfield 224	android/graphics/BitmapFactory$Options:outWidth	I
     //   68: i2f
     //   69: aload_0
-    //   70: getfield 452	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_g_of_type_Int	I
+    //   70: getfield 509	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:B	I
     //   73: i2f
     //   74: fconst_1
     //   75: fmul
@@ -573,11 +663,11 @@ public class QQAnimationDrawable
     //   77: f2i
     //   78: istore 5
     //   80: aload_0
-    //   81: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   84: getfield 191	android/graphics/BitmapFactory$Options:outHeight	I
+    //   81: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
+    //   84: getfield 221	android/graphics/BitmapFactory$Options:outHeight	I
     //   87: i2f
     //   88: aload_0
-    //   89: getfield 454	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:h	I
+    //   89: getfield 511	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:C	I
     //   92: i2f
     //   93: fconst_1
     //   94: fmul
@@ -585,36 +675,36 @@ public class QQAnimationDrawable
     //   96: f2i
     //   97: istore 6
     //   99: aload_0
-    //   100: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
+    //   100: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
     //   103: iconst_0
-    //   104: putfield 204	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   104: putfield 234	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   107: aload_0
-    //   108: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
+    //   108: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
     //   111: sipush 320
-    //   114: putfield 322	android/graphics/BitmapFactory$Options:inDensity	I
+    //   114: putfield 381	android/graphics/BitmapFactory$Options:inDensity	I
     //   117: aload_0
-    //   118: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
+    //   118: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
     //   121: aload_0
-    //   122: getfield 88	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_b_of_type_Int	I
-    //   125: putfield 325	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   122: getfield 114	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:d	I
+    //   125: putfield 384	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   128: aload_0
-    //   129: getfield 450	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   129: getfield 507	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:A	Ljava/lang/String;
     //   132: aload_0
-    //   133: getfield 93	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   136: invokestatic 273	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   133: getfield 119	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:v	Landroid/graphics/BitmapFactory$Options;
+    //   136: invokestatic 300	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   139: astore 9
     //   141: iconst_0
     //   142: istore_3
     //   143: iload_3
     //   144: aload_0
-    //   145: getfield 454	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:h	I
-    //   148: if_icmpge +103 -> 251
+    //   145: getfield 511	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:C	I
+    //   148: if_icmpge +104 -> 252
     //   151: iconst_0
     //   152: istore 4
     //   154: iload 4
     //   156: aload_0
-    //   157: getfield 452	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_g_of_type_Int	I
-    //   160: if_icmpge +252 -> 412
+    //   157: getfield 509	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:B	I
+    //   160: if_icmpge +256 -> 416
     //   163: aload 9
     //   165: iload 4
     //   167: iload 5
@@ -626,19 +716,19 @@ public class QQAnimationDrawable
     //   176: iload 6
     //   178: aconst_null
     //   179: iconst_1
-    //   180: invokestatic 457	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   180: invokestatic 514	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   183: astore 10
     //   185: aload 10
-    //   187: ifnull +216 -> 403
-    //   190: invokestatic 330	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   193: ifeq +45 -> 238
-    //   196: new 332	java/lang/StringBuilder
+    //   187: ifnull +220 -> 407
+    //   190: invokestatic 387	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   193: ifeq +46 -> 239
+    //   196: new 322	java/lang/StringBuilder
     //   199: dup
-    //   200: invokespecial 333	java/lang/StringBuilder:<init>	()V
+    //   200: invokespecial 323	java/lang/StringBuilder:<init>	()V
     //   203: astore 11
     //   205: aload 11
-    //   207: ldc_w 459
-    //   210: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: ldc_w 516
+    //   210: invokevirtual 329	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: pop
     //   214: aload 11
     //   216: iload_3
@@ -646,220 +736,174 @@ public class QQAnimationDrawable
     //   219: imul
     //   220: iload 4
     //   222: iadd
-    //   223: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 407	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   226: pop
-    //   227: ldc 236
-    //   229: iconst_4
-    //   230: aload 11
-    //   232: invokevirtual 346	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   235: invokestatic 349	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   238: aload_0
-    //   239: getfield 102	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   242: aload 10
-    //   244: invokevirtual 460	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   247: pop
-    //   248: goto +155 -> 403
-    //   251: aload 9
-    //   253: ifnull +16 -> 269
-    //   256: aload 9
-    //   258: invokevirtual 292	android/graphics/Bitmap:isRecycled	()Z
-    //   261: ifne +8 -> 269
-    //   264: aload 9
-    //   266: invokevirtual 463	android/graphics/Bitmap:recycle	()V
-    //   269: aload_0
+    //   227: ldc_w 266
+    //   230: iconst_4
+    //   231: aload 11
+    //   233: invokevirtual 333	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokestatic 395	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   239: aload_0
+    //   240: getfield 128	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:y	Ljava/util/ArrayList;
+    //   243: aload 10
+    //   245: invokevirtual 517	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   248: pop
+    //   249: goto +158 -> 407
+    //   252: aload 9
+    //   254: ifnull +16 -> 270
+    //   257: aload 9
+    //   259: invokevirtual 347	android/graphics/Bitmap:isRecycled	()Z
+    //   262: ifne +8 -> 270
+    //   265: aload 9
+    //   267: invokevirtual 520	android/graphics/Bitmap:recycle	()V
     //   270: aload_0
-    //   271: getfield 102	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   274: invokevirtual 445	java/util/ArrayList:size	()I
-    //   277: putfield 74	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_c_of_type_Int	I
-    //   280: invokestatic 330	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   283: ifeq +84 -> 367
-    //   286: new 332	java/lang/StringBuilder
-    //   289: dup
-    //   290: invokespecial 333	java/lang/StringBuilder:<init>	()V
-    //   293: astore 9
-    //   295: aload 9
-    //   297: ldc_w 465
-    //   300: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: pop
-    //   304: aload 9
-    //   306: invokestatic 256	java/lang/System:currentTimeMillis	()J
-    //   309: lload 7
-    //   311: lsub
-    //   312: invokevirtual 342	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   315: pop
-    //   316: ldc 236
-    //   318: iconst_4
-    //   319: aload 9
-    //   321: invokevirtual 346	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   324: invokestatic 349	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   327: goto +40 -> 367
-    //   330: invokestatic 330	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   333: ifeq +34 -> 367
-    //   336: ldc 236
-    //   338: iconst_4
-    //   339: ldc_w 351
-    //   342: invokestatic 353	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   345: goto +22 -> 367
-    //   348: astore 9
-    //   350: invokestatic 330	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   353: ifeq +14 -> 367
-    //   356: ldc 236
-    //   358: iconst_4
-    //   359: aload 9
-    //   361: invokevirtual 356	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   364: invokestatic 353	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   367: aload_0
-    //   368: getfield 102	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   371: iload_2
-    //   372: invokevirtual 448	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   375: checkcast 267	android/graphics/Bitmap
-    //   378: astore 9
-    //   380: aload_0
-    //   381: monitorexit
-    //   382: aload 9
-    //   384: areturn
-    //   385: astore 9
-    //   387: aload_0
-    //   388: monitorexit
-    //   389: goto +6 -> 395
-    //   392: aload 9
-    //   394: athrow
-    //   395: goto -3 -> 392
-    //   398: astore 9
-    //   400: goto -70 -> 330
-    //   403: iload 4
-    //   405: iconst_1
-    //   406: iadd
-    //   407: istore 4
-    //   409: goto -255 -> 154
-    //   412: iload_3
-    //   413: iconst_1
-    //   414: iadd
-    //   415: istore_3
-    //   416: goto -273 -> 143
+    //   271: aload_0
+    //   272: getfield 128	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:y	Ljava/util/ArrayList;
+    //   275: invokevirtual 502	java/util/ArrayList:size	()I
+    //   278: putfield 100	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:k	I
+    //   281: invokestatic 387	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   284: ifeq +87 -> 371
+    //   287: new 322	java/lang/StringBuilder
+    //   290: dup
+    //   291: invokespecial 323	java/lang/StringBuilder:<init>	()V
+    //   294: astore 9
+    //   296: aload 9
+    //   298: ldc_w 522
+    //   301: invokevirtual 329	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: pop
+    //   305: aload 9
+    //   307: invokestatic 283	java/lang/System:currentTimeMillis	()J
+    //   310: lload 7
+    //   312: lsub
+    //   313: invokevirtual 392	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   316: pop
+    //   317: ldc_w 266
+    //   320: iconst_4
+    //   321: aload 9
+    //   323: invokevirtual 333	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   326: invokestatic 395	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   329: goto +42 -> 371
+    //   332: invokestatic 387	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   335: ifeq +36 -> 371
+    //   338: ldc_w 266
+    //   341: iconst_4
+    //   342: ldc_w 397
+    //   345: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   348: goto +23 -> 371
+    //   351: astore 9
+    //   353: invokestatic 387	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   356: ifeq +15 -> 371
+    //   359: ldc_w 266
+    //   362: iconst_4
+    //   363: aload 9
+    //   365: invokevirtual 402	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   368: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   371: aload_0
+    //   372: getfield 128	com/tencent/biz/richframework/animation/drawable/QQAnimationDrawable:y	Ljava/util/ArrayList;
+    //   375: iload_2
+    //   376: invokevirtual 505	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   379: checkcast 294	android/graphics/Bitmap
+    //   382: astore 9
+    //   384: aload_0
+    //   385: monitorexit
+    //   386: aload 9
+    //   388: areturn
+    //   389: astore 9
+    //   391: aload_0
+    //   392: monitorexit
+    //   393: goto +6 -> 399
+    //   396: aload 9
+    //   398: athrow
+    //   399: goto -3 -> 396
+    //   402: astore 9
+    //   404: goto -72 -> 332
+    //   407: iload 4
+    //   409: iconst_1
+    //   410: iadd
+    //   411: istore 4
+    //   413: goto -259 -> 154
+    //   416: iload_3
+    //   417: iconst_1
+    //   418: iadd
+    //   419: istore_3
+    //   420: goto -277 -> 143
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	419	0	this	QQAnimationDrawable
-    //   0	419	1	paramBoolean	boolean
-    //   0	419	2	paramInt	int
-    //   142	274	3	j	int
-    //   152	256	4	k	int
-    //   78	97	5	m	int
-    //   97	80	6	n	int
-    //   39	271	7	l	long
-    //   24	296	9	localObject1	Object
-    //   348	12	9	localException	Exception
-    //   378	5	9	localBitmap1	Bitmap
-    //   385	8	9	localObject2	Object
-    //   398	1	9	localOutOfMemoryError	OutOfMemoryError
-    //   183	60	10	localBitmap2	Bitmap
-    //   203	28	11	localStringBuilder	StringBuilder
+    //   0	423	0	this	QQAnimationDrawable
+    //   0	423	1	paramBoolean	boolean
+    //   0	423	2	paramInt	int
+    //   142	278	3	i1	int
+    //   152	260	4	i2	int
+    //   78	97	5	i3	int
+    //   97	80	6	i4	int
+    //   39	272	7	l1	long
+    //   24	298	9	localObject1	Object
+    //   351	13	9	localException	Exception
+    //   382	5	9	localBitmap1	Bitmap
+    //   389	8	9	localObject2	Object
+    //   402	1	9	localOutOfMemoryError	OutOfMemoryError
+    //   183	61	10	localBitmap2	Bitmap
+    //   203	29	11	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   36	141	348	java/lang/Exception
-    //   143	151	348	java/lang/Exception
-    //   154	185	348	java/lang/Exception
-    //   190	238	348	java/lang/Exception
-    //   238	248	348	java/lang/Exception
-    //   256	269	348	java/lang/Exception
-    //   269	327	348	java/lang/Exception
-    //   2	26	385	finally
-    //   36	141	385	finally
-    //   143	151	385	finally
-    //   154	185	385	finally
-    //   190	238	385	finally
-    //   238	248	385	finally
-    //   256	269	385	finally
-    //   269	327	385	finally
-    //   330	345	385	finally
-    //   350	367	385	finally
-    //   367	380	385	finally
-    //   36	141	398	java/lang/OutOfMemoryError
-    //   143	151	398	java/lang/OutOfMemoryError
-    //   154	185	398	java/lang/OutOfMemoryError
-    //   190	238	398	java/lang/OutOfMemoryError
-    //   238	248	398	java/lang/OutOfMemoryError
-    //   256	269	398	java/lang/OutOfMemoryError
-    //   269	327	398	java/lang/OutOfMemoryError
+    //   36	141	351	java/lang/Exception
+    //   143	151	351	java/lang/Exception
+    //   154	185	351	java/lang/Exception
+    //   190	239	351	java/lang/Exception
+    //   239	249	351	java/lang/Exception
+    //   257	270	351	java/lang/Exception
+    //   270	329	351	java/lang/Exception
+    //   2	26	389	finally
+    //   36	141	389	finally
+    //   143	151	389	finally
+    //   154	185	389	finally
+    //   190	239	389	finally
+    //   239	249	389	finally
+    //   257	270	389	finally
+    //   270	329	389	finally
+    //   332	348	389	finally
+    //   353	371	389	finally
+    //   371	384	389	finally
+    //   36	141	402	java/lang/OutOfMemoryError
+    //   143	151	402	java/lang/OutOfMemoryError
+    //   154	185	402	java/lang/OutOfMemoryError
+    //   190	239	402	java/lang/OutOfMemoryError
+    //   239	249	402	java/lang/OutOfMemoryError
+    //   257	270	402	java/lang/OutOfMemoryError
+    //   270	329	402	java/lang/OutOfMemoryError
   }
   
-  private Bitmap b(boolean paramBoolean, int paramInt, Bitmap paramBitmap)
+  private void f()
   {
-    Object localObject = paramBitmap;
-    long l;
-    label148:
-    try
-    {
-      if (this.jdField_a_of_type_ArrayOfInt != null)
-      {
-        localObject = paramBitmap;
-        if (paramInt < this.jdField_a_of_type_ArrayOfInt.length)
-        {
-          l = System.currentTimeMillis();
-          paramInt = this.jdField_a_of_type_ArrayOfInt[paramInt];
-          localObject = paramBitmap;
-          if (paramInt > 0) {
-            if (this.jdField_f_of_type_Boolean)
-            {
-              localObject = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-              if ((localObject != null) && (((SoftReference)localObject).get() != null))
-              {
-                paramBitmap = (Bitmap)((SoftReference)localObject).get();
-                return paramBitmap;
-              }
-            }
-          }
-        }
-      }
-    }
-    finally {}
-    try
-    {
-      localObject = BitmapFactory.decodeResource(MobileQQ.sMobileQQ.getResources(), paramInt);
-      paramBitmap = (Bitmap)localObject;
-      this.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(paramInt), new SoftReference(localObject));
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      Bitmap localBitmap = paramBitmap;
-      break label148;
-    }
-    a(this.jdField_b_of_type_AndroidGraphicsBitmap, l, paramInt);
-    localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    return localObject;
-  }
-  
-  private void e()
-  {
-    long l2 = this.jdField_b_of_type_Long;
+    long l2 = this.G;
     long l1 = 0L;
     if (l2 == 0L)
     {
-      int j = this.i;
-      if (j != 0) {
-        l1 = this.jdField_a_of_type_Long / j;
+      int i1 = this.H;
+      if (i1 != 0) {
+        l1 = this.o / i1;
       }
-      this.jdField_b_of_type_Long = l1;
+      this.G = l1;
       return;
     }
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = (l2 * this.i);
+    if (this.o == 0L) {
+      this.o = (l2 * this.H);
     }
   }
   
   public int a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.k;
   }
   
   protected Bitmap a(BitmapFactory.Options paramOptions)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = this.K;
     Object localObject2 = null;
     if ((localObject1 != null) && (!((Set)localObject1).isEmpty())) {
-      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      synchronized (this.K)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+        Iterator localIterator = this.K.iterator();
         for (;;)
         {
           localObject1 = localObject2;
@@ -885,98 +929,153 @@ public class QQAnimationDrawable
     return null;
   }
   
-  Bitmap a(boolean paramBoolean, int paramInt)
-  {
-    int j = this.jdField_f_of_type_Int;
-    Bitmap localBitmap = null;
-    if (j == 0) {
-      localBitmap = a(paramBoolean, paramInt, null);
-    } else if (j == 2) {
-      localBitmap = b(paramBoolean, paramInt, null);
-    } else if (j == 1) {
-      localBitmap = b(paramBoolean, paramInt);
-    }
-    if (localBitmap == null) {
-      return this.jdField_b_of_type_AndroidGraphicsBitmap;
-    }
-    return localBitmap;
-  }
-  
-  public void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQAnimationDrawable", 4, " reset");
-    }
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-    b();
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.m = false;
+    this.n = paramInt;
+    paramInt = this.n;
+    if (paramInt > 1) {
+      b(false);
+    } else if (paramInt == 1) {
+      b(true);
+    }
+    start();
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    e();
+    this.o = paramLong;
+    f();
+  }
+  
+  public void a(QQAnimationDrawable.QQAnimationListener paramQQAnimationListener)
+  {
+    this.D = paramQQAnimationListener;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.m = true;
+    b(paramBoolean);
+    start();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      a(paramBoolean);
+      return;
+    }
+    a(paramInt);
   }
   
   public void a(String[] paramArrayOfString)
   {
-    a(0);
-    if (!Arrays.equals(this.jdField_a_of_type_ArrayOfJavaLangString, paramArrayOfString))
+    b(0);
+    if (!Arrays.equals(this.u, paramArrayOfString))
     {
-      d();
-      this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+      e();
+      this.u = paramArrayOfString;
     }
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = this.u;
     if (arrayOfString != null) {
-      this.jdField_c_of_type_Int = arrayOfString.length;
+      this.k = arrayOfString.length;
     } else {
-      this.jdField_c_of_type_Int = 0;
+      this.k = 0;
     }
-    this.i = paramArrayOfString.length;
-    e();
+    this.H = paramArrayOfString.length;
+    f();
+  }
+  
+  Bitmap b(boolean paramBoolean, int paramInt)
+  {
+    int i1 = this.w;
+    Bitmap localBitmap = null;
+    if (i1 == 0) {
+      localBitmap = a(paramBoolean, paramInt, null);
+    } else if (i1 == 2) {
+      localBitmap = b(paramBoolean, paramInt, null);
+    } else if (i1 == 1) {
+      localBitmap = c(paramBoolean, paramInt);
+    }
+    if (localBitmap == null) {
+      return this.c;
+    }
+    return localBitmap;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$SerialExecutor != null) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$SerialExecutor.b();
+    this.n = 1;
+    this.a = -1;
+    this.q = 0;
+    this.c = null;
+    this.p = null;
+    c();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.w = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.G = paramLong;
+    f();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.l = paramBoolean;
+  }
+  
+  public void c()
+  {
+    if (this.I != null) {
+      this.I.b();
     }
-    FutureTask localFutureTask = this.jdField_a_of_type_JavaUtilConcurrentFutureTask;
+    FutureTask localFutureTask = this.J;
     if (localFutureTask != null) {
       localFutureTask.cancel(true);
     }
   }
   
-  public void c() {}
+  public void d() {}
   
-  public void d()
+  public void draw(Canvas paramCanvas)
+  {
+    synchronized (this.F)
+    {
+      if ((this.p != null) && (!this.p.isRecycled())) {
+        paramCanvas.drawBitmap(this.p, null, getBounds(), this.j);
+      }
+      a(false, false, true);
+      return;
+    }
+  }
+  
+  public void e()
   {
     try
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      if ((this.b != null) && (!this.b.isRecycled())) {
+        this.b.recycle();
       }
-      if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.p != null) && (!this.p.isRecycled())) {
+        synchronized (this.F)
         {
-          this.jdField_c_of_type_AndroidGraphicsBitmap.recycle();
+          this.p.recycle();
         }
       }
-      if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+      if ((this.c != null) && (!this.c.isRecycled())) {
+        this.c.recycle();
       }
       Object localObject4;
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.y != null)
       {
-        ??? = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        ??? = this.y.iterator();
         while (((Iterator)???).hasNext())
         {
           localObject4 = (Bitmap)((Iterator)???).next();
@@ -984,15 +1083,15 @@ public class QQAnimationDrawable
             ((Bitmap)localObject4).recycle();
           }
         }
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.y.clear();
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap != null)
+      if (this.z != null)
       {
-        ??? = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        ??? = this.z.keySet().iterator();
         while (((Iterator)???).hasNext())
         {
           localObject4 = (String)((Iterator)???).next();
-          localObject4 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(localObject4);
+          localObject4 = (SoftReference)this.z.get(localObject4);
           if (localObject4 != null)
           {
             localObject4 = (Bitmap)((SoftReference)localObject4).get();
@@ -1001,7 +1100,7 @@ public class QQAnimationDrawable
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.z.clear();
       }
       return;
     }
@@ -1012,42 +1111,20 @@ public class QQAnimationDrawable
     }
   }
   
-  public void draw(Canvas paramCanvas)
-  {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("animation QQAnimationDrawable draw  currentBitmap == null ");
-    boolean bool;
-    if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    ((StringBuilder)???).append(bool);
-    QLog.d("QQAnimationDrawable", 4, ((StringBuilder)???).toString());
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      a(false, false, true);
-      return;
-    }
-  }
-  
   public int getIntrinsicHeight()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.b;
     if (localBitmap != null) {
-      return localBitmap.getScaledHeight(this.jdField_b_of_type_Int);
+      return localBitmap.getScaledHeight(this.d);
     }
     return super.getIntrinsicHeight();
   }
   
   public int getIntrinsicWidth()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.b;
     if (localBitmap != null) {
-      return localBitmap.getScaledWidth(this.jdField_b_of_type_Int);
+      return localBitmap.getScaledWidth(this.d);
     }
     return super.getIntrinsicWidth();
   }
@@ -1059,7 +1136,7 @@ public class QQAnimationDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Int > -1;
+    return this.a > -1;
   }
   
   public void run()
@@ -1069,9 +1146,9 @@ public class QQAnimationDrawable
     ((StringBuilder)localObject).append("animation QQAnimationDrawable run time:");
     ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
     ((StringBuilder)localObject).append(",mCurFrame:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("nextFrame:");
-    ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+    ((StringBuilder)localObject).append(this.q);
     ((StringBuilder)localObject).append(" main:");
     boolean bool;
     if (Looper.myLooper() == Looper.getMainLooper()) {
@@ -1080,55 +1157,55 @@ public class QQAnimationDrawable
       bool = false;
     }
     ((StringBuilder)localObject).append(bool);
-    QLog.d("QQAnimationDrawable", 4, ((StringBuilder)localObject).toString());
-    if (!this.jdField_g_of_type_Boolean) {
+    Log.d("QQAnimationDrawable", ((StringBuilder)localObject).toString());
+    if (!this.E) {
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("isParenMethod:");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
-    QLog.d("QQAnimationDrawable", 4, ((StringBuilder)localObject).toString());
-    if ((!this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Int == a() - 1)) {
-      this.jdField_d_of_type_Int -= 1;
+    ((StringBuilder)localObject).append(this.m);
+    Log.d("QQAnimationDrawable", ((StringBuilder)localObject).toString());
+    if ((!this.m) && (this.a == a() - 1)) {
+      this.n -= 1;
     }
-    this.jdField_e_of_type_Boolean = true;
-    localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    this.r = true;
+    localObject = this.c;
     if (localObject != null) {
-      this.jdField_c_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+      this.p = ((Bitmap)localObject);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mRepeatCount:");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
-    QLog.d("QQAnimationDrawable", 4, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == -1)
+    ((StringBuilder)localObject).append(this.n);
+    Log.d("QQAnimationDrawable", ((StringBuilder)localObject).toString());
+    if (this.a == -1)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable$QQAnimationListener;
+      localObject = this.D;
       if (localObject != null) {
         ((QQAnimationDrawable.QQAnimationListener)localObject).b();
       }
     }
-    this.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
+    this.a = this.q;
     invalidateSelf();
   }
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.j.setAlpha(paramInt);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.j.setColorFilter(paramColorFilter);
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.j.setDither(paramBoolean);
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    this.j.setFilterBitmap(paramBoolean);
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
@@ -1138,7 +1215,7 @@ public class QQAnimationDrawable
     {
       if ((bool) || (paramBoolean2))
       {
-        c();
+        d();
         return bool;
       }
     }
@@ -1150,15 +1227,15 @@ public class QQAnimationDrawable
   
   public void start()
   {
-    this.jdField_g_of_type_Boolean = true;
-    if (this.jdField_c_of_type_Int > 0)
+    this.E = true;
+    if (this.k > 0)
     {
-      if (this.jdField_b_of_type_Long <= 0L) {
+      if (this.G <= 0L) {
         return;
       }
       if (!isRunning())
       {
-        this.jdField_e_of_type_Boolean = true;
+        this.r = true;
         a(true, false, true);
       }
     }
@@ -1166,20 +1243,20 @@ public class QQAnimationDrawable
   
   public void stop()
   {
-    this.jdField_g_of_type_Boolean = false;
-    QLog.d("QQAnimationDrawable", 4, " stop");
+    this.E = false;
+    Log.d("QQAnimationDrawable", " stop");
     if (isRunning()) {
       unscheduleSelf(this);
     }
-    if (!this.jdField_d_of_type_Boolean) {
-      this.jdField_d_of_type_Int = 1;
+    if (!this.m) {
+      this.n = 1;
     }
-    a();
+    b();
   }
   
   public void unscheduleSelf(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Int = -1;
+    this.a = -1;
     super.unscheduleSelf(paramRunnable);
   }
 }

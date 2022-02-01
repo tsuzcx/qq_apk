@@ -6,28 +6,22 @@ import java.util.List;
 public class CallBackEvent
 {
   protected static volatile CallBackEvent a;
-  protected List<CallBackEvent.CallBackEventListener> a;
-  protected boolean a;
-  
-  public CallBackEvent()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  protected boolean b = true;
+  protected List<CallBackEvent.CallBackEventListener> c = new ArrayList();
   
   public static CallBackEvent a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppcommonCallBackEvent == null) {
-      jdField_a_of_type_ComTencentOpenAppcommonCallBackEvent = new CallBackEvent();
+    if (a == null) {
+      a = new CallBackEvent();
     }
-    return jdField_a_of_type_ComTencentOpenAppcommonCallBackEvent;
+    return a;
   }
   
   public void a(boolean paramBoolean)
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.b = paramBoolean;
       b(paramBoolean);
       return;
     }
@@ -38,17 +32,12 @@ public class CallBackEvent
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   protected void b(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      CallBackEvent.CallBackEventListener[] arrayOfCallBackEventListener = new CallBackEvent.CallBackEventListener[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfCallBackEventListener);
+      CallBackEvent.CallBackEventListener[] arrayOfCallBackEventListener = new CallBackEvent.CallBackEventListener[this.c.size()];
+      this.c.toArray(arrayOfCallBackEventListener);
       int j = arrayOfCallBackEventListener.length;
       int i = 0;
       while (i < j)
@@ -63,10 +52,15 @@ public class CallBackEvent
       throw localObject;
     }
   }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.CallBackEvent
  * JD-Core Version:    0.7.0.1
  */

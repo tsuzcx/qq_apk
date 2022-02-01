@@ -17,12 +17,12 @@ final class StudyModeSwitchDialog$ivClose$2
   
   public final ImageView invoke()
   {
-    return (ImageView)this.this$0.findViewById(2131369319);
+    return (ImageView)this.this$0.findViewById(2131436318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.ivClose.2
  * JD-Core Version:    0.7.0.1
  */

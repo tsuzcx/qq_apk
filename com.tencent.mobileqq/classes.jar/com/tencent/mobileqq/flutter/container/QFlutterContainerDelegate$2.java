@@ -18,32 +18,32 @@ class QFlutterContainerDelegate$2
     localStringBuilder.append("launch onResult, ");
     localStringBuilder.append(paramLaunchResult);
     QLog.d("QFlutterContainerDelegate", 1, localStringBuilder.toString());
-    QFlutterContainerDelegate.a(this.a).a(paramLaunchResult);
+    QFlutterContainerDelegate.b(this.a).a(paramLaunchResult);
     QFlutterContainerDelegate.a(this.a, paramLaunchResult);
     if (paramLaunchResult.a())
     {
       QFlutterContainerDelegate.a(this.a, true);
-      if (QFlutterContainerDelegate.a(this.a) == null)
+      if (QFlutterContainerDelegate.c(this.a) == null)
       {
-        QFlutterContainerDelegate.b(this.a);
-        if (QFlutterContainerDelegate.a(this.a)) {
-          QFlutterContainerDelegate.c(this.a);
+        QFlutterContainerDelegate.d(this.a);
+        if (QFlutterContainerDelegate.e(this.a)) {
+          QFlutterContainerDelegate.f(this.a);
         }
-        if (QFlutterContainerDelegate.b(this.a)) {
-          QFlutterContainerDelegate.d(this.a);
+        if (QFlutterContainerDelegate.g(this.a)) {
+          QFlutterContainerDelegate.h(this.a);
         }
       }
     }
     else
     {
-      QQToast.a(QFlutterContainerDelegate.a(this.a).getContext(), 1, 2131693799, 1).a();
-      QFlutterContainerDelegate.a(this.a).a().finish();
+      QQToast.makeText(QFlutterContainerDelegate.i(this.a).getContext(), 1, 2131891374, 1).show();
+      QFlutterContainerDelegate.i(this.a).b().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerDelegate.2
  * JD-Core Version:    0.7.0.1
  */

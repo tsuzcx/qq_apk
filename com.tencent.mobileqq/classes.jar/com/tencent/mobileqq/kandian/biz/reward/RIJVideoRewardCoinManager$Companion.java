@@ -3,8 +3,7 @@ package com.tencent.mobileqq.kandian.biz.reward;
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -23,14 +22,14 @@ public final class RIJVideoRewardCoinManager$Companion
       if (paramInt != 1) {
         return 0;
       }
-      return RIJRewardTaskConfig.a.f();
+      return RIJRewardTaskConfig.a.h();
     }
-    return RIJRewardTaskConfig.a.e();
+    return RIJRewardTaskConfig.a.g();
   }
   
   public final void a()
   {
-    QQToast.a((Context)BaseApplicationImpl.getContext(), (CharSequence)HardCodeUtil.a(2131718310), 0).a();
+    QQToast.makeText((Context)BaseApplicationImpl.getContext(), (CharSequence)HardCodeUtil.a(2131915802), 0).show();
   }
   
   public final void a(@NotNull String paramString, @Nullable RIJVideoRewardCoinManager.RIJRewardData paramRIJRewardData, int paramInt)
@@ -41,10 +40,10 @@ public final class RIJVideoRewardCoinManager$Companion
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("status", paramRIJRewardData.a());
+        localJSONObject.put("status", paramRIJRewardData.b());
         localJSONObject.put("rowkey", paramRIJRewardData.a());
         localJSONObject.put("video_mode", paramInt);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, paramRIJRewardData.a(), "", "", localJSONObject.toString(), false);
+        PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, paramRIJRewardData.a(), "", "", localJSONObject.toString(), false);
         return;
       }
       catch (Exception paramString)
@@ -59,7 +58,7 @@ public final class RIJVideoRewardCoinManager$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.Companion
  * JD-Core Version:    0.7.0.1
  */

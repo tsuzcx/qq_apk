@@ -19,15 +19,15 @@ class QQStoryShareGroupProfileActivity$GetUserGroupUnionIDEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent paramGetUserGroupUnionIDEvent)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramGetUserGroupUnionIDEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.t)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.v)) && (paramGetUserGroupUnionIDEvent.g.isSuccess()) && (!paramGetUserGroupUnionIDEvent.a.isEmpty()))
     {
-      paramGetUserGroupUnionIDEvent = paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetUserGroupUnionIDEvent = paramGetUserGroupUnionIDEvent.a.iterator();
       while (paramGetUserGroupUnionIDEvent.hasNext())
       {
         GroupID localGroupID = (GroupID)paramGetUserGroupUnionIDEvent.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localGroupID.a))
+        if (paramQQStoryShareGroupProfileActivity.v.equals(localGroupID.a))
         {
-          paramQQStoryShareGroupProfileActivity.b = localGroupID.b;
+          paramQQStoryShareGroupProfileActivity.t = localGroupID.b;
           QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity) ^ true);
         }
       }

@@ -17,7 +17,7 @@ class IliveLiteHostProxyBuilder$1$2
   public Map<String, String> getHostReportData()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("userid", this.a.a());
+    localHashMap.put("userid", this.a.b());
     String str = "1";
     localHashMap.put("scene", "1");
     localHashMap.put("subscene", "0");
@@ -32,7 +32,7 @@ class IliveLiteHostProxyBuilder$1$2
     localHashMap.put("zt_str5", str);
     localHashMap.put("qua_new", QUA.getQUA3());
     localHashMap.put("mobile_type", "Android");
-    localHashMap.put("host_version", "8.7.0");
+    localHashMap.put("host_version", "8.8.17");
     localHashMap.put("network_type", String.valueOf(NetworkUtil.a(BaseApplicationImpl.getContext())));
     return localHashMap;
   }
@@ -54,7 +54,7 @@ class IliveLiteHostProxyBuilder$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveLiteHostProxyBuilder.1.2
  * JD-Core Version:    0.7.0.1
  */

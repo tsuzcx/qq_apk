@@ -17,7 +17,7 @@ class TroopGiftPanel$17
     }
     if (paramInt == 1)
     {
-      VasH5PayUtil.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
+      VasH5PayUtil.a(this.a.m, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
       ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
       return;
     }
@@ -28,7 +28,7 @@ class TroopGiftPanel$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.17
  * JD-Core Version:    0.7.0.1
  */

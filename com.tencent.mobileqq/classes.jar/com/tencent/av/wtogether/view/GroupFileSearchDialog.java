@@ -60,103 +60,89 @@ public class GroupFileSearchDialog
   extends Dialog
   implements Handler.Callback, View.OnClickListener, GroupFileSearchExpandableListAdapter.FileSelectListener, SearchTask.SearchTaskCallBack
 {
-  protected int a;
-  protected long a;
-  protected Activity a;
-  protected Handler a;
-  protected ViewGroup a;
-  protected Button a;
-  protected EditText a;
-  protected ImageButton a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected GroupFileSearchExpandableListAdapter a;
-  private ChooseFileInfo jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = new ChooseFileInfo(1);
-  protected WatchTogetherObserver a;
-  private GroupFileSearchDialog.ClickListener jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog$ClickListener;
-  public GroupFileViewMoreRelativeLayout a;
-  protected BizTroopObserver a;
-  protected QQAppInterface a;
-  protected SearchTask a;
-  protected CountdownTimeTask a;
+  protected int A = 0;
+  protected List<IContactSearchable> B = null;
+  protected long C;
+  protected List<TroopFileSearchItemData> D = null;
+  protected long E = 0L;
+  protected BizTroopObserver F = new GroupFileSearchDialog.6(this);
+  protected WatchTogetherObserver G = new GroupFileSearchDialog.7(this);
+  private GroupFileSearchDialog.ClickListener H;
+  private ChooseFileInfo I = new ChooseFileInfo(1);
   protected PinnedHeaderIphoneTreeView a;
-  protected QQBlurView a;
-  protected Object a;
-  protected String a;
-  protected List<IContactSearchable> a;
-  protected boolean a;
-  protected int b;
-  protected long b;
-  protected TextView b;
-  protected String b;
-  protected List<TroopFileSearchItemData> b;
-  protected boolean b;
-  protected boolean c = false;
-  protected boolean d = false;
-  protected boolean e = false;
-  protected boolean f = false;
+  public GroupFileViewMoreRelativeLayout b;
+  protected ViewGroup c;
+  protected TextView d;
+  protected TextView e;
+  protected ImageButton f;
+  protected QQBlurView g;
+  protected Button h;
+  protected EditText i;
+  protected RelativeLayout j;
+  protected GroupFileSearchExpandableListAdapter k;
+  protected QQAppInterface l;
+  protected Activity m;
+  protected Handler n;
+  protected CountdownTimeTask o = null;
+  protected SearchTask p = null;
+  protected boolean q = true;
+  protected Object r = new Object();
+  protected boolean s = false;
+  protected boolean t = false;
+  protected boolean u = false;
+  protected boolean v = false;
+  protected String w = "";
+  protected int x = 0;
+  protected String y = null;
+  protected boolean z = false;
   
   public GroupFileSearchDialog(Activity paramActivity, QQAppInterface paramQQAppInterface, long paramLong, GroupFileSearchDialog.ClickListener paramClickListener)
   {
-    super(paramActivity, 2131755540);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask = null;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_b_of_type_JavaUtilList = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new GroupFileSearchDialog.6(this);
-    this.jdField_a_of_type_ComTencentAvWtogetherObserverWatchTogetherObserver = new GroupFileSearchDialog.7(this);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
+    super(paramActivity, 2131952330);
+    this.m = paramActivity;
+    this.l = paramQQAppInterface;
+    this.C = paramLong;
     a(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376483));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView = ((PinnedHeaderIphoneTreeView)findViewById(2131377082));
-    findViewById(2131377089).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131370362));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370364));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379865));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131381023));
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog$ClickListener = paramClickListener;
+    this.j = ((RelativeLayout)findViewById(2131444724));
+    this.j.setVisibility(8);
+    this.a = ((PinnedHeaderIphoneTreeView)findViewById(2131445451));
+    findViewById(2131445458).setVisibility(8);
+    this.c = ((ViewGroup)findViewById(2131437624));
+    this.d = ((TextView)findViewById(2131437626));
+    this.e = ((TextView)findViewById(2131448723));
+    this.f = ((ImageButton)findViewById(2131435215));
+    this.h = ((Button)findViewById(2131450032));
+    this.h.setEnabled(false);
+    this.n = new Handler(this);
+    this.H = paramClickListener;
     a();
-    e();
+    f();
     b(paramActivity);
-    a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentAvWtogetherObserverWatchTogetherObserver);
+    a(this.a);
+    this.l.addObserver(this.F);
+    this.l.addObserver(this.G);
     ThreadManager.post(new GroupFileSearchDialog.1(this), 8, null, true);
   }
   
   private void a(ListView paramListView)
   {
-    Object localObject = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ((RelativeLayout)localObject).addView(new View(this.jdField_a_of_type_AndroidAppActivity), new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
+    Object localObject = new RelativeLayout(this.m);
+    ((RelativeLayout)localObject).addView(new View(this.m), new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, this.m.getResources())));
     paramListView.addFooterView((View)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    localObject = this.g;
     if (localObject != null)
     {
       ((QQBlurView)localObject).c();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+      this.g = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380356));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(paramListView);
-    paramListView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    this.g = ((QQBlurView)findViewById(2131449300));
+    this.g.setVisibility(0);
+    this.g.a(paramListView);
+    paramListView = this.g;
     paramListView.b(paramListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
-    paramListView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    this.g.c(-1);
+    this.g.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
+    paramListView = this.g;
     boolean bool;
     if (Build.VERSION.SDK_INT >= 24) {
       bool = true;
@@ -164,77 +150,46 @@ public class GroupFileSearchDialog
       bool = false;
     }
     paramListView.setEnableBlur(bool);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130850581);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
+    this.g.setDisableBlurDrawableRes(2130852377);
+    this.g.b(0);
+    this.g.a(8.0F);
+    this.g.a(8);
+    this.g.d();
+    this.g.a();
   }
   
-  private void e()
+  private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    Button localButton = (Button)findViewById(2131363868);
+    this.f.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    Button localButton = (Button)findViewById(2131429816);
     localButton.setVisibility(0);
     localButton.setOnClickListener(this);
-  }
-  
-  protected float a()
-  {
-    float f2 = this.jdField_a_of_type_AndroidWidgetEditText.getWidth() - DisplayUtils.a(this.jdField_a_of_type_AndroidAppActivity, 20.0F);
-    float f1 = f2;
-    if (this.jdField_b_of_type_Int > 0) {
-      f1 = f2 - (this.jdField_a_of_type_AndroidWidgetEditText.getPaint().measureText(a(this.jdField_b_of_type_Int)) + DisplayUtils.a(this.jdField_a_of_type_AndroidAppActivity, 16.0F));
-    }
-    f2 = f1;
-    if (this.jdField_a_of_type_AndroidWidgetImageButton.getVisibility() == 0) {
-      f2 = f1 - (this.jdField_a_of_type_AndroidWidgetImageButton.getWidth() + DisplayUtils.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F));
-    }
-    return f2;
   }
   
   protected String a(int paramInt)
   {
     if (paramInt > 1000) {
-      return this.jdField_a_of_type_AndroidAppActivity.getString(2131697362);
+      return this.m.getString(2131895135);
     }
-    return this.jdField_a_of_type_AndroidAppActivity.getString(2131697361, new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  protected String a(String paramString)
-  {
-    float f1 = a();
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (localTextPaint.measureText(paramString) <= f1) {
-        return paramString;
-      }
-      paramString = new StringBuilder(paramString.substring(0, localTextPaint.breakText(paramString, true, f1 - localTextPaint.measureText("…"), null)));
-      paramString.append("…");
-      str = paramString.toString();
-    }
-    return str;
+    return this.m.getString(2131895134, new Object[] { Integer.valueOf(paramInt) });
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
-    this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new GroupFileSearchDialog.4(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new GroupFileSearchDialog.5(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.i = ((EditText)findViewById(2131432634));
+    this.i.setImeOptions(3);
+    this.i.setOnEditorActionListener(new GroupFileSearchDialog.4(this));
+    this.i.addTextChangedListener(new GroupFileSearchDialog.5(this));
+    this.i.setSelection(0);
+    this.i.requestFocus();
   }
   
   public void a(int paramInt, List<? extends ISearchable> paramList)
   {
     if (paramInt == 1)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+      a(this.l, this.C, this.w, this.y);
       paramList.clear();
     }
   }
@@ -246,12 +201,12 @@ public class GroupFileSearchDialog
     if (!VersionUtils.e()) {
       getWindow().setBackgroundDrawable(new ColorDrawable());
     } else {
-      getWindow().setBackgroundDrawable(new ColorDrawable(paramActivity.getResources().getColor(2131165700)));
+      getWindow().setBackgroundDrawable(new ColorDrawable(paramActivity.getResources().getColor(2131166286)));
     }
-    setContentView(2131559878);
-    findViewById(2131381019).setVisibility(0);
-    findViewById(2131370406).setBackgroundResource(2130838739);
-    findViewById(2131370406).setOnClickListener(this);
+    setContentView(2131625921);
+    findViewById(2131450028).setVisibility(0);
+    findViewById(2131437674).setBackgroundResource(2130838958);
+    findViewById(2131437674).setOnClickListener(this);
     WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
     localLayoutParams.x = 0;
     localLayoutParams.y = 0;
@@ -261,8 +216,8 @@ public class GroupFileSearchDialog
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       getWindow().addFlags(67108864);
-      new SystemBarCompact(this, true, paramActivity.getResources().getColor(2131167114)).init();
-      paramActivity = (LinearLayout)findViewById(2131370406);
+      new SystemBarCompact(this, true, paramActivity.getResources().getColor(2131168092)).init();
+      paramActivity = (LinearLayout)findViewById(2131437674);
       paramActivity.setFitsSystemWindows(true);
       paramActivity.setPadding(0, ImmersiveUtils.getScreenHeight(), 0, 0);
     }
@@ -274,8 +229,8 @@ public class GroupFileSearchDialog
     {
       try
       {
-        int i = this.jdField_a_of_type_Int;
-        if (i > 0) {
+        int i1 = this.x;
+        if (i1 > 0) {
           return;
         }
         if (TextUtils.isEmpty(paramString1))
@@ -286,8 +241,8 @@ public class GroupFileSearchDialog
         }
         else
         {
-          this.jdField_b_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_Int += 1;
+          this.E = System.currentTimeMillis();
+          this.x += 1;
           paramQQAppInterface = (WatchTogetherHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QAV_WT_HANDLER);
           if (paramString2 == null) {
             break label99;
@@ -306,20 +261,20 @@ public class GroupFileSearchDialog
   {
     if (paramTroopFileSearchItemData != null)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_b_of_type_Long = paramTroopFileSearchItemData.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_Int = paramTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_a_of_type_Int;
-      localObject = this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo;
-      ((ChooseFileInfo)localObject).jdField_a_of_type_JavaLangString = "/";
-      ((ChooseFileInfo)localObject).jdField_b_of_type_JavaLangString = paramTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_c_of_type_JavaLangString = paramTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.e;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_Long = paramTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo.jdField_d_of_type_JavaLangString = paramTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_c_of_type_JavaLangString;
+      this.I.d = paramTroopFileSearchItemData.a;
+      this.I.e = paramTroopFileSearchItemData.i.f;
+      localObject = this.I;
+      ((ChooseFileInfo)localObject).f = "/";
+      ((ChooseFileInfo)localObject).g = paramTroopFileSearchItemData.i.c;
+      this.I.h = paramTroopFileSearchItemData.i.m;
+      this.I.j = paramTroopFileSearchItemData.i.e;
+      this.I.k = paramTroopFileSearchItemData.i.d;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("select file ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+      ((StringBuilder)localObject).append(this.I);
       QLog.d("GroupFileSearchDialog", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    Object localObject = this.h;
     boolean bool;
     if (paramTroopFileSearchItemData != null) {
       bool = true;
@@ -333,25 +288,25 @@ public class GroupFileSearchDialog
   {
     try
     {
-      boolean bool = this.d;
+      boolean bool = this.u;
       if (bool) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilList == null)
+      if (this.B == null)
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        this.s = true;
+        this.n.sendEmptyMessage(1);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask != null)
+      if (this.p != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.cancel(true);
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask = null;
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+        this.p.cancel(true);
+        this.p = null;
+        this.n.sendEmptyMessage(2);
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask = new SearchTask(paramString, paramString, this.jdField_a_of_type_JavaUtilList, this);
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.a();
+      this.n.sendEmptyMessage(1);
+      this.p = new SearchTask(paramString, paramString, this.B, this);
+      this.p.a();
       return;
     }
     finally {}
@@ -359,22 +314,22 @@ public class GroupFileSearchDialog
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Int <= 0)
+    if (this.A <= 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.e.setVisibility(8);
       return;
     }
-    long l = System.currentTimeMillis();
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-    float f1 = a() - localTextPaint.measureText(paramString);
+    long l1 = System.currentTimeMillis();
+    TextPaint localTextPaint = this.i.getPaint();
+    float f1 = c() - localTextPaint.measureText(paramString);
     if (f1 < 0.0F)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.e.setVisibility(8);
     }
     else if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.e.setText(a(this.A));
+      this.e.setVisibility(0);
     }
     if (QLog.isColorLevel())
     {
@@ -382,7 +337,7 @@ public class GroupFileSearchDialog
       paramString.append("resetResultNumTextVisible compareWidth = ");
       paramString.append(f1);
       paramString.append(", time = ");
-      paramString.append(System.currentTimeMillis() - l);
+      paramString.append(System.currentTimeMillis() - l1);
       QLog.e("zivonchen", 2, paramString.toString());
     }
   }
@@ -392,56 +347,73 @@ public class GroupFileSearchDialog
     Drawable localDrawable;
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (this.j.getVisibility() != 0) {
+        this.j.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130839401, 0, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694879);
-      localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
+      this.c.setVisibility(0);
+      this.d.setVisibility(0);
+      this.a.setVisibility(8);
+      this.d.setCompoundDrawablesWithIntrinsicBounds(2130839585, 0, 0, 0);
+      this.d.setText(2131892582);
+      localDrawable = this.d.getCompoundDrawables()[0];
       if ((localDrawable instanceof Animatable)) {
         ((Animatable)localDrawable).start();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(0);
-      localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
+      this.a.setVisibility(0);
+      localDrawable = this.d.getCompoundDrawables()[0];
       if ((localDrawable instanceof Animatable)) {
         ((Animatable)localDrawable).stop();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      this.c.setVisibility(8);
+      this.d.setVisibility(8);
     }
+  }
+  
+  protected String b(String paramString)
+  {
+    float f1 = c();
+    TextPaint localTextPaint = this.i.getPaint();
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (localTextPaint.measureText(paramString) <= f1) {
+        return paramString;
+      }
+      paramString = new StringBuilder(paramString.substring(0, localTextPaint.breakText(paramString, true, f1 - localTextPaint.measureText("…"), null)));
+      paramString.append("…");
+      str = paramString.toString();
+    }
+    return str;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if (this.j.getVisibility() != 0) {
+      this.j.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131694424));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.c.setVisibility(0);
+    this.d.setVisibility(0);
+    this.a.setVisibility(8);
+    this.d.setText(this.m.getString(2131892104));
+    this.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
   }
   
   protected void b(Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout = new GroupFileViewMoreRelativeLayout(paramActivity);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setBackgroundResource(2130838739);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setTextColor(paramActivity.getResources().getColor(2131167056));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.addFooterView(this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter = new GroupFileSearchExpandableListAdapter(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView, this.jdField_a_of_type_AndroidOsHandler, this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setAdapter(this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setGroupIndicator(null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setOnScrollListener(new GroupFileSearchDialog.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setOnTouchListener(new GroupFileSearchDialog.3(this));
+    this.b = new GroupFileViewMoreRelativeLayout(paramActivity);
+    this.b.setBackgroundResource(2130838958);
+    this.b.setTextColor(paramActivity.getResources().getColor(2131167993));
+    this.a.addFooterView(this.b);
+    this.b.setVisibility(8);
+    this.k = new GroupFileSearchExpandableListAdapter(this.m, this.l, this.C, this.a, this.n, this);
+    this.a.setAdapter(this.k);
+    this.a.setGroupIndicator(null);
+    this.a.setOnScrollListener(new GroupFileSearchDialog.2(this));
+    this.a.setOnTouchListener(new GroupFileSearchDialog.3(this));
   }
   
   public void b(boolean paramBoolean)
@@ -449,117 +421,115 @@ public class GroupFileSearchDialog
     a(false);
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (this.j.getVisibility() != 0) {
+        this.j.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131697357, new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130843892, 0, 0);
+      this.c.setVisibility(0);
+      this.d.setVisibility(0);
+      this.a.setVisibility(8);
+      this.d.setText(this.m.getString(2131895130, new Object[] { this.w }));
+      this.d.setCompoundDrawablesWithIntrinsicBounds(0, 2130844847, 0, 0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(0);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
+    this.a.setVisibility(0);
+    Drawable localDrawable = this.d.getCompoundDrawables()[0];
     if ((localDrawable instanceof Animatable)) {
       ((Animatable)localDrawable).stop();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.c.setVisibility(8);
+    this.d.setVisibility(8);
   }
   
-  protected void c()
+  protected float c()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    CountdownTimeTask localCountdownTimeTask = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask;
-    if (localCountdownTimeTask != null)
-    {
-      localCountdownTimeTask.b();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+    float f2 = this.i.getWidth() - DisplayUtils.a(this.m, 20.0F);
+    float f1 = f2;
+    if (this.A > 0) {
+      f1 = f2 - (this.i.getPaint().measureText(a(this.A)) + DisplayUtils.a(this.m, 16.0F));
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    f2 = f1;
+    if (this.f.getVisibility() == 0) {
+      f2 = f1 - (this.f.getWidth() + DisplayUtils.a(this.m, 8.0F));
+    }
+    return f2;
   }
   
   protected void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.getFirstVisiblePosition() == 0)
+    if (this.a.getFirstVisiblePosition() == 0)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setVisibility(8);
+      this.b.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setVisibility(0);
+    this.b.setVisibility(0);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setText(2131719254);
-      this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.a();
+      this.b.setText(2131916806);
+      this.b.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setText(2131694879);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileViewMoreRelativeLayout.setTextLeftDrawable(2130839401);
+    this.b.setText(2131892582);
+    this.b.setTextLeftDrawable(2130839585);
   }
   
   protected void d()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)
+    this.e.setVisibility(8);
+    this.u = true;
+    this.n.removeCallbacksAndMessages(null);
+    CountdownTimeTask localCountdownTimeTask = this.o;
+    if (localCountdownTimeTask != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.e = true;
-      String str = a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-      if (!TextUtils.isEmpty(str))
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str.length());
-      }
+      localCountdownTimeTask.b();
+      this.o = null;
     }
+    this.c.setVisibility(8);
+    this.d.setVisibility(8);
+    this.a.setVisibility(8);
+    this.j.setVisibility(8);
+    InputMethodUtil.a(this.i);
   }
   
   public void dismiss()
   {
-    this.d = true;
-    InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    this.u = true;
+    InputMethodUtil.b(this.i);
     SingleLineHotwordTextView.a();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.B;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.B = null;
     }
-    localObject = this.jdField_b_of_type_JavaUtilList;
+    localObject = this.D;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_b_of_type_JavaUtilList = null;
+      this.D = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask;
+    localObject = this.o;
     if (localObject != null)
     {
       ((CountdownTimeTask)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+      this.o = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask;
+    localObject = this.p;
     if (localObject != null) {
       ((SearchTask)localObject).cancel(true);
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    localObject = this.n;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter;
+    localObject = this.k;
     if (localObject != null)
     {
       ((GroupFileSearchExpandableListAdapter)localObject).b();
-      this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter = null;
+      this.k = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvWtogetherObserverWatchTogetherObserver);
+    this.l.removeObserver(this.F);
+    this.l.removeObserver(this.G);
     try
     {
       super.dismiss();
@@ -571,64 +541,80 @@ public class GroupFileSearchDialog
     }
   }
   
+  protected void e()
+  {
+    if (this.e.getVisibility() != 0)
+    {
+      this.e.setText(a(this.A));
+      this.e.setVisibility(0);
+      this.v = true;
+      String str = b(this.i.getText().toString());
+      if (!TextUtils.isEmpty(str))
+      {
+        this.i.setText(str);
+        this.i.setSelection(str.length());
+      }
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.d) {
+    if (this.u) {
       return true;
     }
-    int i = paramMessage.what;
-    if (i != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3)
+        if (i1 != 3)
         {
-          if (i != 4)
+          if (i1 != 4)
           {
-            if (i != 5) {
+            if (i1 != 5) {
               return false;
             }
             a(false);
-            a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), true);
-            if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+            a(this.i.getText().toString(), true);
+            if (this.j.getVisibility() != 0) {
+              this.j.setVisibility(0);
             }
-            if (this.c) {
-              this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter.a();
+            if (this.t) {
+              this.k.a();
             }
-            if (this.jdField_a_of_type_Boolean)
+            if (this.q)
             {
-              this.jdField_a_of_type_Boolean = false;
-              InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+              this.q = false;
+              InputMethodUtil.b(this.i);
             }
-            c(this.f);
-            this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter.a(this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter.notifyDataSetChanged();
-            if (this.c)
+            c(this.z);
+            this.k.a(this.D, this.w);
+            this.k.notifyDataSetChanged();
+            if (this.t)
             {
-              this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.setSelectedGroup(0);
-              this.c = false;
+              this.a.setSelectedGroup(0);
+              this.t = false;
             }
-            long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-            paramMessage = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim().toLowerCase();
+            long l1 = System.currentTimeMillis() - this.E;
+            paramMessage = this.i.getText().toString().trim().toLowerCase();
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("REFRESH_LIST text = ");
               localStringBuilder.append(paramMessage);
               localStringBuilder.append(", lastHotword = ");
-              localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(this.w);
               localStringBuilder.append(", time = ");
-              localStringBuilder.append(l);
+              localStringBuilder.append(l1);
               QLog.e("zivonchen", 2, localStringBuilder.toString());
             }
-            if ((!paramMessage.equals(this.jdField_a_of_type_JavaLangString)) && (l >= 800L))
+            if ((!paramMessage.equals(this.w)) && (l1 >= 800L))
             {
-              this.jdField_b_of_type_JavaLangString = null;
-              this.c = true;
-              this.jdField_a_of_type_JavaLangString = paramMessage;
-              a(this.jdField_a_of_type_JavaLangString);
-              this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+              this.y = null;
+              this.t = true;
+              this.w = paramMessage;
+              a(this.w);
+              this.o = null;
               return false;
             }
           }
@@ -661,20 +647,20 @@ public class GroupFileSearchDialog
     switch (paramView.getId())
     {
     default: 
-    case 2131381023: 
-      paramView = this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog$ClickListener;
+    case 2131450032: 
+      paramView = this.H;
       if (paramView != null)
       {
-        paramView.b(this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
+        paramView.b(this.I);
         return;
       }
       break;
-    case 2131368340: 
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      c();
+    case 2131435215: 
+      this.i.setText("");
+      d();
       return;
-    case 2131363868: 
-    case 2131370406: 
+    case 2131429816: 
+    case 2131437674: 
       dismiss();
     }
   }
@@ -682,7 +668,7 @@ public class GroupFileSearchDialog
   protected void onStop()
   {
     super.onStop();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.n;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -690,7 +676,7 @@ public class GroupFileSearchDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog
  * JD-Core Version:    0.7.0.1
  */

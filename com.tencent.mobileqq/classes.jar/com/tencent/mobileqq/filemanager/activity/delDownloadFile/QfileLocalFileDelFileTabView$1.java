@@ -15,27 +15,27 @@ class QfileLocalFileDelFileTabView$1
   
   public void run()
   {
-    if (this.this$0.jdField_b_of_type_Boolean) {
+    if (this.this$0.h) {
       return;
     }
     Object localObject = this.this$0;
-    ((QfileLocalFileDelFileTabView)localObject).jdField_b_of_type_Boolean = true;
-    ((QfileLocalFileDelFileTabView)localObject).jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.this$0.jdField_b_of_type_JavaUtilLinkedHashMap.clear();
+    ((QfileLocalFileDelFileTabView)localObject).h = true;
+    ((QfileLocalFileDelFileTabView)localObject).a.clear();
+    this.this$0.b.clear();
     localObject = new TreeMap(new QfileLocalFileDelFileTabView.1.1(this));
     Iterator localIterator = QfileLocalFileDelFileTabView.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       QfileTabBarView.ScanParams localScanParams = (QfileTabBarView.ScanParams)localIterator.next();
-      QfileLocalFileDelFileTabView.a(this.this$0, localScanParams.a(), localScanParams, this.this$0.jdField_b_of_type_JavaUtilList, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), (TreeMap)localObject, 1000, null);
+      QfileLocalFileDelFileTabView.a(this.this$0, localScanParams.a(), localScanParams, this.this$0.d, ((Integer)this.this$0.e.second).intValue(), (TreeMap)localObject, 1000, null);
     }
-    QQFileManagerUtil.a((TreeMap)localObject, ((Integer)this.this$0.jdField_a_of_type_ComTencentUtilPair.second).intValue(), this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_b_of_type_JavaUtilLinkedHashMap, this.this$0.jdField_a_of_type_JavaUtilList);
+    QQFileManagerUtil.a((TreeMap)localObject, ((Integer)this.this$0.e.second).intValue(), this.this$0.a, this.this$0.b, this.this$0.c);
     QfileLocalFileDelFileTabView.a(this.this$0, new QfileLocalFileDelFileTabView.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

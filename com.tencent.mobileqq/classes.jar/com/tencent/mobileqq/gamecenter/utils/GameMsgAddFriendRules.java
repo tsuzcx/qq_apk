@@ -10,12 +10,12 @@ public class GameMsgAddFriendRules
   extends GameMsgStrangerRules
 {
   private String a;
-  private String c;
+  private String b;
   
   public GameMsgAddFriendRules(AppInterface paramAppInterface, String paramString1, String paramString2, int paramInt)
   {
     super(paramAppInterface, paramString1, paramInt);
-    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.b = paramString2;
   }
   
   private int a(String paramString)
@@ -41,11 +41,11 @@ public class GameMsgAddFriendRules
   {
     try
     {
-      String str2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_b_of_type_JavaLangString, "");
+      String str2 = this.e.getString(this.g, "");
       if (TextUtils.isEmpty(str2))
       {
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Long = 0L;
+        this.j = 0;
+        this.i = 0L;
         return;
       }
       int i = str2.indexOf("_");
@@ -54,15 +54,15 @@ public class GameMsgAddFriendRules
       }
       String str1 = str2.substring(0, i);
       str2 = str2.substring(i + 1, str2.length());
-      this.jdField_a_of_type_JavaLangString = str1;
+      this.a = str1;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[init], friUinStr:");
       localStringBuilder.append(str1);
       localStringBuilder.append(",momentStr:");
       localStringBuilder.append(str2);
       QLog.i("GameMsgRules.Stranger", 1, localStringBuilder.toString());
-      this.jdField_c_of_type_Int = a(str1);
-      this.jdField_a_of_type_Long = Long.parseLong(str2);
+      this.j = a(str1);
+      this.i = Long.parseLong(str2);
       return;
     }
     catch (Throwable localThrowable)
@@ -71,68 +71,68 @@ public class GameMsgAddFriendRules
       label147:
       break label137;
     }
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.j = 0;
+    this.i = 0L;
   }
   
-  public boolean a()
+  public boolean b()
   {
     try
     {
-      if (!GameMsgUtil.a(this.jdField_a_of_type_Long)) {
+      if (!GameMsgUtil.a(this.i)) {
         return true;
       }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.contains(this.jdField_c_of_type_JavaLangString))) {
+      if ((this.a != null) && (this.a.contains(this.b))) {
         return true;
       }
-      int i = this.jdField_c_of_type_Int;
-      int j = this.jdField_b_of_type_Int;
+      int i = this.j;
+      int j = this.f;
       return i < j;
     }
     catch (Throwable localThrowable) {}
     return true;
   }
   
-  public void b()
+  public void c()
   {
-    long l = System.currentTimeMillis();
-    int j = this.jdField_c_of_type_Int;
+    int j = this.j;
     int i;
-    if (!GameMsgUtil.a(this.jdField_a_of_type_Long))
+    if (!GameMsgUtil.a(this.i))
     {
-      this.jdField_a_of_type_JavaLangString = "";
+      this.a = "";
       i = 0;
     }
     else
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.a;
       i = j;
       if (localObject != null)
       {
         i = j;
-        if (((String)localObject).contains(this.jdField_c_of_type_JavaLangString)) {
+        if (((String)localObject).contains(this.b)) {
           return;
         }
       }
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("|");
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    this.jdField_c_of_type_Int = (i + 1);
-    this.jdField_a_of_type_Long = l;
+    this.a = ((StringBuilder)localObject).toString();
+    this.j = (i + 1);
+    long l = System.currentTimeMillis();
+    this.i = l;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(l);
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_b_of_type_JavaLangString, (String)localObject).commit();
+    this.e.edit().putString(this.g, (String)localObject).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.GameMsgAddFriendRules
  * JD-Core Version:    0.7.0.1
  */

@@ -16,96 +16,79 @@ public class WidgetUtils
     default: 
       localObject = "";
       paramInt1 = 0;
-    case 7: 
     case 6: 
     case 5: 
     case 4: 
     case 3: 
+    case 7: 
     case 9: 
     case 2: 
-      label289:
+      label224:
       for (;;)
       {
         paramInt3 = 0;
-        break label308;
+        break label243;
         if (paramInt3 > 0) {
-          paramInt1 = paramInt3;
-        } else {
-          paramInt1 = 2130850770;
-        }
-        if (paramInt2 > paramInt4)
-        {
-          paramString = new StringBuilder();
-          paramString.append(String.valueOf(paramInt4));
-          paramString.append("+");
-          localObject = paramString.toString();
-        }
-        else
-        {
-          localObject = String.valueOf(paramInt2);
-          break label289;
-          if (paramInt3 > 0) {
-            break;
-          }
-          paramInt3 = 2130850769;
           break;
-          if (paramInt3 <= 0) {
-            paramInt3 = 2130850770;
-          }
+        }
+        paramInt3 = 2130852591;
+        break;
+        if (paramInt3 <= 0) {
+          paramInt3 = 2130852592;
+        }
+        paramInt1 = paramInt3;
+        localObject = paramString;
+        if (TextUtils.isEmpty(paramString))
+        {
           paramInt1 = paramInt3;
-          localObject = paramString;
-          if (TextUtils.isEmpty(paramString))
-          {
+          break label127;
+          if (paramInt3 > 0) {
             paramInt1 = paramInt3;
-            break label192;
+          } else {
+            paramInt1 = 2130852592;
+          }
+          if (paramInt2 > 99)
+          {
+            label127:
+            localObject = "";
+          }
+          else
+          {
+            localObject = String.valueOf(paramInt2);
+            break label224;
             if (paramInt3 > 0) {
               paramInt1 = paramInt3;
             } else {
-              paramInt1 = 2130850770;
+              paramInt1 = 2130852592;
             }
-            if (paramInt2 > 99)
+            if (paramInt2 > paramInt4)
             {
-              label192:
-              localObject = "";
+              paramString = new StringBuilder();
+              paramString.append(String.valueOf(paramInt4));
+              paramString.append("+");
+              localObject = paramString.toString();
             }
             else
             {
               localObject = String.valueOf(paramInt2);
-              break label289;
+              break label224;
               if (paramInt3 > 0) {
                 paramInt1 = paramInt3;
               } else {
-                paramInt1 = 2130850770;
+                paramInt1 = 2130852592;
               }
-              if (paramInt2 > paramInt4)
-              {
-                paramString = new StringBuilder();
-                paramString.append(String.valueOf(paramInt4));
-                paramString.append("+");
-                localObject = paramString.toString();
-              }
-              else
-              {
-                localObject = String.valueOf(paramInt2);
-                break label289;
-                if (paramInt3 > 0) {
-                  paramInt1 = paramInt3;
-                } else {
-                  paramInt1 = 2130850770;
-                }
-                localObject = "NEW";
-              }
+              localObject = "NEW";
             }
           }
         }
       }
     }
     if (paramInt3 <= 0) {
-      paramInt3 = 2130850766;
+      paramInt3 = 2130852588;
     }
     Object localObject = "";
     paramInt1 = 0;
-    label308:
+    label243:
     paramString = (String)localObject;
     if (localObject == null) {
       paramString = "";
@@ -115,11 +98,11 @@ public class WidgetUtils
       paramTextView.setVisibility(8);
       return;
     }
-    localObject = paramTextView.getTag(2131380210);
+    localObject = paramTextView.getTag(2131449128);
     if (((localObject != null) || (paramInt3 != 0)) && ((!(localObject instanceof Integer)) || (((Integer)localObject).intValue() != paramInt3)))
     {
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
-      paramTextView.setTag(2131380210, Integer.valueOf(paramInt3));
+      paramTextView.setTag(2131449128, Integer.valueOf(paramInt3));
       paramTextView.setText(paramString);
       paramTextView.setPadding(0, 0, 0, 0);
     }
@@ -134,7 +117,7 @@ public class WidgetUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.WidgetUtils
  * JD-Core Version:    0.7.0.1
  */

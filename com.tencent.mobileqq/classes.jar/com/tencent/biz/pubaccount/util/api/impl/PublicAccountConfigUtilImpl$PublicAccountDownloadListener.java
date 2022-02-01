@@ -12,15 +12,15 @@ import java.lang.ref.WeakReference;
 public class PublicAccountConfigUtilImpl$PublicAccountDownloadListener
   implements LebaIconDownloader.IDownloadListener
 {
-  IPublicAccountConfigUtil.PublicAccountConfigFolder jdField_a_of_type_ComTencentBizPubaccountUtilApiIPublicAccountConfigUtil$PublicAccountConfigFolder = null;
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  IPublicAccountConfigUtil.PublicAccountConfigFolder a = null;
+  WeakReference<AppInterface> b = null;
+  String c = "";
   
   public PublicAccountConfigUtilImpl$PublicAccountDownloadListener(IPublicAccountConfigUtil.PublicAccountConfigFolder paramPublicAccountConfigFolder, AppInterface paramAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilApiIPublicAccountConfigUtil$PublicAccountConfigFolder = paramPublicAccountConfigFolder;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramPublicAccountConfigFolder;
+    this.b = new WeakReference(paramAppInterface);
+    this.c = paramString;
   }
   
   public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
@@ -33,18 +33,18 @@ public class PublicAccountConfigUtilImpl$PublicAccountDownloadListener
       paramString.append(" | icon: ");
       paramString.append(paramDrawable);
       paramString.append(" | mFolder: ");
-      paramString.append(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiIPublicAccountConfigUtil$PublicAccountConfigFolder);
+      paramString.append(this.a);
       QLog.d("PublicAccountConfigUtil", 2, paramString.toString());
     }
     if ((paramInt == 2) && (paramDrawable != null))
     {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountUtilApiIPublicAccountConfigUtil$PublicAccountConfigFolder;
+      paramString = this.a;
       if (paramString != null)
       {
         paramString.a(paramDrawable);
         try
         {
-          ((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.AVATAR_HANDLER).notifyUI(1, true, new Object[] { this.jdField_a_of_type_JavaLangString });
+          ((AppInterface)this.b.get()).getBusinessHandler(BusinessHandlerFactory.AVATAR_HANDLER).notifyUI(1, true, new Object[] { this.c });
           return;
         }
         catch (Exception paramString)
@@ -59,7 +59,7 @@ public class PublicAccountConfigUtilImpl$PublicAccountDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl.PublicAccountDownloadListener
  * JD-Core Version:    0.7.0.1
  */

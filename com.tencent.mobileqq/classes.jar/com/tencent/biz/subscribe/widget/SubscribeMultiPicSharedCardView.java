@@ -29,12 +29,12 @@ import org.json.JSONObject;
 public class SubscribeMultiPicSharedCardView
   extends AbsSubscribeShareCardView
 {
-  protected FrameLayout a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AsyncRichTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
-  protected CornerImageView a;
-  protected SquareImageView a;
+  protected CornerImageView m;
+  protected SquareImageView n;
+  protected FrameLayout o;
+  private TextView p;
+  private AsyncRichTextView q;
+  private ImageView r;
   
   public SubscribeMultiPicSharedCardView(Context paramContext)
   {
@@ -51,29 +51,19 @@ public class SubscribeMultiPicSharedCardView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
-  {
-    return 2131558772;
-  }
-  
-  protected URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  }
-  
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364422);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131364426));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setBackgroundColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(ScreenUtil.dip2px(2.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131364420));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364423));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)paramView.findViewById(2131364424));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377407));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364421));
+    this.l = paramView.findViewById(2131430453);
+    this.m = ((CornerImageView)paramView.findViewById(2131430457));
+    this.m.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.m.setBackgroundColor(-1);
+    this.m.setRadius(ScreenUtil.dip2px(2.0F));
+    this.n = ((SquareImageView)paramView.findViewById(2131430451));
+    this.p = ((TextView)paramView.findViewById(2131430454));
+    this.q = ((AsyncRichTextView)paramView.findViewById(2131430455));
+    this.r = ((ImageView)paramView.findViewById(2131445806));
+    this.r.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.o = ((FrameLayout)findViewById(2131430452));
   }
   
   public void a(ShareInfoBean paramShareInfoBean, Bitmap paramBitmap, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
@@ -83,16 +73,16 @@ public class SubscribeMultiPicSharedCardView
     String str;
     if (localStFeed != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.f());
-      paramShareInfoBean = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a().title.get();
+      this.p.setText(this.g.g());
+      paramShareInfoBean = this.g.a().title.get();
       localObject = paramShareInfoBean;
       if (TextUtils.isEmpty(paramShareInfoBean)) {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a().content.get();
+        localObject = this.g.a().content.get();
       }
       paramShareInfoBean = (ShareInfoBean)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        str = this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean.a().ext.get();
+        str = this.g.a().ext.get();
         paramShareInfoBean = (ShareInfoBean)localObject;
       }
     }
@@ -118,30 +108,40 @@ public class SubscribeMultiPicSharedCardView
     label140:
     Object localObject = paramShareInfoBean;
     if (TextUtils.isEmpty(paramShareInfoBean)) {
-      localObject = HardCodeUtil.a(2131719377);
+      localObject = HardCodeUtil.a(2131916932);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText((CharSequence)localObject);
+    this.q.setText((CharSequence)localObject);
     if (paramBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.r.setImageBitmap(paramBitmap);
     }
     if (localStFeed.images.size() > 0)
     {
       i = ((CertifiedAccountMeta.StImage)localStFeed.images.get(0)).width.get();
       j = ((CertifiedAccountMeta.StImage)localStFeed.images.get(0)).height.get();
-      a(this.jdField_a_of_type_AndroidWidgetFrameLayout, i, j);
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getLayoutParams().width = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getWidth();
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getLayoutParams().height = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getHeight();
-      this.jdField_a_of_type_JavaUtilArrayList.add(((CertifiedAccountMeta.StImage)localStFeed.images.get(0)).url.get());
-      this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localStFeed.poster.icon.get());
-      this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramShareDataBindListener);
+      a(this.o, i, j);
+      this.m.getLayoutParams().width = this.m.getWidth();
+      this.m.getLayoutParams().height = this.m.getHeight();
+      this.j.add(((CertifiedAccountMeta.StImage)localStFeed.images.get(0)).url.get());
+      this.k.add(this.m);
+      this.j.add(localStFeed.poster.icon.get());
+      this.k.add(this.n);
+      a(this.j, this.k, paramShareDataBindListener);
     }
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131624392;
+  }
+  
+  protected URLImageView getTopImg()
+  {
+    return this.m;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeMultiPicSharedCardView
  * JD-Core Version:    0.7.0.1
  */

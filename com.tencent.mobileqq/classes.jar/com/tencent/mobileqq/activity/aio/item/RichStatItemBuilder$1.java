@@ -16,25 +16,25 @@ class RichStatItemBuilder$1
   
   public void run()
   {
-    if (TextUtils.isEmpty(RichStatItemBuilder.a().feedsId))
+    if (TextUtils.isEmpty(RichStatItemBuilder.c().feedsId))
     {
-      ((FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getRichStatus(new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
+      ((FriendListHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getRichStatus(new String[] { this.this$0.j.frienduin });
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "sign feedid is is null reget friend sign");
       }
     }
     else
     {
-      SignatureHandler localSignatureHandler = (SignatureHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
+      SignatureHandler localSignatureHandler = (SignatureHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
       if (localSignatureHandler != null) {
-        localSignatureHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.feedId);
+        localSignatureHandler.a(this.this$0.j.frienduin, this.this$0.j.feedId);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

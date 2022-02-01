@@ -17,14 +17,14 @@ public class d
 {
   private static TrustManager[] a;
   private final Object b = new Object();
-  private URI c;
-  private d.a d;
+  private final URI c;
+  private final d.a d;
   private Socket e;
   private Thread f;
-  private HandlerThread g;
-  private Handler h;
-  private List<a> i;
-  private b j;
+  private final HandlerThread g;
+  private final Handler h;
+  private final List<a> i;
+  private final b j;
   private boolean k;
   
   public d(URI paramURI, d.a parama, List<a> paramList)
@@ -45,7 +45,7 @@ public class d
     if (m == -1) {
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder("");
+    StringBuilder localStringBuilder = new StringBuilder();
     while (m != 10)
     {
       if (m != 13) {
@@ -168,7 +168,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.d
  * JD-Core Version:    0.7.0.1
  */

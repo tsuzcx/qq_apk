@@ -32,19 +32,19 @@ final class SimpleUIProtocolUtil$1
         localStringBuilder.append(localItemDisDetail.itemId);
         localStringBuilder.append("");
         if (TextUtils.equals("2920", localStringBuilder.toString())) {
-          SimpleUIUtil.e(paramInt);
+          SimpleUIUtil.f(paramInt);
         }
         paramInt += 1;
       }
-      paramInt = SimpleUIUtil.a(this.jdField_a_of_type_JavaLangString);
-      SimpleUIProtocolUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
-      SimpleUIProtocolUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
+      paramInt = SimpleUIUtil.a(this.a);
+      SimpleUIProtocolUtil.a(this.b.getCurrentAccountUin(), this.c, 1);
+      SimpleUIProtocolUtil.a(this.b.getCurrentAccountUin(), paramInt, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIProtocolUtil.1
  * JD-Core Version:    0.7.0.1
  */

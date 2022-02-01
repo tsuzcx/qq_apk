@@ -11,14 +11,14 @@ import java.util.List;
 
 public class DatalineMsgHelper
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
+  private String b;
   
   public DatalineMsgHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "3636666661";
+    this.a = paramQQAppInterface;
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = "3636666661";
     }
   }
   
@@ -26,14 +26,14 @@ public class DatalineMsgHelper
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramMessageForDLFile);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, QFileAssistantUtils.a());
+    this.a.getMessageFacade().a(localArrayList, this.a.getCurrentAccountUin(), false, QFileAssistantUtils.b());
   }
   
   private void a(MessageForText paramMessageForText)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramMessageForText);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, QFileAssistantUtils.a());
+    this.a.getMessageFacade().a(localArrayList, this.a.getCurrentAccountUin(), false, QFileAssistantUtils.b());
   }
   
   public void a(MessageRecord paramMessageRecord)
@@ -55,13 +55,13 @@ public class DatalineMsgHelper
       if (paramList.isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.getMessageFacade().a(paramList, this.a.getCurrentAccountUin(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineMsgHelper
  * JD-Core Version:    0.7.0.1
  */

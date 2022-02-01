@@ -33,68 +33,175 @@ import java.util.List;
 public class ShareUtils
   implements AdapterView.OnItemClickListener, IShareUtils
 {
-  private float jdField_a_of_type_Float = 1.0F;
   protected int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ElasticHorScrView jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private IShareUtils.SharePanelListener jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils$SharePanelListener = null;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private ElasticHorScrView jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView;
-  protected String b;
+  protected String b = null;
   protected String c = null;
   protected String d = null;
+  protected String e = null;
+  private ActionSheet f;
+  private ElasticHorScrView g;
+  private ElasticHorScrView h;
+  private float i = 1.0F;
+  private Activity j;
+  private AppInterface k;
+  private IShareUtils.SharePanelListener l = null;
+  private View m;
+  private int n = 0;
+  private boolean o = true;
+  private TextView p;
   
   public ShareUtils(Activity paramActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
+    this.j = paramActivity;
+    this.k = paramAppInterface;
+    this.i = this.j.getResources().getDisplayMetrics().density;
+  }
+  
+  public void a()
+  {
+    View localView = this.m;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+  }
+  
+  public void a(IShareUtils.SharePanelListener paramSharePanelListener)
+  {
+    this.l = paramSharePanelListener;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.a = paramInt;
+    this.e = paramString4;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.o = paramBoolean;
+  }
+  
+  public void b()
+  {
+    if (this.j.isFinishing()) {
+      return;
+    }
+    if (this.f == null)
+    {
+      this.f = ((ActionSheet)((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).actionSheetHelperCreateDialog(this.j, null));
+      View localView = e();
+      this.f.setOnDismissListener(new ShareUtils.3(this));
+      this.f.setOnKeyListener(new ShareUtils.4(this));
+      this.f.setActionContentView(localView, null);
+    }
+    if (!this.f.isShowing()) {
+      this.f.show();
+    }
+  }
+  
+  public void c()
+  {
+    ActionSheet localActionSheet = this.f;
+    if ((localActionSheet != null) && (localActionSheet.isShowing()))
+    {
+      this.l = null;
+      this.f.dismiss();
+    }
+  }
+  
+  protected List<IPublicAccountBrowser.ActionSheetItem>[] d()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new IPublicAccountBrowser.ActionSheetItem();
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = this.j.getString(2131894171);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839221;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).b = true;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 2;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
+    localArrayList.add(localObject);
+    localObject = new IPublicAccountBrowser.ActionSheetItem();
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = this.j.getString(2131894192);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839225;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 9;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
+    localArrayList.add(localObject);
+    localObject = new IPublicAccountBrowser.ActionSheetItem();
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = this.j.getString(2131894174);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839219;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 10;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
+    localArrayList.add(localObject);
+    localObject = new IPublicAccountBrowser.ActionSheetItem();
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).c = this.j.getString(2131894189);
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).a = 2130839224;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).b = true;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).d = 12;
+    ((IPublicAccountBrowser.ActionSheetItem)localObject).e = "";
+    localArrayList.add(localObject);
+    localObject = new ArrayList();
+    IPublicAccountBrowser.ActionSheetItem localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
+    localActionSheetItem.c = this.j.getString(2131894180);
+    localActionSheetItem.a = 2130837697;
+    localActionSheetItem.b = true;
+    localActionSheetItem.d = 26;
+    localActionSheetItem.e = "";
+    ((ArrayList)localObject).add(localActionSheetItem);
+    localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
+    localActionSheetItem.c = this.j.getString(2131894163);
+    localActionSheetItem.a = 2130839217;
+    localActionSheetItem.b = true;
+    localActionSheetItem.d = 1;
+    localActionSheetItem.e = "";
+    ((ArrayList)localObject).add(localActionSheetItem);
+    localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
+    localActionSheetItem.c = this.j.getString(2131894169);
+    localActionSheetItem.a = 2130843680;
+    localActionSheetItem.b = true;
+    localActionSheetItem.d = 11;
+    localActionSheetItem.e = "";
+    ((ArrayList)localObject).add(localActionSheetItem);
+    return (List[])new ArrayList[] { localArrayList, localObject };
   }
   
   @SuppressLint({"InflateParams"})
   @TargetApi(9)
-  protected View a()
+  protected View e()
   {
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131559103, null);
-    localView.setBackgroundResource(2130838739);
-    this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377008));
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377009));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362004));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719571);
-    if (a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    View localView = this.j.getLayoutInflater().inflate(2131624764, null);
+    localView.setBackgroundResource(2130838958);
+    this.g = ((ElasticHorScrView)localView.findViewById(2131445372));
+    this.h = ((ElasticHorScrView)localView.findViewById(2131445373));
+    this.p = ((TextView)localView.findViewById(2131427565));
+    this.p.setText(2131917134);
+    if (f()) {
+      this.p.setVisibility(0);
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.p.setVisibility(8);
     }
-    Object localObject1 = (LinearLayout)localView.findViewById(2131362008);
+    Object localObject1 = (LinearLayout)localView.findViewById(2131427586);
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      localObject2 = this.m;
       if (localObject2 != null) {
-        ((LinearLayout)localObject1).addView((View)localObject2, this.jdField_b_of_type_Int);
+        ((LinearLayout)localObject1).addView((View)localObject2, this.n);
       }
     }
-    GridView localGridView2 = (GridView)localView.findViewById(2131367811);
-    GridView localGridView1 = (GridView)localView.findViewById(2131367812);
-    localObject1 = (TextView)localView.findViewById(2131362003);
+    GridView localGridView2 = (GridView)localView.findViewById(2131434386);
+    GridView localGridView1 = (GridView)localView.findViewById(2131434387);
+    localObject1 = (TextView)localView.findViewById(2131427564);
     ((TextView)localObject1).setTextColor(-16777216);
-    ((TextView)localObject1).setText(2131690728);
+    ((TextView)localObject1).setText(2131887648);
     ((TextView)localObject1).setOnClickListener(new ShareUtils.1(this));
     if (Build.VERSION.SDK_INT >= 9)
     {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+      this.g.setOverScrollMode(2);
+      this.h.setOverScrollMode(2);
     }
     localGridView1.setSmoothScrollbarEnabled(false);
-    Object localObject2 = a();
+    Object localObject2 = d();
     if (localObject2.length > 0) {
       localObject1 = localObject2[0];
     } else {
@@ -105,139 +212,30 @@ public class ShareUtils
     } else {
       localObject2 = new ArrayList(0);
     }
-    int i = ((List)localObject1).size();
-    localGridView2.setNumColumns(i);
+    int i1 = ((List)localObject1).size();
+    localGridView2.setNumColumns(i1);
     ViewGroup.LayoutParams localLayoutParams = localGridView2.getLayoutParams();
-    localLayoutParams.width = ((int)((i * 75 + (i - 1) * 10 + 3) * this.jdField_a_of_type_Float));
+    localLayoutParams.width = ((int)((i1 * 75 + (i1 - 1) * 10 + 3) * this.i));
     localGridView2.setLayoutParams(localLayoutParams);
-    localGridView2.setAdapter(new IPublicAccountBrowser.ActionSheetItemAdapter(this.jdField_a_of_type_AndroidAppActivity, 0, (List)localObject1));
+    localGridView2.setAdapter(new IPublicAccountBrowser.ActionSheetItemAdapter(this.j, 0, (List)localObject1));
     localGridView2.setSelector(new ColorDrawable(0));
     localGridView2.setOnItemClickListener(this);
-    i = localLayoutParams.width;
-    int j = ((List)localObject2).size();
+    i1 = localLayoutParams.width;
+    int i2 = ((List)localObject2).size();
     localObject1 = localGridView1.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).width = ((int)((j * 75 + (j - 1) * 10 + 3) * this.jdField_a_of_type_Float));
+    ((ViewGroup.LayoutParams)localObject1).width = ((int)((i2 * 75 + (i2 - 1) * 10 + 3) * this.i));
     localGridView1.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localGridView1.setNumColumns(j);
-    localGridView1.setAdapter(new IPublicAccountBrowser.ActionSheetItemAdapter(this.jdField_a_of_type_AndroidAppActivity, 0, (List)localObject2));
+    localGridView1.setNumColumns(i2);
+    localGridView1.setAdapter(new IPublicAccountBrowser.ActionSheetItemAdapter(this.j, 0, (List)localObject2));
     localGridView1.setSelector(new ColorDrawable(0));
     localGridView1.setOnItemClickListener(this);
-    localView.post(new ShareUtils.2(this, i, ((ViewGroup.LayoutParams)localObject1).width));
+    localView.post(new ShareUtils.2(this, i1, ((ViewGroup.LayoutParams)localObject1).width));
     return localView;
   }
   
-  public void a()
+  public boolean f()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      localView.setVisibility(8);
-    }
-  }
-  
-  public void a(IShareUtils.SharePanelListener paramSharePanelListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils$SharePanelListener = paramSharePanelListener;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-    this.d = paramString4;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected List<IPublicAccountBrowser.ActionSheetItem>[] a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696399);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839067;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 2;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localObject);
-    localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696420);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839071;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 9;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localObject);
-    localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696402);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839065;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 10;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localObject);
-    localObject = new IPublicAccountBrowser.ActionSheetItem();
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696417);
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130839070;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 12;
-    ((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localObject);
-    localObject = new ArrayList();
-    IPublicAccountBrowser.ActionSheetItem localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696408);
-    localActionSheetItem.jdField_a_of_type_Int = 2130837673;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_b_of_type_Int = 26;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    ((ArrayList)localObject).add(localActionSheetItem);
-    localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696391);
-    localActionSheetItem.jdField_a_of_type_Int = 2130839063;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_b_of_type_Int = 1;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    ((ArrayList)localObject).add(localActionSheetItem);
-    localActionSheetItem = new IPublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696397);
-    localActionSheetItem.jdField_a_of_type_Int = 2130842727;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_b_of_type_Int = 11;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    ((ArrayList)localObject).add(localActionSheetItem);
-    return (List[])new ArrayList[] { localArrayList, localObject };
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).actionSheetHelperCreateDialog(this.jdField_a_of_type_AndroidAppActivity, null));
-      View localView = a();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ShareUtils.3(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnKeyListener(new ShareUtils.4(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(localView, null);
-    }
-    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-    }
-  }
-  
-  public void c()
-  {
-    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-    if ((localActionSheet != null) && (localActionSheet.isShowing()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils$SharePanelListener = null;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    return this.o;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -251,10 +249,10 @@ public class ShareUtils
     }
     else
     {
-      localObject = ((IPublicAccountBrowser.ActionSheetItemViewHolder)localObject).a;
-      IShareUtils.SharePanelListener localSharePanelListener = this.jdField_a_of_type_ComTencentMobileqqTeamworkIShareUtils$SharePanelListener;
+      localObject = ((IPublicAccountBrowser.ActionSheetItemViewHolder)localObject).c;
+      IShareUtils.SharePanelListener localSharePanelListener = this.l;
       if (localSharePanelListener != null) {
-        localSharePanelListener.a(((IPublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int);
+        localSharePanelListener.a(((IPublicAccountBrowser.ActionSheetItem)localObject).d);
       }
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
@@ -262,7 +260,7 @@ public class ShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.ShareUtils
  * JD-Core Version:    0.7.0.1
  */

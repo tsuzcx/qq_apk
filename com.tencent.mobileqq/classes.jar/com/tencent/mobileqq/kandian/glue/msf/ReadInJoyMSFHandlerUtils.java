@@ -58,17 +58,17 @@ import tencent.im.oidb.cmd0xbe6.oidb_cmd0xbe6.MsgChannelInfo;
 
 public class ReadInJoyMSFHandlerUtils
 {
-  private static Boolean[] jdField_a_of_type_ArrayOfJavaLangBoolean;
-  private static Integer[] jdField_a_of_type_ArrayOfJavaLangInteger;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private static String[] a;
+  private static Integer[] b;
+  private static Boolean[] c;
   
   static
   {
-    String str = HardCodeUtil.a(2131712759);
+    String str = HardCodeUtil.a(2131910333);
     Boolean localBoolean = Boolean.valueOf(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { str, HardCodeUtil.a(2131713056), HardCodeUtil.a(2131712745), HardCodeUtil.a(2131712792), HardCodeUtil.a(2131712752), HardCodeUtil.a(2131713063), HardCodeUtil.a(2131712927), HardCodeUtil.a(2131712998), HardCodeUtil.a(2131712875), HardCodeUtil.a(2131712702) };
-    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(4779), Integer.valueOf(1166), Integer.valueOf(5293), Integer.valueOf(501), Integer.valueOf(73), Integer.valueOf(5729), Integer.valueOf(1314), Integer.valueOf(3817), Integer.valueOf(3689), Integer.valueOf(3076) };
-    jdField_a_of_type_ArrayOfJavaLangBoolean = new Boolean[] { localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean };
+    a = new String[] { str, HardCodeUtil.a(2131910617), HardCodeUtil.a(2131910320), HardCodeUtil.a(2131910365), HardCodeUtil.a(2131910326), HardCodeUtil.a(2131910624), HardCodeUtil.a(2131910496), HardCodeUtil.a(2131910562), HardCodeUtil.a(2131910446), HardCodeUtil.a(2131910278) };
+    b = new Integer[] { Integer.valueOf(4779), Integer.valueOf(1166), Integer.valueOf(5293), Integer.valueOf(501), Integer.valueOf(73), Integer.valueOf(5729), Integer.valueOf(1314), Integer.valueOf(3817), Integer.valueOf(3689), Integer.valueOf(3076) };
+    c = new Boolean[] { localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean };
   }
   
   private static int a(int paramInt1, int paramInt2)
@@ -127,7 +127,7 @@ public class ReadInJoyMSFHandlerUtils
   {
     ChannelCoverInfo localChannelCoverInfo1 = new ChannelCoverInfo();
     new RIJMsfHandlerHelper().a(paramChannelInfo, paramInt, localChannelCoverInfo1);
-    paramChannelInfo = ReadInJoyLogicEngine.a().a(paramInt);
+    paramChannelInfo = ReadInJoyLogicEngine.a().c(paramInt);
     if (paramChannelInfo != null)
     {
       if (paramChannelInfo.size() == 0) {
@@ -181,7 +181,7 @@ public class ReadInJoyMSFHandlerUtils
     localChannelInfo.mFontColor = PBFieldUtils.a(paramChannelInfo.uint32_fonts_color);
     try
     {
-      localChannelInfo.mJumpUrl = new String(PBFieldUtils.a(paramChannelInfo.bytes_channel_jump_url), "utf-8");
+      localChannelInfo.mJumpUrl = new String(PBFieldUtils.b(paramChannelInfo.bytes_channel_jump_url), "utf-8");
       return localChannelInfo;
     }
     catch (Exception paramChannelInfo)
@@ -202,13 +202,13 @@ public class ReadInJoyMSFHandlerUtils
     if ((paramChannel.msg_red_point.has()) && (paramChannel.msg_red_point.uint64_start_time.has()) && (paramChannel.msg_red_point.uint64_end_time.has()))
     {
       localTabChannelCoverInfo.redPoint = new TabChannelCoverInfo.RedPoint();
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = PBFieldUtils.a(paramChannel.msg_red_point.bool_red_point);
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = paramChannel.msg_red_point.uint64_start_time.get();
-      localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = paramChannel.msg_red_point.uint64_end_time.get();
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Int = paramChannel.msg_red_point.uint32_type.get();
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_JavaLangString = PBFieldUtils.a(paramChannel.msg_red_point.str_title_text);
-      localTabChannelCoverInfo.redPoint.jdField_b_of_type_Int = paramChannel.msg_red_point.uint32_title_color.get();
-      localTabChannelCoverInfo.redPoint.c = paramChannel.msg_red_point.uint32_bg_color.get();
+      localTabChannelCoverInfo.redPoint.a = PBFieldUtils.a(paramChannel.msg_red_point.bool_red_point);
+      localTabChannelCoverInfo.redPoint.b = paramChannel.msg_red_point.uint64_start_time.get();
+      localTabChannelCoverInfo.redPoint.c = paramChannel.msg_red_point.uint64_end_time.get();
+      localTabChannelCoverInfo.redPoint.e = paramChannel.msg_red_point.uint32_type.get();
+      localTabChannelCoverInfo.redPoint.f = PBFieldUtils.a(paramChannel.msg_red_point.str_title_text);
+      localTabChannelCoverInfo.redPoint.g = paramChannel.msg_red_point.uint32_title_color.get();
+      localTabChannelCoverInfo.redPoint.h = paramChannel.msg_red_point.uint32_bg_color.get();
     }
     localTabChannelCoverInfo.mChannelCoverPicUrl = PBFieldUtils.a(paramChannel.str_cover_url);
     localTabChannelCoverInfo.mIconUrl = PBFieldUtils.a(paramChannel.str_icon_url);
@@ -322,12 +322,12 @@ public class ReadInJoyMSFHandlerUtils
         return localArrayList;
       }
     }
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    while (i < a.length)
     {
       paramList = new InterestLabelInfo();
-      paramList.mInterestLabelNme = jdField_a_of_type_ArrayOfJavaLangString[i];
-      paramList.mInterestLabelID = jdField_a_of_type_ArrayOfJavaLangInteger[i].intValue();
-      paramList.mIsDefault = jdField_a_of_type_ArrayOfJavaLangBoolean[i].booleanValue();
+      paramList.mInterestLabelNme = a[i];
+      paramList.mInterestLabelID = b[i].intValue();
+      paramList.mIsDefault = c[i].booleanValue();
       localArrayList.add(paramList);
       i += 1;
     }
@@ -364,20 +364,6 @@ public class ReadInJoyMSFHandlerUtils
     }
   }
   
-  public static void a(List<AbsBaseArticleInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      if (paramList.size() <= 0) {
-        return;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        RIJPreParseData.b((AbsBaseArticleInfo)paramList.next());
-      }
-    }
-  }
-  
   public static void a(oidb_cmd0x68b.RspChannelArticle paramRspChannelArticle, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramRspChannelArticle != null)
@@ -404,42 +390,6 @@ public class ReadInJoyMSFHandlerUtils
     }
   }
   
-  private static boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
-  {
-    if (paramTabChannelCoverInfo.bid <= 0L) {
-      return true;
-    }
-    if (paramTabChannelCoverInfo.bid > 0L)
-    {
-      if (!Utils.a()) {
-        return false;
-      }
-      try
-      {
-        paramTabChannelCoverInfo = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId));
-        if (paramTabChannelCoverInfo != null)
-        {
-          paramTabChannelCoverInfo = paramTabChannelCoverInfo.a();
-          if (paramTabChannelCoverInfo != null)
-          {
-            paramTabChannelCoverInfo = paramTabChannelCoverInfo.b("cgi");
-            QLog.d("ReadInJoyMSFHandlerUtils", 2, new Object[] { "isDynamicChannelAvailable, cgi = ", paramTabChannelCoverInfo });
-            if (TextUtils.isEmpty(paramTabChannelCoverInfo)) {
-              return true;
-            }
-            boolean bool = ProteusJsHelper.a();
-            return bool;
-          }
-        }
-      }
-      catch (Exception paramTabChannelCoverInfo)
-      {
-        QLog.d("ReadInJoyMSFHandlerUtils", 2, "isDynamicChannelAvailable, e = ", paramTabChannelCoverInfo);
-      }
-    }
-    return false;
-  }
-  
   public static List<TabChannelCoverInfo> b(List<channel_button.Channel> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -449,7 +399,7 @@ public class ReadInJoyMSFHandlerUtils
       while (paramList.hasNext())
       {
         TabChannelCoverInfo localTabChannelCoverInfo = a((channel_button.Channel)paramList.next());
-        boolean bool = a(localTabChannelCoverInfo);
+        boolean bool = c(localTabChannelCoverInfo);
         QLog.d("ReadInJoyMSFHandlerUtils", 2, new Object[] { "channelID = ", Integer.valueOf(localTabChannelCoverInfo.mChannelCoverId), ", name = ", localTabChannelCoverInfo.mChannelCoverName, ", bid = ", Long.valueOf(localTabChannelCoverInfo.bid), ", isAvailable = ", Boolean.valueOf(bool) });
         if ((bool) && (localTabChannelCoverInfo.mChannelCoverId != 41449)) {
           localArrayList.add(localTabChannelCoverInfo);
@@ -470,9 +420,9 @@ public class ReadInJoyMSFHandlerUtils
       QLog.d("ReadInJoyMSFHandlerUtils", 2, new Object[] { "preDownloadDynamicChannel, channelCoverInfo = ", paramTabChannelCoverInfo });
       if (paramTabChannelCoverInfo.bid > 0L)
       {
-        String str = ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId);
+        String str = ReadInJoyDynamicChannelBaseFragment.d(paramTabChannelCoverInfo.mChannelCoverId);
         StyleConfigHelper.a(str, String.valueOf(paramTabChannelCoverInfo.bid));
-        StyleConfigHelper.b(str);
+        StyleConfigHelper.d(str);
         try
         {
           ReadInJoyDynamicChannelBaseFragment.a(str);
@@ -500,13 +450,13 @@ public class ReadInJoyMSFHandlerUtils
         oidb_cmd0x46f.DislikeResult localDislikeResult = (oidb_cmd0x46f.DislikeResult)paramList.next();
         DislikeResult localDislikeResult1 = new DislikeResult();
         if (localDislikeResult.uint64_articleid.has()) {
-          localDislikeResult1.jdField_a_of_type_Long = localDislikeResult.uint64_articleid.get();
+          localDislikeResult1.a = localDislikeResult.uint64_articleid.get();
         }
         if (localDislikeResult.uint32_result.has()) {
-          localDislikeResult1.jdField_a_of_type_Int = localDislikeResult.uint32_result.get();
+          localDislikeResult1.b = localDislikeResult.uint32_result.get();
         }
         if (localDislikeResult.str_message.has()) {
-          localDislikeResult1.jdField_a_of_type_JavaLangString = localDislikeResult.str_message.get();
+          localDislikeResult1.c = localDislikeResult.str_message.get();
         }
         localArrayList.add(localDislikeResult1);
       }
@@ -514,7 +464,57 @@ public class ReadInJoyMSFHandlerUtils
     return localArrayList;
   }
   
-  public static List<TagInfo> d(List<oidb_cmd0xb83.TagInfo> paramList)
+  private static boolean c(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    if (paramTabChannelCoverInfo.bid <= 0L) {
+      return true;
+    }
+    if (paramTabChannelCoverInfo.bid > 0L)
+    {
+      if (!Utils.a()) {
+        return false;
+      }
+      try
+      {
+        paramTabChannelCoverInfo = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramTabChannelCoverInfo.mChannelCoverId));
+        if (paramTabChannelCoverInfo != null)
+        {
+          paramTabChannelCoverInfo = paramTabChannelCoverInfo.f();
+          if (paramTabChannelCoverInfo != null)
+          {
+            paramTabChannelCoverInfo = paramTabChannelCoverInfo.b("cgi");
+            QLog.d("ReadInJoyMSFHandlerUtils", 2, new Object[] { "isDynamicChannelAvailable, cgi = ", paramTabChannelCoverInfo });
+            if (TextUtils.isEmpty(paramTabChannelCoverInfo)) {
+              return true;
+            }
+            boolean bool = ProteusJsHelper.b();
+            return bool;
+          }
+        }
+      }
+      catch (Exception paramTabChannelCoverInfo)
+      {
+        QLog.d("ReadInJoyMSFHandlerUtils", 2, "isDynamicChannelAvailable, e = ", paramTabChannelCoverInfo);
+      }
+    }
+    return false;
+  }
+  
+  public static void d(List<AbsBaseArticleInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        RIJPreParseData.b((AbsBaseArticleInfo)paramList.next());
+      }
+    }
+  }
+  
+  public static List<TagInfo> e(List<oidb_cmd0xb83.TagInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -529,7 +529,7 @@ public class ReadInJoyMSFHandlerUtils
     return localArrayList;
   }
   
-  public static List<TopicInfo> e(List<oidb_cmd0xbde.TopicInfo> paramList)
+  public static List<TopicInfo> f(List<oidb_cmd0xbde.TopicInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -538,7 +538,7 @@ public class ReadInJoyMSFHandlerUtils
       while (paramList.hasNext())
       {
         oidb_cmd0xbde.TopicInfo localTopicInfo = (oidb_cmd0xbde.TopicInfo)paramList.next();
-        localArrayList.add(TopicInfo.a().a(localTopicInfo.uint64_topic_id.get()).a(localTopicInfo.bytes_topic_name.get().toStringUtf8()).b(localTopicInfo.bytes_topic_summary.get().toStringUtf8()).c(localTopicInfo.bytes_topic_cover_url.get().toStringUtf8()).d(localTopicInfo.bytes_topic_url.get().toStringUtf8()).a());
+        localArrayList.add(TopicInfo.g().a(localTopicInfo.uint64_topic_id.get()).a(localTopicInfo.bytes_topic_name.get().toStringUtf8()).b(localTopicInfo.bytes_topic_summary.get().toStringUtf8()).c(localTopicInfo.bytes_topic_cover_url.get().toStringUtf8()).d(localTopicInfo.bytes_topic_url.get().toStringUtf8()).c(localTopicInfo.uint64_discuss_num.get()).b(localTopicInfo.uint64_read_num.get()).a());
       }
     }
     return localArrayList;
@@ -546,7 +546,7 @@ public class ReadInJoyMSFHandlerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.msf.ReadInJoyMSFHandlerUtils
  * JD-Core Version:    0.7.0.1
  */

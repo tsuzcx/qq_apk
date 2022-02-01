@@ -10,7 +10,7 @@ class MultiVideoCtrlLayerUI4Discussion$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j(this.jdField_a_of_type_Long);
+    this.b.h(this.a);
   }
 }
 

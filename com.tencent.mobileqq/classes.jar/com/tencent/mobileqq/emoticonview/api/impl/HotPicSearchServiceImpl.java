@@ -35,31 +35,31 @@ public class HotPicSearchServiceImpl
   
   public int getReportFromType()
   {
-    return RichTextPanel.jdField_a_of_type_Int;
+    return RichTextPanel.a;
   }
   
   public URL getURL(String paramString)
   {
-    return HotPicDownLoader.a(paramString);
+    return HotPicDownLoader.b(paramString);
   }
   
   public boolean isRichTextLastTab(Context paramContext, String paramString)
   {
-    return EmotionSharedPreUtils.a(paramContext, paramString) == 5;
+    return EmotionSharedPreUtils.b(paramContext, paramString) == 5;
   }
   
   protected void reportEvent(QQAppInterface paramQQAppInterface, EmotionSearchItem paramEmotionSearchItem, String paramString, int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1)
     {
-      if (!StringUtil.a(paramString))
+      if (!StringUtil.isEmpty(paramString))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2);
         localStringBuilder.append("");
         ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800AE2E", "0X800AE2E", 0, 0, localStringBuilder.toString(), "", paramEmotionSearchItem.getEmoMd5(), "");
       }
-      if (StringUtil.a(paramString)) {
+      if (StringUtil.isEmpty(paramString)) {
         paramInt1 = 1;
       } else {
         paramInt1 = 2;
@@ -89,10 +89,10 @@ public class HotPicSearchServiceImpl
       paramEditText = (QQAppInterface)paramAppRuntime;
       paramParcelable1 = (SessionInfo)paramParcelable1;
       boolean bool = paramContext instanceof BaseActivity;
-      if ((bool) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramParcelable1.jdField_a_of_type_Int, paramParcelable1.jdField_a_of_type_JavaLangString)))
+      if ((bool) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramParcelable1.a, paramParcelable1.b)))
       {
         paramAppRuntime = (BaseActivity)paramContext;
-        QQToast.a(paramEditText.getApp(), HardCodeUtil.a(2131701523), 0).b(paramAppRuntime.getTitleBarHeight());
+        QQToast.makeText(paramEditText.getApp(), HardCodeUtil.a(2131899546), 0).show(paramAppRuntime.getTitleBarHeight());
         return;
       }
       if (!bool) {
@@ -118,7 +118,7 @@ public class HotPicSearchServiceImpl
       }
       else
       {
-        if (HotPicPageView.a(paramParcelable2) == 0)
+        if (HotPicPageView.b(paramParcelable2) == 0)
         {
           paramAppRuntime = HotPicDownLoader.a(paramParcelable2.url).getAbsolutePath();
           if (QLog.isColorLevel())
@@ -137,9 +137,9 @@ public class HotPicSearchServiceImpl
         }
         i = 0;
       }
-      if ((paramAppRuntime == null) && (paramParcelable1.jdField_a_of_type_Int != 1008))
+      if ((paramAppRuntime == null) && (paramParcelable1.a != 1008))
       {
-        QQToast.a(paramContext, 2131698963, 0).a();
+        QQToast.makeText(paramContext, 2131896955, 0).show();
         return;
       }
       reportEvent(paramEditText, paramParcelable2, paramString, paramInt1, paramInt2);
@@ -147,10 +147,10 @@ public class HotPicSearchServiceImpl
       paramString = new ArrayList();
       paramString.add(paramAppRuntime);
       paramEditText.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramString);
-      paramEditText.putExtra("uin", paramParcelable1.jdField_a_of_type_JavaLangString);
-      paramEditText.putExtra("uintype", paramParcelable1.jdField_a_of_type_Int);
-      paramEditText.putExtra("troop_uin", paramParcelable1.b);
-      paramEditText.putExtra("key_confess_topicid", paramParcelable1.e);
+      paramEditText.putExtra("uin", paramParcelable1.b);
+      paramEditText.putExtra("uintype", paramParcelable1.a);
+      paramEditText.putExtra("troop_uin", paramParcelable1.c);
+      paramEditText.putExtra("key_confess_topicid", paramParcelable1.v);
       paramEditText.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
       paramEditText.putExtra("send_in_background", true);
       paramEditText.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
@@ -173,7 +173,7 @@ public class HotPicSearchServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.HotPicSearchServiceImpl
  * JD-Core Version:    0.7.0.1
  */

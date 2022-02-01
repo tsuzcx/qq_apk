@@ -37,13 +37,13 @@ public class StepServiceAsync
     {
       localObject = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getStepCounterServletIntent((Context)localObject);
       ((NewIntent)localObject).putExtra("isOpen", false);
-      this.mAutomator.a.startServlet((NewIntent)localObject);
+      this.mAutomator.k.startServlet((NewIntent)localObject);
       QLog.e("StepServiceAsync", 1, "step counter found current model banned!");
       return super.doStep();
     }
     ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).setIsOldMode(SignUtils.isSupportKeyStore() ^ true);
-    localObject = (ISportManager)this.mAutomator.a.getRuntimeService(ISportManager.class, "multi");
-    if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isNeedReport(this.mAutomator.a.getAccount())) {
+    localObject = (ISportManager)this.mAutomator.k.getRuntimeService(ISportManager.class, "multi");
+    if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isNeedReport(this.mAutomator.k.getAccount())) {
       ((ISportManager)localObject).refreshCurrentStep("login");
     }
     ((ISportManager)localObject).doOnLogin();
@@ -52,7 +52,7 @@ public class StepServiceAsync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepServiceAsync
  * JD-Core Version:    0.7.0.1
  */

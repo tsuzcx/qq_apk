@@ -22,7 +22,7 @@ class DetailFeedAllInfoPullSegment$RequestCommentListSegment
   protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
     GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
-    localGetFeedCommentRequest.a = paramFeedCommentSync;
+    localGetFeedCommentRequest.f = paramFeedCommentSync;
     CmdTaskManger.a().a(localGetFeedCommentRequest, new DetailFeedAllInfoPullSegment.RequestCommentListSegment.1(this, paramJobContext, paramFeedCommentSync));
   }
 }

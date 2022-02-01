@@ -16,9 +16,9 @@ class QzoneQunFeedJsPlugin$2$1
   public void run()
   {
     QzoneQunFeedJsPlugin.access$102(this.this$1.this$0, this.this$1.val$args[0]);
-    Activity localActivity = this.this$1.this$0.parentPlugin.mRuntime.a();
+    Activity localActivity = this.this$1.this$0.parentPlugin.mRuntime.d();
     if (QzoneQunFeedJsPlugin.access$200(this.this$1.this$0) == null) {
-      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131712227)).setMessage(HardCodeUtil.a(2131712231)).setPositiveButton(HardCodeUtil.a(2131712228), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717558), new QzoneQunFeedJsPlugin.2.1.1(this)));
+      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131909830)).setMessage(HardCodeUtil.a(2131909833)).setPositiveButton(HardCodeUtil.a(2131899883), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131915033), new QzoneQunFeedJsPlugin.2.1.1(this)));
     }
     if (!QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).isShowing()) {
       QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).show();
@@ -27,7 +27,7 @@ class QzoneQunFeedJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

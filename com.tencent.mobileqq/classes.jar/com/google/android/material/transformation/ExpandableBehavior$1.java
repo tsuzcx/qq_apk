@@ -12,19 +12,19 @@ class ExpandableBehavior$1
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    if (ExpandableBehavior.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransformationExpandableBehavior) == this.jdField_a_of_type_Int)
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    if (ExpandableBehavior.a(this.d) == this.b)
     {
-      ExpandableBehavior localExpandableBehavior = this.jdField_a_of_type_ComGoogleAndroidMaterialTransformationExpandableBehavior;
-      ExpandableWidget localExpandableWidget = this.jdField_a_of_type_ComGoogleAndroidMaterialExpandableExpandableWidget;
-      localExpandableBehavior.a((View)localExpandableWidget, this.jdField_a_of_type_AndroidViewView, localExpandableWidget.a(), false);
+      ExpandableBehavior localExpandableBehavior = this.d;
+      ExpandableWidget localExpandableWidget = this.c;
+      localExpandableBehavior.a((View)localExpandableWidget, this.a, localExpandableWidget.a(), false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.ExpandableBehavior.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ public class FullScreenClearInputCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    ((FullScreenInputHelper)paramAIOContext.a(24)).e();
+    ((FullScreenInputHelper)paramAIOContext.a(24)).p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.clearinput.FullScreenClearInputCallback
  * JD-Core Version:    0.7.0.1
  */

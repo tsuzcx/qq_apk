@@ -6,30 +6,30 @@ import android.text.TextUtils;
 final class CommUtils$1
   extends AsyncTask<Void, Void, Void>
 {
-  String jdField_a_of_type_JavaLangString = "";
+  String a = "";
   
   CommUtils$1(CommUtils.IHttpGetString paramIHttpGetString, String paramString) {}
   
   protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangString = CommUtils.a(this.b);
+    this.a = CommUtils.a(this.c);
     return null;
   }
   
   protected void a(Void paramVoid)
   {
     super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
-      this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a();
+      this.b.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a(this.jdField_a_of_type_JavaLangString);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.CommUtils.1
  * JD-Core Version:    0.7.0.1
  */

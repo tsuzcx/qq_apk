@@ -5,8 +5,7 @@ import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -58,9 +57,9 @@ public class ReadinjoyResetFunctionConfProcessor
   
   public int migrateOldVersion()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     String str = localQQAppInterface.getCurrentUin();
-    return SharedPreUtils.L(localQQAppInterface.getApp(), str);
+    return SharedPreUtils.V(localQQAppInterface.getApp(), str);
   }
   
   public void onReqFailed(int paramInt)
@@ -77,7 +76,7 @@ public class ReadinjoyResetFunctionConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadinjoyResetFunctionConfProcessor
  * JD-Core Version:    0.7.0.1
  */

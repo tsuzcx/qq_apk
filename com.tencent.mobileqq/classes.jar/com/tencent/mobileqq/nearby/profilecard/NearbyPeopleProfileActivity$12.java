@@ -13,9 +13,9 @@ class NearbyPeopleProfileActivity$12
   
   protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if ((paramSetting != null) && (NearbyPeopleProfileActivity.access$300(this.a) != null))
+    if ((paramSetting != null) && (this.a.mCard != null))
     {
-      if (!TextUtils.equals(NearbyPeopleProfileActivity.access$300(this.a).uin, paramSetting.uin)) {
+      if (!TextUtils.equals(this.a.mCard.uin, paramSetting.uin)) {
         return;
       }
       if ((paramSetting.bFaceFlags & 0x20) != 0) {
@@ -30,8 +30,8 @@ class NearbyPeopleProfileActivity$12
         this.a.mHeadSize = 40;
       }
       this.a.mGetHeadUrl = paramSetting.url;
-      if (NearbyPeopleProfileActivity.access$500(this.a) != null) {
-        NearbyPeopleProfileActivity.access$500(this.a).k();
+      if (NearbyPeopleProfileActivity.access$400(this.a) != null) {
+        NearbyPeopleProfileActivity.access$400(this.a).o();
       }
       if (QLog.isColorLevel())
       {
@@ -57,7 +57,7 @@ class NearbyPeopleProfileActivity$12
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.i("NearbyPeopleProfileActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.access$300(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.access$300(this.a).uin)) && (paramBoolean2) && ((this.a.mHeadSize == 640) || (this.a.mHeadSize == 0)) && (!TextUtils.isEmpty(this.a.mGetHeadUrl)) && (!this.a.mHasNewPhoto))
+    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (this.a.mCard != null) && (paramString.equals(this.a.mCard.uin)) && (paramBoolean2) && ((this.a.mHeadSize == 640) || (this.a.mHeadSize == 0)) && (!TextUtils.isEmpty(this.a.mGetHeadUrl)) && (!this.a.mHasNewPhoto))
     {
       localObject = this.a;
       ((NearbyPeopleProfileActivity)localObject).downloadHDAvatar(paramString, ((NearbyPeopleProfileActivity)localObject).mHeadSize, this.a.mGetHeadUrl, true);
@@ -66,7 +66,7 @@ class NearbyPeopleProfileActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.12
  * JD-Core Version:    0.7.0.1
  */

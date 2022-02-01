@@ -6,12 +6,12 @@ import java.util.List;
 public class RelatedSearchData
   extends BaseData
 {
-  public String a;
   public List<RelatedSearchData.SearchWord> a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.entity.RelatedSearchData
  * JD-Core Version:    0.7.0.1
  */

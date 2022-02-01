@@ -14,7 +14,7 @@ class AVGameCameraAssistant$4
   {
     try
     {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      Iterator localIterator = AVGameCameraAssistant.a(this.b).iterator();
       while (localIterator.hasNext())
       {
         AVGameCameraAssistant.CameraEventListener localCameraEventListener = (AVGameCameraAssistant.CameraEventListener)localIterator.next();
@@ -34,7 +34,7 @@ class AVGameCameraAssistant$4
   {
     try
     {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      Iterator localIterator = AVGameCameraAssistant.a(this.b).iterator();
       while (localIterator.hasNext())
       {
         AVGameCameraAssistant.CameraEventListener localCameraEventListener = (AVGameCameraAssistant.CameraEventListener)localIterator.next();
@@ -54,7 +54,7 @@ class AVGameCameraAssistant$4
   {
     try
     {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      Iterator localIterator = AVGameCameraAssistant.a(this.b).iterator();
       while (localIterator.hasNext())
       {
         AVGameCameraAssistant.CameraEventListener localCameraEventListener = (AVGameCameraAssistant.CameraEventListener)localIterator.next();
@@ -74,7 +74,7 @@ class AVGameCameraAssistant$4
   {
     try
     {
-      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      Iterator localIterator = AVGameCameraAssistant.a(this.b).iterator();
       while (localIterator.hasNext())
       {
         AVGameCameraAssistant.CameraEventListener localCameraEventListener = (AVGameCameraAssistant.CameraEventListener)localIterator.next();

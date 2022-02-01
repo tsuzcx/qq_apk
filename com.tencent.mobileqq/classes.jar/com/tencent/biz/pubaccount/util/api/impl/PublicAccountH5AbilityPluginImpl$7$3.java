@@ -11,12 +11,12 @@ class PublicAccountH5AbilityPluginImpl$7$3
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl$7.this$0.mVideoIPCClient.removeObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoApiIVideoFeedsIPCClient$Observer);
+    this.b.this$0.mVideoIPCClient.removeObserver(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.7.3
  * JD-Core Version:    0.7.0.1
  */

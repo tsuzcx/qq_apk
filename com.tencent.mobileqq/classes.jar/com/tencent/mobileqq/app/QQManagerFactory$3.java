@@ -36,16 +36,18 @@ final class QQManagerFactory$3
     add(Integer.valueOf(QQManagerFactory.GROUP_TEAM_WORK_MANAGER));
     add(Integer.valueOf(QQManagerFactory.TEAMWORK_MANAGER));
     add(Integer.valueOf(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR));
+    add(Integer.valueOf(QQManagerFactory.GUILD_AIO_NAVIGATE_BAR));
     add(Integer.valueOf(QQManagerFactory.ODPROXY_MGR));
     add(Integer.valueOf(QQManagerFactory.NOW_DOWNLOAD_ENGINE_MANAGER));
     add(Integer.valueOf(QQManagerFactory.NEWER_GUIDE_BANNER_MANAGER));
     add(Integer.valueOf(QQManagerFactory.TEMP_MSG_BOX));
     add(Integer.valueOf(QQManagerFactory.TEMP_CHAT_PLUGIN_MANAGER));
+    add(Integer.valueOf(QQManagerFactory.TURINGSDK_MANAGER));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerFactory.3
  * JD-Core Version:    0.7.0.1
  */

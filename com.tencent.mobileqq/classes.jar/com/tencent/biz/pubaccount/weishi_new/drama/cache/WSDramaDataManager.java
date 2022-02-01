@@ -15,58 +15,41 @@ import java.util.List;
 
 public class WSDramaDataManager
 {
-  private final WSDramaDataModule jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule = new WSDramaDataModule();
-  private WSDramaItemData jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaItemData;
-  private WSPlayerParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
+  private final WSDramaDataModule a = new WSDramaDataModule();
+  private WSPlayerParam b;
+  private WSDramaItemData c;
   
   public static WSDramaDataManager a()
   {
     return WSDramaDataManager.SingletonHolder.a();
   }
   
-  public WSDramaItemData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaItemData;
-  }
-  
-  public WSPlayerParam a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaItemData = null;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule.a();
-  }
-  
   public void a(WSDramaFeedsParams paramWSDramaFeedsParams, IFetchDataListener<stDramaFeed> paramIFetchDataListener)
   {
-    paramWSDramaFeedsParams.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule.a(paramWSDramaFeedsParams.a()));
-    if (paramWSDramaFeedsParams.d()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule.a(paramWSDramaFeedsParams.a(), paramWSDramaFeedsParams.a());
+    paramWSDramaFeedsParams.a(this.a.c(paramWSDramaFeedsParams.d()));
+    if (paramWSDramaFeedsParams.j()) {
+      this.a.a(paramWSDramaFeedsParams.d(), paramWSDramaFeedsParams.c());
     }
-    WSDramaFeesFetcherFactory.a(paramWSDramaFeedsParams.b()).a(paramWSDramaFeedsParams, new WSDramaDataManager.3(this, paramWSDramaFeedsParams, paramIFetchDataListener));
+    WSDramaFeesFetcherFactory.a(paramWSDramaFeedsParams.g()).a(paramWSDramaFeedsParams, new WSDramaDataManager.3(this, paramWSDramaFeedsParams, paramIFetchDataListener));
   }
   
   public void a(WSDramaItemData paramWSDramaItemData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaItemData = paramWSDramaItemData;
+    this.c = paramWSDramaItemData;
   }
   
   public void a(WSPlayerParam paramWSPlayerParam)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
+    this.b = paramWSPlayerParam;
   }
   
   public void a(String paramString, IFetchDataRspListener<WSEpisodeItemData> paramIFetchDataRspListener)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule.a(paramString).size() > 0)
+    if (this.a.b(paramString).size() > 0)
     {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataModule.a(paramString);
+      paramString = this.a.d(paramString);
       if (paramIFetchDataRspListener != null) {
-        paramIFetchDataRspListener.a(paramString.a(), false, false, paramString.a());
+        paramIFetchDataRspListener.a(paramString.a(), false, false, paramString.b());
       }
       return;
     }
@@ -77,10 +60,27 @@ public class WSDramaDataManager
   {
     new WSDramaDataFetcher().a(new WSDramaParams(paramBoolean1, paramBoolean2, paramString1), new WSDramaDataManager.1(this, paramIFetchDataRspListener));
   }
+  
+  public WSPlayerParam b()
+  {
+    return this.b;
+  }
+  
+  public WSDramaItemData c()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    this.b = null;
+    this.c = null;
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaDataManager
  * JD-Core Version:    0.7.0.1
  */

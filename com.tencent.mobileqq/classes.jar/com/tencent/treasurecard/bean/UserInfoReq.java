@@ -38,34 +38,6 @@ public class UserInfoReq
     return localObject;
   }
   
-  private Map<String, String> a()
-  {
-    TreeMap localTreeMap = new TreeMap();
-    localTreeMap.put("channelId", this.a);
-    localTreeMap.put("msgId", this.b);
-    localTreeMap.put("userId", this.c);
-    localTreeMap.put("openType", this.d);
-    localTreeMap.put("message", this.e);
-    localTreeMap.put("expandParams", this.f);
-    return localTreeMap;
-  }
-  
-  private void a()
-  {
-    if (!TextUtils.isEmpty(this.d)) {
-      this.d = EncodeUtil.a(this.d);
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      this.e = EncodeUtil.a(this.e);
-    }
-    if (!TextUtils.isEmpty(this.g)) {
-      this.g = EncodeUtil.a(this.g);
-    }
-    if (!TextUtils.isEmpty(this.f)) {
-      this.f = EncodeUtil.a(this.f);
-    }
-  }
-  
   private String b(String paramString, Map<String, String> paramMap)
   {
     Iterator localIterator = paramMap.keySet().iterator();
@@ -80,39 +52,62 @@ public class UserInfoReq
       localStringBuilder.append("&");
       paramString = localStringBuilder.toString();
     }
-    return paramString.substring(0, paramString.length() - 1);
+    int i = paramString.length();
+    if (i < 1) {
+      return "";
+    }
+    return paramString.substring(0, i - 1);
+  }
+  
+  private Map<String, String> b()
+  {
+    TreeMap localTreeMap = new TreeMap();
+    localTreeMap.put("channelId", this.a);
+    localTreeMap.put("msgId", this.b);
+    localTreeMap.put("userId", this.c);
+    localTreeMap.put("openType", this.d);
+    localTreeMap.put("message", this.e);
+    localTreeMap.put("expandParams", this.f);
+    return localTreeMap;
+  }
+  
+  private void c()
+  {
+    if (!TextUtils.isEmpty(this.e)) {
+      this.e = EncodeUtil.a(this.e);
+    }
+    if (!TextUtils.isEmpty(this.g)) {
+      this.g = EncodeUtil.a(this.g);
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      this.f = EncodeUtil.a(this.f);
+    }
   }
   
   public UserInfoReq a(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b("", a());
-  }
-  
-  public String a(String paramString)
-  {
-    Map localMap = a();
-    localMap.put("sign", this.g);
-    a();
-    return a(paramString, localMap);
-  }
-  
-  public UserInfoReq b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       this.g = paramString;
     }
     return this;
   }
+  
+  public String a()
+  {
+    return b("", b());
+  }
+  
+  public String b(String paramString)
+  {
+    c();
+    Map localMap = b();
+    localMap.put("sign", this.g);
+    return a(paramString, localMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.bean.UserInfoReq
  * JD-Core Version:    0.7.0.1
  */

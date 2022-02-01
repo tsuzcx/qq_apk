@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.mqq.api.IAccountRuntime;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.open.business.base.MobileInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.PlatformInfor;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -70,6 +72,11 @@ public class QCircleHostStubUtil
     return ((StringBuilder)localObject).toString();
   }
   
+  public static AppRuntime getAppRunTime()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
   public static int getColorFromJSON(JSONObject paramJSONObject, String paramString)
   {
     try
@@ -109,6 +116,15 @@ public class QCircleHostStubUtil
   public static String getDeviceName()
   {
     return PlatformInfor.getDeviceName();
+  }
+  
+  public static EntityManager getEntityManager()
+  {
+    if (getAppRunTime() != null) {
+      return getAppRunTime().getEntityManagerFactory(getAppRunTime().getAccount()).createEntityManager();
+    }
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    return localAppRuntime.getEntityManagerFactory(localAppRuntime.getAccount()).createEntityManager();
   }
   
   public static String getMobileIMei()
@@ -160,7 +176,7 @@ public class QCircleHostStubUtil
   
   public static boolean isInNightMode()
   {
-    return QQTheme.a();
+    return QQTheme.isNowThemeIsNight();
   }
   
   public static boolean isOwner(String paramString)
@@ -199,7 +215,7 @@ public class QCircleHostStubUtil
     }
     catch (Exception paramString)
     {
-      RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "jsonToLabel error.", paramString });
+      QLog.e("QCircleHostUtil", 1, "jsonToLabel error.", paramString);
       localBundle.putString("key_parse_data_error_msg", paramString.getMessage());
       localBundle.putStringArrayList("key_selected_label_id", paramBundle);
       localBundle.putStringArrayList("key_selected_label_name", localArrayList1);
@@ -234,7 +250,7 @@ public class QCircleHostStubUtil
     }
     catch (Exception localException)
     {
-      RFLog.e("QCircleHostUtil", RFLog.USR, new Object[] { "labelToJson error.", localException });
+      QLog.e("QCircleHostUtil", 1, "labelToJson error.", localException);
     }
     return paramBundle.toString();
   }
@@ -266,7 +282,7 @@ public class QCircleHostStubUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.utils.QCircleHostStubUtil
  * JD-Core Version:    0.7.0.1
  */

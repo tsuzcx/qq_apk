@@ -11,55 +11,55 @@ public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
   public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new EditLocalPhotoSource.1();
-  public final LocalMediaInfo a;
   public final String a;
+  public final LocalMediaInfo b;
   
   protected EditLocalPhotoSource(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
+    this.a = paramParcel.readString();
+    this.b = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
   }
   
   public EditLocalPhotoSource(String paramString, LocalMediaInfo paramLocalMediaInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    paramString = b();
+    this.a = paramString;
+    this.b = paramLocalMediaInfo;
+    paramString = d();
     if (paramString == null) {
       return;
     }
     throw new IllegalArgumentException(paramString);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
   @NonNull
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+    return this.b.mediaWidth;
   }
   
-  public String b()
+  public int c()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    return this.b.mediaHeight;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.a)) {
       return "sourcePath is empty";
     }
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    if (!new File(this.a).exists())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Can not find file by sourcePath = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       return localStringBuilder.toString();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null) {
+    if (this.b == null) {
       return "media info should not be null";
     }
     return null;
@@ -72,13 +72,13 @@ public class EditLocalPhotoSource
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, 0);
+    paramParcel.writeString(this.a);
+    paramParcel.writeParcelable(this.b, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.params.EditLocalPhotoSource
  * JD-Core Version:    0.7.0.1
  */

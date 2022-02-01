@@ -13,7 +13,7 @@ public class AttributeShaderParameter
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    this.a = GLES20.glGetAttribLocation(paramInt, this.b);
     Utils.a();
   }
 }

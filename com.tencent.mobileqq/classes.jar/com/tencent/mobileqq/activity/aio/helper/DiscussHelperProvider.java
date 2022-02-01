@@ -16,7 +16,7 @@ public class DiscussHelperProvider
   private void a(DiscussChatPie paramDiscussChatPie)
   {
     a(50, new LeftSwipeReplyHelper(paramDiscussChatPie));
-    a(109, new DiscTipsHelper(paramDiscussChatPie.b()));
+    a(109, new DiscTipsHelper(paramDiscussChatPie.bv()));
   }
   
   public void a(BaseChatPie paramBaseChatPie)
@@ -27,7 +27,7 @@ public class DiscussHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.DiscussHelperProvider
  * JD-Core Version:    0.7.0.1
  */

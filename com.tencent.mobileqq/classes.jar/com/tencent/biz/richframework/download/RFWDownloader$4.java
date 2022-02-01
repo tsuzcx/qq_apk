@@ -1,7 +1,7 @@
 package com.tencent.biz.richframework.download;
 
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -16,12 +16,11 @@ class RFWDownloader$4
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    int i = RFLog.USR;
     paramCall = new StringBuilder();
     paramCall.append("checkResource:");
     paramCall.append(this.val$url);
     paramCall.append(" onFailure");
-    RFLog.d("RFWDownloader", i, paramCall.toString());
+    QLog.d("RFWDownloader", 1, paramCall.toString());
     this.val$checkResultListener.onCheckResult(false, this.val$isFileDownloaded, false, this.val$preMd5);
   }
   
@@ -34,21 +33,19 @@ class RFWDownloader$4
       boolean bool = TextUtils.isEmpty(paramCall);
       if ((!bool) && (!this.val$preMd5.equals(paramCall)))
       {
-        i = RFLog.USR;
         paramResponse = new StringBuilder();
         paramResponse.append("checkResource:");
         paramResponse.append(this.val$url);
         paramResponse.append(" need update");
-        RFLog.d("RFWDownloader", i, paramResponse.toString());
+        QLog.d("RFWDownloader", 1, paramResponse.toString());
         this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, true, paramCall);
         return;
       }
-      int i = RFLog.USR;
       paramResponse = new StringBuilder();
       paramResponse.append("checkResource:");
       paramResponse.append(this.val$url);
       paramResponse.append(" is up to date");
-      RFLog.d("RFWDownloader", i, paramResponse.toString());
+      QLog.d("RFWDownloader", 1, paramResponse.toString());
       this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, false, paramCall);
       return;
     }

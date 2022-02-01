@@ -22,7 +22,7 @@ class SmallImageProteusItem$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a.k();
     Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localAbsBaseArticleInfo.mArticleContentUrl);
     boolean bool = paramViewBase instanceof ReadInjoyTextView;
     String str1 = "";
@@ -39,7 +39,7 @@ class SmallImageProteusItem$1
     ((StringBuilder)localObject2).append(paramViewBase.getClickEvnet().substring(18));
     ((StringBuilder)localObject2).append("}");
     UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).ver7(((StringBuilder)localObject2).toString()).session_id(localAbsBaseArticleInfo.mSearchWordSessionId));
-    SearchUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
+    SearchUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.b.getContext(), paramViewBase.getEventAttachedData());
     localObject2 = (UniteSearchHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER);
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     String str2 = localAbsBaseArticleInfo.mSearchWordSessionId;
@@ -53,7 +53,7 @@ class SmallImageProteusItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.SmallImageProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

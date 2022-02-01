@@ -30,6 +30,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.avbiz.AVBizModuleFactory;
+import com.tencent.avbiz.IModule;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -118,19 +120,17 @@ public class SearchTemplatePresenter
   implements QQPlayerCallback, IFacePresenter<NetSearchTemplateBaseItem, NetSearchTemplateBaseView>
 {
   public static int a;
-  private long jdField_a_of_type_Long;
-  public ColorDrawable a;
-  public Drawable a;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private GroupSearchAdapter jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter;
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  public ColorDrawable b = new ColorDrawable(Color.parseColor("#e7e7e7"));
+  public Drawable c = URLDrawableHelperConstants.a;
+  private IFaceDecoder d;
+  private long e;
+  private WeakReference<ImageView> f;
+  private GroupSearchAdapter g;
   
   public SearchTemplatePresenter(IFaceDecoder paramIFaceDecoder, GroupSearchAdapter paramGroupSearchAdapter)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter = paramGroupSearchAdapter;
+    this.d = paramIFaceDecoder;
+    this.g = paramGroupSearchAdapter;
   }
   
   private float a(String paramString1, String paramString2)
@@ -141,180 +141,34 @@ public class SearchTemplatePresenter
     return 7.0F;
   }
   
-  private int a(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView)
-  {
-    if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo != null) && (paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
-    {
-      int i = paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_Int;
-      int k = 1;
-      if (i == 1)
-      {
-        if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton != null) {
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        }
-        if (paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView != null) {
-          paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        return 0;
-      }
-      boolean bool1 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-      Context localContext = paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext();
-      if (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_Int == 2)
-      {
-        if (paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView != null) {
-          paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-        if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton == null) {
-          return 0;
-        }
-        if (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence))
-        {
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setText(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence);
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchTemplatePresenter.7(this, localContext, paramNetSearchTemplateUniversalItem));
-        }
-        else
-        {
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        }
-        i = (int)(0 + (SearchUtils.a(paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence) + DisplayUtil.a(localContext, 32.0F) + DisplayUtil.a(localContext, 15.0F)));
-        if (bool1)
-        {
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843441);
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#6991B8"));
-          return i;
-        }
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843440);
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#000000"));
-        return i;
-      }
-      if (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_Int == 3)
-      {
-        if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton != null) {
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        }
-        if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-        {
-          if (paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView == null) {
-            return 0;
-          }
-          int m = ((Integer)paramNetSearchTemplateUniversalView.a().getTag(2131380885)).intValue();
-          SongInfo localSongInfo2 = new SongInfo();
-          try
-          {
-            JSONObject localJSONObject = new JSONObject(paramNetSearchTemplateUniversalItem.h);
-            localSongInfo2.jdField_b_of_type_JavaLangString = localJSONObject.optString("audio_url");
-            localSongInfo2.jdField_c_of_type_JavaLangString = localJSONObject.optString("title");
-            localSongInfo2.d = localJSONObject.optString("desc");
-            localSongInfo2.e = localJSONObject.optString("image_url");
-            boolean bool2 = TextUtils.isEmpty(localJSONObject.optString("id"));
-            j = bool2 ^ true;
-            if (j != 0) {}
-            try
-            {
-              localSongInfo2.jdField_a_of_type_Long = Long.parseLong(localJSONObject.optString("id"));
-              int n = localJSONObject.optInt("playable");
-              i = j;
-              if (n != 1) {
-                break label511;
-              }
-              i = k;
-            }
-            catch (Exception localException1) {}
-            i = j;
-          }
-          catch (Exception localException2)
-          {
-            j = 0;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, localException2.toString());
-            i = j;
-          }
-          label511:
-          k = 0;
-          int j = i;
-          i = k;
-          this.jdField_a_of_type_Long = localSongInfo2.jdField_a_of_type_Long;
-          QQPlayerService.a(this);
-          if (QQPlayerService.a() != 2)
-          {
-            SearchUtils.jdField_a_of_type_Long = -1L;
-          }
-          else
-          {
-            SongInfo localSongInfo1 = QQPlayerService.b();
-            if (localSongInfo1 != null) {
-              SearchUtils.jdField_a_of_type_Long = localSongInfo1.jdField_a_of_type_Long;
-            }
-          }
-          if (bool1)
-          {
-            if (this.jdField_a_of_type_Long == SearchUtils.jdField_a_of_type_Long) {
-              paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849965);
-            } else {
-              paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849963);
-            }
-          }
-          else if (this.jdField_a_of_type_Long == SearchUtils.jdField_a_of_type_Long) {
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849964);
-          } else {
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130849962);
-          }
-          if ((i != 0) && (j != 0) && (!TextUtils.isEmpty(localSongInfo2.jdField_b_of_type_JavaLangString)))
-          {
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new SearchTemplatePresenter.8(this, paramNetSearchTemplateUniversalView, m, localContext, bool1, localSongInfo2, paramNetSearchTemplateUniversalItem));
-          }
-          else
-          {
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-          return DisplayUtil.a(localContext, 39.0F) + 0;
-        }
-        return 0;
-      }
-      paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      return 0;
-    }
-    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton != null)) {
-      paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView != null)) {
-      paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    return 0;
-  }
-  
   private int a(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView, int paramInt1, int paramInt2)
   {
     if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalItem != null))
     {
-      if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
+      if (paramNetSearchTemplateUniversalView.d == null) {
         return 0;
       }
-      Context localContext = paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+      Context localContext = paramNetSearchTemplateUniversalView.d.getContext();
       int i = localContext.getResources().getDisplayMetrics().widthPixels - paramInt1 - paramInt2 - DisplayUtil.a(localContext, 30.0F);
       Object localObject;
-      if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramNetSearchTemplateUniversalItem.c != null) && (paramNetSearchTemplateUniversalItem.c.size() > 0))
       {
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        paramNetSearchTemplateUniversalView.d.setVisibility(0);
+        if ((paramNetSearchTemplateUniversalItem.b != null) && (paramNetSearchTemplateUniversalItem.c != null) && (paramNetSearchTemplateUniversalItem.c.size() > 0))
         {
-          paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          if (paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+          paramNetSearchTemplateUniversalView.n.setVisibility(0);
+          if (paramNetSearchTemplateUniversalView.q != null) {
+            paramNetSearchTemplateUniversalView.q.setVisibility(8);
           }
-          if (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_Int == 1)
+          if (paramNetSearchTemplateUniversalItem.b.a == 1)
           {
-            if (paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView != null) {
-              paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+            if (paramNetSearchTemplateUniversalView.p != null) {
+              paramNetSearchTemplateUniversalView.p.setVisibility(8);
             }
-            if ((paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView != null) && (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString)))
+            if ((paramNetSearchTemplateUniversalView.q != null) && (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.b.b)))
             {
-              paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
-              a(paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString);
+              paramNetSearchTemplateUniversalView.q.setVisibility(0);
+              a(paramNetSearchTemplateUniversalView.q, paramNetSearchTemplateUniversalItem.b.b);
               paramInt1 = DisplayUtil.a(localContext, 24.0F);
             }
           }
@@ -323,119 +177,119 @@ public class SearchTemplatePresenter
             for (;;)
             {
               paramInt1 = i - paramInt1;
-              break label522;
-              if (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_Int == 2)
+              break label517;
+              if (paramNetSearchTemplateUniversalItem.b.a == 2)
               {
-                if (paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-                  paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+                if (paramNetSearchTemplateUniversalView.q != null) {
+                  paramNetSearchTemplateUniversalView.q.setVisibility(8);
                 }
-                if ((paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangCharSequence))) {
+                if ((paramNetSearchTemplateUniversalView.p == null) || (TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.b.e))) {
                   break;
                 }
-                if (SearchUtils.b(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_JavaLangString)) {
-                  localObject = paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_JavaLangString;
+                if (SearchUtils.g(paramNetSearchTemplateUniversalItem.b.f)) {
+                  localObject = paramNetSearchTemplateUniversalItem.b.f;
                 } else {
                   localObject = "#fd7f32";
                 }
-                ((GradientDrawable)paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView.getBackground()).setColor(Color.parseColor((String)localObject));
-                paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangCharSequence);
-                paramInt1 = (int)(i - (SearchUtils.a(paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangCharSequence) + DisplayUtil.a(localContext, 10.0F)));
-                break label522;
+                ((GradientDrawable)paramNetSearchTemplateUniversalView.p.getBackground()).setColor(Color.parseColor((String)localObject));
+                paramNetSearchTemplateUniversalView.p.setVisibility(0);
+                paramNetSearchTemplateUniversalView.p.setText(paramNetSearchTemplateUniversalItem.b.e);
+                paramInt1 = (int)(i - (SearchUtils.a(paramNetSearchTemplateUniversalView.p, paramNetSearchTemplateUniversalItem.b.e) + DisplayUtil.a(localContext, 10.0F)));
+                break label517;
               }
-              if (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_Int != 3) {
+              if (paramNetSearchTemplateUniversalItem.b.a != 3) {
                 break;
               }
-              if (paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView != null) {
-                paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+              if (paramNetSearchTemplateUniversalView.p != null) {
+                paramNetSearchTemplateUniversalView.p.setVisibility(8);
               }
-              if ((paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView == null) || (TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString))) {
+              if ((paramNetSearchTemplateUniversalView.q == null) || (TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.b.b))) {
                 break;
               }
-              paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
-              if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_Int > 0) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_c_of_type_Int > 0))
+              paramNetSearchTemplateUniversalView.q.setVisibility(0);
+              if ((paramNetSearchTemplateUniversalItem.b.c > 0) && (paramNetSearchTemplateUniversalItem.b.d > 0))
               {
-                a(paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_Int, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_c_of_type_Int, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString);
-                paramInt1 = DisplayUtil.a(localContext, DisplayUtil.a(localContext, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_b_of_type_Int) + 4);
+                a(paramNetSearchTemplateUniversalView.q, paramNetSearchTemplateUniversalItem.b.c, paramNetSearchTemplateUniversalItem.b.d, paramNetSearchTemplateUniversalItem.b.b);
+                paramInt1 = DisplayUtil.a(localContext, DisplayUtil.a(localContext, paramNetSearchTemplateUniversalItem.b.c) + 4);
               }
               else
               {
-                a(paramNetSearchTemplateUniversalView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView, paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$HeadIconInfo.jdField_a_of_type_JavaLangString);
+                a(paramNetSearchTemplateUniversalView.q, paramNetSearchTemplateUniversalItem.b.b);
                 paramInt1 = DisplayUtil.a(localContext, 24.0F);
               }
             }
           }
           paramInt1 = i;
-          label522:
-          if ((paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangCharSequence)))
+          label517:
+          if ((paramNetSearchTemplateUniversalView.o != null) && (!TextUtils.isEmpty(((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.c.get(0)).a)))
           {
-            localObject = ((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangCharSequence;
-            if (((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Boolean) {
-              localObject = SearchUtils.a(paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetTextView, paramInt1, 1, ((CharSequence)localObject).toString(), paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
+            localObject = ((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.c.get(0)).a;
+            if (((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.c.get(0)).d) {
+              localObject = SearchUtils.a(paramNetSearchTemplateUniversalView.o, paramInt1, 1, ((CharSequence)localObject).toString(), paramNetSearchTemplateUniversalItem.n.a, false, false, true);
             } else {
-              localObject = SearchUtils.a(paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetTextView, paramInt1, ((CharSequence)localObject).toString());
+              localObject = SearchUtils.a(paramNetSearchTemplateUniversalView.o, paramInt1, ((CharSequence)localObject).toString());
             }
-            paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+            paramNetSearchTemplateUniversalView.o.setText((CharSequence)localObject);
           }
           paramInt1 = 1;
         }
         else
         {
-          if (paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
-            paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+          if (paramNetSearchTemplateUniversalView.n != null) {
+            paramNetSearchTemplateUniversalView.n.setVisibility(8);
           }
           paramInt1 = 0;
         }
-        if (paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetLinearLayout == null) {
-          return paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
+        if (paramNetSearchTemplateUniversalView.y == null) {
+          return paramNetSearchTemplateUniversalView.d.getHeight();
         }
-        paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetLinearLayout.removeAllViews();
-        if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList == null) || (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+        paramNetSearchTemplateUniversalView.y.removeAllViews();
+        if ((paramNetSearchTemplateUniversalItem.c == null) || (paramNetSearchTemplateUniversalItem.c.size() <= 0)) {}
       }
       else
       {
-        while (paramInt1 < paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size())
+        while (paramInt1 < paramNetSearchTemplateUniversalItem.c.size())
         {
-          NetSearchTemplateUniversalItem.NormalWord localNormalWord = (NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+          NetSearchTemplateUniversalItem.NormalWord localNormalWord = (NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.c.get(paramInt1);
           TextView localTextView = new TextView(localContext);
-          a(localTextView, localNormalWord.jdField_a_of_type_JavaLangString, localNormalWord.jdField_a_of_type_Int);
-          CharSequence localCharSequence = localNormalWord.jdField_a_of_type_JavaLangCharSequence;
+          a(localTextView, localNormalWord.b, localNormalWord.c);
+          CharSequence localCharSequence = localNormalWord.a;
           if (!TextUtils.isEmpty(localCharSequence))
           {
             localObject = localCharSequence;
             if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
               localObject = localCharSequence.toString();
             }
-            paramInt2 = localNormalWord.jdField_a_of_type_Int;
+            paramInt2 = localNormalWord.c;
             if ((localContext instanceof PublicAcntSearchActivity)) {
               paramInt2 = 1;
             }
-            if (localNormalWord.jdField_a_of_type_Boolean)
+            if (localNormalWord.d)
             {
               boolean bool;
-              if ((!localNormalWord.jdField_a_of_type_JavaLangString.equals("A")) && (!localNormalWord.jdField_a_of_type_JavaLangString.equals("B"))) {
+              if ((!localNormalWord.b.equals("A")) && (!localNormalWord.b.equals("B"))) {
                 bool = false;
               } else {
                 bool = true;
               }
-              localObject = SearchUtils.a(localTextView, i, paramInt2, ((CharSequence)localObject).toString(), paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, bool, true);
+              localObject = SearchUtils.a(localTextView, i, paramInt2, ((CharSequence)localObject).toString(), paramNetSearchTemplateUniversalItem.n.a, false, bool, true);
             }
             if (paramInt1 != 0) {
-              localTextView.setPadding(0, DisplayUtil.a(localContext, 7.0F - a(((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(paramInt1 - 1)).jdField_a_of_type_JavaLangString, localNormalWord.jdField_a_of_type_JavaLangString)), 0, 0);
+              localTextView.setPadding(0, DisplayUtil.a(localContext, 7.0F - a(((NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.c.get(paramInt1 - 1)).b, localNormalWord.b)), 0, 0);
             }
             localTextView.setText((CharSequence)localObject);
-            paramNetSearchTemplateUniversalView.jdField_c_of_type_AndroidWidgetLinearLayout.addView(localTextView);
+            paramNetSearchTemplateUniversalView.y.addView(localTextView);
           }
           paramInt1 += 1;
           continue;
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+          paramNetSearchTemplateUniversalView.d.setVisibility(8);
         }
       }
-      b(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView);
+      c(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
       paramInt2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-      paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
-      return paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+      paramNetSearchTemplateUniversalView.d.measure(paramInt1, paramInt2);
+      return paramNetSearchTemplateUniversalView.d.getMeasuredHeight();
     }
     return 0;
   }
@@ -450,7 +304,7 @@ public class SearchTemplatePresenter
     else
     {
       localObject = paramString;
-      if (!SearchUtils.b(paramString)) {
+      if (!SearchUtils.g(paramString)) {
         localObject = "#F1F1F1";
       }
       paramString = "#E5E6E7";
@@ -466,94 +320,94 @@ public class SearchTemplatePresenter
   public static Pair<Integer, Integer> a(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView, boolean paramBoolean, int paramInt)
   {
     Object localObject2 = Integer.valueOf(0);
-    if ((paramNetSearchTemplateBaseView != null) && (paramNetSearchTemplateBaseView.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (paramNetSearchTemplateBaseView.a != null) && (paramNetSearchTemplateBaseItem != null))
+    if ((paramNetSearchTemplateBaseView != null) && (paramNetSearchTemplateBaseView.r != null) && (paramNetSearchTemplateBaseView.s != null) && (paramNetSearchTemplateBaseItem != null))
     {
-      Object localObject1 = paramNetSearchTemplateBaseView.a;
-      NetSearchTemplateBaseItem.ImageInfo localImageInfo = paramNetSearchTemplateBaseItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo;
-      if ((localImageInfo != null) && (!TextUtils.isEmpty(localImageInfo.jdField_a_of_type_JavaLangString)))
+      Object localObject1 = paramNetSearchTemplateBaseView.s;
+      NetSearchTemplateBaseItem.ImageInfo localImageInfo = paramNetSearchTemplateBaseItem.q;
+      if ((localImageInfo != null) && (!TextUtils.isEmpty(localImageInfo.b)))
       {
-        paramNetSearchTemplateBaseView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        paramNetSearchTemplateBaseView.r.setVisibility(0);
         localObject2 = ((SquareImageView)localObject1).getContext();
-        paramNetSearchTemplateBaseItem = a((SquareImageView)localObject1, localImageInfo.jdField_a_of_type_Int, localImageInfo.jdField_a_of_type_JavaLangString, localImageInfo.jdField_b_of_type_Int, paramBoolean, paramInt, paramNetSearchTemplateBaseItem);
+        paramNetSearchTemplateBaseItem = a((SquareImageView)localObject1, localImageInfo.a, localImageInfo.b, localImageInfo.c, paramBoolean, paramInt, paramNetSearchTemplateBaseItem);
         paramInt = ((Integer)paramNetSearchTemplateBaseItem.first).intValue();
         int i = ((Integer)paramNetSearchTemplateBaseItem.second).intValue();
         paramNetSearchTemplateBaseItem = ((SquareImageView)localObject1).getLayoutParams();
         paramNetSearchTemplateBaseItem.width = paramInt;
         paramNetSearchTemplateBaseItem.height = i;
         ((SquareImageView)localObject1).setLayoutParams(paramNetSearchTemplateBaseItem);
-        paramNetSearchTemplateBaseItem = (RelativeLayout.LayoutParams)paramNetSearchTemplateBaseView.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+        paramNetSearchTemplateBaseItem = (RelativeLayout.LayoutParams)paramNetSearchTemplateBaseView.r.getLayoutParams();
         paramNetSearchTemplateBaseItem.width = paramInt;
         paramNetSearchTemplateBaseItem.height = i;
-        paramNetSearchTemplateBaseView.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramNetSearchTemplateBaseItem);
+        paramNetSearchTemplateBaseView.r.setLayoutParams(paramNetSearchTemplateBaseItem);
         int j = DisplayUtil.a((Context)localObject2, 10.0F);
-        if ((!TextUtils.isEmpty(localImageInfo.jdField_a_of_type_JavaLangCharSequence)) && (paramNetSearchTemplateBaseView.i != null))
+        if ((!TextUtils.isEmpty(localImageInfo.e)) && (paramNetSearchTemplateBaseView.u != null))
         {
-          if (SearchUtils.b(localImageInfo.jdField_b_of_type_JavaLangString)) {
-            paramNetSearchTemplateBaseItem = localImageInfo.jdField_b_of_type_JavaLangString;
+          if (SearchUtils.g(localImageInfo.f)) {
+            paramNetSearchTemplateBaseItem = localImageInfo.f;
           } else {
             paramNetSearchTemplateBaseItem = "#fd7f32";
           }
-          ((GradientDrawable)paramNetSearchTemplateBaseView.i.getBackground()).setColor(Color.parseColor(paramNetSearchTemplateBaseItem));
-          paramNetSearchTemplateBaseView.i.setVisibility(0);
-          paramNetSearchTemplateBaseView.i.setText(localImageInfo.jdField_a_of_type_JavaLangCharSequence);
+          ((GradientDrawable)paramNetSearchTemplateBaseView.u.getBackground()).setColor(Color.parseColor(paramNetSearchTemplateBaseItem));
+          paramNetSearchTemplateBaseView.u.setVisibility(0);
+          paramNetSearchTemplateBaseView.u.setText(localImageInfo.e);
         }
-        else if (paramNetSearchTemplateBaseView.i != null)
+        else if (paramNetSearchTemplateBaseView.u != null)
         {
-          paramNetSearchTemplateBaseView.i.setVisibility(8);
+          paramNetSearchTemplateBaseView.u.setVisibility(8);
         }
-        if (paramNetSearchTemplateBaseView.e != null) {
-          if (localImageInfo.jdField_a_of_type_Boolean) {
-            paramNetSearchTemplateBaseView.e.setVisibility(0);
+        if (paramNetSearchTemplateBaseView.t != null) {
+          if (localImageInfo.d) {
+            paramNetSearchTemplateBaseView.t.setVisibility(0);
           } else {
-            paramNetSearchTemplateBaseView.e.setVisibility(8);
+            paramNetSearchTemplateBaseView.t.setVisibility(8);
           }
         }
-        if (paramNetSearchTemplateBaseView.j != null) {
-          if (!TextUtils.isEmpty(localImageInfo.jdField_b_of_type_JavaLangCharSequence))
+        if (paramNetSearchTemplateBaseView.v != null) {
+          if (!TextUtils.isEmpty(localImageInfo.g))
           {
-            paramNetSearchTemplateBaseView.j.setVisibility(0);
-            paramNetSearchTemplateBaseView.j.setText(localImageInfo.jdField_b_of_type_JavaLangCharSequence);
+            paramNetSearchTemplateBaseView.v.setVisibility(0);
+            paramNetSearchTemplateBaseView.v.setText(localImageInfo.g);
           }
           else
           {
-            paramNetSearchTemplateBaseView.j.setVisibility(8);
+            paramNetSearchTemplateBaseView.v.setVisibility(8);
           }
         }
-        if (paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-          if (!TextUtils.isEmpty(localImageInfo.jdField_c_of_type_JavaLangString))
+        if (paramNetSearchTemplateBaseView.w != null) {
+          if (!TextUtils.isEmpty(localImageInfo.h))
           {
-            paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
+            paramNetSearchTemplateBaseView.w.setVisibility(0);
             paramNetSearchTemplateBaseItem = URLDrawable.URLDrawableOptions.obtain();
             localObject1 = new ColorDrawable(-1);
             paramNetSearchTemplateBaseItem.mFailedDrawable = ((Drawable)localObject1);
             paramNetSearchTemplateBaseItem.mLoadingDrawable = ((Drawable)localObject1);
-            paramNetSearchTemplateBaseItem.mRequestWidth = paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width;
-            paramNetSearchTemplateBaseItem.mRequestHeight = paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height;
-            paramNetSearchTemplateBaseItem = URLDrawable.getDrawable(localImageInfo.jdField_c_of_type_JavaLangString, paramNetSearchTemplateBaseItem);
+            paramNetSearchTemplateBaseItem.mRequestWidth = paramNetSearchTemplateBaseView.w.getLayoutParams().width;
+            paramNetSearchTemplateBaseItem.mRequestHeight = paramNetSearchTemplateBaseView.w.getLayoutParams().height;
+            paramNetSearchTemplateBaseItem = URLDrawable.getDrawable(localImageInfo.h, paramNetSearchTemplateBaseItem);
             if ((paramNetSearchTemplateBaseItem.getStatus() != 1) && (paramNetSearchTemplateBaseItem.getStatus() != 0)) {
               paramNetSearchTemplateBaseItem.restartDownload();
             }
-            paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(paramNetSearchTemplateBaseItem);
+            paramNetSearchTemplateBaseView.w.setImageDrawable(paramNetSearchTemplateBaseItem);
           }
           else
           {
-            paramNetSearchTemplateBaseView.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+            paramNetSearchTemplateBaseView.w.setVisibility(8);
           }
         }
-        if (paramNetSearchTemplateBaseView.k != null) {
-          if (!TextUtils.isEmpty(localImageInfo.jdField_c_of_type_JavaLangCharSequence))
+        if (paramNetSearchTemplateBaseView.x != null) {
+          if (!TextUtils.isEmpty(localImageInfo.i))
           {
-            paramNetSearchTemplateBaseView.k.setVisibility(0);
-            paramNetSearchTemplateBaseView.k.setText(localImageInfo.jdField_c_of_type_JavaLangCharSequence);
+            paramNetSearchTemplateBaseView.x.setVisibility(0);
+            paramNetSearchTemplateBaseView.x.setText(localImageInfo.i);
           }
           else
           {
-            paramNetSearchTemplateBaseView.k.setVisibility(8);
+            paramNetSearchTemplateBaseView.x.setVisibility(8);
           }
         }
         return new Pair(Integer.valueOf(paramInt + j), Integer.valueOf(i));
       }
-      paramNetSearchTemplateBaseView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      paramNetSearchTemplateBaseView.r.setVisibility(8);
       return new Pair(localObject2, localObject2);
     }
     if (QLog.isColorLevel()) {
@@ -631,28 +485,28 @@ public class SearchTemplatePresenter
           break;
           if ((paramNetSearchTemplateBaseItem instanceof NetSearchTemplateUniversalItem))
           {
-            paramInt1 = DisplayUtil.a((Context)localObject2, paramNetSearchTemplateBaseItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo.jdField_c_of_type_Int / 2);
-            paramInt3 = DisplayUtil.a((Context)localObject2, paramNetSearchTemplateBaseItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo.d / 2);
+            paramInt1 = DisplayUtil.a((Context)localObject2, paramNetSearchTemplateBaseItem.q.j / 2);
+            paramInt3 = DisplayUtil.a((Context)localObject2, paramNetSearchTemplateBaseItem.q.k / 2);
           }
           else
           {
             paramInt1 = 0;
             paramInt3 = 0;
           }
-        } while ((paramInt2 == paramNetSearchTemplateBaseItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo.jdField_c_of_type_Int / 2) && (paramInt2 == paramNetSearchTemplateBaseItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo.d / 2));
+        } while ((paramInt2 == paramNetSearchTemplateBaseItem.q.j / 2) && (paramInt2 == paramNetSearchTemplateBaseItem.q.k / 2));
       }
       localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
       if (paramBoolean)
       {
-        f = paramInt3 * 1.0F / paramInt1;
-        int k = (int)(i * f);
+        f1 = paramInt3 * 1.0F / paramInt1;
+        int k = (int)(i * f1);
         paramInt1 = i;
         paramInt3 = k;
         if (j != 0)
         {
-          double d = i;
-          Double.isNaN(d);
-          paramInt1 = (int)(d * 0.2D / 2.0D);
+          double d1 = i;
+          Double.isNaN(d1);
+          paramInt1 = (int)(d1 * 0.2D / 2.0D);
           paramSquareImageView.setPadding(DisplayUtil.a((Context)localObject2, 3.0F), DisplayUtil.a((Context)localObject2, 3.0F), DisplayUtil.a((Context)localObject2, 3.0F), DisplayUtil.a((Context)localObject2, 3.0F));
           paramNetSearchTemplateBaseItem = (RelativeLayout.LayoutParams)paramSquareImageView.getLayoutParams();
           paramInt1 -= DisplayUtil.a((Context)localObject2, 3.0F);
@@ -664,8 +518,8 @@ public class SearchTemplatePresenter
           paramInt3 = k;
         }
       }
-      float f = paramInt1;
-      paramSquareImageView.setImageScale(1.0F * f / paramInt3, 0.0F);
+      float f1 = paramInt1;
+      paramSquareImageView.setImageScale(1.0F * f1 / paramInt3, 0.0F);
       paramNetSearchTemplateBaseItem = (NetSearchTemplateBaseItem)localObject1;
       try
       {
@@ -678,7 +532,7 @@ public class SearchTemplatePresenter
           {
             localObject2 = new GradientDrawable();
             ((GradientDrawable)localObject2).setShape(0);
-            ((GradientDrawable)localObject2).setCornerRadius(f / 2.0F);
+            ((GradientDrawable)localObject2).setCornerRadius(f1 / 2.0F);
             ((GradientDrawable)localObject2).setColor(-1579033);
             paramNetSearchTemplateBaseItem.mLoadingDrawable = ((Drawable)localObject2);
             paramNetSearchTemplateBaseItem.mFailedDrawable = ((Drawable)localObject2);
@@ -698,7 +552,7 @@ public class SearchTemplatePresenter
             ((StringBuilder)localObject2).append(paramInt3);
             paramNetSearchTemplateBaseItem.mMemoryCacheKeySuffix = ((StringBuilder)localObject2).toString();
             paramNetSearchTemplateBaseItem = URLDrawable.getDrawable(paramString, paramNetSearchTemplateBaseItem);
-            paramNetSearchTemplateBaseItem.setDecodeHandler(URLDrawableDecodeHandler.a);
+            paramNetSearchTemplateBaseItem.setDecodeHandler(URLDrawableDecodeHandler.b);
           }
           else
           {
@@ -710,7 +564,7 @@ public class SearchTemplatePresenter
             paramNetSearchTemplateBaseItem.mMemoryCacheKeySuffix = ((StringBuilder)localObject2).toString();
             paramNetSearchTemplateBaseItem = URLDrawable.getDrawable(paramString, paramNetSearchTemplateBaseItem);
             paramNetSearchTemplateBaseItem.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt3, paramInt2));
-            paramNetSearchTemplateBaseItem.setDecodeHandler(URLDrawableDecodeHandler.i);
+            paramNetSearchTemplateBaseItem.setDecodeHandler(URLDrawableDecodeHandler.j);
           }
           if ((paramNetSearchTemplateBaseItem.getStatus() != 1) && (paramNetSearchTemplateBaseItem.getStatus() != 0)) {
             paramNetSearchTemplateBaseItem.restartDownload();
@@ -748,7 +602,7 @@ public class SearchTemplatePresenter
         if (bool) {
           paramTextView.setTextColor(Color.parseColor("#737373"));
         } else {
-          paramTextView.setTextColor(localContext.getResources().getColor(2131167057));
+          paramTextView.setTextColor(localContext.getResources().getColor(2131167995));
         }
         paramTextView.setIncludeFontPadding(false);
         return;
@@ -759,7 +613,7 @@ public class SearchTemplatePresenter
         if (bool) {
           paramTextView.setTextColor(Color.parseColor("#737373"));
         } else {
-          paramTextView.setTextColor(localContext.getResources().getColor(2131167057));
+          paramTextView.setTextColor(localContext.getResources().getColor(2131167995));
         }
         paramTextView.setIncludeFontPadding(false);
         return;
@@ -770,7 +624,7 @@ public class SearchTemplatePresenter
         if (bool) {
           paramTextView.setTextColor(Color.parseColor("#4A4A4A"));
         } else {
-          paramTextView.setTextColor(localContext.getResources().getColor(2131167058));
+          paramTextView.setTextColor(localContext.getResources().getColor(2131167996));
         }
         paramTextView.setIncludeFontPadding(false);
         return;
@@ -781,7 +635,7 @@ public class SearchTemplatePresenter
         if (bool) {
           paramTextView.setTextColor(Color.parseColor("#4A4A4A"));
         } else {
-          paramTextView.setTextColor(localContext.getResources().getColor(2131167058));
+          paramTextView.setTextColor(localContext.getResources().getColor(2131167996));
         }
         paramTextView.setIncludeFontPadding(false);
         return;
@@ -792,7 +646,7 @@ public class SearchTemplatePresenter
         if (bool) {
           paramTextView.setTextColor(Color.parseColor("#4A4A4A"));
         } else {
-          paramTextView.setTextColor(localContext.getResources().getColor(2131167058));
+          paramTextView.setTextColor(localContext.getResources().getColor(2131167996));
         }
         paramTextView.setIncludeFontPadding(false);
         return;
@@ -806,11 +660,11 @@ public class SearchTemplatePresenter
           paramTextView.setTextColor(Color.parseColor("#4A4A4A"));
           return;
         }
-        paramTextView.setTextColor(localContext.getResources().getColor(2131167206));
+        paramTextView.setTextColor(localContext.getResources().getColor(2131168192));
         return;
       }
       paramTextView.setTextSize(1, 17.0F);
-      paramTextView.setTextColor(localContext.getResources().getColor(2131167063));
+      paramTextView.setTextColor(localContext.getResources().getColor(2131168001));
       paramTextView.setIncludeFontPadding(false);
     }
   }
@@ -818,31 +672,31 @@ public class SearchTemplatePresenter
   private void a(NetSearchTemplateAvatarsItem paramNetSearchTemplateAvatarsItem, NetSearchTemplateAvatarsView paramNetSearchTemplateAvatarsView)
   {
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject3 = paramNetSearchTemplateAvatarsView.a().getContext();
+    Object localObject3 = paramNetSearchTemplateAvatarsView.h().getContext();
     if (ThemeUtil.isNowThemeIsNight((AppRuntime)localObject1, false, null)) {
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateAvatarsView.a.setTextColor(Color.parseColor("#737373"));
     } else {
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
+      paramNetSearchTemplateAvatarsView.a.setTextColor(Color.parseColor("#262626"));
     }
     int i;
     Object localObject2;
-    if (TextUtils.isEmpty(paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangCharSequence))
+    if (TextUtils.isEmpty(paramNetSearchTemplateAvatarsItem.a))
     {
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateAvatarsView.a.setVisibility(8);
     }
     else
     {
-      i = (int)(paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.getContext().getResources().getDisplayMetrics().widthPixels - DisplayUtil.a(paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.getContext(), 30.0F) - SearchUtils.a(paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangString));
-      localObject2 = SearchUtils.a(paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView, i, 1, paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateAvatarsItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
+      i = (int)(paramNetSearchTemplateAvatarsView.a.getContext().getResources().getDisplayMetrics().widthPixels - DisplayUtil.a(paramNetSearchTemplateAvatarsView.a.getContext(), 30.0F) - SearchUtils.a(paramNetSearchTemplateAvatarsView.a, paramNetSearchTemplateAvatarsItem.b));
+      localObject2 = SearchUtils.a(paramNetSearchTemplateAvatarsView.a, i, 1, paramNetSearchTemplateAvatarsItem.a.toString(), paramNetSearchTemplateAvatarsItem.n.a, false, false, true);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      if (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangString == null) {
-        paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangString = "";
+      if (paramNetSearchTemplateAvatarsItem.b == null) {
+        paramNetSearchTemplateAvatarsItem.b = "";
       }
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.setText(new SpannableStringBuilder((CharSequence)localObject1).append(paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaLangString));
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateAvatarsView.a.setText(new SpannableStringBuilder((CharSequence)localObject1).append(paramNetSearchTemplateAvatarsItem.b));
+      paramNetSearchTemplateAvatarsView.a.setVisibility(0);
     }
     int m;
     int n;
@@ -850,41 +704,41 @@ public class SearchTemplatePresenter
     Object localObject4;
     ColorDrawable localColorDrawable;
     int k;
-    if (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelImageItem != null)
+    if (paramNetSearchTemplateAvatarsItem.e != null)
     {
-      paramNetSearchTemplateAvatarsView.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      i = (int)(DeviceInfoUtil.k() - UIUtils.a((Context)localObject3, 30.0F)) / 2 - UIUtils.a((Context)localObject3, 3.0F);
+      paramNetSearchTemplateAvatarsView.d.setVisibility(0);
+      paramNetSearchTemplateAvatarsView.b.setVisibility(8);
+      i = (int)(DeviceInfoUtil.F() - UIUtils.a((Context)localObject3, 30.0F)) / 2 - UIUtils.a((Context)localObject3, 3.0F);
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
       ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
       ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
-      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateAvatarsItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelImageItem.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateAvatarsItem.e.a, (URLDrawable.URLDrawableOptions)localObject1);
+      paramNetSearchTemplateAvatarsView.o.setImageDrawable((Drawable)localObject2);
       if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
         ((URLDrawable)localObject2).restartDownload();
       }
-      localObject2 = (LinearLayout.LayoutParams)paramNetSearchTemplateAvatarsView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+      localObject2 = (LinearLayout.LayoutParams)paramNetSearchTemplateAvatarsView.o.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).height = i;
       ((LinearLayout.LayoutParams)localObject2).width = i;
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      if (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList != null)
+      paramNetSearchTemplateAvatarsView.o.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      paramNetSearchTemplateAvatarsView.o.setVisibility(0);
+      if (paramNetSearchTemplateAvatarsItem.d != null)
       {
-        m = Math.min(paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList.size(), 4);
+        m = Math.min(paramNetSearchTemplateAvatarsItem.d.size(), 4);
         n = (i - UIUtils.a((Context)localObject3, 3.0F)) / 2;
         localObject2 = new int[4];
-        Object tmp449_447 = localObject2;
-        tmp449_447[0] = 2131368495;
-        Object tmp455_449 = tmp449_447;
-        tmp455_449[1] = 2131368496;
-        Object tmp461_455 = tmp455_449;
-        tmp461_455[2] = 2131368497;
-        Object tmp467_461 = tmp461_455;
-        tmp467_461[3] = 2131368498;
-        tmp467_461;
+        Object tmp447_445 = localObject2;
+        tmp447_445[0] = 2131435397;
+        Object tmp453_447 = tmp447_445;
+        tmp453_447[1] = 2131435398;
+        Object tmp459_453 = tmp453_447;
+        tmp459_453[2] = 2131435399;
+        Object tmp465_459 = tmp459_453;
+        tmp465_459[3] = 2131435400;
+        tmp465_459;
         i = 0;
         for (;;)
         {
@@ -892,10 +746,10 @@ public class SearchTemplatePresenter
           if (i >= m) {
             break;
           }
-          localObject3 = (SquareImageView)paramNetSearchTemplateAvatarsView.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(localObject2[i]);
-          localObject4 = ((ImageItem)paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString;
+          localObject3 = (SquareImageView)paramNetSearchTemplateAvatarsView.d.findViewById(localObject2[i]);
+          localObject4 = ((ImageItem)paramNetSearchTemplateAvatarsItem.d.get(i)).a;
           ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
-          localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          localColorDrawable = this.b;
           ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = n;
@@ -910,10 +764,10 @@ public class SearchTemplatePresenter
           ((LinearLayout.LayoutParams)localObject4).width = n;
           ((SquareImageView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
           ((SquareImageView)localObject3).setVisibility(0);
-          if ((i == 3) && (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_Int > 4))
+          if ((i == 3) && (paramNetSearchTemplateAvatarsItem.c > 4))
           {
             ((SquareImageView)localObject3).setFilterColor(Color.parseColor("#66000000"));
-            k = paramNetSearchTemplateAvatarsItem.jdField_a_of_type_Int - 4;
+            k = paramNetSearchTemplateAvatarsItem.c - 4;
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("+");
             j = k;
@@ -922,7 +776,7 @@ public class SearchTemplatePresenter
             }
             ((StringBuilder)localObject4).append(j);
             ((SquareImageView)localObject3).setFilterText(((StringBuilder)localObject4).toString());
-            ((SquareImageView)localObject3).setFilterTextSize(DisplayUtil.a(paramNetSearchTemplateAvatarsView.a().getContext(), 20.0F));
+            ((SquareImageView)localObject3).setFilterTextSize(DisplayUtil.a(paramNetSearchTemplateAvatarsView.h().getContext(), 20.0F));
           }
           else
           {
@@ -933,19 +787,19 @@ public class SearchTemplatePresenter
         }
         while (j < 4)
         {
-          paramNetSearchTemplateAvatarsView.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(localObject2[j]).setVisibility(4);
+          paramNetSearchTemplateAvatarsView.d.findViewById(localObject2[j]).setVisibility(4);
           j += 1;
         }
       }
     }
     else
     {
-      paramNetSearchTemplateAvatarsView.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList != null)
+      paramNetSearchTemplateAvatarsView.d.setVisibility(8);
+      paramNetSearchTemplateAvatarsView.b.setVisibility(0);
+      if (paramNetSearchTemplateAvatarsItem.d != null)
       {
-        m = Math.min(paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList.size(), paramNetSearchTemplateAvatarsView.jdField_b_of_type_Int);
-        n = (int)(DeviceInfoUtil.k() - UIUtils.a(paramNetSearchTemplateAvatarsView.a().getContext(), (m - 1) * 2 + 27));
+        m = Math.min(paramNetSearchTemplateAvatarsItem.d.size(), paramNetSearchTemplateAvatarsView.c);
+        n = (int)(DeviceInfoUtil.F() - UIUtils.a(paramNetSearchTemplateAvatarsView.h().getContext(), (m - 1) * 2 + 27));
         i = 0;
         for (;;)
         {
@@ -953,11 +807,11 @@ public class SearchTemplatePresenter
           if (i >= m) {
             break;
           }
-          localObject1 = (SquareImageView)paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-          localObject2 = ((ImageItem)paramNetSearchTemplateAvatarsItem.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString;
+          localObject1 = (SquareImageView)paramNetSearchTemplateAvatarsView.b.getChildAt(i);
+          localObject2 = ((ImageItem)paramNetSearchTemplateAvatarsItem.d.get(i)).a;
           localObject4 = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject4).mPlayGifImage = true;
-          localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          localColorDrawable = this.b;
           ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = n;
@@ -968,16 +822,16 @@ public class SearchTemplatePresenter
           if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
             ((URLDrawable)localObject2).restartDownload();
           }
-          if (paramNetSearchTemplateAvatarsItem.jdField_b_of_type_Int != 0) {
-            ((SquareImageView)localObject1).setImageScale(n / 4 * 1.0F / DisplayUtil.a((Context)localObject3, paramNetSearchTemplateAvatarsItem.jdField_b_of_type_Int / 2), 0.0F);
+          if (paramNetSearchTemplateAvatarsItem.f != 0) {
+            ((SquareImageView)localObject1).setImageScale(n / 4 * 1.0F / DisplayUtil.a((Context)localObject3, paramNetSearchTemplateAvatarsItem.f / 2), 0.0F);
           } else {
             ((SquareImageView)localObject1).setImageScale(1.0F, 0.0F);
           }
           ((SquareImageView)localObject1).setVisibility(0);
-          if ((i == paramNetSearchTemplateAvatarsView.jdField_b_of_type_Int - 1) && (paramNetSearchTemplateAvatarsItem.jdField_a_of_type_Int > paramNetSearchTemplateAvatarsView.jdField_b_of_type_Int))
+          if ((i == paramNetSearchTemplateAvatarsView.c - 1) && (paramNetSearchTemplateAvatarsItem.c > paramNetSearchTemplateAvatarsView.c))
           {
             ((SquareImageView)localObject1).setFilterColor(Color.parseColor("#66000000"));
-            k = paramNetSearchTemplateAvatarsItem.jdField_a_of_type_Int - paramNetSearchTemplateAvatarsView.jdField_b_of_type_Int;
+            k = paramNetSearchTemplateAvatarsItem.c - paramNetSearchTemplateAvatarsView.c;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("+");
             j = k;
@@ -986,7 +840,7 @@ public class SearchTemplatePresenter
             }
             ((StringBuilder)localObject2).append(j);
             ((SquareImageView)localObject1).setFilterText(((StringBuilder)localObject2).toString());
-            ((SquareImageView)localObject1).setFilterTextSize(DisplayUtil.a(paramNetSearchTemplateAvatarsView.a().getContext(), 20.0F));
+            ((SquareImageView)localObject1).setFilterTextSize(DisplayUtil.a(paramNetSearchTemplateAvatarsView.h().getContext(), 20.0F));
           }
           else
           {
@@ -995,9 +849,9 @@ public class SearchTemplatePresenter
           }
           i += 1;
         }
-        while (j < paramNetSearchTemplateAvatarsView.jdField_b_of_type_Int)
+        while (j < paramNetSearchTemplateAvatarsView.c)
         {
-          paramNetSearchTemplateAvatarsView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).setVisibility(4);
+          paramNetSearchTemplateAvatarsView.b.getChildAt(j).setVisibility(4);
           j += 1;
         }
       }
@@ -1006,63 +860,63 @@ public class SearchTemplatePresenter
   
   private void a(NetSearchTemplateBannerTitleItem paramNetSearchTemplateBannerTitleItem, NetSearchTemplateBannerTitleView paramNetSearchTemplateBannerTitleView)
   {
-    Object localObject = paramNetSearchTemplateBannerTitleView.a().getContext();
-    if (!TextUtils.isEmpty(paramNetSearchTemplateBannerTitleItem.i))
+    Object localObject = paramNetSearchTemplateBannerTitleView.h().getContext();
+    if (!TextUtils.isEmpty(paramNetSearchTemplateBannerTitleItem.s))
     {
-      paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      a((Context)localObject, (SquareImageView)paramNetSearchTemplateBannerTitleView.jdField_c_of_type_AndroidWidgetImageView, paramNetSearchTemplateBannerTitleView.d, paramNetSearchTemplateBannerTitleView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int, paramNetSearchTemplateBannerTitleItem.i, paramNetSearchTemplateBannerTitleItem.jdField_b_of_type_JavaLangString, ((Context)localObject).getResources().getDimensionPixelSize(2131298473));
+      paramNetSearchTemplateBannerTitleView.n.setVisibility(0);
+      a((Context)localObject, (SquareImageView)paramNetSearchTemplateBannerTitleView.o, paramNetSearchTemplateBannerTitleView.p, paramNetSearchTemplateBannerTitleView.b, paramNetSearchTemplateBannerTitleItem.c, paramNetSearchTemplateBannerTitleItem.s, paramNetSearchTemplateBannerTitleItem.f, ((Context)localObject).getResources().getDimensionPixelSize(2131299187));
     }
     else
     {
-      paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      paramNetSearchTemplateBannerTitleView.n.setVisibility(8);
     }
-    int i = ((Context)localObject).getResources().getDimensionPixelSize(2131298473);
-    if ((paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int == 8)) {
+    int i = ((Context)localObject).getResources().getDimensionPixelSize(2131299187);
+    if ((paramNetSearchTemplateBannerTitleItem.c == 6) || (paramNetSearchTemplateBannerTitleItem.c == 8)) {
       i = DisplayUtil.a((Context)localObject, 100.0F);
     }
-    if (paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
+    if (paramNetSearchTemplateBannerTitleView.n.getVisibility() == 8) {
       i = 0;
     } else {
       i += DisplayUtil.a((Context)localObject, 10.0F);
     }
-    float f = ((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 30.0F);
-    CharSequence localCharSequence = SearchUtils.a(paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetTextView, f, 2, paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, true);
-    paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence);
-    f = ((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 30.0F) - i;
-    localObject = SearchUtils.a(paramNetSearchTemplateBannerTitleView.jdField_c_of_type_AndroidWidgetTextView, f, 2, paramNetSearchTemplateBannerTitleItem.jdField_b_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false);
+    float f1 = ((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 30.0F);
+    CharSequence localCharSequence = SearchUtils.a(paramNetSearchTemplateBannerTitleView.a, f1, 2, paramNetSearchTemplateBannerTitleItem.b.toString(), paramNetSearchTemplateBannerTitleItem.n.a, false, true);
+    paramNetSearchTemplateBannerTitleView.a.setText(localCharSequence);
+    f1 = ((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 30.0F) - i;
+    localObject = SearchUtils.a(paramNetSearchTemplateBannerTitleView.c, f1, 2, paramNetSearchTemplateBannerTitleItem.d.toString(), paramNetSearchTemplateBannerTitleItem.n.a, false, false);
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramNetSearchTemplateBannerTitleView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
-      paramNetSearchTemplateBannerTitleView.h.setTextColor(Color.parseColor("#4A4A4A"));
+      paramNetSearchTemplateBannerTitleView.c.setTextColor(Color.parseColor("#4A4A4A"));
+      paramNetSearchTemplateBannerTitleView.d.setTextColor(Color.parseColor("#4A4A4A"));
     }
     else
     {
-      paramNetSearchTemplateBannerTitleView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      paramNetSearchTemplateBannerTitleView.h.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateBannerTitleView.c.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateBannerTitleView.d.setTextColor(Color.parseColor("#737373"));
     }
-    a(paramNetSearchTemplateBannerTitleView.jdField_c_of_type_AndroidWidgetTextView, (CharSequence)localObject, true);
-    a(paramNetSearchTemplateBannerTitleView.h, paramNetSearchTemplateBannerTitleItem.jdField_c_of_type_JavaLangCharSequence);
+    a(paramNetSearchTemplateBannerTitleView.c, (CharSequence)localObject, true);
+    a(paramNetSearchTemplateBannerTitleView.d, paramNetSearchTemplateBannerTitleItem.e);
   }
   
   private void a(NetSearchTemplateBigImageItem paramNetSearchTemplateBigImageItem, NetSearchTemplateBigImageView paramNetSearchTemplateBigImageView)
   {
-    Context localContext = paramNetSearchTemplateBigImageView.a().getContext();
+    Context localContext = paramNetSearchTemplateBigImageView.h().getContext();
     int i;
     int j;
-    if (paramNetSearchTemplateBigImageItem.jdField_a_of_type_Int == 1)
+    if (paramNetSearchTemplateBigImageItem.b == 1)
     {
       i = DisplayUtil.a(localContext, 375.0F);
       j = DisplayUtil.a(localContext, 150.0F);
     }
-    else if (paramNetSearchTemplateBigImageItem.jdField_a_of_type_Int == 2)
+    else if (paramNetSearchTemplateBigImageItem.b == 2)
     {
       i = DisplayUtil.a(localContext, 375.0F);
       j = DisplayUtil.a(localContext, 180.0F);
     }
-    else if (paramNetSearchTemplateBigImageItem.jdField_a_of_type_Int == 0)
+    else if (paramNetSearchTemplateBigImageItem.b == 0)
     {
-      i = DisplayUtil.a(localContext, paramNetSearchTemplateBigImageItem.jdField_a_of_type_Float / 2.0F);
-      j = DisplayUtil.a(localContext, paramNetSearchTemplateBigImageItem.jdField_b_of_type_Float / 2.0F);
+      i = DisplayUtil.a(localContext, paramNetSearchTemplateBigImageItem.d / 2.0F);
+      j = DisplayUtil.a(localContext, paramNetSearchTemplateBigImageItem.e / 2.0F);
     }
     else
     {
@@ -1081,89 +935,89 @@ public class SearchTemplatePresenter
       k = DisplayUtil.a(localContext, 375.0F);
       i = DisplayUtil.a(localContext, 150.0F);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.c))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable localDrawable = this.c;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = k;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateBigImageItem.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      paramNetSearchTemplateBigImageView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramNetSearchTemplateBigImageItem.c, (URLDrawable.URLDrawableOptions)localObject);
+      paramNetSearchTemplateBigImageView.b.setImageDrawable((Drawable)localObject);
       if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
         ((URLDrawable)localObject).restartDownload();
       }
     }
     else
     {
-      paramNetSearchTemplateBigImageView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramNetSearchTemplateBigImageView.b.setImageDrawable(this.c);
     }
-    paramNetSearchTemplateBigImageView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    Object localObject = (LinearLayout.LayoutParams)paramNetSearchTemplateBigImageView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).height = ((int)(UIUtils.a(localContext) * i * 1.0F / k));
-    paramNetSearchTemplateBigImageView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramNetSearchTemplateBigImageView.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.jdField_a_of_type_JavaLangCharSequence))
+    paramNetSearchTemplateBigImageView.b.setVisibility(0);
+    Object localObject = (LinearLayout.LayoutParams)paramNetSearchTemplateBigImageView.a.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).height = ((int)(UIUtils.b(localContext) * i * 1.0F / k));
+    paramNetSearchTemplateBigImageView.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramNetSearchTemplateBigImageView.a.setPadding(0, 0, 0, 0);
+    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.u))
     {
-      paramNetSearchTemplateBigImageView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateBigImageItem.jdField_a_of_type_JavaLangCharSequence);
-      paramNetSearchTemplateBigImageView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateBigImageView.d.setText(paramNetSearchTemplateBigImageItem.u);
+      paramNetSearchTemplateBigImageView.d.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateBigImageView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateBigImageView.d.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.jdField_b_of_type_JavaLangCharSequence))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.v))
     {
-      paramNetSearchTemplateBigImageView.jdField_c_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateBigImageItem.jdField_b_of_type_JavaLangCharSequence);
-      paramNetSearchTemplateBigImageView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateBigImageView.n.setText(paramNetSearchTemplateBigImageItem.v);
+      paramNetSearchTemplateBigImageView.n.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateBigImageView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateBigImageView.n.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.j)) {
-      paramNetSearchTemplateBigImageView.h.setText(paramNetSearchTemplateBigImageItem.j);
+    if (!TextUtils.isEmpty(paramNetSearchTemplateBigImageItem.f)) {
+      paramNetSearchTemplateBigImageView.o.setText(paramNetSearchTemplateBigImageItem.f);
     }
     try
     {
-      if (!paramNetSearchTemplateBigImageItem.k.startsWith("#"))
+      if (!paramNetSearchTemplateBigImageItem.t.startsWith("#"))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("#");
-        ((StringBuilder)localObject).append(paramNetSearchTemplateBigImageItem.k);
-        paramNetSearchTemplateBigImageItem.k = ((StringBuilder)localObject).toString();
+        ((StringBuilder)localObject).append(paramNetSearchTemplateBigImageItem.t);
+        paramNetSearchTemplateBigImageItem.t = ((StringBuilder)localObject).toString();
       }
-      paramNetSearchTemplateBigImageView.h.setBackgroundColor(Color.parseColor(paramNetSearchTemplateBigImageItem.k));
+      paramNetSearchTemplateBigImageView.o.setBackgroundColor(Color.parseColor(paramNetSearchTemplateBigImageItem.t));
     }
     catch (Exception localException)
     {
       label483:
       break label483;
     }
-    paramNetSearchTemplateBigImageView.h.setBackgroundColor(Color.parseColor("#FF00FF00"));
+    paramNetSearchTemplateBigImageView.o.setBackgroundColor(Color.parseColor("#FF00FF00"));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("bigImageItem.topLeftTagColor = ");
-      ((StringBuilder)localObject).append(paramNetSearchTemplateBigImageItem.k);
+      ((StringBuilder)localObject).append(paramNetSearchTemplateBigImageItem.t);
       QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, ((StringBuilder)localObject).toString());
     }
-    paramNetSearchTemplateBigImageView.h.setVisibility(0);
-    break label561;
-    paramNetSearchTemplateBigImageView.h.setVisibility(8);
-    label561:
-    localObject = ((ViewGroup)paramNetSearchTemplateBigImageView.a()).getChildAt(((ViewGroup)paramNetSearchTemplateBigImageView.a()).getChildCount() - 1);
+    paramNetSearchTemplateBigImageView.o.setVisibility(0);
+    break label562;
+    paramNetSearchTemplateBigImageView.o.setVisibility(8);
+    label562:
+    localObject = ((ViewGroup)paramNetSearchTemplateBigImageView.h()).getChildAt(((ViewGroup)paramNetSearchTemplateBigImageView.h()).getChildCount() - 1);
     if ((localObject != null) && ((((View)localObject).getLayoutParams() instanceof LinearLayout.LayoutParams)))
     {
-      if (paramNetSearchTemplateBigImageItem.f_() == 0)
+      if (paramNetSearchTemplateBigImageItem.cl_() == 0)
       {
         ((LinearLayout.LayoutParams)((View)localObject).getLayoutParams()).topMargin = 0;
-        paramNetSearchTemplateBigImageView.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, DisplayUtil.a(localContext, 6.0F));
+        paramNetSearchTemplateBigImageView.a.setPadding(0, 0, 0, DisplayUtil.a(localContext, 6.0F));
         return;
       }
-      if (paramNetSearchTemplateBigImageItem.f_() == 2) {
+      if (paramNetSearchTemplateBigImageItem.cl_() == 2) {
         ((LinearLayout.LayoutParams)((View)localObject).getLayoutParams()).bottomMargin = 0;
       }
     }
@@ -1171,20 +1025,20 @@ public class SearchTemplatePresenter
   
   private void a(NetSearchTemplateFriendUpdatesItem paramNetSearchTemplateFriendUpdatesItem, NetSearchTemplateFriendUpdatesView paramNetSearchTemplateFriendUpdatesView)
   {
-    Object localObject1 = paramNetSearchTemplateFriendUpdatesView.a().getContext();
-    Object localObject2 = paramNetSearchTemplateFriendUpdatesView.a();
-    if (paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_Boolean) {
+    Object localObject1 = paramNetSearchTemplateFriendUpdatesView.h().getContext();
+    Object localObject2 = paramNetSearchTemplateFriendUpdatesView.h();
+    if (paramNetSearchTemplateFriendUpdatesItem.w) {
       ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), UIUtils.a(((View)localObject2).getContext(), 6.0F), ((View)localObject2).getPaddingRight(), UIUtils.a(((View)localObject2).getContext(), 6.0F));
     } else {
       ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), UIUtils.a(((View)localObject2).getContext(), 3.0F), ((View)localObject2).getPaddingRight(), UIUtils.a(((View)localObject2).getContext(), 3.0F));
     }
-    localObject2 = (LinearLayout)((View)localObject2).findViewById(2131372733);
+    localObject2 = (LinearLayout)((View)localObject2).findViewById(2131440280);
     Object localObject3 = new ArrayList();
     int i = 0;
     Object localObject4;
     while (i < ((LinearLayout)localObject2).getChildCount())
     {
-      localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131368557);
+      localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131435463);
       if ((localObject4 instanceof SquareImageView)) {
         ((List)localObject3).add((SquareImageView)localObject4);
       }
@@ -1192,7 +1046,7 @@ public class SearchTemplatePresenter
     }
     if (!((List)localObject3).isEmpty())
     {
-      if (paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_Boolean)
+      if (paramNetSearchTemplateFriendUpdatesItem.x)
       {
         i = 0;
         while (i < ((List)localObject3).size())
@@ -1208,80 +1062,80 @@ public class SearchTemplatePresenter
         i += 1;
       }
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.i)) {
-      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateFriendUpdatesView.b(), paramNetSearchTemplateFriendUpdatesView.d, paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_Int, paramNetSearchTemplateFriendUpdatesItem.i, null, DisplayUtil.a((Context)localObject1, 32.0F));
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.s)) {
+      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateFriendUpdatesView.g(), paramNetSearchTemplateFriendUpdatesView.b, paramNetSearchTemplateFriendUpdatesView.c, paramNetSearchTemplateFriendUpdatesItem.a, paramNetSearchTemplateFriendUpdatesItem.s, null, DisplayUtil.a((Context)localObject1, 32.0F));
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.c))
     {
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      localObject3 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject3 = this.c;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject3);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject3);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams().width;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams().height;
-      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.a.getLayoutParams().width;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.a.getLayoutParams().height;
+      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.c, (URLDrawable.URLDrawableOptions)localObject2);
+      paramNetSearchTemplateFriendUpdatesView.a.setImageDrawable((Drawable)localObject2);
       if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
         ((URLDrawable)localObject2).restartDownload();
       }
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.a.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.a.setVisibility(8);
     }
-    i = ((Context)localObject1).getResources().getDimensionPixelSize(2131298473);
-    if ((paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_Int == 8)) {
+    i = ((Context)localObject1).getResources().getDimensionPixelSize(2131299187);
+    if ((paramNetSearchTemplateFriendUpdatesItem.a == 6) || (paramNetSearchTemplateFriendUpdatesItem.a == 8)) {
       i = DisplayUtil.a((Context)localObject1, 100.0F);
     }
-    localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.a(), SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.a(), HardCodeUtil.a(2131713586)) * 10.0F, 1, paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
-    paramNetSearchTemplateFriendUpdatesView.a().setText((CharSequence)localObject2);
-    paramNetSearchTemplateFriendUpdatesView.a().setEllipsize(null);
+    localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.b(), SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.b(), HardCodeUtil.a(2131911131)) * 10.0F, 1, paramNetSearchTemplateFriendUpdatesItem.b.toString(), paramNetSearchTemplateFriendUpdatesItem.n.a, false, false, true);
+    paramNetSearchTemplateFriendUpdatesView.b().setText((CharSequence)localObject2);
+    paramNetSearchTemplateFriendUpdatesView.b().setEllipsize(null);
     float f1 = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject1, 40.0F) - i;
-    localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.b(), f1, 2, paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_JavaLangCharSequence.toString(), "", false, false, true);
-    a(paramNetSearchTemplateFriendUpdatesView.b(), (CharSequence)localObject2, false);
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaLangCharSequence))
+    localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.c(), f1, 2, paramNetSearchTemplateFriendUpdatesItem.d.toString(), "", false, false, true);
+    a(paramNetSearchTemplateFriendUpdatesView.c(), (CharSequence)localObject2, false);
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.e))
     {
       f1 = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject1, 30.0F);
-      localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.c(), f1, 2, paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false);
-      paramNetSearchTemplateFriendUpdatesView.c().setText((CharSequence)localObject2);
-      paramNetSearchTemplateFriendUpdatesView.c().setVisibility(0);
+      localObject2 = SearchUtils.a(paramNetSearchTemplateFriendUpdatesView.d(), f1, 2, paramNetSearchTemplateFriendUpdatesItem.e.toString(), paramNetSearchTemplateFriendUpdatesItem.n.a, false, false);
+      paramNetSearchTemplateFriendUpdatesView.d().setText((CharSequence)localObject2);
+      paramNetSearchTemplateFriendUpdatesView.d().setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.c().setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.d().setVisibility(8);
     }
     int j;
     Object localObject5;
-    if (paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaUtilList != null)
+    if (paramNetSearchTemplateFriendUpdatesItem.f != null)
     {
       Object localObject6;
-      if (paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaUtilList.size() == 1)
+      if (paramNetSearchTemplateFriendUpdatesItem.f.size() == 1)
       {
-        paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        localObject3 = paramNetSearchTemplateFriendUpdatesView.a().getResources();
-        if (jdField_a_of_type_Int == 0) {
-          jdField_a_of_type_Int = ((Resources)localObject3).getDisplayMetrics().widthPixels;
+        paramNetSearchTemplateFriendUpdatesView.p.setVisibility(0);
+        paramNetSearchTemplateFriendUpdatesView.d.setVisibility(8);
+        localObject3 = paramNetSearchTemplateFriendUpdatesView.h().getResources();
+        if (a == 0) {
+          a = ((Resources)localObject3).getDisplayMetrics().widthPixels;
         }
-        localObject2 = paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView;
-        ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_Double), 0.0F);
-        f1 = ((Resources)localObject3).getDimension(2131298466);
-        float f2 = ((Resources)localObject3).getDimension(2131298466);
-        i = DisplayUtil.a(paramNetSearchTemplateFriendUpdatesView.a().getContext(), 2.0F);
-        j = paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-        double d1 = (int)(jdField_a_of_type_Int - f1 - f2 - (j - 1) * i) / j;
-        double d2 = paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_Double;
+        localObject2 = paramNetSearchTemplateFriendUpdatesView.n;
+        ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateFriendUpdatesItem.t), 0.0F);
+        f1 = ((Resources)localObject3).getDimension(2131299180);
+        float f2 = ((Resources)localObject3).getDimension(2131299180);
+        i = DisplayUtil.a(paramNetSearchTemplateFriendUpdatesView.h().getContext(), 2.0F);
+        j = paramNetSearchTemplateFriendUpdatesView.d.getChildCount();
+        double d1 = (int)(a - f1 - f2 - (j - 1) * i) / j;
+        double d2 = paramNetSearchTemplateFriendUpdatesItem.v;
         Double.isNaN(d1);
         i = (int)(d2 * d1);
-        d2 = paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_Double;
+        d2 = paramNetSearchTemplateFriendUpdatesItem.v;
         Double.isNaN(d1);
         j = (int)(d1 * d2);
         ((SquareImageView)localObject2).setLayoutParams(new FrameLayout.LayoutParams(i, j));
-        localObject3 = (ImageItem)paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaUtilList.get(0);
-        localObject4 = ((ImageItem)localObject3).jdField_a_of_type_JavaLangString;
+        localObject3 = (ImageItem)paramNetSearchTemplateFriendUpdatesItem.f.get(0);
+        localObject4 = ((ImageItem)localObject3).a;
         localObject5 = URLDrawable.URLDrawableOptions.obtain();
-        localObject6 = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localObject6 = this.b;
         ((URLDrawable.URLDrawableOptions)localObject5).mFailedDrawable = ((Drawable)localObject6);
         ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = ((Drawable)localObject6);
         ((URLDrawable.URLDrawableOptions)localObject5).mRequestWidth = i;
@@ -1292,39 +1146,39 @@ public class SearchTemplatePresenter
         if ((((URLDrawable)localObject4).getStatus() != 1) && (((URLDrawable)localObject4).getStatus() != 0)) {
           ((URLDrawable)localObject4).restartDownload();
         }
-        if (((ImageItem)localObject3).jdField_a_of_type_Int == 2) {
-          paramNetSearchTemplateFriendUpdatesView.f.setVisibility(0);
+        if (((ImageItem)localObject3).b == 2) {
+          paramNetSearchTemplateFriendUpdatesView.o.setVisibility(0);
         } else {
-          paramNetSearchTemplateFriendUpdatesView.f.setVisibility(8);
+          paramNetSearchTemplateFriendUpdatesView.o.setVisibility(8);
         }
       }
       else
       {
-        paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-        paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        int m = paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+        paramNetSearchTemplateFriendUpdatesView.p.setVisibility(8);
+        paramNetSearchTemplateFriendUpdatesView.d.setVisibility(0);
+        int m = paramNetSearchTemplateFriendUpdatesView.d.getChildCount();
         i = 0;
         for (;;)
         {
           j = i;
-          if (i >= paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaUtilList.size()) {
+          if (i >= paramNetSearchTemplateFriendUpdatesItem.f.size()) {
             break;
           }
           j = i;
           if (i >= m) {
             break;
           }
-          localObject3 = paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+          localObject3 = paramNetSearchTemplateFriendUpdatesView.d.getChildAt(i);
           ((View)localObject3).setVisibility(0);
-          localObject2 = (SquareImageView)((View)localObject3).findViewById(2131368557);
-          localObject3 = (ImageView)((View)localObject3).findViewById(2131369731);
-          ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_Double), 0.0F);
-          localObject4 = (ImageItem)paramNetSearchTemplateFriendUpdatesItem.jdField_a_of_type_JavaUtilList.get(i);
-          localObject5 = ((ImageItem)localObject4).jdField_a_of_type_JavaLangString;
+          localObject2 = (SquareImageView)((View)localObject3).findViewById(2131435463);
+          localObject3 = (ImageView)((View)localObject3).findViewById(2131436849);
+          ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateFriendUpdatesItem.t), 0.0F);
+          localObject4 = (ImageItem)paramNetSearchTemplateFriendUpdatesItem.f.get(i);
+          localObject5 = ((ImageItem)localObject4).a;
           localObject6 = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject6).mRequestHeight = 200;
           ((URLDrawable.URLDrawableOptions)localObject6).mRequestWidth = 200;
-          ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          ColorDrawable localColorDrawable = this.b;
           ((URLDrawable.URLDrawableOptions)localObject6).mFailedDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject6).mLoadingDrawable = localColorDrawable;
           ((URLDrawable.URLDrawableOptions)localObject6).mPlayGifImage = true;
@@ -1334,16 +1188,16 @@ public class SearchTemplatePresenter
             ((URLDrawable)localObject5).restartDownload();
           }
           ((SquareImageView)localObject2).setVisibility(0);
-          if (((ImageItem)localObject4).jdField_a_of_type_Int == 2) {
+          if (((ImageItem)localObject4).b == 2) {
             ((ImageView)localObject3).setVisibility(0);
           } else {
             ((ImageView)localObject3).setVisibility(8);
           }
-          if ((i == m - 1) && (paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_Int > m))
+          if ((i == m - 1) && (paramNetSearchTemplateFriendUpdatesItem.u > m))
           {
             ((ImageView)localObject3).setVisibility(8);
             ((SquareImageView)localObject2).setFilterColor(Color.parseColor("#66000000"));
-            int k = paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_Int - m;
+            int k = paramNetSearchTemplateFriendUpdatesItem.u - m;
             j = k;
             if (k > 99) {
               j = 99;
@@ -1363,25 +1217,25 @@ public class SearchTemplatePresenter
         }
         while (j < m)
         {
-          paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).setVisibility(4);
+          paramNetSearchTemplateFriendUpdatesView.d.getChildAt(j).setVisibility(4);
           j += 1;
         }
       }
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.p.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.d.setVisibility(8);
     }
-    if ((paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaUtilList == null) && (TextUtils.equals(paramNetSearchTemplateFriendUpdatesItem.k, "0")) && (TextUtils.equals(paramNetSearchTemplateFriendUpdatesItem.m, "0")))
+    if ((paramNetSearchTemplateFriendUpdatesItem.y == null) && (TextUtils.equals(paramNetSearchTemplateFriendUpdatesItem.B, "0")) && (TextUtils.equals(paramNetSearchTemplateFriendUpdatesItem.D, "0")))
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.y.setVisibility(8);
       return;
     }
-    if (paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaUtilList != null)
+    if (paramNetSearchTemplateFriendUpdatesItem.y != null)
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      i = paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaUtilList.size() - 1;
+      paramNetSearchTemplateFriendUpdatesView.q.removeAllViews();
+      i = paramNetSearchTemplateFriendUpdatesItem.y.size() - 1;
       while (i >= 0)
       {
         if (i > 0) {
@@ -1389,19 +1243,19 @@ public class SearchTemplatePresenter
         } else {
           j = 0;
         }
-        localObject2 = (SquareImageView)LayoutInflater.from((Context)localObject1).inflate(2131559812, null, false);
+        localObject2 = (SquareImageView)LayoutInflater.from((Context)localObject1).inflate(2131625855, null, false);
         localObject3 = new RelativeLayout.LayoutParams(DisplayUtil.a((Context)localObject1, 16.0F), DisplayUtil.a((Context)localObject1, 16.0F));
         ((RelativeLayout.LayoutParams)localObject3).leftMargin = j;
-        paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject2, paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaUtilList.size() - 1 - i, (ViewGroup.LayoutParams)localObject3);
-        localObject3 = (String)paramNetSearchTemplateFriendUpdatesItem.jdField_c_of_type_JavaUtilList.get(i);
+        paramNetSearchTemplateFriendUpdatesView.q.addView((View)localObject2, paramNetSearchTemplateFriendUpdatesItem.y.size() - 1 - i, (ViewGroup.LayoutParams)localObject3);
+        localObject3 = (String)paramNetSearchTemplateFriendUpdatesItem.y.get(i);
         localObject4 = URLDrawable.URLDrawableOptions.obtain();
-        localObject5 = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localObject5 = this.b;
         ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = ((Drawable)localObject5);
         ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = ((Drawable)localObject5);
         ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = ((SquareImageView)localObject2).getLayoutParams().width;
         ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = ((SquareImageView)localObject2).getLayoutParams().height;
         localObject3 = URLDrawable.getDrawable((String)localObject3, (URLDrawable.URLDrawableOptions)localObject4);
-        ((URLDrawable)localObject3).setDecodeHandler(URLDrawableDecodeHandler.a);
+        ((URLDrawable)localObject3).setDecodeHandler(URLDrawableDecodeHandler.b);
         ((SquareImageView)localObject2).setImageDrawable((Drawable)localObject3);
         if ((((URLDrawable)localObject3).getStatus() != 1) && (((URLDrawable)localObject3).getStatus() != 0)) {
           ((URLDrawable)localObject3).restartDownload();
@@ -1410,75 +1264,75 @@ public class SearchTemplatePresenter
         i -= 1;
       }
     }
-    paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_JavaLangString))
+    paramNetSearchTemplateFriendUpdatesView.q.removeAllViews();
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.z))
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateFriendUpdatesItem.jdField_b_of_type_JavaLangString);
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.z.setText(paramNetSearchTemplateFriendUpdatesItem.z);
+      paramNetSearchTemplateFriendUpdatesView.z.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.z.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.j))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.A))
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject2 = this.c;
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height;
-      localObject1 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.j, (URLDrawable.URLDrawableOptions)localObject1);
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.A.getLayoutParams().width;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.A.getLayoutParams().height;
+      localObject1 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.A, (URLDrawable.URLDrawableOptions)localObject1);
+      paramNetSearchTemplateFriendUpdatesView.A.setImageDrawable((Drawable)localObject1);
       if ((((URLDrawable)localObject1).getStatus() != 1) && (((URLDrawable)localObject1).getStatus() != 0)) {
         ((URLDrawable)localObject1).restartDownload();
       }
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.A.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.A.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.k))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.B))
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateFriendUpdatesItem.k);
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.B.setText(paramNetSearchTemplateFriendUpdatesItem.B);
+      paramNetSearchTemplateFriendUpdatesView.B.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.B.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.l))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.C))
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject2 = this.c;
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams().width;
-      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_ComTencentImageURLImageView.getLayoutParams().height;
-      localObject1 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.l, (URLDrawable.URLDrawableOptions)localObject1);
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramNetSearchTemplateFriendUpdatesView.C.getLayoutParams().width;
+      ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramNetSearchTemplateFriendUpdatesView.C.getLayoutParams().height;
+      localObject1 = URLDrawable.getDrawable(paramNetSearchTemplateFriendUpdatesItem.C, (URLDrawable.URLDrawableOptions)localObject1);
+      paramNetSearchTemplateFriendUpdatesView.C.setImageDrawable((Drawable)localObject1);
       if ((((URLDrawable)localObject1).getStatus() != 1) && (((URLDrawable)localObject1).getStatus() != 0)) {
         ((URLDrawable)localObject1).restartDownload();
       }
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.C.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateFriendUpdatesView.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateFriendUpdatesView.C.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.m))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateFriendUpdatesItem.D))
     {
-      paramNetSearchTemplateFriendUpdatesView.h.setText(paramNetSearchTemplateFriendUpdatesItem.m);
-      paramNetSearchTemplateFriendUpdatesView.h.setVisibility(0);
+      paramNetSearchTemplateFriendUpdatesView.D.setText(paramNetSearchTemplateFriendUpdatesItem.D);
+      paramNetSearchTemplateFriendUpdatesView.D.setVisibility(0);
       return;
     }
-    paramNetSearchTemplateFriendUpdatesView.h.setVisibility(8);
+    paramNetSearchTemplateFriendUpdatesView.D.setVisibility(8);
   }
   
   private void a(NetSearchTemplateNetSeaEntranceItem paramNetSearchTemplateNetSeaEntranceItem, NetSearchTemplateNetSeaEntranceView paramNetSearchTemplateNetSeaEntranceView)
   {
-    Object localObject = paramNetSearchTemplateNetSeaEntranceView.a();
+    Object localObject = paramNetSearchTemplateNetSeaEntranceView.h();
     Context localContext = ((View)localObject).getContext();
     if ((localObject instanceof LinearLayout))
     {
@@ -1490,98 +1344,98 @@ public class SearchTemplatePresenter
       }
     }
     ColorDrawable localColorDrawable;
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.b))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      localColorDrawable = this.b;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(localContext, 50.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 50.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "leftIcon";
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNetSeaEntranceItem.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNetSeaEntranceItem.b, (URLDrawable.URLDrawableOptions)localObject);
+      paramNetSearchTemplateNetSeaEntranceView.b.setImageDrawable((Drawable)localObject);
       if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
         ((URLDrawable)localObject).restartDownload();
       }
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateNetSeaEntranceView.b.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateNetSeaEntranceView.b.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.j))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.c))
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateNetSeaEntranceItem.j);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateNetSeaEntranceView.c.setText(paramNetSearchTemplateNetSeaEntranceItem.c);
+      paramNetSearchTemplateNetSeaEntranceView.c.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateNetSeaEntranceView.c.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.g))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.m))
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateNetSeaEntranceItem.g);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateNetSeaEntranceView.d.setText(paramNetSearchTemplateNetSeaEntranceItem.m);
+      paramNetSearchTemplateNetSeaEntranceView.d.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateNetSeaEntranceView.d.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.k))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.d))
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_c_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateNetSeaEntranceItem.k);
+      paramNetSearchTemplateNetSeaEntranceView.n.setVisibility(0);
+      paramNetSearchTemplateNetSeaEntranceView.n.setText(paramNetSearchTemplateNetSeaEntranceItem.d);
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateNetSeaEntranceView.n.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.l))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNetSeaEntranceItem.e))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      localColorDrawable = this.b;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(localContext, 30.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 30.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "rightIcon";
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNetSeaEntranceItem.l, (URLDrawable.URLDrawableOptions)localObject);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNetSeaEntranceItem.e, (URLDrawable.URLDrawableOptions)localObject);
+      paramNetSearchTemplateNetSeaEntranceView.o.setImageDrawable((Drawable)localObject);
       if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
         ((URLDrawable)localObject).restartDownload();
       }
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateNetSeaEntranceView.o.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateNetSeaEntranceView.o.setVisibility(8);
     }
     paramNetSearchTemplateNetSeaEntranceView.a(paramNetSearchTemplateNetSeaEntranceItem);
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839385);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839385);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      paramNetSearchTemplateNetSeaEntranceView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      paramNetSearchTemplateNetSeaEntranceView.a.setBackgroundResource(2130839569);
+      paramNetSearchTemplateNetSeaEntranceView.q.setBackgroundResource(2130839569);
+      paramNetSearchTemplateNetSeaEntranceView.c.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateNetSeaEntranceView.n.setTextColor(Color.parseColor("#4A4A4A"));
     }
     else
     {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839384);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839384);
-      paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
-      paramNetSearchTemplateNetSeaEntranceView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateNetSeaEntranceView.a.setBackgroundResource(2130839568);
+      paramNetSearchTemplateNetSeaEntranceView.q.setBackgroundResource(2130839568);
+      paramNetSearchTemplateNetSeaEntranceView.c.setTextColor(Color.parseColor("#262626"));
+      paramNetSearchTemplateNetSeaEntranceView.n.setTextColor(Color.parseColor("#737373"));
     }
-    if (paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetTextView != null) {
-      paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(SearchUtils.a());
+    if (paramNetSearchTemplateNetSeaEntranceView.d != null) {
+      paramNetSearchTemplateNetSeaEntranceView.d.setTextColor(SearchUtils.a());
     }
-    paramNetSearchTemplateNetSeaEntranceView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new SearchTemplatePresenter.4(this, paramNetSearchTemplateNetSeaEntranceItem, localContext));
-    paramNetSearchTemplateNetSeaEntranceView.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(new SearchTemplatePresenter.5(this, paramNetSearchTemplateNetSeaEntranceItem, localContext));
+    paramNetSearchTemplateNetSeaEntranceView.a.setOnClickListener(new SearchTemplatePresenter.4(this, paramNetSearchTemplateNetSeaEntranceItem, localContext));
+    paramNetSearchTemplateNetSeaEntranceView.q.setOnClickListener(new SearchTemplatePresenter.5(this, paramNetSearchTemplateNetSeaEntranceItem, localContext));
   }
   
   private void a(NetSearchTemplateNewEntranceItem paramNetSearchTemplateNewEntranceItem, NetSearchTemplateNewEntranceView paramNetSearchTemplateNewEntranceView)
   {
-    Object localObject = paramNetSearchTemplateNewEntranceView.a();
+    Object localObject = paramNetSearchTemplateNewEntranceView.h();
     Context localContext = ((View)localObject).getContext();
     if ((localObject instanceof LinearLayout))
     {
@@ -1592,64 +1446,64 @@ public class SearchTemplatePresenter
         ((View)localObject).setPadding(((View)localObject).getPaddingLeft(), 0, ((View)localObject).getPaddingRight(), 0);
       }
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.b))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      ColorDrawable localColorDrawable = this.b;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(localContext, 40.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 40.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "leftIcon";
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNewEntranceItem.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNewEntranceItem.b, (URLDrawable.URLDrawableOptions)localObject);
+      paramNetSearchTemplateNewEntranceView.b.setImageDrawable((Drawable)localObject);
       if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
         ((URLDrawable)localObject).restartDownload();
       }
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateNewEntranceView.b.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateNewEntranceView.b.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.j))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.c))
     {
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateNewEntranceItem.j);
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateNewEntranceView.c.setText(paramNetSearchTemplateNewEntranceItem.c);
+      paramNetSearchTemplateNewEntranceView.c.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNewEntranceView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateNewEntranceView.c.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.g))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.m))
     {
-      paramNetSearchTemplateNewEntranceView.jdField_c_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateNewEntranceItem.g);
-      paramNetSearchTemplateNewEntranceView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateNewEntranceView.n.setText(paramNetSearchTemplateNewEntranceItem.m);
+      paramNetSearchTemplateNewEntranceView.n.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateNewEntranceView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateNewEntranceView.n.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.k))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.d))
     {
-      paramNetSearchTemplateNewEntranceView.h.setVisibility(0);
-      paramNetSearchTemplateNewEntranceView.h.setText(paramNetSearchTemplateNewEntranceItem.k);
+      paramNetSearchTemplateNewEntranceView.o.setVisibility(0);
+      paramNetSearchTemplateNewEntranceView.o.setText(paramNetSearchTemplateNewEntranceItem.d);
     }
     else
     {
-      paramNetSearchTemplateNewEntranceView.h.setVisibility(8);
+      paramNetSearchTemplateNewEntranceView.o.setVisibility(8);
     }
-    if (paramNetSearchTemplateNewEntranceItem.jdField_b_of_type_Boolean) {
-      paramNetSearchTemplateNewEntranceView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramNetSearchTemplateNewEntranceItem.e) {
+      paramNetSearchTemplateNewEntranceView.p.setVisibility(0);
     } else {
-      paramNetSearchTemplateNewEntranceView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramNetSearchTemplateNewEntranceView.p.setVisibility(8);
     }
-    UniteSearchReportController.a(null, 0, paramNetSearchTemplateNewEntranceItem.jdField_c_of_type_Int, "0X8009D5C", 0, 0, null, null);
-    if ((paramNetSearchTemplateNewEntranceItem.jdField_a_of_type_JavaUtilList != null) && (paramNetSearchTemplateNewEntranceItem.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      UniteSearchReportController.a(null, 0, paramNetSearchTemplateNewEntranceItem.jdField_c_of_type_Int, "0X8009D5E", 0, 0, null, null);
+    UniteSearchReportController.a(null, 0, paramNetSearchTemplateNewEntranceItem.p, "0X8009D5C", 0, 0, null, null);
+    if ((paramNetSearchTemplateNewEntranceItem.t != null) && (paramNetSearchTemplateNewEntranceItem.t.size() > 0)) {
+      UniteSearchReportController.a(null, 0, paramNetSearchTemplateNewEntranceItem.p, "0X8009D5E", 0, 0, null, null);
     }
     paramNetSearchTemplateNewEntranceView.a(paramNetSearchTemplateNewEntranceItem);
-    paramNetSearchTemplateNewEntranceView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new SearchTemplatePresenter.3(this, paramNetSearchTemplateNewEntranceItem, localContext));
+    paramNetSearchTemplateNewEntranceView.a.setOnClickListener(new SearchTemplatePresenter.3(this, paramNetSearchTemplateNewEntranceItem, localContext));
   }
   
   private void a(NetSearchTemplateSubItem paramNetSearchTemplateSubItem, NetSearchTemplateSubItemView paramNetSearchTemplateSubItemView)
@@ -1659,10 +1513,10 @@ public class SearchTemplatePresenter
       if (paramNetSearchTemplateSubItemView == null) {
         return;
       }
-      paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingLeft(), 0, paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetLinearLayout.getPaddingRight(), 0);
-      Object localObject = (RelativeLayout.LayoutParams)paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      paramNetSearchTemplateSubItemView.d.setPadding(paramNetSearchTemplateSubItemView.d.getPaddingLeft(), 0, paramNetSearchTemplateSubItemView.d.getPaddingRight(), 0);
+      Object localObject = (RelativeLayout.LayoutParams)paramNetSearchTemplateSubItemView.a.getLayoutParams();
       boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-      if (paramNetSearchTemplateSubItem.jdField_b_of_type_Boolean)
+      if (paramNetSearchTemplateSubItem.d)
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(5, 0);
         ((RelativeLayout.LayoutParams)localObject).addRule(14);
@@ -1672,42 +1526,42 @@ public class SearchTemplatePresenter
         ((RelativeLayout.LayoutParams)localObject).addRule(14, 0);
         ((RelativeLayout.LayoutParams)localObject).addRule(5);
       }
-      localObject = paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.getContext();
+      localObject = paramNetSearchTemplateSubItemView.a.getContext();
       int i = ((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject, 38.0F);
-      if (!TextUtils.isEmpty(paramNetSearchTemplateSubItem.jdField_b_of_type_JavaLangCharSequence))
+      if (!TextUtils.isEmpty(paramNetSearchTemplateSubItem.b))
       {
-        paramNetSearchTemplateSubItemView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramNetSearchTemplateSubItemView.b.setVisibility(0);
         if (bool) {
-          paramNetSearchTemplateSubItemView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateSubItem.jdField_b_of_type_JavaLangCharSequence.toString());
+          paramNetSearchTemplateSubItemView.b.setText(paramNetSearchTemplateSubItem.b.toString());
         } else {
-          paramNetSearchTemplateSubItemView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateSubItem.jdField_b_of_type_JavaLangCharSequence);
+          paramNetSearchTemplateSubItemView.b.setText(paramNetSearchTemplateSubItem.b);
         }
-        i = (int)(i - (SearchUtils.a(paramNetSearchTemplateSubItemView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateSubItem.jdField_b_of_type_JavaLangCharSequence) + DisplayUtil.a((Context)localObject, 10.0F)));
+        i = (int)(i - (SearchUtils.a(paramNetSearchTemplateSubItemView.b, paramNetSearchTemplateSubItem.b) + DisplayUtil.a((Context)localObject, 10.0F)));
       }
       else
       {
-        paramNetSearchTemplateSubItemView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramNetSearchTemplateSubItemView.b.setVisibility(8);
       }
-      if (!TextUtils.isEmpty(paramNetSearchTemplateSubItem.jdField_a_of_type_JavaLangCharSequence))
+      if (!TextUtils.isEmpty(paramNetSearchTemplateSubItem.a))
       {
-        paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        CharSequence localCharSequence = paramNetSearchTemplateSubItem.jdField_a_of_type_JavaLangCharSequence;
+        paramNetSearchTemplateSubItemView.a.setVisibility(0);
+        CharSequence localCharSequence = paramNetSearchTemplateSubItem.a;
         localObject = localCharSequence;
-        if (!paramNetSearchTemplateSubItem.jdField_b_of_type_Boolean) {
-          localObject = SearchUtils.a(paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView, i, localCharSequence);
+        if (!paramNetSearchTemplateSubItem.d) {
+          localObject = SearchUtils.a(paramNetSearchTemplateSubItemView.a, i, localCharSequence);
         }
         if (bool) {
-          paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.setText(((CharSequence)localObject).toString());
+          paramNetSearchTemplateSubItemView.a.setText(((CharSequence)localObject).toString());
         } else {
-          paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+          paramNetSearchTemplateSubItemView.a.setText((CharSequence)localObject);
         }
       }
       else
       {
-        paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramNetSearchTemplateSubItemView.a.setVisibility(8);
       }
-      paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(a(paramNetSearchTemplateSubItem.jdField_a_of_type_JavaLangString));
-      paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new SearchTemplatePresenter.6(this, paramNetSearchTemplateSubItem, paramNetSearchTemplateSubItemView));
+      paramNetSearchTemplateSubItemView.c.setBackgroundDrawable(a(paramNetSearchTemplateSubItem.c));
+      paramNetSearchTemplateSubItemView.c.setOnClickListener(new SearchTemplatePresenter.6(this, paramNetSearchTemplateSubItem, paramNetSearchTemplateSubItemView));
     }
   }
   
@@ -1718,37 +1572,37 @@ public class SearchTemplatePresenter
       if (paramNetSearchTemplateSubItemTitleView == null) {
         return;
       }
-      if ((!TextUtils.isEmpty(paramNetSearchTemplateSubItemTitle.jdField_a_of_type_JavaLangString)) && (paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetTextView != null))
+      if ((!TextUtils.isEmpty(paramNetSearchTemplateSubItemTitle.a)) && (paramNetSearchTemplateSubItemTitleView.a != null))
       {
-        Context localContext = paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetTextView.getContext();
+        Context localContext = paramNetSearchTemplateSubItemTitleView.a.getContext();
         int j = localContext.getResources().getDisplayMetrics().widthPixels - DisplayUtil.a(localContext, 40.0F);
         int i;
-        if ((!TextUtils.isEmpty(paramNetSearchTemplateSubItemTitle.e)) && (paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetLinearLayout != null))
+        if ((!TextUtils.isEmpty(paramNetSearchTemplateSubItemTitle.j)) && (paramNetSearchTemplateSubItemTitleView.b != null))
         {
-          paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          paramNetSearchTemplateSubItemTitleView.b.setVisibility(0);
           i = j - DisplayUtil.a(localContext, 26.0F);
         }
         else
         {
           i = j;
-          if (paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+          if (paramNetSearchTemplateSubItemTitleView.b != null)
           {
-            paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+            paramNetSearchTemplateSubItemTitleView.b.setVisibility(8);
             i = j;
           }
         }
-        paramNetSearchTemplateSubItemTitle = SearchUtils.a(paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetTextView, i, paramNetSearchTemplateSubItemTitle.jdField_a_of_type_JavaLangString);
-        paramNetSearchTemplateSubItemTitleView.jdField_a_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateSubItemTitle);
+        paramNetSearchTemplateSubItemTitle = SearchUtils.a(paramNetSearchTemplateSubItemTitleView.a, i, paramNetSearchTemplateSubItemTitle.a);
+        paramNetSearchTemplateSubItemTitleView.a.setText(paramNetSearchTemplateSubItemTitle);
       }
     }
   }
   
   private void a(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView)
   {
-    Context localContext = paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetRelativeLayout.getContext();
-    Object localObject = (RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramNetSearchTemplateUniversalItem.jdField_b_of_type_Boolean)
+    Context localContext = paramNetSearchTemplateUniversalView.r.getContext();
+    Object localObject = (RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.d.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.r.getLayoutParams();
+    if (paramNetSearchTemplateUniversalItem.d)
     {
       ((RelativeLayout.LayoutParams)localObject).addRule(15);
       localLayoutParams.addRule(15);
@@ -1764,35 +1618,35 @@ public class SearchTemplatePresenter
     }
     localObject = a(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView, false, 0);
     if (((Integer)((Pair)localObject).first).intValue() != 0) {
-      ((RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).rightMargin = DisplayUtil.a(localContext, 10.0F);
+      ((RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.r.getLayoutParams()).rightMargin = DisplayUtil.a(localContext, 10.0F);
     }
-    int i = a(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView);
+    int i = b(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView);
     int j = a(paramNetSearchTemplateUniversalItem, paramNetSearchTemplateUniversalView, ((Integer)((Pair)localObject).first).intValue(), i);
     i = j;
     if (((Integer)((Pair)localObject).second).intValue() > j) {
       i = ((Integer)((Pair)localObject).second).intValue();
     }
-    if (paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      ((RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).height = i;
+    if (paramNetSearchTemplateUniversalView.a != null) {
+      ((RelativeLayout.LayoutParams)paramNetSearchTemplateUniversalView.a.getLayoutParams()).height = i;
     }
   }
   
   private void a(NetSearchTemplateUpdatesItem paramNetSearchTemplateUpdatesItem, NetSearchTemplateUpdatesView paramNetSearchTemplateUpdatesView)
   {
-    Object localObject1 = paramNetSearchTemplateUpdatesView.a().getContext();
-    Object localObject2 = paramNetSearchTemplateUpdatesView.a();
-    if (paramNetSearchTemplateUpdatesItem.jdField_b_of_type_Boolean) {
+    Object localObject1 = paramNetSearchTemplateUpdatesView.h().getContext();
+    Object localObject2 = paramNetSearchTemplateUpdatesView.h();
+    if (paramNetSearchTemplateUpdatesItem.w) {
       ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), UIUtils.a(((View)localObject2).getContext(), 9.0F), ((View)localObject2).getPaddingRight(), UIUtils.a(((View)localObject2).getContext(), 9.0F));
     } else {
       ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), UIUtils.a(((View)localObject2).getContext(), 6.0F), ((View)localObject2).getPaddingRight(), UIUtils.a(((View)localObject2).getContext(), 6.0F));
     }
-    localObject2 = (LinearLayout)((View)localObject2).findViewById(2131372733);
+    localObject2 = (LinearLayout)((View)localObject2).findViewById(2131440280);
     Object localObject3 = new ArrayList();
     int i = 0;
     Object localObject4;
     while (i < ((LinearLayout)localObject2).getChildCount())
     {
-      localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131368557);
+      localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131435463);
       if ((localObject4 instanceof SquareImageView)) {
         ((List)localObject3).add((SquareImageView)localObject4);
       }
@@ -1800,7 +1654,7 @@ public class SearchTemplatePresenter
     }
     if (!((List)localObject3).isEmpty())
     {
-      if (paramNetSearchTemplateUpdatesItem.jdField_c_of_type_Boolean)
+      if (paramNetSearchTemplateUpdatesItem.x)
       {
         i = 0;
         while (i < ((List)localObject3).size())
@@ -1818,90 +1672,90 @@ public class SearchTemplatePresenter
     }
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramNetSearchTemplateUpdatesView.a().setTextColor(Color.parseColor("#6991B8"));
+      paramNetSearchTemplateUpdatesView.b().setTextColor(Color.parseColor("#6991B8"));
+      paramNetSearchTemplateUpdatesView.d().setTextColor(Color.parseColor("#44608A"));
       paramNetSearchTemplateUpdatesView.c().setTextColor(Color.parseColor("#44608A"));
-      paramNetSearchTemplateUpdatesView.b().setTextColor(Color.parseColor("#44608A"));
     }
     else
     {
-      paramNetSearchTemplateUpdatesView.a().setTextColor(Color.parseColor("#262626"));
+      paramNetSearchTemplateUpdatesView.b().setTextColor(Color.parseColor("#262626"));
+      paramNetSearchTemplateUpdatesView.d().setTextColor(Color.parseColor("#737373"));
       paramNetSearchTemplateUpdatesView.c().setTextColor(Color.parseColor("#737373"));
-      paramNetSearchTemplateUpdatesView.b().setTextColor(Color.parseColor("#737373"));
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.i)) {
-      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateUpdatesView.b(), paramNetSearchTemplateUpdatesView.d, paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int, paramNetSearchTemplateUpdatesItem.i, null, DisplayUtil.a((Context)localObject1, 21.0F));
+    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.s)) {
+      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateUpdatesView.g(), paramNetSearchTemplateUpdatesView.b, paramNetSearchTemplateUpdatesView.c, paramNetSearchTemplateUpdatesItem.a, paramNetSearchTemplateUpdatesItem.s, null, DisplayUtil.a((Context)localObject1, 21.0F));
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.c))
     {
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      localObject3 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject3 = this.c;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject3);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject3);
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramNetSearchTemplateUpdatesView.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams().width;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramNetSearchTemplateUpdatesView.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams().height;
-      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-      paramNetSearchTemplateUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = paramNetSearchTemplateUpdatesView.a.getLayoutParams().width;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = paramNetSearchTemplateUpdatesView.a.getLayoutParams().height;
+      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateUpdatesItem.c, (URLDrawable.URLDrawableOptions)localObject2);
+      paramNetSearchTemplateUpdatesView.a.setImageDrawable((Drawable)localObject2);
       if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
         ((URLDrawable)localObject2).restartDownload();
       }
-      paramNetSearchTemplateUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramNetSearchTemplateUpdatesView.a.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateUpdatesView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramNetSearchTemplateUpdatesView.a.setVisibility(8);
     }
-    i = ((Context)localObject1).getResources().getDimensionPixelSize(2131298473);
-    if ((paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int == 8)) {
+    i = ((Context)localObject1).getResources().getDimensionPixelSize(2131299187);
+    if ((paramNetSearchTemplateUpdatesItem.a == 6) || (paramNetSearchTemplateUpdatesItem.a == 8)) {
       i = DisplayUtil.a((Context)localObject1, 100.0F);
     }
-    localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.a(), SearchUtils.a(paramNetSearchTemplateUpdatesView.a(), HardCodeUtil.a(2131713585)) * 10.0F, 1, paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateUpdatesItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
-    paramNetSearchTemplateUpdatesView.a().setText((CharSequence)localObject2);
-    paramNetSearchTemplateUpdatesView.a().setEllipsize(null);
+    localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.b(), SearchUtils.a(paramNetSearchTemplateUpdatesView.b(), HardCodeUtil.a(2131911130)) * 10.0F, 1, paramNetSearchTemplateUpdatesItem.b.toString(), paramNetSearchTemplateUpdatesItem.n.a, false, false, true);
+    paramNetSearchTemplateUpdatesView.b().setText((CharSequence)localObject2);
+    paramNetSearchTemplateUpdatesView.b().setEllipsize(null);
     float f1 = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject1, 40.0F) - i;
-    localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.b(), f1, 2, paramNetSearchTemplateUpdatesItem.jdField_b_of_type_JavaLangCharSequence.toString(), "", false, false, true);
-    a(paramNetSearchTemplateUpdatesView.b(), (CharSequence)localObject2, false);
-    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.jdField_c_of_type_JavaLangCharSequence))
+    localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.c(), f1, 2, paramNetSearchTemplateUpdatesItem.d.toString(), "", false, false, true);
+    a(paramNetSearchTemplateUpdatesView.c(), (CharSequence)localObject2, false);
+    if (!TextUtils.isEmpty(paramNetSearchTemplateUpdatesItem.e))
     {
       f1 = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject1, 30.0F);
-      localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.c(), f1, 2, paramNetSearchTemplateUpdatesItem.jdField_c_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateUpdatesItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false);
-      paramNetSearchTemplateUpdatesView.c().setText((CharSequence)localObject2);
-      paramNetSearchTemplateUpdatesView.c().setVisibility(0);
+      localObject2 = SearchUtils.a(paramNetSearchTemplateUpdatesView.d(), f1, 2, paramNetSearchTemplateUpdatesItem.e.toString(), paramNetSearchTemplateUpdatesItem.n.a, false, false);
+      paramNetSearchTemplateUpdatesView.d().setText((CharSequence)localObject2);
+      paramNetSearchTemplateUpdatesView.d().setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateUpdatesView.c().setVisibility(8);
+      paramNetSearchTemplateUpdatesView.d().setVisibility(8);
     }
-    if (paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList != null)
+    if (paramNetSearchTemplateUpdatesItem.f != null)
     {
       int j;
       double d1;
       double d2;
-      if (paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList.size() == 1)
+      if (paramNetSearchTemplateUpdatesItem.f.size() == 1)
       {
-        paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        localObject2 = paramNetSearchTemplateUpdatesView.a().getResources();
-        if (jdField_a_of_type_Int == 0) {
-          jdField_a_of_type_Int = ((Resources)localObject2).getDisplayMetrics().widthPixels;
+        paramNetSearchTemplateUpdatesView.p.setVisibility(0);
+        paramNetSearchTemplateUpdatesView.d.setVisibility(8);
+        localObject2 = paramNetSearchTemplateUpdatesView.h().getResources();
+        if (a == 0) {
+          a = ((Resources)localObject2).getDisplayMetrics().widthPixels;
         }
-        localObject1 = paramNetSearchTemplateUpdatesView.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView;
-        ((SquareImageView)localObject1).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Double), 0.0F);
-        f1 = ((Resources)localObject2).getDimension(2131298466);
-        float f2 = ((Resources)localObject2).getDimension(2131298466);
-        i = DisplayUtil.a(paramNetSearchTemplateUpdatesView.a().getContext(), 2.0F);
-        j = paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-        d1 = (int)(jdField_a_of_type_Int - f1 - f2 - (j - 1) * i) / j;
-        d2 = paramNetSearchTemplateUpdatesItem.jdField_b_of_type_Double;
+        localObject1 = paramNetSearchTemplateUpdatesView.n;
+        ((SquareImageView)localObject1).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.t), 0.0F);
+        f1 = ((Resources)localObject2).getDimension(2131299180);
+        float f2 = ((Resources)localObject2).getDimension(2131299180);
+        i = DisplayUtil.a(paramNetSearchTemplateUpdatesView.h().getContext(), 2.0F);
+        j = paramNetSearchTemplateUpdatesView.d.getChildCount();
+        d1 = (int)(a - f1 - f2 - (j - 1) * i) / j;
+        d2 = paramNetSearchTemplateUpdatesItem.v;
         Double.isNaN(d1);
         i = (int)(d2 * d1);
-        d2 = paramNetSearchTemplateUpdatesItem.jdField_b_of_type_Double;
+        d2 = paramNetSearchTemplateUpdatesItem.v;
         Double.isNaN(d1);
         j = (int)(d1 * d2);
         ((SquareImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(i, j));
-        paramNetSearchTemplateUpdatesItem = (ImageItem)paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList.get(0);
-        localObject2 = paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaLangString;
+        paramNetSearchTemplateUpdatesItem = (ImageItem)paramNetSearchTemplateUpdatesItem.f.get(0);
+        localObject2 = paramNetSearchTemplateUpdatesItem.a;
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        localObject4 = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        localObject4 = this.b;
         ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject4);
         ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject4);
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
@@ -1912,42 +1766,42 @@ public class SearchTemplatePresenter
         if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
           ((URLDrawable)localObject2).restartDownload();
         }
-        if (paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int == 2)
+        if (paramNetSearchTemplateUpdatesItem.b == 2)
         {
-          paramNetSearchTemplateUpdatesView.f.setVisibility(0);
+          paramNetSearchTemplateUpdatesView.o.setVisibility(0);
           return;
         }
-        paramNetSearchTemplateUpdatesView.f.setVisibility(8);
+        paramNetSearchTemplateUpdatesView.o.setVisibility(8);
         return;
       }
-      paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      int m = paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      paramNetSearchTemplateUpdatesView.p.setVisibility(8);
+      paramNetSearchTemplateUpdatesView.d.setVisibility(0);
+      int m = paramNetSearchTemplateUpdatesView.d.getChildCount();
       i = 0;
       for (;;)
       {
         j = i;
-        if (i >= paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList.size()) {
+        if (i >= paramNetSearchTemplateUpdatesItem.f.size()) {
           break;
         }
         j = i;
         if (i >= m) {
           break;
         }
-        localObject3 = paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        localObject3 = paramNetSearchTemplateUpdatesView.d.getChildAt(i);
         ((View)localObject3).setVisibility(0);
-        localObject2 = (SquareImageView)((View)localObject3).findViewById(2131368557);
-        localObject3 = (ImageView)((View)localObject3).findViewById(2131369731);
-        j = UIUtils.a((Context)localObject1) / m;
+        localObject2 = (SquareImageView)((View)localObject3).findViewById(2131435463);
+        localObject3 = (ImageView)((View)localObject3).findViewById(2131436849);
+        j = UIUtils.b((Context)localObject1) / m;
         d1 = j;
-        d2 = paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Double;
+        d2 = paramNetSearchTemplateUpdatesItem.t;
         Double.isNaN(d1);
         int k = (int)(d1 * d2);
-        ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Double), 0.0F);
-        localObject4 = (ImageItem)paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList.get(i);
-        Object localObject5 = ((ImageItem)localObject4).jdField_a_of_type_JavaLangString;
+        ((SquareImageView)localObject2).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.t), 0.0F);
+        localObject4 = (ImageItem)paramNetSearchTemplateUpdatesItem.f.get(i);
+        Object localObject5 = ((ImageItem)localObject4).a;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ColorDrawable localColorDrawable = this.b;
         localURLDrawableOptions.mFailedDrawable = localColorDrawable;
         localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
         localURLDrawableOptions.mRequestWidth = j;
@@ -1959,16 +1813,16 @@ public class SearchTemplatePresenter
           ((URLDrawable)localObject5).restartDownload();
         }
         ((SquareImageView)localObject2).setVisibility(0);
-        if (((ImageItem)localObject4).jdField_a_of_type_Int == 2) {
+        if (((ImageItem)localObject4).b == 2) {
           ((ImageView)localObject3).setVisibility(0);
         } else {
           ((ImageView)localObject3).setVisibility(8);
         }
-        if ((i == m - 1) && (paramNetSearchTemplateUpdatesItem.jdField_b_of_type_Int > m))
+        if ((i == m - 1) && (paramNetSearchTemplateUpdatesItem.u > m))
         {
           ((ImageView)localObject3).setVisibility(8);
           ((SquareImageView)localObject2).setFilterColor(Color.parseColor("#66000000"));
-          k = paramNetSearchTemplateUpdatesItem.jdField_b_of_type_Int - m;
+          k = paramNetSearchTemplateUpdatesItem.u - m;
           j = k;
           if (k > 99) {
             j = 99;
@@ -1988,12 +1842,12 @@ public class SearchTemplatePresenter
       }
       while (j < m)
       {
-        paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).setVisibility(4);
+        paramNetSearchTemplateUpdatesView.d.getChildAt(j).setVisibility(4);
         j += 1;
       }
     }
-    paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    paramNetSearchTemplateUpdatesView.p.setVisibility(8);
+    paramNetSearchTemplateUpdatesView.d.setVisibility(8);
   }
   
   private void a(SquareImageView paramSquareImageView, int paramInt1, int paramInt2, String paramString)
@@ -2004,7 +1858,7 @@ public class SearchTemplatePresenter
         return;
       }
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      Object localObject = this.b;
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localObject = paramSquareImageView.getLayoutParams();
@@ -2030,7 +1884,7 @@ public class SearchTemplatePresenter
         return;
       }
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      ColorDrawable localColorDrawable = this.b;
       localURLDrawableOptions.mFailedDrawable = localColorDrawable;
       localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
       localURLDrawableOptions.mRequestWidth = paramSquareImageView.getLayoutParams().width;
@@ -2039,26 +1893,182 @@ public class SearchTemplatePresenter
     }
   }
   
-  private void b(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView)
+  private boolean a()
   {
-    if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo != null) && (paramNetSearchTemplateUniversalView != null))
+    boolean bool = "true".equals(AVBizModuleFactory.getModuleByName("默认").checkAVFocus()) ^ true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isAudioBusy=");
+    localStringBuilder.append(bool);
+    QLog.i("Q.uniteSearch.SearchTemplatePresenter", 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  private int b(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView)
+  {
+    if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.a != null) && (paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.a != null))
     {
-      if (paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton == null) {
-        return;
-      }
-      Context localContext = paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.getContext();
-      if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence)))
+      int i = paramNetSearchTemplateUniversalItem.a.a;
+      int k = 1;
+      if (i == 1)
       {
-        paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-        paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setText(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence);
-        paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new SearchTemplatePresenter.9(this, localContext, paramNetSearchTemplateUniversalItem));
+        if (paramNetSearchTemplateUniversalView.b != null) {
+          paramNetSearchTemplateUniversalView.b.setVisibility(8);
+        }
+        if (paramNetSearchTemplateUniversalView.c != null) {
+          paramNetSearchTemplateUniversalView.c.setVisibility(8);
+        }
+        return 0;
+      }
+      boolean bool1 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+      Context localContext = paramNetSearchTemplateUniversalView.a.getContext();
+      if (paramNetSearchTemplateUniversalItem.a.a == 2)
+      {
+        if (paramNetSearchTemplateUniversalView.c != null) {
+          paramNetSearchTemplateUniversalView.c.setVisibility(8);
+        }
+        if (paramNetSearchTemplateUniversalView.b == null) {
+          return 0;
+        }
+        if (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.a.b))
+        {
+          paramNetSearchTemplateUniversalView.b.setVisibility(0);
+          paramNetSearchTemplateUniversalView.b.setText(paramNetSearchTemplateUniversalItem.a.b);
+          paramNetSearchTemplateUniversalView.b.setOnClickListener(new SearchTemplatePresenter.7(this, localContext, paramNetSearchTemplateUniversalItem));
+        }
+        else
+        {
+          paramNetSearchTemplateUniversalView.b.setVisibility(8);
+        }
+        i = (int)(0 + (SearchUtils.a(paramNetSearchTemplateUniversalView.b, paramNetSearchTemplateUniversalItem.a.b) + DisplayUtil.a(localContext, 32.0F) + DisplayUtil.a(localContext, 15.0F)));
+        if (bool1)
+        {
+          paramNetSearchTemplateUniversalView.b.setBackgroundResource(2130844395);
+          paramNetSearchTemplateUniversalView.b.setTextColor(Color.parseColor("#6991B8"));
+          return i;
+        }
+        paramNetSearchTemplateUniversalView.b.setBackgroundResource(2130844394);
+        paramNetSearchTemplateUniversalView.b.setTextColor(Color.parseColor("#000000"));
+        return i;
+      }
+      if (paramNetSearchTemplateUniversalItem.a.a == 3)
+      {
+        if (paramNetSearchTemplateUniversalView.b != null) {
+          paramNetSearchTemplateUniversalView.b.setVisibility(8);
+        }
+        if (paramNetSearchTemplateUniversalView.a != null)
+        {
+          if (paramNetSearchTemplateUniversalView.c == null) {
+            return 0;
+          }
+          int m = ((Integer)paramNetSearchTemplateUniversalView.h().getTag(2131449868)).intValue();
+          SongInfo localSongInfo2 = new SongInfo();
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(paramNetSearchTemplateUniversalItem.o);
+            localSongInfo2.d = localJSONObject.optString("audio_url");
+            localSongInfo2.e = localJSONObject.optString("title");
+            localSongInfo2.f = localJSONObject.optString("desc");
+            localSongInfo2.g = localJSONObject.optString("image_url");
+            boolean bool2 = TextUtils.isEmpty(localJSONObject.optString("id"));
+            j = bool2 ^ true;
+            if (j != 0) {}
+            try
+            {
+              localSongInfo2.a = Long.parseLong(localJSONObject.optString("id"));
+              int n = localJSONObject.optInt("playable");
+              i = j;
+              if (n != 1) {
+                break label526;
+              }
+              i = k;
+            }
+            catch (Exception localException1) {}
+            i = j;
+          }
+          catch (Exception localException2)
+          {
+            j = 0;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, localException2.toString());
+            i = j;
+          }
+          label526:
+          k = 0;
+          int j = i;
+          i = k;
+          this.e = localSongInfo2.a;
+          QQPlayerService.d(this);
+          if (QQPlayerService.c() != 2)
+          {
+            SearchUtils.c = -1L;
+          }
+          else
+          {
+            SongInfo localSongInfo1 = QQPlayerService.g();
+            if (localSongInfo1 != null) {
+              SearchUtils.c = localSongInfo1.a;
+            }
+          }
+          if (bool1)
+          {
+            if (this.e == SearchUtils.c) {
+              paramNetSearchTemplateUniversalView.c.setImageResource(2130851721);
+            } else {
+              paramNetSearchTemplateUniversalView.c.setImageResource(2130851719);
+            }
+          }
+          else if (this.e == SearchUtils.c) {
+            paramNetSearchTemplateUniversalView.c.setImageResource(2130851720);
+          } else {
+            paramNetSearchTemplateUniversalView.c.setImageResource(2130851718);
+          }
+          if ((i != 0) && (j != 0) && (!TextUtils.isEmpty(localSongInfo2.d)))
+          {
+            paramNetSearchTemplateUniversalView.c.setVisibility(0);
+            paramNetSearchTemplateUniversalView.a.setOnClickListener(new SearchTemplatePresenter.8(this, paramNetSearchTemplateUniversalView, m, localContext, bool1, localSongInfo2, paramNetSearchTemplateUniversalItem));
+          }
+          else
+          {
+            paramNetSearchTemplateUniversalView.c.setVisibility(8);
+          }
+          return DisplayUtil.a(localContext, 39.0F) + 0;
+        }
+        return 0;
+      }
+      paramNetSearchTemplateUniversalView.b.setVisibility(8);
+      return 0;
+    }
+    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.b != null)) {
+      paramNetSearchTemplateUniversalView.b.setVisibility(8);
+    }
+    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.c != null)) {
+      paramNetSearchTemplateUniversalView.c.setVisibility(8);
+    }
+    return 0;
+  }
+  
+  private void c(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, NetSearchTemplateUniversalView paramNetSearchTemplateUniversalView)
+  {
+    if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.a != null) && (paramNetSearchTemplateUniversalView != null))
+    {
+      if (paramNetSearchTemplateUniversalView.z == null) {
         return;
       }
-      paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      Context localContext = paramNetSearchTemplateUniversalView.z.getContext();
+      if ((paramNetSearchTemplateUniversalItem.a.a == 1) && (!TextUtils.isEmpty(paramNetSearchTemplateUniversalItem.a.b)))
+      {
+        paramNetSearchTemplateUniversalView.z.setVisibility(0);
+        paramNetSearchTemplateUniversalView.z.setText(paramNetSearchTemplateUniversalItem.a.b);
+        paramNetSearchTemplateUniversalView.z.setOnClickListener(new SearchTemplatePresenter.9(this, localContext, paramNetSearchTemplateUniversalItem));
+        return;
+      }
+      paramNetSearchTemplateUniversalView.z.setVisibility(8);
       return;
     }
-    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton != null)) {
-      paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+    if ((paramNetSearchTemplateUniversalView != null) && (paramNetSearchTemplateUniversalView.z != null)) {
+      paramNetSearchTemplateUniversalView.z.setVisibility(8);
     }
   }
   
@@ -2076,16 +2086,16 @@ public class SearchTemplatePresenter
       return;
     case 6: 
       paramInt1 = DisplayUtil.a(paramContext, 62.0F);
-      a(paramSquareImageView, paramImageView, paramTextView, DisplayUtil.a(paramContext, 100.0F), paramInt1, false, paramString1, null, 2130842411, false);
+      a(paramSquareImageView, paramImageView, paramTextView, DisplayUtil.a(paramContext, 100.0F), paramInt1, false, paramString1, null, 2130843364, false);
       return;
     case 5: 
       a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 0, true);
       return;
     case 4: 
-      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130842411, false);
+      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130843364, false);
       return;
     case 3: 
-      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130842411, false);
+      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130843364, false);
       return;
     case 2: 
       a(paramSquareImageView, paramImageView, paramTextView, paramInt2, (int)(paramInt2 * 1.4F), false, paramString1, null, 0, false);
@@ -2099,7 +2109,7 @@ public class SearchTemplatePresenter
     if (paramImageView == null) {
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(paramImageView.getContext(), 2130772249);
+    Animation localAnimation = AnimationUtils.loadAnimation(paramImageView.getContext(), 2130772315);
     if (localAnimation != null)
     {
       localAnimation.setInterpolator(new LinearInterpolator());
@@ -2132,8 +2142,8 @@ public class SearchTemplatePresenter
   
   public void a(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView)
   {
-    SearchViewUtils.a(paramNetSearchTemplateBaseItem.b(), paramNetSearchTemplateBaseItem.f_(), paramNetSearchTemplateBaseView.a(), paramNetSearchTemplateBaseItem.jdField_a_of_type_Boolean, paramNetSearchTemplateBaseItem.u, paramNetSearchTemplateBaseItem.g);
-    switch (paramNetSearchTemplateBaseItem.d())
+    SearchViewUtils.a(paramNetSearchTemplateBaseItem.ck_(), paramNetSearchTemplateBaseItem.cl_(), paramNetSearchTemplateBaseView.h(), paramNetSearchTemplateBaseItem.r, paramNetSearchTemplateBaseItem.af, paramNetSearchTemplateBaseItem.ag);
+    switch (paramNetSearchTemplateBaseItem.m())
     {
     case 5: 
     case 10: 
@@ -2188,57 +2198,58 @@ public class SearchTemplatePresenter
       a((NetSearchTemplateAvatarsItem)paramNetSearchTemplateBaseItem, (NetSearchTemplateAvatarsView)paramNetSearchTemplateBaseView);
     }
     b(paramNetSearchTemplateBaseItem, paramNetSearchTemplateBaseView);
-    if (TextUtils.isEmpty(paramNetSearchTemplateBaseItem.i)) {
+    paramNetSearchTemplateBaseItem.o();
+    if (TextUtils.isEmpty(paramNetSearchTemplateBaseItem.s)) {
       c(paramNetSearchTemplateBaseItem, paramNetSearchTemplateBaseView);
     }
   }
   
   public void a(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView, Bitmap paramBitmap)
   {
-    if (paramNetSearchTemplateBaseView.b() != null) {
-      paramNetSearchTemplateBaseView.b().setImageBitmap(paramBitmap);
+    if (paramNetSearchTemplateBaseView.g() != null) {
+      paramNetSearchTemplateBaseView.g().setImageBitmap(paramBitmap);
     }
   }
   
   protected void a(NetSearchTemplateQAItem paramNetSearchTemplateQAItem, NetSearchTemplateQAView paramNetSearchTemplateQAView)
   {
-    Object localObject1 = paramNetSearchTemplateQAView.a().getContext();
+    Object localObject1 = paramNetSearchTemplateQAView.h().getContext();
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      paramNetSearchTemplateQAView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      paramNetSearchTemplateQAView.b.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateQAView.d.setTextColor(Color.parseColor("#4A4A4A"));
     }
     else
     {
-      paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
-      paramNetSearchTemplateQAView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      paramNetSearchTemplateQAView.b.setTextColor(Color.parseColor("#262626"));
+      paramNetSearchTemplateQAView.d.setTextColor(Color.parseColor("#737373"));
     }
     Object localObject2;
     Object localObject3;
-    if (!TextUtils.isEmpty(paramNetSearchTemplateQAItem.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateQAItem.b))
     {
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      localObject3 = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      localObject3 = this.b;
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject3);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject3);
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = DisplayUtil.a((Context)localObject1, 18.0F);
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = DisplayUtil.a((Context)localObject1, 18.0F);
       ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "askIcon";
-      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateQAItem.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-      paramNetSearchTemplateQAView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+      localObject2 = URLDrawable.getDrawable(paramNetSearchTemplateQAItem.b, (URLDrawable.URLDrawableOptions)localObject2);
+      paramNetSearchTemplateQAView.a.setImageDrawable((Drawable)localObject2);
       if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
         ((URLDrawable)localObject2).restartDownload();
       }
-      paramNetSearchTemplateQAView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateQAView.a.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateQAView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateQAView.a.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateQAItem.j))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateQAItem.c))
     {
-      int j = paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView.getContext().getResources().getDisplayMetrics().widthPixels;
-      int i = (int)SearchUtils.a(paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView, " ");
+      int j = paramNetSearchTemplateQAView.b.getContext().getResources().getDisplayMetrics().widthPixels;
+      int i = (int)SearchUtils.a(paramNetSearchTemplateQAView.b, " ");
       int k = DisplayUtil.a((Context)localObject1, 22.0F) / i;
       localObject1 = "";
       i = 0;
@@ -2250,111 +2261,111 @@ public class SearchTemplatePresenter
         localObject1 = ((StringBuilder)localObject2).toString();
         i += 1;
       }
-      localObject2 = paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView;
-      float f = j;
+      localObject2 = paramNetSearchTemplateQAView.b;
+      float f1 = j;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
-      ((StringBuilder)localObject3).append(paramNetSearchTemplateQAItem.j);
-      localObject1 = SearchUtils.a((TextView)localObject2, f, 2, ((StringBuilder)localObject3).toString(), paramNetSearchTemplateQAItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
-      paramNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      ((StringBuilder)localObject3).append(paramNetSearchTemplateQAItem.c);
+      localObject1 = SearchUtils.a((TextView)localObject2, f1, 2, ((StringBuilder)localObject3).toString(), paramNetSearchTemplateQAItem.n.a, false, false, true);
+      paramNetSearchTemplateQAView.b.setText((CharSequence)localObject1);
     }
     paramNetSearchTemplateQAView.a(paramNetSearchTemplateQAItem);
-    if ((!TextUtils.isEmpty(paramNetSearchTemplateQAItem.k)) && (paramNetSearchTemplateQAItem.jdField_a_of_type_JavaUtilList != null) && (paramNetSearchTemplateQAItem.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((!TextUtils.isEmpty(paramNetSearchTemplateQAItem.d)) && (paramNetSearchTemplateQAItem.e != null) && (paramNetSearchTemplateQAItem.e.size() != 0))
     {
-      paramNetSearchTemplateQAView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateQAItem.k);
-      paramNetSearchTemplateQAView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateQAView.d.setText(paramNetSearchTemplateQAItem.d);
+      paramNetSearchTemplateQAView.d.setVisibility(0);
       return;
     }
-    paramNetSearchTemplateQAView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramNetSearchTemplateQAView.d.setVisibility(8);
   }
   
   protected void a(NetSearchTemplateTitleItem paramNetSearchTemplateTitleItem, NetSearchTemplateTitleView paramNetSearchTemplateTitleView)
   {
     Object localObject;
-    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.b))
     {
-      paramNetSearchTemplateTitleView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      paramNetSearchTemplateTitleView.a.setVisibility(0);
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      ColorDrawable localColorDrawable = this.b;
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramNetSearchTemplateTitleView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramNetSearchTemplateTitleView.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height;
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateTitleItem.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      paramNetSearchTemplateTitleView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramNetSearchTemplateTitleView.a.getLayoutParams().width;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramNetSearchTemplateTitleView.a.getLayoutParams().height;
+      localObject = URLDrawable.getDrawable(paramNetSearchTemplateTitleItem.b, (URLDrawable.URLDrawableOptions)localObject);
+      paramNetSearchTemplateTitleView.a.setImageDrawable((Drawable)localObject);
       if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
         ((URLDrawable)localObject).restartDownload();
       }
     }
     else
     {
-      paramNetSearchTemplateTitleView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramNetSearchTemplateTitleView.a.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.j))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.c))
     {
-      paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      int i = paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.getContext().getResources().getDisplayMetrics().widthPixels;
-      localObject = SearchUtils.a(paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView, i, 1, paramNetSearchTemplateTitleItem.j, paramNetSearchTemplateTitleItem.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.jdField_a_of_type_JavaUtilList, false, false, true);
-      paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    }
-    else
-    {
-      paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.l))
-    {
-      paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateTitleItem.l);
-      paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramNetSearchTemplateTitleView.b.setVisibility(0);
+      int i = paramNetSearchTemplateTitleView.b.getContext().getResources().getDisplayMetrics().widthPixels;
+      localObject = SearchUtils.a(paramNetSearchTemplateTitleView.b, i, 1, paramNetSearchTemplateTitleItem.c, paramNetSearchTemplateTitleItem.n.a, false, false, true);
+      paramNetSearchTemplateTitleView.b.setText((CharSequence)localObject);
     }
     else
     {
-      paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramNetSearchTemplateTitleView.b.setVisibility(8);
     }
-    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.k))
+    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.e))
     {
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.setText(paramNetSearchTemplateTitleItem.k);
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramNetSearchTemplateTitleView.c.setText(paramNetSearchTemplateTitleItem.e);
+      paramNetSearchTemplateTitleView.c.setVisibility(0);
+      paramNetSearchTemplateTitleView.d.setVisibility(0);
     }
     else
     {
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramNetSearchTemplateTitleView.c.setVisibility(8);
+      paramNetSearchTemplateTitleView.d.setVisibility(8);
+    }
+    if (!TextUtils.isEmpty(paramNetSearchTemplateTitleItem.d))
+    {
+      paramNetSearchTemplateTitleView.n.setText(paramNetSearchTemplateTitleItem.d);
+      paramNetSearchTemplateTitleView.n.setVisibility(0);
+    }
+    else
+    {
+      paramNetSearchTemplateTitleView.n.setVisibility(8);
     }
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166983));
-      paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166982));
-      paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166982));
+      paramNetSearchTemplateTitleView.b.setTextColor(paramNetSearchTemplateTitleView.b.getContext().getResources().getColor(2131167917));
+      paramNetSearchTemplateTitleView.n.setTextColor(paramNetSearchTemplateTitleView.n.getContext().getResources().getColor(2131167916));
+      paramNetSearchTemplateTitleView.c.setTextColor(paramNetSearchTemplateTitleView.c.getContext().getResources().getColor(2131167916));
       return;
     }
-    paramNetSearchTemplateTitleView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
-    paramNetSearchTemplateTitleView.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-    paramNetSearchTemplateTitleView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+    paramNetSearchTemplateTitleView.b.setTextColor(Color.parseColor("#262626"));
+    paramNetSearchTemplateTitleView.n.setTextColor(Color.parseColor("#737373"));
+    paramNetSearchTemplateTitleView.c.setTextColor(Color.parseColor("#737373"));
   }
   
   protected void a(NetSearchTemplateHorSlidingContainerItem paramNetSearchTemplateHorSlidingContainerItem, NetSearchTemplateHorSlidingContainerView paramNetSearchTemplateHorSlidingContainerView)
   {
-    if ((paramNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+    if ((paramNetSearchTemplateHorSlidingContainerItem.v != null) && (paramNetSearchTemplateHorSlidingContainerItem.v.size() != 0))
     {
-      SearchTemplateHorSlidingDataAdapter localSearchTemplateHorSlidingDataAdapter2 = (SearchTemplateHorSlidingDataAdapter)paramNetSearchTemplateHorSlidingContainerView.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter();
+      SearchTemplateHorSlidingDataAdapter localSearchTemplateHorSlidingDataAdapter2 = (SearchTemplateHorSlidingDataAdapter)paramNetSearchTemplateHorSlidingContainerView.a.getAdapter();
       SearchTemplateHorSlidingDataAdapter localSearchTemplateHorSlidingDataAdapter1;
       if (localSearchTemplateHorSlidingDataAdapter2 != null)
       {
         localSearchTemplateHorSlidingDataAdapter1 = localSearchTemplateHorSlidingDataAdapter2;
-        if (localSearchTemplateHorSlidingDataAdapter2.a() == paramNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaUtilArrayList) {}
+        if (localSearchTemplateHorSlidingDataAdapter2.a() == paramNetSearchTemplateHorSlidingContainerItem.v) {}
       }
       else
       {
-        localSearchTemplateHorSlidingDataAdapter1 = new SearchTemplateHorSlidingDataAdapter(paramNetSearchTemplateHorSlidingContainerItem, this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter.jdField_b_of_type_Int, paramNetSearchTemplateHorSlidingContainerView.jdField_a_of_type_ComTencentWidgetHorizontalListView);
-        paramNetSearchTemplateHorSlidingContainerView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(localSearchTemplateHorSlidingDataAdapter1);
+        localSearchTemplateHorSlidingDataAdapter1 = new SearchTemplateHorSlidingDataAdapter(paramNetSearchTemplateHorSlidingContainerItem, this.g.b, paramNetSearchTemplateHorSlidingContainerView.a);
+        paramNetSearchTemplateHorSlidingContainerView.a.setAdapter(localSearchTemplateHorSlidingDataAdapter1);
       }
-      if (localSearchTemplateHorSlidingDataAdapter1.a() != paramNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaUtilArrayList)
+      if (localSearchTemplateHorSlidingDataAdapter1.a() != paramNetSearchTemplateHorSlidingContainerItem.v)
       {
-        paramNetSearchTemplateHorSlidingContainerView.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem = paramNetSearchTemplateHorSlidingContainerItem;
-        paramNetSearchTemplateHorSlidingContainerView.jdField_a_of_type_ComTencentWidgetHorizontalListView.resetCurrentX(paramNetSearchTemplateHorSlidingContainerItem.jdField_b_of_type_Int);
+        paramNetSearchTemplateHorSlidingContainerView.b = paramNetSearchTemplateHorSlidingContainerItem;
+        paramNetSearchTemplateHorSlidingContainerView.a.resetCurrentX(paramNetSearchTemplateHorSlidingContainerItem.w);
       }
-      localSearchTemplateHorSlidingDataAdapter1.a(paramNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaUtilArrayList);
+      localSearchTemplateHorSlidingDataAdapter1.a(paramNetSearchTemplateHorSlidingContainerItem.v);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -2364,19 +2375,19 @@ public class SearchTemplatePresenter
   
   protected void a(NetSearchTemplateHorizontalContainerItem paramNetSearchTemplateHorizontalContainerItem, NetSearchTemplateHorizontalContainerView paramNetSearchTemplateHorizontalContainerView)
   {
-    paramNetSearchTemplateHorizontalContainerView.a().getContext();
-    paramNetSearchTemplateHorizontalContainerView.a();
-    if ((paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+    paramNetSearchTemplateHorizontalContainerView.h().getContext();
+    paramNetSearchTemplateHorizontalContainerView.h();
+    if ((paramNetSearchTemplateHorizontalContainerItem.c != null) && (paramNetSearchTemplateHorizontalContainerItem.c.size() != 0))
     {
       paramNetSearchTemplateHorizontalContainerView.a(paramNetSearchTemplateHorizontalContainerItem);
-      if (paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size() != paramNetSearchTemplateHorizontalContainerView.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramNetSearchTemplateHorizontalContainerItem.c.size() != paramNetSearchTemplateHorizontalContainerView.a.size()) {
         QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "bindHorizontalContainerTemplateView, view.size != model.size");
       }
-      int j = paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = paramNetSearchTemplateHorizontalContainerItem.c.size();
       int i = 0;
       while (i < j)
       {
-        ((NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateHorizontalContainerItem.jdField_a_of_type_JavaUtilArrayList.get(i)).a((NetSearchTemplateHorizontalBaseView)paramNetSearchTemplateHorizontalContainerView.jdField_a_of_type_JavaUtilArrayList.get(i));
+        ((NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateHorizontalContainerItem.c.get(i)).a((NetSearchTemplateHorizontalBaseView)paramNetSearchTemplateHorizontalContainerView.a.get(i));
         i += 1;
       }
       return;
@@ -2388,20 +2399,20 @@ public class SearchTemplatePresenter
   
   protected void a(NetSearchTemplateIndividuateContainerItem paramNetSearchTemplateIndividuateContainerItem, NetSearchTemplateIndividuateContainerView paramNetSearchTemplateIndividuateContainerView)
   {
-    if ((paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList != null) && (paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((paramNetSearchTemplateIndividuateContainerItem.a != null) && (paramNetSearchTemplateIndividuateContainerItem.a.size() != 0))
     {
       paramNetSearchTemplateIndividuateContainerView.a(paramNetSearchTemplateIndividuateContainerItem);
-      if (paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size() != paramNetSearchTemplateIndividuateContainerView.jdField_a_of_type_JavaUtilList.size()) {
+      if (paramNetSearchTemplateIndividuateContainerItem.a.size() != paramNetSearchTemplateIndividuateContainerView.a.size()) {
         QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "bindIndividualContainerTemplateView, vas_search, view.size != model.size");
       }
-      int j = paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.size();
+      int j = paramNetSearchTemplateIndividuateContainerItem.a.size();
       int i = 0;
       while (i < j)
       {
-        ((NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateIndividuateContainerItem.jdField_a_of_type_JavaUtilList.get(i)).a((NetSearchTemplateHorizontalBaseView)paramNetSearchTemplateIndividuateContainerView.jdField_a_of_type_JavaUtilList.get(i));
+        ((NetSearchTemplateHorizontalBaseItem)paramNetSearchTemplateIndividuateContainerItem.a.get(i)).a((NetSearchTemplateHorizontalBaseView)paramNetSearchTemplateIndividuateContainerView.a.get(i));
         i += 1;
       }
-      paramNetSearchTemplateIndividuateContainerItem.a(j);
+      paramNetSearchTemplateIndividuateContainerItem.b(j);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -2411,7 +2422,7 @@ public class SearchTemplatePresenter
   
   protected void a(NetSearchTemplateMiniAppItem paramNetSearchTemplateMiniAppItem, NetSearchTemplateMiniAppView paramNetSearchTemplateMiniAppView)
   {
-    Object localObject1 = (LinearLayout)paramNetSearchTemplateMiniAppView.b();
+    Object localObject1 = (LinearLayout)paramNetSearchTemplateMiniAppView.j();
     if ((localObject1 != null) && (paramNetSearchTemplateMiniAppItem.a != null))
     {
       ((LinearLayout)localObject1).removeAllViews();
@@ -2419,84 +2430,84 @@ public class SearchTemplatePresenter
         ((View)((LinearLayout)localObject1).getParent()).setPadding(0, 0, 0, 0);
       }
       MiniProgramSearchResultModel localMiniProgramSearchResultModel = paramNetSearchTemplateMiniAppItem.a;
-      paramNetSearchTemplateMiniAppItem = paramNetSearchTemplateMiniAppView.a().getContext();
-      Object localObject2 = LayoutInflater.from(paramNetSearchTemplateMiniAppItem).inflate(2131562799, null);
+      paramNetSearchTemplateMiniAppItem = paramNetSearchTemplateMiniAppView.h().getContext();
+      Object localObject2 = LayoutInflater.from(paramNetSearchTemplateMiniAppItem).inflate(2131629244, null);
       MiniProgramSearchResultView localMiniProgramSearchResultView = new MiniProgramSearchResultView((View)localObject2);
-      Object localObject3 = ((View)localObject2).findViewById(2131369010);
-      int i = ViewUtils.a(6.0F);
+      Object localObject3 = ((View)localObject2).findViewById(2131435970);
+      int i = ViewUtils.dip2px(6.0F);
       ((View)localObject3).setPadding(0, i, 0, i);
       ((LinearLayout)localObject1).addView((View)localObject2);
       if (localMiniProgramSearchResultModel.a() == null)
       {
-        if (localMiniProgramSearchResultView.c() != null) {
-          localMiniProgramSearchResultView.c().setVisibility(8);
+        if (localMiniProgramSearchResultView.d() != null) {
+          localMiniProgramSearchResultView.d().setVisibility(8);
         }
-        if (localMiniProgramSearchResultView.a() != null) {
-          localMiniProgramSearchResultView.a().setVisibility(8);
+        if (localMiniProgramSearchResultView.b() != null) {
+          localMiniProgramSearchResultView.b().setVisibility(8);
         }
-        localObject1 = localMiniProgramSearchResultView.a();
+        localObject1 = localMiniProgramSearchResultView.k();
         if (localObject1 != null) {
           ((URLImageView)localObject1).setVisibility(8);
         }
-        localObject1 = localMiniProgramSearchResultView.e();
+        localObject1 = localMiniProgramSearchResultView.j();
         if (localObject1 != null)
         {
           ((TextView)localObject1).setVisibility(0);
-          if (!TextUtils.isEmpty(localMiniProgramSearchResultModel.b())) {
-            ((TextView)localObject1).setText(localMiniProgramSearchResultModel.b());
+          if (!TextUtils.isEmpty(localMiniProgramSearchResultModel.d())) {
+            ((TextView)localObject1).setText(localMiniProgramSearchResultModel.d());
           }
         }
       }
       else
       {
-        if ((localMiniProgramSearchResultView.c() != null) && (!TextUtils.isEmpty(localMiniProgramSearchResultModel.a())))
+        if ((localMiniProgramSearchResultView.d() != null) && (!TextUtils.isEmpty(localMiniProgramSearchResultModel.a())))
         {
-          localMiniProgramSearchResultView.c().setVisibility(0);
-          localMiniProgramSearchResultView.c().setText(localMiniProgramSearchResultModel.a());
+          localMiniProgramSearchResultView.d().setVisibility(0);
+          localMiniProgramSearchResultView.d().setText(localMiniProgramSearchResultModel.a());
         }
-        else if (localMiniProgramSearchResultView.c() != null)
+        else if (localMiniProgramSearchResultView.d() != null)
         {
-          localMiniProgramSearchResultView.c().setVisibility(8);
+          localMiniProgramSearchResultView.d().setVisibility(8);
         }
-        if (localMiniProgramSearchResultView.a() != null) {
-          localMiniProgramSearchResultView.a().setVisibility(0);
+        if (localMiniProgramSearchResultView.b() != null) {
+          localMiniProgramSearchResultView.b().setVisibility(0);
         }
-        localObject1 = localMiniProgramSearchResultView.e();
+        localObject1 = localMiniProgramSearchResultView.j();
         if (localObject1 != null) {
           ((TextView)localObject1).setVisibility(8);
         }
-        if (!TextUtils.isEmpty(localMiniProgramSearchResultModel.b())) {
-          localMiniProgramSearchResultView.a().setText(localMiniProgramSearchResultModel.b());
+        if (!TextUtils.isEmpty(localMiniProgramSearchResultModel.d())) {
+          localMiniProgramSearchResultView.b().setText(localMiniProgramSearchResultModel.d());
         }
       }
-      if ((localMiniProgramSearchResultView.b() != null) && (!TextUtils.isEmpty(localMiniProgramSearchResultModel.f())))
+      if ((localMiniProgramSearchResultView.g() != null) && (!TextUtils.isEmpty(localMiniProgramSearchResultModel.t())))
       {
-        localObject1 = localMiniProgramSearchResultModel.f();
+        localObject1 = localMiniProgramSearchResultModel.t();
         localObject2 = new ColorDrawable(Color.parseColor("#e7e7e7"));
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 50.0F);
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 50.0F);
         ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
         ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-        if (URLUtil.a((String)localObject1))
+        if (URLUtil.e((String)localObject1))
         {
           localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-          ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 50.0F), DisplayUtil.a(paramNetSearchTemplateMiniAppView.a().getContext(), 50.0F), DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 3.0F)));
-          ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.i);
-          localMiniProgramSearchResultView.b().setImageDrawable((Drawable)localObject1);
+          ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 50.0F), DisplayUtil.a(paramNetSearchTemplateMiniAppView.h().getContext(), 50.0F), DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 3.0F)));
+          ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.j);
+          localMiniProgramSearchResultView.g().setImageDrawable((Drawable)localObject1);
           if ((((URLDrawable)localObject1).getStatus() != 1) && (((URLDrawable)localObject1).getStatus() != 0)) {
             ((URLDrawable)localObject1).restartDownload();
           }
         }
         else
         {
-          localMiniProgramSearchResultView.b().setImageDrawable((Drawable)localObject2);
+          localMiniProgramSearchResultView.g().setImageDrawable((Drawable)localObject2);
         }
       }
-      localMiniProgramSearchResultView.a().setOnClickListener(new SearchTemplatePresenter.2(this, localMiniProgramSearchResultModel));
-      if ((localMiniProgramSearchResultView.a() != null) && (localMiniProgramSearchResultModel.c()))
+      localMiniProgramSearchResultView.h().setOnClickListener(new SearchTemplatePresenter.2(this, localMiniProgramSearchResultModel));
+      if ((localMiniProgramSearchResultView.k() != null) && (localMiniProgramSearchResultModel.x()))
       {
-        paramNetSearchTemplateMiniAppView = localMiniProgramSearchResultModel.g();
+        paramNetSearchTemplateMiniAppView = localMiniProgramSearchResultModel.w();
         localObject1 = new ColorDrawable(Color.parseColor("#e7e7e7"));
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 40.0F);
@@ -2505,8 +2516,8 @@ public class SearchTemplatePresenter
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
         paramNetSearchTemplateMiniAppView = URLDrawable.getDrawable(paramNetSearchTemplateMiniAppView, (URLDrawable.URLDrawableOptions)localObject2);
         paramNetSearchTemplateMiniAppView.setTag(URLDrawableDecodeHandler.b(DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 38.0F), DisplayUtil.a(paramNetSearchTemplateMiniAppItem, 12.0F), 0));
-        paramNetSearchTemplateMiniAppView.setDecodeHandler(URLDrawableDecodeHandler.i);
-        localMiniProgramSearchResultView.a().setImageDrawable(paramNetSearchTemplateMiniAppView);
+        paramNetSearchTemplateMiniAppView.setDecodeHandler(URLDrawableDecodeHandler.j);
+        localMiniProgramSearchResultView.k().setImageDrawable(paramNetSearchTemplateMiniAppView);
         if ((paramNetSearchTemplateMiniAppView.getStatus() != 1) && (paramNetSearchTemplateMiniAppView.getStatus() != 0)) {
           paramNetSearchTemplateMiniAppView.restartDownload();
         }
@@ -2519,7 +2530,7 @@ public class SearchTemplatePresenter
       } else {
         paramNetSearchTemplateMiniAppItem = "unused";
       }
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async(paramNetSearchTemplateMiniAppView, "search", "result_view", paramNetSearchTemplateMiniAppItem, localMiniProgramSearchResultModel.b());
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async(paramNetSearchTemplateMiniAppView, "search", "result_view", paramNetSearchTemplateMiniAppItem, localMiniProgramSearchResultModel.g());
     }
   }
   
@@ -2565,24 +2576,24 @@ public class SearchTemplatePresenter
     {
       paramTextView.setVisibility(8);
     }
-    paramImageView = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    paramImageView = this.b;
     paramImageView.setBounds(0, 0, paramInt1, paramInt2);
     paramString2 = paramImageView;
     try
     {
       if (TextUtils.isEmpty(paramString1)) {
-        break label364;
+        break label365;
       }
       paramTextView = URLDrawable.URLDrawableOptions.obtain();
       paramTextView.mRequestWidth = paramInt1;
       paramTextView.mRequestHeight = paramInt2;
-      paramTextView.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-      paramTextView.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+      paramTextView.mFailedDrawable = this.b;
+      paramTextView.mLoadingDrawable = this.b;
       if (paramBoolean2)
       {
         paramTextView.mMemoryCacheKeySuffix = "isAvatar";
         paramString2 = URLDrawable.getDrawable(paramString1, paramTextView);
-        paramString2.setDecodeHandler(URLDrawableDecodeHandler.a);
+        paramString2.setDecodeHandler(URLDrawableDecodeHandler.b);
         paramTextView = paramString2;
         paramImageView = paramString2;
       }
@@ -2595,11 +2606,11 @@ public class SearchTemplatePresenter
       try
       {
         if (paramTextView.getStatus() == 1) {
-          break label364;
+          break label365;
         }
         paramString2 = paramTextView;
         if (paramTextView.getStatus() == 0) {
-          break label364;
+          break label365;
         }
         paramTextView.restartDownload();
         paramString2 = paramTextView;
@@ -2612,21 +2623,21 @@ public class SearchTemplatePresenter
     paramString2.append(paramString1);
     QLog.e("Q.uniteSearch.SearchTemplatePresenter", 1, paramString2.toString(), paramTextView);
     paramString2 = paramImageView;
-    label364:
+    label365:
     paramSquareImageView.setImageDrawable(paramString2);
   }
   
   protected void b(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView)
   {
-    if (paramNetSearchTemplateBaseView.a() != null) {
-      paramNetSearchTemplateBaseView.a().setOnClickListener(new SearchTemplatePresenter.1(this, paramNetSearchTemplateBaseItem));
+    if (paramNetSearchTemplateBaseView.h() != null) {
+      paramNetSearchTemplateBaseView.h().setOnClickListener(new SearchTemplatePresenter.1(this, paramNetSearchTemplateBaseItem));
     }
   }
   
   public void c(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView)
   {
-    if ((paramNetSearchTemplateBaseView.b() != null) && ((paramNetSearchTemplateBaseItem instanceof IFaceModel)) && (!TextUtils.isEmpty(paramNetSearchTemplateBaseItem.a()))) {
-      paramNetSearchTemplateBaseView.b().setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, paramNetSearchTemplateBaseItem));
+    if ((paramNetSearchTemplateBaseView.g() != null) && ((paramNetSearchTemplateBaseItem instanceof IFaceModel)) && (!TextUtils.isEmpty(paramNetSearchTemplateBaseItem.c()))) {
+      paramNetSearchTemplateBaseView.g().setImageDrawable(SearchUtils.a(this.d, paramNetSearchTemplateBaseItem));
     }
   }
   
@@ -2639,13 +2650,13 @@ public class SearchTemplatePresenter
   
   public void onPlayStateChanged(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.f;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      localObject = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (ImageView)this.f.get();
       if (localObject == null) {
         return;
       }
@@ -2660,20 +2671,20 @@ public class SearchTemplatePresenter
       {
         ((ImageView)localObject).getContext();
         ((Integer)((ImageView)localObject).getTag()).intValue();
-        SearchUtils.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+        SearchUtils.c = this.e;
         ((ImageView)localObject).post(new SearchTemplatePresenter.11(this, (ImageView)localObject, bool));
-        ((ImageView)localObject).setContentDescription(localResources.getString(2131690213));
-        this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter.notifyDataSetChanged();
+        ((ImageView)localObject).setContentDescription(localResources.getString(2131887113));
+        this.g.notifyDataSetChanged();
         return;
       }
       ((ImageView)localObject).post(new SearchTemplatePresenter.12(this, (ImageView)localObject, bool));
-      ((ImageView)localObject).setContentDescription(localResources.getString(2131690211));
+      ((ImageView)localObject).setContentDescription(localResources.getString(2131887111));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchTemplatePresenter
  * JD-Core Version:    0.7.0.1
  */

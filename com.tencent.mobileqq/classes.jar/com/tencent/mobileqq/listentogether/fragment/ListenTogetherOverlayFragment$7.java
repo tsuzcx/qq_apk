@@ -11,7 +11,7 @@ class ListenTogetherOverlayFragment$7
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
+    if ((!ListenTogetherOverlayFragment.d(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
       ListenTogetherOverlayFragment.a(this.a).finish();
     }
     ListenTogetherOverlayFragment.a(this.a, null);
@@ -19,7 +19,7 @@ class ListenTogetherOverlayFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment.7
  * JD-Core Version:    0.7.0.1
  */

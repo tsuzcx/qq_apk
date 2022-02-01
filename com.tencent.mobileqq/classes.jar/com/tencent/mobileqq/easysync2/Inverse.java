@@ -6,15 +6,15 @@ import java.util.Map;
 
 class Inverse
 {
-  private int jdField_a_of_type_Int = 0;
-  private Operation jdField_a_of_type_ComTencentMobileqqEasysync2Operation = Changeset.a('+');
-  private Iterator<Operation> jdField_a_of_type_JavaUtilIterator = null;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int a = 0;
   private int b = 0;
+  private Iterator<Operation> c = null;
+  private Operation d = Changeset.a('+');
+  private Map<String, String> e = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Inverse
  * JD-Core Version:    0.7.0.1
  */

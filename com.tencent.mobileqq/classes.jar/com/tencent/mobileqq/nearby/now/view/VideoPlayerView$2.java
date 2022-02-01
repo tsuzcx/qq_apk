@@ -32,7 +32,7 @@ class VideoPlayerView$2
         {
           paramMessage = new StringBuilder();
           paramMessage.append("UPDATE_COVER  mPlayer.getCurrentPosition()=");
-          paramMessage.append(this.a.mPlayer.a());
+          paramMessage.append(this.a.mPlayer.d());
           QLog.i("VideoPlayerView", 2, paramMessage.toString());
         }
         ((ViewGroup)this.a.ivCover.getParent()).removeView(this.a.ivCover);
@@ -48,7 +48,7 @@ class VideoPlayerView$2
     {
       if (this.a.mPlayer != null)
       {
-        i = this.a.mPlayer.a();
+        i = this.a.mPlayer.h();
         ((IVideoPlayerView.VideoInfoListener)this.a.mVideoInfoListener).onPlayProgress(i);
         if (QLog.isColorLevel())
         {
@@ -64,7 +64,7 @@ class VideoPlayerView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.2
  * JD-Core Version:    0.7.0.1
  */

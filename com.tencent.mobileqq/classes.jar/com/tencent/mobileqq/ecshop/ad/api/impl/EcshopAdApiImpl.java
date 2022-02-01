@@ -38,9 +38,9 @@ public final class EcshopAdApiImpl
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramMessageRecord, "message");
-    paramContext = new EcshopAdViewHelper().a(paramContext, paramMessageRecord, paramString1, paramString2);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "EcshopAdViewHelper().get…SourceName, adSourceMenu)");
-    return paramContext;
+    paramString1 = new TextView(paramContext);
+    getAdSourceView(paramContext, paramMessageRecord, paramString1, paramString2);
+    return (View)paramString1;
   }
   
   @NotNull
@@ -62,14 +62,14 @@ public final class EcshopAdApiImpl
   
   public void updateRequestInterval(int paramInt)
   {
-    if (EcshopAdHandler.a < paramInt) {
-      EcshopAdHandler.a = paramInt;
+    if (EcshopAdHandler.c < paramInt) {
+      EcshopAdHandler.c = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.ad.api.impl.EcshopAdApiImpl
  * JD-Core Version:    0.7.0.1
  */

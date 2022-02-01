@@ -74,7 +74,7 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_PUBLIC_ACCOUNT_KANDIAN_FEEDS_PRELOAD_3G = "kandian_feeds_preload_3G";
   public static final String KEY_PUBLIC_ACCOUNT_KANDIAN_FEEDS_PRELOAD_4G = "kandian_feeds_preload_4G";
   public static final String KEY_PUBLIC_ACCOUNT_KANDIAN_FEEDS_PRELOAD_WIFI = "kandian_feeds_preload_wifi";
-  public static final String KEY_PUBLIC_ACCOUNT_KANDIAN_FLING_LToR_Host = "kandian_feeds_fling_LToR_host";
+  public static final String KEY_PUBLIC_ACCOUNT_KANDIAN_FLING_L2R_HOST = "kandian_feeds_fling_LToR_host";
   public static final String KEY_PUBLIC_ACCOUNT_LIST_PACENTER_ANIM = "public_account_list_pa_center_anim";
   public static final String KEY_PUBLIC_ACCOUNT_QQ_MAIL_CONFIG_VERSION = "public_account_qq_mail_config_version";
   public static final String KEY_PUBLIC_ACCOUNT_QQ_MAIL_GRAY_TIP_DAILY_COUNT = "public_account_qq_mail_gray_tip_daily_count";
@@ -103,6 +103,7 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_QCIRCLE_SHOW_PUBLISH_FEED_GUIDE_BUBBLE = "qcircle_show_publish_feed_guide_bubble_v2";
   public static final String KEY_QCIRCLE_SHOW_PUBLISH_LABEL_GUIDE_BUBBLE = "qcircle_show_publish_label_guide_bubble";
   public static final String KEY_QCIRCLE_UNREAD_MESSAGE_INFO = "qcircle_unread_message_info";
+  public static final String KEY_QCIRCLE_UNREAD_MESSAGE_INFOS = "key_qcircle_unread_message_infos";
   public static final String KEY_QCIRCLR_FULE_COUNT = "qcircle_fuel_count";
   public static final String KEY_QZONE_XP = "qzone_xp_config_version";
   public static final String KEY_READINJOY_COMMENT_BIU_SWITCH = "readinjoy_comment_biu_switch";
@@ -113,7 +114,7 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_READINJOY_LAST_REQUEST_PREFETCH_FOLLOWING_TIME = "readinjoy_last_request_prefetch_following_time";
   public static final String KEY_READINJOY_SERACH_JUMP_URL_CONFIG_DATA = "readinjoy_search_jump_url_config_data";
   public static final String KEY_READ_IN_JOY_BIG_DATA_SHARE_CHANNEL = "big_data_share_channel";
-  public static final String KEY_READ_IN_JOY_BIG_DATA_SHARE_CHANNEL_URLs = "big_data_share_channel_urls";
+  public static final String KEY_READ_IN_JOY_BIG_DATA_SHARE_CHANNEL_URLS = "big_data_share_channel_urls";
   public static final String KEY_READ_IN_JOY_IP_CONNECT = "readInJoy_ip_connect";
   public static final String KEY_READ_IN_JOY_IP_CONNECT_FULL_REPORT = "readInJoy_ip_connect_full_report";
   public static final String KEY_READ_IN_JOY_IP_CONNECT_REPORT_TAIL = "readInJoy_ip_connect_report_tail";
@@ -151,6 +152,7 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_SERVICE_ACCOUNT_FOLDER_WELCOME_DIALOG = "service_account_folder_welcome_dialog";
   public static final String KEY_SERVICE_ACCOUNT_MAX_UNREADTIME = "service_account_folder_maxunreadtime";
   public static final String KEY_SERVICE_ACCOUNT_UNREADNUM = "service_account_folder_unreadnum";
+  public static final String KEY_SERVICE_FOLDER_RED_CLEAN_AFTER_ENTER = "service_folder_redclean_after_enter";
   public static final String KEY_SHOW_SPLASH_SWITCH = "show_splash_switch";
   public static final String KEY_SIGN_IN_INFO = "sign_in_info";
   public static final String KEY_SIGN_IN_JUMP_URL = "sign_in_jump_url";
@@ -162,7 +164,6 @@ public abstract interface SharedPreferencesConstants
   public static final String KEY_SIGN_IN_REPORT = "sign_in_report";
   public static final String KEY_SIGN_IN_TIME_STAMP = "sign_in_time_stamp";
   public static final String KEY_STORY_QIM_ONLINE_ICON_URL = "key_story_qim_online_icon_url";
-  public static final String KEY_Service_Folder_RedClean_After_Enter = "service_folder_redclean_after_enter";
   public static final String KEY_TENCENTDOC_PREVIEW_IMG_URL_DOC = "tencentdoc_pre_img_url_doc";
   public static final String KEY_TENCENTDOC_PREVIEW_IMG_URL_MINIPROJ_DOC = "tencentdoc_pre_img_url_miniproj_doc";
   public static final String KEY_TENCENTDOC_PREVIEW_IMG_URL_MINIPROJ_SHEET = "tencentdoc_pre_img_url_miniproj_sheet";
@@ -203,7 +204,7 @@ public abstract interface SharedPreferencesConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.SharedPreferencesConstants
  * JD-Core Version:    0.7.0.1
  */

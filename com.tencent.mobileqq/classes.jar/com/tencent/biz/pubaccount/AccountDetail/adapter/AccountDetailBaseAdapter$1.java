@@ -14,10 +14,10 @@ class AccountDetailBaseAdapter$1
   
   public void onClick(View paramView)
   {
-    ((PublicAccountDetailActivityImpl)this.a.jdField_a_of_type_AndroidAppActivity).gotoMoreInfoActivity();
+    ((PublicAccountDetailActivityImpl)this.a.x).gotoMoreInfoActivity();
     IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.followType == 1) {
+    String str = this.a.o;
+    if (this.a.q.followType == 1) {
       paramView = "02";
     } else {
       paramView = "01";
@@ -27,7 +27,7 @@ class AccountDetailBaseAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.1
  * JD-Core Version:    0.7.0.1
  */

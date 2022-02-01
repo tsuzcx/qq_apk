@@ -18,14 +18,14 @@ class ChatHistoryAuthDevForRoamMsgFragment$1
     if (paramMessage.what != 1) {
       return false;
     }
-    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131380289).setEnabled(true);
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131449210).setEnabled(true);
     if ((this.a.a != null) && (this.a.a.isShowing())) {
       this.a.a.dismiss();
     }
     if (paramMessage.arg1 == 0) {
-      QQToast.a(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131701829), 0).b(this.a.getBaseActivity().getTitleBarHeight());
+      QQToast.makeText(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131899846), 0).show(this.a.getBaseActivity().getTitleBarHeight());
     } else {
-      QQToast.a(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131701839), 0).b(this.a.getBaseActivity().getTitleBarHeight());
+      QQToast.makeText(this.a.getBaseActivity(), 2, HardCodeUtil.a(2131899856), 0).show(this.a.getBaseActivity().getTitleBarHeight());
     }
     this.a.getBaseActivity().setResult(1);
     this.a.getBaseActivity().finish();
@@ -34,7 +34,7 @@ class ChatHistoryAuthDevForRoamMsgFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment.1
  * JD-Core Version:    0.7.0.1
  */

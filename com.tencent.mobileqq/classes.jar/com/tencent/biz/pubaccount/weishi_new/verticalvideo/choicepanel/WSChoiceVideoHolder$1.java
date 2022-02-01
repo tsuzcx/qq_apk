@@ -11,13 +11,13 @@ class WSChoiceVideoHolder$1
   public void onClick(View paramView)
   {
     if (WSChoiceVideoHolder.a(this.a) != null) {
-      WSChoiceVideoHolder.a(this.a);
+      WSChoiceVideoHolder.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.WSChoiceVideoHolder.1
  * JD-Core Version:    0.7.0.1
  */

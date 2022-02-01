@@ -35,22 +35,22 @@ import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
 public class HomeworkTroopSurveyBar
   implements View.OnClickListener, TipsBarTask
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private oidb_cmd0xb36.ToastInfo jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo;
+  private QQAppInterface a;
+  private Activity b;
+  private String c;
+  private SessionInfo d;
+  private TextView e;
+  private ImageView f;
+  private View g;
+  private List<ImageView> h = new ArrayList();
+  private oidb_cmd0xb36.ToastInfo i;
   
   public HomeworkTroopSurveyBar(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramQQAppInterface;
+    this.b = paramActivity;
+    this.d = paramSessionInfo;
+    this.c = paramString;
   }
   
   public int a()
@@ -60,16 +60,16 @@ public class HomeworkTroopSurveyBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560609, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131378732));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs.findViewById(2131368343));
+    paramVarArgs = LayoutInflater.from(this.b).inflate(2131626654, null);
+    this.e = ((TextView)paramVarArgs.findViewById(2131447403));
+    this.f = ((ImageView)paramVarArgs.findViewById(2131435219));
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131363136));
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131363138));
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131363140));
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131428989));
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131428991));
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131428993));
+    this.h = localArrayList;
     paramVarArgs.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = paramVarArgs;
+    this.g = paramVarArgs;
     return paramVarArgs;
   }
   
@@ -77,46 +77,46 @@ public class HomeworkTroopSurveyBar
   
   public void a(TipsManager paramTipsManager)
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    localTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new HomeworkTroopSurveyBar.1(this, localTroopManager, paramTipsManager));
+    TroopManager localTroopManager = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
+    localTroopManager.a(this.d.b, this.a.getCurrentAccountUin(), new HomeworkTroopSurveyBar.1(this, localTroopManager, paramTipsManager));
   }
   
   protected void a(TroopManager paramTroopManager, TipsManager paramTipsManager, TroopMemberInfo paramTroopMemberInfo)
   {
-    paramTroopManager = paramTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    paramTroopManager = paramTroopManager.a(this.d.b);
     if ((paramTroopManager != null) && ((paramTroopMemberInfo == null) || ((paramTroopMemberInfo.level != 332) && (paramTroopMemberInfo.level != 333))))
     {
-      this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo = paramTroopManager;
-      if ((paramTipsManager.a(this, new Object[0])) && (this.jdField_a_of_type_AndroidViewView != null))
+      this.i = paramTroopManager;
+      if ((paramTipsManager.a(this, new Object[0])) && (this.g != null))
       {
-        if (this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.type.has())
+        if (this.i.type.has())
         {
-          paramTroopManager = String.format(Locale.getDefault(), "https://pub.idqqimg.com/pc/misc/group_chain/aio_icon_%d.png", new Object[] { Integer.valueOf(this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.type.get()) });
+          paramTroopManager = String.format(Locale.getDefault(), "https://pub.idqqimg.com/pc/misc/group_chain/aio_icon_%d.png", new Object[] { Integer.valueOf(this.i.type.get()) });
           paramTipsManager = URLDrawable.URLDrawableOptions.obtain();
-          paramTipsManager.mRequestWidth = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 32.0F);
+          paramTipsManager.mRequestWidth = DisplayUtil.a(this.b, 32.0F);
           paramTipsManager.mRequestHeight = paramTipsManager.mRequestWidth;
           paramTroopManager = URLDrawable.getDrawable(paramTroopManager, paramTipsManager);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramTroopManager);
+          this.f.setImageDrawable(paramTroopManager);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.wording.get());
-        ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-        if (this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.uins.has())
+        this.e.setText(this.i.wording.get());
+        ArrayList localArrayList = new ArrayList(this.h);
+        if (this.i.uins.has())
         {
-          List localList = this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.uins.get();
-          int i = 0;
-          while ((i < localList.size()) && (i < localArrayList.size()))
+          List localList = this.i.uins.get();
+          int j = 0;
+          while ((j < localList.size()) && (j < localArrayList.size()))
           {
-            ImageView localImageView = (ImageView)localArrayList.get(i);
+            ImageView localImageView = (ImageView)localArrayList.get(j);
             localImageView.setVisibility(0);
-            paramTipsManager = ImageUtil.e();
-            paramTroopMemberInfo = FaceDrawable.getFaceDrawable(PlayModeUtils.a(), 1, String.valueOf(localList.get(i)), 3, paramTipsManager, paramTipsManager);
+            paramTipsManager = ImageUtil.j();
+            paramTroopMemberInfo = FaceDrawable.getFaceDrawable(PlayModeUtils.b(), 1, String.valueOf(localList.get(j)), 3, paramTipsManager, paramTipsManager);
             paramTroopManager = paramTroopMemberInfo;
             if (paramTroopMemberInfo == null) {
               paramTroopManager = paramTipsManager;
             }
             localImageView.setImageDrawable(paramTroopManager);
-            localArrayList.set(i, null);
-            i += 1;
+            localArrayList.set(j, null);
+            j += 1;
           }
         }
         paramTroopManager = localArrayList.iterator();
@@ -127,25 +127,20 @@ public class HomeworkTroopSurveyBar
             paramTipsManager.setVisibility(8);
           }
         }
-        if (this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.type.get() != 1) {
+        if (this.i.type.get() != 1) {
           paramTroopManager = "1";
         } else {
           paramTroopManager = "2";
         }
-        paramTipsManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        TroopReportor.a("Grp_edu", "Grp_chain", "ChainBanner_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramTroopManager, "", String.valueOf(paramTipsManager.dwGroupClassExt) });
+        paramTipsManager = ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.d.b);
+        TroopReportor.a("Grp_edu", "Grp_chain", "ChainBanner_Show", 0, 0, new String[] { this.d.b, paramTroopManager, "", String.valueOf(paramTipsManager.dwGroupClassExt) });
       }
       return;
     }
-    if (paramTipsManager.a() == 20) {
-      paramTipsManager.a();
+    if (paramTipsManager.b() == 20) {
+      paramTipsManager.c();
     }
-    this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo = null;
-  }
-  
-  public int[] a()
-  {
-    return null;
+    this.i = null;
   }
   
   public int b()
@@ -153,31 +148,36 @@ public class HomeworkTroopSurveyBar
     return 20;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo == null)
+    if (this.i == null)
     {
       QLog.e(".troop.survey", 1, "toast info empty , click error!");
     }
     else
     {
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.link.get());
-      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-      if (this.jdField_a_of_type_TencentImOidbCmd0xb36Oidb_cmd0xb36$ToastInfo.type.get() != 1) {
+      Object localObject = new Intent(this.b, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.i.link.get());
+      this.b.startActivity((Intent)localObject);
+      if (this.i.type.get() != 1) {
         localObject = "1";
       } else {
         localObject = "2";
       }
-      TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      TroopReportor.a("Grp_edu", "Grp_chain", "ChainBanner_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localObject, "", String.valueOf(localTroopInfo.dwGroupClassExt) });
+      TroopInfo localTroopInfo = ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.d.b);
+      TroopReportor.a("Grp_edu", "Grp_chain", "ChainBanner_Clk", 0, 0, new String[] { this.d.b, localObject, "", String.valueOf(localTroopInfo.dwGroupClassExt) });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import org.apache.http.conn.ssl.X509HostnameVerifier;
 class AsyncHttpClient$1
   implements X509HostnameVerifier
 {
-  private X509HostnameVerifier jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier = SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
+  private X509HostnameVerifier b = SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
   
   AsyncHttpClient$1(AsyncHttpClient paramAsyncHttpClient) {}
   
@@ -20,7 +20,7 @@ class AsyncHttpClient$1
     if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
       str = "accesscontrol.windows.net";
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramX509Certificate);
+    this.b.verify(str, paramX509Certificate);
   }
   
   public void verify(String paramString, SSLSocket paramSSLSocket)
@@ -29,7 +29,7 @@ class AsyncHttpClient$1
     if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
       str = "accesscontrol.windows.net";
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSocket);
+    this.b.verify(str, paramSSLSocket);
   }
   
   public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
@@ -38,7 +38,7 @@ class AsyncHttpClient$1
     if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
       str = "accesscontrol.windows.net";
     }
-    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramArrayOfString1, paramArrayOfString2);
+    this.b.verify(str, paramArrayOfString1, paramArrayOfString2);
   }
   
   public boolean verify(String paramString, SSLSession paramSSLSession)
@@ -54,7 +54,7 @@ class AsyncHttpClient$1
     if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
       localObject = "accesscontrol.windows.net";
     }
-    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify((String)localObject, paramSSLSession);
+    return this.b.verify((String)localObject, paramSSLSession);
   }
 }
 

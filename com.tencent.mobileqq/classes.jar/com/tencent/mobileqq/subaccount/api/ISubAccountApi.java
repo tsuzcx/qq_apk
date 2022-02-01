@@ -51,8 +51,6 @@ public abstract interface ISubAccountApi
   
   public abstract ISubAccountApi.SubAccountUnReadItemProxy getUnreadCount(String paramString);
   
-  public abstract boolean getUseNewSettings(AppInterface paramAppInterface);
-  
   public abstract void loginSuccessInit(AppRuntime paramAppRuntime, String paramString);
   
   public abstract void notifyBusinessMessage(int paramInt, boolean paramBoolean, Object paramObject);
@@ -73,7 +71,7 @@ public abstract interface ISubAccountApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.ISubAccountApi
  * JD-Core Version:    0.7.0.1
  */

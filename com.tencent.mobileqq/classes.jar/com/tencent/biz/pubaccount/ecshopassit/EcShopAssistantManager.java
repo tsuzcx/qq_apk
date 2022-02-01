@@ -71,54 +71,55 @@ import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
+import mqq.util.LogUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class EcShopAssistantManager
   implements Manager
 {
-  public static int a;
   public static final String a;
-  public static HashMap<String, String> a;
-  public static boolean a;
   public static final String b;
-  public static HashMap<String, Long> b;
-  public static List<String> b;
-  public static String c;
-  public static List<String> c;
-  public static String d;
-  public static final String e;
-  public static final String f;
-  public static String g;
-  public static final String h;
-  public long a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new EcShopAssistantManager.4(this);
-  private EcShopAssistantManager.EcShopAssistantDownloadListener jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager$EcShopAssistantDownloadListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = new EcShopAssistantManager.5(this);
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  public List<EcShopData> a;
-  private Map<String, EcShopData> jdField_a_of_type_JavaUtilMap;
-  Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public String[] a;
-  public int b;
-  public long b;
-  final Object b;
-  public boolean b;
-  public int c;
-  private long c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  private boolean g;
-  private boolean h;
-  public String i;
-  public String j = null;
-  public String k = null;
-  private String l;
+  public static String h;
+  public static String i;
+  public static HashMap<String, String> j;
+  public static HashMap<String, Long> k;
+  public static int l;
+  public static final String m;
+  public static final String n;
+  public static List<String> o;
+  public static List<String> p;
+  public static String s;
+  public static boolean t;
+  public static final String u;
+  public boolean A = false;
+  public boolean B;
+  public String[] C = { "https://gouwu.qq.com/m/cgi-bin/shop/discover?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/haowu.html?_wv=3&max_age=600", "https://gouwu.qq.com/m/cgi-bin/shop/nearby?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/my.html?_wv=3" };
+  BroadcastReceiver D = new EcShopAssistantManager.4(this);
+  IFaceDecoder E;
+  DecodeTaskCompletionListener F = new EcShopAssistantManager.5(this);
+  public boolean G = false;
+  public String H = null;
+  public String I = null;
+  public long J;
+  private String K;
+  private long L;
+  private boolean M = true;
+  private boolean N = false;
+  private Map<String, EcShopData> O;
+  private EcShopAssistantManager.EcShopAssistantDownloadListener P;
+  QQAppInterface c;
+  public List<EcShopData> d;
+  final Object e = new Object();
+  final Object f = new Object();
+  Set<String> g = new HashSet();
+  public int q;
+  public int r;
+  public boolean v = false;
+  public String w;
+  public long x;
+  public int y;
+  public boolean z = false;
   
   static
   {
@@ -126,85 +127,63 @@ public class EcShopAssistantManager
     localStringBuilder.append(BaseApplication.getContext().getFilesDir());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("shop_assit_banner_json.txt");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".shop_assit/image/");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_c_of_type_JavaLangString = "";
-    jdField_d_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Int = 600000;
+    b = localStringBuilder.toString();
+    h = "";
+    i = "";
+    j = new HashMap();
+    k = new HashMap();
+    l = 600000;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("qqshp_client_log_wl_conf.json");
-    jdField_e_of_type_JavaLangString = localStringBuilder.toString();
+    m = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("qqshp_client_log_jd_conf.json");
-    jdField_f_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_b_of_type_JavaUtilList = null;
-    jdField_c_of_type_JavaUtilList = null;
-    jdField_a_of_type_Boolean = true;
+    n = localStringBuilder.toString();
+    o = null;
+    p = null;
+    t = true;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir().getAbsoluteFile());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("animConfig/red_packet.png");
-    jdField_h_of_type_JavaLangString = localStringBuilder.toString();
+    u = localStringBuilder.toString();
   }
   
   public EcShopAssistantManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "https://gouwu.qq.com/m/cgi-bin/shop/discover?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/haowu.html?_wv=3&max_age=600", "https://gouwu.qq.com/m/cgi-bin/shop/nearby?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/my.html?_wv=3" };
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.l = paramQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.c = paramQQAppInterface;
+    this.K = paramQQAppInterface.getCurrentAccountUin();
+    this.O = new HashMap();
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.d = null;
       ThreadManager.post(new EcShopAssistantManager.1(this), 5, null, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener);
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager$EcShopAssistantDownloadListener = new EcShopAssistantManager.EcShopAssistantDownloadListener(this);
+      this.E = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+      this.E.setDecodeTaskCompletionListener(this.F);
+      this.P = new EcShopAssistantManager.EcShopAssistantDownloadListener(this);
       return;
     }
   }
   
-  public static SharedPreferences a()
-  {
-    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "noLogin";
-    }
-    localObject2 = BaseApplicationImpl.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ecshop_sp");
-    localStringBuilder.append((String)localObject1);
-    return ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
-  }
-  
   public static Drawable a(Context paramContext)
   {
-    if (!TextUtils.isEmpty(jdField_d_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(i))
     {
-      Object localObject1 = paramContext.getResources().getDrawable(2130839505);
-      Object localObject2 = jdField_d_of_type_JavaLangString.split("/");
+      Object localObject1 = paramContext.getResources().getDrawable(2130839696);
+      Object localObject2 = i.split("/");
       Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(b);
       ((StringBuilder)localObject3).append(localObject2[(localObject2.length - 1)]);
       localObject2 = ((StringBuilder)localObject3).toString();
-      localObject3 = jdField_d_of_type_JavaLangString;
+      localObject3 = i;
       try
       {
         localObject1 = URLDrawable.getDrawable(new URL("profile_img_icon", (String)localObject3, (String)localObject2), (Drawable)localObject1, (Drawable)localObject1);
@@ -213,15 +192,15 @@ public class EcShopAssistantManager
       catch (MalformedURLException localMalformedURLException)
       {
         localMalformedURLException.printStackTrace();
-        return paramContext.getResources().getDrawable(2130847270);
+        return paramContext.getResources().getDrawable(2130848921);
       }
     }
-    return paramContext.getResources().getDrawable(2130847270);
+    return paramContext.getResources().getDrawable(2130848921);
   }
   
   public static String a(String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    Object localObject = jdField_c_of_type_JavaUtilList;
+    Object localObject = p;
     if (((localObject != null) && (((List)localObject).contains(paramString1))) || ((((IEcshopService)paramQQAppInterface.getRuntimeService(IEcshopService.class)).isInWalletGTKList(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("qq.com"))))
     {
       paramString1 = "&g_tk=";
@@ -240,25 +219,16 @@ public class EcShopAssistantManager
     return paramString2;
   }
   
-  private void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = paramQQAppInterface.getProxyManager().a();
-    paramString = paramQQAppInterface.b(paramString, 1008);
-    if (paramString != null) {
-      paramQQAppInterface.a(paramString);
-    }
-  }
-  
   private void a(MessageRecord paramMessageRecord, String paramString)
   {
-    Object localObject = this.jdField_b_of_type_JavaLangObject;
+    Object localObject = this.f;
     if (paramMessageRecord != null) {}
     try
     {
-      if ((!paramMessageRecord.isread) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      if ((!paramMessageRecord.isread) && (!this.g.contains(paramString))) {
+        this.g.add(paramString);
       }
-      h();
+      o();
       return;
     }
     finally {}
@@ -266,74 +236,25 @@ public class EcShopAssistantManager
   
   private void a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.f)
     {
-      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1008) > 0) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1008) > 0) && (!this.g.contains(paramString))) {
+        this.g.add(paramString);
       }
-      h();
+      o();
       return;
     }
   }
   
-  private boolean a(long paramLong)
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localObject1 == null) {
-      return false;
-    }
-    Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    if (localObject2 != null)
-    {
-      if (localObject1 == null) {
-        return false;
-      }
-      if ((this.jdField_g_of_type_Boolean) && (!this.jdField_h_of_type_Boolean))
-      {
-        localObject2 = ((RecentUserProxy)localObject1).a(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
-        if (((RecentUser)localObject2).lastmsgtime < paramLong) {
-          ((RecentUser)localObject2).lastmsgtime = paramLong;
-        }
-        EcShopData localEcShopData = a();
-        if (localEcShopData != null)
-        {
-          ((RecentUser)localObject2).lastmsgtime = localEcShopData.mLastMsgTime;
-          ((RecentUser)localObject2).lastmsgdrafttime = localEcShopData.mLastDraftTime;
-        }
-        else if (this.jdField_e_of_type_Boolean)
-        {
-          ((RecentUser)localObject2).lastmsgdrafttime = ((RecentUser)localObject2).lastmsgtime;
-        }
-        ((RecentUserProxy)localObject1).b((RecentUser)localObject2);
-        QLog.d("EcShopAssistantManager", 2, "update ecshop folder...");
-      }
-      else
-      {
-        localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
-        if (localObject2 != null) {
-          ((RecentUserProxy)localObject1).a((RecentUser)localObject2);
-        }
-        QLog.d("EcShopAssistantManager", 2, "del ecshop folder...");
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-      if (localObject1 != null) {
-        ((MqqHandler)localObject1).sendEmptyMessage(1009);
-      }
-      return true;
-    }
-    return false;
-  }
-  
   private boolean a(EntityManager paramEntityManager, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.O)
     {
-      EcShopData localEcShopData = (EcShopData)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      EcShopData localEcShopData = (EcShopData)this.O.remove(paramString);
+      synchronized (this.e)
       {
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          this.jdField_a_of_type_JavaUtilList.remove(localEcShopData);
+        if (this.d != null) {
+          this.d.remove(localEcShopData);
         }
         boolean bool;
         if (localEcShopData != null) {
@@ -345,10 +266,10 @@ public class EcShopAssistantManager
         paramEntityManager.append("removeEcShopData puin: ");
         paramEntityManager.append(paramString);
         QLog.d("EcShopAssistantManager", 2, paramEntityManager.toString());
-        if (this.jdField_f_of_type_Boolean)
+        if (this.G)
         {
           paramEntityManager = new Intent("action_on_shop_msg_receive");
-          paramEntityManager.putParcelableArrayListExtra("datas", (ArrayList)b());
+          paramEntityManager.putParcelableArrayListExtra("datas", (ArrayList)k());
           BaseApplicationImpl.getContext().sendBroadcast(paramEntityManager);
         }
         return bool;
@@ -356,34 +277,101 @@ public class EcShopAssistantManager
     }
   }
   
-  private void c(String paramString)
+  private void b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramString, 1008) > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-      }
-      h();
-      return;
+    paramQQAppInterface = paramQQAppInterface.getProxyManager().g();
+    paramString = paramQQAppInterface.c(paramString, 1008);
+    if (paramString != null) {
+      paramQQAppInterface.a(paramString);
     }
+  }
+  
+  private boolean b(long paramLong)
+  {
+    Object localObject1 = this.c;
+    if (localObject1 == null) {
+      return false;
+    }
+    Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    localObject1 = this.c.getProxyManager().g();
+    if (localObject2 != null)
+    {
+      if (localObject1 == null) {
+        return false;
+      }
+      if ((this.M) && (!this.N))
+      {
+        localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
+        if (((RecentUser)localObject2).lastmsgtime < paramLong) {
+          ((RecentUser)localObject2).lastmsgtime = paramLong;
+        }
+        EcShopData localEcShopData = c();
+        if (localEcShopData != null)
+        {
+          ((RecentUser)localObject2).lastmsgtime = localEcShopData.mLastMsgTime;
+          ((RecentUser)localObject2).lastmsgdrafttime = localEcShopData.mLastDraftTime;
+        }
+        else if (this.B)
+        {
+          ((RecentUser)localObject2).lastmsgdrafttime = ((RecentUser)localObject2).lastmsgtime;
+        }
+        ((RecentUserProxy)localObject1).b((RecentUser)localObject2);
+        QLog.d("EcShopAssistantManager", 2, "update ecshop folder...");
+      }
+      else
+      {
+        localObject2 = ((RecentUserProxy)localObject1).c(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
+        if (localObject2 != null) {
+          ((RecentUserProxy)localObject1).a((RecentUser)localObject2);
+        }
+        QLog.d("EcShopAssistantManager", 2, "del ecshop folder...");
+      }
+      localObject1 = this.c.getHandler(Conversation.class);
+      if (localObject1 != null) {
+        ((MqqHandler)localObject1).sendEmptyMessage(1009);
+      }
+      return true;
+    }
+    return false;
   }
   
   private void c(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface == null) {
       return;
     }
-    localQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("is_update_ec_shop_assist", paramBoolean).commit();
+    localQQAppInterface.getApp().getSharedPreferences(this.c.getAccount(), 0).edit().putBoolean("is_update_ec_shop_assist", paramBoolean).commit();
   }
   
-  private boolean c()
+  private void e(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getBoolean("is_update_ec_shop_assist", true);
+    synchronized (this.f)
+    {
+      if ((this.c.getConversationFacade().a(paramString, 1008) > 0) && (this.g.contains(paramString))) {
+        this.g.remove(paramString);
+      }
+      o();
+      return;
+    }
+  }
+  
+  public static SharedPreferences j()
+  {
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "noLogin";
+    }
+    localObject2 = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ecshop_sp");
+    localStringBuilder.append((String)localObject1);
+    return ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   /* Error */
-  private void g()
+  private void n()
   {
     // Byte code:
     //   0: aconst_null
@@ -391,40 +379,40 @@ public class EcShopAssistantManager
     //   2: aconst_null
     //   3: astore_3
     //   4: aload_0
-    //   5: getfield 179	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   8: invokevirtual 516	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   11: invokevirtual 522	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   5: getfield 207	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   8: invokevirtual 540	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   11: invokevirtual 546	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   14: astore 4
     //   16: aload 4
     //   18: astore_3
     //   19: aload 4
     //   21: astore_2
     //   22: aload 4
-    //   24: ldc_w 406
+    //   24: ldc_w 382
     //   27: iconst_0
     //   28: aconst_null
     //   29: aconst_null
     //   30: aconst_null
     //   31: aconst_null
-    //   32: ldc_w 524
+    //   32: ldc_w 548
     //   35: aconst_null
-    //   36: invokevirtual 528	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   36: invokevirtual 552	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   39: astore 5
     //   41: aload 4
     //   43: astore_3
     //   44: aload 4
     //   46: astore_2
-    //   47: new 43	java/lang/StringBuilder
+    //   47: new 71	java/lang/StringBuilder
     //   50: dup
-    //   51: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   51: invokespecial 74	java/lang/StringBuilder:<init>	()V
     //   54: astore 6
     //   56: aload 4
     //   58: astore_3
     //   59: aload 4
     //   61: astore_2
     //   62: aload 6
-    //   64: ldc_w 530
-    //   67: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: ldc_w 554
+    //   67: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: pop
     //   71: aload 5
     //   73: ifnonnull +8 -> 81
@@ -436,7 +424,7 @@ public class EcShopAssistantManager
     //   84: aload 4
     //   86: astore_2
     //   87: aload 5
-    //   89: invokeinterface 534 1 0
+    //   89: invokeinterface 558 1 0
     //   94: istore_1
     //   95: aload 4
     //   97: astore_3
@@ -444,23 +432,23 @@ public class EcShopAssistantManager
     //   100: astore_2
     //   101: aload 6
     //   103: iload_1
-    //   104: invokevirtual 537	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 561	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   107: pop
     //   108: aload 4
     //   110: astore_3
     //   111: aload 4
     //   113: astore_2
-    //   114: ldc_w 421
+    //   114: ldc_w 393
     //   117: iconst_2
     //   118: aload 6
-    //   120: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: invokestatic 428	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   126: aload 4
     //   128: astore_3
     //   129: aload 4
     //   131: astore_2
     //   132: aload_0
-    //   133: getfield 134	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   133: getfield 162	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:e	Ljava/lang/Object;
     //   136: astore 6
     //   138: aload 4
     //   140: astore_3
@@ -470,16 +458,16 @@ public class EcShopAssistantManager
     //   146: monitorenter
     //   147: aload_0
     //   148: aload 5
-    //   150: putfield 190	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   150: putfield 218	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:d	Ljava/util/List;
     //   153: aload_0
-    //   154: getfield 190	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   154: getfield 218	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:d	Ljava/util/List;
     //   157: ifnonnull +16 -> 173
     //   160: aload_0
-    //   161: new 473	java/util/ArrayList
+    //   161: new 410	java/util/ArrayList
     //   164: dup
     //   165: bipush 16
-    //   167: invokespecial 540	java/util/ArrayList:<init>	(I)V
-    //   170: putfield 190	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   167: invokespecial 564	java/util/ArrayList:<init>	(I)V
+    //   170: putfield 218	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:d	Ljava/util/List;
     //   173: aload 6
     //   175: monitorexit
     //   176: aload 4
@@ -487,7 +475,7 @@ public class EcShopAssistantManager
     //   179: aload 4
     //   181: astore_2
     //   182: aload_0
-    //   183: getfield 188	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   183: getfield 216	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:O	Ljava/util/Map;
     //   186: astore 5
     //   188: aload 4
     //   190: astore_3
@@ -496,25 +484,25 @@ public class EcShopAssistantManager
     //   194: aload 5
     //   196: monitorenter
     //   197: aload_0
-    //   198: getfield 188	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   201: invokeinterface 543 1 0
+    //   198: getfield 216	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:O	Ljava/util/Map;
+    //   201: invokeinterface 567 1 0
     //   206: aload_0
-    //   207: getfield 190	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   210: invokeinterface 547 1 0
+    //   207: getfield 218	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:d	Ljava/util/List;
+    //   210: invokeinterface 571 1 0
     //   215: astore_2
     //   216: aload_2
-    //   217: invokeinterface 552 1 0
+    //   217: invokeinterface 576 1 0
     //   222: ifeq +31 -> 253
     //   225: aload_2
-    //   226: invokeinterface 556 1 0
-    //   231: checkcast 406	com/tencent/biz/pubaccount/ecshopassit/EcShopData
+    //   226: invokeinterface 580 1 0
+    //   231: checkcast 382	com/tencent/biz/pubaccount/ecshopassit/EcShopData
     //   234: astore_3
     //   235: aload_0
-    //   236: getfield 188	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   236: getfield 216	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:O	Ljava/util/Map;
     //   239: aload_3
-    //   240: getfield 559	com/tencent/biz/pubaccount/ecshopassit/EcShopData:mUin	Ljava/lang/String;
+    //   240: getfield 583	com/tencent/biz/pubaccount/ecshopassit/EcShopData:mUin	Ljava/lang/String;
     //   243: aload_3
-    //   244: invokeinterface 563 3 0
+    //   244: invokeinterface 587 3 0
     //   249: pop
     //   250: goto -34 -> 216
     //   253: aload 5
@@ -547,39 +535,39 @@ public class EcShopAssistantManager
     //   299: astore 4
     //   301: aload_2
     //   302: astore_3
-    //   303: new 43	java/lang/StringBuilder
+    //   303: new 71	java/lang/StringBuilder
     //   306: dup
-    //   307: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   307: invokespecial 74	java/lang/StringBuilder:<init>	()V
     //   310: astore 5
     //   312: aload_2
     //   313: astore_3
     //   314: aload 5
-    //   316: ldc_w 565
-    //   319: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: ldc_w 589
+    //   319: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload_2
     //   324: astore_3
     //   325: aload 5
     //   327: aload 4
-    //   329: invokevirtual 568	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   332: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 592	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   332: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: pop
     //   336: aload_2
     //   337: astore_3
-    //   338: ldc_w 421
+    //   338: ldc_w 393
     //   341: iconst_2
     //   342: aload 5
-    //   344: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   347: invokestatic 570	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   344: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   347: invokestatic 594	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   350: aload_2
     //   351: ifnull +7 -> 358
     //   354: aload_2
-    //   355: invokevirtual 573	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   355: invokevirtual 597	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   358: return
     //   359: aload_3
     //   360: ifnull +7 -> 367
     //   363: aload_3
-    //   364: invokevirtual 573	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   364: invokevirtual 597	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   367: goto +5 -> 372
     //   370: aload_2
     //   371: athrow
@@ -587,7 +575,7 @@ public class EcShopAssistantManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	375	0	this	EcShopAssistantManager
-    //   77	27	1	m	int
+    //   77	27	1	i1	int
     //   1	291	2	localObject1	Object
     //   295	76	2	localObject2	Object
     //   3	361	3	localObject3	Object
@@ -639,123 +627,47 @@ public class EcShopAssistantManager
     //   292	295	299	java/lang/Exception
   }
   
-  private void h()
+  private void o()
   {
     ThreadManager.executeOnSubThread(new EcShopAssistantManager.2(this));
   }
   
-  private void i()
+  private boolean p()
+  {
+    return this.c.getApp().getSharedPreferences(this.c.getAccount(), 0).getBoolean("is_update_ec_shop_assist", true);
+  }
+  
+  private void q()
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.e)
       {
-        if (this.jdField_a_of_type_JavaUtilList == null)
+        if (this.d == null)
         {
-          m = 1;
-          if (m != 0) {
-            g();
+          i1 = 1;
+          if (i1 != 0) {
+            n();
           }
           return;
         }
       }
-      int m = 0;
-    }
-  }
-  
-  public int a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
-    int n = 0;
-    int m = 0;
-    if (localObject1 != null)
-    {
-      Iterator localIterator = ((List)localObject1).iterator();
-      for (;;)
-      {
-        n = m;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        Object localObject2 = (EcShopData)localIterator.next();
-        localObject1 = null;
-        n = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((EcShopData)localObject2).mUin);
-        QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        if (localQQMessageFacade != null) {
-          localObject1 = localQQMessageFacade.getLastMessage(((EcShopData)localObject2).mUin, n);
-        }
-        if (localObject1 != null)
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade();
-          if (localObject2 != null) {
-            m += ((ConversationFacade)localObject2).a(((Message)localObject1).frienduin, ((Message)localObject1).istroop);
-          }
-        }
-      }
-    }
-    return n;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    int m;
-    int n;
-    label99:
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilSet != null) && (paramQQAppInterface != null))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-        m = 0;
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          n = paramQQAppInterface.getConversationFacade().a(str, 1008);
-          if (n > 0) {
-            break label99;
-          }
-        }
-        else
-        {
-          return m;
-        }
-      }
-      else
-      {
-        return 0;
-      }
-    }
-  }
-  
-  public EcShopData a()
-  {
-    i();
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          EcShopData localEcShopData = (EcShopData)this.jdField_a_of_type_JavaUtilList.get(0);
-          return localEcShopData;
-        }
-      }
-      Object localObject2 = null;
+      int i1 = 0;
     }
   }
   
   public EcShopData a(String paramString)
   {
-    i();
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    q();
+    synchronized (this.O)
     {
-      EcShopData localEcShopData = (EcShopData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      EcShopData localEcShopData = (EcShopData)this.O.get(paramString);
       ??? = localEcShopData;
       if (localEcShopData == null)
       {
         localEcShopData = new EcShopData();
         localEcShopData.mUin = paramString;
-        QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+        QQMessageFacade localQQMessageFacade = this.c.getMessageFacade();
         ??? = localEcShopData;
         if (localQQMessageFacade != null)
         {
@@ -820,16 +732,16 @@ public class EcShopAssistantManager
   
   public List<EcShopData> a()
   {
-    i();
+    q();
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.e)
       {
-        if (this.jdField_a_of_type_JavaUtilList != null)
+        if (this.d != null)
         {
-          m = this.jdField_a_of_type_JavaUtilList.size();
-          ArrayList localArrayList = new ArrayList(m);
-          localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+          i1 = this.d.size();
+          ArrayList localArrayList = new ArrayList(i1);
+          localArrayList.addAll(this.d);
           ??? = new StringBuilder();
           ((StringBuilder)???).append("getAllEcShopAssitData size: ");
           ((StringBuilder)???).append(localArrayList.size());
@@ -837,52 +749,41 @@ public class EcShopAssistantManager
           return localArrayList;
         }
       }
-      int m = 0;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    EcShopData localEcShopData = a();
-    if (localEcShopData != null) {
-      a(localEcShopData.mLastMsgTime);
+      int i1 = 0;
     }
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putLong("last_read_time", paramLong).commit();
-    this.jdField_c_of_type_Long = paramLong;
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    this.c.getApp().getSharedPreferences(this.c.getAccount(), 0).edit().putLong("last_read_time", paramLong).commit();
+    this.L = paramLong;
+    synchronized (this.f)
     {
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      h();
+      this.g.clear();
+      o();
       return;
     }
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.c;
     if (localObject1 == null) {
       return;
     }
     Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    localObject1 = this.c.getProxyManager().g();
     if (localObject2 == null) {
       return;
     }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    localObject2 = ((RecentUserProxy)localObject1).a(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
+    this.B = paramBoolean;
+    localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
     if (((RecentUser)localObject2).lastmsgtime < paramLong) {
       ((RecentUser)localObject2).lastmsgtime = paramLong;
     }
     ((RecentUser)localObject2).lastmsgdrafttime = ((RecentUser)localObject2).lastmsgtime;
     ((RecentUserProxy)localObject1).b((RecentUser)localObject2);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    localObject1 = this.c.getHandler(Conversation.class);
     if (localObject1 != null) {
       ((MqqHandler)localObject1).sendEmptyMessage(1009);
     }
@@ -901,19 +802,19 @@ public class EcShopAssistantManager
       } else {
         localBundle = paramIntent.getExtras();
       }
-      localBundle.putParcelableArrayList("datas", (ArrayList)b());
-      if (!TextUtils.isEmpty(this.j)) {
-        localBundle.putString("ad_logo", this.j);
+      localBundle.putParcelableArrayList("datas", (ArrayList)k());
+      if (!TextUtils.isEmpty(this.H)) {
+        localBundle.putString("ad_logo", this.H);
       }
-      if (!TextUtils.isEmpty(this.k)) {
-        localBundle.putString("ad_jump", this.k);
+      if (!TextUtils.isEmpty(this.I)) {
+        localBundle.putString("ad_jump", this.I);
       }
-      long l1 = this.jdField_b_of_type_Long;
+      long l1 = this.J;
       if (l1 != 0L) {
         localBundle.putLong("ad_id", l1);
       }
-      this.jdField_f_of_type_Boolean = true;
-      localBundle.putBoolean("is_tab_show", this.jdField_b_of_type_Boolean);
+      this.G = true;
+      localBundle.putBoolean("is_tab_show", this.v);
       paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
       while (paramContext.hasNext()) {
         if ("com.tencent.mobileqq:tool".equals(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName))
@@ -926,10 +827,10 @@ public class EcShopAssistantManager
       label191:
       localBundle.putBoolean("is_tool_exist", bool1);
       localBundle.putLong("click_time", System.currentTimeMillis());
-      localBundle.putStringArray("urls", this.jdField_a_of_type_ArrayOfJavaLangString);
-      SharedPreferences localSharedPreferences = a();
+      localBundle.putStringArray("urls", this.C);
+      SharedPreferences localSharedPreferences = j();
       boolean bool2 = localSharedPreferences.getBoolean("folder_tab_red", false);
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      paramContext = this.c.getProxyManager().g();
       if (paramInt >= 0)
       {
         bool1 = bool2;
@@ -945,7 +846,7 @@ public class EcShopAssistantManager
           if (paramContext == null) {
             break;
           }
-          paramContext = paramContext.b(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
+          paramContext = paramContext.c(AppConstants.EC_SHOP_ASSISTANT_UIN, 7120);
           bool1 = bool2;
           if (paramContext == null) {
             break;
@@ -962,10 +863,10 @@ public class EcShopAssistantManager
       localBundle.putBoolean("hasUnread", bool1);
       localBundle.putLong("last_read_folder", localSharedPreferences.getLong("last_read_folder", 0L));
       localBundle.putLong("latest_time", localSharedPreferences.getLong("latest_time", 0L));
-      localBundle.putInt("unReadNum", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b());
+      localBundle.putInt("unReadNum", this.c.getMessageFacade().w());
       localBundle.putBoolean("isDefaultTheme", ThemeUtil.isDefaultOrDIYTheme(false));
-      Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[1];
+      Object localObject = ((FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(this.c.getCurrentAccountUin());
+      String str2 = this.C[1];
       String str1 = "0";
       if (bool1) {
         paramContext = "1";
@@ -988,7 +889,7 @@ public class EcShopAssistantManager
       if (!TextUtils.isEmpty(localSharedPreferences.getString("PUSH_JUMP_URL", ""))) {
         paramContext = URLUtil.a((String)localObject, "jumpUrl", localSharedPreferences.getString("PUSH_JUMP_URL", ""));
       }
-      if (this.jdField_d_of_type_Boolean) {
+      if (this.A) {
         str1 = String.valueOf(localSharedPreferences.getInt("FOLDER_MSG_TYPE", -1));
       }
       paramContext = URLUtil.a(URLUtil.a(paramContext, "type", str1), "taskType", String.valueOf(localSharedPreferences.getInt("PUSH_TASK_TYPE", 0)));
@@ -1006,36 +907,36 @@ public class EcShopAssistantManager
     }
     for (;;)
     {
-      int m;
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      int i1;
+      synchronized (this.O)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramEcShopData.mUin, paramEcShopData);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        this.O.put(paramEcShopData.mUin, paramEcShopData);
+        synchronized (this.e)
         {
-          if (this.jdField_a_of_type_JavaUtilList != null)
+          if (this.d != null)
           {
-            this.jdField_a_of_type_JavaUtilList.remove(paramEcShopData);
-            int i1 = 0;
-            m = 0;
-            int n = i1;
-            if (m < this.jdField_a_of_type_JavaUtilList.size())
+            this.d.remove(paramEcShopData);
+            int i3 = 0;
+            i1 = 0;
+            int i2 = i3;
+            if (i1 < this.d.size())
             {
-              EcShopData localEcShopData = (EcShopData)this.jdField_a_of_type_JavaUtilList.get(m);
+              EcShopData localEcShopData = (EcShopData)this.d.get(i1);
               if (Math.max(paramEcShopData.mLastMsgTime, paramEcShopData.mLastDraftTime) <= Math.max(localEcShopData.mLastMsgTime, localEcShopData.mLastDraftTime)) {
                 break label316;
               }
-              this.jdField_a_of_type_JavaUtilList.add(m, paramEcShopData);
-              n = 1;
+              this.d.add(i1, paramEcShopData);
+              i2 = 1;
             }
-            if (n == 0) {
-              this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), paramEcShopData);
+            if (i2 == 0) {
+              this.d.add(this.d.size(), paramEcShopData);
             }
           }
-          ??? = (ProxyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER);
+          ??? = (ProxyManager)this.c.getManager(QQManagerFactory.PROXY_MANAGER);
           if (paramEcShopData.getStatus() == 1000) {
-            ((ProxyManager)???).addMsgQueue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, paramEcShopData.getTableName(), paramEcShopData, 3, null);
+            ((ProxyManager)???).addMsgQueue(this.c.getAccount(), 0, paramEcShopData.getTableName(), paramEcShopData, 3, null);
           } else {
-            ((ProxyManager)???).addMsgQueue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, paramEcShopData.getTableName(), paramEcShopData, 4, null);
+            ((ProxyManager)???).addMsgQueue(this.c.getAccount(), 0, paramEcShopData.getTableName(), paramEcShopData, 4, null);
           }
           ??? = new StringBuilder();
           ((StringBuilder)???).append("saveEcShopData(db&cache) puin: ");
@@ -1048,7 +949,7 @@ public class EcShopAssistantManager
       }
       return;
       label316:
-      m += 1;
+      i1 += 1;
     }
   }
   
@@ -1056,19 +957,19 @@ public class EcShopAssistantManager
   {
     if (paramQQAppInterface != null)
     {
-      this.l = paramQQAppInterface.getAccount();
-      Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences(this.l, 0);
-      this.jdField_g_of_type_Boolean = ((SharedPreferences)localObject2).getBoolean("ec_shop_assist_show_in_msg", true);
-      this.jdField_h_of_type_Boolean = ((SharedPreferences)localObject2).getBoolean("ec_shop_assist_deleted", false);
-      this.jdField_c_of_type_Long = ((SharedPreferences)localObject2).getLong("last_read_time", 0L);
+      this.K = paramQQAppInterface.getAccount();
+      Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences(this.K, 0);
+      this.M = ((SharedPreferences)localObject2).getBoolean("ec_shop_assist_show_in_msg", true);
+      this.N = ((SharedPreferences)localObject2).getBoolean("ec_shop_assist_deleted", false);
+      this.L = ((SharedPreferences)localObject2).getLong("last_read_time", 0L);
       Object localObject3 = a();
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      synchronized (this.f)
       {
-        this.jdField_a_of_type_JavaUtilSet = SharedPreferencesHandler.a((SharedPreferences)localObject2, "ec_shop_assist_new_unread_list", null);
-        if (this.jdField_a_of_type_JavaUtilSet == null)
+        this.g = SharedPreferencesHandler.a((SharedPreferences)localObject2, "ec_shop_assist_new_unread_list", null);
+        if (this.g == null)
         {
-          this.jdField_a_of_type_JavaUtilSet = new HashSet();
-          if (c())
+          this.g = new HashSet();
+          if (p())
           {
             c(false);
             localObject2 = paramQQAppInterface.getMessageFacade();
@@ -1080,7 +981,7 @@ public class EcShopAssistantManager
             {
               EcShopData localEcShopData = (EcShopData)((Iterator)localObject3).next();
               Message localMessage = ((QQMessageFacade)localObject2).getLastMessage(localEcShopData.mUin, 1008);
-              if ((paramQQAppInterface.getConversationFacade().a(localEcShopData.mUin, 1008) > 0) && (localMessage.time > this.jdField_c_of_type_Long)) {
+              if ((paramQQAppInterface.getConversationFacade().a(localEcShopData.mUin, 1008) > 0) && (localMessage.time > this.L)) {
                 a(localMessage.frienduin, paramQQAppInterface);
               }
             }
@@ -1100,13 +1001,13 @@ public class EcShopAssistantManager
     ((StringBuilder)localObject).append("addMsgToAssist puin: ");
     ((StringBuilder)localObject).append(paramMessageRecord.senderuin);
     QLog.d("EcShopAssistantManager", 2, ((StringBuilder)localObject).toString());
-    localObject = a();
+    localObject = j();
     String str = paramMessageRecord.frienduin;
     long l1 = paramMessageRecord.time;
-    if ((!TextUtils.isEmpty(str)) && (str.equals(jdField_g_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(str)) && (str.equals(s)))
     {
       ((SharedPreferences)localObject).edit().putBoolean("is_ad_added", false).commit();
-      jdField_g_of_type_JavaLangString = null;
+      s = null;
     }
     EcShopData localEcShopData = a(str);
     localEcShopData.mImgInfo = "";
@@ -1122,33 +1023,20 @@ public class EcShopAssistantManager
       if (l2 > localEcShopData.mLastMsgTime) {
         localEcShopData.mLastMsgTime = l2;
       }
-      if (l2 > a().getLong("latest_time", 0L)) {
+      if (l2 > j().getLong("latest_time", 0L)) {
         ((SharedPreferences)localObject).edit().putLong("latest_time", l2).commit();
       }
     }
     a(localEcShopData);
     a(paramMessageRecord, str);
-    if (this.jdField_h_of_type_Boolean) {
+    if (this.N) {
       a(false);
     }
-    a(paramQQAppInterface, str);
-    a(l1);
-    a(str);
+    b(paramQQAppInterface, str);
+    b(l1);
+    b(str);
     if ((localObject != null) && (!TextUtils.isEmpty(((SharedPreferences)localObject).getString("PUSH_JUMP_URL", "")))) {
       ((SharedPreferences)localObject).edit().putString("PUSH_JUMP_URL", "").commit();
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if (this.jdField_f_of_type_Boolean)
-    {
-      Intent localIntent = new Intent("action_on_shop_msg_receive");
-      localIntent.putParcelableArrayListExtra("datas", (ArrayList)b());
-      if ((!TextUtils.isEmpty(paramString)) && ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a()) || (!paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a())))) {
-        localIntent.putExtra("uin", paramString);
-      }
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
   }
   
@@ -1160,21 +1048,21 @@ public class EcShopAssistantManager
     paramString = a(paramString);
     paramString.mLastDraftTime = paramLong;
     a(paramString);
-    a(null);
+    b(null);
   }
   
   public void a(String paramString1, String paramString2)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("refreshSettings.... paUin: ");
-    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append(LogUtil.wrapLogUin(paramString1));
     ((StringBuilder)localObject1).append(", src: ");
     ((StringBuilder)localObject1).append(paramString2);
     QLog.d("EcShopAssistantManager", 2, ((StringBuilder)localObject1).toString());
     Object localObject2 = new ArrayList();
     localObject1 = new ArrayList();
-    paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramString2 = this.c.getProxyManager().g();
+    paramString1 = this.c.getEntityManagerFactory().createEntityManager();
     ??? = paramString2.a(false);
     Object localObject4;
     Object localObject5;
@@ -1184,7 +1072,7 @@ public class EcShopAssistantManager
       while (((Iterator)???).hasNext())
       {
         localObject4 = (RecentUser)((Iterator)???).next();
-        if ((((RecentUser)localObject4).getType() == 1008) && (ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecentUser)localObject4).uin)) && (!RecentUserAppearLogic.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecentUser)localObject4).msgType)))
+        if ((((RecentUser)localObject4).getType() == 1008) && (ServiceAccountFolderManager.c(this.c, ((RecentUser)localObject4).uin)) && (!RecentUserAppearLogic.a(this.c, ((RecentUser)localObject4).msgType)))
         {
           ((ArrayList)localObject2).add(localObject4);
           localObject5 = new StringBuilder();
@@ -1196,16 +1084,16 @@ public class EcShopAssistantManager
         }
       }
     }
-    i();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    q();
+    synchronized (this.e)
     {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+      if ((this.d != null) && (this.d.size() > 0))
       {
-        localObject4 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject4 = this.d.iterator();
         while (((Iterator)localObject4).hasNext())
         {
           localObject5 = (EcShopData)((Iterator)localObject4).next();
-          if ((!ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((EcShopData)localObject5).mUin)) && (!((EcShopData)localObject5).mUin.equalsIgnoreCase(jdField_g_of_type_JavaLangString)))
+          if ((!ServiceAccountFolderManager.c(this.c, ((EcShopData)localObject5).mUin)) && (!((EcShopData)localObject5).mUin.equalsIgnoreCase(s)))
           {
             ((ArrayList)localObject1).add(localObject5);
             StringBuilder localStringBuilder = new StringBuilder();
@@ -1228,7 +1116,7 @@ public class EcShopAssistantManager
           localObject4 = a(((RecentUser)???).uin);
           if (((RecentUser)???).lastmsgtime == 0L)
           {
-            localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(((EcShopData)localObject4).mUin, 1008);
+            localObject5 = this.c.getMessageFacade().getLastMessage(((EcShopData)localObject4).mUin, 1008);
             if (localObject5 != null) {
               ((EcShopData)localObject4).mLastMsgTime = ((Message)localObject5).time;
             }
@@ -1239,7 +1127,7 @@ public class EcShopAssistantManager
           }
           a((EcShopData)localObject4);
           paramString2.a((RecentUser)???);
-          a(((RecentUser)???).uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          a(((RecentUser)???).uin, this.c);
         }
       }
       if (((ArrayList)localObject1).size() > 0)
@@ -1248,14 +1136,14 @@ public class EcShopAssistantManager
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (EcShopData)((Iterator)localObject1).next();
-          ??? = paramString2.a(((EcShopData)localObject2).mUin, 1008);
+          ??? = paramString2.b(((EcShopData)localObject2).mUin, 1008);
           ((RecentUser)???).uin = ((EcShopData)localObject2).mUin;
           ((RecentUser)???).setType(1008);
           ((RecentUser)???).lastmsgtime = ((EcShopData)localObject2).mLastMsgTime;
           ((RecentUser)???).lastmsgdrafttime = ((EcShopData)localObject2).mLastDraftTime;
           if (a(paramString1, ((EcShopData)localObject2).mUin))
           {
-            localObject4 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+            localObject4 = (IPublicAccountDataManager)this.c.getRuntimeService(IPublicAccountDataManager.class, "all");
             if ((localObject4 != null) && (((IPublicAccountDataManager)localObject4).findPublicAccountInfoCache(((EcShopData)localObject2).mUin) != null))
             {
               paramString2.b((RecentUser)???);
@@ -1267,14 +1155,14 @@ public class EcShopAssistantManager
           }
         }
       }
-      paramString2 = a();
+      paramString2 = c();
       if (paramString2 != null) {
-        a(paramString2.mLastMsgTime);
+        b(paramString2.mLastMsgTime);
       }
       if (paramString1 != null) {
         paramString1.close();
       }
-      a(null);
+      b(null);
       return;
     }
     for (;;)
@@ -1285,90 +1173,123 @@ public class EcShopAssistantManager
   
   public void a(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface == null) {
       return;
     }
-    localQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("ec_shop_assist_deleted", paramBoolean).commit();
-    this.jdField_h_of_type_Boolean = paramBoolean;
+    localQQAppInterface.getApp().getSharedPreferences(this.c.getAccount(), 0).edit().putBoolean("ec_shop_assist_deleted", paramBoolean).commit();
+    this.N = paramBoolean;
   }
   
-  public boolean a()
+  public int b(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getBoolean("init_ec_shop_assist", true);
-  }
-  
-  public boolean a(String paramString)
-  {
-    List localList = jdField_b_of_type_JavaUtilList;
-    return ((localList != null) && (localList.contains(paramString))) || (ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) || (((IEcshopService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEcshopService.class)).isInWalletReportList(paramString));
-  }
-  
-  public List<RecentShopParcel> b()
-  {
-    if (!this.jdField_f_of_type_Boolean) {
-      f();
-    }
-    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-    SharedPreferences localSharedPreferences = a();
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i1;
+    int i2;
+    label99:
+    synchronized (this.f)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if ((this.g != null) && (paramQQAppInterface != null))
       {
-        EcShopData localEcShopData = (EcShopData)localIterator.next();
-        Object localObject3;
-        if ((!TextUtils.isEmpty(localEcShopData.mUin)) && (localEcShopData.mUin.equals(jdField_g_of_type_JavaLangString)))
+        Iterator localIterator = this.g.iterator();
+        i1 = 0;
+        if (localIterator.hasNext())
         {
-          localObject3 = new RecentShopParcel();
-          ((RecentShopParcel)localObject3).jdField_a_of_type_JavaLangString = localEcShopData.mUin;
-          ((RecentShopParcel)localObject3).jdField_b_of_type_JavaLangString = localSharedPreferences.getString("ad_nick", "");
-          ((RecentShopParcel)localObject3).jdField_d_of_type_JavaLangString = localSharedPreferences.getString("ad_title", "");
-          ((RecentShopParcel)localObject3).jdField_e_of_type_JavaLangString = localEcShopData.mImgInfo;
-          if (localSharedPreferences.getBoolean("ad_cert", false)) {
-            ((RecentShopParcel)localObject3).jdField_a_of_type_Int = 0;
-          } else {
-            ((RecentShopParcel)localObject3).jdField_a_of_type_Int = 0;
+          String str = (String)localIterator.next();
+          i2 = paramQQAppInterface.getConversationFacade().a(str, 1008);
+          if (i2 > 0) {
+            break label99;
           }
-          ((RecentShopParcel)localObject3).jdField_b_of_type_Int = 0;
-          ((RecentShopParcel)localObject3).jdField_c_of_type_Int = 1;
-          localArrayList.add(localObject3);
         }
         else
         {
-          localObject3 = new RecentItemEcShop(localEcShopData);
-          ((RecentItemEcShop)localObject3).update(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext());
-          RecentShopParcel localRecentShopParcel = new RecentShopParcel();
-          localRecentShopParcel.jdField_a_of_type_JavaLangString = localEcShopData.mUin;
-          localRecentShopParcel.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEcShopData.mUin);
-          localRecentShopParcel.jdField_c_of_type_JavaLangString = ((RecentItemEcShop)localObject3).mShowTime;
-          localRecentShopParcel.jdField_d_of_type_JavaLangString = String.valueOf(((RecentItemEcShop)localObject3).mLastMsg);
-          localRecentShopParcel.jdField_e_of_type_JavaLangString = localEcShopData.mImgInfo;
-          PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localIPublicAccountDataManager.findPublicAccountInfoCache(localEcShopData.mUin);
-          if ((localPublicAccountInfo != null) && (localPublicAccountInfo.certifiedGrade > 0L)) {
-            localRecentShopParcel.jdField_a_of_type_Int = 0;
-          } else {
-            localRecentShopParcel.jdField_a_of_type_Int = 0;
-          }
-          localRecentShopParcel.jdField_b_of_type_Int = ((RecentItemEcShop)localObject3).mUnreadNum;
-          localRecentShopParcel.jdField_c_of_type_Int = 0;
-          localRecentShopParcel.jdField_a_of_type_Long = ((RecentItemEcShop)localObject3).getLastMsgTime();
-          localRecentShopParcel.jdField_b_of_type_Long = localEcShopData.mLastDraftTime;
-          localArrayList.add(localRecentShopParcel);
+          return i1;
         }
       }
-      return localArrayList;
-    }
-    for (;;)
-    {
-      throw localObject2;
+      else
+      {
+        return 0;
+      }
     }
   }
   
   public void b()
   {
-    Object localObject1 = new File(jdField_a_of_type_JavaLangString);
+    if (this.c == null) {
+      return;
+    }
+    EcShopData localEcShopData = c();
+    if (localEcShopData != null) {
+      b(localEcShopData.mLastMsgTime);
+    }
+  }
+  
+  void b(String paramString)
+  {
+    if (this.G)
+    {
+      Intent localIntent = new Intent("action_on_shop_msg_receive");
+      localIntent.putParcelableArrayListExtra("datas", (ArrayList)k());
+      if ((!TextUtils.isEmpty(paramString)) && ((!this.c.getMessageFacade().n()) || (!paramString.equals(this.c.getMessageFacade().l())))) {
+        localIntent.putExtra("uin", paramString);
+      }
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.v = paramBoolean;
+    j().edit().putBoolean("folder_tab_show", this.v).commit();
+  }
+  
+  public EcShopData c()
+  {
+    q();
+    for (;;)
+    {
+      synchronized (this.e)
+      {
+        if ((this.d != null) && (this.d.size() > 0))
+        {
+          EcShopData localEcShopData = (EcShopData)this.d.get(0);
+          return localEcShopData;
+        }
+      }
+      Object localObject2 = null;
+    }
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface)
+  {
+    synchronized (this.f)
+    {
+      if ((this.g != null) && (paramQQAppInterface != null))
+      {
+        Iterator localIterator = this.g.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (paramQQAppInterface.getConversationFacade().a(str, 1008) > 0) {
+            paramQQAppInterface.getConversationFacade().a(str, 1008, false);
+          }
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    ThreadManager.post(new EcShopAssistantManager.3(this, paramString), 5, null, true);
+  }
+  
+  public void d()
+  {
+    Object localObject1 = new File(a);
     if (((File)localObject1).exists())
     {
       localObject1 = FileUtils.readFileContent((File)localObject1);
@@ -1378,15 +1299,15 @@ public class EcShopAssistantManager
     }
     for (;;)
     {
-      int m;
+      int i1;
       try
       {
         localObject1 = new JSONObject((String)localObject1);
         if (((JSONObject)localObject1).has("shopFolderName")) {
-          jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("shopFolderName");
+          h = ((JSONObject)localObject1).getString("shopFolderName");
         }
         if (((JSONObject)localObject1).has("shopFolderIcon")) {
-          jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("shopFolderIcon");
+          i = ((JSONObject)localObject1).getString("shopFolderIcon");
         }
         if (!((JSONObject)localObject1).has("shopButton")) {
           break label254;
@@ -1404,24 +1325,24 @@ public class EcShopAssistantManager
       {
         Object localObject2;
         String str;
-        int n;
+        int i2;
         if (!QLog.isColorLevel()) {
           break label254;
         }
       }
-      if (m < ((JSONArray)localObject1).length())
+      if (i1 < ((JSONArray)localObject1).length())
       {
-        localObject2 = (JSONObject)((JSONArray)localObject1).get(m);
+        localObject2 = (JSONObject)((JSONArray)localObject1).get(i1);
         str = ((JSONObject)localObject2).getString("url");
-        n = ((JSONObject)localObject2).getInt("id");
-        this.jdField_a_of_type_ArrayOfJavaLangString[(n - 1)] = str;
-        m += 1;
+        i2 = ((JSONObject)localObject2).getInt("id");
+        this.C[(i2 - 1)] = str;
+        i1 += 1;
         continue;
         QLog.d("EcShopAssistantManager", 2, "parse banner config fail", localException);
         return;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("banner json config file is not existed path=");
-        localStringBuilder.append(jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(a);
         QLog.d("EcShopAssistantManager", 2, localStringBuilder.toString());
       }
       else
@@ -1429,100 +1350,49 @@ public class EcShopAssistantManager
         label254:
         return;
         label255:
-        m = 0;
+        i1 = 0;
       }
     }
   }
   
-  public void b(QQAppInterface paramQQAppInterface)
+  public boolean d(String paramString)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilSet != null) && (paramQQAppInterface != null))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (paramQQAppInterface.getConversationFacade().a(str, 1008) > 0) {
-            paramQQAppInterface.getConversationFacade().a(str, 1008, false);
-          }
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw paramQQAppInterface;
-    }
+    List localList = o;
+    return ((localList != null) && (localList.contains(paramString))) || (ServiceAccountFolderManager.c(this.c, paramString)) || (((IEcshopService)this.c.getRuntimeService(IEcshopService.class)).isInWalletReportList(paramString));
   }
   
-  public void b(String paramString)
+  public void e()
   {
-    ThreadManager.post(new EcShopAssistantManager.3(this, paramString), 5, null, true);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    a().edit().putBoolean("folder_tab_show", this.jdField_b_of_type_Boolean).commit();
-  }
-  
-  public boolean b()
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return false;
-    }
-    long l1 = a().getLong("last_stay_folder", 0L);
-    long l2 = this.jdField_d_of_type_Int * 1000 * 60 * 60;
-    if ((System.currentTimeMillis() - l1 < l2 * 24L) && (this.jdField_b_of_type_Boolean))
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("lastEnterShop:");
-        localStringBuilder.append(l1);
-        localStringBuilder.append(",dayLimit:");
-        localStringBuilder.append(this.jdField_d_of_type_Int);
-        QLog.i("EcShopAssistantManager", 2, localStringBuilder.toString());
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.c.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
     if (localDownloaderInterface != null)
     {
       Object localObject2 = EmosmUtils.a("VIP_shop_assit_cfg", "https://imgcache.qq.com/zzapp/qqshop/banner/qqshop_shopinghelper_conf.json");
       if (localDownloaderInterface.getTask((String)localObject2) == null)
       {
-        Object localObject1 = new File(jdField_a_of_type_JavaLangString);
+        Object localObject1 = new File(a);
         localObject2 = new DownloadTask((String)localObject2, (File)localObject1);
         if (((File)localObject1).exists())
         {
           long l1 = ((File)localObject1).lastModified();
-          ((DownloadTask)localObject2).i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("last_modified_time", 0L);
-          if (Long.valueOf(l1).longValue() != ((DownloadTask)localObject2).i) {
-            ((DownloadTask)localObject2).m = true;
+          ((DownloadTask)localObject2).I = this.c.getPreferences().getLong("last_modified_time", 0L);
+          if (Long.valueOf(l1).longValue() != ((DownloadTask)localObject2).I) {
+            ((DownloadTask)localObject2).G = true;
           }
         }
-        ((DownloadTask)localObject2).j = true;
-        ((DownloadTask)localObject2).p = false;
+        ((DownloadTask)localObject2).D = true;
+        ((DownloadTask)localObject2).N = false;
         localObject1 = new Bundle();
-        localDownloaderInterface.startDownload((DownloadTask)localObject2, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager$EcShopAssistantDownloadListener, (Bundle)localObject1);
+        localDownloaderInterface.startDownload((DownloadTask)localObject2, this.P, (Bundle)localObject1);
       }
     }
   }
   
-  public void d()
+  public void f()
   {
     try
     {
-      i();
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      q();
+      Object localObject1 = this.c.getProxyManager().g();
       localObject2 = ((RecentUserProxy)localObject1).a(false);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
@@ -1530,14 +1400,14 @@ public class EcShopAssistantManager
         while (((Iterator)localObject2).hasNext())
         {
           RecentUser localRecentUser = (RecentUser)((Iterator)localObject2).next();
-          if ((1008 == localRecentUser.getType()) && (ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin)))
+          if ((1008 == localRecentUser.getType()) && (ServiceAccountFolderManager.c(this.c, localRecentUser.uin)))
           {
             EcShopData localEcShopData = a(localRecentUser.uin);
             localEcShopData.mLastDraftTime = localRecentUser.lastmsgdrafttime;
             localEcShopData.mLastMsgTime = localRecentUser.lastmsgtime;
             if (localEcShopData.mLastMsgTime == 0L)
             {
-              Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(localEcShopData.mUin, 1008);
+              Message localMessage = this.c.getMessageFacade().getLastMessage(localEcShopData.mUin, 1008);
               long l1;
               if (localMessage != null) {
                 l1 = localMessage.time;
@@ -1548,15 +1418,15 @@ public class EcShopAssistantManager
             }
             a(localEcShopData);
             ((RecentUserProxy)localObject1).a(localRecentUser);
-            a(localEcShopData.mUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            a(localEcShopData.mUin, this.c);
           }
         }
       }
-      localObject1 = (IPublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+      localObject1 = (IPublicAccountHandler)this.c.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
       if (localObject1 != null) {
         ((IPublicAccountHandler)localObject1).clearPublicAccountSeq();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("init_ec_shop_assist", false).commit();
+      this.c.getApp().getSharedPreferences(this.c.getAccount(), 0).edit().putBoolean("init_ec_shop_assist", false).commit();
       return;
     }
     catch (Exception localException)
@@ -1568,119 +1438,242 @@ public class EcShopAssistantManager
     }
   }
   
-  public void e()
+  public void g()
   {
-    if (a()) {
-      d();
+    if (h()) {
+      f();
     }
-    a();
+    b();
   }
   
-  void f()
+  public boolean h()
+  {
+    return this.c.getApp().getSharedPreferences(this.c.getAccount(), 0).getBoolean("init_ec_shop_assist", true);
+  }
+  
+  public int i()
+  {
+    Object localObject1 = this.d;
+    int i2 = 0;
+    int i1 = 0;
+    if (localObject1 != null)
+    {
+      Iterator localIterator = ((List)localObject1).iterator();
+      for (;;)
+      {
+        i2 = i1;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        Object localObject2 = (EcShopData)localIterator.next();
+        localObject1 = null;
+        i2 = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.c, ((EcShopData)localObject2).mUin);
+        QQMessageFacade localQQMessageFacade = this.c.getMessageFacade();
+        if (localQQMessageFacade != null) {
+          localObject1 = localQQMessageFacade.getLastMessage(((EcShopData)localObject2).mUin, i2);
+        }
+        if (localObject1 != null)
+        {
+          localObject2 = this.c.getConversationFacade();
+          if (localObject2 != null) {
+            i1 += ((ConversationFacade)localObject2).a(((Message)localObject1).frienduin, ((Message)localObject1).istroop);
+          }
+        }
+      }
+    }
+    return i2;
+  }
+  
+  public List<RecentShopParcel> k()
+  {
+    if (!this.G) {
+      l();
+    }
+    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.c.getRuntimeService(IPublicAccountDataManager.class, "all");
+    SharedPreferences localSharedPreferences = j();
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.e)
+    {
+      Iterator localIterator = this.d.iterator();
+      while (localIterator.hasNext())
+      {
+        EcShopData localEcShopData = (EcShopData)localIterator.next();
+        Object localObject3;
+        if ((!TextUtils.isEmpty(localEcShopData.mUin)) && (localEcShopData.mUin.equals(s)))
+        {
+          localObject3 = new RecentShopParcel();
+          ((RecentShopParcel)localObject3).a = localEcShopData.mUin;
+          ((RecentShopParcel)localObject3).b = localSharedPreferences.getString("ad_nick", "");
+          ((RecentShopParcel)localObject3).d = localSharedPreferences.getString("ad_title", "");
+          ((RecentShopParcel)localObject3).e = localEcShopData.mImgInfo;
+          if (localSharedPreferences.getBoolean("ad_cert", false)) {
+            ((RecentShopParcel)localObject3).f = 0;
+          } else {
+            ((RecentShopParcel)localObject3).f = 0;
+          }
+          ((RecentShopParcel)localObject3).g = 0;
+          ((RecentShopParcel)localObject3).h = 1;
+          localArrayList.add(localObject3);
+        }
+        else
+        {
+          localObject3 = new RecentItemEcShop(localEcShopData);
+          ((RecentItemEcShop)localObject3).update(this.c, BaseApplication.getContext());
+          RecentShopParcel localRecentShopParcel = new RecentShopParcel();
+          localRecentShopParcel.a = localEcShopData.mUin;
+          localRecentShopParcel.b = a(this.c, localEcShopData.mUin);
+          localRecentShopParcel.c = ((RecentItemEcShop)localObject3).mShowTime;
+          localRecentShopParcel.d = String.valueOf(((RecentItemEcShop)localObject3).mLastMsg);
+          localRecentShopParcel.e = localEcShopData.mImgInfo;
+          PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localIPublicAccountDataManager.findPublicAccountInfoCache(localEcShopData.mUin);
+          if ((localPublicAccountInfo != null) && (localPublicAccountInfo.certifiedGrade > 0L)) {
+            localRecentShopParcel.f = 0;
+          } else {
+            localRecentShopParcel.f = 0;
+          }
+          localRecentShopParcel.g = ((RecentItemEcShop)localObject3).mUnreadNum;
+          localRecentShopParcel.h = 0;
+          localRecentShopParcel.j = ((RecentItemEcShop)localObject3).getLastMsgTime();
+          localRecentShopParcel.k = localEcShopData.mLastDraftTime;
+          localArrayList.add(localRecentShopParcel);
+        }
+      }
+      return localArrayList;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  void l()
   {
     List localList = a();
     if (localList == null) {
-      m = 0;
+      i1 = 0;
     } else {
-      m = localList.size();
+      i1 = localList.size();
     }
-    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
-    SharedPreferences localSharedPreferences = a();
+    IPublicAccountDataManager localIPublicAccountDataManager = (IPublicAccountDataManager)this.c.getRuntimeService(IPublicAccountDataManager.class, "all");
+    SharedPreferences localSharedPreferences = j();
     boolean bool = localSharedPreferences.getBoolean("is_ad_added", false);
     long l1 = localSharedPreferences.getLong("ad_puin", 0L);
-    this.jdField_b_of_type_Long = localSharedPreferences.getLong("ad_id", 0L);
-    jdField_g_of_type_JavaLangString = String.valueOf(l1);
+    this.J = localSharedPreferences.getLong("ad_id", 0L);
+    s = String.valueOf(l1);
     Object localObject2 = null;
-    this.j = localSharedPreferences.getString("ad_icon_url", null);
-    this.k = localSharedPreferences.getString("ad_url", null);
-    int i1 = localSharedPreferences.getInt("ad_start", 0);
-    int i2 = localSharedPreferences.getInt("ad_end", 0);
+    this.H = localSharedPreferences.getString("ad_icon_url", null);
+    this.I = localSharedPreferences.getString("ad_url", null);
+    int i3 = localSharedPreferences.getInt("ad_start", 0);
+    int i4 = localSharedPreferences.getInt("ad_end", 0);
     long l2 = System.currentTimeMillis() / 1000L;
-    int n;
-    if ((!bool) && (localSharedPreferences.contains("ad_id")) && (m > 0))
+    int i2;
+    if ((!bool) && (localSharedPreferences.contains("ad_id")) && (i1 > 0))
     {
-      if ((l2 > i1) && (l2 < i2) && (!localIPublicAccountDataManager.isFollowedUin(Long.valueOf(l1))))
+      if ((l2 > i3) && (l2 < i4) && (!localIPublicAccountDataManager.isFollowedUin(Long.valueOf(l1))))
       {
         localObject1 = new EcShopData();
         ((EcShopData)localObject1).mUin = String.valueOf(l1);
         ((EcShopData)localObject1).mImgInfo = localSharedPreferences.getString("ad_pics", null);
-        n = 0;
-        while ((n < m) && (n < 2))
+        i2 = 0;
+        while ((i2 < i1) && (i2 < 2))
         {
-          ((EcShopData)localObject1).mLastMsgTime = (((EcShopData)localList.get(n)).mLastMsgTime - 1L);
-          n += 1;
+          ((EcShopData)localObject1).mLastMsgTime = (((EcShopData)localList.get(i2)).mLastMsgTime - 1L);
+          i2 += 1;
         }
         a((EcShopData)localObject1);
         localSharedPreferences.edit().putBoolean("is_ad_added", true).commit();
-        m = 1;
+        i1 = 1;
         break label479;
       }
     }
     else if (bool)
     {
-      n = 0;
+      i2 = 0;
       for (;;)
       {
         localObject1 = localObject2;
-        if (n >= m) {
+        if (i2 >= i1) {
           break;
         }
-        if (String.valueOf(l1).equals(((EcShopData)localList.get(n)).mUin))
+        if (String.valueOf(l1).equals(((EcShopData)localList.get(i2)).mUin))
         {
-          localObject1 = (EcShopData)localList.get(n);
+          localObject1 = (EcShopData)localList.get(i2);
           break;
         }
-        n += 1;
+        i2 += 1;
       }
-      if (((l2 < i1) || (l2 > i2) || (localIPublicAccountDataManager.isFollowedUin(Long.valueOf(l1)))) && (localObject1 != null))
+      if (((l2 < i3) || (l2 > i4) || (localIPublicAccountDataManager.isFollowedUin(Long.valueOf(l1)))) && (localObject1 != null))
       {
-        b(((EcShopData)localObject1).mUin);
+        c(((EcShopData)localObject1).mUin);
       }
       else if (localObject1 != null)
       {
         localObject1 = localSharedPreferences.edit();
-        m = 1;
+        i1 = 1;
         ((SharedPreferences.Editor)localObject1).putBoolean("is_ad_added", true).commit();
         break label479;
       }
     }
-    int m = 0;
+    int i1 = 0;
     label479:
-    if ((m == 0) && (localSharedPreferences.getBoolean("is_ad_added", false)))
+    if ((i1 == 0) && (localSharedPreferences.getBoolean("is_ad_added", false)))
     {
       localSharedPreferences.edit().putBoolean("is_ad_added", false).commit();
     }
-    else if ((m != 0) && (QLog.isColorLevel()))
+    else if ((i1 != 0) && (QLog.isColorLevel()))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("show ad ,puin=");
-      ((StringBuilder)localObject1).append(jdField_g_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(s);
       QLog.i("EcShopAssistantManager", 2, ((StringBuilder)localObject1).toString());
     }
-    if (m == 0)
+    if (i1 == 0)
     {
-      jdField_g_of_type_JavaLangString = "";
+      s = "";
       return;
     }
-    Object localObject1 = (EcshopReportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+    Object localObject1 = (EcshopReportHandler)this.c.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
     if (localObject1 != null) {
-      ((EcshopReportHandler)localObject1).a(134246436, null, null, null, null, this.jdField_b_of_type_Long, false);
+      ((EcshopReportHandler)localObject1).a(134246436, null, null, null, null, this.J, false);
     }
+  }
+  
+  public boolean m()
+  {
+    if (!this.z) {
+      return false;
+    }
+    long l1 = j().getLong("last_stay_folder", 0L);
+    long l2 = this.y * 1000 * 60 * 60;
+    if ((System.currentTimeMillis() - l1 < l2 * 24L) && (this.v))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("lastEnterShop:");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(",dayLimit:");
+        localStringBuilder.append(this.y);
+        QLog.i("EcShopAssistantManager", 2, localStringBuilder.toString());
+      }
+      return true;
+    }
+    return false;
   }
   
   public void onDestroy()
   {
     try
     {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      BaseApplicationImpl.getContext().unregisterReceiver(this.D);
       label10:
-      IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+      IFaceDecoder localIFaceDecoder = this.E;
       if (localIFaceDecoder != null)
       {
         localIFaceDecoder.destory();
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+        this.E = null;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager$EcShopAssistantDownloadListener = null;
+      this.P = null;
       return;
     }
     catch (Exception localException)
@@ -1691,7 +1684,7 @@ public class EcShopAssistantManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager
  * JD-Core Version:    0.7.0.1
  */

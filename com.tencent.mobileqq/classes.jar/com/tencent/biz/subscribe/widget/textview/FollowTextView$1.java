@@ -22,26 +22,26 @@ class FollowTextView$1
       if (!FollowTextView.a(this.a))
       {
         paramString = this.a;
-        FollowTextView.a(paramString, true, FollowTextView.a(paramString));
+        FollowTextView.a(paramString, true, FollowTextView.b(paramString));
       }
       this.a.a(1);
-      if (FollowTextView.a(this.a) != null)
+      if (FollowTextView.b(this.a) != null)
       {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        if (FollowTextView.c(this.a) != null) {
+          FollowTextView.c(this.a).a(true, FollowTextView.b(this.a));
         }
-        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, FollowTextView.b(this.a).poster.id.get()));
       }
     }
     else
     {
-      QQToast.a(this.a.getContext(), 2131690769, 0).a();
+      QQToast.makeText(this.a.getContext(), 2131887691, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView.1
  * JD-Core Version:    0.7.0.1
  */

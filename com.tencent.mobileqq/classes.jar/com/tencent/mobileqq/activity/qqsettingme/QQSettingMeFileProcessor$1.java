@@ -11,12 +11,12 @@ class QQSettingMeFileProcessor$1
   
   public void a(QQSettingMeFileBean paramQQSettingMeFileBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a(paramQQSettingMeFileBean);
+    this.a.a(paramQQSettingMeFileBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeFileProcessor.1
  * JD-Core Version:    0.7.0.1
  */

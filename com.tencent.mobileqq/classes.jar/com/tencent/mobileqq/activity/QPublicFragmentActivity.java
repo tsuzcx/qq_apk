@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -26,6 +27,7 @@ import java.lang.reflect.Field;
 public class QPublicFragmentActivity
   extends QBaseActivity
 {
+  public static final int BUSINESS_DESCRIPTION_MAX_LENGTH = 50;
   public static final String KEY_FRAGMENT_CLASS = "public_fragment_class";
   public static final String KEY_WINDOW_FEATURE = "public_fragment_window_feature";
   private static final String TAG = " QPublicFragmentActivity";
@@ -184,14 +186,14 @@ public class QPublicFragmentActivity
       patchSavedInstanceState(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558488);
+    setContentView(2131624037);
     if (this.mFrag == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367211, this.mFrag);
+    paramBundle.replace(2131433667, this.mFrag);
     paramBundle.commitAllowingStateLoss();
     this.mFrag.initSideFling(this, this.mFlingHandler);
     return true;
@@ -349,35 +351,55 @@ public class QPublicFragmentActivity
   public String toString()
   {
     String str = super.toString();
+    Object localObject1;
     if (this.mFrag != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("#");
-      ((StringBuilder)localObject).append(this.mFrag.getClass().getName());
-      ((StringBuilder)localObject).append("@");
-      ((StringBuilder)localObject).append(Integer.toHexString(this.mFrag.hashCode()));
-      return ((StringBuilder)localObject).toString();
-    }
-    Object localObject = str;
-    if (getIntent() != null)
-    {
-      localObject = str;
-      if (getIntent().getStringExtra("public_fragment_class") != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("#");
+      ((StringBuilder)localObject1).append(this.mFrag.getClass().getName());
+      ((StringBuilder)localObject1).append("@");
+      ((StringBuilder)localObject1).append(Integer.toHexString(this.mFrag.hashCode()));
+      str = ((StringBuilder)localObject1).toString();
+      Object localObject2 = this.mFrag.getBusinessDescription();
+      localObject1 = str;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append("#");
-        ((StringBuilder)localObject).append(getIntent().getStringExtra("public_fragment_class"));
-        localObject = ((StringBuilder)localObject).toString();
+        localObject2 = ((String)localObject2).trim();
+        localObject1 = localObject2;
+        if (((String)localObject2).length() > 50) {
+          localObject1 = ((String)localObject2).substring(0, 50);
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(str);
+        ((StringBuilder)localObject2).append("{");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("}");
+        return ((StringBuilder)localObject2).toString();
       }
     }
-    return localObject;
+    else
+    {
+      localObject1 = str;
+      if (getIntent() != null)
+      {
+        localObject1 = str;
+        if (getIntent().getStringExtra("public_fragment_class") != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(str);
+          ((StringBuilder)localObject1).append("#");
+          ((StringBuilder)localObject1).append(getIntent().getStringExtra("public_fragment_class"));
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

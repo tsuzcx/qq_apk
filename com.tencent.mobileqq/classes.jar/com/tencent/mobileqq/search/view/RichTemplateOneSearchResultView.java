@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import com.tencent.mobileqq.search.presenter.RichSearchResultPresenter.OnActionListener;
 import com.tencent.mobileqq.search.rich.IRichNode;
 import com.tencent.mobileqq.search.rich.RichNodeViewBase;
 import com.tencent.qphone.base.util.QLog;
@@ -11,17 +12,23 @@ import com.tencent.qphone.base.util.QLog;
 public class RichTemplateOneSearchResultView
   extends RichNodeViewBase
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RichTemplateOneSearchResultView.RichTemplateSearchResultHelper jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper;
+  private View b;
+  private RichTemplateOneSearchResultView.RichTemplateSearchResultHelper c;
   
   public RichTemplateOneSearchResultView(IRichNode paramIRichNode, Context paramContext)
   {
     super(paramIRichNode, paramContext);
   }
   
-  private void a()
+  private void c(Context paramContext)
   {
-    String str = a();
+    this.b = LayoutInflater.from(paramContext).inflate(2131625853, null, false);
+    this.c.a(this.b);
+  }
+  
+  private void k()
+  {
+    String str = n();
     if (!TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel())
@@ -31,9 +38,9 @@ public class RichTemplateOneSearchResultView
         localStringBuilder.append(str);
         QLog.e("RichTemplateOneSearchResultView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a(str);
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.b();
+      this.c.a();
+      this.c.a(str);
+      this.c.b();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -41,28 +48,32 @@ public class RichTemplateOneSearchResultView
     }
   }
   
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559810, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
   public View a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper = new RichTemplateOneSearchResultView.RichTemplateSearchResultHelper(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
+    this.c = new RichTemplateOneSearchResultView.RichTemplateSearchResultHelper(paramContext);
+    c(paramContext);
+    k();
+    return this.b;
   }
   
-  public void e()
+  public String a()
   {
-    a();
+    return this.c.c();
+  }
+  
+  public void a(RichSearchResultPresenter.OnActionListener paramOnActionListener)
+  {
+    this.c.a(paramOnActionListener);
+  }
+  
+  public void j()
+  {
+    k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.RichTemplateOneSearchResultView
  * JD-Core Version:    0.7.0.1
  */

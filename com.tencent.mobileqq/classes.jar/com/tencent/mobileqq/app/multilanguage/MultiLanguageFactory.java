@@ -21,12 +21,12 @@ import com.tencent.widget.AlphaClickableTextView;
 public class MultiLanguageFactory
   implements LayoutInflater.Factory2
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843087, 16843088, 16844078, 2131034729, 2131035099, 2131035265, 2131035267 };
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private static final int[] a = { 16843087, 16843088, 16844078, 2131035240, 2131035794, 2131036034, 2131036036 };
+  private Activity b;
   
   public MultiLanguageFactory(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramActivity;
   }
   
   private View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
@@ -66,34 +66,34 @@ public class MultiLanguageFactory
     paramView = a(paramString, paramContext, paramAttributeSet);
     if (paramView != null)
     {
-      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
+      paramString = paramContext.obtainStyledAttributes(paramAttributeSet, a);
       int i = 0;
-      while (i < jdField_a_of_type_ArrayOfInt.length)
+      while (i < a.length)
       {
         int j = paramString.getResourceId(i, 0);
         if (j != 0)
         {
           paramAttributeSet = paramContext.getString(j);
-          switch (jdField_a_of_type_ArrayOfInt[i])
+          switch (a[i])
           {
           default: 
             break;
-          case 2131035267: 
+          case 2131036036: 
             if ((paramView instanceof FormSwitchItem)) {
               ((FormSwitchItem)paramView).setText(paramAttributeSet);
             }
             break;
-          case 2131035265: 
+          case 2131036034: 
             if ((paramView instanceof FormMultiLineSwitchItem)) {
               ((FormMultiLineSwitchItem)paramView).setSecendLineText(paramAttributeSet);
             }
             break;
-          case 2131035099: 
+          case 2131035794: 
             if ((paramView instanceof FormSimpleItem)) {
               ((FormSimpleItem)paramView).setRightText(paramAttributeSet);
             }
             break;
-          case 2131034729: 
+          case 2131035240: 
             if ((paramView instanceof FormSimpleItem)) {
               ((FormSimpleItem)paramView).setLeftText(paramAttributeSet);
             }
@@ -137,7 +137,7 @@ public class MultiLanguageFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.multilanguage.MultiLanguageFactory
  * JD-Core Version:    0.7.0.1
  */

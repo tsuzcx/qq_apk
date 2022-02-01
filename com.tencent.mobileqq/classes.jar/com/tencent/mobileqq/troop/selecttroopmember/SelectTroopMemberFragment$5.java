@@ -13,17 +13,17 @@ class SelectTroopMemberFragment$5
   
   public void onClick(View paramView)
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.a;
     if ((localDialog != null) && (localDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.dismiss();
     }
-    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_mber").c("del_mber").d("confirm_cel").a(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_Int).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberSelectTroopMemberFragment.jdField_a_of_type_JavaLangString }).a();
+    new ReportTask(this.b.a).a("dc00899").b("Grp_mber").c("del_mber").d("confirm_cel").a(this.b.c).a(new String[] { this.b.d }).a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberFragment.5
  * JD-Core Version:    0.7.0.1
  */

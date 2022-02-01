@@ -83,13 +83,13 @@ public abstract class RoomLiveTemplateActivity
     {
       setRequestedOrientation(0);
       super.onCreate(paramBundle);
-      setContentView(2131559224);
+      setContentView(2131625144);
       return;
     }
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(2131559224);
-    this.mRootLayout = ((FrameLayout)findViewById(2131365132));
+    setContentView(2131625144);
+    this.mRootLayout = ((FrameLayout)findViewById(2131431280));
   }
   
   protected void onFragmentCreateFinish() {}
@@ -110,7 +110,7 @@ public abstract class RoomLiveTemplateActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.RoomLiveTemplateActivity
  * JD-Core Version:    0.7.0.1
  */

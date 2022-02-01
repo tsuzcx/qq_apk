@@ -27,45 +27,45 @@ class VideoInviteActivity$9
   protected void a()
   {
     super.a();
-    this.a.h();
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    this.b.m();
+    if (this.b.H != null)
     {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_e_of_type_Int, this.a.c, this.a.jdField_e_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.A, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.o);
+      this.b.H.b(this.b.j, this.b.o, this.b.q);
+      this.b.H.c(this.b.e.az, this.b.e.aB);
     }
   }
   
   protected void a(long paramLong, int paramInt, String paramString)
   {
-    if (TextUtils.equals(this.a.c, paramString))
+    if (TextUtils.equals(this.b.o, paramString))
     {
       if (QLog.isColorLevel())
       {
-        String str = this.a.jdField_a_of_type_JavaLangString;
+        String str = this.b.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onClose  wrong uin: ");
-        localStringBuilder.append(this.a.c);
+        localStringBuilder.append(this.b.o);
         localStringBuilder.append(", ");
         localStringBuilder.append(paramString);
         QLog.d(str, 2, localStringBuilder.toString());
       }
       return;
     }
-    if (!this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.h())
+    if (!this.b.e.h())
     {
-      TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      if ((this.a.l) && (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) && (!this.a.f()))
+      TraeHelper.b(this.b.H);
+      if ((this.b.Z) && (this.b.R != null) && (!this.b.r()))
       {
-        this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new VideoInviteActivity.9.1(this, paramInt));
+        this.b.R.a(new VideoInviteActivity.9.1(this, paramInt));
         return;
       }
-      this.a.a().a(this.a.c, 251);
-      this.a.a().b(251);
-      this.a.a().b(this.a.c, paramInt);
-      paramString = this.a;
-      paramString.jdField_e_of_type_Boolean = true;
-      QLog.d(paramString.jdField_a_of_type_JavaLangString, 1, "onClose()-> else ->finish  ");
-      this.a.finish();
+      this.b.d().a(this.b.o, 251);
+      this.b.d().b(251);
+      this.b.d().b(this.b.o, paramInt);
+      paramString = this.b;
+      paramString.s = true;
+      QLog.d(paramString.a, 1, "onClose()-> else ->finish  ");
+      this.b.finish();
     }
   }
   
@@ -74,29 +74,29 @@ class VideoInviteActivity$9
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.a.jdField_a_of_type_JavaLangString;
+      localObject = this.b.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGetStrangeFace uin = ");
       localStringBuilder.append(paramString);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_e_of_type_Int == 25)
+    if (this.b.j == 25)
     {
-      localObject = new AvatarParam(this.a.jdField_e_of_type_Int, paramString, this.a.jdField_e_of_type_JavaLangString, true);
-      this.a.jdField_a_of_type_ComTencentAvAvatarQavUpdateAvatarViewHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_a_of_type_AndroidWidgetImageView, (AvatarParam)localObject, paramBitmap);
+      localObject = new AvatarParam(this.b.j, paramString, this.b.q, true);
+      this.b.E.a(this.b.H, this.b.y, (AvatarParam)localObject, paramBitmap);
     }
     super.a(paramString, paramBitmap);
   }
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    if ((this.a.c != null) && (this.a.c.equals(paramString)))
+    if ((this.b.o != null) && (this.b.o.equals(paramString)))
     {
       String str;
       StringBuilder localStringBuilder;
       if (QLog.isDevelopLevel())
       {
-        str = this.a.jdField_a_of_type_JavaLangString;
+        str = this.b.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onDestroyUI, peer[");
         localStringBuilder.append(paramString);
@@ -107,12 +107,12 @@ class VideoInviteActivity$9
       }
       if (paramBoolean)
       {
-        TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        if ((this.a.l) && (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) && (!this.a.f()))
+        TraeHelper.b(this.b.H);
+        if ((this.b.Z) && (this.b.R != null) && (!this.b.r()))
         {
           if (QLog.isDevelopLevel())
           {
-            str = this.a.jdField_a_of_type_JavaLangString;
+            str = this.b.a;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("onDestroyUI, outAnim, peer[");
             localStringBuilder.append(paramString);
@@ -121,12 +121,12 @@ class VideoInviteActivity$9
             localStringBuilder.append("]");
             QLog.i(str, 4, localStringBuilder.toString());
           }
-          this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new VideoInviteActivity.9.2(this));
+          this.b.R.a(new VideoInviteActivity.9.2(this));
           return;
         }
         if (QLog.isDevelopLevel())
         {
-          str = this.a.jdField_a_of_type_JavaLangString;
+          str = this.b.a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("onDestroyUI, noAnim, peer[");
           localStringBuilder.append(paramString);
@@ -135,8 +135,8 @@ class VideoInviteActivity$9
           localStringBuilder.append("]");
           QLog.i(str, 4, localStringBuilder.toString());
         }
-        paramString = this.a;
-        paramString.jdField_e_of_type_Boolean = paramBoolean;
+        paramString = this.b;
+        paramString.s = paramBoolean;
         paramString.finish();
       }
     }
@@ -144,7 +144,7 @@ class VideoInviteActivity$9
   
   protected void b(int paramInt)
   {
-    this.a.a(paramInt);
+    this.b.a(paramInt);
   }
   
   protected void c(int paramInt)
@@ -153,42 +153,42 @@ class VideoInviteActivity$9
     Object localObject;
     if (QLog.isColorLevel())
     {
-      str = this.a.jdField_a_of_type_JavaLangString;
+      str = this.b.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPlayAnnimate, id[");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("], FunCallId[");
-      ((StringBuilder)localObject).append(this.a.j);
+      ((StringBuilder)localObject).append(this.b.ab);
       ((StringBuilder)localObject).append("], isDestroy[");
-      ((StringBuilder)localObject).append(this.a.m);
+      ((StringBuilder)localObject).append(this.b.aa);
       ((StringBuilder)localObject).append("]");
       QLog.w(str, 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt == this.a.j)
+    if (paramInt == this.b.ab)
     {
-      if (this.a.m) {
+      if (this.b.aa) {
         return;
       }
-      int i = VipFunCallUtil.a();
-      str = VipFunCallUtil.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, i, null);
+      int i = VipFunCallUtil.c();
+      str = VipFunCallUtil.a(this.b.H, paramInt, i, null);
       localObject = new File(str);
-      int j = this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d;
-      if ((((File)localObject).exists()) && (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.f != 4) && ((j == 1) || (j == 0)) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
+      int j = this.b.e.g;
+      if ((((File)localObject).exists()) && (this.b.e.i != 4) && ((j == 1) || (j == 0)) && (this.b.J != null))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView == null)
+        if (this.b.N == null)
         {
-          localObject = this.a;
-          ((VideoInviteActivity)localObject).jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView = VipFunCallManager.a((Activity)((VideoInviteActivity)localObject).jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+          localObject = this.b;
+          ((VideoInviteActivity)localObject).N = VipFunCallManager.a((Activity)((VideoInviteActivity)localObject).O.get(), this.b.J, false);
         }
-        if (VipFunCallUtil.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext(), this.a.jdField_a_of_type_ComTencentMobileqqVasVipavVipFullScreenVideoView, str, i, null, paramInt, false))
+        if (VipFunCallUtil.a(this.b.H.getApp().getApplicationContext(), this.b.N, str, i, null, paramInt, false))
         {
-          this.a.a(true);
-          ImmersiveUtils.setStatusTextColor(false, this.a.getWindow());
+          this.b.a(true);
+          ImmersiveUtils.setStatusTextColor(false, this.b.getWindow());
         }
       }
       if (QLog.isColorLevel())
       {
-        str = this.a.jdField_a_of_type_JavaLangString;
+        str = this.b.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("VideoInviteFull onPlayAnnimate finish id:");
         ((StringBuilder)localObject).append(paramInt);
@@ -197,25 +197,25 @@ class VideoInviteActivity$9
     }
   }
   
-  protected void d(String paramString)
+  protected void c(String paramString)
   {
-    super.d(paramString);
-    if (this.a.jdField_e_of_type_Int == 25)
+    super.c(paramString);
+    if (this.b.j == 25)
     {
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = this.a.jdField_a_of_type_JavaLangString;
+        localObject = this.b.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("VideoInviteActivity onGetQCallNickName nickName:");
         localStringBuilder.append(paramString);
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+      if (this.b.z != null)
       {
-        localObject = this.a;
-        ((VideoInviteActivity)localObject).d = paramString;
-        ((VideoInviteActivity)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(this.a.d);
+        localObject = this.b;
+        ((VideoInviteActivity)localObject).p = paramString;
+        ((VideoInviteActivity)localObject).z.setText(this.b.p);
       }
     }
   }

@@ -12,12 +12,12 @@ class ForwardShortVideoOption$3
   public void run()
   {
     URLDrawableHelper.decodeLocalImage(this.a, null, false);
-    this.this$0.a.runOnUiThread(new ForwardShortVideoOption.3.1(this));
+    this.this$0.s.runOnUiThread(new ForwardShortVideoOption.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.3
  * JD-Core Version:    0.7.0.1
  */

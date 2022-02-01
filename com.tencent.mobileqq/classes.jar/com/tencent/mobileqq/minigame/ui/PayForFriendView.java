@@ -91,7 +91,7 @@ public class PayForFriendView
       this.mAppVersionId = paramString5;
       this.mAppVerType = paramInt;
       paramString1 = GameWnsUtils.getPayForFriendUrl().replace("{appid}", paramString2).replace("{prepayId}", paramString1);
-      WebSoService.a().a();
+      WebSoService.a().b();
       if (this.mWebView != null)
       {
         paramString2 = new StringBuilder();
@@ -107,7 +107,7 @@ public class PayForFriendView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.PayForFriendView
  * JD-Core Version:    0.7.0.1
  */

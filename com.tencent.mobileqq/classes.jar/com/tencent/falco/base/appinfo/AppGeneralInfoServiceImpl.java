@@ -17,30 +17,30 @@ import java.util.UUID;
 public class AppGeneralInfoServiceImpl
   implements AppGeneralInfoService, InfoConfiguration
 {
-  private int jdField_a_of_type_Int;
-  private Application jdField_a_of_type_AndroidAppApplication;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private boolean jdField_f_of_type_Boolean = false;
-  private String g;
+  private Application a;
+  private String b;
+  private int c;
+  private boolean d;
+  private boolean e;
+  private boolean f;
+  private int g;
   private String h;
   private String i;
   private String j;
   private String k;
+  private String l;
+  private String m;
+  private int n;
+  private int o;
+  private String p;
+  private int q;
+  private boolean r;
+  private String s;
+  private String t;
+  private String u;
+  private int v;
+  private boolean w = false;
+  private boolean x = false;
   
   private String a()
   {
@@ -87,85 +87,85 @@ public class AppGeneralInfoServiceImpl
   
   public String getAppId()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.i;
   }
   
   public Application getApplication()
   {
-    return this.jdField_a_of_type_AndroidAppApplication;
+    return this.a;
   }
   
   public String getChannelID()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    if (TextUtils.isEmpty(this.h)) {
+      this.h = this.i;
     }
-    return this.jdField_b_of_type_JavaLangString;
+    return this.h;
   }
   
   public int getClientType()
   {
-    return this.jdField_b_of_type_Int;
+    return this.g;
   }
   
   public String getDeviceID()
   {
-    if (TextUtils.isEmpty(this.g)) {
-      this.g = a();
+    if (TextUtils.isEmpty(this.m)) {
+      this.m = a();
     }
-    return this.g;
+    return this.m;
   }
   
   public String getFromId()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.j;
   }
   
   public String getGuid()
   {
-    return this.jdField_f_of_type_JavaLangString;
+    return this.l;
   }
   
   public int getHostVersionCode()
   {
-    return this.jdField_e_of_type_Int;
+    return this.q;
   }
   
   public String getHostVersionName()
   {
-    return this.h;
+    return this.p;
   }
   
   public int getOpenSdkAppid()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("get opensdk_appid=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.n);
     localStringBuilder.append("this=");
     localStringBuilder.append(this);
     Log.d("AppGeneralInfoService", localStringBuilder.toString());
-    return this.jdField_c_of_type_Int;
+    return this.n;
   }
   
   public String getSource()
   {
-    return this.jdField_e_of_type_JavaLangString;
+    return this.k;
   }
   
   public int getTPPlatform()
   {
-    if (this.jdField_f_of_type_Int <= 0) {
-      this.jdField_f_of_type_Int = 6900303;
+    if (this.v <= 0) {
+      this.v = 6900303;
     }
-    return this.jdField_f_of_type_Int;
+    return this.v;
   }
   
   public String getTPPlayerGuid()
   {
-    if (TextUtils.isEmpty(this.k)) {
+    if (TextUtils.isEmpty(this.u)) {
       return "ccyy-yycc-ccyy-yycc-ccyy";
     }
-    return this.k;
+    return this.u;
   }
   
   public String getTargetTestEnv()
@@ -175,33 +175,33 @@ public class AppGeneralInfoServiceImpl
   
   public String getTcloudId()
   {
-    return this.i;
+    return this.s;
   }
   
   public String getTcloudLice()
   {
-    return this.j;
+    return this.t;
   }
   
   public int getVersionCode()
   {
-    if (this.jdField_a_of_type_Int <= 0) {
-      this.jdField_a_of_type_Int = 10800;
+    if (this.c <= 0) {
+      this.c = 10800;
     }
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public String getVersionName()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "1.8.0.158-release_qq_8.6.5";
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = "1.8.0.158-release_qq_8.6.5";
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public int getWnsAppid()
   {
-    return this.jdField_d_of_type_Int;
+    return this.o;
   }
   
   public boolean isDebug()
@@ -211,33 +211,33 @@ public class AppGeneralInfoServiceImpl
   
   public boolean isHoldPlayerLog()
   {
-    return this.jdField_f_of_type_Boolean;
+    return this.x;
   }
   
   public boolean isLiteSdk()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.r;
   }
   
   public boolean isNeedInitTPPlatform()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.w;
   }
   
   public boolean isRelease()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.f;
   }
   
   public boolean isSvrTestEnv()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
   public void onCreate(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = DevOptUtil.isTestEnv(paramContext);
-    this.g = a();
+    this.d = DevOptUtil.isTestEnv(paramContext);
+    this.m = a();
     a(paramContext);
   }
   
@@ -245,67 +245,67 @@ public class AppGeneralInfoServiceImpl
   
   public void setAppId(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.i = paramString;
   }
   
   public void setApplication(Application paramApplication)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    this.a = paramApplication;
   }
   
   public void setChannelID(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public void setClientType(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void setDebug(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setDeviceId(String paramString)
   {
-    this.g = paramString;
+    this.m = paramString;
   }
   
   public void setFromId(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
   
   public void setHostGuId(String paramString)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    this.l = paramString;
   }
   
   public void setHostVersionCode(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.q = paramInt;
   }
   
   public void setHostVersionName(String paramString)
   {
-    this.h = paramString;
+    this.p = paramString;
   }
   
   public void setIsHoldPlayerLog(boolean paramBoolean)
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
+    this.x = paramBoolean;
   }
   
   public void setLiteSdk(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
   }
   
   public void setNeedInitTPPlatform(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.w = paramBoolean;
   }
   
   public void setOpenSdkAppId(int paramInt)
@@ -316,53 +316,53 @@ public class AppGeneralInfoServiceImpl
     localStringBuilder.append("this=");
     localStringBuilder.append(this);
     Log.d("AppGeneralInfoService", localStringBuilder.toString());
-    this.jdField_c_of_type_Int = paramInt;
+    this.n = paramInt;
   }
   
   public void setRelease(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public void setSource(String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public void setSvrTestEnv(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setTPPlatform(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.v = paramInt;
   }
   
   public void setTcloudConfig(String paramString1, String paramString2)
   {
-    this.i = paramString1;
-    this.j = paramString2;
+    this.s = paramString1;
+    this.t = paramString2;
   }
   
   public void setVersionCode(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setVersionName(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void setWnsAppid(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.o = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.falco.base.appinfo.AppGeneralInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

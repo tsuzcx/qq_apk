@@ -12,12 +12,12 @@ class DownloadProxy$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadProxy.a(this.jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    DownloadProxy.a(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.5
  * JD-Core Version:    0.7.0.1
  */

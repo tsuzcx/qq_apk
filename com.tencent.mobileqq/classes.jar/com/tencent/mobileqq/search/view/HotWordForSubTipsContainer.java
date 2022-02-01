@@ -16,7 +16,7 @@ import java.util.List;
 public class HotWordForSubTipsContainer
   extends ReadInJoySearchTipsContainer
 {
-  private int a = 5;
+  private int b = 5;
   
   public HotWordForSubTipsContainer(Context paramContext)
   {
@@ -35,7 +35,7 @@ public class HotWordForSubTipsContainer
     }
     Button localButton = new Button(getContext());
     if (paramInt1 == 0) {
-      localButton.setBackgroundResource(2130849766);
+      localButton.setBackgroundResource(2130851475);
     } else {
       localButton.setBackgroundResource(paramInt1);
     }
@@ -44,7 +44,7 @@ public class HotWordForSubTipsContainer
       paramInt3 = -3355444;
     }
     localGradientDrawable.setStroke(1, paramInt3);
-    localButton.setPadding(ViewUtils.a(12.0F), ViewUtils.a(3.0F), ViewUtils.a(12.0F), ViewUtils.a(4.0F));
+    localButton.setPadding(ViewUtils.dip2px(12.0F), ViewUtils.dip2px(3.0F), ViewUtils.dip2px(12.0F), ViewUtils.dip2px(4.0F));
     localButton.setText(paramString1);
     localButton.setTextSize(14.0F);
     localButton.setSingleLine();
@@ -94,7 +94,7 @@ public class HotWordForSubTipsContainer
       if (k + i11 > paramInt - i9)
       {
         i4 = i2 + 1;
-        j = this.a;
+        j = this.b;
         if ((j > 0) && (i4 > j)) {
           break;
         }
@@ -142,7 +142,7 @@ public class HotWordForSubTipsContainer
       {
         i1 = n + (i7 + i2);
         k = j + 1;
-        paramInt2 = this.a;
+        paramInt2 = this.b;
         if ((paramInt2 > 0) && (k > paramInt2)) {
           return;
         }
@@ -157,7 +157,7 @@ public class HotWordForSubTipsContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.HotWordForSubTipsContainer
  * JD-Core Version:    0.7.0.1
  */

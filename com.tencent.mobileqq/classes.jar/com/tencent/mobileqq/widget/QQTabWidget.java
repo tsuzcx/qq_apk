@@ -9,10 +9,10 @@ import com.tencent.qphone.base.util.QLog;
 public class QQTabWidget
   extends TabWidget
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private QQTabWidget.onTabWidgetTouchMoveListener jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private float a = 0.0F;
   private float b = 0.0F;
+  private QQTabWidget.onTabWidgetTouchMoveListener c;
+  private boolean d = false;
   
   public QQTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -55,12 +55,12 @@ public class QQTabWidget
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
         float f3 = this.b;
-        if ((f2 < f3) && (f3 - f2 > 50.0F) && (f3 - f2 > Math.abs(this.jdField_a_of_type_Float - f1)))
+        if ((f2 < f3) && (f3 - f2 > 50.0F) && (f3 - f2 > Math.abs(this.a - f1)))
         {
-          QQTabWidget.onTabWidgetTouchMoveListener localonTabWidgetTouchMoveListener = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener;
-          if ((localonTabWidgetTouchMoveListener != null) && (!this.jdField_a_of_type_Boolean))
+          QQTabWidget.onTabWidgetTouchMoveListener localonTabWidgetTouchMoveListener = this.c;
+          if ((localonTabWidgetTouchMoveListener != null) && (!this.d))
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.d = true;
             localonTabWidgetTouchMoveListener.a();
           }
         }
@@ -68,8 +68,8 @@ public class QQTabWidget
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.d = false;
+      this.a = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -82,12 +82,12 @@ public class QQTabWidget
   
   public void setTabWidgetMoveListener(QQTabWidget.onTabWidgetTouchMoveListener paramonTabWidgetTouchMoveListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabWidget$onTabWidgetTouchMoveListener = paramonTabWidgetTouchMoveListener;
+    this.c = paramonTabWidgetTouchMoveListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQTabWidget
  * JD-Core Version:    0.7.0.1
  */

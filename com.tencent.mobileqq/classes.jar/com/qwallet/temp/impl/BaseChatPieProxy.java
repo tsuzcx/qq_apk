@@ -21,59 +21,59 @@ public class BaseChatPieProxy
     this.a = paramBaseChatPie;
   }
   
-  public int a()
-  {
-    return this.a.d();
-  }
-  
-  public View a()
-  {
-    return a().findViewById(2131376636);
-  }
-  
-  public ViewGroup a()
-  {
-    return this.a.c;
-  }
-  
-  public IQWalletAIOLifeCycleHelper a()
-  {
-    return (IQWalletAIOLifeCycleHelper)this.a.a(27);
-  }
-  
   public BaseQQAppInterface a()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return this.a.d;
   }
   
-  public BaseSessionInfo a()
+  public QBaseActivity b()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    return this.a.f;
   }
   
-  public PanelManager a()
+  public PanelManager c()
   {
-    return this.a.a();
+    return this.a.bq();
   }
   
-  public QBaseActivity a()
+  public ViewGroup d()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    return this.a.aZ;
   }
   
-  public XBaseAdapter a()
+  public BaseSessionInfo e()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
+    return this.a.ah;
   }
   
-  public int b()
+  public IQWalletAIOLifeCycleHelper f()
   {
-    return this.a.a();
+    return (IQWalletAIOLifeCycleHelper)this.a.q(27);
+  }
+  
+  public int g()
+  {
+    return this.a.bb();
+  }
+  
+  public XBaseAdapter h()
+  {
+    return this.a.V;
+  }
+  
+  public int i()
+  {
+    return this.a.A();
+  }
+  
+  public View j()
+  {
+    return b().findViewById(2131444897);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.BaseChatPieProxy
  * JD-Core Version:    0.7.0.1
  */

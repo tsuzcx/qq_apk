@@ -23,11 +23,11 @@ import java.util.concurrent.Executors;
 public class CustomDataReportService
   implements DataReportInterface
 {
-  private static ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private static ExecutorService b;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  DataReportInterface.DataReportAdapter jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter;
-  private final String jdField_a_of_type_JavaLangString = "DataReportService";
+  private static ExecutorService c;
+  private static ExecutorService d;
+  DataReportInterface.DataReportAdapter a;
+  private final String b = "DataReportService";
+  private long e = System.currentTimeMillis();
   
   private int a(LoginInfo paramLoginInfo)
   {
@@ -55,7 +55,12 @@ public class CustomDataReportService
     new Thread(new CustomDataReportService.5(this)).start();
   }
   
-  private static String b(Map<String, String> paramMap)
+  private void b()
+  {
+    BeaconReport.getInstance().getQimei(new CustomDataReportService.6(this));
+  }
+  
+  private static String c(Map<String, String> paramMap)
   {
     ArrayList localArrayList = new ArrayList(paramMap.keySet());
     Collections.sort(localArrayList);
@@ -83,59 +88,54 @@ public class CustomDataReportService
     return localStringBuilder.toString();
   }
   
-  private void b()
-  {
-    BeaconReport.getInstance().getQimei(new CustomDataReportService.6(this));
-  }
-  
   HashMap<String, String> a(Map<String, String> paramMap)
   {
     if (paramMap != null)
     {
-      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getLoginInfo() != null) {
-        paramMap.put("uid", String.valueOf(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getLoginInfo().uid));
+      if (this.a.getLoginInfo().getLoginInfo() != null) {
+        paramMap.put("uid", String.valueOf(this.a.getLoginInfo().getLoginInfo().uid));
       }
-      paramMap.put("userid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getBusinessUid());
-      paramMap.put("genid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getDeviceID());
-      paramMap.put("uid_type", String.valueOf(a(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getLoginInfo())));
-      paramMap.put("fromid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getFromId());
-      paramMap.put("source", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getSource());
-      paramMap.put("appid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getAppId());
-      paramMap.put("appid_anchor", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getAppId());
-      paramMap.put("client_type", String.valueOf(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().getClientType()));
-      paramMap.put("appversion", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppVersion());
-      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.isInRoom())
+      paramMap.put("userid", this.a.getLoginInfo().getBusinessUid());
+      paramMap.put("genid", this.a.getAppInfo().getDeviceID());
+      paramMap.put("uid_type", String.valueOf(a(this.a.getLoginInfo().getLoginInfo())));
+      paramMap.put("fromid", this.a.getAppInfo().getFromId());
+      paramMap.put("source", this.a.getAppInfo().getSource());
+      paramMap.put("appid", this.a.getAppInfo().getAppId());
+      paramMap.put("appid_anchor", this.a.getAppInfo().getAppId());
+      paramMap.put("client_type", String.valueOf(this.a.getAppInfo().getClientType()));
+      paramMap.put("appversion", this.a.getAppVersion());
+      if (this.a.isInRoom())
       {
-        paramMap.put("appid_anchor", String.valueOf(LiveClientTypeUtil.getAppIdFromClientType(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAnchorClientType())));
+        paramMap.put("appid_anchor", String.valueOf(LiveClientTypeUtil.getAppIdFromClientType(this.a.getAnchorClientType())));
         if (!paramMap.containsKey("anchor")) {
-          paramMap.put("anchor", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAnchorId());
+          paramMap.put("anchor", this.a.getAnchorId());
         }
-        paramMap.put("nowid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAnchorExplicitId());
+        paramMap.put("nowid", this.a.getAnchorExplicitId());
         if (!paramMap.containsKey("roomid")) {
-          paramMap.put("roomid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getRoomId());
+          paramMap.put("roomid", this.a.getRoomId());
         }
         if (!paramMap.containsKey("program_id")) {
-          paramMap.put("program_id", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getProgramId());
+          paramMap.put("program_id", this.a.getProgramId());
         }
         if (!paramMap.containsKey("room_type")) {
-          paramMap.put("room_type", String.valueOf(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getRoomType()));
+          paramMap.put("room_type", String.valueOf(this.a.getRoomType()));
         }
         if (!paramMap.containsKey("room_mode")) {
-          paramMap.put("room_mode", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getRoomMode());
+          paramMap.put("room_mode", this.a.getRoomMode());
         }
       }
-      else if ((!this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppInfo().isLiteSdk()) && (this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.isRoomAccessorNull()))
+      else if ((!this.a.getAppInfo().isLiteSdk()) && (this.a.isRoomAccessorNull()))
       {
-        if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.isOutRoomHasRoomInfo())
+        if (this.a.isOutRoomHasRoomInfo())
         {
-          paramMap.put("roomid", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getStartLiveRoomId());
-          paramMap.put("program_id", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getStartLiveProgramId());
+          paramMap.put("roomid", this.a.getStartLiveRoomId());
+          paramMap.put("program_id", this.a.getStartLiveProgramId());
         }
-        if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getLoginInfo() != null) {
-          paramMap.put("anchor", String.valueOf(this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLoginInfo().getLoginInfo().uid));
+        if (this.a.getLoginInfo().getLoginInfo() != null) {
+          paramMap.put("anchor", String.valueOf(this.a.getLoginInfo().getLoginInfo().uid));
         }
       }
-      paramMap.put("sdk_version", this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getAppVersion());
+      paramMap.put("sdk_version", this.a.getAppVersion());
       paramMap.put("platform", "Android");
     }
     HashMap localHashMap = new HashMap();
@@ -161,8 +161,8 @@ public class CustomDataReportService
     StringBuilder localStringBuilder;
     if (paramString.equals("startLive"))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localLogInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLog();
+      this.e = System.currentTimeMillis();
+      localLogInterface = this.a.getLog();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportAnchorQualityEvent start act_type =");
       localStringBuilder.append(paramString);
@@ -170,9 +170,9 @@ public class CustomDataReportService
     }
     else
     {
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      long l = System.currentTimeMillis() - this.e;
       paramMap.put("timelong", String.valueOf(l));
-      localLogInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter.getLog();
+      localLogInterface = this.a.getLog();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportAnchorQualityEvent act_type =");
       localStringBuilder.append(paramString);
@@ -181,7 +181,7 @@ public class CustomDataReportService
       localLogInterface.i("DataReportService", localStringBuilder.toString(), new Object[0]);
     }
     paramString = a(paramMap);
-    b.submit(new CustomDataReportService.3(this, (String)localObject, paramString, paramBoolean));
+    d.submit(new CustomDataReportService.3(this, (String)localObject, paramString, paramBoolean));
   }
   
   public void a(Map<String, String> paramMap, boolean paramBoolean)
@@ -197,7 +197,7 @@ public class CustomDataReportService
     localStringBuilder.append(str3);
     str1 = localStringBuilder.toString();
     paramMap = a(paramMap);
-    b.submit(new CustomDataReportService.2(this, str1, paramMap, paramBoolean));
+    d.submit(new CustomDataReportService.2(this, str1, paramMap, paramBoolean));
   }
   
   public void b(String paramString, Map<String, String> paramMap, boolean paramBoolean)
@@ -214,22 +214,22 @@ public class CustomDataReportService
     localStringBuilder.append("audience");
     paramString = localStringBuilder.toString();
     paramMap = a(paramMap);
-    b.submit(new CustomDataReportService.4(this, paramString, paramMap, paramBoolean));
+    d.submit(new CustomDataReportService.4(this, paramString, paramMap, paramBoolean));
   }
   
   public void clearEventOutput() {}
   
   public void init(DataReportInterface.DataReportAdapter paramDataReportAdapter)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface$DataReportAdapter = paramDataReportAdapter;
-    if (jdField_a_of_type_JavaUtilConcurrentExecutorService == null)
+    this.a = paramDataReportAdapter;
+    if (c == null)
     {
-      jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(3);
+      c = Executors.newFixedThreadPool(3);
       paramDataReportAdapter.getLog().i("DataReportService", "DataReportService mProductThreadPool is null, create", new Object[0]);
     }
-    if (b == null)
+    if (d == null)
     {
-      b = Executors.newFixedThreadPool(3);
+      d = Executors.newFixedThreadPool(3);
       paramDataReportAdapter.getLog().i("DataReportService", "DataReportService mQualityThreadPool is null, create", new Object[0]);
     }
   }
@@ -307,7 +307,7 @@ public class CustomDataReportService
   public void reportEvent(String paramString, boolean paramBoolean1, long paramLong1, long paramLong2, Map<String, String> paramMap, boolean paramBoolean2, boolean paramBoolean3)
   {
     paramMap = a(paramMap);
-    jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new CustomDataReportService.1(this, paramMap, paramString, paramBoolean2));
+    c.submit(new CustomDataReportService.1(this, paramMap, paramString, paramBoolean2));
   }
   
   public void reportEvent(String paramString, boolean paramBoolean, Map<String, String> paramMap)
@@ -322,7 +322,7 @@ public class CustomDataReportService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportService
  * JD-Core Version:    0.7.0.1
  */

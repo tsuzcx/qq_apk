@@ -18,7 +18,7 @@ public class ImmersiveConfProcessor
   
   public static boolean a()
   {
-    ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = (ImmersiveConfProcessor.ImmersiveConfBean)QConfigManager.a().a(579);
+    ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = (ImmersiveConfProcessor.ImmersiveConfBean)QConfigManager.b().b(579);
     if ((localImmersiveConfBean != null) && (!TextUtils.isEmpty(localImmersiveConfBean.a))) {
       a = "1".equals(localImmersiveConfBean.a);
     }
@@ -27,7 +27,7 @@ public class ImmersiveConfProcessor
   
   public static boolean b()
   {
-    ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = (ImmersiveConfProcessor.ImmersiveConfBean)QConfigManager.a().a(579);
+    ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = (ImmersiveConfProcessor.ImmersiveConfBean)QConfigManager.b().b(579);
     if ((localImmersiveConfBean != null) && (!TextUtils.isEmpty(localImmersiveConfBean.b))) {
       b = "1".equals(localImmersiveConfBean.b);
     }
@@ -71,12 +71,12 @@ public class ImmersiveConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = a(paramArrayOfQConfItem[0].a);
+      ImmersiveConfProcessor.ImmersiveConfBean localImmersiveConfBean = a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("ImmersiveConfProcessor", 2, localStringBuilder.toString());
       }
       return localImmersiveConfBean;
@@ -126,7 +126,7 @@ public class ImmersiveConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.config.ImmersiveConfProcessor
  * JD-Core Version:    0.7.0.1
  */

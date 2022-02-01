@@ -16,15 +16,19 @@ public class ViolaTopicVideoDelegate
     super(paramActivity, paramIVideoView, paramVVideoView, paramViolaInstance);
   }
   
-  public void aG_() {}
+  public void db_() {}
   
-  public void aH_() {}
+  public void dc_() {}
   
-  public void aI_() {}
+  public void dd_() {}
+  
+  public void onFocusGain() {}
+  
+  public void onFocusLoss() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.topicvideo.ViolaTopicVideoDelegate
  * JD-Core Version:    0.7.0.1
  */

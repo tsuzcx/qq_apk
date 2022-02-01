@@ -14,24 +14,24 @@ class QQCustomDialogWtihInputAndChoose$8
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() > 0))
+    Object localObject = this.b.getInputValue();
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.b.o != null) && (this.b.o.size() > 0))
     {
       int i = 0;
-      while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
+      while ((i < this.b.o.size()) && (!((String)localObject).equals(this.b.o.get(i)))) {
         i += 1;
       }
     }
-    localObject = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    localObject = this.a;
     if (localObject != null)
     {
-      ((DialogInterface.OnClickListener)localObject).onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
+      ((DialogInterface.OnClickListener)localObject).onClick(this.b, 1);
+      this.b.a();
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label129:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -45,7 +45,7 @@ class QQCustomDialogWtihInputAndChoose$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.8
  * JD-Core Version:    0.7.0.1
  */

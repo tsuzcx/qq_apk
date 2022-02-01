@@ -17,9 +17,9 @@ class DeviceFragment$8
     {
       try
       {
-        int i = new JSONObject(this.a.a).optInt("smart_device_discovery_config_switch", 1);
-        DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
-        Message localMessage1 = DeviceFragment.a(this.this$0).obtainMessage(1, i, 0);
+        int i = new JSONObject(this.a.d).optInt("smart_device_discovery_config_switch", 1);
+        DeviceFragment.c(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
+        Message localMessage1 = DeviceFragment.c(this.this$0).obtainMessage(1, i, 0);
       }
       finally
       {
@@ -33,8 +33,8 @@ class DeviceFragment$8
         Message localMessage2;
         localJSONException.printStackTrace();
       }
-      DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
-      DeviceFragment.a(this.this$0).obtainMessage(1, 1, 0).sendToTarget();
+      DeviceFragment.c(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
+      DeviceFragment.c(this.this$0).obtainMessage(1, 1, 0).sendToTarget();
       for (;;)
       {
         throw localJSONException;
@@ -46,14 +46,14 @@ class DeviceFragment$8
       label97:
       break label56;
     }
-    DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
-    localMessage2 = DeviceFragment.a(this.this$0).obtainMessage(1, 1, 0);
+    DeviceFragment.c(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
+    localMessage2 = DeviceFragment.c(this.this$0).obtainMessage(1, 1, 0);
     localMessage2.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.8
  * JD-Core Version:    0.7.0.1
  */

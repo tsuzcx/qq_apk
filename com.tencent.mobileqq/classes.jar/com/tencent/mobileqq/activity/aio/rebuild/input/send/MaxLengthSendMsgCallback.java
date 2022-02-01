@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.aio.rebuild.input.send;
 
 import android.content.res.Resources;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.input.ISendMessageCallback;
 import com.tencent.mobileqq.activity.aio.core.input.SendLogicParam;
@@ -14,29 +15,33 @@ public class MaxLengthSendMsgCallback
 {
   private static int a;
   
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
     if (a == 0) {
-      a = paramAIOContext.a().getResources().getInteger(2131427346);
+      if (paramAIOContext.O().a == 10014) {
+        a = paramAIOContext.b().getResources().getInteger(2131492889);
+      } else {
+        a = paramAIOContext.b().getResources().getInteger(2131492891);
+      }
     }
     if (paramSendLogicParam.a().length() > a)
     {
-      ChatActivityUtils.a(paramAIOContext.a(), 2131718759, 1);
+      ChatActivityUtils.a(paramAIOContext.b(), 2131916265, 1);
       return true;
     }
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.MaxLengthSendMsgCallback
  * JD-Core Version:    0.7.0.1
  */

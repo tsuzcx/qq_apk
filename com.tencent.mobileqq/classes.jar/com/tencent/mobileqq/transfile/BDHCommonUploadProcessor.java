@@ -504,9 +504,9 @@ public class BDHCommonUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject1 = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject1).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject1).a = -1;
       ((UpCallBack.SendResult)localObject1).b = this.mProcessorReport.errCode;
-      ((UpCallBack.SendResult)localObject1).jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      ((UpCallBack.SendResult)localObject1).c = this.mProcessorReport.errDesc;
       Object localObject2;
       if (this.mCommandId == 20)
       {
@@ -553,9 +553,9 @@ public class BDHCommonUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.a = 0;
       if (this.mCommandId == 20) {
-        localSendResult.c = this.file.serverPath;
+        localSendResult.f = this.file.serverPath;
       }
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
@@ -743,7 +743,7 @@ public class BDHCommonUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BDHCommonUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

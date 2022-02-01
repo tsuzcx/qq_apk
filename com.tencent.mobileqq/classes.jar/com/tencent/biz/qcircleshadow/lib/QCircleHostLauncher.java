@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.aelight.camera.api.IAEEditorManagerForQzone;
 import com.tencent.biz.qcircleshadow.lib.variation.HostDataTransUtils;
-import com.tencent.biz.qcircleshadow.remoteCheck.QCircleFlutterPluginInfo;
-import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginManager;
+import com.tencent.biz.qcircleshadow.remotechecker.QCircleFlutterPluginInfo;
+import com.tencent.biz.qcircleshadow.remotechecker.QCirclePluginManager;
 import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.flutter.api.IQFlutterRouterService;
@@ -25,8 +25,8 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.adv.reward.api.IVasRewardAdApi;
 import com.tencent.mobileqq.vas.adv.reward.callback.VasRewardAdCallback;
 import com.tencent.mobileqq.vas.adv.reward.data.VasRewardAdParams;
-import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.utils.QCircleCommonUtil;
 import cooperation.qzone.QUA;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
@@ -106,7 +106,7 @@ public class QCircleHostLauncher
   
   private static void initDNFlutterParam(Map<String, Object> paramMap)
   {
-    QCircleFlutterPluginInfo localQCircleFlutterPluginInfo = QCirclePluginManager.a().a(true);
+    QCircleFlutterPluginInfo localQCircleFlutterPluginInfo = QCirclePluginManager.a().b(true);
     if (localQCircleFlutterPluginInfo != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -152,7 +152,7 @@ public class QCircleHostLauncher
     paramMap.put("currentUin", HostDataTransUtils.getAccount());
     paramMap.put("host_uin", HostDataTransUtils.getAccount());
     paramMap.put("qua", QUA.getQUA3());
-    if (ThemeUtil.isNowThemeIsNight(null, false, null))
+    if (QCircleCommonUtil.isInNightMode())
     {
       paramMap.put("themeStyle", "1");
       paramMap.put("themeResource", darkColorMap);
@@ -256,7 +256,7 @@ public class QCircleHostLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostLauncher
  * JD-Core Version:    0.7.0.1
  */

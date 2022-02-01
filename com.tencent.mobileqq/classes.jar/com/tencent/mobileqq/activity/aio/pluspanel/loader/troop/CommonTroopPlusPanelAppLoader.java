@@ -27,36 +27,18 @@ import org.jetbrains.annotations.Nullable;
 public class CommonTroopPlusPanelAppLoader
   extends TroopPlusPanelAppLoader
 {
-  private final int[] a;
+  private final int[] f = { 1104864054, 1200000003, 1104651886, 1106658188, 1107930043, 1104864062, 100719166, 1104864064, 1101487426, 1104864066, 1104864068, 1104864070, 1104788679, 1101678813, 1104536706, 1200000002, 1200000008 };
   
   public CommonTroopPlusPanelAppLoader()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 1104864054, 1200000003, 1104651886, 1106658188, 1107930043, 1104864062, 100719166, 1104864064, 1101487426, 1104864066, 1104864068, 1104864070, 1104788679, 1101678813, 1104536706, 1200000002, 1200000008 };
     a(new TroopCommonTeensModeFilter());
   }
   
   private long a(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    paramSessionInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramSessionInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramSessionInfo.b);
     boolean bool = paramSessionInfo.isTroopOwner(paramQQAppInterface.getCurrentUin());
     return (paramSessionInfo.isAdmin() & true) << true | (bool & true) << true | 0x1;
-  }
-  
-  @Nullable
-  private List<TroopAIOAppInfo> a(@NotNull SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = ((ITroopAioAppService)paramQQAppInterface.getRuntimeService(ITroopAioAppService.class, "")).getAppsFromCache(GroupUtil.a(paramSessionInfo.jdField_a_of_type_JavaLangString));
-    paramSessionInfo = paramQQAppInterface;
-    if (QQAudioHelper.b())
-    {
-      paramSessionInfo = paramQQAppInterface;
-      if (QQAudioHelper.a(4) == 1)
-      {
-        QQAudioHelper.a(HardCodeUtil.a(2131708293));
-        paramSessionInfo = null;
-      }
-    }
-    return paramSessionInfo;
   }
   
   private void a(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface)
@@ -65,18 +47,18 @@ public class CommonTroopPlusPanelAppLoader
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reloadTroop, local, troopAppInfos[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfInt.length);
+      ((StringBuilder)localObject).append(this.f.length);
       ((StringBuilder)localObject).append("]");
       QLog.w("CommonTroopPlusPanelStrategy", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.f;
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       int k = localObject[i];
-      if ((k != 1106114157) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ScribbleResMgrShowConfig.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface.getCurrentAccountUin()))) {
-        a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, k);
+      if ((k != 1106114157) || (this.e.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface.getCurrentAccountUin()))) {
+        a(paramBaseChatPie.ah.a, k);
       }
       i += 1;
     }
@@ -84,7 +66,7 @@ public class CommonTroopPlusPanelAppLoader
   
   private boolean a(long paramLong, TroopAIOAppInfo paramTroopAIOAppInfo)
   {
-    if ((!TextUtils.isEmpty(paramTroopAIOAppInfo.minVersion)) && (AppSetting.a(paramTroopAIOAppInfo.minVersion) < 0)) {
+    if ((!TextUtils.isEmpty(paramTroopAIOAppInfo.minVersion)) && (AppSetting.b(paramTroopAIOAppInfo.minVersion) < 0)) {
       return true;
     }
     if ((paramTroopAIOAppInfo.identifyMask & paramLong) == 0L)
@@ -99,7 +81,7 @@ public class CommonTroopPlusPanelAppLoader
   
   private boolean a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean, TroopAIOAppInfo paramTroopAIOAppInfo)
   {
-    int m = this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoAppInfoFactory.a.size();
+    int m = this.b.a.size();
     int j = 0;
     int i = 0;
     int k;
@@ -109,15 +91,15 @@ public class CommonTroopPlusPanelAppLoader
       if (j >= m) {
         break;
       }
-      k = this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoAppInfoFactory.a.keyAt(j);
+      k = this.b.a.keyAt(j);
       if (paramTroopAIOAppInfo.appid == k) {
-        if ((k == 1106114157) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ScribbleResMgrShowConfig.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface.getCurrentAccountUin())))
+        if ((k == 1106114157) && (!this.e.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface.getCurrentAccountUin())))
         {
           i = 1;
         }
         else
         {
-          a(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoAppInfoFactory.b(paramTroopAIOAppInfo, paramInt));
+          b(this.b.b(paramTroopAIOAppInfo, paramInt));
           k = 1;
           break;
         }
@@ -125,9 +107,26 @@ public class CommonTroopPlusPanelAppLoader
       j += 1;
     }
     if (k == 0) {
-      a(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoAppInfoFactory.a(paramTroopAIOAppInfo, paramInt));
+      b(this.b.a(paramTroopAIOAppInfo, paramInt));
     }
     return paramBoolean;
+  }
+  
+  @Nullable
+  private List<TroopAIOAppInfo> b(@NotNull SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = ((ITroopAioAppService)paramQQAppInterface.getRuntimeService(ITroopAioAppService.class, "")).getAppsFromCache(GroupUtil.a(paramSessionInfo.b));
+    paramSessionInfo = paramQQAppInterface;
+    if (QQAudioHelper.b())
+    {
+      paramSessionInfo = paramQQAppInterface;
+      if (QQAudioHelper.b(4) == 1)
+      {
+        QQAudioHelper.a(HardCodeUtil.a(2131906084));
+        paramSessionInfo = null;
+      }
+    }
+    return paramSessionInfo;
   }
   
   void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, List<TroopAIOAppInfo> paramList)
@@ -155,19 +154,19 @@ public class CommonTroopPlusPanelAppLoader
   
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    Object localObject = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = paramBaseChatPie.ah;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     long l = a((SessionInfo)localObject, localQQAppInterface);
-    localObject = a((SessionInfo)localObject, localQQAppInterface);
+    localObject = b((SessionInfo)localObject, localQQAppInterface);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       QLog.d("CommonTroopPlusPanelStrategy", 1, new Object[] { "fillAppList get server config size: ", Integer.valueOf(((List)localObject).size()) });
-      a(localQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l, (List)localObject);
+      a(localQQAppInterface, paramBaseChatPie.ah.a, l, (List)localObject);
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("fillAppList local, troopAppInfos[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfInt.length);
+    ((StringBuilder)localObject).append(this.f.length);
     ((StringBuilder)localObject).append("]");
     QLog.d("CommonTroopPlusPanelStrategy", 1, ((StringBuilder)localObject).toString());
     a(paramBaseChatPie, localQQAppInterface);
@@ -175,7 +174,7 @@ public class CommonTroopPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.troop.CommonTroopPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -49,19 +49,19 @@ public class DiySecureFileHelper$QQFavoriteSecurityFileHelper
         i += 1;
       }
     }
-    a();
+    c();
     return true;
   }
   
   public boolean needMigration()
   {
-    if (a())
+    if (b())
     {
       File localFile = new File(AppConstants.SDCARD_IMG_FAVORITE);
       if ((localFile.exists()) && (localFile.isDirectory())) {
         return true;
       }
-      a();
+      c();
     }
     return false;
   }
@@ -83,7 +83,7 @@ public class DiySecureFileHelper$QQFavoriteSecurityFileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper.QQFavoriteSecurityFileHelper
  * JD-Core Version:    0.7.0.1
  */

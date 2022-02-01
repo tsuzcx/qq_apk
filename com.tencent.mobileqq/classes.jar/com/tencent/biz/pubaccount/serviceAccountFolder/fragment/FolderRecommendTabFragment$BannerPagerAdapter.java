@@ -22,7 +22,7 @@ class FolderRecommendTabFragment$BannerPagerAdapter
 {
   private List<TogetherControlManager.EntryBannerInfo> a = new ArrayList();
   
-  private void a()
+  private void b()
   {
     ThreadManager.getUIHandler().post(new FolderRecommendTabFragment.BannerPagerAdapter.2(this));
   }
@@ -60,7 +60,7 @@ class FolderRecommendTabFragment$BannerPagerAdapter
     if (paramList != null) {
       this.a.addAll(paramList);
     }
-    a();
+    b();
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -77,8 +77,8 @@ class FolderRecommendTabFragment$BannerPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559632, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131363395);
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625661, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131429285);
     localImageView.setImageDrawable(URLDrawable.getDrawable(((TogetherControlManager.EntryBannerInfo)this.a.get(paramInt)).c));
     localImageView.setOnClickListener(new FolderRecommendTabFragment.BannerPagerAdapter.1(this, paramInt));
     paramViewGroup.addView(localView);
@@ -92,7 +92,7 @@ class FolderRecommendTabFragment$BannerPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

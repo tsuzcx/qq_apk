@@ -36,14 +36,14 @@ final class GameCenterDownloadEngine$pauseDownload$1
     }
     localStringBuilder.append((String)localObject1);
     ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", localStringBuilder.toString());
-    if (GameCenterDownloadEngine.a(GameCenterDownloadEngine.a, this.a)) {
-      WadlProxyServiceUtil.a().a(this.a.a.d, this.a.a.a);
+    if (GameCenterDownloadEngine.b(GameCenterDownloadEngine.a, this.a)) {
+      WadlProxyServiceUtil.a().a(this.a.m.h, this.a.m.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.pauseDownload.1
  * JD-Core Version:    0.7.0.1
  */

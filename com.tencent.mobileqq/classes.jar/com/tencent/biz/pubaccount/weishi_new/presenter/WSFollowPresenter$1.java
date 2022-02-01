@@ -16,34 +16,34 @@ class WSFollowPresenter$1
   
   public void a(boolean paramBoolean1, List<stFeed> paramList, boolean paramBoolean2)
   {
-    ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(this.jdField_a_of_type_Boolean, paramBoolean1, paramList, paramBoolean2);
+    ((IWSFollowView)this.b.getView()).a(this.a, paramBoolean1, paramList, paramBoolean2);
     if (!paramBoolean1)
     {
-      ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(paramList);
+      ((IWSFollowView)this.b.getView()).a(paramList);
       return;
     }
-    ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(paramList, paramBoolean2);
+    ((IWSFollowView)this.b.getView()).a(paramList, paramBoolean2);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
   {
-    ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).f();
+    ((IWSFollowView)this.b.getView()).u();
     if (paramBoolean2) {
-      ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(paramBoolean3);
+      ((IWSFollowView)this.b.getView()).e(paramBoolean3);
     }
     int i = 0;
     if (!paramBoolean3)
     {
-      ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).b(false, true);
-      ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(paramBoolean1, paramBoolean2);
+      ((IWSFollowView)this.b.getView()).c(false, true);
+      ((IWSFollowView)this.b.getView()).b(paramBoolean1, paramBoolean2);
       return;
     }
     if ((paramBoolean1) && ((paramObject instanceof stFollowFeedsRsp)))
     {
       stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)paramObject;
-      WSFollowPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter, localstFollowFeedsRsp.config);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a() instanceof WSFollowFragment)) {
-        ((WSFollowFragment)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).c(true);
+      WSFollowPresenter.a(this.b, localstFollowFeedsRsp.config);
+      if ((this.b.getView() instanceof WSFollowFragment)) {
+        ((WSFollowFragment)this.b.getView()).g(true);
       }
     }
     if ((!(paramObject instanceof stFollowFeedsRsp)) || (WSFeedUtils.a(((stFollowFeedsRsp)paramObject).feeds))) {
@@ -51,17 +51,17 @@ class WSFollowPresenter$1
     }
     if (i != 0)
     {
-      ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).b(true, true);
+      ((IWSFollowView)this.b.getView()).c(true, true);
       if (paramBoolean1) {
-        ((IWSFollowView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter.a()).a(true, paramBoolean2);
+        ((IWSFollowView)this.b.getView()).b(true, paramBoolean2);
       }
     }
-    WSFollowPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSFollowPresenter).a();
+    WSFollowPresenter.a(this.b).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,23 +11,23 @@ class BidDownloader$4
   
   public void run()
   {
-    int i = BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c);
+    int i = BidDownloader.r.a(BidDownloader.v, this.this$0.m);
     if (QLog.isColorLevel())
     {
-      String str = BidDownloader.d;
+      String str = BidDownloader.s;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("state = ");
       localStringBuilder.append(i);
       QLog.i(str, 2, localStringBuilder.toString());
     }
     if (i != 2) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.this$0.o.sendEmptyMessage(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.4
  * JD-Core Version:    0.7.0.1
  */

@@ -28,26 +28,26 @@ public class MergeThumbSegment
   
   public MergeThumbSegment(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
-    Object localObject1 = paramGenerateContext.jdField_a_of_type_JavaLangString;
+    Object localObject1 = paramGenerateContext.j;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
       return;
     }
-    paramJobContext = this.jdField_a_of_type_JavaLangString;
+    paramJobContext = this.a;
     Object localObject5 = paramJobContext;
     if (paramJobContext == null) {
-      localObject5 = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".jpg");
+      localObject5 = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".jpg");
     }
-    Object localObject8 = paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodleRawPath;
-    Object localObject7 = paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath;
-    paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getStringExtra("dynamic_Sticker_image_path", null);
-    String str = paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getStringExtra("pl_pic", null);
+    Object localObject8 = paramGenerateContext.d.doodleRawPath;
+    Object localObject7 = paramGenerateContext.d.doodlePath;
+    paramJobContext = paramGenerateContext.d.getStringExtra("dynamic_Sticker_image_path", null);
+    String str = paramGenerateContext.d.getStringExtra("pl_pic", null);
     int i = 1;
     Object localObject4;
     if ((localObject8 == null) && (localObject7 == null) && (paramJobContext == null))
@@ -55,7 +55,7 @@ public class MergeThumbSegment
       SLog.a("Q.qqstory.publish.edit.MergeThumbSegment", "use thumb image as merged image, copy to target destination = %s", localObject5);
       if (FileUtils.a(new File((String)localObject1), new File((String)localObject5)))
       {
-        paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath = ((String)localObject5);
+        paramGenerateContext.d.thumbPath = ((String)localObject5);
         break label722;
       }
       SLog.d("Q.qqstory.publish.edit.MergeThumbSegment", "copy failed, original = %s, target = %s", new Object[] { localObject1, localObject5 });
@@ -67,7 +67,7 @@ public class MergeThumbSegment
         Object localObject6 = BitmapFactory.decodeFile((String)localObject1);
         if (localObject6 == null)
         {
-          super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131706592)));
+          super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131904443)));
           return;
         }
         if (paramJobContext != null) {
@@ -127,7 +127,7 @@ public class MergeThumbSegment
             }
           }
         }
-        if ((localObject3 != null) && ((paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalVideoSource)) && (paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false)))
+        if ((localObject3 != null) && ((paramGenerateContext.c instanceof EditLocalVideoSource)) && (paramGenerateContext.d.getBooleanExtra("landscape_video", false)))
         {
           paramJobContext = GenerateDoodleImageSegment.a((Bitmap)localObject3, -90);
           if (paramJobContext != null)
@@ -174,14 +174,14 @@ public class MergeThumbSegment
               localObject4 = paramJobContext;
             }
             label601:
-            FileUtils.a(QQStoryConstant.f);
+            FileUtils.b(QQStoryConstant.g);
             boolean bool = BitmapUtils.a((Bitmap)localObject4, (String)localObject5);
             if (localObject4 != null) {
               ((Bitmap)localObject4).recycle();
             }
             if (bool)
             {
-              paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath = ((String)localObject5);
+              paramGenerateContext.d.thumbPath = ((String)localObject5);
               paramJobContext = new StringBuilder();
               paramJobContext.append("merge doodle and thumb image success : ");
               paramJobContext.append((String)localObject5);
@@ -208,11 +208,11 @@ public class MergeThumbSegment
       label722:
       if (i != 0)
       {
-        FileUtils.a(new File(paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.jdField_a_of_type_JavaLangString));
+        FileUtils.a(new File(paramGenerateContext.d.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.a));
         super.notifyResult(paramGenerateContext);
         return;
       }
-      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131706593)));
+      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131904444)));
       return;
       break;
       label781:
@@ -224,7 +224,7 @@ public class MergeThumbSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.MergeThumbSegment
  * JD-Core Version:    0.7.0.1
  */

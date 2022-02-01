@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
 public class QCircleLpReportDc05504
@@ -34,6 +34,11 @@ public class QCircleLpReportDc05504
   public static final String KEY_VID = "vid";
   private static final String TAG = "QCircleLpReportDc05504";
   
+  static void doReportInner(QCircleLpReportDc05504.DataBuilder paramDataBuilder)
+  {
+    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05504.1(paramDataBuilder));
+  }
+  
   private static int getDcId()
   {
     return 5504;
@@ -43,10 +48,10 @@ public class QCircleLpReportDc05504
   {
     if (paramDataBuilder == null)
     {
-      RFLog.e("QCircleLpReportDc05504", RFLog.USR, "DataBuilder == null");
+      QLog.e("QCircleLpReportDc05504", 1, "DataBuilder == null");
       return;
     }
-    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05504.1(paramDataBuilder));
+    doReportInner(paramDataBuilder);
   }
   
   private static boolean reportWithoutSessionCheck(int paramInt)
@@ -63,7 +68,7 @@ public class QCircleLpReportDc05504
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05504
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,14 @@ package com.tencent.qqlive.module.videoreport.dtreport.video;
 import android.support.annotation.NonNull;
 import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
 import com.tencent.qqlive.module.videoreport.Log;
+import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoPlayRecorder;
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoHeartBeatSpUtils;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoPageUtils;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.report.FinalDataTarget;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
-import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
+import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,10 @@ public class VideoEventReporter
     localHashMap.put("dt_start_reason", paramVideoSession.getStartPlayReason());
     localHashMap.put("dt_video_starttime", Long.valueOf(paramVideoSession.getVideoStartTime()));
     localHashMap.put("dt_video_endtime", Long.valueOf(paramVideoSession.getVideoEndTime()));
+    localHashMap.put("dt_seek_record", paramVideoSession.getSeekRecord());
+    localHashMap.put("dt_speed_ratio", paramVideoSession.getSpeedRatioRecord());
+    localHashMap.put("dt_sum_play_duration", Long.valueOf(VideoPlayRecorder.getSumPlayDuration(paramVideoSession)));
+    localHashMap.put("dt_video_index", Integer.valueOf(VideoPlayRecorder.getVideoIndex(paramVideoSession)));
     if (VideoPageUtils.isEndOpen()) {
       setCurPageParam(localHashMap, paramVideoSession);
     }
@@ -61,8 +66,10 @@ public class VideoEventReporter
     localHashMap.put("dt_video_contentid", paramVideoSession.getContentId());
     localHashMap.put("dt_start_type", paramVideoSession.getStartPlayType());
     localHashMap.put("dt_start_reason", paramVideoSession.getStartPlayReason());
+    localHashMap.put("dt_play_start_state_time", String.valueOf(paramVideoSession.getStartPosition()));
     localHashMap.put("dt_video_length", paramVideoSession.getVideoDuration());
     localHashMap.put("dt_video_starttime", Long.valueOf(paramVideoSession.getVideoStartTime()));
+    localHashMap.put("dt_video_index", Integer.valueOf(VideoPlayRecorder.getVideoIndex(paramVideoSession)));
     if (VideoPageUtils.isStartOpen()) {
       setCurPageParam(localHashMap, paramVideoSession);
     }
@@ -72,11 +79,17 @@ public class VideoEventReporter
   private void setCurPageParam(Map<String, Object> paramMap, @NonNull VideoSession paramVideoSession)
   {
     paramVideoSession = paramVideoSession.getCurPage();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setCurPageParam pageInfo>>>");
-    localStringBuilder.append(paramVideoSession);
-    Log.i("VideoEventReporter", localStringBuilder.toString());
-    if (paramVideoSession != null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setCurPageParam pageInfo>>>");
+    ((StringBuilder)localObject).append(paramVideoSession);
+    Log.i("VideoEventReporter", ((StringBuilder)localObject).toString());
+    if (paramVideoSession != null)
+    {
+      paramVideoSession = BaseUtils.copyNonNull(paramVideoSession);
+      localObject = paramVideoSession.remove("ref_pg");
+      if ((localObject instanceof Map)) {
+        paramVideoSession.put("ref_pg", BaseUtils.copyNonNull((Map)localObject));
+      }
       paramMap.put("cur_pg", paramVideoSession);
     }
   }
@@ -90,7 +103,6 @@ public class VideoEventReporter
     }
     VideoPageUtils.updateVideoSessionOnPlayEnd(paramVideoSession);
     reportVideoEnd(paramObject, prepareEndParams(paramVideoSession));
-    ThreadUtils.execTask(new VideoEventReporter.2(this, paramVideoSession));
   }
   
   public void reportVideoEnd(Object paramObject, Map<String, Object> paramMap)
@@ -113,7 +125,6 @@ public class VideoEventReporter
       return;
     }
     reportVideoStart(paramObject, prepareStartParams(paramVideoSession));
-    ThreadUtils.execTask(new VideoEventReporter.1(this, paramVideoSession));
   }
   
   public void reportVideoStart(Object paramObject, Map<String, Object> paramMap)
@@ -134,19 +145,39 @@ public class VideoEventReporter
     VideoHeartBeatSpUtils.saveEndEvent(prepareEndParams(paramVideoSession));
   }
   
-  public void saveStartedEvent(VideoSession paramVideoSession)
-  {
-    VideoHeartBeatSpUtils.saveStartedEvent(prepareStartParams(paramVideoSession));
-  }
-  
   public void saveStartedEventInMemory(@NonNull VideoSession paramVideoSession)
   {
     paramVideoSession.setStartParams(prepareStartParams(paramVideoSession));
   }
+  
+  public void stashVideoEnd(Object paramObject, VideoSession paramVideoSession)
+  {
+    VideoPageUtils.updateVideoSessionOnPlayEnd(paramVideoSession);
+    FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
+    localFinalData.setEventKey("dt_video_end");
+    localFinalData.putAll(prepareEndParams(paramVideoSession));
+    paramVideoSession = VideoReportInner.getInstance().getEventDynamicParams();
+    if (paramVideoSession != null) {
+      paramVideoSession.setEventDynamicParams("dt_video_end", localFinalData.getEventParams());
+    }
+    FinalDataTarget.handleWithStash(paramObject, localFinalData);
+  }
+  
+  public void stashVideoStart(Object paramObject, VideoSession paramVideoSession)
+  {
+    FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
+    localFinalData.setEventKey("dt_video_start");
+    localFinalData.putAll(prepareStartParams(paramVideoSession));
+    paramVideoSession = VideoReportInner.getInstance().getEventDynamicParams();
+    if (paramVideoSession != null) {
+      paramVideoSession.setEventDynamicParams("dt_video_start", localFinalData.getEventParams());
+    }
+    FinalDataTarget.handleWithStash(paramObject, localFinalData);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.VideoEventReporter
  * JD-Core Version:    0.7.0.1
  */

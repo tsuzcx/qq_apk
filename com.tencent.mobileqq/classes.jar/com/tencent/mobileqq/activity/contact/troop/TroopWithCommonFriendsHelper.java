@@ -35,7 +35,7 @@ public class TroopWithCommonFriendsHelper
       b1 = b2;
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.e(paramString);
+        paramQQAppInterface = paramQQAppInterface.m(paramString);
         b1 = b2;
         if (paramQQAppInterface != null) {
           b1 = paramQQAppInterface.gender;
@@ -53,23 +53,6 @@ public class TroopWithCommonFriendsHelper
     return 0;
   }
   
-  public static long a(String paramString)
-  {
-    if (b.containsKey(paramString)) {
-      return ((Long)b.get(paramString)).longValue();
-    }
-    return 0L;
-  }
-  
-  public static List<TroopList> a(String paramString)
-  {
-    Object localObject = new ArrayList();
-    if (c.containsKey(paramString)) {
-      localObject = (List)c.get(paramString);
-    }
-    return localObject;
-  }
-  
   public static List<CommonTroopData> a(ArrayList<TroopList> paramArrayList, QQAppInterface paramQQAppInterface)
   {
     ArrayList localArrayList = new ArrayList();
@@ -82,27 +65,20 @@ public class TroopWithCommonFriendsHelper
       int i = 0;
       while (i < paramArrayList.size())
       {
-        String str = String.valueOf(((TroopList)paramArrayList.get(i)).jdField_a_of_type_Long);
-        TroopInfo localTroopInfo = paramQQAppInterface.c(str);
+        String str = String.valueOf(((TroopList)paramArrayList.get(i)).a);
+        TroopInfo localTroopInfo = paramQQAppInterface.g(str);
         if ((localTroopInfo != null) && (localTroopInfo.troopname != null) && (!localTroopInfo.troopname.isEmpty()))
         {
           CommonTroopData localCommonTroopData = new CommonTroopData();
-          localCommonTroopData.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
-          localCommonTroopData.jdField_a_of_type_JavaLangString = str;
-          localCommonTroopData.jdField_a_of_type_Int = ((TroopList)paramArrayList.get(i)).jdField_a_of_type_Int;
+          localCommonTroopData.c = localTroopInfo;
+          localCommonTroopData.a = str;
+          localCommonTroopData.b = ((TroopList)paramArrayList.get(i)).b;
           localArrayList.add(localCommonTroopData);
         }
         i += 1;
       }
     }
     return localArrayList;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (a.containsKey(paramString)) {
-      a.remove(paramString);
-    }
   }
   
   public static void a(String paramString, int paramInt)
@@ -166,9 +142,9 @@ public class TroopWithCommonFriendsHelper
     }
     Object localObject = String.valueOf(paramLong);
     paramQQAppInterface = (IntimateInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
-    if (!a((String)localObject))
+    if (!e((String)localObject))
     {
-      paramQQAppInterface.a(a((String)localObject), a((String)localObject));
+      paramQQAppInterface.a(a((String)localObject), f((String)localObject));
       if (QLog.isColorLevel()) {
         QLog.d("TroopWithCommonFriendsHelper", 2, "getTroopWithCommonFriendsList:EnableGetTroopList,false");
       }
@@ -180,19 +156,6 @@ public class TroopWithCommonFriendsHelper
       return true;
     }
     return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    long l1 = (System.currentTimeMillis() - a(paramString)) / 1000L;
-    long l2 = a(paramString);
-    if ((l1 < l2) && (l2 != 0L)) {
-      return false;
-    }
-    a(paramString);
-    b(paramString);
-    c(paramString);
-    return true;
   }
   
   public static boolean a(String paramString1, String paramString2)
@@ -207,14 +170,51 @@ public class TroopWithCommonFriendsHelper
     return true;
   }
   
-  public static void b(String paramString)
+  public static long b(String paramString)
+  {
+    if (b.containsKey(paramString)) {
+      return ((Long)b.get(paramString)).longValue();
+    }
+    return 0L;
+  }
+  
+  public static void c(String paramString)
+  {
+    if (a.containsKey(paramString)) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void d(String paramString)
   {
     if (b.containsKey(paramString)) {
       b.remove(paramString);
     }
   }
   
-  public static void c(String paramString)
+  public static boolean e(String paramString)
+  {
+    long l1 = (System.currentTimeMillis() - b(paramString)) / 1000L;
+    long l2 = a(paramString);
+    if ((l1 < l2) && (l2 != 0L)) {
+      return false;
+    }
+    c(paramString);
+    d(paramString);
+    g(paramString);
+    return true;
+  }
+  
+  public static List<TroopList> f(String paramString)
+  {
+    Object localObject = new ArrayList();
+    if (c.containsKey(paramString)) {
+      localObject = (List)c.get(paramString);
+    }
+    return localObject;
+  }
+  
+  public static void g(String paramString)
   {
     if (c.containsKey(paramString)) {
       c.remove(paramString);
@@ -223,7 +223,7 @@ public class TroopWithCommonFriendsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsHelper
  * JD-Core Version:    0.7.0.1
  */

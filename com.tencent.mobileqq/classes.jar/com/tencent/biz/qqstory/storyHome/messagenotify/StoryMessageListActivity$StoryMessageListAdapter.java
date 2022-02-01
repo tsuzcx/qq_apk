@@ -35,31 +35,31 @@ public class StoryMessageListActivity$StoryMessageListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(BaseApplication.getContext());
-  StoryMessageListActivity.StoryMessageListItemBuilder jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListItemBuilder = new StoryMessageListActivity.StoryMessageListItemBuilder();
-  int[] jdField_a_of_type_ArrayOfInt = URLDrawableDecodeHandler.b(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 50.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 70.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 3.0F));
+  int[] a = URLDrawableDecodeHandler.b(UIUtils.a(this.d.getApplicationContext(), 50.0F), UIUtils.a(this.d.getApplicationContext(), 70.0F), UIUtils.a(this.d.getApplicationContext(), 3.0F));
+  LayoutInflater b = LayoutInflater.from(BaseApplication.getContext());
+  StoryMessageListActivity.StoryMessageListItemBuilder c = new StoryMessageListActivity.StoryMessageListItemBuilder();
   
   protected StoryMessageListActivity$StoryMessageListAdapter(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public MessageData a(int paramInt)
+  public boolean a(int paramInt)
+  {
+    return paramInt < this.d.a.size();
+  }
+  
+  public MessageData b(int paramInt)
   {
     if (a(paramInt)) {
-      return (MessageData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.get(paramInt);
+      return (MessageData)this.d.a.get(paramInt);
     }
     return null;
   }
   
-  public boolean a(int paramInt)
-  {
-    return paramInt < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size();
-  }
-  
   public int getCount()
   {
-    int j = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size();
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int != 3))
+    int j = this.d.a.size();
+    if ((this.d.l != 1) && (this.d.l != 3))
     {
-      if (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Int == 2)) && (((j == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int != 2)) || ((!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int == 2)))) {
+      if (((this.d.l == 0) || (this.d.l == 2)) && (((j == 0) && (this.d.i != 2)) || ((!this.d.q) && (this.d.i == 2)))) {
         return j;
       }
     }
@@ -69,7 +69,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
       if (j == 0) {
         return i;
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int == 2) {
+      if (this.d.i == 2) {
         return j;
       }
     }
@@ -97,9 +97,9 @@ public class StoryMessageListActivity$StoryMessageListAdapter
     {
       if (paramView == null)
       {
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561710, paramViewGroup, false);
-        localObject2 = new StoryMessageListActivity.ItemViewHolder(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, (View)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListItemBuilder.createView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, (View)localObject1, (SwipRightMenuBuilder.SwipItemBaseHolder)localObject2, -1);
+        localObject1 = this.b.inflate(2131628089, paramViewGroup, false);
+        localObject2 = new StoryMessageListActivity.ItemViewHolder(this.d, (View)localObject1);
+        localObject1 = this.c.createView(this.d, (View)localObject1, (SwipRightMenuBuilder.SwipItemBaseHolder)localObject2, -1);
         ((View)localObject1).setTag(localObject2);
       }
       else
@@ -107,151 +107,151 @@ public class StoryMessageListActivity$StoryMessageListAdapter
         localObject2 = (StoryMessageListActivity.ItemViewHolder)paramView.getTag();
         localObject1 = paramView;
       }
-      localMessageData = a(paramInt);
+      localMessageData = b(paramInt);
       if (localMessageData != null)
       {
-        localObject3 = localMessageData.jdField_a_of_type_JavaLangString;
-        if ((localObject3 != null) && (!((String)localObject3).equals(((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_JavaLangString)))
+        localObject3 = localMessageData.c;
+        if ((localObject3 != null) && (!((String)localObject3).equals(((StoryMessageListActivity.ItemViewHolder)localObject2).a)))
         {
           localObject4 = ((UserManager)SuperManager.a(2)).b((String)localObject3);
           if (localObject4 != null)
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject3);
-            if (((localMessageData.jdField_a_of_type_Int == 14) || (localMessageData.jdField_a_of_type_Int == 13) || (localMessageData.jdField_a_of_type_Int == 16) || (localMessageData.jdField_a_of_type_Int == 17)) && (QQUserUIItem.isNotDovUser(String.valueOf(localMessageData.b)))) {
-              ((QQUserUIItem)localObject4).qq = String.valueOf(localMessageData.b);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).a = ((String)localObject3);
+            if (((localMessageData.d == 14) || (localMessageData.d == 13) || (localMessageData.d == 16) || (localMessageData.d == 17)) && (QQUserUIItem.isNotDovUser(String.valueOf(localMessageData.u)))) {
+              ((QQUserUIItem)localObject4).qq = String.valueOf(localMessageData.u);
             }
           }
           else
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_JavaLangString = null;
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).a = null;
           }
-          if (localMessageData.jdField_f_of_type_Int == 4) {
+          if (localMessageData.t == 4) {
             bool = true;
           } else {
             bool = false;
           }
-          Resources localResources = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources();
-          ImageView localImageView = ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView;
+          Resources localResources = this.d.getResources();
+          ImageView localImageView = ((StoryMessageListActivity.ItemViewHolder)localObject2).b;
           float f1 = 50;
-          TextView localTextView = ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView;
+          TextView localTextView = ((StoryMessageListActivity.ItemViewHolder)localObject2).e;
           float f2 = 13;
           float f3 = 5;
           if (bool) {
-            localObject3 = String.valueOf(localMessageData.b);
+            localObject3 = String.valueOf(localMessageData.u);
           } else {
             localObject3 = null;
           }
           PlayModeUtils.a(localResources, (QQUserUIItem)localObject4, localImageView, f1, localTextView, f2, f3, bool, (String)localObject3);
         }
-        if (localMessageData.jdField_a_of_type_Int == 1)
+        if (localMessageData.d == 1)
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(0);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(0);
         }
-        else if ((localMessageData.jdField_a_of_type_Int != 2) && (localMessageData.jdField_a_of_type_Int != 3))
+        else if ((localMessageData.d != 2) && (localMessageData.d != 3))
         {
-          if (localMessageData.jdField_a_of_type_Int == 4)
+          if (localMessageData.d == 4)
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131714317));
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-            if (localMessageData.jdField_a_of_type_Boolean)
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(HardCodeUtil.a(2131911831));
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+            if (localMessageData.e)
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714303));
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911817));
             }
             else
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
             }
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
           }
-          else if (localMessageData.jdField_a_of_type_Int == 12)
+          else if (localMessageData.d == 12)
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.c(localMessageData));
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-            if (localMessageData.jdField_a_of_type_Boolean)
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.c(localMessageData));
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+            if (localMessageData.e)
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714304));
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911818));
             }
             else
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
             }
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
           }
-          else if ((localMessageData.jdField_a_of_type_Int != 14) && (localMessageData.jdField_a_of_type_Int != 13))
+          else if ((localMessageData.d != 14) && (localMessageData.d != 13))
           {
-            if (localMessageData.jdField_a_of_type_Int == 15)
+            if (localMessageData.d == 15)
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.e(localMessageData));
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-              if (localMessageData.jdField_a_of_type_Boolean)
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.e(localMessageData));
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+              if (localMessageData.e)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714326));
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911840));
               }
               else
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
               }
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
             }
-            else if ((localMessageData.jdField_a_of_type_Int != 16) && (localMessageData.jdField_a_of_type_Int != 17))
+            else if ((localMessageData.d != 16) && (localMessageData.d != 17))
             {
-              if (localMessageData.jdField_a_of_type_Int == 5)
+              if (localMessageData.d == 5)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.j);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.z);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 6)
+              else if (localMessageData.d == 6)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.jdField_e_of_type_JavaLangString);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.n);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 7)
+              else if (localMessageData.d == 7)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.jdField_e_of_type_JavaLangString);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.n);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 8)
+              else if (localMessageData.d == 8)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(2131699930);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(2131897983);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 9)
+              else if (localMessageData.d == 9)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.jdField_e_of_type_JavaLangString);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.n);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 10)
+              else if (localMessageData.d == 10)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.jdField_e_of_type_JavaLangString);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.n);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 11)
+              else if (localMessageData.d == 11)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(localMessageData.jdField_e_of_type_JavaLangString);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(localMessageData.n);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 18)
+              else if (localMessageData.d == 18)
               {
-                i = localMessageData.jdField_e_of_type_Int;
+                i = localMessageData.s;
                 if (i > 0) {
                   localObject3 = new SimpleDateFormat("HH:mm").format(Long.valueOf(i * 1000L));
                 } else {
@@ -259,132 +259,132 @@ public class StoryMessageListActivity$StoryMessageListAdapter
                 }
                 if (TextUtils.isEmpty((CharSequence)localObject3))
                 {
-                  localObject3 = HardCodeUtil.a(2131714322);
+                  localObject3 = HardCodeUtil.a(2131911836);
                 }
                 else
                 {
                   localObject4 = new StringBuilder();
                   ((StringBuilder)localObject4).append("@");
                   ((StringBuilder)localObject4).append((String)localObject3);
-                  ((StringBuilder)localObject4).append(HardCodeUtil.a(2131714319));
+                  ((StringBuilder)localObject4).append(HardCodeUtil.a(2131911833));
                   localObject3 = ((StringBuilder)localObject4).toString();
                 }
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText((CharSequence)localObject3);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
-              else if (localMessageData.jdField_a_of_type_Int == 19)
+              else if (localMessageData.d == 19)
               {
-                if (localMessageData.g)
+                if (localMessageData.N)
                 {
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714318));
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911832));
                 }
-                else if (localMessageData.jdField_f_of_type_Boolean)
+                else if (localMessageData.M)
                 {
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714310));
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911824));
                 }
                 else
                 {
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.b(localMessageData));
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-                  ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.b(localMessageData));
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+                  ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
                 }
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
               else
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
               }
             }
             else
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.f(localMessageData));
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-              if (localMessageData.jdField_a_of_type_Boolean)
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.f(localMessageData));
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+              if (localMessageData.e)
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714323));
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911837));
               }
               else
               {
-                ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+                ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
               }
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
             }
           }
           else
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.d(localMessageData));
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-            if (localMessageData.jdField_a_of_type_Boolean)
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.d(localMessageData));
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+            if (localMessageData.e)
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714305));
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911819));
             }
             else
             {
-              ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
+              ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
             }
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
           }
         }
-        else if (localMessageData.jdField_a_of_type_Boolean)
+        else if (localMessageData.e)
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(0);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setText(HardCodeUtil.a(2131714325));
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(0);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setText(HardCodeUtil.a(2131911839));
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
         }
         else
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(localMessageData));
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).c.setVisibility(8);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setText(this.d.a(localMessageData));
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(0);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).g.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).h.setVisibility(8);
         }
-        ((StoryMessageListActivity.ItemViewHolder)localObject2).d.setText(localMessageData.a());
-        if (localMessageData.jdField_f_of_type_Int == 4)
+        ((StoryMessageListActivity.ItemViewHolder)localObject2).i.setText(localMessageData.a());
+        if (localMessageData.t == 4)
         {
-          localObject3 = ContactUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.app, String.valueOf(localMessageData.b), true);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setText((CharSequence)localObject3);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setVisibility(0);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          localObject3 = ContactUtils.a(this.d.app, String.valueOf(localMessageData.u), true);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setText((CharSequence)localObject3);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setVisibility(0);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).k.setVisibility(8);
         }
-        else if (((localMessageData.jdField_f_of_type_Int == 99) || (localMessageData.jdField_f_of_type_Int == 104)) && (localMessageData.jdField_a_of_type_Int != 6) && (localMessageData.jdField_a_of_type_Int != 9))
+        else if (((localMessageData.t == 99) || (localMessageData.t == 104)) && (localMessageData.d != 6) && (localMessageData.d != 9))
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setText(localMessageData.k);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setVisibility(0);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setText(localMessageData.A);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setVisibility(0);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).k.setVisibility(8);
         }
-        else if (((localMessageData.jdField_a_of_type_Int == 13) || (localMessageData.jdField_a_of_type_Int == 14) || (localMessageData.jdField_a_of_type_Int == 16) || (localMessageData.jdField_a_of_type_Int == 17)) && (!TextUtils.isEmpty(localMessageData.p)))
+        else if (((localMessageData.d == 13) || (localMessageData.d == 14) || (localMessageData.d == 16) || (localMessageData.d == 17)) && (!TextUtils.isEmpty(localMessageData.G)))
         {
-          if ("QQ好友".equals(localMessageData.p))
+          if ("QQ好友".equals(localMessageData.G))
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setVisibility(8);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setVisibility(8);
           }
           else
           {
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setText(localMessageData.p);
-            ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setVisibility(0);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setText(localMessageData.G);
+            ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setVisibility(0);
           }
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).k.setVisibility(8);
         }
         else
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).e.setVisibility(8);
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).f.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).j.setVisibility(8);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).k.setVisibility(8);
         }
-        if ((!TextUtils.isEmpty(localMessageData.b())) && (!localMessageData.b().equals(((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_JavaLangString)))
+        if ((!TextUtils.isEmpty(localMessageData.b())) && (!localMessageData.b().equals(((StoryMessageListActivity.ItemViewHolder)localObject2).c)))
         {
-          ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_JavaLangString = localMessageData.b();
-          localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources().getDrawable(2130847117);
+          ((StoryMessageListActivity.ItemViewHolder)localObject2).c = localMessageData.b();
+          localObject3 = this.d.getResources().getDrawable(2130848669);
         }
       }
     }
@@ -395,43 +395,43 @@ public class StoryMessageListActivity$StoryMessageListAdapter
       ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = ((Drawable)localObject3);
       ((URLDrawable.URLDrawableOptions)localObject4).mMemoryCacheKeySuffix = "story_message";
       localObject4 = URLDrawable.getDrawable(localMessageData.b(), (URLDrawable.URLDrawableOptions)localObject4);
-      ((URLDrawable)localObject4).setTag(this.jdField_a_of_type_ArrayOfInt);
-      ((URLDrawable)localObject4).setDecodeHandler(URLDrawableDecodeHandler.i);
-      ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable((Drawable)localObject4);
+      ((URLDrawable)localObject4).setTag(this.a);
+      ((URLDrawable)localObject4).setDecodeHandler(URLDrawableDecodeHandler.j);
+      ((StoryMessageListActivity.ItemViewHolder)localObject2).d.setImageDrawable((Drawable)localObject4);
     }
     catch (Exception localException)
     {
-      label2085:
-      break label2085;
+      label2087:
+      break label2087;
     }
-    ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable((Drawable)localObject3);
-    if (localMessageData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout != null) {
-      ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(localMessageData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout, -1, null);
+    ((StoryMessageListActivity.ItemViewHolder)localObject2).d.setImageDrawable((Drawable)localObject3);
+    if (localMessageData.a != null) {
+      ((StoryMessageListActivity.ItemViewHolder)localObject2).d.setPollLayout(localMessageData.a, -1, null);
     }
-    if (localMessageData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$InteractPasterLayout != null) {
-      ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(localMessageData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$InteractPasterLayout, -1, -1L, -1);
+    if (localMessageData.b != null) {
+      ((StoryMessageListActivity.ItemViewHolder)localObject2).d.setRateLayout(localMessageData.b, -1, -1L, -1);
     }
-    Object localObject3 = ((StoryMessageListActivity.ItemViewHolder)localObject2).jdField_b_of_type_AndroidViewView;
-    if ((paramInt == this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size() - 1) && (getCount() != this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a.size())) {
+    Object localObject3 = ((StoryMessageListActivity.ItemViewHolder)localObject2).l;
+    if ((paramInt == this.d.a.size() - 1) && (getCount() != this.d.a.size())) {
       i = 8;
     } else {
       i = 0;
     }
     ((View)localObject3).setVisibility(i);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListItemBuilder.updateRightMenuView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, (View)localObject1, paramInt, localMessageData, (SwipRightMenuBuilder.SwipItemBaseHolder)localObject2, this);
+    this.c.updateRightMenuView(this.d, (View)localObject1, paramInt, localMessageData, (SwipRightMenuBuilder.SwipItemBaseHolder)localObject2, this);
     ((StoryMessageListActivity.ItemViewHolder)localObject2).a(paramInt);
-    break label2627;
+    break label2629;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561711, paramViewGroup, false);
-      localObject1 = new StoryMessageListActivity.FooterViewHolder(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView);
+      paramView = this.b.inflate(2131628090, paramViewGroup, false);
+      localObject1 = new StoryMessageListActivity.FooterViewHolder(this.d, paramView);
       paramView.setTag(localObject1);
     }
     else
     {
       localObject1 = (StoryMessageListActivity.FooterViewHolder)paramView.getTag();
     }
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int;
+    int i = this.d.i;
     if (i != 1)
     {
       if (i != 2)
@@ -440,63 +440,63 @@ public class StoryMessageListActivity$StoryMessageListAdapter
         {
           if (i == 4)
           {
-            ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-            ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131699915);
+            ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(0);
+            ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setText(2131897968);
             if (QLog.isColorLevel()) {
               QLog.d("Q.qqstory.msgList", 2, "pull to load more");
             }
-            this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
+            this.d.a();
           }
         }
-        else if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean)
+        else if (this.d.m)
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean = false;
-          ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-          ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131699915);
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
+          this.d.m = false;
+          ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(0);
+          ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setText(2131897968);
+          this.d.a();
         }
         else
         {
-          ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
-          ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131714306));
+          ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(8);
+          ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setText(HardCodeUtil.a(2131911820));
         }
       }
-      else if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean)
+      else if (this.d.m)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean = false;
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(8);
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131699915);
+        this.d.m = false;
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).c.setVisibility(8);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(0);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setVisibility(0);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setText(2131897968);
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList", 2, "list - load more");
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
+        this.d.a();
       }
       else
       {
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(0);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(8);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setVisibility(8);
+        ((StoryMessageListActivity.FooterViewHolder)localObject1).c.setVisibility(0);
         QQStoryContext.a();
-        bool = ThemeUtil.isInNightMode(QQStoryContext.a());
-        localObject2 = ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView;
+        bool = ThemeUtil.isInNightMode(QQStoryContext.k());
+        localObject2 = ((StoryMessageListActivity.FooterViewHolder)localObject1).d;
         if (bool) {
-          i = 2130846741;
+          i = 2130848293;
         } else {
-          i = 2130846740;
+          i = 2130848292;
         }
         ((ImageView)localObject2).setImageResource(i);
       }
     }
     else
     {
-      ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((StoryMessageListActivity.FooterViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(2131699915);
+      ((StoryMessageListActivity.FooterViewHolder)localObject1).a.setVisibility(0);
+      ((StoryMessageListActivity.FooterViewHolder)localObject1).b.setText(2131897968);
     }
     ((StoryMessageListActivity.FooterViewHolder)localObject1).a(paramInt);
     Object localObject1 = paramView;
-    label2627:
+    label2629:
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }
@@ -520,9 +520,9 @@ public class StoryMessageListActivity$StoryMessageListAdapter
       }
       i = -1;
     }
-    if ((i != -1) && (paramView.getId() == 2131370801))
+    if ((i != -1) && (paramView.getId() == 2131438111))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(i);
+      this.d.a(i);
       StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
     }
     EventCollector.getInstance().onViewClicked(paramView);

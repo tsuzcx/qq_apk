@@ -11,8 +11,8 @@ class VideoFeedsCommentManager$2
   
   public void a()
   {
-    if (VideoFeedsCommentManager.a(this.a) != null) {
-      VideoFeedsCommentManager.a(this.a).a();
+    if (VideoFeedsCommentManager.d(this.a) != null) {
+      VideoFeedsCommentManager.d(this.a).a();
     }
   }
   
@@ -21,8 +21,8 @@ class VideoFeedsCommentManager$2
     if (paramInt < 0) {
       return;
     }
-    VideoFeedsCommentManager.a(this.a).e = paramInt;
-    VideoFeedsCommentManager.a(this.a).a(VideoFeedsCommentManager.a(this.a));
+    VideoFeedsCommentManager.b(this.a).p = paramInt;
+    VideoFeedsCommentManager.c(this.a).a(VideoFeedsCommentManager.b(this.a));
   }
   
   public void a(boolean paramBoolean)
@@ -37,7 +37,7 @@ class VideoFeedsCommentManager$2
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131364710) {
+    if (paramView.getId() != 2131430816) {
       return;
     }
     this.a.a(0);
@@ -46,7 +46,7 @@ class VideoFeedsCommentManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCommentManager.2
  * JD-Core Version:    0.7.0.1
  */

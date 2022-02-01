@@ -47,86 +47,75 @@ import mqq.app.MobileQQ;
 
 public class OCRPerformUtil
 {
-  public static PicOcrRspResult a;
-  public static OCRPerformUtil.OCRLanHolder a;
-  public static TranslateResult a;
-  public static OCRReqContext a;
-  public static CharSequence a;
-  static final HashMap<String, Integer> a;
   public static boolean a = false;
-  public static OCRPerformUtil.OCRLanHolder b;
-  public static CharSequence b;
+  public static OCRReqContext b;
+  public static OCRPerformUtil.OCRLanHolder c;
+  public static OCRPerformUtil.OCRLanHolder d;
+  public static CharSequence e = "";
+  public static CharSequence f = "";
+  public static PicOcrRspResult g;
+  public static TranslateResult h;
+  static final HashMap<String, Integer> i = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaLangCharSequence = "";
-    jdField_b_of_type_JavaLangCharSequence = "";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("zh", Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilHashMap.put("en", Integer.valueOf(2));
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    i.put("zh", Integer.valueOf(1));
+    i.put("en", Integer.valueOf(2));
+    HashMap localHashMap = i;
     Integer localInteger = Integer.valueOf(3);
     localHashMap.put("ja", localInteger);
-    jdField_a_of_type_JavaUtilHashMap.put("jp", localInteger);
-    localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    i.put("jp", localInteger);
+    localHashMap = i;
     localInteger = Integer.valueOf(4);
     localHashMap.put("ko", localInteger);
-    jdField_a_of_type_JavaUtilHashMap.put("kr", localInteger);
-    jdField_a_of_type_JavaUtilHashMap.put("fr", Integer.valueOf(5));
-    jdField_a_of_type_JavaUtilHashMap.put("es", Integer.valueOf(6));
-    jdField_a_of_type_JavaUtilHashMap.put("it", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilHashMap.put("de", Integer.valueOf(8));
-    jdField_a_of_type_JavaUtilHashMap.put("tr", Integer.valueOf(9));
-    jdField_a_of_type_JavaUtilHashMap.put("ru", Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilHashMap.put("pt", Integer.valueOf(11));
-    jdField_a_of_type_JavaUtilHashMap.put("vi", Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilHashMap.put("id", Integer.valueOf(13));
-    jdField_a_of_type_JavaUtilHashMap.put("ms", Integer.valueOf(14));
-    jdField_a_of_type_JavaUtilHashMap.put("th", Integer.valueOf(15));
+    i.put("kr", localInteger);
+    i.put("fr", Integer.valueOf(5));
+    i.put("es", Integer.valueOf(6));
+    i.put("it", Integer.valueOf(7));
+    i.put("de", Integer.valueOf(8));
+    i.put("tr", Integer.valueOf(9));
+    i.put("ru", Integer.valueOf(10));
+    i.put("pt", Integer.valueOf(11));
+    i.put("vi", Integer.valueOf(12));
+    i.put("id", Integer.valueOf(13));
+    i.put("ms", Integer.valueOf(14));
+    i.put("th", Integer.valueOf(15));
   }
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int i = paramOptions.outHeight;
+    int j = paramOptions.outHeight;
     paramInt2 = paramOptions.outWidth;
     if (paramInt2 > paramInt1 * 1.2F)
     {
-      i /= 2;
-      int j = paramInt2 / 2;
+      j /= 2;
+      int k = paramInt2 / 2;
       paramInt2 = 2;
       for (;;)
       {
-        i = paramInt2;
-        if (j / paramInt2 <= paramInt1) {
+        j = paramInt2;
+        if (k / paramInt2 <= paramInt1) {
           break;
         }
         paramInt2 *= 2;
       }
     }
-    i = 1;
+    j = 1;
     if (QLog.isColorLevel())
     {
       paramOptions = new StringBuilder();
       paramOptions.append("calculateInSampleSize:");
-      paramOptions.append(i);
+      paramOptions.append(j);
       QLog.i("OCRPerformUtil", 2, paramOptions.toString());
     }
-    return i;
+    return j;
   }
   
   public static int a(Point paramPoint1, Point paramPoint2)
   {
-    int i = Math.abs(paramPoint2.x - paramPoint1.x);
-    int j = Math.abs(paramPoint2.y - paramPoint1.y);
-    return (int)Math.ceil(Math.sqrt(i * i + j * j));
-  }
-  
-  public static int a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString.trim().toLowerCase())).intValue();
-    }
-    return 0;
+    int j = Math.abs(paramPoint2.x - paramPoint1.x);
+    int k = Math.abs(paramPoint2.y - paramPoint1.y);
+    return (int)Math.ceil(Math.sqrt(j * j + k * k));
   }
   
   public static Bitmap a(Drawable paramDrawable)
@@ -159,37 +148,37 @@ public class OCRPerformUtil
   
   public static Bitmap a(String paramString, DisplayMetrics paramDisplayMetrics)
   {
-    int i = paramDisplayMetrics.widthPixels;
-    int j = paramDisplayMetrics.heightPixels;
+    int j = paramDisplayMetrics.widthPixels;
+    int k = paramDisplayMetrics.heightPixels;
     paramDisplayMetrics = new BitmapFactory.Options();
     paramDisplayMetrics.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, paramDisplayMetrics);
-    i = a(paramDisplayMetrics, i, j);
+    j = a(paramDisplayMetrics, j, k);
     paramDisplayMetrics.inJustDecodeBounds = false;
-    paramDisplayMetrics.inSampleSize = i;
+    paramDisplayMetrics.inSampleSize = j;
     Bitmap localBitmap = PicOrcUtils.a(paramString, paramDisplayMetrics, 1, 4);
     paramDisplayMetrics = localBitmap;
     if (localBitmap != null)
     {
-      i = BaseImageUtil.c(paramString);
+      j = BaseImageUtil.h(paramString);
       paramDisplayMetrics = localBitmap;
-      if (i != 0)
+      if (j != 0)
       {
         paramDisplayMetrics = localBitmap;
-        if (i % 90 == 0)
+        if (j % 90 == 0)
         {
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
             paramString.append("decodeBitmapForOcr rotate:");
-            paramString.append(i);
+            paramString.append(j);
             QLog.d("OCRPerformUtil", 2, paramString.toString());
           }
-          j = localBitmap.getWidth();
-          int k = localBitmap.getHeight();
+          k = localBitmap.getWidth();
+          int m = localBitmap.getHeight();
           paramString = new Matrix();
-          paramString.postRotate(i, j / 2.0F, k / 2.0F);
-          paramDisplayMetrics = Bitmap.createBitmap(localBitmap, 0, 0, j, k, paramString, true);
+          paramString.postRotate(j, k / 2.0F, m / 2.0F);
+          paramDisplayMetrics = Bitmap.createBitmap(localBitmap, 0, 0, k, m, paramString, true);
         }
       }
     }
@@ -219,13 +208,13 @@ public class OCRPerformUtil
     } else {
       paramOCRLanHolder = paramString.toLowerCase();
     }
-    localOCRLanHolder.jdField_a_of_type_JavaLangString = paramOCRLanHolder;
+    localOCRLanHolder.a = paramOCRLanHolder;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (localOCRLanHolder.jdField_a_of_type_JavaUtilList == null) {
-        localOCRLanHolder.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (localOCRLanHolder.b == null) {
+        localOCRLanHolder.b = new ArrayList();
       } else {
-        localOCRLanHolder.jdField_a_of_type_JavaUtilList.clear();
+        localOCRLanHolder.b.clear();
       }
       paramOCRLanHolder = paramList.iterator();
       while (paramOCRLanHolder.hasNext())
@@ -233,26 +222,26 @@ public class OCRPerformUtil
         paramString = (String)paramOCRLanHolder.next();
         paramList = a(paramString);
         if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramList))) {
-          localOCRLanHolder.jdField_a_of_type_JavaUtilList.add(paramString.toLowerCase());
+          localOCRLanHolder.b.add(paramString.toLowerCase());
         }
       }
     }
-    localOCRLanHolder.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    localOCRLanHolder.jdField_b_of_type_JavaLangString = localOCRLanHolder.jdField_a_of_type_JavaLangString;
-    localOCRLanHolder.jdField_c_of_type_JavaUtilList = a(localOCRLanHolder.jdField_b_of_type_JavaLangString);
-    paramOCRLanHolder = localOCRLanHolder.jdField_c_of_type_JavaUtilList;
-    int i = 0;
-    localOCRLanHolder.jdField_c_of_type_JavaLangString = ((String)paramOCRLanHolder.get(0));
-    localOCRLanHolder.jdField_b_of_type_JavaUtilList = a(localOCRLanHolder.jdField_c_of_type_JavaLangString);
+    localOCRLanHolder.c = paramHashMap;
+    localOCRLanHolder.d = localOCRLanHolder.a;
+    localOCRLanHolder.g = b(localOCRLanHolder.d);
+    paramOCRLanHolder = localOCRLanHolder.g;
+    int j = 0;
+    localOCRLanHolder.e = ((String)paramOCRLanHolder.get(0));
+    localOCRLanHolder.f = b(localOCRLanHolder.e);
     paramOCRLanHolder = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/");
-    int j = paramOCRLanHolder.length;
-    while (i < j)
+    int k = paramOCRLanHolder.length;
+    while (j < k)
     {
-      paramString = paramOCRLanHolder[i];
-      if (!localOCRLanHolder.a(localOCRLanHolder.jdField_b_of_type_JavaUtilList, paramString)) {
-        localOCRLanHolder.jdField_b_of_type_JavaUtilList.add(paramString);
+      paramString = paramOCRLanHolder[j];
+      if (!localOCRLanHolder.a(localOCRLanHolder.f, paramString)) {
+        localOCRLanHolder.f.add(paramString);
       }
-      i += 1;
+      j += 1;
     }
     if (QLog.isColorLevel())
     {
@@ -268,19 +257,19 @@ public class OCRPerformUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramArrayList = paramArrayList.iterator();
-    int i = 1;
+    int j = 1;
     while (paramArrayList.hasNext())
     {
       PicOcrResultBean localPicOcrResultBean = (PicOcrResultBean)paramArrayList.next();
-      if (localPicOcrResultBean.b == i)
+      if (localPicOcrResultBean.d == j)
       {
-        localStringBuilder.append(localPicOcrResultBean.jdField_a_of_type_JavaLangString.trim());
+        localStringBuilder.append(localPicOcrResultBean.a.trim());
       }
       else
       {
         localStringBuilder.append("\n\n");
-        localStringBuilder.append(localPicOcrResultBean.jdField_a_of_type_JavaLangString.trim());
-        i = localPicOcrResultBean.b;
+        localStringBuilder.append(localPicOcrResultBean.a.trim());
+        j = localPicOcrResultBean.d;
       }
     }
     return new QQText(localStringBuilder.toString(), 8, 16);
@@ -291,15 +280,15 @@ public class OCRPerformUtil
     if (paramTextView == null) {
       return null;
     }
-    int i = paramTextView.getSelectionStart();
-    int j = paramTextView.getSelectionEnd();
+    int j = paramTextView.getSelectionStart();
+    int k = paramTextView.getSelectionEnd();
     paramTextView = paramTextView.getText().toString();
-    if ((!TextUtils.isEmpty(paramTextView)) && (i < j) && (i >= 0))
+    if ((!TextUtils.isEmpty(paramTextView)) && (j < k) && (j >= 0))
     {
-      if (j > paramTextView.length()) {
+      if (k > paramTextView.length()) {
         return null;
       }
-      paramTextView = paramTextView.substring(i, j);
+      paramTextView = paramTextView.substring(j, k);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -317,35 +306,30 @@ public class OCRPerformUtil
     return OcrConfig.getDefaultLanguageName(paramString);
   }
   
-  public static List<String> a(String paramString)
-  {
-    return OcrConfig.getDefaultSupportLanguages(paramString);
-  }
-  
   public static void a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext != null) {
-      jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext = null;
+    if (b != null) {
+      b = null;
     }
-    if (jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder != null) {
-      jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder = null;
+    if (c != null) {
+      c = null;
     }
-    if (jdField_b_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder != null) {
-      jdField_b_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder = null;
+    if (d != null) {
+      d = null;
     }
-    if (jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult != null) {
-      jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult = null;
+    if (g != null) {
+      g = null;
     }
-    if (jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) {
-      jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult = null;
+    if (h != null) {
+      h = null;
     }
-    if (jdField_a_of_type_JavaLangCharSequence != null) {
-      jdField_a_of_type_JavaLangCharSequence = null;
+    if (e != null) {
+      e = null;
     }
-    if (jdField_b_of_type_JavaLangCharSequence != null) {
-      jdField_b_of_type_JavaLangCharSequence = null;
+    if (f != null) {
+      f = null;
     }
-    jdField_a_of_type_Boolean = false;
+    a = false;
   }
   
   public static void a(int paramInt, String paramString1, String paramString2)
@@ -443,14 +427,27 @@ public class OCRPerformUtil
     ReportController.b(null, "dc00898", "", "", paramString1, paramString2, paramInt, 0, "", "0", "0", "");
   }
   
+  public static List<String> b(String paramString)
+  {
+    return OcrConfig.getDefaultSupportLanguages(paramString);
+  }
+  
   public static void b(Activity paramActivity, String paramString)
   {
     ((IStartDovEditPic)QRoute.api(IStartDovEditPic.class)).enterCropActivity(paramActivity, paramString);
   }
+  
+  public static int c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return ((Integer)i.get(paramString.trim().toLowerCase())).intValue();
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformUtil
  * JD-Core Version:    0.7.0.1
  */

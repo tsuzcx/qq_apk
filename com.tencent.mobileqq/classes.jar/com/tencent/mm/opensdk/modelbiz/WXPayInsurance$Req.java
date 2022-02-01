@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public final class WXPayInsurance$Req
   extends BaseReq
@@ -12,9 +12,9 @@ public final class WXPayInsurance$Req
   private static final int URL_LENGTH_LIMIT = 10240;
   public String url;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
-    if (d.b(this.url))
+    if (b.b(this.url))
     {
       Log.i("MicroMsg.SDK.WXPayInsurance.Req", "url should not be empty");
       return false;
@@ -27,18 +27,18 @@ public final class WXPayInsurance$Req
     return true;
   }
   
-  public final void fromBundle(Bundle paramBundle)
+  public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     this.url = paramBundle.getString("_wxapi_pay_insourance_req_url");
   }
   
-  public final int getType()
+  public int getType()
   {
     return 22;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     paramBundle.putString("_wxapi_pay_insourance_req_url", this.url);
@@ -46,7 +46,7 @@ public final class WXPayInsurance$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXPayInsurance.Req
  * JD-Core Version:    0.7.0.1
  */

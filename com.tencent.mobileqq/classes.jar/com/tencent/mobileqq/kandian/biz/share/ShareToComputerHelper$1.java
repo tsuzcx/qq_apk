@@ -19,16 +19,16 @@ class ShareToComputerHelper$1
       paramLong = BaseApplicationImpl.getApplication().getBaseContext();
       if (paramBoolean)
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718752, 0).b(paramLong.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 2, 2131916258, 0).show(paramLong.getResources().getDimensionPixelSize(2131299920));
         return;
       }
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718739, 0).b(paramLong.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131916242, 0).show(paramLong.getResources().getDimensionPixelSize(2131299920));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ShareToComputerHelper.1
  * JD-Core Version:    0.7.0.1
  */

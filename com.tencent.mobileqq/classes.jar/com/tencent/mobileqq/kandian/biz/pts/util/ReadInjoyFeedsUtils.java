@@ -34,7 +34,7 @@ public class ReadInjoyFeedsUtils
     boolean bool = true;
     if (i != 25)
     {
-      if ((paramAbsBaseArticleInfo.mFeedType == 1) && (RIJFeedsType.d(paramAbsBaseArticleInfo) == 25)) {
+      if ((paramAbsBaseArticleInfo.mFeedType == 1) && (RIJFeedsType.ac(paramAbsBaseArticleInfo) == 25)) {
         return true;
       }
       bool = false;
@@ -44,7 +44,7 @@ public class ReadInjoyFeedsUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ReadInjoyFeedsUtils
  * JD-Core Version:    0.7.0.1
  */

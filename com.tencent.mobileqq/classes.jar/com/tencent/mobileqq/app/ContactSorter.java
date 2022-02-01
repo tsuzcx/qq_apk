@@ -57,8 +57,8 @@ public class ContactSorter
     }
     if ((i != 0) && (j != 0))
     {
-      char[] arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
-      char[] arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
+      char[] arrayOfChar1 = ChnToSpell.b(paramString1, 1).toCharArray();
+      char[] arrayOfChar2 = ChnToSpell.b(paramString2, 1).toCharArray();
       i = a(arrayOfChar1[0]);
       j = a(arrayOfChar2[0]);
       if (i > j) {
@@ -109,52 +109,24 @@ public class ContactSorter
     return i - j;
   }
   
-  public static String a(DiscussionInfo paramDiscussionInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramDiscussionInfo.discussionName);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramDiscussionInfo.uin);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(Friends paramFriends)
-  {
-    String str = paramFriends.getFriendNick();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramFriends.uin);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(PublicAccountInfo paramPublicAccountInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramPublicAccountInfo.name);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramPublicAccountInfo.uin);
-    return localStringBuilder.toString();
-  }
-  
   public static void a(DiscussionInfo paramDiscussionInfo)
   {
-    String str = a(paramDiscussionInfo);
-    paramDiscussionInfo.mCompareSpell = ChnToSpell.a(str, 1);
+    String str = b(paramDiscussionInfo);
+    paramDiscussionInfo.mCompareSpell = ChnToSpell.b(str, 1);
     paramDiscussionInfo.mComparePartInt = b(str, paramDiscussionInfo.mCompareSpell);
   }
   
   public static void a(Friends paramFriends)
   {
-    String str = a(paramFriends);
-    paramFriends.mCompareSpell = ChnToSpell.a(str, 1);
+    String str = b(paramFriends);
+    paramFriends.mCompareSpell = ChnToSpell.b(str, 1);
     paramFriends.mComparePartInt = b(str, paramFriends.mCompareSpell);
   }
   
   public static void a(PublicAccountInfo paramPublicAccountInfo)
   {
-    String str = a(paramPublicAccountInfo);
-    paramPublicAccountInfo.mCompareSpell = ChnToSpell.a(str, 1);
+    String str = b(paramPublicAccountInfo);
+    paramPublicAccountInfo.mCompareSpell = ChnToSpell.b(str, 1);
     paramPublicAccountInfo.mComparePartInt = b(str, paramPublicAccountInfo.mCompareSpell);
   }
   
@@ -175,10 +147,38 @@ public class ContactSorter
     }
     return k << 8 | i | 0x0 | j;
   }
+  
+  public static String b(DiscussionInfo paramDiscussionInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramDiscussionInfo.discussionName);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramDiscussionInfo.uin);
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(Friends paramFriends)
+  {
+    String str = paramFriends.getFriendNick();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramFriends.uin);
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(PublicAccountInfo paramPublicAccountInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramPublicAccountInfo.name);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramPublicAccountInfo.uin);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactSorter
  * JD-Core Version:    0.7.0.1
  */

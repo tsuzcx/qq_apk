@@ -578,18 +578,22 @@ class e
   
   public Drawable.ConstantState a(int paramInt, long paramLong)
   {
-    Integer localInteger = (Integer)this.a.get(paramLong);
-    if (localInteger == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("get index : ");
+    ((StringBuilder)localObject).append(paramLong);
+    Log.d("SkinEngine", ((StringBuilder)localObject).toString());
+    localObject = (Integer)this.a.get(paramLong);
+    if (localObject == null) {
       return (Drawable.ConstantState)this.b[paramInt].get(paramLong);
     }
-    if ((SkinEngine.mIconResourceID != null) && (SkinEngine.mIconResourceID.equals(localInteger)))
+    if ((SkinEngine.mIconResourceID != null) && (SkinEngine.mIconResourceID.equals(localObject)))
     {
       if (SkinEngine.DEBUG) {
         Log.d("SkinEngine", "To support Samsung multi-window, return default icon resource");
       }
       return null;
     }
-    return this.c.a(localInteger.intValue());
+    return this.c.loadConstantState(((Integer)localObject).intValue());
   }
   
   public LongSparseArray<Integer> a()
@@ -629,7 +633,7 @@ class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.e
  * JD-Core Version:    0.7.0.1
  */

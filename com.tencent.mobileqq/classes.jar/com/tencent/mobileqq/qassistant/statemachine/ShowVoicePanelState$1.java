@@ -18,14 +18,14 @@ class ShowVoicePanelState$1
       ((StringBuilder)localObject).append(ShowVoicePanelState.a(this.this$0));
       QLog.d("ShowVoicePanelState", 2, ((StringBuilder)localObject).toString());
     }
-    if (ShowVoicePanelState.a(this.this$0) != null) {
-      ShowVoicePanelState.a(this.this$0).a(3);
+    if (ShowVoicePanelState.b(this.this$0) != null) {
+      ShowVoicePanelState.b(this.this$0).c(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.ShowVoicePanelState.1
  * JD-Core Version:    0.7.0.1
  */

@@ -72,7 +72,7 @@ public class PhotoIncompatibleBaseDecorator
   boolean a(String paramString)
   {
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    int j = BaseImageUtil.c(this.c);
+    int j = BaseImageUtil.h(this.c);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("generate ");
     ((StringBuilder)localObject1).append(this.a);
@@ -165,7 +165,7 @@ public class PhotoIncompatibleBaseDecorator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoIncompatibleBaseDecorator
  * JD-Core Version:    0.7.0.1
  */

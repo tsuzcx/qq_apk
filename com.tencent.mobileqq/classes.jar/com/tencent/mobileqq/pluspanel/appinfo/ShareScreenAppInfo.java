@@ -13,6 +13,7 @@ import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.screenshare.ScreenShareDialogUtil;
 import com.tencent.av.screenshare.ScreenShareReportHelper;
 import com.tencent.av.utils.QAVConfigUtils;
+import com.tencent.av.utils.QAVConfigUtils.ScreenShareSafeTips;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -30,6 +31,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import java.util.Locale;
+import mqq.util.LogUtil;
 
 public class ShareScreenAppInfo
   extends PlusPanelAppInfo
@@ -43,53 +45,58 @@ public class ShareScreenAppInfo
   
   private void a(int paramInt, PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    BaseActivity localBaseActivity = paramBaseChatPie.a();
+    BaseActivity localBaseActivity = paramBaseChatPie.aX();
     if (localBaseActivity != null)
     {
       if (localBaseActivity.isFinishing()) {
         return;
       }
-      String str1 = localBaseActivity.getString(2131718564);
-      String str2 = localBaseActivity.getString(2131718563);
-      String str3 = localBaseActivity.getString(2131695618);
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramBaseChatPie.a.getApp());
-      if (!localSharedPreferences.contains("SCREEN_SHARE_NOTICE_DIALOG_IS_SHOWN"))
+      String str1 = localBaseActivity.getString(2131916065);
+      Object localObject1 = localBaseActivity.getString(2131916062);
+      Object localObject2 = localBaseActivity.getString(2131916063);
+      String str4 = localBaseActivity.getString(2131916064);
+      String str2 = localBaseActivity.getString(2131893182);
+      String str3 = localBaseActivity.getString(2131893168);
+      localObject1 = QAVConfigUtils.a((String)localObject1, (String)localObject2, str4);
+      localObject1 = ScreenShareDialogUtil.a(localBaseActivity, ((QAVConfigUtils.ScreenShareSafeTips)localObject1).a, ((QAVConfigUtils.ScreenShareSafeTips)localObject1).b, ((QAVConfigUtils.ScreenShareSafeTips)localObject1).c);
+      localObject2 = PreferenceManager.getDefaultSharedPreferences(paramBaseChatPie.d.getApp());
+      if (!((SharedPreferences)localObject2).contains("SCREEN_SHARE_NOTICE_DIALOG_IS_SHOWN"))
       {
-        ScreenShareDialogUtil.a(localBaseActivity, str1, str2, str3, null, true, 10, new ShareScreenAppInfo.2(this, paramInt, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo), null).show();
-        localSharedPreferences.edit().putBoolean("SCREEN_SHARE_NOTICE_DIALOG_IS_SHOWN", true).apply();
+        ScreenShareDialogUtil.a(localBaseActivity, str1, (CharSequence)localObject1, str3, str2, true, 10, new ShareScreenAppInfo.2(this), new ShareScreenAppInfo.3(this, paramInt, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo)).show();
+        ((SharedPreferences)localObject2).edit().putBoolean("SCREEN_SHARE_NOTICE_DIALOG_IS_SHOWN", true).apply();
         return;
       }
-      DialogUtil.a(localBaseActivity, 230, str1, str2, null, str3, new ShareScreenAppInfo.3(this, paramInt, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo), null).show();
+      DialogUtil.a(localBaseActivity, 230, str1, (CharSequence)localObject1, str3, str2, new ShareScreenAppInfo.4(this, paramInt, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo), new ShareScreenAppInfo.5(this)).setMessageWithoutAutoLink((CharSequence)localObject1).show();
     }
   }
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    ShareScreenAppInfo.6 local6 = new ShareScreenAppInfo.6(this);
+    ShareScreenAppInfo.8 local8 = new ShareScreenAppInfo.8(this);
     ReqGroupVideo.ReqScreenShareAsk localReqScreenShareAsk = new ReqGroupVideo.ReqScreenShareAsk();
-    localReqScreenShareAsk.from_uin.set(paramBaseChatPie.a.getLongAccountUin());
-    localReqScreenShareAsk.to_uin.set(Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
+    localReqScreenShareAsk.from_uin.set(paramBaseChatPie.d.getLongAccountUin());
+    localReqScreenShareAsk.to_uin.set(Long.parseLong(paramSessionInfo.b));
     localReqScreenShareAsk.is_online.set(false);
-    MessageHandler.a(QQAudioHelper.b(), paramBaseChatPie.a, "QQRTCSvc.screen_share_ask", localReqScreenShareAsk, local6);
-    QLog.d("ShareScreenAppInfo", 1, String.format(Locale.ENGLISH, "shareGAVArkMsg success : from_uin[%d], to_uin[%s], ", new Object[] { Long.valueOf(paramBaseChatPie.a.getLongAccountUin()), paramSessionInfo.jdField_a_of_type_JavaLangString }));
+    MessageHandler.a(QQAudioHelper.d(), paramBaseChatPie.d, "QQRTCSvc.screen_share_ask", localReqScreenShareAsk, local8);
+    QLog.d("ShareScreenAppInfo", 1, String.format(Locale.ENGLISH, "shareGAVArkMsg success : from_uin[%s], to_uin[%s], ", new Object[] { LogUtil.getSafePrintUin(String.valueOf(paramBaseChatPie.d.getLongAccountUin())), LogUtil.getSafePrintUin(paramSessionInfo.b) }));
   }
   
   private void a(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    Object localObject = paramBaseChatPie.a();
+    Object localObject = paramBaseChatPie.aX();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
         return;
       }
       localObject = ActionSheet.create((Context)localObject);
-      ((ActionSheet)localObject).addButton(2131718551, 0);
-      if (QAVConfigUtils.l())
+      ((ActionSheet)localObject).addButton(2131916050, 0);
+      if (QAVConfigUtils.t())
       {
-        ((ActionSheet)localObject).addButton(2131718550, 0);
-        ((ActionSheet)localObject).addCancelButton(2131690728);
-        ((ActionSheet)localObject).setOnButtonClickListener(new ShareScreenAppInfo.4(this, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo, (ActionSheet)localObject));
-        ((ActionSheet)localObject).setOnBottomCancelListener(new ShareScreenAppInfo.5(this, (ActionSheet)localObject));
+        ((ActionSheet)localObject).addButton(2131916049, 0);
+        ((ActionSheet)localObject).addCancelButton(2131887648);
+        ((ActionSheet)localObject).setOnButtonClickListener(new ShareScreenAppInfo.6(this, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo, (ActionSheet)localObject));
+        ((ActionSheet)localObject).setOnBottomCancelListener(new ShareScreenAppInfo.7(this, (ActionSheet)localObject));
         ((ActionSheet)localObject).show();
         return;
       }
@@ -116,7 +123,7 @@ public class ShareScreenAppInfo
     {
       paramPlusPanelViewModel = new StringBuilder();
       paramPlusPanelViewModel.append("clickToolShareScreen, not support chat, [");
-      paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_Int);
+      paramPlusPanelViewModel.append(paramSessionInfo.a);
       paramPlusPanelViewModel.append("]");
       QLog.i("ShareScreenAppInfo", 2, paramPlusPanelViewModel.toString());
     }
@@ -124,22 +131,22 @@ public class ShareScreenAppInfo
   
   private void b(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    BaseActivity localBaseActivity = paramBaseChatPie.a();
+    BaseActivity localBaseActivity = paramBaseChatPie.aX();
     if (localBaseActivity != null)
     {
       if (localBaseActivity.isFinishing()) {
         return;
       }
-      paramBaseChatPie.Q();
+      paramBaseChatPie.aw();
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      PlusPanelUtils.a(paramBaseChatPie.a, localBaseActivity, paramSessionInfo, true, "AIOShareScreen", null);
+      PlusPanelUtils.a(paramBaseChatPie.d, localBaseActivity, paramSessionInfo, true, "AIOShareScreen", null);
       localBaseActivity.setCanLock(false);
     }
   }
   
   public int defaultDrawableID()
   {
-    return 2130839150;
+    return 2130839306;
   }
   
   public int getAppID()
@@ -168,7 +175,7 @@ public class ShareScreenAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698596);
+    return BaseApplicationImpl.getContext().getString(2131896543);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -182,14 +189,14 @@ public class ShareScreenAppInfo
     if (i == 0) {
       try
       {
-        paramPlusPanelViewModel = paramBaseChatPie.a();
+        paramPlusPanelViewModel = paramBaseChatPie.aX();
         if (paramPlusPanelViewModel != null)
         {
           if (paramPlusPanelViewModel.isFinishing()) {
             return;
           }
           paramBaseChatPie = paramPlusPanelViewModel.getResources();
-          DialogUtil.a(paramPlusPanelViewModel, 230, paramBaseChatPie.getString(2131691634), paramBaseChatPie.getString(2131695856), 0, 2131695618, new ShareScreenAppInfo.1(this), null).show();
+          DialogUtil.a(paramPlusPanelViewModel, 230, paramBaseChatPie.getString(2131888596), paramBaseChatPie.getString(2131893615), 0, 2131893377, new ShareScreenAppInfo.1(this), null).show();
           return;
         }
         return;
@@ -200,7 +207,7 @@ public class ShareScreenAppInfo
         return;
       }
     }
-    if (paramBaseChatPie.a.getAVNotifyCenter().a(paramBaseChatPie.a(), 3, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (paramBaseChatPie.d.getAVNotifyCenter().a(paramBaseChatPie.aX(), 3, paramSessionInfo.a, paramSessionInfo.b)) {
       return;
     }
     a(this.uinType, paramPlusPanelViewModel, paramBaseChatPie, paramSessionInfo);
@@ -208,7 +215,7 @@ public class ShareScreenAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShareScreenAppInfo
  * JD-Core Version:    0.7.0.1
  */

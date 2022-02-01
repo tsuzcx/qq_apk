@@ -11,21 +11,21 @@ class TroopInviteStatusFragment$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()))
+    if ((this.this$0.l != null) && (!this.this$0.l.isFinishing()))
     {
-      Intent localIntent = AIOUtils.a(new Intent(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class), null);
-      localIntent.putExtra("uin", this.this$0.jdField_a_of_type_JavaLangString);
+      Intent localIntent = AIOUtils.a(new Intent(this.this$0.l, SplashActivity.class), null);
+      localIntent.putExtra("uin", this.this$0.n);
       localIntent.putExtra("uintype", 1);
-      localIntent.putExtra("uinname", this.this$0.b);
-      localIntent.putExtra("troop_uin", this.this$0.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("uinname", this.this$0.o);
+      localIntent.putExtra("troop_uin", this.this$0.n);
       this.this$0.startActivity(localIntent);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      this.this$0.l.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.3
  * JD-Core Version:    0.7.0.1
  */

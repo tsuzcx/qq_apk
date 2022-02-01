@@ -9,20 +9,20 @@ import java.util.Map;
 public class QzoneTroopReddotRequest
   extends QZoneCommonRequest
 {
-  private int a;
   public JceStruct a;
+  private int b;
   
   public QzoneTroopReddotRequest(ArrayList<Long> paramArrayList, Map<String, String> paramMap)
   {
     mobile_batch_get_profile_count_req localmobile_batch_get_profile_count_req = new mobile_batch_get_profile_count_req();
     localmobile_batch_get_profile_count_req.vecUinList = paramArrayList;
     localmobile_batch_get_profile_count_req.extendinfo = paramMap;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localmobile_batch_get_profile_count_req;
+    this.a = localmobile_batch_get_profile_count_req;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public String getCmdString()
@@ -32,12 +32,12 @@ public class QzoneTroopReddotRequest
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.a;
   }
   
   public int getType()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public String uniKey()
@@ -47,7 +47,7 @@ public class QzoneTroopReddotRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.QzoneTroopReddotRequest
  * JD-Core Version:    0.7.0.1
  */

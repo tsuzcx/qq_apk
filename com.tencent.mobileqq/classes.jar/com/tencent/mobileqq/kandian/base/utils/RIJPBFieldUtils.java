@@ -196,7 +196,34 @@ public class RIJPBFieldUtils
     return null;
   }
   
-  public static <T extends MessageMicro<T>> List<T> a(byte[] paramArrayOfByte, Class<T> paramClass)
+  public static boolean a(PBBoolField paramPBBoolField)
+  {
+    if (paramPBBoolField.has()) {
+      return paramPBBoolField.get();
+    }
+    return false;
+  }
+  
+  public static <T extends MessageMicro<T>> byte[] a(List<T> paramList, Class<T> paramClass)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramClass = PBField.initRepeatMessage(paramClass);
+      paramClass.addAll(paramList);
+      return b(paramClass);
+    }
+    return null;
+  }
+  
+  public static int b(PBEnumField paramPBEnumField, int paramInt)
+  {
+    if (paramPBEnumField.has()) {
+      return paramPBEnumField.get();
+    }
+    return paramInt;
+  }
+  
+  public static <T extends MessageMicro<T>> List<T> b(byte[] paramArrayOfByte, Class<T> paramClass)
   {
     if (paramArrayOfByte != null)
     {
@@ -211,46 +238,28 @@ public class RIJPBFieldUtils
     return null;
   }
   
-  public static void a(PBBytesField paramPBBytesField, String paramString)
+  public static void b(PBBytesField paramPBBytesField, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       paramPBBytesField.set(ByteStringMicro.copyFromUtf8(paramString));
     }
   }
   
-  public static void a(PBUInt32Field paramPBUInt32Field, int paramInt)
+  public static void b(PBUInt32Field paramPBUInt32Field, int paramInt)
   {
     if (paramInt != -1) {
       paramPBUInt32Field.set(paramInt);
     }
   }
   
-  public static void a(PBUInt64Field paramPBUInt64Field, long paramLong)
+  public static void b(PBUInt64Field paramPBUInt64Field, long paramLong)
   {
     if (paramLong != -1L) {
       paramPBUInt64Field.set(paramLong);
     }
   }
   
-  public static boolean a(PBBoolField paramPBBoolField)
-  {
-    if (paramPBBoolField.has()) {
-      return paramPBBoolField.get();
-    }
-    return false;
-  }
-  
-  public static boolean a(PBBytesField paramPBBytesField)
-  {
-    return (paramPBBytesField != null) && (paramPBBytesField.has()) && (paramPBBytesField.get() != null);
-  }
-  
-  public static boolean a(PBRepeatMessageField paramPBRepeatMessageField)
-  {
-    return (paramPBRepeatMessageField != null) && (paramPBRepeatMessageField.has()) && (paramPBRepeatMessageField.get().size() > 0);
-  }
-  
-  public static byte[] a(PBBytesField paramPBBytesField)
+  public static byte[] b(PBBytesField paramPBBytesField)
   {
     if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
       return paramPBBytesField.get().toByteArray();
@@ -258,7 +267,7 @@ public class RIJPBFieldUtils
     return null;
   }
   
-  public static <T extends MessageMicro<T>> byte[] a(PBRepeatMessageField<T> paramPBRepeatMessageField)
+  public static <T extends MessageMicro<T>> byte[] b(PBRepeatMessageField<T> paramPBRepeatMessageField)
   {
     Object localObject = new ByteArrayOutputStream(paramPBRepeatMessageField.computeSize(1));
     try
@@ -282,28 +291,19 @@ public class RIJPBFieldUtils
     return null;
   }
   
-  public static <T extends MessageMicro<T>> byte[] a(List<T> paramList, Class<T> paramClass)
+  public static boolean c(PBBytesField paramPBBytesField)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramClass = PBField.initRepeatMessage(paramClass);
-      paramClass.addAll(paramList);
-      return a(paramClass);
-    }
-    return null;
+    return (paramPBBytesField != null) && (paramPBBytesField.has()) && (paramPBBytesField.get() != null);
   }
   
-  public static int b(PBEnumField paramPBEnumField, int paramInt)
+  public static boolean c(PBRepeatMessageField paramPBRepeatMessageField)
   {
-    if (paramPBEnumField.has()) {
-      return paramPBEnumField.get();
-    }
-    return paramInt;
+    return (paramPBRepeatMessageField != null) && (paramPBRepeatMessageField.has()) && (paramPBRepeatMessageField.get().size() > 0);
   }
   
-  public static String b(PBBytesField paramPBBytesField)
+  public static String d(PBBytesField paramPBBytesField)
   {
-    if (a(paramPBBytesField)) {
+    if (c(paramPBBytesField)) {
       return paramPBBytesField.get().toStringUtf8();
     }
     return null;
@@ -311,7 +311,7 @@ public class RIJPBFieldUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils
  * JD-Core Version:    0.7.0.1
  */

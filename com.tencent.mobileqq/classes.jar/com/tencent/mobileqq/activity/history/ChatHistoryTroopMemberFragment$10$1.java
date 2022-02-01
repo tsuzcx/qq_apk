@@ -12,24 +12,24 @@ class ChatHistoryTroopMemberFragment$10$1
   
   public void onClick(View paramView)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691859);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.d.setVisibility(8);
-    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369202));
-    this.a.a.d.setVisibility(0);
-    this.a.a.d.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+    this.a.a.A = false;
+    this.a.a.N.setText(2131888824);
+    this.a.a.N.setVisibility(0);
+    this.a.a.N.setOnClickListener(this.a.a.bh);
+    this.a.a.N.setEnabled(true);
+    this.a.a.T.setVisibility(8);
+    this.a.a.T = ((TextView)ChatHistoryTroopMemberFragment.b(this.a.a, 2131436180));
+    this.a.a.T.setVisibility(0);
+    this.a.a.T.setOnClickListener(this.a.a.bi);
+    if (this.a.a.K != null) {
+      this.a.a.K.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.10.1
  * JD-Core Version:    0.7.0.1
  */

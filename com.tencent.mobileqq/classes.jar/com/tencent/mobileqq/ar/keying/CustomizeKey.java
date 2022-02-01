@@ -18,7 +18,7 @@ public class CustomizeKey
     super(paramInt);
     if (!TextUtils.isEmpty(paramString))
     {
-      this.b = paramString;
+      this.f = paramString;
       return;
     }
     throw new IllegalArgumentException("mFragmentShader can not be empty!");
@@ -325,14 +325,6 @@ public class CustomizeKey
     }
   }
   
-  protected String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(KeyingUtil.a(this.o));
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
-  }
-  
   protected void a()
   {
     this.a = GLES20.glGetUniformLocation(this.d, "u_currentTime");
@@ -345,13 +337,21 @@ public class CustomizeKey
     }
     int i = this.a;
     if (i != -1) {
-      GLES20.glUniform1f(i, paramKeyingParams.i);
+      GLES20.glUniform1f(i, paramKeyingParams.j);
     }
+  }
+  
+  protected String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(KeyingUtil.a(this.x));
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.CustomizeKey
  * JD-Core Version:    0.7.0.1
  */

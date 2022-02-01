@@ -11,12 +11,12 @@ final class AEOldResDownload$1
   
   public void run()
   {
-    AEOldResDownload.b(this.jdField_a_of_type_ComTencentAelightCameraDownloadOldApiAEOldResInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_DovComQqImAeDownloadOldAEOldShortVideoResManager$INet_ShortVideoResource);
+    AEOldResDownload.b(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResDownload.1
  * JD-Core Version:    0.7.0.1
  */

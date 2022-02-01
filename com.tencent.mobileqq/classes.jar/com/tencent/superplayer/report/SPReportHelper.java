@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.tencent.superplayer.api.SuperPlayerDownOption;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
+import com.tencent.superplayer.api.SuperPlayerSdkOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.player.MediaInfo;
 import com.tencent.superplayer.player.SuperPlayerMgr;
@@ -12,11 +13,18 @@ import com.tencent.superplayer.utils.DisplayUtil;
 import com.tencent.superplayer.utils.HDRUtil;
 import com.tencent.superplayer.utils.HardwareUtil;
 import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.MathUtils;
+import com.tencent.superplayer.utils.ThreadUtil;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
 import com.tencent.tmediacodec.util.LogUtils;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,8 +38,12 @@ public class SPReportHelper
   private boolean mHasReported = false;
   private boolean mHasStartSeek = false;
   private boolean mHasStop = false;
+  private List<Integer> mHttpSpeed = new ArrayList();
   private boolean mIsPrePlay = false;
   private long mLastPlayPosition = 0L;
+  private List<Integer> mP2pSpeed = new ArrayList();
+  private List<Integer> mPcdnSpeed = new ArrayList();
+  private Set<Integer> mPcdnStopReason = new HashSet();
   private SuperPlayerMgr mPlayer;
   private boolean mPrePlayViewShowCalled = false;
   private boolean mPrepared = false;
@@ -66,54 +78,74 @@ public class SPReportHelper
     float f2 = 0.0F;
     if (f1 != 0.0F)
     {
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.bitrate = ((float)localSPReportEvent.fileSize / 1024.0F * 8.0F / f1);
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).bitrate = ((float)((SPReportEvent)localObject).fileSize / 1024.0F * 8.0F / f1);
     }
+    this.mEvent.avgHttpSpeed = MathUtils.a(this.mHttpSpeed);
+    this.mEvent.avgPcdnSpeed = MathUtils.a(this.mPcdnSpeed);
+    this.mEvent.avgP2PSpeed = MathUtils.a(this.mP2pSpeed);
+    Object localObject = new StringBuilder();
+    Iterator localIterator = this.mPcdnStopReason.iterator();
+    while (localIterator.hasNext())
+    {
+      ((StringBuilder)localObject).append((Integer)localIterator.next());
+      ((StringBuilder)localObject).append(",");
+    }
+    this.mEvent.pcdnStopReason = ((StringBuilder)localObject).toString();
     if (this.mEvent.prePlay == 0)
     {
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.prepareDuration = localSPReportEvent.realPrepareDuration;
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.renderDuration = localSPReportEvent.realRenderDuration;
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).prepareDuration = ((SPReportEvent)localObject).realPrepareDuration;
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).renderDuration = ((SPReportEvent)localObject).realRenderDuration;
     }
     else if (this.mEvent.prePlay == 2)
     {
       l = this.mVisibleStartPrepareTime - this.mStartPrepareTime;
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.prepareDuration = (localSPReportEvent.realPrepareDuration - l);
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.renderDuration = (localSPReportEvent.realRenderDuration - l);
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).prepareDuration = (((SPReportEvent)localObject).realPrepareDuration - l);
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).renderDuration = (((SPReportEvent)localObject).realRenderDuration - l);
       if (l < 0L) {
         LogUtil.e("SPReportHelper", "doBeforeReport prePlayOffsetDuration error, for prePlayOffsetDuration < 0");
       }
     }
     else if (this.mEvent.prePlay == 1)
     {
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.prepareDuration = 0L;
-      localSPReportEvent.renderDuration = 0L;
+      localObject = this.mEvent;
+      ((SPReportEvent)localObject).prepareDuration = 0L;
+      ((SPReportEvent)localObject).renderDuration = 0L;
     }
-    SPReportEvent localSPReportEvent = this.mEvent;
-    localSPReportEvent.totalBufferDuration = (localSPReportEvent.realPrepareDuration + this.mEvent.secondBufferDuration);
-    localSPReportEvent = this.mEvent;
-    localSPReportEvent.totalBufferCount = (localSPReportEvent.secondBufferCount + 1);
-    localSPReportEvent = this.mEvent;
-    localSPReportEvent.playDuration += this.mEvent.stopPosition - this.mLastPlayPosition;
+    localObject = this.mEvent;
+    ((SPReportEvent)localObject).totalBufferDuration = (((SPReportEvent)localObject).realPrepareDuration + this.mEvent.secondBufferDuration);
+    localObject = this.mEvent;
+    ((SPReportEvent)localObject).totalBufferCount = (((SPReportEvent)localObject).secondBufferCount + 1);
+    localObject = this.mEvent;
+    ((SPReportEvent)localObject).playDuration += this.mEvent.stopPosition - this.mLastPlayPosition;
     long l = this.mPlayer.getDurationMs();
-    localSPReportEvent = this.mEvent;
+    localObject = this.mEvent;
     if (l != 0L) {
-      f1 = localSPReportEvent.seekDuration * 1.0F / (float)l;
+      f1 = ((SPReportEvent)localObject).seekDuration * 1.0F / (float)l;
     } else {
       f1 = 0.0F;
     }
-    localSPReportEvent.seekPercent = f1;
-    localSPReportEvent = this.mEvent;
+    ((SPReportEvent)localObject).seekPercent = f1;
+    localObject = this.mEvent;
     f1 = f2;
     if (l != 0L) {
-      f1 = (float)localSPReportEvent.seekStartTime * 1.0F / (float)l;
+      f1 = (float)((SPReportEvent)localObject).seekStartTime * 1.0F / (float)l;
     }
-    localSPReportEvent.seekStartPercent = f1;
+    ((SPReportEvent)localObject).seekStartPercent = f1;
     checkAndWarning();
+  }
+  
+  private void initComplexData()
+  {
+    this.mEvent.hardwareLevel = HardwareUtil.judgeDeviceLevel(SuperPlayerSDKMgr.getContext());
+    this.mEvent.deviceInfoJson = HardwareUtil.getDeviceInfoJson();
+    this.mEvent.screenWidth = DisplayUtil.a();
+    this.mEvent.screenHeight = DisplayUtil.b();
+    this.mEvent.hdrSupport = HDRUtil.a();
   }
   
   private void parseConfigMapToJson()
@@ -145,11 +177,12 @@ public class SPReportHelper
     paramSuperPlayerMgr = this.mEvent;
     paramSuperPlayerMgr.sceneId = paramInt;
     paramSuperPlayerMgr.sdkVersion = SuperPlayerSDKMgr.getSDKVersion();
-    this.mEvent.hardwareLevel = HardwareUtil.judgeDeviceLevel(SuperPlayerSDKMgr.getContext());
-    this.mEvent.deviceInfoJson = HardwareUtil.getDeviceInfoJson();
-    this.mEvent.screenWidth = DisplayUtil.a();
-    this.mEvent.screenHeight = DisplayUtil.b();
-    this.mEvent.hdrSupport = HDRUtil.a();
+    if ((SuperPlayerSDKMgr.getSdkOption() != null) && (SuperPlayerSDKMgr.getSdkOption().isAsyncInit))
+    {
+      ThreadUtil.runOnThreadPool(new SPReportHelper.1(this));
+      return;
+    }
+    initComplexData();
   }
   
   public void onCodecReuseInfo(TPPlayerMsg.TPMediaCodecInfo paramTPMediaCodecInfo)
@@ -208,8 +241,42 @@ public class SPReportHelper
   
   public void onDownloadProgressUpdate(TPPlayerMsg.TPDownLoadProgressInfo paramTPDownLoadProgressInfo)
   {
-    if (paramTPDownLoadProgressInfo != null) {
-      this.mEvent.fileSize = paramTPDownLoadProgressInfo.totalFileSize;
+    if (paramTPDownLoadProgressInfo != null)
+    {
+      this.mEvent.fileSize = Math.max(paramTPDownLoadProgressInfo.totalFileSize, this.mEvent.fileSize);
+      this.mEvent.totalDownloadedSize = Math.max(paramTPDownLoadProgressInfo.currentDownloadSize, this.mEvent.totalDownloadedSize);
+      try
+      {
+        paramTPDownLoadProgressInfo = new JSONObject(paramTPDownLoadProgressInfo.extraInfo);
+        this.mEvent.httpDownloadSize = Math.max(paramTPDownLoadProgressInfo.optLong("HttpDownloadSize"), this.mEvent.httpDownloadSize);
+        this.mEvent.httpRepeatedSize = Math.max(paramTPDownLoadProgressInfo.optLong("HttpRepeatedSize"), this.mEvent.httpRepeatedSize);
+        this.mEvent.pcdnDownloadSize = Math.max(paramTPDownLoadProgressInfo.optLong("PcdnDownloadSize"), this.mEvent.pcdnDownloadSize);
+        this.mEvent.pcdnRepeatedSize = Math.max(paramTPDownLoadProgressInfo.optLong("PcdnRepeatedSize"), this.mEvent.pcdnRepeatedSize);
+        this.mEvent.p2pDownloadSize = Math.max(paramTPDownLoadProgressInfo.optLong("P2PDownloadSize"), this.mEvent.p2pDownloadSize);
+        this.mEvent.p2pRepeatedSize = Math.max(paramTPDownLoadProgressInfo.optLong("P2PRepeatedSize"), this.mEvent.p2pRepeatedSize);
+        this.mEvent.pcdnRequestSize = Math.max(paramTPDownLoadProgressInfo.optLong("pcdnRequestSize"), this.mEvent.pcdnRequestSize);
+        this.mEvent.pcdnRequestCount = Math.max(paramTPDownLoadProgressInfo.optInt("pcdnRequestCount"), this.mEvent.pcdnRequestCount);
+        this.mEvent.pcdnDownloadFailCount = Math.max(paramTPDownLoadProgressInfo.optInt("pcdnDownloadFailCount"), this.mEvent.pcdnDownloadFailCount);
+        this.mEvent.pcdnDownloadSuccessCount = Math.max(paramTPDownLoadProgressInfo.optInt("pcdnDownloadSuccessCount"), this.mEvent.pcdnDownloadSuccessCount);
+        int i = paramTPDownLoadProgressInfo.optInt("lastHttpSpeed");
+        if (i > 0) {
+          this.mHttpSpeed.add(Integer.valueOf(i));
+        }
+        i = paramTPDownLoadProgressInfo.optInt("lastPcdnSpeed");
+        if (i > 0) {
+          this.mPcdnSpeed.add(Integer.valueOf(i));
+        }
+        i = paramTPDownLoadProgressInfo.optInt("lastP2PSpeed");
+        if (i > 0)
+        {
+          this.mP2pSpeed.add(Integer.valueOf(i));
+          return;
+        }
+      }
+      catch (JSONException paramTPDownLoadProgressInfo)
+      {
+        paramTPDownLoadProgressInfo.printStackTrace();
+      }
     }
   }
   
@@ -255,6 +322,43 @@ public class SPReportHelper
     paramSuperPlayerVideoInfo.playDuration = 0L;
     this.mLastPlayPosition = paramLong;
     this.mStartPrepareTime = SystemClock.uptimeMillis();
+  }
+  
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        int j = paramString.optInt("failLength");
+        if (j > 0)
+        {
+          i = paramString.optInt("stopReason");
+          this.mPcdnStopReason.add(Integer.valueOf(i));
+          if (paramString.optInt("isError") != 1) {
+            break label107;
+          }
+          i = 1;
+          if (i != 0)
+          {
+            paramString = this.mEvent;
+            paramString.pcdnErrorCount += 1;
+            paramString = this.mEvent;
+            paramString.pcdnErrorSize += j;
+            return;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return;
+      label107:
+      int i = 0;
+    }
   }
   
   public void onPrePlayViewShow()
@@ -484,6 +588,10 @@ public class SPReportHelper
       this.mIsPrePlay = false;
       this.mPrepared = false;
       this.mPrePlayViewShowCalled = false;
+      this.mHttpSpeed.clear();
+      this.mPcdnSpeed.clear();
+      this.mP2pSpeed.clear();
+      this.mPcdnStopReason.clear();
       int i = this.mEvent.sceneId;
       init(this.mPlayer, i);
       return;
@@ -493,7 +601,7 @@ public class SPReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.report.SPReportHelper
  * JD-Core Version:    0.7.0.1
  */

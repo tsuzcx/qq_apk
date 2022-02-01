@@ -11,17 +11,17 @@ class TextPreviewTranslateActivity$5
   
   public void a(int paramInt, TranslateLanguageOptionsView.OptionItem paramOptionItem)
   {
-    if ((paramOptionItem != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramOptionItem.b)))
+    if ((paramOptionItem != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.d(this.a))) && (!TextPreviewTranslateActivity.d(this.a).equals(paramOptionItem.b)))
     {
-      TextPreviewTranslateActivity.b(this.a, paramOptionItem.b);
+      TextPreviewTranslateActivity.c(this.a, paramOptionItem.b);
       paramOptionItem = this.a;
-      TextPreviewTranslateActivity.a(paramOptionItem, TextPreviewTranslateActivity.b(paramOptionItem, TextPreviewTranslateActivity.c(paramOptionItem)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(paramOptionItem, TextPreviewTranslateActivity.d(paramOptionItem, TextPreviewTranslateActivity.e(paramOptionItem)), TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.d(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewTranslateActivity.5
  * JD-Core Version:    0.7.0.1
  */

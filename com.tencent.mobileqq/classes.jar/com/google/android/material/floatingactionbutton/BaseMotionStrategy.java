@@ -17,104 +17,110 @@ import java.util.List;
 abstract class BaseMotionStrategy
   implements MotionStrategy
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  @Nullable
-  private MotionSpec jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
-  private final AnimatorTracker jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker;
+  private final Context a;
   @NonNull
-  private final ExtendedFloatingActionButton jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton;
-  private final ArrayList<Animator.AnimatorListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final ExtendedFloatingActionButton b;
+  private final ArrayList<Animator.AnimatorListener> c = new ArrayList();
+  private final AnimatorTracker d;
   @Nullable
-  private MotionSpec b;
+  private MotionSpec e;
+  @Nullable
+  private MotionSpec f;
   
   BaseMotionStrategy(@NonNull ExtendedFloatingActionButton paramExtendedFloatingActionButton, AnimatorTracker paramAnimatorTracker)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton = paramExtendedFloatingActionButton;
-    this.jdField_a_of_type_AndroidContentContext = paramExtendedFloatingActionButton.getContext();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker = paramAnimatorTracker;
+    this.b = paramExtendedFloatingActionButton;
+    this.a = paramExtendedFloatingActionButton.getContext();
+    this.d = paramAnimatorTracker;
   }
   
-  public AnimatorSet a()
+  public final MotionSpec a()
   {
-    return a(a());
+    MotionSpec localMotionSpec = this.f;
+    if (localMotionSpec != null) {
+      return localMotionSpec;
+    }
+    if (this.e == null) {
+      this.e = MotionSpec.a(this.a, h());
+    }
+    return (MotionSpec)Preconditions.checkNotNull(this.e);
+  }
+  
+  @CallSuper
+  public void a(Animator paramAnimator)
+  {
+    this.d.a(paramAnimator);
+  }
+  
+  public final void a(@Nullable MotionSpec paramMotionSpec)
+  {
+    this.f = paramMotionSpec;
   }
   
   @NonNull
-  AnimatorSet a(@NonNull MotionSpec paramMotionSpec)
+  AnimatorSet b(@NonNull MotionSpec paramMotionSpec)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramMotionSpec.b("opacity")) {
-      localArrayList.add(paramMotionSpec.a("opacity", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, View.ALPHA));
+    if (paramMotionSpec.c("opacity")) {
+      localArrayList.add(paramMotionSpec.a("opacity", this.b, View.ALPHA));
     }
-    if (paramMotionSpec.b("scale"))
+    if (paramMotionSpec.c("scale"))
     {
-      localArrayList.add(paramMotionSpec.a("scale", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, View.SCALE_Y));
-      localArrayList.add(paramMotionSpec.a("scale", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, View.SCALE_X));
+      localArrayList.add(paramMotionSpec.a("scale", this.b, View.SCALE_Y));
+      localArrayList.add(paramMotionSpec.a("scale", this.b, View.SCALE_X));
     }
-    if (paramMotionSpec.b("width")) {
-      localArrayList.add(paramMotionSpec.a("width", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, ExtendedFloatingActionButton.a));
+    if (paramMotionSpec.c("width")) {
+      localArrayList.add(paramMotionSpec.a("width", this.b, ExtendedFloatingActionButton.b));
     }
-    if (paramMotionSpec.b("height")) {
-      localArrayList.add(paramMotionSpec.a("height", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, ExtendedFloatingActionButton.b));
+    if (paramMotionSpec.c("height")) {
+      localArrayList.add(paramMotionSpec.a("height", this.b, ExtendedFloatingActionButton.c));
     }
-    if (paramMotionSpec.b("paddingStart")) {
-      localArrayList.add(paramMotionSpec.a("paddingStart", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, ExtendedFloatingActionButton.c));
+    if (paramMotionSpec.c("paddingStart")) {
+      localArrayList.add(paramMotionSpec.a("paddingStart", this.b, ExtendedFloatingActionButton.d));
     }
-    if (paramMotionSpec.b("paddingEnd")) {
-      localArrayList.add(paramMotionSpec.a("paddingEnd", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, ExtendedFloatingActionButton.d));
+    if (paramMotionSpec.c("paddingEnd")) {
+      localArrayList.add(paramMotionSpec.a("paddingEnd", this.b, ExtendedFloatingActionButton.e));
     }
-    if (paramMotionSpec.b("labelOpacity")) {
-      localArrayList.add(paramMotionSpec.a("labelOpacity", this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, new BaseMotionStrategy.1(this, Float.class, "LABEL_OPACITY_PROPERTY")));
+    if (paramMotionSpec.c("labelOpacity")) {
+      localArrayList.add(paramMotionSpec.a("labelOpacity", this.b, new BaseMotionStrategy.1(this, Float.class, "LABEL_OPACITY_PROPERTY")));
     }
     paramMotionSpec = new AnimatorSet();
     AnimatorSetCompat.a(paramMotionSpec, localArrayList);
     return paramMotionSpec;
   }
   
-  public final MotionSpec a()
-  {
-    MotionSpec localMotionSpec = this.b;
-    if (localMotionSpec != null) {
-      return localMotionSpec;
-    }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = MotionSpec.a(this.jdField_a_of_type_AndroidContentContext, a());
-    }
-    return (MotionSpec)Preconditions.checkNotNull(this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec);
-  }
-  
   @NonNull
-  public final List<Animator.AnimatorListener> a()
+  public final List<Animator.AnimatorListener> b()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.c;
+  }
+  
+  @Nullable
+  public MotionSpec c()
+  {
+    return this.f;
   }
   
   @CallSuper
-  public void a()
+  public void d()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker.b();
+    this.d.b();
   }
   
   @CallSuper
-  public void a(Animator paramAnimator)
+  public void e()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker.a(paramAnimator);
+    this.d.b();
   }
   
-  public final void a(@Nullable MotionSpec paramMotionSpec)
+  public AnimatorSet f()
   {
-    this.b = paramMotionSpec;
-  }
-  
-  @CallSuper
-  public void b()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonAnimatorTracker.b();
+    return b(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.BaseMotionStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,76 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.nowsummarycard.NowSummaryCard.NearbyUserFollowRsp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
 class NearbyChatPie$10
-  extends NearbyRelevantObserver
+  extends ProtoUtils.TroopProtocolObserver
 {
   NearbyChatPie$10(NearbyChatPie paramNearbyChatPie) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel())
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      String str = this.a.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onAutoInput, [");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramObject);
-      localStringBuilder.append(",");
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append("]");
-      QLog.i(str, 4, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("errorCode = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], bundle = [");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("NearbyChatPie", 2, ((StringBuilder)localObject).toString());
     }
-    if (!"tag_nearby_chat".equals(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if (this.a.a != null)
+    if (paramInt == 0)
     {
-      this.a.Y();
-      this.a.a.setText(paramString2);
-      this.a.a.selectAll();
-      this.a.d = paramString2;
+      paramBundle = new NowSummaryCard.NearbyUserFollowRsp();
+      boolean bool = true;
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        localObject = this.a.c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pb parse error: ");
+        localStringBuilder.append(paramArrayOfByte);
+        QLog.e((String)localObject, 1, localStringBuilder.toString());
+      }
+      paramInt = paramBundle.ret_code.get();
+      paramArrayOfByte = paramBundle.err_msg.get().toStringUtf8();
+      int i = paramBundle.status.get();
+      paramBundle = new StringBuilder();
+      paramBundle.append("ret_code: ");
+      paramBundle.append(paramInt);
+      paramBundle.append(", err_msg: ");
+      paramBundle.append(paramArrayOfByte);
+      paramBundle.append(", status: ");
+      paramBundle.append(i);
+      QLog.i("NearbyChatPie", 1, paramBundle.toString());
+      if (paramInt == 0)
+      {
+        paramArrayOfByte = this.a;
+        if (i == 0) {
+          bool = false;
+        }
+        paramArrayOfByte.bu = bool;
+      }
     }
+    this.a.bz().post(new NearbyChatPie.10.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.10
  * JD-Core Version:    0.7.0.1
  */

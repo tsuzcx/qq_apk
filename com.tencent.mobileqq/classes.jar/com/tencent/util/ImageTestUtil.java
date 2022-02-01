@@ -6,15 +6,15 @@ import java.io.IOException;
 
 public class ImageTestUtil
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
+  private static String[] a = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
+  private static boolean b = false;
   
   public static void a(String paramString)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (b) {
       return;
     }
-    Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+    Object localObject = a;
     int j = localObject.length;
     int i = 0;
     while (i < j)
@@ -33,7 +33,7 @@ public class ImageTestUtil
         localStringBuilder.append(paramString);
         localStringBuilder.append(System.currentTimeMillis());
         Debug.dumpHprofData(localStringBuilder.toString());
-        jdField_a_of_type_Boolean = true;
+        b = true;
         return;
       }
       catch (IOException paramString) {}
@@ -44,7 +44,7 @@ public class ImageTestUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.ImageTestUtil
  * JD-Core Version:    0.7.0.1
  */

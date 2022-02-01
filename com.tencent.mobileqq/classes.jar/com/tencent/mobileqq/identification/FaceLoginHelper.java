@@ -18,11 +18,11 @@ public class FaceLoginHelper
     if (paramInt != 0)
     {
       if (paramInt != 15) {
-        return HardCodeUtil.a(2131714315);
+        return HardCodeUtil.a(2131911829);
       }
-      return HardCodeUtil.a(2131692147);
+      return HardCodeUtil.a(2131889130);
     }
-    return HardCodeUtil.a(2131714315);
+    return HardCodeUtil.a(2131911829);
   }
   
   public static void a(Context paramContext, FaceConf paramFaceConf, FaceLoginHelper.IConfInterface paramIConfInterface)
@@ -92,7 +92,7 @@ public class FaceLoginHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceLoginHelper
  * JD-Core Version:    0.7.0.1
  */

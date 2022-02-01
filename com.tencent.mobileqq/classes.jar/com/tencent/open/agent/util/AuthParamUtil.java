@@ -6,19 +6,6 @@ import android.os.Bundle;
 
 public class AuthParamUtil
 {
-  public static Bundle a(Activity paramActivity, String paramString)
-  {
-    if (paramActivity == null)
-    {
-      paramActivity = new StringBuilder();
-      paramActivity.append("getBundleExtra activity is null, key=");
-      paramActivity.append(paramString);
-      SSOLog.b("AuthParamUtil", paramActivity.toString());
-      return null;
-    }
-    return a(paramActivity.getIntent(), paramString);
-  }
-  
   public static Bundle a(Intent paramIntent, String paramString)
   {
     return a(paramIntent, paramString, null);
@@ -52,7 +39,7 @@ public class AuthParamUtil
   
   public static String a(Activity paramActivity)
   {
-    return a(a(paramActivity, "key_params"), "packagename");
+    return a(b(paramActivity, "key_params"), "packagename");
   }
   
   public static String a(Activity paramActivity, String paramString)
@@ -65,34 +52,7 @@ public class AuthParamUtil
       SSOLog.b("AuthParamUtil", paramActivity.toString());
       return null;
     }
-    return a(paramActivity.getIntent(), paramString);
-  }
-  
-  public static String a(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null)
-    {
-      paramIntent = new StringBuilder();
-      paramIntent.append("getStringExtra intent is null, key=");
-      paramIntent.append(paramString);
-      SSOLog.b("AuthParamUtil", new Object[] { paramIntent.toString() });
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getStringExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      SSOLog.c("AuthParamUtil", "Exception", paramIntent);
-    }
-    return null;
-  }
-  
-  public static String a(Bundle paramBundle)
-  {
-    return a(paramBundle, "packagename");
+    return b(paramActivity.getIntent(), paramString);
   }
   
   public static String a(Bundle paramBundle, String paramString)
@@ -171,10 +131,50 @@ public class AuthParamUtil
     }
     return paramBundle.getBoolean(paramString, paramBoolean);
   }
+  
+  public static Bundle b(Activity paramActivity, String paramString)
+  {
+    if (paramActivity == null)
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("getBundleExtra activity is null, key=");
+      paramActivity.append(paramString);
+      SSOLog.b("AuthParamUtil", paramActivity.toString());
+      return null;
+    }
+    return a(paramActivity.getIntent(), paramString);
+  }
+  
+  public static String b(Intent paramIntent, String paramString)
+  {
+    if (paramIntent == null)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("getStringExtra intent is null, key=");
+      paramIntent.append(paramString);
+      SSOLog.b("AuthParamUtil", new Object[] { paramIntent.toString() });
+      return null;
+    }
+    try
+    {
+      paramIntent = paramIntent.getStringExtra(paramString);
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      SSOLog.c("AuthParamUtil", "Exception", paramIntent);
+    }
+    return null;
+  }
+  
+  public static String b(Bundle paramBundle)
+  {
+    return a(paramBundle, "packagename");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthParamUtil
  * JD-Core Version:    0.7.0.1
  */

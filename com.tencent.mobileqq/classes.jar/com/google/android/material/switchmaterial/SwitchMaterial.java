@@ -21,15 +21,15 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class SwitchMaterial
   extends SwitchCompat
 {
-  private static final int jdField_a_of_type_Int = R.style.A;
-  private static final int[][] jdField_a_of_type_Array2dOfInt = { { 16842910, 16842912 }, { 16842910, -16842912 }, { -16842910, 16842912 }, { -16842910, -16842912 } };
-  @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private static final int a = R.style.C;
+  private static final int[][] b = { { 16842910, 16842912 }, { 16842910, -16842912 }, { -16842910, 16842912 }, { -16842910, -16842912 } };
   @NonNull
-  private final ElevationOverlayProvider jdField_a_of_type_ComGoogleAndroidMaterialElevationElevationOverlayProvider;
-  private boolean jdField_a_of_type_Boolean;
+  private final ElevationOverlayProvider c;
   @Nullable
-  private ColorStateList b;
+  private ColorStateList d;
+  @Nullable
+  private ColorStateList e;
+  private boolean f;
   
   public SwitchMaterial(@NonNull Context paramContext)
   {
@@ -38,76 +38,76 @@ public class SwitchMaterial
   
   public SwitchMaterial(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.switchStyle);
+    this(paramContext, paramAttributeSet, R.attr.Y);
   }
   
   public SwitchMaterial(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialElevationElevationOverlayProvider = new ElevationOverlayProvider(paramContext);
-    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.aw, paramInt, jdField_a_of_type_Int, new int[0]);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.eP, false);
+    this.c = new ElevationOverlayProvider(paramContext);
+    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.he, paramInt, a, new int[0]);
+    this.f = paramContext.getBoolean(R.styleable.hf, false);
     paramContext.recycle();
   }
   
-  private ColorStateList a()
+  private ColorStateList getMaterialThemeColorsThumbTintList()
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null)
+    if (this.d == null)
     {
-      int i = MaterialColors.a(this, R.attr.n);
-      int j = MaterialColors.a(this, R.attr.colorControlActivated);
+      int i = MaterialColors.a(this, R.attr.t);
+      int j = MaterialColors.a(this, R.attr.n);
       float f2 = getResources().getDimension(R.dimen.aq);
       float f1 = f2;
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialElevationElevationOverlayProvider.a()) {
-        f1 = f2 + ViewUtils.a(this);
+      if (this.c.a()) {
+        f1 = f2 + ViewUtils.d(this);
       }
-      int k = this.jdField_a_of_type_ComGoogleAndroidMaterialElevationElevationOverlayProvider.a(i, f1);
-      int[] arrayOfInt = new int[jdField_a_of_type_Array2dOfInt.length];
+      int k = this.c.a(i, f1);
+      int[] arrayOfInt = new int[b.length];
       arrayOfInt[0] = MaterialColors.a(i, j, 1.0F);
       arrayOfInt[1] = k;
       arrayOfInt[2] = MaterialColors.a(i, j, 0.38F);
       arrayOfInt[3] = k;
-      this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(jdField_a_of_type_Array2dOfInt, arrayOfInt);
+      this.d = new ColorStateList(b, arrayOfInt);
     }
-    return this.jdField_a_of_type_AndroidContentResColorStateList;
+    return this.d;
   }
   
-  private ColorStateList b()
+  private ColorStateList getMaterialThemeColorsTrackTintList()
   {
-    if (this.b == null)
+    if (this.e == null)
     {
-      int[] arrayOfInt = new int[jdField_a_of_type_Array2dOfInt.length];
-      int i = MaterialColors.a(this, R.attr.n);
-      int j = MaterialColors.a(this, R.attr.colorControlActivated);
-      int k = MaterialColors.a(this, R.attr.l);
+      int[] arrayOfInt = new int[b.length];
+      int i = MaterialColors.a(this, R.attr.t);
+      int j = MaterialColors.a(this, R.attr.n);
+      int k = MaterialColors.a(this, R.attr.q);
       arrayOfInt[0] = MaterialColors.a(i, j, 0.54F);
       arrayOfInt[1] = MaterialColors.a(i, k, 0.32F);
       arrayOfInt[2] = MaterialColors.a(i, j, 0.12F);
       arrayOfInt[3] = MaterialColors.a(i, k, 0.12F);
-      this.b = new ColorStateList(jdField_a_of_type_Array2dOfInt, arrayOfInt);
+      this.e = new ColorStateList(b, arrayOfInt);
     }
-    return this.b;
+    return this.e;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_Boolean) && (getThumbTintList() == null)) {
-      setThumbTintList(a());
+    if ((this.f) && (getThumbTintList() == null)) {
+      setThumbTintList(getMaterialThemeColorsThumbTintList());
     }
-    if ((this.jdField_a_of_type_Boolean) && (getTrackTintList() == null)) {
-      setTrackTintList(b());
+    if ((this.f) && (getTrackTintList() == null)) {
+      setTrackTintList(getMaterialThemeColorsTrackTintList());
     }
   }
   
   public void setUseMaterialThemeColors(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     if (paramBoolean)
     {
-      setThumbTintList(a());
-      setTrackTintList(b());
+      setThumbTintList(getMaterialThemeColorsThumbTintList());
+      setTrackTintList(getMaterialThemeColorsTrackTintList());
       return;
     }
     setThumbTintList(null);
@@ -116,7 +116,7 @@ public class SwitchMaterial
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.switchmaterial.SwitchMaterial
  * JD-Core Version:    0.7.0.1
  */

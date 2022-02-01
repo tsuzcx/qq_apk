@@ -12,14 +12,14 @@ class PoiMapActivity$16
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    paramAnimation.bottomMargin = (this.a.p + this.a.q);
-    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
-      this.a.e.setVisibility(8);
+    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.q(this.a).getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.O + this.a.P);
+    PoiMapActivity.q(this.a).setLayoutParams(paramAnimation);
+    if ((this.a.M != null) && (this.a.M.getVisibility() != 8)) {
+      this.a.M.setVisibility(8);
     }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = true;
+    PoiMapActivity.r(this.a).clearAnimation();
+    this.a.s = true;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

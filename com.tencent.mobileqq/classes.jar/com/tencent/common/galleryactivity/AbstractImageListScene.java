@@ -31,118 +31,118 @@ public abstract class AbstractImageListScene
   extends ImageScene
   implements AnimationLister
 {
-  int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Dialog a;
-  protected View a;
-  protected ImageView a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected AbstractAnimationManager a;
-  public AbstractImageAdapter a;
   protected AbstractImageListModel a;
-  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new AbstractImageListScene.6(this);
-  protected QQCustomDialog a;
-  protected GestureSelectGridView a;
-  protected boolean a;
-  private int b;
-  protected ImageView b;
-  protected TextView b;
-  protected boolean b;
-  private int c;
-  protected ImageView c;
-  protected TextView c;
-  private int d;
+  protected Activity b;
+  int c;
   protected TextView d;
+  protected TextView e;
+  protected TextView f;
+  protected ImageView g;
+  protected ImageView h;
+  protected ImageView i;
+  protected View j;
+  protected GestureSelectGridView k;
+  protected Dialog l;
+  protected QQCustomDialog m;
+  protected RelativeLayout n;
+  protected boolean o;
+  protected TextView p;
+  public AbstractImageAdapter q;
+  protected AbstractAnimationManager r;
+  protected boolean s;
+  AnimationLister t = new AbstractImageListScene.6(this);
+  private int u;
+  private int v;
+  private int w;
   
   public AbstractImageListScene(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
+    this.b = paramActivity;
+    this.a = paramAbstractImageListModel;
   }
   
   private void c(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560942, null));
+    this.n = ((RelativeLayout)LayoutInflater.from(this.b).inflate(2131627283, null));
     if (paramViewGroup == null) {
-      this.jdField_a_of_type_AndroidAppActivity.addContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
+      this.b.addContentView(this.n, new ViewGroup.LayoutParams(-1, -1));
     } else {
-      paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0);
+      paramViewGroup.addView(this.n, 0);
     }
-    b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131378784));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363523));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131377140));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367183));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131376884));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381103));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362539);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364493));
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362432));
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setHorizontalSpacing(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setVerticalSpacing(this.jdField_c_of_type_Int);
-    paramViewGroup = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView;
-    paramViewGroup.setPadding(this.jdField_d_of_type_Int, paramViewGroup.getPaddingTop(), this.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getPaddingBottom());
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnItemClickListener(a());
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(a());
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter = a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719242);
-    q();
-    r();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-  }
-  
-  private void p()
-  {
-    ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297488);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297489);
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131297490);
-    this.jdField_a_of_type_Int = ((ViewUtils.a() - this.jdField_d_of_type_Int * 2 - this.jdField_b_of_type_Int * 3) / 4);
-  }
-  
-  private void q()
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager != null) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.jdField_b_of_type_Boolean))
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText("");
-        ((ViewGroup.MarginLayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams()).setMargins(AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, 0, 0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new AbstractImageListScene.1(this));
-      }
-      else
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131689834);
-        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new AbstractImageListScene.2(this));
-      }
-    }
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (localTextView != null)
-    {
-      localTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131689937);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(a());
-    }
+    b(this.n);
+    this.d = ((TextView)this.b.findViewById(2131447463));
+    this.e = ((TextView)this.b.findViewById(2131429427));
+    this.f = ((TextView)this.b.findViewById(2131445515));
+    this.g = ((ImageView)this.b.findViewById(2131433639));
+    this.h = ((ImageView)this.b.findViewById(2131445230));
+    this.i = ((ImageView)this.b.findViewById(2131450118));
+    this.j = this.b.findViewById(2131428150);
+    this.p = ((TextView)this.b.findViewById(2131430550));
+    this.k = ((GestureSelectGridView)this.b.findViewById(2131428041));
+    this.k.setScrollBarStyle(0);
+    this.k.setNumColumns(4);
+    this.k.setColumnWidth(this.c);
+    this.k.setHorizontalSpacing(this.u);
+    this.k.setVerticalSpacing(this.v);
+    paramViewGroup = this.k;
+    paramViewGroup.setPadding(this.w, paramViewGroup.getPaddingTop(), this.w, this.k.getPaddingBottom());
+    this.k.setOnItemClickListener(o());
+    this.k.setOnIndexChangedListener(p());
+    this.q = a(this.b, this.c);
+    this.k.setAdapter(this.q);
+    this.d.setText(2131916794);
+    s();
+    v();
+    this.n.setVisibility(4);
   }
   
   private void r()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    } else {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((WindowManager)this.b.getSystemService("window")).getDefaultDisplay();
+    this.w = this.b.getResources().getDimensionPixelSize(2131298139);
+    this.u = this.b.getResources().getDimensionPixelSize(2131298140);
+    this.v = this.b.getResources().getDimensionPixelSize(2131298141);
+    this.c = ((ViewUtils.getScreenWidth() - this.w * 2 - this.u * 3) / 4);
+  }
+  
+  private void s()
+  {
+    if (this.e != null) {
+      if ((this.C != null) && (this.C.g))
+      {
+        this.p.setVisibility(0);
+        this.p.setText("");
+        ((ViewGroup.MarginLayoutParams)this.p.getLayoutParams()).setMargins(AIOUtils.b(16.0F, this.b.getResources()), 0, 0, 0);
+        this.e.setVisibility(8);
+        this.p.setOnClickListener(new AbstractImageListScene.1(this));
+      }
+      else
+      {
+        this.e.setVisibility(0);
+        this.p.setVisibility(8);
+        this.e.setText(2131886475);
+        this.e.setOnClickListener(new AbstractImageListScene.2(this));
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AbstractImageListScene.3(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new AbstractImageListScene.4(this));
-    ImageView localImageView = this.jdField_c_of_type_AndroidWidgetImageView;
+    TextView localTextView = this.f;
+    if (localTextView != null)
+    {
+      localTextView.setVisibility(0);
+      this.f.setText(2131886578);
+      this.f.setOnClickListener(q());
+    }
+  }
+  
+  private void v()
+  {
+    if (this.s) {
+      this.j.setVisibility(0);
+    } else {
+      this.j.setVisibility(8);
+    }
+    this.g.setOnClickListener(new AbstractImageListScene.3(this));
+    this.h.setOnClickListener(new AbstractImageListScene.4(this));
+    ImageView localImageView = this.i;
     if (localImageView != null) {
       localImageView.setOnClickListener(new AbstractImageListScene.5(this));
     }
@@ -150,50 +150,32 @@ public abstract class AbstractImageListScene
   
   public Rect a()
   {
-    int i = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
-    int j = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.b();
-    View localView = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getChildAt(j - i);
+    int i1 = this.k.getFirstVisiblePosition();
+    int i2 = this.a.b();
+    View localView = this.k.getChildAt(i2 - i1);
     if (localView != null) {
       return AnimationUtils.a(localView);
     }
     return null;
   }
   
-  protected abstract View.OnClickListener a();
-  
   protected abstract AbstractImageAdapter a(Activity paramActivity, int paramInt);
-  
-  protected abstract AdapterView.OnItemClickListener a();
-  
-  protected abstract GestureSelectGridView.OnSelectListener a();
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().a(this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister);
-  }
   
   public void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager = this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a();
-    p();
+    this.r = this.C.a();
+    r();
     c(paramViewGroup);
   }
   
-  public void d() {}
-  
-  public boolean e()
+  public void b()
   {
-    d();
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(2130772083, 2130772075);
-    } else {
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(2130771991, 2130771992);
-    }
-    return true;
+    this.C.a().a(this.t);
   }
   
-  public void f() {}
+  public void e() {}
+  
+  protected abstract void f();
   
   public void g() {}
   
@@ -201,50 +183,58 @@ public abstract class AbstractImageListScene
   
   public void i() {}
   
-  public void j()
+  public void j() {}
+  
+  public void k()
   {
-    super.j();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter = null;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = null;
+    super.k();
+    this.s = false;
+    this.q = null;
+    this.a = null;
   }
   
-  protected abstract void k();
+  protected abstract void m();
   
-  protected abstract void l();
+  protected abstract void n();
   
-  public void m()
+  protected abstract AdapterView.OnItemClickListener o();
+  
+  protected abstract GestureSelectGridView.OnSelectListener p();
+  
+  protected abstract View.OnClickListener q();
+  
+  public void t()
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof AIOGalleryActivity))
+    if ((this.b instanceof AIOGalleryActivity))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImmerseTest", 2, "imagelist setColor blue");
       }
-      int i;
+      int i1;
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        localObject = this.n;
         if (localObject != null)
         {
           localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
-          i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
+          i1 = ImmersiveUtils.getStatusBarHeight(this.b);
           if (localObject != null) {
-            ((RelativeLayout.LayoutParams)localObject).setMargins(0, i, 0, 0);
+            ((RelativeLayout.LayoutParams)localObject).setMargins(0, i1, 0, 0);
           }
-          if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager != null) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.jdField_a_of_type_AndroidViewViewGroup != null) && (Build.VERSION.SDK_INT >= 16)) {
-            this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(0);
+          if ((this.C != null) && (this.C.h != null) && (Build.VERSION.SDK_INT >= 16)) {
+            this.C.h.setSystemUiVisibility(0);
           }
         }
       }
-      if (((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a != null)
+      if (((AIOGalleryActivity)this.b).A != null)
       {
-        i = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167114);
-        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusColor(i);
-        ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusBarColor(i);
+        i1 = this.b.getResources().getColor(2131168092);
+        ((AIOGalleryActivity)this.b).A.setStatusColor(i1);
+        ((AIOGalleryActivity)this.b).A.setStatusBarColor(i1);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719242);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    this.d.setText(2131916794);
+    Object localObject = this.n;
     if (localObject != null) {
       ((RelativeLayout)localObject).setVisibility(0);
     }
@@ -253,20 +243,30 @@ public abstract class AbstractImageListScene
     }
   }
   
-  public void n()
+  public void u()
   {
-    super.n();
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
+    super.u();
+    this.B.setVisibility(4);
     if (QLog.isColorLevel()) {
       QLog.d("GalleryComponent", 2, "imagelist onStop");
     }
   }
   
-  protected abstract void o();
+  public boolean x()
+  {
+    e();
+    this.b.finish();
+    if (this.o) {
+      this.b.overridePendingTransition(2130772113, 2130772105);
+    } else {
+      this.b.overridePendingTransition(2130771994, 2130771995);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractImageListScene
  * JD-Core Version:    0.7.0.1
  */

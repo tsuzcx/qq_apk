@@ -5,15 +5,11 @@ import android.os.Bundle;
 
 public abstract interface FavoriteActionSheet$Actions
 {
-  public abstract int a();
-  
-  public abstract Intent a();
-  
   public abstract void a();
   
   public abstract void a(Bundle paramBundle);
   
-  public abstract void b();
+  public abstract Intent b();
   
   public abstract void c();
   
@@ -21,7 +17,7 @@ public abstract interface FavoriteActionSheet$Actions
   
   public abstract void e();
   
-  public abstract void f();
+  public abstract int f();
   
   public abstract void g();
   
@@ -38,10 +34,14 @@ public abstract interface FavoriteActionSheet$Actions
   public abstract void m();
   
   public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.FavoriteActionSheet.Actions
  * JD-Core Version:    0.7.0.1
  */

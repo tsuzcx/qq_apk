@@ -11,21 +11,6 @@ import mqq.app.AppRuntime;
 final class ConversationFacade$2
   implements ConversationFacade.Callback
 {
-  public int a(AppRuntime paramAppRuntime)
-  {
-    return 0;
-  }
-  
-  public int a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
-  {
-    return 0L;
-  }
-  
   public long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     return 0L;
@@ -36,22 +21,7 @@ final class ConversationFacade$2
     return null;
   }
   
-  public ConversationFacade a(AppRuntime paramAppRuntime)
-  {
-    return null;
-  }
-  
-  public ConversationProxy a(AppRuntime paramAppRuntime)
-  {
-    return null;
-  }
-  
   public Message a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
-  {
-    return null;
-  }
-  
-  public RecentUserProxy a(AppRuntime paramAppRuntime)
   {
     return null;
   }
@@ -59,11 +29,6 @@ final class ConversationFacade$2
   public ConversationInfo a(ConversationInfo paramConversationInfo)
   {
     return paramConversationInfo;
-  }
-  
-  public BaseApplication a(AppRuntime paramAppRuntime)
-  {
-    return null;
   }
   
   public String a()
@@ -82,15 +47,11 @@ final class ConversationFacade$2
   
   public void a(AppRuntime paramAppRuntime) {}
   
-  public void a(AppRuntime paramAppRuntime, int paramInt) {}
-  
   public void a(AppRuntime paramAppRuntime, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList) {}
   
   public void a(AppRuntime paramAppRuntime, ConversationFacade paramConversationFacade, String paramString, int paramInt) {}
   
   public void a(AppRuntime paramAppRuntime, ConversationInfo paramConversationInfo, int paramInt) {}
-  
-  public void a(AppRuntime paramAppRuntime, String paramString) {}
   
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean, Object paramObject) {}
   
@@ -121,21 +82,38 @@ final class ConversationFacade$2
     return false;
   }
   
+  public int b(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public ConversationProxy b(AppRuntime paramAppRuntime)
+  {
+    return null;
+  }
+  
   public String b()
   {
     return null;
   }
   
-  public void b(AppRuntime paramAppRuntime) {}
+  public void b(AppRuntime paramAppRuntime, int paramInt) {}
+  
+  public void b(AppRuntime paramAppRuntime, String paramString) {}
   
   public boolean b(MessageRecord paramMessageRecord)
   {
     return false;
   }
   
-  public boolean b(AppRuntime paramAppRuntime, String paramString)
+  public long c(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2)
   {
-    return false;
+    return 0L;
+  }
+  
+  public RecentUserProxy c(AppRuntime paramAppRuntime)
+  {
+    return null;
   }
   
   public boolean c(MessageRecord paramMessageRecord)
@@ -148,9 +126,24 @@ final class ConversationFacade$2
     return false;
   }
   
+  public ConversationFacade d(AppRuntime paramAppRuntime)
+  {
+    return null;
+  }
+  
   public boolean d(MessageRecord paramMessageRecord)
   {
     return false;
+  }
+  
+  public boolean d(AppRuntime paramAppRuntime, String paramString)
+  {
+    return false;
+  }
+  
+  public int e(AppRuntime paramAppRuntime)
+  {
+    return 0;
   }
   
   public boolean e(MessageRecord paramMessageRecord)
@@ -158,14 +151,21 @@ final class ConversationFacade$2
     return false;
   }
   
+  public BaseApplication f(AppRuntime paramAppRuntime)
+  {
+    return null;
+  }
+  
   public boolean f(MessageRecord paramMessageRecord)
   {
     return false;
   }
+  
+  public void g(AppRuntime paramAppRuntime) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacade.2
  * JD-Core Version:    0.7.0.1
  */

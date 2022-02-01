@@ -17,9 +17,9 @@ class MoreVideoInfoWidget$1
   {
     paramView = (StoryConfigManager)SuperManager.a(10);
     int i = 0;
-    boolean bool = ((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
-    paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+    boolean bool = ((Boolean)paramView.c("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
+    paramView.d("player_show_debug_panel", Boolean.valueOf(bool));
+    paramView = ((StoryPlayerGroupHolder)this.a.d()).h();
     if (paramView != null)
     {
       paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);

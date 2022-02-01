@@ -16,13 +16,13 @@ final class NearbyCardManager$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = new StringBuilder();
-    paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.append(this.a);
     paramDialogInterface.append("&from=");
-    paramDialogInterface.append(this.jdField_a_of_type_Int);
+    paramDialogInterface.append(this.b);
     paramDialogInterface = paramDialogInterface.toString();
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    Object localObject = new Intent(this.c, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    this.c.startActivity((Intent)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -30,7 +30,7 @@ final class NearbyCardManager$2
       ((StringBuilder)localObject).append(paramDialogInterface);
       QLog.d("Q.nearby.tribeAppDownload", 2, ((StringBuilder)localObject).toString());
     }
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.b;
     if (paramInt == 1)
     {
       ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
@@ -43,7 +43,7 @@ final class NearbyCardManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyCardManager.2
  * JD-Core Version:    0.7.0.1
  */

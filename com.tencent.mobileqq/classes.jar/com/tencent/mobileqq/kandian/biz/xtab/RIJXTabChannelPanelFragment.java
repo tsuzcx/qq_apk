@@ -10,10 +10,10 @@ import androidx.annotation.VisibleForTesting;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyStaticGridView;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.RIJStaticChannelGridViewAdapter;
 import com.tencent.mobileqq.kandian.biz.feeds.fragment.RIJBaseChannelPanelFragment;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.kandian.repo.db.struct.ChannelSection;
@@ -31,11 +31,11 @@ import mqq.app.AppRuntime;
 public class RIJXTabChannelPanelFragment
   extends RIJBaseChannelPanelFragment
 {
-  private ReadInJoyStaticGridView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView;
-  private RIJStaticChannelGridViewAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJStaticChannelGridViewAdapter;
-  private ReadInJoyLogicEngine jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine;
-  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private Map<Integer, TabChannelCoverInfo> jdField_a_of_type_JavaUtilMap;
+  private ReadInJoyStaticGridView d;
+  private RIJStaticChannelGridViewAdapter e;
+  private Map<Integer, TabChannelCoverInfo> f;
+  private ReadInJoyLogicEngine g;
+  private List<TabChannelCoverInfo> h;
   
   private boolean a(TabChannelCoverInfo paramTabChannelCoverInfo, List<TabChannelCoverInfo> paramList)
   {
@@ -50,41 +50,41 @@ public class RIJXTabChannelPanelFragment
     return false;
   }
   
-  private void b()
+  private void f()
   {
-    this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine.a());
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.h = a(this.g.H());
+    this.f = new HashMap();
   }
   
-  private void c()
+  private void g()
   {
     ThreadManager.executeOnSubThread(new RIJXTabChannelPanelFragment.1(this));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
-  private void d()
+  private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView = ((ReadInJoyStaticGridView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131376219));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJStaticChannelGridViewAdapter = new RIJStaticChannelGridViewAdapter(getBaseActivity(), 4, this.jdField_a_of_type_Int, new RIJXTabChannelPanelFragment.RecommendChannelAdapterCallback(this, null));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJStaticChannelGridViewAdapter.c(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView.setExpendable(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJStaticChannelGridViewAdapter);
+    this.c.setVisibility(8);
+    this.d = ((ReadInJoyStaticGridView)this.b.findViewById(2131444427));
+    this.e = new RIJStaticChannelGridViewAdapter(getBaseActivity(), 4, this.a, new RIJXTabChannelPanelFragment.RecommendChannelAdapterCallback(this, null));
+    this.e.c(this.h);
+    this.d.setExpendable(true);
+    this.d.setAdapter(this.e);
   }
   
-  private void e()
+  private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine = ((ReadInJoyLogicManager)ReadInJoyUtils.a().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine();
+    this.g = ((ReadInJoyLogicManager)ReadInJoyUtils.b().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine();
   }
   
-  private void f()
+  private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJStaticChannelGridViewAdapter);
+    this.d.setOnItemClickListener(this.e);
   }
   
-  private void g()
+  private void k()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.f;
     if (localObject == null) {
       return;
     }
@@ -95,20 +95,15 @@ public class RIJXTabChannelPanelFragment
       if (RIJChannelHelper.a(localTabChannelCoverInfo) == 1)
       {
         localTabChannelCoverInfo.redPoint.a = false;
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine.a(localTabChannelCoverInfo);
+        this.g.a(localTabChannelCoverInfo);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine.c(false);
+    this.g.c(false);
   }
   
   public int a()
   {
-    return 2131562717;
-  }
-  
-  public String a()
-  {
-    return getString(2131718003);
+    return 2131629150;
   }
   
   @VisibleForTesting
@@ -120,7 +115,7 @@ public class RIJXTabChannelPanelFragment
       int i = 0;
       while (i < paramList.size())
       {
-        ((List)localObject).addAll(this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine.b(i));
+        ((List)localObject).addAll(this.g.d(i));
         i += 1;
       }
     }
@@ -137,32 +132,37 @@ public class RIJXTabChannelPanelFragment
     return localArrayList;
   }
   
+  public String b()
+  {
+    return getString(2131915485);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    e();
-    c();
+    i();
+    g();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    b();
-    d();
     f();
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout;
+    h();
+    j();
+    return this.b;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineReadInJoyLogicEngine = null;
+    k();
+    this.g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabChannelPanelFragment
  * JD-Core Version:    0.7.0.1
  */

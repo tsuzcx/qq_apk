@@ -18,9 +18,9 @@ class CmGameSubRscHandler$3
         QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
       }
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("packName", this.a);
       localJSONObject.put("result", paramInt);
-      ApolloCmdChannel.getInstance().callbackFromRequest(CmGameSubRscHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessDownloadCmGameSubRscHandler), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      ApolloCmdChannel.getInstance().callbackFromRequest(CmGameSubRscHandler.b(this.b), 0, "cs.file_correctness_check.local", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -31,7 +31,7 @@ class CmGameSubRscHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.download.CmGameSubRscHandler.3
  * JD-Core Version:    0.7.0.1
  */

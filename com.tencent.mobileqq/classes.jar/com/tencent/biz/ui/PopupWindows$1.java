@@ -14,7 +14,7 @@ class PopupWindows$1
   {
     if (paramMotionEvent.getAction() == 4)
     {
-      this.a.a.dismiss();
+      this.a.c.dismiss();
       return true;
     }
     return false;
@@ -22,7 +22,7 @@ class PopupWindows$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.PopupWindows.1
  * JD-Core Version:    0.7.0.1
  */

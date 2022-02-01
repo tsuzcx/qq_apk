@@ -17,12 +17,12 @@ public class MemoriesVideoListSegment$PlayVideoChangeReceiver
   
   public void a(@NonNull MemoriesVideoListSegment paramMemoriesVideoListSegment, @NonNull PlayVideoChangeEvent paramPlayVideoChangeEvent)
   {
-    SLog.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, paramPlayVideoChangeEvent.b);
-    if ((MemoriesVideoListSegment.a(paramMemoriesVideoListSegment).equals(paramPlayVideoChangeEvent.jdField_a_of_type_JavaLangString)) && ((paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)))
+    SLog.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramPlayVideoChangeEvent.b, paramPlayVideoChangeEvent.c);
+    if ((MemoriesVideoListSegment.b(paramMemoriesVideoListSegment).equals(paramPlayVideoChangeEvent.a)) && ((paramPlayVideoChangeEvent.b instanceof MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)))
     {
-      FeedIdListSeqInfo localFeedIdListSeqInfo = ((MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
+      FeedIdListSeqInfo localFeedIdListSeqInfo = ((MemoriesFeedPlayPageLoader.MemoriesFeedGroupId)paramPlayVideoChangeEvent.b).a;
       if (localFeedIdListSeqInfo != null) {
-        paramMemoriesVideoListSegment.a(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString, paramPlayVideoChangeEvent.b, true);
+        paramMemoriesVideoListSegment.a(localFeedIdListSeqInfo.a, paramPlayVideoChangeEvent.c, true);
       }
     }
   }

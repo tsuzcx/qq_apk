@@ -19,15 +19,15 @@ final class SubscribeUtils$1
   {
     Object localObject = new HttpNetReq();
     ((HttpNetReq)localObject).mCallback = new SubscribeUtils.1.1(this);
-    ((HttpNetReq)localObject).mReqUrl = this.b;
+    ((HttpNetReq)localObject).mReqUrl = this.c;
     ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
+    ((HttpNetReq)localObject).mOutPath = this.b.getPath();
     ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     QQStoryContext.a();
-    ((IHttpEngineService)QQStoryContext.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+    ((IHttpEngineService)QQStoryContext.k().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("startDownloadZipFile, url: ");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.c);
     QLog.i("DownLoadZipFile", 1, ((StringBuilder)localObject).toString());
   }
 }

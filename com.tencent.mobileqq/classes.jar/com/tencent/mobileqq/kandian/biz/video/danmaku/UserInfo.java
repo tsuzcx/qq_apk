@@ -12,40 +12,39 @@ public final class UserInfo
   implements Parcelable
 {
   public static final UserInfo.CREATOR CREATOR = new UserInfo.CREATOR(null);
-  private final int jdField_a_of_type_Int;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @Nullable
-  private final String b;
+  private final String a;
+  private final int b;
   @Nullable
   private final String c;
+  @Nullable
+  private final String d;
   
   public UserInfo(@NotNull Parcel paramParcel)
   {
     this(str, paramParcel.readInt(), paramParcel.readString(), paramParcel.readString());
   }
   
-  public UserInfo(@NotNull String paramString1, int paramInt, @Nullable String paramString2, @Nullable String paramString3)
+  public UserInfo(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
+    this(paramString, 0, "", "");
   }
   
-  public final int a()
+  public UserInfo(@NotNull String paramString1, int paramInt, @Nullable String paramString2, @Nullable String paramString3)
   {
-    return this.jdField_a_of_type_Int;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
+    this.d = paramString3;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  @Nullable
-  public final String b()
+  public final int b()
   {
     return this.b;
   }
@@ -54,6 +53,12 @@ public final class UserInfo
   public final String c()
   {
     return this.c;
+  }
+  
+  @Nullable
+  public final String d()
+  {
+    return this.d;
   }
   
   public int describeContents()
@@ -67,7 +72,7 @@ public final class UserInfo
       if ((paramObject instanceof UserInfo))
       {
         paramObject = (UserInfo)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (this.b == paramObject.b) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
       }
       else
       {
@@ -79,7 +84,7 @@ public final class UserInfo
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     int k = 0;
     int i;
     if (str != null) {
@@ -87,15 +92,15 @@ public final class UserInfo
     } else {
       i = 0;
     }
-    int m = this.jdField_a_of_type_Int;
-    str = this.b;
+    int m = this.b;
+    str = this.c;
     int j;
     if (str != null) {
       j = str.hashCode();
     } else {
       j = 0;
     }
-    str = this.c;
+    str = this.d;
     if (str != null) {
       k = str.hashCode();
     }
@@ -107,7 +112,7 @@ public final class UserInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UserInfo(userUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("')");
     return localStringBuilder.toString();
   }
@@ -115,15 +120,15 @@ public final class UserInfo
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
     paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.UserInfo
  * JD-Core Version:    0.7.0.1
  */

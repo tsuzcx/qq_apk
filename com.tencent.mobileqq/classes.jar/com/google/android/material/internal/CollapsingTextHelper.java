@@ -34,70 +34,70 @@ import com.google.android.material.resources.TextAppearance;
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public final class CollapsingTextHelper
 {
+  private static final boolean a;
   @NonNull
-  private static final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private static final boolean jdField_a_of_type_Boolean;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 16;
-  private TimeInterpolator jdField_a_of_type_AndroidAnimationTimeInterpolator;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private static final Paint b;
   @Nullable
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @NonNull
-  private final Rect jdField_a_of_type_AndroidGraphicsRect;
-  @NonNull
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  @NonNull
-  private final TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private final View jdField_a_of_type_AndroidViewView;
-  private CancelableFontCallback jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
+  private CharSequence A;
+  private boolean B;
+  private boolean C;
   @Nullable
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private float jdField_b_of_type_Float = 15.0F;
-  private int jdField_b_of_type_Int = 16;
-  private TimeInterpolator jdField_b_of_type_AndroidAnimationTimeInterpolator;
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private Bitmap D;
+  private Paint E;
+  private float F;
+  private float G;
+  private int[] H;
+  private boolean I;
   @NonNull
-  private final Rect jdField_b_of_type_AndroidGraphicsRect;
-  private Typeface jdField_b_of_type_AndroidGraphicsTypeface;
+  private final TextPaint J;
   @NonNull
-  private final TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  private CancelableFontCallback jdField_b_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
-  @Nullable
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float = 15.0F;
-  private int jdField_c_of_type_Int = 1;
-  private ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
-  private Typeface jdField_c_of_type_AndroidGraphicsTypeface;
-  private CharSequence jdField_c_of_type_JavaLangCharSequence;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private ColorStateList jdField_d_of_type_AndroidContentResColorStateList;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private boolean jdField_e_of_type_Boolean;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j;
-  private float k;
-  private float l;
-  private float m;
-  private float n;
+  private final TextPaint K;
+  private TimeInterpolator L;
+  private TimeInterpolator M;
+  private float N;
+  private float O;
+  private float P;
+  private ColorStateList Q;
+  private float R;
+  private float S;
+  private float T;
+  private ColorStateList U;
+  private float V;
+  private float W;
+  private StaticLayout X;
+  private float Y;
+  private float Z;
+  private float aa;
+  private CharSequence ab;
+  private int ac = 1;
+  private final View c;
+  private boolean d;
+  private float e;
+  @NonNull
+  private final Rect f;
+  @NonNull
+  private final Rect g;
+  @NonNull
+  private final RectF h;
+  private int i = 16;
+  private int j = 16;
+  private float k = 15.0F;
+  private float l = 15.0F;
+  private ColorStateList m;
+  private ColorStateList n;
   private float o;
   private float p;
   private float q;
   private float r;
   private float s;
   private float t;
-  private float u;
-  private float v;
+  private Typeface u;
+  private Typeface v;
+  private Typeface w;
+  private CancelableFontCallback x;
+  private CancelableFontCallback y;
+  @Nullable
+  private CharSequence z;
   
   static
   {
@@ -107,24 +107,24 @@ public final class CollapsingTextHelper
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
-    jdField_a_of_type_AndroidGraphicsPaint = null;
-    Paint localPaint = jdField_a_of_type_AndroidGraphicsPaint;
+    a = bool;
+    b = null;
+    Paint localPaint = b;
     if (localPaint != null)
     {
       localPaint.setAntiAlias(true);
-      jdField_a_of_type_AndroidGraphicsPaint.setColor(-65281);
+      b.setColor(-65281);
     }
   }
   
   public CollapsingTextHelper(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(129);
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint(this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.c = paramView;
+    this.J = new TextPaint(129);
+    this.K = new TextPaint(this.J);
+    this.g = new Rect();
+    this.f = new Rect();
+    this.h = new RectF();
   }
   
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3, @Nullable TimeInterpolator paramTimeInterpolator)
@@ -142,36 +142,17 @@ public final class CollapsingTextHelper
     {
       if (((paramInt2 & 0x800005) != 8388613) && ((paramInt2 & 0x5) != 5))
       {
-        if (this.jdField_c_of_type_Boolean) {
-          return this.jdField_b_of_type_AndroidGraphicsRect.right - a();
+        if (this.B) {
+          return this.g.right - a();
         }
-        return this.jdField_b_of_type_AndroidGraphicsRect.left;
+        return this.g.left;
       }
-      if (this.jdField_c_of_type_Boolean) {
-        return this.jdField_b_of_type_AndroidGraphicsRect.left;
+      if (this.B) {
+        return this.g.left;
       }
-      return this.jdField_b_of_type_AndroidGraphicsRect.right - a();
+      return this.g.right - a();
     }
     return paramInt1 / 2.0F - a() / 2.0F;
-  }
-  
-  private float a(@NonNull RectF paramRectF, int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 != 17) && ((paramInt2 & 0x7) != 1))
-    {
-      if (((paramInt2 & 0x800005) != 8388613) && ((paramInt2 & 0x5) != 5))
-      {
-        if (this.jdField_c_of_type_Boolean) {
-          return this.jdField_b_of_type_AndroidGraphicsRect.right;
-        }
-        return paramRectF.left + a();
-      }
-      if (this.jdField_c_of_type_Boolean) {
-        return paramRectF.left + a();
-      }
-      return this.jdField_b_of_type_AndroidGraphicsRect.right;
-    }
-    return paramInt1 / 2.0F + a() / 2.0F;
   }
   
   private static int a(int paramInt1, int paramInt2, float paramFloat)
@@ -188,25 +169,12 @@ public final class CollapsingTextHelper
     return Color.argb((int)(f2 * f1 + f3 * paramFloat), (int)(f4 * f1 + f5 * paramFloat), (int)(f6 * f1 + f7 * paramFloat), (int)(f8 * f1 + f9 * paramFloat));
   }
   
-  @ColorInt
-  private int a(@Nullable ColorStateList paramColorStateList)
-  {
-    if (paramColorStateList == null) {
-      return 0;
-    }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    if (arrayOfInt != null) {
-      return paramColorStateList.getColorForState(arrayOfInt, 0);
-    }
-    return paramColorStateList.getDefaultColor();
-  }
-  
   private StaticLayout a(int paramInt, float paramFloat, boolean paramBoolean)
   {
     Object localObject;
     try
     {
-      StaticLayout localStaticLayout = StaticLayoutBuilderCompat.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, (int)paramFloat).a(TextUtils.TruncateAt.END).b(paramBoolean).a(Layout.Alignment.ALIGN_NORMAL).a(false).a(paramInt).a();
+      StaticLayout localStaticLayout = StaticLayoutBuilderCompat.a(this.z, this.J, (int)paramFloat).a(TextUtils.TruncateAt.END).b(paramBoolean).a(Layout.Alignment.ALIGN_NORMAL).a(false).a(paramInt).a();
     }
     catch (StaticLayoutBuilderCompat.StaticLayoutBuilderCompatException localStaticLayoutBuilderCompatException)
     {
@@ -218,34 +186,34 @@ public final class CollapsingTextHelper
   
   private void a(@NonNull Canvas paramCanvas, float paramFloat1, float paramFloat2)
   {
-    int i1 = this.jdField_a_of_type_AndroidTextTextPaint.getAlpha();
+    int i1 = this.J.getAlpha();
     paramCanvas.translate(paramFloat1, paramFloat2);
-    Object localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    paramFloat1 = this.u;
+    Object localObject = this.J;
+    paramFloat1 = this.Z;
     paramFloat2 = i1;
     ((TextPaint)localObject).setAlpha((int)(paramFloat1 * paramFloat2));
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha((int)(this.t * paramFloat2));
-    int i2 = this.jdField_a_of_type_AndroidTextStaticLayout.getLineBaseline(0);
-    localObject = this.jdField_c_of_type_JavaLangCharSequence;
+    this.X.draw(paramCanvas);
+    this.J.setAlpha((int)(this.Y * paramFloat2));
+    int i2 = this.X.getLineBaseline(0);
+    localObject = this.ab;
     int i3 = ((CharSequence)localObject).length();
     paramFloat1 = i2;
-    paramCanvas.drawText((CharSequence)localObject, 0, i3, 0.0F, paramFloat1, this.jdField_a_of_type_AndroidTextTextPaint);
-    String str = this.jdField_c_of_type_JavaLangCharSequence.toString().trim();
+    paramCanvas.drawText((CharSequence)localObject, 0, i3, 0.0F, paramFloat1, this.J);
+    String str = this.ab.toString().trim();
     localObject = str;
     if (str.endsWith("…")) {
       localObject = str.substring(0, str.length() - 1);
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(i1);
-    paramCanvas.drawText((String)localObject, 0, Math.min(this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(0), ((String)localObject).length()), 0.0F, paramFloat1, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.J.setAlpha(i1);
+    paramCanvas.drawText((String)localObject, 0, Math.min(this.X.getLineEnd(0), ((String)localObject).length()), 0.0F, paramFloat1, this.J);
   }
   
   private void a(@NonNull TextPaint paramTextPaint)
   {
-    paramTextPaint.setTextSize(this.jdField_b_of_type_Float);
-    paramTextPaint.setTypeface(this.jdField_b_of_type_AndroidGraphicsTypeface);
+    paramTextPaint.setTextSize(this.k);
+    paramTextPaint.setTypeface(this.v);
     if (Build.VERSION.SDK_INT >= 21) {
-      paramTextPaint.setLetterSpacing(this.s);
+      paramTextPaint.setLetterSpacing(this.W);
     }
   }
   
@@ -259,24 +227,38 @@ public final class CollapsingTextHelper
     return (paramRect.left == paramInt1) && (paramRect.top == paramInt2) && (paramRect.right == paramInt3) && (paramRect.bottom == paramInt4);
   }
   
-  private boolean a(Typeface paramTypeface)
+  private float b(@NonNull RectF paramRectF, int paramInt1, int paramInt2)
   {
-    CancelableFontCallback localCancelableFontCallback = this.jdField_b_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
-    if (localCancelableFontCallback != null) {
-      localCancelableFontCallback.a();
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != paramTypeface)
+    if ((paramInt2 != 17) && ((paramInt2 & 0x7) != 1))
     {
-      this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-      return true;
+      if (((paramInt2 & 0x800005) != 8388613) && ((paramInt2 & 0x5) != 5))
+      {
+        if (this.B) {
+          return this.g.right;
+        }
+        return paramRectF.left + a();
+      }
+      if (this.B) {
+        return paramRectF.left + a();
+      }
+      return this.g.right;
     }
-    return false;
+    return paramInt1 / 2.0F + a() / 2.0F;
   }
   
-  private boolean a(@NonNull CharSequence paramCharSequence)
+  private void b(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setTextSize(this.l);
+    paramTextPaint.setTypeface(this.u);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramTextPaint.setLetterSpacing(this.V);
+    }
+  }
+  
+  private boolean b(@NonNull CharSequence paramCharSequence)
   {
     TextDirectionHeuristicCompat localTextDirectionHeuristicCompat;
-    if (c()) {
+    if (t()) {
       localTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.FIRSTSTRONG_RTL;
     } else {
       localTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.FIRSTSTRONG_LTR;
@@ -285,160 +267,117 @@ public final class CollapsingTextHelper
   }
   
   @ColorInt
-  private int b()
+  private int c(@Nullable ColorStateList paramColorStateList)
   {
-    return a(this.jdField_a_of_type_AndroidContentResColorStateList);
-  }
-  
-  private void b(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setTextSize(this.jdField_c_of_type_Float);
-    paramTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramTextPaint.setLetterSpacing(this.r);
+    if (paramColorStateList == null) {
+      return 0;
     }
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_c_of_type_Int > 1) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean);
-  }
-  
-  private boolean b(Typeface paramTypeface)
-  {
-    CancelableFontCallback localCancelableFontCallback = this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
-    if (localCancelableFontCallback != null) {
-      localCancelableFontCallback.a();
+    int[] arrayOfInt = this.H;
+    if (arrayOfInt != null) {
+      return paramColorStateList.getColorForState(arrayOfInt, 0);
     }
-    if (this.jdField_b_of_type_AndroidGraphicsTypeface != paramTypeface)
-    {
-      this.jdField_b_of_type_AndroidGraphicsTypeface = paramTypeface;
-      return true;
-    }
-    return false;
-  }
-  
-  private void c()
-  {
-    c(this.jdField_a_of_type_Float);
+    return paramColorStateList.getDefaultColor();
   }
   
   private void c(float paramFloat)
   {
     d(paramFloat);
-    this.h = a(this.f, this.g, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
-    this.i = a(this.jdField_d_of_type_Float, this.jdField_e_of_type_Float, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
-    g(a(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, paramFloat, this.jdField_b_of_type_AndroidAnimationTimeInterpolator));
-    e(1.0F - a(0.0F, 1.0F, 1.0F - paramFloat, AnimationUtils.jdField_b_of_type_AndroidAnimationTimeInterpolator));
-    f(a(1.0F, 0.0F, paramFloat, AnimationUtils.jdField_b_of_type_AndroidAnimationTimeInterpolator));
-    if (this.jdField_b_of_type_AndroidContentResColorStateList != this.jdField_a_of_type_AndroidContentResColorStateList) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(a(b(), a(), paramFloat));
+    this.s = a(this.q, this.r, paramFloat, this.L);
+    this.t = a(this.o, this.p, paramFloat, this.L);
+    g(a(this.k, this.l, paramFloat, this.M));
+    e(1.0F - a(0.0F, 1.0F, 1.0F - paramFloat, AnimationUtils.b));
+    f(a(1.0F, 0.0F, paramFloat, AnimationUtils.b));
+    if (this.n != this.m) {
+      this.J.setColor(a(q(), k(), paramFloat));
     } else {
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(a());
+      this.J.setColor(k());
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      float f1 = this.r;
-      float f2 = this.s;
+      float f1 = this.V;
+      float f2 = this.W;
       if (f1 != f2) {
-        this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(a(f2, f1, paramFloat, AnimationUtils.jdField_b_of_type_AndroidAnimationTimeInterpolator));
+        this.J.setLetterSpacing(a(f2, f1, paramFloat, AnimationUtils.b));
       } else {
-        this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(f1);
+        this.J.setLetterSpacing(f1);
       }
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(a(this.o, this.l, paramFloat, null), a(this.p, this.m, paramFloat, null), a(this.q, this.n, paramFloat, null), a(a(this.jdField_d_of_type_AndroidContentResColorStateList), a(this.jdField_c_of_type_AndroidContentResColorStateList), paramFloat));
-    ViewCompat.postInvalidateOnAnimation(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  private boolean c()
-  {
-    return ViewCompat.getLayoutDirection(this.jdField_a_of_type_AndroidViewView) == 1;
-  }
-  
-  private void d()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    this.J.setShadowLayer(a(this.R, this.N, paramFloat, null), a(this.S, this.O, paramFloat, null), a(this.T, this.P, paramFloat, null), a(c(this.U), c(this.Q), paramFloat));
+    ViewCompat.postInvalidateOnAnimation(this.c);
   }
   
   private void d(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = a(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.left, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = a(this.jdField_d_of_type_Float, this.jdField_e_of_type_Float, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = a(this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.right, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = a(this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsRect.bottom, paramFloat, this.jdField_a_of_type_AndroidAnimationTimeInterpolator);
+    this.h.left = a(this.f.left, this.g.left, paramFloat, this.L);
+    this.h.top = a(this.o, this.p, paramFloat, this.L);
+    this.h.right = a(this.f.right, this.g.right, paramFloat, this.L);
+    this.h.bottom = a(this.f.bottom, this.g.bottom, paramFloat, this.L);
   }
   
-  private void e()
+  private boolean d(Typeface paramTypeface)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) && (!this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()))
-    {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
-        return;
-      }
-      c(0.0F);
-      int i1 = this.jdField_a_of_type_AndroidTextStaticLayout.getWidth();
-      int i2 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
-      if (i1 > 0)
-      {
-        if (i2 <= 0) {
-          return;
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
-        Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_AndroidTextStaticLayout.draw(localCanvas);
-        if (this.jdField_b_of_type_AndroidGraphicsPaint == null) {
-          this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(3);
-        }
-      }
+    CancelableFontCallback localCancelableFontCallback = this.y;
+    if (localCancelableFontCallback != null) {
+      localCancelableFontCallback.a();
     }
+    if (this.u != paramTypeface)
+    {
+      this.u = paramTypeface;
+      return true;
+    }
+    return false;
   }
   
   private void e(float paramFloat)
   {
-    this.t = paramFloat;
-    ViewCompat.postInvalidateOnAnimation(this.jdField_a_of_type_AndroidViewView);
+    this.Y = paramFloat;
+    ViewCompat.postInvalidateOnAnimation(this.c);
   }
   
-  private void f()
+  private boolean e(Typeface paramTypeface)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null)
-    {
-      localBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    CancelableFontCallback localCancelableFontCallback = this.x;
+    if (localCancelableFontCallback != null) {
+      localCancelableFontCallback.a();
     }
+    if (this.v != paramTypeface)
+    {
+      this.v = paramTypeface;
+      return true;
+    }
+    return false;
   }
   
   private void f(float paramFloat)
   {
-    this.u = paramFloat;
-    ViewCompat.postInvalidateOnAnimation(this.jdField_a_of_type_AndroidViewView);
+    this.Z = paramFloat;
+    ViewCompat.postInvalidateOnAnimation(this.c);
   }
   
   private void g(float paramFloat)
   {
     h(paramFloat);
     boolean bool;
-    if ((jdField_a_of_type_Boolean) && (this.j != 1.0F)) {
+    if ((a) && (this.F != 1.0F)) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_d_of_type_Boolean = bool;
-    if (this.jdField_d_of_type_Boolean) {
-      e();
+    this.C = bool;
+    if (this.C) {
+      u();
     }
-    ViewCompat.postInvalidateOnAnimation(this.jdField_a_of_type_AndroidViewView);
+    ViewCompat.postInvalidateOnAnimation(this.c);
   }
   
   private void h(float paramFloat)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+    if (this.z == null) {
       return;
     }
-    float f2 = this.jdField_b_of_type_AndroidGraphicsRect.width();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsRect.width();
-    boolean bool2 = a(paramFloat, this.jdField_c_of_type_Float);
+    float f2 = this.g.width();
+    float f3 = this.f.width();
+    boolean bool2 = a(paramFloat, this.l);
     boolean bool1 = false;
     int i3 = 1;
     float f1;
@@ -447,13 +386,13 @@ public final class CollapsingTextHelper
     int i1;
     if (bool2)
     {
-      f1 = this.jdField_c_of_type_Float;
-      this.j = 1.0F;
-      localObject = this.jdField_c_of_type_AndroidGraphicsTypeface;
-      localTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+      f1 = this.l;
+      this.F = 1.0F;
+      localObject = this.w;
+      localTypeface = this.u;
       if (localObject != localTypeface)
       {
-        this.jdField_c_of_type_AndroidGraphicsTypeface = localTypeface;
+        this.w = localTypeface;
         i1 = 1;
         paramFloat = f2;
       }
@@ -465,24 +404,24 @@ public final class CollapsingTextHelper
     }
     else
     {
-      f1 = this.jdField_b_of_type_Float;
-      localObject = this.jdField_c_of_type_AndroidGraphicsTypeface;
-      localTypeface = this.jdField_b_of_type_AndroidGraphicsTypeface;
+      f1 = this.k;
+      localObject = this.w;
+      localTypeface = this.v;
       if (localObject != localTypeface)
       {
-        this.jdField_c_of_type_AndroidGraphicsTypeface = localTypeface;
+        this.w = localTypeface;
         i1 = 1;
       }
       else
       {
         i1 = 0;
       }
-      if (a(paramFloat, this.jdField_b_of_type_Float)) {
-        this.j = 1.0F;
+      if (a(paramFloat, this.k)) {
+        this.F = 1.0F;
       } else {
-        this.j = (paramFloat / this.jdField_b_of_type_Float);
+        this.F = (paramFloat / this.k);
       }
-      paramFloat = this.jdField_c_of_type_Float / this.jdField_b_of_type_Float;
+      paramFloat = this.l / this.k;
       if (f3 * paramFloat > f2) {
         paramFloat = Math.min(f2 / paramFloat, f3);
       } else {
@@ -492,155 +431,188 @@ public final class CollapsingTextHelper
     int i2 = i1;
     if (paramFloat > 0.0F)
     {
-      if ((this.k == f1) && (!this.jdField_e_of_type_Boolean) && (i1 == 0)) {
+      if ((this.G == f1) && (!this.I) && (i1 == 0)) {
         i1 = 0;
       } else {
         i1 = 1;
       }
-      this.k = f1;
-      this.jdField_e_of_type_Boolean = false;
+      this.G = f1;
+      this.I = false;
       i2 = i1;
     }
-    if ((this.jdField_b_of_type_JavaLangCharSequence == null) || (i2 != 0))
+    if ((this.A == null) || (i2 != 0))
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.k);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_c_of_type_AndroidGraphicsTypeface);
-      localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-      if (this.j != 1.0F) {
+      this.J.setTextSize(this.G);
+      this.J.setTypeface(this.w);
+      localObject = this.J;
+      if (this.F != 1.0F) {
         bool1 = true;
       }
       ((TextPaint)localObject).setLinearText(bool1);
-      this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_JavaLangCharSequence);
+      this.B = b(this.z);
       i1 = i3;
-      if (b()) {
-        i1 = this.jdField_c_of_type_Int;
+      if (s()) {
+        i1 = this.ac;
       }
-      this.jdField_a_of_type_AndroidTextStaticLayout = a(i1, paramFloat, this.jdField_c_of_type_Boolean);
-      this.jdField_b_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidTextStaticLayout.getText();
+      this.X = a(i1, paramFloat, this.B);
+      this.A = this.X.getText();
+    }
+  }
+  
+  private void p()
+  {
+    c(this.e);
+  }
+  
+  @ColorInt
+  private int q()
+  {
+    return c(this.m);
+  }
+  
+  private void r()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  private boolean s()
+  {
+    return (this.ac > 1) && (!this.B) && (!this.C);
+  }
+  
+  private boolean t()
+  {
+    return ViewCompat.getLayoutDirection(this.c) == 1;
+  }
+  
+  private void u()
+  {
+    if ((this.D == null) && (!this.f.isEmpty()))
+    {
+      if (TextUtils.isEmpty(this.A)) {
+        return;
+      }
+      c(0.0F);
+      int i1 = this.X.getWidth();
+      int i2 = this.X.getHeight();
+      if (i1 > 0)
+      {
+        if (i2 <= 0) {
+          return;
+        }
+        this.D = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
+        Canvas localCanvas = new Canvas(this.D);
+        this.X.draw(localCanvas);
+        if (this.E == null) {
+          this.E = new Paint(3);
+        }
+      }
+    }
+  }
+  
+  private void v()
+  {
+    Bitmap localBitmap = this.D;
+    if (localBitmap != null)
+    {
+      localBitmap.recycle();
+      this.D = null;
     }
   }
   
   public float a()
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+    if (this.z == null) {
       return 0.0F;
     }
-    b(this.jdField_b_of_type_AndroidTextTextPaint);
-    TextPaint localTextPaint = this.jdField_b_of_type_AndroidTextTextPaint;
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    b(this.K);
+    TextPaint localTextPaint = this.K;
+    CharSequence localCharSequence = this.z;
     return localTextPaint.measureText(localCharSequence, 0, localCharSequence.length());
-  }
-  
-  @ColorInt
-  public int a()
-  {
-    return a(this.jdField_b_of_type_AndroidContentResColorStateList);
-  }
-  
-  public ColorStateList a()
-  {
-    return this.jdField_b_of_type_AndroidContentResColorStateList;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  void a()
-  {
-    boolean bool;
-    if ((this.jdField_b_of_type_AndroidGraphicsRect.width() > 0) && (this.jdField_b_of_type_AndroidGraphicsRect.height() > 0) && (this.jdField_a_of_type_AndroidGraphicsRect.width() > 0) && (this.jdField_a_of_type_AndroidGraphicsRect.height() > 0)) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.jdField_b_of_type_Boolean = bool;
   }
   
   public void a(float paramFloat)
   {
-    if (this.jdField_b_of_type_Float != paramFloat)
+    if (this.k != paramFloat)
     {
-      this.jdField_b_of_type_Float = paramFloat;
-      b();
+      this.k = paramFloat;
+      l();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.i != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      b();
+      this.i = paramInt;
+      l();
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.f, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.jdField_e_of_type_Boolean = true;
-      a();
+      this.f.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.I = true;
+      d();
     }
   }
   
   public void a(TimeInterpolator paramTimeInterpolator)
   {
-    this.jdField_b_of_type_AndroidAnimationTimeInterpolator = paramTimeInterpolator;
-    b();
+    this.M = paramTimeInterpolator;
+    l();
   }
   
   public void a(ColorStateList paramColorStateList)
   {
-    if (this.jdField_b_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.n != paramColorStateList)
     {
-      this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-      b();
+      this.n = paramColorStateList;
+      l();
     }
   }
   
   public void a(@NonNull Canvas paramCanvas)
   {
     int i3 = paramCanvas.save();
-    if ((this.jdField_b_of_type_JavaLangCharSequence != null) && (this.jdField_b_of_type_Boolean))
+    if ((this.A != null) && (this.d))
     {
-      float f1 = this.h;
-      StaticLayout localStaticLayout = this.jdField_a_of_type_AndroidTextStaticLayout;
+      float f1 = this.s;
+      StaticLayout localStaticLayout = this.X;
       int i2 = 0;
       float f2 = localStaticLayout.getLineLeft(0);
-      float f3 = this.v;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.k);
-      float f4 = this.h;
-      float f5 = this.i;
+      float f3 = this.aa;
+      this.J.setTextSize(this.G);
+      float f4 = this.s;
+      float f5 = this.t;
       int i1 = i2;
-      if (this.jdField_d_of_type_Boolean)
+      if (this.C)
       {
         i1 = i2;
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        if (this.D != null) {
           i1 = 1;
         }
       }
-      float f6 = this.j;
+      float f6 = this.F;
       if (f6 != 1.0F) {
         paramCanvas.scale(f6, f6, f4, f5);
       }
       if (i1 != 0)
       {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, f4, f5, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(this.D, f4, f5, this.E);
         paramCanvas.restoreToCount(i3);
         return;
       }
-      if (b())
+      if (s())
       {
         a(paramCanvas, f1 + f2 - f3 * 2.0F, f5);
       }
       else
       {
         paramCanvas.translate(f4, f5);
-        this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+        this.X.draw(paramCanvas);
       }
       paramCanvas.restoreToCount(i3);
     }
@@ -653,46 +625,37 @@ public final class CollapsingTextHelper
   
   public void a(@NonNull RectF paramRectF, int paramInt1, int paramInt2)
   {
-    this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_JavaLangCharSequence);
+    this.B = b(this.z);
     paramRectF.left = a(paramInt1, paramInt2);
-    paramRectF.top = this.jdField_b_of_type_AndroidGraphicsRect.top;
-    paramRectF.right = a(paramRectF, paramInt1, paramInt2);
-    paramRectF.bottom = (this.jdField_b_of_type_AndroidGraphicsRect.top + c());
+    paramRectF.top = this.g.top;
+    paramRectF.right = b(paramRectF, paramInt1, paramInt2);
+    paramRectF.bottom = (this.g.top + c());
   }
   
   public void a(Typeface paramTypeface)
   {
-    if (a(paramTypeface)) {
-      b();
+    if (d(paramTypeface)) {
+      l();
     }
   }
   
   public void a(@Nullable CharSequence paramCharSequence)
   {
-    if ((paramCharSequence == null) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangCharSequence, paramCharSequence)))
+    if ((paramCharSequence == null) || (!TextUtils.equals(this.z, paramCharSequence)))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-      this.jdField_b_of_type_JavaLangCharSequence = null;
-      f();
-      b();
+      this.z = paramCharSequence;
+      this.A = null;
+      v();
+      l();
     }
-  }
-  
-  public final boolean a()
-  {
-    ColorStateList localColorStateList = this.jdField_b_of_type_AndroidContentResColorStateList;
-    if ((localColorStateList == null) || (!localColorStateList.isStateful())) {
-      localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
-    }
-    return (localColorStateList != null) && (localColorStateList.isStateful());
   }
   
   public final boolean a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    if (a())
+    this.H = paramArrayOfInt;
+    if (i())
     {
-      b();
+      l();
       return true;
     }
     return false;
@@ -700,60 +663,51 @@ public final class CollapsingTextHelper
   
   public float b()
   {
-    a(this.jdField_b_of_type_AndroidTextTextPaint);
-    return -this.jdField_b_of_type_AndroidTextTextPaint.ascent();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView.getHeight() > 0) && (this.jdField_a_of_type_AndroidViewView.getWidth() > 0))
-    {
-      d();
-      c();
-    }
+    a(this.K);
+    return -this.K.ascent();
   }
   
   public void b(float paramFloat)
   {
     paramFloat = MathUtils.clamp(paramFloat, 0.0F, 1.0F);
-    if (paramFloat != this.jdField_a_of_type_Float)
+    if (paramFloat != this.e)
     {
-      this.jdField_a_of_type_Float = paramFloat;
-      c();
+      this.e = paramFloat;
+      p();
     }
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.j != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      b();
+      this.j = paramInt;
+      l();
     }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.jdField_b_of_type_AndroidGraphicsRect, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.g, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.jdField_e_of_type_Boolean = true;
-      a();
+      this.g.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.I = true;
+      d();
     }
   }
   
   public void b(TimeInterpolator paramTimeInterpolator)
   {
-    this.jdField_a_of_type_AndroidAnimationTimeInterpolator = paramTimeInterpolator;
-    b();
+    this.L = paramTimeInterpolator;
+    l();
   }
   
   public void b(ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.m != paramColorStateList)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      b();
+      this.m = paramColorStateList;
+      l();
     }
   }
   
@@ -764,94 +718,173 @@ public final class CollapsingTextHelper
   
   public void b(Typeface paramTypeface)
   {
-    if (b(paramTypeface)) {
-      b();
+    if (e(paramTypeface)) {
+      l();
     }
   }
   
   public float c()
   {
-    b(this.jdField_b_of_type_AndroidTextTextPaint);
-    return -this.jdField_b_of_type_AndroidTextTextPaint.ascent();
+    b(this.K);
+    return -this.K.ascent();
   }
   
   public void c(int paramInt)
   {
-    TextAppearance localTextAppearance = new TextAppearance(this.jdField_a_of_type_AndroidViewView.getContext(), paramInt);
-    if (localTextAppearance.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      this.jdField_b_of_type_AndroidContentResColorStateList = localTextAppearance.jdField_a_of_type_AndroidContentResColorStateList;
+    TextAppearance localTextAppearance = new TextAppearance(this.c.getContext(), paramInt);
+    if (localTextAppearance.a != null) {
+      this.n = localTextAppearance.a;
     }
-    if (localTextAppearance.jdField_e_of_type_Float != 0.0F) {
-      this.jdField_c_of_type_Float = localTextAppearance.jdField_e_of_type_Float;
+    if (localTextAppearance.n != 0.0F) {
+      this.l = localTextAppearance.n;
     }
-    if (localTextAppearance.jdField_d_of_type_AndroidContentResColorStateList != null) {
-      this.jdField_c_of_type_AndroidContentResColorStateList = localTextAppearance.jdField_d_of_type_AndroidContentResColorStateList;
+    if (localTextAppearance.d != null) {
+      this.Q = localTextAppearance.d;
     }
-    this.m = localTextAppearance.jdField_a_of_type_Float;
-    this.n = localTextAppearance.jdField_b_of_type_Float;
-    this.l = localTextAppearance.jdField_c_of_type_Float;
-    this.r = localTextAppearance.jdField_d_of_type_Float;
-    CancelableFontCallback localCancelableFontCallback = this.jdField_b_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
+    this.O = localTextAppearance.i;
+    this.P = localTextAppearance.j;
+    this.N = localTextAppearance.k;
+    this.V = localTextAppearance.m;
+    CancelableFontCallback localCancelableFontCallback = this.y;
     if (localCancelableFontCallback != null) {
       localCancelableFontCallback.a();
     }
-    this.jdField_b_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback = new CancelableFontCallback(new CollapsingTextHelper.1(this), localTextAppearance.a());
-    localTextAppearance.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_b_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback);
-    b();
+    this.y = new CancelableFontCallback(new CollapsingTextHelper.1(this), localTextAppearance.a());
+    localTextAppearance.a(this.c.getContext(), this.y);
+    l();
   }
   
   public void c(Typeface paramTypeface)
   {
-    boolean bool1 = a(paramTypeface);
-    boolean bool2 = b(paramTypeface);
+    boolean bool1 = d(paramTypeface);
+    boolean bool2 = e(paramTypeface);
     if ((bool1) || (bool2)) {
-      b();
+      l();
     }
   }
   
-  public float d()
+  void d()
   {
-    return this.jdField_a_of_type_Float;
+    boolean bool;
+    if ((this.g.width() > 0) && (this.g.height() > 0) && (this.f.width() > 0) && (this.f.height() > 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.d = bool;
   }
   
   public void d(int paramInt)
   {
-    TextAppearance localTextAppearance = new TextAppearance(this.jdField_a_of_type_AndroidViewView.getContext(), paramInt);
-    if (localTextAppearance.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      this.jdField_a_of_type_AndroidContentResColorStateList = localTextAppearance.jdField_a_of_type_AndroidContentResColorStateList;
+    TextAppearance localTextAppearance = new TextAppearance(this.c.getContext(), paramInt);
+    if (localTextAppearance.a != null) {
+      this.m = localTextAppearance.a;
     }
-    if (localTextAppearance.jdField_e_of_type_Float != 0.0F) {
-      this.jdField_b_of_type_Float = localTextAppearance.jdField_e_of_type_Float;
+    if (localTextAppearance.n != 0.0F) {
+      this.k = localTextAppearance.n;
     }
-    if (localTextAppearance.jdField_d_of_type_AndroidContentResColorStateList != null) {
-      this.jdField_d_of_type_AndroidContentResColorStateList = localTextAppearance.jdField_d_of_type_AndroidContentResColorStateList;
+    if (localTextAppearance.d != null) {
+      this.U = localTextAppearance.d;
     }
-    this.p = localTextAppearance.jdField_a_of_type_Float;
-    this.q = localTextAppearance.jdField_b_of_type_Float;
-    this.o = localTextAppearance.jdField_c_of_type_Float;
-    this.s = localTextAppearance.jdField_d_of_type_Float;
-    CancelableFontCallback localCancelableFontCallback = this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback;
+    this.S = localTextAppearance.i;
+    this.T = localTextAppearance.j;
+    this.R = localTextAppearance.k;
+    this.W = localTextAppearance.m;
+    CancelableFontCallback localCancelableFontCallback = this.x;
     if (localCancelableFontCallback != null) {
       localCancelableFontCallback.a();
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback = new CancelableFontCallback(new CollapsingTextHelper.2(this), localTextAppearance.a());
-    localTextAppearance.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback);
-    b();
+    this.x = new CancelableFontCallback(new CollapsingTextHelper.2(this), localTextAppearance.a());
+    localTextAppearance.a(this.c.getContext(), this.x);
+    l();
+  }
+  
+  public int e()
+  {
+    return this.i;
   }
   
   public void e(int paramInt)
   {
-    if (paramInt != this.jdField_c_of_type_Int)
+    if (paramInt != this.ac)
     {
-      this.jdField_c_of_type_Int = paramInt;
-      f();
-      b();
+      this.ac = paramInt;
+      v();
+      l();
     }
+  }
+  
+  public int f()
+  {
+    return this.j;
+  }
+  
+  public Typeface g()
+  {
+    Typeface localTypeface = this.u;
+    if (localTypeface != null) {
+      return localTypeface;
+    }
+    return Typeface.DEFAULT;
+  }
+  
+  public Typeface h()
+  {
+    Typeface localTypeface = this.v;
+    if (localTypeface != null) {
+      return localTypeface;
+    }
+    return Typeface.DEFAULT;
+  }
+  
+  public final boolean i()
+  {
+    ColorStateList localColorStateList = this.n;
+    if ((localColorStateList == null) || (!localColorStateList.isStateful())) {
+      localColorStateList = this.m;
+    }
+    return (localColorStateList != null) && (localColorStateList.isStateful());
+  }
+  
+  public float j()
+  {
+    return this.e;
+  }
+  
+  @ColorInt
+  public int k()
+  {
+    return c(this.n);
+  }
+  
+  public void l()
+  {
+    if ((this.c.getHeight() > 0) && (this.c.getWidth() > 0))
+    {
+      r();
+      p();
+    }
+  }
+  
+  @Nullable
+  public CharSequence m()
+  {
+    return this.z;
+  }
+  
+  public int n()
+  {
+    return this.ac;
+  }
+  
+  public ColorStateList o()
+  {
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.CollapsingTextHelper
  * JD-Core Version:    0.7.0.1
  */

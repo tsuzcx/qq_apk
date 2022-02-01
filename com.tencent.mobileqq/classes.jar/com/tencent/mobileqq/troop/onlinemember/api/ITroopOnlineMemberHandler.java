@@ -14,7 +14,7 @@ public abstract interface ITroopOnlineMemberHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.api.ITroopOnlineMemberHandler
  * JD-Core Version:    0.7.0.1
  */

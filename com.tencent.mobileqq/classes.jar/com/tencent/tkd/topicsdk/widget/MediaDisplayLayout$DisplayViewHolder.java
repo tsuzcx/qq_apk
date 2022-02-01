@@ -21,46 +21,46 @@ import org.jetbrains.annotations.NotNull;
 final class MediaDisplayLayout$DisplayViewHolder
 {
   @NotNull
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  @NotNull
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  @NotNull
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  @NotNull
   private final RelativeLayout b;
   @NotNull
   private final RelativeLayout c;
   @NotNull
   private final RelativeLayout d;
+  @NotNull
+  private final RelativeLayout e;
+  @NotNull
+  private final TextView f;
+  @NotNull
+  private final ImageView g;
+  private String h;
   
   public MediaDisplayLayout$DisplayViewHolder(ViewGroup paramViewGroup)
   {
-    View localView = ((ViewGroup)localObject).findViewById(R.id.T);
+    View localView = ((ViewGroup)localObject).findViewById(R.id.A);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.item_container)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.aB);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_cover_container)");
     this.b = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.aC);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_del_media)");
+    localView = ((ViewGroup)localObject).findViewById(R.id.ad);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_cover_container)");
     this.c = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.aD);
-    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_video_operator)");
+    localView = ((ViewGroup)localObject).findViewById(R.id.ae);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_del_media)");
     this.d = ((RelativeLayout)localView);
-    Object localObject = ((ViewGroup)localObject).findViewById(R.id.aR);
+    localView = ((ViewGroup)localObject).findViewById(R.id.af);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_video_operator)");
+    this.e = ((RelativeLayout)localView);
+    Object localObject = ((ViewGroup)localObject).findViewById(R.id.as);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "layout.findViewById(R.id.tv_change_cover)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-    this.jdField_a_of_type_JavaLangString = "";
-    localObject = new RelativeLayout.LayoutParams(paramViewGroup.a(), paramViewGroup.a());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramViewGroup.getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.f = ((TextView)localObject);
+    this.h = "";
+    localObject = new RelativeLayout.LayoutParams(paramViewGroup.getDisplayItemsHeight(), paramViewGroup.getDisplayItemsHeight());
+    this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.g = new ImageView(paramViewGroup.getContext());
+    this.g.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramViewGroup = new RelativeLayout.LayoutParams(-1, -1);
-    this.b.addView((View)this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)paramViewGroup);
+    this.c.addView((View)this.g, (ViewGroup.LayoutParams)paramViewGroup);
   }
   
-  private final String a(DisplayItem paramDisplayItem)
+  private final String b(DisplayItem paramDisplayItem)
   {
     if (paramDisplayItem.getMedia().getType() == MediaType.VIDEO)
     {
@@ -89,49 +89,49 @@ final class MediaDisplayLayout$DisplayViewHolder
   @NotNull
   public final RelativeLayout a()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.b;
   }
   
   public final void a(@NotNull DisplayItem paramDisplayItem)
   {
     Intrinsics.checkParameterIsNotNull(paramDisplayItem, "item");
-    String str = a(paramDisplayItem);
+    String str = b(paramDisplayItem);
     Object localObject = paramDisplayItem.getMedia().getType();
     MediaType localMediaType = MediaType.PHOTO;
     int i = 0;
     if (localObject == localMediaType) {
-      this.d.setVisibility(8);
+      this.e.setVisibility(8);
     } else if (paramDisplayItem.getMedia().getType() == MediaType.VIDEO) {
-      this.d.setVisibility(0);
+      this.e.setVisibility(0);
     }
-    this.jdField_a_of_type_JavaLangString = str;
+    this.h = str;
     if (((CharSequence)str).length() > 0) {
       i = 1;
     }
     if (i != 0)
     {
       paramDisplayItem = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView.getContext();
+      localObject = this.g.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "imageView.context");
-      paramDisplayItem.a((Context)localObject).a(this.jdField_a_of_type_AndroidWidgetImageView).a(str);
+      paramDisplayItem.a((Context)localObject).a(this.g).a(str);
     }
   }
   
   @NotNull
   public final RelativeLayout b()
   {
-    return this.c;
+    return this.d;
+  }
+  
+  @NotNull
+  public final TextView c()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.DisplayViewHolder
  * JD-Core Version:    0.7.0.1
  */

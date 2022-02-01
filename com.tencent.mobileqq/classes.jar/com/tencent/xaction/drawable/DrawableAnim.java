@@ -19,21 +19,21 @@ import org.jetbrains.annotations.Nullable;
 public final class DrawableAnim
   extends BaseAnim
 {
-  private final int jdField_a_of_type_Int = -1;
-  @Nullable
-  private transient IDrawable jdField_a_of_type_ComTencentXactionApiIDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = this.jdField_a_of_type_Int;
+  private final int a = -1;
+  private int b = this.a;
   private int c;
+  private boolean d;
+  @Nullable
+  private transient IDrawable e;
   
   public void doFrameUpdate(float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentXactionApiIDrawable;
+      Object localObject = this.e;
       if (localObject != null)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.d = true;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -47,20 +47,20 @@ public final class DrawableAnim
   
   public void end()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void preStart(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     super.preStart(paramView);
-    if ((this.b != this.jdField_a_of_type_Int) && (Build.VERSION.SDK_INT >= 16))
+    if ((this.b != this.a) && (Build.VERSION.SDK_INT >= 16))
     {
       DecorDrawable.Companion localCompanion = DecorDrawable.Companion;
       IXAEngine localIXAEngine = getEngine();
       if (localIXAEngine != null)
       {
-        this.jdField_a_of_type_ComTencentXactionApiIDrawable = DecorDrawable.Companion.a(localCompanion, (XAEngine)localIXAEngine, this.b, this.c, paramView, true, false, 32, null);
+        this.e = DecorDrawable.Companion.a(localCompanion, (XAEngine)localIXAEngine, this.b, this.c, paramView, true, false, 32, null);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.impl.XAEngine");
@@ -69,7 +69,7 @@ public final class DrawableAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.drawable.DrawableAnim
  * JD-Core Version:    0.7.0.1
  */

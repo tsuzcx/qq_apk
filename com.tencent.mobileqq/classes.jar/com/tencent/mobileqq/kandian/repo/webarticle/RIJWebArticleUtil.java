@@ -155,72 +155,72 @@ public final class RIJWebArticleUtil
     RIJSPUtils.a("sp_key_load_url_optimize", Boolean.valueOf(bool9));
   }
   
-  public final boolean a()
-  {
-    Object localObject = RIJSPUtils.a("sp_key_web_article_switch", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…EB_ARTICLE_SWITCH, false)");
-    return ((Boolean)localObject).booleanValue();
-  }
-  
   public final boolean b()
   {
-    Object localObject = RIJSPUtils.a("sp_key_webview_reuse", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…KEY_WEBVIEW_REUSE, false)");
+    Object localObject = RIJSPUtils.b("sp_key_web_article_switch", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…EB_ARTICLE_SWITCH, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean c()
   {
-    Object localObject = RIJSPUtils.a("sp_key_webview_sonic", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…WEBVIEW_VAS_SONIC, false)");
+    Object localObject = RIJSPUtils.b("sp_key_webview_reuse", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…KEY_WEBVIEW_REUSE, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean d()
   {
-    Object localObject = RIJSPUtils.a("sp_key_webview_trans_animation", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…W_TRANS_ANIMATION, false)");
+    Object localObject = RIJSPUtils.b("sp_key_webview_sonic", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…WEBVIEW_VAS_SONIC, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean e()
   {
-    Object localObject = RIJSPUtils.a("sp_key_web_article_preload", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…B_ARTICLE_PRELOAD, false)");
+    Object localObject = RIJSPUtils.b("sp_key_webview_trans_animation", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…W_TRANS_ANIMATION, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean f()
   {
-    Object localObject = RIJSPUtils.a("sp_key_webview_warmup_template", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…W_WARMUP_TEMPLATE, false)");
+    Object localObject = RIJSPUtils.b("sp_key_web_article_preload", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…B_ARTICLE_PRELOAD, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean g()
   {
-    Object localObject = RIJSPUtils.a("sp_key_web_data_preload", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…_WEB_DATA_PRELOAD, false)");
+    Object localObject = RIJSPUtils.b("sp_key_webview_warmup_template", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…W_WARMUP_TEMPLATE, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean h()
   {
-    Object localObject = RIJSPUtils.a("sp_key_web_process_foreground_preload", Boolean.valueOf(false));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…OREGROUND_PRELOAD, false)");
+    Object localObject = RIJSPUtils.b("sp_key_web_data_preload", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…_WEB_DATA_PRELOAD, false)");
     return ((Boolean)localObject).booleanValue();
   }
   
   public final boolean i()
   {
-    Object localObject = RIJSPUtils.a("sp_key_load_url_optimize", Boolean.valueOf(true));
+    Object localObject = RIJSPUtils.b("sp_key_web_process_foreground_preload", Boolean.valueOf(false));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…OREGROUND_PRELOAD, false)");
+    return ((Boolean)localObject).booleanValue();
+  }
+  
+  public final boolean j()
+  {
+    Object localObject = RIJSPUtils.b("sp_key_load_url_optimize", Boolean.valueOf(true));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "RIJSPUtils.getReadInJoyS…_LOAD_URL_OPTIMIZE, true)");
     return ((Boolean)localObject).booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleUtil
  * JD-Core Version:    0.7.0.1
  */

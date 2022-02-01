@@ -34,8 +34,8 @@ public class AegisHelper
     localStringBuilder.append("sessionId-");
     localStringBuilder.append(System.currentTimeMillis());
     ((Map)localObject).put("sessionId", localStringBuilder.toString());
-    if (BusinessManager.a.a() != null) {
-      ((Map)localObject).put("version", BusinessManager.a.a().b);
+    if (BusinessManager.a.b() != null) {
+      ((Map)localObject).put("version", BusinessManager.a.b().b);
     }
     ((Map)localObject).put("level[0]", paramString3);
     ((Map)localObject).put("from", paramString2);
@@ -54,7 +54,7 @@ public class AegisHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.AegisHelper
  * JD-Core Version:    0.7.0.1
  */

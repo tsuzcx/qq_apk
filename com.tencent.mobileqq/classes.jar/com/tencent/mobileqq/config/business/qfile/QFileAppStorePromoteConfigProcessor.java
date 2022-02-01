@@ -27,7 +27,7 @@ public class QFileAppStorePromoteConfigProcessor
   {
     QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileAppStorePromoteConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileAppStorePromoteConfigBean.class);
+      return (QFileAppStorePromoteConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileAppStorePromoteConfigBean.class);
     }
     return null;
   }
@@ -40,7 +40,7 @@ public class QFileAppStorePromoteConfigProcessor
       return;
     }
     QLog.i("QFileAppStorePromoteConfigProcessor<QFile>", 1, "onUpdate");
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     if (localBaseQQAppInterface != null)
     {
       Object localObject = localBaseQQAppInterface.getApplicationContext();
@@ -48,7 +48,7 @@ public class QFileAppStorePromoteConfigProcessor
       localStringBuilder.append("file_config_");
       localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
       localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("yyb_promote_action_key", paramQFileAppStorePromoteConfigBean.c);
+      ((SharedPreferences.Editor)localObject).putString("yyb_promote_action_key", paramQFileAppStorePromoteConfigBean.d);
       ((SharedPreferences.Editor)localObject).apply();
       QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileAppStorePromoteConfigBean);
     }
@@ -83,7 +83,7 @@ public class QFileAppStorePromoteConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

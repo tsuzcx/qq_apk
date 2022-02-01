@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.qrscan.chirp.IChirpSoDownload;
 import com.tencent.mobileqq.qrscan.chirp.IChirpSoDownload.Callback;
 import com.tencent.qphone.base.util.QLog;
@@ -18,19 +18,14 @@ public class ChirpSoHandler
   extends EarlyHandler
   implements IChirpSoDownload
 {
-  private LinkedList<IChirpSoDownload.Callback> a = new LinkedList();
-  private AppRuntime b;
-  private boolean d = false;
+  private AppRuntime h;
+  private boolean i = false;
+  private LinkedList<IChirpSoDownload.Callback> j = new LinkedList();
   
   public ChirpSoHandler(AppRuntime paramAppRuntime)
   {
     super("qq.android.system.chirp", paramAppRuntime);
-    this.b = paramAppRuntime;
-  }
-  
-  public int a()
-  {
-    return ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).getEarlyDownBusId(101);
+    this.h = paramAppRuntime;
   }
   
   public Class<? extends XmlData> a()
@@ -38,17 +33,12 @@ public class ChirpSoHandler
     return ChirpSoData.class;
   }
   
-  public String a()
-  {
-    return "actEarlyChirpSo";
-  }
-  
   public void a(IChirpSoDownload.Callback paramCallback)
   {
-    synchronized (this.a)
+    synchronized (this.j)
     {
-      if (!this.a.contains(paramCallback)) {
-        this.a.add(paramCallback);
+      if (!this.j.contains(paramCallback)) {
+        this.j.add(paramCallback);
       }
       return;
     }
@@ -81,10 +71,10 @@ public class ChirpSoHandler
       localStringBuilder.append(paramBoolean);
       QLog.d("ChirpSoHandler", 2, localStringBuilder.toString());
     }
-    if (!this.d) {
-      this.d = paramBoolean;
+    if (!this.i) {
+      this.i = paramBoolean;
     }
-    if ((a() != null) && (a().loadState == 2))
+    if ((h() != null) && (h().loadState == 2))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ChirpSoHandler", 2, "is in downloading");
@@ -95,54 +85,64 @@ public class ChirpSoHandler
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
-    return "prd";
+    return "actEarlyChirpSo";
   }
   
   public void b(IChirpSoDownload.Callback paramCallback)
   {
-    synchronized (this.a)
+    synchronized (this.j)
     {
-      this.a.remove(paramCallback);
+      this.j.remove(paramCallback);
       return;
     }
   }
   
-  public boolean c()
+  public int c()
+  {
+    return ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).getEarlyDownBusId(101);
+  }
+  
+  public String d()
+  {
+    return "prd";
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public boolean m()
   {
     StringBuilder localStringBuilder;
-    if (this.d)
+    if (this.i)
     {
-      ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).setTalkbackSwitch();
+      ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).setTalkbackSwitch();
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("isNetValid2Download by user ");
-        localStringBuilder.append(AppSetting.d);
+        localStringBuilder.append(AppSetting.e);
         QLog.d("ChirpSoHandler", 2, localStringBuilder.toString());
       }
-      return AppSetting.d;
+      return AppSetting.e;
     }
-    ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).setTalkbackSwitch();
+    ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).setTalkbackSwitch();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isNetValid2Download by startup ");
-      localStringBuilder.append(AppSetting.d);
+      localStringBuilder.append(AppSetting.e);
       QLog.d("ChirpSoHandler", 2, localStringBuilder.toString());
     }
-    return (AppSetting.d) && (super.c());
+    return (AppSetting.e) && (super.m());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.ChirpSoHandler
  * JD-Core Version:    0.7.0.1
  */

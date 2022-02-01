@@ -20,11 +20,11 @@ public class LbsFriendMsgBoxAppender
   private Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, Map<String, RecentUser> paramMap, RecentUserProxy paramRecentUserProxy, IConversationFacade paramIConversationFacade, String paramString, int paramInt, long paramLong)
   {
     if ((paramIConversationFacade.isUinInRecentNotSubAccount(paramString)) || (paramMap.containsKey(UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop)))) {
-      paramRecentUserProxy.a(paramMessageRecord.frienduin);
+      paramRecentUserProxy.b(paramMessageRecord.frienduin);
     }
     boolean bool = MsgBoxUtil.a();
     int i;
-    if (UinTypeUtil.a(paramMessageRecord))
+    if (UinTypeUtil.c(paramMessageRecord))
     {
       paramIMessageManager = (C2CMessageManager)paramIMessageManager;
       paramIMessageManager.a(paramMessageRecord, AppConstants.LBS_SAY_HELLO_LIST_UIN, paramMessageRecord.senderuin);
@@ -74,7 +74,7 @@ public class LbsFriendMsgBoxAppender
   
   public Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, EntityManager paramEntityManager, Map<String, RecentUser> paramMap, RecentUserProxy paramRecentUserProxy, IConversationFacade paramIConversationFacade, String paramString, int paramInt, long paramLong)
   {
-    if (((UinTypeUtil.a(paramMessageRecord.istroop) == 1001) && (MsgProxyUtils.a(paramMessageRecord.istroop, paramMessageRecord.msgtype))) || (UinTypeUtil.a(paramMessageRecord.istroop) == 1010)) {
+    if (((UinTypeUtil.e(paramMessageRecord.istroop) == 1001) && (MsgProxyUtils.a(paramMessageRecord.istroop, paramMessageRecord.msgtype))) || (UinTypeUtil.e(paramMessageRecord.istroop) == 1010)) {
       return a(paramIMessageManager, paramMessageRecord, paramMap, paramRecentUserProxy, paramIConversationFacade, paramString, paramInt, paramLong);
     }
     return new Object[] { Boolean.valueOf(false), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) };
@@ -82,7 +82,7 @@ public class LbsFriendMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.LbsFriendMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

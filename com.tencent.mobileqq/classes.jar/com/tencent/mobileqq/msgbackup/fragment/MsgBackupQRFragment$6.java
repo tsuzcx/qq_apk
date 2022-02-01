@@ -12,17 +12,17 @@ class MsgBackupQRFragment$6
   public void run()
   {
     MsgBackupManager localMsgBackupManager = MsgBackupManager.a();
-    String str = localMsgBackupManager.a().a();
+    String str = localMsgBackupManager.e().d();
     if (str != null)
     {
       localMsgBackupManager.a(str);
-      this.this$0.b.postDelayed(this, 500L);
+      this.this$0.J.postDelayed(this, 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public abstract interface IAnonymousIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.IAnonymousIPC
  * JD-Core Version:    0.7.0.1
  */

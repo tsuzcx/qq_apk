@@ -126,8 +126,8 @@ public class TroopAioKeywordHelper
       {
         oidb_0x496.AioKeywordInfo localAioKeywordInfo = (oidb_0x496.AioKeywordInfo)paramAioKeyword.next();
         TroopAioKeywordInfo localTroopAioKeywordInfo = new TroopAioKeywordInfo();
-        localTroopAioKeywordInfo.jdField_a_of_type_JavaLangString = localAioKeywordInfo.word.get();
-        localTroopAioKeywordInfo.jdField_a_of_type_JavaUtilList = localAioKeywordInfo.rule_id.get();
+        localTroopAioKeywordInfo.a = localAioKeywordInfo.word.get();
+        localTroopAioKeywordInfo.b = localAioKeywordInfo.rule_id.get();
         localArrayList.add(localTroopAioKeywordInfo);
       }
       return localArrayList;
@@ -146,7 +146,7 @@ public class TroopAioKeywordHelper
     //   4: invokestatic 77	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   7: ldc 79
     //   9: iconst_0
-    //   10: invokevirtual 190	com/tencent/qphone/base/util/BaseApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   10: invokevirtual 191	com/tencent/qphone/base/util/BaseApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   13: astore 4
     //   15: aload 4
     //   17: astore_2
@@ -154,38 +154,38 @@ public class TroopAioKeywordHelper
     //   20: astore_3
     //   21: aload 4
     //   23: aload_1
-    //   24: invokevirtual 194	com/tencent/mobileqq/troop/org/pb/oidb_0x496$AioKeyword:toByteArray	()[B
-    //   27: invokevirtual 200	java/io/FileOutputStream:write	([B)V
+    //   24: invokevirtual 195	com/tencent/mobileqq/troop/org/pb/oidb_0x496$AioKeyword:toByteArray	()[B
+    //   27: invokevirtual 201	java/io/FileOutputStream:write	([B)V
     //   30: aload 4
     //   32: astore_2
     //   33: aload 4
     //   35: astore_3
     //   36: aload 4
-    //   38: invokevirtual 203	java/io/FileOutputStream:flush	()V
+    //   38: invokevirtual 204	java/io/FileOutputStream:flush	()V
     //   41: aload 4
     //   43: astore_2
     //   44: aload 4
     //   46: astore_3
     //   47: aload 4
-    //   49: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   49: invokevirtual 205	java/io/FileOutputStream:close	()V
     //   52: aload 4
     //   54: astore_2
     //   55: aload 4
     //   57: astore_3
-    //   58: ldc 206
-    //   60: invokestatic 212	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   63: checkcast 206	com/tencent/mobileqq/troop/utils/api/ITroopSPUtilApi
-    //   66: invokestatic 218	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   58: ldc 207
+    //   60: invokestatic 213	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   63: checkcast 207	com/tencent/mobileqq/troop/utils/api/ITroopSPUtilApi
+    //   66: invokestatic 219	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   69: aload_0
-    //   70: invokevirtual 221	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   70: invokevirtual 222	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   73: aload_1
-    //   74: getfield 225	com/tencent/mobileqq/troop/org/pb/oidb_0x496$AioKeyword:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   77: invokevirtual 230	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   80: invokeinterface 234 4 0
+    //   74: getfield 226	com/tencent/mobileqq/troop/org/pb/oidb_0x496$AioKeyword:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   77: invokevirtual 231	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   80: invokeinterface 235 4 0
     //   85: aload 4
     //   87: ifnull +133 -> 220
     //   90: aload 4
-    //   92: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   92: invokevirtual 205	java/io/FileOutputStream:close	()V
     //   95: return
     //   96: astore_0
     //   97: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -195,19 +195,19 @@ public class TroopAioKeywordHelper
     //   107: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   110: astore_1
     //   111: aload_1
-    //   112: ldc 236
+    //   112: ldc 237
     //   114: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   117: pop
     //   118: aload_1
     //   119: aload_0
-    //   120: invokevirtual 237	java/io/IOException:toString	()Ljava/lang/String;
+    //   120: invokevirtual 238	java/io/IOException:toString	()Ljava/lang/String;
     //   123: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: ldc 48
     //   129: iconst_2
     //   130: aload_1
     //   131: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 240	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   134: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   137: return
     //   138: astore_0
     //   139: goto +82 -> 221
@@ -225,14 +225,14 @@ public class TroopAioKeywordHelper
     //   161: aload_3
     //   162: astore_2
     //   163: aload_1
-    //   164: ldc 236
+    //   164: ldc 237
     //   166: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: pop
     //   170: aload_3
     //   171: astore_2
     //   172: aload_1
     //   173: aload_0
-    //   174: invokevirtual 237	java/io/IOException:toString	()Ljava/lang/String;
+    //   174: invokevirtual 238	java/io/IOException:toString	()Ljava/lang/String;
     //   177: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload_3
@@ -241,11 +241,11 @@ public class TroopAioKeywordHelper
     //   185: iconst_2
     //   186: aload_1
     //   187: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 240	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   190: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   193: aload_3
     //   194: ifnull +26 -> 220
     //   197: aload_3
-    //   198: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   198: invokevirtual 205	java/io/FileOutputStream:close	()V
     //   201: return
     //   202: astore_0
     //   203: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -259,7 +259,7 @@ public class TroopAioKeywordHelper
     //   221: aload_2
     //   222: ifnull +51 -> 273
     //   225: aload_2
-    //   226: invokevirtual 204	java/io/FileOutputStream:close	()V
+    //   226: invokevirtual 205	java/io/FileOutputStream:close	()V
     //   229: goto +44 -> 273
     //   232: astore_1
     //   233: invokestatic 46	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -269,19 +269,19 @@ public class TroopAioKeywordHelper
     //   243: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   246: astore_2
     //   247: aload_2
-    //   248: ldc 236
+    //   248: ldc 237
     //   250: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   253: pop
     //   254: aload_2
     //   255: aload_1
-    //   256: invokevirtual 237	java/io/IOException:toString	()Ljava/lang/String;
+    //   256: invokevirtual 238	java/io/IOException:toString	()Ljava/lang/String;
     //   259: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: pop
     //   263: ldc 48
     //   265: iconst_2
     //   266: aload_2
     //   267: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: invokestatic 240	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   270: invokestatic 241	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   273: goto +5 -> 278
     //   276: aload_0
     //   277: athrow
@@ -315,18 +315,6 @@ public class TroopAioKeywordHelper
     //   225	229	232	java/io/IOException
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopAioKeyBlackRule localTroopAioKeyBlackRule = new TroopAioKeyBlackRule();
-    localTroopAioKeyBlackRule.mBlackUinKeywordRuleId = paramString;
-    paramQQAppInterface.persistOrReplace(localTroopAioKeyBlackRule);
-    paramQQAppInterface.close();
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, List<TroopAioKeywordTipInfo> paramList)
   {
     if (paramList != null)
@@ -353,22 +341,34 @@ public class TroopAioKeywordHelper
       {
         oidb_0x496.AioKeywordRuleInfo localAioKeywordRuleInfo = (oidb_0x496.AioKeywordRuleInfo)paramAioKeyword.next();
         TroopAioKeywordRuleInfo localTroopAioKeywordRuleInfo = new TroopAioKeywordRuleInfo();
-        localTroopAioKeywordRuleInfo.jdField_a_of_type_Int = localAioKeywordRuleInfo.rule_id.get();
+        localTroopAioKeywordRuleInfo.a = localAioKeywordRuleInfo.rule_id.get();
         localTroopAioKeywordRuleInfo.b = localAioKeywordRuleInfo.start_time.get();
         localTroopAioKeywordRuleInfo.c = localAioKeywordRuleInfo.end_time.get();
         localTroopAioKeywordRuleInfo.d = localAioKeywordRuleInfo.postion_flag.get();
-        localTroopAioKeywordRuleInfo.jdField_a_of_type_JavaUtilList = localAioKeywordRuleInfo.match_group_class.get();
-        localTroopAioKeywordRuleInfo.e = localAioKeywordRuleInfo.version.get();
+        localTroopAioKeywordRuleInfo.e = localAioKeywordRuleInfo.match_group_class.get();
+        localTroopAioKeywordRuleInfo.f = localAioKeywordRuleInfo.version.get();
         localArrayList.add(localTroopAioKeywordRuleInfo);
       }
       return localArrayList;
     }
     return null;
   }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopAioKeyBlackRule localTroopAioKeyBlackRule = new TroopAioKeyBlackRule();
+    localTroopAioKeyBlackRule.mBlackUinKeywordRuleId = paramString;
+    paramQQAppInterface.persistOrReplace(localTroopAioKeyBlackRule);
+    paramQQAppInterface.close();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordHelper
  * JD-Core Version:    0.7.0.1
  */

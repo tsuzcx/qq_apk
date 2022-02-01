@@ -10,25 +10,25 @@ class BlessManager$2
 {
   public void onCancel(DownloadTask paramDownloadTask)
   {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+    BlessManager.b(this.c).remove(this.a);
   }
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.a() == 3)
+    BlessManager.b(this.c).remove(this.a);
+    if (paramDownloadTask.e() == 3)
     {
       if (QLog.isColorLevel())
       {
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("download finished ");
-        paramDownloadTask.append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessPtvModule.id);
+        paramDownloadTask.append(this.b.id);
         QLog.d("BlessManager", 2, paramDownloadTask.toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessPtvModule))
+      if (this.c.a(this.b))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessPtvModule.broken = false;
-        BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
+        this.b.broken = false;
+        BlessManager.c(this.c);
       }
     }
     else
@@ -37,18 +37,18 @@ class BlessManager$2
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("downloadZipFile failed: ");
-        localStringBuilder.append(paramDownloadTask.b);
+        localStringBuilder.append(paramDownloadTask.d);
         localStringBuilder.append(" code=");
-        localStringBuilder.append(paramDownloadTask.a);
+        localStringBuilder.append(paramDownloadTask.c);
         QLog.d("BlessManager", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessPtvModule, true);
+      this.c.a(this.b, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager.2
  * JD-Core Version:    0.7.0.1
  */

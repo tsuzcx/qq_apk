@@ -18,126 +18,129 @@ import com.tencent.widget.TraceUtils;
 public class StoryHomeHorizontalListView
   extends HorizontalListView
 {
-  private float jdField_a_of_type_Float;
-  public int a;
-  private StoryHomeHorizontalListView.OnOverScrollRightListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener;
-  private StoryHomeHorizontalListView.OnScrollChangeListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnScrollChangeListener;
-  private LoadingMoreHelper.OnLoadMoreListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
-  private HorizontalListView.OnItemScrollEventListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  protected int b;
-  private boolean jdField_b_of_type_Boolean;
-  protected int c;
+  private float a;
+  private float b;
   private boolean c;
   private boolean d;
+  public int e = 5;
+  protected int f;
+  protected int g;
+  private StoryHomeHorizontalListView.OnOverScrollRightListener h;
+  private StoryHomeHorizontalListView.OnScrollChangeListener i;
+  private HorizontalListView.OnItemScrollEventListener j;
+  private boolean k;
+  private LoadingMoreHelper.OnLoadMoreListener l;
+  private boolean m;
   
   public StoryHomeHorizontalListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 5;
     a(paramContext);
   }
   
   public StoryHomeHorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 5;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_c_of_type_Int = DisplayUtil.a(paramContext, 147.0F);
+    this.f = paramContext.getResources().getDisplayMetrics().widthPixels;
+    this.g = DisplayUtil.a(paramContext, 147.0F);
     super.setOnItemScollEventListener(new StoryHomeHorizontalListView.1(this));
     setOverScrollMode(1);
   }
   
   public void a()
   {
-    if (!this.d) {
+    if (!this.m) {
       return;
     }
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.k) {
       return;
     }
-    int i = getLastVisiblePosition();
-    int j = getAdapter().getCount();
-    SLog.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
-    if (j - i < this.jdField_a_of_type_Int)
+    int n = getLastVisiblePosition();
+    int i1 = getAdapter().getCount();
+    SLog.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(n), Integer.valueOf(i1));
+    if (i1 - n < this.e)
     {
-      LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+      LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.l;
       if ((localOnLoadMoreListener != null) && (localOnLoadMoreListener.a(false))) {
-        this.jdField_c_of_type_Boolean = true;
+        this.k = true;
       }
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int n = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f3 = paramMotionEvent.getY();
     StringBuilder localStringBuilder;
-    if (i == 0)
+    if (n == 0)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_DOWN. mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f3;
+      this.a = f1;
+      this.b = f3;
       getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
+      this.c = true;
+      this.d = true;
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    if (i == 2)
+    if (n == 2)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_MOVE. mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
-      float f2 = this.jdField_a_of_type_Float;
-      f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
+      float f2 = this.a;
+      f3 -= this.b;
+      if ((this.c) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       } else {
         getParent().requestDisallowInterceptTouchEvent(true);
       }
     }
-    else if ((i == 3) || (i == 1))
+    else if ((n == 3) || (n == 1))
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("StoryHomeHorizontalListView dispatchTouchEvent:ACTION_CANCEL or UP. action=");
-        localStringBuilder.append(i);
+        localStringBuilder.append(n);
         localStringBuilder.append(" mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("Q.qqstory.friendStory", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public int getDividerWidth()
+  {
+    return this.mDividerWidth;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceUtils.traceBegin("StoryHorizontal.onLayout");
-    int i = this.mCurrentX;
+    int n = this.mCurrentX;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnScrollChangeListener != null) && (i != this.mCurrentX))
+    if ((this.i != null) && (n != this.mCurrentX))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnScrollChangeListener.a(i, this.mCurrentX);
-      SLog.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(i), Integer.valueOf(this.mCurrentX));
+      this.i.a(n, this.mCurrentX);
+      SLog.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(n), Integer.valueOf(this.mCurrentX));
     }
     TraceUtils.traceEnd();
   }
@@ -145,20 +148,20 @@ public class StoryHomeHorizontalListView
   protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     StoryHomeHorizontalListView.OnOverScrollRightListener localOnOverScrollRightListener;
-    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > DisplayUtil.a(getContext(), 50.0F)))
+    if ((this.d) && (paramInt3 > 0) && (paramInt3 > DisplayUtil.a(getContext(), 50.0F)))
     {
-      this.jdField_b_of_type_Boolean = false;
-      localOnOverScrollRightListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener;
-      if ((localOnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
-        localOnOverScrollRightListener.N_();
+      this.d = false;
+      localOnOverScrollRightListener = this.h;
+      if ((localOnOverScrollRightListener != null) && (this.c)) {
+        localOnOverScrollRightListener.e();
       }
     }
-    else if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -DisplayUtil.a(getContext(), 50.0F)))
+    else if ((this.d) && (paramInt3 < 0) && (paramInt3 < -DisplayUtil.a(getContext(), 50.0F)))
     {
-      this.jdField_b_of_type_Boolean = false;
-      localOnOverScrollRightListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener;
-      if ((localOnOverScrollRightListener != null) && (this.jdField_a_of_type_Boolean)) {
-        localOnOverScrollRightListener.O_();
+      this.d = false;
+      localOnOverScrollRightListener = this.h;
+      if ((localOnOverScrollRightListener != null) && (this.c)) {
+        localOnOverScrollRightListener.by_();
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
@@ -171,7 +174,7 @@ public class StoryHomeHorizontalListView
   
   public void setDataCount(int paramInt)
   {
-    if (paramInt >= this.jdField_b_of_type_Int / this.jdField_c_of_type_Int)
+    if (paramInt >= this.f / this.g)
     {
       setOverScrollMode(0);
       return;
@@ -181,28 +184,28 @@ public class StoryHomeHorizontalListView
   
   public void setLoadMoreComplete(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-    this.jdField_c_of_type_Boolean = false;
+    this.m = paramBoolean;
+    this.k = false;
   }
   
   public void setOnItemScollEventListener(HorizontalListView.OnItemScrollEventListener paramOnItemScrollEventListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener = paramOnItemScrollEventListener;
+    this.j = paramOnItemScrollEventListener;
   }
   
   public void setOnLoadMoreListener(LoadingMoreHelper.OnLoadMoreListener paramOnLoadMoreListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener = paramOnLoadMoreListener;
+    this.l = paramOnLoadMoreListener;
   }
   
   public void setOnOverScrollRightListener(StoryHomeHorizontalListView.OnOverScrollRightListener paramOnOverScrollRightListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener = paramOnOverScrollRightListener;
+    this.h = paramOnOverScrollRightListener;
   }
   
   public void setOnScrollChangeListener(StoryHomeHorizontalListView.OnScrollChangeListener paramOnScrollChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnScrollChangeListener = paramOnScrollChangeListener;
+    this.i = paramOnScrollChangeListener;
   }
 }
 

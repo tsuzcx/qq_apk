@@ -5,26 +5,26 @@ import java.lang.ref.WeakReference;
 public class AvatarPendantActivity$ConfigParser
   implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<AvatarPendantActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private String a;
+  private WeakReference<AvatarPendantActivity> b;
   
   public AvatarPendantActivity$ConfigParser(String paramString, AvatarPendantActivity paramAvatarPendantActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAvatarPendantActivity);
+    this.a = paramString;
+    this.b = new WeakReference(paramAvatarPendantActivity);
   }
   
   public void run()
   {
-    AvatarPendantActivity localAvatarPendantActivity = (AvatarPendantActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AvatarPendantActivity localAvatarPendantActivity = (AvatarPendantActivity)this.b.get();
     if (localAvatarPendantActivity != null) {
-      localAvatarPendantActivity.b(this.jdField_a_of_type_JavaLangString);
+      localAvatarPendantActivity.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.ConfigParser
  * JD-Core Version:    0.7.0.1
  */

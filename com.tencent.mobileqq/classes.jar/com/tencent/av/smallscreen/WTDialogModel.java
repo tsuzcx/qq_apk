@@ -10,9 +10,9 @@ import mqq.app.BaseActivity;
 public class WTDialogModel
   extends DialogModelBase
 {
-  private int jdField_a_of_type_Int = 1;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  private String jdField_a_of_type_JavaLangString = null;
+  private QQCustomDialog b = null;
+  private int c = 1;
+  private String d = null;
   
   public WTDialogModel(BaseActivity paramBaseActivity)
   {
@@ -21,33 +21,33 @@ public class WTDialogModel
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setTitle(null).setMessage(this.jdField_a_of_type_JavaLangString).setNegativeButton(2131695995, new WTDialogModel.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+    this.b = DialogUtil.a(this.a, 230).setTitle(null).setMessage(this.d).setNegativeButton(2131893757, new WTDialogModel.1(this));
+    this.b.setCancelable(false);
   }
   
   protected void a()
   {
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null))
+    if ((this.c == 1) && (this.b == null))
     {
       e();
-      QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      QQCustomDialog localQQCustomDialog = this.b;
       if (localQQCustomDialog != null) {
         a("WTDialogModel.onResume", localQQCustomDialog);
       }
     }
     else
     {
-      this.jdField_a_of_type_MqqAppBaseActivity.finish();
+      this.a.finish();
     }
   }
   
   protected void a(Bundle paramBundle)
   {
-    paramBundle = this.jdField_a_of_type_MqqAppBaseActivity.getIntent();
-    this.jdField_a_of_type_Int = paramBundle.getIntExtra("tag_style", 1);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("tag_msg");
-    if ((this.jdField_a_of_type_Int == 1) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_MqqAppBaseActivity.finish();
+    paramBundle = this.a.getIntent();
+    this.c = paramBundle.getIntExtra("tag_style", 1);
+    this.d = paramBundle.getStringExtra("tag_msg");
+    if ((this.c == 1) && (TextUtils.isEmpty(this.d))) {
+      this.a.finish();
     }
   }
   
@@ -57,7 +57,7 @@ public class WTDialogModel
   
   protected void d()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.b;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }

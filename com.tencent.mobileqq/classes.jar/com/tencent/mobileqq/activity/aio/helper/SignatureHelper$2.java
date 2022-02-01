@@ -22,9 +22,9 @@ class SignatureHelper$2
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = SignatureHelper.a(this.this$0).a();
-    SessionInfo localSessionInfo = SignatureHelper.a(this.this$0).a();
-    MessageRecord localMessageRecord = localQQAppInterface.getMessageFacade().a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, RichStatItemBuilder.a);
+    QQAppInterface localQQAppInterface = SignatureHelper.a(this.this$0).i();
+    SessionInfo localSessionInfo = SignatureHelper.a(this.this$0).aE();
+    MessageRecord localMessageRecord = localQQAppInterface.getMessageFacade().a(localSessionInfo.b, localSessionInfo.a, RichStatItemBuilder.e);
     Object localObject;
     MqqHandler localMqqHandler;
     Message localMessage;
@@ -33,7 +33,7 @@ class SignatureHelper$2
       localObject = new HashMap();
       ((Map)localObject).put("chatMessage", localMessageRecord);
       ((Map)localObject).put("sigZanInfo", this.a);
-      localMqqHandler = SignatureHelper.a(this.this$0).a();
+      localMqqHandler = SignatureHelper.a(this.this$0).j();
       localMqqHandler.removeMessages(267387138);
       localMessage = localMqqHandler.obtainMessage(267387138);
       localMessage.obj = localObject;
@@ -41,9 +41,9 @@ class SignatureHelper$2
     try
     {
       localObject = new JSONObject(localMessageRecord.msg);
-      ((JSONObject)localObject).put("count", this.a.b);
-      ((JSONObject)localObject).put("zanfalg", this.a.c);
-      localQQAppInterface.getMessageFacade().a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
+      ((JSONObject)localObject).put("count", this.a.c);
+      ((JSONObject)localObject).put("zanfalg", this.a.d);
+      localQQAppInterface.getMessageFacade().a(localSessionInfo.b, localSessionInfo.a, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
       label189:
       localMqqHandler.sendMessageDelayed(localMessage, 1000L);
       return;
@@ -56,7 +56,7 @@ class SignatureHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.SignatureHelper.2
  * JD-Core Version:    0.7.0.1
  */

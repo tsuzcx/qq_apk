@@ -1,23 +1,24 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import UserGrowth.stTabInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabUtils;
+import com.tencent.biz.pubaccount.weishi_new.presenter.WSHomeFragmentPresenter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow.RedDotBubblePopupListener;
 
 class WSHomeFragment$8
-  implements View.OnClickListener
+  implements RedDotBubblePopupWindow.RedDotBubblePopupListener
 {
-  WSHomeFragment$8(WSHomeFragment paramWSHomeFragment, stTabInfo paramstTabInfo) {}
+  WSHomeFragment$8(WSHomeFragment paramWSHomeFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    WSTabUtils.a(WSHomeFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragment), this.jdField_a_of_type_UserGrowthStTabInfo, WSHomeFragment.a, WSHomeFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragment));
+    WSPublicAccReport.getInstance().reportMessageBubblePopupClick(WSHomeFragment.f, WSHomeFragment.e(this.a));
+    WSHomeFragment.i(this.a);
+    ((WSHomeFragmentPresenter)this.a.aO_()).a(this.a.getBaseActivity(), 601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.8
  * JD-Core Version:    0.7.0.1
  */

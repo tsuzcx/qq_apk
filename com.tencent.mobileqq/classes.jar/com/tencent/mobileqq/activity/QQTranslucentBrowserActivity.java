@@ -49,10 +49,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167333);
-    View localView = findViewById(2131363807);
+    getWindow().setBackgroundDrawableResource(2131168376);
+    View localView = findViewById(2131429740);
     if (localView != null) {
-      localView.setBackgroundResource(2131167333);
+      localView.setBackgroundResource(2131168376);
     }
     if (paramBundle != null)
     {
@@ -120,7 +120,7 @@ public class QQTranslucentBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

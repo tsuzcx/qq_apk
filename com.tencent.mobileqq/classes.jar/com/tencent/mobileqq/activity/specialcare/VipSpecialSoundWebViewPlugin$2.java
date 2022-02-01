@@ -17,10 +17,10 @@ class VipSpecialSoundWebViewPlugin$2
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("key_special_sound_list");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.b.mRuntime.b().getCurrentAccountUin());
       localObject = ((StringBuilder)localObject).toString();
       localObject = (List)QvipSpecialConstants.a.get(localObject);
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      VipSpecialSoundWebViewPlugin.a(this.b, this.a, (List)localObject);
       return;
     }
     catch (Exception localException1)
@@ -28,7 +28,7 @@ class VipSpecialSoundWebViewPlugin$2
       localException1.printStackTrace();
       try
       {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+        VipSpecialSoundWebViewPlugin.a(this.b, this.a, null);
         return;
       }
       catch (Exception localException2)
@@ -36,13 +36,13 @@ class VipSpecialSoundWebViewPlugin$2
         localException2.printStackTrace();
       }
     }
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+    VipSpecialSoundWebViewPlugin.a(this.b, this.a, null);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.2
  * JD-Core Version:    0.7.0.1
  */

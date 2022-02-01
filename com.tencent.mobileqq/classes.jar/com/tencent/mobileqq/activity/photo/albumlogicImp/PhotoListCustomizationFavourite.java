@@ -17,20 +17,20 @@ public class PhotoListCustomizationFavourite
     super(paramAbstractPhotoListActivity);
   }
   
-  public String a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum;
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getString(2131694849, new Object[] { Integer.valueOf(i) });
-  }
-  
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
   }
+  
+  public String c(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.e.maxSelectNum;
+    return this.c.getString(2131892552, new Object[] { Integer.valueOf(i) });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationFavourite
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,6 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/network/IExpandHandler;", "", "calcMatchChatBoxUnreadCount", "", "cancleUnlimitMatch", "", "uin", "", "closeSignalBomb", "editExtendFriendInfo", "declaration", "url", "duration", "", "fontId", "fontType", "clothesId", "getExpandHandlerClassName", "getExtendFriendInfo", "vipInfoOnly", "getExtendFriendOnlineState", "reqList", "", "", "reqTag", "getNewReqNum", "getSigBy0xb4cCode", "selfUin", "friendUin", "friendNick", "_0xb4cCode", "", "getSquareStrangerList", "reqCookies", "reqCount", "searchKey", "ts", "searchKeyMask", "isConfigTag", "getUnlimitMatchBaseInfo", "handleC2CConfirmMsg", "message", "Lcom/tencent/mobileqq/data/MessageRecord;", "handleGetUnlimitMatchOfflinePush", "msgBody", "subType", "notifyUI", "type", "isSuccess", "data", "reportUser", "reqThrowToColdPalace", "uinType", "requestCampusCertificateStatus", "getSearchKeywords", "getOnlineNumber", "requestLimitChatSettingOnPlusPanel", "bFromLoginStep", "requestUnlimitMatch", "sexType", "tagId", "setUnlimitMatchStatus", "bOpen", "updateExtendFriendCampusSchoolInfo", "info", "updateRedPoint", "qqexpand-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IExpandHandler
 {
-  public abstract int a();
-  
   public abstract int a(@Nullable String paramString, boolean paramBoolean);
   
   public abstract void a();
@@ -32,11 +30,7 @@ public abstract interface IExpandHandler
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a(@Nullable String paramString);
-  
   public abstract boolean a(@Nullable String paramString, int paramInt1, int paramInt2);
-  
-  public abstract boolean a(@Nullable String paramString, boolean paramBoolean);
   
   public abstract boolean a(@Nullable List<Long> paramList);
   
@@ -46,11 +40,17 @@ public abstract interface IExpandHandler
   
   public abstract boolean b(@Nullable String paramString);
   
+  public abstract boolean b(@Nullable String paramString, boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract boolean c(@Nullable String paramString);
+  
   public abstract void notifyUI(int paramInt, boolean paramBoolean, @Nullable Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.IExpandHandler
  * JD-Core Version:    0.7.0.1
  */

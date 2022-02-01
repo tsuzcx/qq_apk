@@ -15,21 +15,21 @@ public abstract class QFileControlReq
     return localStringBuilder.toString();
   }
   
-  public QFileControlCallback a()
-  {
-    return this.a;
-  }
-  
   public abstract String a();
   
   public void a(QFileControlCallback paramQFileControlCallback)
   {
     this.a = paramQFileControlCallback;
   }
+  
+  public QFileControlCallback b()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileControlReq
  * JD-Core Version:    0.7.0.1
  */

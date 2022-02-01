@@ -16,19 +16,9 @@ public class QQDingdongSoundHandler
     super("qq.android.dingdong.ring", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10050;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return QQDingdongSoundData.class;
-  }
-  
-  public String a()
-  {
-    return "dingdongDownloadAudioSoundDuration";
   }
   
   public void a(String paramString)
@@ -53,7 +43,7 @@ public class QQDingdongSoundHandler
   
   public void a(boolean paramBoolean)
   {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)h();
     if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
     {
       localQQDingdongSoundData.autoDownload = true;
@@ -62,28 +52,38 @@ public class QQDingdongSoundHandler
     super.a(paramBoolean);
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "dingdongDownloadAudioSoundDuration";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10050;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public boolean h()
+  public boolean e()
   {
-    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    return true;
+  }
+  
+  public boolean v()
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)h();
     if (localQQDingdongSoundData == null) {
-      return super.h();
+      return super.v();
     }
     return localQQDingdongSoundData.autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QQDingdongSoundHandler
  * JD-Core Version:    0.7.0.1
  */

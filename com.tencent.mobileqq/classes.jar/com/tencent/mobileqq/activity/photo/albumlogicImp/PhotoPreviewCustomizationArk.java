@@ -12,9 +12,9 @@ public class PhotoPreviewCustomizationArk
   extends PhotoPreviewCustomizationDefault
 {
   public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationArk";
-  private boolean a;
   private String b;
-  private String c;
+  private boolean j;
+  private String k;
   
   public PhotoPreviewCustomizationArk(AbstractPhotoPreviewActivity paramAbstractPhotoPreviewActivity)
   {
@@ -24,34 +24,34 @@ public class PhotoPreviewCustomizationArk
   public void a()
   {
     super.a();
-    a().a.setOnClickListener(new PhotoPreviewCustomizationArk.1(this));
+    s().l.setOnClickListener(new PhotoPreviewCustomizationArk.1(this));
   }
   
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
     this.b = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.c = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+    this.j = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.k = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
   }
   
-  public void g()
+  public void i()
   {
-    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.d))
+    if ("FROM_PHOTO_LIST".equals(this.d.A))
     {
-      Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent();
+      Intent localIntent = this.c.getIntent();
       localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
       localIntent.putExtra("key_ark_app_res_path", this.b);
-      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_ark_app_engine_res_dir", this.c);
+      localIntent.putExtra("key_should_compress", this.j);
+      localIntent.putExtra("key_ark_app_engine_res_dir", this.k);
       localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
     }
-    super.g();
+    super.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationArk
  * JD-Core Version:    0.7.0.1
  */

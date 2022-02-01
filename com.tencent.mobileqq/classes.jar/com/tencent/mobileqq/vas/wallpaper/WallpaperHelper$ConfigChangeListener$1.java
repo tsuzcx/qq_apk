@@ -7,12 +7,12 @@ class WallpaperHelper$ConfigChangeListener$1
   
   public void run()
   {
-    WallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper, this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig, true);
+    WallpaperHelper.a(this.a, this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

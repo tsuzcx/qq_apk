@@ -14,8 +14,8 @@ public class ComponentNotIntrest
   extends FrameLayout
   implements View.OnClickListener, ComponentView
 {
-  public View a;
   CmpCtxt a;
+  public View b;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -37,60 +37,60 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.a = new CmpCtxt();
     a(paramContext);
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560153, this, true).findViewById(2131380181);
+    this.b = LayoutInflater.from(paramContext).inflate(2131626200, this, true).findViewById(2131449096);
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.a.a(paramCellListener);
   }
   
   public void a(Object paramObject)
   {
     if ((paramObject instanceof IReadInJoyModel))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.a.a((IReadInJoyModel)paramObject);
       b();
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a())
+    if (this.a.b())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()));
+      this.b.setPadding(AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()));
       return;
     }
-    if (RIJFeedsType.C(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()))
+    if (RIJFeedsType.I(this.a.a.k()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(9.0F, getResources()), AIOUtils.b(5.0F, getResources()));
+      this.b.setPadding(AIOUtils.b(5.0F, getResources()), AIOUtils.b(5.0F, getResources()), AIOUtils.b(9.0F, getResources()), AIOUtils.b(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.b(12.0F, getResources()), AIOUtils.b(9.0F, getResources()), AIOUtils.b(12.0F, getResources()), AIOUtils.b(9.0F, getResources()));
+    this.b.setPadding(AIOUtils.b(12.0F, getResources()), AIOUtils.b(9.0F, getResources()), AIOUtils.b(12.0F, getResources()), AIOUtils.b(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell$CellListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell$CellListener.a(paramView, null);
+    if (this.a.b != null) {
+      this.a.b.a(paramView, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentNotIntrest
  * JD-Core Version:    0.7.0.1
  */

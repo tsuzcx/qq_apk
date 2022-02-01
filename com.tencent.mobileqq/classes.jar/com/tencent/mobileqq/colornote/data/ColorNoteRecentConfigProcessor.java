@@ -9,7 +9,7 @@ public class ColorNoteRecentConfigProcessor
 {
   public static ColorNoteRecentConfBean a()
   {
-    return (ColorNoteRecentConfBean)QConfigManager.a().a(586);
+    return (ColorNoteRecentConfBean)QConfigManager.b().b(586);
   }
   
   public ColorNoteRecentConfBean a(int paramInt)
@@ -20,7 +20,7 @@ public class ColorNoteRecentConfigProcessor
   public ColorNoteRecentConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return ColorNoteRecentConfBean.a(paramArrayOfQConfItem[0].a);
+      return ColorNoteRecentConfBean.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -56,7 +56,7 @@ public class ColorNoteRecentConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteRecentConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

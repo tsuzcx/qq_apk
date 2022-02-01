@@ -18,91 +18,86 @@ import org.jetbrains.annotations.Nullable;
 public final class PtsData
   extends BaseData
 {
-  public static final PtsData.Companion a;
-  @JvmField
-  @NotNull
-  public final PTSComposer.IPTSUpdateDataListener a;
+  public static final PtsData.Companion e = new PtsData.Companion(null);
   @JvmField
   @Nullable
   public PTSComposer a;
-  @Nullable
-  private PTSItemData jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
-  @JvmField
-  @NotNull
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
   @JvmField
   @NotNull
   public String b;
+  @JvmField
   @NotNull
-  private String c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityPtsData$Companion = new PtsData.Companion(null);
-  }
+  public final PTSComposer.IPTSUpdateDataListener c;
+  @JvmField
+  @NotNull
+  public String d;
+  @Nullable
+  private PTSItemData f;
+  private boolean g;
+  @NotNull
+  private String h;
   
   public PtsData(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3)
   {
     super(27);
-    this.b = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "unknown";
-    this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = ((PTSComposer.IPTSUpdateDataListener)new PtsData.ptsUpdateDataListener.1(this));
-    paramString1 = PTSStyleManager.a().a("native_article", this.b);
+    this.d = paramString1;
+    this.h = paramString2;
+    this.g = true;
+    this.b = "unknown";
+    this.c = ((PTSComposer.IPTSUpdateDataListener)new PtsData.ptsUpdateDataListener.1(this));
+    paramString1 = PTSStyleManager.a().a("native_article", this.d);
     if (TextUtils.isEmpty((CharSequence)paramString1))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.g = false;
       return;
     }
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData = new PTSItemData.Builder().withJsonData(paramString3).withFrameTreeJson(paramString1).withItemID(this.c).withPageName(this.b).build();
+    this.f = new PTSItemData.Builder().withJsonData(paramString3).withFrameTreeJson(paramString1).withItemID(this.h).withPageName(this.d).build();
   }
   
   @Nullable
   public final PTSItemData a()
   {
-    return this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
-  }
-  
-  @JvmOverloads
-  public final void a()
-  {
-    a(this, null, 1, null);
+    return this.f;
   }
   
   public final void a(@Nullable PTSItemData paramPTSItemData)
   {
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData = paramPTSItemData;
+    this.f = paramPTSItemData;
   }
   
   @JvmOverloads
   public final void a(@Nullable IPTSLiteEventListener paramIPTSLiteEventListener)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
+      Object localObject = this.f;
       if (localObject != null)
       {
-        String str2 = this.b;
+        String str2 = this.d;
         String str1 = null;
         if (localObject != null) {
           localObject = ((PTSItemData)localObject).getFrameTreeJson();
         } else {
           localObject = null;
         }
-        PTSItemData localPTSItemData = this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData;
+        PTSItemData localPTSItemData = this.f;
         if (localPTSItemData != null) {
           str1 = localPTSItemData.getJSONData();
         }
-        this.jdField_a_of_type_ComTencentPtsCorePTSComposer = PTSComposer.buildComposer(str2, (String)localObject, str1, paramIPTSLiteEventListener, this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener);
+        this.a = PTSComposer.buildComposer(str2, (String)localObject, str1, paramIPTSLiteEventListener, this.c);
       }
     }
+  }
+  
+  @JvmOverloads
+  public final void b()
+  {
+    a(this, null, 1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.entity.PtsData
  * JD-Core Version:    0.7.0.1
  */

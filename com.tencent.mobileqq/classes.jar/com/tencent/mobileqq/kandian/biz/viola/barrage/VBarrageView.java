@@ -35,8 +35,14 @@ public final class VBarrageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public void a(@NotNull VBarrage paramVBarrage)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVBarrage, "component");
+    this.a = new WeakReference(paramVBarrage);
+  }
+  
   @Nullable
-  public VBarrage a()
+  public VBarrage getComponent()
   {
     WeakReference localWeakReference = this.a;
     if (localWeakReference != null) {
@@ -44,16 +50,10 @@ public final class VBarrageView
     }
     return null;
   }
-  
-  public void a(@NotNull VBarrage paramVBarrage)
-  {
-    Intrinsics.checkParameterIsNotNull(paramVBarrage, "component");
-    this.a = new WeakReference(paramVBarrage);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.VBarrageView
  * JD-Core Version:    0.7.0.1
  */

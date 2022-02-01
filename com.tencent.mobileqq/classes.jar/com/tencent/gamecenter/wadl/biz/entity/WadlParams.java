@@ -11,79 +11,56 @@ public class WadlParams
   implements Parcelable
 {
   public static final Parcelable.Creator<WadlParams> CREATOR = new WadlParams.1();
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
+  public String A = "";
+  public long B;
+  public int C;
+  public int D;
+  public boolean E;
+  public int F;
+  public String G;
+  public int a = 39;
   public boolean b;
   public int c;
-  public long c;
-  public String c;
-  public boolean c;
   public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  public String e = "";
   public String f;
-  public int g;
-  public String g;
+  public boolean g;
   public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
+  public String i = "";
   public String j;
   public String k = "";
-  public String l = "";
+  public int l;
   public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
+  public long n;
+  public long o;
+  public int p = -1;
   public String q;
+  public String r;
+  public String s;
+  public int t;
+  public String u = "";
+  public String v = "";
+  public String w = "";
+  public String x = "";
+  public String y = "";
+  public String z = "";
   
-  public WadlParams()
-  {
-    this.jdField_a_of_type_Int = 39;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_j_of_type_JavaLangString = "";
-  }
+  public WadlParams() {}
   
   public WadlParams(String paramString)
   {
-    this.jdField_a_of_type_Int = 39;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_j_of_type_JavaLangString = "";
     if (!TextUtils.isEmpty(paramString))
     {
-      this.q = paramString;
+      this.G = paramString;
       a(paramString);
     }
   }
   
   public WadlParams(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 39;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_j_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_f_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+    this.e = paramString1;
+    this.m = paramString2;
+    this.d = this.a;
   }
   
   public static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -116,71 +93,71 @@ public class WadlParams
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_b_of_type_Int = paramString.optInt("actionCode");
-        this.jdField_a_of_type_JavaLangString = paramString.optString("appId");
-        this.jdField_b_of_type_JavaLangString = paramString.optString("apkSign");
-        this.jdField_e_of_type_Int = paramString.optInt("versionCode");
-        this.jdField_f_of_type_JavaLangString = paramString.optString("packageName");
-        this.jdField_j_of_type_JavaLangString = paramString.optString("appName");
-        this.k = paramString.optString("iconUrl");
+        this.c = paramString.optInt("actionCode");
+        this.e = paramString.optString("appId");
+        this.f = paramString.optString("apkSign");
+        this.l = paramString.optInt("versionCode");
+        this.m = paramString.optString("packageName");
+        this.u = paramString.optString("appName");
+        this.v = paramString.optString("iconUrl");
         if (paramString.optInt("delayDownload") > 0)
         {
           bool = true;
-          this.jdField_b_of_type_Boolean = bool;
-          this.m = paramString.optString("fromWebUrl");
-          this.jdField_c_of_type_JavaLangString = paramString.optString("apkChannel", "10000144");
-          this.l = paramString.optString("via");
-          this.jdField_a_of_type_Long = paramString.optLong("downloadStartTime");
-          this.jdField_b_of_type_Long = paramString.optLong("downloadEndTime");
-          this.n = paramString.optString("adtag");
-          this.jdField_d_of_type_Int = paramString.optInt("from", 0);
-          this.jdField_c_of_type_Int = paramString.optInt("flags", this.jdField_a_of_type_Int);
+          this.g = bool;
+          this.x = paramString.optString("fromWebUrl");
+          this.i = paramString.optString("apkChannel", "10000144");
+          this.w = paramString.optString("via");
+          this.n = paramString.optLong("downloadStartTime");
+          this.o = paramString.optLong("downloadEndTime");
+          this.y = paramString.optString("adtag");
+          this.h = paramString.optInt("from", 0);
+          this.d = paramString.optInt("flags", this.a);
           if (a(64))
           {
-            a(64);
-            b(1);
+            b(64);
+            c(1);
           }
           if (a(128)) {
-            a(128);
+            b(128);
           }
-          this.o = paramString.optString("extraData");
-          this.jdField_a_of_type_JavaLangString = paramString.optString("appid", this.jdField_a_of_type_JavaLangString);
-          this.m = paramString.optString("wadlSource", this.m);
-          this.jdField_b_of_type_JavaLangString = paramString.optString("myAppId", this.jdField_b_of_type_JavaLangString);
+          this.z = paramString.optString("extraData");
+          this.e = paramString.optString("appid", this.e);
+          this.x = paramString.optString("wadlSource", this.x);
+          this.f = paramString.optString("myAppId", this.f);
           if ((paramString.has("isAutoInstall")) && (paramString.optInt("isAutoInstall") == 0)) {
-            a(1);
+            b(1);
           }
           if ((paramString.has("showPageNotification")) && (paramString.optInt("showPageNotification") == 0)) {
-            a(2);
+            b(2);
           }
           if ((paramString.has("showSystemNotification")) && (paramString.optInt("showSystemNotification") == 0)) {
-            a(4);
+            b(4);
           }
           if ((paramString.has("requireWifi")) && (paramString.optBoolean("requireWifi", false))) {
-            b(8);
+            c(8);
           }
           if ((paramString.has("showNetworkDiaLog")) && (paramString.optInt("showNetworkDiaLog") > 0)) {
-            b(16);
+            c(16);
           }
-          this.p = paramString.optString("sourceId");
-          this.jdField_c_of_type_Long = paramString.optLong("pkgSize");
-          this.jdField_a_of_type_Boolean = paramString.optBoolean("isRes");
-          if (this.jdField_a_of_type_Boolean)
+          this.A = paramString.optString("sourceId");
+          this.B = paramString.optLong("pkgSize");
+          this.b = paramString.optBoolean("isRes");
+          if (this.b)
           {
-            this.jdField_e_of_type_JavaLangString = paramString.optString("resUrl");
+            this.k = paramString.optString("resUrl");
           }
           else
           {
-            this.jdField_e_of_type_JavaLangString = paramString.optString("apkUrl");
-            if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-              this.jdField_e_of_type_JavaLangString = paramString.optString("url");
+            this.k = paramString.optString("apkUrl");
+            if (TextUtils.isEmpty(this.k)) {
+              this.k = paramString.optString("url");
             }
           }
-          this.jdField_f_of_type_Int = paramString.optInt("resIndex");
-          this.jdField_g_of_type_JavaLangString = paramString.optString("resVersionCode");
-          this.jdField_h_of_type_JavaLangString = paramString.optString("resName");
-          this.jdField_i_of_type_JavaLangString = paramString.optString("resMD5");
-          this.jdField_d_of_type_JavaLangString = paramString.optString("resDir");
+          this.p = paramString.optInt("resIndex");
+          this.q = paramString.optString("resVersionCode");
+          this.r = paramString.optString("resName");
+          this.s = paramString.optString("resMD5");
+          this.j = paramString.optString("resDir");
           return;
         }
       }
@@ -195,29 +172,24 @@ public class WadlParams
   
   public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return a(this.jdField_a_of_type_JavaLangString, this.jdField_g_of_type_Int, this.jdField_e_of_type_Int, this.jdField_h_of_type_JavaLangString);
+    if (this.b) {
+      return a(this.e, this.t, this.l, this.r);
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = ((paramInt ^ 0xFFFFFFFF) & this.jdField_c_of_type_Int);
+    return this.e;
   }
   
   public void a(Parcel paramParcel)
   {
     if (paramParcel != null)
     {
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_Int = paramParcel.readInt();
-      this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      this.c = paramParcel.readInt();
+      this.e = paramParcel.readString();
       this.k = paramParcel.readString();
+      this.f = paramParcel.readString();
+      this.l = paramParcel.readInt();
+      this.m = paramParcel.readString();
+      this.u = paramParcel.readString();
+      this.v = paramParcel.readString();
       int i1 = paramParcel.readInt();
       boolean bool2 = true;
       boolean bool1;
@@ -226,67 +198,62 @@ public class WadlParams
       } else {
         bool1 = false;
       }
-      this.jdField_b_of_type_Boolean = bool1;
-      this.m = paramParcel.readString();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      this.l = paramParcel.readString();
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      this.jdField_b_of_type_Long = paramParcel.readLong();
-      this.n = paramParcel.readString();
-      this.jdField_d_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.o = paramParcel.readString();
-      this.p = paramParcel.readString();
+      this.g = bool1;
+      this.x = paramParcel.readString();
+      this.i = paramParcel.readString();
+      this.w = paramParcel.readString();
+      this.n = paramParcel.readLong();
+      this.o = paramParcel.readLong();
+      this.y = paramParcel.readString();
+      this.h = paramParcel.readInt();
+      this.d = paramParcel.readInt();
+      this.z = paramParcel.readString();
+      this.A = paramParcel.readString();
       if (paramParcel.readInt() > 0) {
         bool1 = bool2;
       } else {
         bool1 = false;
       }
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_f_of_type_Int = paramParcel.readInt();
-      this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_g_of_type_Int = paramParcel.readInt();
-      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_c_of_type_Long = paramParcel.readLong();
-      this.jdField_h_of_type_Int = paramParcel.readInt();
-      this.jdField_i_of_type_Int = paramParcel.readInt();
-      this.jdField_j_of_type_Int = paramParcel.readInt();
+      this.b = bool1;
+      this.p = paramParcel.readInt();
+      this.q = paramParcel.readString();
+      this.r = paramParcel.readString();
+      this.s = paramParcel.readString();
+      this.k = paramParcel.readString();
+      this.t = paramParcel.readInt();
+      this.j = paramParcel.readString();
+      this.B = paramParcel.readLong();
+      this.C = paramParcel.readInt();
+      this.D = paramParcel.readInt();
+      this.F = paramParcel.readInt();
     }
   }
   
   public void a(WadlParams paramWadlParams)
   {
-    this.jdField_c_of_type_Int = paramWadlParams.jdField_c_of_type_Int;
-    this.jdField_h_of_type_Int = paramWadlParams.jdField_h_of_type_Int;
-    this.m = paramWadlParams.m;
+    this.d = paramWadlParams.d;
+    this.C = paramWadlParams.C;
+    this.x = paramWadlParams.x;
   }
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_c_of_type_Int & paramInt) == paramInt;
+    return (this.d & paramInt) == paramInt;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_Int = (paramInt | this.jdField_c_of_type_Int);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (this.jdField_j_of_type_Int & paramInt) == paramInt;
+    this.d = ((paramInt ^ 0xFFFFFFFF) & this.d);
   }
   
   public void c(int paramInt)
   {
-    this.jdField_j_of_type_Int = (paramInt | this.jdField_c_of_type_Int);
+    this.d = (paramInt | this.d);
   }
   
   public void d(int paramInt)
   {
-    this.jdField_j_of_type_Int = ((paramInt ^ 0xFFFFFFFF) & this.jdField_j_of_type_Int);
+    this.F = (paramInt | this.d);
   }
   
   public int describeContents()
@@ -294,77 +261,87 @@ public class WadlParams
     return 0;
   }
   
+  public void e(int paramInt)
+  {
+    this.F = ((paramInt ^ 0xFFFFFFFF) & this.F);
+  }
+  
+  public boolean f(int paramInt)
+  {
+    return (this.F & paramInt) == paramInt;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WadlParams{actionCode='");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", appId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isRes='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", resType=");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", versionCode=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", apkUrl='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", packageName='");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
     localStringBuilder.append(", appName='");
-    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append(this.u);
     localStringBuilder.append('\'');
     localStringBuilder.append(", delayDownload=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", extraData='");
-    localStringBuilder.append(this.o);
+    localStringBuilder.append(this.z);
     localStringBuilder.append('\'');
     localStringBuilder.append(", apkChannel='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", via='");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.w);
     localStringBuilder.append('\'');
     localStringBuilder.append(", flags=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", from=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", fromWebUrl=");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.x);
     localStringBuilder.append(", yyStartTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", yyEndTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", adtag='");
     localStringBuilder.append(this.n);
+    localStringBuilder.append(", yyEndTime=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", adtag='");
+    localStringBuilder.append(this.y);
     localStringBuilder.append('\'');
     localStringBuilder.append(", resName='");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
     localStringBuilder.append('\'');
     localStringBuilder.append(", resIndex='");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append('\'');
     localStringBuilder.append(", resMD5='");
-    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append(this.s);
     localStringBuilder.append('\'');
     localStringBuilder.append(", resDir='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
     localStringBuilder.append(", pkgSize=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", ignoreSpace=");
-    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append(this.C);
     localStringBuilder.append(", channelNum=");
-    localStringBuilder.append(this.jdField_i_of_type_Int);
+    localStringBuilder.append(this.D);
     localStringBuilder.append(", isCancelRequest=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.E);
     localStringBuilder.append(", extFlags=");
-    localStringBuilder.append(this.jdField_j_of_type_Int);
+    localStringBuilder.append(this.F);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -376,7 +353,7 @@ public class WadlParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.WadlParams
  * JD-Core Version:    0.7.0.1
  */

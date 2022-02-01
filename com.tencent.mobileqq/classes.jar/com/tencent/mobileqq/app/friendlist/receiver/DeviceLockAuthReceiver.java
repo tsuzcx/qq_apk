@@ -73,26 +73,26 @@ public class DeviceLockAuthReceiver
           DeviceLockItemInfo localDeviceLockItemInfo = new DeviceLockItemInfo();
           if (localDeviceInfo.bytes_appname.has())
           {
-            localDeviceLockItemInfo.jdField_c_of_type_JavaLangString = new String(localDeviceInfo.bytes_appname.get().toByteArray(), "UTF-8");
+            localDeviceLockItemInfo.d = new String(localDeviceInfo.bytes_appname.get().toByteArray(), "UTF-8");
             if (localDeviceInfo.bytes_guid.has())
             {
-              localDeviceLockItemInfo.jdField_a_of_type_ArrayOfByte = localDeviceInfo.bytes_guid.get().toByteArray();
+              localDeviceLockItemInfo.c = localDeviceInfo.bytes_guid.get().toByteArray();
               if (localDeviceInfo.bytes_device_typeinfo.has())
               {
-                localDeviceLockItemInfo.jdField_b_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_typeinfo.get().toByteArray(), "UTF-8");
+                localDeviceLockItemInfo.b = new String(localDeviceInfo.bytes_device_typeinfo.get().toByteArray(), "UTF-8");
                 new StringBuffer();
                 if (localDeviceInfo.bytes_device_name.has())
                 {
-                  localDeviceLockItemInfo.jdField_a_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_name.get().toByteArray(), "UTF-8");
+                  localDeviceLockItemInfo.a = new String(localDeviceInfo.bytes_device_name.get().toByteArray(), "UTF-8");
                   if (localDeviceInfo.uint32_auth_status.has())
                   {
-                    localDeviceLockItemInfo.jdField_c_of_type_Int = localDeviceInfo.uint32_auth_status.get();
+                    localDeviceLockItemInfo.g = localDeviceInfo.uint32_auth_status.get();
                     if (localDeviceInfo.uint32_appid.has())
                     {
-                      localDeviceLockItemInfo.jdField_a_of_type_Int = localDeviceInfo.uint32_appid.get();
+                      localDeviceLockItemInfo.e = localDeviceInfo.uint32_appid.get();
                       if (localDeviceInfo.uint32_subappid.has())
                       {
-                        localDeviceLockItemInfo.jdField_b_of_type_Int = localDeviceInfo.uint32_subappid.get();
+                        localDeviceLockItemInfo.f = localDeviceInfo.uint32_subappid.get();
                         paramObject.add(localDeviceLockItemInfo);
                       }
                     }
@@ -112,10 +112,10 @@ public class DeviceLockAuthReceiver
     }
     if (paramObject.size() > 0)
     {
-      this.a.notifyUI(68, true, paramObject);
+      this.b.notifyUI(68, true, paramObject);
       return;
     }
-    this.a.notifyUI(68, false, null);
+    this.b.notifyUI(68, false, null);
   }
   
   public boolean a(String paramString)
@@ -136,7 +136,7 @@ public class DeviceLockAuthReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.DeviceLockAuthReceiver
  * JD-Core Version:    0.7.0.1
  */

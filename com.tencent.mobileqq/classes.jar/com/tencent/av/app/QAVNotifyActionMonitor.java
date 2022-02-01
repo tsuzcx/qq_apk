@@ -7,15 +7,15 @@ import mqq.app.MobileQQ;
 
 public class QAVNotifyActionMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  private VideoAppInterface a;
+  private BroadcastReceiver b;
+  private boolean c;
   
   QAVNotifyActionMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QAVNotifyActionMonitor.QAVNotifyActionReceiver(paramVideoAppInterface, null);
-    this.jdField_a_of_type_Boolean = false;
+    this.a = paramVideoAppInterface;
+    this.b = new QAVNotifyActionMonitor.QAVNotifyActionReceiver(paramVideoAppInterface, null);
+    this.c = false;
   }
   
   public void a()
@@ -26,8 +26,8 @@ public class QAVNotifyActionMonitor
     localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
     localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
     localIntentFilter.addAction("com.tencent.qqhead.getheadresp2");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
+    this.a.getApplication().registerReceiver(this.b, localIntentFilter);
+    this.c = true;
     if (QLog.isColorLevel()) {
       QLog.i("QAVNotifyActionMonitor", 2, "register");
     }
@@ -35,10 +35,10 @@ public class QAVNotifyActionMonitor
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.getApplication().unregisterReceiver(this.b);
+      this.c = false;
     }
     if (QLog.isColorLevel()) {
       QLog.i("QAVNotifyActionMonitor", 2, "unRegister");

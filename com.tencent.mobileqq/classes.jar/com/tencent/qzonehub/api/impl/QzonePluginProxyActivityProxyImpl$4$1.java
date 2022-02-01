@@ -20,17 +20,17 @@ class QzonePluginProxyActivityProxyImpl$4$1
   
   public void run()
   {
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext;
-    boolean bool2 = this.this$0.jdField_a_of_type_AndroidContentContext instanceof BasePluginActivity;
+    Object localObject1 = this.this$0.f;
+    boolean bool2 = this.this$0.f instanceof BasePluginActivity;
     boolean bool1 = true;
     Object localObject2;
     if (bool2)
     {
-      localObject2 = ((BasePluginActivity)this.this$0.jdField_a_of_type_AndroidContentContext).getOutActivity();
-      localObject1 = new StringBuilder(HardCodeUtil.a(2131712143));
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      localObject2 = ((BasePluginActivity)this.this$0.f).getOutActivity();
+      localObject1 = new StringBuilder(HardCodeUtil.a(2131909759));
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(",context:");
-      ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_AndroidContentContext);
+      ((StringBuilder)localObject1).append(this.this$0.f);
       QLog.w("QzonePluginProxyActivity", 1, ((StringBuilder)localObject1).toString());
       localObject1 = localObject2;
       if (localObject2 != null)
@@ -45,37 +45,37 @@ class QzonePluginProxyActivityProxyImpl$4$1
     {
       Object localObject3 = null;
       localObject2 = localObject3;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         localObject2 = localObject3;
-        if (!this.b)
+        if (!this.c)
         {
-          localObject2 = new QzoneProgressDialog((Context)localObject1, this.this$0.jdField_a_of_type_AndroidContentIntent);
-          ((QzoneProgressDialog)localObject2).a(HardCodeUtil.a(2131712130));
+          localObject2 = new QzoneProgressDialog((Context)localObject1, this.this$0.a);
+          ((QzoneProgressDialog)localObject2).a(HardCodeUtil.a(2131909748));
           ((QzoneProgressDialog)localObject2).setOnDismissListener(new QzonePluginProxyActivityProxyImpl.4.1.1(this));
         }
       }
-      localObject3 = this.this$0.jdField_a_of_type_AndroidContentIntent;
+      localObject3 = this.this$0.a;
       if (localObject2 == null) {
         bool1 = false;
       }
       ((Intent)localObject3).putExtra("QZoneExtra.Plugin.isloading", bool1);
-      localObject3 = this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-      ((IPluginManager.PluginParams)localObject3).a = ((Dialog)localObject2);
+      localObject3 = this.d;
+      ((IPluginManager.PluginParams)localObject3).l = ((Dialog)localObject2);
       IPluginManager.a((Context)localObject1, (IPluginManager.PluginParams)localObject3);
       return;
     }
     QLog.e("QzonePluginProxyActivity", 1, "activity 参数错误，尝试进行兼容失败");
-    localObject1 = new StringBuilder(HardCodeUtil.a(2131712132));
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    localObject1 = new StringBuilder(HardCodeUtil.a(2131909750));
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append(",context:");
-    ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_AndroidContentContext);
-    ((IQzoneExceptionReport)QRoute.api(IQzoneExceptionReport.class)).doReport(new IllegalArgumentException(((StringBuilder)localObject1).toString()), HardCodeUtil.a(2131712123));
+    ((StringBuilder)localObject1).append(this.this$0.f);
+    ((IQzoneExceptionReport)QRoute.api(IQzoneExceptionReport.class)).doReport(new IllegalArgumentException(((StringBuilder)localObject1).toString()), HardCodeUtil.a(2131909742));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzonePluginProxyActivityProxyImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class TroopNickResDrawable$1
   
   public void run()
   {
-    if (TroopNickResDrawable.a(this.this$0).a())
+    if (TroopNickResDrawable.a(this.this$0).c())
     {
       Bitmap localBitmap = (Bitmap)CacheHelper.a(new TroopNickResDrawable.MyBitmapOptions(this.a));
       TroopNickResDrawable.a(this.this$0).a(localBitmap);
@@ -20,7 +20,7 @@ class TroopNickResDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickResDrawable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class AEGIFChunkPreviewFragment$1$1
   
   public void run()
   {
-    if (AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$1.a) != null) {
-      AEGIFChunkPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFChunkPreviewFragment$1.a).notifyItemChanged(this.jdField_a_of_type_Int);
+    if (AEGIFChunkPreviewFragment.b(this.b.a) != null) {
+      AEGIFChunkPreviewFragment.b(this.b.a).notifyItemChanged(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

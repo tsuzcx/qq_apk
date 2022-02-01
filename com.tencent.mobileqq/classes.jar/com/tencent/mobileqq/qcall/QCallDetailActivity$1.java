@@ -36,7 +36,7 @@ class QCallDetailActivity$1
         }
         return;
       }
-      if (((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a)) == null)
+      if (((DiscussionManager)localObject).d(QCallDetailActivity.b(this.a)) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
@@ -48,18 +48,18 @@ class QCallDetailActivity$1
         QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
         return;
       }
-      localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+      localObject = ((DiscussionManager)localObject).b(QCallDetailActivity.b(this.a));
       if ((localObject != null) && (((Map)localObject).size() > 0) && (((Map)localObject).containsKey(paramString)))
       {
         paramString = this.a;
-        paramString.a(QCallDetailActivity.a(paramString));
+        paramString.a(QCallDetailActivity.b(paramString));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.1
  * JD-Core Version:    0.7.0.1
  */

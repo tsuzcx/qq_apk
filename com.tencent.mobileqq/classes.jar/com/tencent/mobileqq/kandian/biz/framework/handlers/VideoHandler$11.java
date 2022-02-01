@@ -21,13 +21,13 @@ class VideoHandler$11
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof ViolaEvent)) {
-      ReadInJoyHelper.a(this.a.a, (ViolaEvent)paramSimpleBaseEvent);
+      ReadInJoyHelper.a(this.a.c, (ViolaEvent)paramSimpleBaseEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.11
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ import com.tencent.mobileqq.ark.ArkAdapterItemInterface;
 public class ArkAppItemBubbleBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public TextView b;
-  public String b;
-  public View c;
+  public String a;
+  public ArkAppLoadLayout b;
+  public ArkAppView c;
+  public LinearLayout d;
+  public ImageView e;
+  public TextView f;
+  public TextView g;
+  public View s;
   
   public void a(Holder paramHolder, ArkAdapterItemInterface paramArkAdapterItemInterface)
   {
@@ -29,16 +29,16 @@ public class ArkAppItemBubbleBuilder$Holder
     String str = localObject2[0];
     Object localObject1 = localObject2[1];
     localObject2 = localObject2[2];
-    paramArkAdapterItemInterface.clickTail(null, paramHolder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
+    paramArkAdapterItemInterface.clickTail(null, paramHolder.d, this.c.getContext());
     if (localObject1 != null)
     {
       ArkAppCacheMgr.getAppIcon(str, new ArkAppItemBubbleBuilder.Holder.1(this, paramHolder));
       paramArkAdapterItemInterface = ArkAppCacheMgr.getApplicationDesc(str);
       if (paramArkAdapterItemInterface != null)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramArkAdapterItemInterface);
+        this.d.setVisibility(0);
+        paramHolder.f.setVisibility(0);
+        paramHolder.f.setText(paramArkAdapterItemInterface);
       }
     }
     else
@@ -52,7 +52,7 @@ public class ArkAppItemBubbleBuilder$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

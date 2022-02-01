@@ -6,12 +6,12 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.ai;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.aj;
 import com.tencent.mobileqq.msf.core.auth.l;
-import com.tencent.mobileqq.msf.core.c.d;
-import com.tencent.mobileqq.msf.core.c.e.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.d;
+import com.tencent.mobileqq.msf.core.d.e.a;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.net.k;
 import com.tencent.mobileqq.msf.core.net.k.b;
 import com.tencent.mobileqq.msf.core.net.n;
@@ -186,7 +186,7 @@ public class r
       try
       {
         l = ((Long)paramToServiceMsg.getAttribute("infoSync_timestamp")).longValue();
-        ai.a(paramToServiceMsg.getUin(), l);
+        aj.a(paramToServiceMsg.getUin(), l);
         paramContext = a;
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append("recv infoSync timestamp:");
@@ -240,7 +240,7 @@ public class r
       ((HashMap)localObject1).put("MsgType", paramToServiceMsg.toString());
       ((HashMap)localObject1).put("SharpType", paramContext);
       MsfService.core.getStatReporter().a("dim.Msf.RecvVideoS2CACK", false, 0L, 0L, (Map)localObject1, true, false);
-      com.tencent.mobileqq.msf.core.c.e.a().a(e.a.i, paramToServiceMsg.getWupBuffer(), 0);
+      com.tencent.mobileqq.msf.core.d.e.a().a(e.a.i, paramToServiceMsg.getWupBuffer(), 0);
       return;
     case 70: 
       MsfService.core.wt_QuickLoginByGateway(paramToServiceMsg);
@@ -322,7 +322,7 @@ public class r
       paramContext.uin.set(Long.parseLong(paramToServiceMsg.getUin()));
       try
       {
-        localObject1 = InetAddress.getByName(ac.q());
+        localObject1 = InetAddress.getByName(ad.q());
         localObject2 = ((InetAddress)localObject1).getAddress();
         if ((localObject2.length <= 4) && (localObject2.length > 0))
         {
@@ -384,7 +384,7 @@ public class r
       paramContext.uin.set(Long.parseLong(paramToServiceMsg.getUin()));
       try
       {
-        localObject1 = InetAddress.getByName(ac.q());
+        localObject1 = InetAddress.getByName(ad.q());
         localObject2 = ((InetAddress)localObject1).getAddress();
         if ((localObject2.length <= 4) && (localObject2.length > 0))
         {
@@ -457,7 +457,7 @@ public class r
       e.b((String)localObject1, paramToServiceMsg, u.a(paramToServiceMsg));
       return;
     case 41: 
-      paramContext = ac.q();
+      paramContext = ad.q();
       localObject2 = u.a(paramToServiceMsg);
       ((FromServiceMsg)localObject2).addAttribute(paramToServiceMsg.getServiceCmd(), paramContext);
       ((FromServiceMsg)localObject2).setMsgSuccess();
@@ -638,7 +638,7 @@ public class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.r
  * JD-Core Version:    0.7.0.1
  */

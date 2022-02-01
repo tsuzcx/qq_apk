@@ -10,19 +10,19 @@ class DataLineMsgProxy$7
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.this$0.a(this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = this.this$0.a(this.a);
     ContentValues localContentValues = new ContentValues();
-    localContentValues.put("path", this.jdField_a_of_type_JavaLangString);
+    localContentValues.put("path", this.b);
     if (localDataLineMsgRecord != null)
     {
       DataLineMsgProxy localDataLineMsgProxy = this.this$0;
-      localDataLineMsgProxy.a(localDataLineMsgProxy.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+      localDataLineMsgProxy.a(localDataLineMsgProxy.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.7
  * JD-Core Version:    0.7.0.1
  */

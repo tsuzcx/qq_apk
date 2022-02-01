@@ -9,20 +9,20 @@ class LiangHaoBuyFragment$3$1
   
   public void run()
   {
-    LiangHaoBuyFragment.c(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoFragmentLiangHaoBuyFragment$3.a);
-    if (this.jdField_a_of_type_Boolean)
+    LiangHaoBuyFragment.d(this.f.a);
+    if (this.a)
     {
-      LiangHaoBuyFragment.a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoFragmentLiangHaoBuyFragment$3.a, this.jdField_a_of_type_AndroidContentIntent);
-      LiangHaoBuyFragment.a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoFragmentLiangHaoBuyFragment$3.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte);
+      LiangHaoBuyFragment.a(this.f.a, this.b);
+      LiangHaoBuyFragment.a(this.f.a, this.c, this.d);
       return;
     }
-    LiangHaoBuyFragment.a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoFragmentLiangHaoBuyFragment$3.a, this.b);
-    LiangHaoBuyFragment.b(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoFragmentLiangHaoBuyFragment$3.a);
+    LiangHaoBuyFragment.a(this.f.a, this.e);
+    LiangHaoBuyFragment.c(this.f.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

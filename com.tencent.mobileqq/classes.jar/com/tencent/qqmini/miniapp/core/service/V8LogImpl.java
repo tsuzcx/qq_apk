@@ -6,13 +6,12 @@ import com.tencent.qqmini.v8rt.engine.ILog;
 public class V8LogImpl
   implements ILog
 {
-  String TAG = "MIV8RT";
+  static final String TAG = "MIV8RT";
   
   public int d(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.d(localStringBuilder.toString(), paramString2, null);
     return 0;
@@ -21,8 +20,7 @@ public class V8LogImpl
   public int d(String paramString1, String paramString2, Throwable paramThrowable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.d(localStringBuilder.toString(), paramString2, paramThrowable);
     return 0;
@@ -31,8 +29,7 @@ public class V8LogImpl
   public int e(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.e(localStringBuilder.toString(), paramString2);
     return 0;
@@ -41,8 +38,7 @@ public class V8LogImpl
   public int e(String paramString1, String paramString2, Throwable paramThrowable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.e(localStringBuilder.toString(), paramString2, paramThrowable);
     return 0;
@@ -51,8 +47,7 @@ public class V8LogImpl
   public int i(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.i(localStringBuilder.toString(), paramString2);
     return 0;
@@ -61,8 +56,7 @@ public class V8LogImpl
   public int i(String paramString1, String paramString2, Throwable paramThrowable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.i(localStringBuilder.toString(), paramString2, paramThrowable);
     return 0;
@@ -71,8 +65,7 @@ public class V8LogImpl
   public void printNativeLog(int paramInt, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     paramString1 = localStringBuilder.toString();
     int i = paramInt;
@@ -102,8 +95,7 @@ public class V8LogImpl
   public int w(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.w(localStringBuilder.toString(), paramString2);
     return 0;
@@ -112,8 +104,7 @@ public class V8LogImpl
   public int w(String paramString1, String paramString2, Throwable paramThrowable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.TAG);
-    localStringBuilder.append("/");
+    localStringBuilder.append("MIV8RT/");
     localStringBuilder.append(paramString1);
     QMLog.w(localStringBuilder.toString(), paramString2, paramThrowable);
     return 0;
@@ -121,7 +112,7 @@ public class V8LogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.V8LogImpl
  * JD-Core Version:    0.7.0.1
  */

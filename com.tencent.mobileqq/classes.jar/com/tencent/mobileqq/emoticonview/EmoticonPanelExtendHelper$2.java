@@ -24,7 +24,7 @@ class EmoticonPanelExtendHelper$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onShow ");
-      localStringBuilder.append(AppSetting.g());
+      localStringBuilder.append(AppSetting.i());
       localStringBuilder.append(" init panelH ");
       localStringBuilder.append(EmoticonPanelExtendHelper.access$100(this.this$0));
       localStringBuilder.append(" needExtendPanel");
@@ -35,7 +35,7 @@ class EmoticonPanelExtendHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper.2
  * JD-Core Version:    0.7.0.1
  */

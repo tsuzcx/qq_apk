@@ -12,6 +12,8 @@ import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.guild.api.ILaunchGuildChatPieApi;
+import com.tencent.mobileqq.guild.api.LaunchGuildChatPieParam;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
@@ -27,8 +29,13 @@ public class GalleryJumpUtils
     if (paramActivity == null) {
       return;
     }
+    if (paramInt2 == 10014) {
+      i = 1;
+    } else {
+      i = 0;
+    }
     long l;
-    if ((paramInt2 != 1) && (paramInt2 != 3000)) {
+    if ((paramInt2 != 1) && (paramInt2 != 3000) && (i == 0)) {
       l = paramLong1;
     } else {
       l = paramLong2;
@@ -52,6 +59,14 @@ public class GalleryJumpUtils
     ((Bundle)localObject1).putLong("target_shmsgseq", paramLong2);
     ((Bundle)localObject1).putBoolean("searched_update_session", true);
     ((Bundle)localObject1).putBoolean("jump_from_shmsgseq", true);
+    if (i != 0)
+    {
+      paramString1 = new LaunchGuildChatPieParam().b(paramString1).b(true).c(false).b(4).e(true).f(true).d(true).b();
+      paramString1 = ((ILaunchGuildChatPieApi)QRoute.api(ILaunchGuildChatPieApi.class)).getGuildChatPieIntent(paramActivity, paramString1);
+      paramString1.putExtras((Bundle)localObject1);
+      paramActivity.startActivity(paramString1);
+      return;
+    }
     localObject2 = new Intent();
     if (!TextUtils.isEmpty((CharSequence)localObject3)) {
       ((Intent)localObject2).setClassName(paramActivity, (String)localObject3);
@@ -149,7 +164,7 @@ public class GalleryJumpUtils
     localIntent.putExtra("uintype", paramInt);
     localIntent.putExtra("extra.IS_FROM_CHAT_AIO_GALLERY", true);
     localIntent.putExtra("extra.EXTRA_CURRENT_IMAGE", DataUtils.a(paramAIOBrowserBaseData));
-    localIntent.putExtra("leftViewText", paramContext.getString(2131690874));
+    localIntent.putExtra("leftViewText", paramContext.getString(2131887812));
     paramContext.startActivity(localIntent);
   }
   
@@ -311,7 +326,7 @@ public class GalleryJumpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.GalleryJumpUtils
  * JD-Core Version:    0.7.0.1
  */

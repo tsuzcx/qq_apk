@@ -11,7 +11,7 @@ public class QQDataUtil
 {
   public static FaceDrawable a(BaseActivity paramBaseActivity)
   {
-    String str = UserInfoMgr.a();
+    String str = UserInfoMgr.f();
     Drawable localDrawable = FaceDrawable.getDefaultDrawable(1, 3);
     return FaceDrawable.getFaceDrawable(paramBaseActivity.app, 1, str, 3, localDrawable, localDrawable, null);
   }
@@ -21,13 +21,13 @@ public class QQDataUtil
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
-    localStringBuilder.append(UserInfoMgr.a());
+    localStringBuilder.append(UserInfoMgr.f());
     return localBaseApplicationImpl.getProperty(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.util.QQDataUtil
  * JD-Core Version:    0.7.0.1
  */

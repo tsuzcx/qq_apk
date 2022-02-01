@@ -29,32 +29,31 @@ final class CommonTabFragment$HotChatWebView
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
-  public boolean a;
   public boolean b = false;
-  boolean c = false;
+  public boolean c = false;
+  boolean d = false;
   
   public CommonTabFragment$HotChatWebView(CommonTabFragment paramCommonTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
     super(paramContext, paramActivity, paramAppInterface);
-    this.jdField_a_of_type_Boolean = false;
     super.preInitPluginEngine();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     long l;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {
+    if (this.e.a != null) {
       l = System.currentTimeMillis();
     } else {
       l = 0L;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     AuthorizeConfig.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo != null) {
-      this.mUrl = this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo.getTabUrl();
+    if (this.e.q != null) {
+      this.mUrl = this.e.q.getTabUrl();
     }
     if (!TextUtils.isEmpty(this.mUrl))
     {
@@ -74,13 +73,13 @@ final class CommonTabFragment$HotChatWebView
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.mUrl);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.e.f);
       this.mUrl = ((StringBuilder)localObject).toString();
     }
     this.mWebview = new TouchWebView(this.mContext);
     buildBaseWebView(this.mInterface);
-    this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    if (this.c) {
+    this.d = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+    if (this.d) {
       this.mWebview.setMask(true);
     }
     this.mWebview.setBackgroundColor(-1);
@@ -89,18 +88,18 @@ final class CommonTabFragment$HotChatWebView
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(getTimeBeforeLoadUrl()) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.d = false;
+    this.e.p = false;
     Object localObject = new HashMap();
     ((Map)localObject).put("accept-diff", "true");
     this.mWebview.loadUrl(this.mUrl, (Map)localObject);
     if (QLog.isColorLevel()) {
       NearbyUtils.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime == 0L))
+    if ((this.e.a != null) && (this.e.a.mInitWebViewTime == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime = (System.currentTimeMillis() - l);
+      this.e.a.mInitWebViewTime = (System.currentTimeMillis() - l);
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime) });
+        NearbyUtils.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.e.a.mInitWebViewTime) });
       }
     }
   }
@@ -134,33 +133,33 @@ final class CommonTabFragment$HotChatWebView
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.a(paramWebView, paramString);
+    this.e.a(paramWebView, paramString);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    this.c = true;
+    if (this.e.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.e.aj.b(true).c(true);
+      this.e.aj.a();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_AndroidViewView.getVisibility() != 8)) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((this.e.d != null) && (this.e.d.getVisibility() != 8)) {
+      this.e.d.setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.a(paramWebView, paramString, paramBitmap);
+    this.e.a(paramWebView, paramString, paramBitmap);
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     if (this.mWebview != null) {
-      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
+      this.a = this.mWebview.getWebScrollY();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CommonTabFragment.HotChatWebView
  * JD-Core Version:    0.7.0.1
  */

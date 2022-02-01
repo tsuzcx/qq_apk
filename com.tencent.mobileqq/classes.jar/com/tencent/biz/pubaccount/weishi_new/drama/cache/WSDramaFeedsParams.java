@@ -7,112 +7,112 @@ import java.util.Map;
 public class WSDramaFeedsParams
   extends FetcherParams
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private Map<Integer, stDramaFeed> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
+  private final String a;
+  private String b;
+  private int c;
+  private int d;
+  private String e;
+  private Map<Integer, stDramaFeed> f;
+  private boolean g;
+  private boolean h;
   
   public WSDramaFeedsParams(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Map<Integer, stDramaFeed> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(Map<Integer, stDramaFeed> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.f = paramMap;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.g = paramBoolean;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
-  public String c()
+  public int c()
   {
     return this.c;
   }
   
-  public boolean c()
+  public String d()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
-  public boolean d()
+  public String e()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.b;
+  }
+  
+  public Map<Integer, stDramaFeed> f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public String h()
+  {
+    return this.e;
+  }
+  
+  public boolean i()
+  {
+    return this.g;
+  }
+  
+  public boolean j()
+  {
+    return this.h;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WSDramaFeedsParams{dramaId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", episodeNum=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", direction=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", attachInfo='");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", direction=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", attachInfo='");
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", dramaFeedMap=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", isPreloadData=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", isUpdateNum=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaFeedsParams
  * JD-Core Version:    0.7.0.1
  */

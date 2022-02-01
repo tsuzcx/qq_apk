@@ -19,10 +19,10 @@ class SoundAndVibrateActivity$6
   {
     this.a.b(3);
     Object localObject = this.a;
-    SettingCloneUtil.writeValueForInt((Context)localObject, ((SoundAndVibrateActivity)localObject).app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
+    SettingCloneUtil.writeValueForInt((Context)localObject, ((SoundAndVibrateActivity)localObject).app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.h);
+    if (this.a.b().booleanValue())
     {
-      this.a.b();
+      this.a.c();
       localObject = ThemeUtil.getThemeVoiceRootPath();
       if (localObject != null)
       {
@@ -33,12 +33,12 @@ class SoundAndVibrateActivity$6
         localObject = new File(localStringBuilder.toString());
         if (((File)localObject).exists())
         {
-          this.a.b();
+          this.a.c();
           this.a.a(Uri.fromFile((File)localObject));
           break label195;
         }
       }
-      this.a.b();
+      this.a.c();
       localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("android.resource://");
@@ -53,7 +53,7 @@ class SoundAndVibrateActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SoundAndVibrateActivity.6
  * JD-Core Version:    0.7.0.1
  */

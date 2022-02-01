@@ -15,13 +15,13 @@ public class AEEditorTopBar
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AECompoundButton jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton;
-  private AEEditorTopBar.TopBarClickListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTopbarAEEditorTopBar$TopBarClickListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private AECompoundButton a;
   private TextView b;
   private TextView c;
   private TextView d;
+  private TextView e;
+  private AEEditorTopBar.TopBarClickListener f;
+  private boolean g = false;
   
   public AEEditorTopBar(Context paramContext)
   {
@@ -43,43 +43,43 @@ public class AEEditorTopBar
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = AEThemeUtil.a();
-    paramContext = View.inflate(paramContext, 2064318586, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton = ((AECompoundButton)paramContext.findViewById(2064121892));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2064121893));
-    this.b = ((TextView)paramContext.findViewById(2064121896));
-    this.c = ((TextView)paramContext.findViewById(2064121894));
-    this.d = ((TextView)paramContext.findViewById(2064121895));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c.setOnClickListener(this);
+    this.g = AEThemeUtil.b();
+    paramContext = View.inflate(paramContext, 2064056458, this);
+    this.a = ((AECompoundButton)paramContext.findViewById(2063990819));
+    this.b = ((TextView)paramContext.findViewById(2063990820));
+    this.c = ((TextView)paramContext.findViewById(2063990823));
+    this.d = ((TextView)paramContext.findViewById(2063990821));
+    this.e = ((TextView)paramContext.findViewById(2063990822));
+    this.a.setOnClickListener(this);
+    this.b.setOnClickListener(this);
     this.d.setOnClickListener(this);
+    this.e.setOnClickListener(this);
   }
   
   public void a()
   {
-    setTitle(getResources().getString(2064515159));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(8);
-    this.c.setVisibility(8);
+    setTitle(getResources().getString(2064187501));
+    this.a.setVisibility(8);
+    this.d.setVisibility(8);
   }
   
   public void b()
   {
-    setTitle(getResources().getString(2064515153));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(0);
-    this.c.setVisibility(0);
+    setTitle(getResources().getString(2064187495));
+    this.a.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(0);
-    this.c.setVisibility(0);
+    this.a.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(4);
-    this.c.setVisibility(4);
+    this.a.setVisibility(4);
+    this.d.setVisibility(4);
   }
   
   public void onClick(View paramView)
@@ -87,20 +87,20 @@ public class AEEditorTopBar
     switch (paramView.getId())
     {
     default: 
-    case 2064121894: 
-    case 2064121895: 
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTopbarAEEditorTopBar$TopBarClickListener;
+    case 2063990821: 
+    case 2063990822: 
+      paramView = this.f;
       if (paramView != null)
       {
-        paramView.u();
+        paramView.F();
         return;
       }
       break;
-    case 2064121892: 
-    case 2064121893: 
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTopbarAEEditorTopBar$TopBarClickListener;
+    case 2063990819: 
+    case 2063990820: 
+      paramView = this.f;
       if (paramView != null) {
-        paramView.t();
+        paramView.E();
       }
       break;
     }
@@ -108,37 +108,37 @@ public class AEEditorTopBar
   
   public void setLeftButtonAsBackArray()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setVisibility(0);
-    this.d.setVisibility(4);
-    this.c.setText(HardCodeUtil.a(2064515175));
+    this.a.setVisibility(0);
+    this.b.setVisibility(4);
+    this.d.setVisibility(0);
+    this.e.setVisibility(4);
+    this.d.setText(HardCodeUtil.a(2064187517));
   }
   
   public void setStyleAsCancelAndFinish()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAECompoundButton.setForegroundResource(2130844116);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.c.setVisibility(4);
-    this.b.setText(2064515197);
-    this.d.setVisibility(0);
-    this.d.setText(HardCodeUtil.a(2064515156));
+    this.a.setVisibility(0);
+    this.a.setForegroundResource(2130845157);
+    this.b.setVisibility(4);
+    this.d.setVisibility(4);
+    this.c.setText(2064187543);
+    this.e.setVisibility(0);
+    this.e.setText(HardCodeUtil.a(2064187498));
   }
   
   public void setTitle(String paramString)
   {
-    this.b.setText(paramString);
+    this.c.setText(paramString);
   }
   
   public void setTopBarClickListener(AEEditorTopBar.TopBarClickListener paramTopBarClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTopbarAEEditorTopBar$TopBarClickListener = paramTopBarClickListener;
+    this.f = paramTopBarClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.topbar.AEEditorTopBar
  * JD-Core Version:    0.7.0.1
  */

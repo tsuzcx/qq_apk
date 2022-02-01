@@ -27,54 +27,61 @@ class GpMsgHelperView
   extends FrameLayout
   implements GameContentView.UiRefresh, HippyViewBase
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private GameSessionView jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private GameSessionView a;
+  private int b = -2147483648;
+  private boolean c = false;
   
   public GpMsgHelperView(@NonNull Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    d();
+    this.b = paramInt;
+    c();
   }
   
   public GpMsgHelperView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    d();
+    c();
   }
   
   private void a(String paramString, HippyMap paramHippyMap)
   {
-    HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.jdField_a_of_type_Int);
+    HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.b);
     if (localHippyQQEngine != null) {
       ((EventDispatcher)localHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent(paramString, paramHippyMap);
     }
   }
   
-  private void d()
+  private void c()
   {
     QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView initView");
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView = new GameSessionView(getContext());
-    addView(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView, -1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.a(MobileQQ.sMobileQQ.waitAppRuntime(null), this);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.setVisibility(0);
-    c();
+    this.a = new GameSessionView(getContext());
+    addView(this.a, -1, -1);
+    this.a.a(MobileQQ.sMobileQQ.waitAppRuntime(null), this);
+    this.a.setVisibility(0);
+    b();
   }
   
   public void a()
   {
     QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView destory");
-    GameSessionView localGameSessionView = this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
+    GameSessionView localGameSessionView = this.a;
     if (localGameSessionView != null) {
-      localGameSessionView.c();
+      localGameSessionView.b();
     }
   }
   
-  public void a(long paramLong)
+  public void b()
   {
     QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView postDraw");
-    this.jdField_a_of_type_Boolean = true;
+    measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getHeight(), 1073741824));
+    layout(getLeft(), getTop(), getRight(), getBottom());
+  }
+  
+  public void c(long paramLong)
+  {
+    QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView postDraw");
+    this.c = true;
     HippyMap localHippyMap;
     if (paramLong == 0L)
     {
@@ -89,7 +96,7 @@ class GpMsgHelperView
     {
       if (QQGameUIHelper.a != null)
       {
-        QQGameUIHelper.a(paramLong, this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView, QQGameUIHelper.a);
+        QQGameUIHelper.a(paramLong, this.a, QQGameUIHelper.a);
         localHippyMap = new HippyMap();
         localHippyMap.pushInt("action", 5);
         localHippyMap.pushInt("height", 0);
@@ -100,16 +107,21 @@ class GpMsgHelperView
     catch (Throwable localThrowable) {}
   }
   
-  public void b()
+  public NativeGestureDispatcher getGestureDispatcher()
+  {
+    return null;
+  }
+  
+  public void h()
   {
     QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView refreshGameContentView");
-    c();
-    if (this.jdField_a_of_type_Boolean)
+    b();
+    if (this.c)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((GameSessionView)localObject).getVisibility() == 8)
@@ -120,20 +132,8 @@ class GpMsgHelperView
         a("onGameFeedsEvent", (HippyMap)localObject);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.post(new GpMsgHelperView.1(this));
+      this.a.post(new GpMsgHelperView.1(this));
     }
-  }
-  
-  public void c()
-  {
-    QLog.d("QQGamePub_GpMsgHelperView", 1, "GpMsgHelperView postDraw");
-    measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getHeight(), 1073741824));
-    layout(getLeft(), getTop(), getRight(), getBottom());
-  }
-  
-  public NativeGestureDispatcher getGestureDispatcher()
-  {
-    return null;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -155,7 +155,7 @@ class GpMsgHelperView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.view.GpMsgHelperView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class ProfileHeaderBaseComponent$5
 {
   ProfileHeaderBaseComponent$5(ProfileHeaderBaseComponent paramProfileHeaderBaseComponent, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     ((ProfileHeaderBaseComponent.ActionSheetItem)this.val$actionSheetItems.get(paramInt)).onClick();
     this.val$actionSheet.superDismiss();
@@ -18,7 +18,7 @@ class ProfileHeaderBaseComponent$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.ProfileHeaderBaseComponent.5
  * JD-Core Version:    0.7.0.1
  */

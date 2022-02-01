@@ -7,13 +7,13 @@ class Inverse$2
 {
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(paramInt));
-    this.b.add(this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.b(paramInt));
+    this.a.add(this.b.b(paramInt));
+    this.c.add(this.b.c(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Inverse.2
  * JD-Core Version:    0.7.0.1
  */

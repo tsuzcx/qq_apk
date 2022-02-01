@@ -15,11 +15,10 @@ import java.util.List;
 public class GetFeedTagInfoListRequest$GetFeedTagInfoListResponse
   extends BaseResponse
 {
-  public List<GetFeedTagInfoListRequest.FeedTagInfoList> a;
+  public List<GetFeedTagInfoListRequest.FeedTagInfoList> a = new ArrayList();
   
   public GetFeedTagInfoListRequest$GetFeedTagInfoListResponse(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
     if (paramRspStoryFeedTagInfo != null)
     {
@@ -28,7 +27,7 @@ public class GetFeedTagInfoListRequest$GetFeedTagInfoListResponse
       {
         Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
         GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = new GetFeedTagInfoListRequest.FeedTagInfoList();
-        localFeedTagInfoList.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
+        localFeedTagInfoList.a = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
         localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
         if (localObject != null)
         {
@@ -36,17 +35,17 @@ public class GetFeedTagInfoListRequest$GetFeedTagInfoListResponse
           while (((Iterator)localObject).hasNext())
           {
             TagItem.TagInfoBase localTagInfoBase = new TagItem.TagInfoBase((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
-            localFeedTagInfoList.jdField_a_of_type_JavaUtilList.add(localTagInfoBase);
+            localFeedTagInfoList.b.add(localTagInfoBase);
           }
         }
-        this.jdField_a_of_type_JavaUtilList.add(localFeedTagInfoList);
+        this.a.add(localFeedTagInfoList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest.GetFeedTagInfoListResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.model.CubicCurveData;
 import com.tencent.mobileqq.dinifly.model.content.ShapeData;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,10 +15,11 @@ public class ShapeDataParser
   implements ValueParser<ShapeData>
 {
   public static final ShapeDataParser INSTANCE = new ShapeDataParser();
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "c", "v", "i", "o" });
   
   public ShapeData parse(JsonReader paramJsonReader, float paramFloat)
   {
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY) {
       paramJsonReader.beginArray();
     }
     paramJsonReader.beginObject();
@@ -25,42 +27,23 @@ public class ShapeDataParser
     Object localObject1 = null;
     Object localObject2 = localObject1;
     boolean bool = false;
-    Object localObject4;
     int i;
-    int j;
     while (paramJsonReader.hasNext())
     {
-      localObject4 = paramJsonReader.nextName();
-      i = -1;
-      j = ((String)localObject4).hashCode();
-      if (j != 99)
-      {
-        if (j != 105)
-        {
-          if (j != 111)
-          {
-            if ((j == 118) && (((String)localObject4).equals("v"))) {
-              i = 1;
-            }
-          }
-          else if (((String)localObject4).equals("o")) {
-            i = 3;
-          }
-        }
-        else if (((String)localObject4).equals("i")) {
-          i = 2;
-        }
-      }
-      else if (((String)localObject4).equals("c")) {
-        i = 0;
-      }
+      i = paramJsonReader.selectName(NAMES);
       if (i != 0)
       {
         if (i != 1)
         {
           if (i != 2)
           {
-            if (i == 3) {
+            if (i != 3)
+            {
+              paramJsonReader.skipName();
+              paramJsonReader.skipValue();
+            }
+            else
+            {
               localObject2 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
             }
           }
@@ -77,7 +60,7 @@ public class ShapeDataParser
       }
     }
     paramJsonReader.endObject();
-    if (paramJsonReader.peek() == JsonToken.END_ARRAY) {
+    if (paramJsonReader.peek() == JsonReader.Token.END_ARRAY) {
       paramJsonReader.endArray();
     }
     if ((localObject3 != null) && (localObject1 != null) && (localObject2 != null))
@@ -85,9 +68,9 @@ public class ShapeDataParser
       if (((List)localObject3).isEmpty()) {
         return new ShapeData(new PointF(), false, Collections.emptyList());
       }
-      j = ((List)localObject3).size();
+      int j = ((List)localObject3).size();
       paramJsonReader = (PointF)((List)localObject3).get(0);
-      localObject4 = new ArrayList(j);
+      ArrayList localArrayList = new ArrayList(j);
       i = 1;
       PointF localPointF1;
       while (i < j)
@@ -97,7 +80,7 @@ public class ShapeDataParser
         PointF localPointF2 = (PointF)((List)localObject3).get(k);
         PointF localPointF3 = (PointF)((List)localObject2).get(k);
         PointF localPointF4 = (PointF)((List)localObject1).get(i);
-        ((List)localObject4).add(new CubicCurveData(MiscUtils.addPoints(localPointF2, localPointF3), MiscUtils.addPoints(localPointF1, localPointF4), localPointF1));
+        localArrayList.add(new CubicCurveData(MiscUtils.addPoints(localPointF2, localPointF3), MiscUtils.addPoints(localPointF1, localPointF4), localPointF1));
         i += 1;
       }
       if (bool)
@@ -107,9 +90,9 @@ public class ShapeDataParser
         localObject3 = (PointF)((List)localObject3).get(i);
         localObject2 = (PointF)((List)localObject2).get(i);
         localObject1 = (PointF)((List)localObject1).get(0);
-        ((List)localObject4).add(new CubicCurveData(MiscUtils.addPoints((PointF)localObject3, (PointF)localObject2), MiscUtils.addPoints(localPointF1, (PointF)localObject1), localPointF1));
+        localArrayList.add(new CubicCurveData(MiscUtils.addPoints((PointF)localObject3, (PointF)localObject2), MiscUtils.addPoints(localPointF1, (PointF)localObject1), localPointF1));
       }
-      return new ShapeData(paramJsonReader, bool, (List)localObject4);
+      return new ShapeData(paramJsonReader, bool, localArrayList);
     }
     paramJsonReader = new IllegalArgumentException("Shape data was missing information.");
     for (;;)
@@ -120,7 +103,7 @@ public class ShapeDataParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeDataParser
  * JD-Core Version:    0.7.0.1
  */

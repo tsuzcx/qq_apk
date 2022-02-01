@@ -8,29 +8,29 @@ import java.util.Vector;
 
 public class IliveLiteEventCenter
 {
-  private static IliveLiteEventCenter jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<IliveLiteEventCenter.Observer> jdField_a_of_type_JavaUtilList = new Vector();
+  private static final Object a = new Object();
+  private static IliveLiteEventCenter b;
+  private List<IliveLiteEventCenter.Observer> c = new Vector();
   
   public static IliveLiteEventCenter a()
   {
-    if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {
-          jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter = new IliveLiteEventCenter();
+        if (b == null) {
+          b = new IliveLiteEventCenter();
         }
       }
     }
-    return jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter;
+    return b;
   }
   
   public void a(IliveLiteEventCenter.Observer paramObserver)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramObserver);
+      if (!this.c.contains(paramObserver)) {
+        this.c.add(paramObserver);
       }
       return;
     }
@@ -42,7 +42,7 @@ public class IliveLiteEventCenter
     boolean bool1 = false;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       boolean bool3;
       for (;;)
       {
@@ -74,16 +74,16 @@ public class IliveLiteEventCenter
   
   public void b(IliveLiteEventCenter.Observer paramObserver)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramObserver);
+      this.c.remove(paramObserver);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.event.IliveLiteEventCenter
  * JD-Core Version:    0.7.0.1
  */

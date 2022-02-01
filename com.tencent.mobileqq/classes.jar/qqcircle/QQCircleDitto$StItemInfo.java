@@ -19,6 +19,7 @@ public final class QQCircleDitto$StItemInfo
   public final PBBytesField bizData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatMessageField<FeedCloudCommon.Entry> busiInfo = PBField.initRepeatMessage(FeedCloudCommon.Entry.class);
   public QQCircleDitto.StButton buttonInfo = new QQCircleDitto.StButton();
+  public final PBStringField datongJsonData = PBField.initString("");
   public final PBRepeatField<String> des = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField id = PBField.initString("");
   public final PBRepeatMessageField<FeedCloudMeta.StImage> images = PBField.initRepeatMessage(FeedCloudMeta.StImage.class);
@@ -30,12 +31,12 @@ public final class QQCircleDitto$StItemInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "id", "name", "des", "images", "buttonInfo", "urlInfo", "busiInfo", "relateIds", "tag", "bizData" }, new Object[] { "", "", "", null, null, null, null, "", null, localByteStringMicro }, StItemInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90 }, new String[] { "id", "name", "des", "images", "buttonInfo", "urlInfo", "busiInfo", "relateIds", "tag", "bizData", "datongJsonData" }, new Object[] { "", "", "", null, null, null, null, "", null, localByteStringMicro, "" }, StItemInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleDitto.StItemInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -21,27 +21,27 @@ class TroopTransferActivity$13
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null)
+      if (this.c.x == null)
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity;
-        paramDialogInterface.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(paramDialogInterface);
+        paramDialogInterface = this.c;
+        paramDialogInterface.x = new QQProgressNotifier(paramDialogInterface);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131692183, 1000);
+      this.c.x.b(2, 2131889169, 1000);
       return;
     }
-    paramDialogInterface = (ITroopMngHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+    paramDialogInterface = (ITroopMngHandler)this.c.app.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
     if (paramDialogInterface != null) {
       try
       {
-        long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
-        long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
-        long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
+        long l1 = Long.parseLong(this.c.r);
+        long l2 = Long.parseLong(this.c.app.getCurrentAccountUin());
+        long l3 = Long.parseLong(this.a);
+        this.c.w = true;
         paramDialogInterface.a(l1, l2, l3);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+        if (this.c.x == null) {
+          this.c.x = new QQProgressNotifier(this.c);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(0, 2131719753, 1000);
+        this.c.x.b(0, 2131917356, 1000);
       }
       catch (Exception paramDialogInterface)
       {
@@ -50,13 +50,13 @@ class TroopTransferActivity$13
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
+    this.b.cancel();
+    ReportController.b(this.c.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class ReadInJoyNativeAdFragment$2
   public void a(URL paramURL, Object paramObject)
   {
     ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.g(this.a).setPublicAccountImageDownListener(null);
     ReadInJoyNativeAdFragment.a(this.a, null);
   }
   
@@ -25,7 +25,7 @@ class ReadInJoyNativeAdFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.2
  * JD-Core Version:    0.7.0.1
  */

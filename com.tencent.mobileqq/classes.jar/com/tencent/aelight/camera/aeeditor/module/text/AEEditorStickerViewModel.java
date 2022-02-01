@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 import java.util.List;
 
 public class AEEditorStickerViewModel
@@ -14,28 +14,28 @@ public class AEEditorStickerViewModel
 {
   void a(@NonNull MetaMaterial paramMetaMaterial)
   {
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null)
+    if (this.f == null)
     {
-      AEQLog.d(this.jdField_a_of_type_JavaLangString, "[updateText] mCurSticker is null");
+      AEQLog.d(this.a, "[updateText] mCurSticker is null");
       return;
     }
-    this.jdField_b_of_type_JavaLangString = TextMetaMaterialKt.a(paramMetaMaterial);
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setItemID(paramMetaMaterial.id);
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setPagFilePath(TextMetaMaterialKt.f(paramMetaMaterial));
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(TextMetaMaterialKt.a(paramMetaMaterial));
-    TextEditorDataExKt.a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData, TextMetaMaterialKt.c(paramMetaMaterial));
-    TextEditorData localTextEditorData = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData;
+    this.g = TextMetaMaterialKt.b(paramMetaMaterial);
+    this.f.setItemID(paramMetaMaterial.id);
+    this.f.setPagFilePath(TextMetaMaterialKt.m(paramMetaMaterial));
+    this.f.setTextColor(TextMetaMaterialKt.g(paramMetaMaterial));
+    TextEditorDataExKt.a(this.f, TextMetaMaterialKt.i(paramMetaMaterial));
+    TextEditorData localTextEditorData = this.f;
     String str;
-    if (TextMetaMaterialKt.b(paramMetaMaterial)) {
+    if (TextMetaMaterialKt.p(paramMetaMaterial)) {
       str = "1";
     } else {
       str = "0";
     }
     localTextEditorData.setInteractive(str);
-    a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData, paramMetaMaterial, this.jdField_b_of_type_JavaLangString);
-    paramMetaMaterial = AEEditorResourceManager.a().a(TextMetaMaterialKt.d(paramMetaMaterial), 0);
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setFont(paramMetaMaterial);
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.postValue(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    a(this.f, paramMetaMaterial, this.g);
+    paramMetaMaterial = AEEditorResourceManager.a().a(TextMetaMaterialKt.e(paramMetaMaterial), 0);
+    this.f.setFont(paramMetaMaterial);
+    this.c.postValue(this.f);
   }
   
   public void a(@NonNull MetaMaterial paramMetaMaterial, @Nullable Boolean paramBoolean)
@@ -45,7 +45,7 @@ public class AEEditorStickerViewModel
       if (paramMetaMaterial.id == null) {
         return;
       }
-      if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData != null))
+      if ((paramBoolean.booleanValue()) && (this.f != null))
       {
         a(paramMetaMaterial);
         return;
@@ -56,28 +56,28 @@ public class AEEditorStickerViewModel
   
   public void a(@Nullable TextEditorData paramTextEditorData)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = paramTextEditorData;
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null) {
+    this.f = paramTextEditorData;
+    if (this.f == null) {
       paramTextEditorData = null;
     } else {
-      paramTextEditorData = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getItemID();
+      paramTextEditorData = this.f.getItemID();
     }
     if (paramTextEditorData == null)
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(-1));
+      this.b.postValue(Integer.valueOf(-1));
       return;
     }
-    if ("sticker_lyric".equals(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getStickerType()))
+    if ("sticker_lyric".equals(this.f.getStickerType()))
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(-1));
+      this.b.postValue(Integer.valueOf(-1));
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.e != null)
     {
       i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.e.size())
       {
-        if ((this.jdField_a_of_type_JavaUtilList.get(i) != null) && (paramTextEditorData.equals(((MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(i)).id))) {
+        if ((this.e.get(i) != null) && (paramTextEditorData.equals(((MetaMaterial)this.e.get(i)).id))) {
           break label141;
         }
         i += 1;
@@ -85,17 +85,17 @@ public class AEEditorStickerViewModel
     }
     int i = 0;
     label141:
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(Integer.valueOf(i));
+    this.b.postValue(Integer.valueOf(i));
   }
   
   public void a(List<MetaMaterial> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.e = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerViewModel
  * JD-Core Version:    0.7.0.1
  */

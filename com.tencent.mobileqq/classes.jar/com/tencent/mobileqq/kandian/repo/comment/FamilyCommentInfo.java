@@ -10,22 +10,27 @@ import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 public class FamilyCommentInfo
   implements Cloneable
 {
-  public int a;
   public String a;
-  public int b;
   public String b;
+  public int c;
+  public int d;
   
   public static FamilyCommentInfo a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
     FamilyCommentInfo localFamilyCommentInfo = new FamilyCommentInfo();
-    localFamilyCommentInfo.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
-    localFamilyCommentInfo.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
-    localFamilyCommentInfo.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
-    localFamilyCommentInfo.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    localFamilyCommentInfo.a = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localFamilyCommentInfo.b = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localFamilyCommentInfo.c = paramFamilyCommentInfo.medal_urls_width.get();
+    localFamilyCommentInfo.d = paramFamilyCommentInfo.medal_urls_height.get();
     return localFamilyCommentInfo;
   }
   
-  public FamilyCommentInfo a()
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.a));
+  }
+  
+  public FamilyCommentInfo b()
   {
     try
     {
@@ -38,35 +43,30 @@ public class FamilyCommentInfo
       }
     }
     FamilyCommentInfo localFamilyCommentInfo = new FamilyCommentInfo();
-    localFamilyCommentInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localFamilyCommentInfo.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localFamilyCommentInfo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localFamilyCommentInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localFamilyCommentInfo.a = this.a;
+    localFamilyCommentInfo.b = this.b;
+    localFamilyCommentInfo.d = this.d;
+    localFamilyCommentInfo.c = this.c;
     return localFamilyCommentInfo;
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FamilyCommentInfo\n familyIconUrl ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n familyJumpUrl ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n width ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n height ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.FamilyCommentInfo
  * JD-Core Version:    0.7.0.1
  */

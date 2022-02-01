@@ -12,7 +12,6 @@ public class GYAIFaceClassify
     try
     {
       System.loadLibrary("c++_shared");
-      System.loadLibrary("opencv_world");
       System.loadLibrary("TNN");
       System.loadLibrary("light_ai_base");
       System.loadLibrary("light_detect_base");
@@ -50,7 +49,7 @@ public class GYAIFaceClassify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.library.GYAIFaceClassify
  * JD-Core Version:    0.7.0.1
  */

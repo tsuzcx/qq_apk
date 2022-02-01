@@ -15,15 +15,15 @@ class TroopCardBanner$1
   
   public void onPageSelected(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard != null) && (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size() > 1))
+    if ((this.a.e != null) && (this.a.e.rpt_banner_items.size() > 1))
     {
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837973);
+      if (this.a.h != null) {
+        this.a.h.setImageResource(2130837997);
       }
-      paramInt %= this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size();
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).setImageResource(2130837972);
+      paramInt %= this.a.e.rpt_banner_items.size();
+      ((ImageView)this.a.g.get(paramInt)).setImageResource(2130837996);
       TroopCardBanner localTroopCardBanner = this.a;
-      localTroopCardBanner.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localTroopCardBanner.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      localTroopCardBanner.h = ((ImageView)localTroopCardBanner.g.get(paramInt));
     }
   }
 }

@@ -13,15 +13,15 @@ class DownloadManager$14
   {
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.c(this.a);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        this.this$0.e(this.a);
+        this.a.q = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.this$0.f(this.a);
         this.this$0.a(4, this.a);
       }
-      StaticAnalyz.a("300", this.a.h, this.a.c, this.a.o);
-      this.this$0.c(this.a);
+      StaticAnalyz.a("300", this.a.h, this.a.c, this.a.F);
+      this.this$0.d(this.a);
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class DownloadManager$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.14
  * JD-Core Version:    0.7.0.1
  */

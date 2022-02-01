@@ -13,7 +13,7 @@ class NewAuthDevUgFragment$2
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (NewAuthDevUgFragment.a(this.a) == null) {
+    if (NewAuthDevUgFragment.l(this.a) == null) {
       QLog.e("NewAuthDevUgFragment", 1, "mBroadcastReceiver.onReceive: mDevlockInfo is null.");
     }
     paramContext = paramIntent.getStringExtra("PhoneNum");
@@ -28,16 +28,16 @@ class NewAuthDevUgFragment$2
     localStringBuilder.append("******");
     localStringBuilder.append(paramContext.substring(paramContext.length() - 2));
     paramContext = localStringBuilder.toString();
-    NewAuthDevUgFragment.a(this.a).Mobile = paramContext;
+    NewAuthDevUgFragment.l(this.a).Mobile = paramContext;
     if (!TextUtils.isEmpty(paramIntent)) {
-      NewAuthDevUgFragment.a(this.a).CountryCode = paramIntent;
+      NewAuthDevUgFragment.l(this.a).CountryCode = paramIntent;
     }
     NewAuthDevUgFragment.a(this.a, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NewAuthDevUgFragment.2
  * JD-Core Version:    0.7.0.1
  */

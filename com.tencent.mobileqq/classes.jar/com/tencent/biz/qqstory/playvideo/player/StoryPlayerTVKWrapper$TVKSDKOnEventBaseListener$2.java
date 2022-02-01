@@ -29,18 +29,18 @@ class StoryPlayerTVKWrapper$TVKSDKOnEventBaseListener$2
       }
       if (localObject != null)
       {
-        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).jdField_b_of_type_Long = Long.valueOf(localObject.getProperty("VideoBitRate")).longValue();
-        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).jdField_b_of_type_JavaLangString = localObject.getProperty("VideoCodec");
-        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).c = localObject.getProperty("AudioCodec");
-        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).a = Integer.valueOf(localObject.getProperty("Width")).intValue();
-        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).jdField_b_of_type_Int = Integer.valueOf(localObject.getProperty("Height")).intValue();
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).h = Long.valueOf(localObject.getProperty("VideoBitRate")).longValue();
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).e = localObject.getProperty("VideoCodec");
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).i = localObject.getProperty("AudioCodec");
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).f = Integer.valueOf(localObject.getProperty("Width")).intValue();
+        StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.a(this.this$0).g = Integer.valueOf(localObject.getProperty("Height")).intValue();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.TVKSDKOnEventBaseListener.2
  * JD-Core Version:    0.7.0.1
  */

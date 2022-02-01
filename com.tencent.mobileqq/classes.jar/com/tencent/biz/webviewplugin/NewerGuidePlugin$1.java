@@ -77,15 +77,15 @@ class NewerGuidePlugin$1
           if (localObject3 == null) {
             i = -1;
           } else {
-            i = ((RecommendedListResp)localObject3).jdField_a_of_type_Int;
+            i = ((RecommendedListResp)localObject3).a;
           }
           paramBundle = new JSONObject();
           paramBundle.put("result", i);
           if (i == 0)
           {
             paramBundle.put("uint32_end", ((RecommendedListResp)localObject3).b);
-            paramBundle.put("uint32_next_index", ((RecommendedListResp)localObject3).jdField_a_of_type_Long);
-            localObject4 = ((RecommendedListResp)localObject3).jdField_a_of_type_JavaUtilList;
+            paramBundle.put("uint32_next_index", ((RecommendedListResp)localObject3).c);
+            localObject4 = ((RecommendedListResp)localObject3).d;
             if ((localObject4 != null) && (!((List)localObject4).isEmpty()))
             {
               localObject3 = new JSONArray();
@@ -116,7 +116,7 @@ class NewerGuidePlugin$1
           localObject2 = ((Bundle)localObject2).getString("tinyId");
           if ((!TextUtils.isEmpty(paramBundle)) && (localObject3 != null) && (!TextUtils.isEmpty((CharSequence)localObject4)))
           {
-            localObject5 = new Intent(this.a.mRuntime.a(), ChatActivity.class);
+            localObject5 = new Intent(this.a.mRuntime.d(), ChatActivity.class);
             ((Intent)localObject5).addFlags(67108864);
             ((Intent)localObject5).putExtra("uin", paramBundle);
             ((Intent)localObject5).putExtra("uintype", 1001);
@@ -144,7 +144,7 @@ class NewerGuidePlugin$1
             if (s == 0) {
               break label1138;
             }
-            paramBundle = AddFriendLogicActivity.a(this.a.mRuntime.a(), paramBundle, (String)localObject3, s, 1, (String)localObject4, (String)localObject5, null, null, (String)localObject2);
+            paramBundle = AddFriendLogicActivity.a(this.a.mRuntime.d(), paramBundle, (String)localObject3, s, 1, (String)localObject4, (String)localObject5, null, null, (String)localObject2);
             paramBundle.putExtra("from_newer_guide", true);
             this.a.startActivityForResult(paramBundle, (byte)6);
             break label1152;
@@ -179,14 +179,14 @@ class NewerGuidePlugin$1
           }
           else
           {
-            paramBundle = this.a.mRuntime.a();
-            i = paramBundle.getResources().getDimensionPixelSize(2131299168);
-            QQToast.a(paramBundle, 1, HardCodeUtil.a(2131707464), 0).b(i);
+            paramBundle = this.a.mRuntime.d();
+            i = paramBundle.getResources().getDimensionPixelSize(2131299920);
+            QQToast.makeText(paramBundle, 1, HardCodeUtil.a(2131905282), 0).show(i);
           }
-          if (NewerGuidePlugin.a(this.a) == null) {
+          if (NewerGuidePlugin.b(this.a) == null) {
             break label1152;
           }
-          NewerGuidePlugin.a(this.a).dismiss();
+          NewerGuidePlugin.b(this.a).dismiss();
           break label1152;
         }
         if ((localObject1 != null) && (paramBundle != null))
@@ -215,7 +215,7 @@ class NewerGuidePlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.1
  * JD-Core Version:    0.7.0.1
  */

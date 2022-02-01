@@ -2,8 +2,8 @@
 <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-        <TextView android:id="@id/k60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/lle" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textColor="#ff3cb371" android:id="@id/k6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/llf" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:id="@id/k60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/j6l" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ff3cb371" android:id="@id/k6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/ket" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <NumberPicker android:theme="@android:style/Theme.Holo.Light" android:layout_gravity="center_horizontal" android:id="@id/fc5" android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" android:layoutMode="clipBounds" android:datePickerMode="spinner" />
 </LinearLayout>

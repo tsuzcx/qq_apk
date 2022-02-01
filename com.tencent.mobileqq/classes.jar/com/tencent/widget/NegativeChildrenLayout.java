@@ -18,39 +18,39 @@ import java.util.ArrayList;
 public class NegativeChildrenLayout
   extends LinearLayout
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new NegativeChildrenLayout.1(this);
-  View jdField_a_of_type_AndroidViewView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  KandianNegativeWindow.iClickInterface jdField_a_of_type_ComTencentWidgetKandianNegativeWindow$iClickInterface;
-  ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  LinearLayout a;
+  View b;
+  Context c;
+  KandianNegativeWindow.iClickInterface d;
+  ArrayList<View> e = new ArrayList();
+  int f;
+  View.OnClickListener g = new NegativeChildrenLayout.1(this);
   
   public NegativeChildrenLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
     a(paramContext);
   }
   
   public NegativeChildrenLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560245, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370638));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366870);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131377256);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131626292, this);
+    this.a = ((LinearLayout)paramContext.findViewById(2131437913));
+    this.b = paramContext.findViewById(2131433199);
+    paramContext = this.b.findViewById(2131445643);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
     localLayoutParams.leftMargin = 0;
     localLayoutParams.rightMargin = 0;
     paramContext.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
+    this.b.setBackgroundResource(0);
   }
   
   private void a(View paramView, DislikeInfo paramDislikeInfo)
@@ -58,7 +58,7 @@ public class NegativeChildrenLayout
     if (paramView == null) {
       return;
     }
-    if ((paramDislikeInfo != null) && (!TextUtils.isEmpty(paramDislikeInfo.a)))
+    if ((paramDislikeInfo != null) && (!TextUtils.isEmpty(paramDislikeInfo.c)))
     {
       paramView.setVisibility(0);
       paramView.setTag(paramDislikeInfo);
@@ -73,9 +73,9 @@ public class NegativeChildrenLayout
     String str = "";
     try
     {
-      localImageView = (ImageView)paramView.findViewById(2131369933);
-      localTextView1 = (TextView)paramView.findViewById(2131379046);
-      localTextView2 = (TextView)paramView.findViewById(2131369103);
+      localImageView = (ImageView)paramView.findViewById(2131437082);
+      localTextView1 = (TextView)paramView.findViewById(2131447769);
+      localTextView2 = (TextView)paramView.findViewById(2131436073);
       int j = 8;
       if (paramBoolean)
       {
@@ -87,10 +87,10 @@ public class NegativeChildrenLayout
         break label170;
       }
       i = j;
-      if (TextUtils.isEmpty(paramDislikeInfo.a)) {
+      if (TextUtils.isEmpty(paramDislikeInfo.c)) {
         break label170;
       }
-      paramView = paramDislikeInfo.a;
+      paramView = paramDislikeInfo.c;
       i = j;
     }
     catch (Exception paramView)
@@ -124,19 +124,19 @@ public class NegativeChildrenLayout
   
   public void a(DislikeInfo paramDislikeInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 6) {
+    if (this.e.size() > 6) {
       return;
     }
     if (paramDislikeInfo != null)
     {
-      if (TextUtils.isEmpty(paramDislikeInfo.a)) {
+      if (TextUtils.isEmpty(paramDislikeInfo.c)) {
         return;
       }
-      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560246, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      View localView = LayoutInflater.from(this.c).inflate(2131626293, this.a, false);
+      this.a.addView(localView);
+      localView.setOnClickListener(this.g);
       localView.setTag(paramDislikeInfo);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localView);
+      this.e.add(localView);
     }
   }
   
@@ -147,42 +147,42 @@ public class NegativeChildrenLayout
     }
     int i = 0;
     setVisibility(0);
-    this.jdField_a_of_type_Int = 0;
-    a(this.jdField_a_of_type_AndroidViewView, null, paramString, true);
+    this.f = 0;
+    a(this.b, null, paramString, true);
     while ((i < paramArrayList.size()) && (i < 6))
     {
-      if (i > this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+      if (i > this.e.size() - 1) {
         a((DislikeInfo)paramArrayList.get(i));
       }
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (i < this.e.size())
       {
-        a((View)this.jdField_a_of_type_JavaUtilArrayList.get(i), (DislikeInfo)paramArrayList.get(i));
-        this.jdField_a_of_type_Int = i;
+        a((View)this.e.get(i), (DislikeInfo)paramArrayList.get(i));
+        this.f = i;
       }
       i += 1;
     }
     setLastSeparateLineUnvis();
-    i = this.jdField_a_of_type_Int + 1;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    i = this.f + 1;
+    while (i < this.e.size())
     {
-      a((View)this.jdField_a_of_type_JavaUtilArrayList.get(i), null);
+      a((View)this.e.get(i), null);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow$iClickInterface = paramiClickInterface;
+    this.d = paramiClickInterface;
   }
   
   public void setLastSeparateLineUnvis()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.e.size())
     {
-      View localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView2 = localView1.findViewById(2131377256);
+      View localView1 = (View)this.e.get(i);
+      View localView2 = localView1.findViewById(2131445643);
       int j;
-      if (i == this.jdField_a_of_type_Int)
+      if (i == this.f)
       {
         j = 4;
-        localView1.setBackgroundResource(2130843062);
+        localView1.setBackgroundResource(2130844017);
       }
       else
       {
@@ -197,7 +197,7 @@ public class NegativeChildrenLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.NegativeChildrenLayout
  * JD-Core Version:    0.7.0.1
  */

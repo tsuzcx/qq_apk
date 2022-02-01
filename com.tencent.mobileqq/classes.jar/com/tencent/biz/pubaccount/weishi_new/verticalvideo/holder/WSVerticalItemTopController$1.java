@@ -13,22 +13,22 @@ class WSVerticalItemTopController$1
 {
   WSVerticalItemTopController$1(WSVerticalItemTopController paramWSVerticalItemTopController, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (!NetworkUtil.a(WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController)))
+    if (!NetworkUtil.a(WSVerticalItemTopController.a(this.b)))
     {
-      ToastUtil.a().a(2131720447);
+      ToastUtil.a().a(2131918123);
       return;
     }
-    WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController).a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController).setText("关注");
-    WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController).setVisibility(0);
+    WSVerticalItemTopController.b(this.b).a(this.a.id, 2);
+    this.a.followStatus = 2;
+    WSVerticalItemTopController.c(this.b).setText("关注");
+    WSVerticalItemTopController.c(this.b).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTopController.1
  * JD-Core Version:    0.7.0.1
  */

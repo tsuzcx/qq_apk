@@ -8,14 +8,14 @@ public class LimitChatUiStateMachine$MatchingState
   public LimitChatUiStateMachine$MatchingState(LimitChatUiStateMachine paramLimitChatUiStateMachine, ExtendFriendLimitChatManager paramExtendFriendLimitChatManager)
   {
     super(paramLimitChatUiStateMachine, paramExtendFriendLimitChatManager);
-    this.jdField_a_of_type_Int = 2;
+    this.a = 2;
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager.a().a(paramInt);
+    this.b.b();
+    this.b.c().a(paramInt);
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -26,29 +26,29 @@ public class LimitChatUiStateMachine$MatchingState
     default: 
       return false;
     case 105: 
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine.a(0, paramInt2);
+      this.c.a(0, paramInt2);
       break;
     case 103: 
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager.a().a();
+      this.b.c().a();
     case 104: 
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine.a(0, paramInt2);
+      this.c.a(0, paramInt2);
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine.a(0, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine.b(paramInt1, paramInt2);
+    this.b.c().a();
+    this.c.a(0, paramInt2);
+    this.c.b(paramInt1, paramInt2);
     return false;
   }
   
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandManagerExtendFriendLimitChatManager.a().a();
+    this.b.c().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.match.LimitChatUiStateMachine.MatchingState
  * JD-Core Version:    0.7.0.1
  */

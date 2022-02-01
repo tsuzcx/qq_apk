@@ -10,8 +10,8 @@ class MultiVideoEnterPageActivity$9
   public void a(int paramInt1, int paramInt2)
   {
     MultiVideoEnterPageActivity localMultiVideoEnterPageActivity = this.a;
-    localMultiVideoEnterPageActivity.h = paramInt1;
-    localMultiVideoEnterPageActivity.i = paramInt2;
+    localMultiVideoEnterPageActivity.B = paramInt1;
+    localMultiVideoEnterPageActivity.C = paramInt2;
     localMultiVideoEnterPageActivity.d(10);
   }
 }

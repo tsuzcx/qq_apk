@@ -10,15 +10,15 @@ class SimpleDataProvider$6
   
   public void run()
   {
-    Iterator localIterator = SimpleDataProvider.a(this.this$0).iterator();
+    Iterator localIterator = SimpleDataProvider.c(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((IDataProvider.ICallBack)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      ((IDataProvider.ICallBack)localIterator.next()).a(this.a.b, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SimpleDataProvider.6
  * JD-Core Version:    0.7.0.1
  */

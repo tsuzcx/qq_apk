@@ -13,69 +13,68 @@ public class TextParcelData
   implements Parcelable
 {
   public static final Parcelable.Creator<TextParcelData> CREATOR = new TextParcelData.1();
-  private float jdField_a_of_type_Float;
-  private DynamicTextItem jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-  private TextLayer.LayerParams jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerParams;
-  public SegmentKeeper a;
-  private float b;
-  private float c;
+  public SegmentKeeper a = new SegmentKeeper();
+  private TextLayer.LayerParams b;
+  private DynamicTextItem c;
   private float d;
   private float e;
   private float f;
   private float g;
   private float h;
   private float i;
+  private float j;
+  private float k;
+  private float l;
   
   protected TextParcelData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
     Object localObject2 = new DynamicTextBuilder();
-    int j = paramParcel.readInt();
+    int m = paramParcel.readInt();
     Object localObject1 = (DynamicTextItem.TextMap)paramParcel.readParcelable(DynamicTextItem.TextMap.class.getClassLoader());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = ((DynamicTextBuilder)localObject2).a(j, ((DynamicTextItem.TextMap)localObject1).a());
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    this.c = ((DynamicTextBuilder)localObject2).a(m, ((DynamicTextItem.TextMap)localObject1).a());
+    localObject2 = this.c;
     boolean bool = true;
     if (localObject2 == null)
     {
       QLog.e("TextParcelData", 1, "read mDynamicTextItem from Parcel return null, use normal text instead");
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = new NormalTextItem(j, ((DynamicTextItem.TextMap)localObject1).a());
+      this.c = new NormalTextItem(m, ((DynamicTextItem.TextMap)localObject1).a());
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    localObject1 = this.c;
     if (paramParcel.readInt() != 1) {
       bool = false;
     }
     ((DynamicTextItem)localObject1).a(bool);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerParams = new TextLayer.LayerParams(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.b = paramParcel.readFloat();
-    this.c = paramParcel.readFloat();
+    this.b = new TextLayer.LayerParams(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
     this.d = paramParcel.readFloat();
     this.e = paramParcel.readFloat();
     this.f = paramParcel.readFloat();
     this.g = paramParcel.readFloat();
     this.h = paramParcel.readFloat();
     this.i = paramParcel.readFloat();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
+    this.j = paramParcel.readFloat();
+    this.k = paramParcel.readFloat();
+    this.l = paramParcel.readFloat();
+    this.a = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
   }
   
   public TextLayer.TextItem a(TextLayer paramTextLayer)
   {
     paramTextLayer.getClass();
-    paramTextLayer = new TextLayer.TextItem(paramTextLayer, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerParams);
-    paramTextLayer.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_Float;
-    DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-    paramTextLayer.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = localDynamicTextItem;
-    paramTextLayer.n = localDynamicTextItem.a();
-    paramTextLayer.o = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.b();
-    paramTextLayer.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    paramTextLayer.b = this.b;
-    paramTextLayer.c = this.c;
-    paramTextLayer.d = this.d;
-    paramTextLayer.e = this.e;
-    paramTextLayer.f = this.f;
-    paramTextLayer.g = this.g;
-    paramTextLayer.h = this.h;
-    paramTextLayer.i = this.i;
+    paramTextLayer = new TextLayer.TextItem(paramTextLayer, this.b);
+    paramTextLayer.B = this.b.b;
+    DynamicTextItem localDynamicTextItem = this.c;
+    paramTextLayer.c = localDynamicTextItem;
+    paramTextLayer.G = localDynamicTextItem.c();
+    paramTextLayer.H = this.c.d();
+    paramTextLayer.b = this.d;
+    paramTextLayer.d = this.e;
+    paramTextLayer.e = this.f;
+    paramTextLayer.f = this.g;
+    paramTextLayer.g = this.h;
+    paramTextLayer.h = this.i;
+    paramTextLayer.i = this.j;
+    paramTextLayer.j = this.k;
+    paramTextLayer.k = this.l;
     return paramTextLayer;
   }
   
@@ -91,7 +90,7 @@ public class TextParcelData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.TextParcelData
  * JD-Core Version:    0.7.0.1
  */

@@ -36,13 +36,13 @@ public class PstnUtils
   {
     Object localObject1 = ((IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).queryPhoneContactByMobile(paramString);
     if (localObject1 != null) {
-      localObject1 = ContactUtils.b(((PhoneContact)localObject1).name);
+      localObject1 = ContactUtils.c(((PhoneContact)localObject1).name);
     } else {
       localObject1 = null;
     }
     Object localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = ContactUtils.b(paramString);
+      localObject2 = ContactUtils.c(paramString);
     }
     paramString = new PhoneContactFaceDrawable(paramQQAppInterface.getApp(), (String)localObject2);
     int i = paramString.getIntrinsicWidth();
@@ -78,7 +78,7 @@ public class PstnUtils
       paramQQAppInterface = (QCallFacade)paramQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.a(paramString, paramInt);
+        paramQQAppInterface = paramQQAppInterface.c(paramString, paramInt);
         if (paramQQAppInterface != null)
         {
           paramQQAppInterface = paramQQAppInterface.pstnInfo;
@@ -229,72 +229,6 @@ public class PstnUtils
     return localArrayList;
   }
   
-  public static List<AVPhoneUserInfo> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    Object localObject1 = a(paramQQAppInterface, paramString, paramInt);
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(" ==== getRealAVPhoneUserInfo === pstnInfo : ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.i("PstnUtils", 2, ((StringBuilder)localObject2).toString());
-    }
-    if (localObject1 != null)
-    {
-      if (((String)localObject1).length() == 0) {
-        return null;
-      }
-      Object localObject3 = a((String)localObject1);
-      if (localObject3 != null)
-      {
-        if (((ArrayList)localObject3).size() == 0) {
-          return null;
-        }
-        localObject1 = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-        if (localObject1 == null) {
-          return null;
-        }
-        paramString = ((DiscussionManager)localObject1).a(paramString);
-        localObject2 = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
-        localObject1 = new ArrayList();
-        localObject3 = ((ArrayList)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject3).next();
-          paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
-          {
-            paramQQAppInterface = ((IPhoneContactService)localObject2).queryPhoneContactByMobile(paramQQAppInterface);
-            if (paramQQAppInterface != null) {
-              paramQQAppInterface = paramQQAppInterface.uin;
-            } else {
-              paramQQAppInterface = null;
-            }
-            if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
-            {
-              if ((paramString == null) || (!paramString.containsKey(paramQQAppInterface))) {
-                ((ArrayList)localObject1).add(localAVPhoneUserInfo);
-              }
-            }
-            else {
-              ((ArrayList)localObject1).add(localAVPhoneUserInfo);
-            }
-          }
-        }
-        if (QLog.isColorLevel())
-        {
-          paramQQAppInterface = new StringBuilder();
-          paramQQAppInterface.append(" ==== getRealAVPhoneUserInfo === list : ");
-          paramQQAppInterface.append(((ArrayList)localObject1).toString());
-          QLog.i("PstnUtils", 2, paramQQAppInterface.toString());
-        }
-        return localObject1;
-      }
-    }
-    return null;
-  }
-  
   public static List<Bitmap> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
     Object localObject1 = a(paramQQAppInterface, paramString, paramInt1);
@@ -317,7 +251,7 @@ public class PstnUtils
         if (localObject1 == null) {
           return null;
         }
-        Map localMap = ((DiscussionManager)localObject1).a(paramString);
+        Map localMap = ((DiscussionManager)localObject1).b(paramString);
         IPhoneContactService localIPhoneContactService = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
         ArrayList localArrayList = new ArrayList();
         paramInt2 = Math.min(paramInt2, ((ArrayList)localObject2).size());
@@ -361,10 +295,76 @@ public class PstnUtils
     return null;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt);
+    paramQQAppInterface = c(paramQQAppInterface, paramString, paramInt);
     return (paramQQAppInterface != null) && (paramQQAppInterface.size() > 0);
+  }
+  
+  public static List<AVPhoneUserInfo> c(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    Object localObject1 = a(paramQQAppInterface, paramString, paramInt);
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" ==== getRealAVPhoneUserInfo === pstnInfo : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("PstnUtils", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (localObject1 != null)
+    {
+      if (((String)localObject1).length() == 0) {
+        return null;
+      }
+      Object localObject3 = a((String)localObject1);
+      if (localObject3 != null)
+      {
+        if (((ArrayList)localObject3).size() == 0) {
+          return null;
+        }
+        localObject1 = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        if (localObject1 == null) {
+          return null;
+        }
+        paramString = ((DiscussionManager)localObject1).b(paramString);
+        localObject2 = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+        localObject1 = new ArrayList();
+        localObject3 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject3).next();
+          paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+          {
+            paramQQAppInterface = ((IPhoneContactService)localObject2).queryPhoneContactByMobile(paramQQAppInterface);
+            if (paramQQAppInterface != null) {
+              paramQQAppInterface = paramQQAppInterface.uin;
+            } else {
+              paramQQAppInterface = null;
+            }
+            if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+            {
+              if ((paramString == null) || (!paramString.containsKey(paramQQAppInterface))) {
+                ((ArrayList)localObject1).add(localAVPhoneUserInfo);
+              }
+            }
+            else {
+              ((ArrayList)localObject1).add(localAVPhoneUserInfo);
+            }
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(" ==== getRealAVPhoneUserInfo === list : ");
+          paramQQAppInterface.append(((ArrayList)localObject1).toString());
+          QLog.i("PstnUtils", 2, paramQQAppInterface.toString());
+        }
+        return localObject1;
+      }
+    }
+    return null;
   }
 }
 

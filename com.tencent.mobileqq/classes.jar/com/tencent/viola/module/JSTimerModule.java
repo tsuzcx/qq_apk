@@ -67,7 +67,7 @@ public class JSTimerModule
         localJSONObject.put("timerId", i);
         paramMessage.put("ret", 0);
         paramMessage.put("data", localJSONObject);
-        ViolaBridgeManager.getInstance().execJSFuncByName((String)localObject, paramMessage.toString());
+        ViolaBridgeManager.getInstance().execJSFuncByName(null, (String)localObject, paramMessage.toString());
         return false;
       }
       catch (JSONException paramMessage)
@@ -106,7 +106,7 @@ public class JSTimerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.JSTimerModule
  * JD-Core Version:    0.7.0.1
  */

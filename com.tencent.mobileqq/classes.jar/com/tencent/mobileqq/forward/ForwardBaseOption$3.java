@@ -7,12 +7,12 @@ class ForwardBaseOption$3
   
   public void run()
   {
-    ForwardBaseOption.d(this.this$0);
+    ForwardBaseOption.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.3
  * JD-Core Version:    0.7.0.1
  */

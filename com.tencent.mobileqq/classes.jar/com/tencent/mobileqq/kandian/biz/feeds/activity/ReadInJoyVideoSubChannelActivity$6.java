@@ -12,19 +12,19 @@ class ReadInJoyVideoSubChannelActivity$6
   {
     if (!paramBoolean1)
     {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+      ReadInJoyVideoSubChannelActivity.b(this.a, false);
       return;
     }
-    if (ReadInJoyVideoSubChannelActivity.a(this.a))
+    if (ReadInJoyVideoSubChannelActivity.b(this.a))
     {
-      ReadInJoyVideoSubChannelActivity.a(this.a).c();
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+      ReadInJoyVideoSubChannelActivity.c(this.a).v();
+      ReadInJoyVideoSubChannelActivity.b(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyVideoSubChannelActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -43,16 +43,16 @@ public class QlinkPluginProxyActivity
   {
     paramIntent.putExtra("userQqResources", 2);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qlink_plugin.apk";
-    localPluginParams.e = PluginInfo.c;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.f = a(paramIntent);
-    localPluginParams.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = paramInt;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.d = "qlink_plugin.apk";
+    localPluginParams.g = PluginInfo.c;
+    localPluginParams.c = paramString;
+    localPluginParams.h = a(paramIntent);
+    localPluginParams.i = QlinkPluginProxyActivity.class;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.l = paramQQProgressDialog;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
   }
   
@@ -61,7 +61,7 @@ public class QlinkPluginProxyActivity
     paramIntent.putExtra("qlink_plugin_activity_name", paramString);
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
     if (paramContext == null) {
       return false;
@@ -109,7 +109,7 @@ public class QlinkPluginProxyActivity
         paramBundle = getIntent().getExtras();
       }
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      StringBuffer localStringBuffer = new StringBuffer(HardCodeUtil.a(2131709846));
+      StringBuffer localStringBuffer = new StringBuffer(HardCodeUtil.a(2131907562));
       localStringBuffer.append(paramBundle);
       localStringBuffer.append(" ");
       localStringBuffer.append(this.mCreateErrorInfo);
@@ -119,7 +119,7 @@ public class QlinkPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

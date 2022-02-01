@@ -17,14 +17,14 @@ class GuessStarClickStagePresenter$2$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPushVideoFrameEnd run ,topicAnswerDuration = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.s());
+      localStringBuilder.append(this.b.a.aj());
       localStringBuilder.append(",statusPassedTime = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().d());
+      localStringBuilder.append(this.b.a.h().n());
       QLog.i("GuessStarClickStagePresenter", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.b(true);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a(), this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.s() * 1000, 0L);
-    GuessStarClickStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter$2.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStagePresenter, this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl$PushDecodeMsg, false);
+    this.b.b.b.b(true);
+    this.b.b.a.a(this.b.b.b.getTopicClockView(), this.b.a.aj() * 1000, 0L);
+    GuessStarClickStagePresenter.a(this.b.b, this.a, false);
   }
 }
 

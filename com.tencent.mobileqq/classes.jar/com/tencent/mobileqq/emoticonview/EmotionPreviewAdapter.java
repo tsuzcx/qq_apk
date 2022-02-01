@@ -41,7 +41,7 @@ public class EmotionPreviewAdapter
   public EmotionPreviewAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848074);
+    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130849738);
     this.imageHeight = AIOUtils.b(207.0F, this.mContext.getResources());
   }
   
@@ -275,7 +275,7 @@ public class EmotionPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

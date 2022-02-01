@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.superplayer.bandwidth.AbstractPredictor;
 import com.tencent.superplayer.bandwidth.IBandwidthObtainer;
+import com.tencent.superplayer.bandwidth.SPBandwidthMonitor;
 import com.tencent.superplayer.bandwidth.SPBandwidthPredictor;
 import com.tencent.superplayer.bandwidth.SPBufferRangeController;
 import com.tencent.superplayer.capture.SPlayerImageGenerator;
@@ -14,11 +15,19 @@ import com.tencent.superplayer.player.SuperPlayerMgr;
 import com.tencent.superplayer.preload.SPlayerPreLoaderImpl;
 import com.tencent.superplayer.view.ISPlayerVideoView;
 import com.tencent.superplayer.view.SPlayerVideoView;
+import com.tencent.thumbplayer.api.TPCommonEnum.TP_DRM_TYPE;
+import com.tencent.thumbplayer.api.composition.ITPMediaDRMAsset;
+import com.tencent.thumbplayer.api.composition.TPMediaCompositionFactory;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class SuperPlayerFactory
 {
+  public static ISPBandwidthMonitor createBandwidthMonitor(int paramInt)
+  {
+    return new SPBandwidthMonitor(paramInt);
+  }
+  
   public static ISPBandwidthPredictor createBandwidthPredictor(Context paramContext)
   {
     return new SPBandwidthPredictor(paramContext);
@@ -67,6 +76,21 @@ public class SuperPlayerFactory
   public static ISPlayerPreLoader createPreLoader(int paramInt1, int paramInt2)
   {
     return new SPlayerPreLoaderImpl(paramInt1, paramInt2);
+  }
+  
+  public static SuperPlayerVideoInfo createVideoInfoForDRM(@TPCommonEnum.TP_DRM_TYPE int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    SuperPlayerVideoInfo localSuperPlayerVideoInfo = new SuperPlayerVideoInfo(3);
+    localSuperPlayerVideoInfo.setFormat(paramInt2);
+    localSuperPlayerVideoInfo.setPlayUrl(paramString1);
+    paramString1 = TPMediaCompositionFactory.createMediaDRMAsset(paramInt1, paramString1);
+    paramString1.setDrmProperty("drm_property_provision_url", paramString2);
+    paramString1.setDrmProperty("drm_property_license_url", paramString3);
+    if (paramInt1 == 0) {
+      paramString1.setDrmProperty("drm_property_use_l1", "1");
+    }
+    localSuperPlayerVideoInfo.setMediaAssert(paramString1);
+    return localSuperPlayerVideoInfo;
   }
   
   public static SuperPlayerVideoInfo createVideoInfoForTVideo(int paramInt, String paramString)
@@ -144,7 +168,7 @@ public class SuperPlayerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 import android.text.style.ImageSpan;
 import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import com.tencent.mobileqq.vas.api.IVasService;
 import com.tencent.mobileqq.vas.profilecard.util.LevelUtil;
 import com.tencent.mobileqq.vas.quickupdate.QQLevelIconCallback;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IGameCardManager;
+import com.tencent.mobileqq.vip.IGameCardManager.GameCardInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -34,11 +34,6 @@ public class QQSettingUtil
     localStringBuilder.append("setting_quit_");
     localStringBuilder.append(paramString);
     return paramContext.getInt(localStringBuilder.toString(), 0);
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getApplicationContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("mywallet_flag", 1);
   }
   
   public static SpannableString a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
@@ -54,8 +49,8 @@ public class QQSettingUtil
     if (paramInt2 == 0)
     {
       localObject1 = new SpannableString("*");
-      paramInt2 = (int)paramResources.getDimension(2131298516);
-      paramResources = paramResources.getDrawable(2130846038);
+      paramInt2 = (int)paramResources.getDimension(2131299230);
+      paramResources = paramResources.getDrawable(2130847508);
       paramResources = VasApngUtil.getOptimizedApngDrawable(LevelUtil.a(paramInt1, LevelUtil.a), paramResources, VasApngUtil.VIP_APNG_TAGS, "halfStar");
       paramResources.setBounds(0, 0, paramInt2, paramInt2);
       if (bool) {
@@ -138,7 +133,7 @@ public class QQSettingUtil
       localObject1 = localObject2;
     }
     SpannableString localSpannableString = new SpannableString((CharSequence)localObject1);
-    i = (int)paramResources.getDimension(2131298516);
+    i = (int)paramResources.getDimension(2131299230);
     paramInt2 = 0;
     localObject2 = localObject1;
     while (paramInt2 < ((String)localObject2).length())
@@ -147,27 +142,27 @@ public class QQSettingUtil
       String str = ((String)localObject2).substring(paramInt2, paramInt3);
       if (((String)localObject3).equalsIgnoreCase(str))
       {
-        localObject1 = paramResources.getDrawable(2130846036);
+        localObject1 = paramResources.getDrawable(2130847506);
         localObject1 = VasApngUtil.getOptimizedApngDrawable(LevelUtil.a(paramInt1, LevelUtil.e), (Drawable)localObject1, VasApngUtil.VIP_APNG_TAGS, "crown");
       }
       else if ("@".equalsIgnoreCase(str))
       {
-        localObject1 = paramResources.getDrawable(2130846040);
+        localObject1 = paramResources.getDrawable(2130847510);
         localObject1 = VasApngUtil.getOptimizedApngDrawable(LevelUtil.a(paramInt1, LevelUtil.d), (Drawable)localObject1, VasApngUtil.VIP_APNG_TAGS, "sun");
       }
       else if ("#".equalsIgnoreCase(str))
       {
-        localObject1 = paramResources.getDrawable(2130846037);
+        localObject1 = paramResources.getDrawable(2130847507);
         localObject1 = VasApngUtil.getOptimizedApngDrawable(LevelUtil.a(paramInt1, LevelUtil.c), (Drawable)localObject1, VasApngUtil.VIP_APNG_TAGS, "moon");
       }
       else if ("%".equalsIgnoreCase(str))
       {
-        localObject1 = paramResources.getDrawable(2130846039);
+        localObject1 = paramResources.getDrawable(2130847509);
         localObject1 = VasApngUtil.getOptimizedApngDrawable(LevelUtil.a(paramInt1, LevelUtil.b), (Drawable)localObject1, VasApngUtil.VIP_APNG_TAGS, "star");
       }
       else if ("$".equalsIgnoreCase(str))
       {
-        localObject1 = paramResources.getDrawable(2130851167);
+        localObject1 = paramResources.getDrawable(2130853421);
       }
       else
       {
@@ -201,45 +196,14 @@ public class QQSettingUtil
     return localSpannableString;
   }
   
-  public static SpannableString a(View paramView, Resources paramResources, long paramLong, int paramInt, boolean paramBoolean)
+  public static URLDrawable a(View paramView, IGameCardManager.GameCardInfo paramGameCardInfo)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      localObject = VipGrayConfigHelper.a().a(((QQAppInterface)localObject).getCurrentUin(), paramLong, paramInt, paramBoolean);
+    IGameCardManager localIGameCardManager = VasUtil.a().getGameCardManager();
+    paramGameCardInfo.b = VasUtil.e();
+    if (paramView != null) {
+      paramView.setVisibility(8);
     }
-    else
-    {
-      localObject = "";
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return new SpannableString("");
-    }
-    SpannableString localSpannableString = new SpannableString("KB");
-    URLDrawable localURLDrawable = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localURLDrawable = URLDrawable.getDrawable((String)localObject, new ColorDrawable(), new ColorDrawable());
-      if (localURLDrawable.getStatus() == 1)
-      {
-        localURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
-      }
-      else
-      {
-        localURLDrawable.restartDownload();
-        localURLDrawable.setBounds(0, 0, 1, 1);
-      }
-    }
-    if (localURLDrawable != null)
-    {
-      localURLDrawable.setURLDrawableListener(new QQSettingUtil.2(paramView));
-      localSpannableString.setSpan(new ImageSpan(localURLDrawable), 0, 1, 33);
-      paramView = paramResources.getDrawable(2130846061);
-      paramView.setBounds(0, 0, (int)paramResources.getDimension(2131297239), UIUtils.a(BaseApplicationImpl.getContext(), 5.0F));
-      localSpannableString.setSpan(new ImageSpan(paramView), 1, 2, 33);
-    }
-    return localSpannableString;
+    return localIGameCardManager.getGameCardDrawable(false, paramGameCardInfo, new QQSettingUtil.2(paramView, paramGameCardInfo));
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
@@ -294,10 +258,15 @@ public class QQSettingUtil
       StatisticCollector.getInstance(null).reportToPCliOper(paramQQAppInterface, localStringBuilder.toString());
     }
   }
+  
+  public static int d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getApplicationContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("mywallet_flag", 1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil
  * JD-Core Version:    0.7.0.1
  */

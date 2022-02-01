@@ -19,12 +19,12 @@ final class RIJAidlClientRedPacketModule$isNowInKanDianTab$1
   public final boolean invoke()
   {
     IRIJAidlInterfaceForRewardTask localIRIJAidlInterfaceForRewardTask = RIJAidlClientRedPacketModule.a(RIJAidlClientRedPacketModule.a);
-    return (localIRIJAidlInterfaceForRewardTask != null) && (localIRIJAidlInterfaceForRewardTask.a() == true);
+    return (localIRIJAidlInterfaceForRewardTask != null) && (localIRIJAidlInterfaceForRewardTask.e() == true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.aidl.RIJAidlClientRedPacketModule.isNowInKanDianTab.1
  * JD-Core Version:    0.7.0.1
  */

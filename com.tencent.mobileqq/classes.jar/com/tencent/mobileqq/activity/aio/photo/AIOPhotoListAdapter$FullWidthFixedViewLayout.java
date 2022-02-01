@@ -15,7 +15,7 @@ class AIOPhotoListAdapter$FullWidthFixedViewLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = AIOPhotoListAdapter.a(this.a).getPaddingLeft() + getPaddingLeft();
+    int i = AIOPhotoListAdapter.c(this.a).getPaddingLeft() + getPaddingLeft();
     if (i != paramInt1) {
       offsetLeftAndRight(i - paramInt1);
     }
@@ -24,12 +24,12 @@ class AIOPhotoListAdapter$FullWidthFixedViewLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(AIOPhotoListAdapter.a(this.a).getMeasuredWidth() - AIOPhotoListAdapter.a(this.a).getPaddingLeft() - AIOPhotoListAdapter.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(AIOPhotoListAdapter.c(this.a).getMeasuredWidth() - AIOPhotoListAdapter.c(this.a).getPaddingLeft() - AIOPhotoListAdapter.c(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter.FullWidthFixedViewLayout
  * JD-Core Version:    0.7.0.1
  */

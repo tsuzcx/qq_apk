@@ -44,58 +44,63 @@ import java.util.Set;
 public class SendPhotoTask
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  public String a;
-  WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  HashMap<Integer, SendVideoInfo> jdField_a_of_type_JavaUtilHashMap;
-  boolean jdField_a_of_type_Boolean = true;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long = 0L;
-  ArrayList<String> jdField_b_of_type_JavaUtilArrayList;
-  HashMap<String, PhotoSendParams> jdField_b_of_type_JavaUtilHashMap;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  ArrayList<CompressInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_c_of_type_Boolean;
-  int d = 0;
+  WeakReference<BaseActivity> a;
+  Handler b = null;
+  ArrayList<String> c;
+  ArrayList<String> d;
+  HashMap<Integer, SendVideoInfo> e;
+  public String f;
+  int g;
+  boolean h = true;
+  int i;
+  int j;
+  boolean k = false;
+  boolean l;
+  Intent m;
+  ArrayList<CompressInfo> n = new ArrayList();
+  long o = 0L;
+  long p = 0L;
+  HashMap<String, PhotoSendParams> q;
+  int r = 0;
   
   public SendPhotoTask(BaseActivity paramBaseActivity, Intent paramIntent, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_AndroidContentIntent = paramBaseActivity.getIntent();
+    this.a = new WeakReference(paramBaseActivity);
+    this.b = paramHandler;
+    this.m = paramBaseActivity.getIntent();
     if (paramIntent != null) {
-      this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      this.m = paramIntent;
     }
-    a(this.jdField_a_of_type_AndroidContentIntent);
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    a(this.m);
+    if (this.b != null)
     {
-      paramBaseActivity = this.jdField_a_of_type_JavaUtilArrayList;
+      paramBaseActivity = this.c;
       if ((paramBaseActivity == null) || (paramBaseActivity.isEmpty()))
       {
-        paramBaseActivity = this.jdField_b_of_type_JavaUtilHashMap;
+        paramBaseActivity = this.q;
         if ((paramBaseActivity == null) || (paramBaseActivity.isEmpty()))
         {
-          paramBaseActivity = this.jdField_b_of_type_JavaUtilArrayList;
+          paramBaseActivity = this.d;
           if ((paramBaseActivity == null) || (paramBaseActivity.isEmpty())) {
             break label155;
           }
         }
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.b.sendEmptyMessage(1);
       return;
       label155:
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      this.b.sendEmptyMessage(4);
     }
   }
   
-  private boolean a()
+  private boolean b(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent.hasExtra("presend_handler"))
+    return (paramInt != 1042) && (paramInt == 1054);
+  }
+  
+  private boolean c()
+  {
+    if (this.m.hasExtra("presend_handler"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SendPhotoTask", 2, "presendPic ,sendPhotoTask return directly!");
@@ -105,11 +110,6 @@ public class SendPhotoTask
     return false;
   }
   
-  private boolean a(int paramInt)
-  {
-    return (paramInt != 1042) && (paramInt == 1054);
-  }
-  
   protected CompressInfo a(int paramInt, Intent paramIntent)
   {
     return ((IPicBus)QRoute.api(IPicBus.class)).createCompressInfo(paramInt, paramIntent);
@@ -117,17 +117,17 @@ public class SendPhotoTask
   
   PicUploadInfo a(int paramInt)
   {
-    return ((IPicBus)QRoute.api(IPicBus.class)).createPicUploadInfo(paramInt, this.jdField_a_of_type_AndroidContentIntent);
+    return ((IPicBus)QRoute.api(IPicBus.class)).createPicUploadInfo(paramInt, this.m);
   }
   
   protected ArrayList<String> a()
   {
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
+    int i1 = 0;
     Object localObject;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i1 < this.c.size())
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localObject = (String)this.c.get(i1);
       StringBuilder localStringBuilder;
       if (a((String)localObject))
       {
@@ -136,7 +136,7 @@ public class SendPhotoTask
         localStringBuilder.append((String)localObject);
         QLog.e("SendPhotoTask", 2, localStringBuilder.toString());
       }
-      else if ((!a(i, (String)localObject)) && (!a()) && (a((String)localObject, i)))
+      else if ((!a(i1, (String)localObject)) && (!c()) && (a((String)localObject, i1)))
       {
         localArrayList.add(localObject);
         if (QLog.isColorLevel())
@@ -147,9 +147,9 @@ public class SendPhotoTask
           QLog.d("SendPhotoTask", 2, localStringBuilder.toString());
         }
       }
-      i += 1;
+      i1 += 1;
     }
-    if ((localArrayList.size() >= 5) && (this.jdField_b_of_type_Int == 1))
+    if ((localArrayList.size() >= 5) && (this.i == 1))
     {
       if (QLog.isColorLevel())
       {
@@ -157,7 +157,7 @@ public class SendPhotoTask
         while (((Iterator)localObject).hasNext()) {
           QLog.d("SendPhotoTask", 2, new Object[] { "sendPhotoTask,  mSendPaths path=", (String)((Iterator)localObject).next() });
         }
-        QLog.d("SendPhotoTask", 2, new Object[] { "sendPhotoTask,  lastMessageUniseq=", Long.valueOf(this.jdField_b_of_type_Long) });
+        QLog.d("SendPhotoTask", 2, new Object[] { "sendPhotoTask,  lastMessageUniseq=", Long.valueOf(this.p) });
       }
       a(localArrayList);
       return localArrayList;
@@ -168,50 +168,45 @@ public class SendPhotoTask
     return localArrayList;
   }
   
-  protected ArrayList<Integer> a(CompressInfo paramCompressInfo)
-  {
-    return ((IPicUtil)QRoute.api(IPicUtil.class)).getSliceInfos(paramCompressInfo.jdField_e_of_type_JavaLangString);
-  }
-  
   protected void a(Intent paramIntent)
   {
     if (paramIntent == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PicContants.NEED_COMPRESS", true);
-    this.jdField_b_of_type_Int = paramIntent.getIntExtra("uintype", 1003);
-    this.jdField_b_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.HANDLE_DEST_RESULT", false);
-    this.jdField_c_of_type_Boolean = paramIntent.getBooleanExtra("send_in_background", false);
-    this.jdField_a_of_type_JavaUtilArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    this.jdField_b_of_type_JavaUtilArrayList = this.jdField_a_of_type_AndroidContentIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS_BY_FILE");
-    this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.VIDEO_INFOS"));
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("uin");
-    this.d = paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-    this.jdField_c_of_type_Int = paramIntent.getIntExtra("key_confess_topicid", 0);
-    this.jdField_b_of_type_JavaUtilHashMap = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.photo_send_pic_type"));
-    if (this.jdField_b_of_type_JavaUtilHashMap == null) {
-      this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.g = paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1);
+    this.h = paramIntent.getBooleanExtra("PicContants.NEED_COMPRESS", true);
+    this.i = paramIntent.getIntExtra("uintype", 1003);
+    this.k = paramIntent.getBooleanExtra("PhotoConst.HANDLE_DEST_RESULT", false);
+    this.l = paramIntent.getBooleanExtra("send_in_background", false);
+    this.c = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    this.d = this.m.getStringArrayListExtra("PhotoConst.PHOTO_PATHS_BY_FILE");
+    this.e = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.VIDEO_INFOS"));
+    this.f = paramIntent.getStringExtra("uin");
+    this.r = paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    this.j = paramIntent.getIntExtra("key_confess_topicid", 0);
+    this.q = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.photo_send_pic_type"));
+    if (this.q == null) {
+      this.q = new HashMap();
     }
     if (QLog.isColorLevel())
     {
       paramIntent = new StringBuilder();
       paramIntent.append(" sendPhotoTask(),  mBusiType :");
-      paramIntent.append(this.jdField_a_of_type_Int);
+      paramIntent.append(this.g);
       paramIntent.append(", mNeedCompress:");
-      paramIntent.append(this.jdField_a_of_type_Boolean);
+      paramIntent.append(this.h);
       paramIntent.append(", mCurType:");
-      paramIntent.append(this.jdField_b_of_type_Int);
+      paramIntent.append(this.i);
       paramIntent.append(",mIsWaitForResult:");
-      paramIntent.append(this.jdField_b_of_type_Boolean);
+      paramIntent.append(this.k);
       paramIntent.append(",picQualityType: ");
-      paramIntent.append(this.d);
+      paramIntent.append(this.r);
       paramIntent.append(",mSendBackground = ");
-      paramIntent.append(this.jdField_c_of_type_Boolean);
+      paramIntent.append(this.l);
       paramIntent.append("mPaths :");
-      paramIntent.append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
+      paramIntent.append(Arrays.toString(this.c.toArray()));
       paramIntent.append(", PhotoTypeSize:");
-      paramIntent.append(this.jdField_b_of_type_JavaUtilHashMap.size());
+      paramIntent.append(this.q.size());
       QLog.d("SendPhotoTask", 2, paramIntent.toString());
     }
   }
@@ -219,32 +214,32 @@ public class SendPhotoTask
   protected void a(BaseActivity paramBaseActivity, PicReq paramPicReq)
   {
     Object localObject;
-    int i;
+    int i1;
     if ((paramBaseActivity != null) && (paramBaseActivity.app != null)) {
-      if ((paramPicReq != null) && (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null))
+      if ((paramPicReq != null) && (paramPicReq.g != null))
       {
-        a(paramBaseActivity.app, this.jdField_a_of_type_JavaLangString, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
-        if (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int == 9501)
+        a(paramBaseActivity.app, this.f, paramPicReq.g.n);
+        if (paramPicReq.g.c == 9501)
         {
           b(paramBaseActivity, paramPicReq);
           return;
         }
-        if ((paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int == 9500) && ((paramPicReq.jdField_a_of_type_Int == 2) || (paramPicReq.jdField_a_of_type_Int == 4)))
+        if ((paramPicReq.g.c == 9500) && ((paramPicReq.a == 2) || (paramPicReq.a == 4)))
         {
           localObject = paramBaseActivity.getIntent();
-          this.jdField_a_of_type_AndroidContentIntent.removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
+          this.m.removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
           ((Intent)localObject).setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.ChatActivity");
-          ((Intent)localObject).putExtra("uin", paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c);
-          ((Intent)localObject).putExtra("key_confess_topicid", paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.o);
+          ((Intent)localObject).putExtra("uin", paramPicReq.g.e);
+          ((Intent)localObject).putExtra("key_confess_topicid", paramPicReq.g.K);
           ArrayList localArrayList = new ArrayList();
-          localArrayList.add(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
+          localArrayList.add(paramPicReq.g.n);
           ((Intent)localObject).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
           ((Intent)localObject).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (String)localArrayList.get(0));
           ((Intent)localObject).putExtra("PhotoConst.SEND_SIZE_SPEC", 2);
           ((Intent)localObject).addFlags(603979776);
           ((Intent)localObject).putExtra("param_compressInitTime", System.currentTimeMillis());
-          i = ((Intent)localObject).getIntExtra(AlbumConstants.h, -1);
-          if ((i != 80) && (i != 82)) {
+          i1 = ((Intent)localObject).getIntExtra(AlbumConstants.h, -1);
+          if ((i1 != 80) && (i1 != 82)) {
             ((Intent)localObject).putExtra(AlbumConstants.h, 82);
           }
           paramBaseActivity.startActivityForResult((Intent)localObject, 2);
@@ -259,21 +254,21 @@ public class SendPhotoTask
     {
       try
       {
-        localObject = new String[this.jdField_a_of_type_JavaUtilArrayList.size()];
-        this.jdField_a_of_type_JavaUtilArrayList.toArray((Object[])localObject);
+        localObject = new String[this.c.size()];
+        this.c.toArray((Object[])localObject);
         boolean bool2 = paramBaseActivity.getIntent().getBooleanExtra("PhotoConst.IS_FORWARD", false);
         if (!bool2) {
-          break label423;
+          break label424;
         }
-        i = paramBaseActivity.getIntent().getIntExtra("forward_source_uin_type", -1);
-        if (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null)
+        i1 = paramBaseActivity.getIntent().getIntExtra("forward_source_uin_type", -1);
+        if (paramPicReq.g != null)
         {
-          int j = this.jdField_b_of_type_Int;
-          if (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.h != 2) {
-            break label428;
+          int i2 = this.i;
+          if (paramPicReq.g.t != 2) {
+            break label429;
           }
           bool1 = true;
-          StatisticConstants.a((String[])localObject, j, bool1, bool2, i, paramBaseActivity.app);
+          StatisticConstants.a((String[])localObject, i2, bool1, bool2, i1, paramBaseActivity.app);
         }
         return;
       }
@@ -289,10 +284,10 @@ public class SendPhotoTask
         QLog.d("SendPhotoTask", 2, "sendPhoto,activity or app is null,return!");
       }
       return;
-      label423:
-      i = -1;
+      label424:
+      i1 = -1;
       continue;
-      label428:
+      label429:
       boolean bool1 = false;
     }
   }
@@ -320,14 +315,14 @@ public class SendPhotoTask
   
   protected void a(List<String> paramList)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app != null)) {
-      TroopGrayTipUtils.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_a_of_type_JavaLangString, ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.getCurrentUin(), paramList, this.jdField_b_of_type_Long);
+    if ((this.a.get() != null) && (((BaseActivity)this.a.get()).app != null)) {
+      TroopGrayTipUtils.a(((BaseActivity)this.a.get()).app, this.f, ((BaseActivity)this.a.get()).app.getCurrentUin(), paramList, this.p);
     }
   }
   
   protected boolean a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.e;
     if ((localObject != null) && (((HashMap)localObject).get(Integer.valueOf(paramInt)) != null))
     {
       if (QLog.isColorLevel())
@@ -337,16 +332,16 @@ public class SendPhotoTask
         ((StringBuilder)localObject).append(paramString);
         QLog.d("SendPhotoTask", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = (SendVideoInfo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      localObject = (SendVideoInfo)this.e.get(Integer.valueOf(paramInt));
       Intent localIntent = new Intent();
       localIntent.putExtra("file_send_path", paramString);
       localIntent.putExtra("file_send_size", ((SendVideoInfo)localObject).fileSize);
       localIntent.putExtra("file_send_duration", ((SendVideoInfo)localObject).duration);
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("uintype", this.jdField_b_of_type_Int);
+      localIntent.putExtra("uin", this.f);
+      localIntent.putExtra("uintype", this.i);
       localIntent.putExtra("file_source", "album_flow");
       localIntent.putExtra("send_in_background", true);
-      localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", this.d);
+      localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", this.r);
       b(localIntent);
       return true;
     }
@@ -365,49 +360,49 @@ public class SendPhotoTask
   
   protected boolean a(PicUploadInfo paramPicUploadInfo)
   {
-    CompressInfo localCompressInfo = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
+    CompressInfo localCompressInfo = a(this.g, this.m);
     if (localCompressInfo == null)
     {
       QLog.e("SendPhotoTask", 2, "sendPhotoTask. compressInfo is null!");
       return false;
     }
-    localCompressInfo.j = this.jdField_b_of_type_Int;
-    localCompressInfo.jdField_g_of_type_Boolean = true;
+    localCompressInfo.v = this.i;
+    localCompressInfo.w = true;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("SendPhoto,compressInfo.uinType");
-      localStringBuilder.append(localCompressInfo.j);
+      localStringBuilder.append(localCompressInfo.v);
       QLog.d("SendPhotoTask", 2, localStringBuilder.toString());
     }
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("sendPhotoTask, compress start.compressInfo.src = ");
-      localStringBuilder.append(localCompressInfo.c);
+      localStringBuilder.append(localCompressInfo.h);
       QLog.d("SendPhotoTask", 2, localStringBuilder.toString());
     }
     a(localCompressInfo);
-    paramPicUploadInfo.jdField_g_of_type_JavaLangString = localCompressInfo.jdField_e_of_type_JavaLangString;
+    paramPicUploadInfo.n = localCompressInfo.l;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("sendPhotoTask,  compress finish, upInfo.localPath = ");
-      localStringBuilder.append(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+      localStringBuilder.append(paramPicUploadInfo.n);
       QLog.d("SendPhotoTask", 2, localStringBuilder.toString());
     }
-    if ((localCompressInfo.jdField_g_of_type_Int != 2) && (b(localCompressInfo.jdField_e_of_type_JavaLangString))) {
+    if ((localCompressInfo.p != 2) && (b(localCompressInfo.l))) {
       LogTag.a();
     }
     try
     {
-      paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList = a(localCompressInfo);
-      if ((paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList == null) || (!QLog.isColorLevel())) {
+      paramPicUploadInfo.r = b(localCompressInfo);
+      if ((paramPicUploadInfo.r == null) || (!QLog.isColorLevel())) {
         break label370;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("@SendPhotoActivity.sendPhotoTask:");
-      localStringBuilder.append(paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList.toString());
+      localStringBuilder.append(paramPicUploadInfo.r.toString());
       QLog.d("peak_pgjpeg", 2, localStringBuilder.toString());
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -425,32 +420,32 @@ public class SendPhotoTask
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("@ArrayIndexOutOfBoundsException occurred in PeakUtils.getSliceInfos， ");
-      localStringBuilder.append(localCompressInfo.jdField_e_of_type_JavaLangString);
+      localStringBuilder.append(localCompressInfo.l);
       QLog.w("peak_pgjpeg", 2, localStringBuilder.toString());
       break label370;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("@OutOfMemoryError occurred in PeakUtils.getSliceInfos， ");
-        localStringBuilder.append(localCompressInfo.jdField_e_of_type_JavaLangString);
+        localStringBuilder.append(localCompressInfo.l);
         localStringBuilder.append("'s size is ");
-        localStringBuilder.append(FileUtils.getFileSizes(localCompressInfo.jdField_e_of_type_JavaLangString));
+        localStringBuilder.append(FileUtils.getFileSizes(localCompressInfo.l));
         QLog.w("peak_pgjpeg", 2, localStringBuilder.toString());
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("@PeakUtils.getSliceInfos(");
-    localStringBuilder.append(localCompressInfo.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(localCompressInfo.l);
     localStringBuilder.append(")");
     LogTag.a("peak_pgjpeg", localStringBuilder.toString());
-    this.jdField_c_of_type_JavaUtilArrayList.add(localCompressInfo);
-    if (localCompressInfo.jdField_e_of_type_Boolean)
+    this.n.add(localCompressInfo);
+    if (localCompressInfo.t)
     {
-      paramPicUploadInfo.jdField_g_of_type_Int = 1;
+      paramPicUploadInfo.s = 1;
       Logger.a(paramPicUploadInfo, "fixProtocolType", "sendReq.upInfo.protocolType");
       return true;
     }
-    paramPicUploadInfo.jdField_g_of_type_Int = paramPicUploadInfo.a();
+    paramPicUploadInfo.s = paramPicUploadInfo.j();
     return true;
   }
   
@@ -461,55 +456,55 @@ public class SendPhotoTask
   
   protected boolean a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", paramInt);
-    PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, this.jdField_a_of_type_Int);
-    localPicReq.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_MSG_FORWARD_ID", -1);
-    PicUploadInfo localPicUploadInfo = a(this.jdField_a_of_type_Int);
+    this.m.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
+    this.m.putExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", paramInt);
+    PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, this.g);
+    localPicReq.m = this.m.getIntExtra("KEY_MSG_FORWARD_ID", -1);
+    PicUploadInfo localPicUploadInfo = a(this.g);
     if (!a(localPicReq, localPicUploadInfo)) {
       return false;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
       if (!a(localPicUploadInfo)) {
         return false;
       }
     }
     else {
-      localPicUploadInfo.jdField_g_of_type_JavaLangString = paramString;
+      localPicUploadInfo.n = paramString;
     }
-    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localPicReq);
-    this.jdField_b_of_type_Long = localPicUploadInfo.jdField_a_of_type_Long;
+    a((BaseActivity)this.a.get(), localPicReq);
+    this.p = localPicUploadInfo.g;
     return true;
   }
   
   protected boolean a(String paramString, Parcelable paramParcelable)
   {
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.photo_send_qzone_pic_file_params", paramParcelable);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1045);
+    this.m.putExtra("PhotoConst.PHOTO_SEND_PATH", paramString);
+    this.m.putExtra("PhotoConst.photo_send_qzone_pic_file_params", paramParcelable);
+    this.m.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1045);
     paramString = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, 1045);
     paramParcelable = a(1045);
     if (!a(paramString, paramParcelable)) {
       return false;
     }
     if (paramParcelable != null) {
-      paramParcelable.jdField_g_of_type_JavaLangString = null;
+      paramParcelable.n = null;
     }
-    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
+    a((BaseActivity)this.a.get(), paramString);
     return true;
   }
   
   protected ArrayList<String> b()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_b_of_type_JavaUtilHashMap.size() > 0)
+    if (this.q.size() > 0)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = this.q.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        PhotoSendParams localPhotoSendParams = (PhotoSendParams)this.jdField_b_of_type_JavaUtilHashMap.get(str);
+        PhotoSendParams localPhotoSendParams = (PhotoSendParams)this.q.get(str);
         StringBuilder localStringBuilder;
         if ((!a(str)) && (localPhotoSendParams != null) && (!TextUtils.isEmpty(localPhotoSendParams.rawMd5)) && (localPhotoSendParams.fileSize > 0L) && (!TextUtils.isEmpty(localPhotoSendParams.rawDownloadUrl)))
         {
@@ -546,18 +541,23 @@ public class SendPhotoTask
     return localArrayList;
   }
   
+  protected ArrayList<Integer> b(CompressInfo paramCompressInfo)
+  {
+    return ((IPicUtil)QRoute.api(IPicUtil.class)).getSliceInfos(paramCompressInfo.l);
+  }
+  
   protected void b(Intent paramIntent)
   {
-    paramIntent = new SendVideoTask((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramIntent);
+    paramIntent = new SendVideoTask((BaseActivity)this.a.get(), paramIntent);
     paramIntent.a();
-    paramIntent.a();
+    paramIntent.b();
   }
   
   protected void b(BaseActivity paramBaseActivity, PicReq paramPicReq)
   {
     Object localObject = (SmartDeviceProxyMgr)paramBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     boolean bool;
-    if ((((SmartDeviceProxyMgr)localObject).c(Long.parseLong(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c))) && (((SmartDeviceProxyMgr)localObject).a(Long.parseLong(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c), 17))) {
+    if ((((SmartDeviceProxyMgr)localObject).c(Long.parseLong(paramPicReq.g.e))) && (((SmartDeviceProxyMgr)localObject).a(Long.parseLong(paramPicReq.g.e), 17))) {
       bool = true;
     } else {
       bool = false;
@@ -565,8 +565,8 @@ public class SendPhotoTask
     if (!Boolean.valueOf(bool).booleanValue())
     {
       localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString);
-      ((DeviceMsgHandle)paramBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.d, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c, (List)localObject);
+      ((ArrayList)localObject).add(paramPicReq.g.n);
+      ((DeviceMsgHandle)paramBaseActivity.app.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).b().a(DeviceMsgHandle.d, paramPicReq.g.e, (List)localObject);
       return;
     }
     paramBaseActivity.runOnUiThread(new SendPhotoTask.1(this, (SmartDeviceProxyMgr)localObject, paramPicReq, paramBaseActivity));
@@ -579,8 +579,8 @@ public class SendPhotoTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_Long > 0L) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSendPhotoIdleCost", false, this.jdField_a_of_type_Long, 0L, null, "");
+    if (this.o > 0L) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSendPhotoIdleCost", false, this.o, 0L, null, "");
     }
     if (QLog.isColorLevel())
     {
@@ -588,27 +588,27 @@ public class SendPhotoTask
       ((StringBuilder)localObject1).append("SendPhoto, current pid=");
       ((StringBuilder)localObject1).append(Process.myPid());
       ((StringBuilder)localObject1).append(",");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangRefWeakReference);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(", idleCost");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.o);
       QLog.d("SendPhotoTask", 2, ((StringBuilder)localObject1).toString());
     }
-    long l = System.currentTimeMillis();
-    if ((a(this.jdField_a_of_type_Int)) && (QFileAssistantUtils.a(this.jdField_a_of_type_JavaLangString)))
+    long l1 = System.currentTimeMillis();
+    if ((b(this.g)) && (QFileAssistantUtils.a(this.f)))
     {
-      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      if (this.d == null) {
+        this.d = new ArrayList();
       }
-      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList = null;
+      this.d.addAll(this.c);
+      this.c = null;
     }
-    Object localObject1 = this.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject1 = this.d;
     if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty())) {
-      SendByFile.a(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+      SendByFile.a(((BaseActivity)this.a.get()).app, this.d, this.f, this.i);
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    if (this.c == null)
     {
-      localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((Handler)localObject1).sendEmptyMessage(2);
       }
@@ -618,35 +618,35 @@ public class SendPhotoTask
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("sendPhotoTask, mPaths.size() : ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject1).append(this.c.size());
       QLog.d("SendPhotoTask", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = a();
     ArrayList localArrayList = b();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("time cost:");
-    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l1);
     Logger.b("PIC_TAG_COST", "launch req ", ((StringBuilder)localObject2).toString());
     localObject2 = new ArrayList();
     ((ArrayList)localObject2).addAll((Collection)localObject1);
     ((ArrayList)localObject2).addAll(localArrayList);
     if (((ArrayList)localObject2).size() > 0) {
-      this.jdField_a_of_type_AndroidContentIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject2);
+      this.m.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject2);
     }
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("param_selNum", ((ArrayList)localObject2).size());
-    if (this.d == 2)
+    this.m.putExtra("param_selNum", ((ArrayList)localObject2).size());
+    if (this.r == 2)
     {
-      int j = ((ArrayList)localObject2).size();
-      localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-      int i;
+      int i2 = ((ArrayList)localObject2).size();
+      localObject1 = this.e;
+      int i1;
       if (localObject1 != null) {
-        i = ((HashMap)localObject1).size();
+        i1 = ((HashMap)localObject1).size();
       } else {
-        i = 0;
+        i1 = 0;
       }
-      AlbumUtil.a(j, i);
+      AlbumUtil.a(i2, i1);
     }
-    localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+    localObject1 = this.b;
     if (localObject1 != null) {
       ((Handler)localObject1).sendEmptyMessage(2);
     }
@@ -654,7 +654,7 @@ public class SendPhotoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SendPhotoTask
  * JD-Core Version:    0.7.0.1
  */

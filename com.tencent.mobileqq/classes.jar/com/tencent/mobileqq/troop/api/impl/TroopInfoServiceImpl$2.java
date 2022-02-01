@@ -11,13 +11,13 @@ class TroopInfoServiceImpl$2
   
   public void run()
   {
-    String str = this.this$0.getTroopCodeByTroopUin(this.jdField_a_of_type_JavaLangString);
+    String str = this.this$0.getTroopCodeByTroopUin(this.a);
     ThreadManager.getUIHandler().post(new TroopInfoServiceImpl.2.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopInfoServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

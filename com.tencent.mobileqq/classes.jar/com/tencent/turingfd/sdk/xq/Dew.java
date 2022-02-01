@@ -1,37 +1,60 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 public class Dew
 {
-  public static Map<Integer, Long> fi = new HashMap();
+  public String a = "";
+  public boolean b;
+  public long c;
+  public long d;
   
-  public static String L()
+  public Dew(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = fi.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      localStringBuilder.append(",");
-      localStringBuilder.append(i);
-      localStringBuilder.append("_");
-      localStringBuilder.append(fi.get(Integer.valueOf(i)));
+    boolean bool = false;
+    this.b = false;
+    this.c = 0L;
+    this.d = 0L;
+    if (paramString == null) {
+      return;
     }
-    return localStringBuilder.toString();
+    this.a = paramString;
+    paramString = paramString.split(":");
+    if (paramString != null) {
+      if (paramString.length < 4) {
+        return;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        Integer.valueOf(paramString[0]).intValue();
+        this.c = Long.valueOf(paramString[1]).longValue();
+        this.d = Long.valueOf(paramString[2]).longValue();
+        if (Integer.valueOf(paramString[3]).intValue() == 0) {
+          this.b = bool;
+        }
+      }
+      finally
+      {
+        return;
+      }
+      bool = true;
+    }
   }
   
-  public static void b(int paramInt, long paramLong)
+  public static Dew a()
   {
-    fi.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    return new Dew("");
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Dew
  * JD-Core Version:    0.7.0.1
  */

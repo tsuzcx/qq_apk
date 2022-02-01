@@ -11,15 +11,15 @@ final class RIJVideoRewardCoinManager$initPopupwindow$1
   
   public final void onDismiss()
   {
-    RIJVideoRewardCoinManager.Callback localCallback = RIJVideoRewardCoinManager.a(this.a);
+    RIJVideoRewardCoinManager.Callback localCallback = RIJVideoRewardCoinManager.b(this.a);
     if (localCallback != null) {
-      localCallback.a(false, RIJVideoRewardCoinManager.a(this.a));
+      localCallback.a(false, RIJVideoRewardCoinManager.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.initPopupwindow.1
  * JD-Core Version:    0.7.0.1
  */

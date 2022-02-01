@@ -16,13 +16,13 @@ class QZoneShareActivity$5$2
     localStringBuilder.append("(");
     localStringBuilder.append(this.val$retCode);
     localStringBuilder.append(")");
-    QQToast.a(localQZoneShareActivity, 1, localStringBuilder.toString(), 1).a();
+    QQToast.makeText(localQZoneShareActivity, 1, localStringBuilder.toString(), 1).show();
     this.this$1.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.5.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,21 @@ import org.light.bean.WMElement;
 public class AEWaterMarkEditorPart
   extends VideoStoryBasePart
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private AEPituCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-  private WatermarkEditView jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView;
-  private WMElement jdField_a_of_type_OrgLightBeanWMElement;
-  private boolean b = false;
+  private static boolean a = false;
+  private AEPituCameraUnit b;
+  private boolean c = false;
+  private WMElement d;
+  private WatermarkEditView e;
   
   public AEWaterMarkEditorPart(Activity paramActivity, View paramView, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
     super(paramActivity, paramView, paramVideoStoryCapturePartManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
+    this.b = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
   }
   
   private void a()
   {
-    List localList = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a();
+    List localList = this.b.aw();
     if ((localList != null) && (!localList.isEmpty()))
     {
       if (localList.size() == 1)
@@ -40,23 +40,23 @@ public class AEWaterMarkEditorPart
         {
           AEQLog.a("AEWaterMarkEditorPart", "only jump to poi");
           AESelectLocationFragment.a(this.mActivity, 203);
-          this.b = true;
-          this.jdField_a_of_type_OrgLightBeanWMElement = ((WMElement)localObject);
+          this.c = true;
+          this.d = ((WMElement)localObject);
           return;
         }
       }
-      this.b = false;
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView == null)
+      this.c = false;
+      if (this.e == null)
       {
-        localObject = (ViewStub)this.mActivity.findViewById(2064122020);
+        localObject = (ViewStub)this.mActivity.findViewById(2063990953);
         if (localObject != null)
         {
           ((ViewStub)localObject).inflate();
-          this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.mActivity.findViewById(2064122019));
-          this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView.a(this.mActivity, this.mPartManager);
+          this.e = ((WatermarkEditView)this.mActivity.findViewById(2063990952));
+          this.e.a(this.mActivity, this.mPartManager);
         }
       }
-      Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView;
+      Object localObject = this.e;
       if (localObject != null) {
         ((WatermarkEditView)localObject).a(localList);
       }
@@ -70,7 +70,7 @@ public class AEWaterMarkEditorPart
     if (paramInt != 589826) {
       return Boolean.valueOf(false);
     }
-    return Boolean.valueOf(jdField_a_of_type_Boolean);
+    return Boolean.valueOf(a);
   }
   
   protected void initView() {}
@@ -85,19 +85,19 @@ public class AEWaterMarkEditorPart
       ((StringBuilder)localObject).append("onActivityResult");
       ((StringBuilder)localObject).append(paramIntent);
       AEQLog.a("AEWaterMarkEditorPart", ((StringBuilder)localObject).toString());
-      if (!this.b)
+      if (!this.c)
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView;
+        localObject = this.e;
         if (localObject != null)
         {
           ((WatermarkEditView)localObject).setWaterMarkLocation(paramIntent);
           return;
         }
       }
-      if ((this.b) && (this.jdField_a_of_type_OrgLightBeanWMElement != null))
+      if ((this.c) && (this.d != null))
       {
         paramIntent = StringUtils.removeUTF8Emoji(paramIntent).trim();
-        this.jdField_a_of_type_OrgLightBeanWMElement.setLocation(paramIntent);
+        this.d.setLocation(paramIntent);
       }
     }
   }
@@ -109,25 +109,25 @@ public class AEWaterMarkEditorPart
     default: 
       return;
     case 589826: 
-      paramVarArgs = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView;
+      paramVarArgs = this.e;
       if ((paramVarArgs != null) && (paramVarArgs.getVisibility() == 0)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
+        this.e.setVisibility(8);
       }
-      jdField_a_of_type_Boolean = false;
+      a = false;
       return;
     }
     a();
-    if (this.b)
+    if (this.c)
     {
-      jdField_a_of_type_Boolean = false;
+      a = false;
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.AEWaterMarkEditorPart
  * JD-Core Version:    0.7.0.1
  */

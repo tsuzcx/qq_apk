@@ -11,14 +11,14 @@ class ReadInJoyProteusFamilyFragment$3
   
   public void onClick(View paramView)
   {
-    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
-      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
+    if (ReadInJoyProteusFamilyFragment.b(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.b(this.a).a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.fragment.ReadInJoyProteusFamilyFragment.3
  * JD-Core Version:    0.7.0.1
  */

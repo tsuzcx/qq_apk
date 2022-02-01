@@ -24,20 +24,20 @@ class TroopCreateServiceImpl$1
     if (paramArrayList.size() > 0)
     {
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((ITroopCreateService.NameForCompare)localIterator.next()).a);
       }
-      TroopCreateServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl).disPlayTroopName = ((ITroopNameHelperService)TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl).getRuntimeService(ITroopNameHelperService.class, "")).getNewName(localArrayList);
+      TroopCreateServiceImpl.access$000(this.e).disPlayTroopName = ((ITroopNameHelperService)TroopCreateServiceImpl.access$100(this.e).getRuntimeService(ITroopNameHelperService.class, "")).getNewName(localArrayList);
       new Handler(Looper.getMainLooper()).post(new TroopCreateServiceImpl.1.1(this, paramArrayList));
       return;
     }
-    TroopCreateServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl).getHandler(ITroopSearchService.class).post(new TroopCreateServiceImpl.1.2(this));
+    TroopCreateServiceImpl.access$100(this.e).getHandler(ITroopSearchService.class).post(new TroopCreateServiceImpl.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.api.impl.TroopCreateServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

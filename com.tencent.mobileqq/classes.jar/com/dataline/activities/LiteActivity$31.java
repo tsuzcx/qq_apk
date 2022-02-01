@@ -10,7 +10,7 @@ class LiteActivity$31
   
   public boolean onLongClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
     return this.a.a(paramView);
   }
 }

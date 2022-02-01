@@ -14,16 +14,16 @@ class SettingUncommUsedContactsActivity$2
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
+    if (((paramCompoundButton == this.a.a.getSwitch()) || (paramCompoundButton == this.a.b.getSwitch())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
     {
-      this.a.a(2131694476, 0);
+      this.a.a(2131892158, 0);
       SettingUncommUsedContactsActivity.a(this.a, paramCompoundButton, paramBoolean ^ true);
     }
-    else if (paramCompoundButton == this.a.a.a())
+    else if (paramCompoundButton == this.a.a.getSwitch())
     {
       this.a.app.setNotAllowedSeeMyDongtai(paramBoolean, true);
     }
-    else if (paramCompoundButton == this.a.b.a())
+    else if (paramCompoundButton == this.a.b.getSwitch())
     {
       this.a.app.setShieldHisDongtai(paramBoolean, true);
     }
@@ -32,7 +32,7 @@ class SettingUncommUsedContactsActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ class SwipeUpAndDragListener$GestureHandler$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.d != null)
+    if (this.b.A != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.d.clearAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.d.removeAllViews();
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener$GestureHandler.b, 50L);
+      this.b.A.clearAnimation();
+      this.b.A.removeAllViews();
+      ThreadManager.getUIHandler().postDelayed(this.b.E, 50L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.GestureHandler.3
  * JD-Core Version:    0.7.0.1
  */

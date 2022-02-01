@@ -33,64 +33,24 @@ public class Update
   extends Step
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 36, 23, 24, 25, 33, 34, 35 };
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int b;
-  private int c;
-  
-  private int a()
-  {
-    double d1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    Double.isNaN(d1);
-    double d2 = this.c;
-    Double.isNaN(d2);
-    d1 = d1 * 1.0D / d2;
-    int i = this.b;
-    int j = this.jdField_a_of_type_Int;
-    d2 = i - j;
-    Double.isNaN(d2);
-    double d3 = j;
-    Double.isNaN(d3);
-    d2 = d1 * d2 + d3;
-    if (d2 < j)
-    {
-      d1 = j;
-    }
-    else
-    {
-      d1 = d2;
-      if (d2 > i - 10)
-      {
-        d1 = this.jdField_a_of_type_Double;
-        if (d1 < i - 10)
-        {
-          this.jdField_a_of_type_Double = (i - 10);
-        }
-        else
-        {
-          d2 = i;
-          Double.isNaN(d2);
-          this.jdField_a_of_type_Double = (d1 + (d2 - d1) / 10.0D);
-        }
-        d1 = this.jdField_a_of_type_Double;
-      }
-    }
-    return (int)d1;
-  }
+  private static final int[] i = { 37, 24, 25, 26, 34, 35, 36 };
+  private RelativeLayout a;
+  private ProgressBar b;
+  private TextView c;
+  private Handler d;
+  private long e;
+  private int f;
+  private int g;
+  private double h;
+  private int j;
+  private ViewGroup k;
   
   private void a()
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.k;
     if (localViewGroup != null)
     {
-      RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      RelativeLayout localRelativeLayout = this.a;
       if (localRelativeLayout != null) {
         try
         {
@@ -102,26 +62,66 @@ public class Update
         }
       }
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.k = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+  }
+  
+  private int b()
+  {
+    double d1 = System.currentTimeMillis() - this.e;
+    Double.isNaN(d1);
+    double d2 = this.j;
+    Double.isNaN(d2);
+    d1 = d1 * 1.0D / d2;
+    int m = this.g;
+    int n = this.f;
+    d2 = m - n;
+    Double.isNaN(d2);
+    double d3 = n;
+    Double.isNaN(d3);
+    d2 = d1 * d2 + d3;
+    if (d2 < n)
+    {
+      d1 = n;
+    }
+    else
+    {
+      d1 = d2;
+      if (d2 > m - 10)
+      {
+        d1 = this.h;
+        if (d1 < m - 10)
+        {
+          this.h = (m - 10);
+        }
+        else
+        {
+          d2 = m;
+          Double.isNaN(d2);
+          this.h = (d1 + (d2 - d1) / 10.0D);
+        }
+        d1 = this.h;
+      }
+    }
+    return (int)d1;
   }
   
   protected boolean doStep()
   {
-    this.c = 13500;
+    this.j = 13500;
     boolean bool1;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult))
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.d = new Handler(Looper.getMainLooper(), this);
+      this.d.sendEmptyMessage(1);
       if (Build.VERSION.SDK_INT < 21)
       {
         String str = System.getProperty("java.vm.version");
         if ((str != null) && (!str.startsWith("1")))
         {
-          this.c += 30000;
+          this.j += 30000;
           try
           {
             Thread.sleep(300L);
@@ -146,8 +146,8 @@ public class Update
       ((StringBuilder)localObject2).append(BaseApplicationImpl.processName);
       localObject2 = ((StringBuilder)localObject2).toString();
       Object localObject3 = ((SharedPreferences)localObject1).getString((String)localObject2, "null");
-      QLog.i("AutoMonitor", 1, String.format("updateVersion %s %s %s", new Object[] { localObject2, localObject3, String.valueOf(AppSetting.g()) }));
-      if (!TextUtils.equals(AppSetting.g(), (CharSequence)localObject3))
+      QLog.i("AutoMonitor", 1, String.format("updateVersion %s %s %s", new Object[] { localObject2, localObject3, String.valueOf(AppSetting.i()) }));
+      if (!TextUtils.equals(AppSetting.i(), (CharSequence)localObject3))
       {
         AutomatorHelper.b = true;
         BaseApplicationImpl.sLaunchTime = 0L;
@@ -155,9 +155,9 @@ public class Update
         if ((TextUtils.isEmpty((CharSequence)localObject3)) || ("null".equals(localObject3)))
         {
           AutomatorHelper.a = true;
-          com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch.k = true;
+          com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch.r = true;
         }
-        Step.AmStepFactory.b(27, this.mDirector, null).step();
+        Step.AmStepFactory.b(28, this.mDirector, null).step();
         if (BaseApplicationImpl.sProcessId == 1)
         {
           boolean bool2;
@@ -200,11 +200,11 @@ public class Update
               ((StringBuilder)localObject5).append((String)localObject4);
               ((StringBuilder)localObject5).append("/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/pddata/prd/early/android.qq.apollo.jsc800");
               localObject3[7] = ((StringBuilder)localObject5).toString();
-              int j = localObject3.length;
-              int i = 0;
-              while (i < j)
+              int n = localObject3.length;
+              int m = 0;
+              while (m < n)
               {
-                localObject4 = localObject3[i];
+                localObject4 = localObject3[m];
                 localObject5 = new File((String)localObject4);
                 if (((File)localObject5).exists())
                 {
@@ -236,7 +236,7 @@ public class Update
                   ((StringBuilder)localObject5).append((String)localObject4);
                   QLog.d("DelSharpp", 1, ((StringBuilder)localObject5).toString());
                 }
-                i += 1;
+                m += 1;
               }
               QLog.d("DelSharpp", 1, "has del sharpp");
             }
@@ -252,17 +252,17 @@ public class Update
           }
           if (Looper.getMainLooper() != Looper.myLooper())
           {
-            if (this.jdField_a_of_type_AndroidOsHandler == null)
+            if (this.d == null)
             {
-              this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-              this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+              this.d = new Handler(Looper.getMainLooper(), this);
+              this.d.sendEmptyMessage(1);
             }
-            bool2 = Step.AmStepFactory.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
+            bool2 = Step.AmStepFactory.b(0, this.mDirector, i).step();
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("UPDATE_STEPS ");
             localStringBuilder.append(bool2);
             QLog.e("AutoMonitor", 1, localStringBuilder.toString());
-            ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.g()).commit();
+            ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.i()).commit();
             if (!AutomatorHelper.a) {
               MultiLanguageEngine.a().c(BaseApplicationImpl.getContext());
             }
@@ -270,15 +270,15 @@ public class Update
         }
         else
         {
-          ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.g()).commit();
+          ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.i()).commit();
         }
       }
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject1 = this.d;
     if (localObject1 != null)
     {
       ((Handler)localObject1).removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.d.sendEmptyMessage(3);
     }
     return bool1;
   }
@@ -289,35 +289,35 @@ public class Update
     ((StringBuilder)localObject).append("updateMessage ");
     ((StringBuilder)localObject).append(paramMessage);
     QLog.i("AutoMonitor", 1, ((StringBuilder)localObject).toString());
-    localObject = this.mDirector.a;
-    int i = paramMessage.what;
-    if (i != 1)
+    localObject = this.mDirector.e;
+    int m = paramMessage.what;
+    if (m != 1)
     {
-      if (i != 2)
+      if (m != 2)
       {
-        if (i != 3) {
+        if (m != 3) {
           return true;
         }
         a();
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        this.d.removeMessages(2);
         return true;
       }
-      i = a();
-      paramMessage = this.jdField_a_of_type_AndroidWidgetProgressBar;
+      m = b();
+      paramMessage = this.b;
       if (paramMessage != null)
       {
-        if (paramMessage.getProgress() > i) {
+        if (paramMessage.getProgress() > m) {
           return true;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
+        this.b.setProgress(m);
       }
-      paramMessage = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramMessage = this.c;
       if (paramMessage != null) {
-        paramMessage.setText(String.format(this.mDirector.a.getString(2131692489), new Object[] { Integer.valueOf(i) }));
+        paramMessage.setText(String.format(this.mDirector.e.getString(2131889477), new Object[] { Integer.valueOf(m) }));
       }
-      if (i < 99)
+      if (m < 99)
       {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 100L);
+        this.d.sendEmptyMessageDelayed(2, 100L);
         return true;
       }
     }
@@ -328,15 +328,15 @@ public class Update
       }
       try
       {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((Activity)localObject).getWindow().getDecorView());
-        if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+        this.k = ((ViewGroup)((Activity)localObject).getWindow().getDecorView());
+        if (this.k != null)
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131562850, null));
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-          this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368260));
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370395));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715675));
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+          this.a = ((RelativeLayout)View.inflate(this.mDirector.e.getApplicationContext(), 2131629302, null));
+          this.a.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+          this.b = ((ProgressBar)this.a.findViewById(2131435131));
+          this.c = ((TextView)this.a.findViewById(2131437663));
+          this.c.setText(HardCodeUtil.a(2131913143));
+          this.k.addView(this.a);
         }
       }
       catch (Throwable paramMessage)
@@ -344,17 +344,17 @@ public class Update
         QLog.d("AutoMonitor", 1, "", paramMessage);
         a();
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Int = 0;
-      this.b = 99;
+      this.d.sendEmptyMessage(2);
+      this.e = System.currentTimeMillis();
+      this.f = 0;
+      this.g = 99;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Update
  * JD-Core Version:    0.7.0.1
  */

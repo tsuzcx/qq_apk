@@ -31,48 +31,48 @@ public class MiniChatTextItemBuilder
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramContext = (TextItemBuilder.Holder)paramViewHolder;
-    if (paramContext.d != null) {
+    if (paramContext.v != null) {
       if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo)))
       {
         if ((paramChatMessage instanceof MessageForScribble)) {
-          paramContext.d.setText(HardCodeUtil.a(2131706870));
+          paramContext.v.setText(HardCodeUtil.a(2131904717));
         } else {
-          paramContext.d.setText(HardCodeUtil.a(2131706872));
+          paramContext.v.setText(HardCodeUtil.a(2131904719));
         }
       }
       else if (TextUtils.isEmpty(paramChatMessage.msg))
       {
         if (((paramChatMessage instanceof MessageForPokeEmo)) && (((MessageForPokeEmo)paramChatMessage).pokeemoId == 13)) {
-          paramContext.d.setText(HardCodeUtil.a(2131704213));
+          paramContext.v.setText(HardCodeUtil.a(2131902134));
         } else {
-          paramContext.d.setText(HardCodeUtil.a(2131706871));
+          paramContext.v.setText(HardCodeUtil.a(2131904718));
         }
       }
       else {
-        paramContext.d.setText(paramChatMessage.msg);
+        paramContext.v.setText(paramChatMessage.msg);
       }
     }
-    if (paramContext.b != null) {
-      paramContext.b.setVisibility(8);
+    if (paramContext.x != null) {
+      paramContext.x.setVisibility(8);
     }
-    if (paramContext.c != null) {
-      paramContext.c.setVisibility(8);
+    if (paramContext.y != null) {
+      paramContext.y.setVisibility(8);
     }
   }
   
-  protected void b(View paramView)
+  protected void c(View paramView)
   {
-    super.b(paramView);
+    super.c(paramView);
   }
   
-  protected boolean b()
+  protected boolean h()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatTextItemBuilder
  * JD-Core Version:    0.7.0.1
  */

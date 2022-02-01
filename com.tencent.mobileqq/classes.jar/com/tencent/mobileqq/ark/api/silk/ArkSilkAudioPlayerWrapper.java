@@ -12,27 +12,26 @@ import org.json.JSONObject;
 public class ArkSilkAudioPlayerWrapper
   implements SilkAudioPlayer.SilkAudioPlayerListener
 {
-  public static final Map<Integer, String> a;
-  private ark.VariantWrapper jdField_a_of_type_ComTencentArkArk$VariantWrapper;
-  protected SilkAudioPlayer a;
-  private final String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  public static final Map<Integer, String> a = new HashMap();
+  protected SilkAudioPlayer b;
+  private volatile boolean c = false;
+  private final String d;
+  private ark.VariantWrapper e;
   
   static
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), "开始");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), "加载中");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), "加载完成");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), "播放状态");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), "中断状态");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), "停止状态");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(6), "异常");
+    a.put(Integer.valueOf(0), "开始");
+    a.put(Integer.valueOf(1), "加载中");
+    a.put(Integer.valueOf(2), "加载完成");
+    a.put(Integer.valueOf(3), "播放状态");
+    a.put(Integer.valueOf(4), "中断状态");
+    a.put(Integer.valueOf(5), "停止状态");
+    a.put(Integer.valueOf(6), "异常");
   }
   
   public ArkSilkAudioPlayerWrapper(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a()
@@ -40,23 +39,23 @@ public class ArkSilkAudioPlayerWrapper
     if (QLog.isColorLevel()) {
       QLog.d("ArkSilkAudioPlayerWrapper", 2, "stop");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((SilkAudioPlayer)localObject).a();
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
-    localObject = this.jdField_a_of_type_ComTencentArkArk$VariantWrapper;
+    localObject = this.e;
     if (localObject != null)
     {
       ((ark.VariantWrapper)localObject).Reset();
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = null;
+      this.e = null;
     }
   }
   
   public void a(int paramInt)
   {
-    ArkDispatchTask.getInstance().post(this.jdField_a_of_type_JavaLangString, new ArkSilkAudioPlayerWrapper.1(this, paramInt));
+    ArkDispatchTask.getInstance().post(this.d, new ArkSilkAudioPlayerWrapper.1(this, paramInt));
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -65,12 +64,12 @@ public class ArkSilkAudioPlayerWrapper
       QLog.d("ArkSilkAudioPlayerWrapper", 2, String.format("playerCompletion path=%s", new Object[] { paramString }));
     }
     a(5);
-    ArkDispatchTask.getInstance().post(this.jdField_a_of_type_JavaLangString, new ArkSilkAudioPlayerWrapper.2(this));
+    ArkDispatchTask.getInstance().post(this.d, new ArkSilkAudioPlayerWrapper.2(this));
   }
   
   public void a(ark.VariantWrapper paramVariantWrapper)
   {
-    this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = paramVariantWrapper;
+    this.e = paramVariantWrapper;
   }
   
   public void a(File paramFile)
@@ -92,11 +91,11 @@ public class ArkSilkAudioPlayerWrapper
       a(6);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer = new SilkAudioPlayer(this);
+    if (this.b == null) {
+      this.b = new SilkAudioPlayer(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkApiSilkSilkAudioPlayer.a(paramString);
-    this.jdField_a_of_type_Boolean = true;
+    this.b.a(paramString);
+    this.c = true;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2) {}
@@ -113,22 +112,9 @@ public class ArkSilkAudioPlayerWrapper
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkSilkAudioPlayerWrapper", 2, "onPlayStart");
-    }
-    a(0);
-  }
-  
   public void b(int paramInt)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_ComTencentArkArk$VariantWrapper;
+    ark.VariantWrapper localVariantWrapper = this.e;
     if (localVariantWrapper == null) {
       return;
     }
@@ -137,16 +123,16 @@ public class ArkSilkAudioPlayerWrapper
       localVariantWrapper = localVariantWrapper.Create();
       localObject = new JSONObject();
       ((JSONObject)localObject).put("state", paramInt);
-      ((JSONObject)localObject).put("info", jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)));
+      ((JSONObject)localObject).put("info", a.get(Integer.valueOf(paramInt)));
       localVariantWrapper.SetTableAsJsonString(((JSONObject)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.Create();
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper }, (ark.VariantWrapper)localObject);
+      localObject = this.e.Create();
+      this.e.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper }, (ark.VariantWrapper)localObject);
       localVariantWrapper.Reset();
       ((ark.VariantWrapper)localObject).Reset();
       if ((paramInt == 6) || (paramInt == 5))
       {
-        this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.Reset();
-        this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = null;
+        this.e.Reset();
+        this.e = null;
         return;
       }
     }
@@ -161,12 +147,17 @@ public class ArkSilkAudioPlayerWrapper
   
   public void b(String paramString, int paramInt1, int paramInt2) {}
   
+  public boolean b()
+  {
+    return this.c;
+  }
+  
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkSilkAudioPlayerWrapper", 2, "onDownloadStart");
+      QLog.d("ArkSilkAudioPlayerWrapper", 2, "onPlayStart");
     }
-    a(1);
+    a(0);
   }
   
   public void c(int paramInt)
@@ -181,19 +172,27 @@ public class ArkSilkAudioPlayerWrapper
   public void d()
   {
     if (QLog.isColorLevel()) {
+      QLog.d("ArkSilkAudioPlayerWrapper", 2, "onDownloadStart");
+    }
+    a(1);
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
       QLog.d("ArkSilkAudioPlayerWrapper", 2, "onPlaying");
     }
     a(3);
   }
   
-  public void e()
+  public void f()
   {
     a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.silk.ArkSilkAudioPlayerWrapper
  * JD-Core Version:    0.7.0.1
  */

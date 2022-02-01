@@ -38,10 +38,10 @@ import java.util.Map;
 
 public class ActivityLeakSolutionInner
 {
-  static Field jdField_a_of_type_JavaLangReflectField;
-  static boolean jdField_a_of_type_Boolean = false;
-  private static boolean b = false;
+  static Field a;
+  static boolean b = false;
   private static boolean c = false;
+  private static boolean d = false;
   
   private static void a()
   {
@@ -350,9 +350,9 @@ public class ActivityLeakSolutionInner
     //   74: invokevirtual 388	android/view/View:destroyDrawingCache	()V
     //   77: return
     //   78: astore_0
-    //   79: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   79: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   82: ifeq +12 -> 94
-    //   85: ldc 66
+    //   85: ldc 67
     //   87: iconst_2
     //   88: ldc_w 390
     //   91: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -366,9 +366,9 @@ public class ActivityLeakSolutionInner
     //   111: checkcast 355	java/lang/IncompatibleClassChangeError
     //   114: athrow
     //   115: astore_0
-    //   116: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   119: ifeq +12 -> 131
-    //   122: ldc 66
+    //   122: ldc 67
     //   124: iconst_2
     //   125: ldc_w 390
     //   128: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -382,9 +382,9 @@ public class ActivityLeakSolutionInner
     //   148: checkcast 355	java/lang/IncompatibleClassChangeError
     //   151: athrow
     //   152: astore_0
-    //   153: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   153: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   156: ifeq +12 -> 168
-    //   159: ldc 66
+    //   159: ldc 67
     //   161: iconst_2
     //   162: ldc_w 390
     //   165: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -398,9 +398,9 @@ public class ActivityLeakSolutionInner
     //   185: checkcast 355	java/lang/IncompatibleClassChangeError
     //   188: athrow
     //   189: astore_0
-    //   190: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   190: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   193: ifeq +12 -> 205
-    //   196: ldc 66
+    //   196: ldc 67
     //   198: iconst_2
     //   199: ldc_w 390
     //   202: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -414,9 +414,9 @@ public class ActivityLeakSolutionInner
     //   222: checkcast 355	java/lang/IncompatibleClassChangeError
     //   225: athrow
     //   226: astore_0
-    //   227: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   227: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   230: ifeq +12 -> 242
-    //   233: ldc 66
+    //   233: ldc 67
     //   235: iconst_2
     //   236: ldc_w 390
     //   239: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -430,9 +430,9 @@ public class ActivityLeakSolutionInner
     //   259: checkcast 355	java/lang/IncompatibleClassChangeError
     //   262: athrow
     //   263: astore_0
-    //   264: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   264: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   267: ifeq +12 -> 279
-    //   270: ldc 66
+    //   270: ldc 67
     //   272: iconst_2
     //   273: ldc_w 390
     //   276: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -446,9 +446,9 @@ public class ActivityLeakSolutionInner
     //   296: checkcast 355	java/lang/IncompatibleClassChangeError
     //   299: athrow
     //   300: astore_0
-    //   301: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   301: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   304: ifeq +12 -> 316
-    //   307: ldc 66
+    //   307: ldc 67
     //   309: iconst_2
     //   310: ldc_w 390
     //   313: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -593,9 +593,9 @@ public class ActivityLeakSolutionInner
     //   43: invokevirtual 452	android/widget/ListView:setOnItemSelectedListener	(Landroid/widget/AdapterView$OnItemSelectedListener;)V
     //   46: return
     //   47: astore_0
-    //   48: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +12 -> 63
-    //   54: ldc 66
+    //   54: ldc 67
     //   56: iconst_2
     //   57: ldc_w 390
     //   60: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -609,9 +609,9 @@ public class ActivityLeakSolutionInner
     //   80: checkcast 355	java/lang/IncompatibleClassChangeError
     //   83: athrow
     //   84: astore_0
-    //   85: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   88: ifeq +12 -> 100
-    //   91: ldc 66
+    //   91: ldc 67
     //   93: iconst_2
     //   94: ldc_w 390
     //   97: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -625,9 +625,9 @@ public class ActivityLeakSolutionInner
     //   117: checkcast 355	java/lang/IncompatibleClassChangeError
     //   120: athrow
     //   121: astore_0
-    //   122: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +12 -> 137
-    //   128: ldc 66
+    //   128: ldc 67
     //   130: iconst_2
     //   131: ldc_w 390
     //   134: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -641,9 +641,9 @@ public class ActivityLeakSolutionInner
     //   154: checkcast 355	java/lang/IncompatibleClassChangeError
     //   157: athrow
     //   158: astore_0
-    //   159: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   162: ifeq +12 -> 174
-    //   165: ldc 66
+    //   165: ldc 67
     //   167: iconst_2
     //   168: ldc_w 390
     //   171: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -657,9 +657,9 @@ public class ActivityLeakSolutionInner
     //   191: checkcast 355	java/lang/IncompatibleClassChangeError
     //   194: athrow
     //   195: astore_0
-    //   196: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq +12 -> 211
-    //   202: ldc 66
+    //   202: ldc 67
     //   204: iconst_2
     //   205: ldc_w 390
     //   208: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -763,9 +763,9 @@ public class ActivityLeakSolutionInner
     //   43: invokevirtual 488	com/tencent/widget/ListView:setOnItemSelectedListener	(Lcom/tencent/widget/AdapterView$OnItemSelectedListener;)V
     //   46: return
     //   47: astore_0
-    //   48: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +12 -> 63
-    //   54: ldc 66
+    //   54: ldc 67
     //   56: iconst_2
     //   57: ldc_w 390
     //   60: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -779,9 +779,9 @@ public class ActivityLeakSolutionInner
     //   80: checkcast 355	java/lang/IncompatibleClassChangeError
     //   83: athrow
     //   84: astore_0
-    //   85: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   88: ifeq +12 -> 100
-    //   91: ldc 66
+    //   91: ldc 67
     //   93: iconst_2
     //   94: ldc_w 390
     //   97: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -795,9 +795,9 @@ public class ActivityLeakSolutionInner
     //   117: checkcast 355	java/lang/IncompatibleClassChangeError
     //   120: athrow
     //   121: astore_0
-    //   122: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +12 -> 137
-    //   128: ldc 66
+    //   128: ldc 67
     //   130: iconst_2
     //   131: ldc_w 390
     //   134: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -811,9 +811,9 @@ public class ActivityLeakSolutionInner
     //   154: checkcast 355	java/lang/IncompatibleClassChangeError
     //   157: athrow
     //   158: astore_0
-    //   159: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   162: ifeq +12 -> 174
-    //   165: ldc 66
+    //   165: ldc 67
     //   167: iconst_2
     //   168: ldc_w 390
     //   171: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -827,9 +827,9 @@ public class ActivityLeakSolutionInner
     //   191: checkcast 355	java/lang/IncompatibleClassChangeError
     //   194: athrow
     //   195: astore_0
-    //   196: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq +12 -> 211
-    //   202: ldc 66
+    //   202: ldc 67
     //   204: iconst_2
     //   205: ldc_w 390
     //   208: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -929,9 +929,9 @@ public class ActivityLeakSolutionInner
   
   private static void b(Context paramContext)
   {
-    if (!b)
+    if (!c)
     {
-      b = true;
+      c = true;
       try
       {
         Method localMethod = Class.forName("android.sec.clipboard.ClipboardUIManager").getDeclaredMethod("getInstance", new Class[] { Context.class });
@@ -990,7 +990,7 @@ public class ActivityLeakSolutionInner
   
   private static void c(Context paramContext)
   {
-    if (c) {
+    if (d) {
       return;
     }
     AudioManager localAudioManager = (AudioManager)paramContext.getSystemService("audio");
@@ -1007,7 +1007,7 @@ public class ActivityLeakSolutionInner
       break label44;
     }
     catch (IllegalArgumentException|IllegalAccessException paramContext) {}
-    c = true;
+    d = true;
     return;
   }
   
@@ -1017,19 +1017,19 @@ public class ActivityLeakSolutionInner
     if (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    if ((jdField_a_of_type_JavaLangReflectField == null) && (!jdField_a_of_type_Boolean)) {}
+    if ((a == null) && (!b)) {}
     try
     {
-      jdField_a_of_type_Boolean = true;
-      jdField_a_of_type_JavaLangReflectField = Choreographer.class.getDeclaredField("mContext");
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      b = true;
+      a = Choreographer.class.getDeclaredField("mContext");
+      a.setAccessible(true);
     }
     catch (Throwable localThrowable)
     {
       label47:
       break label47;
     }
-    if (jdField_a_of_type_JavaLangReflectField != null) {
+    if (a != null) {
       paramActivity.runOnUiThread(new ActivityLeakSolutionInner.1(paramActivity));
     }
   }
@@ -1200,7 +1200,7 @@ public class ActivityLeakSolutionInner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.ActivityLeakSolutionInner
  * JD-Core Version:    0.7.0.1
  */

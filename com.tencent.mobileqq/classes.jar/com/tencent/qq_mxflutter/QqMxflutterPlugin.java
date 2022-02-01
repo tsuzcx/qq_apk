@@ -18,19 +18,14 @@ import org.jetbrains.annotations.NotNull;
 public final class QqMxflutterPlugin
   implements FlutterPlugin, MethodChannel.MethodCallHandler
 {
-  public static final QqMxflutterPlugin.Companion a;
-  private MethodChannel a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentQq_mxflutterQqMxflutterPlugin$Companion = new QqMxflutterPlugin.Companion(null);
-  }
+  public static final QqMxflutterPlugin.Companion a = new QqMxflutterPlugin.Companion(null);
+  private MethodChannel b;
   
   public void onAttachedToEngine(@NonNull @NotNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
     Intrinsics.checkParameterIsNotNull(paramFlutterPluginBinding, "flutterPluginBinding");
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel = new MethodChannel((BinaryMessenger)paramFlutterPluginBinding.getFlutterEngine().getDartExecutor(), "qq_mxflutter");
-    paramFlutterPluginBinding = this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel;
+    this.b = new MethodChannel((BinaryMessenger)paramFlutterPluginBinding.getFlutterEngine().getDartExecutor(), "qq_mxflutter");
+    paramFlutterPluginBinding = this.b;
     if (paramFlutterPluginBinding == null) {
       Intrinsics.throwUninitializedPropertyAccessException("channel");
     }
@@ -40,7 +35,7 @@ public final class QqMxflutterPlugin
   public void onDetachedFromEngine(@NonNull @NotNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
     Intrinsics.checkParameterIsNotNull(paramFlutterPluginBinding, "binding");
-    paramFlutterPluginBinding = this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel;
+    paramFlutterPluginBinding = this.b;
     if (paramFlutterPluginBinding == null) {
       Intrinsics.throwUninitializedPropertyAccessException("channel");
     }
@@ -64,7 +59,7 @@ public final class QqMxflutterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qq_mxflutter.QqMxflutterPlugin
  * JD-Core Version:    0.7.0.1
  */

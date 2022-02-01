@@ -43,12 +43,18 @@ public class HippyTextViewController
       if ((localObject instanceof Spannable))
       {
         localObject = (Spannable)localObject;
-        localObject = (f[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), f.class);
-        if ((localObject != null) && (localObject.length > 0)) {
-          paramView.setNativeGestureEnable(true);
-        } else {
-          paramView.setNativeGestureEnable(false);
+        int i = ((Spannable)localObject).length();
+        boolean bool2 = false;
+        localObject = (f[])((Spannable)localObject).getSpans(0, i, f.class);
+        boolean bool1 = bool2;
+        if (localObject != null)
+        {
+          bool1 = bool2;
+          if (localObject.length > 0) {
+            bool1 = true;
+          }
         }
+        paramView.setNativeGestureEnable(bool1);
       }
       paramView.setPadding((int)Math.floor(paramObject.mLeftPadding), (int)Math.floor(paramObject.mTopPadding), (int)Math.floor(paramObject.mRightPadding), (int)Math.floor(paramObject.mBottomPadding));
       paramView.setLayout(localLayout);
@@ -58,7 +64,7 @@ public class HippyTextViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.text.HippyTextViewController
  * JD-Core Version:    0.7.0.1
  */

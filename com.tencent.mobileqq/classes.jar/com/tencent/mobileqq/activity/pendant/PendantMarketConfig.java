@@ -26,7 +26,7 @@ public class PendantMarketConfig
       {
         JSONObject localJSONObject = paramJSONObject.optJSONObject(j);
         PendantMarketConfig.EntryConfig localEntryConfig = new PendantMarketConfig.EntryConfig();
-        localEntryConfig.jdField_a_of_type_Int = localJSONObject.optInt("id");
+        localEntryConfig.a = localJSONObject.optInt("id");
         Object localObject = localJSONObject.optJSONObject("image");
         if (localObject != null)
         {
@@ -36,14 +36,14 @@ public class PendantMarketConfig
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("https://gxh.vip.qq.com/xydata");
             localStringBuilder.append((String)localObject);
-            localEntryConfig.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+            localEntryConfig.b = localStringBuilder.toString();
           }
         }
-        localEntryConfig.c = localJSONObject.optString("name");
-        localEntryConfig.d = localJSONObject.optString("desc");
-        localEntryConfig.jdField_b_of_type_JavaLangString = localJSONObject.optString("url");
-        localEntryConfig.jdField_a_of_type_Boolean = localJSONObject.optBoolean("isShow", true);
-        localEntryConfig.jdField_b_of_type_Int = localJSONObject.optInt("tag", 0);
+        localEntryConfig.d = localJSONObject.optString("name");
+        localEntryConfig.e = localJSONObject.optString("desc");
+        localEntryConfig.c = localJSONObject.optString("url");
+        localEntryConfig.g = localJSONObject.optBoolean("isShow", true);
+        localEntryConfig.f = localJSONObject.optInt("tag", 0);
         localArrayList.add(localEntryConfig);
         j += 1;
       }
@@ -53,7 +53,7 @@ public class PendantMarketConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.PendantMarketConfig
  * JD-Core Version:    0.7.0.1
  */

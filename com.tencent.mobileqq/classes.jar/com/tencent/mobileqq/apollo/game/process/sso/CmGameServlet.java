@@ -26,13 +26,13 @@ public class CmGameServlet
       arrayOfByte = new byte[i];
       PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    Object localObject = CmGameUtil.a();
+    Object localObject = CmGameUtil.b();
     if (localObject == null)
     {
       QLog.e("cmgame_process.CmGameServlet", 1, "app is null.");
       return;
     }
-    localObject = (CmGameSSoHandler)((AppInterface)localObject).getBusinessHandler(CmGameAppInterface.a);
+    localObject = (CmGameSSoHandler)((AppInterface)localObject).getBusinessHandler(CmGameAppInterface.c);
     if (localObject != null) {
       ((CmGameSSoHandler)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
     }
@@ -66,7 +66,7 @@ public class CmGameServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.sso.CmGameServlet
  * JD-Core Version:    0.7.0.1
  */

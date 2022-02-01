@@ -11,18 +11,18 @@ class DynamicAvatarManager$8
   
   public void run()
   {
-    synchronized (DynamicFaceDrawable.a)
+    synchronized (DynamicFaceDrawable.w)
     {
-      DynamicFaceDrawable.b = false;
+      DynamicFaceDrawable.f = false;
       ThreadManager.getUIHandler().post(new DynamicAvatarManager.8.1(this));
-      this.this$0.c();
+      this.this$0.f();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.8
  * JD-Core Version:    0.7.0.1
  */

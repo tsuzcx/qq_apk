@@ -41,15 +41,15 @@ class VoiceTextSttQueryController$1
             VoiceTextSttQueryController.a(this.a).set(VoiceTextSttQueryController.a(this.a).get() - 1);
             if (VoiceTextSttQueryController.a(this.a).get() == 0)
             {
-              VoiceTextSttQueryController.a(this.a).clear();
-              if (VoiceTextSttQueryController.a(this.a) != null) {
-                VoiceTextSttQueryController.a(this.a).d();
+              VoiceTextSttQueryController.b(this.a).clear();
+              if (VoiceTextSttQueryController.c(this.a) != null) {
+                VoiceTextSttQueryController.c(this.a).d();
               }
-              VoiceTextSttQueryController.a(this.a).removeHandle(VoiceTextSttQueryController.a(this.a));
+              VoiceTextSttQueryController.e(this.a).removeHandle(VoiceTextSttQueryController.d(this.a));
               ReportUtils.a(1, 0);
             }
           }
-          else if ((!StringUtil.a(localFileMsg.pttSliceText)) && (VoiceTextSttQueryController.a(this.a).get() > 0))
+          else if ((!StringUtil.isEmpty(localFileMsg.pttSliceText)) && (VoiceTextSttQueryController.a(this.a).get() > 0))
           {
             this.a.a(new SttResultBean(localFileMsg.pttSliceText, false), localFileMsg.pttSlicePos);
           }
@@ -63,8 +63,8 @@ class VoiceTextSttQueryController$1
             paramMessage.append(localFileMsg.errorCode);
             QLog.d("VoiceTextEdtiController", 2, paramMessage.toString());
           }
-          if (VoiceTextSttQueryController.a(this.a) != null) {
-            VoiceTextSttQueryController.a(this.a).a(localFileMsg.errorCode);
+          if (VoiceTextSttQueryController.c(this.a) != null) {
+            VoiceTextSttQueryController.c(this.a).a(localFileMsg.errorCode);
           }
           ReportUtils.a(0, localFileMsg.errorCode);
           this.a.a();
@@ -84,7 +84,7 @@ class VoiceTextSttQueryController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttQueryController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class TencentDocHistoryTabToastBean
       TencentDocHistoryTabToastBean localTencentDocHistoryTabToastBean = new TencentDocHistoryTabToastBean();
       try
       {
-        localTencentDocHistoryTabToastBean.a = new JSONObject(paramArrayOfQConfItem[0].a).getInt("show_limit");
+        localTencentDocHistoryTabToastBean.a = new JSONObject(paramArrayOfQConfItem[0].b).getInt("show_limit");
         return localTencentDocHistoryTabToastBean;
       }
       catch (JSONException paramArrayOfQConfItem)
@@ -39,14 +39,14 @@ public class TencentDocHistoryTabToastBean
     return this.a;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return this.a == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocHistoryTabToastBean
  * JD-Core Version:    0.7.0.1
  */

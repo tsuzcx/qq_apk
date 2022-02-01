@@ -34,28 +34,27 @@ public class GalleryItemVideo
   extends PicBrowserImage
   implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
 {
-  int jdField_a_of_type_Int;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  DynamicAvatarDownloadManager jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager;
-  DynamicAvatarManager jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager;
-  WeakReference<URLImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
+  WeakReference<URLImageView> a;
   public WeakReference<PicBrowserImage.OnLoadListener> b;
-  int c = 0;
+  int c;
+  int d = 0;
+  int e = 0;
+  DynamicAvatarManager f;
+  DynamicAvatarDownloadManager g;
+  boolean h = false;
+  Handler i = new Handler(Looper.getMainLooper());
   
   public GalleryItemVideo(Context paramContext, PicInfo paramPicInfo)
   {
     super(paramContext, paramPicInfo);
-    this.jdField_b_of_type_Int = 0;
     paramContext = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if ((paramContext instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)paramContext.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
+      this.f = ((DynamicAvatarManager)paramContext.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
     } else if ((paramContext instanceof INearbyAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)paramContext.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
+      this.f = ((DynamicAvatarManager)paramContext.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a(this);
+    this.g = this.f.e();
+    this.g.a(this);
   }
   
   @NonNull
@@ -103,9 +102,9 @@ public class GalleryItemVideo
   
   public View a(int paramInt, Handler paramHandler, PicBrowserImage.OnLoadListener paramOnLoadListener)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo == null) {
+    this.c = paramInt;
+    URLImageView localURLImageView = new URLImageView(this.j);
+    if (this.k == null) {
       return localURLImageView;
     }
     if (QLog.isColorLevel())
@@ -115,38 +114,38 @@ public class GalleryItemVideo
       paramHandler.append(paramInt);
       QLog.i("GalleryItemVideo", 2, paramHandler.toString());
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localURLImageView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramOnLoadListener);
+    this.a = new WeakReference(localURLImageView);
+    this.b = new WeakReference(paramOnLoadListener);
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    paramHandler = a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a);
-    int i;
+    paramHandler = a(this.k.b);
+    int j;
     if (paramHandler != null) {
-      i = 1;
+      j = 1;
     } else {
-      i = 0;
+      j = 0;
     }
-    if (i == 0)
+    if (j == 0)
     {
-      paramHandler = a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b);
+      paramHandler = a(this.k.c);
       if (paramHandler != null) {
-        i = 1;
+        j = 1;
       } else {
-        i = 0;
+        j = 0;
       }
-      if (i == 0) {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b)) {
-          paramHandler = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage"), (URLDrawable.URLDrawableOptions)localObject);
+      if (j == 0) {
+        if (!TextUtils.isEmpty(this.k.c)) {
+          paramHandler = URLDrawable.getDrawable(this.k.c.replaceFirst("http", "nearbyimage"), (URLDrawable.URLDrawableOptions)localObject);
         } else {
           paramHandler = URLDrawableHelper.TRANSPARENT;
         }
       }
     }
     boolean bool1;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.e))
+    if (!TextUtils.isEmpty(this.k.f))
     {
-      localObject = new File(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.e);
+      localObject = new File(this.k.f);
       bool2 = ((File)localObject).exists();
       bool1 = bool2;
       if (bool2)
@@ -163,50 +162,50 @@ public class GalleryItemVideo
     if (!bool1)
     {
       bool2 = bool1;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d))
+      if (!TextUtils.isEmpty(this.k.e))
       {
-        bool1 = DynamicAvatarDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d);
+        bool1 = DynamicAvatarDownloadManager.e(this.k.e);
         bool2 = bool1;
         if (bool1)
         {
-          localURLImageView.setImageDrawable(URLDrawable.getDrawable(DynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d), a(paramHandler)));
+          localURLImageView.setImageDrawable(URLDrawable.getDrawable(DynamicAvatarDownloadManager.d(this.k.e), a(paramHandler)));
           bool2 = bool1;
         }
       }
     }
     if (!bool2)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d))
+      if (!TextUtils.isEmpty(this.k.e))
       {
-        this.c = 0;
+        this.e = 0;
         localURLImageView.setImageDrawable(paramHandler);
         paramHandler = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d)) {
-          this.jdField_b_of_type_Int = 0;
+        if (this.g.a(this.k.e)) {
+          this.d = 0;
         }
-        paramOnLoadListener.a(paramInt, this.jdField_b_of_type_Int);
+        paramOnLoadListener.a(paramInt, this.d);
       }
       else
       {
-        localURLImageView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838024));
-        this.c = 2;
+        localURLImageView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838066));
+        this.e = 2;
         paramOnLoadListener.a(paramInt, false);
       }
       if (QLog.isColorLevel())
       {
         paramHandler = new StringBuilder();
         paramHandler.append("fileNotExsits progress:");
-        paramHandler.append(this.jdField_b_of_type_Int);
+        paramHandler.append(this.d);
         paramHandler.append(" url:");
-        paramHandler.append(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d);
+        paramHandler.append(this.k.e);
         QLog.i("GalleryItemVideo", 2, paramHandler.toString());
         return localURLImageView;
       }
     }
     else
     {
-      this.jdField_b_of_type_Int = 0;
-      this.c = 1;
+      this.d = 0;
+      this.e = 1;
       paramOnLoadListener.a(paramInt, true);
     }
     return localURLImageView;
@@ -214,17 +213,17 @@ public class GalleryItemVideo
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d))
+    if (!TextUtils.isEmpty(this.k.e))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("preload:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.c);
         QLog.i("GalleryItemVideo", 2, localStringBuilder.toString());
       }
-      if (!DynamicAvatarDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d)) {
-        this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d);
+      if (!DynamicAvatarDownloadManager.e(this.k.e)) {
+        this.g.a(this.k.e);
       }
     }
   }
@@ -238,28 +237,28 @@ public class GalleryItemVideo
       if (!(localObject instanceof URLDrawable)) {
         return;
       }
-      int i = this.c;
+      int j = this.e;
       boolean bool2 = true;
-      if ((i != 1) && (i != 2) && (i != 3) && (i != 4))
+      if ((j != 1) && (j != 2) && (j != 3) && (j != 4))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("updateProgressOnSelected:");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.d);
           QLog.i("GalleryItemVideo", 2, ((StringBuilder)localObject).toString());
         }
-        i = this.jdField_b_of_type_Int;
-        if (i > 0) {
-          paramOnLoadListener.b(paramInt, i / 100);
+        j = this.d;
+        if (j > 0) {
+          paramOnLoadListener.b(paramInt, j / 100);
         }
       }
       else
       {
-        i = this.c;
+        j = this.e;
         boolean bool1 = bool2;
-        if (i != 1) {
-          if (i == 4) {
+        if (j != 1) {
+          if (j == 4) {
             bool1 = bool2;
           } else {
             bool1 = false;
@@ -274,49 +273,49 @@ public class GalleryItemVideo
   
   public void a(String paramString, int paramInt)
   {
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d))
+    if (paramString.equals(this.k.e))
     {
-      this.jdField_b_of_type_Int = paramInt;
-      paramString = this.jdField_b_of_type_JavaLangRefWeakReference;
+      this.d = paramInt;
+      paramString = this.b;
       if ((paramString != null) && (paramString.get() != null)) {
-        ((PicBrowserImage.OnLoadListener)this.jdField_b_of_type_JavaLangRefWeakReference.get()).b(this.jdField_a_of_type_Int, paramInt);
+        ((PicBrowserImage.OnLoadListener)this.b.get()).b(this.c, paramInt);
       }
     }
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d))
+    if (paramString.equals(this.k.e))
     {
-      int j = 1;
-      int i;
+      int k = 1;
+      int j;
       if (paramBoolean1) {
-        i = 1;
+        j = 1;
       } else {
-        i = 2;
+        j = 2;
       }
-      this.c = i;
+      this.e = j;
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("onDownloadFinish pos:");
-        paramString.append(this.jdField_a_of_type_Int);
+        paramString.append(this.c);
         paramString.append(" suc:");
         paramString.append(paramBoolean1);
         QLog.i("GalleryItemVideo", 2, paramString.toString());
       }
-      paramString = this.jdField_b_of_type_JavaLangRefWeakReference;
+      paramString = this.b;
       if (paramString != null)
       {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+        if (this.a == null) {
           return;
         }
         Object localObject = (PicBrowserImage.OnLoadListener)paramString.get();
-        paramString = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramString = (URLImageView)this.a.get();
         if (localObject != null)
         {
-          ((PicBrowserImage.OnLoadListener)localObject).a(this.jdField_a_of_type_Int, paramBoolean1);
-          ((PicBrowserImage.OnLoadListener)localObject).a(this.jdField_a_of_type_Int);
+          ((PicBrowserImage.OnLoadListener)localObject).a(this.c, paramBoolean1);
+          ((PicBrowserImage.OnLoadListener)localObject).a(this.c);
         }
         if (QLog.isColorLevel())
         {
@@ -332,20 +331,20 @@ public class GalleryItemVideo
         }
         if (paramString != null)
         {
-          if ((paramBoolean1) && (DynamicAvatarDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d)))
+          if ((paramBoolean1) && (DynamicAvatarDownloadManager.e(this.k.e)))
           {
-            localObject = URLDrawable.getDrawable(DynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.d), a(paramString.getDrawable()));
-            this.jdField_a_of_type_AndroidOsHandler.post(new GalleryItemVideo.1(this, paramString, (URLDrawable)localObject));
-            i = j;
+            localObject = URLDrawable.getDrawable(DynamicAvatarDownloadManager.d(this.k.e), a(paramString.getDrawable()));
+            this.i.post(new GalleryItemVideo.1(this, paramString, (URLDrawable)localObject));
+            j = k;
           }
           else
           {
-            i = 0;
+            j = 0;
           }
-          if (i == 0)
+          if (j == 0)
           {
-            localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838024);
-            this.jdField_a_of_type_AndroidOsHandler.post(new GalleryItemVideo.2(this, paramString, (Drawable)localObject));
+            localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838066);
+            this.i.post(new GalleryItemVideo.2(this, paramString, (Drawable)localObject));
           }
         }
       }
@@ -365,10 +364,10 @@ public class GalleryItemVideo
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("pause audio:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.c);
       QLog.i("GalleryItemVideo", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = (URLImageView)((WeakReference)localObject).get();
@@ -388,29 +387,29 @@ public class GalleryItemVideo
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
     b();
     super.c();
   }
   
   public Drawable getAnimationDrawable()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo == null) {
+    if (this.k == null) {
       return null;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    Object localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a);
+    Object localObject2 = a(this.k.b);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b);
+      localObject2 = a(this.k.c);
       localObject1 = localObject2;
       if (localObject2 == null) {
         try
         {
-          localObject1 = new URL(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b);
+          localObject1 = new URL(this.k.c);
           localObject1 = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject1).getAuthority(), ((URL)localObject1).getFile()), localURLDrawableOptions);
         }
         catch (MalformedURLException localMalformedURLException)
@@ -427,12 +426,12 @@ public class GalleryItemVideo
     localObject2 = getThumbRect();
     if ((localObject1 != null) && (localObject2 != null))
     {
-      this.d = getCutValue((Rect)localObject2, (Drawable)localObject1);
+      this.l = getCutValue((Rect)localObject2, (Drawable)localObject1);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("getAnimationDrawable ,cutValue = ");
-        ((StringBuilder)localObject2).append(this.d);
+        ((StringBuilder)localObject2).append(this.l);
         QLog.d("GalleryItemVideo", 2, ((StringBuilder)localObject2).toString());
       }
       return localObject1;
@@ -442,7 +441,7 @@ public class GalleryItemVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.GalleryItemVideo
  * JD-Core Version:    0.7.0.1
  */

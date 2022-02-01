@@ -23,7 +23,7 @@ class AEBottomListPart$9
       AEBottomListPart.a(this.a, true);
       ThreadManager.getUIHandler().post(new AEBottomListPart.9.1(this));
     }
-    AEBottomListPart.a(this.a).countDown();
+    AEBottomListPart.f(this.a).countDown();
   }
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
@@ -35,7 +35,7 @@ class AEBottomListPart$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.9
  * JD-Core Version:    0.7.0.1
  */

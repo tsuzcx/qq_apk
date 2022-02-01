@@ -54,30 +54,30 @@ public class ColorNoteSmallScreenService
   extends AppService
   implements OnListHideListener, ColorNoteSmallScreenFullToast.IColorNoteSmallScreenFullToastListener, ColorNoteSmallScreenRelativeLayout.FloatListener, IUpcomingController, SkinnableServiceProcesser.Callback
 {
-  private static ServiceLifecycleCallbacks<IColorNoteServiceLifecycleCallback> jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenServiceLifecycleCallbacks = new ServiceLifecycleCallbacks();
-  static boolean jdField_a_of_type_Boolean = true;
-  int jdField_a_of_type_Int;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new ColorNoteSmallScreenService.2(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ColorNoteSmallScreenService.1(this);
-  View jdField_a_of_type_AndroidViewView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ColorNoteListController jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController;
-  ColorNoteSmallScreenFullToast jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast;
-  ColorNoteSmallScreenRelativeLayout jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout;
-  ColorNoteSmallScreenToast jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast;
-  SkinnableServiceProcesser jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser;
-  private UpcomingNotifyState jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState = new UpcomingNotifyState(new ColorNoteSmallScreenService.4(this));
-  Runnable jdField_a_of_type_JavaLangRunnable = null;
-  List<ColorNote> jdField_a_of_type_JavaUtilList = new ArrayList();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  int jdField_b_of_type_Int;
-  Runnable jdField_b_of_type_JavaLangRunnable = null;
-  boolean jdField_b_of_type_Boolean = false;
+  static boolean a = true;
+  private static ServiceLifecycleCallbacks<IColorNoteServiceLifecycleCallback> u = new ServiceLifecycleCallbacks();
+  boolean b = false;
   boolean c = true;
   boolean d = true;
   boolean e = true;
   boolean f = false;
-  boolean g = false;
+  MqqHandler g;
+  Runnable h = null;
+  Runnable i = null;
+  SkinnableServiceProcesser j;
+  int k;
+  int l;
+  ColorNoteSmallScreenRelativeLayout m;
+  ColorNoteSmallScreenToast n;
+  LinearLayout o;
+  ColorNoteSmallScreenFullToast p;
+  View q;
+  List<ColorNote> r = new ArrayList();
+  boolean s = false;
+  Application.ActivityLifecycleCallbacks t = new ColorNoteSmallScreenService.2(this);
+  private ColorNoteListController v;
+  private BroadcastReceiver w = new ColorNoteSmallScreenService.1(this);
+  private UpcomingNotifyState x = new UpcomingNotifyState(new ColorNoteSmallScreenService.4(this));
   
   static
   {
@@ -87,7 +87,7 @@ public class ColorNoteSmallScreenService
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
-        jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenServiceLifecycleCallbacks.a((IServiceLifecycleCallback)localClass.newInstance());
+        u.a((IServiceLifecycleCallback)localClass.newInstance());
       }
       return;
     }
@@ -99,29 +99,29 @@ public class ColorNoteSmallScreenService
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    if ((!QQTheme.a()) && (!paramBoolean))
+    if ((!QQTheme.isNowThemeIsNight()) && (!paramBoolean))
     {
       if (paramInt <= 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839254);
+        this.m.setBackgroundResource(2130839426);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839256);
+      this.m.setBackgroundResource(2130839428);
       return;
     }
     if (paramInt <= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839251);
+      this.m.setBackgroundResource(2130839423);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839253);
+    this.m.setBackgroundResource(2130839425);
   }
   
   private void a(Intent paramIntent)
   {
     if ((paramIntent != null) && (paramIntent.getIntExtra("key_upcoming_notify", -1) == 2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.a();
+      this.x.a();
       ReportController.b(null, "dc00898", "", "", "0X800AE85", "0X800AE85", 0, 0, "", "", "", "");
     }
   }
@@ -143,73 +143,13 @@ public class ColorNoteSmallScreenService
         paramIntent = (ColorNote)paramIntent;
         if (paramIntent.getServiceType() == 17235968)
         {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.a();
+          this.x.a();
           b(paramIntent);
           paramIntent = (IColorNoteDataService)this.app.getRuntimeService(IColorNoteDataService.class, "all");
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(paramIntent.getVisiableColorNotes());
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.g();
+          this.m.a(paramIntent.getVisiableColorNotes());
+          this.m.j();
         }
       }
-    }
-  }
-  
-  private void a(Point paramPoint, boolean paramBoolean)
-  {
-    int j;
-    int i;
-    if (paramBoolean)
-    {
-      j = paramPoint.x;
-      i = paramPoint.y;
-    }
-    else
-    {
-      j = paramPoint.y;
-      i = paramPoint.x;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController = new ColorNoteListController(this, this);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a(b());
-      return;
-    }
-    paramPoint = new WindowManager.LayoutParams();
-    paramPoint.height = -1;
-    paramPoint.width = -1;
-    paramPoint.flags = 16777984;
-    paramPoint.format = -3;
-    paramPoint.windowAnimations = 0;
-    if (Build.VERSION.SDK_INT >= 26) {
-      paramPoint.type = 2038;
-    } else {
-      paramPoint.type = 2002;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController;
-    AppRuntime localAppRuntime = this.app;
-    if (j <= 0) {
-      paramBoolean = true;
-    } else {
-      paramBoolean = false;
-    }
-    ((ColorNoteListController)localObject).a(localAppRuntime, paramBoolean, i, this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.b() + i);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a();
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a().addView((View)localObject, paramPoint);
-      LiuHaiUtils.a(paramPoint);
-      this.e = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.w("ColorNoteSmallScreenService", 1, "showList");
-      }
-      f();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.b();
-      return;
-    }
-    catch (Exception paramPoint)
-    {
-      QLog.e("ColorNoteSmallScreenService", 1, "[showList] error ", paramPoint);
     }
   }
   
@@ -229,7 +169,7 @@ public class ColorNoteSmallScreenService
     if (paramAppRuntime == null) {
       return;
     }
-    ColorNoteSmallScreenUtil.a(paramPoint.x + this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a() / 2, paramPoint.y + this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.b() / 2);
+    ColorNoteSmallScreenUtil.a(paramPoint.x + this.m.getToastWidth() / 2, paramPoint.y + this.m.getToastHeight() / 2);
     paramAppRuntime = ColorNoteSmallScreenUtil.a(this, paramAppRuntime.getCurrentUin()).edit();
     boolean bool;
     if (paramInt == 0) {
@@ -250,7 +190,7 @@ public class ColorNoteSmallScreenService
   
   public static void a(boolean paramBoolean, int paramInt)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    a = paramBoolean;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -262,7 +202,130 @@ public class ColorNoteSmallScreenService
     }
   }
   
-  private List<ColorNote> b()
+  private void b(Point paramPoint, boolean paramBoolean)
+  {
+    int i1 = paramPoint.x;
+    int i2 = paramPoint.y;
+    if (this.v == null) {
+      this.v = new ColorNoteListController(this, this);
+    }
+    if (this.v.e())
+    {
+      this.v.a(n());
+      return;
+    }
+    paramPoint = new WindowManager.LayoutParams();
+    paramPoint.height = -1;
+    paramPoint.width = -1;
+    paramPoint.flags = 16777984;
+    paramPoint.format = -3;
+    paramPoint.windowAnimations = 0;
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramPoint.type = 2038;
+    } else {
+      paramPoint.type = 2002;
+    }
+    Object localObject = this.v;
+    AppRuntime localAppRuntime = this.app;
+    if (i1 <= 0) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    ((ColorNoteListController)localObject).a(localAppRuntime, paramBoolean, i2, this.m.getToastHeight() + i2);
+    localObject = this.v.a();
+    try
+    {
+      this.n.f().addView((View)localObject, paramPoint);
+      LiuHaiUtils.a(paramPoint);
+      this.e = false;
+      if (QLog.isDevelopLevel()) {
+        QLog.w("ColorNoteSmallScreenService", 1, "showList");
+      }
+      h();
+      this.x.b();
+      return;
+    }
+    catch (Exception paramPoint)
+    {
+      QLog.e("ColorNoteSmallScreenService", 1, "[showList] error ", paramPoint);
+    }
+  }
+  
+  private void b(ColorNote paramColorNote)
+  {
+    if (paramColorNote != null)
+    {
+      if (paramColorNote.getServiceType() != 17235968) {
+        return;
+      }
+      this.r.add(paramColorNote);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("add note: ");
+        localStringBuilder.append(paramColorNote.toString());
+        QLog.d("ColorNoteSmallScreenService", 2, localStringBuilder.toString());
+      }
+      if (AppSetting.e)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131917759));
+        localStringBuilder.append(ColorNoteUtils.f(paramColorNote));
+        paramColorNote = localStringBuilder.toString();
+        AccessibilityUtils.a(this.q, paramColorNote);
+      }
+    }
+  }
+  
+  private void k()
+  {
+    if (!this.s)
+    {
+      getApplication().registerActivityLifecycleCallbacks(this.t);
+      this.s = true;
+    }
+  }
+  
+  private void l()
+  {
+    if (this.s)
+    {
+      getApplication().unregisterActivityLifecycleCallbacks(this.t);
+      this.s = false;
+    }
+  }
+  
+  private boolean m()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("action_update_cn_smallscreen_state");
+    localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
+    localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
+    try
+    {
+      registerReceiver(this.w, localIntentFilter);
+      return true;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      try
+      {
+        QLog.e("ColorNoteSmallScreenService", 1, "previously registered, try again", localIllegalArgumentException);
+        unregisterReceiver(this.w);
+        registerReceiver(this.w, localIntentFilter);
+        return true;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ColorNoteSmallScreenService", 1, "try again failed", localException);
+      }
+    }
+    return false;
+  }
+  
+  private List<ColorNote> n()
   {
     Object localObject2 = ((IColorNoteDataService)this.app.getRuntimeService(IColorNoteDataService.class, "all")).getVisiableColorNotes();
     Object localObject1 = localObject2;
@@ -276,93 +339,20 @@ public class ColorNoteSmallScreenService
     return localObject2;
   }
   
-  private void b(ColorNote paramColorNote)
+  private void o()
   {
-    if (paramColorNote != null)
-    {
-      if (paramColorNote.getServiceType() != 17235968) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramColorNote);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("add note: ");
-        localStringBuilder.append(paramColorNote.toString());
-        QLog.d("ColorNoteSmallScreenService", 2, localStringBuilder.toString());
-      }
-      if (AppSetting.d)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131720130));
-        localStringBuilder.append(ColorNoteUtils.a(paramColorNote));
-        paramColorNote = localStringBuilder.toString();
-        AccessibilityUtils.a(this.jdField_a_of_type_AndroidViewView, paramColorNote);
-      }
-    }
-  }
-  
-  private boolean b()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("action_update_cn_smallscreen_state");
-    localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
-    localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
-    try
-    {
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      return true;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      try
-      {
-        QLog.e("ColorNoteSmallScreenService", 1, "previously registered, try again", localIllegalArgumentException);
-        unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-        return true;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ColorNoteSmallScreenService", 1, "try again failed", localException);
-      }
-    }
-    return false;
-  }
-  
-  private void g()
-  {
-    if (!this.g)
-    {
-      getApplication().registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
-      this.g = true;
-    }
-  }
-  
-  private void h()
-  {
-    if (this.g)
-    {
-      getApplication().unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
-      this.g = false;
-    }
-  }
-  
-  private void i()
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.o.getLayoutParams();
     localLayoutParams.rightMargin = 0;
     localLayoutParams.leftMargin = 0;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setShouldMaxRootView(false);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.e();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.b();
+    this.m.setShouldMaxRootView(false);
+    this.m.e();
+    this.m.c();
+    this.n.c();
   }
   
-  private void j()
+  private void p()
   {
-    Object localObject = new ArrayList(a());
+    Object localObject = new ArrayList(j());
     if (((List)localObject).size() != 0)
     {
       localObject = ((List)localObject).iterator();
@@ -372,30 +362,12 @@ public class ColorNoteSmallScreenService
     }
     localObject = (IColorNoteDataService)this.app.getRuntimeService(IColorNoteDataService.class, "all");
     ((IColorNoteDataService)localObject).clearAllUpcomingMindFlag();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(((IColorNoteDataService)localObject).getVisiableColorNotes());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.a();
+    this.m.a(((IColorNoteDataService)localObject).getVisiableColorNotes());
   }
   
   public int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a().x;
-  }
-  
-  public List<ColorNote> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public MqqHandler a()
-  {
-    if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
-    }
-    return this.jdField_a_of_type_MqqOsMqqHandler;
+    return this.n.e().x;
   }
   
   public void a()
@@ -403,7 +375,7 @@ public class ColorNoteSmallScreenService
     if (QLog.isColorLevel()) {
       QLog.w("ColorNoteSmallScreenService", 1, "onBackevent");
     }
-    c();
+    b();
   }
   
   public void a(Point paramPoint, int paramInt)
@@ -413,7 +385,7 @@ public class ColorNoteSmallScreenService
   
   public void a(ColorNote paramColorNote)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.r;
     if (localObject != null)
     {
       ((List)localObject).remove(paramColorNote);
@@ -427,26 +399,24 @@ public class ColorNoteSmallScreenService
     }
   }
   
-  public void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
-  
   public void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramColorNoteSmallScreenRelativeLayout = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast;
-    WindowManager.LayoutParams localLayoutParams = paramColorNoteSmallScreenRelativeLayout.a();
+    paramColorNoteSmallScreenRelativeLayout = this.n;
+    WindowManager.LayoutParams localLayoutParams = paramColorNoteSmallScreenRelativeLayout.e();
     localLayoutParams.x = paramInt1;
     localLayoutParams.y = paramInt2;
     localLayoutParams.width = (paramInt3 - paramInt1);
     localLayoutParams.height = (paramInt4 - paramInt2);
     localLayoutParams.windowAnimations = 0;
-    paramColorNoteSmallScreenRelativeLayout.b();
+    paramColorNoteSmallScreenRelativeLayout.c();
   }
   
   public void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast;
-    paramColorNoteSmallScreenRelativeLayout = ((ColorNoteSmallScreenToast)localObject).a();
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    float f1 = getResources().getDimensionPixelSize(2131298993);
+    Object localObject = this.n;
+    paramColorNoteSmallScreenRelativeLayout = ((ColorNoteSmallScreenToast)localObject).e();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.o.getLayoutParams();
+    float f1 = getResources().getDimensionPixelSize(2131299719);
     if (paramInt1 <= 0)
     {
       paramColorNoteSmallScreenRelativeLayout.x = paramInt1;
@@ -454,13 +424,13 @@ public class ColorNoteSmallScreenService
       paramColorNoteSmallScreenRelativeLayout.width = (paramInt3 - paramInt1);
       paramColorNoteSmallScreenRelativeLayout.height = (paramInt4 - paramInt2);
       localLayoutParams.width = ((int)(f1 + paramInt5));
-      ((ColorNoteSmallScreenToast)localObject).b();
+      ((ColorNoteSmallScreenToast)localObject).c();
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.c()) {
-          paramInt1 = getResources().getDimensionPixelSize(2131296702) / 2;
+        if (this.m.i()) {
+          paramInt1 = getResources().getDimensionPixelSize(2131297033) / 2;
         }
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a(paramInt3 - this.jdField_b_of_type_Int, paramInt2);
+        this.p.a(paramInt3 - this.l, paramInt2);
       }
     }
     else
@@ -470,9 +440,9 @@ public class ColorNoteSmallScreenService
       paramColorNoteSmallScreenRelativeLayout.width = (paramInt3 - paramInt1);
       paramColorNoteSmallScreenRelativeLayout.height = (paramInt4 - paramInt2);
       localLayoutParams.width = ((int)(f1 * 2.0F));
-      ((ColorNoteSmallScreenToast)localObject).b();
+      ((ColorNoteSmallScreenToast)localObject).c();
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a(this.jdField_b_of_type_Int + paramInt1, paramInt2);
+        this.p.a(this.l + paramInt1, paramInt2);
       }
       if (QLog.isDevelopLevel())
       {
@@ -486,50 +456,60 @@ public class ColorNoteSmallScreenService
         ((StringBuilder)localObject).append("offset = ");
         ((StringBuilder)localObject).append(paramInt5);
         ((StringBuilder)localObject).append(", getMeasuredWidth = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.getMeasuredWidth());
+        ((StringBuilder)localObject).append(this.m.getMeasuredWidth());
         QLog.w("ColorNoteSmallScreenService", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
   
-  public boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("ColorNoteSmallScreenService", 1, "smallscreen longclick");
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800A6C3", "0X800A6C3", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a();
-    return true;
-  }
-  
   public boolean a(Point paramPoint, boolean paramBoolean)
   {
-    a(paramPoint, paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.b();
+    b(paramPoint, paramBoolean);
+    this.x.b();
     ReportController.b(null, "dc00898", "", "", "0X800A6CB", "0X800A6CB", 0, 0, "", "", "", "");
-    int i;
-    if (ColorNoteUtils.a(this.jdField_a_of_type_JavaUtilList)) {
-      i = 1;
+    int i1;
+    if (ColorNoteUtils.b(this.r)) {
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800A6CB", "0X800A6CB", i, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800A6CB", "0X800A6CB", i1, 0, "", "", "", "");
     return true;
   }
   
   public int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a().y;
+    return this.n.e().y;
   }
   
   public void b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.w("ColorNoteSmallScreenService", 1, "onFullClick");
+    }
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.o.getLayoutParams();
+    localLayoutParams.rightMargin = 0;
+    localLayoutParams.leftMargin = 0;
+    if (this.m.g()) {
+      localLayoutParams.rightMargin = DisplayUtil.a(getBaseContext(), 8.0F);
+    } else {
+      localLayoutParams.leftMargin = DisplayUtil.a(getBaseContext(), 8.0F);
+    }
+    this.m.setShouldMaxRootView(false);
+    this.m.b();
+    this.m.e();
+    this.m.c();
+    this.n.c();
+  }
+  
+  public void c()
+  {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController != null)
+      if (this.v != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a().removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a());
+        this.v.a(false);
+        this.n.f().removeViewImmediate(this.v.a());
       }
     }
     catch (RuntimeException localRuntimeException)
@@ -542,29 +522,11 @@ public class ColorNoteSmallScreenService
     if (QLog.isDevelopLevel()) {
       QLog.w("ColorNoteSmallScreenService", 1, "onHideList");
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.c();
-    f();
+    this.x.c();
+    h();
   }
   
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("ColorNoteSmallScreenService", 1, "onFullClick");
-    }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.rightMargin = 0;
-    localLayoutParams.leftMargin = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a()) {
-      localLayoutParams.rightMargin = DisplayUtil.a(getBaseContext(), 8.0F);
-    } else {
-      localLayoutParams.leftMargin = DisplayUtil.a(getBaseContext(), 8.0F);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setShouldMaxRootView(false);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.b();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.e();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.b();
-  }
+  public void c(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
   public void d()
   {
@@ -580,7 +542,7 @@ public class ColorNoteSmallScreenService
     localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
-    int i = 0;
+    int i1 = 0;
     while (((Iterator)localObject2).hasNext())
     {
       ColorNote localColorNote = (ColorNote)((Iterator)localObject2).next();
@@ -590,7 +552,7 @@ public class ColorNoteSmallScreenService
       ((ArrayList)localObject1).add(localStringBuilder.toString());
       localArrayList.add(localColorNote.getSubType());
       if (localColorNote.getServiceType() == 16973824) {
-        i = 1;
+        i1 = 1;
       }
     }
     localObject2 = new Intent("key_delete_item_call");
@@ -598,56 +560,74 @@ public class ColorNoteSmallScreenService
     ((Intent)localObject2).putStringArrayListExtra("key_color_note_suptype_list", localArrayList);
     ((IColorNoteHelper)this.app.getRuntimeService(IColorNoteHelper.class, "all")).deleteAllColorNote(this.app, null);
     ColorNoteSmallScreenUtil.b(this);
-    QQToast.a(BaseApplication.getContext(), 0, "彩签已取消", 1).a();
-    if (i != 0) {
+    QQToast.makeText(BaseApplication.getContext(), 0, "彩签已取消", 1).show();
+    if (i1 != 0) {
       ((IQQPlayer)QRoute.api(IQQPlayer.class)).stopPlayMusic(this);
     }
     ((Intent)localObject2).putExtra("extra_can_add_colornote", localIColorNoteDataService.canAddColorNote());
     sendBroadcast((Intent)localObject2);
   }
   
-  public void e()
+  public boolean e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("ColorNoteSmallScreenService", 1, "smallscreen longclick");
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800A6C3", "0X800A6C3", 0, 0, "", "", "", "");
+    this.p.a();
+    return true;
+  }
+  
+  public MqqHandler f()
+  {
+    if (this.g == null) {
+      this.g = ThreadManager.getUIHandler();
+    }
+    return this.g;
+  }
+  
+  public void g()
   {
     if (QLog.isDevelopLevel()) {
       QLog.w("ColorNoteSmallScreenService", 1, "onPostThemeChanged");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a();
-    boolean bool = ColorNoteSmallScreenRelativeLayout.d();
-    if ((!QQTheme.a()) && (!bool))
+    Object localObject = this.m.getCurPosition();
+    boolean bool = ColorNoteSmallScreenRelativeLayout.getCustomNightMode();
+    if ((!QQTheme.isNowThemeIsNight()) && (!bool))
     {
       if (((Point)localObject).x <= 0) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839254);
+        this.m.setBackgroundResource(2130839426);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839256);
+        this.m.setBackgroundResource(2130839428);
       }
     }
     else if (((Point)localObject).x <= 0) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839251);
+      this.m.setBackgroundResource(2130839423);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setBackgroundResource(2130839253);
+      this.m.setBackgroundResource(2130839425);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController;
+    localObject = this.v;
     if (localObject != null) {
-      ((ColorNoteListController)localObject).c();
+      ((ColorNoteListController)localObject).d();
     }
   }
   
-  void f()
+  void h()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.b)
     {
       boolean bool2 = ColorNoteSmallScreenPermissionUtil.a(this.app.getApp());
       boolean bool1;
-      if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.getVisibility() == 0) {
+      if (this.m.getVisibility() == 0) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      int i;
-      if ((bool2) && (jdField_a_of_type_Boolean) && (this.d) && (this.e)) {
-        i = 1;
+      int i1;
+      if ((bool2) && (a) && (this.d) && (this.e)) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
       Object localObject1;
       Object localObject2;
@@ -660,24 +640,24 @@ public class ColorNoteSmallScreenService
         ((StringBuilder)localObject1).append(", isOpEnable = ");
         ((StringBuilder)localObject1).append(bool2);
         ((StringBuilder)localObject1).append(", mShouldShow = ");
-        ((StringBuilder)localObject1).append(jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject1).append(a);
         ((StringBuilder)localObject1).append(", mIsAppOnForeground = ");
         ((StringBuilder)localObject1).append(this.d);
         ((StringBuilder)localObject1).append(", mIsNotInColorNoteList = ");
         ((StringBuilder)localObject1).append(this.e);
         ((StringBuilder)localObject1).append(", Toast Isvisiable = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.b());
+        ((StringBuilder)localObject1).append(this.n.d());
         QLog.w("ColorNoteSmallScreenService", 1, ((StringBuilder)localObject1).toString());
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a();
+        localObject1 = this.m.getCurPosition();
         localObject2 = new Rect();
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.getWindowVisibleDisplayFrame((Rect)localObject2);
+        this.m.getWindowVisibleDisplayFrame((Rect)localObject2);
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("mPosition[");
         ((StringBuilder)localObject3).append(localObject1);
         ((StringBuilder)localObject3).append("], mScreenWidth[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.c());
+        ((StringBuilder)localObject3).append(this.m.getScreenWidth());
         ((StringBuilder)localObject3).append("], mScreenHeight[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.d());
+        ((StringBuilder)localObject3).append(this.m.getScreenHeight());
         ((StringBuilder)localObject3).append("], mWindowWidth[");
         ((StringBuilder)localObject3).append(((Rect)localObject2).width());
         ((StringBuilder)localObject3).append("], mWindowHeight[");
@@ -685,36 +665,36 @@ public class ColorNoteSmallScreenService
         ((StringBuilder)localObject3).append("]");
         QLog.w("ColorNoteSmallScreenService", 1, ((StringBuilder)localObject3).toString());
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.b()) {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a();
+        if (!this.n.d()) {
+          this.n.a();
         }
         localObject1 = (IColorNoteDataService)this.app.getRuntimeService(IColorNoteDataService.class, "all");
         localObject2 = ((IColorNoteDataService)localObject1).getVisiableColorNotes();
-        this.jdField_a_of_type_Int = ((List)localObject2).size();
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a((List)localObject2);
+        this.k = ((List)localObject2).size();
+        this.m.a((List)localObject2);
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("mVisiableCurrCount = ");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject3).append(this.k);
           ((StringBuilder)localObject3).append(", sumcount = ");
           ((StringBuilder)localObject3).append(((IColorNoteDataService)localObject1).getCurrentColorNoteCount());
           QLog.w("ColorNoteSmallScreenService", 1, ((StringBuilder)localObject3).toString());
         }
-        if (this.jdField_a_of_type_Int > 0)
+        if (this.k > 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.d();
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setVisibility(0);
+          this.m.d();
+          this.m.setVisibility(0);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setVisibility(8);
+          this.m.setVisibility(8);
         }
-        localObject1 = String.format(getResources().getString(2131690890), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        localObject1 = String.format(getResources().getString(2131887829), new Object[] { Integer.valueOf(this.k) });
         localObject2 = ColorNoteUtils.a((List)localObject2);
-        localObject3 = this.jdField_a_of_type_AndroidViewView;
+        localObject3 = this.q;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append((String)localObject2);
@@ -723,10 +703,20 @@ public class ColorNoteSmallScreenService
       }
       if (bool1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setVisibility(8);
-        i();
+        this.m.setVisibility(8);
+        o();
       }
     }
+  }
+  
+  public int i()
+  {
+    return this.x.d();
+  }
+  
+  public List<ColorNote> j()
+  {
+    return this.r;
   }
   
   public void onCreate()
@@ -762,106 +752,106 @@ public class ColorNoteSmallScreenService
       }
     }
     this.c = ColorNoteSmallScreenPermissionUtil.a(MobileQQ.getContext());
-    boolean bool = b();
-    g();
+    boolean bool = m();
+    k();
     if ((this.c) && (localException != null) && (bool))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ColorNoteSmallScreenService", 2, "onCreate");
       }
-      jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenServiceLifecycleCallbacks.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout = ((ColorNoteSmallScreenRelativeLayout)localException.inflate(2131558892, null));
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.findViewById(2131367052);
-      this.jdField_a_of_type_AndroidViewView.bringToFront();
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new ColorNoteSmallScreenService.3(this));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.findViewById(2131377674));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast = new ColorNoteSmallScreenToast(this, this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout);
+      u.a(this);
+      this.m = ((ColorNoteSmallScreenRelativeLayout)localException.inflate(2131624514, null));
+      this.q = this.m.findViewById(2131433501);
+      this.q.bringToFront();
+      this.q.setOnTouchListener(new ColorNoteSmallScreenService.3(this));
+      this.m.g();
+      this.o = ((LinearLayout)this.m.findViewById(2131446099));
+      this.n = new ColorNoteSmallScreenToast(this, this.m);
     }
     try
     {
       localObject2 = ((IColorNoteDataService)this.app.getRuntimeService(IColorNoteDataService.class, "all")).getVisiableColorNotes();
-      this.jdField_a_of_type_Int = ((List)localObject2).size();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a((List)localObject2);
+      this.k = ((List)localObject2).size();
+      this.m.a((List)localObject2);
       localObject3 = ColorNoteUtils.a((List)localObject2);
-      String str = String.format(getResources().getString(2131690890), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      String str = String.format(getResources().getString(2131887829), new Object[] { Integer.valueOf(this.k) });
+      View localView = this.q;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
       localStringBuilder.append((String)localObject3);
       localView.setContentDescription(localStringBuilder.toString());
-      AccessibilityUtil.a(this.jdField_a_of_type_AndroidViewView, true);
-      if (!ColorNoteUtils.a((List)localObject2)) {
+      AccessibilityUtil.a(this.q, true);
+      if (!ColorNoteUtils.b((List)localObject2)) {
         break label421;
       }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenUpcomingNotifyState.a();
+      this.x.a();
     }
     catch (RuntimeException localRuntimeException)
     {
       Object localObject2;
       label417:
-      int j;
-      int k;
-      int m;
-      int n;
-      int i;
+      int i2;
+      int i3;
+      int i4;
+      int i5;
+      int i1;
       break label417;
     }
     ColorNoteSmallScreenUtil.b(this);
     label421:
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setFloatListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setUpcomingController(this);
-    a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a());
+    this.m.setFloatListener(this);
+    this.m.setUpcomingController(this);
+    a(this.n.e());
     localObject2 = ColorNoteSmallScreenUtil.a(this, this.app.getCurrentUin());
-    j = ((SharedPreferences)localObject2).getInt("colornote_windows_x", -1);
-    k = ((SharedPreferences)localObject2).getInt("colornote_windows_y", -1);
-    m = ViewUtils.a();
-    n = ViewUtils.b();
-    this.jdField_b_of_type_Int = Utils.a(8.0F, getResources());
-    if (((j != -1) || (k != -1)) && (j <= m))
+    i2 = ((SharedPreferences)localObject2).getInt("colornote_windows_x", -1);
+    i3 = ((SharedPreferences)localObject2).getInt("colornote_windows_y", -1);
+    i4 = ViewUtils.getScreenWidth();
+    i5 = ViewUtils.getScreenHeight();
+    this.l = Utils.a(8.0F, getResources());
+    if (((i2 != -1) || (i3 != -1)) && (i2 <= i4))
     {
-      i = k;
-      if (k <= n) {}
+      i1 = i3;
+      if (i3 <= i5) {}
     }
     else
     {
-      j = ViewUtils.a() - getResources().getDimensionPixelSize(2131296702) + this.jdField_b_of_type_Int;
-      i = ViewUtils.b() / 2;
+      i2 = ViewUtils.getScreenWidth() - getResources().getDimensionPixelSize(2131297033) + this.l;
+      i1 = ViewUtils.getScreenHeight() / 2;
     }
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("setCurPosition position = [");
-      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append(i2);
       ((StringBuilder)localObject2).append(", ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(i1);
       ((StringBuilder)localObject2).append("]");
       QLog.d("ColorNoteSmallScreenService", 2, ((StringBuilder)localObject2).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("setCurPosition mScreenWidth = ");
-      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(i4);
       QLog.d("ColorNoteSmallScreenService", 2, ((StringBuilder)localObject2).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("setCurPosition mScreenHeight = ");
-      ((StringBuilder)localObject2).append(n);
+      ((StringBuilder)localObject2).append(i5);
       QLog.d("ColorNoteSmallScreenService", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setCurPosition(new Point(j, i));
-    ColorNoteSmallScreenUtil.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a() / 2 + j, i + this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.b() / 2);
-    a(j, ColorNoteSmallScreenRelativeLayout.d());
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast = new ColorNoteSmallScreenFullToast(this, this);
-    if (this.jdField_b_of_type_JavaLangRunnable == null) {
-      this.jdField_b_of_type_JavaLangRunnable = new ColorNoteSmallScreenService.OnSelectMemberActivityIsResumeChangedRunnable(this);
+    this.m.setCurPosition(new Point(i2, i1));
+    ColorNoteSmallScreenUtil.a(this.m.getToastWidth() / 2 + i2, i1 + this.m.getToastHeight() / 2);
+    a(i2, ColorNoteSmallScreenRelativeLayout.getCustomNightMode());
+    this.p = new ColorNoteSmallScreenFullToast(this, this);
+    if (this.i == null) {
+      this.i = new ColorNoteSmallScreenService.OnSelectMemberActivityIsResumeChangedRunnable(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser = new SkinnableServiceProcesser(this, this);
-    this.jdField_b_of_type_Boolean = false;
-    this.d = ColorNoteSmallScreenUtil.a(this);
-    f();
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new ColorNoteSmallScreenService.OnOpChangedRunnable(this);
+    this.j = new SkinnableServiceProcesser(this, this);
+    this.b = false;
+    this.d = ColorNoteSmallScreenUtil.c(this);
+    h();
+    if (this.h == null) {
+      this.h = new ColorNoteSmallScreenService.OnOpChangedRunnable(this);
     }
-    a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
+    f().postDelayed(this.h, 1000L);
+    this.m.f();
     localObject2 = ColorNoteRecentConfigProcessor.a();
     if ((localObject2 != null) && (((ColorNoteRecentConfBean)localObject2).a()))
     {
@@ -885,11 +875,11 @@ public class ColorNoteSmallScreenService
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_b_of_type_Boolean = true;
+    this.b = true;
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      h();
+      unregisterReceiver(this.w);
+      l();
     }
     catch (RuntimeException localRuntimeException)
     {
@@ -897,24 +887,24 @@ public class ColorNoteSmallScreenService
         QLog.w("ColorNoteSmallScreenService", 1, "unregisterReceiver", localRuntimeException);
       }
     }
-    SkinnableServiceProcesser localSkinnableServiceProcesser = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser;
+    SkinnableServiceProcesser localSkinnableServiceProcesser = this.j;
     if (localSkinnableServiceProcesser != null) {
       localSkinnableServiceProcesser.a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenToast.a();
+    if (this.m != null) {
+      this.n.b();
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.h != null) {
+      f().removeCallbacks(this.h);
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if ((paramIntent != null) && (paramIntent.getIntExtra("KEY_CMD_SHOW_LIST", 0) == 1) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout != null))
+    if ((paramIntent != null) && (paramIntent.getIntExtra("KEY_CMD_SHOW_LIST", 0) == 1) && (this.m != null))
     {
       a(paramIntent);
-      a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(), paramIntent.getBooleanExtra("KEY_SHOW_LIST_LAND", true));
+      b(this.m.getCurPosition(), paramIntent.getBooleanExtra("KEY_SHOW_LIST_LAND", true));
     }
     a(paramIntent, paramInt1, paramInt2);
     super.onStartCommand(paramIntent, paramInt1, paramInt2);
@@ -923,7 +913,7 @@ public class ColorNoteSmallScreenService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class DynamicNowManager$3
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager.a(this.jdField_a_of_type_AndroidOsBundle, null);
+    this.b.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.3
  * JD-Core Version:    0.7.0.1
  */

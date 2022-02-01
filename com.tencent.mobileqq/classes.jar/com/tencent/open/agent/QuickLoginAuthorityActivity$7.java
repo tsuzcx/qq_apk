@@ -28,12 +28,12 @@ class QuickLoginAuthorityActivity$7
           return;
         }
         QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
-        if (this.a.a.a != null)
+        if (this.a.q.k != null)
         {
-          this.a.a.a.e();
+          this.a.q.k.h();
           paramMessage = Message.obtain();
           paramMessage.what = 1006;
-          this.a.b.sendMessage(paramMessage);
+          this.a.t.sendMessage(paramMessage);
         }
       }
       else
@@ -41,13 +41,13 @@ class QuickLoginAuthorityActivity$7
         paramMessage = (String)paramMessage.obj;
         if (!TextUtils.isEmpty(paramMessage))
         {
-          paramMessage = AuthorityUtil.a(paramMessage);
+          paramMessage = AuthorityUtil.d(paramMessage);
           if (paramMessage != null)
           {
             localMessage = Message.obtain();
             localMessage.what = 1003;
             localMessage.obj = paramMessage;
-            this.a.b.sendMessage(localMessage);
+            this.a.t.sendMessage(localMessage);
           }
         }
       }
@@ -61,14 +61,14 @@ class QuickLoginAuthorityActivity$7
         localMessage = Message.obtain();
         localMessage.what = 1002;
         localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
+        this.a.t.sendMessage(localMessage);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.7
  * JD-Core Version:    0.7.0.1
  */

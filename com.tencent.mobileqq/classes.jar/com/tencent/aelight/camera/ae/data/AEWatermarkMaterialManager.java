@@ -18,9 +18,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class AEWatermarkMaterialManager
 {
-  private final ArrayList<AEWatermarkMaterialManager.IWatermarkMgrListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final CopyOnWriteArrayList<AEMaterialCategory> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private final CopyOnWriteArrayList<AEMaterialCategory> a = new CopyOnWriteArrayList();
+  private volatile boolean b = false;
+  private final ArrayList<AEWatermarkMaterialManager.IWatermarkMgrListener> c = new ArrayList();
   
   public static AEWatermarkMaterialManager a()
   {
@@ -63,7 +63,7 @@ public final class AEWatermarkMaterialManager
         while (localIterator2.hasNext())
         {
           paramFile1 = (AEMaterialCategory)localIterator2.next();
-          if (paramFile1.b.equals(paramFile2.b)) {
+          if (paramFile1.d.equals(paramFile2.d)) {
             break label104;
           }
         }
@@ -86,14 +86,14 @@ public final class AEWatermarkMaterialManager
             while (localIterator3.hasNext())
             {
               paramFile2 = (AEMaterialMetaData)localIterator3.next();
-              if (localAEMaterialMetaData.k.equals(paramFile2.k)) {
+              if (localAEMaterialMetaData.m.equals(paramFile2.m)) {
                 break label228;
               }
             }
             paramFile2 = null;
             if (paramFile2 == null) {
               a(localAEMaterialMetaData);
-            } else if (!localAEMaterialMetaData.o.equals(paramFile2.o)) {
+            } else if (!localAEMaterialMetaData.s.equals(paramFile2.s)) {
               a(localAEMaterialMetaData);
             }
           }
@@ -110,14 +110,14 @@ public final class AEWatermarkMaterialManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("deleteMaterialFolder: ");
-      ((StringBuilder)localObject).append(paramAEMaterialMetaData.k);
+      ((StringBuilder)localObject).append(paramAEMaterialMetaData.m);
       QLog.d("AEWatermarkMaterialManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new File(AEPath.CAMERA.FILES.i, paramAEMaterialMetaData.k);
+    Object localObject = new File(AEPath.CAMERA.FILES.i, paramAEMaterialMetaData.m);
     if (((File)localObject).exists()) {
       FileUtils.deleteDirectory(((File)localObject).getPath());
     }
-    paramAEMaterialMetaData = new File(AEPath.CAMERA.FILES.h, paramAEMaterialMetaData.k);
+    paramAEMaterialMetaData = new File(AEPath.CAMERA.FILES.h, paramAEMaterialMetaData.m);
     if (paramAEMaterialMetaData.exists()) {
       FileUtils.deleteDirectory(paramAEMaterialMetaData.getPath());
     }
@@ -139,14 +139,14 @@ public final class AEWatermarkMaterialManager
         {
           AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)((Iterator)localObject).next();
           if (localAEMaterialMetaData != null) {
-            localAEMaterialMetaData.e = AEMaterialManager.a(localAEMaterialMetaData);
+            localAEMaterialMetaData.A = AEMaterialManager.a(localAEMaterialMetaData);
           }
         }
       }
     }
   }
   
-  private List<AEMaterialCategory> b()
+  private List<AEMaterialCategory> d()
   {
     File localFile = new File(AEPath.Watermark.b);
     Object localObject3 = new File(AEPath.Watermark.a);
@@ -158,7 +158,7 @@ public final class AEWatermarkMaterialManager
       {
         localObject1 = new ArrayList();
         AEQLog.a("AEWatermarkMaterialManager", "readAndParseConfigFile -> oldJson not exist, newJson not exist, use Json from assets ");
-        b();
+        e();
         return localObject1;
       }
       try
@@ -175,7 +175,7 @@ public final class AEWatermarkMaterialManager
         ((StringBuilder)localObject3).append("readAndParseConfigFile -> oldJson exists, newJson not exist, exception:");
         ((StringBuilder)localObject3).append(localAEMaterialConfigParseException3.toString());
         AEQLog.d("AEWatermarkMaterialManager", ((StringBuilder)localObject3).toString());
-        b();
+        e();
       }
     }
     else
@@ -199,7 +199,7 @@ public final class AEWatermarkMaterialManager
           localStringBuilder.append("readAndParseConfigFile -> oldJson not exists: exception:");
           localStringBuilder.append(localAEMaterialConfigParseException1.toString());
           AEQLog.d("AEWatermarkMaterialManager", localStringBuilder.toString());
-          b();
+          e();
           return localObject3;
         }
         try
@@ -216,56 +216,73 @@ public final class AEWatermarkMaterialManager
           localStringBuilder.append("loadMaterialListFromAssets  -> oldJson exists: exception:");
           localStringBuilder.append(localAEMaterialConfigParseException2.toString());
           AEQLog.d("AEWatermarkMaterialManager", localStringBuilder.toString());
-          b();
+          e();
         }
       }
     }
     return localObject2;
   }
   
-  private void b()
+  private void e()
   {
     AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqCircleWatermark", 4);
     try
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
     finally {}
   }
   
+  public void a(AEWatermarkMaterialManager.IWatermarkMgrListener paramIWatermarkMgrListener)
+  {
+    if (paramIWatermarkMgrListener == null)
+    {
+      AEQLog.d("AEWatermarkMaterialManager", "registerListener---the listener param is null");
+      return;
+    }
+    if (!this.c.contains(paramIWatermarkMgrListener)) {
+      this.c.add(paramIWatermarkMgrListener);
+    }
+  }
+  
   @WorkerThread
-  public List<AEMaterialCategory> a()
+  public List<AEMaterialCategory> b()
   {
     try
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getMaterialsSync---mHasLoaded=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.b);
       AEQLog.b("AEWatermarkMaterialManager", ((StringBuilder)localObject1).toString());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+        localObject1 = new ArrayList(this.a);
         return localObject1;
       }
-      localObject1 = b();
+      localObject1 = d();
       a((List)localObject1);
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)localObject1);
-      this.jdField_a_of_type_Boolean = true;
-      localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+      this.a.clear();
+      this.a.addAll((Collection)localObject1);
+      this.b = true;
+      localObject1 = new ArrayList(this.a);
       return localObject1;
     }
     finally {}
   }
   
-  public void a()
+  public void b(AEWatermarkMaterialManager.IWatermarkMgrListener paramIWatermarkMgrListener)
+  {
+    this.c.remove(paramIWatermarkMgrListener);
+  }
+  
+  public void c()
   {
     try
     {
       AEQLog.b("AEWatermarkMaterialManager", "onConfigUpdated---");
-      this.jdField_a_of_type_Boolean = false;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      this.b = false;
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         ((AEWatermarkMaterialManager.IWatermarkMgrListener)localIterator.next()).a();
       }
@@ -277,27 +294,10 @@ public final class AEWatermarkMaterialManager
       throw localObject;
     }
   }
-  
-  public void a(AEWatermarkMaterialManager.IWatermarkMgrListener paramIWatermarkMgrListener)
-  {
-    if (paramIWatermarkMgrListener == null)
-    {
-      AEQLog.d("AEWatermarkMaterialManager", "registerListener---the listener param is null");
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramIWatermarkMgrListener)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramIWatermarkMgrListener);
-    }
-  }
-  
-  public void b(AEWatermarkMaterialManager.IWatermarkMgrListener paramIWatermarkMgrListener)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramIWatermarkMgrListener);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEWatermarkMaterialManager
  * JD-Core Version:    0.7.0.1
  */

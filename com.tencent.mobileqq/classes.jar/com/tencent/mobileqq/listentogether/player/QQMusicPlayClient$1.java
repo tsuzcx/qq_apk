@@ -20,15 +20,15 @@ class QQMusicPlayClient$1
     if (QLog.isColorLevel()) {
       QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format(" --->onServiceConnected %s", new Object[] { ??? }));
     }
-    if (QQMusicPlayClient.a(this.a) != null)
+    if (QQMusicPlayClient.c(this.a) != null)
     {
       QQMusicPlayClient.a(this.a, new Messenger(paramIBinder));
       ??? = Message.obtain(null, 1);
       ???.setData(new Bundle());
-      ???.replyTo = QQMusicPlayClient.a(this.a);
+      ???.replyTo = QQMusicPlayClient.c(this.a);
       try
       {
-        QQMusicPlayClient.b(this.a).send(???);
+        QQMusicPlayClient.d(this.a).send(???);
       }
       catch (Throwable ???)
       {
@@ -40,9 +40,9 @@ class QQMusicPlayClient$1
       }
       synchronized (this.a)
       {
-        QQMusicPlayClient.a(this.a).set(1);
+        QQMusicPlayClient.e(this.a).set(1);
         ??? = this.a;
-        QQMusicPlayClient.a(???, QQMusicPlayClient.a(???).get());
+        QQMusicPlayClient.a(???, QQMusicPlayClient.e(???).get());
         return;
       }
     }
@@ -52,10 +52,10 @@ class QQMusicPlayClient$1
   {
     synchronized (this.a)
     {
-      QQMusicPlayClient.a(this.a).set(-1);
+      QQMusicPlayClient.e(this.a).set(-1);
       QQMusicPlayClient.a(this.a, null);
       ??? = this.a;
-      QQMusicPlayClient.a(???, QQMusicPlayClient.a(???).get());
+      QQMusicPlayClient.a(???, QQMusicPlayClient.e(???).get());
       if (QLog.isColorLevel()) {
         QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->onServiceDisconnected %s", new Object[] { paramComponentName }));
       }
@@ -65,7 +65,7 @@ class QQMusicPlayClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayClient.1
  * JD-Core Version:    0.7.0.1
  */

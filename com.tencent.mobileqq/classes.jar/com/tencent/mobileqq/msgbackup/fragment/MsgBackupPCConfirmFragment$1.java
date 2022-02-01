@@ -17,9 +17,9 @@ class MsgBackupPCConfirmFragment$1
   {
     if ((paramInt == 1) || (paramInt == 2))
     {
-      MsgBackupUtil.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(MsgBackupManager.c) });
-      MsgBackupTransportProcessor.a().c();
-      if (TextUtils.isEmpty(this.a.a))
+      MsgBackupUtil.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.K), Boolean.valueOf(MsgBackupManager.s) });
+      MsgBackupTransportProcessor.a().m();
+      if (TextUtils.isEmpty(this.a.ab))
       {
         paramView = this.a;
         paramView.a(paramView.getActivity());
@@ -28,12 +28,12 @@ class MsgBackupPCConfirmFragment$1
       {
         this.a.onBackEvent();
       }
-      if (this.a.b == 2)
+      if (this.a.K == 2)
       {
         MsgBackupReporter.a("0X800A282");
         return;
       }
-      if (MsgBackupManager.c) {
+      if (MsgBackupManager.s) {
         MsgBackupReporter.a("0X800A266", 4);
       }
     }
@@ -41,7 +41,7 @@ class MsgBackupPCConfirmFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment.1
  * JD-Core Version:    0.7.0.1
  */

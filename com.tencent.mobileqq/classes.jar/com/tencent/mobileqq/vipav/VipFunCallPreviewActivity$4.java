@@ -18,22 +18,22 @@ class VipFunCallPreviewActivity$4
       if ((paramInt != 3) && (paramInt != 4)) {
         return;
       }
-      Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
+      Collections.sort(this.a.s);
       VipFunCallPreviewActivity localVipFunCallPreviewActivity = this.a;
-      localVipFunCallPreviewActivity.c = localVipFunCallPreviewActivity.jdField_a_of_type_JavaUtilArrayList.toString();
+      localVipFunCallPreviewActivity.t = localVipFunCallPreviewActivity.s.toString();
       this.a.a(false, 0);
       localVipFunCallPreviewActivity = this.a;
-      localVipFunCallPreviewActivity.jdField_a_of_type_Boolean = paramBoolean;
+      localVipFunCallPreviewActivity.y = paramBoolean;
       if (!paramBoolean) {
         VipFunCallPreviewActivity.a(localVipFunCallPreviewActivity, (Bundle)paramObject);
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
+      this.a.z.sendEmptyMessage(50);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

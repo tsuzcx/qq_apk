@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip"
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/yjm" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/m_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <CheckBox android:layout_gravity="center_vertical" android:id="@id/j95" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:button="@drawable/big" android:scaleX="0.67" android:scaleY="0.67" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yju" />
-    </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/opr" android:visibility="visible" android:layout_width="@dimen/bgd" android:layout_height="fill_parent">
+        <ImageView android:id="@id/opp" android:layout_width="@dimen/bgj" android:layout_height="@dimen/bgi" android:layout_marginTop="@dimen/bgc" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opt" android:layout_width="@dimen/bgj" android:layout_height="@dimen/bgi" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opp" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opq" android:layout_width="@dimen/bgm" android:layout_height="@dimen/bgk" android:layout_marginTop="@dimen/bgl" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opt" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <Button android:id="@id/ops" android:background="@android:color/transparent" android:layout_width="@dimen/bgo" android:layout_height="@dimen/bgo" android:layout_marginBottom="@dimen/bgn" android:layout_alignBottom="@id/opq" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/opn" android:layout_width="@dimen/bg6" android:layout_height="@dimen/bg6" android:layout_marginTop="@dimen/bgp" android:src="@drawable/grb" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opq" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/opl" android:visibility="invisible" android:layout_width="@dimen/bgd" android:layout_height="fill_parent">
+        <ImageView android:id="@id/opk" android:layout_width="@dimen/bgm" android:layout_height="@dimen/bgk" android:layout_marginTop="@dimen/bgc" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <ImageView android:id="@id/opo" android:layout_width="@dimen/bg8" android:layout_height="@dimen/bg7" android:layout_marginTop="@dimen/bge" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_below="@id/opk" android:layout_centerHorizontal="true" android:contentDescription="@string/xbi" />
+        <TextView android:textSize="@dimen/bga" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/opm" android:layout_width="@dimen/bgb" android:layout_height="@dimen/bg9" android:layout_marginTop="@dimen/bg_" android:text="@string/xeh" android:layout_below="@id/opo" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

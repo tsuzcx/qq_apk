@@ -132,9 +132,9 @@ public abstract class FloatWindowModule
   private int getLayoutResId()
   {
     if (isLandscape()) {
-      return 2131559232;
+      return 2131625152;
     }
-    return 2131559231;
+    return 2131625151;
   }
   
   private void handlePlayStatusActivityStart()
@@ -184,7 +184,7 @@ public abstract class FloatWindowModule
       {
         showFloatWindow();
         if (outRoomFloatWindow()) {
-          BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().c();
+          BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().d();
         }
       }
     }
@@ -228,16 +228,16 @@ public abstract class FloatWindowModule
   
   private void initFloatWindowViewOnInvoke(View paramView)
   {
-    Object localObject = (FrameLayout)paramView.findViewById(2131366930);
+    Object localObject = (FrameLayout)paramView.findViewById(2131433278);
     this.avPlayerService.readyPlay((FrameLayout)localObject, true);
-    localObject = paramView.findViewById(2131366931);
+    localObject = paramView.findViewById(2131433280);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(new FloatWindowModule.10(this));
     }
-    ((ImageView)paramView.findViewById(2131369440)).setOnClickListener(new FloatWindowModule.11(this));
-    this.noticeLayout = ((LinearLayout)paramView.findViewById(2131366980));
-    this.typeImage = ((ImageView)paramView.findViewById(2131369538));
-    this.noticeText = ((TextView)paramView.findViewById(2131379776));
+    ((ImageView)paramView.findViewById(2131436495)).setOnClickListener(new FloatWindowModule.11(this));
+    this.noticeLayout = ((LinearLayout)paramView.findViewById(2131433426));
+    this.typeImage = ((ImageView)paramView.findViewById(2131436638));
+    this.noticeText = ((TextView)paramView.findViewById(2131448593));
     this.noticeLayout.setVisibility(8);
   }
   
@@ -300,7 +300,7 @@ public abstract class FloatWindowModule
         return;
       }
       this.noticeLayout.setVisibility(0);
-      this.typeImage.setImageResource(2130840470);
+      this.typeImage.setImageResource(2130841232);
       this.noticeText.setText(paramString);
       delayHideNotice();
     }
@@ -314,7 +314,7 @@ public abstract class FloatWindowModule
         return;
       }
       this.noticeLayout.setVisibility(0);
-      this.typeImage.setImageResource(2130840471);
+      this.typeImage.setImageResource(2130841233);
       this.noticeText.setText(paramString);
       delayHideNotice();
     }
@@ -498,7 +498,7 @@ public abstract class FloatWindowModule
     this.avPlayerService = ((AVPlayerBuilderServiceInterface)this.roomEngine.getService(AVPlayerBuilderServiceInterface.class));
     this.networkService = ((NetworkStateInterface)BizEngineMgr.getInstance().getLiveEngine().getService(NetworkStateInterface.class));
     this.floatWindowConfigService = ((FloatWindowConfigServiceInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowConfigServiceInterface.class));
-    this.videoView = ((FrameLayout)getRootView().findViewById(2131368457));
+    this.videoView = ((FrameLayout)getRootView().findViewById(2131435353));
     initFloatPlayer();
     this.mVideoType = this.roomBizContext.getEnterRoomInfo().videoType;
     if (this.mVideoType == VideoType.VIDEO.ordinal())
@@ -517,7 +517,7 @@ public abstract class FloatWindowModule
     if ((localFloatWindowComponent != null) && (localFloatWindowComponent.isCalledShow()))
     {
       this.floatWindowComponent.dismiss(7);
-      BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().e();
+      BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().f();
     }
   }
   
@@ -600,7 +600,7 @@ public abstract class FloatWindowModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule
  * JD-Core Version:    0.7.0.1
  */

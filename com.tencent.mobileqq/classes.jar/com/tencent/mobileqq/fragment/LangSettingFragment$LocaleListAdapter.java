@@ -19,7 +19,7 @@ public class LangSettingFragment$LocaleListAdapter
     return new LangSettingFragment.LocaleListAdapter.1(this, paramInt);
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
     int i = LangSettingFragment.a().size();
     boolean bool2 = false;
@@ -56,7 +56,7 @@ public class LangSettingFragment$LocaleListAdapter
   {
     FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getBaseActivity());
     if (paramInt == LangSettingFragment.a(this.a)) {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844706));
+      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130846138));
     } else {
       localFormSimpleItem.setRightIcon(null);
     }
@@ -71,7 +71,7 @@ public class LangSettingFragment$LocaleListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.LocaleListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class AnswerProteusItem$2
   
   public void onClick(View paramView)
   {
-    RIJFrameworkReportManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 0, 1);
+    RIJFrameworkReportManager.a(this.a.k(), 0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.AnswerProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

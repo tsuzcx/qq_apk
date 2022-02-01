@@ -10,7 +10,7 @@ class FeedCommentEventHandler$OnActionSheetButtonClickListener$2
   
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.a.a.a.e();
+    this.a.a.a.g();
     if (paramBoolean) {
       this.a.a.a.a(true, paramCommentEntry);
     }
@@ -18,7 +18,7 @@ class FeedCommentEventHandler$OnActionSheetButtonClickListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener.2
  * JD-Core Version:    0.7.0.1
  */

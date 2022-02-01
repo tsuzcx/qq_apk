@@ -10,12 +10,12 @@ class LiteSDKForCrossProcess$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "直播进程启动中，请稍等", 1).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), "直播进程启动中，请稍等", 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteSDKForCrossProcess.2
  * JD-Core Version:    0.7.0.1
  */

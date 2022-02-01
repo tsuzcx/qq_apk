@@ -11,7 +11,6 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class ArkAppDataReport
 {
   public static int a = 0;
-  private static boolean a = false;
   public static int b = 1;
   public static int c = 2;
   public static int d = 3;
@@ -20,13 +19,14 @@ public class ArkAppDataReport
   public static int g = 1;
   public static int h = 2;
   public static int i = 3;
+  private static boolean j = false;
   
   public static void a()
   {
-    if (a) {
+    if (j) {
       return;
     }
-    a = true;
+    j = true;
     if (ArkEnvironmentManager.getInstance().isHardwareAcceleration()) {
       return;
     }
@@ -78,7 +78,7 @@ public class ArkAppDataReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppDataReport
  * JD-Core Version:    0.7.0.1
  */

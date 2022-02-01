@@ -17,10 +17,10 @@ public class TroopShopArkMsg
   {
     paramContext = new StringBuilder();
     paramContext.append("[");
-    paramContext.append(HardCodeUtil.a(2131699534));
+    paramContext.append(HardCodeUtil.a(2131897565));
     paramContext.append("]");
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.c = paramContext.toString();
+    this.d = this.c;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -28,11 +28,11 @@ public class TroopShopArkMsg
     if ((paramObject instanceof TroopShopArkMsg))
     {
       paramObject = (TroopShopArkMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       return paramObject;
     }
     paramObject = new TroopShopArkMsg(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
   
@@ -42,14 +42,14 @@ public class TroopShopArkMsg
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo == null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
+      this.a = paramArrayOfByte.getLong("uniseq");
+      this.b = paramArrayOfByte.getLong("shmsgseq");
+      this.c = paramArrayOfByte.getString("content");
+      this.f = paramArrayOfByte.getInt("color");
+      if (this.h == null) {
+        this.h = new MessageNavInfo();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.h.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
     catch (JSONException paramArrayOfByte)
@@ -58,17 +58,17 @@ public class TroopShopArkMsg
     }
   }
   
-  public byte[] a()
+  public byte[] b()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
+      localJSONObject.put("uniseq", this.a);
+      localJSONObject.put("shmsgseq", this.b);
+      localJSONObject.put("content", this.c);
+      localJSONObject.put("color", this.f);
+      if (this.h != null) {
+        localJSONObject.put("messageNavInfo", this.h.b());
       }
     }
     catch (JSONException localJSONException)
@@ -80,7 +80,7 @@ public class TroopShopArkMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopShopArkMsg
  * JD-Core Version:    0.7.0.1
  */

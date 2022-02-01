@@ -14,22 +14,22 @@ public class StructMsgBgSetterWithTail
     if (paramMessageForStructing.isSend())
     {
       if (paramBoolean) {
-        i = 2130850340;
+        i = 2130852131;
       } else {
-        i = 2130850341;
+        i = 2130852132;
       }
     }
     else if (paramBoolean) {
-      i = 2130850164;
+      i = 2130851949;
     } else {
-      i = 2130850165;
+      i = 2130851950;
     }
-    AIOUtils.a(paramViewHolder.a, i);
+    AIOUtils.a(paramViewHolder.h, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.structMsg.StructMsgBgSetterWithTail
  * JD-Core Version:    0.7.0.1
  */

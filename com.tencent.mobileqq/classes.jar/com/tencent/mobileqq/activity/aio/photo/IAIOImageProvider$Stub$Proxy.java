@@ -87,269 +87,6 @@ class IAIOImageProvider$Stub$Proxy
   }
   
   /* Error */
-  public android.content.Intent a(long paramLong, int paramInt)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 6
-    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   8: astore 7
-    //   10: aconst_null
-    //   11: astore 5
-    //   13: aload 6
-    //   15: ldc 27
-    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   20: aload 6
-    //   22: lload_1
-    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   26: aload 6
-    //   28: iload_3
-    //   29: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   32: aload_0
-    //   33: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   36: iconst_5
-    //   37: aload 6
-    //   39: aload 7
-    //   41: iconst_0
-    //   42: invokeinterface 45 5 0
-    //   47: pop
-    //   48: aload 7
-    //   50: invokevirtual 48	android/os/Parcel:readException	()V
-    //   53: aload 5
-    //   55: astore 4
-    //   57: aload 7
-    //   59: invokevirtual 52	android/os/Parcel:readInt	()I
-    //   62: ifeq +55 -> 117
-    //   65: getstatic 78	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
-    //   68: aload 7
-    //   70: invokeinterface 84 2 0
-    //   75: checkcast 74	android/content/Intent
-    //   78: astore 4
-    //   80: goto +37 -> 117
-    //   83: astore 4
-    //   85: goto +45 -> 130
-    //   88: astore 8
-    //   90: aload 5
-    //   92: astore 4
-    //   94: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   97: ifeq +20 -> 117
-    //   100: ldc 63
-    //   102: iconst_2
-    //   103: aload 8
-    //   105: invokevirtual 88	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   108: aload 8
-    //   110: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   113: aload 5
-    //   115: astore 4
-    //   117: aload 7
-    //   119: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   122: aload 6
-    //   124: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   127: aload 4
-    //   129: areturn
-    //   130: aload 7
-    //   132: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   135: aload 6
-    //   137: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   140: aload 4
-    //   142: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	143	0	this	Proxy
-    //   0	143	1	paramLong	long
-    //   0	143	3	paramInt	int
-    //   55	24	4	localObject1	Object
-    //   83	1	4	localObject2	Object
-    //   92	49	4	localObject3	Object
-    //   11	103	5	localObject4	Object
-    //   3	133	6	localParcel1	android.os.Parcel
-    //   8	123	7	localParcel2	android.os.Parcel
-    //   88	21	8	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   13	53	83	finally
-    //   57	80	83	finally
-    //   94	113	83	finally
-    //   13	53	88	java/lang/Exception
-    //   57	80	88	java/lang/Exception
-  }
-  
-  /* Error */
-  public android.content.Intent a(long paramLong, int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 7
-    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   8: astore 8
-    //   10: aconst_null
-    //   11: astore 6
-    //   13: aload 7
-    //   15: ldc 27
-    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   20: aload 7
-    //   22: lload_1
-    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   26: aload 7
-    //   28: iload_3
-    //   29: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   32: aload 7
-    //   34: iload 4
-    //   36: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   39: aload_0
-    //   40: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   43: bipush 9
-    //   45: aload 7
-    //   47: aload 8
-    //   49: iconst_0
-    //   50: invokeinterface 45 5 0
-    //   55: pop
-    //   56: aload 8
-    //   58: invokevirtual 48	android/os/Parcel:readException	()V
-    //   61: aload 6
-    //   63: astore 5
-    //   65: aload 8
-    //   67: invokevirtual 52	android/os/Parcel:readInt	()I
-    //   70: ifeq +55 -> 125
-    //   73: getstatic 78	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
-    //   76: aload 8
-    //   78: invokeinterface 84 2 0
-    //   83: checkcast 74	android/content/Intent
-    //   86: astore 5
-    //   88: goto +37 -> 125
-    //   91: astore 5
-    //   93: goto +45 -> 138
-    //   96: astore 9
-    //   98: aload 6
-    //   100: astore 5
-    //   102: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq +20 -> 125
-    //   108: ldc 63
-    //   110: iconst_2
-    //   111: aload 9
-    //   113: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   116: aload 9
-    //   118: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   121: aload 6
-    //   123: astore 5
-    //   125: aload 7
-    //   127: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   130: aload 8
-    //   132: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   135: aload 5
-    //   137: areturn
-    //   138: aload 7
-    //   140: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   143: aload 8
-    //   145: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   148: aload 5
-    //   150: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	151	0	this	Proxy
-    //   0	151	1	paramLong	long
-    //   0	151	3	paramInt1	int
-    //   0	151	4	paramInt2	int
-    //   63	24	5	localObject1	Object
-    //   91	1	5	localObject2	Object
-    //   100	49	5	localObject3	Object
-    //   11	111	6	localObject4	Object
-    //   3	136	7	localParcel1	android.os.Parcel
-    //   8	136	8	localParcel2	android.os.Parcel
-    //   96	21	9	localRemoteException	android.os.RemoteException
-    // Exception table:
-    //   from	to	target	type
-    //   13	61	91	finally
-    //   65	88	91	finally
-    //   102	121	91	finally
-    //   13	61	96	android/os/RemoteException
-    //   65	88	96	android/os/RemoteException
-  }
-  
-  /* Error */
-  public com.tencent.mobileqq.data.MessageForShortVideo a(long paramLong)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 5
-    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   8: astore 6
-    //   10: aconst_null
-    //   11: astore 4
-    //   13: aload 5
-    //   15: ldc 27
-    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   20: aload 5
-    //   22: lload_1
-    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   26: aload_0
-    //   27: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   30: bipush 14
-    //   32: aload 5
-    //   34: aload 6
-    //   36: iconst_0
-    //   37: invokeinterface 45 5 0
-    //   42: pop
-    //   43: aload 6
-    //   45: invokevirtual 48	android/os/Parcel:readException	()V
-    //   48: aload 4
-    //   50: astore_3
-    //   51: aload 6
-    //   53: invokevirtual 52	android/os/Parcel:readInt	()I
-    //   56: ifeq +48 -> 104
-    //   59: getstatic 94	com/tencent/mobileqq/data/MessageForShortVideo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   62: aload 6
-    //   64: invokeinterface 84 2 0
-    //   69: checkcast 93	com/tencent/mobileqq/data/MessageForShortVideo
-    //   72: astore_3
-    //   73: goto +31 -> 104
-    //   76: astore_3
-    //   77: goto +39 -> 116
-    //   80: astore 7
-    //   82: aload 4
-    //   84: astore_3
-    //   85: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   88: ifeq +16 -> 104
-    //   91: ldc 63
-    //   93: iconst_2
-    //   94: ldc 96
-    //   96: aload 7
-    //   98: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   101: aload 4
-    //   103: astore_3
-    //   104: aload 6
-    //   106: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   109: aload 5
-    //   111: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   114: aload_3
-    //   115: areturn
-    //   116: aload 6
-    //   118: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   121: aload 5
-    //   123: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   126: aload_3
-    //   127: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	128	0	this	Proxy
-    //   0	128	1	paramLong	long
-    //   50	23	3	localObject1	Object
-    //   76	1	3	localObject2	Object
-    //   84	43	3	localObject3	Object
-    //   11	91	4	localObject4	Object
-    //   3	119	5	localParcel1	android.os.Parcel
-    //   8	109	6	localParcel2	android.os.Parcel
-    //   80	17	7	localRemoteException	android.os.RemoteException
-    // Exception table:
-    //   from	to	target	type
-    //   13	48	76	finally
-    //   51	73	76	finally
-    //   85	101	76	finally
-    //   13	48	80	android/os/RemoteException
-    //   51	73	80	android/os/RemoteException
-  }
-  
-  /* Error */
   public java.lang.String a(java.lang.String paramString1, java.lang.String paramString2)
   {
     // Byte code:
@@ -362,10 +99,10 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   15: aload_3
     //   16: aload_1
-    //   17: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   17: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   20: aload_3
     //   21: aload_2
-    //   22: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   22: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   25: aload_0
     //   26: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   29: bipush 22
@@ -377,7 +114,7 @@ class IAIOImageProvider$Stub$Proxy
     //   41: aload 4
     //   43: invokevirtual 48	android/os/Parcel:readException	()V
     //   46: aload 4
-    //   48: invokevirtual 103	android/os/Parcel:readString	()Ljava/lang/String;
+    //   48: invokevirtual 77	android/os/Parcel:readString	()Ljava/lang/String;
     //   51: astore_1
     //   52: aload 4
     //   54: invokevirtual 55	android/os/Parcel:recycle	()V
@@ -392,14 +129,14 @@ class IAIOImageProvider$Stub$Proxy
     //   71: ifeq +12 -> 83
     //   74: ldc 63
     //   76: iconst_2
-    //   77: ldc 105
+    //   77: ldc 79
     //   79: aload_1
     //   80: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   83: aload 4
     //   85: invokevirtual 55	android/os/Parcel:recycle	()V
     //   88: aload_3
     //   89: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   92: ldc 96
+    //   92: ldc 81
     //   94: areturn
     //   95: aload 4
     //   97: invokevirtual 55	android/os/Parcel:recycle	()V
@@ -447,7 +184,7 @@ class IAIOImageProvider$Stub$Proxy
     //   39: ldc 63
     //   41: iconst_2
     //   42: aload_2
-    //   43: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   43: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   46: aload_2
     //   47: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   50: aload_1
@@ -499,7 +236,7 @@ class IAIOImageProvider$Stub$Proxy
     //   43: ldc 63
     //   45: iconst_2
     //   46: aload_3
-    //   47: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   47: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   50: aload_3
     //   51: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   54: aload_2
@@ -545,16 +282,16 @@ class IAIOImageProvider$Stub$Proxy
     //   30: invokevirtual 39	android/os/Parcel:writeInt	(I)V
     //   33: aload 7
     //   35: aload_3
-    //   36: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   36: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   39: aload 7
     //   41: aload 4
-    //   43: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   43: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   46: aload 7
     //   48: aload 5
-    //   50: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   50: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   53: aload 7
     //   55: aload 6
-    //   57: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   57: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   60: aload_0
     //   61: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   64: bipush 23
@@ -571,7 +308,7 @@ class IAIOImageProvider$Stub$Proxy
     //   87: ifeq +12 -> 99
     //   90: ldc 63
     //   92: iconst_2
-    //   93: ldc 108
+    //   93: ldc 87
     //   95: aload_3
     //   96: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   99: aload 7
@@ -601,116 +338,6 @@ class IAIOImageProvider$Stub$Proxy
     //   84	99	79	finally
     //   5	18	83	android/os/RemoteException
     //   27	76	83	android/os/RemoteException
-  }
-  
-  /* Error */
-  public void a(long paramLong)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 27
-    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: lload_1
-    //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   15: aload_0
-    //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   19: bipush 17
-    //   21: aload_3
-    //   22: aconst_null
-    //   23: iconst_1
-    //   24: invokeinterface 45 5 0
-    //   29: pop
-    //   30: goto +29 -> 59
-    //   33: astore 4
-    //   35: goto +29 -> 64
-    //   38: astore 4
-    //   40: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   43: ifeq +16 -> 59
-    //   46: ldc 63
-    //   48: iconst_2
-    //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   54: aload 4
-    //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   59: aload_3
-    //   60: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   63: return
-    //   64: aload_3
-    //   65: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   68: aload 4
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	this	Proxy
-    //   0	71	1	paramLong	long
-    //   3	62	3	localParcel	android.os.Parcel
-    //   33	1	4	localObject	Object
-    //   38	31	4	localRemoteException	android.os.RemoteException
-    // Exception table:
-    //   from	to	target	type
-    //   4	30	33	finally
-    //   40	59	33	finally
-    //   4	30	38	android/os/RemoteException
-  }
-  
-  /* Error */
-  public void a(long paramLong, int paramInt)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 4
-    //   5: aload 4
-    //   7: ldc 27
-    //   9: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   12: aload 4
-    //   14: lload_1
-    //   15: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   18: aload 4
-    //   20: iload_3
-    //   21: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   24: aload_0
-    //   25: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   28: bipush 7
-    //   30: aload 4
-    //   32: aconst_null
-    //   33: iconst_1
-    //   34: invokeinterface 45 5 0
-    //   39: pop
-    //   40: goto +29 -> 69
-    //   43: astore 5
-    //   45: goto +30 -> 75
-    //   48: astore 5
-    //   50: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   53: ifeq +16 -> 69
-    //   56: ldc 63
-    //   58: iconst_2
-    //   59: aload 5
-    //   61: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   64: aload 5
-    //   66: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   69: aload 4
-    //   71: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   74: return
-    //   75: aload 4
-    //   77: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   80: aload 5
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	this	Proxy
-    //   0	83	1	paramLong	long
-    //   0	83	3	paramInt	int
-    //   3	73	4	localParcel	android.os.Parcel
-    //   43	1	5	localObject	Object
-    //   48	33	5	localRemoteException	android.os.RemoteException
-    // Exception table:
-    //   from	to	target	type
-    //   5	40	43	finally
-    //   50	69	43	finally
-    //   5	40	48	android/os/RemoteException
   }
   
   /* Error */
@@ -748,7 +375,7 @@ class IAIOImageProvider$Stub$Proxy
     //   62: ldc 63
     //   64: iconst_2
     //   65: aload 6
-    //   67: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   67: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   70: aload 6
     //   72: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   75: aload 5
@@ -791,7 +418,7 @@ class IAIOImageProvider$Stub$Proxy
     //   21: invokevirtual 39	android/os/Parcel:writeInt	(I)V
     //   24: aload 5
     //   26: aload 4
-    //   28: invokevirtual 115	android/os/Parcel:writeBundle	(Landroid/os/Bundle;)V
+    //   28: invokevirtual 93	android/os/Parcel:writeBundle	(Landroid/os/Bundle;)V
     //   31: aload_0
     //   32: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   35: bipush 16
@@ -836,12 +463,12 @@ class IAIOImageProvider$Stub$Proxy
     //   10: aload_1
     //   11: ifnull +68 -> 79
     //   14: aload_1
-    //   15: invokeinterface 122 1 0
+    //   15: invokeinterface 100 1 0
     //   20: astore_1
     //   21: goto +3 -> 24
     //   24: aload_2
     //   25: aload_1
-    //   26: invokevirtual 125	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   26: invokevirtual 103	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   29: aload_0
     //   30: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   33: iconst_4
@@ -859,7 +486,7 @@ class IAIOImageProvider$Stub$Proxy
     //   57: ldc 63
     //   59: iconst_2
     //   60: aload_1
-    //   61: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   61: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   64: aload_1
     //   65: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   68: aload_2
@@ -900,7 +527,7 @@ class IAIOImageProvider$Stub$Proxy
     //   10: aload_2
     //   11: aload_1
     //   12: iconst_0
-    //   13: invokevirtual 130	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   13: invokevirtual 108	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
     //   16: aload_0
     //   17: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   20: bipush 18
@@ -918,7 +545,7 @@ class IAIOImageProvider$Stub$Proxy
     //   45: ldc 63
     //   47: iconst_2
     //   48: aload_1
-    //   49: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   49: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   52: aload_1
     //   53: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   56: aload_2
@@ -951,7 +578,7 @@ class IAIOImageProvider$Stub$Proxy
     //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   10: aload_3
     //   11: aload_1
-    //   12: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   12: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   15: aload_3
     //   16: iload_2
     //   17: invokevirtual 39	android/os/Parcel:writeInt	(I)V
@@ -972,7 +599,7 @@ class IAIOImageProvider$Stub$Proxy
     //   49: ldc 63
     //   51: iconst_2
     //   52: aload_1
-    //   53: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   53: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   56: aload_1
     //   57: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   60: aload_3
@@ -995,117 +622,180 @@ class IAIOImageProvider$Stub$Proxy
     //   4	35	42	android/os/RemoteException
   }
   
-  /* Error */
-  public void a(long[] paramArrayOfLong)
-  {
-    // Byte code:
-    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 27
-    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_2
-    //   11: aload_1
-    //   12: arraylength
-    //   13: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   16: aload_2
-    //   17: aload_1
-    //   18: invokevirtual 135	android/os/Parcel:writeLongArray	([J)V
-    //   21: aload_0
-    //   22: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   25: bipush 20
-    //   27: aload_2
-    //   28: aconst_null
-    //   29: iconst_1
-    //   30: invokeinterface 45 5 0
-    //   35: pop
-    //   36: goto +25 -> 61
-    //   39: astore_1
-    //   40: goto +26 -> 66
-    //   43: astore_1
-    //   44: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   47: ifeq +14 -> 61
-    //   50: ldc 63
-    //   52: iconst_2
-    //   53: aload_1
-    //   54: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   57: aload_1
-    //   58: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   61: aload_2
-    //   62: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   65: return
-    //   66: aload_2
-    //   67: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   70: aload_1
-    //   71: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	72	0	this	Proxy
-    //   0	72	1	paramArrayOfLong	long[]
-    //   3	64	2	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	36	39	finally
-    //   44	61	39	finally
-    //   4	36	43	android/os/RemoteException
-  }
-  
   public IBinder asBinder()
   {
     return this.a;
   }
   
   /* Error */
-  public void b(long paramLong)
+  public android.content.Intent b(long paramLong, int paramInt)
   {
     // Byte code:
     //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 27
-    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: lload_1
-    //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
-    //   15: aload_0
-    //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   19: bipush 10
-    //   21: aload_3
-    //   22: aconst_null
-    //   23: iconst_1
-    //   24: invokeinterface 45 5 0
-    //   29: pop
-    //   30: goto +29 -> 59
-    //   33: astore 4
-    //   35: goto +29 -> 64
-    //   38: astore 4
-    //   40: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   43: ifeq +16 -> 59
-    //   46: ldc 63
-    //   48: iconst_2
-    //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   54: aload 4
-    //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   59: aload_3
-    //   60: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   63: return
-    //   64: aload_3
-    //   65: invokevirtual 55	android/os/Parcel:recycle	()V
-    //   68: aload 4
-    //   70: athrow
+    //   3: astore 6
+    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore 7
+    //   10: aconst_null
+    //   11: astore 5
+    //   13: aload 6
+    //   15: ldc 27
+    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload 6
+    //   22: lload_1
+    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   26: aload 6
+    //   28: iload_3
+    //   29: invokevirtual 39	android/os/Parcel:writeInt	(I)V
+    //   32: aload_0
+    //   33: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   36: iconst_5
+    //   37: aload 6
+    //   39: aload 7
+    //   41: iconst_0
+    //   42: invokeinterface 45 5 0
+    //   47: pop
+    //   48: aload 7
+    //   50: invokevirtual 48	android/os/Parcel:readException	()V
+    //   53: aload 5
+    //   55: astore 4
+    //   57: aload 7
+    //   59: invokevirtual 52	android/os/Parcel:readInt	()I
+    //   62: ifeq +55 -> 117
+    //   65: getstatic 119	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
+    //   68: aload 7
+    //   70: invokeinterface 125 2 0
+    //   75: checkcast 115	android/content/Intent
+    //   78: astore 4
+    //   80: goto +37 -> 117
+    //   83: astore 4
+    //   85: goto +45 -> 130
+    //   88: astore 8
+    //   90: aload 5
+    //   92: astore 4
+    //   94: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: ifeq +20 -> 117
+    //   100: ldc 63
+    //   102: iconst_2
+    //   103: aload 8
+    //   105: invokevirtual 126	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   108: aload 8
+    //   110: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   113: aload 5
+    //   115: astore 4
+    //   117: aload 7
+    //   119: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   122: aload 6
+    //   124: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   127: aload 4
+    //   129: areturn
+    //   130: aload 7
+    //   132: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   135: aload 6
+    //   137: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   140: aload 4
+    //   142: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	71	0	this	Proxy
-    //   0	71	1	paramLong	long
-    //   3	62	3	localParcel	android.os.Parcel
-    //   33	1	4	localObject	Object
-    //   38	31	4	localRemoteException	android.os.RemoteException
+    //   0	143	0	this	Proxy
+    //   0	143	1	paramLong	long
+    //   0	143	3	paramInt	int
+    //   55	24	4	localObject1	Object
+    //   83	1	4	localObject2	Object
+    //   92	49	4	localObject3	Object
+    //   11	103	5	localObject4	Object
+    //   3	133	6	localParcel1	android.os.Parcel
+    //   8	123	7	localParcel2	android.os.Parcel
+    //   88	21	8	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   4	30	33	finally
-    //   40	59	33	finally
-    //   4	30	38	android/os/RemoteException
+    //   13	53	83	finally
+    //   57	80	83	finally
+    //   94	113	83	finally
+    //   13	53	88	java/lang/Exception
+    //   57	80	88	java/lang/Exception
+  }
+  
+  /* Error */
+  public com.tencent.mobileqq.data.MessageForShortVideo b(long paramLong)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore 5
+    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore 6
+    //   10: aconst_null
+    //   11: astore 4
+    //   13: aload 5
+    //   15: ldc 27
+    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload 5
+    //   22: lload_1
+    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   26: aload_0
+    //   27: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   30: bipush 14
+    //   32: aload 5
+    //   34: aload 6
+    //   36: iconst_0
+    //   37: invokeinterface 45 5 0
+    //   42: pop
+    //   43: aload 6
+    //   45: invokevirtual 48	android/os/Parcel:readException	()V
+    //   48: aload 4
+    //   50: astore_3
+    //   51: aload 6
+    //   53: invokevirtual 52	android/os/Parcel:readInt	()I
+    //   56: ifeq +48 -> 104
+    //   59: getstatic 130	com/tencent/mobileqq/data/MessageForShortVideo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   62: aload 6
+    //   64: invokeinterface 125 2 0
+    //   69: checkcast 129	com/tencent/mobileqq/data/MessageForShortVideo
+    //   72: astore_3
+    //   73: goto +31 -> 104
+    //   76: astore_3
+    //   77: goto +39 -> 116
+    //   80: astore 7
+    //   82: aload 4
+    //   84: astore_3
+    //   85: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   88: ifeq +16 -> 104
+    //   91: ldc 63
+    //   93: iconst_2
+    //   94: ldc 81
+    //   96: aload 7
+    //   98: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   101: aload 4
+    //   103: astore_3
+    //   104: aload 6
+    //   106: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   109: aload 5
+    //   111: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   114: aload_3
+    //   115: areturn
+    //   116: aload 6
+    //   118: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   121: aload 5
+    //   123: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   126: aload_3
+    //   127: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	128	0	this	Proxy
+    //   0	128	1	paramLong	long
+    //   50	23	3	localObject1	Object
+    //   76	1	3	localObject2	Object
+    //   84	43	3	localObject3	Object
+    //   11	91	4	localObject4	Object
+    //   3	119	5	localParcel1	android.os.Parcel
+    //   8	109	6	localParcel2	android.os.Parcel
+    //   80	17	7	localRemoteException	android.os.RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   13	48	76	finally
+    //   51	73	76	finally
+    //   85	101	76	finally
+    //   13	48	80	android/os/RemoteException
+    //   51	73	80	android/os/RemoteException
   }
   
   /* Error */
@@ -1143,7 +833,7 @@ class IAIOImageProvider$Stub$Proxy
     //   62: ldc 63
     //   64: iconst_2
     //   65: aload 6
-    //   67: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   67: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   70: aload 6
     //   72: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   75: aload 5
@@ -1182,7 +872,7 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   15: aload_3
     //   16: aload_1
-    //   17: invokevirtual 100	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   17: invokevirtual 73	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   20: aload_3
     //   21: iload_2
     //   22: invokevirtual 39	android/os/Parcel:writeInt	(I)V
@@ -1204,7 +894,7 @@ class IAIOImageProvider$Stub$Proxy
     //   57: ifeq +12 -> 69
     //   60: ldc 63
     //   62: iconst_2
-    //   63: ldc 138
+    //   63: ldc 132
     //   65: aload_1
     //   66: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   69: aload 4
@@ -1233,6 +923,153 @@ class IAIOImageProvider$Stub$Proxy
   }
   
   /* Error */
+  public void b(long[] paramArrayOfLong)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 27
+    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_2
+    //   11: aload_1
+    //   12: arraylength
+    //   13: invokevirtual 39	android/os/Parcel:writeInt	(I)V
+    //   16: aload_2
+    //   17: aload_1
+    //   18: invokevirtual 136	android/os/Parcel:writeLongArray	([J)V
+    //   21: aload_0
+    //   22: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   25: bipush 20
+    //   27: aload_2
+    //   28: aconst_null
+    //   29: iconst_1
+    //   30: invokeinterface 45 5 0
+    //   35: pop
+    //   36: goto +25 -> 61
+    //   39: astore_1
+    //   40: goto +26 -> 66
+    //   43: astore_1
+    //   44: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: ifeq +14 -> 61
+    //   50: ldc 63
+    //   52: iconst_2
+    //   53: aload_1
+    //   54: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   57: aload_1
+    //   58: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   61: aload_2
+    //   62: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   65: return
+    //   66: aload_2
+    //   67: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   70: aload_1
+    //   71: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	72	0	this	Proxy
+    //   0	72	1	paramArrayOfLong	long[]
+    //   3	64	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	36	39	finally
+    //   44	61	39	finally
+    //   4	36	43	android/os/RemoteException
+  }
+  
+  /* Error */
+  public android.content.Intent c(long paramLong, int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore 7
+    //   5: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore 8
+    //   10: aconst_null
+    //   11: astore 6
+    //   13: aload 7
+    //   15: ldc 27
+    //   17: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload 7
+    //   22: lload_1
+    //   23: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   26: aload 7
+    //   28: iload_3
+    //   29: invokevirtual 39	android/os/Parcel:writeInt	(I)V
+    //   32: aload 7
+    //   34: iload 4
+    //   36: invokevirtual 39	android/os/Parcel:writeInt	(I)V
+    //   39: aload_0
+    //   40: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   43: bipush 9
+    //   45: aload 7
+    //   47: aload 8
+    //   49: iconst_0
+    //   50: invokeinterface 45 5 0
+    //   55: pop
+    //   56: aload 8
+    //   58: invokevirtual 48	android/os/Parcel:readException	()V
+    //   61: aload 6
+    //   63: astore 5
+    //   65: aload 8
+    //   67: invokevirtual 52	android/os/Parcel:readInt	()I
+    //   70: ifeq +55 -> 125
+    //   73: getstatic 119	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
+    //   76: aload 8
+    //   78: invokeinterface 125 2 0
+    //   83: checkcast 115	android/content/Intent
+    //   86: astore 5
+    //   88: goto +37 -> 125
+    //   91: astore 5
+    //   93: goto +45 -> 138
+    //   96: astore 9
+    //   98: aload 6
+    //   100: astore 5
+    //   102: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   105: ifeq +20 -> 125
+    //   108: ldc 63
+    //   110: iconst_2
+    //   111: aload 9
+    //   113: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   116: aload 9
+    //   118: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: aload 6
+    //   123: astore 5
+    //   125: aload 7
+    //   127: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   130: aload 8
+    //   132: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   135: aload 5
+    //   137: areturn
+    //   138: aload 7
+    //   140: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   143: aload 8
+    //   145: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   148: aload 5
+    //   150: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	151	0	this	Proxy
+    //   0	151	1	paramLong	long
+    //   0	151	3	paramInt1	int
+    //   0	151	4	paramInt2	int
+    //   63	24	5	localObject1	Object
+    //   91	1	5	localObject2	Object
+    //   100	49	5	localObject3	Object
+    //   11	111	6	localObject4	Object
+    //   3	136	7	localParcel1	android.os.Parcel
+    //   8	136	8	localParcel2	android.os.Parcel
+    //   96	21	9	localRemoteException	android.os.RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   13	61	91	finally
+    //   65	88	91	finally
+    //   102	121	91	finally
+    //   13	61	96	android/os/RemoteException
+    //   65	88	96	android/os/RemoteException
+  }
+  
+  /* Error */
   public void c()
   {
     // Byte code:
@@ -1258,7 +1095,7 @@ class IAIOImageProvider$Stub$Proxy
     //   39: ldc 63
     //   41: iconst_2
     //   42: aload_2
-    //   43: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   43: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   46: aload_2
     //   47: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   50: aload_1
@@ -1295,7 +1132,7 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
     //   15: aload_0
     //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   19: bipush 11
+    //   19: bipush 17
     //   21: aload_3
     //   22: aconst_null
     //   23: iconst_1
@@ -1310,7 +1147,7 @@ class IAIOImageProvider$Stub$Proxy
     //   46: ldc 63
     //   48: iconst_2
     //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   54: aload 4
     //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   59: aload_3
@@ -1335,6 +1172,63 @@ class IAIOImageProvider$Stub$Proxy
   }
   
   /* Error */
+  public void c(long paramLong, int paramInt)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore 4
+    //   5: aload 4
+    //   7: ldc 27
+    //   9: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   12: aload 4
+    //   14: lload_1
+    //   15: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   18: aload 4
+    //   20: iload_3
+    //   21: invokevirtual 39	android/os/Parcel:writeInt	(I)V
+    //   24: aload_0
+    //   25: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   28: bipush 7
+    //   30: aload 4
+    //   32: aconst_null
+    //   33: iconst_1
+    //   34: invokeinterface 45 5 0
+    //   39: pop
+    //   40: goto +29 -> 69
+    //   43: astore 5
+    //   45: goto +30 -> 75
+    //   48: astore 5
+    //   50: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   53: ifeq +16 -> 69
+    //   56: ldc 63
+    //   58: iconst_2
+    //   59: aload 5
+    //   61: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   64: aload 5
+    //   66: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   69: aload 4
+    //   71: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   74: return
+    //   75: aload 4
+    //   77: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   80: aload 5
+    //   82: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	Proxy
+    //   0	83	1	paramLong	long
+    //   0	83	3	paramInt	int
+    //   3	73	4	localParcel	android.os.Parcel
+    //   43	1	5	localObject	Object
+    //   48	33	5	localRemoteException	android.os.RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   5	40	43	finally
+    //   50	69	43	finally
+    //   5	40	48	android/os/RemoteException
+  }
+  
+  /* Error */
   public void d(long paramLong)
   {
     // Byte code:
@@ -1348,7 +1242,7 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
     //   15: aload_0
     //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   19: bipush 24
+    //   19: bipush 10
     //   21: aload_3
     //   22: aconst_null
     //   23: iconst_1
@@ -1363,7 +1257,7 @@ class IAIOImageProvider$Stub$Proxy
     //   46: ldc 63
     //   48: iconst_2
     //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   54: aload 4
     //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   59: aload_3
@@ -1401,7 +1295,7 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
     //   15: aload_0
     //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
-    //   19: bipush 26
+    //   19: bipush 11
     //   21: aload_3
     //   22: aconst_null
     //   23: iconst_1
@@ -1416,7 +1310,7 @@ class IAIOImageProvider$Stub$Proxy
     //   46: ldc 63
     //   48: iconst_2
     //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   54: aload 4
     //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   59: aload_3
@@ -1454,6 +1348,112 @@ class IAIOImageProvider$Stub$Proxy
     //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
     //   15: aload_0
     //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   19: bipush 24
+    //   21: aload_3
+    //   22: aconst_null
+    //   23: iconst_1
+    //   24: invokeinterface 45 5 0
+    //   29: pop
+    //   30: goto +29 -> 59
+    //   33: astore 4
+    //   35: goto +29 -> 64
+    //   38: astore 4
+    //   40: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   43: ifeq +16 -> 59
+    //   46: ldc 63
+    //   48: iconst_2
+    //   49: aload 4
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   54: aload 4
+    //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   59: aload_3
+    //   60: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   63: return
+    //   64: aload_3
+    //   65: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   68: aload 4
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	this	Proxy
+    //   0	71	1	paramLong	long
+    //   3	62	3	localParcel	android.os.Parcel
+    //   33	1	4	localObject	Object
+    //   38	31	4	localRemoteException	android.os.RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	33	finally
+    //   40	59	33	finally
+    //   4	30	38	android/os/RemoteException
+  }
+  
+  /* Error */
+  public void g(long paramLong)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 27
+    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: lload_1
+    //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   15: aload_0
+    //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
+    //   19: bipush 26
+    //   21: aload_3
+    //   22: aconst_null
+    //   23: iconst_1
+    //   24: invokeinterface 45 5 0
+    //   29: pop
+    //   30: goto +29 -> 59
+    //   33: astore 4
+    //   35: goto +29 -> 64
+    //   38: astore 4
+    //   40: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   43: ifeq +16 -> 59
+    //   46: ldc 63
+    //   48: iconst_2
+    //   49: aload 4
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   54: aload 4
+    //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   59: aload_3
+    //   60: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   63: return
+    //   64: aload_3
+    //   65: invokevirtual 55	android/os/Parcel:recycle	()V
+    //   68: aload 4
+    //   70: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	71	0	this	Proxy
+    //   0	71	1	paramLong	long
+    //   3	62	3	localParcel	android.os.Parcel
+    //   33	1	4	localObject	Object
+    //   38	31	4	localRemoteException	android.os.RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	33	finally
+    //   40	59	33	finally
+    //   4	30	38	android/os/RemoteException
+  }
+  
+  /* Error */
+  public void h(long paramLong)
+  {
+    // Byte code:
+    //   0: invokestatic 25	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ldc 27
+    //   7: invokevirtual 31	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_3
+    //   11: lload_1
+    //   12: invokevirtual 35	android/os/Parcel:writeLong	(J)V
+    //   15: aload_0
+    //   16: getfield 15	com/tencent/mobileqq/activity/aio/photo/IAIOImageProvider$Stub$Proxy:a	Landroid/os/IBinder;
     //   19: bipush 13
     //   21: aload_3
     //   22: aconst_null
@@ -1469,7 +1469,7 @@ class IAIOImageProvider$Stub$Proxy
     //   46: ldc 63
     //   48: iconst_2
     //   49: aload 4
-    //   51: invokevirtual 90	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   51: invokevirtual 84	android/os/RemoteException:getMessage	()Ljava/lang/String;
     //   54: aload 4
     //   56: invokestatic 69	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   59: aload_3
@@ -1495,7 +1495,7 @@ class IAIOImageProvider$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

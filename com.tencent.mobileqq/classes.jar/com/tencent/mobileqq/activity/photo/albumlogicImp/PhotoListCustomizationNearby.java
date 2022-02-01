@@ -23,12 +23,12 @@ public class PhotoListCustomizationNearby
     super(paramAbstractPhotoListActivity);
   }
   
-  private boolean a(LocalMediaInfo paramLocalMediaInfo)
+  private boolean h(LocalMediaInfo paramLocalMediaInfo)
   {
     if ((paramLocalMediaInfo.mediaWidth >= 320) && (paramLocalMediaInfo.mediaHeight >= 320)) {
       return true;
     }
-    paramLocalMediaInfo = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, 230, null, HardCodeUtil.a(2131708093), HardCodeUtil.a(2131708077), null, null, new PhotoListCustomizationNearby.1(this));
+    paramLocalMediaInfo = DialogUtil.a(this.c, 230, null, HardCodeUtil.a(2131905891), HardCodeUtil.a(2131905876), null, null, new PhotoListCustomizationNearby.1(this));
     try
     {
       paramLocalMediaInfo.show();
@@ -42,25 +42,20 @@ public class PhotoListCustomizationNearby
     return false;
   }
   
-  public Intent a(View paramView, int paramInt)
-  {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.getItemViewType(paramInt) == 0) && (!a(localLocalMediaInfo))) {
-      return null;
-    }
-    return super.a(paramView, paramInt);
-  }
-  
-  public String a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    return HardCodeUtil.a(2131694389);
-  }
-  
   public void a(View paramView, int paramInt, CheckBox paramCheckBox)
   {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.a(paramInt))) {
+    if (h(this.h.t.a(paramInt))) {
       super.a(paramView, paramInt, paramCheckBox);
     }
+  }
+  
+  public Intent b(View paramView, int paramInt)
+  {
+    LocalMediaInfo localLocalMediaInfo = this.h.t.a(paramInt);
+    if ((this.h.t.getItemViewType(paramInt) == 0) && (!h(localLocalMediaInfo))) {
+      return null;
+    }
+    return super.b(paramView, paramInt);
   }
   
   public void b(Intent paramIntent)
@@ -69,10 +64,15 @@ public class PhotoListCustomizationNearby
       super.b(paramIntent);
     }
   }
+  
+  public String c(LocalMediaInfo paramLocalMediaInfo)
+  {
+    return HardCodeUtil.a(2131892068);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationNearby
  * JD-Core Version:    0.7.0.1
  */

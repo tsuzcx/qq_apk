@@ -31,14 +31,14 @@ public final class ScreenshotContentObserver$ScreenShotPath
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory());
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(HardCodeUtil.a(2131713507));
+    localStringBuilder.append(HardCodeUtil.a(2131911057));
     localStringBuilder.append(File.separator);
     c = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ScreenshotContentObserver.ScreenShotPath
  * JD-Core Version:    0.7.0.1
  */

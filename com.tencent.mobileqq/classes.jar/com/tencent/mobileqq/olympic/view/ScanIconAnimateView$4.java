@@ -11,13 +11,13 @@ class ScanIconAnimateView$4
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * AIOUtils.b(1.5F, this.a.getResources()));
+    this.a.h = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * AIOUtils.b(1.5F, this.a.getResources()));
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.view.ScanIconAnimateView.4
  * JD-Core Version:    0.7.0.1
  */

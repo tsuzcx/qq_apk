@@ -16,12 +16,12 @@ public class MystoryListView$FakeVideoCreateRec
   
   public void a(@NonNull MystoryListView paramMystoryListView, @NonNull StoryVideoUploadManager.CreateFakeVideoEvent paramCreateFakeVideoEvent)
   {
-    paramMystoryListView.q();
-    paramCreateFakeVideoEvent = (FeedSegment)paramMystoryListView.a("FeedSegment");
+    paramMystoryListView.s();
+    paramCreateFakeVideoEvent = (FeedSegment)paramMystoryListView.b("FeedSegment");
     if (paramCreateFakeVideoEvent != null) {
-      paramCreateFakeVideoEvent.j();
+      paramCreateFakeVideoEvent.n();
     }
-    paramMystoryListView = (NewMyStorySegment)paramMystoryListView.a("NewMyStorySegment");
+    paramMystoryListView = (NewMyStorySegment)paramMystoryListView.b("NewMyStorySegment");
     if (paramMystoryListView != null) {
       paramMystoryListView.a(false);
     }

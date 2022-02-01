@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nwi" android:background="@drawable/eim" android:layout_width="88.0dip" android:layout_height="170.5dip"
+<RelativeLayout android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="@dimen/n_" android:layout_marginTop="7.5dip" android:layout_marginBottom="7.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:text="@string/xky" />
-</LinearLayout>
+    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/na9" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="8.0dip" />
+    <TextView android:textSize="@dimen/aw5" android:textStyle="bold" android:textColor="@color/black" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/naa" android:layout_width="wrap_content" android:layout_height="20.0dip" android:singleLine="true" android:layout_toRightOf="@id/na9" android:layout_alignTop="@id/na9" />
+    <TextView android:textSize="@dimen/aw3" android:textStyle="bold" android:textColor="#99000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/na_" android:layout_width="wrap_content" android:layout_height="@dimen/aw6" android:singleLine="true" android:layout_toRightOf="@id/na9" android:layout_alignBottom="@id/na9" />
+</RelativeLayout>

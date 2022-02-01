@@ -14,9 +14,9 @@ class StoryMemoriesFragment$2$2
   public void b(int paramInt)
   {
     super.b(paramInt);
-    boolean bool1 = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-    boolean bool2 = StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip;
-    int i = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+    boolean bool1 = QQStoryContext.a().c(StoryMemoriesFragment.b(this.a.b).c.qq);
+    boolean bool2 = StoryMemoriesFragment.b(this.a.b).c.isVip;
+    int i = StoryMemoriesFragment.a(StoryMemoriesFragment.b(this.a.b).a);
     String str2 = "1";
     String str1;
     if (bool1) {
@@ -33,7 +33,7 @@ class StoryMemoriesFragment$2$2
   public void d()
   {
     super.d();
-    StoryMemoriesFragment.a(this.a.a, null);
+    StoryMemoriesFragment.a(this.a.b, null);
   }
 }
 

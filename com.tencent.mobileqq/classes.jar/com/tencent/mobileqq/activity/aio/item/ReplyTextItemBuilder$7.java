@@ -19,18 +19,18 @@ class ReplyTextItemBuilder$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
+    if ((this.b.f.a == 1) && (((TroopGagMgr)this.b.d.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.b.f.b, true).b) && ((this.b.e instanceof BaseActivity)))
     {
-      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697407, 0).b(paramDialogInterface.getTitleBarHeight());
+      paramDialogInterface = (BaseActivity)this.b.e;
+      QQToast.makeText(this.b.d.getApp(), 2131895180, 0).show(paramDialogInterface.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
+    this.b.d.getMessageFacade().b(this.a, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ class FileBrowserActivity$2
       }
       paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
       paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-      if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c())) {
-        return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
+      if ((paramFloat1 <= -this.a) && (paramFloat2 < 0.5F) && (this.b.d != null) && (this.b.d.e())) {
+        return this.b.onBackEvent();
       }
     }
     return false;
@@ -26,7 +26,7 @@ class FileBrowserActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.2
  * JD-Core Version:    0.7.0.1
  */

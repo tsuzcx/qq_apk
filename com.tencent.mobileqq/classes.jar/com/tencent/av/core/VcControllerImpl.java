@@ -74,6 +74,13 @@ public class VcControllerImpl
     sIsSpecialDevice = bool;
   }
   
+  public VcControllerImpl()
+  {
+    this.mSysInfo = null;
+    this.mAppId = null;
+    this.mJniSimpleInfo = null;
+  }
+  
   public VcControllerImpl(Context paramContext, String paramString, IDavNetChannel paramIDavNetChannel, IVideoEventListener paramIVideoEventListener)
   {
     QavEngineAssistant.a();
@@ -131,13 +138,13 @@ public class VcControllerImpl
         this.mEventListener.a(paramString, new String(paramArrayOfByte));
         return;
       case 6: 
-        this.mEventListener.e(new String(paramArrayOfByte));
+        this.mEventListener.k(new String(paramArrayOfByte));
         return;
       case 5: 
-        this.mEventListener.f(new String(paramArrayOfByte));
+        this.mEventListener.l(new String(paramArrayOfByte));
         return;
       case 4: 
-        this.mEventListener.d(new String(paramArrayOfByte));
+        this.mEventListener.j(new String(paramArrayOfByte));
         return;
       case 2: 
         this.mEventListener.a(paramArrayOfByte);
@@ -155,7 +162,7 @@ public class VcControllerImpl
   {
     try
     {
-      paramString = SharedPreferencesProxyManager.getInstance().getProxy(VideoConstants.b, 4);
+      paramString = SharedPreferencesProxyManager.getInstance().getProxy(VideoConstants.d, 4);
       localObject1 = paramString.getAll();
       if ((localObject1 != null) && (((Map)localObject1).size() > 0))
       {
@@ -187,7 +194,7 @@ public class VcControllerImpl
           QLog.e("VcControllerImpl", 2, paramString.toString());
         }
       }
-      boolean bool = SharedPreferencesProxyManager.getInstance().getProxy(VideoConstants.jdField_a_of_type_JavaLangString, 4).edit().clear().commit();
+      boolean bool = SharedPreferencesProxyManager.getInstance().getProxy(VideoConstants.c, 4).edit().clear().commit();
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -239,7 +246,7 @@ public class VcControllerImpl
     }
     try
     {
-      paramLong = CharacterUtil.a(paramString);
+      paramLong = CharacterUtil.b(paramString);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -272,7 +279,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return acceptVideoMode(l);
     }
     catch (NumberFormatException paramString)
@@ -281,6 +288,16 @@ public class VcControllerImpl
       AVLog.printErrorLog("VcControllerImpl", paramString.getMessage());
     }
     return -1;
+  }
+  
+  public int callSuperSendAVAvatar2DMsg(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    return super.sendAVAvatar2DMsg(paramLong, paramArrayOfByte, paramBoolean);
+  }
+  
+  public int callSuperSendAVAvatar2DSwitchRequest(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    return super.sendAVAvatar2DSwitchRequest(paramLong, paramBoolean, paramInt1, paramInt2, paramString);
   }
   
   public int cancelVideoMode(String paramString)
@@ -295,7 +312,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return cancelVideoMode(l);
     }
     catch (NumberFormatException paramString)
@@ -322,9 +339,9 @@ public class VcControllerImpl
     }
     try
     {
-      long l1 = CharacterUtil.a(???);
-      if (AudioDump.a()) {
-        AudioDump.a().c();
+      long l1 = CharacterUtil.b(???);
+      if (AudioDump.c()) {
+        AudioDump.a().e();
       }
       int i = 0;
       if ((paramCloseVideoTimeoutCallback != null) && (sIsSpecialDevice))
@@ -455,7 +472,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return getChatRoomID(l);
     }
     catch (NumberFormatException paramString)
@@ -482,7 +499,7 @@ public class VcControllerImpl
       if ("enable_reconnect".equals(paramString))
       {
         localObject3 = localObject4;
-        localObject1 = String.valueOf(QavRecordDpc.a().o);
+        localObject1 = String.valueOf(QavRecordDpc.a().p);
       }
       else
       {
@@ -490,7 +507,7 @@ public class VcControllerImpl
         if ("reconnect_timeout".equals(paramString))
         {
           localObject3 = localObject4;
-          localObject1 = String.valueOf(QavRecordDpc.a().p);
+          localObject1 = String.valueOf(QavRecordDpc.a().q);
         }
         else
         {
@@ -577,7 +594,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return getInterestingString(l);
     }
     catch (NumberFormatException paramString)
@@ -617,6 +634,33 @@ public class VcControllerImpl
     return this.mJniSimpleInfo.a(paramString, false, true);
   }
   
+  public long handleAndParseUin(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleAndParseUin-> uin is ");
+      ((StringBuilder)localObject).append(paramString);
+      AVLog.printErrorLog("VcControllerImpl", ((StringBuilder)localObject).toString());
+      return -1L;
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("+")) {
+      localObject = paramString.substring(1);
+    }
+    try
+    {
+      long l = CharacterUtil.b((String)localObject);
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+      AVLog.printErrorLog("VcControllerImpl", paramString.getMessage());
+    }
+    return -1L;
+  }
+  
   public int ignoreVideo(String paramString, int paramInt)
   {
     String str = paramString;
@@ -629,7 +673,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       setApType(paramInt);
       paramInt = ignore(l);
       setCarrierType(l);
@@ -676,7 +720,7 @@ public class VcControllerImpl
   
   public void loadLibrary()
   {
-    AVSoUtils.b();
+    AVSoUtils.l();
   }
   
   public int notifyAnotherSelfIsRing(String paramString, boolean paramBoolean)
@@ -691,7 +735,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return notifyAnotherSelfIsRing(l, paramBoolean);
     }
     catch (NumberFormatException paramString)
@@ -771,7 +815,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       setApType(paramInt1);
       paramInt1 = reject(l, paramInt2);
       setCarrierType(l);
@@ -797,7 +841,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return rejectVideoMode(l);
     }
     catch (NumberFormatException paramString)
@@ -840,7 +884,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString1);
+      long l = CharacterUtil.b(paramString1);
       setApType(paramInt1);
       if (paramInt3 == 1) {
         paramInt1 = 0;
@@ -888,7 +932,7 @@ public class VcControllerImpl
     {
       try
       {
-        paramLong1 = CharacterUtil.a(paramString1);
+        paramLong1 = CharacterUtil.b(paramString1);
         l1 = Long.parseLong(paramString5);
         l2 = Long.parseLong(paramString6);
         setApType(paramInt1);
@@ -1047,7 +1091,7 @@ public class VcControllerImpl
     }
     try
     {
-      paramLong1 = CharacterUtil.a(paramString1);
+      paramLong1 = CharacterUtil.b(paramString1);
       long l1 = Long.parseLong(paramString5);
       long l2 = Long.parseLong(paramString6);
       setApType(paramInt1);
@@ -1148,7 +1192,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return requestVideoMode(l);
     }
     catch (NumberFormatException paramString)
@@ -1162,6 +1206,30 @@ public class VcControllerImpl
   public int resumeVideo(String paramString)
   {
     return startVideoSend();
+  }
+  
+  public int sendAVAvatar2DSwitchRequest(String paramString1, boolean paramBoolean, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendAVAvatar2DSwitchRequest, uin=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", enable=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", width=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", height=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", materialID=");
+      localStringBuilder.append(paramString2);
+      QLog.d("VcControllerImpl", 2, localStringBuilder.toString());
+    }
+    long l = handleAndParseUin(paramString1);
+    if (l == -1L) {
+      return -1;
+    }
+    return callSuperSendAVAvatar2DSwitchRequest(l, paramBoolean, paramInt1, paramInt2, paramString2);
   }
   
   public int sendAVFunChatMsg(String paramString1, int paramInt, String paramString2)
@@ -1186,7 +1254,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a((String)localObject);
+      long l = CharacterUtil.b((String)localObject);
       return sendAVFunChatMsg(l, paramInt, paramString2.getBytes());
     }
     catch (NumberFormatException paramString1)
@@ -1231,6 +1299,24 @@ public class VcControllerImpl
       }
     }
     return -1;
+  }
+  
+  public int sendAvatar2DMsg(String paramString, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendAvatar2DMsg, uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", data=");
+      localStringBuilder.append(paramArrayOfByte);
+      QLog.d("VcControllerImpl", 2, localStringBuilder.toString());
+    }
+    long l = handleAndParseUin(paramString);
+    if (l == -1L) {
+      return -1;
+    }
+    return callSuperSendAVAvatar2DMsg(l, paramArrayOfByte, false);
   }
   
   public void sendTransferMsg(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -1342,7 +1428,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return switchAudio(l);
     }
     catch (NumberFormatException paramString)
@@ -1366,7 +1452,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return switchVideo(l);
     }
     catch (NumberFormatException paramString)
@@ -1423,10 +1509,10 @@ public class VcControllerImpl
     m = localObject1[1];
     n = localObject1[0];
     paramArrayOfByte = new VcControllerImpl.DeviceCMDTLV(this);
-    paramArrayOfByte.jdField_a_of_type_Long = ((l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8 | (0xFF & l8) << 0);
-    paramArrayOfByte.jdField_a_of_type_JavaLangString = ((String)localObject2);
-    paramArrayOfByte.jdField_a_of_type_Int = i;
-    paramArrayOfByte.b = (j & 0xFF | (k & 0xFF) << 8 | (m & 0xFF) << 16 | (n & 0xFF) << 24);
+    paramArrayOfByte.a = ((l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8 | (0xFF & l8) << 0);
+    paramArrayOfByte.d = ((String)localObject2);
+    paramArrayOfByte.b = i;
+    paramArrayOfByte.c = (j & 0xFF | (k & 0xFF) << 8 | (m & 0xFF) << 16 | (n & 0xFF) << 24);
     return paramArrayOfByte;
   }
   
@@ -1442,7 +1528,7 @@ public class VcControllerImpl
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return setSelfUin(l);
     }
     catch (NumberFormatException paramString)

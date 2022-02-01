@@ -17,7 +17,7 @@ class ZipResCheckHandler$1
     int i = 1;
     if (bool)
     {
-      String str3 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelZipRes.url;
+      String str3 = this.a.url;
       String str2 = "null";
       String str1;
       if (paramPathResult == null) {
@@ -38,14 +38,14 @@ class ZipResCheckHandler$1
     if (paramPathResult == null) {
       i = 0;
     }
-    if (((paramInt & i) != 0) && (!StringUtil.a(paramPathResult.filePath)) && (!StringUtil.a(paramPathResult.folderPath))) {
-      ZipResCheckHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryZipResCheckHandler, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelZipRes.url, false);
+    if (((paramInt & i) != 0) && (!StringUtil.isEmpty(paramPathResult.filePath)) && (!StringUtil.isEmpty(paramPathResult.folderPath))) {
+      ZipResCheckHandler.a(this.b, this.a.url, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ZipResCheckHandler.1
  * JD-Core Version:    0.7.0.1
  */

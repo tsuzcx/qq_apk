@@ -6,8 +6,8 @@ import com.tencent.mobileqq.ark.config.config.DialogConfig;
 public class ArkAIKeyWordConfBean
   extends ArkConfBean
 {
-  private final AiKeywordConfig jdField_a_of_type_ComTencentMobileqqArkConfigConfigAiKeywordConfig;
-  private final DialogConfig jdField_a_of_type_ComTencentMobileqqArkConfigConfigDialogConfig;
+  private final AiKeywordConfig b;
+  private final DialogConfig c;
   
   public ArkAIKeyWordConfBean()
   {
@@ -17,8 +17,8 @@ public class ArkAIKeyWordConfBean
   public ArkAIKeyWordConfBean(String paramString, AiKeywordConfig paramAiKeywordConfig, DialogConfig paramDialogConfig)
   {
     super(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqArkConfigConfigAiKeywordConfig = paramAiKeywordConfig;
-    this.jdField_a_of_type_ComTencentMobileqqArkConfigConfigDialogConfig = paramDialogConfig;
+    this.b = paramAiKeywordConfig;
+    this.c = paramDialogConfig;
   }
   
   public int a()
@@ -26,19 +26,19 @@ public class ArkAIKeyWordConfBean
     return 186;
   }
   
-  public AiKeywordConfig a()
+  public AiKeywordConfig b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArkConfigConfigAiKeywordConfig;
+    return this.b;
   }
   
-  public DialogConfig a()
+  public DialogConfig c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArkConfigConfigDialogConfig;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.bean.ArkAIKeyWordConfBean
  * JD-Core Version:    0.7.0.1
  */

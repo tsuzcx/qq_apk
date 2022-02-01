@@ -23,32 +23,32 @@ class HomeFeedPlayPageLoader$1
   {
     if ((!paramErrorMessage.isFail()) && (paramGetStoryFeedIdListResponse != null))
     {
-      HomeFeedPlayPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader.b.a(paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetStoryFeedIdListResponse.jdField_a_of_type_Boolean);
-      ((FeedManager)SuperManager.a(11)).a(paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaUtilList);
+      HomeFeedPlayPageLoader.a(this.b);
+      this.b.c.a(paramGetStoryFeedIdListResponse.e, paramGetStoryFeedIdListResponse.b, paramGetStoryFeedIdListResponse.a);
+      ((FeedManager)SuperManager.a(11)).c(paramGetStoryFeedIdListResponse.e);
       AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
       boolean bool = HomeFeedListPageLoader.FeedIdPullSegment.a(paramGetStoryFeedIdListResponse, localAtomicBoolean);
-      SLog.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramGetStoryFeedIdListResponse.b), Integer.valueOf(HomeFeedPlayPageLoader.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader)), Boolean.valueOf(bool) });
-      if ((!paramGetStoryFeedIdListResponse.jdField_a_of_type_Boolean) && (HomeFeedPlayPageLoader.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader) < 10) && ((!paramGetStoryFeedIdListResponse.b) || (bool)))
+      SLog.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramGetStoryFeedIdListResponse.f), Integer.valueOf(HomeFeedPlayPageLoader.b(this.b)), Boolean.valueOf(bool) });
+      if ((!paramGetStoryFeedIdListResponse.a) && (HomeFeedPlayPageLoader.b(this.b) < 10) && ((!paramGetStoryFeedIdListResponse.f) || (bool)))
       {
         SLog.d("Q.qqstory.player.data.HomeFeedPlayPageLoader", "feedId list not end, pull more");
-        paramGetStoryFeedIdListRequest.b = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader.b.a();
+        paramGetStoryFeedIdListRequest.f = this.b.c.c();
         CmdTaskManger.a().a(paramGetStoryFeedIdListRequest, this);
         return;
       }
       if (localAtomicBoolean.getAndSet(false)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHomeFeedPlayPageLoader.b.c();
+        this.b.c.d();
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaUtilList), paramGetStoryFeedIdListResponse.jdField_a_of_type_Boolean);
+      this.a.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetStoryFeedIdListResponse.e), paramGetStoryFeedIdListResponse.a);
       return;
     }
     SLog.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
+    this.a.a(paramErrorMessage, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.HomeFeedPlayPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

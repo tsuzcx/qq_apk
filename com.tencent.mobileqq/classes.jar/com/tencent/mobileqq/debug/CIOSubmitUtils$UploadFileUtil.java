@@ -7,181 +7,181 @@ import org.json.JSONObject;
 
 public class CIOSubmitUtils$UploadFileUtil
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentLinkedQueue<String[]> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  Context a;
   String b;
+  String c;
+  JSONObject d;
+  private ConcurrentHashMap<String, String> e = new ConcurrentHashMap();
+  private ConcurrentLinkedQueue<String[]> f = new ConcurrentLinkedQueue();
   
   public CIOSubmitUtils$UploadFileUtil()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("username", "JLLLCKCOAODOBJFK");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("password", "ALFLMLILPLBJFK");
+    this.e.put("username", "JLLLCKCOAODOBJFK");
+    this.e.put("password", "ALFLMLILPLBJFK");
   }
   
   public CIOSubmitUtils$UploadFileUtil(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   /* Error */
   public String a()
   {
     // Byte code:
-    //   0: invokestatic 54	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isNetSupport	()Z
+    //   0: invokestatic 58	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isNetSupport	()Z
     //   3: ifne +5 -> 8
     //   6: aconst_null
     //   7: areturn
-    //   8: new 56	java/net/URL
+    //   8: new 60	java/net/URL
     //   11: dup
-    //   12: ldc 58
-    //   14: invokespecial 61	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   17: invokevirtual 65	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   20: checkcast 67	java/net/HttpURLConnection
+    //   12: ldc 62
+    //   14: invokespecial 65	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   17: invokevirtual 69	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   20: checkcast 71	java/net/HttpURLConnection
     //   23: astore 5
     //   25: aload 5
-    //   27: ldc 69
-    //   29: ldc 71
-    //   31: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: ldc 73
+    //   29: ldc 75
+    //   31: invokevirtual 79	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   34: aload 5
-    //   36: ldc 77
-    //   38: ldc 79
-    //   40: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: ldc 81
+    //   38: ldc 83
+    //   40: invokevirtual 79	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload 5
     //   45: iconst_1
-    //   46: invokevirtual 83	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   46: invokevirtual 87	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   49: aload 5
     //   51: iconst_1
-    //   52: invokevirtual 86	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   52: invokevirtual 90	java/net/HttpURLConnection:setDoInput	(Z)V
     //   55: aload 5
     //   57: iconst_0
-    //   58: invokevirtual 89	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   58: invokevirtual 93	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   61: aload 5
-    //   63: ldc 91
-    //   65: invokevirtual 94	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   63: ldc 95
+    //   65: invokevirtual 98	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   68: aload 5
-    //   70: invokevirtual 98	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   70: invokevirtual 102	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   73: astore 7
-    //   75: new 100	java/lang/StringBuffer
+    //   75: new 104	java/lang/StringBuffer
     //   78: dup
-    //   79: ldc 102
-    //   81: invokespecial 103	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   79: ldc 106
+    //   81: invokespecial 107	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   84: astore 4
-    //   86: new 105	java/lang/StringBuilder
+    //   86: new 109	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   90: invokespecial 110	java/lang/StringBuilder:<init>	()V
     //   93: astore 6
     //   95: aload 6
-    //   97: ldc 108
-    //   99: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: ldc 112
+    //   99: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   102: pop
     //   103: aload 6
-    //   105: ldc 114
-    //   107: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: ldc 118
+    //   107: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
     //   111: aload 6
-    //   113: ldc 116
-    //   115: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc 120
+    //   115: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload 6
-    //   121: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   124: astore 8
     //   126: aload_0
-    //   127: getfield 22	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   127: getfield 26	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:e	Ljava/util/concurrent/ConcurrentHashMap;
     //   130: astore 6
     //   132: aload 6
     //   134: ifnull +128 -> 262
     //   137: aload_0
-    //   138: getfield 22	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   141: invokevirtual 123	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   144: invokeinterface 129 1 0
+    //   138: getfield 26	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:e	Ljava/util/concurrent/ConcurrentHashMap;
+    //   141: invokevirtual 127	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   144: invokeinterface 133 1 0
     //   149: astore 6
     //   151: aload 6
-    //   153: invokeinterface 134 1 0
+    //   153: invokeinterface 138 1 0
     //   158: ifeq +104 -> 262
     //   161: aload 6
-    //   163: invokeinterface 138 1 0
-    //   168: checkcast 140	java/lang/String
+    //   163: invokeinterface 142 1 0
+    //   168: checkcast 144	java/lang/String
     //   171: astore 9
     //   173: aload_0
-    //   174: getfield 22	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   174: getfield 26	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:e	Ljava/util/concurrent/ConcurrentHashMap;
     //   177: aload 9
-    //   179: invokevirtual 144	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   182: checkcast 140	java/lang/String
+    //   179: invokevirtual 148	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   182: checkcast 144	java/lang/String
     //   185: astore 10
     //   187: aload 4
-    //   189: ldc 146
-    //   191: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   189: ldc 150
+    //   191: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   194: pop
     //   195: aload 4
     //   197: aload 9
-    //   199: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   199: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   202: pop
     //   203: aload 4
-    //   205: ldc 151
-    //   207: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   205: ldc 155
+    //   207: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   210: pop
     //   211: aload 4
-    //   213: ldc 102
-    //   215: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   213: ldc 106
+    //   215: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   218: pop
     //   219: aload 4
     //   221: aload 10
-    //   223: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   223: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   226: pop
     //   227: aload 4
-    //   229: ldc 102
-    //   231: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   229: ldc 106
+    //   231: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   234: pop
     //   235: aload 4
-    //   237: ldc 153
-    //   239: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   237: ldc 157
+    //   239: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   242: pop
     //   243: aload 4
-    //   245: ldc 114
-    //   247: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   245: ldc 118
+    //   247: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   250: pop
     //   251: aload 4
-    //   253: ldc 102
-    //   255: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   253: ldc 106
+    //   255: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   258: pop
     //   259: goto -108 -> 151
     //   262: aload 4
-    //   264: invokevirtual 154	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   264: invokevirtual 158	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   267: astore 4
-    //   269: new 105	java/lang/StringBuilder
+    //   269: new 109	java/lang/StringBuilder
     //   272: dup
-    //   273: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   273: invokespecial 110	java/lang/StringBuilder:<init>	()V
     //   276: astore 6
     //   278: aload 6
-    //   280: ldc 153
-    //   282: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: ldc 157
+    //   282: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: pop
     //   286: aload 6
-    //   288: ldc 114
-    //   290: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: ldc 118
+    //   290: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: pop
     //   294: aload 6
     //   296: aload 4
-    //   298: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   301: pop
     //   302: aload 7
     //   304: aload 6
-    //   306: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   309: ldc 156
-    //   311: invokevirtual 160	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   314: invokevirtual 166	java/io/OutputStream:write	([B)V
-    //   317: new 100	java/lang/StringBuffer
+    //   306: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   309: ldc 160
+    //   311: invokevirtual 164	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   314: invokevirtual 170	java/io/OutputStream:write	([B)V
+    //   317: new 104	java/lang/StringBuffer
     //   320: dup
-    //   321: invokespecial 167	java/lang/StringBuffer:<init>	()V
+    //   321: invokespecial 171	java/lang/StringBuffer:<init>	()V
     //   324: astore 9
     //   326: aload_0
-    //   327: getfield 27	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   327: getfield 31	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:f	Ljava/util/concurrent/ConcurrentLinkedQueue;
     //   330: ifnull +289 -> 619
     //   333: aload_0
-    //   334: getfield 27	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   337: invokevirtual 171	java/util/concurrent/ConcurrentLinkedQueue:size	()I
+    //   334: getfield 31	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:f	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   337: invokevirtual 175	java/util/concurrent/ConcurrentLinkedQueue:size	()I
     //   340: istore_2
     //   341: iconst_0
     //   342: istore_1
@@ -191,9 +191,9 @@ public class CIOSubmitUtils$UploadFileUtil
     //   347: iload_2
     //   348: if_icmpge +268 -> 616
     //   351: aload_0
-    //   352: getfield 27	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   355: invokevirtual 174	java/util/concurrent/ConcurrentLinkedQueue:poll	()Ljava/lang/Object;
-    //   358: checkcast 176	[Ljava/lang/String;
+    //   352: getfield 31	com/tencent/mobileqq/debug/CIOSubmitUtils$UploadFileUtil:f	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   355: invokevirtual 178	java/util/concurrent/ConcurrentLinkedQueue:poll	()Ljava/lang/Object;
+    //   358: checkcast 180	[Ljava/lang/String;
     //   361: astore 12
     //   363: aload 12
     //   365: iconst_0
@@ -212,60 +212,60 @@ public class CIOSubmitUtils$UploadFileUtil
     //   384: aaload
     //   385: astore 12
     //   387: aload 9
-    //   389: ldc 146
-    //   391: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   389: ldc 150
+    //   391: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   394: pop
     //   395: aload 9
     //   397: aload 6
-    //   399: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   399: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   402: pop
     //   403: aload 9
-    //   405: ldc 178
-    //   407: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   405: ldc 182
+    //   407: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   410: pop
     //   411: aload 9
     //   413: aload 10
-    //   415: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   415: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   418: pop
     //   419: aload 9
-    //   421: ldc 151
-    //   423: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   421: ldc 155
+    //   423: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   426: pop
     //   427: aload 9
-    //   429: ldc 180
-    //   431: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   429: ldc 184
+    //   431: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   434: pop
     //   435: aload 9
     //   437: aload 11
-    //   439: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   439: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   442: pop
     //   443: aload 9
-    //   445: ldc 182
-    //   447: invokevirtual 149	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   445: ldc 186
+    //   447: invokevirtual 153	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   450: pop
     //   451: aload 7
     //   453: aload 9
-    //   455: invokevirtual 154	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   458: ldc 156
-    //   460: invokevirtual 160	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   463: invokevirtual 166	java/io/OutputStream:write	([B)V
-    //   466: new 184	java/io/DataInputStream
+    //   455: invokevirtual 158	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   458: ldc 160
+    //   460: invokevirtual 164	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   463: invokevirtual 170	java/io/OutputStream:write	([B)V
+    //   466: new 188	java/io/DataInputStream
     //   469: dup
-    //   470: new 186	java/io/FileInputStream
+    //   470: new 190	java/io/FileInputStream
     //   473: dup
-    //   474: new 188	java/io/File
+    //   474: new 192	java/io/File
     //   477: dup
     //   478: aload 12
-    //   480: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
-    //   483: invokespecial 192	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   486: invokespecial 195	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   480: invokespecial 193	java/io/File:<init>	(Ljava/lang/String;)V
+    //   483: invokespecial 196	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   486: invokespecial 199	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   489: astore 6
     //   491: sipush 5120
     //   494: newarray byte
     //   496: astore 4
     //   498: aload 6
     //   500: aload 4
-    //   502: invokevirtual 199	java/io/DataInputStream:read	([B)I
+    //   502: invokevirtual 203	java/io/DataInputStream:read	([B)I
     //   505: istore_3
     //   506: iload_3
     //   507: iconst_m1
@@ -274,7 +274,7 @@ public class CIOSubmitUtils$UploadFileUtil
     //   513: aload 4
     //   515: iconst_0
     //   516: iload_3
-    //   517: invokevirtual 202	java/io/OutputStream:write	([BII)V
+    //   517: invokevirtual 206	java/io/OutputStream:write	([BII)V
     //   520: goto -22 -> 498
     //   523: iload_1
     //   524: iload_2
@@ -283,11 +283,11 @@ public class CIOSubmitUtils$UploadFileUtil
     //   527: if_icmpge +15 -> 542
     //   530: aload 7
     //   532: aload 8
-    //   534: ldc 156
-    //   536: invokevirtual 160	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   539: invokevirtual 166	java/io/OutputStream:write	([B)V
+    //   534: ldc 160
+    //   536: invokevirtual 164	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   539: invokevirtual 170	java/io/OutputStream:write	([B)V
     //   542: aload 6
-    //   544: invokevirtual 205	java/io/DataInputStream:close	()V
+    //   544: invokevirtual 209	java/io/DataInputStream:close	()V
     //   547: iload_1
     //   548: iconst_1
     //   549: iadd
@@ -326,33 +326,33 @@ public class CIOSubmitUtils$UploadFileUtil
     //   620: astore 4
     //   622: aload 7
     //   624: aload 8
-    //   626: ldc 156
-    //   628: invokevirtual 160	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   631: invokevirtual 166	java/io/OutputStream:write	([B)V
+    //   626: ldc 160
+    //   628: invokevirtual 164	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   631: invokevirtual 170	java/io/OutputStream:write	([B)V
     //   634: aload 7
-    //   636: invokevirtual 206	java/io/OutputStream:close	()V
+    //   636: invokevirtual 210	java/io/OutputStream:close	()V
     //   639: aload 5
-    //   641: invokevirtual 209	java/net/HttpURLConnection:getResponseCode	()I
+    //   641: invokevirtual 213	java/net/HttpURLConnection:getResponseCode	()I
     //   644: istore_1
-    //   645: new 105	java/lang/StringBuilder
+    //   645: new 109	java/lang/StringBuilder
     //   648: dup
-    //   649: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   649: invokespecial 110	java/lang/StringBuilder:<init>	()V
     //   652: astore 6
     //   654: aload 6
-    //   656: ldc 211
-    //   658: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   656: ldc 215
+    //   658: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   661: pop
     //   662: aload 6
     //   664: iload_1
-    //   665: invokevirtual 214	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   665: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   668: pop
-    //   669: ldc 216
+    //   669: ldc 220
     //   671: iconst_2
     //   672: aload 6
-    //   674: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   677: invokestatic 222	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   674: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   677: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   680: aload 5
-    //   682: invokevirtual 226	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   682: invokevirtual 229	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   685: astore 9
     //   687: aload 9
     //   689: astore 7
@@ -360,9 +360,9 @@ public class CIOSubmitUtils$UploadFileUtil
     //   693: astore 6
     //   695: aload 4
     //   697: astore 8
-    //   699: new 100	java/lang/StringBuffer
+    //   699: new 104	java/lang/StringBuffer
     //   702: dup
-    //   703: invokespecial 167	java/lang/StringBuffer:<init>	()V
+    //   703: invokespecial 171	java/lang/StringBuffer:<init>	()V
     //   706: astore 10
     //   708: aload 9
     //   710: astore 7
@@ -371,7 +371,7 @@ public class CIOSubmitUtils$UploadFileUtil
     //   716: aload 4
     //   718: astore 8
     //   720: aload 9
-    //   722: invokevirtual 230	java/io/InputStream:read	()I
+    //   722: invokevirtual 233	java/io/InputStream:read	()I
     //   725: istore_1
     //   726: iload_1
     //   727: iconst_m1
@@ -385,7 +385,7 @@ public class CIOSubmitUtils$UploadFileUtil
     //   743: aload 10
     //   745: iload_1
     //   746: i2c
-    //   747: invokevirtual 233	java/lang/StringBuffer:append	(C)Ljava/lang/StringBuffer;
+    //   747: invokevirtual 236	java/lang/StringBuffer:append	(C)Ljava/lang/StringBuffer;
     //   750: pop
     //   751: goto -43 -> 708
     //   754: aload 9
@@ -394,10 +394,10 @@ public class CIOSubmitUtils$UploadFileUtil
     //   760: astore 6
     //   762: aload 4
     //   764: astore 8
-    //   766: ldc 235
+    //   766: ldc 238
     //   768: aload 10
-    //   770: invokevirtual 154	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   773: invokestatic 241	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
+    //   770: invokevirtual 158	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   773: invokestatic 244	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   776: pop
     //   777: aload 9
     //   779: astore 7
@@ -406,25 +406,25 @@ public class CIOSubmitUtils$UploadFileUtil
     //   785: aload 4
     //   787: astore 8
     //   789: aload 10
-    //   791: invokevirtual 154	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   791: invokevirtual 158	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   794: astore 10
     //   796: aload 4
     //   798: ifnull +11 -> 809
     //   801: aload 4
-    //   803: invokevirtual 205	java/io/DataInputStream:close	()V
+    //   803: invokevirtual 209	java/io/DataInputStream:close	()V
     //   806: goto +3 -> 809
     //   809: aload 9
     //   811: ifnull +8 -> 819
     //   814: aload 9
-    //   816: invokevirtual 242	java/io/InputStream:close	()V
+    //   816: invokevirtual 245	java/io/InputStream:close	()V
     //   819: aload 5
     //   821: ifnull +16 -> 837
     //   824: aload 5
-    //   826: invokevirtual 245	java/net/HttpURLConnection:disconnect	()V
+    //   826: invokevirtual 248	java/net/HttpURLConnection:disconnect	()V
     //   829: aload 10
     //   831: areturn
     //   832: aload 4
-    //   834: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   834: invokevirtual 251	java/lang/Exception:printStackTrace	()V
     //   837: aload 10
     //   839: areturn
     //   840: astore 10
@@ -475,23 +475,23 @@ public class CIOSubmitUtils$UploadFileUtil
     //   930: aload 4
     //   932: astore 8
     //   934: aload 10
-    //   936: invokevirtual 249	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   936: invokevirtual 252	java/lang/OutOfMemoryError:printStackTrace	()V
     //   939: aload 4
     //   941: ifnull +11 -> 952
     //   944: aload 4
-    //   946: invokevirtual 205	java/io/DataInputStream:close	()V
+    //   946: invokevirtual 209	java/io/DataInputStream:close	()V
     //   949: goto +3 -> 952
     //   952: aload 9
     //   954: ifnull +8 -> 962
     //   957: aload 9
-    //   959: invokevirtual 242	java/io/InputStream:close	()V
+    //   959: invokevirtual 245	java/io/InputStream:close	()V
     //   962: aload 5
     //   964: ifnull +16 -> 980
     //   967: aload 5
-    //   969: invokevirtual 245	java/net/HttpURLConnection:disconnect	()V
+    //   969: invokevirtual 248	java/net/HttpURLConnection:disconnect	()V
     //   972: goto +8 -> 980
     //   975: aload 4
-    //   977: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   977: invokevirtual 251	java/lang/Exception:printStackTrace	()V
     //   980: aconst_null
     //   981: areturn
     //   982: astore 10
@@ -508,23 +508,23 @@ public class CIOSubmitUtils$UploadFileUtil
     //   1001: aload 4
     //   1003: astore 8
     //   1005: aload 10
-    //   1007: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   1007: invokevirtual 251	java/lang/Exception:printStackTrace	()V
     //   1010: aload 4
     //   1012: ifnull +11 -> 1023
     //   1015: aload 4
-    //   1017: invokevirtual 205	java/io/DataInputStream:close	()V
+    //   1017: invokevirtual 209	java/io/DataInputStream:close	()V
     //   1020: goto +3 -> 1023
     //   1023: aload 9
     //   1025: ifnull +8 -> 1033
     //   1028: aload 9
-    //   1030: invokevirtual 242	java/io/InputStream:close	()V
+    //   1030: invokevirtual 245	java/io/InputStream:close	()V
     //   1033: aload 5
     //   1035: ifnull +16 -> 1051
     //   1038: aload 5
-    //   1040: invokevirtual 245	java/net/HttpURLConnection:disconnect	()V
+    //   1040: invokevirtual 248	java/net/HttpURLConnection:disconnect	()V
     //   1043: goto +8 -> 1051
     //   1046: aload 4
-    //   1048: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   1048: invokevirtual 251	java/lang/Exception:printStackTrace	()V
     //   1051: aconst_null
     //   1052: areturn
     //   1053: astore 5
@@ -539,19 +539,19 @@ public class CIOSubmitUtils$UploadFileUtil
     //   1071: aload 4
     //   1073: ifnull +11 -> 1084
     //   1076: aload 4
-    //   1078: invokevirtual 205	java/io/DataInputStream:close	()V
+    //   1078: invokevirtual 209	java/io/DataInputStream:close	()V
     //   1081: goto +3 -> 1084
     //   1084: aload 7
     //   1086: ifnull +8 -> 1094
     //   1089: aload 7
-    //   1091: invokevirtual 242	java/io/InputStream:close	()V
+    //   1091: invokevirtual 245	java/io/InputStream:close	()V
     //   1094: aload 5
     //   1096: ifnull +16 -> 1112
     //   1099: aload 5
-    //   1101: invokevirtual 245	java/net/HttpURLConnection:disconnect	()V
+    //   1101: invokevirtual 248	java/net/HttpURLConnection:disconnect	()V
     //   1104: goto +8 -> 1112
     //   1107: aload 4
-    //   1109: invokevirtual 248	java/lang/Exception:printStackTrace	()V
+    //   1109: invokevirtual 251	java/lang/Exception:printStackTrace	()V
     //   1112: goto +6 -> 1118
     //   1115: aload 6
     //   1117: athrow
@@ -686,13 +686,13 @@ public class CIOSubmitUtils$UploadFileUtil
       if (paramString.length() == 0) {
         return;
       }
-      int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size();
+      int i = this.f.size();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("file");
       ((StringBuilder)localObject).append(i);
       localObject = ((StringBuilder)localObject).toString();
       String str = paramString.substring(paramString.lastIndexOf("/") + 1);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new String[] { localObject, str, "application/x-zip-compressed", paramString });
+      this.f.add(new String[] { localObject, str, "application/x-zip-compressed", paramString });
     }
   }
   
@@ -703,24 +703,24 @@ public class CIOSubmitUtils$UploadFileUtil
       if (paramString2.length() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
+      this.e.put(paramString1, paramString2);
     }
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.d = paramJSONObject;
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = "27182818284590452353602874713526";
+    this.b = paramString;
+    this.c = "27182818284590452353602874713526";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils.UploadFileUtil
  * JD-Core Version:    0.7.0.1
  */

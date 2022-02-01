@@ -36,9 +36,9 @@ import java.util.List;
 public class ProxyManager
   extends QProxyManager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MessageRecordEntityManager jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager = null;
-  private boolean jdField_a_of_type_Boolean = true;
+  MessageRecordEntityManager a = null;
+  private QQAppInterface b;
+  private boolean c = true;
   
   @Deprecated
   public ProxyManager() {}
@@ -46,37 +46,22 @@ public class ProxyManager
   public ProxyManager(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
     a(paramQQAppInterface);
   }
   
-  private MessageRecordEntityManager a()
+  private MessageRecordEntityManager k()
   {
-    MessageRecordEntityManager localMessageRecordEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
+    MessageRecordEntityManager localMessageRecordEntityManager = this.a;
     if ((localMessageRecordEntityManager == null) || (!localMessageRecordEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager = ((MessageRecordEntityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().a());
+      this.a = ((MessageRecordEntityManager)this.b.getEntityManagerFactory().b());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
-  }
-  
-  public BaseMsgProxy a()
-  {
-    return (BaseMsgProxy)getProxy(1);
-  }
-  
-  public ConversationProxy a()
-  {
-    return (ConversationProxy)getProxy(11);
+    return this.a;
   }
   
   public MsgProxyContainer a()
   {
     return (MsgProxyContainer)getProxy(0);
-  }
-  
-  public MultiMsgProxy a()
-  {
-    return (MultiMsgProxy)getProxy(2);
   }
   
   public DataLineMsgProxy a(int paramInt)
@@ -89,37 +74,6 @@ public class ProxyManager
     DataLineMsgProxy localDataLineMsgProxy = (DataLineMsgProxy)getProxy(paramInt);
     localDataLineMsgProxy.init();
     return localDataLineMsgProxy;
-  }
-  
-  public MpfileTaskProxy a()
-  {
-    return (MpfileTaskProxy)getProxy(5);
-  }
-  
-  @Deprecated
-  public RecentUserProxy a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy();
-  }
-  
-  public ConfessProxy a()
-  {
-    return (ConfessProxy)getProxy(13);
-  }
-  
-  public FileManagerProxy a()
-  {
-    return (FileManagerProxy)getProxy(6);
-  }
-  
-  public QCallProxy a()
-  {
-    return (QCallProxy)getProxy(12);
-  }
-  
-  public TroopFileDataBaseProxy a()
-  {
-    return (TroopFileDataBaseProxy)getProxy(7);
   }
   
   public List<MessageRecord> a(MsgQueueItem paramMsgQueueItem, boolean paramBoolean)
@@ -155,7 +109,7 @@ public class ProxyManager
           }
           try
           {
-            paramMsgQueueItem = a().a((String)localObject1, paramMsgQueueItem.tableName, paramMsgQueueItem.whereClause, (String[])localObject2);
+            paramMsgQueueItem = k().a((String)localObject1, paramMsgQueueItem.tableName, paramMsgQueueItem.whereClause, (String[])localObject2);
             if (paramMsgQueueItem == null) {
               return paramMsgQueueItem;
             }
@@ -211,6 +165,11 @@ public class ProxyManager
     ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).updateReadinjoyStopFunctionSwtichReal();
   }
   
+  public MultiMsgProxy b()
+  {
+    return (MultiMsgProxy)getProxy(2);
+  }
+  
   protected long beforeQueueActionInTransSaveToDatabase(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (paramBoolean2))
@@ -236,10 +195,10 @@ public class ProxyManager
   protected void beforeTrans()
   {
     super.beforeTrans();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      Object localObject = (IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "");
-      if ((((IFTSDBRuntimeService)localObject).getEnable()) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      Object localObject = (IFTSDBRuntimeService)this.b.getRuntimeService(IFTSDBRuntimeService.class, "");
+      if ((((IFTSDBRuntimeService)localObject).getEnable()) && (SQLiteFTSUtils.a(this.b)))
       {
         if (((IFTSDBRuntimeService)localObject).hasInit())
         {
@@ -247,13 +206,23 @@ public class ProxyManager
           if (localObject != null) {
             ((IFTSMsgInterface)localObject).b();
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.c = false;
         }
       }
       else {
-        this.jdField_a_of_type_Boolean = false;
+        this.c = false;
       }
     }
+  }
+  
+  public BaseMsgProxy c()
+  {
+    return (BaseMsgProxy)getProxy(1);
+  }
+  
+  public MpfileTaskProxy d()
+  {
+    return (MpfileTaskProxy)getProxy(5);
   }
   
   public void doAddMsgQueue(String paramString1, int paramInt1, String paramString2, Entity paramEntity, int paramInt2, ProxyListener paramProxyListener)
@@ -277,13 +246,13 @@ public class ProxyManager
   protected void doAfterTransSaveToDatabase()
   {
     super.doAfterTransSaveToDatabase();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().e();
+    this.b.getMsgCache().t();
   }
   
   protected long doMessageActionDel(EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, long paramLong, MsgQueueItem paramMsgQueueItem, String paramString, ProxyListener paramProxyListener)
   {
-    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "");
-    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.b.getRuntimeService(IFTSDBRuntimeService.class, "");
+    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.b)) && (SQLiteFTSUtils.d(this.b))) {
       ((IFTSMsgInterface)localIFTSDBRuntimeService.getOperator(1)).b(paramMsgQueueItem, paramEntityManager, a(paramMsgQueueItem, true));
     }
     paramLong = super.doMessageActionDel(paramEntityManager, paramBoolean1, paramBoolean2, paramLong, paramMsgQueueItem, paramString, paramProxyListener);
@@ -306,12 +275,12 @@ public class ProxyManager
   
   protected long doMessageActionInsert(EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, long paramLong, MsgQueueItem paramMsgQueueItem, String paramString, ProxyListener paramProxyListener)
   {
-    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "");
-    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.b.getRuntimeService(IFTSDBRuntimeService.class, "");
+    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.b)) && (SQLiteFTSUtils.d(this.b))) {
       ((IFTSMsgInterface)localIFTSDBRuntimeService.getOperator(1)).a(paramMsgQueueItem.item);
     }
     paramLong = super.doMessageActionInsert(paramEntityManager, paramBoolean1, paramBoolean2, paramLong, paramMsgQueueItem, paramString, paramProxyListener);
-    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.b)) && (SQLiteFTSUtils.d(this.b))) {
       ((IFTSMsgInterface)localIFTSDBRuntimeService.getOperator(1)).a(paramMsgQueueItem.item, paramEntityManager);
     }
     if ((paramBoolean1) && (StatisticCollector.getSqliteSwitchBySample(4)))
@@ -333,8 +302,8 @@ public class ProxyManager
   
   protected long doMessageActionUpdate(EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2, MsgQueueItem paramMsgQueueItem, String paramString, ProxyListener paramProxyListener)
   {
-    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "");
-    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+    IFTSDBRuntimeService localIFTSDBRuntimeService = (IFTSDBRuntimeService)this.b.getRuntimeService(IFTSDBRuntimeService.class, "");
+    if ((localIFTSDBRuntimeService.getEnable()) && (SQLiteFTSUtils.a(this.b)) && (SQLiteFTSUtils.d(this.b))) {
       ((IFTSMsgInterface)localIFTSDBRuntimeService.getOperator(1)).a(paramMsgQueueItem, paramEntityManager, a(paramMsgQueueItem, false));
     }
     paramLong1 = super.doMessageActionUpdate(paramEntityManager, paramBoolean1, paramBoolean2, paramLong1, paramLong2, paramMsgQueueItem, paramString, paramProxyListener);
@@ -353,6 +322,11 @@ public class ProxyManager
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSqliteOptDetailCost", true, paramLong1, 0L, paramMsgQueueItem, null, false);
     }
     return paramLong1;
+  }
+  
+  public FileManagerProxy e()
+  {
+    return (FileManagerProxy)getProxy(6);
   }
   
   protected void endTrans(EntityTransaction paramEntityTransaction, boolean paramBoolean1, boolean paramBoolean2, long paramLong, int paramInt1, int paramInt2)
@@ -379,16 +353,42 @@ public class ProxyManager
     }
   }
   
+  public TroopFileDataBaseProxy f()
+  {
+    return (TroopFileDataBaseProxy)getProxy(7);
+  }
+  
+  @Deprecated
+  public RecentUserProxy g()
+  {
+    return this.b.getRecentUserProxy();
+  }
+  
   protected int getSaveInDBState()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.a();
+    return this.b.mAutomator.f();
+  }
+  
+  public ConversationProxy h()
+  {
+    return (ConversationProxy)getProxy(11);
+  }
+  
+  public QCallProxy i()
+  {
+    return (QCallProxy)getProxy(12);
+  }
+  
+  public ConfessProxy j()
+  {
+    return (ConfessProxy)getProxy(13);
   }
   
   public void onDestroy()
   {
     try
     {
-      ((IFTSDBRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFTSDBRuntimeService.class, "")).onDestroy();
+      ((IFTSDBRuntimeService)this.b.getRuntimeService(IFTSDBRuntimeService.class, "")).onDestroy();
       super.onDestroy();
       return;
     }
@@ -401,7 +401,7 @@ public class ProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.ProxyManager
  * JD-Core Version:    0.7.0.1
  */

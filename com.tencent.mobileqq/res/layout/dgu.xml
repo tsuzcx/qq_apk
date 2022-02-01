@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/n0" android:paddingRight="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@drawable/h1m" android:layout_width="@dimen/ni" android:layout_height="@dimen/ni" android:layout_marginTop="7.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:id="@id/n3e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="需要访问你通过当前QQ帐号使用的王者荣耀游戏服务时生成的游戏帐户基本信息、游戏行为数据、游戏偏好数据" android:lineSpacingExtra="@dimen/ni" android:lineSpacingMultiplier="0.8" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/n0" android:paddingRight="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+        <View android:background="@drawable/h1m" android:layout_width="@dimen/ni" android:layout_height="@dimen/ni" android:layout_marginTop="7.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:id="@id/n3f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="如拒绝授权，你可能无法参与或使用扩列场景内部分内容和功能" android:lineSpacingExtra="@dimen/ni" android:lineSpacingMultiplier="0.8" />
+    </LinearLayout>
+</LinearLayout>

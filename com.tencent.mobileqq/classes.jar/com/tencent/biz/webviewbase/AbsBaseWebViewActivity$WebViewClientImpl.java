@@ -41,10 +41,43 @@ class AbsBaseWebViewActivity$WebViewClientImpl
   
   private AbsBaseWebViewActivity$WebViewClientImpl(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
   
+  private String a(String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramString.startsWith("https://jsbridge/")) {
+        return paramString.replace("https://jsbridge/", "jsbridge://");
+      }
+      str = paramString;
+      if (paramString.startsWith("http://jsbridge/")) {
+        str = paramString.replace("http://jsbridge/", "jsbridge://");
+      }
+    }
+    return str;
+  }
+  
+  private void b(WebView paramWebView, String paramString)
+  {
+    paramString = Uri.parse(paramString);
+    String str = paramString.getScheme();
+    if ((this.b.isResume()) && ((System.currentTimeMillis() - this.b.mLastTouchTime < 1000L) || (this.b.authConfig.d(paramWebView.getUrl(), str).booleanValue())))
+    {
+      paramWebView = new Intent("android.intent.action.VIEW", paramString);
+      paramWebView.addFlags(268435456);
+    }
+    try
+    {
+      this.b.startActivity(paramWebView);
+      return;
+    }
+    catch (ActivityNotFoundException paramWebView) {}
+  }
+  
   protected WebResourceResponse a(WebView paramWebView, String paramString)
   {
     if ((AbsBaseWebViewActivity.access$000(this.b) != null) && (AbsBaseWebViewActivity.access$000(this.b).a(paramString))) {
-      return AbsBaseWebViewActivity.access$000(this.b).a(paramString);
+      return AbsBaseWebViewActivity.access$000(this.b).b(paramString);
     }
     WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
     Object localObject2 = null;
@@ -296,78 +329,67 @@ class AbsBaseWebViewActivity$WebViewClientImpl
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    Object localObject2 = paramString;
     if ((!this.b.isDestroyed) && (!this.b.isFinishing()))
     {
+      Object localObject1;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("shouldOverrideUrlLoading:");
-        ((StringBuilder)localObject1).append(Util.b((String)localObject2, new String[0]));
+        ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
         QLog.d("WebLog_WebViewBase", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramString)) {
-        if (((String)localObject2).startsWith("https://jsbridge/"))
-        {
-          localObject1 = ((String)localObject2).replace("https://jsbridge/", "jsbridge://");
-        }
-        else
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).startsWith("http://jsbridge/")) {
-            localObject1 = ((String)localObject2).replace("http://jsbridge/", "jsbridge://");
-          }
-        }
-      }
-      BaseOpenWebMonitor.b(this.b.getIntent(), (String)localObject1);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"about:blank;".equals(localObject1)))
+      paramString = a(paramString);
+      BaseOpenWebMonitor.b(this.b.getIntent(), paramString);
+      if ((!TextUtils.isEmpty(paramString)) && (!"about:blank;".equals(paramString)))
       {
-        if ("about:blank".equals(localObject1)) {
+        if ("about:blank".equals(paramString)) {
           return true;
         }
-        paramString = SwiftWebViewUtils.b((String)localObject1);
-        if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!((String)localObject1).contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-          CustomWebView.addContextLog(Util.b((String)localObject1, new String[0]));
+        localObject1 = SwiftWebViewUtils.b(paramString);
+        if ((("http".equals(localObject1)) || ("data".equals(localObject1))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+          CustomWebView.addContextLog(Util.b(paramString, new String[0]));
         }
         try
         {
-          bool = "http".equals(paramString);
-          if ((bool) || ("https".equals(paramString)))
+          boolean bool = "http".equals(localObject1);
+          if ((bool) || ("https".equals(localObject1)))
           {
             localObject2 = paramWebView.getHitTestResult();
             if ((localObject2 != null) && (((WebView.HitTestResult)localObject2).getType() == 0))
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("shouldOverrideUrlLoading detect 302, url: ");
-              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(paramString);
               QLog.i("WebLog_WebViewBase", 1, ((StringBuilder)localObject2).toString());
-              this.b.mRedirect302Url = ((String)localObject1);
+              this.b.mRedirect302Url = paramString;
               SwiftBrowserCookieMonster.d();
-              this.b.mStatistics.e((String)localObject1);
+              this.b.mStatistics.e(paramString);
             }
           }
-          localObject2 = ((CustomWebView)paramWebView).getPluginEngine();
-          if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a((String)localObject1))) {
+          Object localObject2 = ((CustomWebView)paramWebView).getPluginEngine();
+          if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a(paramString))) {
             return true;
           }
-          if (this.b.shouldOverrideUrlLoading(paramWebView, (String)localObject1)) {
+          if (this.b.shouldOverrideUrlLoading(paramWebView, paramString)) {
             return true;
           }
-          if ((!"http".equals(paramString)) && (!"https".equals(paramString)) && (!"data".equals(paramString)) && (!"file".equals(paramString)))
+          if ((!"http".equals(localObject1)) && (!"https".equals(localObject1)) && (!"data".equals(localObject1)) && (!"file".equals(localObject1)))
           {
-            paramString = Uri.parse((String)localObject1);
-            localObject1 = paramString.getScheme();
-            if ((!this.b.isResume()) || ((System.currentTimeMillis() - this.b.mLastTouchTime >= 1000L) && (!this.b.authConfig.a(paramWebView.getUrl(), (String)localObject1).booleanValue()))) {
-              break label601;
-            }
-            paramWebView = new Intent("android.intent.action.VIEW", paramString);
-            paramWebView.addFlags(268435456);
+            b(paramWebView, paramString);
+            return true;
           }
+          if (localObject2 != null)
+          {
+            bool = ((WebViewPluginEngine)localObject2).a(paramString, 16L, null);
+            if (bool) {
+              return true;
+            }
+          }
+          return false;
         }
         catch (RuntimeException paramWebView)
         {
-          boolean bool;
           paramString = QLog.getStackTraceString(paramWebView);
           if (paramString.length() > 255) {
             paramWebView = paramString.substring(0, 255);
@@ -378,31 +400,15 @@ class AbsBaseWebViewActivity$WebViewClientImpl
           QLog.e("WebLog_WebViewBase", 1, paramString);
         }
       }
-    }
-    try
-    {
-      this.b.startActivity(paramWebView);
       return true;
     }
-    catch (ActivityNotFoundException paramWebView) {}
-    if (localObject2 != null)
-    {
-      bool = ((WebViewPluginEngine)localObject2).a((String)localObject1, 16L, null);
-      if (bool) {
-        return true;
-      }
-    }
-    return false;
-    label601:
-    return true;
     QLog.e("WebLog_WebViewBase", 1, "call shouldOverrideUrlLoading after destroy.");
-    return true;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

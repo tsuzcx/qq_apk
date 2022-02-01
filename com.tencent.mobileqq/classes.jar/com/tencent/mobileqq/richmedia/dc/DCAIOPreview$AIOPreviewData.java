@@ -7,69 +7,69 @@ import java.util.HashMap;
 class DCAIOPreview$AIOPreviewData
   extends DataAdapter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String d;
+  private int a;
+  private long b;
+  private int c;
+  private boolean d;
+  private boolean e;
+  private long f;
+  private String g;
+  private String h;
+  private String i;
+  private boolean j;
+  private String k;
   
   private void a()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_Long = Math.max((SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / 1000L, this.jdField_a_of_type_Long);
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_b_of_type_Boolean = false;
+      this.b = Math.max((SystemClock.uptimeMillis() - this.f) / 1000L, this.b);
+      this.f = 0L;
+      this.e = false;
     }
   }
   
   private void b()
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
-      this.jdField_a_of_type_Int = 1;
+    if ((this.e) && (this.a == 0)) {
+      this.a = 1;
     }
   }
   
   public HashMap<String, String> a(String paramString)
   {
-    if (this.jdField_b_of_type_Int <= 0)
+    if (this.c <= 0)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.i(DataCollector.jdField_a_of_type_JavaLangString, 4, "View count is 0!");
+        QLog.i(DataCollector.a, 4, "View count is 0!");
       }
       return null;
     }
     if ("Pic.AioPreview".equals(paramString))
     {
       paramString = new HashMap();
-      paramString.put("stay_seconds", String.valueOf(this.jdField_a_of_type_Long));
-      paramString.put("gesture_double_click", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("view_count", String.valueOf(this.jdField_b_of_type_Int));
-      paramString.put("send_type", this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Boolean) {
+      paramString.put("stay_seconds", String.valueOf(this.b));
+      paramString.put("gesture_double_click", String.valueOf(this.a));
+      paramString.put("view_count", String.valueOf(this.c));
+      paramString.put("send_type", this.g);
+      if (this.d) {
         paramString.put("view_again", "1");
       }
-      String str = this.jdField_b_of_type_JavaLangString;
+      String str = this.h;
       if (str != null) {
         paramString.put("size_type", str);
       }
-      str = this.jdField_c_of_type_JavaLangString;
+      str = this.i;
       if (str != null) {
         paramString.put("format_type", str);
       }
       return paramString;
     }
-    if (("Pic.AioPreview.Preload".equals(paramString)) && (this.d != null))
+    if (("Pic.AioPreview.Preload".equals(paramString)) && (this.k != null))
     {
       paramString = new HashMap();
-      paramString.put("preload_status", String.valueOf(this.jdField_c_of_type_Boolean));
-      paramString.put("preload_fail_filetype", this.d);
+      paramString.put("preload_status", String.valueOf(this.j));
+      paramString.put("preload_fail_filetype", this.k);
       return paramString;
     }
     return null;
@@ -77,7 +77,7 @@ class DCAIOPreview$AIOPreviewData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCAIOPreview.AIOPreviewData
  * JD-Core Version:    0.7.0.1
  */

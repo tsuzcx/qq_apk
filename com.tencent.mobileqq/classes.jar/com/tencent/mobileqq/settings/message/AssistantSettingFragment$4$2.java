@@ -13,17 +13,17 @@ class AssistantSettingFragment$4$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$4.a.getBaseActivity(), 2131695323, 1).a();
+    QQToast.makeText(this.b.a.getBaseActivity(), 2131893058, 1).show();
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).startRecord(this.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$4.a.getBaseActivity(), "AssistantSettingFragment", this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeServiceCallBack);
+    ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).startRecord(this.b.a.getBaseActivity(), "AssistantSettingFragment", this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.4.2
  * JD-Core Version:    0.7.0.1
  */

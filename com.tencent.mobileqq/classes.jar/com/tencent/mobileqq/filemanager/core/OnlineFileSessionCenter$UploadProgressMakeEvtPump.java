@@ -5,7 +5,7 @@ import java.util.Timer;
 
 class OnlineFileSessionCenter$UploadProgressMakeEvtPump
 {
-  private Timer jdField_a_of_type_JavaUtilTimer = null;
+  private Timer b = null;
   
   private OnlineFileSessionCenter$UploadProgressMakeEvtPump(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
@@ -13,12 +13,12 @@ class OnlineFileSessionCenter$UploadProgressMakeEvtPump
   {
     try
     {
-      Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+      Timer localTimer = this.b;
       if (localTimer != null) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new OnlineFileSessionCenter.UploadProgressMakeEvtPump.1(this), 1000L, 1000L);
+      this.b = new Timer();
+      this.b.schedule(new OnlineFileSessionCenter.UploadProgressMakeEvtPump.1(this), 1000L, 1000L);
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  start. . .");
       return;
     }
@@ -29,10 +29,10 @@ class OnlineFileSessionCenter$UploadProgressMakeEvtPump
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+        this.b.cancel();
+        this.b = null;
       }
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  exit. . .");
       return;
@@ -42,7 +42,7 @@ class OnlineFileSessionCenter$UploadProgressMakeEvtPump
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.UploadProgressMakeEvtPump
  * JD-Core Version:    0.7.0.1
  */

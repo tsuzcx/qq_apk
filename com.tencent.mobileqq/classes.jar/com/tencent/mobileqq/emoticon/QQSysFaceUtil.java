@@ -4,11 +4,15 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.AnimEmoCountConfBean;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean;
+import com.tencent.mobileqq.data.AniStickerInfo;
+import com.tencent.mobileqq.data.AniStickerResultInfo;
+import com.tencent.mobileqq.data.AniStickerSurpriseInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -71,17 +75,50 @@ public class QQSysFaceUtil
     return i;
   }
   
+  public static String getAniStickerFullResPath(String paramString1, String paramString2)
+  {
+    return QQSysAndEmojiResMgr.getAniStickerFullResPath(paramString1, paramString2);
+  }
+  
+  @Nullable
+  public static AniStickerInfo getAniStickerInfo(int paramInt)
+  {
+    return ((QQSysFaceResImpl)QQSysAndEmojiResMgr.getInstance().getResImpl(1)).getAniStickerInfo(paramInt);
+  }
+  
+  @Nullable
+  public static AniStickerInfo getAniStickerInfo(int paramInt, String paramString1, String paramString2)
+  {
+    AniStickerInfo localAniStickerInfo = getAniStickerInfo(paramInt);
+    if (localAniStickerInfo == null) {
+      return null;
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramString2 = new AniStickerResultInfo(localAniStickerInfo);
+      paramString2.setResultId(paramString1);
+      return paramString2;
+    }
+    paramString1 = localAniStickerInfo;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = new AniStickerSurpriseInfo(localAniStickerInfo);
+      paramString1.setSurpriseId(paramString2);
+    }
+    return paramString1;
+  }
+  
   public static int getAnimEmoCount()
   {
     if (sAnimEmoCount == -1)
     {
       long l = System.currentTimeMillis();
-      Object localObject = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)QConfigManager.a().a(545);
-      if (!TextUtils.isEmpty(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a.a)) {
-        sAnimEmoCount = parseAnimCountByModel(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a.a, Build.MODEL);
+      Object localObject = QQSysAndEmojiConfProcessor.a();
+      if (!TextUtils.isEmpty(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).o.a)) {
+        sAnimEmoCount = parseAnimCountByModel(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).o.a, Build.MODEL);
       }
-      if ((sAnimEmoCount == -1) && (!TextUtils.isEmpty(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a.b))) {
-        sAnimEmoCount = parseAnimCountByVersion(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a.b, Build.VERSION.SDK_INT);
+      if ((sAnimEmoCount == -1) && (!TextUtils.isEmpty(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).o.b))) {
+        sAnimEmoCount = parseAnimCountByVersion(((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).o.b, Build.VERSION.SDK_INT);
       }
       i = sAnimEmoCount;
       localObject = new StringBuilder();
@@ -143,18 +180,17 @@ public class QQSysFaceUtil
   {
     if (paramInt >= 0)
     {
-      if (paramInt < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)
-      {
-        localObject = BaseApplication.getContext().getResources();
-        paramInt = EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[paramInt];
-        if (GlobalImageCache.a != null) {
-          return QQEmojiUtil.getResourceDrawableThroughImageCache((Resources)localObject, paramInt);
-        }
-        return ((Resources)localObject).getDrawable(paramInt);
-      }
       localObject = QQSysAndEmojiResMgr.getInstance().getResImpl(1).getDrawable(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("SysFaceUtil", 2, "getFaceDrawable in new way");
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("face not found, use local res, id=");
+          localStringBuilder.append(paramInt);
+          QLog.d("SysFaceUtil", 2, localStringBuilder.toString());
+        }
+        getFaceDrawableFromLocal(paramInt);
       }
       return localObject;
     }
@@ -162,6 +198,28 @@ public class QQSysFaceUtil
     ((StringBuilder)localObject).append("invaid sysface static index: ");
     ((StringBuilder)localObject).append(paramInt);
     throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+  }
+  
+  static Drawable getFaceDrawableFromLocal(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)
+    {
+      localObject = BaseApplication.getContext().getResources();
+      paramInt = EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[paramInt];
+      if (GlobalImageCache.a != null) {
+        return QQEmojiUtil.getResourceDrawableThroughImageCache((Resources)localObject, paramInt);
+      }
+      return ((Resources)localObject).getDrawable(paramInt);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("face not found at local, return null, id=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("SysFaceUtil", 2, ((StringBuilder)localObject).toString());
+    }
+    return null;
   }
   
   public static Drawable getFaceGifDrawable(int paramInt)
@@ -224,6 +282,11 @@ public class QQSysFaceUtil
     return str;
   }
   
+  public static boolean isAniSticker(int paramInt)
+  {
+    return ((QQSysFaceResImpl)QQSysAndEmojiResMgr.getInstance().getResImpl(1)).getAniStickerType(paramInt) == 1;
+  }
+  
   public static boolean isApolloEmoticon(int paramInt)
   {
     QQSysAndEmojiResInfo localQQSysAndEmojiResInfo = QQSysAndEmojiResMgr.getInstance().getResImpl(1);
@@ -236,6 +299,16 @@ public class QQSysFaceUtil
   public static boolean isEmoReady(int paramInt)
   {
     return QQSysAndEmojiResMgr.getInstance().getResImpl(1).isResReady(paramInt);
+  }
+  
+  public static boolean isNormalSysFace(int paramInt)
+  {
+    return ((QQSysFaceResImpl)QQSysAndEmojiResMgr.getInstance().getResImpl(1)).getAniStickerType(paramInt) == 0;
+  }
+  
+  public static boolean isRandomAniSticker(int paramInt)
+  {
+    return ((QQSysFaceResImpl)QQSysAndEmojiResMgr.getInstance().getResImpl(1)).getAniStickerType(paramInt) == 2;
   }
   
   public static boolean isStaticFace(int paramInt)
@@ -367,7 +440,7 @@ public class QQSysFaceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysFaceUtil
  * JD-Core Version:    0.7.0.1
  */

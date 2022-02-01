@@ -28,18 +28,18 @@ class MiniSDKClientQIPCModule$3
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(null);
       ((StringBuilder)localObject1).append("; event :");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+      ((StringBuilder)localObject1).append(this.a.event);
       localObject1 = ((StringBuilder)localObject1).toString();
     }
     QLog.d("MiniSDKClientQIPCModule", 1, (String)localObject1);
     if (paramJSONObject == null)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-      localObject1 = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule;
-      localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime;
+      this.a.fail();
+      localObject1 = this.e;
+      localObject2 = this.b;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("share_");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+      ((StringBuilder)localObject3).append(this.a.event);
       MiniSDKClientQIPCModule.a((MiniSDKClientQIPCModule)localObject1, (BaseRuntime)localObject2, ((StringBuilder)localObject3).toString(), "fail", 3, "request fail");
     }
     localObject1 = new JSONObject();
@@ -50,29 +50,29 @@ class MiniSDKClientQIPCModule$3
       paramJSONObject = paramJSONObject.getString("errMsg");
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-        paramJSONObject = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule;
-        localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime;
+        this.a.ok();
+        paramJSONObject = this.e;
+        localObject2 = this.b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("share_");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+        ((StringBuilder)localObject3).append(this.a.event);
         MiniSDKClientQIPCModule.a(paramJSONObject, (BaseRuntime)localObject2, ((StringBuilder)localObject3).toString(), "success", 3, null);
-        MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, "share_success");
-        if (!this.jdField_a_of_type_JavaLangString.equals("shareMessageToFriend")) {
+        MiniSDKClientQIPCModule.a(this.e, this.b, "share_success");
+        if (!this.c.equals("shareMessageToFriend")) {
           break label673;
         }
-        MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, (JSONObject)localObject1, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "", true, ApiUtil.wrapCallbackOk(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1));
+        MiniSDKClientQIPCModule.a(this.e, (JSONObject)localObject1, this.b, this.d, "", true, ApiUtil.wrapCallbackOk(this.c, (JSONObject)localObject1));
         return;
       }
       ((JSONObject)localObject1).put("errMsg", paramJSONObject);
       ((JSONObject)localObject1).put("errCode", i);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail((JSONObject)localObject1, paramJSONObject);
-      MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, (JSONObject)localObject1, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, paramJSONObject, false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1));
-      localObject2 = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule;
-      localObject3 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime;
+      this.a.fail((JSONObject)localObject1, paramJSONObject);
+      MiniSDKClientQIPCModule.a(this.e, (JSONObject)localObject1, this.b, this.d, paramJSONObject, false, ApiUtil.wrapCallbackFail(this.c, (JSONObject)localObject1));
+      localObject2 = this.e;
+      localObject3 = this.b;
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("share_");
-      ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+      ((StringBuilder)localObject4).append(this.a.event);
       localObject4 = ((StringBuilder)localObject4).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
@@ -85,30 +85,30 @@ class MiniSDKClientQIPCModule$3
     {
       break label579;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-    MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, (JSONObject)localObject1, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1));
-    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule;
-    Object localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime;
+    this.a.fail();
+    MiniSDKClientQIPCModule.a(this.e, (JSONObject)localObject1, this.b, this.d, "请求失败", false, ApiUtil.wrapCallbackFail(this.c, (JSONObject)localObject1));
+    paramJSONObject = this.e;
+    Object localObject2 = this.b;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("share_");
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+    ((StringBuilder)localObject3).append(this.a.event);
     MiniSDKClientQIPCModule.a(paramJSONObject, (BaseRuntime)localObject2, ((StringBuilder)localObject3).toString(), "fail", 3, "request fail");
     return;
     label579:
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-    MiniSDKClientQIPCModule.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule, (JSONObject)localObject1, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1));
-    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiProxyimplMiniSDKClientQIPCModule;
-    localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime;
+    this.a.fail();
+    MiniSDKClientQIPCModule.a(this.e, (JSONObject)localObject1, this.b, this.d, "请求失败", false, ApiUtil.wrapCallbackFail(this.c, (JSONObject)localObject1));
+    paramJSONObject = this.e;
+    localObject1 = this.b;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("share_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.event);
+    ((StringBuilder)localObject2).append(this.a.event);
     MiniSDKClientQIPCModule.a(paramJSONObject, (BaseRuntime)localObject1, ((StringBuilder)localObject2).toString(), "fail", 3, "request exception");
     label673:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.3
  * JD-Core Version:    0.7.0.1
  */

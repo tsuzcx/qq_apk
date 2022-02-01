@@ -68,7 +68,7 @@ public class AsyncStep
       {
         this.mResult = 5;
         localObject2 = this.mAutomator;
-        ((Automator)localObject2).b += 1;
+        ((Automator)localObject2).c += 1;
       }
       if ((this.mResult == 6) || (this.mResult == 5))
       {
@@ -80,7 +80,7 @@ public class AsyncStep
           return true;
         }
       }
-      if ((DeviceOptSwitch.d) && (!DeviceOptSwitch.b.contains(Integer.valueOf(this.mStepId))))
+      if ((DeviceOptSwitch.e) && (!DeviceOptSwitch.s.contains(Integer.valueOf(this.mStepId))))
       {
         l = SystemClock.uptimeMillis() - this.begin;
         if (QLog.isColorLevel()) {
@@ -116,11 +116,11 @@ public class AsyncStep
     //   1: getfield 51	com/tencent/mobileqq/app/automator/AsyncStep:mResult	I
     //   4: iconst_1
     //   5: if_icmpne +707 -> 712
-    //   8: ldc2_w 167
+    //   8: ldc2_w 168
     //   11: aload_0
     //   12: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   15: invokestatic 173	android/os/Process:myTid	()I
-    //   18: invokestatic 179	com/tencent/widget/TraceUtils:asyncTraceBegin	(JLjava/lang/String;I)V
+    //   15: invokestatic 174	android/os/Process:myTid	()I
+    //   18: invokestatic 180	com/tencent/widget/TraceUtils:asyncTraceBegin	(JLjava/lang/String;I)V
     //   21: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +46 -> 70
     //   27: new 80	java/lang/StringBuilder
@@ -133,7 +133,7 @@ public class AsyncStep
     //   40: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aload_1
-    //   45: ldc 181
+    //   45: ldc 182
     //   47: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload_1
@@ -147,19 +147,19 @@ public class AsyncStep
     //   64: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   67: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   70: aload_0
-    //   71: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   71: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   74: putfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   77: aload_0
-    //   78: invokevirtual 183	com/tencent/mobileqq/app/automator/AsyncStep:onCreate	()V
+    //   78: invokevirtual 184	com/tencent/mobileqq/app/automator/AsyncStep:onCreate	()V
     //   81: aload_0
     //   82: aload_0
-    //   83: invokevirtual 185	com/tencent/mobileqq/app/automator/AsyncStep:doStep	()I
-    //   86: invokevirtual 189	com/tencent/mobileqq/app/automator/AsyncStep:setResult	(I)V
+    //   83: invokevirtual 186	com/tencent/mobileqq/app/automator/AsyncStep:doStep	()I
+    //   86: invokevirtual 190	com/tencent/mobileqq/app/automator/AsyncStep:setResult	(I)V
     //   89: aload_0
-    //   90: invokespecial 191	com/tencent/mobileqq/app/automator/AsyncStep:waitResult	()Z
+    //   90: invokespecial 192	com/tencent/mobileqq/app/automator/AsyncStep:waitResult	()Z
     //   93: ifne -12 -> 81
     //   96: aload_0
-    //   97: invokevirtual 193	com/tencent/mobileqq/app/automator/AsyncStep:onDestroy	()V
+    //   97: invokevirtual 194	com/tencent/mobileqq/app/automator/AsyncStep:onDestroy	()V
     //   100: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   103: ifeq +50 -> 153
     //   106: new 80	java/lang/StringBuilder
@@ -172,15 +172,15 @@ public class AsyncStep
     //   119: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: pop
     //   123: aload_1
-    //   124: ldc 195
+    //   124: ldc 196
     //   126: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: pop
     //   130: aload_1
-    //   131: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   131: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   134: aload_0
     //   135: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   138: lsub
-    //   139: invokevirtual 198	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 199	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   142: pop
     //   143: ldc 27
     //   145: iconst_1
@@ -188,61 +188,61 @@ public class AsyncStep
     //   147: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   150: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   153: aload_0
-    //   154: instanceof 200
+    //   154: instanceof 201
     //   157: ifne +83 -> 240
     //   160: aload_0
-    //   161: instanceof 202
+    //   161: instanceof 203
     //   164: ifne +76 -> 240
     //   167: aload_0
-    //   168: instanceof 204
+    //   168: instanceof 205
     //   171: ifne +69 -> 240
     //   174: aload_0
-    //   175: instanceof 206
+    //   175: instanceof 207
     //   178: ifne +62 -> 240
     //   181: aload_0
-    //   182: instanceof 208
+    //   182: instanceof 209
     //   185: ifne +55 -> 240
     //   188: aload_0
-    //   189: instanceof 210
+    //   189: instanceof 211
     //   192: ifne +48 -> 240
     //   195: aload_0
-    //   196: instanceof 212
+    //   196: instanceof 213
     //   199: ifne +41 -> 240
     //   202: aload_0
-    //   203: instanceof 214
+    //   203: instanceof 215
     //   206: ifne +34 -> 240
     //   209: aload_0
-    //   210: instanceof 216
+    //   210: instanceof 217
     //   213: ifne +27 -> 240
-    //   216: ldc 218
+    //   216: ldc 219
     //   218: aload_0
     //   219: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   222: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   222: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   225: ifne +15 -> 240
-    //   228: ldc 225
+    //   228: ldc 226
     //   230: aload_0
     //   231: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   234: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   234: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   237: ifeq +29 -> 266
     //   240: aload_0
     //   241: getfield 104	com/tencent/mobileqq/app/automator/AsyncStep:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   244: getfield 229	com/tencent/mobileqq/app/automator/Automator:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   244: getfield 230	com/tencent/mobileqq/app/automator/Automator:j	Ljava/util/concurrent/ConcurrentHashMap;
     //   247: aload_0
     //   248: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   251: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   251: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   254: aload_0
     //   255: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   258: lsub
-    //   259: invokestatic 144	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   262: invokevirtual 235	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   259: invokestatic 146	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   262: invokevirtual 236	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   265: pop
-    //   266: ldc2_w 167
+    //   266: ldc2_w 168
     //   269: aload_0
     //   270: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   273: invokestatic 173	android/os/Process:myTid	()I
-    //   276: invokestatic 238	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
+    //   273: invokestatic 174	android/os/Process:myTid	()I
+    //   276: invokestatic 239	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
     //   279: aload_0
-    //   280: getfield 240	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
+    //   280: getfield 241	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
     //   283: astore_1
     //   284: aload_1
     //   285: ifnull +427 -> 712
@@ -252,12 +252,12 @@ public class AsyncStep
     //   295: astore_1
     //   296: ldc 27
     //   298: iconst_1
-    //   299: ldc 242
+    //   299: ldc 243
     //   301: aload_1
-    //   302: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   302: invokestatic 246	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   305: aload_0
     //   306: bipush 8
-    //   308: invokevirtual 189	com/tencent/mobileqq/app/automator/AsyncStep:setResult	(I)V
+    //   308: invokevirtual 190	com/tencent/mobileqq/app/automator/AsyncStep:setResult	(I)V
     //   311: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   314: ifeq +50 -> 364
     //   317: new 80	java/lang/StringBuilder
@@ -270,15 +270,15 @@ public class AsyncStep
     //   330: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   333: pop
     //   334: aload_1
-    //   335: ldc 195
+    //   335: ldc 196
     //   337: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: pop
     //   341: aload_1
-    //   342: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   342: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   345: aload_0
     //   346: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   349: lsub
-    //   350: invokevirtual 198	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   350: invokevirtual 199	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   353: pop
     //   354: ldc 27
     //   356: iconst_1
@@ -286,61 +286,61 @@ public class AsyncStep
     //   358: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   361: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   364: aload_0
-    //   365: instanceof 200
+    //   365: instanceof 201
     //   368: ifne +83 -> 451
     //   371: aload_0
-    //   372: instanceof 202
+    //   372: instanceof 203
     //   375: ifne +76 -> 451
     //   378: aload_0
-    //   379: instanceof 204
+    //   379: instanceof 205
     //   382: ifne +69 -> 451
     //   385: aload_0
-    //   386: instanceof 206
+    //   386: instanceof 207
     //   389: ifne +62 -> 451
     //   392: aload_0
-    //   393: instanceof 208
+    //   393: instanceof 209
     //   396: ifne +55 -> 451
     //   399: aload_0
-    //   400: instanceof 210
+    //   400: instanceof 211
     //   403: ifne +48 -> 451
     //   406: aload_0
-    //   407: instanceof 212
+    //   407: instanceof 213
     //   410: ifne +41 -> 451
     //   413: aload_0
-    //   414: instanceof 214
+    //   414: instanceof 215
     //   417: ifne +34 -> 451
     //   420: aload_0
-    //   421: instanceof 216
+    //   421: instanceof 217
     //   424: ifne +27 -> 451
-    //   427: ldc 218
+    //   427: ldc 219
     //   429: aload_0
     //   430: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   433: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   433: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   436: ifne +15 -> 451
-    //   439: ldc 225
+    //   439: ldc 226
     //   441: aload_0
     //   442: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   445: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   445: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   448: ifeq +29 -> 477
     //   451: aload_0
     //   452: getfield 104	com/tencent/mobileqq/app/automator/AsyncStep:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   455: getfield 229	com/tencent/mobileqq/app/automator/Automator:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   455: getfield 230	com/tencent/mobileqq/app/automator/Automator:j	Ljava/util/concurrent/ConcurrentHashMap;
     //   458: aload_0
     //   459: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   462: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   462: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   465: aload_0
     //   466: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   469: lsub
-    //   470: invokestatic 144	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   473: invokevirtual 235	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   470: invokestatic 146	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   473: invokevirtual 236	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   476: pop
-    //   477: ldc2_w 167
+    //   477: ldc2_w 168
     //   480: aload_0
     //   481: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   484: invokestatic 173	android/os/Process:myTid	()I
-    //   487: invokestatic 238	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
+    //   484: invokestatic 174	android/os/Process:myTid	()I
+    //   487: invokestatic 239	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
     //   490: aload_0
-    //   491: getfield 240	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
+    //   491: getfield 241	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
     //   494: astore_1
     //   495: aload_1
     //   496: ifnull +216 -> 712
@@ -348,7 +348,7 @@ public class AsyncStep
     //   500: aload_0
     //   501: aload_0
     //   502: getfield 51	com/tencent/mobileqq/app/automator/AsyncStep:mResult	I
-    //   505: invokeinterface 250 3 0
+    //   505: invokeinterface 252 3 0
     //   510: return
     //   511: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   514: ifeq +50 -> 564
@@ -362,15 +362,15 @@ public class AsyncStep
     //   530: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   533: pop
     //   534: aload_2
-    //   535: ldc 195
+    //   535: ldc 196
     //   537: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   540: pop
     //   541: aload_2
-    //   542: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   542: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   545: aload_0
     //   546: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   549: lsub
-    //   550: invokevirtual 198	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   550: invokevirtual 199	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   553: pop
     //   554: ldc 27
     //   556: iconst_1
@@ -378,61 +378,61 @@ public class AsyncStep
     //   558: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   561: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   564: aload_0
-    //   565: instanceof 200
+    //   565: instanceof 201
     //   568: ifne +83 -> 651
     //   571: aload_0
-    //   572: instanceof 202
+    //   572: instanceof 203
     //   575: ifne +76 -> 651
     //   578: aload_0
-    //   579: instanceof 204
+    //   579: instanceof 205
     //   582: ifne +69 -> 651
     //   585: aload_0
-    //   586: instanceof 206
+    //   586: instanceof 207
     //   589: ifne +62 -> 651
     //   592: aload_0
-    //   593: instanceof 208
+    //   593: instanceof 209
     //   596: ifne +55 -> 651
     //   599: aload_0
-    //   600: instanceof 210
+    //   600: instanceof 211
     //   603: ifne +48 -> 651
     //   606: aload_0
-    //   607: instanceof 212
+    //   607: instanceof 213
     //   610: ifne +41 -> 651
     //   613: aload_0
-    //   614: instanceof 214
+    //   614: instanceof 215
     //   617: ifne +34 -> 651
     //   620: aload_0
-    //   621: instanceof 216
+    //   621: instanceof 217
     //   624: ifne +27 -> 651
-    //   627: ldc 218
+    //   627: ldc 219
     //   629: aload_0
     //   630: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   633: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   633: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   636: ifne +15 -> 651
-    //   639: ldc 225
+    //   639: ldc 226
     //   641: aload_0
     //   642: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   645: invokevirtual 223	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   645: invokevirtual 224	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   648: ifeq +29 -> 677
     //   651: aload_0
     //   652: getfield 104	com/tencent/mobileqq/app/automator/AsyncStep:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   655: getfield 229	com/tencent/mobileqq/app/automator/Automator:a	Ljava/util/concurrent/ConcurrentHashMap;
+    //   655: getfield 230	com/tencent/mobileqq/app/automator/Automator:j	Ljava/util/concurrent/ConcurrentHashMap;
     //   658: aload_0
     //   659: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   662: invokestatic 135	android/os/SystemClock:uptimeMillis	()J
+    //   662: invokestatic 137	android/os/SystemClock:uptimeMillis	()J
     //   665: aload_0
     //   666: getfield 61	com/tencent/mobileqq/app/automator/AsyncStep:begin	J
     //   669: lsub
-    //   670: invokestatic 144	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   673: invokevirtual 235	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   670: invokestatic 146	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   673: invokevirtual 236	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   676: pop
-    //   677: ldc2_w 167
+    //   677: ldc2_w 168
     //   680: aload_0
     //   681: getfield 83	com/tencent/mobileqq/app/automator/AsyncStep:mName	Ljava/lang/String;
-    //   684: invokestatic 173	android/os/Process:myTid	()I
-    //   687: invokestatic 238	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
+    //   684: invokestatic 174	android/os/Process:myTid	()I
+    //   687: invokestatic 239	com/tencent/widget/TraceUtils:asyncTraceEnd	(JLjava/lang/String;I)V
     //   690: aload_0
-    //   691: getfield 240	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
+    //   691: getfield 241	com/tencent/mobileqq/app/automator/AsyncStep:mResultListener	Lcom/tencent/mobileqq/app/automator/IResultListener;
     //   694: astore_2
     //   695: aload_2
     //   696: ifnull +14 -> 710
@@ -440,7 +440,7 @@ public class AsyncStep
     //   700: aload_0
     //   701: aload_0
     //   702: getfield 51	com/tencent/mobileqq/app/automator/AsyncStep:mResult	I
-    //   705: invokeinterface 250 3 0
+    //   705: invokeinterface 252 3 0
     //   710: aload_1
     //   711: athrow
     //   712: return
@@ -491,7 +491,7 @@ public class AsyncStep
     if (paramInt == 6)
     {
       ??? = this.mAutomator;
-      ((Automator)???).b += 1;
+      ((Automator)???).c += 1;
     }
     synchronized (this.mResultLock)
     {
@@ -528,7 +528,7 @@ public class AsyncStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.AsyncStep
  * JD-Core Version:    0.7.0.1
  */

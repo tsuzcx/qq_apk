@@ -14,15 +14,20 @@ public class AEResInfo
   public static final AEResInfo LIGHT_RES_BASE_PACKAGE;
   public static final AEResInfo LIGHT_RES_BUNDLE_3DMM;
   public static final AEResInfo LIGHT_RES_BUNDLE_ACE3D;
+  public static final AEResInfo LIGHT_RES_BUNDLE_AGE;
+  public static final AEResInfo LIGHT_RES_BUNDLE_BODY;
+  public static final AEResInfo LIGHT_RES_BUNDLE_BODY_3D;
   public static final AEResInfo LIGHT_RES_BUNDLE_CAT;
   public static final AEResInfo LIGHT_RES_BUNDLE_DEPTH;
+  public static final AEResInfo LIGHT_RES_BUNDLE_EMOTION;
+  public static final AEResInfo LIGHT_RES_BUNDLE_GAZE;
   public static final AEResInfo LIGHT_RES_BUNDLE_GENDER;
   public static final AEResInfo LIGHT_RES_BUNDLE_HAND;
   public static final AEResInfo LIGHT_RES_BUNDLE_SCENE;
   public static final AEResInfo LIGHT_RES_BUNDLE_SEG_HAIR;
   public static final AEResInfo LIGHT_RES_BUNDLE_SEG_HEAD;
   public static final AEResInfo LIGHT_RES_BUNDLE_SEG_SKY;
-  public static final AEResInfo[] packageValues = a();
+  public static final AEResInfo[] packageValues = initPackageValues();
   public static final AEResInfo[] values;
   public String agentType;
   public final String description;
@@ -47,8 +52,13 @@ public class AEResInfo
     LIGHT_RES_BUNDLE_3DMM = new AEResInfo(9, "LightBundle3DMM", "new_qq_android_native_light_bundle_3dmm_", "k3D_MM_AGENT");
     LIGHT_RES_BUNDLE_SEG_HEAD = new AEResInfo(10, "LightBundleSegHead", "new_qq_android_native_light_bundle_seg_head_", "HEAD_SEG_AGENT");
     LIGHT_RES_BUNDLE_SCENE = new AEResInfo(11, "LightBundleScene", "new_qq_android_native_light_bundle_scene_", "SCENE_AGENT");
+    LIGHT_RES_BUNDLE_EMOTION = new AEResInfo(12, "LightBundleEmotion", "new_qq_android_native_light_bundle_emotion_", "EMOTION_AGENT");
+    LIGHT_RES_BUNDLE_BODY = new AEResInfo(13, "LightBundleBody", "new_qq_android_native_light_bundle_body_", "BODY_AGENT");
+    LIGHT_RES_BUNDLE_AGE = new AEResInfo(14, "LightBundleAge", "new_qq_android_native_light_bundle_age_", "AGE_AGENT");
+    LIGHT_RES_BUNDLE_GAZE = new AEResInfo(15, "LightBundleGaze", "new_qq_android_native_light_bundle_gaze_", "VIEW_POINT_AGENT");
+    LIGHT_RES_BUNDLE_BODY_3D = new AEResInfo(16, "LightBundleBody3D", "new_qq_android_native_light_bundle_driver_body_3d_", "BODY3D_AGENT");
     AE_RES_ADDITIONAL_PACKAGE = new AEResInfo(-999, "AEAdditionalPackage", "new_qq_android_native_ptu_res_", "");
-    values = new AEResInfo[] { AE_RES_CONFIG, AE_RES_BASE_PACKAGE, LIGHT_RES_BASE_PACKAGE, LIGHT_RES_BUNDLE_HAND, LIGHT_RES_BUNDLE_GENDER, LIGHT_RES_BUNDLE_CAT, LIGHT_RES_BUNDLE_DEPTH, LIGHT_RES_BUNDLE_SEG_HAIR, LIGHT_RES_BUNDLE_SEG_SKY, LIGHT_RES_BUNDLE_ACE3D, LIGHT_RES_BUNDLE_3DMM, LIGHT_RES_BUNDLE_SEG_HEAD, LIGHT_RES_BUNDLE_SCENE };
+    values = new AEResInfo[] { AE_RES_CONFIG, AE_RES_BASE_PACKAGE, LIGHT_RES_BASE_PACKAGE, LIGHT_RES_BUNDLE_HAND, LIGHT_RES_BUNDLE_GENDER, LIGHT_RES_BUNDLE_AGE, LIGHT_RES_BUNDLE_GAZE, LIGHT_RES_BUNDLE_CAT, LIGHT_RES_BUNDLE_DEPTH, LIGHT_RES_BUNDLE_SEG_HAIR, LIGHT_RES_BUNDLE_SEG_SKY, LIGHT_RES_BUNDLE_ACE3D, LIGHT_RES_BUNDLE_3DMM, LIGHT_RES_BUNDLE_SEG_HEAD, LIGHT_RES_BUNDLE_SCENE, LIGHT_RES_BUNDLE_BODY, LIGHT_RES_BUNDLE_BODY_3D, LIGHT_RES_BUNDLE_EMOTION };
   }
   
   private AEResInfo(int paramInt, String paramString)
@@ -67,26 +77,9 @@ public class AEResInfo
     this.description = paramString1;
     this.resPrefix = paramString2;
     this.agentType = paramString3;
-    this.resVersionLimit = 870017;
-    this.resVersion = 8700;
+    this.resVersionLimit = 8817002;
+    this.resVersion = 8817;
     this.isPackage = true;
-  }
-  
-  private static AEResInfo[] a()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    AEResInfo[] arrayOfAEResInfo = values;
-    int j = arrayOfAEResInfo.length;
-    int i = 0;
-    while (i < j)
-    {
-      AEResInfo localAEResInfo = arrayOfAEResInfo[i];
-      if (localAEResInfo.isPackage) {
-        localLinkedList.add(localAEResInfo);
-      }
-      i += 1;
-    }
-    return (AEResInfo[])localLinkedList.toArray(new AEResInfo[0]);
   }
   
   public static AEResInfo getAEResInfoByPrefix(String paramString)
@@ -103,6 +96,23 @@ public class AEResInfo
       i += 1;
     }
     return null;
+  }
+  
+  private static AEResInfo[] initPackageValues()
+  {
+    LinkedList localLinkedList = new LinkedList();
+    AEResInfo[] arrayOfAEResInfo = values;
+    int j = arrayOfAEResInfo.length;
+    int i = 0;
+    while (i < j)
+    {
+      AEResInfo localAEResInfo = arrayOfAEResInfo[i];
+      if (localAEResInfo.isPackage) {
+        localLinkedList.add(localAEResInfo);
+      }
+      i += 1;
+    }
+    return (AEResInfo[])localLinkedList.toArray(new AEResInfo[0]);
   }
   
   public static boolean isAdittionPackage(AEResInfo paramAEResInfo)

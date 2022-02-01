@@ -8,15 +8,15 @@ import java.util.HashMap;
 
 public class BaseFaceListAdapter$CacheRefMap<K, V>
 {
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private HashMap<K, CacheRefMap<K, V>.CacheRef> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<K, CacheRefMap<K, V>.CacheRef> a = new HashMap();
+  private ReferenceQueue<V> b = new ReferenceQueue();
   
   @Nullable
   public V a(K paramK)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
+    if (this.a.containsKey(paramK))
     {
-      paramK = (BaseFaceListAdapter.CacheRefMap.CacheRef)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+      paramK = (BaseFaceListAdapter.CacheRefMap.CacheRef)this.a.get(paramK);
       if (paramK.get() != null) {
         return paramK.get();
       }
@@ -28,11 +28,11 @@ public class BaseFaceListAdapter$CacheRefMap<K, V>
   {
     for (;;)
     {
-      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      Reference localReference = this.b.poll();
       if (localReference == null) {
         break;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((BaseFaceListAdapter.CacheRefMap.CacheRef)localReference).a());
+      this.a.remove(((BaseFaceListAdapter.CacheRefMap.CacheRef)localReference).a());
     }
   }
   
@@ -40,10 +40,10 @@ public class BaseFaceListAdapter$CacheRefMap<K, V>
   {
     if ((paramK != null) && (paramV != null))
     {
-      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((BaseFaceListAdapter.CacheRefMap.CacheRef)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+      if ((this.a.containsKey(paramK)) && (((BaseFaceListAdapter.CacheRefMap.CacheRef)this.a.get(paramK)).get() != null)) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new BaseFaceListAdapter.CacheRefMap.CacheRef(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+      this.a.put(paramK, new BaseFaceListAdapter.CacheRefMap.CacheRef(this, paramK, paramV, this.b));
       return;
     }
     throw new IllegalArgumentException("key-value cannot be null");
@@ -51,7 +51,7 @@ public class BaseFaceListAdapter$CacheRefMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter.CacheRefMap
  * JD-Core Version:    0.7.0.1
  */

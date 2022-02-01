@@ -12,9 +12,14 @@ public class CommonFunctionPublishConfigServiceImpl
   
   public boolean isCopyDBCommandEnable()
   {
-    boolean bool = CommonFunctionPublishConfigProcessor.a().f;
+    return CommonFunctionPublishConfigProcessor.a().f;
+  }
+  
+  public boolean isIgnoreInvalidUnreadMark()
+  {
+    boolean bool = CommonFunctionPublishConfigProcessor.a().h;
     if (QLog.isColorLevel()) {
-      QLog.d("CommonFunctionPublishConfigServiceImpl", 2, new Object[] { "copyDBCommandEnable switch value: ", Boolean.valueOf(bool) });
+      QLog.d("CommonFunctionPublishConfigServiceImpl", 2, new Object[] { "isIgnoreInvalidUnreadMark switch value: ", Boolean.valueOf(bool) });
     }
     return bool;
   }
@@ -30,20 +35,21 @@ public class CommonFunctionPublishConfigServiceImpl
   
   public boolean isNewUnreadCountEnable()
   {
-    boolean bool = CommonFunctionPublishConfigProcessor.a().c;
+    return CommonFunctionPublishConfigProcessor.a().c;
+  }
+  
+  public boolean isTuringRiskDetectEnable()
+  {
+    boolean bool = CommonFunctionPublishConfigProcessor.a().i;
     if (QLog.isColorLevel()) {
-      QLog.d("CommonFunctionPublishConfigServiceImpl", 2, new Object[] { "newUnreadCountEnable switch value: ", Boolean.valueOf(bool) });
+      QLog.d("CommonFunctionPublishConfigServiceImpl", 2, new Object[] { "isTuringRiskDetectEnable switch value: ", Boolean.valueOf(bool) });
     }
     return bool;
   }
   
   public boolean isUseNewInvalidUnreadMarkThreshold()
   {
-    boolean bool = CommonFunctionPublishConfigProcessor.a().d;
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonFunctionPublishConfigServiceImpl", 2, new Object[] { "newInvalidUnreadMarkThreshold switch value: ", Boolean.valueOf(bool) });
-    }
-    return bool;
+    return CommonFunctionPublishConfigProcessor.a().d;
   }
   
   public boolean isWalEnable()
@@ -57,7 +63,7 @@ public class CommonFunctionPublishConfigServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.service.impl.CommonFunctionPublishConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

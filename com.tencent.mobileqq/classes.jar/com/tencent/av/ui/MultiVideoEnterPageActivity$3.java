@@ -14,7 +14,7 @@ class MultiVideoEnterPageActivity$3
   public void onClick(View paramView)
   {
     QAVGroupConfig.Report.c();
-    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.i, "", "", "");
     this.a.d(10);
     EventCollector.getInstance().onViewClicked(paramView);
   }

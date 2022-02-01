@@ -12,17 +12,17 @@ class WSGridPageFragment$5
   
   public void onClick(View paramView)
   {
-    WSGridPageFragment.a(this.a).clearList();
-    ((WSGridPageContract.Presenter)this.a.b()).a(true, true);
-    ((WSGridPageContract.Presenter)this.a.b()).a("");
-    this.a.d();
-    this.a.c();
+    WSGridPageFragment.f(this.a).clearList();
+    ((WSGridPageContract.Presenter)this.a.aO_()).a(true, true);
+    ((WSGridPageContract.Presenter)this.a.aO_()).a("");
+    this.a.s();
+    this.a.r();
     WSReportDc00898.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.5
  * JD-Core Version:    0.7.0.1
  */

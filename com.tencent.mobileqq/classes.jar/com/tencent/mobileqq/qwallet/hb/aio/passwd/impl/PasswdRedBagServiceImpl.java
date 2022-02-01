@@ -9,8 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.DrawableRes;
 import android.support.v4.util.MQLruCache;
@@ -43,7 +41,6 @@ import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
 import com.tencent.mobileqq.qwallet.hb.aio.passwd.PasswdRedBagInfo;
 import com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRedPacketHelperImpl;
 import com.tencent.mobileqq.qwallet.hb.pb.oidb_0x438.RedBagInfo;
-import com.tencent.mobileqq.qwallet.hb.pb.oidb_0x438.ReqInfo;
 import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -77,8 +74,7 @@ public class PasswdRedBagServiceImpl
   private static final String KEY_EXTSTR_IDIOMSEQ = "key_extstr_idiomseq";
   private static final String KEY_PASSWD_CONFIGS = "key_passwd_configs";
   private static final String SP_PASSWD_CONFIGS = "sp_passwd_configs";
-  private List<PasswdRedBagUpdateInfo> disgroupNeedUpdates;
-  private List<PasswdRedBagUpdateInfo> groupNeedUpdates;
+  boolean hasMatched = false;
   private boolean isConfigLoaded;
   public boolean isFirstInAio = true;
   private boolean isLoadingRedBagRelation;
@@ -89,7 +85,6 @@ public class PasswdRedBagServiceImpl
   private HashMap<String, String> mCacheGroupInfos;
   public Context mContext;
   private List<String> mDefaultPasswds;
-  Handler mHandler = new PasswdRedBagServiceImpl.1(this, Looper.getMainLooper());
   private Map<Integer, List<Pair<String, String>>> mIdiomRedBagLensCache;
   private HashMap<String, List<String>> mIdiomRedBagsCache;
   private HashMap<String, List<String>> mPasswdCache;
@@ -98,28 +93,27 @@ public class PasswdRedBagServiceImpl
   private HashMap<String, PasswdRedBagInfo> mPasswdRedBagsCache;
   protected Object mPasswdRedListLock = new Object();
   private BaseQQAppInterface mQQAppInterface;
-  private QWalletHandler mQWalletHandler;
-  private QWalletObserver mQWalletObserver = new QWalletObserver(this.mHandler);
   private PasswdRedBagServiceImpl.RedPacketRefreshReceiver mRedPacketRefreshReceiver;
   private HashMap<String, List<String>> mShengpiziRedBagsCache;
   public String mUin;
+  List<PasswdRedBagInfo> shengpiziList = new ArrayList();
   
   private String getOldPassword(PasswdRedBagInfo paramPasswdRedBagInfo)
   {
     if (paramPasswdRedBagInfo == null) {
       return "";
     }
-    if (TextUtils.isEmpty(paramPasswdRedBagInfo.e))
+    if (TextUtils.isEmpty(paramPasswdRedBagInfo.i))
     {
-      paramPasswdRedBagInfo = paramPasswdRedBagInfo.d;
+      paramPasswdRedBagInfo = paramPasswdRedBagInfo.e;
     }
     else
     {
-      String[] arrayOfString = paramPasswdRedBagInfo.e.trim().split("_");
+      String[] arrayOfString = paramPasswdRedBagInfo.i.trim().split("_");
       if (arrayOfString.length == 2)
       {
         String str = arrayOfString[0];
-        if (paramPasswdRedBagInfo.a() == 2) {
+        if (paramPasswdRedBagInfo.b() == 2) {
           paramPasswdRedBagInfo = arrayOfString[1];
         } else {
           paramPasswdRedBagInfo = str;
@@ -141,14 +135,15 @@ public class PasswdRedBagServiceImpl
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(transType(paramBaseSessionInfo.jdField_a_of_type_Int));
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(transType(paramBaseSessionInfo.a));
     ((StringBuilder)localObject1).append("_");
-    ((StringBuilder)localObject1).append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramBaseSessionInfo.b);
     ((StringBuilder)localObject1).append("_");
     paramBaseSessionInfo = ((StringBuilder)localObject1).toString();
     Object localObject3 = (List)this.mPasswdCache.get(paramString);
     Object localObject2 = new ArrayList();
+    this.hasMatched = false;
     localObject1 = this.mPasswdRedListLock;
     if (localObject3 != null) {}
     try
@@ -192,15 +187,15 @@ public class PasswdRedBagServiceImpl
       }
       localObject3 = new ArrayList();
       if (paramString.trim().length() <= 1) {
-        break label497;
+        break label502;
       }
       localObject4 = paramString.trim().substring(0, 1);
       if ((paramString.trim().length() != 4) && (!isEnglishWords(paramString))) {
-        break label449;
+        break label454;
       }
-      localObject5 = ChnToSpell.a((String)localObject4);
+      localObject5 = ChnToSpell.b((String)localObject4);
       if ((localObject5 == null) || (localObject5.length <= 0)) {
-        break label449;
+        break label454;
       }
       j = localObject5.length;
       i = 0;
@@ -214,8 +209,8 @@ public class PasswdRedBagServiceImpl
         int j;
         int i;
         Object localObject6;
-        label449:
-        label497:
+        label454:
+        label502:
         boolean bool1;
         boolean bool2;
         for (;;)
@@ -334,7 +329,7 @@ public class PasswdRedBagServiceImpl
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(paramString.trim().toUpperCase());
         ((StringBuilder)localObject3).append("&rareword");
-        paramString = MD5.a(((StringBuilder)localObject3).toString()).substring(0, 8);
+        paramString = MD5.b(((StringBuilder)localObject3).toString()).substring(0, 8);
         paramString = (List)this.mShengpiziRedBagsCache.get(paramString);
         if ((paramString != null) && (!paramString.isEmpty()))
         {
@@ -375,57 +370,61 @@ public class PasswdRedBagServiceImpl
         }
       }
       if (((List)localObject2).isEmpty()) {
-        break label1500;
+        break label1516;
       }
-      Collections.sort((List)localObject2, new PasswdRedBagServiceImpl.2(this));
+      Collections.sort((List)localObject2, new PasswdRedBagServiceImpl.1(this));
       localObject2 = ((List)localObject2).iterator();
       paramBaseSessionInfo = null;
-      while (((Iterator)localObject2).hasNext())
+      for (;;)
       {
+        if (!((Iterator)localObject2).hasNext()) {
+          break label1507;
+        }
         paramString = (PasswdRedBagInfo)((Iterator)localObject2).next();
         paramArrayOfObject[1] = Long.valueOf(paramString.c);
-        if (4 == paramString.jdField_a_of_type_Int)
+        if (4 == paramString.h)
         {
           paramArrayOfObject[2] = null;
           paramArrayOfObject[3] = null;
         }
         else if (!paramString.a())
         {
-          paramArrayOfObject[2] = paramString.jdField_a_of_type_JavaLangString;
-          paramArrayOfObject[3] = paramString.jdField_b_of_type_JavaLangString;
+          paramArrayOfObject[2] = paramString.a;
+          paramArrayOfObject[3] = paramString.b;
         }
-        if (paramString.jdField_a_of_type_Boolean)
+        if (paramString.f)
         {
-          if ((4 == paramString.jdField_a_of_type_Int) && (!paramString.jdField_b_of_type_Boolean) && (!paramString.a()) && (paramBaseSessionInfo == null)) {
+          if ((4 == paramString.h) && (!paramString.g) && (!paramString.a()) && (paramBaseSessionInfo == null)) {
             paramBaseSessionInfo = paramString;
           }
         }
-        else if (paramString.jdField_b_of_type_Boolean)
+        else if (paramString.g)
         {
           paramArrayOfObject[0] = Integer.valueOf(2);
         }
-        else if (paramString.a())
-        {
-          paramArrayOfObject[0] = Integer.valueOf(3);
-        }
         else
         {
-          if ((4 != paramString.jdField_a_of_type_Int) && (8 != paramString.jdField_a_of_type_Int)) {
-            paramString.jdField_a_of_type_Boolean = true;
+          if (!paramString.a()) {
+            break;
           }
-          paramArrayOfObject[0] = Integer.valueOf(1);
-          paramArrayOfObject = paramString;
-          paramString = paramBaseSessionInfo;
-          paramBaseSessionInfo = paramArrayOfObject;
-          if (paramBaseSessionInfo == null) {
-            return paramString;
-          }
-          return paramBaseSessionInfo;
+          paramArrayOfObject[0] = Integer.valueOf(3);
         }
       }
+      if ((4 != paramString.h) && (8 != paramString.h)) {
+        paramString.f = true;
+      }
+      paramArrayOfObject[0] = Integer.valueOf(1);
+      paramArrayOfObject = paramString;
+      paramString = paramBaseSessionInfo;
+      paramBaseSessionInfo = paramArrayOfObject;
+      if (paramBaseSessionInfo != null) {
+        this.hasMatched = true;
+      }
+      if (paramBaseSessionInfo != null) {
+        paramString = paramBaseSessionInfo;
+      }
+      return paramString;
     }
-    label1500:
-    return paramString;
   }
   
   private boolean isChinese(String paramString)
@@ -500,13 +499,13 @@ public class PasswdRedBagServiceImpl
       if (paramPasswdRedBagInfo == null) {
         return false;
       }
-      String str = getLastIdiomPinyin(paramPasswdRedBagInfo.e);
-      if (paramPasswdRedBagInfo.a() == 0)
+      String str = getLastIdiomPinyin(paramPasswdRedBagInfo.i);
+      if (paramPasswdRedBagInfo.b() == 0)
       {
         if (paramString.trim().length() < 4) {
           return false;
         }
-        paramString = ChnToSpell.a(paramString.trim().substring(0, 1));
+        paramString = ChnToSpell.b(paramString.trim().substring(0, 1));
         if (paramString != null)
         {
           if (paramString.length == 0) {
@@ -525,7 +524,7 @@ public class PasswdRedBagServiceImpl
         }
         return false;
       }
-      if (paramPasswdRedBagInfo.a() == 1)
+      if (paramPasswdRedBagInfo.b() == 1)
       {
         if (isEnglishWords(paramString))
         {
@@ -535,13 +534,13 @@ public class PasswdRedBagServiceImpl
           }
         }
       }
-      else if (paramPasswdRedBagInfo.a() == 2)
+      else if (paramPasswdRedBagInfo.b() == 2)
       {
         if (isKeyWords(paramString, str, paramPasswdRedBagInfo)) {
           return true;
         }
       }
-      else if ((paramPasswdRedBagInfo.a() == 3) && (isContinueIdiom(paramString, str, paramPasswdRedBagInfo))) {
+      else if ((paramPasswdRedBagInfo.b() == 3) && (isContinueIdiom(paramString, str, paramPasswdRedBagInfo))) {
         return true;
       }
     }
@@ -555,10 +554,10 @@ public class PasswdRedBagServiceImpl
   
   private void loadPasswdRedBagToCache(PasswdRedBagInfo paramPasswdRedBagInfo)
   {
-    String str = paramPasswdRedBagInfo.jdField_a_of_type_JavaLangString;
-    Object localObject6 = paramPasswdRedBagInfo.d;
+    String str = paramPasswdRedBagInfo.a;
+    Object localObject6 = paramPasswdRedBagInfo.e;
     this.mPasswdRedBagsCache.put(str, paramPasswdRedBagInfo);
-    int i = paramPasswdRedBagInfo.jdField_a_of_type_Int;
+    int i = paramPasswdRedBagInfo.h;
     int k = 0;
     int j;
     Object localObject7;
@@ -588,7 +587,7 @@ public class PasswdRedBagServiceImpl
             break label855;
           }
           localObject7 = (PasswdRedBagInfo)this.mPasswdRedBagsCache.get(localObject7);
-          if ((localObject7 == null) || (((PasswdRedBagInfo)localObject7).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {
+          if ((localObject7 == null) || (((PasswdRedBagInfo)localObject7).d >= paramPasswdRedBagInfo.d)) {
             break label855;
           }
           ((List)localObject1).add(i, str);
@@ -602,14 +601,14 @@ public class PasswdRedBagServiceImpl
       }
       throw paramPasswdRedBagInfo;
     }
-    else if (paramPasswdRedBagInfo.jdField_a_of_type_Int == 4)
+    else if (paramPasswdRedBagInfo.h == 4)
     {
       Object localObject8;
-      if ((paramPasswdRedBagInfo.a() != 0) && (paramPasswdRedBagInfo.a() != 1) && (paramPasswdRedBagInfo.a() != 3))
+      if ((paramPasswdRedBagInfo.b() != 0) && (paramPasswdRedBagInfo.b() != 1) && (paramPasswdRedBagInfo.b() != 3))
       {
-        if (paramPasswdRedBagInfo.a() == 2)
+        if (paramPasswdRedBagInfo.b() == 2)
         {
-          localObject7 = paramPasswdRedBagInfo.a().iterator();
+          localObject7 = paramPasswdRedBagInfo.d().iterator();
           for (;;)
           {
             if (!((Iterator)localObject7).hasNext()) {
@@ -637,11 +636,11 @@ public class PasswdRedBagServiceImpl
                   break label867;
                 }
                 localObject8 = (PasswdRedBagInfo)this.mPasswdRedBagsCache.get(localObject8);
-                if ((localObject8 == null) || (((PasswdRedBagInfo)localObject8).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {
+                if ((localObject8 == null) || (((PasswdRedBagInfo)localObject8).d >= paramPasswdRedBagInfo.d)) {
                   break label867;
                 }
                 label415:
-                ((List)localObject2).add(i, new Pair(str, getLastIdiomPinyin(paramPasswdRedBagInfo.e)));
+                ((List)localObject2).add(i, new Pair(str, getLastIdiomPinyin(paramPasswdRedBagInfo.i)));
               }
             }
             catch (Throwable localThrowable2)
@@ -656,7 +655,7 @@ public class PasswdRedBagServiceImpl
       }
       else
       {
-        localObject7 = getLastIdiomPinyin(paramPasswdRedBagInfo.e).split("-");
+        localObject7 = getLastIdiomPinyin(paramPasswdRedBagInfo.i).split("-");
         m = localObject7.length;
         j = 0;
         for (;;)
@@ -687,7 +686,7 @@ public class PasswdRedBagServiceImpl
                 break label879;
               }
               localObject8 = (PasswdRedBagInfo)this.mPasswdRedBagsCache.get(localObject8);
-              if ((localObject8 == null) || (((PasswdRedBagInfo)localObject8).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {
+              if ((localObject8 == null) || (((PasswdRedBagInfo)localObject8).d >= paramPasswdRedBagInfo.d)) {
                 break label879;
               }
               label632:
@@ -707,7 +706,7 @@ public class PasswdRedBagServiceImpl
     }
     label677:
     Object localObject4;
-    if (paramPasswdRedBagInfo.jdField_a_of_type_Int == 8)
+    if (paramPasswdRedBagInfo.h == 8)
     {
       ??? = (List)this.mShengpiziRedBagsCache.get(localObject6);
       localObject4 = ???;
@@ -733,7 +732,7 @@ public class PasswdRedBagServiceImpl
               break label891;
             }
             localObject6 = (PasswdRedBagInfo)this.mPasswdRedBagsCache.get(localObject6);
-            if ((localObject6 == null) || (((PasswdRedBagInfo)localObject6).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {
+            if ((localObject6 == null) || (((PasswdRedBagInfo)localObject6).d >= paramPasswdRedBagInfo.d)) {
               break label891;
             }
             j = i;
@@ -866,10 +865,10 @@ public class PasswdRedBagServiceImpl
     if (paramString2 == null) {
       return;
     }
-    if (paramString2.jdField_a_of_type_Boolean == paramBoolean) {
+    if (paramString2.f == paramBoolean) {
       return;
     }
-    paramString2.jdField_a_of_type_Boolean = paramBoolean;
+    paramString2.f = paramBoolean;
     ThreadManager.getFileThreadHandler().post(new PasswdRedBagServiceImpl.14(this, paramString1, paramBoolean));
   }
   
@@ -896,7 +895,7 @@ public class PasswdRedBagServiceImpl
             Iterator localIterator = localList.iterator();
             if (localIterator.hasNext())
             {
-              if (!((String)localIterator.next()).equals(paramPasswdRedBagInfo.jdField_a_of_type_JavaLangString)) {
+              if (!((String)localIterator.next()).equals(paramPasswdRedBagInfo.a)) {
                 continue;
               }
               localIterator.remove();
@@ -919,7 +918,7 @@ public class PasswdRedBagServiceImpl
   
   public void createPasswdRedBagAnonymousTips(String paramString, int paramInt)
   {
-    String str = HardCodeUtil.a(R.string.br);
+    String str = HardCodeUtil.a(R.string.bv);
     if (paramInt == 8) {
       str = "匿名不能抢K歌红包哦";
     }
@@ -927,11 +926,11 @@ public class PasswdRedBagServiceImpl
     {
       break;
       if (paramInt == 9) {
-        str = HardCodeUtil.a(R.string.bu);
+        str = HardCodeUtil.a(R.string.by);
       } else if (paramInt == 10) {
-        str = HardCodeUtil.a(R.string.bq);
+        str = HardCodeUtil.a(R.string.bu);
       } else if (paramInt == 11) {
-        str = HardCodeUtil.a(R.string.bx);
+        str = HardCodeUtil.a(R.string.bB);
       }
     }
     ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).TroopTipsMsgMgr$insertTroopTipsIntoMessageList(this.mQQAppInterface, paramString, str, NetConnInfoCenter.getServerTime(), 10000L, 0, 1);
@@ -939,7 +938,7 @@ public class PasswdRedBagServiceImpl
   
   public void createPasswdRedBagBanTips(String paramString, int paramInt)
   {
-    String str = HardCodeUtil.a(R.string.bv);
+    String str = HardCodeUtil.a(R.string.bz);
     if (paramInt == 8) {
       str = "禁言不能抢K歌红包哦";
     }
@@ -947,11 +946,11 @@ public class PasswdRedBagServiceImpl
     {
       break;
       if (paramInt == 9) {
-        str = HardCodeUtil.a(R.string.bs);
-      } else if (paramInt == 10) {
-        str = HardCodeUtil.a(R.string.bt);
-      } else if (paramInt == 11) {
         str = HardCodeUtil.a(R.string.bw);
+      } else if (paramInt == 10) {
+        str = HardCodeUtil.a(R.string.bx);
+      } else if (paramInt == 11) {
+        str = HardCodeUtil.a(R.string.bA);
       }
     }
     ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).TroopTipsMsgMgr$insertTroopTipsIntoMessageList(this.mQQAppInterface, paramString, str, NetConnInfoCenter.getServerTime(), 10000L, 0, 1);
@@ -1079,6 +1078,96 @@ public class PasswdRedBagServiceImpl
     return (String)this.mDefaultPasswds.get(i);
   }
   
+  public String getShengpiziTitle(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        String str = new JSONObject(paramString).optString("shengpizi_title");
+        return str;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PasswdRedBagInfo extStr:");
+        localStringBuilder.append(paramString);
+        QLog.e(localStringBuilder.toString(), 1, QLog.getStackTraceString(localThrowable));
+      }
+    }
+    return "";
+  }
+  
+  public String hanleShengpiziGrayTips(String paramString1, int paramInt, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
+    }
+    if (paramString1.trim().length() != 0)
+    {
+      if (!isEnglishWords(paramString1)) {
+        return "";
+      }
+      paramString1 = this.mShengpiziRedBagsCache;
+      if (paramString1 != null)
+      {
+        if (paramString1.isEmpty()) {
+          return "";
+        }
+        if (this.hasMatched) {
+          return "";
+        }
+        this.shengpiziList.clear();
+        paramString1 = this.mShengpiziRedBagsCache.keySet().iterator();
+        while (paramString1.hasNext())
+        {
+          Object localObject1 = paramString1.next();
+          Object localObject2 = (List)this.mShengpiziRedBagsCache.get(localObject1);
+          if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+          {
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              Object localObject3 = (String)((Iterator)localObject2).next();
+              Object localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(transType(paramInt));
+              ((StringBuilder)localObject4).append("_");
+              ((StringBuilder)localObject4).append(paramString2);
+              ((StringBuilder)localObject4).append("_");
+              localObject4 = ((StringBuilder)localObject4).toString();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject4);
+              localStringBuilder.append((String)localObject3);
+              localObject4 = localStringBuilder.toString();
+              if (!this.mPasswdRedBagAuthKeyCache.containsKey(localObject4))
+              {
+                if (QLog.isColorLevel())
+                {
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("get redbagid, no find passwd redbag auth key in cache, key: ");
+                  ((StringBuilder)localObject3).append(localObject1);
+                  QLog.d("msgFold", 2, ((StringBuilder)localObject3).toString());
+                }
+              }
+              else
+              {
+                localObject3 = (PasswdRedBagInfo)this.mPasswdRedBagsCache.get(localObject3);
+                if ((localObject3 != null) && (!((PasswdRedBagInfo)localObject3).g) && (!((PasswdRedBagInfo)localObject3).a()) && (!((PasswdRedBagInfo)localObject3).f)) {
+                  this.shengpiziList.add(localObject3);
+                }
+              }
+            }
+          }
+        }
+        if (!this.shengpiziList.isEmpty())
+        {
+          Collections.sort(this.shengpiziList, new PasswdRedBagServiceImpl.2(this));
+          return getShengpiziTitle(((PasswdRedBagInfo)this.shengpiziList.get(0)).j);
+        }
+      }
+    }
+    return "";
+  }
+  
   public boolean isFirstInAio()
   {
     return this.isFirstInAio;
@@ -1175,12 +1264,12 @@ public class PasswdRedBagServiceImpl
           ((StringBuilder)localObject1).append(this.isNeedLoadRedBagInfo);
           QLog.d("msgFold", 2, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = this.mPasswdRedBagDBManager.a().iterator();
+        localObject1 = this.mPasswdRedBagDBManager.b().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           PasswdRedBagInfo localPasswdRedBagInfo = (PasswdRedBagInfo)((Iterator)localObject1).next();
           loadPasswdRedBagToCache(localPasswdRedBagInfo);
-          ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(this.mQQAppInterface, false, localPasswdRedBagInfo.jdField_a_of_type_JavaLangString, localPasswdRedBagInfo.jdField_b_of_type_JavaLangString);
+          ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(this.mQQAppInterface, false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
         }
         this.isNeedSyncLoadRedBagInfo = false;
       }
@@ -1238,8 +1327,6 @@ public class PasswdRedBagServiceImpl
     this.mContext = this.mQQAppInterface.getApplication();
     this.mUin = this.mQQAppInterface.getCurrentAccountUin();
     this.mPasswdRedBagDBManager = new PasswdRedBagDBManager(this);
-    this.mQQAppInterface.addObserver(this.mQWalletObserver);
-    this.mQWalletHandler = ((QWalletHandler)this.mQQAppInterface.getBusinessHandler(((IQWalletTemp)QRoute.api(IQWalletTemp.class)).BusinessHandlerFactory$QWALLET_HANDLER()));
     this.mPasswdCache = new HashMap();
     this.mIdiomRedBagsCache = new HashMap();
     this.mIdiomRedBagLensCache = new HashMap();
@@ -1247,8 +1334,6 @@ public class PasswdRedBagServiceImpl
     this.mPasswdRedBagAuthKeyCache = new HashMap();
     this.mShengpiziRedBagsCache = new HashMap();
     this.mDefaultPasswds = new ArrayList();
-    this.groupNeedUpdates = new ArrayList();
-    this.disgroupNeedUpdates = new ArrayList();
     this.isNeedSyncLoadRedBagInfo = true;
     this.isNeedLoadRedBagInfo = true;
     this.isNeedLoadRedBagRelation = true;
@@ -1272,8 +1357,6 @@ public class PasswdRedBagServiceImpl
   
   public void onDestroy()
   {
-    this.mQWalletObserver.a();
-    this.mQQAppInterface.removeObserver(this.mQWalletObserver);
     this.mPasswdRedBagDBManager.a();
     PasswdRedBagServiceImpl.RedPacketRefreshReceiver localRedPacketRefreshReceiver = this.mRedPacketRefreshReceiver;
     if (localRedPacketRefreshReceiver != null)
@@ -1310,25 +1393,25 @@ public class PasswdRedBagServiceImpl
       loadRedBagRelationToCache();
       Object localObject1 = this.mPasswdRedBagAuthKeyCache;
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(transType(paramBaseSessionInfo.jdField_a_of_type_Int));
+      ((StringBuilder)localObject2).append(transType(paramBaseSessionInfo.a));
       ((StringBuilder)localObject2).append("_");
-      ((StringBuilder)localObject2).append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramBaseSessionInfo.b);
       ((StringBuilder)localObject2).append("_");
-      ((StringBuilder)localObject2).append(paramPasswdRedBagInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramPasswdRedBagInfo.a);
       localObject2 = (String)((HashMap)localObject1).get(((StringBuilder)localObject2).toString());
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return;
       }
-      if ((paramBaseSessionInfo.jdField_a_of_type_Int != 0) && (paramBaseSessionInfo.jdField_a_of_type_Int != 2) && (paramBaseSessionInfo.jdField_a_of_type_Int != 1004) && (paramBaseSessionInfo.jdField_a_of_type_Int != 1001) && (paramBaseSessionInfo.jdField_a_of_type_Int != 10002)) {
+      if ((paramBaseSessionInfo.a != 0) && (paramBaseSessionInfo.a != 2) && (paramBaseSessionInfo.a != 1004) && (paramBaseSessionInfo.a != 1001) && (paramBaseSessionInfo.a != 10002)) {
         i = 0;
       } else {
         i = 1;
       }
-      localObject1 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject1 = paramBaseSessionInfo.b;
       Object localObject3 = String.valueOf(paramPasswdRedBagInfo.c);
       if (i != 0) {
         if (((String)localObject3).equals(this.mUin)) {
-          localObject1 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+          localObject1 = paramBaseSessionInfo.b;
         } else {
           localObject1 = this.mUin;
         }
@@ -1336,7 +1419,7 @@ public class PasswdRedBagServiceImpl
       localObject3 = QWalletRedPkgUtils.a(this.mQQAppInterface, paramBaseSessionInfo);
       int i = ((Bundle)localObject3).getInt("groupType");
       localObject3 = ((Bundle)localObject3).getString("name");
-      paramPasswdRedBagInfo = paramPasswdRedBagInfo.jdField_a_of_type_JavaLangString;
+      paramPasswdRedBagInfo = paramPasswdRedBagInfo.a;
       paramBaseSessionInfo = QWalletRedPkgUtils.a(this.mQQAppInterface, paramBaseSessionInfo, i, (String)localObject3, paramPasswdRedBagInfo, (String)localObject2, (String)localObject1, "appid#1344242394|bargainor_id#1000030201|channel#msg", "graphb", null, paramInt1, 0, paramString, paramInt2, paramInt3, paramBundle);
       paramString = new Bundle();
       paramString.putString("json", paramBaseSessionInfo.toString());
@@ -1397,7 +1480,7 @@ public class PasswdRedBagServiceImpl
       return localObject;
     }
     localObject[1] = Long.valueOf(localPasswdRedBagInfo.c);
-    if (4 == localPasswdRedBagInfo.jdField_a_of_type_Int)
+    if (4 == localPasswdRedBagInfo.h)
     {
       localObject[2] = null;
       localObject[3] = null;
@@ -1405,22 +1488,22 @@ public class PasswdRedBagServiceImpl
     else if (!localPasswdRedBagInfo.a())
     {
       localObject[2] = paramString2;
-      localObject[3] = localPasswdRedBagInfo.jdField_b_of_type_JavaLangString;
+      localObject[3] = localPasswdRedBagInfo.b;
     }
-    if (4 != localPasswdRedBagInfo.jdField_a_of_type_Int)
+    if (4 != localPasswdRedBagInfo.h)
     {
-      if (localPasswdRedBagInfo.jdField_a_of_type_Boolean)
+      if (localPasswdRedBagInfo.f)
       {
         VACDReportUtil.endReport(l, "pwd.end", "", -1, "opened");
         return localObject;
       }
-      if (localPasswdRedBagInfo.jdField_b_of_type_Boolean)
+      if (localPasswdRedBagInfo.g)
       {
         localObject[0] = Integer.valueOf(2);
         VACDReportUtil.endReport(l, "pwd.end", "", -1, "finish");
         return localObject;
       }
-      if ((localPasswdRedBagInfo.a()) && (4 != localPasswdRedBagInfo.jdField_a_of_type_Int))
+      if ((localPasswdRedBagInfo.a()) && (4 != localPasswdRedBagInfo.h))
       {
         localObject[0] = Integer.valueOf(3);
         VACDReportUtil.endReport(l, "pwd.end", "", -1, "overdue");
@@ -1428,20 +1511,22 @@ public class PasswdRedBagServiceImpl
       }
     }
     if (!TextUtils.isEmpty(paramString1)) {
-      if ((localPasswdRedBagInfo.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(localPasswdRedBagInfo.d)) && (paramString1.equals(localPasswdRedBagInfo.d)))
+      if ((localPasswdRedBagInfo.h == 0) && (!TextUtils.isEmpty(localPasswdRedBagInfo.e)) && (paramString1.equals(localPasswdRedBagInfo.e)))
       {
-        setPasswdRedBagOpen(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int);
+        this.hasMatched = true;
+        setPasswdRedBagOpen(localPasswdRedBagInfo.a, paramBaseSessionInfo.b, paramBaseSessionInfo.a);
         openPasswdBagByTenpay(paramBaseSessionInfo, localPasswdRedBagInfo, l, paramInt);
       }
-      else if ((4 == localPasswdRedBagInfo.jdField_a_of_type_Int) && (isMatchIdomRedBag(paramString1, localPasswdRedBagInfo)) && (!localPasswdRedBagInfo.jdField_b_of_type_Boolean) && (!localPasswdRedBagInfo.a()))
+      else if ((4 == localPasswdRedBagInfo.h) && (isMatchIdomRedBag(paramString1, localPasswdRedBagInfo)) && (!localPasswdRedBagInfo.g) && (!localPasswdRedBagInfo.a()))
       {
         if (QLog.isColorLevel())
         {
           paramString2 = new StringBuilder();
           paramString2.append("----成语接龙红包----");
-          paramString2.append(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString);
+          paramString2.append(localPasswdRedBagInfo.a);
           QLog.i("PasswdRedBagSgervice", 2, paramString2.toString());
         }
+        this.hasMatched = true;
         openSolitaireRedBagByIdiom(paramString1.trim(), paramBaseSessionInfo, localPasswdRedBagInfo, l, paramInt);
       }
       else
@@ -1503,29 +1588,29 @@ public class PasswdRedBagServiceImpl
       return arrayOfObject;
     }
     l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.sendByPwd", "msgType=6", 0, null, l);
-    if (localPasswdRedBagInfo.jdField_a_of_type_Int == 0)
+    if (localPasswdRedBagInfo.h == 0)
     {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("----word hb----");
-        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.a);
         QLog.i("PasswdRedBagSgervice", 2, ((StringBuilder)localObject2).toString());
       }
-      if ((!TextUtils.isEmpty(paramString)) && (localPasswdRedBagInfo != null) && (!TextUtils.isEmpty(localPasswdRedBagInfo.d)) && (paramString.trim().equals(localPasswdRedBagInfo.d.trim())))
+      if ((!TextUtils.isEmpty(paramString)) && (localPasswdRedBagInfo != null) && (!TextUtils.isEmpty(localPasswdRedBagInfo.e)) && (paramString.trim().equals(localPasswdRedBagInfo.e.trim())))
       {
-        setPasswdRedBagOpen(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int);
+        setPasswdRedBagOpen(localPasswdRedBagInfo.a, paramBaseSessionInfo.b, paramBaseSessionInfo.a);
         openPasswdBagByTenpay(paramBaseSessionInfo, localPasswdRedBagInfo, l, paramInt);
         return arrayOfObject;
       }
     }
-    else if (4 == localPasswdRedBagInfo.jdField_a_of_type_Int)
+    else if (4 == localPasswdRedBagInfo.h)
     {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("----word chain hb----");
-        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.a);
         QLog.i("PasswdRedBagSgervice", 2, ((StringBuilder)localObject2).toString());
       }
       if (isMatchIdomRedBag(paramString, localPasswdRedBagInfo))
@@ -1534,27 +1619,27 @@ public class PasswdRedBagServiceImpl
         return arrayOfObject;
       }
     }
-    else if (8 == localPasswdRedBagInfo.jdField_a_of_type_Int)
+    else if (8 == localPasswdRedBagInfo.h)
     {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("----word hb----");
-        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(localPasswdRedBagInfo.a);
         QLog.i("PasswdRedBagSgervice", 2, ((StringBuilder)localObject2).toString());
       }
-      if ((!TextUtils.isEmpty(paramString)) && (localPasswdRedBagInfo != null) && (!TextUtils.isEmpty(localPasswdRedBagInfo.d)))
+      if ((!TextUtils.isEmpty(paramString)) && (localPasswdRedBagInfo != null) && (!TextUtils.isEmpty(localPasswdRedBagInfo.e)))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramString.trim().toUpperCase());
         ((StringBuilder)localObject2).append("&rareword");
-        if (MD5.a(((StringBuilder)localObject2).toString()).substring(0, 8).equals(localPasswdRedBagInfo.d.trim()))
+        if (MD5.b(((StringBuilder)localObject2).toString()).substring(0, 8).equals(localPasswdRedBagInfo.e.trim()))
         {
           localObject2 = new Bundle();
           ((Bundle)localObject2).putString("answer", paramString);
           ((Bundle)localObject2).putInt("channel", 1000003);
-          ((Bundle)localObject2).putString("hb_from", localPasswdRedBagInfo.a());
-          openPasswdBagByTenpay(paramBaseSessionInfo, localPasswdRedBagInfo, l, paramInt, (Bundle)localObject2);
+          ((Bundle)localObject2).putString("hb_from", localPasswdRedBagInfo.c());
+          openPasswdBagByTenpay(paramBaseSessionInfo, localPasswdRedBagInfo, l, 1000003, paramInt, (Bundle)localObject2);
         }
       }
     }
@@ -1585,90 +1670,6 @@ public class PasswdRedBagServiceImpl
     ReportController.b(this.mQQAppInterface, "CliOper", "", "", "0X8006116", "0X8006116", 0, 0, "", "0", paramString, "0");
   }
   
-  public void requestPasswdRedBagByDisgroups()
-  {
-    Object localObject1 = this.mCacheDisGroupInfos;
-    if (localObject1 != null)
-    {
-      if (((HashMap)localObject1).size() == 0) {
-        return;
-      }
-      this.disgroupNeedUpdates.clear();
-      localObject1 = new ArrayList();
-      List localList = this.mPasswdRedBagDBManager.a(2);
-      Iterator localIterator = this.mCacheDisGroupInfos.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (String)localIterator.next();
-        PasswdRedBagUpdateInfo localPasswdRedBagUpdateInfo = new PasswdRedBagUpdateInfo();
-        localPasswdRedBagUpdateInfo.jdField_a_of_type_Long = Long.parseLong((String)localObject2);
-        localPasswdRedBagUpdateInfo.jdField_a_of_type_Int = 2;
-        localPasswdRedBagUpdateInfo.b = Long.parseLong((String)this.mCacheDisGroupInfos.get(localObject2));
-        int i = localList.indexOf(localPasswdRedBagUpdateInfo);
-        if (i != -1)
-        {
-          localObject2 = (PasswdRedBagUpdateInfo)localList.get(i);
-          if (localPasswdRedBagUpdateInfo.b <= ((PasswdRedBagUpdateInfo)localObject2).b) {}
-        }
-        else
-        {
-          localObject2 = new oidb_0x438.ReqInfo();
-          ((oidb_0x438.ReqInfo)localObject2).uint64_code.set(localPasswdRedBagUpdateInfo.jdField_a_of_type_Long);
-          ((oidb_0x438.ReqInfo)localObject2).uint64_last_redbag_time.set(localPasswdRedBagUpdateInfo.b);
-          ((List)localObject1).add(localObject2);
-          this.disgroupNeedUpdates.add(localPasswdRedBagUpdateInfo);
-        }
-      }
-      this.mCacheDisGroupInfos.clear();
-      if (this.disgroupNeedUpdates.isEmpty()) {
-        return;
-      }
-      this.mQWalletHandler.a(1, (List)localObject1);
-    }
-  }
-  
-  public void requestPasswdRedBagByGroups()
-  {
-    Object localObject1 = this.mCacheGroupInfos;
-    if (localObject1 != null)
-    {
-      if (((HashMap)localObject1).size() == 0) {
-        return;
-      }
-      this.groupNeedUpdates.clear();
-      localObject1 = new ArrayList();
-      List localList = this.mPasswdRedBagDBManager.a(1);
-      Iterator localIterator = this.mCacheGroupInfos.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (String)localIterator.next();
-        PasswdRedBagUpdateInfo localPasswdRedBagUpdateInfo = new PasswdRedBagUpdateInfo();
-        localPasswdRedBagUpdateInfo.jdField_a_of_type_Long = Long.parseLong((String)localObject2);
-        localPasswdRedBagUpdateInfo.jdField_a_of_type_Int = 1;
-        localPasswdRedBagUpdateInfo.b = Long.parseLong((String)this.mCacheGroupInfos.get(localObject2));
-        int i = localList.indexOf(localPasswdRedBagUpdateInfo);
-        if (i != -1)
-        {
-          localObject2 = (PasswdRedBagUpdateInfo)localList.get(i);
-          if (localPasswdRedBagUpdateInfo.b <= ((PasswdRedBagUpdateInfo)localObject2).b) {}
-        }
-        else
-        {
-          localObject2 = new oidb_0x438.ReqInfo();
-          ((oidb_0x438.ReqInfo)localObject2).uint64_code.set(localPasswdRedBagUpdateInfo.jdField_a_of_type_Long);
-          ((oidb_0x438.ReqInfo)localObject2).uint64_last_redbag_time.set(localPasswdRedBagUpdateInfo.b);
-          ((List)localObject1).add(localObject2);
-          this.groupNeedUpdates.add(localPasswdRedBagUpdateInfo);
-        }
-      }
-      this.mCacheGroupInfos.clear();
-      if (this.groupNeedUpdates.isEmpty()) {
-        return;
-      }
-      this.mQWalletHandler.a(0, (List)localObject1);
-    }
-  }
-  
   public void saveDisGroupInfos(HashMap<String, String> paramHashMap)
   {
     if (this.mCacheDisGroupInfos == null) {
@@ -1696,7 +1697,7 @@ public class PasswdRedBagServiceImpl
     {
       paramString2 = new PasswdRedBagInfo(paramString1, paramString2, paramString4, paramLong, new QQText(paramString3, 5, 16).toString(), paramBoolean1, paramBoolean2, paramInt, paramString8, paramString9);
       loadPasswdRedBagToCache(paramString2);
-      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(this.mQQAppInterface, true, paramString2.jdField_a_of_type_JavaLangString, paramString2.jdField_b_of_type_JavaLangString);
+      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(this.mQQAppInterface, true, paramString2.a, paramString2.b);
       ThreadManager.getFileThreadHandler().post(new PasswdRedBagServiceImpl.11(this, paramString2));
     }
     paramString2 = new StringBuilder();
@@ -1731,10 +1732,10 @@ public class PasswdRedBagServiceImpl
     if (localPasswdRedBagInfo == null) {
       return;
     }
-    if (localPasswdRedBagInfo.jdField_b_of_type_Boolean) {
+    if (localPasswdRedBagInfo.g) {
       return;
     }
-    localPasswdRedBagInfo.jdField_b_of_type_Boolean = true;
+    localPasswdRedBagInfo.g = true;
     ThreadManager.getFileThreadHandler().post(new PasswdRedBagServiceImpl.13(this, paramString));
   }
   
@@ -1771,14 +1772,14 @@ public class PasswdRedBagServiceImpl
         }
         if (TextUtils.isEmpty(paramString3))
         {
-          if (((PasswdRedBagInfo)localObject1).a() == 3) {
+          if (((PasswdRedBagInfo)localObject1).b() == 3) {
             setPasswdRedBagFinish(paramString1);
           }
           return;
         }
         try
         {
-          localObject2 = this.mPasswdRedBagDBManager.a(((PasswdRedBagInfo)localObject1).f);
+          localObject2 = this.mPasswdRedBagDBManager.a(((PasswdRedBagInfo)localObject1).j);
           if (localObject2 != null)
           {
             int i = ((JSONObject)localObject2).optInt("key_extstr_idiomseq");
@@ -1792,14 +1793,14 @@ public class PasswdRedBagServiceImpl
               localStringBuilder.append(" extObj: ");
               localStringBuilder.append(((JSONObject)localObject2).toString());
               localStringBuilder.append(" lastpassword: ");
-              localStringBuilder.append(((PasswdRedBagInfo)localObject1).e);
+              localStringBuilder.append(((PasswdRedBagInfo)localObject1).i);
               QLog.d("PasswdRedBagSgervice", 2, localStringBuilder.toString());
             }
             if (paramInt > i)
             {
               ((JSONObject)localObject2).put("key_extstr_idiomseq", paramInt);
               PasswdRedBagInfo.a((JSONObject)localObject2, paramString4);
-              ((PasswdRedBagInfo)localObject1).f = ((JSONObject)localObject2).toString();
+              ((PasswdRedBagInfo)localObject1).j = ((JSONObject)localObject2).toString();
               paramString4 = new StringBuilder();
               paramString4.append(paramString2.trim());
               paramString4.append("_");
@@ -1812,8 +1813,8 @@ public class PasswdRedBagServiceImpl
                 paramString3.append(paramString2);
                 QLog.d("PasswdRedBagSgervice", 2, paramString3.toString());
               }
-              paramString3 = getLastIdiomPinyin(((PasswdRedBagInfo)localObject1).e);
-              ((PasswdRedBagInfo)localObject1).e = paramString2;
+              paramString3 = getLastIdiomPinyin(((PasswdRedBagInfo)localObject1).i);
+              ((PasswdRedBagInfo)localObject1).i = paramString2;
               updateIdiomRedBagToCache((PasswdRedBagInfo)localObject1, paramString3);
               ThreadManager.getFileThreadHandler().post(new PasswdRedBagServiceImpl.15(this, paramString1, paramString2, (JSONObject)localObject2));
             }
@@ -1872,7 +1873,7 @@ public class PasswdRedBagServiceImpl
         paramContext = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).ChatFragment$getCurPie(paramContext);
         if (paramContext != null)
         {
-          paramContext = paramContext.a();
+          paramContext = paramContext.f();
           if (paramContext != null) {
             paramContext.a(paramString2, paramString1);
           }
@@ -1901,7 +1902,7 @@ public class PasswdRedBagServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl
  * JD-Core Version:    0.7.0.1
  */

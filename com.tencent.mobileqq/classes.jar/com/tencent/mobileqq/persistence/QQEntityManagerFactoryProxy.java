@@ -11,8 +11,8 @@ import com.tencent.util.DBBuildUtil;
 public final class QQEntityManagerFactoryProxy
   extends QQEntityManagerFactory
 {
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private DefaultOnDBUpgradeCallback jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback;
+  private EntityManagerFactory a;
+  private DefaultOnDBUpgradeCallback b;
   
   private QQEntityManagerFactoryProxy(String paramString)
   {
@@ -38,8 +38,8 @@ public final class QQEntityManagerFactoryProxy
   public static QQEntityManagerFactoryProxy a(String paramString)
   {
     QQEntityManagerFactoryProxy localQQEntityManagerFactoryProxy = new QQEntityManagerFactoryProxy(paramString);
-    localQQEntityManagerFactoryProxy.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback = new DefaultOnDBUpgradeCallback();
-    localQQEntityManagerFactoryProxy.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = DBBuildUtil.getDefaultEntityManagerFactoryBuilder(paramString).onDBUpgradeListener(localQQEntityManagerFactoryProxy.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback).build();
+    localQQEntityManagerFactoryProxy.b = new DefaultOnDBUpgradeCallback();
+    localQQEntityManagerFactoryProxy.a = DBBuildUtil.getDefaultEntityManagerFactoryBuilder(paramString).onDBUpgradeListener(localQQEntityManagerFactoryProxy.b).build();
     return localQQEntityManagerFactoryProxy;
   }
   
@@ -50,52 +50,52 @@ public final class QQEntityManagerFactoryProxy
     {
       IOnDBUpgradeListener localIOnDBUpgradeListener = ((QQEntityManagerFactory)paramEntityManagerFactory).getOnDBUpgradeListener();
       if ((localIOnDBUpgradeListener instanceof DefaultOnDBUpgradeCallback)) {
-        paramString.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback = ((DefaultOnDBUpgradeCallback)localIOnDBUpgradeListener);
+        paramString.b = ((DefaultOnDBUpgradeCallback)localIOnDBUpgradeListener);
       }
     }
-    paramString.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = paramEntityManagerFactory;
+    paramString.a = paramEntityManagerFactory;
     return paramString;
-  }
-  
-  public EntityManager a()
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory);
   }
   
   public boolean a()
   {
-    DefaultOnDBUpgradeCallback localDefaultOnDBUpgradeCallback = this.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback;
+    DefaultOnDBUpgradeCallback localDefaultOnDBUpgradeCallback = this.b;
     return (localDefaultOnDBUpgradeCallback != null) && (localDefaultOnDBUpgradeCallback.a());
+  }
+  
+  public EntityManager b()
+  {
+    return a(this.a);
   }
   
   public SQLiteOpenHelper build(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.build(paramString);
+    return this.a.build(paramString);
   }
   
   public void close()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.close();
+    this.a.close();
   }
   
   public EntityManager createEntityManager()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.createEntityManager();
+    return this.a.createEntityManager();
   }
   
   public boolean isOpen()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.isOpen();
+    return this.a.isOpen();
   }
   
   public boolean verifyAuthentication()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.verifyAuthentication();
+    return this.a.verifyAuthentication();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,10 @@ public class WeiShiFlowBannerVideoInfoController$GetStoryTagInfoReceiver
   
   public void a(@NonNull WeiShiFlowBannerVideoInfoController paramWeiShiFlowBannerVideoInfoController, @NonNull GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent paramGetStoryPlayerTagInfoEvent)
   {
-    if ((WeiShiFlowBannerVideoInfoController.a(paramWeiShiFlowBannerVideoInfoController) != null) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList.contains(WeiShiFlowBannerVideoInfoController.a(paramWeiShiFlowBannerVideoInfoController).a)))
+    if ((WeiShiFlowBannerVideoInfoController.a(paramWeiShiFlowBannerVideoInfoController) != null) && (paramGetStoryPlayerTagInfoEvent.g.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.a.contains(WeiShiFlowBannerVideoInfoController.a(paramWeiShiFlowBannerVideoInfoController).b)))
     {
       SLog.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramGetStoryPlayerTagInfoEvent.b.toString());
-      paramWeiShiFlowBannerVideoInfoController.a.i();
+      paramWeiShiFlowBannerVideoInfoController.a.x();
     }
   }
   

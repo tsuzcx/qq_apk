@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.view.View;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.R.id;
 
 class ItemTouchUIUtilImpl
   implements ItemTouchUIUtil
@@ -41,11 +42,11 @@ class ItemTouchUIUtilImpl
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = paramView.getTag(2131369164);
+      Object localObject = paramView.getTag(R.id.item_touch_helper_previous_elevation);
       if ((localObject instanceof Float)) {
         ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
       }
-      paramView.setTag(2131369164, null);
+      paramView.setTag(R.id.item_touch_helper_previous_elevation, null);
     }
     paramView.setTranslationX(0.0F);
     paramView.setTranslationY(0.0F);
@@ -53,11 +54,11 @@ class ItemTouchUIUtilImpl
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(2131369164) == null))
+    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(R.id.item_touch_helper_previous_elevation) == null))
     {
       float f = ViewCompat.getElevation(paramView);
       ViewCompat.setElevation(paramView, findMaxElevation(paramRecyclerView, paramView) + 1.0F);
-      paramView.setTag(2131369164, Float.valueOf(f));
+      paramView.setTag(R.id.item_touch_helper_previous_elevation, Float.valueOf(f));
     }
     paramView.setTranslationX(paramFloat1);
     paramView.setTranslationY(paramFloat2);

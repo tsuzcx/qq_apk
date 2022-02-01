@@ -9,14 +9,8 @@ public class ImageDbHelper
   extends SQLiteOpenHelper
 {
   protected static String a = "sys_image";
-  protected static final byte[] a;
-  protected static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "key", "maxage", "updatetime", "modified", "local" };
-    jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
+  protected static final String[] b = { "key", "maxage", "updatetime", "modified", "local" };
+  protected static final byte[] c = new byte[1];
   
   public ImageDbHelper(Context paramContext)
   {
@@ -26,11 +20,11 @@ public class ImageDbHelper
   protected ImageInfo a(Cursor paramCursor)
   {
     ImageInfo localImageInfo = new ImageInfo();
-    localImageInfo.jdField_a_of_type_JavaLangString = paramCursor.getString(0);
-    localImageInfo.jdField_a_of_type_Long = paramCursor.getLong(1);
-    localImageInfo.b = paramCursor.getLong(2);
-    localImageInfo.jdField_c_of_type_Long = paramCursor.getLong(3);
-    localImageInfo.jdField_c_of_type_JavaLangString = paramCursor.getString(4);
+    localImageInfo.a = paramCursor.getString(0);
+    localImageInfo.c = paramCursor.getLong(1);
+    localImageInfo.d = paramCursor.getLong(2);
+    localImageInfo.e = paramCursor.getLong(3);
+    localImageInfo.f = paramCursor.getString(4);
     return localImageInfo;
   }
   
@@ -38,7 +32,7 @@ public class ImageDbHelper
   public ImageInfo a(String paramString)
   {
     // Byte code:
-    //   0: getstatic 28	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_ArrayOfByte	[B
+    //   0: getstatic 30	com/tencent/open/base/img/ImageDbHelper:c	[B
     //   3: astore 9
     //   5: aload 9
     //   7: monitorenter
@@ -51,14 +45,14 @@ public class ImageDbHelper
     //   17: aconst_null
     //   18: astore_3
     //   19: aload_0
-    //   20: invokevirtual 71	com/tencent/open/base/img/ImageDbHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   20: invokevirtual 74	com/tencent/open/base/img/ImageDbHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   23: astore_2
     //   24: aload_2
-    //   25: getstatic 72	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   28: getstatic 26	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   31: ldc 74
+    //   25: getstatic 75	com/tencent/open/base/img/ImageDbHelper:a	Ljava/lang/String;
+    //   28: getstatic 28	com/tencent/open/base/img/ImageDbHelper:b	[Ljava/lang/String;
+    //   31: ldc 77
     //   33: iconst_1
-    //   34: anewarray 14	java/lang/String
+    //   34: anewarray 16	java/lang/String
     //   37: dup
     //   38: iconst_0
     //   39: aload_1
@@ -66,7 +60,7 @@ public class ImageDbHelper
     //   41: aconst_null
     //   42: aconst_null
     //   43: aconst_null
-    //   44: invokevirtual 80	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: invokevirtual 83	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   47: astore 6
     //   49: aload_3
     //   50: astore_1
@@ -75,14 +69,14 @@ public class ImageDbHelper
     //   53: aload 6
     //   55: astore 4
     //   57: aload 6
-    //   59: invokeinterface 84 1 0
+    //   59: invokeinterface 87 1 0
     //   64: ifle +30 -> 94
     //   67: aload_2
     //   68: astore_3
     //   69: aload 6
     //   71: astore 4
     //   73: aload 6
-    //   75: invokeinterface 88 1 0
+    //   75: invokeinterface 91 1 0
     //   80: pop
     //   81: aload_2
     //   82: astore_3
@@ -90,15 +84,15 @@ public class ImageDbHelper
     //   85: astore 4
     //   87: aload_0
     //   88: aload 6
-    //   90: invokevirtual 90	com/tencent/open/base/img/ImageDbHelper:a	(Landroid/database/Cursor;)Lcom/tencent/open/base/img/ImageInfo;
+    //   90: invokevirtual 93	com/tencent/open/base/img/ImageDbHelper:a	(Landroid/database/Cursor;)Lcom/tencent/open/base/img/ImageInfo;
     //   93: astore_1
     //   94: aload 6
     //   96: ifnull +117 -> 213
     //   99: aload 6
-    //   101: invokeinterface 93 1 0
+    //   101: invokeinterface 96 1 0
     //   106: goto +107 -> 213
     //   109: aload_2
-    //   110: invokevirtual 94	android/database/sqlite/SQLiteDatabase:close	()V
+    //   110: invokevirtual 97	android/database/sqlite/SQLiteDatabase:close	()V
     //   113: aload_1
     //   114: astore_3
     //   115: goto +57 -> 172
@@ -126,11 +120,11 @@ public class ImageDbHelper
     //   151: aload_1
     //   152: astore 4
     //   154: aload 5
-    //   156: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   156: invokevirtual 100	java/lang/Exception:printStackTrace	()V
     //   159: aload_1
     //   160: ifnull +62 -> 222
     //   163: aload_1
-    //   164: invokeinterface 93 1 0
+    //   164: invokeinterface 96 1 0
     //   169: goto +53 -> 222
     //   172: aload 9
     //   174: monitorexit
@@ -139,12 +133,12 @@ public class ImageDbHelper
     //   177: aload 4
     //   179: ifnull +13 -> 192
     //   182: aload 4
-    //   184: invokeinterface 93 1 0
+    //   184: invokeinterface 96 1 0
     //   189: goto +3 -> 192
     //   192: aload_2
     //   193: ifnull +7 -> 200
     //   196: aload_2
-    //   197: invokevirtual 94	android/database/sqlite/SQLiteDatabase:close	()V
+    //   197: invokevirtual 97	android/database/sqlite/SQLiteDatabase:close	()V
     //   200: aload_1
     //   201: athrow
     //   202: aload 9
@@ -212,7 +206,7 @@ public class ImageDbHelper
   public void a(ImageInfo paramImageInfo)
   {
     // Byte code:
-    //   0: getstatic 28	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_ArrayOfByte	[B
+    //   0: getstatic 30	com/tencent/open/base/img/ImageDbHelper:c	[B
     //   3: astore 5
     //   5: aload 5
     //   7: monitorenter
@@ -228,104 +222,104 @@ public class ImageDbHelper
     //   23: aconst_null
     //   24: astore_2
     //   25: aload_0
-    //   26: invokevirtual 101	com/tencent/open/base/img/ImageDbHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   26: invokevirtual 104	com/tencent/open/base/img/ImageDbHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   29: astore_3
-    //   30: new 103	android/content/ContentValues
+    //   30: new 106	android/content/ContentValues
     //   33: dup
-    //   34: invokespecial 104	android/content/ContentValues:<init>	()V
+    //   34: invokespecial 107	android/content/ContentValues:<init>	()V
     //   37: astore 4
     //   39: aload 4
-    //   41: ldc 16
+    //   41: ldc 18
     //   43: aload_1
-    //   44: getfield 49	com/tencent/open/base/img/ImageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: invokevirtual 108	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: getfield 51	com/tencent/open/base/img/ImageInfo:a	Ljava/lang/String;
+    //   47: invokevirtual 111	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload 4
-    //   52: ldc 18
+    //   52: ldc 20
     //   54: aload_1
-    //   55: getfield 56	com/tencent/open/base/img/ImageInfo:jdField_a_of_type_Long	J
-    //   58: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   61: invokevirtual 117	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   55: getfield 58	com/tencent/open/base/img/ImageInfo:c	J
+    //   58: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   61: invokevirtual 120	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   64: aload 4
-    //   66: ldc 20
+    //   66: ldc 22
     //   68: aload_1
-    //   69: getfield 59	com/tencent/open/base/img/ImageInfo:b	J
-    //   72: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   75: invokevirtual 117	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   69: getfield 61	com/tencent/open/base/img/ImageInfo:d	J
+    //   72: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   75: invokevirtual 120	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   78: aload 4
-    //   80: ldc 22
+    //   80: ldc 24
     //   82: aload_1
-    //   83: getfield 62	com/tencent/open/base/img/ImageInfo:jdField_c_of_type_Long	J
-    //   86: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   89: invokevirtual 117	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   83: getfield 64	com/tencent/open/base/img/ImageInfo:e	J
+    //   86: invokestatic 117	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   89: invokevirtual 120	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   92: aload 4
-    //   94: ldc 24
+    //   94: ldc 26
     //   96: aload_1
-    //   97: getfield 64	com/tencent/open/base/img/ImageInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   100: invokevirtual 108	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   103: new 119	java/lang/StringBuilder
+    //   97: getfield 67	com/tencent/open/base/img/ImageInfo:f	Ljava/lang/String;
+    //   100: invokevirtual 111	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   103: new 122	java/lang/StringBuilder
     //   106: dup
-    //   107: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   107: invokespecial 123	java/lang/StringBuilder:<init>	()V
     //   110: astore 6
     //   112: aload 6
-    //   114: ldc 122
-    //   116: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: ldc 125
+    //   116: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: aload_1
     //   121: ifnonnull +9 -> 130
-    //   124: ldc 128
+    //   124: ldc 131
     //   126: astore_2
     //   127: goto +8 -> 135
     //   130: aload_1
-    //   131: getfield 49	com/tencent/open/base/img/ImageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   131: getfield 51	com/tencent/open/base/img/ImageInfo:a	Ljava/lang/String;
     //   134: astore_2
     //   135: aload 6
     //   137: aload_2
-    //   138: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
-    //   142: ldc 130
+    //   142: ldc 133
     //   144: aload 6
-    //   146: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 138	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   152: getstatic 72	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   146: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 141	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   152: getstatic 75	com/tencent/open/base/img/ImageDbHelper:a	Ljava/lang/String;
     //   155: astore_2
-    //   156: new 119	java/lang/StringBuilder
+    //   156: new 122	java/lang/StringBuilder
     //   159: dup
-    //   160: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   160: invokespecial 123	java/lang/StringBuilder:<init>	()V
     //   163: astore 6
     //   165: aload 6
-    //   167: ldc 140
-    //   169: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: ldc 143
+    //   169: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: pop
     //   173: aload 6
     //   175: aload_1
-    //   176: getfield 49	com/tencent/open/base/img/ImageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   179: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: getfield 51	com/tencent/open/base/img/ImageInfo:a	Ljava/lang/String;
+    //   179: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
     //   183: aload 6
-    //   185: ldc 142
-    //   187: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: ldc 145
+    //   187: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: pop
     //   191: aload_3
     //   192: aload_2
     //   193: aload 6
-    //   195: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   198: aconst_null
-    //   199: invokevirtual 146	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   199: invokevirtual 149	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   202: pop
     //   203: goto +8 -> 211
     //   206: astore_1
     //   207: aload_1
-    //   208: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   208: invokevirtual 100	java/lang/Exception:printStackTrace	()V
     //   211: aload_3
-    //   212: getstatic 72	com/tencent/open/base/img/ImageDbHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   212: getstatic 75	com/tencent/open/base/img/ImageDbHelper:a	Ljava/lang/String;
     //   215: aconst_null
     //   216: aload 4
-    //   218: invokevirtual 150	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   218: invokevirtual 153	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   221: pop2
     //   222: aload_3
     //   223: ifnull +50 -> 273
     //   226: aload_3
-    //   227: invokevirtual 94	android/database/sqlite/SQLiteDatabase:close	()V
+    //   227: invokevirtual 97	android/database/sqlite/SQLiteDatabase:close	()V
     //   230: goto +43 -> 273
     //   233: astore_1
     //   234: goto +43 -> 277
@@ -344,21 +338,21 @@ public class ImageDbHelper
     //   254: astore_1
     //   255: aload_1
     //   256: astore_2
-    //   257: ldc 130
-    //   259: ldc 152
+    //   257: ldc 133
+    //   259: ldc 155
     //   261: aload_3
-    //   262: invokestatic 155	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   262: invokestatic 158	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   265: aload_1
     //   266: ifnull +7 -> 273
     //   269: aload_1
-    //   270: invokevirtual 94	android/database/sqlite/SQLiteDatabase:close	()V
+    //   270: invokevirtual 97	android/database/sqlite/SQLiteDatabase:close	()V
     //   273: aload 5
     //   275: monitorexit
     //   276: return
     //   277: aload_3
     //   278: ifnull +7 -> 285
     //   281: aload_3
-    //   282: invokevirtual 94	android/database/sqlite/SQLiteDatabase:close	()V
+    //   282: invokevirtual 97	android/database/sqlite/SQLiteDatabase:close	()V
     //   285: aload_1
     //   286: athrow
     //   287: aload 5
@@ -409,7 +403,7 @@ public class ImageDbHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CREATE TABLE ");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(" (");
       localStringBuilder.append("key");
       localStringBuilder.append(" VARCHAR(50),");
@@ -438,7 +432,7 @@ public class ImageDbHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("DROP TABLE IF EXISTS ");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(";");
       paramSQLiteDatabase.execSQL(localStringBuilder.toString());
       onCreate(paramSQLiteDatabase);
@@ -447,7 +441,7 @@ public class ImageDbHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.img.ImageDbHelper
  * JD-Core Version:    0.7.0.1
  */

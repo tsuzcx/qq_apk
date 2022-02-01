@@ -5,38 +5,21 @@ import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class MultiMembersUI$MVMembersInfo
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  public long a = 0L;
+  public boolean b = false;
+  public boolean c = false;
+  public int d = 0;
   public boolean e = false;
-  public boolean f = true;
-  
-  public MultiMembersUI$MVMembersInfo()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = null;
-    this.jdField_d_of_type_Int = 0;
-  }
+  public boolean f = false;
+  public String g = null;
+  public String h = null;
+  public Bitmap i = null;
+  public int j = 0;
+  public int k = 0;
+  public AVPhoneUserInfo l = null;
+  public boolean m = false;
+  public int n = 0;
+  public boolean o = true;
 }
 
 

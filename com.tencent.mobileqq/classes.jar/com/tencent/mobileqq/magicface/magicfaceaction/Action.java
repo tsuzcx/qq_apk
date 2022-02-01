@@ -16,120 +16,91 @@ import java.util.concurrent.CountDownLatch;
 
 public class Action
 {
-  public int a;
-  Vibrator jdField_a_of_type_AndroidOsVibrator;
   public ActionGlobalData a;
-  public ActionProcess a;
-  MagicfaceDecoder.MagicPlayListener jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener = new Action.1(this);
-  MagicfacePlayRes jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes;
-  public MagicfacePlayManager a;
-  public String a;
-  public List<MagicfacePlayRes> a;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask = new Action.2(this);
-  CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-  public boolean a;
-  public int b;
-  public volatile boolean b;
-  int jdField_c_of_type_Int = 0;
-  volatile boolean jdField_c_of_type_Boolean = false;
-  public boolean d = false;
-  
-  public Action()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  void a()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes = ((MagicfacePlayRes)this.jdField_a_of_type_JavaUtilList.get(0));
-      return;
-    }
-    if ((i > 1) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int >= 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        MagicfacePlayRes localMagicfacePlayRes = (MagicfacePlayRes)localIterator.next();
-        if ((localMagicfacePlayRes.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int) && (localMagicfacePlayRes.jdField_b_of_type_Int > this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int)) {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes = localMagicfacePlayRes;
-        }
-      }
-    }
-  }
+  public String b;
+  public List<MagicfacePlayRes> c = new ArrayList();
+  MagicfacePlayRes d;
+  public int e = -1;
+  public int f = 1;
+  public MagicfacePlayManager g;
+  public boolean h;
+  public ActionProcess i;
+  public volatile boolean j = false;
+  volatile boolean k = false;
+  int l = 0;
+  Vibrator m;
+  public boolean n = false;
+  CountDownLatch o = new CountDownLatch(1);
+  MagicfaceDecoder.MagicPlayListener p = new Action.1(this);
+  TimerTask q = new Action.2(this);
   
   public void a(int paramInt, MagicfaceActionManager.MagicfaceSensorOperation paramMagicfaceSensorOperation)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess;
+    Object localObject = this.i;
     if (localObject == null) {
       return;
     }
-    int j = ((ActionProcess)localObject).jdField_a_of_type_Int;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_Int > 0)
+    int i2 = ((ActionProcess)localObject).d;
+    int i1 = i2;
+    if (this.i.d > 0)
     {
-      i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_Int < 40) {
-        i = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_Int * 2;
+      i1 = i2;
+      if (this.i.d < 40) {
+        i1 = this.i.d * 2;
       }
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("==stopValue=");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       QLog.i("Action", 2, ((StringBuilder)localObject).toString());
     }
-    if ("end".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_c_of_type_JavaLangString))
+    if ("end".equalsIgnoreCase(this.i.c))
     {
-      if (paramInt >= i) {
-        d();
+      if (paramInt >= i1) {
+        e();
       }
       return;
     }
-    if (("stop".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_JavaLangString)) && (paramInt >= i) && ("mic".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_b_of_type_JavaLangString)))
+    if (("stop".equalsIgnoreCase(this.i.a)) && (paramInt >= i1) && ("mic".equalsIgnoreCase(this.i.b)))
     {
-      d();
+      e();
       if (paramMagicfaceSensorOperation != null) {
         paramMagicfaceSensorOperation.a();
       }
     }
-    else if ("record".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_JavaLangString))
+    else if ("record".equalsIgnoreCase(this.i.a))
     {
-      paramMagicfaceSensorOperation = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-      paramMagicfaceSensorOperation.jdField_b_of_type_Int += this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.a(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText != null)
+      paramMagicfaceSensorOperation = this.a;
+      paramMagicfaceSensorOperation.i += this.i.a(paramInt);
+      if (this.a.m != null)
       {
-        paramMagicfaceSensorOperation = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-        paramMagicfaceSensorOperation.e = paramMagicfaceSensorOperation.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Float);
+        paramMagicfaceSensorOperation = this.a;
+        paramMagicfaceSensorOperation.k = paramMagicfaceSensorOperation.m.a(this.a.i, this.a.p);
       }
     }
   }
   
   public boolean a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    a();
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.jdField_c_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.g);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
+    this.j = false;
+    b();
+    this.f = this.d.e;
+    this.g.a(this.d.j);
+    this.g.a(this.p);
+    this.g.a(this.d);
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await();
+      this.o.await();
       label63:
-      if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.jdField_c_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.jdField_c_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.jdField_c_of_type_JavaLangString);
+      if ((this.d.f != null) && (this.d.f.length() > 0)) {
+        this.g.a(this.d.f);
       }
-      if ((this.jdField_a_of_type_AndroidOsVibrator != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidOsVibrator.cancel();
+      if ((this.m != null) && (this.d.k)) {
+        this.m.cancel();
       }
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
+      if ((this.j) && (!this.h)) {
         return false;
       }
       if (QLog.isColorLevel()) {
@@ -145,48 +116,69 @@ public class Action
   
   void b()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, this.jdField_a_of_type_Int * 1000);
+    int i1 = this.c.size();
+    if (i1 == 1)
+    {
+      this.d = ((MagicfacePlayRes)this.c.get(0));
+      return;
+    }
+    if ((i1 > 1) && (this.a.i >= 0))
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        MagicfacePlayRes localMagicfacePlayRes = (MagicfacePlayRes)localIterator.next();
+        if ((localMagicfacePlayRes.a <= this.a.i) && (localMagicfacePlayRes.b > this.a.i)) {
+          this.d = localMagicfacePlayRes;
+        }
+      }
     }
   }
   
   public void b(int paramInt, MagicfaceActionManager.MagicfaceSensorOperation paramMagicfaceSensorOperation)
   {
-    ActionProcess localActionProcess = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess;
+    ActionProcess localActionProcess = this.i;
     if (localActionProcess == null) {
       return;
     }
-    if ("end".equalsIgnoreCase(localActionProcess.jdField_c_of_type_JavaLangString))
+    if ("end".equalsIgnoreCase(localActionProcess.c))
     {
       if (paramMagicfaceSensorOperation != null) {
-        d();
+        e();
       }
       return;
     }
-    if (("stop".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_a_of_type_JavaLangString)) && ("touch".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess.jdField_b_of_type_Int == paramInt))
+    if (("stop".equalsIgnoreCase(this.i.a)) && ("touch".equalsIgnoreCase(this.i.b)) && (this.i.e == paramInt))
     {
-      d();
+      e();
       if (paramMagicfaceSensorOperation != null) {
         paramMagicfaceSensorOperation.a();
       }
     }
   }
   
-  public void c()
+  void c()
   {
-    this.jdField_b_of_type_Boolean = true;
+    if (this.e > 0) {
+      ThreadManager.getTimer().schedule(this.q, this.e * 1000);
+    }
   }
   
   public void d()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.b();
-    this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    this.j = true;
+  }
+  
+  public void e()
+  {
+    this.k = true;
+    this.g.b();
+    this.q.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.Action
  * JD-Core Version:    0.7.0.1
  */

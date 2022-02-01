@@ -18,7 +18,7 @@ class MoreVideoInfoWidget$8$1$1
   
   protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
+    StoryDispatcher.a().dispatch(this.a);
     return null;
   }
 }

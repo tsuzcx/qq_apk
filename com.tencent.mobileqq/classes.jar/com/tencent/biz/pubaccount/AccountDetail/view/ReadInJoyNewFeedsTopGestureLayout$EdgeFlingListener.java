@@ -29,7 +29,7 @@ class ReadInJoyNewFeedsTopGestureLayout$EdgeFlingListener
         if (localTopGestureLayout.hasGestureFlag(1))
         {
           double d1 = paramMotionEvent1.getX();
-          double d2 = DeviceInfoUtil.i();
+          double d2 = DeviceInfoUtil.D();
           Double.isNaN(d2);
           if (d1 > d2 * 0.2133333333333334D) {
             i = 0;
@@ -58,7 +58,7 @@ class ReadInJoyNewFeedsTopGestureLayout$EdgeFlingListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout.EdgeFlingListener
  * JD-Core Version:    0.7.0.1
  */

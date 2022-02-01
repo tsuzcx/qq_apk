@@ -10,9 +10,9 @@ class AVGameControlUIImpl$7
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl.a(this.jdField_a_of_type_Int);
+    this.a.a(this.b);
     int i;
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.b == 1) {
       i = 1;
     } else {
       i = 2;

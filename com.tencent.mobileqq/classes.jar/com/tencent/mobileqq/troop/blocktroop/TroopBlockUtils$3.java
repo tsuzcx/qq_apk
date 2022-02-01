@@ -17,23 +17,23 @@ final class TroopBlockUtils$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (ITroopMngHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
-    if ((NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
+    paramDialogInterface = (ITroopMngHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+    if ((NetworkUtil.isNetSupport(this.a.getApp().getApplicationContext())) && (paramDialogInterface != null))
     {
-      paramDialogInterface.a(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.a(this.b);
       return;
     }
     if (paramDialogInterface != null)
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131694475), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131892157), 0).show();
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131692085), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131889057), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils.3
  * JD-Core Version:    0.7.0.1
  */

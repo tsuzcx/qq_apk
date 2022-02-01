@@ -14,16 +14,16 @@ final class VelocityTrackerHelper$nextInvalidate$1
   {
     if (VelocityTrackerHelper.a(this.this$0))
     {
-      this.a.a(false, VelocityTrackerHelper.a(this.this$0).getCurrX(), VelocityTrackerHelper.a(this.this$0).getCurrY());
-      VelocityTrackerHelper.a(this.this$0).post(VelocityTrackerHelper.a(this.this$0));
+      this.a.a(false, VelocityTrackerHelper.b(this.this$0).getCurrX(), VelocityTrackerHelper.b(this.this$0).getCurrY());
+      VelocityTrackerHelper.c(this.this$0).post(VelocityTrackerHelper.d(this.this$0));
       return;
     }
-    this.a.a(true, VelocityTrackerHelper.a(this.this$0).getCurrX(), VelocityTrackerHelper.a(this.this$0).getCurrY());
+    this.a.a(true, VelocityTrackerHelper.b(this.this$0).getCurrX(), VelocityTrackerHelper.b(this.this$0).getCurrY());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.touch.VelocityTrackerHelper.nextInvalidate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,13 @@ package com.tencent.biz.richframework.util;
 
 import android.graphics.Typeface;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
-import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class RFWTypefaceUtil$3
   implements RFWDownloader.RFWDownloadListener
 {
+  RFWTypefaceUtil$3(String paramString) {}
+  
   public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
   
   public void onRspCallback(boolean paramBoolean, String paramString)

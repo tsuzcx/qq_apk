@@ -11,11 +11,6 @@ public final class NearbyUtils
 {
   private static INearbyUtilsDelegate a = (INearbyUtilsDelegate)QRoute.api(INearbyUtilsDelegate.class);
   
-  public static String a(int paramInt)
-  {
-    return a.convertFrom4Report(paramInt);
-  }
-  
   public static String a(String paramString)
   {
     return a.filterBlankSpace(paramString);
@@ -71,6 +66,11 @@ public final class NearbyUtils
     return a.isNetworkConnected(paramContext);
   }
   
+  public static String b(int paramInt)
+  {
+    return a.convertFrom4Report(paramInt);
+  }
+  
   public static void b(AppInterface paramAppInterface, String paramString, int paramInt)
   {
     a.reportHomeEvent(paramAppInterface, paramString, paramInt);
@@ -88,7 +88,7 @@ public final class NearbyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyUtils
  * JD-Core Version:    0.7.0.1
  */

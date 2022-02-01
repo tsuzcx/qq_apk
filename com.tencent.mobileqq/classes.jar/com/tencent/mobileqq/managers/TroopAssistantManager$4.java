@@ -10,12 +10,12 @@ class TroopAssistantManager$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.getStatus() == 1000)
+    if (this.a.getStatus() == 1000)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+      this.b.persist(this.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    this.b.update(this.a);
   }
 }
 

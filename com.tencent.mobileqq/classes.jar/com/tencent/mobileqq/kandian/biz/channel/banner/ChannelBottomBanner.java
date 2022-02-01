@@ -23,42 +23,42 @@ public class ChannelBottomBanner
   
   protected View a()
   {
-    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    View localView = new View(this.a);
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839601);
-      this.b = getResources().getDrawable(2130839600);
+      this.f = new LinearLayout.LayoutParams(UIUtils.a(this.a, 6.0F), UIUtils.a(this.a, 6.0F));
+      this.f.leftMargin = UIUtils.a(this.a, 4.0F);
+      this.h = getResources().getDrawable(2130840066);
+      this.i = getResources().getDrawable(2130840065);
     }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localView.setLayoutParams(this.f);
+    localView.setBackgroundDrawable(this.h);
     return localView;
   }
   
   protected void a(Activity paramActivity)
   {
-    LayoutInflater.from(paramActivity).inflate(2131559964, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager = ((RollViewPager)findViewById(2131380851));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370213));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setOnTouchStateChangeListener(new ChannelBottomBanner.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter = new BannerAdapter(paramActivity, this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager, BannerAdapter.b);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter);
-    paramActivity = new ViewPagerScroller(this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator());
+    LayoutInflater.from(paramActivity).inflate(2131626007, this, true);
+    this.b = ((RollViewPager)findViewById(2131449829));
+    this.b.setOffscreenPageLimit(5);
+    this.e = ((LinearLayout)findViewById(2131437397));
+    this.b.setOnPageChangeListener(new ChannelTopBanner.RollerChangeListener(this));
+    this.b.setOnTouchStateChangeListener(new ChannelBottomBanner.1(this));
+    this.d = new BannerAdapter(paramActivity, this.b, BannerAdapter.b);
+    this.b.setAdapter(this.d);
+    paramActivity = new ViewPagerScroller(this.a, new LinearInterpolator());
     paramActivity.a(400);
-    paramActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager);
+    paramActivity.a(this.b);
   }
   
   public void a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, TopBannerInfo paramTopBannerInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter != null)
+    if (this.d != null)
     {
       if (paramTopBannerInfo.items.size() > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerBannerAdapter.a(paramTopBannerInfo);
-        a();
+        this.d.a(paramTopBannerInfo);
+        b();
         a(true);
         return;
       }
@@ -68,7 +68,7 @@ public class ChannelBottomBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.ChannelBottomBanner
  * JD-Core Version:    0.7.0.1
  */

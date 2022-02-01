@@ -14,7 +14,7 @@ class CareNotificationBar$3$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentSpecialcareCareNotificationBar$3.a.postDelayed(new CareNotificationBar.3.1.1(this), 300L);
+    this.b.a.postDelayed(new CareNotificationBar.3.1.1(this), 300L);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -23,7 +23,7 @@ class CareNotificationBar$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.1
  * JD-Core Version:    0.7.0.1
  */

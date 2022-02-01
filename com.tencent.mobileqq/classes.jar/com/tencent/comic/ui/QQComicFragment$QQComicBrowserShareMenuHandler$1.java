@@ -11,12 +11,12 @@ class QQComicFragment$QQComicBrowserShareMenuHandler$1
   
   public ColorNote getColorNote()
   {
-    return new ColorNote.Builder().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838781").a(this.jdField_a_of_type_ArrayOfByte).a();
+    return new ColorNote.Builder().a(16908292).a(this.a).b(this.b).c(this.c).d("resdrawable://2130839003").a(this.d).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicFragment.QQComicBrowserShareMenuHandler.1
  * JD-Core Version:    0.7.0.1
  */

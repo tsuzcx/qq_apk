@@ -12,7 +12,7 @@ public class TroopAnonyRevokeConfProcessor
 {
   public static GeneralDataBean a()
   {
-    return (GeneralDataBean)QConfigManager.a().a(633);
+    return (GeneralDataBean)QConfigManager.b().b(633);
   }
   
   @NonNull
@@ -28,13 +28,13 @@ public class TroopAnonyRevokeConfProcessor
     Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      GeneralDataBean localGeneralDataBean = GeneralDataBean.a(paramArrayOfQConfItem[0].a);
+      GeneralDataBean localGeneralDataBean = GeneralDataBean.a(paramArrayOfQConfItem[0].b);
       localObject = localGeneralDataBean;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onParsed ");
-        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].b);
         QLog.d("TroopFoldMsgConfProcessor", 2, ((StringBuilder)localObject).toString());
         return localGeneralDataBean;
       }
@@ -94,7 +94,7 @@ public class TroopAnonyRevokeConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopAnonyRevokeConfProcessor
  * JD-Core Version:    0.7.0.1
  */

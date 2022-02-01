@@ -13,14 +13,14 @@ class QFileDebugSettingFragment$10
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileDatalineConfigBean.b(paramBoolean);
-    QFileDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxActivityQFileDebugSettingFragment).setDatalineConfig();
+    this.a.b(paramBoolean);
+    QFileDebugSettingFragment.a(this.b).setDatalineConfig();
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.10
  * JD-Core Version:    0.7.0.1
  */

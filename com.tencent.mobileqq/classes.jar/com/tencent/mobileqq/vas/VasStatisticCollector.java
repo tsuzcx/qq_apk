@@ -22,14 +22,14 @@ import org.jetbrains.annotations.Nullable;
 public final class VasStatisticCollector
 {
   public static final VasStatisticCollector a;
-  private static final boolean a;
+  private static final boolean b;
   
   static
   {
     VasStatisticCollector localVasStatisticCollector = new VasStatisticCollector();
-    jdField_a_of_type_ComTencentMobileqqVasVasStatisticCollector = localVasStatisticCollector;
-    UserAction.registerTunnel(new TunnelInfo("00000TEDPU36RWUZ", AppSetting.f(), "1000"));
-    jdField_a_of_type_Boolean = localVasStatisticCollector.a(100);
+    a = localVasStatisticCollector;
+    UserAction.registerTunnel(new TunnelInfo("00000TEDPU36RWUZ", AppSetting.h(), "1000"));
+    b = localVasStatisticCollector.a(100);
   }
   
   @JvmStatic
@@ -37,7 +37,7 @@ public final class VasStatisticCollector
   public static final void a(@NotNull String paramString, long paramLong, @Nullable Map<String, String> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
       return;
     }
     a(paramString, paramMap, paramLong, false, false, 24, null);
@@ -49,17 +49,10 @@ public final class VasStatisticCollector
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "params");
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
       return;
     }
     a(paramString, paramLong, MapsKt.toMutableMap(MapsKt.toMap(paramVarArgs)));
-  }
-  
-  @JvmStatic
-  @JvmOverloads
-  public static final void a(@NotNull String paramString, @Nullable Map<String, String> paramMap)
-  {
-    a(paramString, paramMap, 0L, false, false, 28, null);
   }
   
   @JvmStatic
@@ -88,13 +81,13 @@ public final class VasStatisticCollector
     if (paramMap == null)
     {
       paramMap = new HashMap();
-      paramMap.put("qquin", VasUtil.a());
+      paramMap.put("qquin", VasUtil.e());
       paramMap.put("cost_time", String.valueOf(paramLong));
       paramMap.put("consume_time", String.valueOf(paramLong));
       QQUserAction.a("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, (Map)paramMap, paramBoolean1, paramBoolean2);
       return;
     }
-    Object localObject = VasUtil.a();
+    Object localObject = VasUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "VasUtil.getCurrentUin()");
     paramMap.put("qquin", localObject);
     paramMap.put("cost_time", String.valueOf(paramLong));
@@ -112,7 +105,7 @@ public final class VasStatisticCollector
   @JvmStatic
   public static final boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return b;
   }
   
   @JvmStatic
@@ -141,7 +134,7 @@ public final class VasStatisticCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasStatisticCollector
  * JD-Core Version:    0.7.0.1
  */

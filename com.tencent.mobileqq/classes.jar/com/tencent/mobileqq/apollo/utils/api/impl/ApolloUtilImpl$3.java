@@ -23,36 +23,36 @@ class ApolloUtilImpl$3
     {
       localObject2 = (QQMessageFacade)((AppRuntime)localObject1).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject2 != null) {
-        ((QQMessageFacade)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+        ((QQMessageFacade)localObject2).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
       }
     }
-    if (this.jdField_a_of_type_Int != this.b - 1) {
+    if (this.b != this.c - 1) {
       return;
     }
-    int i = ApolloUtilImpl.getShareMsgActionId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    int i = ApolloUtilImpl.getShareMsgActionId(this.d, (MessageForArkApp)this.a);
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloUtil", 2, new Object[] { "[playShareMsgAction] share ark action actionId:", Integer.valueOf(i) });
     }
     if (i <= 0) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-    Object localObject2 = (SpriteBridge)((ISpriteScriptManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge();
+    this.a.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
+    Object localObject2 = (SpriteBridge)((ISpriteScriptManager)this.d.getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge();
     if (localObject2 != null) {
-      ((SpriteBridge)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, i);
+      ((SpriteBridge)localObject2).a(this.a, i);
     }
     if (localObject1 != null)
     {
       localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject1 != null) {
-        ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+        ((QQMessageFacade)localObject1).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl.3
  * JD-Core Version:    0.7.0.1
  */

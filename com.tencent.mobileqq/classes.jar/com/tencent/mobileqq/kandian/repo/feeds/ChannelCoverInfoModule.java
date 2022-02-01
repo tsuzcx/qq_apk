@@ -91,47 +91,28 @@ public class ChannelCoverInfoModule
   extends ChannelInfoModule
 {
   public static boolean a = false;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private IFindRemovedEntity<TabChannelCoverInfo> jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new ChannelCoverInfoModule.1(this);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private HashMap<Integer, List<ChannelCoverInfo>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private LinkedHashMap<Integer, ChannelCoverInfo> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private List<ChannelSection> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int = 0;
-  private IFindRemovedEntity<ChannelCoverInfo> jdField_b_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new ChannelCoverInfoModule.2(this);
-  private HashMap<Integer, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private LinkedHashMap<Integer, ChannelCoverInfo> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int jdField_c_of_type_Int = 0;
-  private LinkedHashMap<Integer, ChannelCoverInfo> jdField_c_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private final Object b = new Object();
+  private LinkedHashMap<Integer, ChannelCoverInfo> c = new LinkedHashMap();
+  private LinkedHashMap<Integer, ChannelCoverInfo> d = new LinkedHashMap();
+  private LinkedHashMap<Integer, ChannelCoverInfo> e = new LinkedHashMap();
+  private HashMap<Integer, List<ChannelCoverInfo>> f = new HashMap();
+  private HashMap<Integer, Integer> g = new HashMap();
+  private int h = 0;
+  private int i = 0;
+  private int j = 0;
+  private long k = 0L;
+  private List<ChannelSection> l = new ArrayList();
+  private IFindRemovedEntity<TabChannelCoverInfo> m = new ChannelCoverInfoModule.1(this);
+  private IFindRemovedEntity<ChannelCoverInfo> n = new ChannelCoverInfoModule.2(this);
   
   public ChannelCoverInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    registerEntityFinder(TabChannelCoverInfo.class, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
-    registerEntityFinder(ChannelCoverInfo.class, this.jdField_b_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
+    registerEntityFinder(TabChannelCoverInfo.class, this.m);
+    registerEntityFinder(ChannelCoverInfo.class, this.n);
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "construct!");
     }
-  }
-  
-  public static int a()
-  {
-    return RIJMainChannelUtil.a.a();
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_Int;
-    }
-    if (paramInt == 56) {
-      return this.jdField_b_of_type_Int;
-    }
-    if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      return ((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue();
-    }
-    return 0;
   }
   
   private int a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -157,42 +138,6 @@ public class ChannelCoverInfoModule
     return 0;
   }
   
-  private ChannelCoverInfo a(int paramInt1, int paramInt2)
-  {
-    Object localObject3 = this.jdField_a_of_type_JavaLangObject;
-    if (paramInt2 == 0) {}
-    try
-    {
-      localChannelCoverInfo = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    }
-    finally
-    {
-      for (;;)
-      {
-        ChannelCoverInfo localChannelCoverInfo;
-        continue;
-        Object localObject2 = null;
-      }
-    }
-    if (paramInt2 == 56)
-    {
-      localChannelCoverInfo = (ChannelCoverInfo)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    }
-    else if (paramInt2 == 41402)
-    {
-      localChannelCoverInfo = (ChannelCoverInfo)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    }
-    else
-    {
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt2))) {
-        break label130;
-      }
-      localChannelCoverInfo = a(paramInt1, (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt2)));
-    }
-    return localChannelCoverInfo;
-    throw localChannelCoverInfo;
-  }
-  
   private ChannelCoverInfo a(int paramInt, List<ChannelCoverInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
@@ -209,78 +154,19 @@ public class ChannelCoverInfoModule
     return null;
   }
   
-  private static TabChannelCoverInfo a()
-  {
-    int i;
-    if (a() != -1) {
-      i = a();
-    } else {
-      i = 0;
-    }
-    if (!TextUtils.isEmpty(a())) {
-      localObject = a();
-    } else {
-      localObject = HardCodeUtil.a(2131701725);
-    }
-    Object localObject = new TabChannelCoverInfo(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, i, (String)localObject, 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0");
-    String str = b();
-    if (!TextUtils.isEmpty(str)) {
-      try
-      {
-        ((TabChannelCoverInfo)localObject).mChannelJumpUrl = URLDecoder.decode(str, "UTF-8");
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("[getMainChannelInfo], e = ");
-        localStringBuilder2.append(localUnsupportedEncodingException);
-        QLog.e("ChannelCoverInfoModule", 1, localStringBuilder2.toString());
-      }
-    }
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder1.append("[getMainChannelInfo], channelCoverInfo = ");
-    localStringBuilder1.append(localObject);
-    QLog.i("ChannelCoverInfoModule", 1, localStringBuilder1.toString());
-    return localObject;
-  }
-  
-  public static String a()
-  {
-    return RIJMainChannelUtil.a.a();
-  }
-  
-  private List<TabChannelCoverInfo> a(List<TabChannelCoverInfo> paramList, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        TabChannelCoverInfo localTabChannelCoverInfo = ((TabChannelCoverInfo)paramList.next()).clone();
-        localTabChannelCoverInfo.channelConfigType = paramInt;
-        localTabChannelCoverInfo.seq = i;
-        localArrayList.add(localTabChannelCoverInfo);
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0)
     {
-      this.jdField_a_of_type_Int = paramInt2;
+      this.h = paramInt2;
       return;
     }
     if (paramInt1 == 56)
     {
-      this.jdField_b_of_type_Int = paramInt2;
+      this.i = paramInt2;
       return;
     }
-    this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.g.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
   private void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
@@ -321,43 +207,6 @@ public class ChannelCoverInfoModule
     }
   }
   
-  private void a(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if (paramInt == 0) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
-      break label150;
-      if (paramInt == 56)
-      {
-        this.jdField_b_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
-      }
-      else if (paramInt == 41402)
-      {
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
-      }
-      else if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))
-      {
-        ((List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).add(paramChannelCoverInfo);
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(paramChannelCoverInfo);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList);
-      }
-      label150:
-      return;
-    }
-    finally
-    {
-      label153:
-      break label153;
-    }
-    throw paramChannelCoverInfo;
-  }
-  
   public static void a(List<TabChannelCoverInfo> paramList, String paramString)
   {
     if (paramList != null)
@@ -365,14 +214,14 @@ public class ChannelCoverInfoModule
       if (paramList.size() <= 0) {
         return;
       }
-      int i = 0;
-      while (i < paramList.size())
+      int i1 = 0;
+      while (i1 < paramList.size())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
         localStringBuilder.append(" tabChannelCoverInfo [");
-        QLog.d("ChannelCoverInfoModule", 1, new Object[] { localStringBuilder.toString(), Integer.valueOf(i), "]: ", ((TabChannelCoverInfo)paramList.get(i)).shortLogString() });
-        i += 1;
+        QLog.d("ChannelCoverInfoModule", 1, new Object[] { localStringBuilder.toString(), Integer.valueOf(i1), "]: ", ((TabChannelCoverInfo)paramList.get(i1)).shortLogString() });
+        i1 += 1;
       }
     }
   }
@@ -385,7 +234,7 @@ public class ChannelCoverInfoModule
     Object localObject2;
     while (paramList2.hasNext())
     {
-      localObject1 = ((ChannelSection)paramList2.next()).jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = ((ChannelSection)paramList2.next()).d.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (TabChannelCoverInfo)((Iterator)localObject1).next();
@@ -396,7 +245,7 @@ public class ChannelCoverInfoModule
     while (paramList2.hasNext())
     {
       localObject1 = (ChannelSection)paramList2.next();
-      localObject2 = ((ChannelSection)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+      localObject2 = ((ChannelSection)localObject1).d.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         TabChannelCoverInfo localTabChannelCoverInfo1 = (TabChannelCoverInfo)((Iterator)localObject2).next();
@@ -404,65 +253,241 @@ public class ChannelCoverInfoModule
         if (localTabChannelCoverInfo2 != null) {
           if (localTabChannelCoverInfo1.redPoint != null)
           {
-            if ((!localTabChannelCoverInfo1.redPoint.jdField_a_of_type_Boolean) && (localTabChannelCoverInfo2.redPoint != null)) {
-              localTabChannelCoverInfo1.redPoint.jdField_a_of_type_Boolean = localTabChannelCoverInfo2.redPoint.jdField_a_of_type_Boolean;
+            if ((!localTabChannelCoverInfo1.redPoint.a) && (localTabChannelCoverInfo2.redPoint != null)) {
+              localTabChannelCoverInfo1.redPoint.a = localTabChannelCoverInfo2.redPoint.a;
             }
           }
           else {
             localTabChannelCoverInfo1.redPoint = localTabChannelCoverInfo2.redPoint;
           }
         }
-        int i;
+        int i1;
         if (ChannelModeConfigHandler.a()) {
-          i = 11;
+          i1 = 11;
         } else {
-          i = 6;
+          i1 = 6;
         }
-        int k = paramList1.indexOf(localObject1);
-        int j = 0;
-        if ((k == 0) && (((ChannelSection)localObject1).jdField_a_of_type_JavaUtilList.indexOf(localTabChannelCoverInfo1) < i)) {
-          i = 1;
+        int i3 = paramList1.indexOf(localObject1);
+        int i2 = 0;
+        if ((i3 == 0) && (((ChannelSection)localObject1).d.indexOf(localTabChannelCoverInfo1) < i1)) {
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
         if (RIJChannelHelper.a(localTabChannelCoverInfo1) != -1) {
-          j = 1;
+          i2 = 1;
         }
-        if ((j != 0) && (i == 0)) {
+        if ((i2 != 0) && (i1 == 0)) {
           a(true);
         }
       }
     }
   }
   
-  private boolean a()
+  private boolean a(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
   {
-    int i = this.jdField_c_of_type_Int;
-    if (i < 3)
-    {
-      this.jdField_c_of_type_Int = (i + 1);
-      return true;
+    if (paramChannelCoverInfo == null) {
+      return false;
     }
-    this.jdField_c_of_type_Int = 0;
-    RIJSPUtils.a("UPDATE_CHANNEL_LIST_KEY_0xBBC", Boolean.valueOf(false));
+    paramChannelCoverInfo = paramChannelCoverInfo.clone();
+    b(paramChannelCoverInfo, paramInt);
+    this.mExecutorService.execute(new ChannelCoverInfoModule.5(this, paramChannelCoverInfo));
+    return true;
+  }
+  
+  private boolean a(TabChannelCoverInfo paramTabChannelCoverInfo, List<TabChannelCoverInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      int i1 = 0;
+      while (i1 < paramList.size())
+      {
+        TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(i1);
+        if ((localTabChannelCoverInfo != null) && (localTabChannelCoverInfo.mChannelCoverId == paramTabChannelCoverInfo.mChannelCoverId) && (localTabChannelCoverInfo.mChannelId == paramTabChannelCoverInfo.mChannelId)) {
+          try
+          {
+            paramList.set(i1, paramTabChannelCoverInfo);
+            return true;
+          }
+          catch (Exception paramTabChannelCoverInfo)
+          {
+            paramList = new StringBuilder();
+            paramList.append("findAndReplaceChannel channelCoverInfoList error!!,index:");
+            paramList.append(i1);
+            paramList.append(" size:channelCoverInfoList.size(),msg:");
+            paramList.append(paramTabChannelCoverInfo.toString());
+            QLog.e("ChannelCoverInfoModule", 1, paramList.toString());
+            return true;
+          }
+        }
+        i1 += 1;
+      }
+    }
     return false;
   }
   
-  public static boolean a(int paramInt)
+  private void b(int paramInt1, int paramInt2)
+  {
+    ChannelCoverInfo localChannelCoverInfo = c(paramInt1, paramInt2);
+    if (localChannelCoverInfo != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeChannelCoverInfoFromDBAndCache channelID=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" ;channelCoverId = ");
+      localStringBuilder.append(paramInt1);
+      QLog.i("ChannelCoverInfoModule", 1, localStringBuilder.toString());
+      c(localChannelCoverInfo, paramInt2);
+      this.mExecutorService.execute(new ChannelCoverInfoModule.4(this, localChannelCoverInfo));
+    }
+  }
+  
+  private void b(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
+  {
+    Object localObject = this.b;
+    if (paramInt == 0) {}
+    try
+    {
+      this.c.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
+      break label151;
+      if (paramInt == 56)
+      {
+        this.d.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
+      }
+      else if (paramInt == 41402)
+      {
+        this.e.put(Integer.valueOf(paramChannelCoverInfo.mChannelCoverId), paramChannelCoverInfo);
+      }
+      else if (this.f.containsKey(Integer.valueOf(paramInt)))
+      {
+        ((List)this.f.get(Integer.valueOf(paramInt))).add(paramChannelCoverInfo);
+      }
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramChannelCoverInfo);
+        this.f.put(Integer.valueOf(paramInt), localArrayList);
+      }
+      label151:
+      return;
+    }
+    finally
+    {
+      label154:
+      break label154;
+    }
+    throw paramChannelCoverInfo;
+  }
+  
+  private void b(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  private ChannelCoverInfo c(int paramInt1, int paramInt2)
+  {
+    Object localObject3 = this.b;
+    if (paramInt2 == 0) {}
+    try
+    {
+      localChannelCoverInfo = (ChannelCoverInfo)this.c.get(Integer.valueOf(paramInt1));
+    }
+    finally
+    {
+      for (;;)
+      {
+        ChannelCoverInfo localChannelCoverInfo;
+        continue;
+        Object localObject2 = null;
+      }
+    }
+    if (paramInt2 == 56)
+    {
+      localChannelCoverInfo = (ChannelCoverInfo)this.d.get(Integer.valueOf(paramInt1));
+    }
+    else if (paramInt2 == 41402)
+    {
+      localChannelCoverInfo = (ChannelCoverInfo)this.e.get(Integer.valueOf(paramInt1));
+    }
+    else
+    {
+      if (!this.f.containsKey(Integer.valueOf(paramInt2))) {
+        break label131;
+      }
+      localChannelCoverInfo = a(paramInt1, (List)this.f.get(Integer.valueOf(paramInt2)));
+    }
+    return localChannelCoverInfo;
+    throw localChannelCoverInfo;
+  }
+  
+  private void c(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
+  {
+    Object localObject = this.b;
+    if (paramInt == 0) {}
+    try
+    {
+      Iterator localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext()) {
+        if (((Integer)localIterator.next()).intValue() == paramChannelCoverInfo.mChannelCoverId)
+        {
+          localIterator.remove();
+          break;
+          if (paramInt == 56)
+          {
+            localIterator = this.d.keySet().iterator();
+            do
+            {
+              if (!localIterator.hasNext()) {
+                break;
+              }
+            } while (((Integer)localIterator.next()).intValue() != paramChannelCoverInfo.mChannelCoverId);
+            localIterator.remove();
+          }
+          else if (paramInt == 41402)
+          {
+            localIterator = this.e.keySet().iterator();
+            do
+            {
+              if (!localIterator.hasNext()) {
+                break;
+              }
+            } while (((Integer)localIterator.next()).intValue() != paramChannelCoverInfo.mChannelCoverId);
+            localIterator.remove();
+          }
+          else if (this.f.containsKey(Integer.valueOf(paramInt)))
+          {
+            ((List)this.f.get(Integer.valueOf(paramInt))).remove(paramChannelCoverInfo);
+          }
+        }
+      }
+      return;
+    }
+    finally
+    {
+      label224:
+      break label224;
+    }
+    for (;;)
+    {
+      throw paramChannelCoverInfo;
+    }
+  }
+  
+  public static boolean e(int paramInt)
   {
     boolean bool = false;
-    if (!((Boolean)RIJSPUtils.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)RIJSPUtils.b("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false))).booleanValue())
     {
       QLog.d("ChannelCoverInfoModule", 1, "isSupportChannelDynamicOrder, switch is off.");
       return false;
     }
-    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localObject1 != null)
     {
       localObject1 = (ReadInJoyLogicManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if (localObject1 != null)
       {
-        localObject1 = ((ReadInJoyLogicManager)localObject1).getReadInJoyLogicEngine().a();
+        localObject1 = ((ReadInJoyLogicManager)localObject1).getReadInJoyLogicEngine().H();
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
           TabChannelCoverInfo localTabChannelCoverInfo;
@@ -477,7 +502,7 @@ public class ChannelCoverInfoModule
                 if (!((Iterator)localObject1).hasNext()) {
                   break;
                 }
-                localObject2 = ((ChannelSection)((Iterator)localObject1).next()).jdField_a_of_type_JavaUtilList;
+                localObject2 = ((ChannelSection)((Iterator)localObject1).next()).d;
               } while ((localObject2 == null) || (((List)localObject2).size() <= 0));
               localObject2 = ((List)localObject2).iterator();
             }
@@ -495,160 +520,26 @@ public class ChannelCoverInfoModule
     return false;
   }
   
-  private boolean a(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
+  private int f(int paramInt)
   {
-    if (paramChannelCoverInfo == null) {
-      return false;
+    if (paramInt == 0) {
+      return this.h;
     }
-    paramChannelCoverInfo = paramChannelCoverInfo.clone();
-    a(paramChannelCoverInfo, paramInt);
-    this.mExecutorService.execute(new ChannelCoverInfoModule.5(this, paramChannelCoverInfo));
-    return true;
+    if (paramInt == 56) {
+      return this.i;
+    }
+    if (this.g.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)this.g.get(Integer.valueOf(paramInt))).intValue();
+    }
+    return 0;
   }
   
-  private boolean a(TabChannelCoverInfo paramTabChannelCoverInfo, List<TabChannelCoverInfo> paramList)
+  public static int g()
   {
-    if (paramList != null)
-    {
-      int i = 0;
-      while (i < paramList.size())
-      {
-        TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)paramList.get(i);
-        if ((localTabChannelCoverInfo != null) && (localTabChannelCoverInfo.mChannelCoverId == paramTabChannelCoverInfo.mChannelCoverId) && (localTabChannelCoverInfo.mChannelId == paramTabChannelCoverInfo.mChannelId)) {
-          try
-          {
-            paramList.set(i, paramTabChannelCoverInfo);
-            return true;
-          }
-          catch (Exception paramTabChannelCoverInfo)
-          {
-            paramList = new StringBuilder();
-            paramList.append("findAndReplaceChannel channelCoverInfoList error!!,index:");
-            paramList.append(i);
-            paramList.append(" size:channelCoverInfoList.size(),msg:");
-            paramList.append(paramTabChannelCoverInfo.toString());
-            QLog.e("ChannelCoverInfoModule", 1, paramList.toString());
-            return true;
-          }
-        }
-        i += 1;
-      }
-    }
-    return false;
+    return RIJMainChannelUtil.a.c();
   }
   
-  private static String b()
-  {
-    return RIJMainChannelUtil.a.b();
-  }
-  
-  private List<TabChannelCoverInfo> b(List<ChannelSection> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        ChannelSection localChannelSection = (ChannelSection)paramList.next();
-        if ((localChannelSection.jdField_a_of_type_JavaUtilList != null) && (!localChannelSection.jdField_a_of_type_JavaUtilList.isEmpty()))
-        {
-          Iterator localIterator = localChannelSection.jdField_a_of_type_JavaUtilList.iterator();
-          int j = i;
-          for (;;)
-          {
-            i = j;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)localIterator.next();
-            localTabChannelCoverInfo.channelConfigType = localChannelSection.jdField_a_of_type_Long;
-            localTabChannelCoverInfo.seq = j;
-            localArrayList.add(localTabChannelCoverInfo);
-            j += 1;
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    ChannelCoverInfo localChannelCoverInfo = a(paramInt1, paramInt2);
-    if (localChannelCoverInfo != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("removeChannelCoverInfoFromDBAndCache channelID=");
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append(" ;channelCoverId = ");
-      localStringBuilder.append(paramInt1);
-      QLog.i("ChannelCoverInfoModule", 1, localStringBuilder.toString());
-      b(localChannelCoverInfo, paramInt2);
-      this.mExecutorService.execute(new ChannelCoverInfoModule.4(this, localChannelCoverInfo));
-    }
-  }
-  
-  private void b(ChannelCoverInfo paramChannelCoverInfo, int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if (paramInt == 0) {}
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      while (localIterator.hasNext()) {
-        if (((Integer)localIterator.next()).intValue() == paramChannelCoverInfo.mChannelCoverId)
-        {
-          localIterator.remove();
-          break;
-          if (paramInt == 56)
-          {
-            localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-            } while (((Integer)localIterator.next()).intValue() != paramChannelCoverInfo.mChannelCoverId);
-            localIterator.remove();
-          }
-          else if (paramInt == 41402)
-          {
-            localIterator = this.jdField_c_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-            } while (((Integer)localIterator.next()).intValue() != paramChannelCoverInfo.mChannelCoverId);
-            localIterator.remove();
-          }
-          else if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))
-          {
-            ((List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).remove(paramChannelCoverInfo);
-          }
-        }
-      }
-      return;
-    }
-    finally
-    {
-      label223:
-      break label223;
-    }
-    for (;;)
-    {
-      throw paramChannelCoverInfo;
-    }
-  }
-  
-  private void b(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  private List<ChannelCoverInfo> c(int paramInt)
+  private List<ChannelCoverInfo> g(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -662,26 +553,82 @@ public class ChannelCoverInfoModule
     return this.mEntityManager.query(ChannelCoverInfo.class, true, "mChannelID = ?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  private List<ChannelSection> c(List<ChannelSection> paramList)
+  private List<TabChannelCoverInfo> g(List<TabChannelCoverInfo> paramList, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
     {
       paramList = paramList.iterator();
-      int i = 0;
+      int i1 = 0;
+      while (paramList.hasNext())
+      {
+        TabChannelCoverInfo localTabChannelCoverInfo = ((TabChannelCoverInfo)paramList.next()).clone();
+        localTabChannelCoverInfo.channelConfigType = paramInt;
+        localTabChannelCoverInfo.seq = i1;
+        localArrayList.add(localTabChannelCoverInfo);
+        i1 += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static String h()
+  {
+    return RIJMainChannelUtil.a.d();
+  }
+  
+  private List<TabChannelCoverInfo> h(List<ChannelSection> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      int i1 = 0;
+      while (paramList.hasNext())
+      {
+        ChannelSection localChannelSection = (ChannelSection)paramList.next();
+        if ((localChannelSection.d != null) && (!localChannelSection.d.isEmpty()))
+        {
+          Iterator localIterator = localChannelSection.d.iterator();
+          int i2 = i1;
+          for (;;)
+          {
+            i1 = i2;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)localIterator.next();
+            localTabChannelCoverInfo.channelConfigType = localChannelSection.a;
+            localTabChannelCoverInfo.seq = i2;
+            localArrayList.add(localTabChannelCoverInfo);
+            i2 += 1;
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  private List<ChannelSection> i(List<ChannelSection> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      int i1 = 0;
       while (paramList.hasNext())
       {
         Object localObject = (ChannelSection)paramList.next();
-        ChannelSection localChannelSection = new ChannelSection(((ChannelSection)localObject).jdField_a_of_type_Long, ((ChannelSection)localObject).jdField_a_of_type_JavaLangString, ((ChannelSection)localObject).b);
-        localObject = ((ChannelSection)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        ChannelSection localChannelSection = new ChannelSection(((ChannelSection)localObject).a, ((ChannelSection)localObject).b, ((ChannelSection)localObject).c);
+        localObject = ((ChannelSection)localObject).d.iterator();
         while (((Iterator)localObject).hasNext())
         {
           TabChannelCoverInfo localTabChannelCoverInfo1 = (TabChannelCoverInfo)((Iterator)localObject).next();
           TabChannelCoverInfo localTabChannelCoverInfo2 = localTabChannelCoverInfo1.clone();
           localTabChannelCoverInfo2.channelConfigType = localTabChannelCoverInfo1.channelConfigType;
-          localTabChannelCoverInfo2.seq = i;
-          localChannelSection.jdField_a_of_type_JavaUtilList.add(localTabChannelCoverInfo2);
-          i += 1;
+          localTabChannelCoverInfo2.seq = i1;
+          localChannelSection.d.add(localTabChannelCoverInfo2);
+          i1 += 1;
         }
         localArrayList.add(localChannelSection);
       }
@@ -689,7 +636,7 @@ public class ChannelCoverInfoModule
     return localArrayList;
   }
   
-  private List<TabChannelCoverInfo> d(List<TabChannelCoverInfo> paramList)
+  private List<TabChannelCoverInfo> j(List<TabChannelCoverInfo> paramList)
   {
     Object localObject1 = paramList;
     if (paramList == null) {
@@ -712,7 +659,7 @@ public class ChannelCoverInfoModule
       }
       localObject4 = localObject3;
       localObject2 = localObject5;
-      if (paramList.mChannelCoverId == a())
+      if (paramList.mChannelCoverId == g())
       {
         localList = paramList;
         localObject4 = localObject3;
@@ -729,7 +676,7 @@ public class ChannelCoverInfoModule
       QLog.d("ChannelCoverInfoModule", 1, "recommendChannel not null");
       ((List)localObject1).remove(localObject4);
     }
-    ((List)localObject1).add(0, a());
+    ((List)localObject1).add(0, v());
     if (localObject2 != null)
     {
       QLog.d("ChannelCoverInfoModule", 1, "followChannel not null");
@@ -739,73 +686,7 @@ public class ChannelCoverInfoModule
     return localObject1;
   }
   
-  private void d()
-  {
-    try
-    {
-      localReqBody = new oidb_cmd0xbe6.ReqBody();
-      localObject = new oidb_cmd0xbe6.PhoneInfo();
-      str = RIJDeviceUtil.a();
-      if (!TextUtils.isEmpty(str))
-      {
-        str = MD5Utils.toMD5(str.toLowerCase()).toLowerCase();
-        ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
-        ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_muid_type.set(1);
-      }
-      else
-      {
-        str = DeviceInfoUtil.c(BaseApplication.getContext());
-        if (!TextUtils.isEmpty(str))
-        {
-          str = MD5Utils.toMD5(str.replaceAll(":", "").toUpperCase()).toLowerCase();
-          ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
-          ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_muid_type.set(3);
-        }
-      }
-      i = PublicAccountAdUtil.a();
-      ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_conn.set(i);
-      i = 0;
-    }
-    catch (Throwable localThrowable)
-    {
-      oidb_cmd0xbe6.ReqBody localReqBody;
-      String str;
-      int i;
-      int j;
-      label149:
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("requestWeiShiChannelCoverListFromServer failed for param error:");
-      ((StringBuilder)localObject).append(RIJLogUtil.a(localThrowable));
-      QLog.e("ChannelCoverInfoModule", 2, ((StringBuilder)localObject).toString());
-      return;
-    }
-    try
-    {
-      j = DeviceInfoUtil.g();
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      break label149;
-    }
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_carrier.set(i);
-    str = DeviceInfoUtil.e();
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_os_ver.set(ByteStringMicro.copyFromUtf8(str));
-    str = DeviceInfoUtil.c();
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8(str));
-    i = AppSetting.a();
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
-    str = DatalineMathUtil.a(DatalineMathUtil.a());
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_client_ip.set(ByteStringMicro.copyFromUtf8(str));
-    ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_os_type.set(2);
-    localReqBody.msg_phone_info.set((MessageMicro)localObject, true);
-    if ((this.mApp instanceof QQAppInterface)) {
-      localReqBody.string_channel_version.set(a((QQAppInterface)this.mApp));
-    }
-    sendPbReq(ReadInJoyOidbHelper.a("OidbSvc.0xbe6", 3046, 1, localReqBody.toByteArray()));
-  }
-  
-  private void g(List<ChannelSection> paramList)
+  private void k(List<ChannelSection> paramList)
   {
     if (paramList != null) {
       try
@@ -816,7 +697,7 @@ public class ChannelCoverInfoModule
           Object localObject = (ChannelSection)paramList.next();
           if (localObject != null)
           {
-            localObject = ((ChannelSection)localObject).jdField_a_of_type_JavaUtilList;
+            localObject = ((ChannelSection)localObject).d;
             if (localObject != null)
             {
               localObject = ((List)localObject).iterator();
@@ -845,16 +726,95 @@ public class ChannelCoverInfoModule
     }
   }
   
-  private List<ChannelCoverInfo> h()
+  private void n()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      localReqBody = new oidb_cmd0xbe6.ReqBody();
+      localObject = new oidb_cmd0xbe6.PhoneInfo();
+      str = RIJDeviceUtil.a();
+      if (!TextUtils.isEmpty(str))
+      {
+        str = MD5Utils.toMD5(str.toLowerCase()).toLowerCase();
+        ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
+        ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_muid_type.set(1);
+      }
+      else
+      {
+        str = DeviceInfoUtil.d(BaseApplication.getContext());
+        if (!TextUtils.isEmpty(str))
+        {
+          str = MD5Utils.toMD5(str.replaceAll(":", "").toUpperCase()).toLowerCase();
+          ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_muid.set(ByteStringMicro.copyFromUtf8(str));
+          ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_muid_type.set(3);
+        }
+      }
+      i1 = PublicAccountAdUtil.a();
+      ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_conn.set(i1);
+      i1 = 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      oidb_cmd0xbe6.ReqBody localReqBody;
+      String str;
+      int i1;
+      int i2;
+      label149:
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestWeiShiChannelCoverListFromServer failed for param error:");
+      ((StringBuilder)localObject).append(RIJLogUtil.a(localThrowable));
+      QLog.e("ChannelCoverInfoModule", 2, ((StringBuilder)localObject).toString());
+      return;
+    }
+    try
+    {
+      i2 = DeviceInfoUtil.X();
+      i1 = i2;
+    }
+    catch (Exception localException)
+    {
+      break label149;
+    }
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_carrier.set(i1);
+    str = DeviceInfoUtil.g();
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_os_ver.set(ByteStringMicro.copyFromUtf8(str));
+    str = DeviceInfoUtil.e();
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8(str));
+    i1 = AppSetting.d();
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i1)));
+    str = DatalineMathUtil.a(DatalineMathUtil.a());
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).bytes_client_ip.set(ByteStringMicro.copyFromUtf8(str));
+    ((oidb_cmd0xbe6.PhoneInfo)localObject).uint32_os_type.set(2);
+    localReqBody.msg_phone_info.set((MessageMicro)localObject, true);
+    if ((this.mApp instanceof QQAppInterface)) {
+      localReqBody.string_channel_version.set(a((QQAppInterface)this.mApp));
+    }
+    sendPbReq(ReadInJoyOidbHelper.a("OidbSvc.0xbe6", 3046, 1, localReqBody.toByteArray()));
+  }
+  
+  private boolean o()
+  {
+    int i1 = this.j;
+    if (i1 < 3)
+    {
+      this.j = (i1 + 1);
+      return true;
+    }
+    this.j = 0;
+    RIJSPUtils.a("UPDATE_CHANNEL_LIST_KEY_0xBBC", Boolean.valueOf(false));
+    return false;
+  }
+  
+  private List<ChannelCoverInfo> p()
+  {
+    synchronized (this.b)
+    {
+      ArrayList localArrayList = new ArrayList(this.c.size());
+      Iterator localIterator = this.c.keySet().iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        localArrayList.add((ChannelCoverInfo)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localInteger));
+        localArrayList.add((ChannelCoverInfo)this.c.get(localInteger));
       }
       return localArrayList;
     }
@@ -864,16 +824,16 @@ public class ChannelCoverInfoModule
     }
   }
   
-  private List<ChannelCoverInfo> i()
+  private List<ChannelCoverInfo> q()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilLinkedHashMap.size());
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      ArrayList localArrayList = new ArrayList(this.d.size());
+      Iterator localIterator = this.d.keySet().iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        localArrayList.add((ChannelCoverInfo)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(localInteger));
+        localArrayList.add((ChannelCoverInfo)this.d.get(localInteger));
       }
       return localArrayList;
     }
@@ -883,16 +843,16 @@ public class ChannelCoverInfoModule
     }
   }
   
-  private List<ChannelCoverInfo> j()
+  private List<ChannelCoverInfo> r()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_c_of_type_JavaUtilLinkedHashMap.size());
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      ArrayList localArrayList = new ArrayList(this.e.size());
+      Iterator localIterator = this.e.keySet().iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        localArrayList.add((ChannelCoverInfo)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(localInteger));
+        localArrayList.add((ChannelCoverInfo)this.e.get(localInteger));
       }
       return localArrayList;
     }
@@ -902,28 +862,68 @@ public class ChannelCoverInfoModule
     }
   }
   
-  private List<TabChannelCoverInfo> k()
+  private List<TabChannelCoverInfo> s()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TabChannelCoverInfo(51, HardCodeUtil.a(2131701754)));
-    localArrayList.add(new TabChannelCoverInfo(58, HardCodeUtil.a(2131701741)));
-    localArrayList.add(new TabChannelCoverInfo(59, HardCodeUtil.a(2131701740)));
-    localArrayList.add(new TabChannelCoverInfo(10, HardCodeUtil.a(2131701743)));
-    localArrayList.add(new TabChannelCoverInfo(52, HardCodeUtil.a(2131701756)));
-    localArrayList.add(new TabChannelCoverInfo(53, HardCodeUtil.a(2131701737)));
-    localArrayList.add(new TabChannelCoverInfo(9, HardCodeUtil.a(2131701747)));
-    localArrayList.add(new TabChannelCoverInfo(54, HardCodeUtil.a(2131701732)));
-    localArrayList.add(new TabChannelCoverInfo(55, HardCodeUtil.a(2131701734)));
-    localArrayList.add(new TabChannelCoverInfo(40007, HardCodeUtil.a(2131701736)));
+    localArrayList.add(new TabChannelCoverInfo(51, HardCodeUtil.a(2131899772)));
+    localArrayList.add(new TabChannelCoverInfo(58, HardCodeUtil.a(2131899760)));
+    localArrayList.add(new TabChannelCoverInfo(59, HardCodeUtil.a(2131899759)));
+    localArrayList.add(new TabChannelCoverInfo(10, HardCodeUtil.a(2131899762)));
+    localArrayList.add(new TabChannelCoverInfo(52, HardCodeUtil.a(2131899774)));
+    localArrayList.add(new TabChannelCoverInfo(53, HardCodeUtil.a(2131899757)));
+    localArrayList.add(new TabChannelCoverInfo(9, HardCodeUtil.a(2131899766)));
+    localArrayList.add(new TabChannelCoverInfo(54, HardCodeUtil.a(2131899752)));
+    localArrayList.add(new TabChannelCoverInfo(55, HardCodeUtil.a(2131899754)));
+    localArrayList.add(new TabChannelCoverInfo(40007, HardCodeUtil.a(2131899756)));
     return localArrayList;
   }
   
-  private List<TabChannelCoverInfo> l()
+  private List<TabChannelCoverInfo> t()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "loadFromDb");
     }
     return this.mEntityManager.query(TabChannelCoverInfo.class);
+  }
+  
+  private static String u()
+  {
+    return RIJMainChannelUtil.a.e();
+  }
+  
+  private static TabChannelCoverInfo v()
+  {
+    int i1;
+    if (g() != -1) {
+      i1 = g();
+    } else {
+      i1 = 0;
+    }
+    if (!TextUtils.isEmpty(h())) {
+      localObject = h();
+    } else {
+      localObject = HardCodeUtil.a(2131899745);
+    }
+    Object localObject = new TabChannelCoverInfo(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, i1, (String)localObject, 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0");
+    String str = u();
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        ((TabChannelCoverInfo)localObject).mChannelJumpUrl = URLDecoder.decode(str, "UTF-8");
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("[getMainChannelInfo], e = ");
+        localStringBuilder2.append(localUnsupportedEncodingException);
+        QLog.e("ChannelCoverInfoModule", 1, localStringBuilder2.toString());
+      }
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("[getMainChannelInfo], channelCoverInfo = ");
+    localStringBuilder1.append(localObject);
+    QLog.i("ChannelCoverInfoModule", 1, localStringBuilder1.toString());
+    return localObject;
   }
   
   public String a(QQAppInterface paramQQAppInterface)
@@ -935,68 +935,30 @@ public class ChannelCoverInfoModule
     return localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString("readInJoy_weishi_channel_cover_seq", "");
   }
   
-  public List<TabChannelCoverInfo> a()
-  {
-    try
-    {
-      List localList;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        localList = ((ChannelSection)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaUtilList;
-      } else {
-        localList = null;
-      }
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public List<TabChannelCoverInfo> a(int paramInt)
-  {
-    try
-    {
-      List localList;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        localList = ((ChannelSection)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList;
-      } else {
-        localList = null;
-      }
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "requestRecommendAndMyChannelCoverListFromServer");
     }
-    int i = 0;
-    if ((((Boolean)RIJSPUtils.a("UPDATE_CHANNEL_LIST_KEY_0xBBC", Boolean.valueOf(false))).booleanValue()) && (a()))
+    int i1 = 0;
+    if ((((Boolean)RIJSPUtils.b("UPDATE_CHANNEL_LIST_KEY_0xBBC", Boolean.valueOf(false))).booleanValue()) && (o()))
     {
       QLog.d("ChannelCoverInfoModule", 2, "requestRecommendAndMyChannelCoverListFromServer, do not refresh because 0xbbc is requesting or request is failed.");
-      a(this.jdField_a_of_type_JavaUtilList, 3);
+      a(this.l, 3);
       return;
     }
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       QLog.d("ChannelCoverInfoModule", 2, "requestRecommendAndMyChannelCoverListFromServer slide channel ,but local data is right ");
       return;
     }
-    if (System.currentTimeMillis() / 1000L < this.jdField_a_of_type_Long) {
+    if (System.currentTimeMillis() / 1000L < this.k) {
       return;
     }
     oidb_cmd0xbbb.ReqBody localReqBody = new oidb_cmd0xbbb.ReqBody();
     localReqBody.bytes_city.set(ByteStringMicro.copyFromUtf8(((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCity()));
     localReqBody.str_city.set(((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode());
-    Object localObject1 = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(((QQAppInterface)this.mApp).getCurrentUin());
+    Object localObject1 = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(((QQAppInterface)this.mApp).getCurrentUin());
     if (localObject1 != null)
     {
       localReqBody.uint32_age.set(((Friends)localObject1).age);
@@ -1015,13 +977,13 @@ public class ChannelCoverInfoModule
     catch (Exception localException1)
     {
       label259:
-      int j;
+      int i2;
       break label259;
     }
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_muid.set(ByteStringMicro.copyFromUtf8(""));
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_muid_type.set(1);
     break label345;
-    localObject2 = DeviceInfoUtil.c(BaseApplication.getContext());
+    localObject2 = DeviceInfoUtil.d(BaseApplication.getContext());
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
       localObject2 = MD5Utils.toMD5(((String)localObject2).replaceAll(":", "").toUpperCase()).toLowerCase();
@@ -1029,33 +991,33 @@ public class ChannelCoverInfoModule
       ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_muid_type.set(3);
     }
     label345:
-    j = PublicAccountAdUtil.a();
-    ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_conn.set(j);
+    i2 = PublicAccountAdUtil.a();
+    ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_conn.set(i2);
     try
     {
-      j = DeviceInfoUtil.g();
-      i = j;
+      i2 = DeviceInfoUtil.X();
+      i1 = i2;
     }
     catch (Exception localException2)
     {
       label364:
       break label364;
     }
-    ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_carrier.set(i);
-    localObject2 = DeviceInfoUtil.e();
+    ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_carrier.set(i1);
+    localObject2 = DeviceInfoUtil.g();
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localObject2 = DeviceInfoUtil.c();
+    localObject2 = DeviceInfoUtil.e();
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    i = AppSetting.a();
-    ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
+    i1 = AppSetting.d();
+    ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i1)));
     localObject2 = DatalineMathUtil.a(DatalineMathUtil.a());
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject2));
     ((oidb_cmd0xbbb.PhoneInfo)localObject1).uint32_os_type.set(2);
     localReqBody.msg_phone_type.set((MessageMicro)localObject1, true);
-    localObject1 = ReadInJoyLogicEngine.a().a();
+    localObject1 = ReadInJoyLogicEngine.a().j();
     if (localObject1 != null)
     {
-      localObject1 = ((SelectPositionModule)localObject1).a();
+      localObject1 = ((SelectPositionModule)localObject1).b();
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -1083,12 +1045,12 @@ public class ChannelCoverInfoModule
     }
     if (paramInt == 41402)
     {
-      d();
+      n();
       return;
     }
     Object localObject = new oidb_cmd0x69f.ReqBody();
-    long l = Long.valueOf(RIJQQAppInterfaceUtil.a()).longValue();
-    ((oidb_cmd0x69f.ReqBody)localObject).uint64_uin.set(l);
+    long l1 = Long.valueOf(RIJQQAppInterfaceUtil.d()).longValue();
+    ((oidb_cmd0x69f.ReqBody)localObject).uint64_uin.set(l1);
     ((oidb_cmd0x69f.ReqBody)localObject).uint32_req_channel_jump_url.set(1);
     ((oidb_cmd0x69f.ReqBody)localObject).uint32_req_channel_id.set(paramInt);
     ((oidb_cmd0x69f.ReqBody)localObject).uint32_req_channel_cover.set(1);
@@ -1099,20 +1061,20 @@ public class ChannelCoverInfoModule
     } else {
       ((oidb_cmd0x69f.ReqBody)localObject).uint64_req_ctrl_bits.set(4L);
     }
-    int j = a(paramInt);
-    int i = j;
-    if (j == 0)
+    int i2 = f(paramInt);
+    int i1 = i2;
+    if (i2 == 0)
     {
-      i = j;
+      i1 = i2;
       if (this.mApp != null)
       {
-        i = j;
+        i1 = i2;
         if ((this.mApp instanceof QQAppInterface)) {
-          i = a((QQAppInterface)this.mApp, paramInt);
+          i1 = a((QQAppInterface)this.mApp, paramInt);
         }
       }
     }
-    ((oidb_cmd0x69f.ReqBody)localObject).uint32_req_channel_seq.set(i);
+    ((oidb_cmd0x69f.ReqBody)localObject).uint32_req_channel_seq.set(i1);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0x69f", 1695, 0, ((oidb_cmd0x69f.ReqBody)localObject).toByteArray());
     if (paramInt == 0) {
       ((ToServiceMsg)localObject).getAttributes().put("req_channellist_source", Integer.valueOf(3));
@@ -1136,15 +1098,15 @@ public class ChannelCoverInfoModule
       ((StringBuilder)???).append(paramLong);
       QLog.d("ChannelCoverInfoModule", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+      ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)this.c.get(Integer.valueOf(paramInt));
       if (localChannelCoverInfo != null)
       {
         localChannelCoverInfo.mChannelCoverSummary = paramString;
         localChannelCoverInfo.mArticleId = paramLong;
         a(localChannelCoverInfo, 0);
-        f(h(), 0);
+        f(p(), 0);
       }
       return;
     }
@@ -1188,12 +1150,12 @@ public class ChannelCoverInfoModule
     if (paramTabChannelCoverInfo != null)
     {
       paramTabChannelCoverInfo = paramTabChannelCoverInfo.clone();
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.l;
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          if (a(paramTabChannelCoverInfo, ((ChannelSection)((Iterator)localObject).next()).jdField_a_of_type_JavaUtilList)) {
+          if (a(paramTabChannelCoverInfo, ((ChannelSection)((Iterator)localObject).next()).d)) {
             QLog.d("ChannelCoverInfoModule", 2, "updateChannel found in channelCoverInfoList!");
           }
         }
@@ -1205,15 +1167,15 @@ public class ChannelCoverInfoModule
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     paramToServiceMsg = new oidb_cmd0xbbb.RspBody();
-    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    int i1 = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handle0xbbbGetChannelList, result=");
-    paramFromServiceMsg.append(i);
+    paramFromServiceMsg.append(i1);
     QLog.d("ChannelCoverInfoModule", 1, paramFromServiceMsg.toString());
-    if (i == 0)
+    if (i1 == 0)
     {
       if ((paramToServiceMsg.uint64_next_req_time.has()) && (paramToServiceMsg.uint64_next_req_time.get() > 0L)) {
-        this.jdField_a_of_type_Long = paramToServiceMsg.uint64_next_req_time.get();
+        this.k = paramToServiceMsg.uint64_next_req_time.get();
       }
       if (paramToServiceMsg.rpt_msg_section.has()) {
         a(paramToServiceMsg.rpt_msg_section.get());
@@ -1239,8 +1201,8 @@ public class ChannelCoverInfoModule
       JSONArray localJSONArray;
       break label230;
     }
-    localList = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList.size());
+    localList = this.l;
+    this.l = new ArrayList(paramList.size());
     localJSONArray = new JSONArray();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -1248,17 +1210,17 @@ public class ChannelCoverInfoModule
       Object localObject = (channel_button.Section)paramList.next();
       ChannelSection localChannelSection = new ChannelSection((channel_button.Section)localObject);
       localJSONArray.put(localChannelSection.a());
-      localChannelSection.jdField_a_of_type_JavaUtilList = ReadInJoyMSFHandlerUtils.b(((channel_button.Section)localObject).rpt_msg_channel.get());
-      this.jdField_a_of_type_JavaUtilList.add(localChannelSection);
-      localObject = localChannelSection.jdField_a_of_type_JavaUtilList;
+      localChannelSection.d = ReadInJoyMSFHandlerUtils.b(((channel_button.Section)localObject).rpt_msg_channel.get());
+      this.l.add(localChannelSection);
+      localObject = localChannelSection.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("saveChannelSection ");
-      localStringBuilder.append(localChannelSection.jdField_a_of_type_Long);
+      localStringBuilder.append(localChannelSection.a);
       a((List)localObject, localStringBuilder.toString());
     }
-    a(this.jdField_a_of_type_JavaUtilList, localList);
-    c(this.jdField_a_of_type_JavaUtilList);
-    a(localList, this.jdField_a_of_type_JavaUtilList, true);
+    a(this.l, localList);
+    c(this.l);
+    a(localList, this.l, true);
     if (localJSONArray.length() > 0) {
       ThreadManager.executeOnFileThread(new ChannelCoverInfoModule.12(this, localJSONArray));
     }
@@ -1283,10 +1245,10 @@ public class ChannelCoverInfoModule
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (ChannelSection)((Iterator)localObject1).next();
-          localObject3 = ((ChannelSection)localObject2).jdField_a_of_type_JavaUtilList;
+          localObject3 = ((ChannelSection)localObject2).d;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("0xbbc update sectionId=");
-          ((StringBuilder)localObject4).append(((ChannelSection)localObject2).jdField_a_of_type_Long);
+          ((StringBuilder)localObject4).append(((ChannelSection)localObject2).a);
           a((List)localObject3, ((StringBuilder)localObject4).toString());
         }
       }
@@ -1298,9 +1260,9 @@ public class ChannelCoverInfoModule
         localObject4 = (ChannelSection)((Iterator)localObject3).next();
         channel_button.Section localSection = new channel_button.Section();
         ArrayList localArrayList = new ArrayList();
-        if (((ChannelSection)localObject4).jdField_a_of_type_JavaUtilList != null)
+        if (((ChannelSection)localObject4).d != null)
         {
-          Iterator localIterator = ((ChannelSection)localObject4).jdField_a_of_type_JavaUtilList.iterator();
+          Iterator localIterator = ((ChannelSection)localObject4).d.iterator();
           while (localIterator.hasNext())
           {
             paramList = (TabChannelCoverInfo)localIterator.next();
@@ -1319,9 +1281,9 @@ public class ChannelCoverInfoModule
         }
         if (!localArrayList.isEmpty())
         {
-          localSection.uint64_section_id.set(((ChannelSection)localObject4).jdField_a_of_type_Long);
-          localSection.str_section_name.set(((ChannelSection)localObject4).jdField_a_of_type_JavaLangString);
-          localSection.str_note_text.set(((ChannelSection)localObject4).b);
+          localSection.uint64_section_id.set(((ChannelSection)localObject4).a);
+          localSection.str_section_name.set(((ChannelSection)localObject4).b);
+          localSection.str_note_text.set(((ChannelSection)localObject4).c);
           localSection.rpt_msg_channel.set(localArrayList);
           ((List)localObject2).add(localSection);
         }
@@ -1337,7 +1299,7 @@ public class ChannelCoverInfoModule
       }
       else
       {
-        localObject2 = DeviceInfoUtil.c(BaseApplication.getContext());
+        localObject2 = DeviceInfoUtil.d(BaseApplication.getContext());
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject2 = MD5Utils.toMD5(((String)localObject2).replaceAll(":", "").toUpperCase()).toLowerCase();
@@ -1345,27 +1307,27 @@ public class ChannelCoverInfoModule
           paramList.uint32_muid_type.set(3);
         }
       }
-      i = PublicAccountAdUtil.a();
-      paramList.uint32_conn.set(i);
-      i = 0;
+      i1 = PublicAccountAdUtil.a();
+      paramList.uint32_conn.set(i1);
+      i1 = 0;
     }
     try
     {
-      int j = DeviceInfoUtil.g();
-      i = j;
+      int i2 = DeviceInfoUtil.X();
+      i1 = i2;
     }
     catch (Exception localException)
     {
       label518:
       break label518;
     }
-    paramList.uint32_carrier.set(i);
-    Object localObject2 = DeviceInfoUtil.e();
+    paramList.uint32_carrier.set(i1);
+    Object localObject2 = DeviceInfoUtil.g();
     paramList.bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localObject2 = DeviceInfoUtil.c();
+    localObject2 = DeviceInfoUtil.e();
     paramList.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    int i = AppSetting.a();
-    paramList.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
+    int i1 = AppSetting.d();
+    paramList.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i1)));
     localObject2 = DatalineMathUtil.a(DatalineMathUtil.a());
     paramList.bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject2));
     paramList.uint32_os_type.set(2);
@@ -1386,11 +1348,11 @@ public class ChannelCoverInfoModule
       if (paramList2 == null) {
         QLog.d("ChannelCoverInfoModule", 1, "[saveChannelInfoListInCacheAndDb] sectionList is null");
       }
-      paramList1 = b(paramList1);
-      this.jdField_a_of_type_JavaUtilList = c(paramList2);
-      paramList2 = b(this.jdField_a_of_type_JavaUtilList);
+      paramList1 = h(paramList1);
+      this.l = i(paramList2);
+      paramList2 = h(this.l);
       if (paramBoolean) {
-        b(true, ((ChannelSection)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaUtilList);
+        b(true, ((ChannelSection)this.l.get(0)).d);
       }
       QLog.i("ChannelCoverInfoModule", 1, "saveChannelInfoListInCacheAndDb remove oldList");
       Iterator localIterator = paramList1.iterator();
@@ -1425,69 +1387,47 @@ public class ChannelCoverInfoModule
   
   public List<TabChannelCoverInfo> b()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TabChannelCoverInfo(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, 0, HardCodeUtil.a(2131701738), 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0"));
-    TabChannelCoverInfo localTabChannelCoverInfo = new TabChannelCoverInfo(56, HardCodeUtil.a(2131701749));
-    localTabChannelCoverInfo.reason = 4;
-    localTabChannelCoverInfo.mChannelType = 3;
-    localArrayList.add(localTabChannelCoverInfo);
-    localArrayList.add(new TabChannelCoverInfo(40531, HardCodeUtil.a(2131701751)));
-    localArrayList.add(new TabChannelCoverInfo(14, HardCodeUtil.a(2131701735)));
-    localArrayList.add(new TabChannelCoverInfo(8, HardCodeUtil.a(2131701753)));
-    localArrayList.add(new TabChannelCoverInfo(1, HardCodeUtil.a(2131701742)));
-    localArrayList.add(new TabChannelCoverInfo(13, HardCodeUtil.a(2131701728)));
-    localArrayList.add(new TabChannelCoverInfo(5, HardCodeUtil.a(2131701758)));
-    localArrayList.add(new TabChannelCoverInfo(11, HardCodeUtil.a(2131701727)));
-    localArrayList.add(new TabChannelCoverInfo(40466, HardCodeUtil.a(2131701752)));
-    localArrayList.add(new TabChannelCoverInfo(40013, HardCodeUtil.a(2131701750)));
-    localArrayList.add(new TabChannelCoverInfo(16, HardCodeUtil.a(2131701745)));
-    localArrayList.add(new TabChannelCoverInfo(15, HardCodeUtil.a(2131701731)));
-    return localArrayList;
+    try
+    {
+      List localList;
+      if ((this.l != null) && (!this.l.isEmpty())) {
+        localList = ((ChannelSection)this.l.get(0)).d;
+      } else {
+        localList = null;
+      }
+      return localList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public List<ChannelCoverInfo> b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return h();
-    }
-    if (paramInt == 56) {
-      return i();
-    }
-    if (paramInt == 41402) {
-      return j();
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      return new ArrayList((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
-    }
-    return null;
-  }
-  
-  public void b()
+  public List<TabChannelCoverInfo> b(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        this.jdField_a_of_type_JavaUtilList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, HardCodeUtil.a(2131701726), HardCodeUtil.a(2131701730)));
-        this.jdField_a_of_type_JavaUtilList.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, HardCodeUtil.a(2131701733), HardCodeUtil.a(2131701744)));
+      List localList;
+      if (this.l != null) {
+        localList = ((ChannelSection)this.l.get(paramInt)).d;
+      } else {
+        localList = null;
       }
-      this.mExecutorService.execute(new ChannelCoverInfoModule.6(this));
-      return;
+      return localList;
     }
-    finally {}
-  }
-  
-  public void b(int paramInt)
-  {
-    this.mExecutorService.execute(new ChannelCoverInfoModule.7(this, paramInt));
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new oidb_cmd0xbbc.RspBody());
-    QLog.d("ChannelCoverInfoModule", 1, new Object[] { "handleOxbbcUpChannelList, result = ", Integer.valueOf(i) });
-    if (i == 0)
+    int i1 = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new oidb_cmd0xbbc.RspBody());
+    QLog.d("ChannelCoverInfoModule", 1, new Object[] { "handleOxbbcUpChannelList, result = ", Integer.valueOf(i1) });
+    if (i1 == 0)
     {
       RIJSPUtils.a("UPDATE_CHANNEL_LIST_KEY_0xBBC", Boolean.valueOf(false));
       return;
@@ -1521,7 +1461,7 @@ public class ChannelCoverInfoModule
             if (QLog.isColorLevel()) {
               QLog.d("ChannelCoverInfoModule", 2, "saveChannelCoverList coverSummary is null");
             }
-            ChannelCoverInfo localChannelCoverInfo2 = a(localChannelCoverInfo1.mChannelCoverId, paramInt);
+            ChannelCoverInfo localChannelCoverInfo2 = c(localChannelCoverInfo1.mChannelCoverId, paramInt);
             if ((localChannelCoverInfo2 != null) && (localChannelCoverInfo2.mChannelCoverSummary != null) && (!"".equals(localChannelCoverInfo2.mChannelCoverSummary)))
             {
               localChannelCoverInfo1.mChannelCoverSummary = localChannelCoverInfo2.mChannelCoverSummary;
@@ -1576,99 +1516,94 @@ public class ChannelCoverInfoModule
     }
   }
   
-  public List<ChannelSection> c()
+  public List<ChannelCoverInfo> c(int paramInt)
+  {
+    if (paramInt == 0) {
+      return p();
+    }
+    if (paramInt == 56) {
+      return q();
+    }
+    if (paramInt == 41402) {
+      return r();
+    }
+    if (this.f.containsKey(Integer.valueOf(paramInt))) {
+      return new ArrayList((Collection)this.f.get(Integer.valueOf(paramInt)));
+    }
+    return null;
+  }
+  
+  public void c()
   {
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject2 = new StringBuilder();
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      int i = 0;
-      ((StringBuilder)localObject2).append(((BaseApplicationImpl)localObject3).getDir("readinjoy", 0).getAbsolutePath());
-      ((StringBuilder)localObject2).append("/channel_section_data");
-      localObject2 = FileUtils.readFileContent(new File(((StringBuilder)localObject2).toString()));
-      if (localObject2 != null) {
-        try
-        {
-          localObject2 = new JSONArray((String)localObject2);
-          while (i < ((JSONArray)localObject2).length())
-          {
-            localObject3 = ((JSONArray)localObject2).optJSONObject(i);
-            if (localObject3 != null) {
-              localArrayList.add(new ChannelSection((JSONObject)localObject3));
-            }
-            i += 1;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
+      if (this.l == null)
+      {
+        this.l = new ArrayList();
+        this.l.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, HardCodeUtil.a(2131899746), HardCodeUtil.a(2131899750)));
+        this.l.add(new ChannelSection(TabChannelCoverInfo.TYPE_CHANNEL_RECOMMEND_CONFIG, HardCodeUtil.a(2131899753), HardCodeUtil.a(2131899763)));
       }
-      return localArrayList;
+      this.mExecutorService.execute(new ChannelCoverInfoModule.6(this));
+      return;
     }
     finally {}
-    for (;;)
-    {
-      throw localObject1;
-    }
   }
   
   protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int m = ((Integer)paramToServiceMsg.getAttribute("req_channellist_source", Integer.valueOf(1))).intValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("req_channellist_channel_id", Integer.valueOf(0))).intValue();
+    int i4 = ((Integer)paramToServiceMsg.getAttribute("req_channellist_source", Integer.valueOf(1))).intValue();
+    int i1 = ((Integer)paramToServiceMsg.getAttribute("req_channellist_channel_id", Integer.valueOf(0))).intValue();
     paramToServiceMsg = new oidb_cmd0x69f.RspBody();
-    int j = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    int i2 = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handleGetChannelAndSubscribeList, result=");
-    paramFromServiceMsg.append(j);
+    paramFromServiceMsg.append(i2);
     QLog.d("ChannelCoverInfoModule", 1, paramFromServiceMsg.toString());
-    if (j == 0)
+    if (i2 == 0)
     {
-      i = -1;
+      i1 = -1;
       if (paramToServiceMsg.uint32_req_channel_id.has()) {
-        i = paramToServiceMsg.uint32_req_channel_id.get();
+        i1 = paramToServiceMsg.uint32_req_channel_id.get();
       }
       if (paramToServiceMsg.uint32_channel_seq.has())
       {
-        int n = paramToServiceMsg.uint32_channel_seq.get();
-        int k = a(i);
-        j = k;
-        if (k == 0)
+        int i5 = paramToServiceMsg.uint32_channel_seq.get();
+        int i3 = f(i1);
+        i2 = i3;
+        if (i3 == 0)
         {
-          j = k;
+          i2 = i3;
           if (this.mApp != null)
           {
-            j = k;
+            i2 = i3;
             if ((this.mApp instanceof QQAppInterface)) {
-              j = a((QQAppInterface)this.mApp, i);
+              i2 = a((QQAppInterface)this.mApp, i1);
             }
           }
         }
-        if (n <= j)
+        if (i5 <= i2)
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("handleGetChannelAndSubscribeList, seq is ");
-          paramToServiceMsg.append(n);
+          paramToServiceMsg.append(i5);
           paramToServiceMsg.append(" ;lastseq = ");
-          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(i2);
           paramToServiceMsg.append("; not need to update");
           QLog.d("ChannelCoverInfoModule", 1, paramToServiceMsg.toString());
           return;
         }
-        a(i, n);
+        a(i1, i5);
         if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface))) {
-          a((QQAppInterface)this.mApp, n, i);
+          a((QQAppInterface)this.mApp, i5, i1);
         }
       }
-      if ((m == 3) && (i == 0))
+      if ((i4 == 3) && (i1 == 0))
       {
         if (paramToServiceMsg.rpt_channel_list.has()) {
           b(paramToServiceMsg.rpt_channel_list.get(), 0);
         }
       }
-      else if ((m == 4) && (i == 56))
+      else if ((i4 == 4) && (i1 == 56))
       {
         if (paramToServiceMsg.rpt_channel_list.has()) {
           b(paramToServiceMsg.rpt_channel_list.get(), 56);
@@ -1678,26 +1613,26 @@ public class ChannelCoverInfoModule
       {
         if (paramToServiceMsg.rpt_channel_list.has())
         {
-          b(paramToServiceMsg.rpt_channel_list.get(), i);
+          b(paramToServiceMsg.rpt_channel_list.get(), i1);
           return;
         }
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("handle0x69fGetChannelList resp.rpt_channel_list null , channelId = ");
-          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(i1);
           QLog.d("ChannelCoverInfoModule", 2, paramToServiceMsg.toString());
         }
       }
     }
     else
     {
-      if (m == 3) {
+      if (i4 == 3) {
         ReadInJoyLogicEngineEventDispatcher.a().f(false, null);
-      } else if (m == 4) {
+      } else if (i4 == 4) {
         ReadInJoyLogicEngineEventDispatcher.a().g(false, null);
       }
-      ReadInJoyLogicEngineEventDispatcher.a().a(i, false, null);
+      ReadInJoyLogicEngineEventDispatcher.a().a(i1, false, null);
     }
   }
   
@@ -1756,9 +1691,31 @@ public class ChannelCoverInfoModule
     }
   }
   
-  public List<ChannelSection> d()
+  public List<TabChannelCoverInfo> d()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new TabChannelCoverInfo(TabChannelCoverInfo.TYPE_CHANNEL_MY_CONFIG, 0, HardCodeUtil.a(2131899758), 4, "https://p.qpic.cn/kandianac/0/9558fc75932c5.png/0"));
+    TabChannelCoverInfo localTabChannelCoverInfo = new TabChannelCoverInfo(56, HardCodeUtil.a(2131899767));
+    localTabChannelCoverInfo.reason = 4;
+    localTabChannelCoverInfo.mChannelType = 3;
+    localArrayList.add(localTabChannelCoverInfo);
+    localArrayList.add(new TabChannelCoverInfo(40531, HardCodeUtil.a(2131899769)));
+    localArrayList.add(new TabChannelCoverInfo(14, HardCodeUtil.a(2131899755)));
+    localArrayList.add(new TabChannelCoverInfo(8, HardCodeUtil.a(2131899771)));
+    localArrayList.add(new TabChannelCoverInfo(1, HardCodeUtil.a(2131899761)));
+    localArrayList.add(new TabChannelCoverInfo(13, HardCodeUtil.a(2131899748)));
+    localArrayList.add(new TabChannelCoverInfo(5, HardCodeUtil.a(2131899776)));
+    localArrayList.add(new TabChannelCoverInfo(11, HardCodeUtil.a(2131899747)));
+    localArrayList.add(new TabChannelCoverInfo(40466, HardCodeUtil.a(2131899770)));
+    localArrayList.add(new TabChannelCoverInfo(40013, HardCodeUtil.a(2131899768)));
+    localArrayList.add(new TabChannelCoverInfo(16, HardCodeUtil.a(2131899764)));
+    localArrayList.add(new TabChannelCoverInfo(15, HardCodeUtil.a(2131899751)));
+    return localArrayList;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.mExecutorService.execute(new ChannelCoverInfoModule.7(this, paramInt));
   }
   
   protected void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1791,39 +1748,77 @@ public class ChannelCoverInfoModule
       ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)((Iterator)localObject).next();
       localLinkedHashMap.put(Integer.valueOf(localChannelCoverInfo.mChannelCoverId), localChannelCoverInfo);
     }
-    localObject = this.jdField_a_of_type_JavaLangObject;
+    localObject = this.b;
     if (paramInt == 0) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
-      break label172;
+      this.c.clear();
+      this.c.putAll(localLinkedHashMap);
+      break label173;
       if (paramInt == 56)
       {
-        this.jdField_b_of_type_JavaUtilLinkedHashMap.clear();
-        this.jdField_b_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
+        this.d.clear();
+        this.d.putAll(localLinkedHashMap);
       }
       else if (paramInt == 41402)
       {
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.clear();
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(localLinkedHashMap);
+        this.e.clear();
+        this.e.putAll(localLinkedHashMap);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new ArrayList(paramList));
+        this.f.remove(Integer.valueOf(paramInt));
+        this.f.put(Integer.valueOf(paramInt), new ArrayList(paramList));
       }
-      label172:
+      label173:
       return;
     }
     finally
     {
-      label176:
-      break label176;
+      label177:
+      break label177;
     }
     for (;;)
     {
       throw paramList;
+    }
+  }
+  
+  public List<ChannelSection> e()
+  {
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      Object localObject2 = new StringBuilder();
+      Object localObject3 = BaseApplicationImpl.getApplication();
+      int i1 = 0;
+      ((StringBuilder)localObject2).append(((BaseApplicationImpl)localObject3).getDir("readinjoy", 0).getAbsolutePath());
+      ((StringBuilder)localObject2).append("/channel_section_data");
+      localObject2 = FileUtils.readFileContent(new File(((StringBuilder)localObject2).toString()));
+      if (localObject2 != null) {
+        try
+        {
+          localObject2 = new JSONArray((String)localObject2);
+          while (i1 < ((JSONArray)localObject2).length())
+          {
+            localObject3 = ((JSONArray)localObject2).optJSONObject(i1);
+            if (localObject3 != null) {
+              localArrayList.add(new ChannelSection((JSONObject)localObject3));
+            }
+            i1 += 1;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+      return localArrayList;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
@@ -1832,7 +1827,7 @@ public class ChannelCoverInfoModule
     if (paramList == null) {
       return;
     }
-    Object localObject = b(paramInt);
+    Object localObject = c(paramInt);
     if ((localObject != null) && (paramList != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1853,7 +1848,12 @@ public class ChannelCoverInfoModule
     while (paramList.hasNext()) {
       a((ChannelCoverInfo)paramList.next(), paramInt);
     }
-    f(b(paramInt), paramInt);
+    f(c(paramInt), paramInt);
+  }
+  
+  public List<ChannelSection> f()
+  {
+    return this.l;
   }
   
   void f(List<ChannelCoverInfo> paramList, int paramInt)
@@ -1869,20 +1869,20 @@ public class ChannelCoverInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ChannelCoverInfoModule", 2, "unInitialize!");
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_b_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_c_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
+      this.f.clear();
+      this.g.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ import androidx.core.view.ViewCompat;
 abstract class HeaderBehavior<V extends View>
   extends ViewOffsetBehavior<V>
 {
-  private int jdField_a_of_type_Int = -1;
+  OverScroller a;
   @Nullable
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
+  private Runnable b;
+  private boolean c;
+  private int d = -1;
+  private int e;
+  private int f = -1;
   @Nullable
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c = -1;
+  private VelocityTracker g;
   
   public HeaderBehavior() {}
   
@@ -33,10 +33,10 @@ abstract class HeaderBehavior<V extends View>
     super(paramContext, paramAttributeSet);
   }
   
-  private void a()
+  private void c()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.g == null) {
+      this.g = VelocityTracker.obtain();
     }
   }
   
@@ -48,11 +48,6 @@ abstract class HeaderBehavior<V extends View>
   int a(@NonNull V paramV)
   {
     return paramV.getHeight();
-  }
-  
-  int a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
-  {
-    return a(paramCoordinatorLayout, paramV, paramInt, -2147483648, 2147483647);
   }
   
   int a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt1, int paramInt2, int paramInt3)
@@ -72,31 +67,31 @@ abstract class HeaderBehavior<V extends View>
   
   void a(CoordinatorLayout paramCoordinatorLayout, V paramV) {}
   
-  boolean a(V paramV)
-  {
-    return false;
-  }
-  
   final boolean a(CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, int paramInt1, int paramInt2, float paramFloat)
   {
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.b;
     if (localRunnable != null)
     {
       paramV.removeCallbacks(localRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.b = null;
     }
-    if (this.jdField_a_of_type_AndroidWidgetOverScroller == null) {
-      this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(paramV.getContext());
+    if (this.a == null) {
+      this.a = new OverScroller(paramV.getContext());
     }
-    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(0, b(), 0, Math.round(paramFloat), 0, 0, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidWidgetOverScroller.computeScrollOffset())
+    this.a.fling(0, b(), 0, Math.round(paramFloat), 0, 0, paramInt1, paramInt2);
+    if (this.a.computeScrollOffset())
     {
-      this.jdField_a_of_type_JavaLangRunnable = new HeaderBehavior.FlingRunnable(this, paramCoordinatorLayout, paramV);
-      ViewCompat.postOnAnimation(paramV, this.jdField_a_of_type_JavaLangRunnable);
+      this.b = new HeaderBehavior.FlingRunnable(this, paramCoordinatorLayout, paramV);
+      ViewCompat.postOnAnimation(paramV, this.b);
       return true;
     }
     a(paramCoordinatorLayout, paramV);
     return false;
+  }
+  
+  int a_(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
+  {
+    return a(paramCoordinatorLayout, paramV, paramInt, -2147483648, 2147483647);
   }
   
   int b(@NonNull V paramV)
@@ -109,15 +104,20 @@ abstract class HeaderBehavior<V extends View>
     return a(paramCoordinatorLayout, paramV, a() - paramInt1, paramInt2, paramInt3);
   }
   
+  boolean c(V paramV)
+  {
+    return false;
+  }
+  
   public boolean onInterceptTouchEvent(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull MotionEvent paramMotionEvent)
   {
-    if (this.c < 0) {
-      this.c = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
+    if (this.f < 0) {
+      this.f = ViewConfiguration.get(paramCoordinatorLayout.getContext()).getScaledTouchSlop();
     }
     int i;
-    if ((paramMotionEvent.getActionMasked() == 2) && (this.jdField_a_of_type_Boolean))
+    if ((paramMotionEvent.getActionMasked() == 2) && (this.c))
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.d;
       if (i == -1) {
         return false;
       }
@@ -126,38 +126,38 @@ abstract class HeaderBehavior<V extends View>
         return false;
       }
       i = (int)paramMotionEvent.getY(i);
-      if (Math.abs(i - this.b) > this.c)
+      if (Math.abs(i - this.e) > this.f)
       {
-        this.b = i;
+        this.e = i;
         return true;
       }
     }
     if (paramMotionEvent.getActionMasked() == 0)
     {
-      this.jdField_a_of_type_Int = -1;
+      this.d = -1;
       i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
       boolean bool;
-      if ((a(paramV)) && (paramCoordinatorLayout.isPointInChildBounds(paramV, i, j))) {
+      if ((c(paramV)) && (paramCoordinatorLayout.isPointInChildBounds(paramV, i, j))) {
         bool = true;
       } else {
         bool = false;
       }
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean)
+      this.c = bool;
+      if (this.c)
       {
-        this.b = j;
-        this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
-        a();
-        paramCoordinatorLayout = this.jdField_a_of_type_AndroidWidgetOverScroller;
+        this.e = j;
+        this.d = paramMotionEvent.getPointerId(0);
+        c();
+        paramCoordinatorLayout = this.a;
         if ((paramCoordinatorLayout != null) && (!paramCoordinatorLayout.isFinished()))
         {
-          this.jdField_a_of_type_AndroidWidgetOverScroller.abortAnimation();
+          this.a.abortAnimation();
           return true;
         }
       }
     }
-    paramCoordinatorLayout = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    paramCoordinatorLayout = this.g;
     if (paramCoordinatorLayout != null) {
       paramCoordinatorLayout.addMovement(paramMotionEvent);
     }
@@ -182,19 +182,19 @@ abstract class HeaderBehavior<V extends View>
           } else {
             i = 0;
           }
-          this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(i);
-          this.b = ((int)(paramMotionEvent.getY(i) + 0.5F));
+          this.d = paramMotionEvent.getPointerId(i);
+          this.e = ((int)(paramMotionEvent.getY(i) + 0.5F));
         }
       }
       else
       {
-        i = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
+        i = paramMotionEvent.findPointerIndex(this.d);
         if (i == -1) {
           return false;
         }
         i = (int)paramMotionEvent.getY(i);
-        j = this.b;
-        this.b = i;
+        j = this.e;
+        this.e = i;
         b(paramCoordinatorLayout, paramV, j - i, b(paramV), 0);
       }
       j = 0;
@@ -202,13 +202,13 @@ abstract class HeaderBehavior<V extends View>
     }
     else
     {
-      VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      VelocityTracker localVelocityTracker = this.g;
       if (localVelocityTracker != null)
       {
         localVelocityTracker.addMovement(paramMotionEvent);
-        this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-        float f = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(this.jdField_a_of_type_Int);
-        a(paramCoordinatorLayout, paramV, -a(paramV), 0, f);
+        this.g.computeCurrentVelocity(1000);
+        float f1 = this.g.getYVelocity(this.d);
+        a(paramCoordinatorLayout, paramV, -a(paramV), 0, f1);
         i = 1;
         break label208;
       }
@@ -216,22 +216,22 @@ abstract class HeaderBehavior<V extends View>
     label205:
     i = 0;
     label208:
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    paramCoordinatorLayout = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    this.c = false;
+    this.d = -1;
+    paramCoordinatorLayout = this.g;
     int j = i;
     if (paramCoordinatorLayout != null)
     {
       paramCoordinatorLayout.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.g = null;
       j = i;
     }
     label244:
-    paramCoordinatorLayout = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    paramCoordinatorLayout = this.g;
     if (paramCoordinatorLayout != null) {
       paramCoordinatorLayout.addMovement(paramMotionEvent);
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       if (j != 0) {
         return true;
@@ -243,7 +243,7 @@ abstract class HeaderBehavior<V extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.HeaderBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,20 @@ import java.util.List;
 public class ReadAssetFile
   implements ReadFile
 {
-  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
-  private String jdField_a_of_type_JavaLangString;
+  private AssetManager a;
+  private String b;
   
   public ReadAssetFile(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramContext.getAssets();
+    this.b = paramString;
   }
   
   public InputStream a(String paramString)
   {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentResAssetManager;
+    AssetManager localAssetManager = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("/");
     localStringBuilder.append(paramString);
     return localAssetManager.open(localStringBuilder.toString());
@@ -34,7 +34,7 @@ public class ReadAssetFile
   {
     try
     {
-      List localList = OfflineUtils.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
+      List localList = OfflineUtils.a(this.a, this.b);
       if (localList != null) {
         return localList;
       }
@@ -42,7 +42,7 @@ public class ReadAssetFile
     catch (Exception localException)
     {
       QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
-      String[] arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
+      String[] arrayOfString = this.a.list(this.b);
       ArrayList localArrayList = new ArrayList();
       if (arrayOfString != null)
       {
@@ -60,7 +60,7 @@ public class ReadAssetFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.file.ReadAssetFile
  * JD-Core Version:    0.7.0.1
  */

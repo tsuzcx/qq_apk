@@ -52,12 +52,12 @@ import java.util.Random;
 public class PeakAudioTransHandler
   extends BusinessHandler
 {
-  private static final Object jdField_a_of_type_JavaLangObject = Integer.valueOf(2000);
+  private static final Object b = Integer.valueOf(2000);
   public long a;
-  private ConnManager jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager = new ConnManager(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager);
-  private ChannelStateManager jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager = new ChannelStateManager();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean c = false;
+  private ConnManager d = new ConnManager(paramAppInterface, this.e);
+  private ChannelStateManager e = new ChannelStateManager();
+  private Random f = new Random();
   
   public PeakAudioTransHandler(AppInterface paramAppInterface)
   {
@@ -69,7 +69,7 @@ public class PeakAudioTransHandler
     AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
     localIntHead.str_session_id.set(paramString);
     localIntHead.str_uin.set(this.appRuntime.getAccount());
-    localIntHead.uint32_seq.set(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    localIntHead.uint32_seq.set(this.f.nextInt());
     localIntHead.enum_body_type.set(paramInt);
     return localIntHead;
   }
@@ -165,7 +165,7 @@ public class PeakAudioTransHandler
                 QLog.d("PeakAudioTransHandler", 2, ((StringBuilder)localObject3).toString());
               }
               localObject2 = new HostInfo((String)localObject2, j);
-              ((HostInfo)localObject2).e = i;
+              ((HostInfo)localObject2).g = i;
               paramArrayOfByte2.add(localObject2);
             }
             long l = 0L;
@@ -174,17 +174,17 @@ public class PeakAudioTransHandler
             }
             if (!paramArrayOfByte2.isEmpty())
             {
-              if (this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.b())
+              if (this.e.d())
               {
-                this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a(2);
+                this.e.a(2);
                 paramArrayOfByte1 = (HostInfo)paramArrayOfByte2.get(0);
-                this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(paramArrayOfByte2);
-                this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(paramArrayOfByte1, l);
+                this.d.a(paramArrayOfByte2);
+                this.d.a(paramArrayOfByte1, l);
                 if (QLog.isColorLevel())
                 {
                   paramArrayOfByte1 = new StringBuilder();
                   paramArrayOfByte1.append("create delay = ");
-                  paramArrayOfByte1.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+                  paramArrayOfByte1.append(System.currentTimeMillis() - this.a);
                   QLog.e("PeakAudioTransHandler", 1, paramArrayOfByte1.toString());
                 }
               }
@@ -286,7 +286,7 @@ public class PeakAudioTransHandler
             if (j != 4) {
               break;
             }
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a(0);
+            this.e.a(0);
             notifyUI(2, true, new Object[] { Long.valueOf(l), Integer.valueOf(i) });
             a(l, false);
             return;
@@ -430,13 +430,13 @@ public class PeakAudioTransHandler
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a();
+    this.e.j();
     notifyUI(3, true, new Object[] { Long.valueOf(paramLong), Integer.valueOf(0) });
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.g())
+    if (!this.e.k())
     {
       if (QLog.isColorLevel())
       {
@@ -448,7 +448,7 @@ public class PeakAudioTransHandler
       a(paramLong);
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.c();
+    int i = this.e.f();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("nextEvent = ");
     localStringBuilder.append(i);
@@ -472,7 +472,7 @@ public class PeakAudioTransHandler
               if (paramBoolean)
               {
                 QLog.d("PeakAudioTransHandler", 2, "processNextEvent close tcp");
-                this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(paramLong);
+                this.d.a(paramLong);
                 return;
               }
               QLog.d("PeakAudioTransHandler", 2, "processNextEvent already closed");
@@ -559,7 +559,7 @@ public class PeakAudioTransHandler
     if (paramString1 != null) {
       l = Long.valueOf(paramString1).longValue();
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.g())
+    if (!this.e.k())
     {
       if (QLog.isColorLevel())
       {
@@ -577,7 +577,7 @@ public class PeakAudioTransHandler
       paramString1 = new AudioTransClientTransInfo.InfoHead();
       paramString1.str_session_id.set(String.valueOf(0));
       paramString1.str_uin.set(this.appRuntime.getAccount());
-      paramString1.uint32_seq.set(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+      paramString1.uint32_seq.set(this.f.nextInt());
       paramString1.enum_body_type.set(1);
       paramString2 = new AudioTransClientTransInfo.InfoReqBody();
       paramArrayOfByte = new AudioTransClientTransInfo.InfoC2SCreateSessionReq();
@@ -590,24 +590,24 @@ public class PeakAudioTransHandler
       paramArrayOfByte.rpt_member_list.set(Arrays.asList(new String[] { paramString1.str_uin.get() }));
       paramString2.msg_create_session_req.set(paramArrayOfByte);
       paramString1 = AudioTrans.a(paramString1.toByteArray(), paramString2.toByteArray());
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a = System.currentTimeMillis();
       ((ToServiceMsg)localObject).putWupBuffer(paramString1);
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.c())
+      if (!this.e.e())
       {
         if (QLog.isColorLevel())
         {
           paramString1 = new StringBuilder();
           paramString1.append("sendCmdToService create last session not close state = ");
-          paramString1.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a());
+          paramString1.append(this.e.a());
           QLog.e("PeakAudioTransHandler", 2, paramString1.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.c(paramBoolean ^ true);
+        this.e.c(paramBoolean ^ true);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a())
+      if (this.d.a())
       {
         sendPbReq((ToServiceMsg)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a(1);
+        this.e.a(1);
         return;
       }
       QLog.e("PeakAudioTransHandler", 2, "sendCmdToService create network is not available");
@@ -642,13 +642,13 @@ public class PeakAudioTransHandler
     paramString1 = a(i, paramString1);
     paramString2 = a(i, paramArrayOfByte, paramInt1, paramInt2, paramBoolean, paramInt3);
     ((ToServiceMsg)localObject).putWupBuffer(AudioTrans.a(paramString1.toByteArray(), paramString2.toByteArray()));
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a())
+    if (!this.e.c())
     {
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
         paramString1.append("sendCmdToService other  session not open ! state =");
-        paramString1.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a());
+        paramString1.append(this.e.a());
         QLog.e("PeakAudioTransHandler", 2, paramString1.toString());
       }
       if (i == 5)
@@ -663,15 +663,15 @@ public class PeakAudioTransHandler
         paramInt1 = -1;
       }
       if (paramInt1 != -1) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.c(paramInt1);
+        this.e.c(paramInt1);
       }
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a())
+    if (this.d.a())
     {
       sendPbReq((ToServiceMsg)localObject);
       if (i == 3) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a(3);
+        this.e.a(3);
       }
     }
     else
@@ -680,7 +680,7 @@ public class PeakAudioTransHandler
         QLog.e("PeakAudioTransHandler", 2, "sendCmdToService others network is not available");
       }
       if (i == 3) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaServerChannelStateManager.a();
+        this.e.j();
       }
     }
   }
@@ -713,7 +713,7 @@ public class PeakAudioTransHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler
  * JD-Core Version:    0.7.0.1
  */

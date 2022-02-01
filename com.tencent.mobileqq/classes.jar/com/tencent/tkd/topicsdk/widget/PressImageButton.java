@@ -26,9 +26,9 @@ public class PressImageButton
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_b_of_type_ArrayOfInt);
-      this.a = paramContext.getBoolean(R.styleable.jdField_b_of_type_Int, false);
-      this.b = paramContext.getBoolean(R.styleable.c, false);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.c);
+      this.a = paramContext.getBoolean(R.styleable.d, false);
+      this.b = paramContext.getBoolean(R.styleable.e, false);
       paramContext.recycle();
     }
   }
@@ -63,7 +63,7 @@ public class PressImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressImageButton
  * JD-Core Version:    0.7.0.1
  */

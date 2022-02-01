@@ -16,14 +16,14 @@ class AccountDetailGroupListContainer$4
   public void onClick(View paramView)
   {
     paramView = new Intent();
-    paramView.putExtra("from", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a.getClass().getName());
-    RouteUtils.a((Context)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a.get(), paramView, "/qrscan/scanner");
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.a);
+    paramView.putExtra("from", this.b.a.getClass().getName());
+    RouteUtils.a((Context)this.b.a.get(), paramView, "/qrscan/scanner");
+    AccountDetailGroupListContainer.a(this.b, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.4
  * JD-Core Version:    0.7.0.1
  */

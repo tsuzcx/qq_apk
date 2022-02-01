@@ -2,47 +2,48 @@ package com.tencent.gdtad.jsbridge;
 
 public class GdtAdPluginFactory
 {
-  private static volatile GdtAdPluginFactory jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdPluginFactory;
-  GdtBannerJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtBannerJsCallHandler;
-  GdtC2SJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtC2SJsCallHandler;
-  GdtCanvasJSONJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtCanvasJSONJsCallHandler;
-  GdtCarrierJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtCarrierJsCallHandler;
-  GdtDeviceDemoJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceDemoJsCallHandler;
-  GdtDeviceIdJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceIdJsCallHandler;
-  GdtDeviceInfoJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceInfoJsCallHandler;
-  GdtFeedbackJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtFeedbackJsCallHandler;
-  GdtGetUserInfoHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtGetUserInfoHandler;
-  GdtHandleClickJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtHandleClickJsCallHandler;
-  GdtHippyDemoJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtHippyDemoJsCallHandler;
-  GdtInterstitialForJSHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialForJSHandler;
-  GdtInterstitialJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialJsCallHandler;
-  GdtLaunchAppWithDeeplinkJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLaunchAppWithDeeplinkJsCallHandler;
-  GdtLoadAdJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
-  GdtLocationJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler;
-  GdtMvWebEndcardClickHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebEndcardClickHandler;
-  GdtMvWebGetAdInfoHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebGetAdInfoHandler;
-  GdtMvWebOnVideoCloseHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoCloseHandler;
-  GdtMvWebOnVideoMuteHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoMuteHandler;
-  GdtMvWebReportServerAntiHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebReportServerAntiHandler;
-  GdtNetTypeJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtNetTypeJsCallHandler;
-  GdtOSVersionJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtOSVersionJsCallHandler;
-  GdtOpenMvPageHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtOpenMvPageHandler;
-  GdtPreLoadAfterAdLoadedJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtPreLoadAfterAdLoadedJsCallHandler;
-  GdtReminderDemoJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtReminderDemoJsCallHandler;
-  GdtWebReportFlyingStreamingHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtWebReportFlyingStreamingHandler;
+  private static volatile GdtAdPluginFactory C;
+  GdtFeedbackJsCallHandler A;
+  GdtMotiveVideoDemoHandler B;
+  GdtLocationJsCallHandler a;
+  GdtLoadAdJsCallHandler b;
+  GdtDeviceIdJsCallHandler c;
+  GdtCarrierJsCallHandler d;
+  GdtNetTypeJsCallHandler e;
+  GdtOSVersionJsCallHandler f;
+  GdtHandleClickJsCallHandler g;
+  GdtBannerJsCallHandler h;
+  GdtDeviceInfoJsCallHandler i;
+  GdtC2SJsCallHandler j;
+  GdtOpenMvPageHandler k;
+  GdtGetUserInfoHandler l;
+  GdtPreLoadAfterAdLoadedJsCallHandler m;
+  GdtInterstitialJsCallHandler n;
+  GdtInterstitialForJSHandler o;
+  GdtCanvasJSONJsCallHandler p;
+  GdtMvWebGetAdInfoHandler q;
+  GdtMvWebEndcardClickHandler r;
+  GdtLaunchAppWithDeeplinkJsCallHandler s;
+  GdtMvWebOnVideoCloseHandler t;
+  GdtMvWebOnVideoMuteHandler u;
+  GdtWebReportFlyingStreamingHandler v;
+  GdtMvWebReportServerAntiHandler w;
+  GdtDeviceDemoJsCallHandler x;
+  GdtReminderDemoJsCallHandler y;
+  GdtHippyDemoJsCallHandler z;
   
   public static GdtAdPluginFactory a()
   {
-    if (jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdPluginFactory == null) {
+    if (C == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdPluginFactory == null) {
-          jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdPluginFactory = new GdtAdPluginFactory();
+        if (C == null) {
+          C = new GdtAdPluginFactory();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdPluginFactory;
+    return C;
   }
   
   public GdtJsCallHandler a(int paramInt)
@@ -53,146 +54,151 @@ public class GdtAdPluginFactory
     case 8: 
     default: 
       return null;
+    case 33: 
+      if (this.B == null) {
+        this.B = new GdtMotiveVideoDemoHandler();
+      }
+      return this.B;
     case 32: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtFeedbackJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtFeedbackJsCallHandler = new GdtFeedbackJsCallHandler();
+      if (this.A == null) {
+        this.A = new GdtFeedbackJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtFeedbackJsCallHandler;
+      return this.A;
     case 31: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHippyDemoJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHippyDemoJsCallHandler = new GdtHippyDemoJsCallHandler();
+      if (this.z == null) {
+        this.z = new GdtHippyDemoJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHippyDemoJsCallHandler;
+      return this.z;
     case 30: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtWebReportFlyingStreamingHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtWebReportFlyingStreamingHandler = new GdtWebReportFlyingStreamingHandler();
+      if (this.v == null) {
+        this.v = new GdtWebReportFlyingStreamingHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtWebReportFlyingStreamingHandler;
+      return this.v;
     case 29: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtReminderDemoJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtReminderDemoJsCallHandler = new GdtReminderDemoJsCallHandler();
+      if (this.y == null) {
+        this.y = new GdtReminderDemoJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtReminderDemoJsCallHandler;
+      return this.y;
     case 28: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceDemoJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceDemoJsCallHandler = new GdtDeviceDemoJsCallHandler();
+      if (this.x == null) {
+        this.x = new GdtDeviceDemoJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceDemoJsCallHandler;
+      return this.x;
     case 27: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebReportServerAntiHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebReportServerAntiHandler = new GdtMvWebReportServerAntiHandler();
+      if (this.w == null) {
+        this.w = new GdtMvWebReportServerAntiHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebReportServerAntiHandler;
+      return this.w;
     case 26: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoMuteHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoMuteHandler = new GdtMvWebOnVideoMuteHandler();
+      if (this.u == null) {
+        this.u = new GdtMvWebOnVideoMuteHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoMuteHandler;
+      return this.u;
     case 25: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoCloseHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoCloseHandler = new GdtMvWebOnVideoCloseHandler();
+      if (this.t == null) {
+        this.t = new GdtMvWebOnVideoCloseHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebOnVideoCloseHandler;
+      return this.t;
     case 24: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLaunchAppWithDeeplinkJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLaunchAppWithDeeplinkJsCallHandler = new GdtLaunchAppWithDeeplinkJsCallHandler();
+      if (this.s == null) {
+        this.s = new GdtLaunchAppWithDeeplinkJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLaunchAppWithDeeplinkJsCallHandler;
+      return this.s;
     case 23: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebEndcardClickHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebEndcardClickHandler = new GdtMvWebEndcardClickHandler();
+      if (this.r == null) {
+        this.r = new GdtMvWebEndcardClickHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebEndcardClickHandler;
+      return this.r;
     case 22: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebGetAdInfoHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebGetAdInfoHandler = new GdtMvWebGetAdInfoHandler();
+      if (this.q == null) {
+        this.q = new GdtMvWebGetAdInfoHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtMvWebGetAdInfoHandler;
+      return this.q;
     case 21: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCanvasJSONJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCanvasJSONJsCallHandler = new GdtCanvasJSONJsCallHandler();
+      if (this.p == null) {
+        this.p = new GdtCanvasJSONJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCanvasJSONJsCallHandler;
+      return this.p;
     case 20: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialForJSHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialForJSHandler = new GdtInterstitialForJSHandler();
+      if (this.o == null) {
+        this.o = new GdtInterstitialForJSHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialForJSHandler;
+      return this.o;
     case 19: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialJsCallHandler = new GdtInterstitialJsCallHandler();
+      if (this.n == null) {
+        this.n = new GdtInterstitialJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtInterstitialJsCallHandler;
+      return this.n;
     case 18: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtPreLoadAfterAdLoadedJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtPreLoadAfterAdLoadedJsCallHandler = new GdtPreLoadAfterAdLoadedJsCallHandler();
+      if (this.m == null) {
+        this.m = new GdtPreLoadAfterAdLoadedJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtPreLoadAfterAdLoadedJsCallHandler;
+      return this.m;
     case 17: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtGetUserInfoHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtGetUserInfoHandler = new GdtGetUserInfoHandler();
+      if (this.l == null) {
+        this.l = new GdtGetUserInfoHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtGetUserInfoHandler;
+      return this.l;
     case 16: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOpenMvPageHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOpenMvPageHandler = new GdtOpenMvPageHandler();
+      if (this.k == null) {
+        this.k = new GdtOpenMvPageHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOpenMvPageHandler;
+      return this.k;
     case 15: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtC2SJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtC2SJsCallHandler = new GdtC2SJsCallHandler();
+      if (this.j == null) {
+        this.j = new GdtC2SJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtC2SJsCallHandler;
+      return this.j;
     case 14: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceInfoJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceInfoJsCallHandler = new GdtDeviceInfoJsCallHandler();
+      if (this.i == null) {
+        this.i = new GdtDeviceInfoJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceInfoJsCallHandler;
+      return this.i;
     case 13: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtBannerJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtBannerJsCallHandler = new GdtBannerJsCallHandler();
+      if (this.h == null) {
+        this.h = new GdtBannerJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtBannerJsCallHandler;
+      return this.h;
     case 12: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHandleClickJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHandleClickJsCallHandler = new GdtHandleClickJsCallHandler();
+      if (this.g == null) {
+        this.g = new GdtHandleClickJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtHandleClickJsCallHandler;
+      return this.g;
     case 11: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOSVersionJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOSVersionJsCallHandler = new GdtOSVersionJsCallHandler();
+      if (this.f == null) {
+        this.f = new GdtOSVersionJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtOSVersionJsCallHandler;
+      return this.f;
     case 10: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtNetTypeJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtNetTypeJsCallHandler = new GdtNetTypeJsCallHandler();
+      if (this.e == null) {
+        this.e = new GdtNetTypeJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtNetTypeJsCallHandler;
+      return this.e;
     case 9: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCarrierJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCarrierJsCallHandler = new GdtCarrierJsCallHandler();
+      if (this.d == null) {
+        this.d = new GdtCarrierJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtCarrierJsCallHandler;
+      return this.d;
     case 7: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceIdJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceIdJsCallHandler = new GdtDeviceIdJsCallHandler();
+      if (this.c == null) {
+        this.c = new GdtDeviceIdJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtDeviceIdJsCallHandler;
+      return this.c;
     case 5: 
-      if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler == null) {
-        this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler = new GdtLoadAdJsCallHandler();
+      if (this.b == null) {
+        this.b = new GdtLoadAdJsCallHandler();
       }
-      return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
+      return this.b;
     }
-    if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler == null) {
-      this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler = new GdtLocationJsCallHandler();
+    if (this.a == null) {
+      this.a = new GdtLocationJsCallHandler();
     }
-    return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtAdPluginFactory
  * JD-Core Version:    0.7.0.1
  */

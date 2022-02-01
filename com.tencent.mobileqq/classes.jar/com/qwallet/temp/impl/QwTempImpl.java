@@ -59,7 +59,7 @@ public class QwTempImpl
   
   public String ContactUtils$getDateNickName(AppInterface paramAppInterface, String paramString)
   {
-    return ContactUtils.g(paramAppInterface, paramString);
+    return ContactUtils.h(paramAppInterface, paramString);
   }
   
   public int GifProcessor$convertVideoToGifForLocal(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, int paramInt3, int paramInt4, int paramInt5)
@@ -123,7 +123,7 @@ public class QwTempImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QwTempImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,8 @@ class AdHandler$3
         if (paramVarArgs.length <= 0) {
           return;
         }
-        paramObject = (ReadInJoyXListView)this.a.a().a();
-        localObject1 = this.a.a().b();
+        paramObject = (ReadInJoyXListView)this.a.b().d();
+        localObject1 = this.a.b().h();
         if (paramObject != null)
         {
           if (localObject1 == null) {
@@ -67,10 +67,10 @@ class AdHandler$3
               {
                 localObject2 = (AdvertisementInfo)localObject2;
                 m = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getGameType((AdvertisementInfo)localObject2);
-                String str = ReadInJoyAdUtils.a((AdvertisementInfo)localObject2);
+                String str = ReadInJoyAdUtils.d((AdvertisementInfo)localObject2);
                 if ((m == 1) && (paramVarArgs.equals(str)) && ((localObject3 instanceof IProteusItemView)))
                 {
-                  localObject3 = ((IProteusItemView)localObject3).a().getVirtualView().findViewBaseByName("id_view_AdDownloadView");
+                  localObject3 = ((IProteusItemView)localObject3).getContainer().getVirtualView().findViewBaseByName("id_view_AdDownloadView");
                   if ((localObject3 instanceof RIJAdDownloadViewBase))
                   {
                     localObject3 = (RIJAdDownloadViewBase)localObject3;
@@ -88,8 +88,8 @@ class AdHandler$3
           if (paramInt == 110) {
             try
             {
-              paramObject = (ReadInJoyXListView)this.a.a().a();
-              paramVarArgs = this.a.a().b();
+              paramObject = (ReadInJoyXListView)this.a.b().d();
+              paramVarArgs = this.a.b().h();
               k = paramObject.getHeaderViewsCount();
               j = paramObject.getFirstVisiblePosition();
               m = paramObject.getLastVisiblePosition();
@@ -117,7 +117,7 @@ class AdHandler$3
                           ((AdvertisementInfo)localObject3).isHideForAnimate = false;
                           i = 0;
                         }
-                        localObject2 = ((IProteusItemView)localObject2).a().getVirtualView();
+                        localObject2 = ((IProteusItemView)localObject2).getContainer().getVirtualView();
                         if (((AdvertisementInfo)localObject3).mImaxShowAdType == 1001)
                         {
                           localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_article_large_imge");
@@ -200,7 +200,7 @@ class AdHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.handlers.AdHandler.3
  * JD-Core Version:    0.7.0.1
  */

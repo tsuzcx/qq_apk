@@ -16,7 +16,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$6
   
   public boolean interceptStartLoadUrl()
   {
-    return this.a.a();
+    return this.a.b();
   }
   
   public void onFinalState(Bundle paramBundle)
@@ -43,7 +43,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.6
  * JD-Core Version:    0.7.0.1
  */

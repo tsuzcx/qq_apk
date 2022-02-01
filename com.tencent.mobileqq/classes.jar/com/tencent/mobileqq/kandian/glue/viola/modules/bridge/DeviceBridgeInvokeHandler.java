@@ -16,12 +16,6 @@ public final class DeviceBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "device";
-  }
-  
   public void a()
   {
     a("getDeviceInfo", (Function2)new DeviceBridgeInvokeHandler.register.1(this));
@@ -34,10 +28,16 @@ public final class DeviceBridgeInvokeHandler
     a("isMobileQQ", (Function2)new DeviceBridgeInvokeHandler.register.8(this));
     a("getNetworkType", (Function2)new DeviceBridgeInvokeHandler.register.9(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "device";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.DeviceBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

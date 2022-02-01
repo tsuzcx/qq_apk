@@ -26,13 +26,13 @@ public class C2CPaAdAddMessageHandler
   {
     paramAppRuntime = (QQAppInterface)paramAppRuntime;
     Object localObject = PublicAccountAdUtil.a(paramAppRuntime, paramMessageRecord, false);
-    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString)))
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementItem)localObject).g.a)))
     {
-      AdvertisementRecentUserManager.a().a(((AdvertisementItem)localObject).jdField_a_of_type_JavaLangString);
+      AdvertisementRecentUserManager.a().a(((AdvertisementItem)localObject).a);
       AdvertisementRecentUserManager.a().a((AdvertisementItem)localObject);
-      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_uin", ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString);
-      if (((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b != null) {
-        paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_name", ((AdvertisementItem)localObject).jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+      paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_uin", ((AdvertisementItem)localObject).g.a);
+      if (((AdvertisementItem)localObject).g.b != null) {
+        paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_name", ((AdvertisementItem)localObject).g.b);
       }
       paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "false");
       paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "false");
@@ -48,7 +48,7 @@ public class C2CPaAdAddMessageHandler
         localObject = (MessageRecord)paramMessageRecord.next();
         paramEntityManager.remove((Entity)localObject);
         RecentUtil.b(paramAppRuntime, ((MessageRecord)localObject).senderuin, ((MessageRecord)localObject).istroop);
-        RecentUser localRecentUser = paramRecentUserProxy.a(paramString, paramInt);
+        RecentUser localRecentUser = paramRecentUserProxy.b(paramString, paramInt);
         if (localRecentUser != null)
         {
           RecentDataListManager localRecentDataListManager = RecentDataListManager.a();
@@ -56,7 +56,7 @@ public class C2CPaAdAddMessageHandler
           localStringBuilder.append(paramString);
           localStringBuilder.append("-");
           localStringBuilder.append(paramInt);
-          localRecentDataListManager.a(localStringBuilder.toString());
+          localRecentDataListManager.b(localStringBuilder.toString());
           paramRecentUserProxy.a(localRecentUser);
         }
         paramIMessageFacade.setReaded(((MessageRecord)localObject).senderuin, 1008, true, true);
@@ -89,7 +89,7 @@ public class C2CPaAdAddMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.adder.C2CPaAdAddMessageHandler
  * JD-Core Version:    0.7.0.1
  */

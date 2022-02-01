@@ -20,23 +20,23 @@ class DatalineSessionAdapter$5
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.b.d != null)
     {
-      if (this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.b.b == null) {
         return;
       }
-      paramView = new WeakReference(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext);
-      if ((this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      paramView = new WeakReference(this.b.b);
+      if ((this.b.b instanceof Activity))
       {
-        if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext))
+        if (!NetworkUtil.isNetSupport(this.b.b))
         {
-          QQToast.a(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext, 2131692183, 0).b(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.b.b, 2131889169, 0).show(this.b.b.getResources().getDimensionPixelSize(2131299920));
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord != null) && (paramView.get() != null))
+        if ((this.a != null) && (paramView.get() != null))
         {
-          String str = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
-          Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+          String str = this.a.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+          Boolean.parseBoolean(this.a.getExtInfoFromExtStr("team_work_is_message_convert"));
           if (!TextUtils.isEmpty(str))
           {
             Bundle localBundle = new Bundle();

@@ -13,12 +13,12 @@ import java.util.ArrayList;
 final class ZimuToolbar$QAVZimuAdapter
   extends QAVPtvTemplateAdapter
 {
-  WeakReference<ZimuToolbar> a;
+  WeakReference<ZimuToolbar> q;
   
   public ZimuToolbar$QAVZimuAdapter(AppInterface paramAppInterface, Context paramContext, ArrayList<QavListItemBase.ItemInfo> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
   {
     super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
-    this.a = new WeakReference(paramZimuToolbar);
+    this.q = new WeakReference(paramZimuToolbar);
   }
   
   public void a(String paramString1, long paramLong, String paramString2)
@@ -29,7 +29,7 @@ final class ZimuToolbar$QAVZimuAdapter
       i = 1;
       while (i < j)
       {
-        localObject = a(i);
+        localObject = b(i);
         if ((localObject != null) && (paramString2.equals(((QavListItemBase.ItemInfo)localObject).a)))
         {
           bool1 = true;
@@ -53,14 +53,14 @@ final class ZimuToolbar$QAVZimuAdapter
       ((StringBuilder)localObject).append("], from[");
       ((StringBuilder)localObject).append(paramString1);
       ((StringBuilder)localObject).append("], mCurSelectedPosition[");
-      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(this.j);
       ((StringBuilder)localObject).append("]");
       QLog.w("QAVPtvTemplateAdapter", 1, ((StringBuilder)localObject).toString());
     }
-    int j = this.d;
+    int j = this.j;
     boolean bool2 = a(i);
     if (bool2) {
-      a(paramLong, this.d);
+      b(paramLong, this.j);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setSelectedItem end, from[");
@@ -76,7 +76,7 @@ final class ZimuToolbar$QAVZimuAdapter
     ((StringBuilder)localObject).append("], Pos[");
     ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append("->");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.j);
     ((StringBuilder)localObject).append("], selectResult[");
     ((StringBuilder)localObject).append(bool2);
     ((StringBuilder)localObject).append("]");

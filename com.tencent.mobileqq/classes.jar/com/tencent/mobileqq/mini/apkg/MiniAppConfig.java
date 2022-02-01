@@ -11,14 +11,13 @@ public class MiniAppConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniAppConfig> CREATOR = new MiniAppConfig.1();
-  public static final int FLAG_NEED_KILL = 2;
-  public static final int FLAG_NEED_NEW_PROCESS = 1;
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
   public BaseLibInfo baseLibInfo;
   public MiniAppInfo config;
   public String entryPath;
-  public int forceReroad = 0;
+  @Deprecated
+  private int forceReroad = 0;
   public int gameAdsTotalTime = 0;
   public boolean isFromShowInfo;
   public boolean isSdkMode = false;
@@ -194,7 +193,7 @@ public class MiniAppConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppConfig
  * JD-Core Version:    0.7.0.1
  */

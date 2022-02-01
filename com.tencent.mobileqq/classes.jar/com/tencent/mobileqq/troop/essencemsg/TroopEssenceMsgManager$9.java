@@ -12,13 +12,13 @@ class TroopEssenceMsgManager$9
   
   public void run()
   {
-    TroopEssenceMsgManager.a(this.this$0).getMessageFacade().b(String.valueOf(this.a), 1, this.b);
+    TroopEssenceMsgManager.a(this.this$0).getMessageFacade().h(String.valueOf(this.a), 1, this.b);
     ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.9.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.9
  * JD-Core Version:    0.7.0.1
  */

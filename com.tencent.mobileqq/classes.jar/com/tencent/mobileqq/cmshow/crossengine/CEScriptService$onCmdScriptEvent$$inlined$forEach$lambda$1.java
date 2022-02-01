@@ -13,12 +13,12 @@ final class CEScriptService$onCmdScriptEvent$$inlined$forEach$lambda$1
   
   public final void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginIEventPlugin.a((Argument)this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineModelCEArgument);
+    this.a.a((Argument)this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CEScriptService.onCmdScriptEvent..inlined.forEach.lambda.1
  * JD-Core Version:    0.7.0.1
  */

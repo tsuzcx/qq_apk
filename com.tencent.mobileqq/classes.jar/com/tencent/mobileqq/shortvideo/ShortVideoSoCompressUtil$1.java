@@ -38,7 +38,7 @@ final class ShortVideoSoCompressUtil$1
             localObject2 = localObject1;
             j = i;
           }
-          else if (ShortVideoSoCompressUtil.a((String)localObject2))
+          else if (ShortVideoSoCompressUtil.b((String)localObject2))
           {
             n = m;
             localObject2 = localObject1;
@@ -46,8 +46,8 @@ final class ShortVideoSoCompressUtil$1
           }
           else
           {
-            Object localObject3 = ShortVideoSoManager.a((String)localObject2);
-            j = ((ShortVideoSoManager.CfgParser)localObject3).a();
+            Object localObject3 = ShortVideoSoManager.d((String)localObject2);
+            j = ((ShortVideoSoManager.CfgParser)localObject3).e();
             if (j != 0)
             {
               localObject3 = new StringBuilder();
@@ -139,7 +139,7 @@ final class ShortVideoSoCompressUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoSoCompressUtil.1
  * JD-Core Version:    0.7.0.1
  */

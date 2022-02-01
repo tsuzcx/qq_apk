@@ -467,18 +467,6 @@ public class MusicCacheManager
     //   444	448	451	java/lang/Exception
   }
   
-  private static boolean a(File paramFile)
-  {
-    if (!paramFile.getName().endsWith(".cfg"))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramFile.getAbsolutePath());
-      localStringBuilder.append(".cfg");
-      new File(localStringBuilder.toString()).delete();
-    }
-    return paramFile.delete();
-  }
-  
   /* Error */
   public static boolean a(String paramString, int[] paramArrayOfInt)
   {
@@ -510,17 +498,17 @@ public class MusicCacheManager
     //   52: ifne +5 -> 57
     //   55: iconst_1
     //   56: ireturn
-    //   57: new 157	java/io/FileInputStream
+    //   57: new 146	java/io/FileInputStream
     //   60: dup
     //   61: aload 7
-    //   63: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   63: invokespecial 148	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   66: astore_0
     //   67: sipush 4096
     //   70: newarray byte
     //   72: astore 8
-    //   74: new 161	java/io/ByteArrayOutputStream
+    //   74: new 150	java/io/ByteArrayOutputStream
     //   77: dup
-    //   78: invokespecial 162	java/io/ByteArrayOutputStream:<init>	()V
+    //   78: invokespecial 151	java/io/ByteArrayOutputStream:<init>	()V
     //   81: astore 6
     //   83: aload_0
     //   84: astore 4
@@ -528,7 +516,7 @@ public class MusicCacheManager
     //   88: astore 5
     //   90: aload_0
     //   91: aload 8
-    //   93: invokevirtual 168	java/io/InputStream:read	([B)I
+    //   93: invokevirtual 157	java/io/InputStream:read	([B)I
     //   96: istore_2
     //   97: iload_2
     //   98: iconst_m1
@@ -541,16 +529,16 @@ public class MusicCacheManager
     //   111: aload 8
     //   113: iconst_0
     //   114: iload_2
-    //   115: invokevirtual 171	java/io/ByteArrayOutputStream:write	([BII)V
+    //   115: invokevirtual 160	java/io/ByteArrayOutputStream:write	([BII)V
     //   118: goto -35 -> 83
     //   121: aload_0
     //   122: astore 4
     //   124: aload 6
     //   126: astore 5
     //   128: aload 6
-    //   130: invokevirtual 172	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
-    //   133: ldc 174
-    //   135: invokevirtual 178	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   130: invokevirtual 161	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
+    //   133: ldc 163
+    //   135: invokevirtual 167	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   138: astore 8
     //   140: aload 8
     //   142: ifnull +247 -> 389
@@ -570,7 +558,7 @@ public class MusicCacheManager
     //   169: aload 8
     //   171: iconst_1
     //   172: aaload
-    //   173: invokestatic 184	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   173: invokestatic 173	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   176: istore_2
     //   177: aload_0
     //   178: astore 4
@@ -579,13 +567,13 @@ public class MusicCacheManager
     //   184: aload 8
     //   186: iconst_3
     //   187: aaload
-    //   188: invokestatic 184	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   188: invokestatic 173	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   191: istore_3
     //   192: iload_2
     //   193: iload_3
     //   194: if_icmpne +95 -> 289
     //   197: aload 6
-    //   199: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   199: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   202: goto +43 -> 245
     //   205: astore_1
     //   206: new 69	java/lang/StringBuilder
@@ -593,7 +581,7 @@ public class MusicCacheManager
     //   210: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   213: astore 4
     //   215: aload 4
-    //   217: ldc 187
+    //   217: ldc 176
     //   219: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: pop
     //   223: aload 4
@@ -608,7 +596,7 @@ public class MusicCacheManager
     //   241: aload_1
     //   242: invokestatic 139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   245: aload_0
-    //   246: invokevirtual 188	java/io/InputStream:close	()V
+    //   246: invokevirtual 177	java/io/InputStream:close	()V
     //   249: iconst_1
     //   250: ireturn
     //   251: astore_0
@@ -617,7 +605,7 @@ public class MusicCacheManager
     //   256: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   259: astore_1
     //   260: aload_1
-    //   261: ldc 187
+    //   261: ldc 176
     //   263: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: pop
     //   267: aload_1
@@ -642,7 +630,7 @@ public class MusicCacheManager
     //   295: iload_3
     //   296: iastore
     //   297: aload 6
-    //   299: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   299: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   302: goto +43 -> 345
     //   305: astore_1
     //   306: new 69	java/lang/StringBuilder
@@ -650,7 +638,7 @@ public class MusicCacheManager
     //   310: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   313: astore 4
     //   315: aload 4
-    //   317: ldc 187
+    //   317: ldc 176
     //   319: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload 4
@@ -665,7 +653,7 @@ public class MusicCacheManager
     //   341: aload_1
     //   342: invokestatic 139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   345: aload_0
-    //   346: invokevirtual 188	java/io/InputStream:close	()V
+    //   346: invokevirtual 177	java/io/InputStream:close	()V
     //   349: iconst_0
     //   350: ireturn
     //   351: astore_0
@@ -674,7 +662,7 @@ public class MusicCacheManager
     //   356: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   359: astore_1
     //   360: aload_1
-    //   361: ldc 187
+    //   361: ldc 176
     //   363: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   366: pop
     //   367: aload_1
@@ -702,7 +690,7 @@ public class MusicCacheManager
     //   407: astore 5
     //   409: ldc 87
     //   411: iconst_2
-    //   412: ldc 190
+    //   412: ldc 179
     //   414: invokestatic 93	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: aload_1
     //   418: iconst_0
@@ -713,7 +701,7 @@ public class MusicCacheManager
     //   423: iconst_0
     //   424: iastore
     //   425: aload 6
-    //   427: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   427: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   430: goto +43 -> 473
     //   433: astore_1
     //   434: new 69	java/lang/StringBuilder
@@ -721,7 +709,7 @@ public class MusicCacheManager
     //   438: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   441: astore 4
     //   443: aload 4
-    //   445: ldc 187
+    //   445: ldc 176
     //   447: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   450: pop
     //   451: aload 4
@@ -736,7 +724,7 @@ public class MusicCacheManager
     //   469: aload_1
     //   470: invokestatic 139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   473: aload_0
-    //   474: invokevirtual 188	java/io/InputStream:close	()V
+    //   474: invokevirtual 177	java/io/InputStream:close	()V
     //   477: iconst_0
     //   478: ireturn
     //   479: astore_0
@@ -745,7 +733,7 @@ public class MusicCacheManager
     //   484: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   487: astore_1
     //   488: aload_1
-    //   489: ldc 187
+    //   489: ldc 176
     //   491: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: aload_1
@@ -799,7 +787,7 @@ public class MusicCacheManager
     //   576: aload 6
     //   578: astore 5
     //   580: aload 8
-    //   582: ldc 187
+    //   582: ldc 176
     //   584: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   587: pop
     //   588: aload_0
@@ -831,7 +819,7 @@ public class MusicCacheManager
     //   637: aload 6
     //   639: ifnull +51 -> 690
     //   642: aload 6
-    //   644: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   644: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   647: goto +43 -> 690
     //   650: astore_1
     //   651: new 69	java/lang/StringBuilder
@@ -839,7 +827,7 @@ public class MusicCacheManager
     //   655: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   658: astore 4
     //   660: aload 4
-    //   662: ldc 187
+    //   662: ldc 176
     //   664: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   667: pop
     //   668: aload 4
@@ -856,7 +844,7 @@ public class MusicCacheManager
     //   690: aload_0
     //   691: ifnull +45 -> 736
     //   694: aload_0
-    //   695: invokevirtual 188	java/io/InputStream:close	()V
+    //   695: invokevirtual 177	java/io/InputStream:close	()V
     //   698: iconst_0
     //   699: ireturn
     //   700: astore_0
@@ -865,7 +853,7 @@ public class MusicCacheManager
     //   705: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   708: astore_1
     //   709: aload_1
-    //   710: ldc 187
+    //   710: ldc 176
     //   712: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   715: pop
     //   716: aload_1
@@ -899,7 +887,7 @@ public class MusicCacheManager
     //   763: aload 6
     //   765: astore 5
     //   767: aload 7
-    //   769: ldc 192
+    //   769: ldc 181
     //   771: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   774: pop
     //   775: aload_0
@@ -924,7 +912,7 @@ public class MusicCacheManager
     //   811: aload 6
     //   813: ifnull +51 -> 864
     //   816: aload 6
-    //   818: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   818: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   821: goto +43 -> 864
     //   824: astore_1
     //   825: new 69	java/lang/StringBuilder
@@ -932,7 +920,7 @@ public class MusicCacheManager
     //   829: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   832: astore 4
     //   834: aload 4
-    //   836: ldc 187
+    //   836: ldc 176
     //   838: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   841: pop
     //   842: aload 4
@@ -949,7 +937,7 @@ public class MusicCacheManager
     //   864: aload_0
     //   865: ifnull +45 -> 910
     //   868: aload_0
-    //   869: invokevirtual 188	java/io/InputStream:close	()V
+    //   869: invokevirtual 177	java/io/InputStream:close	()V
     //   872: iconst_0
     //   873: ireturn
     //   874: astore_0
@@ -958,7 +946,7 @@ public class MusicCacheManager
     //   879: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   882: astore_1
     //   883: aload_1
-    //   884: ldc 187
+    //   884: ldc 176
     //   886: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   889: pop
     //   890: aload_1
@@ -978,7 +966,7 @@ public class MusicCacheManager
     //   913: aload 5
     //   915: ifnull +51 -> 966
     //   918: aload 5
-    //   920: invokevirtual 185	java/io/ByteArrayOutputStream:close	()V
+    //   920: invokevirtual 174	java/io/ByteArrayOutputStream:close	()V
     //   923: goto +43 -> 966
     //   926: astore_1
     //   927: new 69	java/lang/StringBuilder
@@ -986,7 +974,7 @@ public class MusicCacheManager
     //   931: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   934: astore 5
     //   936: aload 5
-    //   938: ldc 187
+    //   938: ldc 176
     //   940: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   943: pop
     //   944: aload 5
@@ -1003,7 +991,7 @@ public class MusicCacheManager
     //   966: aload 4
     //   968: ifnull +51 -> 1019
     //   971: aload 4
-    //   973: invokevirtual 188	java/io/InputStream:close	()V
+    //   973: invokevirtual 177	java/io/InputStream:close	()V
     //   976: goto +43 -> 1019
     //   979: astore_1
     //   980: new 69	java/lang/StringBuilder
@@ -1011,7 +999,7 @@ public class MusicCacheManager
     //   984: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   987: astore 4
     //   989: aload 4
-    //   991: ldc 187
+    //   991: ldc 176
     //   993: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   996: pop
     //   997: aload 4
@@ -1128,7 +1116,7 @@ public class MusicCacheManager
         {
           if (localFile.lastModified() < l3)
           {
-            a(localFile);
+            b(localFile);
             l2 = l1;
           }
           else
@@ -1159,17 +1147,29 @@ public class MusicCacheManager
           }
           localFile = (File)((Map.Entry)((Iterator)localObject2).next()).getValue();
           l2 = localFile.length();
-          if (a(localFile)) {
+          if (b(localFile)) {
             l1 -= l2;
           }
         }
       }
     }
   }
+  
+  private static boolean b(File paramFile)
+  {
+    if (!paramFile.getName().endsWith(".cfg"))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramFile.getAbsolutePath());
+      localStringBuilder.append(".cfg");
+      new File(localStringBuilder.toString()).delete();
+    }
+    return paramFile.delete();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.MusicCacheManager
  * JD-Core Version:    0.7.0.1
  */

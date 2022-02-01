@@ -18,11 +18,11 @@ import java.util.Vector;
 
 public class AdReportManager
 {
-  private static volatile AdReportManager jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdReportManager;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final Vector<String> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
+  private static volatile AdReportManager a;
+  private static final Vector<String> d = new Vector();
+  private static final Object e = new Object();
   private boolean b;
+  private boolean c;
   
   private AdReportManager()
   {
@@ -33,37 +33,26 @@ public class AdReportManager
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.b = bool1;
     boolean bool1 = bool2;
     if (localAladdinConfig.getIntegerFromString("soft_new_report", 0) == 1) {
       bool1 = true;
     }
-    this.b = bool1;
+    this.c = bool1;
   }
   
   public static AdReportManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdReportManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdReportManager == null) {
-          jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdReportManager = new AdReportManager();
+        if (a == null) {
+          a = new AdReportManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdReportManager;
-  }
-  
-  private static String a(AdReportData paramAdReportData)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AdReportUtil.b(paramAdReportData));
-    localStringBuilder.append("_");
-    localStringBuilder.append(AdReportUtil.a(paramAdReportData));
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramAdReportData.a());
-    return localStringBuilder.toString();
+    return a;
   }
   
   private void a(String paramString, ReportData paramReportData, ReportAction paramReportAction)
@@ -71,11 +60,11 @@ public class AdReportManager
     Bundle localBundle1 = new Bundle();
     HttpUtil.addCookie(localBundle1);
     Bundle localBundle2 = new Bundle();
-    Object localObject = paramReportData.a().keySet().iterator();
+    Object localObject = paramReportData.c().keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      localBundle2.putString(str, (String)paramReportData.a().get(str));
+      localBundle2.putString(str, (String)paramReportData.c().get(str));
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("action:");
@@ -83,7 +72,7 @@ public class AdReportManager
     ((StringBuilder)localObject).append(",reportUrl:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(",reportData:");
-    a(((StringBuilder)localObject).toString(), paramReportData.a());
+    a(((StringBuilder)localObject).toString(), paramReportData.b());
     localBundle2.putInt("PostBodyType", 1);
     paramString = HttpUtil.postUrlForByteWithJson(BaseApplication.getContext(), paramString, paramReportData.a(), localBundle1);
     if (paramString == null)
@@ -111,9 +100,9 @@ public class AdReportManager
     QLog.d("AdReportManager", 2, localStringBuilder.toString());
   }
   
-  public static boolean a(AdReportData paramAdReportData)
+  public static boolean b(AdReportData paramAdReportData)
   {
-    ActionEntity localActionEntity1 = paramAdReportData.a();
+    ActionEntity localActionEntity1 = paramAdReportData.v();
     ActionEntity localActionEntity2 = ActionEntity.PKMiddlePage;
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -129,7 +118,7 @@ public class AdReportManager
         if (AdReportUtil.a(paramAdReportData) == ReportAction.EXPOSE)
         {
           bool1 = bool2;
-          if (jdField_a_of_type_JavaUtilVector.contains(a(paramAdReportData))) {
+          if (d.contains(d(paramAdReportData))) {
             bool1 = true;
           }
         }
@@ -138,28 +127,39 @@ public class AdReportManager
     return bool1;
   }
   
-  public static boolean b(AdReportData paramAdReportData)
+  public static boolean c(AdReportData paramAdReportData)
   {
     if (AdReportUtil.a(paramAdReportData) != ReportAction.EXPOSE) {
       return false;
     }
-    ??? = AdReportUtil.a(paramAdReportData);
+    ??? = AdReportUtil.b(paramAdReportData);
     if ((ActionEntity.PKMiddlePage != ???) && (ActionEntity.ImaxPic != ???))
     {
       if (ActionEntity.ImaxVideo == ???) {
         return false;
       }
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (e)
       {
-        if (!jdField_a_of_type_JavaUtilVector.contains(a(paramAdReportData)))
+        if (!d.contains(d(paramAdReportData)))
         {
-          jdField_a_of_type_JavaUtilVector.add(a(paramAdReportData));
+          d.add(d(paramAdReportData));
           return false;
         }
         return true;
       }
     }
     return false;
+  }
+  
+  private static String d(AdReportData paramAdReportData)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AdReportUtil.e(paramAdReportData));
+    localStringBuilder.append("_");
+    localStringBuilder.append(AdReportUtil.b(paramAdReportData));
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramAdReportData.t());
+    return localStringBuilder.toString();
   }
   
   public void a(AdReportData paramAdReportData)
@@ -170,19 +170,19 @@ public class AdReportManager
     ThreadManager.post(new AdReportManager.1(this, paramAdReportData), 5, null, true);
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public boolean b()
   {
     return this.b;
   }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdReportManager
  * JD-Core Version:    0.7.0.1
  */

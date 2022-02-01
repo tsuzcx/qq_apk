@@ -17,25 +17,19 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class MsgTabNodeListRequest
   extends NetworkRequest
 {
-  static final String a;
-  static boolean b;
-  public boolean a;
-  public String b;
-  public int c;
-  public String c;
+  static final String e = StoryApi.a("StoryTabSvc.startpage_feeds_list_725");
+  static boolean j = false;
+  public String f;
+  public int g;
+  public String h;
+  public boolean i = false;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StoryTabSvc.startpage_feeds_list_725");
-    jdField_b_of_type_Boolean = false;
+    return e;
   }
   
-  public MsgTabNodeListRequest()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
     try
@@ -49,25 +43,20 @@ public class MsgTabNodeListRequest
     return new MsgTabNodeListRequest.MsgTabNodeListResponse(localRspMsgTabNodeList);
   }
   
-  public String a()
+  protected byte[] c()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
-  {
-    if (jdField_b_of_type_Boolean)
+    if (j)
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
+      this.f = null;
+      this.h = null;
     }
     qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (this.f != null) {
+      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.f));
     }
-    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqMsgTabNodeList.source.set(this.g);
+    if (this.h != null) {
+      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.h));
     }
     localReqMsgTabNodeList.version.set(4);
     Long localLong = LocationUtils.a();
@@ -75,8 +64,8 @@ public class MsgTabNodeListRequest
       localReqMsgTabNodeList.adcode.set(localLong.longValue());
     }
     localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
-    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    localReqMsgTabNodeList.force_refresh.set(this.i);
+    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     return localReqMsgTabNodeList.toByteArray();
   }
   
@@ -84,20 +73,20 @@ public class MsgTabNodeListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MsgTabNodeListRequest{cookie='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", seq='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", source=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest
  * JD-Core Version:    0.7.0.1
  */

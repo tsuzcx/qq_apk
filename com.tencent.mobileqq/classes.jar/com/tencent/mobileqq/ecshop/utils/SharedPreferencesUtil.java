@@ -8,34 +8,6 @@ import mqq.app.MobileQQ;
 
 public class SharedPreferencesUtil
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).getInt(paramString, 0);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramString);
-    }
-    return 0;
-  }
-  
-  public static long a(String paramString)
-  {
-    try
-    {
-      long l = MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).getLong(paramString, 0L);
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramString);
-    }
-    return 0L;
-  }
-  
   public static String a(String paramString)
   {
     try
@@ -48,19 +20,6 @@ public class SharedPreferencesUtil
       QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramString);
     }
     return "";
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).edit().remove(paramString).apply();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramString);
-    }
   }
   
   public static void a(String paramString, int paramInt)
@@ -115,7 +74,34 @@ public class SharedPreferencesUtil
     }
   }
   
-  public static boolean a(String paramString)
+  public static int b(String paramString)
+  {
+    try
+    {
+      int i = MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).getInt(paramString, 0);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramString);
+    }
+    return 0;
+  }
+  
+  public static void c(String paramString)
+  {
+    try
+    {
+      MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).edit().remove(paramString).apply();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[saveValueToSP] fail.", paramString);
+    }
+  }
+  
+  public static boolean d(String paramString)
   {
     try
     {
@@ -128,10 +114,24 @@ public class SharedPreferencesUtil
     }
     return false;
   }
+  
+  public static long e(String paramString)
+  {
+    try
+    {
+      long l = MobileQQ.sMobileQQ.getSharedPreferences("ecshop_pref", 4).getLong(paramString, 0L);
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("Ecshop_SharedPreferencesUtil", 1, "[getValueFromSP] fail.", paramString);
+    }
+    return 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.utils.SharedPreferencesUtil
  * JD-Core Version:    0.7.0.1
  */

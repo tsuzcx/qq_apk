@@ -20,7 +20,7 @@ class PrivacyShowSettingFragment$9
       if (paramBoolean1)
       {
         paramString = this.a;
-        PrivacyShowSettingFragment.a(paramString, PrivacyShowSettingFragment.e(paramString).a(), paramBoolean2);
+        PrivacyShowSettingFragment.a(paramString, PrivacyShowSettingFragment.e(paramString).getSwitch(), paramBoolean2);
       }
     }
     else
@@ -70,9 +70,9 @@ class PrivacyShowSettingFragment$9
   
   protected void onSetAllowSeeLoginDays(boolean paramBoolean)
   {
-    Card localCard = ((FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.a.getCurrentAccountUin());
+    Card localCard = ((FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.a.a.getCurrentAccountUin());
     PrivacyShowSettingFragment localPrivacyShowSettingFragment = this.a;
-    PrivacyShowSettingFragment.a(localPrivacyShowSettingFragment, PrivacyShowSettingFragment.e(localPrivacyShowSettingFragment).a(), localCard.allowPeopleSee);
+    PrivacyShowSettingFragment.a(localPrivacyShowSettingFragment, PrivacyShowSettingFragment.e(localPrivacyShowSettingFragment).getSwitch(), localCard.allowPeopleSee);
   }
   
   protected void onSetMedal(boolean paramBoolean)
@@ -114,7 +114,7 @@ class PrivacyShowSettingFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

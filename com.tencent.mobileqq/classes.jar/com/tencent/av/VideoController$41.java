@@ -7,10 +7,10 @@ class VideoController$41
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.n != null)
     {
-      long l = this.this$0.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long);
-      this.this$0.a.a(this.jdField_a_of_type_Long, l, false);
+      long l = this.this$0.a(this.a, this.b, this.c);
+      this.this$0.n.a(this.c, l, false);
     }
   }
 }

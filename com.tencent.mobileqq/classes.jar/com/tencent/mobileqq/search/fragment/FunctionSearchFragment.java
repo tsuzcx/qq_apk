@@ -13,29 +13,9 @@ import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 public class FunctionSearchFragment
   extends BaseSearchFragment
 {
-  public static FunctionSearchFragment a()
+  public static FunctionSearchFragment f()
   {
     return new FunctionSearchFragment();
-  }
-  
-  protected int a()
-  {
-    return 120;
-  }
-  
-  protected BaseMvpAdapter a()
-  {
-    return new FunctionSearchFragment.2(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-  }
-  
-  protected ISearchEngine a()
-  {
-    return new FunctionSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, -1);
-  }
-  
-  protected String a()
-  {
-    return SearchEntryConfigManager.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -43,20 +23,40 @@ public class FunctionSearchFragment
     super.a(paramString, paramInt);
   }
   
-  protected String b()
+  protected BaseMvpAdapter b()
   {
-    return a();
+    return new FunctionSearchFragment.2(this, this.l, this.n);
+  }
+  
+  protected ISearchEngine c()
+  {
+    return new FunctionSearchEngine((QQAppInterface)this.p, -1);
+  }
+  
+  protected String d()
+  {
+    return SearchEntryConfigManager.b();
+  }
+  
+  protected String e()
+  {
+    return d();
+  }
+  
+  protected int l()
+  {
+    return 120;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new FunctionSearchFragment.1(this));
+    this.l.setOnTouchListener(new FunctionSearchFragment.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.FunctionSearchFragment
  * JD-Core Version:    0.7.0.1
  */

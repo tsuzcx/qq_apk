@@ -32,16 +32,6 @@ public class SafelyLibraryLoader
     return null;
   }
   
-  private static File a(Context paramContext, String paramString)
-  {
-    paramString = System.mapLibraryName(paramString);
-    paramContext = a(paramContext);
-    if (paramContext != null) {
-      return new File(paramContext, paramString);
-    }
-    return null;
-  }
-  
   public static InputStream a(ZipFile paramZipFile, String paramString)
   {
     try
@@ -114,7 +104,7 @@ public class SafelyLibraryLoader
     }
     try
     {
-      localFile = a(paramContext, paramString);
+      localFile = b(paramContext, paramString);
       if ((localFile != null) && (localFile.exists()))
       {
         bool = localFile.isFile();
@@ -184,16 +174,16 @@ public class SafelyLibraryLoader
     //   7: astore 5
     //   9: aconst_null
     //   10: astore 6
-    //   12: new 66	java/util/zip/ZipFile
+    //   12: new 63	java/util/zip/ZipFile
     //   15: dup
     //   16: new 19	java/io/File
     //   19: dup
     //   20: aload_0
-    //   21: invokevirtual 147	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   24: getfield 152	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   27: invokespecial 154	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: invokevirtual 145	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   24: getfield 150	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   27: invokespecial 152	java/io/File:<init>	(Ljava/lang/String;)V
     //   30: iconst_1
-    //   31: invokespecial 157	java/util/zip/ZipFile:<init>	(Ljava/io/File;I)V
+    //   31: invokespecial 155	java/util/zip/ZipFile:<init>	(Ljava/io/File;I)V
     //   34: astore_0
     //   35: aload 7
     //   37: astore 4
@@ -201,7 +191,7 @@ public class SafelyLibraryLoader
     //   40: astore 5
     //   42: aload_0
     //   43: aload_1
-    //   44: invokestatic 159	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;Ljava/lang/String;)Ljava/io/InputStream;
+    //   44: invokestatic 157	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;Ljava/lang/String;)Ljava/io/InputStream;
     //   47: astore_1
     //   48: aload_1
     //   49: astore 4
@@ -212,18 +202,18 @@ public class SafelyLibraryLoader
     //   58: aload_1
     //   59: astore 6
     //   61: aload_2
-    //   62: invokevirtual 162	java/io/File:createNewFile	()Z
+    //   62: invokevirtual 160	java/io/File:createNewFile	()Z
     //   65: pop
     //   66: aload_1
     //   67: astore 6
     //   69: aload_1
     //   70: aload_2
-    //   71: invokestatic 167	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/InputStream;Ljava/io/File;)Z
+    //   71: invokestatic 165	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/InputStream;Ljava/io/File;)Z
     //   74: istore_3
     //   75: aload_1
-    //   76: invokestatic 170	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
+    //   76: invokestatic 168	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
     //   79: aload_0
-    //   80: invokestatic 172	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
+    //   80: invokestatic 170	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
     //   83: iload_3
     //   84: ireturn
     //   85: astore_2
@@ -233,7 +223,7 @@ public class SafelyLibraryLoader
     //   92: astore_1
     //   93: goto +26 -> 119
     //   96: aload 4
-    //   98: invokestatic 170	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
+    //   98: invokestatic 168	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
     //   101: goto +43 -> 144
     //   104: astore_2
     //   105: aconst_null
@@ -250,18 +240,18 @@ public class SafelyLibraryLoader
     //   120: astore 4
     //   122: aload_0
     //   123: astore 5
-    //   125: ldc 90
+    //   125: ldc 87
     //   127: aload_2
-    //   128: invokevirtual 91	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   128: invokevirtual 88	java/lang/Throwable:toString	()Ljava/lang/String;
     //   131: aload_2
-    //   132: invokestatic 97	com/mojitox/mxflutter/framework/utils/MxLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   132: invokestatic 94	com/mojitox/mxflutter/framework/utils/MxLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   135: aload_1
     //   136: astore 4
     //   138: aload_0
     //   139: astore 5
     //   141: goto -45 -> 96
     //   144: aload 5
-    //   146: invokestatic 172	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
+    //   146: invokestatic 170	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
     //   149: iconst_0
     //   150: ireturn
     //   151: astore_2
@@ -270,9 +260,9 @@ public class SafelyLibraryLoader
     //   155: aload 4
     //   157: astore_1
     //   158: aload_1
-    //   159: invokestatic 170	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
+    //   159: invokestatic 168	com/mojitox/mxflutter/framework/utils/FileUtils:a	(Ljava/io/Closeable;)V
     //   162: aload_0
-    //   163: invokestatic 172	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
+    //   163: invokestatic 170	com/mojitox/mxflutter/framework/utils/SafelyLibraryLoader:a	(Ljava/util/zip/ZipFile;)V
     //   166: goto +5 -> 171
     //   169: aload_2
     //   170: athrow
@@ -310,10 +300,20 @@ public class SafelyLibraryLoader
     //   144	149	177	java/lang/Exception
     //   158	166	181	java/lang/Exception
   }
+  
+  private static File b(Context paramContext, String paramString)
+  {
+    paramString = System.mapLibraryName(paramString);
+    paramContext = a(paramContext);
+    if (paramContext != null) {
+      return new File(paramContext, paramString);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.utils.SafelyLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

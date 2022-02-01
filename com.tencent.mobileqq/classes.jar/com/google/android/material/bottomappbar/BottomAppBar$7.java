@@ -13,28 +13,28 @@ class BottomAppBar$7
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       boolean bool;
-      if (BottomAppBar.d(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar) != 0) {
+      if (BottomAppBar.p(this.e) != 0) {
         bool = true;
       } else {
         bool = false;
       }
-      paramAnimator = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar;
-      paramAnimator.a(BottomAppBar.d(paramAnimator));
-      BottomAppBar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar, this.jdField_a_of_type_AndroidxAppcompatWidgetActionMenuView, this.jdField_a_of_type_Int, this.b, bool);
+      paramAnimator = this.e;
+      paramAnimator.a(BottomAppBar.p(paramAnimator));
+      BottomAppBar.a(this.e, this.b, this.c, this.d, bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.7
  * JD-Core Version:    0.7.0.1
  */

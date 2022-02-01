@@ -4,13 +4,8 @@ import com.tencent.avgame.gamelogic.data.Player;
 
 public class SeatMemberInfo
 {
-  int jdField_a_of_type_Int;
-  Player jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-  
-  public SeatMemberInfo()
-  {
-    this.a = -1;
-  }
+  Player a;
+  int b = -1;
 }
 
 

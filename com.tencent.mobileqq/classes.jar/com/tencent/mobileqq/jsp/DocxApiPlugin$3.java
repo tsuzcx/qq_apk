@@ -16,7 +16,7 @@ class DocxApiPlugin$3
   public void run()
   {
     Object localObject = TencentDocPreloadConfigProcessor.a();
-    if ((((TencentDocPreloadConfigBean)localObject).a()) && (((TencentDocPreloadConfigBean)localObject).b()) && (TeamWorkHandlerUtils.a(this.a)))
+    if ((((TencentDocPreloadConfigBean)localObject).a()) && (((TencentDocPreloadConfigBean)localObject).b()) && (TeamWorkHandlerUtils.c(this.a)))
     {
       localObject = TeamWorkHandlerUtils.b(this.a);
       this.this$0.callJs(this.b, new String[] { localObject });
@@ -41,7 +41,7 @@ class DocxApiPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.3
  * JD-Core Version:    0.7.0.1
  */

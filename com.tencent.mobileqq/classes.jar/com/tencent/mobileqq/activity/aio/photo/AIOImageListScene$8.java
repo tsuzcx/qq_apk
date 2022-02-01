@@ -7,21 +7,21 @@ class AIOImageListScene$8
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.u != null)
     {
-      AIORichMediaInfo localAIORichMediaInfo = this.this$0.a.a();
-      if (this.this$0.a.a(this.jdField_a_of_type_Long) != null) {
-        this.this$0.e();
+      AIORichMediaInfo localAIORichMediaInfo = this.this$0.u.c();
+      if (this.this$0.u.a(this.a) != null) {
+        this.this$0.l();
       }
-      if ((this.jdField_a_of_type_Boolean) && (localAIORichMediaInfo != null) && (this.jdField_a_of_type_Long == localAIORichMediaInfo.a.f)) {
-        AIOGalleryMsgRevokeMgr.a(AIOImageListScene.p(this.this$0));
+      if ((this.b) && (localAIORichMediaInfo != null) && (this.a == localAIORichMediaInfo.a.L)) {
+        AIOGalleryMsgRevokeMgr.a(AIOImageListScene.B(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.8
  * JD-Core Version:    0.7.0.1
  */

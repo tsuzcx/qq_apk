@@ -21,10 +21,10 @@ class ShareHelper$1
     }
     if ((paramLong == 2L) || (paramLong == 3L))
     {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        i = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        i = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        i = 2131918155;
       } else {
         i = -1;
       }

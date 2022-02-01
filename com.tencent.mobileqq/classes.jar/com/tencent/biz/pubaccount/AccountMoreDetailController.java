@@ -24,153 +24,151 @@ import com.tencent.mobileqq.app.face.FaceDrawable;
 public class AccountMoreDetailController
   implements View.OnClickListener
 {
-  protected float a;
-  int jdField_a_of_type_Int = 0;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
-  private PublicAccountDetailImpl jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
-  protected AccountDetailTopGestureLayout a;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  public boolean a;
-  protected int b;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  public ImageView b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  int b = 0;
   public ImageView c;
-  ImageView d;
-  protected ImageView e;
+  public ImageView d;
+  public ImageView e;
+  public TextView f;
+  protected int g = 0;
+  public boolean h = false;
+  protected float i;
+  protected AccountDetailTopGestureLayout j;
+  ImageView k;
+  TextView l;
+  protected ImageView m;
+  Button n;
+  private ViewGroup o;
+  private PublicAccountDetailImpl p;
+  private ViewGroup q;
+  private BaseActivity r;
+  private View.OnClickListener s;
   
   public AccountMoreDetailController(BaseActivity paramBaseActivity, View.OnClickListener paramOnClickListener, ViewGroup paramViewGroup)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.r = paramBaseActivity;
+    this.q = paramViewGroup;
+    this.s = paramOnClickListener;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().density;
+    this.i = this.r.getResources().getDisplayMetrics().density;
     b();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361929));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361928));
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-  }
-  
-  private boolean a()
-  {
-    return Build.VERSION.SDK_INT < 19;
+    this.o = ((ViewGroup)this.q.findViewById(2131427483));
+    this.f = ((TextView)this.q.findViewById(2131427482));
+    this.f.setSingleLine();
+    this.f.setTextColor(-16777216);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370013));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
+    this.a = ((RelativeLayout)this.q.findViewById(2131437168));
+    this.a.setOnClickListener(null);
     float f1;
-    int i;
+    int i1;
     float f2;
-    if (a())
+    if (c())
     {
-      f1 = this.jdField_a_of_type_Float;
-      i = (int)(64.0F * f1);
+      f1 = this.i;
+      i1 = (int)(64.0F * f1);
       f2 = 4.0F;
     }
     else
     {
-      f1 = this.jdField_a_of_type_Float;
-      i = (int)(75.0F * f1);
+      f1 = this.i;
+      i1 = (int)(75.0F * f1);
       f2 = 25.0F;
     }
-    int j = (int)(f1 * f2);
-    Object localObject = new RelativeLayout.LayoutParams(-1, i);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, j, 0, 0);
-    this.jdField_a_of_type_Int = i;
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailTopGestureLayout;
+    int i2 = (int)(f1 * f2);
+    Object localObject = new RelativeLayout.LayoutParams(-1, i1);
+    this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.a.setPadding(0, i2, 0, 0);
+    this.b = i1;
+    localObject = this.j;
     if (localObject != null) {
-      ((AccountDetailTopGestureLayout)localObject).setTitleHeight(this.jdField_a_of_type_Int);
+      ((AccountDetailTopGestureLayout)localObject).setTitleHeight(this.b);
     }
-    this.d = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370012));
-    this.d.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369233));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.e = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369216));
-    this.e.setImageResource(2130843861);
-    this.e.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697523));
-    this.e.setVisibility(0);
-    this.e.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368383));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131368355));
-    this.c = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131364430));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131361897));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.d.setImageResource(2130850440);
-    this.e.setImageResource(2130842551);
+    this.k = ((ImageView)this.q.findViewById(2131437167));
+    this.k.setOnClickListener(this);
+    this.l = ((TextView)this.q.findViewById(2131436211));
+    this.l.setText("");
+    this.m = ((ImageView)this.q.findViewById(2131436194));
+    this.m.setImageResource(2130844816);
+    this.m.setContentDescription(this.r.getString(2131895296));
+    this.m.setVisibility(0);
+    this.m.setOnClickListener(this);
+    this.c = ((ImageView)this.q.findViewById(2131435263));
+    this.d = ((ImageView)this.q.findViewById(2131435233));
+    this.e = ((ImageView)this.q.findViewById(2131430461));
+    this.n = ((Button)this.q.findViewById(2131427451));
+    this.n.setOnClickListener(this);
+    this.k.setImageResource(2130852236);
+    this.m.setImageResource(2130843504);
+  }
+  
+  private boolean c()
+  {
+    return Build.VERSION.SDK_INT < 19;
   }
   
   public void a(PublicAccountDetailImpl paramPublicAccountDetailImpl)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl = paramPublicAccountDetailImpl;
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl == null) {
+    this.p = paramPublicAccountDetailImpl;
+    this.o.removeAllViews();
+    if (this.p == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, 1, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name);
+    this.c.setVisibility(0);
+    this.c.setBackgroundDrawable(FaceDrawable.getFaceDrawable(this.r.app, 1, this.p.uin));
+    this.d.setVisibility(0);
+    this.e.setVisibility(8);
+    this.f.setText(this.p.name);
     paramPublicAccountDetailImpl = new Paint();
-    paramPublicAccountDetailImpl.setTextSize(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = ((int)((int)paramPublicAccountDetailImpl.measureText(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.name) + this.jdField_a_of_type_Float * 4.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    paramPublicAccountDetailImpl = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.certifiedDescription;
+    paramPublicAccountDetailImpl.setTextSize(this.f.getTextSize());
+    Object localObject = this.f.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = ((int)((int)paramPublicAccountDetailImpl.measureText(this.p.name) + this.i * 4.0F));
+    this.f.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramPublicAccountDetailImpl = LayoutInflater.from(this.r);
+    String str = this.p.certifiedDescription;
     if ((!TextUtils.isEmpty(str)) && (str.contains(":")))
     {
-      int j = str.indexOf(":");
-      localObject = str.substring(0, j);
-      int i = str.length();
-      j += 1;
-      if (i > j)
+      int i2 = str.indexOf(":");
+      localObject = str.substring(0, i2);
+      int i1 = str.length();
+      i2 += 1;
+      if (i1 > i2)
       {
-        str = str.substring(j);
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, (String)localObject, str).a());
+        str = str.substring(i2);
+        this.o.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, (String)localObject, str).a());
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "信息简介", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.summary).a());
+    if (!TextUtils.isEmpty(this.p.summary)) {
+      this.o.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "信息简介", this.p.summary).a());
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.certifiedEnterprise)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "认证来源", this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.certifiedEnterprise).a());
+    if (!TextUtils.isEmpty(this.p.certifiedEnterprise)) {
+      this.o.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "认证来源", this.p.certifiedEnterprise).a());
     }
-    localObject = PublicAccountUtilImpl.pickOutFreakingPhoneNumber(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl);
+    localObject = PublicAccountUtilImpl.pickOutFreakingPhoneNumber(this.p);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "联系电话", (String)localObject).a());
+      this.o.addView(new AccountMoreDetailController.DetailItemGenerator(paramPublicAccountDetailImpl, null, "联系电话", (String)localObject).a());
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370012)
+    if (paramView.getId() == 2131437167)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.doOnBackPressed();
+      this.r.doOnBackPressed();
       return;
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.s.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountMoreDetailController
  * JD-Core Version:    0.7.0.1
  */

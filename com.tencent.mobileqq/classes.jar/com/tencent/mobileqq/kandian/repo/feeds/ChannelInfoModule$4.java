@@ -9,19 +9,19 @@ class ChannelInfoModule$4
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       ReadInJoyLogicEngineEventDispatcher.a().d(false, null);
       return;
     }
-    SpecialChannelFilter.a().a(this.jdField_a_of_type_JavaUtilList);
-    this.this$0.f(this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    SpecialChannelFilter.a().a(this.b);
+    this.this$0.g(this.b);
+    ReadInJoyLogicEngineEventDispatcher.a().d(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelInfoModule.4
  * JD-Core Version:    0.7.0.1
  */

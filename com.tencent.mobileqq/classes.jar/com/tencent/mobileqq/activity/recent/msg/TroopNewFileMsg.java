@@ -11,18 +11,18 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class TroopNewFileMsg
   extends TroopAtMsg
 {
-  public int c;
+  public int i;
   
   public TroopNewFileMsg(Context paramContext, int paramInt)
   {
-    this.c = paramInt;
+    this.i = paramInt;
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangString = "";
+      this.c = "";
       return;
     }
     if (paramInt == 1) {
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715462);
+      this.c = HardCodeUtil.a(2131912939);
     }
   }
   
@@ -31,20 +31,20 @@ public class TroopNewFileMsg
     if ((paramObject instanceof TroopNewFileMsg))
     {
       paramObject = (TroopNewFileMsg)paramObject;
-      if (paramObject.c == 0)
+      if (paramObject.i == 0)
       {
-        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+        paramObject.h.b(paramMessageInfo.c);
         return paramObject;
       }
     }
     paramObject = new TroopNewFileMsg(BaseApplication.getContext(), 0);
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopNewFileMsg
  * JD-Core Version:    0.7.0.1
  */

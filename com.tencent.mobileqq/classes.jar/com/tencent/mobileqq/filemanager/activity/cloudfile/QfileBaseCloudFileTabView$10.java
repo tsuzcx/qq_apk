@@ -14,12 +14,12 @@ class QfileBaseCloudFileTabView$10
   
   public boolean onLongClick(View paramView)
   {
-    if ((paramView != null) && (!QfileBaseCloudFileTabView.b(this.a)))
+    if ((paramView != null) && (!QfileBaseCloudFileTabView.e(this.a)))
     {
       paramView.setSelected(true);
       QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-      localQQCustomMenu.a(2131365474, paramView.getContext().getString(2131698177));
-      this.a.a = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new QfileBaseCloudFileTabView.10.1(this, paramView), new QfileBaseCloudFileTabView.10.2(this, paramView));
+      localQQCustomMenu.a(2131431689, paramView.getContext().getString(2131896078));
+      this.a.m = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new QfileBaseCloudFileTabView.10.1(this, paramView), new QfileBaseCloudFileTabView.10.2(this, paramView));
       return true;
     }
     return false;
@@ -27,7 +27,7 @@ class QfileBaseCloudFileTabView$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.10
  * JD-Core Version:    0.7.0.1
  */

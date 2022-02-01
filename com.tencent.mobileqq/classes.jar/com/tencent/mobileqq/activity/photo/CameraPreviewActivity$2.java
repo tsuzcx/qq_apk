@@ -14,7 +14,7 @@ class CameraPreviewActivity$2
   
   public void onClick(View paramView)
   {
-    if (!CameraPreviewActivity.a(this.a))
+    if (!CameraPreviewActivity.b(this.a))
     {
       if (this.a.b) {
         ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
@@ -36,7 +36,7 @@ class CameraPreviewActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

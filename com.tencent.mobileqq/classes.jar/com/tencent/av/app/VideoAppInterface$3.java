@@ -9,7 +9,7 @@ class VideoAppInterface$3
   
   public void run()
   {
-    VideoBeaconReporter.a(this.this$0.e, this.this$0.f);
+    VideoBeaconReporter.a(this.this$0.B, this.this$0.C);
   }
 }
 

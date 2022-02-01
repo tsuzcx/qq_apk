@@ -13,7 +13,7 @@ class TroopMemberApiService$IncomingHandler$2
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.getBaseContext();
+    Object localObject = this.b.a.getBaseContext();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("sp_public_account_with_cuin_");
     localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
@@ -21,14 +21,14 @@ class TroopMemberApiService$IncomingHandler$2
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("browser_font_size_index", this.jdField_a_of_type_Int);
+      ((SharedPreferences.Editor)localObject).putInt("browser_font_size_index", this.a);
       ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.2
  * JD-Core Version:    0.7.0.1
  */

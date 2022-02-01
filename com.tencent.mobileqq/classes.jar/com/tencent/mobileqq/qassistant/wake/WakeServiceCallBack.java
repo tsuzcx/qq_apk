@@ -15,7 +15,9 @@ public class WakeServiceCallBack
     return WakeServiceCallBack.WakeServiceCallBackHolder.a();
   }
   
-  public void a()
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d(((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).getWakeManagerTag(), 2, "WakeService onWake hello qq");
@@ -34,12 +36,10 @@ public class WakeServiceCallBack
       ReportController.b(null, "dc00898", "", "", "0X800B4FA", "0X800B4FA", ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).getReportType(), 0, "", "", "", "");
     }
   }
-  
-  public void a(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeServiceCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ class VideoPlayerView$15$2
   
   public void run()
   {
-    if (VideoPlayerView.a(this.a.a) == null) {
+    if (VideoPlayerView.l(this.a.a) == null) {
       return;
     }
-    VideoPlayerView.a(this.a.a, true);
+    VideoPlayerView.d(this.a.a, true);
   }
 }
 

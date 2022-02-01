@@ -24,73 +24,58 @@ import java.util.Random;
 
 public class StoryAlbum
 {
-  public static final DateFormat a;
-  public int a;
-  private long a;
-  public String a;
-  public List<String> a;
+  public static final DateFormat a = new SimpleDateFormat("yyyy年M月d日");
   public int b;
-  private long jdField_b_of_type_Long;
-  public String b;
-  private List<StoryAlbum.PicInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  public int c;
-  private long c;
   public String c;
   public int d;
-  public String d;
-  public int e;
-  private String e;
-  private int f;
-  
-  static
-  {
-    jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("yyyy年M月d日");
-  }
+  public int e = 6;
+  public String f;
+  public String g;
+  public int h = 0;
+  public String i;
+  public List<String> j;
+  public int k = 0;
+  private long l = -1L;
+  private List<StoryAlbum.PicInfo> m = new ArrayList();
+  private int n;
+  private long o;
+  private long p;
+  private String q = "new";
   
   @Deprecated
   public StoryAlbum(int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = 6;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_e_of_type_JavaLangString = "new";
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public StoryAlbum(int paramInt, List<StoryAlbum.PicInfo> paramList)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = 6;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_e_of_type_JavaLangString = "new";
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       b(paramList);
-      this.jdField_b_of_type_JavaUtilList.addAll(paramList);
+      this.m.addAll(paramList);
     }
     else
     {
       AssertUtils.fail("It not allowed to new the story album by null picList", new Object[0]);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public static StoryAlbum a(StoryAlbumEntry paramStoryAlbumEntry)
   {
     StoryAlbum localStoryAlbum = new StoryAlbum(paramStoryAlbumEntry.albumType);
-    localStoryAlbum.jdField_b_of_type_Long = paramStoryAlbumEntry.startTime;
-    localStoryAlbum.jdField_c_of_type_Long = paramStoryAlbumEntry.endTime;
-    localStoryAlbum.jdField_b_of_type_JavaLangString = paramStoryAlbumEntry.albumName;
-    localStoryAlbum.jdField_a_of_type_JavaLangString = paramStoryAlbumEntry.transId;
-    localStoryAlbum.jdField_b_of_type_Int = paramStoryAlbumEntry.textId;
-    localStoryAlbum.jdField_c_of_type_JavaLangString = paramStoryAlbumEntry.albumDesc;
-    localStoryAlbum.jdField_d_of_type_JavaLangString = paramStoryAlbumEntry.geoHashStr;
-    localStoryAlbum.f = paramStoryAlbumEntry.state;
-    localStoryAlbum.jdField_c_of_type_Int = paramStoryAlbumEntry.minCount;
-    localStoryAlbum.jdField_e_of_type_JavaLangString = paramStoryAlbumEntry.debugInfo;
-    localStoryAlbum.jdField_a_of_type_Long = paramStoryAlbumEntry.getId();
+    localStoryAlbum.o = paramStoryAlbumEntry.startTime;
+    localStoryAlbum.p = paramStoryAlbumEntry.endTime;
+    localStoryAlbum.f = paramStoryAlbumEntry.albumName;
+    localStoryAlbum.c = paramStoryAlbumEntry.transId;
+    localStoryAlbum.d = paramStoryAlbumEntry.textId;
+    localStoryAlbum.g = paramStoryAlbumEntry.albumDesc;
+    localStoryAlbum.i = paramStoryAlbumEntry.geoHashStr;
+    localStoryAlbum.n = paramStoryAlbumEntry.state;
+    localStoryAlbum.e = paramStoryAlbumEntry.minCount;
+    localStoryAlbum.q = paramStoryAlbumEntry.debugInfo;
+    localStoryAlbum.l = paramStoryAlbumEntry.getId();
     localStoryAlbum.a(paramStoryAlbumEntry.extraInfo);
     return localStoryAlbum;
   }
@@ -99,45 +84,23 @@ public class StoryAlbum
   {
     Object localObject = new SerializationPB.StoryAlbum();
     ((SerializationPB.StoryAlbum)localObject).mergeFrom(paramArrayOfByte);
-    this.jdField_a_of_type_JavaUtilList = ((SerializationPB.StoryAlbum)localObject).geo_hash_list.get();
+    this.j = ((SerializationPB.StoryAlbum)localObject).geo_hash_list.get();
     paramArrayOfByte = ((SerializationPB.StoryAlbum)localObject).pic_list.get();
     localObject = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfByte.size())
+    int i1 = 0;
+    while (i1 < paramArrayOfByte.size())
     {
       StoryAlbum.PicInfo localPicInfo = new StoryAlbum.PicInfo();
-      localPicInfo.a((SerializationPB.PicInfo)paramArrayOfByte.get(i));
+      localPicInfo.a((SerializationPB.PicInfo)paramArrayOfByte.get(i1));
       ((List)localObject).add(localPicInfo);
-      i += 1;
+      i1 += 1;
     }
-    this.jdField_b_of_type_JavaUtilList = ((List)localObject);
+    this.m = ((List)localObject);
   }
   
   private boolean a(String paramString1, String paramString2)
   {
-    return TextUtils.equals(paramString1.substring(0, paramString1.indexOf(HardCodeUtil.a(2131720489))), paramString2.substring(0, paramString2.indexOf(HardCodeUtil.a(2131720489))));
-  }
-  
-  private byte[] a()
-  {
-    SerializationPB.StoryAlbum localStoryAlbum = new SerializationPB.StoryAlbum();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty())) {
-      localStoryAlbum.geo_hash_list.set(this.jdField_a_of_type_JavaUtilList);
-    }
-    localObject = this.jdField_b_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = new ArrayList();
-      int i = 0;
-      while (i < this.jdField_b_of_type_JavaUtilList.size())
-      {
-        ((List)localObject).add(((StoryAlbum.PicInfo)this.jdField_b_of_type_JavaUtilList.get(i)).a());
-        i += 1;
-      }
-      localStoryAlbum.pic_list.set((List)localObject);
-    }
-    return localStoryAlbum.toByteArray();
+    return TextUtils.equals(paramString1.substring(0, paramString1.indexOf(HardCodeUtil.a(2131918206))), paramString2.substring(0, paramString2.indexOf(HardCodeUtil.a(2131918206))));
   }
   
   public static void b(@NonNull List<StoryAlbum.PicInfo> paramList)
@@ -145,54 +108,226 @@ public class StoryAlbum
     Collections.sort(paramList, new StoryAlbum.1());
   }
   
-  public int a()
+  private byte[] o()
   {
-    return this.f;
+    SerializationPB.StoryAlbum localStoryAlbum = new SerializationPB.StoryAlbum();
+    Object localObject = this.j;
+    if ((localObject != null) && (!((List)localObject).isEmpty())) {
+      localStoryAlbum.geo_hash_list.set(this.j);
+    }
+    localObject = this.m;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = new ArrayList();
+      int i1 = 0;
+      while (i1 < this.m.size())
+      {
+        ((List)localObject).add(((StoryAlbum.PicInfo)this.m.get(i1)).c());
+        i1 += 1;
+      }
+      localStoryAlbum.pic_list.set((List)localObject);
+    }
+    return localStoryAlbum.toByteArray();
   }
   
-  public long a()
+  public String a(int paramInt)
   {
-    return this.jdField_b_of_type_Long;
+    if (TextUtils.isEmpty(this.g)) {
+      return "";
+    }
+    String str = this.g.replace("[$album_name]", this.f);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    return str.replace("[$select_count]", localStringBuilder.toString());
   }
   
-  public StoryAlbumEntry a()
+  public List<StoryAlbum.PicInfo> a()
+  {
+    return Collections.unmodifiableList(new ArrayList(this.m));
+  }
+  
+  public void a(long paramLong)
+  {
+    this.l = paramLong;
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.o = paramLong1;
+    this.p = paramLong2;
+  }
+  
+  public void a(StoryAlbum paramStoryAlbum)
+  {
+    a(paramStoryAlbum.f(), paramStoryAlbum.g());
+    if (!TextUtils.isEmpty(paramStoryAlbum.i)) {
+      this.i = paramStoryAlbum.i;
+    }
+    paramStoryAlbum = paramStoryAlbum.j;
+    if (paramStoryAlbum != null) {
+      this.j = paramStoryAlbum;
+    }
+  }
+  
+  public void a(BaseSplitConfig paramBaseSplitConfig)
+  {
+    if (paramBaseSplitConfig != null)
+    {
+      if ((paramBaseSplitConfig.f != null) && (paramBaseSplitConfig.f.size() > 0))
+      {
+        int i1 = new Random().nextInt(paramBaseSplitConfig.f.size());
+        this.c = ((String)paramBaseSplitConfig.f.get(i1));
+      }
+      else
+      {
+        this.c = paramBaseSplitConfig.d;
+      }
+      this.g = paramBaseSplitConfig.c;
+      this.e = paramBaseSplitConfig.b;
+      this.d = paramBaseSplitConfig.e;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.q = paramString;
+  }
+  
+  public void a(List<StoryAlbum.PicInfo> paramList)
+  {
+    this.m.clear();
+    this.m.addAll(paramList);
+    b(this.m);
+  }
+  
+  public int b()
+  {
+    return this.n;
+  }
+  
+  public void b(StoryAlbum paramStoryAlbum)
+  {
+    AssertUtils.checkNotNull(paramStoryAlbum);
+    SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbum", "%s merge album %s", this, paramStoryAlbum);
+    this.n = 0;
+    paramStoryAlbum = paramStoryAlbum.m.iterator();
+    while (paramStoryAlbum.hasNext())
+    {
+      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)paramStoryAlbum.next();
+      if (!this.m.contains(localPicInfo)) {
+        this.m.add(localPicInfo);
+      }
+    }
+    b(this.m);
+  }
+  
+  public int c()
+  {
+    return this.m.size();
+  }
+  
+  public boolean d()
+  {
+    return this.b == -1;
+  }
+  
+  public StoryAlbumEntry e()
   {
     StoryAlbumEntry localStoryAlbumEntry = new StoryAlbumEntry();
-    localStoryAlbumEntry.albumType = this.jdField_a_of_type_Int;
-    localStoryAlbumEntry.startTime = e();
-    localStoryAlbumEntry.endTime = f();
-    localStoryAlbumEntry.albumName = this.jdField_b_of_type_JavaLangString;
-    localStoryAlbumEntry.transId = this.jdField_a_of_type_JavaLangString;
-    localStoryAlbumEntry.textId = this.jdField_b_of_type_Int;
-    localStoryAlbumEntry.albumDesc = this.jdField_c_of_type_JavaLangString;
-    localStoryAlbumEntry.geoHashStr = this.jdField_d_of_type_JavaLangString;
-    localStoryAlbumEntry.state = this.f;
-    localStoryAlbumEntry.minCount = this.jdField_c_of_type_Int;
-    localStoryAlbumEntry.debugInfo = this.jdField_e_of_type_JavaLangString;
-    localStoryAlbumEntry.extraInfo = a();
-    long l = this.jdField_a_of_type_Long;
-    if (l >= 0L) {
-      localStoryAlbumEntry.setId(l);
+    localStoryAlbumEntry.albumType = this.b;
+    localStoryAlbumEntry.startTime = l();
+    localStoryAlbumEntry.endTime = m();
+    localStoryAlbumEntry.albumName = this.f;
+    localStoryAlbumEntry.transId = this.c;
+    localStoryAlbumEntry.textId = this.d;
+    localStoryAlbumEntry.albumDesc = this.g;
+    localStoryAlbumEntry.geoHashStr = this.i;
+    localStoryAlbumEntry.state = this.n;
+    localStoryAlbumEntry.minCount = this.e;
+    localStoryAlbumEntry.debugInfo = this.q;
+    localStoryAlbumEntry.extraInfo = o();
+    long l1 = this.l;
+    if (l1 >= 0L) {
+      localStoryAlbumEntry.setId(l1);
     }
     return localStoryAlbumEntry;
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    Object localObject1 = this.jdField_b_of_type_JavaUtilList;
+    boolean bool4 = paramObject instanceof StoryAlbum;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bool4)
+    {
+      if (d())
+      {
+        StoryAlbum localStoryAlbum = (StoryAlbum)paramObject;
+        if (localStoryAlbum.d())
+        {
+          bool1 = bool2;
+          if (this.h == localStoryAlbum.h) {
+            bool1 = true;
+          }
+          return bool1;
+        }
+      }
+      bool1 = bool3;
+      if (this.l == ((StoryAlbum)paramObject).l) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public long f()
+  {
+    return this.o;
+  }
+  
+  public long g()
+  {
+    return this.p;
+  }
+  
+  public long h()
+  {
+    List localList = this.m;
+    if ((localList != null) && (!localList.isEmpty())) {
+      return ((StoryAlbum.PicInfo)this.m.get(0)).g;
+    }
+    return 0L;
+  }
+  
+  public long i()
+  {
+    List localList = this.m;
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      localList = this.m;
+      return ((StoryAlbum.PicInfo)localList.get(localList.size() - 1)).i;
+    }
+    return 0L;
+  }
+  
+  public String j()
+  {
+    Object localObject1 = this.m;
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      long l2 = ((StoryAlbum.PicInfo)this.jdField_b_of_type_JavaUtilList.get(0)).jdField_b_of_type_Long;
-      localObject1 = this.jdField_b_of_type_JavaUtilList;
-      long l1 = ((StoryAlbum.PicInfo)((List)localObject1).get(((List)localObject1).size() - 1)).jdField_b_of_type_Long;
+      long l2 = ((StoryAlbum.PicInfo)this.m.get(0)).g;
+      localObject1 = this.m;
+      long l1 = ((StoryAlbum.PicInfo)((List)localObject1).get(((List)localObject1).size() - 1)).g;
       l2 *= 1000L;
       localObject1 = new Date(l2);
-      Object localObject2 = jdField_a_of_type_JavaTextDateFormat.format((Date)localObject1);
+      Object localObject2 = a.format((Date)localObject1);
       localObject1 = new Date(l1 * 1000L);
-      String str = jdField_a_of_type_JavaTextDateFormat.format((Date)localObject1);
-      boolean bool = DateUtils.a(l2);
+      String str = a.format((Date)localObject1);
+      boolean bool = DateUtils.f(l2);
       if (bool) {
-        localObject1 = ((String)localObject2).substring(((String)localObject2).indexOf(HardCodeUtil.a(2131720489)) + 1);
+        localObject1 = ((String)localObject2).substring(((String)localObject2).indexOf(HardCodeUtil.a(2131918206)) + 1);
       } else {
         localObject1 = localObject2;
       }
@@ -207,154 +342,69 @@ public class StoryAlbum
         ((StringBuilder)localObject2).append(str);
         return ((StringBuilder)localObject2).toString();
       }
-      if (TextUtils.equals(((String)localObject2).substring(0, ((String)localObject2).indexOf(HardCodeUtil.a(2131694201))), str.substring(0, str.indexOf(HardCodeUtil.a(2131694201)))))
+      if (TextUtils.equals(((String)localObject2).substring(0, ((String)localObject2).indexOf(HardCodeUtil.a(2131891839))), str.substring(0, str.indexOf(HardCodeUtil.a(2131891839)))))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("-");
-        ((StringBuilder)localObject2).append(str.substring(str.indexOf(HardCodeUtil.a(2131694201)) + 1));
+        ((StringBuilder)localObject2).append(str.substring(str.indexOf(HardCodeUtil.a(2131891839)) + 1));
         return ((StringBuilder)localObject2).toString();
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("-");
-      ((StringBuilder)localObject2).append(str.substring(str.indexOf(HardCodeUtil.a(2131720489)) + 1));
+      ((StringBuilder)localObject2).append(str.substring(str.indexOf(HardCodeUtil.a(2131918206)) + 1));
       return ((StringBuilder)localObject2).toString();
     }
     return "";
   }
   
-  public String a(int paramInt)
-  {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      return "";
-    }
-    String str = this.jdField_c_of_type_JavaLangString.replace("[$album_name]", this.jdField_b_of_type_JavaLangString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("");
-    return str.replace("[$select_count]", localStringBuilder.toString());
-  }
-  
-  public List<StoryAlbum.PicInfo> a()
-  {
-    return Collections.unmodifiableList(new ArrayList(this.jdField_b_of_type_JavaUtilList));
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_c_of_type_Long = paramLong2;
-  }
-  
-  public void a(StoryAlbum paramStoryAlbum)
-  {
-    a(paramStoryAlbum.a(), paramStoryAlbum.b());
-    if (!TextUtils.isEmpty(paramStoryAlbum.jdField_d_of_type_JavaLangString)) {
-      this.jdField_d_of_type_JavaLangString = paramStoryAlbum.jdField_d_of_type_JavaLangString;
-    }
-    paramStoryAlbum = paramStoryAlbum.jdField_a_of_type_JavaUtilList;
-    if (paramStoryAlbum != null) {
-      this.jdField_a_of_type_JavaUtilList = paramStoryAlbum;
-    }
-  }
-  
-  public void a(BaseSplitConfig paramBaseSplitConfig)
-  {
-    if (paramBaseSplitConfig != null)
-    {
-      if ((paramBaseSplitConfig.jdField_a_of_type_JavaUtilList != null) && (paramBaseSplitConfig.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        int i = new Random().nextInt(paramBaseSplitConfig.jdField_a_of_type_JavaUtilList.size());
-        this.jdField_a_of_type_JavaLangString = ((String)paramBaseSplitConfig.jdField_a_of_type_JavaUtilList.get(i));
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaLangString = paramBaseSplitConfig.jdField_b_of_type_JavaLangString;
-      }
-      this.jdField_c_of_type_JavaLangString = paramBaseSplitConfig.jdField_a_of_type_JavaLangString;
-      this.jdField_c_of_type_Int = paramBaseSplitConfig.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = paramBaseSplitConfig.jdField_c_of_type_Int;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<StoryAlbum.PicInfo> paramList)
-  {
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
-    b(this.jdField_b_of_type_JavaUtilList);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == -1;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public long b()
-  {
-    return this.jdField_c_of_type_Long;
-  }
-  
-  public void b(StoryAlbum paramStoryAlbum)
-  {
-    AssertUtils.checkNotNull(paramStoryAlbum);
-    SLog.a("Q.qqstory.recommendAlbum.logic.StoryAlbum", "%s merge album %s", this, paramStoryAlbum);
-    this.f = 0;
-    paramStoryAlbum = paramStoryAlbum.jdField_b_of_type_JavaUtilList.iterator();
-    while (paramStoryAlbum.hasNext())
-    {
-      StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)paramStoryAlbum.next();
-      if (!this.jdField_b_of_type_JavaUtilList.contains(localPicInfo)) {
-        this.jdField_b_of_type_JavaUtilList.add(localPicInfo);
-      }
-    }
-    b(this.jdField_b_of_type_JavaUtilList);
-  }
-  
-  public boolean b()
+  public boolean k()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)localIterator.next();
-      if (new File(localPicInfo.jdField_a_of_type_JavaLangString).exists()) {
+      if (new File(localPicInfo.b).exists()) {
         localArrayList.add(localPicInfo);
       }
     }
-    this.jdField_b_of_type_JavaUtilList = localArrayList;
+    this.m = localArrayList;
     return localArrayList.size() >= 4;
   }
   
-  public int c()
+  public long l()
   {
-    int j = this.jdField_a_of_type_Int;
-    int i = 1;
-    if (j != 1)
+    if (this.m.isEmpty()) {
+      return -1L;
+    }
+    return ((StoryAlbum.PicInfo)this.m.get(0)).g;
+  }
+  
+  public long m()
+  {
+    if (this.m.isEmpty()) {
+      return -1L;
+    }
+    List localList = this.m;
+    return ((StoryAlbum.PicInfo)localList.get(localList.size() - 1)).g;
+  }
+  
+  public int n()
+  {
+    int i2 = this.b;
+    int i1 = 1;
+    if (i2 != 1)
     {
-      i = 3;
-      if (j != 2)
+      i1 = 3;
+      if (i2 != 2)
       {
-        if (j != 3)
+        if (i2 != 3)
         {
-          if (j != 4)
+          if (i2 != 4)
           {
-            if (j != 6) {
+            if (i2 != 6) {
               return 0;
             }
             return 2;
@@ -364,124 +414,59 @@ public class StoryAlbum
         return 5;
       }
     }
-    return i;
-  }
-  
-  public long c()
-  {
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    if ((localList != null) && (!localList.isEmpty())) {
-      return ((StoryAlbum.PicInfo)this.jdField_b_of_type_JavaUtilList.get(0)).jdField_b_of_type_Long;
-    }
-    return 0L;
-  }
-  
-  public long d()
-  {
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    if ((localList != null) && (!localList.isEmpty()))
-    {
-      localList = this.jdField_b_of_type_JavaUtilList;
-      return ((StoryAlbum.PicInfo)localList.get(localList.size() - 1)).d;
-    }
-    return 0L;
-  }
-  
-  public long e()
-  {
-    if (this.jdField_b_of_type_JavaUtilList.isEmpty()) {
-      return -1L;
-    }
-    return ((StoryAlbum.PicInfo)this.jdField_b_of_type_JavaUtilList.get(0)).jdField_b_of_type_Long;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool4 = paramObject instanceof StoryAlbum;
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1 = bool3;
-    if (bool4)
-    {
-      if (a())
-      {
-        StoryAlbum localStoryAlbum = (StoryAlbum)paramObject;
-        if (localStoryAlbum.a())
-        {
-          bool1 = bool2;
-          if (this.jdField_d_of_type_Int == localStoryAlbum.jdField_d_of_type_Int) {
-            bool1 = true;
-          }
-          return bool1;
-        }
-      }
-      bool1 = bool3;
-      if (this.jdField_a_of_type_Long == ((StoryAlbum)paramObject).jdField_a_of_type_Long) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public long f()
-  {
-    if (this.jdField_b_of_type_JavaUtilList.isEmpty()) {
-      return -1L;
-    }
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    return ((StoryAlbum.PicInfo)localList.get(localList.size() - 1)).jdField_b_of_type_Long;
+    return i1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("StoryAlbum=[");
     localStringBuilder.append(" mId:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(" ;isHomeAlbum:");
     boolean bool;
-    if (this.jdField_a_of_type_Int == 2) {
+    if (this.b == 2) {
       bool = true;
     } else {
       bool = false;
     }
     localStringBuilder.append(bool);
     localStringBuilder.append(" ;mAlbumType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ;mAlbumName:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" ;mAlbumTime:");
-    localStringBuilder.append(a());
+    localStringBuilder.append(j());
     localStringBuilder.append(" ;StartTime:");
-    localStringBuilder.append(e());
+    localStringBuilder.append(l());
     localStringBuilder.append(" ;EndTime:");
-    localStringBuilder.append(f());
+    localStringBuilder.append(m());
     localStringBuilder.append(" ;mUIAlbumType:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" ;mTransId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" ;mTextId:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" ;count:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.m.size());
     localStringBuilder.append(" ;mAlbumDesc:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" ;kmeansTime1:");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(" ;kmeansTime2:");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(" ;mGeoHashHead:");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" ;mGeoHashStringList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" ;debugInfo:");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.q);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.model.StoryAlbum
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,14 @@ import java.util.List;
 public class MineWSAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private MineWSPanel.OnItemClickListener jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$OnItemClickListener;
-  private final QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private List<MineWSAdapter.NewFeedItemData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private List<MineWSAdapter.NewFeedItemData> a = new ArrayList();
+  private final QBaseActivity b;
+  private boolean c;
+  private MineWSPanel.OnItemClickListener d;
   
   public MineWSAdapter(QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
+    this.b = paramQBaseActivity;
   }
   
   private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
@@ -42,19 +42,19 @@ public class MineWSAdapter
   {
     paramString = ThumbnailUrlHelper.a(paramString);
     if (!paramString.equals(paramImageView.getTag())) {
-      UIUtils.a(paramImageView, paramString, 68, 90, 4, UIUtils.b, "QQStoryMemory");
+      UIUtils.a(paramImageView, paramString, 68, 90, 4, UIUtils.h, "QQStoryMemory");
     }
   }
   
   public void a(MineWSPanel.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$OnItemClickListener = paramOnItemClickListener;
+    this.d = paramOnItemClickListener;
   }
   
   public void a(List<WEISHI.stMetaFeed> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.clear();
+    this.c = paramBoolean;
     if ((paramList != null) && (paramList.size() > 0))
     {
       int i = 3;
@@ -63,7 +63,7 @@ public class MineWSAdapter
       {
         i = 2;
         localNewFeedItemData = new MineWSAdapter.NewFeedItemData(null, 100);
-        this.jdField_a_of_type_JavaUtilList.add(localNewFeedItemData);
+        this.a.add(localNewFeedItemData);
       }
       int j = paramList.size();
       if (j < i) {
@@ -73,7 +73,7 @@ public class MineWSAdapter
       while (j < i)
       {
         localNewFeedItemData = new MineWSAdapter.NewFeedItemData((WEISHI.stMetaFeed)paramList.get(j), 101);
-        this.jdField_a_of_type_JavaUtilList.add(localNewFeedItemData);
+        this.a.add(localNewFeedItemData);
         j += 1;
       }
     }
@@ -82,28 +82,28 @@ public class MineWSAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if ((localList != null) && (localList.size() > 0))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+      if (this.a.size() > 3) {
         return 3;
       }
-      return this.jdField_a_of_type_JavaUtilList.size();
+      return this.a.size();
     }
     return 0;
   }
   
   public int getItemViewType(int paramInt)
   {
-    return ((MineWSAdapter.NewFeedItemData)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+    return ((MineWSAdapter.NewFeedItemData)this.a.get(paramInt)).a;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     int i = paramViewHolder.getAdapterPosition();
-    MineWSAdapter.NewFeedItemData localNewFeedItemData = (MineWSAdapter.NewFeedItemData)this.jdField_a_of_type_JavaUtilList.get(i);
-    int j = localNewFeedItemData.jdField_a_of_type_Int;
-    WEISHI.stMetaFeed localstMetaFeed = localNewFeedItemData.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
+    MineWSAdapter.NewFeedItemData localNewFeedItemData = (MineWSAdapter.NewFeedItemData)this.a.get(i);
+    int j = localNewFeedItemData.a;
+    WEISHI.stMetaFeed localstMetaFeed = localNewFeedItemData.b;
     if (j != 100)
     {
       if ((j == 101) && (j == 101)) {
@@ -111,9 +111,9 @@ public class MineWSAdapter
       }
     }
     else if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130850639);
+      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130852443);
     } else {
-      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130846077);
+      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130847547);
     }
     paramViewHolder.itemView.setOnClickListener(new MineWSAdapter.1(this, localNewFeedItemData));
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -125,12 +125,12 @@ public class MineWSAdapter
     if ((paramInt != 100) && (paramInt != 101)) {
       return null;
     }
-    return new MineWSAdapter.FeedItemViewHolder(localLayoutInflater.inflate(2131561390, paramViewGroup, false));
+    return new MineWSAdapter.FeedItemViewHolder(localLayoutInflater.inflate(2131627746, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.adapter.MineWSAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class AccountOnlineStateBinder$5
   
   public void a(Integer paramInteger)
   {
-    AccountOnlineStateBinder.a(this.a).b();
+    AccountOnlineStateBinder.d(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountOnlineStateBinder.5
  * JD-Core Version:    0.7.0.1
  */

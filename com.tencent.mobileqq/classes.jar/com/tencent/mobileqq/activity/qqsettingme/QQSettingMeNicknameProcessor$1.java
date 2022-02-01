@@ -10,12 +10,12 @@ class QQSettingMeNicknameProcessor$1
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.c(paramString);
+    this.a.f(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNicknameProcessor.1
  * JD-Core Version:    0.7.0.1
  */

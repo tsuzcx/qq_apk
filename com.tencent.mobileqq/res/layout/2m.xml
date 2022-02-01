@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.appbrand.widget.dialog.AppBrandDialogContentView android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="360.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/oyq" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+                <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/av_" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/oyt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/6u" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/oyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:src="@raw/0" android:layout_centerVertical="true" app:iconColor="@color/5a" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/di" android:layout_gravity="center_horizontal" android:id="@id/oys" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="24.0dip" android:text="@string/6r" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.appbrand.widget.dialog.AppBrandDialogContentView>

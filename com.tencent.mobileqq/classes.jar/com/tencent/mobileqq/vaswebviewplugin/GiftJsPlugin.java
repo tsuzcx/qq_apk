@@ -73,14 +73,14 @@ public class GiftJsPlugin
     sCallbackJs = paramString1;
     paramString2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopMemberListActivityLaunchIntent(BaseApplication.getContext(), paramString2, 14);
     paramString2.putExtra("param_is_pop_up_style", true);
-    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131697747));
+    paramString2.putExtra("custom_title_name", BaseApplication.getContext().getString(2131895520));
     paramString2.setFlags(603979776);
-    this.mRuntime.a().startActivityForResult(paramString2, 12006);
-    AppInterface localAppInterface = this.mRuntime.a();
+    this.mRuntime.d().startActivityForResult(paramString2, 12006);
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface)) {
       paramString2.putExtra("troop_gift_from", localAppInterface.getCurrentAccountUin());
     }
-    this.mRuntime.a().startActivityForResult(paramString2, 12006);
+    this.mRuntime.d().startActivityForResult(paramString2, 12006);
     try
     {
       super.callJs(paramString1);
@@ -96,7 +96,7 @@ public class GiftJsPlugin
   public void transferAnonymousInfo(String paramString1, String paramString2, String paramString3)
   {
     sCallbackJs = paramString1;
-    if (paramString3.equals(this.mRuntime.a().getCurrentAccountUin()))
+    if (paramString3.equals(this.mRuntime.b().getCurrentAccountUin()))
     {
       Object localObject = (IAnonymousIPC)RemoteProxy.getProxy(AnonymousIPC.class);
       if (!((IAnonymousIPC)localObject).isAnonymous(paramString2))
@@ -146,7 +146,7 @@ public class GiftJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.GiftJsPlugin
  * JD-Core Version:    0.7.0.1
  */

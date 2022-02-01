@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class AVGameSessionManager
 {
-  private AVGameSession jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
-  private final Map<String, AVGameSession> jdField_a_of_type_JavaUtilMap = new HashMap(3);
+  private final Map<String, AVGameSession> a = new HashMap(3);
+  private AVGameSession b = null;
   
   public AVGameSession a()
   {
-    return this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+    return this.b;
   }
   
   public AVGameSession a(int paramInt, String paramString, boolean paramBoolean)
@@ -19,20 +19,20 @@ public class AVGameSessionManager
     AVGameSession localAVGameSession1;
     if (!TextUtils.isEmpty(paramString))
     {
-      AVGameSession localAVGameSession2 = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      AVGameSession localAVGameSession2 = (AVGameSession)this.a.get(paramString);
       localAVGameSession1 = localAVGameSession2;
       if (localAVGameSession2 == null)
       {
         localAVGameSession2 = new AVGameSession(paramInt, paramString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession2);
-        if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
+        this.a.put(paramString, localAVGameSession2);
+        if (this.a.size() != 1)
         {
           localAVGameSession1 = localAVGameSession2;
           if (!paramBoolean) {}
         }
         else
         {
-          a(paramString);
+          c(paramString);
           return localAVGameSession2;
         }
       }
@@ -46,40 +46,26 @@ public class AVGameSessionManager
   
   public AVGameSession a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      return (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (!this.a.isEmpty()) {
+      return (AVGameSession)this.a.get(paramString);
     }
     return null;
   }
   
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (!paramString.a))
-    {
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
-      if (localAVGameSession != null) {
-        localAVGameSession.a = false;
-      }
-      paramString.a = true;
-      this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = paramString;
-    }
-  }
-  
   public AVGameSession b(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
+    if (!this.a.isEmpty())
     {
-      AVGameSession localAVGameSession1 = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      AVGameSession localAVGameSession1 = (AVGameSession)this.a.remove(paramString);
       paramString = localAVGameSession1;
       if (localAVGameSession1 != null)
       {
-        AVGameSession localAVGameSession2 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+        AVGameSession localAVGameSession2 = this.b;
         paramString = localAVGameSession1;
         if (localAVGameSession1 == localAVGameSession2)
         {
-          localAVGameSession2.a = false;
-          this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
+          localAVGameSession2.c = false;
+          this.b = null;
           return localAVGameSession1;
         }
       }
@@ -89,6 +75,20 @@ public class AVGameSessionManager
       paramString = null;
     }
     return paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && (!paramString.c))
+    {
+      AVGameSession localAVGameSession = this.b;
+      if (localAVGameSession != null) {
+        localAVGameSession.c = false;
+      }
+      paramString.c = true;
+      this.b = paramString;
+    }
   }
 }
 

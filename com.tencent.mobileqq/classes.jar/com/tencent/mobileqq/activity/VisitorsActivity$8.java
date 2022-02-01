@@ -11,7 +11,7 @@ class VisitorsActivity$8
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
+    if ((paramAnimation == this.a.W) && (this.a.t)) {
       this.a.centerView.setText("");
     }
     this.a.centerView.clearAnimation();
@@ -19,14 +19,14 @@ class VisitorsActivity$8
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131694400);
+    if (paramAnimation == this.a.V) {
+      this.a.centerView.setText(2131892079);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.8
  * JD-Core Version:    0.7.0.1
  */

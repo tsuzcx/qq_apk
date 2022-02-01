@@ -46,7 +46,7 @@ class GdtAdLoader$1
         AdAnalysisHelperForUtil.reportForLoadAdStart((Context)this.a.get());
         if ((GdtAdLoader.a(this.this$0) != null) && (GdtAdLoader.a(this.this$0).a()))
         {
-          GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet.support_https.set(true);
+          GdtAdLoader.a(this.this$0).a.support_https.set(true);
           localObject = new GdtDeviceInfoHelper.Params();
           ((GdtDeviceInfoHelper.Params)localObject).a = "d61533";
           localObject = GdtDeviceInfoHelper.a((Context)this.a.get(), (GdtDeviceInfoHelper.Params)localObject);
@@ -56,26 +56,26 @@ class GdtAdLoader$1
             localObject = null;
           }
           if (localObject != null) {
-            GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet.device_info.set((MessageMicro)localObject);
+            GdtAdLoader.a(this.this$0).a.device_info.set((MessageMicro)localObject);
           }
-          localObject = GdtJsonPbUtil.a(GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+          localObject = GdtJsonPbUtil.a(GdtAdLoader.a(this.this$0).a);
           if ((localObject != null) && ((localObject instanceof JSONObject)))
           {
             AdLoaderWithJSON.Session localSession = new AdLoaderWithJSON.Session();
             localSession.request = ((JSONObject)JSONObject.class.cast(localObject));
             AdLoaderWithJSON.load(localSession);
-            GdtAdLoader.a(this.this$0).jdField_a_of_type_Long = localSession.timeMillis;
-            GdtAdLoader.a(this.this$0).jdField_a_of_type_Int = localSession.httpResponseCode;
+            GdtAdLoader.a(this.this$0).d = localSession.timeMillis;
+            GdtAdLoader.a(this.this$0).c = localSession.httpResponseCode;
             if ((localSession.httpResponseCode == 200) && (localSession.response != null) && (!JSONObject.NULL.equals(localSession.response)))
             {
-              GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp(), localSession.response)));
+              GdtAdLoader.a(this.this$0).b = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp(), localSession.response)));
               localObject = (Context)this.a.get();
-              long l = GdtAdLoader.a(this.this$0).jdField_a_of_type_Long;
-              int j = GdtAdLoader.a(this.this$0).jdField_a_of_type_Int;
-              int k = GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
+              long l = GdtAdLoader.a(this.this$0).d;
+              int j = GdtAdLoader.a(this.this$0).c;
+              int k = GdtAdLoader.a(this.this$0).b.ret.get();
               int i;
-              if (GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() > 0) {
-                i = ((qq_ad_get.QQAdGetRsp.PosAdInfo)GdtAdLoader.a(this.this$0).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
+              if (GdtAdLoader.a(this.this$0).b.pos_ads_info.size() > 0) {
+                i = ((qq_ad_get.QQAdGetRsp.PosAdInfo)GdtAdLoader.a(this.this$0).b.pos_ads_info.get(0)).ret.get();
               } else {
                 i = -2147483648;
               }
@@ -85,12 +85,12 @@ class GdtAdLoader$1
         }
       }
     }
-    GdtAdLoader.a(this.this$0);
+    GdtAdLoader.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAdLoader.1
  * JD-Core Version:    0.7.0.1
  */

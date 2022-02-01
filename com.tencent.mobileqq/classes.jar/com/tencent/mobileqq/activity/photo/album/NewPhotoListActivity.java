@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.photo.album;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.CheckBox;
@@ -15,10 +16,12 @@ import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
 import com.tencent.mobileqq.qqalbum.IPhotoLogicFactory;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.PermissionUtil;
+import com.tencent.widget.TriangleView;
 import java.io.File;
 import java.io.IOException;
 import mqq.app.MobileQQ;
@@ -42,7 +45,7 @@ public class NewPhotoListActivity
     Object localObject = null;
     try
     {
-      File localFile = this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a();
+      File localFile = this.mPhotoListCustomization.h.e();
       localObject = localFile;
     }
     catch (IOException localIOException)
@@ -86,6 +89,15 @@ public class NewPhotoListActivity
       paramBundle.append("-----doOnCreate-----");
       paramBundle.append(this);
       QLog.d("QQAlbum", 2, paramBundle.toString());
+    }
+    if ((this.mPhotoListCustomization != null) && (this.mPhotoListCustomization.h != null) && (QQTheme.isNowSimpleUI()))
+    {
+      if (this.mPhotoListCustomization.h.q != null) {
+        this.mPhotoListCustomization.h.q.setTextColor(getResources().getColor(2131167980));
+      }
+      if (this.mPhotoListCustomization.h.r != null) {
+        this.mPhotoListCustomization.h.r.setColor(getResources().getColor(2131167980));
+      }
     }
     return true;
   }
@@ -199,12 +211,12 @@ public class NewPhotoListActivity
     boolean bool = paramIntent.getBooleanExtra("extra_directly_back", false);
     if (paramIntent.getIntExtra("p_e_s_type", 0) == 7)
     {
-      this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o = false;
+      this.mPhotoListCustomization.g.G = false;
       this.mPhotoListCustomization.a(paramIntent);
     }
     else if (bool)
     {
-      this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o = false;
+      this.mPhotoListCustomization.g.G = false;
       handleCaptureResult(paramIntent);
       QLog.d("QQAlbum", 2, "QQAlbum onNewIntent() camera back");
     }
@@ -220,7 +232,7 @@ public class NewPhotoListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

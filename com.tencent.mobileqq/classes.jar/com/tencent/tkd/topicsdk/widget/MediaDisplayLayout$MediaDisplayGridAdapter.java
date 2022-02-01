@@ -23,14 +23,14 @@ public final class MediaDisplayLayout$MediaDisplayGridAdapter
   @NotNull
   public DisplayItem a(int paramInt)
   {
-    Object localObject = this.a.a().get(paramInt);
+    Object localObject = this.a.getDisplayItems().get(paramInt);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "displayItems[position]");
     return (DisplayItem)localObject;
   }
   
   public int getCount()
   {
-    return this.a.a().size();
+    return this.a.getDisplayItems().size();
   }
   
   public long getItemId(int paramInt)
@@ -43,7 +43,7 @@ public final class MediaDisplayLayout$MediaDisplayGridAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(R.layout.s, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(R.layout.n, paramViewGroup, false);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "LayoutInflater.from(cont…ay_layout, parent, false)");
       paramViewGroup = this.a;
       if (paramView != null)
@@ -67,8 +67,8 @@ public final class MediaDisplayLayout$MediaDisplayGridAdapter
     }
     paramViewGroup.a(a(paramInt));
     paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.1(this, paramInt));
-    paramViewGroup.a().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.2(this, paramInt));
-    if (this.a.a())
+    paramViewGroup.c().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.2(this, paramInt));
+    if (this.a.getShowDelImage())
     {
       paramViewGroup.b().setVisibility(0);
       paramViewGroup.b().setOnClickListener((View.OnClickListener)new MediaDisplayLayout.MediaDisplayGridAdapter.getView.3(this, paramInt));
@@ -83,7 +83,7 @@ public final class MediaDisplayLayout$MediaDisplayGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.MediaDisplayGridAdapter
  * JD-Core Version:    0.7.0.1
  */

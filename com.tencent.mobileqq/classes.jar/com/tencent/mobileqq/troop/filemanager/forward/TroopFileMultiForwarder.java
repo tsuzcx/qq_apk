@@ -21,36 +21,34 @@ import java.util.UUID;
 
 public class TroopFileMultiForwarder
 {
-  protected int a;
   protected long a;
-  TroopFileReqCopyToObserver a;
-  protected Map<UUID, TroopFileTransferManager.Item> a;
-  protected Map<UUID, Integer> b = new HashMap();
+  protected Map<UUID, TroopFileTransferManager.Item> b = new HashMap();
+  protected Map<UUID, Integer> c = new HashMap();
+  protected int d;
+  TroopFileReqCopyToObserver e = new TroopFileMultiForwarder.1(this);
   
   protected TroopFileMultiForwarder(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver = new TroopFileMultiForwarder.1(this);
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
-      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
+      this.b.put(localItem.Id, localItem);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public static TroopFileMultiForwarder a(long paramLong, List<TroopFileTransferManager.Item> paramList)
   {
     if (paramLong == 0L)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. troopuin=0");
       return null;
     }
     if (paramList == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. item=null");
       return null;
     }
     return new TroopFileMultiForwarder(paramLong, paramList, 1);
@@ -62,8 +60,8 @@ public class TroopFileMultiForwarder
     try
     {
       ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(-1);
-      this.b.put(paramItem.Id, Integer.valueOf(-1));
-      paramInt1 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      this.c.put(paramItem.Id, Integer.valueOf(-1));
+      paramInt1 = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
       paramString1.append(paramItem.Id.toString());
@@ -76,7 +74,7 @@ public class TroopFileMultiForwarder
     {
       break label384;
     }
-    paramInt2 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramInt2 = TroopFileTransferUtil.Log.b;
     paramString1 = new StringBuilder();
     paramString1.append("[");
     paramString1.append(paramItem.Id.toString());
@@ -85,18 +83,18 @@ public class TroopFileMultiForwarder
     TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", paramInt2, paramString1.toString());
     ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt1);
     if (paramInt1 == 0) {
-      this.b.remove(paramItem.Id);
+      this.c.remove(paramItem.Id);
     } else {
-      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
+      this.c.put(paramItem.Id, Integer.valueOf(paramInt1));
     }
-    if (this.b.size() == 0)
+    if (this.c.size() == 0)
     {
-      paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
-      TroopFileDataCenter.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+      paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a, 5, 604);
+      TroopFileDataCenter.a(this.a, paramItem, 5, paramString1);
     }
     else
     {
-      paramString1 = this.b.keySet();
+      paramString1 = this.c.keySet();
       paramInt2 = 1;
       paramString1 = paramString1.iterator();
       do
@@ -106,12 +104,12 @@ public class TroopFileMultiForwarder
           break;
         }
         paramString2 = (UUID)paramString1.next();
-      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
+      } while (((Integer)this.c.get(paramString2)).intValue() != 2147483647);
       paramInt1 = 0;
       if (paramInt1 != 0)
       {
-        paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
-        TroopFileDataCenter.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+        paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a, 5, 605);
+        TroopFileDataCenter.a(this.a, paramItem, 5, paramString1);
       }
     }
     return;
@@ -127,20 +125,20 @@ public class TroopFileMultiForwarder
     QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "multiTroop2weiyun app=null");
       return -1;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.b.values().iterator();
     while (localIterator.hasNext())
     {
       TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
       if (localItem.Id == null)
       {
-        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
+        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "multiTroop2weiyun. item.id=null");
       }
       else if (localItem.ForwardTroopuin == 0L)
       {
-        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
+        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "multiTroop2weiyun. ForwardTroopuin=0");
       }
       else
       {
@@ -148,7 +146,7 @@ public class TroopFileMultiForwarder
         StringBuilder localStringBuilder;
         if (localItem.BusId != 25)
         {
-          i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          i = TroopFileTransferUtil.Log.b;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("multiTroop2weiyun. BusId err:");
           localStringBuilder.append(localItem.BusId);
@@ -156,11 +154,11 @@ public class TroopFileMultiForwarder
         }
         else if (TextUtils.isEmpty(localItem.ForwardPath))
         {
-          TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
+          TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "multiTroop2weiyun. ForwardPath=null");
         }
         else
         {
-          i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          i = TroopFileTransferUtil.Log.b;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("[");
           localStringBuilder.append(localItem.Id.toString());
@@ -173,8 +171,8 @@ public class TroopFileMultiForwarder
           TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", i, localStringBuilder.toString());
           try
           {
-            this.b.put(localItem.Id, Integer.valueOf(2147483647));
-            TroopFileProtocol.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver);
+            this.c.put(localItem.Id, Integer.valueOf(2147483647));
+            TroopFileProtocol.a(localQQAppInterface, true, this.a, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.e);
           }
           finally {}
         }
@@ -185,7 +183,7 @@ public class TroopFileMultiForwarder
   
   public int a()
   {
-    if (1 == this.jdField_a_of_type_Int) {
+    if (1 == this.d) {
       return b();
     }
     return -1;
@@ -193,7 +191,7 @@ public class TroopFileMultiForwarder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileMultiForwarder
  * JD-Core Version:    0.7.0.1
  */

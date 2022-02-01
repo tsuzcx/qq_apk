@@ -12,88 +12,31 @@ import java.util.Map;
 
 public class BusinessManager
 {
-  public static BusinessManager a;
-  private long jdField_a_of_type_Long = 0L;
-  private EnterRoomConfig jdField_a_of_type_ComTencentIliveEnterRoomConfig;
-  private BusinessConfig jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-  private String jdField_a_of_type_JavaLangString = "0";
-  private Map<String, IBusinessExpireObserver> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkBusinessmgrBusinessManager = new BusinessManager();
-  }
-  
-  public long a()
-  {
-    long l2 = this.jdField_a_of_type_Long;
-    long l1 = l2;
-    if (l2 <= 0L) {
-      l1 = System.currentTimeMillis();
-    }
-    return l1;
-  }
-  
-  public EnterRoomConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentIliveEnterRoomConfig;
-  }
-  
-  public IBusinessExpireObserver a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getBusinessExpireObserver appid = ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" isContainKey = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
-    QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
-    return (IBusinessExpireObserver)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public BusinessConfig a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getActiveBizConfig appid ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.jdField_a_of_type_JavaLangString);
-      QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-  }
-  
-  public String a()
-  {
-    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-    if ((localBusinessConfig != null) && (!StringUtil.a(localBusinessConfig.e))) {
-      return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.e;
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    AudienceMultiRoomActivityLogic.a().c();
-  }
+  public static BusinessManager a = new BusinessManager();
+  private BusinessConfig b;
+  private EnterRoomConfig c;
+  private boolean d;
+  private Map<String, IBusinessExpireObserver> e = new HashMap();
+  private String f = "0";
+  private long g = 0L;
+  private boolean h = true;
+  private boolean i;
   
   public void a(long paramLong)
   {
     if (paramLong <= 0L)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.g = System.currentTimeMillis();
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramLong;
   }
   
   public void a(EnterRoomConfig paramEnterRoomConfig)
   {
-    this.jdField_a_of_type_ComTencentIliveEnterRoomConfig = paramEnterRoomConfig;
-    this.c = this.b;
-    this.b = false;
+    this.c = paramEnterRoomConfig;
+    this.i = this.h;
+    this.h = false;
   }
   
   public void a(BusinessConfig paramBusinessConfig)
@@ -102,20 +45,20 @@ public class BusinessManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateActivieBizInfo appid ");
-      localStringBuilder.append(paramBusinessConfig.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramBusinessConfig.a);
       QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig = paramBusinessConfig;
+    this.b = paramBusinessConfig;
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig != null)
+    if (this.b != null)
     {
-      if (StringUtil.a(paramString)) {
+      if (StringUtil.isEmpty(paramString)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d = paramString;
+      this.b.i = paramString;
     }
   }
   
@@ -133,31 +76,34 @@ public class BusinessManager
     }
     localStringBuilder.append(bool);
     localStringBuilder.append(" isContainKey = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString));
+    localStringBuilder.append(this.e.containsKey(paramString));
     QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (this.e.containsKey(paramString)) {
+      this.e.remove(paramString);
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramIBusinessExpireObserver);
+    this.e.put(paramString, paramIBusinessExpireObserver);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
-  public String b()
+  public BusinessConfig b()
   {
-    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-    if ((localBusinessConfig != null) && (!StringUtil.a(localBusinessConfig.d))) {
-      return this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig.d;
+    if (this.b != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getActiveBizConfig appid ");
+      localStringBuilder.append(this.b.a);
+      QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
     }
-    return "";
+    return this.b;
   }
   
   public void b(String paramString)
@@ -165,34 +111,83 @@ public class BusinessManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
-  public boolean b()
+  public EnterRoomConfig c()
   {
-    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-    return (localBusinessConfig != null) && ("1014".equals(localBusinessConfig.jdField_a_of_type_JavaLangString));
+    return this.c;
   }
   
-  public String c()
+  public IBusinessExpireObserver c(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    BusinessConfig localBusinessConfig = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiBusinessBusinessConfig;
-    return (localBusinessConfig != null) && ("1037".equals(localBusinessConfig.jdField_a_of_type_JavaLangString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBusinessExpireObserver appid = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" isContainKey = ");
+    localStringBuilder.append(this.e.containsKey(paramString));
+    QLog.e("LiveBusinessManager", 1, localStringBuilder.toString());
+    return (IBusinessExpireObserver)this.e.get(paramString);
   }
   
   public boolean d()
   {
-    return this.c;
+    BusinessConfig localBusinessConfig = this.b;
+    return (localBusinessConfig != null) && ("1014".equals(localBusinessConfig.a));
+  }
+  
+  public boolean e()
+  {
+    BusinessConfig localBusinessConfig = this.b;
+    return (localBusinessConfig != null) && ("1037".equals(localBusinessConfig.a));
+  }
+  
+  public String f()
+  {
+    BusinessConfig localBusinessConfig = this.b;
+    if ((localBusinessConfig != null) && (!StringUtil.isEmpty(localBusinessConfig.j))) {
+      return this.b.j;
+    }
+    return "";
+  }
+  
+  public String g()
+  {
+    BusinessConfig localBusinessConfig = this.b;
+    if ((localBusinessConfig != null) && (!StringUtil.isEmpty(localBusinessConfig.i))) {
+      return this.b.i;
+    }
+    return "";
+  }
+  
+  public String h()
+  {
+    return this.f;
+  }
+  
+  public long i()
+  {
+    long l2 = this.g;
+    long l1 = l2;
+    if (l2 <= 0L) {
+      l1 = System.currentTimeMillis();
+    }
+    return l1;
+  }
+  
+  public boolean j()
+  {
+    return this.i;
+  }
+  
+  public void k()
+  {
+    AudienceMultiRoomActivityLogic.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager
  * JD-Core Version:    0.7.0.1
  */

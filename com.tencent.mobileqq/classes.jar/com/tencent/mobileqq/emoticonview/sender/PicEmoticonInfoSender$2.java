@@ -42,7 +42,7 @@ final class PicEmoticonInfoSender$2
     {
       if (!this.val$pcm.isMagicFacePackageIntact(this.val$emoticon.epId, Boolean.valueOf(false)))
       {
-        EmotionUtils.a(this.val$context, 2131689916, 0);
+        EmotionUtils.a(this.val$context, 2131886557, 0);
         paramEmoticonPackage = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(this.val$app);
         if (paramEmoticonPackage != null)
         {
@@ -52,7 +52,7 @@ final class PicEmoticonInfoSender$2
         return;
       }
       ActionGlobalData localActionGlobalData = ((IEmosmService)QRoute.api(IEmosmService.class)).hasAction(this.val$emoticon, 0);
-      if ((localActionGlobalData != null) && (localActionGlobalData.a))
+      if ((localActionGlobalData != null) && (localActionGlobalData.b))
       {
         if (((IEmosmService)QRoute.api(IEmosmService.class)).isSupportMagicface())
         {
@@ -81,7 +81,7 @@ final class PicEmoticonInfoSender$2
           localStringBuilder.append(this.val$emoticon.magicValue);
           QLog.d("PicEmoticonInfoSender", 2, localStringBuilder.toString());
         }
-        if ((localActionGlobalData != null) && (!localActionGlobalData.c))
+        if ((localActionGlobalData != null) && (!localActionGlobalData.e))
         {
           ((IEmosmService)QRoute.api(IEmosmService.class)).sendEmosmMsg(this.val$app, this.val$context, this.val$sessionInfo, this.val$emoticon);
           ReportController.b(this.val$app, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.val$emoticon.epId, "", "", "");
@@ -94,13 +94,13 @@ final class PicEmoticonInfoSender$2
       PicEmoticonInfoSender.access$000(this.val$app, this.val$context, this.val$sessionInfo, this.val$emoticon, this.val$stickerInfo);
       return;
     }
-    EmotionUtils.a(this.val$context, 2131689932);
+    EmotionUtils.a(this.val$context, 2131886573);
     ReportController.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.PicEmoticonInfoSender.2
  * JD-Core Version:    0.7.0.1
  */

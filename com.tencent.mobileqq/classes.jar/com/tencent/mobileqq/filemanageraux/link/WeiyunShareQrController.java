@@ -41,32 +41,32 @@ import mqq.os.MqqHandler;
 final class WeiyunShareQrController
   implements Handler.Callback
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final IShareRouter jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final MqqHandler b;
+  private final IShareRouter a;
+  private final View b;
+  private final MqqHandler c;
+  private final MqqHandler d;
+  private QQProgressDialog e;
+  private Bitmap f;
+  private volatile boolean g;
   
   WeiyunShareQrController(IShareRouter paramIShareRouter, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter = paramIShareRouter;
-    this.jdField_a_of_type_AndroidViewView = paramIShareRouter.getBaseActivity().getLayoutInflater().inflate(2131560816, paramViewGroup, false);
+    this.a = paramIShareRouter;
+    this.b = paramIShareRouter.getBaseActivity().getLayoutInflater().inflate(2131627074, paramViewGroup, false);
     int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewView.measure(i, i);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374662);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374660);
-    paramViewGroup = (AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374661);
-    String str = paramIShareRouter.a();
-    int j = paramIShareRouter.a();
+    this.b.measure(i, i);
+    TextView localTextView1 = (TextView)this.b.findViewById(2131442843);
+    TextView localTextView2 = (TextView)this.b.findViewById(2131442841);
+    paramViewGroup = (AsyncImageView)this.b.findViewById(2131442842);
+    String str = paramIShareRouter.d();
+    int j = paramIShareRouter.f();
     localTextView1.setText(FileManagerUtil.a(str, true, localTextView1.getMeasuredWidth(), localTextView1.getPaint(), 2));
-    localTextView2.setText(FileUtil.a(paramIShareRouter.a()));
-    paramViewGroup.setImageResource(FileManagerUtil.b(str));
+    localTextView2.setText(FileUtil.a(paramIShareRouter.e()));
+    paramViewGroup.setImageResource(FileManagerUtil.i(str));
     if ((j == 5) || (j == 0))
     {
-      paramIShareRouter = paramIShareRouter.b();
-      if (FileUtil.a(paramIShareRouter)) {
+      paramIShareRouter = paramIShareRouter.g();
+      if (FileUtil.b(paramIShareRouter)) {
         if (j == 5) {
           paramViewGroup.setApkIconAsyncImage(paramIShareRouter);
         } else {
@@ -75,167 +75,12 @@ final class WeiyunShareQrController
       }
     }
     paramViewGroup.setSupportMaskView(false);
-    ((AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374642)).setSupportMaskView(false);
-    this.jdField_a_of_type_AndroidViewView.measure(i, i);
-    paramIShareRouter = this.jdField_a_of_type_AndroidViewView;
-    paramIShareRouter.layout(0, 0, paramIShareRouter.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-    this.b = new MqqWeakReferenceHandler(ThreadManagerV2.getFileThreadLooper(), this, false);
-  }
-  
-  /* Error */
-  private Bitmap a(Bitmap paramBitmap, int paramInt, String paramString)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: aload_0
-    //   7: getfield 42	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   10: ldc 119
-    //   12: invokevirtual 59	android/view/View:findViewById	(I)Landroid/view/View;
-    //   15: checkcast 65	com/tencent/mobileqq/filemanager/widget/AsyncImageView
-    //   18: astore 4
-    //   20: aload 4
-    //   22: aload_1
-    //   23: invokevirtual 155	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
-    //   26: aload_0
-    //   27: getfield 42	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   30: ldc 156
-    //   32: invokevirtual 59	android/view/View:findViewById	(I)Landroid/view/View;
-    //   35: checkcast 61	android/widget/TextView
-    //   38: astore 5
-    //   40: getstatic 162	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   43: astore 6
-    //   45: aload_3
-    //   46: invokestatic 168	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   49: ifeq +78 -> 127
-    //   52: new 170	java/lang/StringBuilder
-    //   55: dup
-    //   56: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   59: astore_1
-    //   60: aload_1
-    //   61: getstatic 162	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   64: ldc 172
-    //   66: invokevirtual 176	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
-    //   69: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: pop
-    //   73: aload_1
-    //   74: ldc 182
-    //   76: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: pop
-    //   80: getstatic 162	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   83: astore_3
-    //   84: iload_2
-    //   85: iconst_1
-    //   86: if_icmpne +9 -> 95
-    //   89: ldc 183
-    //   91: istore_2
-    //   92: goto +17 -> 109
-    //   95: iload_2
-    //   96: iconst_2
-    //   97: if_icmpne +9 -> 106
-    //   100: ldc 184
-    //   102: istore_2
-    //   103: goto +6 -> 109
-    //   106: ldc 185
-    //   108: istore_2
-    //   109: aload_1
-    //   110: aload_3
-    //   111: iload_2
-    //   112: invokevirtual 176	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
-    //   115: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: pop
-    //   119: aload_1
-    //   120: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: astore_1
-    //   124: goto +42 -> 166
-    //   127: new 170	java/lang/StringBuilder
-    //   130: dup
-    //   131: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   134: astore_1
-    //   135: aload_1
-    //   136: getstatic 162	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   139: ldc 189
-    //   141: invokevirtual 176	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
-    //   144: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: pop
-    //   148: aload_1
-    //   149: ldc 182
-    //   151: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: pop
-    //   155: aload_1
-    //   156: aload_3
-    //   157: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: pop
-    //   161: aload_1
-    //   162: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: astore_1
-    //   166: aload 5
-    //   168: aload 6
-    //   170: ldc 190
-    //   172: iconst_1
-    //   173: anewarray 4	java/lang/Object
-    //   176: dup
-    //   177: iconst_0
-    //   178: aload_1
-    //   179: aastore
-    //   180: invokevirtual 193	com/tencent/common/app/BaseApplicationImpl:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-    //   183: invokevirtual 87	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   186: aload_0
-    //   187: getfield 42	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   190: invokevirtual 120	android/view/View:getMeasuredWidth	()I
-    //   193: aload_0
-    //   194: getfield 42	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   197: invokevirtual 123	android/view/View:getMeasuredHeight	()I
-    //   200: getstatic 199	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   203: invokestatic 205	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   206: astore_1
-    //   207: aload_0
-    //   208: getfield 42	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   211: new 207	android/graphics/Canvas
-    //   214: dup
-    //   215: aload_1
-    //   216: invokespecial 209	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   219: invokevirtual 213	android/view/View:draw	(Landroid/graphics/Canvas;)V
-    //   222: aload 4
-    //   224: aconst_null
-    //   225: invokevirtual 217	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   228: aload_1
-    //   229: areturn
-    //   230: astore_1
-    //   231: goto +21 -> 252
-    //   234: astore_1
-    //   235: ldc 219
-    //   237: iconst_2
-    //   238: ldc 221
-    //   240: aload_1
-    //   241: invokestatic 227	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   244: aload 4
-    //   246: aconst_null
-    //   247: invokevirtual 217	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   250: aconst_null
-    //   251: areturn
-    //   252: aload 4
-    //   254: aconst_null
-    //   255: invokevirtual 217	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   258: aload_1
-    //   259: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	260	0	this	WeiyunShareQrController
-    //   0	260	1	paramBitmap	Bitmap
-    //   0	260	2	paramInt	int
-    //   0	260	3	paramString	String
-    //   18	235	4	localAsyncImageView	AsyncImageView
-    //   38	129	5	localTextView	TextView
-    //   43	126	6	localBaseApplicationImpl	BaseApplicationImpl
-    // Exception table:
-    //   from	to	target	type
-    //   186	222	230	finally
-    //   235	244	230	finally
-    //   186	222	234	java/lang/Throwable
+    ((AsyncImageView)this.b.findViewById(2131442819)).setSupportMaskView(false);
+    this.b.measure(i, i);
+    paramIShareRouter = this.b;
+    paramIShareRouter.layout(0, 0, paramIShareRouter.getMeasuredWidth(), this.b.getMeasuredHeight());
+    this.c = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+    this.d = new MqqWeakReferenceHandler(ThreadManagerV2.getFileThreadLooper(), this, false);
   }
   
   private static String a(Bitmap paramBitmap)
@@ -263,27 +108,27 @@ final class WeiyunShareQrController
       return;
     }
     int i = paramActionSheetItem.action;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity();
+    Object localObject = this.a.getBaseActivity();
     if (localObject != null)
     {
       if (((BaseActivity)localObject).isFinishing()) {
         return;
       }
-      QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      QQProgressDialog localQQProgressDialog = this.e;
       if (localQQProgressDialog != null) {
         localQQProgressDialog.dismiss();
       }
       if ("".equals(paramString))
       {
-        LinkUtils.a(1, 2131696480, true);
+        LinkUtils.a(1, 2131894252, true);
         return;
       }
       if (paramString == null)
       {
         if (i == 39) {
-          i = 2131716705;
+          i = 2131914169;
         } else {
-          i = 2131696479;
+          i = 2131894251;
         }
         LinkUtils.a(1, i, true);
         return;
@@ -320,10 +165,10 @@ final class WeiyunShareQrController
             paramBitmap.append(paramString);
             paramActionSheetItem.setData(Uri.parse(paramBitmap.toString()));
             ((BaseActivity)localObject).sendBroadcast(paramActionSheetItem);
-            LinkUtils.a(2, ((BaseActivity)localObject).getString(2131716707, new Object[] { paramString }), true);
+            LinkUtils.a(2, ((BaseActivity)localObject).getString(2131914171, new Object[] { paramString }), true);
             return;
           }
-          paramActionSheetItem = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.c();
+          paramActionSheetItem = this.a.i();
           localObject = WXShareHelper.a();
           if (i == 9) {
             i = 0;
@@ -341,7 +186,7 @@ final class WeiyunShareQrController
         } else {
           paramActionSheetItem.nickname = null;
         }
-        QZoneHelper.forwardToPublishMood((Activity)localObject, paramActionSheetItem, paramString, ((BaseActivity)localObject).getString(2131692105), ((BaseActivity)localObject).getString(2131698257, new Object[] { "" }), 2);
+        QZoneHelper.forwardToPublishMood((Activity)localObject, paramActionSheetItem, paramString, ((BaseActivity)localObject).getString(2131889086), ((BaseActivity)localObject).getString(2131896158, new Object[] { "" }), 2);
         return;
       }
       paramActionSheetItem = new Intent();
@@ -369,10 +214,165 @@ final class WeiyunShareQrController
       Message localMessage = new Message();
       localMessage.what = 2;
       localMessage.obj = new Object[] { localActionSheetItem, localBitmap, paramArrayOfObject };
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      this.c.sendMessage(localMessage);
       return;
     }
     throw new IllegalArgumentException("handleSaveBitmap: args are invalid");
+  }
+  
+  /* Error */
+  private Bitmap b(Bitmap paramBitmap, int paramInt, String paramString)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: aload_0
+    //   7: getfield 47	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:b	Landroid/view/View;
+    //   10: ldc 125
+    //   12: invokevirtual 64	android/view/View:findViewById	(I)Landroid/view/View;
+    //   15: checkcast 70	com/tencent/mobileqq/filemanager/widget/AsyncImageView
+    //   18: astore 4
+    //   20: aload 4
+    //   22: aload_1
+    //   23: invokevirtual 415	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   26: aload_0
+    //   27: getfield 47	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:b	Landroid/view/View;
+    //   30: ldc_w 416
+    //   33: invokevirtual 64	android/view/View:findViewById	(I)Landroid/view/View;
+    //   36: checkcast 66	android/widget/TextView
+    //   39: astore 5
+    //   41: getstatic 185	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   44: astore 6
+    //   46: aload_3
+    //   47: invokestatic 422	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   50: ifeq +83 -> 133
+    //   53: new 159	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   60: astore_1
+    //   61: aload_1
+    //   62: getstatic 185	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   65: ldc_w 423
+    //   68: invokevirtual 424	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
+    //   71: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload_1
+    //   76: ldc_w 426
+    //   79: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: getstatic 185	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   86: astore_3
+    //   87: iload_2
+    //   88: iconst_1
+    //   89: if_icmpne +10 -> 99
+    //   92: ldc_w 427
+    //   95: istore_2
+    //   96: goto +19 -> 115
+    //   99: iload_2
+    //   100: iconst_2
+    //   101: if_icmpne +10 -> 111
+    //   104: ldc_w 428
+    //   107: istore_2
+    //   108: goto +7 -> 115
+    //   111: ldc_w 429
+    //   114: istore_2
+    //   115: aload_1
+    //   116: aload_3
+    //   117: iload_2
+    //   118: invokevirtual 424	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
+    //   121: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: aload_1
+    //   126: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: astore_1
+    //   130: goto +44 -> 174
+    //   133: new 159	java/lang/StringBuilder
+    //   136: dup
+    //   137: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   140: astore_1
+    //   141: aload_1
+    //   142: getstatic 185	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   145: ldc_w 430
+    //   148: invokevirtual 424	com/tencent/common/app/BaseApplicationImpl:getString	(I)Ljava/lang/String;
+    //   151: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: aload_1
+    //   156: ldc_w 426
+    //   159: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: pop
+    //   163: aload_1
+    //   164: aload_3
+    //   165: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: pop
+    //   169: aload_1
+    //   170: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: astore_1
+    //   174: aload 5
+    //   176: aload 6
+    //   178: ldc_w 366
+    //   181: iconst_1
+    //   182: anewarray 4	java/lang/Object
+    //   185: dup
+    //   186: iconst_0
+    //   187: aload_1
+    //   188: aastore
+    //   189: invokevirtual 431	com/tencent/common/app/BaseApplicationImpl:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   192: invokevirtual 92	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   195: aload_0
+    //   196: getfield 47	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:b	Landroid/view/View;
+    //   199: invokevirtual 126	android/view/View:getMeasuredWidth	()I
+    //   202: aload_0
+    //   203: getfield 47	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:b	Landroid/view/View;
+    //   206: invokevirtual 129	android/view/View:getMeasuredHeight	()I
+    //   209: getstatic 437	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   212: invokestatic 441	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   215: astore_1
+    //   216: aload_0
+    //   217: getfield 47	com/tencent/mobileqq/filemanageraux/link/WeiyunShareQrController:b	Landroid/view/View;
+    //   220: new 443	android/graphics/Canvas
+    //   223: dup
+    //   224: aload_1
+    //   225: invokespecial 445	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   228: invokevirtual 449	android/view/View:draw	(Landroid/graphics/Canvas;)V
+    //   231: aload 4
+    //   233: aconst_null
+    //   234: invokevirtual 453	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   237: aload_1
+    //   238: areturn
+    //   239: astore_1
+    //   240: goto +22 -> 262
+    //   243: astore_1
+    //   244: ldc 192
+    //   246: iconst_2
+    //   247: ldc_w 455
+    //   250: aload_1
+    //   251: invokestatic 457	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   254: aload 4
+    //   256: aconst_null
+    //   257: invokevirtual 453	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   260: aconst_null
+    //   261: areturn
+    //   262: aload 4
+    //   264: aconst_null
+    //   265: invokevirtual 453	com/tencent/mobileqq/filemanager/widget/AsyncImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   268: aload_1
+    //   269: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	270	0	this	WeiyunShareQrController
+    //   0	270	1	paramBitmap	Bitmap
+    //   0	270	2	paramInt	int
+    //   0	270	3	paramString	String
+    //   18	245	4	localAsyncImageView	AsyncImageView
+    //   39	136	5	localTextView	TextView
+    //   44	133	6	localBaseApplicationImpl	BaseApplicationImpl
+    // Exception table:
+    //   from	to	target	type
+    //   195	231	239	finally
+    //   244	254	239	finally
+    //   195	231	243	java/lang/Throwable
   }
   
   /* Error */
@@ -388,89 +388,89 @@ final class WeiyunShareQrController
     //   9: aload_0
     //   10: ifnull +386 -> 396
     //   13: aload_0
-    //   14: invokevirtual 456	android/graphics/Bitmap:isRecycled	()Z
+    //   14: invokevirtual 460	android/graphics/Bitmap:isRecycled	()Z
     //   17: ifne +379 -> 396
-    //   20: new 458	com/tencent/mm/vfs/VFSFile
+    //   20: new 462	com/tencent/mm/vfs/VFSFile
     //   23: dup
-    //   24: getstatic 463	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   27: invokespecial 464	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   24: getstatic 467	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   27: invokespecial 468	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   30: astore 5
     //   32: aload 5
-    //   34: invokevirtual 467	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   34: invokevirtual 471	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
     //   37: pop
     //   38: aload 5
-    //   40: invokevirtual 470	com/tencent/mm/vfs/VFSFile:canWrite	()Z
+    //   40: invokevirtual 474	com/tencent/mm/vfs/VFSFile:canWrite	()Z
     //   43: ifeq +353 -> 396
-    //   46: invokestatic 237	java/lang/System:currentTimeMillis	()J
-    //   49: invokestatic 474	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   46: invokestatic 171	java/lang/System:currentTimeMillis	()J
+    //   49: invokestatic 478	java/lang/Long:toString	(J)Ljava/lang/String;
     //   52: astore 5
-    //   54: new 170	java/lang/StringBuilder
+    //   54: new 159	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   58: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   61: astore 7
     //   63: aload 7
-    //   65: getstatic 463	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   68: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: getstatic 467	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   68: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
     //   72: aload 7
-    //   74: ldc_w 476
-    //   77: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: ldc_w 480
+    //   77: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: pop
     //   81: aload 7
-    //   83: invokestatic 237	java/lang/System:currentTimeMillis	()J
-    //   86: invokevirtual 240	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   83: invokestatic 171	java/lang/System:currentTimeMillis	()J
+    //   86: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   89: pop
     //   90: aload 7
-    //   92: ldc_w 478
-    //   95: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: ldc_w 482
+    //   95: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: pop
-    //   99: new 458	com/tencent/mm/vfs/VFSFile
+    //   99: new 462	com/tencent/mm/vfs/VFSFile
     //   102: dup
     //   103: aload 7
-    //   105: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokespecial 464	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   105: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokespecial 468	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   111: astore 7
     //   113: iconst_2
     //   114: istore_1
     //   115: aload 7
-    //   117: invokevirtual 481	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   117: invokevirtual 485	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   120: ifeq +91 -> 211
     //   123: iload_1
-    //   124: ldc_w 482
+    //   124: ldc_w 486
     //   127: if_icmpge +84 -> 211
-    //   130: new 170	java/lang/StringBuilder
+    //   130: new 159	java/lang/StringBuilder
     //   133: dup
-    //   134: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   134: invokespecial 160	java/lang/StringBuilder:<init>	()V
     //   137: astore 7
     //   139: aload 7
-    //   141: getstatic 463	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   144: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: getstatic 467	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   144: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: pop
     //   148: aload 7
-    //   150: ldc_w 476
-    //   153: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc_w 480
+    //   153: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload 7
     //   159: aload 5
-    //   161: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 7
-    //   167: ldc_w 484
-    //   170: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: ldc_w 488
+    //   170: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   173: pop
     //   174: aload 7
     //   176: iload_1
-    //   177: invokevirtual 487	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 491	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 7
-    //   183: ldc_w 489
-    //   186: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: ldc_w 493
+    //   186: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: pop
-    //   190: new 458	com/tencent/mm/vfs/VFSFile
+    //   190: new 462	com/tencent/mm/vfs/VFSFile
     //   193: dup
     //   194: aload 7
-    //   196: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokespecial 464	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   196: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: invokespecial 468	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
     //   202: astore 7
     //   204: iload_1
     //   205: iconst_1
@@ -481,24 +481,24 @@ final class WeiyunShareQrController
     //   212: istore 4
     //   214: iconst_0
     //   215: istore_3
-    //   216: new 491	java/io/BufferedOutputStream
+    //   216: new 495	java/io/BufferedOutputStream
     //   219: dup
-    //   220: new 493	com/tencent/mm/vfs/VFSFileOutputStream
+    //   220: new 497	com/tencent/mm/vfs/VFSFileOutputStream
     //   223: dup
     //   224: aload 7
-    //   226: invokespecial 496	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
-    //   229: invokespecial 499	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   226: invokespecial 500	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   229: invokespecial 503	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   232: astore 5
     //   234: aload 5
     //   236: astore 6
     //   238: aload_0
-    //   239: getstatic 505	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   239: getstatic 509	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   242: bipush 100
     //   244: aload 5
-    //   246: invokevirtual 509	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   246: invokevirtual 513	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   249: istore_2
     //   250: aload 5
-    //   252: invokevirtual 512	java/io/BufferedOutputStream:close	()V
+    //   252: invokevirtual 516	java/io/BufferedOutputStream:close	()V
     //   255: aload 8
     //   257: astore_0
     //   258: goto +100 -> 358
@@ -520,11 +520,11 @@ final class WeiyunShareQrController
     //   289: astore 5
     //   291: aload 5
     //   293: astore 6
-    //   295: ldc 219
+    //   295: ldc 192
     //   297: iconst_2
-    //   298: ldc_w 514
+    //   298: ldc_w 518
     //   301: aload_0
-    //   302: invokestatic 227	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   302: invokestatic 457	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   305: aload 8
     //   307: astore_0
     //   308: iload 4
@@ -541,36 +541,36 @@ final class WeiyunShareQrController
     //   329: astore_0
     //   330: aload_0
     //   331: astore 6
-    //   333: ldc 219
+    //   333: ldc 192
     //   335: iconst_2
-    //   336: ldc_w 514
+    //   336: ldc_w 518
     //   339: aload 5
-    //   341: invokestatic 252	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   341: invokestatic 200	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   344: aload_0
     //   345: ifnull +7 -> 352
     //   348: aload_0
-    //   349: invokevirtual 512	java/io/BufferedOutputStream:close	()V
-    //   352: ldc 254
+    //   349: invokevirtual 516	java/io/BufferedOutputStream:close	()V
+    //   352: ldc 202
     //   354: astore_0
     //   355: iload 4
     //   357: istore_2
     //   358: iload_2
     //   359: ifne +19 -> 378
     //   362: aload 7
-    //   364: invokevirtual 481	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   364: invokevirtual 485	com/tencent/mm/vfs/VFSFile:exists	()Z
     //   367: ifeq +11 -> 378
     //   370: aload 7
-    //   372: invokevirtual 517	com/tencent/mm/vfs/VFSFile:delete	()Z
+    //   372: invokevirtual 521	com/tencent/mm/vfs/VFSFile:delete	()Z
     //   375: pop
     //   376: aload_0
     //   377: areturn
     //   378: aload 7
-    //   380: invokevirtual 520	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
+    //   380: invokevirtual 524	com/tencent/mm/vfs/VFSFile:getAbsolutePath	()Ljava/lang/String;
     //   383: areturn
     //   384: aload 6
     //   386: ifnull +8 -> 394
     //   389: aload 6
-    //   391: invokevirtual 512	java/io/BufferedOutputStream:close	()V
+    //   391: invokevirtual 516	java/io/BufferedOutputStream:close	()V
     //   394: aload_0
     //   395: athrow
     //   396: aconst_null
@@ -614,13 +614,13 @@ final class WeiyunShareQrController
   
   private void b()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.f;
     if (localBitmap != null)
     {
       if (!localBitmap.isRecycled()) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.f.recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.f = null;
     }
   }
   
@@ -646,16 +646,16 @@ final class WeiyunShareQrController
   
   void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.g = true;
     b();
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.e;
     if (localQQProgressDialog != null)
     {
       localQQProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.e = null;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.b.removeCallbacksAndMessages(null);
+    this.c.removeCallbacksAndMessages(null);
+    this.d.removeCallbacksAndMessages(null);
   }
   
   void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
@@ -665,9 +665,9 @@ final class WeiyunShareQrController
     }
     int i = paramActionSheetItem.action;
     boolean bool = false;
-    if ((i != 39) && (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity())))
+    if ((i != 39) && (!NetworkUtil.isNetSupport(this.a.getBaseActivity())))
     {
-      LinkUtils.a(0, 2131692183, false);
+      LinkUtils.a(0, 2131889169, false);
       if (QLog.isColorLevel()) {
         QLog.i("WeiyunShareQrController<FileAssistant>", 2, "toShare: net is not supported");
       }
@@ -675,38 +675,38 @@ final class WeiyunShareQrController
     }
     if ((i == 2) || (i == 3) || (i == 9) || (i == 10) || (i == 72) || (i == 39))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694668);
+        this.e = new QQProgressDialog(this.a.getBaseActivity());
+        this.e.c(2131892360);
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      if (!this.e.isShowing()) {
+        this.e.show();
       }
       Message localMessage = new Message();
       localMessage.what = 1;
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      Bitmap localBitmap = this.f;
       if (i != 39) {
         bool = true;
       }
       localMessage.obj = new Object[] { paramActionSheetItem, localBitmap, Boolean.valueOf(bool) };
-      this.b.sendMessage(localMessage);
+      this.d.sendMessage(localMessage);
     }
   }
   
   boolean a(Bitmap paramBitmap, int paramInt, String paramString)
   {
-    paramBitmap = a(paramBitmap, paramInt, paramString);
+    paramBitmap = b(paramBitmap, paramInt, paramString);
     if (paramBitmap == null)
     {
-      LinkUtils.a(1, BaseApplicationImpl.sApplication.getResources().getString(2131698251, new Object[] { Integer.valueOf(-2) }), true);
+      LinkUtils.a(1, BaseApplicationImpl.sApplication.getResources().getString(2131896152, new Object[] { Integer.valueOf(-2) }), true);
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a(paramBitmap);
-    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+    this.a.a(paramBitmap);
+    if (paramBitmap != this.f) {
       b();
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.f = paramBitmap;
     return true;
   }
   
@@ -719,7 +719,7 @@ final class WeiyunShareQrController
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       return false;
     }
     int i = paramMessage.what;
@@ -737,7 +737,7 @@ final class WeiyunShareQrController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareQrController
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class GameCenterMsgConfigProcessor
 {
   public static GameCenterMsgBean a()
   {
-    return (GameCenterMsgBean)QConfigManager.a().a(608);
+    return (GameCenterMsgBean)QConfigManager.b().b(608);
   }
   
   @NonNull
@@ -93,7 +93,7 @@ public class GameCenterMsgConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.config.GameCenterMsgConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

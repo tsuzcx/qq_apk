@@ -2,20 +2,18 @@ package com.tencent.avbiz;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 public abstract interface Constants
 {
-  public static final HashMap<String, Long> a;
-  public static final HashSet<String> a;
-  public static final HashMap<String, String> b;
-  public static final HashSet<String> b;
+  public static final HashSet<String> AUDIO_PLAYER_BUSINESS = new Constants.3();
+  public static final HashSet<String> AUDIO_RTC_BUSINESS = new Constants.4();
+  public static final HashMap<String, Set<String>> PROCESS_BIZ_NAME_MAP;
+  public static final HashMap<String, Long> REQUEST_DEVICE_MAP = new Constants.1();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new Constants.1();
-    jdField_b_of_type_JavaUtilHashMap = new Constants.2();
-    jdField_a_of_type_JavaUtilHashSet = new Constants.3();
-    jdField_b_of_type_JavaUtilHashSet = new Constants.4();
+    PROCESS_BIZ_NAME_MAP = new Constants.2();
   }
 }
 

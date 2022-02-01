@@ -57,17 +57,17 @@ public class VideoFeedsLikeAnimateHandler
         this.a = paramToServiceMsg.bytes_cookie.get().toStringUtf8();
       }
       paramObject = new LikeAnimationInfo();
-      paramObject.jdField_a_of_type_Int = i;
+      paramObject.b = i;
       if ((paramToServiceMsg.msg_like_animation_config.has()) && (paramToServiceMsg.msg_like_animation_config.get() != null) && (paramToServiceMsg.msg_like_animation_config.rpt_msg_icon_config_list.has()) && (paramToServiceMsg.msg_like_animation_config.rpt_msg_icon_config_list.get() != null))
       {
         paramToServiceMsg = paramToServiceMsg.msg_like_animation_config.rpt_msg_icon_config_list.get();
-        paramObject.jdField_a_of_type_ArrayOfJavaLangString = new String[paramToServiceMsg.size()];
+        paramObject.a = new String[paramToServiceMsg.size()];
         i = 0;
         while (i < paramToServiceMsg.size())
         {
           oidb_0xb73.LikeAnimationIconConfig localLikeAnimationIconConfig = (oidb_0xb73.LikeAnimationIconConfig)paramToServiceMsg.get(i);
           if ((localLikeAnimationIconConfig.has()) && (localLikeAnimationIconConfig.get() != null) && (localLikeAnimationIconConfig.bytes_icon_url.has()) && (localLikeAnimationIconConfig.bytes_icon_url.get() != null)) {
-            paramObject.jdField_a_of_type_ArrayOfJavaLangString[i] = localLikeAnimationIconConfig.bytes_icon_url.get().toStringUtf8();
+            paramObject.a[i] = localLikeAnimationIconConfig.bytes_icon_url.get().toStringUtf8();
           }
           i += 1;
         }
@@ -106,7 +106,7 @@ public class VideoFeedsLikeAnimateHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimateHandler
  * JD-Core Version:    0.7.0.1
  */

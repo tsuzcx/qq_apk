@@ -23,18 +23,54 @@ import tencent.im.usercategory.ExtendFriendUserCategory.GetUserStatusReq;
 
 public class ExpandConfigManager
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ExpandConfig jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private final Object a = new Object();
+  private final QQAppInterface b;
+  private boolean c;
+  private ExpandConfig d;
+  private String e = "";
   
   public ExpandConfigManager(@NonNull QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
-  private ExpandConfig a(String paramString)
+  private Map<String, LimitChatRes> a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null) {
+      return new HashMap();
+    }
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
+      if (localJSONObject != null)
+      {
+        LimitChatRes localLimitChatRes = new LimitChatRes();
+        localLimitChatRes.a = localJSONObject.optString("name");
+        if ("aioVideo".equals(localLimitChatRes.a))
+        {
+          localLimitChatRes.b = localJSONObject.optString("resourceURLAndroid");
+          localLimitChatRes.c = localJSONObject.optString("resourceMD5Android");
+          if (QLog.isColorLevel()) {
+            QLog.d("expand.config.ExpandConfigManager", 2, String.format("aiovideo use android url:%s", new Object[] { localLimitChatRes.b }));
+          }
+        }
+        else
+        {
+          localLimitChatRes.b = localJSONObject.optString("resourceURL");
+          localLimitChatRes.c = localJSONObject.optString("resourceMD5");
+        }
+        if (localLimitChatRes.a()) {
+          localHashMap.put(localLimitChatRes.a, localLimitChatRes);
+        }
+      }
+      i += 1;
+    }
+    return localHashMap;
+  }
+  
+  private ExpandConfig c(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -43,7 +79,7 @@ public class ExpandConfigManager
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("expand.config.ExpandConfigManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = ExpandSharePreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    Object localObject1 = ExpandSharePreUtils.a(this.b.getAccount());
     ExpandConfig localExpandConfig = new ExpandConfig();
     try
     {
@@ -56,6 +92,9 @@ public class ExpandConfigManager
       localExpandConfig.saveEmptyAIONode = paramString.optInt("saveEmptyAIONode", 1);
       localExpandConfig.newUserMoment = paramString.optInt("newUserMoment");
       localExpandConfig.isHasUpgradeIntroduce = paramString.optInt("upgradeIntroduce");
+      localExpandConfig.flutterSettingPageTitle = paramString.optString("flutterSettingPageTitle");
+      localExpandConfig.flutterMessagePageTitle = paramString.optString("flutterMessagePageTitle");
+      localExpandConfig.flutterHomePageTitle = paramString.optString("flutterHomePageTitle");
       localExpandConfig.contactEntranceTitle = paramString.optString("contactEntranceTitle");
       localExpandConfig.contactEntranceLine1 = paramString.optString("contactEntranceLine1");
       localExpandConfig.contactEntranceLine2 = paramString.optString("contactEntranceLine2");
@@ -71,8 +110,8 @@ public class ExpandConfigManager
       localExpandConfig.isExpandEntranceOnTop = paramString.optInt("isExpandEntranceOnTop");
       localExpandConfig.mResourceURL = paramString.optString("resourceURL");
       localExpandConfig.mResourceMD5 = paramString.optString("resourceMD5");
-      localExpandConfig.flutterResUrl = paramString.optString("flutterResAndroidURL_v3");
-      localExpandConfig.flutterResMd5 = paramString.optString("flutterResAndroidMD5_v3");
+      localExpandConfig.flutterResUrl = paramString.optString("flutterResAndroidURL_v5");
+      localExpandConfig.flutterResMd5 = paramString.optString("flutterResAndroidMD5_v5");
       localExpandConfig.mShowGroup = paramString.optInt("isShowGroup");
       localExpandConfig.expandExamImg = paramString.optString("ExpandExamImg");
       localExpandConfig.exposureTimeLimit = paramString.optInt("exposureTimeLimit", 2);
@@ -141,97 +180,95 @@ public class ExpandConfigManager
     return null;
   }
   
-  private Map<String, LimitChatRes> a(JSONArray paramJSONArray)
+  private void m()
   {
-    if (paramJSONArray == null) {
-      return new HashMap();
-    }
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      if (localJSONObject != null)
-      {
-        LimitChatRes localLimitChatRes = new LimitChatRes();
-        localLimitChatRes.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-        if ("aioVideo".equals(localLimitChatRes.jdField_a_of_type_JavaLangString))
-        {
-          localLimitChatRes.b = localJSONObject.optString("resourceURLAndroid");
-          localLimitChatRes.c = localJSONObject.optString("resourceMD5Android");
-          if (QLog.isColorLevel()) {
-            QLog.d("expand.config.ExpandConfigManager", 2, String.format("aiovideo use android url:%s", new Object[] { localLimitChatRes.b }));
-          }
-        }
-        else
-        {
-          localLimitChatRes.b = localJSONObject.optString("resourceURL");
-          localLimitChatRes.c = localJSONObject.optString("resourceMD5");
-        }
-        if (localLimitChatRes.a()) {
-          localHashMap.put(localLimitChatRes.jdField_a_of_type_JavaLangString, localLimitChatRes);
-        }
-      }
-      i += 1;
-    }
-    return localHashMap;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    if (this.b == null)
     {
       QLog.w("expand.config.ExpandConfigManager", 1, "checkPullUserCategory app is null!");
       return;
     }
-    b();
-  }
-  
-  public int a()
-  {
-    if (a())
-    {
-      ExpandConfig localExpandConfig = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-      if (localExpandConfig != null) {
-        return localExpandConfig.isHasUpgradeIntroduce;
-      }
-    }
-    return 0;
+    k();
   }
   
   public ExpandConfig a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
+    return this.d;
   }
   
-  public void a()
+  public void a(IConfigCallback paramIConfigCallback)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (QLog.isColorLevel()) {
+      QLog.d("expand.config.ExpandConfigManager", 2, "getABTestConfig ");
+    }
+    ExtendFriendABTestConfig.GetTabTestInfoReq localGetTabTestInfoReq = new ExtendFriendABTestConfig.GetTabTestInfoReq();
+    localGetTabTestInfoReq.version.set("1");
+    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.b);
+    if (localExpandCmdHandler == null)
+    {
+      QLog.w("expand.config.ExpandConfigManager", 1, "getABTestConfig cmdHandler is null!");
       return;
     }
-    d();
+    localExpandCmdHandler.a("QQExpand.Tab.GetGrayPolicyInfo", localGetTabTestInfoReq.toByteArray(), 1, new ExpandConfigManager.3(this, paramIConfigCallback));
+  }
+  
+  public void a(String arg1)
+  {
+    QLog.i("expand.config.ExpandConfigManager", 1, "new config coming");
+    ExpandConfig localExpandConfig = c(???);
+    synchronized (this.a)
+    {
+      this.d = localExpandConfig;
+      this.c = true;
+      return;
+    }
+  }
+  
+  public ExpandConfig b()
+  {
+    if (!c()) {
+      d();
+    }
+    return this.d;
+  }
+  
+  public void b(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    if (this.c) {
+      return;
+    }
+    m();
     try
     {
-      ??? = ConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785");
+      ??? = ConfigUtil.a(this.b.getApp(), this.b.getCurrentAccountUin(), "extend_friend_config_785");
       Object localObject1 = ???;
       if (??? == null)
       {
         QLog.e("expand.config.ExpandConfigManager", 2, "Load config is empty!!!");
-        localObject1 = "{\n\"//\":\"850实验新用户进入新扩列界面时有个引导时刻：1:有这个引导时刻，0:无该引导时刻\",\n\"newUserMoment\": 1,\n\"//\":\"850实验是否出现升级提示: 0: 不出现  1:出现\",\n\"upgradeIntroduce\": 0,\n\"//\":\"实验对照组ID\",\n\"testStrId\":\"local\",\n\"//\":\"联系人入口、添加入口的开关、文案分别配置\",\n\"addEntranceTitle\":\"扩列匹配\",\n\n\"isVoiceMatchOpen\":1,\n\"//\":\"扩列中间自研模块的配置项\",\n\"centerBannerList\":[\n{\"type\":\"VoiceWidget\",\n\"topIconUrl\":\"assets/match/square_icon.png\",\n\"bgIconUrl\":\"assets/match/square_bg.png\",\n\"itemTitle\": \"语音连麦\",\n\"itemSubTitle\":\"今日剩余%i次\"\n},\n{\"type\":\"AudioWidget\",\n\"topIconUrl\":\"assets/match/square_icon.pag\",\n\"bgIconUrl\":\"assets/match/square_bg.png\",\n\"itemTitle\": \"暖说说\",\n\"itemSubTitle\":\"附近更新%i条镇楼音\"\n}\n]\n}";
+        localObject1 = "{\n\"//\":\"850实验新用户进入新扩列界面时有个引导时刻：1:有这个引导时刻，0:无该引导时刻\",\n\"newUserMoment\": 1,\n\"//\":\"850实验是否出现升级提示: 0: 不出现  1:出现\",\n\"upgradeIntroduce\": 0,\n\"//\":\"实验对照组ID\",\n\"testStrId\":\"local\",\n\"//\":\"联系人入口、添加入口的开关、文案分别配置\",\n\"addEntranceTitle\":\"扩列匹配\",\n\n\"isVoiceMatchOpen\":1,\n\"//\":\"扩列中间自研模块的配置项\",\n\"centerBannerList\":[\n]\n}";
       }
-      ??? = a((String)localObject1);
+      ??? = c((String)localObject1);
       localObject1 = ???;
       if (??? == null)
       {
         QLog.e("expand.config.ExpandConfigManager", 2, "Load error config!!!");
-        localObject1 = a("{\n\"//\":\"850实验新用户进入新扩列界面时有个引导时刻：1:有这个引导时刻，0:无该引导时刻\",\n\"newUserMoment\": 1,\n\"//\":\"850实验是否出现升级提示: 0: 不出现  1:出现\",\n\"upgradeIntroduce\": 0,\n\"//\":\"实验对照组ID\",\n\"testStrId\":\"local\",\n\"//\":\"联系人入口、添加入口的开关、文案分别配置\",\n\"addEntranceTitle\":\"扩列匹配\",\n\n\"isVoiceMatchOpen\":1,\n\"//\":\"扩列中间自研模块的配置项\",\n\"centerBannerList\":[\n{\"type\":\"VoiceWidget\",\n\"topIconUrl\":\"assets/match/square_icon.png\",\n\"bgIconUrl\":\"assets/match/square_bg.png\",\n\"itemTitle\": \"语音连麦\",\n\"itemSubTitle\":\"今日剩余%i次\"\n},\n{\"type\":\"AudioWidget\",\n\"topIconUrl\":\"assets/match/square_icon.pag\",\n\"bgIconUrl\":\"assets/match/square_bg.png\",\n\"itemTitle\": \"暖说说\",\n\"itemSubTitle\":\"附近更新%i条镇楼音\"\n}\n]\n}");
+        localObject1 = c("{\n\"//\":\"850实验新用户进入新扩列界面时有个引导时刻：1:有这个引导时刻，0:无该引导时刻\",\n\"newUserMoment\": 1,\n\"//\":\"850实验是否出现升级提示: 0: 不出现  1:出现\",\n\"upgradeIntroduce\": 0,\n\"//\":\"实验对照组ID\",\n\"testStrId\":\"local\",\n\"//\":\"联系人入口、添加入口的开关、文案分别配置\",\n\"addEntranceTitle\":\"扩列匹配\",\n\n\"isVoiceMatchOpen\":1,\n\"//\":\"扩列中间自研模块的配置项\",\n\"centerBannerList\":[\n]\n}");
       }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.a)
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.c)
         {
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig = ((ExpandConfig)localObject1);
-          this.jdField_a_of_type_Boolean = true;
+          this.d = ((ExpandConfig)localObject1);
+          this.c = true;
         }
         if (QLog.isColorLevel()) {
           QLog.i("expand.config.ExpandConfigManagerexpand.enter.", 2, "initConfig");
@@ -248,50 +285,78 @@ public class ExpandConfigManager
     }
   }
   
-  public void a(IConfigCallback paramIConfigCallback)
+  public boolean e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("expand.config.ExpandConfigManager", 2, "getABTestConfig ");
-    }
-    ExtendFriendABTestConfig.GetTabTestInfoReq localGetTabTestInfoReq = new ExtendFriendABTestConfig.GetTabTestInfoReq();
-    localGetTabTestInfoReq.version.set("1");
-    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localExpandCmdHandler == null)
+    ExpandConfig localExpandConfig = this.d;
+    return (localExpandConfig != null) && (localExpandConfig.androidExpandPlugin == 0) && (!TextUtils.isEmpty(this.d.flutterResUrl)) && (!TextUtils.isEmpty(this.d.flutterResMd5));
+  }
+  
+  public boolean f()
+  {
+    ExpandConfig localExpandConfig = this.d;
+    return (localExpandConfig != null) && (localExpandConfig.androidExpandPlugin == 1);
+  }
+  
+  public boolean g()
+  {
+    return true;
+  }
+  
+  public boolean h()
+  {
+    boolean bool3 = c();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      QLog.w("expand.config.ExpandConfigManager", 1, "getABTestConfig cmdHandler is null!");
-      return;
+      ExpandConfig localExpandConfig = this.d;
+      bool1 = bool2;
+      if (localExpandConfig != null)
+      {
+        bool1 = bool2;
+        if (localExpandConfig.saveEmptyAIONode == 0) {
+          bool1 = true;
+        }
+      }
     }
-    localExpandCmdHandler.a("QQExpand.Tab.GetGrayPolicyInfo", localGetTabTestInfoReq.toByteArray(), 1, new ExpandConfigManager.3(this, paramIConfigCallback));
+    return bool1;
   }
   
-  public void a(String arg1)
+  public int i()
   {
-    QLog.i("expand.config.ExpandConfigManager", 1, "new config coming");
-    ExpandConfig localExpandConfig = a(???);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (c())
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig = localExpandConfig;
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      ExpandConfig localExpandConfig = this.d;
+      if (localExpandConfig != null) {
+        return localExpandConfig.isHasUpgradeIntroduce;
+      }
     }
+    return 0;
   }
   
-  public boolean a()
+  public boolean j()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public ExpandConfig b()
-  {
-    if (!a()) {
-      a();
+    boolean bool3 = c();
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      ExpandConfig localExpandConfig = this.d;
+      bool1 = bool2;
+      if (localExpandConfig != null)
+      {
+        if (localExpandConfig.newUserMoment == 1) {
+          return true;
+        }
+        bool1 = false;
+      }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
+    return bool1;
   }
   
-  public void b()
+  public void k()
   {
-    if (!ExpandSharePreUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    if (!ExpandSharePreUtils.f(this.b.getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("expand.config.ExpandConfigManager", 2, "getUserCategoryConfig() return(no need request).");
@@ -307,7 +372,7 @@ public class ExpandConfigManager
     localGetUserStatusReq.ReqHasPersonalLabelsFlag.set(true);
     localGetUserStatusReq.ReqForbiddenInfo.set(false);
     localGetUserStatusReq.ReqLastLoginTime.set(true);
-    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.b);
     if (localExpandCmdHandler == null)
     {
       QLog.w("expand.config.ExpandConfigManager", 1, "getUserCategory cmdHandler is null!");
@@ -316,25 +381,14 @@ public class ExpandConfigManager
     localExpandCmdHandler.a("QQExpand.UserInfo.GetUserStatus", localGetUserStatusReq.toByteArray(), new ExpandConfigManager.1(this));
   }
   
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean b()
-  {
-    ExpandConfig localExpandConfig = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-    return (localExpandConfig != null) && (localExpandConfig.androidExpandPlugin == 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig.flutterResUrl)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig.flutterResMd5));
-  }
-  
-  public void c()
+  public void l()
   {
     if (QLog.isColorLevel()) {
       QLog.d("expand.config.ExpandConfigManager", 2, "getForbiddenInfo ");
     }
     ExtendFriendUserCategory.GetUserStatusReq localGetUserStatusReq = new ExtendFriendUserCategory.GetUserStatusReq();
     localGetUserStatusReq.ReqForbiddenInfo.set(true);
-    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ExpandCmdHandler localExpandCmdHandler = ExpandCmdHandler.a(this.b);
     if (localExpandCmdHandler == null)
     {
       QLog.w("expand.config.ExpandConfigManager", 1, "getForbiddenInfo cmdHandler is null!");
@@ -342,61 +396,10 @@ public class ExpandConfigManager
     }
     localExpandCmdHandler.a("QQExpand.UserInfo.GetUserStatus", localGetUserStatusReq.toByteArray(), new ExpandConfigManager.2(this));
   }
-  
-  public boolean c()
-  {
-    ExpandConfig localExpandConfig = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-    return (localExpandConfig != null) && (localExpandConfig.androidExpandPlugin == 1);
-  }
-  
-  public boolean d()
-  {
-    return true;
-  }
-  
-  public boolean e()
-  {
-    boolean bool3 = a();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bool3)
-    {
-      ExpandConfig localExpandConfig = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-      bool1 = bool2;
-      if (localExpandConfig != null)
-      {
-        bool1 = bool2;
-        if (localExpandConfig.saveEmptyAIONode == 0) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean f()
-  {
-    boolean bool3 = a();
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (bool3)
-    {
-      ExpandConfig localExpandConfig = this.jdField_a_of_type_ComTencentMobileqqQqexpandConfigExpandConfig;
-      bool1 = bool2;
-      if (localExpandConfig != null)
-      {
-        if (localExpandConfig.newUserMoment == 1) {
-          return true;
-        }
-        bool1 = false;
-      }
-    }
-    return bool1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.config.ExpandConfigManager
  * JD-Core Version:    0.7.0.1
  */

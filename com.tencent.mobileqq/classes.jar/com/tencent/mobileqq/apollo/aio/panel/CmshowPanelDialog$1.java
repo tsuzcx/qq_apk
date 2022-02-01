@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.apollo.aio.panel;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class CmshowPanelDialog$1
+  implements DialogInterface.OnClickListener
+{
+  CmshowPanelDialog$1(CmshowPanelDialog paramCmshowPanelDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.CmshowPanelDialog.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -41,33 +41,33 @@ class EmoticonPanelFavHelper$5$1
       }
       break;
     case 6: 
-      i = 2131691901;
+      i = 2131888868;
       break;
     case 5: 
-      i = 2131691900;
+      i = 2131888867;
       break;
     case 4: 
-      i = 2131699732;
+      i = 2131897765;
       break;
     case 3: 
-      i = 2131699733;
+      i = 2131897766;
       break;
     case 2: 
-      i = 2131699726;
+      i = 2131897759;
       break;
     case 1: 
-      i = 2131699725;
+      i = 2131897758;
       break;
     }
     int i = 0;
     if (i != 0) {
-      QQToast.a(MobileQQ.getContext(), 1, i, 0).b(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+      QQToast.makeText(MobileQQ.getContext(), 1, i, 0).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ class FabTransformationScrimBehavior$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (!this.a) {
+      this.b.setVisibility(4);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.a) {
+      this.b.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationScrimBehavior.1
  * JD-Core Version:    0.7.0.1
  */

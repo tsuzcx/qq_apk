@@ -25,7 +25,7 @@ public class ConnectionsTabLayout
   extends TabLayoutCompat
   implements TabLayoutCompat.OnTabSelectedListener
 {
-  private ArrayList<ConnectionsTabInfo> a = new ArrayList();
+  private ArrayList<ConnectionsTabInfo> n = new ArrayList();
   
   public ConnectionsTabLayout(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class ConnectionsTabLayout
   public ConnectionsTabLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    c();
+    d();
   }
   
   private URLDrawable a(String paramString)
@@ -73,73 +73,52 @@ public class ConnectionsTabLayout
       if (paramConnectionsTabInfo == null) {
         return;
       }
-      paramTab.a(Integer.valueOf(paramConnectionsTabInfo.jdField_a_of_type_Int));
-      paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramConnectionsTabInfo.jdField_a_of_type_JavaLangString);
-      paramTab = getContext().getResources().getString(2131699056, new Object[] { Integer.valueOf(paramConnectionsTabInfo.jdField_b_of_type_Int) });
-      if (!paramConnectionsTabInfo.jdField_a_of_type_Boolean) {
-        paramTab = getContext().getResources().getString(2131699054);
+      paramTab.a(Integer.valueOf(paramConnectionsTabInfo.a));
+      paramTabItemViewHolder.c.setText(paramConnectionsTabInfo.c);
+      paramTab = getContext().getResources().getString(2131897065, new Object[] { Integer.valueOf(paramConnectionsTabInfo.b) });
+      if (!paramConnectionsTabInfo.f) {
+        paramTab = getContext().getResources().getString(2131897063);
       }
-      paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramTab);
-      paramTab = a(paramConnectionsTabInfo.jdField_b_of_type_JavaLangString, paramConnectionsTabInfo.c);
+      paramTabItemViewHolder.d.setText(paramTab);
+      paramTab = a(paramConnectionsTabInfo.d, paramConnectionsTabInfo.e);
       if (paramTab != null) {
-        paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramTab);
+        paramTabItemViewHolder.a.setImageDrawable(paramTab);
       }
-      int i = getContext().getResources().getColor(2131167197);
+      int i = getContext().getResources().getColor(2131168182);
       int j = Color.parseColor("#F5F6FA");
       paramTab = a(i, j);
       if (paramTab != null) {
-        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramTab);
+        paramTabItemViewHolder.b.setBackgroundDrawable(paramTab);
       } else {
-        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130850910);
+        paramTabItemViewHolder.b.setImageResource(2130852762);
       }
       if (i != 0) {
-        paramTabItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(i);
+        paramTabItemViewHolder.e.setDrawColor(i);
       } else {
-        paramTabItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setDrawColor(j);
+        paramTabItemViewHolder.e.setDrawColor(j);
       }
       if (ThemeUtil.isNowThemeIsNight(null, false, null))
       {
-        paramTab = getContext().getResources().getColorStateList(2131166461);
-        paramConnectionsTabInfo = getContext().getResources().getColorStateList(2131166463);
-        paramTabItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramTab);
-        paramTabItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramConnectionsTabInfo);
+        paramTab = getContext().getResources().getColorStateList(2131167303);
+        paramConnectionsTabInfo = getContext().getResources().getColorStateList(2131167305);
+        paramTabItemViewHolder.c.setTextColor(paramTab);
+        paramTabItemViewHolder.d.setTextColor(paramConnectionsTabInfo);
       }
     }
   }
   
-  private void c()
+  private void d()
   {
     setSelectedTabIndicatorHeight(0);
-  }
-  
-  public int a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
-  {
-    int i = 0;
-    if (paramArrayList != null)
-    {
-      if (paramArrayList.size() == 0) {
-        return 0;
-      }
-      int j = 0;
-      while (i < paramArrayList.size())
-      {
-        if (((ConnectionsTabInfo)paramArrayList.get(i)).jdField_a_of_type_Int == paramInt) {
-          j = i;
-        }
-        i += 1;
-      }
-      return j;
-    }
-    return 0;
   }
   
   public Drawable a(int paramInt1, int paramInt2)
   {
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
-      RoundedColorDrawable localRoundedColorDrawable1 = new RoundedColorDrawable(paramInt1, 50, 50, ViewUtils.a(6.0F));
+      RoundedColorDrawable localRoundedColorDrawable1 = new RoundedColorDrawable(paramInt1, 50, 50, ViewUtils.dip2px(6.0F));
       StateListDrawable localStateListDrawable = new StateListDrawable();
-      RoundedColorDrawable localRoundedColorDrawable2 = new RoundedColorDrawable(paramInt2, 50, 50, ViewUtils.a(6.0F));
+      RoundedColorDrawable localRoundedColorDrawable2 = new RoundedColorDrawable(paramInt2, 50, 50, ViewUtils.dip2px(6.0F));
       localStateListDrawable.addState(new int[] { 16842913 }, localRoundedColorDrawable1);
       localStateListDrawable.addState(new int[] { -16842913 }, localRoundedColorDrawable2);
       return localStateListDrawable;
@@ -187,7 +166,7 @@ public class ConnectionsTabLayout
   
   public void a(int paramInt)
   {
-    int i = b();
+    int i = getSelectedTabPosition();
     if (i == paramInt)
     {
       if (QLog.isColorLevel())
@@ -201,26 +180,26 @@ public class ConnectionsTabLayout
       }
       return;
     }
-    Object localObject = a(paramInt);
+    Object localObject = b(paramInt);
     if (localObject != null) {
-      ((TabLayoutCompat.Tab)localObject).b();
+      ((TabLayoutCompat.Tab)localObject).g();
     }
   }
   
   public void a(TabLayoutCompat.Tab paramTab)
   {
-    new ConnectionsTabLayout.TabItemViewHolder(paramTab.a()).a();
+    new ConnectionsTabLayout.TabItemViewHolder(paramTab.b()).a();
   }
   
   public void a(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
   {
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      this.a.clear();
-      this.a.addAll(paramArrayList);
-      a();
+      this.n.clear();
+      this.n.addAll(paramArrayList);
+      b();
       a(this);
-      if (this.a.size() <= 3)
+      if (this.n.size() <= 3)
       {
         setTabMode(1);
         setTabGravity(0);
@@ -230,9 +209,9 @@ public class ConnectionsTabLayout
         setTabMode(0);
         setTabGravity(1);
       }
-      int i = a(paramArrayList, paramInt);
+      int i = c(paramArrayList, paramInt);
       paramInt = 0;
-      while (paramInt < this.a.size())
+      while (paramInt < this.n.size())
       {
         paramArrayList = a();
         if (paramArrayList == null)
@@ -242,8 +221,8 @@ public class ConnectionsTabLayout
           }
           return;
         }
-        paramArrayList.a(2131561246);
-        a(paramArrayList, new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.a()), (ConnectionsTabInfo)this.a.get(paramInt));
+        paramArrayList.a(2131627602);
+        a(paramArrayList, new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.b()), (ConnectionsTabInfo)this.n.get(paramInt));
         if (i == paramInt) {
           a(paramArrayList, true);
         } else {
@@ -260,7 +239,7 @@ public class ConnectionsTabLayout
   
   public void b(TabLayoutCompat.Tab paramTab)
   {
-    new ConnectionsTabLayout.TabItemViewHolder(paramTab.a()).b();
+    new ConnectionsTabLayout.TabItemViewHolder(paramTab.b()).b();
   }
   
   public void b(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
@@ -268,16 +247,16 @@ public class ConnectionsTabLayout
     Object localObject;
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      this.a.clear();
-      this.a.addAll(paramArrayList);
+      this.n.clear();
+      this.n.addAll(paramArrayList);
       int i = paramArrayList.size();
-      if (a() != i)
+      if (getTabCount() != i)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("updateTabs getTabCount() != infoSize ");
-          ((StringBuilder)localObject).append(a());
+          ((StringBuilder)localObject).append(getTabCount());
           ((StringBuilder)localObject).append(", infoSize =");
           ((StringBuilder)localObject).append(i);
           QLog.d("ConnectionsTabLayout", 2, ((StringBuilder)localObject).toString());
@@ -285,15 +264,15 @@ public class ConnectionsTabLayout
         a(paramArrayList, paramInt);
         return;
       }
-      i = a(paramArrayList, paramInt);
+      i = c(paramArrayList, paramInt);
       paramInt = 0;
-      while (paramInt < a())
+      while (paramInt < getTabCount())
       {
-        paramArrayList = a(paramInt);
+        paramArrayList = b(paramInt);
         if (paramArrayList != null)
         {
-          localObject = (ConnectionsTabInfo)this.a.get(paramInt);
-          ConnectionsTabLayout.TabItemViewHolder localTabItemViewHolder = new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.a());
+          localObject = (ConnectionsTabInfo)this.n.get(paramInt);
+          ConnectionsTabLayout.TabItemViewHolder localTabItemViewHolder = new ConnectionsTabLayout.TabItemViewHolder(paramArrayList.b());
           a(paramArrayList, localTabItemViewHolder, (ConnectionsTabInfo)localObject);
           if (i == paramInt)
           {
@@ -318,11 +297,32 @@ public class ConnectionsTabLayout
     }
   }
   
+  public int c(ArrayList<ConnectionsTabInfo> paramArrayList, int paramInt)
+  {
+    int i = 0;
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.size() == 0) {
+        return 0;
+      }
+      int j = 0;
+      while (i < paramArrayList.size())
+      {
+        if (((ConnectionsTabInfo)paramArrayList.get(i)).a == paramInt) {
+          j = i;
+        }
+        i += 1;
+      }
+      return j;
+    }
+    return 0;
+  }
+  
   public void c(TabLayoutCompat.Tab paramTab) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsTabLayout
  * JD-Core Version:    0.7.0.1
  */

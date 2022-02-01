@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#21000000" />
-    <corners android:topLeftRadius="10.5dip" android:topRightRadius="10.5dip" android:bottomLeftRadius="10.5dip" android:bottomRightRadius="10.5dip" />
+    <solid android:color="@color/qcircle_skin_color_bg_icon_mask_white" />
+    <corners android:radius="10.0dip" />
 </shape>

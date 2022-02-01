@@ -19,6 +19,84 @@ public class LevelUtil
   public static int d = 3;
   public static int e = 4;
   
+  private static Drawable a(Context paramContext, int paramInt1, String paramString, int paramInt2)
+  {
+    Object localObject4 = null;
+    Object localObject5 = null;
+    Object localObject3 = null;
+    int i = paramInt2 + 1;
+    Object localObject1 = localObject4;
+    Object localObject2 = localObject5;
+    try
+    {
+      if ("!".equalsIgnoreCase(paramString.substring(paramInt2, i)))
+      {
+        localObject1 = localObject4;
+        localObject2 = localObject5;
+        localObject3 = paramContext.getResources().getDrawable(2130847506);
+        localObject1 = localObject4;
+        localObject2 = localObject5;
+        localObject3 = VasApngUtil.getOptimizedApngDrawable(a(paramInt1, e), (Drawable)localObject3, VasApngUtil.VIP_APNG_TAGS, "crown");
+      }
+      localObject4 = localObject3;
+      localObject1 = localObject3;
+      localObject2 = localObject3;
+      if ("@".equalsIgnoreCase(paramString.substring(paramInt2, i)))
+      {
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        localObject4 = paramContext.getResources().getDrawable(2130847510);
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        localObject4 = VasApngUtil.getOptimizedApngDrawable(a(paramInt1, d), (Drawable)localObject4, VasApngUtil.VIP_APNG_TAGS, "sun");
+      }
+      localObject3 = localObject4;
+      localObject1 = localObject4;
+      localObject2 = localObject4;
+      if ("#".equalsIgnoreCase(paramString.substring(paramInt2, i)))
+      {
+        localObject1 = localObject4;
+        localObject2 = localObject4;
+        localObject3 = paramContext.getResources().getDrawable(2130847507);
+        localObject1 = localObject4;
+        localObject2 = localObject4;
+        localObject3 = VasApngUtil.getOptimizedApngDrawable(a(paramInt1, c), (Drawable)localObject3, VasApngUtil.VIP_APNG_TAGS, "moon");
+      }
+      localObject1 = localObject3;
+      localObject2 = localObject3;
+      localObject4 = localObject3;
+      if ("%".equalsIgnoreCase(paramString.substring(paramInt2, i)))
+      {
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        paramContext = paramContext.getResources().getDrawable(2130847509);
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        paramContext = VasApngUtil.getOptimizedApngDrawable(a(paramInt1, b), paramContext, VasApngUtil.VIP_APNG_TAGS, "star");
+        return paramContext;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      localObject4 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, paramContext.toString());
+        return localObject1;
+      }
+    }
+    catch (Error paramContext)
+    {
+      localObject4 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, paramContext.toString());
+        localObject4 = localObject2;
+      }
+    }
+    return localObject4;
+  }
+  
   public static SpannableString a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -28,218 +106,39 @@ public class LevelUtil
     if (paramInt3 == 0)
     {
       localObject1 = new SpannableString("*");
-      paramInt1 = (int)paramContext.getResources().getDimension(2131297240);
-      paramContext = paramContext.getResources().getDrawable(2130846038);
+      paramInt1 = (int)paramContext.getResources().getDimension(2131297671);
+      paramContext = paramContext.getResources().getDrawable(2130847508);
       paramContext = VasApngUtil.getOptimizedApngDrawable(a(paramInt2, a), paramContext, VasApngUtil.VIP_APNG_TAGS, "halfstar");
       paramContext.setBounds(0, 0, paramInt1, paramInt1);
-      QQTheme.a(paramContext);
+      QQTheme.setNightFilter(paramContext);
       ((SpannableString)localObject1).setSpan(new ImageSpan(paramContext), 0, 1, 33);
       return localObject1;
     }
-    int k = paramInt3 / 64;
-    paramInt3 %= 64;
-    int m = paramInt3 / 16;
-    int i1 = paramInt3 % 16;
-    int n = i1 / 4;
-    Object localObject1 = "";
-    int i = 0;
-    for (;;)
-    {
-      String str = "#";
-      paramInt3 = 2;
-      if (i >= 4) {
-        break;
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 2)
-          {
-            if (i != 3)
-            {
-              str = "";
-              paramInt3 = 0;
-            }
-            else
-            {
-              str = "%";
-              paramInt3 = i1 % 4;
-            }
-          }
-          else {
-            paramInt3 = n;
-          }
-        }
-        else
-        {
-          str = "@";
-          paramInt3 = m;
-        }
-      }
-      else
-      {
-        str = "!";
-        paramInt3 = k;
-      }
-      j = 0;
-      while (j < paramInt3)
-      {
-        localObject5 = new StringBuilder();
-        ((StringBuilder)localObject5).append((String)localObject1);
-        ((StringBuilder)localObject5).append(str);
-        localObject1 = ((StringBuilder)localObject5).toString();
-        j += 1;
-      }
-      i += 1;
-    }
+    int i = paramInt3 / 64;
+    int j = paramInt3 % 64;
+    paramInt3 = j / 16;
+    j %= 16;
+    Object localObject3 = a(i, paramInt3, j / 4, j % 4);
+    Object localObject1 = localObject3;
+    Object localObject2;
     if (paramBoolean)
     {
+      localObject1 = localObject3;
       try
       {
-        i = ((String)localObject1).length();
-        if (i <= paramInt1) {
-          break label330;
+        if (((String)localObject3).length() > paramInt1) {
+          localObject1 = ((String)localObject3).substring(0, paramInt1);
         }
-        try
-        {
-          localObject5 = ((String)localObject1).substring(0, paramInt1);
-        }
-        catch (Exception localException1) {}
-        localException2.printStackTrace();
       }
-      catch (Exception localException2) {}
-      localObject5 = localObject1;
-      break label334;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        localObject2 = localObject3;
+      }
     }
-    label330:
-    Object localObject5 = localObject1;
-    label334:
-    SpannableString localSpannableString = new SpannableString((CharSequence)localObject5);
-    int j = (int)paramContext.getResources().getDimension(2131297240);
-    i = 0;
-    paramInt1 = paramInt3;
-    while (i < ((String)localObject5).length())
-    {
-      paramInt3 = i + 1;
-      label688:
-      label715:
-      do
-      {
-        try
-        {
-          Object localObject6;
-          Object localObject2;
-          if ("!".equalsIgnoreCase(((String)localObject5).substring(i, paramInt3)))
-          {
-            localObject1 = paramContext.getResources().getDrawable(2130846036);
-            localObject4 = a(paramInt2, e);
-            localObject6 = VasApngUtil.VIP_APNG_TAGS;
-            try
-            {
-              localObject1 = VasApngUtil.getOptimizedApngDrawable((String)localObject4, (Drawable)localObject1, (int[])localObject6, "crown");
-            }
-            catch (Error localError1)
-            {
-              localObject4 = null;
-              break label688;
-            }
-          }
-          else
-          {
-            localObject2 = null;
-          }
-          try
-          {
-            if ("@".equalsIgnoreCase(((String)localObject5).substring(i, paramInt3)))
-            {
-              localObject4 = paramContext.getResources().getDrawable(2130846040);
-              localObject4 = VasApngUtil.getOptimizedApngDrawable(a(paramInt2, d), (Drawable)localObject4, VasApngUtil.VIP_APNG_TAGS, "sun");
-            }
-            else
-            {
-              localObject4 = localObject2;
-            }
-            localObject2 = localObject4;
-            localObject6 = localObject4;
-            Object localObject8 = localObject4;
-            try
-            {
-              if ("#".equalsIgnoreCase(((String)localObject5).substring(i, paramInt3)))
-              {
-                localObject6 = localObject4;
-                localObject8 = localObject4;
-                localObject2 = paramContext.getResources().getDrawable(2130846037);
-                localObject6 = localObject4;
-                localObject8 = localObject4;
-                localObject2 = VasApngUtil.getOptimizedApngDrawable(a(paramInt2, c), (Drawable)localObject2, VasApngUtil.VIP_APNG_TAGS, "moon");
-              }
-              localObject4 = localObject2;
-              localObject6 = localObject2;
-              localObject8 = localObject2;
-              if ("%".equalsIgnoreCase(((String)localObject5).substring(i, paramInt3)))
-              {
-                localObject6 = localObject2;
-                localObject8 = localObject2;
-                localObject4 = paramContext.getResources().getDrawable(2130846039);
-                localObject6 = localObject2;
-                localObject8 = localObject2;
-                localObject4 = VasApngUtil.getOptimizedApngDrawable(a(paramInt2, b), (Drawable)localObject4, VasApngUtil.VIP_APNG_TAGS, "star");
-              }
-              paramInt1 = 2;
-              localObject2 = localObject4;
-            }
-            catch (Exception localException3)
-            {
-              localObject2 = localObject6;
-              break label715;
-            }
-            catch (Error localError2)
-            {
-              localObject4 = localException3;
-            }
-            paramInt3 = 2;
-          }
-          catch (Exception localException4) {}catch (Error localError3)
-          {
-            localObject4 = localError2;
-            localObject3 = localError3;
-          }
-          Object localObject7 = localObject3;
-        }
-        catch (Exception localException5)
-        {
-          localObject3 = null;
-        }
-        catch (Error localError4)
-        {
-          localObject4 = null;
-          paramInt3 = paramInt1;
-        }
-        localObject4 = localObject3;
-      } while (!QLog.isColorLevel());
-      Object localObject4 = localException5.toString();
-      paramInt1 = 2;
-      QLog.d("Q.profilecard.FrdProfileCard", 2, (String)localObject4);
-      break label774;
-      Object localObject3 = localObject4;
-      paramInt1 = paramInt3;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.profilecard.FrdProfileCard", paramInt3, localError4.toString());
-        paramInt1 = paramInt3;
-        localObject3 = localObject4;
-      }
-      label774:
-      if (localObject3 != null)
-      {
-        localObject3.setBounds(0, 0, j, j);
-        QQTheme.a(localObject3);
-        localSpannableString.setSpan(new ImageSpan(localObject3), i, i + 1, 33);
-      }
-      i += 1;
-    }
-    return localSpannableString;
+    localObject3 = new SpannableString(localObject2);
+    a(paramContext, paramInt2, localObject2, (SpannableString)localObject3, (int)paramContext.getResources().getDimension(2131297671));
+    return localObject3;
   }
   
   public static String a(int paramInt1, int paramInt2)
@@ -288,10 +187,82 @@ public class LevelUtil
     localStringBuilder.append("/half.png");
     return localStringBuilder.toString();
   }
+  
+  private static String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    String str2 = "";
+    int j = 0;
+    while (j < 4)
+    {
+      String str1;
+      int i;
+      if (j != 0)
+      {
+        if (j != 1)
+        {
+          if (j != 2)
+          {
+            if (j != 3)
+            {
+              str1 = "";
+              i = 0;
+            }
+            else
+            {
+              str1 = "%";
+              i = paramInt4;
+            }
+          }
+          else
+          {
+            str1 = "#";
+            i = paramInt3;
+          }
+        }
+        else
+        {
+          str1 = "@";
+          i = paramInt2;
+        }
+      }
+      else
+      {
+        str1 = "!";
+        i = paramInt1;
+      }
+      int k = 0;
+      while (k < i)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str2);
+        localStringBuilder.append(str1);
+        str2 = localStringBuilder.toString();
+        k += 1;
+      }
+      j += 1;
+    }
+    return str2;
+  }
+  
+  private static void a(Context paramContext, int paramInt1, String paramString, SpannableString paramSpannableString, int paramInt2)
+  {
+    int i = 0;
+    while (i < paramString.length())
+    {
+      Drawable localDrawable = a(paramContext, paramInt1, paramString, i);
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(0, 0, paramInt2, paramInt2);
+        QQTheme.setNightFilter(localDrawable);
+        paramSpannableString.setSpan(new ImageSpan(localDrawable), i, i + 1, 33);
+      }
+      i += 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.profilecard.util.LevelUtil
  * JD-Core Version:    0.7.0.1
  */

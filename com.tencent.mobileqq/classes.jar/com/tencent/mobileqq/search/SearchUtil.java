@@ -74,16 +74,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Lcom.tencent.mobileqq.search.model.ISearchResultGroupModel;>;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SearchUtil
 {
-  protected static final HashMap<String, Integer> a;
   public static boolean a = false;
   public static boolean b = false;
+  protected static final HashMap<String, Integer> c = new HashMap();
+  private static AtomicInteger d = new AtomicInteger(1);
   
-  static
+  public static int a()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return d.getAndIncrement();
   }
   
   public static int a(IModel paramIModel)
@@ -91,28 +93,28 @@ public class SearchUtil
     if (paramIModel == null) {
       return -1;
     }
-    if (jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    if (c.size() == 0)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelLocalContact.class.getSimpleName(), Integer.valueOf(101));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelLocalTroop.class.getSimpleName(), Integer.valueOf(101));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelLocalContactApproximate.class.getSimpleName(), Integer.valueOf(101));
-      jdField_a_of_type_JavaUtilHashMap.put(FTSGroupSearchModelMessage.class.getSimpleName(), Integer.valueOf(102));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelMessage.class.getSimpleName(), Integer.valueOf(102));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelFavorite.class.getSimpleName(), Integer.valueOf(103));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelFileEntity.class.getSimpleName(), Integer.valueOf(104));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelFunction.class.getSimpleName(), Integer.valueOf(105));
-      jdField_a_of_type_JavaUtilHashMap.put(SearchResultModelForEntrance.class.getSimpleName(), Integer.valueOf(106));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelPublicAcnt.class.getSimpleName(), Integer.valueOf(107));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelMiniProgram.class.getSimpleName(), Integer.valueOf(108));
-      jdField_a_of_type_JavaUtilHashMap.put(GroupSearchModelMostUsed.class.getSimpleName(), Integer.valueOf(109));
+      c.put(GroupSearchModelLocalContact.class.getSimpleName(), Integer.valueOf(101));
+      c.put(GroupSearchModelLocalTroop.class.getSimpleName(), Integer.valueOf(101));
+      c.put(GroupSearchModelLocalContactApproximate.class.getSimpleName(), Integer.valueOf(101));
+      c.put(FTSGroupSearchModelMessage.class.getSimpleName(), Integer.valueOf(102));
+      c.put(GroupSearchModelMessage.class.getSimpleName(), Integer.valueOf(102));
+      c.put(GroupSearchModelFavorite.class.getSimpleName(), Integer.valueOf(103));
+      c.put(GroupSearchModelFileEntity.class.getSimpleName(), Integer.valueOf(104));
+      c.put(GroupSearchModelFunction.class.getSimpleName(), Integer.valueOf(105));
+      c.put(SearchResultModelForEntrance.class.getSimpleName(), Integer.valueOf(106));
+      c.put(GroupSearchModelPublicAcnt.class.getSimpleName(), Integer.valueOf(107));
+      c.put(GroupSearchModelMiniProgram.class.getSimpleName(), Integer.valueOf(108));
+      c.put(GroupSearchModelMostUsed.class.getSimpleName(), Integer.valueOf(109));
     }
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramIModel.getClass().getSimpleName());
+    Integer localInteger = (Integer)c.get(paramIModel.getClass().getSimpleName());
     if (localInteger == null) {
       return -1;
     }
     if ((paramIModel instanceof SearchResultModelForEntrance))
     {
-      if (((SearchResultModelForEntrance)paramIModel).jdField_a_of_type_Int == -1) {
+      if (((SearchResultModelForEntrance)paramIModel).c == -1) {
         return localInteger.intValue();
       }
       return -1;
@@ -187,13 +189,13 @@ public class SearchUtil
       if ((localObject1 instanceof GroupBaseNetSearchModel))
       {
         localObject4 = (GroupBaseNetSearchModel)localObject1;
-        localObject1 = (Integer)((HashMap)localObject2).get(Long.valueOf(((GroupBaseNetSearchModel)localObject4).jdField_a_of_type_Long));
+        localObject1 = (Integer)((HashMap)localObject2).get(Long.valueOf(((GroupBaseNetSearchModel)localObject4).a));
         if (localObject1 == null) {
           localObject1 = Integer.valueOf(1);
         } else {
           localObject1 = Integer.valueOf(((Integer)localObject1).intValue() + 1);
         }
-        ((HashMap)localObject2).put(Long.valueOf(((GroupBaseNetSearchModel)localObject4).jdField_a_of_type_Long), localObject1);
+        ((HashMap)localObject2).put(Long.valueOf(((GroupBaseNetSearchModel)localObject4).a), localObject1);
       }
     }
     ((HashMap)localObject2).size();
@@ -203,107 +205,106 @@ public class SearchUtil
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
     localObject1 = new ArrayList();
-    SearchUtils.jdField_a_of_type_JavaUtilHashMap.clear();
+    SearchUtils.k.clear();
     Iterator localIterator = paramList.iterator();
     localObject2 = "";
     paramList = (List<ISearchResultGroupModel>)localObject1;
     int i;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      paramBoolean2 = localIterator.hasNext();
-      int j = 0;
-      if (!paramBoolean2) {
-        break;
-      }
       localObject1 = localIterator.next();
       if ((localObject1 instanceof GroupBaseNetSearchModel))
       {
         GroupBaseNetSearchModel localGroupBaseNetSearchModel = (GroupBaseNetSearchModel)localObject1;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = localGroupBaseNetSearchModel.b();
+          localObject1 = localGroupBaseNetSearchModel.c();
         }
         localObject2 = paramList;
         boolean bool1;
         if (paramBoolean3) {
           if (paramBoolean1)
           {
-            if (SearchUtils.a(localGroupBaseNetSearchModel.jdField_a_of_type_Long))
+            if (SearchUtils.a(localGroupBaseNetSearchModel.a))
             {
-              localArrayList2.add(Long.valueOf(localGroupBaseNetSearchModel.jdField_a_of_type_Long));
+              localArrayList2.add(Long.valueOf(localGroupBaseNetSearchModel.a));
               localObject2 = paramList;
-              if (localGroupBaseNetSearchModel.a() != null)
+              if (localGroupBaseNetSearchModel.b() != null)
               {
                 i = 0;
                 for (;;)
                 {
                   localObject2 = paramList;
-                  if (i >= localGroupBaseNetSearchModel.a().size()) {
+                  if (i >= localGroupBaseNetSearchModel.b().size()) {
                     break;
                   }
-                  localObject3 = (ISearchResultModel)localGroupBaseNetSearchModel.a().get(i);
+                  localObject3 = (ISearchResultModel)localGroupBaseNetSearchModel.b().get(i);
                   localObject5 = new SearchUtils.ObjectItemInfo();
-                  ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
+                  ((SearchUtils.ObjectItemInfo)localObject5).a = ((String)localObject1);
                   paramBoolean2 = localObject3 instanceof NetSearchTemplateBaseItem;
                   if (paramBoolean2) {
-                    ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Long = ((NetSearchTemplateBaseItem)localObject3).jdField_a_of_type_Long;
+                    ((SearchUtils.ObjectItemInfo)localObject5).b = ((NetSearchTemplateBaseItem)localObject3).i;
                   } else if ((localObject3 instanceof GroupBaseNetSearchModelItem)) {
-                    ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Long = ((GroupBaseNetSearchModelItem)localObject3).d();
+                    ((SearchUtils.ObjectItemInfo)localObject5).b = ((GroupBaseNetSearchModelItem)localObject3).j();
                   } else {
-                    ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Long = localGroupBaseNetSearchModel.jdField_a_of_type_Long;
+                    ((SearchUtils.ObjectItemInfo)localObject5).b = localGroupBaseNetSearchModel.a;
                   }
                   i += 1;
-                  ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Int = i;
-                  ((SearchUtils.ObjectItemInfo)localObject5).jdField_a_of_type_Boolean = false;
+                  ((SearchUtils.ObjectItemInfo)localObject5).c = i;
+                  ((SearchUtils.ObjectItemInfo)localObject5).d = false;
                   bool1 = localObject3 instanceof GroupBaseNetSearchModelItem;
                   if (bool1) {
-                    localObject2 = ((GroupBaseNetSearchModelItem)localObject3).jdField_b_of_type_JavaLangString;
+                    localObject2 = ((GroupBaseNetSearchModelItem)localObject3).b;
                   } else if (paramBoolean2) {
-                    localObject2 = ((NetSearchTemplateBaseItem)localObject3).d;
+                    localObject2 = ((NetSearchTemplateBaseItem)localObject3).h;
                   } else {
                     localObject2 = "";
                   }
-                  ((SearchUtils.ObjectItemInfo)localObject5).jdField_b_of_type_JavaLangString = ((String)localObject2);
-                  ((SearchUtils.ObjectItemInfo)localObject5).jdField_b_of_type_Boolean = jdField_a_of_type_Boolean;
-                  SearchUtils.jdField_a_of_type_JavaUtilHashMap.put(localObject3, localObject5);
+                  ((SearchUtils.ObjectItemInfo)localObject5).e = ((String)localObject2);
+                  ((SearchUtils.ObjectItemInfo)localObject5).f = a;
+                  SearchUtils.k.put(localObject3, localObject5);
                   if (bool1) {
-                    ((GroupBaseNetSearchModelItem)localObject3).e = localGroupBaseNetSearchModel.c;
+                    ((GroupBaseNetSearchModelItem)localObject3).N = localGroupBaseNetSearchModel.o;
                   }
                 }
               }
             }
             else
             {
-              jdField_b_of_type_Boolean = jdField_a_of_type_Boolean;
-              localArrayList3.add(Long.valueOf(localGroupBaseNetSearchModel.jdField_a_of_type_Long));
-              break label608;
+              b = a;
+              localArrayList3.add(Long.valueOf(localGroupBaseNetSearchModel.a));
+              break label603;
             }
           }
           else
           {
-            long l = localGroupBaseNetSearchModel.jdField_a_of_type_Long;
+            long l = localGroupBaseNetSearchModel.a;
             paramList.add(Long.valueOf(l));
-            break label608;
+            break label603;
           }
         }
         paramList = (List<ISearchResultGroupModel>)localObject2;
-        label608:
-        Object localObject5 = localGroupBaseNetSearchModel.a();
+        label603:
+        Object localObject5 = localGroupBaseNetSearchModel.b();
         localObject2 = paramList;
         localObject3 = localObject1;
         if (((List)localObject5).size() > 0)
         {
-          paramBoolean2 = TextUtils.isEmpty(localGroupBaseNetSearchModel.d());
-          bool1 = localGroupBaseNetSearchModel.jdField_b_of_type_Boolean;
-          boolean bool2 = TextUtils.isEmpty(localGroupBaseNetSearchModel.d);
+          int j = a();
+          paramBoolean2 = TextUtils.isEmpty(localGroupBaseNetSearchModel.g());
+          bool1 = localGroupBaseNetSearchModel.n;
+          boolean bool2 = TextUtils.isEmpty(localGroupBaseNetSearchModel.j);
+          localGroupBaseNetSearchModel.d(j);
           localObject2 = new GroupSearchModeTitle(localGroupBaseNetSearchModel, paramBoolean2 ^ true, bool1);
-          ((GroupSearchModeTitle)localObject2).a(localGroupBaseNetSearchModel.jdField_a_of_type_Boolean ^ true);
+          ((GroupSearchModeTitle)localObject2).a(localGroupBaseNetSearchModel.m ^ true);
+          ((GroupSearchModeTitle)localObject2).d(j);
           localArrayList1.add(localObject2);
           int k = ((List)localObject5).size();
-          i = j;
+          i = 0;
           while (i < k)
           {
             localObject2 = (ISearchResultModel)((List)localObject5).get(i);
+            ((ISearchResultModel)localObject2).d(j);
             if ((localObject2 instanceof GroupBaseNetSearchModelItem))
             {
               localObject2 = (GroupBaseNetSearchModelItem)localObject2;
@@ -328,10 +329,11 @@ public class SearchUtil
           }
           localObject2 = paramList;
           localObject3 = localObject1;
-          if (!TextUtils.isEmpty(localGroupBaseNetSearchModel.d))
+          if (!TextUtils.isEmpty(localGroupBaseNetSearchModel.j))
           {
-            localObject2 = new GroupSearchModelFooter(localGroupBaseNetSearchModel.d, localGroupBaseNetSearchModel.e, localGroupBaseNetSearchModel.jdField_a_of_type_Long);
+            localObject2 = new GroupSearchModelFooter(localGroupBaseNetSearchModel.j, localGroupBaseNetSearchModel.k, localGroupBaseNetSearchModel.a);
             ((GroupSearchModelFooter)localObject2).a(bool2 ^ true);
+            ((GroupSearchModelFooter)localObject2).d(j);
             localArrayList1.add(localObject2);
             localObject2 = paramList;
             localObject3 = localObject1;
@@ -348,7 +350,7 @@ public class SearchUtil
     }
     if (localArrayList3.size() > 0)
     {
-      if (jdField_b_of_type_Boolean) {
+      if (b) {
         i = 2;
       } else {
         i = 1;
@@ -358,7 +360,7 @@ public class SearchUtil
     if (paramList.size() > 0) {
       SearchUtils.a("all_result", "load_content", new String[] { localObject2, SearchUtils.a(paramList), "", SearchUtils.a("dynamic_unite_search.1", (List)localObject4) });
     }
-    jdField_a_of_type_Boolean = false;
+    a = false;
     return localArrayList1;
   }
   
@@ -381,19 +383,19 @@ public class SearchUtil
       if (paramGroupSearchModeTitle.a() == null) {
         return;
       }
-      if (!paramGroupSearchModeTitle.a()) {
+      if (!paramGroupSearchModeTitle.f()) {
         return;
       }
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelMessage.jdField_a_of_type_JavaLangString)) {
+      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelMessage.a)) {
         UniteSearchReportController.a(null, 0, paramInt2, "0X8009D4E", 0, 0, null, null);
       }
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalContact.jdField_a_of_type_JavaLangString)) {
+      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalContact.b)) {
         UniteSearchReportController.a(null, 0, paramInt2, "0X8009D38", 0, 0, null, null);
       }
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalTroop.jdField_a_of_type_JavaLangString)) {
+      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalTroop.b)) {
         UniteSearchReportController.a(null, 0, paramInt2, "0X8009D3C", 0, 0, null, null);
       }
-      if (paramGroupSearchModeTitle.a().equals(HardCodeUtil.a(2131715672))) {
+      if (paramGroupSearchModeTitle.a().equals(HardCodeUtil.a(2131913140))) {
         UniteSearchReportController.a(null, 0, paramInt2, "0X8009D52", 0, 0, null, null);
       }
     }
@@ -408,7 +410,7 @@ public class SearchUtil
       boolean bool2 = false;
       int k = paramIntent.getIntExtra("contactSearchResultUinType", 0);
       String str2 = paramIntent.getStringExtra("contactSearchResultName");
-      int i = ForwardAbility.ForwardAbilityType.a.intValue();
+      int i = ForwardAbility.ForwardAbilityType.b.intValue();
       int m = paramIntent.getIntExtra("chooseFriendFrom", 0);
       boolean bool1;
       if (k != 56938) {
@@ -444,29 +446,29 @@ public class SearchUtil
               if (j != 3000)
               {
                 if (j == 56938) {
-                  i = ForwardAbility.ForwardAbilityType.h.intValue();
+                  i = ForwardAbility.ForwardAbilityType.i.intValue();
                 }
               }
               else {
-                i = ForwardAbility.ForwardAbilityType.d.intValue();
+                i = ForwardAbility.ForwardAbilityType.e.intValue();
               }
             }
             else {
-              i = ForwardAbility.ForwardAbilityType.h.intValue();
+              i = ForwardAbility.ForwardAbilityType.i.intValue();
             }
           }
           else {
-            i = ForwardAbility.ForwardAbilityType.i.intValue();
+            i = ForwardAbility.ForwardAbilityType.j.intValue();
           }
         }
         else {
-          i = ForwardAbility.ForwardAbilityType.c.intValue();
+          i = ForwardAbility.ForwardAbilityType.d.intValue();
         }
       }
       else {
-        i = ForwardAbility.ForwardAbilityType.b.intValue();
+        i = ForwardAbility.ForwardAbilityType.c.intValue();
       }
-      if (!StringUtil.a((String)localObject1))
+      if (!StringUtil.isEmpty((String)localObject1))
       {
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("uin", (String)localObject1);
@@ -488,7 +490,7 @@ public class SearchUtil
           ((Bundle)localObject2).putString("choose_friend_confirmContent", paramIntent);
         }
         paramForwardBaseOption.a(i, (Bundle)localObject2);
-        paramForwardBaseOption.h();
+        paramForwardBaseOption.w();
       }
     }
   }
@@ -497,24 +499,24 @@ public class SearchUtil
   {
     Activity localActivity = (Activity)paramView.getContext();
     Intent localIntent = new Intent();
-    localIntent.putExtra("contactSearchResultUin", paramIContactSearchModel.a());
-    localIntent.putExtra("contactSearchResultUinType", paramIContactSearchModel.d());
-    localIntent.putExtra("contactSearchResultName", paramIContactSearchModel.c());
-    localIntent.putExtra("contactSearchResultNick", paramIContactSearchModel.d());
+    localIntent.putExtra("contactSearchResultUin", paramIContactSearchModel.c());
+    localIntent.putExtra("contactSearchResultUinType", paramIContactSearchModel.j());
+    localIntent.putExtra("contactSearchResultName", paramIContactSearchModel.m());
+    localIntent.putExtra("contactSearchResultNick", paramIContactSearchModel.n());
     if ((!(paramIContactSearchModel instanceof ContactSearchModelDiscussion)) && (!(paramIContactSearchModel instanceof ContactSearchModelTroop)) && (!(paramIContactSearchModel instanceof ContactSearchModelNewTroop)))
     {
       if ((paramIContactSearchModel instanceof ContactSearchModelDiscussionMember)) {
-        paramView = ((ContactSearchModelDiscussionMember)paramIContactSearchModel).e();
+        paramView = ((ContactSearchModelDiscussionMember)paramIContactSearchModel).s();
       } else if ((paramIContactSearchModel instanceof ContactSearchModelNewTroopMember)) {
-        paramView = ((ContactSearchModelNewTroopMember)paramIContactSearchModel).jdField_a_of_type_JavaLangString;
+        paramView = ((ContactSearchModelNewTroopMember)paramIContactSearchModel).a;
       } else if ((paramIContactSearchModel instanceof ContactSearchModelRecentUser)) {
-        paramView = ((ContactSearchModelRecentUser)paramIContactSearchModel).e();
+        paramView = ((ContactSearchModelRecentUser)paramIContactSearchModel).s();
       } else {
         paramView = "";
       }
     }
     else {
-      paramView = paramIContactSearchModel.a();
+      paramView = paramIContactSearchModel.c();
     }
     if ((paramIContactSearchModel instanceof ContactSearchModelPhoneContact))
     {
@@ -537,7 +539,7 @@ public class SearchUtil
   
   public static void a(TextView paramTextView)
   {
-    float f = paramTextView.getResources().getDimensionPixelSize(2131298456) / paramTextView.getResources().getDisplayMetrics().densityDpi * FontSettingManager.systemMetrics.densityDpi;
+    float f = paramTextView.getResources().getDimensionPixelSize(2131299170) / paramTextView.getResources().getDisplayMetrics().densityDpi * FontSettingManager.systemMetrics.densityDpi;
     if (f > 0.0F) {
       paramTextView.setMaxWidth((int)f);
     }
@@ -551,6 +553,16 @@ public class SearchUtil
   public static void a(IContactSearchModel paramIContactSearchModel, View paramView)
   {
     ThreadManager.postImmediately(new SearchUtil.1(paramView, paramIContactSearchModel), null, true);
+  }
+  
+  public static void a(ISearchResultGroupModel paramISearchResultGroupModel, List<IModel> paramList)
+  {
+    int i = a();
+    GroupSearchModeTitle localGroupSearchModeTitle = new GroupSearchModeTitle(paramISearchResultGroupModel);
+    paramISearchResultGroupModel.d(i);
+    localGroupSearchModeTitle.d(i);
+    paramList.add(localGroupSearchModeTitle);
+    paramList.add(paramISearchResultGroupModel);
   }
   
   public static void a(Object paramObject, String paramString, int paramInt)
@@ -568,12 +580,12 @@ public class SearchUtil
     if ((paramObject instanceof GroupSearchModelLocalContact))
     {
       localObject = (GroupSearchModelLocalContact)paramObject;
-      if (((GroupSearchModelLocalContact)localObject).a() != null)
+      if (((GroupSearchModelLocalContact)localObject).b() != null)
       {
-        j = ((GroupSearchModelLocalContact)localObject).a().size();
+        j = ((GroupSearchModelLocalContact)localObject).b().size();
         i = j;
-        if (j > ((GroupSearchModelLocalContact)localObject).a()) {
-          i = ((GroupSearchModelLocalContact)localObject).a();
+        if (j > ((GroupSearchModelLocalContact)localObject).d()) {
+          i = ((GroupSearchModelLocalContact)localObject).d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
@@ -599,12 +611,12 @@ public class SearchUtil
     if ((paramObject instanceof FTSGroupSearchModelMessage))
     {
       localObject = (FTSGroupSearchModelMessage)paramObject;
-      if (((FTSGroupSearchModelMessage)localObject).a() != null)
+      if (((FTSGroupSearchModelMessage)localObject).b() != null)
       {
-        j = ((FTSGroupSearchModelMessage)localObject).a().size();
+        j = ((FTSGroupSearchModelMessage)localObject).b().size();
         i = j;
-        if (j > ((FTSGroupSearchModelMessage)localObject).a()) {
-          i = ((FTSGroupSearchModelMessage)localObject).a();
+        if (j > ((FTSGroupSearchModelMessage)localObject).d()) {
+          i = ((FTSGroupSearchModelMessage)localObject).d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
@@ -627,12 +639,12 @@ public class SearchUtil
     if ((paramObject instanceof GroupSearchModelFavorite))
     {
       localObject = (GroupSearchModelFavorite)paramObject;
-      if (((GroupSearchModelFavorite)localObject).a() != null)
+      if (((GroupSearchModelFavorite)localObject).b() != null)
       {
-        j = ((GroupSearchModelFavorite)localObject).a().size();
+        j = ((GroupSearchModelFavorite)localObject).b().size();
         i = j;
-        if (j > ((GroupSearchModelFavorite)localObject).a()) {
-          i = ((GroupSearchModelFavorite)localObject).a();
+        if (j > ((GroupSearchModelFavorite)localObject).d()) {
+          i = ((GroupSearchModelFavorite)localObject).d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
@@ -650,16 +662,17 @@ public class SearchUtil
         ((StringBuilder)localObject).append(paramString);
         SearchUtils.a("all_result", "exp_collect", new String[] { ((StringBuilder)localObject).toString(), "0" });
       }
+      UniteSearchReportController.a(null, 0, paramInt, "0X8009D54", 0, 0, null, null);
     }
     if ((paramObject instanceof GroupSearchModelFileEntity))
     {
       localObject = (GroupSearchModelFileEntity)paramObject;
-      if (((GroupSearchModelFileEntity)localObject).a() != null)
+      if (((GroupSearchModelFileEntity)localObject).b() != null)
       {
-        j = ((GroupSearchModelFileEntity)localObject).a().size();
+        j = ((GroupSearchModelFileEntity)localObject).b().size();
         i = j;
-        if (j > ((GroupSearchModelFileEntity)localObject).a()) {
-          i = ((GroupSearchModelFileEntity)localObject).a();
+        if (j > ((GroupSearchModelFileEntity)localObject).d()) {
+          i = ((GroupSearchModelFileEntity)localObject).d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
@@ -677,16 +690,17 @@ public class SearchUtil
         ((StringBuilder)localObject).append(paramString);
         SearchUtils.a("all_result", "exp_file", new String[] { ((StringBuilder)localObject).toString(), "0" });
       }
+      UniteSearchReportController.a(null, 0, paramInt, "0X8009D58", 0, 0, null, null);
     }
     if ((paramObject instanceof GroupSearchModelMultiChat))
     {
       localObject = (GroupSearchModelMultiChat)paramObject;
-      if (((GroupSearchModelMultiChat)localObject).a() != null)
+      if (((GroupSearchModelMultiChat)localObject).b() != null)
       {
-        j = ((GroupSearchModelMultiChat)localObject).a().size();
+        j = ((GroupSearchModelMultiChat)localObject).b().size();
         i = j;
-        if (j > ((GroupSearchModelMultiChat)localObject).a()) {
-          i = ((GroupSearchModelMultiChat)localObject).a();
+        if (j > ((GroupSearchModelMultiChat)localObject).d()) {
+          i = ((GroupSearchModelMultiChat)localObject).d();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("");
@@ -704,11 +718,12 @@ public class SearchUtil
         ((StringBuilder)localObject).append(paramString);
         SearchUtils.a("all_result", "exp_discuss", new String[] { ((StringBuilder)localObject).toString(), "0" });
       }
+      UniteSearchReportController.a(null, 0, paramInt, "0X800BDC0", 0, 0, null, null);
     }
     if ((paramObject instanceof GroupSearchModelPublicAcnt))
     {
       paramObject = (GroupSearchModelPublicAcnt)paramObject;
-      UniteSearchReportController.a(null, 0, paramInt, "0X8009D50", 0, 0, ReportUtil.a(paramObject.a(), paramObject.a()), null);
+      UniteSearchReportController.a(null, 0, paramInt, "0X8009D50", 0, 0, ReportUtil.a(paramObject.b(), paramObject.d()), null);
     }
   }
   
@@ -729,10 +744,15 @@ public class SearchUtil
     }
     return arrayOfLong;
   }
+  
+  public static void b()
+  {
+    d.set(1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchUtil
  * JD-Core Version:    0.7.0.1
  */

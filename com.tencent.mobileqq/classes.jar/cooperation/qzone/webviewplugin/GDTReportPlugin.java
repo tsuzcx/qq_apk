@@ -144,7 +144,7 @@ public class GDTReportPlugin
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (this.mRuntime.a().getIntent().getBooleanExtra("needGdtLandingPageReport", false))
+    if (this.mRuntime.d().getIntent().getBooleanExtra("needGdtLandingPageReport", false))
     {
       int i = this.state;
       if (i != 0)
@@ -201,7 +201,7 @@ public class GDTReportPlugin
         if ((isClickCgiUrlForTool(paramString)) && (this.loadClickCgiState == 0)) {
           this.loadClickCgiState = 1;
         }
-        List localList = (List)this.mRuntime.a().getIntent().getSerializableExtra("FeedDataCookie");
+        List localList = (List)this.mRuntime.d().getIntent().getSerializableExtra("FeedDataCookie");
         if ((localList != null) && (localList.size() == 1)) {
           this.feedDataCookie = ((Map)localList.get(0));
         }
@@ -225,7 +225,7 @@ public class GDTReportPlugin
       if (paramLong == 8589934599L)
       {
         paramString.subactionType = String.valueOf(2);
-        QZoneClickReport.report(this.mRuntime.a().getAccount(), paramString, true);
+        QZoneClickReport.report(this.mRuntime.b().getAccount(), paramString, true);
       }
     }
     return false;
@@ -233,7 +233,7 @@ public class GDTReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.GDTReportPlugin
  * JD-Core Version:    0.7.0.1
  */

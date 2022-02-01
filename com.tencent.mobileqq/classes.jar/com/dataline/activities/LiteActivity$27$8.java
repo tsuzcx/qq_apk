@@ -17,14 +17,14 @@ class LiteActivity$27$8
   
   public void run()
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-    ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard");
-    ClipData localClipData = ClipData.newPlainText("msg", this.jdField_a_of_type_JavaLangString);
+    this.c.a.m.notifyDataSetChanged();
+    ClipboardManager localClipboardManager = (ClipboardManager)this.c.a.f.getContext().getSystemService("clipboard");
+    ClipData localClipData = ClipData.newPlainText("msg", this.a);
     ClipboardMonitor.setPrimaryClip(localClipboardManager, localClipData);
     localClipboardManager.setPrimaryClip(localClipData);
-    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
-    LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
+    LiteActivity.a(this.c.a.g, this.c.a.f);
+    LiteActivity.a(this.c.a.f);
+    this.c.a.app.getMessageFacade().d(this.b).g();
   }
 }
 

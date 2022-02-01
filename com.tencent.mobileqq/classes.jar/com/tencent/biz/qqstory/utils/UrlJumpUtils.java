@@ -29,7 +29,7 @@ public class UrlJumpUtils
     {
       Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
       localIntent.putExtra("url", paramString);
-      localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131715699));
+      localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
       paramContext.startActivity(localIntent);
     }
     SLog.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool2), Boolean.valueOf(bool1));

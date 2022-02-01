@@ -216,7 +216,7 @@ public class ArkAppMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return BaseApplicationImpl.getApplication().getString(2131690162);
+    return BaseApplicationImpl.getApplication().getString(2131887061);
   }
   
   public long optMsgSeq()
@@ -445,7 +445,7 @@ public class ArkAppMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkAppMessage
  * JD-Core Version:    0.7.0.1
  */

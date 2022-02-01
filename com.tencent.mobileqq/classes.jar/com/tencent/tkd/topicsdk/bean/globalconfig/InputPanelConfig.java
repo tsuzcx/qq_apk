@@ -5,23 +5,25 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "Ljava/io/Serializable;", "showPicPanel", "", "showVideoPanel", "showEmotionLPanel", "showAtPanel", "showTopicPanel", "showCommodity", "(ZZZZZZ)V", "getShowAtPanel", "()Z", "setShowAtPanel", "(Z)V", "getShowCommodity", "setShowCommodity", "getShowEmotionLPanel", "setShowEmotionLPanel", "getShowPicPanel", "setShowPicPanel", "getShowTopicPanel", "setShowTopicPanel", "getShowVideoPanel", "setShowVideoPanel", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "", "hashCode", "", "toString", "", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/globalconfig/InputPanelConfig;", "Ljava/io/Serializable;", "showPicPanel", "", "showVideoPanel", "showEmotionLPanel", "showAtPanel", "showTopicPanel", "showCommodity", "showInvitedManuscript", "showSubmitManuscript", "(ZZZZZZZZ)V", "getShowAtPanel", "()Z", "setShowAtPanel", "(Z)V", "getShowCommodity", "setShowCommodity", "getShowEmotionLPanel", "setShowEmotionLPanel", "getShowInvitedManuscript", "setShowInvitedManuscript", "getShowPicPanel", "setShowPicPanel", "getShowSubmitManuscript", "setShowSubmitManuscript", "getShowTopicPanel", "setShowTopicPanel", "getShowVideoPanel", "setShowVideoPanel", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "", "hashCode", "", "toString", "", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class InputPanelConfig
   implements Serializable
 {
   private boolean showAtPanel;
   private boolean showCommodity;
   private boolean showEmotionLPanel;
+  private boolean showInvitedManuscript;
   private boolean showPicPanel;
+  private boolean showSubmitManuscript;
   private boolean showTopicPanel;
   private boolean showVideoPanel;
   
   public InputPanelConfig()
   {
-    this(false, false, false, false, false, false, 63, null);
+    this(false, false, false, false, false, false, false, false, 255, null);
   }
   
-  public InputPanelConfig(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
+  public InputPanelConfig(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8)
   {
     this.showPicPanel = paramBoolean1;
     this.showVideoPanel = paramBoolean2;
@@ -29,6 +31,8 @@ public final class InputPanelConfig
     this.showAtPanel = paramBoolean4;
     this.showTopicPanel = paramBoolean5;
     this.showCommodity = paramBoolean6;
+    this.showInvitedManuscript = paramBoolean7;
+    this.showSubmitManuscript = paramBoolean8;
   }
   
   public final boolean component1()
@@ -61,10 +65,20 @@ public final class InputPanelConfig
     return this.showCommodity;
   }
   
-  @NotNull
-  public final InputPanelConfig copy(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
+  public final boolean component7()
   {
-    return new InputPanelConfig(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6);
+    return this.showInvitedManuscript;
+  }
+  
+  public final boolean component8()
+  {
+    return this.showSubmitManuscript;
+  }
+  
+  @NotNull
+  public final InputPanelConfig copy(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8)
+  {
+    return new InputPanelConfig(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramBoolean7, paramBoolean8);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -73,7 +87,7 @@ public final class InputPanelConfig
       if ((paramObject instanceof InputPanelConfig))
       {
         paramObject = (InputPanelConfig)paramObject;
-        if ((this.showPicPanel == paramObject.showPicPanel) && (this.showVideoPanel == paramObject.showVideoPanel) && (this.showEmotionLPanel == paramObject.showEmotionLPanel) && (this.showAtPanel == paramObject.showAtPanel) && (this.showTopicPanel == paramObject.showTopicPanel) && (this.showCommodity == paramObject.showCommodity)) {}
+        if ((this.showPicPanel == paramObject.showPicPanel) && (this.showVideoPanel == paramObject.showVideoPanel) && (this.showEmotionLPanel == paramObject.showEmotionLPanel) && (this.showAtPanel == paramObject.showAtPanel) && (this.showTopicPanel == paramObject.showTopicPanel) && (this.showCommodity == paramObject.showCommodity) && (this.showInvitedManuscript == paramObject.showInvitedManuscript) && (this.showSubmitManuscript == paramObject.showSubmitManuscript)) {}
       }
       else
       {
@@ -98,9 +112,19 @@ public final class InputPanelConfig
     return this.showEmotionLPanel;
   }
   
+  public final boolean getShowInvitedManuscript()
+  {
+    return this.showInvitedManuscript;
+  }
+  
   public final boolean getShowPicPanel()
   {
     return this.showPicPanel;
+  }
+  
+  public final boolean getShowSubmitManuscript()
+  {
+    return this.showSubmitManuscript;
   }
   
   public final boolean getShowTopicPanel()
@@ -133,9 +157,19 @@ public final class InputPanelConfig
     this.showEmotionLPanel = paramBoolean;
   }
   
+  public final void setShowInvitedManuscript(boolean paramBoolean)
+  {
+    this.showInvitedManuscript = paramBoolean;
+  }
+  
   public final void setShowPicPanel(boolean paramBoolean)
   {
     this.showPicPanel = paramBoolean;
+  }
+  
+  public final void setShowSubmitManuscript(boolean paramBoolean)
+  {
+    this.showSubmitManuscript = paramBoolean;
   }
   
   public final void setShowTopicPanel(boolean paramBoolean)
@@ -164,13 +198,17 @@ public final class InputPanelConfig
     localStringBuilder.append(this.showTopicPanel);
     localStringBuilder.append(", showCommodity=");
     localStringBuilder.append(this.showCommodity);
+    localStringBuilder.append(", showInvitedManuscript=");
+    localStringBuilder.append(this.showInvitedManuscript);
+    localStringBuilder.append(", showSubmitManuscript=");
+    localStringBuilder.append(this.showSubmitManuscript);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.globalconfig.InputPanelConfig
  * JD-Core Version:    0.7.0.1
  */

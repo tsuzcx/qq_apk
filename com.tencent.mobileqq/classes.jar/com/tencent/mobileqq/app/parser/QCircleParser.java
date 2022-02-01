@@ -23,9 +23,9 @@ public class QCircleParser
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
     }
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = paramContext[0];
-    paramBaseQQAppInterface.c = paramContext[1];
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = paramContext[0];
+    paramBaseQQAppInterface.e = paramContext[1];
     paramContext = Uri.parse(paramString);
     paramJumpParserResult = paramContext.getQueryParameterNames().iterator();
     while (paramJumpParserResult.hasNext())
@@ -45,7 +45,7 @@ public class QCircleParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QCircleParser
  * JD-Core Version:    0.7.0.1
  */

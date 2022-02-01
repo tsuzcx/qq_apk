@@ -20,17 +20,17 @@ class PublicAccountChatPie$7
   
   public void run()
   {
-    if (PublicAccountChatPie.a(this.this$0) > 0)
+    if (PublicAccountChatPie.g(this.this$0) > 0)
     {
-      int j = PublicAccountChatPie.a(this.this$0);
+      int j = PublicAccountChatPie.g(this.this$0);
       int i = j;
       if (j > 2) {
         i = 2;
       }
-      localObject = this.this$0.a.getMessageFacade().a("2747277822", 1008, i);
-      ((IApolloExtensionHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2, (List)localObject);
+      localObject = this.this$0.d.getMessageFacade().a("2747277822", 1008, i);
+      ((IApolloExtensionHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(2, (List)localObject);
     }
-    Object localObject = ((IGamePubAccountMsgService)this.this$0.a.getRuntimeService(IGamePubAccountMsgService.class, "")).findArkMessage("2747277822", 100, 100).iterator();
+    Object localObject = ((IGamePubAccountMsgService)this.this$0.d.getRuntimeService(IGamePubAccountMsgService.class, "")).findArkMessage("2747277822", 100, 100).iterator();
     while (((Iterator)localObject).hasNext())
     {
       QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)((Iterator)localObject).next();
@@ -42,7 +42,7 @@ class PublicAccountChatPie$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7
  * JD-Core Version:    0.7.0.1
  */

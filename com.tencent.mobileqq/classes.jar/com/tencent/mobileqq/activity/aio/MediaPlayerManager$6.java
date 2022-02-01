@@ -12,30 +12,30 @@ class MediaPlayerManager$6
   
   public void run()
   {
-    if (MediaPlayerManager.a(this.this$0) != null)
+    if (MediaPlayerManager.c(this.this$0) != null)
     {
       Object localObject = this.this$0;
-      localObject = MediaPlayerManager.a((MediaPlayerManager)localObject, MediaPlayerManager.a((MediaPlayerManager)localObject));
-      long l = MediaPlayerManager.a(this.this$0).a();
+      localObject = MediaPlayerManager.b((MediaPlayerManager)localObject, MediaPlayerManager.c((MediaPlayerManager)localObject));
+      long l = MediaPlayerManager.g(this.this$0).g();
       float f;
       if (l > 0L) {
         f = this.a / (float)l;
       } else {
         f = 0.0F;
       }
-      if (MediaPlayerManager.a(this.this$0) == null)
+      if (MediaPlayerManager.d(this.this$0) == null)
       {
         if (localObject != null) {
-          ((MediaPlayerManager.Callback)localObject).a(MediaPlayerManager.a(this.this$0), -1, null, MediaPlayerManager.a(this.this$0), this.a, f);
+          ((MediaPlayerManager.Callback)localObject).a(MediaPlayerManager.h(this.this$0), -1, null, MediaPlayerManager.c(this.this$0), this.a, f);
         }
       }
       else
       {
-        int i = MediaPlayerManager.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
-        if (i <= MediaPlayerManager.a(this.this$0).getCount())
+        int i = MediaPlayerManager.a(MediaPlayerManager.c(this.this$0), MediaPlayerManager.d(this.this$0));
+        if (i <= MediaPlayerManager.d(this.this$0).getCount())
         {
-          View localView = AIOUtils.a(MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0).getHeaderViewsCount() + i);
-          ((MediaPlayerManager.Callback)localObject).a(MediaPlayerManager.a(this.this$0), i, localView, MediaPlayerManager.a(this.this$0), this.a, f);
+          View localView = AIOUtils.a(MediaPlayerManager.h(this.this$0), MediaPlayerManager.h(this.this$0).getHeaderViewsCount() + i);
+          ((MediaPlayerManager.Callback)localObject).a(MediaPlayerManager.h(this.this$0), i, localView, MediaPlayerManager.c(this.this$0), this.a, f);
         }
       }
     }
@@ -43,7 +43,7 @@ class MediaPlayerManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.6
  * JD-Core Version:    0.7.0.1
  */

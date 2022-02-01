@@ -7,9 +7,9 @@ public class SuperChannelResult
 {
   private static final String KEY_ERROR_CODE = "error_code";
   private static final String KEY_ERROR_DESC = "error_desc";
-  private final int STATUS_FAIL = 2;
-  private final int STATUS_IDLE = 0;
-  private final int STATUS_SUCCESS = 1;
+  private static final int STATUS_FAIL = 2;
+  private static final int STATUS_IDLE = 0;
+  private static final int STATUS_SUCCESS = 1;
   private String errorCode;
   private String errorMsg;
   private Map results;
@@ -75,7 +75,7 @@ public class SuperChannelResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.superchannel.SuperChannelResult
  * JD-Core Version:    0.7.0.1
  */

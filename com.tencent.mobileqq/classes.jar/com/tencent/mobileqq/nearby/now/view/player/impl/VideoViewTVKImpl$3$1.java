@@ -9,9 +9,9 @@ class VideoViewTVKImpl$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$3.a.a != null)
+    if (this.c.a.l != null)
     {
-      int j = this.jdField_a_of_type_Int;
+      int j = this.a;
       int i;
       if (j == 21)
       {
@@ -24,13 +24,13 @@ class VideoViewTVKImpl$3$1
           i = 3;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$3.a.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl$3.a, i, this.jdField_a_of_type_JavaLangObject);
+      this.c.a.l.a(this.c.a, i, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

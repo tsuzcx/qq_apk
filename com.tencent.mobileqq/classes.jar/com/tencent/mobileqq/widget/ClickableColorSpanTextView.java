@@ -12,9 +12,9 @@ import android.widget.TextView.BufferType;
 public class ClickableColorSpanTextView
   extends TextView
 {
-  private ClickableColorSpanTextView.SpanClickListener jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener;
-  private StatableSpanTextView.StatableForegroundColorSpan jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
-  private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+  private ClickableColorSpanTextView.SpanClickListener a;
+  private StatableSpanTextView.StatableForegroundColorSpan[] b;
+  private StatableSpanTextView.StatableForegroundColorSpan c;
   
   public ClickableColorSpanTextView(Context paramContext)
   {
@@ -31,12 +31,6 @@ public class ClickableColorSpanTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private float a(float paramFloat)
-  {
-    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingLeft());
-    return Math.min(getWidth() - getTotalPaddingRight() - 1, paramFloat) + getScrollX();
-  }
-  
   private int a(float paramFloat)
   {
     paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingTop());
@@ -47,8 +41,14 @@ public class ClickableColorSpanTextView
   
   private int a(int paramInt, float paramFloat)
   {
-    paramFloat = a(paramFloat);
+    paramFloat = b(paramFloat);
     return getLayout().getOffsetForHorizontal(paramInt, paramFloat);
+  }
+  
+  private float b(float paramFloat)
+  {
+    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingLeft());
+    return Math.min(getWidth() - getTotalPaddingRight() - 1, paramFloat) + getScrollX();
   }
   
   public int getOffsetForPosition(float paramFloat1, float paramFloat2)
@@ -61,10 +61,10 @@ public class ClickableColorSpanTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null) && ((getText() instanceof Spannable)))
+    if ((this.b != null) && ((getText() instanceof Spannable)))
     {
       int j = getOffsetForPosition(paramMotionEvent.getX(), paramMotionEvent.getY());
-      Object localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+      Object localObject2 = this.b;
       int k = localObject2.length;
       int i = 0;
       while (i < k)
@@ -91,31 +91,31 @@ public class ClickableColorSpanTextView
           }
           else
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+            localObject2 = this.c;
             if ((localObject2 == localObject1) && (localObject2 != null)) {
               return true;
             }
           }
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+        localObject2 = this.c;
         if (localObject2 != null)
         {
           if (localObject2 == localObject1)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener;
+            localObject1 = this.a;
             if (localObject1 != null) {
               ((ClickableColorSpanTextView.SpanClickListener)localObject1).a(this, (StatableSpanTextView.StatableForegroundColorSpan)localObject2);
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
+          this.c.a(StateSet.WILD_CARD);
+          this.c = null;
           invalidate();
         }
       }
       else if (localObject1 != null)
       {
         ((StatableSpanTextView.StatableForegroundColorSpan)localObject1).a(StatableSpanTextView.StatableForegroundColorSpan.a);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan)localObject1);
+        this.c = ((StatableSpanTextView.StatableForegroundColorSpan)localObject1);
         invalidate();
         return true;
       }
@@ -126,7 +126,7 @@ public class ClickableColorSpanTextView
   
   public void setSpanClickListener(ClickableColorSpanTextView.SpanClickListener paramSpanClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener = paramSpanClickListener;
+    this.a = paramSpanClickListener;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -134,19 +134,19 @@ public class ClickableColorSpanTextView
     if ((paramCharSequence != null) && ((paramCharSequence instanceof Spannable)))
     {
       paramBufferType = (Spannable)paramCharSequence;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan[])paramBufferType.getSpans(0, paramBufferType.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
+      this.b = ((StatableSpanTextView.StatableForegroundColorSpan[])paramBufferType.getSpans(0, paramBufferType.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
       paramBufferType = TextView.BufferType.SPANNABLE;
     }
     else
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
+      this.b = null;
     }
     super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickableColorSpanTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class CommonRecordSoundPanelPresenterImpl$6
   
   public void run()
   {
-    this.a.a();
-    QQToast.a(this.a.a(), this.a.a().getString(2131698587), 0).a();
+    this.a.e();
+    QQToast.makeText(this.a.getViewContext(), this.a.getViewContext().getString(2131896534), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanelPresenterImpl.6
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ public class VerticalSearchConfBean
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("parse taskid->");
-        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramQConfItem.a);
         ((StringBuilder)localObject).append(" content->");
-        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramQConfItem.b);
         QLog.d("VerticalNavigationConfBean", 2, ((StringBuilder)localObject).toString());
       }
       try
       {
-        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        paramQConfItem = new JSONObject(paramQConfItem.b);
         boolean bool = paramQConfItem.has("emoji");
         if (bool)
         {
@@ -35,9 +35,9 @@ public class VerticalSearchConfBean
           if (localObject != null)
           {
             VerticalSearchConfBean.Data localData = new VerticalSearchConfBean.Data();
-            localData.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch", 0);
-            localData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("iconUrl", "");
-            localData.b = ((JSONObject)localObject).optString("url", "");
+            localData.a = ((JSONObject)localObject).optInt("switch", 0);
+            localData.b = ((JSONObject)localObject).optString("iconUrl", "");
+            localData.c = ((JSONObject)localObject).optString("url", "");
             localVerticalSearchConfBean.a.put("emoji", localData);
           }
         }
@@ -47,10 +47,10 @@ public class VerticalSearchConfBean
           if (paramQConfItem != null)
           {
             localObject = new VerticalSearchConfBean.Data();
-            ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_Int = paramQConfItem.optInt("switch", 0);
-            ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_JavaLangString = paramQConfItem.optString("iconUrl", "");
-            ((VerticalSearchConfBean.Data)localObject).b = paramQConfItem.optString("url", "");
-            ((VerticalSearchConfBean.Data)localObject).c = paramQConfItem.optString("name", "");
+            ((VerticalSearchConfBean.Data)localObject).a = paramQConfItem.optInt("switch", 0);
+            ((VerticalSearchConfBean.Data)localObject).b = paramQConfItem.optString("iconUrl", "");
+            ((VerticalSearchConfBean.Data)localObject).c = paramQConfItem.optString("url", "");
+            ((VerticalSearchConfBean.Data)localObject).d = paramQConfItem.optString("name", "");
             localVerticalSearchConfBean.a.put("heihua", localObject);
             return localVerticalSearchConfBean;
           }
@@ -70,18 +70,6 @@ public class VerticalSearchConfBean
     return localVerticalSearchConfBean;
   }
   
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
-    if (paramString != null) {
-      return paramString.b;
-    }
-    return "";
-  }
-  
   public boolean a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -89,7 +77,7 @@ public class VerticalSearchConfBean
     }
     paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_Int == 1;
+      return paramString.a == 1;
     }
     return false;
   }
@@ -101,7 +89,7 @@ public class VerticalSearchConfBean
     }
     paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
+      return paramString.c;
     }
     return "";
   }
@@ -113,7 +101,19 @@ public class VerticalSearchConfBean
     }
     paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
     if (paramString != null) {
-      return paramString.c;
+      return paramString.b;
+    }
+    return "";
+  }
+  
+  public String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
     }
     return "";
   }
@@ -131,7 +131,7 @@ public class VerticalSearchConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.VerticalSearchConfBean
  * JD-Core Version:    0.7.0.1
  */

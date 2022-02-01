@@ -12,13 +12,13 @@ final class RIJPushNotifyDialog$show$1
   
   public final void run()
   {
-    RIJPushNotifyDialog.a(this.this$0).a().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.a(this.this$0)), Integer.valueOf(0));
+    RIJPushNotifyDialog.b(this.this$0).g().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.c(this.this$0)), Integer.valueOf(0));
     this.this$0.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog.show.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,19 @@ class GetUserInfoHandler$1
   {
     synchronized (GetUserInfoHandler.a(this.this$0))
     {
-      if (!GetUserInfoHandler.a(this.this$0).isEmpty())
+      if (!GetUserInfoHandler.b(this.this$0).isEmpty())
       {
-        this.this$0.a(1, GetUserInfoHandler.a(this.this$0));
+        this.this$0.a(1, GetUserInfoHandler.b(this.this$0));
         GetUserInfoHandler.a(this.this$0, new ArrayList());
       }
-      GetUserInfoHandler.a(this.this$0).set(false);
+      GetUserInfoHandler.c(this.this$0).set(false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

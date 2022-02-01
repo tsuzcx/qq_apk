@@ -16,7 +16,7 @@ class TroopInfoHandler$1
   
   public void onGet0x88d_Result(boolean paramBoolean, String paramString1, String paramString2, oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if ((paramString1.equals(this.jdField_a_of_type_JavaLangString)) && (paramString2.equals("SUBCMD_GET_TROOP_TAG")))
+    if ((paramString1.equals(this.a)) && (paramString2.equals("SUBCMD_GET_TROOP_TAG")))
     {
       paramString2 = null;
       Object localObject = null;
@@ -26,7 +26,7 @@ class TroopInfoHandler$1
         str = paramString2;
         if (paramGroupInfo != null)
         {
-          ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopInfoHandler).getRuntimeService(ITroopInfoService.class, "");
+          ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopInfoHandler.a(this.b).getRuntimeService(ITroopInfoService.class, "");
           TroopInfo localTroopInfo = localITroopInfoService.findTroopInfo(paramString1);
           paramString2 = localObject;
           if (paramGroupInfo.rpt_tag_record.has())
@@ -49,8 +49,8 @@ class TroopInfoHandler$1
           }
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopInfoHandler.notifyUI(TYPE_GET_TROOP_TAG, paramBoolean, new Object[] { paramString1, str });
-      TroopInfoHandler.b(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopInfoHandler).removeObserver(this);
+      this.b.notifyUI(TYPE_GET_TROOP_TAG, paramBoolean, new Object[] { paramString1, str });
+      TroopInfoHandler.b(this.b).removeObserver(this);
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder(150);
@@ -66,7 +66,7 @@ class TroopInfoHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

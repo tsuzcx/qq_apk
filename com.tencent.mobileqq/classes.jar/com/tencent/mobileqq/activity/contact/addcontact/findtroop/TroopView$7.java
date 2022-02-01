@@ -11,7 +11,7 @@ class TroopView$7
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
     if (paramInt == 1)
@@ -23,15 +23,15 @@ class TroopView$7
   
   public void onPageSelected(int paramInt)
   {
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
-    TroopView.a(this.a, paramInt);
+    TroopView.c(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.7
  * JD-Core Version:    0.7.0.1
  */

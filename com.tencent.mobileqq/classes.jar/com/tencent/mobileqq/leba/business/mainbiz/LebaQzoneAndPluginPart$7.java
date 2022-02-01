@@ -23,12 +23,12 @@ class LebaQzoneAndPluginPart$7
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.getVisibility();
+    if (this.this$0.b != null) {
+      this.this$0.b.getVisibility();
     }
     try
     {
-      this.this$0.a(null, true, this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      this.this$0.a(null, true, this.a, this.b, this.c);
     }
     catch (Exception localException)
     {
@@ -36,11 +36,11 @@ class LebaQzoneAndPluginPart$7
     }
     ThreadRegulator.a().a(4);
     ThreadRegulator.a().a(4, 2000L);
-    this.this$0.jdField_a_of_type_Boolean = true;
-    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+    this.this$0.q = true;
+    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.b.getManager(QQManagerFactory.QZONE_MANAGER);
     if (localQZoneManagerImp != null)
     {
-      if ((localQZoneManagerImp.a(1) <= 0) && (localQZoneManagerImp.a(2) <= 0))
+      if ((localQZoneManagerImp.d(1) <= 0) && (localQZoneManagerImp.d(2) <= 0))
       {
         Object localObject = new QZoneClickReport.ReportInfo();
         ((QZoneClickReport.ReportInfo)localObject).actionType = "1";
@@ -49,32 +49,32 @@ class LebaQzoneAndPluginPart$7
         ((QZoneClickReport.ReportInfo)localObject).sourceType = "3";
         ((QZoneClickReport.ReportInfo)localObject).sourceFrom = "mainEntrance";
         ((QZoneClickReport.ReportInfo)localObject).sourceTo = "activefeed";
-        QZoneClickReport.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
+        QZoneClickReport.report(this.b.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
         localObject = new HashMap();
         ((HashMap)localObject).put("source_type", "3");
         ((HashMap)localObject).put("source_from", "mainEntrance");
         ((HashMap)localObject).put("source_to", "activefeed");
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.b.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
       }
-      QZoneEntryReporterInLeba.a(localQZoneManagerImp, false, this.this$0.a());
-      if ((this.this$0.c != null) && (this.this$0.c.getVisibility() == 0))
+      QZoneEntryReporterInLeba.a(localQZoneManagerImp, false, this.this$0.g());
+      if ((this.this$0.d != null) && (this.this$0.d.getVisibility() == 0))
       {
         localQZoneManagerImp.c(61);
         localQZoneManagerImp.c(6);
       }
-      if (this.this$0.jdField_a_of_type_Int == 3) {
+      if (this.this$0.j == 3) {
         localQZoneManagerImp.c(3);
       }
-      if (this.this$0.jdField_a_of_type_Int == 1013) {
+      if (this.this$0.j == 1013) {
         localQZoneManagerImp.c(1013);
       }
     }
-    LinkReport.reportClickQZoneEntry(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    LinkReport.reportClickQZoneEntry(this.b.getCurrentUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.7
  * JD-Core Version:    0.7.0.1
  */

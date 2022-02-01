@@ -12,16 +12,16 @@ class PromotionRes$4
   
   public void onClick(View paramView)
   {
-    PopupMenu localPopupMenu = new PopupMenu(PromotionRes.a(this.a), paramView);
+    PopupMenu localPopupMenu = new PopupMenu(PromotionRes.d(this.a), paramView);
     PromotionRes localPromotionRes = this.a;
-    localPromotionRes.a(PromotionRes.a(localPromotionRes).a, localPopupMenu);
+    localPromotionRes.a(PromotionRes.d(localPromotionRes).app, localPopupMenu);
     localPopupMenu.show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionRes.4
  * JD-Core Version:    0.7.0.1
  */

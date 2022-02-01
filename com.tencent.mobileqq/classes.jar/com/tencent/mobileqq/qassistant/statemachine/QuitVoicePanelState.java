@@ -15,16 +15,6 @@ public class QuitVoicePanelState
     this.a = paramVoiceAssistantStateMachine;
   }
   
-  public String a()
-  {
-    return QuitVoicePanelState.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
   public boolean a(Message paramMessage)
   {
     if (paramMessage.what != 4) {
@@ -32,16 +22,16 @@ public class QuitVoicePanelState
     }
     if (this.a != null)
     {
-      if (((paramMessage.obj instanceof Boolean)) && (this.a.a() != null))
+      if (((paramMessage.obj instanceof Boolean)) && (this.a.k() != null))
       {
         boolean bool = ((Boolean)paramMessage.obj).booleanValue();
         ThreadManager.getUIHandler().post(new QuitVoicePanelState.1(this, bool));
       }
-      if (this.a.a() != null) {
-        this.a.a().b();
+      if (this.a.h() != null) {
+        this.a.h().b();
       }
+      this.a.e(1);
       this.a.c(1);
-      this.a.a(1);
     }
     return true;
   }
@@ -50,10 +40,20 @@ public class QuitVoicePanelState
   {
     super.b();
   }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public String d()
+  {
+    return QuitVoicePanelState.class.getSimpleName();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.QuitVoicePanelState
  * JD-Core Version:    0.7.0.1
  */

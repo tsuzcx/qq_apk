@@ -30,7 +30,7 @@ public class TroopSystemMessageDecoder
     long l2 = 0L;
     if ((bool) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      Long.valueOf(paramMessageHandler.n.getCurrentAccountUin()).longValue();
       long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
       int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
       byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
@@ -61,7 +61,7 @@ public class TroopSystemMessageDecoder
         paramMessageHandler.c(localStringBuilder.toString(), (String)localObject);
       }
       if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
-        paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
+        paramMessageHandler.B().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
       }
       return l1;
     }
@@ -92,19 +92,19 @@ public class TroopSystemMessageDecoder
     } else {
       i = 1;
     }
-    if ((!paramDecodeProtoPkgContext.c) && (i == 0)) {
-      paramMessageHandler.a().a(3, 1, false);
+    if ((!paramDecodeProtoPkgContext.i) && (i == 0)) {
+      paramMessageHandler.B().a(3, 1, false);
     }
-    paramDecodeProtoPkgContext.g = 9998L;
-    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.f, paramDecodeProtoPkgContext.d);
+    paramDecodeProtoPkgContext.x = 9998L;
+    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.l, paramDecodeProtoPkgContext.j);
     if (i == 0) {
-      GroupSystemMsgController.a().a(l1, l2, paramMessageHandler.a);
+      GroupSystemMsgController.a().a(l1, l2, paramMessageHandler.n);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.TroopSystemMessageDecoder
  * JD-Core Version:    0.7.0.1
  */

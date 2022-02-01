@@ -11,18 +11,18 @@ class MultiAIOFragment$15
   public void onAnimationCancel(Animator paramAnimator)
   {
     super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.e(this.a);
+    MultiAIOFragment.h(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.e(this.a);
+    MultiAIOFragment.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.15
  * JD-Core Version:    0.7.0.1
  */

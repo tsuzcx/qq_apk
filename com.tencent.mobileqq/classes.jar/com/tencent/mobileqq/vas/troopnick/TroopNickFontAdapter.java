@@ -18,27 +18,35 @@ import mqq.app.AppRuntime;
 public class TroopNickFontAdapter
   extends SignatureFontAdapter
 {
-  public static Map<String, Typeface> a;
-  private static int b = 0;
-  WeakReference<TextView> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public static Map<String, Typeface> f = new HashMap();
+  private static int g = 0;
+  WeakReference<TextView> e;
   
   public TroopNickFontAdapter(TextView paramTextView, VasRes paramVasRes, AppRuntime paramAppRuntime, int paramInt)
   {
     super(paramVasRes, paramAppRuntime, paramInt);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
+    this.e = new WeakReference(paramTextView);
   }
   
-  public static Typeface a(int paramInt1, int paramInt2)
+  private boolean a(Typeface paramTypeface)
   {
-    return (Typeface)jdField_a_of_type_JavaUtilMap.get(a(paramInt1, paramInt2));
+    if (paramTypeface == null) {
+      return false;
+    }
+    TextView localTextView = (TextView)this.e.get();
+    if (localTextView == null) {
+      return true;
+    }
+    localTextView.post(new TroopNickFontAdapter.2(this, localTextView, paramTypeface));
+    return true;
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public static Typeface c(int paramInt1, int paramInt2)
+  {
+    return (Typeface)f.get(e(paramInt1, paramInt2));
+  }
+  
+  public static String e(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
@@ -47,49 +55,36 @@ public class TroopNickFontAdapter
     return localStringBuilder.toString();
   }
   
-  private boolean a(Typeface paramTypeface)
-  {
-    if (paramTypeface == null) {
-      return false;
-    }
-    TextView localTextView = (TextView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localTextView == null) {
-      return true;
-    }
-    localTextView.post(new TroopNickFontAdapter.2(this, localTextView, paramTypeface));
-    return true;
-  }
-  
   public void a()
   {
     Object localObject;
     if (AppUtil.a()) {
-      localObject = a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+      localObject = b(this.a.b(), this.b);
     } else {
-      localObject = FontManagerForTool.a().a(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(), this.jdField_a_of_type_Int);
+      localObject = FontManagerForTool.a().a(this.a.b(), this.b);
     }
     if (localObject != null)
     {
-      b(((FontInfo)localObject).jdField_a_of_type_Int, ((FontInfo)localObject).b);
+      d(((FontInfo)localObject).a, ((FontInfo)localObject).c);
       b();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("troop_nick_font_load,");
-        ((StringBuilder)localObject).append(b);
+        ((StringBuilder)localObject).append(g);
         QLog.d("TroopNickFontAdapter", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
   
-  protected void b(int paramInt1, int paramInt2)
+  protected void d(int paramInt1, int paramInt2)
   {
     ThreadManagerV2.executeOnFileThread(new TroopNickFontAdapter.1(this, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickFontAdapter
  * JD-Core Version:    0.7.0.1
  */

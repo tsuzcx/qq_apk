@@ -55,8 +55,6 @@ public abstract interface GameRoomStatusListener
   
   public abstract void c(String paramString, EngineData paramEngineData);
   
-  public abstract void g();
-  
   public abstract void h();
   
   public abstract void i();
@@ -64,6 +62,8 @@ public abstract interface GameRoomStatusListener
   public abstract void j();
   
   public abstract void k();
+  
+  public abstract void l();
 }
 
 

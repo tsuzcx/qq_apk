@@ -2,10 +2,10 @@ package com.tencent.mobileqq.nearby.gameroom;
 
 public class InviteUser
 {
-  public int a;
   public String a;
-  public boolean a;
   public String b;
+  public int c;
+  public boolean d;
   
   public boolean equals(Object paramObject)
   {
@@ -16,10 +16,10 @@ public class InviteUser
     {
       paramObject = (InviteUser)paramObject;
       bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+      if (paramObject.a.equals(this.a))
       {
         bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+        if (paramObject.c == this.c) {
           bool1 = true;
         }
       }
@@ -29,7 +29,7 @@ public class InviteUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.InviteUser
  * JD-Core Version:    0.7.0.1
  */

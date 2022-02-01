@@ -22,17 +22,17 @@ class WTogetherMng$3
     int i = 0;
     while (i < arrayOfInt.length)
     {
-      if (WTogetherMng.b(this.this$0).a(arrayOfInt[i]))
+      if (WTogetherMng.b(this.this$0).d(arrayOfInt[i]))
       {
-        EffectPendantBase localEffectPendantBase = (EffectPendantBase)WTogetherMng.c(this.this$0).a(arrayOfInt[i]);
+        EffectPendantBase localEffectPendantBase = (EffectPendantBase)WTogetherMng.c(this.this$0).c(arrayOfInt[i]);
         if (localEffectPendantBase != null) {
           localEffectPendantBase.a(this.a, null);
         }
       }
       i += 1;
     }
-    if (WTogetherMng.d(this.this$0).a(1)) {
-      ((EffectFilterTools)WTogetherMng.e(this.this$0).a(1)).a(this.a, null);
+    if (WTogetherMng.d(this.this$0).d(1)) {
+      ((EffectFilterTools)WTogetherMng.e(this.this$0).c(1)).a(this.a, null);
     }
   }
 }

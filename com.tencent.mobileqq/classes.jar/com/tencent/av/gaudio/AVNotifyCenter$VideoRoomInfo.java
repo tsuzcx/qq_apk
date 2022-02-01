@@ -4,49 +4,49 @@ import com.tencent.av.utils.AudioHelper;
 
 public class AVNotifyCenter$VideoRoomInfo
 {
-  public int a;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  public int b;
+  final long a = AudioHelper.c();
   public long b;
   public int c;
-  public long c;
   public int d;
   public int e;
   public int f;
+  public int g;
+  public int h;
+  public long i;
   
   AVNotifyCenter$VideoRoomInfo(AVNotifyCenter paramAVNotifyCenter) {}
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
+    return (this.d == 2) && (this.f == 2) && (this.g == 4) && (this.e == 0);
   }
   
   public boolean b()
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 5) && (this.jdField_c_of_type_Int == 0);
+    return (this.d == 2) && (this.f == 2) && (this.g == 5) && (this.e == 0);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], relationId[");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], avtype[");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("], roomMode[");
     localStringBuilder.append(this.d);
-    localStringBuilder.append("], gameId[");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append("], liveExtraMode[");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("], memberNum[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("], event[");
+    localStringBuilder.append("], roomMode[");
     localStringBuilder.append(this.f);
+    localStringBuilder.append("], gameId[");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("], liveExtraMode[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], memberNum[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("], event[");
+    localStringBuilder.append(this.h);
     localStringBuilder.append("], time[");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

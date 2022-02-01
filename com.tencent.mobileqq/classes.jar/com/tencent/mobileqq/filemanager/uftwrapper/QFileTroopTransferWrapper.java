@@ -11,49 +11,49 @@ import java.util.UUID;
 
 public class QFileTroopTransferWrapper
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QFileTroopTransferWrapper.ITransferWrapperCallback jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileTroopTransferWrapper$ITransferWrapperCallback = new QFileTroopTransferWrapper.1(this);
-  private final Map<UUID, QFileTroopTransferWrapper.TroopBaseUploadWrapper> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final QQAppInterface a;
+  private final Map<UUID, QFileTroopTransferWrapper.TroopBaseUploadWrapper> b = new HashMap();
+  private QFileTroopTransferWrapper.ITransferWrapperCallback c = new QFileTroopTransferWrapper.1(this);
   
   public QFileTroopTransferWrapper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private QFileTroopTransferWrapper.TroopBaseUploadWrapper a(UUID paramUUID)
-  {
-    try
-    {
-      paramUUID = (QFileTroopTransferWrapper.TroopBaseUploadWrapper)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-      return paramUUID;
-    }
-    finally {}
+    this.a = paramQQAppInterface;
   }
   
   private void a(UUID paramUUID, QFileTroopTransferWrapper.TroopBaseUploadWrapper paramTroopBaseUploadWrapper)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramUUID, paramTroopBaseUploadWrapper);
+      this.b.put(paramUUID, paramTroopBaseUploadWrapper);
       return;
+    }
+    finally {}
+  }
+  
+  private QFileTroopTransferWrapper.TroopBaseUploadWrapper b(UUID paramUUID)
+  {
+    try
+    {
+      paramUUID = (QFileTroopTransferWrapper.TroopBaseUploadWrapper)this.b.remove(paramUUID);
+      return paramUUID;
     }
     finally {}
   }
   
   public int a(long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle)
   {
-    paramBundle = new QFileTroopTransferWrapper.TroopUploadWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramItem, paramBundle, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileTroopTransferWrapper$ITransferWrapperCallback);
+    paramBundle = new QFileTroopTransferWrapper.TroopUploadWrapper(this.a, paramLong, paramItem, paramBundle, this.c);
     a(paramItem.Id, paramBundle);
-    paramBundle.a();
+    paramBundle.c();
     return 0;
   }
   
   public UUID a(long paramLong, String paramString, QFileTroopTransferWrapper.ITroopMultiFwdCallback paramITroopMultiFwdCallback)
   {
     UUID localUUID = UUID.randomUUID();
-    paramString = new QFileTroopTransferWrapper.TroopMultiFwdUploadWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localUUID, paramLong, paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileTroopTransferWrapper$ITransferWrapperCallback, paramITroopMultiFwdCallback);
+    paramString = new QFileTroopTransferWrapper.TroopMultiFwdUploadWrapper(this.a, localUUID, paramLong, paramString, this.c, paramITroopMultiFwdCallback);
     a(localUUID, paramString);
-    paramString.a();
+    paramString.c();
     return localUUID;
   }
   
@@ -62,8 +62,8 @@ public class QFileTroopTransferWrapper
     Object localObject1 = new HashMap();
     try
     {
-      ((Map)localObject1).putAll(this.jdField_a_of_type_JavaUtilMap);
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      ((Map)localObject1).putAll(this.b);
+      this.b.clear();
       localObject1 = ((Map)localObject1).values().iterator();
       while (((Iterator)localObject1).hasNext()) {
         ((QFileTroopTransferWrapper.TroopBaseUploadWrapper)((Iterator)localObject1).next()).a(3);
@@ -79,7 +79,7 @@ public class QFileTroopTransferWrapper
   
   public boolean a(UUID paramUUID)
   {
-    paramUUID = a(paramUUID);
+    paramUUID = b(paramUUID);
     if (paramUUID != null)
     {
       paramUUID.a(0);
@@ -90,7 +90,7 @@ public class QFileTroopTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileTroopTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

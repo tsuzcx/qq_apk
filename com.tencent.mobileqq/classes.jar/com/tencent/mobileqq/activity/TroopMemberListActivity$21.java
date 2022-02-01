@@ -14,15 +14,15 @@ class TroopMemberListActivity$21
   
   public void onClick(View paramView)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    ((Intent)localObject).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTroopUin);
+    Object localObject = new Intent(this.c, TroopMemberListActivity.class);
+    ((Intent)localObject).putExtra("troop_uin", this.c.mTroopUin);
     ((Intent)localObject).putExtra("param_from", 15);
-    ((Intent)localObject).putExtra("param_seq_days", TroopMemberListActivity.access$1000(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    ((Intent)localObject).putExtra("param_seq_name", TroopMemberListActivity.access$1100(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    ((Intent)localObject).putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult((Intent)localObject, 4);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTroopUin;
+    ((Intent)localObject).putExtra("param_seq_days", TroopMemberListActivity.access$1000(this.c));
+    ((Intent)localObject).putExtra("param_seq_name", TroopMemberListActivity.access$1100(this.c));
+    ((Intent)localObject).putExtra("TROOP_INFO_MEMBER_NUM", this.a);
+    this.c.startActivityForResult((Intent)localObject, 4);
+    localObject = this.c.app;
+    String str = this.c.mTroopUin;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.b);
@@ -32,7 +32,7 @@ class TroopMemberListActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.21
  * JD-Core Version:    0.7.0.1
  */

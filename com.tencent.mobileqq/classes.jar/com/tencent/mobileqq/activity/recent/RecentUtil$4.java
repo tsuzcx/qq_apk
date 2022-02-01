@@ -14,7 +14,7 @@ final class RecentUtil$4
   
   public void run()
   {
-    List localList = TroopBarAssistantManager.a().a(this.a);
+    List localList = TroopBarAssistantManager.a().h(this.a);
     int j = 0;
     int i;
     if (localList == null) {
@@ -38,7 +38,7 @@ final class RecentUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.4
  * JD-Core Version:    0.7.0.1
  */

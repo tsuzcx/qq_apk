@@ -13,7 +13,7 @@ class MarkDrawable$3
   public Float a(MarkDrawable paramMarkDrawable)
   {
     if (paramMarkDrawable != null) {
-      return Float.valueOf(MarkDrawable.a(paramMarkDrawable));
+      return Float.valueOf(MarkDrawable.c(paramMarkDrawable));
     }
     return Float.valueOf(0.0F);
   }
@@ -27,7 +27,7 @@ class MarkDrawable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.MarkDrawable.3
  * JD-Core Version:    0.7.0.1
  */

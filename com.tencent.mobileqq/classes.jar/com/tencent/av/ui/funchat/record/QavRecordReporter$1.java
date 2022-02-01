@@ -13,21 +13,21 @@ final class QavRecordReporter$1
   
   public void run()
   {
-    Object localObject = String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(this.jdField_a_of_type_Int / 1000.0F) });
-    float f = this.jdField_b_of_type_Int;
-    long l = this.jdField_a_of_type_Long;
-    int j = (int)(f * 1.0F / (float)(l - this.jdField_b_of_type_Long) * 1000.0F);
-    int i = (int)(this.jdField_c_of_type_Int * 1.0F / (float)(l - this.jdField_c_of_type_Long) * 1000.0F);
-    String str = String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf((float)this.jdField_d_of_type_Long / 1000.0F) });
+    Object localObject = String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(this.a / 1000.0F) });
+    float f1 = this.b;
+    long l = this.c;
+    int k = (int)(f1 * 1.0F / (float)(l - this.d) * 1000.0F);
+    int j = (int)(this.e * 1.0F / (float)(l - this.f) * 1000.0F);
+    String str = String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf((float)this.g / 1000.0F) });
+    k = Math.max(0, k);
     j = Math.max(0, j);
-    i = Math.max(0, i);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("cores", String.valueOf(this.jdField_d_of_type_Int));
+    localHashMap.put("cores", String.valueOf(this.h));
     localHashMap.put("frequency", localObject);
-    localHashMap.put("videoFps", String.valueOf(j));
-    localHashMap.put("mp4Fps", String.valueOf(i));
+    localHashMap.put("videoFps", String.valueOf(k));
+    localHashMap.put("mp4Fps", String.valueOf(j));
     localHashMap.put("strDuration", str);
-    localHashMap.put("stopType", String.valueOf(this.e));
+    localHashMap.put("stopType", String.valueOf(this.i));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -37,12 +37,12 @@ final class QavRecordReporter$1
     }
     localObject = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
     boolean bool;
-    if (this.e != 3) {
+    if (this.i != 3) {
       bool = true;
     } else {
       bool = false;
     }
-    ((StatisticCollector)localObject).collectPerformance("", "av_record_fps", bool, this.jdField_d_of_type_Long, 0L, localHashMap, "", false);
+    ((StatisticCollector)localObject).collectPerformance("", "av_record_fps", bool, this.g, 0L, localHashMap, "", false);
   }
 }
 

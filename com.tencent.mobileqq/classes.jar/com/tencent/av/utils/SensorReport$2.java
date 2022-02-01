@@ -13,7 +13,7 @@ final class SensorReport$2
   {
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(SensorReport.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
+      this.a.registerReceiver(SensorReport.f(), this.b);
       return;
     }
     catch (Exception localException)

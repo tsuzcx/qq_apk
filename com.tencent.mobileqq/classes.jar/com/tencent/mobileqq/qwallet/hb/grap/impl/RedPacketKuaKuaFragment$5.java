@@ -17,12 +17,12 @@ class RedPacketKuaKuaFragment$5
     localLottieDrawable.setComposition(paramLottieComposition);
     localLottieDrawable.loop(true);
     localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+    this.a.setImageDrawable(localLottieDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -7,29 +7,29 @@ import com.tencent.mobileqq.troop.data.TroopEntranceBar;
 public class PAContext
   extends AIOContext
 {
-  public TroopEntranceBar a()
+  public boolean P()
   {
-    return ((PublicAccountChatPie)this.a).a;
+    return ((PublicAccountChatPie)this.c).bF;
+  }
+  
+  public boolean Q()
+  {
+    return ((PublicAccountChatPie)this.c).bG;
+  }
+  
+  public TroopEntranceBar R()
+  {
+    return ((PublicAccountChatPie)this.c).bU;
   }
   
   public void a(Editable paramEditable)
   {
-    ((PublicAccountChatPie)this.a).a(paramEditable);
-  }
-  
-  public boolean k()
-  {
-    return ((PublicAccountChatPie)this.a).J;
-  }
-  
-  public boolean l()
-  {
-    return ((PublicAccountChatPie)this.a).K;
+    ((PublicAccountChatPie)this.c).a(paramEditable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PAContext
  * JD-Core Version:    0.7.0.1
  */

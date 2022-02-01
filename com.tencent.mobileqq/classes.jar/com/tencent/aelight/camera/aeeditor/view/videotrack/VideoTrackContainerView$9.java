@@ -13,21 +13,21 @@ class VideoTrackContainerView$9
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, false);
-    VideoTrackContainerView.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, false);
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, null);
-    paramAnimator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView;
-    VideoTrackContainerView.b(paramAnimator, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(paramAnimator).get(0)).getLayoutParams()).leftMargin);
+    VideoTrackContainerView.a(this.b, false);
+    VideoTrackContainerView.b(this.b, false);
+    VideoTrackContainerView.a(this.b, null);
+    paramAnimator = this.b;
+    VideoTrackContainerView.b(paramAnimator, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.j(paramAnimator).get(0)).getLayoutParams()).leftMargin);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, false);
-    VideoTrackContainerView.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, false);
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView, null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIDragView.a();
-    paramAnimator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView;
-    VideoTrackContainerView.b(paramAnimator, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(paramAnimator).get(0)).getLayoutParams()).leftMargin);
+    VideoTrackContainerView.a(this.b, false);
+    VideoTrackContainerView.b(this.b, false);
+    VideoTrackContainerView.a(this.b, null);
+    this.a.a();
+    paramAnimator = this.b;
+    VideoTrackContainerView.b(paramAnimator, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.j(paramAnimator).get(0)).getLayoutParams()).leftMargin);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -36,7 +36,7 @@ class VideoTrackContainerView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView.9
  * JD-Core Version:    0.7.0.1
  */

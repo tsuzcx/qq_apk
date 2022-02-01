@@ -12,20 +12,20 @@ class TroopCreateLogicActivity$6
   
   public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiTroopCreateLogicActivity$OnGetBitmapCallback.a(null);
+    this.b.a(null);
   }
   
   public void onFileDownloadStarted() {}
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    Bitmap localBitmap = BaseImageUtil.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiTroopCreateLogicActivity$OnGetBitmapCallback.a(localBitmap);
+    Bitmap localBitmap = BaseImageUtil.a(this.a, 100, 100);
+    this.b.a(localBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity.6
  * JD-Core Version:    0.7.0.1
  */

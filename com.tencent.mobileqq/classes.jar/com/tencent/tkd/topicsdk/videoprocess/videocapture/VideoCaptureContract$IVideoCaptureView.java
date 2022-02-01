@@ -9,11 +9,6 @@ import org.jetbrains.annotations.NotNull;
 public abstract interface VideoCaptureContract$IVideoCaptureView
   extends ImageUpdateListener
 {
-  public abstract int a();
-  
-  @NotNull
-  public abstract ViewGroup a();
-  
   public abstract void a(float paramFloat, boolean paramBoolean);
   
   public abstract void a(int paramInt);
@@ -28,17 +23,22 @@ public abstract interface VideoCaptureContract$IVideoCaptureView
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract int b();
-  
   public abstract void b(long paramLong);
   
   public abstract void b(@NotNull List<CaptureTask> paramList);
   
-  public abstract int c();
+  @NotNull
+  public abstract ViewGroup getCandidateView();
+  
+  public abstract int getPreviewImageCount();
+  
+  public abstract int getPreviewImageHeight();
+  
+  public abstract int getPreviewImageWidth();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureContract.IVideoCaptureView
  * JD-Core Version:    0.7.0.1
  */

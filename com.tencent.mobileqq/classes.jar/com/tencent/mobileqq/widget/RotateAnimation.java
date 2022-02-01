@@ -8,35 +8,34 @@ import android.view.animation.Transformation;
 public class RotateAnimation
   extends Animation
 {
-  public float a;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private RotateAnimation.InterpolatedTimeListener jdField_a_of_type_ComTencentMobileqqWidgetRotateAnimation$InterpolatedTimeListener;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
+  public float a = 800.0F;
+  private final boolean b;
   private final float c;
+  private final float d;
+  private Camera e;
+  private RotateAnimation.InterpolatedTimeListener f;
   
   public RotateAnimation(float paramFloat1, float paramFloat2, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Float = 800.0F;
-    this.b = paramFloat1;
-    this.c = paramFloat2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramInt;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.b = paramBoolean;
+    this.a = paramInt;
     setDuration(800L);
   }
   
   public void a(RotateAnimation.InterpolatedTimeListener paramInterpolatedTimeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRotateAnimation$InterpolatedTimeListener = paramInterpolatedTimeListener;
+    this.f = paramInterpolatedTimeListener;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    RotateAnimation.InterpolatedTimeListener localInterpolatedTimeListener = this.jdField_a_of_type_ComTencentMobileqqWidgetRotateAnimation$InterpolatedTimeListener;
+    RotateAnimation.InterpolatedTimeListener localInterpolatedTimeListener = this.f;
     if (localInterpolatedTimeListener != null) {
       localInterpolatedTimeListener.a(paramFloat);
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     int i = 1;
     if (bool == true) {}
     for (float f1 = 0.0F;; f1 = 360.0F)
@@ -59,26 +58,26 @@ public class RotateAnimation
       f1 = f2 - 180.0F;
     }
     paramFloat = Math.abs(paramFloat - 0.5F);
-    f2 = this.jdField_a_of_type_Float;
+    f2 = this.a;
     paramTransformation = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.translate(0.0F, 0.0F, (0.5F - paramFloat) * f2);
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateY(f1);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(paramTransformation);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    paramTransformation.preTranslate(-this.b, -this.c);
-    paramTransformation.postTranslate(this.b, this.c);
+    this.e.save();
+    this.e.translate(0.0F, 0.0F, (0.5F - paramFloat) * f2);
+    this.e.rotateY(f1);
+    this.e.getMatrix(paramTransformation);
+    this.e.restore();
+    paramTransformation.preTranslate(-this.c, -this.d);
+    paramTransformation.postTranslate(this.c, this.d);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.e = new Camera();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateAnimation
  * JD-Core Version:    0.7.0.1
  */

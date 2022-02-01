@@ -23,52 +23,52 @@ public class QQPlayerImpl
   
   public int getCurrentPlayPosition()
   {
-    return QQPlayerService.f();
+    return QQPlayerService.k();
   }
   
   public SongInfo getCurrentSong()
   {
-    return QQPlayerService.b();
+    return QQPlayerService.g();
   }
   
   public int getDuration()
   {
-    return QQPlayerService.d();
+    return QQPlayerService.i();
   }
   
   public SongInfo getNextPlaySong()
   {
-    return QQPlayerService.d();
+    return QQPlayerService.q();
   }
   
   public SongInfo getNextSong()
   {
-    return QQPlayerService.c();
+    return QQPlayerService.h();
   }
   
   public SongInfo[] getPlayList()
   {
-    return QQPlayerService.a();
+    return QQPlayerService.e();
   }
   
   public int getPlayListCount()
   {
-    return QQPlayerService.c();
+    return QQPlayerService.f();
   }
   
   public int getPlayMode()
   {
-    return QQPlayerService.b();
+    return QQPlayerService.d();
   }
   
   public int getPlayState()
   {
-    return QQPlayerService.a();
+    return QQPlayerService.c();
   }
   
   public String getToken()
   {
-    return QQPlayerService.a();
+    return QQPlayerService.o();
   }
   
   public boolean isMusicFileValid(String paramString)
@@ -78,7 +78,7 @@ public class QQPlayerImpl
   
   public boolean isPlaying()
   {
-    return QQPlayerService.a();
+    return QQPlayerService.b();
   }
   
   public boolean isPlayingMySong(String paramString)
@@ -88,7 +88,7 @@ public class QQPlayerImpl
   
   public void pausePlayMusic(Context paramContext)
   {
-    QQPlayerService.a(paramContext);
+    QQPlayerService.c(paramContext);
   }
   
   public SongInfo pickNextSong()
@@ -113,7 +113,7 @@ public class QQPlayerImpl
   
   public void resumePlayMusic(Context paramContext)
   {
-    QQPlayerService.b(paramContext);
+    QQPlayerService.d(paramContext);
   }
   
   public void resumePlayMusic(Context paramContext, boolean paramBoolean)
@@ -123,7 +123,7 @@ public class QQPlayerImpl
   
   public void setPlayMode(int paramInt)
   {
-    QQPlayerService.a(paramInt);
+    QQPlayerService.b(paramInt);
   }
   
   public void setSongList(SongInfo[] paramArrayOfSongInfo)
@@ -158,12 +158,12 @@ public class QQPlayerImpl
   
   public void stopPlayMusic(Context paramContext)
   {
-    QQPlayerService.c(paramContext);
+    QQPlayerService.e(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.api.impl.QQPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

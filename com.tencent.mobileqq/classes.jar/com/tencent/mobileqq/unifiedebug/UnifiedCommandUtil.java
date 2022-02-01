@@ -417,16 +417,16 @@ public class UnifiedCommandUtil
     //   831: istore_3
     //   832: aload 13
     //   834: iload_3
-    //   835: putfield 160	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:jdField_a_of_type_Boolean	Z
+    //   835: putfield 160	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:a	Z
     //   838: aload 13
     //   840: aload 14
-    //   842: putfield 163	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   842: putfield 164	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:b	Ljava/util/List;
     //   845: aload 4
     //   847: ifnull +13 -> 860
     //   850: aload 13
     //   852: aload 4
     //   854: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   857: putfield 166	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   857: putfield 168	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:c	Ljava/lang/String;
     //   860: aload 13
     //   862: areturn
     //   863: astore 4
@@ -472,7 +472,7 @@ public class UnifiedCommandUtil
     //   951: athrow
     //   952: aload 13
     //   954: iconst_0
-    //   955: putfield 160	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:jdField_a_of_type_Boolean	Z
+    //   955: putfield 160	com/tencent/mobileqq/unifiedebug/UnifiedCommandUtil$ExecResult:a	Z
     //   958: aload 13
     //   960: areturn
     //   961: iload_1
@@ -596,7 +596,7 @@ public class UnifiedCommandUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedCommandUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -39,12 +39,12 @@ class ShoppingFragment$5
     boolean bool1 = false;
     if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedListRsp != null))
     {
-      ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(false);
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a().b(paramStGetFeedListRsp.livePageInfo.get());
+      ShoppingFragment.b(this.b).a(false);
+      this.a.D().b(paramStGetFeedListRsp.livePageInfo.get());
       paramBaseRequest = paramStGetFeedListRsp.hotLive.get();
       if ((paramBaseRequest != null) && (paramBaseRequest.size() > 0))
       {
-        paramString = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
+        paramString = this.a;
         localObject = paramStGetFeedListRsp.extInfo;
         if (paramStGetFeedListRsp.isFinish.get() == 1) {
           bool1 = true;
@@ -53,27 +53,27 @@ class ShoppingFragment$5
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a();
-        ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
+        this.a.b();
+        ShoppingFragment.b(this.b).a(true);
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.d(paramBoolean);
+      this.a.d(paramBoolean);
       return;
     }
     if (!TextUtils.isEmpty(paramString)) {
-      QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      QQToast.makeText(ShoppingFragment.c(this.b), 1, paramString, 0).show();
     }
     if (!bool2) {
       BaseRequest.reMoveCache(paramBaseRequest);
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.getItemCount() == 0) {
-      ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
+    if (this.a.getItemCount() == 0) {
+      ShoppingFragment.b(this.b).a(true);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.d(paramBoolean);
+    this.a.d(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment.5
  * JD-Core Version:    0.7.0.1
  */

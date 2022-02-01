@@ -14,16 +14,11 @@ public class ProteusPagerSnapHelper
   extends PagerSnapHelper
   implements ProteusRecycleView.OnDispatchTouchEventListener
 {
-  private int jdField_a_of_type_Int = 3000;
-  private ProteusRecycleView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ProteusPagerSnapHelper.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 1000;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  Runnable a = new ProteusPagerSnapHelper.1(this);
+  private ProteusRecycleView b;
+  private int c = 3000;
+  private int d = 1000;
+  private boolean e = false;
   
   @Nullable
   public View a(LinearLayoutManager paramLinearLayoutManager)
@@ -32,7 +27,7 @@ public class ProteusPagerSnapHelper
     if (i == 0) {
       return null;
     }
-    OrientationHelper localOrientationHelper = a(paramLinearLayoutManager);
+    OrientationHelper localOrientationHelper = b(paramLinearLayoutManager);
     View localView = paramLinearLayoutManager.getChildAt(0);
     if (Math.abs(localOrientationHelper.getDecoratedStart(localView)) < 20) {
       return localView;
@@ -50,21 +45,21 @@ public class ProteusPagerSnapHelper
   
   public void a()
   {
-    a(this.jdField_a_of_type_Int);
+    a(this.c);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.b(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a(this);
+    this.e = true;
+    this.b.removeCallbacks(this.a);
+    this.b.postDelayed(this.a, paramLong);
+    this.b.b(this);
+    this.b.a(this);
   }
   
   public void a(MotionEvent paramMotionEvent)
@@ -75,36 +70,41 @@ public class ProteusPagerSnapHelper
       if ((i != 1) && (i != 3)) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      if (this.e) {
+        this.b.postDelayed(this.a, this.c);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.b.removeCallbacks(this.a);
     }
   }
   
   public void a(@Nullable RecyclerViewCompat paramRecyclerViewCompat)
   {
     super.a(paramRecyclerViewCompat);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView = ((ProteusRecycleView)paramRecyclerViewCompat);
+    this.b = ((ProteusRecycleView)paramRecyclerViewCompat);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.e = false;
+    this.b.removeCallbacks(this.a);
   }
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.ProteusPagerSnapHelper
  * JD-Core Version:    0.7.0.1
  */

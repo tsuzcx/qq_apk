@@ -6,48 +6,48 @@ import eipc.EIPCClient;
 
 public class WadlQIPCConnector
 {
-  private static volatile WadlQIPCConnector jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile WadlQIPCConnector a;
   private boolean b = false;
+  private boolean c = false;
+  private String d;
+  private Object e = new Object();
   
   public static WadlQIPCConnector a()
   {
-    if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {
-          jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector = new WadlQIPCConnector();
+        if (a == null) {
+          a = new WadlQIPCConnector();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector;
+    return a;
   }
   
-  private void b()
+  private void c()
   {
-    this.b = true;
+    this.c = true;
     QLog.d("Wadl_QIPCConnector", 1, "begin connect:");
     QIPCClientHelper.getInstance().getClient().addListener(new WadlQIPCConnector.1(this));
     long l = System.currentTimeMillis();
     QIPCClientHelper.getInstance().getClient().connect(new WadlQIPCConnector.2(this, l));
   }
   
-  public void a()
+  public void b()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
+    if ((!this.b) && (!this.c)) {
+      c();
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (!this.b) {
+      synchronized (this.e)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.b;
         if (!bool) {
           try
           {
-            this.jdField_a_of_type_JavaLangObject.wait(500L);
+            this.e.wait(500L);
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -61,7 +61,7 @@ public class WadlQIPCConnector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.ipc.WadlQIPCConnector
  * JD-Core Version:    0.7.0.1
  */

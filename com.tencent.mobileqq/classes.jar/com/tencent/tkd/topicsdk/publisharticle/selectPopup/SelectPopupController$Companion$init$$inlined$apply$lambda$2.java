@@ -21,7 +21,7 @@ final class SelectPopupController$Companion$init$$inlined$apply$lambda$2
   public final void invoke()
   {
     int i;
-    if (((CharSequence)SelectPopupController.a(this.$this_apply$inlined).a()).length() == 0) {
+    if (((CharSequence)SelectPopupController.c(this.$this_apply$inlined).a()).length() == 0) {
       i = 1;
     } else {
       i = 0;
@@ -31,7 +31,7 @@ final class SelectPopupController$Companion$init$$inlined$apply$lambda$2
       this.$this_apply$inlined.a(3);
       return;
     }
-    Object localObject = this.$model$inlined.a(SelectPopupController.a(this.$this_apply$inlined).a());
+    Object localObject = this.$model$inlined.a(SelectPopupController.c(this.$this_apply$inlined).a());
     Function3 localFunction3 = this.$this_apply$inlined.a();
     if (localFunction3 != null) {
       localObject = (Unit)localFunction3.invoke(Integer.valueOf(SelectPopupController.a(this.$this_apply$inlined)), Boolean.valueOf(false), localObject);
@@ -40,7 +40,7 @@ final class SelectPopupController$Companion$init$$inlined$apply$lambda$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupController.Companion.init..inlined.apply.lambda.2
  * JD-Core Version:    0.7.0.1
  */

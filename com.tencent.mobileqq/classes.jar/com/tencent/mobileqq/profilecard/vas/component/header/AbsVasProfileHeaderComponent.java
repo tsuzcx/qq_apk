@@ -170,7 +170,7 @@ public abstract class AbsVasProfileHeaderComponent
     }
     else
     {
-      Toast.makeText(this.mActivity, 2131695130, 0).show();
+      Toast.makeText(this.mActivity, 2131892858, 0).show();
     }
   }
   
@@ -202,12 +202,12 @@ public abstract class AbsVasProfileHeaderComponent
       }
       visitorTemplateHeaderClick(paramString, str);
       ReportController.b(this.mApp, "CliOper", "", "", "card_mall", "0X80047F0", 0, 0, Integer.toString(ProfileEntryUtils.getIdentityFlag(((ProfileCardInfo)this.mData).allInOne)), Long.toString(((ProfileCardInfo)this.mData).card.lCurrentBgId), "", VipUtils.a(this.mApp, str));
-      str = this.mActivity.getString(2131716753);
+      str = this.mActivity.getString(2131914225);
       ReportController.b(this.mApp, "dc00898", "", "", "", "0X800A4C0", 0, 0, "", "", "", "");
       localActionSheet = ActionSheet.create(this.mActivity);
-      localActionSheet.addButton(2131716890, 1);
+      localActionSheet.addButton(2131914363, 1);
       localActionSheet.addButton(str, 1);
-      localActionSheet.addButton(2131690728, 1);
+      localActionSheet.addButton(2131887648, 1);
       addAnimationListener(paramString, localActionSheet);
     }
     try
@@ -220,7 +220,7 @@ public abstract class AbsVasProfileHeaderComponent
   
   private void openVipServicePromptDialog(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.mOpenVipServicePromptDialog = DialogUtil.a(this.mActivity, 0, paramString1, paramString2, 2131695068, 2131695069, new AbsVasProfileHeaderComponent.7(this, paramString3, paramInt), this.mLeftButtonClickListener);
+    this.mOpenVipServicePromptDialog = DialogUtil.a(this.mActivity, 0, paramString1, paramString2, 2131892796, 2131892797, new AbsVasProfileHeaderComponent.7(this, paramString3, paramInt), this.mLeftButtonClickListener);
     this.mOpenVipServicePromptDialog.show();
   }
   
@@ -249,7 +249,7 @@ public abstract class AbsVasProfileHeaderComponent
   private boolean saveCardId2DB(long paramLong1, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, long paramLong2)
   {
     FriendsManager localFriendsManager = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = localFriendsManager.a(this.mActivity.getAppRuntime().getCurrentAccountUin());
+    Card localCard = localFriendsManager.f(this.mActivity.getAppRuntime().getCurrentAccountUin());
     if ((localCard != null) && (paramLong1 >= 0L))
     {
       localCard.lCurrentStyleId = paramLong1;
@@ -291,34 +291,34 @@ public abstract class AbsVasProfileHeaderComponent
       String str2;
       if (i == 1)
       {
-        str1 = this.mActivity.getString(2131695077);
-        str2 = HardCodeUtil.a(2131705024);
+        str1 = this.mActivity.getString(2131892805);
+        str2 = HardCodeUtil.a(2131902914);
       }
       for (;;)
       {
         break;
         if (i == 2)
         {
-          str1 = this.mActivity.getString(2131695070);
-          str2 = HardCodeUtil.a(2131705030);
+          str1 = this.mActivity.getString(2131892798);
+          str2 = HardCodeUtil.a(2131902920);
         }
         else if (i == 3)
         {
-          str1 = this.mActivity.getString(2131698736);
-          str2 = HardCodeUtil.a(2131705002);
+          str1 = this.mActivity.getString(2131896694);
+          str2 = HardCodeUtil.a(2131902893);
         }
         else if (i == 4)
         {
-          str1 = this.mActivity.getString(2131719638);
+          str1 = this.mActivity.getString(2131917239);
           str2 = "开通QQ大会员即可使用该名片";
         }
         else
         {
-          str1 = this.mActivity.getString(2131695070);
-          str2 = HardCodeUtil.a(2131705034);
+          str1 = this.mActivity.getString(2131892798);
+          str2 = HardCodeUtil.a(2131902924);
         }
       }
-      this.mOpenVipServicePromptDialog = DialogUtil.a(this.mActivity, 0, str1, str2, 2131695068, 2131695069, this.mRightButtonClickListener, this.mLeftButtonClickListener);
+      this.mOpenVipServicePromptDialog = DialogUtil.a(this.mActivity, 0, str1, str2, 2131892796, 2131892797, this.mRightButtonClickListener, this.mLeftButtonClickListener);
       this.mOpenVipServicePromptDialog.show();
     }
   }
@@ -354,7 +354,7 @@ public abstract class AbsVasProfileHeaderComponent
         return;
       }
       cancelOpenVipPromptDialog();
-      Object localObject2 = this.mActivity.getString(2131698736);
+      Object localObject2 = this.mActivity.getString(2131896694);
       String str = paramSSummaryCardRsp.emsg;
       int i = paramSSummaryCardRsp.payType;
       Object localObject1 = paramSSummaryCardRsp.aid;
@@ -379,7 +379,7 @@ public abstract class AbsVasProfileHeaderComponent
       ((StringBuilder)localObject2).append(" pay type=");
       ((StringBuilder)localObject2).append(i);
       QLog.e("QVipProfileCard.AbsVasProfileHeaderComponent", 1, ((StringBuilder)localObject2).toString());
-      Toast.makeText(this.mActivity, 2131695130, 0).show();
+      Toast.makeText(this.mActivity, 2131892858, 0).show();
     }
   }
   
@@ -391,7 +391,7 @@ public abstract class AbsVasProfileHeaderComponent
       {
         this.mSettingDialog = new QQProgressDialog(this.mActivity);
         this.mSettingDialog.setCancelable(false);
-        this.mSettingDialog.c(2131695132);
+        this.mSettingDialog.c(2131892860);
         this.mSettingDialog.show();
       }
       return;
@@ -450,7 +450,7 @@ public abstract class AbsVasProfileHeaderComponent
       }
       else
       {
-        Toast.makeText(this.mActivity.getApplicationContext(), 2131695133, 0).show();
+        Toast.makeText(this.mActivity.getApplicationContext(), 2131892861, 0).show();
       }
     }
   }
@@ -471,7 +471,7 @@ public abstract class AbsVasProfileHeaderComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       Object localObject = (DataTag)paramView.getTag();
-      int i = ((DataTag)localObject).jdField_a_of_type_Int;
+      int i = ((DataTag)localObject).a;
       if (i != 29)
       {
         if (i != 34)
@@ -486,8 +486,8 @@ public abstract class AbsVasProfileHeaderComponent
       }
       else
       {
-        if ((((DataTag)localObject).jdField_a_of_type_JavaLangObject instanceof String)) {
-          localObject = (String)((DataTag)localObject).jdField_a_of_type_JavaLangObject;
+        if ((((DataTag)localObject).b instanceof String)) {
+          localObject = (String)((DataTag)localObject).b;
         } else {
           localObject = "CLICK_HEADER_BG";
         }
@@ -526,7 +526,7 @@ public abstract class AbsVasProfileHeaderComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

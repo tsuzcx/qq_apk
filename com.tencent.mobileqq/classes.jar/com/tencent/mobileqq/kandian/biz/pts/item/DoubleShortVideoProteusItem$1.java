@@ -18,7 +18,7 @@ class DoubleShortVideoProteusItem$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a.k();
     if (localAbsBaseArticleInfo == null) {
       return;
     }
@@ -26,9 +26,9 @@ class DoubleShortVideoProteusItem$1
     if (localJSONObject == null) {
       return;
     }
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.a.u();
     boolean bool;
-    if (this.jdField_a_of_type_Int == 1131) {
+    if (this.b == 1131) {
       bool = true;
     } else {
       bool = false;
@@ -49,17 +49,17 @@ class DoubleShortVideoProteusItem$1
         }
       }
     }
-    if (!VideoFeedsHelper.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())) {
-      DoubleShortVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDoubleShortVideoProteusItem, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, localReadInJoyBaseAdapter);
+    if (!VideoFeedsHelper.a(paramViewBase, this.c.getContext())) {
+      DoubleShortVideoProteusItem.a(this.d, this.c.getContext(), paramViewBase, localReadInJoyBaseAdapter);
     }
     ReadInJoyLogicEngine.a().a(paramViewBase.mArticleID, System.currentTimeMillis());
-    DoubleShortVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDoubleShortVideoProteusItem, paramViewBase, bool, localJSONObject);
+    DoubleShortVideoProteusItem.a(this.d, paramViewBase, bool, localJSONObject);
     localReadInJoyBaseAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DoubleShortVideoProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

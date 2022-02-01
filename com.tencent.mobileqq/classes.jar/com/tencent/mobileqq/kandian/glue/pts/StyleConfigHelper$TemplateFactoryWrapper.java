@@ -4,18 +4,18 @@ import com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactory;
 
 public class StyleConfigHelper$TemplateFactoryWrapper
 {
-  public TemplateFactory a;
   public String a;
   public String b;
+  public TemplateFactory c;
   
   public StyleConfigHelper$TemplateFactoryWrapper(String paramString, TemplateFactory paramTemplateFactory, boolean paramBoolean)
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory = paramTemplateFactory;
+      this.c = paramTemplateFactory;
       if (paramBoolean)
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.a = paramString;
         return;
       }
       this.b = paramString;
@@ -26,7 +26,7 @@ public class StyleConfigHelper$TemplateFactoryWrapper
   
   public String a()
   {
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str2 = this.a;
     String str1 = str2;
     if (str2 == null) {
       str1 = this.b;
@@ -36,7 +36,7 @@ public class StyleConfigHelper$TemplateFactoryWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.StyleConfigHelper.TemplateFactoryWrapper
  * JD-Core Version:    0.7.0.1
  */

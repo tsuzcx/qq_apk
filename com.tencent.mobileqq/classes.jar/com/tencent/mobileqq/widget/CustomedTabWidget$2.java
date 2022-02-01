@@ -19,8 +19,8 @@ class CustomedTabWidget$2
         if (this.a.getChildAt(i) == paramView)
         {
           paramView = this.a;
-          paramView.jdField_a_of_type_Int = i;
-          paramView.jdField_a_of_type_Boolean = true;
+          paramView.e = i;
+          paramView.f = true;
           paramView.invalidate();
           return false;
         }
@@ -30,7 +30,7 @@ class CustomedTabWidget$2
     if (paramMotionEvent.getAction() == 1)
     {
       paramView = this.a;
-      paramView.jdField_a_of_type_Boolean = false;
+      paramView.f = false;
       paramView.invalidate();
     }
     return false;
@@ -38,7 +38,7 @@ class CustomedTabWidget$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomedTabWidget.2
  * JD-Core Version:    0.7.0.1
  */

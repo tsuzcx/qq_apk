@@ -4,7 +4,6 @@ import android.content.Context;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
-import mqq.app.AppActivity;
 
 @QAPI(process={"all"})
 public abstract interface IWeatherCommApi
@@ -20,6 +19,8 @@ public abstract interface IWeatherCommApi
   
   public abstract void openWeatherByScheme(Context paramContext, String paramString);
   
+  public abstract void openWeatherWebForHippy(Context paramContext, String paramString);
+  
   public abstract void openWeatherWebPage(Context paramContext, String paramString1, String paramString2);
   
   public abstract void preloadWebProcessAsync(int paramInt);
@@ -34,11 +35,11 @@ public abstract interface IWeatherCommApi
   
   public abstract String transformUrlToScheme(String paramString);
   
-  public abstract void translate(AppInterface paramAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity);
+  public abstract void translate(AppInterface paramAppInterface, int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.api.IWeatherCommApi
  * JD-Core Version:    0.7.0.1
  */

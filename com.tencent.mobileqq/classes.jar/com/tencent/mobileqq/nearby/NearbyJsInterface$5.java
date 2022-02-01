@@ -1,83 +1,51 @@
 package com.tencent.mobileqq.nearby;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.HashMap;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.RspBody;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import org.json.JSONObject;
 
 class NearbyJsInterface$5
   implements BusinessObserver
 {
-  NearbyJsInterface$5(NearbyJsInterface paramNearbyJsInterface, String paramString, boolean paramBoolean) {}
+  NearbyJsInterface$5(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject;
-    if ((paramBoolean) && (paramBundle != null))
+    if (paramBoolean) {}
+    try
     {
       paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
-    }
-    for (;;)
-    {
-      int j;
-      try
+      if (paramBundle != null)
       {
-        paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()) && (paramBundle.bytes_bodybuffer.get() != null))
-        {
-          localObject = new oidb_0x8c1.RspBody();
-          ((oidb_0x8c1.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          paramBundle = (oidb_0x8c1.SelfCardInfo)((oidb_0x8c1.RspBody)localObject).msg_card_info.get();
-          j = 1001;
-          paramInt = j;
-          if (paramBundle.int32_friend_flag.has())
-          {
-            paramInt = paramBundle.int32_friend_flag.get();
-            i = 1;
-            if (paramInt != 1) {
-              break label253;
-            }
-            break label256;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramBundle.bytes_xml_msg.get().toByteArray(), String.valueOf(paramBundle.uint64_uin.get()), 2, paramInt);
-          paramBundle = new NearbyJsInterface.MatchUserInfo(String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(this.jdField_a_of_type_JavaLangString), paramBundle);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, paramBundle);
-            return;
-          }
-        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+        this.b.callJs(new JSONObject(this.a).getString("callback"), new String[] { paramBundle.toString() });
+        return;
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
+      if (!QLog.isColorLevel()) {
+        break label111;
       }
+      QLog.w("followUser js api", 2, " no data!");
       return;
-      label253:
-      int i = 0;
-      label256:
-      paramInt = j;
-      if (i != 0) {
-        paramInt = 0;
-      }
+    }
+    catch (Exception paramBundle)
+    {
+      label97:
+      label111:
+      break label97;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("followUser js api", 2, " no data! error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.5
  * JD-Core Version:    0.7.0.1
  */

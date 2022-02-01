@@ -9,65 +9,64 @@ public class WSFriendItemData
   extends WSAbsSubItem<ArrayList<stSimpleMetaFeed>>
   implements Foldable<stSimpleMetaFeed>
 {
-  protected int a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  protected int c = 0;
+  private boolean d;
+  private String e;
   
   public WSFriendItemData()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = new ArrayList();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.a = new ArrayList();
+    this.b = new StringBuilder();
   }
   
   private boolean b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (a() == 0)) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramstSimpleMetaFeed.poster_id));
-  }
-  
-  public int a()
-  {
-    return ((ArrayList)this.jdField_a_of_type_JavaLangObject).size();
+    return ((TextUtils.isEmpty(this.e)) && (d() == 0)) || (TextUtils.equals(this.e, paramstSimpleMetaFeed.poster_id));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
+    this.d = paramBoolean;
+    if (this.d) {
       WeiShiCacheManager.a().a(a());
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     if ((paramstSimpleMetaFeed != null) && (b(paramstSimpleMetaFeed)))
     {
-      this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
-      ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
+      this.e = paramstSimpleMetaFeed.poster_id;
+      this.b.append(paramstSimpleMetaFeed.id);
+      ((ArrayList)this.a).add(paramstSimpleMetaFeed);
       return true;
     }
     return false;
   }
   
-  public int b()
+  public boolean c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
+  }
+  
+  public int d()
+  {
+    return ((ArrayList)this.a).size();
+  }
+  
+  public int e()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.data.WSFriendItemData
  * JD-Core Version:    0.7.0.1
  */

@@ -11,36 +11,36 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class RecentTabHaloPresenter
   implements Destroyable, IEventReceiver
 {
-  private RecentTabHaloPresenter.Callback jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback;
-  private RecentTabHaloPresenter.HaloResponseReceiver jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$HaloResponseReceiver;
-  private RecentTabHaloPresenter.ReadStoryVideoEventReceiver jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final QQAppInterface a;
+  private AtomicBoolean b = new AtomicBoolean(false);
+  private RecentTabHaloPresenter.HaloResponseReceiver c;
+  private RecentTabHaloPresenter.ReadStoryVideoEventReceiver d;
+  private RecentTabHaloPresenter.Callback e;
   
   public RecentTabHaloPresenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$HaloResponseReceiver = new RecentTabHaloPresenter.HaloResponseReceiver(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$HaloResponseReceiver);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver);
+    this.a = paramQQAppInterface;
+    c();
   }
   
   private void c()
+  {
+    this.c = new RecentTabHaloPresenter.HaloResponseReceiver(this);
+    this.d = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.c);
+    StoryDispatcher.a().registerSubscriber(this.d);
+  }
+  
+  private void d()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("invalidateHalo: invoked.  mCallback: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback);
+      ((StringBuilder)localObject).append(this.e);
       QLog.i("RecentTabHaloPresenter", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback;
+    Object localObject = this.e;
     if (localObject != null) {
       ((RecentTabHaloPresenter.Callback)localObject).a();
     }
@@ -51,10 +51,10 @@ public class RecentTabHaloPresenter
     if (QLog.isColorLevel()) {
       QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
     }
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$HaloResponseReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback = null;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    StoryDispatcher.a().unRegisterSubscriber(this.c);
+    StoryDispatcher.a().unRegisterSubscriber(this.d);
+    this.e = null;
+    this.b.set(true);
   }
   
   public void a(RecentTabHaloPresenter.Callback paramCallback)
@@ -66,22 +66,22 @@ public class RecentTabHaloPresenter
       localStringBuilder.append(paramCallback);
       QLog.i("RecentTabHaloPresenter", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback = paramCallback;
+    this.e = paramCallback;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.b.get();
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.b.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter
  * JD-Core Version:    0.7.0.1
  */

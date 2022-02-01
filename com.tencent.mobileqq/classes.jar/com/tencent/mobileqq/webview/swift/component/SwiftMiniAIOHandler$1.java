@@ -29,7 +29,7 @@ class SwiftMiniAIOHandler$1
       paramString.append(localJSONObject.toString());
       paramString.append(");");
       paramString = paramString.toString();
-      ((TouchWebView)this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a()).callJs(paramString);
+      ((TouchWebView)this.a.b.a()).callJs(paramString);
       return;
     }
     catch (Exception paramString)
@@ -64,14 +64,14 @@ class SwiftMiniAIOHandler$1
   
   public void onOpenMiniAIOCallback()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null) {
+    if (this.a.a == null) {
       return;
     }
     SwiftMiniAIOHandler localSwiftMiniAIOHandler = this.a;
-    Object localObject2 = localSwiftMiniAIOHandler.a();
+    Object localObject2 = localSwiftMiniAIOHandler.c();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = localSwiftMiniAIOHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().getTitle();
+      localObject1 = localSwiftMiniAIOHandler.b.a().getTitle();
     }
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -80,12 +80,12 @@ class SwiftMiniAIOHandler$1
     }
     else
     {
-      localObject2 = HardCodeUtil.a(2131716372);
+      localObject2 = HardCodeUtil.a(2131913812);
     }
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam();
-    ((MiniMsgUserParam)localObject2).backConversationIntent = WebViewJumpUtils.a((Bundle)localObject1, localSwiftMiniAIOHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a());
+    localObject2 = this.a.a.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = WebViewJumpUtils.a((Bundle)localObject1, localSwiftMiniAIOHandler.b.c());
     WebViewJumpUtils.a(((MiniMsgUserParam)localObject2).backConversationIntent);
     try
     {
@@ -100,7 +100,7 @@ class SwiftMiniAIOHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftMiniAIOHandler.1
  * JD-Core Version:    0.7.0.1
  */

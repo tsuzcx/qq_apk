@@ -11,8 +11,8 @@ class TroopStoryMemoriesListAdapter$ShootingItemViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    if (this.a.c.c != null) {
+      this.a.c.c.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

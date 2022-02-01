@@ -13,19 +13,22 @@ public abstract interface ISpriteTaskHandler
   
   public abstract void a(@Nullable ISpriteTaskStatusCallback paramISpriteTaskStatusCallback);
   
-  public abstract void a(@Nullable SpriteTaskParam paramSpriteTaskParam);
-  
-  public abstract boolean a();
-  
   public abstract boolean a(long paramLong);
   
   public abstract boolean a(@Nullable SpriteTaskParam paramSpriteTaskParam);
   
-  public abstract int b();
+  @Nullable
+  public abstract SpriteTaskParam b();
+  
+  public abstract void b(@Nullable SpriteTaskParam paramSpriteTaskParam);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.ISpriteTaskHandler
  * JD-Core Version:    0.7.0.1
  */

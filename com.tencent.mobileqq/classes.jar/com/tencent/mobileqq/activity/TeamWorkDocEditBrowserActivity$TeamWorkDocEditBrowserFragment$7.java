@@ -50,28 +50,28 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
     if (paramBundle == null) {
       return;
     }
-    if (paramBundle.getInt("respkey", 0) == this.a.a.key)
+    if (paramBundle.getInt("respkey", 0) == this.a.x.key)
     {
       TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
       String str = paramBundle.getString("cmd");
       paramBundle.getString("callbackid");
       Object localObject = paramBundle.getBundle("response");
       paramBundle = paramBundle.getBundle("request");
-      long l = TenDocLogReportHelper.a("get_url_time");
-      if (("ipc_cmd_get_team_work_url".equals(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null))
+      long l = TenDocLogReportHelper.g("get_url_time");
+      if (("ipc_cmd_get_team_work_url".equals(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a) != null))
       {
         str = ((Bundle)localObject).getString("url");
         Bundle localBundle = new Bundle();
         localBundle.putString("url", str);
         QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
-        if ((!TextUtils.isEmpty(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
+        if ((!TextUtils.isEmpty(str)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).a()))
         {
           TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a, ((Bundle)localObject).getBoolean("needRefresh"));
           if (this.a.getIntent().getStringExtra("tdsourcetag") != null)
           {
             localObject = this.a.getIntent().getStringExtra("tdsourcetag");
             str = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTencentDocSourceAdtagStrUrl(str, (String)localObject);
-            if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getContext(), str, (String)localObject, true))
+            if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.d(this.a).getContext(), str, (String)localObject, true))
             {
               ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED7");
               this.a.getQBaseActivity().finish();
@@ -79,7 +79,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
             else
             {
               ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED6");
-              TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).loadUrl(str);
+              TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.e(this.a).loadUrl(str);
             }
             paramBundle = new StringBuilder();
             paramBundle.append(String.valueOf(l));
@@ -88,7 +88,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
             TenDocLogReportHelper.a("WebLog_WebViewFragment", "get_url_time", paramBundle.toString());
             return;
           }
-          if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).getContext(), str, "s_qq_file_edit", true))
+          if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.f(this.a).getContext(), str, "s_qq_file_edit", true))
           {
             ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED7");
             this.a.getQBaseActivity().finish();
@@ -96,7 +96,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
           else
           {
             ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED6");
-            TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.d(this.a).loadUrl(str);
+            TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.g(this.a).loadUrl(str);
           }
           paramBundle = new StringBuilder();
           paramBundle.append(String.valueOf(l));
@@ -111,7 +111,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
         if ((Math.abs(i) == 115) && (!TextUtils.isEmpty((CharSequence)localObject)))
         {
           str = this.a.getIntent().getStringExtra("tdsourcetag");
-          if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.e(this.a).getContext(), (String)localObject, str, true))
+          if (TeamWorkDocEditBrowserActivity.a(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.h(this.a).getContext(), (String)localObject, str, true))
           {
             ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED7");
             this.a.getQBaseActivity().finish();
@@ -119,7 +119,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
           else
           {
             ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(paramBundle, "0X8009ED6");
-            TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.f(this.a).loadUrl((String)localObject);
+            TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.i(this.a).loadUrl((String)localObject);
           }
           paramBundle = new StringBuilder();
           paramBundle.append(String.valueOf(l));
@@ -128,7 +128,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
           TenDocLogReportHelper.a("WebLog_WebViewFragment", "get_url_time", paramBundle.toString());
           return;
         }
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a(i, str);
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).a(i, str);
         if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, null)) {
           TenDocLogReportHelper.a(null, "0X800A755");
         }
@@ -144,7 +144,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.7
  * JD-Core Version:    0.7.0.1
  */

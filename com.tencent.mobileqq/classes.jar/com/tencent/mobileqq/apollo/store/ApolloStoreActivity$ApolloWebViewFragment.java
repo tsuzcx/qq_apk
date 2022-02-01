@@ -23,16 +23,16 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   extends WebViewFragment
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+  private String a;
   private long b = 0L;
+  private long c = 0L;
+  private MqqHandler d = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
   
   public void a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    this.b = System.currentTimeMillis();
-    int i = (int)(this.b - this.jdField_a_of_type_Long);
+    this.d.removeMessages(1);
+    this.c = System.currentTimeMillis();
+    int i = (int)(this.c - this.b);
     if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity))) {
       ApolloStoreActivity.a((ApolloStoreActivity)getActivity(), i);
     }
@@ -43,12 +43,12 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.b = 0L;
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+    this.b = System.currentTimeMillis();
+    this.c = 0L;
+    this.d.removeMessages(1);
     long l = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 4).getLong("SP_KEY_APOLLO_STORE_PAGE_LOAD_TIMEOUT_VALUE", 15000L);
     QLog.d("[cmshow]ApolloStoreActivity", 2, new Object[] { "page load timeout value is:", Long.valueOf(l) });
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, l);
+    this.d.sendEmptyMessageDelayed(1, l);
     if (QLog.isColorLevel())
     {
       paramWebView = new StringBuilder();
@@ -59,7 +59,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
     if ((getActivity() instanceof ApolloStoreActivity))
     {
       paramWebView = (ApolloStoreActivity)getActivity();
-      paramBitmap = this.jdField_a_of_type_JavaLangString;
+      paramBitmap = this.a;
       if ((paramBitmap != null) && (!paramBitmap.equals(paramString)) && (ApolloStoreActivity.a(paramWebView) != null)) {
         ApolloStoreActivity.a(paramWebView).b();
       }
@@ -68,7 +68,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
       paramWebView.putString("apollo_store_watch_current_url", paramString);
       paramWebView.apply();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public WebViewKernelCallBack getWebViewKernelCallBack()
@@ -81,8 +81,8 @@ public class ApolloStoreActivity$ApolloWebViewFragment
     if (paramMessage.what != 1) {
       return true;
     }
-    if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity)) && (this.b == 0L)) {
-      ApolloStoreActivity.a((ApolloStoreActivity)getActivity());
+    if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity)) && (this.c == 0L)) {
+      ApolloStoreActivity.b((ApolloStoreActivity)getActivity());
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment_apollo_store_stability_", 2, "handleMessage. MSG_CODE_CHECK_PAGE_LOAD_TIMEOUT");
@@ -92,7 +92,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == getSwiftTitleUI().a) && ((getActivity() instanceof ApolloStoreActivity)))
+    if ((paramView == getSwiftTitleUI().d) && ((getActivity() instanceof ApolloStoreActivity)))
     {
       ((ApolloStoreActivity)getActivity()).a();
       return;
@@ -111,7 +111,7 @@ public class ApolloStoreActivity$ApolloWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.ApolloWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

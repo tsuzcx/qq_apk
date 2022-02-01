@@ -11,9 +11,9 @@ class LiteAdvanceActivity$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LiteAdvanceActivity.d(this.a, paramBoolean);
+    LiteAdvanceActivity.e(this.a, paramBoolean);
     LiteAdvanceActivity localLiteAdvanceActivity = this.a;
-    LiteAdvanceActivity.b(localLiteAdvanceActivity, LiteAdvanceActivity.b(localLiteAdvanceActivity));
+    LiteAdvanceActivity.f(localLiteAdvanceActivity, LiteAdvanceActivity.c(localLiteAdvanceActivity));
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }

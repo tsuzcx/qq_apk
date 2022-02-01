@@ -9,8 +9,6 @@ import kotlin.Metadata;
 final class SimpleMessageDialog$$special$$inlined$with$lambda$3
   implements View.OnClickListener
 {
-  SimpleMessageDialog$$special$$inlined$with$lambda$3(SimpleMessageDialog paramSimpleMessageDialog) {}
-  
   public final void onClick(View paramView)
   {
     SimpleMessageDialog.a(this.a).setText((CharSequence)"");
@@ -18,7 +16,7 @@ final class SimpleMessageDialog$$special$$inlined$with$lambda$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.SimpleMessageDialog..special..inlined.with.lambda.3
  * JD-Core Version:    0.7.0.1
  */

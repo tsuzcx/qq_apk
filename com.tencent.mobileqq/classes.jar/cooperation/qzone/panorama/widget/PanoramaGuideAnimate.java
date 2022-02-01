@@ -75,15 +75,15 @@ public class PanoramaGuideAnimate
     setOrientation(1);
     setGravity(1);
     this.imgPhone = new ImageView(this.context);
-    this.imgPhone.setImageResource(2130847850);
+    this.imgPhone.setImageResource(2130849511);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(100, 100);
     localLayoutParams.bottomMargin = 20;
     addView(this.imgPhone, localLayoutParams);
     this.tvToast = new TextView(this.context);
     if (paramInt == 1) {
-      this.tvToast.setText(this.context.getResources().getString(2131717419));
+      this.tvToast.setText(this.context.getResources().getString(2131914892));
     } else {
-      this.tvToast.setText(this.context.getResources().getString(2131717420));
+      this.tvToast.setText(this.context.getResources().getString(2131914893));
     }
     this.tvToast.setTextColor(-1);
     this.tvToast.setTextSize(14.0F);
@@ -113,7 +113,7 @@ public class PanoramaGuideAnimate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaGuideAnimate
  * JD-Core Version:    0.7.0.1
  */

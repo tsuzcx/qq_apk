@@ -32,7 +32,7 @@ public class RecentItemTencentDocsAssistantData
       QLog.d("RecentItemTencentDocsAssistantData", 2, "RecentItemTencentDocsAssistantData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = paramContext.getString(2131719599);
+    this.mTitleName = paramContext.getString(2131917162);
     this.mMsgExtroInfo = "";
     paramQQAppInterface = (TroopRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
     int j = 0;
@@ -46,7 +46,7 @@ public class RecentItemTencentDocsAssistantData
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      this.mLastMsg = paramContext.getString(2131719600);
+      this.mLastMsg = paramContext.getString(2131917163);
     }
     else
     {
@@ -132,9 +132,9 @@ public class RecentItemTencentDocsAssistantData
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         this.mLastMsg = ((CharSequence)localObject2);
       } else {
-        this.mLastMsg = paramContext.getString(2131719600);
+        this.mLastMsg = paramContext.getString(2131917163);
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -175,7 +175,7 @@ public class RecentItemTencentDocsAssistantData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTencentDocsAssistantData
  * JD-Core Version:    0.7.0.1
  */

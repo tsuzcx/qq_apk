@@ -38,7 +38,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.setFlags(67108864);
     localIntent1.putExtra("tab_index", FrameControllerUtil.a);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", HardCodeUtil.a(2131705440));
+    localIntent1.putExtra("banner_wording", HardCodeUtil.a(2131903328));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -56,16 +56,16 @@ public class GroupMiniAioInterfaceImpl
   {
     int k = this.mActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int m = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    int n = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297351);
+    int n = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297818);
     int j = this.xPoint;
     int i = j;
     if (j == 0) {
-      i = k - n * 4 - ViewUtils.b(35.0F);
+      i = k - n * 4 - ViewUtils.dpToPx(35.0F);
     }
     k = this.yPoint;
     j = k;
     if (k == 0) {
-      j = ViewUtils.a(7.0F);
+      j = ViewUtils.dip2px(7.0F);
     }
     MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
     localMiniMsgUserParam.businessName = 26;
@@ -86,7 +86,7 @@ public class GroupMiniAioInterfaceImpl
   
   public void onCreate(Context paramContext, String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    AIOUnreadQIPCClient.a();
+    AIOUnreadQIPCClient.b();
     TextUtils.isEmpty(paramString1);
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
@@ -113,7 +113,7 @@ public class GroupMiniAioInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.GroupMiniAioInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

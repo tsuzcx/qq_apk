@@ -19,19 +19,19 @@ class NativeCommentView$1
   
   public void onClick(View paramView)
   {
-    paramView = this.a.a.a.a();
+    paramView = this.b.f.a.k();
     if (paramView.isPGCShortContent())
     {
-      RIJFrameworkReportManager.a(this.a.getContext(), paramView, (int)paramView.mChannelID);
-      PGCShortContentUtils.a(this.a.getContext(), paramView);
+      RIJFrameworkReportManager.a(this.b.getContext(), paramView, (int)paramView.mChannelID);
+      PGCShortContentUtils.a(this.b.getContext(), paramView);
       return;
     }
-    RIJJumpUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    RIJJumpUtils.a(this.b.getContext(), this.b.f.a.k(), 1, false, 8, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeCommentView.1
  * JD-Core Version:    0.7.0.1
  */

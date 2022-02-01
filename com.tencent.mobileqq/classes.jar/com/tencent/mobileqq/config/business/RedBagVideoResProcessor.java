@@ -22,8 +22,8 @@ public class RedBagVideoResProcessor
   public RedBagVideoResProcessor.RedBagVideoResConfigBean a(int paramInt)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = SharedPreUtils.j(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new RedBagVideoResProcessor.RedBagVideoResConfigBean(SharedPreUtils.k(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
+    String str = SharedPreUtils.aM(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+    return new RedBagVideoResProcessor.RedBagVideoResConfigBean(SharedPreUtils.aN(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
   }
   
   @Nullable
@@ -34,7 +34,7 @@ public class RedBagVideoResProcessor
       if (paramArrayOfQConfItem.length == 0) {
         return null;
       }
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       Object localObject;
       if (QLog.isColorLevel())
       {
@@ -89,7 +89,7 @@ public class RedBagVideoResProcessor
   public int migrateOldVersion()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return SharedPreUtils.aj(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
+    return SharedPreUtils.aO(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
   }
   
   public void onReqFailed(int paramInt)
@@ -106,7 +106,7 @@ public class RedBagVideoResProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RedBagVideoResProcessor
  * JD-Core Version:    0.7.0.1
  */

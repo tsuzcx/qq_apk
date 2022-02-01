@@ -28,24 +28,23 @@ public class NormalFaceAdapter
   extends BaseFaceListAdapter<NormalFacePackage>
   implements View.OnClickListener
 {
-  private BaseFaceListAdapter.CacheRefMap<String, Drawable> a;
+  private BaseFaceListAdapter.CacheRefMap<String, Drawable> f = new BaseFaceListAdapter.CacheRefMap();
   
   public NormalFaceAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
     super(paramContext, paramFaceListPage);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter$CacheRefMap = new BaseFaceListAdapter.CacheRefMap();
   }
   
   private void a(View paramView)
   {
     ImageView localImageView = (ImageView)paramView;
-    int j = ((Integer)localImageView.getTag(2131378301)).intValue();
-    NormalFacePackage localNormalFacePackage = (NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage;
-    StoryReportor.a((Activity)paramView.getContext(), "sticker_element", ((NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).jdField_a_of_type_JavaLangString, String.valueOf(j));
-    int i = localNormalFacePackage.a(j);
+    int j = ((Integer)localImageView.getTag(2131446820)).intValue();
+    NormalFacePackage localNormalFacePackage = (NormalFacePackage)this.b;
+    StoryReportor.a((Activity)paramView.getContext(), "sticker_element", ((NormalFacePackage)this.b).a, String.valueOf(j));
+    int i = localNormalFacePackage.c(j);
     String str1 = Uri.parse(localNormalFacePackage.a(j)).getPath();
     String str2 = new File(str1).getName();
-    if ((i == 1) && ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity)))
+    if ((i == 1) && ((this.a instanceof EditPicActivity)))
     {
       paramView = localNormalFacePackage.b(j);
       if (paramView != null)
@@ -54,7 +53,7 @@ public class NormalFaceAdapter
         i = 0;
       }
     }
-    Drawable localDrawable = (Drawable)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter$CacheRefMap.a(str1);
+    Drawable localDrawable = (Drawable)this.f.a(str1);
     if (localDrawable == null)
     {
       if (i != 1)
@@ -107,12 +106,12 @@ public class NormalFaceAdapter
         }
       }
       if (paramView != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter$CacheRefMap.a(str1, paramView);
+        this.f.a(str1, paramView);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter$CacheRefMap.a();
+      this.f.a();
       paramView = localDrawable;
     }
     if (paramView != null)
@@ -143,30 +142,30 @@ public class NormalFaceAdapter
       j = paramImageView.getPaddingTop();
     }
     if (k > i) {
-      f = ((k - i) / 2 - j) * 2 + i;
+      f1 = ((k - i) / 2 - j) * 2 + i;
     } else {
-      f = i - ((i - k) / 2 + j) * 2;
+      f1 = i - ((i - k) / 2 + j) * 2;
     }
-    double d1 = f / i;
-    double d2 = paramNormalFacePackage.jdField_a_of_type_Double;
+    double d1 = f1 / i;
+    double d2 = paramNormalFacePackage.h;
     Double.isNaN(d1);
-    float f = (float)(d1 * d2);
+    float f1 = (float)(d1 * d2);
     paramNormalFacePackage = new SelectedItem(paramNormalFacePackage.b, paramString2, paramDrawable, paramInt);
     paramDrawable = PasterUtil.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener.a(paramNormalFacePackage, paramDrawable.a, paramDrawable.b, f, paramString1, null);
+    this.c.a(paramNormalFacePackage, paramDrawable.a, paramDrawable.b, f1, paramString1, null);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage == null) {
+    if (this.b == null) {
       return paramView;
     }
     if (paramView == null) {
-      paramView = new NormalFaceAdapter.NormalItemLayout(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage).a(), this, this);
+      paramView = new NormalFaceAdapter.NormalItemLayout(this.a, paramViewGroup.getWidth(), ((NormalFacePackage)this.b).a(), ((NormalFacePackage)this.b).b(), this, this);
     } else {
       paramView = (NormalFaceAdapter.NormalItemLayout)paramView;
     }
-    paramView.a((NormalFacePackage)this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceFacePackage, paramInt, getCount(), a());
+    paramView.a((NormalFacePackage)this.b, paramInt, getCount(), a());
     return paramView;
   }
   
@@ -177,7 +176,7 @@ public class NormalFaceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.NormalFaceAdapter
  * JD-Core Version:    0.7.0.1
  */

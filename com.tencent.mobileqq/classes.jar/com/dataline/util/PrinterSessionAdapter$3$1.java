@@ -13,12 +13,12 @@ class PrinterSessionAdapter$3$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.status < 10) {
-      this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.a.a(0, this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.uSessionID, true);
+    if (this.a.a.status < 10) {
+      this.a.c.d.a(0, this.a.a.uSessionID, true);
     }
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.a.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord);
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.b();
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.notifyDataSetChanged();
+    this.a.c.d.e.a(this.a.a);
+    this.a.c.d();
+    this.a.c.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }
 }

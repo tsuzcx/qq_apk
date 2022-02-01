@@ -3,6 +3,8 @@ package com.tencent.mobileqq.vas.hippy.view;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
+import com.tencent.mobileqq.data.dt.QQDtConfig;
+import com.tencent.mobileqq.data.dt.QQDtConfig.IDTCustomPublicParamsListener;
 import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -16,7 +18,6 @@ import com.tencent.qqlive.module.videoreport.constants.EndExposurePolicy;
 import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -25,36 +26,9 @@ public class HippyDTReportController
   extends HippyCustomPropsController
 {
   private static final String TAG = "HippyDTReportController";
+  QQDtConfig.IDTCustomPublicParamsListener mDtCustomPublicParams;
   
-  public void dispatchFunction(View paramView, String paramString, HippyArray paramHippyArray)
-  {
-    if (("report_event".equals(paramString)) && (paramHippyArray.size() == 2)) {
-      try
-      {
-        String str = (String)paramHippyArray.get(0);
-        Object localObject2 = (HippyMap)paramHippyArray.get(1);
-        localObject1 = new HashMap();
-        if (((HippyMap)localObject2).size() > 0)
-        {
-          localObject2 = ((HippyMap)localObject2).entrySet().iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-            ((HashMap)localObject1).put(localEntry.getKey(), localEntry.getValue());
-          }
-        }
-        VideoReport.reportEvent(str, paramView, (Map)localObject1);
-      }
-      catch (Exception localException)
-      {
-        Object localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("call report_event Exception :");
-        ((StringBuilder)localObject1).append(localException);
-        QLog.e("HippyDTReportController", 1, ((StringBuilder)localObject1).toString());
-      }
-    }
-    super.dispatchFunction(paramView, paramString, paramHippyArray);
-  }
+  public void dispatchFunction(View paramView, String paramString, HippyArray paramHippyArray) {}
   
   @HippyControllerProps(defaultType="string", name="dt_interactReportPolicy")
   public void setClickPolicy(@NonNull View paramView, String paramString)
@@ -222,13 +196,16 @@ public class HippyDTReportController
         Map.Entry localEntry = (Map.Entry)paramHippyMap.next();
         paramView.put(localEntry.getKey(), localEntry.getValue());
       }
-      VideoReport.registerEventDynamicParams(new HippyDTReportController.4(this, paramView));
+      if (this.mDtCustomPublicParams == null) {
+        this.mDtCustomPublicParams = new HippyDTReportController.4(this, paramView);
+      }
+      QQDtConfig.a().a(this.mDtCustomPublicParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.view.HippyDTReportController
  * JD-Core Version:    0.7.0.1
  */

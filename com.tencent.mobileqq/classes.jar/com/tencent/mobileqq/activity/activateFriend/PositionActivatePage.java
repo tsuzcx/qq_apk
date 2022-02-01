@@ -12,42 +12,41 @@ import mqq.util.WeakReference;
 public class PositionActivatePage
   extends ActivateBasePage
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PositionActivatePage.2(this);
-  private ActivateFriendGrid.GridCallBack jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack = new PositionActivatePage.1(this);
-  String jdField_a_of_type_JavaLangString;
-  private WeakReference<ActivateFriendActivity> jdField_a_of_type_MqqUtilWeakReference;
-  private View.OnClickListener b;
+  String k;
+  private WeakReference<ActivateFriendActivity> l;
+  private ActivateFriendGrid.GridCallBack m = new PositionActivatePage.1(this);
+  private View.OnClickListener n = new PositionActivatePage.2(this);
+  private View.OnClickListener o = new PositionActivatePage.3(this);
   
   public PositionActivatePage(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new PositionActivatePage.3(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference((ActivateFriendActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131689557);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setGridCallBack(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    this.l = new WeakReference((ActivateFriendActivity)paramContext);
+    this.f.setText(2131886167);
+    this.f.setOnClickListener(this.n);
+    this.i.setGridCallBack(this.m);
+    this.g.setVisibility(0);
+    this.g.setOnClickListener(this.o);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560902, this, false);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362017));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362013));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362014));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131362011));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362016));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362010));
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)this.jdField_a_of_type_AndroidViewView.findViewById(2131367320));
-    a((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362032));
-    addView(this.jdField_a_of_type_AndroidViewView);
+    this.b = this.a.inflate(2131627243, this, false);
+    this.b.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.c = ((TextView)this.b.findViewById(2131427595));
+    this.d = ((TextView)this.b.findViewById(2131427591));
+    this.e = ((TextView)this.b.findViewById(2131427592));
+    this.f = ((Button)this.b.findViewById(2131427589));
+    this.g = ((TextView)this.b.findViewById(2131427594));
+    this.h = ((TextView)this.b.findViewById(2131427588));
+    this.i = ((ActivateFriendGrid)this.b.findViewById(2131433777));
+    a((TextView)this.b.findViewById(2131427610));
+    addView(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.PositionActivatePage
  * JD-Core Version:    0.7.0.1
  */

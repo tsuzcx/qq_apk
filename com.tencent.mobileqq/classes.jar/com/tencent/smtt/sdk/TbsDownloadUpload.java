@@ -32,7 +32,7 @@ public class TbsDownloadUpload
   private static File a(Context paramContext, String paramString)
   {
     p.a();
-    paramContext = p.s(paramContext);
+    paramContext = p.t(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -724,7 +724,7 @@ public class TbsDownloadUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadUpload
  * JD-Core Version:    0.7.0.1
  */

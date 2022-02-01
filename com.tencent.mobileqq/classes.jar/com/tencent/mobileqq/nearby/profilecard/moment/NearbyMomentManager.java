@@ -50,15 +50,14 @@ import mqq.os.MqqHandler;
 public class NearbyMomentManager
   implements INearbyMomentManager, Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  protected DecimalFormat a;
-  private List<NearbyMomentManager.MomentDataChangeObserver> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  protected DecimalFormat a = new DecimalFormat("#.##");
+  private List<NearbyMomentManager.MomentDataChangeObserver> b = new CopyOnWriteArrayList();
+  private QQAppInterface c;
+  private String d;
   
   public NearbyMomentManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#.##");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private MomentFeedInfo a(ilive_feeds_read.FeedsInfo paramFeedsInfo)
@@ -73,8 +72,8 @@ public class NearbyMomentManager
     if (i == 5)
     {
       localObject1 = new LiveMomentFeedInfo();
-      ((LiveMomentFeedInfo)localObject1).jdField_a_of_type_JavaLangString = paramFeedsInfo.live_info.pic_url.get().toStringUtf8();
-      ((LiveMomentFeedInfo)localObject1).n = paramFeedsInfo.live_info.desc.get().toStringUtf8();
+      ((LiveMomentFeedInfo)localObject1).a = paramFeedsInfo.live_info.pic_url.get().toStringUtf8();
+      ((LiveMomentFeedInfo)localObject1).s = paramFeedsInfo.live_info.desc.get().toStringUtf8();
     }
     else if ((paramFeedsInfo.feed_type.get() != 1) && (paramFeedsInfo.feed_type.get() != 3) && (paramFeedsInfo.feed_type.get() != 2))
     {
@@ -85,63 +84,63 @@ public class NearbyMomentManager
         if (((List)localObject2).size() > 0)
         {
           localObject2 = (ilive_feeds_tmem.PicInfo)((List)localObject2).get(0);
-          ((PicMomentFeedInfo)localObject1).jdField_a_of_type_JavaLangString = ((ilive_feeds_tmem.PicInfo)localObject2).url.get().toStringUtf8();
-          ((PicMomentFeedInfo)localObject1).jdField_a_of_type_Int = ((ilive_feeds_tmem.PicInfo)localObject2).width.get();
-          ((PicMomentFeedInfo)localObject1).jdField_b_of_type_Int = ((ilive_feeds_tmem.PicInfo)localObject2).hight.get();
+          ((PicMomentFeedInfo)localObject1).c = ((ilive_feeds_tmem.PicInfo)localObject2).url.get().toStringUtf8();
+          ((PicMomentFeedInfo)localObject1).a = ((ilive_feeds_tmem.PicInfo)localObject2).width.get();
+          ((PicMomentFeedInfo)localObject1).b = ((ilive_feeds_tmem.PicInfo)localObject2).hight.get();
         }
-        ((PicMomentFeedInfo)localObject1).n = paramFeedsInfo.pic_info.desc.get().toStringUtf8();
+        ((PicMomentFeedInfo)localObject1).s = paramFeedsInfo.pic_info.desc.get().toStringUtf8();
         localObject1 = (PicMomentFeedInfo)a(paramFeedsInfo.topic_cfg.get(), (MomentFeedInfo)localObject1);
       }
       else if (paramFeedsInfo.feed_type.get() == 6)
       {
         localObject1 = new ChangMomentFeedInfo();
-        ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString = paramFeedsInfo.chang_info.pic_url.get().toStringUtf8();
-        ((ChangMomentFeedInfo)localObject1).jdField_a_of_type_Int = paramFeedsInfo.chang_info.width.get();
-        ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_Int = paramFeedsInfo.chang_info.hight.get();
+        ((ChangMomentFeedInfo)localObject1).d = paramFeedsInfo.chang_info.pic_url.get().toStringUtf8();
+        ((ChangMomentFeedInfo)localObject1).b = paramFeedsInfo.chang_info.width.get();
+        ((ChangMomentFeedInfo)localObject1).c = paramFeedsInfo.chang_info.hight.get();
         if (paramFeedsInfo.chang_info.chang.size() > 0) {
-          ((ChangMomentFeedInfo)localObject1).jdField_a_of_type_JavaLangString = ((ilive_feeds_tmem.Chang)paramFeedsInfo.chang_info.chang.get(0)).id.get().toStringUtf8();
+          ((ChangMomentFeedInfo)localObject1).a = ((ilive_feeds_tmem.Chang)paramFeedsInfo.chang_info.chang.get(0)).id.get().toStringUtf8();
         }
-        ((ChangMomentFeedInfo)localObject1).n = paramFeedsInfo.chang_info.desc.get().toStringUtf8();
-        ((ChangMomentFeedInfo)localObject1).e = paramFeedsInfo.view_times.get();
-        ((ChangMomentFeedInfo)localObject1).c = paramFeedsInfo.chang_info.chang.size();
+        ((ChangMomentFeedInfo)localObject1).s = paramFeedsInfo.chang_info.desc.get().toStringUtf8();
+        ((ChangMomentFeedInfo)localObject1).t = paramFeedsInfo.view_times.get();
+        ((ChangMomentFeedInfo)localObject1).e = paramFeedsInfo.chang_info.chang.size();
       }
       else if (paramFeedsInfo.feed_type.get() == 10)
       {
         localObject1 = new TextMomentFeedInfo();
-        ((TextMomentFeedInfo)localObject1).n = paramFeedsInfo.text_feed.text.get();
+        ((TextMomentFeedInfo)localObject1).s = paramFeedsInfo.text_feed.text.get();
         localObject1 = (TextMomentFeedInfo)a(paramFeedsInfo.topic_cfg.get(), (MomentFeedInfo)localObject1);
       }
     }
     else
     {
       localObject1 = new ShortVideoMomentFeedInfo();
-      ((ShortVideoMomentFeedInfo)localObject1).jdField_a_of_type_JavaLangString = paramFeedsInfo.feed_info.pic_url.get().toStringUtf8();
-      ((ShortVideoMomentFeedInfo)localObject1).jdField_b_of_type_Long = paramFeedsInfo.feed_info.video_time.get();
-      ((ShortVideoMomentFeedInfo)localObject1).jdField_a_of_type_Int = paramFeedsInfo.feed_info.video_width.get();
-      ((ShortVideoMomentFeedInfo)localObject1).jdField_b_of_type_Int = paramFeedsInfo.feed_info.video_hight.get();
-      ((ShortVideoMomentFeedInfo)localObject1).n = paramFeedsInfo.feed_info.desc.get().toStringUtf8();
-      ((ShortVideoMomentFeedInfo)localObject1).e = paramFeedsInfo.view_times.get();
+      ((ShortVideoMomentFeedInfo)localObject1).c = paramFeedsInfo.feed_info.pic_url.get().toStringUtf8();
+      ((ShortVideoMomentFeedInfo)localObject1).e = paramFeedsInfo.feed_info.video_time.get();
+      ((ShortVideoMomentFeedInfo)localObject1).a = paramFeedsInfo.feed_info.video_width.get();
+      ((ShortVideoMomentFeedInfo)localObject1).b = paramFeedsInfo.feed_info.video_hight.get();
+      ((ShortVideoMomentFeedInfo)localObject1).s = paramFeedsInfo.feed_info.desc.get().toStringUtf8();
+      ((ShortVideoMomentFeedInfo)localObject1).t = paramFeedsInfo.view_times.get();
       localObject1 = (ShortVideoMomentFeedInfo)a(paramFeedsInfo.topic_cfg.get(), (MomentFeedInfo)localObject1);
     }
     if (localObject1 != null)
     {
-      ((MomentFeedInfo)localObject1).jdField_d_of_type_Int = paramFeedsInfo.feed_type.get();
-      ((MomentFeedInfo)localObject1).e = String.valueOf(paramFeedsInfo.publish_info.uin.get());
-      ((MomentFeedInfo)localObject1).c = paramFeedsInfo.feeds_id.get().toStringUtf8();
-      ((MomentFeedInfo)localObject1).jdField_d_of_type_JavaLangString = String.valueOf(paramFeedsInfo.publish_info.url.get().toStringUtf8());
-      ((MomentFeedInfo)localObject1).m = paramFeedsInfo.jump_url.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).g = paramFeedsInfo.feed_type.get();
+      ((MomentFeedInfo)localObject1).i = String.valueOf(paramFeedsInfo.publish_info.uin.get());
+      ((MomentFeedInfo)localObject1).f = paramFeedsInfo.feeds_id.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).h = String.valueOf(paramFeedsInfo.publish_info.url.get().toStringUtf8());
+      ((MomentFeedInfo)localObject1).r = paramFeedsInfo.jump_url.get().toStringUtf8();
       if (paramFeedsInfo.like.get() != 1) {
         bool = false;
       }
-      ((MomentFeedInfo)localObject1).jdField_a_of_type_Boolean = bool;
-      ((MomentFeedInfo)localObject1).jdField_f_of_type_Int = paramFeedsInfo.like_info.like_number.get();
-      ((MomentFeedInfo)localObject1).jdField_g_of_type_Int = paramFeedsInfo.comment_num.get();
-      ((MomentFeedInfo)localObject1).jdField_a_of_type_Long = paramFeedsInfo.create_time.get();
-      ((MomentFeedInfo)localObject1).jdField_f_of_type_JavaLangString = NearbyMomentUtils.a(paramFeedsInfo.create_time.get() * 1000L);
-      ((MomentFeedInfo)localObject1).h = paramFeedsInfo.lbs_info.lng.get().toStringUtf8();
-      ((MomentFeedInfo)localObject1).i = paramFeedsInfo.lbs_info.lat.get().toStringUtf8();
-      ((MomentFeedInfo)localObject1).j = paramFeedsInfo.lbs_info.city.get().toStringUtf8();
-      ((MomentFeedInfo)localObject1).k = paramFeedsInfo.lbs_info.name.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).u = bool;
+      ((MomentFeedInfo)localObject1).v = paramFeedsInfo.like_info.like_number.get();
+      ((MomentFeedInfo)localObject1).w = paramFeedsInfo.comment_num.get();
+      ((MomentFeedInfo)localObject1).j = paramFeedsInfo.create_time.get();
+      ((MomentFeedInfo)localObject1).k = NearbyMomentUtils.a(paramFeedsInfo.create_time.get() * 1000L);
+      ((MomentFeedInfo)localObject1).m = paramFeedsInfo.lbs_info.lng.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).n = paramFeedsInfo.lbs_info.lat.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).o = paramFeedsInfo.lbs_info.city.get().toStringUtf8();
+      ((MomentFeedInfo)localObject1).p = paramFeedsInfo.lbs_info.name.get().toStringUtf8();
       if (paramFeedsInfo.distance.has())
       {
         double d2 = paramFeedsInfo.distance.get();
@@ -152,23 +151,23 @@ public class NearbyMomentManager
         if (d1 < 100.0D)
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaTextDecimalFormat.format(d1));
+          ((StringBuilder)localObject2).append(this.a.format(d1));
           ((StringBuilder)localObject2).append("km");
-          ((MomentFeedInfo)localObject1).l = ((StringBuilder)localObject2).toString();
+          ((MomentFeedInfo)localObject1).q = ((StringBuilder)localObject2).toString();
         }
         else
         {
-          this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#");
+          this.a = new DecimalFormat("#");
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaTextDecimalFormat.format(d1));
+          ((StringBuilder)localObject2).append(this.a.format(d1));
           ((StringBuilder)localObject2).append("km");
-          ((MomentFeedInfo)localObject1).l = ((StringBuilder)localObject2).toString();
+          ((MomentFeedInfo)localObject1).q = ((StringBuilder)localObject2).toString();
         }
       }
       if (!TextUtils.isEmpty(paramFeedsInfo.lbs_info.name.get().toStringUtf8())) {
-        ((MomentFeedInfo)localObject1).jdField_g_of_type_JavaLangString = paramFeedsInfo.lbs_info.name.get().toStringUtf8();
+        ((MomentFeedInfo)localObject1).l = paramFeedsInfo.lbs_info.name.get().toStringUtf8();
       } else {
-        ((MomentFeedInfo)localObject1).jdField_g_of_type_JavaLangString = paramFeedsInfo.lbs_info.city.get().toStringUtf8();
+        ((MomentFeedInfo)localObject1).l = paramFeedsInfo.lbs_info.city.get().toStringUtf8();
       }
       localObject2 = paramFeedsInfo.comments.get();
       if (((List)localObject2).size() > 0)
@@ -179,13 +178,13 @@ public class NearbyMomentManager
         {
           NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)((Iterator)localObject2).next();
           CommentInfo localCommentInfo = new CommentInfo();
-          localCommentInfo.jdField_a_of_type_Long = localComment.comment_id.get();
-          localCommentInfo.jdField_a_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
-          localCommentInfo.jdField_b_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
-          localCommentInfo.c = ((NowNearbyVideoCommentProto.CommentMsg)((NowNearbyVideoCommentProto.CommentMsgBody)localComment.content.get()).msgs.get().get(0)).msg.get().toStringUtf8();
+          localCommentInfo.a = localComment.comment_id.get();
+          localCommentInfo.b = localComment.publish_info.anchor_name.get().toStringUtf8();
+          localCommentInfo.c = localComment.reply_info.anchor_name.get().toStringUtf8();
+          localCommentInfo.d = ((NowNearbyVideoCommentProto.CommentMsg)((NowNearbyVideoCommentProto.CommentMsgBody)localComment.content.get()).msgs.get().get(0)).msg.get().toStringUtf8();
           paramFeedsInfo.add(localCommentInfo);
         }
-        ((MomentFeedInfo)localObject1).jdField_a_of_type_JavaUtilList = paramFeedsInfo;
+        ((MomentFeedInfo)localObject1).x = paramFeedsInfo;
       }
     }
     return localObject1;
@@ -196,14 +195,14 @@ public class NearbyMomentManager
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo = new TopicInfo();
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.d(paramList.jump_url.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.b(paramList.topic_name.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.a(paramList.topic_desc.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.b(paramList.topic_parti_num.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.c(paramList.topic_pic_url.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.a(paramList.topic_tag.get());
-      paramMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.c(paramList.topic_type.get());
+      paramMomentFeedInfo.y = new TopicInfo();
+      paramMomentFeedInfo.y.d(paramList.jump_url.get());
+      paramMomentFeedInfo.y.b(paramList.topic_name.get());
+      paramMomentFeedInfo.y.a(paramList.topic_desc.get());
+      paramMomentFeedInfo.y.b(paramList.topic_parti_num.get());
+      paramMomentFeedInfo.y.c(paramList.topic_pic_url.get());
+      paramMomentFeedInfo.y.a(paramList.topic_tag.get());
+      paramMomentFeedInfo.y.c(paramList.topic_type.get());
     }
     return paramMomentFeedInfo;
   }
@@ -231,36 +230,36 @@ public class NearbyMomentManager
   {
     if (paramMomentFeedInfo != null)
     {
-      if (TextUtils.isEmpty(paramMomentFeedInfo.n)) {
+      if (TextUtils.isEmpty(paramMomentFeedInfo.s)) {
         return;
       }
-      Matcher localMatcher = Pattern.compile("\\[:([^(:\\])]+):\\]").matcher(paramMomentFeedInfo.n);
+      Matcher localMatcher = Pattern.compile("\\[:([^(:\\])]+):\\]").matcher(paramMomentFeedInfo.s);
       StringBuffer localStringBuffer = new StringBuffer();
       while (localMatcher.find()) {
         localMatcher.appendReplacement(localStringBuffer, "");
       }
       localMatcher.appendTail(localStringBuffer);
-      paramMomentFeedInfo.n = localStringBuffer.toString();
+      paramMomentFeedInfo.s = localStringBuffer.toString();
     }
   }
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      f(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.d)) {
+      f(this.d);
     }
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, NearbyMomentManager.GetMomentListCallback paramGetMomentListCallback)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, new NearbyMomentManager.4(this, paramGetMomentListCallback));
+    NearbyMomentProtocol.a(this.c, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, new NearbyMomentManager.4(this, paramGetMomentListCallback));
   }
   
   public void a(NearbyMomentManager.MomentDataChangeObserver paramMomentDataChangeObserver)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramMomentDataChangeObserver);
+      this.b.add(paramMomentDataChangeObserver);
       return;
     }
     finally
@@ -317,14 +316,14 @@ public class NearbyMomentManager
     if (paramInt == 6) {
       paramInt = 10;
     }
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramLong, paramInt, new NearbyMomentManager.3(this, paramDeleteFeedCallback));
+    NearbyMomentProtocol.a(this.c, paramString, paramLong, paramInt, new NearbyMomentManager.3(this, paramDeleteFeedCallback));
   }
   
   public void b(NearbyMomentManager.MomentDataChangeObserver paramMomentDataChangeObserver)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramMomentDataChangeObserver);
+      this.b.remove(paramMomentDataChangeObserver);
       return;
     }
     finally
@@ -364,17 +363,17 @@ public class NearbyMomentManager
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void d(String paramString)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new NearbyMomentManager.1(this, paramString));
+    NearbyMomentProtocol.a(this.c, paramString, new NearbyMomentManager.1(this, paramString));
   }
   
   public void e(String paramString)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new NearbyMomentManager.2(this, paramString));
+    NearbyMomentProtocol.a(this.c, paramString, new NearbyMomentManager.2(this, paramString));
   }
   
   public void f(String paramString)
@@ -395,7 +394,7 @@ public class NearbyMomentManager
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       return;
     }
     finally
@@ -407,7 +406,7 @@ public class NearbyMomentManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager
  * JD-Core Version:    0.7.0.1
  */

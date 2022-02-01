@@ -21,9 +21,9 @@ class SendPhotoTask$1
   {
     try
     {
-      this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.c), "", "", "", 0, null);
-      DeviceInfo localDeviceInfo = this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.c));
-      Object localObject = new FileInfo(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.g);
+      this.a.a(Long.parseLong(this.b.g.e), "", "", "", 0, null);
+      DeviceInfo localDeviceInfo = this.a.g(Long.parseLong(this.b.g.e));
+      Object localObject = new FileInfo(this.b.g.n);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
       localObject = new Intent();
@@ -32,7 +32,7 @@ class SendPhotoTask$1
       ((Intent)localObject).putExtra("device_info", localDeviceInfo);
       ((Intent)localObject).putExtra("url", "https://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
       ((Intent)localObject).putExtra("filetype", "pic");
-      SmartDevicePluginLoader.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
+      SmartDevicePluginLoader.a().a(this.c, this.c.app, this.c.app.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
     catch (Exception localException) {}
@@ -40,7 +40,7 @@ class SendPhotoTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SendPhotoTask.1
  * JD-Core Version:    0.7.0.1
  */

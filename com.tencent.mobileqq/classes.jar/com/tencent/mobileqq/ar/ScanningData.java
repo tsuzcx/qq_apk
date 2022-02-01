@@ -8,17 +8,17 @@ public abstract class ScanningData
   public float D;
   public float E;
   public float F;
+  public float G;
+  public float H;
   public float a;
-  public int a;
-  public boolean a;
   public float b;
-  public float c;
+  public boolean c;
   public float d;
   public float e;
   public float f;
   public float g;
   public float h;
-  public float i;
+  public int i;
   public float j;
   public float k;
   public float l;
@@ -39,37 +39,37 @@ public abstract class ScanningData
   
   public void setBCAlpha(float paramFloat)
   {
-    this.g = paramFloat;
+    this.h = paramFloat;
   }
   
   public void setBCColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void setBCRotate(float paramFloat)
   {
-    this.d = paramFloat;
+    this.e = paramFloat;
   }
   
   public void setBCScale(float paramFloat)
   {
-    this.c = paramFloat;
+    this.d = paramFloat;
   }
   
   public void setBCWidth(float paramFloat)
   {
-    this.e = paramFloat;
+    this.f = paramFloat;
   }
   
   public void setBTAlpha(float paramFloat)
   {
-    this.f = paramFloat;
+    this.g = paramFloat;
   }
   
   public void setCenterX(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
   }
   
   public void setCenterY(float paramFloat)
@@ -79,137 +79,137 @@ public abstract class ScanningData
   
   public void setFCAlpha(float paramFloat)
   {
-    this.C = paramFloat;
+    this.E = paramFloat;
   }
   
   public void setFCPositionY(float paramFloat)
   {
-    this.B = paramFloat;
+    this.D = paramFloat;
   }
   
   public void setFLAlpha(float paramFloat)
   {
-    this.y = paramFloat;
+    this.A = paramFloat;
   }
   
   public void setFLPAlpha(float paramFloat)
   {
-    this.A = paramFloat;
+    this.C = paramFloat;
   }
   
   public void setFNCHAlpha(float paramFloat)
   {
-    this.w = paramFloat;
+    this.y = paramFloat;
   }
   
   public void setFNENAlpha(float paramFloat)
   {
-    this.x = paramFloat;
+    this.z = paramFloat;
   }
   
   public void setFPAlpha(float paramFloat)
   {
-    this.D = paramFloat;
+    this.F = paramFloat;
   }
   
   public void setFPOutCircleAlpha(float paramFloat)
   {
-    this.E = paramFloat;
+    this.G = paramFloat;
   }
   
   public void setFPOutCircleScale(float paramFloat)
   {
-    this.F = paramFloat;
+    this.H = paramFloat;
   }
   
   public void setIBCAlpha(float paramFloat)
   {
-    this.m = paramFloat;
+    this.o = paramFloat;
   }
   
   public void setIBCRotate(float paramFloat)
   {
-    this.l = paramFloat;
+    this.n = paramFloat;
   }
   
   public void setIBCScale(float paramFloat)
   {
-    this.k = paramFloat;
+    this.m = paramFloat;
   }
   
   public void setISCAlpha(float paramFloat)
   {
-    this.n = paramFloat;
+    this.p = paramFloat;
   }
   
   public void setMainFace(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setMaskScale(float paramFloat)
   {
-    this.v = paramFloat;
+    this.x = paramFloat;
   }
   
   public void setOCAlpha(float paramFloat)
   {
-    this.j = paramFloat;
+    this.l = paramFloat;
   }
   
   public void setOCRotate(float paramFloat)
   {
-    this.i = paramFloat;
+    this.k = paramFloat;
   }
   
   public void setOCScale(float paramFloat)
   {
-    this.h = paramFloat;
+    this.j = paramFloat;
   }
   
   public void setOtherScale(float paramFloat)
   {
-    this.z = paramFloat;
+    this.B = paramFloat;
   }
   
   public void setSCAlpha(float paramFloat)
   {
-    this.s = paramFloat;
+    this.u = paramFloat;
   }
   
   public void setSCRotate(float paramFloat)
   {
-    this.r = paramFloat;
+    this.t = paramFloat;
   }
   
   public void setSCScale(float paramFloat)
   {
-    this.q = paramFloat;
+    this.s = paramFloat;
   }
   
   public void setSDAlpha(float paramFloat)
   {
-    this.u = paramFloat;
+    this.w = paramFloat;
   }
   
   public void setSDScale(float paramFloat)
   {
-    this.t = paramFloat;
+    this.v = paramFloat;
   }
   
   public void setTCAlpha(float paramFloat)
   {
-    this.p = paramFloat;
+    this.r = paramFloat;
   }
   
   public void setTCScale(float paramFloat)
   {
-    this.o = paramFloat;
+    this.q = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningData
  * JD-Core Version:    0.7.0.1
  */

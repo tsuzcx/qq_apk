@@ -20,7 +20,7 @@ public class SpriteCommFuncImpl
 {
   private static final Set<String> ALL_SHOW_HIDE_BUSINESS = new SpriteCommFuncImpl.1();
   public static final String APOLLO_NONE_ACTION_PLAY = "none_apollo_play_action";
-  public static final String TAG = "[cmshow][scripted]SpriteCommFunc";
+  private static final String TAG = "[cmshow][scripted]SpriteCommFunc";
   
   public boolean isSpriteActive(AppRuntime paramAppRuntime, String paramString)
   {
@@ -30,7 +30,7 @@ public class SpriteCommFuncImpl
     if (!SpriteUtil.a(paramAppRuntime, Scene.AIO)) {
       return false;
     }
-    paramAppRuntime = SpriteUtil.a(paramAppRuntime);
+    paramAppRuntime = SpriteUtil.b(paramAppRuntime);
     if (paramAppRuntime == null) {
       return false;
     }
@@ -38,13 +38,13 @@ public class SpriteCommFuncImpl
     if (paramAppRuntime == null) {
       return false;
     }
-    return paramAppRuntime.a();
+    return paramAppRuntime.c();
   }
   
   public boolean isSpriteHidden(AppRuntime paramAppRuntime)
   {
-    boolean bool1 = SpriteUtil.b(paramAppRuntime);
-    boolean bool2 = SpriteUtil.a(paramAppRuntime);
+    boolean bool1 = SpriteUtil.e(paramAppRuntime);
+    boolean bool2 = SpriteUtil.d(paramAppRuntime);
     return (bool1) || (bool2);
   }
   
@@ -82,7 +82,7 @@ public class SpriteCommFuncImpl
     if (!ALL_SHOW_HIDE_BUSINESS.contains(paramString)) {
       return;
     }
-    ISpriteScriptManager localISpriteScriptManager = SpriteUtil.a(paramAppRuntime);
+    ISpriteScriptManager localISpriteScriptManager = SpriteUtil.b(paramAppRuntime);
     if (localISpriteScriptManager == null) {
       return;
     }
@@ -90,7 +90,7 @@ public class SpriteCommFuncImpl
     if (localISpriteContext != null) {
       localISpriteContext.a(paramString, paramBoolean);
     }
-    if (SpriteUtil.a(paramAppRuntime))
+    if (SpriteUtil.d(paramAppRuntime))
     {
       QLog.i("[cmshow][scripted]SpriteCommFunc", 1, "showOrHideSprite double should hide");
       return;
@@ -138,7 +138,7 @@ public class SpriteCommFuncImpl
     if (!SpriteUtil.a(paramAppRuntime, Scene.AIO)) {
       return;
     }
-    paramAppRuntime = SpriteUtil.a(paramAppRuntime);
+    paramAppRuntime = SpriteUtil.b(paramAppRuntime);
     if (paramAppRuntime == null) {
       return;
     }
@@ -160,7 +160,7 @@ public class SpriteCommFuncImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.api.impl.SpriteCommFuncImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ import com.tencent.qphone.base.util.QLog;
 public class ConfigSystemImpl
 {
   static byte A = 0;
-  static byte jdField_a_of_type_Byte = 0;
-  static int jdField_a_of_type_Int = 1;
-  static volatile boolean jdField_a_of_type_Boolean = false;
-  static byte jdField_b_of_type_Byte = 0;
-  static int jdField_b_of_type_Int = 1;
-  static volatile boolean jdField_b_of_type_Boolean = false;
-  static byte jdField_c_of_type_Byte = 0;
-  static int jdField_c_of_type_Int = -1;
-  static boolean jdField_c_of_type_Boolean = false;
-  static byte d = 0;
-  static byte e = 0;
+  static byte B = 0;
+  static int C = 1;
+  static byte D = 0;
+  static byte E = 0;
+  static volatile boolean F = false;
+  static byte G = 1;
+  static volatile boolean H = false;
+  static int I = -1;
+  static byte J = 1;
+  static byte K = 0;
+  static boolean L = false;
   static byte f = 0;
   static byte g = 0;
   static byte h = 0;
@@ -37,40 +37,40 @@ public class ConfigSystemImpl
   static byte n = 0;
   static byte o = 0;
   static byte p = 0;
-  static byte q = 0;
-  static byte r = 0;
-  static byte s = 0;
-  static byte t = 0;
-  static byte u = 0;
-  static byte v = 0;
-  static byte w = 0;
-  static byte x = 0;
-  static byte y = 1;
-  static byte z = 1;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  ConfigPBProtocol jdField_a_of_type_ComTencentAvConfigConfigPBProtocol = null;
-  VcSystemInfo jdField_a_of_type_ComTencentAvCoreVcSystemInfo = null;
-  String jdField_a_of_type_JavaLangString = null;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
+  static int q = 1;
+  static byte r;
+  static byte s;
+  static byte t;
+  static byte u;
+  static byte v;
+  static byte w;
+  static byte x;
+  static byte y;
+  static byte z;
+  VcSystemInfo a = null;
+  String b = null;
+  ConfigPBProtocol c = null;
+  byte[] d = null;
+  Context e = null;
   
   public ConfigSystemImpl(String paramString, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvCoreVcSystemInfo = new VcSystemInfo();
+    this.b = paramString;
+    this.e = paramContext;
+    this.a = new VcSystemInfo();
     VcSystemInfo.getCpuInfo();
-    this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol = new ConfigPBProtocol();
+    this.c = new ConfigPBProtocol();
   }
   
   static byte a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, byte paramByte, boolean paramBoolean4)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!F) {
       try
       {
-        if (!jdField_a_of_type_Boolean)
+        if (!F)
         {
           a(paramContext);
-          jdField_a_of_type_Boolean = true;
+          F = true;
         }
       }
       finally {}
@@ -78,12 +78,12 @@ public class ConfigSystemImpl
     if (paramBoolean3)
     {
       if (paramBoolean2) {
-        return a(paramBoolean1, l, jdField_a_of_type_Byte);
+        return a(paramBoolean1, r, f);
       }
-      return a(paramBoolean1, m, jdField_b_of_type_Byte);
+      return a(paramBoolean1, s, g);
     }
     if (paramBoolean4) {
-      return a(paramBoolean1, v, k);
+      return a(paramBoolean1, B, p);
     }
     return a(paramBoolean1, paramBoolean2, paramByte);
   }
@@ -101,131 +101,34 @@ public class ConfigSystemImpl
     if (paramBoolean2)
     {
       if (paramByte == 0) {
-        return a(paramBoolean1, n, jdField_c_of_type_Byte);
+        return a(paramBoolean1, t, h);
       }
       if (paramByte == 1) {
-        return a(paramBoolean1, o, jdField_d_of_type_Byte);
+        return a(paramBoolean1, u, i);
       }
       if (paramByte == 2) {
-        return a(paramBoolean1, p, e);
+        return a(paramBoolean1, v, j);
       }
       if (paramByte == 3) {
-        return a(paramBoolean1, q, f);
+        return a(paramBoolean1, w, k);
       }
     }
     else
     {
       if (paramByte == 0) {
-        return a(paramBoolean1, r, g);
+        return a(paramBoolean1, x, l);
       }
       if (paramByte == 1) {
-        return a(paramBoolean1, s, h);
+        return a(paramBoolean1, y, m);
       }
       if (paramByte == 2) {
-        return a(paramBoolean1, t, i);
+        return a(paramBoolean1, z, n);
       }
       if (paramByte == 3) {
-        return a(paramBoolean1, u, j);
+        return a(paramBoolean1, A, o);
       }
     }
     return 0;
-  }
-  
-  /* Error */
-  public static int a(Context paramContext)
-  {
-    // Byte code:
-    //   0: getstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   3: istore_1
-    //   4: iload_1
-    //   5: iflt +5 -> 10
-    //   8: iload_1
-    //   9: ireturn
-    //   10: aload_0
-    //   11: ldc 131
-    //   13: invokestatic 136	com/tencent/av/utils/PhoneStatusTools:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   16: astore_0
-    //   17: aload_0
-    //   18: invokestatic 142	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   21: ifne +10 -> 31
-    //   24: aload_0
-    //   25: invokestatic 148	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   28: putstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   31: new 150	java/lang/StringBuilder
-    //   34: dup
-    //   35: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   38: astore_2
-    //   39: aload_2
-    //   40: ldc 153
-    //   42: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: pop
-    //   46: aload_2
-    //   47: aload_0
-    //   48: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: pop
-    //   52: aload_2
-    //   53: ldc 159
-    //   55: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: pop
-    //   59: ldc 161
-    //   61: iconst_1
-    //   62: aload_2
-    //   63: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 170	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   69: getstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   72: ifge +66 -> 138
-    //   75: goto +59 -> 134
-    //   78: astore_0
-    //   79: goto +63 -> 142
-    //   82: astore_0
-    //   83: iconst_0
-    //   84: putstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   87: new 150	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   94: astore_2
-    //   95: aload_2
-    //   96: ldc 172
-    //   98: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: pop
-    //   102: aload_2
-    //   103: aload_0
-    //   104: invokevirtual 175	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   107: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: pop
-    //   111: aload_2
-    //   112: ldc 159
-    //   114: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: pop
-    //   118: ldc 161
-    //   120: iconst_1
-    //   121: aload_2
-    //   122: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 170	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   128: getstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   131: ifge +7 -> 138
-    //   134: iconst_0
-    //   135: putstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   138: getstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   141: ireturn
-    //   142: getstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   145: ifge +7 -> 152
-    //   148: iconst_0
-    //   149: putstatic 129	com/tencent/av/config/ConfigSystemImpl:jdField_c_of_type_Int	I
-    //   152: aload_0
-    //   153: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	154	0	paramContext	Context
-    //   3	6	1	i1	int
-    //   38	84	2	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   10	31	78	finally
-    //   31	69	78	finally
-    //   83	128	78	finally
-    //   10	31	82	java/lang/Exception
-    //   31	69	82	java/lang/Exception
   }
   
   public static int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, byte paramByte, boolean paramBoolean3)
@@ -233,88 +136,63 @@ public class ConfigSystemImpl
     int i1 = a(paramContext, true, paramBoolean1, paramBoolean2, paramByte, paramBoolean3);
     if (paramBoolean3)
     {
-      if (jdField_b_of_type_Boolean) {
+      if (H) {
         return i1;
       }
-      return a(paramContext);
+      return b(paramContext);
     }
     return i1;
   }
   
-  public static String a(Context paramContext)
-  {
-    paramContext = Common.readFile(paramContext, "VideoConfigInfo");
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigSystemImpl", 2, "getHWCodecTestPayload not have config file");
-      }
-      return "";
-    }
-    ConfigPBProtocol localConfigPBProtocol = new ConfigPBProtocol();
-    if (localConfigPBProtocol.a(paramContext) != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigSystemImpl", 2, "getHWCodecTestPayload unPack TLV video config err");
-      }
-      return "";
-    }
-    paramContext = localConfigPBProtocol.a();
-    if (paramContext != null) {
-      return paramContext.jdField_b_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
   static void a(Context paramContext)
   {
-    Object localObject = ConfigManager.a(paramContext);
+    Object localObject = ConfigManager.c(paramContext);
     boolean bool1;
     if (!((IConfigParser)localObject).isEmpty())
     {
       CameraConfigParser localCameraConfigParser = new CameraConfigParser();
-      jdField_b_of_type_Boolean = localCameraConfigParser.b((IConfigParser)localObject);
-      if (jdField_b_of_type_Boolean)
+      H = localCameraConfigParser.b((IConfigParser)localObject);
+      if (H)
       {
-        jdField_a_of_type_Byte = localCameraConfigParser.jdField_a_of_type_Byte;
-        jdField_b_of_type_Byte = localCameraConfigParser.jdField_b_of_type_Byte;
-        jdField_c_of_type_Byte = localCameraConfigParser.jdField_c_of_type_Byte;
-        jdField_d_of_type_Byte = localCameraConfigParser.jdField_d_of_type_Byte;
-        e = localCameraConfigParser.e;
-        f = localCameraConfigParser.f;
-        g = localCameraConfigParser.g;
-        h = localCameraConfigParser.h;
-        i = localCameraConfigParser.i;
-        j = localCameraConfigParser.j;
-        k = localCameraConfigParser.k;
-        jdField_a_of_type_Int = localCameraConfigParser.jdField_b_of_type_Int;
+        f = localCameraConfigParser.B;
+        g = localCameraConfigParser.C;
+        h = localCameraConfigParser.D;
+        i = localCameraConfigParser.E;
+        j = localCameraConfigParser.F;
+        k = localCameraConfigParser.G;
+        l = localCameraConfigParser.H;
+        m = localCameraConfigParser.I;
+        n = localCameraConfigParser.J;
+        o = localCameraConfigParser.K;
+        p = localCameraConfigParser.L;
+        q = localCameraConfigParser.M;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("angle_local_front: ");
-          localStringBuilder.append(jdField_a_of_type_Byte);
-          localStringBuilder.append(", angle_local_background: ");
-          localStringBuilder.append(jdField_b_of_type_Byte);
-          localStringBuilder.append(", angle_remote_front_0: ");
-          localStringBuilder.append(jdField_c_of_type_Byte);
-          localStringBuilder.append(", angle_remote_front_90: ");
-          localStringBuilder.append(jdField_d_of_type_Byte);
-          localStringBuilder.append(", angle_remote_front_180: ");
-          localStringBuilder.append(e);
-          localStringBuilder.append(", angle_remote_front_270: ");
           localStringBuilder.append(f);
-          localStringBuilder.append(", angle_remote_background_0: ");
+          localStringBuilder.append(", angle_local_background: ");
           localStringBuilder.append(g);
-          localStringBuilder.append(", angle_remote_background_90: ");
+          localStringBuilder.append(", angle_remote_front_0: ");
           localStringBuilder.append(h);
-          localStringBuilder.append(", angle_remote_background_180: ");
+          localStringBuilder.append(", angle_remote_front_90: ");
           localStringBuilder.append(i);
-          localStringBuilder.append(", angle_remote_background_270: ");
+          localStringBuilder.append(", angle_remote_front_180: ");
           localStringBuilder.append(j);
-          localStringBuilder.append(", angle_sensor: ");
+          localStringBuilder.append(", angle_remote_front_270: ");
           localStringBuilder.append(k);
+          localStringBuilder.append(", angle_remote_background_0: ");
+          localStringBuilder.append(l);
+          localStringBuilder.append(", angle_remote_background_90: ");
+          localStringBuilder.append(m);
+          localStringBuilder.append(", angle_remote_background_180: ");
+          localStringBuilder.append(n);
+          localStringBuilder.append(", angle_remote_background_270: ");
+          localStringBuilder.append(o);
+          localStringBuilder.append(", angle_sensor: ");
+          localStringBuilder.append(p);
           localStringBuilder.append(", angle_mini_sdk:");
-          localStringBuilder.append(jdField_a_of_type_Int);
+          localStringBuilder.append(q);
           QLog.d("ConfigSystemImpl", 2, localStringBuilder.toString());
         }
       }
@@ -322,46 +200,46 @@ public class ConfigSystemImpl
       bool1 = bool2;
       if (bool2)
       {
-        l = localCameraConfigParser.l;
-        m = localCameraConfigParser.m;
-        n = localCameraConfigParser.n;
-        o = localCameraConfigParser.o;
-        p = localCameraConfigParser.p;
-        q = localCameraConfigParser.q;
-        r = localCameraConfigParser.r;
-        s = localCameraConfigParser.s;
-        t = localCameraConfigParser.t;
-        u = localCameraConfigParser.u;
-        v = localCameraConfigParser.v;
-        jdField_b_of_type_Int = localCameraConfigParser.jdField_d_of_type_Int;
+        r = localCameraConfigParser.O;
+        s = localCameraConfigParser.P;
+        t = localCameraConfigParser.Q;
+        u = localCameraConfigParser.R;
+        v = localCameraConfigParser.S;
+        w = localCameraConfigParser.T;
+        x = localCameraConfigParser.U;
+        y = localCameraConfigParser.V;
+        z = localCameraConfigParser.W;
+        A = localCameraConfigParser.X;
+        B = localCameraConfigParser.Y;
+        C = localCameraConfigParser.Z;
         bool1 = bool2;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("angle_landscape_local_front: ");
-          ((StringBuilder)localObject).append(l);
-          ((StringBuilder)localObject).append(", angle_landscape_local_back: ");
-          ((StringBuilder)localObject).append(m);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_front_0: ");
-          ((StringBuilder)localObject).append(n);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_front_90: ");
-          ((StringBuilder)localObject).append(o);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_front_180: ");
-          ((StringBuilder)localObject).append(p);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_front_270: ");
-          ((StringBuilder)localObject).append(q);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_back_0: ");
           ((StringBuilder)localObject).append(r);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_back_90: ");
+          ((StringBuilder)localObject).append(", angle_landscape_local_back: ");
           ((StringBuilder)localObject).append(s);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_back_180: ");
+          ((StringBuilder)localObject).append(", angle_landscape_remote_front_0: ");
           ((StringBuilder)localObject).append(t);
-          ((StringBuilder)localObject).append(", angle_landscape_remote_back_270: ");
+          ((StringBuilder)localObject).append(", angle_landscape_remote_front_90: ");
           ((StringBuilder)localObject).append(u);
-          ((StringBuilder)localObject).append(", angle_landscape_sensor: ");
+          ((StringBuilder)localObject).append(", angle_landscape_remote_front_180: ");
           ((StringBuilder)localObject).append(v);
+          ((StringBuilder)localObject).append(", angle_landscape_remote_front_270: ");
+          ((StringBuilder)localObject).append(w);
+          ((StringBuilder)localObject).append(", angle_landscape_remote_back_0: ");
+          ((StringBuilder)localObject).append(x);
+          ((StringBuilder)localObject).append(", angle_landscape_remote_back_90: ");
+          ((StringBuilder)localObject).append(y);
+          ((StringBuilder)localObject).append(", angle_landscape_remote_back_180: ");
+          ((StringBuilder)localObject).append(z);
+          ((StringBuilder)localObject).append(", angle_landscape_remote_back_270: ");
+          ((StringBuilder)localObject).append(A);
+          ((StringBuilder)localObject).append(", angle_landscape_sensor: ");
+          ((StringBuilder)localObject).append(B);
           ((StringBuilder)localObject).append(", angle_landscape_mini_sdk:");
-          ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(C);
           QLog.d("ConfigSystemImpl", 2, ((StringBuilder)localObject).toString());
           bool1 = bool2;
         }
@@ -371,7 +249,7 @@ public class ConfigSystemImpl
     {
       bool1 = false;
     }
-    if (jdField_b_of_type_Boolean)
+    if (H)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ConfigSystemImpl", 2, "using new camera angle config");
@@ -392,44 +270,44 @@ public class ConfigSystemImpl
     if (((ConfigPBProtocol)localObject).a(paramContext) != 0) {
       return;
     }
-    paramContext = ((ConfigPBProtocol)localObject).a();
+    paramContext = ((ConfigPBProtocol)localObject).b();
     if (paramContext != null)
     {
-      jdField_a_of_type_Byte = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.jdField_a_of_type_Byte;
-      jdField_b_of_type_Byte = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.jdField_a_of_type_Byte;
-      jdField_c_of_type_Byte = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.jdField_c_of_type_Byte;
-      jdField_d_of_type_Byte = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.e;
-      e = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.g;
-      f = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.i;
-      g = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.jdField_d_of_type_Byte;
-      h = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.f;
-      i = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.h;
-      j = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.j;
-      w = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.k;
-      x = paramContext.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$AndroidCameraInfo.l;
+      f = paramContext.d.a;
+      g = paramContext.d.a;
+      h = paramContext.d.c;
+      i = paramContext.d.e;
+      j = paramContext.d.g;
+      k = paramContext.d.i;
+      l = paramContext.d.d;
+      m = paramContext.d.f;
+      n = paramContext.d.h;
+      o = paramContext.d.j;
+      D = paramContext.d.k;
+      E = paramContext.d.l;
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("angle_local_front: ");
-        paramContext.append(jdField_a_of_type_Byte);
-        paramContext.append(", angle_local_background: ");
-        paramContext.append(jdField_b_of_type_Byte);
-        paramContext.append(", angle_remote_front_0: ");
-        paramContext.append(jdField_c_of_type_Byte);
-        paramContext.append(", angle_remote_front_90: ");
-        paramContext.append(jdField_d_of_type_Byte);
-        paramContext.append(", angle_remote_front_180: ");
-        paramContext.append(e);
-        paramContext.append(", angle_remote_front_270: ");
         paramContext.append(f);
-        paramContext.append(", angle_remote_background_0: ");
+        paramContext.append(", angle_local_background: ");
         paramContext.append(g);
-        paramContext.append(", angle_remote_background_90: ");
+        paramContext.append(", angle_remote_front_0: ");
         paramContext.append(h);
-        paramContext.append(", angle_remote_background_180: ");
+        paramContext.append(", angle_remote_front_90: ");
         paramContext.append(i);
-        paramContext.append(", angle_remote_background_270: ");
+        paramContext.append(", angle_remote_front_180: ");
         paramContext.append(j);
+        paramContext.append(", angle_remote_front_270: ");
+        paramContext.append(k);
+        paramContext.append(", angle_remote_background_0: ");
+        paramContext.append(l);
+        paramContext.append(", angle_remote_background_90: ");
+        paramContext.append(m);
+        paramContext.append(", angle_remote_background_180: ");
+        paramContext.append(n);
+        paramContext.append(", angle_remote_background_270: ");
+        paramContext.append(o);
         QLog.d("ConfigSystemImpl", 2, paramContext.toString());
       }
     }
@@ -484,28 +362,28 @@ public class ConfigSystemImpl
       }
       else
       {
-        paramArrayOfByte = paramContext.a();
+        paramArrayOfByte = paramContext.b();
         paramContext = localObject2;
         if (paramArrayOfByte != null) {
-          paramContext = paramArrayOfByte.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$SwtichInfo;
+          paramContext = paramArrayOfByte.f;
         }
       }
     }
     if (paramContext != null)
     {
-      y = paramContext.jdField_a_of_type_Byte;
-      z = paramContext.h;
-      A = paramContext.i;
-      jdField_c_of_type_Boolean = true;
+      G = paramContext.a;
+      J = paramContext.h;
+      K = paramContext.i;
+      L = true;
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("updateAVSwitchTypeTLV, dAudio_enable[");
-        paramContext.append(y);
+        paramContext.append(G);
         paramContext.append("], dSmallScrren_enable[");
-        paramContext.append(z);
+        paramContext.append(J);
         paramContext.append("], dAudioHowlingEnable[");
-        paramContext.append(A);
+        paramContext.append(K);
         paramContext.append("]");
         QLog.w("ConfigSystemImpl", 1, paramContext.toString());
       }
@@ -529,37 +407,151 @@ public class ConfigSystemImpl
     }
   }
   
-  public static boolean a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportSmallScreen --> ");
-      localStringBuilder.append(z);
-      QLog.d("ConfigSystemImpl", 2, localStringBuilder.toString());
-    }
-    return z == 1;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder();
-      paramContext.append("isDAudioEnable:");
-      paramContext.append(y);
-      QLog.d("ConfigSystemImpl", 2, paramContext.toString());
-    }
-    return y == 1;
-  }
-  
   public static byte[] a(long paramLong, String paramString, Context paramContext)
   {
     TraeConfigUpdate.a().a("request", -1);
     return new ConfigSystemImpl(paramString, paramContext).a(paramLong);
   }
   
-  public static int[] a(byte[] paramArrayOfByte)
+  /* Error */
+  public static int b(Context paramContext)
+  {
+    // Byte code:
+    //   0: getstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   3: istore_1
+    //   4: iload_1
+    //   5: iflt +5 -> 10
+    //   8: iload_1
+    //   9: ireturn
+    //   10: aload_0
+    //   11: ldc_w 404
+    //   14: invokestatic 409	com/tencent/av/utils/PhoneStatusTools:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   17: astore_0
+    //   18: aload_0
+    //   19: invokestatic 414	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   22: ifne +10 -> 32
+    //   25: aload_0
+    //   26: invokestatic 420	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   29: putstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   32: new 191	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 192	java/lang/StringBuilder:<init>	()V
+    //   39: astore_2
+    //   40: aload_2
+    //   41: ldc_w 422
+    //   44: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload_2
+    //   49: aload_0
+    //   50: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_2
+    //   55: ldc_w 347
+    //   58: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: ldc 225
+    //   64: iconst_1
+    //   65: aload_2
+    //   66: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 424	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: getstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   75: ifge +68 -> 143
+    //   78: goto +61 -> 139
+    //   81: astore_0
+    //   82: goto +65 -> 147
+    //   85: astore_0
+    //   86: iconst_0
+    //   87: putstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   90: new 191	java/lang/StringBuilder
+    //   93: dup
+    //   94: invokespecial 192	java/lang/StringBuilder:<init>	()V
+    //   97: astore_2
+    //   98: aload_2
+    //   99: ldc_w 426
+    //   102: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload_2
+    //   107: aload_0
+    //   108: invokevirtual 429	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   111: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: aload_2
+    //   116: ldc_w 347
+    //   119: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: ldc 225
+    //   125: iconst_1
+    //   126: aload_2
+    //   127: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 424	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: getstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   136: ifge +7 -> 143
+    //   139: iconst_0
+    //   140: putstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   143: getstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   146: ireturn
+    //   147: getstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   150: ifge +7 -> 157
+    //   153: iconst_0
+    //   154: putstatic 402	com/tencent/av/config/ConfigSystemImpl:I	I
+    //   157: aload_0
+    //   158: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	paramContext	Context
+    //   3	6	1	i1	int
+    //   39	88	2	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   10	32	81	finally
+    //   32	72	81	finally
+    //   86	133	81	finally
+    //   10	32	85	java/lang/Exception
+    //   32	72	85	java/lang/Exception
+  }
+  
+  public static int b(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, byte paramByte, boolean paramBoolean3)
+  {
+    int i1 = a(paramContext, false, paramBoolean1, paramBoolean2, paramByte, paramBoolean3);
+    if (paramBoolean3)
+    {
+      if (H)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ConfigSystemImpl", 2, "server config enabled");
+        }
+        return i1;
+      }
+      return b(paramContext);
+    }
+    return i1;
+  }
+  
+  public static boolean b()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportSmallScreen --> ");
+      localStringBuilder.append(J);
+      QLog.d("ConfigSystemImpl", 2, localStringBuilder.toString());
+    }
+    return J == 1;
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("isDAudioEnable:");
+      paramContext.append(G);
+      QLog.d("ConfigSystemImpl", 2, paramContext.toString());
+    }
+    return G == 1;
+  }
+  
+  public static int[] c(byte[] paramArrayOfByte)
   {
     Object localObject1 = null;
     if (paramArrayOfByte == null) {
@@ -577,95 +569,71 @@ public class ConfigSystemImpl
     }
     else
     {
-      localObject2 = ((ConfigPBProtocol)localObject2).a();
+      localObject2 = ((ConfigPBProtocol)localObject2).b();
       paramArrayOfByte = localObject1;
       if (localObject2 != null)
       {
         paramArrayOfByte = localObject1;
-        if (((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_a_of_type_Boolean)
+        if (((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.a)
         {
           paramArrayOfByte = new int[12];
-          paramArrayOfByte[0] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_a_of_type_Int;
-          paramArrayOfByte[1] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_b_of_type_Int;
-          paramArrayOfByte[2] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_c_of_type_Int;
-          paramArrayOfByte[3] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_d_of_type_Int;
-          paramArrayOfByte[4] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.jdField_e_of_type_Int;
-          paramArrayOfByte[5] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.f;
-          paramArrayOfByte[6] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.g;
-          paramArrayOfByte[7] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.h;
-          paramArrayOfByte[8] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.i;
-          paramArrayOfByte[9] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.j;
-          paramArrayOfByte[10] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.k;
-          paramArrayOfByte[11] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).jdField_a_of_type_ComTencentAvConfigConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo.l;
+          paramArrayOfByte[0] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.b;
+          paramArrayOfByte[1] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.c;
+          paramArrayOfByte[2] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.d;
+          paramArrayOfByte[3] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.e;
+          paramArrayOfByte[4] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.f;
+          paramArrayOfByte[5] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.g;
+          paramArrayOfByte[6] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.h;
+          paramArrayOfByte[7] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.i;
+          paramArrayOfByte[8] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.j;
+          paramArrayOfByte[9] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.k;
+          paramArrayOfByte[10] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.l;
+          paramArrayOfByte[11] = ((ConfigPBProtocol.ConfigSysInfoNew)localObject2).g.m;
         }
       }
     }
     return paramArrayOfByte;
   }
   
-  public static int b(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, byte paramByte, boolean paramBoolean3)
+  public static String d(Context paramContext)
   {
-    int i1 = a(paramContext, false, paramBoolean1, paramBoolean2, paramByte, paramBoolean3);
-    if (paramBoolean3)
+    paramContext = Common.readFile(paramContext, "VideoConfigInfo");
+    if (paramContext == null)
     {
-      if (jdField_b_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ConfigSystemImpl", 2, "server config enabled");
-        }
-        return i1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ConfigSystemImpl", 2, "getHWCodecTestPayload not have config file");
       }
-      return a(paramContext);
+      return "";
     }
-    return i1;
+    ConfigPBProtocol localConfigPBProtocol = new ConfigPBProtocol();
+    if (localConfigPBProtocol.a(paramContext) != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConfigSystemImpl", 2, "getHWCodecTestPayload unPack TLV video config err");
+      }
+      return "";
+    }
+    paramContext = localConfigPBProtocol.b();
+    if (paramContext != null) {
+      return paramContext.c;
+    }
+    return "";
   }
   
-  public static boolean b(Context paramContext)
+  public static boolean e(Context paramContext)
   {
-    if (!jdField_c_of_type_Boolean) {
+    if (!L) {
       a(paramContext, null);
     }
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("isAudioHowlingEnable[");
-      paramContext.append(A);
+      paramContext.append(K);
       paramContext.append("]");
       QLog.w("ConfigSystemImpl", 1, paramContext.toString());
     }
-    return A != 1;
-  }
-  
-  public String a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigSystemImpl", 2, "getSharpConfigPayload not have config file");
-      }
-      return "";
-    }
-    Object localObject = new ConfigPBProtocol();
-    if (((ConfigPBProtocol)localObject).a(paramArrayOfByte) != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigSystemImpl", 2, "getSharpConfigPayload unPack TLV video config err");
-      }
-      return "";
-    }
-    paramArrayOfByte = ((ConfigPBProtocol)localObject).a();
-    if (paramArrayOfByte != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getSharpConfigPayload, Content[\n");
-      ((StringBuilder)localObject).append(paramArrayOfByte.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("\n], test[\n");
-      ((StringBuilder)localObject).append(paramArrayOfByte.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("\n]");
-      QLog.w("ConfigSystemImpl", 1, ((StringBuilder)localObject).toString());
-      return paramArrayOfByte.jdField_a_of_type_JavaLangString;
-    }
-    return "";
+    return K != 1;
   }
   
   public void a()
@@ -675,7 +643,7 @@ public class ConfigSystemImpl
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("WriteConfigInfoToFile begin, configMsg[");
-      localObject1 = this.jdField_a_of_type_ArrayOfByte;
+      localObject1 = this.d;
       if (localObject1 != null) {
         localObject1 = Integer.valueOf(localObject1.length);
       } else {
@@ -685,13 +653,13 @@ public class ConfigSystemImpl
       ((StringBuilder)localObject2).append("]");
       QLog.w("ConfigSystemImpl", 1, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = this.jdField_a_of_type_ArrayOfByte;
+    Object localObject1 = this.d;
     if ((localObject1 != null) && (localObject1.length > 0))
     {
-      Common.writeFile(this.jdField_a_of_type_AndroidContentContext, "VideoConfigInfo", (byte[])localObject1);
-      y = 1;
-      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ArrayOfByte);
-      localObject1 = a(this.jdField_a_of_type_ArrayOfByte);
+      Common.writeFile(this.e, "VideoConfigInfo", (byte[])localObject1);
+      G = 1;
+      a(this.e, this.d);
+      localObject1 = b(this.d);
       if ((localObject1 != null) && (((String)localObject1).length() > 0))
       {
         localObject2 = ((String)localObject1).substring(0, 1);
@@ -708,9 +676,9 @@ public class ConfigSystemImpl
           if (QLog.isColorLevel()) {
             QLog.d("ConfigSystemImpl", 2, "WriteConfigInfoToFile, SHARP_CONFIG_TYPE_CLEAR");
           }
-          Common.writeFile(this.jdField_a_of_type_AndroidContentContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, "".getBytes());
+          Common.writeFile(this.e, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, "".getBytes());
           localObject1 = new Intent("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
-          this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject1);
+          this.e.sendBroadcast((Intent)localObject1);
           return;
         }
         if (((String)localObject2).equals("1"))
@@ -726,9 +694,9 @@ public class ConfigSystemImpl
             ((StringBuilder)localObject2).append("\n]");
             QLog.w("ConfigSystemImpl", 1, ((StringBuilder)localObject2).toString());
           }
-          Common.writeFile(this.jdField_a_of_type_AndroidContentContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, ((String)localObject1).getBytes());
+          Common.writeFile(this.e, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, ((String)localObject1).getBytes());
           localObject1 = new Intent("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
-          this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject1);
+          this.e.sendBroadcast((Intent)localObject1);
           return;
         }
         if ((((String)localObject2).equals("2")) && (QLog.isColorLevel())) {
@@ -740,46 +708,78 @@ public class ConfigSystemImpl
         if (QLog.isColorLevel()) {
           QLog.d("ConfigSystemImpl", 2, "WriteConfigInfoToFile, sharpConfigPayload为空");
         }
-        Common.writeFile(this.jdField_a_of_type_AndroidContentContext, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, "".getBytes());
+        Common.writeFile(this.e, Common.SHARP_CONFIG_PAYLOAD_FILE_NAME, "".getBytes());
         localObject1 = new Intent("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
-        this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject1);
+        this.e.sendBroadcast((Intent)localObject1);
       }
     }
   }
   
   void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.d = paramArrayOfByte;
   }
   
   public byte[] a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol;
+    Object localObject = this.c;
     localObject.getClass();
     localObject = new ConfigPBProtocol.TerminalInfo((ConfigPBProtocol)localObject);
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_a_of_type_Int = 201;
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAvCoreVcSystemInfo.getOsType();
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_c_of_type_Int = VcSystemInfo.getCpuArchitecture();
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_d_of_type_Int = VcSystemInfo.getNumCores();
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_e_of_type_Int = ((int)(VcSystemInfo.getMaxCpuFreq() / 1000L));
+    ((ConfigPBProtocol.TerminalInfo)localObject).a = 201;
+    ((ConfigPBProtocol.TerminalInfo)localObject).b = this.a.getOsType();
+    ((ConfigPBProtocol.TerminalInfo)localObject).c = VcSystemInfo.getCpuArchitecture();
+    ((ConfigPBProtocol.TerminalInfo)localObject).d = VcSystemInfo.getNumCores();
+    ((ConfigPBProtocol.TerminalInfo)localObject).e = ((int)(VcSystemInfo.getMaxCpuFreq() / 1000L));
     ((ConfigPBProtocol.TerminalInfo)localObject).f = 0;
     ((ConfigPBProtocol.TerminalInfo)localObject).g = 0;
     ((ConfigPBProtocol.TerminalInfo)localObject).h = 0;
-    ((ConfigPBProtocol.TerminalInfo)localObject).i = this.jdField_a_of_type_ComTencentAvCoreVcSystemInfo.mDisplayWidth;
-    ((ConfigPBProtocol.TerminalInfo)localObject).j = this.jdField_a_of_type_ComTencentAvCoreVcSystemInfo.mDisplayHeight;
+    ((ConfigPBProtocol.TerminalInfo)localObject).i = this.a.mDisplayWidth;
+    ((ConfigPBProtocol.TerminalInfo)localObject).j = this.a.mDisplayHeight;
     ((ConfigPBProtocol.TerminalInfo)localObject).k = 22;
-    ((ConfigPBProtocol.TerminalInfo)localObject).l = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
+    ((ConfigPBProtocol.TerminalInfo)localObject).l = ConfigInfo.getSharpConfigVersionFromFile(this.e);
     ((ConfigPBProtocol.TerminalInfo)localObject).m = 37;
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ((ConfigPBProtocol.TerminalInfo)localObject).n = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("android_");
     localStringBuilder.append(Build.VERSION.RELEASE);
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_c_of_type_JavaLangString = VcSystemInfo.getDeviceNameForConfigSystem();
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_d_of_type_JavaLangString = Build.VERSION.INCREMENTAL;
-    ((ConfigPBProtocol.TerminalInfo)localObject).jdField_e_of_type_JavaLangString = Common.getVersion(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol.a(paramLong, (ConfigPBProtocol.TerminalInfo)localObject);
-    return this.jdField_a_of_type_ComTencentAvConfigConfigPBProtocol.a();
+    ((ConfigPBProtocol.TerminalInfo)localObject).o = localStringBuilder.toString();
+    ((ConfigPBProtocol.TerminalInfo)localObject).p = VcSystemInfo.getDeviceNameForConfigSystem();
+    ((ConfigPBProtocol.TerminalInfo)localObject).q = Build.VERSION.INCREMENTAL;
+    ((ConfigPBProtocol.TerminalInfo)localObject).r = Common.getVersion(this.e);
+    this.c.a(paramLong, (ConfigPBProtocol.TerminalInfo)localObject);
+    return this.c.a();
+  }
+  
+  public String b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConfigSystemImpl", 2, "getSharpConfigPayload not have config file");
+      }
+      return "";
+    }
+    Object localObject = new ConfigPBProtocol();
+    if (((ConfigPBProtocol)localObject).a(paramArrayOfByte) != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConfigSystemImpl", 2, "getSharpConfigPayload unPack TLV video config err");
+      }
+      return "";
+    }
+    paramArrayOfByte = ((ConfigPBProtocol)localObject).b();
+    if (paramArrayOfByte != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSharpConfigPayload, Content[\n");
+      ((StringBuilder)localObject).append(paramArrayOfByte.b);
+      ((StringBuilder)localObject).append("\n], test[\n");
+      ((StringBuilder)localObject).append(paramArrayOfByte.c);
+      ((StringBuilder)localObject).append("\n]");
+      QLog.w("ConfigSystemImpl", 1, ((StringBuilder)localObject).toString());
+      return paramArrayOfByte.b;
+    }
+    return "";
   }
 }
 

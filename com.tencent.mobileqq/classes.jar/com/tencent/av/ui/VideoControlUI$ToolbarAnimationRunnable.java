@@ -10,28 +10,28 @@ class VideoControlUI$ToolbarAnimationRunnable
   
   public void run()
   {
-    this.this$0.a.a(new Object[] { Integer.valueOf(102) });
-    if (!this.this$0.l) {
+    this.this$0.al.a(new Object[] { Integer.valueOf(102) });
+    if (!this.this$0.bi) {
       return;
     }
     VideoControlUI localVideoControlUI;
-    if (this.this$0.h)
+    if (this.this$0.af)
     {
       localVideoControlUI = this.this$0;
-      localVideoControlUI.y += 1;
+      localVideoControlUI.bh += 1;
     }
     else
     {
       localVideoControlUI = this.this$0;
-      localVideoControlUI.y -= 1;
+      localVideoControlUI.bh -= 1;
     }
-    if (this.this$0.y > 5) {
-      this.this$0.y = 5;
+    if (this.this$0.bh > 5) {
+      this.this$0.bh = 5;
     }
-    if (this.this$0.y < 0) {
-      this.this$0.y = 0;
+    if (this.this$0.bh < 0) {
+      this.this$0.bh = 0;
     }
-    this.this$0.a.a().postDelayed(this, VideoControlUI.a(this.this$0));
+    this.this$0.al.a().postDelayed(this, VideoControlUI.a(this.this$0));
   }
 }
 

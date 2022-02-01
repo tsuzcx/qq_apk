@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.biz.playfeeds;
 
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.repo.account.api.IUserOperationModule;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo.VideoExtraRepoerData;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,20 +18,20 @@ final class VideoReporter$1
   {
     ArrayList localArrayList = new ArrayList();
     ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    localReportInfo.mUin = RIJQQAppInterfaceUtil.c();
     localReportInfo.mSource = 0;
-    localReportInfo.mOpSource = this.jdField_a_of_type_Int;
-    localReportInfo.mSourceArticleId = this.jdField_a_of_type_Long;
-    localReportInfo.mInnerId = this.jdField_a_of_type_JavaLangString;
-    localReportInfo.mChannelId = this.jdField_b_of_type_Int;
-    localReportInfo.mAlgorithmId = this.jdField_c_of_type_Int;
-    localReportInfo.mStrategyId = this.d;
-    localReportInfo.mOperation = this.e;
-    localReportInfo.mPlayTimeLength = this.f;
-    localReportInfo.mVideoExtraRepoerData = this.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$VideoExtraRepoerData;
-    localReportInfo.mColumnID = this.g;
-    localReportInfo.videoReportInfo = this.jdField_b_of_type_JavaLangString;
-    localReportInfo.firstVideoRowkey = this.jdField_c_of_type_JavaLangString;
+    localReportInfo.mOpSource = this.a;
+    localReportInfo.mSourceArticleId = this.b;
+    localReportInfo.mInnerId = this.c;
+    localReportInfo.mChannelId = this.d;
+    localReportInfo.mAlgorithmId = this.e;
+    localReportInfo.mStrategyId = this.f;
+    localReportInfo.mOperation = this.g;
+    localReportInfo.mPlayTimeLength = this.h;
+    localReportInfo.mVideoExtraRepoerData = this.i;
+    localReportInfo.mColumnID = this.j;
+    localReportInfo.videoReportInfo = this.k;
+    localReportInfo.firstVideoRowkey = this.l;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -60,7 +60,7 @@ final class VideoReporter$1
       localStringBuilder.append("; videoReportInfo:");
       localStringBuilder.append(localReportInfo.videoReportInfo);
       localStringBuilder.append("; videoExtraRepoerData:");
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoReportReportInfo$VideoExtraRepoerData;
+      Object localObject = this.i;
       if (localObject != null) {
         localObject = ((ReportInfo.VideoExtraRepoerData)localObject).toString();
       } else {
@@ -70,12 +70,12 @@ final class VideoReporter$1
       QLog.d("VideoReporter", 2, localStringBuilder.toString());
     }
     localArrayList.add(localReportInfo);
-    ((IUserOperationModule)QRoute.api(IUserOperationModule.class)).request0x64eUserOperationReport(localArrayList);
+    UserOperationModule.getInstance().request0x64eUserOperationReport(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter.1
  * JD-Core Version:    0.7.0.1
  */

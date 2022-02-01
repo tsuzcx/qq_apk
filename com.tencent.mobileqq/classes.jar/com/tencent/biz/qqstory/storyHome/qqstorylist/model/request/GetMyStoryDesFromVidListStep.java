@@ -10,17 +10,17 @@ import java.util.List;
 public class GetMyStoryDesFromVidListStep
   implements Step
 {
-  protected BatchHandlerListPuller a;
-  private MyStorys jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys;
-  private GetMyStoryDesFromVidListStep.ReceiveDataListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep$ReceiveDataListener;
-  protected GetMyStoryVideoListStep.Result a;
-  protected Step.ErrorCallBack a;
   protected Step.FinishCallBack a;
+  protected Step.ErrorCallBack b;
+  protected GetMyStoryVideoListStep.Result c;
+  protected BatchHandlerListPuller d;
+  private MyStorys e;
+  private GetMyStoryDesFromVidListStep.ReceiveDataListener f;
   
   public GetMyStoryDesFromVidListStep(GetMyStoryDesFromVidListStep.ReceiveDataListener paramReceiveDataListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep$ReceiveDataListener = paramReceiveDataListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys = new MyStorys();
+    this.f = paramReceiveDataListener;
+    this.e = new MyStorys();
   }
   
   public Object a()
@@ -28,53 +28,26 @@ public class GetMyStoryDesFromVidListStep
     return null;
   }
   
-  public String a()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    SLog.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
-    if (localObject == null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
-      if (localObject != null)
-      {
-        ((Step.FinishCallBack)localObject).a(a());
-        return;
-      }
-      SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    localObject = new ArrayList(((GetMyStoryVideoListStep.Result)localObject).a);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = BatchHandlerListPuller.a((List)localObject);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new GetMyStoryDesFromVidListStep.1(this, (ArrayList)localObject));
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
-  }
-  
   public void a(Step.ErrorCallBack paramErrorCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack = paramErrorCallBack;
+    this.b = paramErrorCallBack;
   }
   
   public void a(Step.FinishCallBack paramFinishCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack = paramFinishCallBack;
+    this.a = paramFinishCallBack;
   }
   
   public void a(Object paramObject)
   {
     if ((paramObject instanceof GetMyStoryVideoListStep.Result))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = ((GetMyStoryVideoListStep.Result)paramObject);
+      this.c = ((GetMyStoryVideoListStep.Result)paramObject);
       return;
     }
     paramObject = new StringBuilder();
     paramObject.append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    GetMyStoryVideoListStep.Result localResult = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
+    GetMyStoryVideoListStep.Result localResult = this.c;
     boolean bool2 = true;
     boolean bool1;
     if (localResult == null) {
@@ -86,7 +59,7 @@ public class GetMyStoryDesFromVidListStep
     SLog.e("GetMyStoryDesFromVidListStep", paramObject.toString());
     paramObject = new StringBuilder();
     paramObject.append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result == null) {
+    if (this.c == null) {
       bool1 = bool2;
     } else {
       bool1 = false;
@@ -95,14 +68,41 @@ public class GetMyStoryDesFromVidListStep
     AssertUtils.fail(paramObject.toString(), new Object[0]);
   }
   
-  public boolean a()
+  public void b()
+  {
+    SLog.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
+    Object localObject = this.c;
+    if (localObject == null)
+    {
+      localObject = this.a;
+      if (localObject != null)
+      {
+        ((Step.FinishCallBack)localObject).a(c());
+        return;
+      }
+      SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      return;
+    }
+    localObject = new ArrayList(((GetMyStoryVideoListStep.Result)localObject).d);
+    this.d = BatchHandlerListPuller.a((List)localObject);
+    this.d.a("GetMyStoryDesFromVidListStep");
+    this.d.a(new GetMyStoryDesFromVidListStep.1(this, (ArrayList)localObject));
+    this.d.b();
+  }
+  
+  public String c()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public boolean d()
   {
     return false;
   }
   
-  public void b() {}
+  public void e() {}
   
-  public void c() {}
+  public void f() {}
 }
 
 

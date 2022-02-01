@@ -8,7 +8,7 @@ public class EffectFaceDeviceConfig
 {
   private static EffectFaceDeviceConfig a;
   
-  public static EffectFaceDeviceConfig a()
+  public static EffectFaceDeviceConfig g()
   {
     EffectFaceDeviceConfig localEffectFaceDeviceConfig;
     label37:
@@ -36,7 +36,7 @@ public class EffectFaceDeviceConfig
   
   public boolean a()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (localIConfigParser.getIntValue("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
       bool = true;
@@ -46,7 +46,7 @@ public class EffectFaceDeviceConfig
   
   public boolean b()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (localIConfigParser.getIntValue("sharp/qavScreenRecoder/isClose", 0) == 0) {
       bool = true;
@@ -56,7 +56,7 @@ public class EffectFaceDeviceConfig
   
   public boolean c()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (localIConfigParser.getIntValue("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
       bool = true;
@@ -66,7 +66,7 @@ public class EffectFaceDeviceConfig
   
   public boolean d()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (localIConfigParser.getIntValue("sharp/EffectFaceDeviceConfig/enable", 0) == 1) {
       bool = true;
@@ -76,7 +76,7 @@ public class EffectFaceDeviceConfig
   
   public boolean e()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (localIConfigParser.getIntValue("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1) {
       bool = true;
@@ -86,7 +86,7 @@ public class EffectFaceDeviceConfig
   
   public boolean f()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     boolean bool = false;
     if (1 == localIConfigParser.getIntValue("sharp/EffectFaceDetectInversion/Inversion", 0)) {
       bool = true;

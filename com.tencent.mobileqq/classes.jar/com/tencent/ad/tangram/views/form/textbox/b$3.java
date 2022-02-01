@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class b$3
   implements TextView.OnEditorActionListener
@@ -13,24 +14,26 @@ class b$3
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    StringBuilder localStringBuilder;
     if (paramInt == 6)
     {
-      paramKeyEvent = new StringBuilder();
-      paramKeyEvent.append("onEditorActionDone ");
-      paramKeyEvent.append(b.access$300(this.this$0));
-      AdLog.i("AdFormItemTextBoxView", paramKeyEvent.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEditorActionDone ");
+      localStringBuilder.append(b.access$300(this.this$0));
+      AdLog.i("AdFormItemTextBoxView", localStringBuilder.toString());
       b.access$400(this.this$0).clearFocus();
       b.access$500(paramTextView);
     }
     else
     {
-      paramTextView = new StringBuilder();
-      paramTextView.append("onEditorAction ");
-      paramTextView.append(paramInt);
-      paramTextView.append(" ");
-      paramTextView.append(b.access$600(this.this$0));
-      AdLog.i("AdFormItemTextBoxView", paramTextView.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEditorAction ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(b.access$600(this.this$0));
+      AdLog.i("AdFormItemTextBoxView", localStringBuilder.toString());
     }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
     return false;
   }
 }

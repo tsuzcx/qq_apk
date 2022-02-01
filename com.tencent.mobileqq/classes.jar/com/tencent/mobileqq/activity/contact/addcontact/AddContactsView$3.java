@@ -16,9 +16,9 @@ class AddContactsView$3
     if (QLog.isColorLevel()) {
       QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
     }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+    this.a.k.setVisibility(8);
+    this.a.l.setVisibility(8);
+    this.a.p.setVisibility(8);
   }
   
   public void b()
@@ -26,14 +26,14 @@ class AddContactsView$3
     if (QLog.isColorLevel()) {
       QLog.d("AddContactsView", 2, "onRecommendsAvailable");
     }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.k.setVisibility(0);
+    this.a.l.setVisibility(0);
     this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.3
  * JD-Core Version:    0.7.0.1
  */

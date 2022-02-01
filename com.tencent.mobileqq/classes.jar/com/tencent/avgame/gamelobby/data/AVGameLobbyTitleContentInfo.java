@@ -27,20 +27,20 @@ public class AVGameLobbyTitleContentInfo
       if (paramInt != 1) {
         return "";
       }
-      return paramContext.getString(2131690385);
+      return paramContext.getString(2131887296);
     }
-    return paramContext.getString(2131690386);
+    return paramContext.getString(2131887297);
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
   
   @NonNull
-  public int b()
-  {
-    return 6;
-  }
-  
   public int c()
   {
-    return this.a;
+    return 6;
   }
 }
 

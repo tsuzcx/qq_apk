@@ -11,27 +11,6 @@ import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.HighlightTitle;
 
 public class TroopRecommendUtils
 {
-  public static long a(AppInterface paramAppInterface, String paramString)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramAppInterface != null)
-    {
-      l1 = l2;
-      if (paramString != null)
-      {
-        Context localContext = paramAppInterface.getApp().getBaseContext();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("sp_troop_recommend_graytips_");
-        localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-        localStringBuilder.append("_");
-        localStringBuilder.append(paramString);
-        l1 = localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("last_add_time", 0L);
-      }
-    }
-    return l1;
-  }
-  
   public static void a(AppInterface paramAppInterface, String paramString, long paramLong)
   {
     Object localObject;
@@ -65,98 +44,98 @@ public class TroopRecommendUtils
   public static void a(AppInterface paramAppInterface, String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +34 -> 37
-    //   6: new 25	java/lang/StringBuilder
+    //   6: new 19	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   13: astore_3
     //   14: aload_3
-    //   15: ldc 105
-    //   17: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: ldc 100
+    //   17: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
     //   21: aload_3
     //   22: aload_1
-    //   23: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: pop
-    //   27: ldc 71
+    //   27: ldc 33
     //   29: iconst_2
     //   30: aload_3
-    //   31: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   31: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   37: aload_0
     //   38: ifnull +280 -> 318
     //   41: aload_1
     //   42: ifnull +276 -> 318
     //   45: aload_2
     //   46: ifnull +272 -> 318
-    //   49: new 25	java/lang/StringBuilder
+    //   49: new 19	java/lang/StringBuilder
     //   52: dup
-    //   53: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   53: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   56: astore_3
     //   57: aload_3
     //   58: aload_0
-    //   59: invokevirtual 17	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   62: invokevirtual 23	com/tencent/qphone/base/util/BaseApplication:getBaseContext	()Landroid/content/Context;
-    //   65: invokevirtual 109	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   68: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   71: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 47	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   62: invokevirtual 53	com/tencent/qphone/base/util/BaseApplication:getBaseContext	()Landroid/content/Context;
+    //   65: invokevirtual 104	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   68: invokevirtual 109	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   71: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload_3
-    //   76: getstatic 118	java/io/File:separator	Ljava/lang/String;
-    //   79: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: getstatic 113	java/io/File:separator	Ljava/lang/String;
+    //   79: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: pop
     //   83: aload_3
-    //   84: ldc 120
-    //   86: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: ldc 115
+    //   86: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: pop
     //   90: aload_3
     //   91: aload_1
-    //   92: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: pop
     //   96: aload_3
-    //   97: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   100: astore_1
     //   101: aconst_null
     //   102: astore_3
     //   103: aconst_null
     //   104: astore_0
-    //   105: new 122	java/io/FileOutputStream
+    //   105: new 117	java/io/FileOutputStream
     //   108: dup
-    //   109: new 111	java/io/File
+    //   109: new 106	java/io/File
     //   112: dup
     //   113: aload_1
-    //   114: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
-    //   117: invokespecial 126	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   114: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
+    //   117: invokespecial 121	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   120: astore_1
     //   121: aload_1
     //   122: aload_2
-    //   123: invokevirtual 130	java/io/FileOutputStream:write	([B)V
+    //   123: invokevirtual 125	java/io/FileOutputStream:write	([B)V
     //   126: aload_1
-    //   127: invokevirtual 133	java/io/FileOutputStream:flush	()V
+    //   127: invokevirtual 128	java/io/FileOutputStream:flush	()V
     //   130: aload_1
-    //   131: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   131: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   134: return
     //   135: astore_0
-    //   136: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   139: ifeq +179 -> 318
-    //   142: new 25	java/lang/StringBuilder
+    //   142: new 19	java/lang/StringBuilder
     //   145: dup
-    //   146: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   146: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   149: astore_1
     //   150: aload_1
-    //   151: ldc 138
-    //   153: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: ldc 133
+    //   153: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: pop
     //   157: aload_1
     //   158: aload_0
-    //   159: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   159: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   162: pop
-    //   163: ldc 71
+    //   163: ldc 33
     //   165: iconst_2
     //   166: aload_1
-    //   167: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: return
     //   174: astore_2
     //   175: aload_1
@@ -173,71 +152,71 @@ public class TroopRecommendUtils
     //   192: astore_1
     //   193: aload_1
     //   194: astore_0
-    //   195: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   195: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   198: ifeq +42 -> 240
     //   201: aload_1
     //   202: astore_0
-    //   203: new 25	java/lang/StringBuilder
+    //   203: new 19	java/lang/StringBuilder
     //   206: dup
-    //   207: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   207: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   210: astore_3
     //   211: aload_1
     //   212: astore_0
     //   213: aload_3
-    //   214: ldc 143
-    //   216: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: ldc 138
+    //   216: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: pop
     //   220: aload_1
     //   221: astore_0
     //   222: aload_3
     //   223: aload_2
-    //   224: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   224: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   227: pop
     //   228: aload_1
     //   229: astore_0
-    //   230: ldc 71
+    //   230: ldc 33
     //   232: iconst_2
     //   233: aload_3
-    //   234: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   240: aload_1
     //   241: ifnull +77 -> 318
     //   244: aload_1
-    //   245: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   245: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   248: return
     //   249: astore_0
-    //   250: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   250: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   253: ifeq +65 -> 318
-    //   256: new 25	java/lang/StringBuilder
+    //   256: new 19	java/lang/StringBuilder
     //   259: dup
-    //   260: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   260: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   263: astore_1
     //   264: goto -114 -> 150
     //   267: aload_0
     //   268: ifnull +48 -> 316
     //   271: aload_0
-    //   272: invokevirtual 136	java/io/FileOutputStream:close	()V
+    //   272: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   275: goto +41 -> 316
     //   278: astore_0
-    //   279: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   282: ifeq +34 -> 316
-    //   285: new 25	java/lang/StringBuilder
+    //   285: new 19	java/lang/StringBuilder
     //   288: dup
-    //   289: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   289: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   292: astore_2
     //   293: aload_2
-    //   294: ldc 138
-    //   296: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: ldc 133
+    //   296: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   299: pop
     //   300: aload_2
     //   301: aload_0
-    //   302: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   305: pop
-    //   306: ldc 71
+    //   306: ldc 33
     //   308: iconst_2
     //   309: aload_2
-    //   310: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   313: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   310: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   316: aload_1
     //   317: athrow
     //   318: return
@@ -285,63 +264,63 @@ public class TroopRecommendUtils
     //   23: astore_2
     //   24: aload_1
     //   25: ifnull +347 -> 372
-    //   28: new 25	java/lang/StringBuilder
+    //   28: new 19	java/lang/StringBuilder
     //   31: dup
-    //   32: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   32: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   35: astore_2
     //   36: aload_2
     //   37: aload_0
-    //   38: invokevirtual 17	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   41: invokevirtual 23	com/tencent/qphone/base/util/BaseApplication:getBaseContext	()Landroid/content/Context;
-    //   44: invokevirtual 109	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   47: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   50: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 47	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   41: invokevirtual 53	com/tencent/qphone/base/util/BaseApplication:getBaseContext	()Landroid/content/Context;
+    //   44: invokevirtual 104	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   47: invokevirtual 109	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   50: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload_2
-    //   55: getstatic 118	java/io/File:separator	Ljava/lang/String;
-    //   58: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: getstatic 113	java/io/File:separator	Ljava/lang/String;
+    //   58: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: aload_2
-    //   63: ldc 120
-    //   65: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: ldc 115
+    //   65: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload_2
     //   70: aload_1
-    //   71: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload_2
-    //   76: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: astore_1
     //   80: aload 6
     //   82: astore_0
-    //   83: new 111	java/io/File
+    //   83: new 106	java/io/File
     //   86: dup
     //   87: aload_1
-    //   88: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
     //   91: astore_1
     //   92: aload 6
     //   94: astore_0
     //   95: aload_1
-    //   96: invokevirtual 147	java/io/File:exists	()Z
+    //   96: invokevirtual 142	java/io/File:exists	()Z
     //   99: ifeq +52 -> 151
     //   102: aload 6
     //   104: astore_0
-    //   105: new 149	java/io/FileInputStream
+    //   105: new 144	java/io/FileInputStream
     //   108: dup
     //   109: aload_1
-    //   110: invokespecial 150	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   110: invokespecial 145	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   113: astore_1
     //   114: aload 5
     //   116: astore_0
     //   117: aload_1
-    //   118: invokevirtual 154	java/io/FileInputStream:available	()I
+    //   118: invokevirtual 149	java/io/FileInputStream:available	()I
     //   121: newarray byte
     //   123: astore_2
     //   124: aload_2
     //   125: astore_0
     //   126: aload_1
     //   127: aload_2
-    //   128: invokevirtual 158	java/io/FileInputStream:read	([B)I
+    //   128: invokevirtual 153	java/io/FileInputStream:read	([B)I
     //   131: pop
     //   132: aload_2
     //   133: astore_0
@@ -365,31 +344,31 @@ public class TroopRecommendUtils
     //   157: aload_1
     //   158: ifnull +214 -> 372
     //   161: aload_1
-    //   162: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   162: invokevirtual 154	java/io/FileInputStream:close	()V
     //   165: aload_0
     //   166: areturn
     //   167: astore_1
     //   168: aload_0
     //   169: astore_2
-    //   170: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   170: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   173: ifeq +199 -> 372
-    //   176: new 25	java/lang/StringBuilder
+    //   176: new 19	java/lang/StringBuilder
     //   179: dup
-    //   180: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   180: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   183: astore_2
     //   184: aload_2
-    //   185: ldc 161
-    //   187: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: ldc 156
+    //   187: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: pop
     //   191: aload_2
     //   192: aload_1
-    //   193: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   193: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   196: pop
-    //   197: ldc 71
+    //   197: ldc 33
     //   199: iconst_2
     //   200: aload_2
-    //   201: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   201: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   207: aload_0
     //   208: areturn
     //   209: astore_1
@@ -401,85 +380,85 @@ public class TroopRecommendUtils
     //   218: astore_1
     //   219: aload_1
     //   220: astore_0
-    //   221: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   221: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   224: ifeq +46 -> 270
     //   227: aload_1
     //   228: astore_0
-    //   229: new 25	java/lang/StringBuilder
+    //   229: new 19	java/lang/StringBuilder
     //   232: dup
-    //   233: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   233: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   236: astore 4
     //   238: aload_1
     //   239: astore_0
     //   240: aload 4
-    //   242: ldc 161
-    //   244: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: ldc 156
+    //   244: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: pop
     //   248: aload_1
     //   249: astore_0
     //   250: aload 4
     //   252: aload_3
-    //   253: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: aload_1
     //   258: astore_0
-    //   259: ldc 71
+    //   259: ldc 33
     //   261: iconst_2
     //   262: aload 4
-    //   264: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   267: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   264: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   267: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   270: aload_1
     //   271: ifnull +48 -> 319
     //   274: aload_1
-    //   275: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   275: invokevirtual 154	java/io/FileInputStream:close	()V
     //   278: goto +41 -> 319
     //   281: astore_0
-    //   282: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   282: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   285: ifeq +34 -> 319
-    //   288: new 25	java/lang/StringBuilder
+    //   288: new 19	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   295: astore_1
     //   296: aload_1
-    //   297: ldc 161
-    //   299: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: ldc 156
+    //   299: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   302: pop
     //   303: aload_1
     //   304: aload_0
-    //   305: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   305: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   308: pop
-    //   309: ldc 71
+    //   309: ldc 33
     //   311: iconst_2
     //   312: aload_1
-    //   313: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   316: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   313: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   319: aload_2
     //   320: areturn
     //   321: aload_0
     //   322: ifnull +48 -> 370
     //   325: aload_0
-    //   326: invokevirtual 159	java/io/FileInputStream:close	()V
+    //   326: invokevirtual 154	java/io/FileInputStream:close	()V
     //   329: goto +41 -> 370
     //   332: astore_0
-    //   333: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   333: invokestatic 17	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   336: ifeq +34 -> 370
-    //   339: new 25	java/lang/StringBuilder
+    //   339: new 19	java/lang/StringBuilder
     //   342: dup
-    //   343: invokespecial 26	java/lang/StringBuilder:<init>	()V
+    //   343: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   346: astore_2
     //   347: aload_2
-    //   348: ldc 161
-    //   350: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   348: ldc 156
+    //   350: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   353: pop
     //   354: aload_2
     //   355: aload_0
-    //   356: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   356: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   359: pop
-    //   360: ldc 71
+    //   360: ldc 33
     //   362: iconst_2
     //   363: aload_2
-    //   364: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   367: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   367: invokestatic 41	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   370: aload_1
     //   371: athrow
     //   372: aload_2
@@ -535,7 +514,7 @@ public class TroopRecommendUtils
         localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
         localStringBuilder.append("_");
         localStringBuilder.append(paramString);
-        l1 = localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("old_last_add_time", 0L);
+        l1 = localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("last_add_time", 0L);
       }
     }
     return l1;
@@ -567,17 +546,23 @@ public class TroopRecommendUtils
   
   public static long c(AppInterface paramAppInterface, String paramString)
   {
-    if ((paramAppInterface != null) && (paramString != null))
+    long l2 = 0L;
+    long l1 = l2;
+    if (paramAppInterface != null)
     {
-      Context localContext = paramAppInterface.getApp().getBaseContext();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("sp_troop_recommend_graytips_");
-      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-      localStringBuilder.append("_");
-      localStringBuilder.append(paramString);
-      return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("report_timestamp", -1L);
+      l1 = l2;
+      if (paramString != null)
+      {
+        Context localContext = paramAppInterface.getApp().getBaseContext();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sp_troop_recommend_graytips_");
+        localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString);
+        l1 = localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("old_last_add_time", 0L);
+      }
     }
-    return 0L;
+    return l1;
   }
   
   public static void c(AppInterface paramAppInterface, String paramString, long paramLong)
@@ -603,10 +588,25 @@ public class TroopRecommendUtils
       ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong("old_last_add_time", paramLong).commit();
     }
   }
+  
+  public static long d(AppInterface paramAppInterface, String paramString)
+  {
+    if ((paramAppInterface != null) && (paramString != null))
+    {
+      Context localContext = paramAppInterface.getApp().getBaseContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sp_troop_recommend_graytips_");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+      return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getLong("report_timestamp", -1L);
+    }
+    return 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TroopRecommendUtils
  * JD-Core Version:    0.7.0.1
  */

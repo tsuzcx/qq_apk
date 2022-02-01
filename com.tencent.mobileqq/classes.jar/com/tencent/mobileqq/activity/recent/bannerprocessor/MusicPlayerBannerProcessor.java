@@ -19,12 +19,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class MusicPlayerBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.M;
-  }
+  public static final int a = BannerTypeCollections.N;
   
   public MusicPlayerBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -38,8 +33,8 @@ public class MusicPlayerBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130841364));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130842165));
     paramBanner.setOnClickListener(new MusicPlayerBannerProcessor.1(this));
     paramBanner.setVisibility(8);
     return paramBanner;
@@ -47,35 +42,35 @@ public class MusicPlayerBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
-      paramBanner.a.setVisibility(0);
-      paramMessage = QQPlayerService.b();
+      paramBanner.c.setVisibility(0);
+      paramMessage = QQPlayerService.g();
       if (paramMessage != null)
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131694928);
-        paramBanner = (TipsBar)paramBanner.a;
+        String str = this.f.getString(2131892655);
+        paramBanner = (TipsBar)paramBanner.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
         localStringBuilder.append(" ");
-        localStringBuilder.append(paramMessage.c);
+        localStringBuilder.append(paramMessage.e);
         paramBanner.setTipsText(Html.fromHtml(localStringBuilder.toString()));
       }
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EE0", "0X8009EE0", 1, 0, "", "", "", "");
+      ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EE0", "0X8009EE0", 1, 0, "", "", "", "");
       return;
     }
-    paramBanner.a.setVisibility(8);
-    BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+    paramBanner.c.setVisibility(8);
+    BannerManager.a().a(a, 0, null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MusicPlayerBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

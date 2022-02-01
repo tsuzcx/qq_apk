@@ -28,13 +28,13 @@ public class NotificationDeleteReceiver
       QLog.i("NotificationDeleteReceiver", 2, paramIntent.toString());
     }
     if ((i >= 512) && (i <= 522)) {
-      NotifyIdManager.a(paramAppRuntime).a(paramContext);
+      NotifyIdManager.a(paramAppRuntime).b(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NotificationDeleteReceiver
  * JD-Core Version:    0.7.0.1
  */

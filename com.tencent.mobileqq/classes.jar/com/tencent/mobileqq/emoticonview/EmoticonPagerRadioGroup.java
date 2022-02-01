@@ -10,6 +10,7 @@ import android.widget.RadioGroup.LayoutParams;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.QQTheme;
 
 public class EmoticonPagerRadioGroup
   extends RadioGroup
@@ -47,21 +48,21 @@ public class EmoticonPagerRadioGroup
     EmoticonPagerRadioGroup.1 local1 = new EmoticonPagerRadioGroup.1(this, getContext());
     if (paramInt == 2)
     {
-      local1.setButtonDrawable(2130850878);
+      local1.setButtonDrawable(2130852730);
     }
     else if (paramInt == 3)
     {
-      local1.setButtonDrawable(2130850879);
+      local1.setButtonDrawable(2130852731);
     }
     else if (paramInt == 4)
     {
-      local1.setButtonDrawable(2130850891);
+      local1.setButtonDrawable(2130852743);
     }
     else
     {
       i = this.indicatorDrawable;
       if (i == 0) {
-        local1.setButtonDrawable(2130850890);
+        local1.setButtonDrawable(2130852742);
       } else {
         local1.setButtonDrawable(i);
       }
@@ -89,12 +90,17 @@ public class EmoticonPagerRadioGroup
     }
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, f1, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, f2, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
-    int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
+    if (QQTheme.isNowSimpleUI()) {
+      f1 = TypedValue.applyDimension(1, 2.0F, localResources.getDisplayMetrics());
+    } else {
+      f1 = TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
+    }
+    int i = (int)f1;
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
     local1.setLayoutParams(localLayoutParams);
     local1.setClickable(true);
-    if ((AppSetting.d) && (paramInt != 3) && (paramInt != 2))
+    if ((AppSetting.e) && (paramInt != 3) && (paramInt != 2))
     {
       local1.setClickable(false);
       local1.setFocusable(false);
@@ -282,7 +288,7 @@ public class EmoticonPagerRadioGroup
       {
         paramInt = this.indicatorDrawable;
         if (paramInt == 0) {
-          localRadioButton.setButtonDrawable(2130850890);
+          localRadioButton.setButtonDrawable(2130852742);
         } else {
           localRadioButton.setButtonDrawable(paramInt);
         }
@@ -332,7 +338,7 @@ public class EmoticonPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

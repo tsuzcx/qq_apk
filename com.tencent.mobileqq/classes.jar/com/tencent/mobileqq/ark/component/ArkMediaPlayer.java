@@ -16,36 +16,34 @@ import mqq.app.QActivityLifecycleCallbacks;
 public class ArkMediaPlayer
   extends ArkPlayer
 {
-  public static final ark.PlayerStubFactory a;
-  private static final Set<WeakReference<ArkMediaPlayer>> jdField_a_of_type_JavaUtilSet;
-  static final QActivityLifecycleCallbacks jdField_a_of_type_MqqAppQActivityLifecycleCallbacks = new ArkMediaPlayer.1();
-  private final int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int b = 1;
-  private final int c = 2;
-  private final int d = 3;
-  private final int e = 4;
-  private int f = 0;
+  static final QActivityLifecycleCallbacks a = new ArkMediaPlayer.1();
+  public static final ark.PlayerStubFactory b = new ArkMediaPlayer.2();
+  private static final Set<WeakReference<ArkMediaPlayer>> j = Collections.synchronizedSet(new HashSet());
+  private boolean c = true;
+  private final int d = 0;
+  private final int e = 1;
+  private final int f = 2;
+  private final int g = 3;
+  private final int h = 4;
+  private int i = 0;
   
   static
   {
-    jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-    Foreground.addActivityLifeCallback(jdField_a_of_type_MqqAppQActivityLifecycleCallbacks);
-    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new ArkMediaPlayer.2();
+    Foreground.addActivityLifeCallback(a);
   }
   
   protected ArkMediaPlayer()
   {
-    jdField_a_of_type_JavaUtilSet.add(new WeakReference(this));
+    j.add(new WeakReference(this));
     QLog.i("Ark.ArkMediaPlayer", 1, String.format("ArkMediaPlayer.create.%h", new Object[] { this }));
   }
   
   public static void a()
   {
     QLog.i("Ark.ArkMediaPlayer", 1, "onForeground");
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    synchronized (j)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = j.iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (WeakReference)localIterator.next();
@@ -68,9 +66,9 @@ public class ArkMediaPlayer
   public static void b()
   {
     QLog.i("Ark.ArkMediaPlayer", 1, "onBackground");
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    synchronized (j)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = j.iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (WeakReference)localIterator.next();
@@ -92,32 +90,32 @@ public class ArkMediaPlayer
   
   public boolean Pause()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = 3;
+    if (!this.c) {
+      this.i = 3;
     }
     return super.Pause();
   }
   
   public boolean Play()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = 1;
+    if (!this.c) {
+      this.i = 1;
     }
     return super.Play();
   }
   
   public boolean Resume()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = 4;
+    if (!this.c) {
+      this.i = 4;
     }
     return super.Resume();
   }
   
   public boolean Stop()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = 2;
+    if (!this.c) {
+      this.i = 2;
     }
     return super.Stop();
   }
@@ -134,7 +132,7 @@ public class ArkMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

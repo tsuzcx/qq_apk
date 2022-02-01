@@ -19,18 +19,18 @@ import mqq.app.MobileQQ;
 public class PrinterManager
 {
   public PrinterEntity a;
-  private PrinterManager.PrinterUpdateObserver jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver;
-  private SmartDeviceObserver jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver;
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<PrinterEntity> jdField_a_of_type_JavaUtilList;
+  private QQAppInterface b;
+  private List<PrinterEntity> c;
+  private DataLineObserver d;
+  private SmartDeviceObserver e;
+  private PrinterManager.PrinterUpdateObserver f;
   
   public PrinterManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new PrinterManager.1(this);
-    this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver = new PrinterManager.2(this);
+    this.b = paramQQAppInterface;
+    this.c = new ArrayList();
+    this.d = new PrinterManager.1(this);
+    this.e = new PrinterManager.2(this);
   }
   
   public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -38,9 +38,9 @@ public class PrinterManager
     if (paramLong != 0L)
     {
       paramQQAppInterface = (SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-      if (paramQQAppInterface.a())
+      if (paramQQAppInterface.c())
       {
-        DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
+        DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.e();
         if (arrayOfDeviceInfo != null)
         {
           int j = arrayOfDeviceInfo.length;
@@ -62,33 +62,21 @@ public class PrinterManager
   private void a(int paramInt)
   {
     a();
-    PrinterManager.PrinterUpdateObserver localPrinterUpdateObserver = this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver;
+    PrinterManager.PrinterUpdateObserver localPrinterUpdateObserver = this.f;
     if (localPrinterUpdateObserver != null) {
       localPrinterUpdateObserver.a(paramInt);
     }
   }
   
-  public PrinterEntity a()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("_last_printer");
-    str = SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString());
-    a();
-    return b(str);
-  }
-  
   public PrinterEntity a(long paramLong)
   {
-    if ((paramLong != 0L) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((paramLong != 0L) && (this.c.size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         PrinterEntity localPrinterEntity = (PrinterEntity)localIterator.next();
-        if (localPrinterEntity.jdField_a_of_type_Long == paramLong) {
+        if (localPrinterEntity.c == paramLong) {
           return localPrinterEntity;
         }
       }
@@ -101,12 +89,12 @@ public class PrinterManager
     if (paramString != null)
     {
       PCQQPrinter localPCQQPrinter = new PCQQPrinter();
-      localPCQQPrinter.jdField_a_of_type_Int = 1;
-      localPCQQPrinter.jdField_a_of_type_Long = 0L;
-      localPCQQPrinter.jdField_a_of_type_JavaLangString = paramString;
-      localPCQQPrinter.c = true;
-      localPCQQPrinter.b = true;
-      localPCQQPrinter.jdField_a_of_type_Boolean = true;
+      localPCQQPrinter.b = 1;
+      localPCQQPrinter.c = 0L;
+      localPCQQPrinter.a = paramString;
+      localPCQQPrinter.f = true;
+      localPCQQPrinter.e = true;
+      localPCQQPrinter.d = true;
       return localPCQQPrinter;
     }
     return null;
@@ -114,67 +102,77 @@ public class PrinterManager
   
   public List<PrinterEntity> a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if (((DataLineHandler)localObject).a.jdField_a_of_type_JavaUtilList != null)
+    this.c.clear();
+    Object localObject = (DataLineHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    if (((DataLineHandler)localObject).e.c != null)
     {
-      localObject = ((DataLineHandler)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = ((DataLineHandler)localObject).e.c.iterator();
       while (((Iterator)localObject).hasNext())
       {
         PrinterEntity localPrinterEntity = a((String)((Iterator)localObject).next());
-        this.jdField_a_of_type_JavaUtilList.add(localPrinterEntity);
+        this.c.add(localPrinterEntity);
       }
     }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface != null)
-    {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
-    }
-    this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver = null;
+    return this.c;
   }
   
   public void a(PrinterManager.PrinterUpdateObserver paramPrinterUpdateObserver)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.b;
     if (localQQAppInterface != null)
     {
-      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver);
+      localQQAppInterface.addObserver(this.d);
+      this.b.addObserver(this.e);
     }
-    this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver = paramPrinterUpdateObserver;
+    this.f = paramPrinterUpdateObserver;
   }
   
-  public void a(String paramString)
+  public PrinterEntity b()
   {
-    if (paramString == null) {
-      return;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    String str = this.b.getCurrentAccountUin();
+    MobileQQ localMobileQQ = this.b.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("_last_printer");
-    SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString(), paramString);
+    str = SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString());
+    a();
+    return b(str);
   }
   
-  public boolean a()
+  public PrinterEntity b(String paramString)
   {
-    return ((RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a() != 0;
+    if ((paramString != null) && (this.c.size() > 0))
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        PrinterEntity localPrinterEntity = (PrinterEntity)localIterator.next();
+        if (localPrinterEntity.a.equals(paramString)) {
+          return localPrinterEntity;
+        }
+      }
+    }
+    return null;
   }
   
-  public boolean a(String paramString)
+  public void c()
+  {
+    QQAppInterface localQQAppInterface = this.b;
+    if (localQQAppInterface != null)
+    {
+      localQQAppInterface.removeObserver(this.d);
+      this.b.removeObserver(this.e);
+    }
+    this.f = null;
+  }
+  
+  public boolean c(String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null)
     {
-      int i = FileManagerUtil.a(paramString);
+      int i = FileManagerUtil.c(paramString);
       if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
       {
         bool1 = bool2;
@@ -188,20 +186,22 @@ public class PrinterManager
     return bool1;
   }
   
-  public PrinterEntity b(String paramString)
+  public void d(String paramString)
   {
-    if ((paramString != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        PrinterEntity localPrinterEntity = (PrinterEntity)localIterator.next();
-        if (localPrinterEntity.jdField_a_of_type_JavaLangString.equals(paramString)) {
-          return localPrinterEntity;
-        }
-      }
+    if (paramString == null) {
+      return;
     }
-    return null;
+    String str = this.b.getCurrentAccountUin();
+    MobileQQ localMobileQQ = this.b.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_last_printer");
+    SharePreferenceUtils.a(localMobileQQ, localStringBuilder.toString(), paramString);
+  }
+  
+  public boolean d()
+  {
+    return ((RegisterProxySvcPackHandler)this.b.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).d() != 0;
   }
 }
 

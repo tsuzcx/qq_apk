@@ -13,28 +13,21 @@ import java.lang.reflect.Field;
 public class ValueAnimation<T>
   extends Animation
 {
-  static final ValueAnimation.TypeEvaluator jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator = new ValueAnimation.1();
-  static final ValueAnimation.TypeEvaluator b;
-  static final ValueAnimation.TypeEvaluator c;
-  static final ValueAnimation.TypeEvaluator d;
+  static final ValueAnimation.TypeEvaluator a = new ValueAnimation.1();
+  static final ValueAnimation.TypeEvaluator b = new ValueAnimation.2();
+  static final ValueAnimation.TypeEvaluator c = new ValueAnimation.3();
+  static final ValueAnimation.TypeEvaluator d = new ValueAnimation.4();
   static final ValueAnimation.TypeEvaluator e = new ValueAnimation.5();
-  private long jdField_a_of_type_Long = 0L;
-  protected ValueAnimation.AnimationUpdateListener<T> a;
-  protected T a;
-  protected boolean a;
-  private Pair[] jdField_a_of_type_ArrayOfAndroidUtilPair;
-  protected T b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d;
-  protected ValueAnimation.TypeEvaluator<T> f;
-  
-  static
-  {
-    jdField_b_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator = new ValueAnimation.2();
-    jdField_c_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator = new ValueAnimation.3();
-    jdField_d_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator = new ValueAnimation.4();
-  }
+  protected T f;
+  protected T g;
+  protected ValueAnimation.TypeEvaluator<T> h;
+  protected ValueAnimation.AnimationUpdateListener<T> i;
+  protected boolean j;
+  protected boolean k;
+  protected boolean l;
+  protected boolean m;
+  private long n = 0L;
+  private Pair[] o;
   
   public ValueAnimation(T paramT1, T paramT2, ValueAnimation.AnimationUpdateListener<T> paramAnimationUpdateListener)
   {
@@ -51,36 +44,36 @@ public class ValueAnimation<T>
     Class localClass = paramT1.getClass();
     if (paramTypeEvaluator != null)
     {
-      this.f = paramTypeEvaluator;
+      this.h = paramTypeEvaluator;
     }
     else if (localClass == Integer.class)
     {
-      this.f = jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator;
+      this.h = a;
     }
     else if (Float.class == localClass)
     {
-      this.f = jdField_b_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator;
+      this.h = b;
     }
     else if (Rect.class == localClass)
     {
-      this.f = jdField_c_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator;
+      this.h = c;
     }
     else if (Point.class == localClass)
     {
-      this.f = jdField_d_of_type_ComTencentMobileqqUtilsValueAnimation$TypeEvaluator;
+      this.h = d;
     }
     else
     {
       if (PointF.class != localClass) {
         break label139;
       }
-      this.f = e;
+      this.h = e;
     }
-    this.jdField_a_of_type_JavaLangObject = paramT1;
-    this.jdField_b_of_type_JavaLangObject = paramT2;
+    this.f = paramT1;
+    this.g = paramT2;
     a(paramAnimationUpdateListener);
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.j = paramBoolean1;
+    this.k = paramBoolean2;
     return;
     label139:
     paramT2 = new StringBuilder();
@@ -89,52 +82,36 @@ public class ValueAnimation<T>
     throw new IllegalArgumentException(paramT2.toString());
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_d_of_type_Boolean = true;
-  }
-  
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.n = paramLong;
   }
   
   public void a(ValueAnimation.AnimationUpdateListener<T> paramAnimationUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$AnimationUpdateListener = paramAnimationUpdateListener;
+    this.i = paramAnimationUpdateListener;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    ValueAnimation.AnimationUpdateListener localAnimationUpdateListener = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$AnimationUpdateListener;
+    ValueAnimation.AnimationUpdateListener localAnimationUpdateListener = this.i;
     if (localAnimationUpdateListener != null) {
-      localAnimationUpdateListener.a(this, paramFloat, this.f.a(paramFloat, this.jdField_a_of_type_JavaLangObject, this.jdField_b_of_type_JavaLangObject), paramTransformation);
+      localAnimationUpdateListener.a(this, paramFloat, this.h.a(paramFloat, this.f, this.g), paramTransformation);
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_d_of_type_Boolean = false;
   }
   
   public void cancel()
   {
-    this.jdField_c_of_type_Boolean = true;
+    this.l = true;
     if (Build.VERSION.SDK_INT >= 8)
     {
       super.cancel();
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidUtilPair;
-    int i = 0;
+    Object localObject1 = this.o;
+    int i1 = 0;
     if (localObject1 == null) {
-      this.jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair("mEnded", Boolean.valueOf(true)), new Pair("mMore", Boolean.valueOf(false)), new Pair("mOneMoreTime", Boolean.valueOf(false)) };
+      this.o = new Pair[] { new Pair("mEnded", Boolean.valueOf(true)), new Pair("mMore", Boolean.valueOf(false)), new Pair("mOneMoreTime", Boolean.valueOf(false)) };
     }
     try
     {
@@ -147,15 +124,15 @@ public class ValueAnimation<T>
       localObject1 = getClass().getDeclaredField("mStartTime");
       ((Field)localObject1).setAccessible(true);
       ((Field)localObject1).setLong(this, -9223372036854775808L);
-      localObject1 = this.jdField_a_of_type_ArrayOfAndroidUtilPair;
-      int j = localObject1.length;
-      while (i < j)
+      localObject1 = this.o;
+      int i2 = localObject1.length;
+      while (i1 < i2)
       {
-        Object localObject2 = localObject1[i];
+        Object localObject2 = localObject1[i1];
         Field localField = getClass().getDeclaredField((String)localObject2.first);
         localField.setAccessible(true);
         localField.setBoolean(this, ((Boolean)localObject2.second).booleanValue());
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -172,35 +149,35 @@ public class ValueAnimation<T>
   
   public boolean getTransformation(long paramLong, Transformation paramTransformation)
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.m)
     {
-      if (this.jdField_a_of_type_Long == 0L) {
+      if (this.n == 0L) {
         a(paramLong - getStartTime());
       }
-      setStartTime(paramLong - this.jdField_a_of_type_Long);
+      setStartTime(paramLong - this.n);
     }
     return super.getTransformation(paramLong, paramTransformation);
   }
   
   public void reset()
   {
-    this.jdField_c_of_type_Boolean = false;
+    this.l = false;
     super.reset();
   }
   
   public boolean willChangeBounds()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
   public boolean willChangeTransformationMatrix()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ValueAnimation
  * JD-Core Version:    0.7.0.1
  */

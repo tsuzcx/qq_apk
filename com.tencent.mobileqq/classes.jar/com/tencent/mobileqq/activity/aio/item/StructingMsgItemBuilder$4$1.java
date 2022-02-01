@@ -11,15 +11,15 @@ class StructingMsgItemBuilder$4$1
   
   public void run()
   {
-    ChatFragment localChatFragment = ((BaseActivity)this.a.this$0.a).getChatFragment();
+    ChatFragment localChatFragment = ((BaseActivity)this.a.this$0.e).getChatFragment();
     if (localChatFragment != null) {
-      localChatFragment.a().G();
+      localChatFragment.k().aj();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.4.1
  * JD-Core Version:    0.7.0.1
  */

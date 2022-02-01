@@ -26,12 +26,12 @@ public class VideoChannelServlet
   
   private void a(String paramString, int paramInt)
   {
-    VideoChannelImpl.a().a(paramString, paramInt);
+    VideoChannelImpl.c().a(paramString, paramInt);
   }
   
   private void a(byte[] paramArrayOfByte)
   {
-    VideoChannelImpl.a().a(paramArrayOfByte);
+    VideoChannelImpl.c().a(paramArrayOfByte);
   }
   
   private void b(Intent paramIntent, Bundle paramBundle)
@@ -45,7 +45,7 @@ public class VideoChannelServlet
   
   private void b(byte[] paramArrayOfByte)
   {
-    VideoChannelImpl.a().b(paramArrayOfByte);
+    VideoChannelImpl.c().b(paramArrayOfByte);
   }
   
   private void c(Intent paramIntent, Bundle paramBundle)
@@ -59,7 +59,7 @@ public class VideoChannelServlet
   
   private void c(byte[] paramArrayOfByte)
   {
-    VideoChannelImpl.a().c(paramArrayOfByte);
+    VideoChannelImpl.c().c(paramArrayOfByte);
   }
   
   private void d(Intent paramIntent, Bundle paramBundle)
@@ -73,7 +73,7 @@ public class VideoChannelServlet
   
   private void d(byte[] paramArrayOfByte)
   {
-    VideoChannelImpl.a().d(paramArrayOfByte);
+    VideoChannelImpl.c().d(paramArrayOfByte);
   }
   
   private void e(Intent paramIntent, Bundle paramBundle)
@@ -89,7 +89,7 @@ public class VideoChannelServlet
   
   private void e(byte[] paramArrayOfByte)
   {
-    VideoChannelImpl.a().e(paramArrayOfByte);
+    VideoChannelImpl.c().e(paramArrayOfByte);
   }
   
   private void f(Intent paramIntent, Bundle paramBundle)
@@ -210,7 +210,7 @@ public class VideoChannelServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelServlet
  * JD-Core Version:    0.7.0.1
  */

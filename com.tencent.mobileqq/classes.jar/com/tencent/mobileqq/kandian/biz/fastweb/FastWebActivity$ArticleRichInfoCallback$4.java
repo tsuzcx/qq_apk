@@ -10,21 +10,21 @@ class FastWebActivity$ArticleRichInfoCallback$4
   
   public void run()
   {
-    if (FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a) == null) {
+    if (FastWebActivity.d(this.b.a) == null) {
       return;
     }
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).a(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).jdField_a_of_type_Int);
-    FastWebActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a);
+    FastWebActivity.d(this.b.a).f = this.a;
+    FastWebActivity.p(this.b.a).a(FastWebActivity.d(this.b.a).f);
+    FastWebActivity.n(this.b.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" handleLikeCntInfoResp likeCnt : ");
-    localStringBuilder.append(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).jdField_a_of_type_Int);
+    localStringBuilder.append(FastWebActivity.d(this.b.a).f);
     QLog.d("FastWebActivity", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.ArticleRichInfoCallback.4
  * JD-Core Version:    0.7.0.1
  */

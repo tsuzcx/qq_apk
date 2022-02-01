@@ -11,15 +11,9 @@ import org.json.JSONObject;
 public class GetRedPointInfoReq
   extends BaseReq
 {
-  public int a;
-  public String a;
-  public String b = "";
-  
-  public GetRedPointInfoReq()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1001;
-  }
+  public String d = "";
+  public String e = "";
+  public int f = 1001;
   
   private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
   {
@@ -105,9 +99,9 @@ public class GetRedPointInfoReq
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    paramBundle.putString("path", this.jdField_a_of_type_JavaLangString);
-    paramBundle.putInt("act_id", this.jdField_a_of_type_Int);
-    paramBundle.putString("reportPath", this.b);
+    paramBundle.putString("path", this.d);
+    paramBundle.putInt("act_id", this.f);
+    paramBundle.putString("reportPath", this.e);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
@@ -122,11 +116,11 @@ public class GetRedPointInfoReq
         localStringBuilder.append((String)localObject);
         QLog.d("GetRedPointInfoReq onReceive", 2, localStringBuilder.toString());
       }
-      paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+      paramQQAppInterface = a(this.d, paramQQAppInterface);
       localObject = new Bundle();
       ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
       paramBundle.putBundle("keyResponse", (Bundle)localObject);
-      super.a(paramBundle);
+      super.c(paramBundle);
       return;
     }
     if ("reportRedInfo".equals(localObject))
@@ -138,7 +132,7 @@ public class GetRedPointInfoReq
         paramBundle.append((String)localObject);
         QLog.d("GetRedPointInfoReq onReceive", 2, paramBundle.toString());
       }
-      a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      a(paramQQAppInterface, this.d, this.f);
       return;
     }
     if ("clearRedInfo".equals(localObject))
@@ -150,21 +144,21 @@ public class GetRedPointInfoReq
         paramBundle.append((String)localObject);
         QLog.d("GetRedPointInfoReq onReceive", 2, paramBundle.toString());
       }
-      a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      a(paramQQAppInterface, this.d);
     }
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("path");
-    this.jdField_a_of_type_Int = paramBundle.getInt("act_id");
-    this.b = paramBundle.getString("reportPath");
+    this.d = paramBundle.getString("path");
+    this.f = paramBundle.getInt("act_id");
+    this.e = paramBundle.getString("reportPath");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.GetRedPointInfoReq
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class VideoPluginInstall$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
     }
-    if (!VideoPluginInstall.b()) {
+    if (!VideoPluginInstall.d()) {
       VideoPluginInstall.a(this.this$0);
     }
     try
     {
-      VideoPluginInstall.a(this.this$0).a(new VideoPluginInstall.SDKInstallListener(VideoPluginInstall.a(this.this$0)));
+      VideoPluginInstall.c(this.this$0).a(new VideoPluginInstall.SDKInstallListener(VideoPluginInstall.b(this.this$0)));
       return;
     }
     catch (Exception localException)
@@ -35,7 +35,7 @@ class VideoPluginInstall$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.plugin.VideoPluginInstall.2
  * JD-Core Version:    0.7.0.1
  */

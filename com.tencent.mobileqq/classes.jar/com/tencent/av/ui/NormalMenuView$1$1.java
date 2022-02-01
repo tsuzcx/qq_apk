@@ -7,8 +7,8 @@ class NormalMenuView$1$1
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.c != null) {
+      this.a.c.a();
     }
   }
 }

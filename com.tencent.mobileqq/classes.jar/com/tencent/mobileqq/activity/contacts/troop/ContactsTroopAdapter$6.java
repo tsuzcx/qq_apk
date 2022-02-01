@@ -17,32 +17,32 @@ class ContactsTroopAdapter$6
 {
   ContactsTroopAdapter$6(ContactsTroopAdapter paramContactsTroopAdapter, boolean paramBoolean, TroopInfo paramTroopInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.d.b))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131692183, 0).a();
+      QQToast.makeText(this.d.b, 1, 2131889169, 0).show();
     }
     else
     {
-      paramView = (ITroopCommonlyUsedHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopCommonlyUsedHandlerName());
-      if (this.jdField_a_of_type_Boolean)
+      paramView = (ITroopCommonlyUsedHandler)this.d.a.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopCommonlyUsedHandlerName());
+      if (this.a)
       {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, 1);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
+        paramView.a(this.b.troopcode, 1);
+        ReportController.b(this.d.a, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
       }
       else
       {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
+        paramView.a(this.b.troopcode, 0);
+        ReportController.b(this.d.a, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.c.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter.6
  * JD-Core Version:    0.7.0.1
  */

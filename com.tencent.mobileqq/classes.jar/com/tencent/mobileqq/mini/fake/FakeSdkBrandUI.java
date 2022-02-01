@@ -21,6 +21,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3;
 import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
+import com.tencent.mobileqq.mini.manager.MiniAppDetainManager;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appstore.cookie.CookieManagerImpl;
@@ -193,10 +194,10 @@ public class FakeSdkBrandUI
     long l1 = System.currentTimeMillis();
     try
     {
-      CookieSyncManagerImpl localCookieSyncManagerImpl = new CookieSyncManagerImpl(CommonDataAdapter.a().a());
+      CookieSyncManagerImpl localCookieSyncManagerImpl = new CookieSyncManagerImpl(CommonDataAdapter.a().b());
       localObject1 = new CookieManagerImpl();
       ((CookieManagerImpl)localObject1).a(true);
-      l2 = CommonDataAdapter.a().a();
+      l2 = CommonDataAdapter.a().c();
       Object localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       Object localObject2 = ((TicketManager)localObject3).getSkey(String.valueOf(l2));
       localObject3 = ((TicketManager)localObject3).getPskey(String.valueOf(l2), "qzone.qq.com");
@@ -271,7 +272,8 @@ public class FakeSdkBrandUI
       QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
       this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
     }
-    MiniSDKClientQIPCModule.a();
+    MiniSDKClientQIPCModule.b();
+    MiniAppDetainManager.INSTANCE.preloadAppDetainRecord(localMiniAppInfo);
     return true;
   }
   
@@ -316,7 +318,7 @@ public class FakeSdkBrandUI
     if (localIUIProxy != null) {
       localIUIProxy.onDetachActivity(paramBaseActivity);
     }
-    MiniSDKClientQIPCModule.b();
+    MiniSDKClientQIPCModule.c();
   }
   
   public void doOnNewIntent(BaseActivity paramBaseActivity, Intent paramIntent)
@@ -417,7 +419,7 @@ public class FakeSdkBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.fake.FakeSdkBrandUI
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class RvPolymericContainer$3
   {
     if ((paramView instanceof Container))
     {
-      if (RvPolymericContainer.a(this.a) != null)
+      if (RvPolymericContainer.b(this.a) != null)
       {
-        int j = RvPolymericContainer.a(this.a).getChildCount();
+        int j = RvPolymericContainer.b(this.a).getChildCount();
         int i = 0;
         while (i < j)
         {
-          Iterator localIterator = ((Container)RvPolymericContainer.a(this.a).getChildAt(i)).getViewIdMapping().entrySet().iterator();
+          Iterator localIterator = ((Container)RvPolymericContainer.b(this.a).getChildAt(i)).getViewIdMapping().entrySet().iterator();
           while (localIterator.hasNext())
           {
             Object localObject = (Map.Entry)localIterator.next();
@@ -58,7 +58,7 @@ class RvPolymericContainer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.3
  * JD-Core Version:    0.7.0.1
  */

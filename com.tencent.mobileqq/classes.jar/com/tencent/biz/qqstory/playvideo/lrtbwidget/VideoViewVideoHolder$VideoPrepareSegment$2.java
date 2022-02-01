@@ -16,7 +16,7 @@ class VideoViewVideoHolder$VideoPrepareSegment$2
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.isCanceled()) {
+    if (this.c.isCanceled()) {
       return;
     }
     ThreadManager.getUIHandler().post(new VideoViewVideoHolder.VideoPrepareSegment.2.2(this, paramInt));
@@ -24,7 +24,7 @@ class VideoViewVideoHolder$VideoPrepareSegment$2
   
   public void a(String paramString1, String paramString2, File paramFile)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.isCanceled()) {
+    if (this.c.isCanceled()) {
       return;
     }
     ThreadManager.getSubThreadHandler().post(new VideoViewVideoHolder.VideoPrepareSegment.2.1(this, paramString1, paramString2, paramFile));
@@ -32,7 +32,7 @@ class VideoViewVideoHolder$VideoPrepareSegment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.2
  * JD-Core Version:    0.7.0.1
  */

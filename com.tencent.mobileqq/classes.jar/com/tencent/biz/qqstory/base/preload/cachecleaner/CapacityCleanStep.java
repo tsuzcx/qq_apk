@@ -13,15 +13,15 @@ import java.util.List;
 public class CapacityCleanStep
   extends AbsCleanStep
 {
-  protected int a;
-  protected int b;
+  protected int c;
+  protected int d;
   
   public CapacityCleanStep(@NonNull String[] paramArrayOfString)
   {
     super(paramArrayOfString);
     paramArrayOfString = (StoryConfigManager)SuperManager.a(10);
-    this.a = ((Integer)paramArrayOfString.b("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
-    this.jdField_b_of_type_Int = ((Integer)paramArrayOfString.b("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
+    this.c = ((Integer)paramArrayOfString.c("StoryFriendCacheCountMax", Integer.valueOf(300))).intValue();
+    this.d = ((Integer)paramArrayOfString.c("StoryFriendCacheCountNormal", Integer.valueOf(200))).intValue();
   }
   
   protected void a(String[] paramArrayOfString, AbsCleanStep.CleanContext paramCleanContext)
@@ -35,12 +35,12 @@ public class CapacityCleanStep
       if (paramCleanContext.a) {
         j = 50;
       } else {
-        j = this.a;
+        j = this.c;
       }
       if (!a(str, j))
       {
         File localFile = new File(str);
-        double d1 = a(localFile);
+        double d1 = b(localFile);
         File[] arrayOfFile = localFile.listFiles();
         ArrayList localArrayList = new ArrayList();
         int k = arrayOfFile.length;
@@ -66,16 +66,16 @@ public class CapacityCleanStep
               localInterruptedException.printStackTrace();
             }
           }
-          if ((j % 20 == 0) && (a(str, this.jdField_b_of_type_Int))) {
+          if ((j % 20 == 0) && (a(str, this.d))) {
             return;
           }
           a(((CapacityCleanStep.FileInfo)localArrayList.get(j)).a);
           k += 1;
           j += 1;
         }
-        double d2 = a(localFile);
-        paramCleanContext.jdField_b_of_type_Double += d1 - d2;
-        paramCleanContext.jdField_b_of_type_Int += k;
+        double d2 = b(localFile);
+        paramCleanContext.f += d1 - d2;
+        paramCleanContext.e += k;
       }
       i += 1;
     }
@@ -92,7 +92,7 @@ public class CapacityCleanStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep
  * JD-Core Version:    0.7.0.1
  */

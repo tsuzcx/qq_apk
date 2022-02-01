@@ -2,7 +2,7 @@ package com.tencent.avgame.gamelogic;
 
 public abstract interface Indexable
 {
-  public abstract int c_();
+  public abstract int aC_();
 }
 
 

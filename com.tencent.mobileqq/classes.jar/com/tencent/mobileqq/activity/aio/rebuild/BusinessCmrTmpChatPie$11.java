@@ -13,15 +13,15 @@ class BusinessCmrTmpChatPie$11
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    this.a.bF.setVisibility(8);
+    this.a.X.setVisibility(0);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.11
  * JD-Core Version:    0.7.0.1
  */

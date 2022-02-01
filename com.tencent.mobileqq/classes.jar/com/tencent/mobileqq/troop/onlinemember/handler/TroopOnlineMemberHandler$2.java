@@ -27,7 +27,7 @@ class TroopOnlineMemberHandler$2
         QLog.i("TroopOnlineMemberHandler", 2, "getAllOnlineMemberList, too frequency");
       }
       localObject1 = ((ITroopOnlineMemberService)localObject2).getAllOnlineList(this.a);
-      this.this$0.notifyUI(TroopOnlineMemberObserver.d, true, new Object[] { this.a, localObject1 });
+      this.this$0.notifyUI(TroopOnlineMemberObserver.e, true, new Object[] { this.a, localObject1 });
       return;
     }
     for (;;)
@@ -61,7 +61,7 @@ class TroopOnlineMemberHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.handler.TroopOnlineMemberHandler.2
  * JD-Core Version:    0.7.0.1
  */

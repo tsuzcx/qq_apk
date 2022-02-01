@@ -31,10 +31,10 @@ import java.util.List;
 public class AEFilterListAdapter
   extends RecyclerView.Adapter<AEFilterListAdapter.VH>
 {
-  private int jdField_a_of_type_Int = 1;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(872415231);
   protected ProviderView.ProviderViewListener a;
-  private List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<QIMFilterCategoryItem> b = new ArrayList();
+  private int c = 1;
+  private ColorDrawable d = new ColorDrawable(872415231);
   
   private void a(Context paramContext, QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
@@ -43,39 +43,39 @@ public class AEFilterListAdapter
       AEQLog.d("AEFilterListAdapter", "context error.");
       return;
     }
-    boolean bool = paramQIMFilterCategoryItem.f();
+    boolean bool = paramQIMFilterCategoryItem.g();
     int i = 2;
     if (bool)
     {
       WeishiGuideUtils.a(paramContext, paramQIMFilterCategoryItem, 2);
       return;
     }
-    if (paramQIMFilterCategoryItem.d()) {
+    if (paramQIMFilterCategoryItem.e()) {
       i = 1;
     }
     AEBaseDataReporter.a().b(i, paramQIMFilterCategoryItem.a);
     CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
     Bundle localBundle = new Bundle();
     localBundle.putInt("apply_source", 1);
-    localBundle.putInt("capture_scene", this.jdField_a_of_type_Int);
+    localBundle.putInt("capture_scene", this.c);
     paramContext = (Activity)paramContext;
     localCaptureComboManager.a(paramQIMFilterCategoryItem, paramContext, localBundle);
-    ((CaptureComboManager)QIMManager.a(5)).a(this.jdField_a_of_type_Int, paramContext);
+    ((CaptureComboManager)QIMManager.a(5)).a(this.c, paramContext);
   }
   
   public AEFilterListAdapter.VH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AEFilterListAdapter.VH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558516, paramViewGroup, false));
+    return new AEFilterListAdapter.VH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624069, paramViewGroup, false));
   }
   
   public List<QIMFilterCategoryItem> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(Context paramContext, List<QIMFilterCategoryItem> paramList)
@@ -85,51 +85,51 @@ public class AEFilterListAdapter
       AEQLog.d("AEFilterListAdapter", "filter items null.");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    VideoFilterTools.a(paramContext, this.jdField_a_of_type_JavaUtilList);
+    this.b.clear();
+    this.b.addAll(paramList);
+    VideoFilterTools.a(paramContext, this.b);
     ThreadManager.a().post(new AEFilterListAdapter.1(this));
   }
   
   public void a(ProviderView.ProviderViewListener paramProviderViewListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
+    this.a = paramProviderViewListener;
   }
   
   public void a(AEFilterListAdapter.VH paramVH, int paramInt)
   {
     Object localObject = AEFilterListAdapter.VH.a(paramVH).getContext();
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramVH.getAdapterPosition());
-    AEFilterListAdapter.VH.a(paramVH).setText(localQIMFilterCategoryItem.b);
-    AEFilterListAdapter.VH.a(paramVH).setBgCorner(QIMCommonLoadingView.a(7.0F, (Context)localObject));
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.b.get(paramVH.getAdapterPosition());
+    AEFilterListAdapter.VH.b(paramVH).setText(localQIMFilterCategoryItem.b);
+    AEFilterListAdapter.VH.c(paramVH).setBgCorner(QIMCommonLoadingView.a(7.0F, (Context)localObject));
     AEFilterListAdapter.VH.a(paramVH).setImageDrawable(null);
     AEFilterListAdapter.VH.a(paramVH).setBackgroundResource(0);
-    if (localQIMFilterCategoryItem.c())
+    if (localQIMFilterCategoryItem.d())
     {
-      AEFilterListAdapter.VH.a(paramVH).setVisibility(8);
-      AEFilterListAdapter.VH.b(paramVH).setVisibility(8);
-      AEFilterListAdapter.VH.a(paramVH).setBackgroundResource(2130837820);
+      AEFilterListAdapter.VH.c(paramVH).setVisibility(8);
+      AEFilterListAdapter.VH.d(paramVH).setVisibility(8);
+      AEFilterListAdapter.VH.a(paramVH).setBackgroundResource(2130837923);
     }
-    else if (localQIMFilterCategoryItem.d())
+    else if (localQIMFilterCategoryItem.e())
     {
-      AEFilterListAdapter.VH.a(paramVH).setVisibility(8);
-      AEFilterListAdapter.VH.b(paramVH).setVisibility(8);
-      UIUtils.a(AEFilterListAdapter.VH.a(paramVH), localQIMFilterCategoryItem.d, UIUtils.a((Context)localObject, 70.0F), UIUtils.a((Context)localObject, 70.0F), this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, null);
+      AEFilterListAdapter.VH.c(paramVH).setVisibility(8);
+      AEFilterListAdapter.VH.d(paramVH).setVisibility(8);
+      UIUtils.a(AEFilterListAdapter.VH.a(paramVH), localQIMFilterCategoryItem.d, UIUtils.a((Context)localObject, 70.0F), UIUtils.a((Context)localObject, 70.0F), this.d, null);
     }
     else
     {
-      UIUtils.a(AEFilterListAdapter.VH.a(paramVH), localQIMFilterCategoryItem.d, UIUtils.a((Context)localObject, 70.0F), UIUtils.a((Context)localObject, 70.0F), this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, null);
-      localObject = ((CaptureComboManager)QIMManager.a(5)).a(localQIMFilterCategoryItem);
-      if (((FilterSet)localObject).jdField_a_of_type_Int == 1)
+      UIUtils.a(AEFilterListAdapter.VH.a(paramVH), localQIMFilterCategoryItem.d, UIUtils.a((Context)localObject, 70.0F), UIUtils.a((Context)localObject, 70.0F), this.d, null);
+      localObject = ((CaptureComboManager)QIMManager.a(5)).b(localQIMFilterCategoryItem);
+      if (((FilterSet)localObject).b == 1)
       {
-        AEFilterListAdapter.VH.a(paramVH).setVisibility(0);
-        AEFilterListAdapter.VH.a(paramVH).a(QIMCommonLoadingProgress.a(localObject));
+        AEFilterListAdapter.VH.c(paramVH).setVisibility(0);
+        AEFilterListAdapter.VH.c(paramVH).a(QIMCommonLoadingProgress.a(localObject));
       }
       else
       {
-        AEFilterListAdapter.VH.a(paramVH).setVisibility(8);
+        AEFilterListAdapter.VH.c(paramVH).setVisibility(8);
       }
-      paramInt = ((FilterSet)localObject).d();
+      paramInt = ((FilterSet)localObject).j();
       if (paramInt != 1) {
         if (paramInt != 2)
         {
@@ -139,33 +139,33 @@ public class AEFilterListAdapter
         }
         else
         {
-          AEFilterListAdapter.VH.b(paramVH).setVisibility(0);
+          AEFilterListAdapter.VH.d(paramVH).setVisibility(0);
           break label298;
         }
       }
-      AEFilterListAdapter.VH.b(paramVH).setVisibility(8);
+      AEFilterListAdapter.VH.d(paramVH).setVisibility(8);
     }
     label298:
-    localObject = VideoFilterTools.a().c(this.jdField_a_of_type_Int);
+    localObject = VideoFilterTools.a().c(this.c);
     boolean bool;
     if (localObject != null) {
       bool = TextUtils.equals(((QIMFilterCategoryItem)localObject).a, localQIMFilterCategoryItem.a);
-    } else if (localQIMFilterCategoryItem.c()) {
+    } else if (localQIMFilterCategoryItem.d()) {
       bool = true;
     } else {
       bool = false;
     }
     if (bool) {
-      AEFilterListAdapter.VH.c(paramVH).setVisibility(0);
+      AEFilterListAdapter.VH.e(paramVH).setVisibility(0);
     } else {
-      AEFilterListAdapter.VH.c(paramVH).setVisibility(8);
+      AEFilterListAdapter.VH.e(paramVH).setVisibility(8);
     }
-    AEFilterListAdapter.VH.a(paramVH).setOnClickListener(new AEFilterListAdapter.2(this, localQIMFilterCategoryItem));
+    AEFilterListAdapter.VH.f(paramVH).setOnClickListener(new AEFilterListAdapter.2(this, localQIMFilterCategoryItem));
   }
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return 0;
     }
@@ -174,7 +174,7 @@ public class AEFilterListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.AEFilterListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,21 @@ import java.util.Vector;
 
 public class FilterableObservable
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final List<FilterableObserver> jdField_a_of_type_JavaUtilList = new Vector();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private final List<FilterableObserver> jdField_b_of_type_JavaUtilList = new Vector();
+  private final List<FilterableObserver> a = new Vector();
+  private final List<FilterableObserver> b = new Vector();
+  private Handler c;
+  private Handler d;
   
   FilterableObservable()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.c == null) {
+      this.c = new Handler(Looper.getMainLooper());
     }
-    if (this.jdField_b_of_type_AndroidOsHandler == null)
+    if (this.d == null)
     {
       HandlerThread localHandlerThread = new HandlerThread("FilterableObservable-bg-thread");
       localHandlerThread.start();
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+      this.d = new Handler(localHandlerThread.getLooper());
     }
   }
   
@@ -36,13 +36,13 @@ public class FilterableObservable
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.getLooper().quit();
+      this.a.clear();
+      this.b.clear();
+      if (this.d != null) {
+        this.d.getLooper().quit();
       }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      this.jdField_b_of_type_AndroidOsHandler = null;
+      this.c = null;
+      this.d = null;
       return;
     }
     finally {}
@@ -53,8 +53,8 @@ public class FilterableObservable
     if (paramFilterableObserver != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramFilterableObserver);
-      this.jdField_b_of_type_JavaUtilList.remove(paramFilterableObserver);
+      this.a.remove(paramFilterableObserver);
+      this.b.remove(paramFilterableObserver);
     }
     finally {}
   }
@@ -64,9 +64,9 @@ public class FilterableObservable
     if (paramBoolean) {}
     try
     {
-      this.jdField_b_of_type_JavaUtilList.add(paramFilterableObserver);
+      this.b.add(paramFilterableObserver);
       break label31;
-      this.jdField_a_of_type_JavaUtilList.add(paramFilterableObserver);
+      this.a.add(paramFilterableObserver);
       label31:
       return;
     }
@@ -75,25 +75,25 @@ public class FilterableObservable
   
   public void a(Class<? extends FilterableObserver> paramClass, int paramInt, Object... paramVarArgs)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       FilterableObserver localFilterableObserver;
       while (localIterator.hasNext())
       {
         localFilterableObserver = (FilterableObserver)localIterator.next();
         if ((paramClass != null) && (localFilterableObserver != null) && (paramClass.isAssignableFrom(localFilterableObserver.getClass()))) {
-          a(localFilterableObserver, this.jdField_a_of_type_AndroidOsHandler, paramInt, paramVarArgs);
+          a(localFilterableObserver, this.c, paramInt, paramVarArgs);
         }
       }
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.b)
       {
-        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
           localFilterableObserver = (FilterableObserver)localIterator.next();
           if ((paramClass != null) && (localFilterableObserver != null) && (paramClass.isAssignableFrom(localFilterableObserver.getClass()))) {
-            a(localFilterableObserver, this.jdField_b_of_type_AndroidOsHandler, paramInt, paramVarArgs);
+            a(localFilterableObserver, this.d, paramInt, paramVarArgs);
           }
         }
         return;
@@ -107,7 +107,7 @@ public class FilterableObservable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.observer.FilterableObservable
  * JD-Core Version:    0.7.0.1
  */

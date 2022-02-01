@@ -7,12 +7,12 @@ class ThemeHbFragment$3$1
   
   public void run()
   {
-    ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$3.a, (String)this.jdField_a_of_type_JavaLangObject);
+    ThemeHbFragment.a(this.b.a, (String)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

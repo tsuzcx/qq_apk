@@ -8,12 +8,12 @@ import org.json.JSONObject;
 public class AdModuleVideo
   extends AdModuleBase
 {
-  public long a;
-  public AdModuleVideo.AdAppInfo a;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public String p;
+  public long q;
+  public String r;
+  public int s;
+  public String t;
+  public AdModuleVideo.AdAppInfo u;
   
   public static AdModuleVideo a(JSONObject paramJSONObject)
   {
@@ -26,9 +26,9 @@ public class AdModuleVideo
       Object localObject = paramJSONObject.optJSONObject("video");
       if (localObject != null)
       {
-        localAdModuleVideo.e = ((JSONObject)localObject).optString("coverUrl");
-        localAdModuleVideo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
-        if (TextUtils.isEmpty(localAdModuleVideo.jdField_d_of_type_JavaLangString))
+        localAdModuleVideo.r = ((JSONObject)localObject).optString("coverUrl");
+        localAdModuleVideo.p = ((JSONObject)localObject).optString("videoUrl");
+        if (TextUtils.isEmpty(localAdModuleVideo.p))
         {
           if (!QLog.isColorLevel()) {
             break label196;
@@ -37,9 +37,9 @@ public class AdModuleVideo
           return null;
         }
       }
-      localAdModuleVideo.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
-      localAdModuleVideo.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
-      localAdModuleVideo.f = paramJSONObject.optString("linkUrl");
+      localAdModuleVideo.q = paramJSONObject.optLong("duration");
+      localAdModuleVideo.s = paramJSONObject.optInt("mixType");
+      localAdModuleVideo.t = paramJSONObject.optString("linkUrl");
       paramJSONObject = paramJSONObject.optString("appInfo");
       if (!TextUtils.isEmpty(paramJSONObject))
       {
@@ -48,9 +48,9 @@ public class AdModuleVideo
         ((AdModuleVideo.AdAppInfo)localObject).a = paramJSONObject.optString("appid");
         ((AdModuleVideo.AdAppInfo)localObject).b = paramJSONObject.optString("scheme");
         ((AdModuleVideo.AdAppInfo)localObject).c = paramJSONObject.optString("packageName");
-        ((AdModuleVideo.AdAppInfo)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+        ((AdModuleVideo.AdAppInfo)localObject).d = paramJSONObject.optString("androidDownloadUrl");
         ((AdModuleVideo.AdAppInfo)localObject).e = paramJSONObject.optString("appName");
-        localAdModuleVideo.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo$AdAppInfo = ((AdModuleVideo.AdAppInfo)localObject);
+        localAdModuleVideo.u = ((AdModuleVideo.AdAppInfo)localObject);
       }
       return localAdModuleVideo;
     }
@@ -67,7 +67,7 @@ public class AdModuleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleVideo
  * JD-Core Version:    0.7.0.1
  */

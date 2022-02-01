@@ -12,20 +12,20 @@ final class VideoColumnGuideManager$startGuideAnimate$1
   
   public final void run()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = VideoColumnGuideManager.a(this.this$0);
+    DiniFlyAnimationView localDiniFlyAnimationView = VideoColumnGuideManager.e(this.this$0);
     if (localDiniFlyAnimationView != null) {
       localDiniFlyAnimationView.addAnimatorListener((Animator.AnimatorListener)new VideoColumnGuideManager.startGuideAnimate.1.1(this));
     }
-    localDiniFlyAnimationView = VideoColumnGuideManager.a(this.this$0);
+    localDiniFlyAnimationView = VideoColumnGuideManager.e(this.this$0);
     if (localDiniFlyAnimationView != null) {
       localDiniFlyAnimationView.resumeAnimation();
     }
-    VideoColumnGuideManager.d(this.this$0);
+    VideoColumnGuideManager.i(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnGuideManager.startGuideAnimate.1
  * JD-Core Version:    0.7.0.1
  */

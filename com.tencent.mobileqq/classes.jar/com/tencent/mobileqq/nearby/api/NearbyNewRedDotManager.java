@@ -36,20 +36,12 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 
 public class NearbyNewRedDotManager
 {
-  private static NearbyNewRedDotManager jdField_a_of_type_ComTencentMobileqqNearbyApiNearbyNewRedDotManager = new NearbyNewRedDotManager();
-  private RedpointObserver jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver = new NearbyNewRedDotManager.1(this);
+  private static NearbyNewRedDotManager a = new NearbyNewRedDotManager();
+  private RedpointObserver b = new NearbyNewRedDotManager.1(this);
   
   public static NearbyNewRedDotManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqNearbyApiNearbyNewRedDotManager;
-  }
-  
-  private void c(QQAppInterface paramQQAppInterface)
-  {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), GameCenterServlet.class);
-    localNewIntent.setAction("gc_refresh_ui");
-    localNewIntent.putExtra("gc_notify_type", 6);
-    paramQQAppInterface.startServlet(localNewIntent);
+    return a;
   }
   
   private void c(QQAppInterface paramQQAppInterface, List<Submsgtype0x89.NumRedBusiInfo> paramList)
@@ -64,41 +56,12 @@ public class NearbyNewRedDotManager
     }
   }
   
-  public List<Submsgtype0x89.NumRedBusiInfo> a(QQAppInterface paramQQAppInterface)
+  private void d(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getNumRedPathListByAppId(7719);
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfo: numRedPaths is null.");
-      }
-      return null;
-    }
-    paramQQAppInterface = new ArrayList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      BusinessInfoCheckUpdate.NumRedPath localNumRedPath = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject1).next();
-      Object localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("queryNearbyMsgInfo:  numRedPath=");
-        ((StringBuilder)localObject2).append(localNumRedPath.str_path.get());
-        ((StringBuilder)localObject2).append(" msgStatus=");
-        ((StringBuilder)localObject2).append(localNumRedPath.uint32_msg_status.get());
-        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, ((StringBuilder)localObject2).toString());
-      }
-      if (localNumRedPath.uint32_msg_status.get() <= 1)
-      {
-        localObject2 = new Submsgtype0x89.NumRedBusiInfo();
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint64_msgid.set(localNumRedPath.uint64_msgid.get());
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint32_android_app_id.set(7719);
-        ((Submsgtype0x89.NumRedBusiInfo)localObject2).str_android_path.set(localNumRedPath.str_path.get());
-        paramQQAppInterface.add(localObject2);
-      }
-    }
-    return paramQQAppInterface;
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), GameCenterServlet.class);
+    localNewIntent.setAction("gc_refresh_ui");
+    localNewIntent.putExtra("gc_notify_type", 6);
+    paramQQAppInterface.startServlet(localNewIntent);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -106,7 +69,7 @@ public class NearbyNewRedDotManager
     if (QLog.isColorLevel()) {
       QLog.d("NearbyNewRedDotManager", 2, "init()");
     }
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver);
+    paramQQAppInterface.addObserver(this.b);
   }
   
   public void a(QQAppInterface paramQQAppInterface, List<BusinessInfoCheckUpdate.NumRedInfo> paramList)
@@ -160,7 +123,7 @@ public class NearbyNewRedDotManager
     if (QLog.isColorLevel()) {
       QLog.d("NearbyNewRedDotManager", 2, "onDestroy()");
     }
-    paramQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTianshuObserverRedpointObserver);
+    paramQQAppInterface.removeObserver(this.b);
   }
   
   public void b(QQAppInterface paramQQAppInterface, List<NumRedMsg.NumMsgBusi> paramList)
@@ -228,7 +191,7 @@ public class NearbyNewRedDotManager
             localObject1 = paramList;
             l2 = l1;
             if (!((String)localObject3).equals("7719.771904")) {
-              break label1470;
+              break label1473;
             }
           }
         }
@@ -361,7 +324,7 @@ public class NearbyNewRedDotManager
       while (localIterator.hasNext())
       {
         localObject4 = (Integer)localIterator.next();
-        localObject5 = localTroopRedTouchManager.a(((Integer)localObject4).intValue());
+        localObject5 = localTroopRedTouchManager.e(((Integer)localObject4).intValue());
         if ((localObject5 == null) || (!TroopRedTouchConfigure.h(((oidb_0x791.RedDotInfo)localObject5).uint32_appid.get())))
         {
           if ((localObject5 != null) && (((oidb_0x791.RedDotInfo)localObject5).uint32_number.get() == ((oidb_0x791.RedDotInfo)localHashMap2.get(localObject4)).uint32_number.get()))
@@ -435,14 +398,51 @@ public class NearbyNewRedDotManager
         new ReportTask(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("paried_exp_red").a();
       }
       return;
-      label1470:
+      label1473:
       i = 0;
     }
+  }
+  
+  public List<Submsgtype0x89.NumRedBusiInfo> c(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject1 = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getNumRedPathListByAppId(7719);
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfo: numRedPaths is null.");
+      }
+      return null;
+    }
+    paramQQAppInterface = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      BusinessInfoCheckUpdate.NumRedPath localNumRedPath = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject1).next();
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("queryNearbyMsgInfo:  numRedPath=");
+        ((StringBuilder)localObject2).append(localNumRedPath.str_path.get());
+        ((StringBuilder)localObject2).append(" msgStatus=");
+        ((StringBuilder)localObject2).append(localNumRedPath.uint32_msg_status.get());
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (localNumRedPath.uint32_msg_status.get() <= 1)
+      {
+        localObject2 = new Submsgtype0x89.NumRedBusiInfo();
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint64_msgid.set(localNumRedPath.uint64_msgid.get());
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint32_android_app_id.set(7719);
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).str_android_path.set(localNumRedPath.str_path.get());
+        paramQQAppInterface.add(localObject2);
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyNewRedDotManager
  * JD-Core Version:    0.7.0.1
  */

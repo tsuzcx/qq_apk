@@ -17,12 +17,12 @@ class EmoticonGroupStoreFragment$9
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    EmoticonGroupStoreFragment.a(this.a).invalidate();
+    EmoticonGroupStoreFragment.h(this.a).invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.9
  * JD-Core Version:    0.7.0.1
  */

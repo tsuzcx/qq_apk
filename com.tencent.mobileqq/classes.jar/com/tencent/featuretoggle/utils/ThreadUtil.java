@@ -15,7 +15,7 @@ public class ThreadUtil
       {
         if (paramRunnable == null)
         {
-          LogUtils.a("execute task is null", new Object[0]);
+          LogUtils.c("execute task is null", new Object[0]);
           return;
         }
         try
@@ -30,7 +30,7 @@ public class ThreadUtil
         }
         return;
       }
-      LogUtils.a("async handler was closed , should not execute task!", new Object[0]);
+      LogUtils.c("async handler was closed , should not execute task!", new Object[0]);
       return;
     }
     finally {}
@@ -38,7 +38,7 @@ public class ThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.ThreadUtil
  * JD-Core Version:    0.7.0.1
  */

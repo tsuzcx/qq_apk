@@ -18,9 +18,9 @@ class AbsSubscribeShareCardView$2$1
   {
     if (paramNetResp.mResult == 0)
     {
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      ((ImageView)this.a.a.get(this.a.b)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.c));
       AbsSubscribeShareCardView.a(this.a.this$0);
-      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.d.size()) {
         ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
     }
@@ -34,7 +34,7 @@ class AbsSubscribeShareCardView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,33 +5,29 @@ import java.io.FileOutputStream;
 
 public class ThumbHttpDownloader$DownloadTask
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = -1L;
-  HttpUrlProcessor jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
-  ThumbHttpDownloader.WhatHappen jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader$WhatHappen;
-  HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
-  String jdField_a_of_type_JavaLangString;
-  short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  HttpMsg jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  String jdField_d_of_type_JavaLangString;
-  long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
-  
-  public ThumbHttpDownloader$DownloadTask()
-  {
-    this.e = 0L;
-  }
+  long a = -1L;
+  String b;
+  String c;
+  String d;
+  String e;
+  HttpMsg f;
+  FileOutputStream g = null;
+  int[] h = new int[0];
+  long i = 0L;
+  long j = 0L;
+  int k = -1;
+  int l = 0;
+  boolean m = true;
+  int n = 0;
+  int o = 0;
+  long p = 0L;
+  HttpUrlProcessor q;
+  ThumbHttpDownloader.WhatHappen r;
+  HttpMsg s;
+  long t = 0L;
+  boolean u = false;
+  String v;
+  short w = 0;
   
   public String toString()
   {
@@ -40,7 +36,7 @@ public class ThumbHttpDownloader$DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

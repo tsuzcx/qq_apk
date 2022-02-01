@@ -7,12 +7,12 @@ public class ColorMatcher
 {
   public HashMap<String, Object> a(int paramInt, boolean paramBoolean, CharSequence paramCharSequence)
   {
-    paramInt = this.a.indexOf("text:");
-    int i = this.a.indexOf(",color");
-    String str1 = this.a.substring(paramInt + 5, i);
-    paramInt = this.a.indexOf("color:");
-    i = this.a.indexOf("}");
-    String str2 = this.a.substring(paramInt + 6, i);
+    paramInt = this.b.indexOf("text:");
+    int i = this.b.indexOf(",color");
+    String str1 = this.b.substring(paramInt + 5, i);
+    paramInt = this.b.indexOf("color:");
+    i = this.b.indexOf("}");
+    String str2 = this.b.substring(paramInt + 6, i);
     paramCharSequence = new HashMap();
     try
     {
@@ -29,7 +29,7 @@ public class ColorMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.ColorMatcher
  * JD-Core Version:    0.7.0.1
  */

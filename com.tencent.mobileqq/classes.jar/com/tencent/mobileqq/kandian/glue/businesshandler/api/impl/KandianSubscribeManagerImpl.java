@@ -33,7 +33,7 @@ public final class KandianSubscribeManagerImpl
   {
     Object localObject = this.manager;
     if (localObject != null) {
-      localObject = ((KandianSubscribeManager)localObject).a();
+      localObject = ((KandianSubscribeManager)localObject).b();
     } else {
       localObject = null;
     }
@@ -70,7 +70,7 @@ public final class KandianSubscribeManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.api.impl.KandianSubscribeManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -102,7 +102,7 @@ public class QWalletGdtAdApiImpl
   
   private void doReqAdsControl()
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface == null) {
       return;
     }
@@ -115,7 +115,7 @@ public class QWalletGdtAdApiImpl
   private QWalletPubAdReport.QueryReq getQueryReq(String paramString)
   {
     QWalletPubAdReport.QueryReq localQueryReq = new QWalletPubAdReport.QueryReq();
-    String str = QWalletTools.a().getAccount();
+    String str = QWalletTools.c().getAccount();
     localQueryReq.uin.set(str);
     localQueryReq.pskey.set(paramString);
     localQueryReq.channel.set(1);
@@ -126,7 +126,7 @@ public class QWalletGdtAdApiImpl
   private QWalletPubAdReport.ReportReq getReportReq(String paramString, int paramInt)
   {
     QWalletPubAdReport.ReportReq localReportReq = new QWalletPubAdReport.ReportReq();
-    String str = QWalletTools.a().getAccount();
+    String str = QWalletTools.c().getAccount();
     localReportReq.uin.set(str);
     localReportReq.pskey.set(paramString);
     localReportReq.channel.set(1);
@@ -147,8 +147,8 @@ public class QWalletGdtAdApiImpl
   
   private void notifyListRefresh(IBaseChatPieProxy paramIBaseChatPieProxy)
   {
-    if ((paramIBaseChatPieProxy != null) && (paramIBaseChatPieProxy.a() != null)) {
-      paramIBaseChatPieProxy.a().notifyDataSetChanged();
+    if ((paramIBaseChatPieProxy != null) && (paramIBaseChatPieProxy.h() != null)) {
+      paramIBaseChatPieProxy.h().notifyDataSetChanged();
     }
   }
   
@@ -166,16 +166,16 @@ public class QWalletGdtAdApiImpl
         QLog.i("QWalletGdtAdApi", 2, "reqAds onResponse ret fail,getSession null");
         return;
       }
-      if (paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null)
+      if (paramGdtAdLoader.a().b == null)
       {
         QLog.i("QWalletGdtAdApi", 2, "reqAds onResponse ret fail,loader.getSession().response null");
         return;
       }
-      if (paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get() != 0)
+      if (paramGdtAdLoader.a().b.ret.get() != 0)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("reqAds onResponse ret fail,loader.getSession().response.ret.get ");
-        localStringBuilder.append(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get());
+        localStringBuilder.append(paramGdtAdLoader.a().b.ret.get());
         QLog.i("QWalletGdtAdApi", 2, localStringBuilder.toString());
       }
     }
@@ -184,7 +184,7 @@ public class QWalletGdtAdApiImpl
   private void reqAds(Context paramContext, String paramString, int paramInt, GdtAdLoader.Listener paramListener)
   {
     GdtAdLoader.Session localSession = new GdtAdLoader.Session();
-    localSession.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = createRequest(QWalletTools.a().getLongAccountUin(), paramString, paramInt);
+    localSession.a = createRequest(QWalletTools.c().getLongAccountUin(), paramString, paramInt);
     ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).loadAd(localSession, new WeakReference(paramListener), new WeakReference(paramContext));
     if (QLog.isColorLevel()) {
       QLog.i("QWalletGdtAdApi", 2, "doReqAds start");
@@ -239,7 +239,7 @@ public class QWalletGdtAdApiImpl
   {
     if (this.mHasTailMsg)
     {
-      String str = QWalletTools.a().getAccount();
+      String str = QWalletTools.c().getAccount();
       ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "public.tailad.show", 0, 0, "", ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getString(str, "walletPubMsgTail_busiType", ""), this.title, "");
     }
   }
@@ -253,7 +253,7 @@ public class QWalletGdtAdApiImpl
   
   public void doReqAdsStatistics(int paramInt)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface == null) {
       return;
     }
@@ -319,7 +319,7 @@ public class QWalletGdtAdApiImpl
   public void handlePubRefreshList(List<ChatMessage> paramList)
   {
     this.mHasTailMsg = false;
-    String str = QWalletTools.a().getAccount();
+    String str = QWalletTools.c().getAccount();
     this.title = ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getString(str, "walletPubMsgTail_title", "");
     str = ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getString(str, "walletPubMsgTail_jumpURL", "");
     int i = paramList.size() - 1;
@@ -339,7 +339,7 @@ public class QWalletGdtAdApiImpl
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("list,time:");
-        localStringBuilder.append(TimeFormatterUtils.b(localChatMessage.time * 1000L));
+        localStringBuilder.append(TimeFormatterUtils.f(localChatMessage.time * 1000L));
         localStringBuilder.append(",isShowQWalletPubAd:");
         localStringBuilder.append(localChatMessage.isShowQWalletPubAd);
         QLog.d("QWalletGdtAdApi", 2, localStringBuilder.toString());
@@ -350,14 +350,22 @@ public class QWalletGdtAdApiImpl
   
   public void handlePubTailMsg(im_msg_body.GeneralFlags paramGeneralFlags, MessageRecord paramMessageRecord)
   {
+    Object localObject;
+    if (!TextUtils.isEmpty(((IStructmsgApi)QRoute.api(IStructmsgApi.class)).getBirthdayReminder(paramMessageRecord)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis());
+      ((StringBuilder)localObject).append("");
+      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "public.birthmessage.receive", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
+    }
     if ((paramGeneralFlags != null) && (paramGeneralFlags.bytes_pb_reserve.has())) {
       try
       {
-        generalflags.ResvAttr localResvAttr = new generalflags.ResvAttr();
-        localResvAttr.mergeFrom(paramGeneralFlags.bytes_pb_reserve.get().toByteArray());
-        if ((localResvAttr.bytes_oac_msg_extend.has()) && (localResvAttr.bytes_oac_msg_extend.get() != null))
+        localObject = new generalflags.ResvAttr();
+        ((generalflags.ResvAttr)localObject).mergeFrom(paramGeneralFlags.bytes_pb_reserve.get().toByteArray());
+        if ((((generalflags.ResvAttr)localObject).bytes_oac_msg_extend.has()) && (((generalflags.ResvAttr)localObject).bytes_oac_msg_extend.get() != null))
         {
-          paramGeneralFlags = localResvAttr.bytes_oac_msg_extend.get().toStringUtf8().trim();
+          paramGeneralFlags = ((generalflags.ResvAttr)localObject).bytes_oac_msg_extend.get().toStringUtf8().trim();
           if ((paramGeneralFlags.startsWith("{")) && (paramGeneralFlags.endsWith("}")))
           {
             paramGeneralFlags = new JSONObject(paramGeneralFlags).optString("money_extra");
@@ -570,7 +578,7 @@ public class QWalletGdtAdApiImpl
   
   public void reportEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface == null) {
       return;
     }
@@ -594,7 +602,7 @@ public class QWalletGdtAdApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletGdtAdApiImpl
  * JD-Core Version:    0.7.0.1
  */

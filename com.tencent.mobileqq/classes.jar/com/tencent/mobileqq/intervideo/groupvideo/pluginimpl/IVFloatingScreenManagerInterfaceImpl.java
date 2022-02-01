@@ -24,7 +24,7 @@ public class IVFloatingScreenManagerInterfaceImpl
   
   int abandonMediaFocus(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return MediaFocusManager.a().a(paramOnMediaFocusChangeListener);
+    return MediaFocusManager.b().a(paramOnMediaFocusChangeListener);
   }
   
   int enterFloatingScreen(Context paramContext, View paramView)
@@ -40,7 +40,7 @@ public class IVFloatingScreenManagerInterfaceImpl
   
   int requestMediaFocus(int paramInt, MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    return MediaFocusManager.a().a(paramInt, paramOnMediaFocusChangeListener);
+    return MediaFocusManager.b().a(paramInt, paramOnMediaFocusChangeListener);
   }
   
   IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
@@ -55,7 +55,7 @@ public class IVFloatingScreenManagerInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVFloatingScreenManagerInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

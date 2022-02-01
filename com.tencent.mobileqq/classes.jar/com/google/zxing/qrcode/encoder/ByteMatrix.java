@@ -4,36 +4,36 @@ import java.lang.reflect.Array;
 
 public final class ByteMatrix
 {
-  private final int jdField_a_of_type_Int;
-  private final byte[][] jdField_a_of_type_Array2dOfByte;
+  private final byte[][] a;
   private final int b;
+  private final int c;
   
   public ByteMatrix(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Array2dOfByte = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public byte a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Array2dOfByte[paramInt2][paramInt1];
+    return this.a[paramInt2][paramInt1];
   }
   
   public int a()
   {
-    return this.b;
+    return this.c;
   }
   
   public void a(byte paramByte)
   {
     int i = 0;
-    while (i < this.b)
+    while (i < this.c)
     {
       int j = 0;
-      while (j < this.jdField_a_of_type_Int)
+      while (j < this.b)
       {
-        this.jdField_a_of_type_Array2dOfByte[i][j] = paramByte;
+        this.a[i][j] = paramByte;
         j += 1;
       }
       i += 1;
@@ -42,34 +42,34 @@ public final class ByteMatrix
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Array2dOfByte[paramInt2][paramInt1] = ((byte)paramInt3);
+    this.a[paramInt2][paramInt1] = ((byte)paramInt3);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Array2dOfByte[paramInt2][paramInt1] = ((byte)paramBoolean);
-  }
-  
-  public byte[][] a()
-  {
-    return this.jdField_a_of_type_Array2dOfByte;
+    this.a[paramInt2][paramInt1] = ((byte)paramBoolean);
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
+  }
+  
+  public byte[][] c()
+  {
+    return this.a;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int * 2 * this.b + 2);
+    StringBuilder localStringBuilder = new StringBuilder(this.b * 2 * this.c + 2);
     int i = 0;
-    while (i < this.b)
+    while (i < this.c)
     {
       int j = 0;
-      while (j < this.jdField_a_of_type_Int)
+      while (j < this.b)
       {
-        int k = this.jdField_a_of_type_Array2dOfByte[i][j];
+        int k = this.a[i][j];
         if (k != 0)
         {
           if (k != 1) {
@@ -91,7 +91,7 @@ public final class ByteMatrix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.qrcode.encoder.ByteMatrix
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ final class RockDownloader$1
         {
           if (this.a.getRockDownloadListener() != null)
           {
-            this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), HardCodeUtil.a(2131713415), 10003);
+            this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), HardCodeUtil.a(2131910966), 10003);
             this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
           }
           RockDownloader.a(this.a, "0x800A1E6");
@@ -65,7 +65,7 @@ final class RockDownloader$1
                   this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
                 }
               }
-              RockDownloader.c(this.a);
+              RockDownloader.f(this.a);
               return;
             }
             if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
@@ -123,7 +123,7 @@ final class RockDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.1
  * JD-Core Version:    0.7.0.1
  */

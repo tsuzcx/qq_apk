@@ -67,7 +67,7 @@ public class PokeMsgElemDecoder
         if (((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_name.has()) {
           paramList = ((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_name.get().toStringUtf8();
         } else {
-          paramList = HardCodeUtil.a(2131706689);
+          paramList = HardCodeUtil.a(2131904540);
         }
         paramStringBuilder.name = paramList;
         if (!((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_minver.has()) {
@@ -129,7 +129,7 @@ public class PokeMsgElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.PokeMsgElemDecoder
  * JD-Core Version:    0.7.0.1
  */

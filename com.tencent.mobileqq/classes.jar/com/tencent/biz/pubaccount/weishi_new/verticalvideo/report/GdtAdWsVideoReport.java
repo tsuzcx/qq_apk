@@ -30,7 +30,7 @@ public class GdtAdWsVideoReport
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.gdt_ad_type == 1) && (paramstSimpleMetaFeed.gdt_ad_info != null))
     {
       paramstSimpleMetaFeed = GdtAdUtil.a(paramstSimpleMetaFeed).report_info;
-      if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.exposure_url != null) && (paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null)) {
+      if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.exposure_url != null) && (paramWSPlayerParam != null) && (paramWSPlayerParam.d != null)) {
         return paramstSimpleMetaFeed.exposure_url.get();
       }
     }
@@ -48,15 +48,15 @@ public class GdtAdWsVideoReport
       {
         localObject = new JSONObject();
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_a_of_type_Long);
+        localStringBuilder.append(paramGdtAdWsVideoReportModel.a);
         localStringBuilder.append("");
         ((JSONObject)localObject).put("bt", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_b_of_type_Long);
+        localStringBuilder.append(paramGdtAdWsVideoReportModel.b);
         localStringBuilder.append("");
         ((JSONObject)localObject).put("et", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
-        boolean bool = paramGdtAdWsVideoReportModel.jdField_a_of_type_Boolean;
+        boolean bool = paramGdtAdWsVideoReportModel.c;
         int j = 1;
         if (bool)
         {
@@ -65,7 +65,7 @@ public class GdtAdWsVideoReport
           localStringBuilder.append("");
           ((JSONObject)localObject).put("bf", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
-          if (!paramGdtAdWsVideoReportModel.jdField_b_of_type_Boolean) {
+          if (!paramGdtAdWsVideoReportModel.d) {
             break label393;
           }
           i = j;
@@ -74,17 +74,17 @@ public class GdtAdWsVideoReport
           ((JSONObject)localObject).put("ef", localStringBuilder.toString());
           ((JSONObject)localObject).put("pp", "11");
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_b_of_type_Int);
+          localStringBuilder.append(paramGdtAdWsVideoReportModel.f);
           localStringBuilder.append("");
           ((JSONObject)localObject).put("pa", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramGdtAdWsVideoReportModel.c);
+          localStringBuilder.append(paramGdtAdWsVideoReportModel.g);
           localStringBuilder.append("");
           ((JSONObject)localObject).put("ft", localStringBuilder.toString());
-          if (paramGdtAdWsVideoReportModel.d != 0)
+          if (paramGdtAdWsVideoReportModel.h != 0)
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(paramGdtAdWsVideoReportModel.d);
+            localStringBuilder.append(paramGdtAdWsVideoReportModel.h);
             localStringBuilder.append("");
             ((JSONObject)localObject).put("ps", localStringBuilder.toString());
           }
@@ -144,21 +144,21 @@ public class GdtAdWsVideoReport
   
   public static void a(WSVerticalItemData paramWSVerticalItemData, WSPlayerParam paramWSPlayerParam, boolean paramBoolean, int paramInt)
   {
-    if ((paramWSVerticalItemData != null) && (paramWSPlayerParam != null) && ((paramWSVerticalItemData.a() != null) || (paramWSVerticalItemData.a() != null)))
+    if ((paramWSVerticalItemData != null) && (paramWSPlayerParam != null) && ((paramWSVerticalItemData.b() != null) || (paramWSVerticalItemData.e() != null)))
     {
-      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
+      if (paramWSPlayerParam.c == null) {
         return;
       }
-      Object localObject = paramWSVerticalItemData.a();
+      Object localObject = paramWSVerticalItemData.b();
       if (localObject != null)
       {
         localObject = a((stSimpleMetaFeed)localObject, paramWSPlayerParam);
-        if ((paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        if ((paramWSPlayerParam.d != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
         {
-          WSPlayerWrapper localWSPlayerWrapper = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
-          long l1 = paramWSPlayerParam.jdField_a_of_type_Long;
-          long l2 = localWSPlayerWrapper.a();
-          int j = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.c;
+          WSPlayerWrapper localWSPlayerWrapper = paramWSPlayerParam.d;
+          long l1 = paramWSPlayerParam.g;
+          long l2 = localWSPlayerWrapper.m();
+          int j = paramWSPlayerParam.c.d;
           boolean bool;
           if (l1 == 0L) {
             bool = true;
@@ -166,7 +166,7 @@ public class GdtAdWsVideoReport
             bool = false;
           }
           int i;
-          if (paramWSVerticalItemData.a().numbersOfGdtAdPlayed != 0) {
+          if (paramWSVerticalItemData.e().numbersOfGdtAdPlayed != 0) {
             i = 13;
           } else {
             i = 11;
@@ -202,7 +202,7 @@ public class GdtAdWsVideoReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.GdtAdWsVideoReport
  * JD-Core Version:    0.7.0.1
  */

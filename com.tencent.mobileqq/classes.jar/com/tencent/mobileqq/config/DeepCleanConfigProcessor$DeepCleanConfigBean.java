@@ -7,11 +7,11 @@ import org.json.JSONObject;
 
 public class DeepCleanConfigProcessor$DeepCleanConfigBean
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
+  private int a = 0;
   private String b = "";
   private String c = "";
   private String d = "";
+  private String e = "";
   
   public static DeepCleanConfigBean a(String paramString)
   {
@@ -22,19 +22,19 @@ public class DeepCleanConfigProcessor$DeepCleanConfigBean
       {
         JSONObject localJSONObject = new JSONObject(paramString);
         if (localJSONObject.has("deep_clean_switch")) {
-          localDeepCleanConfigBean.jdField_a_of_type_Int = localJSONObject.optInt("deep_clean_switch");
+          localDeepCleanConfigBean.a = localJSONObject.optInt("deep_clean_switch");
         }
         if (localJSONObject.has("already_installed_tip")) {
-          localDeepCleanConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("already_installed_tip");
+          localDeepCleanConfigBean.b = localJSONObject.optString("already_installed_tip");
         }
         if (localJSONObject.has("first_not_installed_tip")) {
-          localDeepCleanConfigBean.b = localJSONObject.optString("first_not_installed_tip");
+          localDeepCleanConfigBean.c = localJSONObject.optString("first_not_installed_tip");
         }
         if (localJSONObject.has("second_not_installed_tip")) {
-          localDeepCleanConfigBean.c = localJSONObject.optString("second_not_installed_tip");
+          localDeepCleanConfigBean.d = localJSONObject.optString("second_not_installed_tip");
         }
         if (localJSONObject.has("third_not_installed_tip")) {
-          localDeepCleanConfigBean.d = localJSONObject.optString("third_not_installed_tip");
+          localDeepCleanConfigBean.e = localJSONObject.optString("third_not_installed_tip");
         }
       }
       catch (JSONException localJSONException)
@@ -54,12 +54,12 @@ public class DeepCleanConfigProcessor$DeepCleanConfigBean
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.DeepCleanConfigProcessor.DeepCleanConfigBean
  * JD-Core Version:    0.7.0.1
  */

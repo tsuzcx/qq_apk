@@ -41,7 +41,7 @@ class AboutConfig$2
         {
           localGetResourceRespInfoV2 = (GetResourceRespInfoV2)((Iterator)localObject2).next();
           if ((localGetResourceRespInfoV2.iPluginType == 32) && ((localGetResourceRespInfoV2.sResSubType == 0) || (localGetResourceRespInfoV2.sResSubType == 2))) {
-            if (ConfigManager.a((EntityManager)localObject1, AboutConfig.a(this.a), localGetResourceRespInfoV2).cDefaultState == 0)
+            if (ConfigManager.a((EntityManager)localObject1, AboutConfig.d(this.a), localGetResourceRespInfoV2).cDefaultState == 0)
             {
               paramInt = 1;
               i = 1;
@@ -70,7 +70,7 @@ class AboutConfig$2
           localObject2 = (GetResourceRespInfoV2)paramGetResourceRespV2.next();
           if ((((GetResourceRespInfoV2)localObject2).iPluginType == 32) && ((((GetResourceRespInfoV2)localObject2).sResSubType == 0) || (((GetResourceRespInfoV2)localObject2).sResSubType == 2)))
           {
-            ConfigManager.a((EntityManager)localObject1, AboutConfig.a(this.a), (GetResourceRespInfoV2)localObject2);
+            ConfigManager.a((EntityManager)localObject1, AboutConfig.d(this.a), (GetResourceRespInfoV2)localObject2);
             paramInt = 1;
           }
         }
@@ -78,7 +78,7 @@ class AboutConfig$2
         this.a.a(true, false);
         if (paramInt != 0)
         {
-          paramGetResourceRespV2 = new ArrayList(AboutConfig.a(this.a)).iterator();
+          paramGetResourceRespV2 = new ArrayList(AboutConfig.e(this.a)).iterator();
           while (paramGetResourceRespV2.hasNext())
           {
             localObject1 = (ResourcePluginListener)paramGetResourceRespV2.next();
@@ -103,13 +103,13 @@ class AboutConfig$2
     }
     for (;;)
     {
-      if (k < AboutConfig.a(this.a).size()) {}
+      if (k < AboutConfig.e(this.a).size()) {}
       try
       {
-        ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(k), (byte)1, 2);
+        ResourcePluginListener.a((ResourcePluginListener)AboutConfig.e(this.a).get(k), (byte)1, 2);
         k += 1;
         continue;
-        if (paramInt >= AboutConfig.a(this.a).size()) {}
+        if (paramInt >= AboutConfig.e(this.a).size()) {}
       }
       catch (Exception paramGetResourceRespV2)
       {
@@ -117,7 +117,7 @@ class AboutConfig$2
         {
           for (;;)
           {
-            ResourcePluginListener.a((ResourcePluginListener)AboutConfig.a(this.a).get(paramInt), (byte)-1, 2);
+            ResourcePluginListener.a((ResourcePluginListener)AboutConfig.e(this.a).get(paramInt), (byte)-1, 2);
             label499:
             paramInt += 1;
           }
@@ -134,7 +134,7 @@ class AboutConfig$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig.2
  * JD-Core Version:    0.7.0.1
  */

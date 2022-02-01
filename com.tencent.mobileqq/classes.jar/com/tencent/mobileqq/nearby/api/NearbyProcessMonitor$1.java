@@ -11,14 +11,14 @@ final class NearbyProcessMonitor$1
   {
     NearbyProcessMonitor.b(this.a);
     NearbyProcessMonitor.a(this.a);
-    NearbyProcessMonitor.a += 1;
+    NearbyProcessMonitor.b += 1;
     ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).preloadNearbyProcessStart(this.a);
     NearbyProcessMonitor.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyProcessMonitor.1
  * JD-Core Version:    0.7.0.1
  */

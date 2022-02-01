@@ -10,19 +10,19 @@ class QFileMsgForwardManager$3
   public void run()
   {
     QFileMsgForwardManager.QFileUploadRequest localQFileUploadRequest;
-    if (QFileMsgForwardManager.a(this.this$0).containsKey(this.a)) {
-      localQFileUploadRequest = (QFileMsgForwardManager.QFileUploadRequest)QFileMsgForwardManager.a(this.this$0).get(this.a);
+    if (QFileMsgForwardManager.b(this.this$0).containsKey(this.a)) {
+      localQFileUploadRequest = (QFileMsgForwardManager.QFileUploadRequest)QFileMsgForwardManager.b(this.this$0).get(this.a);
     } else {
       localQFileUploadRequest = null;
     }
     if (localQFileUploadRequest != null) {
-      localQFileUploadRequest.d();
+      localQFileUploadRequest.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.3
  * JD-Core Version:    0.7.0.1
  */

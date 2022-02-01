@@ -22,22 +22,16 @@ import org.json.JSONObject;
 
 public class ReadInJoyPatchAdUtils
 {
-  public static int a = 0;
-  public static long a = 0L;
   public static String a = "ReadInJoyPatchAdUtils";
-  private static ArrayBlockingQueue<AdvertisementInfo> a;
-  public static boolean a = false;
-  public static int b = 3;
   public static long b = 0L;
-  private static ArrayBlockingQueue<AdvertisementInfo> b;
-  public static boolean b = false;
-  public static boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(10);
-    jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(10);
-  }
+  public static long c = 0L;
+  public static int d = 0;
+  public static int e = 3;
+  public static boolean f = false;
+  public static boolean g = false;
+  public static boolean h = false;
+  private static ArrayBlockingQueue<AdvertisementInfo> i = new ArrayBlockingQueue(10);
+  private static ArrayBlockingQueue<AdvertisementInfo> j = new ArrayBlockingQueue(10);
   
   public static int a(JSONObject paramJSONObject)
   {
@@ -50,7 +44,7 @@ public class ReadInJoyPatchAdUtils
     ArrayBlockingQueue localArrayBlockingQueue1;
     if (paramInt == 1)
     {
-      localArrayBlockingQueue2 = jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue;
+      localArrayBlockingQueue2 = i;
       localArrayBlockingQueue1 = localArrayBlockingQueue2;
       if (localArrayBlockingQueue2.size() <= 2)
       {
@@ -60,7 +54,7 @@ public class ReadInJoyPatchAdUtils
     }
     else
     {
-      localArrayBlockingQueue2 = jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue;
+      localArrayBlockingQueue2 = j;
       localArrayBlockingQueue1 = localArrayBlockingQueue2;
       if (localArrayBlockingQueue2.size() <= 2)
       {
@@ -74,40 +68,15 @@ public class ReadInJoyPatchAdUtils
     return (AdvertisementInfo)localArrayBlockingQueue1.poll();
   }
   
-  private static ReadInJoyPatchAdView a(IVideoUIManager paramIVideoUIManager)
-  {
-    if ((paramIVideoUIManager.a() != null) && ((paramIVideoUIManager.a() instanceof ReadInJoyPatchAdView))) {
-      return (ReadInJoyPatchAdView)paramIVideoUIManager.a();
-    }
-    return null;
-  }
-  
   public static void a()
   {
-    jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.clear();
-    jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue.clear();
-  }
-  
-  public static void a(int paramInt)
-  {
-    AdRequestData localAdRequestData = new AdRequestData();
-    localAdRequestData.d = 1;
-    if (paramInt == 1)
-    {
-      localAdRequestData.e = 3;
-      localAdRequestData.f = 0;
-    }
-    else
-    {
-      localAdRequestData.f = 3;
-      localAdRequestData.e = 0;
-    }
-    ThreadManager.executeOnSubThread(new ReadInJoyPatchAdUtils.2(localAdRequestData));
+    i.clear();
+    j.clear();
   }
   
   public static void a(Activity paramActivity, IVideoUIManager paramIVideoUIManager, IVideoPlayManager paramIVideoPlayManager, IVideoFullPlayController paramIVideoFullPlayController, CountDownCallback paramCountDownCallback, OnPatchPlayListener paramOnPatchPlayListener)
   {
-    ReadInJoyPatchAdView localReadInJoyPatchAdView = a(paramIVideoUIManager);
+    ReadInJoyPatchAdView localReadInJoyPatchAdView = c(paramIVideoUIManager);
     if (localReadInJoyPatchAdView == null) {
       return;
     }
@@ -116,7 +85,7 @@ public class ReadInJoyPatchAdUtils
   
   public static void a(IVideoUIManager paramIVideoUIManager)
   {
-    paramIVideoUIManager = a(paramIVideoUIManager);
+    paramIVideoUIManager = c(paramIVideoUIManager);
     if (paramIVideoUIManager != null)
     {
       paramIVideoUIManager.setVisibility(8);
@@ -128,10 +97,10 @@ public class ReadInJoyPatchAdUtils
   {
     if (paramInt1 == 1)
     {
-      paramVideoPlayParam.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt2);
+      paramVideoPlayParam.D.patchStatus.a.set(paramInt2);
       return;
     }
-    paramVideoPlayParam.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt2);
+    paramVideoPlayParam.D.patchStatus.c.set(paramInt2);
   }
   
   public static void a(VideoPlayParam paramVideoPlayParam, IVideoUIManager paramIVideoUIManager, boolean paramBoolean, OnPatchPlayListener paramOnPatchPlayListener)
@@ -144,7 +113,7 @@ public class ReadInJoyPatchAdUtils
     {
       if (paramBoolean)
       {
-        localObject1 = a(paramIVideoUIManager);
+        localObject1 = c(paramIVideoUIManager);
         paramIVideoUIManager = localObject2;
         if (localObject1 != null) {
           paramIVideoUIManager = ((ReadInJoyPatchAdView)localObject1).a;
@@ -174,7 +143,7 @@ public class ReadInJoyPatchAdUtils
     if (paramBoolean1)
     {
       bool1 = bool2;
-      if (c) {
+      if (h) {
         bool1 = false;
       }
     }
@@ -185,7 +154,7 @@ public class ReadInJoyPatchAdUtils
     {
       if (paramBoolean2)
       {
-        localObject = a(paramIVideoUIManager);
+        localObject = c(paramIVideoUIManager);
         if (localObject != null) {
           localAdvertisementInfo = ((ReadInJoyPatchAdView)localObject).a;
         }
@@ -213,7 +182,7 @@ public class ReadInJoyPatchAdUtils
     }
     if (paramCountDownCallback != null)
     {
-      paramCountDownCallback.a(paramIVideoUIManager.a());
+      paramCountDownCallback.a(paramIVideoUIManager.b());
       paramIVideoFullPlayController.a();
     }
   }
@@ -229,21 +198,21 @@ public class ReadInJoyPatchAdUtils
         {
           if (localJSONObject.optInt("patchAdType") == 1)
           {
-            jdField_a_of_type_Boolean = true;
-            jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.offer(paramAdvertisementInfo);
+            f = true;
+            i.offer(paramAdvertisementInfo);
           }
           else if (localJSONObject.optInt("patchAdType") == 2)
           {
-            jdField_b_of_type_Boolean = true;
-            jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue.offer(paramAdvertisementInfo);
+            g = true;
+            j.offer(paramAdvertisementInfo);
           }
           if (localJSONObject.optInt("postPatchAdNoFirst") != 1) {
             break label114;
           }
           bool = true;
-          c = bool;
-          jdField_a_of_type_Int = localJSONObject.optInt("patchAdLimitMinutes");
-          jdField_b_of_type_Int = localJSONObject.optInt("patchAdDisplaySeconds");
+          h = bool;
+          d = localJSONObject.optInt("patchAdLimitMinutes");
+          e = localJSONObject.optInt("patchAdDisplaySeconds");
           return true;
         }
       }
@@ -257,23 +226,17 @@ public class ReadInJoyPatchAdUtils
     }
   }
   
-  public static boolean a(IVideoUIManager paramIVideoUIManager)
-  {
-    paramIVideoUIManager = a(paramIVideoUIManager);
-    return (paramIVideoUIManager != null) && (paramIVideoUIManager.getVisibility() == 0);
-  }
-  
   public static boolean a(VideoPlayParam paramVideoPlayParam)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramVideoPlayParam != null)
     {
-      if (paramVideoPlayParam.a == null) {
+      if (paramVideoPlayParam.D == null) {
         return false;
       }
       bool1 = bool2;
-      if (paramVideoPlayParam.jdField_b_of_type_Long == 56L) {
+      if (paramVideoPlayParam.f == 56L) {
         bool1 = true;
       }
     }
@@ -282,8 +245,8 @@ public class ReadInJoyPatchAdUtils
   
   public static boolean a(VideoPlayParam paramVideoPlayParam, IVideoUIManager paramIVideoUIManager)
   {
-    int i = paramVideoPlayParam.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if ((i != 0) && (i != 2)) {
+    int k = paramVideoPlayParam.D.patchStatus.c.get();
+    if ((k != 0) && (k != 2)) {
       return false;
     }
     return c(paramVideoPlayParam, paramIVideoUIManager);
@@ -296,13 +259,13 @@ public class ReadInJoyPatchAdUtils
       return false;
     }
     boolean bool1 = bool2;
-    if (paramAbsBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramAbsBaseArticleInfo.patchStatus.b.get())
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 3)
+      if (paramAbsBaseArticleInfo.patchStatus.a.get() == 3)
       {
         bool1 = bool2;
-        if (paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
+        if (paramAbsBaseArticleInfo.patchStatus.c.get() == 0) {
           bool1 = true;
         }
       }
@@ -329,7 +292,7 @@ public class ReadInJoyPatchAdUtils
       return false;
     }
     paramInt = paramString.optInt("patchAdLimitMinutes");
-    if (SystemClock.elapsedRealtime() - jdField_b_of_type_Long >= paramInt * 60000) {
+    if (SystemClock.elapsedRealtime() - c >= paramInt * 60000) {
       bool = true;
     }
     return bool;
@@ -337,14 +300,37 @@ public class ReadInJoyPatchAdUtils
   
   public static void b()
   {
-    jdField_a_of_type_Long = jdField_b_of_type_Long;
-    jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    b = c;
+    c = SystemClock.elapsedRealtime();
+  }
+  
+  public static void b(int paramInt)
+  {
+    AdRequestData localAdRequestData = new AdRequestData();
+    localAdRequestData.f = 1;
+    if (paramInt == 1)
+    {
+      localAdRequestData.g = 3;
+      localAdRequestData.h = 0;
+    }
+    else
+    {
+      localAdRequestData.h = 3;
+      localAdRequestData.g = 0;
+    }
+    ThreadManager.executeOnSubThread(new ReadInJoyPatchAdUtils.2(localAdRequestData));
+  }
+  
+  public static boolean b(IVideoUIManager paramIVideoUIManager)
+  {
+    paramIVideoUIManager = c(paramIVideoUIManager);
+    return (paramIVideoUIManager != null) && (paramIVideoUIManager.getVisibility() == 0);
   }
   
   public static boolean b(VideoPlayParam paramVideoPlayParam, IVideoUIManager paramIVideoUIManager)
   {
-    int i = paramVideoPlayParam.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if ((i != 0) && (i != 2)) {
+    int k = paramVideoPlayParam.D.patchStatus.a.get();
+    if ((k != 0) && (k != 2)) {
       return false;
     }
     return c(paramVideoPlayParam, paramIVideoUIManager);
@@ -357,35 +343,43 @@ public class ReadInJoyPatchAdUtils
       return false;
     }
     boolean bool1 = bool2;
-    if (paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramAbsBaseArticleInfo.patchStatus.d.get())
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 3) {
+      if (paramAbsBaseArticleInfo.patchStatus.c.get() == 3) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
+  private static ReadInJoyPatchAdView c(IVideoUIManager paramIVideoUIManager)
+  {
+    if ((paramIVideoUIManager.a() != null) && ((paramIVideoUIManager.a() instanceof ReadInJoyPatchAdView))) {
+      return (ReadInJoyPatchAdView)paramIVideoUIManager.a();
+    }
+    return null;
+  }
+  
   public static void c()
   {
-    jdField_b_of_type_Long = jdField_a_of_type_Long;
+    c = b;
   }
   
   private static boolean c(VideoPlayParam paramVideoPlayParam, IVideoUIManager paramIVideoUIManager)
   {
-    int i = paramVideoPlayParam.jdField_b_of_type_Int;
+    int k = paramVideoPlayParam.l;
     boolean bool = false;
-    if (i <= 30) {
+    if (k <= 30) {
       return false;
     }
-    if (paramVideoPlayParam.a.mChannelID != 56L) {
+    if (paramVideoPlayParam.D.mChannelID != 56L) {
       return false;
     }
-    if (paramVideoPlayParam.jdField_b_of_type_Boolean) {
+    if (paramVideoPlayParam.M) {
       return false;
     }
-    if ((paramIVideoUIManager == null) || (!paramIVideoUIManager.a())) {
+    if ((paramIVideoUIManager == null) || (!paramIVideoUIManager.c())) {
       bool = true;
     }
     return bool;
@@ -398,13 +392,13 @@ public class ReadInJoyPatchAdUtils
       return false;
     }
     boolean bool1 = bool2;
-    if (!paramAbsBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!paramAbsBaseArticleInfo.patchStatus.b.get())
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2)
+      if (paramAbsBaseArticleInfo.patchStatus.a.get() == 2)
       {
         bool1 = bool2;
-        if (paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
+        if (paramAbsBaseArticleInfo.patchStatus.c.get() == 0) {
           bool1 = true;
         }
       }
@@ -414,14 +408,14 @@ public class ReadInJoyPatchAdUtils
   
   public static void d()
   {
-    Object localObject = jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue;
-    ArrayBlockingQueue localArrayBlockingQueue = jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue;
+    Object localObject = j;
+    ArrayBlockingQueue localArrayBlockingQueue = i;
     if ((((ArrayBlockingQueue)localObject).size() <= 2) || (localArrayBlockingQueue.size() <= 2))
     {
       localObject = new AdRequestData();
-      ((AdRequestData)localObject).d = 1;
-      ((AdRequestData)localObject).e = 3;
-      ((AdRequestData)localObject).f = 3;
+      ((AdRequestData)localObject).f = 1;
+      ((AdRequestData)localObject).g = 3;
+      ((AdRequestData)localObject).h = 3;
       ThreadManager.executeOnSubThread(new ReadInJoyPatchAdUtils.1((AdRequestData)localObject));
     }
   }
@@ -433,10 +427,10 @@ public class ReadInJoyPatchAdUtils
       return false;
     }
     boolean bool1 = bool2;
-    if (!paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!paramAbsBaseArticleInfo.patchStatus.d.get())
     {
       bool1 = bool2;
-      if (paramAbsBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) {
+      if (paramAbsBaseArticleInfo.patchStatus.c.get() == 2) {
         bool1 = true;
       }
     }
@@ -445,7 +439,7 @@ public class ReadInJoyPatchAdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils
  * JD-Core Version:    0.7.0.1
  */

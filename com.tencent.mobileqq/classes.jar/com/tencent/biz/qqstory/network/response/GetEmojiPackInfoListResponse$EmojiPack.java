@@ -10,25 +10,25 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetEmojiPackInfoListResponse$EmojiPack
   implements Cloneable
 {
-  public final int a;
   public final String a;
-  public final int b;
   public final String b;
   public final String c;
   public final String d;
   public final String e;
   public final String f;
   public final String g;
+  public final int h;
+  public final int i;
   
   public GetEmojiPackInfoListResponse$EmojiPack(qqstory_struct.EmoticonPack paramEmoticonPack)
   {
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramEmoticonPack.pack_id.get());
-    this.jdField_b_of_type_JavaLangString = paramEmoticonPack.icon.get().toStringUtf8();
+    this.a = String.valueOf(paramEmoticonPack.pack_id.get());
+    this.b = paramEmoticonPack.icon.get().toStringUtf8();
     this.d = paramEmoticonPack.name.get().toStringUtf8();
     this.e = paramEmoticonPack.download_url.get().toStringUtf8();
     this.f = paramEmoticonPack.md5.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramEmoticonPack.version.get();
-    this.jdField_b_of_type_Int = a(paramEmoticonPack.type.get());
+    this.h = paramEmoticonPack.version.get();
+    this.i = a(paramEmoticonPack.type.get());
     this.c = paramEmoticonPack.download_icon.get().toStringUtf8();
     this.g = paramEmoticonPack.config.get().toStringUtf8();
   }
@@ -43,13 +43,13 @@ public class GetEmojiPackInfoListResponse$EmojiPack
   
   public boolean a()
   {
-    int i = this.jdField_b_of_type_Int;
+    int j = this.i;
     boolean bool3 = false;
     boolean bool2 = false;
-    if (i == 1)
+    if (j == 1)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.b))
       {
         bool1 = bool2;
         if (!TextUtils.isEmpty(this.d))
@@ -67,7 +67,7 @@ public class GetEmojiPackInfoListResponse$EmojiPack
       return bool1;
     }
     boolean bool1 = bool3;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
       bool1 = bool3;
       if (!TextUtils.isEmpty(this.d)) {
@@ -89,12 +89,12 @@ public class GetEmojiPackInfoListResponse$EmojiPack
         return false;
       }
       paramObject = (EmojiPack)paramObject;
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null) {
-        if (str.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+        if (str.equals(paramObject.a)) {
           break label65;
         }
-      } else if (paramObject.jdField_a_of_type_JavaLangString == null) {
+      } else if (paramObject.a == null) {
         return true;
       }
       bool = false;
@@ -106,7 +106,7 @@ public class GetEmojiPackInfoListResponse$EmojiPack
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
       return str.hashCode();
     }
@@ -117,9 +117,9 @@ public class GetEmojiPackInfoListResponse$EmojiPack
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EmojiPack{mPackId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mLogoUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mPackName='");
     localStringBuilder.append(this.d);
@@ -133,7 +133,7 @@ public class GetEmojiPackInfoListResponse$EmojiPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse.EmojiPack
  * JD-Core Version:    0.7.0.1
  */

@@ -103,7 +103,7 @@ public class GLTextureView
     try
     {
       if (this.mGLThread != null) {
-        this.mGLThread.f();
+        this.mGLThread.h();
       }
       return;
     }
@@ -159,7 +159,7 @@ public class GLTextureView
   
   public int getRenderMode()
   {
-    return this.mGLThread.a();
+    return this.mGLThread.b();
   }
   
   public String getRenderThreadName()
@@ -186,7 +186,7 @@ public class GLTextureView
       localObject = this.mGLThread;
       int i;
       if (localObject != null) {
-        i = ((GLThread)localObject).a();
+        i = ((GLThread)localObject).b();
       } else {
         i = 1;
       }
@@ -219,7 +219,7 @@ public class GLTextureView
     QLog.d("[ApolloGL][GLTextureView]", 1, "onDetachedFromWindow");
     GLThread localGLThread = this.mGLThread;
     if (localGLThread != null) {
-      localGLThread.f();
+      localGLThread.h();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -227,12 +227,12 @@ public class GLTextureView
   
   public void onPause()
   {
-    this.mGLThread.d();
+    this.mGLThread.f();
   }
   
   public void onResume()
   {
-    this.mGLThread.e();
+    this.mGLThread.g();
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -296,7 +296,7 @@ public class GLTextureView
   
   public void requestRender()
   {
-    this.mGLThread.a();
+    this.mGLThread.c();
   }
   
   public void setDebugFlags(int paramInt)
@@ -414,17 +414,17 @@ public class GLTextureView
   
   public void surfaceCreated(SurfaceTexture paramSurfaceTexture)
   {
-    this.mGLThread.b();
+    this.mGLThread.d();
   }
   
   public void surfaceDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.mGLThread.c();
+    this.mGLThread.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

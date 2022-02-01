@@ -25,13 +25,13 @@ final class FloatMapDialogUtil$2
       return;
     }
     Object localObject = this.a;
-    localObject = DialogUtil.a((Context)localObject, 230, null, ((QBaseActivity)localObject).getResources().getString(2131719118), 2131694583, 2131690728, null, new FloatMapDialogUtil.2.1(this));
+    localObject = DialogUtil.a((Context)localObject, 230, null, ((QBaseActivity)localObject).getResources().getString(2131916654), 2131892267, 2131887648, null, new FloatMapDialogUtil.2.1(this));
     FloatMapDialogUtil.a(this.a, (QQCustomDialog)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatMapDialogUtil.2
  * JD-Core Version:    0.7.0.1
  */

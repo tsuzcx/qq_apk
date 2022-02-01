@@ -15,22 +15,22 @@ public abstract class ArkQQAPIIPCModule$MethodLogin
     this.b = paramLong2;
   }
   
-  public Bundle a()
+  public String a()
+  {
+    return "QQ.Login";
+  }
+  
+  public Bundle b()
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("srcAppID", this.a);
     localBundle.putLong("dstAppID", this.b);
     return localBundle;
   }
-  
-  public String a()
-  {
-    return "QQ.Login";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.MethodLogin
  * JD-Core Version:    0.7.0.1
  */

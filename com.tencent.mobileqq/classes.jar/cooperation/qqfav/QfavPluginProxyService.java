@@ -14,35 +14,21 @@ import mqq.app.AppRuntime;
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static FavoritesRemoteCommand jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand;
-  private static QfavRemoteProxyForQQ jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ;
-  
-  public static FavoritesRemoteCommand a()
-  {
-    if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {
-      try
-      {
-        if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {
-          jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand = new FavoritesRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand;
-  }
+  private static QfavRemoteProxyForQQ a;
+  private static FavoritesRemoteCommand b;
   
   public static QfavRemoteProxyForQQ a()
   {
-    if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {
-          jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ = new QfavRemoteProxyForQQ(BaseApplicationImpl.getApplication().getRuntime());
+        if (a == null) {
+          a = new QfavRemoteProxyForQQ(BaseApplicationImpl.getApplication().getRuntime());
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ;
+    return a;
   }
   
   public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection, String paramString)
@@ -50,18 +36,32 @@ public class QfavPluginProxyService
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QfavPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqfav.apk";
-    localPluginParams.e = "qqfav.apk";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.f = paramString;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localPluginParams.d = "qqfav.apk";
+    localPluginParams.g = "qqfav.apk";
+    localPluginParams.c = paramAppRuntime.getAccount();
+    localPluginParams.h = paramString;
+    localPluginParams.j = localIntent;
+    localPluginParams.o = paramServiceConnection;
     IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
   
-  public static boolean a()
+  public static FavoritesRemoteCommand b()
   {
-    FavoritesRemoteCommand localFavoritesRemoteCommand = a();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new FavoritesRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+        }
+      }
+      finally {}
+    }
+    return b;
+  }
+  
+  public static boolean c()
+  {
+    FavoritesRemoteCommand localFavoritesRemoteCommand = b();
     if (!PluginCommunicationHandler.getInstance().containsCmd(localFavoritesRemoteCommand.getCmd()))
     {
       PluginCommunicationHandler.getInstance().register(localFavoritesRemoteCommand);
@@ -72,7 +72,7 @@ public class QfavPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

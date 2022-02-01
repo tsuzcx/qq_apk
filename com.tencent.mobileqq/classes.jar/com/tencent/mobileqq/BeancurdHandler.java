@@ -52,14 +52,6 @@ public class BeancurdHandler
     return false;
   }
   
-  protected long a(Context paramContext, String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("next_requestTime");
-    return ((Long)BaseSharedPreUtil.a(paramContext, paramString1, localStringBuilder.toString(), Long.valueOf(0L))).longValue();
-  }
-  
   public String a(TofuCommon.TofuCubeInfo paramTofuCubeInfo)
   {
     JSONObject localJSONObject1 = new JSONObject();
@@ -112,7 +104,7 @@ public class BeancurdHandler
   
   public void a(Context paramContext, String paramString1, String paramString2)
   {
-    if (!a(paramContext, paramString1, paramString2))
+    if (!c(paramContext, paramString1, paramString2))
     {
       if (QLog.isColorLevel()) {
         QLog.i("BeancurdHandler", 2, "can not request before next requestTime");
@@ -182,24 +174,12 @@ public class BeancurdHandler
     }
   }
   
-  protected boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    return NetConnInfoCenter.getServerTime() >= a(paramContext, paramString1, paramString2);
-  }
-  
-  protected long b(Context paramContext, String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("last_requestTime");
-    return ((Long)BaseSharedPreUtil.a(paramContext, paramString1, localStringBuilder.toString(), Long.valueOf(0L))).longValue();
-  }
-  
   protected void b(Context paramContext, String paramString1, String paramString2)
   {
     oidb_cmd0xf7e.ReqBody localReqBody = new oidb_cmd0xf7e.ReqBody();
     localReqBody.uint64_frd_uin.set(Long.valueOf(paramString2).longValue());
-    localReqBody.uint64_last_pull_time.set(b(paramContext, paramString1, paramString2));
+    localReqBody.uint64_last_pull_time.set(e(paramContext, paramString1, paramString2));
+    localReqBody.version.set("8.8.17");
     paramContext = makeOIDBPkg("OidbSvc.0xf7e_1", 3966, 1, localReqBody.toByteArray(), 30000L);
     paramContext.addAttribute("friendUin", paramString2);
     sendPbReq(paramContext);
@@ -211,6 +191,27 @@ public class BeancurdHandler
     localStringBuilder.append(paramString2);
     localStringBuilder.append("last_requestTime");
     BaseSharedPreUtil.a(paramContext, paramString1, true, localStringBuilder.toString(), Long.valueOf(paramLong));
+  }
+  
+  protected boolean c(Context paramContext, String paramString1, String paramString2)
+  {
+    return NetConnInfoCenter.getServerTime() >= d(paramContext, paramString1, paramString2);
+  }
+  
+  protected long d(Context paramContext, String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("next_requestTime");
+    return ((Long)BaseSharedPreUtil.a(paramContext, paramString1, localStringBuilder.toString(), Long.valueOf(0L))).longValue();
+  }
+  
+  protected long e(Context paramContext, String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("last_requestTime");
+    return ((Long)BaseSharedPreUtil.a(paramContext, paramString1, localStringBuilder.toString(), Long.valueOf(0L))).longValue();
   }
   
   public Set<String> getCommandList()
@@ -248,7 +249,7 @@ public class BeancurdHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.BeancurdHandler
  * JD-Core Version:    0.7.0.1
  */

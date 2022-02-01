@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 public @interface Scope {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.annotation.Scope
  * JD-Core Version:    0.7.0.1
  */

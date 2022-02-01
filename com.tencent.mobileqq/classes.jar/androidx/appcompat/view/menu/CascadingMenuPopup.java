@@ -26,6 +26,8 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.dimen;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.widget.MenuItemHoverListener;
 import androidx.appcompat.widget.MenuPopupWindow;
 import androidx.core.view.GravityCompat;
@@ -40,7 +42,7 @@ final class CascadingMenuPopup
 {
   static final int HORIZ_POSITION_LEFT = 0;
   static final int HORIZ_POSITION_RIGHT = 1;
-  private static final int ITEM_LAYOUT = 2131558411;
+  private static final int ITEM_LAYOUT = R.layout.abc_cascading_menu_item_layout;
   static final int SUBMENU_TIMEOUT_MS = 200;
   private View mAnchorView;
   private final View.OnAttachStateChangeListener mAttachStateChangeListener = new CascadingMenuPopup.2(this);
@@ -79,7 +81,7 @@ final class CascadingMenuPopup
     this.mForceShowIcon = false;
     this.mLastPosition = getInitialMenuPosition();
     paramContext = paramContext.getResources();
-    this.mMenuMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(2131296279));
+    this.mMenuMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
     this.mSubMenuHoverHandler = new Handler();
   }
   
@@ -302,7 +304,7 @@ final class CascadingMenuPopup
     ((ListView)localObject2).setOnKeyListener(this);
     if ((localObject1 == null) && (this.mShowTitle) && (paramMenuBuilder.getHeaderTitle() != null))
     {
-      localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(2131558418, (ViewGroup)localObject2, false);
+      localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(R.layout.abc_popup_menu_header_item_layout, (ViewGroup)localObject2, false);
       localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
       ((FrameLayout)localObject1).setEnabled(false);
       ((TextView)localObject3).setText(paramMenuBuilder.getHeaderTitle());

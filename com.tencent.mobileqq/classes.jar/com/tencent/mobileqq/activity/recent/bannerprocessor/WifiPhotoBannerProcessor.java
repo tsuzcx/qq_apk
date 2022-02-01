@@ -14,12 +14,7 @@ import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 public class WifiPhotoBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.j;
-  }
+  public static final int a = BannerTypeCollections.j;
   
   public WifiPhotoBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -28,38 +23,38 @@ public class WifiPhotoBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131560849, null);
-    paramBanner.findViewById(2131381140).setOnClickListener(new WifiPhotoBannerProcessor.1(this));
-    paramBanner.findViewById(2131381139).setVisibility(8);
+    paramBanner = View.inflate(this.f, 2131627107, null);
+    paramBanner.findViewById(2131450159).setOnClickListener(new WifiPhotoBannerProcessor.1(this));
+    paramBanner.findViewById(2131450158).setVisibility(8);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    TextView localTextView = (TextView)paramBanner.a.findViewById(2131381140);
+    TextView localTextView = (TextView)paramBanner.c.findViewById(2131450159);
     if (paramMessage != null) {
       if (paramMessage.arg1 == 1) {
-        localTextView.setText(2131720409);
+        localTextView.setText(2131918085);
       } else if (paramMessage.arg1 == 2) {
-        localTextView.setText(2131720407);
+        localTextView.setText(2131918083);
       }
     }
-    paramBanner.a.findViewById(2131381139).setVisibility(0);
+    paramBanner.c.findViewById(2131450158).setVisibility(0);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.WifiPhotoBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

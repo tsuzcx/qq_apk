@@ -20,14 +20,14 @@ class DOMActionContextImpl$ApplyUpdateConsumer
         if (localDomObject == null) {
           return;
         }
-        DOMActionContextImpl.access$300(this.this$0).add(new DOMActionContextImpl.ApplyUpdateConsumer.1(this, localDomObject, paramDomObject));
+        DOMActionContextImpl.access$200(this.this$0).add(new DOMActionContextImpl.ApplyUpdateConsumer.1(this, localDomObject, paramDomObject));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.ApplyUpdateConsumer
  * JD-Core Version:    0.7.0.1
  */

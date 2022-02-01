@@ -22,79 +22,21 @@ import java.util.Date;
 public abstract class VideoShareModeBase
   extends ShareModeBase
 {
-  protected StoryVideoItem a;
-  protected int b;
-  protected int c;
-  protected String c;
-  protected int d;
   protected String d;
-  protected int e;
   protected String e;
   protected String f;
   protected String g;
   protected String h;
   protected String i;
-  protected String j;
-  protected String k;
+  protected StoryVideoItem j;
+  protected int k;
   protected String l;
-  
-  public VideoShareModeBase()
-  {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 1;
-  }
-  
-  protected String a()
-  {
-    if (this.a.isPollVideo())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716116));
-      return ((StringBuilder)localObject).toString();
-    }
-    if (this.a.isInteractVideo())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716126));
-      return ((StringBuilder)localObject).toString();
-    }
-    if (this.a.isGameVideo())
-    {
-      localObject = this.a.getVideoGameInfo();
-      if (((VideoGameInfo)localObject).a == 2)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716117));
-        localStringBuilder.append(((VideoGameInfo)localObject).b);
-        localStringBuilder.append(HardCodeUtil.a(2131716107));
-        return localStringBuilder.toString();
-      }
-      if (this.b == 0)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716108));
-        localStringBuilder.append(((VideoGameInfo)localObject).b);
-        localStringBuilder.append(((VideoGameInfo)localObject).jdField_c_of_type_JavaLangString);
-        localStringBuilder.append(HardCodeUtil.a(2131716125));
-        return localStringBuilder.toString();
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a.mOwnerName);
-      localStringBuilder.append(HardCodeUtil.a(2131716111));
-      localStringBuilder.append(((VideoGameInfo)localObject).b);
-      localStringBuilder.append(((VideoGameInfo)localObject).jdField_c_of_type_JavaLangString);
-      localStringBuilder.append(HardCodeUtil.a(2131716110));
-      return localStringBuilder.toString();
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131716114));
-    ((StringBuilder)localObject).append(QQStoryConstant.a);
-    return ((StringBuilder)localObject).toString();
-  }
+  protected String m;
+  protected String n;
+  protected String o;
+  protected int p = -1;
+  protected int v = -1;
+  protected int w = 1;
   
   public final void a(ShareCopyLinkData paramShareCopyLinkData)
   {
@@ -108,19 +50,19 @@ public abstract class VideoShareModeBase
   public final void a(ShareQQData paramShareQQData)
   {
     super.a(paramShareQQData);
-    paramShareQQData.b = 0;
-    paramShareQQData.jdField_d_of_type_JavaLangString = this.k;
-    paramShareQQData.a = this.a.mVideoThumbnailUrl;
-    paramShareQQData.jdField_e_of_type_JavaLangString = this.a.mVid;
-    paramShareQQData.j = this.l;
-    paramShareQQData.h = a(1);
-    int m = this.jdField_c_of_type_Int;
-    if (m != -1) {
-      paramShareQQData.jdField_d_of_type_Int = m;
+    paramShareQQData.a = 0;
+    paramShareQQData.h = this.n;
+    paramShareQQData.f = this.j.mVideoThumbnailUrl;
+    paramShareQQData.j = this.j.mVid;
+    paramShareQQData.o = this.o;
+    paramShareQQData.m = a(1);
+    int i1 = this.p;
+    if (i1 != -1) {
+      paramShareQQData.p = i1;
     }
-    m = this.jdField_d_of_type_Int;
-    if (m != -1) {
-      paramShareQQData.jdField_e_of_type_Int = m;
+    i1 = this.v;
+    if (i1 != -1) {
+      paramShareQQData.q = i1;
     }
     a(paramShareQQData);
   }
@@ -128,34 +70,34 @@ public abstract class VideoShareModeBase
   public final void a(ShareQZoneData paramShareQZoneData)
   {
     super.a(paramShareQZoneData);
-    paramShareQZoneData.a = this.a.mVideoThumbnailUrl;
-    paramShareQZoneData.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramShareQZoneData.jdField_d_of_type_JavaLangString = this.i;
-    paramShareQZoneData.jdField_e_of_type_JavaLangString = a(2);
+    paramShareQZoneData.a = this.j.mVideoThumbnailUrl;
+    paramShareQZoneData.f = this.e;
+    paramShareQZoneData.g = this.l;
+    paramShareQZoneData.h = a(2);
     a(paramShareQZoneData);
   }
   
   public final void a(ShareSinaData paramShareSinaData)
   {
     super.a(paramShareSinaData);
-    paramShareSinaData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareSinaData.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
-    if (TextUtils.isEmpty(paramShareSinaData.jdField_d_of_type_JavaLangString)) {
-      paramShareSinaData.jdField_d_of_type_JavaLangString = ShareUtils.a(paramShareSinaData.jdField_e_of_type_JavaLangString);
+    paramShareSinaData.h = this.j.mVideoThumbnailUrl;
+    paramShareSinaData.g = this.j.mVideoLocalThumbnailPath;
+    if (TextUtils.isEmpty(paramShareSinaData.g)) {
+      paramShareSinaData.g = ShareUtils.a(paramShareSinaData.h);
     }
-    paramShareSinaData.jdField_c_of_type_JavaLangString = a(5);
-    paramShareSinaData.a = this.j;
+    paramShareSinaData.f = a(5);
+    paramShareSinaData.a = this.m;
     a(paramShareSinaData);
   }
   
   public void a(ShareWeChatData paramShareWeChatData)
   {
     super.a(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.i;
-    paramShareWeChatData.a = this.jdField_d_of_type_JavaLangString;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(3);
-    paramShareWeChatData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
+    paramShareWeChatData.g = this.l;
+    paramShareWeChatData.f = this.e;
+    paramShareWeChatData.h = a(3);
+    paramShareWeChatData.i = this.j.mVideoThumbnailUrl;
+    paramShareWeChatData.l = true;
     a(paramShareWeChatData);
   }
   
@@ -163,41 +105,103 @@ public abstract class VideoShareModeBase
   {
     SLog.b("VideoShareModeBase", "prepareCommonShareData");
     super.a_(paramShareData);
-    if (this.a.isPollVideo()) {
+    if (this.j.isPollVideo()) {
       paramShareData.a("vote", "1");
-    } else if (this.a.isInteractVideo()) {
+    } else if (this.j.isInteractVideo()) {
       paramShareData.a("grade", "1");
     }
-    paramShareData.a = this.a;
+    paramShareData.e = this.j;
   }
   
   protected String b()
   {
-    Object localObject1 = this.a.getPollLayout();
-    Object localObject2 = this.a.getInteractLayout();
-    if ((localObject1 != null) && (((StoryVideoItem.PollLayout)localObject1).a != null) && (((StoryVideoItem.PollLayout)localObject1).a.length > 0))
+    if (this.j.isPollVideo())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131913565));
+      return ((StringBuilder)localObject).toString();
+    }
+    if (this.j.isInteractVideo())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131913575));
+      return ((StringBuilder)localObject).toString();
+    }
+    if (this.j.isGameVideo())
+    {
+      localObject = this.j.getVideoGameInfo();
+      if (((VideoGameInfo)localObject).a == 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131913566));
+        localStringBuilder.append(((VideoGameInfo)localObject).c);
+        localStringBuilder.append(HardCodeUtil.a(2131913556));
+        return localStringBuilder.toString();
+      }
+      if (this.k == 0)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131913557));
+        localStringBuilder.append(((VideoGameInfo)localObject).c);
+        localStringBuilder.append(((VideoGameInfo)localObject).d);
+        localStringBuilder.append(HardCodeUtil.a(2131913574));
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.j.mOwnerName);
+      localStringBuilder.append(HardCodeUtil.a(2131913560));
+      localStringBuilder.append(((VideoGameInfo)localObject).c);
+      localStringBuilder.append(((VideoGameInfo)localObject).d);
+      localStringBuilder.append(HardCodeUtil.a(2131913559));
+      return localStringBuilder.toString();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131913563));
+    ((StringBuilder)localObject).append(QQStoryConstant.a);
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  public void b(ShareWeChatData paramShareWeChatData)
+  {
+    super.b(paramShareWeChatData);
+    paramShareWeChatData.g = this.l;
+    paramShareWeChatData.f = this.e;
+    paramShareWeChatData.i = this.j.mVideoThumbnailUrl;
+    paramShareWeChatData.h = a(4);
+    paramShareWeChatData.l = true;
+    a(paramShareWeChatData);
+  }
+  
+  protected String c()
+  {
+    Object localObject1 = this.j.getPollLayout();
+    Object localObject2 = this.j.getInteractLayout();
+    if ((localObject1 != null) && (((StoryVideoItem.PollLayout)localObject1).j != null) && (((StoryVideoItem.PollLayout)localObject1).j.length > 0))
     {
       localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject2);
       localStringBuilder.append(" · ");
-      localStringBuilder.append(localObject1.a[0]);
+      localStringBuilder.append(localObject1.j[0]);
       return localStringBuilder.toString();
     }
-    if ((localObject2 != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).a != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).a.length > 0))
+    if ((localObject2 != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).i != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).i.length > 0))
     {
       localObject1 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append(" · ");
-      localStringBuilder.append(localObject2.a[0]);
+      localStringBuilder.append(localObject2.i[0]);
       return localStringBuilder.toString();
     }
     localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
-    if (TextUtils.isEmpty(this.g)) {
+    if (TextUtils.isEmpty(this.h)) {
       localObject1 = "1个小视频";
     } else {
-      localObject1 = this.g;
+      localObject1 = this.h;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject2);
@@ -205,21 +209,10 @@ public abstract class VideoShareModeBase
     localStringBuilder.append((String)localObject1);
     return localStringBuilder.toString();
   }
-  
-  public void b(ShareWeChatData paramShareWeChatData)
-  {
-    super.b(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.i;
-    paramShareWeChatData.a = this.jdField_d_of_type_JavaLangString;
-    paramShareWeChatData.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(4);
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
-    a(paramShareWeChatData);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.VideoShareModeBase
  * JD-Core Version:    0.7.0.1
  */

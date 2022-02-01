@@ -11,7 +11,7 @@ class VideofeedsUserGuideController$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideofeedsUserGuideController.a(this.a).startAnimation(VideofeedsUserGuideController.a(this.a));
+    VideofeedsUserGuideController.a(this.a).startAnimation(VideofeedsUserGuideController.b(this.a));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class VideofeedsUserGuideController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideofeedsUserGuideController.2
  * JD-Core Version:    0.7.0.1
  */

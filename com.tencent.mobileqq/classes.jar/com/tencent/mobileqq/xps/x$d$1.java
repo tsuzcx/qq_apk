@@ -9,13 +9,13 @@ final class x$d$1
   
   public void run()
   {
-    System.loadLibrary(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    System.loadLibrary(this.a);
+    this.b.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.xps.x.d.1
  * JD-Core Version:    0.7.0.1
  */

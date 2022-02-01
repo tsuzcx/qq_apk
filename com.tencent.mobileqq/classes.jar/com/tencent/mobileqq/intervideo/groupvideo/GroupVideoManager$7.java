@@ -16,10 +16,10 @@ final class GroupVideoManager$7
   {
     try
     {
-      if ("huiyin2".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-        localList = new UpgradeablePluginManager(HuayangPluginNewDownloaderUtil.a(BaseApplicationImpl.getContext()), "huiyin2", IVPluginLoader.a()).getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);
+      if ("huiyin2".equalsIgnoreCase(this.a)) {
+        localList = new UpgradeablePluginManager(HuayangPluginNewDownloaderUtil.a(BaseApplicationImpl.getContext()), "huiyin2", IVPluginLoader.b()).getCachedLatestPlugin(this.a);
       } else {
-        localList = GroupVideoManager.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);
+        localList = GroupVideoManager.b().getCachedLatestPlugin(this.a);
       }
     }
     catch (Throwable localThrowable)
@@ -34,7 +34,7 @@ final class GroupVideoManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.7
  * JD-Core Version:    0.7.0.1
  */

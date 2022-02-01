@@ -14,14 +14,14 @@ class AIOShareActionSheet$5
   {
     paramDialogInterface.dismiss();
     ReportController.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
+    if (this.a.f()) {
       AIOShareActionSheet.a(this.a).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.5
  * JD-Core Version:    0.7.0.1
  */

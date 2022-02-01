@@ -21,12 +21,12 @@ public class ReadInJoyCommentLikeView
   extends FrameLayout
   implements IView
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseCommentData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
-  private ReadInJoyCommentLikeView.OnLikeStateChangeLinstener jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiReadInJoyCommentLikeView$OnLikeStateChangeLinstener;
+  private BaseCommentData a;
+  private RelativeLayout b;
+  private ImageView c;
+  private TextView d;
+  private View.OnClickListener e;
+  private ReadInJoyCommentLikeView.OnLikeStateChangeLinstener f;
   
   public ReadInJoyCommentLikeView(@NonNull Context paramContext)
   {
@@ -48,12 +48,12 @@ public class ReadInJoyCommentLikeView
   
   private void a()
   {
-    inflate(getContext(), 2131560113, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370269));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369403));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379598));
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ReadInJoyCommentLikeView.1(this);
-    setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    inflate(getContext(), 2131626160, this);
+    this.b = ((RelativeLayout)findViewById(2131437485));
+    this.c = ((ImageView)findViewById(2131436437));
+    this.d = ((TextView)findViewById(2131448356));
+    this.e = new ReadInJoyCommentLikeView.1(this);
+    setOnClickListener(this.e);
   }
   
   private void a(View paramView)
@@ -68,29 +68,29 @@ public class ReadInJoyCommentLikeView
   
   private void b()
   {
-    BaseCommentData localBaseCommentData = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+    BaseCommentData localBaseCommentData = this.a;
     if (localBaseCommentData != null)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.c;
       int i;
       if (localBaseCommentData.isLiked()) {
-        i = 2130842911;
+        i = 2130843867;
       } else {
-        i = 2130842909;
+        i = 2130843865;
       }
       localImageView.setImageResource(i);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.likeCnt > 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyHelper.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.likeCnt));
+      if (this.a.likeCnt > 0) {
+        this.d.setText(ReadInJoyHelper.d(this.a.likeCnt));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.likeCnt == 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      if (this.a.likeCnt == 0) {
+        this.d.setText("");
       }
     }
   }
   
   public void a(BaseCommentData paramBaseCommentData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData = paramBaseCommentData;
+    this.a = paramBaseCommentData;
     b();
   }
   
@@ -126,12 +126,12 @@ public class ReadInJoyCommentLikeView
   
   public void setOnLikeListener(ReadInJoyCommentLikeView.OnLikeStateChangeLinstener paramOnLikeStateChangeLinstener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiReadInJoyCommentLikeView$OnLikeStateChangeLinstener = paramOnLikeStateChangeLinstener;
+    this.f = paramOnLikeStateChangeLinstener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.ReadInJoyCommentLikeView
  * JD-Core Version:    0.7.0.1
  */

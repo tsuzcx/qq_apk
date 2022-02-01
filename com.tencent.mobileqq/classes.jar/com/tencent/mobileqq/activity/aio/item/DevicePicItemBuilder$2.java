@@ -14,20 +14,20 @@ class DevicePicItemBuilder$2
 {
   DevicePicItemBuilder$2(DevicePicItemBuilder paramDevicePicItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    if ("device_groupchat".equals(this.a.extStr)) {
+      ((DeviceMsgHandle)this.c.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).d().a(this.a);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+      this.c.b(this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.d();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,11 +31,11 @@ public class AppsSearchViewBuilder
   
   private void a(View paramView)
   {
-    ReportController.b(null, "dc00898", "", String.valueOf(this.jdField_a_of_type_Long), "0X800AFBF", "0X800AFBF", 0, 0, String.valueOf(this.jdField_b_of_type_Long), "", "", "");
-    if (!TroopAppShortcutUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long)) {
+    ReportController.b(null, "dc00898", "", String.valueOf(this.b), "0X800AFBF", "0X800AFBF", 0, 0, String.valueOf(this.c), "", "", "");
+    if (!TroopAppShortcutUtils.a(this.g, this.b)) {
       return;
     }
-    TroopAppShortcutUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    TroopAppShortcutUtils.a(this.b, this.g, this.f, this.h);
   }
   
   public int a()
@@ -48,9 +48,9 @@ public class AppsSearchViewBuilder
     if (paramView == null)
     {
       paramView = new AppsSearchViewBuilder.ItemViewHolder();
-      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559858, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369980));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377043));
+      View localView = LayoutInflater.from(this.f).inflate(2131625901, paramViewGroup, false);
+      paramView.a = ((TextView)localView.findViewById(2131437131));
+      paramView.b = ((ImageView)localView.findViewById(2131445409));
       localView.setTag(paramView);
       paramViewGroup = paramView;
       paramView = localView;
@@ -59,43 +59,43 @@ public class AppsSearchViewBuilder
     {
       paramViewGroup = (AppsSearchViewBuilder.ItemViewHolder)paramView.getTag();
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.j)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setClickable(true);
+      paramViewGroup.b.setOnClickListener(this);
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramViewGroup.b.setVisibility(8);
     }
-    if (AppSetting.d) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131719774));
+    if (AppSetting.e) {
+      paramViewGroup.b.setContentDescription(this.f.getString(2131917378));
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
+      paramViewGroup.a.setTextColor(Color.parseColor("#ffffff"));
       paramView.setBackgroundColor(-16777216);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+      paramViewGroup.b.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+      paramViewGroup.b.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
+    paramViewGroup.b.setOnTouchListener(this);
     return paramView;
-  }
-  
-  public Object a()
-  {
-    return null;
   }
   
   public void a_(Object paramObject) {}
   
+  public Object b()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377043) {
+    if (paramView.getId() == 2131445409) {
       a(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -118,7 +118,7 @@ public class AppsSearchViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsSearchViewBuilder
  * JD-Core Version:    0.7.0.1
  */

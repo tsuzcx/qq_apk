@@ -6,7 +6,7 @@ import android.os.Handler;
 public abstract class DetectableAnimationDrawable
   extends AnimationDrawable
 {
-  Handler a;
+  Handler e;
   
   public DetectableAnimationDrawable(AnimationDrawable paramAnimationDrawable)
   {
@@ -19,7 +19,7 @@ public abstract class DetectableAnimationDrawable
     setOneShot(paramAnimationDrawable.isOneShot());
   }
   
-  private int a()
+  private int b()
   {
     int i = 0;
     int j = 0;
@@ -36,13 +36,13 @@ public abstract class DetectableAnimationDrawable
   public void start()
   {
     super.start();
-    this.a = new Handler();
-    this.a.postDelayed(new DetectableAnimationDrawable.1(this), a());
+    this.e = new Handler();
+    this.e.postDelayed(new DetectableAnimationDrawable.1(this), b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

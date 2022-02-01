@@ -33,10 +33,10 @@ class SoLibraryChecker$1
         if ((localObject != null) && (((String)localObject).endsWith("patch")))
         {
           paramString = new StringBuilder();
-          paramString.append(OfflineEnvHelper.a(SoLibraryChecker.a(this.a)));
+          paramString.append(OfflineEnvHelper.b(SoLibraryChecker.a(this.a)));
           paramString.append(SoLibraryChecker.a(this.a));
           FileUtils.deleteDirectory(paramString.toString());
-          SoLibraryChecker.a(this.a);
+          SoLibraryChecker.b(this.a);
           return;
         }
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramInt != 0))
@@ -44,22 +44,22 @@ class SoLibraryChecker$1
           SoLibraryChecker.a(this.a, paramString);
           return;
         }
-        if (SoLibraryChecker.a(SoLibraryChecker.a(this.a), SoLibraryChecker.b(this.a))) {
+        if (SoLibraryChecker.b(SoLibraryChecker.c(this.a), SoLibraryChecker.d(this.a))) {
           return;
         }
-        SoLibraryChecker.b(this.a);
+        SoLibraryChecker.e(this.a);
         return;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
-        if (!SoLibraryChecker.a(SoLibraryChecker.a(this.a), SoLibraryChecker.b(this.a))) {
-          SoLibraryChecker.b(this.a);
+        if (!SoLibraryChecker.b(SoLibraryChecker.c(this.a), SoLibraryChecker.d(this.a))) {
+          SoLibraryChecker.e(this.a);
         }
         return;
       }
-    } else if (!SoLibraryChecker.a(SoLibraryChecker.a(this.a), SoLibraryChecker.b(this.a))) {
-      SoLibraryChecker.b(this.a);
+    } else if (!SoLibraryChecker.b(SoLibraryChecker.c(this.a), SoLibraryChecker.d(this.a))) {
+      SoLibraryChecker.e(this.a);
     }
   }
   
@@ -67,7 +67,7 @@ class SoLibraryChecker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoLibraryChecker.1
  * JD-Core Version:    0.7.0.1
  */

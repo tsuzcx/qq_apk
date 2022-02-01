@@ -1,51 +1,31 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableShapeValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapePath;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class ShapePathParser
 {
+  static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "ind", "ks", "hd" });
+  
   static ShapePath parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
+    int i = 0;
+    String str = null;
     AnimatableShapeValue localAnimatableShapeValue = null;
-    int j = 0;
     boolean bool = false;
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      int k = str2.hashCode();
-      if (k != 3324)
+      int j = paramJsonReader.selectName(NAMES);
+      if (j != 0)
       {
-        if (k != 3432)
+        if (j != 1)
         {
-          if (k != 3519)
+          if (j != 2)
           {
-            if ((k == 104415) && (str2.equals("ind"))) {
-              i = 1;
-            }
-          }
-          else if (str2.equals("nm")) {
-            i = 0;
-          }
-        }
-        else if (str2.equals("ks")) {
-          i = 2;
-        }
-      }
-      else if (str2.equals("hd")) {
-        i = 3;
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 2)
-          {
-            if (i != 3) {
+            if (j != 3) {
               paramJsonReader.skipValue();
             } else {
               bool = paramJsonReader.nextBoolean();
@@ -56,19 +36,19 @@ class ShapePathParser
           }
         }
         else {
-          j = paramJsonReader.nextInt();
+          i = paramJsonReader.nextInt();
         }
       }
       else {
-        str1 = paramJsonReader.nextString();
+        str = paramJsonReader.nextString();
       }
     }
-    return new ShapePath(str1, j, localAnimatableShapeValue, bool);
+    return new ShapePath(str, i, localAnimatableShapeValue, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapePathParser
  * JD-Core Version:    0.7.0.1
  */

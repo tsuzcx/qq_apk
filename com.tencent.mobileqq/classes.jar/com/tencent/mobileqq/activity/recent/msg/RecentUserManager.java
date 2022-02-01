@@ -9,12 +9,12 @@ import mqq.manager.Manager;
 public class RecentUserManager
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, AbstructRecentUserMsg> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private QQAppInterface a;
+  private Map<Integer, AbstructRecentUserMsg> b = new HashMap();
   
   public RecentUserManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private AbstructRecentUserMsg b(int paramInt)
@@ -35,13 +35,13 @@ public class RecentUserManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+      if (this.b.containsKey(Integer.valueOf(paramInt)))
       {
-        localAbstructRecentUserMsg = (AbstructRecentUserMsg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        localAbstructRecentUserMsg = (AbstructRecentUserMsg)this.b.get(Integer.valueOf(paramInt));
         return localAbstructRecentUserMsg;
       }
       AbstructRecentUserMsg localAbstructRecentUserMsg = b(paramInt);
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localAbstructRecentUserMsg);
+      this.b.put(Integer.valueOf(paramInt), localAbstructRecentUserMsg);
       return localAbstructRecentUserMsg;
     }
     finally {}
@@ -49,12 +49,12 @@ public class RecentUserManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.RecentUserManager
  * JD-Core Version:    0.7.0.1
  */

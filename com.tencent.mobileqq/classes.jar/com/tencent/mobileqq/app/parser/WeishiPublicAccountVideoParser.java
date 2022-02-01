@@ -13,9 +13,9 @@ public class WeishiPublicAccountVideoParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new WeishiPublicAccountVideoAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "wsgzh";
-    paramBaseQQAppInterface.c = "miniapp_player";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "wsgzh";
+    paramBaseQQAppInterface.e = "miniapp_player";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -51,7 +51,7 @@ public class WeishiPublicAccountVideoParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WeishiPublicAccountVideoParser
  * JD-Core Version:    0.7.0.1
  */

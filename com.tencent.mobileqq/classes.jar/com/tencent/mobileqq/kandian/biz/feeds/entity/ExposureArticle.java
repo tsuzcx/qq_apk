@@ -9,24 +9,24 @@ import org.jetbrains.annotations.Nullable;
 public final class ExposureArticle
 {
   @Nullable
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
+  private final String a;
+  private final boolean b;
   
   public ExposureArticle(@Nullable String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString;
+    this.b = paramBoolean;
   }
   
   @Nullable
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public final boolean a()
+  public final boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -35,7 +35,7 @@ public final class ExposureArticle
       if ((paramObject instanceof ExposureArticle))
       {
         paramObject = (ExposureArticle)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean)) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (this.b == paramObject.b)) {}
       }
       else
       {
@@ -55,15 +55,15 @@ public final class ExposureArticle
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ArticleInfo,rowKey=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", isAD=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.entity.ExposureArticle
  * JD-Core Version:    0.7.0.1
  */

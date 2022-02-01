@@ -17,7 +17,7 @@ class AntiFraudConfigFileUtil$3
   {
     Object localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localObject != null) {
-      ((QQAppInterface)localObject).removeObserver(AntiFraudConfigFileUtil.a(this.a));
+      ((QQAppInterface)localObject).removeObserver(AntiFraudConfigFileUtil.b(this.a));
     }
     if (paramInt != 1)
     {
@@ -47,7 +47,7 @@ class AntiFraudConfigFileUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.3
  * JD-Core Version:    0.7.0.1
  */

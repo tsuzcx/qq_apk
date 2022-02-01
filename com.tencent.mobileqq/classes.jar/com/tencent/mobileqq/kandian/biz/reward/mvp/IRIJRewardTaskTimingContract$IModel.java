@@ -7,8 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract interface IRIJRewardTaskTimingContract$IModel
 {
-  public abstract int a();
-  
   public abstract int a(boolean paramBoolean);
   
   @Nullable
@@ -18,8 +16,6 @@ public abstract interface IRIJRewardTaskTimingContract$IModel
   
   public abstract void a(@Nullable RIJRewardTask paramRIJRewardTask);
   
-  public abstract void a(@NotNull String paramString);
-  
   public abstract void a(String paramString, int paramInt, RIJRewardTaskRemoteRepo.IReportTaskProgressCallback paramIReportTaskProgressCallback);
   
   public abstract boolean a(@NotNull String paramString);
@@ -28,10 +24,14 @@ public abstract interface IRIJRewardTaskTimingContract$IModel
   public abstract RIJRewardTask b();
   
   public abstract void b(RIJRewardTask paramRIJRewardTask);
+  
+  public abstract void b(@NotNull String paramString);
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.mvp.IRIJRewardTaskTimingContract.IModel
  * JD-Core Version:    0.7.0.1
  */

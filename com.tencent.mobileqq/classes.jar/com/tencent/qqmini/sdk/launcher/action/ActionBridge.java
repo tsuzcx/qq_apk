@@ -15,6 +15,7 @@ public class ActionBridge<T>
   implements Action
 {
   public static final Map<String, String> ACTION_CLASS = new HashMap();
+  private static final String ACTION_NAME_GET_APP_PAGE_ROUTER = "GetAppPageRouterAction";
   private static final String TAG = "ActionBridge";
   private Action<T> realAction;
   
@@ -28,6 +29,7 @@ public class ActionBridge<T>
     ACTION_CLASS.put("GetShareState", "com.tencent.qqmini.sdk.action.GetShareState");
     ACTION_CLASS.put("GetLastClickAction", "com.tencent.qqmini.minigame.action.GetLastClickAction");
     ACTION_CLASS.put("GetTheLastClickInfoAction", "com.tencent.qqmini.minigame.action.GetTheLastClickInfoAction");
+    ACTION_CLASS.put("GetAppPageRouterAction", "com.tencent.qqmini.miniapp.action.GetAppPageRouterAction");
   }
   
   public static Action obtain(String paramString, int paramInt, Map<String, Object> paramMap)
@@ -107,7 +109,7 @@ public class ActionBridge<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge
  * JD-Core Version:    0.7.0.1
  */

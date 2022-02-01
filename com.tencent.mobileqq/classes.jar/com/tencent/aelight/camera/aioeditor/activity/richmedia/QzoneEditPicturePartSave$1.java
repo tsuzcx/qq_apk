@@ -13,12 +13,12 @@ class QzoneEditPicturePartSave$1
   public void onClick(View paramView)
   {
     QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
-    this.a.a.b(9);
+    this.a.t.d(9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPicturePartSave.1
  * JD-Core Version:    0.7.0.1
  */

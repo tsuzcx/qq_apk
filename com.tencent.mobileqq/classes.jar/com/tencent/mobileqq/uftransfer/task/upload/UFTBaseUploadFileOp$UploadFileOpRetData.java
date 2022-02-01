@@ -5,40 +5,40 @@ import com.tencent.mobileqq.uftransfer.task.UFTBaseOp.OpRetData;
 public class UFTBaseUploadFileOp$UploadFileOpRetData
   extends UFTBaseOp.OpRetData
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = false;
+  private boolean a = false;
+  private String b;
+  private Object c;
+  private boolean d = false;
+  private boolean e = false;
   
-  public Object a()
+  public boolean d()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.a;
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
+  public String e()
   {
     return this.b;
   }
   
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean c()
+  public Object f()
   {
     return this.c;
+  }
+  
+  public boolean g()
+  {
+    return this.d;
+  }
+  
+  public boolean h()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTBaseUploadFileOp.UploadFileOpRetData
  * JD-Core Version:    0.7.0.1
  */

@@ -17,23 +17,23 @@ class PublicAccountDetailDynamicDataManagerServiceImpl$2
   
   public void run()
   {
-    Object localObject = (PublicAccountDynamicInfoEntityImpl)PublicAccountDetailDynamicDataManagerServiceImpl.access$000(this.this$0).find(PublicAccountDynamicInfoEntityImpl.class, this.jdField_a_of_type_Long);
-    if ((localObject != null) && (this.jdField_a_of_type_Long == Long.parseLong(((PublicAccountDynamicInfoEntityImpl)localObject).puin)) && (((PublicAccountDynamicInfoEntityImpl)localObject).dynamicInfoData != null))
+    Object localObject = (PublicAccountDynamicInfoEntityImpl)PublicAccountDetailDynamicDataManagerServiceImpl.access$000(this.this$0).find(PublicAccountDynamicInfoEntityImpl.class, this.a);
+    if ((localObject != null) && (this.a == Long.parseLong(((PublicAccountDynamicInfoEntityImpl)localObject).puin)) && (((PublicAccountDynamicInfoEntityImpl)localObject).dynamicInfoData != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailDynamicDataManager", 2, "getDynamicListForFirstEnterFromDB null != dynamicInfoEntity");
       }
-      int i = AccountDetailDynamicListModel.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, ((PublicAccountDynamicInfoEntityImpl)localObject).dynamicInfoData, true);
-      localObject = (AccountDetailDynamicInfo)((IPublicAccountDetailDynamicDataManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPublicAccountDetailDynamicDataManagerService.class, "all")).getAccountDetailDynamicInfoFromCache(this.jdField_a_of_type_Long);
+      int i = AccountDetailDynamicListModel.a((QQAppInterface)this.b, true, ((PublicAccountDynamicInfoEntityImpl)localObject).dynamicInfoData, true);
+      localObject = (AccountDetailDynamicInfo)((IPublicAccountDetailDynamicDataManagerService)this.b.getRuntimeService(IPublicAccountDetailDynamicDataManagerService.class, "all")).getAccountDetailDynamicInfoFromCache(this.a);
       if ((i == 0) && (localObject != null) && (!((AccountDetailDynamicInfo)localObject).a().isEmpty())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.onDynamicListGet(true, i);
+        this.c.onDynamicListGet(true, i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailDynamicDataManagerServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

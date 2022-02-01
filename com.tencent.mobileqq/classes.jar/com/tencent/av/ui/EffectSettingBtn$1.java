@@ -12,13 +12,13 @@ class EffectSettingBtn$1
   @TargetApi(16)
   public void onGlobalLayout()
   {
-    ViewTreeObserver localViewTreeObserver = this.a.a.getViewTreeObserver();
+    ViewTreeObserver localViewTreeObserver = this.a.c.getViewTreeObserver();
     if (Build.VERSION.SDK_INT >= 16) {
       localViewTreeObserver.removeOnGlobalLayoutListener(this);
     } else {
       localViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
-    this.a.b = true;
+    this.a.g = true;
   }
 }
 

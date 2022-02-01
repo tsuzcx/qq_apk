@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public final class WXLaunchMiniProgramWithToken$Req
   extends BaseReq
@@ -11,9 +11,9 @@ public final class WXLaunchMiniProgramWithToken$Req
   private static final String TAG = "MicroMsg.SDK.WXLaunchMiniProgramWithToken.Req";
   public String token;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
-    if (d.b(this.token))
+    if (b.b(this.token))
     {
       Log.e("MicroMsg.SDK.WXLaunchMiniProgramWithToken.Req", "token is null");
       return false;
@@ -21,12 +21,12 @@ public final class WXLaunchMiniProgramWithToken$Req
     return true;
   }
   
-  public final int getType()
+  public int getType()
   {
     return 29;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.toBundle(paramBundle);
     paramBundle.putString("_launch_wxminiprogram_token", this.token);
@@ -34,7 +34,7 @@ public final class WXLaunchMiniProgramWithToken$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken.Req
  * JD-Core Version:    0.7.0.1
  */

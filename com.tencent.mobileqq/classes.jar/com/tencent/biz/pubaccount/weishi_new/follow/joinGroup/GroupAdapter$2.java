@@ -13,7 +13,7 @@ class GroupAdapter$2
   
   public void a()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131720444, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131918120, 0).show();
   }
   
   public void a(String paramString1, String paramString2)
@@ -22,24 +22,24 @@ class GroupAdapter$2
     TroopUtils.a(GroupAdapter.a(this.a), paramString1, 2);
   }
   
-  public boolean a()
-  {
-    return (GroupAdapter.a(this.a) != null) && (GroupAdapter.a(this.a).isShowing());
-  }
-  
   public void b()
   {
-    GroupAdapter.a(this.a);
+    GroupAdapter.b(this.a);
   }
   
   public void c()
   {
-    GroupAdapter.b(this.a);
+    GroupAdapter.c(this.a);
+  }
+  
+  public boolean d()
+  {
+    return (GroupAdapter.d(this.a) != null) && (GroupAdapter.d(this.a).isShowing());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupAdapter.2
  * JD-Core Version:    0.7.0.1
  */

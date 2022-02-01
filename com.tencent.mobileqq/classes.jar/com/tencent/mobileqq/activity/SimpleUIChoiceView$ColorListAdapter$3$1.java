@@ -11,13 +11,15 @@ class SimpleUIChoiceView$ColorListAdapter$3$1
   
   public void onConfirm()
   {
-    SimpleUIChoiceView.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a).b();
-    SimpleUIChoiceView.ColorListAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter, this.a.jdField_a_of_type_Int);
+    if (SimpleUIChoiceView.c(this.a.b.b) != null) {
+      SimpleUIChoiceView.c(this.a.b.b).a();
+    }
+    SimpleUIChoiceView.ColorListAdapter.a(this.a.b, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.ColorListAdapter.3.1
  * JD-Core Version:    0.7.0.1
  */

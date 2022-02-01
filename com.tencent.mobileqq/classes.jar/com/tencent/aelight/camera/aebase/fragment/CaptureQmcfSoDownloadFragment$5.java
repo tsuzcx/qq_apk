@@ -15,14 +15,14 @@ class CaptureQmcfSoDownloadFragment$5
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStatusChanged: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" error:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("CaptureQmcfSoDownloadFragment", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131718345, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2131915837, 0).show();
       CaptureQmcfSoDownloadFragment.a(this.this$0, -1);
       return;
     }
@@ -32,7 +32,7 @@ class CaptureQmcfSoDownloadFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.fragment.CaptureQmcfSoDownloadFragment.5
  * JD-Core Version:    0.7.0.1
  */

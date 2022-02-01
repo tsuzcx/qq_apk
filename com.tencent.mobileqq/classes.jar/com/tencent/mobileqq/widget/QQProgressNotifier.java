@@ -18,11 +18,11 @@ import java.util.Iterator;
 public class QQProgressNotifier
   implements DialogInterface.OnCancelListener, Handler.Callback
 {
-  int a;
-  protected QQProgressDialog a;
-  protected final WeakReference<Activity> a;
-  protected final ArrayList<DialogInterface.OnCancelListener> a;
-  protected final Handler b;
+  protected QQProgressDialog d;
+  protected final WeakReference<Activity> e;
+  int f;
+  protected final Handler g;
+  protected final ArrayList<DialogInterface.OnCancelListener> h;
   
   public QQProgressNotifier(Activity paramActivity)
   {
@@ -31,10 +31,10 @@ public class QQProgressNotifier
   
   public QQProgressNotifier(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.e = new WeakReference(paramActivity);
+    this.f = paramInt;
+    this.h = new ArrayList();
+    this.g = new WeakReferenceHandler(Looper.getMainLooper(), this);
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -44,7 +44,7 @@ public class QQProgressNotifier
   
   public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.e.get();
     if (localActivity == null)
     {
       if (QLog.isColorLevel()) {
@@ -52,11 +52,11 @@ public class QQProgressNotifier
       }
       return;
     }
-    if ((paramOnCancelListener != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramOnCancelListener))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
+    if ((paramOnCancelListener != null) && (!this.h.contains(paramOnCancelListener))) {
+      this.h.add(paramOnCancelListener);
     }
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
+    this.g.removeMessages(1);
+    this.g.removeMessages(2);
     if ((paramInt1 == 0) && (paramInt2 > 0))
     {
       paramOnCancelListener = Message.obtain();
@@ -64,32 +64,32 @@ public class QQProgressNotifier
       paramOnCancelListener.arg1 = paramInt1;
       paramOnCancelListener.arg2 = 0;
       paramOnCancelListener.obj = paramString;
-      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
+      this.g.sendMessageDelayed(paramOnCancelListener, paramInt2);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.d == null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.f;
       if (i > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, 0, i, 17);
+        this.d = new QQProgressDialog(localActivity, 0, i, 17);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299168));
+        this.d = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299920));
       }
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(null);
+    if (this.h.isEmpty()) {
+      this.d.setOnCancelListener(null);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(this);
+      this.d.setOnCancelListener(this);
     }
     if (paramInt1 == 0)
     {
       if ((paramString != null) && (!"".equals(paramString.trim()))) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
+        this.d.a(paramString);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(localActivity.getString(2131718766));
+        this.d.a(localActivity.getString(2131916272));
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
+      this.d.a(false);
+      this.d.b(true);
       if (localActivity.isFinishing())
       {
         if (QLog.isDevelopLevel())
@@ -102,24 +102,24 @@ public class QQProgressNotifier
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.d.show();
       }
     }
     else
     {
       if ((paramInt1 != 2) && (paramInt1 != 4) && (paramInt1 != 6))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839588);
+        this.d.a(paramString);
+        this.d.d(2130839806);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130839573);
+        this.d.a(paramString);
+        this.d.d(2130839791);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+      this.d.a(true);
+      this.d.b(false);
+      if (!this.d.isShowing()) {
         if (localActivity.isFinishing())
         {
           if (QLog.isDevelopLevel())
@@ -132,13 +132,13 @@ public class QQProgressNotifier
           }
         }
         else {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+          this.d.show();
         }
       }
       paramString = Message.obtain();
       paramString.what = 2;
       paramString.arg1 = paramInt1;
-      paramOnCancelListener = this.b;
+      paramOnCancelListener = this.g;
       long l;
       if (paramInt2 > 0) {
         l = paramInt2;
@@ -149,32 +149,26 @@ public class QQProgressNotifier
     }
   }
   
-  public boolean a()
-  {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    return (localQQProgressDialog != null) && (localQQProgressDialog.isShowing());
-  }
-  
   public void b()
   {
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
+    this.g.removeMessages(1);
+    this.g.removeMessages(2);
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.d != null) && (this.d.isShowing())) {
+        this.d.dismiss();
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.h.clear();
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.e.get();
     if (localActivity == null)
     {
       if (QLog.isColorLevel()) {
@@ -183,6 +177,12 @@ public class QQProgressNotifier
       return;
     }
     a(paramInt1, localActivity.getString(paramInt2), paramInt3);
+  }
+  
+  public boolean c()
+  {
+    QQProgressDialog localQQProgressDialog = this.d;
+    return (localQQProgressDialog != null) && (localQQProgressDialog.isShowing());
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -197,7 +197,7 @@ public class QQProgressNotifier
       b();
       if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 4) || (paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
       {
-        Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        Activity localActivity = (Activity)this.e.get();
         if (localActivity != null)
         {
           if ((paramMessage.arg1 != 6) && (paramMessage.arg1 != 5))
@@ -226,23 +226,23 @@ public class QQProgressNotifier
     if (QLog.isDevelopLevel()) {
       QLog.d("QQProgressNotifier", 4, "onCancel");
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.h.size() > 0)
     {
-      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramDialogInterface = this.h.iterator();
       while (paramDialogInterface.hasNext())
       {
         DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
         if (localOnCancelListener != null) {
-          localOnCancelListener.onCancel(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+          localOnCancelListener.onCancel(this.d);
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.h.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQProgressNotifier
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class StaticMethods$ConfigServlet
       int k = arrayOfInt1[0];
       int m = arrayOfInt1[1];
       if (k != -1) {
-        paramSparseIntArray.put(StoryApi.a(k), m);
+        paramSparseIntArray.put(StoryApi.d(k), m);
       } else {
         paramSparseIntArray.put(m, m);
       }
@@ -31,7 +31,7 @@ public class StaticMethods$ConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.staticmethods.StaticMethods.ConfigServlet
  * JD-Core Version:    0.7.0.1
  */

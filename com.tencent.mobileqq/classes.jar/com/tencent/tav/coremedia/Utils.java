@@ -2,17 +2,17 @@ package com.tencent.tav.coremedia;
 
 public class Utils
 {
-  public static void a(Object paramObject)
+  public static void checkNotNull(Object paramObject)
   {
     if (paramObject != null) {
       return;
     }
-    Logger.a("CoreMedia", "obj is null!", new NullPointerException());
+    Logger.e("CoreMedia", "obj is null!", new NullPointerException());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.Utils
  * JD-Core Version:    0.7.0.1
  */

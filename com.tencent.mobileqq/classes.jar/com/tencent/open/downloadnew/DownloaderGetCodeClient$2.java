@@ -45,8 +45,8 @@ class DownloaderGetCodeClient$2
     try
     {
       localObject1 = DownloaderGetCodeClient.a(this.a, paramEIPCResult, i);
-      String str2 = (String)DownloaderGetCodeClient.a(this.a).get(localObject1);
-      Object localObject2 = (List)DownloaderGetCodeClient.b(this.a).get(localObject1);
+      String str2 = (String)DownloaderGetCodeClient.c(this.a).get(localObject1);
+      Object localObject2 = (List)DownloaderGetCodeClient.d(this.a).get(localObject1);
       if (localObject2 != null)
       {
         localObject2 = ((List)localObject2).iterator();
@@ -67,7 +67,7 @@ class DownloaderGetCodeClient$2
             }
           }
         }
-        DownloaderGetCodeClient.b(this.a).remove(localObject1);
+        DownloaderGetCodeClient.d(this.a).remove(localObject1);
       }
       else
       {
@@ -84,7 +84,7 @@ class DownloaderGetCodeClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeClient.2
  * JD-Core Version:    0.7.0.1
  */

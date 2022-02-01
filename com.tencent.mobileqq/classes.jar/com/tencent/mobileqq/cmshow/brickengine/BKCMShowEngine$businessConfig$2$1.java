@@ -37,13 +37,13 @@ final class BKCMShowEngine$businessConfig$2$1
       QLog.i(str, 2, localStringBuilder.toString());
     }
     if (Intrinsics.areEqual(paramKProperty, BKCMShowEngine.businessConfig.2.1.1.INSTANCE)) {
-      this.this$0.this$0.a().a(((Integer)paramObject2).intValue());
+      this.this$0.this$0.b().a(((Integer)paramObject2).intValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKCMShowEngine.businessConfig.2.1
  * JD-Core Version:    0.7.0.1
  */

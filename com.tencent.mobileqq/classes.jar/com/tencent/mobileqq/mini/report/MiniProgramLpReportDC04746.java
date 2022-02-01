@@ -21,7 +21,7 @@ public class MiniProgramLpReportDC04746
   public static void report(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().c())));
     localArrayList.add(MiniProgramReportHelper.newEntry("touin", ""));
     localArrayList.add(MiniProgramReportHelper.newEntry("actiontype", String.valueOf(paramInt1)));
     localArrayList.add(MiniProgramReportHelper.newEntry("subactiontype", String.valueOf(paramInt2)));
@@ -39,7 +39,7 @@ public class MiniProgramLpReportDC04746
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04746
  * JD-Core Version:    0.7.0.1
  */

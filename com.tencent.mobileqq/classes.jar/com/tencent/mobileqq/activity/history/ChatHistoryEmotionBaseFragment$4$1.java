@@ -16,20 +16,20 @@ class ChatHistoryEmotionBaseFragment$4$1
   
   public void a(Emoticon paramEmoticon)
   {
-    QQAppInterface localQQAppInterface1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$4.a.a;
+    QQAppInterface localQQAppInterface1 = this.b.a.a;
     IEmoBatchAddedHandlerApi localIEmoBatchAddedHandlerApi = (IEmoBatchAddedHandlerApi)QRoute.api(IEmoBatchAddedHandlerApi.class);
-    QQAppInterface localQQAppInterface2 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$4.a.a;
-    IEmoBatchAddedHandler localIEmoBatchAddedHandler1 = ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$4.a);
-    IEmoBatchAddedHandler localIEmoBatchAddedHandler2 = ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment$4.a);
+    QQAppInterface localQQAppInterface2 = this.b.a.a;
+    IEmoBatchAddedHandler localIEmoBatchAddedHandler1 = ChatHistoryEmotionBaseFragment.b(this.b.a);
+    IEmoBatchAddedHandler localIEmoBatchAddedHandler2 = ChatHistoryEmotionBaseFragment.b(this.b.a);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.epId);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonResp.emoticonId);
-    MarketFaceItemBuilder.a(localQQAppInterface1, paramEmoticon, localIEmoBatchAddedHandlerApi.createEmoBatchAddedCallback(localQQAppInterface2, localIEmoBatchAddedHandler1, localIEmoBatchAddedHandler2.a(localStringBuilder.toString())));
+    localStringBuilder.append(this.a.epId);
+    localStringBuilder.append(this.a.emoticonId);
+    MarketFaceItemBuilder.a(localQQAppInterface1, paramEmoticon, localIEmoBatchAddedHandlerApi.createEmoBatchAddedCallback(localQQAppInterface2, localIEmoBatchAddedHandler1, localIEmoBatchAddedHandler2.b(localStringBuilder.toString())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

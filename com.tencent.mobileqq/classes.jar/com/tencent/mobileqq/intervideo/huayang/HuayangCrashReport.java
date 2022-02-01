@@ -14,14 +14,9 @@ public class HuayangCrashReport
     CaughtExceptionReport.a(paramThrowable);
   }
   
-  private static boolean a(Throwable paramThrowable)
-  {
-    return (paramThrowable != null) && ((paramThrowable.getClass().getCanonicalName().contains("android.system.")) || (paramThrowable.getClass().getCanonicalName().contains("libcore.io.")));
-  }
-  
   public static void b(Throwable paramThrowable)
   {
-    c(paramThrowable);
+    d(paramThrowable);
     try
     {
       StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
@@ -32,7 +27,7 @@ public class HuayangCrashReport
         if (localObject1 == null) {
           break;
         }
-        if (a((Throwable)localObject1))
+        if (c((Throwable)localObject1))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("huayangCatchedException:");
@@ -49,7 +44,12 @@ public class HuayangCrashReport
     catch (Throwable paramThrowable) {}
   }
   
-  private static void c(Throwable paramThrowable)
+  private static boolean c(Throwable paramThrowable)
+  {
+    return (paramThrowable != null) && ((paramThrowable.getClass().getCanonicalName().contains("android.system.")) || (paramThrowable.getClass().getCanonicalName().contains("libcore.io.")));
+  }
+  
+  private static void d(Throwable paramThrowable)
   {
     int i;
     label170:
@@ -98,7 +98,7 @@ public class HuayangCrashReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangCrashReport
  * JD-Core Version:    0.7.0.1
  */

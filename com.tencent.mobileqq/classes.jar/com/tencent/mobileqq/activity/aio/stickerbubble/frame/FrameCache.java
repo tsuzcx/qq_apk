@@ -15,7 +15,7 @@ public class FrameCache
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StickerBubbleGifCache_");
     localStringBuilder.append(paramString);
-    return (FrameCache.CacheItem)CommonImageCacheHelper.a(localStringBuilder.toString());
+    return (FrameCache.CacheItem)CommonImageCacheHelper.b(localStringBuilder.toString());
   }
   
   public static void a()
@@ -25,7 +25,7 @@ public class FrameCache
   
   public static void a(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
   {
-    if (a())
+    if (b())
     {
       if (QLog.isColorLevel())
       {
@@ -40,20 +40,20 @@ public class FrameCache
       ((StringBuilder)localObject).append("StickerBubbleGifCache_");
       ((StringBuilder)localObject).append(paramString);
       localObject = ((StringBuilder)localObject).toString();
-      if (CommonImageCacheHelper.a((String)localObject) == null) {
+      if (CommonImageCacheHelper.b((String)localObject) == null) {
         CommonImageCacheHelper.a((String)localObject, new FrameCache.CacheItem(paramString, paramArrayOfBitmapDrawable, paramInt));
       }
     }
   }
   
-  private static boolean a()
+  private static boolean b()
   {
     return a > 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.frame.FrameCache
  * JD-Core Version:    0.7.0.1
  */

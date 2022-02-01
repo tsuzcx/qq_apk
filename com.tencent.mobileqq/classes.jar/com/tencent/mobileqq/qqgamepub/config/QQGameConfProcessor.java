@@ -12,7 +12,7 @@ public class QQGameConfProcessor
 {
   public static QQGameConfBean a()
   {
-    return (QQGameConfBean)QConfigManager.a().a(441);
+    return (QQGameConfBean)QConfigManager.b().b(441);
   }
   
   @NonNull
@@ -91,7 +91,7 @@ public class QQGameConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.config.QQGameConfProcessor
  * JD-Core Version:    0.7.0.1
  */

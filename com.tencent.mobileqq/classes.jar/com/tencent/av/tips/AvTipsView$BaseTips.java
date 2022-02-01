@@ -4,15 +4,15 @@ import android.widget.LinearLayout;
 
 abstract class AvTipsView$BaseTips
 {
-  int jdField_a_of_type_Int = -1;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  int a = -1;
   int b = -552421387;
   int c = -15550475;
   int d = 14;
+  LinearLayout e = null;
   
   void a(int paramInt)
   {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    LinearLayout localLinearLayout = this.e;
     if (localLinearLayout != null) {
       localLinearLayout.setVisibility(paramInt);
     }

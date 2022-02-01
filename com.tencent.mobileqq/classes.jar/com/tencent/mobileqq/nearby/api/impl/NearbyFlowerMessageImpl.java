@@ -68,10 +68,10 @@ public class NearbyFlowerMessageImpl
         if ((paramMessageForStructing instanceof StructMsgItemLayout12))
         {
           paramMessageForStructing = (StructMsgItemLayout12)paramMessageForStructing;
-          if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
-            paramMessageForStructing.a();
+          if (!paramMessageForStructing.aB) {
+            paramMessageForStructing.f();
           }
-          paramMessageForStructing = paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.getString("version");
+          paramMessageForStructing = paramMessageForStructing.az.getString("version");
           if (paramMessageForStructing != null) {
             break label83;
           }
@@ -114,28 +114,28 @@ public class NearbyFlowerMessageImpl
         if ((paramObject2 instanceof StructMsgItemLayout12))
         {
           paramObject2 = (StructMsgItemLayout12)paramObject2;
-          if (!paramObject2.jdField_a_of_type_Boolean)
+          if (!paramObject2.aB)
           {
             if (QLog.isColorLevel()) {
               QLog.i("NearbyFlowerMessage", 2, "need init data.");
             }
-            paramObject2.a();
+            paramObject2.f();
           }
-          this.version = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("version");
-          this.bgPic = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("bgPic");
-          this.fPic = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("fPic");
-          this.sNick = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("sNick");
-          this.rNick = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("rNick");
-          this.common = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("common");
-          this.fMean = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("fMean");
-          this.cMean = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("cMean");
-          this.pID = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("pID");
-          this.pURL = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("pURL");
-          this.fCount = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("fCount");
-          this.sUin = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("sUin");
-          this.rUin = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("rUin");
-          this.groupCode = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("groupCode");
-          localObject1 = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("score");
+          this.version = paramObject2.az.getString("version");
+          this.bgPic = paramObject2.az.getString("bgPic");
+          this.fPic = paramObject2.az.getString("fPic");
+          this.sNick = paramObject2.az.getString("sNick");
+          this.rNick = paramObject2.az.getString("rNick");
+          this.common = paramObject2.az.getString("common");
+          this.fMean = paramObject2.az.getString("fMean");
+          this.cMean = paramObject2.az.getString("cMean");
+          this.pID = paramObject2.az.getString("pID");
+          this.pURL = paramObject2.az.getString("pURL");
+          this.fCount = paramObject2.az.getString("fCount");
+          this.sUin = paramObject2.az.getString("sUin");
+          this.rUin = paramObject2.az.getString("rUin");
+          this.groupCode = paramObject2.az.getString("groupCode");
+          localObject1 = paramObject2.az.getString("score");
           if (TextUtils.isEmpty((CharSequence)localObject1)) {}
         }
       }
@@ -153,16 +153,16 @@ public class NearbyFlowerMessageImpl
       break label345;
     }
     this.score = 0;
-    this.sID = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("sID");
-    this.isSend = paramObject2.jdField_a_of_type_AndroidOsBundle.getBoolean("isSend", false);
-    this.isReceive = paramObject2.jdField_a_of_type_AndroidOsBundle.getBoolean("isReceive", false);
-    Object localObject1 = paramObject2.jdField_a_of_type_AndroidOsBundle.getString("anonyInfo");
+    this.sID = paramObject2.az.getString("sID");
+    this.isSend = paramObject2.az.getBoolean("isSend", false);
+    this.isReceive = paramObject2.az.getBoolean("isReceive", false);
+    Object localObject1 = paramObject2.az.getString("anonyInfo");
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject1 = ((String)localObject1).split("\\|");
       if ((localObject1.length > 0) && (!TextUtils.isEmpty(localObject1[0])))
       {
-        localObject2 = paramObject1.getAVNotifyCenter().b(this.sUin);
+        localObject2 = paramObject1.getAVNotifyCenter().d(this.sUin);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           i = ((String)localObject2).lastIndexOf("voice_hall_avatar_");
@@ -185,7 +185,7 @@ public class NearbyFlowerMessageImpl
       }
       if ((localObject1.length > 2) && (!TextUtils.isEmpty(localObject1[2])))
       {
-        localObject2 = paramObject1.getAVNotifyCenter().b(this.rUin);
+        localObject2 = paramObject1.getAVNotifyCenter().d(this.rUin);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           i = ((String)localObject2).lastIndexOf("voice_hall_avatar_");
@@ -218,20 +218,20 @@ public class NearbyFlowerMessageImpl
         if (this.isSend)
         {
           paramObject1 = new StringBuilder();
-          paramObject1.append(HardCodeUtil.a(2131707183));
+          paramObject1.append(HardCodeUtil.a(2131905016));
           paramObject1.append(this.toName);
-          paramObject1.append(HardCodeUtil.a(2131707188));
+          paramObject1.append(HardCodeUtil.a(2131905021));
           this.brief = paramObject1.toString();
         }
         else if (this.isReceive)
         {
           if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
-            this.fromName = paramObject1.getAVNotifyCenter().a(this.sUin);
+            this.fromName = paramObject1.getAVNotifyCenter().c(this.sUin);
           }
           paramObject1 = new StringBuilder();
           paramObject1.append(this.fromName);
-          paramObject1.append(HardCodeUtil.a(2131707187));
-          paramObject1.append(HardCodeUtil.a(2131707180));
+          paramObject1.append(HardCodeUtil.a(2131905020));
+          paramObject1.append(HardCodeUtil.a(2131905013));
           this.brief = paramObject1.toString();
         }
       }
@@ -239,9 +239,9 @@ public class NearbyFlowerMessageImpl
       {
         paramObject1 = new StringBuilder();
         paramObject1.append(this.fromName);
-        paramObject1.append(HardCodeUtil.a(2131707179));
+        paramObject1.append(HardCodeUtil.a(2131905012));
         paramObject1.append(this.toName);
-        paramObject1.append(HardCodeUtil.a(2131707184));
+        paramObject1.append(HardCodeUtil.a(2131905017));
         this.brief = paramObject1.toString();
       }
     }
@@ -249,13 +249,13 @@ public class NearbyFlowerMessageImpl
     {
       paramObject1 = new StringBuilder();
       paramObject1.append(this.sNick);
-      paramObject1.append(HardCodeUtil.a(2131707186));
+      paramObject1.append(HardCodeUtil.a(2131905019));
       paramObject1.append(this.rNick);
-      paramObject1.append(HardCodeUtil.a(2131707189));
+      paramObject1.append(HardCodeUtil.a(2131905022));
       this.brief = paramObject1.toString();
     }
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyFlowerMessage", 2, paramObject2.jdField_a_of_type_AndroidOsBundle.toString());
+      QLog.i("NearbyFlowerMessage", 2, paramObject2.az.toString());
     }
     if (QLog.isColorLevel())
     {
@@ -626,7 +626,7 @@ public class NearbyFlowerMessageImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyFlowerMessageImpl
  * JD-Core Version:    0.7.0.1
  */

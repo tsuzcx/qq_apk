@@ -13,22 +13,22 @@ class SystemDragUtils$TouchHandler$1$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$DropItem;
+    Object localObject = this.a;
     if ((localObject != null) && (((SystemDragUtils.DropItem)localObject).a()))
     {
-      localObject = new View.DragShadowBuilder(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$DropItem.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$DropItem.jdField_a_of_type_AndroidViewView.startDrag(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$DropItem.jdField_a_of_type_AndroidContentClipData, (View.DragShadowBuilder)localObject, "QQ_AIO_DRAG", 256);
+      localObject = new View.DragShadowBuilder(this.a.b);
+      this.a.b.startDrag(this.a.c, (View.DragShadowBuilder)localObject, "QQ_AIO_DRAG", 256);
     }
     else
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), SystemDragUtils.b(), 0).a();
+      QQToast.makeText((Context)this.b.this$0.b.get(), SystemDragUtils.d(), 0).show();
     }
-    SystemDragUtils.TouchHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0, this.jdField_a_of_type_ComTencentMobileqqUtilSystemDragUtils$TouchHandler$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
+    SystemDragUtils.TouchHandler.a(this.b.this$0, this.b.this$0.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

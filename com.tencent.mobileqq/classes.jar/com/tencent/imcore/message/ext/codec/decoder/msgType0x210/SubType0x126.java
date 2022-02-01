@@ -24,7 +24,7 @@ public class SubType0x126
       try
       {
         submsgtype0x126.MsgBody localMsgBody = new submsgtype0x126.MsgBody();
-        if (paramOnLinePushMessageProcessor.b(paramMsgType0x210))
+        if (paramOnLinePushMessageProcessor.d(paramMsgType0x210))
         {
           localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
           if (!localMsgBody.uint32_msg_type.has()) {
@@ -108,7 +108,7 @@ public class SubType0x126
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x126
  * JD-Core Version:    0.7.0.1
  */

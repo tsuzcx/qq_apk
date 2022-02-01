@@ -11,12 +11,12 @@ class CheckMsgCount$1
   
   public void run()
   {
-    this.this$0.mAutomator.a.getMultiMessageProxy().a();
+    this.this$0.mAutomator.k.getMultiMessageProxy().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckMsgCount.1
  * JD-Core Version:    0.7.0.1
  */

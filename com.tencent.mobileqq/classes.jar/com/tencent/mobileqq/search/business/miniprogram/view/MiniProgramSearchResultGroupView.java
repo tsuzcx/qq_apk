@@ -14,26 +14,16 @@ public class MiniProgramSearchResultGroupView
   implements ISearchResultGroupView
 {
   protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private List<ISearchResultView> jdField_a_of_type_JavaUtilList;
+  private TextView b;
+  private LinearLayout c;
+  private List<ISearchResultView> d;
   
   public MiniProgramSearchResultGroupView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371472));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370212));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.a.findViewById(2131438844));
+    this.d = new ArrayList();
+    this.c = ((LinearLayout)this.a.findViewById(2131437396));
   }
   
   public TextView a()
@@ -41,19 +31,29 @@ public class MiniProgramSearchResultGroupView
     return a();
   }
   
-  public List<ISearchResultView> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public TextView b()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.b;
+  }
+  
+  public List<ISearchResultView> c()
+  {
+    return this.d;
+  }
+  
+  public LinearLayout d()
+  {
+    return this.c;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.miniprogram.view.MiniProgramSearchResultGroupView
  * JD-Core Version:    0.7.0.1
  */

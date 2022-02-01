@@ -18,6 +18,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.widget.TintTypedArray;
 import androidx.core.view.ViewCompat;
@@ -37,7 +40,6 @@ public class ListMenuItemView
   private ImageView mIconView;
   private LayoutInflater mInflater;
   private MenuItemImpl mItemData;
-  private int mMenuType;
   private boolean mPreserveIconSpacing;
   private RadioButton mRadioButton;
   private TextView mShortcutView;
@@ -49,7 +51,7 @@ public class ListMenuItemView
   
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034748);
+    this(paramContext, paramAttributeSet, R.attr.listMenuViewStyle);
   }
   
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -61,7 +63,9 @@ public class ListMenuItemView
     this.mPreserveIconSpacing = paramAttributeSet.getBoolean(R.styleable.MenuView_preserveIconSpacing, false);
     this.mTextAppearanceContext = paramContext;
     this.mSubMenuArrow = paramAttributeSet.getDrawable(R.styleable.MenuView_subMenuArrow);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(null, new int[] { 16843049 }, 2131034526, 0);
+    paramContext = paramContext.getTheme();
+    paramInt = R.attr.dropDownListViewStyle;
+    paramContext = paramContext.obtainStyledAttributes(null, new int[] { 16843049 }, paramInt, 0);
     this.mHasListDivider = paramContext.hasValue(0);
     paramAttributeSet.recycle();
     paramContext.recycle();
@@ -93,19 +97,19 @@ public class ListMenuItemView
   
   private void insertCheckBox()
   {
-    this.mCheckBox = ((CheckBox)getInflater().inflate(2131558414, this, false));
+    this.mCheckBox = ((CheckBox)getInflater().inflate(R.layout.abc_list_menu_item_checkbox, this, false));
     addContentView(this.mCheckBox);
   }
   
   private void insertIconView()
   {
-    this.mIconView = ((ImageView)getInflater().inflate(2131558415, this, false));
+    this.mIconView = ((ImageView)getInflater().inflate(R.layout.abc_list_menu_item_icon, this, false));
     addContentView(this.mIconView, 0);
   }
   
   private void insertRadioButton()
   {
-    this.mRadioButton = ((RadioButton)getInflater().inflate(2131558417, this, false));
+    this.mRadioButton = ((RadioButton)getInflater().inflate(R.layout.abc_list_menu_item_radio, this, false));
     addContentView(this.mRadioButton);
   }
   
@@ -142,7 +146,6 @@ public class ListMenuItemView
   public void initialize(MenuItemImpl paramMenuItemImpl, int paramInt)
   {
     this.mItemData = paramMenuItemImpl;
-    this.mMenuType = paramInt;
     if (paramMenuItemImpl.isVisible()) {
       paramInt = 0;
     } else {
@@ -162,19 +165,19 @@ public class ListMenuItemView
   {
     super.onFinishInflate();
     ViewCompat.setBackground(this, this.mBackground);
-    this.mTitleView = ((TextView)findViewById(2131378784));
+    this.mTitleView = ((TextView)findViewById(R.id.title));
     int i = this.mTextAppearance;
     if (i != -1) {
       this.mTitleView.setTextAppearance(this.mTextAppearanceContext, i);
     }
-    this.mShortcutView = ((TextView)findViewById(2131377453));
-    this.mSubMenuArrowView = ((ImageView)findViewById(2131378060));
+    this.mShortcutView = ((TextView)findViewById(R.id.shortcut));
+    this.mSubMenuArrowView = ((ImageView)findViewById(R.id.submenuarrow));
     ImageView localImageView = this.mSubMenuArrowView;
     if (localImageView != null) {
       localImageView.setImageDrawable(this.mSubMenuArrow);
     }
-    this.mGroupDivider = ((ImageView)findViewById(2131367833));
-    this.mContent = ((LinearLayout)findViewById(2131365169));
+    this.mGroupDivider = ((ImageView)findViewById(R.id.group_divider));
+    this.mContent = ((LinearLayout)findViewById(R.id.content));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)

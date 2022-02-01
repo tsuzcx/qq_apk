@@ -10,6 +10,7 @@ public class UserAuthScope
   implements Parcelable, Serializable
 {
   public static final int AUTH_TYPE_ASK_EVERY_TIME = 1;
+  public static final int AUTH_TYPE_ASK_EVERY_TIME_WHEN_REJECTED = 2;
   public static final int AUTH_TYPE_ASK_ONLY_ONCE = 0;
   public static final Parcelable.Creator<UserAuthScope> CREATOR = new UserAuthScope.1();
   public int authType;
@@ -88,7 +89,7 @@ public class UserAuthScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.UserAuthScope
  * JD-Core Version:    0.7.0.1
  */

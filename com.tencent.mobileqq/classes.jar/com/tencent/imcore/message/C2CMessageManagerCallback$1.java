@@ -15,14 +15,14 @@ class C2CMessageManagerCallback$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager.b(this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
-    Object localObject2 = this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager.a(this.jdField_a_of_type_Int).d(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.a.b(this.b);
+    Object localObject2 = this.a.a(this.c).g(this.d, this.c);
     Object localObject1;
     if (localObject2 != null)
     {
       long l = ((MessageRecord)((List)localObject2).get(0)).uniseq;
       localObject1 = new ArrayList();
-      this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l, 200 - ((List)localObject2).size(), this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext, (ArrayList)localObject1);
+      this.a.a(this.d, this.c, l, 200 - ((List)localObject2).size(), this.b, (ArrayList)localObject1);
       if (((ArrayList)localObject1).size() > 200 - ((List)localObject2).size()) {
         i = ((ArrayList)localObject1).size() - (200 - ((List)localObject2).size());
       } else {
@@ -31,7 +31,7 @@ class C2CMessageManagerCallback$1
       while (i < ((ArrayList)localObject1).size())
       {
         localObject2 = (ChatMessage)((ArrayList)localObject1).get(i);
-        if ((!MsgProxyUtils.b((MessageRecord)localObject2)) && (((ChatMessage)localObject2).msgUid == this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.a) && (((ChatMessage)localObject2).time == this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.b))
+        if ((!MsgProxyUtils.b((MessageRecord)localObject2)) && (((ChatMessage)localObject2).msgUid == this.e.c) && (((ChatMessage)localObject2).time == this.e.d))
         {
           i = 1;
           break label213;
@@ -47,27 +47,27 @@ class C2CMessageManagerCallback$1
       {
         do
         {
-          localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext;
-          ((RefreshMessageContext)localObject1).e = 15;
-          ((RefreshMessageContext)localObject1).jdField_a_of_type_Int = 0;
-          localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, (RefreshMessageContext)localObject1, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext);
+          localObject1 = this.b;
+          ((RefreshMessageContext)localObject1).r = 15;
+          ((RefreshMessageContext)localObject1).l = 0;
+          localObject1 = this.a.a(this.d, this.c, 15, (RefreshMessageContext)localObject1, this.e);
         } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
         localObject1 = (ChatMessage)((List)localObject1).get(0);
-      } while ((MsgProxyUtils.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.b));
-      localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext;
-      ((RefreshMessageContext)localObject1).g = true;
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setChangeAndNotify(localObject1);
+      } while ((MsgProxyUtils.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.e.c) || (((ChatMessage)localObject1).time != this.e.d));
+      localObject1 = this.b;
+      ((RefreshMessageContext)localObject1).i = true;
+      this.f.setChangeAndNotify(localObject1);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getFacadeHandler().post(new C2CMessageManagerCallback.1.1(this));
+      this.f.getFacadeHandler().post(new C2CMessageManagerCallback.1.1(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getFacadeHandler().post(new C2CMessageManagerCallback.1.2(this));
+    this.f.getFacadeHandler().post(new C2CMessageManagerCallback.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManagerCallback.1
  * JD-Core Version:    0.7.0.1
  */

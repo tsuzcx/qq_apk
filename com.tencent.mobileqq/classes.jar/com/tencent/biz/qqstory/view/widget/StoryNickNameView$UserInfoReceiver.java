@@ -19,18 +19,18 @@ class StoryNickNameView$UserInfoReceiver
   
   public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+    if ((paramUpdateUserInfoEvent.g != null) && (paramUpdateUserInfoEvent.g.isFail())) {
       return;
     }
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.size() != 0))
+    if ((paramUpdateUserInfoEvent.b != null) && (paramUpdateUserInfoEvent.b.size() != 0))
     {
-      if (TextUtils.equals(paramUpdateUserInfoEvent.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(0));
+      if (TextUtils.equals(paramUpdateUserInfoEvent.d, "Q.qqstoryStoryNickNameView")) {
+        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramUpdateUserInfoEvent.b.get(0));
       }
-      if (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a())) {
+      if (!TextUtils.equals(paramUpdateUserInfoEvent.c, paramStoryNickNameView.getUnionId())) {
         return;
       }
-      paramStoryNickNameView.a((QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(0));
+      paramStoryNickNameView.a((QQUserUIItem)paramUpdateUserInfoEvent.b.get(0));
       return;
     }
     SLog.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");

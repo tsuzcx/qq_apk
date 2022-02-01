@@ -26,16 +26,16 @@ class TroopMemberApiClient$1
         QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "ServiceConnection Attached.");
       }
       ??? = Message.obtain(null, 1);
-      ???.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+      ???.replyTo = this.a.b;
       Object localObject = new Bundle();
-      ((Bundle)localObject).putString("processName", TroopMemberApiClient.a());
+      ((Bundle)localObject).putString("processName", TroopMemberApiClient.d());
       ???.obj = localObject;
       paramComponentName.send(???);
       synchronized (this.a)
       {
-        this.a.jdField_b_of_type_AndroidOsMessenger = paramComponentName;
-        localObject = new ArrayList(this.a.jdField_b_of_type_JavaUtilList);
-        this.a.jdField_b_of_type_JavaUtilList.clear();
+        this.a.c = paramComponentName;
+        localObject = new ArrayList(this.a.f);
+        this.a.f.clear();
         if (((List)localObject).size() > 0)
         {
           ??? = ((List)localObject).iterator();
@@ -57,8 +57,8 @@ class TroopMemberApiClient$1
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     paramComponentName = this.a;
-    paramComponentName.jdField_b_of_type_AndroidOsMessenger = null;
-    paramComponentName.jdField_a_of_type_JavaUtilMap.clear();
+    paramComponentName.c = null;
+    paramComponentName.h.clear();
     if (QLog.isColorLevel()) {
       QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Disconnected.");
     }
@@ -66,7 +66,7 @@ class TroopMemberApiClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiClient.1
  * JD-Core Version:    0.7.0.1
  */

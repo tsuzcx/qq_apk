@@ -11,22 +11,22 @@ class DevlockPushActivity$4
   {
     try
     {
-      if ((this.this$0.a != null) && (this.this$0.a.isShowing()))
+      if ((this.this$0.b != null) && (this.this$0.b.isShowing()))
       {
-        this.this$0.a.dismiss();
-        this.this$0.a.cancel();
+        this.this$0.b.dismiss();
+        this.this$0.b.cancel();
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    this.this$0.a = null;
+    this.this$0.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity.4
  * JD-Core Version:    0.7.0.1
  */

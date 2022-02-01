@@ -23,7 +23,7 @@ class QZoneApiProxyImpl$1
     }
     localStringBuilder.append(localObject);
     localStringBuilder.append(" cost ");
-    localStringBuilder.append(System.nanoTime() - this.jdField_a_of_type_Long);
+    localStringBuilder.append(System.nanoTime() - this.a);
     QZLog.i("QZoneApiProxyImpl", localStringBuilder.toString());
     boolean bool = true;
     if (paramPluginManagerClient != null)
@@ -33,7 +33,7 @@ class QZoneApiProxyImpl$1
       }
       QZoneApiProxyImpl.access$102(new WeakReference(paramPluginManagerClient));
     }
-    Object localObject = this.jdField_a_of_type_CooperationQzoneApiQZoneApiProxy$QZoneLoadCallback;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if ((paramPluginManagerClient == null) || (!paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk")) || (!QZoneApiProxyImpl.access$200(BaseApplicationImpl.getApplication()))) {
@@ -45,7 +45,7 @@ class QZoneApiProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QZoneApiProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

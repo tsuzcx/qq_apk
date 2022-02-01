@@ -42,8 +42,8 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
     super(paramView);
     try
     {
-      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131371128);
-      int i = (int)((ViewUtils.a() - ViewUtils.a(10.0F)) / 4.5F);
+      ViewGroup localViewGroup = (ViewGroup)paramView.findViewById(2131438469);
+      int i = (int)((ViewUtils.getScreenWidth() - ViewUtils.dip2px(10.0F)) / 4.5F);
       LinearLayout.LayoutParams localLayoutParams2 = (LinearLayout.LayoutParams)localViewGroup.getLayoutParams();
       LinearLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
       if (localLayoutParams2 == null) {
@@ -56,17 +56,17 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
     {
       QLog.e("MiniAppDesktopAdapter", 1, localThrowable, new Object[0]);
     }
-    this.imageView = ((ImageView)paramView.findViewById(2131371377));
+    this.imageView = ((ImageView)paramView.findViewById(2131438721));
     ImageView localImageView = this.imageView;
     if ((localImageView instanceof ThemeImageView)) {
       ((ThemeImageView)localImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
     }
-    this.textView = ((TextView)paramView.findViewById(2131371380));
-    this.versionTypeMark = ((TextView)paramView.findViewById(2131371381));
-    this.recommendBadge = ((ImageView)paramView.findViewById(2131371194));
-    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131371241));
-    this.anpgImagView = ((ImageView)paramView.findViewById(2131371239));
-    this.redDot = ((TextView)paramView.findViewById(2131371199));
+    this.textView = ((TextView)paramView.findViewById(2131438724));
+    this.versionTypeMark = ((TextView)paramView.findViewById(2131438725));
+    this.recommendBadge = ((ImageView)paramView.findViewById(2131438536));
+    this.viewFlipper = ((ViewFlipper)paramView.findViewById(2131438583));
+    this.anpgImagView = ((ImageView)paramView.findViewById(2131438581));
+    this.redDot = ((TextView)paramView.findViewById(2131438541));
   }
   
   private void startSwitchAnimation()
@@ -105,7 +105,7 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
     if ((this.miniAppInfo.motionPics != null) && (this.miniAppInfo.motionPics.size() > 0))
     {
       this.isPlayAnim = true;
-      Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841066, 48);
+      Drawable localDrawable = MiniAppUtils.getIcon(this.imageView.getContext(), this.miniAppInfo.appStoreAnimPicUrl, true, 2130841857, 48);
       this.imageView.setImageDrawable(localDrawable);
       this.imageView.invalidate();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -140,7 +140,7 @@ public class MiniAppDesktopAdapter$MicroAppViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.MicroAppViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -51,42 +51,37 @@ public final class UploadVideoProgressBar
   extends LinearLayout
   implements IPublishManager.IPublishStatusListener
 {
-  public static final UploadVideoProgressBar.Companion a;
-  private long jdField_a_of_type_Long;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private UploadVideoProgressBar.Status jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.UPLOADING;
-  private GlobalPublisherConfig jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
-  private PreUploadVideoInfo jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
-  private final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("mm:ss");
-  private final Date jdField_a_of_type_JavaUtilDate = new Date();
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private TextView c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Companion = new UploadVideoProgressBar.Companion(null);
-  }
+  public static final UploadVideoProgressBar.Companion a = new UploadVideoProgressBar.Companion(null);
+  private final SimpleDateFormat b = new SimpleDateFormat("mm:ss");
+  private final Date c = new Date();
+  private ProgressBar d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private UploadVideoProgressBar.Status h = UploadVideoProgressBar.Status.UPLOADING;
+  private GlobalPublisherConfig i;
+  private PreUploadVideoInfo j;
+  private boolean k;
+  private long l;
+  private boolean m;
   
   public UploadVideoProgressBar(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.d, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.q);
+    LayoutInflater.from(paramContext).inflate(R.layout.e, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.w);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.progress)");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext);
-    paramContext = findViewById(R.id.t);
+    this.d = ((ProgressBar)paramContext);
+    paramContext = findViewById(R.id.z);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.progress_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(R.id.r);
+    this.e = ((TextView)paramContext);
+    paramContext = findViewById(R.id.x);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.progress_btn)");
-    this.c = ((TextView)paramContext);
-    paramContext = findViewById(R.id.s);
+    this.g = ((TextView)paramContext);
+    paramContext = findViewById(R.id.y);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.progress_desc)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.c.setOnClickListener((View.OnClickListener)new UploadVideoProgressBar.1(this));
+    this.f = ((TextView)paramContext);
+    this.g.setOnClickListener((View.OnClickListener)new UploadVideoProgressBar.1(this));
   }
   
   private final String a(long paramLong)
@@ -98,16 +93,16 @@ public final class UploadVideoProgressBar
     long l2 = paramLong / l1;
     if (l2 <= 0L)
     {
-      this.jdField_a_of_type_JavaUtilDate.setTime(paramLong * 1000);
-      localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(this.jdField_a_of_type_JavaUtilDate);
+      this.c.setTime(paramLong * 1000);
+      localObject = this.b.format(this.c);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "timeFormat.format(date)");
       return localObject;
     }
-    this.jdField_a_of_type_JavaUtilDate.setTime(paramLong % l1 * 1000);
+    this.c.setTime(paramLong % l1 * 1000);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(l2);
     ((StringBuilder)localObject).append(':');
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaTextSimpleDateFormat.format(this.jdField_a_of_type_JavaUtilDate));
+    ((StringBuilder)localObject).append(this.b.format(this.c));
     return ((StringBuilder)localObject).toString();
   }
   
@@ -117,7 +112,7 @@ public final class UploadVideoProgressBar
     localUserActionEvent.a(ReportEventKey.EVENT_CLICK);
     localUserActionEvent.a(ReportEventPage.PAGE_PUBLISH);
     localUserActionEvent.a(paramReportEventElement);
-    paramReportEventElement = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
+    paramReportEventElement = this.i;
     if (paramReportEventElement == null) {
       Intrinsics.throwUninitializedPropertyAccessException("globalPublisherConfig");
     }
@@ -127,27 +122,16 @@ public final class UploadVideoProgressBar
   
   private final void a(boolean paramBoolean)
   {
-    IPublishManager localIPublishManager = TopicSDK.a.a().a().a();
-    GlobalPublisherConfig localGlobalPublisherConfig = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
+    IPublishManager localIPublishManager = TopicSDK.a.a().b().u();
+    GlobalPublisherConfig localGlobalPublisherConfig = this.i;
     if (localGlobalPublisherConfig == null) {
       Intrinsics.throwUninitializedPropertyAccessException("globalPublisherConfig");
     }
-    PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+    PreUploadVideoInfo localPreUploadVideoInfo = this.j;
     if (localPreUploadVideoInfo == null) {
       Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
     }
     localIPublishManager.a(localGlobalPublisherConfig, localPreUploadVideoInfo, paramBoolean, (IPublishManager.IPublishStatusListener)this);
-  }
-  
-  private final boolean a()
-  {
-    long l = System.currentTimeMillis();
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = (l + 100L);
-      return true;
-    }
-    return false;
   }
   
   private final void e()
@@ -156,12 +140,12 @@ public final class UploadVideoProgressBar
     Object localObject = NetworkUtils.a;
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    if ((!((NetworkUtils)localObject).b(localContext)) && (!this.jdField_a_of_type_Boolean))
+    if ((!((NetworkUtils)localObject).b(localContext)) && (!this.k))
     {
-      localObject = TopicSDK.a.a().a().a();
+      localObject = TopicSDK.a.a().b().u();
       localContext = getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+      PreUploadVideoInfo localPreUploadVideoInfo = this.j;
       if (localPreUploadVideoInfo == null) {
         Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
       }
@@ -173,64 +157,57 @@ public final class UploadVideoProgressBar
   
   private final void f()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"");
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.o));
-    this.c.setText((CharSequence)getResources().getString(R.string.n));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.a), null, null, null);
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.UPLOADING;
+    this.f.setText((CharSequence)"");
+    this.e.setText((CharSequence)getResources().getString(R.string.r));
+    this.g.setText((CharSequence)getResources().getString(R.string.q));
+    this.g.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.a), null, null, null);
+    this.g.setVisibility(0);
+    this.h = UploadVideoProgressBar.Status.UPLOADING;
   }
   
   private final void g()
   {
-    IPublishManager localIPublishManager = TopicSDK.a.a().a().a();
-    GlobalPublisherConfig localGlobalPublisherConfig = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
-    if (localGlobalPublisherConfig == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("globalPublisherConfig");
-    }
-    PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+    IPublishManager localIPublishManager = TopicSDK.a.a().b().u();
+    PreUploadVideoInfo localPreUploadVideoInfo = this.j;
     if (localPreUploadVideoInfo == null) {
       Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
     }
-    localIPublishManager.a(localGlobalPublisherConfig, localPreUploadVideoInfo);
+    localIPublishManager.a(localPreUploadVideoInfo.getPublishId());
   }
   
-  @NotNull
-  public final String a()
+  private final boolean h()
   {
-    if (this.jdField_b_of_type_Boolean)
+    long l1 = System.currentTimeMillis();
+    if (l1 > this.l)
     {
-      PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
-      if (localPreUploadVideoInfo == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
-      }
-      return localPreUploadVideoInfo.getVideoInfo().getCoverUrl();
+      this.l = (l1 + 100L);
+      return true;
     }
-    return "";
+    return false;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.o));
-    this.c.setText((CharSequence)getResources().getString(R.string.n));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.a), null, null, null);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.UPLOADING;
+    this.e.setText((CharSequence)getResources().getString(R.string.r));
+    this.g.setText((CharSequence)getResources().getString(R.string.q));
+    this.g.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.a), null, null, null);
+    this.h = UploadVideoProgressBar.Status.UPLOADING;
   }
   
   public void a(int paramInt, @NotNull String paramString, long paramLong1, long paramLong2)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "speed");
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status == UploadVideoProgressBar.Status.UPLOADING)
+    if (this.h == UploadVideoProgressBar.Status.UPLOADING)
     {
-      if (paramInt > this.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+      if (paramInt > this.d.getProgress()) {
+        this.d.setProgress(paramInt);
       }
       if (paramLong1 <= 0L)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"");
+        this.f.setText((CharSequence)"");
         return;
       }
-      if (!a()) {
+      if (!h()) {
         return;
       }
       Object localObject1 = (CharSequence)paramString;
@@ -267,13 +244,13 @@ public final class UploadVideoProgressBar
       }
       if (f1 <= (float)0L)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"0KB/S");
+        this.f.setText((CharSequence)"0KB/S");
         return;
       }
       float f1 = (float)(paramLong2 - paramLong1) / f1;
-      localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject1 = this.f;
       Object localObject2 = StringCompanionObject.INSTANCE;
-      localObject2 = getResources().getString(R.string.l);
+      localObject2 = getResources().getString(R.string.o);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "resources.getString(R.st…load_video_progress_desc)");
       Object[] arrayOfObject = new Object[2];
       arrayOfObject[0] = paramString;
@@ -287,7 +264,7 @@ public final class UploadVideoProgressBar
       ((StringBuilder)localObject1).append("upload video speed error, the speed value is  ");
       ((StringBuilder)localObject1).append(paramString);
       TLog.d("UploadVideoProgressBar", ((StringBuilder)localObject1).toString());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"");
+      this.f.setText((CharSequence)"");
     }
   }
   
@@ -297,7 +274,7 @@ public final class UploadVideoProgressBar
     if (getVisibility() == 8) {
       return;
     }
-    PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+    PreUploadVideoInfo localPreUploadVideoInfo = this.j;
     if (localPreUploadVideoInfo == null) {
       Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
     }
@@ -306,24 +283,24 @@ public final class UploadVideoProgressBar
     }
     if (paramDisplayItem.getMedia().getType() == MediaType.VIDEO)
     {
-      localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+      localPreUploadVideoInfo = this.j;
       if (localPreUploadVideoInfo == null) {
         Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
       }
       localPreUploadVideoInfo.getVideoInfo().setCoverPath(paramDisplayItem.getCoverPath());
-      paramDisplayItem = BitmapUtils.a.a(paramDisplayItem.getCoverPath());
-      localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+      paramDisplayItem = BitmapUtils.a.b(paramDisplayItem.getCoverPath());
+      localPreUploadVideoInfo = this.j;
       if (localPreUploadVideoInfo == null) {
         Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
       }
       localPreUploadVideoInfo.getVideoInfo().setCoverWidth(((Number)paramDisplayItem.getFirst()).intValue());
-      localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+      localPreUploadVideoInfo = this.j;
       if (localPreUploadVideoInfo == null) {
         Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
       }
       localPreUploadVideoInfo.getVideoInfo().setCoverHeight(((Number)paramDisplayItem.getSecond()).intValue());
       e();
-      paramDisplayItem = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+      paramDisplayItem = this.j;
       if (paramDisplayItem == null) {
         Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
       }
@@ -335,18 +312,18 @@ public final class UploadVideoProgressBar
   {
     Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "globalPublisherConfig");
     Intrinsics.checkParameterIsNotNull(paramString, "publishId");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig = paramGlobalPublisherConfig;
+    this.i = paramGlobalPublisherConfig;
     if (paramGlobalPublisherConfig.getOriginVideoInfo() != null)
     {
-      int i;
+      int n;
       if (((CharSequence)paramString).length() == 0) {
-        i = 1;
+        n = 1;
       } else {
-        i = 0;
+        n = 0;
       }
-      if (i == 0)
+      if (n == 0)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.m = true;
         VideoInfo localVideoInfo = paramGlobalPublisherConfig.getOriginVideoInfo();
         if (localVideoInfo == null) {
           Intrinsics.throwNpe();
@@ -362,7 +339,7 @@ public final class UploadVideoProgressBar
         {
           paramGlobalPublisherConfig = "";
         }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo = new PreUploadVideoInfo(paramString, localVideoInfo, str, paramGlobalPublisherConfig);
+        this.j = new PreUploadVideoInfo(paramString, localVideoInfo, str, paramGlobalPublisherConfig);
         e();
         return;
       }
@@ -373,7 +350,7 @@ public final class UploadVideoProgressBar
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "coverUrl");
-    PreUploadVideoInfo localPreUploadVideoInfo = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanPreUploadVideoInfo;
+    PreUploadVideoInfo localPreUploadVideoInfo = this.j;
     if (localPreUploadVideoInfo == null) {
       Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
     }
@@ -382,39 +359,53 @@ public final class UploadVideoProgressBar
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.k));
-    this.c.setText((CharSequence)getResources().getString(R.string.j));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.c), null, null, null);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.PAUSE;
+    this.e.setText((CharSequence)getResources().getString(R.string.n));
+    this.g.setText((CharSequence)getResources().getString(R.string.m));
+    this.g.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.c), null, null, null);
+    this.h = UploadVideoProgressBar.Status.PAUSE;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.m));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"");
-    this.c.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(100);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.SUCCESS;
+    this.e.setText((CharSequence)getResources().getString(R.string.p));
+    this.f.setText((CharSequence)"");
+    this.g.setVisibility(4);
+    this.d.setProgress(100);
+    this.h = UploadVideoProgressBar.Status.SUCCESS;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.i));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)"");
-    this.c.setText((CharSequence)getResources().getString(R.string.h));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.b), null, null, null);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterWidgetUploadVideoProgressBar$Status = UploadVideoProgressBar.Status.FAILED;
+    this.e.setText((CharSequence)getResources().getString(R.string.l));
+    this.f.setText((CharSequence)"");
+    this.g.setText((CharSequence)getResources().getString(R.string.k));
+    this.g.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.b), null, null, null);
+    this.h = UploadVideoProgressBar.Status.FAILED;
+  }
+  
+  @NotNull
+  public final String getUploadedCoverUrl()
+  {
+    if (this.m)
+    {
+      PreUploadVideoInfo localPreUploadVideoInfo = this.j;
+      if (localPreUploadVideoInfo == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("preUploadVideoInfo");
+      }
+      return localPreUploadVideoInfo.getVideoInfo().getCoverUrl();
+    }
+    return "";
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    TopicSDK.a.a().a().a().a((IPublishManager.IPublishStatusListener)this);
+    TopicSDK.a.a().b().u().a((IPublishManager.IPublishStatusListener)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.widget.UploadVideoProgressBar
  * JD-Core Version:    0.7.0.1
  */

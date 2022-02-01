@@ -32,7 +32,7 @@ public class ArkQQAPIIPCModule$LaunchMiniappHandler
         i = 2059;
       }
       EntryModel localEntryModel = MiniAppSchemeHandler.a();
-      Activity localActivity = ArkAppQQModule.a();
+      Activity localActivity = ArkAppQQModule.f();
       Object localObject = localActivity;
       if (localActivity == null) {
         localObject = BaseApplicationImpl.getContext();
@@ -45,7 +45,7 @@ public class ArkQQAPIIPCModule$LaunchMiniappHandler
   
   public EIPCResult a(Bundle paramBundle)
   {
-    if (ArkQQAPIIPCModule.a() == null)
+    if (ArkQQAPIIPCModule.d() == null)
     {
       QLog.e("ArkApp.LaunchMiniappHandler", 1, "LaunchMiniappHandler.onCall, qq app is null");
       return EIPCResult.createResult(-102, new Bundle());
@@ -65,7 +65,7 @@ public class ArkQQAPIIPCModule$LaunchMiniappHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.LaunchMiniappHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,16 @@ class WriteTogetherWebSocketSender$MyNetInfoHandler$1
   
   public void run()
   {
-    if (!WriteTogetherWebSocketSender.a(this.a.a).a())
+    if (!WriteTogetherWebSocketSender.d(this.a.a).a())
     {
       QLog.w("WriteTogether.WriteTogetherWebSocketSender", 1, "sender waiting for websocket connection");
-      WriteTogetherWebSocketSender.a(this.a.a).a();
+      WriteTogetherWebSocketSender.d(this.a.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketSender.MyNetInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

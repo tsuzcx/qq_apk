@@ -14,24 +14,8 @@ import org.xmlpull.v1.XmlPullParser;
 public class MiniScanDetectModelLoader
   extends BaseQRScanResLoader
 {
-  private static final Object a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static byte a(String paramString)
-  {
-    return a(2, paramString);
-  }
-  
-  public static Object a()
-  {
-    return jdField_a_of_type_JavaLangObject;
-  }
+  public static boolean a = false;
+  private static final Object b = new Object();
   
   public static String a()
   {
@@ -65,23 +49,7 @@ public class MiniScanDetectModelLoader
   
   protected static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if ((a("qr_anchor.bin")) && (a("qr_detection_model.txt")) && (a("qr_detection_model.bin"))) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(2, jdField_a_of_type_Boolean, paramString);
+    a = paramBoolean;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -136,23 +104,9 @@ public class MiniScanDetectModelLoader
     }
   }
   
-  public static String b()
+  public static Object b()
   {
-    Object localObject1 = MobileQQ.sMobileQQ.getSharedPreferences("mobileQQ", 4);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("qrscan_native_res_");
-    ((StringBuilder)localObject2).append("match_detect_so_md5");
-    localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
-    if (QLog.isColorLevel())
-    {
-      if (localObject2 == null) {
-        localObject1 = "null";
-      } else {
-        localObject1 = localObject2;
-      }
-      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { localObject1, "match_detect_so_md5" }));
-    }
-    return localObject2;
+    return b;
   }
   
   public static String b(String paramString)
@@ -187,10 +141,50 @@ public class MiniScanDetectModelLoader
       QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("saveMatchDetectSoMd5=%s tag=%s", new Object[] { localObject, paramString1 }));
     }
   }
+  
+  public static byte c(String paramString)
+  {
+    return d(2, paramString);
+  }
+  
+  public static boolean c()
+  {
+    if ((d("qr_anchor.bin")) && (d("qr_detection_model.txt")) && (d("qr_detection_model.bin"))) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
+    }
+    return false;
+  }
+  
+  public static String d()
+  {
+    Object localObject1 = MobileQQ.sMobileQQ.getSharedPreferences("mobileQQ", 4);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("qrscan_native_res_");
+    ((StringBuilder)localObject2).append("match_detect_so_md5");
+    localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
+    if (QLog.isColorLevel())
+    {
+      if (localObject2 == null) {
+        localObject1 = "null";
+      } else {
+        localObject1 = localObject2;
+      }
+      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { localObject1, "match_detect_so_md5" }));
+    }
+    return localObject2;
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return a(2, a, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.MiniScanDetectModelLoader
  * JD-Core Version:    0.7.0.1
  */

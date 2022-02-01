@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.kandian.ad.api.impl;
 
 import android.app.Activity;
+import android.content.Context;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastProteusViewAdCreator;
@@ -48,10 +51,10 @@ public class RIJFastWebAdServiceImpl
       int k = 0;
       while (i < paramList1.size())
       {
-        if (((BaseData)paramList1.get(i)).w == 1) {
+        if (((BaseData)paramList1.get(i)).aW == 1) {
           k = i;
         }
-        if (((BaseData)paramList1.get(i)).w == 2) {
+        if (((BaseData)paramList1.get(i)).aW == 2) {
           j = i;
         }
         i += 1;
@@ -59,15 +62,15 @@ public class RIJFastWebAdServiceImpl
       i = j - k;
       if (i > 4)
       {
-        ((RecommendAdData)paramBaseData).jdField_a_of_type_Int = 5;
+        ((RecommendAdData)paramBaseData).a = 5;
         paramList2.add(paramBaseData);
         return;
       }
       if ((i >= 1) && (i <= 4))
       {
         paramList1 = (RecommendAdData)paramBaseData;
-        paramList1.jdField_a_of_type_Int = (j + 1);
-        paramList1.jdField_a_of_type_Boolean = true;
+        paramList1.a = (j + 1);
+        paramList1.b = true;
         paramList2.add(paramBaseData);
       }
     }
@@ -115,6 +118,12 @@ public class RIJFastWebAdServiceImpl
     return paramObject instanceof ProteusBannerVideoItemData;
   }
   
+  public boolean isAutomaticGlide()
+  {
+    String str = Aladdin.getConfig(509).getString("automatic_glide_enable", "1");
+    return (str == null) || (!str.equals("0"));
+  }
+  
   public boolean isBottomAd(Object paramObject)
   {
     return ((paramObject instanceof ProteusBannerBigPicItemData)) || ((paramObject instanceof ProteusBannerVideoItemData));
@@ -133,6 +142,11 @@ public class RIJFastWebAdServiceImpl
   public boolean isInnerSoftAd(AdData paramAdData)
   {
     return FastWeqAdUtils.i(paramAdData);
+  }
+  
+  public boolean isTelephoneType(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return ReadInJoyTelePhoneUtils.a(paramAdvertisementInfo);
   }
   
   public void jumpAd(Activity paramActivity, AdData paramAdData)
@@ -155,6 +169,11 @@ public class RIJFastWebAdServiceImpl
     FastWebAdtUtil.c(paramList);
   }
   
+  public void requestTelephoneInfoAndCall(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
+  {
+    ReadInJoyTelePhoneUtils.a(paramContext, paramAdvertisementInfo);
+  }
+  
   public void resetRecommendAdData(BaseData paramBaseData, int paramInt)
   {
     if ((paramBaseData instanceof RecommendAdData)) {
@@ -164,7 +183,7 @@ public class RIJFastWebAdServiceImpl
   
   public void setBannerVideoDataShowingGuide(Object paramObject, boolean paramBoolean)
   {
-    ((ProteusBannerVideoItemData)paramObject).jdField_a_of_type_Boolean = paramBoolean;
+    ((ProteusBannerVideoItemData)paramObject).a = paramBoolean;
   }
   
   public void setCommonBarData(Activity paramActivity, CommonAdBar paramCommonAdBar, List paramList)
@@ -174,28 +193,28 @@ public class RIJFastWebAdServiceImpl
   
   public void updateSoftAdBar(CommonAdBar paramCommonAdBar, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
-    if ((paramCommonAdBar != null) && (paramCommonAdBar.a() != null))
+    if ((paramCommonAdBar != null) && (paramCommonAdBar.getUIDelegate() != null))
     {
-      IUIDelegate localIUIDelegate = paramCommonAdBar.a();
-      boolean bool2 = localIUIDelegate.jdField_a_of_type_Boolean;
+      IUIDelegate localIUIDelegate = paramCommonAdBar.getUIDelegate();
+      boolean bool2 = localIUIDelegate.e;
       if (CommonAdFloatingBarUtils.a(localIUIDelegate))
       {
         boolean bool1;
         if ((localIUIDelegate instanceof GamesComponentAdDelegate)) {
-          bool1 = ((GamesComponentAdDelegate)localIUIDelegate).a();
+          bool1 = ((GamesComponentAdDelegate)localIUIDelegate).f();
         } else {
           bool1 = false;
         }
-        if ((localIUIDelegate.jdField_a_of_type_Int == 2) && (CommonAdFloatingBarUtils.a(paramInt1, paramInt2, paramInt3, bool1, paramBoolean1, bool2)))
+        if ((localIUIDelegate.a == 2) && (CommonAdFloatingBarUtils.a(paramInt1, paramInt2, paramInt3, bool1, paramBoolean1, bool2)))
         {
           paramCommonAdBar.setVisibility(0);
-          localIUIDelegate.d();
+          localIUIDelegate.e();
           return;
         }
-        if ((localIUIDelegate.jdField_a_of_type_Int == 1) && (CommonAdFloatingBarUtils.a(paramBoolean1, paramBoolean2, bool2)) && (localIUIDelegate.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData != null) && (localIUIDelegate.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.s == 1))
+        if ((localIUIDelegate.a == 1) && (CommonAdFloatingBarUtils.a(paramBoolean1, paramBoolean2, bool2)) && (localIUIDelegate.g != null) && (localIUIDelegate.g.aF == 1))
         {
           paramCommonAdBar.setVisibility(0);
-          localIUIDelegate.d();
+          localIUIDelegate.e();
           return;
         }
         paramCommonAdBar.setVisibility(8);
@@ -205,7 +224,7 @@ public class RIJFastWebAdServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJFastWebAdServiceImpl
  * JD-Core Version:    0.7.0.1
  */

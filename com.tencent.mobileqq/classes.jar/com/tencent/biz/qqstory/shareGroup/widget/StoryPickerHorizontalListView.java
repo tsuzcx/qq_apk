@@ -15,10 +15,10 @@ import java.util.List;
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
-  int jdField_a_of_type_Int;
-  StoryPickerHorizontalListAdapter jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter;
-  StoryPickerHorizontalListView.OnHorizontalScrollListener jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener;
-  int b;
+  StoryPickerHorizontalListAdapter a;
+  StoryPickerHorizontalListView.OnHorizontalScrollListener b;
+  int c;
+  int d;
   
   public StoryPickerHorizontalListView(Context paramContext)
   {
@@ -34,24 +34,24 @@ public class StoryPickerHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = DisplayUtil.a(paramContext, 105.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter = new StoryPickerHorizontalListAdapter(getContext());
-    super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
-    super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
+    this.c = paramContext.getResources().getDisplayMetrics().widthPixels;
+    this.d = DisplayUtil.a(paramContext, 105.0F);
+    this.a = new StoryPickerHorizontalListAdapter(getContext());
+    super.setAdapter(this.a);
+    super.setOnItemClickListener(this.a);
     super.setOnScrollStateChangedListener(new StoryPickerHorizontalListView.1(this));
     setOverScrollMode(1);
   }
   
-  public BaseAdapter a()
+  public BaseAdapter getAdapter()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter;
+    return this.a;
   }
   
   public void setData(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a(paramList, paramString);
-    int i = this.jdField_a_of_type_Int / this.b;
+    this.a.a(paramList, paramString);
+    int i = this.c / this.d;
     if (paramList.size() >= i)
     {
       setOverScrollMode(0);
@@ -62,7 +62,7 @@ public class StoryPickerHorizontalListView
   
   public void setOnHorizontalScrollListener(StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener = paramOnHorizontalScrollListener;
+    this.b = paramOnHorizontalScrollListener;
   }
 }
 

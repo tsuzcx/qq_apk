@@ -34,46 +34,19 @@ import mqq.app.AppRuntime;
 public class QCallProxy
   extends BaseProxy
 {
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = 20;
-  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private final List<QCallRecent> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  private final Map<String, QCallRecent> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ConcurrentHashMap<String, List<QCallRecord>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Object> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean;
+  private static volatile boolean e = false;
+  EntityManager a = null;
+  private ConcurrentHashMap<String, List<QCallRecord>> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Object> c = new ConcurrentHashMap();
+  private Object d = new Object();
+  private int f = 20;
+  private final List<QCallRecent> g = new ArrayList(20);
+  private final Map<String, QCallRecent> h = new HashMap();
+  private boolean i;
   
   public QCallProxy(QQAppInterface paramQQAppInterface, BaseProxyManager paramBaseProxyManager)
   {
     super(paramQQAppInterface, paramBaseProxyManager);
-  }
-  
-  private int a(String paramString)
-  {
-    paramString = paramString.split("[^0-9]");
-    try
-    {
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = paramString[i];
-        if ((str != null) && (str.length() > 0))
-        {
-          i = Integer.parseInt(str);
-          return i;
-        }
-        i += 1;
-      }
-      return -1;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QCallProxy", 2, paramString.getMessage(), paramString);
-      }
-    }
   }
   
   private Cursor a(String paramString)
@@ -104,48 +77,6 @@ public class QCallProxy
       }
     }
     return null;
-  }
-  
-  private EntityManager a()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-    if ((??? == null) || (!((EntityManager)???).isOpen())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-    }
-  }
-  
-  private Object a(String arg1, int paramInt)
-  {
-    String str = a(???, paramInt);
-    if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-      synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new Object());
-        }
-      }
-    }
-    return this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-  }
-  
-  private String a(String paramString, int paramInt)
-  {
-    String str = ((QQAppInterface)this.app).getCurrentAccountUin().concat("_").concat(paramString);
-    if (paramInt != 3000)
-    {
-      paramString = str;
-      if (paramInt != 8) {}
-    }
-    else
-    {
-      paramString = str.concat(String.valueOf(paramInt));
-    }
-    return paramString;
   }
   
   private ArrayList<QCallRecord> a(List<QCallRecord> paramList)
@@ -187,12 +118,12 @@ public class QCallProxy
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.g)
       {
-        i = paramQCallRecent.type;
-        int k = 0;
+        j = paramQCallRecent.type;
+        int m = 0;
         localObject1 = paramQCallRecent;
-        if (i != 1)
+        if (j != 1)
         {
           localObject1 = paramQCallRecent;
           if (paramQCallRecent.type != 3000)
@@ -201,31 +132,31 @@ public class QCallProxy
             if (paramQCallRecent.type != 8)
             {
               localObject2 = new ArrayList();
-              localObject1 = UinTypeUtil.c;
-              j = localObject1.length;
-              i = 0;
-              if (i < j)
+              localObject1 = UinTypeUtil.d;
+              k = localObject1.length;
+              j = 0;
+              if (j < k)
               {
-                m = localObject1[i];
-                if (m == paramQCallRecent.type) {
+                n = localObject1[j];
+                if (n == paramQCallRecent.type) {
                   break label729;
                 }
-                QCallRecent localQCallRecent = (QCallRecent)this.jdField_a_of_type_JavaUtilMap.remove(b(paramQCallRecent.uin, m));
+                QCallRecent localQCallRecent = (QCallRecent)this.h.remove(i(paramQCallRecent.uin, n));
                 if (localQCallRecent == null) {
                   break label729;
                 }
                 ((ArrayList)localObject2).add(localQCallRecent);
                 break label729;
               }
-              j = ((ArrayList)localObject2).size();
+              k = ((ArrayList)localObject2).size();
               localObject1 = paramQCallRecent;
-              if (j > 0)
+              if (k > 0)
               {
                 if (paramQCallRecent.getStatus() != 1000) {
                   break label736;
                 }
                 localObject1 = (QCallRecent)((ArrayList)localObject2).get(0);
-                this.jdField_a_of_type_JavaUtilList.remove(localObject1);
+                this.g.remove(localObject1);
                 ((QCallRecent)localObject1).type = paramQCallRecent.type;
                 ((QCallRecent)localObject1).troopUin = paramQCallRecent.troopUin;
                 ((QCallRecent)localObject1).displayName = paramQCallRecent.displayName;
@@ -235,21 +166,21 @@ public class QCallProxy
                 ((QCallRecent)localObject1).isVideo = paramQCallRecent.isVideo;
                 ((QCallRecent)localObject1).missedCallCount = paramQCallRecent.missedCallCount;
                 ((QCallRecent)localObject1).isLastCallRealMissed = paramQCallRecent.isLastCallRealMissed;
-                i = 1;
+                j = 1;
                 paramQCallRecent = (QCallRecent)localObject1;
-                if (i >= j) {
+                if (j >= k) {
                   break label741;
                 }
-                localObject1 = (QCallRecent)((ArrayList)localObject2).get(i);
-                this.jdField_a_of_type_JavaUtilList.remove(localObject1);
+                localObject1 = (QCallRecent)((ArrayList)localObject2).get(j);
+                this.g.remove(localObject1);
                 a((QCallRecent)localObject1);
-                i += 1;
+                j += 1;
                 continue;
               }
             }
           }
         }
-        Object localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet();
+        Object localObject2 = this.h.keySet();
         paramQCallRecent = new String[((Set)localObject2).size()];
         ((Set)localObject2).toArray(paramQCallRecent);
         if (QLog.isColorLevel())
@@ -259,8 +190,8 @@ public class QCallProxy
           ((StringBuilder)localObject2).append(Arrays.toString(paramQCallRecent));
           QLog.d("QCallProxy", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_JavaUtilMap.put(b(((QCallRecent)localObject1).uin, ((QCallRecent)localObject1).type), localObject1);
-        localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet();
+        this.h.put(i(((QCallRecent)localObject1).uin, ((QCallRecent)localObject1).type), localObject1);
+        localObject2 = this.h.keySet();
         paramQCallRecent = new String[((Set)localObject2).size()];
         ((Set)localObject2).toArray(paramQCallRecent);
         if (QLog.isColorLevel())
@@ -270,21 +201,21 @@ public class QCallProxy
           ((StringBuilder)localObject2).append(Arrays.toString(paramQCallRecent));
           QLog.d("QCallProxy", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_JavaUtilList.remove(localObject1);
-        int m = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        int j = k;
-        if (i < m)
+        this.g.remove(localObject1);
+        int n = this.g.size();
+        j = 0;
+        int k = m;
+        if (j < n)
         {
-          paramQCallRecent = (QCallRecent)this.jdField_a_of_type_JavaUtilList.get(i);
+          paramQCallRecent = (QCallRecent)this.g.get(j);
           if (((QCallRecent)localObject1).lastCallTime <= paramQCallRecent.lastCallTime) {
             break label747;
           }
-          this.jdField_a_of_type_JavaUtilList.add(i, localObject1);
-          j = 1;
+          this.g.add(j, localObject1);
+          k = 1;
         }
-        if (j == 0) {
-          this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), localObject1);
+        if (k == 0) {
+          this.g.add(this.g.size(), localObject1);
         }
         if (paramBoolean)
         {
@@ -305,26 +236,95 @@ public class QCallProxy
       Utils.a("QCallProxy");
       return;
       label729:
-      i += 1;
+      j += 1;
       continue;
       label736:
-      int i = 0;
+      int j = 0;
       continue;
       label741:
       Object localObject1 = paramQCallRecent;
       continue;
       label747:
-      i += 1;
+      j += 1;
     }
   }
   
-  private boolean a(QCallRecord paramQCallRecord)
+  private int b(String paramString)
+  {
+    paramString = paramString.split("[^0-9]");
+    try
+    {
+      int k = paramString.length;
+      int j = 0;
+      while (j < k)
+      {
+        String str = paramString[j];
+        if ((str != null) && (str.length() > 0))
+        {
+          j = Integer.parseInt(str);
+          return j;
+        }
+        j += 1;
+      }
+      return -1;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QCallProxy", 2, paramString.getMessage(), paramString);
+      }
+    }
+  }
+  
+  private boolean b(QCallRecord paramQCallRecord)
   {
     this.proxyManager.addMsgQueue(paramQCallRecord.friendUin, paramQCallRecord.uinType, paramQCallRecord.getTableName(), paramQCallRecord, 3, null);
     return true;
   }
   
-  private boolean a(String paramString, int paramInt)
+  private String e(String paramString, int paramInt)
+  {
+    String str = ((QQAppInterface)this.app).getCurrentAccountUin().concat("_").concat(paramString);
+    if (paramInt != 3000)
+    {
+      paramString = str;
+      if (paramInt != 8) {}
+    }
+    else
+    {
+      paramString = str.concat(String.valueOf(paramInt));
+    }
+    return paramString;
+  }
+  
+  private EntityManager f()
+  {
+    ??? = this.a;
+    if ((??? == null) || (!((EntityManager)???).isOpen())) {}
+    synchronized (this.d)
+    {
+      if ((this.a == null) || (!this.a.isOpen())) {
+        this.a = this.app.getEntityManagerFactory().createEntityManager();
+      }
+      return this.a;
+    }
+  }
+  
+  private Object f(String arg1, int paramInt)
+  {
+    String str = e(???, paramInt);
+    if (!this.c.containsKey(str)) {
+      synchronized (this.c)
+      {
+        if (!this.c.containsKey(str)) {
+          this.c.put(str, new Object());
+        }
+      }
+    }
+    return this.c.get(localObject);
+  }
+  
+  private boolean g(String paramString, int paramInt)
   {
     if ((paramInt != 3000) && (paramInt != 8)) {
       ThreadManager.excute(new QCallProxy.3(this, paramString), 16, null, false);
@@ -334,23 +334,14 @@ public class QCallProxy
     return true;
   }
   
-  private String b(String paramString, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("&");
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
-  }
-  
   /* Error */
-  private List<QCallRecord> b(String paramString, int paramInt)
+  private List<QCallRecord> h(String paramString, int paramInt)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 129	com/tencent/mobileqq/qcall/QCallProxy:app	Lmqq/app/AppRuntime;
-    //   4: checkcast 131	com/tencent/mobileqq/app/QQAppInterface
-    //   7: invokevirtual 396	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   1: getfield 100	com/tencent/mobileqq/qcall/QCallProxy:app	Lmqq/app/AppRuntime;
+    //   4: checkcast 102	com/tencent/mobileqq/app/QQAppInterface
+    //   7: invokevirtual 399	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   10: astore 8
     //   12: aload 8
     //   14: ifnonnull +5 -> 19
@@ -365,42 +356,42 @@ public class QCallProxy
     //   32: goto +268 -> 300
     //   35: aload_0
     //   36: aload_1
-    //   37: invokespecial 99	com/tencent/mobileqq/qcall/QCallProxy:a	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   37: invokespecial 67	com/tencent/mobileqq/qcall/QCallProxy:a	(Ljava/lang/String;)Landroid/database/Cursor;
     //   40: astore 7
     //   42: aload 7
     //   44: ifnull +199 -> 243
-    //   47: new 46	java/util/ArrayList
+    //   47: new 53	java/util/ArrayList
     //   50: dup
-    //   51: invokespecial 207	java/util/ArrayList:<init>	()V
+    //   51: invokespecial 148	java/util/ArrayList:<init>	()V
     //   54: astore 6
     //   56: aload 7
-    //   58: ldc_w 398
-    //   61: invokeinterface 403 2 0
+    //   58: ldc_w 401
+    //   61: invokeinterface 406 2 0
     //   66: istore_2
     //   67: aload 6
     //   69: astore_1
     //   70: aload 7
-    //   72: invokeinterface 406 1 0
+    //   72: invokeinterface 409 1 0
     //   77: ifeq +168 -> 245
     //   80: aload 7
     //   82: iload_2
-    //   83: invokeinterface 409 2 0
-    //   88: invokestatic 414	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokeinterface 412 2 0
+    //   88: invokestatic 417	com/tencent/mobileqq/utils/SecurityUtile:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   91: astore_1
     //   92: aload 8
     //   94: aload_1
-    //   95: invokevirtual 417	com/tencent/mobileqq/app/SQLiteDatabase:getCount	(Ljava/lang/String;)I
+    //   95: invokevirtual 420	com/tencent/mobileqq/app/SQLiteDatabase:getCount	(Ljava/lang/String;)I
     //   98: istore_3
     //   99: iload_3
     //   100: ifle +125 -> 225
     //   103: iload_3
     //   104: aload_0
-    //   105: getfield 44	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   105: getfield 51	com/tencent/mobileqq/qcall/QCallProxy:f	I
     //   108: if_icmple +39 -> 147
     //   111: aload 8
-    //   113: ldc_w 419
+    //   113: ldc_w 422
     //   116: iconst_3
-    //   117: anewarray 39	java/lang/Object
+    //   117: anewarray 46	java/lang/Object
     //   120: dup
     //   121: iconst_0
     //   122: aload_1
@@ -413,51 +404,51 @@ public class QCallProxy
     //   129: iconst_2
     //   130: iload_3
     //   131: aload_0
-    //   132: getfield 44	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   132: getfield 51	com/tencent/mobileqq/qcall/QCallProxy:f	I
     //   135: isub
-    //   136: invokestatic 422	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   136: invokestatic 425	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   139: aastore
-    //   140: invokestatic 426	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   143: invokevirtual 430	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   140: invokestatic 429	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   143: invokevirtual 433	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
     //   146: pop
-    //   147: new 106	java/lang/StringBuilder
+    //   147: new 76	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   151: invokespecial 77	java/lang/StringBuilder:<init>	()V
     //   154: astore 9
     //   156: aload 9
-    //   158: ldc_w 432
-    //   161: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: ldc_w 435
+    //   161: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 9
     //   167: aload_1
-    //   168: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 9
-    //   174: ldc_w 434
-    //   177: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: ldc_w 437
+    //   177: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 9
-    //   183: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   186: astore_1
     //   187: aload_0
-    //   188: invokespecial 436	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   191: ldc 224
+    //   188: invokespecial 439	com/tencent/mobileqq/qcall/QCallProxy:f	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   191: ldc 165
     //   193: aload_1
     //   194: aconst_null
-    //   195: invokevirtual 439	com/tencent/mobileqq/persistence/EntityManager:rawQuery	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
+    //   195: invokevirtual 442	com/tencent/mobileqq/persistence/EntityManager:rawQuery	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
     //   198: astore_1
     //   199: aload_1
     //   200: ifnull +12 -> 212
     //   203: aload 6
     //   205: aload_1
-    //   206: invokeinterface 443 2 0
+    //   206: invokeinterface 446 2 0
     //   211: pop
     //   212: aload 6
-    //   214: new 445	com/tencent/mobileqq/qcall/QCallProxy$4
+    //   214: new 448	com/tencent/mobileqq/qcall/QCallProxy$4
     //   217: dup
     //   218: aload_0
-    //   219: invokespecial 446	com/tencent/mobileqq/qcall/QCallProxy$4:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
-    //   222: invokestatic 203	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   219: invokespecial 449	com/tencent/mobileqq/qcall/QCallProxy$4:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
+    //   222: invokestatic 144	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   225: goto -158 -> 67
     //   228: aload 6
     //   230: astore_1
@@ -474,7 +465,7 @@ public class QCallProxy
     //   248: aload 7
     //   250: ifnull +159 -> 409
     //   253: aload 7
-    //   255: invokeinterface 449 1 0
+    //   255: invokeinterface 452 1 0
     //   260: aload_1
     //   261: astore 6
     //   263: goto +146 -> 409
@@ -484,7 +475,7 @@ public class QCallProxy
     //   270: aload 7
     //   272: ifnull +10 -> 282
     //   275: aload 7
-    //   277: invokeinterface 449 1 0
+    //   277: invokeinterface 452 1 0
     //   282: aload_1
     //   283: athrow
     //   284: aconst_null
@@ -498,22 +489,22 @@ public class QCallProxy
     //   297: goto -44 -> 253
     //   300: aload_1
     //   301: iload_2
-    //   302: invokestatic 387	com/tencent/mobileqq/data/QCallRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
+    //   302: invokestatic 392	com/tencent/mobileqq/data/QCallRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
     //   305: astore_1
     //   306: aload 8
     //   308: aload_1
-    //   309: invokevirtual 417	com/tencent/mobileqq/app/SQLiteDatabase:getCount	(Ljava/lang/String;)I
+    //   309: invokevirtual 420	com/tencent/mobileqq/app/SQLiteDatabase:getCount	(Ljava/lang/String;)I
     //   312: istore_2
     //   313: aload_0
-    //   314: getfield 44	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   314: getfield 51	com/tencent/mobileqq/qcall/QCallProxy:f	I
     //   317: istore_3
     //   318: iload_2
     //   319: iload_3
     //   320: if_icmple +36 -> 356
     //   323: aload 8
-    //   325: ldc_w 419
+    //   325: ldc_w 422
     //   328: iconst_3
-    //   329: anewarray 39	java/lang/Object
+    //   329: anewarray 46	java/lang/Object
     //   332: dup
     //   333: iconst_0
     //   334: aload_1
@@ -527,61 +518,61 @@ public class QCallProxy
     //   342: iload_2
     //   343: iload_3
     //   344: isub
-    //   345: invokestatic 422	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   345: invokestatic 425	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   348: aastore
-    //   349: invokestatic 426	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   352: invokevirtual 430	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
+    //   349: invokestatic 429	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   352: invokevirtual 433	com/tencent/mobileqq/app/SQLiteDatabase:execSQL	(Ljava/lang/String;)Z
     //   355: pop
-    //   356: new 106	java/lang/StringBuilder
+    //   356: new 76	java/lang/StringBuilder
     //   359: dup
-    //   360: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   360: invokespecial 77	java/lang/StringBuilder:<init>	()V
     //   363: astore 6
     //   365: aload 6
-    //   367: ldc_w 432
-    //   370: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   367: ldc_w 435
+    //   370: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   373: pop
     //   374: aload 6
     //   376: aload_1
-    //   377: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: pop
     //   381: aload 6
-    //   383: ldc_w 434
-    //   386: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: ldc_w 437
+    //   386: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: pop
     //   390: aload 6
-    //   392: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   392: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   395: astore_1
     //   396: aload_0
-    //   397: invokespecial 436	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   400: ldc 224
+    //   397: invokespecial 439	com/tencent/mobileqq/qcall/QCallProxy:f	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   400: ldc 165
     //   402: aload_1
     //   403: aconst_null
-    //   404: invokevirtual 439	com/tencent/mobileqq/persistence/EntityManager:rawQuery	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
+    //   404: invokevirtual 442	com/tencent/mobileqq/persistence/EntityManager:rawQuery	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
     //   407: astore 6
     //   409: aload 6
     //   411: ifnull +62 -> 473
-    //   414: invokestatic 454	com/tencent/mobileqq/service/message/MessageCache:a	()J
+    //   414: invokestatic 457	com/tencent/mobileqq/service/message/MessageCache:c	()J
     //   417: lstore 4
     //   419: aload 6
-    //   421: invokeinterface 213 1 0
+    //   421: invokeinterface 154 1 0
     //   426: astore_1
     //   427: aload_1
-    //   428: invokeinterface 218 1 0
+    //   428: invokeinterface 159 1 0
     //   433: ifeq +40 -> 473
     //   436: aload_1
-    //   437: invokeinterface 222 1 0
-    //   442: checkcast 224	com/tencent/mobileqq/data/QCallRecord
+    //   437: invokeinterface 163 1 0
+    //   442: checkcast 165	com/tencent/mobileqq/data/QCallRecord
     //   445: astore 7
     //   447: aload 7
     //   449: ifnull -22 -> 427
     //   452: aload 7
-    //   454: getfield 241	com/tencent/mobileqq/data/QCallRecord:time	J
+    //   454: getfield 184	com/tencent/mobileqq/data/QCallRecord:time	J
     //   457: lload 4
     //   459: lcmp
     //   460: ifle -33 -> 427
     //   463: aload 7
     //   465: lload 4
-    //   467: putfield 241	com/tencent/mobileqq/data/QCallRecord:time	J
+    //   467: putfield 184	com/tencent/mobileqq/data/QCallRecord:time	J
     //   470: goto -43 -> 427
     //   473: aload 6
     //   475: areturn
@@ -596,7 +587,7 @@ public class QCallProxy
     //   0	488	0	this	QCallProxy
     //   0	488	1	paramString	String
     //   0	488	2	paramInt	int
-    //   98	247	3	i	int
+    //   98	247	3	j	int
     //   417	49	4	l	long
     //   54	420	6	localObject1	Object
     //   40	424	7	localObject2	Object
@@ -622,35 +613,22 @@ public class QCallProxy
     //   212	225	484	java/lang/Exception
   }
   
-  public QCallRecent a(String paramString, int paramInt)
+  private String i(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      QCallRecent localQCallRecent2 = (QCallRecent)this.jdField_a_of_type_JavaUtilMap.get(b(paramString, paramInt));
-      QCallRecent localQCallRecent1 = localQCallRecent2;
-      if (localQCallRecent2 == null)
-      {
-        localQCallRecent1 = new QCallRecent();
-        localQCallRecent1.uin = paramString;
-        localQCallRecent1.type = paramInt;
-        localQCallRecent1.displayName = localQCallRecent1.uin;
-      }
-      return localQCallRecent1;
-    }
-  }
-  
-  public List<QCallRecent> a()
-  {
-    return a(null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public List<QCallRecent> a(QCallProxy.QueryRecentCallsListener arg1)
   {
     ThreadManager.post(new QCallProxy.5(this, ???), 5, null, false);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.g)
     {
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.g.iterator();
       while (localIterator.hasNext())
       {
         QCallRecent localQCallRecent = (QCallRecent)localIterator.next();
@@ -671,8 +649,8 @@ public class QCallProxy
   
   public List<QCallRecord> a(String paramString, int paramInt)
   {
-    String str = a(paramString, paramInt);
-    Object localObject2 = a(paramString, paramInt);
+    String str = e(paramString, paramInt);
+    Object localObject2 = f(paramString, paramInt);
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -687,11 +665,11 @@ public class QCallProxy
     }
     try
     {
-      localObject1 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      localObject1 = (List)this.b.get(str);
       if (localObject1 != null) {
         return localObject1;
       }
-      localObject1 = b(paramString, paramInt);
+      localObject1 = h(paramString, paramInt);
       paramString = (String)localObject1;
       if (localObject1 == null) {
         paramString = new ArrayList();
@@ -710,7 +688,7 @@ public class QCallProxy
         QLog.d("QCallProxy", 2, ((StringBuilder)localObject1).toString());
       }
       paramString = a(paramString);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
+      this.b.put(str, paramString);
       return paramString;
     }
     finally {}
@@ -718,7 +696,7 @@ public class QCallProxy
   
   public void a()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.b;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.clear();
     }
@@ -726,10 +704,10 @@ public class QCallProxy
   
   public void a(QCallRecent paramQCallRecent)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.g)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramQCallRecent);
-      this.jdField_a_of_type_JavaUtilMap.remove(b(paramQCallRecent.uin, paramQCallRecent.type));
+      this.g.remove(paramQCallRecent);
+      this.h.remove(i(paramQCallRecent.uin, paramQCallRecent.type));
       this.proxyManager.addMsgQueueDonotNotify(paramQCallRecent.uin, paramQCallRecent.type, paramQCallRecent.getTableName(), paramQCallRecent, 5, null);
       return;
     }
@@ -742,10 +720,10 @@ public class QCallProxy
     }
     for (;;)
     {
-      synchronized (a(paramQCallRecord.friendUin, paramQCallRecord.uinType))
+      synchronized (f(paramQCallRecord.friendUin, paramQCallRecord.uinType))
       {
-        String str = a(paramQCallRecord.friendUin, paramQCallRecord.uinType);
-        Object localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        String str = e(paramQCallRecord.friendUin, paramQCallRecord.uinType);
+        Object localObject2 = (List)this.b.get(str);
         Object localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = a(paramQCallRecord.friendUin, paramQCallRecord.uinType);
@@ -759,35 +737,25 @@ public class QCallProxy
           ((StringBuilder)localObject2).append(" insertRecord records size:");
           if (localObject1 != null)
           {
-            i = ((List)localObject1).size();
-            ((StringBuilder)localObject2).append(i);
+            j = ((List)localObject1).size();
+            ((StringBuilder)localObject2).append(j);
             QLog.d("QCallProxy", 2, ((StringBuilder)localObject2).toString());
           }
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, a((List)localObject1));
-          a(paramQCallRecord);
+          this.b.put(str, a((List)localObject1));
+          b(paramQCallRecord);
           return;
         }
       }
-      int i = 0;
+      int j = 0;
     }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Object localObject = a(paramString, paramInt);
-    localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    a(paramString, paramInt);
   }
   
   public void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    if (!a(paramString1, paramInt1).equals(a(paramString2, paramInt2)))
+    if (!e(paramString1, paramInt1).equals(e(paramString2, paramInt2)))
     {
       Object localObject = a(paramString1, paramInt1);
       if (localObject != null)
@@ -800,31 +768,17 @@ public class QCallProxy
           localQCallRecord.uinType = paramInt2;
           a(localQCallRecord);
         }
-        a(paramString1, paramInt1);
+        b(paramString1, paramInt1);
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
     SharedPreferences.Editor localEditor = ((QQAppInterface)this.app).getApp().getSharedPreferences(((QQAppInterface)this.app).getCurrentAccountUin(), 0).edit();
     localEditor.putBoolean("Conversation_call_prompt_flag", false);
     localEditor.commit();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() > 0);
-  }
-  
-  public QCallRecent b(String paramString, int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (QCallRecent)this.jdField_a_of_type_JavaUtilMap.get(b(paramString, paramInt));
-      return paramString;
-    }
   }
   
   public void b()
@@ -832,12 +786,12 @@ public class QCallProxy
     if (QLog.isColorLevel()) {
       QLog.d("QCallProxy", 2, "recentDoInit ====start====");
     }
-    this.jdField_b_of_type_Boolean = ((QQAppInterface)this.app).getApp().getSharedPreferences(((QQAppInterface)this.app).getCurrentAccountUin(), 0).getBoolean("Conversation_call_prompt_flag", true);
+    this.i = ((QQAppInterface)this.app).getApp().getSharedPreferences(((QQAppInterface)this.app).getCurrentAccountUin(), 0).getBoolean("Conversation_call_prompt_flag", true);
     EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
     try
     {
       Object localObject5 = localEntityManager.query(QCallRecent.class, false, null, null, null, null, "lastCallTime desc", null);
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.g;
       if (localObject5 != null) {}
       try
       {
@@ -901,7 +855,7 @@ public class QCallProxy
               }
             }
           }
-          this.jdField_a_of_type_JavaUtilList.clear();
+          this.g.clear();
           Iterator localIterator = localObject6.iterator();
           while (localIterator.hasNext())
           {
@@ -910,18 +864,18 @@ public class QCallProxy
               ((QCallRecent)localObject4).state = 0;
             }
             if ((((QCallRecent)localObject4).uin != null) && (((QCallRecent)localObject4).uin.length() >= 2)) {
-              this.jdField_a_of_type_JavaUtilList.add(localObject4);
+              this.g.add(localObject4);
             }
           }
-          localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+          localIterator = this.g.iterator();
           while (localIterator.hasNext())
           {
             localObject4 = (QCallRecent)localIterator.next();
-            this.jdField_a_of_type_JavaUtilMap.put(b(((QCallRecent)localObject4).uin, ((QCallRecent)localObject4).type), localObject4);
+            this.h.put(i(((QCallRecent)localObject4).uin, ((QCallRecent)localObject4).type), localObject4);
           }
         }
         if (QLog.isDevelopLevel()) {
-          QLog.d("QCallProxy", 4, this.jdField_a_of_type_JavaUtilList.toString());
+          QLog.d("QCallProxy", 4, this.g.toString());
         }
         localEntityManager.close();
         if (QLog.isColorLevel()) {
@@ -949,19 +903,55 @@ public class QCallProxy
     this.proxyManager.addMsgQueueDonotNotify(paramQCallRecent.uin, paramQCallRecent.type, paramQCallRecent.getTableName(), paramQCallRecent, 4, null);
   }
   
-  public void c()
+  public void b(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject = e(paramString, paramInt);
+    localObject = (List)this.b.get(localObject);
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+    g(paramString, paramInt);
+  }
+  
+  public QCallRecent c(String paramString, int paramInt)
+  {
+    synchronized (this.h)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      return;
+      QCallRecent localQCallRecent2 = (QCallRecent)this.h.get(i(paramString, paramInt));
+      QCallRecent localQCallRecent1 = localQCallRecent2;
+      if (localQCallRecent2 == null)
+      {
+        localQCallRecent1 = new QCallRecent();
+        localQCallRecent1.uin = paramString;
+        localQCallRecent1.type = paramInt;
+        localQCallRecent1.displayName = localQCallRecent1.uin;
+      }
+      return localQCallRecent1;
     }
   }
   
   public void c(QCallRecent paramQCallRecent)
   {
     a(paramQCallRecent, false);
+  }
+  
+  public boolean c()
+  {
+    return (this.i) && (this.g.size() > 0);
+  }
+  
+  public QCallRecent d(String paramString, int paramInt)
+  {
+    synchronized (this.h)
+    {
+      paramString = (QCallRecent)this.h.get(i(paramString, paramInt));
+      return paramString;
+    }
+  }
+  
+  public List<QCallRecent> d()
+  {
+    return a(null);
   }
   
   public void d(QCallRecent paramQCallRecent)
@@ -971,27 +961,37 @@ public class QCallProxy
   
   public void destroy()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.a;
     if ((localEntityManager != null) && (localEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      this.a.close();
     }
-    c();
+    e();
     a();
-    jdField_a_of_type_Boolean = false;
+    e = false;
+  }
+  
+  public void e()
+  {
+    synchronized (this.g)
+    {
+      this.g.clear();
+      this.h.clear();
+      return;
+    }
   }
   
   public void init()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (e) {
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    e = true;
     ThreadManager.excute(new QCallProxy.1(this), 32, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy
  * JD-Core Version:    0.7.0.1
  */

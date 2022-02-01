@@ -3,6 +3,7 @@ package wf7;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 
 public class fg
 {
@@ -29,7 +30,7 @@ public class fg
   {
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+      paramContext = PhoneInfoMonitor.getSubscriberId((TelephonyManager)paramContext.getSystemService("phone"));
     }
     catch (Exception paramContext)
     {
@@ -52,7 +53,7 @@ public class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fg
  * JD-Core Version:    0.7.0.1
  */

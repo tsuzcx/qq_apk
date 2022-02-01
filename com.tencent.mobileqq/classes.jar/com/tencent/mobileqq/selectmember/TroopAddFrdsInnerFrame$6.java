@@ -10,12 +10,12 @@ class TroopAddFrdsInnerFrame$6
   
   public void run()
   {
-    ReportController.b(this.this$0.a.getAppRuntime(), "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
+    ReportController.b(this.this$0.f.getAppRuntime(), "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.a, String.valueOf(this.b.size()), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.6
  * JD-Core Version:    0.7.0.1
  */

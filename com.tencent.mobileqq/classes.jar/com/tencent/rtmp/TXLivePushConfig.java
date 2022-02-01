@@ -1,7 +1,7 @@
 package com.tencent.rtmp;
 
 import android.graphics.Bitmap;
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
 import java.util.HashMap;
 
 public class TXLivePushConfig
@@ -370,77 +370,45 @@ public class TXLivePushConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{mCustomModeType=");
-    localStringBuilder.append(this.mCustomModeType);
-    localStringBuilder.append(", mAudioSample=");
-    localStringBuilder.append(this.mAudioSample);
-    localStringBuilder.append(", mAudioBitrate=");
-    localStringBuilder.append(this.mAudioBitrate);
-    localStringBuilder.append(", mAudioChannels=");
-    localStringBuilder.append(this.mAudioChannels);
-    localStringBuilder.append(", mVideoFPS=");
-    localStringBuilder.append(this.mVideoFPS);
-    localStringBuilder.append(", mVideoResolution=");
+    localStringBuilder.append("[resolution:");
     localStringBuilder.append(this.mVideoResolution);
-    localStringBuilder.append(", mVideoBitrate=");
-    localStringBuilder.append(this.mVideoBitrate);
-    localStringBuilder.append(", mMaxVideoBitrate=");
-    localStringBuilder.append(this.mMaxVideoBitrate);
-    localStringBuilder.append(", mMinVideoBitrate=");
-    localStringBuilder.append(this.mMinVideoBitrate);
-    localStringBuilder.append(", mConnectRetryCount=");
-    localStringBuilder.append(this.mConnectRetryCount);
-    localStringBuilder.append(", mConnectRetryInterval=");
-    localStringBuilder.append(this.mConnectRetryInterval);
-    localStringBuilder.append(", mVideoEncodeGop=");
+    localStringBuilder.append("][fps:");
+    localStringBuilder.append(this.mVideoFPS);
+    localStringBuilder.append("][gop:");
     localStringBuilder.append(this.mVideoEncodeGop);
-    localStringBuilder.append(", mVideoEncoderXMirror=");
-    localStringBuilder.append(this.mVideoEncoderXMirror);
-    localStringBuilder.append(", mEnableHighResolutionCapture=");
+    localStringBuilder.append("][bitrate:");
+    localStringBuilder.append(this.mVideoBitrate);
+    localStringBuilder.append("][maxBitrate:");
+    localStringBuilder.append(this.mMaxVideoBitrate);
+    localStringBuilder.append("][minBitrate:");
+    localStringBuilder.append(this.mMinVideoBitrate);
+    localStringBuilder.append("][highCapture:");
     localStringBuilder.append(this.mEnableHighResolutionCapture);
-    localStringBuilder.append(", mEnableVideoHardEncoderMainProfile=");
-    localStringBuilder.append(this.mEnableVideoHardEncoderMainProfile);
-    localStringBuilder.append(", mFrontCamera=");
-    localStringBuilder.append(this.mFrontCamera);
-    localStringBuilder.append(", mAutoAdjustBitrate=");
-    localStringBuilder.append(this.mAutoAdjustBitrate);
-    localStringBuilder.append(", mAutoAdjustStrategy=");
-    localStringBuilder.append(this.mAutoAdjustStrategy);
-    localStringBuilder.append(", mHardwareAccel=");
+    localStringBuilder.append("][hwAcc:");
     localStringBuilder.append(this.mHardwareAccel);
-    localStringBuilder.append(", mTouchFocus=");
-    localStringBuilder.append(this.mTouchFocus);
-    localStringBuilder.append(", mEnableZoom=");
-    localStringBuilder.append(this.mEnableZoom);
-    localStringBuilder.append(", mHomeOrientation=");
+    localStringBuilder.append("][homeOrientation:");
     localStringBuilder.append(this.mHomeOrientation);
-    localStringBuilder.append(", mEnableAec=");
-    localStringBuilder.append(this.mEnableAec);
-    localStringBuilder.append(", mEnableAgc=");
-    localStringBuilder.append(this.mEnableAgc);
-    localStringBuilder.append(", mEnableAns=");
-    localStringBuilder.append(this.mEnableAns);
-    localStringBuilder.append(", mEnableAudioPreview=");
-    localStringBuilder.append(this.mEnableAudioPreview);
-    localStringBuilder.append(", mEnableScreenCaptureAutoRotate=");
-    localStringBuilder.append(this.mEnableScreenCaptureAutoRotate);
-    localStringBuilder.append(", mEnablePureAudioPush=");
-    localStringBuilder.append(this.mEnablePureAudioPush);
-    localStringBuilder.append(", mEnableNearestIP=");
-    localStringBuilder.append(this.mEnableNearestIP);
-    localStringBuilder.append(", mVolumeType=");
+    localStringBuilder.append("][volumeType:");
     localStringBuilder.append(this.mVolumeType);
-    localStringBuilder.append(", mLocalVideoMirrorType=");
-    localStringBuilder.append(this.mLocalVideoMirrorType);
-    localStringBuilder.append(", mRtmpChannelType=");
-    localStringBuilder.append(this.mRtmpChannelType);
-    localStringBuilder.append('}');
+    localStringBuilder.append("][earMonitor:");
+    localStringBuilder.append(this.mEnableAudioPreview);
+    localStringBuilder.append("][agc:");
+    localStringBuilder.append(this.mEnableAgc);
+    localStringBuilder.append("][ans:");
+    localStringBuilder.append(this.mEnableAns);
+    localStringBuilder.append("][aec:");
+    localStringBuilder.append(this.mEnableAec);
+    localStringBuilder.append("][sample:");
+    localStringBuilder.append(this.mAudioSample);
+    localStringBuilder.append("][pureAudioPush:");
+    localStringBuilder.append(this.mEnablePureAudioPush);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePushConfig
  * JD-Core Version:    0.7.0.1
  */

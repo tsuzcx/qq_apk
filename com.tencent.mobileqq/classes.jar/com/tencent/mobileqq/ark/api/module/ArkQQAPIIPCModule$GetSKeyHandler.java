@@ -13,7 +13,7 @@ public class ArkQQAPIIPCModule$GetSKeyHandler
 {
   public EIPCResult a(Bundle paramBundle)
   {
-    paramBundle = ArkQQAPIIPCModule.a();
+    paramBundle = ArkQQAPIIPCModule.d();
     if (paramBundle == null)
     {
       QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, qq app is null");
@@ -40,7 +40,7 @@ public class ArkQQAPIIPCModule$GetSKeyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetSKeyHandler
  * JD-Core Version:    0.7.0.1
  */

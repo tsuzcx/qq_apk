@@ -19,41 +19,41 @@ class AccountPanelViewModel$3
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     Boolean localBoolean = Boolean.valueOf(true);
     if (bool)
     {
-      long l = OnLineStatusHelper.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      long l = OnLineStatusHelper.a().a(this.b);
       int i;
       if ((AccountPanelViewModel.a(this.this$0) == 1000L) && (l == 1000L)) {
         i = 0;
       } else {
         i = 1;
       }
-      if ((i != 0) && (AccountPanelViewModel.a(this.this$0)))
+      if ((i != 0) && (AccountPanelViewModel.b(this.this$0)))
       {
-        String str = OnLineStatusHelper.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
-        str = MobileQQ.sMobileQQ.getResources().getString(2131698509, new Object[] { str });
-        QQToast.a(MobileQQ.sMobileQQ, 2, str, 1).a();
+        String str = OnLineStatusHelper.a().a(l, this.c);
+        str = MobileQQ.sMobileQQ.getResources().getString(2131896451, new Object[] { str });
+        QQToast.makeText(MobileQQ.sMobileQQ, 2, str, 1).show();
         if (QLog.isColorLevel()) {
           QLog.d("AccountPanelViewModel", 2, "Show toast in account panel mAccountObserver");
         }
       }
-      this.this$0.b();
-      ((OnlineMusicStatusManager)((IOnlineStatusManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).a(AccountPanelViewModel.a(this.this$0), l);
+      this.this$0.o();
+      ((OnlineMusicStatusManager)((IOnlineStatusManagerService)this.b.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).a(AccountPanelViewModel.a(this.this$0), l);
       if (!AccountPanelViewModel.a(this.this$0, l)) {
-        AccountPanelViewModel.a(this.this$0).setValue(localBoolean);
+        AccountPanelViewModel.c(this.this$0).setValue(localBoolean);
       }
-      AccountPanelViewModel.a(this.this$0, l);
+      AccountPanelViewModel.b(this.this$0, l);
       return;
     }
-    AccountPanelViewModel.a(this.this$0).setValue(localBoolean);
-    QQToast.a(MobileQQ.sMobileQQ, 1, 2131698496, 1).a();
+    AccountPanelViewModel.c(this.this$0).setValue(localBoolean);
+    QQToast.makeText(MobileQQ.sMobileQQ, 1, 2131896438, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel.3
  * JD-Core Version:    0.7.0.1
  */

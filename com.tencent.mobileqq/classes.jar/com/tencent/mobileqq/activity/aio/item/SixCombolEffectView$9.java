@@ -13,10 +13,10 @@ class SixCombolEffectView$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!SixCombolEffectView.a) {
+    if (!SixCombolEffectView.i) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.b.start();
+    this.a.l.start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -25,7 +25,7 @@ class SixCombolEffectView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.9
  * JD-Core Version:    0.7.0.1
  */

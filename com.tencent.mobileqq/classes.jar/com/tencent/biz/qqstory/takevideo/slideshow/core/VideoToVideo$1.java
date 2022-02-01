@@ -11,9 +11,9 @@ class VideoToVideo$1
   
   public void onEncodeError(int paramInt, Throwable arg2)
   {
-    synchronized (VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo))
+    synchronized (VideoToVideo.a(this.b))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_Boolean = true;
+      this.a.f = true;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -21,16 +21,16 @@ class VideoToVideo$1
         localStringBuilder.append(paramInt);
         QLog.d("VideoToVideo", 2, localStringBuilder.toString());
       }
-      VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo).notifyAll();
+      VideoToVideo.a(this.b).notifyAll();
       return;
     }
   }
   
   public void onEncodeFinish(String paramString)
   {
-    synchronized (VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo))
+    synchronized (VideoToVideo.a(this.b))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.c = true;
+      this.a.h = true;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -38,33 +38,33 @@ class VideoToVideo$1
         localStringBuilder.append(paramString);
         QLog.d("VideoToVideo", 2, localStringBuilder.toString());
       }
-      VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo).notifyAll();
+      VideoToVideo.a(this.b).notifyAll();
       return;
     }
   }
   
   public void onEncodeFrame()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext;
-    if ((localObject != null) && (!((SlideShowProcessor.ConvertContext)localObject).d) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b))
+    Object localObject = this.a;
+    if ((localObject != null) && (!((SlideShowProcessor.ConvertContext)localObject).j) && (!this.a.g))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("cancel mergeVideoTask path : ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b);
+        ((StringBuilder)localObject).append(this.a.e.f);
         ((StringBuilder)localObject).append(" currContext id : ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append("  mCanceled : ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+        ((StringBuilder)localObject).append(this.a.g);
         QLog.d("VideoToVideo", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
+      this.b.b(this.a);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("after cancel : ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+        ((StringBuilder)localObject).append(this.a.g);
         QLog.d("VideoToVideo", 2, ((StringBuilder)localObject).toString());
       }
     }

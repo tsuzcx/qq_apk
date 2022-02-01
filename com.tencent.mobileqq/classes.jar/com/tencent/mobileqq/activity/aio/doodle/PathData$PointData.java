@@ -3,16 +3,11 @@ package com.tencent.mobileqq.activity.aio.doodle;
 public class PathData$PointData
   implements MyParcelable
 {
-  public static final MyParcelable.Creator<PointData> a;
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
+  public static final MyParcelable.Creator<PointData> a = new PathData.PointData.1();
   private float b;
   private float c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new PathData.PointData.1();
-  }
+  private float d;
+  private long e;
   
   public PathData$PointData() {}
   
@@ -23,11 +18,11 @@ public class PathData$PointData
   
   public PathData$PointData(MyParcel paramMyParcel)
   {
-    paramMyParcel.a();
-    this.jdField_a_of_type_Float = paramMyParcel.a();
-    this.b = paramMyParcel.a();
-    this.c = paramMyParcel.a();
-    this.jdField_a_of_type_Long = paramMyParcel.a();
+    paramMyParcel.b();
+    this.b = paramMyParcel.d();
+    this.c = paramMyParcel.d();
+    this.d = paramMyParcel.d();
+    this.e = paramMyParcel.e();
   }
   
   public PathData$PointData(PointData paramPointData)
@@ -39,71 +34,71 @@ public class PathData$PointData
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    return this.b;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramFloat3;
+    this.b = paramFloat1;
+    this.c = paramFloat2;
+    this.e = paramLong;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void a(MyParcel paramMyParcel, int paramInt)
   {
     paramMyParcel.a(1);
-    paramMyParcel.a(this.jdField_a_of_type_Float);
     paramMyParcel.a(this.b);
     paramMyParcel.a(this.c);
-    paramMyParcel.a(this.jdField_a_of_type_Long);
+    paramMyParcel.a(this.d);
+    paramMyParcel.a(this.e);
   }
   
   public float b()
   {
-    return this.b;
+    return this.c;
   }
   
   public void b(float paramFloat)
   {
-    this.b = paramFloat;
+    this.c = paramFloat;
   }
   
   public float c()
   {
-    return this.c;
+    return this.d;
   }
   
   public void c(float paramFloat)
   {
-    this.c = paramFloat;
+    this.d = paramFloat;
+  }
+  
+  public long d()
+  {
+    return this.e;
   }
   
   public void d(float paramFloat)
   {
-    this.jdField_a_of_type_Float *= paramFloat;
     this.b *= paramFloat;
     this.c *= paramFloat;
+    this.d *= paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PathData.PointData
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class LowEndPerfProcessor
 {
   public static LowEndPerfBean a()
   {
-    LowEndPerfBean localLowEndPerfBean2 = (LowEndPerfBean)QConfigManager.a().a(581);
+    LowEndPerfBean localLowEndPerfBean2 = (LowEndPerfBean)QConfigManager.b().b(581);
     LowEndPerfBean localLowEndPerfBean1 = localLowEndPerfBean2;
     if (localLowEndPerfBean2 == null) {
       localLowEndPerfBean1 = new LowEndPerfBean();
@@ -33,12 +33,12 @@ public class LowEndPerfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      LowEndPerfBean localLowEndPerfBean = LowEndPerfBean.a(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+      LowEndPerfBean localLowEndPerfBean = LowEndPerfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("Perf", 2, localStringBuilder.toString());
       }
       return localLowEndPerfBean;
@@ -66,16 +66,16 @@ public class LowEndPerfProcessor
       QLog.d("Perf", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = DeviceOptSwitch.a().edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("disablepreloadproc_new", paramLowEndPerfBean.jdField_a_of_type_Boolean);
-    ((SharedPreferences.Editor)localObject).putBoolean("disablegettrooplist_new", paramLowEndPerfBean.jdField_c_of_type_Boolean);
-    ((SharedPreferences.Editor)localObject).putBoolean("disablepredownload_new", paramLowEndPerfBean.jdField_b_of_type_Boolean);
+    ((SharedPreferences.Editor)localObject).putBoolean("disablepreloadproc_new", paramLowEndPerfBean.a);
+    ((SharedPreferences.Editor)localObject).putBoolean("disablegettrooplist_new", paramLowEndPerfBean.c);
+    ((SharedPreferences.Editor)localObject).putBoolean("disablepredownload_new", paramLowEndPerfBean.b);
     ((SharedPreferences.Editor)localObject).putBoolean("enableautoperf_new", paramLowEndPerfBean.d);
-    ((SharedPreferences.Editor)localObject).putString("userratio_new", paramLowEndPerfBean.jdField_a_of_type_JavaLangString);
-    ((SharedPreferences.Editor)localObject).putString("extralsteps_new", paramLowEndPerfBean.jdField_b_of_type_JavaLangString);
-    ((SharedPreferences.Editor)localObject).putString("predownloadwhitelist_new", paramLowEndPerfBean.jdField_c_of_type_JavaLangString);
-    ((SharedPreferences.Editor)localObject).putBoolean("enable_thread_suspend", paramLowEndPerfBean.f);
-    ((SharedPreferences.Editor)localObject).putBoolean("fake_enable_thread_suspend", paramLowEndPerfBean.g);
-    ((SharedPreferences.Editor)localObject).putBoolean("suspendWhiteListOnly", paramLowEndPerfBean.h);
+    ((SharedPreferences.Editor)localObject).putString("userratio_new", paramLowEndPerfBean.e);
+    ((SharedPreferences.Editor)localObject).putString("extralsteps_new", paramLowEndPerfBean.f);
+    ((SharedPreferences.Editor)localObject).putString("predownloadwhitelist_new", paramLowEndPerfBean.g);
+    ((SharedPreferences.Editor)localObject).putBoolean("enable_thread_suspend", paramLowEndPerfBean.i);
+    ((SharedPreferences.Editor)localObject).putBoolean("fake_enable_thread_suspend", paramLowEndPerfBean.j);
+    ((SharedPreferences.Editor)localObject).putBoolean("suspendWhiteListOnly", paramLowEndPerfBean.k);
     ((SharedPreferences.Editor)localObject).commit();
   }
   
@@ -121,7 +121,7 @@ public class LowEndPerfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.suspendthread.LowEndPerfProcessor
  * JD-Core Version:    0.7.0.1
  */

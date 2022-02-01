@@ -24,7 +24,7 @@ class OverlappingImgLayout$1
       {
         if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
         {
-          ((ImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          ((ImageView)OverlappingImgLayout.b(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
           if (QLog.isColorLevel()) {
             QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
           }
@@ -45,7 +45,7 @@ class OverlappingImgLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout.1
  * JD-Core Version:    0.7.0.1
  */

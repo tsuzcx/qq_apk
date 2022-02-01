@@ -10,7 +10,7 @@ class AVNotifyCenter$1$1
   
   public void a(boolean paramBoolean)
   {
-    AVBizServerQIPCModule.a().a(paramBoolean);
+    AVBizServerQIPCModule.getInstance().onSystemPhoneStatusChange(paramBoolean);
   }
 }
 

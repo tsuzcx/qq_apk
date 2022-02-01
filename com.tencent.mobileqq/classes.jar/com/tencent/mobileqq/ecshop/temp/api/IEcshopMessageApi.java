@@ -15,9 +15,12 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 public abstract interface IEcshopMessageApi
   extends QRouteApi
 {
-  public abstract void GdtC2SReportArkMsg(MessageRecord paramMessageRecord);
+  public static final int REPORT_TYPE_CLICK = 1;
+  public static final int REPORT_TYPE_SHOW = 0;
   
-  public abstract void GdtC2SReportStructMsg(MessageRecord paramMessageRecord);
+  public abstract void GdtC2SReportArkMsg(MessageRecord paramMessageRecord, int paramInt);
+  
+  public abstract void GdtC2SReportStructMsg(MessageRecord paramMessageRecord, int paramInt);
   
   public abstract ChatMessage buildMessageForArkApp(String paramString);
   
@@ -82,7 +85,7 @@ public abstract interface IEcshopMessageApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.temp.api.IEcshopMessageApi
  * JD-Core Version:    0.7.0.1
  */

@@ -27,47 +27,47 @@ class TroopMemberApiService$IncomingHandler$6
     if ((paramInt1 != 1) && (paramInt1 != 0))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715431));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912909));
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append("]");
       VideoEnvironment.LogDownLoad("TroopMemberApiService", ((StringBuilder)localObject).toString(), null);
-      ShortVideoResourceManager.a(HardCodeUtil.a(2131715388));
+      ShortVideoResourceManager.b(HardCodeUtil.a(2131912867));
       ShortVideoErrorReport.a(1, paramInt2);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
+      this.c.a.r = false;
       return;
     }
     if (paramInt2 != 0)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715381));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912860));
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append("]");
       VideoEnvironment.LogDownLoad("TroopMemberApiService", ((StringBuilder)localObject).toString(), null);
-      ShortVideoResourceManager.a(HardCodeUtil.a(2131715351));
+      ShortVideoResourceManager.b(HardCodeUtil.a(2131912830));
       ShortVideoErrorReport.a(1, paramInt2);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
+      this.c.a.r = false;
       return;
     }
     localObject = new ArrayList(1);
-    paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, (List)localObject);
+    paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.a, (List)localObject);
     if (paramInt1 == 0)
     {
-      VideoEnvironment.LogDownLoad("TroopMemberApiService", HardCodeUtil.a(2131715342), null);
-      ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, (List)localObject, new TroopMemberApiService.IncomingHandler.6.1(this));
+      VideoEnvironment.LogDownLoad("TroopMemberApiService", HardCodeUtil.a(2131912822), null);
+      ShortVideoResourceManager.a((QQAppInterface)this.a, (List)localObject, new TroopMemberApiService.IncomingHandler.6.1(this));
       return;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131715343));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131912823));
     ((StringBuilder)localObject).append(paramInt1);
     ((StringBuilder)localObject).append("]");
     VideoEnvironment.LogDownLoad("TroopMemberApiService", ((StringBuilder)localObject).toString(), null);
-    ShortVideoResourceManager.a(HardCodeUtil.a(2131715380));
+    ShortVideoResourceManager.b(HardCodeUtil.a(2131912859));
     ShortVideoErrorReport.a(1, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.6
  * JD-Core Version:    0.7.0.1
  */

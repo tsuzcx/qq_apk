@@ -9,8 +9,9 @@ class ExpandManager$3
   
   public void run()
   {
-    ExpandChatUtil.a(ExpandManager.a(this.this$0));
-    ExpandManager.b(this.this$0);
+    ExpandChatUtil.b(ExpandManager.b(this.this$0));
+    ExpandChatUtil.a(ExpandManager.b(this.this$0), false);
+    this.this$0.j();
     ExpandManager.c(this.this$0);
     ExpandManager.d(this.this$0);
     ExpandManager.e(this.this$0);
@@ -18,7 +19,7 @@ class ExpandManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExpandManager.3
  * JD-Core Version:    0.7.0.1
  */

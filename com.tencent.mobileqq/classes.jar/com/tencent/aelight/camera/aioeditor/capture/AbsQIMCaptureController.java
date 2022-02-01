@@ -9,7 +9,7 @@ public abstract class AbsQIMCaptureController
   implements ProviderView.ProviderViewListener, DoodleLayout.DoodleEventListener
 {
   public int a;
-  public View a;
+  public View b;
   
   public abstract void a();
   
@@ -20,7 +20,7 @@ public abstract class AbsQIMCaptureController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.AbsQIMCaptureController
  * JD-Core Version:    0.7.0.1
  */

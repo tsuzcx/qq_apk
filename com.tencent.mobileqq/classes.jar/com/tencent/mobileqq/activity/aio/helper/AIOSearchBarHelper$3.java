@@ -16,15 +16,15 @@ class AIOSearchBarHelper$3
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (MessageItem)AIOSearchBarHelper.a(this.a).a.getItem(paramInt - 1);
+    paramAdapterView = (MessageItem)AIOSearchBarHelper.d(this.a).o.getItem(paramInt - 1);
     AIOSearchBarHelper.a(this.a, paramAdapterView);
-    AIOSearchBarHelper.a(this.a).dismiss();
-    ReportController.b(AIOSearchBarHelper.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    AIOSearchBarHelper.d(this.a).dismiss();
+    ReportController.b(AIOSearchBarHelper.c(this.a).d, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOSearchBarHelper.3
  * JD-Core Version:    0.7.0.1
  */

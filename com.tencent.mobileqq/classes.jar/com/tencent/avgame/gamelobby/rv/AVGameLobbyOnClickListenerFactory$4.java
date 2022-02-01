@@ -15,14 +15,14 @@ class AVGameLobbyOnClickListenerFactory$4
     if (paramIBaseData == null) {
       return;
     }
-    if (paramView.getId() == 2131363213)
+    if (paramView.getId() == 2131429087)
     {
-      this.a.a.b();
+      this.a.a.c();
       if (QLog.isColorLevel()) {
         QLog.d("AVGameLobbyOnClickListenerFactory", 2, "Create room button click");
       }
     }
-    else if (paramView.getId() == 2131363225)
+    else if (paramView.getId() == 2131429099)
     {
       this.a.a.a(2);
       if (QLog.isColorLevel()) {

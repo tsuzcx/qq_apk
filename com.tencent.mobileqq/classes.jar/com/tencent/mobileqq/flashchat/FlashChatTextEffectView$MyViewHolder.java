@@ -13,44 +13,44 @@ class FlashChatTextEffectView$MyViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener, View.OnLongClickListener
 {
-  public int a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  MessageForArkFlashChat jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
-  public FlashChatItem a;
-  public FlashChatPanel.PluginData a;
-  OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+  OnHolderItemClickListener a;
   public int b;
-  int c;
+  public int c;
+  public FlashChatItem d;
+  public FlashChatPanel.PluginData e;
+  int f;
+  MessageForArkFlashChat g = null;
+  public ArkAppView h;
+  public ArkAppLoadLayout i;
   
   public FlashChatTextEffectView$MyViewHolder(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener, int paramInt)
   {
     super(paramView);
     if (paramOnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
+      this.a = paramOnHolderItemClickListener;
     }
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362947));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370350));
+    this.f = paramInt;
+    this.h = ((ArkAppView)paramView.findViewById(2131428746));
+    this.i = ((ArkAppLoadLayout)paramView.findViewById(2131437612));
     this.itemView.setOnClickListener(this);
     this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
   }
   
   public void onClick(View paramView)
   {
-    OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
     if (localOnHolderItemClickListener != null) {
-      localOnHolderItemClickListener.a(paramView, getPosition(), this.c);
+      localOnHolderItemClickListener.a(paramView, getPosition(), this.f);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
     if (localOnHolderItemClickListener != null)
     {
-      localOnHolderItemClickListener.b(paramView, getPosition(), this.c);
+      localOnHolderItemClickListener.b(paramView, getPosition(), this.f);
       return true;
     }
     return false;
@@ -58,7 +58,7 @@ class FlashChatTextEffectView$MyViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

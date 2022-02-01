@@ -128,17 +128,17 @@ public class SubscriptHandler
             Object localObject2;
             if (((oidb_cmd0x439.SubscribeInfo)localObject1).uint64_subscribe_id.has())
             {
-              localSubscriptRecommendAccountInfo.jdField_a_of_type_Long = ((oidb_cmd0x439.SubscribeInfo)localObject1).uint64_subscribe_id.get();
-              if ((localSubscriptRecommendAccountInfo.jdField_a_of_type_Long > 0L) && (!TextUtils.isEmpty(paramToServiceMsg)))
+              localSubscriptRecommendAccountInfo.a = ((oidb_cmd0x439.SubscribeInfo)localObject1).uint64_subscribe_id.get();
+              if ((localSubscriptRecommendAccountInfo.a > 0L) && (!TextUtils.isEmpty(paramToServiceMsg)))
               {
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append(paramToServiceMsg);
-                ((StringBuilder)localObject2).append(localSubscriptRecommendAccountInfo.jdField_a_of_type_Long);
-                localSubscriptRecommendAccountInfo.b = ((StringBuilder)localObject2).toString();
+                ((StringBuilder)localObject2).append(localSubscriptRecommendAccountInfo.a);
+                localSubscriptRecommendAccountInfo.g = ((StringBuilder)localObject2).toString();
               }
             }
             if ((((oidb_cmd0x439.SubscribeInfo)localObject1).bytes_subscribe_name.has()) && (((oidb_cmd0x439.SubscribeInfo)localObject1).bytes_subscribe_name.get() != null)) {
-              localSubscriptRecommendAccountInfo.jdField_a_of_type_JavaLangString = ((oidb_cmd0x439.SubscribeInfo)localObject1).bytes_subscribe_name.get().toStringUtf8();
+              localSubscriptRecommendAccountInfo.b = ((oidb_cmd0x439.SubscribeInfo)localObject1).bytes_subscribe_name.get().toStringUtf8();
             }
             if ((((oidb_cmd0x439.SubscribeInfo)localObject1).rpt_article_list.has()) && (((oidb_cmd0x439.SubscribeInfo)localObject1).rpt_article_list.get() != null))
             {
@@ -159,18 +159,18 @@ public class SubscriptHandler
                 if ((((oidb_cmd0x439.ArticleInfo)localObject2).bytes_article_sum_pic.has()) && (((oidb_cmd0x439.ArticleInfo)localObject2).bytes_article_sum_pic.get() != null)) {
                   ((ReadInJoyArticle)localObject1).mFirstPagePicUrl = ((oidb_cmd0x439.ArticleInfo)localObject2).bytes_article_sum_pic.get().toStringUtf8();
                 }
-                localSubscriptRecommendAccountInfo.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle = ((ReadInJoyArticle)localObject1);
+                localSubscriptRecommendAccountInfo.e = ((ReadInJoyArticle)localObject1);
               }
             }
             if (QLog.isColorLevel())
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("handleGetRecommendList create SubscriptRecommendAccountInfo id: ");
-              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.jdField_a_of_type_Long);
+              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.a);
               ((StringBuilder)localObject1).append(" | name: ");
-              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.b);
               ((StringBuilder)localObject1).append(" | article: ");
-              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle.mTitle);
+              ((StringBuilder)localObject1).append(localSubscriptRecommendAccountInfo.e.mTitle);
               QLog.i("SubscriptHandler", 2, ((StringBuilder)localObject1).toString());
             }
             paramFromServiceMsg.add(localSubscriptRecommendAccountInfo);
@@ -233,7 +233,7 @@ public class SubscriptHandler
     //   41: invokespecial 88	java/lang/StringBuilder:<init>	()V
     //   44: astore_1
     //   45: aload_1
-    //   46: ldc_w 269
+    //   46: ldc_w 270
     //   49: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: pop
     //   53: aload_1
@@ -290,7 +290,7 @@ public class SubscriptHandler
     //   158: iconst_2
     //   159: aload_1
     //   160: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   166: aload 12
     //   168: astore_1
     //   169: iload 5
@@ -302,17 +302,17 @@ public class SubscriptHandler
     //   183: invokevirtual 50	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   186: invokevirtual 148	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   189: astore_1
-    //   190: new 271	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody
+    //   190: new 272	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody
     //   193: dup
-    //   194: invokespecial 272	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:<init>	()V
+    //   194: invokespecial 273	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:<init>	()V
     //   197: astore_3
     //   198: aload_3
     //   199: aload_1
-    //   200: invokevirtual 273	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   200: invokevirtual 274	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   203: pop
     //   204: aload_3
-    //   205: getfield 277	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:rspChannelArticle	Ltencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle;
-    //   208: invokevirtual 280	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:has	()Z
+    //   205: getfield 278	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:rspChannelArticle	Ltencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle;
+    //   208: invokevirtual 281	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:has	()Z
     //   211: istore 7
     //   213: aload 12
     //   215: astore_1
@@ -321,14 +321,14 @@ public class SubscriptHandler
     //   220: iload 7
     //   222: ifeq +179 -> 401
     //   225: aload_3
-    //   226: getfield 277	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:rspChannelArticle	Ltencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle;
-    //   229: invokevirtual 283	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   232: checkcast 279	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle
+    //   226: getfield 278	tencent/im/oidb/cmd0x472/Oidb_0x472$RspBody:rspChannelArticle	Ltencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle;
+    //   229: invokevirtual 284	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   232: checkcast 280	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle
     //   235: astore_1
     //   236: aload_1
     //   237: ifnull +107 -> 344
     //   240: aload_1
-    //   241: getfield 286	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:uint64_channel_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   241: getfield 287	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:uint64_channel_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   244: invokevirtual 37	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   247: lstore 8
     //   249: lload 8
@@ -336,13 +336,13 @@ public class SubscriptHandler
     //   252: lcmp
     //   253: ifne +91 -> 344
     //   256: aload_1
-    //   257: getfield 287	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:rpt_article_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   257: getfield 288	tencent/im/oidb/cmd0x472/Oidb_0x472$RspChannelArticle:rpt_article_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   260: invokevirtual 167	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   263: astore_3
     //   264: aload_3
     //   265: ifnull +79 -> 344
     //   268: aload_3
-    //   269: invokeinterface 222 1 0
+    //   269: invokeinterface 223 1 0
     //   274: ifne +70 -> 344
     //   277: new 169	java/util/ArrayList
     //   280: dup
@@ -362,8 +362,8 @@ public class SubscriptHandler
     //   314: checkcast 23	tencent/im/oidb/cmd0x472/Oidb_0x472$ArticleSummary
     //   317: lload 8
     //   319: l2i
-    //   320: invokestatic 289	com/tencent/biz/pubaccount/subscript/SubscriptHandler:a	(Ltencent/im/oidb/cmd0x472/Oidb_0x472$ArticleSummary;I)Lcom/tencent/biz/pubaccount/subscript/ReadInJoyArticle;
-    //   323: invokevirtual 290	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   320: invokestatic 290	com/tencent/biz/pubaccount/subscript/SubscriptHandler:a	(Ltencent/im/oidb/cmd0x472/Oidb_0x472$ArticleSummary;I)Lcom/tencent/biz/pubaccount/subscript/ReadInJoyArticle;
+    //   323: invokevirtual 291	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   326: pop
     //   327: goto -29 -> 298
     //   330: iconst_1
@@ -401,9 +401,9 @@ public class SubscriptHandler
     //   382: ifeq +19 -> 401
     //   385: ldc 99
     //   387: iconst_2
-    //   388: ldc_w 264
+    //   388: ldc_w 265
     //   391: aload_3
-    //   392: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   392: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   395: iload 5
     //   397: istore 6
     //   399: aload_2
@@ -419,7 +419,7 @@ public class SubscriptHandler
     //   416: iconst_2
     //   417: iload 6
     //   419: aload_1
-    //   420: invokespecial 257	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   420: invokespecial 259	com/tencent/mobileqq/app/BusinessHandler:notifyUI	(IZLjava/lang/Object;)V
     //   423: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -510,7 +510,7 @@ public class SubscriptHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,7 @@ public class PhoneNumClearableEditText
       String str = a(getContext());
       if (str.length() == 0)
       {
-        QQToast.a(getContext(), 1, 2131694705, 0).a();
+        QQToast.makeText(getContext(), 1, 2131892398, 0).show();
         return true;
       }
       setText(str);
@@ -75,7 +75,7 @@ public class PhoneNumClearableEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PhoneNumClearableEditText
  * JD-Core Version:    0.7.0.1
  */

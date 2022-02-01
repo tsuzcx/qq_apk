@@ -35,35 +35,20 @@ import mqq.util.WeakReference;
 public class PageGestureProxyImpl
   implements IServiceInfo, PageGestureProxy
 {
-  private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  private ColorNoteCurd jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd;
-  private IServiceInfo jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
   protected IColorNoteController a;
-  public PostTable a;
-  private TouchStateDetector jdField_a_of_type_ComTencentMobileqqSwipeTouchStateDetector;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private String jdField_a_of_type_JavaLangString = null;
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
-  private boolean c;
-  
-  private ColorNote a()
-  {
-    IServiceInfo localIServiceInfo = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo;
-    if (localIServiceInfo != null) {
-      return localIServiceInfo.getColorNote();
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd = new ColorNoteCurd();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(new PageGestureProxyImpl.3(this));
-  }
+  public PostTable b;
+  private boolean c = false;
+  private WeakReference<Activity> d;
+  private TouchStateDetector e;
+  private ColorNoteCurd f;
+  private IServiceInfo g;
+  private QQCustomDialog h;
+  private boolean i = true;
+  private Vibrator j;
+  private boolean k;
+  private MiniAppInfo l;
+  private IMiniAppContext m;
+  private String n = null;
   
   private void a(Activity paramActivity)
   {
@@ -72,44 +57,59 @@ public class PageGestureProxyImpl
       QLog.e("PageGuestureProxyImpl", 1, "initColorNote() fail, because of null account");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController = ((IColorNoteController)QRoute.api(IColorNoteController.class));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.init(paramActivity, false, true);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.attachToActivity(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setServiceInfo(this);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteAnimFinishListener(new PageGestureProxyImpl.1(this, paramActivity));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteCurdListener(new PageGestureProxyImpl.2(this, paramActivity));
-    this.jdField_a_of_type_ComTencentMobileqqSwipePostTable = new PostTable(paramActivity);
-    ((ViewGroup)paramActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_ComTencentMobileqqSwipePostTable);
-    this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.a(0.0D);
-    this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramActivity.getSystemService("vibrator"));
+    this.a = ((IColorNoteController)QRoute.api(IColorNoteController.class));
+    this.a.init(paramActivity, false, true);
+    this.a.attachToActivity(paramActivity);
+    this.a.setServiceInfo(this);
+    this.a.setOnColorNoteAnimFinishListener(new PageGestureProxyImpl.1(this, paramActivity));
+    this.a.setOnColorNoteCurdListener(new PageGestureProxyImpl.2(this, paramActivity));
+    this.b = new PostTable(paramActivity);
+    ((ViewGroup)paramActivity.getWindow().getDecorView()).addView(this.b);
+    this.b.setVisibility(4);
+    this.b.a(0.0D);
+    this.j = ((Vibrator)paramActivity.getSystemService("vibrator"));
   }
   
-  private void b()
+  private ColorNote b()
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    IServiceInfo localIServiceInfo = this.g;
+    if (localIServiceInfo != null) {
+      return localIServiceInfo.getColorNote();
+    }
+    return null;
+  }
+  
+  private void c()
+  {
+    this.f = new ColorNoteCurd();
+    this.f.a(new PageGestureProxyImpl.3(this));
+  }
+  
+  private void d()
+  {
+    Object localObject = this.d;
     if (localObject == null) {
       return;
     }
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.h;
     if (localQQCustomDialog == null)
     {
       localObject = (Activity)((WeakReference)localObject).get();
       if (localObject == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog((Context)localObject, 2131756189);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558978);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(((Activity)localObject).getString(2131690905));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(((Activity)localObject).getString(2131690904), new PageGestureProxyImpl.4(this, (Activity)localObject));
+      this.h = new QQCustomDialog((Context)localObject, 2131953338);
+      this.h.setContentView(2131624611);
+      this.h.setCanceledOnTouchOutside(false);
+      this.h.setTitle(((Activity)localObject).getString(2131887844));
+      this.h.setNegativeButton(((Activity)localObject).getString(2131887843), new PageGestureProxyImpl.4(this, (Activity)localObject));
     }
     else if (localQQCustomDialog.isShowing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.h.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getTitleTextView();
+    this.h.show();
+    localObject = this.h.getTitleTextView();
     ((View)localObject).setClickable(true);
     ((View)localObject).setFocusable(true);
     ((View)localObject).setFocusableInTouchMode(true);
@@ -118,26 +118,26 @@ public class PageGestureProxyImpl
   
   public IColorNoteController a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    return this.a;
   }
   
   public void a(IServiceInfo paramIServiceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo = paramIServiceInfo;
-    a();
+    this.g = paramIServiceInfo;
+    c();
   }
   
   public ColorNote getColorNote()
   {
-    MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = this.l;
     byte[] arrayOfByte = null;
     if (localMiniAppInfo != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
+      Object localObject = this.m;
       if (localObject != null) {
-        this.jdField_a_of_type_JavaLangString = ActionBridge.PageActionBridge.getPageUrl((IMiniAppContext)localObject);
+        this.n = ActionBridge.PageActionBridge.getPageUrl((IMiniAppContext)localObject);
       }
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.n;
       if (localObject != null) {
         arrayOfByte = ((String)localObject).getBytes();
       }
@@ -147,7 +147,7 @@ public class PageGestureProxyImpl
       ((StringBuilder)localObject).append(", name: ");
       ((StringBuilder)localObject).append(localMiniAppInfo.name);
       ((StringBuilder)localObject).append(", curPagePath: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.n);
       ((StringBuilder)localObject).append(", miniAppInfo.verType:");
       ((StringBuilder)localObject).append(localMiniAppInfo.verType);
       QLog.d("PageGuestureProxyImpl", 2, ((StringBuilder)localObject).toString());
@@ -163,13 +163,13 @@ public class PageGestureProxyImpl
   
   public void onActivityCreate(Activity paramActivity)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+    this.d = new WeakReference(paramActivity);
     a(paramActivity);
   }
   
   public void onActivityDestroy(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramActivity = this.a;
     if (paramActivity != null) {
       paramActivity.onDestroy();
     }
@@ -179,7 +179,7 @@ public class PageGestureProxyImpl
   
   public void onActivityPause(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramActivity = this.a;
     if (paramActivity != null) {
       paramActivity.onPause();
     }
@@ -187,7 +187,7 @@ public class PageGestureProxyImpl
   
   public void onActivityResume(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramActivity = this.a;
     if (paramActivity != null) {
       paramActivity.onResume();
     }
@@ -196,7 +196,7 @@ public class PageGestureProxyImpl
   public void onActivityStop(Activity paramActivity)
   {
     QLog.d("PageGuestureProxyImpl", 1, "onActivityStop");
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramActivity = this.a;
     if (paramActivity != null) {
       paramActivity.onPause();
     }
@@ -204,116 +204,116 @@ public class PageGestureProxyImpl
   
   public void onCreateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+    this.l = paramMiniAppInfo;
   }
   
   public void onLoadUrl(IMiniAppContext paramIMiniAppContext)
   {
     if (paramIMiniAppContext != null)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo();
+      this.m = paramIMiniAppContext;
+      this.l = this.m.getMiniAppInfo();
     }
     a(this);
   }
   
   public void onMoveTaskToBack(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramActivity = this.a;
     if ((paramActivity != null) && (paramActivity.isColorNoteExist())) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.exitAnimation();
+      this.a.exitAnimation();
     }
   }
   
   public void onPageWebViewInit()
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = (Activity)((WeakReference)localObject).get();
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqSwipeTouchStateDetector = new TouchStateDetector((Context)localObject);
+        this.e = new TouchStateDetector((Context)localObject);
       }
     }
-    a();
+    c();
   }
   
   public void onProcessTouchEvent(MotionEvent paramMotionEvent)
   {
     QLog.d("PageGuestureProxyImpl", 1, "onProcessTouchEvent");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd;
-    if ((localObject != null) && (((ColorNoteCurd)localObject).b()))
+    Object localObject = this.f;
+    if ((localObject != null) && (((ColorNoteCurd)localObject).c()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqSwipeTouchStateDetector;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqSwipePostTable != null))
+      localObject = this.e;
+      if ((localObject != null) && (this.b != null))
       {
-        double d = ((TouchStateDetector)localObject).a(paramMotionEvent);
-        this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote();
+        double d1 = ((TouchStateDetector)localObject).a(paramMotionEvent);
+        this.f.b();
+        localObject = this.g.getColorNote();
         boolean bool1;
         if (localObject != null) {
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
+          bool1 = this.f.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
         } else {
           bool1 = false;
         }
-        localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+        localObject = this.l;
         boolean bool2;
         if (localObject != null) {
           bool2 = ((MiniAppInfo)localObject).isLimitedAccessApp();
         } else {
           bool2 = false;
         }
-        if ((d > 0.0D) && (!bool1) && (!bool2) && (this.jdField_a_of_type_MqqUtilWeakReference != null))
+        if ((d1 > 0.0D) && (!bool1) && (!bool2) && (this.d != null))
         {
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.c)
           {
-            this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.setVisibility(0);
-            this.jdField_a_of_type_Boolean = true;
+            this.b.setVisibility(0);
+            this.c = true;
           }
-          localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-          if ((this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a()) && (localObject != null))
+          localObject = (Activity)this.d.get();
+          if ((this.f.b()) && (localObject != null))
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqSwipeTouchStateDetector.a(paramMotionEvent, (Context)localObject))
+            if (this.e.a(paramMotionEvent, (Context)localObject))
             {
-              this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.b();
-              if (!this.c)
+              this.b.b();
+              if (!this.k)
               {
-                localObject = this.jdField_a_of_type_AndroidOsVibrator;
+                localObject = this.j;
                 if (localObject != null)
                 {
                   ((Vibrator)localObject).vibrate(20L);
-                  this.c = true;
+                  this.k = true;
                 }
               }
             }
             else
             {
-              this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.a();
-              this.c = false;
+              this.b.a();
+              this.k = false;
             }
           }
           else {
-            this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.c();
+            this.b.c();
           }
-          this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.a(d);
-          if (this.b)
+          this.b.a(d1);
+          if (this.i)
           {
-            ReportController.b(null, "dc00898", "", "", "0X800A741", "0X800A741", ColorNoteConstants.a(this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
-            this.b = false;
+            ReportController.b(null, "dc00898", "", "", "0X800A741", "0X800A741", ColorNoteConstants.a(this.g.getColorNote().mServiceType), 0, "", "", "", "");
+            this.i = false;
           }
         }
-        else if ((d < 1.0E-008D) || (bool1))
+        else if ((d1 < 1.0E-008D) || (bool1))
         {
-          this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.setVisibility(4);
-          this.jdField_a_of_type_Boolean = false;
+          this.b.setVisibility(4);
+          this.c = false;
         }
         if (paramMotionEvent.getActionMasked() == 1)
         {
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqSwipePostTable;
+          paramMotionEvent = this.b;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.setVisibility(4);
-            this.jdField_a_of_type_Boolean = false;
+            this.c = false;
           }
         }
       }
@@ -324,7 +324,7 @@ public class PageGestureProxyImpl
   {
     boolean bool2 = true;
     QLog.d("PageGuestureProxyImpl", 1, "onViewReleased");
-    Object localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    Object localObject = this.l;
     if (localObject != null) {
       bool1 = ((MiniAppInfo)localObject).isLimitedAccessApp();
     } else {
@@ -333,32 +333,32 @@ public class PageGestureProxyImpl
     if (bool1) {
       return false;
     }
-    ColorNote localColorNote = a();
+    ColorNote localColorNote = b();
     if (localColorNote != null) {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(localColorNote.getServiceType(), localColorNote.getSubType());
+      bool1 = this.f.a(localColorNote.getServiceType(), localColorNote.getSubType());
     } else {
       bool1 = false;
     }
-    this.b = true;
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    this.i = true;
+    localObject = this.d;
     if (localObject != null) {
       localObject = (Activity)((WeakReference)localObject).get();
     } else {
       localObject = null;
     }
-    TouchStateDetector localTouchStateDetector = this.jdField_a_of_type_ComTencentMobileqqSwipeTouchStateDetector;
+    TouchStateDetector localTouchStateDetector = this.e;
     if ((localTouchStateDetector != null) && (localTouchStateDetector.a(paramMotionEvent, (Context)localObject)) && (!bool1) && (localColorNote != null)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a())
+      if (this.f.b())
       {
         paramMotionEvent = localColorNote.parseBundle();
         paramMotionEvent.putInt("color_note_curd_from_type", 1);
-        this.jdField_a_of_type_ComTencentMobileqqColornoteColorNoteCurd.a(paramMotionEvent);
-        ReportController.b(null, "dc00898", "", "", "0X800A742", "0X800A742", ColorNoteConstants.a(this.jdField_a_of_type_ComTencentMobileqqColornoteIServiceInfo.getColorNote().mServiceType), 0, "", "", "", "");
+        this.f.a(paramMotionEvent);
+        ReportController.b(null, "dc00898", "", "", "0X800A742", "0X800A742", ColorNoteConstants.a(this.g.getColorNote().mServiceType), 0, "", "", "", "");
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqSwipePostTable.a(0.0D);
-        b();
+        this.b.a(0.0D);
+        d();
         ReportController.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
         bool1 = bool2;
         break label270;
@@ -366,23 +366,23 @@ public class PageGestureProxyImpl
     }
     boolean bool1 = false;
     label270:
-    paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqSwipePostTable;
+    paramMotionEvent = this.b;
     if (paramMotionEvent != null)
     {
       paramMotionEvent.setVisibility(4);
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
     return bool1;
   }
   
   public void updateColorSignPath(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.n = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PageGestureProxyImpl
  * JD-Core Version:    0.7.0.1
  */

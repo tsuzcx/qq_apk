@@ -24,8 +24,8 @@ import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.RspBody;
 public class InterestLabelInfoModule
   extends ReadInJoyEngineModule
 {
-  private HashMap<Integer, InterestLabelInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<InterestLabelInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private HashMap<Integer, InterestLabelInfo> a = new HashMap();
+  private List<InterestLabelInfo> b = new ArrayList();
   
   public InterestLabelInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -78,7 +78,7 @@ public class InterestLabelInfoModule
   public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     oidb_cmd0x6e5.ReqBody localReqBody = new oidb_cmd0x6e5.ReqBody();
-    long l = Long.parseLong(RIJQQAppInterfaceUtil.a());
+    long l = Long.parseLong(RIJQQAppInterfaceUtil.d());
     localReqBody.uint64_uin.set(l);
     localReqBody.uint32_req_all_interest_label_list.set(paramInt1);
     localReqBody.uint32_req_default_interest_label_id_list.set(paramInt2);
@@ -119,12 +119,12 @@ public class InterestLabelInfoModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.InterestLabelInfoModule
  * JD-Core Version:    0.7.0.1
  */

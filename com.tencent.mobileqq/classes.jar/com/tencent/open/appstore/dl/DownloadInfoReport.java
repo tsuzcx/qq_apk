@@ -43,9 +43,9 @@ public class DownloadInfoReport
   {
     if ((paramWadlParams != null) && (paramContext != null))
     {
-      NetworkMonitor.a().addDownloadURL(paramWadlParams.e);
+      NetworkMonitor.a().addDownloadURL(paramWadlParams.k);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("url", paramWadlParams.e);
+      localHashMap.put("url", paramWadlParams.k);
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(NetworkUtil.getNetworkType(paramContext));
       String str = "";
@@ -60,10 +60,10 @@ public class DownloadInfoReport
       localHashMap.put("reportVia", "2");
       localObject1 = new Throwable().getStackTrace();
       Object localObject2 = new StringBuilder();
-      if (a.containsKey(paramWadlParams.jdField_a_of_type_JavaLangString)) {
-        ((StringBuilder)localObject2).append((String)a.remove(paramWadlParams.jdField_a_of_type_JavaLangString));
-      } else if (a.containsKey(paramWadlParams.e)) {
+      if (a.containsKey(paramWadlParams.e)) {
         ((StringBuilder)localObject2).append((String)a.remove(paramWadlParams.e));
+      } else if (a.containsKey(paramWadlParams.k)) {
+        ((StringBuilder)localObject2).append((String)a.remove(paramWadlParams.k));
       }
       int i = 1;
       while (i < localObject1.length)
@@ -85,21 +85,21 @@ public class DownloadInfoReport
         }
       }
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramWadlParams.c);
+      ((StringBuilder)localObject1).append(paramWadlParams.B);
       ((StringBuilder)localObject1).append("");
       localHashMap.put("_filesize_from_dlg", ((StringBuilder)localObject1).toString());
-      localHashMap.put("_filename_from_dlg", paramWadlParams.f);
-      if (!paramWadlParams.jdField_a_of_type_Boolean) {
+      localHashMap.put("_filename_from_dlg", paramWadlParams.m);
+      if (!paramWadlParams.b) {
         localHashMap.put("isAPK", "1");
       } else {
         localHashMap.put("isAPK", "0");
       }
-      localHashMap.put("ReferURL", paramWadlParams.m);
-      localObject2 = paramWadlParams.p;
-      if (paramWadlParams.m == null) {
+      localHashMap.put("ReferURL", paramWadlParams.x);
+      localObject2 = paramWadlParams.A;
+      if (paramWadlParams.x == null) {
         localObject1 = str;
       } else {
-        localObject1 = paramWadlParams.m;
+        localObject1 = paramWadlParams.x;
       }
       paramWadlParams = (WadlParams)localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -166,12 +166,12 @@ public class DownloadInfoReport
     StringBuilder localStringBuilder2;
     if ((paramDownloadInfo != null) && (paramContext != null))
     {
-      NetworkMonitor.a().addDownloadURL(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-      if (a(paramDownloadInfo.jdField_d_of_type_JavaLangString)) {
+      NetworkMonitor.a().addDownloadURL(paramDownloadInfo.d);
+      if (a(paramDownloadInfo.d)) {
         return;
       }
       localHashMap = new HashMap();
-      localHashMap.put("url", paramDownloadInfo.jdField_d_of_type_JavaLangString);
+      localHashMap.put("url", paramDownloadInfo.d);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(NetworkUtil.getNetworkType(paramContext));
       ((StringBuilder)localObject).append("");
@@ -188,10 +188,10 @@ public class DownloadInfoReport
     }
     try
     {
-      if (a.containsKey(paramDownloadInfo.jdField_c_of_type_JavaLangString)) {
-        localStringBuilder2.append((String)a.remove(paramDownloadInfo.jdField_c_of_type_JavaLangString));
-      } else if (a.containsKey(paramDownloadInfo.jdField_d_of_type_JavaLangString)) {
-        localStringBuilder2.append((String)a.remove(paramDownloadInfo.jdField_d_of_type_JavaLangString));
+      if (a.containsKey(paramDownloadInfo.c)) {
+        localStringBuilder2.append((String)a.remove(paramDownloadInfo.c));
+      } else if (a.containsKey(paramDownloadInfo.d)) {
+        localStringBuilder2.append((String)a.remove(paramDownloadInfo.d));
       }
     }
     catch (Throwable localThrowable)
@@ -223,12 +223,12 @@ public class DownloadInfoReport
       }
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramDownloadInfo.jdField_d_of_type_Long);
+    ((StringBuilder)localObject).append(paramDownloadInfo.I);
     ((StringBuilder)localObject).append("");
     localHashMap.put("_filesize_from_dlg", ((StringBuilder)localObject).toString());
     str2 = paramDownloadInfo.e;
     localHashMap.put("_filename_from_dlg", str2);
-    if (paramDownloadInfo.jdField_c_of_type_Boolean) {
+    if (paramDownloadInfo.A) {
       localHashMap.put("isAPK", "1");
     } else {
       localHashMap.put("isAPK", "0");
@@ -239,8 +239,8 @@ public class DownloadInfoReport
       localObject = "";
     }
     localHashMap.put("ReferURL", localObject);
-    str1 = paramDownloadInfo.m;
-    localStringBuilder1 = new StringBuilder(paramDownloadInfo.jdField_d_of_type_JavaLangString);
+    str1 = paramDownloadInfo.r;
+    localStringBuilder1 = new StringBuilder(paramDownloadInfo.d);
     localStringBuilder1.append(";");
     localStringBuilder1.append((String)localHashMap.get("NetworkType"));
     localStringBuilder1.append(";");
@@ -500,7 +500,7 @@ public class DownloadInfoReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadInfoReport
  * JD-Core Version:    0.7.0.1
  */

@@ -257,6 +257,12 @@ public class FeatureResult
         if (this.dataset.data != null) {
           ((JSONObject)localObject2).put("data", new JSONObject(this.dataset.data));
         }
+        if (this.dataset.type != null) {
+          ((JSONObject)localObject2).put("type", this.dataset.type);
+        }
+        if (this.dataset.value != null) {
+          ((JSONObject)localObject2).put("value", this.dataset.value);
+        }
         ((JSONObject)localObject1).put("dataset", localObject2);
       }
       localObject1 = ((JSONObject)localObject1).toString();
@@ -301,7 +307,7 @@ public class FeatureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.models.FeatureResult
  * JD-Core Version:    0.7.0.1
  */

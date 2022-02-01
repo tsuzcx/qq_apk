@@ -16,30 +16,25 @@ import java.util.List;
 public class AssociateSearchWordsFragment
   extends BaseFragment
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AssociateSearchWordsFragment.1(this);
-  public View.OnTouchListener a;
-  private AssociateSearchWordsFragment.AssociateWordClickCallback jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$AssociateWordClickCallback;
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
-  protected String a;
-  private List<AssociateSearchWordsFragment.AssociateItem> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  protected boolean b = false;
-  
-  public AssociateSearchWordsFragment()
-  {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new AssociateSearchWordsFragment.2(this);
-  }
+  XListView a;
+  boolean b = false;
+  protected boolean c = false;
+  protected String d;
+  View.OnClickListener e = new AssociateSearchWordsFragment.1(this);
+  public View.OnTouchListener f = new AssociateSearchWordsFragment.2(this);
+  private List<AssociateSearchWordsFragment.AssociateItem> g;
+  private AssociateSearchWordsFragment.AssociateWordClickCallback h;
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(List<AssociateSearchWordsFragment.AssociateItem> paramList)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.g = paramList;
       return;
     }
     b(paramList);
@@ -47,39 +42,39 @@ public class AssociateSearchWordsFragment
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void b(List<AssociateSearchWordsFragment.AssociateItem> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == null)
+    if (this.a.getAdapter() == null)
     {
       AssociateSearchWordsFragment.SearchAssociatedWordAdapter localSearchAssociatedWordAdapter = new AssociateSearchWordsFragment.SearchAssociatedWordAdapter(this, paramList);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(localSearchAssociatedWordAdapter);
+      this.a.setAdapter(localSearchAssociatedWordAdapter);
       localSearchAssociatedWordAdapter.a(paramList);
     }
     else
     {
-      ((AssociateSearchWordsFragment.SearchAssociatedWordAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).a(paramList);
+      ((AssociateSearchWordsFragment.SearchAssociatedWordAdapter)this.a.getAdapter()).a(paramList);
     }
     paramList = getBaseActivity();
     if ((paramList instanceof SearchInfoInterface)) {
-      SearchUtils.a("sub_result", "exp_auto", new String[] { ((SearchInfoInterface)paramList).a(), "", "", "" });
+      SearchUtils.a("sub_result", "exp_auto", new String[] { ((SearchInfoInterface)paramList).h(), "", "", "" });
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559794, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131377067));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_Boolean = true;
-    paramViewGroup = this.jdField_a_of_type_JavaUtilList;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625837, null);
+    this.a = ((XListView)paramLayoutInflater.findViewById(2131445436));
+    this.a.setDivider(null);
+    this.a.setOnTouchListener(this.f);
+    this.b = true;
+    paramViewGroup = this.g;
     if (paramViewGroup != null)
     {
       b(paramViewGroup);
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.g = null;
     }
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -88,12 +83,12 @@ public class AssociateSearchWordsFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment
  * JD-Core Version:    0.7.0.1
  */

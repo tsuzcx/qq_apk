@@ -15,44 +15,44 @@ class MyAppApi$17$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null)
+    this.c.a.a();
+    if (this.c.e.q != null)
     {
       try
       {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
+        if ((this.a != null) && (this.a.length != 0))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           String str2;
           try
           {
-            String str1 = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
+            String str1 = util.buf_to_string(this.a);
           }
           catch (Exception localException1)
           {
             localException1.printStackTrace();
             str2 = null;
           }
-          TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a;
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = this.c.e.q;
+          localStringBuilder.append(this.b);
           localStringBuilder.append("&identity=");
           localStringBuilder.append(str2);
           localTMAssistantCallYYBParamStruct.uin = localStringBuilder.toString();
-          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_Long;
+          this.c.e.m = this.c.b;
         }
       }
       catch (Exception localException2)
       {
         localException2.printStackTrace();
       }
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2) {
-        ((TMAssistantCallYYB_V1)this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
+      if (this.c.e.a() <= 2) {
+        ((TMAssistantCallYYB_V1)this.c.e.d()).startToAuthorized(this.c.c, this.c.e.q, "2");
       } else {
-        ((TMAssistantCallYYB_V2)this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
+        ((TMAssistantCallYYB_V2)this.c.e.d()).startToAuthorized(this.c.c, this.c.e.q, "2");
       }
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = null;
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$17.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      this.c.e.q = null;
+      if (this.c.d != null) {
+        this.c.d.onClick(null, 0);
       }
     }
     else
@@ -63,7 +63,7 @@ class MyAppApi$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.17.1
  * JD-Core Version:    0.7.0.1
  */

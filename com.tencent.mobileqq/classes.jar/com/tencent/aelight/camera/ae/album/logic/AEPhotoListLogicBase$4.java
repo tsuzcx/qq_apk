@@ -18,14 +18,14 @@ class AEPhotoListLogicBase$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoVH.a.isChecked())
+    if (this.a.e.isChecked())
     {
-      paramView = (LocalMediaInfo)AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase).get(this.jdField_a_of_type_Int);
-      AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase, this.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoVH);
-      AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoVH);
-      AEPhotoListLogicBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase);
-      if (AEPhotoListLogicBase.b(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase).isEmpty()) {
-        ((AEAbstractPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicBase.a.get()).a.notifyDataSetChanged();
+      paramView = (LocalMediaInfo)AEPhotoListLogicBase.a(this.c).get(this.b);
+      AEPhotoListLogicBase.a(this.c, this.b, paramView, this.a);
+      AEPhotoListLogicBase.a(this.c, this.a);
+      AEPhotoListLogicBase.b(this.c);
+      if (AEPhotoListLogicBase.c(this.c).isEmpty()) {
+        ((AEAbstractPhotoListFragment)this.c.b.get()).d.notifyDataSetChanged();
       }
       return true;
     }
@@ -34,7 +34,7 @@ class AEPhotoListLogicBase$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.4
  * JD-Core Version:    0.7.0.1
  */

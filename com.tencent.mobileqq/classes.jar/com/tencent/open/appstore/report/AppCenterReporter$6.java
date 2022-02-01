@@ -9,12 +9,12 @@ final class AppCenterReporter$6
   
   public void run()
   {
-    ReplaceMonitor.get().onAppInstalled(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    ReplaceMonitor.get().onAppInstalled(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.6
  * JD-Core Version:    0.7.0.1
  */

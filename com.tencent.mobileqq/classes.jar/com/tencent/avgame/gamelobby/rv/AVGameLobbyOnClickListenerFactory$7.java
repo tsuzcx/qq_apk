@@ -14,7 +14,7 @@ class AVGameLobbyOnClickListenerFactory$7
     if (paramIBaseData == null) {
       return;
     }
-    this.a.a.a();
+    this.a.a.b();
   }
 }
 

@@ -32,12 +32,14 @@ public class LaunchScene
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
   public static final int LAUNCH_SCENE_DESKTOP_BOUTIQUE_RECOMMEND = 3008;
+  public static final int LAUNCH_SCENE_DESKTOP_CHESS_ROOM = 3038;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_FEEDS = 3016;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_QUICK_MATCH = 3013;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_RECOMMEND = 3012;
   public static final int LAUNCH_SCENE_DESKTOP_EVERYONE_PLAYING = 3007;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PK = 3009;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
+  public static final int LAUNCH_SCENE_DESKTOP_HEALTH_CODE = 3039;
   public static final int LAUNCH_SCENE_DESKTOP_HOT = 3023;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
   public static final int LAUNCH_SCENE_DESKTOP_MOST_COMMONLY_USED = 3027;
@@ -54,10 +56,12 @@ public class LaunchScene
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
   public static final int LAUNCH_SCENE_DYNAMIC_MINIAPP = 2079;
+  public static final int LAUNCH_SCENE_FILE_MATERIAL = 1173;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
   public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
   public static final int LAUNCH_SCENE_FRD_LIKE_MINI_APP_VIDEO = 2089;
+  public static final int LAUNCH_SCENE_GUILD_APPLICATION = 5002;
   public static final int LAUNCH_SCENE_INTIMATE_RELATIONSHIP_PLAY_TOGETHER = 2064;
   public static final int LAUNCH_SCENE_INTIMATE_SWEET_KEY = 2087;
   public static final int LAUNCH_SCENE_KD_COMMENT_HIPPY = 2106;
@@ -144,7 +148,7 @@ public class LaunchScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.LaunchScene
  * JD-Core Version:    0.7.0.1
  */

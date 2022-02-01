@@ -17,44 +17,39 @@ import com.tencent.qphone.base.util.QLog;
 public class WTogetherMngHelper
   implements WatchTogetherMediaPlayerStatusCallback
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private WTogetherMng jdField_a_of_type_ComTencentAvWtogetherWTogetherMng;
-  private WatchTogetherMediaPlayerProxy jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy;
-  private final WTSyncPlayInfo jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo = new WTSyncPlayInfo();
-  private WatchTogetherDataReportHelper jdField_a_of_type_ComTencentAvWtogetherUtilWatchTogetherDataReportHelper;
-  private boolean jdField_a_of_type_Boolean;
+  private final WTSyncPlayInfo a = new WTSyncPlayInfo();
+  private VideoAppInterface b;
+  private WTogetherMng c;
+  private WatchTogetherMediaPlayerProxy d;
+  private WatchTogetherDataReportHelper e;
+  private boolean f;
   
   public WTogetherMngHelper(VideoAppInterface paramVideoAppInterface, boolean paramBoolean, WatchTogetherMediaPlayerProxy paramWatchTogetherMediaPlayerProxy)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
     a(paramBoolean, "WTogetherMngHelper");
-    this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy = paramWatchTogetherMediaPlayerProxy;
-    this.jdField_a_of_type_ComTencentAvWtogetherUtilWatchTogetherDataReportHelper = paramWatchTogetherMediaPlayerProxy.a();
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng = ((WTogetherMng)paramVideoAppInterface.a(16));
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a();
+    this.d = paramWatchTogetherMediaPlayerProxy;
+    this.e = paramWatchTogetherMediaPlayerProxy.m();
+    this.c = ((WTogetherMng)paramVideoAppInterface.c(17));
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a();
+    return this.d.e();
   }
   
   public void a(float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    long l1 = AudioHelper.b();
-    int i = this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    long l1 = AudioHelper.c();
+    int i = this.a.a();
     long l2 = a();
-    paramFloat = a();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(i, l2, paramFloat);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    paramFloat = b();
+    this.a.a(i, l2, paramFloat);
+    this.c.a(localSessionInfo, this.a);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -71,14 +66,14 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new ReqVideoAction(l1, 4, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, (ReqVideoAction)localObject);
+    Object localObject = new ReqVideoAction(l1, 4, this.a);
+    this.c.a(localSessionInfo, (ReqVideoAction)localObject);
     AVUtil.a("0X800B635", 0, 0, "", "", "", "");
   }
   
   public void a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherMediaPlayerProxy.a();
+    Object localObject1 = this.d.l();
     if ((QLog.isDevelopLevel()) && (localObject1 != null))
     {
       localObject2 = new StringBuilder();
@@ -87,14 +82,14 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject2).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject2).toString());
     }
-    localObject1 = SessionMgr.a().a();
-    WTDataReportUtil.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a((SessionInfo)localObject1), paramInt);
-    if (!this.jdField_a_of_type_Boolean) {
+    localObject1 = SessionMgr.a().b();
+    WTDataReportUtil.a(this.c.f((SessionInfo)localObject1), paramInt);
+    if (!this.f) {
       return;
     }
-    long l = AudioHelper.b();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(0, a(), a());
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a((SessionInfo)localObject1, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    long l = AudioHelper.c();
+    this.a.a(0, a(), b());
+    this.c.a((SessionInfo)localObject1, this.a);
     if (QLog.isDevelopLevel())
     {
       localObject2 = new StringBuilder();
@@ -103,21 +98,21 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject2).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject2).toString());
     }
-    Object localObject2 = new ReqVideoAction(l, 0, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a((SessionInfo)localObject1, (ReqVideoAction)localObject2);
+    Object localObject2 = new ReqVideoAction(l, 0, this.a);
+    this.c.a((SessionInfo)localObject1, (ReqVideoAction)localObject2);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    paramInt2 = this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(paramInt2, paramInt1, a());
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    paramInt2 = this.a.a();
+    this.a.a(paramInt2, paramInt1, b());
+    this.c.a(localSessionInfo, this.a);
   }
   
   public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    if (!this.f) {}
   }
   
   public void a(boolean paramBoolean)
@@ -125,20 +120,20 @@ public class WTogetherMngHelper
     if (QLog.isDevelopLevel()) {
       QLog.i("WTogether.MngHelper", 4, "onCompletion");
     }
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    WTDataReportUtil.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo), "onCompletion");
-    if (!this.jdField_a_of_type_Boolean) {}
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    WTDataReportUtil.a(this.c.f(localSessionInfo), "onCompletion");
+    if (!this.f) {}
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.f != paramBoolean)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateAdminFlag, [");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.f);
         localStringBuilder.append("-->");
         localStringBuilder.append(paramBoolean);
         localStringBuilder.append("], from[");
@@ -146,7 +141,7 @@ public class WTogetherMngHelper
         localStringBuilder.append("]");
         QLog.i("WTogether.MngHelper", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.f = paramBoolean;
     }
   }
   
@@ -160,17 +155,22 @@ public class WTogetherMngHelper
     return false;
   }
   
+  public float b()
+  {
+    return this.d.g();
+  }
+  
   public void b(int paramInt1, int paramInt2) {}
   
-  public void c()
+  public void d()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    long l = AudioHelper.b();
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(1, a(), a());
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    long l = AudioHelper.c();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    this.a.a(1, a(), b());
+    this.c.a(localSessionInfo, this.a);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -179,20 +179,20 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new ReqVideoAction(l, 1, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, (ReqVideoAction)localObject);
+    Object localObject = new ReqVideoAction(l, 1, this.a);
+    this.c.a(localSessionInfo, (ReqVideoAction)localObject);
     AVUtil.a("0X800B634", 0, 0, "", "", "", "");
   }
   
-  public void d()
+  public void e()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    long l = AudioHelper.b();
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(0, a(), a());
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    long l = AudioHelper.c();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    this.a.a(0, a(), b());
+    this.c.a(localSessionInfo, this.a);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -201,32 +201,32 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new ReqVideoAction(l, 0, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, (ReqVideoAction)localObject);
+    Object localObject = new ReqVideoAction(l, 0, this.a);
+    this.c.a(localSessionInfo, (ReqVideoAction)localObject);
   }
   
-  public void e()
+  public void f()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    SessionInfo localSessionInfo = SessionMgr.a().a();
+    SessionInfo localSessionInfo = SessionMgr.a().b();
     int i = 2;
-    long l2 = AudioHelper.b();
+    long l2 = AudioHelper.c();
     long l3 = a();
-    Object localObject = this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo);
+    Object localObject = this.c.f(localSessionInfo);
     long l1;
     if (localObject == null) {
       l1 = 0L;
     } else {
-      l1 = ((WTogetherPlayInfo)localObject).a;
+      l1 = ((WTogetherPlayInfo)localObject).d;
     }
     if (l3 < l1) {
       i = 3;
     }
-    int j = this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a();
-    this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo.a(j, l3, a());
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
+    int j = this.a.a();
+    this.a.a(j, l3, b());
+    this.c.a(localSessionInfo, this.a);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -241,8 +241,8 @@ public class WTogetherMngHelper
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.MngHelper", 4, ((StringBuilder)localObject).toString());
     }
-    localObject = new ReqVideoAction(l2, i, this.jdField_a_of_type_ComTencentAvWtogetherDataWTSyncPlayInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng.a(localSessionInfo, (ReqVideoAction)localObject);
+    localObject = new ReqVideoAction(l2, i, this.a);
+    this.c.a(localSessionInfo, (ReqVideoAction)localObject);
     AVUtil.a("0X800B633", 0, 0, "", "", "", "");
   }
 }

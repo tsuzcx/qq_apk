@@ -12,9 +12,10 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 public class TRTCRoomInfo$RenderInfo
   implements SurfaceHolder.Callback
 {
-  public boolean muteAudio = false;
-  public boolean muteVideo = false;
+  public TRTCRoomInfo.TRTCRemoteMuteState muteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+  public TRTCRoomInfo.TRTCRemoteMuteState muteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
   public TXCRenderAndDec render = null;
+  public Boolean startRenderView = Boolean.valueOf(false);
   public long tinyID;
   public TXCloudVideoView view = null;
   
@@ -55,7 +56,7 @@ public class TRTCRoomInfo$RenderInfo
       paramSurfaceHolder = null;
     }
     if (paramSurfaceHolder != null) {
-      paramSurfaceHolder.c(paramInt2, paramInt3);
+      paramSurfaceHolder.d(paramInt2, paramInt3);
     }
   }
   
@@ -106,7 +107,7 @@ public class TRTCRoomInfo$RenderInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCRoomInfo.RenderInfo
  * JD-Core Version:    0.7.0.1
  */

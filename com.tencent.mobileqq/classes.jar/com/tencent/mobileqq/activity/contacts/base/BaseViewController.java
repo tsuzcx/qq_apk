@@ -16,22 +16,20 @@ public abstract class BaseViewController
     this.a = paramActivity;
   }
   
-  public Activity a()
-  {
-    return this.a;
-  }
-  
   public void a(View paramView) {}
   
   public void a(QQAppInterface paramQQAppInterface) {}
   
   public void a(boolean paramBoolean) {}
   
-  public void b() {}
+  public Activity b()
+  {
+    return this.a;
+  }
   
   public void b(boolean paramBoolean)
   {
-    FrameHelperActivity.b(paramBoolean ^ true);
+    FrameHelperActivity.c(paramBoolean ^ true);
   }
   
   public void c() {}
@@ -39,10 +37,12 @@ public abstract class BaseViewController
   public void d() {}
   
   public void e() {}
+  
+  public void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.BaseViewController
  * JD-Core Version:    0.7.0.1
  */

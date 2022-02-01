@@ -1,21 +1,20 @@
 package com.tencent.aelight.camera.aioeditor.docenhance;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
 
 class DocEnhanceFragment$2
-  implements View.OnClickListener
+  implements Runnable
 {
   DocEnhanceFragment$2(DocEnhanceFragment paramDocEnhanceFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    DocEnhanceFragment.a(this.a, 1);
+    DocEnhanceFragment.a(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhanceFragment.2
  * JD-Core Version:    0.7.0.1
  */

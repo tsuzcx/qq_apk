@@ -9,11 +9,11 @@ import org.json.JSONObject;
 
 public class TencentDocImportFileInfoBean
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  private String a = "";
+  private long b = 0L;
   private String c = "";
   private String d = "";
+  private String e = "";
   
   public static TencentDocImportFileInfoBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -29,7 +29,7 @@ public class TencentDocImportFileInfoBean
       int i;
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (paramArrayOfQConfItem.has("DocsImportFileInfo"))
         {
           paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("DocsImportFileInfo");
@@ -37,7 +37,7 @@ public class TencentDocImportFileInfoBean
           {
             localObject1 = paramArrayOfQConfItem.getString("importFileMaxSize");
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              localTencentDocImportFileInfoBean.jdField_a_of_type_Long = Long.parseLong((String)localObject1);
+              localTencentDocImportFileInfoBean.b = Long.parseLong((String)localObject1);
             }
           }
           boolean bool = paramArrayOfQConfItem.has("importFileType");
@@ -69,8 +69,8 @@ public class TencentDocImportFileInfoBean
                 break label496;
               }
             }
-            localTencentDocImportFileInfoBean.b = ((StringBuilder)localObject2).toString();
-            localTencentDocImportFileInfoBean.c = localStringBuilder.toString();
+            localTencentDocImportFileInfoBean.c = ((StringBuilder)localObject2).toString();
+            localTencentDocImportFileInfoBean.d = localStringBuilder.toString();
           }
           if (paramArrayOfQConfItem.has("fileGroupType"))
           {
@@ -94,14 +94,14 @@ public class TencentDocImportFileInfoBean
                 break label503;
               }
             }
-            localTencentDocImportFileInfoBean.d = localStringBuilder.toString();
+            localTencentDocImportFileInfoBean.e = localStringBuilder.toString();
           }
           if (paramArrayOfQConfItem.has("importFileTips"))
           {
             paramArrayOfQConfItem = paramArrayOfQConfItem.getString("importFileTips");
             if (!TextUtils.isEmpty(paramArrayOfQConfItem))
             {
-              localTencentDocImportFileInfoBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem;
+              localTencentDocImportFileInfoBean.a = paramArrayOfQConfItem;
               return localTencentDocImportFileInfoBean;
             }
           }
@@ -128,22 +128,17 @@ public class TencentDocImportFileInfoBean
     }
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
-  public String b()
+  public long b()
   {
     return this.b;
   }
@@ -157,10 +152,15 @@ public class TencentDocImportFileInfoBean
   {
     return this.d;
   }
+  
+  public String e()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoBean
  * JD-Core Version:    0.7.0.1
  */

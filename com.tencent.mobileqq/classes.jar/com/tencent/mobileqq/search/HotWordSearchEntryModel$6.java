@@ -22,18 +22,18 @@ final class HotWordSearchEntryModel$6
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+    if (this.a.get() == null) {
       return;
     }
-    paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    paramURLDrawable = (URLImageView)this.a.get();
+    if ((this.b.getCurrDrawable() instanceof GifDrawable))
     {
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.b.getCurrDrawable()).getImage();
       localAbstractGifImage.reset();
       localAbstractGifImage.setStrongGIFPlayOnceListener(new HotWordSearchEntryModel.6.1(this, localAbstractGifImage));
       paramURLDrawable.setVisibility(0);
-      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener;
+      paramURLDrawable.setImageDrawable(this.b);
+      paramURLDrawable = this.c;
       if (paramURLDrawable != null) {
         paramURLDrawable.a();
       }
@@ -42,7 +42,7 @@ final class HotWordSearchEntryModel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.6
  * JD-Core Version:    0.7.0.1
  */

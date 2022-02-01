@@ -19,58 +19,22 @@ public class PlaceholderSegment
   extends SegmentView
 {
   public static final String KEY = "PlaceholderSegment";
-  private int jdField_a_of_type_Int = 0;
-  private BaseViewHolder jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
-  private String jdField_a_of_type_JavaLangString = null;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private boolean a = false;
+  private boolean b = false;
+  private String c = null;
+  private int d = 0;
+  private int e = 0;
+  private BaseViewHolder f;
+  private String g;
   
   public PlaceholderSegment(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void M_()
-  {
-    super.M_();
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
-    if (localObject == null) {
-      return;
-    }
-    localObject = (ImageView)((BaseViewHolder)localObject).a(2131374561);
-    if (localObject == null) {
-      return;
-    }
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
-    {
-      ((ImageView)localObject).setImageResource(this.jdField_b_of_type_Int);
-      return;
-    }
-    ((ImageView)localObject).setImageResource(this.jdField_a_of_type_Int);
-  }
-  
-  public void P_()
-  {
-    Q_();
-  }
-  
-  protected void Q_()
-  {
-    SegmentView localSegmentView = a().a(this.jdField_b_of_type_JavaLangString);
-    if ((localSegmentView != null) && (localSegmentView.a() != 0))
-    {
-      a_(false);
-      return;
-    }
-    a_(true);
+    this.m = false;
+    this.g = paramString1;
+    this.c = paramString2;
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
   public int a()
@@ -80,43 +44,79 @@ public class PlaceholderSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131374560);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131374561);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131442730);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131442731);
+    if (TextUtils.isEmpty(this.c))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131708183));
-      localStringBuilder.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(HardCodeUtil.a(2131905978));
+      localStringBuilder.append(QQStoryConstant.a);
       localStringBuilder.append("\n拍摄一段小视频，分享眼前的世界");
       paramViewGroup.setText(localStringBuilder.toString());
     }
     else
     {
-      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
+      paramViewGroup.setText(this.c);
     }
     QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-      localImageView.setImageResource(this.jdField_b_of_type_Int);
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.k(), false, null)) {
+      localImageView.setImageResource(this.e);
     } else {
-      localImageView.setImageResource(this.jdField_a_of_type_Int);
+      localImageView.setImageResource(this.d);
     }
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561654, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+    this.f = new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628033, paramViewGroup, false));
+    return this.f;
   }
   
-  public String a()
+  public String b()
   {
     return "PlaceholderSegment";
   }
   
-  protected void c()
+  public void br_()
   {
-    Q_();
+    d();
+  }
+  
+  protected void d()
+  {
+    SegmentView localSegmentView = w().b(this.g);
+    if ((localSegmentView != null) && (localSegmentView.a() != 0))
+    {
+      c(false);
+      return;
+    }
+    c(true);
+  }
+  
+  protected void g()
+  {
+    d();
+  }
+  
+  public void i()
+  {
+    super.i();
+    Object localObject = this.f;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (ImageView)((BaseViewHolder)localObject).a(2131442731);
+    if (localObject == null) {
+      return;
+    }
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.k(), false, null))
+    {
+      ((ImageView)localObject).setImageResource(this.e);
+      return;
+    }
+    ((ImageView)localObject).setImageResource(this.d);
   }
 }
 

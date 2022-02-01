@@ -22,23 +22,23 @@ class TroopEnterEffectController$2
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext(), QQBrowserActivity.class);
+      paramView = new Intent(this.d.e.getContext(), QQBrowserActivity.class);
       paramMotionEvent = IndividuationUrlHelper.a("troopEnterEffect");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramMotionEvent);
       localStringBuilder.append("&gc=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b);
+      localStringBuilder.append(this.d.j);
       paramView.putExtra("url", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext().startActivity(paramView);
-      ((ITroopEnterEffectService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all")).report("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b });
-      VasWebviewUtil.a(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectData.a), "");
+      this.d.e.getContext().startActivity(paramView);
+      ((ITroopEnterEffectService)this.a.getRuntimeService(ITroopEnterEffectService.class, "all")).report("Grp_AIO", "action_clk", new String[] { this.d.j });
+      VasWebviewUtil.a(this.b, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.c.a), "");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.2
  * JD-Core Version:    0.7.0.1
  */

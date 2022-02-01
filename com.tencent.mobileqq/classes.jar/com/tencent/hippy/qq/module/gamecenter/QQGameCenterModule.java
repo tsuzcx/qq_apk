@@ -155,14 +155,13 @@ public class QQGameCenterModule
   private void getRequestDataByIpc(HippyMap paramHippyMap, Promise paramPromise)
   {
     int i = saveCallback(paramPromise);
-    this.mReqBundle.clear();
-    paramPromise = this.mReqBundle;
     if (paramHippyMap.containsKey("gameId")) {
       paramHippyMap = paramHippyMap.getString("gameId");
     } else {
       paramHippyMap = "";
     }
-    paramPromise.putString("gameId", paramHippyMap);
+    this.mReqBundle.clear();
+    this.mReqBundle.putString("gameId", paramHippyMap);
     super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_request_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
@@ -195,7 +194,17 @@ public class QQGameCenterModule
   {
     int i = saveCallback(paramPromise);
     this.mReqBundle.clear();
+    if (paramHippyMap.containsKey("gameId")) {
+      paramPromise = paramHippyMap.getString("gameId");
+    } else {
+      paramPromise = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getSessionDataByIpc], gameId:");
+    localStringBuilder.append(paramPromise);
+    QLog.i("QQGameCenterModule", 1, localStringBuilder.toString());
     this.mReqBundle.putInt("dataType", paramHippyMap.getInt("dataType"));
+    this.mReqBundle.putString("gameId", paramPromise);
     super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_session_info", String.valueOf(i), this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
@@ -205,12 +214,24 @@ public class QQGameCenterModule
     if (!(localAppInterface instanceof QQAppInterface)) {
       return;
     }
+    boolean bool = paramHippyMap.containsKey("gameId");
+    String str2 = "";
+    String str1;
+    if (bool) {
+      str1 = paramHippyMap.getString("gameId");
+    } else {
+      str1 = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getSessionDataInMainProcess], gameId:");
+    localStringBuilder.append(str1);
+    QLog.i("QQGameCenterModule", 1, localStringBuilder.toString());
     int i = paramHippyMap.getInt("dataType");
-    paramHippyMap = parseGetSessionRsp(MessengerService.a((QQAppInterface)localAppInterface, i));
+    paramHippyMap = parseGetSessionRsp(MessengerService.a((QQAppInterface)localAppInterface, i, str1));
     if (paramPromise != null)
     {
       if (paramHippyMap == null) {
-        paramHippyMap = "";
+        paramHippyMap = str2;
       } else {
         paramHippyMap = paramHippyMap.toString();
       }
@@ -751,35 +772,41 @@ public class QQGameCenterModule
     {
       int i = paramBundle.getInt("result");
       int j = paramBundle.getInt("cnt");
-      paramBundle = new JSONObject();
+      Object localObject = new JSONObject();
       try
       {
-        paramBundle.put("ret", i);
-        paramBundle.put("newMsgCount", j);
-        Object localObject = paramBundle;
-        if (!QLog.isColorLevel()) {
-          break label138;
+        ((JSONObject)localObject).put("ret", i);
+        ((JSONObject)localObject).put("newMsgCount", j);
+        paramBundle = paramBundle.getString("singleUnread", "");
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[parseGetNewMsgCountRsp] ----unreadStr---:");
+        localStringBuilder1.append(paramBundle);
+        QLog.i("QQGameCenterModule", 1, localStringBuilder1.toString());
+        if (!TextUtils.isEmpty(paramBundle)) {
+          ((JSONObject)localObject).put("tabMsgCount", new JSONObject(paramBundle));
         }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("parseGetNewMsgCountRsp dataStr:");
-        ((StringBuilder)localObject).append(paramBundle);
-        QLog.d("QQGameCenterModule", 2, ((StringBuilder)localObject).toString());
-        return paramBundle;
+        paramBundle = new StringBuilder();
+        paramBundle.append("----885unread----:");
+        paramBundle.append(localObject);
+        QLog.d("QQGameCenterModule", 1, paramBundle.toString());
+        return localObject;
       }
-      catch (Throwable localThrowable1) {}
-      localStringBuilder = new StringBuilder();
+      catch (Throwable localThrowable2)
+      {
+        paramBundle = (Bundle)localObject;
+        localObject = localThrowable2;
+      }
+      localStringBuilder2 = new StringBuilder();
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable1)
     {
       paramBundle = null;
     }
-    StringBuilder localStringBuilder;
-    localStringBuilder.append("parseGetNewMsgCountRsp error:");
-    localStringBuilder.append(localThrowable2);
-    QLog.d("QQGameCenterModule", 1, localStringBuilder.toString());
-    Bundle localBundle = paramBundle;
-    label138:
-    return localBundle;
+    StringBuilder localStringBuilder2;
+    localStringBuilder2.append("parseGetNewMsgCountRsp error:");
+    localStringBuilder2.append(localThrowable1);
+    QLog.d("QQGameCenterModule", 1, localStringBuilder2.toString());
+    return paramBundle;
   }
   
   protected JSONObject parseGetSessionRsp(Bundle paramBundle)
@@ -855,7 +882,7 @@ public class QQGameCenterModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.gamecenter.QQGameCenterModule
  * JD-Core Version:    0.7.0.1
  */

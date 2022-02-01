@@ -15,20 +15,20 @@ import org.json.JSONObject;
 class CommonCallback
   implements Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private HttpResponse jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse;
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+  private Handler a = new Handler(Looper.getMainLooper());
+  private HttpResponse b;
+  private LogInterface c;
   
   public CommonCallback(HttpResponse paramHttpResponse, LogInterface paramLogInterface)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse = paramHttpResponse;
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = paramLogInterface;
+    this.b = paramHttpResponse;
+    this.c = paramLogInterface;
   }
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new CommonCallback.1(this));
+    if (this.b != null) {
+      this.a.post(new CommonCallback.1(this));
     }
   }
   
@@ -36,14 +36,14 @@ class CommonCallback
   {
     if (!paramResponse.isSuccessful())
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new CommonCallback.2(this, paramResponse));
+      this.a.post(new CommonCallback.2(this, paramResponse));
       return;
     }
     Object localObject;
     if (paramResponse.body() != null)
     {
       paramCall = paramResponse.body().string();
-      paramResponse = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+      paramResponse = this.c;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onResponse result = ");
       ((StringBuilder)localObject).append(paramCall);
@@ -53,7 +53,7 @@ class CommonCallback
     {
       paramCall = "";
     }
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse != null)
+    if (this.b != null)
     {
       paramResponse = null;
       try
@@ -62,20 +62,20 @@ class CommonCallback
       }
       catch (JSONException paramCall)
       {
-        localObject = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
+        localObject = this.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onResponse JSONException e = ");
         localStringBuilder.append(paramCall);
         ((LogInterface)localObject).i("CommonCallback", localStringBuilder.toString(), new Object[0]);
         paramCall = paramResponse;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new CommonCallback.3(this, paramCall));
+      this.a.post(new CommonCallback.3(this, paramCall));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CommonCallback
  * JD-Core Version:    0.7.0.1
  */

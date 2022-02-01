@@ -9,12 +9,12 @@ class ColorNoteControllerImpl$2
   
   public void run()
   {
-    ColorNoteControllerImpl.access$100(this.this$0).a();
+    ColorNoteControllerImpl.access$100(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.api.impl.ColorNoteControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class FileManagerInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if ("mr_fileManager".equals(a(paramChain))) {
+    if ("mr_fileManager".equals(b(paramChain))) {
       return FileManagerEntity.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class FileManagerInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.FileManagerInterceptor
  * JD-Core Version:    0.7.0.1
  */

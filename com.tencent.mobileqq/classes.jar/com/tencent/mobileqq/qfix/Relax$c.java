@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qfix;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 class Relax$c
@@ -15,7 +15,7 @@ class Relax$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qfix.Relax.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class TroopSettingActivity$6
   {
     paramContext = paramIntent.getAction();
     boolean bool;
-    if ((this.a.a != null) && (this.a.a.isHomeworkTroop())) {
+    if ((this.a.i != null) && (this.a.i.isHomeworkTroop())) {
       bool = true;
     } else {
       bool = false;
@@ -41,7 +41,7 @@ class TroopSettingActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.6
  * JD-Core Version:    0.7.0.1
  */

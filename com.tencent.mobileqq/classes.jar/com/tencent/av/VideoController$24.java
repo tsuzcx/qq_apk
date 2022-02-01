@@ -10,7 +10,7 @@ class VideoController$24
   public void run()
   {
     VideoController localVideoController = this.this$0;
-    localVideoController.a(this.a, localVideoController.a().c, 12);
+    localVideoController.a(this.a, localVideoController.k().s, 12);
   }
 }
 

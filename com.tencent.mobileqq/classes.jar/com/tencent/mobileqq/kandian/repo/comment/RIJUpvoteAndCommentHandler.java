@@ -41,26 +41,26 @@ public class RIJUpvoteAndCommentHandler
   
   private void a(long paramLong, int paramInt, oidb_cmd0x8c8.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().c(paramInt).values().iterator();
+    Iterator localIterator = this.a.i().d(paramInt).values().iterator();
     while (localIterator.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)localIterator.next();
-      if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mFeedId == paramLong) && (localAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (localAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null))
+      if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mFeedId == paramLong) && (localAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (localAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g != null))
       {
         TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = localAbsBaseArticleInfo.mTopicRecommendFeedsInfo;
-        if ((paramSocializeFeedsInfo.msg_topic_recommend_feeds_info.has()) && (localTopicRecommendFeedsInfo != null) && (localTopicRecommendFeedsInfo.a != null))
+        if ((paramSocializeFeedsInfo.msg_topic_recommend_feeds_info.has()) && (localTopicRecommendFeedsInfo != null) && (localTopicRecommendFeedsInfo.g != null))
         {
           Object localObject = (oidb_cmd0x8c8.TopicRecommendFeedsInfo)paramSocializeFeedsInfo.msg_topic_recommend_feeds_info.get();
           if (((oidb_cmd0x8c8.TopicRecommendFeedsInfo)localObject).msg_topic_recommend_info.has())
           {
             localObject = ((oidb_cmd0x8c8.TopicRecommendFeedsInfo)localObject).msg_topic_recommend_info.get();
             paramInt = 0;
-            while ((paramInt < ((List)localObject).size()) && (paramInt < localTopicRecommendFeedsInfo.a.size()))
+            while ((paramInt < ((List)localObject).size()) && (paramInt < localTopicRecommendFeedsInfo.g.size()))
             {
               oidb_cmd0x8c8.TopicRecommendInfo localTopicRecommendInfo = (oidb_cmd0x8c8.TopicRecommendInfo)((List)localObject).get(paramInt);
-              TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo1 = (TopicRecommendFeedsInfo.TopicRecommendInfo)localTopicRecommendFeedsInfo.a.get(paramInt);
+              TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo1 = (TopicRecommendFeedsInfo.TopicRecommendInfo)localTopicRecommendFeedsInfo.g.get(paramInt);
               if (localTopicRecommendInfo.uint32_number_of_participants.has()) {
-                localTopicRecommendInfo1.b = localTopicRecommendInfo.uint32_number_of_participants.get();
+                localTopicRecommendInfo1.e = localTopicRecommendInfo.uint32_number_of_participants.get();
               }
               paramInt += 1;
             }
@@ -77,16 +77,16 @@ public class RIJUpvoteAndCommentHandler
     {
       int j = 0;
       int i = j;
-      if (paramAbsBaseArticleInfo2.mSocialFeedInfo.h != 2)
+      if (paramAbsBaseArticleInfo2.mSocialFeedInfo.o != 2)
       {
         i = j;
-        if (paramAbsBaseArticleInfo1.mSocialFeedInfo.h == 2) {
+        if (paramAbsBaseArticleInfo1.mSocialFeedInfo.o == 2) {
           i = 1;
         }
       }
-      paramAbsBaseArticleInfo2.mSocialFeedInfo.h = paramAbsBaseArticleInfo1.mSocialFeedInfo.h;
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.updateEntity(paramAbsBaseArticleInfo2);
-      paramAbsBaseArticleInfo1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(paramAbsBaseArticleInfo2, (int)paramAbsBaseArticleInfo2.mChannelID);
+      paramAbsBaseArticleInfo2.mSocialFeedInfo.o = paramAbsBaseArticleInfo1.mSocialFeedInfo.o;
+      this.a.updateEntity(paramAbsBaseArticleInfo2);
+      paramAbsBaseArticleInfo1 = this.a.i().a(paramAbsBaseArticleInfo2, (int)paramAbsBaseArticleInfo2.mChannelID);
       if ((i != 0) && (paramAbsBaseArticleInfo1 != null)) {
         paramAbsBaseArticleInfo1.isNeedShowBtnWhenFollowed = true;
       }
@@ -98,21 +98,21 @@ public class RIJUpvoteAndCommentHandler
     if (paramAbsBaseArticleInfo == null) {
       return;
     }
-    if (((paramAbsBaseArticleInfo.mFeedType == 11) || (paramAbsBaseArticleInfo.mFeedType == 14)) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0))
+    if (((paramAbsBaseArticleInfo.mFeedType == 11) || (paramAbsBaseArticleInfo.mFeedType == 14)) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.size() > 0))
     {
       a(paramAbsBaseArticleInfo.mFeedId, paramInt, paramSocializeFeedsInfo);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.updateEntity(paramAbsBaseArticleInfo);
+      this.a.updateEntity(paramAbsBaseArticleInfo);
       return;
     }
     if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
     {
-      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.h;
+      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.o;
       SocializeFeedsInfoUtils.a(paramAbsBaseArticleInfo.mSocialFeedInfo, paramSocializeFeedsInfo);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.updateEntity(paramAbsBaseArticleInfo);
-      paramSocializeFeedsInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(paramAbsBaseArticleInfo, paramInt);
+      this.a.updateEntity(paramAbsBaseArticleInfo);
+      paramSocializeFeedsInfo = this.a.i().a(paramAbsBaseArticleInfo, paramInt);
       if (paramSocializeFeedsInfo != null)
       {
-        if ((i != 2) && (paramAbsBaseArticleInfo.mSocialFeedInfo.h == 2)) {
+        if ((i != 2) && (paramAbsBaseArticleInfo.mSocialFeedInfo.o == 2)) {
           paramSocializeFeedsInfo.isNeedShowBtnWhenFollowed = true;
         }
         paramSocializeFeedsInfo.invalidateProteusTemplateBean();
@@ -126,7 +126,7 @@ public class RIJUpvoteAndCommentHandler
     if (i < 0)
     {
       paramToServiceMsg.addAttribute("0x8c8_retry_times", Integer.valueOf(i + 1));
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq(paramToServiceMsg);
+      this.a.sendPbReq(paramToServiceMsg);
       return;
     }
     paramToServiceMsg = new StringBuilder();
@@ -154,7 +154,7 @@ public class RIJUpvoteAndCommentHandler
       if (localObject1 != null)
       {
         paramConcurrentMap.remove(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq));
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(Integer.valueOf(0), (AbsBaseArticleInfo)localObject1);
+        this.a.i().a(Integer.valueOf(0), (AbsBaseArticleInfo)localObject1);
         paramList.add(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq));
       }
     }
@@ -168,7 +168,7 @@ public class RIJUpvoteAndCommentHandler
         return;
       }
       paramRspBody = paramRspBody.rpt_social_feeds_info.get();
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJUpvoteAndCommentHandler.2(this, paramRspBody, paramConcurrentHashMap, paramBoolean));
+      this.f.execute(new RIJUpvoteAndCommentHandler.2(this, paramRspBody, paramConcurrentHashMap, paramBoolean));
     }
   }
   
@@ -180,7 +180,7 @@ public class RIJUpvoteAndCommentHandler
       ((StringBuilder)localObject).append("publishUin = ");
       ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.publishUin);
       localObject = ((StringBuilder)localObject).toString();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(BaseArticleInfo.class, true, (String)localObject, null, null, null, "mRecommendSeq desc", null);
+      localObject = this.d.query(BaseArticleInfo.class, true, (String)localObject, null, null, null, "mRecommendSeq desc", null);
       if (localObject == null)
       {
         localObject = new StringBuilder();
@@ -215,7 +215,7 @@ public class RIJUpvoteAndCommentHandler
       if (localObject1 != null)
       {
         paramConcurrentMap.remove(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq));
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(Integer.valueOf(70), (AbsBaseArticleInfo)localObject1);
+        this.a.i().a(Integer.valueOf(70), (AbsBaseArticleInfo)localObject1);
         paramList.add(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq));
       }
     }
@@ -224,7 +224,7 @@ public class RIJUpvoteAndCommentHandler
   private void b(oidb_cmd0x8c8.RspBody paramRspBody, ConcurrentHashMap<String, AbsBaseArticleInfo> paramConcurrentHashMap, boolean paramBoolean)
   {
     paramRspBody = paramRspBody.rpt_del_feeds_info_list.get();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJUpvoteAndCommentHandler.3(this, paramRspBody, paramConcurrentHashMap));
+    this.f.execute(new RIJUpvoteAndCommentHandler.3(this, paramRspBody, paramConcurrentHashMap));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -260,18 +260,18 @@ public class RIJUpvoteAndCommentHandler
   
   public void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated())
+    if (!this.f.isTerminated())
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
+      if (this.f.isShutdown()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJUpvoteAndCommentHandler.1(this, paramString, paramInt1, paramInt2, paramBoolean));
+      this.f.execute(new RIJUpvoteAndCommentHandler.1(this, paramString, paramInt1, paramInt2, paramBoolean));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.RIJUpvoteAndCommentHandler
  * JD-Core Version:    0.7.0.1
  */

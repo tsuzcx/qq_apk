@@ -10,7 +10,7 @@ import javax.microedition.khronos.egl.EGLDisplay;
 class ARGLSurfaceView$1
   implements GLSurfaceView.EGLContextFactory
 {
-  private int jdField_a_of_type_Int = 12440;
+  private int b = 12440;
   
   ARGLSurfaceView$1(ARGLSurfaceView paramARGLSurfaceView) {}
   
@@ -20,14 +20,14 @@ class ARGLSurfaceView$1
     localStringBuilder.append("createContext. display = ");
     localStringBuilder.append(paramEGLDisplay);
     QLog.i("AREngine_ARGLSurfaceView", 1, localStringBuilder.toString());
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
   }
   
   public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView) != null) {
-      ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView).a();
+    if (ARGLSurfaceView.a(this.a) != null) {
+      ARGLSurfaceView.a(this.a).a();
     }
     if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
@@ -52,7 +52,7 @@ class ARGLSurfaceView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGLSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,17 @@ final class RIJImageOptReport$1
   
   public void run()
   {
-    if (RIJImageOptReport.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest))
+    if (RIJImageOptReport.b(this.a))
     {
-      RIJImageOptReport.a(6, this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest);
-      ImageRequest localImageRequest = this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest;
-      localImageRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      RIJImageOptReport.b(localImageRequest);
+      ImageRequest localImageRequest = this.a;
+      localImageRequest.r = this.b;
+      RIJImageOptReport.c(localImageRequest);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptReport.1
  * JD-Core Version:    0.7.0.1
  */

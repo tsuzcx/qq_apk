@@ -11,10 +11,10 @@ class MultiViewBlock$1$1
   {
     if (((Integer)VSConfigManager.a().a("KEY_NOTIFY_DATA_SET_CHANGE_WAY_DEFTAUL", Integer.valueOf(1))).intValue() == 1)
     {
-      this.a.a.a().notifyItemRangeChanged(this.a.a.c(0), this.a.a.getItemCount());
+      this.a.a.B().notifyItemRangeChanged(this.a.a.f(0), this.a.a.getItemCount());
       return;
     }
-    this.a.a.a().notifyDataSetChanged();
+    this.a.a.B().notifyDataSetChanged();
   }
 }
 

@@ -5,44 +5,27 @@ import java.util.ArrayList;
 
 public class Sentence
 {
-  public long a;
-  public SentenceAttachInfo a;
   public String a;
-  public ArrayList<SentenceUI> a;
   public long b;
-  public SentenceAttachInfo b;
-  public ArrayList<Character> b;
-  
-  public Sentence()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-    this.jdField_b_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  public long c;
+  public ArrayList<SentenceUI> d = new ArrayList();
+  public SentenceAttachInfo e = new SentenceAttachInfo();
+  public SentenceAttachInfo f = new SentenceAttachInfo();
+  public ArrayList<Character> g;
   
   public Sentence a()
   {
     Sentence localSentence = new Sentence();
-    localSentence.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSentence.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    localSentence.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    localSentence.a = this.a;
+    localSentence.c = this.c;
+    localSentence.b = this.b;
+    if (this.g != null)
     {
-      localSentence.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      localSentence.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+      localSentence.g = new ArrayList();
+      localSentence.g.addAll(this.g);
     }
-    localSentence.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    localSentence.d.addAll(this.d);
     return localSentence;
-  }
-  
-  public ArrayList<SentenceUI> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -50,9 +33,9 @@ public class Sentence
     Object localObject1 = paramPaint1;
     Object localObject2 = paramPaint2;
     int i = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int j = (int)((Paint)localObject1).measureText(this.jdField_a_of_type_JavaLangString);
-    int k = (int)((Paint)localObject2).measureText(this.jdField_a_of_type_JavaLangString);
+    this.d.clear();
+    int j = (int)((Paint)localObject1).measureText(this.a);
+    int k = (int)((Paint)localObject2).measureText(this.a);
     int i3 = 0;
     if (j <= i)
     {
@@ -63,20 +46,20 @@ public class Sentence
       }
       else
       {
-        paramInt = i - (int)((Paint)localObject2).measureText(this.jdField_a_of_type_JavaLangString) >> 1;
+        paramInt = i - (int)((Paint)localObject2).measureText(this.a) >> 1;
         i = i - j >> 1;
       }
-      paramPaint1 = new SentenceUI(this.jdField_a_of_type_JavaLangString, paramInt, i, k, j, this.jdField_b_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+      paramPaint1 = new SentenceUI(this.a, paramInt, i, k, j, this.g);
+      this.d.add(paramPaint1);
       return;
     }
     if (paramBoolean1)
     {
-      paramPaint1 = new SentenceUI(this.jdField_a_of_type_JavaLangString, 0, 0, k, j, this.jdField_b_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+      paramPaint1 = new SentenceUI(this.a, 0, 0, k, j, this.g);
+      this.d.add(paramPaint1);
       return;
     }
-    localObject2 = LyricDataUtil.a(this.jdField_a_of_type_JavaLangString, (Paint)localObject1, i, i);
+    localObject2 = LyricDataUtil.a(this.a, (Paint)localObject1, i, i);
     i = localObject2.length;
     if (i > 0)
     {
@@ -102,7 +85,7 @@ public class Sentence
           i6 = n - i1 >> 1;
         }
         localObject1 = null;
-        if (this.jdField_b_of_type_JavaUtilArrayList != null)
+        if (this.g != null)
         {
           int i7 = i2 + localObject2[i3].length();
           localObject1 = new ArrayList();
@@ -110,9 +93,9 @@ public class Sentence
           i2 = k;
           n = j;
           j = i7;
-          while (n < this.jdField_b_of_type_JavaUtilArrayList.size())
+          while (n < this.g.size())
           {
-            Character localCharacter = (Character)this.jdField_b_of_type_JavaUtilArrayList.get(n);
+            Character localCharacter = (Character)this.g.get(n);
             m = i2;
             k = i1;
             if (i3 != 0)
@@ -122,22 +105,22 @@ public class Sentence
               if (i4 == n)
               {
                 m = j - localObject2[i3].length();
-                i1 = localCharacter.jdField_a_of_type_Int;
+                i1 = localCharacter.c;
                 k = m;
                 m = i1 - m;
               }
             }
-            if ((localCharacter.jdField_a_of_type_Int <= j) && (localCharacter.jdField_b_of_type_Int >= j))
+            if ((localCharacter.c <= j) && (localCharacter.d >= j))
             {
               if (i3 == 0)
               {
-                ((ArrayList)localObject1).add(new Character(localCharacter.jdField_a_of_type_Long, localCharacter.jdField_b_of_type_Long, localCharacter.jdField_a_of_type_Int, localObject2[i3].length()));
+                ((ArrayList)localObject1).add(new Character(localCharacter.a, localCharacter.b, localCharacter.c, localObject2[i3].length()));
               }
               else
               {
-                i1 = localCharacter.jdField_a_of_type_Int;
+                i1 = localCharacter.c;
                 i2 = localObject2[i3].length();
-                ((ArrayList)localObject1).add(new Character(localCharacter.jdField_a_of_type_Long, localCharacter.jdField_b_of_type_Long, i1 - k - m, i2));
+                ((ArrayList)localObject1).add(new Character(localCharacter.a, localCharacter.b, i1 - k - m, i2));
               }
               n += 1;
               i4 = n;
@@ -150,9 +133,9 @@ public class Sentence
             }
             else
             {
-              i1 = localCharacter.jdField_a_of_type_Int;
-              i2 = localCharacter.jdField_b_of_type_Int;
-              ((ArrayList)localObject1).add(new Character(localCharacter.jdField_a_of_type_Long, localCharacter.jdField_b_of_type_Long, i1 - k - m, i2 - k - m));
+              i1 = localCharacter.c;
+              i2 = localCharacter.d;
+              ((ArrayList)localObject1).add(new Character(localCharacter.a, localCharacter.b, i1 - k - m, i2 - k - m));
             }
             n += 1;
             i2 = m;
@@ -169,7 +152,7 @@ public class Sentence
         }
         label637:
         localObject1 = new SentenceUI(localObject2[i3], i5, i6, (ArrayList)localObject1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        this.d.add(localObject1);
         i3 += 1;
         i2 = j;
         j = n;
@@ -178,10 +161,20 @@ public class Sentence
       }
     }
   }
+  
+  public int b()
+  {
+    return this.d.size();
+  }
+  
+  public ArrayList<SentenceUI> c()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.data.Sentence
  * JD-Core Version:    0.7.0.1
  */

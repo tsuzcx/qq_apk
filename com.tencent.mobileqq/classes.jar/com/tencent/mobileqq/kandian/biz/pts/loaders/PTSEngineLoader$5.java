@@ -11,13 +11,13 @@ class PTSEngineLoader$5
   
   public void run()
   {
-    if (this.this$0.a())
+    if (this.this$0.d())
     {
       QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], has loaded, do not load again.");
       return;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(PTSEngineLoader.b(this.this$0));
+    ((StringBuilder)localObject).append(PTSEngineLoader.e(this.this$0));
     ((StringBuilder)localObject).append("/");
     ((StringBuilder)localObject).append("libpts.so");
     localObject = ((StringBuilder)localObject).toString();
@@ -50,7 +50,7 @@ class PTSEngineLoader$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSEngineLoader.5
  * JD-Core Version:    0.7.0.1
  */

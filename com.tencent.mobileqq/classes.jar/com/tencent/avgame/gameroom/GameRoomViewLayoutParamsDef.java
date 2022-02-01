@@ -28,17 +28,17 @@ public class GameRoomViewLayoutParamsDef
   public static int P = 0;
   public static int Q = 0;
   public static int R = 0;
-  public static int S = 0;
-  public static int T = 0;
-  public static int U = 0;
-  public static int V = 0;
-  public static float a = 597.0F;
-  public static int a = 0;
-  public static float b = 249.0F;
-  public static int b = 0;
-  public static float c = 46.0F;
-  public static int c = 0;
-  public static float d = 750.0F;
+  public static float S = 597.0F;
+  public static float T = 249.0F;
+  public static float U = 46.0F;
+  public static float V = 750.0F;
+  public static int W;
+  public static int X;
+  public static int Y;
+  public static int Z;
+  public static int a;
+  public static int b;
+  public static int c;
   public static int d;
   public static int e;
   public static int f;
@@ -65,83 +65,83 @@ public class GameRoomViewLayoutParamsDef
   
   public static void a(Context paramContext, boolean paramBoolean)
   {
-    int i4 = ViewUtils.a();
-    int i1 = ViewUtils.b();
+    int i4 = ViewUtils.getScreenWidth();
+    int i1 = ViewUtils.getScreenHeight();
     int i2 = ImmersiveUtils.getStatusBarHeight(paramContext);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      a = i2 + ViewUtils.b(4.0F);
+      a = i2 + ViewUtils.dpToPx(4.0F);
     }
     else
     {
       i1 -= i2;
-      T = i2;
-      a = ViewUtils.b(8.0F);
+      X = i2;
+      a = ViewUtils.dpToPx(8.0F);
     }
     double d1 = i4;
     Double.isNaN(d1);
     int i5 = (int)(d1 * 0.2D);
-    S = i5;
-    int i3 = i4 + 0 + ViewUtils.b(22.0F) + ((i4 - ViewUtils.b(72.0F)) / 4 + ViewUtils.b(32.0F)) * 2;
+    W = i5;
+    int i3 = i4 + 0 + ViewUtils.dpToPx(22.0F) + ((i4 - ViewUtils.dpToPx(72.0F)) / 4 + ViewUtils.dpToPx(32.0F)) * 2;
     i2 = i3;
     if (paramBoolean) {
-      i2 = i3 - ViewUtils.b(32.0F) / 2;
+      i2 = i3 - ViewUtils.dpToPx(32.0F) / 2;
     }
-    i2 = i1 - (i2 + ViewUtils.b(46.0F));
+    i2 = i1 - (i2 + ViewUtils.dpToPx(46.0F));
     paramBoolean = false;
     w = 0;
     y = i4;
     z = i4;
     d = i4;
     s = 0;
-    if (i2 < -ViewUtils.b(6.0F))
+    if (i2 < -ViewUtils.dpToPx(6.0F))
     {
       w = 0;
       y += i2;
-      S = i5;
+      W = i5;
     }
-    else if (i2 >= a + ViewUtils.b(48.0F))
+    else if (i2 >= a + ViewUtils.dpToPx(48.0F))
     {
-      w = a + ViewUtils.b(48.0F);
-      S = w + ViewUtils.b(20.0F);
+      w = a + ViewUtils.dpToPx(48.0F);
+      W = w + ViewUtils.dpToPx(20.0F);
       paramBoolean = true;
     }
     x = (int)(y * 0.2373333F);
-    b = a + paramContext.getResources().getDimensionPixelSize(2131296618);
+    b = a + paramContext.getResources().getDimensionPixelSize(2131296920);
     c = y;
     if (!paramBoolean) {
       c -= b;
     }
-    c += b + ViewUtils.a(14.0F);
-    r = ViewUtils.a(16.0F);
-    t = ViewUtils.a(40.0F);
-    p = (i4 - r * 2 - ViewUtils.a(14.0F) * 2) / 3;
+    c += b + ViewUtils.dip2px(14.0F);
+    r = ViewUtils.dip2px(16.0F);
+    t = ViewUtils.dip2px(40.0F);
+    p = (i4 - r * 2 - ViewUtils.dip2px(14.0F) * 2) / 3;
     q = (int)(p * 1.428572F);
-    u = ViewUtils.a(16.0F);
-    v = c - b - ViewUtils.a(70.0F);
-    A = w + y + ViewUtils.b(16.0F);
-    i2 = ViewUtils.b(10.0F);
+    u = ViewUtils.dip2px(16.0F);
+    v = c - b - ViewUtils.dip2px(70.0F);
+    A = w + y + ViewUtils.dpToPx(16.0F);
+    i2 = ViewUtils.dpToPx(10.0F);
     D = i2;
     C = i2;
-    E = ViewUtils.b(0.0F);
+    E = ViewUtils.dpToPx(0.0F);
     F = (i4 - D - C - E * 3) / 4;
-    G = F + ViewUtils.b(18.0F);
-    B = G * 2 + ViewUtils.b(20.0F);
-    J = w + y + ViewUtils.b(10.0F);
-    M = ViewUtils.b(2.0F);
-    O = DisplayUtil.a(paramContext) - J - ViewUtils.b(65.0F) - T;
+    G = F + ViewUtils.dpToPx(18.0F);
+    B = G * 2 + ViewUtils.dpToPx(20.0F);
+    J = w + y + ViewUtils.dpToPx(10.0F);
+    M = ViewUtils.dpToPx(2.0F);
+    O = DisplayUtil.a(paramContext) - J - ViewUtils.dpToPx(65.0F) - X;
     i2 = M;
     K = (i4 - i2 * 11) / 12;
     L = K;
     N = (O + i2) / (L + i2) * 12;
     P = z;
-    U = ViewUtils.b(88.0F);
-    V = ViewUtils.b(29.0F);
+    Y = ViewUtils.dpToPx(88.0F);
+    Z = ViewUtils.dpToPx(29.0F);
     R = w + y;
     Q = i4;
     float f1 = i4;
     float f2 = 0.1066667F * f1;
-    if (f2 < ViewUtils.a(40.0F))
+    if (f2 < ViewUtils.dip2px(40.0F))
     {
       i2 = (int)f2;
       e = i2;
@@ -158,18 +158,18 @@ public class GameRoomViewLayoutParamsDef
     }
     else
     {
-      i2 = ViewUtils.a(40.0F);
+      i2 = ViewUtils.dip2px(40.0F);
       e = i2;
       i = i2;
       m = i2;
-      f = ViewUtils.a(16.0F);
-      g = ViewUtils.a(20.0F);
-      h = ViewUtils.a(135.0F);
-      j = ViewUtils.a(6.0F);
-      k = ViewUtils.a(103.0F);
+      f = ViewUtils.dip2px(16.0F);
+      g = ViewUtils.dip2px(20.0F);
+      h = ViewUtils.dip2px(135.0F);
+      j = ViewUtils.dip2px(6.0F);
+      k = ViewUtils.dip2px(103.0F);
       l = 10;
-      n = ViewUtils.a(1.0F);
-      o = ViewUtils.a(14.0F);
+      n = ViewUtils.dip2px(1.0F);
+      o = ViewUtils.dip2px(14.0F);
     }
     paramContext = new StringBuilder();
     paramContext.append(" viewScreenWidth:");
@@ -217,9 +217,9 @@ public class GameRoomViewLayoutParamsDef
     paramContext.append("\n stageEnough:");
     paramContext.append(paramBoolean);
     paramContext.append("\n viewRootMarginTopOfScreen:");
-    paramContext.append(T);
+    paramContext.append(X);
     paramContext.append("\n stageTopTipMarginTop:");
-    paramContext.append(S);
+    paramContext.append(W);
     paramContext.append("\n pkSeatViewMarginTop:");
     paramContext.append(J);
     paramContext.append("\n seatBgItemWidth:");
@@ -235,9 +235,9 @@ public class GameRoomViewLayoutParamsDef
     paramContext.append("\n seatBgViewWidth:");
     paramContext.append(P);
     paramContext.append("\n gameMatchViewWidth:");
-    paramContext.append(U);
+    paramContext.append(Y);
     paramContext.append("\n gameMatchViewHeight:");
-    paramContext.append(V);
+    paramContext.append(Z);
     paramContext.append("\n pkCJTopHouseWidth:");
     paramContext.append(Q);
     paramContext.append("\n pkCJTopHouseHeight:");
@@ -259,7 +259,7 @@ public class GameRoomViewLayoutParamsDef
   public static void a(View paramView, int[] paramArrayOfInt)
   {
     paramView.getLocationInWindow(paramArrayOfInt);
-    int i1 = T;
+    int i1 = X;
     if (i1 > 0) {
       paramArrayOfInt[1] -= i1;
     }
@@ -269,7 +269,7 @@ public class GameRoomViewLayoutParamsDef
   {
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    T = arrayOfInt[1];
+    X = arrayOfInt[1];
   }
 }
 

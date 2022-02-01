@@ -6,19 +6,19 @@ import android.widget.TextView;
 
 public class BulkSendMessageFragment$ViewHolder
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  ImageView a;
+  TextView b;
+  String c;
+  public View d;
   
   public BulkSendMessageFragment$ViewHolder(View paramView)
   {
-    this.a = paramView;
+    this.d = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

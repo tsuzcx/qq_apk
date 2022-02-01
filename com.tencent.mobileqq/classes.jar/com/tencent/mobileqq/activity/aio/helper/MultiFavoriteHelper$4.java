@@ -17,20 +17,20 @@ class MultiFavoriteHelper$4
     if (paramInt != 1) {
       return;
     }
-    paramDialogInterface = MultiMsgUtil.a(MultiFavoriteHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiFavoriteHelper), (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface = MultiMsgUtil.a(MultiFavoriteHelper.b(this.c), (ArrayList)this.a);
     if (paramDialogInterface != null)
     {
       if (paramDialogInterface.size() == 0) {
         return;
       }
-      MultiFavoriteHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperMultiFavoriteHelper, paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(false, null, false);
+      MultiFavoriteHelper.a(this.c, paramDialogInterface);
+      this.b.a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiFavoriteHelper.4
  * JD-Core Version:    0.7.0.1
  */

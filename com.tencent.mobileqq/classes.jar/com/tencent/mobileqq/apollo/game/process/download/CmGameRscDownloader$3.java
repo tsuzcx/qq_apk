@@ -15,14 +15,14 @@ class CmGameRscDownloader$3
   
   public void b(StartCheckParam paramStartCheckParam)
   {
-    if (CmGameRscDownloader.a(this.a) != null) {
-      CmGameRscDownloader.a(this.a).c(-10001, CmGameRscDownloader.a(this.a).b);
+    if (CmGameRscDownloader.c(this.a) != null) {
+      CmGameRscDownloader.c(this.a).d(-10001, CmGameRscDownloader.a(this.a).i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.download.CmGameRscDownloader.3
  * JD-Core Version:    0.7.0.1
  */

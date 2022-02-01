@@ -18,8 +18,8 @@ class SubscribeHybirdFragment$1
   
   public void onDataInit(Bundle paramBundle)
   {
-    this.a.getUIStyleHandler().a.D = false;
-    this.a.getUIStyleHandler().a.f = true;
+    this.a.getUIStyleHandler().f.O = false;
+    this.a.getUIStyleHandler().f.m = true;
     SubscribeHybirdFragment localSubscribeHybirdFragment = this.a;
     SubscribeHybirdFragment.a(localSubscribeHybirdFragment, new SubscribeShareHelper(localSubscribeHybirdFragment.getHostActivity()));
     SubscribeHybirdFragment.a(this.a);
@@ -35,8 +35,8 @@ class SubscribeHybirdFragment$1
   public void onProgressChanged(WebView paramWebView, int paramInt)
   {
     super.onProgressChanged(paramWebView, paramInt);
-    if ((paramInt > 25) && (SubscribeHybirdFragment.a(this.a) != null)) {
-      SubscribeHybirdFragment.a(this.a).setVisibility(8);
+    if ((paramInt > 25) && (SubscribeHybirdFragment.b(this.a) != null)) {
+      SubscribeHybirdFragment.b(this.a).setVisibility(8);
     }
   }
 }

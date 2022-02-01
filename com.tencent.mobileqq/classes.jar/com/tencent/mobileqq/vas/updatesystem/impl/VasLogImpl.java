@@ -1,74 +1,39 @@
 package com.tencent.mobileqq.vas.updatesystem.impl;
 
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.IVasLog;
 
 public class VasLogImpl
   implements IVasLog
 {
-  public void d(String paramString1, String paramString2)
+  public void a(String paramString1, String paramString2)
   {
     QLog.d(paramString1, 1, paramString2);
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
     QLog.e(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
+  public boolean a()
   {
     return QLog.isColorLevel();
   }
   
-  public boolean isDebugVersion()
+  public void b(String paramString1, String paramString2)
   {
-    return false;
+    QLog.i(paramString1, 1, paramString2);
   }
   
-  public void v(String paramString1, String paramString2)
+  public void c(String paramString1, String paramString2)
   {
-    QLog.d(paramString1, 1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2, paramThrowable);
+    QLog.e(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasLogImpl
  * JD-Core Version:    0.7.0.1
  */

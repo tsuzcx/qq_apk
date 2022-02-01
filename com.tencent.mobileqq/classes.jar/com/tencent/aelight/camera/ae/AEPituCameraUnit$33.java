@@ -1,38 +1,32 @@
 package com.tencent.aelight.camera.ae;
 
-import com.tencent.aelight.camera.ae.camera.ui.FilterPagerViewStubHolder;
-import com.tencent.aelight.camera.ae.control.AEQIMManager;
-import com.tencent.aelight.camera.ae.data.AEMaterialManager;
-import com.tencent.aelight.camera.ae.mode.AECaptureMode;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 class AEPituCameraUnit$33
   implements Runnable
 {
-  AEPituCameraUnit$33(AEPituCameraUnit paramAEPituCameraUnit) {}
+  AEPituCameraUnit$33(AEPituCameraUnit paramAEPituCameraUnit, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "onResourceDownload update filterpager begin");
+    if (AEPituCameraUnit.p(this.this$0) == null)
+    {
+      ViewStub localViewStub = (ViewStub)this.this$0.g.findViewById(2063991436);
+      AEPituCameraUnit.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2063990887));
     }
-    FilterPagerViewStubHolder localFilterPagerViewStubHolder = this.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraUiFilterPagerViewStubHolder;
-    boolean bool;
-    if (this.this$0.b == AECaptureMode.NORMAL) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localFilterPagerViewStubHolder.d(bool);
-    ((AEMaterialManager)AEQIMManager.a(1)).b(false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "onResourceDownload update filterpager end");
-    }
+    this.this$0.D.postDelayed(AEPituCameraUnit.q(this.this$0), this.a.getTotalDuration());
+    AEPituCameraUnit.p(this.this$0).setVisibility(0);
+    AEPituCameraUnit.p(this.this$0).setImageDrawable(this.a);
+    this.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.33
  * JD-Core Version:    0.7.0.1
  */

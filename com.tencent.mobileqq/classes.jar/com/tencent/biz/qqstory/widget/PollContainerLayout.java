@@ -18,9 +18,9 @@ public class PollContainerLayout
   extends FrameLayout
 {
   public StoryVideoItem.PollLayout a;
-  public StoryVideoItem a;
-  private final PollWidgetUtils.IPollWidget jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget = PollWidgetUtils.a(getContext(), 1, 1, null);
-  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  public StoryVideoItem c;
+  private final PollWidgetUtils.IPollWidget d = PollWidgetUtils.a(getContext(), 1, 1, null);
   
   public PollContainerLayout(@NonNull Context paramContext)
   {
@@ -30,9 +30,9 @@ public class PollContainerLayout
   public PollContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
+    this.d.a(false);
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(), paramContext);
+    addView(this.d.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -40,57 +40,57 @@ public class PollContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    StoryVideoItem.PollLayout localPollLayout = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout;
+    StoryVideoItem.PollLayout localPollLayout = this.a;
     if (localPollLayout == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(localPollLayout, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a();
+    this.d.a(localPollLayout, paramInt1, paramInt2);
+    this.d.c();
   }
   
   public void a(StoryVideoItem.PollLayout paramPollLayout, int paramInt, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout = paramPollLayout;
+    this.a = paramPollLayout;
     if (paramPollLayout == null)
     {
       setVisibility(4);
       return;
     }
     setVisibility(0);
-    paramPollLayout = paramPollLayout.a;
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a().a(paramPollLayout[0]);
+    paramPollLayout = paramPollLayout.j;
+    this.d.b().a(paramPollLayout[0]);
     int i = 1;
     while (i < paramPollLayout.length)
     {
-      PollWidgetUtils.IPollWidget localIPollWidget = this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget;
+      PollWidgetUtils.IPollWidget localIPollWidget = this.d;
       int j = i - 1;
       localIPollWidget.a(j).a(paramPollLayout[i]);
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(j).a(false);
+      this.d.a(j).a(false);
       i += 1;
     }
-    if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
+    if ((this.b) && (paramInt >= 0))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(paramInt).a(true);
+      this.d.a(paramInt).a(true);
       if (paramArrayOfInt != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(paramArrayOfInt);
-        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(true);
+        this.d.a(paramArrayOfInt);
+        this.d.a(true);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
+        this.d.a(false);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a(false);
+      this.d.a(false);
     }
     a(getWidth(), getHeight());
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.c = paramStoryVideoItem;
     if (paramStoryVideoItem != null)
     {
       a(paramStoryVideoItem.getPollLayout(), paramStoryVideoItem.mPollResult, paramStoryVideoItem.mPollNumbers);
@@ -101,8 +101,8 @@ public class PollContainerLayout
   
   public boolean a(boolean paramBoolean)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    boolean bool = this.b;
+    this.b = paramBoolean;
     return bool;
   }
   

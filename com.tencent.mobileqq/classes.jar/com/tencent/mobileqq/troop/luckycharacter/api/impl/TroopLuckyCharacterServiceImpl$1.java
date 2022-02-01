@@ -17,7 +17,7 @@ class TroopLuckyCharacterServiceImpl$1
   
   public void run()
   {
-    TroopLuckyCharacterServiceImpl.access$002(this.this$0, (TroopLuckyCharacterConfig)QConfigManager.a().a(696));
+    TroopLuckyCharacterServiceImpl.access$002(this.this$0, (TroopLuckyCharacterConfig)QConfigManager.b().b(696));
     String str = TroopLuckyCharacterServiceImpl.access$100(this.this$0).getCurrentAccountUin();
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(str, 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -30,7 +30,7 @@ class TroopLuckyCharacterServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.luckycharacter.api.impl.TroopLuckyCharacterServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

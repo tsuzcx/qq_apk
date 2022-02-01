@@ -18,9 +18,9 @@ class SmallScreenService$3
     Object localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localObject != null)
     {
-      localObject = SharedPreUtils.a(((VideoAppInterface)localObject).getApp()).edit();
-      if (this.this$0.a.c()) {
-        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.this$0.a.a().K);
+      localObject = SharedPreUtils.B(((VideoAppInterface)localObject).getApp()).edit();
+      if (this.this$0.v.g()) {
+        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.this$0.v.k().bB);
       }
       ((SharedPreferences.Editor)localObject).apply();
     }
@@ -28,7 +28,7 @@ class SmallScreenService$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin;
 
+import com.tencent.qcircle.tavcut.TAVCut.Callback;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.tav.decoder.logger.Logger;
-import com.tencent.tavcut.TAVCut.Callback;
 
 class WeishiPlugin$MyCallback
   implements TAVCut.Callback
@@ -43,7 +43,7 @@ class WeishiPlugin$MyCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.WeishiPlugin.MyCallback
  * JD-Core Version:    0.7.0.1
  */

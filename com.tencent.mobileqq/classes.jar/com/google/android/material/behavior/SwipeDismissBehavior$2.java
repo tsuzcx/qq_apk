@@ -25,10 +25,10 @@ class SwipeDismissBehavior$2
         i = 0;
       }
       int j;
-      if ((this.a.jdField_a_of_type_Int != 0) || (i == 0))
+      if ((this.a.c != 0) || (i == 0))
       {
         j = k;
-        if (this.a.jdField_a_of_type_Int == 1)
+        if (this.a.c == 1)
         {
           j = k;
           if (i != 0) {}
@@ -45,8 +45,8 @@ class SwipeDismissBehavior$2
       }
       ViewCompat.offsetLeftAndRight(paramView, i);
       paramView.setAlpha(0.0F);
-      if (this.a.jdField_a_of_type_ComGoogleAndroidMaterialBehaviorSwipeDismissBehavior$OnDismissListener != null) {
-        this.a.jdField_a_of_type_ComGoogleAndroidMaterialBehaviorSwipeDismissBehavior$OnDismissListener.a(paramView);
+      if (this.a.b != null) {
+        this.a.b.a(paramView);
       }
       return true;
     }
@@ -55,7 +55,7 @@ class SwipeDismissBehavior$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.behavior.SwipeDismissBehavior.2
  * JD-Core Version:    0.7.0.1
  */

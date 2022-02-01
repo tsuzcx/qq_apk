@@ -10,25 +10,25 @@ final class AuthUIUtil$1
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(this.jdField_a_of_type_AndroidAppActivity);
-    if (this.jdField_a_of_type_Boolean)
+    QQToast localQQToast = new QQToast(this.a);
+    if (this.b)
     {
-      localQQToast.a(QQToast.a(2));
-      localQQToast.b(2);
+      localQQToast.setToastIcon(QQToast.getIconRes(2));
+      localQQToast.setType(2);
     }
     else
     {
-      localQQToast.a(QQToast.a(1));
-      localQQToast.b(1);
+      localQQToast.setToastIcon(QQToast.getIconRes(1));
+      localQQToast.setType(1);
     }
-    localQQToast.d(1);
-    localQQToast.a(this.jdField_a_of_type_JavaLangString);
-    localQQToast.a();
+    localQQToast.setDuration(1);
+    localQQToast.setToastMsg(this.c);
+    localQQToast.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthUIUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,16 +23,11 @@ import org.json.JSONObject;
 public class ShareModule
   extends DoraemonAPIModule
 {
-  protected ShareActionSheetBuilder a;
-  
-  public ShareModule()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
-  }
+  protected ShareActionSheetBuilder b = null;
   
   private void a(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+    paramJSONObject = this.a.h();
     int i;
     if ((paramJSONObject instanceof BaseActivity)) {
       i = ((BaseActivity)paramJSONObject).getTitleBarHeight();
@@ -40,16 +35,16 @@ public class ShareModule
       i = 0;
     }
     paramAPICallback = new ShareModule.1(this, i, paramAPICallback);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramJSONObject);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramJSONObject.getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(paramJSONObject));
+      this.b = new ShareActionSheetBuilder(paramJSONObject);
+      this.b.setActionSheetTitle(paramJSONObject.getString(2131916565));
+      this.b.setActionSheetItems(a(paramJSONObject));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(paramAPICallback);
+    this.b.setItemClickListener(paramAPICallback);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+      this.b.show();
       return;
     }
     catch (Exception paramJSONObject)
@@ -62,28 +57,28 @@ public class ShareModule
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130839068;
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -93,7 +88,7 @@ public class ShareModule
   private void b(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     int i = paramJSONObject.optInt("shareChanel", 0);
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+    Activity localActivity = this.a.h();
     if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
       DoraemonUtil.a(paramAPICallback, -1, "net work not available");
@@ -125,7 +120,7 @@ public class ShareModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.ShareModule
  * JD-Core Version:    0.7.0.1
  */

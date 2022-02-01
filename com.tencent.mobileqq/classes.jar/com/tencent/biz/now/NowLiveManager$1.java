@@ -28,7 +28,7 @@ class NowLiveManager$1
     {
       str = "";
     }
-    localObject1 = this.a.a((String)localObject1, l);
+    localObject1 = this.a.b((String)localObject1, l);
     if (paramJSONObject == null)
     {
       NowLiveManager.b(this.a);
@@ -42,7 +42,7 @@ class NowLiveManager$1
         paramJSONObject = paramJSONObject.optJSONObject("result");
         if (paramJSONObject != null)
         {
-          ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+          ((NowLiveManager.NowLiveInfo)localObject1).d = paramJSONObject.optInt("state");
           this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
         }
       }
@@ -69,8 +69,8 @@ class NowLiveManager$1
             }
             i += 1;
           }
-          ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
-          ((NowLiveManager.NowLiveInfo)localObject1).b = str;
+          ((NowLiveManager.NowLiveInfo)localObject1).e = paramJSONObject;
+          ((NowLiveManager.NowLiveInfo)localObject1).c = str;
         }
         this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
       }
@@ -80,7 +80,7 @@ class NowLiveManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowLiveManager.1
  * JD-Core Version:    0.7.0.1
  */

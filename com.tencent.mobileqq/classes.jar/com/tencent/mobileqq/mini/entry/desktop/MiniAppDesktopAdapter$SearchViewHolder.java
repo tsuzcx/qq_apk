@@ -36,8 +36,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131371211));
-    this.container = paramView.findViewById(2131371204);
+    this.keywordTv = ((TextView)paramView.findViewById(2131438553));
+    this.container = paramView.findViewById(2131438546);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -48,9 +48,9 @@ class MiniAppDesktopAdapter$SearchViewHolder
     Object localObject1;
     if (localObject2 != null)
     {
-      int i = 2130850694;
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (QQTheme.d(ThemeUtil.getCurrentThemeId()))) {
-        i = 2130841050;
+      int i = 2130852498;
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (QQTheme.isThemeSimpleDayUI(ThemeUtil.getCurrentThemeId()))) {
+        i = 2130841841;
       }
       int j = i;
       if (paramDesktopSearchInfo != null)
@@ -61,11 +61,11 @@ class MiniAppDesktopAdapter$SearchViewHolder
           if (QLog.isColorLevel()) {
             QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, ContainerBg");
           }
-          j = 2130850696;
+          j = 2130852500;
         }
       }
       this.container.setBackgroundResource(j);
-      j = 2130850689;
+      j = 2130852493;
       i = j;
       if (paramDesktopSearchInfo != null)
       {
@@ -75,13 +75,13 @@ class MiniAppDesktopAdapter$SearchViewHolder
           if (QLog.isColorLevel()) {
             QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, SearchIconBg");
           }
-          i = 2130850692;
+          i = 2130852496;
         }
       }
       localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(i);
       ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
       this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-      j = BaseApplicationImpl.getContext().getResources().getColor(2131167155);
+      j = BaseApplicationImpl.getContext().getResources().getColor(2131168136);
       i = j;
       if (paramDesktopSearchInfo != null)
       {
@@ -104,17 +104,17 @@ class MiniAppDesktopAdapter$SearchViewHolder
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         this.keywordTv.setText((CharSequence)localObject1);
       } else {
-        this.keywordTv.setText(HardCodeUtil.a(2131706824));
+        this.keywordTv.setText(HardCodeUtil.a(2131904672));
       }
     }
     else
     {
-      this.keywordTv.setText(HardCodeUtil.a(2131706827));
+      this.keywordTv.setText(HardCodeUtil.a(2131904675));
     }
     if (this.keywordTv.getText() != null) {
       localObject1 = this.keywordTv.getText().toString();
     } else {
-      localObject1 = HardCodeUtil.a(2131706832);
+      localObject1 = HardCodeUtil.a(2131904680);
     }
     if (localObject2 != null)
     {
@@ -130,7 +130,7 @@ class MiniAppDesktopAdapter$SearchViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.SearchViewHolder
  * JD-Core Version:    0.7.0.1
  */

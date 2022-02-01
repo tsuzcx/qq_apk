@@ -36,7 +36,7 @@ public class QLBQJsPlugin
       try
       {
         if ("openGroupEmotion".equals(paramString3)) {
-          PublicFragmentActivity.a(this.mRuntime.a(), EmoticonGroupStoreFragment.class);
+          PublicFragmentActivity.a(this.mRuntime.d(), EmoticonGroupStoreFragment.class);
         }
       }
       catch (Throwable paramJsBridgeListener)
@@ -59,7 +59,7 @@ public class QLBQJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QLBQJsPlugin
  * JD-Core Version:    0.7.0.1
  */

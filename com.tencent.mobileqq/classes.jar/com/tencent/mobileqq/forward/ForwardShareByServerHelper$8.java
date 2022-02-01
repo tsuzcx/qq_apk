@@ -15,9 +15,9 @@ class ForwardShareByServerHelper$8
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ForwardShareByServerHelper.a(this.a) != null)
+    if (ForwardShareByServerHelper.d(this.a) != null)
     {
-      if (ForwardShareByServerHelper.a(this.a).isFinishing()) {
+      if (ForwardShareByServerHelper.d(this.a).isFinishing()) {
         return;
       }
       paramContext = ForwardImageDownUpMgr.a(paramIntent.getStringExtra("key_share_image_by_server"));
@@ -28,8 +28,8 @@ class ForwardShareByServerHelper$8
       if (TextUtils.isEmpty(paramContext))
       {
         paramContext = this.a;
-        ForwardShareByServerHelper.a(paramContext, ForwardShareByServerHelper.a(paramContext).getIntent().getExtras());
-        SdkShareReporter.a(ForwardShareByServerHelper.a(this.a), ForwardShareByServerHelper.a(this.a), ForwardShareByServerHelper.a(this.a));
+        ForwardShareByServerHelper.a(paramContext, ForwardShareByServerHelper.d(paramContext).getIntent().getExtras());
+        SdkShareReporter.a(ForwardShareByServerHelper.a(this.a), ForwardShareByServerHelper.i(this.a), ForwardShareByServerHelper.g(this.a));
         return;
       }
       ForwardShareByServerHelper.a(this.a, paramContext);
@@ -38,7 +38,7 @@ class ForwardShareByServerHelper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.8
  * JD-Core Version:    0.7.0.1
  */

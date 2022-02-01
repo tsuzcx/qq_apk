@@ -185,16 +185,16 @@ public class QQUiModule
         bool1 = bool2;
         break label604;
       }
-      localActivity.overridePendingTransition(2130771993, 2130771991);
+      localActivity.overridePendingTransition(2130771996, 2130771994);
       bool1 = bool2;
       if (PoiMapActivity.class.getName().equals(str1))
       {
         if (this.mClient == null)
         {
           this.mClient = TroopMemberApiClient.a();
-          this.mClient.a();
+          this.mClient.e();
         }
-        this.mClient.c();
+        this.mClient.g();
         bool1 = bool2;
         break label587;
         bool1 = bool2;
@@ -262,7 +262,7 @@ public class QQUiModule
     this.mNotifyPromise = null;
     this.mNotifyPromise = paramPromise;
     HippyMap localHippyMap = new HippyMap();
-    if ((!StringUtil.a(str1)) && (!StringUtil.a(str2)))
+    if ((!StringUtil.isEmpty(str1)) && (!StringUtil.isEmpty(str2)))
     {
       QQNotifyUtils.a(getActivity(), str1, paramJSONObject, str2, QQNotifySettingBaseFragment.a);
       return;
@@ -292,7 +292,7 @@ public class QQUiModule
     this.mNotifyPromise = null;
     this.mNotifyPromise = paramPromise;
     HippyMap localHippyMap = new HippyMap();
-    if ((!StringUtil.a(str1)) && (!StringUtil.a(str2)))
+    if ((!StringUtil.isEmpty(str1)) && (!StringUtil.isEmpty(str2)))
     {
       QQNotifyUtils.a(str1, paramJSONObject, str2, this);
       return;
@@ -300,25 +300,6 @@ public class QQUiModule
     localHippyMap.pushInt("code", -1);
     if (paramPromise != null) {
       paramPromise.resolve(localHippyMap);
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.mActionSheetPromise != null)
-    {
-      paramView = new HippyMap();
-      paramView.pushInt("index", paramInt);
-      if ((this.mActionSheetIsCancle) && (paramInt == 0)) {
-        paramView.pushInt("type", 2);
-      } else {
-        paramView.pushInt("type", 0);
-      }
-      this.mActionSheetPromise.resolve(paramView);
-    }
-    paramView = this.mActionSheet;
-    if (paramView != null) {
-      paramView.dismiss();
     }
   }
   
@@ -331,7 +312,7 @@ public class QQUiModule
     }
     localObject = this.mClient;
     if (localObject != null) {
-      ((TroopMemberApiClient)localObject).b();
+      ((TroopMemberApiClient)localObject).f();
     }
   }
   
@@ -340,7 +321,7 @@ public class QQUiModule
     if (this.mClient == null) {
       this.mClient = TroopMemberApiClient.a();
     }
-    this.mClient.e();
+    this.mClient.i();
   }
   
   public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -390,6 +371,25 @@ public class QQUiModule
   public void onCancel(DialogInterface paramDialogInterface)
   {
     onActionSheetCancel();
+  }
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    if (this.mActionSheetPromise != null)
+    {
+      paramView = new HippyMap();
+      paramView.pushInt("index", paramInt);
+      if ((this.mActionSheetIsCancle) && (paramInt == 0)) {
+        paramView.pushInt("type", 2);
+      } else {
+        paramView.pushInt("type", 0);
+      }
+      this.mActionSheetPromise.resolve(paramView);
+    }
+    paramView = this.mActionSheet;
+    if (paramView != null) {
+      paramView.dismiss();
+    }
   }
   
   public void onDismiss()
@@ -611,7 +611,7 @@ public class QQUiModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule
  * JD-Core Version:    0.7.0.1
  */

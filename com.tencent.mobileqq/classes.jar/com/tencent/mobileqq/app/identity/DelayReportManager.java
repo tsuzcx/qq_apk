@@ -14,7 +14,7 @@ public class DelayReportManager
     this.a.add(new SmsQuickLoginReporter());
   }
   
-  public void a()
+  public void b()
   {
     if (DelayReportUtils.a()) {
       DelayReportUtils.a(this.a);
@@ -23,7 +23,7 @@ public class DelayReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.DelayReportManager
  * JD-Core Version:    0.7.0.1
  */

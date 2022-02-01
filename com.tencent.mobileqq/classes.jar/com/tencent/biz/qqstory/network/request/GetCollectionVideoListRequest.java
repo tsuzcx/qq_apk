@@ -16,24 +16,26 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetCollectionVideoListRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.new_get_date_share_list");
-  public static final String b = StoryApi.a("StorySvc.get_share_video_info_list");
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  public static final String e = StoryApi.a("StorySvc.new_get_date_share_list");
+  public static final String f = StoryApi.a("StorySvc.get_share_video_info_list");
+  public String g;
+  public String h = "";
+  public int i;
+  public int j = -1;
+  public int k;
+  public String l;
+  public int m;
+  public int n;
   
-  public GetCollectionVideoListRequest()
+  public String a()
   {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = -1;
+    if (this.l == null) {
+      return e;
+    }
+    return f;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetCollectionVideoList localRspGetCollectionVideoList = new qqstory_service.RspGetCollectionVideoList();
     try
@@ -44,37 +46,29 @@ public class GetCollectionVideoListRequest
     {
       paramArrayOfByte.printStackTrace();
     }
-    return new GetCollectionVideoListResponse(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
+    return new GetCollectionVideoListResponse(this.g, localRspGetCollectionVideoList);
   }
   
-  public String a()
-  {
-    if (this.jdField_e_of_type_JavaLangString == null) {
-      return a;
-    }
-    return b;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
-    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-    localReqGetCollectionVideoList.count.set(this.jdField_c_of_type_Int);
-    if (this.jdField_e_of_type_JavaLangString == null)
+    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.h));
+    localReqGetCollectionVideoList.count.set(this.i);
+    if (this.l == null)
     {
-      localReqGetCollectionVideoList.collection_id.set(this.jdField_d_of_type_Int);
-      if (this.jdField_e_of_type_Int != -1) {
-        localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
+      localReqGetCollectionVideoList.collection_id.set(this.j);
+      if (this.k != -1) {
+        localReqGetCollectionVideoList.time_zone.set(this.k);
       }
     }
     else
     {
-      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
-      localReqGetCollectionVideoList.identify.set(this.f);
+      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.l));
+      localReqGetCollectionVideoList.identify.set(this.m);
     }
-    AssertUtils.checkNotNull(this.jdField_c_of_type_JavaLangString);
-    localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localReqGetCollectionVideoList.video_dir.set(this.g);
+    AssertUtils.checkNotNull(this.g);
+    localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.g));
+    localReqGetCollectionVideoList.video_dir.set(this.n);
     return localReqGetCollectionVideoList.toByteArray();
   }
   
@@ -83,15 +77,15 @@ public class GetCollectionVideoListRequest
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(super.toString());
     localStringBuilder.append(" GetCollectionVideoListRequest{targetUid=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", startCookie='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", count=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", collectionId=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", timeZoneOffset=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -99,7 +93,7 @@ public class GetCollectionVideoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

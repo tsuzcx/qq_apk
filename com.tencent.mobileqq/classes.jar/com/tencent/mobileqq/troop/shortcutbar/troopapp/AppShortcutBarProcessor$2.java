@@ -12,7 +12,7 @@ class AppShortcutBarProcessor$2
   {
     if (paramBoolean)
     {
-      if (!paramString.equals(AppShortcutBarProcessor.a(this.a))) {
+      if (!paramString.equals(AppShortcutBarProcessor.c(this.a))) {
         return;
       }
       if (this.a.a != null)
@@ -28,7 +28,7 @@ class AppShortcutBarProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.troopapp.AppShortcutBarProcessor.2
  * JD-Core Version:    0.7.0.1
  */

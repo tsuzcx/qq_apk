@@ -10,14 +10,14 @@ class LSRecordPanel$13
   
   public void run()
   {
-    int i = ((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getVolumeLevel(this.jdField_a_of_type_Int);
+    int i = ((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getVolumeLevel(this.a);
     this.this$0.a(i);
-    LSRecordPanel.a(this.this$0).setText(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTimeStrByMillis(this.jdField_a_of_type_Double));
+    LSRecordPanel.a(this.this$0).setText(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTimeStrByMillis(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.13
  * JD-Core Version:    0.7.0.1
  */

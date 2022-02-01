@@ -7,14 +7,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.biz.viola.ReadInJoyViolaChannelFragment;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
+import com.tencent.mobileqq.kandian.glue.router.api.impl.RIJJumpActionImpl;
 import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.kandian.repo.db.struct.ChannelSection;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -23,13 +23,13 @@ public class ReadInJoyChannelGuidingJumpUtils
 {
   public static boolean a(int paramInt)
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if ((localObject != null) && (((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine() != null))
       {
-        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().b();
+        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().J();
         if ((localObject != null) && (!((List)localObject).isEmpty())) {
           localObject = ((List)localObject).iterator();
         }
@@ -94,6 +94,16 @@ public class ReadInJoyChannelGuidingJumpUtils
         localStringBuilder2.append(localNumberFormatException);
         QLog.e("ReadInJoyChannelGuidingJumpUtils", 1, localStringBuilder2.toString());
       }
+      if (TextUtils.equals("1", ((Uri)localObject3).getQueryParameter("from_immersive")))
+      {
+        localObject1 = ((Uri)localObject3).getQueryParameter("channelname");
+        paramString = (String)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramString = paramContext.getString(2131897917);
+        }
+        RIJJumpActionImpl.jumpToChannelFromImmersiveVideo(paramContext, i, paramString);
+        return true;
+      }
       localObject3 = ((Uri)localObject3).getQueryParameter("v_url_base64");
       if (!TextUtils.isEmpty((CharSequence)localObject3)) {
         ReadInJoyViolaChannelFragment.a(i, (String)localObject3);
@@ -107,7 +117,7 @@ public class ReadInJoyChannelGuidingJumpUtils
         }
         if (paramBoolean)
         {
-          paramBoolean = ReadInJoyHelper.z();
+          paramBoolean = ReadInJoyHelper.T();
           if ((paramBoolean) && (b(i)))
           {
             if (!c(i))
@@ -144,7 +154,7 @@ public class ReadInJoyChannelGuidingJumpUtils
           RIJJumpUtils.a(paramContext, paramString, null);
           return true;
         }
-        paramContext.startActivity(((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, 0, i));
+        paramContext.startActivity(ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramContext, 0, i));
         return true;
       }
       paramContext = new StringBuilder();
@@ -193,7 +203,7 @@ public class ReadInJoyChannelGuidingJumpUtils
   
   private static boolean b(int paramInt)
   {
-    List localList = ReadInJoyLogicEngine.a().a();
+    List localList = ReadInJoyLogicEngine.a().H();
     if ((localList != null) && (localList.size() > 0))
     {
       int i = 0;
@@ -201,9 +211,9 @@ public class ReadInJoyChannelGuidingJumpUtils
       {
         ChannelSection localChannelSection = (ChannelSection)localList.get(i);
         int j = 0;
-        while (j < localChannelSection.a.size())
+        while (j < localChannelSection.d.size())
         {
-          if (paramInt == ((TabChannelCoverInfo)localChannelSection.a.get(j)).mChannelCoverId) {
+          if (paramInt == ((TabChannelCoverInfo)localChannelSection.d.get(j)).mChannelCoverId) {
             return true;
           }
           j += 1;
@@ -216,14 +226,14 @@ public class ReadInJoyChannelGuidingJumpUtils
   
   private static boolean c(int paramInt)
   {
-    Object localObject = ReadInJoyLogicEngine.a().a();
+    Object localObject = ReadInJoyLogicEngine.a().H();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = (ChannelSection)((List)localObject).get(0);
       int i = 0;
-      while (i < ((ChannelSection)localObject).a.size())
+      while (i < ((ChannelSection)localObject).d.size())
       {
-        if (paramInt == ((TabChannelCoverInfo)((ChannelSection)localObject).a.get(i)).mChannelCoverId) {
+        if (paramInt == ((TabChannelCoverInfo)((ChannelSection)localObject).d.get(i)).mChannelCoverId) {
           return true;
         }
         i += 1;
@@ -234,7 +244,7 @@ public class ReadInJoyChannelGuidingJumpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.ReadInJoyChannelGuidingJumpUtils
  * JD-Core Version:    0.7.0.1
  */

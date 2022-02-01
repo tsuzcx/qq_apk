@@ -16,8 +16,8 @@ public class Dynamic64Structure
     }
     localByteBuffer.order(paramHeader);
     paramLong += paramInt * 16;
-    this.a = paramElfParser.a(localByteBuffer, paramLong);
-    this.b = paramElfParser.a(localByteBuffer, paramLong + 8L);
+    this.a = paramElfParser.b(localByteBuffer, paramLong);
+    this.b = paramElfParser.b(localByteBuffer, paramLong + 8L);
   }
 }
 

@@ -17,16 +17,16 @@ class PublicAccountImageCollectionMainActivityImpl$14
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
+    if ((this.a.getStatus() == 1) && ((this.a.getCurrDrawable() instanceof RegionDrawable)))
     {
-      paramURLDrawable = (RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionMainActivityImpl.thumbBitmap = paramURLDrawable.getBitmap();
+      paramURLDrawable = (RegionDrawable)this.a.getCurrDrawable();
+      this.b.thumbBitmap = paramURLDrawable.getBitmap();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.14
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,13 @@ public final class CoverSelectData$Companion
     localCaptureVideoInfo.a(0);
     localCaptureVideoInfo.b((int)paramDisplayItem.getMergeDuration());
     localCoverSelectData.setCaptureVideoInfo(localCaptureVideoInfo);
+    localCoverSelectData.setCoverRatio(localCoverSelectData.getVideoWidth() / localCoverSelectData.getVideoHeight());
     return localCoverSelectData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectData.Companion
  * JD-Core Version:    0.7.0.1
  */

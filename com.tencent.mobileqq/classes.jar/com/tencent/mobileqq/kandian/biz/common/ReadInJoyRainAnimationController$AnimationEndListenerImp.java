@@ -18,7 +18,7 @@ class ReadInJoyRainAnimationController$AnimationEndListenerImp
     ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
     if (localReadInJoyRainAnimationController != null)
     {
-      if (!localReadInJoyRainAnimationController.b()) {
+      if (!localReadInJoyRainAnimationController.d()) {
         return;
       }
       ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
@@ -27,7 +27,7 @@ class ReadInJoyRainAnimationController$AnimationEndListenerImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyRainAnimationController.AnimationEndListenerImp
  * JD-Core Version:    0.7.0.1
  */

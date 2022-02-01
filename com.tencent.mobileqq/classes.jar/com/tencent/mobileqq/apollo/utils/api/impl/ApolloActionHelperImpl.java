@@ -5,14 +5,12 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.apollo.model.ApolloDress;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
@@ -24,6 +22,7 @@ import com.tencent.mobileqq.app.CheckPttListener;
 import com.tencent.mobileqq.app.CheckPtvListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
 import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -31,9 +30,9 @@ import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 import mqq.app.AppRuntime;
+import mqq.util.LogUtil;
 import org.json.JSONObject;
 
 public class ApolloActionHelperImpl
@@ -42,10 +41,7 @@ public class ApolloActionHelperImpl
   public static final int APOLLO_DEFAULT_ROLE_ID = 0;
   public static final int APOLLO_MARGIN_THINKING = 40;
   public static final int APOLLO_MARGIN_WAITING = 40;
-  public static final String APOLLO_SOUND_NAME = "music.amr";
   public static final int APOLLO_WEB_RSC_STARTS_ID = 21;
-  private static final String[] DEFAULT_CE_ROLE_RES_LIST = { "/def/role/0/sayhi/1/action/action.json", "/def/role/0/friendcard/1/action/action.json", "/def/role/0/3D/sayhi/1/info.json", "/def/role/0/3D/friendcard/1/info.json" };
-  private static final String[] DEFAULT_ROLE_RSC_LIST = { "/def/role/0/sayhi/1/action/action.json", "/def/role/0/friendcard/1/action/action.json", "/def/role/0/3D/sayhi/1/action.bin", "/def/role/0/3D/3DConfig.json" };
   public static final String TAG = "[cmshow]ApolloActionHelper";
   
   public static boolean attach3DInfoToJson(String paramString1, QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, String paramString2)
@@ -112,150 +108,18 @@ public class ApolloActionHelperImpl
     return false;
   }
   
-  public static boolean checkBasicActionExit(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    String[] arrayOfString = DEFAULT_ROLE_RSC_LIST;
-    if (CMResUtil.a()) {
-      arrayOfString = DEFAULT_CE_ROLE_RES_LIST;
-    }
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = arrayOfString[i];
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(ApolloConstant.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append((String)localObject);
-      localObject = new File(localStringBuilder.toString());
-      if (!((File)localObject).exists())
-      {
-        QLog.d("[cmshow]ApolloActionHelper", 1, new Object[] { "[checkBasicActionExit] rsc file not exist:", ((File)localObject).toString() });
-        ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloResOrder(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), null, 0, null, -1, -1, true);
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  public static boolean checkRoleDress(String paramString, QQAppInterface paramQQAppInterface, IApolloResDownloader.OnApolloDownLoadListener paramOnApolloDownLoadListener)
-  {
-    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      Object localObject1 = (ApolloManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      ApolloBaseInfo localApolloBaseInfo = ((ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(paramString);
-      if (localApolloBaseInfo != null)
-      {
-        int i;
-        if (localApolloBaseInfo.isApolloStatusOpen())
-        {
-          Object localObject2;
-          if (localApolloBaseInfo.apolloLocalTS != localApolloBaseInfo.apolloServerTS)
-          {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("[checkRoleDress]dress changed, uin:");
-            ((StringBuilder)localObject2).append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-            QLog.i("[cmshow]ApolloActionHelper", 1, ((StringBuilder)localObject2).toString());
-            ((ApolloManagerServiceImpl)localObject1).checkUserDress(paramQQAppInterface, paramString, "checkRoleDress");
-          }
-          localObject1 = localApolloBaseInfo.getApolloDress(false);
-          if ((localObject1 != null) && (localObject1.length > 0))
-          {
-            int j = localObject1.length;
-            i = 0;
-            while (i < j)
-            {
-              localApolloBaseInfo = localObject1[i];
-              localObject2 = localApolloBaseInfo.getDressIds();
-              if (isRscValid(paramString, localApolloBaseInfo.roleId, (int[])localObject2, paramQQAppInterface, paramOnApolloDownLoadListener))
-              {
-                if (QLog.isColorLevel())
-                {
-                  paramQQAppInterface = new StringBuilder();
-                  paramQQAppInterface.append("[checkRoleDress]user custom dress, uin:");
-                  paramQQAppInterface.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-                  QLog.i("[cmshow]ApolloActionHelper", 2, paramQQAppInterface.toString());
-                }
-                return true;
-              }
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          if (!"-1".equals(paramString))
-          {
-            localObject1 = "-2";
-            if (!"-2".equals(paramString))
-            {
-              if (((IApolloUtil)QRoute.api(IApolloUtil.class)).isFemale(paramQQAppInterface, paramString)) {
-                break label304;
-              }
-              localObject1 = "-1";
-              break label304;
-            }
-          }
-          localObject1 = paramString;
-          label304:
-          if ("-1".equals(localObject1)) {
-            i = 1;
-          } else {
-            i = 2;
-          }
-          if (isRscValid((String)localObject1, i, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(i), paramQQAppInterface, paramOnApolloDownLoadListener))
-          {
-            if (QLog.isColorLevel())
-            {
-              paramQQAppInterface = new StringBuilder();
-              paramQQAppInterface.append("[checkRoleDress]default dress, uin:");
-              paramQQAppInterface.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-              QLog.i("[cmshow]ApolloActionHelper", 2, paramQQAppInterface.toString());
-            }
-            return true;
-          }
-        }
-      }
-      else
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append("[checkRoleDress]apolloBaseInfo is null, uin:");
-        paramQQAppInterface.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-        QLog.e("[cmshow]ApolloActionHelper", 1, paramQQAppInterface.toString());
-      }
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("[checkRoleDress]no dress, uin:");
-      paramQQAppInterface.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-      QLog.e("[cmshow]ApolloActionHelper", 1, paramQQAppInterface.toString());
-      return false;
-    }
-    paramOnApolloDownLoadListener = new StringBuilder();
-    paramOnApolloDownLoadListener.append("checkRoleDress ");
-    paramOnApolloDownLoadListener.append(paramString);
-    paramOnApolloDownLoadListener.append(paramQQAppInterface);
-    QLog.e("[cmshow]ApolloActionHelper", 1, paramOnApolloDownLoadListener.toString());
-    return false;
-  }
-  
   public static void doActionReport(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam, boolean paramBoolean1, boolean paramBoolean2)
   {
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[doActionReport], isHasUsrText:");
-      ((StringBuilder)localObject1).append(paramBoolean1);
-      ((StringBuilder)localObject1).append(",isBarrage:");
-      ((StringBuilder)localObject1).append(paramBoolean2);
-      QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[doActionReport], isHasUsrText:");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(",isBarrage:");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject).toString());
     }
-    ApolloActionData localApolloActionData;
-    String str1;
-    Object localObject2;
-    label230:
-    String str2;
     if (paramSpriteTaskParam != null)
     {
       if (paramQQAppInterface == null) {
@@ -263,167 +127,64 @@ public class ApolloActionHelperImpl
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("taskParam:");
-        ((StringBuilder)localObject1).append(paramSpriteTaskParam.toString());
-        QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject1).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("taskParam:");
+        ((StringBuilder)localObject).append(paramSpriteTaskParam.toString());
+        QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject).toString());
       }
-      localApolloActionData = ((ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramSpriteTaskParam.f);
-      if (localApolloActionData == null) {
+      localObject = ((ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramSpriteTaskParam.f);
+      if (localObject == null) {
         return;
       }
-      str3 = "2";
-      if (paramBoolean1)
+      String str1 = getActionName(paramSpriteTaskParam.i);
+      int i = getEntry(paramSpriteTaskParam.g, paramSpriteTaskParam.l);
+      int j = paramSpriteTaskParam.p;
+      String str2 = Integer.toString(paramSpriteTaskParam.f);
+      String str3 = getR3(paramBoolean1, paramBoolean2);
+      String str4 = getR4(paramQQAppInterface, paramSpriteTaskParam, (ApolloActionData)localObject);
+      String str5 = getR5(paramQQAppInterface, paramSpriteTaskParam, (ApolloActionData)localObject);
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "actionnewuser_play", paramSpriteTaskParam.k, i, j, new String[] { str2, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", str1, i, j, new String[] { str2, str3, str4, str5 });
+      if (QLog.isColorLevel())
       {
-        if (paramBoolean2) {
-          str1 = "2";
-        } else {
-          str1 = "1";
-        }
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("actionName:");
+        paramQQAppInterface.append(str1);
+        paramQQAppInterface.append(",entry:");
+        paramQQAppInterface.append(i);
+        paramQQAppInterface.append(",result:");
+        paramQQAppInterface.append(j);
+        paramQQAppInterface.append(",r2:");
+        paramQQAppInterface.append(str2);
+        paramQQAppInterface.append(",r3:");
+        paramQQAppInterface.append(str3);
+        paramQQAppInterface.append(",r4:");
+        paramQQAppInterface.append(str4);
+        paramQQAppInterface.append(",r5:");
+        paramQQAppInterface.append(str5);
+        QLog.d("[cmshow]ApolloActionHelper", 2, paramQQAppInterface.toString());
       }
-      else {
-        str1 = "0";
+      j = 2;
+      paramQQAppInterface = new DtReportParamsBuilder();
+      if (paramSpriteTaskParam.f > ApolloConstant.f) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      if (paramSpriteTaskParam.h == 0) {
-        localObject1 = "action_play";
+      paramQQAppInterface = paramQQAppInterface.a(i).b(ApolloDtReportUtil.a(paramSpriteTaskParam.i));
+      if (paramSpriteTaskParam.d == 1) {
+        i = j;
+      } else {
+        i = 0;
       }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        break label230;
-        if (paramSpriteTaskParam.h == 1)
-        {
-          localObject1 = "g_action_play";
-        }
-        else
-        {
-          if (paramSpriteTaskParam.h != 3000) {
-            break;
-          }
-          localObject1 = "d_action_play";
-        }
-      }
-      localObject2 = "";
-      if (paramSpriteTaskParam.g == 2)
-      {
-        if (paramSpriteTaskParam.a) {
-          i = 2;
-        } else {
-          i = 3;
-        }
-      }
-      else
-      {
-        if (paramSpriteTaskParam.g == 0) {}
-        do
-        {
-          i = 0;
-          break;
-          if (paramSpriteTaskParam.g == 1)
-          {
-            i = 1;
-            break;
-          }
-        } while (paramSpriteTaskParam.g != 4);
-        i = 4;
-      }
-      if ((!localApolloActionData.hasSound) && (paramSpriteTaskParam.i <= 0))
-      {
-        str2 = "0";
-      }
-      else
-      {
-        localObject1 = (MediaPlayerManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_MEDIA_PLAYER);
-        if ((1 == paramQQAppInterface.getALLGeneralSettingRing()) && (((CmShowAioMatcherImpl.judgeSupported(paramSpriteTaskParam.h, 2)) && (1 == ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingRing(paramQQAppInterface))) || ((CmShowAioMatcherImpl.judgeSupported(paramSpriteTaskParam.h, 1)) && (!paramQQAppInterface.isRingerVibrate()) && (!paramQQAppInterface.isRingEqualsZero()) && (paramQQAppInterface.isCallIdle()) && ((localObject1 == null) || (!((MediaPlayerManager)localObject1).a())) && ((paramQQAppInterface.getCheckPttListener() == null) || (!paramQQAppInterface.getCheckPttListener().f())) && (!paramQQAppInterface.isVideoChatting()) && ((paramQQAppInterface.getCheckPtvListener() == null) || (!paramQQAppInterface.getCheckPtvListener().a()))))) {
-          str2 = "1";
-        } else {
-          str2 = "2";
-        }
-      }
-      if ((8 != paramSpriteTaskParam.c) || (TextUtils.isEmpty(paramSpriteTaskParam.jdField_d_of_type_JavaLangString))) {}
-    }
-    try
-    {
-      localObject1 = new JSONObject(paramSpriteTaskParam.jdField_d_of_type_JavaLangString).optString("subActionId", "0");
-    }
-    catch (Exception localException)
-    {
-      label515:
-      int j;
-      break label515;
-    }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[random] the json is not right,");
-    ((StringBuilder)localObject1).append(paramSpriteTaskParam.jdField_d_of_type_JavaLangString);
-    QLog.e("[cmshow]ApolloActionHelper", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = "-1";
-    break label659;
-    if (getVibrateData(localApolloActionData.vibrate) == null)
-    {
-      localObject1 = "0";
-    }
-    else
-    {
-      localObject1 = str3;
-      if (1 == paramQQAppInterface.getALLGeneralSettingVibrate()) {
-        if (((paramSpriteTaskParam.h != 1) && (paramSpriteTaskParam.h != 3000)) || (1 != ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingVibrate(paramQQAppInterface)))
-        {
-          localObject1 = str3;
-          if (paramSpriteTaskParam.h != 0) {}
-        }
-        else
-        {
-          localObject1 = str3;
-          if (!paramQQAppInterface.isRingEqualsZero()) {
-            localObject1 = "1";
-          }
-        }
-      }
-    }
-    label659:
-    j = paramSpriteTaskParam.j;
-    String str3 = Integer.toString(paramSpriteTaskParam.f);
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "actionnewuser_play", paramSpriteTaskParam.b, i, j, new String[] { str3, "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", (String)localObject2, i, j, new String[] { str3, str1, str2, localObject1 });
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("actionName:");
-      paramQQAppInterface.append((String)localObject2);
-      paramQQAppInterface.append(",entry:");
-      paramQQAppInterface.append(i);
-      paramQQAppInterface.append(",result:");
-      paramQQAppInterface.append(j);
-      paramQQAppInterface.append(",r2:");
-      paramQQAppInterface.append(str3);
-      paramQQAppInterface.append(",r3:");
-      paramQQAppInterface.append(str1);
-      paramQQAppInterface.append(",r4:");
-      paramQQAppInterface.append(str2);
-      paramQQAppInterface.append(",r5:");
-      paramQQAppInterface.append((String)localObject1);
-      QLog.d("[cmshow]ApolloActionHelper", 2, paramQQAppInterface.toString());
-    }
-    j = 2;
-    paramQQAppInterface = new DtReportParamsBuilder();
-    if (paramSpriteTaskParam.f > ApolloConstant.jdField_a_of_type_Int) {
+      paramQQAppInterface = paramQQAppInterface.c(i).e(ApolloDtReportUtil.a(((ApolloActionData)localObject).personNum, paramSpriteTaskParam.c)).f(String.valueOf(paramSpriteTaskParam.f));
+      j = paramSpriteTaskParam.g;
       i = 1;
-    } else {
-      i = 0;
+      if (j != 1) {
+        i = 0;
+      }
+      ApolloDtReportUtil.a("aio_bubble", "apollo_msg", "play", paramQQAppInterface.d(i).c(ApolloDtReportUtil.a()).g(ApolloDtReportUtil.c(paramSpriteTaskParam.f)).a());
     }
-    paramQQAppInterface = paramQQAppInterface.a(i).b(ApolloDtReportUtil.a(paramSpriteTaskParam.h));
-    if (paramSpriteTaskParam.jdField_d_of_type_Int == 1) {
-      i = j;
-    } else {
-      i = 0;
-    }
-    paramQQAppInterface = paramQQAppInterface.c(i).e(ApolloDtReportUtil.a(localApolloActionData.personNum, paramSpriteTaskParam.c)).c(String.valueOf(paramSpriteTaskParam.f));
-    j = paramSpriteTaskParam.g;
-    int i = 1;
-    if (j != 1) {
-      i = 0;
-    }
-    ApolloDtReportUtil.a("aio_bubble", "apollo_msg", "play", paramQQAppInterface.d(i).b(ApolloDtReportUtil.a()).g(ApolloDtReportUtil.b(paramSpriteTaskParam.f)).a());
   }
   
   public static String get3DFaceDataByUin(String paramString, QQAppInterface paramQQAppInterface)
@@ -445,9 +206,9 @@ public class ApolloActionHelperImpl
     return null;
   }
   
-  public static Object[] get3DRoleDressIdByUin(String paramString, int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static Object[] get3DRoleDressIdByUin(String paramString, int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean, IApolloResManager paramIApolloResManager)
   {
-    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramInt == 2))
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramInt == 2) && (paramIApolloResManager != null))
     {
       Object localObject = ((ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(paramString);
       if (localObject != null)
@@ -457,29 +218,43 @@ public class ApolloActionHelperImpl
         {
           int i = ((ApolloDress)localObject).roleId;
           localObject = ((ApolloDress)localObject).getDressIds();
-          if ((i > ApolloConstant.jdField_a_of_type_Int) && (localObject != null) && (localObject.length > 0) && ((!paramBoolean) || (isRscValid(paramString, i, (int[])localObject, paramQQAppInterface))))
+          if ((i > ApolloConstant.f) && (localObject != null) && (localObject.length > 0) && ((!paramBoolean) || (paramIApolloResManager.a(paramString, i, (int[])localObject, paramQQAppInterface))))
           {
             paramInt = i;
             paramString = (String)localObject;
             if (!QLog.isColorLevel()) {
-              break label150;
+              break label159;
             }
             QLog.d("[cmshow]ApolloActionHelper", 2, new Object[] { "get3DRoleDressIdByUin valid role and dress RSC, needVerify:", Boolean.valueOf(paramBoolean) });
             paramInt = i;
             paramString = (String)localObject;
-            break label150;
+            break label159;
           }
         }
       }
       paramString = null;
       paramInt = 0;
-      label150:
+      label159:
       return new Object[] { Integer.valueOf(paramInt), paramString };
     }
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloActionHelper", 2, new Object[] { "get3DRoleIdByUin errInfo->null param, userStatus:", Integer.valueOf(paramInt) });
     }
     return new Object[] { Integer.valueOf(-1), null };
+  }
+  
+  private static String getActionName(int paramInt)
+  {
+    if (paramInt == 0) {
+      return "action_play";
+    }
+    if (paramInt == 1) {
+      return "g_action_play";
+    }
+    if (paramInt == 3000) {
+      return "d_action_play";
+    }
+    return "";
   }
   
   public static String[] getActionRscPath(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -819,6 +594,27 @@ public class ApolloActionHelperImpl
     return arrayOfString;
   }
   
+  private static int getEntry(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 2)
+    {
+      if (paramBoolean) {
+        return 2;
+      }
+      return 3;
+    }
+    if (paramInt == 0) {
+      return 0;
+    }
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 4) {
+      return 4;
+    }
+    return 0;
+  }
+  
   public static String getModelByUin(String paramString, AppRuntime paramAppRuntime)
   {
     if (QLog.isColorLevel())
@@ -839,6 +635,56 @@ public class ApolloActionHelperImpl
       QLog.d("[cmshow]ApolloActionHelper", 2, "errInfo->null param.");
     }
     return null;
+  }
+  
+  private static String getR3(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (paramBoolean2) {
+        return "2";
+      }
+      return "1";
+    }
+    return "0";
+  }
+  
+  private static String getR4(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam, ApolloActionData paramApolloActionData)
+  {
+    if ((!paramApolloActionData.hasSound) && (paramSpriteTaskParam.m <= 0)) {
+      return "0";
+    }
+    if ((1 == paramQQAppInterface.getALLGeneralSettingRing()) && (paramQQAppInterface.isCallIdle()) && (isSupport(paramQQAppInterface, paramSpriteTaskParam)) && (isMediaIdle(paramQQAppInterface))) {
+      return "1";
+    }
+    return "2";
+  }
+  
+  private static String getR5(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam, ApolloActionData paramApolloActionData)
+  {
+    if ((8 == paramSpriteTaskParam.c) && (!TextUtils.isEmpty(paramSpriteTaskParam.t))) {}
+    try
+    {
+      paramQQAppInterface = new JSONObject(paramSpriteTaskParam.t).optString("subActionId", "0");
+      return paramQQAppInterface;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      label42:
+      break label42;
+    }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("[random] the json is not right,");
+    paramQQAppInterface.append(paramSpriteTaskParam.t);
+    QLog.e("[cmshow]ApolloActionHelper", 1, paramQQAppInterface.toString());
+    return "-1";
+    if (getVibrateData(paramApolloActionData.vibrate) == null) {
+      return "0";
+    }
+    if ((1 == paramQQAppInterface.getALLGeneralSettingVibrate()) && (((paramSpriteTaskParam.i != 1) && (paramSpriteTaskParam.i != 3000)) || (((1 == ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingVibrate(paramQQAppInterface)) || (paramSpriteTaskParam.i == 0)) && (!paramQQAppInterface.isRingEqualsZero())))) {
+      return "1";
+    }
+    return "2";
   }
   
   public static int getRandomActionId(int paramInt, String paramString)
@@ -876,7 +722,7 @@ public class ApolloActionHelperImpl
     {
       int j = Integer.parseInt((String)localObject);
       StringBuilder localStringBuilder;
-      if (CMResUtil.c(paramInt))
+      if (CMResUtil.a(paramInt))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString.getAbsolutePath());
@@ -884,7 +730,7 @@ public class ApolloActionHelperImpl
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("/action/");
         localStringBuilder.append("action.bin");
-        if (!CMResUtil.d(localStringBuilder.toString())) {
+        if (!CMResUtil.a(localStringBuilder.toString())) {
           return -1;
         }
       }
@@ -896,7 +742,7 @@ public class ApolloActionHelperImpl
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("/");
         localStringBuilder.append("action/action.json");
-        if (!CMResUtil.d(localStringBuilder.toString())) {
+        if (!CMResUtil.a(localStringBuilder.toString())) {
           break label486;
         }
         localStringBuilder = new StringBuilder();
@@ -905,7 +751,7 @@ public class ApolloActionHelperImpl
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("/");
         localStringBuilder.append("action/action.png");
-        if (!CMResUtil.d(localStringBuilder.toString())) {
+        if (!CMResUtil.a(localStringBuilder.toString())) {
           break label486;
         }
         localStringBuilder = new StringBuilder();
@@ -914,7 +760,7 @@ public class ApolloActionHelperImpl
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("/");
         localStringBuilder.append("action/action.atlas");
-        if (!CMResUtil.d(localStringBuilder.toString())) {
+        if (!CMResUtil.a(localStringBuilder.toString())) {
           return -1;
         }
         if (QLog.isColorLevel())
@@ -986,7 +832,7 @@ public class ApolloActionHelperImpl
     return localStringBuilder.toString();
   }
   
-  public static Object[] getRoleDressIdByUin(String paramString, AppRuntime paramAppRuntime, boolean paramBoolean)
+  public static Object[] getRoleDressIdByUin(String paramString, AppRuntime paramAppRuntime, boolean paramBoolean, IApolloResManager paramIApolloResManager)
   {
     Object localObject1;
     if (QLog.isColorLevel())
@@ -996,35 +842,38 @@ public class ApolloActionHelperImpl
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((paramAppRuntime != null) && (!TextUtils.isEmpty(paramString)))
+    if ((paramAppRuntime != null) && (!TextUtils.isEmpty(paramString)) && (paramIApolloResManager != null))
     {
-      Object localObject2 = ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(0);
+      Object localObject2 = ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(0);
       if (!"-1".equals(paramString))
       {
         localObject1 = "-2";
         if (!"-2".equals(paramString))
         {
           if (((IApolloUtil)QRoute.api(IApolloUtil.class)).isFemale(paramAppRuntime, paramString)) {
-            break label128;
+            break label138;
           }
           localObject1 = "-1";
-          break label128;
+          break label138;
         }
       }
       localObject1 = paramString;
-      label128:
+      label138:
       int i;
       if ("-1".equals(localObject1)) {
         i = 1;
       } else {
         i = 2;
       }
-      Object localObject3 = ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(i);
-      if ((paramBoolean) && (!isRscValid((String)localObject1, i, (int[])localObject3, paramAppRuntime)))
+      Object localObject3 = ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(i);
+      if ((paramBoolean) && (!paramIApolloResManager.a((String)localObject1, i, (int[])localObject3, paramAppRuntime)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]ApolloActionHelper", 2, new Object[] { "role and dress is not ready,uin:", paramString, ",roleId:", Integer.valueOf(0) });
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("role and dress is not ready,uin:");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(",roleId:");
+        ((StringBuilder)localObject1).append(0);
+        QLog.w("[cmshow]ApolloActionHelper", 1, ((StringBuilder)localObject1).toString());
         i = 0;
         localObject1 = localObject2;
       }
@@ -1032,32 +881,30 @@ public class ApolloActionHelperImpl
       {
         localObject1 = localObject3;
       }
-      localObject3 = (ApolloManagerServiceImpl)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all");
       localObject2 = ((ApolloDaoManagerServiceImpl)paramAppRuntime.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(paramString);
       int j;
       if (localObject2 != null)
       {
         j = ((ApolloBaseInfo)localObject2).apolloStatus;
-        StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("uin: ");
-          localStringBuilder.append(((ApolloBaseInfo)localObject2).uin);
-          localStringBuilder.append(", funcSwitch:");
-          localStringBuilder.append(j);
-          QLog.d("[cmshow]ApolloActionHelper", 2, localStringBuilder.toString());
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("uin: ");
+          ((StringBuilder)localObject3).append(((ApolloBaseInfo)localObject2).uin);
+          ((StringBuilder)localObject3).append(", funcSwitch:");
+          ((StringBuilder)localObject3).append(j);
+          QLog.d("[cmshow]ApolloActionHelper", 2, ((StringBuilder)localObject3).toString());
         }
         if (!((ApolloBaseInfo)localObject2).isApolloStatusOpen()) {
           return new Object[] { Integer.valueOf(i), localObject1 };
         }
         if ((paramBoolean) && (((ApolloBaseInfo)localObject2).apolloLocalTS != ((ApolloBaseInfo)localObject2).apolloServerTS) && ((paramAppRuntime instanceof AppInterface)))
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("dress changed, uin:");
-          localStringBuilder.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
-          QLog.i("[cmshow]ApolloActionHelper", 1, localStringBuilder.toString());
-          ((ApolloManagerServiceImpl)localObject3).checkUserDress((AppInterface)paramAppRuntime, paramString, "getRoleDressIdByUin");
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("dress changed, uin:");
+          ((StringBuilder)localObject3).append(LogUtil.wrapLogUin(paramString));
+          QLog.i("[cmshow]ApolloActionHelper", 1, ((StringBuilder)localObject3).toString());
+          paramIApolloResManager.a((AppInterface)paramAppRuntime, paramString, "getRoleDressIdByUin");
         }
         localObject3 = ((ApolloBaseInfo)localObject2).getApolloDress(false);
         if ((localObject3 != null) && (localObject3.length > 0))
@@ -1066,17 +913,17 @@ public class ApolloActionHelperImpl
           j = 0;
           while (j < k)
           {
-            localStringBuilder = localObject3[j];
-            localObject2 = localStringBuilder.getDressIds();
-            if (isRscValid(paramString, localStringBuilder.roleId, (int[])localObject2, paramAppRuntime))
+            Object localObject4 = localObject3[j];
+            localObject2 = localObject4.getDressIds();
+            if (paramIApolloResManager.a(paramString, localObject4.roleId, (int[])localObject2, paramAppRuntime))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("[cmshow]ApolloActionHelper", 2, "valid role and dress RSC.");
               }
-              i = localStringBuilder.roleId;
+              i = localObject4.roleId;
               j = 1;
               localObject1 = localObject2;
-              break label570;
+              break label586;
             }
             if (QLog.isColorLevel()) {
               QLog.d("[cmshow]ApolloActionHelper", 2, "try to get history dress ....");
@@ -1084,23 +931,23 @@ public class ApolloActionHelperImpl
             j += 1;
           }
           j = 0;
-          label570:
+          label586:
           if (j == 0)
           {
-            localObject2 = ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(localObject3[0].roleId);
-            if (isRscValid(paramString, localObject3[0].roleId, (int[])localObject2, paramAppRuntime))
+            localObject2 = ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(localObject3[0].roleId);
+            if (paramIApolloResManager.a(paramString, localObject3[0].roleId, (int[])localObject2, paramAppRuntime))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("[cmshow]ApolloActionHelper", 2, "valid basic dress.");
               }
-              i = localObject3[0].roleId;
-              paramAppRuntime = (AppRuntime)localObject2;
-              j = i;
+              j = localObject3[0].roleId;
+              localObject1 = localObject2;
+              i = j;
               if (QLog.isColorLevel())
               {
                 QLog.d("[cmshow]ApolloActionHelper", 2, "current dress NOT downloaded, check basic dress");
-                paramAppRuntime = (AppRuntime)localObject2;
-                j = i;
+                localObject1 = localObject2;
+                i = j;
               }
             }
             else
@@ -1108,62 +955,43 @@ public class ApolloActionHelperImpl
               SpriteUtil.a(110, new Object[] { "basicDresses is not vaild" });
             }
           }
-          else
-          {
-            paramAppRuntime = (AppRuntime)localObject1;
-            j = i;
-          }
         }
         else
         {
-          paramAppRuntime = (AppRuntime)localObject1;
-          j = i;
-          if (QLog.isColorLevel())
-          {
-            paramAppRuntime = new StringBuilder();
-            paramAppRuntime.append("uin: ");
-            paramAppRuntime.append(paramString);
-            paramAppRuntime.append(" dress is null");
-            QLog.d("[cmshow]ApolloActionHelper", 2, paramAppRuntime.toString());
-            paramAppRuntime = (AppRuntime)localObject1;
-            j = i;
-          }
+          paramAppRuntime = new StringBuilder();
+          paramAppRuntime.append("uin: ");
+          paramAppRuntime.append(LogUtil.wrapLogUin(paramString));
+          paramAppRuntime.append(" dress is null");
+          QLog.w("[cmshow]ApolloActionHelper", 1, paramAppRuntime.toString());
         }
       }
       else
       {
-        paramAppRuntime = (AppRuntime)localObject1;
-        j = i;
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder();
-          paramString.append("warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:");
-          paramString.append(localObject2);
-          QLog.d("[cmshow]ApolloActionHelper", 2, paramString.toString());
-          j = i;
-          paramAppRuntime = (AppRuntime)localObject1;
-        }
+        paramString = new StringBuilder();
+        paramString.append("warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:");
+        paramString.append(localObject2);
+        QLog.w("[cmshow]ApolloActionHelper", 1, paramString.toString());
       }
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("******roleId:[");
-        paramString.append(j);
+        paramString.append(i);
         paramString.append("],");
         paramString.append("dress:[");
-        i = 0;
-        while (i < paramAppRuntime.length)
+        j = 0;
+        while (j < localObject1.length)
         {
-          if (i != 0) {
+          if (j != 0) {
             paramString.append(",");
           }
-          paramString.append(paramAppRuntime[i]);
-          i += 1;
+          paramString.append(localObject1[j]);
+          j += 1;
         }
         paramString.append("]****");
         QLog.d("[cmshow]ApolloActionHelper", 2, paramString.toString());
       }
-      return new Object[] { Integer.valueOf(j), paramAppRuntime };
+      return new Object[] { Integer.valueOf(i), localObject1 };
     }
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloActionHelper", 2, "errInfo->null param.");
@@ -1285,93 +1113,29 @@ public class ApolloActionHelperImpl
     return new String[] { str, localObject };
   }
   
-  public static boolean isRscValid(String paramString, int paramInt, int[] paramArrayOfInt, AppRuntime paramAppRuntime)
+  private static boolean isMediaIdle(QQAppInterface paramQQAppInterface)
   {
-    return isRscValid(paramString, paramInt, paramArrayOfInt, paramAppRuntime, null);
+    MediaPlayerManager localMediaPlayerManager = (MediaPlayerManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_MEDIA_PLAYER);
+    return (!paramQQAppInterface.isRingerVibrate()) && (!paramQQAppInterface.isRingEqualsZero()) && ((localMediaPlayerManager == null) || (!localMediaPlayerManager.g())) && ((paramQQAppInterface.getCheckPttListener() == null) || (!paramQQAppInterface.getCheckPttListener().ac())) && (!paramQQAppInterface.isVideoChatting()) && ((paramQQAppInterface.getCheckPtvListener() == null) || (!paramQQAppInterface.getCheckPtvListener().a()));
   }
   
-  public static boolean isRscValid(String paramString, int paramInt, int[] paramArrayOfInt, AppRuntime paramAppRuntime, IApolloResDownloader.OnApolloDownLoadListener paramOnApolloDownLoadListener)
+  public static boolean isPlayerAction(ApolloActionData paramApolloActionData)
   {
-    if (QLog.isColorLevel())
+    return (paramApolloActionData != null) && (paramApolloActionData.isForPlayerAction == 1);
+  }
+  
+  private static boolean isSupport(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam)
+  {
+    boolean bool2 = CmShowAioMatcherImpl.judgeSupported(paramSpriteTaskParam.i, 2);
+    boolean bool1 = true;
+    if ((!bool2) || (1 != ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getTroopGeneralSettingRing(paramQQAppInterface)))
     {
-      localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("[isRscValid], roleId:");
-      localStringBuilder1.append(paramInt);
-      localStringBuilder1.append(",dressId:");
-      localStringBuilder1.append(paramArrayOfInt);
-      QLog.d("[cmshow]ApolloActionHelper", 2, localStringBuilder1.toString());
-    }
-    int j = 0;
-    if (paramArrayOfInt == null) {
-      return false;
-    }
-    int i = -1;
-    StringBuilder localStringBuilder1 = null;
-    ArrayList localArrayList = new ArrayList();
-    StringBuilder localStringBuilder2;
-    boolean bool;
-    if (!CMResUtil.b(paramInt))
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("need download role id:");
-        localStringBuilder2.append(paramInt);
-        QLog.d("[cmshow]ApolloActionHelper", 2, localStringBuilder2.toString());
+      if (CmShowAioMatcherImpl.judgeSupported(paramSpriteTaskParam.i, 1)) {
+        return true;
       }
-      bool = false;
+      bool1 = false;
     }
-    else
-    {
-      bool = true;
-      paramInt = i;
-    }
-    i = 0;
-    while (i < paramArrayOfInt.length)
-    {
-      if (!CMResUtil.a(paramArrayOfInt[i]))
-      {
-        localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("need download dress id:");
-          localStringBuilder2.append(paramArrayOfInt[i]);
-          QLog.d("[cmshow]ApolloActionHelper", 2, localStringBuilder2.toString());
-        }
-        bool = false;
-      }
-      i += 1;
-    }
-    if (!bool)
-    {
-      paramArrayOfInt = localStringBuilder1;
-      if (localArrayList.size() > 0)
-      {
-        paramArrayOfInt = new int[localArrayList.size()];
-        i = j;
-        while (i < localArrayList.size())
-        {
-          paramArrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
-          i += 1;
-        }
-      }
-      if (paramAppRuntime != null)
-      {
-        if (paramOnApolloDownLoadListener == null) {
-          paramOnApolloDownLoadListener = ((ApolloManagerServiceImpl)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).getResDownloadListener();
-        }
-        ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloResOrder(paramAppRuntime, paramString, paramOnApolloDownLoadListener, paramInt, paramArrayOfInt, -1, -1, false);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("ret:");
-      paramString.append(bool);
-      QLog.d("[cmshow]ApolloActionHelper", 2, paramString.toString());
-    }
-    return bool;
+    return bool1;
   }
   
   public String[] getActionResourcePath(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
@@ -1406,7 +1170,7 @@ public class ApolloActionHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl
  * JD-Core Version:    0.7.0.1
  */

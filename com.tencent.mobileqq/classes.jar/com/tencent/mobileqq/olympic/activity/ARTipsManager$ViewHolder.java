@@ -7,27 +7,27 @@ import android.widget.TextView;
 
 class ARTipsManager$ViewHolder
 {
-  public View a;
   public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public ARTipsCircleProgress a;
-  public ViewGroup b;
   public TextView b;
-  public ViewGroup c;
   public TextView c;
-  public ViewGroup d;
   public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public ARTipsCircleProgress e;
+  public ViewGroup f;
+  public ViewGroup g;
   public TextView h;
+  public TextView i;
+  public ViewGroup j;
+  public TextView k;
+  public View l;
+  public TextView m;
+  public TextView n;
+  public ImageView o;
   
   private ARTipsManager$ViewHolder(ARTipsManager paramARTipsManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

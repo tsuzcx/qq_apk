@@ -20,7 +20,7 @@ class GdtMvWebReportServerAntiHandler
       paramGdtAdWebPlugin.append(Arrays.toString(paramVarArgs));
       QLog.i("WebGdtMvWebReportServerAntiHandler", 1, paramGdtAdWebPlugin.toString());
       paramGdtAdWebPlugin = paramVarArgs[0];
-      a(paramGdtAdWebPlugin);
+      b(paramGdtAdWebPlugin);
       return true;
     }
     QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "webPlugin == null || activity == null");
@@ -29,7 +29,7 @@ class GdtMvWebReportServerAntiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebReportServerAntiHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ class QfileFavFileRecordProvider$FavFileRecords$1
   
   public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
   {
-    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
+    if (paramFavFileInfo2.g > paramFavFileInfo1.g) {
       return 1;
     }
-    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
+    if (paramFavFileInfo2.g < paramFavFileInfo1.g) {
       return -1;
     }
     return 0;
@@ -21,7 +21,7 @@ class QfileFavFileRecordProvider$FavFileRecords$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.FavFileRecords.1
  * JD-Core Version:    0.7.0.1
  */

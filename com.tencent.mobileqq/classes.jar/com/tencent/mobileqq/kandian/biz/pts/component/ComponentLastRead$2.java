@@ -10,19 +10,19 @@ class ComponentLastRead$2
   
   public void run()
   {
-    if (this.this$0.a.a.i())
+    if (this.this$0.a.a.s())
     {
       ReadInJoyLogicEngineEventDispatcher.a().a(this.this$0);
       return;
     }
-    if (this.this$0.a.a.c() == 0) {
+    if (this.this$0.a.a.m() == 0) {
       ReadInJoyLogicEngineEventDispatcher.a().a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentLastRead.2
  * JD-Core Version:    0.7.0.1
  */

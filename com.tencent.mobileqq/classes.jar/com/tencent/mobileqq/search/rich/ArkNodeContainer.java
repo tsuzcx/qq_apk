@@ -28,13 +28,12 @@ public class ArkNodeContainer
   extends ArkViewModel
   implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public ArkAppInfo.TimeRecord a;
-  private ArkNodeConfig a;
+  public ArkAppInfo.TimeRecord a = new ArkAppInfo.TimeRecord(this.mTimeRecord);
+  private ArkNodeConfig b;
   
   public ArkNodeContainer(ArkAppCallBackHandler paramArkAppCallBackHandler)
   {
     super(paramArkAppCallBackHandler, ArkAiAppCenter.b ^ true);
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord = new ArkAppInfo.TimeRecord(this.mTimeRecord);
     ArkMultiProcUtil.a();
   }
   
@@ -49,7 +48,7 @@ public class ArkNodeContainer
   public void a()
   {
     destroy();
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig = null;
+    this.b = null;
   }
   
   public void a(String paramString)
@@ -105,19 +104,19 @@ public class ArkNodeContainer
   
   public boolean a(ArkNodeConfig paramArkNodeConfig, String paramString, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig = paramArkNodeConfig;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig == null) {
+    this.b = paramArkNodeConfig;
+    if (this.b == null) {
       return false;
     }
     if (!TextUtils.isEmpty(paramString)) {
       a(paramString);
     }
-    return super.init(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b(), this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.d(), this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.c(), paramString, ArkAppCenterUtil.a(), paramFloat);
+    return super.init(this.b.c(), this.b.e(), this.b.d(), paramString, ArkAppCenterUtil.c(), paramFloat);
   }
   
   protected void initLibrary()
   {
-    ark.MediaSetStub(ArkMediaPlayer.a);
+    ark.MediaSetStub(ArkMediaPlayer.b);
   }
   
   protected void onFirstDrawEnd()
@@ -132,7 +131,7 @@ public class ArkNodeContainer
     } else {
       paramAppPathInfo = null;
     }
-    ArkAppInfo.TimeRecord localTimeRecord = this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord;
+    ArkAppInfo.TimeRecord localTimeRecord = this.a;
     localTimeRecord.getAppFromLocal = false;
     localTimeRecord.endOfGetApp = System.currentTimeMillis();
     a(paramAppPathInfo, paramInt, paramString);
@@ -150,8 +149,8 @@ public class ArkNodeContainer
       }
       return true;
     }
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a();
+    this.a.beginOfGetApp = System.currentTimeMillis();
+    Object localObject2 = this.b.a();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ArkAppMgr.getInstance().getAppPathFromCache(this.mAppInfo.name, this.mAppInfo.appMinVersion);
@@ -183,10 +182,10 @@ public class ArkNodeContainer
     Object localObject = this.mViewImpl;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig != null)
+      if (this.b != null)
       {
-        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131718619);
-        this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b() });
+        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131916120);
+        this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.b.c() });
       }
       else
       {
@@ -199,7 +198,7 @@ public class ArkNodeContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeContainer
  * JD-Core Version:    0.7.0.1
  */

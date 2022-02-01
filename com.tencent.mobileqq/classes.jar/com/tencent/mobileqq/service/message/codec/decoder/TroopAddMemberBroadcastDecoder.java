@@ -57,7 +57,7 @@ public class TroopAddMemberBroadcastDecoder
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramString4);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701508));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899531));
       localObject2 = ((StringBuilder)localObject1).toString();
       localObject1 = MessageHandlerUtils.a(paramQQAppInterface, String.valueOf(paramLong5), paramString3);
       if ((!TextUtils.isEmpty(paramString2)) && (paramString2.equals(String.valueOf(paramLong5)))) {
@@ -69,12 +69,12 @@ public class TroopAddMemberBroadcastDecoder
       {
         paramString2 = new StringBuilder();
         paramString2.append((String)localObject2);
-        paramString2.append(HardCodeUtil.a(2131701507));
+        paramString2.append(HardCodeUtil.a(2131899530));
         localObject2 = paramString2.toString();
         paramString2 = new StringBuilder();
         paramString2.append((String)localObject2);
         paramString2.append((String)localObject1);
-        paramString2.append(HardCodeUtil.a(2131701509));
+        paramString2.append(HardCodeUtil.a(2131899532));
         paramString2 = paramString2.toString();
       }
       else
@@ -82,7 +82,7 @@ public class TroopAddMemberBroadcastDecoder
         paramString2 = new StringBuilder();
         paramString2.append((String)localObject2);
         paramString2.append((String)localObject1);
-        paramString2.append(HardCodeUtil.a(2131701510));
+        paramString2.append(HardCodeUtil.a(2131899533));
         paramString2 = paramString2.toString();
       }
     }
@@ -90,18 +90,18 @@ public class TroopAddMemberBroadcastDecoder
     {
       paramString2 = new StringBuilder();
       paramString2.append(paramString4);
-      paramString2.append(HardCodeUtil.a(2131701497));
+      paramString2.append(HardCodeUtil.a(2131899520));
       paramString2 = paramString2.toString();
       localObject1 = "";
       localObject2 = localObject1;
       bool = false;
     }
     Object localObject3 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = ((TroopManager)localObject3).c(((TroopManager)localObject3).c(paramString3));
+    TroopInfo localTroopInfo = ((TroopManager)localObject3).g(((TroopManager)localObject3).u(paramString3));
     Object localObject4;
     if ((localTroopInfo != null) && (localTroopInfo.cGroupOption == 2))
     {
-      localObject3 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697425);
+      localObject3 = paramQQAppInterface.getApp().getApplicationContext().getString(2131895198);
       if (a(paramString3, paramQQAppInterface))
       {
         localObject4 = new StringBuilder();
@@ -114,7 +114,7 @@ public class TroopAddMemberBroadcastDecoder
     }
     else
     {
-      localObject4 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697426);
+      localObject4 = paramQQAppInterface.getApp().getApplicationContext().getString(2131895199);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramString2);
       ((StringBuilder)localObject3).append("，");
@@ -134,7 +134,7 @@ public class TroopAddMemberBroadcastDecoder
     boolean bool;
     if ((!TextUtils.isEmpty(paramString3)) && (paramString3.equals(paramString2)))
     {
-      paramString3 = HardCodeUtil.a(2131701496);
+      paramString3 = HardCodeUtil.a(2131899519);
       bool = true;
     }
     else
@@ -146,22 +146,22 @@ public class TroopAddMemberBroadcastDecoder
     {
       paramString5 = new StringBuilder();
       paramString5.append(paramString3);
-      paramString5.append(HardCodeUtil.a(2131701498));
+      paramString5.append(HardCodeUtil.a(2131899521));
       paramString5 = paramString5.toString();
     }
     else
     {
       paramString5 = new StringBuilder();
       paramString5.append(paramString3);
-      paramString5.append(HardCodeUtil.a(2131701503));
+      paramString5.append(HardCodeUtil.a(2131899526));
       paramString5 = paramString5.toString();
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString5);
     ((StringBuilder)localObject).append(paramString6);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131701505));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131899528));
     String str = ((StringBuilder)localObject).toString();
-    localObject = paramQQAppInterface.getApp().getApplicationContext().getString(2131697426);
+    localObject = paramQQAppInterface.getApp().getApplicationContext().getString(2131895199);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("，");
@@ -246,7 +246,7 @@ public class TroopAddMemberBroadcastDecoder
     }
     if ((!TextUtils.isEmpty(str1)) && (str1.equals(paramString1)))
     {
-      HardCodeUtil.a(2131701499);
+      HardCodeUtil.a(2131899522);
       return;
     }
     if (TextUtils.isEmpty(paramMsgHead)) {
@@ -376,10 +376,10 @@ public class TroopAddMemberBroadcastDecoder
       break label99;
     }
     new String((byte[])localObject, 15, j);
-    if (!paramDecodeProtoPkgContext.d)
+    if (!paramDecodeProtoPkgContext.j)
     {
-      a(paramMessageHandler.a, i, paramMsg, String.valueOf(l2), l1, paramList);
-      paramDecodeProtoPkgContext = (ITroopOnlinePushHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER);
+      a(paramMessageHandler.n, i, paramMsg, String.valueOf(l2), l1, paramList);
+      paramDecodeProtoPkgContext = (ITroopOnlinePushHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(l1);
       ((StringBuilder)localObject).append("");
@@ -410,13 +410,13 @@ public class TroopAddMemberBroadcastDecoder
     {
       paramQQAppInterface.getMessageFacade().a(paramMessageForGrayTips, String.valueOf(paramLong));
       paramLong = ((ITroopBatchAddFriendService)paramQQAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
-      if ((paramLong.b("newMember")) && (paramLong.a(paramString2))) {
+      if ((paramLong.j("newMember")) && (paramLong.i(paramString2))) {
         paramLong.c(paramString2, paramString1);
       }
       paramString1 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("exp_bar");
       paramLong = new StringBuilder();
       paramLong.append("");
-      paramLong.append(TroopUtils.b(paramQQAppInterface, paramString2));
+      paramLong.append(TroopUtils.c(paramQQAppInterface, paramString2));
       paramString1.a(new String[] { paramString2, "", paramLong.toString() }).a();
     }
     if (QLog.isColorLevel())
@@ -439,7 +439,7 @@ public class TroopAddMemberBroadcastDecoder
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramString = paramQQAppInterface.b(paramString);
+    paramString = paramQQAppInterface.f(paramString);
     if (paramString == null) {
       return false;
     }
@@ -448,7 +448,7 @@ public class TroopAddMemberBroadcastDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.TroopAddMemberBroadcastDecoder
  * JD-Core Version:    0.7.0.1
  */

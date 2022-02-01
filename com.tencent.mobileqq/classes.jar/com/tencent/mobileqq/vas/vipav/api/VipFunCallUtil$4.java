@@ -27,14 +27,14 @@ final class VipFunCallUtil$4
       paramMediaPlayer.append(", extra=");
       paramMediaPlayer.append(paramInt2);
       paramMediaPlayer.append(", funcallid=");
-      paramMediaPlayer.append(this.jdField_a_of_type_Int);
+      paramMediaPlayer.append(this.a);
       QLog.d("VipFunCallConstants", 2, paramMediaPlayer.toString());
     }
-    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqVasVipavVipFunCallMediaListener;
+    paramMediaPlayer = this.b;
     if (paramMediaPlayer != null) {
-      paramMediaPlayer.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
+      paramMediaPlayer.a(paramInt1, paramInt2, this.a);
     }
-    paramInt1 = this.jdField_a_of_type_Int;
+    paramInt1 = this.a;
     paramMediaPlayer = null;
     Object localObject = VipFunCallUtil.a(null, paramInt1, 7, null);
     if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -48,16 +48,16 @@ final class VipFunCallUtil$4
       }
       if (paramMediaPlayer != null)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetVideoView;
+        localObject = this.c;
         if (localObject != null)
         {
-          if (this.jdField_a_of_type_Boolean == true)
+          if (this.d == true)
           {
             ((VideoView)localObject).setBackgroundDrawable(paramMediaPlayer);
             return true;
           }
           ((VideoView)localObject).setVisibility(8);
-          localObject = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
+          localObject = (RelativeLayout)this.c.getParent();
           if (localObject != null) {
             ((RelativeLayout)localObject).setBackgroundDrawable(paramMediaPlayer);
           }
@@ -69,7 +69,7 @@ final class VipFunCallUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.vipav.api.VipFunCallUtil.4
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,10 @@ class GdtNotify$3
   {
     try
     {
-      this.this$0.a = new GdtNotify.3.1(this);
+      this.this$0.b = new GdtNotify.3.1(this);
       GdtAdLoader.Session localSession = new GdtAdLoader.Session();
-      localSession.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), new JSONObject(this.jdField_b_of_type_JavaLangString))));
-      new GdtAdLoader(localSession, new WeakReference(this.this$0.a)).a(this.jdField_b_of_type_JavaLangRefWeakReference);
+      localSession.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), new JSONObject(this.d))));
+      new GdtAdLoader(localSession, new WeakReference(this.this$0.b)).a(this.e);
       return;
     }
     catch (Throwable localThrowable)
@@ -31,7 +31,7 @@ class GdtNotify$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.notify.GdtNotify.3
  * JD-Core Version:    0.7.0.1
  */

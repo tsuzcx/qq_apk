@@ -70,7 +70,7 @@ public class BaseJsCallBack
       this.activity = paramActivity;
     }
     this.mHandler = new Handler(Looper.getMainLooper());
-    this.mRemoteServiceProxy = RemoteServiceProxy.a(String.valueOf(CommonDataAdapter.a().a()));
+    this.mRemoteServiceProxy = RemoteServiceProxy.a(String.valueOf(CommonDataAdapter.a().c()));
   }
   
   public boolean appIsExists(String paramString)
@@ -134,7 +134,7 @@ public class BaseJsCallBack
     {
       long l = Long.parseLong(paramString2);
       int i = Integer.parseInt(paramString3);
-      ReportManager.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, CommonDataAdapter.a().a(), "1000002", null);
+      ReportManager.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, CommonDataAdapter.a().c(), "1000002", null);
       return;
     }
     catch (Exception paramString1)
@@ -204,7 +204,7 @@ public class BaseJsCallBack
   
   public String getAgentVersion()
   {
-    return CommonDataAdapter.a().e();
+    return CommonDataAdapter.a().k();
   }
   
   public String getAppVersionCode(String paramString)
@@ -216,11 +216,11 @@ public class BaseJsCallBack
       localObject = ((JSONObject)localObject).optString("appid");
       int i = 0;
       if (AppUtil.a(paramString)) {
-        i = AppUtil.a(paramString);
+        i = AppUtil.d(paramString);
       }
       paramString = new JSONObject();
       paramString.put("installedVersionCode", i);
-      paramString.put("downloadedVersionCode ", AppUtil.b(DownloadManager.a().a((String)localObject)));
+      paramString.put("downloadedVersionCode ", AppUtil.e(DownloadManager.b().b((String)localObject)));
       paramString = paramString.toString();
       return paramString;
     }
@@ -249,10 +249,10 @@ public class BaseJsCallBack
             localObject2 = ((JSONObject)localObject2).getString("appid");
             if (AppUtil.a((String)localObject1))
             {
-              j = AppUtil.a((String)localObject1);
+              j = AppUtil.d((String)localObject1);
               localObject1 = new JSONObject();
               ((JSONObject)localObject1).put("installedVersionCode", j);
-              ((JSONObject)localObject1).put("downloadedVersionCode", AppUtil.b(DownloadManager.a().a((String)localObject2)));
+              ((JSONObject)localObject1).put("downloadedVersionCode", AppUtil.e(DownloadManager.b().b((String)localObject2)));
               localJSONObject.put((String)localObject2, localObject1);
             }
           }
@@ -276,7 +276,7 @@ public class BaseJsCallBack
   
   public String getCurrentVersion()
   {
-    return CommonDataAdapter.a().c();
+    return CommonDataAdapter.a().g();
   }
   
   public String getDisplay()
@@ -319,7 +319,7 @@ public class BaseJsCallBack
   
   public String getPlatform()
   {
-    return CommonDataAdapter.a().g();
+    return CommonDataAdapter.a().m();
   }
   
   public String getSid()
@@ -327,7 +327,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return CommonDataAdapter.a().a();
+    return CommonDataAdapter.a().e();
   }
   
   public String getUin()
@@ -335,7 +335,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return String.valueOf(CommonDataAdapter.a().a());
+    return String.valueOf(CommonDataAdapter.a().c());
   }
   
   public void goOldDetail(String paramString)
@@ -366,11 +366,11 @@ public class BaseJsCallBack
       }
       boolean bool1 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoDownload"));
       boolean bool2 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoInstall"));
-      localObject = DownloadManager.a().a(paramString1.optString("appid"));
+      localObject = DownloadManager.b().d(paramString1.optString("appid"));
       paramString1.put("titleType", 0);
       if (localObject == null)
       {
-        if (MyAppApi.a().c())
+        if (MyAppApi.l().p())
         {
           ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.2(this, paramString2, bool1, bool2));
           return;
@@ -378,10 +378,10 @@ public class BaseJsCallBack
         goUrl(paramString1.optString("url"), true);
         return;
       }
-      if (((DownloadInfo)localObject).c == 1)
+      if (((DownloadInfo)localObject).o == 1)
       {
-        MyAppApi.a();
-        if (MyAppApi.b())
+        MyAppApi.l();
+        if (MyAppApi.m())
         {
           ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.3(this, paramString2, bool1, bool2));
           return;
@@ -459,7 +459,7 @@ public class BaseJsCallBack
         if (paramString.indexOf("{UIN}") > 0)
         {
           localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(CommonDataAdapter.a().a());
+          ((StringBuilder)localObject3).append(CommonDataAdapter.a().c());
           ((StringBuilder)localObject3).append("");
           paramString = paramString.replaceAll("\\{UIN\\}", ((StringBuilder)localObject3).toString());
           localObject3 = new Intent(this.activity, QZoneAppListActivity.class);
@@ -501,8 +501,8 @@ public class BaseJsCallBack
           localBundle.putInt("titleRefreshType", i1);
           localBundle.putInt("titleType", i2);
           localBundle.putInt("current", k);
-          localBundle.putString("uin", String.valueOf(CommonDataAdapter.a().a()));
-          localBundle.putString("sid", CommonDataAdapter.a().a());
+          localBundle.putString("uin", String.valueOf(CommonDataAdapter.a().c()));
+          localBundle.putString("sid", CommonDataAdapter.a().e());
           localBundle.putInt("goto_type", 2);
           ((Intent)localObject3).putExtras(localBundle);
           this.activity.startActivityForResult((Intent)localObject3, 200);
@@ -531,7 +531,7 @@ public class BaseJsCallBack
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      localJSONArray.put(this.activity.getString(2131691456));
+      localJSONArray.put(this.activity.getString(2131888413));
       localJSONObject.put("url", paramString);
       localJSONObject.put("titleName", localJSONArray);
       goUrl(localJSONObject.toString());
@@ -551,53 +551,53 @@ public class BaseJsCallBack
     //   0: ldc 33
     //   2: astore 13
     //   4: aload_0
-    //   5: invokevirtual 386	com/tencent/open/appcommon/js/BaseJsCallBack:hasRight	()Z
+    //   5: invokevirtual 389	com/tencent/open/appcommon/js/BaseJsCallBack:hasRight	()Z
     //   8: ifne +4 -> 12
     //   11: return
-    //   12: new 283	org/json/JSONObject
+    //   12: new 284	org/json/JSONObject
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 284	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 285	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   20: astore 8
     //   22: aload 8
-    //   24: ldc_w 291
-    //   27: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   24: ldc_w 292
+    //   27: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   30: astore_1
     //   31: aload 8
-    //   33: ldc_w 622
-    //   36: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   33: ldc_w 627
+    //   36: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   39: astore 7
     //   41: aload 8
-    //   43: ldc_w 624
-    //   46: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   43: ldc_w 629
+    //   46: invokevirtual 440	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   49: istore_2
     //   50: aload 8
-    //   52: ldc_w 626
-    //   55: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   52: ldc_w 631
+    //   55: invokevirtual 440	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   58: istore_3
     //   59: aload 8
-    //   61: ldc_w 628
-    //   64: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   61: ldc_w 633
+    //   64: invokevirtual 440	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   67: istore 4
     //   69: aload 8
-    //   71: ldc_w 630
-    //   74: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   71: ldc_w 635
+    //   74: invokevirtual 440	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   77: istore 5
     //   79: aload 8
-    //   81: ldc_w 632
-    //   84: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   81: ldc_w 637
+    //   84: invokevirtual 440	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   87: istore 6
     //   89: aload 8
-    //   91: ldc_w 634
-    //   94: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: ldc_w 639
+    //   94: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   97: astore 9
     //   99: aload 8
-    //   101: ldc_w 636
-    //   104: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   101: ldc_w 641
+    //   104: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   107: astore 10
     //   109: aload 8
-    //   111: ldc_w 638
-    //   114: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: ldc_w 643
+    //   114: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   117: astore 8
     //   119: aload 8
     //   121: astore 13
@@ -798,7 +798,7 @@ public class BaseJsCallBack
     //   495: aload 8
     //   497: invokevirtual 204	java/lang/Exception:printStackTrace	()V
     //   500: ldc 8
-    //   502: ldc_w 640
+    //   502: ldc_w 645
     //   505: aload 8
     //   507: invokestatic 276	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   510: aload 12
@@ -840,168 +840,168 @@ public class BaseJsCallBack
     //   570: aload 10
     //   572: astore 7
     //   574: aload 8
-    //   576: invokevirtual 606	org/json/JSONException:printStackTrace	()V
+    //   576: invokevirtual 611	org/json/JSONException:printStackTrace	()V
     //   579: ldc 8
-    //   581: ldc_w 642
+    //   581: ldc_w 647
     //   584: aload 8
     //   586: invokestatic 276	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   589: aload 11
     //   591: astore 8
-    //   593: new 116	java/lang/StringBuilder
+    //   593: new 117	java/lang/StringBuilder
     //   596: dup
-    //   597: invokespecial 117	java/lang/StringBuilder:<init>	()V
+    //   597: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   600: astore 9
     //   602: aload 9
-    //   604: ldc_w 644
-    //   607: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   604: ldc_w 649
+    //   607: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   610: pop
     //   611: aload 9
     //   613: aload 12
-    //   615: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   615: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   618: pop
     //   619: aload 9
-    //   621: ldc_w 591
-    //   624: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: ldc_w 596
+    //   624: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   627: pop
     //   628: aload 9
     //   630: iload_2
-    //   631: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   631: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   634: pop
     //   635: aload 9
-    //   637: ldc_w 591
-    //   640: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   637: ldc_w 596
+    //   640: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   643: pop
     //   644: aload 9
     //   646: iload 4
-    //   648: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   648: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   651: pop
     //   652: aload 9
-    //   654: ldc_w 591
-    //   657: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   654: ldc_w 596
+    //   657: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   660: pop
     //   661: aload 9
     //   663: iload_3
-    //   664: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   664: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   667: pop
     //   668: aload 9
-    //   670: ldc_w 591
-    //   673: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   670: ldc_w 596
+    //   673: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   676: pop
     //   677: aload 9
     //   679: iload 5
-    //   681: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   681: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   684: pop
     //   685: aload 9
-    //   687: ldc_w 591
-    //   690: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   687: ldc_w 596
+    //   690: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   693: pop
     //   694: aload 9
     //   696: aload 7
-    //   698: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   698: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   701: pop
     //   702: aload 9
-    //   704: ldc_w 591
-    //   707: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   704: ldc_w 596
+    //   707: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   710: pop
     //   711: aload 9
     //   713: aload_1
-    //   714: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   714: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   717: pop
     //   718: aload 9
-    //   720: ldc_w 591
-    //   723: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   720: ldc_w 596
+    //   723: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   726: pop
     //   727: aload 9
     //   729: iload 6
-    //   731: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   731: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   734: pop
     //   735: aload 9
-    //   737: ldc_w 591
-    //   740: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   737: ldc_w 596
+    //   740: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   743: pop
     //   744: aload 9
     //   746: aload 8
-    //   748: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   748: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   751: pop
     //   752: aload 9
-    //   754: ldc_w 591
-    //   757: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   754: ldc_w 596
+    //   757: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   760: pop
     //   761: aload 9
     //   763: aload 13
-    //   765: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   765: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   768: pop
     //   769: aload 9
-    //   771: ldc_w 591
-    //   774: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   771: ldc_w 596
+    //   774: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   777: pop
     //   778: aload 9
     //   780: iconst_0
-    //   781: invokevirtual 363	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   781: invokevirtual 366	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   784: pop
     //   785: ldc 8
     //   787: aload 9
-    //   789: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   789: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   792: invokestatic 166	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   795: new 548	android/content/Intent
+    //   795: new 553	android/content/Intent
     //   798: dup
     //   799: aload_0
     //   800: getfield 47	com/tencent/open/appcommon/js/BaseJsCallBack:activity	Landroid/app/Activity;
-    //   803: ldc_w 550
-    //   806: invokespecial 553	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   803: ldc_w 555
+    //   806: invokespecial 558	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   809: astore 9
-    //   811: new 406	android/os/Bundle
+    //   811: new 409	android/os/Bundle
     //   814: dup
-    //   815: invokespecial 407	android/os/Bundle:<init>	()V
+    //   815: invokespecial 410	android/os/Bundle:<init>	()V
     //   818: astore 10
     //   820: aload 10
-    //   822: ldc_w 490
+    //   822: ldc_w 494
     //   825: aload 12
-    //   827: invokevirtual 414	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   827: invokevirtual 417	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   830: aload 10
-    //   832: ldc_w 624
+    //   832: ldc_w 629
     //   835: iload_2
-    //   836: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   836: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   839: aload 10
-    //   841: ldc_w 628
+    //   841: ldc_w 633
     //   844: iload 4
-    //   846: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   846: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   849: aload 10
-    //   851: ldc_w 626
+    //   851: ldc_w 631
     //   854: iload_3
-    //   855: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   855: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   858: aload 10
-    //   860: ldc_w 630
+    //   860: ldc_w 635
     //   863: iload 5
-    //   865: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   865: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   868: aload 10
-    //   870: ldc_w 634
+    //   870: ldc_w 639
     //   873: aload 7
-    //   875: invokevirtual 414	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   875: invokevirtual 417	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   878: aload 10
-    //   880: ldc_w 636
+    //   880: ldc_w 641
     //   883: aload_1
-    //   884: invokevirtual 414	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   884: invokevirtual 417	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   887: aload 10
-    //   889: ldc_w 632
+    //   889: ldc_w 637
     //   892: iload 6
-    //   894: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   894: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   897: aload 10
-    //   899: ldc_w 646
+    //   899: ldc_w 651
     //   902: aload 8
-    //   904: invokevirtual 414	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   904: invokevirtual 417	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   907: aload 10
-    //   909: ldc_w 597
+    //   909: ldc_w 602
     //   912: iconst_5
-    //   913: invokevirtual 442	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   913: invokevirtual 444	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   916: aload 9
     //   918: aload 10
-    //   920: invokevirtual 601	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   920: invokevirtual 606	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   923: pop
     //   924: aload_0
     //   925: getfield 47	com/tencent/open/appcommon/js/BaseJsCallBack:activity	Landroid/app/Activity;
     //   928: aload 9
-    //   930: invokevirtual 650	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   930: invokevirtual 655	android/app/Activity:startActivity	(Landroid/content/Intent;)V
     //   933: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1205,7 +1205,7 @@ public class BaseJsCallBack
       StaticAnalyz.a("100", "ANDROIDQQ.INSTALLED.APPDETAIL", paramString2);
       return;
     }
-    if (DownloadManager.a().a(paramString2))
+    if (DownloadManager.b().k(paramString2))
     {
       StaticAnalyz.a("100", "ANDROIDQQ.UNINSTALL.APPDETAIL", paramString2);
       return;
@@ -1281,7 +1281,7 @@ public class BaseJsCallBack
         break label66;
       }
       paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-      AppUtil.a(this.activity, paramString1, paramString2);
+      AppUtil.b(this.activity, paramString1, paramString2);
       return;
     }
     catch (Exception paramString2)
@@ -1329,7 +1329,7 @@ public class BaseJsCallBack
     {
       break label87;
     }
-    ToastUtil.a().a(HardCodeUtil.a(2131701224), 0);
+    ToastUtil.a().a(HardCodeUtil.a(2131899235), 0);
     return;
     paramString2 = new StringBuilder();
     paramString2.append("apk not exist packName = ");
@@ -1348,7 +1348,7 @@ public class BaseJsCallBack
         break label66;
       }
       paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-      AppUtil.a(this.activity, paramString1, paramString2);
+      AppUtil.b(this.activity, paramString1, paramString2);
       return;
     }
     catch (Exception paramString2)
@@ -1373,7 +1373,7 @@ public class BaseJsCallBack
       if (appIsExists(paramString1))
       {
         paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-        AppUtil.a(this.activity, paramString1, paramString2);
+        AppUtil.b(this.activity, paramString1, paramString2);
       }
       return;
     }
@@ -1412,13 +1412,13 @@ public class BaseJsCallBack
     {
       break label84;
     }
-    AppUtil.a(this.activity, paramString3, paramString1, paramString5);
+    AppUtil.b(this.activity, paramString3, paramString1, paramString5);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseJsCallBack
  * JD-Core Version:    0.7.0.1
  */

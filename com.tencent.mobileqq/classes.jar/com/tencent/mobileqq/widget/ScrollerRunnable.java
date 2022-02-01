@@ -1,13 +1,18 @@
 package com.tencent.mobileqq.widget;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.oneclickjump.OneClickJumpUtil;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.troop.navigatebar.AioTips;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -18,78 +23,102 @@ import mqq.os.MqqHandler;
 public class ScrollerRunnable
   implements Runnable
 {
-  private static long b;
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  @Nullable
-  private TroopAioTips jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips;
+  private static long A;
   protected ListView a;
-  protected Runnable a;
-  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap;
-  protected MqqHandler a;
-  protected boolean a;
   protected int b;
-  protected boolean b;
   protected int c;
-  protected boolean c;
   protected int d;
-  protected boolean d;
-  protected final int e;
-  private boolean e;
-  protected int f;
+  protected int e;
+  protected final int f;
   protected int g;
-  protected int h;
+  protected boolean h;
   protected int i;
-  int j;
+  protected Runnable j;
   protected int k;
   protected int l;
-  private int m;
+  int m;
+  protected boolean n;
+  protected int o;
+  protected MqqHandler p;
+  protected long q;
+  protected boolean r;
+  protected boolean s;
+  protected int t;
+  HashMap<Integer, Integer> u;
+  @Nullable
+  private AioTips v;
+  private int w;
+  private boolean x;
+  private View y;
+  private int z;
   
   public ScrollerRunnable(ListView paramListView)
   {
     boolean bool = false;
-    this.f = 0;
-    this.jdField_a_of_type_Boolean = true;
+    this.g = 0;
+    this.h = true;
+    this.w = 0;
+    this.x = false;
+    this.i = -1;
+    this.k = 0;
     this.m = 0;
-    this.jdField_e_of_type_Boolean = false;
-    this.g = -1;
-    this.h = 0;
-    this.j = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.k = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_e_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledFadingEdgeLength();
+    this.n = false;
+    this.o = -1;
+    this.q = -1L;
+    this.z = 0;
+    this.r = false;
+    this.s = false;
+    this.u = new HashMap();
+    this.a = paramListView;
+    this.f = ViewConfiguration.get(this.a.getContext()).getScaledFadingEdgeLength();
     if (DeviceInfoUtil.a() / 1048576L > 512L) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    double d1 = this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131299168);
+    this.h = bool;
+    double d1 = this.a.getContext().getResources().getDimension(2131299920);
     Double.isNaN(d1);
-    this.l = ((int)(d1 + 0.5D));
+    this.t = ((int)(d1 + 0.5D));
   }
   
-  private boolean a()
+  private int a(ScrollerRunnable.ScrollType paramScrollType)
   {
-    TroopAioTips localTroopAioTips = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips;
-    if (localTroopAioTips != null) {
-      return localTroopAioTips.a(this.k);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getScrollOffset, TITLE_BAR_HEIGHT = ");
+      localStringBuilder.append(this.t);
+      localStringBuilder.append(", animationOffset = ");
+      localStringBuilder.append(this.z);
+      localStringBuilder.append(", type = ");
+      localStringBuilder.append(paramScrollType);
+      QLog.d("ScrollerRunnable", 2, localStringBuilder.toString());
+    }
+    if (!c()) {
+      return -this.t;
+    }
+    return (this.t + this.z) * -1;
+  }
+  
+  private void h()
+  {
+    d();
+    if (i()) {
+      f();
+    }
+  }
+  
+  private boolean i()
+  {
+    AioTips localAioTips = this.v;
+    if (localAioTips != null) {
+      return localAioTips.c(this.o);
     }
     return false;
   }
   
-  public int a()
-  {
-    return this.k;
-  }
-  
   public void a()
   {
-    this.l = 0;
+    this.t = 0;
   }
   
   public void a(int paramInt)
@@ -103,14 +132,14 @@ public class ScrollerRunnable
         localStringBuilder.append(paramInt);
         QLog.d("ScrollerRunnable", 2, localStringBuilder.toString());
       }
-      if ((paramInt == 0) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+      if ((paramInt == 0) && (!this.u.isEmpty()))
       {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.f = 0;
+        this.u.clear();
+        this.g = 0;
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        this.f -= ((Integer)this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt))).intValue();
+      if (this.u.containsKey(Integer.valueOf(paramInt))) {
+        this.g -= ((Integer)this.u.remove(Integer.valueOf(paramInt))).intValue();
       }
       return;
     }
@@ -121,12 +150,12 @@ public class ScrollerRunnable
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt1));
+      boolean bool = this.u.containsKey(Integer.valueOf(paramInt1));
       if (bool) {
         return;
       }
-      this.f += paramInt2;
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+      this.g += paramInt2;
+      this.u.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -143,61 +172,99 @@ public class ScrollerRunnable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, Runnable paramRunnable, int paramInt4)
   {
-    this.k = paramInt1;
+    this.o = paramInt1;
     a(paramInt2, paramInt3, paramRunnable, paramInt4, false);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, Runnable paramRunnable, MqqHandler paramMqqHandler, int paramInt4)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.p = paramMqqHandler;
     a(paramInt1, paramInt2, paramInt3, paramRunnable, paramInt4);
   }
   
   public void a(int paramInt1, int paramInt2, Runnable paramRunnable, int paramInt3, boolean paramBoolean)
   {
     b();
-    this.g = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    if (QLog.isColorLevel()) {
-      QLog.d("ScrollerRunnable", 2, new Object[] { "start, from:", Integer.valueOf(paramInt3), "aniPos:", Integer.valueOf(paramInt2), "mTargetPos:", Integer.valueOf(this.jdField_b_of_type_Int) });
+    this.i = paramInt2;
+    this.c = paramInt1;
+    this.j = paramRunnable;
+    if (QLog.isColorLevel())
+    {
+      paramRunnable = new StringBuilder();
+      paramRunnable.append(this.c);
+      paramRunnable.append(", jumpToTopDirect:");
+      paramRunnable.append(paramBoolean);
+      QLog.d("ScrollerRunnable", 2, new Object[] { "start, from:", Integer.valueOf(paramInt3), ", aniPos:", Integer.valueOf(paramInt2), ", mTargetPos:", paramRunnable.toString() });
     }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    this.i = paramInt3;
-    this.jdField_a_of_type_ComTencentWidgetListView.post(this);
+    this.x = paramBoolean;
+    this.l = paramInt3;
+    this.a.post(this);
   }
   
   public void a(int paramInt, long paramLong)
   {
-    this.g = paramInt;
-    this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(new ScrollerRunnable.1(this), paramLong);
+    this.i = paramInt;
+    this.a.postDelayed(new ScrollerRunnable.1(this), paramLong);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.q = paramLong;
   }
   
-  public void a(@Nullable TroopAioTips paramTroopAioTips)
+  protected void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips = paramTroopAioTips;
+    int i1;
+    int i2;
+    if (this.k == 2)
+    {
+      i1 = 16773091;
+      i2 = -4125;
+    }
+    else
+    {
+      i1 = 11580351;
+      i2 = 867218367;
+    }
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofInt(paramView, "backgroundColor", new int[] { i1, i2 });
+    localObjectAnimator1.setDuration(300L);
+    localObjectAnimator1.setEvaluator(new ArgbEvaluator());
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofInt(paramView, "backgroundColor", new int[] { i2, i1 });
+    localObjectAnimator2.setDuration(400L);
+    localObjectAnimator2.setEvaluator(new ArgbEvaluator());
+    localObjectAnimator1.addListener(new ScrollerRunnable.5(this, paramView, localObjectAnimator2));
+    localObjectAnimator2.addListener(new ScrollerRunnable.6(this, paramView));
+    localObjectAnimator1.start();
+    this.q = -1L;
+  }
+  
+  public void a(@Nullable AioTips paramAioTips)
+  {
+    this.v = paramAioTips;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = null;
+    this.a.removeCallbacks(this);
+    this.n = false;
+    this.j = null;
   }
   
   public void b(int paramInt)
   {
-    this.h = paramInt;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAnimationOffset offset = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ScrollerRunnable", 2, localStringBuilder.toString());
+    }
+    this.z = paramInt;
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -205,276 +272,380 @@ public class ScrollerRunnable
     a(paramInt1, 0, null, paramInt2, false);
   }
   
-  protected void c()
+  public void c(int paramInt)
   {
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    this.k = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.z != 0;
+  }
+  
+  protected void d()
+  {
+    Runnable localRunnable = this.j;
     if (localRunnable != null)
     {
       localRunnable.run();
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.j = null;
     }
-    this.jdField_a_of_type_ComTencentWidgetListView.post(new ScrollerRunnable.2(this));
+    else if (this.x)
+    {
+      OneClickJumpUtil.b = SystemClock.uptimeMillis() - OneClickJumpUtil.b;
+      OneClickJumpUtil.a();
+    }
+    this.a.post(new ScrollerRunnable.2(this));
   }
   
-  public void d()
+  public void e()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.y;
     if (localView != null)
     {
       localView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.y = null;
     }
   }
   
-  protected void e()
+  protected void f()
   {
     long l1 = System.currentTimeMillis();
-    if (System.currentTimeMillis() - jdField_b_of_type_Long < 1000L) {
+    if (System.currentTimeMillis() - A < 1000L) {
       return;
     }
-    if (this.g != -1) {
-      jdField_b_of_type_Long = l1;
+    if (this.i != -1) {
+      A = l1;
     }
-    int i1 = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-    if (this.g < i1) {
+    int i2 = this.a.getFirstVisiblePosition() - this.a.getHeaderViewsCount();
+    if (this.i < i2) {
       return;
     }
-    if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
+    if ((this.o == 5) && (this.q > 0L))
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof ChatAdapter1))
+      localObject1 = this.a.getAdapter();
+      if ((localObject1 instanceof ChatAdapter1))
       {
-        localObject = ((ChatAdapter1)localObject).a();
-        if ((localObject != null) && (((List)localObject).size() > 0))
+        localObject1 = ((ChatAdapter1)localObject1).a();
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          int i2 = ((List)localObject).size();
-          n = 0;
-          while (n < i2)
+          int i3 = ((List)localObject1).size();
+          i1 = 0;
+          while (i1 < i3)
           {
-            if (((ChatMessage)((List)localObject).get(n)).uniseq == this.jdField_a_of_type_Long)
+            if (((ChatMessage)((List)localObject1).get(i1)).uniseq == this.q)
             {
-              this.g = n;
+              this.i = i1;
               break;
             }
-            n += 1;
+            i1 += 1;
           }
         }
       }
     }
-    int n = this.g;
-    if (n == -1) {
+    int i1 = this.i;
+    if (i1 == -1) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(n - i1);
-    if (localObject != null)
+    Object localObject2 = this.a.getChildAt(i1 - i2);
+    Object localObject1 = localObject2;
+    if (this.k == 2)
+    {
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        localObject1 = ((View)localObject2).findViewById(2131434586);
+      }
+    }
+    if (localObject1 != null)
     {
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("FlushMessageItem:");
-        localStringBuilder.append(localObject.hashCode());
-        localStringBuilder.append(",");
-        localStringBuilder.append(((View)localObject).getParent());
-        QLog.i("ScrollerRunnable", 2, localStringBuilder.toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("FlushMessageItem:");
+        ((StringBuilder)localObject2).append(localObject1.hashCode());
+        ((StringBuilder)localObject2).append(",");
+        ((StringBuilder)localObject2).append(((View)localObject1).getParent());
+        QLog.i("ScrollerRunnable", 2, ((StringBuilder)localObject2).toString());
       }
-      if (this.h == 1)
+      if (this.k == 1)
       {
-        ((View)localObject).post(new ScrollerRunnable.3(this, (View)localObject));
+        ((View)localObject1).post(new ScrollerRunnable.3(this, (View)localObject1));
         return;
       }
-      ((View)localObject).post(new ScrollerRunnable.4(this, (View)localObject));
+      ((View)localObject1).post(new ScrollerRunnable.4(this, (View)localObject1));
     }
+  }
+  
+  public int g()
+  {
+    return this.o;
   }
   
   public void run()
   {
-    int n;
-    if (!this.jdField_b_of_type_Boolean)
+    int i1;
+    if (!this.n)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.j = 0;
+      this.n = true;
       this.m = 0;
-      if (this.jdField_c_of_type_Boolean) {
-        n = Math.max(0, this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount());
+      this.w = 0;
+      if (this.r) {
+        i1 = Math.max(0, this.a.getFirstVisiblePosition() - this.a.getHeaderViewsCount());
       } else {
-        n = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
+        i1 = this.a.getFirstVisiblePosition();
       }
-      if (this.jdField_c_of_type_Boolean) {
-        i1 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount() + n - this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount();
+      if (this.r) {
+        i2 = this.a.getChildCount() + i1 - this.a.getFooterViewsCount();
       } else {
-        i1 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount() + n;
+        i2 = this.a.getChildCount() + i1;
       }
-      i1 -= 1;
-      i2 = this.jdField_b_of_type_Int;
-      if (i2 <= n)
+      i2 -= 1;
+      if (QLog.isColorLevel())
       {
-        n = n - i2 + 1;
-        this.jdField_a_of_type_Int = 2;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("run invoke, isNeedIgnoreHeaderView = ");
+        ((StringBuilder)localObject).append(this.r);
+        ((StringBuilder)localObject).append(", getFirstVisiblePosition = ");
+        ((StringBuilder)localObject).append(this.a.getFirstVisiblePosition());
+        ((StringBuilder)localObject).append(", getLastVisiblePosition = ");
+        ((StringBuilder)localObject).append(this.a.getLastVisiblePosition());
+        ((StringBuilder)localObject).append(", lastPos = ");
+        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append(", firstPos = ");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(", getHeaderViewsCount = ");
+        ((StringBuilder)localObject).append(this.a.getHeaderViewsCount());
+        ((StringBuilder)localObject).append(", getChildCount = ");
+        ((StringBuilder)localObject).append(this.a.getChildCount());
+        ((StringBuilder)localObject).append(", getFooterViewsCount = ");
+        ((StringBuilder)localObject).append(this.a.getFooterViewsCount());
+        ((StringBuilder)localObject).append(", jumpToTopDirect = ");
+        ((StringBuilder)localObject).append(this.x);
+        QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+      }
+      i3 = this.c;
+      if (i3 <= i1)
+      {
+        i1 = i1 - i3 + 1;
+        this.b = 2;
+      }
+      else if (i3 >= i2)
+      {
+        if ((c()) && (this.c == i2))
+        {
+          h();
+          return;
+        }
+        i1 = this.c - i2 + 1;
+        this.b = 1;
       }
       else
       {
-        if (i2 < i1) {
-          break label173;
+        if ((!c()) || (this.c - i1 > 2)) {
+          break label444;
         }
-        n = i2 - i1 + 1;
-        this.jdField_a_of_type_Int = 1;
+        this.b = 1;
+        if (QLog.isColorLevel()) {
+          QLog.i("ScrollerRunnable", 2, "hit up boundary case");
+        }
+        i1 = 2;
       }
-      if (n > 0) {
-        this.jdField_d_of_type_Int = (1000 / n);
+      if (i1 > 0) {
+        this.e = (1000 / i1);
       } else {
-        this.jdField_d_of_type_Int = 1000;
+        this.e = 1000;
       }
-      this.jdField_c_of_type_Int = -1;
-      break label185;
-      label173:
-      if (a()) {
-        e();
-      }
+      this.d = -1;
+      break label449;
+      label444:
+      h();
       return;
     }
-    label185:
-    int i2 = this.jdField_a_of_type_ComTencentWidgetListView.getHeight();
-    if (this.jdField_c_of_type_Boolean) {
-      n = Math.max(0, this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount());
+    label449:
+    int i3 = this.a.getHeight();
+    if (this.r) {
+      i1 = Math.max(0, this.a.getFirstVisiblePosition() - this.a.getHeaderViewsCount());
     } else {
-      n = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
+      i1 = this.a.getFirstVisiblePosition();
     }
-    int i1 = this.jdField_a_of_type_Int;
-    Object localObject;
-    if (i1 != 1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("run invoke, firstPos = ");
+    ((StringBuilder)localObject).append(i1);
+    ((StringBuilder)localObject).append(", mLastSeenPos = ");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(", mTargetPos = ");
+    ((StringBuilder)localObject).append(this.c);
+    QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+    int i2 = this.b;
+    if (i2 != 1)
     {
-      if (i1 != 2) {
+      if (i2 != 2) {
         return;
       }
-      if ((this.jdField_e_of_type_Boolean) && (this.m > 4))
+      if ((this.x) && (this.w > 4))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("jumpToTopDirect,listCount = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetListView.getCount());
+          ((StringBuilder)localObject).append(this.a.getCount());
           ((StringBuilder)localObject).append(" mTargetPos = ");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.c);
           QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(this.jdField_b_of_type_Int + 1);
-        this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(-this.l, this.jdField_d_of_type_Int);
-        this.jdField_e_of_type_Boolean = false;
-        c();
+        this.a.setSelection(this.c + 1);
+        this.a.smoothScrollBy(a(ScrollerRunnable.ScrollType.MOVE_UP_JUMP_DIRECT), this.e);
+        d();
+        this.x = false;
         return;
       }
-      this.m += 1;
-      if (n == this.jdField_c_of_type_Int)
+      this.w += 1;
+      if (i1 == this.d)
       {
-        n = this.j;
-        if (n > 10)
+        i1 = this.m;
+        if (i1 > 10)
         {
-          this.jdField_a_of_type_ComTencentWidgetListView.setSelection(this.jdField_b_of_type_Int + 1);
-          this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(-this.l, this.jdField_d_of_type_Int);
-          c();
+          this.a.setSelection(this.c + 1);
+          this.a.smoothScrollBy(a(ScrollerRunnable.ScrollType.MOVE_UP_EXCEED_TIMES), this.e);
+          d();
           return;
         }
-        this.j = (n + 1);
-        this.jdField_a_of_type_ComTencentWidgetListView.post(this);
+        this.m = (i1 + 1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("run invoke, tryTimes = ");
+        ((StringBuilder)localObject).append(this.m);
+        QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+        this.a.post(this);
         return;
       }
-      this.j = 0;
-      i1 = this.jdField_b_of_type_Int;
-      if (n <= i1)
+      this.m = 0;
+      i2 = this.c;
+      if (i1 <= i2)
       {
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(i1 + 1);
-        this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(-this.l, this.jdField_d_of_type_Int);
-        c();
+        this.a.setSelection(i2 + 1);
+        this.a.smoothScrollBy(a(ScrollerRunnable.ScrollType.MOVE_UP_OTHER), this.e);
+        d();
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(0);
+      localObject = this.a.getChildAt(0);
       if (localObject == null) {
         return;
       }
-      i2 = ((View)localObject).getTop();
-      if (n > this.jdField_b_of_type_Int) {
-        i1 = this.jdField_e_of_type_Int;
+      i3 = ((View)localObject).getTop();
+      if (i1 > this.c) {
+        i2 = this.f;
       } else {
-        i1 = this.jdField_a_of_type_ComTencentWidgetListView.getPaddingTop() + this.f;
+        i2 = this.a.getPaddingTop() + this.g;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(i2 - i1, this.jdField_d_of_type_Int);
-      } else if (n > this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(0);
+      i3 -= i2;
+      if (this.h)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getScrollOffset(out), MOVE_UP_POS, distance = ");
+          ((StringBuilder)localObject).append(i3);
+          ((StringBuilder)localObject).append(", extraScroll = ");
+          ((StringBuilder)localObject).append(i2);
+          QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+        }
+        this.a.smoothScrollBy(i3, this.e);
       }
-      this.jdField_c_of_type_Int = n;
-      if (n > this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_ComTencentWidgetListView.post(this);
+      else if (i1 > this.c)
+      {
+        this.a.setSelection(0);
+      }
+      this.d = i1;
+      if (i1 > this.c) {
+        this.a.post(this);
       }
     }
     else
     {
-      if (this.jdField_d_of_type_Boolean) {
-        i1 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount() - 1 - this.jdField_a_of_type_ComTencentWidgetListView.getFooterViewsCount();
+      if (this.s) {
+        i2 = this.a.getChildCount() - 1 - this.a.getFooterViewsCount();
       } else {
-        i1 = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount() - 1;
+        i2 = this.a.getChildCount() - 1;
       }
-      int i3 = n + i1;
-      if (i1 < 0) {
+      int i4 = i1 + i2;
+      if (i2 < 0) {
         return;
       }
-      if (i3 == this.jdField_c_of_type_Int)
+      if (i4 == this.d)
       {
-        if (this.j > 10)
+        if (this.m > 10)
         {
-          this.jdField_a_of_type_ComTencentWidgetListView.setSelection(this.jdField_b_of_type_Int + 1);
-          if (i3 != this.jdField_b_of_type_Int) {
-            this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(-this.l, this.jdField_d_of_type_Int);
+          this.a.setSelection(this.c + 1);
+          if (i4 != this.c) {
+            this.a.smoothScrollBy(a(ScrollerRunnable.ScrollType.MOVE_DOWN_EXCEED_TIMES), this.e);
           }
-          c();
-          n = this.f;
-          if (n != 0)
+          d();
+          if (this.g != 0)
           {
-            this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(n, this.jdField_d_of_type_Int);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("getScrollOffset(out), MOVE_DOWN_POS, mlastExtraScroll = ");
+              ((StringBuilder)localObject).append(this.g);
+              QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+            }
+            this.a.smoothScrollBy(this.g, this.e);
             a(0);
           }
           return;
         }
-        this.jdField_a_of_type_ComTencentWidgetListView.post(this);
-        this.j += 1;
+        this.a.post(this);
+        this.m += 1;
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i1);
-      int i4 = ((View)localObject).getHeight();
-      int i5 = ((View)localObject).getTop();
-      int i6 = this.jdField_a_of_type_ComTencentWidgetListView.getPaddingBottom();
-      if (i3 < this.jdField_a_of_type_ComTencentWidgetListView.getCount() - 1) {
-        n = this.jdField_e_of_type_Int;
+      localObject = this.a.getChildAt(i2);
+      int i5 = ((View)localObject).getHeight();
+      int i6 = ((View)localObject).getTop();
+      int i7 = this.a.getPaddingBottom();
+      if (i4 < this.a.getCount() - 1) {
+        i1 = this.f;
       } else {
-        n = this.jdField_a_of_type_ComTencentWidgetListView.getPaddingBottom();
+        i1 = this.a.getPaddingBottom();
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(i4 - (i2 - i6 - i5) + n, this.jdField_d_of_type_Int);
-      } else if (i3 < this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(i1);
-      }
-      this.jdField_c_of_type_Int = i3;
-      if (i3 < this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_ComTencentWidgetListView.post(this);
-      }
-      if (a()) {
-        e();
-      }
-      n = this.jdField_b_of_type_Int;
-      if (i3 >= n)
+      i1 = i5 - (i3 - i7 - i6) + i1;
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(n + 1);
-        if (i3 != this.jdField_b_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetListView.smoothScrollBy(-this.l, this.jdField_d_of_type_Int);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("MOVE_DOWN_POS, lastPos = ");
+        ((StringBuilder)localObject).append(i4);
+        ((StringBuilder)localObject).append(", needSmoothScroll = ");
+        ((StringBuilder)localObject).append(this.h);
+        ((StringBuilder)localObject).append(", distance = ");
+        ((StringBuilder)localObject).append(i1);
+        QLog.d("ScrollerRunnable", 2, ((StringBuilder)localObject).toString());
+      }
+      if (this.h) {
+        this.a.smoothScrollBy(i1, this.e);
+      } else if (i4 < this.c) {
+        this.a.setSelection(i2);
+      }
+      this.d = i4;
+      if (i4 < this.c) {
+        this.a.post(this);
+      }
+      if (i()) {
+        f();
+      }
+      i1 = this.c;
+      if (i4 >= i1)
+      {
+        this.a.setSelection(i1 + 1);
+        if ((i4 != this.c) || (c())) {
+          this.a.smoothScrollBy(a(ScrollerRunnable.ScrollType.MOVE_DOWN_OTHER), this.e);
         }
-        c();
+        d();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable
  * JD-Core Version:    0.7.0.1
  */

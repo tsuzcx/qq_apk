@@ -2,50 +2,45 @@ package com.tencent.gathererga.core.internal.provider;
 
 public final class ProviderMethodPriorityImpl$Builder
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
+  private int a = 0;
+  private int b = 0;
   private int c = 0;
+  private boolean d = true;
+  private boolean e = true;
   
   public final Builder a()
   {
-    this.jdField_a_of_type_Int = 4;
+    this.a = 4;
     return this;
   }
   
   public final Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
-  }
-  
-  public final ProviderMethodPriorityImpl a()
-  {
-    return new ProviderMethodPriorityImpl(this, null);
   }
   
   public final Builder b()
   {
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     return this;
   }
   
   public final Builder b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     return this;
   }
   
   public final Builder c()
   {
-    this.jdField_b_of_type_Int = 2;
+    this.b = 2;
     return this;
   }
   
   public final Builder d()
   {
-    this.jdField_b_of_type_Int = 1;
+    this.b = 1;
     return this;
   }
   
@@ -60,10 +55,15 @@ public final class ProviderMethodPriorityImpl$Builder
     this.c = 1;
     return this;
   }
+  
+  public final ProviderMethodPriorityImpl g()
+  {
+    return new ProviderMethodPriorityImpl(this, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.provider.ProviderMethodPriorityImpl.Builder
  * JD-Core Version:    0.7.0.1
  */

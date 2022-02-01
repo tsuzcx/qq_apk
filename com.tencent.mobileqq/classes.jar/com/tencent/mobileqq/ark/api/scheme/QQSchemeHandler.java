@@ -18,7 +18,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager;
 import com.tencent.mobileqq.troop.api.ITroopHandlerNameApi;
 import com.tencent.mobileqq.troop.troopapps.api.ITroopAppHandler;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.TroopReportor;
@@ -204,9 +204,9 @@ public class QQSchemeHandler
         paramString1 = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
         if (paramString1 != null)
         {
-          paramString1 = paramString1.a();
+          paramString1 = paramString1.k();
           if ((paramString1 != null) && ((paramString1 instanceof PublicAccountChatPie))) {
-            ((PublicAccountChatPie)paramString1).d(paramString2);
+            ((PublicAccountChatPie)paramString1).e(paramString2);
           }
         }
       }
@@ -337,7 +337,7 @@ public class QQSchemeHandler
         }
         paramString1 = (AIOAnimationControlManager)paramString1.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
         if (paramString1 != null) {
-          paramString1.b(paramString2);
+          paramString1.c(paramString2);
         }
         return true;
       }
@@ -358,7 +358,7 @@ public class QQSchemeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.QQSchemeHandler
  * JD-Core Version:    0.7.0.1
  */

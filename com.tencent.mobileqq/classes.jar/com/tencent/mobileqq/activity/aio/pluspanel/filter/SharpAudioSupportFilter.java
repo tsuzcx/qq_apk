@@ -12,24 +12,24 @@ public class SharpAudioSupportFilter
   {
     if (!VcSystemInfo.isSupportSharpAudio())
     {
-      paramPlusPanelAppLoader.b(202);
-      paramPlusPanelAppLoader.b(201);
-      paramPlusPanelAppLoader.b(1200000007);
-      paramPlusPanelAppLoader.b(100719166);
-      paramPlusPanelAppLoader.b(101847385);
-      paramPlusPanelAppLoader.b(1104651886);
-      paramPlusPanelAppLoader.b(1106658188);
+      paramPlusPanelAppLoader.c(202);
+      paramPlusPanelAppLoader.c(201);
+      paramPlusPanelAppLoader.c(1200000007);
+      paramPlusPanelAppLoader.c(100719166);
+      paramPlusPanelAppLoader.c(101847385);
+      paramPlusPanelAppLoader.c(1104651886);
+      paramPlusPanelAppLoader.c(1106658188);
     }
     if ((paramInt != 0) && (paramInt != 1025) && (paramInt != 1024) && (!ChatActivityUtils.a(paramQQAppInterface, paramString)))
     {
-      paramPlusPanelAppLoader.b(202);
-      paramPlusPanelAppLoader.b(201);
+      paramPlusPanelAppLoader.c(202);
+      paramPlusPanelAppLoader.c(201);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.filter.SharpAudioSupportFilter
  * JD-Core Version:    0.7.0.1
  */

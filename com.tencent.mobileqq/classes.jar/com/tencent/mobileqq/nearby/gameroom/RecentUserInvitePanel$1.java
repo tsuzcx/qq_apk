@@ -10,14 +10,14 @@ class RecentUserInvitePanel$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomInviteUser);
+    if (this.b.d != null) {
+      this.b.d.a(paramView, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel.1
  * JD-Core Version:    0.7.0.1
  */

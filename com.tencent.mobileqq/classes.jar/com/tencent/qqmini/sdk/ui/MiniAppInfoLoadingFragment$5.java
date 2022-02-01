@@ -10,7 +10,7 @@ import org.json.JSONObject;
 class MiniAppInfoLoadingFragment$5
   implements AsyncResult
 {
-  MiniAppInfoLoadingFragment$5(MiniAppInfoLoadingFragment paramMiniAppInfoLoadingFragment, MiniAppInfoLoadingFragment.onGetMiniAppInfoListener paramonGetMiniAppInfoListener) {}
+  MiniAppInfoLoadingFragment$5(MiniAppInfoLoadingFragment paramMiniAppInfoLoadingFragment, MiniAppInfoLoadingFragment.OnGetMiniAppInfoListener paramOnGetMiniAppInfoListener) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -40,7 +40,7 @@ class MiniAppInfoLoadingFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment.5
  * JD-Core Version:    0.7.0.1
  */

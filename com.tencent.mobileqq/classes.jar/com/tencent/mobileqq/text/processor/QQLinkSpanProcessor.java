@@ -28,27 +28,27 @@ public class QQLinkSpanProcessor
       }
       Object localObject1;
       Object localObject2;
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(a))
       {
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null) {
-          jdField_a_of_type_JavaLangString = ((AppRuntime)localObject1).getAccount();
+          a = ((AppRuntime)localObject1).getAccount();
         }
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        jdField_a_of_type_JavaLangString = (String)localObject1;
+        a = (String)localObject1;
       }
       if (paramGrabParams.text != null)
       {
-        if (jdField_a_of_type_JavaLangString.length() > 3)
+        if (a.length() > 3)
         {
-          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject1 = a;
           if (((String)localObject1).charAt(((String)localObject1).length() - 3) == '0')
           {
-            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject1 = a;
             if (((String)localObject1).charAt(((String)localObject1).length() - 2) == '1')
             {
               localObject1 = new HashMap();
@@ -80,7 +80,7 @@ public class QQLinkSpanProcessor
             while (paramGrabParams.hasNext())
             {
               localObject2 = (LinkSpanEntity)paramGrabParams.next();
-              paramISpanCallback.addSpan(new LinkSpan(((LinkSpanEntity)localObject2).jdField_a_of_type_JavaLangString, jdField_a_of_type_JavaLangString, (MessageRecord)localObject1), ((LinkSpanEntity)localObject2).jdField_a_of_type_Int, ((LinkSpanEntity)localObject2).b, 33);
+              paramISpanCallback.addSpan(new LinkSpan(((LinkSpanEntity)localObject2).a, a, (MessageRecord)localObject1), ((LinkSpanEntity)localObject2).b, ((LinkSpanEntity)localObject2).c, 33);
             }
           }
         }
@@ -105,7 +105,7 @@ public class QQLinkSpanProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.processor.QQLinkSpanProcessor
  * JD-Core Version:    0.7.0.1
  */

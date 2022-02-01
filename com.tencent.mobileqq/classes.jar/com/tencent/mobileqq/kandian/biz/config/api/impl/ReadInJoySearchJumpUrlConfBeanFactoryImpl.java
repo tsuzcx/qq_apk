@@ -19,12 +19,12 @@ public final class ReadInJoySearchJumpUrlConfBeanFactoryImpl
   @Nullable
   public IReadInJoySearchJumpUrlConfBean parse(@Nullable String paramString)
   {
-    return new ReadInjoySearchJumpurlConfBean().a(paramString);
+    return new ReadInjoySearchJumpurlConfBean().e(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.config.api.impl.ReadInJoySearchJumpUrlConfBeanFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

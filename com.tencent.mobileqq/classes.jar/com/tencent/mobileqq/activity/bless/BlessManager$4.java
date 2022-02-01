@@ -16,7 +16,7 @@ class BlessManager$4
     //   8: pop
     //   9: aload_0
     //   10: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   13: invokevirtual 29	com/tencent/mobileqq/activity/bless/BlessManager:c	()Ljava/lang/String;
+    //   13: invokevirtual 29	com/tencent/mobileqq/activity/bless/BlessManager:B	()Ljava/lang/String;
     //   16: astore 7
     //   18: aload 7
     //   20: ifnonnull +13 -> 33
@@ -45,7 +45,7 @@ class BlessManager$4
     //   68: aload_1
     //   69: aload_0
     //   70: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   73: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   73: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:d	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   76: getfield 57	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFolderName	Ljava/lang/String;
     //   79: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: pop
@@ -67,7 +67,7 @@ class BlessManager$4
     //   110: aload_2
     //   111: aload_0
     //   112: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   115: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   115: invokestatic 52	com/tencent/mobileqq/activity/bless/BlessManager:d	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   118: getfield 66	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFileName	Ljava/lang/String;
     //   121: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
@@ -149,29 +149,29 @@ class BlessManager$4
     //   258: goto +79 -> 337
     //   261: aload_0
     //   262: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   265: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
+    //   265: invokestatic 110	com/tencent/mobileqq/activity/bless/BlessManager:c	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   268: aload_1
     //   269: ifnull +51 -> 320
     //   272: aload_1
-    //   273: invokevirtual 112	java/io/BufferedOutputStream:close	()V
+    //   273: invokevirtual 113	java/io/BufferedOutputStream:close	()V
     //   276: goto +44 -> 320
     //   279: astore_1
-    //   280: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   280: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   283: ifeq +37 -> 320
     //   286: new 40	java/lang/StringBuilder
     //   289: dup
     //   290: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   293: astore_2
     //   294: aload_2
-    //   295: ldc 119
+    //   295: ldc 120
     //   297: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: pop
     //   301: aload_2
     //   302: aload_1
-    //   303: invokevirtual 122	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   303: invokevirtual 123	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   306: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
-    //   310: ldc 124
+    //   310: ldc 125
     //   312: iconst_2
     //   313: aload_2
     //   314: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -188,7 +188,7 @@ class BlessManager$4
     //   336: astore_3
     //   337: aload_2
     //   338: astore_1
-    //   339: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   339: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   342: ifeq +49 -> 391
     //   345: aload_2
     //   346: astore_1
@@ -206,12 +206,12 @@ class BlessManager$4
     //   367: astore_1
     //   368: aload 4
     //   370: aload_3
-    //   371: invokevirtual 122	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   371: invokevirtual 123	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   374: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   377: pop
     //   378: aload_2
     //   379: astore_1
-    //   380: ldc 124
+    //   380: ldc 125
     //   382: iconst_2
     //   383: aload 4
     //   385: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -228,14 +228,14 @@ class BlessManager$4
     //   408: pop
     //   409: aload_0
     //   410: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   413: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
+    //   413: invokestatic 110	com/tencent/mobileqq/activity/bless/BlessManager:c	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   416: aload_2
     //   417: ifnull -97 -> 320
     //   420: aload_2
-    //   421: invokevirtual 112	java/io/BufferedOutputStream:close	()V
+    //   421: invokevirtual 113	java/io/BufferedOutputStream:close	()V
     //   424: goto -104 -> 320
     //   427: astore_1
-    //   428: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   428: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   431: ifeq -111 -> 320
     //   434: new 40	java/lang/StringBuilder
     //   437: dup
@@ -244,29 +244,29 @@ class BlessManager$4
     //   442: goto -148 -> 294
     //   445: aload_0
     //   446: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   449: invokestatic 109	com/tencent/mobileqq/activity/bless/BlessManager:a	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
+    //   449: invokestatic 110	com/tencent/mobileqq/activity/bless/BlessManager:c	(Lcom/tencent/mobileqq/activity/bless/BlessManager;)V
     //   452: aload_1
     //   453: ifnull +51 -> 504
     //   456: aload_1
-    //   457: invokevirtual 112	java/io/BufferedOutputStream:close	()V
+    //   457: invokevirtual 113	java/io/BufferedOutputStream:close	()V
     //   460: goto +44 -> 504
     //   463: astore_1
-    //   464: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   464: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   467: ifeq +37 -> 504
     //   470: new 40	java/lang/StringBuilder
     //   473: dup
     //   474: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   477: astore_3
     //   478: aload_3
-    //   479: ldc 119
+    //   479: ldc 120
     //   481: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: pop
     //   485: aload_3
     //   486: aload_1
-    //   487: invokevirtual 122	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   487: invokevirtual 123	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   490: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   493: pop
-    //   494: ldc 124
+    //   494: ldc 125
     //   496: iconst_2
     //   497: aload_3
     //   498: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -275,9 +275,9 @@ class BlessManager$4
     //   506: invokevirtual 131	android/media/MediaMetadataRetriever:release	()V
     //   509: aload_2
     //   510: athrow
-    //   511: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   511: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   514: ifeq +11 -> 525
-    //   517: ldc 124
+    //   517: ldc 125
     //   519: iconst_2
     //   520: ldc 135
     //   522: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -331,7 +331,7 @@ class BlessManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager.4
  * JD-Core Version:    0.7.0.1
  */

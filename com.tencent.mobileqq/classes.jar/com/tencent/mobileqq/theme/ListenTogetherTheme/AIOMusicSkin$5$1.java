@@ -11,24 +11,24 @@ class AIOMusicSkin$5$1
   
   public void run()
   {
-    AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, this.jdField_a_of_type_Boolean);
-    if ((AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0) != null) && (AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) && (AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null))
+    AIOMusicSkin.a(this.b.this$0, this.a);
+    if ((AIOMusicSkin.b(this.b.this$0) != null) && (AIOMusicSkin.b(this.b.this$0).h != null) && (AIOMusicSkin.b(this.b.this$0).f != null))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         Object localObject = MusicThemeCallback.sInstance;
-        localObject = ((MusicThemeCallback)localObject).getDir(AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).getBaseActivity(), ((MusicThemeCallback)localObject).getScid(AIOMusicSkin.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)));
-        this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a((String)localObject);
-        AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).put(Integer.valueOf(AIOMusicSkin.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)), localObject);
+        localObject = ((MusicThemeCallback)localObject).getDir(AIOMusicSkin.b(this.b.this$0).getBaseActivity(), ((MusicThemeCallback)localObject).getScid(AIOMusicSkin.f(this.b.this$0)));
+        this.b.this$0.b((String)localObject);
+        AIOMusicSkin.h(this.b.this$0).put(Integer.valueOf(AIOMusicSkin.f(this.b.this$0)), localObject);
       }
-      AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-      this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a(AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidContentContext, AIOMusicSkin.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+      AIOMusicSkin.a(this.b.this$0, AIOMusicSkin.b(this.b.this$0).h);
+      this.b.this$0.a(AIOMusicSkin.b(this.b.this$0).e, AIOMusicSkin.b(this.b.this$0).h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.5.1
  * JD-Core Version:    0.7.0.1
  */

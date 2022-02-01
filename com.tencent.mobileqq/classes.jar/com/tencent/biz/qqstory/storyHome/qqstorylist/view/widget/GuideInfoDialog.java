@@ -23,25 +23,25 @@ import java.io.File;
 public class GuideInfoDialog
   extends ReportDialog
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoView jdField_a_of_type_AndroidWidgetVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
+  private ImageView a;
+  private TextView b;
+  private Button c;
+  private Button d;
+  private ImageView e;
+  private VideoView f;
+  private RelativeLayout g;
+  private String h;
+  private int i = -1;
+  private Drawable j;
+  private String k;
+  private String l;
+  private String m;
+  private View.OnClickListener n;
+  private View.OnClickListener o;
+  private View.OnClickListener p;
+  private boolean q;
+  private boolean r;
+  private String s;
   
   public GuideInfoDialog(Context paramContext, int paramInt)
   {
@@ -50,199 +50,199 @@ public class GuideInfoDialog
   
   private void a()
   {
-    if (!TextUtils.isEmpty(this.e))
+    if (!TextUtils.isEmpty(this.s))
     {
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVideoPath(this.e);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setZOrderOnTop(true);
-      this.jdField_a_of_type_AndroidWidgetVideoView.start();
+      this.f.setVisibility(0);
+      this.f.setVideoPath(this.s);
+      this.f.setZOrderOnTop(true);
+      this.f.start();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.q) && (!TextUtils.isEmpty(this.h)))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setVisibility(0);
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "story_rename_guide";
       ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
       ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = UIUtils.a(getContext(), 3.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.a(getContext(), 155.0F);
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.a(getContext(), 307.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_b_of_type_Boolean)
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.a;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelperConstants.a;
+      if (this.r)
       {
-        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(new File(this.h), (URLDrawable.URLDrawableOptions)localObject);
         if (((URLDrawable)localObject).getStatus() != 1) {
           ((URLDrawable)localObject).restartDownload();
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        this.a.setImageDrawable((Drawable)localObject);
         return;
       }
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
       if (((URLDrawable)localObject).getStatus() != 1) {
         ((URLDrawable)localObject).restartDownload();
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.setImageDrawable((Drawable)localObject);
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.h))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, UIUtils.a(getContext(), 307.0F), UIUtils.a(getContext(), 155.0F), new RoundedTransformation(UIUtils.a(getContext(), 4.0F), 0, 0.504886F, null, null));
+      this.a.setVisibility(0);
+      UIUtils.a(this.a, this.h, UIUtils.a(getContext(), 307.0F), UIUtils.a(getContext(), 155.0F), new RoundedTransformation(UIUtils.a(getContext(), 4.0F), 0, 0.504886F, null, null));
       return;
     }
-    if (this.jdField_a_of_type_Int != -1)
+    if (this.i != -1)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Int);
+      this.a.setVisibility(0);
+      this.a.setImageResource(this.i);
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.j != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.setVisibility(8);
   }
   
   public GuideInfoDialog a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.n = paramOnClickListener;
     return this;
   }
   
   public GuideInfoDialog a(String paramString)
   {
-    this.e = paramString;
+    this.s = paramString;
     return this;
   }
   
   public GuideInfoDialog a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.q = paramBoolean;
     return this;
   }
   
   public GuideInfoDialog b(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.o = paramOnClickListener;
     return this;
   }
   
   public GuideInfoDialog b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
     return this;
   }
   
   public GuideInfoDialog b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.r = paramBoolean;
     return this;
   }
   
   public GuideInfoDialog c(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.p = paramOnClickListener;
     return this;
   }
   
   public GuideInfoDialog c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.k = paramString;
     return this;
   }
   
   public GuideInfoDialog d(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.l = paramString;
     return this;
   }
   
   public void dismiss()
   {
-    VideoView localVideoView = this.jdField_a_of_type_AndroidWidgetVideoView;
+    VideoView localVideoView = this.f;
     if ((localVideoView != null) && (localVideoView.isPlaying())) {
-      this.jdField_a_of_type_AndroidWidgetVideoView.stopPlayback();
+      this.f.stopPlayback();
     }
     super.dismiss();
   }
   
   public GuideInfoDialog e(String paramString)
   {
-    this.d = paramString;
+    this.m = paramString;
     return this;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561675);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374530));
-    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131380795));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374531));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374529));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374528));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131374533));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374534));
+    setContentView(2131628054);
+    this.g = ((RelativeLayout)findViewById(2131442700));
+    this.f = ((VideoView)findViewById(2131449765));
+    this.a = ((ImageView)findViewById(2131442701));
+    this.b = ((TextView)findViewById(2131442699));
+    this.e = ((ImageView)findViewById(2131442698));
+    this.d = ((Button)findViewById(2131442703));
+    this.c = ((Button)findViewById(2131442704));
     a();
     b();
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.k))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) > UIUtils.a(getContext(), 280.0F)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
+      this.b.setVisibility(0);
+      if (this.b.getPaint().measureText(this.k) > UIUtils.a(getContext(), 280.0F)) {
+        this.b.setGravity(3);
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+        this.b.setGravity(17);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+      this.b.setText(this.k);
     }
-    if (TextUtils.isEmpty(this.d))
+    if (TextUtils.isEmpty(this.m))
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.c.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.d);
-      paramBundle = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      this.c.setVisibility(0);
+      this.c.setText(this.m);
+      paramBundle = this.n;
       if (paramBundle != null) {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
+        this.c.setOnClickListener(paramBundle);
       } else {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new GuideInfoDialog.1(this));
+        this.c.setOnClickListener(new GuideInfoDialog.1(this));
       }
     }
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.l))
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.d.setVisibility(8);
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
-      paramBundle = this.jdField_b_of_type_AndroidViewView$OnClickListener;
+      this.d.setVisibility(0);
+      this.d.setTag(this.l);
+      paramBundle = this.o;
       if (paramBundle != null) {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(paramBundle);
+        this.d.setOnClickListener(paramBundle);
       } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new GuideInfoDialog.2(this));
+        this.d.setOnClickListener(new GuideInfoDialog.2(this));
       }
     }
-    paramBundle = this.jdField_c_of_type_AndroidViewView$OnClickListener;
+    paramBundle = this.p;
     if (paramBundle != null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramBundle);
+      this.e.setOnClickListener(paramBundle);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new GuideInfoDialog.3(this));
+    this.e.setOnClickListener(new GuideInfoDialog.3(this));
   }
 }
 

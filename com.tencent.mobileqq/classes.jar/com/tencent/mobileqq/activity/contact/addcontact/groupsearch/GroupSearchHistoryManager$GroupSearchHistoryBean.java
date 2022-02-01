@@ -3,18 +3,18 @@ package com.tencent.mobileqq.activity.contact.addcontact.groupsearch;
 class GroupSearchHistoryManager$GroupSearchHistoryBean
   implements Comparable<GroupSearchHistoryBean>
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private Long c;
   
   GroupSearchHistoryManager$GroupSearchHistoryBean(GroupSearchHistoryManager paramGroupSearchHistoryManager, String paramString, Long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.b = paramString;
+    this.c = paramLong;
   }
   
   public int a(GroupSearchHistoryBean paramGroupSearchHistoryBean)
   {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramGroupSearchHistoryBean.jdField_a_of_type_JavaLangLong.longValue()) {
+    if (this.c.longValue() > paramGroupSearchHistoryBean.c.longValue()) {
       return -1;
     }
     return 1;
@@ -22,12 +22,12 @@ class GroupSearchHistoryManager$GroupSearchHistoryBean
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchHistoryManager.GroupSearchHistoryBean
  * JD-Core Version:    0.7.0.1
  */

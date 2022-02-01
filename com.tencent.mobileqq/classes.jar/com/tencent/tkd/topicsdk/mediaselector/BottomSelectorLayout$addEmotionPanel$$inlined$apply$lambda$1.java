@@ -12,13 +12,11 @@ import org.jetbrains.annotations.Nullable;
 final class BottomSelectorLayout$addEmotionPanel$$inlined$apply$lambda$1
   implements OnEmotionItemClickListener
 {
-  BottomSelectorLayout$addEmotionPanel$$inlined$apply$lambda$1(BottomSelectorLayout paramBottomSelectorLayout) {}
-  
   public final void a(@Nullable Emotion paramEmotion)
   {
     if (paramEmotion != null)
     {
-      Function1 localFunction1 = this.a.b();
+      Function1 localFunction1 = this.a.getOnEmoJiItemClickListener();
       if (localFunction1 != null)
       {
         Intrinsics.checkExpressionValueIsNotNull(paramEmotion, "emotion");
@@ -29,7 +27,7 @@ final class BottomSelectorLayout$addEmotionPanel$$inlined$apply$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addEmotionPanel..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class AAShouKuanAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839110;
+    return 2130839266;
   }
   
   public int getAppID()
@@ -38,26 +38,26 @@ public class AAShouKuanAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131716790);
+    return BaseApplicationImpl.getContext().getString(2131914262);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+    paramPlusPanelViewModel = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://mqq.tenpay.com/v2/hybrid/www/mobile_qq/aareceive/index.shtml");
     localStringBuilder.append("?_wv=1793&f=6&uintype=3000&touin=");
-    localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramSessionInfo.b);
     paramPlusPanelViewModel.putExtra("url", localStringBuilder.toString());
     paramPlusPanelViewModel.putExtra("app_info", "appid#20000002|bargainor_id#1000026801|channel#aio");
-    paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
-    ReportController.b(paramBaseChatPie.a, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "shoukuan_AIOclick", 0, 0, "", "", "", "");
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8005CBB", paramSessionInfo.jdField_a_of_type_Int);
+    paramBaseChatPie.aX().startActivity(paramPlusPanelViewModel);
+    ReportController.b(paramBaseChatPie.d, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "shoukuan_AIOclick", 0, 0, "", "", "", "");
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X8005CBB", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AAShouKuanAppInfo
  * JD-Core Version:    0.7.0.1
  */

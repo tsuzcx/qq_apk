@@ -22,7 +22,17 @@ final class SuperMaskUIMgr$checkResValid$1
     if ((SuperMaskDataMgr.a.a() instanceof AdvertisementInfo))
     {
       Object localObject2;
-      if (SuperMaskDataMgr.a.a() == null)
+      if (SuperMaskDataMgr.a.b() == null)
+      {
+        localObject1 = SuperMaskDataMgr.a;
+        localObject2 = SuperMaskDataMgr.a.a();
+        if (localObject2 != null) {
+          ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.b((AdvertisementInfo)localObject2));
+        } else {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo");
+        }
+      }
+      if (SuperMaskDataMgr.a.c() == null)
       {
         localObject1 = SuperMaskDataMgr.a;
         localObject2 = SuperMaskDataMgr.a.a();
@@ -32,17 +42,7 @@ final class SuperMaskUIMgr$checkResValid$1
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo");
         }
       }
-      if (SuperMaskDataMgr.a.a() == null)
-      {
-        localObject1 = SuperMaskDataMgr.a;
-        localObject2 = SuperMaskDataMgr.a.a();
-        if (localObject2 != null) {
-          ((SuperMaskDataMgr)localObject1).a(SuperMaskExtKt.a((AdvertisementInfo)localObject2));
-        } else {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo");
-        }
-      }
-      Object localObject1 = new ResCheckStep(SuperMaskDataMgr.a.a(), SuperMaskDataMgr.a.a(), true, 2);
+      Object localObject1 = new ResCheckStep(SuperMaskDataMgr.a.b(), SuperMaskDataMgr.a.c(), true, 2);
       boolean bool = SuperMaskStepUtil.a.a("[SHOW]", new SuperMaskStep[] { (SuperMaskStep)localObject1 });
       ThreadManagerV2.getUIHandlerV2().post((Runnable)new SuperMaskUIMgr.checkResValid.1.1(this, bool));
       return;
@@ -52,7 +52,7 @@ final class SuperMaskUIMgr$checkResValid$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskUIMgr.checkResValid.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 public class TroopAddFrdsInnerFrame$AddFrdHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public View a;
-  public Button a;
-  public CheckBox a;
   public TextView a;
-  public TroopMemberInfo a;
-  public View b;
   public TextView b;
   public TextView c;
-  public TextView d;
-  public TextView e;
+  public View d;
+  public Button e;
+  public TextView f;
+  public TroopMemberInfo g;
+  public CheckBox h;
+  public View i;
+  public TextView j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.AddFrdHolder
  * JD-Core Version:    0.7.0.1
  */

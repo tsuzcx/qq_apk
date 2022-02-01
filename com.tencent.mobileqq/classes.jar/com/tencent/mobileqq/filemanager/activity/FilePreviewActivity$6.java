@@ -18,13 +18,13 @@ class FilePreviewActivity$6
   public void onClick(View paramView)
   {
     this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131694879);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    this.a.w.setVisibility(8);
+    this.a.x.setText(2131892582);
+    this.a.A.setOnClickListener(null);
+    if (this.a.C != null)
     {
-      FilePreviewDataReporter localFilePreviewDataReporter = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter;
-      localFilePreviewDataReporter.a += 1;
+      FilePreviewDataReporter localFilePreviewDataReporter = this.a.C;
+      localFilePreviewDataReporter.i += 1;
     }
     int i = new Random(System.currentTimeMillis()).nextInt(1500);
     new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
@@ -33,7 +33,7 @@ class FilePreviewActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

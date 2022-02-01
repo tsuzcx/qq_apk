@@ -15,7 +15,7 @@ class AECameraManager$3
     } else {
       AECameraManager.access$202(this.this$0, 1);
     }
-    com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.a = AECameraManager.access$200(this.this$0);
+    com.tencent.mobileqq.activity.richmedia.FlowCameraConstant.b = AECameraManager.access$200(this.this$0);
     AECameraManager.access$302(this.this$0, false);
     QmcfManager.getInstance().setCameraMode(AECameraManager.access$200(this.this$0));
     AECameraManager.access$000(this.this$0, this.val$cameraOpenCallback);
@@ -23,7 +23,7 @@ class AECameraManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraManager.3
  * JD-Core Version:    0.7.0.1
  */

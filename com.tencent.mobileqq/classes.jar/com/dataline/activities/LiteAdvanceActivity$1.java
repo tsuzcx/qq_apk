@@ -17,7 +17,7 @@ class LiteAdvanceActivity$1
     if (!LiteAdvanceActivity.a(this.a, paramBoolean))
     {
       LiteAdvanceActivity.a(this.a).setChecked(paramBoolean ^ true);
-      QQToast.a(this.a, 1, HardCodeUtil.a(2131706271), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 1, HardCodeUtil.a(2131904133), 0).show(this.a.getTitleBarHeight());
     }
     else
     {

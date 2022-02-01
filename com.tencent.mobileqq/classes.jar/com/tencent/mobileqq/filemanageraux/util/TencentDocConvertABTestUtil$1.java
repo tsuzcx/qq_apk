@@ -15,19 +15,19 @@ final class TencentDocConvertABTestUtil$1
   
   public void onClick(View paramView)
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.a;
     if (localAppInterface != null)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.b;
       ReportController.b(localAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITencentDocConvertABTestUtil$DocClickTypeRunnable.a(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocEditConvertConfigBean$TencentDocEditConvertConfigItem.b());
+    this.c.a(this.d.i());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.util.TencentDocConvertABTestUtil.1
  * JD-Core Version:    0.7.0.1
  */

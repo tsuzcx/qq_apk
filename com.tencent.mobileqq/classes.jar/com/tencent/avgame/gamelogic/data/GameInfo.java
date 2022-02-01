@@ -8,28 +8,70 @@ import trpc.qq_vgame.common.AvGameCommon.GameInfo;
 
 public class GameInfo
 {
-  public int a;
-  public String a;
+  public int a = 0;
   public int b = 0;
   public int c = 120;
   public int d = 5;
   public int e = 15;
   public int f = 2;
-  public int g = 0;
+  public String g;
   public int h = 0;
-  public int i;
+  public int i = 0;
+  public int j;
   
-  public GameInfo()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
+    this.b = 0;
+    this.d = 120;
+    this.d = 5;
+    this.e = 15;
+    this.f = 2;
+    this.h = 0;
+    this.i = 0;
+    this.g = null;
+    this.j = 0;
   }
   
-  public int a()
+  public void a(GameInfo paramGameInfo)
   {
-    return this.i;
+    if (paramGameInfo == null) {
+      return;
+    }
+    this.a = paramGameInfo.a;
+    this.b = paramGameInfo.b;
+    this.c = paramGameInfo.c;
+    this.d = paramGameInfo.d;
+    this.e = paramGameInfo.e;
+    this.f = paramGameInfo.f;
+    this.h = paramGameInfo.h;
+    this.i = paramGameInfo.i;
+    this.g = paramGameInfo.g;
+    this.j = paramGameInfo.j;
   }
   
-  public GameInfo a()
+  public final void a(AvGameCommon.GameInfo paramGameInfo)
+  {
+    if (paramGameInfo == null) {
+      return;
+    }
+    this.a = paramGameInfo.type.get();
+    this.b = GameUtil.b(this.a);
+    this.c = paramGameInfo.game_duration.get();
+    this.d = paramGameInfo.game_preptime.get();
+    this.e = paramGameInfo.question_duration.get();
+    this.f = paramGameInfo.question_interim.get();
+    this.h = paramGameInfo.finish_type.get();
+    this.i = paramGameInfo.finish_question_num.get();
+    this.j = paramGameInfo.answer_duration.get();
+  }
+  
+  public int b()
+  {
+    return this.j;
+  }
+  
+  public GameInfo c()
   {
     GameInfo localGameInfo = new GameInfo();
     try
@@ -41,64 +83,17 @@ public class GameInfo
     return localGameInfo;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.d = 120;
-    this.d = 5;
-    this.e = 15;
-    this.f = 2;
-    this.g = 0;
-    this.h = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.i = 0;
-  }
-  
-  public void a(GameInfo paramGameInfo)
-  {
-    if (paramGameInfo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramGameInfo.jdField_a_of_type_Int;
-    this.b = paramGameInfo.b;
-    this.c = paramGameInfo.c;
-    this.d = paramGameInfo.d;
-    this.e = paramGameInfo.e;
-    this.f = paramGameInfo.f;
-    this.g = paramGameInfo.g;
-    this.h = paramGameInfo.h;
-    this.jdField_a_of_type_JavaLangString = paramGameInfo.jdField_a_of_type_JavaLangString;
-    this.i = paramGameInfo.i;
-  }
-  
-  public final void a(AvGameCommon.GameInfo paramGameInfo)
-  {
-    if (paramGameInfo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramGameInfo.type.get();
-    this.b = GameUtil.a(this.jdField_a_of_type_Int);
-    this.c = paramGameInfo.game_duration.get();
-    this.d = paramGameInfo.game_preptime.get();
-    this.e = paramGameInfo.question_duration.get();
-    this.f = paramGameInfo.question_interim.get();
-    this.g = paramGameInfo.finish_type.get();
-    this.h = paramGameInfo.finish_question_num.get();
-    this.i = paramGameInfo.answer_duration.get();
-  }
-  
-  public boolean a()
+  public boolean d()
   {
     if (QLog.isColorLevel())
     {
       String str = getClass().getName();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("finishType = ");
-      localStringBuilder.append(this.g);
+      localStringBuilder.append(this.h);
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    return this.g == 0;
+    return this.h == 0;
   }
   
   public String toString()
@@ -106,7 +101,7 @@ public class GameInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("typeSvr");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("typeLoc");
     localStringBuilder.append("=");
@@ -130,18 +125,18 @@ public class GameInfo
     localStringBuilder.append("|");
     localStringBuilder.append("finishType");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("|");
     localStringBuilder.append("finishTopicNum");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("|");
     localStringBuilder.append("questionClass");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("|");
     localStringBuilder.append("answerCountDownForVideoClick=");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }

@@ -17,21 +17,21 @@ public class SurvivalSeatBgGridAdapter
   extends BaseAdapter
 {
   protected Context a;
-  protected LayoutInflater a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected UserInfoHandler a;
-  protected ISurvivalSeatBgPresenter a;
-  private SurvivalMemberDataSource jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+  protected LayoutInflater b;
+  protected ISurvivalSeatBgPresenter c;
+  protected UserInfoHandler d;
+  private SurvivalMemberDataSource e;
+  private ViewGroup f;
   
   public SurvivalSeatBgGridAdapter(Context paramContext, ISurvivalSeatBgPresenter paramISurvivalSeatBgPresenter)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter = paramISurvivalSeatBgPresenter;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)((AppInterface)IGameEngine.a()).getBusinessHandler(HandlerFactory.b));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource = new SurvivalMemberDataSource();
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a(this);
+    this.a = paramContext;
+    this.c = paramISurvivalSeatBgPresenter;
+    this.b = LayoutInflater.from(paramContext);
+    this.d = ((UserInfoHandler)((AppInterface)IGameEngine.K()).getBusinessHandler(HandlerFactory.b));
+    this.e = new SurvivalMemberDataSource();
+    this.c.a(this.e);
+    this.c.a(this);
   }
   
   private View a(int paramInt, View paramView)
@@ -48,11 +48,11 @@ public class SurvivalSeatBgGridAdapter
       }
       return paramView;
     }
-    SurvivalMemberInfo localSurvivalMemberInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt);
+    SurvivalMemberInfo localSurvivalMemberInfo = this.e.a(paramInt);
     Object localObject2;
     if (!(paramView instanceof SurvivalMemberItemView))
     {
-      paramView = (SurvivalMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558712, null);
+      paramView = (SurvivalMemberItemView)this.b.inflate(2131624329, null);
       paramView.setAlpha(0.5F);
       paramView.a();
       localObject1 = paramView;
@@ -63,20 +63,20 @@ public class SurvivalSeatBgGridAdapter
       localObject2 = (SurvivalMemberItemView)paramView;
       localObject1 = paramView;
     }
-    ((SurvivalMemberItemView)localObject2).a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
+    ((SurvivalMemberItemView)localObject2).a(this.d, localSurvivalMemberInfo, this.c);
     return localObject1;
   }
   
   public void a(int paramInt)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource != null) && (paramInt >= 0))
+    if ((this.e != null) && (paramInt >= 0))
     {
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject = this.f;
       if (localObject != null)
       {
         localObject = (SurvivalMemberItemView)((ViewGroup)localObject).getChildAt(paramInt);
-        SurvivalMemberInfo localSurvivalMemberInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramInt);
+        SurvivalMemberInfo localSurvivalMemberInfo = this.e.a(paramInt);
         if (localObject == null)
         {
           if (QLog.isDevelopLevel()) {
@@ -84,7 +84,7 @@ public class SurvivalSeatBgGridAdapter
           }
           return;
         }
-        ((SurvivalMemberItemView)localObject).a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSurvivalMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
+        ((SurvivalMemberItemView)localObject).a(this.d, localSurvivalMemberInfo, this.c);
         return;
       }
     }
@@ -104,7 +104,7 @@ public class SurvivalSeatBgGridAdapter
   
   public Object getItem(int paramInt)
   {
-    SurvivalMemberDataSource localSurvivalMemberDataSource = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    SurvivalMemberDataSource localSurvivalMemberDataSource = this.e;
     if (localSurvivalMemberDataSource == null) {
       return new SurvivalMemberInfo(0L);
     }
@@ -126,7 +126,7 @@ public class SurvivalSeatBgGridAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.f = paramViewGroup;
     View localView = a(paramInt, paramView);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localView;

@@ -12,7 +12,7 @@ class StoryMessageListActivity$6
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    this.b.a(this.a);
     StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
     EventCollector.getInstance().onViewClicked(paramView);
   }

@@ -10,7 +10,7 @@ class ArkAppDeviceModule$ConnectionTypeMethod
   
   public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+    if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.CONNECTION_TYPE")) {
       return false;
     }
     if (!AppNetConnInfo.isNetSupport())
@@ -37,7 +37,7 @@ class ArkAppDeviceModule$ConnectionTypeMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ConnectionTypeMethod
  * JD-Core Version:    0.7.0.1
  */

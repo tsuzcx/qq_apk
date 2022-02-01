@@ -9,12 +9,12 @@ class DeviceCapabilityExamination$2$1
   
   public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination$ReportData;
-    paramString1.j = paramInt;
-    paramString1.i = paramString2;
-    DeviceCapabilityExamination.a(paramString1, this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination$2.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination$2.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback != null) {
-      this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination$2.jdField_a_of_type_ComTencentAvAppDeviceCapability$CodecPlayerCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
+    paramString1 = this.a;
+    paramString1.s = paramInt;
+    paramString1.t = paramString2;
+    DeviceCapabilityExamination.a(paramString1, this.f.b, this.b);
+    if (this.f.g != null) {
+      this.f.g.a(this.b, this.c, this.d, this.e, String.valueOf(paramInt));
     }
   }
 }

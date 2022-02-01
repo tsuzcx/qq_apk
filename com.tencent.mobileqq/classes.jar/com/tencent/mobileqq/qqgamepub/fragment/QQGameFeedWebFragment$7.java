@@ -1,49 +1,23 @@
 package com.tencent.mobileqq.qqgamepub.fragment;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class QQGameFeedWebFragment$7
-  implements Runnable
+  implements View.OnTouchListener
 {
-  QQGameFeedWebFragment$7(QQGameFeedWebFragment paramQQGameFeedWebFragment, long paramLong) {}
+  QQGameFeedWebFragment$7(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 4;
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("clickTime", this.this$0.l);
-      localJSONObject.put("initPageTime", this.this$0.b);
-      localJSONObject.put("showWebViewTime", this.this$0.c + this.a);
-      localJSONObject.put("initWebViewTime", this.this$0.c);
-      localJSONObject.put("loadRequestStart", this.this$0.d);
-      localJSONObject.put("finishLoadEnd", this.this$0.e);
-      localMessage.obj = localJSONObject.toString();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("pref data:");
-        localStringBuilder.append(localJSONObject.toString());
-        QLog.d("GameWebPage", 1, localStringBuilder.toString());
-      }
-      QQGameFeedWebFragment.a(this.this$0).sendMessage(localMessage);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return QQGameFeedWebFragment.d(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.fragment.QQGameFeedWebFragment.7
  * JD-Core Version:    0.7.0.1
  */

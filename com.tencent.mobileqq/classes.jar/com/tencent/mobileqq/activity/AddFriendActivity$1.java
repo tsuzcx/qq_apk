@@ -11,17 +11,17 @@ class AddFriendActivity$1
   
   public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<ISearchResultGroupModel> paramList)
   {
-    if (AddFriendActivity.a(this.a))
+    if (AddFriendActivity.access$000(this.a))
     {
-      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      AddFriendActivity.access$100(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
       return;
     }
-    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+    AddFriendActivity.access$200(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendActivity.1
  * JD-Core Version:    0.7.0.1
  */

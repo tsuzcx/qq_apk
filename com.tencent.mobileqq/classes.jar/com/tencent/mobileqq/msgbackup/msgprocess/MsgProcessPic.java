@@ -16,15 +16,20 @@ public class MsgProcessPic
     super(paramMessageForPic);
   }
   
-  protected int a()
+  public void a()
   {
-    return 1;
+    MessageForPic localMessageForPic = (MessageForPic)this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("packMsg uinType:");
+    localStringBuilder.append(localMessageForPic.istroop);
+    b(localStringBuilder.toString());
+    localMessageForPic.richText = localMessageForPic.getRichText();
   }
   
-  public List<MsgBackupResEntity> a()
+  public List<MsgBackupResEntity> b()
   {
     ArrayList localArrayList = new ArrayList();
-    int i = ((MessageForPic)this.a).fileSizeFlag;
+    int i = ((MessageForPic)this.b).fileSizeFlag;
     int m = 0;
     int k;
     if (i == 1) {
@@ -58,7 +63,7 @@ public class MsgProcessPic
     for (i = 0; m < n; i = j)
     {
       int i1 = arrayOfInt[m];
-      MsgBackupResEntity localMsgBackupResEntity = a();
+      MsgBackupResEntity localMsgBackupResEntity = f();
       localMsgBackupResEntity.msgSubType = i1;
       if (i1 == 1)
       {
@@ -76,7 +81,7 @@ public class MsgProcessPic
         }
         localObject = "chatthumb";
       }
-      Object localObject = ((MessageForPic)this.a).getFilePath((String)localObject);
+      Object localObject = ((MessageForPic)this.b).getFilePath((String)localObject);
       if (!a((String)localObject))
       {
         j = i;
@@ -86,12 +91,12 @@ public class MsgProcessPic
         localMsgBackupResEntity.filePath = ((String)localObject);
         a((String)localObject, localMsgBackupResEntity);
         localObject = a(i1);
-        ((HashMap)localObject).put("selfuin", ((MessageForPic)this.a).selfuin);
-        if (((MessageForPic)this.a).uuid != null) {
-          ((HashMap)localObject).put("uuid", ((MessageForPic)this.a).uuid.toUpperCase());
+        ((HashMap)localObject).put("selfuin", ((MessageForPic)this.b).selfuin);
+        if (((MessageForPic)this.b).uuid != null) {
+          ((HashMap)localObject).put("uuid", ((MessageForPic)this.b).uuid.toUpperCase());
         }
-        if (((MessageForPic)this.a).md5 != null) {
-          ((HashMap)localObject).put("md5", ((MessageForPic)this.a).md5.toUpperCase());
+        if (((MessageForPic)this.b).md5 != null) {
+          ((HashMap)localObject).put("md5", ((MessageForPic)this.b).md5.toUpperCase());
         }
         if (k != 0) {
           ((HashMap)localObject).put("isOriginal", "1");
@@ -99,7 +104,7 @@ public class MsgProcessPic
           ((HashMap)localObject).put("isOriginal", "0");
         }
         j = i;
-        if (((MessageForPic)this.a).checkGif()) {
+        if (((MessageForPic)this.b).checkGif()) {
           if ((i1 != 1) && (i1 != 2))
           {
             j = i;
@@ -124,19 +129,14 @@ public class MsgProcessPic
     return localArrayList;
   }
   
-  public void a()
+  protected int c()
   {
-    MessageForPic localMessageForPic = (MessageForPic)this.a;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("packMsg uinType:");
-    localStringBuilder.append(localMessageForPic.istroop);
-    a(localStringBuilder.toString());
-    localMessageForPic.richText = localMessageForPic.getRichText();
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPic
  * JD-Core Version:    0.7.0.1
  */

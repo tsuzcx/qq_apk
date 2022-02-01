@@ -13,14 +13,14 @@ class MoreVideoInfoWidget$2
 {
   MoreVideoInfoWidget$2(MoreVideoInfoWidget paramMoreVideoInfoWidget, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new MoreVideoInfoWidget.2.1(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      PlayModeUtils.a(this.e.y(), this.a, new MoreVideoInfoWidget.2.1(this));
+      this.c.set(true);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.d.dismiss();
   }
 }
 

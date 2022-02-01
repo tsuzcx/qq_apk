@@ -51,7 +51,7 @@ public class LottieView
   private LiveLottieApi.Cancellable compositionLoader;
   private String configFilePath;
   private boolean hasShowAnim = false;
-  private Bitmap headBitmap = BitmapFactory.decodeResource(getResources(), 2130840463);
+  private Bitmap headBitmap = BitmapFactory.decodeResource(getResources(), 2130841225);
   private boolean isPlaying = false;
   private LottieGiftInfo mCurrentLottieGiftInfo;
   private LottieAnimationViewInterface mLottieAnimationViewInterface;
@@ -112,7 +112,7 @@ public class LottieView
   
   private Bitmap drawLinkMicComment(LottieGiftInfo paramLottieGiftInfo, int paramInt1, int paramInt2)
   {
-    String str = paramLottieGiftInfo.jdField_a_of_type_JavaLangString;
+    String str = paramLottieGiftInfo.a;
     int i = str.length();
     Object localObject1 = "..";
     Object localObject2 = str;
@@ -135,14 +135,14 @@ public class LottieView
     {
       localObject1 = str;
     }
-    str = paramLottieGiftInfo.h;
+    str = paramLottieGiftInfo.i;
     if (!TextUtils.isEmpty(str))
     {
       i = str.lastIndexOf("_") + 1;
       paramLottieGiftInfo = str.substring(i);
       return drawText(str.substring(0, i).replaceFirst("_", (String)localObject2).replace("_", (CharSequence)localObject1), paramLottieGiftInfo, paramInt1, paramInt2);
     }
-    return drawText(paramLottieGiftInfo.jdField_a_of_type_JavaLangString, paramLottieGiftInfo.f, paramInt1, paramInt2);
+    return drawText(paramLottieGiftInfo.a, paramLottieGiftInfo.f, paramInt1, paramInt2);
   }
   
   private Bitmap drawText(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -194,15 +194,15 @@ public class LottieView
   
   private Bitmap getImageByName(Context paramContext, LiveLottieImageAsset paramLiveLottieImageAsset)
   {
-    if ("img_1.png".equals(paramLiveLottieImageAsset.a()))
+    if ("img_1.png".equals(paramLiveLottieImageAsset.c()))
     {
-      if (this.mCurrentLottieGiftInfo.jdField_a_of_type_Long != this.mCurrentLottieGiftInfo.b) {
+      if (this.mCurrentLottieGiftInfo.h != this.mCurrentLottieGiftInfo.j) {
         return drawLinkMicComment(this.mCurrentLottieGiftInfo, paramLiveLottieImageAsset.a(), paramLiveLottieImageAsset.b());
       }
-      if (this.mCurrentLottieGiftInfo.jdField_a_of_type_JavaLangString == null) {
+      if (this.mCurrentLottieGiftInfo.a == null) {
         paramContext = "";
       } else {
-        paramContext = this.mCurrentLottieGiftInfo.jdField_a_of_type_JavaLangString;
+        paramContext = this.mCurrentLottieGiftInfo.a;
       }
       Object localObject = paramContext;
       if (paramContext.length() > 10)
@@ -261,7 +261,7 @@ public class LottieView
   
   public Bitmap getDefaultIcon()
   {
-    return BitmapFactory.decodeResource(getResources(), 2130840463);
+    return BitmapFactory.decodeResource(getResources(), 2130841225);
   }
   
   public View getView()
@@ -437,7 +437,7 @@ public class LottieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.LottieView
  * JD-Core Version:    0.7.0.1
  */

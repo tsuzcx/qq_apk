@@ -34,30 +34,6 @@ public class RIJWeChatVideoSeeLaterModule
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
   }
   
-  public static oidb_cmd0xf1f.ReqBody a(List<RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      oidb_cmd0xf1f.ReqBody localReqBody = new oidb_cmd0xf1f.ReqBody();
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem localWeChatVideoArticleItem = (RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem)paramList.next();
-        oidb_cmd0xf1f.ArticleItem localArticleItem = new oidb_cmd0xf1f.ArticleItem();
-        localArticleItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(localWeChatVideoArticleItem.jdField_a_of_type_JavaLangString));
-        localArticleItem.uint64_feeds_id.set(localWeChatVideoArticleItem.jdField_a_of_type_Long);
-        localArticleItem.uint32_play_time.set(localWeChatVideoArticleItem.jdField_a_of_type_Int);
-        localArticleItem.uint32_duration.set(localWeChatVideoArticleItem.b);
-        localArrayList.add(localArticleItem);
-      }
-      localReqBody.rpt_article_item.set(localArrayList);
-      localReqBody.opt_type.set(1);
-      return localReqBody;
-    }
-    return null;
-  }
-  
   private void a(int paramInt)
   {
     Object localObject = this.a;
@@ -90,9 +66,33 @@ public class RIJWeChatVideoSeeLaterModule
     QLog.d("RIJUGCAccountCreateModule", 1, paramToServiceMsg.toString());
   }
   
+  public static oidb_cmd0xf1f.ReqBody b(List<RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      oidb_cmd0xf1f.ReqBody localReqBody = new oidb_cmd0xf1f.ReqBody();
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem localWeChatVideoArticleItem = (RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem)paramList.next();
+        oidb_cmd0xf1f.ArticleItem localArticleItem = new oidb_cmd0xf1f.ArticleItem();
+        localArticleItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(localWeChatVideoArticleItem.a));
+        localArticleItem.uint64_feeds_id.set(localWeChatVideoArticleItem.b);
+        localArticleItem.uint32_play_time.set(localWeChatVideoArticleItem.c);
+        localArticleItem.uint32_duration.set(localWeChatVideoArticleItem.d);
+        localArrayList.add(localArticleItem);
+      }
+      localReqBody.rpt_article_item.set(localArrayList);
+      localReqBody.opt_type.set(1);
+      return localReqBody;
+    }
+    return null;
+  }
+  
   public void a(List<RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem> paramList)
   {
-    paramList = a(paramList);
+    paramList = b(paramList);
     if (paramList == null)
     {
       QLog.d("RIJUGCAccountCreateModule", 1, "requestUgcAccountCreate weChatVideoArticleItemList is empty!");
@@ -117,7 +117,7 @@ public class RIJWeChatVideoSeeLaterModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.RIJWeChatVideoSeeLaterModule
  * JD-Core Version:    0.7.0.1
  */

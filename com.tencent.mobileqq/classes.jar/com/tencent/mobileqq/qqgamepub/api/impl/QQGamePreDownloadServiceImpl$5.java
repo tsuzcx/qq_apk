@@ -23,16 +23,16 @@ class QQGamePreDownloadServiceImpl$5
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
     super.onDoneFile(paramDownloadTask);
-    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+    if ((paramDownloadTask != null) && (paramDownloadTask.g != null) && (!TextUtils.isEmpty(paramDownloadTask.b)))
     {
-      Object localObject = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      Object localObject = (File)paramDownloadTask.g.get(paramDownloadTask.b);
       if ((localObject != null) && (((File)localObject).exists())) {
         try
         {
           JSONArray localJSONArray = new JSONObject(FileUtils.readFileContent((File)localObject)).optJSONObject("preload").optJSONArray("bids");
-          this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplQQGamePreDownloadServiceImpl.preloadH5Res(localJSONArray);
+          this.c.preloadH5Res(localJSONArray);
           localObject = MD5Coding.encodeFile2HexStr(((File)localObject).getAbsolutePath());
-          ((IQQGameResService)QRoute.api(IQQGameResService.class)).updateResInfo(paramDownloadTask.jdField_a_of_type_JavaLangString, (String)localObject, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.filePos);
+          ((IQQGameResService)QRoute.api(IQQGameResService.class)).updateResInfo(paramDownloadTask.b, (String)localObject, NetConnInfoCenter.getServerTimeMillis(), this.a.filePos);
         }
         catch (Exception localException)
         {
@@ -41,13 +41,13 @@ class QQGamePreDownloadServiceImpl$5
       }
     }
     if (paramDownloadTask != null) {
-      QQGamePreDownloadServiceImpl.reportSceneDownloadResult(this.jdField_a_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int, 1);
+      QQGamePreDownloadServiceImpl.reportSceneDownloadResult(this.b, paramDownloadTask.c, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

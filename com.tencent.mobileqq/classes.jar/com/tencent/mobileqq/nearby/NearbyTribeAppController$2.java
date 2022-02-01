@@ -44,11 +44,11 @@ class NearbyTribeAppController$2
         }
         return;
       }
-      NearbyTribeAppController.a(this.a).post(new NearbyTribeAppController.2.1(this));
+      NearbyTribeAppController.c(this.a).post(new NearbyTribeAppController.2.1(this));
       localObject = new Bundle();
       ((Bundle)localObject).putString("_filename_from_dlg", paramString);
       ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
-      ((Bundle)localObject).putString("_notify_name_dialog", HardCodeUtil.a(2131707416));
+      ((Bundle)localObject).putString("_notify_name_dialog", HardCodeUtil.a(2131905234));
       ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
       QLog.e(NearbyTribeAppController.a(this.a), 1, "这里已经下架，如果依然发现该log，异常case");
       ((IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "")).startDownload("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
@@ -57,7 +57,7 @@ class NearbyTribeAppController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTribeAppController.2
  * JD-Core Version:    0.7.0.1
  */

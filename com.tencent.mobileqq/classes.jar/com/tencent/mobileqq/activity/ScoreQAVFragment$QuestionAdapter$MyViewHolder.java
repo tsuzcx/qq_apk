@@ -11,20 +11,20 @@ class ScoreQAVFragment$QuestionAdapter$MyViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  Button a;
+  ScoreQAVFragment.OnItemClickListener b;
   
   public ScoreQAVFragment$QuestionAdapter$MyViewHolder(ScoreQAVFragment.QuestionAdapter paramQuestionAdapter, View paramView, ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374736));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.b = paramOnItemClickListener;
+    this.a = ((Button)paramView.findViewById(2131442925));
+    this.a.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    ScoreQAVFragment.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+    ScoreQAVFragment.OnItemClickListener localOnItemClickListener = this.b;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.a(paramView, getPosition());
     } else if (QLog.isColorLevel()) {
@@ -35,7 +35,7 @@ class ScoreQAVFragment$QuestionAdapter$MyViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.QuestionAdapter.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

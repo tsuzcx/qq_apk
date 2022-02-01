@@ -17,7 +17,7 @@ public class ShortVideoAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839151;
+    return 2130839307;
   }
   
   public int getAppID()
@@ -30,15 +30,15 @@ public class ShortVideoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719745);
+    return BaseApplicationImpl.getContext().getString(2131917348);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramPlusPanelViewModel = paramBaseChatPie.a;
+    paramPlusPanelViewModel = paramBaseChatPie.d;
     if (!VideoEnvironment.supportShortVideoRecordAndPlay())
     {
-      DialogUtil.a(paramBaseChatPie.a(), 230).setMessage(HardCodeUtil.a(2131708296)).setPositiveButton(2131694583, new ShortVideoAppInfo.1(this)).show();
+      DialogUtil.a(paramBaseChatPie.aX(), 230).setMessage(HardCodeUtil.a(2131906086)).setPositiveButton(2131892267, new ShortVideoAppInfo.1(this)).show();
       return;
     }
     BaseChatpieHelper.a(paramPlusPanelViewModel);
@@ -46,7 +46,7 @@ public class ShortVideoAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShortVideoAppInfo
  * JD-Core Version:    0.7.0.1
  */

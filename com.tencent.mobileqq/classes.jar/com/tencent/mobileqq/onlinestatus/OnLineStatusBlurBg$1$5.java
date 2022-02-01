@@ -7,12 +7,12 @@ class OnLineStatusBlurBg$1$5
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$OnLineStatusBlurBgListener.a(true, OnLineStatusBlurBg.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
+    this.a.a(true, OnLineStatusBlurBg.b(this.b.this$0), this.b.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg.1.5
  * JD-Core Version:    0.7.0.1
  */

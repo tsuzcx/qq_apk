@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.utils;
 
 public abstract interface UncheckedCallable<V>
 {
-  public abstract V a();
+  public abstract V b();
 }
 
 

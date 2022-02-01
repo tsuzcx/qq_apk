@@ -26,22 +26,22 @@ class DynamicAvatarView$2
       if (paramInt < 1) {
         return;
       }
-      if (this.a.a != null)
+      if (this.a.c != null)
       {
-        localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+        localObject = this.a.c.d;
         if ((localObject instanceof URLDrawable))
         {
           localObject = ((URLDrawable)localObject).getCurrDrawable();
           if ((localObject instanceof VideoDrawable))
           {
             ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-            this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.a.a, true);
+            this.a.c.u.b(this.a.c, true);
             if (QLog.isColorLevel()) {
               QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
             }
           }
         }
-        this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+        this.a.c.d = null;
         this.a.a();
       }
     }
@@ -49,7 +49,7 @@ class DynamicAvatarView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView.2
  * JD-Core Version:    0.7.0.1
  */

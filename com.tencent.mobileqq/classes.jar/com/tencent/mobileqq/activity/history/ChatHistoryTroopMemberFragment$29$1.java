@@ -7,12 +7,12 @@ class ChatHistoryTroopMemberFragment$29$1
   
   public void run()
   {
-    this.a.a.B();
+    this.a.a.F();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.1
  * JD-Core Version:    0.7.0.1
  */

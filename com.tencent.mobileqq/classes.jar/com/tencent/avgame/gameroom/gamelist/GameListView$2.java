@@ -19,17 +19,17 @@ class GameListView$2
     {
       if ((i == 1) || (i == 3))
       {
-        paramView = AVGameUtil.a("avgame_start_game_owner_normal@3x.png");
+        paramView = AVGameUtil.c("avgame_start_game_owner_normal@3x.png");
         if (paramView != null) {
-          this.a.a.a().setImageBitmap(paramView);
+          this.a.d.h().setImageBitmap(paramView);
         }
       }
     }
     else
     {
-      paramView = AVGameUtil.a("avgame_start_game_owner_hl@3x.png");
+      paramView = AVGameUtil.c("avgame_start_game_owner_hl@3x.png");
       if (paramView != null) {
-        this.a.a.a().setImageBitmap(paramView);
+        this.a.d.h().setImageBitmap(paramView);
       }
     }
     return false;

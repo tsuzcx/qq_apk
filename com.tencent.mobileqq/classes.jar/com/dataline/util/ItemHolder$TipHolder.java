@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 public class ItemHolder$TipHolder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
   
   public ItemHolder$TipHolder(ItemHolder paramItemHolder) {}
 }

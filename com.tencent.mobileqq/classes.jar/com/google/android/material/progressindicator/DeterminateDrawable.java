@@ -12,22 +12,22 @@ import com.google.android.material.color.MaterialColors;
 public final class DeterminateDrawable<S extends BaseProgressIndicatorSpec>
   extends DrawableWithAnimatedVisibilityChange
 {
-  private static final FloatPropertyCompat<DeterminateDrawable> jdField_a_of_type_AndroidxDynamicanimationAnimationFloatPropertyCompat = new DeterminateDrawable.1("indicatorLevel");
-  private float jdField_a_of_type_Float;
-  private final SpringAnimation jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation;
-  private final SpringForce jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce;
-  private DrawingDelegate<S> jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final FloatPropertyCompat<DeterminateDrawable> j = new DeterminateDrawable.1("indicatorLevel");
+  private DrawingDelegate<S> e;
+  private final SpringForce f;
+  private final SpringAnimation g;
+  private float h;
+  private boolean i = false;
   
   DeterminateDrawable(@NonNull Context paramContext, @NonNull BaseProgressIndicatorSpec paramBaseProgressIndicatorSpec, @NonNull DrawingDelegate<S> paramDrawingDelegate)
   {
     super(paramContext, paramBaseProgressIndicatorSpec);
     a(paramDrawingDelegate);
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce = new SpringForce();
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce.setDampingRatio(1.0F);
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce.setStiffness(50.0F);
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation = new SpringAnimation(this, jdField_a_of_type_AndroidxDynamicanimationAnimationFloatPropertyCompat);
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation.setSpring(this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce);
+    this.f = new SpringForce();
+    this.f.setDampingRatio(1.0F);
+    this.f.setStiffness(50.0F);
+    this.g = new SpringAnimation(this, j);
+    this.g.setSpring(this.f);
     b(1.0F);
   }
   
@@ -43,21 +43,21 @@ public final class DeterminateDrawable<S extends BaseProgressIndicatorSpec>
     return new DeterminateDrawable(paramContext, paramLinearProgressIndicatorSpec, new LinearDrawingDelegate(paramLinearProgressIndicatorSpec));
   }
   
-  private float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
   private void c(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.h = paramFloat;
     invalidateSelf();
+  }
+  
+  private float f()
+  {
+    return this.h;
   }
   
   @NonNull
   DrawingDelegate<S> a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate;
+    return this.e;
   }
   
   void a(float paramFloat)
@@ -67,21 +67,21 @@ public final class DeterminateDrawable<S extends BaseProgressIndicatorSpec>
   
   void a(@NonNull DrawingDelegate<S> paramDrawingDelegate)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate = paramDrawingDelegate;
+    this.e = paramDrawingDelegate;
     paramDrawingDelegate.a(this);
   }
   
   boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     paramBoolean1 = super.a(paramBoolean1, paramBoolean2, paramBoolean3);
-    float f = this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorAnimatorDurationScaleProvider.a(this.jdField_a_of_type_AndroidContentContext.getContentResolver());
-    if (f == 0.0F)
+    float f1 = this.c.a(this.a.getContentResolver());
+    if (f1 == 0.0F)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.i = true;
       return paramBoolean1;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringForce.setStiffness(50.0F / f);
+    this.i = false;
+    this.f.setStiffness(50.0F / f1);
     return paramBoolean1;
   }
   
@@ -94,48 +94,48 @@ public final class DeterminateDrawable<S extends BaseProgressIndicatorSpec>
         return;
       }
       paramCanvas.save();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.b(paramCanvas, a());
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
-      int i = MaterialColors.b(this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.a[0], getAlpha());
-      this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, 0.0F, b(), i);
+      this.e.b(paramCanvas, e());
+      this.e.a(paramCanvas, this.d);
+      int k = MaterialColors.b(this.b.c[0], getAlpha());
+      this.e.a(paramCanvas, this.d, 0.0F, f(), k);
       paramCanvas.restore();
     }
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.b();
+    return this.e.b();
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawingDelegate.a();
+    return this.e.a();
   }
   
   public void jumpToCurrentState()
   {
-    this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation.cancel();
+    this.g.cancel();
     c(getLevel() / 10000.0F);
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation.cancel();
+      this.g.cancel();
       c(paramInt / 10000.0F);
     }
     else
     {
-      this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation.setStartValue(b() * 10000.0F);
-      this.jdField_a_of_type_AndroidxDynamicanimationAnimationSpringAnimation.animateToFinalPosition(paramInt);
+      this.g.setStartValue(f() * 10000.0F);
+      this.g.animateToFinalPosition(paramInt);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.DeterminateDrawable
  * JD-Core Version:    0.7.0.1
  */

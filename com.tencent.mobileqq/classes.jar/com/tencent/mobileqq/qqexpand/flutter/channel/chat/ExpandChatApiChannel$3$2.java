@@ -9,12 +9,12 @@ class ExpandChatApiChannel$3$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatApiChannel$3.a.error(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangObject);
+    this.d.a.error(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatApiChannel.3.2
  * JD-Core Version:    0.7.0.1
  */

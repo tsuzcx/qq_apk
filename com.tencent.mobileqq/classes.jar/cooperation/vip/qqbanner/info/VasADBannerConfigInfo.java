@@ -18,13 +18,12 @@ import java.util.Map;
 
 public class VasADBannerConfigInfo
 {
-  private int jdField_a_of_type_Int;
-  public SparseArray<VasADBannerConfigInfo.ResourceInfo> a;
-  private VasADBannerData jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData;
+  public SparseArray<VasADBannerConfigInfo.ResourceInfo> a = new SparseArray();
+  private VasADBannerData b;
+  private int c;
   
   public VasADBannerConfigInfo(Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     a(paramMap);
   }
   
@@ -89,18 +88,167 @@ public class VasADBannerConfigInfo
   
   public VasADBannerData a()
   {
-    return this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData;
+    return this.b;
   }
   
-  public VasADBannerManager a()
+  public void a(SharedPreferences paramSharedPreferences, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData;
+    if (paramSharedPreferences != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      try
+      {
+        VasADBannerData localVasADBannerData = VasADBannerData.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_type_res_type");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.a(paramSharedPreferences.getInt(localStringBuilder.toString(), 0));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_jump_url_");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.a(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_jump_type_");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.b(paramSharedPreferences.getInt(localStringBuilder.toString(), -1));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_traceinfo_");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.b(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_adid_");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.c(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_res_path_");
+        localStringBuilder.append(paramString);
+        localVasADBannerData = localVasADBannerData.e(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("splash_union_banner_type_");
+        localStringBuilder.append(paramString);
+        paramSharedPreferences = localVasADBannerData.d(paramSharedPreferences.getString(localStringBuilder.toString(), "-1")).b();
+        paramString = new VasADBannerConfigInfo.ResourceInfo();
+        paramString.c = paramSharedPreferences.g;
+        this.b = paramSharedPreferences;
+        this.a.put(1, paramString);
+        return;
+      }
+      catch (Exception paramSharedPreferences)
+      {
+        paramSharedPreferences.printStackTrace();
+        paramString = new StringBuilder();
+        paramString.append("buildUnionBannerFromSP error msg = ");
+        paramString.append(paramSharedPreferences.getMessage());
+        QLog.e("VasADBannerConfigInfo", 1, paramString.toString());
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject1 = BaseApplicationImpl.getContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = VasSplashUtil.a((Context)localObject1, ((StringBuilder)localObject2).toString());
+    if (localObject2 != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      paramString = this.b;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString.e);
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_type_res_type");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), paramString.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_jump_url_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.b);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_jump_type_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), paramString.c);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_traceinfo_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.d);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_adid_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.e);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_type_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.f);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("splash_union_banner_res_path_");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.g);
+      ((SharedPreferences.Editor)localObject2).apply();
+    }
+  }
+  
+  protected void a(Map<String, String> paramMap)
+  {
+    if (paramMap == null)
+    {
+      QLog.e("VasADBannerConfigInfo", 1, "buildData error with bannerData is null");
+      return;
+    }
+    try
+    {
+      localObject = new VasADBannerConfigInfo.ResourceInfo();
+      ((VasADBannerConfigInfo.ResourceInfo)localObject).a = ((String)paramMap.get("res_url"));
+      ((VasADBannerConfigInfo.ResourceInfo)localObject).b = ((String)paramMap.get("res_url_md5"));
+      ((VasADBannerConfigInfo.ResourceInfo)localObject).c = VasADBannerResDownloadManager.a().a(((VasADBannerConfigInfo.ResourceInfo)localObject).a);
+      this.a.put(1, localObject);
+      this.b = VasADBannerData.a().a((String)paramMap.get("jump_url")).b((String)paramMap.get("traceinfo")).c((String)paramMap.get("adId")).d((String)paramMap.get("bannertype")).e(((VasADBannerConfigInfo.ResourceInfo)localObject).c).b();
+      if (!TextUtils.isEmpty((CharSequence)paramMap.get("res_type"))) {
+        this.b.a = Integer.parseInt((String)paramMap.get("res_type"));
+      }
+      if (!TextUtils.isEmpty((CharSequence)paramMap.get("jump_type"))) {
+        this.b.c = Integer.parseInt((String)paramMap.get("jump_type"));
+      }
+      if (!TextUtils.isEmpty((CharSequence)paramMap.get("WebViewPreloadFlag")))
+      {
+        this.c = Integer.parseInt((String)paramMap.get("WebViewPreloadFlag"));
+        return;
+      }
+      this.c = 1;
+      return;
+    }
+    catch (Exception paramMap)
+    {
+      paramMap.printStackTrace();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("buildData error msg = ");
+      ((StringBuilder)localObject).append(paramMap.getMessage());
+      QLog.e("VasADBannerConfigInfo", 1, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.c == 1;
+  }
+  
+  public VasADBannerManager c()
+  {
+    Object localObject = this.b;
     if (localObject != null)
     {
-      if (TextUtils.isEmpty(((VasADBannerData)localObject).d)) {
+      if (TextUtils.isEmpty(((VasADBannerData)localObject).f)) {
         return null;
       }
-      localObject = this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData.d;
+      localObject = this.b.f;
       int i = -1;
       switch (((String)localObject).hashCode())
       {
@@ -157,167 +305,18 @@ public class VasADBannerConfigInfo
     return null;
   }
   
-  public void a(SharedPreferences paramSharedPreferences, String paramString)
+  public boolean d()
   {
-    if (paramSharedPreferences != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      try
-      {
-        VasADBannerData localVasADBannerData = VasADBannerData.a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_type_res_type");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.a(paramSharedPreferences.getInt(localStringBuilder.toString(), 0));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_jump_url_");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.a(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_jump_type_");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.b(paramSharedPreferences.getInt(localStringBuilder.toString(), -1));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_traceinfo_");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.b(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_adid_");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.c(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_res_path_");
-        localStringBuilder.append(paramString);
-        localVasADBannerData = localVasADBannerData.e(paramSharedPreferences.getString(localStringBuilder.toString(), ""));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("splash_union_banner_type_");
-        localStringBuilder.append(paramString);
-        paramSharedPreferences = localVasADBannerData.d(paramSharedPreferences.getString(localStringBuilder.toString(), "-1")).b();
-        paramString = new VasADBannerConfigInfo.ResourceInfo();
-        paramString.c = paramSharedPreferences.e;
-        this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData = paramSharedPreferences;
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(1, paramString);
-        return;
-      }
-      catch (Exception paramSharedPreferences)
-      {
-        paramSharedPreferences.printStackTrace();
-        paramString = new StringBuilder();
-        paramString.append("buildUnionBannerFromSP error msg = ");
-        paramString.append(paramSharedPreferences.getMessage());
-        QLog.e("VasADBannerConfigInfo", 1, paramString.toString());
-      }
-    }
+    VasADBannerData localVasADBannerData = this.b;
+    return (localVasADBannerData != null) && (("1".equals(localVasADBannerData.f)) || ("2".equals(this.b.f)));
   }
   
-  public void a(String paramString)
-  {
-    Object localObject1 = BaseApplicationImpl.getContext();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(paramString);
-    ((StringBuilder)localObject2).append("");
-    localObject2 = VasSplashUtil.a((Context)localObject1, ((StringBuilder)localObject2).toString());
-    if (localObject2 != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      paramString = this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramString.c);
-      ((StringBuilder)localObject1).append("");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = ((SharedPreferences)localObject2).edit();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_type_res_type");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), paramString.jdField_a_of_type_Int);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_jump_url_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.jdField_a_of_type_JavaLangString);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_jump_type_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), paramString.jdField_b_of_type_Int);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_traceinfo_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.jdField_b_of_type_JavaLangString);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_adid_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.c);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_type_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.d);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("splash_union_banner_res_path_");
-      localStringBuilder.append((String)localObject1);
-      ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramString.e);
-      ((SharedPreferences.Editor)localObject2).apply();
-    }
-  }
-  
-  protected void a(Map<String, String> paramMap)
-  {
-    if (paramMap == null)
-    {
-      QLog.e("VasADBannerConfigInfo", 1, "buildData error with bannerData is null");
-      return;
-    }
-    try
-    {
-      localObject = new VasADBannerConfigInfo.ResourceInfo();
-      ((VasADBannerConfigInfo.ResourceInfo)localObject).jdField_a_of_type_JavaLangString = ((String)paramMap.get("res_url"));
-      ((VasADBannerConfigInfo.ResourceInfo)localObject).jdField_b_of_type_JavaLangString = ((String)paramMap.get("res_url_md5"));
-      ((VasADBannerConfigInfo.ResourceInfo)localObject).c = VasADBannerResDownloadManager.a().a(((VasADBannerConfigInfo.ResourceInfo)localObject).jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(1, localObject);
-      this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData = VasADBannerData.a().a((String)paramMap.get("jump_url")).b((String)paramMap.get("traceinfo")).c((String)paramMap.get("adId")).d((String)paramMap.get("bannertype")).e(((VasADBannerConfigInfo.ResourceInfo)localObject).c).b();
-      if (!TextUtils.isEmpty((CharSequence)paramMap.get("res_type"))) {
-        this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData.jdField_a_of_type_Int = Integer.parseInt((String)paramMap.get("res_type"));
-      }
-      if (!TextUtils.isEmpty((CharSequence)paramMap.get("jump_type"))) {
-        this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData.jdField_b_of_type_Int = Integer.parseInt((String)paramMap.get("jump_type"));
-      }
-      if (!TextUtils.isEmpty((CharSequence)paramMap.get("WebViewPreloadFlag")))
-      {
-        this.jdField_a_of_type_Int = Integer.parseInt((String)paramMap.get("WebViewPreloadFlag"));
-        return;
-      }
-      this.jdField_a_of_type_Int = 1;
-      return;
-    }
-    catch (Exception paramMap)
-    {
-      paramMap.printStackTrace();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("buildData error msg = ");
-      ((StringBuilder)localObject).append(paramMap.getMessage());
-      QLog.e("VasADBannerConfigInfo", 1, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean b()
-  {
-    VasADBannerData localVasADBannerData = this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData;
-    return (localVasADBannerData != null) && (("1".equals(localVasADBannerData.d)) || ("2".equals(this.jdField_a_of_type_CooperationVipQqbannerDataVasADBannerData.d)));
-  }
-  
-  public boolean c()
+  public boolean e()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.a.size())
     {
-      VasADBannerConfigInfo.ResourceInfo localResourceInfo = (VasADBannerConfigInfo.ResourceInfo)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      VasADBannerConfigInfo.ResourceInfo localResourceInfo = (VasADBannerConfigInfo.ResourceInfo)this.a.valueAt(i);
       if ((localResourceInfo != null) && (!TextUtils.isEmpty(localResourceInfo.c)))
       {
         if (!localResourceInfo.a()) {
@@ -335,7 +334,7 @@ public class VasADBannerConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.info.VasADBannerConfigInfo
  * JD-Core Version:    0.7.0.1
  */

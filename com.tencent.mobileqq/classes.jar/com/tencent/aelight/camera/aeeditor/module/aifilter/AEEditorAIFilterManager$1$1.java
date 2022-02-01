@@ -9,12 +9,12 @@ class AEEditorAIFilterManager$1$1
   
   public void a(int paramInt)
   {
-    AEEditorAIFilterManager.a(this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAEEditorAIFilterManager).put(Integer.valueOf(paramInt), this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterProxyBase);
+    AEEditorAIFilterManager.a(this.a.d).put(Integer.valueOf(paramInt), this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AEEditorAIFilterManager.1.1
  * JD-Core Version:    0.7.0.1
  */

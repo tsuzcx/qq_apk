@@ -19,7 +19,7 @@ class VipVideoApiPlugin$1
   
   public void onResponse(Bundle paramBundle)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.c.key))
     {
       Object localObject = paramBundle.getString("cmd");
       String str = paramBundle.getString("callbackid");
@@ -90,7 +90,7 @@ class VipVideoApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

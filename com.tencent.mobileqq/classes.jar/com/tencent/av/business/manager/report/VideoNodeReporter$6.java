@@ -13,7 +13,7 @@ class VideoNodeReporter$6
   
   public void run()
   {
-    Object localObject1 = VideoNodeReporter.a(this.this$0, this.a);
+    Object localObject1 = VideoNodeReporter.b(this.this$0, this.a);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("reportToServer ,roomId = ");
     ((StringBuilder)localObject2).append(this.a);
@@ -24,7 +24,7 @@ class VideoNodeReporter$6
       DcReportUtil.a(null, "dc02402", (String)localObject1);
     }
     VideoNodeReporter.a(this.this$0, this.a);
-    localObject1 = this.this$0.a.iterator();
+    localObject1 = this.this$0.e.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (VideoNodeReporter.SeesionRecord)((Iterator)localObject1).next();

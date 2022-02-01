@@ -9,46 +9,46 @@ import com.tencent.qphone.base.util.QLog;
 class QQLSActivity$ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString = null;
+  private String b = null;
   
   private QQLSActivity$ScreenBroadcastReceiver(QQLSActivity paramQQLSActivity) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {
+    if (QQLSActivity.x(this.a)) {
       return;
     }
     if (paramIntent != null) {}
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-      if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+      this.b = paramIntent.getAction();
+      if ("android.intent.action.SCREEN_ON".equals(this.b))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
         }
       }
-      else if ("android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString))
+      else if ("android.intent.action.SCREEN_OFF".equals(this.b))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
         }
       }
-      else if ("android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString))
+      else if ("android.intent.action.USER_PRESENT".equals(this.b))
       {
         if (QLog.isColorLevel())
         {
           paramContext = new StringBuilder();
           paramContext.append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-          paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-          paramContext.append(QQLSRecentManager.f);
+          paramIntent = this.a.n;
+          paramContext.append(QQLSRecentManager.i);
           QLog.d("QQLSActivity", 2, paramContext.toString());
         }
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-        if (!QQLSRecentManager.f) {
-          QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+        paramContext = this.a.n;
+        if (!QQLSRecentManager.i) {
+          QQLSActivity.y(this.a);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
+        this.a.finish();
         return;
       }
     }
@@ -60,7 +60,7 @@ class QQLSActivity$ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

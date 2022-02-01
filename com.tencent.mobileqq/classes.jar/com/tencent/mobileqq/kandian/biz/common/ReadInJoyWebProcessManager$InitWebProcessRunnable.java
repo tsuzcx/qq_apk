@@ -28,9 +28,9 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
       localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
-      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
+      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.r()));
+      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.h()));
+      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.k()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel())
       {
@@ -67,7 +67,7 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
       if (localObject == null) {
         return;
       }
-      int i = RIJWebSearchUtils.a();
+      int i = RIJWebSearchUtils.b();
       if (RIJWebSearchUtils.a()) {
         a(i);
       }
@@ -84,7 +84,7 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyWebProcessManager.InitWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

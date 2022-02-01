@@ -6,7 +6,7 @@ import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter;
 import com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterAvatarController;
 import com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterBottomTagController;
 import com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterLikeCountController;
-import com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterTitleSmallerController;
+import com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedOuterTitleController;
 
 public class WSGridTitleOuterTagBottomItemView
   extends AbsWSGridItemView
@@ -14,35 +14,35 @@ public class WSGridTitleOuterTagBottomItemView
   public WSGridTitleOuterTagBottomItemView(Context paramContext, View paramView, WSRecommendAdapter paramWSRecommendAdapter)
   {
     super(paramContext, paramView, paramWSRecommendAdapter);
-    a(2131369037, new WSGridFeedOuterTitleSmallerController(this.a));
-    a(2131369035, new WSGridFeedOuterAvatarController(this.a));
-    a(2131369036, new WSGridFeedOuterLikeCountController(this.a));
-    a(2131369031, new WSGridFeedOuterBottomTagController(this.a));
+    a(2131436000, new WSGridFeedOuterTitleController(this.b));
+    a(2131435998, new WSGridFeedOuterAvatarController(this.b));
+    a(2131435999, new WSGridFeedOuterLikeCountController(this.b));
+    a(2131435994, new WSGridFeedOuterBottomTagController(this.b));
   }
   
-  protected int a()
-  {
-    return 1;
-  }
-  
-  protected boolean a()
+  protected boolean e()
   {
     return false;
   }
   
-  protected boolean b()
+  protected boolean f()
   {
     return true;
   }
   
-  protected boolean c()
+  protected int g()
+  {
+    return 1;
+  }
+  
+  protected boolean i()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleOuterTagBottomItemView
  * JD-Core Version:    0.7.0.1
  */

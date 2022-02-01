@@ -18,40 +18,40 @@ public abstract class ZimuItemViewMotion
   {
     if (a())
     {
-      int i = b(paramLong);
-      this.e -= i;
+      int i = c(paramLong);
+      this.h -= i;
       return i;
     }
     return 0;
   }
   
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    int i = b(paramLong);
-    this.e += i;
-  }
-  
   public boolean a()
   {
-    return this.e + c() > 0;
+    return this.h + h() > 0;
   }
   
-  protected int b(long paramLong)
+  public void b(long paramLong)
   {
-    return (int)(a(this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a.length()) * paramLong / 1000L);
+    super.b(paramLong);
+    int i = c(paramLong);
+    this.h += i;
   }
   
-  public void c()
+  protected int c(long paramLong)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
-      this.e = this.g;
+    return (int)(a(this.l.b.length()) * paramLong / 1000L);
+  }
+  
+  public void e()
+  {
+    if ((this.e) && (this.h + h() < 0)) {
+      this.h = this.j;
     }
   }
   
-  public boolean c()
+  public boolean j()
   {
-    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
+    return (this.h + h() > 0) && (this.h < this.j) && (this.i + i() > 0) && (this.i < this.k);
   }
 }
 

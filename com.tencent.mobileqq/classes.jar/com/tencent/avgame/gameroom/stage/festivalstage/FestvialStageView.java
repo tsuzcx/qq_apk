@@ -32,13 +32,13 @@ import com.tencent.qphone.base.util.QLog;
 public class FestvialStageView
   extends BaseStageView
 {
-  protected ImageView a;
-  protected RelativeLayout.LayoutParams a;
-  protected TextView a;
-  Runnable a;
-  protected RelativeLayout.LayoutParams b;
-  Runnable b;
-  private boolean c = false;
+  private boolean K = false;
+  protected TextView j;
+  protected ImageView k;
+  protected RelativeLayout.LayoutParams l;
+  protected RelativeLayout.LayoutParams m;
+  Runnable n = new FestvialStageView.1(this);
+  Runnable o = new FestvialStageView.2(this);
   
   public FestvialStageView(Context paramContext)
   {
@@ -53,46 +53,44 @@ public class FestvialStageView
   public FestvialStageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new FestvialStageView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new FestvialStageView.2(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = new FestivalStagePresenterImp(this);
+    this.p = new FestivalStagePresenterImp(this);
   }
   
-  private void f()
+  private void g()
   {
-    FontStyleConfig localFontStyleConfig = GameEngine.a().a().a;
+    FontStyleConfig localFontStyleConfig = GameEngine.a().s().x;
     if (localFontStyleConfig != null)
     {
       int i = 0;
       try
       {
-        int j = Color.parseColor(localFontStyleConfig.i);
-        i = j;
+        int i1 = Color.parseColor(localFontStyleConfig.o);
+        i = i1;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      this.j.setTextColor(i);
     }
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
     super.a(paramIGameRoomPresenter);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(12);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(14);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ViewUtils.b(33.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(ViewUtils.b(190.0F), ViewUtils.b(40.0F));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(12);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(14);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ViewUtils.b(20.0F);
+    this.j = new TextView(getContext());
+    this.j.setTextColor(-1);
+    this.j.setTextSize(1, 17.0F);
+    this.j.setGravity(17);
+    this.m = new RelativeLayout.LayoutParams(-2, -2);
+    this.m.addRule(12);
+    this.m.addRule(14);
+    this.m.bottomMargin = ViewUtils.dpToPx(33.0F);
+    this.k = new ImageView(getContext());
+    this.l = new RelativeLayout.LayoutParams(ViewUtils.dpToPx(190.0F), ViewUtils.dpToPx(40.0F));
+    this.l.addRule(12);
+    this.l.addRule(14);
+    this.l.bottomMargin = ViewUtils.dpToPx(20.0F);
   }
   
   public void a(String paramString)
@@ -100,18 +98,13 @@ public class FestvialStageView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getParent() != null) {
-      removeView(this.jdField_a_of_type_AndroidWidgetTextView);
+    if (this.j.getParent() != null) {
+      removeView(this.j);
     }
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    f();
-    postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-  }
-  
-  public boolean a()
-  {
-    return this.c;
+    addView(this.j, this.m);
+    this.j.setText(paramString);
+    g();
+    postDelayed(this.n, 3000L);
   }
   
   public void b(String paramString)
@@ -126,46 +119,51 @@ public class FestvialStageView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) {
-      removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    if (this.k.getParent() != null) {
+      removeView(this.k);
     }
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(AvGameResDownloadUtil.a(paramString));
-    postDelayed(this.jdField_b_of_type_JavaLangRunnable, 1500L);
+    addView(this.k, this.l);
+    this.k.setBackgroundDrawable(AvGameResDownloadUtil.a(paramString));
+    postDelayed(this.o, 1500L);
   }
   
   public void d()
   {
-    if (this.c) {
+    if (this.K) {
       super.d();
     }
-    boolean bool1 = GameEngine.a().h();
-    boolean bool2 = GameEngine.a().i();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionBaseGuessActionStageView = new GuessActionStageView(getContext());
+    boolean bool1 = GameEngine.a().C();
+    boolean bool2 = GameEngine.a().D();
+    this.r = new GuessActionStageView(getContext());
     if ((bool2) && (!bool1))
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView = new GuessPictureClickStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView = new GuessSongClickStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView = new GuessTextClickStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView = new GuessStarClickStageView(getContext());
+      this.t = new GuessPictureClickStageView(getContext());
+      this.u = new GuessSongClickStageView(getContext());
+      this.v = new GuessTextClickStageView(getContext());
+      this.s = new GuessStarClickStageView(getContext());
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView = new GuessPictureStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView = new GuessSongStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView = new GuessTextStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView = new GuessStarStageView(getContext());
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.setSpecialMode(true);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView.setSpecialMode(true);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView.setSpecialMode(true);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView.setSpecialMode(true);
+      this.t = new GuessPictureStageView(getContext());
+      this.u = new GuessSongStageView(getContext());
+      this.v = new GuessTextStageView(getContext());
+      this.s = new GuessStarStageView(getContext());
+      this.t.setSpecialMode(true);
+      this.u.setSpecialMode(true);
+      this.v.setSpecialMode(true);
+      this.s.setSpecialMode(true);
     }
-    FontStyleConfig localFontStyleConfig = GameEngine.a().a().a;
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.setFontStyle(localFontStyleConfig);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView.setFontStyle(localFontStyleConfig);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView.setFontStyle(localFontStyleConfig);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView.setFontStyle(localFontStyleConfig);
-    this.c = true;
+    FontStyleConfig localFontStyleConfig = GameEngine.a().s().x;
+    this.t.setFontStyle(localFontStyleConfig);
+    this.u.setFontStyle(localFontStyleConfig);
+    this.v.setFontStyle(localFontStyleConfig);
+    this.s.setFontStyle(localFontStyleConfig);
+    this.K = true;
+  }
+  
+  public boolean f()
+  {
+    return this.K;
   }
 }
 

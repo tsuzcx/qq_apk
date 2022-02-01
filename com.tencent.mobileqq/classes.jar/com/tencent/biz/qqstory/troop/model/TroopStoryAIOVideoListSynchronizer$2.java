@@ -39,7 +39,7 @@ class TroopStoryAIOVideoListSynchronizer$2
         }
         else
         {
-          this.a.a.add(paramErrorMessage.mVid);
+          this.a.m.add(paramErrorMessage.mVid);
           bool = false;
         }
       }
@@ -47,11 +47,11 @@ class TroopStoryAIOVideoListSynchronizer$2
     }
     else
     {
-      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListRequest.a.iterator();
+      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListRequest.e.iterator();
       while (paramGetVideoFullInfoListRequest.hasNext())
       {
         paramGetVideoFullInfoListResponse = (String)paramGetVideoFullInfoListRequest.next();
-        this.a.a.add(paramGetVideoFullInfoListResponse);
+        this.a.m.add(paramGetVideoFullInfoListResponse);
       }
       bool = false;
     }

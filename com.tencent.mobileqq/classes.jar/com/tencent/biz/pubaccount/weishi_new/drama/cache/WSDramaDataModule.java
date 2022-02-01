@@ -60,14 +60,84 @@ public class WSDramaDataModule
     return (WSDramaItemData)this.a.get(paramString);
   }
   
-  WSDramaEpisodeEntity a(String paramString)
+  void a()
   {
-    List localList = a(paramString);
+    this.b.clear();
+    this.c.clear();
+    this.a.clear();
+  }
+  
+  void a(String paramString, int paramInt)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && (paramString.f() != null))
+    {
+      if (paramString.f().dramaInfo == null) {
+        return;
+      }
+      paramString.f().dramaInfo.curWatchedFeedNum = paramInt;
+    }
+  }
+  
+  void a(List<WSDramaItemData> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (WSDramaItemData)paramList.next();
+      String str = ((WSDramaItemData)localObject).b();
+      this.b.put(str, ((WSDramaItemData)localObject).h());
+      this.a.put(str, localObject);
+      localObject = ((WSDramaItemData)localObject).g();
+      if (localObject != null) {
+        c(str).put(Integer.valueOf(((stDramaFeed)localObject).num), localObject);
+      }
+    }
+  }
+  
+  void a(List<stDramaFeed> paramList, String paramString)
+  {
+    paramString = c(paramString);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      stDramaFeed localstDramaFeed = (stDramaFeed)paramList.next();
+      paramString.put(Integer.valueOf(localstDramaFeed.num), localstDramaFeed);
+    }
+  }
+  
+  List<String> b(String paramString)
+  {
+    List localList = (List)this.b.get(paramString);
+    Object localObject = localList;
+    if (localList == null)
+    {
+      localObject = new ArrayList();
+      this.b.put(paramString, localObject);
+    }
+    return localObject;
+  }
+  
+  Map<Integer, stDramaFeed> c(String paramString)
+  {
+    Map localMap = (Map)this.c.get(paramString);
+    Object localObject = localMap;
+    if (localMap == null)
+    {
+      localObject = new HashMap();
+      this.c.put(paramString, localObject);
+    }
+    return localObject;
+  }
+  
+  WSDramaEpisodeEntity d(String paramString)
+  {
+    List localList = b(paramString);
     paramString = a(paramString);
     int i;
     if (paramString != null)
     {
-      paramString = paramString.a().dramaInfo;
+      paramString = paramString.f().dramaInfo;
       i = paramString.curWatchedFeedNum;
       a(paramString, localList);
     }
@@ -88,80 +158,10 @@ public class WSDramaDataModule
     }
     return new WSDramaEpisodeEntity(localArrayList, paramString);
   }
-  
-  List<String> a(String paramString)
-  {
-    List localList = (List)this.b.get(paramString);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.b.put(paramString, localObject);
-    }
-    return localObject;
-  }
-  
-  Map<Integer, stDramaFeed> a(String paramString)
-  {
-    Map localMap = (Map)this.c.get(paramString);
-    Object localObject = localMap;
-    if (localMap == null)
-    {
-      localObject = new HashMap();
-      this.c.put(paramString, localObject);
-    }
-    return localObject;
-  }
-  
-  void a()
-  {
-    this.b.clear();
-    this.c.clear();
-    this.a.clear();
-  }
-  
-  void a(String paramString, int paramInt)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramString.a() != null))
-    {
-      if (paramString.a().dramaInfo == null) {
-        return;
-      }
-      paramString.a().dramaInfo.curWatchedFeedNum = paramInt;
-    }
-  }
-  
-  void a(List<WSDramaItemData> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (WSDramaItemData)paramList.next();
-      String str = ((WSDramaItemData)localObject).a();
-      this.b.put(str, ((WSDramaItemData)localObject).a());
-      this.a.put(str, localObject);
-      localObject = ((WSDramaItemData)localObject).a();
-      if (localObject != null) {
-        a(str).put(Integer.valueOf(((stDramaFeed)localObject).num), localObject);
-      }
-    }
-  }
-  
-  void a(List<stDramaFeed> paramList, String paramString)
-  {
-    paramString = a(paramString);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      stDramaFeed localstDramaFeed = (stDramaFeed)paramList.next();
-      paramString.put(Integer.valueOf(localstDramaFeed.num), localstDramaFeed);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaDataModule
  * JD-Core Version:    0.7.0.1
  */

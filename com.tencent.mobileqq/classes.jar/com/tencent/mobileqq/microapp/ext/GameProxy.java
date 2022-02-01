@@ -1,17 +1,12 @@
 package com.tencent.mobileqq.microapp.ext;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.model.StartCheckParam;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.ipc.IComIPCUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -20,35 +15,6 @@ import org.json.JSONObject;
 public class GameProxy
 {
   public static final String TAG = "GameProxy";
-  
-  public static void handleMiniAppBack(QQAppInterface paramQQAppInterface)
-  {
-    try
-    {
-      paramQQAppInterface = (IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      if (paramQQAppInterface != null)
-      {
-        if (!paramQQAppInterface.isPlusWhiteList()) {
-          return;
-        }
-        if ((!paramQQAppInterface.is765GuideShowed()) && (!paramQQAppInterface.is780GuideShowed()))
-        {
-          paramQQAppInterface = BaseApplicationImpl.getContext();
-          Intent localIntent = new Intent(paramQQAppInterface, SplashActivity.class);
-          localIntent.putExtra("fragment_id", 1);
-          localIntent.putExtra("tab_index", FrameControllerUtil.a);
-          localIntent.putExtra("fromApolloNewUser", 2);
-          localIntent.setFlags(335609856);
-          paramQQAppInterface.startActivity(localIntent);
-        }
-      }
-      else {}
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
-  }
   
   public static boolean startGameByMiniApp(Activity paramActivity, String paramString, JSONObject paramJSONObject)
   {
@@ -161,7 +127,7 @@ public class GameProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.ext.GameProxy
  * JD-Core Version:    0.7.0.1
  */

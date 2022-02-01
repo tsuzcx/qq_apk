@@ -30,56 +30,6 @@ import mqq.app.MobileQQ;
 
 public class VipFunCallUtil
 {
-  public static int a()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("Build.MODEL=[");
-      ((StringBuilder)localObject1).append(Build.MODEL);
-      ((StringBuilder)localObject1).append("],android.os.Build.VERSION.SDK_INT=[");
-      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
-      ((StringBuilder)localObject1).append("]");
-      QLog.d("VipFunCallConstants", 2, ((StringBuilder)localObject1).toString());
-    }
-    if (VipFunCallConstants.d < 0) {}
-    try
-    {
-      localObject1 = "R8007,SCH-I869,K-Touch E780,HUAWEI C8812E,AMOI N828,7,8,9,10,11,12,13,HUAWEI Y320-T00,gt-s7568i".split(",");
-      int i = 0;
-      while (i < localObject1.length)
-      {
-        if (localObject1[i] != null)
-        {
-          Object localObject2 = localObject1[i];
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(Build.VERSION.SDK_INT);
-          localStringBuilder.append("");
-          if ((localObject2.equalsIgnoreCase(localStringBuilder.toString())) || (localObject1[i].equalsIgnoreCase(Build.MODEL))) {
-            VipFunCallConstants.d = 7;
-          }
-        }
-        i += 1;
-      }
-    }
-    catch (Exception localException)
-    {
-      label151:
-      break label151;
-    }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("Build.MODEL=[");
-    ((StringBuilder)localObject1).append(Build.MODEL);
-    ((StringBuilder)localObject1).append("],android.os.Build.VERSION.SDK_INT=[");
-    ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
-    ((StringBuilder)localObject1).append("]");
-    QLog.e("VipFunCallConstants", 1, ((StringBuilder)localObject1).toString());
-    if (VipFunCallConstants.d < 0) {
-      VipFunCallConstants.d = 6;
-    }
-    return VipFunCallConstants.d;
-  }
-  
   private static int a(int paramInt, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
@@ -176,7 +126,7 @@ public class VipFunCallUtil
   {
     AppRuntime localAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
-      localAppRuntime = VasUtil.a();
+      localAppRuntime = VasUtil.c();
     }
     if (localAppRuntime == null)
     {
@@ -227,7 +177,7 @@ public class VipFunCallUtil
   {
     AppRuntime localAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
-      localAppRuntime = VasUtil.a();
+      localAppRuntime = VasUtil.c();
     }
     if (localAppRuntime == null)
     {
@@ -322,20 +272,6 @@ public class VipFunCallUtil
     ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startDownload(paramAppRuntime, paramString2, paramString1, null);
   }
   
-  public static boolean a()
-  {
-    int i = NetworkUtil.getSystemNetwork(null);
-    boolean bool = true;
-    if (1 != i)
-    {
-      if (4 == i) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
   public static boolean a(Context paramContext, VideoView paramVideoView, String paramString, int paramInt1, VipFunCallMediaListener paramVipFunCallMediaListener, int paramInt2, boolean paramBoolean)
   {
     if ((paramContext != null) && (paramVideoView != null))
@@ -369,13 +305,13 @@ public class VipFunCallUtil
   public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
   {
     long l1 = System.currentTimeMillis();
-    boolean bool = Utils.a();
+    boolean bool = Utils.b();
     if ((bool) && (paramContext == null)) {}
     for (;;)
     {
       try
       {
-        paramContext = VasUtil.a().getApplicationContext();
+        paramContext = VasUtil.c().getApplicationContext();
         if ((bool) && (paramContext != null))
         {
           i = paramContext.checkPermission("android.permission.READ_EXTERNAL_STORAGE", Process.myPid(), Process.myUid());
@@ -502,10 +438,74 @@ public class VipFunCallUtil
     }
     return paramAppRuntime;
   }
+  
+  public static boolean b()
+  {
+    int i = NetworkUtil.getSystemNetwork(null);
+    boolean bool = true;
+    if (1 != i)
+    {
+      if (4 == i) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public static int c()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Build.MODEL=[");
+      ((StringBuilder)localObject1).append(Build.MODEL);
+      ((StringBuilder)localObject1).append("],android.os.Build.VERSION.SDK_INT=[");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("VipFunCallConstants", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (VipFunCallConstants.g < 0) {}
+    try
+    {
+      localObject1 = "R8007,SCH-I869,K-Touch E780,HUAWEI C8812E,AMOI N828,7,8,9,10,11,12,13,HUAWEI Y320-T00,gt-s7568i".split(",");
+      int i = 0;
+      while (i < localObject1.length)
+      {
+        if (localObject1[i] != null)
+        {
+          Object localObject2 = localObject1[i];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(Build.VERSION.SDK_INT);
+          localStringBuilder.append("");
+          if ((localObject2.equalsIgnoreCase(localStringBuilder.toString())) || (localObject1[i].equalsIgnoreCase(Build.MODEL))) {
+            VipFunCallConstants.g = 7;
+          }
+        }
+        i += 1;
+      }
+    }
+    catch (Exception localException)
+    {
+      label155:
+      break label155;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Build.MODEL=[");
+    ((StringBuilder)localObject1).append(Build.MODEL);
+    ((StringBuilder)localObject1).append("],android.os.Build.VERSION.SDK_INT=[");
+    ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+    ((StringBuilder)localObject1).append("]");
+    QLog.e("VipFunCallConstants", 1, ((StringBuilder)localObject1).toString());
+    if (VipFunCallConstants.g < 0) {
+      VipFunCallConstants.g = 6;
+    }
+    return VipFunCallConstants.g;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.vipav.api.VipFunCallUtil
  * JD-Core Version:    0.7.0.1
  */

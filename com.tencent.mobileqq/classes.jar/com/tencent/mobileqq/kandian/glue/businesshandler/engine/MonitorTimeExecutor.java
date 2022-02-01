@@ -27,13 +27,13 @@ import java.util.concurrent.TimeUnit;
 public class MonitorTimeExecutor
   extends ThreadPoolExecutor
 {
-  private static long jdField_a_of_type_Long = 5000L;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static volatile ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static long b = 30000L;
-  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private MonitorTimeExecutor.TimeTrackedRunnable jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineMonitorTimeExecutor$TimeTrackedRunnable;
+  private static boolean a = false;
+  private static long b = 5000L;
+  private static long c = 30000L;
+  private static Handler f;
+  private static volatile ThreadPoolExecutor g;
+  private SparseBooleanArray d = new SparseBooleanArray();
+  private MonitorTimeExecutor.TimeTrackedRunnable e;
   
   private MonitorTimeExecutor(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
   {
@@ -67,23 +67,23 @@ public class MonitorTimeExecutor
   
   public static ExecutorService a()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null) {
+    if (g == null) {
       try
       {
-        if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor == null)
+        if (g == null)
         {
           MonitorTimeExecutor localMonitorTimeExecutor = new MonitorTimeExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
           b(localMonitorTimeExecutor);
-          jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = localMonitorTimeExecutor;
+          g = localMonitorTimeExecutor;
         }
       }
       finally {}
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[newThreadExecutor]: ");
-    localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor);
+    localStringBuilder.append(g);
     QLog.i("MonitorTimeExecutor", 1, localStringBuilder.toString());
-    return jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
+    return g;
   }
   
   private static boolean a(StringBuilder paramStringBuilder, String paramString)
@@ -150,33 +150,33 @@ public class MonitorTimeExecutor
     localStringBuilder.append("[startWatching] for ");
     localStringBuilder.append(paramMonitorTimeExecutor);
     QLog.i("MonitorTimeExecutor", 1, localStringBuilder.toString());
-    if (!((Boolean)RIJSPUtils.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
+    if (!((Boolean)RIJSPUtils.b("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(false))).booleanValue())
     {
       QLog.i("MonitorTimeExecutor", 1, "[startWatching] won't start since monitor disabled");
       return;
     }
-    jdField_a_of_type_Long = ((Long)RIJSPUtils.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
-    b = ((Long)RIJSPUtils.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
+    b = ((Long)RIJSPUtils.b("sp_key_kandian_thread_pool_check_period", Long.valueOf(5000L))).longValue();
+    c = ((Long)RIJSPUtils.b("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(30000L))).longValue();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[startWatching] CHECK_PERIOD=");
-    localStringBuilder.append(jdField_a_of_type_Long);
-    localStringBuilder.append(" THRESHOLD=");
     localStringBuilder.append(b);
+    localStringBuilder.append(" THRESHOLD=");
+    localStringBuilder.append(c);
     QLog.i("MonitorTimeExecutor", 1, localStringBuilder.toString());
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
+    if (f == null) {
+      f = new Handler(ThreadManager.getFileThreadLooper());
     }
-    jdField_a_of_type_AndroidOsHandler.post(new MonitorTimeExecutor.WatchDogRunnable(paramMonitorTimeExecutor, null));
+    f.post(new MonitorTimeExecutor.WatchDogRunnable(paramMonitorTimeExecutor, null));
   }
   
   private static void c(MonitorTimeExecutor paramMonitorTimeExecutor)
   {
-    MonitorTimeExecutor.TimeTrackedRunnable localTimeTrackedRunnable = paramMonitorTimeExecutor.a();
+    MonitorTimeExecutor.TimeTrackedRunnable localTimeTrackedRunnable = paramMonitorTimeExecutor.b();
     if ((localTimeTrackedRunnable != null) && (MonitorTimeExecutor.TimeTrackedRunnable.a(localTimeTrackedRunnable) > 0L))
     {
       long l = SystemClock.uptimeMillis() - MonitorTimeExecutor.TimeTrackedRunnable.a(localTimeTrackedRunnable);
       Object localObject1;
-      if (jdField_a_of_type_Boolean)
+      if (a)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[run] currentTask=");
@@ -186,13 +186,13 @@ public class MonitorTimeExecutor
         ((StringBuilder)localObject1).append("ms");
         QLog.d("MonitorTimeExecutor", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((l > b) && (!Debug.isDebuggerConnected()))
+      if ((l > c) && (!Debug.isDebuggerConnected()))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[run] time limit exceed!, task=");
         ((StringBuilder)localObject1).append(localTimeTrackedRunnable);
         QLog.e("MonitorTimeExecutor", 1, ((StringBuilder)localObject1).toString());
-        if (paramMonitorTimeExecutor.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(localTimeTrackedRunnable.a().hashCode(), false))
+        if (paramMonitorTimeExecutor.d.get(localTimeTrackedRunnable.b().hashCode(), false))
         {
           QLog.i("MonitorTimeExecutor", 1, "[checkBlockingState] skip task since already reported");
           return;
@@ -256,29 +256,29 @@ public class MonitorTimeExecutor
           QLog.e("MonitorTimeExecutor", 1, "[checkBlockingState] ", localException);
         }
         QQCatchedExceptionReporter.reportQQCatchedException(new MonitorTimeExecutor.KandianTaskRunningTooLongException(null), "", (String)localObject1);
-        paramMonitorTimeExecutor.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(localTimeTrackedRunnable.a().hashCode(), true);
+        paramMonitorTimeExecutor.d.put(localTimeTrackedRunnable.b().hashCode(), true);
       }
     }
-  }
-  
-  public MonitorTimeExecutor.TimeTrackedRunnable a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineMonitorTimeExecutor$TimeTrackedRunnable;
   }
   
   protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
     super.afterExecute(paramRunnable, paramThrowable);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineMonitorTimeExecutor$TimeTrackedRunnable == paramRunnable) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineMonitorTimeExecutor$TimeTrackedRunnable = null;
+    if (this.e == paramRunnable) {
+      this.e = null;
     }
+  }
+  
+  public MonitorTimeExecutor.TimeTrackedRunnable b()
+  {
+    return this.e;
   }
   
   protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
     super.beforeExecute(paramThread, paramRunnable);
     if ((paramRunnable instanceof MonitorTimeExecutor.TimeTrackedRunnable)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineMonitorTimeExecutor$TimeTrackedRunnable = ((MonitorTimeExecutor.TimeTrackedRunnable)paramRunnable);
+      this.e = ((MonitorTimeExecutor.TimeTrackedRunnable)paramRunnable);
     }
   }
   
@@ -310,7 +310,7 @@ public class MonitorTimeExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.MonitorTimeExecutor
  * JD-Core Version:    0.7.0.1
  */

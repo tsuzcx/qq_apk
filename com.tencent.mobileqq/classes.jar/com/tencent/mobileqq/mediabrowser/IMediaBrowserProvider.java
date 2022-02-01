@@ -5,9 +5,9 @@ import com.tencent.mobileqq.richmediabrowser.IProvider;
 public abstract interface IMediaBrowserProvider
   extends IProvider
 {
-  public abstract void a();
-  
   public abstract void a(IMediaBrowserProviderCallBack paramIMediaBrowserProviderCallBack);
+  
+  public abstract void b();
 }
 
 

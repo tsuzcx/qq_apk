@@ -8,13 +8,8 @@ import java.io.File;
 
 public class P2VEffectLoader
 {
-  private static P2VEffectLoader jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public P2VEffectLoader()
-  {
-    this.a = false;
-  }
+  private static P2VEffectLoader b;
+  private boolean a = false;
   
   public static void a(Context paramContext)
   {
@@ -84,7 +79,7 @@ public class P2VEffectLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader
  * JD-Core Version:    0.7.0.1
  */

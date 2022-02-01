@@ -36,7 +36,7 @@ class EditLocalVideoActivity$15
       int i;
       try
       {
-        Toast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131703805), 1).show();
+        Toast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131901751), 1).show();
         paramMediaPlayer = a();
         StringBuilder localStringBuilder1;
         if (paramMediaPlayer == null)
@@ -96,7 +96,7 @@ class EditLocalVideoActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.15
  * JD-Core Version:    0.7.0.1
  */

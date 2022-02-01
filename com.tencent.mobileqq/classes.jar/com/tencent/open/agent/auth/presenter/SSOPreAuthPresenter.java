@@ -33,7 +33,26 @@ public class SSOPreAuthPresenter
 {
   private int a;
   
-  private GetVirtualListResult a(preAuth.PreAuthResponse paramPreAuthResponse)
+  private void a(preAuth.PreAuthResponse paramPreAuthResponse)
+  {
+    SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse" });
+    if (!paramPreAuthResponse.appid.has()) {
+      return;
+    }
+    String str = Long.toString(paramPreAuthResponse.appid.get());
+    AuthMemoryCache.a().a(str, paramPreAuthResponse);
+    Object localObject = c(paramPreAuthResponse);
+    AuthMemoryCache.a().a(str, (List)localObject);
+    if (paramPreAuthResponse.android_info.has())
+    {
+      localObject = AppInfoResponse.a(paramPreAuthResponse, paramPreAuthResponse.android_info);
+      AuthMemoryCache.a().a(str, (AppInfoResponse)localObject);
+    }
+    paramPreAuthResponse = b(paramPreAuthResponse);
+    AuthMemoryCache.a().a(str, paramPreAuthResponse);
+  }
+  
+  private GetVirtualListResult b(preAuth.PreAuthResponse paramPreAuthResponse)
   {
     GetVirtualListResult localGetVirtualListResult = new GetVirtualListResult();
     SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse response.profiles.has()=", Boolean.valueOf(paramPreAuthResponse.profiles.has()) });
@@ -46,22 +65,22 @@ public class SSOPreAuthPresenter
     {
       Object localObject = (preAuth.VirtualProfile)localIterator.next();
       VirtualInfo localVirtualInfo = new VirtualInfo();
-      localVirtualInfo.jdField_a_of_type_Long = ((preAuth.VirtualProfile)localObject).vid.get();
-      localVirtualInfo.jdField_a_of_type_JavaLangString = ((preAuth.VirtualProfile)localObject).nick_name.get();
-      localVirtualInfo.jdField_b_of_type_JavaLangString = ((preAuth.VirtualProfile)localObject).avatar_url.get();
+      localVirtualInfo.a = ((preAuth.VirtualProfile)localObject).vid.get();
+      localVirtualInfo.b = ((preAuth.VirtualProfile)localObject).nick_name.get();
+      localVirtualInfo.c = ((preAuth.VirtualProfile)localObject).avatar_url.get();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(localVirtualInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(localVirtualInfo.b);
       ((StringBuilder)localObject).append(", avatarUrl=");
-      SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse nickName=", ((StringBuilder)localObject).toString(), localVirtualInfo.jdField_b_of_type_JavaLangString });
+      SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse nickName=", ((StringBuilder)localObject).toString(), localVirtualInfo.c });
       localArrayList.add(localVirtualInfo);
     }
-    localGetVirtualListResult.jdField_a_of_type_Long = paramPreAuthResponse.vid.get();
-    localGetVirtualListResult.jdField_a_of_type_Int = paramPreAuthResponse.ret.get();
-    localGetVirtualListResult.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localGetVirtualListResult.b = paramPreAuthResponse.vid.get();
+    localGetVirtualListResult.a = paramPreAuthResponse.ret.get();
+    localGetVirtualListResult.c = localArrayList;
     return localGetVirtualListResult;
   }
   
-  private List<Permission> a(preAuth.PreAuthResponse paramPreAuthResponse)
+  private List<Permission> c(preAuth.PreAuthResponse paramPreAuthResponse)
   {
     ArrayList localArrayList = new ArrayList();
     if (!paramPreAuthResponse.auth_items.has()) {
@@ -72,45 +91,26 @@ public class SSOPreAuthPresenter
     {
       appType.AuthItem localAuthItem = (appType.AuthItem)paramPreAuthResponse.next();
       Permission localPermission = new Permission();
-      localPermission.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-      localPermission.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-      localPermission.jdField_b_of_type_Int = localAuthItem.id.get();
+      localPermission.d = localAuthItem.api_list.get();
+      localPermission.a = localAuthItem.default_flag.get();
+      localPermission.e = localAuthItem.id.get();
       boolean bool;
       if (localAuthItem.is_new.get() != 0) {
         bool = true;
       } else {
         bool = false;
       }
-      localPermission.jdField_a_of_type_Boolean = bool;
-      localPermission.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+      localPermission.c = bool;
+      localPermission.b = localAuthItem.title.get();
       SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse Permission=", localPermission.toString() });
       localArrayList.add(localPermission);
     }
     return localArrayList;
   }
   
-  private void a(preAuth.PreAuthResponse paramPreAuthResponse)
-  {
-    SSOLog.a("SSOPreAuthPresenter", new Object[] { "onPreAuthResponse" });
-    if (!paramPreAuthResponse.appid.has()) {
-      return;
-    }
-    String str = Long.toString(paramPreAuthResponse.appid.get());
-    AuthMemoryCache.a().a(str, paramPreAuthResponse);
-    Object localObject = a(paramPreAuthResponse);
-    AuthMemoryCache.a().a(str, (List)localObject);
-    if (paramPreAuthResponse.android_info.has())
-    {
-      localObject = AppInfoResponse.a(paramPreAuthResponse, paramPreAuthResponse.android_info);
-      AuthMemoryCache.a().a(str, (AppInfoResponse)localObject);
-    }
-    paramPreAuthResponse = a(paramPreAuthResponse);
-    AuthMemoryCache.a().a(str, paramPreAuthResponse);
-  }
-  
   public void a(String paramString1, String paramString2, Activity paramActivity, String paramString3, Bundle paramBundle, SSOPreAuthPresenter.PreAuthCallback paramPreAuthCallback)
   {
-    paramString2 = AuthMemoryCache.a().a(paramString2);
+    paramString2 = AuthMemoryCache.a().d(paramString2);
     if ((paramString2 != null) && (paramActivity != null))
     {
       a(paramString3, paramString1, AuthParamUtil.a(paramBundle, "key_proxy_appid"), paramBundle, paramString2, paramPreAuthCallback, 2);
@@ -123,7 +123,7 @@ public class SSOPreAuthPresenter
   public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle, AccountInfo paramAccountInfo, SSOPreAuthPresenter.PreAuthCallback paramPreAuthCallback, int paramInt)
   {
     AuthReporter.a("KEY_PRE_AUTH");
-    Object[] arrayOfObject = AuthorityUtil.a(MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccountInfo.jdField_a_of_type_JavaLangString, "QQConnectLogin.pre_auth", "QQConnectLogin.pre_auth_emp");
+    Object[] arrayOfObject = AuthorityUtil.a(MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccountInfo.a, "QQConnectLogin.pre_auth", "QQConnectLogin.pre_auth_emp");
     String str = (String)arrayOfObject[0];
     boolean bool = "QQConnectLogin.pre_auth_emp".equals(str);
     SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuthWithRetry cmd=", str });
@@ -132,7 +132,7 @@ public class SSOPreAuthPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SSOPreAuthPresenter
  * JD-Core Version:    0.7.0.1
  */

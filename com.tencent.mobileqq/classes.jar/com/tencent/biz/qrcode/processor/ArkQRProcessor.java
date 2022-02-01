@@ -21,15 +21,10 @@ public class ArkQRProcessor
     return "ArkQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     paramString1.toLowerCase();
-    return (a(paramInt)) && ("com.tencent.ark.scan".equals(paramScannerParams.a));
+    return (a(paramInt)) && ("com.tencent.ark.scan".equals(paramScannerParams.b));
   }
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
@@ -37,8 +32,13 @@ public class ArkQRProcessor
     paramScannerParams = new Intent("com.tencent.mobileqq.ark.api.scanResultAction");
     paramScannerParams.putExtra("com.tencent.ark.scanResultData", paramString1);
     paramScannerParams.putExtra("com.tencent.ark.scanResultType", paramString2);
-    this.a.a().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
-    this.a.b();
+    this.b.d().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
+    this.b.b();
+    return true;
+  }
+  
+  public boolean b()
+  {
     return true;
   }
 }

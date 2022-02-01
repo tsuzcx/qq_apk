@@ -13,16 +13,16 @@ class QQSettingMsgClearFragment$1$1
   
   public void run()
   {
-    QQSettingMsgHistoryActivity.a(this.a.a.getBaseActivity(), QQSettingMsgClearFragment.a(this.a.a));
+    QQSettingMsgHistoryActivity.a(this.a.b.getBaseActivity(), QQSettingMsgClearFragment.a(this.a.b));
     StorageReport.a().a(true);
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    SharedPreUtils.a(QQSettingMsgClearFragment.a(this.a.a).getCurrentUin());
+    this.a.b.c.sendEmptyMessageDelayed(0, 1000L);
+    SharedPreUtils.h(QQSettingMsgClearFragment.a(this.a.b).getCurrentUin());
     QQSettingMsgHistoryActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,17 +23,12 @@ import org.jetbrains.annotations.Nullable;
 public final class ExpandBirthPickFragment
   extends QPublicBaseFragment
 {
-  public static final ExpandBirthPickFragment.Companion a;
-  private HashMap a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandBirthPickFragment$Companion = new ExpandBirthPickFragment.Companion(null);
-  }
+  public static final ExpandBirthPickFragment.Companion a = new ExpandBirthPickFragment.Companion(null);
+  private HashMap b;
   
   public void a()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -82,7 +77,7 @@ public final class ExpandBirthPickFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandBirthPickFragment
  * JD-Core Version:    0.7.0.1
  */

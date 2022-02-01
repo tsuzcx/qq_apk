@@ -12,26 +12,26 @@ import java.util.Iterator;
 
 public class ImportantMessageReporter
 {
-  private TroopAppShortcutBarHelper jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private LeftAppShortcutBarPanel jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel;
-  private HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private HashMap<Long, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<Long> jdField_b_of_type_JavaUtilHashSet = new HashSet();
-  private HashMap<Long, Long> c = new HashMap();
-  private HashMap<Long, Long> d = new HashMap();
+  private LeftAppShortcutBarPanel a;
+  private AIOShortcutBarContext b;
+  private TroopAppShortcutBarHelper c;
+  private HashSet<Long> d = new HashSet();
+  private HashSet<Long> e = new HashSet();
+  private HashMap<Long, Long> f = new HashMap();
+  private HashMap<Long, Long> g = new HashMap();
+  private HashMap<Long, Long> h = new HashMap();
+  private HashMap<Long, Long> i = new HashMap();
   
   public ImportantMessageReporter(ILeftAppShortBarDataUI paramILeftAppShortBarDataUI, AIOShortcutBarContext paramAIOShortcutBarContext, TroopAppShortcutBarHelper paramTroopAppShortcutBarHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel = ((LeftAppShortcutBarPanel)paramILeftAppShortBarDataUI);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper = paramTroopAppShortcutBarHelper;
+    this.a = ((LeftAppShortcutBarPanel)paramILeftAppShortBarDataUI);
+    this.b = paramAIOShortcutBarContext;
+    this.c = paramTroopAppShortcutBarHelper;
   }
   
   private int a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(paramLong))) {
+    if (this.d.contains(Long.valueOf(paramLong))) {
       return 1;
     }
     return 2;
@@ -39,33 +39,33 @@ public class ImportantMessageReporter
   
   public void a()
   {
-    TroopAppShortcutBarHelper localTroopAppShortcutBarHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
+    TroopAppShortcutBarHelper localTroopAppShortcutBarHelper = this.c;
     if (localTroopAppShortcutBarHelper != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
-      ReportController.b(null, "dc00898", "", localTroopAppShortcutBarHelper.a(), "0X800B19D", "0X800B19D", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", localTroopAppShortcutBarHelper.v(), "0X800B19D", "0X800B19D", 0, 0, "", "", "", "");
     }
   }
   
   public void a(int paramInt)
   {
-    TroopAppShortcutBarHelper localTroopAppShortcutBarHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
+    TroopAppShortcutBarHelper localTroopAppShortcutBarHelper = this.c;
     if (localTroopAppShortcutBarHelper != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
-      ReportController.b(null, "dc00898", "", localTroopAppShortcutBarHelper.a(), "0X800B19E", "0X800B19E", 0, 0, "", "", String.valueOf(paramInt), "");
+      ReportController.b(null, "dc00898", "", localTroopAppShortcutBarHelper.v(), "0X800B19E", "0X800B19E", 0, 0, "", "", String.valueOf(paramInt), "");
     }
   }
   
   public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
       String str;
@@ -77,44 +77,44 @@ public class ImportantMessageReporter
       if ((paramView.getTag() != null) && ((paramView.getTag() instanceof ShortcutBarInfo)))
       {
         paramView = (ShortcutBarInfo)paramView.getTag();
-        ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(), str, str, 0, 0, String.valueOf(paramView.b()), "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel.a()), "");
-        this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramView.b()));
+        ReportController.b(null, "dc00898", "", this.c.v(), str, str, 0, 0, String.valueOf(paramView.d()), "", String.valueOf(this.a.g()), "");
+        this.d.add(Long.valueOf(paramView.d()));
       }
     }
   }
   
   public void a(Long paramLong1, Long paramLong2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramLong1, paramLong2);
-    this.d.put(paramLong1, paramLong2);
+    this.f.put(paramLong1, paramLong2);
+    this.i.put(paramLong1, paramLong2);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap.size() != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper != null))
+    if ((this.f.size() != 0) && (this.c != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = this.f.values().iterator();
       while (localIterator.hasNext())
       {
         Long localLong = (Long)localIterator.next();
-        if ((localLong != null) && (!this.jdField_b_of_type_JavaUtilHashSet.contains(localLong)))
+        if ((localLong != null) && (!this.e.contains(localLong)))
         {
-          this.jdField_b_of_type_JavaUtilHashSet.add(localLong);
-          ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(), "0X800B199", "0X800B199", 0, 0, String.valueOf(localLong), "", "", "");
+          this.e.add(localLong);
+          ReportController.b(null, "dc00898", "", this.c.v(), "0X800B199", "0X800B199", 0, 0, String.valueOf(localLong), "", "", "");
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.f.clear();
     }
   }
   
   public void b(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
       String str;
@@ -126,26 +126,26 @@ public class ImportantMessageReporter
       if ((paramView.getTag() != null) && ((paramView.getTag() instanceof ShortcutBarInfo)))
       {
         paramView = (ShortcutBarInfo)paramView.getTag();
-        ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(), str, str, 0, 0, String.valueOf(paramView.b()), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel.a()), String.valueOf(a(paramView.a())), "");
-        this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramView.a()));
+        ReportController.b(null, "dc00898", "", this.c.v(), str, str, 0, 0, String.valueOf(paramView.d()), String.valueOf(this.a.g()), String.valueOf(a(paramView.b())), "");
+        this.d.add(Long.valueOf(paramView.b()));
       }
     }
   }
   
   public void b(Long paramLong1, Long paramLong2)
   {
-    this.jdField_b_of_type_JavaUtilHashMap.put(paramLong1, paramLong2);
-    this.d.put(paramLong1, paramLong2);
+    this.g.put(paramLong1, paramLong2);
+    this.i.put(paramLong1, paramLong2);
   }
   
   public void c()
   {
-    if ((this.jdField_b_of_type_JavaUtilHashMap.size() != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper != null))
+    if ((this.g.size() != 0) && (this.c != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel == null) {
+      if (this.a == null) {
         return;
       }
-      Iterator localIterator = this.c.values().iterator();
+      Iterator localIterator = this.h.values().iterator();
       String str = "";
       while (localIterator.hasNext())
       {
@@ -159,28 +159,28 @@ public class ImportantMessageReporter
           str = localStringBuilder.toString();
         }
       }
-      ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.a(), "0X800B198", "0X800B198", 0, 0, String.valueOf(this.c.size()), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel.a()), str, String.valueOf(this.d.size()));
-      this.c.clear();
-      this.d.clear();
+      ReportController.b(null, "dc00898", "", this.c.v(), "0X800B198", "0X800B198", 0, 0, String.valueOf(this.h.size()), String.valueOf(this.a.g()), str, String.valueOf(this.i.size()));
+      this.h.clear();
+      this.i.clear();
     }
   }
   
   public void c(Long paramLong1, Long paramLong2)
   {
-    this.c.put(paramLong1, paramLong2);
+    this.h.put(paramLong1, paramLong2);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_JavaUtilHashSet.clear();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgLeftAppShortcutBarPanel = null;
+    this.d.clear();
+    this.e.clear();
+    this.c = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMessageReporter
  * JD-Core Version:    0.7.0.1
  */

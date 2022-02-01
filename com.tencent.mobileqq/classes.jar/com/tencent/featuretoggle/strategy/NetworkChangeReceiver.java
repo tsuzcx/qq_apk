@@ -36,7 +36,7 @@ public class NetworkChangeReceiver
     //   2: ldc 26
     //   4: iconst_0
     //   5: anewarray 28	java/lang/Object
-    //   8: invokestatic 34	com/tencent/featuretoggle/utils/LogUtils:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   8: invokestatic 34	com/tencent/featuretoggle/utils/LogUtils:e	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   11: new 36	android/content/IntentFilter
     //   14: dup
     //   15: ldc 38
@@ -82,17 +82,17 @@ public class NetworkChangeReceiver
       if (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
         return;
       }
-      paramIntent = DeviceUtils.c(paramContext);
-      LogUtils.c("[Strategy] network changed %s to %s", new Object[] { this.a, paramIntent });
+      paramIntent = DeviceUtils.a(paramContext);
+      LogUtils.e("[Strategy] network changed %s to %s", new Object[] { this.a, paramIntent });
       if (paramIntent != null)
       {
         if (paramIntent.equals(this.a)) {
           return;
         }
-        if (ToggleSetting.g()) {
+        if (ToggleSetting.D()) {
           ReportController.a().a(2004);
         }
-        AppUtils.a(paramContext);
+        AppUtils.e(paramContext);
         this.a = paramIntent;
       }
     }
@@ -100,7 +100,7 @@ public class NetworkChangeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.strategy.NetworkChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

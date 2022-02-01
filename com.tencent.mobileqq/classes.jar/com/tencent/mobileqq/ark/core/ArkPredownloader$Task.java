@@ -7,14 +7,14 @@ import java.lang.ref.WeakReference;
 
 public class ArkPredownloader$Task
 {
-  BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<IPreDownloadController> jdField_a_of_type_JavaLangRefWeakReference;
+  String a;
   String b;
+  BaseQQAppInterface c;
+  WeakReference<IPreDownloadController> d;
   
   public void a(Runnable paramRunnable)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.d;
     if (localObject == null)
     {
       paramRunnable.run();
@@ -26,13 +26,13 @@ public class ArkPredownloader$Task
       paramRunnable.run();
       return;
     }
-    paramRunnable = new RunnableTask(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.b, paramRunnable, 10000L);
-    ((IPreDownloadController)localObject).requestPreDownload(10022, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, "", 1, 0, false, paramRunnable);
+    paramRunnable = new RunnableTask(this.c, this.b, paramRunnable, 10000L);
+    ((IPreDownloadController)localObject).requestPreDownload(10022, "prd", this.b, 0, this.a, "", 1, 0, false, paramRunnable);
   }
   
   public void a(String paramString, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.d;
     if (localObject == null) {
       return;
     }
@@ -45,7 +45,7 @@ public class ArkPredownloader$Task
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkPredownloader.Task
  * JD-Core Version:    0.7.0.1
  */

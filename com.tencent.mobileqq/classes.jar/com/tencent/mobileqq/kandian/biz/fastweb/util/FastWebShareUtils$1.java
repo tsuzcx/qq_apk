@@ -15,34 +15,34 @@ class FastWebShareUtils$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (FastWebShareUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilFastWebShareUtils) != null)
+    if (FastWebShareUtils.a(this.c) != null)
     {
-      if (!FastWebShareUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilFastWebShareUtils).equals(paramBaseResp.transaction)) {
+      if (!FastWebShareUtils.a(this.c).equals(paramBaseResp.transaction)) {
         return;
       }
       int i = paramBaseResp.errCode;
       if (i != -2) {
         if (i != 0)
         {
-          QRUtils.b(1, 2131719009);
+          QRUtils.b(1, 2131916544);
         }
         else
         {
-          QRUtils.b(2, 2131719027);
+          QRUtils.b(2, 2131916563);
           bool = true;
           break label65;
         }
       }
       boolean bool = false;
       label65:
-      paramBaseResp = (AppInterface)ReadInJoyUtils.a();
-      ReportUtil.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
+      paramBaseResp = (AppInterface)ReadInJoyUtils.b();
+      ReportUtil.b(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.a, this.b, -1, false, bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebShareUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class QRDisplayActivity$21
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.h) {
+    if (this.a.aM) {
       return;
     }
     paramDialogInterface = this.a;
-    paramDialogInterface.i = -1;
-    paramDialogInterface.h = true;
-    QRDisplayActivity.a(paramDialogInterface).dismiss();
+    paramDialogInterface.aN = -1;
+    paramDialogInterface.aM = true;
+    QRDisplayActivity.b(paramDialogInterface).dismiss();
   }
 }
 

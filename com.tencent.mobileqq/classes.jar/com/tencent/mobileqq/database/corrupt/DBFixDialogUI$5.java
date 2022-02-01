@@ -16,19 +16,19 @@ class DBFixDialogUI$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.cancel();
-    DBFixDialogUI.a(this.a).c();
-    paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit();
+    DBFixDialogUI.d(this.a).c();
+    paramDialogInterface = this.a.a.getApplication().getSharedPreferences(DBFixManager.d, 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(DBFixManager.g);
+    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(DBFixManager.n);
     paramDialogInterface.remove(localStringBuilder.toString()).commit();
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.f, DBFixDialogUI.f, 0, 0, "", "", "", "");
-    DBFixDialogUI.a(this.a).d();
+    ReportController.b(this.a.a, "CliOper", "", this.a.c, DBFixDialogUI.i, DBFixDialogUI.i, 0, 0, "", "", "", "");
+    DBFixDialogUI.d(this.a).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.5
  * JD-Core Version:    0.7.0.1
  */

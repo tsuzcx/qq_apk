@@ -13,24 +13,24 @@ class SessionClearFragment$5
   
   public void onClick(View paramView)
   {
-    if (SessionClearFragment.a(this.a) == 0)
+    if (SessionClearFragment.e(this.a) == 0)
     {
-      SessionClearFragment.a(this.a).setText(HardCodeUtil.a(2131713719));
+      SessionClearFragment.f(this.a).setText(HardCodeUtil.a(2131911262));
       SessionClearFragment.a(this.a, 1);
-      SessionClearFragment.a(this.a).b();
+      SessionClearFragment.d(this.a).b();
     }
     else
     {
-      SessionClearFragment.a(this.a).setText(HardCodeUtil.a(2131713717));
+      SessionClearFragment.f(this.a).setText(HardCodeUtil.a(2131911260));
       SessionClearFragment.a(this.a, 0);
-      SessionClearFragment.a(this.a).c();
+      SessionClearFragment.d(this.a).c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.5
  * JD-Core Version:    0.7.0.1
  */

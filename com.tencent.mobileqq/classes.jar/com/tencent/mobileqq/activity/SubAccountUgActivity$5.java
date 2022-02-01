@@ -12,27 +12,27 @@ class SubAccountUgActivity$5
 {
   SubAccountUgActivity$5(SubAccountUgActivity paramSubAccountUgActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.isNetConnToast()) {
+      if (!this.b.isNetConnToast()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.showJuhua(2131719351);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity;
+      this.b.showJuhua(2131916903);
+      paramView = this.b;
       paramView.mBindClick = true;
       paramView = (SubAccountProtocServiceImpl)paramView.app.getRuntimeService(ISubAccountProtocService.class, "");
       if (paramView != null) {
-        paramView.unBindAccount(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.subUin);
+        paramView.unBindAccount(this.b.subUin);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public class VideoLoadingImage
   
   private void a(boolean paramBoolean, int paramInt)
   {
-    FrameLayout localFrameLayout = (FrameLayout)getRootView().findViewById(2131370383);
+    FrameLayout localFrameLayout = (FrameLayout)getRootView().findViewById(2131437650);
     if ((localFrameLayout != null) && (paramBoolean)) {
       localFrameLayout.setBackgroundColor(paramInt);
     }
@@ -46,7 +46,7 @@ public class VideoLoadingImage
       if (i != 2) {
         return;
       }
-      setImageDrawable(getResources().getDrawable(2130839404));
+      setImageDrawable(getResources().getDrawable(2130839588));
       setScaleType(ImageView.ScaleType.CENTER);
       a(true, -16777216);
       return;
@@ -66,7 +66,7 @@ public class VideoLoadingImage
     super.setVisibility(paramInt);
     if (2 == this.a)
     {
-      FrameLayout localFrameLayout = (FrameLayout)getRootView().findViewById(2131370383);
+      FrameLayout localFrameLayout = (FrameLayout)getRootView().findViewById(2131437650);
       if (localFrameLayout != null) {
         localFrameLayout.setVisibility(paramInt);
       }
@@ -75,7 +75,7 @@ public class VideoLoadingImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.VideoLoadingImage
  * JD-Core Version:    0.7.0.1
  */

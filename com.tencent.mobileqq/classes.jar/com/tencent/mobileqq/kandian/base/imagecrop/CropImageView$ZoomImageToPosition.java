@@ -6,47 +6,47 @@ import java.lang.ref.WeakReference;
 class CropImageView$ZoomImageToPosition
   implements Runnable
 {
-  private final float jdField_a_of_type_Float;
-  private final long jdField_a_of_type_Long;
-  private final WeakReference<CropImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float jdField_b_of_type_Float;
-  private final long jdField_b_of_type_Long;
-  private final float c;
+  private final WeakReference<CropImageView> a;
+  private final long b;
+  private final long c;
   private final float d;
+  private final float e;
+  private final float f;
+  private final float g;
+  private final boolean h;
   
   public CropImageView$ZoomImageToPosition(CropImageView paramCropImageView, long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCropImageView);
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramCropImageView);
+    this.c = System.currentTimeMillis();
+    this.b = paramLong;
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
+    this.h = paramBoolean;
   }
   
   public void run()
   {
-    CropImageView localCropImageView = (CropImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    CropImageView localCropImageView = (CropImageView)this.a.get();
     if (localCropImageView == null) {
       return;
     }
     long l = System.currentTimeMillis();
-    float f2 = (float)Math.min(this.jdField_a_of_type_Long, l - this.jdField_b_of_type_Long);
+    float f2 = (float)Math.min(this.b, l - this.c);
     float f1;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = CubicEasing.a(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+    if (this.h) {
+      f1 = CubicEasing.a(f2, 0.0F, this.e, (float)this.b);
     } else {
-      f1 = CubicEasing.b(f2, 0.0F, this.jdField_b_of_type_Float, (float)this.jdField_a_of_type_Long);
+      f1 = CubicEasing.b(f2, 0.0F, this.e, (float)this.b);
     }
-    if (f2 < (float)this.jdField_a_of_type_Long)
+    if (f2 < (float)this.b)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        localCropImageView.b(this.jdField_a_of_type_Float + f1, this.c, this.d);
+      if (!this.h) {
+        localCropImageView.b(this.d + f1, this.f, this.g);
       } else {
-        localCropImageView.a(this.jdField_a_of_type_Float + f1, this.c, this.d);
+        localCropImageView.a(this.d + f1, this.f, this.g);
       }
       localCropImageView.post(this);
       return;
@@ -56,7 +56,7 @@ class CropImageView$ZoomImageToPosition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.CropImageView.ZoomImageToPosition
  * JD-Core Version:    0.7.0.1
  */

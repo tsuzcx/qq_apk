@@ -7,24 +7,24 @@ import com.tencent.widget.VerticalGallery.OnEndMovementListener;
 class IphonePickerView$EndMovementListener
   implements VerticalGallery.OnEndMovementListener
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public IphonePickerView$EndMovementListener(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void onEndMovement(VerticalGallery paramVerticalGallery)
   {
-    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).onItemSelected(this.jdField_a_of_type_Int, i);
+    int i = IphonePickerView.c(this.a)[this.b].getSelectedItemPosition();
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).onItemSelected(this.b, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.EndMovementListener
  * JD-Core Version:    0.7.0.1
  */

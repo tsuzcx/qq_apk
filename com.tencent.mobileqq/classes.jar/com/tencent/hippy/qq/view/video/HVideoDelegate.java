@@ -56,15 +56,15 @@ public class HVideoDelegate
       localHippyMap.pushMap("message", paramHippyMap);
     }
     paramHippyMap = new HippyMap();
-    paramHippyMap.pushInt("width", this.mPlayer.b());
-    paramHippyMap.pushInt("height", this.mPlayer.c());
+    paramHippyMap.pushInt("width", this.mPlayer.w());
+    paramHippyMap.pushInt("height", this.mPlayer.x());
     localHippyMap.pushMap("videoSize", paramHippyMap);
     this.mVideoView.videoViewFireEvent("stateChange", localHippyMap);
   }
   
   private int getVideoState()
   {
-    int i = this.mPlayer.a();
+    int i = this.mPlayer.l();
     if (i != 0) {
       if ((i != 1) && (i != 2))
       {
@@ -138,12 +138,12 @@ public class HVideoDelegate
   
   public void afterChangeFullScreen(HippyQQVideoView paramHippyQQVideoView)
   {
-    this.mPlayer.h();
+    this.mPlayer.n();
   }
   
   public void beforeChangeFullScreen(HippyQQVideoView paramHippyQQVideoView)
   {
-    this.mPlayer.g();
+    this.mPlayer.m();
   }
   
   public void beforeVideoStart() {}
@@ -208,11 +208,11 @@ public class HVideoDelegate
     {
       paramHippyQQVideoView = new HippyMap();
       paramHippyQQVideoView.pushInt("state", getVideoState());
-      paramHippyQQVideoView.pushInt("currentTime", parseTimeToSeconds(this.mPlayer.b()));
-      paramHippyQQVideoView.pushDouble("totalTime", this.mPlayer.a() / 1000L);
+      paramHippyQQVideoView.pushInt("currentTime", parseTimeToSeconds(this.mPlayer.k()));
+      paramHippyQQVideoView.pushDouble("totalTime", this.mPlayer.j() / 1000L);
       HippyMap localHippyMap = new HippyMap();
-      localHippyMap.pushInt("width", this.mPlayer.b());
-      localHippyMap.pushInt("height", this.mPlayer.c());
+      localHippyMap.pushInt("width", this.mPlayer.w());
+      localHippyMap.pushInt("height", this.mPlayer.x());
       paramHippyQQVideoView.pushMap("videoSize", localHippyMap);
       paramPromise.resolve(paramHippyQQVideoView);
     }
@@ -227,7 +227,7 @@ public class HVideoDelegate
   
   public void onActivityDestroy()
   {
-    this.mPlayer.m();
+    this.mPlayer.F();
     ((IVideoVolumeController)QRoute.api(IVideoVolumeController.class)).outKandianModule(this.mActivity);
     ((IVideoVolumeController)QRoute.api(IVideoVolumeController.class)).removeEventListener(this);
     this.mActivity = null;
@@ -235,13 +235,13 @@ public class HVideoDelegate
   
   public void onActivityPause()
   {
-    this.mPlayer.k();
+    this.mPlayer.C();
     ((IVideoVolumeController)QRoute.api(IVideoVolumeController.class)).requestOrAbandonAudioFocus(false, "viola video");
   }
   
   public void onActivityResume()
   {
-    this.mPlayer.l();
+    this.mPlayer.D();
     ((IVideoVolumeController)QRoute.api(IVideoVolumeController.class)).requestOrAbandonAudioFocus(true, "viola video");
   }
   
@@ -251,12 +251,12 @@ public class HVideoDelegate
   
   public void onBufferEnd()
   {
-    if (this.mPlayer.h())
+    if (this.mPlayer.u())
     {
       callJsStateChange(2, null);
       return;
     }
-    if (this.mPlayer.g()) {
+    if (this.mPlayer.t()) {
       callJsStateChange(4, null);
     }
   }
@@ -275,6 +275,10 @@ public class HVideoDelegate
   
   public void onFirstFrameRendered() {}
   
+  public void onFocusGain() {}
+  
+  public void onFocusLoss() {}
+  
   public void onHeadsetStateChanged(boolean paramBoolean)
   {
     this.mPlayer.e(paramBoolean ^ true);
@@ -282,7 +286,7 @@ public class HVideoDelegate
   
   public void onPhoneCome()
   {
-    this.mPlayer.d();
+    this.mPlayer.f();
   }
   
   public void onProgressChanged(long paramLong)
@@ -291,7 +295,7 @@ public class HVideoDelegate
     {
       HippyMap localHippyMap = new HippyMap();
       localHippyMap.pushObject("currentTime", Integer.valueOf(parseTimeToSeconds(paramLong)));
-      localHippyMap.pushObject("totalTime", Long.valueOf(this.mPlayer.a() / 1000L));
+      localHippyMap.pushObject("totalTime", Long.valueOf(this.mPlayer.j() / 1000L));
       this.mVideoView.videoViewFireEvent("playTimeChange", localHippyMap);
       return;
     }
@@ -396,7 +400,7 @@ public class HVideoDelegate
       this.mPlayer.e(paramJSONObject.optBoolean("muted", false));
       if (bool1)
       {
-        this.mPlayer.a(this.mVideoInfo.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
+        this.mPlayer.a(this.mVideoInfo.a, this.mVideoInfo.b, this.mVideoInfo.i, this.mStartPosition, this.mVideoInfo.e);
         return;
       }
       if (bool2)
@@ -413,7 +417,7 @@ public class HVideoDelegate
   
   public void pause(HippyQQVideoView paramHippyQQVideoView)
   {
-    this.mPlayer.d();
+    this.mPlayer.f();
   }
   
   public void play(HippyQQVideoView paramHippyQQVideoView)
@@ -422,46 +426,46 @@ public class HVideoDelegate
     {
       paramHippyQQVideoView = new StringBuilder();
       paramHippyQQVideoView.append("play: status=");
-      paramHippyQQVideoView.append(this.mPlayer.a());
+      paramHippyQQVideoView.append(this.mPlayer.l());
       paramHippyQQVideoView.append(", isPreload=");
-      paramHippyQQVideoView.append(this.mPlayer.a());
+      paramHippyQQVideoView.append(this.mPlayer.b());
       paramHippyQQVideoView.append(", videoinfo=");
       paramHippyQQVideoView.append(this.mVideoInfo);
       paramHippyQQVideoView.append(", mStartPosition:");
       paramHippyQQVideoView.append(this.mStartPosition);
       QLog.d("VVideoControlListenerImpl", 2, paramHippyQQVideoView.toString());
     }
-    if ((this.mVideoInfo != null) && (this.mPlayer.a()))
+    if ((this.mVideoInfo != null) && (this.mPlayer.b()))
     {
-      this.mPlayer.a(this.mVideoInfo.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
+      this.mPlayer.a(this.mVideoInfo.a, this.mVideoInfo.b, this.mVideoInfo.i, this.mStartPosition, this.mVideoInfo.e);
       return;
     }
-    if (this.mPlayer.b())
+    if (this.mPlayer.o())
     {
-      this.mPlayer.c();
+      this.mPlayer.e();
       return;
     }
     paramHippyQQVideoView = this.mVideoInfo;
     if (paramHippyQQVideoView != null) {
-      this.mPlayer.a(paramHippyQQVideoView.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
+      this.mPlayer.a(paramHippyQQVideoView.a, this.mVideoInfo.b, this.mVideoInfo.i, this.mStartPosition, this.mVideoInfo.e);
     }
   }
   
   public void preplay(HippyQQVideoView paramHippyQQVideoView)
   {
-    if ((this.mVideoInfo != null) && (!this.mPlayer.a()))
+    if ((this.mVideoInfo != null) && (!this.mPlayer.b()))
     {
       this.mPlayer.b(this.mCoverFrame);
-      this.mPlayer.a(this.mVideoInfo.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
+      this.mPlayer.a(this.mVideoInfo.a, this.mVideoInfo.b, this.mVideoInfo.i, this.mStartPosition, this.mVideoInfo.e);
     }
   }
   
   public void replay(HippyQQVideoView paramHippyQQVideoView)
   {
-    this.mPlayer.f();
+    this.mPlayer.h();
     paramHippyQQVideoView = this.mVideoInfo;
     if (paramHippyQQVideoView != null) {
-      this.mPlayer.a(paramHippyQQVideoView.jdField_a_of_type_Int, this.mVideoInfo.jdField_a_of_type_JavaLangString, this.mVideoInfo.jdField_d_of_type_JavaLangString, this.mStartPosition, this.mVideoInfo.jdField_d_of_type_Int);
+      this.mPlayer.a(paramHippyQQVideoView.a, this.mVideoInfo.b, this.mVideoInfo.i, this.mStartPosition, this.mVideoInfo.e);
     }
   }
   
@@ -474,7 +478,7 @@ public class HVideoDelegate
       localStringBuilder.append(paramJSONObject);
       QLog.d("VVideoControlListenerImpl", 2, localStringBuilder.toString());
     }
-    this.mPlayer.f();
+    this.mPlayer.h();
     open(paramHippyQQVideoView, paramJSONObject);
   }
   
@@ -527,12 +531,12 @@ public class HVideoDelegate
   
   public void stop(HippyQQVideoView paramHippyQQVideoView)
   {
-    this.mPlayer.f();
+    this.mPlayer.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.HVideoDelegate
  * JD-Core Version:    0.7.0.1
  */

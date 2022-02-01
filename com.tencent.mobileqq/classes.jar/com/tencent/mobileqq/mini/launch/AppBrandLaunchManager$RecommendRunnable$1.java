@@ -40,7 +40,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
     }
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      AppBrandLaunchManager.access$800(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$700(this.this$1));
+      AppBrandLaunchManager.access$900(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$800(this.this$1));
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getRecommendAppList suc : ");
       ((StringBuilder)localObject1).append(paramJSONObject.toString());
@@ -76,7 +76,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.RecommendRunnable.1
  * JD-Core Version:    0.7.0.1
  */

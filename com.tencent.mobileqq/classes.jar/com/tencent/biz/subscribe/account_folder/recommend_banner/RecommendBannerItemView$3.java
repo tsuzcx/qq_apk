@@ -7,7 +7,7 @@ class RecommendBannerItemView$3
 {
   public void run()
   {
-    QQToast.a(this.this$0.getContext(), this.a, 0).a();
+    QQToast.makeText(this.this$0.getContext(), this.a, 0).show();
   }
 }
 

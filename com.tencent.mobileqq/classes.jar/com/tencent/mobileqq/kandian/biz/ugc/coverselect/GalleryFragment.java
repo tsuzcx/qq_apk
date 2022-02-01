@@ -15,8 +15,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.kandian.base.imagecrop.GestureCropImageView;
 import com.tencent.mobileqq.kandian.base.imagecrop.UCropView;
+import com.tencent.mobileqq.kandian.base.utils.AlbumUtils.LocalMediaInfo;
 import com.tencent.mobileqq.kandian.base.view.widget.AlbumPermissionView;
-import com.tencent.mobileqq.kandian.biz.ugc.AlbumUtils.LocalMediaInfo;
 import com.tencent.mobileqq.kandian.biz.ugc.PageLoadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -28,19 +28,19 @@ public class GalleryFragment
   extends PublicBaseFragment
   implements LocalMediaGridAdapter.OnItemListener, QQPermissionCallback
 {
-  private int jdField_a_of_type_Int;
   protected Activity a;
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private UCropView jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView;
-  private AlbumPermissionView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView;
-  private PageLoadManager<AlbumUtils.LocalMediaInfo> jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager = new PageLoadManager();
-  private LocalMediaGridAdapter jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  private List<AlbumUtils.LocalMediaInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
+  private int b;
+  private int c;
+  private String d;
+  private UCropView e;
+  private View f;
+  private RecyclerView g;
+  private AlbumPermissionView h;
+  private View i;
+  private LocalMediaGridAdapter j;
+  private List<AlbumUtils.LocalMediaInfo> k = new ArrayList();
+  private GridLayoutManager l;
+  private PageLoadManager<AlbumUtils.LocalMediaInfo> m = new PageLoadManager();
   
   public static GalleryFragment a(int paramInt1, int paramInt2, String paramString)
   {
@@ -55,13 +55,13 @@ public class GalleryFragment
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView.a())
+    if (this.h.a())
     {
       d();
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView.setVisibility(0);
+    this.i.setVisibility(8);
+    this.h.setVisibility(0);
   }
   
   private void a(String paramString)
@@ -86,9 +86,9 @@ public class GalleryFragment
     if (localBundle == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("ARG_PLACEHOLDER_URL");
-    this.jdField_a_of_type_Int = localBundle.getInt("ARG_VIDEO_WIDTH");
-    this.jdField_b_of_type_Int = localBundle.getInt("ARG_VIDEO_HEIGHT");
+    this.d = localBundle.getString("ARG_PLACEHOLDER_URL");
+    this.b = localBundle.getInt("ARG_VIDEO_WIDTH");
+    this.c = localBundle.getInt("ARG_VIDEO_HEIGHT");
   }
   
   private void b(Bitmap paramBitmap)
@@ -101,54 +101,54 @@ public class GalleryFragment
   
   private void b(AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
-    a(paramLocalMediaInfo.b);
+    a(paramLocalMediaInfo.e);
   }
   
   private void c()
   {
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.d);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager.a();
+    this.m.a();
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView.a();
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0))
+    this.e.a();
+    if ((this.b != 0) && (this.c != 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView.a();
+      localObject = this.e.getCropImageView();
       ((GestureCropImageView)localObject).setMaxScale(2.0F);
       ((GestureCropImageView)localObject).setIsDoubleTapEnabled(false);
-      ((GestureCropImageView)localObject).setMaxResultImageSizeX(this.jdField_a_of_type_Int);
-      ((GestureCropImageView)localObject).setMaxResultImageSizeY(this.jdField_b_of_type_Int);
-      ((GestureCropImageView)localObject).setTargetAspectRatio(this.jdField_a_of_type_Int / this.jdField_b_of_type_Int);
+      ((GestureCropImageView)localObject).setMaxResultImageSizeX(this.b);
+      ((GestureCropImageView)localObject).setMaxResultImageSizeY(this.c);
+      ((GestureCropImageView)localObject).setTargetAspectRatio(this.b / this.c);
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setAspectRatio error mVideoWidth:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("mVideoHeight");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.c);
     QLog.e("RIJUGC.GalleryFragment", 1, ((StringBuilder)localObject).toString());
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager.a(paramInt);
+    this.m.a(paramInt);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter.a() >= 0) {
-      i = 1;
+    int n;
+    if (this.j.a() >= 0) {
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i == 0)) {
+    if ((TextUtils.isEmpty(this.d)) && (n == 0)) {
       b(paramBitmap);
     }
   }
@@ -161,18 +161,15 @@ public class GalleryFragment
   
   public void a(OutputPicListener paramOutputPicListener)
   {
-    UCropView localUCropView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView;
-    if ((localUCropView != null) && (localUCropView.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new GalleryFragment.3(this, paramOutputPicListener));
-    }
+    this.e.getCropImageView().a(Bitmap.CompressFormat.JPEG, 90, this.b, this.c, new GalleryFragment.3(this, paramOutputPicListener));
   }
   
   public boolean a(int paramInt, AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
-    if ((paramLocalMediaInfo.a() >= this.jdField_a_of_type_Int / 2.0F) && (paramLocalMediaInfo.b() >= this.jdField_b_of_type_Int / 2.0F)) {
+    if ((paramLocalMediaInfo.a() >= this.b / 2.0F) && (paramLocalMediaInfo.b() >= this.c / 2.0F)) {
       return true;
     }
-    Toast.makeText(this.jdField_a_of_type_AndroidAppActivity, 2131718060, 0).show();
+    Toast.makeText(this.a, 2131915537, 0).show();
     return false;
   }
   
@@ -182,8 +179,8 @@ public class GalleryFragment
   {
     if (paramInt == 10000)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView.setVisibility(8);
+      this.i.setVisibility(0);
+      this.h.setVisibility(8);
       d();
     }
   }
@@ -191,32 +188,32 @@ public class GalleryFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
     b();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPageLoadManager.a(new GalleryFragment.1(this));
+    this.m.a(new GalleryFragment.1(this));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559982, null);
+    return View.inflate(this.a, 2131626025, null);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131367439));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366219);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropUCropView = ((UCropView)paramView.findViewById(2131367436));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView = ((AlbumPermissionView)paramView.findViewById(2131362614));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370241);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetAlbumPermissionView.setCallback(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter = new LocalMediaGridAdapter(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter.a(this);
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter.getDataList();
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new GalleryFragment.2(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter);
+    this.g = ((RecyclerView)paramView.findViewById(2131433942));
+    this.f = paramView.findViewById(2131432507);
+    this.e = ((UCropView)paramView.findViewById(2131433939));
+    this.h = ((AlbumPermissionView)paramView.findViewById(2131428229));
+    this.i = paramView.findViewById(2131437435);
+    this.h.setCallback(this);
+    this.j = new LocalMediaGridAdapter(this.a);
+    this.j.a(this);
+    this.k = this.j.getDataList();
+    this.l = new GridLayoutManager(this.a, 4);
+    this.g.setLayoutManager(this.l);
+    this.g.addItemDecoration(new GalleryFragment.2(this));
+    this.g.setAdapter(this.j);
     e();
     c();
     a();
@@ -224,7 +221,7 @@ public class GalleryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.GalleryFragment
  * JD-Core Version:    0.7.0.1
  */

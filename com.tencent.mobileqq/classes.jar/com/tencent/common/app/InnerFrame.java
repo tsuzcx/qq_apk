@@ -14,9 +14,9 @@ import com.tencent.qphone.base.util.QLog;
 public class InnerFrame
   extends FrameLayout
 {
-  private Activity jdField_a_of_type_AndroidAppActivity = null;
-  private InnerFrameManager jdField_a_of_type_ComTencentCommonAppInnerFrameManager = null;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
+  private Activity a = null;
+  private InnerFrameManager b = null;
+  private BaseQQAppInterface c = null;
   
   public InnerFrame(Context paramContext)
   {
@@ -33,21 +33,6 @@ public class InnerFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public InnerFrameManager a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager;
-  }
-  
-  public BaseQQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  }
-  
   public void a()
   {
     if (QLog.isColorLevel()) {
@@ -59,7 +44,7 @@ public class InnerFrame
   
   public void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramIntent, paramInt);
+    this.a.startActivityForResult(paramIntent, paramInt);
   }
   
   public void a(Bundle paramBundle)
@@ -99,12 +84,27 @@ public class InnerFrame
   
   protected void e() {}
   
+  public Activity getActivity()
+  {
+    return this.a;
+  }
+  
+  public BaseQQAppInterface getAppIntf()
+  {
+    return this.c;
+  }
+  
+  public InnerFrameManager getInnerFrameManager()
+  {
+    return this.b;
+  }
+  
   public void setActivity(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
       QLog.d("InnerFrame", 2, "setActivity");
     }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public void setAppIntf(BaseQQAppInterface paramBaseQQAppInterface)
@@ -112,13 +112,13 @@ public class InnerFrame
     if (QLog.isColorLevel()) {
       QLog.d("InnerFrame", 2, "setAppIntf");
     }
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.c = paramBaseQQAppInterface;
     e();
   }
   
   public void setContentView(int paramInt)
   {
-    setContentView(LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(paramInt, this, false));
+    setContentView(LayoutInflater.from(this.a).inflate(paramInt, this, false));
   }
   
   public void setContentView(View paramView)
@@ -131,12 +131,12 @@ public class InnerFrame
   
   public void setInnerFrameManager(InnerFrameManager paramInnerFrameManager)
   {
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramInnerFrameManager;
+    this.b = paramInnerFrameManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.InnerFrame
  * JD-Core Version:    0.7.0.1
  */

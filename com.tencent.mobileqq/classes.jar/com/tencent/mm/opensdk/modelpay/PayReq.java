@@ -1,9 +1,9 @@
 package com.tencent.mm.opensdk.modelpay;
 
 import android.os.Bundle;
+import com.tencent.mm.opensdk.channel.a.a;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.a;
 
 public class PayReq
   extends BaseReq
@@ -79,17 +79,18 @@ public class PayReq
   public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
-    this.appId = a.b(paramBundle, "_wxapi_payreq_appid");
-    this.partnerId = a.b(paramBundle, "_wxapi_payreq_partnerid");
-    this.prepayId = a.b(paramBundle, "_wxapi_payreq_prepayid");
-    this.nonceStr = a.b(paramBundle, "_wxapi_payreq_noncestr");
-    this.timeStamp = a.b(paramBundle, "_wxapi_payreq_timestamp");
-    this.packageValue = a.b(paramBundle, "_wxapi_payreq_packagevalue");
-    this.sign = a.b(paramBundle, "_wxapi_payreq_sign");
-    this.extData = a.b(paramBundle, "_wxapi_payreq_extdata");
-    this.signType = a.b(paramBundle, "_wxapi_payreq_sign_type");
-    this.options = new PayReq.Options();
-    this.options.fromBundle(paramBundle);
+    this.appId = a.a(paramBundle, "_wxapi_payreq_appid");
+    this.partnerId = a.a(paramBundle, "_wxapi_payreq_partnerid");
+    this.prepayId = a.a(paramBundle, "_wxapi_payreq_prepayid");
+    this.nonceStr = a.a(paramBundle, "_wxapi_payreq_noncestr");
+    this.timeStamp = a.a(paramBundle, "_wxapi_payreq_timestamp");
+    this.packageValue = a.a(paramBundle, "_wxapi_payreq_packagevalue");
+    this.sign = a.a(paramBundle, "_wxapi_payreq_sign");
+    this.extData = a.a(paramBundle, "_wxapi_payreq_extdata");
+    this.signType = a.a(paramBundle, "_wxapi_payreq_sign_type");
+    PayReq.Options localOptions = new PayReq.Options();
+    this.options = localOptions;
+    localOptions.fromBundle(paramBundle);
   }
   
   public int getType()
@@ -117,7 +118,7 @@ public class PayReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelpay.PayReq
  * JD-Core Version:    0.7.0.1
  */

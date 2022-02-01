@@ -10,12 +10,12 @@ class SpringFestivalEntryManager$16
   public void run()
   {
     QLog.d("shua2021_SpringFestivalEntryManager", 1, "refreshScheduleTask ...");
-    SpringFestivalEntryManager.e(this.this$0);
+    SpringFestivalEntryManager.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.16
  * JD-Core Version:    0.7.0.1
  */

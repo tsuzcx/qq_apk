@@ -12,17 +12,17 @@ import mqq.app.AppRuntime;
 public class QQPimPluginLoadRunnable
   implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
-  private QQPimPluginLoadRunnable.IPluginLoadListener jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
-  private boolean jdField_a_of_type_Boolean;
+  private QQPimPluginLoadRunnable.IPluginLoadListener a;
+  private IPluginManager b;
+  private long c;
+  private boolean d;
   
   public QQPimPluginLoadRunnable(QQPimPluginLoadRunnable.IPluginLoadListener paramIPluginLoadListener)
   {
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener = paramIPluginLoadListener;
+    this.a = paramIPluginLoadListener;
   }
   
-  private QQAppInterface a()
+  private QQAppInterface b()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
@@ -33,23 +33,23 @@ public class QQPimPluginLoadRunnable
   
   public void a()
   {
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener = null;
-    this.jdField_a_of_type_Boolean = true;
+    this.a = null;
+    this.d = true;
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Object localObject1 = a();
+    this.c = System.currentTimeMillis();
+    Object localObject1 = b();
     if (localObject1 == null) {
       return;
     }
-    this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_PLUGIN));
-    Object localObject2 = this.jdField_a_of_type_CooperationPluginIPluginManager;
+    this.b = ((IPluginManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_PLUGIN));
+    Object localObject2 = this.b;
     if (localObject2 == null) {
       return;
     }
-    localObject2 = ((IPluginManager)localObject2).a("qqpim_plugin.apk");
+    localObject2 = ((IPluginManager)localObject2).d("qqpim_plugin.apk");
     if (localObject2 != null) {
       if (((PluginBaseInfo)localObject2).mState == 4)
       {
@@ -57,7 +57,7 @@ public class QQPimPluginLoadRunnable
           QLog.i(QQPimDefineList.a, 1, "onPluginManagerLoaded has installed");
         }
         ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8006716", "0X8006716", 0, 0, "", "", "", "");
-        localObject2 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+        localObject2 = this.a;
         if (localObject2 != null) {
           ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject2).a();
         }
@@ -68,34 +68,34 @@ public class QQPimPluginLoadRunnable
           QLog.i(QQPimDefineList.a, 1, "onPluginManagerLoaded start down or install...");
         }
         ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8006717", "0X8006717", 0, 0, "", "", "", "");
-        this.jdField_a_of_type_CooperationPluginIPluginManager.d("qqpim_plugin.apk");
-        localObject2 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+        this.b.e("qqpim_plugin.apk");
+        localObject2 = this.a;
         if (localObject2 != null) {
           ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject2).b();
         }
       }
     }
-    while (!this.jdField_a_of_type_Boolean) {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L)
+    while (!this.d) {
+      if (System.currentTimeMillis() - this.c > 30000L)
       {
-        ReportController.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-        localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+        ReportController.b(b(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+        localObject1 = this.a;
         if (localObject1 != null) {
           ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a(-5);
         }
       }
       else
       {
-        localObject2 = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqpim_plugin.apk");
+        localObject2 = this.b.d("qqpim_plugin.apk");
         if (localObject2 == null)
         {
           if (QLog.isDevelopLevel()) {
             QLog.d(QQPimDefineList.a, 4, "null == pluginInfo");
           }
-          if (this.jdField_a_of_type_CooperationPluginIPluginManager.isReady())
+          if (this.b.isReady())
           {
-            ReportController.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-            localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+            ReportController.b(b(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+            localObject1 = this.a;
             if (localObject1 != null) {
               ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a(-1);
             }
@@ -117,7 +117,7 @@ public class QQPimPluginLoadRunnable
           if (((PluginBaseInfo)localObject2).mState == 4)
           {
             ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8006718", "0X8006718", 0, 0, "", "", "", "");
-            localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+            localObject1 = this.a;
             if (localObject1 != null) {
               ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a();
             }
@@ -126,18 +126,18 @@ public class QQPimPluginLoadRunnable
           {
             if (((PluginBaseInfo)localObject2).mState == 0)
             {
-              this.jdField_a_of_type_CooperationPluginIPluginManager.d("qqpim_plugin.apk");
+              this.b.e("qqpim_plugin.apk");
             }
             else if (((PluginBaseInfo)localObject2).mState == 3)
             {
-              localObject3 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              localObject3 = this.a;
               if (localObject3 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject3).a(((PluginBaseInfo)localObject2).mDownloadProgress);
               }
             }
             else if (((PluginBaseInfo)localObject2).mState == 1)
             {
-              localObject3 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              localObject3 = this.a;
               if (localObject3 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject3).a(((PluginBaseInfo)localObject2).mDownloadProgress);
               }
@@ -147,7 +147,7 @@ public class QQPimPluginLoadRunnable
               if (((PluginBaseInfo)localObject2).mState != 2) {
                 break label572;
               }
-              localObject3 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              localObject3 = this.a;
               if (localObject3 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject3).a(((PluginBaseInfo)localObject2).mDownloadProgress);
               }
@@ -164,24 +164,24 @@ public class QQPimPluginLoadRunnable
             label572:
             if (localInterruptedException.mState == -1)
             {
-              ReportController.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-              localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              ReportController.b(b(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+              localObject1 = this.a;
               if (localObject1 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a(-6);
               }
             }
             else if (localInterruptedException.mState == -2)
             {
-              ReportController.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-              localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              ReportController.b(b(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+              localObject1 = this.a;
               if (localObject1 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a(-3);
               }
             }
             else
             {
-              ReportController.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-              localObject1 = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener;
+              ReportController.b(b(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+              localObject1 = this.a;
               if (localObject1 != null) {
                 ((QQPimPluginLoadRunnable.IPluginLoadListener)localObject1).a(-2);
               }
@@ -194,7 +194,7 @@ public class QQPimPluginLoadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginLoadRunnable
  * JD-Core Version:    0.7.0.1
  */

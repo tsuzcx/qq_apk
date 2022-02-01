@@ -14,13 +14,13 @@ public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
-  protected AdapterView.OnItemClickListener a;
-  protected ViewPager.OnPageChangeListener a;
-  protected absMultiViewPager.OnPagerSizeChangeListener a;
-  protected absMultiViewPager.ViewPagerAdapter a;
-  protected ArrayList<Object> a;
-  protected ArrayList<View> b = new ArrayList();
-  protected int d;
+  protected ArrayList<Object> f = new ArrayList();
+  protected ArrayList<View> g = new ArrayList();
+  protected absMultiViewPager.ViewPagerAdapter h;
+  protected AdapterView.OnItemClickListener i;
+  protected int j;
+  protected absMultiViewPager.OnPagerSizeChangeListener k;
+  protected ViewPager.OnPageChangeListener l;
   
   public absMultiViewPager(Context paramContext)
   {
@@ -30,7 +30,6 @@ public abstract class absMultiViewPager
   public absMultiViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public static ArrayList<Object> a(ArrayList<Object> paramArrayList, int paramInt1, int paramInt2)
@@ -59,47 +58,47 @@ public abstract class absMultiViewPager
     }
   }
   
-  public abstract int a();
-  
-  public abstract View a(int paramInt);
-  
   protected void a(int paramInt1, int paramInt2)
   {
-    absMultiViewPager.OnPagerSizeChangeListener localOnPagerSizeChangeListener = this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$OnPagerSizeChangeListener;
+    absMultiViewPager.OnPagerSizeChangeListener localOnPagerSizeChangeListener = this.k;
     if (localOnPagerSizeChangeListener != null) {
       localOnPagerSizeChangeListener.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
+  public abstract View b(int paramInt);
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter = new absMultiViewPager.ViewPagerAdapter();
-    setAdapter(this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter);
-    this.b.clear();
-    int j = a();
-    int i = this.d;
-    if (i != j)
+    this.h = new absMultiViewPager.ViewPagerAdapter();
+    setAdapter(this.h);
+    this.g.clear();
+    int n = getViewPagerCount();
+    int m = this.j;
+    if (m != n)
     {
-      a(i, j);
-      this.d = j;
+      a(m, n);
+      this.j = n;
     }
-    i = 0;
-    while (i < j)
+    m = 0;
+    while (m < n)
     {
-      this.b.add(a(i));
-      i += 1;
+      this.g.add(b(m));
+      m += 1;
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter.a(this.b);
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$ViewPagerAdapter.notifyDataSetChanged();
-    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    this.h.a(this.g);
+    this.h.notifyDataSetChanged();
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.l;
     if (localOnPageChangeListener != null) {
       localOnPageChangeListener.onPageSelected(0);
     }
   }
   
+  public abstract int getViewPagerCount();
+  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AdapterView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
+    AdapterView.OnItemClickListener localOnItemClickListener = this.i;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
@@ -108,29 +107,29 @@ public abstract class absMultiViewPager
   
   public void setData(ArrayList<Object> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.f = paramArrayList;
     b();
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.i = paramOnItemClickListener;
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.l = paramOnPageChangeListener;
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
   public void setOnPagerSizeChangeListener(absMultiViewPager.OnPagerSizeChangeListener paramOnPagerSizeChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftAbsMultiViewPager$OnPagerSizeChangeListener = paramOnPagerSizeChangeListener;
+    this.k = paramOnPagerSizeChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

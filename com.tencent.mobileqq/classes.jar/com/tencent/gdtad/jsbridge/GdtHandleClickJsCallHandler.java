@@ -29,25 +29,25 @@ class GdtHandleClickJsCallHandler
       try
       {
         GdtLog.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
-        localParams.c = 7;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        localParams.b = new WeakReference(paramGdtAdWebPlugin.a());
-        localParams.jdField_a_of_type_JavaLangClass = GdtBaseHalfScreenFragmentForJs.class;
+        localParams.q = 7;
+        localParams.r = new WeakReference(localActivity);
+        localParams.s = new WeakReference(paramGdtAdWebPlugin.c());
+        localParams.t = GdtBaseHalfScreenFragmentForJs.class;
         paramVarArgs = paramGdtAdWebPlugin.a().getIntent();
         if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key"))) {
           paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
         } else {
           paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
         }
-        localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+        localParams.p = new Bundle();
+        localParams.p.putString("big_brother_ref_source_key", paramVarArgs);
         GdtHandler.a(localParams);
         paramGdtAdWebPlugin.callJs(paramString, null);
         paramString = localObject;
         if (paramGdtAdWebPlugin != null) {
-          paramString = paramGdtAdWebPlugin.a();
+          paramString = paramGdtAdWebPlugin.b();
         }
-        AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+        AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.a);
         return true;
       }
       catch (Throwable paramGdtAdWebPlugin)
@@ -62,7 +62,7 @@ class GdtHandleClickJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtHandleClickJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

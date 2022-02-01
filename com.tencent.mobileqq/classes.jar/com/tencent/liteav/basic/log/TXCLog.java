@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -36,6 +36,15 @@ public class TXCLog
     mListener = null;
     mLogLevel = 0;
     mEnableConsole = true;
+  }
+  
+  public static void copyLogFile()
+  {
+    if (mHasInit)
+    {
+      Log.i("TXCLog", "TXCLog copyLogFile");
+      nativeLogOpen(0, mLogDir, mLogCacheDir, "LiteAV", mEnableCompress);
+    }
   }
   
   public static void d(String paramString1, String paramString2)
@@ -94,7 +103,7 @@ public class TXCLog
       if (mHasInit) {
         return true;
       }
-      boolean bool = f.f();
+      boolean bool = h.f();
       Object localObject2 = TXCCommonUtil.getAppContext();
       if ((bool) && (localObject2 != null))
       {
@@ -105,13 +114,13 @@ public class TXCLog
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(((File)localObject4).getAbsolutePath());
-            localStringBuilder.append("/log/tencent/liteav");
+            localStringBuilder.append("/log/liteav");
             mLogDir = localStringBuilder.toString();
           }
         }
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append(((Context)localObject2).getFilesDir().getAbsolutePath());
-        ((StringBuilder)localObject4).append("/log/tencent/liteav");
+        ((StringBuilder)localObject4).append("/log/liteav");
         mLogCacheDir = ((StringBuilder)localObject4).toString();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("TXCLog init log file path : ");
@@ -255,7 +264,7 @@ public class TXCLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.log.TXCLog
  * JD-Core Version:    0.7.0.1
  */

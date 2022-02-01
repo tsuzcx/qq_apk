@@ -17,7 +17,7 @@ final class ThemeFontAdapter$1
     if (paramBoolean1)
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
-      paramBoolean1 = SimpleUIUtil.a();
+      paramBoolean1 = SimpleUIUtil.e();
       paramInt = 0;
       Object localObject2;
       if (paramBoolean1)
@@ -31,7 +31,7 @@ final class ThemeFontAdapter$1
       }
       else
       {
-        localObject1 = ThemeFontAdapter.a((Context)localObject1);
+        localObject1 = ThemeFontAdapter.b((Context)localObject1);
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject2 = FileManagerUtil.a((String)localObject1).split("\\.");
@@ -41,7 +41,7 @@ final class ThemeFontAdapter$1
             if (localObject2.length > 2) {
               paramInt = Integer.parseInt(localObject2[1]);
             }
-            ThemeFontAdapter.b(i, paramInt);
+            ThemeFontAdapter.c(i, paramInt);
             return;
           }
           catch (NumberFormatException localNumberFormatException)
@@ -59,7 +59,7 @@ final class ThemeFontAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.ThemeFontAdapter.1
  * JD-Core Version:    0.7.0.1
  */

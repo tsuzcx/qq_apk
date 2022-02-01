@@ -9,14 +9,14 @@ class LebaQzoneAndPluginPart$8$6
   
   public void run()
   {
-    if (this.a.this$0.a != null) {
-      this.a.this$0.a.d();
+    if (this.a.this$0.y != null) {
+      this.a.this$0.y.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.6
  * JD-Core Version:    0.7.0.1
  */

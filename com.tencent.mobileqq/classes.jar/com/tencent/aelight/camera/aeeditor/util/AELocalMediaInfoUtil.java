@@ -9,8 +9,8 @@ import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.tavcut.bean.Size;
-import com.tencent.tavcut.util.BitmapUtil;
+import com.tencent.qcircle.tavcut.bean.Size;
+import com.tencent.qcircle.tavcut.util.BitmapUtil;
 import java.io.File;
 import java.util.ArrayList;
 import javax.annotation.Nonnull;
@@ -77,7 +77,7 @@ public class AELocalMediaInfoUtil
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
     try
     {
-      if ((!StringUtil.a(paramString2)) && ((paramString1 == null) || (!paramString1.startsWith("multi_video_"))))
+      if ((!StringUtil.isEmpty(paramString2)) && ((paramString1 == null) || (!paramString1.startsWith("multi_video_"))))
       {
         localMediaMetadataRetriever1.setDataSource(paramString2);
         i = Integer.parseInt(localMediaMetadataRetriever1.extractMetadata(19));
@@ -86,7 +86,7 @@ public class AELocalMediaInfoUtil
         localLocalMediaInfo.mediaOriginHeight = i;
         localLocalMediaInfo.mediaOriginWidth = j;
         localLocalMediaInfo.mediaOriginBitrate = l;
-        localLocalMediaInfo.mediaOriginSize = FileUtil.a(paramString2);
+        localLocalMediaInfo.mediaOriginSize = FileUtil.f(paramString2);
       }
       localMediaMetadataRetriever2.setDataSource(paramString3);
       int i = Integer.parseInt(localMediaMetadataRetriever2.extractMetadata(19));
@@ -165,9 +165,9 @@ public class AELocalMediaInfoUtil
       localLocalMediaInfo.thumbHeight = 0;
       localLocalMediaInfo.thumbWidth = 0;
     }
-    if (!StringUtil.a(paramString1))
+    if (!StringUtil.isEmpty(paramString1))
     {
-      localLocalMediaInfo.mediaOriginSize = FileUtil.a(paramString1);
+      localLocalMediaInfo.mediaOriginSize = FileUtil.f(paramString1);
       localObject = new MediaMetadataRetriever();
       ((MediaMetadataRetriever)localObject).setDataSource(paramString1);
       localLocalMediaInfo.mediaOriginBitrate = Long.valueOf(((MediaMetadataRetriever)localObject).extractMetadata(20)).longValue();
@@ -200,7 +200,7 @@ public class AELocalMediaInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.util.AELocalMediaInfoUtil
  * JD-Core Version:    0.7.0.1
  */

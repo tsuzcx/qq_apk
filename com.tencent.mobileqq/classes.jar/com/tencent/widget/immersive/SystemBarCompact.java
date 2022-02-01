@@ -79,7 +79,7 @@ public class SystemBarCompact
   {
     if (ImmersiveUtils.supportStatusBarDarkMode())
     {
-      if (!QQTheme.b()) {
+      if (!QQTheme.isDefaultOrDIYTheme()) {
         paramBoolean = false;
       }
       ImmersiveUtils.setStatusBarDarkMode(this.mWindow, paramBoolean);
@@ -147,7 +147,7 @@ public class SystemBarCompact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.immersive.SystemBarCompact
  * JD-Core Version:    0.7.0.1
  */

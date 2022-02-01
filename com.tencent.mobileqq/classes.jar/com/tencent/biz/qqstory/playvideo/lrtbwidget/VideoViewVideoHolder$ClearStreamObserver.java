@@ -12,33 +12,33 @@ class VideoViewVideoHolder$ClearStreamObserver<T>
   public void onCancel()
   {
     super.onCancel();
-    SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
+    SLog.d(this.b.a, "stream : [%s]  CANCEL", new Object[] { this.b.o });
     VideoViewVideoHolder localVideoViewVideoHolder = this.b;
-    localVideoViewVideoHolder.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    localVideoViewVideoHolder.b = null;
+    localVideoViewVideoHolder.n = null;
+    localVideoViewVideoHolder.o = null;
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
+    SLog.d(this.b.a, "stream : [%s]  ERROR", new Object[] { this.b.o });
     paramError = this.b;
-    paramError.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    paramError.b = null;
+    paramError.n = null;
+    paramError.o = null;
   }
   
   public void onNext(T paramT)
   {
     super.onNext(paramT);
-    SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
+    SLog.d(this.b.a, "stream : [%s] DONE", new Object[] { this.b.o });
     paramT = this.b;
-    paramT.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    paramT.b = null;
+    paramT.n = null;
+    paramT.o = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.ClearStreamObserver
  * JD-Core Version:    0.7.0.1
  */

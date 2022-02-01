@@ -15,7 +15,7 @@ final class AVGameUtilService$1
     if (QLog.isColorLevel()) {
       QLog.i("AVGameUtilService", 2, "restartProcessForPk start Activity");
     }
-    RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, "/business/avgame/avgameactivity");
+    RouteUtils.a(this.a, this.b, "/business/avgame/avgameactivity");
   }
 }
 

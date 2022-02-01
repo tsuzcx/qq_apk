@@ -164,7 +164,7 @@ public abstract class QQSysAndEmojiResInfo
       if (this.mDefault == null) {
         try
         {
-          this.mDefault = BaseApplication.getContext().getResources().getDrawable(2130837978);
+          this.mDefault = BaseApplication.getContext().getResources().getDrawable(2130838002);
         }
         catch (Exception paramDrawable)
         {
@@ -243,7 +243,7 @@ public abstract class QQSysAndEmojiResInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo
  * JD-Core Version:    0.7.0.1
  */

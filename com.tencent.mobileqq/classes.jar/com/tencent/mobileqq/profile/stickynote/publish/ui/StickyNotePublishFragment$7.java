@@ -15,14 +15,14 @@ class StickyNotePublishFragment$7
   {
     this.a.a(0);
     this.a.b(false);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130844810);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getBaseActivity().getString(2131690246));
+    StickyNotePublishFragment.g(this.a).setImageResource(2130846244);
+    StickyNotePublishFragment.g(this.a).setContentDescription(this.a.getBaseActivity().getString(2131887157));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.7
  * JD-Core Version:    0.7.0.1
  */

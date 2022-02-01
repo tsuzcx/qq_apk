@@ -21,23 +21,23 @@ public final class FooterItemHolder
   public ViewGroup a;
   @JvmField
   @NotNull
-  public ProgressBar a;
+  public ProgressBar b;
   @JvmField
   @NotNull
-  public TextView a;
+  public TextView c;
   
   public FooterItemHolder(@NotNull View paramView, int paramInt)
   {
     super(paramView, paramInt);
-    View localView = paramView.findViewById(2131370381);
+    View localView = paramView.findViewById(2131437648);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.loading_layout)");
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
-    localView = paramView.findViewById(2131370393);
+    this.a = ((ViewGroup)localView);
+    localView = paramView.findViewById(2131437660);
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.loading_textview)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    paramView = paramView.findViewById(2131370387);
+    this.c = ((TextView)localView);
+    paramView = paramView.findViewById(2131437654);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.loading_progress)");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView);
+    this.b = ((ProgressBar)paramView);
   }
   
   public void a(@NotNull IVideoFeedsAdapter paramIVideoFeedsAdapter, @NotNull LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
@@ -48,7 +48,7 @@ public final class FooterItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.videofeeds.FooterItemHolder
  * JD-Core Version:    0.7.0.1
  */

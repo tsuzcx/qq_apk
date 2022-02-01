@@ -18,7 +18,7 @@ public class SubImageLoader
   public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846843);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848395);
     if (paramURLImageView.getLayoutParams() != null)
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
@@ -80,7 +80,7 @@ public class SubImageLoader
   public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841698);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130842613);
     if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;

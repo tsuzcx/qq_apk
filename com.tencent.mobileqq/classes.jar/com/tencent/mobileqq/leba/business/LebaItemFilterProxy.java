@@ -7,36 +7,29 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
 
 public class LebaItemFilterProxy
 {
   @ConfigInject(configPath="Business/qqleba-impl/src/main/resources/Inject_LebaBusiness.yml", version=1)
-  public static ArrayList<Class<? extends ILebaItemFilter>> a;
-  public List<ILebaItemFilter> a;
+  public static ArrayList<Class<? extends ILebaItemFilter>> a = new ArrayList();
+  public List<ILebaItemFilter> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(LebaSpecificPluginFilter.class);
-  }
-  
-  public LebaItemFilterProxy()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a.add(LebaSpecificPluginFilter.class);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (this.b.isEmpty())
     {
-      Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject = a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         Class localClass = (Class)((Iterator)localObject).next();
         try
         {
-          this.jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
+          this.b.add(localClass.newInstance());
         }
         catch (Exception localException)
         {
@@ -45,27 +38,16 @@ public class LebaItemFilterProxy
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("initFilterList size = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.b.size());
       QLog.i("LebaItemFilterProxy", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public boolean a(LebaViewItem paramLebaViewItem)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       if (((ILebaItemFilter)localIterator.next()).a(paramLebaViewItem)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, StringBuffer paramStringBuffer, LebaViewItem paramLebaViewItem)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((ILebaItemFilter)localIterator.next()).a(paramAppRuntime, paramStringBuffer, paramLebaViewItem)) {
         return true;
       }
     }
@@ -74,7 +56,7 @@ public class LebaItemFilterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.LebaItemFilterProxy
  * JD-Core Version:    0.7.0.1
  */

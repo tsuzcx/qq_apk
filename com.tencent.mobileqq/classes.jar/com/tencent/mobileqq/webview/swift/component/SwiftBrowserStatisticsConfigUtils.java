@@ -12,9 +12,9 @@ public class SwiftBrowserStatisticsConfigUtils
     ArrayList localArrayList = new ArrayList();
     try
     {
-      Object localObject = (WVStatisticsConfBean)QConfigManager.a().a(361);
-      if ((localObject != null) && (!TextUtils.isEmpty(((WVStatisticsConfBean)localObject).d))) {
-        localObject = ((WVStatisticsConfBean)localObject).d;
+      Object localObject = (WVStatisticsConfBean)QConfigManager.b().b(361);
+      if ((localObject != null) && (!TextUtils.isEmpty(((WVStatisticsConfBean)localObject).g))) {
+        localObject = ((WVStatisticsConfBean)localObject).g;
       } else {
         localObject = "QQ";
       }
@@ -34,7 +34,7 @@ public class SwiftBrowserStatisticsConfigUtils
   
   public static final boolean a(int paramInt, boolean paramBoolean)
   {
-    WVStatisticsConfBean localWVStatisticsConfBean = (WVStatisticsConfBean)QConfigManager.a().a(361);
+    WVStatisticsConfBean localWVStatisticsConfBean = (WVStatisticsConfBean)QConfigManager.b().b(361);
     boolean bool = paramBoolean;
     if (localWVStatisticsConfBean != null)
     {
@@ -45,32 +45,32 @@ public class SwiftBrowserStatisticsConfigUtils
           if (paramInt != 3) {
             return paramBoolean;
           }
-          return localWVStatisticsConfBean.jdField_c_of_type_Boolean;
+          return localWVStatisticsConfBean.c;
         }
-        return localWVStatisticsConfBean.jdField_b_of_type_Boolean;
+        return localWVStatisticsConfBean.b;
       }
-      bool = localWVStatisticsConfBean.jdField_a_of_type_Boolean;
+      bool = localWVStatisticsConfBean.a;
     }
     return bool;
   }
   
   public static final boolean b(int paramInt, boolean paramBoolean)
   {
-    WVStatisticsConfBean localWVStatisticsConfBean = (WVStatisticsConfBean)QConfigManager.a().a(361);
+    WVStatisticsConfBean localWVStatisticsConfBean = (WVStatisticsConfBean)QConfigManager.b().b(361);
     if (localWVStatisticsConfBean != null) {
       if (paramInt != 1)
       {
         if (paramInt != 2)
         {
-          if ((paramInt == 4) && (Math.random() < Float.valueOf(localWVStatisticsConfBean.jdField_c_of_type_JavaLangString).floatValue())) {
+          if ((paramInt == 4) && (Math.random() < Float.valueOf(localWVStatisticsConfBean.f).floatValue())) {
             return true;
           }
         }
-        else if (Math.random() < Float.valueOf(localWVStatisticsConfBean.jdField_b_of_type_JavaLangString).floatValue()) {
+        else if (Math.random() < Float.valueOf(localWVStatisticsConfBean.e).floatValue()) {
           return true;
         }
       }
-      else if (Math.random() < Float.valueOf(localWVStatisticsConfBean.jdField_a_of_type_JavaLangString).floatValue()) {
+      else if (Math.random() < Float.valueOf(localWVStatisticsConfBean.d).floatValue()) {
         return true;
       }
     }
@@ -79,7 +79,7 @@ public class SwiftBrowserStatisticsConfigUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatisticsConfigUtils
  * JD-Core Version:    0.7.0.1
  */

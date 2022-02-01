@@ -3,6 +3,7 @@ package mqq.app;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
@@ -49,18 +50,16 @@ class MobileQQ$5
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("createNewRuntime, canAutoOK: ");
       ((StringBuilder)localObject2).append(bool);
-      QLog.d("MobileQQ", 1, ((StringBuilder)localObject2).toString());
-    }
-    else if (this.val$account != null)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("CNR account != null and account.isLogined =");
-      ((StringBuilder)localObject2).append(this.val$account.isLogined());
-      QLog.d("MobileQQ", 1, ((StringBuilder)localObject2).toString());
+      QLog.d("MobileQQ", 1, new Object[] { ((StringBuilder)localObject2).toString(), " uin : ", MsfSdkUtils.getShortUin(this.val$account.getUin()) });
     }
     else
     {
-      QLog.d("MobileQQ", 1, "CNR account == null");
+      localObject2 = this.val$account;
+      if (localObject2 != null) {
+        QLog.d("MobileQQ", 1, new Object[] { "CNR account != null and account.isLogined =", Boolean.valueOf(((SimpleAccount)localObject2).isLogined()), " uin : ", MsfSdkUtils.getShortUin(this.val$account.getUin()) });
+      } else {
+        QLog.d("MobileQQ", 1, "CNR account == null");
+      }
     }
     MobileQQ.access$802(this.this$0, ((AppRuntime)localObject1).isLogin());
     if (((AppRuntime)localObject1).isLogin())
@@ -145,7 +144,7 @@ class MobileQQ$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.app.MobileQQ.5
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ class SpriteBridge$1
   {
     if (SpriteBridge.a(this.this$0) != null)
     {
-      if (SpriteBridge.a(this.this$0).a()) {
-        this.a.j = 1;
+      if (SpriteBridge.a(this.this$0).c()) {
+        this.a.p = 1;
       }
       SpriteTaskParam localSpriteTaskParam = this.a;
       SpriteBridge localSpriteBridge = this.this$0;
-      localSpriteTaskParam.a = localSpriteBridge;
-      SpriteBridge.a(localSpriteBridge).a(this.a);
+      localSpriteTaskParam.u = localSpriteBridge;
+      SpriteBridge.a(localSpriteBridge).b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBridge.1
  * JD-Core Version:    0.7.0.1
  */

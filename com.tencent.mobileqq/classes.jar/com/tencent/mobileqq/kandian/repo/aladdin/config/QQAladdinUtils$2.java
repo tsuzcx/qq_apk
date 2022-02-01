@@ -8,7 +8,7 @@ final class QQAladdinUtils$2
 {
   public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    return RIJSPUtils.a(paramString, paramT, paramBoolean);
+    return RIJSPUtils.d(paramString, paramT, paramBoolean);
   }
   
   public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
@@ -18,7 +18,7 @@ final class QQAladdinUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.config.QQAladdinUtils.2
  * JD-Core Version:    0.7.0.1
  */

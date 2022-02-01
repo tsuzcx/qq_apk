@@ -17,36 +17,12 @@ import java.util.TimerTask;
 public class VasADBannerCountDownManager
   extends VasADBannerManager
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VasADBannerCountDownInfo jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownInfo;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private TextView b;
-  private TextView c;
-  
-  private Drawable a(String paramString)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(ViewUtils.b(20.0F));
-    localGradientDrawable.setColor(a(paramString));
-    return localGradientDrawable;
-  }
-  
-  private String a()
-  {
-    Object localObject = this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownInfo;
-    if (localObject == null) {
-      return "";
-    }
-    localObject = ((VasADBannerCountDownInfo)localObject).a();
-    if (localObject == null) {
-      return "";
-    }
-    if (((CountDownData)localObject).a != 1) {
-      return ((CountDownData)localObject).f;
-    }
-    return a(((CountDownData)localObject).b, ((CountDownData)localObject).c);
-  }
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private Timer h;
+  private TimerTask i;
+  private VasADBannerCountDownInfo j;
   
   private String a(int paramInt1, int paramInt2)
   {
@@ -102,57 +78,70 @@ public class VasADBannerCountDownManager
     return ((StringBuilder)localObject3).toString();
   }
   
-  private void a(String paramString)
+  private void c(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      this.c.setVisibility(8);
+      this.g.setVisibility(8);
       return;
     }
-    this.c.setVisibility(0);
-    this.c.setText(paramString);
+    this.g.setVisibility(0);
+    this.g.setText(paramString);
   }
   
-  private void h()
+  private Drawable d(String paramString)
   {
-    i();
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new VasADBannerCountDownManager.2(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 1000L);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(20.0F));
+    localGradientDrawable.setColor(a(paramString));
+    return localGradientDrawable;
   }
   
-  private void i()
+  private void m()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilTimerTask;
+    n();
+    this.h = new Timer();
+    this.i = new VasADBannerCountDownManager.2(this);
+    this.h.schedule(this.i, 0L, 1000L);
+  }
+  
+  private void n()
+  {
+    Object localObject = this.i;
     if (localObject != null) {
       ((TimerTask)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_JavaUtilTimer;
+    localObject = this.h;
     if (localObject != null) {
       ((Timer)localObject).cancel();
     }
-    this.jdField_a_of_type_JavaUtilTimer = null;
-    this.jdField_a_of_type_JavaUtilTimerTask = null;
+    this.h = null;
+    this.i = null;
   }
   
-  protected int a()
+  private String o()
   {
-    return 2131561931;
+    Object localObject = this.j;
+    if (localObject == null) {
+      return "";
+    }
+    localObject = ((VasADBannerCountDownInfo)localObject).f();
+    if (localObject == null) {
+      return "";
+    }
+    if (((CountDownData)localObject).a != 1) {
+      return ((CountDownData)localObject).i;
+    }
+    return a(((CountDownData)localObject).b, ((CountDownData)localObject).c);
   }
   
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379767));
-    this.b = ((TextView)localView.findViewById(2131379870));
-    this.c = ((TextView)localView.findViewById(2131379541));
+    this.e = ((TextView)localView.findViewById(2131448576));
+    this.f = ((TextView)localView.findViewById(2131448728));
+    this.g = ((TextView)localView.findViewById(2131448293));
     return localView;
-  }
-  
-  public void a()
-  {
-    super.a();
-    i();
   }
   
   protected void a(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -161,15 +150,26 @@ public class VasADBannerCountDownManager
     ThreadManagerV2.getUIHandlerV2().post(new VasADBannerCountDownManager.1(this, paramVasADBannerConfigInfo));
   }
   
-  public void b()
+  protected int b()
   {
-    super.b();
-    i();
+    return 2131628355;
+  }
+  
+  public void c()
+  {
+    super.c();
+    n();
+  }
+  
+  public void d()
+  {
+    super.d();
+    n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerCountDownManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class BaseGuessClickStageView$1
   
   public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.b != null) {
+      this.a.b.a();
     }
   }
 }

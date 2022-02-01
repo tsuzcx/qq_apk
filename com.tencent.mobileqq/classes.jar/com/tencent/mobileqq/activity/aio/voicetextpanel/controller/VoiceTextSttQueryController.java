@@ -24,32 +24,17 @@ import mqq.app.AppRuntime;
 
 public class VoiceTextSttQueryController
 {
-  private int jdField_a_of_type_Int;
-  private VoiceTextSttListener jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextSttListener;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new VoiceTextSttQueryController.1(this);
-  private ITransFileController jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private SttResultBean[] jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioVoicetextpanelModelSttResultBean;
-  private String b;
-  
-  private List<WXVadSeg> a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEdtiController", 2, "vadHelper  vad start");
-    }
-    VadHelper localVadHelper = new VadHelper();
-    localVadHelper.d();
-    List localList = localVadHelper.a(this.b);
-    localVadHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEdtiController", 2, "vadHelper  vad start");
-    }
-    return localList;
-  }
+  private String a;
+  private int b;
+  private AppRuntime c;
+  private String d;
+  private ITransFileController e;
+  private AtomicInteger f = new AtomicInteger();
+  private AtomicBoolean g = new AtomicBoolean(false);
+  private SttResultBean[] h;
+  private VoiceTextSttListener i;
+  private List<Long> j = new ArrayList();
+  private TransProcessorHandler k = new VoiceTextSttQueryController.1(this);
   
   private void a(String paramString, List<WXVadSeg> paramList)
   {
@@ -65,79 +50,70 @@ public class VoiceTextSttQueryController
         ((StringBuilder)localObject).append("vadHelper size=");
         ((StringBuilder)localObject).append(paramList.size());
         ((StringBuilder)localObject).append(" unFinishSegSize=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((StringBuilder)localObject).append(this.f.get());
         ((StringBuilder)localObject).append(" isSttFinish=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+        ((StringBuilder)localObject).append(this.g.get());
         QLog.d("VoiceTextEdtiController", 2, ((StringBuilder)localObject).toString());
       }
-      int i = 0;
-      while (i < paramList.size())
+      int m = 0;
+      while (m < paramList.size())
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController = ((ITransFileController)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITransFileController.class, ""));
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+        this.e = ((ITransFileController)this.c.getRuntimeService(ITransFileController.class, ""));
+        this.e.addHandle(this.k);
         localObject = new TransferRequest();
         ((TransferRequest)localObject).mIsUp = true;
         ((TransferRequest)localObject).mCommandId = 68;
         ((TransferRequest)localObject).mLocalPath = paramString;
         ((TransferRequest)localObject).mUniseq = ((Math.random() * 1000000.0D));
-        ((TransferRequest)localObject).mPeerUin = this.jdField_a_of_type_JavaLangString;
+        ((TransferRequest)localObject).mPeerUin = this.a;
         ((TransferRequest)localObject).mFileType = 327696;
         ((TransferRequest)localObject).mRichTag = "pttSliceToText";
-        ((TransferRequest)localObject).pcmForVadPath = this.b;
+        ((TransferRequest)localObject).pcmForVadPath = this.d;
         ((TransferRequest)localObject).pcmForVadNum = paramList.size();
-        ((TransferRequest)localObject).pcmForVadPos = i;
-        ((TransferRequest)localObject).vadSeg = ((WXVadSeg)paramList.get(i));
-        ((TransferRequest)localObject).chatType = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.transferAsync((TransferRequest)localObject);
+        ((TransferRequest)localObject).pcmForVadPos = m;
+        ((TransferRequest)localObject).vadSeg = ((WXVadSeg)paramList.get(m));
+        ((TransferRequest)localObject).chatType = this.b;
+        this.e.transferAsync((TransferRequest)localObject);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("vadHelper startrecord sendrequest pos=");
-          localStringBuilder.append(i);
+          localStringBuilder.append(m);
           QLog.d("VoiceTextEdtiController", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((TransferRequest)localObject).mUniseq));
-        i += 1;
+        this.j.add(Long.valueOf(((TransferRequest)localObject).mUniseq));
+        m += 1;
       }
     }
+  }
+  
+  private List<WXVadSeg> c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEdtiController", 2, "vadHelper  vad start");
+    }
+    VadHelper localVadHelper = new VadHelper();
+    localVadHelper.d();
+    List localList = localVadHelper.a(this.d);
+    localVadHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEdtiController", 2, "vadHelper  vad start");
+    }
+    return localList;
   }
   
   int a(int paramInt)
   {
-    int i;
+    int m;
     if (paramInt == 3000) {
-      i = 1;
+      m = 1;
     } else {
-      i = 2;
+      m = 2;
     }
     if (paramInt == 0) {
       return 2;
     }
-    return i;
-  }
-  
-  String a(SttResultBean paramSttResultBean, int paramInt)
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioVoicetextpanelModelSttResultBean[paramInt] = paramSttResultBean;
-    paramSttResultBean = new StringBuffer();
-    paramInt = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioVoicetextpanelModelSttResultBean;
-      if (paramInt >= localObject.length) {
-        break;
-      }
-      localObject = localObject[paramInt];
-      if (localObject == null) {
-        break;
-      }
-      paramSttResultBean.append(((SttResultBean)localObject).jdField_a_of_type_JavaLangString);
-      if (!((SttResultBean)localObject).jdField_a_of_type_Boolean) {
-        break;
-      }
-      paramInt += 1;
-    }
-    return paramSttResultBean.toString();
+    return m;
   }
   
   public void a()
@@ -146,30 +122,30 @@ public class VoiceTextSttQueryController
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("cancelAllRequest sendIds len=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.j.size());
       QLog.d("VoiceTextEdtiController", 2, localStringBuilder.toString());
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int m = 0;
+    while (m < this.j.size())
     {
-      a(this.jdField_a_of_type_JavaLangString, ((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue());
-      i += 1;
+      a(this.a, ((Long)this.j.get(m)).longValue());
+      m += 1;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.j.clear();
   }
   
   public void a(VoiceTextSttListener paramVoiceTextSttListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextSttListener = paramVoiceTextSttListener;
+    this.i = paramVoiceTextSttListener;
   }
   
   void a(SttResultBean paramSttResultBean, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioVoicetextpanelModelSttResultBean;
-    if ((localObject != null) && (paramInt < localObject.length) && ((localObject[paramInt] == null) || (!localObject[paramInt].jdField_a_of_type_Boolean)))
+    Object localObject = this.h;
+    if ((localObject != null) && (paramInt < localObject.length) && ((localObject[paramInt] == null) || (!localObject[paramInt].b)))
     {
-      paramSttResultBean = a(paramSttResultBean, paramInt);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextSttListener;
+      paramSttResultBean = b(paramSttResultBean, paramInt);
+      localObject = this.i;
       if (localObject != null) {
         ((VoiceTextSttListener)localObject).a(paramSttResultBean);
       }
@@ -192,24 +168,24 @@ public class VoiceTextSttQueryController
       if (paramLong == 0L) {
         return;
       }
-      Iterator localIterator = ((ITransFileController)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
+      Iterator localIterator = ((ITransFileController)this.c.getRuntimeService(ITransFileController.class, "")).getProcessMap().entrySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
-        int j = 0;
-        int i = j;
+        int n = 0;
+        int m = n;
         if (localObject != null)
         {
-          i = j;
+          m = n;
           if ((localObject instanceof PttSliceUploadProcessor))
           {
-            i = j;
+            m = n;
             if (((BaseTransProcessor)localObject).getFileStatus() != 1003L) {
-              i = 1;
+              m = 1;
             }
           }
         }
-        if (i != 0)
+        if (m != 0)
         {
           localObject = (BaseTransProcessor)localObject;
           if ((paramString.equals(((BaseTransProcessor)localObject).mUiRequest.mPeerUin)) && (paramLong == ((BaseTransProcessor)localObject).mUiRequest.mUniseq))
@@ -230,26 +206,50 @@ public class VoiceTextSttQueryController
   
   void a(String paramString1, AppRuntime paramAppRuntime, VoiceTextSttListener paramVoiceTextSttListener, int paramInt, String paramString2)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextSttListener = paramVoiceTextSttListener;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { PttSliceUploadProcessor.class });
+    this.d = paramString1;
+    this.i = paramVoiceTextSttListener;
+    this.c = paramAppRuntime;
+    this.b = paramInt;
+    this.a = paramString2;
+    this.b = a(paramInt);
+    this.k.addFilter(new Class[] { PttSliceUploadProcessor.class });
+  }
+  
+  String b(SttResultBean paramSttResultBean, int paramInt)
+  {
+    this.h[paramInt] = paramSttResultBean;
+    paramSttResultBean = new StringBuffer();
+    paramInt = 0;
+    for (;;)
+    {
+      Object localObject = this.h;
+      if (paramInt >= localObject.length) {
+        break;
+      }
+      localObject = localObject[paramInt];
+      if (localObject == null) {
+        break;
+      }
+      paramSttResultBean.append(((SttResultBean)localObject).a);
+      if (!((SttResultBean)localObject).b) {
+        break;
+      }
+      paramInt += 1;
+    }
+    return paramSttResultBean.toString();
   }
   
   public void b()
   {
-    ITransFileController localITransFileController = this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController;
+    ITransFileController localITransFileController = this.e;
     if (localITransFileController != null) {
-      localITransFileController.removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+      localITransFileController.removeHandle(this.k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttQueryController
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class ShareGroupItem
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = HardCodeUtil.a(2131713793);
+  public String name = HardCodeUtil.a(2131911333);
   public int ownerType = 1;
   public String ownerUnionId = null;
   public String shareGroupId;
@@ -274,7 +274,7 @@ public class ShareGroupItem
   
   public boolean isOwner()
   {
-    return QQStoryContext.a().a(this.ownerUnionId);
+    return QQStoryContext.a().b(this.ownerUnionId);
   }
   
   public boolean isPublic()

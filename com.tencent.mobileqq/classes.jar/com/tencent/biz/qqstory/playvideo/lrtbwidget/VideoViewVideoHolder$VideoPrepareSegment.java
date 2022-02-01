@@ -17,28 +17,28 @@ import java.io.File;
 class VideoViewVideoHolder$VideoPrepareSegment
   extends JobSegment<StoryVideoItem, StoryVideoItem>
 {
-  StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+  StoryVideoItem a;
   
   private VideoViewVideoHolder$VideoPrepareSegment(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
   protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8))
+    if (VideoViewVideoHolder.h(this.b, 8))
     {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-      VideoViewVideoHolder.VideoViewListener localVideoViewListener = VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-      VideoViewVideoHolder localVideoViewVideoHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
-      localVideoViewListener.a(localVideoViewVideoHolder, localVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView);
+      VideoViewVideoHolder.d(this.b, 8);
+      VideoViewVideoHolder.VideoViewListener localVideoViewListener = VideoViewVideoHolder.i(this.b);
+      VideoViewVideoHolder localVideoViewVideoHolder = this.b;
+      localVideoViewListener.a(localVideoViewVideoHolder, localVideoViewVideoHolder.p);
       super.notifyResult(paramStoryVideoItem);
       return;
     }
-    SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "STATE_PREPARE_ED ignore");
+    SLog.e(this.b.a, "STATE_PREPARE_ED ignore");
   }
   
   protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 7);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    VideoViewVideoHolder.d(this.b, 7);
+    this.a = paramStoryVideoItem;
     paramJobContext = FileCacheUtils.a(paramStoryVideoItem.mVid, 0, false, false);
     Object localObject = null;
     if ((paramJobContext != null) && (FileCacheUtils.a(paramJobContext)))
@@ -47,7 +47,7 @@ class VideoViewVideoHolder$VideoPrepareSegment
     }
     else
     {
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b()) {
+      if (!this.b.l()) {
         break label385;
       }
       if (TextUtils.isEmpty(paramStoryVideoItem.mVideoUrl))
@@ -64,30 +64,30 @@ class VideoViewVideoHolder$VideoPrepareSegment
         }
         else
         {
-          SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "showVideo, vid=%s, support stream, getLocalFile return null", new Object[] { paramStoryVideoItem.mVid });
+          SLog.e(this.b.a, "showVideo, vid=%s, support stream, getLocalFile return null", new Object[] { paramStoryVideoItem.mVid });
           paramJobContext = localObject;
         }
       }
     }
     if (paramJobContext == null)
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "finalFileName null, hide loading view");
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "setVideoPath, fileName is empty !!");
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, HardCodeUtil.a(2131716169));
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "fileName null"));
+      SLog.d(this.b.a, "finalFileName null, hide loading view");
+      VideoViewVideoHolder.c(this.b, 8);
+      VideoViewVideoHolder.a(this.b, false);
+      SLog.e(this.b.a, "setVideoPath, fileName is empty !!");
+      VideoViewVideoHolder.a(this.b, HardCodeUtil.a(2131913618));
+      notifyError(new ErrorMessage(VideoViewVideoHolder.c(this.b), "fileName null"));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(0);
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "set video view listeners ... and then setVideoPath");
-    VideoViewVideoHolder.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 0);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(new VideoViewVideoHolder.VideoPrepareSegment.1(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(new VideoViewVideoHolder.VideoPrepareSegment.2(this, paramJobContext, paramStoryVideoItem));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(new VideoViewVideoHolder.VideoPrepareSegment.3(this, paramStoryVideoItem));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(new VideoViewVideoHolder.VideoPrepareSegment.4(this, paramStoryVideoItem));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(new VideoViewVideoHolder.VideoPrepareSegment.5(this, paramStoryVideoItem));
+    this.b.t.setVisibility(8);
+    this.b.p.a(0);
+    SLog.b(this.b.a, "set video view listeners ... and then setVideoPath");
+    VideoViewVideoHolder.e(this.b, 0);
+    this.b.p.a(new VideoViewVideoHolder.VideoPrepareSegment.1(this));
+    this.b.p.a(new VideoViewVideoHolder.VideoPrepareSegment.2(this, paramJobContext, paramStoryVideoItem));
+    this.b.p.a(new VideoViewVideoHolder.VideoPrepareSegment.3(this, paramStoryVideoItem));
+    this.b.p.a(new VideoViewVideoHolder.VideoPrepareSegment.4(this, paramStoryVideoItem));
+    this.b.p.a(new VideoViewVideoHolder.VideoPrepareSegment.5(this, paramStoryVideoItem));
     ((DownloadUrlManager)SuperManager.a(28)).a(paramStoryVideoItem.mVid, 0, new VideoViewVideoHolder.VideoPrepareSegment.6(this, paramStoryVideoItem, paramJobContext));
     return;
     label385:
@@ -97,13 +97,13 @@ class VideoViewVideoHolder$VideoPrepareSegment
   protected void onCancel()
   {
     super.onCancel();
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "VideoPrepareSegment onCancel");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a();
+    SLog.b(this.b.a, "VideoPrepareSegment onCancel");
+    this.b.p.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,9 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.surfaceviewaction.BaseNode;
 import com.tencent.mobileqq.surfaceviewaction.ILayer;
 import com.tencent.mobileqq.surfaceviewaction.ISprite;
@@ -28,66 +27,63 @@ class ReadInJoySkinGuideView$1$2
   
   public void a(ILayer paramILayer, ISprite paramISprite, String paramString)
   {
-    Object localObject1;
-    Object localObject2;
+    Object localObject;
     if (paramString.equals("close"))
     {
-      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.this$0);
-      paramILayer = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramISprite = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      paramString = this.a.jdField_b_of_type_JavaLangString;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(RIJAppSetting.a());
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(ReadInJoySkinGuideView.a(this.a.this$0));
-      paramILayer.publicAccountReportClickEvent(paramISprite, "", "0X8008C82", "0X8008C82", 0, 0, paramString, (String)localObject1, ((StringBuilder)localObject2).toString(), "", false);
+      this.a.c.onClick(this.a.this$0);
+      paramILayer = this.a.a;
+      paramISprite = this.a.d;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(RIJAppSetting.b());
+      paramString = paramString.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(ReadInJoySkinGuideView.a(this.a.this$0));
+      PublicAccountReportUtils.a(paramILayer, "", "0X8008C82", "0X8008C82", 0, 0, paramISprite, paramString, ((StringBuilder)localObject).toString(), "", false);
       return;
     }
     if (paramString.equals("use_skin"))
     {
-      this.a.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.a.this$0);
-      SharedPreUtils.i(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
-      paramILayer = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramISprite = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      paramString = this.a.jdField_b_of_type_JavaLangString;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(RIJAppSetting.a());
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(ReadInJoySkinGuideView.a(this.a.this$0));
-      paramILayer.publicAccountReportClickEvent(paramISprite, "", "0X8008C83", "0X8008C83", 0, 0, paramString, (String)localObject1, ((StringBuilder)localObject2).toString(), "", false);
+      this.a.e.onClick(this.a.this$0);
+      SharedPreUtils.h(this.a.f, this.a.a.getCurrentAccountUin(), true);
+      paramILayer = this.a.a;
+      paramISprite = this.a.d;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(RIJAppSetting.b());
+      paramString = paramString.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(ReadInJoySkinGuideView.a(this.a.this$0));
+      PublicAccountReportUtils.a(paramILayer, "", "0X8008C83", "0X8008C83", 0, 0, paramISprite, paramString, ((StringBuilder)localObject).toString(), "", false);
       return;
     }
-    label517:
+    label481:
     StringBuilder localStringBuilder;
     if (paramString.equals("open_sound"))
     {
-      paramILayer = paramILayer.a(HardCodeUtil.a(2131712706));
+      paramILayer = paramILayer.a(HardCodeUtil.a(2131910282));
       if (paramILayer != null) {
         paramILayer.c(0.0F);
       }
-      if (this.a.this$0.a == null)
+      if (this.a.this$0.c == null)
       {
-        this.a.this$0.a = new MediaPlayer();
+        this.a.this$0.c = new MediaPlayer();
         try
         {
-          paramILayer = this.a.this$0.a;
+          paramILayer = this.a.this$0.c;
           paramISprite = new StringBuilder();
-          paramISprite.append(this.a.jdField_a_of_type_JavaLangString);
+          paramISprite.append(this.a.b);
           paramISprite.append("/audio.mp3");
           paramILayer.setDataSource(paramISprite.toString());
-          this.a.this$0.a.prepare();
-          this.a.this$0.a.start();
+          this.a.this$0.c.prepare();
+          this.a.this$0.c.start();
         }
         catch (Exception paramILayer)
         {
           if (!QLog.isColorLevel()) {
-            break label517;
+            break label481;
           }
         }
         QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramILayer));
@@ -96,8 +92,8 @@ class ReadInJoySkinGuideView$1$2
       {
         try
         {
-          if (!this.a.this$0.a.isPlaying()) {
-            this.a.this$0.a.start();
+          if (!this.a.this$0.c.isPlaying()) {
+            this.a.this$0.c.start();
           }
         }
         catch (Exception paramILayer)
@@ -111,80 +107,77 @@ class ReadInJoySkinGuideView$1$2
       try
       {
         paramILayer.addKandianMode();
-        paramILayer.addString("guide_id", this.a.jdField_b_of_type_JavaLangString);
-        paramILayer.addInt("channel_id", this.a.jdField_a_of_type_Int);
+        paramILayer.addString("guide_id", this.a.d);
+        paramILayer.addInt("channel_id", this.a.g);
       }
       catch (JSONException paramISprite)
       {
         paramISprite.printStackTrace();
       }
-      paramISprite = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = this.a.jdField_b_of_type_JavaLangString;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(RIJAppSetting.a());
-      localObject2 = ((StringBuilder)localObject2).toString();
+      paramISprite = this.a.a;
+      paramString = this.a.d;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(RIJAppSetting.b());
+      localObject = ((StringBuilder)localObject).toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(ReadInJoySkinGuideView.a(this.a.this$0));
-      paramISprite.publicAccountReportClickEvent(paramString, "", "0X8008C81", "0X8008C81", 0, 0, (String)localObject1, (String)localObject2, localStringBuilder.toString(), paramILayer.build(), false);
+      PublicAccountReportUtils.a(paramISprite, "", "0X8008C81", "0X8008C81", 0, 0, paramString, (String)localObject, localStringBuilder.toString(), paramILayer.build(), false);
       return;
     }
     paramILayer = new RIJTransMergeKanDianReport.ReportR5Builder();
     try
     {
       paramILayer.addFolderStatus().addKandianMode().addTabSource();
-      paramILayer.addString("guide_id", this.a.jdField_b_of_type_JavaLangString);
+      paramILayer.addString("guide_id", this.a.d);
       paramILayer.addString("jump_url", paramString);
-      paramILayer.addInt("jump_url_type", ((BaseNode)paramISprite).g_());
-      paramILayer.addInt("channel_id", this.a.jdField_a_of_type_Int);
+      paramILayer.addInt("jump_url_type", ((BaseNode)paramISprite).dq_());
+      paramILayer.addInt("channel_id", this.a.g);
     }
     catch (JSONException paramISprite)
     {
       paramISprite.printStackTrace();
     }
-    paramISprite = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramString);
+    paramISprite = JumpParser.a(this.a.a, this.a.f, paramString);
     if (paramISprite != null)
     {
       paramISprite.a();
-      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.this$0);
-      paramISprite = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = this.a.jdField_b_of_type_JavaLangString;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(RIJAppSetting.a());
-      localObject2 = ((StringBuilder)localObject2).toString();
+      this.a.c.onClick(this.a.this$0);
+      paramISprite = this.a.a;
+      paramString = this.a.d;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(RIJAppSetting.b());
+      localObject = ((StringBuilder)localObject).toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(ReadInJoySkinGuideView.a(this.a.this$0));
-      paramISprite.publicAccountReportClickEvent(paramString, "", "0X8009819", "0X8009819", 0, 0, (String)localObject1, (String)localObject2, localStringBuilder.toString(), paramILayer.build(), false);
+      PublicAccountReportUtils.a(paramISprite, "", "0X8009819", "0X8009819", 0, 0, paramString, (String)localObject, localStringBuilder.toString(), paramILayer.build(), false);
       return;
     }
     if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
     {
-      paramISprite = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramISprite = new Intent(this.a.f, QQBrowserActivity.class);
       paramISprite.putExtra("url", paramString);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramISprite);
-      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.this$0);
-      paramISprite = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject1 = this.a.jdField_b_of_type_JavaLangString;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(RIJAppSetting.a());
-      localObject2 = ((StringBuilder)localObject2).toString();
+      this.a.f.startActivity(paramISprite);
+      this.a.c.onClick(this.a.this$0);
+      paramISprite = this.a.a;
+      paramString = this.a.d;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(RIJAppSetting.b());
+      localObject = ((StringBuilder)localObject).toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(ReadInJoySkinGuideView.a(this.a.this$0));
-      paramISprite.publicAccountReportClickEvent(paramString, "", "0X8009819", "0X8009819", 0, 0, (String)localObject1, (String)localObject2, localStringBuilder.toString(), paramILayer.build(), false);
+      PublicAccountReportUtils.a(paramISprite, "", "0X8009819", "0X8009819", 0, 0, paramString, (String)localObject, localStringBuilder.toString(), paramILayer.build(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinGuideView.1.2
  * JD-Core Version:    0.7.0.1
  */

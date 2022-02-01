@@ -12,13 +12,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class FeedLikeDataProvider$GetLikeListRequest
   extends LegoRequestBase
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  String a;
+  boolean b;
   
   public FeedLikeDataProvider$GetLikeListRequest(FeedLikeDataProvider paramFeedLikeDataProvider, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString;
+    this.b = paramBoolean;
   }
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
@@ -27,7 +27,7 @@ public class FeedLikeDataProvider$GetLikeListRequest
     try
     {
       ((qqstory_service.RspFeedLikeList)localObject).mergeFrom(paramArrayOfByte);
-      return new FeedLikeDataProvider.GetLikeListResponse(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider, (qqstory_service.RspFeedLikeList)localObject, this.jdField_a_of_type_Boolean);
+      return new FeedLikeDataProvider.GetLikeListResponse(this.c, (qqstory_service.RspFeedLikeList)localObject, this.b);
     }
     catch (Exception paramArrayOfByte)
     {
@@ -41,15 +41,15 @@ public class FeedLikeDataProvider$GetLikeListRequest
   
   public String a()
   {
-    return FeedLikeDataProvider.jdField_a_of_type_JavaLangString;
+    return FeedLikeDataProvider.a;
   }
   
-  protected byte[] a()
+  protected byte[] b()
   {
     qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.a));
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       i = 2;
     } else {
       i = 1;
@@ -60,7 +60,7 @@ public class FeedLikeDataProvider$GetLikeListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeDataProvider.GetLikeListRequest
  * JD-Core Version:    0.7.0.1
  */

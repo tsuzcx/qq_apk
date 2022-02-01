@@ -16,19 +16,19 @@ final class GdtReportForAntiSpam$1
     localParams.setUrl("https://rpt.gdt.qq.com/mqq_log");
     localParams.method = "POST";
     localParams.contentType = "application/json";
-    localParams.requestData = this.jdField_a_of_type_ArrayOfByte;
+    localParams.requestData = this.a;
     if (!localParams.canSend())
     {
       GdtLog.d("GdtReportForAntiSpam", "reportAntiSpam error");
       return;
     }
     AdHttp.send(localParams);
-    GdtLog.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
+    GdtLog.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.b.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReportForAntiSpam.1
  * JD-Core Version:    0.7.0.1
  */

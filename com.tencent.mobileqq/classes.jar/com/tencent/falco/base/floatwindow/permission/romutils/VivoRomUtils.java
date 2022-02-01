@@ -10,24 +10,6 @@ import android.net.Uri;
 public class VivoRomUtils
   extends BaseRomUtils
 {
-  private static int a(Context paramContext)
-  {
-    String str = paramContext.getPackageName();
-    Uri localUri = Uri.parse("content://com.vivo.permissionmanager.provider.permission/float_window_apps");
-    paramContext = paramContext.getContentResolver().query(localUri, null, "pkgname = ?", new String[] { str }, null);
-    if (paramContext != null)
-    {
-      if (paramContext.moveToFirst())
-      {
-        int i = paramContext.getInt(paramContext.getColumnIndex("currentmode"));
-        paramContext.close();
-        return i;
-      }
-      paramContext.close();
-    }
-    return 1;
-  }
-  
   public static void a(Context paramContext)
   {
     try
@@ -45,7 +27,7 @@ public class VivoRomUtils
     }
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
     if (paramContext != null)
     {
@@ -62,16 +44,34 @@ public class VivoRomUtils
           return i == 0;
         }
         ((Cursor)localObject).close();
-        return a(paramContext) == 0;
+        return c(paramContext) == 0;
       }
-      return a(paramContext) == 0;
+      return c(paramContext) == 0;
     }
     throw new IllegalArgumentException("context is null");
+  }
+  
+  private static int c(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    Uri localUri = Uri.parse("content://com.vivo.permissionmanager.provider.permission/float_window_apps");
+    paramContext = paramContext.getContentResolver().query(localUri, null, "pkgname = ?", new String[] { str }, null);
+    if (paramContext != null)
+    {
+      if (paramContext.moveToFirst())
+      {
+        int i = paramContext.getInt(paramContext.getColumnIndex("currentmode"));
+        paramContext.close();
+        return i;
+      }
+      paramContext.close();
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.VivoRomUtils
  * JD-Core Version:    0.7.0.1
  */

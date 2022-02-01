@@ -11,12 +11,12 @@ class WatchTogetherVideoDecodeHelper$7
     WatchTogetherVideoDecodeHelper.b(this.this$0, false);
     WatchTogetherVideoDecodeHelper.a(this.this$0, null);
     WatchTogetherVideoDecodeHelper.a(this.this$0, true);
-    if (!WatchTogetherVideoDecodeHelper.c(this.this$0))
+    if (!WatchTogetherVideoDecodeHelper.h(this.this$0))
     {
       WatchTogetherVideoDecodeHelper.a(this.this$0, "onLostEglContext");
       return;
     }
-    WatchTogetherVideoDecodeHelper.a(this.this$0);
+    WatchTogetherVideoDecodeHelper.g(this.this$0);
   }
 }
 

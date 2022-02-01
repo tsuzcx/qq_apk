@@ -16,16 +16,16 @@ class TimDouFuGuideItemBuilder$1
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTimDouFuGuideItemBuilder.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTimDouFuGuideItemBuilder.a.startActivity(localIntent);
-    ReportController.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
+    Intent localIntent = new Intent(this.b.c, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.a.tipsUrl);
+    this.b.c.startActivity(localIntent);
+    ReportController.b(null, "dc00898", "", "", this.a.opkey, this.a.opkey, 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TimDouFuGuideItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

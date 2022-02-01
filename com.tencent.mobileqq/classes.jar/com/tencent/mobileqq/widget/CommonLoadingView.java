@@ -8,8 +8,8 @@ import android.widget.FrameLayout;
 public class CommonLoadingView
   extends FrameLayout
 {
-  private CommonLoadingView.OnFirstDrawListener jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener;
-  private boolean jdField_a_of_type_Boolean = true;
+  private CommonLoadingView.OnFirstDrawListener a;
+  private boolean b = true;
   
   public CommonLoadingView(Context paramContext)
   {
@@ -29,24 +29,24 @@ public class CommonLoadingView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_Boolean = false;
-      paramCanvas = this.jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener;
+      this.b = false;
+      paramCanvas = this.a;
       if (paramCanvas != null) {
-        paramCanvas.g();
+        paramCanvas.i();
       }
     }
   }
   
   public void setOnFirstDrawListener(CommonLoadingView.OnFirstDrawListener paramOnFirstDrawListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCommonLoadingView$OnFirstDrawListener = paramOnFirstDrawListener;
+    this.a = paramOnFirstDrawListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

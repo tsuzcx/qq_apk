@@ -25,15 +25,13 @@ import java.util.concurrent.TimeoutException;
 
 public final class Shadow
 {
-  private static PluginManagerWrapper jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper;
-  public static final IVPluginDataReporter a;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static boolean jdField_a_of_type_Boolean;
+  public static final IVPluginDataReporter a = new IVPluginDataReporter();
+  private static boolean b;
+  private static PluginManagerWrapper c;
+  private static final Object d = new Object();
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-    jdField_a_of_type_JavaLangObject = new Object();
     a();
   }
   
@@ -46,17 +44,17 @@ public final class Shadow
     }
     catch (ExecutionException paramContext)
     {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      a.opType("updateException").d1(paramContext.toString()).report();
       throw paramContext;
     }
     catch (InterruptedException paramContext)
     {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      a.opType("updateException").d1(paramContext.toString()).report();
       throw paramContext;
     }
     catch (TimeoutException paramContext)
     {
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      a.opType("updateException").d1(paramContext.toString()).report();
       throw paramContext;
     }
   }
@@ -65,33 +63,33 @@ public final class Shadow
   {
     ??? = new StringBuilder();
     ((StringBuilder)???).append("pluginManagerWrapper ，sPluginManagerWrapper = ");
-    ((StringBuilder)???).append(jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper);
+    ((StringBuilder)???).append(c);
     ((StringBuilder)???).append(" bizType:");
     ((StringBuilder)???).append(paramString);
     QLog.i("shadow::Shadow", 2, ((StringBuilder)???).toString());
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper == null)
+      if (c == null)
       {
-        jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper = new PluginManagerWrapper(paramString, paramCdnPmUpdater);
+        c = new PluginManagerWrapper(paramString, paramCdnPmUpdater);
         paramString = new StringBuilder();
         paramString.append("new pluginManagerWrapper : ");
-        paramString.append(jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper);
+        paramString.append(c);
         QLog.i("shadow::Shadow", 2, paramString.toString());
       }
-      paramString = jdField_a_of_type_ComTencentMobileqqIntervideoPluginManagerWrapper;
+      paramString = c;
       return paramString;
     }
   }
   
   public static void a()
   {
-    if (!jdField_a_of_type_Boolean) {}
+    if (!b) {}
     try
     {
       LoggerFactory.setILoggerFactory(IVLoggerFactory.a());
       label12:
-      jdField_a_of_type_Boolean = true;
+      b = true;
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -103,7 +101,7 @@ public final class Shadow
   public static IVPluginManager b(Context paramContext, String paramString1, String paramString2)
   {
     long l1 = System.currentTimeMillis();
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
+    a.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
     Object localObject1 = new DataLocalTmpPmUpdater(paramString1);
     if (((DataLocalTmpPmUpdater)localObject1).getLatest() != null) {
       return new PluginManagerWrapper(paramString1, (PluginManagerUpdater)localObject1);
@@ -143,13 +141,13 @@ public final class Shadow
       catch (InterruptedException paramContext)
       {
         l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
+        a.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
         throw paramContext;
       }
       catch (ExecutionException paramContext)
       {
         l2 = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
+        a.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
         throw paramContext;
       }
     }
@@ -219,8 +217,8 @@ public final class Shadow
     paramString1.append(" md5 = ");
     paramString1.append(paramContext);
     QLog.i("shadow::Shadow", 1, paramString1.toString());
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
-    localCdnPmUpdater.a();
+    a.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
+    localCdnPmUpdater.b();
     throw new InvalidFileException("pluginManager apk file is invalid!");
     label551:
     paramString2 = (String)localObject1;
@@ -240,8 +238,8 @@ public final class Shadow
     paramString1.append(" md5 = ");
     paramString1.append(paramContext);
     QLog.i("shadow::Shadow", 1, paramString1.toString());
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
-    localCdnPmUpdater.a();
+    a.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
+    localCdnPmUpdater.b();
     throw new InvalidFileException("pluginManager apk file is invalid!");
     throw paramString1;
     label666:
@@ -253,7 +251,7 @@ public final class Shadow
       } else {
         paramContext = new PluginManagerWrapper(paramString1, localCdnPmUpdater);
       }
-      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
+      a.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
       return paramContext;
     }
     try
@@ -272,14 +270,14 @@ public final class Shadow
     paramString1.append(" md5 = ");
     paramString1.append(paramContext);
     QLog.i("shadow::Shadow", 1, paramString1.toString());
-    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
-    localCdnPmUpdater.a();
+    a.d1(str).d2("FileInvalid").d3(paramContext).opResult(1000).report();
+    localCdnPmUpdater.b();
     throw new InvalidFileException("pluginManager apk file is invalid!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.impl.Shadow
  * JD-Core Version:    0.7.0.1
  */

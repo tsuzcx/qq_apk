@@ -10,12 +10,12 @@ class AEPhotoListLogicBase$6
   
   public void run()
   {
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).h();
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.6
  * JD-Core Version:    0.7.0.1
  */

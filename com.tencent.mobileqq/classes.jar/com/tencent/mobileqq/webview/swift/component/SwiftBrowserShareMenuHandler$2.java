@@ -16,24 +16,24 @@ class SwiftBrowserShareMenuHandler$2
   
   public void callback(Bundle paramBundle)
   {
-    if (paramBundle.getInt("type") == TroopAppObserver.b)
+    if (paramBundle.getInt("type") == TroopAppObserver.c)
     {
       boolean bool = paramBundle.getBoolean("isSuccess");
-      if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) && (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed())) {
+      if ((this.a.d.isFinishing()) && (this.a.e.isDestroyed())) {
         return;
       }
       if (Boolean.valueOf(bool).booleanValue())
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719766, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getWebTitleBarInterface().a());
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 2, 2131917370, 0).show(this.a.e.getWebTitleBarInterface().m());
         return;
       }
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719763, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getWebTitleBarInterface().a());
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131917367, 0).show(this.a.e.getWebTitleBarInterface().m());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.2
  * JD-Core Version:    0.7.0.1
  */

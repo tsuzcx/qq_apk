@@ -5,52 +5,44 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloaderAssinfo
 {
-  public static String a = "UniformDownloaderAssinfo";
-  protected int a;
-  protected Object a;
-  protected int b;
-  protected long b;
-  protected Object b;
-  protected String b;
-  protected int c;
-  protected final long c;
-  protected Object c;
-  protected String c;
+  public static String b = "UniformDownloaderAssinfo";
+  protected String c = null;
   protected String d;
-  protected String e;
-  protected String f = null;
+  protected long e = 0L;
+  protected String f;
+  protected String g;
+  protected final long h;
+  protected String i = null;
+  protected int j = 0;
+  protected Object k = new Object();
+  protected int l = 0;
+  protected Object m = new Object();
+  protected int n = 0;
+  protected Object o = new Object();
   
   public UniformDownloaderAssinfo(long paramLong)
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangObject = new Object();
-    this.jdField_c_of_type_Long = paramLong;
+    this.h = paramLong;
   }
   
   public int a(String paramString, Bundle paramBundle)
   {
-    if (a()) {
+    if (i()) {
       return 0;
     }
     if ((paramString != null) && (paramBundle != null)) {}
     try
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.d = paramBundle.getString("_PARAM_FILEPATH");
-      this.e = paramBundle.getString("_PARAM_TMP_FILEPATH");
-      this.jdField_c_of_type_JavaLangString = paramBundle.getString("_PARAM_FILENAME");
-      this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
-      this.f = paramBundle.getString("_PARAM_COOKIE");
-      paramString = jdField_a_of_type_JavaLangString;
+      this.c = paramString;
+      this.f = paramBundle.getString("_PARAM_FILEPATH");
+      this.g = paramBundle.getString("_PARAM_TMP_FILEPATH");
+      this.d = paramBundle.getString("_PARAM_FILENAME");
+      this.e = paramBundle.getLong("_PARAM_FILESIZE");
+      this.i = paramBundle.getString("_PARAM_COOKIE");
+      paramString = b;
       paramBundle = new StringBuilder();
       paramBundle.append("[UniformDL][");
-      paramBundle.append(this.jdField_c_of_type_Long);
+      paramBundle.append(this.h);
       paramBundle.append("] init. ST:");
       paramBundle.append(e());
       paramBundle.append(" PGR:");
@@ -60,10 +52,10 @@ public class UniformDownloaderAssinfo
       return 0;
     }
     finally {}
-    paramString = jdField_a_of_type_JavaLangString;
+    paramString = b;
     paramBundle = new StringBuilder();
     paramBundle.append("[UniformDL][");
-    paramBundle.append(this.jdField_c_of_type_Long);
+    paramBundle.append(this.h);
     paramBundle.append("]. init param error");
     QLog.e(paramString, 1, paramBundle.toString());
     return -1;
@@ -71,75 +63,75 @@ public class UniformDownloaderAssinfo
   
   protected void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.k)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.j = paramInt;
       return;
     }
   }
   
-  protected boolean a()
-  {
-    return e() >= 1;
-  }
-  
   protected void b(int paramInt)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.m)
     {
-      this.jdField_b_of_type_Int = paramInt;
+      this.l = paramInt;
       return;
     }
   }
   
   protected void c(int paramInt)
   {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
+    synchronized (this.o)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.h);
       localStringBuilder.append("] setStatus. ");
-      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append(this.n);
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt);
       QLog.i(str, 1, localStringBuilder.toString());
-      this.jdField_c_of_type_Int = paramInt;
+      this.n = paramInt;
       return;
     }
   }
   
   public int e()
   {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
+    synchronized (this.o)
     {
-      int i = this.jdField_c_of_type_Int;
-      return i;
+      int i1 = this.n;
+      return i1;
     }
   }
   
   protected int g()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.k)
     {
-      int i = this.jdField_a_of_type_Int;
-      return i;
+      int i1 = this.j;
+      return i1;
     }
   }
   
   public int h()
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.m)
     {
-      int i = this.jdField_b_of_type_Int;
-      return i;
+      int i1 = this.l;
+      return i1;
     }
+  }
+  
+  protected boolean i()
+  {
+    return e() >= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAssinfo
  * JD-Core Version:    0.7.0.1
  */

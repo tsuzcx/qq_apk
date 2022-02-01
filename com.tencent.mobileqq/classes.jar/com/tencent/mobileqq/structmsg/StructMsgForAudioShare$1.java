@@ -22,7 +22,7 @@ final class StructMsgForAudioShare$1
 {
   public void onClick(View paramView)
   {
-    Object localObject2 = paramView.findViewById(2131377989);
+    Object localObject2 = paramView.findViewById(2131446476);
     if (localObject2 != null)
     {
       StructMsgForAudioShare localStructMsgForAudioShare;
@@ -30,7 +30,7 @@ final class StructMsgForAudioShare$1
       {
         do
         {
-          localObject1 = ((View)localObject2).getTag(2131377989);
+          localObject1 = ((View)localObject2).getTag(2131446476);
         } while ((localObject1 == null) || (!(localObject1 instanceof StructMsgForAudioShare)));
         localStructMsgForAudioShare = (StructMsgForAudioShare)localObject1;
         localObject1 = paramView.getTag();
@@ -51,7 +51,7 @@ final class StructMsgForAudioShare$1
             if (localQQAppInterface == null) {
               break label325;
             }
-            Util.a(localQQAppInterface, "", "click", localStructMsgForAudioShare.mSourceAppid, localStructMsgForAudioShare.mMsgServiceID, Util.a(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject1).a.a));
+            Util.a(localQQAppInterface, "", "click", localStructMsgForAudioShare.mSourceAppid, localStructMsgForAudioShare.mMsgServiceID, Util.a(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject1).d.a));
             MediaPlayerManager.a(localQQAppInterface).a(true);
           }
           catch (AccountNotMatchException localAccountNotMatchException1) {}
@@ -77,7 +77,7 @@ final class StructMsgForAudioShare$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1
  * JD-Core Version:    0.7.0.1
  */

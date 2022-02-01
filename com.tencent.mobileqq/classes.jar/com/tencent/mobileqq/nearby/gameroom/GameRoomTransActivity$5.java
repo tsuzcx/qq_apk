@@ -23,24 +23,24 @@ class GameRoomTransActivity$5
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
       String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showMyInviteDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str, paramRspBody.uint32_max_member_num.get(), this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.disMissListener);
+      this.d.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showMyInviteDialog(this.d, str, paramRspBody.uint32_max_member_num.get(), this.a);
+      this.d.dialog.setOnDismissListener(this.d.disMissListener);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("qqBaseActivity", 2, "invitedId empty");
     }
     paramRspBody = new Intent();
-    paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-    paramRspBody.putExtra("zoneId", this.b);
-    paramRspBody.putExtra("gc", this.jdField_a_of_type_Long);
+    paramRspBody.putExtra("roomNum", this.b);
+    paramRspBody.putExtra("zoneId", this.c);
+    paramRspBody.putExtra("gc", this.a);
     RouteUtils.a(BaseApplicationImpl.getContext(), paramRspBody, "/nearby/gameroom/invite");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+    this.d.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity.5
  * JD-Core Version:    0.7.0.1
  */

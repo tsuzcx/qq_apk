@@ -8,13 +8,13 @@ final class AEEditorResourceManager$3
 {
   public void run()
   {
-    FileUtils.a(this.a, "camera/frame", AEEditorResourceManager.d);
+    FileUtils.a(this.a, "camera/frame", AEEditorResourceManager.l);
     AEQLog.b("[AEEditor2]AEEditorResourceManager", "setupFrameEnv---pag file is successfully copied");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,15 @@ import java.util.List;
 public class ResourceNameOnClickListener
   implements View.OnClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private List<ResourceGrabSkinData> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
+  View.OnClickListener a;
+  boolean b;
+  private List<ResourceGrabSkinData> c;
   
   ResourceNameOnClickListener(List<ResourceGrabSkinData> paramList, View.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramList;
+    this.a = paramOnClickListener;
+    this.b = paramBoolean;
   }
   
   private List<ResourceGrabSkinData> a(View paramView)
@@ -47,7 +47,7 @@ public class ResourceNameOnClickListener
       paramView = (View.OnClickListener)((Field)localObject).get(paramView);
       if ((paramView instanceof ResourceNameOnClickListener))
       {
-        paramView = ((ResourceNameOnClickListener)paramView).jdField_a_of_type_JavaUtilList;
+        paramView = ((ResourceNameOnClickListener)paramView).c;
         if ((paramView != null) && (paramView.size() > 0))
         {
           localArrayList.addAll(paramView);
@@ -128,7 +128,7 @@ public class ResourceNameOnClickListener
       {
         localObject1 = (ResourceGrabFragment)localObject1;
         ResourceGrabViewModel localResourceGrabViewModel = (ResourceGrabViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, ResourceGrabViewModel.a).get(ResourceGrabViewModel.class);
-        ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+        ArrayList localArrayList = new ArrayList(this.c);
         try
         {
           a(paramView, (BaseActivity)localObject2, localArrayList);
@@ -141,7 +141,7 @@ public class ResourceNameOnClickListener
           QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
         }
         ((ResourceGrabFragment)localObject1).a(localArrayList);
-        if (((ResourceGrabFragment)localObject1).a()) {
+        if (((ResourceGrabFragment)localObject1).b()) {
           localResourceGrabViewModel.a(localArrayList);
         }
       }
@@ -151,7 +151,7 @@ public class ResourceNameOnClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceNameOnClickListener
  * JD-Core Version:    0.7.0.1
  */

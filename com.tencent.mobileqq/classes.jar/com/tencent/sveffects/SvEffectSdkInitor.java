@@ -6,30 +6,30 @@ import java.io.File;
 
 public class SvEffectSdkInitor
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static final String a;
+  private static volatile boolean b = false;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PathUtils.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(PathUtils.a);
     localStringBuilder.append("/qav");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("beauty");
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public static void a()
   {
     try
     {
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = b;
       if (bool) {
         return;
       }
       SdkContext.getInstance().init("QQ", BaseApplicationImpl.getContext(), new SvEffectSdkInitor.QQDpcSwitcher(), new SvEffectSdkInitor.QQResources(), new SvEffectSdkInitor.QQLogger(), new SvEffectSdkInitor.QQReporter());
-      jdField_a_of_type_Boolean = true;
+      b = true;
       return;
     }
     finally {}
@@ -37,7 +37,7 @@ public class SvEffectSdkInitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor
  * JD-Core Version:    0.7.0.1
  */

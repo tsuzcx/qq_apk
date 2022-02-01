@@ -8,6 +8,7 @@ import com.mojitox.mxflutter.framework.ffi.MxFlutterFfi;
 import com.mojitox.mxflutter.framework.js.BaseJsEngine;
 import com.mojitox.mxflutter.framework.js.BaseJsExecutor;
 import com.mojitox.mxflutter.framework.js.JsEngineLoader;
+import com.mojitox.mxflutter.framework.utils.MxLog;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -18,71 +19,81 @@ import io.flutter.plugin.common.MethodChannel.Result;
 public class MXFlutterPlugin
   implements FlutterPlugin, MethodChannel.MethodCallHandler
 {
-  private static MXFlutterPlugin jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin;
-  private JsFlutterApp jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterApp;
-  private JsFlutterEngine jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterEngine;
-  private MxFlutterFfi jdField_a_of_type_ComMojitoxMxflutterFrameworkFfiMxFlutterFfi;
-  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
+  private static boolean a;
+  private static MXFlutterPlugin b;
+  private BinaryMessenger c;
+  private JsFlutterApp d;
+  private JsFlutterEngine e;
+  private MxFlutterFfi f;
   
   public static MXFlutterPlugin a()
   {
-    return jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin;
+    return b;
   }
   
-  private void a()
+  private void f()
   {
-    if (a() != null) {
-      a().a();
+    if (e() != null) {
+      e().a();
     }
-    MxFlutterFfi localMxFlutterFfi = this.jdField_a_of_type_ComMojitoxMxflutterFrameworkFfiMxFlutterFfi;
+    MxFlutterFfi localMxFlutterFfi = this.f;
     if (localMxFlutterFfi != null) {
       localMxFlutterFfi.a();
     }
   }
   
-  private void b() {}
-  
-  public JsFlutterApp a()
+  private void g()
   {
-    return this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterApp;
+    if (a)
+    {
+      JsEngineLoader.a().d();
+      this.f = new MxFlutterFfi();
+    }
   }
   
-  public JsFlutterEngine a()
+  public BinaryMessenger b()
   {
-    return this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterEngine;
+    return this.c;
   }
   
-  public BaseJsExecutor a()
+  public JsFlutterApp c()
   {
-    return JsEngineLoader.a().a().b();
+    return this.d;
   }
   
-  public BinaryMessenger a()
+  public BaseJsExecutor d()
   {
-    return this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
+    return JsEngineLoader.a().d().b();
+  }
+  
+  public JsFlutterEngine e()
+  {
+    return this.e;
   }
   
   public void onAttachedToEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    MXFlutterPlugin localMXFlutterPlugin = jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin;
+    MxLog.a("MXFlutterPlugin", "#onAttachedToEngine: begin");
+    MXFlutterPlugin localMXFlutterPlugin = b;
     if (localMXFlutterPlugin != null) {
-      localMXFlutterPlugin.a();
+      localMXFlutterPlugin.f();
     }
-    jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin = this;
-    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramFlutterPluginBinding.getBinaryMessenger();
+    b = this;
+    this.c = paramFlutterPluginBinding.getBinaryMessenger();
     JsEngineLoader.a().a(paramFlutterPluginBinding.getApplicationContext());
-    b();
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterApp = new JsFlutterApp();
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterEngine = new JsFlutterEngine();
+    g();
+    this.d = new JsFlutterApp();
+    this.e = new JsFlutterEngine();
   }
   
   public void onDetachedFromEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    paramFlutterPluginBinding = jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin;
+    MxLog.a("MXFlutterPlugin", "#onDetachedFromEngine: begin");
+    paramFlutterPluginBinding = b;
     if (paramFlutterPluginBinding != null)
     {
-      paramFlutterPluginBinding.a();
-      jdField_a_of_type_ComMojitoxMxflutterMXFlutterPlugin = null;
+      paramFlutterPluginBinding.f();
+      b = null;
     }
   }
   
@@ -101,7 +112,7 @@ public class MXFlutterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.MXFlutterPlugin
  * JD-Core Version:    0.7.0.1
  */

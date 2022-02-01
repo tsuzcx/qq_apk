@@ -12,11 +12,11 @@ class GameRoomFragment$7
   
   public void onClick(View paramView)
   {
-    View localView1 = GameRoomFragment.a(this.a).findViewById(2131363190);
-    View localView2 = GameRoomFragment.a(this.a).findViewById(2131363191);
+    View localView1 = GameRoomFragment.d(this.a).findViewById(2131429064);
+    View localView2 = GameRoomFragment.d(this.a).findViewById(2131429065);
     localView1.setVisibility(8);
     localView2.setVisibility(8);
-    GameRoomFragment.a(this.a).setBackgroundColor(-1308622848);
+    GameRoomFragment.d(this.a).setBackgroundColor(-1308622848);
     GameRoomFragment.a(this.a, paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }

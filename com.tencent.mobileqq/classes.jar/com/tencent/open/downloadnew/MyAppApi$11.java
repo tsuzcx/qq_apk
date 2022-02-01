@@ -11,12 +11,12 @@ class MyAppApi$11
   
   public void run()
   {
-    TMAssistantCallYYB_V2.getInstance().startBatchOperation(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    TMAssistantCallYYB_V2.getInstance().startBatchOperation(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.11
  * JD-Core Version:    0.7.0.1
  */

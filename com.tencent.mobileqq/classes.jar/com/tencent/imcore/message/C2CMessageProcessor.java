@@ -63,28 +63,21 @@ import tencent.im.oidb.searcher.oidb_c2c_searcher.RspBody;
 public class C2CMessageProcessor
   extends BaseMessageProcessor
 {
-  public static C2CMessageProcessor.Callback a;
-  public Comparator a;
-  private Set<String> a;
-  private Set<String> b = new HashSet();
+  public static C2CMessageProcessor.Callback u;
+  public Comparator t = new C2CMessageProcessor.1(this);
+  private Set<String> v = new HashSet();
+  private Set<String> w = new HashSet();
   
   static {}
   
   public C2CMessageProcessor(AppInterface paramAppInterface, BaseMessageHandler paramBaseMessageHandler)
   {
     super(paramAppInterface, paramBaseMessageHandler);
-    this.jdField_a_of_type_JavaUtilComparator = new C2CMessageProcessor.1(this);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
-  
-  private int a()
-  {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this);
   }
   
   private int a(byte paramByte, msg_comm.UinPairMsg paramUinPairMsg, String paramString, int paramInt)
   {
-    IMessageFacade localIMessageFacade = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
+    IMessageFacade localIMessageFacade = (IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "");
     if ((paramUinPairMsg.c2c_type.has()) && (paramUinPairMsg.service_type.has()))
     {
       int i = paramUinPairMsg.c2c_type.get();
@@ -185,12 +178,12 @@ public class C2CMessageProcessor
       if ((localList != null) && (localList.size() > 0))
       {
         if (localList.size() > 1) {
-          Collections.sort(localList, this.jdField_a_of_type_JavaUtilComparator);
+          Collections.sort(localList, this.t);
         }
         b(localList);
         try
         {
-          synchronized (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((String)???, i))
+          synchronized (this.r.a((String)???, i))
           {
             Pair localPair = a(localUinPairMsg, l, bool, paramBoolean1, paramBoolean2);
             localObject1 = (String)localPair.first;
@@ -234,12 +227,12 @@ public class C2CMessageProcessor
   
   private long a(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramInt1, paramInt2);
+    return u.a(paramInt1, paramInt2);
   }
   
   private long a(long paramLong1, long paramLong2, long paramLong3)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramLong1, paramLong2, paramLong3);
+    return u.a(this.q, paramLong1, paramLong2, paramLong3);
   }
   
   private long a(msg_svc.PbGetRoamMsgResp paramPbGetRoamMsgResp, ArrayList<msg_comm.Msg> paramArrayList, long paramLong)
@@ -255,7 +248,7 @@ public class C2CMessageProcessor
   private Pair<List<MessageRecord>, List<MessageRecord>> a(List<msg_comm.Msg> paramList, List<MessageRecord> paramList1, long paramLong1, long paramLong2, long paramLong3)
   {
     ArrayList localArrayList = new ArrayList();
-    List localList = a(paramLong1, paramLong2, paramLong3);
+    List localList = b(paramLong1, paramLong2, paramLong3);
     if ((localList != null) && (!localList.isEmpty()))
     {
       paramList = paramList.iterator();
@@ -327,19 +320,19 @@ public class C2CMessageProcessor
   private Pair<String, Integer> a(msg_comm.UinPairMsg paramUinPairMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     ArrayList localArrayList = new ArrayList();
-    long l = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin();
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    long l = this.q.getLongAccountUin();
+    String str = this.q.getCurrentAccountUin();
     DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(l, paramUinPairMsg.peer_uin.get(), true, paramBoolean2, paramBoolean3, false);
-    localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString = String.valueOf(paramUinPairMsg.peer_uin.get());
+    localDecodeProtoPkgContext.t = String.valueOf(paramUinPairMsg.peer_uin.get());
     Object localObject2 = paramUinPairMsg.msg.get();
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
       Object localObject1 = new ArrayList();
-      a((List)localObject2, (List)localObject1);
+      b((List)localObject2, (List)localObject1);
       localObject2 = new StringBuilder();
       HashMap localHashMap = new HashMap();
       HashSet localHashSet = new HashSet();
-      localDecodeProtoPkgContext.jdField_e_of_type_Boolean = true;
+      localDecodeProtoPkgContext.k = true;
       localDecodeProtoPkgContext.a(1000, localHashMap);
       localDecodeProtoPkgContext.a(1001, localHashSet);
       int i = 0;
@@ -348,48 +341,48 @@ public class C2CMessageProcessor
         a(this, paramUinPairMsg, paramLong, localArrayList, localDecodeProtoPkgContext, (ArrayList)localObject1, (StringBuilder)localObject2, i);
         i += 1;
       }
-      localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString = a(String.valueOf(paramUinPairMsg.peer_uin.get()), localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString);
+      localDecodeProtoPkgContext.t = a(String.valueOf(paramUinPairMsg.peer_uin.get()), localDecodeProtoPkgContext.t);
       a(l, localHashMap, localHashSet);
       if (localArrayList.size() > 0)
       {
         if (!paramBoolean2) {
-          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(localArrayList);
+          ((MessageCache)this.q.getMsgCache()).b(localArrayList);
         }
-        localObject1 = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
-        localObject2 = localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString;
+        localObject1 = (IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "");
+        localObject2 = localDecodeProtoPkgContext.t;
         paramBoolean3 = false;
         ((IMessageFacade)localObject1).setAutoPullC2CMsgResult((String)localObject2, 0, localArrayList, paramBoolean1);
-        boolean bool = a(localArrayList);
-        i = MsgProxyUtils.a(localArrayList, (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache());
-        b(localArrayList);
-        localObject1 = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
-        if ((bool) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundStop)) {
+        boolean bool = b(localArrayList);
+        i = MsgProxyUtils.a(localArrayList, (MessageCache)this.q.getMsgCache());
+        c(localArrayList);
+        localObject1 = (IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "");
+        if ((bool) && (this.q.isBackgroundStop)) {
           paramBoolean1 = true;
         } else {
           paramBoolean1 = paramBoolean3;
         }
         ((IMessageFacade)localObject1).addMessage(localArrayList, str, paramBoolean1);
-        c(localArrayList);
+        d(localArrayList);
         a("handleGetBuddyMessageResp", true, i, bool, paramBoolean2);
-        a(String.valueOf(paramUinPairMsg.peer_uin.get()), paramBoolean2, localArrayList, localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, localDecodeProtoPkgContext.jdField_e_of_type_Int);
+        a(String.valueOf(paramUinPairMsg.peer_uin.get()), paramBoolean2, localArrayList, localDecodeProtoPkgContext.t, localDecodeProtoPkgContext.u);
       }
       if (QLog.isColorLevel())
       {
         paramUinPairMsg = new StringBuilder();
         paramUinPairMsg.append("<---decodeC2CMessagePackage : dstUin:");
-        paramUinPairMsg.append(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString);
+        paramUinPairMsg.append(localDecodeProtoPkgContext.t);
         paramUinPairMsg.append(", pkgUinType:");
-        paramUinPairMsg.append(localDecodeProtoPkgContext.jdField_e_of_type_Int);
+        paramUinPairMsg.append(localDecodeProtoPkgContext.u);
         QLog.d("Q.msg.C2CMessageProcessor", 2, paramUinPairMsg.toString());
       }
-      return new Pair(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, Integer.valueOf(localDecodeProtoPkgContext.jdField_e_of_type_Int));
+      return new Pair(localDecodeProtoPkgContext.t, Integer.valueOf(localDecodeProtoPkgContext.u));
     }
-    return new Pair(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, Integer.valueOf(localDecodeProtoPkgContext.jdField_e_of_type_Int));
+    return new Pair(localDecodeProtoPkgContext.t, Integer.valueOf(localDecodeProtoPkgContext.u));
   }
   
   private String a(String paramString)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, this);
+    return u.a(paramString, this);
   }
   
   private String a(String paramString1, String paramString2)
@@ -408,17 +401,12 @@ public class C2CMessageProcessor
   @NonNull
   private String a(msg_comm.UinPairMsg paramUinPairMsg, int paramInt)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramUinPairMsg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramInt);
-  }
-  
-  private List<MessageRecord> a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(String.valueOf(paramLong1), paramLong2 - 30L, paramLong3 + 30L, this);
+    return u.a(paramUinPairMsg, this.q, paramInt);
   }
   
   private List<MessageRecord> a(String paramString, List<msg_comm.Msg> paramList)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramList, this);
+    return u.a(paramString, paramList, this);
   }
   
   @Nullable
@@ -438,7 +426,7 @@ public class C2CMessageProcessor
       paramArrayOfByte = null;
     }
     if (paramArrayOfByte == null) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
     }
     return paramArrayOfByte;
   }
@@ -475,7 +463,7 @@ public class C2CMessageProcessor
     if (paramInt2 == 1006) {
       a(paramString);
     }
-    int i = UinTypeUtil.a(paramInt2);
+    int i = UinTypeUtil.e(paramInt2);
     boolean bool = false;
     if (i == 1032) {
       i = 0;
@@ -494,7 +482,7 @@ public class C2CMessageProcessor
       paramString.append(paramLong);
       QLog.d("Q.msg.C2CMessageProcessor", 2, paramString.toString());
     }
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramUinPairMsg, paramList, paramBoolean, i, this);
+    u.a(paramUinPairMsg, paramList, paramBoolean, i, this);
     paramString = new android.os.Message();
     paramString.what = 1;
     paramList = new Bundle();
@@ -502,7 +490,7 @@ public class C2CMessageProcessor
     paramList.putString("update_unread_uin", paramUinPairMsg);
     paramList.putInt("update_unread_type", i);
     paramString.setData(paramList);
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
+    paramList = this.r;
     paramBoolean = bool;
     if (paramByte <= 0) {
       paramBoolean = true;
@@ -510,17 +498,17 @@ public class C2CMessageProcessor
     paramList.a(paramString, paramBoolean);
     if (paramInt1 == 2)
     {
-      this.b.add(paramUinPairMsg);
+      this.w.add(paramUinPairMsg);
       return;
     }
-    this.jdField_a_of_type_JavaUtilSet.add(paramUinPairMsg);
+    this.v.add(paramUinPairMsg);
   }
   
   private void a(byte paramByte, String paramString, List<msg_comm.Msg> paramList, boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      long l1 = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).g(paramString);
+      long l1 = ((MessageCache)this.q.getMsgCache()).G(paramString);
       long l2 = ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_time.get();
       if (QLog.isColorLevel())
       {
@@ -535,7 +523,7 @@ public class C2CMessageProcessor
         paramList.append(paramByte);
         QLog.d("Q.msg.C2CMessageProcessor", 2, paramList.toString());
       }
-      paramList = (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache();
+      paramList = (MessageCache)this.q.getMsgCache();
       if ((l1 == 0L) || (l2 < l1))
       {
         paramList.b(paramString, l2, 0L);
@@ -544,7 +532,7 @@ public class C2CMessageProcessor
         }
       }
       if (paramByte == 0) {
-        paramList.c();
+        paramList.p();
       }
     }
   }
@@ -553,32 +541,27 @@ public class C2CMessageProcessor
   {
     if (paramByte <= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b();
+      this.r.d();
       if (paramBoolean)
       {
-        a(paramInt, ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).getConversationInfoSet());
+        a(paramInt, ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).getConversationInfoSet());
         if (paramInt == 2) {
-          this.b.clear();
+          this.w.clear();
         } else {
-          this.jdField_a_of_type_JavaUtilSet.clear();
+          this.v.clear();
         }
       }
       MsgAutoMonitorUtil.getInstance().markC2CFinishTime();
-      b(paramInt);
-      ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).i();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a())
+      c(paramInt);
+      ((MessageCache)this.q.getMsgCache()).A();
+      if (this.r.c())
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleGetC2CMessageResp_PB handleMsgNew()");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false, 0);
+        this.r.a(false, 0);
       }
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramInt, this);
   }
   
   private void a(int paramInt, Set<ConversationInfo> paramSet)
@@ -587,7 +570,7 @@ public class C2CMessageProcessor
     while (paramSet.hasNext())
     {
       ConversationInfo localConversationInfo = (ConversationInfo)paramSet.next();
-      if ((localConversationInfo.uin != null) && (localConversationInfo.type != 1036) && (UinTypeUtil.a(localConversationInfo.type) != 1032) && ((paramInt != 1) || (localConversationInfo.type != 1008)) && ((paramInt != 2) || (localConversationInfo.type == 1008)) && ((paramInt == 2) || (this.jdField_a_of_type_JavaUtilSet.size() <= 0) || (!this.jdField_a_of_type_JavaUtilSet.contains(localConversationInfo.uin))) && ((paramInt != 2) || (this.b.size() <= 0) || (!this.b.contains(localConversationInfo.uin)))) {
+      if ((localConversationInfo.uin != null) && (localConversationInfo.type != 1036) && (UinTypeUtil.e(localConversationInfo.type) != 1032) && ((paramInt != 1) || (localConversationInfo.type != 1008)) && ((paramInt != 2) || (localConversationInfo.type == 1008)) && ((paramInt == 2) || (this.v.size() <= 0) || (!this.v.contains(localConversationInfo.uin))) && ((paramInt != 2) || (this.w.size() <= 0) || (!this.w.contains(localConversationInfo.uin)))) {
         a(localConversationInfo);
       }
     }
@@ -603,7 +586,7 @@ public class C2CMessageProcessor
   
   private void a(long paramLong)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramLong);
+    u.a(paramLong);
   }
   
   private void a(long paramLong, HashMap<Long, msg_comm.Msg> paramHashMap, HashSet<Long> paramHashSet)
@@ -637,17 +620,17 @@ public class C2CMessageProcessor
   
   private void a(C2CMsgReadedNotify paramC2CMsgReadedNotify, String paramString)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, paramC2CMsgReadedNotify);
+    u.a(this.q, paramString, paramC2CMsgReadedNotify);
   }
   
   public static void a(C2CMessageProcessor.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback = paramCallback;
+    u = paramCallback;
   }
   
   private static void a(C2CMessageProcessor paramC2CMessageProcessor, msg_comm.UinPairMsg paramUinPairMsg, long paramLong, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<msg_comm.Msg> paramArrayList1, StringBuilder paramStringBuilder, int paramInt)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramC2CMessageProcessor, paramUinPairMsg, paramLong, paramArrayList, paramArrayList1, paramStringBuilder, paramDecodeProtoPkgContext, paramInt);
+    u.a(paramC2CMessageProcessor, paramUinPairMsg, paramLong, paramArrayList, paramArrayList1, paramStringBuilder, paramDecodeProtoPkgContext, paramInt);
   }
   
   private void a(ConversationInfo paramConversationInfo)
@@ -668,7 +651,7 @@ public class C2CMessageProcessor
       }
       if (paramConversationInfo.type == 1001)
       {
-        localObject1 = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).m(paramConversationInfo.uin);
+        localObject1 = ((MessageCache)this.q.getMsgCache()).r(paramConversationInfo.uin);
         if (localObject1 != null)
         {
           if (localObject1.length <= 0) {
@@ -704,7 +687,7 @@ public class C2CMessageProcessor
       ((Bundle)localObject2).putString("update_unread_uin", paramConversationInfo.uin);
       ((Bundle)localObject2).putInt("update_unread_type", paramConversationInfo.type);
       ((android.os.Message)localObject1).setData((Bundle)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((android.os.Message)localObject1, true);
+      this.r.a((android.os.Message)localObject1, true);
     }
   }
   
@@ -733,7 +716,7 @@ public class C2CMessageProcessor
         QLog.w("Q.msg.C2CMessageProcessor", 2, paramFromServiceMsg.toString());
       }
       paramToServiceMsg.extraData.putInt("retryIndex", i + 1);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler").sendPbReq(paramToServiceMsg);
+      this.q.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler").sendPbReq(paramToServiceMsg);
       return;
     }
     a(8015, false, paramFromServiceMsg);
@@ -742,7 +725,7 @@ public class C2CMessageProcessor
   private void a(ToServiceMsg paramToServiceMsg, String paramString)
   {
     long l = paramToServiceMsg.extraData.getLong("lBeginTime");
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, l, 3, this);
+    u.a(paramString, l, 3, this);
   }
   
   /* Error */
@@ -761,40 +744,40 @@ public class C2CMessageProcessor
     //   19: istore 4
     //   21: goto +653 -> 674
     //   24: aload_2
-    //   25: getfield 809	msf/msgsvc/msg_svc$PbGetRoamMsgResp:last_msgtime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   28: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   25: getfield 804	msf/msgsvc/msg_svc$PbGetRoamMsgResp:last_msgtime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   28: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   31: lstore 13
     //   33: aload_1
-    //   34: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   37: ldc_w 811
-    //   40: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   34: getfield 729	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   37: ldc_w 806
+    //   40: invokevirtual 734	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   43: lstore 15
     //   45: iload 9
     //   47: ifne +78 -> 125
     //   50: aload_0
     //   51: aload 8
     //   53: aload 10
-    //   55: invokespecial 814	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   55: invokespecial 809	com/tencent/imcore/message/C2CMessageProcessor:b	(Ljava/lang/String;Ljava/util/List;)V
     //   58: aload_2
-    //   59: getfield 817	msf/msgsvc/msg_svc$PbGetRoamMsgResp:random	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   62: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   59: getfield 812	msf/msgsvc/msg_svc$PbGetRoamMsgResp:random	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   62: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   65: lstore 17
     //   67: aload_0
-    //   68: invokespecial 819	com/tencent/imcore/message/C2CMessageProcessor:a	()[B
+    //   68: invokespecial 814	com/tencent/imcore/message/C2CMessageProcessor:c	()[B
     //   71: astore 10
     //   73: aload_0
-    //   74: invokespecial 821	com/tencent/imcore/message/C2CMessageProcessor:a	()I
+    //   74: invokespecial 816	com/tencent/imcore/message/C2CMessageProcessor:b	()I
     //   77: istore 11
     //   79: aload_1
-    //   80: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   83: ldc_w 743
-    //   86: invokevirtual 747	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   80: getfield 729	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   83: ldc_w 738
+    //   86: invokevirtual 742	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   89: istore 12
     //   91: aload_0
-    //   92: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   92: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
     //   95: aload 8
     //   97: aload_3
-    //   98: invokevirtual 824	java/lang/Long:longValue	()J
+    //   98: invokevirtual 819	java/lang/Long:longValue	()J
     //   101: lload 13
     //   103: lload 15
     //   105: iconst_0
@@ -806,87 +789,87 @@ public class C2CMessageProcessor
     //   115: iload 4
     //   117: iload 5
     //   119: iload 6
-    //   121: invokevirtual 827	com/tencent/mobileqq/app/BaseMessageHandler:a	(Ljava/lang/String;JJJSJI[BIZIZZ)V
+    //   121: invokevirtual 822	com/tencent/mobileqq/app/BaseMessageHandler:a	(Ljava/lang/String;JJJSJI[BIZIZZ)V
     //   124: return
-    //   125: new 284	java/util/ArrayList
+    //   125: new 287	java/util/ArrayList
     //   128: dup
     //   129: aload 10
-    //   131: invokespecial 830	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   131: invokespecial 825	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   134: astore 21
     //   136: aload_0
-    //   137: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
-    //   140: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   137: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   140: getfield 828	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
     //   143: aload 8
-    //   145: invokevirtual 836	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   145: invokevirtual 831	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   148: ifeq +37 -> 185
     //   151: aload 21
     //   153: aload_0
-    //   154: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
-    //   157: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   154: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   157: getfield 828	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
     //   160: aload 8
-    //   162: invokevirtual 672	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   165: checkcast 838	java/util/Collection
-    //   168: invokevirtual 842	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   162: invokevirtual 668	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   165: checkcast 833	java/util/Collection
+    //   168: invokevirtual 837	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   171: pop
     //   172: aload_0
-    //   173: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
-    //   176: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   173: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   176: getfield 828	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
     //   179: aload 8
-    //   181: invokevirtual 663	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   181: invokevirtual 659	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   184: pop
     //   185: aload 21
-    //   187: invokevirtual 287	java/util/ArrayList:isEmpty	()Z
+    //   187: invokevirtual 290	java/util/ArrayList:isEmpty	()Z
     //   190: ifeq +38 -> 228
     //   193: iconst_2
-    //   194: anewarray 844	java/lang/Object
+    //   194: anewarray 839	java/lang/Object
     //   197: iconst_0
     //   198: iconst_1
-    //   199: invokestatic 849	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   199: invokestatic 844	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   202: aastore
     //   203: aload 7
-    //   205: ldc_w 851
-    //   208: getstatic 855	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   211: invokevirtual 858	java/lang/Boolean:booleanValue	()Z
-    //   214: invokevirtual 751	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   205: ldc_w 846
+    //   208: getstatic 850	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   211: invokevirtual 853	java/lang/Boolean:booleanValue	()Z
+    //   214: invokevirtual 746	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   217: aload_0
     //   218: sipush 1004
     //   221: iconst_0
     //   222: aload 7
-    //   224: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   224: invokevirtual 749	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   227: return
     //   228: aload_1
-    //   229: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   232: ldc_w 736
-    //   235: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   229: getfield 729	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   232: ldc_w 731
+    //   235: invokevirtual 734	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   238: lstore 17
-    //   240: new 284	java/util/ArrayList
+    //   240: new 287	java/util/ArrayList
     //   243: dup
-    //   244: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   244: invokespecial 316	java/util/ArrayList:<init>	()V
     //   247: astore 22
     //   249: aload_0
     //   250: aload 21
     //   252: lload 17
     //   254: lload 15
     //   256: aload 22
-    //   258: invokespecial 861	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;JJLjava/util/ArrayList;)V
+    //   258: invokespecial 856	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;JJLjava/util/ArrayList;)V
     //   261: aload_0
     //   262: aload 8
     //   264: aload 22
-    //   266: invokespecial 863	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+    //   266: invokespecial 858	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
     //   269: astore 23
-    //   271: new 284	java/util/ArrayList
+    //   271: new 287	java/util/ArrayList
     //   274: dup
-    //   275: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   275: invokespecial 316	java/util/ArrayList:<init>	()V
     //   278: astore 10
     //   280: aload_0
     //   281: aload_2
     //   282: aload 22
     //   284: aload 8
-    //   286: invokestatic 866	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   289: invokespecial 868	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgsvc/msg_svc$PbGetRoamMsgResp;Ljava/util/ArrayList;J)J
+    //   286: invokestatic 861	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   289: invokespecial 863	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgsvc/msg_svc$PbGetRoamMsgResp;Ljava/util/ArrayList;J)J
     //   292: lstore 17
     //   294: aload_3
-    //   295: invokevirtual 824	java/lang/Long:longValue	()J
+    //   295: invokevirtual 819	java/lang/Long:longValue	()J
     //   298: lstore 19
     //   300: aload 10
     //   302: aload_0
@@ -895,133 +878,133 @@ public class C2CMessageProcessor
     //   307: lload 17
     //   309: lload 19
     //   311: lload 15
-    //   313: invokespecial 870	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/List;JJJ)Landroid/util/Pair;
-    //   316: getfield 249	android/util/Pair:second	Ljava/lang/Object;
-    //   319: checkcast 838	java/util/Collection
-    //   322: invokevirtual 842	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   313: invokespecial 865	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/List;JJJ)Landroid/util/Pair;
+    //   316: getfield 248	android/util/Pair:second	Ljava/lang/Object;
+    //   319: checkcast 833	java/util/Collection
+    //   322: invokevirtual 837	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   325: pop
-    //   326: new 367	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
+    //   326: new 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
     //   329: dup
     //   330: aload_0
-    //   331: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   334: invokevirtual 365	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   337: invokestatic 866	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   331: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   334: invokevirtual 368	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   337: invokestatic 861	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   340: lload 17
     //   342: iconst_1
     //   343: iconst_1
     //   344: iconst_0
     //   345: iconst_0
-    //   346: invokespecial 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
+    //   346: invokespecial 373	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
     //   349: astore_3
     //   350: aload_3
     //   351: iconst_1
-    //   352: putfield 873	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:h	Z
+    //   352: putfield 868	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:n	Z
     //   355: aload_0
     //   356: aload 22
     //   358: aload 10
     //   360: aload_3
-    //   361: invokespecial 876	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/mobileqq/service/message/DecodeProtoPkgContext;)V
+    //   361: invokespecial 871	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/mobileqq/service/message/DecodeProtoPkgContext;)V
     //   364: aload_0
     //   365: iload 6
     //   367: aload 8
     //   369: aload 10
-    //   371: invokespecial 879	com/tencent/imcore/message/C2CMessageProcessor:a	(ZLjava/lang/String;Ljava/util/ArrayList;)V
+    //   371: invokespecial 874	com/tencent/imcore/message/C2CMessageProcessor:a	(ZLjava/lang/String;Ljava/util/ArrayList;)V
     //   374: aload_0
-    //   375: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   378: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
-    //   381: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   375: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   378: invokevirtual 402	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   381: checkcast 404	com/tencent/mobileqq/service/message/MessageCache
     //   384: aload_2
-    //   385: getfield 308	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   388: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   391: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   394: invokevirtual 882	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;)Landroid/util/Pair;
+    //   385: getfield 311	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   388: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   391: invokestatic 172	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   394: invokevirtual 878	com/tencent/mobileqq/service/message/MessageCache:N	(Ljava/lang/String;)Landroid/util/Pair;
     //   397: astore_3
     //   398: aload_3
     //   399: ifnull +19 -> 418
     //   402: aload_3
-    //   403: getfield 246	android/util/Pair:first	Ljava/lang/Object;
-    //   406: checkcast 660	java/lang/Long
-    //   409: invokevirtual 824	java/lang/Long:longValue	()J
+    //   403: getfield 245	android/util/Pair:first	Ljava/lang/Object;
+    //   406: checkcast 656	java/lang/Long
+    //   409: invokevirtual 819	java/lang/Long:longValue	()J
     //   412: lload 13
     //   414: lcmp
     //   415: ifle +37 -> 452
     //   418: aload_0
-    //   419: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   422: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
-    //   425: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   419: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   422: invokevirtual 402	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   425: checkcast 404	com/tencent/mobileqq/service/message/MessageCache
     //   428: aload_2
-    //   429: getfield 308	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   432: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   435: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   429: getfield 311	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   432: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   435: invokestatic 172	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   438: aload_1
-    //   439: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   442: ldc_w 736
-    //   445: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   439: getfield 729	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   442: ldc_w 731
+    //   445: invokevirtual 734	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   448: lconst_0
-    //   449: invokevirtual 583	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;JJ)V
+    //   449: invokevirtual 580	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;JJ)V
     //   452: aload_0
     //   453: aload_1
     //   454: aload 8
-    //   456: invokespecial 884	com/tencent/imcore/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Ljava/lang/String;)V
-    //   459: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   456: invokespecial 880	com/tencent/imcore/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Ljava/lang/String;)V
+    //   459: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   462: istore 5
     //   464: iload 5
     //   466: ifeq +280 -> 746
-    //   469: new 83	java/lang/StringBuilder
+    //   469: new 80	java/lang/StringBuilder
     //   472: dup
-    //   473: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   473: invokespecial 81	java/lang/StringBuilder:<init>	()V
     //   476: astore_1
     //   477: aload_1
-    //   478: ldc_w 886
-    //   481: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   478: ldc_w 882
+    //   481: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   484: pop
     //   485: aload_1
     //   486: aload 21
-    //   488: invokevirtual 386	java/util/ArrayList:size	()I
-    //   491: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   488: invokevirtual 390	java/util/ArrayList:size	()I
+    //   491: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: aload_1
-    //   496: ldc_w 888
-    //   499: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   496: ldc_w 884
+    //   499: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   502: pop
     //   503: aload_1
     //   504: aload 22
-    //   506: invokevirtual 386	java/util/ArrayList:size	()I
-    //   509: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   506: invokevirtual 390	java/util/ArrayList:size	()I
+    //   509: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   512: pop
     //   513: aload_1
-    //   514: ldc_w 890
-    //   517: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   514: ldc_w 886
+    //   517: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   520: pop
     //   521: aload_1
     //   522: aload 10
-    //   524: invokevirtual 386	java/util/ArrayList:size	()I
-    //   527: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   524: invokevirtual 390	java/util/ArrayList:size	()I
+    //   527: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   530: pop
     //   531: aload_1
-    //   532: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   532: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   535: astore_1
-    //   536: ldc 101
+    //   536: ldc 98
     //   538: iconst_2
     //   539: aload_1
-    //   540: invokestatic 789	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   540: invokestatic 784	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   543: goto +3 -> 546
     //   546: aload 10
-    //   548: invokevirtual 386	java/util/ArrayList:size	()I
+    //   548: invokevirtual 390	java/util/ArrayList:size	()I
     //   551: istore 11
     //   553: aload 7
     //   555: astore_1
     //   556: aload_1
-    //   557: ldc_w 892
+    //   557: ldc_w 888
     //   560: iload 4
     //   562: iload 11
     //   564: isub
-    //   565: invokevirtual 558	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   565: invokevirtual 555	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   568: aload_0
     //   569: sipush 1004
     //   572: iconst_1
     //   573: aload_1
-    //   574: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   574: invokevirtual 749	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   577: iconst_1
     //   578: istore 4
     //   580: goto +94 -> 674
@@ -1047,55 +1030,55 @@ public class C2CMessageProcessor
     //   620: goto +31 -> 651
     //   623: astore_1
     //   624: aload_1
-    //   625: invokevirtual 893	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   628: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   625: invokevirtual 889	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   628: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   631: ifeq +13 -> 644
-    //   634: ldc 101
+    //   634: ldc 98
     //   636: iconst_2
-    //   637: ldc_w 895
+    //   637: ldc_w 891
     //   640: aload_1
-    //   641: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   641: invokestatic 509	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   644: iconst_0
     //   645: istore 4
     //   647: goto +27 -> 674
     //   650: astore_1
     //   651: aload_1
-    //   652: invokevirtual 258	java/lang/Exception:printStackTrace	()V
-    //   655: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   652: invokevirtual 257	java/lang/Exception:printStackTrace	()V
+    //   655: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   658: ifeq -14 -> 644
-    //   661: ldc 101
+    //   661: ldc 98
     //   663: iconst_2
-    //   664: ldc_w 897
+    //   664: ldc_w 893
     //   667: aload_1
-    //   668: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   668: invokestatic 509	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   671: goto -27 -> 644
     //   674: iload 4
     //   676: ifne +61 -> 737
     //   679: aload_0
-    //   680: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
-    //   683: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   680: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   683: getfield 828	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
     //   686: aload 8
-    //   688: invokevirtual 663	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   688: invokevirtual 659	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   691: pop
     //   692: aload 7
-    //   694: ldc_w 899
+    //   694: ldc_w 895
     //   697: iload 9
-    //   699: invokevirtual 558	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   699: invokevirtual 555	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   702: aload_2
-    //   703: getfield 903	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   706: invokevirtual 906	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   703: getfield 899	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   706: invokevirtual 902	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   709: ifeq +18 -> 727
     //   712: aload 7
-    //   714: ldc_w 908
+    //   714: ldc_w 904
     //   717: aload_2
-    //   718: getfield 903	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   721: invokevirtual 910	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   724: invokevirtual 553	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   718: getfield 899	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   721: invokevirtual 906	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   724: invokevirtual 550	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   727: aload_0
     //   728: sipush 1004
     //   731: iconst_0
     //   732: aload 7
-    //   734: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   734: invokevirtual 749	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   737: return
     //   738: astore_1
     //   739: goto -139 -> 600
@@ -1158,36 +1141,9 @@ public class C2CMessageProcessor
     //   469	536	742	java/lang/Exception
   }
   
-  private void a(String paramString)
-  {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString);
-  }
-  
-  private void a(String paramString, List<msg_comm.Msg> paramList)
-  {
-    if (paramList.size() > 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.containsKey(paramString))
-      {
-        paramString = (List)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.get(paramString);
-        if (paramString.size() == 0)
-        {
-          paramString.addAll(0, paramList);
-          return;
-        }
-        if ((((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_uid.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_uid.get()) || (((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_seq.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_seq.get())) {
-          paramString.addAll(0, paramList);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.put(paramString, paramList);
-      }
-    }
-  }
-  
   private void a(String paramString1, boolean paramBoolean, ArrayList<MessageRecord> paramArrayList, String paramString2, int paramInt)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString1, paramBoolean, paramArrayList, paramString2, paramInt, this);
+    u.a(paramString1, paramBoolean, paramArrayList, paramString2, paramInt, this);
   }
   
   private void a(ArrayList<msg_comm.Msg> paramArrayList1, long paramLong1, long paramLong2, ArrayList<msg_comm.Msg> paramArrayList2)
@@ -1240,7 +1196,7 @@ public class C2CMessageProcessor
           QLog.d("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C msg uin not selfUin and toUin : ");
           break;
           Object localObject1;
-          paramDecodeProtoPkgContext.g = localObject1;
+          paramDecodeProtoPkgContext.x = localObject1;
           paramArrayList = a(paramArrayList, paramDecodeProtoPkgContext);
           if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
             break;
@@ -1352,22 +1308,7 @@ public class C2CMessageProcessor
   
   private void a(List<MessageRecord> paramList)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramList);
-  }
-  
-  private void a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
-  {
-    Pair localPair = super.a(paramList1, paramList2);
-    if ((((Boolean)localPair.first).booleanValue()) && (QLog.isColorLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder("<---C2CMessagePackage:msgFilter_OnePkg ");
-      localStringBuilder.append((CharSequence)localPair.second);
-      localStringBuilder.append(" inListSize:");
-      localStringBuilder.append(paramList1.size());
-      localStringBuilder.append(" outListSize:");
-      localStringBuilder.append(paramList2.size());
-      QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
-    }
+    u.a(paramList);
   }
   
   private void a(List<msg_comm.Msg> paramList, List<MessageRecord> paramList1, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
@@ -1407,167 +1348,167 @@ public class C2CMessageProcessor
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 294	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
-    //   4: invokevirtual 299	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   7: checkcast 296	msf/msgcomm/msg_comm$MsgHead
+    //   1: getfield 297	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   4: invokevirtual 302	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   7: checkcast 299	msf/msgcomm/msg_comm$MsgHead
     //   10: astore 23
     //   12: aload 23
-    //   14: getfield 1021	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   17: invokevirtual 70	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   14: getfield 993	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   17: invokevirtual 66	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   20: ifne +19 -> 39
-    //   23: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +12 -> 38
-    //   29: ldc 101
+    //   29: ldc 98
     //   31: iconst_2
-    //   32: ldc_w 1023
-    //   35: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: ldc_w 995
+    //   35: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: return
     //   39: aload 23
-    //   41: getfield 1021	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   44: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   41: getfield 993	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   44: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   47: i2l
     //   48: lstore 6
     //   50: aload 23
-    //   52: getfield 302	msf/msgcomm/msg_comm$MsgHead:from_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   55: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   52: getfield 305	msf/msgcomm/msg_comm$MsgHead:from_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   55: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   58: lstore 8
     //   60: aload 23
-    //   62: getfield 305	msf/msgcomm/msg_comm$MsgHead:to_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   65: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   62: getfield 308	msf/msgcomm/msg_comm$MsgHead:to_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   65: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   68: lstore 10
     //   70: aload 23
-    //   72: getfield 340	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   75: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   72: getfield 343	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   75: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   78: i2l
     //   79: lstore 12
     //   81: aload 23
-    //   83: getfield 576	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   86: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   83: getfield 573	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   86: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   89: i2l
     //   90: lstore 14
     //   92: aload 23
-    //   94: getfield 337	msf/msgcomm/msg_comm$MsgHead:msg_uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   97: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   94: getfield 340	msf/msgcomm/msg_comm$MsgHead:msg_uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   97: invokevirtual 166	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   100: lstore 16
     //   102: aload 23
-    //   104: getfield 1026	msf/msgcomm/msg_comm$MsgHead:user_active	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   107: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   104: getfield 998	msf/msgcomm/msg_comm$MsgHead:user_active	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   107: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   110: istore 4
     //   112: aload 23
-    //   114: getfield 1029	msf/msgcomm/msg_comm$MsgHead:from_instid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   117: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   114: getfield 1001	msf/msgcomm/msg_comm$MsgHead:from_instid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   117: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   120: istore 5
     //   122: aload_2
-    //   123: invokevirtual 1034	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   123: invokevirtual 1006	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
     //   126: ifnonnull +15 -> 141
     //   129: aload_0
-    //   130: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   133: invokevirtual 365	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   130: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   133: invokevirtual 368	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   136: astore 22
     //   138: goto +9 -> 147
     //   141: aload_2
-    //   142: invokevirtual 1034	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   142: invokevirtual 1006	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
     //   145: astore 22
     //   147: aload 22
-    //   149: invokestatic 1037	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   152: invokevirtual 824	java/lang/Long:longValue	()J
+    //   149: invokestatic 1009	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   152: invokevirtual 819	java/lang/Long:longValue	()J
     //   155: lstore 18
-    //   157: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   157: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   160: ifeq +189 -> 349
-    //   163: new 83	java/lang/StringBuilder
+    //   163: new 80	java/lang/StringBuilder
     //   166: dup
-    //   167: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   167: invokespecial 81	java/lang/StringBuilder:<init>	()V
     //   170: astore 22
     //   172: aload 22
-    //   174: ldc_w 1039
-    //   177: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: ldc_w 1011
+    //   177: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 22
     //   183: lload 8
-    //   185: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   188: pop
     //   189: aload 22
-    //   191: ldc_w 1041
-    //   194: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: ldc_w 1013
+    //   194: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: pop
     //   198: aload 22
     //   200: lload 10
-    //   202: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   205: pop
     //   206: aload 22
-    //   208: ldc_w 1043
-    //   211: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: ldc_w 1015
+    //   211: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   214: pop
     //   215: aload 22
     //   217: lload 14
-    //   219: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   219: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   222: pop
     //   223: aload 22
-    //   225: ldc_w 1045
-    //   228: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: ldc_w 1017
+    //   228: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: pop
     //   232: aload 22
     //   234: lload 12
-    //   236: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   239: pop
     //   240: aload 22
-    //   242: ldc_w 1047
-    //   245: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: ldc_w 1019
+    //   245: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: pop
     //   249: aload 22
     //   251: lload 16
-    //   253: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: aload 22
-    //   259: ldc_w 1049
-    //   262: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: ldc_w 1021
+    //   262: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   265: pop
     //   266: aload 22
     //   268: iload 4
-    //   270: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   270: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   273: pop
     //   274: aload 22
-    //   276: ldc_w 1051
-    //   279: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: ldc_w 1023
+    //   279: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   282: pop
     //   283: aload 22
     //   285: iload 5
-    //   287: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   287: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   290: pop
     //   291: aload 22
-    //   293: ldc_w 1053
-    //   296: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: ldc_w 1025
+    //   296: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   299: pop
     //   300: aload 22
     //   302: aload_1
-    //   303: getfield 1057	msf/msgcomm/msg_comm$Msg:appshare_info	Lmsf/msgcomm/msg_comm$AppShareInfo;
-    //   306: invokevirtual 1060	msf/msgcomm/msg_comm$AppShareInfo:has	()Z
-    //   309: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   303: getfield 1029	msf/msgcomm/msg_comm$Msg:appshare_info	Lmsf/msgcomm/msg_comm$AppShareInfo;
+    //   306: invokevirtual 1032	msf/msgcomm/msg_comm$AppShareInfo:has	()Z
+    //   309: invokevirtual 200	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   312: pop
     //   313: aload 22
-    //   315: ldc_w 1062
-    //   318: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: ldc_w 1034
+    //   318: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: pop
     //   322: aload 22
     //   324: aload_1
-    //   325: getfield 676	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
-    //   328: invokevirtual 679	tencent/im/msg/im_msg_body$MsgBody:has	()Z
-    //   331: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   325: getfield 672	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
+    //   328: invokevirtual 675	tencent/im/msg/im_msg_body$MsgBody:has	()Z
+    //   331: invokevirtual 200	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   334: pop
-    //   335: ldc 101
+    //   335: ldc 98
     //   337: iconst_2
     //   338: aload 22
-    //   340: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   343: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   340: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   346: goto +3 -> 349
     //   349: aload_0
     //   350: iload 4
-    //   352: invokespecial 1064	com/tencent/imcore/message/C2CMessageProcessor:a	(I)V
-    //   355: new 284	java/util/ArrayList
+    //   352: invokespecial 1036	com/tencent/imcore/message/C2CMessageProcessor:b	(I)V
+    //   355: new 287	java/util/ArrayList
     //   358: dup
-    //   359: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   359: invokespecial 316	java/util/ArrayList:<init>	()V
     //   362: astore 22
-    //   364: new 367	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
+    //   364: new 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
     //   367: dup
     //   368: lload 18
     //   370: lload 8
@@ -1575,86 +1516,86 @@ public class C2CMessageProcessor
     //   373: iconst_0
     //   374: iconst_0
     //   375: iconst_0
-    //   376: invokespecial 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
+    //   376: invokespecial 373	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
     //   379: astore 24
     //   381: aload 24
     //   383: iconst_1
-    //   384: putfield 873	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:h	Z
+    //   384: putfield 868	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:n	Z
     //   387: aload_0
     //   388: aload_1
     //   389: aload 24
-    //   391: invokevirtual 936	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/service/message/PBDecodeContext;)Ljava/util/List;
+    //   391: invokevirtual 925	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/service/message/PBDecodeContext;)Ljava/util/List;
     //   394: astore_1
     //   395: goto +31 -> 426
     //   398: astore_1
     //   399: goto +5 -> 404
     //   402: astore 24
     //   404: aload_1
-    //   405: invokevirtual 258	java/lang/Exception:printStackTrace	()V
-    //   408: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   405: invokevirtual 257	java/lang/Exception:printStackTrace	()V
+    //   408: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   411: ifeq +13 -> 424
-    //   414: ldc 101
+    //   414: ldc 98
     //   416: iconst_2
-    //   417: ldc_w 1066
+    //   417: ldc_w 1038
     //   420: aload_1
-    //   421: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   421: invokestatic 509	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   424: aconst_null
     //   425: astore_1
     //   426: aload_0
     //   427: aload_1
-    //   428: invokespecial 1067	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;)V
+    //   428: invokespecial 1039	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;)V
     //   431: aload_1
     //   432: ifnull +285 -> 717
     //   435: aload_1
-    //   436: invokeinterface 152 1 0
+    //   436: invokeinterface 149 1 0
     //   441: ifne +4 -> 445
     //   444: return
     //   445: aload_0
     //   446: aload_1
     //   447: aload 22
     //   449: iconst_1
-    //   450: invokevirtual 1070	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/ArrayList;Z)V
-    //   453: new 284	java/util/ArrayList
+    //   450: invokevirtual 1042	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/ArrayList;Z)V
+    //   453: new 287	java/util/ArrayList
     //   456: dup
-    //   457: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   457: invokespecial 316	java/util/ArrayList:<init>	()V
     //   460: astore_1
-    //   461: new 284	java/util/ArrayList
+    //   461: new 287	java/util/ArrayList
     //   464: dup
-    //   465: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   465: invokespecial 316	java/util/ArrayList:<init>	()V
     //   468: astore 24
     //   470: aload_0
     //   471: aload 22
     //   473: aload_1
     //   474: aload 24
-    //   476: invokespecial 1072	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+    //   476: invokespecial 1044	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
     //   479: aload_0
-    //   480: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   483: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
-    //   486: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   480: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   483: invokevirtual 402	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   486: checkcast 404	com/tencent/mobileqq/service/message/MessageCache
     //   489: aload 24
-    //   491: invokevirtual 401	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/util/List;)V
+    //   491: invokevirtual 405	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/util/List;)V
     //   494: aload 24
-    //   496: invokestatic 1075	com/tencent/mobileqq/app/BaseMessageHandlerUtils:a	(Ljava/util/ArrayList;)Z
+    //   496: invokestatic 1048	com/tencent/mobileqq/app/BaseMessageHandlerUtils:a	(Ljava/util/ArrayList;)Z
     //   499: istore 21
     //   501: aload 22
     //   503: aload_0
-    //   504: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   507: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
-    //   510: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
-    //   513: invokestatic 413	com/tencent/imcore/message/MsgProxyUtils:a	(Ljava/util/List;Lcom/tencent/mobileqq/service/message/MessageCache;)I
+    //   504: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   507: invokevirtual 402	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   510: checkcast 404	com/tencent/mobileqq/service/message/MessageCache
+    //   513: invokestatic 417	com/tencent/imcore/message/MsgProxyUtils:a	(Ljava/util/List;Lcom/tencent/mobileqq/service/message/MessageCache;)I
     //   516: istore 4
     //   518: aload_0
-    //   519: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   522: ldc 50
-    //   524: ldc 52
-    //   526: invokevirtual 58	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   529: checkcast 50	com/tencent/mobileqq/msg/api/IMessageFacade
+    //   519: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   522: ldc 46
+    //   524: ldc 48
+    //   526: invokevirtual 54	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   529: checkcast 46	com/tencent/mobileqq/msg/api/IMessageFacade
     //   532: astore 22
     //   534: iload 21
     //   536: ifeq +19 -> 555
     //   539: aload_0
-    //   540: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   543: getfield 419	com/tencent/common/app/AppInterface:isBackgroundStop	Z
+    //   540: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   543: getfield 424	com/tencent/common/app/AppInterface:isBackgroundStop	Z
     //   546: ifeq +9 -> 555
     //   549: iconst_1
     //   550: istore 20
@@ -1664,34 +1605,34 @@ public class C2CMessageProcessor
     //   558: aload 22
     //   560: aload 24
     //   562: lload 18
-    //   564: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   564: invokestatic 172	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   567: iload 20
-    //   569: invokeinterface 423 4 0
+    //   569: invokeinterface 428 4 0
     //   574: aload_0
-    //   575: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   578: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
-    //   581: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   575: getfield 44	com/tencent/imcore/message/C2CMessageProcessor:q	Lcom/tencent/common/app/AppInterface;
+    //   578: invokevirtual 402	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   581: checkcast 404	com/tencent/mobileqq/service/message/MessageCache
     //   584: aload 23
-    //   586: getfield 340	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   589: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   592: invokevirtual 1076	com/tencent/mobileqq/service/message/MessageCache:a	(I)V
+    //   586: getfield 343	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   589: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   592: invokevirtual 1050	com/tencent/mobileqq/service/message/MessageCache:a	(I)V
     //   595: aload_2
-    //   596: invokevirtual 1079	com/tencent/qphone/base/remote/FromServiceMsg:getRequestSsoSeq	()I
+    //   596: invokevirtual 1053	com/tencent/qphone/base/remote/FromServiceMsg:getRequestSsoSeq	()I
     //   599: istore 5
     //   601: aload_3
-    //   602: getfield 1084	msf/onlinepush/msg_onlinepush$PbPushMsg:bytes_push_token	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   605: invokevirtual 132	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   608: invokevirtual 1087	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   602: getfield 1058	msf/onlinepush/msg_onlinepush$PbPushMsg:bytes_push_token	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   605: invokevirtual 129	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   608: invokevirtual 1061	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   611: astore_2
-    //   612: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   612: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   615: ifeq +41 -> 656
-    //   618: ldc 101
+    //   618: ldc 98
     //   620: iconst_2
     //   621: iconst_5
-    //   622: anewarray 844	java/lang/Object
+    //   622: anewarray 839	java/lang/Object
     //   625: dup
     //   626: iconst_0
-    //   627: ldc_w 1089
+    //   627: ldc_w 1063
     //   630: aastore
     //   631: dup
     //   632: iconst_1
@@ -1699,46 +1640,46 @@ public class C2CMessageProcessor
     //   634: aastore
     //   635: dup
     //   636: iconst_2
-    //   637: ldc_w 1091
+    //   637: ldc_w 1065
     //   640: aastore
     //   641: dup
     //   642: iconst_3
-    //   643: ldc_w 1093
+    //   643: ldc_w 1067
     //   646: aastore
     //   647: dup
     //   648: iconst_4
-    //   649: ldc_w 1095
+    //   649: ldc_w 1069
     //   652: aastore
-    //   653: invokestatic 1098	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   653: invokestatic 1072	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   656: aload_0
-    //   657: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   657: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
     //   660: lload 8
     //   662: aload_1
     //   663: aload_3
-    //   664: getfield 1102	msf/onlinepush/msg_onlinepush$PbPushMsg:svrip	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   667: invokevirtual 1105	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   664: getfield 1076	msf/onlinepush/msg_onlinepush$PbPushMsg:svrip	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   667: invokevirtual 1079	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   670: iload 5
     //   672: aload_3
-    //   673: invokevirtual 1108	com/tencent/mobileqq/app/BaseMessageHandler:a	(JLjava/util/ArrayList;IILmsf/onlinepush/msg_onlinepush$PbPushMsg;)V
+    //   673: invokevirtual 1082	com/tencent/mobileqq/app/BaseMessageHandler:a	(JLjava/util/ArrayList;IILmsf/onlinepush/msg_onlinepush$PbPushMsg;)V
     //   676: lload 6
-    //   678: ldc2_w 1109
+    //   678: ldc2_w 1083
     //   681: lcmp
     //   682: ifne +4 -> 686
     //   685: return
     //   686: aload_0
-    //   687: ldc_w 1112
+    //   687: ldc_w 1086
     //   690: iconst_1
     //   691: iload 4
     //   693: aload_0
-    //   694: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   694: getfield 231	com/tencent/imcore/message/C2CMessageProcessor:r	Lcom/tencent/mobileqq/app/BaseMessageHandler;
     //   697: iload 21
-    //   699: invokevirtual 1115	com/tencent/mobileqq/app/BaseMessageHandler:a	(Z)Z
+    //   699: invokevirtual 1089	com/tencent/mobileqq/app/BaseMessageHandler:a	(Z)Z
     //   702: iconst_0
-    //   703: invokevirtual 431	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;ZIZZ)V
-    //   706: getstatic 39	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback	Lcom/tencent/imcore/message/C2CMessageProcessor$Callback;
+    //   703: invokevirtual 435	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;ZIZZ)V
+    //   706: getstatic 276	com/tencent/imcore/message/C2CMessageProcessor:u	Lcom/tencent/imcore/message/C2CMessageProcessor$Callback;
     //   709: aload 24
     //   711: aload_0
-    //   712: invokeinterface 1118 3 0
+    //   712: invokeinterface 1092 3 0
     //   717: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1765,7 +1706,7 @@ public class C2CMessageProcessor
   
   private void a(msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext, BaseMessageHandler paramBaseMessageHandler)
   {
-    Iterator localIterator = ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().a().a().iterator();
+    Iterator localIterator = ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).getRegistry().i().a().iterator();
     while (localIterator.hasNext()) {
       ((Decoder)localIterator.next()).a(paramBaseMessageHandler, paramMsg, paramArrayList, paramDecodeProtoPkgContext);
     }
@@ -1791,9 +1732,9 @@ public class C2CMessageProcessor
       if ((bool2) && (bool3))
       {
         if (bool1) {
-          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(String.valueOf(l), 0L, 0L);
+          ((MessageCache)this.q.getMsgCache()).b(String.valueOf(l), 0L, 0L);
         } else {
-          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), paramPbGetOneDayRoamMsgResp.last_msgtime.get(), paramPbGetOneDayRoamMsgResp.random.get());
+          ((MessageCache)this.q.getMsgCache()).b(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), paramPbGetOneDayRoamMsgResp.last_msgtime.get(), paramPbGetOneDayRoamMsgResp.random.get());
         }
       }
       else if (!bool3) {
@@ -1814,14 +1755,14 @@ public class C2CMessageProcessor
       ArrayList localArrayList = new ArrayList();
       try
       {
-        ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).handleRefreshMessageListHeadResult(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), 0, paramArrayList, localArrayList, paramBundle);
+        ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).handleRefreshMessageListHeadResult(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), 0, paramArrayList, localArrayList, paramBundle);
       }
       catch (Exception paramPbGetOneDayRoamMsgResp)
       {
         paramPbGetOneDayRoamMsgResp.printStackTrace();
       }
       if (paramArrayList != null) {
-        jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(localArrayList, this);
+        u.a(localArrayList, this);
       }
     }
   }
@@ -1838,10 +1779,10 @@ public class C2CMessageProcessor
     else
     {
       ArrayList localArrayList2 = new ArrayList();
-      a(paramPbSearchRoamMsgInCloudResp, localArrayList2);
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      b(paramPbSearchRoamMsgInCloudResp, localArrayList2);
+      long l = Long.parseLong(this.q.getCurrentAccountUin());
       Object localObject = new DecodeProtoPkgContext(l, 0L, true, true, false, false);
-      ((DecodeProtoPkgContext)localObject).h = true;
+      ((DecodeProtoPkgContext)localObject).n = true;
       ArrayList localArrayList1 = new ArrayList();
       a(localArrayList2, l, (DecodeProtoPkgContext)localObject, localArrayList1);
       if (localArrayList1.size() > 0) {
@@ -1883,7 +1824,7 @@ public class C2CMessageProcessor
         paramInt1 = paramToServiceMsg.extraData.getInt("retryIndex");
         if (paramInt1 < 4)
         {
-          ((BaseMessageHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler")).a(paramInt2, null, paramToServiceMsg.extraData.getString("keyword"), paramToServiceMsg.extraData.getLong("sequence"), paramPbSearchRoamMsgInCloudResp, paramInt1 + 1, 0L);
+          ((BaseMessageHandler)this.q.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler")).a(paramInt2, null, paramToServiceMsg.extraData.getString("keyword"), paramToServiceMsg.extraData.getLong("sequence"), paramPbSearchRoamMsgInCloudResp, paramInt1 + 1, 0L);
           return;
         }
         if (QLog.isColorLevel()) {
@@ -1912,13 +1853,13 @@ public class C2CMessageProcessor
       }
       Collections.sort(paramArrayList, new C2CMessageProcessor.2(this));
       b(paramBoolean, paramString, paramArrayList);
-      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, this);
+      u.a(paramArrayList, this);
     }
   }
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache();
+    MessageCache localMessageCache = (MessageCache)this.q.getMsgCache();
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -1927,27 +1868,27 @@ public class C2CMessageProcessor
           return;
         }
         localMessageCache.b(paramArrayOfByte2);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(false);
+        this.r.c(false);
         return;
       }
       localMessageCache.a(paramArrayOfByte1);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
+      this.r.b(false);
       return;
     }
     localMessageCache.a(paramArrayOfByte1);
     localMessageCache.b(paramArrayOfByte1);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(false);
+    this.r.b(false);
+    this.r.c(false);
   }
   
   private boolean a(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramMessageRecord, this);
+    return u.a(paramMessageRecord, this);
   }
   
   public static boolean a(StringBuilder paramStringBuilder, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2, AppInterface paramAppInterface)
   {
-    paramLong2 = ((MessageCache)paramAppInterface.getMsgCache()).a(String.valueOf(paramLong2), 0);
+    paramLong2 = ((MessageCache)paramAppInterface.getMsgCache()).b(String.valueOf(paramLong2), 0);
     if ((paramLong1 <= paramLong2) && (paramBoolean))
     {
       if (QLog.isColorLevel())
@@ -1966,28 +1907,19 @@ public class C2CMessageProcessor
     return false;
   }
   
-  private byte[] a()
+  private int b()
   {
-    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this);
+    return u.a(this);
+  }
+  
+  private List<MessageRecord> b(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return u.a(String.valueOf(paramLong1), paramLong2 - 30L, paramLong3 + 30L, this);
   }
   
   private void b(int paramInt)
   {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2) {
-          return;
-        }
-        a(4016, true, null);
-        return;
-      }
-      a(4001, true, null);
-      return;
-    }
-    a(4016, true, null);
-    a(4001, true, null);
+    u.a(paramInt, this);
   }
   
   private void b(int paramInt, Object[] paramArrayOfObject)
@@ -2020,18 +1952,18 @@ public class C2CMessageProcessor
     if ((localPbGetMsgResp != null) && (localPbGetMsgResp.result.has()) && (localPbGetMsgResp.result.get() == 0))
     {
       localObject = localPbGetMsgResp.uin_pair_msgs.get();
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(0);
+      this.r.a(0);
       int i;
       if (localPbGetMsgResp.sync_flag.has()) {
         i = localPbGetMsgResp.sync_flag.get();
       } else {
         i = 2;
       }
-      byte b1;
+      byte b;
       if (i < 2) {
-        b1 = (byte)1;
+        b = (byte)1;
       } else {
-        b1 = 0;
+        b = 0;
       }
       if (localPbGetMsgResp.sync_cookie.has()) {
         paramFromServiceMsg = localPbGetMsgResp.sync_cookie.get().toByteArray();
@@ -2039,9 +1971,9 @@ public class C2CMessageProcessor
         paramFromServiceMsg = null;
       }
       int j = a(localPbGetMsgResp, paramFromServiceMsg);
-      boolean bool4 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a();
-      if (b1 > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(b1, paramFromServiceMsg, i, bool1, bool2, bool4, null, j, null);
+      boolean bool4 = this.r.c();
+      if (b > 0) {
+        this.r.a(b, paramFromServiceMsg, i, bool1, bool2, bool4, null, j, null);
       }
       if (QLog.isColorLevel())
       {
@@ -2053,7 +1985,7 @@ public class C2CMessageProcessor
         localStringBuilder.append(" hasSyncCookie:");
         localStringBuilder.append(localPbGetMsgResp.sync_cookie.has());
         localStringBuilder.append(" channelType:");
-        localStringBuilder.append(b1);
+        localStringBuilder.append(b);
         localStringBuilder.append(" cSyncFlag:");
         localStringBuilder.append(i);
         localStringBuilder.append(" isPullRoam");
@@ -2068,8 +2000,8 @@ public class C2CMessageProcessor
         localStringBuilder.append(j);
         QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
       }
-      l = a(b1, bool1, bool3, l, localStringBuilder, (List)localObject, j);
-      a(b1, bool1, j);
+      l = a(b, bool1, bool3, l, localStringBuilder, (List)localObject, j);
+      a(b, bool1, j);
       l = System.currentTimeMillis() - l;
       if (QLog.isColorLevel())
       {
@@ -2108,28 +2040,65 @@ public class C2CMessageProcessor
       localStringBuilder.append(bool2);
       QLog.e("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+    this.r.c(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  private void b(String paramString)
+  {
+    u.a(this.q, paramString);
   }
   
   private void b(String paramString, int paramInt)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramInt);
+    u.a(paramString, paramInt);
   }
   
   private void b(String paramString, int paramInt, long paramLong)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramInt, paramLong, this);
+    u.a(paramString, paramInt, paramLong, this);
   }
   
-  private void b(ArrayList<MessageRecord> paramArrayList)
+  private void b(String paramString, List<msg_comm.Msg> paramList)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, this);
+    if (paramList.size() > 0) {
+      if (this.r.a.containsKey(paramString))
+      {
+        paramString = (List)this.r.a.get(paramString);
+        if (paramString.size() == 0)
+        {
+          paramString.addAll(0, paramList);
+          return;
+        }
+        if ((((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_uid.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_uid.get()) || (((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_seq.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_seq.get())) {
+          paramString.addAll(0, paramList);
+        }
+      }
+      else
+      {
+        this.r.a.put(paramString, paramList);
+      }
+    }
   }
   
   private void b(List<msg_comm.Msg> paramList)
   {
     long l = ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).from_uin.get();
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(l, this);
+    u.a(l, this);
+  }
+  
+  private void b(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
+  {
+    Pair localPair = super.a(paramList1, paramList2);
+    if ((((Boolean)localPair.first).booleanValue()) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("<---C2CMessagePackage:msgFilter_OnePkg ");
+      localStringBuilder.append((CharSequence)localPair.second);
+      localStringBuilder.append(" inListSize:");
+      localStringBuilder.append(paramList1.size());
+      localStringBuilder.append(" outListSize:");
+      localStringBuilder.append(paramList2.size());
+      QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
+    }
   }
   
   private void b(msg_comm.Msg paramMsg, FromServiceMsg paramFromServiceMsg, msg_onlinepush.PbPushMsg paramPbPushMsg)
@@ -2152,7 +2121,7 @@ public class C2CMessageProcessor
     int j = localMsgHead.from_instid.get();
     Object localObject1;
     if (paramFromServiceMsg.getUin() == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      localObject1 = this.q.getCurrentAccountUin();
     } else {
       localObject1 = paramFromServiceMsg.getUin();
     }
@@ -2181,13 +2150,13 @@ public class C2CMessageProcessor
       ((StringBuilder)localObject1).append(paramMsg.msg_body.has());
       QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    localC2CMessageProcessor.a(i);
+    localC2CMessageProcessor.b(i);
     ArrayList localArrayList1 = new ArrayList();
     Object localObject2;
     try
     {
       localObject1 = new DecodeProtoPkgContext(l7, l3, true, false, false, false);
-      ((DecodeProtoPkgContext)localObject1).h = true;
+      ((DecodeProtoPkgContext)localObject1).n = true;
       localObject1 = localC2CMessageProcessor.a(paramMsg, (PBDecodeContext)localObject1);
     }
     catch (Exception localException)
@@ -2207,27 +2176,46 @@ public class C2CMessageProcessor
       localObject2 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       paramMsg = new C2CMessageProcessor.ProcessMsgPushPBSlaveMaster(this, paramMsg, localArrayList1, false, null, (ArrayList)localObject2, localArrayList2).a();
-      boolean bool = paramMsg.jdField_a_of_type_Boolean;
-      paramMsg = paramMsg.jdField_a_of_type_JavaLangString;
-      ((MessageCache)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(localArrayList2);
-      ((IMessageFacade)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).addMessage(localArrayList2, String.valueOf(l7), false);
-      ((MessageCache)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a(localMsgHead.msg_seq.get());
+      boolean bool = paramMsg.b;
+      paramMsg = paramMsg.c;
+      ((MessageCache)localC2CMessageProcessor.q.getMsgCache()).b(localArrayList2);
+      ((IMessageFacade)localC2CMessageProcessor.q.getRuntimeService(IMessageFacade.class, "")).addMessage(localArrayList2, String.valueOf(l7), false);
+      ((MessageCache)localC2CMessageProcessor.q.getMsgCache()).a(localMsgHead.msg_seq.get());
       i = paramFromServiceMsg.getRequestSsoSeq();
-      localC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l2, (ArrayList)localObject2, paramPbPushMsg.svrip.get(), i, null);
+      localC2CMessageProcessor.r.a(l2, (ArrayList)localObject2, paramPbPushMsg.svrip.get(), i, null);
       if (l1 == 127L) {
         return;
       }
-      a("handleMsgPush_PB_SlaveMaster", true, 0, localC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false), false);
-      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(localArrayList2, localC2CMessageProcessor);
+      a("handleMsgPush_PB_SlaveMaster", true, 0, localC2CMessageProcessor.r.a(false), false);
+      u.a(localArrayList2, localC2CMessageProcessor);
       if ((bool) && (!TextUtils.isEmpty(paramMsg))) {
-        localC2CMessageProcessor.a(paramMsg);
+        localC2CMessageProcessor.b(paramMsg);
       }
     }
   }
   
   private void b(boolean paramBoolean, String paramString, ArrayList<MessageRecord> paramArrayList)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, paramString, paramBoolean, this);
+    u.a(paramArrayList, paramString, paramBoolean, this);
+  }
+  
+  private void c(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        a(4016, true, null);
+        return;
+      }
+      a(4001, true, null);
+      return;
+    }
+    a(4016, true, null);
+    a(4001, true, null);
   }
   
   private void c(int paramInt, Object[] paramArrayOfObject)
@@ -2284,7 +2272,7 @@ public class C2CMessageProcessor
       Object localObject = paramFromServiceMsg.msg.get();
       if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.remove(str);
+        this.r.a.remove(str);
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
@@ -2297,7 +2285,7 @@ public class C2CMessageProcessor
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      a((List)localObject, localArrayList);
+      b((List)localObject, localArrayList);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -2327,7 +2315,12 @@ public class C2CMessageProcessor
   
   private void c(ArrayList<MessageRecord> paramArrayList)
   {
-    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.b(paramArrayList, this);
+    u.a(paramArrayList, this);
+  }
+  
+  private byte[] c()
+  {
+    return u.b(this);
   }
   
   private void d(int paramInt, Object[] paramArrayOfObject)
@@ -2361,7 +2354,7 @@ public class C2CMessageProcessor
       int i = paramFromServiceMsg.result.get();
       paramToServiceMsg = paramFromServiceMsg.msg.get();
       ArrayList localArrayList = new ArrayList();
-      a(paramToServiceMsg, localArrayList);
+      b(paramToServiceMsg, localArrayList);
       if (QLog.isColorLevel())
       {
         paramToServiceMsg = new StringBuilder();
@@ -2406,8 +2399,8 @@ public class C2CMessageProcessor
           localObject2 = (msg_comm.Msg)localArrayList.get(0);
           l = a(((msg_comm.MsgHead)((msg_comm.Msg)localObject2).msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)((msg_comm.Msg)localObject2).msg_head.get()).to_uin.get(), paramFromServiceMsg.peer_uin.get());
         }
-        Object localObject2 = new DecodeProtoPkgContext(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()), l, true, true, false, false);
-        ((DecodeProtoPkgContext)localObject2).h = true;
+        Object localObject2 = new DecodeProtoPkgContext(Long.parseLong(this.q.getCurrentAccountUin()), l, true, true, false, false);
+        ((DecodeProtoPkgContext)localObject2).n = true;
         a(localArrayList, null, paramToServiceMsg, (DecodeProtoPkgContext)localObject2);
         if (paramToServiceMsg.size() > 0)
         {
@@ -2430,6 +2423,11 @@ public class C2CMessageProcessor
       }
       a(paramFromServiceMsg, paramObject, paramToServiceMsg, l, i);
     }
+  }
+  
+  private void d(ArrayList<MessageRecord> paramArrayList)
+  {
+    u.b(paramArrayList, this);
   }
   
   private void e(int paramInt, Object[] paramArrayOfObject)
@@ -2519,7 +2517,7 @@ public class C2CMessageProcessor
   
   public Decoder a(int paramInt)
   {
-    return ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().a(paramInt);
+    return ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).getRegistry().a(paramInt);
   }
   
   protected String a(msg_comm.Msg paramMsg)
@@ -2553,8 +2551,8 @@ public class C2CMessageProcessor
       long l6 = ((msg_comm.MsgHead)localObject2).msg_uid.get();
       int n = ((msg_comm.MsgHead)localObject2).msg_type.get();
       int i1 = paramMsg.msg_head.c2c_cmd.get();
-      ((DecodeProtoPkgContext)localObject1).jdField_c_of_type_Int = 0;
-      ((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Int = 0;
+      ((DecodeProtoPkgContext)localObject1).p = 0;
+      ((DecodeProtoPkgContext)localObject1).q = 0;
       int j;
       int i;
       int k;
@@ -2572,23 +2570,23 @@ public class C2CMessageProcessor
         k = 0;
       }
       long l1 = -1L;
-      if (!((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Boolean) {
-        l1 = DecodeC2CMsgPkgBubbleID.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, paramMsg, String.valueOf(((DecodeProtoPkgContext)localObject1).g), String.valueOf(l4));
+      if (!((DecodeProtoPkgContext)localObject1).j) {
+        l1 = DecodeC2CMsgPkgBubbleID.a(this.r, paramMsg, String.valueOf(((DecodeProtoPkgContext)localObject1).x), String.valueOf(l4));
       }
-      ((DecodeProtoPkgContext)localObject1).jdField_b_of_type_Long = l4;
-      ((DecodeProtoPkgContext)localObject1).jdField_c_of_type_Long = l5;
+      ((DecodeProtoPkgContext)localObject1).b = l4;
+      ((DecodeProtoPkgContext)localObject1).c = l5;
       int i2 = DecodeC2CMsgPkgBubbleID.a(paramMsg);
-      ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Int = i2;
-      ((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Long = a((int)l1, i2);
-      ((DecodeProtoPkgContext)localObject1).jdField_b_of_type_Int = DecodeC2CMsgPkgBubbleID.b(paramMsg);
-      if (l4 == ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Long)
+      ((DecodeProtoPkgContext)localObject1).e = i2;
+      ((DecodeProtoPkgContext)localObject1).d = a((int)l1, i2);
+      ((DecodeProtoPkgContext)localObject1).f = DecodeC2CMsgPkgBubbleID.b(paramMsg);
+      if (l4 == ((DecodeProtoPkgContext)localObject1).a)
       {
-        ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Boolean = true;
-        ((DecodeProtoPkgContext)localObject1).f = true;
+        ((DecodeProtoPkgContext)localObject1).g = true;
+        ((DecodeProtoPkgContext)localObject1).l = true;
       }
       else
       {
-        ((DecodeProtoPkgContext)localObject1).f = false;
+        ((DecodeProtoPkgContext)localObject1).l = false;
       }
       if (QLog.isColorLevel())
       {
@@ -2606,11 +2604,11 @@ public class C2CMessageProcessor
         ((StringBuilder)localObject3).append(" senderUin:");
         ((StringBuilder)localObject3).append(l4);
         ((StringBuilder)localObject3).append(" friendUin:");
-        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).g);
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).x);
         ((StringBuilder)localObject3).append(" isReaded:");
-        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).g);
         ((StringBuilder)localObject3).append(" isSyncFromOtherTerm:");
-        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).f);
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).l);
         ((StringBuilder)localObject3).append(" msgType:0x");
         ((StringBuilder)localObject3).append(Integer.toHexString(n));
         ((StringBuilder)localObject3).append(" c2CCmd:0x");
@@ -2628,17 +2626,17 @@ public class C2CMessageProcessor
         ((StringBuilder)localObject3).append(" longMsgIndex:");
         ((StringBuilder)localObject3).append(k);
         ((StringBuilder)localObject3).append("init_direction_flag");
-        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Int);
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).q);
         QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject3).toString());
       }
-      else if (((DecodeProtoPkgContext)localObject1).g == 0L)
+      else if (((DecodeProtoPkgContext)localObject1).x == 0L)
       {
         QLog.e("Q.msg.C2CMessageProcessor", 1, "<---decodeSinglePBMsg_C2C : decode msg: frienduin=0");
       }
       Object localObject3 = new ArrayList();
-      a(n, paramMsg, (ArrayList)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, (DecodeProtoPkgContext)localObject1);
-      a(paramMsg, (ArrayList)localObject3, (DecodeProtoPkgContext)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler);
-      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramMsg, (DecodeProtoPkgContext)localObject1, l2, paramPBDecodeContext, (msg_comm.MsgHead)localObject2, m, l4, l6, n, l4, j, i, k, (ArrayList)localObject3, this);
+      a(n, paramMsg, (ArrayList)localObject3, this.r, (DecodeProtoPkgContext)localObject1);
+      a(paramMsg, (ArrayList)localObject3, (DecodeProtoPkgContext)localObject1, this.r);
+      u.a(paramMsg, (DecodeProtoPkgContext)localObject1, l2, paramPBDecodeContext, (msg_comm.MsgHead)localObject2, m, l4, l6, n, l4, j, i, k, (ArrayList)localObject3, this);
       return paramPBDecodeContext;
     }
     if (QLog.isColorLevel())
@@ -2730,9 +2728,9 @@ public class C2CMessageProcessor
       a(paramC2CMsgReadedNotify, str);
       return;
     }
-    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setReadFrom(str, 0, paramC2CMsgReadedNotify.lLastReadTime);
+    ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).setReadFrom(str, 0, paramC2CMsgReadedNotify.lLastReadTime);
     if (paramC2CMsgReadedNotify.lLastReadTime >= 0L) {
-      ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).removeNotification(str, 0);
+      ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).removeNotification(str, 0);
     }
   }
   
@@ -2771,7 +2769,7 @@ public class C2CMessageProcessor
         localStringBuilder.append(localPair.second);
         localPbC2CReadedReportReq.pair_info.add(localUinPairReadInfo);
       }
-      paramArrayList = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a();
+      paramArrayList = ((MessageCache)this.q.getMsgCache()).e();
       if (paramArrayList != null) {
         localPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom(paramArrayList));
       }
@@ -2787,7 +2785,20 @@ public class C2CMessageProcessor
     }
   }
   
-  public boolean a(ArrayList<MessageRecord> paramArrayList)
+  public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramInt != 2001)
+    {
+      if (paramInt != 2005) {
+        return;
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, true);
+      return;
+    }
+    a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean b(ArrayList<MessageRecord> paramArrayList)
   {
     boolean bool2 = false;
     if (paramArrayList == null) {
@@ -2804,23 +2815,10 @@ public class C2CMessageProcessor
     boolean bool1 = true;
     return bool1;
   }
-  
-  public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramInt != 2001)
-    {
-      if (paramInt != 2005) {
-        return;
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, true);
-      return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

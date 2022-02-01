@@ -11,9 +11,9 @@ public class TroopManagerParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new TroopManagerAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "manage_troop";
-    paramBaseQQAppInterface.c = "main_page";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "manage_troop";
+    paramBaseQQAppInterface.e = "main_page";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -33,7 +33,7 @@ public class TroopManagerParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TroopManagerParser
  * JD-Core Version:    0.7.0.1
  */

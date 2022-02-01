@@ -54,6 +54,8 @@ public class ThemeUtil
   public static final int ANIMATE_TAB_CALL = 13;
   public static final int ANIMATE_TAB_CONTACTS = 12;
   public static final int ANIMATE_TAB_CONVERSATION = 11;
+  public static final int ANIMATE_TAB_FLASH_SHOW = 18;
+  public static final int ANIMATE_TAB_GUILD = 19;
   public static final int ANIMATE_TAB_LEBA = 14;
   public static final int ANIMATE_TAB_NOW = 15;
   public static final int ANIMATE_TAB_QCIRCLE = 17;
@@ -103,6 +105,7 @@ public class ThemeUtil
   public static final String THEME_PATH = "themePath";
   public static final String THEME_SET_TIME_KEY = "themeSetTimeKey";
   public static final String THEME_SHARED_PREFERENCES = "userThemeSharedPreferences";
+  public static final String THEME_SIMPLE_SKIN_NAME = "theme3.zip";
   public static final String THEME_SIZE = "size";
   public static final String THEME_STATUS = "themeStatus";
   public static final String THEME_STATUS_COMPLETE = "5";
@@ -284,18 +287,22 @@ public class ThemeUtil
         return localObject;
       }
     }
-    return VasUtil.a();
+    return VasUtil.c();
   }
   
   public static String getCurrentThemeId()
   {
-    String str2 = getCurrentThemeInfo().getString("themeId");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "1000";
+    Object localObject2 = getCurrentThemeInfo().getString("themeId");
+    Object localObject1 = localObject2;
+    if ("1001".equals(localObject2)) {
+      localObject1 = QQTheme.getCurrentThemeId();
     }
-    curThemeId = str1;
-    return str1;
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = "1000";
+    }
+    curThemeId = (String)localObject2;
+    return localObject2;
   }
   
   public static Bundle getCurrentThemeInfo()
@@ -319,14 +326,18 @@ public class ThemeUtil
           {
             localObject1 = ((String)localObject1).split(File.separator);
             if (localObject1.length < 3) {
-              break label204;
+              break label228;
             }
             localObject1 = localObject1[(localObject1.length - 3)];
             if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (VasTextUtil.a((String)localObject1)))
             {
               localBundle.putString("themeId", (String)localObject1);
               localBundle.putString("version", "20000000");
-              return localBundle;
+              if (isNewSimpleTheme((String)localObject1))
+              {
+                resetRealThemeId(localBundle);
+                return localBundle;
+              }
             }
           }
           else
@@ -339,7 +350,11 @@ public class ThemeUtil
               {
                 localBundle.putString("themeId", localObject1[0]);
                 localBundle.putString("version", localObject1[1]);
-                return localBundle;
+                if (isNewSimpleTheme(localObject1[0]))
+                {
+                  resetRealThemeId(localBundle);
+                  return localBundle;
+                }
               }
             }
           }
@@ -350,7 +365,7 @@ public class ThemeUtil
         QLog.e("Theme.ThemeUtil", 1, "getCurrentThemeInfo, exception:", localException);
       }
       return localBundle;
-      label204:
+      label228:
       Object localObject2 = null;
     }
   }
@@ -975,7 +990,7 @@ public class ThemeUtil
     Collections.sort((List)localObject4);
     localObject4 = (String)((List)localObject4).get(((List)localObject4).size() - 1);
     localObject3 = ((SharedPreferences)localObject3).getString("currentThemeVersion", "0");
-    if (VersionUtil.a("6.0", "8.7.0"))
+    if (VersionUtil.a("6.0", "8.8.17"))
     {
       localObject2 = (String)((Map)localObject1).get(localObject4);
       localObject1 = localObject2;
@@ -1188,6 +1203,31 @@ public class ThemeUtil
     return bool;
   }
   
+  private static boolean isDefaultOrDIY(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!"1000".equals(paramString)) && (!"999".equals(paramString)))
+    {
+      try
+      {
+        if ((Integer.parseInt(paramString) >= 5000) && (Integer.parseInt(paramString) < 1000000))
+        {
+          mAnimateThemeId = paramString;
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isNowThemeIsAnimate err");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d("Theme.ThemeUtil", 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    mAnimateThemeId = paramString;
+    return true;
+  }
+  
   @Deprecated
   public static boolean isDefaultOrDIYTheme()
   {
@@ -1213,7 +1253,7 @@ public class ThemeUtil
   
   public static boolean isFixTheme(String paramString)
   {
-    return ("1103".equals(paramString)) || (QQTheme.c(paramString));
+    return ("1103".equals(paramString)) || (QQTheme.isThemeSimpleUI(paramString));
   }
   
   public static boolean isGoldenTheme()
@@ -1261,150 +1301,141 @@ public class ThemeUtil
     return bool1;
   }
   
-  public static boolean isNowThemeIsAnimate()
+  protected static boolean isNewSimpleTheme(String paramString)
   {
-    for (;;)
+    return "1001".equals(paramString);
+  }
+  
+  private static boolean isNowAnimationThemeFormJson(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("themePath");
+    Bundle localBundle;
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      Object localObject5;
-      try
+      if (paramBundle.endsWith(File.separator))
       {
-        Object localObject1 = getCurrentThemeInfo();
-        String str = ((Bundle)localObject1).getString("themeId");
-        if (str.equals(mAnimateThemeId))
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramBundle);
+        ((StringBuilder)localObject1).append("config.json");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramBundle);
+        ((StringBuilder)localObject1).append(File.separator);
+        localObject2 = ((StringBuilder)localObject1).toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramBundle);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append("config.json");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        paramBundle = (Bundle)localObject2;
+      }
+      Object localObject2 = new File((String)localObject1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isNowThemeIsAnimate ApngImage path = ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(", exists:");
+        localStringBuilder.append(((File)localObject2).exists());
+        QLog.d("Theme.ThemeUtil", 2, localStringBuilder.toString());
+      }
+      Object localObject1 = paramBundle;
+      if (((File)localObject2).exists()) {
+        try
         {
-          bool1 = isThemeIsAnimate;
-          return bool1;
-        }
-        Object localObject4 = null;
-        mAnimateThemePath = null;
-        boolean bool2 = false;
-        isThemeIsAnimate = false;
-        sIsHorizontalAnimate = false;
-        if ((!TextUtils.isEmpty(str)) && (!"1000".equals(str)))
-        {
-          bool1 = "999".equals(str);
-          if (!bool1)
+          localObject1 = FileUtils.readFileToStringEx((File)localObject2, -1);
+          if (localObject1 != null)
           {
-            StringBuilder localStringBuilder;
-            try
-            {
-              if ((Integer.parseInt(str) >= 5000) && (Integer.parseInt(str) < 1000000))
-              {
-                mAnimateThemeId = str;
-                return false;
-              }
+            if (((String)localObject1).length() < 2) {
+              return true;
             }
-            catch (Exception localException)
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("isNowThemeIsAnimate err");
-              localStringBuilder.append(localException.getMessage());
-              QLog.d("Theme.ThemeUtil", 2, localStringBuilder.toString());
-              localObject1 = ((Bundle)localObject1).getString("themePath");
-              if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                break label632;
-              }
-            }
-            if (((String)localObject1).endsWith(File.separator))
-            {
-              localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append((String)localObject1);
-              ((StringBuilder)localObject4).append("config.json");
-              localObject4 = ((StringBuilder)localObject4).toString();
-            }
-            else
-            {
-              localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append((String)localObject1);
-              ((StringBuilder)localObject4).append(File.separator);
-              localObject4 = ((StringBuilder)localObject4).toString();
-              localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append((String)localObject1);
-              ((StringBuilder)localObject6).append(File.separator);
-              ((StringBuilder)localObject6).append("config.json");
-              localObject6 = ((StringBuilder)localObject6).toString();
-              localObject1 = localObject4;
-              localObject4 = localObject6;
-            }
-            Object localObject6 = new File((String)localObject4);
+            localObject2 = new JSONObject((String)localObject1);
+            localObject1 = ((JSONObject)localObject2).optString("type");
+            sIsHorizontalAnimate = "horizontal".equals(((JSONObject)localObject2).optString("orientation"));
             if (QLog.isColorLevel())
             {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("isNowThemeIsAnimate ApngImage path = ");
-              localStringBuilder.append((String)localObject4);
-              localStringBuilder.append(", exists:");
-              localStringBuilder.append(((File)localObject6).exists());
-              QLog.d("Theme.ThemeUtil", 2, localStringBuilder.toString());
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("isNowThemeIsAnimate theme Type:");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.w("Theme.ThemeUtil", 2, ((StringBuilder)localObject2).toString());
             }
-            bool1 = ((File)localObject6).exists();
-            localObject4 = localObject1;
-            if (!bool1) {
-              break label632;
-            }
-            try
-            {
-              localObject4 = FileUtils.readFileToStringEx((File)localObject6, -1);
-              if ((localObject4 != null) && (((String)localObject4).length() >= 2))
-              {
-                localObject6 = new JSONObject((String)localObject4);
-                localObject4 = ((JSONObject)localObject6).optString("type");
-                sIsHorizontalAnimate = "horizontal".equals(((JSONObject)localObject6).optString("orientation"));
-                if (QLog.isColorLevel())
-                {
-                  localObject6 = new StringBuilder();
-                  ((StringBuilder)localObject6).append("isNowThemeIsAnimate theme Type:");
-                  ((StringBuilder)localObject6).append((String)localObject4);
-                  QLog.w("Theme.ThemeUtil", 2, ((StringBuilder)localObject6).toString());
-                }
-                bool1 = "animation".equals(localObject4);
-              }
-              else
-              {
-                return false;
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append("isNowThemeIsAnimate err , msg:");
-              ((StringBuilder)localObject6).append(localThrowable.getMessage());
-              QLog.e("Theme.ThemeUtil", 1, ((StringBuilder)localObject6).toString());
-              localObject5 = localObject1;
-            }
-            if (bool1)
-            {
-              isThemeIsAnimate = true;
-              mAnimateThemePath = (String)localObject1;
-            }
-            if (isThemeIsAnimate)
-            {
-              localObject1 = new Bundle();
-              if (VasUtil.a().getThemeSwitchManager().getIsEnableAnimate((Bundle)localObject1))
-              {
-                bool1 = bool2;
-                if (((Bundle)localObject1).getBoolean("dynamic_switch", true))
-                {
-                  bool1 = bool2;
-                  if (((Bundle)localObject1).getBoolean("dynamic_enable", true)) {
-                    bool1 = true;
-                  }
-                }
-                isThemeIsAnimate = bool1;
-              }
-            }
-            mAnimateThemeId = str;
-            bool1 = isThemeIsAnimate;
-            return bool1;
+            bool = "animation".equals(localObject1);
+            break label346;
           }
+          return true;
         }
-        mAnimateThemeId = str;
+        catch (Throwable localThrowable)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("isNowThemeIsAnimate err , msg:");
+          ((StringBuilder)localObject2).append(localThrowable.getMessage());
+          QLog.e("Theme.ThemeUtil", 1, ((StringBuilder)localObject2).toString());
+          localBundle = paramBundle;
+        }
+      }
+    }
+    else
+    {
+      localBundle = null;
+    }
+    boolean bool = false;
+    paramBundle = localBundle;
+    label346:
+    if (bool)
+    {
+      isThemeIsAnimate = true;
+      mAnimateThemePath = paramBundle;
+    }
+    return false;
+  }
+  
+  public static boolean isNowThemeIsAnimate()
+  {
+    try
+    {
+      Bundle localBundle = getCurrentThemeInfo();
+      String str = localBundle.getString("themeId");
+      if (str.equals(mAnimateThemeId))
+      {
+        bool1 = isThemeIsAnimate;
+        return bool1;
+      }
+      mAnimateThemePath = null;
+      boolean bool2 = false;
+      isThemeIsAnimate = false;
+      sIsHorizontalAnimate = false;
+      boolean bool1 = isDefaultOrDIY(str);
+      if (bool1) {
         return false;
       }
-      finally {}
-      label632:
-      boolean bool1 = false;
-      Object localObject3 = localObject5;
+      bool1 = isNowAnimationThemeFormJson(localBundle);
+      if (bool1) {
+        return false;
+      }
+      if (isThemeIsAnimate)
+      {
+        localBundle = new Bundle();
+        if (VasUtil.a().getThemeSwitchManager().getIsEnableAnimate(localBundle))
+        {
+          bool1 = bool2;
+          if (localBundle.getBoolean("dynamic_switch", true))
+          {
+            bool1 = bool2;
+            if (localBundle.getBoolean("dynamic_enable", true)) {
+              bool1 = true;
+            }
+          }
+          isThemeIsAnimate = bool1;
+        }
+      }
+      mAnimateThemeId = str;
+      bool1 = isThemeIsAnimate;
+      return bool1;
     }
+    finally {}
   }
   
   public static boolean isNowThemeIsDIY()
@@ -1564,6 +1595,11 @@ public class ThemeUtil
     return Boolean.valueOf(false);
   }
   
+  private static void resetRealThemeId(Bundle paramBundle)
+  {
+    paramBundle.putString("themeId", QQTheme.getNewSimpleThemeId());
+  }
+  
   public static void resetThemeSwitchTimes(AppRuntime paramAppRuntime)
   {
     getUinThemePreferences(paramAppRuntime).edit().putInt("user_switch_theme_times", 0).commit();
@@ -1580,7 +1616,7 @@ public class ThemeUtil
     if (paramImageView == null) {
       return;
     }
-    if (QQTheme.d())
+    if (QQTheme.isNowThemeIsNightForQzone())
     {
       paramImageView.setColorFilter(1291845632);
       return;
@@ -1909,7 +1945,7 @@ public class ThemeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.ThemeUtil
  * JD-Core Version:    0.7.0.1
  */

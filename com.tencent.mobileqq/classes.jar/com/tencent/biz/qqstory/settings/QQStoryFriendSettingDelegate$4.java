@@ -15,12 +15,12 @@ class QQStoryFriendSettingDelegate$4
   {
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate.a(5, this.jdField_a_of_type_Boolean ^ true);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate;
-      paramArrayOfByte.a(0, paramArrayOfByte.a.getString(2131719970));
+      this.b.a(5, this.a ^ true);
+      paramArrayOfByte = this.b;
+      paramArrayOfByte.a(0, paramArrayOfByte.c.getString(2131917575));
       return;
     }
-    ((QQStoryManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate.a.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).c(this.jdField_a_of_type_Boolean);
+    ((QQStoryManager)this.b.c.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).c(this.a);
   }
 }
 

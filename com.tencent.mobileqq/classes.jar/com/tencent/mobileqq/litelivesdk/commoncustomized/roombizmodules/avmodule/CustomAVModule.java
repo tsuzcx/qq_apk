@@ -9,26 +9,26 @@ import com.tencent.mobileqq.litelivesdk.framework.room.RecordVideoStateManager;
 public class CustomAVModule
   extends AVPreloadPlayerModule
 {
-  private LifecycleOwner jdField_a_of_type_AndroidxLifecycleLifecycleOwner;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAVModule.1(this);
+  private LifecycleOwner e;
+  private Runnable f = new CustomAVModule.1(this);
   
   public void onActivityPause(LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityPause(paramLifecycleOwner);
-    if (BusinessManager.a.b()) {
-      ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
+    if (BusinessManager.a.d()) {
+      ThreadCenter.removeDefaultUITask(this.f);
     }
   }
   
   public void onActivityResume(LifecycleOwner paramLifecycleOwner)
   {
-    if (BusinessManager.a.b())
+    if (BusinessManager.a.d())
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleOwner = paramLifecycleOwner;
-      if (!RecordVideoStateManager.a().a())
+      this.e = paramLifecycleOwner;
+      if (!RecordVideoStateManager.a().b())
       {
-        ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
-        ThreadCenter.postDefaultUITask(this.jdField_a_of_type_JavaLangRunnable, 100L);
+        ThreadCenter.removeDefaultUITask(this.f);
+        ThreadCenter.postDefaultUITask(this.f, 100L);
       }
     }
     else
@@ -39,14 +39,14 @@ public class CustomAVModule
   
   public void onActivityStart(LifecycleOwner paramLifecycleOwner)
   {
-    if (!BusinessManager.a.b()) {
+    if (!BusinessManager.a.d()) {
       super.onActivityStart(paramLifecycleOwner);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.avmodule.CustomAVModule
  * JD-Core Version:    0.7.0.1
  */

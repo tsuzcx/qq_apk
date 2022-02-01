@@ -16,10 +16,10 @@ class SignatureManager$1
   {
     if (2 == paramMessage.what)
     {
-      SignatureManager.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      SignatureManager.m = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
+      if (this.a.j != null)
       {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        paramMessage = this.a.j.getHandler(EditActivity.class);
         if (paramMessage != null) {
           paramMessage.sendEmptyMessageDelayed(2, 50L);
         }
@@ -28,9 +28,9 @@ class SignatureManager$1
         }
       }
     }
-    else if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    else if ((3 == paramMessage.what) && (this.a.j != null))
     {
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+      paramMessage = this.a.j.getHandler(EditActivity.class);
       if (paramMessage != null) {
         paramMessage.sendEmptyMessageDelayed(7, 50L);
       }
@@ -43,7 +43,7 @@ class SignatureManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureManager.1
  * JD-Core Version:    0.7.0.1
  */

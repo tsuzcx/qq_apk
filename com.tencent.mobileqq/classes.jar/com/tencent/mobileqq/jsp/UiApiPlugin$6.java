@@ -21,7 +21,7 @@ class UiApiPlugin$6
     {
       int i = paramBundle.getInt("appid");
       String str1 = paramBundle.getString("openId");
-      if ((i == this.jdField_a_of_type_JavaLangInteger.intValue()) && (str1.equals(this.jdField_a_of_type_JavaLangString)))
+      if ((i == this.a.intValue()) && (str1.equals(this.b)))
       {
         String str2 = paramBundle.getString("uin");
         boolean bool = paramBundle.getBoolean("isFriend", false);
@@ -39,9 +39,9 @@ class UiApiPlugin$6
           {
             paramBundle = new AllInOne(str2, 105);
           }
-          paramBundle = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), paramBundle);
+          paramBundle = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.c.e(), paramBundle);
           paramBundle.addFlags(536870912);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity(paramBundle);
+          this.c.e().startActivity(paramBundle);
         }
       }
       else if (QLog.isColorLevel())
@@ -53,7 +53,7 @@ class UiApiPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.6
  * JD-Core Version:    0.7.0.1
  */

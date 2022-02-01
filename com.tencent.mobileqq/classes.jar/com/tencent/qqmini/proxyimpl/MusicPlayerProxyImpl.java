@@ -18,32 +18,14 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerLi
 public class MusicPlayerProxyImpl
   implements MusicPlayerProxy
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new MusicPlayerProxyImpl.1(this);
-  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new MusicPlayerProxyImpl.2(this);
-  private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
-  private MusicPlayerProxy.MusicPlayerListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener = null;
-  private String b;
-  private String c;
-  
-  public MusicPlayerProxyImpl()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-  }
-  
-  private String a()
-  {
-    if (jdField_a_of_type_JavaLangString == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("MusicPlayerProxyImpl");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      jdField_a_of_type_JavaLangString = QQPlayerService.a(8, localStringBuilder.toString());
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
+  private static String b;
+  private IQQPlayerService a;
+  private MusicPlayerProxy.MusicPlayerListener c = null;
+  private String d = null;
+  private String e = null;
+  private long f = -1L;
+  private ServiceConnection g = new MusicPlayerProxyImpl.1(this);
+  private IQQPlayerCallback.Stub h = new MusicPlayerProxyImpl.2(this);
   
   /* Error */
   private void a()
@@ -52,57 +34,57 @@ public class MusicPlayerProxyImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 50	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   3: getfield 54	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:a	Lcom/tencent/mobileqq/music/IQQPlayerService;
     //   6: ifnonnull +102 -> 108
-    //   9: invokestatic 83	java/lang/System:currentTimeMillis	()J
+    //   9: invokestatic 63	java/lang/System:currentTimeMillis	()J
     //   12: lstore_1
     //   13: aload_0
-    //   14: getfield 34	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_Long	J
-    //   17: ldc2_w 31
+    //   14: getfield 39	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:f	J
+    //   17: ldc2_w 36
     //   20: lcmp
     //   21: ifeq +30 -> 51
     //   24: lload_1
     //   25: aload_0
-    //   26: getfield 34	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_Long	J
+    //   26: getfield 39	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:f	J
     //   29: lsub
-    //   30: ldc2_w 84
+    //   30: ldc2_w 64
     //   33: lcmp
     //   34: ifle +6 -> 40
     //   37: goto +14 -> 51
-    //   40: ldc 60
+    //   40: ldc 67
     //   42: iconst_1
-    //   43: ldc 87
-    //   45: invokestatic 93	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   43: ldc 69
+    //   45: invokestatic 74	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   48: goto +60 -> 108
     //   51: aload_0
     //   52: lload_1
-    //   53: putfield 34	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_Long	J
-    //   56: new 95	android/content/Intent
+    //   53: putfield 39	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:f	J
+    //   56: new 76	android/content/Intent
     //   59: dup
-    //   60: invokestatic 101	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   63: ldc 69
-    //   65: invokespecial 104	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   60: invokestatic 82	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   63: ldc 84
+    //   65: invokespecial 87	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   68: astore_3
-    //   69: invokestatic 101	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   69: invokestatic 82	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   72: aload_3
     //   73: aload_0
-    //   74: getfield 41	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_AndroidContentServiceConnection	Landroid/content/ServiceConnection;
+    //   74: getfield 46	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:g	Landroid/content/ServiceConnection;
     //   77: bipush 33
-    //   79: invokevirtual 108	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   79: invokevirtual 91	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   82: pop
-    //   83: ldc 60
+    //   83: ldc 67
     //   85: iconst_1
-    //   86: ldc 110
-    //   88: invokestatic 93	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   86: ldc 93
+    //   88: invokestatic 74	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   91: goto +17 -> 108
     //   94: astore_3
     //   95: goto +16 -> 111
     //   98: astore_3
-    //   99: ldc 60
+    //   99: ldc 67
     //   101: iconst_1
-    //   102: ldc 112
+    //   102: ldc 95
     //   104: aload_3
-    //   105: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   105: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   108: aload_0
     //   109: monitorexit
     //   110: return
@@ -135,24 +117,24 @@ public class MusicPlayerProxyImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 50	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   3: getfield 54	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:a	Lcom/tencent/mobileqq/music/IQQPlayerService;
     //   6: ifnull +35 -> 41
-    //   9: invokestatic 101	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   9: invokestatic 82	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   12: aload_0
-    //   13: getfield 41	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_AndroidContentServiceConnection	Landroid/content/ServiceConnection;
-    //   16: invokevirtual 119	com/tencent/qphone/base/util/BaseApplication:unbindService	(Landroid/content/ServiceConnection;)V
+    //   13: getfield 46	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:g	Landroid/content/ServiceConnection;
+    //   16: invokevirtual 103	com/tencent/qphone/base/util/BaseApplication:unbindService	(Landroid/content/ServiceConnection;)V
     //   19: aload_0
     //   20: aconst_null
-    //   21: putfield 50	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService	Lcom/tencent/mobileqq/music/IQQPlayerService;
+    //   21: putfield 54	com/tencent/qqmini/proxyimpl/MusicPlayerProxyImpl:a	Lcom/tencent/mobileqq/music/IQQPlayerService;
     //   24: goto +17 -> 41
     //   27: astore_1
     //   28: goto +16 -> 44
     //   31: astore_1
-    //   32: ldc 60
+    //   32: ldc 67
     //   34: iconst_1
-    //   35: ldc 121
+    //   35: ldc 105
     //   37: aload_1
-    //   38: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   38: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   41: aload_0
     //   42: monitorexit
     //   43: return
@@ -172,29 +154,41 @@ public class MusicPlayerProxyImpl
     //   2	24	31	java/lang/Throwable
   }
   
+  private String c()
+  {
+    if (b == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MusicPlayerProxyImpl");
+      localStringBuilder.append(this.d);
+      b = QQPlayerService.a(8, localStringBuilder.toString());
+    }
+    return b;
+  }
+  
   public com.tencent.qqmini.sdk.launcher.core.model.SongInfo getCurrentSong()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        com.tencent.mobileqq.music.SongInfo localSongInfo = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
+        com.tencent.mobileqq.music.SongInfo localSongInfo = this.a.k();
         com.tencent.qqmini.sdk.launcher.core.model.SongInfo localSongInfo1 = new com.tencent.qqmini.sdk.launcher.core.model.SongInfo();
-        localSongInfo1.id = localSongInfo.jdField_a_of_type_Long;
-        localSongInfo1.mid = localSongInfo.jdField_a_of_type_JavaLangString;
-        localSongInfo1.uin = localSongInfo.jdField_b_of_type_Long;
-        localSongInfo1.url = localSongInfo.jdField_b_of_type_JavaLangString;
-        localSongInfo1.title = localSongInfo.jdField_c_of_type_JavaLangString;
-        localSongInfo1.summary = localSongInfo.jdField_d_of_type_JavaLangString;
-        localSongInfo1.coverUrl = localSongInfo.e;
-        localSongInfo1.detailUrl = localSongInfo.f;
-        localSongInfo1.album = localSongInfo.g;
-        localSongInfo1.singer = localSongInfo.h;
-        localSongInfo1.singerId = localSongInfo.jdField_c_of_type_Long;
-        localSongInfo1.startTime = localSongInfo.jdField_a_of_type_Int;
-        localSongInfo1.type = localSongInfo.jdField_b_of_type_Int;
-        localSongInfo1.fromMini = localSongInfo.jdField_a_of_type_Boolean;
-        localSongInfo1.duration = localSongInfo.jdField_d_of_type_Long;
+        localSongInfo1.id = localSongInfo.a;
+        localSongInfo1.mid = localSongInfo.b;
+        localSongInfo1.uin = localSongInfo.c;
+        localSongInfo1.url = localSongInfo.d;
+        localSongInfo1.title = localSongInfo.e;
+        localSongInfo1.summary = localSongInfo.f;
+        localSongInfo1.coverUrl = localSongInfo.g;
+        localSongInfo1.detailUrl = localSongInfo.h;
+        localSongInfo1.album = localSongInfo.i;
+        localSongInfo1.singer = localSongInfo.j;
+        localSongInfo1.singerId = localSongInfo.k;
+        localSongInfo1.startTime = localSongInfo.l;
+        localSongInfo1.type = localSongInfo.m;
+        localSongInfo1.fromMini = localSongInfo.n;
+        localSongInfo1.duration = localSongInfo.p;
         return localSongInfo1;
       }
     }
@@ -207,11 +201,11 @@ public class MusicPlayerProxyImpl
   
   public int getCurrentSongPosition()
   {
-    IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+    IQQPlayerService localIQQPlayerService = this.a;
     if (localIQQPlayerService != null) {
       try
       {
-        int i = localIQQPlayerService.d();
+        int i = localIQQPlayerService.j();
         return i;
       }
       catch (Exception localException)
@@ -224,11 +218,11 @@ public class MusicPlayerProxyImpl
   
   public int getDuration()
   {
-    IQQPlayerService localIQQPlayerService = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+    IQQPlayerService localIQQPlayerService = this.a;
     if (localIQQPlayerService != null) {
       try
       {
-        int i = localIQQPlayerService.c();
+        int i = localIQQPlayerService.i();
         return i;
       }
       catch (Exception localException)
@@ -241,15 +235,15 @@ public class MusicPlayerProxyImpl
   
   public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener = paramMusicPlayerListener;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.c = paramMusicPlayerListener;
+    this.d = paramString1;
+    this.e = paramString2;
     a();
   }
   
   public boolean isInit()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null;
+    return this.a != null;
   }
   
   public boolean isPlaying()
@@ -258,14 +252,14 @@ public class MusicPlayerProxyImpl
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null) {
-          if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(a())) {
+        if (this.a != null) {
+          if (this.a.a(c())) {
             break label83;
           }
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getBackgroundAudioState: null ");
-        if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null) {
+        if (this.a != null) {
           break label85;
         }
         bool = true;
@@ -289,9 +283,9 @@ public class MusicPlayerProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
+        this.a.a();
         return;
       }
     }
@@ -305,9 +299,9 @@ public class MusicPlayerProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.b();
+        this.a.b();
         return;
       }
     }
@@ -321,9 +315,9 @@ public class MusicPlayerProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.b(paramInt);
+        this.a.b(paramInt);
         return;
       }
     }
@@ -337,9 +331,9 @@ public class MusicPlayerProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(paramInt);
+        this.a.a(paramInt);
         return;
       }
     }
@@ -356,44 +350,44 @@ public class MusicPlayerProxyImpl
       if (paramArrayOfSongInfo.length < 1) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
+      Object localObject = this.a;
       if (localObject != null) {
         try
         {
           ((IQQPlayerService)localObject).a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-          Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a();
+          Bundle localBundle = this.a.q();
           localObject = localBundle;
           if (localBundle == null)
           {
             localObject = new Bundle();
-            this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a((Bundle)localObject);
+            this.a.a((Bundle)localObject);
           }
-          ((Bundle)localObject).putString("KEY_SOURCE_NAME", this.jdField_c_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a((Bundle)localObject);
+          ((Bundle)localObject).putString("KEY_SOURCE_NAME", this.e);
+          this.a.a((Bundle)localObject);
           localObject = new com.tencent.mobileqq.music.SongInfo[paramArrayOfSongInfo.length];
           int i = 0;
           while (i < paramArrayOfSongInfo.length)
           {
             localObject[i] = new com.tencent.mobileqq.music.SongInfo();
-            localObject[i].g = paramArrayOfSongInfo[i].album;
-            localObject[i].e = paramArrayOfSongInfo[i].coverUrl;
-            localObject[i].f = paramArrayOfSongInfo[i].detailUrl;
-            localObject[i].jdField_d_of_type_Long = paramArrayOfSongInfo[i].duration;
-            localObject[i].jdField_a_of_type_Boolean = paramArrayOfSongInfo[i].fromMini;
-            localObject[i].jdField_a_of_type_Long = paramArrayOfSongInfo[i].id;
-            localObject[i].jdField_a_of_type_JavaLangString = paramArrayOfSongInfo[i].mid;
-            localObject[i].h = paramArrayOfSongInfo[i].singer;
-            localObject[i].jdField_c_of_type_Long = paramArrayOfSongInfo[i].singerId;
-            localObject[i].jdField_a_of_type_Int = paramArrayOfSongInfo[i].startTime;
-            localObject[i].jdField_d_of_type_JavaLangString = paramArrayOfSongInfo[i].summary;
-            localObject[i].jdField_c_of_type_JavaLangString = paramArrayOfSongInfo[i].title;
-            localObject[i].jdField_b_of_type_Int = paramArrayOfSongInfo[i].type;
-            localObject[i].jdField_b_of_type_Long = paramArrayOfSongInfo[i].uin;
-            localObject[i].jdField_b_of_type_JavaLangString = paramArrayOfSongInfo[i].url;
+            localObject[i].i = paramArrayOfSongInfo[i].album;
+            localObject[i].g = paramArrayOfSongInfo[i].coverUrl;
+            localObject[i].h = paramArrayOfSongInfo[i].detailUrl;
+            localObject[i].p = paramArrayOfSongInfo[i].duration;
+            localObject[i].n = paramArrayOfSongInfo[i].fromMini;
+            localObject[i].a = paramArrayOfSongInfo[i].id;
+            localObject[i].b = paramArrayOfSongInfo[i].mid;
+            localObject[i].j = paramArrayOfSongInfo[i].singer;
+            localObject[i].k = paramArrayOfSongInfo[i].singerId;
+            localObject[i].l = paramArrayOfSongInfo[i].startTime;
+            localObject[i].f = paramArrayOfSongInfo[i].summary;
+            localObject[i].e = paramArrayOfSongInfo[i].title;
+            localObject[i].m = paramArrayOfSongInfo[i].type;
+            localObject[i].c = paramArrayOfSongInfo[i].uin;
+            localObject[i].d = paramArrayOfSongInfo[i].url;
             i += 1;
           }
-          this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(100);
-          this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.a(a(), (com.tencent.mobileqq.music.SongInfo[])localObject, paramInt);
+          this.a.a(100);
+          this.a.a(c(), (com.tencent.mobileqq.music.SongInfo[])localObject, paramInt);
           return;
         }
         catch (Exception paramArrayOfSongInfo)
@@ -408,9 +402,9 @@ public class MusicPlayerProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService.c();
+        this.a.c();
         return;
       }
     }
@@ -423,14 +417,14 @@ public class MusicPlayerProxyImpl
   public void unInit()
   {
     b();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMusicPlayerProxy$MusicPlayerListener = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MusicPlayerProxyImpl
  * JD-Core Version:    0.7.0.1
  */

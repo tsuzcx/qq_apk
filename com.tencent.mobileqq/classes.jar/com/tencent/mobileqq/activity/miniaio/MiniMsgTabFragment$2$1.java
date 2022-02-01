@@ -12,13 +12,13 @@ class MiniMsgTabFragment$2$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$2.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$2.a)))
+    if ((this.b.a.b.getCount() == 1) && (!MiniMsgTabFragment.j(this.b.a)))
     {
-      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$2.a);
-      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgTabFragment$2.a));
+      paramAnimation = MiniMsgTabFragment.k(this.b.a);
+      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.d(this.b.a));
       paramAnimation.putExtra("clickID", -1);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.setResult(-1, paramAnimation);
+      this.a.finish();
     }
   }
   
@@ -28,7 +28,7 @@ class MiniMsgTabFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

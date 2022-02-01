@@ -7,55 +7,55 @@ import java.lang.ref.SoftReference;
 public class CaptureTask
   extends AsyncTask<Void, Void, Bitmap>
 {
-  int jdField_a_of_type_Int = -2147483648;
-  private CaptureTask.OnCaptureCallback jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback;
-  private CaptureTask.OnTaskListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnTaskListener;
-  private ICaptureProxy jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  private SoftReference<Bitmap> jdField_a_of_type_JavaLangRefSoftReference;
+  int a = -2147483648;
   public int b;
-  public int c;
+  public String c;
   public int d;
   public int e;
-  private int f = 0;
+  public int f;
+  private SoftReference<Bitmap> g;
+  private ICaptureProxy h;
+  private CaptureTask.OnCaptureCallback i;
+  private CaptureTask.OnTaskListener j;
+  private int k = 0;
+  private Object l = new Object();
   
   public CaptureTask(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, CaptureTask.OnCaptureCallback paramOnCaptureCallback)
   {
     this.b = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.d = paramInt3;
-    this.e = paramInt4;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback = paramOnCaptureCallback;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnTaskListener = null;
+    this.c = paramString;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+    this.i = paramOnCaptureCallback;
   }
   
   private void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.i = null;
+    this.j = null;
+  }
+  
+  private void c()
+  {
+    synchronized (this.l)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.l.notifyAll();
       return;
     }
   }
   
   public Bitmap a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefSoftReference;
+    Object localObject = this.g;
     if ((localObject != null) && (((SoftReference)localObject).get() != null))
     {
-      localObject = (Bitmap)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+      localObject = (Bitmap)this.g.get();
       if (!((Bitmap)localObject).isRecycled()) {
         return localObject;
       }
     }
-    this.jdField_a_of_type_JavaLangRefSoftReference = null;
+    this.g = null;
     return null;
   }
   
@@ -65,15 +65,15 @@ public class CaptureTask
     if (??? != null) {
       return ???;
     }
-    this.f += 1;
+    this.k += 1;
     Bitmap[] arrayOfBitmap = new Bitmap[1];
     arrayOfBitmap[0] = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy.a(this, new CaptureTask.1(this, arrayOfBitmap));
+    this.h.a(this, new CaptureTask.1(this, arrayOfBitmap));
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.l)
       {
-        this.jdField_a_of_type_JavaLangObject.wait();
+        this.l.wait();
       }
     }
     catch (InterruptedException localInterruptedException)
@@ -86,41 +86,41 @@ public class CaptureTask
   protected void a(Bitmap paramBitmap)
   {
     super.onPostExecute(paramBitmap);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramBitmap);
-    CaptureTask.OnTaskListener localOnTaskListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnTaskListener;
+    this.g = new SoftReference(paramBitmap);
+    CaptureTask.OnTaskListener localOnTaskListener = this.j;
     if (localOnTaskListener != null) {
       localOnTaskListener.b(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback != null) {
+    if (this.i != null) {
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback.a(paramBitmap, this);
+        this.i.a(paramBitmap, this);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnCaptureCallback.a();
+        this.i.a();
       }
     }
-    a();
+    b();
   }
   
   public void a(CaptureTask.OnTaskListener paramOnTaskListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnTaskListener = paramOnTaskListener;
+    this.j = paramOnTaskListener;
   }
   
   public void a(ICaptureProxy paramICaptureProxy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureICaptureProxy = paramICaptureProxy;
+    this.h = paramICaptureProxy;
   }
   
   protected void onCancelled()
   {
     super.onCancelled();
-    a();
+    b();
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    CaptureTask.OnTaskListener localOnTaskListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectCaptureCaptureTask$OnTaskListener;
+    CaptureTask.OnTaskListener localOnTaskListener = this.j;
     if (localOnTaskListener != null) {
       localOnTaskListener.a(this);
     }
@@ -130,25 +130,25 @@ public class CaptureTask
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CaptureTask{id=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", type=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", path='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", position=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", width=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", height=");
+    localStringBuilder.append(", width=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.CaptureTask
  * JD-Core Version:    0.7.0.1
  */

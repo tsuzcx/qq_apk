@@ -14,33 +14,27 @@ import android.widget.ImageView;
 public class HeartView
   extends ImageView
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private static Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private static Bitmap b;
-  protected final int a;
-  private boolean jdField_a_of_type_Boolean = true;
-  protected final int b;
+  private static Bitmap c;
+  private static Bitmap d;
+  private static Paint e;
+  private static Canvas f;
+  protected final int a = 2130846922;
+  protected final int b = 2130846921;
+  private boolean g = true;
   
   public HeartView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130845466;
-    this.jdField_b_of_type_Int = 2130845465;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130845466;
-    this.jdField_b_of_type_Int = 2130845465;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130845466;
-    this.jdField_b_of_type_Int = 2130845465;
   }
   
   public static Bitmap a(int paramInt1, int paramInt2)
@@ -59,11 +53,11 @@ public class HeartView
   
   public Bitmap a(int paramInt)
   {
-    if (jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    if (c == null) {}
     try
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130845466);
-      if (jdField_b_of_type_AndroidGraphicsBitmap == null) {}
+      c = BitmapFactory.decodeResource(getResources(), 2130846922);
+      if (d == null) {}
       Bitmap localBitmap1;
       Bitmap localBitmap2;
       Bitmap localBitmap3;
@@ -75,23 +69,23 @@ public class HeartView
     {
       try
       {
-        jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130845465);
-        if (jdField_a_of_type_AndroidGraphicsPaint == null) {
-          jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
+        d = BitmapFactory.decodeResource(getResources(), 2130846921);
+        if (e == null) {
+          e = new Paint(3);
         }
-        if (jdField_a_of_type_AndroidGraphicsCanvas == null) {
-          jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+        if (f == null) {
+          f = new Canvas();
         }
-        localBitmap1 = jdField_a_of_type_AndroidGraphicsBitmap;
-        localBitmap2 = jdField_b_of_type_AndroidGraphicsBitmap;
+        localBitmap1 = c;
+        localBitmap2 = d;
         localBitmap3 = a(localBitmap2.getWidth(), localBitmap2.getHeight());
         if (localBitmap3 == null) {
           return null;
         }
-        localCanvas = jdField_a_of_type_AndroidGraphicsCanvas;
+        localCanvas = f;
         localCanvas.setBitmap(localBitmap3);
-        localPaint = jdField_a_of_type_AndroidGraphicsPaint;
-        if (this.jdField_a_of_type_Boolean)
+        localPaint = e;
+        if (this.g)
         {
           localCanvas.drawBitmap(localBitmap2, 0.0F, 0.0F, localPaint);
           localPaint.setColorFilter(new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP));
@@ -120,12 +114,12 @@ public class HeartView
       super.setImageBitmap(localBitmap);
       return;
     }
-    super.setImageResource(2130845466);
+    super.setImageResource(2130846922);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.HeartView
  * JD-Core Version:    0.7.0.1
  */

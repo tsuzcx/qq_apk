@@ -5,7 +5,6 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import com.tencent.aelight.camera.qqstory.api.IJumpUtil;
-import com.tencent.biz.qcircleshadow.local.QCircleShadow;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
@@ -16,15 +15,16 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.AccountIdentityCallBack;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.FlutterInstallCallBack;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.servlet.LoginVerifyServlet;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 import com.tencent.mobileqq.tianshu.api.IRedTouchServer;
 import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqperf.tools.DeviceInfoUtils;
 import com.tencent.theme.TextHook;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
+import cooperation.qzone.QUA;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -46,7 +46,7 @@ public class HostStaticInvokeHelper
     }
     try
     {
-      localObject = ((WifiManager)localObject).getConnectionInfo();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
     }
     catch (Exception localException)
     {
@@ -75,7 +75,7 @@ public class HostStaticInvokeHelper
   
   public static String getPluginQua()
   {
-    return QCircleShadow.a().a();
+    return QUA.getQUA3();
   }
   
   public static String getQCircleSchemeFromJumpUtil(String paramString1, String paramString2)
@@ -110,11 +110,6 @@ public class HostStaticInvokeHelper
     }
   }
   
-  public static boolean isLowPerfDevice()
-  {
-    return DeviceInfoUtils.b();
-  }
-  
   public static void nativeSetMaxPhotoFrameCount(int paramInt)
   {
     VideoSourceHelper.nativeSetMaxPhotoFrameCount(paramInt);
@@ -137,7 +132,14 @@ public class HostStaticInvokeHelper
   
   public static void sendQCircleAccountIdentityRequest(AccountIdentityCallBack paramAccountIdentityCallBack)
   {
-    LoginVerifyServlet.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new HostStaticInvokeHelper.1(paramAccountIdentityCallBack));
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime != null)
+    {
+      if (localAppRuntime.getApp() == null) {
+        return;
+      }
+      LoginVerifyServlet.b(localAppRuntime, new HostStaticInvokeHelper.1(paramAccountIdentityCallBack));
+    }
   }
   
   public static void summitHighPriortyJob(HostStaticInvokeHelper.InvokeNormalCallBack paramInvokeNormalCallBack)
@@ -152,7 +154,7 @@ public class HostStaticInvokeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ final class HtmlOffline$1
   
   public void run()
   {
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
+    if (HtmlOffline.f.a()) {
+      HtmlOffline.f.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
     }
-    new HtmlOffline.TransUrl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack).a();
+    new HtmlOffline.TransUrl(this.a, this.b, this.c).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.1
  * JD-Core Version:    0.7.0.1
  */

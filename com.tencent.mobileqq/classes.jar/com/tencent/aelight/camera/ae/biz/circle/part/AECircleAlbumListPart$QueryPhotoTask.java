@@ -4,8 +4,10 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumLogicData;
 import com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic;
+import com.tencent.aelight.camera.ae.biz.circle.event.AECircleLoadRecomAutoTemplateDataEvent;
 import com.tencent.aelight.camera.aebase.AEReportUtils;
 import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
@@ -22,18 +24,18 @@ import java.util.Map;
 public class AECircleAlbumListPart$QueryPhotoTask
   extends AsyncTask<Object, Object, List<LocalMediaInfo>>
 {
-  private boolean jdField_a_of_type_Boolean;
   private boolean b;
+  private boolean c;
   
   public AECircleAlbumListPart$QueryPhotoTask(AECircleAlbumListPart paramAECircleAlbumListPart, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.b = paramBoolean1;
+    this.c = paramBoolean2;
   }
   
   protected List<LocalMediaInfo> a(Object... paramVarArgs)
   {
-    PhotoCommonBaseData localPhotoCommonBaseData = AECircleAlbumListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData;
+    PhotoCommonBaseData localPhotoCommonBaseData = AECircleAlbumListPart.a(this.a).c;
     if (localPhotoCommonBaseData.selectedPhotoList == null) {
       localPhotoCommonBaseData.selectedPhotoList = new ArrayList();
     }
@@ -42,22 +44,22 @@ public class AECircleAlbumListPart$QueryPhotoTask
     }
     HashMap localHashMap = localPhotoCommonBaseData.selectedMediaInfoHashMap;
     LogTag.a();
-    Object localObject1 = AECircleAlbumListPart.b(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).a(this.jdField_a_of_type_Boolean);
+    Object localObject1 = AECircleAlbumListPart.b(this.a).a(this.b);
     paramVarArgs = (Object[])localObject1;
     if (localObject1 == null) {
       paramVarArgs = new ArrayList();
     }
-    localObject1 = AECircleAlbumListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart);
+    localObject1 = AECircleAlbumListPart.c(this.a);
     int j = 0;
-    ((PhotoListBaseData)localObject1).c = 0;
-    AECircleAlbumListPart.b(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).d = 0;
+    ((PhotoListBaseData)localObject1).C = 0;
+    AECircleAlbumListPart.d(this.a).D = 0;
     System.currentTimeMillis();
     long l = QAlbumUtil.sLastAlbumRecordTime;
     if (QAlbumUtil.sLastAlbumPhotoCountMap.containsKey(localPhotoCommonBaseData.albumId)) {
       ((Integer)QAlbumUtil.sLastAlbumPhotoCountMap.get(localPhotoCommonBaseData.albumId)).intValue();
     }
     Object localObject2;
-    if ((AECircleAlbumListPart.c(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).r) && (localPhotoCommonBaseData.albumId.equals("$RecentAlbumId")))
+    if ((AECircleAlbumListPart.e(this.a).O) && (localPhotoCommonBaseData.albumId.equals("$RecentAlbumId")))
     {
       localObject1 = paramVarArgs.iterator();
       while (((Iterator)localObject1).hasNext())
@@ -65,13 +67,13 @@ public class AECircleAlbumListPart$QueryPhotoTask
         localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
         if ((localObject2 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject2).path)))
         {
-          PhotoListBaseData.jdField_a_of_type_JavaUtilMap.remove(((LocalMediaInfo)localObject2).path);
+          PhotoListBaseData.x.remove(((LocalMediaInfo)localObject2).path);
           localHashMap.remove(((LocalMediaInfo)localObject2).path);
         }
       }
-      paramVarArgs.addAll(0, PhotoListBaseData.jdField_a_of_type_JavaUtilMap.values());
+      paramVarArgs.addAll(0, PhotoListBaseData.x.values());
     }
-    if ((AECircleAlbumListPart.d(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).s) && (localPhotoCommonBaseData.albumId.equals("$VideoAlbumId")))
+    if ((AECircleAlbumListPart.f(this.a).P) && (localPhotoCommonBaseData.albumId.equals("$VideoAlbumId")))
     {
       localObject1 = paramVarArgs.iterator();
       while (((Iterator)localObject1).hasNext())
@@ -79,11 +81,11 @@ public class AECircleAlbumListPart$QueryPhotoTask
         localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
         if ((localObject2 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject2).path)))
         {
-          PhotoListBaseData.jdField_a_of_type_JavaUtilMap.remove(((LocalMediaInfo)localObject2).path);
+          PhotoListBaseData.x.remove(((LocalMediaInfo)localObject2).path);
           localHashMap.remove(((LocalMediaInfo)localObject2).path);
         }
       }
-      localObject1 = PhotoListBaseData.jdField_a_of_type_JavaUtilMap.values().iterator();
+      localObject1 = PhotoListBaseData.x.values().iterator();
       i = 0;
       while (((Iterator)localObject1).hasNext())
       {
@@ -112,24 +114,24 @@ public class AECircleAlbumListPart$QueryPhotoTask
           if (!localPhotoCommonBaseData.selectedIndex.contains(((LocalMediaInfo)localObject2).position)) {
             localPhotoCommonBaseData.selectedIndex.add(((LocalMediaInfo)localObject2).position);
           }
-          if ((AECircleAlbumListPart.e(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).n) && (j == 1))
+          if ((AECircleAlbumListPart.g(this.a).B) && (j == 1))
           {
-            PhotoListBaseData localPhotoListBaseData = AECircleAlbumListPart.f(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart);
-            localPhotoListBaseData.c += 1;
-            if (AECircleAlbumListPart.g(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).c == 1) {
-              AECircleAlbumListPart.h(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject2);
+            PhotoListBaseData localPhotoListBaseData = AECircleAlbumListPart.h(this.a);
+            localPhotoListBaseData.C += 1;
+            if (AECircleAlbumListPart.i(this.a).C == 1) {
+              AECircleAlbumListPart.j(this.a).E = ((LocalMediaInfo)localObject2);
             }
           }
-          if ((AECircleAlbumListPart.i(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).r) && (!localHashMap.containsKey(((LocalMediaInfo)localObject2).path))) {
+          if ((AECircleAlbumListPart.k(this.a).O) && (!localHashMap.containsKey(((LocalMediaInfo)localObject2).path))) {
             localHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
           }
           if ((!TextUtils.isEmpty(((LocalMediaInfo)localObject2).mMimeType)) && ("image/gif".equals(((LocalMediaInfo)localObject2).mMimeType)))
           {
-            localObject2 = AECircleAlbumListPart.j(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart);
-            ((PhotoListBaseData)localObject2).d += 1;
+            localObject2 = AECircleAlbumListPart.l(this.a);
+            ((PhotoListBaseData)localObject2).D += 1;
           }
         }
-        else if ((localPhotoCommonBaseData.selectedPhotoList.size() < localPhotoCommonBaseData.maxSelectNum) && (((LocalMediaInfo)localObject2).path.equals(AECircleAlbumListPart.k(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).e)))
+        else if ((localPhotoCommonBaseData.selectedPhotoList.size() < localPhotoCommonBaseData.maxSelectNum) && (((LocalMediaInfo)localObject2).path.equals(AECircleAlbumListPart.m(this.a).A)))
         {
           ((LocalMediaInfo)localObject2).selectStatus = 1;
           localPhotoCommonBaseData.selectedPhotoList.add(((LocalMediaInfo)localObject2).path);
@@ -157,16 +159,18 @@ public class AECircleAlbumListPart$QueryPhotoTask
   protected void a(List<LocalMediaInfo> paramList)
   {
     long l = System.currentTimeMillis();
-    AECircleAlbumListPart.c(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).a(paramList, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Boolean)
+    AECircleAlbumListPart.n(this.a).a(paramList, this.b);
+    if (this.b)
     {
-      paramList = this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart;
+      paramList = this.a;
       boolean bool = false;
       paramList.a(false, false);
-      if (AECircleAlbumListPart.d(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECircleAlbumListPart).jdField_a_of_type_ComTencentAelightCameraAeAlbumDataAEAlbumLogicData.initialHasPickedNum > 0) {
+      SimpleEventBus.getInstance().dispatchEvent(new AECircleLoadRecomAutoTemplateDataEvent());
+      paramList = AECircleAlbumListPart.o(this.a).i();
+      if (AECircleAlbumListPart.p(this.a).m.initialHasPickedNum > 0) {
         bool = true;
       }
-      AEReportUtils.a(bool);
+      AEReportUtils.a(bool, paramList);
     }
     paramList = new StringBuilder();
     paramList.append("[onPostExecute] + END, time cost = ");
@@ -181,7 +185,7 @@ public class AECircleAlbumListPart$QueryPhotoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECircleAlbumListPart.QueryPhotoTask
  * JD-Core Version:    0.7.0.1
  */

@@ -31,30 +31,30 @@ class QQReminderDataServiceImpl$10
       }
       if (paramBoolean)
       {
-        QQReminderDataServiceImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl).edit().putString("sp_key_new_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
+        QQReminderDataServiceImpl.access$800(this.c).edit().putString("sp_key_new_fetch_reminder_list_time", this.a).apply();
         paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
         if (paramBundle != null)
         {
           localObject = paramBundle.msgs;
-          QQReminderDataServiceImpl.access$1200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl, (List)localObject);
+          QQReminderDataServiceImpl.access$1200(this.c, (List)localObject);
           if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
           {
-            this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl.saveReminderMsgList((List)localObject);
+            this.c.saveReminderMsgList((List)localObject);
             paramBundle = new ArrayList();
             localObject = ((ArrayList)localObject).iterator();
             while (((Iterator)localObject).hasNext()) {
               paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
             }
-            localObject = (IQQReminderService)QQReminderDataServiceImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl).getRuntimeService(IQQReminderService.class, "");
+            localObject = (IQQReminderService)QQReminderDataServiceImpl.access$200(this.c).getRuntimeService(IQQReminderService.class, "");
             if (localObject != null) {
               ((IQQReminderService)localObject).sendAckMsgs(paramBundle, new QQReminderDataServiceImpl.10.1(this));
             }
           }
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull.a();
+        this.b.a();
         return;
       }
     }
@@ -69,7 +69,7 @@ class QQReminderDataServiceImpl$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.10
  * JD-Core Version:    0.7.0.1
  */

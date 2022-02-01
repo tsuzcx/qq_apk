@@ -27,15 +27,6 @@ public class Rdm
 {
   private static AtomicInteger a = new AtomicInteger(0);
   
-  private static void a()
-  {
-    ReportControllerServiceHolder.a(new ReportDataProviderServiceProvider());
-    ReportControllerServiceHolder.b(new TouchEventServiceProvider());
-    ReportControllerServiceHolder.c(new ReportServiceProvider());
-    ReportControllerServiceHolder.e(new StaticsCollectorServiceProvider());
-    ReportControllerServiceHolder.d(new LocalMultiProcConfigServiceProvider());
-  }
-  
   private boolean a()
   {
     if (b())
@@ -51,13 +42,22 @@ public class Rdm
     return (BaseApplicationImpl.sProcessId == -1) && (BaseApplicationImpl.processName != null) && (BaseApplicationImpl.processName.endsWith(":live"));
   }
   
+  private static void c()
+  {
+    ReportControllerServiceHolder.a(new ReportDataProviderServiceProvider());
+    ReportControllerServiceHolder.b(new TouchEventServiceProvider());
+    ReportControllerServiceHolder.c(new ReportServiceProvider());
+    ReportControllerServiceHolder.e(new StaticsCollectorServiceProvider());
+    ReportControllerServiceHolder.d(new LocalMultiProcConfigServiceProvider());
+  }
+  
   protected boolean doStep()
   {
     if (a()) {
       return true;
     }
     String str = BaseApplicationImpl.processName;
-    a();
+    c();
     Object localObject1 = new StringBuilder("doStep process=");
     ((StringBuilder)localObject1).append(str);
     ((StringBuilder)localObject1).append(", sRdmState=");
@@ -124,7 +124,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

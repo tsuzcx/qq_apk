@@ -9,17 +9,17 @@ class SpringFestivalEntryManager$11
   
   public void run()
   {
-    if ((this.a.a instanceof PopBannerData))
+    if ((this.a.c instanceof PopBannerData))
     {
-      PopBannerData localPopBannerData = (PopBannerData)this.a.a;
+      PopBannerData localPopBannerData = (PopBannerData)this.a.c;
       SpringFestivalEntryManager.a(this.this$0, localPopBannerData);
-      SpringFestivalEntryManager.a(this.this$0).a(localPopBannerData);
+      SpringFestivalEntryManager.g(this.this$0).a(localPopBannerData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.11
  * JD-Core Version:    0.7.0.1
  */

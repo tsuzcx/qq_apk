@@ -13,8 +13,8 @@ class GameRoomFragment$6
   
   public void onClick(View paramView)
   {
-    GameRoomFragment.a(this.a).setVisibility(8);
-    this.a.a.a();
+    GameRoomFragment.d(this.a).setVisibility(8);
+    this.a.i.a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

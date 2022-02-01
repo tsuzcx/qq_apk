@@ -14,15 +14,15 @@ class QzoneHbFragment$4
   {
     if ((paramObject instanceof Bitmap))
     {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject = QzoneHbFragment.i(this.a).obtainMessage();
       paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+      QzoneHbFragment.i(this.a).sendMessage(paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.QzoneHbFragment.4
  * JD-Core Version:    0.7.0.1
  */

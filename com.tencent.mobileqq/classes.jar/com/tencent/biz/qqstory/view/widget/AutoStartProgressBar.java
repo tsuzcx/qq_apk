@@ -9,9 +9,9 @@ public class AutoStartProgressBar
 {
   protected static int a = 50;
   protected static int b = -1;
-  protected String a;
-  protected boolean a;
   protected int c = 100;
+  protected String d;
+  protected boolean e = false;
   
   public AutoStartProgressBar(Context paramContext)
   {
@@ -26,14 +26,13 @@ public class AutoStartProgressBar
   public AutoStartProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   private double a(int paramInt)
   {
     if (paramInt == b)
     {
-      double d1 = this.e;
+      double d1 = this.h;
       Double.isNaN(d1);
       double d2 = this.c;
       Double.isNaN(d2);
@@ -44,23 +43,23 @@ public class AutoStartProgressBar
   
   public void a()
   {
-    if (!a(this.jdField_a_of_type_JavaLangString))
+    if (!c(this.d))
     {
-      this.e = 0;
-      this.jdField_a_of_type_Boolean = false;
+      this.h = 0;
+      this.e = false;
       new AutoStartProgressBar.ProgressThread(this, null).start();
     }
   }
   
   public void b()
   {
-    setAnimProgress(100, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
+    setAnimProgress(100, this.d);
+    this.e = true;
   }
   
   public void setKey(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
 }
 

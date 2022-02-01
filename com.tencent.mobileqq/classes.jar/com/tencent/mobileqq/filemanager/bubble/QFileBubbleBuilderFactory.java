@@ -28,7 +28,7 @@ public class QFileBubbleBuilderFactory
     int i;
     if (bool)
     {
-      i = FileManagerUtil.a(paramChatMessage);
+      i = FileManagerUtil.d(paramChatMessage);
     }
     else if ((paramChatMessage instanceof MessageForFile))
     {
@@ -38,19 +38,19 @@ public class QFileBubbleBuilderFactory
       {
         i = j;
         if (paramQQAppInterface.cloudType != 0) {
-          i = FileManagerUtil.a(paramQQAppInterface.fileName);
+          i = FileManagerUtil.c(paramQQAppInterface.fileName);
         }
       }
     }
     else if ((paramChatMessage instanceof MessageForTroopFile))
     {
-      i = FileManagerUtil.a(((MessageForTroopFile)paramChatMessage).fileName);
+      i = FileManagerUtil.c(((MessageForTroopFile)paramChatMessage).fileName);
     }
     else
     {
       i = j;
       if ((paramChatMessage instanceof MessageForDLFile)) {
-        i = FileManagerUtil.a(((MessageForDLFile)paramChatMessage).fileName);
+        i = FileManagerUtil.c(((MessageForDLFile)paramChatMessage).fileName);
       }
     }
     if ((paramChatMessage instanceof MessageForFile)) {
@@ -174,7 +174,7 @@ public class QFileBubbleBuilderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.QFileBubbleBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

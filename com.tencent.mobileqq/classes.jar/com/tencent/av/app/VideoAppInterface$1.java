@@ -12,10 +12,10 @@ class VideoAppInterface$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(VideoAppInterface.c(), 2, "Async load mediaCodecChipConfig.");
+      QLog.i(VideoAppInterface.C(), 2, "Async load mediaCodecChipConfig.");
     }
-    MediaCodecChipConfigManager.a().a();
-    QavSdkConfigHelper.a();
+    MediaCodecChipConfigManager.a().b();
+    QavSdkConfigHelper.b();
   }
 }
 

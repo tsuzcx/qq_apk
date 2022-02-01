@@ -11,7 +11,7 @@ final class QavCameraUsage$1
   public void run()
   {
     Context localContext = this.a;
-    QQToast.a(localContext, localContext.getString(2131690261), 0).a();
+    QQToast.makeText(localContext, localContext.getString(2131887172), 0).show();
   }
 }
 

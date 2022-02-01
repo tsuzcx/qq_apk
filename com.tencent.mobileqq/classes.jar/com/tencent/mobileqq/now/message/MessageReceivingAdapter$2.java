@@ -16,8 +16,8 @@ class MessageReceivingAdapter$2
   
   public boolean onClick(View paramView)
   {
-    NowQQLiveDataReport.b(this.jdField_a_of_type_Int + 1, ChatMessageHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
-    paramView = ChatMessageHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    NowQQLiveDataReport.b(this.a + 1, ChatMessageHelper.b(this.b), "1");
+    paramView = ChatMessageHelper.a(this.b);
     boolean bool = TextUtils.isEmpty(paramView);
     int j = 0;
     if (bool) {
@@ -42,12 +42,12 @@ class MessageReceivingAdapter$2
     localStringBuilder.append("jumpUrl = ");
     localStringBuilder.append(paramView);
     Log.i("MessageReceivingAdapter", localStringBuilder.toString());
-    return NowRoomUtil.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
+    return NowRoomUtil.a(MessageReceivingAdapter.a(this.c), paramView, i, 60012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingAdapter.2
  * JD-Core Version:    0.7.0.1
  */

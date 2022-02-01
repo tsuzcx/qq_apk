@@ -29,6 +29,7 @@ import com.tencent.mobileqq.profilecard.api.IProfileDataService;
 import com.tencent.mobileqq.proxy.api.IRecentUserProxyService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
 import com.tencent.mobileqq.subaccount.api.ISubAccountConfigApi;
 import com.tencent.mobileqq.subaccount.api.ISubAccountControlService;
@@ -58,46 +59,6 @@ import mqq.app.MobileQQ;
 
 public class SubAccountControllUtil
 {
-  public static int a(AppInterface paramAppInterface)
-  {
-    int k = 0;
-    int j = 0;
-    int i = k;
-    if (paramAppInterface != null)
-    {
-      i = k;
-      if (paramAppInterface.isRunning())
-      {
-        if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-          return 0;
-        }
-        Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-        if (localObject != null)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramAppInterface.getCurrentUin());
-          localStringBuilder.append("_all_third_last_msg_time");
-          j = ((ISubAccountControlService)localObject).getAssociatedQQCacheInt(localStringBuilder.toString());
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("getAllThirdQQMsgUnreadLastTime() lastTime=");
-          ((StringBuilder)localObject).append(j);
-          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
-        }
-        long l = MessageCache.a();
-        i = j;
-        if (j > l)
-        {
-          i = (int)l;
-          a(paramAppInterface, i);
-        }
-      }
-    }
-    return i;
-  }
-  
   public static int a(AppInterface paramAppInterface, IConversationFacade paramIConversationFacade)
   {
     int k = 0;
@@ -157,51 +118,6 @@ public class SubAccountControllUtil
     return j;
   }
   
-  public static int a(AppInterface paramAppInterface, String paramString)
-  {
-    int j = 0;
-    int i = j;
-    if (paramAppInterface != null)
-    {
-      i = j;
-      if (paramAppInterface.isRunning())
-      {
-        i = j;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-            return 0;
-          }
-          Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-          i = j;
-          if (localObject != null)
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(paramAppInterface.getCurrentUin());
-            localStringBuilder.append("_");
-            localStringBuilder.append(paramString);
-            localStringBuilder.append("_msgNum");
-            j = ((ISubAccountControlService)localObject).getAssociatedQQCacheInt(localStringBuilder.toString());
-            i = j;
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("getLocalThirdUnreadMsgNum() currentUin=");
-              ((StringBuilder)localObject).append(paramAppInterface.getCurrentUin());
-              ((StringBuilder)localObject).append(" thirdUin=");
-              ((StringBuilder)localObject).append(paramString);
-              ((StringBuilder)localObject).append(" num=");
-              ((StringBuilder)localObject).append(j);
-              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
-              i = j;
-            }
-          }
-        }
-      }
-    }
-    return i;
-  }
-  
   public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
     int k = 0;
@@ -247,184 +163,6 @@ public class SubAccountControllUtil
     return j;
   }
   
-  public static ISubAccountControlService.SubAccountUnReadItem a(AppInterface paramAppInterface, String paramString)
-  {
-    ISubAccountControlService.SubAccountUnReadItem localSubAccountUnReadItem = new ISubAccountControlService.SubAccountUnReadItem();
-    if (paramAppInterface != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return localSubAccountUnReadItem;
-      }
-      paramAppInterface = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
-      int i = paramAppInterface.getUnreadAllMsgNum(paramString);
-      if (i > 0)
-      {
-        localSubAccountUnReadItem.jdField_a_of_type_Int = i;
-        return localSubAccountUnReadItem;
-      }
-      if (((ISubAccountConfigApi)QRoute.api(ISubAccountConfigApi.class)).getIsHideSubAccountTroopMsg()) {
-        return localSubAccountUnReadItem;
-      }
-      i = paramAppInterface.getUnreadAllTroopMsgNum(paramString);
-      if (i > 0)
-      {
-        localSubAccountUnReadItem.jdField_a_of_type_Int = i;
-        localSubAccountUnReadItem.jdField_a_of_type_Boolean = true;
-      }
-    }
-    return localSubAccountUnReadItem;
-  }
-  
-  public static Pair<Boolean, Boolean> a(AppInterface paramAppInterface, String paramString)
-  {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool4 = false;
-    Object localObject = Boolean.valueOf(false);
-    if ((paramAppInterface != null) && (paramString != null))
-    {
-      paramAppInterface = paramAppInterface.getApplication().getAllAccounts();
-      if ((paramAppInterface != null) && (paramAppInterface.size() != 0))
-      {
-        int i = 0;
-        while (i < paramAppInterface.size())
-        {
-          localObject = (SimpleAccount)paramAppInterface.get(i);
-          if (localObject == null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "checkSubAccountLoginStatus() sAccount == null");
-            }
-          }
-          else if (((SimpleAccount)localObject).getUin() == null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SUB_ACCOUNT", 2, "checkSubAccountLoginStatus() sAccount.getUin() == null");
-            }
-          }
-          else if (((SimpleAccount)localObject).getUin().equalsIgnoreCase(paramString))
-          {
-            bool1 = bool3;
-            bool2 = bool4;
-            if (!((SimpleAccount)localObject).isLogined()) {
-              break label172;
-            }
-            bool2 = true;
-            bool1 = bool3;
-            break label172;
-          }
-          i += 1;
-        }
-        bool1 = false;
-        bool2 = bool4;
-        label172:
-        if (QLog.isColorLevel())
-        {
-          paramAppInterface = new StringBuilder();
-          paramAppInterface.append("checkSubAccountLoginStatus() hasAccount=");
-          paramAppInterface.append(bool1);
-          paramAppInterface.append(" isLogin=");
-          paramAppInterface.append(bool2);
-          QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
-        }
-        return new Pair(Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      }
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("checkSubAccountLoginStatus() app.getAllAccounts() is null? =>");
-        if (paramAppInterface != null) {
-          bool1 = false;
-        }
-        paramString.append(bool1);
-        QLog.d("SUB_ACCOUNT", 2, paramString.toString());
-      }
-      return new Pair(localObject, localObject);
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkSubAccountLoginStatus() app is null?=>");
-      if (paramAppInterface == null) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      localStringBuilder.append(bool1);
-      localStringBuilder.append(" subUin is null?=>");
-      if (paramString == null) {
-        bool1 = bool2;
-      } else {
-        bool1 = false;
-      }
-      localStringBuilder.append(bool1);
-      QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
-    }
-    return new Pair(localObject, localObject);
-  }
-  
-  public static String a(AppInterface paramAppInterface, SimpleAccount paramSimpleAccount)
-  {
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramAppInterface.getCurrentUin())) && (paramSimpleAccount != null))
-    {
-      String str2 = a(paramAppInterface, paramSimpleAccount.getUin());
-      String str1 = str2;
-      if (paramSimpleAccount.isLogined()) {
-        if (!TextUtils.isEmpty(str2))
-        {
-          str1 = str2;
-          if (!str2.equals(paramSimpleAccount.getUin())) {}
-        }
-        else
-        {
-          str1 = b(paramAppInterface, paramSimpleAccount.getUin());
-        }
-      }
-      paramAppInterface = str1;
-      if (TextUtils.isEmpty(str1)) {
-        paramAppInterface = paramSimpleAccount.getUin();
-      }
-      if (QLog.isColorLevel())
-      {
-        paramSimpleAccount = new StringBuilder();
-        paramSimpleAccount.append("getShowName() showName=");
-        paramSimpleAccount.append(paramAppInterface);
-        QLog.d("SUB_ACCOUNT", 2, paramSimpleAccount.toString());
-      }
-      return paramAppInterface;
-    }
-    return "";
-  }
-  
-  public static String a(AppInterface paramAppInterface, String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    Object localObject = paramAppInterface.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
-    localStringBuilder.append(paramString);
-    localObject = ((MobileQQ)localObject).getProperty(localStringBuilder.toString());
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramAppInterface = ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true);
-      if (paramAppInterface != null)
-      {
-        paramAppInterface = paramAppInterface.name;
-        break label86;
-      }
-    }
-    paramAppInterface = (AppInterface)localObject;
-    label86:
-    localObject = paramAppInterface;
-    if (TextUtils.isEmpty(paramAppInterface)) {
-      localObject = paramString;
-    }
-    return localObject;
-  }
-  
   public static String a(AppInterface paramAppInterface, String paramString1, int paramInt, String paramString2)
   {
     BaseApplication localBaseApplication = paramAppInterface.getApp();
@@ -443,20 +181,20 @@ public class SubAccountControllUtil
         }
         break;
       case -1007: 
-        paramString1 = localBaseApplication.getString(2131689526);
+        paramString1 = localBaseApplication.getString(2131886134);
         break;
       case -1008: 
-        paramString1 = localBaseApplication.getString(2131689525);
+        paramString1 = localBaseApplication.getString(2131886133);
         break;
       case -1009: 
-        paramString1 = localBaseApplication.getString(2131718177);
+        paramString1 = localBaseApplication.getString(2131915656);
         break;
       case -1010: 
-        paramString1 = localBaseApplication.getString(2131689659);
+        paramString1 = localBaseApplication.getString(2131886270);
         break;
       case -1011: 
       case -1006: 
-        paramString1 = localBaseApplication.getString(2131689622);
+        paramString1 = localBaseApplication.getString(2131886233);
       }
       paramAppInterface = ContactUtilsProxy.a((BaseQQAppInterface)paramAppInterface, paramString2, true);
       if ((paramAppInterface != null) && (paramAppInterface.trim().length() > 0) && (!paramAppInterface.equals(paramString2)))
@@ -472,209 +210,6 @@ public class SubAccountControllUtil
       paramString1 = paramAppInterface.toString();
     }
     return paramString1;
-  }
-  
-  public static ArrayList<String> a(AppInterface paramAppInterface, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramAppInterface.getCurrentUin())))
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return localArrayList;
-      }
-      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      if (paramAppInterface != null) {
-        paramAppInterface.getSubAccountSpecialCareList(localArrayList, paramString);
-      }
-      if (QLog.isColorLevel())
-      {
-        paramAppInterface = new StringBuilder();
-        paramAppInterface.append("getSubAccountSpecialCareList  list=");
-        paramAppInterface.append(localArrayList);
-        QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "initAllData() return, app == null");
-      }
-      return;
-    }
-    Object localObject2 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
-    if (localObject2 == null) {
-      return;
-    }
-    long l1 = ((IDBUtils)QRoute.api(IDBUtils.class)).getSubAccountVersion(paramAppInterface.getApp());
-    long l2 = ApkUtils.a(paramAppInterface.getApp());
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("initAllData()..start, historyVersion=");
-      ((StringBuilder)localObject1).append(l1);
-      ((StringBuilder)localObject1).append(" thisApkVersion=");
-      ((StringBuilder)localObject1).append(l2);
-      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
-    }
-    boolean bool;
-    if (l1 < l2)
-    {
-      if (l1 == 0L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "initAllData() need to update (v5.0 or lower) data");
-        }
-        bool = ((IDBUtils)QRoute.api(IDBUtils.class)).subAccountOldVersionUpdate(paramAppInterface.getApp(), paramAppInterface.getAccount());
-        localObject1 = ((ISubAccountService)localObject2).getSubAccountInfo("sub.uin.default");
-        if ((localObject1 != null) && (((SubAccountInfo)localObject1).subuin != null))
-        {
-          ((ISubAccountService)localObject2).updateMsgData2SupportSubUin(((SubAccountInfo)localObject1).subuin);
-          i = ((ISubAccountService)localObject2).getUnreadAllMsgNum(((SubAccountInfo)localObject1).subuin);
-          localObject3 = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
-          i -= ((IConversationFacade)localObject3).getUnreadCount(((SubAccountInfo)localObject1).subuin, 7000);
-          if (i != 0)
-          {
-            ((IConversationFacade)localObject3).increaseUnread(((SubAccountInfo)localObject1).subuin, 7000, i);
-            ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, ((SubAccountInfo)localObject1).subuin });
-          }
-          if (bool)
-          {
-            if (QLog.isColorLevel())
-            {
-              localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append("initAllData(), setTopInRecentList, isTop=");
-              ((StringBuilder)localObject3).append(bool);
-              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject3).toString());
-            }
-            a(paramAppInterface, ((SubAccountInfo)localObject1).subuin, true);
-          }
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("SUB_ACCOUNT", 2, "initAllData() (v5.1 or later) update..");
-      }
-      ((IDBUtils)QRoute.api(IDBUtils.class)).setSubAccountVersion(paramAppInterface.getApp());
-    }
-    if (!((IDBUtils)QRoute.api(IDBUtils.class)).showSubAccountInRecentList(paramAppInterface.getApp(), paramAppInterface.getAccount()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "initAllData() showedBefore:false, isFirstTime to user SubAccount.");
-      }
-      ((IDBUtils)QRoute.api(IDBUtils.class)).setShowSubAccountInRecentList(paramAppInterface.getApp(), paramAppInterface.getAccount(), true);
-      a(paramAppInterface, 7);
-    }
-    Object localObject1 = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    Object localObject3 = ((RecentUserProxy)localObject1).b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
-    if (((ISubAccountService)localObject2).getBindedNumber() > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "initAllData() getBindedNumber > 0, go to initAllData");
-      }
-      localObject4 = ((ISubAccountService)localObject2).getAllSubAccountInfo();
-      int k = ((ArrayList)localObject4).size();
-      i = 0;
-      while (i < k)
-      {
-        SubAccountInfo localSubAccountInfo = (SubAccountInfo)((ArrayList)localObject4).get(i);
-        if (localSubAccountInfo != null)
-        {
-          if ((localObject3 != null) && (QLog.isColorLevel()))
-          {
-            localObject5 = new StringBuilder();
-            ((StringBuilder)localObject5).append("initAllData() onGetKeyBack() delete defaultRU:");
-            ((StringBuilder)localObject5).append(((RecentUser)localObject3).uin);
-            ((StringBuilder)localObject5).append(" type=");
-            ((StringBuilder)localObject5).append(((RecentUser)localObject3).getType());
-            QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject5).toString());
-          }
-          if ((localObject3 != null) && (l1 == 0L))
-          {
-            a(paramAppInterface, localSubAccountInfo.subuin, 7);
-            if (QLog.isColorLevel())
-            {
-              localObject5 = new StringBuilder();
-              ((StringBuilder)localObject5).append("initAllData() onGetKeyBack() add RU:");
-              ((StringBuilder)localObject5).append(localSubAccountInfo.subuin);
-              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject5).toString());
-            }
-            localObject5 = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
-            int m = ((IConversationFacade)localObject5).getUnreadCount(localSubAccountInfo.subuin, 7000);
-            if (localObject2 != null) {
-              j = ((ISubAccountService)localObject2).getUnreadAllMsgNum(localSubAccountInfo.subuin);
-            } else {
-              j = 0;
-            }
-            int n = j - m;
-            if (QLog.isColorLevel())
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("initAllData() onGetKeyBack() setReaded subaccount,old:");
-              localStringBuilder.append(m);
-              localStringBuilder.append(" target:");
-              localStringBuilder.append(j);
-              localStringBuilder.append(" increase:");
-              localStringBuilder.append(n);
-              QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
-            }
-            if (n != 0)
-            {
-              ((IConversationFacade)localObject5).increaseUnread(localSubAccountInfo.subuin, 7000, n);
-              ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localSubAccountInfo.subuin });
-            }
-          }
-          Object localObject5 = a(paramAppInterface, localSubAccountInfo.subuin);
-          if (localObject5 != null) {
-            bool = ((Boolean)((Pair)localObject5).second).booleanValue();
-          } else {
-            bool = false;
-          }
-          if (bool) {
-            paramAppInterface.getSubAccountKey(paramAppInterface.getAccount(), localSubAccountInfo.subuin, new SubAccountControllUtil.1(paramAppInterface));
-          }
-        }
-        i += 1;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "initAllData() delete subaccount recentuser, add default subaccount box");
-    }
-    localObject2 = ((ISubAccountService)localObject2).getAllSubAccountInfo();
-    int j = ((ArrayList)localObject2).size();
-    int i = 0;
-    while (i < j)
-    {
-      localObject3 = (SubAccountInfo)((ArrayList)localObject2).get(i);
-      if ((localObject3 != null) && (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(((SubAccountInfo)localObject3).subuin)))
-      {
-        localObject3 = ((RecentUserProxy)localObject1).b(((SubAccountInfo)localObject3).subuin, 7000);
-        if (localObject3 != null) {
-          ((RecentUserProxy)localObject1).a((RecentUser)localObject3);
-        }
-      }
-      i += 1;
-    }
-    localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
-    localObject3 = paramAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
-    Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(paramAppInterface.getAccount());
-    ((StringBuilder)localObject4).append("_initDataTimes");
-    localObject4 = ((StringBuilder)localObject4).toString();
-    i = ((SharedPreferences)localObject3).getInt((String)localObject4, 0);
-    if (((localObject2 == null) && (i == 0)) || ((localObject2 != null) && (i < 3)))
-    {
-      a(paramAppInterface, (RecentUserProxy)localObject1, AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7);
-      ((SharedPreferences)localObject3).edit().putInt((String)localObject4, i + 1).commit();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "initAllData() end");
-    }
-    ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).refreshConversation();
   }
   
   public static void a(AppInterface paramAppInterface, byte paramByte, String paramString)
@@ -874,7 +409,7 @@ public class SubAccountControllUtil
       paramRecentItemSubAccount.mMsgExtroInfo = "";
       if ((((List)localObject3).size() == 0) && (((List)localObject1).size() <= 1))
       {
-        paramMsgSummary.strContent = paramContext.getString(2131719326);
+        paramMsgSummary.strContent = paramContext.getString(2131916878);
         if (QLog.isColorLevel()) {
           QLog.d("SUB_ACCOUNT", 2, "setRecentItemSubAccountDescription() no sub & other account");
         }
@@ -895,7 +430,7 @@ public class SubAccountControllUtil
           l1 = l2;
         }
       }
-      a(paramAppInterface);
+      d(paramAppInterface);
       localObject1 = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
       i = a(paramAppInterface, (IConversationFacade)localObject1);
       n = b(paramAppInterface, (IConversationFacade)localObject1);
@@ -933,7 +468,7 @@ public class SubAccountControllUtil
         localObject10 = localObject1;
         j = i;
         if (!localIterator.hasNext()) {
-          break label1673;
+          break label1674;
         }
         localObject11 = str1;
         localObject7 = localObject3;
@@ -941,21 +476,21 @@ public class SubAccountControllUtil
         j = i;
         localSubAccountInfo = (SubAccountInfo)localIterator.next();
         if (localSubAccountInfo == null) {
-          break label1670;
+          break label1671;
         }
         localObject11 = str1;
         localObject7 = localObject3;
         localObject10 = localObject1;
         j = i;
         if (TextUtils.isEmpty(localSubAccountInfo.subuin)) {
-          break label1670;
+          break label1671;
         }
         localObject11 = str1;
         localObject7 = localObject3;
         localObject10 = localObject1;
         j = i;
         if (localISubAccountService.getStatus(localSubAccountInfo.subuin) != 1) {
-          break label1670;
+          break label1671;
         }
         localObject11 = str1;
         localObject7 = localObject3;
@@ -963,14 +498,14 @@ public class SubAccountControllUtil
         j = i;
         localObject13 = localISubAccountService.getAllMessage(localSubAccountInfo.subuin);
         if (localObject13 == null) {
-          break label1655;
+          break label1656;
         }
         localObject11 = str1;
         localObject7 = localObject3;
         localObject10 = localObject1;
         j = i;
         if (((List)localObject13).size() <= 0) {
-          break label1655;
+          break label1656;
         }
         localObject11 = str1;
         localObject7 = localObject3;
@@ -1052,17 +587,17 @@ public class SubAccountControllUtil
                   continue;
                 }
               }
-              localObject6 = a(paramAppInterface, localSubAccountInfo.subuin);
-              if (((ISubAccountControlService.SubAccountUnReadItem)localObject6).jdField_a_of_type_Boolean)
+              localObject6 = k(paramAppInterface, localSubAccountInfo.subuin);
+              if (((ISubAccountControlService.SubAccountUnReadItem)localObject6).b)
               {
-                k += ((ISubAccountControlService.SubAccountUnReadItem)localObject6).jdField_a_of_type_Int;
+                k += ((ISubAccountControlService.SubAccountUnReadItem)localObject6).a;
                 localObject6 = localObject10;
                 localObject9 = localObject11;
                 localObject8 = localObject12;
               }
               else
               {
-                m += ((ISubAccountControlService.SubAccountUnReadItem)localObject6).jdField_a_of_type_Int;
+                m += ((ISubAccountControlService.SubAccountUnReadItem)localObject6).a;
                 localObject6 = localObject10;
                 localObject9 = localObject11;
                 localObject8 = localObject12;
@@ -1078,7 +613,7 @@ public class SubAccountControllUtil
             }
             if ((localObject5 != null) && (localObject6 != null))
             {
-              paramMsgSummary.strContent = paramContext.getString(2131719288);
+              paramMsgSummary.strContent = paramContext.getString(2131916840);
               try
               {
                 paramRecentItemSubAccount.mUnreadNum = 0;
@@ -1086,7 +621,7 @@ public class SubAccountControllUtil
                 paramRecentItemSubAccount.showSubUin = null;
                 localObject12 = new SpannableStringBuilder();
                 if (!QLog.isColorLevel()) {
-                  break label1740;
+                  break label1741;
                 }
                 localObject8 = new StringBuilder();
                 ((StringBuilder)localObject8).append("setRecentItemSubAccountDescription() subUin=");
@@ -1111,7 +646,7 @@ public class SubAccountControllUtil
                 localObject8 = ((SubAccountMessage)localObject6).sendername;
                 bool = TextUtils.isEmpty((CharSequence)localObject8);
                 if (bool) {
-                  break label1758;
+                  break label1759;
                 }
                 ((SpannableStringBuilder)localObject12).append((CharSequence)localObject8);
                 ((SpannableStringBuilder)localObject12).append(": ");
@@ -1124,11 +659,11 @@ public class SubAccountControllUtil
                 ((SpannableStringBuilder)localObject12).append(((SubAccountMessage)localObject6).mEmoRecentMsg);
                 if (!((SubAccountMessage)localObject6).isread)
                 {
-                  if (a(paramAppInterface, ((SubAccountInfo)localObject5).subuin).contains(((SubAccountMessage)localObject6).senderuin))
+                  if (h(paramAppInterface, ((SubAccountInfo)localObject5).subuin).contains(((SubAccountMessage)localObject6).senderuin))
                   {
                     localObject6 = new StringBuilder();
                     ((StringBuilder)localObject6).append("[");
-                    ((StringBuilder)localObject6).append(paramContext.getString(2131716891));
+                    ((StringBuilder)localObject6).append(paramContext.getString(2131914364));
                     ((StringBuilder)localObject6).append("]");
                     paramRecentItemSubAccount.mMsgExtroInfo = ((StringBuilder)localObject6).toString();
                     paramMsgSummary.strContent = ((CharSequence)localObject12);
@@ -1205,7 +740,7 @@ public class SubAccountControllUtil
       paramRecentItemSubAccount.showSubUin = null;
       paramRecentItemSubAccount.mUnreadNum = 0;
       paramRecentItemSubAccount.mUnreadFlag = 0;
-      paramMsgSummary.strContent = paramContext.getString(2131719288);
+      paramMsgSummary.strContent = paramContext.getString(2131916840);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("SUB_ACCOUNT", 2, "setRecentItemSubAccountDescription() params error");
@@ -1221,14 +756,14 @@ public class SubAccountControllUtil
       localObject11 = localObject7;
       localObject5 = localObject13;
       continue;
-      label1655:
+      label1656:
       localObject10 = localObject6;
       localObject11 = localObject9;
       localObject12 = localObject8;
       continue;
-      label1670:
+      label1671:
       continue;
-      label1673:
+      label1674:
       localObject7 = localThrowable6;
       localObject11 = localObject3;
       localObject10 = localObject2;
@@ -1249,12 +784,12 @@ public class SubAccountControllUtil
       localObject5 = null;
       localObject6 = null;
       continue;
-      label1740:
+      label1741:
       if (m <= 0) {
         if ((m == 0) && (k == 0))
         {
           continue;
-          label1758:
+          label1759:
           localObject8 = localObject9;
           if (localObject9 == null) {
             localObject8 = localObject7;
@@ -1287,12 +822,12 @@ public class SubAccountControllUtil
       }
       if (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(paramString))
       {
-        localObject1 = paramRecentUserProxy.b(paramString, 7000);
+        localObject1 = paramRecentUserProxy.c(paramString, 7000);
         if (localObject1 != null) {
           paramRecentUserProxy.a((RecentUser)localObject1);
         }
       }
-      Object localObject2 = paramRecentUserProxy.b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
+      Object localObject2 = paramRecentUserProxy.c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
       localObject1 = localObject2;
       if (localObject2 == null) {
         if (paramInt != 5)
@@ -1328,7 +863,7 @@ public class SubAccountControllUtil
         }
         l2 = l1;
         if (l1 <= 0L) {
-          l2 = MessageCache.a();
+          l2 = MessageCache.c();
         }
         if ((paramInt != 1) && (paramInt != 2))
         {
@@ -1358,7 +893,7 @@ public class SubAccountControllUtil
           break;
           label369:
           if (paramInt == 7) {
-            l2 = MessageCache.a();
+            l2 = MessageCache.c();
           }
           ((RecentUser)localObject1).lastmsgtime = l2;
         }
@@ -1370,7 +905,7 @@ public class SubAccountControllUtil
         l2 = paramAppInterface.getActionTime(paramString);
         l1 = l2;
         if (l2 <= 0L) {
-          l1 = MessageCache.a();
+          l1 = MessageCache.c();
         }
         if ((paramInt != 1) && (paramInt != 2)) {
           if (paramInt != 4)
@@ -1400,7 +935,7 @@ public class SubAccountControllUtil
             break label613;
           }
         }
-        l2 = MessageCache.a();
+        l2 = MessageCache.c();
         localObject2 = (ArrayList)paramAppInterface.getMapSubMsg().get(paramString);
         l1 = l2;
         if (paramInt == 6)
@@ -1516,7 +1051,7 @@ public class SubAccountControllUtil
       return;
     }
     Object localObject = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    if ((((RecentUserProxy)localObject).b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000) != null) && (QLog.isColorLevel())) {
+    if ((((RecentUserProxy)localObject).c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000) != null) && (QLog.isColorLevel())) {
       QLog.d("SUB_ACCOUNT", 2, "bindRecentItem() bind, delete defaultRU");
     }
     a(paramAppInterface, (RecentUserProxy)localObject, paramString, paramInt);
@@ -1581,7 +1116,7 @@ public class SubAccountControllUtil
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
       localObject = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      if ((((RecentUserProxy)localObject).b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000) != null) && (QLog.isColorLevel())) {
+      if ((((RecentUserProxy)localObject).c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000) != null) && (QLog.isColorLevel())) {
         QLog.d("SUB_ACCOUNT", 2, "bindRecentItem() bind, delete defaultRU");
       }
       paramArrayList = paramArrayList.iterator();
@@ -1610,31 +1145,6 @@ public class SubAccountControllUtil
       }
       ((StringBuilder)localObject).append(paramAppInterface);
       QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, boolean paramBoolean)
-  {
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
-    {
-      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-        return;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("setDisplayThirdQQChecked checked=");
-        ((StringBuilder)localObject).append(paramBoolean);
-        QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
-      }
-      Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      if (localObject != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramAppInterface.getCurrentUin());
-        localStringBuilder.append("_display_third_qq_checked");
-        ((ISubAccountControlService)localObject).putAssociatedQQCache(localStringBuilder.toString(), String.valueOf(paramBoolean));
-      }
     }
   }
   
@@ -1730,11 +1240,11 @@ public class SubAccountControllUtil
     if (paramQBaseActivity == null) {
       return;
     }
-    Object localObject1 = paramQBaseActivity.getString(2131719330);
-    Object localObject2 = paramQBaseActivity.getString(2131719306, new Object[] { Integer.valueOf(2) });
+    Object localObject1 = paramQBaseActivity.getString(2131916882);
+    Object localObject2 = paramQBaseActivity.getString(2131916858, new Object[] { Integer.valueOf(2) });
     localObject1 = DialogUtil.a(paramQBaseActivity, 230).setTitle((String)localObject1).setMessage((CharSequence)localObject2);
     ((QQCustomDialog)localObject1).setOwnerActivity(paramQBaseActivity);
-    ((QQCustomDialog)localObject1).setPositiveButton(paramQBaseActivity.getString(2131719318), new SubAccountControllUtil.2(paramAppRuntime, paramQBaseActivity));
+    ((QQCustomDialog)localObject1).setPositiveButton(paramQBaseActivity.getString(2131916870), new SubAccountControllUtil.2(paramAppRuntime, paramQBaseActivity));
     ((QQCustomDialog)localObject1).setCancelable(false);
     ((QQCustomDialog)localObject1).show();
   }
@@ -1766,32 +1276,6 @@ public class SubAccountControllUtil
             return true;
           }
         }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, int paramInt)
-  {
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
-    {
-      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-        return false;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("updateAllThirdQQMsgUnreadLastTime() lastMsgTime=");
-        ((StringBuilder)localObject).append(paramInt);
-        QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
-      }
-      Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      if (localObject != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramAppInterface.getCurrentUin());
-        localStringBuilder.append("_all_third_last_msg_time");
-        return ((ISubAccountControlService)localObject).putAssociatedQQCache(localStringBuilder.toString(), Integer.valueOf(paramInt));
       }
     }
     return false;
@@ -1846,113 +1330,6 @@ public class SubAccountControllUtil
     return false;
   }
   
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    boolean bool2 = false;
-    if (paramString == null) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if (paramAppInterface != null)
-    {
-      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      bool1 = bool2;
-      if (paramAppInterface != null) {
-        bool1 = paramAppInterface.handleListWaittingHint(paramString);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramAppInterface = new StringBuilder();
-      paramAppInterface.append("needShowHintDialog() subUin=");
-      paramAppInterface.append(paramString);
-      paramAppInterface.append(" bool=");
-      paramAppInterface.append(bool1);
-      QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
-    }
-    return bool1;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, String paramString, boolean paramBoolean)
-  {
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getSubAccountMessage() subUin=");
-      ((StringBuilder)localObject1).append(paramString);
-      ((StringBuilder)localObject1).append(" isFromPush=");
-      ((StringBuilder)localObject1).append(paramBoolean);
-      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
-    }
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
-    {
-      localObject1 = null;
-      Object localObject2 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
-      if (localObject2 != null) {
-        localObject1 = ((ISubAccountService)localObject2).getA2(paramString);
-      }
-      localObject2 = (ISubAccountProtocService)paramAppInterface.getRuntimeService(ISubAccountProtocService.class, "");
-      if (localObject2 != null)
-      {
-        paramBoolean = ((ISubAccountProtocService)localObject2).getBindAccountFinish();
-        if (!paramBoolean)
-        {
-          localObject1 = new SubAccountBackProtocData();
-          ((SubAccountBackProtocData)localObject1).jdField_a_of_type_JavaLangString = "";
-          ((SubAccountBackProtocData)localObject1).b = paramAppInterface.getAccount();
-          ((SubAccountBackProtocData)localObject1).c = paramString;
-          ((SubAccountBackProtocData)localObject1).jdField_a_of_type_Int = 1009;
-          ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).notifyUI(8003, false, localObject1);
-          if (QLog.isColorLevel())
-          {
-            paramAppInterface = new StringBuilder();
-            paramAppInterface.append("getSubAccountMessage() return, get bind subaccount isFinish = ");
-            paramAppInterface.append(paramBoolean);
-            QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
-          }
-          return false;
-        }
-      }
-      if ((paramString != null) && (paramString.length() != 0) && (localObject1 != null) && (((String)localObject1).length() != 0) && (!((String)localObject1).trim().equals("")))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("getSubAccountMessage() lockMsg later really start get subaccount message account = ");
-          ((StringBuilder)localObject2).append(paramAppInterface.getAccount());
-          ((StringBuilder)localObject2).append("; sAccount = ");
-          ((StringBuilder)localObject2).append(paramString);
-          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject2).toString());
-        }
-        paramAppInterface = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getProcessor(paramAppInterface);
-        if (paramAppInterface != null) {
-          paramAppInterface.a((byte)3, 0, paramString, (String)localObject1, null);
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("getSubAccountMessage() return, subUin=");
-          ((StringBuilder)localObject2).append(paramString);
-          ((StringBuilder)localObject2).append(" a2=");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject2).toString());
-        }
-        localObject1 = new SubAccountBackProtocData();
-        ((SubAccountBackProtocData)localObject1).jdField_a_of_type_JavaLangString = "";
-        ((SubAccountBackProtocData)localObject1).b = paramAppInterface.getAccount();
-        ((SubAccountBackProtocData)localObject1).c = paramString;
-        ((SubAccountBackProtocData)localObject1).jdField_a_of_type_Int = 1010;
-        ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).notifyUI(8003, false, localObject1);
-        return false;
-      }
-    }
-    return true;
-  }
-  
   public static boolean a(AppInterface paramAppInterface, boolean paramBoolean)
   {
     if (paramAppInterface != null)
@@ -1969,30 +1346,6 @@ public class SubAccountControllUtil
       }
     }
     return false;
-  }
-  
-  public static byte[] a(AppInterface paramAppInterface, String paramString)
-  {
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramString)))
-    {
-      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-        return null;
-      }
-      ISubAccountControlService localISubAccountControlService = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      if (localISubAccountControlService != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramAppInterface.getCurrentUin());
-        localStringBuilder.append("_");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("_cookie");
-        paramAppInterface = localISubAccountControlService.getAssociatedQQCacheString(localStringBuilder.toString());
-        if (!TextUtils.isEmpty(paramAppInterface)) {
-          return PkgTools.hexToBytes(paramAppInterface);
-        }
-      }
-    }
-    return null;
   }
   
   public static int b(AppInterface paramAppInterface, IConversationFacade paramIConversationFacade)
@@ -2054,61 +1407,37 @@ public class SubAccountControllUtil
     return j;
   }
   
-  public static String b(AppInterface paramAppInterface, String paramString)
+  public static String b(AppInterface paramAppInterface, SimpleAccount paramSimpleAccount)
   {
-    Object localObject = ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true);
-    if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
-      return ((Friends)localObject).name;
-    }
-    localObject = ((IProfileDataService)paramAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCardFromCache(paramString);
-    paramAppInterface = paramString;
-    if (localObject != null)
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramAppInterface.getCurrentUin())) && (paramSimpleAccount != null))
     {
-      paramAppInterface = paramString;
-      if (!TextUtils.isEmpty(((Card)localObject).strNick)) {
-        paramAppInterface = ((Card)localObject).strNick;
-      }
-    }
-    return paramAppInterface;
-  }
-  
-  public static void b(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
-    {
-      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-        return;
-      }
-      Object localObject1 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
-      if (localObject1 != null)
-      {
-        Object localObject2 = new ArrayList();
-        ((List)localObject2).addAll(((ISubAccountService)localObject1).getAllSubAccountInfo());
-        localObject1 = paramAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
-        if ((localObject1 != null) && (((List)localObject2).size() > 0))
+      String str2 = i(paramAppInterface, paramSimpleAccount.getUin());
+      String str1 = str2;
+      if (paramSimpleAccount.isLogined()) {
+        if (!TextUtils.isEmpty(str2))
         {
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Object localObject3 = (SubAccountInfo)((Iterator)localObject2).next();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(((SubAccountInfo)localObject3).subuin);
-            localStringBuilder.append("_");
-            localStringBuilder.append(paramAppInterface.getCurrentUin());
-            localStringBuilder.append("_spcares_sysTime");
-            localObject3 = localStringBuilder.toString();
-            ((SharedPreferences)localObject1).edit().putInt((String)localObject3, 0).commit();
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("cleanReqSubAccountSpecialCareListSysTime key=");
-              localStringBuilder.append((String)localObject3);
-              QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
-            }
-          }
+          str1 = str2;
+          if (!str2.equals(paramSimpleAccount.getUin())) {}
+        }
+        else
+        {
+          str1 = j(paramAppInterface, paramSimpleAccount.getUin());
         }
       }
+      paramAppInterface = str1;
+      if (TextUtils.isEmpty(str1)) {
+        paramAppInterface = paramSimpleAccount.getUin();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramSimpleAccount = new StringBuilder();
+        paramSimpleAccount.append("getShowName() showName=");
+        paramSimpleAccount.append(paramAppInterface);
+        QLog.d("SUB_ACCOUNT", 2, paramSimpleAccount.toString());
+      }
+      return paramAppInterface;
     }
+    return "";
   }
   
   public static void b(AppInterface paramAppInterface, String paramString)
@@ -2235,9 +1564,295 @@ public class SubAccountControllUtil
     return bool;
   }
   
+  public static boolean b(AppInterface paramAppInterface, int paramInt)
+  {
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
+    {
+      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+        return false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateAllThirdQQMsgUnreadLastTime() lastMsgTime=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      if (localObject != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppInterface.getCurrentUin());
+        localStringBuilder.append("_all_third_last_msg_time");
+        return ((ISubAccountControlService)localObject).putAssociatedQQCache(localStringBuilder.toString(), Integer.valueOf(paramInt));
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface, String paramString, boolean paramBoolean)
+  {
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getSubAccountMessage() subUin=");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" isFromPush=");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
+    {
+      localObject1 = null;
+      Object localObject2 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
+      if (localObject2 != null) {
+        localObject1 = ((ISubAccountService)localObject2).getA2(paramString);
+      }
+      localObject2 = (ISubAccountProtocService)paramAppInterface.getRuntimeService(ISubAccountProtocService.class, "");
+      if (localObject2 != null)
+      {
+        paramBoolean = ((ISubAccountProtocService)localObject2).getBindAccountFinish();
+        if (!paramBoolean)
+        {
+          localObject1 = new SubAccountBackProtocData();
+          ((SubAccountBackProtocData)localObject1).b = "";
+          ((SubAccountBackProtocData)localObject1).c = paramAppInterface.getAccount();
+          ((SubAccountBackProtocData)localObject1).d = paramString;
+          ((SubAccountBackProtocData)localObject1).a = 1009;
+          ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).notifyUI(8003, false, localObject1);
+          if (QLog.isColorLevel())
+          {
+            paramAppInterface = new StringBuilder();
+            paramAppInterface.append("getSubAccountMessage() return, get bind subaccount isFinish = ");
+            paramAppInterface.append(paramBoolean);
+            QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
+          }
+          return false;
+        }
+      }
+      if ((paramString != null) && (paramString.length() != 0) && (localObject1 != null) && (((String)localObject1).length() != 0) && (!((String)localObject1).trim().equals("")))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getSubAccountMessage() lockMsg later really start get subaccount message account = ");
+          ((StringBuilder)localObject2).append(paramAppInterface.getAccount());
+          ((StringBuilder)localObject2).append("; sAccount = ");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject2).toString());
+        }
+        paramAppInterface = ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).getProcessor(paramAppInterface);
+        if (paramAppInterface != null) {
+          paramAppInterface.a((byte)3, 0, paramString, (String)localObject1, null);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getSubAccountMessage() return, subUin=");
+          ((StringBuilder)localObject2).append(paramString);
+          ((StringBuilder)localObject2).append(" a2=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject1 = new SubAccountBackProtocData();
+        ((SubAccountBackProtocData)localObject1).b = "";
+        ((SubAccountBackProtocData)localObject1).c = paramAppInterface.getAccount();
+        ((SubAccountBackProtocData)localObject1).d = paramString;
+        ((SubAccountBackProtocData)localObject1).a = 1010;
+        ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).notifyUI(8003, false, localObject1);
+        return false;
+      }
+    }
+    return true;
+  }
+  
   public static boolean b(AppInterface paramAppInterface, boolean paramBoolean)
   {
     return true;
+  }
+  
+  public static void c(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "initAllData() return, app == null");
+      }
+      return;
+    }
+    Object localObject2 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
+    if (localObject2 == null) {
+      return;
+    }
+    long l1 = ((IDBUtils)QRoute.api(IDBUtils.class)).getSubAccountVersion(paramAppInterface.getApp());
+    long l2 = ApkUtils.a(paramAppInterface.getApp());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("initAllData()..start, historyVersion=");
+      ((StringBuilder)localObject1).append(l1);
+      ((StringBuilder)localObject1).append(" thisApkVersion=");
+      ((StringBuilder)localObject1).append(l2);
+      QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
+    }
+    boolean bool;
+    if (l1 < l2)
+    {
+      if (l1 == 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SUB_ACCOUNT", 2, "initAllData() need to update (v5.0 or lower) data");
+        }
+        bool = ((IDBUtils)QRoute.api(IDBUtils.class)).subAccountOldVersionUpdate(paramAppInterface.getApp(), paramAppInterface.getAccount());
+        localObject1 = ((ISubAccountService)localObject2).getSubAccountInfo("sub.uin.default");
+        if ((localObject1 != null) && (((SubAccountInfo)localObject1).subuin != null))
+        {
+          ((ISubAccountService)localObject2).updateMsgData2SupportSubUin(((SubAccountInfo)localObject1).subuin);
+          i = ((ISubAccountService)localObject2).getUnreadAllMsgNum(((SubAccountInfo)localObject1).subuin);
+          localObject3 = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
+          i -= ((IConversationFacade)localObject3).getUnreadCount(((SubAccountInfo)localObject1).subuin, 7000);
+          if (i != 0)
+          {
+            ((IConversationFacade)localObject3).increaseUnread(((SubAccountInfo)localObject1).subuin, 7000, i);
+            ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, ((SubAccountInfo)localObject1).subuin });
+          }
+          if (bool)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("initAllData(), setTopInRecentList, isTop=");
+              ((StringBuilder)localObject3).append(bool);
+              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject3).toString());
+            }
+            a(paramAppInterface, ((SubAccountInfo)localObject1).subuin, true);
+          }
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("SUB_ACCOUNT", 2, "initAllData() (v5.1 or later) update..");
+      }
+      ((IDBUtils)QRoute.api(IDBUtils.class)).setSubAccountVersion(paramAppInterface.getApp());
+    }
+    if (!((IDBUtils)QRoute.api(IDBUtils.class)).showSubAccountInRecentList(paramAppInterface.getApp(), paramAppInterface.getAccount()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "initAllData() showedBefore:false, isFirstTime to user SubAccount.");
+      }
+      ((IDBUtils)QRoute.api(IDBUtils.class)).setShowSubAccountInRecentList(paramAppInterface.getApp(), paramAppInterface.getAccount(), true);
+      a(paramAppInterface, 7);
+    }
+    Object localObject1 = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+    Object localObject3 = ((RecentUserProxy)localObject1).c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
+    if (((ISubAccountService)localObject2).getBindedNumber() > 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "initAllData() getBindedNumber > 0, go to initAllData");
+      }
+      localObject4 = ((ISubAccountService)localObject2).getAllSubAccountInfo();
+      int k = ((ArrayList)localObject4).size();
+      i = 0;
+      while (i < k)
+      {
+        SubAccountInfo localSubAccountInfo = (SubAccountInfo)((ArrayList)localObject4).get(i);
+        if (localSubAccountInfo != null)
+        {
+          if ((localObject3 != null) && (QLog.isColorLevel()))
+          {
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("initAllData() onGetKeyBack() delete defaultRU:");
+            ((StringBuilder)localObject5).append(((RecentUser)localObject3).uin);
+            ((StringBuilder)localObject5).append(" type=");
+            ((StringBuilder)localObject5).append(((RecentUser)localObject3).getType());
+            QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject5).toString());
+          }
+          if ((localObject3 != null) && (l1 == 0L))
+          {
+            a(paramAppInterface, localSubAccountInfo.subuin, 7);
+            if (QLog.isColorLevel())
+            {
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("initAllData() onGetKeyBack() add RU:");
+              ((StringBuilder)localObject5).append(localSubAccountInfo.subuin);
+              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject5).toString());
+            }
+            localObject5 = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
+            int m = ((IConversationFacade)localObject5).getUnreadCount(localSubAccountInfo.subuin, 7000);
+            if (localObject2 != null) {
+              j = ((ISubAccountService)localObject2).getUnreadAllMsgNum(localSubAccountInfo.subuin);
+            } else {
+              j = 0;
+            }
+            int n = j - m;
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("initAllData() onGetKeyBack() setReaded subaccount,old:");
+              localStringBuilder.append(m);
+              localStringBuilder.append(" target:");
+              localStringBuilder.append(j);
+              localStringBuilder.append(" increase:");
+              localStringBuilder.append(n);
+              QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
+            }
+            if (n != 0)
+            {
+              ((IConversationFacade)localObject5).increaseUnread(localSubAccountInfo.subuin, 7000, n);
+              ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localSubAccountInfo.subuin });
+            }
+          }
+          Object localObject5 = d(paramAppInterface, localSubAccountInfo.subuin);
+          if (localObject5 != null) {
+            bool = ((Boolean)((Pair)localObject5).second).booleanValue();
+          } else {
+            bool = false;
+          }
+          if (bool) {
+            paramAppInterface.getSubAccountKey(paramAppInterface.getAccount(), localSubAccountInfo.subuin, new SubAccountControllUtil.1(paramAppInterface));
+          }
+        }
+        i += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() delete subaccount recentuser, add default subaccount box");
+    }
+    localObject2 = ((ISubAccountService)localObject2).getAllSubAccountInfo();
+    int j = ((ArrayList)localObject2).size();
+    int i = 0;
+    while (i < j)
+    {
+      localObject3 = (SubAccountInfo)((ArrayList)localObject2).get(i);
+      if ((localObject3 != null) && (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(((SubAccountInfo)localObject3).subuin)))
+      {
+        localObject3 = ((RecentUserProxy)localObject1).c(((SubAccountInfo)localObject3).subuin, 7000);
+        if (localObject3 != null) {
+          ((RecentUserProxy)localObject1).a((RecentUser)localObject3);
+        }
+      }
+      i += 1;
+    }
+    localObject2 = ((RecentUserProxy)localObject1).c(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
+    localObject3 = paramAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(paramAppInterface.getAccount());
+    ((StringBuilder)localObject4).append("_initDataTimes");
+    localObject4 = ((StringBuilder)localObject4).toString();
+    i = ((SharedPreferences)localObject3).getInt((String)localObject4, 0);
+    if (((localObject2 == null) && (i == 0)) || ((localObject2 != null) && (i < 3)))
+    {
+      a(paramAppInterface, (RecentUserProxy)localObject1, AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7);
+      ((SharedPreferences)localObject3).edit().putInt((String)localObject4, i + 1).commit();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() end");
+    }
+    ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).refreshConversation();
   }
   
   public static void c(AppInterface paramAppInterface, String paramString)
@@ -2257,7 +1872,7 @@ public class SubAccountControllUtil
       }
       ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setReaded(paramString, 7000);
       localObject = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      paramString = ((RecentUserProxy)localObject).b(paramString, 7000);
+      paramString = ((RecentUserProxy)localObject).c(paramString, 7000);
       if (paramString != null)
       {
         ((RecentUserProxy)localObject).a(paramString);
@@ -2281,7 +1896,176 @@ public class SubAccountControllUtil
     }
   }
   
-  public static boolean c(AppInterface paramAppInterface)
+  public static boolean c(AppInterface paramAppInterface, boolean paramBoolean)
+  {
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
+    {
+      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+        return false;
+      }
+      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      if (paramAppInterface != null) {
+        return paramAppInterface.isHeadIconLongClickFunc(paramBoolean);
+      }
+    }
+    return false;
+  }
+  
+  public static int d(AppInterface paramAppInterface)
+  {
+    int k = 0;
+    int j = 0;
+    int i = k;
+    if (paramAppInterface != null)
+    {
+      i = k;
+      if (paramAppInterface.isRunning())
+      {
+        if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+          return 0;
+        }
+        Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+        if (localObject != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramAppInterface.getCurrentUin());
+          localStringBuilder.append("_all_third_last_msg_time");
+          j = ((ISubAccountControlService)localObject).getAssociatedQQCacheInt(localStringBuilder.toString());
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getAllThirdQQMsgUnreadLastTime() lastTime=");
+          ((StringBuilder)localObject).append(j);
+          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+        }
+        long l = MessageCache.c();
+        i = j;
+        if (j > l)
+        {
+          i = (int)l;
+          b(paramAppInterface, i);
+        }
+      }
+    }
+    return i;
+  }
+  
+  public static Pair<Boolean, Boolean> d(AppInterface paramAppInterface, String paramString)
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    boolean bool3 = true;
+    boolean bool4 = false;
+    Object localObject = Boolean.valueOf(false);
+    if ((paramAppInterface != null) && (paramString != null))
+    {
+      paramAppInterface = paramAppInterface.getApplication().getAllAccounts();
+      if ((paramAppInterface != null) && (paramAppInterface.size() != 0))
+      {
+        int i = 0;
+        while (i < paramAppInterface.size())
+        {
+          localObject = (SimpleAccount)paramAppInterface.get(i);
+          if (localObject == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SUB_ACCOUNT", 2, "checkSubAccountLoginStatus() sAccount == null");
+            }
+          }
+          else if (((SimpleAccount)localObject).getUin() == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SUB_ACCOUNT", 2, "checkSubAccountLoginStatus() sAccount.getUin() == null");
+            }
+          }
+          else if (((SimpleAccount)localObject).getUin().equalsIgnoreCase(paramString))
+          {
+            bool1 = bool3;
+            bool2 = bool4;
+            if (!((SimpleAccount)localObject).isLogined()) {
+              break label174;
+            }
+            bool2 = true;
+            bool1 = bool3;
+            break label174;
+          }
+          i += 1;
+        }
+        bool1 = false;
+        bool2 = bool4;
+        label174:
+        if (QLog.isColorLevel())
+        {
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("checkSubAccountLoginStatus() hasAccount=");
+          paramAppInterface.append(bool1);
+          paramAppInterface.append(" isLogin=");
+          paramAppInterface.append(bool2);
+          QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
+        }
+        return new Pair(Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("checkSubAccountLoginStatus() app.getAllAccounts() is null? =>");
+        if (paramAppInterface != null) {
+          bool1 = false;
+        }
+        paramString.append(bool1);
+        QLog.d("SUB_ACCOUNT", 2, paramString.toString());
+      }
+      return new Pair(localObject, localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkSubAccountLoginStatus() app is null?=>");
+      if (paramAppInterface == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(" subUin is null?=>");
+      if (paramString == null) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      localStringBuilder.append(bool1);
+      QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
+    }
+    return new Pair(localObject, localObject);
+  }
+  
+  public static void d(AppInterface paramAppInterface, boolean paramBoolean)
+  {
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
+    {
+      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setDisplayThirdQQChecked checked=");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      if (localObject != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppInterface.getCurrentUin());
+        localStringBuilder.append("_display_third_qq_checked");
+        ((ISubAccountControlService)localObject).putAssociatedQQCache(localStringBuilder.toString(), String.valueOf(paramBoolean));
+      }
+    }
+  }
+  
+  public static boolean e(AppInterface paramAppInterface)
   {
     Integer localInteger = Integer.valueOf(0);
     if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
@@ -2348,22 +2132,142 @@ public class SubAccountControllUtil
     return false;
   }
   
-  public static boolean c(AppInterface paramAppInterface, boolean paramBoolean)
+  public static boolean e(AppInterface paramAppInterface, String paramString)
+  {
+    boolean bool2 = false;
+    if (paramString == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (paramAppInterface != null)
+    {
+      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      bool1 = bool2;
+      if (paramAppInterface != null) {
+        bool1 = paramAppInterface.handleListWaittingHint(paramString);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramAppInterface = new StringBuilder();
+      paramAppInterface.append("needShowHintDialog() subUin=");
+      paramAppInterface.append(paramString);
+      paramAppInterface.append(" bool=");
+      paramAppInterface.append(bool1);
+      QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
+    }
+    return bool1;
+  }
+  
+  public static void f(AppInterface paramAppInterface)
   {
     if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
     {
       if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
-        return false;
+        return;
       }
-      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      if (paramAppInterface != null) {
-        return paramAppInterface.isHeadIconLongClickFunc(paramBoolean);
+      Object localObject1 = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
+      if (localObject1 != null)
+      {
+        Object localObject2 = new ArrayList();
+        ((List)localObject2).addAll(((ISubAccountService)localObject1).getAllSubAccountInfo());
+        localObject1 = paramAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
+        if ((localObject1 != null) && (((List)localObject2).size() > 0))
+        {
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            Object localObject3 = (SubAccountInfo)((Iterator)localObject2).next();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(((SubAccountInfo)localObject3).subuin);
+            localStringBuilder.append("_");
+            localStringBuilder.append(paramAppInterface.getCurrentUin());
+            localStringBuilder.append("_spcares_sysTime");
+            localObject3 = localStringBuilder.toString();
+            ((SharedPreferences)localObject1).edit().putInt((String)localObject3, 0).commit();
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("cleanReqSubAccountSpecialCareListSysTime key=");
+              localStringBuilder.append((String)localObject3);
+              QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
+            }
+          }
+        }
       }
     }
-    return false;
   }
   
-  public static boolean d(AppInterface paramAppInterface)
+  public static byte[] f(AppInterface paramAppInterface, String paramString)
+  {
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+        return null;
+      }
+      ISubAccountControlService localISubAccountControlService = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      if (localISubAccountControlService != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppInterface.getCurrentUin());
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("_cookie");
+        paramAppInterface = localISubAccountControlService.getAssociatedQQCacheString(localStringBuilder.toString());
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          return PkgTools.hexToBytes(paramAppInterface);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static int g(AppInterface paramAppInterface, String paramString)
+  {
+    int j = 0;
+    int i = j;
+    if (paramAppInterface != null)
+    {
+      i = j;
+      if (paramAppInterface.isRunning())
+      {
+        i = j;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if (TextUtils.isEmpty(paramAppInterface.getCurrentUin())) {
+            return 0;
+          }
+          Object localObject = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+          i = j;
+          if (localObject != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramAppInterface.getCurrentUin());
+            localStringBuilder.append("_");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("_msgNum");
+            j = ((ISubAccountControlService)localObject).getAssociatedQQCacheInt(localStringBuilder.toString());
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("getLocalThirdUnreadMsgNum() currentUin=");
+              ((StringBuilder)localObject).append(paramAppInterface.getCurrentUin());
+              ((StringBuilder)localObject).append(" thirdUin=");
+              ((StringBuilder)localObject).append(paramString);
+              ((StringBuilder)localObject).append(" num=");
+              ((StringBuilder)localObject).append(j);
+              QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
+              i = j;
+            }
+          }
+        }
+      }
+    }
+    return i;
+  }
+  
+  public static boolean g(AppInterface paramAppInterface)
   {
     if ((paramAppInterface != null) && (paramAppInterface.isRunning()))
     {
@@ -2383,10 +2287,113 @@ public class SubAccountControllUtil
     }
     return true;
   }
+  
+  public static ArrayList<String> h(AppInterface paramAppInterface, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramAppInterface != null) && (paramAppInterface.isRunning()) && (!TextUtils.isEmpty(paramAppInterface.getCurrentUin())))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return localArrayList;
+      }
+      paramAppInterface = (ISubAccountControlService)paramAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+      if (paramAppInterface != null) {
+        paramAppInterface.getSubAccountSpecialCareList(localArrayList, paramString);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("getSubAccountSpecialCareList  list=");
+        paramAppInterface.append(localArrayList);
+        QLog.d("SUB_ACCOUNT", 2, paramAppInterface.toString());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void h(AppInterface paramAppInterface)
+  {
+    QLog.d("SUB_ACCOUNT", 2, "reportSubAccountBoxExposure");
+    ReportController.b(paramAppInterface, "dc00898", "", "", "0X800BDDE", "0X800BDDE", 0, 0, "", "", "", "");
+  }
+  
+  public static String i(AppInterface paramAppInterface, String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    Object localObject = paramAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
+    localStringBuilder.append(paramString);
+    localObject = ((MobileQQ)localObject).getProperty(localStringBuilder.toString());
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramAppInterface = ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true);
+      if (paramAppInterface != null)
+      {
+        paramAppInterface = paramAppInterface.name;
+        break label86;
+      }
+    }
+    paramAppInterface = (AppInterface)localObject;
+    label86:
+    localObject = paramAppInterface;
+    if (TextUtils.isEmpty(paramAppInterface)) {
+      localObject = paramString;
+    }
+    return localObject;
+  }
+  
+  public static String j(AppInterface paramAppInterface, String paramString)
+  {
+    Object localObject = ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true);
+    if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
+      return ((Friends)localObject).name;
+    }
+    localObject = ((IProfileDataService)paramAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCardFromCache(paramString);
+    paramAppInterface = paramString;
+    if (localObject != null)
+    {
+      paramAppInterface = paramString;
+      if (!TextUtils.isEmpty(((Card)localObject).strNick)) {
+        paramAppInterface = ((Card)localObject).strNick;
+      }
+    }
+    return paramAppInterface;
+  }
+  
+  public static ISubAccountControlService.SubAccountUnReadItem k(AppInterface paramAppInterface, String paramString)
+  {
+    ISubAccountControlService.SubAccountUnReadItem localSubAccountUnReadItem = new ISubAccountControlService.SubAccountUnReadItem();
+    if (paramAppInterface != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return localSubAccountUnReadItem;
+      }
+      paramAppInterface = (ISubAccountService)paramAppInterface.getRuntimeService(ISubAccountService.class, "");
+      int i = paramAppInterface.getUnreadAllMsgNum(paramString);
+      if (i > 0)
+      {
+        localSubAccountUnReadItem.a = i;
+        return localSubAccountUnReadItem;
+      }
+      if (((ISubAccountConfigApi)QRoute.api(ISubAccountConfigApi.class)).getIsHideSubAccountTroopMsg()) {
+        return localSubAccountUnReadItem;
+      }
+      i = paramAppInterface.getUnreadAllTroopMsgNum(paramString);
+      if (i > 0)
+      {
+        localSubAccountUnReadItem.a = i;
+        localSubAccountUnReadItem.b = true;
+      }
+    }
+    return localSubAccountUnReadItem;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountControllUtil
  * JD-Core Version:    0.7.0.1
  */

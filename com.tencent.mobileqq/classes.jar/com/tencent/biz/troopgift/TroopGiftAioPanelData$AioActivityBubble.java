@@ -8,28 +8,28 @@ import org.json.JSONObject;
 public class TroopGiftAioPanelData$AioActivityBubble
 {
   public int a;
-  public String a;
-  public List<TroopGiftAioPanelData.AioActivity> a;
   public int b;
-  public String b;
-  public int c;
+  public String c;
+  public int d;
+  public String e;
+  public List<TroopGiftAioPanelData.AioActivity> f;
   
   public TroopGiftAioPanelData$AioActivityBubble(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("lottie");
-    this.c = paramJSONObject.optInt("interval");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    this.a = paramJSONObject.optInt("width");
+    this.b = paramJSONObject.optInt("height");
+    this.c = paramJSONObject.optString("lottie");
+    this.d = paramJSONObject.optInt("interval");
+    this.e = paramJSONObject.optString("jumpUrl");
     if (paramJSONObject.optJSONArray("aioActivities") != null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.f = new ArrayList();
       paramJSONObject = paramJSONObject.optJSONArray("aioActivities");
       int i = 0;
       while (i < paramJSONObject.length())
       {
         TroopGiftAioPanelData.AioActivity localAioActivity = new TroopGiftAioPanelData.AioActivity(paramJSONObject.optJSONObject(i));
-        this.jdField_a_of_type_JavaUtilList.add(localAioActivity);
+        this.f.add(localAioActivity);
         i += 1;
       }
     }
@@ -37,7 +37,7 @@ public class TroopGiftAioPanelData$AioActivityBubble
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftAioPanelData.AioActivityBubble
  * JD-Core Version:    0.7.0.1
  */

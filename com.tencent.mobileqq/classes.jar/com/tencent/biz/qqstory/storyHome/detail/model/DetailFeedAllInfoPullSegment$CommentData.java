@@ -5,19 +5,19 @@ import java.util.List;
 
 class DetailFeedAllInfoPullSegment$CommentData
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  List<CommentEntry> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  boolean a;
+  List<CommentEntry> b;
+  int c;
+  boolean d;
+  String e;
   
   public DetailFeedAllInfoPullSegment$CommentData(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramBoolean1;
+    this.b = paramList;
+    this.c = paramInt;
+    this.d = paramBoolean2;
+    this.e = paramString;
   }
 }
 

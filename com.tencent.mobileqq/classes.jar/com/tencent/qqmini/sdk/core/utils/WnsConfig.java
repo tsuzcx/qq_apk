@@ -17,7 +17,7 @@ public class WnsConfig
   public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE = 1;
   public static final int DEFAULT_MINI_APP_ENABLE_V8_SERVICE_DEBUG = 0;
   public static final int DEFAULT_MINI_APP_REPORT_WHITE_SCREEN_ENABLE_CLEAR_APKG_CACHE = 0;
-  public static final String DEFAULT_MINI_APP_V8RT_URL = "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }";
+  public static final String DEFAULT_MINI_APP_V8RT_URL = "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136, \"url64\":\"https://d3g.qq.com/sngapp/app/update/20210601154157_4983/VD1Vg6kzck5I0UmQ6W6dPA==_libtv8rt.so\",\"size64\":1733496}";
   public static final int DEFAULT_MINI_APP_XPROF_API_REPORT = 0;
   public static final String DEFAULT_MINI_GAME_BASELIB = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200323171054_1567/lib_1.13.0.00014.zip\",\"key2\":\"\",\"key3\":\"1.4.8\",\"key4\": {\"file_length\": 5591276},\"key5\":2}";
   public static final String DEFAULT_OPENDATA_DOMAIN_WHITE_LIST = ".qlogo.com;.qlogo.cn;.qq.com;.tcb.qcloud.la";
@@ -306,7 +306,7 @@ public class WnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.WnsConfig
  * JD-Core Version:    0.7.0.1
  */

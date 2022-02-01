@@ -7,21 +7,16 @@ import java.util.Map;
 
 class TickerDrawMetrics
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Map<Character, Float> jdField_a_of_type_JavaUtilMap = new HashMap(256);
-  private float b;
+  private final Paint a;
+  private final Map<Character, Float> b = new HashMap(256);
+  private float c;
+  private float d;
+  private int e = 0;
   
   TickerDrawMetrics(Paint paramPaint)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint;
+    this.a = paramPaint;
     a();
-  }
-  
-  float a()
-  {
-    return this.jdField_a_of_type_Float;
   }
   
   float a(char paramChar)
@@ -29,41 +24,46 @@ class TickerDrawMetrics
     if (paramChar == 0) {
       return 0.0F;
     }
-    Float localFloat = (Float)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar));
+    Float localFloat = (Float)this.b.get(Character.valueOf(paramChar));
     if (localFloat != null) {
       return localFloat.floatValue();
     }
-    float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(Character.toString(paramChar));
-    this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramChar), Float.valueOf(f));
+    float f = this.a.measureText(Character.toString(paramChar));
+    this.b.put(Character.valueOf(paramChar), Float.valueOf(f));
     return f;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_a_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top);
-    this.b = (-localFontMetrics.top);
+    this.b.clear();
+    Paint.FontMetrics localFontMetrics = this.a.getFontMetrics();
+    this.c = (localFontMetrics.bottom - localFontMetrics.top);
+    this.d = (-localFontMetrics.top);
   }
   
   void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   float b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  float c()
+  {
+    return this.d;
+  }
+  
+  int d()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerDrawMetrics
  * JD-Core Version:    0.7.0.1
  */

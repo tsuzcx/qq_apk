@@ -19,7 +19,7 @@ class PrinterSessionAdapter$1
   
   public void onClick(View paramView)
   {
-    Object localObject = (PrinterItemMsgRecord)((ItemHolder)paramView.getTag()).a();
+    Object localObject = (PrinterItemMsgRecord)((ItemHolder)paramView.getTag()).b();
     if (localObject != null)
     {
       FileManagerEntity localFileManagerEntity = FileManagerUtil.a((PrinterItemMsgRecord)localObject);
@@ -31,7 +31,7 @@ class PrinterSessionAdapter$1
       localForwardFileInfo.c(((PrinterItemMsgRecord)localObject).uSessionID);
       localForwardFileInfo.d(localFileManagerEntity.fileSize);
       localForwardFileInfo.a(localFileManagerEntity.getFilePath());
-      localObject = new Intent(this.a.a.getApplicationContext(), FileBrowserActivity.class);
+      localObject = new Intent(this.a.c.getApplicationContext(), FileBrowserActivity.class);
       if ((localFileManagerEntity.nFileType == 0) || (localFileManagerEntity.nFileType == 1))
       {
         ArrayList localArrayList = new ArrayList();
@@ -39,7 +39,7 @@ class PrinterSessionAdapter$1
         ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
       }
       ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
-      this.a.a.startActivityForResult((Intent)localObject, 102);
+      this.a.c.startActivityForResult((Intent)localObject, 102);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

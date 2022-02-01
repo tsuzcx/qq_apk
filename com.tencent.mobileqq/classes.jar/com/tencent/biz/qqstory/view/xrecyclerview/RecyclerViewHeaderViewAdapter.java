@@ -14,62 +14,62 @@ import java.util.List;
 public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final T a;
   private final List<View> b = new ArrayList();
+  private final List<View> c = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver d;
   
   public RecyclerViewHeaderViewAdapter(T paramT)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new RecyclerViewHeaderViewAdapter.1(this));
+    this.a = paramT;
+    this.a.registerAdapterDataObserver(new RecyclerViewHeaderViewAdapter.1(this));
   }
   
   private boolean a(int paramInt)
   {
-    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+    return (paramInt >= -1000) && (paramInt < this.b.size() - 1000);
   }
   
   private boolean b(int paramInt)
   {
-    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+    return (paramInt >= -2000) && (paramInt < this.c.size() - 2000);
   }
   
   public RecyclerViewHeaderViewAdapter a(RecyclerViewHeaderViewAdapter.ContentDataObserver paramContentDataObserver)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver = paramContentDataObserver;
+    this.d = paramContentDataObserver;
     return this;
   }
   
   public void a(@NonNull View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
+    this.b.add(paramView);
   }
   
   public void b(@NonNull View paramView)
   {
-    this.b.add(paramView);
+    this.c.add(paramView);
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+    return this.b.size() + this.a.getItemCount() + this.c.size();
   }
   
   public int getItemViewType(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+    if (paramInt < this.b.size()) {
       return paramInt - 1000;
     }
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    if (paramInt < this.b.size() + this.a.getItemCount()) {
+      return this.a.getItemViewType(paramInt - this.b.size());
     }
-    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+    return paramInt - 2000 - this.b.size() - this.a.getItemCount();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int i = this.b.size();
     Object localObject2 = null;
     Object localObject1 = null;
     if (paramInt < i)
@@ -85,9 +85,9 @@ public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
       }
       ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
     }
-    else if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
+    else if (paramInt < this.b.size() + this.a.getItemCount())
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
+      this.a.onBindViewHolder(paramViewHolder, paramInt - this.b.size());
     }
     else
     {
@@ -111,14 +111,14 @@ public class RecyclerViewHeaderViewAdapter<T extends RecyclerView.Adapter>
     if (a(paramInt))
     {
       paramInt = Math.abs(paramInt + 1000);
-      return new RecyclerViewHeaderViewAdapter.2(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      return new RecyclerViewHeaderViewAdapter.2(this, (View)this.b.get(paramInt));
     }
     if (b(paramInt))
     {
       paramInt = Math.abs(paramInt + 2000);
-      return new RecyclerViewHeaderViewAdapter.3(this, (View)this.b.get(paramInt));
+      return new RecyclerViewHeaderViewAdapter.3(this, (View)this.c.get(paramInt));
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    return this.a.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

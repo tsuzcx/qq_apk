@@ -21,8 +21,8 @@ public class SPlayerDownloaderImpl
   
   public SPlayerDownloaderImpl(Context paramContext, int paramInt)
   {
-    CommonUtil.a(CommonUtil.a(paramInt));
-    paramContext = TPProxyGlobalManager.getInstance().getPlayerProxy(CommonUtil.a(paramInt));
+    CommonUtil.a(CommonUtil.b(paramInt));
+    paramContext = TPProxyGlobalManager.getInstance().getPlayerProxy(CommonUtil.b(paramInt));
     if ((paramContext != null) && (paramContext.getDownloadProxy() != null)) {
       this.mTPDownloadProxy = paramContext.getDownloadProxy();
     }
@@ -95,7 +95,7 @@ public class SPlayerDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

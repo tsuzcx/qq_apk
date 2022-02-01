@@ -7,38 +7,33 @@ import org.jetbrains.annotations.NotNull;
 public final class FirstCommentSinkData
   extends SimpleCommentData
 {
-  public static final FirstCommentSinkData.Companion a;
-  private int jdField_a_of_type_Int;
+  public static final FirstCommentSinkData.Companion a = new FirstCommentSinkData.Companion(null);
+  private int b;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityFirstCommentSinkData$Companion = new FirstCommentSinkData.Companion(null);
-  }
+  private final String c;
   
   public FirstCommentSinkData(@NotNull String paramString1, @NotNull String paramString2, int paramInt, @NotNull String paramString3)
   {
     super(paramInt, paramString3);
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString1;
     b(paramString2);
-    this.jdField_a_of_type_Int = 3;
+    this.b = 3;
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.c;
   }
   
   @NotNull
@@ -46,9 +41,9 @@ public final class FirstCommentSinkData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FirstCommentSinkData(commentID='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("', opType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(") super=");
     localStringBuilder.append(super.toString());
     return localStringBuilder.toString();
@@ -56,7 +51,7 @@ public final class FirstCommentSinkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.FirstCommentSinkData
  * JD-Core Version:    0.7.0.1
  */

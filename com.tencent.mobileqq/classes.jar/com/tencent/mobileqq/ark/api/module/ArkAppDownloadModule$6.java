@@ -15,12 +15,12 @@ class ArkAppDownloadModule$6
   
   public void a(WadlResult paramWadlResult)
   {
-    if (ArkAppDownloadModule.a(this.a) != null)
+    if (ArkAppDownloadModule.f(this.a) != null)
     {
       if (paramWadlResult != null) {
-        GameCenterUtil.a(paramWadlResult);
+        GameCenterUtil.c(paramWadlResult);
       }
-      ArkAppDownloadModule.a(this.a).a(paramWadlResult);
+      ArkAppDownloadModule.f(this.a).a(paramWadlResult);
       if (paramWadlResult == null) {
         return;
       }
@@ -29,11 +29,11 @@ class ArkAppDownloadModule$6
       ((StringBuilder)localObject).append(paramWadlResult.toString());
       QLog.i("ark.download.module", 1, ((StringBuilder)localObject).toString());
       if (paramWadlResult.a != null) {
-        localObject = paramWadlResult.a.a;
+        localObject = paramWadlResult.a.e;
       } else {
         localObject = "";
       }
-      int i = paramWadlResult.b;
+      int i = paramWadlResult.d;
       if (i != 6)
       {
         if (i != 7)
@@ -65,10 +65,12 @@ class ArkAppDownloadModule$6
       localStringBuilder.append(paramArrayList.toString());
       QLog.i("ark.download.module", 1, localStringBuilder.toString());
     }
-    if (ArkAppDownloadModule.a(this.a) != null)
+    if (ArkAppDownloadModule.g(this.a) != null)
     {
-      GameCenterUtil.a(paramArrayList);
-      ArkAppDownloadModule.a(this.a).a(paramArrayList);
+      if (paramArrayList != null) {
+        GameCenterUtil.a(paramArrayList);
+      }
+      ArkAppDownloadModule.g(this.a).a(paramArrayList);
     }
   }
   
@@ -81,16 +83,16 @@ class ArkAppDownloadModule$6
       localStringBuilder.append(paramArrayList.toString());
       QLog.i("ark.download.module", 1, localStringBuilder.toString());
     }
-    if (ArkAppDownloadModule.a(this.a) != null)
+    if (ArkAppDownloadModule.h(this.a) != null)
     {
       GameCenterUtil.a(paramArrayList);
-      ArkAppDownloadModule.a(this.a).a(paramArrayList);
+      ArkAppDownloadModule.h(this.a).a(paramArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.6
  * JD-Core Version:    0.7.0.1
  */

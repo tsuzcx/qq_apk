@@ -12,7 +12,7 @@ public class OldBigDataChannelManagerImpl
   
   public String getCircleSrvUrl()
   {
-    return this.mOldBigDataChannelManager.a();
+    return this.mOldBigDataChannelManager.c();
   }
   
   public byte[] getSrvKey()
@@ -37,7 +37,7 @@ public class OldBigDataChannelManagerImpl
   
   public void onResponseException()
   {
-    this.mOldBigDataChannelManager.a();
+    this.mOldBigDataChannelManager.d();
   }
   
   public void saveSrvParam(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String[] paramArrayOfString)
@@ -47,7 +47,7 @@ public class OldBigDataChannelManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.OldBigDataChannelManagerImpl
  * JD-Core Version:    0.7.0.1
  */

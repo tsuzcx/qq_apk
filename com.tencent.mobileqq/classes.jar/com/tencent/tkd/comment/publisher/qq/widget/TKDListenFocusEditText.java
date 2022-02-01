@@ -13,8 +13,8 @@ public class TKDListenFocusEditText
   extends EditText
   implements ISelectionChangeObservable
 {
-  private TKDListenFocusEditText.OnWindowFocusChangeListener jdField_a_of_type_ComTencentTkdCommentPublisherQqWidgetTKDListenFocusEditText$OnWindowFocusChangeListener;
-  private List<ISelectionChangeObserver> jdField_a_of_type_JavaUtilList;
+  private TKDListenFocusEditText.OnWindowFocusChangeListener a;
+  private List<ISelectionChangeObserver> b;
   
   public TKDListenFocusEditText(Context paramContext)
   {
@@ -36,18 +36,18 @@ public class TKDListenFocusEditText
     if (paramISelectionChangeObserver == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    if (this.b == null) {
+      this.b = new LinkedList();
     }
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramISelectionChangeObserver)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramISelectionChangeObserver);
+    if (!this.b.contains(paramISelectionChangeObserver)) {
+      this.b.add(paramISelectionChangeObserver);
     }
   }
   
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
     super.onSelectionChanged(paramInt1, paramInt2);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -60,7 +60,7 @@ public class TKDListenFocusEditText
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    TKDListenFocusEditText.OnWindowFocusChangeListener localOnWindowFocusChangeListener = this.jdField_a_of_type_ComTencentTkdCommentPublisherQqWidgetTKDListenFocusEditText$OnWindowFocusChangeListener;
+    TKDListenFocusEditText.OnWindowFocusChangeListener localOnWindowFocusChangeListener = this.a;
     if (localOnWindowFocusChangeListener != null) {
       localOnWindowFocusChangeListener.onWindowFocusChanged(paramBoolean);
     }
@@ -68,12 +68,12 @@ public class TKDListenFocusEditText
   
   public void setWindowFocusChangeListener(TKDListenFocusEditText.OnWindowFocusChangeListener paramOnWindowFocusChangeListener)
   {
-    this.jdField_a_of_type_ComTencentTkdCommentPublisherQqWidgetTKDListenFocusEditText$OnWindowFocusChangeListener = paramOnWindowFocusChangeListener;
+    this.a = paramOnWindowFocusChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TKDListenFocusEditText
  * JD-Core Version:    0.7.0.1
  */

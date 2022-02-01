@@ -15,29 +15,26 @@ public class TrimTextureVideoView
   extends com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
 {
   protected Matrix a;
-  protected boolean a;
+  protected boolean b = true;
   
   public TrimTextureVideoView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   private float a(int paramInt1, int paramInt2)
   {
-    return Math.max(1.0F / TakeVideoUtils.a(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
+    return Math.max(1.0F / TakeVideoUtils.b(getResources()), Math.min(paramInt2, paramInt1) * 1.0F / Math.max(paramInt2, paramInt1));
   }
   
   private Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -64,7 +61,7 @@ public class TrimTextureVideoView
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
-    if ((this.k) && (MediaPlayer.b())) {
+    if ((this.Q) && (MediaPlayer.n())) {
       i = paramInt1 + 0;
     } else {
       i = 0;
@@ -77,7 +74,7 @@ public class TrimTextureVideoView
       f = a(paramInt2, paramInt3);
       setScaleX(f);
       setScaleY(f);
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return true;
     }
     Object localObject;
@@ -86,16 +83,16 @@ public class TrimTextureVideoView
       localObject = getResources().getDisplayMetrics();
       i = ((DisplayMetrics)localObject).widthPixels;
       j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+      localObject = this.a;
       if (localObject == null) {
-        this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+        this.a = new Matrix();
       } else {
         ((Matrix)localObject).reset();
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
-      setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      this.b = false;
+      this.a = a(i, j, paramInt2, paramInt3);
+      setTransform(this.a);
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
     if (i != 0)
@@ -104,7 +101,7 @@ public class TrimTextureVideoView
       f = a(paramInt2, paramInt3);
       setScaleX(f);
       setScaleY(f);
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
     if (paramInt2 == paramInt3)
@@ -112,28 +109,28 @@ public class TrimTextureVideoView
       localObject = getResources().getDisplayMetrics();
       i = ((DisplayMetrics)localObject).widthPixels;
       j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+      localObject = this.a;
       if (localObject == null) {
-        this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+        this.a = new Matrix();
       } else {
         ((Matrix)localObject).reset();
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
-      setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      this.b = false;
+      this.a = a(i, j, paramInt2, paramInt3);
+      setTransform(this.a);
+      SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
-    SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    SLog.a(this.c, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
     return false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.d, paramInt1);
-    int j = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.e, paramInt2);
-    if ((this.d > 0) && (this.e > 0))
+    int i = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.k, paramInt1);
+    int j = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.l, paramInt2);
+    if ((this.k > 0) && (this.l > 0))
     {
       int m = View.MeasureSpec.getMode(paramInt1);
       int k = View.MeasureSpec.getSize(paramInt1);
@@ -141,29 +138,29 @@ public class TrimTextureVideoView
       i = View.MeasureSpec.getSize(paramInt2);
       if ((m == 1073741824) && (n == 1073741824))
       {
-        if (this.d * i < this.e * k) {
-          if (!this.g) {}
+        if (this.k * i < this.l * k) {
+          if (!this.A) {}
         }
-        for (paramInt1 = this.d * i / this.e;; paramInt1 = this.d * i / this.e)
+        for (paramInt1 = this.k * i / this.l;; paramInt1 = this.k * i / this.l)
         {
           paramInt2 = i;
           break label418;
-          paramInt1 = this.e * k / this.d;
+          paramInt1 = this.l * k / this.k;
           i = k;
           break label414;
-          if ((this.d * i <= this.e * k) || (!this.jdField_a_of_type_Boolean)) {
+          if ((this.k * i <= this.l * k) || (!this.b)) {
             break;
           }
-          if (this.g)
+          if (this.A)
           {
-            paramInt1 = this.e * k / this.d;
+            paramInt1 = this.l * k / this.k;
             i = k;
             break label414;
           }
         }
         paramInt1 = k;
         paramInt2 = i;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           break label418;
         }
         super.setMeasuredDimension(k, i);
@@ -173,7 +170,7 @@ public class TrimTextureVideoView
       }
       if (m == 1073741824)
       {
-        paramInt2 = this.e * k / this.d;
+        paramInt2 = this.l * k / this.k;
         if ((n == -2147483648) && (paramInt2 > i))
         {
           paramInt1 = k;
@@ -185,7 +182,7 @@ public class TrimTextureVideoView
       }
       if (n == 1073741824)
       {
-        j = this.d * i / this.e;
+        j = this.k * i / this.l;
         paramInt1 = j;
         paramInt2 = i;
         if (m == -2147483648)
@@ -205,10 +202,10 @@ public class TrimTextureVideoView
         do
         {
           break;
-          j = this.d;
-          paramInt1 = this.e;
+          j = this.k;
+          paramInt1 = this.l;
           if ((n == -2147483648) && (paramInt1 > i)) {
-            j = this.d * i / this.e;
+            j = this.k * i / this.l;
           } else {
             i = paramInt1;
           }
@@ -218,7 +215,7 @@ public class TrimTextureVideoView
         paramInt1 = j;
         paramInt2 = i;
       } while (j <= k);
-      paramInt1 = this.e * k / this.d;
+      paramInt1 = this.l * k / this.k;
       i = k;
     }
     else
@@ -234,7 +231,7 @@ public class TrimTextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

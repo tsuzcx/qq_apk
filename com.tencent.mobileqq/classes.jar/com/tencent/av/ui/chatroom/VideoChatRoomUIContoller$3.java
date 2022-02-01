@@ -11,29 +11,29 @@ class VideoChatRoomUIContoller$3
   
   public void run()
   {
-    if ((QLog.isDevelopLevel()) && (VideoChatRoomUIContoller.a(this.this$0) != null))
+    if ((QLog.isDevelopLevel()) && (VideoChatRoomUIContoller.b(this.this$0) != null))
     {
-      if (VideoChatRoomUIContoller.a(this.this$0) == null) {
+      if (VideoChatRoomUIContoller.c(this.this$0) == null) {
         VideoChatRoomUIContoller.a(this.this$0, new StringBuilder(300));
       }
-      VideoChatRoomUIContoller.a(this.this$0).setLength(0);
-      VideoChatRoomUIContoller.a(this.this$0).append("updateChatRoomMsgList, list[");
-      Iterator localIterator = VideoChatRoomUIContoller.a(this.this$0).iterator();
+      VideoChatRoomUIContoller.c(this.this$0).setLength(0);
+      VideoChatRoomUIContoller.c(this.this$0).append("updateChatRoomMsgList, list[");
+      Iterator localIterator = VideoChatRoomUIContoller.b(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         VideoChatMessage localVideoChatMessage = (VideoChatMessage)localIterator.next();
         if (localVideoChatMessage != null)
         {
-          StringBuilder localStringBuilder = VideoChatRoomUIContoller.a(this.this$0);
-          localStringBuilder.append(localVideoChatMessage.b());
+          StringBuilder localStringBuilder = VideoChatRoomUIContoller.c(this.this$0);
+          localStringBuilder.append(localVideoChatMessage.c());
           localStringBuilder.append(", ");
         }
       }
-      VideoChatRoomUIContoller.a(this.this$0).append("]");
-      QLog.i("ChatRoomUtil", 4, VideoChatRoomUIContoller.a(this.this$0).toString());
+      VideoChatRoomUIContoller.c(this.this$0).append("]");
+      QLog.i("ChatRoomUtil", 4, VideoChatRoomUIContoller.c(this.this$0).toString());
     }
-    if ((VideoChatRoomUIContoller.a(this.this$0) != null) && (VideoChatRoomUIContoller.a(this.this$0) != null)) {
-      VideoChatRoomUIContoller.a(this.this$0).a(VideoChatRoomUIContoller.a(this.this$0), true);
+    if ((VideoChatRoomUIContoller.a(this.this$0) != null) && (VideoChatRoomUIContoller.b(this.this$0) != null)) {
+      VideoChatRoomUIContoller.a(this.this$0).a(VideoChatRoomUIContoller.b(this.this$0), true);
     }
   }
 }

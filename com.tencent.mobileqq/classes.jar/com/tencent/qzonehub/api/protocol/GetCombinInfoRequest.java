@@ -21,19 +21,19 @@ public class GetCombinInfoRequest
   extends QZoneCommonRequest
 {
   public int a;
-  public JceStruct a;
-  private LbsDataV2.GeoInfo jdField_a_of_type_CooperationQzoneLbsDataV2$GeoInfo;
-  private LbsDataV2.GpsInfo jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo;
-  private int b;
-  private int c;
-  private int d;
+  public JceStruct b;
+  private LbsDataV2.GpsInfo c;
+  private LbsDataV2.GeoInfo d;
+  private int e;
+  private int f;
+  private int g;
   
   public GetCombinInfoRequest(GPS_V2 paramGPS_V2, GeoInfo_V2 paramGeoInfo_V2, ArrayList<Cell_V2> paramArrayList, ArrayList<Wifi_V2> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<String> paramArrayList2, int paramInt5)
   {
-    this.d = paramInt5;
-    this.b = paramInt3;
-    this.c = paramInt4;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.g = paramInt5;
+    this.e = paramInt3;
+    this.f = paramInt4;
+    this.a = paramInt2;
     GetLbsCombinReq_V2 localGetLbsCombinReq_V2 = new GetLbsCombinReq_V2();
     ReqCommon_V2 localReqCommon_V2 = new ReqCommon_V2();
     localReqCommon_V2.iDeviceType = 1;
@@ -99,14 +99,14 @@ public class GetCombinInfoRequest
       localGetLbsCombinReq_V2.map_ext = new HashMap();
       localGetLbsCombinReq_V2.map_ext.put("recomTags", paramGPS_V2.toString());
     }
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localGetLbsCombinReq_V2;
+    this.b = localGetLbsCombinReq_V2;
   }
   
   public GetCombinInfoRequest(LbsDataV2.GpsInfo paramGpsInfo, LbsDataV2.GeoInfo paramGeoInfo, ArrayList<Cell_V2> paramArrayList, ArrayList<Wifi_V2> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<String> paramArrayList2, int paramInt5)
   {
     this(LbsDataV2.convertToGPS_V2(paramGpsInfo), LbsDataV2.convertToGeoInfo_V2(paramGeoInfo), paramArrayList, paramArrayList1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayList2, paramInt5);
-    this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo = paramGpsInfo;
-    this.jdField_a_of_type_CooperationQzoneLbsDataV2$GeoInfo = paramGeoInfo;
+    this.c = paramGpsInfo;
+    this.d = paramGeoInfo;
   }
   
   public String getCmdString()
@@ -116,12 +116,12 @@ public class GetCombinInfoRequest
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.b;
   }
   
   public int getType()
   {
-    return this.d;
+    return this.g;
   }
   
   public String uniKey()
@@ -131,7 +131,7 @@ public class GetCombinInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.protocol.GetCombinInfoRequest
  * JD-Core Version:    0.7.0.1
  */

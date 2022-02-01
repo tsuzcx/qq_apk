@@ -13,11 +13,11 @@ import android.widget.ImageView.ScaleType;
 public class SliderView
   extends ImageView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  private SliderListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderListener;
-  private boolean jdField_a_of_type_Boolean;
+  private SliderListener a;
   private boolean b;
+  private int c = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private float d;
+  private boolean e;
   
   public SliderView(Context paramContext)
   {
@@ -42,20 +42,9 @@ public class SliderView
   
   private void a(float paramFloat)
   {
-    SliderListener localSliderListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderListener;
+    SliderListener localSliderListener = this.a;
     if (localSliderListener != null) {
       localSliderListener.a(paramFloat);
-    }
-  }
-  
-  private void a(@NonNull MotionEvent paramMotionEvent)
-  {
-    if (a(paramMotionEvent))
-    {
-      getParent().requestDisallowInterceptTouchEvent(true);
-      c();
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = true;
     }
   }
   
@@ -66,34 +55,45 @@ public class SliderView
   
   private void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
+    this.b = false;
+    this.d = 0.0F;
     getParent().requestDisallowInterceptTouchEvent(false);
     d();
-    this.b = true;
+    this.e = true;
   }
   
   private void b(@NonNull MotionEvent paramMotionEvent)
   {
-    float f = (int)paramMotionEvent.getRawX();
-    getParent().requestDisallowInterceptTouchEvent(true);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Boolean) {
-      a(f - this.jdField_a_of_type_Float);
+    if (a(paramMotionEvent))
+    {
+      getParent().requestDisallowInterceptTouchEvent(true);
+      c();
+      this.d = paramMotionEvent.getRawX();
+      this.e = true;
     }
   }
   
   private void c()
   {
-    SliderListener localSliderListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderListener;
+    SliderListener localSliderListener = this.a;
     if (localSliderListener != null) {
       localSliderListener.a();
     }
   }
   
+  private void c(@NonNull MotionEvent paramMotionEvent)
+  {
+    float f = (int)paramMotionEvent.getRawX();
+    getParent().requestDisallowInterceptTouchEvent(true);
+    this.b = true;
+    if (this.b) {
+      a(f - this.d);
+    }
+  }
+  
   private void d()
   {
-    SliderListener localSliderListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderListener;
+    SliderListener localSliderListener = this.a;
     if (localSliderListener != null) {
       localSliderListener.b();
     }
@@ -105,7 +105,7 @@ public class SliderView
     if (paramMotionEvent == null) {
       return false;
     }
-    this.b = false;
+    this.e = false;
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
@@ -118,7 +118,7 @@ public class SliderView
         }
         else
         {
-          b(paramMotionEvent);
+          c(paramMotionEvent);
           break label58;
         }
       }
@@ -126,20 +126,20 @@ public class SliderView
     }
     else
     {
-      a(paramMotionEvent);
+      b(paramMotionEvent);
     }
     label58:
-    return this.b;
+    return this.e;
   }
   
   public void setSliderListener(SliderListener paramSliderListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderListener = paramSliderListener;
+    this.a = paramSliderListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timeline.SliderView
  * JD-Core Version:    0.7.0.1
  */

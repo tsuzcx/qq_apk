@@ -41,11 +41,11 @@ class NearbyFaceScoreManager$3
             paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
             if (paramBundle.uint32_result.get() == 0)
             {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
+              this.b.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
             }
             else
             {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+              this.b.a(this.c, -1L);
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("getTinyIdByUin oidb_0x8da onResult  uin=");
               localStringBuilder.append(paramBundle.uint64_uin.get());
@@ -56,7 +56,7 @@ class NearbyFaceScoreManager$3
               QLog.e("Q..troop.faceScore", 2, localStringBuilder.toString());
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+          this.b.a(this.c, -1L);
         }
         catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
@@ -67,19 +67,19 @@ class NearbyFaceScoreManager$3
             paramBundle.append(paramArrayOfByte.toString());
             QLog.e("Q..troop.faceScore", 2, paramBundle.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+          this.b.a(this.c, -1L);
           return;
         }
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(this.jdField_a_of_type_Long, -1L);
+      this.b.a(this.c, -1L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager.3
  * JD-Core Version:    0.7.0.1
  */

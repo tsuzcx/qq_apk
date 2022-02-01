@@ -18,7 +18,7 @@ public class LoginPwdReportUtil
       paramContext = ((LoginActivity)paramContext).getCurrentView();
       if ((paramContext != null) && ((paramContext instanceof LoginView)))
       {
-        paramContext = ((LoginView)paramContext).a();
+        paramContext = ((LoginView)paramContext).l();
         if (paramContext == null)
         {
           QLog.e("LoginPwdReportUtil", 1, "reportForLoginView fail: autoCompleteTextView == null");
@@ -31,7 +31,7 @@ public class LoginPwdReportUtil
           return;
         }
         paramContext = paramContext.toString();
-        if ((!TextUtils.isEmpty(paramContext)) && (a(paramContext)) && (Utils.e(paramContext)))
+        if ((!TextUtils.isEmpty(paramContext)) && (a(paramContext)) && (Utils.j(paramContext)))
         {
           ReportController.a(null, "dc00898", "", paramContext, "0X800B29A", "0X800B29A", 1, 0, "", "", "", "");
           return;
@@ -62,7 +62,7 @@ public class LoginPwdReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.LoginPwdReportUtil
  * JD-Core Version:    0.7.0.1
  */

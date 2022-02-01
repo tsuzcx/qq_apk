@@ -17,86 +17,6 @@ class IQQServiceForAV$Stub$Proxy
     this.a = paramIBinder;
   }
   
-  public int a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(21, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int a(int paramInt, String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeInt(paramInt);
-      localParcel1.writeString(paramString);
-      this.a.transact(13, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramInt = localParcel2.readInt();
-      return paramInt;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(20, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public long a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(14, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      long l = localParcel2.readLong();
-      return l;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -186,25 +106,6 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public String a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(29, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      String str = localParcel2.readString();
-      return str;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public String a(int paramInt, String paramString1, String paramString2)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -242,26 +143,6 @@ class IQQServiceForAV$Stub$Proxy
       localParcel2.readException();
       paramString1 = localParcel2.readString();
       return paramString1;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.readString();
-      return paramString;
     }
     finally
     {
@@ -332,24 +213,6 @@ class IQQServiceForAV$Stub$Proxy
       localParcel.writeInt(paramInt);
       localParcel.writeString(paramString);
       this.a.transact(6, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel.writeInt(paramInt);
-      localParcel.writeString(paramString1);
-      localParcel.writeString(paramString2);
-      this.a.transact(10, localParcel, null, 1);
       return;
     }
     finally
@@ -486,44 +349,6 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public void a(String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel.writeString(paramString);
-      this.a.transact(31, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(63, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public void a(String paramString, long paramLong)
   {
     Parcel localParcel = Parcel.obtain();
@@ -622,55 +447,6 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(16, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeInt(paramInt);
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(54, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramInt = localParcel2.readInt();
-      if (paramInt != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public boolean a(int paramInt, long paramLong)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -686,31 +462,6 @@ class IQQServiceForAV$Stub$Proxy
       localParcel2.readException();
       paramInt = localParcel2.readInt();
       if (paramInt != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeLong(paramLong);
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(24, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
         bool = true;
       }
       return bool;
@@ -862,127 +613,9 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public int[] a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(51, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int[] arrayOfInt = localParcel2.createIntArray();
-      return arrayOfInt;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public long[] a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(17, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.createLongArray();
-      return paramString;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public String[] a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(43, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.createStringArray();
-      return paramString;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public IBinder asBinder()
   {
     return this.a;
-  }
-  
-  public int b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(49, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(37, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public long b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(22, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      long l = localParcel2.readLong();
-      return l;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
   }
   
   public String b(String paramString)
@@ -993,7 +626,7 @@ class IQQServiceForAV$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
       localParcel1.writeString(paramString);
-      this.a.transact(44, localParcel1, localParcel2, 0);
+      this.a.transact(4, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramString = localParcel2.readString();
       return paramString;
@@ -1002,21 +635,6 @@ class IQQServiceForAV$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
-    }
-  }
-  
-  public void b()
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(35, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
     }
   }
   
@@ -1029,6 +647,24 @@ class IQQServiceForAV$Stub$Proxy
       localParcel.writeInt(paramInt);
       localParcel.writeString(paramString);
       this.a.transact(11, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel.writeInt(paramInt);
+      localParcel.writeString(paramString1);
+      localParcel.writeString(paramString2);
+      this.a.transact(10, localParcel, null, 1);
       return;
     }
     finally
@@ -1061,19 +697,25 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public void b(String paramString)
+  public void b(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    Parcel localParcel = Parcel.obtain();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel.writeString(paramString);
-      this.a.transact(33, localParcel, null, 1);
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(63, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
     finally
     {
-      localParcel.recycle();
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -1110,7 +752,7 @@ class IQQServiceForAV$Stub$Proxy
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
       IBinder localIBinder = this.a;
       boolean bool = false;
-      localIBinder.transact(46, localParcel1, localParcel2, 0);
+      localIBinder.transact(16, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       if (i != 0) {
@@ -1125,17 +767,42 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean b(String paramString)
+  public boolean b(int paramInt)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      paramString = this.a;
+      localParcel1.writeInt(paramInt);
+      IBinder localIBinder = this.a;
       boolean bool = false;
-      paramString.transact(19, localParcel1, localParcel2, 0);
+      localIBinder.transact(54, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramInt = localParcel2.readInt();
+      if (paramInt != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean b(long paramLong)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeLong(paramLong);
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(24, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       if (i != 0) {
@@ -1176,26 +843,6 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public long[] b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(42, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.createLongArray();
-      return paramString;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public int c()
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -1203,7 +850,7 @@ class IQQServiceForAV$Stub$Proxy
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(50, localParcel1, localParcel2, 0);
+      this.a.transact(21, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       return i;
@@ -1215,18 +862,19 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public int c(String paramString)
+  public int c(int paramInt, String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeInt(paramInt);
       localParcel1.writeString(paramString);
-      this.a.transact(66, localParcel1, localParcel2, 0);
+      this.a.transact(13, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
+      paramInt = localParcel2.readInt();
+      return paramInt;
     }
     finally
     {
@@ -1235,7 +883,7 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public String c(String paramString)
+  public long c(String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1243,46 +891,15 @@ class IQQServiceForAV$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
       localParcel1.writeString(paramString);
-      this.a.transact(47, localParcel1, localParcel2, 0);
+      this.a.transact(14, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      paramString = localParcel2.readString();
-      return paramString;
+      long l = localParcel2.readLong();
+      return l;
     }
     finally
     {
       localParcel2.recycle();
       localParcel1.recycle();
-    }
-  }
-  
-  public void c()
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(36, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel.writeString(paramString);
-      this.a.transact(34, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
     }
   }
   
@@ -1307,55 +924,6 @@ class IQQServiceForAV$Stub$Proxy
         localParcel.recycle();
       }
       int i = 0;
-    }
-  }
-  
-  public boolean c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(52, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean c(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      paramString = this.a;
-      boolean bool = false;
-      paramString.transact(59, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
     }
   }
   
@@ -1385,56 +953,17 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public int d()
+  public String d()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      this.a.transact(55, localParcel1, localParcel2, 0);
+      this.a.transact(29, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public String d(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(48, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.readString();
-      return paramString;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
-      localParcel1.writeString(paramString);
-      this.a.transact(60, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      String str = localParcel2.readString();
+      return str;
     }
     finally
     {
@@ -1470,7 +999,295 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean d()
+  public long[] d(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(17, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramString = localParcel2.createLongArray();
+      return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void e()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(35, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public boolean e(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      paramString = this.a;
+      boolean bool = false;
+      paramString.transact(19, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int f(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(20, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void f()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(36, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public long g(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(22, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      long l = localParcel2.readLong();
+      return l;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean g()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(46, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int h()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(49, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void h(String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel.writeString(paramString);
+      this.a.transact(31, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public int i()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(50, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void i(String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel.writeString(paramString);
+      this.a.transact(33, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void j(String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel.writeString(paramString);
+      this.a.transact(34, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public int[] j()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(51, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int[] arrayOfInt = localParcel2.createIntArray();
+      return arrayOfInt;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int k(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(37, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean k()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(52, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean l()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1494,7 +1311,7 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public void e(String paramString)
+  public long[] l(String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1502,9 +1319,10 @@ class IQQServiceForAV$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
       localParcel1.writeString(paramString);
-      this.a.transact(61, localParcel1, localParcel2, 0);
+      this.a.transact(42, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      return;
+      paramString = localParcel2.createLongArray();
+      return paramString;
     }
     finally
     {
@@ -1513,7 +1331,66 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean e()
+  public int m()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      this.a.transact(55, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public String[] m(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(43, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramString = localParcel2.createStringArray();
+      return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public String n(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(44, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramString = localParcel2.readString();
+      return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean n()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1537,7 +1414,7 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public void f(String paramString)
+  public String o(String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1545,9 +1422,10 @@ class IQQServiceForAV$Stub$Proxy
     {
       localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
       localParcel1.writeString(paramString);
-      this.a.transact(68, localParcel1, localParcel2, 0);
+      this.a.transact(47, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      return;
+      paramString = localParcel2.readString();
+      return paramString;
     }
     finally
     {
@@ -1556,7 +1434,7 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean f()
+  public boolean o()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1580,7 +1458,27 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean g()
+  public String p(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(48, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      paramString = localParcel2.readString();
+      return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean p()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1604,7 +1502,7 @@ class IQQServiceForAV$Stub$Proxy
     }
   }
   
-  public boolean h()
+  public boolean q()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -1620,6 +1518,108 @@ class IQQServiceForAV$Stub$Proxy
         bool = true;
       }
       return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean q(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      paramString = this.a;
+      boolean bool = false;
+      paramString.transact(59, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void r(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(60, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void s(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(61, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int t(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(66, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void u(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceForAV");
+      localParcel1.writeString(paramString);
+      this.a.transact(68, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
     finally
     {

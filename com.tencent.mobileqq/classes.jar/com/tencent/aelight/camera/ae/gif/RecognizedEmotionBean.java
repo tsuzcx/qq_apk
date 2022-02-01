@@ -6,31 +6,27 @@ import org.json.JSONObject;
 
 public class RecognizedEmotionBean
 {
-  public int a;
-  public String a;
   public List<String> a;
-  public int b = 6;
+  public String b = "default";
+  public int c = 3;
+  public int d = 6;
   
   public RecognizedEmotionBean()
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = new ArrayList();
   }
   
   public RecognizedEmotionBean(List<String> paramList, String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramList;
+    this.b = paramString;
     if (paramJSONObject != null)
     {
       a(paramJSONObject);
       return;
     }
-    this.jdField_a_of_type_Int = 3;
-    this.b = 6;
+    this.c = 3;
+    this.d = 6;
   }
   
   public void a(JSONObject paramJSONObject)
@@ -39,12 +35,12 @@ public class RecognizedEmotionBean
     {
       try
       {
-        if (this.jdField_a_of_type_JavaLangString != null)
+        if (this.b != null)
         {
-          str = this.jdField_a_of_type_JavaLangString;
+          str = this.b;
           paramJSONObject = paramJSONObject.getJSONObject(str);
-          this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
-          this.b = paramJSONObject.getInt("pendantNum");
+          this.c = paramJSONObject.getInt("wordNum");
+          this.d = paramJSONObject.getInt("pendantNum");
           return;
         }
       }
@@ -59,7 +55,7 @@ public class RecognizedEmotionBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.RecognizedEmotionBean
  * JD-Core Version:    0.7.0.1
  */

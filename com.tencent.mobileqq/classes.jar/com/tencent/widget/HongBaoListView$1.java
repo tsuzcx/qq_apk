@@ -35,9 +35,9 @@ class HongBaoListView$1
                 this.a.setStackFromBottom(true);
               }
               this.a.setStackFromBottom(false);
-              if (!this.a.l)
+              if (!this.a.y)
               {
-                i = (int)this.a.getResources().getDimension(2131298281);
+                i = (int)this.a.getResources().getDimension(2131298982);
                 this.a.springBackTo(-i);
                 return false;
               }
@@ -58,10 +58,10 @@ class HongBaoListView$1
               QLog.d("HongBaoListView", 2, "handleMessage MSG_WHAT_THIRD_GUIDE_HIDE");
             }
             this.a.a(300L);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-            if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null)
+            this.a.F.sendEmptyMessageDelayed(7, 300L);
+            if (this.a.v != null)
             {
-              this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
+              this.a.v.a(false);
               return false;
             }
           }
@@ -72,20 +72,20 @@ class HongBaoListView$1
             QLog.d("HongBaoListView", 2, "handleMessage MSG_WHAT_THIRD_GUIDE_SHOW");
           }
           this.a.setIsShowingPreguide(true);
-          i = this.a.e / 2;
+          i = this.a.C / 2;
           HongBaoListView localHongBaoListView = this.a;
-          localHongBaoListView.setSpringbackOffset(-localHongBaoListView.e);
+          localHongBaoListView.setSpringbackOffset(-localHongBaoListView.C);
           if (paramMessage.arg1 != 0) {
             i = paramMessage.arg1;
           }
           this.a.springBackTo(-i);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.e / 5, 300L);
+          if (this.a.z != null) {
+            this.a.z.a(this.a.C / 5, 300L);
           }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
-          if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null)
+          this.a.F.sendEmptyMessageDelayed(6, 2000L);
+          if (this.a.v != null)
           {
-            this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
+            this.a.v.b(false);
             return false;
           }
         }
@@ -96,10 +96,10 @@ class HongBaoListView$1
           QLog.d("HongBaoListView", 2, "handleMessage MSG_WHAT_FIRST_GUIDE_HIDE");
         }
         this.a.a(300L);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-        if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null)
+        this.a.F.sendEmptyMessageDelayed(7, 300L);
+        if (this.a.v != null)
         {
-          this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
+          this.a.v.a(false);
           return false;
         }
       }
@@ -110,15 +110,15 @@ class HongBaoListView$1
         QLog.d("HongBaoListView", 2, "handleMessage MSG_WHAT_FIRST_GUIDE_SHOW");
       }
       this.a.setIsShowingPreguide(true);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.e / 5, 300L);
+      if (this.a.z != null) {
+        this.a.z.a(this.a.C / 5, 300L);
       }
       paramMessage = this.a;
-      paramMessage.springBackTo(-paramMessage.e);
-      if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null) {
-        this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
+      paramMessage.springBackTo(-paramMessage.C);
+      if (this.a.v != null) {
+        this.a.v.b(false);
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+      this.a.F.sendEmptyMessageDelayed(2, 2000L);
       this.a.invalidate();
     }
     return false;
@@ -126,7 +126,7 @@ class HongBaoListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.HongBaoListView.1
  * JD-Core Version:    0.7.0.1
  */

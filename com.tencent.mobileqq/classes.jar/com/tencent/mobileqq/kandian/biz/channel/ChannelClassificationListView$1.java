@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.channel;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,17 +24,16 @@ class ChannelClassificationListView$1
       {
         localJSONException.printStackTrace();
       }
-      IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      localStringBuilder.append(RIJQQAppInterfaceUtil.c());
       localStringBuilder.append("");
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, localStringBuilder.toString(), "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      PublicAccountReportUtils.a(null, localStringBuilder.toString(), "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.ChannelClassificationListView.1
  * JD-Core Version:    0.7.0.1
  */

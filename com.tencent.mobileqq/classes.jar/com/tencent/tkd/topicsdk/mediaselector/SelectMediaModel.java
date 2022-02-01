@@ -15,17 +15,12 @@ import org.jetbrains.annotations.NotNull;
 public final class SelectMediaModel
   implements IMediaContract.IModel
 {
-  public static final SelectMediaModel.Companion a;
-  private final Context a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorSelectMediaModel$Companion = new SelectMediaModel.Companion(null);
-  }
+  public static final SelectMediaModel.Companion a = new SelectMediaModel.Companion(null);
+  private final Context b;
   
   public SelectMediaModel(@NotNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   private final void a(Context paramContext, Function2<? super ArrayList<Media>, ? super HashMap<String, ArrayList<Media>>, Unit> paramFunction2)
@@ -42,7 +37,7 @@ public final class SelectMediaModel
   {
     Intrinsics.checkParameterIsNotNull(paramPanelType, "panelType");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    int i = SelectMediaModel.WhenMappings.a[paramPanelType.ordinal()];
+    int i = SelectMediaModel.WhenMappings.$EnumSwitchMapping$0[paramPanelType.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -54,15 +49,15 @@ public final class SelectMediaModel
         paramFunction2.invoke(new ArrayList(), new HashMap());
         return;
       }
-      b(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
+      b(this.b, paramFunction2);
       return;
     }
-    a(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
+    a(this.b, paramFunction2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.SelectMediaModel
  * JD-Core Version:    0.7.0.1
  */

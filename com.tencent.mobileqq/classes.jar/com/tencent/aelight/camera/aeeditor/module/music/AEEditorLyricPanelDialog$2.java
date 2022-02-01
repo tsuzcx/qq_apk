@@ -13,12 +13,12 @@ class AEEditorLyricPanelDialog$2
   public void a(float paramFloat)
   {
     AEEditorLyricPanelDialog.a(this.a).setAlpha(1.0F - paramFloat);
-    AEEditorLyricPanelDialog.a(this.a).setBackgroundColor(Color.argb((int)(paramFloat * 255.0F * 0.7F), 0, 0, 0));
+    AEEditorLyricPanelDialog.b(this.a).setBackgroundColor(Color.argb((int)(paramFloat * 255.0F * 0.7F), 0, 0, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricPanelDialog.2
  * JD-Core Version:    0.7.0.1
  */

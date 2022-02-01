@@ -74,7 +74,7 @@ public class QQFloatingWindowImpl
     if ((paramContext != null) && (paramView != null)) {
       try
       {
-        FloatingScreenReporter.b(paramInt);
+        FloatingScreenReporter.c(paramInt);
         boolean bool = FloatingScreenPermission.checkPermission(paramContext);
         if (!bool) {
           return 1;
@@ -102,7 +102,7 @@ public class QQFloatingWindowImpl
         }
         i = paramContext.a(localFloatingScreenParams, paramView);
         if (i == 0) {
-          FloatingScreenReporter.a(paramInt);
+          FloatingScreenReporter.b(paramInt);
         }
         return i;
       }
@@ -151,7 +151,7 @@ public class QQFloatingWindowImpl
         }
         if (!MobileQQ.sMobileQQ.getQQProcessName().endsWith(":tool"))
         {
-          QQToast.a(paramContext, 2131699788, 0).a();
+          QQToast.makeText(paramContext, 2131897821, 0).show();
           return -1;
         }
         if (QLog.isColorLevel()) {
@@ -174,12 +174,17 @@ public class QQFloatingWindowImpl
     return 2;
   }
   
+  public FloatingBaseProxyWrapper getFloatingProxyWrapper(Context paramContext, String paramString)
+  {
+    return this.mWrapperFactory.a(paramContext, paramString);
+  }
+  
   public void quitFloatingScreen()
   {
     FloatingBaseProxyWrapper localFloatingBaseProxyWrapper = this.mWrapperFactory.a(null, FloatingVideoWrapper.CLASS_NAME);
     if (localFloatingBaseProxyWrapper != null)
     {
-      localFloatingBaseProxyWrapper.b(4);
+      localFloatingBaseProxyWrapper.a(4);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -191,7 +196,7 @@ public class QQFloatingWindowImpl
   {
     paramString = this.mWrapperFactory.a(null, paramString);
     if (paramString != null) {
-      paramString.b(4);
+      paramString.a(4);
     }
   }
   
@@ -246,6 +251,14 @@ public class QQFloatingWindowImpl
     }
   }
   
+  public void updateFloatingWindowLocation(int paramInt1, int paramInt2, String paramString)
+  {
+    paramString = this.mWrapperFactory.a(null, paramString);
+    if (paramString != null) {
+      paramString.b(paramInt1, paramInt2);
+    }
+  }
+  
   public void updateFloatingWindowRatio(float paramFloat, String paramString)
   {
     paramString = this.mWrapperFactory.a(null, paramString);
@@ -258,13 +271,21 @@ public class QQFloatingWindowImpl
   {
     paramString = this.mWrapperFactory.a(null, paramString);
     if (paramString != null) {
-      paramString.a(paramInt);
+      paramString.b(paramInt);
+    }
+  }
+  
+  public void updateFloatingWindowSize(int paramInt1, int paramInt2, String paramString)
+  {
+    paramString = this.mWrapperFactory.a(null, paramString);
+    if (paramString != null) {
+      paramString.c(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.QQFloatingWindowImpl
  * JD-Core Version:    0.7.0.1
  */

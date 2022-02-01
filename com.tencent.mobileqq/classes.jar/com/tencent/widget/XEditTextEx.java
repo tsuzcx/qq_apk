@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -23,16 +24,17 @@ public class XEditTextEx
   extends XEditText
   implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private XEditTextEx.OnKeyEventPreImeListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener;
-  private XEditTextEx.OnKeyboardShowListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
-  private XEditTextEx.OnPrivateIMECommandListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener;
-  private XEditTextEx.OnWindowFocusChangedListener jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener;
-  private XEditTextEx.PerformClick jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
   public Object a;
-  private List<WeakReference<View.OnClickListener>> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<XEditTextEx.TextMenuListener> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private XEditTextEx.OnPrivateIMECommandListener b;
+  private int c;
+  private int d;
+  private XEditTextEx.PerformClick e;
+  private XEditTextEx.OnKeyEventPreImeListener f;
+  private XEditTextEx.OnWindowFocusChangedListener g;
+  private List<WeakReference<View.OnClickListener>> h;
+  private View.OnLongClickListener i;
+  private List<XEditTextEx.TextMenuListener> j = new ArrayList();
+  private XEditTextEx.OnKeyboardShowListener k;
   
   public XEditTextEx(Context paramContext)
   {
@@ -46,7 +48,7 @@ public class XEditTextEx
   
   public void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.h;
     if (localList != null) {
       localList.clear();
     }
@@ -54,31 +56,31 @@ public class XEditTextEx
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.h == null) {
+      this.h = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnClickListener));
+    this.h.add(new WeakReference(paramOnClickListener));
   }
   
   public void a(@Nullable XEditTextEx.TextMenuListener paramTextMenuListener)
   {
-    this.jdField_b_of_type_JavaUtilList.add(paramTextMenuListener);
+    this.j.add(paramTextMenuListener);
   }
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    float f = -paramFloat3;
-    return (paramFloat1 >= f) && (paramFloat2 >= f) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
+    float f1 = -paramFloat3;
+    return (paramFloat1 >= f1) && (paramFloat2 >= f1) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
   }
   
   public void b(@Nullable XEditTextEx.TextMenuListener paramTextMenuListener)
   {
-    this.jdField_b_of_type_JavaUtilList.remove(paramTextMenuListener);
+    this.j.remove(paramTextMenuListener);
   }
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    XEditTextEx.OnKeyEventPreImeListener localOnKeyEventPreImeListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener;
+    XEditTextEx.OnKeyEventPreImeListener localOnKeyEventPreImeListener = this.f;
     if ((localOnKeyEventPreImeListener != null) && (localOnKeyEventPreImeListener.a(paramKeyEvent))) {
       return true;
     }
@@ -87,9 +89,9 @@ public class XEditTextEx
   
   public boolean onCheckIsTextEditor()
   {
-    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
+    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.k;
     if (localOnKeyboardShowListener != null) {
-      return localOnKeyboardShowListener.a();
+      return localOnKeyboardShowListener.b();
     }
     return super.onCheckIsTextEditor();
   }
@@ -114,7 +116,7 @@ public class XEditTextEx
       ((StringBuilder)localObject).append(paramBundle);
       QLog.d("XEditTextEx", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener;
+    Object localObject = this.b;
     if (localObject != null) {
       return ((XEditTextEx.OnPrivateIMECommandListener)localObject).a(paramString, paramBundle);
     }
@@ -125,7 +127,7 @@ public class XEditTextEx
   {
     try
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.j.iterator();
       boolean bool;
       while (localIterator.hasNext())
       {
@@ -176,44 +178,44 @@ public class XEditTextEx
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    int i = paramMotionEvent.getAction();
+    int m = paramMotionEvent.getAction();
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    if (this.c == 0) {
+      this.c = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     }
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = ViewConfiguration.getLongPressTimeout();
+    if (this.d == 0) {
+      this.d = ViewConfiguration.getLongPressTimeout();
     }
-    if (i != 0)
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 3) {
+          if (m != 3) {
             return false;
           }
-          this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+          this.e = null;
           return false;
         }
-        if (!a(f1, f2, this.jdField_a_of_type_Int))
+        if (!a(f1, f2, this.c))
         {
-          this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+          this.e = null;
           return false;
         }
       }
       else
       {
-        paramView = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
-        if ((paramView != null) && (Math.abs(l - paramView.a) < this.jdField_b_of_type_Int)) {
-          post(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick);
+        paramView = this.e;
+        if ((paramView != null) && (Math.abs(l - paramView.a) < this.d)) {
+          post(this.e);
         }
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+        this.e = null;
         return false;
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = new XEditTextEx.PerformClick(this, paramView, l);
+      this.e = new XEditTextEx.PerformClick(this, paramView, l);
     }
     return false;
   }
@@ -221,43 +223,58 @@ public class XEditTextEx
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    XEditTextEx.OnWindowFocusChangedListener localOnWindowFocusChangedListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener;
+    XEditTextEx.OnWindowFocusChangedListener localOnWindowFocusChangedListener = this.g;
     if (localOnWindowFocusChangedListener != null) {
       localOnWindowFocusChangedListener.a(paramBoolean);
     }
   }
   
+  public boolean performLongClick()
+  {
+    boolean bool = super.performLongClick();
+    View.OnLongClickListener localOnLongClickListener = this.i;
+    if (localOnLongClickListener != null) {
+      localOnLongClickListener.onLongClick(this);
+    }
+    return bool;
+  }
+  
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
-    if ((localOnKeyboardShowListener == null) || (localOnKeyboardShowListener.a())) {
+    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.k;
+    if ((localOnKeyboardShowListener == null) || (localOnKeyboardShowListener.b())) {
       super.scrollTo(paramInt1, paramInt2);
     }
   }
   
   public void setKeyEventPreImeListener(XEditTextEx.OnKeyEventPreImeListener paramOnKeyEventPreImeListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener = paramOnKeyEventPreImeListener;
+    this.f = paramOnKeyEventPreImeListener;
   }
   
   public void setOnKeyboardShowListener(XEditTextEx.OnKeyboardShowListener paramOnKeyboardShowListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener = paramOnKeyboardShowListener;
+    this.k = paramOnKeyboardShowListener;
+  }
+  
+  public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
+  {
+    this.i = paramOnLongClickListener;
   }
   
   public void setOnPrivateIMECommandListener(XEditTextEx.OnPrivateIMECommandListener paramOnPrivateIMECommandListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener = paramOnPrivateIMECommandListener;
+    this.b = paramOnPrivateIMECommandListener;
   }
   
   public void setOnWindowFocusChangedListener(XEditTextEx.OnWindowFocusChangedListener paramOnWindowFocusChangedListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener = paramOnWindowFocusChangedListener;
+    this.g = paramOnWindowFocusChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XEditTextEx
  * JD-Core Version:    0.7.0.1
  */

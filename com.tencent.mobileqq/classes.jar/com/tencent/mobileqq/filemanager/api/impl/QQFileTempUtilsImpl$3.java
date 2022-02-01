@@ -10,19 +10,19 @@ class QQFileTempUtilsImpl$3
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+    this.a.onClick(null);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+    this.a.onClick(null);
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileTempUtilsImpl.3
  * JD-Core Version:    0.7.0.1
  */

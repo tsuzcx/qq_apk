@@ -13,22 +13,22 @@ class UnlimitedBladeWorks$BallAnimationListener
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
+    if (UnlimitedBladeWorks.d(this.a).d)
     {
-      if (UnlimitedBladeWorks.a(this.a) == 2.0D)
+      if (UnlimitedBladeWorks.j(this.a) == 2.0D)
       {
-        UnlimitedBladeWorks.a(this.a);
-        UnlimitedBladeWorks.a(this.a, 5);
+        UnlimitedBladeWorks.k(this.a);
+        UnlimitedBladeWorks.c(this.a, 5);
       }
       else
       {
-        UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a).a(new UnlimitedBladeWorks.BallAnimationListener.1(this));
-        UnlimitedBladeWorks.a(this.a).c();
-        UnlimitedBladeWorks.a(this.a, 1);
+        UnlimitedBladeWorks.m(this.a).setImageDrawable(UnlimitedBladeWorks.l(this.a));
+        UnlimitedBladeWorks.l(this.a).a(UnlimitedBladeWorks.c(this.a));
+        UnlimitedBladeWorks.l(this.a).a(new UnlimitedBladeWorks.BallAnimationListener.1(this));
+        UnlimitedBladeWorks.l(this.a).c();
+        UnlimitedBladeWorks.c(this.a, 1);
       }
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(null);
     }
   }
   
@@ -36,17 +36,17 @@ class UnlimitedBladeWorks$BallAnimationListener
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (UnlimitedBladeWorks.a(this.a))
+    if (UnlimitedBladeWorks.c(this.a))
     {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.h(this.a));
       return;
     }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
+    UnlimitedBladeWorks.b(this.a).setImageBitmap(UnlimitedBladeWorks.i(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.BallAnimationListener
  * JD-Core Version:    0.7.0.1
  */

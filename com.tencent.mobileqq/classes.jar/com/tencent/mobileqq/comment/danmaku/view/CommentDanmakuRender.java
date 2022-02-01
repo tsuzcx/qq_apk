@@ -10,14 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+import com.tencent.common.danmaku.data.ViewDanmaku;
+import com.tencent.common.danmaku.render.ViewDanmakuRender;
+import com.tencent.common.danmaku.render.ViewDanmakuRender.ViewHolder;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.armap.INonMainProcAvatarLoader;
 import com.tencent.mobileqq.avatar.api.IQQNonMainProcAvatarLoaderApi;
 import com.tencent.mobileqq.comment.danmaku.data.CommentDanmaku;
-import com.tencent.mobileqq.danmaku.data.ViewDanmaku;
-import com.tencent.mobileqq.danmaku.render.ViewDanmakuRender;
-import com.tencent.mobileqq.danmaku.render.ViewDanmakuRender.ViewHolder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.api.ICommentDanmakuDepend;
 import com.tencent.mobileqq.text.QQText;
@@ -33,38 +33,38 @@ import mqq.app.MobileQQ;
 public class CommentDanmakuRender
   extends ViewDanmakuRender
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
-  private INonMainProcAvatarLoader jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<String, List<CommentDanmakuRender.HeadRequestInfo>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private Context a;
   private int b;
+  private Bitmap c;
+  private BitmapDrawable d;
+  private INonMainProcAvatarLoader e;
+  private ConcurrentHashMap<String, List<CommentDanmakuRender.HeadRequestInfo>> f;
+  private int g;
+  private String h;
+  private ViewGroup.LayoutParams i;
   
   public CommentDanmakuRender(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = Color.parseColor("#00CAFC");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BaseImageUtil.f();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a = paramContext;
+    this.b = Color.parseColor("#00CAFC");
+    this.c = BaseImageUtil.k();
+    if (this.c != null) {
+      this.d = new BitmapDrawable(this.a.getResources(), this.c);
     }
-    this.b = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getChatEmotionSizeWithDP();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = new ViewGroup.LayoutParams(-2, DisplayUtil.a(paramContext, 21.0F));
+    this.g = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getChatEmotionSizeWithDP();
+    this.f = new ConcurrentHashMap();
+    this.h = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    this.i = new ViewGroup.LayoutParams(-2, DisplayUtil.a(paramContext, 21.0F));
     b();
   }
   
   private void a(CommentDanmaku paramCommentDanmaku, RoundImageView paramRoundImageView, ViewDanmaku paramViewDanmaku)
   {
-    if (paramCommentDanmaku.jdField_a_of_type_Boolean)
+    if (paramCommentDanmaku.g)
     {
-      paramCommentDanmaku = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousHeadUrl(paramCommentDanmaku.jdField_a_of_type_Int);
+      paramCommentDanmaku = ((ICommentDanmakuDepend)QRoute.api(ICommentDanmakuDepend.class)).getAnonymousHeadUrl(paramCommentDanmaku.i);
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      localObject2 = this.d;
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       localObject1 = URLDrawable.getDrawable(paramCommentDanmaku, (URLDrawable.URLDrawableOptions)localObject1);
@@ -80,65 +80,65 @@ public class CommentDanmakuRender
       }
       return;
     }
-    Object localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramCommentDanmaku.jdField_a_of_type_JavaLangString);
+    Object localObject2 = (List)this.f.get(paramCommentDanmaku.b);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
     }
     ((List)localObject1).add(new CommentDanmakuRender.HeadRequestInfo(this, paramRoundImageView, paramViewDanmaku));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramCommentDanmaku.jdField_a_of_type_JavaLangString, localObject1);
-    paramRoundImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(paramCommentDanmaku.jdField_a_of_type_JavaLangString, true));
+    this.f.put(paramCommentDanmaku.b, localObject1);
+    paramRoundImageView.setImageBitmap(this.e.a(paramCommentDanmaku.b, true));
   }
   
   private boolean a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.h)) && (paramString.equals(this.h));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidContentContext, 1);
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new CommentDanmakuRender.1(this));
+    this.e = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.a, 1);
+    this.e.a();
+    this.e.a(new CommentDanmakuRender.1(this));
   }
   
   public ViewDanmakuRender.ViewHolder a(int paramInt)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562762, null);
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    View localView = LayoutInflater.from(this.a).inflate(2131629204, null);
+    localView.setLayoutParams(this.i);
     return new CommentDanmakuRender.CommentDanmakuViewHolder(this, localView);
   }
   
   public void a()
   {
-    INonMainProcAvatarLoader localINonMainProcAvatarLoader = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+    INonMainProcAvatarLoader localINonMainProcAvatarLoader = this.e;
     if (localINonMainProcAvatarLoader != null) {
-      localINonMainProcAvatarLoader.b();
+      localINonMainProcAvatarLoader.c();
     }
   }
   
   public void a(int paramInt, ViewDanmakuRender.ViewHolder paramViewHolder, ViewDanmaku paramViewDanmaku)
   {
-    if ((paramViewDanmaku != null) && ((paramViewDanmaku.a() instanceof CommentDanmaku)) && ((paramViewHolder instanceof CommentDanmakuRender.CommentDanmakuViewHolder)))
+    if ((paramViewDanmaku != null) && ((paramViewDanmaku.r() instanceof CommentDanmaku)) && ((paramViewHolder instanceof CommentDanmakuRender.CommentDanmakuViewHolder)))
     {
-      CommentDanmaku localCommentDanmaku = (CommentDanmaku)paramViewDanmaku.a();
+      CommentDanmaku localCommentDanmaku = (CommentDanmaku)paramViewDanmaku.r();
       paramViewHolder = (CommentDanmakuRender.CommentDanmakuViewHolder)paramViewHolder;
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText(localCommentDanmaku.a(), 3, this.b));
-      TextView localTextView = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-      if (a(localCommentDanmaku.jdField_a_of_type_JavaLangString)) {
-        paramInt = this.jdField_a_of_type_Int;
+      paramViewHolder.c.setText(new QQText(localCommentDanmaku.a(), 3, this.g));
+      TextView localTextView = paramViewHolder.c;
+      if (a(localCommentDanmaku.b)) {
+        paramInt = this.b;
       } else {
         paramInt = -1;
       }
       localTextView.setTextColor(paramInt);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.85F);
-      a(localCommentDanmaku, paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView, paramViewDanmaku);
+      paramViewHolder.c.setAlpha(0.85F);
+      a(localCommentDanmaku, paramViewHolder.b, paramViewDanmaku);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.view.CommentDanmakuRender
  * JD-Core Version:    0.7.0.1
  */

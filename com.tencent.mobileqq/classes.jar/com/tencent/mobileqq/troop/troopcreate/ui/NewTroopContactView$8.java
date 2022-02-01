@@ -17,13 +17,13 @@ class NewTroopContactView$8
     paramEditable = paramEditable.toString();
     if (TextUtils.isEmpty(paramEditable))
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
+      this.a.e.setVisibility(8);
+      this.a.x.setVisibility(0);
     }
     else
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
+      this.a.e.setVisibility(0);
+      this.a.x.setVisibility(8);
     }
     if (NewTroopContactView.a(this.a) != null) {
       NewTroopContactView.a(this.a).startSearch(paramEditable);
@@ -36,7 +36,7 @@ class NewTroopContactView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.8
  * JD-Core Version:    0.7.0.1
  */

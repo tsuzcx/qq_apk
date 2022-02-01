@@ -11,8 +11,8 @@ public class TroopDiscussionDiscussion
   extends TroopDiscussionBaseV
   implements DiscussionListAdapter2.DiscussionListListener
 {
-  private DiscussionListAdapter2 jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private XListView a;
+  private DiscussionListAdapter2 b;
   
   public TroopDiscussionDiscussion(SelectMemberActivity paramSelectMemberActivity)
   {
@@ -21,13 +21,13 @@ public class TroopDiscussionDiscussion
   
   public void a(Bundle paramBundle)
   {
-    a(2131562830);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131381293));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167333);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2.a(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    setContentView(2131629275);
+    this.a = ((XListView)findViewById(2131450345));
+    this.a.setSelector(2131168376);
+    this.b = new DiscussionListAdapter2(this.d, this, this.a, this.f, false);
+    this.b.a(true);
+    this.a.setAdapter(this.b);
+    this.b.notifyDataSetChanged();
   }
   
   public void a(DiscussionInfo paramDiscussionInfo)
@@ -37,21 +37,26 @@ public class TroopDiscussionDiscussion
       Bundle localBundle = new Bundle();
       localBundle.putString("group_uin", paramDiscussionInfo.uin);
       localBundle.putString("group_name", paramDiscussionInfo.discussionName);
-      this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, localBundle);
+      this.g.a(7, localBundle);
     }
   }
   
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberAdapterDiscussionListAdapter2.a();
+    this.b.a();
   }
   
   public void b(Bundle paramBundle) {}
+  
+  public String getGroupUin()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopDiscussionDiscussion
  * JD-Core Version:    0.7.0.1
  */

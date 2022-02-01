@@ -25,13 +25,13 @@ public class DefaultFileColorNoteServiceInfo
     localBuilder.a(str);
     localBuilder.b("default_file");
     localBuilder.c("0MB");
-    localBuilder.d("resdrawable://2130844437");
+    localBuilder.d("resdrawable://2130845755");
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.DefaultFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

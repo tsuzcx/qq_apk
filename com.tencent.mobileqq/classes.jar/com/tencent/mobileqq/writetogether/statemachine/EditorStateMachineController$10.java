@@ -16,25 +16,25 @@ class EditorStateMachineController$10
   public void a()
   {
     super.a();
-    EditorStateMachineController.a(this.a).a(1);
+    EditorStateMachineController.f(this.a).a(1);
   }
   
   public void a(EditorState paramEditorState)
   {
     super.a(paramEditorState);
-    EditorStateMachineController.a(this.a).c();
-    EditorStateMachineController.a(this.a).a(false, false);
-    if (EditorStateMachineController.a(this.a) == null)
+    EditorStateMachineController.c(this.a).d();
+    EditorStateMachineController.c(this.a).a(false, false);
+    if (EditorStateMachineController.f(this.a) == null)
     {
       EditorStateMachineController.a(this.a, new ChangesetScheduler());
-      EditorStateMachineController.a(this.a).a(this.a);
+      EditorStateMachineController.f(this.a).a(this.a);
     }
-    EditorStateMachineController.a(this.a).a(1, 60000);
+    EditorStateMachineController.f(this.a).a(1, 60000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.10
  * JD-Core Version:    0.7.0.1
  */

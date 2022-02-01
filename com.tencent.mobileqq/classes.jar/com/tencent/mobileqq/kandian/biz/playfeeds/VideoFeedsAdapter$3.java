@@ -36,24 +36,24 @@ class VideoFeedsAdapter$3
               super.handleMessage(paramMessage);
               return;
             }
-            VideoFeedsAdapter.e(this.a);
+            VideoFeedsAdapter.f(this.a);
             return;
           }
-          VideoFeedsAdapter.d(this.a);
+          VideoFeedsAdapter.e(this.a);
           return;
         }
-        VideoFeedsAdapter.c(this.a);
+        VideoFeedsAdapter.d(this.a);
         return;
       }
-      VideoFeedsAdapter.b(this.a);
+      VideoFeedsAdapter.c(this.a);
       return;
     }
-    VideoFeedsAdapter.a(this.a);
+    VideoFeedsAdapter.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.3
  * JD-Core Version:    0.7.0.1
  */

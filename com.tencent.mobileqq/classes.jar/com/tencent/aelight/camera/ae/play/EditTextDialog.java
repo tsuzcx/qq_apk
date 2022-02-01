@@ -29,7 +29,7 @@ public class EditTextDialog
   
   public EditTextDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2064580714);
+    super(paramContext, 2064252930);
     initView(paramContext);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -47,12 +47,12 @@ public class EditTextDialog
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2064318503, null);
-    this.mEditText = ((EditText)paramContext.findViewById(2064122131));
-    this.mEditTip = ((TextView)paramContext.findViewById(2064122132));
-    this.mCancelView = ((TextView)paramContext.findViewById(2064122021));
-    this.mConfirmView = ((Button)paramContext.findViewById(2064122054));
-    this.mCleanTextView = ((ImageView)paramContext.findViewById(2064122000));
+    paramContext = LayoutInflater.from(paramContext).inflate(2064056370, null);
+    this.mEditText = ((EditText)paramContext.findViewById(2063991021));
+    this.mEditTip = ((TextView)paramContext.findViewById(2063991022));
+    this.mCancelView = ((TextView)paramContext.findViewById(2063990954));
+    this.mConfirmView = ((Button)paramContext.findViewById(2063990974));
+    this.mCleanTextView = ((ImageView)paramContext.findViewById(2063990932));
     this.mEditText.addTextChangedListener(new EditTextDialog.1(this));
     this.mConfirmView.setOnClickListener(new EditTextDialog.2(this));
     this.mCancelView.setOnClickListener(new EditTextDialog.3(this));
@@ -72,7 +72,7 @@ public class EditTextDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.EditTextDialog
  * JD-Core Version:    0.7.0.1
  */

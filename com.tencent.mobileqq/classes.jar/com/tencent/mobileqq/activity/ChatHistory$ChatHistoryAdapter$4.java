@@ -16,11 +16,11 @@ class ChatHistory$ChatHistoryAdapter$4
   
   public void onClick(View paramView)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.a));
+    ReportController.b(this.c.f.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.c.c.startActivity(paramView);
       return;
     }
     catch (ActivityNotFoundException paramView)
@@ -37,7 +37,7 @@ class ChatHistory$ChatHistoryAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.4
  * JD-Core Version:    0.7.0.1
  */

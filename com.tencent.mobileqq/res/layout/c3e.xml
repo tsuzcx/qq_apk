@@ -4,7 +4,7 @@
     <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
             <ImageView android:id="@id/csz" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ct0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/vg9" android:maxLines="1" android:layout_weight="1.0" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/black" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ct0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/vg9" android:maxLines="1" android:layout_weight="1.0" />
             <TextView android:textColor="#ff777777" android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/csy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vg7" android:drawableRight="@drawable/cnt" />
         </LinearLayout>
         <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/csw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/vg8" android:maxLines="4" />

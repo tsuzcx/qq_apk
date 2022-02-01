@@ -18,35 +18,26 @@ import java.util.Map;
 public class AIOShortcutBarLogic
   implements IAIOShortcutBarLogic
 {
-  private SparseArray<IAIOShortcutBarApi> jdField_a_of_type_AndroidUtilSparseArray;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private AIOShortcutBarHelper jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper;
-  private Map<Integer, List<AIOShortcutBarHelper.OnVisibilityChangedListener>> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private AIOShortcutBarHelper b;
+  private SparseArray<IAIOShortcutBarApi> c;
+  private AIOShortcutBarContext d;
+  private Map<Integer, List<AIOShortcutBarHelper.OnVisibilityChangedListener>> e;
   
   public AIOShortcutBarLogic(AIOShortcutBarHelper paramAIOShortcutBarHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper = paramAIOShortcutBarHelper;
+    this.b = paramAIOShortcutBarHelper;
   }
   
-  private IAIOShortcutBarApi a(int paramInt)
+  private void d()
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    if (localSparseArray == null) {
-      return null;
-    }
-    return (IAIOShortcutBarApi)localSparseArray.get(paramInt);
+    this.c.append(1, new TroopRobotShortcutBarService());
   }
   
-  private void a()
+  private void d(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new TroopRobotShortcutBarService());
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    if (this.c == null) {
+      this.c = new SparseArray();
     }
     if (paramInt != 1)
     {
@@ -57,40 +48,54 @@ public class AIOShortcutBarLogic
           if (paramInt != 5)
           {
             if (paramInt == 6) {
-              a();
+              d();
             }
           }
           else {
-            c();
+            f();
           }
         }
         else {
-          e();
+          h();
         }
       }
       else {
-        b();
+        e();
       }
     }
     else {
-      d();
+      g();
     }
     paramInt = 0;
-    while (paramInt < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (paramInt < this.c.size())
     {
-      ((IAIOShortcutBarApi)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt)).a(this);
+      ((IAIOShortcutBarApi)this.c.valueAt(paramInt)).a(this);
       paramInt += 1;
     }
   }
   
-  private IAIOShortcutBarApi b(int paramInt)
+  private IAIOShortcutBarApi e(int paramInt)
+  {
+    SparseArray localSparseArray = this.c;
+    if (localSparseArray == null) {
+      return null;
+    }
+    return (IAIOShortcutBarApi)localSparseArray.get(paramInt);
+  }
+  
+  private void e()
+  {
+    this.c.append(1, new TroopRobotShortcutBarService());
+  }
+  
+  private IAIOShortcutBarApi f(int paramInt)
   {
     int i = 0;
     Object localObject1 = null;
     int k;
-    for (int j = 0; i < this.jdField_a_of_type_AndroidUtilSparseArray.size(); j = k)
+    for (int j = 0; i < this.c.size(); j = k)
     {
-      int m = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+      int m = this.c.keyAt(i);
       Object localObject2;
       if (m == paramInt)
       {
@@ -99,7 +104,7 @@ public class AIOShortcutBarLogic
       }
       else
       {
-        IAIOShortcutBarApi localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.jdField_a_of_type_AndroidUtilSparseArray.get(m);
+        IAIOShortcutBarApi localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.c.get(m);
         localObject2 = localObject1;
         k = j;
         if (localIAIOShortcutBarApi != null)
@@ -133,79 +138,61 @@ public class AIOShortcutBarLogic
     return localObject1;
   }
   
-  private void b()
+  private void f()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new TroopRobotShortcutBarService());
+    this.c.append(1, new C2CAppShortcutBarService());
   }
   
-  private void c()
+  private void g()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new C2CAppShortcutBarService());
+    this.c.append(1, new C2CAppShortcutBarService());
   }
   
-  private boolean c(int paramInt)
+  private boolean g(int paramInt)
   {
     if (paramInt == 0) {
       return false;
     }
-    IAIOShortcutBarApi localIAIOShortcutBarApi = a(paramInt);
+    IAIOShortcutBarApi localIAIOShortcutBarApi = e(paramInt);
     if (localIAIOShortcutBarApi == null) {
       return false;
     }
     return localIAIOShortcutBarApi.a() != null;
   }
   
-  private void d()
+  private void h()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new C2CAppShortcutBarService());
+    this.c.append(1, new TroopRobotShortcutBarService());
+    this.c.append(2, new TroopAppShortCutBarService());
   }
   
-  private void e()
+  private void i()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new TroopRobotShortcutBarService());
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(2, new TroopAppShortCutBarService());
-  }
-  
-  private void f()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.e;
     if (localObject != null) {
       ((Map)localObject).clear();
     }
-    localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    localObject = this.c;
     if (localObject != null) {
       ((SparseArray)localObject).clear();
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d();
-  }
-  
-  public int a(int paramInt)
-  {
-    if (!c(paramInt)) {
-      return 0;
-    }
-    return a(paramInt).b();
-  }
-  
   public AIOShortcutBarContext a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext == null)
+    if (this.d == null)
     {
-      AIOShortcutBarHelper localAIOShortcutBarHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper;
+      AIOShortcutBarHelper localAIOShortcutBarHelper = this.b;
       if (localAIOShortcutBarHelper != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = new AIOShortcutBarContext(localAIOShortcutBarHelper);
+        this.d = new AIOShortcutBarContext(localAIOShortcutBarHelper);
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
+    return this.d;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
@@ -218,21 +205,21 @@ public class AIOShortcutBarLogic
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    Object localObject = this.c;
     if ((localObject == null) || (((SparseArray)localObject).size() == 0)) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a());
+      d(this.b.a());
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.c.size())
     {
-      localObject = (IAIOShortcutBarApi)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      localObject = (IAIOShortcutBarApi)this.c.valueAt(i);
       if (localObject != null) {
         ((IAIOShortcutBarApi)localObject).a(paramInt, paramBundle);
       }
       i += 1;
     }
     if (paramInt == 4) {
-      f();
+      i();
     }
   }
   
@@ -241,64 +228,41 @@ public class AIOShortcutBarLogic
     if (paramOnVisibilityChangedListener == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (this.e == null) {
+      this.e = new HashMap();
     }
-    List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    List localList = (List)this.e.get(Integer.valueOf(paramInt));
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+      this.e.put(Integer.valueOf(paramInt), localObject);
     }
     ((List)localObject).add(paramOnVisibilityChangedListener);
   }
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      return false;
-    }
-    IAIOShortcutBarApi localIAIOShortcutBarApi;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a() == 3)
-    {
-      localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
-      if (localIAIOShortcutBarApi != null) {
-        return ((TroopAppShortCutBarService)localIAIOShortcutBarApi).a();
-      }
-    }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a() == 5) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a() == 1))
-    {
-      localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
-      if (localIAIOShortcutBarApi != null) {
-        return ((C2CAppShortcutBarService)localIAIOShortcutBarApi).a();
-      }
-    }
-    return false;
-  }
-  
   public boolean a(int paramInt)
   {
-    if (!c(paramInt)) {
+    if (!g(paramInt)) {
       return false;
     }
-    Object localObject1 = a(paramInt).a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d() != paramInt)
+    Object localObject1 = e(paramInt).a();
+    if (this.b.x() != paramInt)
     {
       ((View)localObject1).setVisibility(8);
       return false;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.a) {
+      this.a = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.b(8);
+    this.b.c(8);
     a(paramInt, 8);
-    Object localObject2 = b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d());
+    Object localObject2 = f(this.b.x());
     if (localObject2 != null)
     {
-      paramInt = ((IAIOShortcutBarApi)localObject2).a();
+      paramInt = ((IAIOShortcutBarApi)localObject2).c();
       localObject1 = ((IAIOShortcutBarApi)localObject2).a();
-      localObject2 = ((IAIOShortcutBarApi)localObject2).a();
+      localObject2 = ((IAIOShortcutBarApi)localObject2).b();
     }
     else
     {
@@ -308,23 +272,28 @@ public class AIOShortcutBarLogic
     }
     if ((paramInt != 0) && (localObject1 != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a(paramInt, (View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      this.b.a(paramInt, (View)localObject1, (ViewGroup.LayoutParams)localObject2);
       a(paramInt, 0);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.b();
+      this.b.g();
+      this.b.e();
     }
     return true;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (!c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d())) {
+    if (!g(this.b.x())) {
       return false;
     }
-    return a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d()).a(paramMotionEvent);
+    return e(this.b.x()).a(paramMotionEvent);
+  }
+  
+  public int b()
+  {
+    return this.b.x();
   }
   
   public void b(int paramInt, AIOShortcutBarHelper.OnVisibilityChangedListener paramOnVisibilityChangedListener)
@@ -332,7 +301,7 @@ public class AIOShortcutBarLogic
     if (paramOnVisibilityChangedListener == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
@@ -345,46 +314,77 @@ public class AIOShortcutBarLogic
   
   public boolean b(int paramInt)
   {
-    if (!c(paramInt)) {
+    if (!g(paramInt)) {
       return false;
     }
-    IAIOShortcutBarApi localIAIOShortcutBarApi = a(paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d()))
+    IAIOShortcutBarApi localIAIOShortcutBarApi = e(paramInt);
+    if ((this.a) && (paramInt != this.b.x()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a(localIAIOShortcutBarApi.a());
+      this.b.a(localIAIOShortcutBarApi.a());
       localIAIOShortcutBarApi.a().setVisibility(0);
       return false;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.d();
+    int i = this.b.x();
     if ((i <= paramInt) && (i != 0))
     {
-      if ((i == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.c() != 0))
+      if ((i == paramInt) && (this.b.v() != 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.b(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.c();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a();
+        this.b.c(0);
+        this.b.f();
+        this.b.d();
         a(paramInt, 0);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.c() != 0)
+      if (this.b.v() != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a(paramInt, localIAIOShortcutBarApi.a(), localIAIOShortcutBarApi.a());
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.b(0);
+        this.b.a(paramInt, localIAIOShortcutBarApi.a(), localIAIOShortcutBarApi.b());
+        this.b.c(0);
         a(paramInt, 0);
         return true;
       }
       localIAIOShortcutBarApi.a().setVisibility(0);
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.a(paramInt, localIAIOShortcutBarApi.a(), localIAIOShortcutBarApi.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarHelper.b(0);
+    this.b.a(paramInt, localIAIOShortcutBarApi.a(), localIAIOShortcutBarApi.b());
+    this.b.c(0);
     a(paramInt, 0);
     return true;
+  }
+  
+  public int c(int paramInt)
+  {
+    if (!g(paramInt)) {
+      return 0;
+    }
+    return e(paramInt).d();
+  }
+  
+  public boolean c()
+  {
+    if (this.c == null) {
+      return false;
+    }
+    IAIOShortcutBarApi localIAIOShortcutBarApi;
+    if (this.b.a() == 3)
+    {
+      localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.c.get(2);
+      if (localIAIOShortcutBarApi != null) {
+        return ((TroopAppShortCutBarService)localIAIOShortcutBarApi).e();
+      }
+    }
+    else if ((this.b.a() == 5) || (this.b.a() == 1))
+    {
+      localIAIOShortcutBarApi = (IAIOShortcutBarApi)this.c.get(1);
+      if (localIAIOShortcutBarApi != null) {
+        return ((C2CAppShortcutBarService)localIAIOShortcutBarApi).e();
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarLogic
  * JD-Core Version:    0.7.0.1
  */

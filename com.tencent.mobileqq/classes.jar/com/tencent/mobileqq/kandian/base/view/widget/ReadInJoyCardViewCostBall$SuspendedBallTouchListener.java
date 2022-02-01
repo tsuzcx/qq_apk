@@ -9,10 +9,10 @@ import android.view.WindowManager.LayoutParams;
 class ReadInJoyCardViewCostBall$SuspendedBallTouchListener
   implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
   
   private ReadInJoyCardViewCostBall$SuspendedBallTouchListener(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
   
@@ -23,24 +23,24 @@ class ReadInJoyCardViewCostBall$SuspendedBallTouchListener
     {
       if ((i != 1) && (i == 2))
       {
-        ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-        ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-        ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall));
+        ReadInJoyCardViewCostBall.a(this.a).x = (this.b + (int)(this.d - paramMotionEvent.getRawX()));
+        ReadInJoyCardViewCostBall.a(this.a).y = (this.c + (int)(paramMotionEvent.getRawY() - this.e));
+        ReadInJoyCardViewCostBall.b(this.a).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.a));
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall).x;
-      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCardViewCostBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      this.b = ReadInJoyCardViewCostBall.a(this.a).x;
+      this.c = ReadInJoyCardViewCostBall.a(this.a).y;
+      this.d = paramMotionEvent.getRawX();
+      this.e = paramMotionEvent.getRawY();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyCardViewCostBall.SuspendedBallTouchListener
  * JD-Core Version:    0.7.0.1
  */

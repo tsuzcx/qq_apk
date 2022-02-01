@@ -22,29 +22,29 @@ class SimpleUIHandler$1
     boolean bool;
     if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
     {
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler;
+      paramObject = this.b;
       if (SimpleUIHandler.a(paramObject).get() == 1) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
       }
-      paramInt = SimpleUIHandler.b(this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler).get();
-      if (SimpleUIHandler.c(this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler).get() == 1) {
+      paramInt = SimpleUIHandler.b(this.b).get();
+      if (SimpleUIHandler.c(this.b).get() == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      paramObject.a(paramBoolean, paramInt, false, bool, this.jdField_a_of_type_Long);
+      paramObject.a(paramBoolean, paramInt, false, bool, this.a);
       return;
     }
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler;
+    paramObject = this.b;
     if (SimpleUIHandler.a(paramObject).get() == 1) {
       paramBoolean = true;
     } else {
       paramBoolean = false;
     }
-    paramInt = SimpleUIHandler.b(this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler).get();
-    if (SimpleUIHandler.c(this.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIHandler).get() == 1) {
+    paramInt = SimpleUIHandler.b(this.b).get();
+    if (SimpleUIHandler.c(this.b).get() == 1) {
       bool = true;
     } else {
       bool = false;
@@ -54,7 +54,7 @@ class SimpleUIHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIHandler.1
  * JD-Core Version:    0.7.0.1
  */

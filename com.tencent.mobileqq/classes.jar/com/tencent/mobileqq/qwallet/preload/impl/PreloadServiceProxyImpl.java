@@ -102,7 +102,7 @@ public class PreloadServiceProxyImpl
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("res_id", paramString);
-      QWalletIPCConnector.a().a();
+      QWalletIPCConnector.a().b();
       paramString = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getResInfoByResID", (Bundle)localObject);
       if ((paramString != null) && (paramString.isSuccess()))
       {
@@ -178,7 +178,7 @@ public class PreloadServiceProxyImpl
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("res_id", paramString);
-      QWalletIPCConnector.a().a();
+      QWalletIPCConnector.a().b();
       EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getResourceByResID", (Bundle)localObject);
       localObject = localStringBuilder;
       if (localEIPCResult != null)
@@ -214,7 +214,7 @@ public class PreloadServiceProxyImpl
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("mid", paramString);
-      QWalletIPCConnector.a().a();
+      QWalletIPCConnector.a().b();
       EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject);
       localObject = localStringBuilder;
       if (localEIPCResult != null)
@@ -240,14 +240,14 @@ public class PreloadServiceProxyImpl
   public void onCreate(AppRuntime paramAppRuntime)
   {
     super.onCreate(paramAppRuntime);
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl
  * JD-Core Version:    0.7.0.1
  */

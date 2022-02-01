@@ -9,12 +9,12 @@ import android.content.Intent;
 class MediaBrowserActivity$ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  Activity a;
+  boolean b = true;
   
   MediaBrowserActivity$ScreenBroadcastReceiver(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public boolean a(Context paramContext)
@@ -26,16 +26,16 @@ class MediaBrowserActivity$ScreenBroadcastReceiver
   {
     paramIntent = paramIntent.getAction();
     if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = (a(paramContext) ^ true);
+      this.b = (a(paramContext) ^ true);
     } else if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.unregisterReceiver(this);
+      this.a.finish();
     }
   }
 }

@@ -34,8 +34,8 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bt">
                     <com.tencent.open.agent.FitHeightListView android:scrollbarStyle="outsideOverlay" android:id="@id/kze" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:overScrollMode="never" />
                     <LinearLayout android:orientation="vertical" android:id="@id/kzb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="31.0dip" android:layout_below="@id/kze">
-                        <RelativeLayout android:id="@id/bbw" android:paddingTop="@dimen/bf4" android:paddingBottom="@dimen/bf4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/pp8">
-                            <ImageView android:id="@id/bbx" android:layout_width="@dimen/bf3" android:layout_height="@dimen/bf3" android:layout_marginLeft="16.0dip" android:src="@drawable/chatoption_item_add_new" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                        <RelativeLayout android:id="@id/bbw" android:paddingTop="@dimen/bmf" android:paddingBottom="@dimen/bmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/pp8">
+                            <ImageView android:id="@id/bbx" android:layout_width="@dimen/bmd" android:layout_height="@dimen/bmd" android:layout_marginLeft="16.0dip" android:src="@drawable/chatoption_item_add_new" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
                             <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/pp6" android:layout_toRightOf="@id/bbx" android:layout_centerVertical="true" />
                         </RelativeLayout>
                         <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/kzd" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="@string/ppm" />
@@ -45,7 +45,7 @@
         </ScrollView>
         <View android:background="@drawable/dl4" android:layout_width="fill_parent" android:layout_height="31.0dip" android:layout_above="@id/agk" />
         <LinearLayout android:orientation="vertical" android:id="@id/agk" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <Button android:textSize="17.0sp" android:id="@id/fds" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/x1v" android:contentDescription="QQ授权登录" style="@style/b9" />
+            <Button android:textSize="17.0sp" android:id="@id/fds" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/xk3" android:contentDescription="QQ授权登录" style="@style/b9" />
             <TextView android:textSize="14.0sp" android:textColor="#ff40a0ff" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/asz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="47.0dip" android:text="使用其他QQ帐号登录" android:contentDescription="使用其他QQ帐号登陆" />
         </LinearLayout>
     </com.tencent.open.agent.OpenCardContainer>

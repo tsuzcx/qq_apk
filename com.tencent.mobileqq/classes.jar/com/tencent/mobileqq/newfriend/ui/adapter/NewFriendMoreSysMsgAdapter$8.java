@@ -23,7 +23,7 @@ class NewFriendMoreSysMsgAdapter$8
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ArrayList localArrayList = (ArrayList)NewFriendMoreSysMsgAdapter.a(this.a).clone();
+    ArrayList localArrayList = (ArrayList)NewFriendMoreSysMsgAdapter.l(this.a).clone();
     if (!localArrayList.isEmpty())
     {
       Iterator localIterator = localArrayList.iterator();
@@ -66,18 +66,18 @@ class NewFriendMoreSysMsgAdapter$8
       ((StringBuilder)localObject).append(paramInt2);
       QLog.i("NewFriendMoreSysMsgAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    if ((NewFriendMoreSysMsgAdapter.a(this.a) != null) && (NewFriendMoreSysMsgAdapter.a(this.a).getVisibility() == 0))
+    if ((NewFriendMoreSysMsgAdapter.m(this.a) != null) && (NewFriendMoreSysMsgAdapter.m(this.a).getVisibility() == 0))
     {
       if ((paramBoolean) && (paramInt2 > 0))
       {
-        localObject = NewFriendMoreSysMsgAdapter.a(this.a);
+        localObject = NewFriendMoreSysMsgAdapter.m(this.a);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramInt2);
         localStringBuilder.append("");
         ((TextView)localObject).setText(localStringBuilder.toString());
         return;
       }
-      NewFriendMoreSysMsgAdapter.a(this.a).setText("");
+      NewFriendMoreSysMsgAdapter.m(this.a).setText("");
     }
   }
   
@@ -90,12 +90,12 @@ class NewFriendMoreSysMsgAdapter$8
   
   public void b(String paramString)
   {
-    NewFriendMoreSysMsgAdapter.c(this.a);
+    NewFriendMoreSysMsgAdapter.k(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.8
  * JD-Core Version:    0.7.0.1
  */

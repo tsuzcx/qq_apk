@@ -35,7 +35,7 @@ public class ProfileAccountLevelHeaderComponent
   private void initAccountLevel()
   {
     if (this.mViewContainer != null) {
-      this.mActivity.getLayoutInflater().inflate(2131561321, (ViewGroup)this.mViewContainer);
+      this.mActivity.getLayoutInflater().inflate(2131627677, (ViewGroup)this.mViewContainer);
     }
   }
   
@@ -55,7 +55,7 @@ public class ProfileAccountLevelHeaderComponent
         }
         this.mFirstVisible = false;
         ((View)this.mViewContainer).setVisibility(0);
-        paramCard = (ProfileQQLevelView)((View)this.mViewContainer).findViewById(2131374263);
+        paramCard = (ProfileQQLevelView)((View)this.mViewContainer).findViewById(2131442358);
         if (paramCard != null)
         {
           paramCard.update((ProfileCardInfo)this.mData, this.mIsFromArkBabyQ);
@@ -65,7 +65,7 @@ public class ProfileAccountLevelHeaderComponent
         updateNumPAGView();
         ((View)this.mViewContainer).setTag(new DataTag(69, null));
         ((View)this.mViewContainer).setOnClickListener(this);
-        paramCard = (ImageView)((View)this.mViewContainer).findViewById(2131362975);
+        paramCard = (ImageView)((View)this.mViewContainer).findViewById(2131428774);
         updateItemTheme((View)this.mViewContainer, null, null, paramCard);
         return;
       }
@@ -155,7 +155,7 @@ public class ProfileAccountLevelHeaderComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountlevel.ProfileAccountLevelHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

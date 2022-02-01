@@ -18,29 +18,29 @@ public class ConfessTipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    return null;
-  }
-  
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
-    if (1033 != paramAIOContext.a().a)
+    if (1033 != paramAIOContext.O().a)
     {
-      if (1034 == paramAIOContext.a().a) {
+      if (1034 == paramAIOContext.O().a) {
         return true;
       }
-      if (ConfessMsgUtil.a(paramMessage)) {
+      if (ConfessMsgUtil.b(paramMessage)) {
         return true;
       }
       return ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).isExtendMatchChatMsg(paramMessage);
     }
     return true;
   }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.ConfessTipsFilter
  * JD-Core Version:    0.7.0.1
  */

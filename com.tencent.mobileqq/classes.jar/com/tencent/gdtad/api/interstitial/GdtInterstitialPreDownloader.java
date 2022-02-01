@@ -13,49 +13,41 @@ import java.lang.ref.WeakReference;
 
 public final class GdtInterstitialPreDownloader
 {
-  private static volatile GdtInterstitialPreDownloader jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader;
-  private volatile long jdField_a_of_type_Long = -2147483648L;
-  private AdIPCManager.Callback jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback = new GdtInterstitialPreDownloader.2(this);
-  private GdtArkPreDownloadTask.Listener jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask$Listener = new GdtInterstitialPreDownloader.3(this);
-  private volatile GdtArkPreDownloadTask jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask;
+  private static volatile GdtInterstitialPreDownloader a;
+  private volatile GdtArkPreDownloadTask b;
+  private volatile long c = -2147483648L;
+  private AdIPCManager.Callback d = new GdtInterstitialPreDownloader.2(this);
+  private GdtArkPreDownloadTask.Listener e = new GdtInterstitialPreDownloader.3(this);
   
   public static GdtInterstitialPreDownloader a()
   {
-    if (jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader == null) {
-          jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader = new GdtInterstitialPreDownloader();
+        if (a == null) {
+          a = new GdtInterstitialPreDownloader();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader;
+    return a;
   }
   
-  private void a()
+  private void c()
   {
     GdtLog.b("GdtInterstitialPreDownloader", "preDownloadImpl");
-    if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask == null) {
-      synchronized (jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialPreDownloader)
+    if (this.b == null) {
+      synchronized (a)
       {
-        if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask == null)
+        if (this.b == null)
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask = new GdtArkPreDownloadTask(new WeakReference(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask$Listener), GdtInterstitialManager.a().a(), -2147483648L);
+          this.c = System.currentTimeMillis();
+          this.b = new GdtArkPreDownloadTask(new WeakReference(this.e), GdtInterstitialManager.a().d(), -2147483648L);
           GdtAnalysisHelperForInterstitial.a(BaseApplication.getContext());
         }
         return;
       }
     }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask != null) {
-      return this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkPreDownloadTask.a();
-    }
-    return -2147483648;
   }
   
   public void a(Context paramContext)
@@ -64,18 +56,26 @@ public final class GdtInterstitialPreDownloader
     AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialPreDownloader.1(this), 4, 300000L);
   }
   
+  public int b()
+  {
+    if (this.b != null) {
+      return this.b.a();
+    }
+    return -2147483648;
+  }
+  
   public void b(Context paramContext)
   {
     GdtLog.b("GdtInterstitialPreDownloader", String.format("preDownload", new Object[0]));
     paramContext = new Bundle();
     paramContext.putString("IPC_ACTION", "ipc_interstitial_predownload");
     paramContext.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getWebProcessName());
-    AdIPCManager.INSTANCE.send(BaseApplication.getContext(), new AdIPCManager.Params(paramContext), new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback));
+    AdIPCManager.INSTANCE.send(BaseApplication.getContext(), new AdIPCManager.Params(paramContext), new WeakReference(this.d));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialPreDownloader
  * JD-Core Version:    0.7.0.1
  */

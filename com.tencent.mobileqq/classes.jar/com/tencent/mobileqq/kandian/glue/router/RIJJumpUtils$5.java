@@ -14,7 +14,7 @@ final class RIJJumpUtils$5
   {
     try
     {
-      RIJJumpUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_Int);
+      RIJJumpUtils.a(this.a, this.b, this.c, this.d);
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ final class RIJJumpUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.5
  * JD-Core Version:    0.7.0.1
  */

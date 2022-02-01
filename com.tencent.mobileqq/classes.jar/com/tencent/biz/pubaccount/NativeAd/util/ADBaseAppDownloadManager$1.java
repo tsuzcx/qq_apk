@@ -14,13 +14,13 @@ class ADBaseAppDownloadManager$1
   {
     Iterator localIterator = ADBaseAppDownloadManager.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((AdDownloadCallback)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData, this.jdField_a_of_type_Int, this.b);
+      ((AdDownloadCallback)localIterator.next()).a(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

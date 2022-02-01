@@ -22,14 +22,35 @@ public class CloseableBitmap
   
   public CloseableBitmap(Reference<Bitmap> paramReference)
   {
-    paramReference.a();
+    paramReference.b();
     this.a = paramReference;
     if (QLog.isColorLevel()) {
       Utils.a(toString(), "createFromClone", true);
     }
   }
   
-  public Bitmap a()
+  public void a()
+  {
+    try
+    {
+      if (this.a != null)
+      {
+        if (QLog.isColorLevel()) {
+          Utils.a(toString(), "close", true);
+        }
+        this.a.c();
+        this.a = null;
+      }
+      else
+      {
+        Utils.a(toString(), "close twice");
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public Bitmap b()
   {
     Reference localReference = this.a;
     if (localReference != null) {
@@ -39,7 +60,7 @@ public class CloseableBitmap
     return null;
   }
   
-  public CloseableBitmap a()
+  public CloseableBitmap d()
   {
     try
     {
@@ -52,28 +73,7 @@ public class CloseableBitmap
     finally {}
   }
   
-  public void a()
-  {
-    try
-    {
-      if (this.a != null)
-      {
-        if (QLog.isColorLevel()) {
-          Utils.a(toString(), "close", true);
-        }
-        this.a.b();
-        this.a = null;
-      }
-      else
-      {
-        Utils.a(toString(), "close twice");
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public boolean a()
+  public boolean e()
   {
     return this.a != null;
   }
@@ -96,7 +96,7 @@ public class CloseableBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.imageloader.CloseableBitmap
  * JD-Core Version:    0.7.0.1
  */

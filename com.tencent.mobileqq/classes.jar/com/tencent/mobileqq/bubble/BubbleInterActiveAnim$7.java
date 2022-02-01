@@ -12,21 +12,21 @@ class BubbleInterActiveAnim$7
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    this.b.cancel();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder;
+    paramAnimator = this.a;
     if (paramAnimator != null) {
-      paramAnimator.a.setVisibility(0);
+      paramAnimator.e.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.b.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.7
  * JD-Core Version:    0.7.0.1
  */

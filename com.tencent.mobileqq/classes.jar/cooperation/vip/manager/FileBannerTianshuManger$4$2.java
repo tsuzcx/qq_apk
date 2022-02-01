@@ -12,13 +12,13 @@ class FileBannerTianshuManger$4$2
   
   public void onClick(View paramView)
   {
-    this.a.this$0.a.setVisibility(8);
+    this.a.this$0.h.setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.FileBannerTianshuManger.4.2
  * JD-Core Version:    0.7.0.1
  */

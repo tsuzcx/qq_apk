@@ -70,8 +70,8 @@ public class MutualMarkDataS2CHandleHelper
         if (localMutualMarkPullInfo != null)
         {
           localArrayList.add(localMutualMarkPullInfo);
-          if ((!TextUtils.isEmpty(localMutualMarkPullInfo.e)) && (!TextUtils.isEmpty(localMutualMarkPullInfo.f))) {
-            MutualMarkManger.a(paramQQAppInterface).a(localMutualMarkPullInfo.e, localMutualMarkPullInfo.f);
+          if ((!TextUtils.isEmpty(localMutualMarkPullInfo.n)) && (!TextUtils.isEmpty(localMutualMarkPullInfo.o))) {
+            MutualMarkManger.a(paramQQAppInterface).a(localMutualMarkPullInfo.n, localMutualMarkPullInfo.o);
           }
         }
       }
@@ -122,7 +122,7 @@ public class MutualMarkDataS2CHandleHelper
     }
     String str = String.valueOf(l);
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject2 = localFriendsManager.a(str);
+    Object localObject2 = localFriendsManager.x(str);
     ExtensionInfoLogUtils.a("MutualMarkDataS2CHandleHelper", "handleGet0x5e0MutualMarkData before friendsManager.getExtensionInfo，friendUin:", (ExtensionInfo)localObject2);
     Object localObject1 = localObject2;
     if (localObject2 == null)
@@ -130,7 +130,7 @@ public class MutualMarkDataS2CHandleHelper
       localObject1 = new ExtensionInfo();
       ((ExtensionInfo)localObject1).uin = str;
     }
-    localObject2 = localFriendsManager.e(str);
+    localObject2 = localFriendsManager.m(str);
     int i = a(paramQQAppInterface, (ExtensionInfo)localObject1, str, paramMutualMarkData);
     if ((localObject1 != null) && ((i & 0x1) != 0))
     {
@@ -139,7 +139,7 @@ public class MutualMarkDataS2CHandleHelper
     }
     if ((localObject2 != null) && ((i & 0x2) != 0))
     {
-      localFriendsManager.a((Friends)localObject2);
+      localFriendsManager.b((Friends)localObject2);
       paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, str);
     }
   }
@@ -154,13 +154,13 @@ public class MutualMarkDataS2CHandleHelper
         return false;
       }
       bool1 = bool2;
-      if (paramRelationalChainPushInfo.jdField_a_of_type_Int > 0)
+      if (paramRelationalChainPushInfo.a > 0)
       {
         Object localObject = null;
         ExtensionMutualMarkData localExtensionMutualMarkData = (ExtensionMutualMarkData)paramExtensionInfo.getBusinessData(ExtensionMutualMarkData.class, new Object[0]);
         paramExtensionInfo = (ExtensionInfo)localObject;
         if (localExtensionMutualMarkData.a != null) {
-          paramExtensionInfo = (MutualMarkInfo)localExtensionMutualMarkData.a.get(Long.valueOf(paramRelationalChainPushInfo.jdField_a_of_type_Int));
+          paramExtensionInfo = (MutualMarkInfo)localExtensionMutualMarkData.a.get(Long.valueOf(paramRelationalChainPushInfo.a));
         }
         localObject = paramExtensionInfo;
         if (paramExtensionInfo == null) {
@@ -191,16 +191,16 @@ public class MutualMarkDataS2CHandleHelper
         return false;
       }
       Object localObject = (ExtensionMutualMarkData)paramExtensionInfo.getBusinessData(ExtensionMutualMarkData.class, new Object[0]);
-      if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int == 2) {
+      if (paramExtSnsRelationChainChangePushInfo.c == 2) {
         return a(paramExtSnsRelationChainChangePushInfo, false, (ExtensionMutualMarkData)localObject);
       }
-      if (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) {
-        bool1 = false | a(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo, paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int, paramExtensionInfo);
+      if (paramExtSnsRelationChainChangePushInfo.f != null) {
+        bool1 = false | a(paramExtSnsRelationChainChangePushInfo.f, paramExtSnsRelationChainChangePushInfo.c, paramExtensionInfo);
       }
       bool2 = bool1;
-      if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaUtilArrayList != null)
+      if (paramExtSnsRelationChainChangePushInfo.g != null)
       {
-        localObject = paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = paramExtSnsRelationChainChangePushInfo.g.iterator();
         for (;;)
         {
           bool2 = bool1;
@@ -208,8 +208,8 @@ public class MutualMarkDataS2CHandleHelper
             break;
           }
           ExtSnsRelationChainChangePushInfo.ChangeInfoPair localChangeInfoPair = (ExtSnsRelationChainChangePushInfo.ChangeInfoPair)((Iterator)localObject).next();
-          if ((localChangeInfoPair != null) && (localChangeInfoPair.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)) {
-            bool1 |= a(localChangeInfoPair.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo, paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int, paramExtensionInfo);
+          if ((localChangeInfoPair != null) && (localChangeInfoPair.b != null)) {
+            bool1 |= a(localChangeInfoPair.b, paramExtSnsRelationChainChangePushInfo.c, paramExtensionInfo);
           }
         }
       }
@@ -220,9 +220,9 @@ public class MutualMarkDataS2CHandleHelper
   private static boolean a(ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, boolean paramBoolean, ExtensionMutualMarkData paramExtensionMutualMarkData)
   {
     boolean bool = paramBoolean;
-    if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+    if (paramExtSnsRelationChainChangePushInfo.e != null)
     {
-      long l = paramExtSnsRelationChainChangePushInfo.a();
+      long l = paramExtSnsRelationChainChangePushInfo.b();
       bool = paramBoolean;
       if (paramExtensionMutualMarkData.a != null)
       {
@@ -324,19 +324,19 @@ public class MutualMarkDataS2CHandleHelper
   
   public static boolean b(QQAppInterface paramQQAppInterface, ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo, ExtensionInfo paramExtensionInfo)
   {
-    if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int == 2)
+    if (paramExtSnsRelationChainChangePushInfo.c == 2)
     {
-      if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.a())) {
+      if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b())) {
         return true;
       }
     }
-    else if ((paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int != 10003) && (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int != 11001))
+    else if ((paramExtSnsRelationChainChangePushInfo.c != 10003) && (paramExtSnsRelationChainChangePushInfo.c != 11001))
     {
-      if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.a(), paramExtSnsRelationChainChangePushInfo.d())) {
+      if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b(), paramExtSnsRelationChainChangePushInfo.j())) {
         return true;
       }
     }
-    else if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.a())) {
+    else if (MutualMarkConfigHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b())) {
       return true;
     }
     return false;
@@ -443,26 +443,26 @@ public class MutualMarkDataS2CHandleHelper
     }
     if (a(paramExtSnsRelationChainChangePushInfo, paramExtensionInfo))
     {
-      if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int == 1) {
-        MutualMarkDataCenter.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo.a());
+      if (paramExtSnsRelationChainChangePushInfo.c == 1) {
+        MutualMarkDataCenter.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo.b());
       }
       ExtensionInfoLogUtils.a("MutualMarkDataS2CHandleHelper", "handleMutualMarkDataPushCommonUpdate before save，friendUin:", paramExtensionInfo);
       paramFriendsManager.a(paramExtensionInfo);
-      if ((!TextUtils.isEmpty(paramExtSnsRelationChainChangePushInfo.b())) && (!TextUtils.isEmpty(paramExtSnsRelationChainChangePushInfo.c()))) {
-        MutualMarkManger.a(paramQQAppInterface).a(paramExtSnsRelationChainChangePushInfo.b(), paramExtSnsRelationChainChangePushInfo.c());
+      if ((!TextUtils.isEmpty(paramExtSnsRelationChainChangePushInfo.f())) && (!TextUtils.isEmpty(paramExtSnsRelationChainChangePushInfo.g()))) {
+        MutualMarkManger.a(paramQQAppInterface).a(paramExtSnsRelationChainChangePushInfo.f(), paramExtSnsRelationChainChangePushInfo.g());
       }
       if ((b(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo, paramExtensionInfo)) && (!MutualMarkUtils.a(paramQQAppInterface))) {
         MutualMarkGrayTipsHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, paramPushMsg0x210C7Info);
       } else {
         QLog.i("MutualMarkDataS2CHandleHelper", 1, "handleMutualMarkDataPushCommonUpdate not enable insert grayTips");
       }
-      paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+      paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, paramExtSnsRelationChainChangePushInfo.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkDataS2CHandleHelper
  * JD-Core Version:    0.7.0.1
  */

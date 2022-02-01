@@ -17,24 +17,35 @@ final class TitleLayoutController$initFaceView$1
   
   public final void onClick(View paramView)
   {
-    TitleLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController, this.jdField_a_of_type_JavaUtilList);
-    Object localObject = TitleLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController).get("pvsrc");
+    Object localObject = TitleLayoutController.a(this.a);
+    if (localObject != null) {
+      ((BubbleController)localObject).b();
+    }
+    TitleLayoutController.a(this.a, this.b);
+    localObject = TitleLayoutController.b(this.a).get("pvsrc");
     String str = "";
     if (localObject != null) {
-      localObject = (String)TitleLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController).get("pvsrc");
+      localObject = (String)TitleLayoutController.b(this.a).get("pvsrc");
     } else {
       localObject = "";
     }
-    if (TitleLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController).get("ext10") != null) {
-      str = (String)TitleLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTitleLayoutController).get("ext10");
+    if (TitleLayoutController.b(this.a).get("ext10") != null) {
+      str = (String)TitleLayoutController.b(this.a).get("ext10");
     }
-    ReportUtil.a("qgg_pnavigation_click", "", String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", (String)localObject, str, "");
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    int i;
+    if (TitleLayoutController.c(this.a).getVisibility() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    ReportUtil.a("qgg_pnavigation_click", "", String.valueOf(l), String.valueOf(i), (String)localObject, str, "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController.initFaceView.1
  * JD-Core Version:    0.7.0.1
  */

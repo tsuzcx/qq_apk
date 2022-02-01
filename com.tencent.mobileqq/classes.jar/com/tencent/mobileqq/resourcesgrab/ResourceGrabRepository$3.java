@@ -10,15 +10,15 @@ class ResourceGrabRepository$3
   
   public void call()
   {
-    ResourceGrabRepository.OnFileSaveCompleteCallback localOnFileSaveCompleteCallback = this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabRepository$OnFileSaveCompleteCallback;
+    ResourceGrabRepository.OnFileSaveCompleteCallback localOnFileSaveCompleteCallback = this.a;
     if (localOnFileSaveCompleteCallback != null) {
-      localOnFileSaveCompleteCallback.a(this.jdField_a_of_type_JavaUtilHashSet);
+      localOnFileSaveCompleteCallback.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository.3
  * JD-Core Version:    0.7.0.1
  */

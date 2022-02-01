@@ -16,8 +16,8 @@ class SubscribePersonalBottomOpusFragment$4
   
   public void onClick(View paramView)
   {
-    SubscribeLaucher.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get()));
-    VSReporter.b(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
+    SubscribeLaucher.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.a.e.poster.id.get()));
+    VSReporter.b(this.a.e.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

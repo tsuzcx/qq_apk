@@ -13,10 +13,10 @@ class TroopCreateLogicActivity$2
   
   protected void onEditTroopLocationRet(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
   {
-    this.a.a.removeObserver(this);
+    this.a.c.removeObserver(this);
     if (paramInt1 == 0)
     {
-      ITroopInfoService localITroopInfoService = (ITroopInfoService)this.a.a.getRuntimeService(ITroopInfoService.class, "");
+      ITroopInfoService localITroopInfoService = (ITroopInfoService)this.a.c.getRuntimeService(ITroopInfoService.class, "");
       localObject = null;
       if (localITroopInfoService != null) {
         localObject = localITroopInfoService.findTroopInfo(Long.toString(paramLong));
@@ -41,7 +41,7 @@ class TroopCreateLogicActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity.2
  * JD-Core Version:    0.7.0.1
  */

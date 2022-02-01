@@ -10,18 +10,18 @@ class ADView$1
   
   public void a(int paramInt)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int j = this.a.getChildCount();
     int i = 0;
     View localView;
     while (i < j)
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      localView = this.a.getChildAt(i);
       if (localView != null) {
         localView.setEnabled(false);
       }
       i += 1;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+    if (this.b.E) {
       if (paramInt != -1) {}
     }
     do
@@ -41,7 +41,7 @@ class ADView$1
     } while (paramInt == j);
     if ((i > -1) && (i < j))
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      localView = this.a.getChildAt(i);
       if (localView != null) {
         localView.setEnabled(true);
       }
@@ -50,7 +50,7 @@ class ADView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView.1
  * JD-Core Version:    0.7.0.1
  */

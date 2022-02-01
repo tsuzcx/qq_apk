@@ -16,23 +16,23 @@ final class VipUtils$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", String.format(BigTroopExpiredTipsBar.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
+      paramDialogInterface = new Intent(this.b, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", String.format(BigTroopExpiredTipsBar.a, new Object[] { this.c, "group_aio_popup" }));
       paramDialogInterface.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      this.b.startActivity(paramDialogInterface);
     }
     else
     {
-      TroopManager.LiangGroupHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
+      TroopManager.LiangGroupHelper.a(this.b, this.c, "group_aio_popup");
     }
-    ReportController.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "qq_vip", this.d, this.e, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.1
  * JD-Core Version:    0.7.0.1
  */

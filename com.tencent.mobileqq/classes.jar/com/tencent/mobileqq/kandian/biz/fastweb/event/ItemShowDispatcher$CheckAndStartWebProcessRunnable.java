@@ -22,7 +22,7 @@ public class ItemShowDispatcher$CheckAndStartWebProcessRunnable
     if (((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist())
     {
       if (QLog.isColorLevel()) {
-        QLog.d(ItemShowDispatcher.a(), 2, "checkWebProcess WebProcess Already Exist.");
+        QLog.d(ItemShowDispatcher.b(), 2, "checkWebProcess WebProcess Already Exist.");
       }
       return;
     }
@@ -33,19 +33,19 @@ public class ItemShowDispatcher$CheckAndStartWebProcessRunnable
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(ItemShowDispatcher.a(), 2, "checkWebProcess start preload web process");
+          QLog.d(ItemShowDispatcher.b(), 2, "checkWebProcess start preload web process");
         }
         ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
       }
       if (QLog.isColorLevel()) {
-        QLog.d(ItemShowDispatcher.a(), 2, "checkWebProcess enter preload web process");
+        QLog.d(ItemShowDispatcher.b(), 2, "checkWebProcess enter preload web process");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.event.ItemShowDispatcher.CheckAndStartWebProcessRunnable
  * JD-Core Version:    0.7.0.1
  */

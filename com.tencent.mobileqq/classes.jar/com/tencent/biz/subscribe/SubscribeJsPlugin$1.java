@@ -13,13 +13,13 @@ class SubscribeJsPlugin$1
   {
     if (!paramBoolean2)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeSubscribeJsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
-      if (SubscribeJsPlugin.a(this.jdField_a_of_type_ComTencentBizSubscribeSubscribeJsPlugin) == null)
+      this.c.callJs(this.a, new String[] { "{\"result\":0}" });
+      if (SubscribeJsPlugin.a(this.c) == null)
       {
-        SubscribeJsPlugin.a(this.jdField_a_of_type_ComTencentBizSubscribeSubscribeJsPlugin, TroopMemberApiClient.a());
-        SubscribeJsPlugin.a(this.jdField_a_of_type_ComTencentBizSubscribeSubscribeJsPlugin).a();
+        SubscribeJsPlugin.a(this.c, TroopMemberApiClient.a());
+        SubscribeJsPlugin.a(this.c).e();
       }
-      SubscribeJsPlugin.a(this.jdField_a_of_type_ComTencentBizSubscribeSubscribeJsPlugin).i(paramString, this.b);
+      SubscribeJsPlugin.a(this.c).i(paramString, this.b);
       VSReporter.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
       return;
     }

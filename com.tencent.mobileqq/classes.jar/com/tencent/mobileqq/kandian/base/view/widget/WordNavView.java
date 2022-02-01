@@ -18,13 +18,13 @@ import java.util.Map;
 public class WordNavView
   extends View
 {
-  private float jdField_a_of_type_Float = ViewUtils.b(15.0F);
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private WordNavView.OnTouchingWordChangedListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView$OnTouchingWordChangedListener;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Map<Float, String> jdField_a_of_type_JavaUtilMap;
-  private float b;
+  private float a = ViewUtils.dpToPx(15.0F);
+  private ArrayList<String> b = new ArrayList();
+  private float c;
+  private Map<Float, String> d;
+  private GestureDetector e;
+  private TextPaint f;
+  private WordNavView.OnTouchingWordChangedListener g;
   
   public WordNavView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -34,33 +34,33 @@ public class WordNavView
   
   private float a(int paramInt)
   {
-    return getPaddingLeft() + getWidth() / 2 - this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)) / 2.0F;
+    return getPaddingLeft() + getWidth() / 2 - this.f.measureText((String)this.b.get(paramInt)) / 2.0F;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#878B99"));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-    this.b = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().top);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new WordNavView.MySimpleGestureDetector(this, null));
+    this.f = new TextPaint();
+    this.f.setFlags(1);
+    this.f.setColor(Color.parseColor("#878B99"));
+    this.f.setTextSize(this.a);
+    this.c = Math.abs(this.f.getFontMetrics().top);
+    this.e = new GestureDetector(getContext(), new WordNavView.MySimpleGestureDetector(this, null));
   }
   
   private float b(int paramInt)
   {
-    return getPaddingTop() + getHeight() / this.jdField_a_of_type_JavaUtilArrayList.size() * (paramInt + 1) - this.b / 2.0F;
+    return getPaddingTop() + getHeight() / this.b.size() * (paramInt + 1) - this.c / 2.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.d = new HashMap();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.b.size())
     {
-      float f = b(i);
-      paramCanvas.drawText((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), a(i), f, this.jdField_a_of_type_AndroidTextTextPaint);
-      this.jdField_a_of_type_JavaUtilMap.put(Float.valueOf(f), this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      float f1 = b(i);
+      paramCanvas.drawText((String)this.b.get(i), a(i), f1, this.f);
+      this.d.put(Float.valueOf(f1), this.b.get(i));
       i += 1;
     }
     super.onDraw(paramCanvas);
@@ -69,27 +69,27 @@ public class WordNavView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     super.onTouchEvent(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.e.onTouchEvent(paramMotionEvent);
     return true;
   }
   
   public void setIndexList(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    getLayoutParams().height = (this.jdField_a_of_type_JavaUtilArrayList.size() * (int)(this.jdField_a_of_type_Float + ViewUtils.b(5.0F)));
+    this.b.clear();
+    this.b.addAll(paramArrayList);
+    getLayoutParams().height = (this.b.size() * (int)(this.a + ViewUtils.dpToPx(5.0F)));
     requestLayout();
     invalidate();
   }
   
   public void setOnTouchingWordChangedListener(WordNavView.OnTouchingWordChangedListener paramOnTouchingWordChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView$OnTouchingWordChangedListener = paramOnTouchingWordChangedListener;
+    this.g = paramOnTouchingWordChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.WordNavView
  * JD-Core Version:    0.7.0.1
  */

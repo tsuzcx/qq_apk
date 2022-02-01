@@ -23,29 +23,29 @@ class StoryVideoFileObject$1
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
+    if (paramSendResult.b == 0)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.c = paramSendResult.jdField_b_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.a = paramSendResult.c;
+      this.a.c.d = paramSendResult.d;
+      this.a.c.b = paramSendResult.f;
       this.a.b();
       StoryVideoFileObject.a(this.a, new ErrorMessage());
       return;
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    if ((paramSendResult.b == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (this.a.g.getAndIncrement() < 2))
     {
       StoryVideoFileObject.a(this.a);
       SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
       return;
     }
     this.a.b();
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    paramSendResult = new ErrorMessage(paramSendResult.b, paramSendResult.c);
     paramSendResult.extraMsg = "upload";
     StoryVideoFileObject.a(this.a, paramSendResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject.1
  * JD-Core Version:    0.7.0.1
  */

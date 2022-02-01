@@ -13,22 +13,13 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   extends PagerAdapter
   implements IBannerAdapter
 {
-  private List<MeasureGridView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<MeasureGridView> b = new ArrayList();
   
   ReadInJoyDiandianHeaderController$ViewPagerAdapter(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public int a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
-  }
-  
   public int a(int paramInt)
   {
-    int j = a();
+    int j = c();
     if (j > 1)
     {
       if (paramInt == 0) {
@@ -45,12 +36,21 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   
   void a(List<MeasureGridView> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    if (this.b.size() > 0) {
+      this.b.clear();
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController, new View[getCount()]);
+    this.b.addAll(paramList);
+    ReadInJoyDiandianHeaderController.a(this.a, new View[getCount()]);
     notifyDataSetChanged();
+  }
+  
+  public int c()
+  {
+    List localList = this.b;
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -62,14 +62,14 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
     localStringBuilder.append(paramObject);
     QLog.d("ReadInJoyDiandianHeaderController", 2, localStringBuilder.toString());
     paramViewGroup.removeView((View)paramObject);
-    if (paramInt < ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController).length) {
-      ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt] = null;
+    if (paramInt < ReadInJoyDiandianHeaderController.h(this.a).length) {
+      ReadInJoyDiandianHeaderController.h(this.a)[paramInt] = null;
     }
   }
   
   public int getCount()
   {
-    int i = a();
+    int i = c();
     if (i <= 1) {
       return i;
     }
@@ -79,7 +79,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
   public int getItemPosition(Object paramObject)
   {
     paramObject = (MeasureGridView)paramObject;
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramObject);
+    int i = this.b.indexOf(paramObject);
     if (i >= 0) {
       return i;
     }
@@ -99,7 +99,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
     ((StringBuilder)localObject1).append("  ");
     ((StringBuilder)localObject1).append(paramInt);
     QLog.d("ReadInJoyDiandianHeaderController", 2, ((StringBuilder)localObject1).toString());
-    int i = a();
+    int i = c();
     if (i == 0)
     {
       if (QLog.isColorLevel()) {
@@ -110,26 +110,26 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
     if ((i > 1) && ((paramInt == 1) || (paramInt == i) || (paramInt == i + 1))) {
       if (paramViewGroup == null)
       {
-        if (ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt] != null) {
-          return ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt];
+        if (ReadInJoyDiandianHeaderController.h(this.a)[paramInt] != null) {
+          return ReadInJoyDiandianHeaderController.h(this.a)[paramInt];
         }
       }
       else
       {
-        if ((ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt] == null) || (ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt].getParent() != null)) {
-          ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt] = ((View)instantiateItem(null, paramInt));
+        if ((ReadInJoyDiandianHeaderController.h(this.a)[paramInt] == null) || (ReadInJoyDiandianHeaderController.h(this.a)[paramInt].getParent() != null)) {
+          ReadInJoyDiandianHeaderController.h(this.a)[paramInt] = ((View)instantiateItem(null, paramInt));
         }
-        paramViewGroup.addView(ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt]);
-        return ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt];
+        paramViewGroup.addView(ReadInJoyDiandianHeaderController.h(this.a)[paramInt]);
+        return ReadInJoyDiandianHeaderController.h(this.a)[paramInt];
       }
     }
     i = a(paramInt);
-    Object localObject2 = (View)this.jdField_a_of_type_JavaUtilList.get(i);
+    Object localObject2 = (View)this.b.get(i);
     localObject1 = localObject2;
     if (((View)localObject2).getParent() != null) {
-      localObject1 = ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController, i);
+      localObject1 = ReadInJoyDiandianHeaderController.a(this.a, i);
     }
-    ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyDiandianHeaderController)[paramInt] = localObject1;
+    ReadInJoyDiandianHeaderController.h(this.a)[paramInt] = localObject1;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("childs ");
     ((StringBuilder)localObject2).append(paramInt);
@@ -147,7 +147,7 @@ public class ReadInJoyDiandianHeaderController$ViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyDiandianHeaderController.ViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

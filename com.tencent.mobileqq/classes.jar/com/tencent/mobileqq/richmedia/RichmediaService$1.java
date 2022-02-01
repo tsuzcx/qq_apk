@@ -10,14 +10,14 @@ final class RichmediaService$1
   
   public void run()
   {
-    if (RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService != null)
+    if (RichmediaService.a != null)
     {
-      ICallBack localICallBack = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
+      ICallBack localICallBack = RichmediaService.a.f;
       if (localICallBack != null) {
         try
         {
           LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
-          localICallBack.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+          localICallBack.b(this.a, this.b);
           LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
           return;
         }
@@ -38,7 +38,7 @@ final class RichmediaService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService.1
  * JD-Core Version:    0.7.0.1
  */

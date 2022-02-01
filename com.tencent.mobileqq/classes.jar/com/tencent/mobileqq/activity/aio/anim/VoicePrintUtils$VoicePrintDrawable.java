@@ -11,33 +11,33 @@ import com.tencent.qphone.base.util.QLog;
 class VoicePrintUtils$VoicePrintDrawable
   extends Drawable
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  boolean jdField_a_of_type_Boolean;
+  Paint a = new Paint(6);
+  Bitmap b;
+  Rect c;
+  int d;
+  boolean e;
   
   public void a(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
+    this.b = paramBitmap;
+    this.c = new Rect(0, 0, paramInt, paramBitmap.getHeight());
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if (this.b == null)
     {
       QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
       return;
     }
     int i = 0;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
       i = paramCanvas.save();
-      paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
+      paramCanvas.scale(-1.0F, 1.0F, this.d / 2.0F, getBounds().exactCenterY());
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean) {
+    paramCanvas.drawBitmap(this.b, this.c, getBounds(), this.a);
+    if (this.e) {
       paramCanvas.restoreToCount(i);
     }
   }
@@ -49,22 +49,22 @@ class VoicePrintUtils$VoicePrintDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.a.getAlpha())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.a.setAlpha(paramInt);
       super.invalidateSelf();
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.a.setColorFilter(paramColorFilter);
     super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintDrawable
  * JD-Core Version:    0.7.0.1
  */

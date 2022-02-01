@@ -12,17 +12,17 @@ class LebaQzoneAndPluginPart$8$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidWidgetImageSwitcher != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if ((this.b.this$0.g != null) && (this.b.this$0.y != null)) {
+      this.b.this$0.y.a(this.a);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView != null) {
-      AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView, HardCodeUtil.a(2131706088));
+    if (this.b.this$0.w != null) {
+      AccessibilityUtil.a(this.b.this$0.w, HardCodeUtil.a(2131903960));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.2
  * JD-Core Version:    0.7.0.1
  */

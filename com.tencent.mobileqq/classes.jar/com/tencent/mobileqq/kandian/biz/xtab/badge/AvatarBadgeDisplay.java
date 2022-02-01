@@ -43,26 +43,21 @@ import org.jetbrains.annotations.Nullable;
 public final class AvatarBadgeDisplay
   implements IRIJXTabBadgeDisplay<Long>
 {
-  public static final AvatarBadgeDisplay.Companion a;
-  private long jdField_a_of_type_Long;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  public static final AvatarBadgeDisplay.Companion a = new AvatarBadgeDisplay.Companion(null);
+  private final Context b;
+  private boolean c;
+  private long d;
   @Nullable
-  private AvatarBadgeDisplay.IDisplayListener jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay$IDisplayListener;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay$Companion = new AvatarBadgeDisplay.Companion(null);
-  }
+  private AvatarBadgeDisplay.IDisplayListener e;
+  private final RelativeLayout f;
   
   public AvatarBadgeDisplay(@NotNull RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    paramRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext();
+    this.f = paramRelativeLayout;
+    paramRelativeLayout = this.f.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramRelativeLayout, "badgeContainer.context");
-    this.jdField_a_of_type_AndroidContentContext = paramRelativeLayout;
-    paramRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent();
+    this.b = paramRelativeLayout;
+    paramRelativeLayout = this.f.getParent();
     if ((paramRelativeLayout instanceof ViewGroup))
     {
       paramRelativeLayout = (ViewGroup)paramRelativeLayout;
@@ -138,23 +133,14 @@ public final class AvatarBadgeDisplay
   @Nullable
   public final AvatarBadgeDisplay.IDisplayListener a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay$IDisplayListener;
-  }
-  
-  @VisibleForTesting
-  public final void a()
-  {
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376079);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
-    }
+    return this.e;
   }
   
   @VisibleForTesting
   public final void a(long paramLong, @NotNull Function2<? super Long, ? super Drawable, Unit> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    Object localObject = RIJQQAppInterfaceUtil.a();
+    Object localObject = RIJQQAppInterfaceUtil.e();
     if ((localObject instanceof QQAppInterface))
     {
       localObject = ((AppRuntime)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -162,12 +148,12 @@ public final class AvatarBadgeDisplay
       {
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null) {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).e();
         } else {
           localObject = null;
         }
         if (localObject != null) {
-          ((ReadInJoyUserInfoModule)localObject).a((List)CollectionsKt.arrayListOf(new String[] { String.valueOf(paramLong) }), 1, 1, 1, 0, false, (IReadInJoyUserInfoModule.RefreshUserInfoCallBack)new AvatarBadgeDisplay.fetchAvatar.1(this, paramFunction2));
+          ((ReadInJoyUserInfoModule)localObject).a((List)CollectionsKt.arrayListOf(new String[] { String.valueOf(paramLong) }), 1, 1, 1, 0, false, 1, (IReadInJoyUserInfoModule.RefreshUserInfoCallBack)new AvatarBadgeDisplay.fetchAvatar.1(this, paramFunction2));
         }
       }
       else
@@ -190,7 +176,7 @@ public final class AvatarBadgeDisplay
   public void a(long paramLong, boolean paramBoolean)
   {
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Long == paramLong)
+    if (this.d == paramLong)
     {
       if (QLog.isColorLevel())
       {
@@ -209,107 +195,116 @@ public final class AvatarBadgeDisplay
       localStringBuilder.append(paramLong);
       QLog.i("AvatarBadgeDisplay", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Long = paramLong;
-    if (!this.jdField_a_of_type_Boolean)
+    this.d = paramLong;
+    if (!this.c)
     {
-      this.jdField_a_of_type_Boolean = true;
-      a(this.jdField_a_of_type_Long, (Function2)new AvatarBadgeDisplay.show.1(this));
+      this.c = true;
+      a(this.d, (Function2)new AvatarBadgeDisplay.show.1(this));
       return;
     }
-    a(this.jdField_a_of_type_Long, (Function2)new AvatarBadgeDisplay.show.2(this));
+    a(this.d, (Function2)new AvatarBadgeDisplay.show.2(this));
   }
   
   @VisibleForTesting
   public final void a(@NotNull Drawable paramDrawable, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramDrawable, "drawable");
-    Object localObject1 = new RoundImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((RoundImageView)localObject1).setId(2131376078);
+    Object localObject1 = new RoundImageView(this.b);
+    ((RoundImageView)localObject1).setId(2131444280);
     ((RoundImageView)localObject1).setmRadius(LayoutAttrsKt.getDp(16), false);
     ((RoundImageView)localObject1).setImageDrawable(paramDrawable);
     Object localObject2 = new RelativeLayout.LayoutParams(LayoutAttrsKt.getDp(26), LayoutAttrsKt.getDp(26));
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
     ((RoundImageView)localObject1).setTranslationY(-LayoutAttrsKt.getDp(2));
-    paramDrawable = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772237);
+    paramDrawable = AnimationUtils.loadAnimation(this.b, 2130772303);
     if (paramBoolean)
     {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      ViewGroup localViewGroup = (ViewGroup)this.f;
       localObject1 = (View)localObject1;
       localObject2 = (ViewGroup.LayoutParams)localObject2;
       Intrinsics.checkExpressionValueIsNotNull(paramDrawable, "breathShowAnim");
       ViewGroupExtensionKt.a(localViewGroup, (View)localObject1, 0, (ViewGroup.LayoutParams)localObject2, paramDrawable);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, 0, (ViewGroup.LayoutParams)localObject2);
+    this.f.addView((View)localObject1, 0, (ViewGroup.LayoutParams)localObject2);
   }
   
   public final void a(@Nullable AvatarBadgeDisplay.IDisplayListener paramIDisplayListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay$IDisplayListener = paramIDisplayListener;
+    this.e = paramIDisplayListener;
   }
   
   @VisibleForTesting
   public final void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376078);
+    View localView = this.f.findViewById(2131444280);
     if (localView != null)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772236);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.b, 2130772302);
       if (paramBoolean)
       {
-        ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        ViewGroup localViewGroup = (ViewGroup)this.f;
         Intrinsics.checkExpressionValueIsNotNull(localAnimation, "breathHideAnim");
         ViewGroupExtensionKt.a(localViewGroup, localView, localAnimation, null);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+      this.f.removeView(localView);
     }
   }
   
   @VisibleForTesting
   public final boolean a(long paramLong)
   {
-    return (this.jdField_a_of_type_Long == paramLong) && (this.jdField_a_of_type_Boolean);
+    return (this.d == paramLong) && (this.c);
+  }
+  
+  @VisibleForTesting
+  public final void b()
+  {
+    View localView = this.f.findViewById(2131444281);
+    if (localView != null) {
+      this.f.removeView(localView);
+    }
   }
   
   @VisibleForTesting
   public final void b(boolean paramBoolean)
   {
-    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-    localView.setId(2131376079);
-    localView.setBackgroundResource(2130850766);
+    View localView = new View(this.b);
+    localView.setId(2131444281);
+    localView.setBackgroundResource(2130852588);
     Object localObject = new RelativeLayout.LayoutParams(LayoutAttrsKt.getDp(9), LayoutAttrsKt.getDp(9));
-    ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131376078);
-    ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131376078);
+    ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131444280);
+    ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131444280);
     ((RelativeLayout.LayoutParams)localObject).leftMargin = LayoutAttrsKt.getDp(-4);
     ((RelativeLayout.LayoutParams)localObject).topMargin = LayoutAttrsKt.getDp(-4);
-    Animation localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772237);
+    Animation localAnimation = AnimationUtils.loadAnimation(this.b, 2130772303);
     if (paramBoolean)
     {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      ViewGroup localViewGroup = (ViewGroup)this.f;
       localObject = (ViewGroup.LayoutParams)localObject;
       Intrinsics.checkExpressionValueIsNotNull(localAnimation, "breathShowAnim");
       ViewGroupExtensionKt.a(localViewGroup, localView, (ViewGroup.LayoutParams)localObject, localAnimation);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localView, (ViewGroup.LayoutParams)localObject);
+    this.f.addView(localView, (ViewGroup.LayoutParams)localObject);
   }
   
   public void c(boolean paramBoolean)
   {
-    AvatarBadgeDisplay.IDisplayListener localIDisplayListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay$IDisplayListener;
+    AvatarBadgeDisplay.IDisplayListener localIDisplayListener = this.e;
     if (localIDisplayListener != null) {
       localIDisplayListener.a(paramBoolean);
     }
     a(paramBoolean);
-    a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
+    b();
+    this.c = false;
+    this.d = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.badge.AvatarBadgeDisplay
  * JD-Core Version:    0.7.0.1
  */

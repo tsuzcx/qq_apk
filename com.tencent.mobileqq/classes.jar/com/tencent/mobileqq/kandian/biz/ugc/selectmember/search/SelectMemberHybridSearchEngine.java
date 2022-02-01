@@ -12,21 +12,21 @@ import java.util.List;
 public class SelectMemberHybridSearchEngine
   implements ISearchEngine<ISearchResultModel>, ISearchListener<ISearchResultModel>
 {
-  private ISearchListener<ISearchResultModel> jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
-  private List<ISearchEngine> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<ISearchEngine> a = new ArrayList();
   private List<ISearchResultModel> b = new ArrayList();
+  private ISearchListener<ISearchResultModel> c;
   
   SelectMemberHybridSearchEngine(List<ISearchEngine> paramList)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.a.addAll(paramList);
     }
   }
   
   public List<ISearchResultModel> a(SearchRequest paramSearchRequest)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       localArrayList.addAll(((ISearchEngine)localIterator.next()).a(paramSearchRequest));
     }
@@ -35,7 +35,7 @@ public class SelectMemberHybridSearchEngine
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ISearchEngine)localIterator.next()).a();
     }
@@ -44,8 +44,8 @@ public class SelectMemberHybridSearchEngine
   public void a(SearchRequest paramSearchRequest, ISearchListener<ISearchResultModel> paramISearchListener)
   {
     this.b.clear();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
-    paramISearchListener = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c = paramISearchListener;
+    paramISearchListener = this.a.iterator();
     while (paramISearchListener.hasNext()) {
       ((ISearchEngine)paramISearchListener.next()).a(paramSearchRequest, this);
     }
@@ -53,7 +53,7 @@ public class SelectMemberHybridSearchEngine
   
   public void a(List<ISearchResultModel> paramList)
   {
-    ISearchListener localISearchListener = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
+    ISearchListener localISearchListener = this.c;
     if (localISearchListener != null) {
       localISearchListener.a(paramList);
     }
@@ -62,7 +62,7 @@ public class SelectMemberHybridSearchEngine
   public void a(List<ISearchResultModel> paramList, int paramInt)
   {
     this.b.addAll(paramList);
-    paramList = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
+    paramList = this.c;
     if (paramList != null) {
       paramList.a(this.b, paramInt);
     }
@@ -70,12 +70,12 @@ public class SelectMemberHybridSearchEngine
   
   public void a(List<ISearchResultModel> paramList, SearchRespData paramSearchRespData)
   {
-    a(paramList, paramSearchRespData.a);
+    a(paramList, paramSearchRespData.b);
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ISearchEngine)localIterator.next()).b();
     }
@@ -83,7 +83,7 @@ public class SelectMemberHybridSearchEngine
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ISearchEngine)localIterator.next()).c();
     }
@@ -91,7 +91,7 @@ public class SelectMemberHybridSearchEngine
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ISearchEngine)localIterator.next()).d();
     }
@@ -99,7 +99,7 @@ public class SelectMemberHybridSearchEngine
   
   public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((ISearchEngine)localIterator.next()).e();
     }
@@ -107,7 +107,7 @@ public class SelectMemberHybridSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.search.SelectMemberHybridSearchEngine
  * JD-Core Version:    0.7.0.1
  */

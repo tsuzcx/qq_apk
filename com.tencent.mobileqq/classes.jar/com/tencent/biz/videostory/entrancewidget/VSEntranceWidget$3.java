@@ -12,11 +12,11 @@ class VSEntranceWidget$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VSEntranceWidget.a(this.a) != null) {
-      VSEntranceWidget.a(this.a).setVisibility(4);
+    if (VSEntranceWidget.c(this.a) != null) {
+      VSEntranceWidget.c(this.a).setVisibility(4);
     }
-    if (VSEntranceWidget.a(this.a) != null) {
-      VSEntranceWidget.a(this.a).setAlpha(1.0F);
+    if (VSEntranceWidget.d(this.a) != null) {
+      VSEntranceWidget.d(this.a).setAlpha(1.0F);
     }
   }
   
@@ -26,7 +26,7 @@ class VSEntranceWidget$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget.3
  * JD-Core Version:    0.7.0.1
  */

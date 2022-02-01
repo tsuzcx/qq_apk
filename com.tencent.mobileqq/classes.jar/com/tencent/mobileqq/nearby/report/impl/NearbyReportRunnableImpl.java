@@ -15,7 +15,7 @@ public class NearbyReportRunnableImpl
   
   private void reportNearbyEntryClkRed()
   {
-    int i = this.cardManager.b();
+    int i = this.cardManager.c();
     String[] arrayOfString = this.extraValues;
     if ((arrayOfString != null) && (arrayOfString.length > 0)) {
       arrayOfString[1] = String.valueOf(i);
@@ -25,7 +25,7 @@ public class NearbyReportRunnableImpl
   
   private void reportNearbyEntryExp()
   {
-    int i = this.cardManager.b();
+    int i = this.cardManager.c();
     new ReportTask(this.app).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
   
@@ -61,7 +61,7 @@ public class NearbyReportRunnableImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.report.impl.NearbyReportRunnableImpl
  * JD-Core Version:    0.7.0.1
  */

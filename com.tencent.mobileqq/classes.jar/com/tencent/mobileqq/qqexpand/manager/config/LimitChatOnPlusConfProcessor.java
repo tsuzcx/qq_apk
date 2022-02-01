@@ -16,7 +16,7 @@ public class LimitChatOnPlusConfProcessor
 {
   public static limitChatOnPlusConfBean a()
   {
-    return (limitChatOnPlusConfBean)QConfigManager.a().a(532);
+    return (limitChatOnPlusConfBean)QConfigManager.b().b(532);
   }
   
   @NonNull
@@ -64,7 +64,7 @@ public class LimitChatOnPlusConfProcessor
     }
     paramlimitChatOnPlusConfBean = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramlimitChatOnPlusConfBean instanceof QQAppInterface)) {
-      ((IExpandManager)((QQAppInterface)paramlimitChatOnPlusConfBean).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).c();
+      ((IExpandManager)((QQAppInterface)paramlimitChatOnPlusConfBean).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).M();
     }
   }
   
@@ -106,7 +106,7 @@ public class LimitChatOnPlusConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.config.LimitChatOnPlusConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import android.widget.TextView;
 public class TroopCardXingquBuluo$ViewHolder
 {
   public ImageView a;
-  public TextView a;
   public TextView b;
   public TextView c;
+  public TextView d;
 }
 
 

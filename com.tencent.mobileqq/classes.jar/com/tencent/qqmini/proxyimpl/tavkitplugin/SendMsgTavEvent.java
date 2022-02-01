@@ -21,21 +21,21 @@ public class SendMsgTavEvent
     {
       paramJSONObject = a(paramJSONObject);
       this.a = TavObjPool.a().a(paramJSONObject);
-      a(TavProxyManager.a(this.a.getClass().getName()));
+      a(TavProxyManager.b(this.a.getClass().getName()));
       return;
     }
     throw new RuntimeException("send msg but no object");
   }
   
   @Nullable
-  public Object a()
+  public Object d()
   {
     return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.SendMsgTavEvent
  * JD-Core Version:    0.7.0.1
  */

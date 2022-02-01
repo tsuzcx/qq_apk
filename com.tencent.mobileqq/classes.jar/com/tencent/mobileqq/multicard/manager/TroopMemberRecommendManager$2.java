@@ -15,59 +15,59 @@ class TroopMemberRecommendManager$2
     //   7: astore_2
     //   8: aload_0
     //   9: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
-    //   12: invokestatic 31	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   15: invokevirtual 37	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   18: invokevirtual 43	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: invokestatic 32	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:b	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   15: invokevirtual 38	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   18: invokevirtual 44	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   21: astore 4
     //   23: aload 4
     //   25: ifnull +127 -> 152
     //   28: aload 4
-    //   30: ldc 45
+    //   30: ldc 46
     //   32: iconst_1
-    //   33: ldc 47
+    //   33: ldc 48
     //   35: iconst_1
-    //   36: anewarray 49	java/lang/String
+    //   36: anewarray 50	java/lang/String
     //   39: dup
     //   40: iconst_0
     //   41: aload_0
     //   42: getfield 16	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:a	Ljava/lang/String;
     //   45: aastore
-    //   46: ldc 51
+    //   46: ldc 52
     //   48: aconst_null
-    //   49: ldc 53
+    //   49: ldc 54
     //   51: aconst_null
-    //   52: invokevirtual 59	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   55: checkcast 61	java/util/ArrayList
+    //   52: invokevirtual 60	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   55: checkcast 62	java/util/ArrayList
     //   58: astore_3
     //   59: aload_0
     //   60: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
-    //   63: invokestatic 64	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   63: invokestatic 66	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:c	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Ljava/util/concurrent/ConcurrentHashMap;
     //   66: aload_0
     //   67: getfield 16	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:a	Ljava/lang/String;
     //   70: aload_3
-    //   71: invokevirtual 70	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   71: invokevirtual 72	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   74: pop
     //   75: aload_0
     //   76: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
     //   79: aload_0
     //   80: getfield 16	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:a	Ljava/lang/String;
     //   83: iconst_1
-    //   84: invokevirtual 73	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Ljava/lang/String;Z)V
+    //   84: invokevirtual 75	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Ljava/lang/String;Z)V
     //   87: aload_0
     //   88: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
     //   91: aload_0
     //   92: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
-    //   95: invokestatic 64	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   95: invokestatic 66	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:c	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Ljava/util/concurrent/ConcurrentHashMap;
     //   98: aload_0
     //   99: getfield 16	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:a	Ljava/lang/String;
-    //   102: invokevirtual 77	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   105: checkcast 79	java/util/List
+    //   102: invokevirtual 79	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   105: checkcast 81	java/util/List
     //   108: aload_0
     //   109: getfield 16	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:a	Ljava/lang/String;
-    //   112: invokevirtual 82	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Ljava/util/List;Ljava/lang/String;)Ljava/util/Map;
+    //   112: invokevirtual 84	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Ljava/util/List;Ljava/lang/String;)Ljava/util/Map;
     //   115: astore_3
     //   116: aload 4
-    //   118: invokevirtual 85	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   118: invokevirtual 87	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   121: aload_3
     //   122: astore_2
     //   123: iconst_1
@@ -77,19 +77,19 @@ class TroopMemberRecommendManager$2
     //   129: goto +16 -> 145
     //   132: astore_3
     //   133: aload_3
-    //   134: invokevirtual 88	java/lang/Exception:printStackTrace	()V
+    //   134: invokevirtual 90	java/lang/Exception:printStackTrace	()V
     //   137: aload 4
-    //   139: invokevirtual 85	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   139: invokevirtual 87	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   142: goto +10 -> 152
     //   145: aload 4
-    //   147: invokevirtual 85	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   147: invokevirtual 87	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   150: aload_2
     //   151: athrow
     //   152: iconst_0
     //   153: istore_1
     //   154: aload_0
     //   155: getfield 14	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager$2:this$0	Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;
-    //   158: invokestatic 91	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:a	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendHandler;
+    //   158: invokestatic 94	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager:d	(Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendManager;)Lcom/tencent/mobileqq/multicard/manager/TroopMemberRecommendHandler;
     //   161: iconst_1
     //   162: iload_1
     //   163: iconst_3
@@ -106,9 +106,9 @@ class TroopMemberRecommendManager$2
     //   178: dup
     //   179: iconst_2
     //   180: iconst_2
-    //   181: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   181: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   184: aastore
-    //   185: invokevirtual 103	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   185: invokevirtual 106	com/tencent/mobileqq/multicard/manager/TroopMemberRecommendHandler:notifyUI	(IZLjava/lang/Object;)V
     //   188: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -128,7 +128,7 @@ class TroopMemberRecommendManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager.2
  * JD-Core Version:    0.7.0.1
  */

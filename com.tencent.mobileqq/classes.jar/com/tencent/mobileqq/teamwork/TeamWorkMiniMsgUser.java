@@ -12,35 +12,35 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class TeamWorkMiniMsgUser
   extends MiniMsgUser
 {
-  int jdField_a_of_type_Int = -1;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  String a = "";
+  int b = -1;
+  String c = "";
+  MiniMsgUserParam d;
+  Activity e;
   
   public TeamWorkMiniMsgUser(Activity paramActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
   {
     super(paramActivity, paramMiniMsgUserParam);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.d = paramMiniMsgUserParam;
+    this.e = paramActivity;
+    this.c = paramString2;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+    Object localObject = this.d;
     if (localObject != null)
     {
       if (((MiniMsgUserParam)localObject).actionCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+        this.d.actionCallback.onOpenMiniAIOCallback();
       }
-      localObject = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_Int;
+      localObject = this.a;
+      int i = this.b;
       if ((i != -1) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
-        MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, i, (String)localObject, this.b);
+        MiniChatActivity.a(this.e, i, (String)localObject, this.c);
         hideUnread();
       }
     }
@@ -54,7 +54,7 @@ public class TeamWorkMiniMsgUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkMiniMsgUser
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ final class GiftPackageManager$1
     try
     {
       Object localObject = new Bundle();
-      JSONObject localJSONObject = GiftPackageManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d);
+      JSONObject localJSONObject = GiftPackageManager.b(this.a, this.b, this.c, this.d, this.e, this.f);
       HttpUtil.addCookie(new Bundle());
       ((Bundle)localObject).putString("data", localJSONObject.toString());
       localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), "https://ag.qq.com/api/actionReport", "GET", (Bundle)localObject, null);
@@ -33,7 +33,7 @@ final class GiftPackageManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager.1
  * JD-Core Version:    0.7.0.1
  */

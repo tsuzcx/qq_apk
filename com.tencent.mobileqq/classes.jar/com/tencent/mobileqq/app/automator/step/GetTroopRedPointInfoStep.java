@@ -11,13 +11,13 @@ public class GetTroopRedPointInfoStep
 {
   protected int doStep()
   {
-    ((TroopRedTouchHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER)).a();
+    ((TroopRedTouchHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER)).a();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetTroopRedPointInfoStep
  * JD-Core Version:    0.7.0.1
  */

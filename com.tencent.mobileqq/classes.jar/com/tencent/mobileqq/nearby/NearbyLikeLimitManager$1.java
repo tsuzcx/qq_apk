@@ -14,28 +14,28 @@ class NearbyLikeLimitManager$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.b();
+    if (this.a) {
+      this.g.i();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.c();
+      this.g.j();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.b())
+    if (this.g.d())
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyLikeLimitManager$onDoVoteListener.a(this.jdField_a_of_type_JavaLangString, false);
-      ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+      this.g.a(Long.valueOf(this.b).longValue(), 0, 1);
+      this.c.a(this.b, false);
+      ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.d, "pay_like", this.b, this.e, "", "", "");
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
-      ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
+      this.g.a(this.f, this.e);
+      ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.d, "exp_pay", this.e);
     }
-    ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
+    ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.d, "clk_no_warm", this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyLikeLimitManager.1
  * JD-Core Version:    0.7.0.1
  */

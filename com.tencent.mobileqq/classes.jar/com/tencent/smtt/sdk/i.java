@@ -20,7 +20,7 @@ import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.export.external.proxy.X5ProxyWebViewClient;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.n;
+import com.tencent.smtt.utils.o;
 
 class i
   extends X5ProxyWebViewClient
@@ -34,12 +34,12 @@ class i
     super(paramIX5WebViewClient);
     this.b = paramWebView;
     this.a = paramWebViewClient;
-    this.a.a = this;
+    this.a.mX5Client = this;
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    super.onPageStarted(this.b.c(), 0, 0, paramString, paramBitmap);
+    super.onPageStarted(this.b.b(), 0, 0, paramString, paramBitmap);
   }
   
   public void a(String paramString)
@@ -100,10 +100,10 @@ class i
   {
     if (c == null)
     {
-      localObject = n.a();
+      localObject = o.a();
       if (localObject != null)
       {
-        ((n)localObject).a(false);
+        ((o)localObject).a(false);
         c = Boolean.toString(false);
       }
     }
@@ -119,7 +119,7 @@ class i
     {
       super.onPageFinished(paramIX5WebViewBase, paramInt1, paramInt2, paramString);
       label130:
-      WebView.d();
+      WebView.c();
       if ((!TbsShareManager.mHasQueryed) && (this.b.getContext() != null) && (TbsShareManager.isThirdPartyApp(this.b.getContext())))
       {
         TbsShareManager.mHasQueryed = true;
@@ -316,7 +316,7 @@ class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.i
  * JD-Core Version:    0.7.0.1
  */

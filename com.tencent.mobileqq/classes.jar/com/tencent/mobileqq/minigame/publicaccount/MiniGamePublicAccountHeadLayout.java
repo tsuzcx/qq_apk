@@ -25,7 +25,7 @@ public class MiniGamePublicAccountHeadLayout
   
   protected int getLayoutId()
   {
-    return 2030305282;
+    return 2030370823;
   }
   
   public boolean isPined()
@@ -40,7 +40,7 @@ public class MiniGamePublicAccountHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHeadLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ class SecurePhoneBannerManager$6
   
   public void onClick(View paramView)
   {
-    SecurePhoneBannerManager.b(this.jdField_a_of_type_ComTencentMobileqqUtilSecurePhoneBannerManager, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C8", "0X800B0C8", 0, 0, "", "", "", "");
+    SecurePhoneBannerManager.b(this.d, this.a, this.b);
+    ReportController.b(this.c, "dc00898", "", "", "0X800B0C8", "0X800B0C8", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SecurePhoneBannerManager.6
  * JD-Core Version:    0.7.0.1
  */

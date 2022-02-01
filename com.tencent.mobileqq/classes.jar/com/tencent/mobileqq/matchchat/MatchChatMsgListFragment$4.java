@@ -15,7 +15,7 @@ class MatchChatMsgListFragment$4
   public void onClick(View paramView)
   {
     ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#message_page#hidden", true, -1L, -1L, null, true, true);
-    MatchChatMsgUtil.b(this.a.a);
+    MatchChatMsgUtil.c(this.a.a);
     MatchChatMsgListFragment.a(this.a).setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }

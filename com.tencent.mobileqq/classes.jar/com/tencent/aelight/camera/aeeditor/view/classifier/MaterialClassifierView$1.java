@@ -21,15 +21,15 @@ class MaterialClassifierView$1
   {
     if (!MaterialClassifierView.a(this.a))
     {
-      paramInt1 = MaterialClassifierView.a(this.a).findFirstVisibleItemPosition();
-      paramInt1 = MetaMaterialKt.a(MaterialClassifierView.a(this.a), MaterialClassifierView.b(this.a), paramInt1);
-      MaterialClassifierView.a(this.a).a(paramInt1);
+      paramInt1 = MaterialClassifierView.b(this.a).findFirstVisibleItemPosition();
+      paramInt1 = MetaMaterialKt.a(MaterialClassifierView.c(this.a), MaterialClassifierView.d(this.a), paramInt1);
+      MaterialClassifierView.e(this.a).a(paramInt1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialClassifierView.1
  * JD-Core Version:    0.7.0.1
  */

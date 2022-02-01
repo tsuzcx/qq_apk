@@ -9,12 +9,10 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 @TargetApi(14)
 public class QQStoryConstant
 {
-  public static final Boolean a;
-  public static final String a;
-  public static boolean a;
-  public static final String b;
+  public static final String a = HardCodeUtil.a(2131897681);
+  public static final String b = HardCodeUtil.a(2131897680);
   public static final String c;
-  public static final String d;
+  public static boolean d;
   public static final String e;
   public static final String f;
   public static final String g;
@@ -33,93 +31,92 @@ public class QQStoryConstant
   public static final String t;
   public static final String u;
   public static final String v;
+  public static final String w;
+  public static final Boolean x = Boolean.valueOf(true);
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131699648);
-    b = HardCodeUtil.a(2131699647);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
     localStringBuilder.append("/tencent/qq/music/");
     c = localStringBuilder.toString();
-    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
+    d = AppSetting.b().contains("r");
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PathUtils.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(PathUtils.a);
     localStringBuilder.append("/qqstory/");
-    d = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d);
-    localStringBuilder.append("debug/");
     e = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d);
-    localStringBuilder.append("upload/");
+    localStringBuilder.append(e);
+    localStringBuilder.append("debug/");
     f = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(f);
-    localStringBuilder.append(".music/");
+    localStringBuilder.append(e);
+    localStringBuilder.append("upload/");
     g = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d);
-    localStringBuilder.append(".tmp/");
+    localStringBuilder.append(g);
+    localStringBuilder.append(".music/");
     h = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(h);
-    localStringBuilder.append("download/preload/");
+    localStringBuilder.append(e);
+    localStringBuilder.append(".tmp/");
     i = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(h);
-    localStringBuilder.append("download/mine/");
+    localStringBuilder.append(i);
+    localStringBuilder.append("download/preload/");
     j = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(h);
-    localStringBuilder.append(".tmp/");
+    localStringBuilder.append(i);
+    localStringBuilder.append("download/mine/");
     k = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("watermark/");
+    localStringBuilder.append(i);
+    localStringBuilder.append(".tmp/");
     l = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("merge/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("watermark/");
     m = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("audio/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("merge/");
     n = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("video/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("audio/");
     o = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("slideshow/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("video/");
     p = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("textfilter/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("slideshow/");
     q = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(k);
-    localStringBuilder.append("pk/result/");
+    localStringBuilder.append(l);
+    localStringBuilder.append("textfilter/");
     r = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(l);
-    localStringBuilder.append("source/");
+    localStringBuilder.append("pk/result/");
     s = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(l);
-    localStringBuilder.append("doodle/");
+    localStringBuilder.append(m);
+    localStringBuilder.append("source/");
     t = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(l);
-    localStringBuilder.append("composite/");
+    localStringBuilder.append(m);
+    localStringBuilder.append("doodle/");
     u = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(l);
-    localStringBuilder.append("download/");
+    localStringBuilder.append(m);
+    localStringBuilder.append("composite/");
     v = localStringBuilder.toString();
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(m);
+    localStringBuilder.append("download/");
+    w = localStringBuilder.toString();
   }
   
   public static String a(int paramInt)
@@ -140,7 +137,7 @@ public class QQStoryConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.app.QQStoryConstant
  * JD-Core Version:    0.7.0.1
  */

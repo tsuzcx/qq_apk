@@ -36,7 +36,7 @@ public class ReadInJoyEntityManagerFactory
   
   private void a(com.tencent.mobileqq.app.SQLiteDatabase paramSQLiteDatabase)
   {
-    String[] arrayOfString = a(paramSQLiteDatabase);
+    String[] arrayOfString = b(paramSQLiteDatabase);
     if (arrayOfString != null)
     {
       int j = arrayOfString.length;
@@ -165,7 +165,7 @@ public class ReadInJoyEntityManagerFactory
   }
   
   /* Error */
-  private String[] a(com.tencent.mobileqq.app.SQLiteDatabase paramSQLiteDatabase)
+  private String[] b(com.tencent.mobileqq.app.SQLiteDatabase paramSQLiteDatabase)
   {
     // Byte code:
     //   0: aconst_null
@@ -177,9 +177,9 @@ public class ReadInJoyEntityManagerFactory
     //   9: aconst_null
     //   10: astore 6
     //   12: aload_1
-    //   13: ldc 76
+    //   13: ldc 77
     //   15: aconst_null
-    //   16: invokevirtual 189	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   16: invokevirtual 190	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   19: astore 5
     //   21: aload 8
     //   23: astore 4
@@ -190,13 +190,13 @@ public class ReadInJoyEntityManagerFactory
     //   33: aload 8
     //   35: astore 4
     //   37: aload 5
-    //   39: invokeinterface 192 1 0
+    //   39: invokeinterface 193 1 0
     //   44: ifeq +90 -> 134
     //   47: aload 6
     //   49: astore_1
     //   50: aload 5
-    //   52: invokeinterface 196 1 0
-    //   57: anewarray 26	java/lang/String
+    //   52: invokeinterface 197 1 0
+    //   57: anewarray 27	java/lang/String
     //   60: astore 4
     //   62: iconst_0
     //   63: istore_2
@@ -206,13 +206,13 @@ public class ReadInJoyEntityManagerFactory
     //   69: iload_2
     //   70: aload 5
     //   72: iconst_0
-    //   73: invokeinterface 95 2 0
-    //   78: invokestatic 100	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   73: invokeinterface 96 2 0
+    //   78: invokestatic 101	com/tencent/mobileqq/utils/SecurityUtile:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   81: aastore
     //   82: aload 4
     //   84: astore_1
     //   85: aload 5
-    //   87: invokeinterface 91 1 0
+    //   87: invokeinterface 92 1 0
     //   92: istore_3
     //   93: iload_3
     //   94: ifne +6 -> 100
@@ -239,7 +239,7 @@ public class ReadInJoyEntityManagerFactory
     //   134: aload 5
     //   136: ifnull +10 -> 146
     //   139: aload 5
-    //   141: invokeinterface 154 1 0
+    //   141: invokeinterface 155 1 0
     //   146: aload 4
     //   148: areturn
     //   149: astore_1
@@ -254,23 +254,23 @@ public class ReadInJoyEntityManagerFactory
     //   164: aload_0
     //   165: getfield 14	com/tencent/mobileqq/kandian/glue/businesshandler/engine/ReadInJoyEntityManagerFactory:tag	Ljava/lang/String;
     //   168: iconst_1
-    //   169: ldc 198
+    //   169: ldc 199
     //   171: aload 5
-    //   173: invokestatic 65	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   173: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   176: aload_1
     //   177: astore 4
     //   179: aload 5
-    //   181: invokestatic 71	com/tencent/mobileqq/app/SQLiteOpenHelper:throwDebugException	(Ljava/lang/Exception;)V
+    //   181: invokestatic 72	com/tencent/mobileqq/app/SQLiteOpenHelper:throwDebugException	(Ljava/lang/Exception;)V
     //   184: aload_1
     //   185: ifnull +9 -> 194
     //   188: aload_1
-    //   189: invokeinterface 154 1 0
+    //   189: invokeinterface 155 1 0
     //   194: aload 6
     //   196: areturn
     //   197: aload 4
     //   199: ifnull +10 -> 209
     //   202: aload 4
-    //   204: invokeinterface 154 1 0
+    //   204: invokeinterface 155 1 0
     //   209: goto +5 -> 214
     //   212: aload_1
     //   213: athrow
@@ -304,7 +304,17 @@ public class ReadInJoyEntityManagerFactory
     //   12	21	153	java/lang/Exception
   }
   
-  public List<String> a()
+  public void a()
+  {
+    if ((this.dbHelper != null) && (this.mInnerDbHelper != null))
+    {
+      a(this.dbHelper.getWritableDatabase());
+      return;
+    }
+    QLog.d(this.tag, 2, "removeDatabases: failed. please call build first.");
+  }
+  
+  public List<String> b()
   {
     ArrayList localArrayList = new ArrayList();
     if (this.mInnerDbHelper != null)
@@ -321,16 +331,6 @@ public class ReadInJoyEntityManagerFactory
     return localArrayList;
   }
   
-  public void a()
-  {
-    if ((this.dbHelper != null) && (this.mInnerDbHelper != null))
-    {
-      a(this.dbHelper.getWritableDatabase());
-      return;
-    }
-    QLog.d(this.tag, 2, "removeDatabases: failed. please call build first.");
-  }
-  
   public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
@@ -339,7 +339,7 @@ public class ReadInJoyEntityManagerFactory
       localStringBuilder.append("readinjoy_message_node_");
       localStringBuilder.append(paramString);
       localStringBuilder.append(".db");
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 113);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), 115);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -418,7 +418,7 @@ public class ReadInJoyEntityManagerFactory
         }
         if ((!localVerifyEntity.flags.equals("readinjoy_message_node_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
         {
-          this.mInnerDbHelper.a();
+          this.mInnerDbHelper.dropAllTable();
           localVerifyEntity = new ReadInJoyEntityManagerFactory.VerifyEntity();
           localVerifyEntity.name = this.name;
           localEntityManager.persistOrReplace(localVerifyEntity);
@@ -435,7 +435,7 @@ public class ReadInJoyEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

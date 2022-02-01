@@ -9,8 +9,8 @@ import java.lang.reflect.Method;
 public class HippyJavaScriptModuleInvocationHandler
   implements InvocationHandler
 {
-  private HippyEngineContext mHippyContext;
-  private String mName;
+  private final HippyEngineContext mHippyContext;
+  private final String mName;
   
   public HippyJavaScriptModuleInvocationHandler(HippyEngineContext paramHippyEngineContext, String paramString)
   {
@@ -37,7 +37,7 @@ public class HippyJavaScriptModuleInvocationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.javascriptmodules.HippyJavaScriptModuleInvocationHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -25,18 +25,18 @@ public class TroopMemberListProcessor
   extends AbsTroopMemberListHandlerProcessor
 {
   public static long a = -1L;
-  public static ArrayList<Long> a;
+  public static ArrayList<Long> b;
   
   public void a(long paramLong, List<oidb_0x899.memberlist> paramList)
   {
-    if (jdField_a_of_type_Long == paramLong)
+    if (a == paramLong)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopMemberListProcessor", 2, "get members by playtogeter");
       }
-      Object localObject = jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = b;
       if (localObject == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        b = new ArrayList();
       } else {
         ((ArrayList)localObject).clear();
       }
@@ -47,7 +47,7 @@ public class TroopMemberListProcessor
         {
           localObject = (oidb_0x899.memberlist)paramList.get(i);
           if (((oidb_0x899.memberlist)localObject).uint64_member_uin.has()) {
-            jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get()));
+            b.add(Long.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get()));
           }
           i += 1;
         }
@@ -106,7 +106,7 @@ public class TroopMemberListProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberListProcessor
  * JD-Core Version:    0.7.0.1
  */

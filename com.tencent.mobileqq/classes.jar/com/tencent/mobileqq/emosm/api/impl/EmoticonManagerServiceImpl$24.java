@@ -37,7 +37,7 @@ class EmoticonManagerServiceImpl$24
     //   51: ldc 47
     //   53: iconst_1
     //   54: aconst_null
-    //   55: invokestatic 52	com/tencent/mobileqq/vas/updatesystem/VasUpdateUtil:a	(Lmqq/app/AppRuntime;Ljava/lang/String;ZLcom/tencent/mobileqq/vas/updatesystem/callback/CallBacker;)Lcom/google/gson/stream/JsonReader;
+    //   55: invokestatic 53	com/tencent/mobileqq/vas/updatesystem/VasUpdateUtil:b	(Lmqq/app/AppRuntime;Ljava/lang/String;ZLcom/tencent/mobileqq/vas/updatesystem/callback/CallBacker;)Lcom/google/gson/stream/JsonReader;
     //   58: astore 6
     //   60: aload 6
     //   62: ifnonnull +38 -> 100
@@ -47,31 +47,31 @@ class EmoticonManagerServiceImpl$24
     //   71: astore 5
     //   73: ldc 33
     //   75: iconst_1
-    //   76: ldc 54
+    //   76: ldc 55
     //   78: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   81: aload 6
     //   83: ifnull +16 -> 99
     //   86: aload 6
-    //   88: invokevirtual 59	com/google/gson/stream/JsonReader:close	()V
+    //   88: invokevirtual 60	com/google/gson/stream/JsonReader:close	()V
     //   91: return
     //   92: astore 4
     //   94: aload 4
-    //   96: invokevirtual 62	java/io/IOException:printStackTrace	()V
+    //   96: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   99: return
     //   100: aload 6
     //   102: astore 4
     //   104: aload 6
     //   106: astore 5
-    //   108: new 64	java/util/HashMap
+    //   108: new 65	java/util/HashMap
     //   111: dup
-    //   112: invokespecial 65	java/util/HashMap:<init>	()V
+    //   112: invokespecial 66	java/util/HashMap:<init>	()V
     //   115: astore 7
     //   117: aload 6
     //   119: astore 4
     //   121: aload 6
     //   123: astore 5
     //   125: aload 6
-    //   127: invokevirtual 68	com/google/gson/stream/JsonReader:beginObject	()V
+    //   127: invokevirtual 69	com/google/gson/stream/JsonReader:beginObject	()V
     //   130: iconst_0
     //   131: istore_1
     //   132: aload 6
@@ -79,36 +79,36 @@ class EmoticonManagerServiceImpl$24
     //   136: aload 6
     //   138: astore 5
     //   140: aload 6
-    //   142: invokevirtual 71	com/google/gson/stream/JsonReader:hasNext	()Z
+    //   142: invokevirtual 72	com/google/gson/stream/JsonReader:hasNext	()Z
     //   145: ifeq +227 -> 372
     //   148: aload 6
     //   150: astore 4
     //   152: aload 6
     //   154: astore 5
-    //   156: ldc 73
+    //   156: ldc 74
     //   158: aload 6
-    //   160: invokevirtual 77	com/google/gson/stream/JsonReader:nextName	()Ljava/lang/String;
-    //   163: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   160: invokevirtual 78	com/google/gson/stream/JsonReader:nextName	()Ljava/lang/String;
+    //   163: invokevirtual 84	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   166: ifeq +190 -> 356
     //   169: aload 6
     //   171: astore 4
     //   173: aload 6
     //   175: astore 5
     //   177: aload 6
-    //   179: invokevirtual 68	com/google/gson/stream/JsonReader:beginObject	()V
+    //   179: invokevirtual 69	com/google/gson/stream/JsonReader:beginObject	()V
     //   182: aload 6
     //   184: astore 4
     //   186: aload 6
     //   188: astore 5
     //   190: aload 6
-    //   192: invokevirtual 71	com/google/gson/stream/JsonReader:hasNext	()Z
+    //   192: invokevirtual 72	com/google/gson/stream/JsonReader:hasNext	()Z
     //   195: ifeq +143 -> 338
     //   198: aload 6
     //   200: astore 4
     //   202: aload 6
     //   204: astore 5
     //   206: aload 6
-    //   208: invokevirtual 77	com/google/gson/stream/JsonReader:nextName	()Ljava/lang/String;
+    //   208: invokevirtual 78	com/google/gson/stream/JsonReader:nextName	()Ljava/lang/String;
     //   211: astore 8
     //   213: aload 6
     //   215: astore 4
@@ -132,7 +132,7 @@ class EmoticonManagerServiceImpl$24
     //   248: aload 6
     //   250: astore 5
     //   252: aload 6
-    //   254: invokevirtual 86	com/google/gson/stream/JsonReader:beginArray	()V
+    //   254: invokevirtual 87	com/google/gson/stream/JsonReader:beginArray	()V
     //   257: iconst_0
     //   258: istore_2
     //   259: aload 6
@@ -140,14 +140,14 @@ class EmoticonManagerServiceImpl$24
     //   263: aload 6
     //   265: astore 5
     //   267: aload 6
-    //   269: invokevirtual 71	com/google/gson/stream/JsonReader:hasNext	()Z
+    //   269: invokevirtual 72	com/google/gson/stream/JsonReader:hasNext	()Z
     //   272: ifeq +50 -> 322
     //   275: aload 6
     //   277: astore 4
     //   279: aload 6
     //   281: astore 5
     //   283: aload 6
-    //   285: invokevirtual 90	com/google/gson/stream/JsonReader:nextInt	()I
+    //   285: invokevirtual 91	com/google/gson/stream/JsonReader:nextInt	()I
     //   288: istore_3
     //   289: iload_2
     //   290: iload_1
@@ -158,10 +158,10 @@ class EmoticonManagerServiceImpl$24
     //   300: astore 5
     //   302: aload 7
     //   304: aload 8
-    //   306: invokevirtual 93	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   306: invokevirtual 94	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   309: iload_3
-    //   310: invokestatic 99	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   313: invokeinterface 105 3 0
+    //   310: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   313: invokeinterface 106 3 0
     //   318: pop
     //   319: goto +283 -> 602
     //   322: aload 6
@@ -169,14 +169,14 @@ class EmoticonManagerServiceImpl$24
     //   326: aload 6
     //   328: astore 5
     //   330: aload 6
-    //   332: invokevirtual 108	com/google/gson/stream/JsonReader:endArray	()V
+    //   332: invokevirtual 109	com/google/gson/stream/JsonReader:endArray	()V
     //   335: goto -153 -> 182
     //   338: aload 6
     //   340: astore 4
     //   342: aload 6
     //   344: astore 5
     //   346: aload 6
-    //   348: invokevirtual 111	com/google/gson/stream/JsonReader:endObject	()V
+    //   348: invokevirtual 112	com/google/gson/stream/JsonReader:endObject	()V
     //   351: iconst_1
     //   352: istore_1
     //   353: goto -221 -> 132
@@ -185,14 +185,14 @@ class EmoticonManagerServiceImpl$24
     //   360: aload 6
     //   362: astore 5
     //   364: aload 6
-    //   366: invokevirtual 114	com/google/gson/stream/JsonReader:skipValue	()V
+    //   366: invokevirtual 115	com/google/gson/stream/JsonReader:skipValue	()V
     //   369: goto -237 -> 132
     //   372: aload 6
     //   374: astore 4
     //   376: aload 6
     //   378: astore 5
     //   380: aload 6
-    //   382: invokevirtual 111	com/google/gson/stream/JsonReader:endObject	()V
+    //   382: invokevirtual 112	com/google/gson/stream/JsonReader:endObject	()V
     //   385: iload_1
     //   386: ifne +38 -> 424
     //   389: aload 6
@@ -201,16 +201,16 @@ class EmoticonManagerServiceImpl$24
     //   395: astore 5
     //   397: ldc 33
     //   399: iconst_1
-    //   400: ldc 116
+    //   400: ldc 117
     //   402: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   405: aload 6
     //   407: ifnull +16 -> 423
     //   410: aload 6
-    //   412: invokevirtual 59	com/google/gson/stream/JsonReader:close	()V
+    //   412: invokevirtual 60	com/google/gson/stream/JsonReader:close	()V
     //   415: return
     //   416: astore 4
     //   418: aload 4
-    //   420: invokevirtual 62	java/io/IOException:printStackTrace	()V
+    //   420: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   423: return
     //   424: aload 6
     //   426: astore 4
@@ -218,7 +218,7 @@ class EmoticonManagerServiceImpl$24
     //   430: astore 5
     //   432: aload_0
     //   433: getfield 14	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24:this$0	Lcom/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl;
-    //   436: getfield 120	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl:uiHandler	Landroid/os/Handler;
+    //   436: getfield 121	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl:uiHandler	Landroid/os/Handler;
     //   439: ifnull +32 -> 471
     //   442: aload 6
     //   444: astore 4
@@ -226,18 +226,18 @@ class EmoticonManagerServiceImpl$24
     //   448: astore 5
     //   450: aload_0
     //   451: getfield 14	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24:this$0	Lcom/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl;
-    //   454: getfield 120	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl:uiHandler	Landroid/os/Handler;
-    //   457: new 122	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24$1
+    //   454: getfield 121	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl:uiHandler	Landroid/os/Handler;
+    //   457: new 123	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24$1
     //   460: dup
     //   461: aload_0
     //   462: aload 7
-    //   464: invokespecial 125	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24$1:<init>	(Lcom/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24;Ljava/util/Map;)V
-    //   467: invokevirtual 131	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   464: invokespecial 126	com/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24$1:<init>	(Lcom/tencent/mobileqq/emosm/api/impl/EmoticonManagerServiceImpl$24;Ljava/util/Map;)V
+    //   467: invokevirtual 132	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   470: pop
     //   471: aload 6
     //   473: ifnull +99 -> 572
     //   476: aload 6
-    //   478: invokevirtual 59	com/google/gson/stream/JsonReader:close	()V
+    //   478: invokevirtual 60	com/google/gson/stream/JsonReader:close	()V
     //   481: return
     //   482: astore 5
     //   484: goto +89 -> 573
@@ -248,47 +248,47 @@ class EmoticonManagerServiceImpl$24
     //   496: ifeq +58 -> 554
     //   499: aload 5
     //   501: astore 4
-    //   503: new 133	java/lang/StringBuilder
+    //   503: new 134	java/lang/StringBuilder
     //   506: dup
-    //   507: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   507: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   510: astore 7
     //   512: aload 5
     //   514: astore 4
     //   516: aload 7
-    //   518: ldc 136
-    //   520: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: ldc 137
+    //   520: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   523: pop
     //   524: aload 5
     //   526: astore 4
     //   528: aload 7
     //   530: aload 6
-    //   532: invokevirtual 143	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   535: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: invokevirtual 144	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   535: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   538: pop
     //   539: aload 5
     //   541: astore 4
     //   543: ldc 33
     //   545: iconst_2
     //   546: aload 7
-    //   548: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   551: invokestatic 149	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   548: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   551: invokestatic 150	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   554: aload 5
     //   556: ifnull +16 -> 572
     //   559: aload 5
-    //   561: invokevirtual 59	com/google/gson/stream/JsonReader:close	()V
+    //   561: invokevirtual 60	com/google/gson/stream/JsonReader:close	()V
     //   564: return
     //   565: astore 4
     //   567: aload 4
-    //   569: invokevirtual 62	java/io/IOException:printStackTrace	()V
+    //   569: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   572: return
     //   573: aload 4
     //   575: ifnull +18 -> 593
     //   578: aload 4
-    //   580: invokevirtual 59	com/google/gson/stream/JsonReader:close	()V
+    //   580: invokevirtual 60	com/google/gson/stream/JsonReader:close	()V
     //   583: goto +10 -> 593
     //   586: astore 4
     //   588: aload 4
-    //   590: invokevirtual 62	java/io/IOException:printStackTrace	()V
+    //   590: invokevirtual 63	java/io/IOException:printStackTrace	()V
     //   593: goto +6 -> 599
     //   596: aload 5
     //   598: athrow
@@ -381,7 +381,7 @@ class EmoticonManagerServiceImpl$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.24
  * JD-Core Version:    0.7.0.1
  */

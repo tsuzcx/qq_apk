@@ -14,7 +14,7 @@ public class RelativeLayoutModel
     super(paramString, paramView);
   }
   
-  private int b(String paramString)
+  private int a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -43,7 +43,7 @@ public class RelativeLayoutModel
   protected void a(String paramString1, String paramString2)
   {
     super.a(paramString1, paramString2);
-    if (!(this.a instanceof RelativeLayout)) {}
+    if (!(this.h instanceof RelativeLayout)) {}
   }
   
   protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
@@ -52,7 +52,7 @@ public class RelativeLayoutModel
     paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
     if ("gravity".equals(paramString1))
     {
-      paramLayoutParams.addRule(b(paramString2));
+      paramLayoutParams.addRule(a(paramString2));
       return;
     }
     if ("relative".equals(paramString1))
@@ -75,7 +75,7 @@ public class RelativeLayoutModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.RelativeLayoutModel
  * JD-Core Version:    0.7.0.1
  */

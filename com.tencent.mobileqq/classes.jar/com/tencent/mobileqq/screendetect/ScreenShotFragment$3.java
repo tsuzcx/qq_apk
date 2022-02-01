@@ -16,13 +16,13 @@ class ScreenShotFragment$3
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onApplyWindowInsets current is liuhai style!");
     }
-    ScreenShotFragment.b(this.a);
+    ScreenShotFragment.c(this.a);
     return ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.3
  * JD-Core Version:    0.7.0.1
  */

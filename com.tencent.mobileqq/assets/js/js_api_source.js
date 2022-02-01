@@ -29,10 +29,12 @@
    var S = Array.prototype.slice;
    var ua = navigator.userAgent;
 
+   /**
+    * 慎用，依赖业务方ua
+    */
    function isAndroid() {
       return /android/i.test(ua) ? true : false;
    }
-
 
    /**
     * 异步回调处理函数
@@ -140,7 +142,7 @@
    /**
     * 注册公共方法，注册js api句柄
     */
-   if (isAndroid() && typeof context[publicName] == "undefined" && !context[publicName]) {
+   if (typeof context[publicName] == "undefined" && !context[publicName]) {
       declaredPublicMethods.forEach(function(d) {
          T[d] = function() {
                 return bridgeCall.apply(T, [d].concat(S.call(arguments, 0)));
@@ -148,8 +150,8 @@
       });
 
       context[publicName] = T;
+      context[publicName].hasInject = true;
    }
-   window[publicName].hasInject = true;
 
    var readyEvent = new Event('onDtJsReporterReady');
    document.dispatchEvent(readyEvent);

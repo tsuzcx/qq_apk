@@ -13,7 +13,7 @@ import okhttp3.ResponseBody;
 class UploaderProxyImpl$1$1
   implements Callback
 {
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private volatile boolean b = false;
   
   UploaderProxyImpl$1$1(UploaderProxyImpl.1 param1) {}
   
@@ -21,31 +21,31 @@ class UploaderProxyImpl$1$1
   {
     paramCall = new StringBuilder();
     paramCall.append("httpConnect err url:");
-    paramCall.append(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
+    paramCall.append(this.a.a);
     QLog.e("UploaderProxyImpl", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage())) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(-5, "download error:cancel");
+      this.a.g.onUploadFailed(-5, "download error:cancel");
     } else {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(HttpUtil.a(paramIOException, -1), "request error:network");
+      this.a.g.onUploadFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
-    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
+    this.a.this$0.a.remove(this.a.a);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     int i = paramResponse.code();
     paramCall = paramResponse.headers().toMultimap();
-    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadHeadersReceived(i, paramCall);
-    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
-    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
+    this.a.g.onUploadHeadersReceived(i, paramCall);
+    this.a.g.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
+    this.a.this$0.a.remove(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

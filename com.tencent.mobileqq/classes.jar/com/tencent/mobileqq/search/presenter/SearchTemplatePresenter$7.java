@@ -25,16 +25,16 @@ class SearchTemplatePresenter$7
   public void onClick(View paramView)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SearchUtils.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem.a.jdField_a_of_type_JavaLangString);
-    if (SearchUtils.b.containsKey(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem))
+    SearchUtils.a(localQQAppInterface, this.a, this.b.a.c);
+    if (SearchUtils.l.containsKey(this.b))
     {
-      Object localObject1 = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem);
+      Object localObject1 = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this.b);
       Object localObject2 = new JSONObject();
       try
       {
         ((JSONObject)localObject2).put("project", UniteSearchReportController.a());
         ((JSONObject)localObject2).put("event_src", "client");
-        ((JSONObject)localObject2).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_Int);
+        ((JSONObject)localObject2).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject1).c);
         ((JSONObject)localObject2).put("get_src", "web");
       }
       catch (JSONException localJSONException)
@@ -46,12 +46,12 @@ class SearchTemplatePresenter$7
       }
       ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item");
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_Long);
+      localStringBuilder.append(((SearchUtils.ObjectItemInfo)localObject1).b);
       localStringBuilder.append("");
-      localObject1 = localReportModelDC02528.obj1(localStringBuilder.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject1).b).ver1(((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateUniversalItem.c)).ver7(((JSONObject)localObject2).toString());
+      localObject1 = localReportModelDC02528.obj1(localStringBuilder.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject1).e).ver1(((SearchUtils.ObjectItemInfo)localObject1).a).ver2(UniteSearchReportController.a(this.b.p)).ver7(((JSONObject)localObject2).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localQQAppInterface.getCurrentAccountUin());
-      ((StringBuilder)localObject2).append(SearchUtils.d);
+      ((StringBuilder)localObject2).append(SearchUtils.j);
       UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject2).toString()));
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -59,7 +59,7 @@ class SearchTemplatePresenter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchTemplatePresenter.7
  * JD-Core Version:    0.7.0.1
  */

@@ -38,14 +38,14 @@ public class ComponentCenterTopicTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560159, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365056));
-    this.b = ((TextView)findViewById(2131365517));
+    LayoutInflater.from(paramContext).inflate(2131626206, this, true);
+    this.a = ((TextView)findViewById(2131431189));
+    this.b = ((TextView)findViewById(2131431733));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.c.a(paramCellListener);
   }
   
   public void a(Object paramObject)
@@ -53,19 +53,19 @@ public class ComponentCenterTopicTitle
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
-      paramObject = paramObject.a();
-      if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null) && (paramObject.mSocialFeedInfo.a.a != null) && (!paramObject.mSocialFeedInfo.a.a.isEmpty()))
+      this.c.a(paramObject);
+      paramObject = paramObject.k();
+      if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.v != null) && (paramObject.mSocialFeedInfo.v.g != null) && (!paramObject.mSocialFeedInfo.v.g.isEmpty()))
       {
-        paramObject = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject.mSocialFeedInfo.a.a.get(0);
+        paramObject = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject.mSocialFeedInfo.v.g.get(0);
         Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramObject.c);
-        ((StringBuilder)localObject).append(paramObject.a);
+        ((StringBuilder)localObject).append(paramObject.d);
+        ((StringBuilder)localObject).append(paramObject.b);
         localObject = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-        if (paramObject.b > 0)
+        this.a.setText((CharSequence)localObject);
+        if (paramObject.e > 0)
         {
-          paramObject = String.format("- %s人正在参与 -", new Object[] { ReadInJoyHelper.a(paramObject.b) });
+          paramObject = String.format("- %s人正在参与 -", new Object[] { ReadInJoyHelper.c(paramObject.e) });
           this.b.setText(paramObject);
           this.b.setVisibility(0);
         }
@@ -84,7 +84,7 @@ public class ComponentCenterTopicTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentCenterTopicTitle
  * JD-Core Version:    0.7.0.1
  */

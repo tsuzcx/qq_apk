@@ -36,28 +36,26 @@ import java.util.Set;
 public class LinkMessageResultAdapter
   extends BaseMessageResultAdapter
 {
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
-  protected List<MessageItem> a;
-  public Set<Long> a;
-  private List<TroopLinkElement> c;
+  Object a = new Object();
+  protected List<MessageItem> b = new ArrayList();
+  public Set<Long> c = new HashSet();
+  private List<TroopLinkElement> m;
+  private SimpleDateFormat n = new SimpleDateFormat("M月d日");
   
   public LinkMessageResultAdapter(Context paramContext, MqqWeakReferenceHandler paramMqqWeakReferenceHandler, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramMqqWeakReferenceHandler, paramSessionInfo, paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
   
   ChatHistorySearchData a(SessionInfo paramSessionInfo, String paramString)
   {
     paramSessionInfo = new ChatHistorySearchData();
     paramSessionInfo.mSearchData1 = new ArrayList();
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       TroopLinkElement localTroopLinkElement = (TroopLinkElement)localIterator.next();
-      MessageForText localMessageForText = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), localTroopLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localTroopLinkElement.description());
+      MessageForText localMessageForText = MessageRecordFactory.a(this.h, this.h.getCurrentUin(), localTroopLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localTroopLinkElement.description());
       localMessageForText.msgData = GroupUtil.a(localTroopLinkElement);
       localMessageForText.shmsgseq = Long.parseLong(localTroopLinkElement.msgSeq);
       if (localMessageForText.msg.contains(paramString)) {
@@ -70,7 +68,7 @@ public class LinkMessageResultAdapter
   
   public void a()
   {
-    this.b.clear();
+    this.d.clear();
     notifyDataSetChanged();
   }
   
@@ -81,7 +79,7 @@ public class LinkMessageResultAdapter
   
   public void a(List<TroopLinkElement> paramList)
   {
-    this.c = paramList;
+    this.m = paramList;
   }
   
   public void a(List<MessageItem> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -108,12 +106,12 @@ public class LinkMessageResultAdapter
     }
     if ((paramInt1 == 1) && (paramInt2 == 0))
     {
-      this.b = paramList;
+      this.d = paramList;
       return;
     }
     if ((paramInt1 == 2) && (paramInt2 == 0))
     {
-      this.b.addAll(paramList);
+      this.d.addAll(paramList);
       return;
     }
     if ((paramInt1 == 4) && (paramList != null) && (paramList.size() != 0))
@@ -121,11 +119,11 @@ public class LinkMessageResultAdapter
       if (paramInt2 != 1) {
         return;
       }
-      if ((this.b.size() > 0) && (paramList.size() > 0))
+      if ((this.d.size() > 0) && (paramList.size() > 0))
       {
         localObject = (MessageItem)paramList.get(0);
-        MessageItem localMessageItem = (MessageItem)this.b.get(this.b.size() - 1);
-        if (((MessageItem)localObject).a.time > localMessageItem.a.time)
+        MessageItem localMessageItem = (MessageItem)this.d.get(this.d.size() - 1);
+        if (((MessageItem)localObject).b.time > localMessageItem.b.time)
         {
           if (QLog.isColorLevel()) {
             QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
@@ -133,13 +131,13 @@ public class LinkMessageResultAdapter
           return;
         }
       }
-      this.b.addAll(paramList);
+      this.d.addAll(paramList);
     }
   }
   
   public void a(List<MessageItem> paramList, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if (QLog.isColorLevel()) {
       QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
     }
@@ -160,8 +158,8 @@ public class LinkMessageResultAdapter
         localStringBuilder.append(paramBoolean);
         QLog.d("LinkMessageResultAdapter", 2, localStringBuilder.toString());
       }
-      this.b.clear();
-      this.b.addAll(paramList);
+      this.d.clear();
+      this.d.addAll(paramList);
     }
   }
   
@@ -171,18 +169,18 @@ public class LinkMessageResultAdapter
     BaseMessageResultAdapter.MessageHolder localMessageHolder;
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559335, null);
+      paramView = View.inflate(this.e, 2131625301, null);
       localMessageHolder = new BaseMessageResultAdapter.MessageHolder();
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378886));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365535));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      localMessageHolder.b = ((ColorNickTextView)paramView.findViewById(2131447587));
+      localMessageHolder.c = ((TextView)paramView.findViewById(2131431754));
+      localMessageHolder.a = ((ImageView)paramView.findViewById(2131435219));
       paramView.setTag(localMessageHolder);
     }
     else
     {
       localMessageHolder = (BaseMessageResultAdapter.MessageHolder)paramView.getTag();
     }
-    Object localObject1 = localMessageItem.a;
+    Object localObject1 = localMessageItem.b;
     TroopLinkElement localTroopLinkElement = new TroopLinkElement();
     try
     {
@@ -196,15 +194,15 @@ public class LinkMessageResultAdapter
         localObject1 = localTroopLinkElement.uin;
       }
       localObject2 = localMessageItem.a(localTroopLinkElement.title, -11353092);
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject2);
+      localMessageHolder.b.setText((CharSequence)localObject2);
       localObject2 = new Date(Long.parseLong(localTroopLinkElement.timeSecond) * 1000L);
-      localObject2 = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject2);
-      localObject1 = String.format(HardCodeUtil.a(2131706196), new Object[] { localObject2, localObject1 });
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageItem.a((String)localObject1, -11353092));
+      localObject2 = this.n.format((Date)localObject2);
+      localObject1 = String.format(HardCodeUtil.a(2131904064), new Object[] { localObject2, localObject1 });
+      localMessageHolder.c.setText(localMessageItem.a((String)localObject1, -11353092));
       if (!TextUtils.isEmpty(localTroopLinkElement.iconUrl)) {
-        LinkAdapter.a(localMessageHolder.jdField_a_of_type_AndroidWidgetImageView, localTroopLinkElement.iconUrl);
+        LinkAdapter.a(localMessageHolder.a, localTroopLinkElement.iconUrl);
       } else {
-        localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850832));
+        localMessageHolder.a.setImageDrawable(this.e.getResources().getDrawable(2130852667));
       }
     }
     catch (Exception localException)
@@ -218,7 +216,7 @@ public class LinkMessageResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

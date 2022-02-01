@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.tencent.aelight.camera.ae.biz.circle.AECircleAutoTemplateMidPageFragment;
 import com.tencent.aelight.camera.aeeditor.arch.AEEditorBaseFragment;
 import com.tencent.aelight.camera.aeeditor.arch.IAEEditor;
 import com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment;
@@ -21,22 +22,22 @@ import java.util.Set;
 public class AEEditorModuleManager
   implements IAEEditor
 {
-  private static final String jdField_a_of_type_JavaLangString = "AEEditorModuleManager";
-  private FragmentManager jdField_a_of_type_AndroidxFragmentAppFragmentManager;
-  private HashMap<Class<? extends AEEditorBaseFragment>, AEEditorBaseFragment> jdField_a_of_type_JavaUtilHashMap;
+  private static final String a = "AEEditorModuleManager";
+  private FragmentManager b;
+  private HashMap<Class<? extends AEEditorBaseFragment>, AEEditorBaseFragment> c;
   
   public AEEditorModuleManager(FragmentManager paramFragmentManager)
   {
-    this.jdField_a_of_type_AndroidxFragmentAppFragmentManager = paramFragmentManager;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.b = paramFragmentManager;
+    this.c = new HashMap();
   }
   
   private void a(AEEditorBaseFragment paramAEEditorBaseFragment, Class<? extends AEEditorBaseFragment> paramClass, String paramString, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
     AEEditorBaseFragment localAEEditorBaseFragment;
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass)) && (this.jdField_a_of_type_JavaUtilHashMap.get(paramClass) != null))
+    if ((this.c.containsKey(paramClass)) && (this.c.get(paramClass) != null))
     {
-      localAEEditorBaseFragment = (AEEditorBaseFragment)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass);
+      localAEEditorBaseFragment = (AEEditorBaseFragment)this.c.get(paramClass);
       localAEEditorBaseFragment.a(this);
     }
     try
@@ -48,10 +49,10 @@ public class AEEditorModuleManager
       } else {
         localAEEditorBaseFragment.getArguments().putAll(paramBundle);
       }
-      localAEEditorBaseFragment.jdField_a_of_type_JavaLangString = paramString;
-      paramBundle = this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.beginTransaction();
+      localAEEditorBaseFragment.b = paramString;
+      paramBundle = this.b.beginTransaction();
       paramString = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Iterator localIterator = this.c.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -64,21 +65,21 @@ public class AEEditorModuleManager
       if ((paramBoolean1) && (paramAEEditorBaseFragment != null))
       {
         if (paramString != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+          this.c.remove(paramString);
         }
         paramBundle.remove(paramAEEditorBaseFragment);
       }
-      if (this.jdField_a_of_type_AndroidxFragmentAppFragmentManager.findFragmentByTag(paramClass.getName()) == null) {
-        paramBundle.add(2064121931, localAEEditorBaseFragment, paramClass.getName()).commit();
+      if (this.b.findFragmentByTag(paramClass.getName()) == null) {
+        paramBundle.add(2063990865, localAEEditorBaseFragment, paramClass.getName()).commit();
       } else {
         paramBundle.show(localAEEditorBaseFragment).commit();
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass, localAEEditorBaseFragment);
+      this.c.put(paramClass, localAEEditorBaseFragment);
       return;
     }
     catch (InstantiationException paramAEEditorBaseFragment)
     {
-      paramClass = jdField_a_of_type_JavaLangString;
+      paramClass = a;
       paramString = new StringBuilder();
       paramString.append("replaceFragment: ");
       paramString.append(Log.getStackTraceString(paramAEEditorBaseFragment));
@@ -87,7 +88,7 @@ public class AEEditorModuleManager
     }
     catch (IllegalAccessException paramAEEditorBaseFragment)
     {
-      paramClass = jdField_a_of_type_JavaLangString;
+      paramClass = a;
       paramString = new StringBuilder();
       paramString.append("replaceFragment: ");
       paramString.append(Log.getStackTraceString(paramAEEditorBaseFragment));
@@ -102,7 +103,7 @@ public class AEEditorModuleManager
   
   public AEEditorBaseFragment a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -141,58 +142,59 @@ public class AEEditorModuleManager
     {
       bool1 = bool2;
       if (paramBoolean) {
-        bool1 = false | localAEEditorBaseFragment.a();
+        bool1 = false | localAEEditorBaseFragment.c();
       }
     }
     if (!bool1) {
       try
       {
-        localAEEditorBaseFragment.a();
-        String str = localAEEditorBaseFragment.jdField_a_of_type_JavaLangString;
+        localAEEditorBaseFragment.d();
+        String str = localAEEditorBaseFragment.b;
         if (str == null)
         {
-          AEQLog.b(jdField_a_of_type_JavaLangString, "goBack finish activity");
+          AEQLog.b(a, "goBack finish activity");
           b(paramActivity);
           paramActivity.finish();
           return;
         }
-        paramBoolean = localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorVideoEdit");
+        paramBoolean = localAEEditorBaseFragment.b.equals("AEEditorVideoEdit");
         if ((paramBoolean) && (localAEEditorBaseFragment.a().equals("AEEditorMultiCutFragment")))
         {
           b(null, new Bundle(localAEEditorBaseFragment.getArguments()));
           return;
         }
-        if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorImageEdit")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
+        if ((localAEEditorBaseFragment.b.equals("AEEditorImageEdit")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
         {
           a(null, new Bundle(localAEEditorBaseFragment.getArguments()));
           return;
         }
-        if ((localAEEditorBaseFragment.jdField_a_of_type_JavaLangString.equals("AEEditorMultiCutFragment")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
+        if ((localAEEditorBaseFragment.b.equals("AEEditorMultiCutFragment")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
         {
-          AEQLog.b(jdField_a_of_type_JavaLangString, "goBack finish activity");
+          AEQLog.b(a, "goBack finish activity");
           b(paramActivity);
           paramActivity.finish();
+          return;
+        }
+        if ((localAEEditorBaseFragment.b.equals("AutoTemplateMidPage")) && (localAEEditorBaseFragment.a().equals("AEEditorVideoEdit")))
+        {
+          AEQLog.b(a, "back to auto template mid page");
+          c(null, new Bundle(localAEEditorBaseFragment.getArguments()));
           return;
         }
       }
       catch (Throwable paramActivity)
       {
-        AEQLog.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramActivity));
+        AEQLog.d(a, Log.getStackTraceString(paramActivity));
       }
     }
   }
   
   public void a(Bundle paramBundle)
   {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "enter");
-    if (AEEditorLauncher.a(paramBundle))
-    {
-      a(null, paramBundle);
-      return;
-    }
+    AEQLog.b(a, "enter");
     if (AEEditorLauncher.b(paramBundle))
     {
-      b(null, paramBundle);
+      a(null, paramBundle);
       return;
     }
     if (AEEditorLauncher.c(paramBundle))
@@ -200,12 +202,22 @@ public class AEEditorModuleManager
       b(null, paramBundle);
       return;
     }
+    if (AEEditorLauncher.d(paramBundle))
+    {
+      b(null, paramBundle);
+      return;
+    }
+    if (AEEditorLauncher.a(paramBundle))
+    {
+      c(null, paramBundle);
+      return;
+    }
     throw new RuntimeException("invalid editor type");
   }
   
   public void a(AEEditorBaseFragment paramAEEditorBaseFragment, String paramString, Bundle paramBundle)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gotoMultiCutEditModule from");
     localStringBuilder.append(paramString);
@@ -215,7 +227,7 @@ public class AEEditorModuleManager
   
   public void a(String paramString, Bundle paramBundle)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gotoImageEditModule from ");
     localStringBuilder.append(paramString);
@@ -241,17 +253,27 @@ public class AEEditorModuleManager
   
   public void b(String paramString, Bundle paramBundle)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gotoVideoEditModule from ");
     localStringBuilder.append(paramString);
     AEQLog.b(str, localStringBuilder.toString());
     a(AEEditorVideoEditFragment.class, paramString, paramBundle);
   }
+  
+  public void c(String paramString, Bundle paramBundle)
+  {
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gotoAutoTemplateMidPage from ");
+    localStringBuilder.append(paramString);
+    AEQLog.b(str, localStringBuilder.toString());
+    a(AECircleAutoTemplateMidPageFragment.class, paramString, paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.AEEditorModuleManager
  * JD-Core Version:    0.7.0.1
  */

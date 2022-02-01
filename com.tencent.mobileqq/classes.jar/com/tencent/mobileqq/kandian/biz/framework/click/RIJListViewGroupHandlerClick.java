@@ -41,11 +41,10 @@ import com.tencent.mobileqq.kandian.biz.common.RIJMiniProgramUtils;
 import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyChannelActivity;
 import com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentVerticalSmallVideo;
@@ -105,30 +104,25 @@ public class RIJListViewGroupHandlerClick
   {
     BaseArticleInfo localBaseArticleInfo = new BaseArticleInfo();
     localBaseArticleInfo.mChannelID = paramAbsBaseArticleInfo.mChannelID;
-    NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-    localBaseArticleInfo.mStrategyId = localPackArticleInfo.jdField_a_of_type_Int;
-    localBaseArticleInfo.mAlgorithmID = localPackArticleInfo.jdField_b_of_type_Long;
-    localBaseArticleInfo.mTitle = localPackArticleInfo.jdField_a_of_type_JavaLangString;
-    localBaseArticleInfo.mFirstPagePicUrl = localPackArticleInfo.jdField_c_of_type_JavaLangString;
-    localBaseArticleInfo.mArticleContentUrl = localPackArticleInfo.jdField_d_of_type_JavaLangString;
-    localBaseArticleInfo.mArticleID = localPackArticleInfo.jdField_a_of_type_Long;
-    localBaseArticleInfo.mSubscribeID = localPackArticleInfo.jdField_e_of_type_JavaLangString;
-    localBaseArticleInfo.mSubscribeName = localPackArticleInfo.jdField_f_of_type_JavaLangString;
-    localBaseArticleInfo.innerUniqueID = localPackArticleInfo.jdField_g_of_type_JavaLangString;
+    NewPolymericInfo.PackArticleInfo localPackArticleInfo = (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.p.get(0);
+    localBaseArticleInfo.mStrategyId = localPackArticleInfo.h;
+    localBaseArticleInfo.mAlgorithmID = localPackArticleInfo.i;
+    localBaseArticleInfo.mTitle = localPackArticleInfo.b;
+    localBaseArticleInfo.mFirstPagePicUrl = localPackArticleInfo.d;
+    localBaseArticleInfo.mArticleContentUrl = localPackArticleInfo.e;
+    localBaseArticleInfo.mArticleID = localPackArticleInfo.a;
+    localBaseArticleInfo.mSubscribeID = localPackArticleInfo.f;
+    localBaseArticleInfo.mSubscribeName = localPackArticleInfo.g;
+    localBaseArticleInfo.innerUniqueID = localPackArticleInfo.l;
     localBaseArticleInfo.mNewPolymericInfo = paramAbsBaseArticleInfo.mNewPolymericInfo;
     return localBaseArticleInfo;
-  }
-  
-  public static void a(Context paramContext, BaseAdapter paramBaseAdapter, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    a(paramContext, paramBaseAdapter, paramAbsBaseArticleInfo, true, paramInt1, paramInt2, paramBoolean, 1);
   }
   
   public static void a(Context paramContext, BaseAdapter paramBaseAdapter, AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, int paramInt3)
   {
     Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
     localIntent.putExtra("channel_id", 56);
-    localIntent.putExtra("channel_name", HardCodeUtil.a(2131713003));
+    localIntent.putExtra("channel_name", HardCodeUtil.a(2131910567));
     localIntent.putExtra("channel_type", 3);
     localIntent.putExtra("channel_from", paramInt3);
     localIntent.putExtra("is_channel_activity", true);
@@ -138,7 +132,7 @@ public class RIJListViewGroupHandlerClick
     localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_HIDE_REFRESH_HEADER", true);
     localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_IS_UGC_VIDEO", RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo) ^ true);
     localIntent.putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_INFO", paramAbsBaseArticleInfo);
-    paramInt3 = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
+    paramInt3 = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
     if ((paramBoolean1) && ((paramInt3 == 6) || (paramInt3 == 28) || (paramInt3 == 71)))
     {
       localIntent.putExtra("is_need_show_animation_translate", true);
@@ -154,16 +148,16 @@ public class RIJListViewGroupHandlerClick
       paramBaseAdapter.notifyDataSetChanged();
     }
     paramContext.startActivity(localIntent);
-    VideoReporter.a.put(ReadInJoyChannelActivity.class, VideoReporter.b());
+    VideoReporter.c.put(ReadInJoyChannelActivity.class, VideoReporter.b());
     VideoVolumeControl.getInstance().setMute(false, "jumpFromKandianFeed", 1);
   }
   
   private void a(View paramView, int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
     if ((paramView instanceof ProteusItemView)) {
-      a((ProteusItemView)paramView, paramBuilder.a());
+      a((ProteusItemView)paramView, paramBuilder.e());
     } else if ((paramView instanceof LinearLayout)) {
-      a((LinearLayout)paramView, paramBuilder.a());
+      a((LinearLayout)paramView, paramBuilder.e());
     }
     a(paramAbsBaseArticleInfo, paramView, paramView.getTop(), paramView.getLeft(), true, paramInt, paramBuilder);
   }
@@ -172,7 +166,7 @@ public class RIJListViewGroupHandlerClick
   {
     if (a(paramAbsBaseArticleInfo, paramView))
     {
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.b());
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.f());
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit Gallery feeds");
     }
     else
@@ -180,10 +174,10 @@ public class RIJListViewGroupHandlerClick
       b(paramAbsBaseArticleInfo, paramInt - 1, paramBuilder);
     }
     ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
-    if (paramBuilder.a() != null) {}
+    if (paramBuilder.d() != null) {}
     try
     {
-      if (!TextUtils.isEmpty(ViolaAccessHelper.c(paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8())))
+      if (!TextUtils.isEmpty(ViolaAccessHelper.f(paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8())))
       {
         paramView = paramHandler;
         if (paramHandler == null) {
@@ -192,7 +186,7 @@ public class RIJListViewGroupHandlerClick
         paramView.postDelayed(new RIJListViewGroupHandlerClick.1(this, paramBuilder), 2000L);
         return;
       }
-      paramBuilder.a().notifyDataSetChanged();
+      paramBuilder.d().notifyDataSetChanged();
       return;
     }
     catch (Exception paramView)
@@ -200,24 +194,24 @@ public class RIJListViewGroupHandlerClick
       label134:
       break label134;
     }
-    paramBuilder.a().notifyDataSetChanged();
+    paramBuilder.d().notifyDataSetChanged();
   }
   
   private void a(View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    if (VideoFeedsHelper.a(paramAbsBaseArticleInfo, paramBuilder.a())) {
+    if (VideoFeedsHelper.a(paramAbsBaseArticleInfo, paramBuilder.e())) {
       return;
     }
-    int i = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
+    int i = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
     if ((i != 23) && (i != 26) && (i != 56) && (i != 59) && (i != 19) && (i != 17) && (i != 11) && (i != 28))
     {
-      i = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
-      if (a(paramAbsBaseArticleInfo, i))
+      i = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
+      if (b(paramAbsBaseArticleInfo, i))
       {
         a(paramAbsBaseArticleInfo, paramBuilder, i);
         return;
       }
-      if (a(paramAbsBaseArticleInfo)) {
+      if (b(paramAbsBaseArticleInfo)) {
         c(paramAbsBaseArticleInfo, paramBuilder);
       }
       return;
@@ -227,10 +221,10 @@ public class RIJListViewGroupHandlerClick
   
   private void a(LinearLayout paramLinearLayout, Activity paramActivity)
   {
-    paramLinearLayout = (TextView)paramLinearLayout.findViewById(2131365056);
+    paramLinearLayout = (TextView)paramLinearLayout.findViewById(2131431189);
     if (paramLinearLayout != null)
     {
-      paramLinearLayout.setTextColor(paramActivity.getResources().getColor(2131166508));
+      paramLinearLayout.setTextColor(paramActivity.getResources().getColor(2131167365));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.videoanimation", 2, " change ui state after readed");
       }
@@ -239,10 +233,10 @@ public class RIJListViewGroupHandlerClick
   
   private void a(ProteusItemView paramProteusItemView, Activity paramActivity)
   {
-    paramProteusItemView = (TextBase)paramProteusItemView.a().getVirtualView().findViewBaseByName("id_artilce_title");
+    paramProteusItemView = (TextBase)paramProteusItemView.getContainer().getVirtualView().findViewBaseByName("id_artilce_title");
     if (paramProteusItemView != null)
     {
-      paramProteusItemView.setTextColor(paramActivity.getResources().getColor(2131166508));
+      paramProteusItemView.setTextColor(paramActivity.getResources().getColor(2131167365));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.videoanimation", 2, " change ui state after readed");
       }
@@ -263,16 +257,21 @@ public class RIJListViewGroupHandlerClick
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Activity paramActivity, int paramInt, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if ((!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (paramReadInJoyBaseAdapter != null) && (!RIJItemViewTypeUtils.h(paramAbsBaseArticleInfo))) {
+    if ((!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (paramReadInJoyBaseAdapter != null) && (!RIJItemViewTypeUtils.h(paramAbsBaseArticleInfo)))
+    {
       RIJJumpUtils.a(paramActivity, paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter, paramInt);
+      paramAbsBaseArticleInfo = new StringBuilder();
+      paramAbsBaseArticleInfo.append("onAdClick,channelID=");
+      paramAbsBaseArticleInfo.append(paramInt);
+      QLog.d("RIJListViewGroupHandlerClick", 1, paramAbsBaseArticleInfo.toString());
     }
   }
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, View paramView, int paramInt, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if ((paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((paramAbsBaseArticleInfo.mNewPolymericInfo.p != null) && (paramAbsBaseArticleInfo.mNewPolymericInfo.p.size() > 0))
     {
-      a(paramAbsBaseArticleInfo, (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0), paramView, paramInt, paramReadInJoyBaseAdapter);
+      a(paramAbsBaseArticleInfo, (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.p.get(0), paramView, paramInt, paramReadInJoyBaseAdapter);
       return;
     }
     QLog.e("RIJListViewGroupHandlerClick", 1, "handleJumpFullVideoPlayForNewPolymeric, bad data need backend check");
@@ -284,7 +283,7 @@ public class RIJListViewGroupHandlerClick
     {
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit ShortContent feeds");
       QLog.d("RIJListViewGroupHandlerClick", 1, "tryJumpToUgUrl: true");
-      paramAbsBaseArticleInfo2.clickJumpTarget = PGCShortContentUtils.a(ProteusSupportUtil.a(paramAbsBaseArticleInfo2), "-1");
+      paramAbsBaseArticleInfo2.clickJumpTarget = PGCShortContentUtils.a(ProteusSupportUtil.c(paramAbsBaseArticleInfo2), "-1");
     }
     else
     {
@@ -304,32 +303,32 @@ public class RIJListViewGroupHandlerClick
     {
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit ug normal feeds");
       ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo2.mArticleID, System.currentTimeMillis());
-      paramBuilder.a().notifyDataSetChanged();
-      paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a(ProteusSupportUtil.a(paramAbsBaseArticleInfo2), "-1");
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.b());
+      paramBuilder.d().notifyDataSetChanged();
+      paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a(ProteusSupportUtil.c(paramAbsBaseArticleInfo2), "-1");
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.f());
       return;
     }
-    if (a(paramAbsBaseArticleInfo2, paramView, paramBuilder))
+    if (b(paramAbsBaseArticleInfo2, paramView, paramBuilder))
     {
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit srt normal feeds");
-      paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a(ReadInJoySrtUtils.a().a(), "-1");
+      paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a(ReadInJoySrtUtils.a().c(), "-1");
       return;
     }
-    if ((!UGRuleManager.c(paramAbsBaseArticleInfo2)) && (!ReadInJoySrtUtils.a().a()) && (RIJTransMergeKanDianReport.a(paramView.getContext(), paramAbsBaseArticleInfo2)))
+    if ((!UGRuleManager.c(paramAbsBaseArticleInfo2)) && (!ReadInJoySrtUtils.a().e()) && (RIJTransMergeKanDianReport.a(paramView.getContext(), paramAbsBaseArticleInfo2)))
     {
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.b());
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.f());
       ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo2.mArticleID, System.currentTimeMillis());
-      paramBuilder.a().notifyDataSetChanged();
-      paramBuilder = RIJJumpUtils.b(paramAbsBaseArticleInfo2.getInnerUniqueID());
+      paramBuilder.d().notifyDataSetChanged();
+      paramBuilder = RIJJumpUtils.f(paramAbsBaseArticleInfo2.getInnerUniqueID());
       paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a(paramBuilder, "-1");
       RIJJumpUtils.a(paramView.getContext(), paramAbsBaseArticleInfo2, paramBuilder);
       return;
     }
     if (ReadInJoyDailyJumpToKDTabUtils.a(paramView.getContext(), paramAbsBaseArticleInfo2.mArticleContentUrl))
     {
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.b());
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.f());
       ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo2.mArticleID, System.currentTimeMillis());
-      paramBuilder.a().notifyDataSetChanged();
+      paramBuilder.d().notifyDataSetChanged();
       return;
     }
     paramAbsBaseArticleInfo1.clickJumpTarget = PGCShortContentUtils.a("", "3");
@@ -338,18 +337,18 @@ public class RIJListViewGroupHandlerClick
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder, int paramInt)
   {
-    if (b(paramAbsBaseArticleInfo, paramInt)) {
+    if (c(paramAbsBaseArticleInfo, paramInt)) {
       a(paramAbsBaseArticleInfo, null, 0, 0, false, 0, paramBuilder);
     } else if ((paramInt != 95) && (paramInt != 94))
     {
       if (paramAbsBaseArticleInfo.isPGCShortContent()) {
-        PGCShortContentUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo);
+        PGCShortContentUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo);
       } else if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) {
         a(paramAbsBaseArticleInfo, paramBuilder);
       }
     }
     else {
-      ReadInJoyUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityShareWebPageInfo.jdField_a_of_type_JavaLangString);
+      ReadInJoyUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo.mSocialFeedInfo.E.a);
     }
     a(paramBuilder);
   }
@@ -357,60 +356,60 @@ public class RIJListViewGroupHandlerClick
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, NewPolymericInfo.PackArticleInfo paramPackArticleInfo, View paramView, int paramInt, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    if (paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo == null)
+    if (paramPackArticleInfo.o == null)
     {
       QLog.e("handleJumpFullVideoPlayForNewPolymeric", 2, " bad data need backend check");
       return;
     }
-    localVideoPlayParam.jdField_c_of_type_Long = paramPackArticleInfo.jdField_a_of_type_Long;
+    localVideoPlayParam.j = paramPackArticleInfo.a;
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append(paramPackArticleInfo.o.i);
     ((StringBuilder)localObject).append("");
-    localVideoPlayParam.jdField_h_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    localVideoPlayParam.jdField_i_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_d_of_type_JavaLangString;
-    localVideoPlayParam.jdField_k_of_type_JavaLangString = paramPackArticleInfo.jdField_e_of_type_JavaLangString;
-    localVideoPlayParam.jdField_g_of_type_Int = paramPackArticleInfo.jdField_a_of_type_Int;
-    localVideoPlayParam.jdField_g_of_type_Long = paramPackArticleInfo.jdField_b_of_type_Long;
+    localVideoPlayParam.v = ((StringBuilder)localObject).toString();
+    localVideoPlayParam.w = paramPackArticleInfo.o.j;
+    localVideoPlayParam.A = paramPackArticleInfo.f;
+    localVideoPlayParam.C = paramPackArticleInfo.h;
+    localVideoPlayParam.B = paramPackArticleInfo.i;
     localObject = new ReadInJoyVideoReportData();
-    ((ReadInJoyVideoReportData)localObject).a = Long.valueOf(paramPackArticleInfo.jdField_a_of_type_Long);
-    ((ReadInJoyVideoReportData)localObject).jdField_b_of_type_JavaLangString = paramPackArticleInfo.jdField_g_of_type_JavaLangString;
-    ((ReadInJoyVideoReportData)localObject).jdField_b_of_type_Int = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_a_of_type_Int;
-    ((ReadInJoyVideoReportData)localObject).jdField_c_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_a_of_type_JavaLangString;
-    localVideoPlayParam.a = ((AbsReadInJoyVideoReportData)localObject);
-    localVideoPlayParam.jdField_b_of_type_JavaLangString = paramPackArticleInfo.jdField_c_of_type_JavaLangString;
-    localVideoPlayParam.jdField_c_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_a_of_type_JavaLangString;
-    localVideoPlayParam.jdField_f_of_type_Int = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_a_of_type_Int;
-    localVideoPlayParam.jdField_c_of_type_Int = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_b_of_type_Int;
-    localVideoPlayParam.jdField_d_of_type_Int = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_c_of_type_Int;
-    localVideoPlayParam.jdField_b_of_type_Int = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_d_of_type_Int;
-    localVideoPlayParam.jdField_e_of_type_Long = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_a_of_type_Long;
-    localVideoPlayParam.jdField_j_of_type_JavaLangString = paramPackArticleInfo.jdField_g_of_type_JavaLangString;
-    localVideoPlayParam.jdField_g_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_b_of_type_JavaLangString;
-    localVideoPlayParam.jdField_d_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_f_of_type_JavaLangString;
-    localVideoPlayParam.jdField_e_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_e_of_type_JavaLangString;
-    localVideoPlayParam.jdField_f_of_type_JavaLangString = paramPackArticleInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.jdField_g_of_type_JavaLangString;
+    ((ReadInJoyVideoReportData)localObject).d = Long.valueOf(paramPackArticleInfo.a);
+    ((ReadInJoyVideoReportData)localObject).e = paramPackArticleInfo.l;
+    ((ReadInJoyVideoReportData)localObject).g = paramPackArticleInfo.o.a;
+    ((ReadInJoyVideoReportData)localObject).f = paramPackArticleInfo.o.b;
+    localVideoPlayParam.z = ((AbsReadInJoyVideoReportData)localObject);
+    localVideoPlayParam.b = paramPackArticleInfo.d;
+    localVideoPlayParam.d = paramPackArticleInfo.o.b;
+    localVideoPlayParam.x = paramPackArticleInfo.o.a;
+    localVideoPlayParam.n = paramPackArticleInfo.o.c;
+    localVideoPlayParam.o = paramPackArticleInfo.o.d;
+    localVideoPlayParam.l = paramPackArticleInfo.o.e;
+    localVideoPlayParam.m = paramPackArticleInfo.o.f;
+    localVideoPlayParam.y = paramPackArticleInfo.l;
+    localVideoPlayParam.t = paramPackArticleInfo.o.g;
+    localVideoPlayParam.q = paramPackArticleInfo.o.l;
+    localVideoPlayParam.r = paramPackArticleInfo.o.k;
+    localVideoPlayParam.s = paramPackArticleInfo.o.m;
     if (paramView != null)
     {
       localObject = new int[2];
       paramView.getLocationOnScreen((int[])localObject);
-      localVideoPlayParam.jdField_h_of_type_Int = localObject[0];
-      localVideoPlayParam.jdField_i_of_type_Int = localObject[1];
-      localVideoPlayParam.jdField_j_of_type_Int = paramView.getWidth();
-      localVideoPlayParam.jdField_k_of_type_Int = paramView.getHeight();
-      if (((paramView instanceof ComponentContentVerticalSmallVideo)) && (((ComponentContentVerticalSmallVideo)paramView).jdField_a_of_type_Boolean))
+      localVideoPlayParam.I = localObject[0];
+      localVideoPlayParam.J = localObject[1];
+      localVideoPlayParam.K = paramView.getWidth();
+      localVideoPlayParam.L = paramView.getHeight();
+      if (((paramView instanceof ComponentContentVerticalSmallVideo)) && (((ComponentContentVerticalSmallVideo)paramView).p))
       {
         localObject = RIJComponentConfigImage.a(3, paramInt);
-        localVideoPlayParam.jdField_h_of_type_Int += (localVideoPlayParam.jdField_j_of_type_Int - ((Integer)((Pair)localObject).first).intValue()) / 2;
-        localVideoPlayParam.jdField_j_of_type_Int = ((Integer)((Pair)localObject).first).intValue();
+        localVideoPlayParam.I += (localVideoPlayParam.K - ((Integer)((Pair)localObject).first).intValue()) / 2;
+        localVideoPlayParam.K = ((Integer)((Pair)localObject).first).intValue();
       }
     }
     localObject = new ReportInfo.VideoExtraRepoerData();
-    ((ReportInfo.VideoExtraRepoerData)localObject).jdField_a_of_type_Int = 409409;
+    ((ReportInfo.VideoExtraRepoerData)localObject).a = 409409;
     paramReadInJoyBaseAdapter.a(localVideoPlayParam, paramAbsBaseArticleInfo);
     if (paramInt == 0) {
-      VideoReporter.a(paramPackArticleInfo.jdField_a_of_type_Long, paramPackArticleInfo.jdField_g_of_type_JavaLangString, paramInt, (int)paramPackArticleInfo.jdField_b_of_type_Long, paramPackArticleInfo.jdField_a_of_type_Int, 24, -1L, (ReportInfo.VideoExtraRepoerData)localObject, -1, paramPackArticleInfo.jdField_k_of_type_JavaLangString);
+      VideoReporter.a(paramPackArticleInfo.a, paramPackArticleInfo.l, paramInt, (int)paramPackArticleInfo.i, paramPackArticleInfo.h, 24, -1L, (ReportInfo.VideoExtraRepoerData)localObject, -1, paramPackArticleInfo.y);
     }
-    ReadInJoyLogicEngine.a().a(paramPackArticleInfo.jdField_a_of_type_Long, System.currentTimeMillis());
+    ReadInJoyLogicEngine.a().a(paramPackArticleInfo.a, System.currentTimeMillis());
     if (!(paramView instanceof ComponentContentVerticalSmallVideo)) {
       paramReadInJoyBaseAdapter.notifyDataSetChanged();
     }
@@ -418,7 +417,7 @@ public class RIJListViewGroupHandlerClick
   
   private boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, View paramView)
   {
-    String str = ProteusSupportUtil.a(paramAbsBaseArticleInfo);
+    String str = ProteusSupportUtil.c(paramAbsBaseArticleInfo);
     if (!TextUtils.isEmpty(str))
     {
       if (UGRuleManager.a(str)) {
@@ -447,32 +446,32 @@ public class RIJListViewGroupHandlerClick
       QLog.d("Q.readinjoy.video", 2, paramAbsBaseArticleInfo1.toString());
       return true;
     }
-    if (RIJBaseItemViewType.a(paramAbsBaseArticleInfo2) == 6) {
+    if (RIJBaseItemViewType.c(paramAbsBaseArticleInfo2) == 6) {
       if ((paramView instanceof ProteusItemView)) {
-        a((ProteusItemView)paramView, paramBuilder.a());
+        a((ProteusItemView)paramView, paramBuilder.e());
       } else if ((paramView instanceof LinearLayout)) {
-        a((LinearLayout)paramView, paramBuilder.a());
+        a((LinearLayout)paramView, paramBuilder.e());
       }
     }
     if (a(paramAbsBaseArticleInfo2, paramView))
     {
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit ug video feeds");
       ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo2.mArticleID, System.currentTimeMillis());
-      paramBuilder.a().notifyDataSetChanged();
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.b());
+      paramBuilder.d().notifyDataSetChanged();
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.f());
     }
-    else if (a(paramAbsBaseArticleInfo2, paramView, paramBuilder))
+    else if (b(paramAbsBaseArticleInfo2, paramView, paramBuilder))
     {
       QLog.d("RIJListViewGroupHandlerClick", 2, "main feeds hit srt video feeds");
     }
-    else if (RIJItemViewTypeUtils.C(paramAbsBaseArticleInfo2))
+    else if (RIJItemViewTypeUtils.F(paramAbsBaseArticleInfo2))
     {
       paramAbsBaseArticleInfo1 = new StringBuilder();
       paramAbsBaseArticleInfo1.append("isLargeImageMiniAppCard, jumpto: ");
       paramAbsBaseArticleInfo1.append(paramAbsBaseArticleInfo2.mArticleContentUrl);
       QLog.d("RIJListViewGroupHandlerClick", 1, paramAbsBaseArticleInfo1.toString());
       RIJMiniProgramUtils.a.a(paramAbsBaseArticleInfo2, 1, null);
-      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.b());
+      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.f());
     }
     else if (paramAbsBaseArticleInfo1.isAccountShown)
     {
@@ -506,24 +505,6 @@ public class RIJListViewGroupHandlerClick
     return false;
   }
   
-  private boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, View paramView, RIJListViewGroupHandlerClick.Builder paramBuilder)
-  {
-    if (UGRuleManager.c(paramAbsBaseArticleInfo)) {
-      return false;
-    }
-    boolean bool = ReadInJoySrtUtils.a().a(paramAbsBaseArticleInfo, null, null);
-    String str = ReadInJoySrtUtils.a().a();
-    if ((bool) && (!TextUtils.isEmpty(str)))
-    {
-      ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
-      paramBuilder.a().notifyDataSetChanged();
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.b());
-      RIJJumpUtils.a(paramView.getContext(), paramAbsBaseArticleInfo, str);
-      return true;
-    }
-    return false;
-  }
-  
   private void b(View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
     if (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo))
@@ -531,18 +512,18 @@ public class RIJListViewGroupHandlerClick
       a(paramAbsBaseArticleInfo, paramBuilder);
       return;
     }
-    RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo, 1, false, 4, false);
+    RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo, 1, false, 4, false);
   }
   
   private void b(RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    int j = paramBuilder.a().getCount();
+    int j = paramBuilder.d().getCount();
     if (j > 0)
     {
       int i = 0;
       while (i < j)
       {
-        Object localObject = paramBuilder.a().getItem(i);
+        Object localObject = paramBuilder.d().getItem(i);
         if ((localObject instanceof BaseArticleInfo))
         {
           localObject = (AbsBaseArticleInfo)localObject;
@@ -558,16 +539,16 @@ public class RIJListViewGroupHandlerClick
   {
     if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)))
     {
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.b());
-      paramBuilder.a().a(paramBuilder.b(), paramAbsBaseArticleInfo.mArticleID);
-      RIJFeedsType.T(paramAbsBaseArticleInfo);
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.f());
+      paramBuilder.d().b(paramBuilder.f(), paramAbsBaseArticleInfo.mArticleID);
+      RIJFeedsType.ab(paramAbsBaseArticleInfo);
       if ((paramAbsBaseArticleInfo.mGalleryFeedsInfo != null) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.has()) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8())))
       {
         String str = paramAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
         Bundle localBundle = new Bundle();
         localBundle.putString("big_brother_source_key", RIJJumpUtils.a(0));
-        RIJJumpUtils.a(paramBuilder.a(), str, localBundle);
-        GalleryReportedUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.a());
+        RIJJumpUtils.a(paramBuilder.e(), str, localBundle);
+        GalleryReportedUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.d());
         return;
       }
       if (QLog.isColorLevel()) {
@@ -582,10 +563,10 @@ public class RIJListViewGroupHandlerClick
   
   private void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, Activity paramActivity, int paramInt)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.jdField_k_of_type_JavaLangString)))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.x != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSocialFeedInfo.x.r)))
     {
       RIJFrameworkReportManager.a(paramActivity, paramAbsBaseArticleInfo, paramInt);
-      RIJJumpUtils.b(paramActivity, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo.jdField_k_of_type_JavaLangString);
+      RIJJumpUtils.b(paramActivity, paramAbsBaseArticleInfo.mSocialFeedInfo.x.r);
       ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
     }
   }
@@ -630,33 +611,33 @@ public class RIJListViewGroupHandlerClick
       {
         if (paramAbsBaseArticleInfo2.mFeedType == 26)
         {
-          b(paramAbsBaseArticleInfo2, paramBuilder.a(), paramBuilder.b());
+          b(paramAbsBaseArticleInfo2, paramBuilder.e(), paramBuilder.f());
           paramAbsBaseArticleInfo1 = "onQuestionClick";
           bool1 = bool2;
         }
         else if (paramAbsBaseArticleInfo2.mFeedType == 23)
         {
-          RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 1, false, 4, false);
+          RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 1, false, 4, false);
           paramAbsBaseArticleInfo1 = "FeedsType_PGC_Gallery->jumpNewSocialSecondPage";
           bool1 = bool2;
         }
         else if (paramAbsBaseArticleInfo2.mFeedType == 34)
         {
-          RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2.mArticleContentUrl, null);
-          RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.b());
+          RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2.mArticleContentUrl, null);
+          RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.f());
           paramAbsBaseArticleInfo1 = "FeedsType_Scrip_Cms";
           bool1 = bool2;
         }
         else if (paramAbsBaseArticleInfo2.mFeedType == 39)
         {
-          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame(paramAbsBaseArticleInfo2, paramBuilder.a(), paramInt);
+          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame(paramAbsBaseArticleInfo2, paramBuilder.e(), paramInt);
           paramAbsBaseArticleInfo1 = "jumpToMiniGame";
           bool1 = bool2;
         }
         else
         {
           paramValueReference.a(Integer.valueOf(2));
-          a(paramAbsBaseArticleInfo2, paramBuilder.a(), paramBuilder.b(), paramBuilder.a());
+          a(paramAbsBaseArticleInfo2, paramBuilder.e(), paramBuilder.f(), paramBuilder.d());
           paramAbsBaseArticleInfo1 = "onAdClick";
           bool1 = bool2;
         }
@@ -671,8 +652,8 @@ public class RIJListViewGroupHandlerClick
     }
     else
     {
-      RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 0, false, 1, false);
-      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.b());
+      RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 0, false, 1, false);
+      RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.f());
       paramAbsBaseArticleInfo1 = "jumpNewSocialSecondPage";
       bool1 = bool2;
     }
@@ -681,6 +662,24 @@ public class RIJListViewGroupHandlerClick
     paramView.append(paramAbsBaseArticleInfo1);
     QLog.d("RIJListViewGroupHandlerClick", 1, paramView.toString());
     return bool1;
+  }
+  
+  private boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo, View paramView, RIJListViewGroupHandlerClick.Builder paramBuilder)
+  {
+    if (UGRuleManager.c(paramAbsBaseArticleInfo)) {
+      return false;
+    }
+    boolean bool = ReadInJoySrtUtils.a().a(paramAbsBaseArticleInfo, null, null);
+    String str = ReadInJoySrtUtils.a().c();
+    if ((bool) && (!TextUtils.isEmpty(str)))
+    {
+      ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
+      paramBuilder.d().notifyDataSetChanged();
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.f());
+      RIJJumpUtils.a(paramView.getContext(), paramAbsBaseArticleInfo, str);
+      return true;
+    }
+    return false;
   }
   
   private void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder)
@@ -692,7 +691,7 @@ public class RIJListViewGroupHandlerClick
     }
     if (paramAbsBaseArticleInfo.isPGCShortContent())
     {
-      PGCShortContentUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo);
+      PGCShortContentUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo);
       return;
     }
     if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) {
@@ -704,7 +703,7 @@ public class RIJListViewGroupHandlerClick
   {
     if (paramAbsBaseArticleInfo.isPGCShortContent())
     {
-      PGCShortContentUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo);
+      PGCShortContentUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo);
       return;
     }
     a(paramAbsBaseArticleInfo, 2, paramBuilder);
@@ -717,15 +716,15 @@ public class RIJListViewGroupHandlerClick
     {
       Object localObject3 = (QQAppInterface)localObject1;
       localObject1 = new NowFromData();
-      if (paramBuilder.b() == 56)
+      if (paramBuilder.f() == 56)
       {
-        ((NowFromData)localObject1).jdField_b_of_type_JavaLangString = "kandian_video";
-        ((NowFromData)localObject1).jdField_a_of_type_JavaLangString = "kandian_video";
+        ((NowFromData)localObject1).b = "kandian_video";
+        ((NowFromData)localObject1).a = "kandian_video";
       }
       else
       {
-        ((NowFromData)localObject1).jdField_b_of_type_JavaLangString = "kandian_shouye";
-        ((NowFromData)localObject1).jdField_a_of_type_JavaLangString = "kandian_shouye";
+        ((NowFromData)localObject1).b = "kandian_shouye";
+        ((NowFromData)localObject1).a = "kandian_shouye";
       }
       Object localObject2 = new Bundle();
       int i = paramAbsBaseArticleInfo.mCommentIconType;
@@ -738,7 +737,7 @@ public class RIJListViewGroupHandlerClick
       {
         localObject3 = (IDynamicNowManager)((QQAppInterface)localObject3).getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
         ((Bundle)localObject2).putString("roomid", paramAbsBaseArticleInfo.mArticleContentUrl);
-        ((Bundle)localObject2).putString("fromid", ((NowFromData)localObject1).jdField_b_of_type_JavaLangString);
+        ((Bundle)localObject2).putString("fromid", ((NowFromData)localObject1).b);
         ((IDynamicNowManager)localObject3).a((Bundle)localObject2);
       }
       catch (NumberFormatException localNumberFormatException)
@@ -751,24 +750,24 @@ public class RIJListViewGroupHandlerClick
           QLog.d("RIJListViewGroupHandlerClick", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.b());
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.f());
     }
   }
   
   public void a(int paramInt, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    if ((paramBuilder.a() instanceof ReadInJoyNewFeedsActivity))
+    if ((paramBuilder.e() instanceof ReadInJoyNewFeedsActivity))
     {
-      ((ReadInJoyNewFeedsActivity)paramBuilder.a()).d(paramInt);
+      ((ReadInJoyNewFeedsActivity)paramBuilder.e()).e(paramInt);
     }
-    else if ((paramBuilder.a() instanceof SplashActivity))
+    else if ((paramBuilder.e() instanceof SplashActivity))
     {
-      RIJTabFrameBase localRIJTabFrameBase = (RIJTabFrameBase)RIJJumpUtils.a(paramBuilder.a());
+      RIJTabFrameBase localRIJTabFrameBase = (RIJTabFrameBase)RIJJumpUtils.a(paramBuilder.e());
       if (localRIJTabFrameBase != null) {
         localRIJTabFrameBase.b(paramInt);
       }
     }
-    if (DailyModeConfigHandler.c(paramBuilder.b())) {
+    if (DailyModeConfigHandler.c(paramBuilder.f())) {
       KandianDailyReportUtils.a(paramInt);
     }
     a(paramBuilder);
@@ -776,11 +775,11 @@ public class RIJListViewGroupHandlerClick
   
   public void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, HashMap<String, Integer> paramHashMap, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    if ((!StudyModeManager.a()) && (!paramAbsBaseArticleInfo.hasSearchWordInfo()))
+    if ((!StudyModeManager.h()) && (!paramAbsBaseArticleInfo.hasSearchWordInfo()))
     {
-      int j = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
+      int j = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
       int i = 3;
-      if (((j == 3) || (RIJBaseItemViewType.a(paramAbsBaseArticleInfo) == 1)) && (paramAbsBaseArticleInfo.mIsShowSearchord == 1))
+      if (((j == 3) || (RIJBaseItemViewType.c(paramAbsBaseArticleInfo) == 1)) && (paramAbsBaseArticleInfo.mIsShowSearchord == 1))
       {
         AladdinConfig localAladdinConfig = Aladdin.getConfig(201);
         j = 1000;
@@ -796,7 +795,7 @@ public class RIJListViewGroupHandlerClick
         {
           k = 0;
         }
-        if (!DateUtils.isToday(SharedPreUtils.b("search_word_prefix_last_request_time")))
+        if (!DateUtils.isToday(SharedPreUtils.k("search_word_prefix_last_request_time")))
         {
           SharedPreUtils.a("search_word_prefix_last_request_time", System.currentTimeMillis());
           SharedPreUtils.a("search_word_prefix_show_times", 0L);
@@ -804,7 +803,7 @@ public class RIJListViewGroupHandlerClick
         if (paramHashMap.containsKey(paramAbsBaseArticleInfo.mRefreshTime)) {
           m = ((Integer)paramHashMap.get(paramAbsBaseArticleInfo.mRefreshTime)).intValue();
         }
-        if ((m < i) && (SharedPreUtils.b("search_word_prefix_show_times") < j) && (k == 1)) {
+        if ((m < i) && (SharedPreUtils.k("search_word_prefix_show_times") < j) && (k == 1)) {
           ((UniteSearchHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER)).a(ByteStringMicro.copyFromUtf8(paramAbsBaseArticleInfo.innerUniqueID), new RIJListViewGroupHandlerClick.2(this, paramHashMap, paramAbsBaseArticleInfo, m, paramBuilder, paramInt));
         }
       }
@@ -815,7 +814,7 @@ public class RIJListViewGroupHandlerClick
   {
     paramView = paramView.getTag();
     if ((paramView instanceof FeedItemCell)) {
-      ((FeedItemCell)paramView).b();
+      ((FeedItemCell)paramView).y();
     }
   }
   
@@ -833,14 +832,14 @@ public class RIJListViewGroupHandlerClick
   
   public void a(RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    Object localObject = paramBuilder.a().getItem(0);
-    if ((paramBuilder.b() == 0) && ((localObject instanceof BaseArticleInfo)))
+    Object localObject = paramBuilder.d().getItem(0);
+    if ((paramBuilder.f() == 0) && ((localObject instanceof BaseArticleInfo)))
     {
       localObject = (AbsBaseArticleInfo)localObject;
       paramBuilder.a(NetConnInfoCenter.getServerTime());
       paramBuilder.a((AbsBaseArticleInfo)localObject);
-      localObject = FeedsStructMsg.a((QQAppInterface)ReadInJoyUtils.a(), paramBuilder.a());
-      String str = FeedsStructMsg.a(paramBuilder.a());
+      localObject = FeedsStructMsg.a((QQAppInterface)ReadInJoyUtils.b(), paramBuilder.b());
+      String str = FeedsStructMsg.a(paramBuilder.b());
       ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).createFakeStructingMsgWithFields(RIJQQAppInterfaceUtil.b(), str, String.valueOf(paramBuilder.a()), (String)localObject, true);
     }
   }
@@ -858,7 +857,7 @@ public class RIJListViewGroupHandlerClick
   {
     if (paramInt == 1)
     {
-      RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo, false);
+      RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo, false);
       return;
     }
     if (paramInt == 2)
@@ -868,7 +867,7 @@ public class RIJListViewGroupHandlerClick
         a(paramAbsBaseArticleInfo, paramBuilder);
         return;
       }
-      RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo, 3);
+      RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo, 3);
     }
   }
   
@@ -877,108 +876,63 @@ public class RIJListViewGroupHandlerClick
     if (paramAbsBaseArticleInfo.mFeedType == 2) {
       return;
     }
-    if (paramBuilder.b() == 0)
+    if (paramBuilder.f() == 0)
     {
-      Integer localInteger = VideoFeedsHelper.a(paramBuilder.a(), paramAbsBaseArticleInfo);
+      Integer localInteger = VideoFeedsHelper.b(paramBuilder.e(), paramAbsBaseArticleInfo);
       if (localInteger.intValue() != -1)
       {
-        RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, paramBuilder.a(), paramBuilder.b(), localInteger);
+        RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, paramBuilder.e(), paramBuilder.f(), localInteger);
         return;
       }
     }
-    if ((paramBuilder.b() == 0) && (!RIJFeedsType.z(paramAbsBaseArticleInfo)) && (!RIJFeedsType.D(paramAbsBaseArticleInfo)) && (!RIJFeedsType.E(paramAbsBaseArticleInfo)))
+    if ((paramBuilder.f() == 0) && (!RIJFeedsType.F(paramAbsBaseArticleInfo)) && (!RIJFeedsType.J(paramAbsBaseArticleInfo)) && (!RIJFeedsType.K(paramAbsBaseArticleInfo)))
     {
-      ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
-      int i = paramAbsBaseArticleInfo.videoJumpChannelID;
-      paramInt3 = 56;
-      if (i > 0)
-      {
-        if (paramAbsBaseArticleInfo.videoJumpChannelID == 56)
-        {
-          if (QLog.isColorLevel())
-          {
-            paramView = new StringBuilder();
-            paramView.append(" init translation animation for viewTop:");
-            paramView.append(paramInt1);
-            paramView.append("view left:");
-            paramView.append(paramInt2);
-            paramView.append("isFromItemClick:");
-            paramView.append(paramBoolean);
-            QLog.d("Q.readinjoy.videoanimation", 2, paramView.toString());
-          }
-          a(paramBuilder.a(), paramBuilder.a(), paramAbsBaseArticleInfo, paramInt1, paramInt2, paramBoolean);
-        }
-        else
-        {
-          paramView = new HashMap();
-          paramView.put("param_key_insert_article_id", Long.valueOf(paramAbsBaseArticleInfo.mArticleID));
-          ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoSubChannelActivity(paramBuilder.a(), paramAbsBaseArticleInfo.videoJumpChannelID, paramAbsBaseArticleInfo.videoJumpChannelName, paramAbsBaseArticleInfo.videoJumpChannelType, 5, paramView);
-        }
-        paramInt1 = paramAbsBaseArticleInfo.videoJumpChannelID;
-        RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, paramBuilder.a(), paramBuilder.b());
-      }
-      else if (ReadInJoyHelper.d(BaseApplicationImpl.getApplication().getRuntime()) == 1)
-      {
-        a(paramBuilder.a(), paramBuilder.a(), paramAbsBaseArticleInfo, paramInt1, paramInt2, paramBoolean);
-        RIJFrameworkReportManager.a(paramAbsBaseArticleInfo, paramBuilder.a(), paramBuilder.b());
-        paramInt1 = paramInt3;
-      }
-      else
-      {
-        a(paramAbsBaseArticleInfo, paramView, paramBuilder);
-        paramInt1 = -1;
-      }
-      if (paramInt1 != -1)
-      {
-        paramView = new ReportInfo.VideoExtraRepoerData();
-        paramView.jdField_a_of_type_Int = paramInt1;
-        VideoReporter.a(paramAbsBaseArticleInfo, paramBuilder.b(), 24, -1L, paramView);
-      }
-      if ((RIJBaseItemViewType.a(paramAbsBaseArticleInfo) != 6) && (RIJBaseItemViewType.a(paramAbsBaseArticleInfo) != 28)) {
-        paramBuilder.a().notifyDataSetChanged();
+      a(paramAbsBaseArticleInfo, paramView, paramBuilder);
+      if ((RIJBaseItemViewType.c(paramAbsBaseArticleInfo) != 6) && (RIJBaseItemViewType.c(paramAbsBaseArticleInfo) != 28)) {
+        paramBuilder.d().notifyDataSetChanged();
       }
       return;
     }
-    if (RIJFeedsType.E(paramAbsBaseArticleInfo)) {
-      a(paramAbsBaseArticleInfo, (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(paramInt3), paramView, paramBuilder.b(), paramBuilder.a());
+    if (RIJFeedsType.K(paramAbsBaseArticleInfo)) {
+      a(paramAbsBaseArticleInfo, (NewPolymericInfo.PackArticleInfo)paramAbsBaseArticleInfo.mNewPolymericInfo.p.get(paramInt3), paramView, paramBuilder.f(), paramBuilder.d());
     } else {
       a(paramAbsBaseArticleInfo, paramView, paramBuilder);
     }
     ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
     if (!(paramView instanceof ComponentContentVerticalSmallVideo)) {
-      paramBuilder.a().notifyDataSetChanged();
+      paramBuilder.d().notifyDataSetChanged();
     }
-    if (RIJFeedsType.C(paramAbsBaseArticleInfo))
+    if (RIJFeedsType.I(paramAbsBaseArticleInfo))
     {
-      paramView = ReadinjoyReportUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo.mVideoAdsSource, paramInt3, paramAbsBaseArticleInfo.getInnerUniqueID(), 54, ReadinjoyReportUtils.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.videoReportInfo);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", String.valueOf(paramAbsBaseArticleInfo.mPolymericInfo.jdField_b_of_type_Long), "0X8008D33", "0X8008D33", 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), paramView, false);
+      paramView = ReadinjoyReportUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo.mVideoAdsSource, paramInt3, paramAbsBaseArticleInfo.getInnerUniqueID(), 54, ReadinjoyReportUtils.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.videoReportInfo);
+      PublicAccountReportUtils.a(null, "CliOper", "", String.valueOf(paramAbsBaseArticleInfo.mPolymericInfo.f), "0X8008D33", "0X8008D33", 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), paramView, false);
       RIJFrameworkReportManager.d(paramAbsBaseArticleInfo, paramInt3);
     }
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, View paramView, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
-    if (RIJFeedsType.h(paramAbsBaseArticleInfo))
+    if (RIJFeedsType.l(paramAbsBaseArticleInfo))
     {
-      a(paramAbsBaseArticleInfo, paramView, paramBuilder.b(), paramBuilder.a());
+      a(paramAbsBaseArticleInfo, paramView, paramBuilder.f(), paramBuilder.d());
       return;
     }
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    localVideoPlayParam.jdField_c_of_type_Long = paramAbsBaseArticleInfo.mArticleID;
-    localVideoPlayParam.jdField_e_of_type_Long = paramAbsBaseArticleInfo.mXGFileSize;
-    localVideoPlayParam.jdField_h_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdUin;
-    localVideoPlayParam.jdField_i_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdUinName;
-    localVideoPlayParam.jdField_k_of_type_JavaLangString = paramAbsBaseArticleInfo.mSubscribeID;
-    localVideoPlayParam.jdField_g_of_type_Int = paramAbsBaseArticleInfo.mStrategyId;
-    localVideoPlayParam.jdField_g_of_type_Long = paramAbsBaseArticleInfo.mAlgorithmID;
+    localVideoPlayParam.j = paramAbsBaseArticleInfo.mArticleID;
+    localVideoPlayParam.m = paramAbsBaseArticleInfo.mXGFileSize;
+    localVideoPlayParam.v = paramAbsBaseArticleInfo.thirdUin;
+    localVideoPlayParam.w = paramAbsBaseArticleInfo.thirdUinName;
+    localVideoPlayParam.A = paramAbsBaseArticleInfo.mSubscribeID;
+    localVideoPlayParam.C = paramAbsBaseArticleInfo.mStrategyId;
+    localVideoPlayParam.B = paramAbsBaseArticleInfo.mAlgorithmID;
     ReadInJoyVideoReportData localReadInJoyVideoReportData = new ReadInJoyVideoReportData();
-    localReadInJoyVideoReportData.a = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
-    localReadInJoyVideoReportData.jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
-    if (((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) || ((RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)) && ((!RIJFeedsType.C(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)))))
+    localReadInJoyVideoReportData.d = Long.valueOf(paramAbsBaseArticleInfo.mArticleID);
+    localReadInJoyVideoReportData.e = paramAbsBaseArticleInfo.innerUniqueID;
+    if (((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo))) || ((RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)) && ((!RIJFeedsType.I(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)))))
     {
-      if ((RIJFeedsType.z(paramAbsBaseArticleInfo)) && (RIJFeedsType.a(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl != null))
+      if ((RIJFeedsType.F(paramAbsBaseArticleInfo)) && (RIJFeedsType.a(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl != null))
       {
-        localVideoPlayParam.jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl.getFile();
+        localVideoPlayParam.b = paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl.getFile();
       }
       else
       {
@@ -987,66 +941,66 @@ public class RIJListViewGroupHandlerClick
         } else {
           localObject = paramAbsBaseArticleInfo.mVideoCoverUrl.getFile();
         }
-        localVideoPlayParam.jdField_b_of_type_JavaLangString = ((String)localObject);
+        localVideoPlayParam.b = ((String)localObject);
       }
-      localVideoPlayParam.jdField_c_of_type_JavaLangString = paramAbsBaseArticleInfo.mVideoVid;
-      localVideoPlayParam.jdField_f_of_type_Int = paramAbsBaseArticleInfo.busiType;
-      localVideoPlayParam.jdField_c_of_type_Int = paramAbsBaseArticleInfo.mVideoJsonWidth;
-      localVideoPlayParam.jdField_d_of_type_Int = paramAbsBaseArticleInfo.mVideoJsonHeight;
-      localReadInJoyVideoReportData.jdField_b_of_type_Int = paramAbsBaseArticleInfo.busiType;
-      localVideoPlayParam.jdField_b_of_type_Int = paramAbsBaseArticleInfo.mVideoDuration;
-      localVideoPlayParam.jdField_j_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
-      localVideoPlayParam.jdField_g_of_type_JavaLangString = paramAbsBaseArticleInfo.mThirdVideoURL;
-      localVideoPlayParam.jdField_f_of_type_Long = paramAbsBaseArticleInfo.mThirdVideoURLExpireTime;
+      localVideoPlayParam.d = paramAbsBaseArticleInfo.mVideoVid;
+      localVideoPlayParam.x = paramAbsBaseArticleInfo.busiType;
+      localVideoPlayParam.n = paramAbsBaseArticleInfo.mVideoJsonWidth;
+      localVideoPlayParam.o = paramAbsBaseArticleInfo.mVideoJsonHeight;
+      localReadInJoyVideoReportData.g = paramAbsBaseArticleInfo.busiType;
+      localVideoPlayParam.l = paramAbsBaseArticleInfo.mVideoDuration;
+      localVideoPlayParam.y = paramAbsBaseArticleInfo.innerUniqueID;
+      localVideoPlayParam.t = paramAbsBaseArticleInfo.mThirdVideoURL;
+      localVideoPlayParam.u = paramAbsBaseArticleInfo.mThirdVideoURLExpireTime;
     }
     else
     {
-      localVideoPlayParam.jdField_f_of_type_Int = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_f_of_type_Int;
-      localVideoPlayParam.jdField_c_of_type_Int = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_a_of_type_Int;
-      localVideoPlayParam.jdField_d_of_type_Int = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_b_of_type_Int;
-      localReadInJoyVideoReportData.jdField_b_of_type_Int = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_f_of_type_Int;
-      localVideoPlayParam.jdField_b_of_type_Int = ((int)(((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_a_of_type_Long / 1000L));
-      localVideoPlayParam.jdField_b_of_type_JavaLangString = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_d_of_type_JavaLangString;
-      localVideoPlayParam.jdField_j_of_type_JavaLangString = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_g_of_type_JavaLangString;
-      localVideoPlayParam.jdField_c_of_type_JavaLangString = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_i_of_type_JavaLangString;
-      if ((RIJFeedsType.z(paramAbsBaseArticleInfo)) && (RIJFeedsType.a(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl != null)) {
-        localVideoPlayParam.jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl.getFile();
+      localVideoPlayParam.x = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).o;
+      localVideoPlayParam.n = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).h;
+      localVideoPlayParam.o = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).i;
+      localReadInJoyVideoReportData.g = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).o;
+      localVideoPlayParam.l = ((int)(((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).g / 1000L));
+      localVideoPlayParam.b = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).d;
+      localVideoPlayParam.y = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).l;
+      localVideoPlayParam.d = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).p;
+      if ((RIJFeedsType.F(paramAbsBaseArticleInfo)) && (RIJFeedsType.a(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl != null)) {
+        localVideoPlayParam.b = paramAbsBaseArticleInfo.mPolymericSmallVideoCoverUrl.getFile();
       } else {
-        localVideoPlayParam.jdField_b_of_type_JavaLangString = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).jdField_d_of_type_JavaLangString;
+        localVideoPlayParam.b = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).d;
       }
     }
-    localReadInJoyVideoReportData.jdField_c_of_type_JavaLangString = paramAbsBaseArticleInfo.mVideoVid;
-    localVideoPlayParam.a = localReadInJoyVideoReportData;
-    localVideoPlayParam.jdField_d_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdIcon;
-    localVideoPlayParam.jdField_e_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdName;
-    localVideoPlayParam.jdField_f_of_type_JavaLangString = paramAbsBaseArticleInfo.thirdAction;
+    localReadInJoyVideoReportData.f = paramAbsBaseArticleInfo.mVideoVid;
+    localVideoPlayParam.z = localReadInJoyVideoReportData;
+    localVideoPlayParam.q = paramAbsBaseArticleInfo.thirdIcon;
+    localVideoPlayParam.r = paramAbsBaseArticleInfo.thirdName;
+    localVideoPlayParam.s = paramAbsBaseArticleInfo.thirdAction;
     if (paramView != null)
     {
       localObject = new int[2];
       paramView.getLocationOnScreen((int[])localObject);
-      localVideoPlayParam.jdField_h_of_type_Int = localObject[0];
-      localVideoPlayParam.jdField_i_of_type_Int = localObject[1];
-      localVideoPlayParam.jdField_j_of_type_Int = paramView.getWidth();
-      localVideoPlayParam.jdField_k_of_type_Int = paramView.getHeight();
-      if (((paramView instanceof ComponentContentVerticalSmallVideo)) && (((ComponentContentVerticalSmallVideo)paramView).jdField_a_of_type_Boolean))
+      localVideoPlayParam.I = localObject[0];
+      localVideoPlayParam.J = localObject[1];
+      localVideoPlayParam.K = paramView.getWidth();
+      localVideoPlayParam.L = paramView.getHeight();
+      if (((paramView instanceof ComponentContentVerticalSmallVideo)) && (((ComponentContentVerticalSmallVideo)paramView).p))
       {
-        localObject = RIJComponentConfigImage.a(3, paramBuilder.b());
-        localVideoPlayParam.jdField_h_of_type_Int += (localVideoPlayParam.jdField_j_of_type_Int - ((Integer)((Pair)localObject).first).intValue()) / 2;
-        localVideoPlayParam.jdField_j_of_type_Int = ((Integer)((Pair)localObject).first).intValue();
+        localObject = RIJComponentConfigImage.a(3, paramBuilder.f());
+        localVideoPlayParam.I += (localVideoPlayParam.K - ((Integer)((Pair)localObject).first).intValue()) / 2;
+        localVideoPlayParam.K = ((Integer)((Pair)localObject).first).intValue();
       }
       VideoFeedsHelper.a(localVideoPlayParam, paramView);
     }
     Object localObject = new ReportInfo.VideoExtraRepoerData();
-    ((ReportInfo.VideoExtraRepoerData)localObject).jdField_a_of_type_Int = 409409;
-    if (paramBuilder.b() != 56) {
-      paramBuilder.a().a(localVideoPlayParam, paramAbsBaseArticleInfo);
+    ((ReportInfo.VideoExtraRepoerData)localObject).a = 409409;
+    if (paramBuilder.f() != 56) {
+      paramBuilder.d().a(localVideoPlayParam, paramAbsBaseArticleInfo);
     }
-    if (paramBuilder.b() == 0) {
-      VideoReporter.a(paramAbsBaseArticleInfo, paramBuilder.b(), 24, -1L, (ReportInfo.VideoExtraRepoerData)localObject);
+    if (paramBuilder.f() == 0) {
+      VideoReporter.a(paramAbsBaseArticleInfo, paramBuilder.f(), 24, -1L, (ReportInfo.VideoExtraRepoerData)localObject);
     }
     ReadInJoyLogicEngine.a().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
     if (!(paramView instanceof ComponentContentVerticalSmallVideo)) {
-      paramBuilder.a().notifyDataSetChanged();
+      paramBuilder.d().notifyDataSetChanged();
     }
   }
   
@@ -1058,26 +1012,14 @@ public class RIJListViewGroupHandlerClick
     if (RIJFeedsType.a(paramAbsBaseArticleInfo.mArticleContentUrl, paramAbsBaseArticleInfo.mChannelID, paramAbsBaseArticleInfo)) {
       b(paramAbsBaseArticleInfo, paramBuilder);
     } else {
-      RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo, paramBuilder.a(), paramBuilder.b());
+      RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo, paramBuilder.d(), paramBuilder.f());
     }
-    ReadinjoyReportUtils.a(paramAbsBaseArticleInfo);
-  }
-  
-  @VisibleForTesting
-  boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.g(paramAbsBaseArticleInfo)) || (RIJFeedsType.j(paramAbsBaseArticleInfo)) || (RIJFeedsType.k(paramAbsBaseArticleInfo)) || (RIJFeedsType.m(paramAbsBaseArticleInfo)) || (RIJFeedsType.n(paramAbsBaseArticleInfo));
-  }
-  
-  @VisibleForTesting
-  boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
-  {
-    return (RIJItemViewTypeUtils.c(paramInt)) || (RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo));
+    ReadinjoyReportUtils.b(paramAbsBaseArticleInfo);
   }
   
   public boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo1, View paramView, int paramInt, ValueReference<Integer> paramValueReference, AbsBaseArticleInfo paramAbsBaseArticleInfo2, RIJListViewGroupHandlerClick.Builder paramBuilder, Handler paramHandler)
   {
-    boolean bool2 = RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo2);
+    boolean bool2 = RIJItemViewTypeUtils.E(paramAbsBaseArticleInfo2);
     boolean bool1 = false;
     if (bool2)
     {
@@ -1085,11 +1027,11 @@ public class RIJListViewGroupHandlerClick
     }
     else if (RIJItemViewTypeUtils.h(paramAbsBaseArticleInfo2))
     {
-      RIJJumpUtils.b(paramBuilder.a(), paramAbsBaseArticleInfo2, 6);
-      RIJFrameworkReportManager.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.b());
+      RIJJumpUtils.b(paramBuilder.e(), paramAbsBaseArticleInfo2, 6);
+      RIJFrameworkReportManager.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.f());
       paramAbsBaseArticleInfo1 = "clickCommentBiuCard";
     }
-    else if (RIJFeedsType.C(paramAbsBaseArticleInfo2))
+    else if (RIJFeedsType.I(paramAbsBaseArticleInfo2))
     {
       a(paramAbsBaseArticleInfo2, paramView, paramView.getTop(), paramView.getLeft(), true, paramInt, paramBuilder);
       paramValueReference.a(Integer.valueOf(4));
@@ -1102,14 +1044,14 @@ public class RIJListViewGroupHandlerClick
     }
     else if (paramAbsBaseArticleInfo2.mFeedType == 13)
     {
-      a(paramAbsBaseArticleInfo2, paramBuilder.a(), paramBuilder.b());
+      a(paramAbsBaseArticleInfo2, paramBuilder.e(), paramBuilder.f());
       paramAbsBaseArticleInfo1 = "onQEGameClick";
     }
-    else if ((paramAbsBaseArticleInfo2.mFeedType != 22) && (paramAbsBaseArticleInfo2.mFeedType != 21) && (!RIJFeedsType.v(paramAbsBaseArticleInfo2)))
+    else if ((paramAbsBaseArticleInfo2.mFeedType != 22) && (paramAbsBaseArticleInfo2.mFeedType != 21) && (!RIJFeedsType.B(paramAbsBaseArticleInfo2)))
     {
       if (RIJBaseItemViewType.a(paramAbsBaseArticleInfo2))
       {
-        a(paramAbsBaseArticleInfo1, paramView, paramAbsBaseArticleInfo2, paramBuilder.a());
+        a(paramAbsBaseArticleInfo1, paramView, paramAbsBaseArticleInfo2, paramBuilder.e());
         paramAbsBaseArticleInfo1 = "onPgcShortContentClick";
       }
       else if ((RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo2)) && (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo2)))
@@ -1119,10 +1061,10 @@ public class RIJListViewGroupHandlerClick
       }
       else if (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo2))
       {
-        RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 1, false, 4, false);
+        RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 1, false, 4, false);
         paramAbsBaseArticleInfo1 = "RIJItemViewType -> jumpNewSocialSecondPage";
       }
-      else if (RIJBaseItemViewType.a(paramAbsBaseArticleInfo2) == 71)
+      else if (RIJBaseItemViewType.c(paramAbsBaseArticleInfo2) == 71)
       {
         a(paramView, paramInt, paramAbsBaseArticleInfo2, paramBuilder);
         paramValueReference.a(Integer.valueOf(4));
@@ -1130,12 +1072,12 @@ public class RIJListViewGroupHandlerClick
       }
       else if ((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo2)) && (!RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo2)))
       {
-        if ((!RIJFeedsType.j(paramAbsBaseArticleInfo2)) && (!RIJFeedsType.k(paramAbsBaseArticleInfo2)))
+        if ((!RIJFeedsType.p(paramAbsBaseArticleInfo2)) && (!RIJFeedsType.q(paramAbsBaseArticleInfo2)))
         {
           if (RIJFeedsType.f(paramAbsBaseArticleInfo2))
           {
             a(paramAbsBaseArticleInfo2, 1, paramBuilder);
-            GalleryReportedUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, paramBuilder.a());
+            GalleryReportedUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, paramBuilder.d());
             paramValueReference.a(Integer.valueOf(2));
             paramAbsBaseArticleInfo1 = "jumpSocialDetailPageWhenClick";
           }
@@ -1147,22 +1089,22 @@ public class RIJListViewGroupHandlerClick
         }
         else
         {
-          RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 1, false, 4, false);
-          RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.b());
-          RIJFrameworkReportManager.c(paramAbsBaseArticleInfo2, paramBuilder.b());
+          RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 1, false, 4, false);
+          RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.f());
+          RIJFrameworkReportManager.c(paramAbsBaseArticleInfo2, paramBuilder.f());
           paramAbsBaseArticleInfo1 = "isTopicRecommend->jumpNewSocialSecondPage";
         }
       }
       else
       {
-        RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 4, false, 3, false);
-        RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.b());
+        RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 4, false, 3, false);
+        RIJFrameworkReportManager.b(paramAbsBaseArticleInfo2, paramBuilder.f());
         paramAbsBaseArticleInfo1 = "isUGC->jumpNewSocialSecondPage";
       }
     }
     else
     {
-      RIJJumpUtils.a(paramBuilder.a(), paramAbsBaseArticleInfo2, 4, false, 3, false);
+      RIJJumpUtils.a(paramBuilder.e(), paramAbsBaseArticleInfo2, 4, false, 3, false);
       paramAbsBaseArticleInfo1 = "jumpNewSocialSecondPage";
     }
     paramView = new StringBuilder();
@@ -1175,30 +1117,42 @@ public class RIJListViewGroupHandlerClick
   public void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJListViewGroupHandlerClick.Builder paramBuilder)
   {
     TimeUtil.b("fast_web_show_light_house_1");
-    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
+    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().d();
     AbsBaseArticleInfo localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    if (RIJFeedsType.h(paramAbsBaseArticleInfo))
+    if (RIJFeedsType.l(paramAbsBaseArticleInfo))
     {
       localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      if (!paramAbsBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Boolean) {
+      if (!paramAbsBaseArticleInfo.mNewPolymericInfo.a) {
         localAbsBaseArticleInfo = a(paramAbsBaseArticleInfo);
       }
     }
     if (localFastWebModule != null) {
       paramBuilder.b(localFastWebModule.a(localAbsBaseArticleInfo.mArticleContentUrl, String.valueOf(localAbsBaseArticleInfo.innerUniqueID), localAbsBaseArticleInfo.mSubscribeID, 1, null));
     }
-    b(localAbsBaseArticleInfo, paramBuilder.a(), paramBuilder.b(), paramBuilder.a());
+    b(localAbsBaseArticleInfo, paramBuilder.e(), paramBuilder.f(), paramBuilder.d());
+  }
+  
+  @VisibleForTesting
+  boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.g(paramAbsBaseArticleInfo)) || (RIJFeedsType.p(paramAbsBaseArticleInfo)) || (RIJFeedsType.q(paramAbsBaseArticleInfo)) || (RIJFeedsType.s(paramAbsBaseArticleInfo)) || (RIJFeedsType.t(paramAbsBaseArticleInfo));
   }
   
   @VisibleForTesting
   boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    return (paramInt == 11) || (paramInt == 28) || (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo) == 23) || (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo) == 56);
+    return (RIJItemViewTypeUtils.c(paramInt)) || (RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.n(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.p(paramAbsBaseArticleInfo));
+  }
+  
+  @VisibleForTesting
+  boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
+  {
+    return (paramInt == 11) || (paramInt == 28) || (RIJItemViewTypeUtils.A(paramAbsBaseArticleInfo) == 23) || (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo) == 56);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.click.RIJListViewGroupHandlerClick
  * JD-Core Version:    0.7.0.1
  */

@@ -41,38 +41,38 @@ public class RvPolymericContainer
   extends ViewBase
   implements IRvPolymericContainer, RvPolymericOnChangedListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new RvPolymericContainer.1(this);
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private SizeValue jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
-  private ProteusRecycleView.OnStateChangeListener jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener;
-  private ProteusRecycleView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView;
-  private ProteusPagerSnapHelper jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper;
-  private RecycleViewAdapterHelper jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper;
-  private SpaceManager jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericLayoutSpaceManager;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[4];
-  private int jdField_b_of_type_Int = 3000;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private SizeValue jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 1000;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = Utils.rp2px(16.0D);
-  private String jdField_d_of_type_JavaLangString = "#80FFFFFF";
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = Utils.rp2px(3.0D);
-  private String jdField_e_of_type_JavaLangString = "#FF07D0B0";
-  private boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int = Utils.rp2px(2.5D);
-  private boolean jdField_f_of_type_Boolean = true;
-  private int g = Utils.rp2px(4.0D);
-  private int h = Utils.rp2px(12.0D);
+  private int A = Utils.rp2px(3.0D);
+  private int B = Utils.rp2px(2.5D);
+  private int C = Utils.rp2px(4.0D);
+  private int D = Utils.rp2px(12.0D);
+  private ProteusRecycleView.OnStateChangeListener E;
+  private RecyclerView.OnScrollListener F = new RvPolymericContainer.1(this);
+  private RelativeLayout a;
+  private ProteusRecycleView b;
+  private LinearLayout c;
+  private RecycleViewAdapterHelper d;
+  private boolean e;
+  private boolean f;
+  private String g;
+  private String h;
+  private SizeValue i;
+  private SizeValue j;
+  private boolean k = false;
+  private String l;
+  private int[] m = new int[4];
+  private SpaceManager n;
+  private int o = 0;
+  private ProteusPagerSnapHelper p;
+  private boolean q = false;
+  private boolean r = false;
+  private int s = 3000;
+  private int t = 1000;
+  private boolean u = true;
+  private Drawable v;
+  private Drawable w;
+  private String x = "#80FFFFFF";
+  private String y = "#FF07D0B0";
+  private int z = Utils.rp2px(16.0D);
   
   public RvPolymericContainer(VafContext paramVafContext)
   {
@@ -99,61 +99,56 @@ public class RvPolymericContainer
   
   private void a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper = new RecycleViewAdapterHelper(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView = new ProteusRecycleView(paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(new RvPolymericContainer.2(this));
+    this.d = new RecycleViewAdapterHelper(paramVafContext);
+    this.b = new ProteusRecycleView(paramVafContext.getContext());
+    this.b.setAdapter(this.d);
+    this.d.a(this.b);
+    this.d.a(new RvPolymericContainer.2(this));
     Object localObject = new LinearLayoutManager(paramVafContext.getContext());
-    if (this.jdField_f_of_type_Boolean) {
+    if (this.u) {
       ((LinearLayoutManager)localObject).setOrientation(0);
     } else {
       ((LinearLayoutManager)localObject).setOrientation(1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.addOnChildAttachStateChangeListener(new RvPolymericContainer.3(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramVafContext.getContext());
+    this.b.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.b.addOnScrollListener(this.F);
+    this.b.addOnChildAttachStateChangeListener(new RvPolymericContainer.3(this));
+    this.a = new RelativeLayout(paramVafContext.getContext());
     localObject = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramVafContext.getContext());
+    this.a.addView(this.b, (ViewGroup.LayoutParams)localObject);
+    this.c = new LinearLayout(paramVafContext.getContext());
     localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(14);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, this.h);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
+    this.c.setPadding(0, 0, 0, this.D);
+    this.a.addView(this.c, (ViewGroup.LayoutParams)localObject);
     a(paramVafContext.getCurActivity());
   }
   
   private void a(Runnable paramRunnable)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.isComputingLayout())
+    if (!this.b.isComputingLayout())
     {
       paramRunnable.run();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.postDelayed(new RvPolymericContainer.7(this, paramRunnable), 100L);
-  }
-  
-  private void a(JSONArray paramJSONArray)
-  {
-    a(new RvPolymericContainer.6(this, paramJSONArray));
+    this.b.postDelayed(new RvPolymericContainer.7(this, paramRunnable), 100L);
   }
   
   private void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
   {
-    int i = 1;
-    while (i < paramJSONArray1.length())
+    int i1 = 1;
+    while (i1 < paramJSONArray1.length())
     {
-      a(paramJSONArray1, paramJSONArray2, paramJSONArray1.get(i));
-      a(paramJSONArray2);
-      i += 1;
+      a(paramJSONArray1, paramJSONArray2, paramJSONArray1.get(i1));
+      c(paramJSONArray2);
+      i1 += 1;
     }
   }
   
   private void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2, int paramInt)
   {
-    if (a(paramJSONArray1, paramJSONArray2, paramInt))
+    if (b(paramJSONArray1, paramJSONArray2, paramInt))
     {
       paramJSONArray2 = (JSONObject)paramJSONArray2.get(paramInt);
       paramJSONArray1 = (JSONObject)paramJSONArray1.get(paramInt);
@@ -171,24 +166,18 @@ public class RvPolymericContainer
     if ((paramObject instanceof JSONArray))
     {
       paramObject = (JSONArray)paramObject;
-      int i = 0;
-      while ((i < paramJSONArray1.length()) && (i < paramJSONArray2.length()))
+      int i1 = 0;
+      while ((i1 < paramJSONArray1.length()) && (i1 < paramJSONArray2.length()))
       {
-        a(paramJSONArray2, paramObject, i);
-        i += 1;
+        a(paramJSONArray2, paramObject, i1);
+        i1 += 1;
       }
     }
   }
   
-  private boolean a(Object paramObject)
-  {
-    this.jdField_d_of_type_Boolean = "1".equals(paramObject);
-    return true;
-  }
-  
   private boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramString;
     return true;
   }
   
@@ -198,14 +187,14 @@ public class RvPolymericContainer
     {
       try
       {
-        this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue = new SizeValue();
-        this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue.value = Double.valueOf(paramJSONArray.getString(0)).doubleValue();
-        SizeValue localSizeValue = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
+        this.j = new SizeValue();
+        this.j.value = Double.valueOf(paramJSONArray.getString(0)).doubleValue();
+        SizeValue localSizeValue = this.j;
         if (!"relative".equals(paramJSONArray.getString(0))) {
           break label77;
         }
-        i = 1003;
-        localSizeValue.valueType = i;
+        i1 = 1003;
+        localSizeValue.valueType = i1;
       }
       catch (Exception paramJSONArray)
       {
@@ -213,117 +202,94 @@ public class RvPolymericContainer
       }
       return true;
       label77:
-      int i = 1004;
+      int i1 = 1004;
     }
-  }
-  
-  private boolean a(JSONArray paramJSONArray1, JSONArray paramJSONArray2, int paramInt)
-  {
-    return ((paramJSONArray2.get(paramInt) instanceof JSONObject)) && ((paramJSONArray1.get(paramInt) instanceof JSONObject));
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() != 0) {
+    if (this.c.getVisibility() != 0) {
       return;
     }
-    int m = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a();
-    int k = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    if (m <= 1)
+    int i4 = this.d.a();
+    int i3 = this.c.getChildCount();
+    int i1 = 0;
+    if (i4 <= 1)
     {
-      while (i < k)
+      while (i1 < i3)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setVisibility(8);
-        i += 1;
+        this.c.getChildAt(i1).setVisibility(8);
+        i1 += 1;
       }
       return;
     }
-    int j;
-    if (m > k)
+    int i2;
+    if (i4 > i3)
     {
-      Context localContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
-      int n = this.jdField_d_of_type_Int;
-      int i1 = this.jdField_e_of_type_Int;
-      i = k;
-      while (i < m)
+      Context localContext = this.c.getContext();
+      int i5 = this.z;
+      int i6 = this.A;
+      i1 = i3;
+      while (i1 < i4)
       {
         View localView = new View(localContext);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(n, i1);
-        if (i == 0) {
-          j = 0;
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i5, i6);
+        if (i1 == 0) {
+          i2 = 0;
         } else {
-          j = this.g;
+          i2 = this.C;
         }
-        localLayoutParams.leftMargin = j;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130849717);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localContext.getResources().getDrawable(2130849718);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(Color.parseColor(this.jdField_d_of_type_JavaLangString), PorterDuff.Mode.SRC_OVER);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(Color.parseColor(this.jdField_e_of_type_JavaLangString), PorterDuff.Mode.SRC_OVER);
+        localLayoutParams.leftMargin = i2;
+        this.v = localContext.getResources().getDrawable(2130851426);
+        this.w = localContext.getResources().getDrawable(2130851427);
+        this.v.setColorFilter(Color.parseColor(this.x), PorterDuff.Mode.SRC_OVER);
+        this.w.setColorFilter(Color.parseColor(this.y), PorterDuff.Mode.SRC_OVER);
         Drawable localDrawable;
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof GradientDrawable))
+        if ((this.v instanceof GradientDrawable))
         {
-          localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+          localDrawable = this.w;
           if ((localDrawable instanceof GradientDrawable))
           {
-            ((GradientDrawable)localDrawable).setCornerRadius(this.jdField_f_of_type_Int);
-            ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setCornerRadius(this.jdField_f_of_type_Int);
+            ((GradientDrawable)localDrawable).setCornerRadius(this.B);
+            ((GradientDrawable)this.v).setCornerRadius(this.B);
           }
         }
-        if (i == 0) {
-          localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (i1 == 0) {
+          localDrawable = this.w;
         } else {
-          localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          localDrawable = this.v;
         }
         localView.setBackgroundDrawable(localDrawable);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView, localLayoutParams);
-        i += 1;
+        this.c.addView(localView, localLayoutParams);
+        i1 += 1;
       }
     }
-    i = 0;
+    i1 = 0;
     for (;;)
     {
-      j = m;
-      if (i >= m) {
+      i2 = i4;
+      if (i1 >= i4) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setVisibility(0);
-      i += 1;
+      this.c.getChildAt(i1).setVisibility(0);
+      i1 += 1;
     }
-    while (j < k)
+    while (i2 < i3)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).setVisibility(8);
-      j += 1;
-    }
-  }
-  
-  private void b(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray == null) {
-      return;
-    }
-    String str = paramJSONArray.optString(0, "0");
-    paramJSONArray = paramJSONArray.optJSONArray(1);
-    this.jdField_c_of_type_Boolean = "1".equals(str);
-    if (paramJSONArray != null)
-    {
-      this.jdField_d_of_type_JavaLangString = paramJSONArray.optString(0, "#80FFFFFF");
-      this.jdField_e_of_type_JavaLangString = paramJSONArray.optString(1, "#FF07D0B0");
+      this.c.getChildAt(i2).setVisibility(8);
+      i2 += 1;
     }
   }
   
   private boolean b(Object paramObject)
   {
-    if (!(paramObject instanceof JSONArray)) {
-      return false;
-    }
-    c((JSONArray)paramObject);
+    this.q = "1".equals(paramObject);
     return true;
   }
   
   private boolean b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.h = paramString;
     return true;
   }
   
@@ -333,14 +299,14 @@ public class RvPolymericContainer
     {
       try
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue = new SizeValue();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue.value = Double.valueOf(paramJSONArray.getString(0)).doubleValue();
-        SizeValue localSizeValue = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
+        this.i = new SizeValue();
+        this.i.value = Double.valueOf(paramJSONArray.getString(0)).doubleValue();
+        SizeValue localSizeValue = this.i;
         if (!"relative".equals(paramJSONArray.getString(0))) {
           break label77;
         }
-        i = 1003;
-        localSizeValue.valueType = i;
+        i1 = 1003;
+        localSizeValue.valueType = i1;
       }
       catch (Exception paramJSONArray)
       {
@@ -348,50 +314,33 @@ public class RvPolymericContainer
       }
       return true;
       label77:
-      int i = 1004;
+      int i1 = 1004;
     }
+  }
+  
+  private boolean b(JSONArray paramJSONArray1, JSONArray paramJSONArray2, int paramInt)
+  {
+    return ((paramJSONArray2.get(paramInt) instanceof JSONObject)) && ((paramJSONArray1.get(paramInt) instanceof JSONObject));
   }
   
   private void c()
   {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper != null))
+    if ((this.r) && (this.p != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a() > 1)
+      if (this.d.a() > 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.a();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.a(this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.b(this.jdField_c_of_type_Int);
+        this.p.a();
+        this.p.a(this.s);
+        this.p.b(this.t);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.b();
+      this.p.b();
     }
   }
   
   private void c(JSONArray paramJSONArray)
   {
-    if (paramJSONArray == null) {
-      return;
-    }
-    String str = paramJSONArray.optString(0, "relative");
-    double d1 = paramJSONArray.optDouble(1, 16.0D);
-    double d2 = paramJSONArray.optDouble(2, 3.0D);
-    double d3 = paramJSONArray.optDouble(3, 2.5D);
-    double d4 = paramJSONArray.optDouble(4, 4.0D);
-    double d5 = paramJSONArray.optDouble(5, 12.0D);
-    if ("relative".equals(str))
-    {
-      this.jdField_d_of_type_Int = Utils.rp2px(d1);
-      this.jdField_e_of_type_Int = Utils.rp2px(d2);
-      this.jdField_f_of_type_Int = Utils.rp2px(d3);
-      this.g = Utils.rp2px(d4);
-      this.h = Utils.rp2px(d5);
-      return;
-    }
-    this.jdField_d_of_type_Int = Utils.dp2px(d1);
-    this.jdField_e_of_type_Int = Utils.dp2px(d2);
-    this.jdField_f_of_type_Int = Utils.dp2px(d3);
-    this.g = Utils.dp2px(d4);
-    this.h = Utils.dp2px(d5);
+    a(new RvPolymericContainer.6(this, paramJSONArray));
   }
   
   private boolean c(Object paramObject)
@@ -399,65 +348,100 @@ public class RvPolymericContainer
     if (!(paramObject instanceof JSONArray)) {
       return false;
     }
-    b((JSONArray)paramObject);
+    f((JSONArray)paramObject);
     return true;
   }
   
   private boolean c(String paramString)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = Integer.valueOf(paramString).intValue();
+    this.q = true;
+    this.r = true;
+    this.s = Integer.valueOf(paramString).intValue();
     return true;
-  }
-  
-  private boolean c(JSONArray paramJSONArray)
-  {
-    return (paramJSONArray.length() == 0) || (!(paramJSONArray.get(0) instanceof JSONArray));
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
+      Object localObject = this.i;
       if (localObject != null) {
         localLayoutParams = new RelativeLayout.LayoutParams(-1, ((SizeValue)localObject).getLayoutSize());
       }
-      localObject = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue != null)) {
-        localLayoutParams.topMargin = (((SizeValue)localObject).getLayoutSize() - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue.getLayoutSize() / 2);
+      localObject = this.j;
+      if ((localObject != null) && (this.i != null)) {
+        localLayoutParams.topMargin = (((SizeValue)localObject).getLayoutSize() - this.i.getLayoutSize() / 2);
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a() == null))
+      if ((this.e) && (this.b.getSideBarView() == null))
       {
         localObject = new SideBarView(this.mContext.getContext());
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.setSideBarView((SideBarView)localObject);
+        this.a.addView((View)localObject, localLayoutParams);
+        this.b.setSideBarView((SideBarView)localObject);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a().setPath(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a().setBgColor(this.jdField_b_of_type_JavaLangString);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a();
+      this.b.getSideBarView().setPath(this.g);
+      this.b.getSideBarView().setBgColor(this.h);
+      localObject = this.b.getSideBarView();
       float f1;
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.f) {
         f1 = 1.0F;
       } else {
         f1 = 0.0F;
       }
       ((SideBarView)localObject).setAlpha(f1);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a().setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a().setMinimumHeight(0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.setOnStateChangeListener(new RvPolymericContainer.8(this));
+      this.b.getSideBarView().setLayoutParams(localLayoutParams);
+      this.b.getSideBarView().setMinimumHeight(0);
+      this.b.setOnStateChangeListener(new RvPolymericContainer.8(this));
     }
   }
   
   private boolean d(Object paramObject)
   {
+    if (!(paramObject instanceof JSONArray)) {
+      return false;
+    }
+    e((JSONArray)paramObject);
+    return true;
+  }
+  
+  private boolean d(String paramString)
+  {
+    this.k = "1".equals(paramString);
+    return true;
+  }
+  
+  private boolean d(JSONArray paramJSONArray)
+  {
+    return (paramJSONArray.length() == 0) || (!(paramJSONArray.get(0) instanceof JSONArray));
+  }
+  
+  private void e()
+  {
+    ThreadManager.getUIHandler().post(new RvPolymericContainer.10(this));
+  }
+  
+  private void e(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null) {
+      return;
+    }
+    String str = paramJSONArray.optString(0, "0");
+    paramJSONArray = paramJSONArray.optJSONArray(1);
+    this.k = "1".equals(str);
+    if (paramJSONArray != null)
+    {
+      this.x = paramJSONArray.optString(0, "#80FFFFFF");
+      this.y = paramJSONArray.optString(1, "#FF07D0B0");
+    }
+  }
+  
+  private boolean e(Object paramObject)
+  {
     try
     {
       if ((paramObject instanceof JSONArray))
       {
-        if (c((JSONArray)paramObject)) {
+        if (d((JSONArray)paramObject)) {
           return false;
         }
         paramObject = (JSONArray)paramObject;
@@ -473,23 +457,45 @@ public class RvPolymericContainer
     return true;
   }
   
-  private boolean d(String paramString)
+  private boolean e(String paramString)
   {
-    this.jdField_c_of_type_Boolean = "1".equals(paramString);
+    this.f = "1".equals(paramString);
     return true;
   }
   
-  private void e()
+  private void f(JSONArray paramJSONArray)
   {
-    ThreadManager.getUIHandler().post(new RvPolymericContainer.10(this));
+    if (paramJSONArray == null) {
+      return;
+    }
+    String str = paramJSONArray.optString(0, "relative");
+    double d1 = paramJSONArray.optDouble(1, 16.0D);
+    double d2 = paramJSONArray.optDouble(2, 3.0D);
+    double d3 = paramJSONArray.optDouble(3, 2.5D);
+    double d4 = paramJSONArray.optDouble(4, 4.0D);
+    double d5 = paramJSONArray.optDouble(5, 12.0D);
+    if ("relative".equals(str))
+    {
+      this.z = Utils.rp2px(d1);
+      this.A = Utils.rp2px(d2);
+      this.B = Utils.rp2px(d3);
+      this.C = Utils.rp2px(d4);
+      this.D = Utils.rp2px(d5);
+      return;
+    }
+    this.z = Utils.dp2px(d1);
+    this.A = Utils.dp2px(d2);
+    this.B = Utils.dp2px(d3);
+    this.C = Utils.dp2px(d4);
+    this.D = Utils.dp2px(d5);
   }
   
-  private boolean e(Object paramObject)
+  private boolean f(Object paramObject)
   {
     try
     {
       boolean bool = paramObject instanceof JSONArray;
-      int i = 0;
+      int i1 = 0;
       if (!bool) {
         return false;
       }
@@ -497,13 +503,13 @@ public class RvPolymericContainer
       if (paramObject.length() < 4) {
         return false;
       }
-      while (i < 4)
+      while (i1 < 4)
       {
-        Integer localInteger = Utils.toInteger(Integer.valueOf(paramObject.getInt(i)));
+        Integer localInteger = Utils.toInteger(Integer.valueOf(paramObject.getInt(i1)));
         if (localInteger != null) {
-          this.jdField_a_of_type_ArrayOfInt[i] = Utils.rp2px(localInteger.intValue());
+          this.m[i1] = Utils.rp2px(localInteger.intValue());
         }
-        i += 1;
+        i1 += 1;
       }
       return true;
     }
@@ -513,33 +519,38 @@ public class RvPolymericContainer
     }
   }
   
-  private boolean e(String paramString)
-  {
-    this.jdField_b_of_type_Boolean = "1".equals(paramString);
-    return true;
-  }
-  
-  private boolean f(Object paramObject)
-  {
-    if ((paramObject instanceof JSONArray)) {
-      a((JSONArray)paramObject);
-    }
-    return true;
-  }
-  
   private boolean f(String paramString)
   {
-    this.jdField_a_of_type_Boolean = "1".equals(paramString);
+    this.e = "1".equals(paramString);
     return true;
   }
   
   private boolean g(Object paramObject)
   {
+    if ((paramObject instanceof JSONArray)) {
+      c((JSONArray)paramObject);
+    }
+    return true;
+  }
+  
+  private boolean g(String paramString)
+  {
+    if (String.valueOf(1).equals(paramString))
+    {
+      this.o = 1;
+      return true;
+    }
+    this.o = 0;
+    return true;
+  }
+  
+  private boolean h(Object paramObject)
+  {
     if ((paramObject instanceof List)) {
       try
       {
         paramObject = (List)paramObject;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(paramObject);
+        this.d.a(paramObject);
       }
       catch (Exception paramObject)
       {
@@ -549,26 +560,15 @@ public class RvPolymericContainer
     return true;
   }
   
-  private boolean g(String paramString)
-  {
-    if (String.valueOf(1).equals(paramString))
-    {
-      this.jdField_a_of_type_Int = 1;
-      return true;
-    }
-    this.jdField_a_of_type_Int = 0;
-    return true;
-  }
-  
   private boolean h(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.l = paramString;
     return true;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper == null) {
+    if (this.d == null) {
       return;
     }
     b();
@@ -576,90 +576,90 @@ public class RvPolymericContainer
   
   public void a(int paramInt)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = this.c.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      View localView = this.c.getChildAt(i1);
       Drawable localDrawable;
-      if (i == paramInt) {
-        localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      if (i1 == paramInt) {
+        localDrawable = this.w;
       } else {
-        localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localDrawable = this.v;
       }
       localView.setBackgroundDrawable(localDrawable);
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void a(ProteusRecycleView.OnStateChangeListener paramOnStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView$OnStateChangeListener = paramOnStateChangeListener;
+    this.E = paramOnStateChangeListener;
   }
   
   public void a(RecycleViewAdapterHelper.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(paramOnItemClickListener);
+    this.d.a(paramOnItemClickListener);
   }
   
   public void a(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(paramIReadInJoyModel);
+    this.d.a(paramIReadInJoyModel);
     a();
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(paramObject);
+    this.d.a(paramObject);
   }
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+    return this.a.getMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth();
+    return this.a.getMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    return this.a;
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(paramInt1, paramInt2);
-    SideBarView localSideBarView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.a();
+    this.a.measure(paramInt1, paramInt2);
+    SideBarView localSideBarView = this.b.getSideBarView();
     if ((localSideBarView != null) && (localSideBarView.getLayoutParams() != null))
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localSideBarView.getLayoutParams();
-      paramInt1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+      paramInt1 = this.a.getMeasuredHeight();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("sideBarView, onComMeasure, height = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight());
+        ((StringBuilder)localObject).append(this.a.getMeasuredHeight());
         QLog.i("RvPolymericContainer", 2, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("sideBarView, onComMeasure, width = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth());
+        ((StringBuilder)localObject).append(this.a.getMeasuredWidth());
         QLog.i("RvPolymericContainer", 2, ((StringBuilder)localObject).toString());
       }
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue == null) && (localLayoutParams.height != paramInt1))
+      if ((this.i == null) && (localLayoutParams.height != paramInt1))
       {
         localLayoutParams.height = paramInt1;
         localSideBarView.setLayoutParams(localLayoutParams);
         localSideBarView.setMinimumHeight(localLayoutParams.height);
       }
-      Object localObject = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanValueitemSizeValue == null))
+      Object localObject = this.j;
+      if ((localObject != null) && (this.i == null))
       {
         localLayoutParams.topMargin = (((SizeValue)localObject).getLayoutSize() - paramInt1 / 2);
         localSideBarView.setLayoutParams(localLayoutParams);
@@ -670,29 +670,29 @@ public class RvPolymericContainer
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(this.mBackground);
+    this.a.setBackgroundColor(this.mBackground);
     d();
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper == null))
+    if ((this.o == 1) && (this.p == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper = new ProteusPagerSnapHelper();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperProteusPagerSnapHelper.a(new RvPolymericContainer.5(this));
+      this.p = new ProteusPagerSnapHelper();
+      this.p.a(this.b);
+      this.p.a(new RvPolymericContainer.5(this));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericLayoutSpaceManager;
-    int i = 0;
+    Object localObject = this.n;
+    int i1 = 0;
     if (localObject == null)
     {
-      boolean bool = this.jdField_f_of_type_Boolean;
-      localObject = this.jdField_a_of_type_ArrayOfInt;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericLayoutSpaceManager = new SpaceManager(bool, localObject[0], localObject[1], localObject[2], localObject[3]);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericProteusRecycleView.addItemDecoration(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericLayoutSpaceManager);
+      boolean bool = this.u;
+      localObject = this.m;
+      this.n = new SpaceManager(bool, localObject[0], localObject[1], localObject[2], localObject[3]);
+      this.b.addItemDecoration(this.n);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    if (!this.jdField_c_of_type_Boolean) {
-      i = 8;
+    localObject = this.c;
+    if (!this.k) {
+      i1 = 8;
     }
-    ((LinearLayout)localObject).setVisibility(i);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a(this.jdField_d_of_type_Boolean);
+    ((LinearLayout)localObject).setVisibility(i1);
+    this.d.a(this.q);
     c();
   }
   
@@ -721,19 +721,19 @@ public class RvPolymericContainer
                   }
                   return b((JSONArray)paramObject);
                 }
-                return b(paramObject);
+                return c(paramObject);
               }
-              return c(paramObject);
+              return d(paramObject);
             }
-            return a(paramObject);
+            return b(paramObject);
           }
-          return g(paramObject);
+          return h(paramObject);
         }
-        return e(paramObject);
+        return f(paramObject);
       }
-      return d(paramObject);
+      return e(paramObject);
     }
-    return f(paramObject);
+    return g(paramObject);
   }
   
   protected boolean setAttribute(int paramInt, String paramString)
@@ -768,7 +768,7 @@ public class RvPolymericContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer
  * JD-Core Version:    0.7.0.1
  */

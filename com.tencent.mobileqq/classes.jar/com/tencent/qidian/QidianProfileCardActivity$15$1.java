@@ -12,13 +12,13 @@ class QidianProfileCardActivity$15$1
   
   public void onClick(View paramView)
   {
-    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
+    ((ClipboardManager)this.a.c.getSystemService("clipboard")).setText(this.a.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

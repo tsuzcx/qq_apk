@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/ajr" />
-    <stroke android:width="1.0dip" android:color="#ff00cafc" />
-    <corners android:radius="8.0dip" />
-</shape>
+    <item android:state_selected="true" android:drawable="@drawable/itv" />
+    <item android:state_pressed="true" android:drawable="@drawable/itv" />
+    <item android:drawable="@drawable/qb_troop_history_emotion" />
+</selector>

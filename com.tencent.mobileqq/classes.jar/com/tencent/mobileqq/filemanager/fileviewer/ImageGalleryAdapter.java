@@ -27,20 +27,20 @@ public class ImageGalleryAdapter
   extends BaseAdapter
   implements OnProGalleryListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<FileBrowserModelBase.ImageFileInfo> jdField_a_of_type_JavaUtilList;
-  private Drawable b;
-  private Drawable c = null;
+  private Context a;
+  private List<FileBrowserModelBase.ImageFileInfo> b;
+  private int c;
+  private Drawable d;
+  private Drawable e;
+  private Drawable f = null;
+  private SparseArray<URLDrawable> g = new SparseArray();
   
   public ImageGalleryAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130851160);
-    this.b = paramContext.getResources().getDrawable(2130839406);
+    this.a = paramContext;
+    this.c = this.a.getResources().getDisplayMetrics().densityDpi;
+    this.d = paramContext.getResources().getDrawable(2130853414);
+    this.e = paramContext.getResources().getDrawable(2130839590);
   }
   
   private void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
@@ -71,12 +71,12 @@ public class ImageGalleryAdapter
   
   public void a(List<FileBrowserModelBase.ImageFileInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -85,7 +85,7 @@ public class ImageGalleryAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -102,11 +102,11 @@ public class ImageGalleryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560840, null);
+      localView = LayoutInflater.from(this.a).inflate(2131627098, null);
       paramView = new ImageGalleryAdapter.ImagePhotoHolder(this, null);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368461));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378745));
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131373132));
+      paramView.a = ((URLImageView)localView.findViewById(2131435357));
+      paramView.b = ((TextView)localView.findViewById(2131447419));
+      paramView.c = ((ProgressBar)localView.findViewById(2131440737));
       localView.setTag(paramView);
     }
     else
@@ -118,45 +118,45 @@ public class ImageGalleryAdapter
     Object localObject1 = (FileBrowserModelBase.ImageFileInfo)getItem(paramInt);
     if (localObject1 == null)
     {
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramView.a.setImageDrawable(this.d);
     }
     else
     {
-      URL localURL = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
-      int i = ((FileBrowserModelBase.ImageFileInfo)localObject1).a();
+      URL localURL = ((FileBrowserModelBase.ImageFileInfo)localObject1).b();
+      int i = ((FileBrowserModelBase.ImageFileInfo)localObject1).d();
       if (localURL != null)
       {
-        Object localObject2 = this.b;
+        Object localObject2 = this.e;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
-        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localURLDrawableOptions.mFailedDrawable = this.d;
         localURLDrawableOptions.mPlayGifImage = true;
         localURLDrawableOptions.mUseExifOrientation = false;
         localObject2 = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-        ((URLDrawable)localObject2).setTargetDensity(this.jdField_a_of_type_Int);
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        ((URLDrawable)localObject2).setTargetDensity(this.c);
+        paramView.a.setImageDrawable((Drawable)localObject2);
         if (((FileBrowserModelBase.ImageFileInfo)localObject1).a()) {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+          paramView.c.setVisibility(0);
         } else {
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+          paramView.c.setVisibility(4);
         }
-        a(localView, (URLDrawable)localObject2, ((FileBrowserModelBase.ImageFileInfo)localObject1).b());
-        if ((i == 1) && (AsyncImageView.a(localURL)) && (FileUtil.b(((FileBrowserModelBase.ImageFileInfo)localObject1).b())))
+        a(localView, (URLDrawable)localObject2, ((FileBrowserModelBase.ImageFileInfo)localObject1).e());
+        if ((i == 1) && (AsyncImageView.a(localURL)) && (FileUtil.d(((FileBrowserModelBase.ImageFileInfo)localObject1).g())))
         {
           ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+          this.g.put(paramInt, localObject2);
         }
         else
         {
-          this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+          this.g.remove(paramInt);
         }
       }
       else
       {
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        if (!((FileBrowserModelBase.ImageFileInfo)localObject1).b())
+        paramView.a.setImageDrawable(this.d);
+        if (!((FileBrowserModelBase.ImageFileInfo)localObject1).f())
         {
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          paramView.b.setVisibility(0);
           localView.setTag(2131296386, Float.valueOf(1.0F));
         }
       }
@@ -172,19 +172,19 @@ public class ImageGalleryAdapter
   
   public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    paramView = (URLDrawable)this.g.get(paramInt);
     if (paramView != null)
     {
       if (paramView.getStatus() == 0) {
         paramView.cancelDownload(true);
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+      this.g.remove(paramInt);
     }
   }
   
   public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    paramView = (URLDrawable)this.g.get(paramInt);
     if (paramView != null) {
       paramView.updateRegionBitmap(paramRegionDrawableData);
     }
@@ -198,7 +198,7 @@ public class ImageGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.ImageGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

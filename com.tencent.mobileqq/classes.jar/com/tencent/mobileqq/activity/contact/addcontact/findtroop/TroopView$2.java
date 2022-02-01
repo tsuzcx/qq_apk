@@ -10,14 +10,14 @@ class TroopView$2
   
   public void a(int paramInt)
   {
-    if (paramInt == SimpleCheckableSlidingIndicator.a) {
-      TroopView.a(this.a);
+    if (paramInt == SimpleCheckableSlidingIndicator.b) {
+      TroopView.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.2
  * JD-Core Version:    0.7.0.1
  */

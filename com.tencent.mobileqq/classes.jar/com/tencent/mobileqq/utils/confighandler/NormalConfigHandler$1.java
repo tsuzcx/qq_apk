@@ -15,38 +15,38 @@ class NormalConfigHandler$1
   {
     paramArrayList = (ReadConfigTask)paramArrayList.get(0);
     StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask == paramArrayList))
+    if ((this.c.mReadConfigTask != null) && (this.c.mReadConfigTask == paramArrayList))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG;
+      localObject = this.c.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("异步加载config返回, bsuc[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("], TAG[");
-      localStringBuilder.append(paramArrayList.TAG);
+      localStringBuilder.append(paramArrayList.mTAG);
       localStringBuilder.append("], config[");
       localStringBuilder.append(paramArrayList.mConfigInfo);
       localStringBuilder.append("]");
       QLog.w((String)localObject, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask = null;
+      this.c.mReadConfigTask = null;
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG;
+      localObject = this.c.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("异步加载config返回[");
-      localStringBuilder.append(paramArrayList.TAG);
+      localStringBuilder.append(paramArrayList.mTAG);
       localStringBuilder.append("], 但原请求取消了");
       QLog.w((String)localObject, 1, localStringBuilder.toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler$GetConfigListen;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((NormalConfigHandler.GetConfigListen)localObject).onGetConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList.mConfigInfo);
+      ((NormalConfigHandler.GetConfigListen)localObject).onGetConfig(this.b, paramArrayList.mConfigInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.1
  * JD-Core Version:    0.7.0.1
  */

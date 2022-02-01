@@ -3,10 +3,10 @@ package com.tencent.mobileqq.qcircle.api;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Pair;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.mobileqq.qcircle.api.data.Option;
 import com.tencent.mobileqq.qcircle.api.data.QCircleRecentDataInterface;
-import com.tencent.mobileqq.qcircle.api.interfaces.QCirclePicStateListener;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import feedcloud.FeedCloudRead.StGetMainPageRsp;
 import java.util.ArrayList;
@@ -23,13 +23,11 @@ public abstract interface IQCircleService
   
   public abstract void enterByScheme(Context paramContext, String paramString);
   
-  public abstract void enterBySchemeAction(Context paramContext, String paramString, HashMap<String, String> paramHashMap);
+  public abstract void enterBySchemeAction(Context paramContext, String paramString, @NonNull HashMap<String, String> paramHashMap);
   
-  public abstract void enterBySchemeAction(Context paramContext, String paramString, HashMap<String, String> paramHashMap, HashMap<String, byte[]> paramHashMap1);
+  public abstract void enterBySchemeAction(Context paramContext, String paramString, @NonNull HashMap<String, String> paramHashMap, @Nullable HashMap<String, byte[]> paramHashMap1);
   
   public abstract Pair<Integer, List<String>> getQCircleChatRedPointInfoFromMessageList();
-  
-  public abstract void loadImage(Option paramOption, QCirclePicStateListener paramQCirclePicStateListener);
   
   public abstract ArrayList<QCircleRecentDataInterface> makeRecentBaseDataList();
   
@@ -45,7 +43,7 @@ public abstract interface IQCircleService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.IQCircleService
  * JD-Core Version:    0.7.0.1
  */

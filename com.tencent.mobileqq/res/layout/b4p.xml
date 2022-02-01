@@ -7,6 +7,6 @@
     </LinearLayout>
     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
         <TextView android:textSize="16.0dip" android:textColor="#ff797979" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r1u" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/aly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="0" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/black" android:id="@id/aly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="0" />
     </LinearLayout>
 </LinearLayout>

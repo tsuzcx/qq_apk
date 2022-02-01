@@ -11,9 +11,9 @@ public class IdentifierWebJumpParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new IdentifierWebJumpAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qqidentifier";
-    paramBaseQQAppInterface.c = "web";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qqidentifier";
+    paramBaseQQAppInterface.e = "web";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -33,7 +33,7 @@ public class IdentifierWebJumpParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.IdentifierWebJumpParser
  * JD-Core Version:    0.7.0.1
  */

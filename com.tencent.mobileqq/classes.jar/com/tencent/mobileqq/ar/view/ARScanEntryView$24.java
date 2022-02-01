@@ -10,12 +10,12 @@ class ARScanEntryView$24
   
   public void run()
   {
-    QQToast.a(this.this$0.a, HardCodeUtil.a(2131700968), 1).b(this.this$0.a());
+    QQToast.makeText(this.this$0.E, HardCodeUtil.a(2131898991), 1).show(this.this$0.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.24
  * JD-Core Version:    0.7.0.1
  */

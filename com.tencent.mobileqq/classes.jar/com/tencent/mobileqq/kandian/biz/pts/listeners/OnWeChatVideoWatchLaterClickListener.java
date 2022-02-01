@@ -31,18 +31,6 @@ public class OnWeChatVideoWatchLaterClickListener
     this.a = paramAbsBaseArticleInfo;
   }
   
-  public static List<RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem> a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem localWeChatVideoArticleItem = new RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem();
-    localWeChatVideoArticleItem.jdField_a_of_type_Long = paramAbsBaseArticleInfo.mFeedId;
-    localWeChatVideoArticleItem.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo.innerUniqueID;
-    localWeChatVideoArticleItem.jdField_a_of_type_Int = paramInt1;
-    localWeChatVideoArticleItem.b = paramInt2;
-    localArrayList.add(localWeChatVideoArticleItem);
-    return localArrayList;
-  }
-  
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo != null)
@@ -60,7 +48,7 @@ public class OnWeChatVideoWatchLaterClickListener
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2)
   {
-    if (a(paramAbsBaseArticleInfo))
+    if (b(paramAbsBaseArticleInfo))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestWechatVideoSeelaterProgress: ");
@@ -70,13 +58,25 @@ public class OnWeChatVideoWatchLaterClickListener
       localStringBuilder.append(" duration: ");
       localStringBuilder.append(paramInt2);
       QLog.d("OnWeChatVideoSeeLaterClickListener", 1, localStringBuilder.toString());
-      ReadInJoyLogicEngine.a().a().a(a(paramAbsBaseArticleInfo, paramInt1, paramInt2));
+      ReadInJoyLogicEngine.a().t().a(b(paramAbsBaseArticleInfo, paramInt1, paramInt2));
       return;
     }
     QLog.d("OnWeChatVideoSeeLaterClickListener", 1, "requestWechatVideoSeelaterProgress: null");
   }
   
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static List<RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem> b(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem localWeChatVideoArticleItem = new RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem();
+    localWeChatVideoArticleItem.b = paramAbsBaseArticleInfo.mFeedId;
+    localWeChatVideoArticleItem.a = paramAbsBaseArticleInfo.innerUniqueID;
+    localWeChatVideoArticleItem.c = paramInt1;
+    localWeChatVideoArticleItem.d = paramInt2;
+    localArrayList.add(localWeChatVideoArticleItem);
+    return localArrayList;
+  }
+  
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo == null) {
@@ -96,25 +96,25 @@ public class OnWeChatVideoWatchLaterClickListener
       QLog.d("OnWeChatVideoSeeLaterClickListener", 1, "articleInfo is null");
       return;
     }
-    if (a(paramViewBase))
+    if (b(paramViewBase))
     {
       QLog.d("OnWeChatVideoSeeLaterClickListener", 1, "Watch see later already clicked!");
       return;
     }
     a(this.a);
-    ReadInJoyLogicEngine.a().c(this.a);
+    ReadInJoyLogicEngine.a().d(this.a);
     ReadInJoyLogicEngineEventDispatcher.a().c();
     long l1 = VideoDataManager.a.a(this.a.innerUniqueID);
     long l2 = VideoDataManager.a.b(this.a.innerUniqueID);
     a(this.a, (int)(l1 / 1000L), (int)(l2 / 1000L));
-    QQToast.a(BaseApplicationImpl.getApplication(), 0, HardCodeUtil.a(2131718334), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), 0, HardCodeUtil.a(2131915826), 0).show();
     VideoReportUtil.a.a(this.a, l1, null);
     RIJFeedsDynamicInsertController.INSTANCE.requestDynamicInsertInTL(this.a, new RIJFeedsInsertAction(ActionType.ACTION_SEE_LATER, 0, 0, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnWeChatVideoWatchLaterClickListener
  * JD-Core Version:    0.7.0.1
  */

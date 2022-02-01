@@ -14,13 +14,13 @@ class LimitChatPie$6
   
   public boolean a(int paramInt)
   {
-    if (this.a.d(paramInt))
+    if (this.a.u(paramInt))
     {
-      if (this.a.t()) {
+      if (this.a.bD()) {
         return false;
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698822, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131299168));
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B3D2", "0X800B3D2", 0, 0, "", "", "", "");
+      QQToast.makeText(this.a.d.getApp(), 2131896790, 0).show(this.a.f.getResources().getDimensionPixelSize(2131299920));
+      ReportController.b(this.a.d, "dc00898", "", "", "0X800B3D2", "0X800B3D2", 0, 0, "", "", "", "");
       return true;
     }
     return false;
@@ -28,7 +28,7 @@ class LimitChatPie$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.6
  * JD-Core Version:    0.7.0.1
  */

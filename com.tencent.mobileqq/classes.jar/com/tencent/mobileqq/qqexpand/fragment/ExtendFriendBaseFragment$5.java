@@ -9,15 +9,15 @@ class ExtendFriendBaseFragment$5
   
   public void run()
   {
-    this.this$0.j();
-    if (this.this$0.a != null) {
-      this.this$0.a.b();
+    this.this$0.n();
+    if (this.this$0.t != null) {
+      this.this$0.t.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendBaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,10 @@ public class VideoFeedsSoftAdAms65
     if (paramAdvertisementSoftInfo == null) {
       return 0;
     }
-    if (TextUtils.isEmpty(paramAdvertisementSoftInfo.K)) {
+    if (TextUtils.isEmpty(paramAdvertisementSoftInfo.U)) {
       return 0;
     }
-    if (paramAdvertisementSoftInfo.K.equals("material_left_right")) {
+    if (paramAdvertisementSoftInfo.U.equals("material_left_right")) {
       return 1;
     }
     return 2;
@@ -58,7 +58,7 @@ public class VideoFeedsSoftAdAms65
         return false;
       }
       bool1 = bool2;
-      if (paramVideoInfo.mAdvertisementSoftInfo.c == 0)
+      if (paramVideoInfo.mAdvertisementSoftInfo.o == 0)
       {
         bool1 = bool2;
         if (paramVideoInfo.mAdMaterialId == 65)
@@ -132,7 +132,7 @@ public class VideoFeedsSoftAdAms65
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.soft_component.VideoFeedsSoftAdAms65
  * JD-Core Version:    0.7.0.1
  */

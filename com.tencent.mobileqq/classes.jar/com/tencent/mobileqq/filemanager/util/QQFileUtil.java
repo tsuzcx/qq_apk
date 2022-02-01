@@ -18,60 +18,6 @@ import java.util.Collections;
 
 public class QQFileUtil
 {
-  public static long a(String paramString)
-  {
-    long l2 = 0L;
-    if (paramString == null) {
-      return 0L;
-    }
-    try
-    {
-      paramString = new File(paramString);
-      long l1 = l2;
-      if (paramString.exists())
-      {
-        l1 = l2;
-        if (paramString.length() > 0L) {
-          l1 = paramString.length();
-        }
-      }
-      return l1;
-    }
-    catch (Exception paramString)
-    {
-      label44:
-      break label44;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("FileUtils", 2, a());
-    }
-    return 0L;
-  }
-  
-  public static Bitmap a(String paramString)
-  {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1 = localBitmap2;
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localBitmap1 = localBitmap2;
-      localOptions.inJustDecodeBounds = true;
-      localBitmap1 = localBitmap2;
-      localBitmap2 = BitmapFactory.decodeFile(paramString, localOptions);
-      localBitmap1 = localBitmap2;
-      localOptions.inJustDecodeBounds = false;
-      localBitmap1 = localBitmap2;
-      paramString = BitmapFactory.decodeFile(paramString, localOptions);
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localBitmap1;
-  }
-  
   public static FileInfo a(File paramFile)
   {
     FileInfo localFileInfo = new FileInfo();
@@ -86,14 +32,14 @@ public class QQFileUtil
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 78
+    //   3: ldc 36
     //   5: astore_2
     //   6: aload_2
     //   7: astore_3
-    //   8: invokestatic 84	java/lang/Thread:getAllStackTraces	()Ljava/util/Map;
-    //   11: invokestatic 88	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   14: invokeinterface 94 2 0
-    //   19: checkcast 96	[Ljava/lang/StackTraceElement;
+    //   8: invokestatic 42	java/lang/Thread:getAllStackTraces	()Ljava/util/Map;
+    //   11: invokestatic 46	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   14: invokeinterface 52 2 0
+    //   19: checkcast 54	[Ljava/lang/StackTraceElement;
     //   22: astore 4
     //   24: aload_2
     //   25: astore_3
@@ -113,44 +59,44 @@ public class QQFileUtil
     //   43: astore 5
     //   45: aload_2
     //   46: astore_3
-    //   47: invokestatic 31	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   47: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   50: ifeq +16 -> 66
     //   53: aload_2
     //   54: astore_3
-    //   55: ldc 98
+    //   55: ldc 61
     //   57: iconst_1
     //   58: aload 5
-    //   60: invokevirtual 103	java/lang/StackTraceElement:toString	()Ljava/lang/String;
-    //   63: invokestatic 40	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: invokevirtual 66	java/lang/StackTraceElement:toString	()Ljava/lang/String;
+    //   63: invokestatic 70	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   66: aload_2
     //   67: astore_3
-    //   68: new 105	java/lang/StringBuilder
+    //   68: new 72	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   72: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   75: astore 6
     //   77: aload_2
     //   78: astore_3
     //   79: aload 6
     //   81: aload_2
-    //   82: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload_2
     //   87: astore_3
     //   88: aload 6
     //   90: aload 5
-    //   92: invokevirtual 103	java/lang/StackTraceElement:toString	()Ljava/lang/String;
-    //   95: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 66	java/lang/StackTraceElement:toString	()Ljava/lang/String;
+    //   95: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: pop
     //   99: aload_2
     //   100: astore_3
     //   101: aload 6
-    //   103: ldc 112
-    //   105: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc 79
+    //   105: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aload_2
     //   110: astore_3
     //   111: aload 6
-    //   113: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   116: astore_2
     //   117: iload_0
     //   118: iconst_1
@@ -216,36 +162,13 @@ public class QQFileUtil
   public static String a(Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Utils.a(paramContext));
+    localStringBuilder.append(Utils.b(paramContext));
     localStringBuilder.append("thumbnails/");
     paramContext = new File(localStringBuilder.toString());
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
     return paramContext.getAbsolutePath();
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    if (paramString.endsWith(".rename") == true)
-    {
-      String str = paramString.replace(".rename", "");
-      i = str.lastIndexOf(".");
-      if (i == -1) {
-        return "";
-      }
-      if (str.substring(i).replaceAll("[0-9]*", "").replace("(", "").replace(")", "").equalsIgnoreCase(".apk") == true) {
-        return ".apk.rename";
-      }
-    }
-    int i = paramString.lastIndexOf(".");
-    if (i >= 0) {
-      return paramString.substring(i);
-    }
-    return "";
   }
   
   public static String a(String paramString1, String paramString2)
@@ -280,7 +203,7 @@ public class QQFileUtil
           FileInfo localFileInfo = new FileInfo();
           localFileInfo.d(localObject.getName());
           localFileInfo.b(localObject.isDirectory());
-          localFileInfo.e(localObject.getPath());
+          localFileInfo.f(localObject.getPath());
           localFileInfo.a(localObject.length());
           localFileInfo.b(localObject.lastModified());
           localArrayList.add(localFileInfo);
@@ -299,120 +222,75 @@ public class QQFileUtil
     return null;
   }
   
-  public static void a(File paramFile)
-  {
-    if (paramFile.isDirectory())
-    {
-      paramFile = paramFile.listFiles();
-      if ((paramFile != null) && (paramFile.length > 0))
-      {
-        int i = 0;
-        while (i < paramFile.length)
-        {
-          a(paramFile[i]);
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      BaseApplication.getContext().getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "_data=?", new String[] { paramString });
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
   /* Error */
   public static boolean a(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +77 -> 78
+    //   1: ifnull +76 -> 77
     //   4: aload_1
     //   5: ifnonnull +6 -> 11
-    //   8: goto +70 -> 78
+    //   8: goto +69 -> 77
     //   11: aconst_null
     //   12: astore_3
-    //   13: new 253	java/io/BufferedOutputStream
+    //   13: new 171	java/io/BufferedOutputStream
     //   16: dup
-    //   17: new 255	java/io/FileOutputStream
+    //   17: new 173	java/io/FileOutputStream
     //   20: dup
     //   21: aload_1
-    //   22: invokespecial 256	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   25: ldc_w 257
-    //   28: invokespecial 260	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   31: astore_1
-    //   32: aload_0
-    //   33: getstatic 266	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   36: bipush 70
-    //   38: aload_1
-    //   39: invokevirtual 272	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   42: istore_2
-    //   43: aload_1
-    //   44: invokevirtual 277	java/io/OutputStream:flush	()V
-    //   47: aload_1
-    //   48: invokevirtual 280	java/io/OutputStream:close	()V
-    //   51: iload_2
-    //   52: ireturn
-    //   53: astore_3
-    //   54: aload_1
-    //   55: astore_0
-    //   56: aload_3
-    //   57: astore_1
-    //   58: goto +6 -> 64
-    //   61: astore_1
-    //   62: aload_3
-    //   63: astore_0
-    //   64: aload_0
-    //   65: ifnull +11 -> 76
-    //   68: aload_0
-    //   69: invokevirtual 277	java/io/OutputStream:flush	()V
-    //   72: aload_0
-    //   73: invokevirtual 280	java/io/OutputStream:close	()V
-    //   76: aload_1
-    //   77: athrow
-    //   78: iconst_0
-    //   79: ireturn
-    //   80: astore_0
-    //   81: goto -34 -> 47
-    //   84: astore_3
-    //   85: goto -13 -> 72
+    //   22: invokespecial 174	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   25: ldc 175
+    //   27: invokespecial 178	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   30: astore_1
+    //   31: aload_0
+    //   32: getstatic 184	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   35: bipush 70
+    //   37: aload_1
+    //   38: invokevirtual 190	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   41: istore_2
+    //   42: aload_1
+    //   43: invokevirtual 195	java/io/OutputStream:flush	()V
+    //   46: aload_1
+    //   47: invokevirtual 198	java/io/OutputStream:close	()V
+    //   50: iload_2
+    //   51: ireturn
+    //   52: astore_3
+    //   53: aload_1
+    //   54: astore_0
+    //   55: aload_3
+    //   56: astore_1
+    //   57: goto +6 -> 63
+    //   60: astore_1
+    //   61: aload_3
+    //   62: astore_0
+    //   63: aload_0
+    //   64: ifnull +11 -> 75
+    //   67: aload_0
+    //   68: invokevirtual 195	java/io/OutputStream:flush	()V
+    //   71: aload_0
+    //   72: invokevirtual 198	java/io/OutputStream:close	()V
+    //   75: aload_1
+    //   76: athrow
+    //   77: iconst_0
+    //   78: ireturn
+    //   79: astore_0
+    //   80: goto -34 -> 46
+    //   83: astore_3
+    //   84: goto -13 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	88	0	paramBitmap	Bitmap
-    //   0	88	1	paramString	String
-    //   42	10	2	bool	boolean
+    //   0	87	0	paramBitmap	Bitmap
+    //   0	87	1	paramString	String
+    //   41	10	2	bool	boolean
     //   12	1	3	localObject1	Object
-    //   53	10	3	localObject2	Object
-    //   84	1	3	localIOException	java.io.IOException
+    //   52	10	3	localObject2	Object
+    //   83	1	3	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   32	43	53	finally
-    //   13	32	61	finally
-    //   43	47	80	java/io/IOException
-    //   68	72	84	java/io/IOException
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (paramFile.isDirectory())
-    {
-      File[] arrayOfFile = paramFile.listFiles();
-      if ((arrayOfFile != null) && (arrayOfFile.length > 0))
-      {
-        int i = 0;
-        while (i < arrayOfFile.length)
-        {
-          a(arrayOfFile[i]);
-          i += 1;
-        }
-      }
-    }
-    return paramFile.delete();
+    //   31	42	52	finally
+    //   13	31	60	finally
+    //   42	46	79	java/io/IOException
+    //   67	71	83	java/io/IOException
   }
   
   /* Error */
@@ -421,7 +299,7 @@ public class QQFileUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 287	java/io/File:isFile	()Z
+    //   1: invokevirtual 203	java/io/File:isFile	()Z
     //   4: istore 4
     //   6: iconst_0
     //   7: istore_2
@@ -432,27 +310,27 @@ public class QQFileUtil
     //   16: aconst_null
     //   17: astore 7
     //   19: aload_1
-    //   20: invokevirtual 22	java/io/File:exists	()Z
+    //   20: invokevirtual 100	java/io/File:exists	()Z
     //   23: ifeq +8 -> 31
     //   26: aload_1
-    //   27: invokevirtual 282	java/io/File:delete	()Z
+    //   27: invokevirtual 206	java/io/File:delete	()Z
     //   30: pop
-    //   31: new 255	java/io/FileOutputStream
+    //   31: new 173	java/io/FileOutputStream
     //   34: dup
     //   35: aload_1
-    //   36: invokespecial 289	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   36: invokespecial 209	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   39: astore 5
-    //   41: new 291	java/io/FileInputStream
+    //   41: new 211	java/io/FileInputStream
     //   44: dup
     //   45: aload_0
-    //   46: invokespecial 292	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   46: invokespecial 212	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   49: astore 6
     //   51: sipush 4096
     //   54: newarray byte
     //   56: astore 7
     //   58: aload 6
     //   60: aload 7
-    //   62: invokevirtual 296	java/io/FileInputStream:read	([B)I
+    //   62: invokevirtual 216	java/io/FileInputStream:read	([B)I
     //   65: istore_3
     //   66: iload_3
     //   67: iconst_m1
@@ -461,14 +339,14 @@ public class QQFileUtil
     //   73: aload 7
     //   75: iconst_0
     //   76: iload_3
-    //   77: invokevirtual 300	java/io/FileOutputStream:write	([BII)V
+    //   77: invokevirtual 220	java/io/FileOutputStream:write	([BII)V
     //   80: goto -22 -> 58
     //   83: aload 5
-    //   85: invokevirtual 301	java/io/FileOutputStream:flush	()V
+    //   85: invokevirtual 221	java/io/FileOutputStream:flush	()V
     //   88: aload 5
-    //   90: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   90: invokevirtual 222	java/io/FileOutputStream:close	()V
     //   93: aload 6
-    //   95: invokevirtual 303	java/io/FileInputStream:close	()V
+    //   95: invokevirtual 223	java/io/FileInputStream:close	()V
     //   98: goto +90 -> 188
     //   101: goto +87 -> 188
     //   104: astore_0
@@ -491,12 +369,12 @@ public class QQFileUtil
     //   135: aload 5
     //   137: ifnull +11 -> 148
     //   140: aload 5
-    //   142: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   142: invokevirtual 222	java/io/FileOutputStream:close	()V
     //   145: goto +3 -> 148
     //   148: aload_1
     //   149: ifnull +7 -> 156
     //   152: aload_1
-    //   153: invokevirtual 303	java/io/FileInputStream:close	()V
+    //   153: invokevirtual 223	java/io/FileInputStream:close	()V
     //   156: aload_0
     //   157: athrow
     //   158: aconst_null
@@ -506,20 +384,20 @@ public class QQFileUtil
     //   165: aload 5
     //   167: ifnull +11 -> 178
     //   170: aload 5
-    //   172: invokevirtual 302	java/io/FileOutputStream:close	()V
+    //   172: invokevirtual 222	java/io/FileOutputStream:close	()V
     //   175: goto +3 -> 178
     //   178: aload 6
     //   180: ifnull +8 -> 188
     //   183: aload 6
-    //   185: invokevirtual 303	java/io/FileInputStream:close	()V
+    //   185: invokevirtual 223	java/io/FileInputStream:close	()V
     //   188: aload_0
-    //   189: invokevirtual 72	java/io/File:isDirectory	()Z
+    //   189: invokevirtual 28	java/io/File:isDirectory	()Z
     //   192: ifeq +92 -> 284
     //   195: aload_0
-    //   196: invokevirtual 183	java/io/File:listFiles	()[Ljava/io/File;
+    //   196: invokevirtual 122	java/io/File:listFiles	()[Ljava/io/File;
     //   199: astore_0
     //   200: aload_1
-    //   201: invokevirtual 306	java/io/File:mkdir	()Z
+    //   201: invokevirtual 226	java/io/File:mkdir	()Z
     //   204: pop
     //   205: iload_2
     //   206: aload_0
@@ -528,35 +406,35 @@ public class QQFileUtil
     //   211: aload_0
     //   212: iload_2
     //   213: aaload
-    //   214: invokevirtual 310	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   214: invokevirtual 230	java/io/File:getAbsoluteFile	()Ljava/io/File;
     //   217: astore 5
-    //   219: new 105	java/lang/StringBuilder
+    //   219: new 72	java/lang/StringBuilder
     //   222: dup
-    //   223: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   223: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   226: astore 6
     //   228: aload 6
     //   230: aload_1
-    //   231: invokevirtual 310	java/io/File:getAbsoluteFile	()Ljava/io/File;
-    //   234: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   231: invokevirtual 230	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   234: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   237: pop
     //   238: aload 6
-    //   240: getstatic 178	java/io/File:separator	Ljava/lang/String;
-    //   243: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: getstatic 111	java/io/File:separator	Ljava/lang/String;
+    //   243: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: pop
     //   247: aload 6
     //   249: aload_0
     //   250: iload_2
     //   251: aaload
-    //   252: invokevirtual 66	java/io/File:getName	()Ljava/lang/String;
-    //   255: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokevirtual 20	java/io/File:getName	()Ljava/lang/String;
+    //   255: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: pop
     //   259: aload 5
-    //   261: new 15	java/io/File
+    //   261: new 16	java/io/File
     //   264: dup
     //   265: aload 6
-    //   267: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: invokespecial 18	java/io/File:<init>	(Ljava/lang/String;)V
-    //   273: invokestatic 315	com/tencent/mobileqq/filemanager/util/QQFileUtil:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   267: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokespecial 97	java/io/File:<init>	(Ljava/lang/String;)V
+    //   273: invokestatic 235	com/tencent/mobileqq/filemanager/util/QQFileUtil:a	(Ljava/io/File;Ljava/io/File;)Z
     //   276: pop
     //   277: iload_2
     //   278: iconst_1
@@ -628,7 +506,157 @@ public class QQFileUtil
     return FileUtils.fileExists(paramString);
   }
   
-  public static String b(String paramString)
+  public static boolean b(File paramFile)
+  {
+    if (paramFile.isDirectory())
+    {
+      File[] arrayOfFile = paramFile.listFiles();
+      if ((arrayOfFile != null) && (arrayOfFile.length > 0))
+      {
+        int i = 0;
+        while (i < arrayOfFile.length)
+        {
+          b(arrayOfFile[i]);
+          i += 1;
+        }
+      }
+    }
+    return paramFile.delete();
+  }
+  
+  public static boolean b(File paramFile1, File paramFile2)
+  {
+    if (a(paramFile1, paramFile2))
+    {
+      b(paramFile1);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return FileUtils.fileExistsAndNotEmpty(paramString);
+  }
+  
+  public static long c(String paramString)
+  {
+    long l2 = 0L;
+    if (paramString == null) {
+      return 0L;
+    }
+    try
+    {
+      paramString = new File(paramString);
+      long l1 = l2;
+      if (paramString.exists())
+      {
+        l1 = l2;
+        if (paramString.length() > 0L) {
+          l1 = paramString.length();
+        }
+      }
+      return l1;
+    }
+    catch (Exception paramString)
+    {
+      label44:
+      break label44;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("FileUtils", 2, a());
+    }
+    return 0L;
+  }
+  
+  public static void c(File paramFile)
+  {
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0))
+      {
+        int i = 0;
+        while (i < paramFile.length)
+        {
+          b(paramFile[i]);
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public static boolean d(String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (paramString != null)
+    {
+      bool1 = bool3;
+      if (paramString.length() > 0) {
+        try
+        {
+          bool3 = b(new File(paramString));
+          bool1 = bool3;
+          if (bool3)
+          {
+            bool2 = bool3;
+            e(paramString);
+            return bool3;
+          }
+        }
+        catch (Exception paramString)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(paramString.getMessage());
+            QLog.d("Tools.delete", 2, localStringBuilder.toString());
+            bool1 = bool2;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static void e(String paramString)
+  {
+    try
+    {
+      BaseApplication.getContext().getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "_data=?", new String[] { paramString });
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  public static String f(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    if (paramString.endsWith(".rename") == true)
+    {
+      String str = paramString.replace(".rename", "");
+      i = str.lastIndexOf(".");
+      if (i == -1) {
+        return "";
+      }
+      if (str.substring(i).replaceAll("[0-9]*", "").replace("(", "").replace(")", "").equalsIgnoreCase(".apk") == true) {
+        return ".apk.rename";
+      }
+    }
+    int i = paramString.lastIndexOf(".");
+    if (i >= 0) {
+      return paramString.substring(i);
+    }
+    return "";
+  }
+  
+  public static String g(String paramString)
   {
     String str = paramString;
     if (paramString != null)
@@ -650,22 +678,7 @@ public class QQFileUtil
     return str;
   }
   
-  public static boolean b(File paramFile1, File paramFile2)
-  {
-    if (a(paramFile1, paramFile2))
-    {
-      a(paramFile1);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return FileUtils.fileExistsAndNotEmpty(paramString);
-  }
-  
-  public static String c(String paramString)
+  public static String h(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -677,46 +690,33 @@ public class QQFileUtil
     return null;
   }
   
-  public static boolean c(String paramString)
+  public static Bitmap i(String paramString)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1 = bool3;
-    if (paramString != null)
+    Bitmap localBitmap2 = null;
+    Bitmap localBitmap1 = localBitmap2;
+    try
     {
-      bool1 = bool3;
-      if (paramString.length() > 0) {
-        try
-        {
-          bool3 = a(new File(paramString));
-          bool1 = bool3;
-          if (bool3)
-          {
-            bool2 = bool3;
-            a(paramString);
-            return bool3;
-          }
-        }
-        catch (Exception paramString)
-        {
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("");
-            localStringBuilder.append(paramString.getMessage());
-            QLog.d("Tools.delete", 2, localStringBuilder.toString());
-            bool1 = bool2;
-          }
-        }
-      }
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localBitmap1 = localBitmap2;
+      localOptions.inJustDecodeBounds = true;
+      localBitmap1 = localBitmap2;
+      localBitmap2 = BitmapFactory.decodeFile(paramString, localOptions);
+      localBitmap1 = localBitmap2;
+      localOptions.inJustDecodeBounds = false;
+      localBitmap1 = localBitmap2;
+      paramString = BitmapFactory.decodeFile(paramString, localOptions);
+      return paramString;
     }
-    return bool1;
+    catch (OutOfMemoryError paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localBitmap1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileUtil
  * JD-Core Version:    0.7.0.1
  */

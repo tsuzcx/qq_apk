@@ -9,38 +9,33 @@ import tencent.im.msg.im_msg_body.GroupBusinessMsg;
 
 public class TroopBusinessUtil$TroopBusinessMessage
 {
-  public int a;
-  public String a;
-  public int b;
+  public int a = 1;
   public String b;
-  public int c;
   public String c;
-  public int d;
   public String d;
-  
-  public TroopBusinessUtil$TroopBusinessMessage()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
+  public int e;
+  public String f;
+  public int g;
+  public int h;
   
   public static TroopBusinessMessage a(im_msg_body.GroupBusinessMsg paramGroupBusinessMsg)
   {
     TroopBusinessMessage localTroopBusinessMessage = new TroopBusinessMessage();
-    localTroopBusinessMessage.jdField_a_of_type_Int = paramGroupBusinessMsg.uint32_flags.get();
-    localTroopBusinessMessage.jdField_a_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_url.get().toStringUtf8();
-    localTroopBusinessMessage.jdField_b_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_clk_url.get().toStringUtf8();
-    localTroopBusinessMessage.jdField_c_of_type_JavaLangString = paramGroupBusinessMsg.bytes_nick.get().toStringUtf8();
-    localTroopBusinessMessage.jdField_d_of_type_JavaLangString = paramGroupBusinessMsg.bytes_rank.get().toStringUtf8();
+    localTroopBusinessMessage.a = paramGroupBusinessMsg.uint32_flags.get();
+    localTroopBusinessMessage.b = paramGroupBusinessMsg.bytes_head_url.get().toStringUtf8();
+    localTroopBusinessMessage.c = paramGroupBusinessMsg.bytes_head_clk_url.get().toStringUtf8();
+    localTroopBusinessMessage.d = paramGroupBusinessMsg.bytes_nick.get().toStringUtf8();
+    localTroopBusinessMessage.f = paramGroupBusinessMsg.bytes_rank.get().toStringUtf8();
     try
     {
-      localTroopBusinessMessage.jdField_b_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_nick_color.get().toStringUtf8());
-      localTroopBusinessMessage.jdField_c_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_color.get().toStringUtf8());
-      localTroopBusinessMessage.jdField_d_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_bgcolor.get().toStringUtf8());
+      localTroopBusinessMessage.e = Color.parseColor(paramGroupBusinessMsg.bytes_nick_color.get().toStringUtf8());
+      localTroopBusinessMessage.g = Color.parseColor(paramGroupBusinessMsg.bytes_rank_color.get().toStringUtf8());
+      localTroopBusinessMessage.h = Color.parseColor(paramGroupBusinessMsg.bytes_rank_bgcolor.get().toStringUtf8());
       return localTroopBusinessMessage;
     }
     catch (Exception paramGroupBusinessMsg)
     {
-      String str = TroopBusinessUtil.jdField_a_of_type_JavaLangString;
+      String str = TroopBusinessUtil.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("the color string cannot parse to color. ");
       localStringBuilder.append(paramGroupBusinessMsg.getMessage());
@@ -56,25 +51,25 @@ public class TroopBusinessUtil$TroopBusinessMessage
     localStringBuilder.append(",");
     localStringBuilder.append("nick");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",");
     localStringBuilder.append("flag");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append("clk");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",");
     localStringBuilder.append("head");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage
  * JD-Core Version:    0.7.0.1
  */

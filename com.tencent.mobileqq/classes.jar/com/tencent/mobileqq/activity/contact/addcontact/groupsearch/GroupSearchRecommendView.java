@@ -25,19 +25,19 @@ import tencent.im.troop_search_popclassifc.popclassifc.PopHotWordCard;
 public class GroupSearchRecommendView
   extends ScrollView
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AddContactTroopHandler.IGetPopClassAndSearchCB jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB = new GroupSearchRecommendView.1(this);
-  private GroupSearchHistoryListAdapter.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter$OnItemClickListener;
-  private GroupSearchHistoryListAdapter jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter;
   protected GroupSearchRecommendView.IGroupSearchContext a;
-  private GroupSearchRecommendView.UIHandler jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$UIHandler;
-  private HotRecommendGroupFlowLayout jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout;
-  private HotRecommendGroupListAdapter.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter$OnItemClickListener;
-  private HotRecommendGroupListAdapter jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter;
-  private MeasureListView jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView;
+  private GroupSearchRecommendView.UIHandler b;
+  private Context c;
+  private MeasureListView d;
+  private GroupSearchHistoryListAdapter e;
+  private GroupSearchHistoryListAdapter.OnItemClickListener f;
+  private View g;
+  private TextView h;
+  private HotRecommendGroupFlowLayout i;
+  private HotRecommendGroupListAdapter j;
+  private HotRecommendGroupListAdapter.OnItemClickListener k;
+  private LinearLayout l;
+  private AddContactTroopHandler.IGetPopClassAndSearchCB m = new GroupSearchRecommendView.1(this);
   
   public GroupSearchRecommendView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,116 +52,116 @@ public class GroupSearchRecommendView
   public GroupSearchRecommendView(Context paramContext, GroupSearchRecommendView.IGroupSearchContext paramIGroupSearchContext, GroupSearchHistoryListAdapter.OnItemClickListener paramOnItemClickListener, HotRecommendGroupListAdapter.OnItemClickListener paramOnItemClickListener1)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$IGroupSearchContext = paramIGroupSearchContext;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter$OnItemClickListener = paramOnItemClickListener1;
+    this.a = paramIGroupSearchContext;
+    this.c = paramContext;
+    this.f = paramOnItemClickListener;
+    this.k = paramOnItemClickListener1;
   }
   
   private void a(boolean paramBoolean)
   {
-    if (StudyModeManager.a())
+    if (StudyModeManager.h())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.h.setVisibility(8);
+      this.i.setVisibility(8);
+      this.l.setVisibility(8);
+      this.g.setVisibility(8);
       return;
     }
     if (paramBoolean) {
       return;
     }
-    AddContactTroopManage localAddContactTroopManage = (AddContactTroopManage)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$IGroupSearchContext.a().getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
+    AddContactTroopManage localAddContactTroopManage = (AddContactTroopManage)this.a.a().getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
     if ((localAddContactTroopManage.a() != null) && (localAddContactTroopManage.a().rpt_pop_items.size() > 0))
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      int i = 0;
+      TextView localTextView = this.h;
+      int n = 0;
       localTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter.a();
-      while (i < localAddContactTroopManage.a().rpt_pop_items.size())
+      this.i.setVisibility(0);
+      this.l.setVisibility(0);
+      this.g.setVisibility(0);
+      this.j.a();
+      while (n < localAddContactTroopManage.a().rpt_pop_items.size())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter.a(new HotRecommendGroupListAdapter.Keyword(((popclassifc.HotWordItem)localAddContactTroopManage.a().rpt_pop_items.get(i)).str_hot_word.get(), ((popclassifc.HotWordItem)localAddContactTroopManage.a().rpt_pop_items.get(i)).str_text_color.get()));
-        i += 1;
+        this.j.a(new HotRecommendGroupListAdapter.Keyword(((popclassifc.HotWordItem)localAddContactTroopManage.a().rpt_pop_items.get(n)).str_hot_word.get(), ((popclassifc.HotWordItem)localAddContactTroopManage.a().rpt_pop_items.get(n)).str_text_color.get()));
+        n += 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter.notifyDataSetChanged();
+      this.j.notifyDataSetChanged();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.h.setVisibility(8);
+    this.i.setVisibility(8);
+    this.l.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$UIHandler = new GroupSearchRecommendView.UIHandler(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView = ((MeasureListView)findViewById(2131370509));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter = new GroupSearchHistoryListAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$IGroupSearchContext.a().getCurrentUin());
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter$OnItemClickListener);
-    this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850419);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setFastScrollEnabled(false);
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.addFooterView(localLinearLayout);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379728));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout = ((HotRecommendGroupFlowLayout)findViewById(2131366919));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370266));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter = new HotRecommendGroupListAdapter(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter$OnItemClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter);
+    this.b = new GroupSearchRecommendView.UIHandler(this);
+    this.d = ((MeasureListView)findViewById(2131437781));
+    this.e = new GroupSearchHistoryListAdapter(this.c, this.d, this.a.a().getCurrentUin());
+    this.e.a(this.f);
+    this.g = new View(this.c);
+    this.g.setBackgroundResource(2130852210);
+    this.g.setLayoutParams(new AbsListView.LayoutParams(-1, DisplayUtil.a(this.c, 12.0F)));
+    this.d.setVerticalScrollBarEnabled(false);
+    this.d.setFastScrollEnabled(false);
+    LinearLayout localLinearLayout = new LinearLayout(this.c);
+    localLinearLayout.addView(this.g);
+    this.d.addFooterView(localLinearLayout);
+    this.d.setAdapter(this.e);
+    this.h = ((TextView)findViewById(2131448531));
+    this.i = ((HotRecommendGroupFlowLayout)findViewById(2131433265));
+    this.l = ((LinearLayout)findViewById(2131437474));
+    this.j = new HotRecommendGroupListAdapter(this.c);
+    this.j.a(this.k);
+    this.i.setAdapter(this.j);
     a(false);
     setOverScrollMode(0);
     setVerticalScrollBarEnabled(false);
     setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    if (StudyModeManager.a())
+    if (StudyModeManager.h())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupFlowLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.h.setVisibility(8);
+      this.i.setVisibility(8);
+      this.l.setVisibility(8);
+      this.g.setVisibility(8);
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$UIHandler.sendEmptyMessage(1);
+    this.b.sendEmptyMessage(1);
   }
   
   private void e()
   {
-    new AddContactTroopHandler(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchRecommendView$IGroupSearchContext.a()).b(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB);
+    new AddContactTroopHandler(this.a.a()).b(this.m);
   }
   
   public void a()
   {
-    a(2131561534);
+    setContentView(2131627895);
     c();
     d();
   }
   
-  protected final void a(int paramInt)
-  {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
-  }
-  
   public void b()
   {
-    GroupSearchHistoryListAdapter localGroupSearchHistoryListAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter;
+    GroupSearchHistoryListAdapter localGroupSearchHistoryListAdapter = this.e;
     if (localGroupSearchHistoryListAdapter != null) {
       localGroupSearchHistoryListAdapter.a();
     }
   }
+  
+  protected final void setContentView(int paramInt)
+  {
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView
  * JD-Core Version:    0.7.0.1
  */

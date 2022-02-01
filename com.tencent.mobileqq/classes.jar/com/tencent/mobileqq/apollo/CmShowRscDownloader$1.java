@@ -24,52 +24,52 @@ final class CmShowRscDownloader$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("download url:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" task.getStatus()->");
-      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(paramDownloadTask.e());
       QLog.d("rscContent_CmShowRscDownloader", 1, ((StringBuilder)localObject).toString());
     }
-    if (3 == paramDownloadTask.a())
+    if (3 == paramDownloadTask.e())
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
+      if (this.b.exists())
       {
         try
         {
-          paramDownloadTask = this.jdField_a_of_type_JavaIoFile;
+          paramDownloadTask = this.b;
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getParent());
+          ((StringBuilder)localObject).append(this.b.getParent());
           ((StringBuilder)localObject).append(File.separator);
           ZipUtils.unZipFile(paramDownloadTask, ((StringBuilder)localObject).toString());
         }
         catch (OutOfMemoryError paramDownloadTask)
         {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          this.b.delete();
+          this.c.getAndIncrement();
           if (!QLog.isColorLevel()) {
             break label419;
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("unZipFile file error resType->");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.d);
           ((StringBuilder)localObject).append(" id->");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.e);
           ((StringBuilder)localObject).append(" error->");
           ((StringBuilder)localObject).append(paramDownloadTask.getMessage());
           QLog.d("rscContent_CmShowRscDownloader", 2, ((StringBuilder)localObject).toString());
         }
         catch (Exception paramDownloadTask)
         {
-          this.jdField_a_of_type_JavaIoFile.delete();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          this.b.delete();
+          this.c.getAndIncrement();
           if (!QLog.isColorLevel()) {
             break label419;
           }
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("unZipFile file error resType->");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.d);
         ((StringBuilder)localObject).append(" id->");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" error->");
         ((StringBuilder)localObject).append(paramDownloadTask.getMessage());
         QLog.d("rscContent_CmShowRscDownloader", 2, ((StringBuilder)localObject).toString());
@@ -77,42 +77,42 @@ final class CmShowRscDownloader$1
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      this.c.getAndIncrement();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("download file error resType->");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" id->");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append(" task.getStatus()->");
-      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(paramDownloadTask.e());
       QLog.d("rscContent_CmShowRscDownloader", 1, ((StringBuilder)localObject).toString());
     }
     label419:
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.c.get())
+    this.f.getAndIncrement();
+    if (this.f.get() == this.g.get())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloCmShowRscDownloader$OnRscDownLoadListener != null)
+      if (this.h != null)
       {
-        paramDownloadTask = this.jdField_a_of_type_ComTencentMobileqqApolloResApiImplCmShowRscCacheManagerImpl$IdolRscItem;
+        paramDownloadTask = this.i;
         if (paramDownloadTask != null) {
-          paramDownloadTask = paramDownloadTask.c();
+          paramDownloadTask = paramDownloadTask.e();
         } else {
           paramDownloadTask = "";
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloCmShowRscDownloader$OnRscDownLoadListener;
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+        localObject = this.h;
+        if (this.c.get() > 0) {
           bool1 = false;
         }
-        ((CmShowRscDownloader.OnRscDownLoadListener)localObject).a(bool1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, paramDownloadTask);
+        ((CmShowRscDownloader.OnRscDownLoadListener)localObject).a(bool1, this.j, this.k, paramDownloadTask);
         if (QLog.isColorLevel())
         {
           paramDownloadTask = new StringBuilder();
           paramDownloadTask.append("downloadApolloRes download all done uin: ");
-          paramDownloadTask.append(this.jdField_b_of_type_JavaLangString);
+          paramDownloadTask.append(this.j);
           paramDownloadTask.append("all cnt: ");
-          paramDownloadTask.append(this.c.get());
+          paramDownloadTask.append(this.g.get());
           paramDownloadTask.append(", err cnt: ");
-          paramDownloadTask.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          paramDownloadTask.append(this.c.get());
           QLog.d("rscContent_CmShowRscDownloader", 2, paramDownloadTask.toString());
         }
       }
@@ -121,18 +121,18 @@ final class CmShowRscDownloader$1
     {
       paramDownloadTask = new StringBuilder();
       paramDownloadTask.append("downloadApolloRes download uin:");
-      paramDownloadTask.append(this.jdField_b_of_type_JavaLangString);
+      paramDownloadTask.append(this.j);
       paramDownloadTask.append(", cb cnt: ");
-      paramDownloadTask.append(this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      paramDownloadTask.append(this.f.get());
       paramDownloadTask.append(", all cnt: ");
-      paramDownloadTask.append(this.c.get());
+      paramDownloadTask.append(this.g.get());
       QLog.d("rscContent_CmShowRscDownloader", 2, paramDownloadTask.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.CmShowRscDownloader.1
  * JD-Core Version:    0.7.0.1
  */

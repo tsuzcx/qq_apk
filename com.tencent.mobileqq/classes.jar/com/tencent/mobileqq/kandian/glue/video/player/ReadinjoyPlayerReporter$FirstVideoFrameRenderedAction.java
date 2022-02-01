@@ -13,22 +13,22 @@ public class ReadinjoyPlayerReporter$FirstVideoFrameRenderedAction
   
   public void a(int paramInt, Object paramObject)
   {
-    if (this.a.a.b > 0L) {
+    if (this.a.a.m > 0L) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     if (paramInt != 0) {
-      this.a.a.v = (SystemClock.uptimeMillis() - this.a.a.b);
+      this.a.a.au = (SystemClock.uptimeMillis() - this.a.a.m);
     } else {
-      this.a.a.v = 0L;
+      this.a.a.au = 0L;
     }
-    this.a.a.w = (SystemClock.uptimeMillis() - this.a.a.c);
+    this.a.a.av = (SystemClock.uptimeMillis() - this.a.a.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadinjoyPlayerReporter.FirstVideoFrameRenderedAction
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ class DocEnhancePart$1
   
   public void onClick(View paramView)
   {
-    this.a.a.r();
-    if (this.a.a.f() > 0) {
+    this.a.t.C();
+    if (this.a.t.Q() > 0) {
       DocEnhancePart.a(this.a);
     } else {
       DocEnhancePart.b(this.a);
     }
-    AEBaseDataReporter.a().aZ();
+    AEBaseDataReporter.a().bh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhancePart.1
  * JD-Core Version:    0.7.0.1
  */

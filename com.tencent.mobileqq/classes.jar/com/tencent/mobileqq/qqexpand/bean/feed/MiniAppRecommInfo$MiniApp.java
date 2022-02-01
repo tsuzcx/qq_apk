@@ -10,29 +10,29 @@ public class MiniAppRecommInfo$MiniApp
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniApp> CREATOR = new MiniAppRecommInfo.MiniApp.1();
-  public int a;
-  public INTERFACE.StApiAppInfo a;
   public String a;
-  public byte[] a;
   public String b;
   public String c;
+  public byte[] d;
+  public INTERFACE.StApiAppInfo e;
+  public int f;
   
   public MiniAppRecommInfo$MiniApp() {}
   
   protected MiniAppRecommInfo$MiniApp(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     int i = paramParcel.readInt();
     if (i > 0) {
       try
       {
-        this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        paramParcel.readByteArray(this.jdField_a_of_type_ArrayOfByte);
+        this.d = new byte[i];
+        paramParcel.readByteArray(this.d);
         paramParcel = new INTERFACE.StApiAppInfo();
-        paramParcel.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-        this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo = paramParcel;
+        paramParcel.mergeFrom(this.d);
+        this.e = paramParcel;
         return;
       }
       catch (Throwable paramParcel)
@@ -49,22 +49,22 @@ public class MiniAppRecommInfo$MiniApp
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.d;
     if (arrayOfByte != null) {
       paramInt = arrayOfByte.length;
     } else {
       paramInt = -1;
     }
     paramParcel.writeInt(paramInt);
-    paramParcel.writeByteArray(this.jdField_a_of_type_ArrayOfByte);
+    paramParcel.writeByteArray(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.feed.MiniAppRecommInfo.MiniApp
  * JD-Core Version:    0.7.0.1
  */

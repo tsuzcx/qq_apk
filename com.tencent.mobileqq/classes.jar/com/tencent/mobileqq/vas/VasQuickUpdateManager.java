@@ -126,7 +126,7 @@ public class VasQuickUpdateManager
   @NotNull
   private Boolean checkZipExsit()
   {
-    String str = TroopEnterEffectController.a();
+    String str = TroopEnterEffectController.b();
     if (TextUtils.isEmpty(str))
     {
       QLog.e("VasQuickUpdateManager", 1, "VasUpdateConstants.SCID_ENTER_EFFECT_VIP_ICONS: get null zipPath");
@@ -186,7 +186,7 @@ public class VasQuickUpdateManager
     Object localObject;
     if (paramLong == 1003L)
     {
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       paramTagItemInfo.b = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.app.getApplication().getFilesDir());
@@ -195,7 +195,7 @@ public class VasQuickUpdateManager
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(paramString);
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      paramTagItemInfo.c = localStringBuilder.toString();
       return true;
     }
     if (paramLong == 8L)
@@ -203,27 +203,27 @@ public class VasQuickUpdateManager
       localObject = (ChatBackgroundManager)this.app.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
       paramString = paramString.substring(7, paramString.length());
       paramTagItemInfo.b = false;
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((ChatBackgroundManager)localObject).e(paramString);
+      paramTagItemInfo.a = false;
+      paramTagItemInfo.c = ((ChatBackgroundManager)localObject).g(paramString);
       return true;
     }
     if (paramLong == 27L)
     {
       paramString = paramString.substring(14, paramString.length());
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
+      paramTagItemInfo.a = false;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ColorNickManager.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(ColorNickManager.a);
       ((StringBuilder)localObject).append(paramString);
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      paramTagItemInfo.c = ((StringBuilder)localObject).toString();
       return true;
     }
     if (paramLong == 33L)
     {
       paramString = paramString.substring(12);
       paramTagItemInfo.b = false;
-      paramTagItemInfo.jdField_a_of_type_Boolean = false;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = ProfileCardManager.a(paramString);
+      paramTagItemInfo.a = false;
+      paramTagItemInfo.c = ProfileCardManager.a(paramString);
       return true;
     }
     return false;
@@ -351,9 +351,9 @@ public class VasQuickUpdateManager
     }
     if ("VASBiz_FuncDev_webview.json".equals(paramString))
     {
+      AuthorizeConfig.a().r();
+      AuthorizeConfig.a().l();
       AuthorizeConfig.a().j();
-      AuthorizeConfig.a().e();
-      AuthorizeConfig.a().c();
       return;
     }
     if ("watch_focus.json".equals(paramString))
@@ -385,7 +385,7 @@ public class VasQuickUpdateManager
     }
     if (paramString.equals("kcsdk_4_4_7_3661"))
     {
-      TMSManager.a().a(this.app.getApp(), paramInt);
+      TMSManager.b().a(this.app.getApp(), paramInt);
       return false;
     }
     if (paramString.equals("GLDrawableV860"))
@@ -393,7 +393,7 @@ public class VasQuickUpdateManager
       GLDrawableDownloadHelper.a(this.app.getApp(), paramInt);
       return false;
     }
-    if (paramString.equals("XA_865"))
+    if (paramString.equals(IXADownload.SCID))
     {
       ((IXADownload)QRoute.api(IXADownload.class)).onComplete(paramInt);
       return false;
@@ -410,8 +410,8 @@ public class VasQuickUpdateManager
     }
     if ((paramString.equals("enterEffectVipIcons")) && (paramInt == 0))
     {
-      paramString = TroopEnterEffectController.a();
-      String str = TroopEnterEffectController.b();
+      paramString = TroopEnterEffectController.b();
+      String str = TroopEnterEffectController.c();
       if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str))) {
         try
         {
@@ -610,7 +610,7 @@ public class VasQuickUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager
  * JD-Core Version:    0.7.0.1
  */

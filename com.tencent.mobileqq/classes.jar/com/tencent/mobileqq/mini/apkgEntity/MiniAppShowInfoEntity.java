@@ -18,6 +18,7 @@ public class MiniAppShowInfoEntity
   public String gamePublicationNumber;
   public String icon;
   public boolean interMode;
+  public int miniAppType;
   public int reportType;
   public long timeStamp;
   
@@ -45,13 +46,16 @@ public class MiniAppShowInfoEntity
     localStringBuilder.append(", timeStamp='");
     localStringBuilder.append(this.timeStamp);
     localStringBuilder.append('\'');
+    localStringBuilder.append(", miniAppType='");
+    localStringBuilder.append(this.miniAppType);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppShowInfoEntity
  * JD-Core Version:    0.7.0.1
  */

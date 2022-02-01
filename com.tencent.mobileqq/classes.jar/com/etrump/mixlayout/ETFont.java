@@ -115,7 +115,7 @@ public class ETFont
       this.mComboIndex = paramIETFont.mComboIndex;
       this.mWidthGap = paramIETFont.mWidthGap;
       this.mHeightGap = paramIETFont.mHeightGap;
-      this.mSubstitution = ETSubstitutionConfig.a(paramIETFont.mSubstitution);
+      this.mSubstitution = ETSubstitutionConfig.b(paramIETFont.mSubstitution);
     }
   }
   

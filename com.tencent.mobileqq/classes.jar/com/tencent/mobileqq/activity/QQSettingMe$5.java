@@ -15,35 +15,35 @@ class QQSettingMe$5
   
   public void run()
   {
-    if ((!this.a) && (QQTheme.e()))
+    if ((!this.a) && (QQTheme.isDefaultTheme()))
     {
       this.this$0.a(Boolean.valueOf(false));
-      QQSettingMe.a(this.this$0).setImageResource(2130846234);
-      QQSettingMe.b(this.this$0).setImageResource(2130846250);
-      QQSettingMe.b(this.this$0).setTextColor(-16777216);
-      if (QQSettingMe.c(this.this$0) != null) {
-        QQSettingMe.c(this.this$0).setTextColor(-16777216);
+      QQSettingMe.d(this.this$0).setImageResource(2130847704);
+      QQSettingMe.e(this.this$0).setImageResource(2130847720);
+      QQSettingMe.g(this.this$0).setTextColor(-16777216);
+      if (QQSettingMe.h(this.this$0) != null) {
+        QQSettingMe.h(this.this$0).setTextColor(-16777216);
       }
-      localTextView = (TextView)QQSettingMe.a(this.this$0).findViewById(2131365972);
+      localTextView = (TextView)QQSettingMe.i(this.this$0).findViewById(2131432241);
       localTextView.setTextColor(Color.parseColor("#FFB0B3BF"));
-      ((ImageView)QQSettingMe.a(this.this$0).findViewById(2131365959)).setColorFilter(localTextView.getCurrentTextColor());
+      ((ImageView)QQSettingMe.i(this.this$0).findViewById(2131432228)).setColorFilter(localTextView.getCurrentTextColor());
       return;
     }
     this.this$0.a(Boolean.valueOf(this.a));
-    QQSettingMe.a(this.this$0).setImageResource(2130846233);
-    QQSettingMe.b(this.this$0).setImageResource(2130846249);
-    QQSettingMe.b(this.this$0).setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166492));
-    if (QQSettingMe.c(this.this$0) != null) {
-      QQSettingMe.c(this.this$0).setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166492));
+    QQSettingMe.d(this.this$0).setImageResource(2130847703);
+    QQSettingMe.e(this.this$0).setImageResource(2130847719);
+    QQSettingMe.g(this.this$0).setTextColor(QQSettingMe.f(this.this$0).getResources().getColor(2131167334));
+    if (QQSettingMe.h(this.this$0) != null) {
+      QQSettingMe.h(this.this$0).setTextColor(QQSettingMe.f(this.this$0).getResources().getColor(2131167334));
     }
-    TextView localTextView = (TextView)QQSettingMe.a(this.this$0).findViewById(2131365972);
-    localTextView.setTextColor(QQSettingMe.a(this.this$0).getResources().getColor(2131166490));
-    ((ImageView)QQSettingMe.a(this.this$0).findViewById(2131365959)).setColorFilter(localTextView.getCurrentTextColor());
+    TextView localTextView = (TextView)QQSettingMe.i(this.this$0).findViewById(2131432241);
+    localTextView.setTextColor(QQSettingMe.f(this.this$0).getResources().getColor(2131167332));
+    ((ImageView)QQSettingMe.i(this.this$0).findViewById(2131432228)).setColorFilter(localTextView.getCurrentTextColor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.5
  * JD-Core Version:    0.7.0.1
  */

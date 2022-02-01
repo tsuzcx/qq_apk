@@ -24,84 +24,83 @@ import java.util.List;
 public class FriendShipWaveView
   extends SpriteGLView
 {
-  protected int a;
-  protected Context a;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener;
-  ImageButton jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton;
-  Sprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  public String a;
-  private List<Sprite> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private List<Sprite> A = new LinkedList();
+  private Texture B;
+  private Texture C;
+  private Texture D;
+  private Texture E;
+  private Texture F;
+  private Texture G;
+  private Texture H;
+  private Texture I;
+  private Texture J;
+  private Texture K;
+  private Texture L;
+  public String a = "FriendShipWaveView";
   protected int b;
-  Sprite jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  private List<Sprite> jdField_b_of_type_JavaUtilList = new LinkedList();
-  Sprite jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  private List<Sprite> jdField_c_of_type_JavaUtilList = new LinkedList();
-  Sprite jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_e_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_e_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_f_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_f_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_g_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_g_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_i_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_i_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_j_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_j_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
-  Sprite jdField_k_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-  private Texture jdField_k_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+  protected int c;
+  protected Context d;
+  Sprite e;
+  Sprite f;
+  Sprite g;
+  Sprite h;
+  Sprite i;
+  Sprite j;
+  Sprite k;
   Sprite l;
+  Sprite m;
+  Sprite n;
+  Sprite o;
+  Sprite p;
+  Bitmap q;
+  ImageButton r;
+  ImageButton.OnClickListener s;
+  private List<Sprite> y = new LinkedList();
+  private List<Sprite> z = new LinkedList();
   
   public FriendShipWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = "FriendShipWaveView";
   }
   
   public void a()
   {
+    int i3 = 0;
     int i1 = 0;
-    int m = 0;
     Sprite localSprite;
-    while (m < 5)
+    while (i1 < 5)
     {
       localSprite = new Sprite();
-      localSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
-      localSprite.a(-localSprite.jdField_a_of_type_Float / 2.0F + (localSprite.jdField_a_of_type_Float - 1.0F) * m, this.jdField_b_of_type_Int + localSprite.b / 4.0F);
+      localSprite.a(this.B);
+      localSprite.a(-localSprite.b / 2.0F + (localSprite.b - 1.0F) * i1, this.c + localSprite.c / 4.0F);
       a(localSprite);
-      this.jdField_a_of_type_JavaUtilList.add(localSprite);
-      m += 1;
+      this.y.add(localSprite);
+      i1 += 1;
     }
     d();
-    m = 0;
-    int n;
+    i1 = 0;
+    int i2;
     for (;;)
     {
-      n = i1;
-      if (m >= 5) {
+      i2 = i3;
+      if (i1 >= 5) {
         break;
       }
       localSprite = new Sprite();
-      localSprite.a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
-      localSprite.a(-localSprite.jdField_a_of_type_Float / 2.0F + (localSprite.jdField_a_of_type_Float - 1.0F) * m, this.jdField_b_of_type_Int + localSprite.b / 4.0F);
+      localSprite.a(this.C);
+      localSprite.a(-localSprite.b / 2.0F + (localSprite.b - 1.0F) * i1, this.c + localSprite.c / 4.0F);
       a(localSprite);
-      this.jdField_b_of_type_JavaUtilList.add(localSprite);
-      m += 1;
+      this.z.add(localSprite);
+      i1 += 1;
     }
-    while (n < 5)
+    while (i2 < 5)
     {
       localSprite = new Sprite();
-      localSprite.a(this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
-      localSprite.a(-localSprite.jdField_a_of_type_Float / 2.0F + (localSprite.jdField_a_of_type_Float - 1.0F) * n, this.jdField_b_of_type_Int + localSprite.b / 4.0F);
+      localSprite.a(this.D);
+      localSprite.a(-localSprite.b / 2.0F + (localSprite.b - 1.0F) * i2, this.c + localSprite.c / 4.0F);
       a(localSprite);
-      this.jdField_c_of_type_JavaUtilList.add(localSprite);
-      n += 1;
+      this.A.add(localSprite);
+      i2 += 1;
     }
     a(new FriendShipWaveView.1(this));
     b();
@@ -113,171 +112,171 @@ public class FriendShipWaveView
   
   public void a(int paramInt1, int paramInt2, Context paramContext, ImageButton.OnClickListener paramOnClickListener, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, Bitmap paramBitmap8, Bitmap paramBitmap9, Bitmap paramBitmap10, Bitmap paramBitmap11, Bitmap paramBitmap12)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap4;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramBitmap9);
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramBitmap10);
-    this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramBitmap11);
-    this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramBitmap1);
-    this.j = new Texture(this, paramBitmap2);
-    this.i = new Texture(this, paramBitmap3);
-    this.e = new Texture(this, paramBitmap5);
-    this.f = new Texture(this, paramBitmap6);
-    this.g = new Texture(this, paramBitmap7);
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(this, paramBitmap8);
-    this.k = new Texture(this, paramBitmap12);
+    this.d = paramContext;
+    this.s = paramOnClickListener;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.q = paramBitmap4;
+    this.B = new Texture(this, paramBitmap9);
+    this.C = new Texture(this, paramBitmap10);
+    this.D = new Texture(this, paramBitmap11);
+    this.E = new Texture(this, paramBitmap1);
+    this.K = new Texture(this, paramBitmap2);
+    this.J = new Texture(this, paramBitmap3);
+    this.F = new Texture(this, paramBitmap5);
+    this.G = new Texture(this, paramBitmap6);
+    this.H = new Texture(this, paramBitmap7);
+    this.I = new Texture(this, paramBitmap8);
+    this.L = new Texture(this, paramBitmap12);
   }
   
   public void b()
   {
-    int m = 0;
+    int i1 = 0;
     Sprite localSprite;
-    int n;
-    int i1;
     int i2;
     int i3;
     int i4;
-    while (m < this.jdField_a_of_type_JavaUtilList.size())
+    int i5;
+    int i6;
+    while (i1 < this.y.size())
     {
-      localSprite = (Sprite)this.jdField_a_of_type_JavaUtilList.get(m);
-      n = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F);
-      i1 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 85.0F));
-      i2 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 250.0F));
-      i3 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 220.0F));
-      i4 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 230.0F));
-      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, n, i1), new MoveYToAction(700, i1, i2), new MoveYToAction(300, i2, i3), new MoveYToAction(100, i3, i4) }) });
-      m += 1;
+      localSprite = (Sprite)this.y.get(i1);
+      i2 = (int)(this.c + localSprite.c / 2.0F);
+      i3 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 85.0F));
+      i4 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 250.0F));
+      i5 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 220.0F));
+      i6 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 230.0F));
+      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, i2, i3), new MoveYToAction(700, i3, i4), new MoveYToAction(300, i4, i5), new MoveYToAction(100, i5, i6) }) });
+      i1 += 1;
     }
-    m = 0;
-    while (m < this.jdField_b_of_type_JavaUtilList.size())
+    i1 = 0;
+    while (i1 < this.z.size())
     {
-      localSprite = (Sprite)this.jdField_b_of_type_JavaUtilList.get(m);
-      n = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F);
-      i1 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 70.0F));
-      i2 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 235.0F));
-      i3 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 205.0F));
-      i4 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 215.0F));
-      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, n, i1), new MoveYToAction(700, i1, i2), new MoveYToAction(300, i2, i3), new MoveYToAction(100, i3, i4) }) });
-      m += 1;
+      localSprite = (Sprite)this.z.get(i1);
+      i2 = (int)(this.c + localSprite.c / 2.0F);
+      i3 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 70.0F));
+      i4 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 235.0F));
+      i5 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 205.0F));
+      i6 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 215.0F));
+      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, i2, i3), new MoveYToAction(700, i3, i4), new MoveYToAction(300, i4, i5), new MoveYToAction(100, i5, i6) }) });
+      i1 += 1;
     }
-    m = 0;
-    while (m < this.jdField_c_of_type_JavaUtilList.size())
+    i1 = 0;
+    while (i1 < this.A.size())
     {
-      localSprite = (Sprite)this.jdField_c_of_type_JavaUtilList.get(m);
-      n = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F);
-      i1 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F));
-      i2 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 215.0F));
-      i3 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 185.0F));
-      i4 = (int)(this.jdField_b_of_type_Int + localSprite.b / 2.0F - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 195.0F));
-      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, n, i1), new MoveYToAction(700, i1, i2), new MoveYToAction(300, i2, i3), new MoveYToAction(100, i3, i4) }) });
-      m += 1;
+      localSprite = (Sprite)this.A.get(i1);
+      i2 = (int)(this.c + localSprite.c / 2.0F);
+      i3 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 50.0F));
+      i4 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 215.0F));
+      i5 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 185.0F));
+      i6 = (int)(this.c + localSprite.c / 2.0F - DisplayUtil.a(this.d, 195.0F));
+      localSprite.a(new Action[] { new SequenceAction(new Action[] { new MoveYToAction(1000, i2, i3), new MoveYToAction(700, i3, i4), new MoveYToAction(300, i4, i5), new MoveYToAction(100, i5, i6) }) });
+      i1 += 1;
     }
   }
   
   public void c()
   {
-    int m = 0;
+    int i1 = 0;
     Object localObject;
-    while (m < this.jdField_a_of_type_JavaUtilList.size())
+    while (i1 < this.y.size())
     {
-      localObject = (Sprite)this.jdField_a_of_type_JavaUtilList.get(m);
-      ((Sprite)localObject).c += DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-      if ((m == this.jdField_a_of_type_JavaUtilList.size() - 1) && (((Sprite)localObject).c > this.jdField_a_of_type_Int + ((Sprite)localObject).jdField_a_of_type_Float / 2.0F))
+      localObject = (Sprite)this.y.get(i1);
+      ((Sprite)localObject).d += DisplayUtil.a(this.d, 2.0F);
+      if ((i1 == this.y.size() - 1) && (((Sprite)localObject).d > this.b + ((Sprite)localObject).b / 2.0F))
       {
-        ((Sprite)localObject).c = (((Sprite)this.jdField_a_of_type_JavaUtilList.get(0)).c - ((Sprite)localObject).jdField_a_of_type_Float + 1.0F);
-        localObject = this.jdField_a_of_type_JavaUtilList;
-        ((List)localObject).add(0, ((List)localObject).remove(m));
+        ((Sprite)localObject).d = (((Sprite)this.y.get(0)).d - ((Sprite)localObject).b + 1.0F);
+        localObject = this.y;
+        ((List)localObject).add(0, ((List)localObject).remove(i1));
         break;
       }
-      m += 1;
+      i1 += 1;
     }
-    m = 0;
-    while (m < this.jdField_b_of_type_JavaUtilList.size())
+    i1 = 0;
+    while (i1 < this.z.size())
     {
-      localObject = (Sprite)this.jdField_b_of_type_JavaUtilList.get(m);
-      ((Sprite)localObject).c += DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
-      if ((m == this.jdField_b_of_type_JavaUtilList.size() - 1) && (((Sprite)localObject).c > this.jdField_a_of_type_Int + ((Sprite)localObject).jdField_a_of_type_Float / 2.0F))
+      localObject = (Sprite)this.z.get(i1);
+      ((Sprite)localObject).d += DisplayUtil.a(this.d, 3.0F);
+      if ((i1 == this.z.size() - 1) && (((Sprite)localObject).d > this.b + ((Sprite)localObject).b / 2.0F))
       {
-        ((Sprite)localObject).c = (((Sprite)this.jdField_b_of_type_JavaUtilList.get(0)).c - ((Sprite)localObject).jdField_a_of_type_Float + 1.0F);
-        localObject = this.jdField_b_of_type_JavaUtilList;
-        ((List)localObject).add(0, ((List)localObject).remove(m));
+        ((Sprite)localObject).d = (((Sprite)this.z.get(0)).d - ((Sprite)localObject).b + 1.0F);
+        localObject = this.z;
+        ((List)localObject).add(0, ((List)localObject).remove(i1));
         break;
       }
-      m += 1;
+      i1 += 1;
     }
-    m = 0;
-    while (m < this.jdField_c_of_type_JavaUtilList.size())
+    i1 = 0;
+    while (i1 < this.A.size())
     {
-      localObject = (Sprite)this.jdField_c_of_type_JavaUtilList.get(m);
-      ((Sprite)localObject).c += DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-      if ((m == this.jdField_c_of_type_JavaUtilList.size() - 1) && (((Sprite)localObject).c > this.jdField_a_of_type_Int + ((Sprite)localObject).jdField_a_of_type_Float / 2.0F))
+      localObject = (Sprite)this.A.get(i1);
+      ((Sprite)localObject).d += DisplayUtil.a(this.d, 4.0F);
+      if ((i1 == this.A.size() - 1) && (((Sprite)localObject).d > this.b + ((Sprite)localObject).b / 2.0F))
       {
-        ((Sprite)localObject).c = (((Sprite)this.jdField_c_of_type_JavaUtilList.get(0)).c - ((Sprite)localObject).jdField_a_of_type_Float + 1.0F);
-        localObject = this.jdField_c_of_type_JavaUtilList;
-        ((List)localObject).add(0, ((List)localObject).remove(m));
+        ((Sprite)localObject).d = (((Sprite)this.A.get(0)).d - ((Sprite)localObject).b + 1.0F);
+        localObject = this.A;
+        ((List)localObject).add(0, ((List)localObject).remove(i1));
         return;
       }
-      m += 1;
+      i1 += 1;
     }
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlTexture);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-    ((Sprite)localObject).a(this.jdField_a_of_type_Int / 2, -((Sprite)localObject).b / 2.0F);
-    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
+    this.e = new Sprite();
+    this.e.a(this.E);
+    Object localObject = this.e;
+    ((Sprite)localObject).a(this.b / 2, -((Sprite)localObject).c / 2.0F);
+    a(this.e);
     localObject = new DelayAction(1100);
     ((DelayAction)localObject).a(new FriendShipWaveView.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localObject });
+    this.e.a(new Action[] { localObject });
   }
   
   public void e()
   {
-    this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
-    Object localObject = this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-    ((Sprite)localObject).e = 0.0F;
-    ((Sprite)localObject).a(this.j);
-    this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_a_of_type_Int / 2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 165.0F) + this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
-    localObject = this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-    ((Sprite)localObject).e = 0.0F;
-    ((Sprite)localObject).a(this.k);
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_a_of_type_Int / 2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 130.0F) + this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
+    this.g = new Sprite();
+    Object localObject = this.g;
+    ((Sprite)localObject).f = 0.0F;
+    ((Sprite)localObject).a(this.K);
+    this.g.a(this.b / 2, DisplayUtil.a(this.d, 165.0F) + this.g.c / 2.0F);
+    this.f = new Sprite();
+    localObject = this.f;
+    ((Sprite)localObject).f = 0.0F;
+    ((Sprite)localObject).a(this.L);
+    this.f.a(this.b / 2, DisplayUtil.a(this.d, 130.0F) + this.f.c / 2.0F);
     localObject = new DelayAction(1200);
     ((DelayAction)localObject).a(new FriendShipWaveView.3(this));
-    a(this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    this.jdField_c_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localObject });
+    a(this.g);
+    a(this.f);
+    this.g.a(new Action[] { localObject });
   }
   
   public void f()
   {
-    this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
-    this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.e);
-    Object localObject = this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite;
-    ((Sprite)localObject).jdField_a_of_type_Int = 0;
-    ((Sprite)localObject).a(this.jdField_a_of_type_Int / 2 - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 110.0F), this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d + 20.0F);
+    this.h = new Sprite();
+    this.h.a(this.F);
+    Object localObject = this.h;
+    ((Sprite)localObject).i = 0;
+    ((Sprite)localObject).a(this.b / 2 - DisplayUtil.a(this.d, 110.0F), this.f.e + 20.0F);
     localObject = new DelayAction(1200);
     ((DelayAction)localObject).a(new FriendShipWaveView.4(this));
-    a(this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localObject });
+    a(this.h);
+    this.h.a(new Action[] { localObject });
   }
   
   public void g()
   {
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite = new Sprite();
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.i);
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c - this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.jdField_a_of_type_Float / 2.0F - 3.0F, this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d - this.jdField_d_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.jdField_a_of_type_Int = 0;
+    this.l = new Sprite();
+    this.l.a(this.J);
+    this.l.a(this.h.d - this.h.b / 2.0F - 3.0F, this.h.e - this.h.c / 2.0F);
+    this.l.i = 0;
     DelayAction localDelayAction = new DelayAction(1700);
     localDelayAction.a(new FriendShipWaveView.5(this));
-    a(this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    this.jdField_h_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localDelayAction });
+    a(this.l);
+    this.l.a(new Action[] { localDelayAction });
   }
   
   public void h()
@@ -285,40 +284,40 @@ public class FriendShipWaveView
     DelayAction localDelayAction = new DelayAction(1000);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, this.jdField_a_of_type_AndroidGraphicsBitmap, true);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.jdField_a_of_type_Int = 0;
+      this.r = new ImageButton(this, this.q, true);
+      this.r.i = 0;
       if (Build.VERSION.SDK_INT < 19) {
-        break label169;
+        break label171;
       }
-      m = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+      i1 = ImmersiveUtils.getStatusBarHeight(this.d);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       for (;;)
       {
         continue;
-        int m = 0;
+        int i1 = 0;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(this.jdField_a_of_type_Int - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 20.0F) - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.jdField_a_of_type_Float / 2.0F, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F) + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.b / 2.0F + m);
-    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
-    break label137;
+    this.r.a(this.b - DisplayUtil.a(this.d, 20.0F) - this.r.b / 2.0F, DisplayUtil.a(this.d, 5.0F) + this.r.c / 2.0F + i1);
+    a(this.r);
+    break label139;
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "decode init mCloseButton failed");
+      QLog.d(this.a, 2, "decode init mCloseButton failed");
     }
-    label137:
+    label139:
     localDelayAction.a(new FriendShipWaveView.6(this));
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { localDelayAction });
+    this.r.a(new Action[] { localDelayAction });
   }
   
   public void i()
   {
-    List localList = a();
-    int m = 0;
-    while (m < localList.size())
+    List localList = getNodeList();
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      ((Node)localList.get(m)).a(new Action[] { new OpacityAction(300, 255, 0) });
-      m += 1;
+      ((Node)localList.get(i1)).a(new Action[] { new OpacityAction(300, 255, 0) });
+      i1 += 1;
     }
   }
   
@@ -329,7 +328,7 @@ public class FriendShipWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView
  * JD-Core Version:    0.7.0.1
  */

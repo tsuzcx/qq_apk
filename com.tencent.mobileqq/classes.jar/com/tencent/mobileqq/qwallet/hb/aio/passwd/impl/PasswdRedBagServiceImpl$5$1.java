@@ -43,7 +43,7 @@ class PasswdRedBagServiceImpl$5$1
       {
         if (paramBundle.status == 0)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.setPasswdRedBagLastedWord(this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdPasswdRedBagInfo.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq, paramBundle.hbPoemRule);
+          this.a.f.setPasswdRedBagLastedWord(this.a.a.a, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq, paramBundle.hbPoemRule);
           return;
         }
         if (paramBundle.status == 1)
@@ -52,22 +52,22 @@ class PasswdRedBagServiceImpl$5$1
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("sessionInfo.curType: ");
-            ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+            ((StringBuilder)localObject).append(this.a.c.a);
             QLog.i("PasswdRedBagSgervice", 2, ((StringBuilder)localObject).toString());
           }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 0) {
-            this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.setPasswdRedBagOpen(this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdPasswdRedBagInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+          if (this.a.c.a == 0) {
+            this.a.f.setPasswdRedBagOpen(this.a.a.a, this.a.c.b, this.a.c.a);
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("answer", this.a.jdField_a_of_type_JavaLangString);
+          ((Bundle)localObject).putString("answer", this.a.b);
           ((Bundle)localObject).putInt("subchannel", paramBundle.subchannel);
-          this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.openPasswdBagByTenpay(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdPasswdRedBagInfo, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, (Bundle)localObject);
+          this.a.f.openPasswdBagByTenpay(this.a.c, this.a.a, this.a.d, this.a.e, (Bundle)localObject);
           return;
         }
         if (paramBundle.status == 2)
         {
           long l = NetConnInfoCenter.getServerTime();
-          ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).putLong(PasswdRedBagServiceImpl.access$600(this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
+          ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).putLong(PasswdRedBagServiceImpl.access$200(this.a.f).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
         }
       }
     }
@@ -75,7 +75,7 @@ class PasswdRedBagServiceImpl$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

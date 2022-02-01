@@ -23,20 +23,20 @@ final class VideoReportController$reportExposureVideo$1
   
   public final void invoke()
   {
-    Object localObject1 = this.this$0.a();
+    Object localObject1 = this.this$0.g();
     if (localObject1 != null)
     {
-      localObject1 = ((VideoPlayController)localObject1).a();
+      localObject1 = ((VideoPlayController)localObject1).k();
       if (localObject1 != null)
       {
-        Object localObject2 = this.this$0.a();
+        Object localObject2 = this.this$0.g();
         if (localObject2 != null)
         {
-          localObject2 = ((VideoPlayController)localObject2).a();
+          localObject2 = ((VideoPlayController)localObject2).i();
           if ((localObject2 != null) && (!VideoReportController.a.a().contains(((AbsBaseArticleInfo)localObject1).innerUniqueID)))
           {
             VideoReportController.a.a().add(((AbsBaseArticleInfo)localObject1).innerUniqueID);
-            localObject2 = VideoReportUtil.a.a((AbsBaseArticleInfo)localObject1, ((IPlayer)localObject2).b());
+            localObject2 = VideoReportUtil.a.a((AbsBaseArticleInfo)localObject1, ((IPlayer)localObject2).o());
             localObject1 = VideoReportUtil.a;
             localObject2 = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject2).build();
             Intrinsics.checkExpressionValueIsNotNull(localObject2, "reportBuilder.build()");
@@ -49,7 +49,7 @@ final class VideoReportController$reportExposureVideo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoReportController.reportExposureVideo.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.util.Assert;
 public class BitmapTexture
   extends UploadedTexture
 {
-  protected Bitmap a;
+  protected Bitmap o;
   
   public BitmapTexture(Bitmap paramBitmap)
   {
@@ -17,19 +17,19 @@ public class BitmapTexture
       bool = false;
     }
     Assert.a(bool);
-    this.a = paramBitmap;
-  }
-  
-  protected Bitmap a()
-  {
-    return this.a;
+    this.o = paramBitmap;
   }
   
   protected void a(Bitmap paramBitmap) {}
   
-  public Bitmap b()
+  protected Bitmap v()
   {
-    return this.a;
+    return this.o;
+  }
+  
+  public Bitmap w()
+  {
+    return this.o;
   }
 }
 

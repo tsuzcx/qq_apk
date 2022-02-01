@@ -40,9 +40,9 @@ public class QzoneFeedItemTimeLocationView
   
   private void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131558830, this);
-    this.feedLocationTv = ((TextView)findViewById(2131366662));
-    this.feedCreateTimeTv = ((TextView)findViewById(2131366732));
+    LayoutInflater.from(this.mContext).inflate(2131624450, this);
+    this.feedLocationTv = ((TextView)findViewById(2131432984));
+    this.feedCreateTimeTv = ((TextView)findViewById(2131433054));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -56,13 +56,13 @@ public class QzoneFeedItemTimeLocationView
         paramInt1 = ((TextView)localObject).getWidth();
       }
       paramInt2 = getWidth();
-      double d = this.mContext.getResources().getDimension(2131296398);
+      double d = this.mContext.getResources().getDimension(2131296630);
       Double.isNaN(d);
       paramInt3 = (int)(d + 0.5D);
-      d = this.mContext.getResources().getDimension(2131296399);
+      d = this.mContext.getResources().getDimension(2131296631);
       Double.isNaN(d);
       paramInt4 = (int)(d + 0.5D);
-      d = this.mContext.getResources().getDimension(2131296397);
+      d = this.mContext.getResources().getDimension(2131296629);
       Double.isNaN(d);
       paramInt3 = paramInt2 - paramInt3 - paramInt4 - (int)(d + 0.5D) - paramInt1 - 1;
       this.feedLocationTv.setMaxWidth(paramInt3);
@@ -95,7 +95,7 @@ public class QzoneFeedItemTimeLocationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneFeedItemTimeLocationView
  * JD-Core Version:    0.7.0.1
  */

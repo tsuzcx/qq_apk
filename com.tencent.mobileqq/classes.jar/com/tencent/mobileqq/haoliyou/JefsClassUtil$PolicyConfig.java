@@ -7,18 +7,12 @@ import java.util.TreeSet;
 
 public class JefsClassUtil$PolicyConfig
 {
-  public List<JefsClassUtil.Policy> a;
-  public Set<String> a;
-  
-  public JefsClassUtil$PolicyConfig()
-  {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public Set<String> a = new TreeSet();
+  public List<JefsClassUtil.Policy> b = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClassUtil.PolicyConfig
  * JD-Core Version:    0.7.0.1
  */

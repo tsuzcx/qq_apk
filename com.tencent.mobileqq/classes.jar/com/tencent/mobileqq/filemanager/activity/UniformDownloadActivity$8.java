@@ -9,7 +9,7 @@ class UniformDownloadActivity$8
   
   public void a()
   {
-    UniformDownloadActivity.a(this.a);
+    UniformDownloadActivity.b(this.a);
   }
   
   public void b()
@@ -20,7 +20,7 @@ class UniformDownloadActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.8
  * JD-Core Version:    0.7.0.1
  */

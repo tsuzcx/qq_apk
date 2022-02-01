@@ -11,41 +11,41 @@ import java.lang.ref.WeakReference;
 public class PanoramaSensorManager
   implements CameraInterFace
 {
-  private static volatile PanoramaSensorManager jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager;
-  private volatile int jdField_a_of_type_Int = -1;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static volatile PanoramaSensorManager a;
+  private SensorManager b;
+  private WeakReference<SensorEventHandler.CameraChangedCallBack> c;
+  private boolean d = true;
+  private volatile int e = -1;
   
   public static PanoramaSensorManager a()
   {
-    if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager == null) {
-          jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager = new PanoramaSensorManager();
+        if (a == null) {
+          a = new PanoramaSensorManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaSensorManager;
+    return a;
   }
   
   public void a(Activity paramActivity)
   {
     if (paramActivity == null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+      this.b = null;
       return;
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
+    if (this.b == null) {
+      this.b = ((SensorManager)paramActivity.getSystemService("sensor"));
     }
   }
   
   public void a(SensorEventListener paramSensorEventListener)
   {
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (paramSensorEventListener == null) {
@@ -53,7 +53,7 @@ public class PanoramaSensorManager
       }
       localObject = ((SensorManager)localObject).getDefaultSensor(11);
       if (localObject != null) {
-        this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, (Sensor)localObject, 1);
+        this.b.registerListener(paramSensorEventListener, (Sensor)localObject, 1);
       }
     }
   }
@@ -63,13 +63,13 @@ public class PanoramaSensorManager
     if (paramCameraChangedCallBack == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
+    this.c = new WeakReference(paramCameraChangedCallBack);
   }
   
   public void a(boolean paramBoolean)
   {
     b(paramBoolean);
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.c;
     if (localObject == null) {
       return;
     }
@@ -80,22 +80,9 @@ public class PanoramaSensorManager
     ((SensorEventHandler.CameraChangedCallBack)localObject).onCameraChanged(paramBoolean);
   }
   
-  public boolean a()
-  {
-    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
-    boolean bool = false;
-    if (localSensorManager == null) {
-      return false;
-    }
-    if (localSensorManager.getDefaultSensor(11) != null) {
-      bool = true;
-    }
-    return bool;
-  }
-  
   public void b(SensorEventListener paramSensorEventListener)
   {
-    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    SensorManager localSensorManager = this.b;
     if (localSensorManager != null)
     {
       if (paramSensorEventListener == null) {
@@ -107,24 +94,37 @@ public class PanoramaSensorManager
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     int i;
     if (paramBoolean) {
       i = 1;
     } else {
       i = 2;
     }
-    this.jdField_a_of_type_Int = i;
+    this.e = i;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    SensorManager localSensorManager = this.b;
+    boolean bool = false;
+    if (localSensorManager == null) {
+      return false;
+    }
+    if (localSensorManager.getDefaultSensor(11) != null) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    return this.d;
   }
   
   public int getCameraID()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
 }
 

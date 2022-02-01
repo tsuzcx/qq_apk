@@ -7,23 +7,23 @@ import java.util.Map;
 public class TroopCommonlyUsedObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
-  private static int c;
+  public static final int c;
   
   static
   {
-    int i = c;
-    c = i + 1;
-    a = i;
-    i = c;
-    c = i + 1;
+    int i = a;
+    a = i + 1;
     b = i;
+    i = a;
+    a = i + 1;
+    c = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
@@ -58,7 +58,7 @@ public class TroopCommonlyUsedObserver
   
   private void b(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     if (paramArrayOfObject != null)
@@ -93,7 +93,7 @@ public class TroopCommonlyUsedObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.observer.TroopCommonlyUsedObserver
  * JD-Core Version:    0.7.0.1
  */

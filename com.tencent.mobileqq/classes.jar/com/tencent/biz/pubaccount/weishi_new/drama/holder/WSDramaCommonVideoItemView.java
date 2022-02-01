@@ -16,12 +16,12 @@ public class WSDramaCommonVideoItemView
   public void b()
   {
     super.b();
-    a(2131380577, new WSDramaItemTopAreaController(this.a));
+    a(2131449536, new WSDramaItemTopAreaController(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.WSDramaCommonVideoItemView
  * JD-Core Version:    0.7.0.1
  */

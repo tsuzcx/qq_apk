@@ -15,7 +15,7 @@ public class TencentDocHistoryTabToastProcessor
 {
   public static TencentDocHistoryTabToastBean a()
   {
-    return (TencentDocHistoryTabToastBean)QConfigManager.a().a(483);
+    return (TencentDocHistoryTabToastBean)QConfigManager.b().b(483);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocHistoryTabToastProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocHistoryTabToastProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class VipExtendIconExtender
     if (this.a == null)
     {
       this.a = new ImageView(this.mContext);
-      this.a.setId(2131380943);
+      this.a.setId(2131449933);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = AIOUtils.b(1.0F, this.mContext.getResources());
       this.layoutParams = localLayoutParams;
@@ -49,7 +49,7 @@ public class VipExtendIconExtender
     {
       Object localObject = VipUtils.VipIconUtils.a(IndividuationUrlHelper.a("extendnameplateiconurl", this.a), String.valueOf(paramInt));
       this.a.setVisibility(0);
-      VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130847296));
+      VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130848947));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("extendnameplatejumpurl_");
       ((StringBuilder)localObject).append(paramInt);
@@ -75,8 +75,8 @@ public class VipExtendIconExtender
   public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
     this.a.setVisibility(8);
-    if ((QVipRedNameCardProcessor.c().a) && (!SimpleUIUtil.a()) && (paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100)) {
-      a(paramNickNameLayoutData.f);
+    if ((QVipRedNameCardProcessor.e().a) && (!SimpleUIUtil.e()) && (paramNickNameLayoutData.l != 0) && (paramNickNameLayoutData.l != -100)) {
+      a(paramNickNameLayoutData.o);
     }
     QQAppInterface localQQAppInterface;
     if (BaseActivity.sTopActivity != null) {
@@ -84,14 +84,14 @@ public class VipExtendIconExtender
     } else {
       localQQAppInterface = null;
     }
-    if ((localQQAppInterface != null) && (((((IBizTroopInfoService)localQQAppInterface.getRuntimeService(IBizTroopInfoService.class, "")).getmIsShowTroopBigClub()) && (paramNickNameLayoutData.g == 0)) || ((paramNickNameLayoutData.g == -100) && (paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100) && (!SimpleUIUtil.a())))) {
-      a(paramNickNameLayoutData.f);
+    if ((localQQAppInterface != null) && (((((IBizTroopInfoService)localQQAppInterface.getRuntimeService(IBizTroopInfoService.class, "")).getmIsShowTroopBigClub()) && (paramNickNameLayoutData.p == 0)) || ((paramNickNameLayoutData.p == -100) && (paramNickNameLayoutData.l != 0) && (paramNickNameLayoutData.l != -100) && (!SimpleUIUtil.e())))) {
+      a(paramNickNameLayoutData.o);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.VipExtendIconExtender
  * JD-Core Version:    0.7.0.1
  */

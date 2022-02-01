@@ -12,7 +12,7 @@ class SwiftBrowserScreenShotHandler$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaLangString = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).saveBitmapToPublicAccountFileFolder(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
+    this.this$0.i = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).saveBitmapToPublicAccountFileFolder(this.this$0.h, "ShotCache_");
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -21,22 +21,22 @@ class SwiftBrowserScreenShotHandler$3
       QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.this$0;
-    ((SwiftBrowserScreenShotHandler)localObject).jdField_a_of_type_Boolean = false;
-    if (((SwiftBrowserScreenShotHandler)localObject).b)
+    ((SwiftBrowserScreenShotHandler)localObject).m = false;
+    if (((SwiftBrowserScreenShotHandler)localObject).n)
     {
       localObject = this.this$0;
-      ((SwiftBrowserScreenShotHandler)localObject).b = false;
-      ((SwiftBrowserScreenShotHandler)localObject).jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      ((SwiftBrowserScreenShotHandler)localObject).n = false;
+      ((SwiftBrowserScreenShotHandler)localObject).q.sendEmptyMessage(3);
       return;
     }
     if (this.a == 2) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.this$0.q.sendEmptyMessage(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.3
  * JD-Core Version:    0.7.0.1
  */

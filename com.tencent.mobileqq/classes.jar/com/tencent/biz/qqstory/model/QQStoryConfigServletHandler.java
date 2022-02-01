@@ -50,7 +50,7 @@ public abstract class QQStoryConfigServletHandler
     if ((!TextUtils.isEmpty(str)) && (str.trim().length() != 0)) {
       return paramList.a(str);
     }
-    paramList.c();
+    paramList.d();
     return true;
   }
   
@@ -136,12 +136,12 @@ public abstract class QQStoryConfigServletHandler
       {
         paramInt = Integer.valueOf(str11).intValue();
         if (paramInt != 0) {
-          break label1316;
+          break label1314;
         }
         bool = true;
         try
         {
-          ((StoryConfigManager)localObject1).b("boolean_enable_cq_mode", Boolean.valueOf(bool));
+          ((StoryConfigManager)localObject1).d("boolean_enable_cq_mode", Boolean.valueOf(bool));
         }
         catch (NumberFormatException paramList) {}
         localStringBuilder = new StringBuilder();
@@ -155,7 +155,7 @@ public abstract class QQStoryConfigServletHandler
       paramList = (String)localHashMap.get("hbr");
       try
       {
-        ((StoryConfigManager)localObject1).b("int_high_bitrate", Integer.valueOf(Integer.valueOf(paramList).intValue()));
+        ((StoryConfigManager)localObject1).d("int_high_bitrate", Integer.valueOf(Integer.valueOf(paramList).intValue()));
       }
       catch (NumberFormatException localNumberFormatException1)
       {
@@ -173,10 +173,10 @@ public abstract class QQStoryConfigServletHandler
       try
       {
         if (Integer.valueOf(paramList).intValue() != 1) {
-          break label1322;
+          break label1320;
         }
         bool = true;
-        ((StoryConfigManager)localObject1).b("boolean_need_high_profile", Boolean.valueOf(bool));
+        ((StoryConfigManager)localObject1).d("boolean_need_high_profile", Boolean.valueOf(bool));
       }
       catch (NumberFormatException localNumberFormatException2)
       {
@@ -190,7 +190,7 @@ public abstract class QQStoryConfigServletHandler
       paramList = (String)localHashMap.get("mvs");
       try
       {
-        ((StoryConfigManager)localObject1).b("int_upload_video_size_limit", Integer.valueOf(Integer.valueOf(paramList).intValue()));
+        ((StoryConfigManager)localObject1).d("int_upload_video_size_limit", Integer.valueOf(Integer.valueOf(paramList).intValue()));
       }
       catch (NumberFormatException localNumberFormatException3)
       {
@@ -225,73 +225,73 @@ public abstract class QQStoryConfigServletHandler
       if (str8 != null) {}
       try
       {
-        ((StoryConfigManager)localObject1).b("NewStoryVideoWidth", Integer.valueOf(str8));
+        ((StoryConfigManager)localObject1).d("NewStoryVideoWidth", Integer.valueOf(str8));
         if (str9 != null) {
-          ((StoryConfigManager)localObject1).b("NewStoryVideoHeight", Integer.valueOf(str9));
+          ((StoryConfigManager)localObject1).d("NewStoryVideoHeight", Integer.valueOf(str9));
         }
         if (str10 != null) {
-          ((StoryConfigManager)localObject1).b("NewStoryBitRate", Integer.valueOf(str10));
+          ((StoryConfigManager)localObject1).d("NewStoryBitRate", Integer.valueOf(str10));
         }
         if (localObject2 != null) {
-          ((StoryConfigManager)localObject1).b("StoryVideoKey", localObject2);
+          ((StoryConfigManager)localObject1).d("StoryVideoKey", localObject2);
         }
         if (localObject3 != null) {
-          ((StoryConfigManager)localObject1).b("StoryVideoWidth", Integer.valueOf((String)localObject3));
+          ((StoryConfigManager)localObject1).d("StoryVideoWidth", Integer.valueOf((String)localObject3));
         }
         if (str1 != null) {
-          ((StoryConfigManager)localObject1).b("StoryVideoHeight", Integer.valueOf(str1));
+          ((StoryConfigManager)localObject1).d("StoryVideoHeight", Integer.valueOf(str1));
         }
         if (str2 != null) {
-          ((StoryConfigManager)localObject1).b("StoryVideoMaxrate", Integer.valueOf(str2));
+          ((StoryConfigManager)localObject1).d("StoryVideoMaxrate", Integer.valueOf(str2));
         }
         if (str3 != null) {
-          ((StoryConfigManager)localObject1).b("StoryVideoMinrate", Integer.valueOf(str3));
+          ((StoryConfigManager)localObject1).d("StoryVideoMinrate", Integer.valueOf(str3));
         }
         if (str4 != null) {
-          ((StoryConfigManager)localObject1).b("key_encode_crf", Integer.valueOf(str4));
+          ((StoryConfigManager)localObject1).d("key_encode_crf", Integer.valueOf(str4));
         }
         if (str5 != null) {
-          ((StoryConfigManager)localObject1).b("key_encode_qmax", Integer.valueOf(str5));
+          ((StoryConfigManager)localObject1).d("key_encode_qmax", Integer.valueOf(str5));
         }
         if (str6 != null) {
-          ((StoryConfigManager)localObject1).b("key_encode_qmin", Integer.valueOf(str6));
+          ((StoryConfigManager)localObject1).d("key_encode_qmin", Integer.valueOf(str6));
         }
         if (str7 != null) {
-          ((StoryConfigManager)localObject1).b("key_encode_qdiff", Integer.valueOf(str7));
+          ((StoryConfigManager)localObject1).d("key_encode_qdiff", Integer.valueOf(str7));
         }
         paramList = (String)localHashMap.get("localUploadVideoSizeLimit");
         if (paramList != null) {
-          ((StoryConfigManager)localObject1).b("localUploadVideoSizeLimit", Integer.valueOf(paramList));
+          ((StoryConfigManager)localObject1).d("localUploadVideoSizeLimit", Integer.valueOf(paramList));
         }
         paramList = (String)localHashMap.get("localUploadVideoMinResolutionLimit");
         if (paramList != null) {
-          ((StoryConfigManager)localObject1).b("localUploadVideoMinResolutionLimit", Integer.valueOf(paramList));
+          ((StoryConfigManager)localObject1).d("localUploadVideoMinResolutionLimit", Integer.valueOf(paramList));
         }
         paramList = (String)localHashMap.get("localUploadVideoDurationLimit");
         if (paramList != null) {
-          ((StoryConfigManager)localObject1).b("localUploadVideoDurationLimit", Integer.valueOf(paramList));
+          ((StoryConfigManager)localObject1).d("localUploadVideoDurationLimit", Integer.valueOf(paramList));
         }
         paramList = (String)localHashMap.get("localUploadVideoRatioLimit");
         if (paramList != null) {
-          ((StoryConfigManager)localObject1).b("localUploadVideoRatioLimit", Integer.valueOf(paramList));
+          ((StoryConfigManager)localObject1).d("localUploadVideoRatioLimit", Integer.valueOf(paramList));
         }
         paramList = (String)localHashMap.get("localUploadImageSizeLimit");
         if (paramList != null) {
-          ((StoryConfigManager)localObject1).b("localUploadImageSizeLimit", Integer.valueOf(paramList));
+          ((StoryConfigManager)localObject1).d("localUploadImageSizeLimit", Integer.valueOf(paramList));
         }
         paramList = (String)localHashMap.get("localUploadImageMinResolutionLimit");
         if (paramList == null) {
-          break label1312;
+          break label1310;
         }
-        ((StoryConfigManager)localObject1).b("localUploadImageMinResolutionLimit", Integer.valueOf(paramList));
+        ((StoryConfigManager)localObject1).d("localUploadImageMinResolutionLimit", Integer.valueOf(paramList));
       }
       catch (Exception paramList)
       {
-        label1302:
-        label1312:
-        label1316:
-        label1322:
-        break label1302;
+        label1300:
+        label1310:
+        label1314:
+        label1320:
+        break label1300;
       }
       QLog.w("Q.qqstory.videoConfig", 2, "save sp error", paramList);
       return true;
@@ -340,7 +340,7 @@ public abstract class QQStoryConfigServletHandler
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.config.QQStoryConfigServletHandler", 2, "handleAlbumConfig data is null!!! clear config");
       }
-      localStoryScanManager.d();
+      localStoryScanManager.e();
       return true;
     }
     String str = (String)paramList.get(0);
@@ -353,7 +353,7 @@ public abstract class QQStoryConfigServletHandler
     if ((!TextUtils.isEmpty(str)) && (str.trim().length() != 0)) {
       return localStoryScanManager.b(str);
     }
-    localStoryScanManager.d();
+    localStoryScanManager.e();
     return true;
   }
   
@@ -376,7 +376,7 @@ public abstract class QQStoryConfigServletHandler
       localStringBuilder.append(paramList);
       QLog.d("Q.qqstory.videoCache", 2, localStringBuilder.toString());
     }
-    return ((StoryManager)SuperManager.a(5)).a(paramList);
+    return ((StoryManager)SuperManager.a(5)).l(paramList);
   }
   
   private boolean c(List<String> paramList)
@@ -388,7 +388,7 @@ public abstract class QQStoryConfigServletHandler
       }
       return false;
     }
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
+    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)QQStoryContext.j().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
     String str = (String)paramList.get(0);
     if (str == null) {
       paramList = "";
@@ -399,7 +399,7 @@ public abstract class QQStoryConfigServletHandler
     if ((!TextUtils.isEmpty(str)) && (str.trim().length() != 0)) {
       return localMsgTabStoryNodeConfigManager.a(str);
     }
-    localMsgTabStoryNodeConfigManager.a();
+    localMsgTabStoryNodeConfigManager.c();
     return true;
   }
   
@@ -497,14 +497,14 @@ public abstract class QQStoryConfigServletHandler
       {
         paramList = (StoryEditVideoConfig)JsonORM.a(new JSONObject(paramList), StoryEditVideoConfig.class);
         localObject = (StoryConfigManager)SuperManager.a(10);
-        ((StoryConfigManager)localObject).b("boolean_enable_revert_play_mode", Boolean.valueOf(true));
-        ((StoryConfigManager)localObject).b("boolean_enable_fast_play_mode", Boolean.valueOf(true));
-        ((StoryConfigManager)localObject).b("boolean_enable_slow_play_mode", Boolean.valueOf(true));
-        ((StoryConfigManager)localObject).b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true));
-        ((StoryConfigManager)localObject).b("boolean_enable_flow_decode", Boolean.valueOf(true));
-        ((StoryConfigManager)localObject).b("boolean_use_flow_decode_first", localBoolean);
-        ((StoryConfigManager)localObject).b("key_story_home_preload_count", Integer.valueOf(4));
-        ((StoryConfigManager)localObject).b("key_story_video_preload_duration", Integer.valueOf(2));
+        ((StoryConfigManager)localObject).d("boolean_enable_revert_play_mode", Boolean.valueOf(true));
+        ((StoryConfigManager)localObject).d("boolean_enable_fast_play_mode", Boolean.valueOf(true));
+        ((StoryConfigManager)localObject).d("boolean_enable_slow_play_mode", Boolean.valueOf(true));
+        ((StoryConfigManager)localObject).d("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(true));
+        ((StoryConfigManager)localObject).d("boolean_enable_flow_decode", Boolean.valueOf(true));
+        ((StoryConfigManager)localObject).d("boolean_use_flow_decode_first", localBoolean);
+        ((StoryConfigManager)localObject).d("key_story_home_preload_count", Integer.valueOf(4));
+        ((StoryConfigManager)localObject).d("key_story_video_preload_duration", Integer.valueOf(2));
         StoryEditVideoConfig.Device[] arrayOfDevice;
         if (paramList.f != null)
         {
@@ -517,12 +517,12 @@ public abstract class QQStoryConfigServletHandler
               break label737;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "use flow decode first");
-            ((StoryConfigManager)localObject).b("boolean_use_flow_decode_first", Boolean.valueOf(true));
+            ((StoryConfigManager)localObject).d("boolean_use_flow_decode_first", Boolean.valueOf(true));
           }
         }
-        if (paramList.jdField_a_of_type_ArrayOfComTencentBizQqstoryModelStoryEditVideoConfig$Device != null)
+        if (paramList.a != null)
         {
-          arrayOfDevice = paramList.jdField_a_of_type_ArrayOfComTencentBizQqstoryModelStoryEditVideoConfig$Device;
+          arrayOfDevice = paramList.a;
           j = arrayOfDevice.length;
           i = 0;
           if (i < j)
@@ -531,12 +531,12 @@ public abstract class QQStoryConfigServletHandler
               break label744;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable revert play mode");
-            ((StoryConfigManager)localObject).b("boolean_enable_revert_play_mode", localBoolean);
+            ((StoryConfigManager)localObject).d("boolean_enable_revert_play_mode", localBoolean);
           }
         }
-        if (paramList.jdField_b_of_type_ArrayOfComTencentBizQqstoryModelStoryEditVideoConfig$Device != null)
+        if (paramList.b != null)
         {
-          arrayOfDevice = paramList.jdField_b_of_type_ArrayOfComTencentBizQqstoryModelStoryEditVideoConfig$Device;
+          arrayOfDevice = paramList.b;
           j = arrayOfDevice.length;
           i = 0;
           if (i < j)
@@ -545,7 +545,7 @@ public abstract class QQStoryConfigServletHandler
               break label751;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable fast play mode");
-            ((StoryConfigManager)localObject).b("boolean_enable_fast_play_mode", localBoolean);
+            ((StoryConfigManager)localObject).d("boolean_enable_fast_play_mode", localBoolean);
           }
         }
         if (paramList.c != null)
@@ -559,7 +559,7 @@ public abstract class QQStoryConfigServletHandler
               break label758;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable slow play mode");
-            ((StoryConfigManager)localObject).b("boolean_enable_slow_play_mode", localBoolean);
+            ((StoryConfigManager)localObject).d("boolean_enable_slow_play_mode", localBoolean);
           }
         }
         if (paramList.d != null)
@@ -573,7 +573,7 @@ public abstract class QQStoryConfigServletHandler
               break label765;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable hw encode picToVideo");
-            ((StoryConfigManager)localObject).b("boolean_enable_hw_encode_pic_to_video", localBoolean);
+            ((StoryConfigManager)localObject).d("boolean_enable_hw_encode_pic_to_video", localBoolean);
           }
         }
         if (paramList.e != null)
@@ -587,35 +587,35 @@ public abstract class QQStoryConfigServletHandler
               break label772;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable flow decode");
-            ((StoryConfigManager)localObject).b("boolean_enable_flow_decode", localBoolean);
+            ((StoryConfigManager)localObject).d("boolean_enable_flow_decode", localBoolean);
           }
         }
         int j = -1;
         i = j;
-        if (paramList.jdField_a_of_type_JavaLangString != null) {
-          if ("DEBUG".contains(paramList.jdField_a_of_type_JavaLangString))
+        if (paramList.g != null) {
+          if ("DEBUG".contains(paramList.g))
           {
             i = 3;
           }
-          else if ("INFO".contains(paramList.jdField_a_of_type_JavaLangString))
+          else if ("INFO".contains(paramList.g))
           {
             i = 4;
           }
           else
           {
             i = j;
-            if ("WARN".contains(paramList.jdField_a_of_type_JavaLangString)) {
+            if ("WARN".contains(paramList.g)) {
               i = 5;
             }
           }
         }
-        ((StoryConfigManager)localObject).b("string_story_global_log_level", Integer.valueOf(i));
-        ((StoryConfigManager)localObject).b("string_auto_play_report_control", paramList.jdField_b_of_type_JavaLangString);
-        if ((paramList.jdField_a_of_type_Int > 0) && (paramList.jdField_a_of_type_Int < 20)) {
-          ((StoryConfigManager)localObject).b("key_story_home_preload_count", Integer.valueOf(paramList.jdField_a_of_type_Int));
+        ((StoryConfigManager)localObject).d("string_story_global_log_level", Integer.valueOf(i));
+        ((StoryConfigManager)localObject).d("string_auto_play_report_control", paramList.h);
+        if ((paramList.i > 0) && (paramList.i < 20)) {
+          ((StoryConfigManager)localObject).d("key_story_home_preload_count", Integer.valueOf(paramList.i));
         }
-        if ((paramList.jdField_b_of_type_Int > 0) && (paramList.jdField_b_of_type_Int < 10)) {
-          ((StoryConfigManager)localObject).b("key_story_video_preload_duration", Integer.valueOf(paramList.jdField_b_of_type_Int));
+        if ((paramList.j > 0) && (paramList.j < 10)) {
+          ((StoryConfigManager)localObject).d("key_story_video_preload_duration", Integer.valueOf(paramList.j));
         }
         return true;
       }
@@ -657,14 +657,14 @@ public abstract class QQStoryConfigServletHandler
       }
       return false;
     }
-    Object localObject = QQStoryContext.a();
+    Object localObject = QQStoryContext.j();
     paramList = (String)paramList.get(0);
     if (!TextUtils.isEmpty(paramList)) {
-      SharedPreUtils.g(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin(), paramList);
+      SharedPreUtils.i(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin(), paramList);
     } else {
-      SharedPreUtils.g(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin(), null);
+      SharedPreUtils.i(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin(), null);
     }
-    ((QQStoryManager)((QQAppInterface)localObject).getManager(QQManagerFactory.QQSTORY_MANAGER)).b(paramList);
+    ((QQStoryManager)((QQAppInterface)localObject).getManager(QQManagerFactory.QQSTORY_MANAGER)).c(paramList);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -695,15 +695,15 @@ public abstract class QQStoryConfigServletHandler
       paramList = (StoryConfigManager)SuperManager.a(10);
       JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("mainHallConfig");
       if (localJSONObject != null) {
-        paramList.b("mainHallConfig", localJSONObject.toString());
+        paramList.d("mainHallConfig", localJSONObject.toString());
       } else {
-        paramList.b("mainHallConfig", "");
+        paramList.d("mainHallConfig", "");
       }
       localObject = ((JSONObject)localObject).optJSONObject("troopStoryHallConfig");
       if (localObject != null) {
-        paramList.b("troopStoryHallConfig", ((JSONObject)localObject).toString());
+        paramList.d("troopStoryHallConfig", ((JSONObject)localObject).toString());
       } else {
-        paramList.b("troopStoryHallConfig", "");
+        paramList.d("troopStoryHallConfig", "");
       }
       return true;
     }
@@ -746,19 +746,19 @@ public abstract class QQStoryConfigServletHandler
           localObject4 = ((JSONObject)localObject4).optString("url");
           if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (HttpUtil.isValidUrl((String)localObject4)))
           {
-            ((StoryConfigManager)localObject2).b("CertificationLinkText", localObject3);
-            ((StoryConfigManager)localObject2).b("CertificationLinkUrl", localObject4);
+            ((StoryConfigManager)localObject2).d("CertificationLinkText", localObject3);
+            ((StoryConfigManager)localObject2).d("CertificationLinkUrl", localObject4);
           }
           else
           {
-            ((StoryConfigManager)localObject2).b("CertificationLinkText", "");
-            ((StoryConfigManager)localObject2).b("CertificationLinkUrl", "");
+            ((StoryConfigManager)localObject2).d("CertificationLinkText", "");
+            ((StoryConfigManager)localObject2).d("CertificationLinkUrl", "");
           }
         }
         else
         {
-          ((StoryConfigManager)localObject2).b("CertificationLinkText", "");
-          ((StoryConfigManager)localObject2).b("CertificationLinkUrl", "");
+          ((StoryConfigManager)localObject2).d("CertificationLinkText", "");
+          ((StoryConfigManager)localObject2).d("CertificationLinkUrl", "");
         }
         Object localObject3 = localJSONObject.optJSONObject("localVideo");
         int j;
@@ -769,23 +769,23 @@ public abstract class QQStoryConfigServletHandler
           if (j == 0) {
             i = 1439;
           }
-          ((StoryConfigManager)localObject2).b("localVideoScanInterval", String.valueOf(i));
+          ((StoryConfigManager)localObject2).d("localVideoScanInterval", String.valueOf(i));
         }
         else
         {
-          ((StoryConfigManager)localObject2).b("localVideoScanInterval", "1441");
+          ((StoryConfigManager)localObject2).d("localVideoScanInterval", "1441");
         }
         localObject3 = localJSONObject.optJSONObject("mainHallConfig");
         if (localObject3 != null) {
-          ((StoryConfigManager)localObject2).b("mainHallConfig", ((JSONObject)localObject3).toString());
+          ((StoryConfigManager)localObject2).d("mainHallConfig", ((JSONObject)localObject3).toString());
         } else {
-          ((StoryConfigManager)localObject2).b("mainHallConfig", "");
+          ((StoryConfigManager)localObject2).d("mainHallConfig", "");
         }
         localObject3 = localJSONObject.optJSONObject("troopStoryHallConfig");
         if (localObject3 != null) {
-          ((StoryConfigManager)localObject2).b("troopStoryHallConfig", ((JSONObject)localObject3).toString());
+          ((StoryConfigManager)localObject2).d("troopStoryHallConfig", ((JSONObject)localObject3).toString());
         } else {
-          ((StoryConfigManager)localObject2).b("troopStoryHallConfig", "");
+          ((StoryConfigManager)localObject2).d("troopStoryHallConfig", "");
         }
         localObject3 = localJSONObject.optJSONObject("storyShareTokenConfig");
         if (localObject3 != null)
@@ -794,11 +794,11 @@ public abstract class QQStoryConfigServletHandler
             break label660;
           }
           bool = true;
-          ((StoryConfigManager)localObject2).b("key_share_encrypt_flag", Boolean.valueOf(bool));
+          ((StoryConfigManager)localObject2).d("key_share_encrypt_flag", Boolean.valueOf(bool));
         }
         else
         {
-          ((StoryConfigManager)localObject2).b("key_share_encrypt_flag", localObject1);
+          ((StoryConfigManager)localObject2).d("key_share_encrypt_flag", localObject1);
         }
         localObject3 = localJSONObject.optJSONObject("createShareGroup");
         if (localObject3 != null)
@@ -807,18 +807,18 @@ public abstract class QQStoryConfigServletHandler
             break label666;
           }
           bool = true;
-          ((StoryConfigManager)localObject2).b("key_show_in_friend_story_main_page", Boolean.valueOf(bool));
+          ((StoryConfigManager)localObject2).d("key_show_in_friend_story_main_page", Boolean.valueOf(bool));
         }
         else
         {
-          ((StoryConfigManager)localObject2).b("key_show_in_friend_story_main_page", Boolean.valueOf(true));
+          ((StoryConfigManager)localObject2).d("key_show_in_friend_story_main_page", Boolean.valueOf(true));
         }
         localObject3 = localJSONObject.optJSONArray("multiFragmentBlackModelList");
         if (localObject3 != null)
         {
           localObject4 = Build.MODEL.toLowerCase();
           j = ((JSONArray)localObject3).length();
-          ((StoryConfigManager)localObject2).b("boolean_enable_multi_video_fragment", Boolean.valueOf(true));
+          ((StoryConfigManager)localObject2).d("boolean_enable_multi_video_fragment", Boolean.valueOf(true));
           i = 0;
           if (i < j)
           {
@@ -828,19 +828,19 @@ public abstract class QQStoryConfigServletHandler
                 break label672;
               }
             }
-            ((StoryConfigManager)localObject2).b("boolean_enable_multi_video_fragment", localObject1);
+            ((StoryConfigManager)localObject2).d("boolean_enable_multi_video_fragment", localObject1);
           }
         }
         else
         {
-          ((StoryConfigManager)localObject2).b("boolean_enable_multi_video_fragment", Boolean.valueOf(true));
+          ((StoryConfigManager)localObject2).d("boolean_enable_multi_video_fragment", Boolean.valueOf(true));
         }
         i = localJSONObject.optInt("qim_sync_to_qq", 0);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("qim_sync_to_qq: ");
         ((StringBuilder)localObject1).append(paramList);
         QLog.d("Q.qqstory.commonConfig", 2, ((StringBuilder)localObject1).toString());
-        ((StoryConfigManager)localObject2).b("key_qim_int_qim_sync_to_qq_default", Integer.valueOf(i));
+        ((StoryConfigManager)localObject2).d("key_qim_int_qim_sync_to_qq_default", Integer.valueOf(i));
         return true;
       }
       catch (JSONException paramList)
@@ -887,19 +887,19 @@ public abstract class QQStoryConfigServletHandler
           if (((JSONObject)localObject).optInt("show") != 0)
           {
             bool = true;
-            paramList.b("share_to_discover_show", Boolean.valueOf(bool));
+            paramList.d("share_to_discover_show", Boolean.valueOf(bool));
             return true;
           }
         }
         else
         {
-          paramList.b("share_to_discover_show", localBoolean);
+          paramList.d("share_to_discover_show", localBoolean);
           return true;
         }
       }
       catch (JSONException localJSONException)
       {
-        paramList.b("share_to_discover_show", localBoolean);
+        paramList.d("share_to_discover_show", localBoolean);
         if (QLog.isColorLevel()) {
           QLog.w("Q.qqstory.shareConfig", 2, localJSONException.getMessage());
         }
@@ -913,9 +913,9 @@ public abstract class QQStoryConfigServletHandler
   {
     String str = paramIntent.getStringExtra("key_uin");
     Object localObject = StoryConfigManager.a(paramInt);
-    int i = SharedPreUtils.a(QQStoryContext.a().getApp(), (String)localObject, str);
+    int i = SharedPreUtils.c(QQStoryContext.j().getApp(), (String)localObject, str);
     int j = paramConfig.version.get();
-    localObject = ConfigServlet.a(paramConfig, i, paramInt);
+    localObject = ConfigServlet.c(paramConfig, i, paramInt);
     boolean bool1 = false;
     if (localObject == null) {
       return false;
@@ -1006,7 +1006,7 @@ public abstract class QQStoryConfigServletHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.QQStoryConfigServletHandler
  * JD-Core Version:    0.7.0.1
  */

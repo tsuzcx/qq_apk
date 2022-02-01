@@ -21,24 +21,9 @@ import java.util.List<Ljava.lang.String;>;
 public class AlbumUtil
   extends QAlbumUtil
 {
-  private static long jdField_a_of_type_Long;
-  private static List<LocalMediaInfo> jdField_a_of_type_JavaUtilList;
-  public static final int[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 3000, 1 };
-  }
-  
-  public static float a()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "photoGroupListImageCropSpaceRatio", 0.25F);
-  }
-  
-  public static int a()
-  {
-    return QzoneConfig.getInstance().getConfig("MiniVideo", "MaxSelectVideoNum", 50);
-  }
+  public static final int[] a = { 0, 3000, 1, 10014 };
+  private static List<LocalMediaInfo> b;
+  private static long c;
   
   public static String a(Context paramContext)
   {
@@ -123,7 +108,7 @@ public class AlbumUtil
   
   public static boolean a(int paramInt)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -148,22 +133,22 @@ public class AlbumUtil
       if (i == 1)
       {
         if (paramBoolean) {
-          i = b();
+          i = d();
         } else {
-          i = a();
+          i = c();
         }
         paramBoolean = bool3;
         StringBuilder localStringBuilder;
         if (paramInt >= i)
         {
-          if (System.currentTimeMillis() - jdField_a_of_type_Long > 2000L)
+          if (System.currentTimeMillis() - c > 2000L)
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(HardCodeUtil.a(2131700439));
+            localStringBuilder.append(HardCodeUtil.a(2131898472));
             localStringBuilder.append(i);
-            localStringBuilder.append(HardCodeUtil.a(2131700440));
-            QQToast.a(paramContext, localStringBuilder.toString(), 0).a();
-            jdField_a_of_type_Long = System.currentTimeMillis();
+            localStringBuilder.append(HardCodeUtil.a(2131898473));
+            QQToast.makeText(paramContext, localStringBuilder.toString(), 0).show();
+            c = System.currentTimeMillis();
           }
           paramBoolean = false;
         }
@@ -171,19 +156,19 @@ public class AlbumUtil
         if (paramLocalMediaInfo.fileSize > l)
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131700438));
+          localStringBuilder.append(HardCodeUtil.a(2131898471));
           localStringBuilder.append((float)l / 1024.0F / 1024.0F / 1024.0F);
           localStringBuilder.append("G的视频");
-          QQToast.a(paramContext, localStringBuilder.toString(), 0).a();
+          QQToast.makeText(paramContext, localStringBuilder.toString(), 0).show();
           paramBoolean = false;
         }
         if (paramLocalMediaInfo.mDuration > 601000L)
         {
           paramLocalMediaInfo = new StringBuilder();
-          paramLocalMediaInfo.append(HardCodeUtil.a(2131700437));
+          paramLocalMediaInfo.append(HardCodeUtil.a(2131898470));
           paramLocalMediaInfo.append(10L);
-          paramLocalMediaInfo.append(HardCodeUtil.a(2131700441));
-          QQToast.a(paramContext, paramLocalMediaInfo.toString(), 0).a();
+          paramLocalMediaInfo.append(HardCodeUtil.a(2131898474));
+          QQToast.makeText(paramContext, paramLocalMediaInfo.toString(), 0).show();
           return false;
         }
         bool1 = paramBoolean;
@@ -196,15 +181,10 @@ public class AlbumUtil
   {
     if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() >= paramInt))
     {
-      QQToast.a(paramActivity, String.format(paramActivity.getResources().getString(2131718352), new Object[] { Integer.valueOf(paramInt) }), 0).b(paramActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramActivity, String.format(paramActivity.getResources().getString(2131915844), new Object[] { Integer.valueOf(paramInt) }), 0).show(paramActivity.getResources().getDimensionPixelSize(2131299920));
       return true;
     }
     return false;
-  }
-  
-  public static int b()
-  {
-    return QzoneConfig.getInstance().getConfig("MiniVideo", "ShuoShuoMaxSelectVideoNum", 10);
   }
   
   public static String b(Context paramContext)
@@ -221,14 +201,29 @@ public class AlbumUtil
     sLastAlbumName = null;
   }
   
-  public static void c()
+  public static int c()
+  {
+    return QzoneConfig.getInstance().getConfig("MiniVideo", "MaxSelectVideoNum", 50);
+  }
+  
+  public static int d()
+  {
+    return QzoneConfig.getInstance().getConfig("MiniVideo", "ShuoShuoMaxSelectVideoNum", 10);
+  }
+  
+  public static float e()
+  {
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "photoGroupListImageCropSpaceRatio", 0.25F);
+  }
+  
+  public static void f()
   {
     ReportController.b(null, "CliOper", "", "", "0X8009E98", "0X8009E98", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AlbumUtil
  * JD-Core Version:    0.7.0.1
  */

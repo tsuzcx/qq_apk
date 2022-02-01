@@ -50,6 +50,7 @@ public class ExpandableListView
   private int mIndicatorLeft;
   private final Rect mIndicatorRect = new Rect();
   private int mIndicatorRight;
+  private boolean mIsDrawIndicator = true;
   private ExpandableListView.OnChildClickListener mOnChildClickListener;
   private ExpandableListView.OnGroupClickListener mOnGroupClickListener;
   private ExpandableListView.OnGroupCollapseListener mOnGroupCollapseListener;
@@ -120,6 +121,9 @@ public class ExpandableListView
   
   private Drawable getIndicator(ExpandableListConnector.PositionMetadata paramPositionMetadata)
   {
+    if (!this.mIsDrawIndicator) {
+      return null;
+    }
     int i = paramPositionMetadata.position.type;
     int j = 2;
     Drawable localDrawable2;
@@ -604,6 +608,11 @@ public class ExpandableListView
     this.mIndicatorRight = paramInt2;
   }
   
+  public void setIsDrawIndicator(boolean paramBoolean)
+  {
+    this.mIsDrawIndicator = paramBoolean;
+  }
+  
   public void setOnChildClickListener(ExpandableListView.OnChildClickListener paramOnChildClickListener)
   {
     this.mOnChildClickListener = paramOnChildClickListener;
@@ -672,7 +681,7 @@ public class ExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ExpandableListView
  * JD-Core Version:    0.7.0.1
  */

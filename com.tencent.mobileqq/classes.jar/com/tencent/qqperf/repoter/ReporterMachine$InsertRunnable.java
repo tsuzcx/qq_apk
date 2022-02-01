@@ -14,14 +14,14 @@ class ReporterMachine$InsertRunnable
   
   public void run()
   {
-    if (MagnifierSDK.a != null) {
-      MagnifierSDK.a.a(this.a);
+    if (MagnifierSDK.e != null) {
+      MagnifierSDK.e.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine.InsertRunnable
  * JD-Core Version:    0.7.0.1
  */

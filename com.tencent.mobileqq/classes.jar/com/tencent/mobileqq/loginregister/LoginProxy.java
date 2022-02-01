@@ -15,60 +15,60 @@ public class LoginProxy
   implements ILoginAction, ILoginResult
 {
   @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
-  private static ArrayList<Class<? extends ILoginAction>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<Class<? extends ILoginAction>> a = new ArrayList();
   @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
-  private static ArrayList<Class<? extends ILoginResult>> jdField_b_of_type_JavaUtilArrayList;
-  private List<ILoginAction> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<ILoginResult> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private static ArrayList<Class<? extends ILoginResult>> b;
+  private List<ILoginAction> c = new ArrayList();
+  private List<ILoginResult> d = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(QCircleLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(AlbumLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QZoneLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(NotifyLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(OpenSdkLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(CheckAuthLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(UpdateLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MessageLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(KandianLoginAction.class);
-    jdField_a_of_type_JavaUtilArrayList.add(AlphaLoginAction.class);
-    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_b_of_type_JavaUtilArrayList.add(AccountLoginResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(MiniLoginResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(JumpLoginResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(InitLoginResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(PatternLockResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(MessageLoginResult.class);
-    jdField_b_of_type_JavaUtilArrayList.add(DefaultLogoutResult.class);
+    a.add(QCircleLoginAction.class);
+    a.add(AlbumLoginAction.class);
+    a.add(QZoneLoginAction.class);
+    a.add(NotifyLoginAction.class);
+    a.add(OpenSdkLoginAction.class);
+    a.add(CheckAuthLoginAction.class);
+    a.add(UpdateLoginAction.class);
+    a.add(MessageLoginAction.class);
+    a.add(KandianLoginAction.class);
+    a.add(AlphaLoginAction.class);
+    b = new ArrayList();
+    b.add(AccountLoginResult.class);
+    b.add(MiniLoginResult.class);
+    b.add(JumpLoginResult.class);
+    b.add(InitLoginResult.class);
+    b.add(PatternLockResult.class);
+    b.add(MessageLoginResult.class);
+    b.add(DefaultLogoutResult.class);
   }
   
   public LoginProxy()
   {
-    QLog.d("LoginProxy", 1, new Object[] { "sLoginActionClasses size : ", Integer.valueOf(jdField_a_of_type_JavaUtilArrayList.size()) });
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    QLog.d("LoginProxy", 1, new Object[] { "sLoginActionClasses size : ", Integer.valueOf(a.size()) });
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Class)localIterator.next();
       try
       {
         localObject1 = (ILoginAction)((Class)localObject1).newInstance();
-        this.jdField_a_of_type_JavaUtilList.add(localObject1);
+        this.c.add(localObject1);
       }
       catch (Exception localException1)
       {
         QLog.e("LoginProxy", 1, "ILoginAction newInstance", localException1);
       }
     }
-    QLog.d("LoginProxy", 1, new Object[] { "sLoginResultClasses size : ", Integer.valueOf(jdField_b_of_type_JavaUtilArrayList.size()) });
-    localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
+    QLog.d("LoginProxy", 1, new Object[] { "sLoginResultClasses size : ", Integer.valueOf(b.size()) });
+    localIterator = b.iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Class)localIterator.next();
       try
       {
         localObject2 = (ILoginResult)((Class)localObject2).newInstance();
-        this.jdField_b_of_type_JavaUtilList.add(localObject2);
+        this.d.add(localObject2);
       }
       catch (Exception localException2)
       {
@@ -79,7 +79,7 @@ public class LoginProxy
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a();
     }
@@ -87,7 +87,7 @@ public class LoginProxy
   
   public void a(Activity paramActivity, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramActivity, paramBundle);
     }
@@ -95,7 +95,7 @@ public class LoginProxy
   
   public void a(Activity paramActivity, String paramString)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((ILoginResult)localIterator.next()).a(paramActivity, paramString);
     }
@@ -103,7 +103,7 @@ public class LoginProxy
   
   public void a(Activity paramActivity, AppRuntime paramAppRuntime)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((ILoginResult)localIterator.next()).a(paramActivity, paramAppRuntime);
     }
@@ -111,7 +111,7 @@ public class LoginProxy
   
   public void a(Activity paramActivity, AppRuntime paramAppRuntime, String paramString)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((ILoginResult)localIterator.next()).a(paramActivity, paramAppRuntime, paramString);
     }
@@ -119,7 +119,7 @@ public class LoginProxy
   
   public void a(Context paramContext)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramContext);
     }
@@ -127,7 +127,7 @@ public class LoginProxy
   
   public void a(QBaseActivity paramQBaseActivity, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramInt);
     }
@@ -135,7 +135,7 @@ public class LoginProxy
   
   public void a(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramBundle);
     }
@@ -143,7 +143,7 @@ public class LoginProxy
   
   public void a(QBaseActivity paramQBaseActivity, String paramString, boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramString, paramBoolean);
     }
@@ -151,7 +151,7 @@ public class LoginProxy
   
   public void a(QBaseActivity paramQBaseActivity, AppRuntime paramAppRuntime, LoginErrorInfo paramLoginErrorInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramQBaseActivity, paramAppRuntime, paramLoginErrorInfo);
     }
@@ -159,7 +159,7 @@ public class LoginProxy
   
   public void a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((ILoginAction)localIterator.next()).a(paramString);
     }
@@ -167,7 +167,7 @@ public class LoginProxy
   
   public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     boolean bool = true;
     while (localIterator.hasNext()) {
       bool &= ((ILoginResult)localIterator.next()).a(paramAppRuntime, paramActivity, paramString);
@@ -177,7 +177,7 @@ public class LoginProxy
   
   public boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     boolean bool = false;
     while (localIterator.hasNext()) {
       bool |= ((ILoginAction)localIterator.next()).a(paramAppRuntime, paramClass, paramLong);
@@ -187,7 +187,7 @@ public class LoginProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.LoginProxy
  * JD-Core Version:    0.7.0.1
  */

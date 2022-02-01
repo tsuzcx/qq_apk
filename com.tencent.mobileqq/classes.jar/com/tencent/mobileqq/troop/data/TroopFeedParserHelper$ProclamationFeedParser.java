@@ -39,7 +39,7 @@ public class TroopFeedParserHelper$ProclamationFeedParser
         }
         else if (j == 10) {
           localTroopFeedItem.title = paramJSONObject.getString("value");
-        } else if ((j == 6) && (StringUtil.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url"))) {
+        } else if ((j == 6) && (StringUtil.isEmpty(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url"))) {
           localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
         }
         i += 1;
@@ -55,7 +55,7 @@ public class TroopFeedParserHelper$ProclamationFeedParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.ProclamationFeedParser
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,6 @@ public class TAVVideoCompositionInstruction
   @NonNull
   private List<TAVVideoCompositionLayerInstruction> overlayLayers;
   private TAVVideoEffect sourceVideoEffect;
-  @NonNull
   private final CMTimeRange timeRange;
   private TAVVideoMixEffect videoMixEffect;
   
@@ -152,7 +151,7 @@ public class TAVVideoCompositionInstruction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionInstruction
  * JD-Core Version:    0.7.0.1
  */

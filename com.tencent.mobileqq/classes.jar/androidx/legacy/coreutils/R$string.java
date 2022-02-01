@@ -2,7 +2,7 @@ package androidx.legacy.coreutils;
 
 public final class R$string
 {
-  public static final int status_bar_notification_info_overflow = 2131719220;
+  public static final int status_bar_notification_info_overflow = 2131916772;
 }
 
 

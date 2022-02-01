@@ -24,7 +24,7 @@ public class GestureUtil
     int i;
     if (paramDownloadInfo.enable)
     {
-      if ((d(paramDownloadInfo)) && (c(paramDownloadInfo))) {
+      if ((e(paramDownloadInfo)) && (d(paramDownloadInfo))) {
         i = 1;
       } else {
         i = 11;
@@ -36,7 +36,7 @@ public class GestureUtil
     int j;
     if (paramDownloadInfo.gameEnable)
     {
-      if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
+      if ((e(paramDownloadInfo)) && (c(paramDownloadInfo))) {
         j = 1;
       } else {
         j = 11;
@@ -67,7 +67,16 @@ public class GestureUtil
     return localStringBuilder.toString();
   }
   
-  public static boolean a(DownloadInfo paramDownloadInfo)
+  public static String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVSoUtils.b());
+    localStringBuilder.append("so763");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean b(DownloadInfo paramDownloadInfo)
   {
     boolean bool2 = false;
     if (paramDownloadInfo == null) {
@@ -88,16 +97,16 @@ public class GestureUtil
     return bool1;
   }
   
-  public static String b()
+  public static String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AVSoUtils.b());
-    localStringBuilder.append("so763");
+    localStringBuilder.append(b());
+    localStringBuilder.append("gamemodel");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
   
-  public static boolean b(DownloadInfo paramDownloadInfo)
+  public static boolean c(DownloadInfo paramDownloadInfo)
   {
     String str = paramDownloadInfo.MD5_zip_gamemodel;
     Object localObject = new StringBuilder();
@@ -122,16 +131,7 @@ public class GestureUtil
     return false;
   }
   
-  public static String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("gamemodel");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean c(DownloadInfo paramDownloadInfo)
+  public static boolean d(DownloadInfo paramDownloadInfo)
   {
     String str = paramDownloadInfo.MD5_zip_model;
     Object localObject = new StringBuilder();
@@ -156,7 +156,7 @@ public class GestureUtil
     return false;
   }
   
-  public static boolean d(DownloadInfo paramDownloadInfo)
+  public static boolean e(DownloadInfo paramDownloadInfo)
   {
     String str = paramDownloadInfo.MD5_zip_so;
     Object localObject = new StringBuilder();
@@ -183,7 +183,7 @@ public class GestureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureUtil
  * JD-Core Version:    0.7.0.1
  */

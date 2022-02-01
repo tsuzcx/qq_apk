@@ -114,10 +114,10 @@ public enum AdAnalysis
       {
         if ((send(paramWeakReference, localSettings.settingsForAnalysis.urlForReport, localList)) && (d.delete((Context)paramWeakReference.get(), localList)))
         {
-          reportInternal(paramWeakReference);
+          AdThreadManager.INSTANCE.postDelayed(new AdAnalysis.2(this, paramWeakReference), 4, 60000L);
           return;
         }
-        AdThreadManager.INSTANCE.postDelayed(new AdAnalysis.2(this, paramWeakReference), 4, localSettings.settingsForAnalysis.batch.intervalMillis);
+        AdThreadManager.INSTANCE.postDelayed(new AdAnalysis.3(this, paramWeakReference), 4, localSettings.settingsForAnalysis.batch.intervalMillis);
       }
     }
   }

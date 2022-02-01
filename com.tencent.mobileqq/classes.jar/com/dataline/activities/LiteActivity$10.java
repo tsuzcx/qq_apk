@@ -12,12 +12,12 @@ class LiteActivity$10
   
   public void onGlobalLayout()
   {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() > 3) && (!LiteActivity.a(this.a)) && (!SimpleUIUtil.a()))
+    if ((this.a.q.getLineCount() > 3) && (!LiteActivity.c(this.a)) && (!SimpleUIUtil.e()))
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.a.I.setVisibility(0);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    this.a.I.setVisibility(8);
   }
 }
 

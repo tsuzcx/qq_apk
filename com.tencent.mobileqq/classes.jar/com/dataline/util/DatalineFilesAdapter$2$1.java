@@ -14,20 +14,20 @@ class DatalineFilesAdapter$2$1
   
   public void a()
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$2.a).getDataLineMsgProxy(i).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.a.sessionid);
+    DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.c.a).getDataLineMsgProxy(i).c(this.a.sessionid);
     if (localDataLineMsgSet != null) {
       localDataLineMsgSet.setPaused(false);
     }
-    if (this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder.a.a != 1)
+    if (this.b.a.b != 1)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.fileMsgStatus == 1L) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-        DataLineReportUtil.e(DatalineFilesAdapter.a(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$2.a));
+      if ((this.a.fileMsgStatus == 1L) && (this.a.strMoloKey != null)) {
+        DataLineReportUtil.e(DatalineFilesAdapter.a(this.c.a));
       }
-      DatalineFilesAdapter.a(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$2.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+      DatalineFilesAdapter.a(this.c.a, this.b, this.a);
       return;
     }
-    DatalineFilesAdapter.b(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$2.a, this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter$ItemHolder, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    DatalineFilesAdapter.b(this.c.a, this.b, this.a);
   }
   
   public void b() {}

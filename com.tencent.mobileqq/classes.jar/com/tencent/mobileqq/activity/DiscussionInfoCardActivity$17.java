@@ -14,17 +14,17 @@ final class DiscussionInfoCardActivity$17
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("temp_discuss_link_share_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(".png");
     localObject = ((StringBuilder)localObject).toString();
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    localObject = QRUtils.a(localActivity, (String)localObject, TroopShareUtility.a(this.b, localActivity.getResources()));
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new DiscussionInfoCardActivity.17.1(this, (String)localObject));
+    Activity localActivity = this.b;
+    localObject = QRUtils.a(localActivity, (String)localObject, TroopShareUtility.a(this.c, localActivity.getResources()));
+    this.b.runOnUiThread(new DiscussionInfoCardActivity.17.1(this, (String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.17
  * JD-Core Version:    0.7.0.1
  */

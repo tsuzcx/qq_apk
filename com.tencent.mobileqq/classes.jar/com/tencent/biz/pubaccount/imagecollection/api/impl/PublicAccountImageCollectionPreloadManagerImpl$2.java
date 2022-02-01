@@ -13,7 +13,7 @@ class PublicAccountImageCollectionPreloadManagerImpl$2
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionPreloadManagerImpl.doStatisticReportForProtoTime(true, this.jdField_a_of_type_Long);
+      this.b.doStatisticReportForProtoTime(true, this.a);
       if (paramPhotoCollectionInfo != null)
       {
         if (QLog.isColorLevel())
@@ -26,19 +26,19 @@ class PublicAccountImageCollectionPreloadManagerImpl$2
           localStringBuilder.append(paramPhotoCollectionInfo.a);
           QLog.d(paramString, 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionPreloadManagerImpl.saveImageCollectionInfo(paramPhotoCollectionInfo, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionPreloadManagerImpl.preloadImage(paramPhotoCollectionInfo);
+        this.b.saveImageCollectionInfo(paramPhotoCollectionInfo, paramArrayOfByte);
+        this.b.preloadImage(paramPhotoCollectionInfo);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiImplPublicAccountImageCollectionPreloadManagerImpl.doStatisticReportForProtoTime(false, this.jdField_a_of_type_Long);
+      this.b.doStatisticReportForProtoTime(false, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionPreloadManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

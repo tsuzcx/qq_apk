@@ -11,25 +11,27 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wordsegment.WordSegment;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import mqq.app.AppRuntime;
 
 public class ArkAiDictMgr
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static volatile boolean a = false;
+  private static String b;
   
   public static WordSegmentResult a(AppRuntime paramAppRuntime, String paramString)
   {
     WordSegmentResult localWordSegmentResult = new WordSegmentResult();
-    localWordSegmentResult.jdField_a_of_type_JavaLangString = paramString;
-    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppRuntime, localWordSegmentResult, paramString));
+    localWordSegmentResult.b = paramString;
+    ArkRecommendLogic.b().a(new ArkAiDictMgr.3(paramAppRuntime, localWordSegmentResult, paramString));
     return localWordSegmentResult;
   }
   
   static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ArkAppEnvConfig.a().b());
+    localStringBuilder.append(ArkAppEnvConfig.a().d());
     localStringBuilder.append("/WordData/");
     return localStringBuilder.toString();
   }
@@ -44,26 +46,38 @@ public class ArkAiDictMgr
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    if (a())
+    if (b())
     {
       QLog.i("ArkDict.DictMgr", 1, "initWordData, already inited.");
       return;
     }
     new File(a()).mkdirs();
-    if (!jdField_a_of_type_Boolean) {
-      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
+    if (!a) {
+      ArkRecommendLogic.b().a(new ArkAiDictMgr.1());
     }
     b(paramAppRuntime);
   }
   
-  public static boolean a()
+  static String[] a(String paramString, int paramInt)
   {
-    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
+    if (paramString.length() < paramInt) {
+      return WordSegment.segment(paramString);
+    }
+    ArrayList localArrayList = new ArrayList();
+    StringSplitter localStringSplitter = new StringSplitter(paramString);
+    for (paramString = localStringSplitter.a(paramInt); !TextUtils.isEmpty(paramString); paramString = localStringSplitter.a(paramInt))
+    {
+      paramString = WordSegment.segment(paramString);
+      if (paramString != null) {
+        localArrayList.addAll(Arrays.asList(paramString));
+      }
+    }
+    return (String[])localArrayList.toArray(new String[0]);
   }
   
   public static void b(AppRuntime paramAppRuntime)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       QLog.i("ArkDict.DictMgr", 1, "reloadWordData, sIsSoLoaded is false");
       return;
@@ -71,15 +85,20 @@ public class ArkAiDictMgr
     ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppRuntime));
   }
   
-  private static boolean b(AppRuntime paramAppRuntime)
+  public static boolean b()
+  {
+    return (a) && (!TextUtils.isEmpty(b));
+  }
+  
+  private static boolean d(AppRuntime paramAppRuntime)
   {
     if (paramAppRuntime == null) {
       return true;
     }
     paramAppRuntime = (ArkAIDictConfBean)ArkConfProcessor.a(ArkAIDictConfBean.class);
-    if ((paramAppRuntime != null) && (paramAppRuntime.a() != null))
+    if ((paramAppRuntime != null) && (paramAppRuntime.b() != null))
     {
-      paramAppRuntime = paramAppRuntime.a().d;
+      paramAppRuntime = paramAppRuntime.b().d;
       if (paramAppRuntime != null)
       {
         QLog.i("ArkDict.DictMgr", 1, String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppRuntime }));
@@ -92,15 +111,15 @@ public class ArkAiDictMgr
     return true;
   }
   
-  private static void d()
+  private static void g()
   {
     try
     {
-      if ((Environment.jdField_a_of_type_Boolean) && (!jdField_a_of_type_Boolean))
+      if ((Environment.a) && (!a))
       {
-        jdField_a_of_type_Boolean = NativeLibLoader.c(BaseApplication.getContext(), "WordSegment");
-        QLog.i("ArkDict.DictMgr", 1, String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
-        if (jdField_a_of_type_Boolean) {
+        a = NativeLibLoader.c(BaseApplication.getContext(), "WordSegment");
+        QLog.i("ArkDict.DictMgr", 1, String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(a) }));
+        if (a) {
           WordSegment.setLogCallback(new ArkAiDictMgr.2());
         }
       }
@@ -113,9 +132,9 @@ public class ArkAiDictMgr
     }
   }
   
-  public void a()
+  public void c()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       QLog.i("ArkDict.DictMgr", 1, "loadTestDict, sIsSoLoaded is false");
       return;
@@ -123,14 +142,14 @@ public class ArkAiDictMgr
     ArkRecommendLogic.a().post(new ArkAiDictMgr.5(this));
   }
   
-  public void b()
+  public void d()
   {
     QLog.i("ArkDict.DictMgr", 1, "clearDict");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictMgr
  * JD-Core Version:    0.7.0.1
  */

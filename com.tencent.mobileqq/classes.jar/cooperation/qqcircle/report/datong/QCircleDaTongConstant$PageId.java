@@ -18,9 +18,11 @@ public class QCircleDaTongConstant$PageId
   public static final String PG_XSJ_FLOWPAGE_ROBOT_HASHTAG = "pg_xsj_flowpage_robot_hashtag";
   public static final String PG_XSJ_FOLLOWING_PAGE = "pg_xsj_following_page";
   public static final String PG_XSJ_FOLWPAGE_GROUP_UPDATES = "pg_xsj_flowpage_group_updates";
+  public static final String PG_XSJ_FULL_SCREEN_PAGE = "pg_xsj_full_screen_page";
   public static final String PG_XSJ_GIFT_WALL = "pg_xsj_gift_wall";
   public static final String PG_XSJ_LAYER_PAGE = "pg_xsj_layer_page";
   public static final String PG_XSJ_MISSION_CENTRE = "pg_xsj_mission_centre";
+  public static final String PG_XSJ_MUSIC_AGG_PAGE = "pg_xsj_music_agg_page";
   public static final String PG_XSJ_MY_MESSAGE_PAGE = "pg_xsj_my_message_page";
   public static final String PG_XSJ_NEARBY_PAGE = "pg_xsj_nearby_page";
   public static final String PG_XSJ_NEW_ENTRY_PAGE = "pg_xsj_new_entry_page";
@@ -30,8 +32,10 @@ public class QCircleDaTongConstant$PageId
   public static final String PG_XSJ_PRIVATE_MESSAGE_PAGE = "pg_xsj_private_message_page";
   public static final String PG_XSJ_PROFILE_DONGTAI = "pg_xsj_profile_dongtai";
   public static final String PG_XSJ_PROFILE_EDIT_PAGE = "pg_xsj_profile_edit_page";
+  public static final String PG_XSJ_PROFILE_PAGE = "pg_xsj_profile_page";
   public static final String PG_XSJ_PROFILE_TUIGUO = "pg_xsj_profile_tuiguo";
   public static final String PG_XSJ_PROFILE_ZUOPIN = "pg_xsj_profile_zuopin";
+  public static final String PG_XSJ_PUBLISH_DRAFTBOX_PAGE = "pg_xsj_publish_draftbox_page";
   public static final String PG_XSJ_PUBLISH_PAGE = "pg_xsj_publish_page";
   public static final String PG_XSJ_PUBLISH_PAGE_POI = "pg_xsj_publish_page_poi";
   public static final String PG_XSJ_PUBLISH_PAGE_PREVIEW_PICS = "pg_xsj_publish_page_preview_pics";
@@ -42,7 +46,7 @@ public class QCircleDaTongConstant$PageId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.datong.QCircleDaTongConstant.PageId
  * JD-Core Version:    0.7.0.1
  */

@@ -29,10 +29,10 @@ class ChatHistoryStructMsgView$2
     int j;
     if (this.a)
     {
-      localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-      localObject2 = this.this$0.jdField_b_of_type_JavaLangString;
-      i = this.this$0.jdField_a_of_type_Int;
-      j = ChatHistoryStructMsgView.a();
+      localObject1 = this.this$0.b.getMessageFacade();
+      localObject2 = this.this$0.i;
+      i = this.this$0.j;
+      j = ChatHistoryStructMsgView.b();
       localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, new int[] { -2011 }, j);
     }
     else
@@ -40,33 +40,33 @@ class ChatHistoryStructMsgView$2
       long l1;
       long l2;
       int k;
-      if (UinTypeUtil.g(this.this$0.jdField_a_of_type_Int))
+      if (UinTypeUtil.h(this.this$0.j))
       {
         localObject1 = this.this$0;
-        ((ChatHistoryStructMsgView)localObject1).jdField_b_of_type_Long -= 1L;
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        localObject2 = this.this$0.jdField_b_of_type_JavaLangString;
-        i = this.this$0.jdField_a_of_type_Int;
-        l1 = this.this$0.jdField_a_of_type_Long;
-        j = this.this$0.jdField_b_of_type_Int;
-        l2 = this.this$0.jdField_b_of_type_Long;
-        k = ChatHistoryStructMsgView.a();
+        ((ChatHistoryStructMsgView)localObject1).o -= 1L;
+        localObject1 = this.this$0.b.getMessageFacade();
+        localObject2 = this.this$0.i;
+        i = this.this$0.j;
+        l1 = this.this$0.n;
+        j = this.this$0.q;
+        l2 = this.this$0.o;
+        k = ChatHistoryStructMsgView.b();
         localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, j, l2, new int[] { -2011 }, k);
       }
       else
       {
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        localObject2 = this.this$0.jdField_b_of_type_JavaLangString;
-        i = this.this$0.jdField_a_of_type_Int;
-        l1 = this.this$0.jdField_a_of_type_Long;
-        j = this.this$0.jdField_b_of_type_Int;
-        l2 = this.this$0.c;
-        k = ChatHistoryStructMsgView.a();
+        localObject1 = this.this$0.b.getMessageFacade();
+        localObject2 = this.this$0.i;
+        i = this.this$0.j;
+        l1 = this.this$0.n;
+        j = this.this$0.q;
+        l2 = this.this$0.p;
+        k = ChatHistoryStructMsgView.b();
         localObject1 = ((QQMessageFacade)localObject1).a((String)localObject2, i, l1, j, l2, new int[] { -2011 }, k);
       }
     }
-    if ((localObject1 != null) && (((List)localObject1).size() < ChatHistoryStructMsgView.a())) {
-      this.this$0.jdField_b_of_type_Boolean = true;
+    if ((localObject1 != null) && (((List)localObject1).size() < ChatHistoryStructMsgView.b())) {
+      this.this$0.m = true;
     }
     Object localObject2 = new LinkedHashMap();
     Object localObject3;
@@ -78,17 +78,17 @@ class ChatHistoryStructMsgView$2
         localObject3 = (MessageRecord)((List)localObject1).get(i);
         if (ChatHistoryStructAdapter.a((MessageRecord)localObject3))
         {
-          if (((MessageRecord)localObject3).shmsgseq < this.this$0.jdField_b_of_type_Long) {
-            this.this$0.jdField_b_of_type_Long = ((MessageRecord)localObject3).shmsgseq;
+          if (((MessageRecord)localObject3).shmsgseq < this.this$0.o) {
+            this.this$0.o = ((MessageRecord)localObject3).shmsgseq;
           }
-          if (((MessageRecord)localObject3).versionCode < this.this$0.jdField_b_of_type_Int) {
-            this.this$0.jdField_b_of_type_Int = ((MessageRecord)localObject3).versionCode;
+          if (((MessageRecord)localObject3).versionCode < this.this$0.q) {
+            this.this$0.q = ((MessageRecord)localObject3).versionCode;
           }
-          if ((((MessageRecord)localObject3).getId() > 0L) && (((MessageRecord)localObject3).getId() < this.this$0.jdField_a_of_type_Long)) {
-            this.this$0.jdField_a_of_type_Long = ((MessageRecord)localObject3).getId();
+          if ((((MessageRecord)localObject3).getId() > 0L) && (((MessageRecord)localObject3).getId() < this.this$0.n)) {
+            this.this$0.n = ((MessageRecord)localObject3).getId();
           }
-          if (((MessageRecord)localObject3).time < this.this$0.c) {
-            this.this$0.c = ((MessageRecord)localObject3).time;
+          if (((MessageRecord)localObject3).time < this.this$0.p) {
+            this.this$0.p = ((MessageRecord)localObject3).time;
           }
           if ((localObject3 instanceof MessageForStructing))
           {
@@ -111,31 +111,31 @@ class ChatHistoryStructMsgView$2
         i -= 1;
       }
     }
-    if (this.this$0.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.this$0.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.this$0.l == null) {
+      this.this$0.l = new ArrayList();
     }
     Object localObject1 = ((LinkedHashMap)localObject2).keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (String)((Iterator)localObject1).next();
-      if (!this.this$0.jdField_a_of_type_JavaUtilArrayList.contains(localObject3)) {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+      if (!this.this$0.l.contains(localObject3)) {
+        this.this$0.l.add(localObject3);
       }
-      this.this$0.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)((LinkedHashMap)localObject2).get(localObject3));
+      this.this$0.l.addAll((Collection)((LinkedHashMap)localObject2).get(localObject3));
     }
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+    this.this$0.s.sendEmptyMessage(1);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("initEntity, size: ");
-      ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject1).append(this.this$0.l.size());
       QLog.d("ChatHistoryStruct", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryStructMsgView.2
  * JD-Core Version:    0.7.0.1
  */

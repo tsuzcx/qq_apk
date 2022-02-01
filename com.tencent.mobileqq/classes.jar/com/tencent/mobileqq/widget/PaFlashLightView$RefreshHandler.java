@@ -16,7 +16,7 @@ class PaFlashLightView$RefreshHandler
     if (paramMessage == null) {
       return;
     }
-    int i = paramMessage.jdField_a_of_type_Int;
+    int i = paramMessage.g;
     if (i != 0)
     {
       if (i != 1)
@@ -24,36 +24,36 @@ class PaFlashLightView$RefreshHandler
         if (i != 2) {
           return;
         }
-        paramMessage.jdField_c_of_type_ComTencentImageURLImageView.setVisibility(0);
-        if (paramMessage.jdField_a_of_type_Boolean)
+        paramMessage.c.setVisibility(0);
+        if (paramMessage.h)
         {
-          paramMessage.jdField_c_of_type_ComTencentImageURLImageView.startAnimation(paramMessage.jdField_a_of_type_AndroidViewAnimationAnimation);
+          paramMessage.c.startAnimation(paramMessage.d);
           return;
         }
-        paramMessage.jdField_c_of_type_ComTencentImageURLImageView.startAnimation(paramMessage.jdField_c_of_type_AndroidViewAnimationAnimation);
+        paramMessage.c.startAnimation(paramMessage.f);
         return;
       }
-      paramMessage.jdField_b_of_type_ComTencentImageURLImageView.setVisibility(0);
-      if (paramMessage.jdField_a_of_type_Boolean)
+      paramMessage.b.setVisibility(0);
+      if (paramMessage.h)
       {
-        paramMessage.jdField_b_of_type_ComTencentImageURLImageView.startAnimation(paramMessage.jdField_b_of_type_AndroidViewAnimationAnimation);
+        paramMessage.b.startAnimation(paramMessage.e);
         return;
       }
-      paramMessage.jdField_b_of_type_ComTencentImageURLImageView.startAnimation(paramMessage.jdField_c_of_type_AndroidViewAnimationAnimation);
+      paramMessage.b.startAnimation(paramMessage.f);
       return;
     }
-    paramMessage.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if (paramMessage.jdField_a_of_type_Boolean)
+    paramMessage.a.setVisibility(0);
+    if (paramMessage.h)
     {
-      paramMessage.startAnimation(paramMessage.jdField_a_of_type_AndroidViewAnimationAnimation);
+      paramMessage.startAnimation(paramMessage.d);
       return;
     }
-    paramMessage.startAnimation(paramMessage.jdField_c_of_type_AndroidViewAnimationAnimation);
+    paramMessage.startAnimation(paramMessage.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaFlashLightView.RefreshHandler
  * JD-Core Version:    0.7.0.1
  */

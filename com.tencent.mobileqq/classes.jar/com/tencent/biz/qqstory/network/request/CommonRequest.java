@@ -9,35 +9,35 @@ import com.tencent.mobileqq.pb.MessageMicro;
 public class CommonRequest<REQ extends MessageMicro>
   extends NetworkRequest<CommonResponse>
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  public final Bundle e;
+  public final REQ f;
+  public final String g;
   
   public CommonRequest(String paramString, REQ paramREQ, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
-  {
-    return new CommonResponse(paramArrayOfByte);
+    this.g = paramString;
+    this.f = paramREQ;
+    this.e = paramBundle;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.g;
   }
   
-  protected byte[] a()
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    return new CommonResponse(paramArrayOfByte);
+  }
+  
+  protected byte[] c()
+  {
+    return this.f.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.CommonRequest
  * JD-Core Version:    0.7.0.1
  */

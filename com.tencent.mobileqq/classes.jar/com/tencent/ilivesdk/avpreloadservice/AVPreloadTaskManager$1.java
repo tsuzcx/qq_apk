@@ -11,13 +11,13 @@ class AVPreloadTaskManager$1
   
   public void run()
   {
-    AVPreloadTaskManager.a(this.this$0).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentFalcoBaseLibapiGeneralinfoAppGeneralInfoService.getTPPlatform(), this.jdField_a_of_type_ComTencentFalcoBaseLibapiGeneralinfoAppGeneralInfoService.getTPPlayerGuid());
+    AVPreloadTaskManager.a(this.this$0).a(this.a, this.b.getTPPlatform(), this.b.getTPPlayerGuid());
     ThreadCenter.postUITask(this.this$0, new AVPreloadTaskManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadTaskManager.1
  * JD-Core Version:    0.7.0.1
  */

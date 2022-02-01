@@ -6,10 +6,11 @@ import com.tencent.qqmini.minigame.gpkg.GpkgManager;
 import com.tencent.qqmini.minigame.gpkg.GpkgManager.Info;
 import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
-import com.tencent.qqmini.sdk.task.AsyncTask;
+import com.tencent.qqmini.sdk.task.BaseTask;
 import com.tencent.qqmini.sdk.task.TaskExecutionStatics;
 import com.tencent.qqmini.sdk.task.TaskExecutionStatics.Status;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @ClassTag(tag="GpkgLoadAsyncTask")
 public class GpkgLoadAsyncTask
-  extends AsyncTask
+  extends BaseTask
 {
   public static final String LOG_TAG = "GpkgLoadAsyncTask";
   private GpkgManager.Info mGpkgInitResult;
@@ -71,7 +72,7 @@ public class GpkgLoadAsyncTask
       QMLog.i("GpkgLoadAsyncTask", ((StringBuilder)localObject).toString());
       this.mLoadingAppId = paramMiniAppInfo.appId;
       this.miniGamePkg = null;
-      GpkgManager.getGpkgInfoByConfig(paramMiniAppInfo, new GpkgLoadAsyncTask.1(this, System.currentTimeMillis()));
+      GpkgManager.getGpkgInfoByConfig(paramMiniAppInfo, new GpkgLoadAsyncTask.2(this, System.currentTimeMillis()));
       return;
     }
     Object localObject = new StringBuilder();
@@ -81,13 +82,9 @@ public class GpkgLoadAsyncTask
     onTaskFailed(2002, "配置错误");
   }
   
-  public void executeAsync()
+  protected void execute()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("executeAsync(). ");
-    localStringBuilder.append(this.miniAppInfo);
-    QMLog.i("GpkgLoadAsyncTask", localStringBuilder.toString());
-    loadGpkgByMiniAppInfo(this.miniAppInfo);
+    ThreadManager.executeOnNetworkIOThreadPool(new GpkgLoadAsyncTask.1(this));
   }
   
   public MiniGamePkg getGpkgInfo()
@@ -179,7 +176,7 @@ public class GpkgLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.GpkgLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public class AskAnonymouslyAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839112;
+    return 2130839268;
   }
   
   public int getAppID()
@@ -57,7 +57,7 @@ public class AskAnonymouslyAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131695087);
+    return BaseApplicationImpl.getContext().getString(2131892815);
   }
   
   protected void onChatPieLifeCycle(int paramInt)
@@ -78,21 +78,21 @@ public class AskAnonymouslyAppInfo
   {
     if (paramBaseChatPie != null)
     {
-      if (paramBaseChatPie.a() == null) {
+      if (paramBaseChatPie.aX() == null) {
         return;
       }
-      this.actRef = new WeakReference(paramBaseChatPie.a());
-      paramPlusPanelViewModel = paramBaseChatPie.a;
-      if (paramSessionInfo.jdField_a_of_type_Int == 1)
+      this.actRef = new WeakReference(paramBaseChatPie.aX());
+      paramPlusPanelViewModel = paramBaseChatPie.d;
+      if (paramSessionInfo.a == 1)
       {
         paramPlusPanelViewModel.addObserver(this.mTroopBusinessObserver);
-        ((ITroopManagerBizHandler)paramPlusPanelViewModel.getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER)).a(Long.valueOf(paramSessionInfo.jdField_a_of_type_JavaLangString).longValue(), 8);
-        ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_ask", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "0", "", "");
+        ((ITroopManagerBizHandler)paramPlusPanelViewModel.getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER)).a(Long.valueOf(paramSessionInfo.b).longValue(), 8);
+        ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "clk_ask", 0, 0, paramSessionInfo.b, "0", "", "");
         if (QLog.isColorLevel())
         {
           paramPlusPanelViewModel = new StringBuilder();
           paramPlusPanelViewModel.append("onPlusPanelAppClick ");
-          paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+          paramPlusPanelViewModel.append(paramSessionInfo.b);
           QLog.d("AskAnonymouslyAppInfo", 2, paramPlusPanelViewModel.toString());
         }
       }
@@ -101,7 +101,7 @@ public class AskAnonymouslyAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AskAnonymouslyAppInfo
  * JD-Core Version:    0.7.0.1
  */

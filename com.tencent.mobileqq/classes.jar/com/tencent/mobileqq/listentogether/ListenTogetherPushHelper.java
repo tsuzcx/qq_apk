@@ -32,8 +32,8 @@ public class ListenTogetherPushHelper
 {
   private static String a = "ListenTogether.PushHelper";
   private static String b = "is_open_with_open";
-  private static final String c = HardCodeUtil.a(2131693641);
-  private static final String d = HardCodeUtil.a(2131693645);
+  private static final String c = HardCodeUtil.a(2131891216);
+  private static final String d = HardCodeUtil.a(2131891220);
   
   private static void a(int paramInt1, String paramString1, int paramInt2, String paramString2, UniteGrayTipParam paramUniteGrayTipParam)
   {
@@ -49,7 +49,7 @@ public class ListenTogetherPushHelper
       } else {
         paramInt1 = 2;
       }
-      boolean bool = localListenTogetherManager.b(paramInt1, paramString1);
+      boolean bool = localListenTogetherManager.d(paramInt1, paramString1);
       paramString2 = TogetherUtils.a(16, ListenTogetherUtils.a((QQAppInterface)localObject, paramString1, paramInt1, paramString2));
       localObject = BaseApplicationImpl.getApplication().getResources();
       if (bool)
@@ -63,8 +63,8 @@ public class ListenTogetherPushHelper
         paramString1.append(d);
         paramString1 = paramString1.toString();
       }
-      paramString1 = ((Resources)localObject).getString(2131693666, new Object[] { paramString2, paramString1 });
-      paramUniteGrayTipParam.c = paramString1;
+      paramString1 = ((Resources)localObject).getString(2131891241, new Object[] { paramString2, paramString1 });
+      paramUniteGrayTipParam.g = paramString1;
       paramInt1 = paramString1.indexOf(d);
       if (paramInt1 != -1)
       {
@@ -142,7 +142,7 @@ public class ListenTogetherPushHelper
         QLog.i((String)localObject, 2, localStringBuilder.toString());
       }
       Object localObject = (ListenTogetherManager)paramQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
-      long l2 = ((ListenTogetherManager)localObject).a(1, str1);
+      long l2 = ((ListenTogetherManager)localObject).f(1, str1);
       if (l1 < l2)
       {
         QLog.d(a, 1, String.format("decodeGroupPush, filter oldTimeStamp: %s, timeStamp: %s, msyType: %s, groupUin: %s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), str1 }));
@@ -225,7 +225,7 @@ public class ListenTogetherPushHelper
     } else {
       i = -5040;
     }
-    paramBundle = new UniteGrayTipParam(paramString1, paramString1, paramString2, paramInt1, i, 131083, MessageCache.a());
+    paramBundle = new UniteGrayTipParam(paramString1, paramString1, paramString2, paramInt1, i, 131083, MessageCache.c());
     a(paramString2, paramInt2, paramBundle);
     a(paramInt1, paramString1, paramInt2, paramString3, paramBundle);
     paramString2 = new MessageForUniteGrayTip();
@@ -241,7 +241,7 @@ public class ListenTogetherPushHelper
     paramBundle.append(paramLong1);
     paramBundle.append("_");
     paramBundle.append(paramLong2);
-    paramString3.d = paramBundle.toString();
+    paramString3.p = paramBundle.toString();
     bool1 = UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString2);
     if (QLog.isColorLevel())
     {
@@ -250,7 +250,7 @@ public class ListenTogetherPushHelper
       paramString1.append("insertGrayTips end  res:");
       paramString1.append(bool1);
       paramString1.append(" grayTipKey:");
-      paramString1.append(paramString2.tipParam.d);
+      paramString1.append(paramString2.tipParam.p);
       QLog.i(paramQQAppInterface, 2, paramString1.toString());
     }
   }
@@ -359,7 +359,7 @@ public class ListenTogetherPushHelper
         }
         label594:
         localObject2 = (ListenTogetherManager)paramQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
-        l2 = ((ListenTogetherManager)localObject2).a(2, paramArrayOfByte);
+        l2 = ((ListenTogetherManager)localObject2).f(2, paramArrayOfByte);
         if (l1 <= l2) {
           paramQQAppInterface = a;
         }
@@ -439,7 +439,7 @@ public class ListenTogetherPushHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherPushHelper
  * JD-Core Version:    0.7.0.1
  */

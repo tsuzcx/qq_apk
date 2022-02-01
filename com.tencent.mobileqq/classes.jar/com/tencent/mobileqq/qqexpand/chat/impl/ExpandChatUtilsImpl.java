@@ -16,18 +16,18 @@ public final class ExpandChatUtilsImpl
 {
   public boolean bNeedShowLimitChatInTitleEntrance(@Nullable BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ExpandChatUtil.a(paramBaseQQAppInterface);
+    return ExpandChatUtil.b(paramBaseQQAppInterface);
   }
   
   public void clearAllMatchChatLocalData(@Nullable BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ExpandChatUtil.a(paramBaseQQAppInterface);
+    ExpandChatUtil.c(paramBaseQQAppInterface);
   }
   
   @Nullable
   public ExpandFriendData getInstance(@Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString)
   {
-    return ExpandChatUtil.a(paramBaseQQAppInterface, paramString);
+    return ExpandChatUtil.d(paramBaseQQAppInterface, paramString);
   }
   
   public int getLastMatchChatGrayTipsSection(@Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString)
@@ -38,7 +38,7 @@ public final class ExpandChatUtilsImpl
   @Nullable
   public String getMatchAlgorithmId(@Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString)
   {
-    return ExpandChatUtil.a(paramBaseQQAppInterface, paramString);
+    return ExpandChatUtil.b(paramBaseQQAppInterface, paramString);
   }
   
   public void handlePreLoadDataForIcebreakerTopic(@Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString, int paramInt, @Nullable Object paramObject)
@@ -53,12 +53,12 @@ public final class ExpandChatUtilsImpl
   
   public void markEnterAio(@Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString)
   {
-    ExpandChatUtil.a(paramBaseQQAppInterface, paramString);
+    ExpandChatUtil.c(paramBaseQQAppInterface, paramString);
   }
   
   public boolean needShowLimitChatOnPlus(@Nullable BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ExpandChatUtil.a((AppInterface)paramBaseQQAppInterface);
+    return ExpandChatUtil.b((AppInterface)paramBaseQQAppInterface);
   }
   
   public void reportInSubThread(@Nullable String paramString)
@@ -83,7 +83,7 @@ public final class ExpandChatUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.impl.ExpandChatUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

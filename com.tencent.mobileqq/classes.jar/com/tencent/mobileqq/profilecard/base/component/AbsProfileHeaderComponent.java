@@ -104,9 +104,9 @@ public abstract class AbsProfileHeaderComponent
   private String getGenderString(ProfileCardInfo paramProfileCardInfo)
   {
     if ((paramProfileCardInfo.card != null) && (paramProfileCardInfo.card.shGender == 1)) {
-      return HardCodeUtil.a(2131693287);
+      return HardCodeUtil.a(2131890835);
     }
-    return HardCodeUtil.a(2131693292);
+    return HardCodeUtil.a(2131890840);
   }
   
   private int guestAvatarClickReport()
@@ -185,7 +185,7 @@ public abstract class AbsProfileHeaderComponent
       if (localObject1 == null) {
         localObject1 = null;
       } else {
-        localObject1 = ((AvatarLayout)localObject1).a(0);
+        localObject1 = ((AvatarLayout)localObject1).b(0);
       }
       Object localObject2 = this.mHeaderView.getChildView("map_key_avatar_pendant");
       long l = this.mHeaderView.getPendantId();
@@ -195,12 +195,12 @@ public abstract class AbsProfileHeaderComponent
         if ((localObject1 instanceof DynamicAvatarView))
         {
           localObject2 = (DynamicAvatarView)localObject1;
-          if (((DynamicAvatarView)localObject2).a != null)
+          if (((DynamicAvatarView)localObject2).c != null)
           {
-            localObject2 = ((DynamicAvatarView)localObject2).a;
-            if ((((DynamicFaceDrawable)localObject2).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject2).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).c)))
+            localObject2 = ((DynamicAvatarView)localObject2).c;
+            if ((((DynamicFaceDrawable)localObject2).e) && (((DynamicFaceDrawable)localObject2).d != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).o)))
             {
-              ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).c);
+              ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).o);
               return;
             }
             localObject2 = new AllInOne(this.mApp.getAccount(), 1);
@@ -211,12 +211,12 @@ public abstract class AbsProfileHeaderComponent
       else if ((localObject1 instanceof DynamicAvatarView))
       {
         localObject2 = (DynamicAvatarView)localObject1;
-        if (((DynamicAvatarView)localObject2).a != null)
+        if (((DynamicAvatarView)localObject2).c != null)
         {
-          localObject2 = ((DynamicAvatarView)localObject2).a;
-          if ((((DynamicFaceDrawable)localObject2).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject2).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).c)))
+          localObject2 = ((DynamicAvatarView)localObject2).c;
+          if ((((DynamicFaceDrawable)localObject2).e) && (((DynamicFaceDrawable)localObject2).d != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).o)))
           {
-            ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).c);
+            ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).o);
             return;
           }
           if ((((ProfileCardInfo)this.mData).allInOne.pa == 41) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) && (((ProfileCardInfo)this.mData).allInOne.uin.equals("0")))
@@ -255,7 +255,7 @@ public abstract class AbsProfileHeaderComponent
   
   private void handleEditNickClick()
   {
-    if (Utils.b(((ProfileCardInfo)this.mData).allInOne.uin)) {
+    if (Utils.c(((ProfileCardInfo)this.mData).allInOne.uin)) {
       return;
     }
     if (((ProfileCardInfo)this.mData).isTroopMemberCard)
@@ -293,8 +293,8 @@ public abstract class AbsProfileHeaderComponent
     if ((((ProfileCardInfo)this.mData).allInOne.pa != 0) && (!((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentAccountUin())))
     {
       handleVoteBtnClickForGuestProfile(paramCard);
-      if (QSecFramework.a().a(1001).booleanValue()) {
-        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(24), Integer.valueOf(1), Integer.valueOf(6), "vote", null }, null);
+      if (QSecFramework.c().a(1001).booleanValue()) {
+        QSecFramework.c().a(5, 0, 2, new Object[] { Integer.valueOf(24), Integer.valueOf(1), Integer.valueOf(6), "vote", null }, null);
       }
     }
     else
@@ -308,7 +308,7 @@ public abstract class AbsProfileHeaderComponent
     int j = 1;
     if (paramCard == null)
     {
-      notifyUser(this.mActivity.getString(2131693371), 1);
+      notifyUser(this.mActivity.getString(2131890920), 1);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -347,10 +347,10 @@ public abstract class AbsProfileHeaderComponent
           return;
         }
       }
-      notifyUser(this.mActivity.getString(2131720493), 1);
+      notifyUser(this.mActivity.getString(2131918210), 1);
       return;
     }
-    if (!VasUtil.a(this.mQQAppInterface).getVipStatus().isSVip())
+    if (!VasUtil.b(this.mQQAppInterface).getVipStatus().isSVip())
     {
       showSVipVotePrivilegeTips();
       return;
@@ -364,7 +364,7 @@ public abstract class AbsProfileHeaderComponent
       }
       else
       {
-        paramCard = this.mActivity.getString(2131693371);
+        paramCard = this.mActivity.getString(2131890920);
         i = j;
       }
       notifyUser(paramCard, i);
@@ -388,7 +388,7 @@ public abstract class AbsProfileHeaderComponent
     }
     Object localObject2 = QVipProfileFootPrintProcessor.a();
     int j;
-    if ((localObject2 != null) && (((QVipProfileFootPrintConfig)localObject2).a()) && (!TextUtils.isEmpty(((QVipProfileFootPrintConfig)localObject2).a())) && (URLUtil.a(((QVipProfileFootPrintConfig)localObject2).a()))) {
+    if ((localObject2 != null) && (((QVipProfileFootPrintConfig)localObject2).b()) && (!TextUtils.isEmpty(((QVipProfileFootPrintConfig)localObject2).a())) && (URLUtil.e(((QVipProfileFootPrintConfig)localObject2).a()))) {
       j = 1;
     } else {
       j = 0;
@@ -489,7 +489,7 @@ public abstract class AbsProfileHeaderComponent
     if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
     {
       i = 3;
-      String str = this.mActivity.getString(2131693293);
+      String str = this.mActivity.getString(2131890841);
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 1, 0, "", "", "", "");
       localObject2 = localObject1;
       localObject1 = str;
@@ -500,9 +500,9 @@ public abstract class AbsProfileHeaderComponent
         break label215;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = this.mActivity.getString(2131693288);
+        localObject1 = this.mActivity.getString(2131890836);
       } else {
-        localObject1 = this.mActivity.getString(2131693360);
+        localObject1 = this.mActivity.getString(2131890909);
       }
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 2, 0, "", "", "", "");
     }
@@ -510,7 +510,7 @@ public abstract class AbsProfileHeaderComponent
     return;
     label215:
     localObject1 = getGenderString((ProfileCardInfo)this.mData);
-    notifyUser(this.mActivity.getString(2131693289, new Object[] { localObject1, localObject1 }), 1);
+    notifyUser(this.mActivity.getString(2131890837, new Object[] { localObject1, localObject1 }), 1);
   }
   
   private void showEditNickActionSheetForTroop()
@@ -521,13 +521,13 @@ public abstract class AbsProfileHeaderComponent
     }
     if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
     {
-      str1 = this.mActivity.getString(2131693294);
+      str1 = this.mActivity.getString(2131890842);
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 3, 0, "", "", "", "");
     }
     else
     {
       str1 = this.mApp.getCurrentUin();
-      TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).c(((ProfileCardInfo)this.mData).troopUin);
+      TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).g(((ProfileCardInfo)this.mData).troopUin);
       int i;
       if ((localTroopInfo != null) && ((localTroopInfo.isTroopAdmin(str1)) || (localTroopInfo.isTroopOwner(str1)))) {
         i = 1;
@@ -540,12 +540,12 @@ public abstract class AbsProfileHeaderComponent
       if (!TextUtils.isEmpty(str2))
       {
         str1 = getGenderString((ProfileCardInfo)this.mData);
-        str1 = this.mActivity.getString(2131693297, new Object[] { str1 });
+        str1 = this.mActivity.getString(2131890845, new Object[] { str1 });
       }
       else
       {
         str1 = getGenderString((ProfileCardInfo)this.mData);
-        str1 = this.mActivity.getString(2131693361, new Object[] { str1 });
+        str1 = this.mActivity.getString(2131890910, new Object[] { str1 });
       }
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 3, 0, "", "", "", "");
     }
@@ -553,16 +553,16 @@ public abstract class AbsProfileHeaderComponent
     return;
     label280:
     String str1 = getGenderString((ProfileCardInfo)this.mData);
-    notifyUser(this.mActivity.getString(2131693299, new Object[] { str1 }), 1);
+    notifyUser(this.mActivity.getString(2131890847, new Object[] { str1 }), 1);
   }
   
   private void showEditNickActionSheetInner(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
     if (!TextUtils.isEmpty(paramString2))
     {
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mActivity, null);
       localActionSheet.addButton(paramString2, 1);
-      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.addCancelButton(2131887648);
       localActionSheet.setOnButtonClickListener(new AbsProfileHeaderComponent.5(this, paramString2, paramString1, paramInt, paramBoolean, localActionSheet));
       try
       {
@@ -687,7 +687,7 @@ public abstract class AbsProfileHeaderComponent
   
   protected void notifyUser(String paramString, int paramInt)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt, paramString, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), paramInt, paramString, 0).show();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -703,7 +703,7 @@ public abstract class AbsProfileHeaderComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       DataTag localDataTag = (DataTag)paramView.getTag();
-      int i = localDataTag.jdField_a_of_type_Int;
+      int i = localDataTag.a;
       if (i != 1)
       {
         if (i != 3)
@@ -717,7 +717,7 @@ public abstract class AbsProfileHeaderComponent
               {
                 if (i == 97)
                 {
-                  localObject = (Pair)localDataTag.jdField_a_of_type_JavaLangObject;
+                  localObject = (Pair)localDataTag.b;
                   ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mQQAppInterface);
                 }
               }
@@ -726,14 +726,14 @@ public abstract class AbsProfileHeaderComponent
               }
             }
             else {
-              handleTemplateOutOfDateClick(((Integer)localDataTag.jdField_a_of_type_JavaLangObject).intValue());
+              handleTemplateOutOfDateClick(((Integer)localDataTag.b).intValue());
             }
           }
           else
           {
             localObject = null;
-            if ((localDataTag.jdField_a_of_type_JavaLangObject instanceof Card)) {
-              localObject = (Card)localDataTag.jdField_a_of_type_JavaLangObject;
+            if ((localDataTag.b instanceof Card)) {
+              localObject = (Card)localDataTag.b;
             }
             handleVoteBtnClick((Card)localObject);
           }
@@ -760,7 +760,7 @@ public abstract class AbsProfileHeaderComponent
     initHeaderView();
     if (this.mHeaderView != null)
     {
-      paramQBaseActivity = this.mRootView.findViewById(2131369585);
+      paramQBaseActivity = this.mRootView.findViewById(2131436691);
       this.mHeaderView.addChildView("map_key_tag_jueban", paramQBaseActivity);
       this.mHeaderView.updateJueban((ProfileCardInfo)this.mData);
     }
@@ -849,7 +849,7 @@ public abstract class AbsProfileHeaderComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

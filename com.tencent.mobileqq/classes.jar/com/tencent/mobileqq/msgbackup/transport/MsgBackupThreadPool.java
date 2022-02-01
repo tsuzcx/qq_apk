@@ -7,39 +7,39 @@ import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
 @Deprecated
 public class MsgBackupThreadPool
 {
-  private static short jdField_a_of_type_Short = 0;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private Handler[] jdField_a_of_type_ArrayOfAndroidOsHandler;
-  private HandlerThread[] jdField_a_of_type_ArrayOfAndroidOsHandlerThread;
+  private static short c = 0;
+  private static boolean d = false;
+  private HandlerThread[] a;
+  private Handler[] b;
   
   private MsgBackupThreadPool()
   {
     MsgBackupUtil.a("MsgBackupMsgBackupThreadPool", "MsgBackupThreadPool constructor--------->", new Object[0]);
-    jdField_a_of_type_Boolean = true;
+    d = true;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread = new HandlerThread[5];
-    this.jdField_a_of_type_ArrayOfAndroidOsHandler = new Handler[5];
+    this.a = new HandlerThread[5];
+    this.b = new Handler[5];
     int i = 0;
     while (i < 5)
     {
-      HandlerThread[] arrayOfHandlerThread = this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread;
+      HandlerThread[] arrayOfHandlerThread = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("msgbackup_thread_");
       localStringBuilder.append(i);
       arrayOfHandlerThread[i] = new HandlerThread(localStringBuilder.toString());
-      this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread[i].start();
-      this.jdField_a_of_type_ArrayOfAndroidOsHandler[i] = new Handler(this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread[i].getLooper());
+      this.a[i].start();
+      this.b[i] = new Handler(this.a[i].getLooper());
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupThreadPool
  * JD-Core Version:    0.7.0.1
  */

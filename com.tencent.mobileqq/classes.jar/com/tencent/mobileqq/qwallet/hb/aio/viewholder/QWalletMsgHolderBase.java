@@ -11,147 +11,96 @@ import com.tencent.mobileqq.widget.AnimationView;
 public class QWalletMsgHolderBase
   implements IQWalletMsgHolder
 {
-  public long a;
-  public ImageView a;
-  public LinearLayout a;
   public RelativeLayout a;
-  public TextView a;
-  public MessageForQQWalletMsg a;
-  public AnimationView a;
-  public String a;
   public RelativeLayout b;
-  public TextView b;
-  public AnimationView b;
   public RelativeLayout c;
-  public TextView c;
   public RelativeLayout d;
-  public RelativeLayout e;
+  public LinearLayout e;
   public RelativeLayout f;
-  
-  public QWalletMsgHolderBase()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public RelativeLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_c_of_type_AndroidWidgetTextView;
-  }
+  public TextView g;
+  public TextView h;
+  public ImageView i;
+  public AnimationView j;
+  public AnimationView k;
+  public TextView l;
+  public RelativeLayout m;
+  public long n = 0L;
+  public String o = "";
+  public MessageForQQWalletMsg p;
   
   public MessageForQQWalletMsg a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
-  }
-  
-  public AnimationView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+    return this.p;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.n = paramLong;
   }
   
   public void a(ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.i = paramImageView;
   }
   
   public void a(LinearLayout paramLinearLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.e = paramLinearLayout;
   }
   
   public void a(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.a = paramRelativeLayout;
   }
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.g = paramTextView;
   }
   
   public void a(AnimationView paramAnimationView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = paramAnimationView;
+    this.j = paramAnimationView;
   }
   
   public RelativeLayout b()
   {
-    return this.jdField_c_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public AnimationView b()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView;
+    return this.a;
   }
   
   public void b(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.b = paramRelativeLayout;
   }
   
   public void b(TextView paramTextView)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView;
+    this.h = paramTextView;
   }
   
   public void b(AnimationView paramAnimationView)
   {
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView = paramAnimationView;
-  }
-  
-  public RelativeLayout c()
-  {
-    return this.d;
+    this.k = paramAnimationView;
   }
   
   public TextView c()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.l;
   }
   
   public void c(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.c = paramRelativeLayout;
   }
   
   public void c(TextView paramTextView)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = paramTextView;
+    this.l = paramTextView;
   }
   
   public RelativeLayout d()
   {
-    return this.f;
+    return this.c;
   }
   
   public void d(RelativeLayout paramRelativeLayout)
@@ -159,19 +108,64 @@ public class QWalletMsgHolderBase
     this.d = paramRelativeLayout;
   }
   
+  public RelativeLayout e()
+  {
+    return this.d;
+  }
+  
   public void e(RelativeLayout paramRelativeLayout)
   {
-    this.e = paramRelativeLayout;
+    this.f = paramRelativeLayout;
+  }
+  
+  public LinearLayout f()
+  {
+    return this.e;
   }
   
   public void f(RelativeLayout paramRelativeLayout)
   {
-    this.f = paramRelativeLayout;
+    this.m = paramRelativeLayout;
+  }
+  
+  public TextView g()
+  {
+    return this.g;
+  }
+  
+  public TextView h()
+  {
+    return this.h;
+  }
+  
+  public ImageView i()
+  {
+    return this.i;
+  }
+  
+  public RelativeLayout j()
+  {
+    return this.m;
+  }
+  
+  public AnimationView k()
+  {
+    return this.j;
+  }
+  
+  public AnimationView l()
+  {
+    return this.k;
+  }
+  
+  public long m()
+  {
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.QWalletMsgHolderBase
  * JD-Core Version:    0.7.0.1
  */

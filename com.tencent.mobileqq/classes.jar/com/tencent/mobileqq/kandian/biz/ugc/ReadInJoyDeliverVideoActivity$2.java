@@ -18,7 +18,7 @@ class ReadInJoyDeliverVideoActivity$2
     paramPublishVideoEntry.append(" msg - ");
     paramPublishVideoEntry.append(paramString);
     QLog.d("ReadInJoyDeliverVideoActivity", 2, paramPublishVideoEntry.toString());
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
+    ReadInJoyDeliverVideoActivity.f(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
   }
   
   public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
@@ -27,13 +27,13 @@ class ReadInJoyDeliverVideoActivity$2
     paramPublishVideoEntry.append("onSuccess: outputPath - ");
     paramPublishVideoEntry.append(paramString);
     QLog.d("ReadInJoyDeliverVideoActivity", 2, paramPublishVideoEntry.toString());
-    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
+    ReadInJoyDeliverVideoActivity.c(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.f(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.2
  * JD-Core Version:    0.7.0.1
  */

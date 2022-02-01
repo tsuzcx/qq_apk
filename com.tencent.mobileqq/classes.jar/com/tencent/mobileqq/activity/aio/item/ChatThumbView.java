@@ -18,9 +18,9 @@ public class ChatThumbView
   extends URLImageView
   implements BaseBubbleBuilder.TouchDelegate
 {
-  public boolean a;
-  public boolean b = true;
-  private boolean c;
+  private boolean a;
+  public boolean b;
+  public boolean c = true;
   
   public ChatThumbView(Context paramContext)
   {
@@ -39,7 +39,7 @@ public class ChatThumbView
   
   public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.b) {
+    if (!this.c) {
       return;
     }
     int i = paramMotionEvent.getAction();
@@ -59,21 +59,21 @@ public class ChatThumbView
     {
       paramView = getDrawable();
       if (paramView != null) {
-        paramView.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+        paramView.setColorFilter(BaseBubbleBuilder.n);
       }
     }
   }
   
   public void a(View paramView, boolean paramBoolean)
   {
-    if (!this.b) {
+    if (!this.c) {
       return;
     }
-    this.c = (paramBoolean ^ true);
+    this.a = (paramBoolean ^ true);
     if (paramBoolean) {
       paramView = null;
     } else {
-      paramView = BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter;
+      paramView = BaseBubbleBuilder.n;
     }
     Drawable localDrawable = getDrawable();
     if (localDrawable != null)
@@ -87,7 +87,7 @@ public class ChatThumbView
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     paramURLDrawable.setFadeInImage(false);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       paramURLDrawable = new AlphaAnimation(0.0F, 1.0F);
       paramURLDrawable.setDuration(100L);
@@ -100,7 +100,7 @@ public class ChatThumbView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (BaseBubbleBuilder.jdField_a_of_type_Boolean)
+    if (BaseBubbleBuilder.m)
     {
       int m = View.MeasureSpec.getMode(paramInt1);
       int j = View.MeasureSpec.getMode(paramInt2);
@@ -139,14 +139,14 @@ public class ChatThumbView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.b) {
+    if (!this.c) {
       return super.onTouchEvent(paramMotionEvent);
     }
     int i = paramMotionEvent.getAction();
     Drawable localDrawable;
     if (i != 0)
     {
-      if (((i == 1) || (i == 3)) && (!this.c))
+      if (((i == 1) || (i == 3)) && (!this.a))
       {
         localDrawable = getDrawable();
         if (localDrawable != null)
@@ -160,7 +160,7 @@ public class ChatThumbView
     {
       localDrawable = getDrawable();
       if (localDrawable != null) {
-        localDrawable.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+        localDrawable.setColorFilter(BaseBubbleBuilder.n);
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -168,7 +168,7 @@ public class ChatThumbView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ChatThumbView
  * JD-Core Version:    0.7.0.1
  */

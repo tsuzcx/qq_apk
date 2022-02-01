@@ -2,22 +2,27 @@ package com.tencent.xaction.api.base;
 
 import androidx.annotation.Keep;
 import com.tencent.xaction.api.IDrawable;
+import com.tencent.xaction.api.data.InterpolatorData;
 import com.tencent.xaction.api.util.ScreenUnit;
 import com.tencent.xaction.api.util.ScreenUnit.Companion;
+import com.tencent.xaction.drawable.DefaultDrawable.DefaultPublicDrawable;
+import com.tencent.xaction.openapi.api.IPublicDecorDrawable;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorDrawableState;", "", "()V", "fp", "", "getFp", "()Ljava/lang/String;", "setFp", "(Ljava/lang/String;)V", "g", "", "getG", "()I", "setG", "(I)V", "isAssets", "", "()Z", "setAssets", "(Z)V", "mirror", "getMirror", "setMirror", "path", "getPath", "setPath", "root", "getRoot", "setRoot", "type", "getType", "setType", "buildDrawable", "Lcom/tencent/xaction/api/IDrawable;", "clazz", "Ljava/lang/Class;", "Lcom/tencent/xaction/api/base/DecorDrawable;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorDrawableState;", "", "()V", "fp", "", "getFp", "()Ljava/lang/String;", "setFp", "(Ljava/lang/String;)V", "g", "", "getG", "()I", "setG", "(I)V", "inpt", "Lcom/tencent/xaction/api/data/InterpolatorData;", "getInpt", "()Lcom/tencent/xaction/api/data/InterpolatorData;", "setInpt", "(Lcom/tencent/xaction/api/data/InterpolatorData;)V", "isAssets", "", "()Z", "setAssets", "(Z)V", "path", "getPath", "setPath", "root", "getRoot", "setRoot", "type", "getType", "setType", "buildDrawable", "Lcom/tencent/xaction/api/IDrawable;", "clazz", "Ljava/lang/Class;", "Lcom/tencent/xaction/api/base/DecorDrawable;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public abstract class DecorDrawableState
 {
   @NotNull
   private String fp = "";
   private int g = ScreenUnit.a.a();
+  @Nullable
+  private InterpolatorData inpt;
   private boolean isAssets;
-  private boolean mirror;
   @NotNull
   private String path = "";
   @Nullable
@@ -34,6 +39,21 @@ public abstract class DecorDrawableState
     Intrinsics.checkParameterIsNotNull(paramClass, "clazz");
     paramClass = (DecorDrawable)paramClass.newInstance();
     paramClass.setDecorState((DecorDrawableState)this);
+    if (paramClass.getDrawable() == null)
+    {
+      paramClass.setDrawable((IDrawable)new DefaultDrawable.DefaultPublicDrawable());
+      Object localObject = paramClass.getDrawable();
+      if (localObject != null)
+      {
+        localObject = (DefaultDrawable.DefaultPublicDrawable)localObject;
+        Intrinsics.checkExpressionValueIsNotNull(paramClass, "decorDrawable");
+        ((DefaultDrawable.DefaultPublicDrawable)localObject).setDecor((IPublicDecorDrawable)paramClass);
+      }
+      else
+      {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.drawable.DefaultDrawable.DefaultPublicDrawable");
+      }
+    }
     paramClass = paramClass.getDrawable();
     if (paramClass == null) {
       Intrinsics.throwNpe();
@@ -52,9 +72,10 @@ public abstract class DecorDrawableState
     return this.g;
   }
   
-  public final boolean getMirror()
+  @Nullable
+  public final InterpolatorData getInpt()
   {
-    return this.mirror;
+    return this.inpt;
   }
   
   @NotNull
@@ -96,9 +117,9 @@ public abstract class DecorDrawableState
     this.g = paramInt;
   }
   
-  public final void setMirror(boolean paramBoolean)
+  public final void setInpt(@Nullable InterpolatorData paramInterpolatorData)
   {
-    this.mirror = paramBoolean;
+    this.inpt = paramInterpolatorData;
   }
   
   public final void setPath(@NotNull String paramString)
@@ -120,7 +141,7 @@ public abstract class DecorDrawableState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.base.DecorDrawableState
  * JD-Core Version:    0.7.0.1
  */

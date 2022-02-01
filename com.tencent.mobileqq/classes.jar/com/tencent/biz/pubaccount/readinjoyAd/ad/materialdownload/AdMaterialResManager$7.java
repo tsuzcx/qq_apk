@@ -7,12 +7,12 @@ class AdMaterialResManager$7
   
   public void run()
   {
-    this.this$0.a(AdMaterialResManager.a(), this.a, 2);
+    this.this$0.a(AdMaterialResManager.h(), this.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.7
  * JD-Core Version:    0.7.0.1
  */

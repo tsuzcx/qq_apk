@@ -9,7 +9,7 @@ class AEVideoStoryDashboardPart$MessageRenderUtil
 {
   static CharSequence a(@NonNull AEDashboardUtil.BinaryInfo paramBinaryInfo)
   {
-    if (paramBinaryInfo.a) {
+    if (paramBinaryInfo.b) {
       return paramBinaryInfo.toString();
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
@@ -36,7 +36,7 @@ class AEVideoStoryDashboardPart$MessageRenderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.MessageRenderUtil
  * JD-Core Version:    0.7.0.1
  */

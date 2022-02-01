@@ -18,20 +18,20 @@ class FeedItemCellTypeBigSocial$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyHelper.f(ReadInJoyUtils.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCellTypeBigSocial.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    ReadInJoyHelper.h(ReadInJoyUtils.b(), this.a.getTop() + this.b.getTop() + this.c.getTop());
+    paramView = this.d.g.y().c();
     if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCellTypeBigSocial.jdField_a_of_type_JavaLangObject).a(), 2);
+      paramView.a(null, ((IReadInJoyModel)this.d.b).k(), 2);
     }
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
       paramView.append("firstlayout top");
-      paramView.append(this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop());
+      paramView.append(this.a.getTop());
       QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", paramView.toString() });
       paramView = new StringBuilder();
       paramView.append("firstlayout width");
-      paramView.append(this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth());
+      paramView.append(this.a.getWidth());
       QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", paramView.toString() });
       paramView = new StringBuilder();
       paramView.append("thirdlayout top");
@@ -54,7 +54,7 @@ class FeedItemCellTypeBigSocial$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeBigSocial.1
  * JD-Core Version:    0.7.0.1
  */

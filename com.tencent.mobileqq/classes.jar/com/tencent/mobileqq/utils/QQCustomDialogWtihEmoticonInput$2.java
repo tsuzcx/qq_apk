@@ -15,18 +15,18 @@ class QQCustomDialogWtihEmoticonInput$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840141);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130840141));
-    if (this.a.c)
+    this.a.p.setImageResource(2130840446);
+    this.a.p.setTag(Integer.valueOf(2130840446));
+    if (this.a.w)
     {
-      QQCustomDialogWtihEmoticonInput.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+      QQCustomDialogWtihEmoticonInput.b(this.a);
+      if (this.a.m) {
+        this.a.u.removeView(this.a.r.getView());
       } else {
-        this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+        this.a.u.removeView(this.a.q);
       }
       paramView = this.a;
-      paramView.c = false;
+      paramView.w = false;
       paramView = paramView.getWindow().getAttributes();
       paramView.y = 0;
       this.a.getWindow().setAttributes(paramView);
@@ -36,7 +36,7 @@ class QQCustomDialogWtihEmoticonInput$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.2
  * JD-Core Version:    0.7.0.1
  */

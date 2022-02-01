@@ -7,12 +7,12 @@ class GridSelectListener$1
   
   public void run()
   {
-    this.this$0.a.a.notifyDataSetChanged();
+    this.this$0.a.t.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.GridSelectListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,54 +11,11 @@ import java.lang.reflect.Proxy;
 
 public class SwipeLayoutUtils
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  private static boolean jdField_b_of_type_Boolean;
-  
-  @RequiresApi(api=16)
-  private static void a()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
-        jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
-        jdField_a_of_type_JavaLangClass = null;
-        int j = arrayOfClass.length;
-        i = 0;
-        if (i < j)
-        {
-          Class localClass = arrayOfClass[i];
-          if (!localClass.getSimpleName().contains("TranslucentConversionListener")) {
-            break label133;
-          }
-          jdField_a_of_type_JavaLangClass = localClass;
-          break label133;
-        }
-        jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
-        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-        jdField_b_of_type_Boolean = true;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
-        }
-      }
-      jdField_a_of_type_Boolean = true;
-      return;
-      label133:
-      i += 1;
-    }
-  }
+  private static boolean a;
+  private static boolean b;
+  private static Method c;
+  private static Class<?> d;
+  private static Method e;
   
   public static void a(Activity paramActivity)
   {
@@ -87,8 +44,51 @@ public class SwipeLayoutUtils
     if (Build.VERSION.SDK_INT < 21) {
       return false;
     }
-    a();
-    return jdField_b_of_type_Boolean;
+    b();
+    return b;
+  }
+  
+  @RequiresApi(api=16)
+  private static void b()
+  {
+    if (a) {
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        c = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
+        c.setAccessible(true);
+        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
+        d = null;
+        int j = arrayOfClass.length;
+        i = 0;
+        if (i < j)
+        {
+          Class localClass = arrayOfClass[i];
+          if (!localClass.getSimpleName().contains("TranslucentConversionListener")) {
+            break label133;
+          }
+          d = localClass;
+          break label133;
+        }
+        e = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { d, ActivityOptions.class });
+        e.setAccessible(true);
+        b = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
+        }
+      }
+      a = true;
+      return;
+      label133:
+      i += 1;
+    }
   }
   
   public static void b(Activity paramActivity)
@@ -131,10 +131,10 @@ public class SwipeLayoutUtils
     
     try
     {
-      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
-      Class localClass = jdField_a_of_type_JavaLangClass;
-      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
-      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
+      Object localObject = c.invoke(paramActivity, new Object[0]);
+      Class localClass = d;
+      paramInvocationHandler = Proxy.newProxyInstance(d.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
+      e.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
       return;
     }
     catch (Throwable paramActivity) {}
@@ -142,7 +142,7 @@ public class SwipeLayoutUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.swipe.SwipeLayoutUtils
  * JD-Core Version:    0.7.0.1
  */

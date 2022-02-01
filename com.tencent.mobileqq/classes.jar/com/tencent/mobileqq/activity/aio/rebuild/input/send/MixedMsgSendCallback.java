@@ -39,50 +39,50 @@ public class MixedMsgSendCallback
     return bool;
   }
   
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
-    Object localObject1 = ((FullScreenInputHelper)paramAIOContext.a(24)).a();
+    Object localObject1 = ((FullScreenInputHelper)paramAIOContext.a(24)).n();
     if (localObject1 == null) {
       localObject1 = "";
     } else {
-      localObject1 = ((MixedMsgInfo)localObject1).b();
+      localObject1 = ((MixedMsgInfo)localObject1).c();
     }
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = paramAIOContext.a().a().a().a().toString();
+      localObject2 = paramAIOContext.p().d().f().a().toString();
     }
     paramSendLogicParam.a((String)localObject2);
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     Object localObject = (FullScreenInputHelper)paramAIOContext.a(24);
-    MixedMsgInfo localMixedMsgInfo = ((FullScreenInputHelper)localObject).a();
-    if ((!((FullScreenInputHelper)localObject).d()) && (localMixedMsgInfo != null) && (localMixedMsgInfo.a()))
+    MixedMsgInfo localMixedMsgInfo = ((FullScreenInputHelper)localObject).n();
+    if ((!((FullScreenInputHelper)localObject).i()) && (localMixedMsgInfo != null) && (localMixedMsgInfo.d()))
     {
       MixedMsgManager localMixedMsgManager = (MixedMsgManager)paramAIOContext.a().getManager(QQManagerFactory.MIXED_MSG_MANAGER);
-      if (a(paramAIOContext.a())) {
-        localMixedMsgManager.a(paramAIOContext.a(), paramAIOContext.a(), paramArrayList, localMixedMsgInfo, paramSendLogicParam.a().k);
+      if (a(paramAIOContext.O())) {
+        localMixedMsgManager.a(paramAIOContext.a(), paramAIOContext.n(), paramArrayList, localMixedMsgInfo, paramSendLogicParam.b().C);
       } else {
-        localMixedMsgManager.a(paramAIOContext.a(), paramAIOContext.a(), paramArrayList, localMixedMsgInfo, false);
+        localMixedMsgManager.a(paramAIOContext.a(), paramAIOContext.n(), paramArrayList, localMixedMsgInfo, false);
       }
-      ((FullScreenInputHelper)localObject).d();
+      ((FullScreenInputHelper)localObject).j();
       return true;
     }
-    int i = paramAIOContext.a().a;
-    if ((i != 0) && (i != 1) && (i != 3000)) {
+    int i = paramAIOContext.O().a;
+    if ((i != 0) && (i != 1) && (i != 3000) && (i != 10014)) {
       return false;
     }
-    localObject = (PhotoListPanel)paramAIOContext.a().b(4);
-    if ((localObject != null) && (((PhotoListPanel)localObject).a(paramSendLogicParam.a())))
+    localObject = (PhotoListPanel)paramAIOContext.q().d(4);
+    if ((localObject != null) && (((PhotoListPanel)localObject).d(paramSendLogicParam.a())))
     {
-      if (!((PhotoListPanel)localObject).a(true, paramAIOContext.a())) {
-        ChatActivityFacade.a(paramAIOContext.a(), paramAIOContext.a(), (SessionInfo)paramAIOContext.a(), paramSendLogicParam.a(), paramArrayList, paramSendLogicParam.a());
+      if (!((PhotoListPanel)localObject).a(true, paramAIOContext.n())) {
+        ChatActivityFacade.a(paramAIOContext.a(), paramAIOContext.b(), (SessionInfo)paramAIOContext.O(), paramSendLogicParam.a(), paramArrayList, paramSendLogicParam.b());
       }
-      ((PhotoListHelper)paramAIOContext.a(7)).a(paramAIOContext.hashCode());
+      ((PhotoListHelper)paramAIOContext.a(7)).b(paramAIOContext.hashCode());
       return true;
     }
     return false;
@@ -90,7 +90,7 @@ public class MixedMsgSendCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.MixedMsgSendCallback
  * JD-Core Version:    0.7.0.1
  */

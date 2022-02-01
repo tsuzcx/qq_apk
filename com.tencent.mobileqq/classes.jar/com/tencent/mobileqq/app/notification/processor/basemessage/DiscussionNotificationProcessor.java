@@ -19,14 +19,9 @@ public final class DiscussionNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
-  {
-    return b(paramMessage);
-  }
-  
   public NotificationElement a(Message paramMessage)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNamePostfix(paramMessage);
+    Object localObject1 = this.a.getNamePostfix(paramMessage);
     Object localObject2;
     if ((paramMessage.nickName != null) && (!"".equals(paramMessage.nickName)))
     {
@@ -34,52 +29,57 @@ public final class DiscussionNotificationProcessor
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(paramMessage.nickName);
       ((StringBuilder)localObject2).append("(");
-      ((StringBuilder)localObject2).append(a());
+      ((StringBuilder)localObject2).append(b());
       ((StringBuilder)localObject2).append("):");
       localObject2 = ((StringBuilder)localObject2).toString();
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject2);
+      this.b.b((String)localObject2);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(paramMessage.nickName);
       ((StringBuilder)localObject2).append(": ");
-      ((StringBuilder)localObject2).append(c());
+      ((StringBuilder)localObject2).append(d());
       localObject1 = ((StringBuilder)localObject2).toString();
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
+      this.b.d((String)localObject1);
     }
     else
     {
-      localObject2 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, 0);
+      localObject2 = ContactUtils.a(this.a, paramMessage.senderuin, 0);
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append((String)localObject2);
       ((StringBuilder)localObject3).append("(");
-      ((StringBuilder)localObject3).append(a());
+      ((StringBuilder)localObject3).append(b());
       ((StringBuilder)localObject3).append("):");
       localObject3 = ((StringBuilder)localObject3).toString();
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject3);
+      this.b.b((String)localObject3);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append((String)localObject2);
       ((StringBuilder)localObject3).append(": ");
-      ((StringBuilder)localObject3).append(c());
+      ((StringBuilder)localObject3).append(d());
       localObject1 = ((StringBuilder)localObject3).toString();
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
+      this.b.d((String)localObject1);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.b() == 1)
+    if (this.a.getMessageFacade().d.d() == 1)
     {
-      localObject1 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+      localObject1 = (DiscussionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
       if (localObject1 != null)
       {
-        localObject1 = ((DiscussionHandler)localObject1).a(paramMessage.frienduin, true);
-        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Bitmap)localObject1);
+        localObject1 = ((DiscussionHandler)localObject1).b(paramMessage.frienduin, true);
+        this.b.a((Bitmap)localObject1);
       }
     }
-    return b(paramMessage);
+    return c(paramMessage);
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return d(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.basemessage.DiscussionNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

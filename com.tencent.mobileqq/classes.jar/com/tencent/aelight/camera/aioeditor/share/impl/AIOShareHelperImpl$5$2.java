@@ -11,13 +11,13 @@ class AIOShareHelperImpl$5$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.this$0.dismissLoading();
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareImplAIOShareHelperImpl$5.a.a(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.this$0.dismissLoading();
+    WXShareHelper.a().a(this.b.a.b(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.5.2
  * JD-Core Version:    0.7.0.1
  */

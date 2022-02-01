@@ -16,13 +16,13 @@ class SwiftIphoneTitleBarUI$7
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a)))
+    if ((this.a.O != null) && (!TextUtils.isEmpty(this.a.O.a)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramInt);
+      this.a.O.a(paramInt);
     }
     else
     {
-      TouchWebView localTouchWebView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
+      TouchWebView localTouchWebView = this.a.a.l();
       if (localTouchWebView != null)
       {
         Object localObject2 = localTouchWebView.getUrl();
@@ -30,8 +30,8 @@ class SwiftIphoneTitleBarUI$7
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject1 = localObject2;
-          if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-            localObject1 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+          if (this.a.c != null) {
+            localObject1 = this.a.c.getStringExtra("url");
           }
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -48,7 +48,7 @@ class SwiftIphoneTitleBarUI$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI.7
  * JD-Core Version:    0.7.0.1
  */

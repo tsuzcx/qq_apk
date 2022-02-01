@@ -14,15 +14,15 @@ class BiuPgcProteusItem$4
   
   public void onClick(View paramView)
   {
-    OnSubRegionClickListener localOnSubRegionClickListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    OnSubRegionClickListener localOnSubRegionClickListener = this.a.y().c();
     if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(paramView, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 2);
+      localOnSubRegionClickListener.a(paramView, this.b.k(), 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuPgcProteusItem.4
  * JD-Core Version:    0.7.0.1
  */

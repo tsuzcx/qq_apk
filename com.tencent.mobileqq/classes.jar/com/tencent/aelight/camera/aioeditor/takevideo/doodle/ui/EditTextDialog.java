@@ -26,7 +26,6 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
@@ -61,114 +60,118 @@ public class EditTextDialog
   extends Dialog
   implements Handler.Callback, EditTextPanel.EditTextPanelListener, XPanelContainer.PanelCallback
 {
-  private float jdField_a_of_type_Float;
-  public int a;
-  Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new EditTextDialog.9(this);
-  public View a;
+  public String A = "";
+  public int B;
+  public int C;
+  private int D = 580;
+  private float E;
+  private float F;
+  private int G = 0;
+  private int H = NormalTextItem.b;
+  private QQToast I;
+  private int J = 0;
+  private boolean K;
+  private int L;
+  private boolean M;
+  private boolean N = false;
+  private boolean O = false;
+  private PressScaleTextView P;
+  private View Q;
+  private boolean R = false;
+  private InputFilter[] S = { new EditTextDialog.LengthInputFilter(20) };
+  private InputFilter[] T = new InputFilter[0];
+  private View.OnClickListener U = new EditTextDialog.9(this);
   public ViewGroup a;
-  public ViewTreeObserver.OnGlobalLayoutListener a;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  public EditText a;
-  public RelativeLayout a;
-  DynamicTextBuilder jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder;
-  public DynamicTextItem.TextMap a;
-  public DynamicTextItem a;
-  EditTextPreView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
-  private PressScaleTextView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleTextView;
-  public TextInfo a;
-  public AEHorizontalSelectColorLayout a;
-  public EditTextDialog.EditTextDialogEventListener a;
-  EditTextPanel jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel;
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  public FitSystemWindowsRelativeLayout a;
-  public XPanelContainer a;
-  public String a;
-  protected final MqqHandler a;
-  private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new EditTextDialog.LengthInputFilter(20) };
-  private float jdField_b_of_type_Float;
-  public int b;
-  public DynamicTextItem b;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private InputFilter[] jdField_b_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[0];
-  public int c;
-  private boolean c;
-  public int d;
-  private boolean d;
-  public int e;
-  private boolean e;
-  public int f = -1;
-  public int g;
-  public int h;
+  public FitSystemWindowsRelativeLayout b;
+  public XPanelContainer c;
+  public EditText d;
+  public View e;
+  public AEHorizontalSelectColorLayout f;
+  public EditTextDialog.EditTextDialogEventListener g;
+  public ViewTreeObserver.OnGlobalLayoutListener h;
   public int i;
-  private int j = 580;
-  private int k = 0;
-  private int l = NormalTextItem.jdField_c_of_type_Int;
-  private int m = 0;
-  private int n;
+  public int j = -1;
+  public String k;
+  public int l = EditDialogStrokeStrategy.a(false);
+  public int m;
+  public TextInfo n = new TextInfo();
+  protected final MqqHandler o = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  EditTextPanel p;
+  public int q = XPanelContainer.a;
+  public int r = -1;
+  Context s;
+  EditTextPreView t;
+  DynamicTextBuilder u;
+  public DynamicTextItem.TextMap v = null;
+  public int w;
+  public RelativeLayout x = null;
+  public DynamicTextItem y;
+  public DynamicTextItem z;
   
   public EditTextDialog(Context paramContext)
   {
-    super(paramContext, 2131755348);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = EditDialogStrokeStrategy.a(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerModelTextInfo = new TextInfo();
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-    this.jdField_e_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidContentContext;
+    super(paramContext, 2131952047);
+    this.s = paramContext;
+    paramContext = this.s;
     if ((paramContext instanceof Activity)) {
-      this.n = ((Activity)paramContext).getIntent().getIntExtra("capture_operation_in", -1);
+      this.L = ((Activity)paramContext).getIntent().getIntExtra("capture_operation_in", -1);
     }
   }
   
-  private void a()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131559075, null));
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new EditTextDialog.LayoutChangeListener(this, null);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new EditTextDialog.InitialLayoutListener(this, null));
-    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout = ((FitSystemWindowsRelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376831));
-    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout.setFitsSystemWindows(true);
-    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout.setOnTouchListener(new EditTextDialog.1(this));
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376809));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378545));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHighlightColor(Color.parseColor("#cceae8"));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378536);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel = ((EditTextPanel)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366095).findViewById(2131372290));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.setPanelListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.a(this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.setOpIn(this.n);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.setEditPhoto(this.jdField_e_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleTextView = ((PressScaleTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378514));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378515));
-    if (this.jdField_d_of_type_Boolean)
+    this.a = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131624735, null));
+    this.h = new EditTextDialog.LayoutChangeListener(this, null);
+    this.a.getViewTreeObserver().addOnGlobalLayoutListener(new EditTextDialog.InitialLayoutListener(this, null));
+    this.b = ((FitSystemWindowsRelativeLayout)this.a.findViewById(2131445162));
+    this.b.setFitsSystemWindows(true);
+    this.b.setOnTouchListener(new EditTextDialog.1(this));
+    this.c = ((XPanelContainer)this.a.findViewById(2131445137));
+    this.d = ((EditText)this.a.findViewById(2131447169));
+    this.d.setHighlightColor(Color.parseColor("#cceae8"));
+    this.e = this.a.findViewById(2131447159);
+    this.p = ((EditTextPanel)this.a.findViewById(2131432375).findViewById(2131439801));
+    this.p.setPanelListener(this);
+    this.p.a(this.d);
+    this.p.setOpIn(this.L);
+    this.p.setEditPhoto(this.R);
+    this.P = ((PressScaleTextView)this.a.findViewById(2131447130));
+    this.Q = this.a.findViewById(2131447131);
+    if (this.O)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewPressScaleTextView.setOnClickListener(new EditTextDialog.2(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new EditTextDialog.3(this));
+      this.P.setVisibility(0);
+      this.Q.setVisibility(0);
+      this.P.setOnClickListener(new EditTextDialog.2(this));
+      this.Q.setOnClickListener(new EditTextDialog.3(this));
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView = ((EditTextPreView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378548));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.setOnClickListener(new EditTextDialog.4(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new EditTextDialog.5(this));
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new EditTextDialog.6(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new EditTextDialog.7(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout = ((AEHorizontalSelectColorLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371812));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setColorSelectListener(new EditTextDialog.8(this));
+    this.t = ((EditTextPreView)this.a.findViewById(2131447172));
+    this.t.setOnClickListener(new EditTextDialog.4(this));
+    this.d.setFocusableInTouchMode(true);
+    this.d.setFocusable(true);
+    this.d.setOnFocusChangeListener(new EditTextDialog.5(this));
+    this.c.a(this.d);
+    this.d.addTextChangedListener(new EditTextDialog.6(this));
+    this.d.setOnTouchListener(new EditTextDialog.7(this));
+    this.f = ((AEHorizontalSelectColorLayout)this.a.findViewById(2131439247));
+    this.f.setColorSelectListener(new EditTextDialog.8(this));
   }
   
-  private boolean a()
+  public static boolean e(int paramInt)
+  {
+    return (paramInt != 0) && (paramInt != 32) && (paramInt != 31) && (paramInt != 30) && (paramInt != 33);
+  }
+  
+  private void f(int paramInt)
+  {
+    Iterator localIterator = AEColorBarManage.a.iterator();
+    int i1 = 0;
+    while ((localIterator.hasNext()) && (paramInt != ((Integer)localIterator.next()).intValue())) {
+      i1 += 1;
+    }
+    this.f.a(AEColorBarManage.a, i1, false);
+  }
+  
+  private boolean f()
   {
     boolean bool2 = Build.MANUFACTURER.equalsIgnoreCase("HUAWEI");
     boolean bool1 = false;
@@ -190,22 +193,22 @@ public class EditTextDialog
     return bool1;
   }
   
-  private void b()
+  private void g()
   {
     Object localObject = super.getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
     localLayoutParams.width = -1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.K)
     {
       localLayoutParams.height = com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.DisplayUtil.b(getContext());
-      if (LiuHaiUtils.f())
+      if (LiuHaiUtils.g())
       {
-        int[] arrayOfInt = LiuHaiUtils.a(this.jdField_a_of_type_AndroidContentContext);
+        int[] arrayOfInt = LiuHaiUtils.e(this.s);
         if ((arrayOfInt.length == 2) && (arrayOfInt[0] > 0) && (arrayOfInt[1] > 0))
         {
           localLayoutParams.height = arrayOfInt[1];
           int i1;
-          if ((a()) && (com.tencent.mobileqq.mini.util.DisplayUtil.checkNavigationBarShow(this.jdField_a_of_type_AndroidContentContext))) {
+          if ((f()) && (com.tencent.mobileqq.mini.util.DisplayUtil.checkNavigationBarShow(this.s))) {
             i1 = 1;
           } else {
             i1 = 0;
@@ -218,7 +221,7 @@ public class EditTextDialog
           }
           QLog.d("EditTextDialog", 1, new Object[] { "isNavigationBarExist, ", Boolean.valueOf(bool), "  Build.MODEL: ", Build.MODEL });
           if (bool) {
-            localLayoutParams.height -= com.tencent.mobileqq.mini.util.DisplayUtil.getNavigationBarHeight(this.jdField_a_of_type_AndroidContentContext);
+            localLayoutParams.height -= com.tencent.mobileqq.mini.util.DisplayUtil.getNavigationBarHeight(this.s);
           }
         }
       }
@@ -233,72 +236,28 @@ public class EditTextDialog
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       getWindow().addFlags(67108864);
-      localObject = new SystemBarCompact(this, true, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170445));
+      localObject = new SystemBarCompact(this, true, this.s.getResources().getColor(17170445));
       ((SystemBarCompact)localObject).setStatusBarDrawable(null);
       ((SystemBarCompact)localObject).init();
     }
     setCanceledOnTouchOutside(false);
   }
   
-  public static boolean b(int paramInt)
+  private void g(int paramInt)
   {
-    return (paramInt != 0) && (paramInt != 32) && (paramInt != 31) && (paramInt != 30) && (paramInt != 33);
-  }
-  
-  private void c()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-    if (localObject1 != null)
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView == null) {
-        return;
-      }
-      Object localObject2 = ((DynamicTextItem)localObject1).a(this.k);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "";
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
-      if (localObject2 != null)
-      {
-        ((EditTextPreView)localObject2).setPreViewDrawer(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.setText(this.k, (String)localObject1);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("text size changednow text size:");
-        ((StringBuilder)localObject1).append(this.l);
-        QLog.d("EditTextDialog", 2, ((StringBuilder)localObject1).toString());
-      }
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    Iterator localIterator = AEColorBarManage.a.iterator();
-    int i1 = 0;
-    while ((localIterator.hasNext()) && (paramInt != ((Integer)localIterator.next()).intValue())) {
-      i1 += 1;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.a(AEColorBarManage.a, i1, false);
-  }
-  
-  private void d(int paramInt)
-  {
-    this.m = paramInt;
-    paramInt = this.m;
+    this.J = paramInt;
+    paramInt = this.J;
     Object localObject;
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+      localObject = this.y;
       if (localObject != null)
       {
-        ((DynamicTextItem)localObject).b();
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
+        ((DynamicTextItem)localObject).p();
+        localObject = this.t;
         if (localObject != null) {
           ((EditTextPreView)localObject).invalidate();
         }
@@ -306,13 +265,13 @@ public class EditTextDialog
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+      localObject = this.y;
       if (localObject != null)
       {
-        paramInt = ((DynamicTextItem)localObject).b();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(paramInt, true);
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
+        paramInt = ((DynamicTextItem)localObject).g();
+        this.y.o();
+        this.y.a(paramInt, true);
+        localObject = this.t;
         if (localObject != null) {
           ((EditTextPreView)localObject).invalidate();
         }
@@ -320,33 +279,46 @@ public class EditTextDialog
     }
   }
   
-  protected int a()
+  private void h()
   {
-    int i1 = this.jdField_a_of_type_AndroidWidgetEditText.getTop();
-    int i2 = b();
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-    return (int)(i1 + i2 + this.jdField_a_of_type_AndroidWidgetEditText.getBaseline() + localTextPaint.ascent());
+    Object localObject1 = this.y;
+    if (localObject1 != null)
+    {
+      if (this.t == null) {
+        return;
+      }
+      Object localObject2 = ((DynamicTextItem)localObject1).b(this.G);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = "";
+      }
+      localObject2 = this.t;
+      if (localObject2 != null)
+      {
+        ((EditTextPreView)localObject2).setPreViewDrawer(this.y);
+        this.t.setText(this.G, (String)localObject1);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("text size changednow text size:");
+        ((StringBuilder)localObject1).append(this.H);
+        QLog.d("EditTextDialog", 2, ((StringBuilder)localObject1).toString());
+      }
+    }
   }
   
-  public View a(int paramInt)
+  protected int a()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onCreatePanel id = ");
-      localStringBuilder.append(paramInt);
-      QLog.d("EditTextDialog", 2, localStringBuilder.toString());
-    }
-    XPanelContainer.jdField_a_of_type_Int = (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density * 50.0F);
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      XPanelContainer.jdField_a_of_type_Int += this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    }
-    return null;
+    int i1 = this.d.getTop();
+    int i2 = b();
+    TextPaint localTextPaint = this.d.getPaint();
+    return (int)(i1 + i2 + this.d.getBaseline() + localTextPaint.ascent());
   }
   
   public void a(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -360,12 +332,12 @@ public class EditTextDialog
       localStringBuilder.append(paramInt2);
       QLog.d("EditTextDialog", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, paramInt1, paramInt2).sendToTarget();
+    this.o.obtainMessage(0, paramInt1, paramInt2).sendToTarget();
   }
   
   public void a(DynamicTextBuilder paramDynamicTextBuilder)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder = paramDynamicTextBuilder;
+    this.u = paramDynamicTextBuilder;
   }
   
   public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt)
@@ -383,66 +355,66 @@ public class EditTextDialog
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramDynamicTextConfigBean.text_id);
       localStringBuilder.append("");
-      ((AEBaseDataReporter)localObject).q(localStringBuilder.toString());
+      ((AEBaseDataReporter)localObject).s(localStringBuilder.toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetEditText != null) && (paramDynamicTextConfigBean != null))
+    Object localObject = this.y;
+    if ((localObject != null) && (this.d != null) && (paramDynamicTextConfigBean != null))
     {
-      ((DynamicTextItem)localObject).b();
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a();
-      if (paramDynamicTextConfigBean.text_id != this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.c())
+      ((DynamicTextItem)localObject).g();
+      localObject = this.y.j();
+      if (paramDynamicTextConfigBean.text_id != this.y.k())
       {
-        localObject = DynamicTextBuilder.a(DynamicTextBuilder.a(paramDynamicTextConfigBean.text_id), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem);
-        this.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.11(this));
+        localObject = DynamicTextBuilder.a(DynamicTextBuilder.a(paramDynamicTextConfigBean.text_id), this.y);
+        this.o.post(new EditTextDialog.11(this));
       }
-      paramDynamicTextConfigBean = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder.a(paramDynamicTextConfigBean.text_id, (List)localObject);
-      paramDynamicTextConfigBean.c(paramDynamicTextConfigBean.d());
-      this.l = paramDynamicTextConfigBean.d();
-      paramDynamicTextConfigBean.a = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a;
-      paramDynamicTextConfigBean.b(0);
-      paramDynamicTextConfigBean.a(0, paramDynamicTextConfigBean.a(0));
+      paramDynamicTextConfigBean = this.u.a(paramDynamicTextConfigBean.text_id, (List)localObject);
+      paramDynamicTextConfigBean.g(paramDynamicTextConfigBean.t());
+      this.H = paramDynamicTextConfigBean.t();
+      paramDynamicTextConfigBean.m = this.y.m;
+      paramDynamicTextConfigBean.e(0);
+      paramDynamicTextConfigBean.a(0, paramDynamicTextConfigBean.b(0));
       if ((paramDynamicTextConfigBean instanceof NormalTextItem))
       {
         localObject = (NormalTextItem)paramDynamicTextConfigBean;
-        ((NormalTextItem)localObject).a(this.jdField_c_of_type_Int);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(0);
-        c(((NormalTextItem)localObject).e());
+        ((NormalTextItem)localObject).a(this.l);
+        this.f.setVisibility(0);
+        f(((NormalTextItem)localObject).u());
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(8);
+        this.f.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a();
-      if (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.equals(paramDynamicTextConfigBean)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextConfigBean;
+      this.y.o();
+      if (!this.y.equals(paramDynamicTextConfigBean)) {
+        this.y = paramDynamicTextConfigBean;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.setPreViewDrawer(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(-1, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView, true, 3000, 500, new EditTextDialog.12(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_b_of_type_ArrayOfAndroidTextInputFilter);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a());
-      if (b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.c())) {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a() == null) {
-          this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
+      this.t.setPreViewDrawer(this.y);
+      this.y.a(-1, this.t, true, 3000, 500, new EditTextDialog.12(this));
+      this.d.setFilters(this.T);
+      this.d.setText(this.y.n());
+      if (e(this.y.k())) {
+        if (this.y.f() == null) {
+          this.d.setFilters(this.S);
         } else {
-          this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a() });
+          this.d.setFilters(new InputFilter[] { this.y.f() });
         }
       }
-      paramDynamicTextConfigBean = this.jdField_a_of_type_AndroidWidgetEditText;
+      paramDynamicTextConfigBean = this.d;
       paramDynamicTextConfigBean.setSelection(paramDynamicTextConfigBean.length());
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a().equals(DynamicTextBuilder.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.c(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.b())))
+      if (this.y.n().equals(DynamicTextBuilder.a(this.y.k(), this.y.g())))
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+        this.d.setSelectAllOnFocus(true);
+        if (this.d.hasFocus()) {
+          this.d.selectAll();
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(false);
-        this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+        this.d.setOnClickListener(null);
+        this.d.setSelectAllOnFocus(false);
+        this.d.requestFocus();
       }
-      this.f = paramInt;
+      this.r = paramInt;
     }
   }
   
@@ -451,37 +423,37 @@ public class EditTextDialog
     if (paramInt == -1) {
       return;
     }
-    this.k = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextItem;
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem = paramDynamicTextItem;
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    this.G = paramInt;
+    this.y = paramDynamicTextItem;
+    this.z = paramDynamicTextItem;
+    Object localObject1 = this.y;
     if (localObject1 == null) {
       return;
     }
-    this.l = ((DynamicTextItem)localObject1).d();
-    this.i = this.l;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(this.k);
+    this.H = ((DynamicTextItem)localObject1).t();
+    this.C = this.H;
+    this.A = this.y.b(this.G);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("normalTextSize");
-      ((StringBuilder)localObject1).append(this.l);
+      ((StringBuilder)localObject1).append(this.H);
       QLog.d("EditTextDialog", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(paramInt);
+    Object localObject2 = this.y.b(paramInt);
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "";
     }
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
+    localObject2 = this.t;
     if (localObject2 != null)
     {
-      ((EditTextPreView)localObject2).setPreViewDrawer(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.setText(paramInt, (String)localObject1);
+      ((EditTextPreView)localObject2).setPreViewDrawer(this.y);
+      this.t.setText(paramInt, (String)localObject1);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_b_of_type_ArrayOfAndroidTextInputFilter);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(paramInt, (String)localObject1);
-    this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+    this.d.setFilters(this.T);
+    this.y.a(paramInt, (String)localObject1);
+    this.k = ((String)localObject1);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("setTextInfo:");
     ((StringBuilder)localObject2).append(paramDynamicTextItem);
@@ -490,55 +462,55 @@ public class EditTextDialog
     ((StringBuilder)localObject2).append(" text:");
     ((StringBuilder)localObject2).append((String)localObject1);
     SLog.b("EditTextDialog", ((StringBuilder)localObject2).toString());
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerModelTextInfo;
-    ((TextInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(((TextInfo)localObject2).jdField_a_of_type_JavaLangString);
-    if (b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.c())) {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a() == null) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
+    localObject2 = this.n;
+    ((TextInfo)localObject2).a = ((String)localObject1);
+    this.d.setText(((TextInfo)localObject2).a);
+    if (e(this.y.k())) {
+      if (this.y.f() == null) {
+        this.d.setFilters(this.S);
       } else {
-        this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a() });
+        this.d.setFilters(new InputFilter[] { this.y.f() });
       }
     }
-    localObject1 = this.jdField_a_of_type_AndroidWidgetEditText;
+    localObject1 = this.d;
     ((EditText)localObject1).setSelection(((EditText)localObject1).length());
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a().equals(DynamicTextBuilder.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.c(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.b())))
+    if (this.y.n().equals(DynamicTextBuilder.a(this.y.k(), this.y.g())))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-      if (this.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-        this.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+      this.d.setOnClickListener(this.U);
+      this.d.setSelectAllOnFocus(true);
+      if (this.d.hasFocus()) {
+        this.d.selectAll();
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+      this.d.setOnClickListener(null);
     }
-    paramInt = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder.a(paramDynamicTextItem);
-    paramDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel;
+    paramInt = this.u.a(paramDynamicTextItem);
+    paramDynamicTextItem = this.p;
     if (paramDynamicTextItem != null) {
-      this.f = paramDynamicTextItem.a(paramInt);
+      this.r = paramDynamicTextItem.a(paramInt);
     }
-    if (this.m == 0) {
-      d(0);
+    if (this.J == 0) {
+      g(0);
     }
-    paramDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    paramDynamicTextItem = this.y;
     if ((paramDynamicTextItem instanceof NormalTextItem))
     {
       localObject1 = (NormalTextItem)paramDynamicTextItem;
-      this.jdField_a_of_type_Float = paramDynamicTextItem.b();
-      this.jdField_b_of_type_Float = ((NormalTextItem)localObject1).f();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(0);
-      this.h = ((NormalTextItem)localObject1).e();
-      c(this.h);
+      this.E = paramDynamicTextItem.d();
+      this.F = ((NormalTextItem)localObject1).w();
+      this.f.setVisibility(0);
+      this.B = ((NormalTextItem)localObject1).u();
+      f(this.B);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
   public void a(EditTextDialog.EditTextDialogEventListener paramEditTextDialogEventListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener = paramEditTextDialogEventListener;
+    this.g = paramEditTextDialogEventListener;
   }
   
   public void a(boolean paramBoolean)
@@ -551,30 +523,36 @@ public class EditTextDialog
       QLog.i("EditTextDialog", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (InputMethodManager)getContext().getSystemService("input_method");
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
+    if (this.d != null) {
+      ((InputMethodManager)localObject).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(false);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(c(), d());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.setPreViewDrawer(null);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem, paramBoolean ^ true, this.g, this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_Boolean = false;
+    this.g.a(false);
+    this.g.a(c(), d());
+    this.t.setPreViewDrawer(null);
+    this.g.a(this.y, paramBoolean ^ true, this.w, this.M);
+    this.M = false;
     super.dismiss();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
   }
   
   protected int b()
   {
-    return this.jdField_d_of_type_Int;
+    return this.m;
   }
   
-  public void b(int paramInt)
+  public View b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreatePanel id = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("EditTextDialog", 2, localStringBuilder.toString());
+    }
+    XPanelContainer.a = (int)(this.s.getResources().getDisplayMetrics().density * 50.0F);
+    if (this.x != null) {
+      XPanelContainer.a += this.x.getHeight();
+    }
+    return null;
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -591,43 +569,43 @@ public class EditTextDialog
     }
     if (paramInt2 == 34)
     {
-      if (this.f == -1)
+      if (this.r == -1)
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+        localObject = this.y;
         if (localObject != null)
         {
-          i1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextBuilder.a((DynamicTextItem)localObject);
-          this.f = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.a(i1);
+          i1 = this.u.a((DynamicTextItem)localObject);
+          this.r = this.p.a(i1);
         }
       }
-      int i1 = this.f;
+      int i1 = this.r;
       if (i1 != -1) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel.a(-1, i1);
+        this.p.b(-1, i1);
       }
-      d(1);
+      g(1);
     }
     else if (paramInt2 == 1)
     {
-      d(0);
+      g(0);
     }
     else if (paramInt2 == 0)
     {
-      d(1);
+      g(1);
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.10(this, paramInt1, paramInt2));
+    this.o.post(new EditTextDialog.10(this, paramInt1, paramInt2));
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.O = paramBoolean;
   }
   
   protected int c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
+    Object localObject = this.t;
     int i1;
     if (localObject != null) {
-      i1 = ((EditTextPreView)localObject).getWidth() / 2 + this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.getLeft();
+      i1 = ((EditTextPreView)localObject).getWidth() / 2 + this.t.getLeft();
     } else {
       i1 = 0;
     }
@@ -640,15 +618,20 @@ public class EditTextDialog
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.R = paramBoolean;
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return false;
   }
   
   protected int d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView;
+    Object localObject = this.t;
     int i1;
     if (localObject != null) {
-      i1 = ((EditTextPreView)localObject).getHeight() / 2 + this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextEditTextPreView.getTop();
+      i1 = ((EditTextPreView)localObject).getHeight() / 2 + this.t.getTop();
     } else {
       i1 = 0;
     }
@@ -659,9 +642,14 @@ public class EditTextDialog
     return i1;
   }
   
+  public void d(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
   public void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.K = paramBoolean;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -675,9 +663,9 @@ public class EditTextDialog
   public void onBackPressed()
   {
     super.onBackPressed();
-    DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    DynamicTextItem localDynamicTextItem = this.y;
     if (localDynamicTextItem != null) {
-      localDynamicTextItem.jdField_d_of_type_Boolean = true;
+      localDynamicTextItem.o = true;
     }
     a(true);
   }
@@ -685,78 +673,78 @@ public class EditTextDialog
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    XPanelContainer.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {
+    XPanelContainer.a = this.q;
+    if (this.g == null) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    Object localObject2 = this.d.getText().toString();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "";
     }
-    localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    localObject2 = this.y;
     if (localObject2 != null)
     {
-      localObject2 = ((DynamicTextItem)localObject2).a();
-      DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-      if ((!localDynamicTextItem.a(localDynamicTextItem.b()).equals(localObject1)) && (!this.jdField_c_of_type_Boolean))
+      localObject2 = ((DynamicTextItem)localObject2).i();
+      DynamicTextItem localDynamicTextItem = this.y;
+      if ((!localDynamicTextItem.b(localDynamicTextItem.g()).equals(localObject1)) && (!this.N))
       {
-        localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-        localDynamicTextItem.a(localDynamicTextItem.b(), (String)localObject1);
+        localDynamicTextItem = this.y;
+        localDynamicTextItem.a(localDynamicTextItem.g(), (String)localObject1);
       }
-      if ((!((DynamicTextItem.TextMap)localObject2).equals(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.e())) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem.a(false);
+      if ((!((DynamicTextItem.TextMap)localObject2).equals(this.v)) && (this.y.m())) {
+        this.y.a(false);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap = null;
+    this.v = null;
   }
   
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).dispatchTouchEvent(paramMotionEvent);
+    ((Activity)this.s).dispatchTouchEvent(paramMotionEvent);
     return true;
   }
   
-  public void s() {}
-  
   public void setContentView(int paramInt)
   {
-    this.jdField_a_of_type_Int = AIOUtils.b(100.0F, getContext().getResources());
-    b();
-    a();
-    super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.i = AIOUtils.b(100.0F, getContext().getResources());
+    g();
+    e();
+    super.setContentView(this.a);
   }
   
   public void show()
   {
     super.show();
-    DynamicTextItem localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
+    DynamicTextItem localDynamicTextItem = this.y;
     if (localDynamicTextItem != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap = localDynamicTextItem.a();
-      if (this.m == 0)
+      this.v = localDynamicTextItem.i();
+      if (this.J == 0)
       {
-        localDynamicTextItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-        localDynamicTextItem.a(localDynamicTextItem.b(), true);
+        localDynamicTextItem = this.y;
+        localDynamicTextItem.a(localDynamicTextItem.g(), true);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem$TextMap = null;
+      this.v = null;
     }
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem instanceof NormalTextItem)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(0);
+    if ((this.y instanceof NormalTextItem)) {
+      this.f.setVisibility(0);
     } else {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout.setVisibility(8);
+      this.f.setVisibility(8);
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this);
+    this.M = false;
+    this.c.a(1);
+    this.c.setOnPanelChangeListener(this);
   }
+  
+  public void v() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog
  * JD-Core Version:    0.7.0.1
  */

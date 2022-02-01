@@ -20,68 +20,58 @@ public class BarrageView
   extends View
   implements Handler.Callback, BarrageUI
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private AbsBarrageCache jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
-  private CanvasDrawer jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer;
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private BarragePlugin jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBarragePlugin;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private boolean jdField_a_of_type_Boolean;
+  private AbsBarrageCache a;
+  private CanvasDrawer b;
+  private WeakReferenceHandler c;
+  private int d = 0;
+  private long e;
+  private boolean f;
+  private BarragePlugin g;
+  private SpriteContext h;
   
   public BarrageView(Context paramContext, SpriteContext paramSpriteContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
+    this.h = paramSpriteContext;
     a(paramSpriteContext);
   }
   
   private void a(SpriteContext paramSpriteContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache = new ApolloBarrageCache();
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer = new CanvasDrawer();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.a = new ApolloBarrageCache();
+    this.b = new CanvasDrawer();
+    this.c = new WeakReferenceHandler(Looper.getMainLooper(), this);
     if (paramSpriteContext != null) {
-      paramSpriteContext = paramSpriteContext.a();
+      paramSpriteContext = paramSpriteContext.o();
     } else {
       paramSpriteContext = null;
     }
     if (paramSpriteContext != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBarragePlugin = new BarragePlugin(this);
-      paramSpriteContext.a(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBarragePlugin);
+      this.g = new BarragePlugin(this);
+      paramSpriteContext.a(this.g);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(259);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(259);
-  }
-  
-  public int a()
-  {
-    return super.getWidth();
-  }
-  
-  public AbsBarrageCache a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
+    this.c.removeMessages(259);
+    this.c.sendEmptyMessage(259);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    Object localObject = this.c;
     IScriptService localIScriptService = null;
     ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(true);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    this.b.a(true);
+    localObject = this.h;
     if (localObject != null) {
-      localIScriptService = ((SpriteContext)localObject).a();
+      localIScriptService = ((SpriteContext)localObject).o();
     }
     if (localIScriptService != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBarragePlugin;
+      localObject = this.g;
       if (localObject != null) {
         localIScriptService.b((IEventPlugin)localObject);
       }
@@ -104,15 +94,25 @@ public class BarrageView
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public int b()
+  public void b()
+  {
+    this.c.removeMessages(259);
+    this.f = true;
+  }
+  
+  public AbsBarrageCache getBarrageCache()
+  {
+    return this.a;
+  }
+  
+  public int getUIHeight()
   {
     return super.getHeight();
   }
   
-  public void b()
+  public int getUIWidth()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(259);
-    this.jdField_a_of_type_Boolean = true;
+    return super.getWidth();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -122,41 +122,41 @@ public class BarrageView
     default: 
       return false;
     case 259: 
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(259);
+      this.c.removeMessages(259);
       invalidate();
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       return false;
     case 258: 
       if (paramMessage.arg1 > 0)
       {
-        this.jdField_a_of_type_Int = 1;
+        this.d = 1;
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(false);
+        this.b.a(false);
         super.setVisibility(8);
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.e = System.currentTimeMillis();
       c();
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       return false;
     case 257: 
       paramMessage = (Barrage)paramMessage.obj;
-      this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(paramMessage);
-      this.jdField_a_of_type_Int = 0;
+      this.b.a(paramMessage);
+      this.d = 0;
       c();
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       return false;
     }
     List localList = (List)paramMessage.obj;
     if (paramMessage.arg1 > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(false);
+      this.b.a(false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(localList);
-    this.jdField_a_of_type_Int = 0;
+    this.b.a(localList);
+    this.d = 0;
     super.setVisibility(0);
     c();
-    this.jdField_a_of_type_Boolean = false;
+    this.f = false;
     return false;
   }
   
@@ -164,26 +164,26 @@ public class BarrageView
   {
     System.currentTimeMillis();
     super.onDraw(paramCanvas);
-    int i = this.jdField_a_of_type_Int;
-    float f = 1.0F;
+    int i = this.d;
+    float f1 = 1.0F;
     if (i == 1)
     {
-      f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 500.0F;
-      if (f < 1.0F)
+      f1 = (float)(System.currentTimeMillis() - this.e) / 500.0F;
+      if (f1 < 1.0F)
       {
-        f = 1.0F - f;
+        f1 = 1.0F - f1;
       }
       else
       {
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(false);
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(259, 20L);
+        this.d = 0;
+        this.b.a(false);
+        this.c.sendEmptyMessageDelayed(259, 20L);
         return;
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloBarrageCanvasDrawer.a(paramCanvas, f))
+    if (this.b.a(paramCanvas, f1))
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.f) {
         super.invalidate();
       }
     }
@@ -198,7 +198,7 @@ public class BarrageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.BarrageView
  * JD-Core Version:    0.7.0.1
  */

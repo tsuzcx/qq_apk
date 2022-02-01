@@ -7,69 +7,71 @@ import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract class ChatHistoryBaseViewController
 {
-  protected View a;
-  protected ChatHistoryRightButtonListener a;
   protected BaseActivity a;
-  protected String a;
+  protected View b;
+  protected String c;
+  protected ChatHistoryRightButtonListener d;
   
   public ChatHistoryBaseViewController(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public abstract int a();
-  
-  protected View a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-  }
-  
-  public FragmentManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSupportFragmentManager();
+    this.a = paramBaseActivity;
   }
   
   public BaseActivity a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131376809);
-    f();
+    return this.a;
   }
   
   public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public abstract void a(ChatHistoryBaseFragment paramChatHistoryBaseFragment, boolean paramBoolean);
+  
   public void a(ChatHistoryRightButtonListener paramChatHistoryRightButtonListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryRightButtonListener = paramChatHistoryRightButtonListener;
+    this.d = paramChatHistoryRightButtonListener;
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  protected View b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryRightButtonListener = null;
+    return this.b.findViewById(paramInt);
   }
+  
+  public FragmentManager b()
+  {
+    return this.a.getSupportFragmentManager();
+  }
+  
+  public void c()
+  {
+    this.b = this.a.findViewById(2131445137);
+    h();
+  }
+  
+  public void d() {}
   
   public void e() {}
   
-  protected void f()
+  public void f()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("SissionUin");
+    this.d = null;
   }
+  
+  public void g() {}
+  
+  protected void h()
+  {
+    this.c = this.a.getIntent().getStringExtra("SissionUin");
+  }
+  
+  public abstract int i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseViewController
  * JD-Core Version:    0.7.0.1
  */

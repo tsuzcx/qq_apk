@@ -9,10 +9,10 @@ import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
 import com.tencent.mobileqq.apollo.aio.item.api.IApolloIceBreakShow;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.player.ApolloPlayerParams;
-import com.tencent.mobileqq.apollo.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.player.action.CMSCommonAction;
-import com.tencent.mobileqq.apollo.player.api.IApolloBrickPlayer;
+import com.tencent.mobileqq.apollo.meme.ApolloPlayerParams;
+import com.tencent.mobileqq.apollo.meme.action.MemeAction;
+import com.tencent.mobileqq.apollo.meme.action.MemeCommonAction;
+import com.tencent.mobileqq.apollo.meme.api.IApolloBrickPlayer;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.apollo.statistics.product.DtReportParamsBuilder;
 import com.tencent.mobileqq.apollo.statistics.product.api.IApolloDtReportHelper;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/aio/item/api/impl/ApolloIceBreakShowImpl;", "Lcom/tencent/mobileqq/apollo/aio/item/api/IApolloIceBreakShow;", "()V", "mApp", "Lcom/tencent/common/app/AppInterface;", "mBrickPlayer", "Lcom/tencent/mobileqq/apollo/player/api/IApolloBrickPlayer;", "mCMSAction", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "mContext", "Landroid/content/Context;", "mHeight", "", "Ljava/lang/Integer;", "mIsPlaying", "", "mSessionInfo", "Lcom/tencent/mobileqq/activity/aio/BaseSessionInfo;", "mType", "mWidth", "name", "", "apolloDtReport", "", "mode", "actionId", "event", "getView", "Landroid/view/View;", "init", "context", "width", "height", "app", "isPlaying", "isReady", "onSend", "baseAIOContext", "Lcom/tencent/mobileqq/activity/aio/core/BaseAIOContext;", "pause", "play", "resume", "setJson", "jsonObject", "Lorg/json/JSONObject;", "sessionInfo", "stop", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/aio/item/api/impl/ApolloIceBreakShowImpl;", "Lcom/tencent/mobileqq/apollo/aio/item/api/IApolloIceBreakShow;", "()V", "mApp", "Lcom/tencent/common/app/AppInterface;", "mBrickPlayer", "Lcom/tencent/mobileqq/apollo/meme/api/IApolloBrickPlayer;", "mCMSAction", "Lcom/tencent/mobileqq/apollo/meme/action/MemeAction;", "mContext", "Landroid/content/Context;", "mHeight", "", "Ljava/lang/Integer;", "mIsPlaying", "", "mSessionInfo", "Lcom/tencent/mobileqq/activity/aio/BaseSessionInfo;", "mType", "mWidth", "name", "", "apolloDtReport", "", "mode", "actionId", "event", "getView", "Landroid/view/View;", "init", "context", "width", "height", "app", "isPlaying", "isReady", "onSend", "baseAIOContext", "Lcom/tencent/mobileqq/activity/aio/core/BaseAIOContext;", "pause", "play", "resume", "setJson", "jsonObject", "Lorg/json/JSONObject;", "sessionInfo", "stop", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloIceBreakShowImpl
   implements IApolloIceBreakShow
 {
@@ -44,7 +44,7 @@ public final class ApolloIceBreakShowImpl
   private static final String TAG = "[cmshow]ApolloIceBreakShow";
   private AppInterface mApp;
   private IApolloBrickPlayer mBrickPlayer;
-  private CMSAction mCMSAction;
+  private MemeAction mCMSAction;
   private Context mContext;
   private Integer mHeight;
   private boolean mIsPlaying;
@@ -80,12 +80,12 @@ public final class ApolloIceBreakShowImpl
     if (localBaseSessionInfo == null) {
       Intrinsics.throwNpe();
     }
-    localDtReportParamsBuilder = localDtReportParamsBuilder.b(((IApolloDtReportHelper)localObject).getReportSessionType(localBaseSessionInfo.jdField_a_of_type_Int)).c(String.valueOf(paramInt2)).e(this.mType).a(this.name);
+    localDtReportParamsBuilder = localDtReportParamsBuilder.b(((IApolloDtReportHelper)localObject).getReportSessionType(localBaseSessionInfo.a)).f(String.valueOf(paramInt2)).e(this.mType).a(this.name);
     localBaseSessionInfo = this.mSessionInfo;
     if (localBaseSessionInfo == null) {
       Intrinsics.throwNpe();
     }
-    ((IApolloDtReportHelper)localObject).report("aio", "aio_keywords", paramString, (Map)localDtReportParamsBuilder.b(localBaseSessionInfo.jdField_a_of_type_JavaLangString.toString()).a());
+    ((IApolloDtReportHelper)localObject).report("aio", "aio_keywords", paramString, (Map)localDtReportParamsBuilder.c(localBaseSessionInfo.b.toString()).a());
   }
   
   @Nullable
@@ -133,12 +133,12 @@ public final class ApolloIceBreakShowImpl
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
-        int j = ((CMSAction)localObject1).a().f;
+        int j = ((MemeAction)localObject1).c().f;
         localObject1 = this.mCMSAction;
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
-        Object localObject2 = ((CMSAction)localObject1).a().b;
+        Object localObject2 = ((MemeAction)localObject1).c().k;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = "0";
@@ -148,11 +148,11 @@ public final class ApolloIceBreakShowImpl
         if (localBaseSessionInfo == null) {
           Intrinsics.throwNpe();
         }
-        int k = ((IApolloUtil)localObject2).getReportSessiontype(localBaseSessionInfo.jdField_a_of_type_Int);
+        int k = ((IApolloUtil)localObject2).getReportSessionType(localBaseSessionInfo.a);
         int m = this.mType;
         int i = 0;
         VipUtils.a(paramAppInterface, "cmshow", "Apollo", "y_gjcbq_click", "", k, 0, new String[] { String.valueOf(m), String.valueOf(j), this.name });
-        if (j > ApolloConstant.jdField_a_of_type_Int) {
+        if (j > ApolloConstant.f) {
           i = 1;
         }
         apolloDtReport(i, j, "click");
@@ -197,18 +197,18 @@ public final class ApolloIceBreakShowImpl
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      int j = ((CMSAction)localObject).a().f;
+      int j = ((MemeAction)localObject).c().f;
       localObject = this.mApp;
       IApolloUtil localIApolloUtil = (IApolloUtil)QRoute.api(IApolloUtil.class);
       BaseSessionInfo localBaseSessionInfo = this.mSessionInfo;
       if (localBaseSessionInfo == null) {
         Intrinsics.throwNpe();
       }
-      int k = localIApolloUtil.getReportSessiontype(localBaseSessionInfo.jdField_a_of_type_Int);
+      int k = localIApolloUtil.getReportSessionType(localBaseSessionInfo.a);
       int m = this.mType;
       int i = 0;
       VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "gjcbq_expose", "", k, 0, new String[] { String.valueOf(m), String.valueOf(j), this.name });
-      if (j > ApolloConstant.jdField_a_of_type_Int) {
+      if (j > ApolloConstant.f) {
         i = 1;
       }
       apolloDtReport(i, j, "expose");
@@ -247,7 +247,6 @@ public final class ApolloIceBreakShowImpl
       ((StringBuilder)localObject2).append(paramJSONObject);
       QLog.d((String)localObject1, 4, ((StringBuilder)localObject2).toString());
       this.mSessionInfo = paramBaseSessionInfo;
-      label412:
       try
       {
         boolean bool = paramJSONObject.has(KEY_ACTION_ID);
@@ -276,82 +275,103 @@ public final class ApolloIceBreakShowImpl
         if (i == -1) {
           return;
         }
+        k = 0;
       }
       catch (Throwable paramJSONObject)
       {
         int i;
+        int k;
         int j;
-        label199:
-        label226:
+        label202:
+        label240:
+        label243:
         int m;
-        label289:
-        label352:
-        label367:
+        BaseSessionInfo localBaseSessionInfo;
+        label434:
+        label479:
         QLog.e(TAG, 1, "setJson error", paramJSONObject);
       }
     }
     try
     {
       localObject1 = paramJSONObject.get(KEY_ACTION_TYPE);
+      if (localObject1 != null) {
+        j = ((Integer)localObject1).intValue();
+      } else {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+      }
+    }
+    catch (Exception localException1)
+    {
+      break label202;
+    }
+    try
+    {
+      localObject1 = paramJSONObject.get(KEY_ACTION_TYPE);
       if (localObject1 != null)
       {
-        j = ((Integer)localObject1).intValue();
-        break label573;
+        j = Integer.parseInt((String)localObject1);
+        break label243;
       }
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      break label199;
-      break label226;
-      k = 0;
-      break label289;
-      paramBaseSessionInfo = null;
-      break label352;
+      break label240;
       paramBaseSessionInfo = "";
-      break label367;
+      break label434;
       String str = "";
-      break label412;
+      break label479;
     }
-    localObject1 = paramJSONObject.get(KEY_ACTION_TYPE);
-    if (localObject1 != null)
+    j = 0;
+    if (paramJSONObject.has(KEY_TYPE))
     {
-      j = Integer.parseInt((String)localObject1);
-      break label573;
-      if (paramJSONObject.has(KEY_TYPE))
-      {
-        localObject1 = paramJSONObject.get(KEY_TYPE);
-        if (localObject1 != null) {
-          this.mType = ((Integer)localObject1).intValue();
-        } else {
-          throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-        }
+      localObject1 = paramJSONObject.get(KEY_TYPE);
+      if (localObject1 != null) {
+        this.mType = ((Integer)localObject1).intValue();
+      } else {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
       }
-      if (paramBaseSessionInfo.b == null) {
-        break label576;
-      }
+    }
+    if (paramBaseSessionInfo.c != null) {
       k = 1;
-      paramBaseSessionInfo = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(paramBaseSessionInfo, "BaseApplicationImpl.getApplication()");
-      paramBaseSessionInfo = paramBaseSessionInfo.getRuntime();
-      Intrinsics.checkExpressionValueIsNotNull(paramBaseSessionInfo, "BaseApplicationImpl.getApplication().runtime");
-      localObject2 = paramBaseSessionInfo.getAccount();
-      m = this.mType;
-      if ((m != 1) || (k != 0)) {
-        break label587;
+    }
+    paramBaseSessionInfo = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramBaseSessionInfo, "BaseApplicationImpl.getApplication()");
+    paramBaseSessionInfo = paramBaseSessionInfo.getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(paramBaseSessionInfo, "BaseApplicationImpl.getApplication().runtime");
+    localObject2 = paramBaseSessionInfo.getAccount();
+    m = this.mType;
+    localObject1 = null;
+    paramBaseSessionInfo = null;
+    if ((m == 1) && (k == 0))
+    {
+      localObject1 = this.mSessionInfo;
+      if (localObject1 != null) {
+        paramBaseSessionInfo = ((BaseSessionInfo)localObject1).b;
       }
-      paramBaseSessionInfo = this.mSessionInfo;
-      if (paramBaseSessionInfo == null) {
-        break label582;
-      }
-      paramBaseSessionInfo = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
       if (paramBaseSessionInfo == null) {
         Intrinsics.throwNpe();
       }
       paramBaseSessionInfo = paramBaseSessionInfo.toString();
-      if (!paramJSONObject.has(KEY_EXT_JSON)) {
-        break label593;
+    }
+    else
+    {
+      if ((this.mType != 1) || (k == 0)) {
+        break label634;
       }
+      localBaseSessionInfo = this.mSessionInfo;
+      paramBaseSessionInfo = (BaseSessionInfo)localObject1;
+      if (localBaseSessionInfo != null) {
+        paramBaseSessionInfo = localBaseSessionInfo.c;
+      }
+      if (paramBaseSessionInfo == null) {
+        Intrinsics.throwNpe();
+      }
+      paramBaseSessionInfo = paramBaseSessionInfo.toString();
+    }
+    if (paramJSONObject.has(KEY_EXT_JSON))
+    {
       localObject1 = paramJSONObject.get(KEY_EXT_JSON);
       if (localObject1 != null) {
         localObject1 = (String)localObject1;
@@ -359,7 +379,7 @@ public final class ApolloIceBreakShowImpl
         throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
       }
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "senderUin");
-      this.mCMSAction = ((CMSAction)new CMSCommonAction(i, j, (String)localObject2, paramBaseSessionInfo, (String)localObject1));
+      this.mCMSAction = ((MemeAction)new MemeCommonAction(i, j, (String)localObject2, paramBaseSessionInfo, (String)localObject1));
       if (paramJSONObject.has(KEY_NAME))
       {
         paramJSONObject = paramJSONObject.get(KEY_NAME);
@@ -378,10 +398,7 @@ public final class ApolloIceBreakShowImpl
       paramBaseSessionInfo.append("setJson: CMSCommonAction = ");
       paramBaseSessionInfo.append(this.mCMSAction);
       QLog.d(paramJSONObject, 4, paramBaseSessionInfo.toString());
-    }
-    else
-    {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+      return;
       return;
     }
   }
@@ -397,13 +414,13 @@ public final class ApolloIceBreakShowImpl
     if (localIApolloBrickPlayer != null) {
       localIApolloBrickPlayer.destroy();
     }
-    this.mCMSAction = ((CMSAction)null);
+    this.mCMSAction = ((MemeAction)null);
     this.mIsPlaying = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.api.impl.ApolloIceBreakShowImpl
  * JD-Core Version:    0.7.0.1
  */

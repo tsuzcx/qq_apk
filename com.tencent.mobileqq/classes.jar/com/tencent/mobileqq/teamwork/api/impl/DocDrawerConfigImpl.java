@@ -24,12 +24,12 @@ public class DocDrawerConfigImpl
   
   public Boolean getIsShowInDrawer()
   {
-    return TencentDocDrawerConfigProcessor.a().a();
+    return TencentDocDrawerConfigProcessor.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.DocDrawerConfigImpl
  * JD-Core Version:    0.7.0.1
  */

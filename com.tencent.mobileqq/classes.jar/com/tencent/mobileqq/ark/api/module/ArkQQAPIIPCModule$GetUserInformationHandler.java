@@ -20,7 +20,7 @@ public class ArkQQAPIIPCModule$GetUserInformationHandler
 {
   public EIPCResult a(Bundle paramBundle)
   {
-    Object localObject = ArkQQAPIIPCModule.a();
+    Object localObject = ArkQQAPIIPCModule.d();
     if (localObject == null)
     {
       QLog.e("ArkApp.GetUserInformationHandler", 1, "Handler_GetNickName.onCall, qq app is null");
@@ -42,7 +42,7 @@ public class ArkQQAPIIPCModule$GetUserInformationHandler
   
   public String a(String paramString)
   {
-    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.a();
+    QQAppInterface localQQAppInterface = ArkQQAPIIPCModule.d();
     if (localQQAppInterface == null) {
       return null;
     }
@@ -50,7 +50,7 @@ public class ArkQQAPIIPCModule$GetUserInformationHandler
     if (paramString == null) {
       localObject1 = localQQAppInterface.getCurrentUin();
     }
-    Object localObject3 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a((String)localObject1);
+    Object localObject3 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).f((String)localObject1);
     if (localObject3 == null)
     {
       if (QLog.isColorLevel()) {
@@ -62,9 +62,9 @@ public class ArkQQAPIIPCModule$GetUserInformationHandler
     int i = ((Card)localObject3).shGender;
     Object localObject2 = "";
     if (i == 0) {
-      paramString = BaseActivity.sTopActivity.getString(2131693879);
+      paramString = BaseActivity.sTopActivity.getString(2131891484);
     } else if (((Card)localObject3).shGender == 1) {
-      paramString = BaseActivity.sTopActivity.getString(2131692259);
+      paramString = BaseActivity.sTopActivity.getString(2131889246);
     } else {
       paramString = "";
     }
@@ -107,7 +107,7 @@ public class ArkQQAPIIPCModule$GetUserInformationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.GetUserInformationHandler
  * JD-Core Version:    0.7.0.1
  */

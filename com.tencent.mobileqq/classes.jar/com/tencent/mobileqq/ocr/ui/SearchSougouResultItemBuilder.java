@@ -21,23 +21,18 @@ import mqq.app.MobileQQ;
 public class SearchSougouResultItemBuilder
   extends SearchResultBaseBuilder
 {
-  public static final Paint a;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  }
+  public static final Paint b = new Paint();
+  ViewGroup a;
+  private ColorDrawable c = new ColorDrawable(Color.parseColor("#e7e7e7"));
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup, SearchResultAdapter paramSearchResultAdapter, SearchResultAdapter.ListItem paramListItem)
   {
     Context localContext = paramViewGroup.getContext();
-    OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramListItem.jdField_a_of_type_JavaLangObject;
+    OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramListItem.b;
     if (paramView != null)
     {
       paramSearchResultAdapter = (SearchResultAdapter.ListItem)paramView.getTag();
-      if ((paramSearchResultAdapter.jdField_a_of_type_Int == paramListItem.jdField_a_of_type_Int) && (paramSearchResultAdapter.b == paramListItem.b))
+      if ((paramSearchResultAdapter.a == paramListItem.a) && (paramSearchResultAdapter.f == paramListItem.f))
       {
         paramSearchResultAdapter = (SearchSougouResultItemBuilder.ViewHolder)paramView.getTag(-1);
         paramInt = 0;
@@ -56,12 +51,12 @@ public class SearchSougouResultItemBuilder
     else
     {
       localObject = new SearchSougouResultItemBuilder.ViewHolder(this);
-      paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2131561261, paramViewGroup, false);
-      ((SearchSougouResultItemBuilder.ViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
-      ((SearchSougouResultItemBuilder.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378784));
-      ((SearchSougouResultItemBuilder.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131361820));
-      ((SearchSougouResultItemBuilder.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131377723));
-      ((SearchSougouResultItemBuilder.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368461));
+      paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2131627617, paramViewGroup, false);
+      ((SearchSougouResultItemBuilder.ViewHolder)localObject).a = paramView;
+      ((SearchSougouResultItemBuilder.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131447463));
+      ((SearchSougouResultItemBuilder.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131427372));
+      ((SearchSougouResultItemBuilder.ViewHolder)localObject).d = ((TextView)paramView.findViewById(2131446179));
+      ((SearchSougouResultItemBuilder.ViewHolder)localObject).e = ((ImageView)paramView.findViewById(2131435357));
       paramView.setTag(-1, localObject);
     }
     a((SearchSougouResultItemBuilder.ViewHolder)localObject, localSougouSearchInfo);
@@ -71,7 +66,7 @@ public class SearchSougouResultItemBuilder
   
   public void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.a = paramViewGroup;
   }
   
   void a(SearchSougouResultItemBuilder.ViewHolder paramViewHolder, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
@@ -81,28 +76,28 @@ public class SearchSougouResultItemBuilder
     {
       localObject = ((HighlightModel)localObject).a(paramSougouSearchInfo.title, true);
       if (localObject != null) {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        paramViewHolder.b.setText((CharSequence)localObject);
       }
     }
     localObject = new HighlightModel(paramSougouSearchInfo.abstractStrKeyWords, null);
     if (!TextUtils.isEmpty(paramSougouSearchInfo.abstractStr))
     {
-      localObject = ((HighlightModel)localObject).a(HighlightModel.a(paramSougouSearchInfo.abstractStr));
-      paramViewHolder.b.setText((CharSequence)localObject);
+      localObject = ((HighlightModel)localObject).a(HighlightModel.b(paramSougouSearchInfo.abstractStr));
+      paramViewHolder.c.setText((CharSequence)localObject);
     }
     try
     {
       if (TextUtils.isEmpty(paramSougouSearchInfo.summaryPic))
       {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramViewHolder.e.setVisibility(8);
       }
       else
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(MobileQQ.sMobileQQ, 80.0F);
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(MobileQQ.sMobileQQ, 60.0F);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.c;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.c;
         localObject = URLDrawable.getDrawable(paramSougouSearchInfo.summaryPic, (URLDrawable.URLDrawableOptions)localObject);
         if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 2))
         {
@@ -113,17 +108,17 @@ public class SearchSougouResultItemBuilder
             ((StringBuilder)localObject).append(paramSougouSearchInfo);
             QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, ((StringBuilder)localObject).toString());
           }
-          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramViewHolder.e.setVisibility(8);
         }
         else
         {
-          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          paramViewHolder.e.setVisibility(0);
           if (localObject != null) {
             ((URLDrawable)localObject).setURLDrawableListener(new SearchSougouResultItemBuilder.UrlDownloadListener(this));
           }
-          paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+          paramViewHolder.e.setImageDrawable((Drawable)localObject);
         }
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
+        paramViewHolder.e.setTag(paramSougouSearchInfo.summaryPic);
       }
     }
     catch (Exception localException)
@@ -135,16 +130,16 @@ public class SearchSougouResultItemBuilder
     }
     if (TextUtils.isEmpty(paramSougouSearchInfo.sourceFrom))
     {
-      paramViewHolder.c.setVisibility(8);
+      paramViewHolder.d.setVisibility(8);
       return;
     }
-    paramViewHolder.c.setVisibility(0);
-    paramViewHolder.c.setText(paramSougouSearchInfo.sourceFrom);
+    paramViewHolder.d.setVisibility(0);
+    paramViewHolder.d.setText(paramSougouSearchInfo.sourceFrom);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder
  * JD-Core Version:    0.7.0.1
  */

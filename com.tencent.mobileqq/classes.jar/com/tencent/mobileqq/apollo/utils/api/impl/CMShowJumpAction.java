@@ -33,7 +33,7 @@ public class CMShowJumpAction
       try
       {
         Intent localIntent = new Intent();
-        String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("\\?");
+        String[] arrayOfString = this.c.split("\\?");
         localStringBuilder = null;
         Object localObject = localStringBuilder;
         if (arrayOfString.length >= 2)
@@ -60,16 +60,16 @@ public class CMShowJumpAction
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
               break label329;
             }
-            localObject = ApolloConstant.z;
+            localObject = ApolloConstant.H;
             if (i != 0) {
-              ((IApolloUtil)QRoute.api(IApolloUtil.class)).openWebViewActivity(this.jdField_a_of_type_AndroidContentContext, (String)localObject);
+              ((IApolloUtil)QRoute.api(IApolloUtil.class)).openWebViewActivity(this.b, (String)localObject);
             } else {
-              ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(this.jdField_a_of_type_AndroidContentContext, localIntent, null, (String)localObject, null);
+              ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(this.b, localIntent, null, (String)localObject, null);
             }
-            if (this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface != null)
+            if (this.a != null)
             {
-              localObject = (IApolloManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-              VipUtils.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "cmshow", "Apollo", "action_clk", ((IApolloManagerService)localObject).getApolloStatus(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentUin()), 0, new String[] { "0" });
+              localObject = (IApolloManagerService)this.a.getRuntimeService(IApolloManagerService.class, "all");
+              VipUtils.a(this.a, "cmshow", "Apollo", "action_clk", ((IApolloManagerService)localObject).getApolloStatus(this.a.getCurrentUin()), 0, new String[] { "0" });
             }
             return true;
           }
@@ -77,7 +77,7 @@ public class CMShowJumpAction
       }
       catch (Exception localException)
       {
-        b_("[cmshow]CMShowAction");
+        h_("[cmshow]CMShowAction");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doAction error: ");
         localStringBuilder.append(localException.getMessage());
@@ -90,7 +90,7 @@ public class CMShowJumpAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.CMShowJumpAction
  * JD-Core Version:    0.7.0.1
  */

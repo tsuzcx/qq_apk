@@ -11,13 +11,13 @@ class ContactsTroopAdapter$4
   
   public void run()
   {
-    ((TroopManager)this.this$0.a.getManager(QQManagerFactory.TROOP_MANAGER)).a();
+    ((TroopManager)this.this$0.a.getManager(QQManagerFactory.TROOP_MANAGER)).d();
     this.this$0.a.runOnUiThread(new ContactsTroopAdapter.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter.4
  * JD-Core Version:    0.7.0.1
  */

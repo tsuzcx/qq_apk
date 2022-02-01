@@ -37,30 +37,6 @@ class IAVServiceForQQ$Stub$Proxy
     }
   }
   
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(9, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      if (localParcel2.readInt() != 0) {
-        paramArrayOfByte = (AVPbInfo)AVPbInfo.CREATOR.createFromParcel(localParcel2);
-      } else {
-        paramArrayOfByte = null;
-      }
-      return paramArrayOfByte;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public void a()
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -333,6 +309,30 @@ class IAVServiceForQQ$Stub$Proxy
       this.a.transact(4, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public AVPbInfo d(byte[] paramArrayOfByte)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(9, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      if (localParcel2.readInt() != 0) {
+        paramArrayOfByte = (AVPbInfo)AVPbInfo.CREATOR.createFromParcel(localParcel2);
+      } else {
+        paramArrayOfByte = null;
+      }
+      return paramArrayOfByte;
     }
     finally
     {

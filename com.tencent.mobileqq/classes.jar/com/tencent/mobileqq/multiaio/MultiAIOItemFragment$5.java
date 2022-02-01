@@ -33,19 +33,19 @@ class MultiAIOItemFragment$5
       bool = false;
       paramInt = 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetListView;
+    this.a.onScrollStateChanged(this.b, paramInt);
+    Object localObject = this.b;
     if ((localObject instanceof ChatXListView))
     {
       localObject = (ChatXListView)localObject;
-      int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+      int[] arrayOfInt = MultiAIOItemFragment.d(this.c);
       ((ChatXListView)localObject).setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.5
  * JD-Core Version:    0.7.0.1
  */

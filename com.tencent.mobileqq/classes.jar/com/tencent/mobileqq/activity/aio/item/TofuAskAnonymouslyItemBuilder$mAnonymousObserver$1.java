@@ -28,36 +28,36 @@ public final class TofuAskAnonymouslyItemBuilder$mAnonymousObserver$1
       paramObject = (Object[])paramObject;
       if (paramObject.length == 5)
       {
-        TofuAskAnonymouslyItemBuilder.a(this.a).a(true);
-        localObject1 = TofuAskAnonymouslyItemBuilder.a(this.a);
+        TofuAskAnonymouslyItemBuilder.c(this.a).a(true);
+        localObject1 = TofuAskAnonymouslyItemBuilder.c(this.a);
         Object localObject2 = paramObject[0];
         if (localObject2 != null)
         {
           ((TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo)localObject1).a((String)localObject2);
-          localObject1 = TofuAskAnonymouslyItemBuilder.a(this.a);
+          localObject1 = TofuAskAnonymouslyItemBuilder.c(this.a);
           localObject2 = paramObject[1];
           if (localObject2 != null)
           {
             ((TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo)localObject1).a(((Long)localObject2).longValue());
-            localObject1 = TofuAskAnonymouslyItemBuilder.a(this.a);
+            localObject1 = TofuAskAnonymouslyItemBuilder.c(this.a);
             localObject2 = paramObject[2];
             if (localObject2 != null)
             {
               ((TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo)localObject1).b(((Boolean)localObject2).booleanValue());
-              localObject1 = TofuAskAnonymouslyItemBuilder.a(this.a);
+              localObject1 = TofuAskAnonymouslyItemBuilder.c(this.a);
               localObject2 = paramObject[3];
               if (localObject2 != null)
               {
                 ((TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo)localObject1).b(((Long)localObject2).longValue());
-                localObject1 = TofuAskAnonymouslyItemBuilder.a(this.a);
+                localObject1 = TofuAskAnonymouslyItemBuilder.c(this.a);
                 paramObject = paramObject[4];
                 if (paramObject != null)
                 {
                   ((TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo)localObject1).c(((Long)paramObject).longValue());
-                  if ((TofuAskAnonymouslyItemBuilder.a(this.a).equals(TofuAskAnonymouslyItemBuilder.a(this.a).a())) && (TofuAskAnonymouslyItemBuilder.a(this.a).getAskAnonymouslyQuestion() != null))
+                  if ((TofuAskAnonymouslyItemBuilder.b(this.a).equals(TofuAskAnonymouslyItemBuilder.c(this.a).b())) && (TofuAskAnonymouslyItemBuilder.d(this.a).getAskAnonymouslyQuestion() != null))
                   {
-                    TofuAskAnonymouslyItemBuilder.a(this.a);
-                    TofuAskAnonymouslyItemBuilder.b(this.a);
+                    TofuAskAnonymouslyItemBuilder.e(this.a);
+                    TofuAskAnonymouslyItemBuilder.f(this.a);
                   }
                 }
                 else
@@ -90,7 +90,7 @@ public final class TofuAskAnonymouslyItemBuilder$mAnonymousObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder.mAnonymousObserver.1
  * JD-Core Version:    0.7.0.1
  */

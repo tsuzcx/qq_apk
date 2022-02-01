@@ -24,7 +24,7 @@ public final class VideoFeedsStressFollowHelper$startShrinkAnim$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsStressFollowHelper.startShrinkAnim.2
  * JD-Core Version:    0.7.0.1
  */

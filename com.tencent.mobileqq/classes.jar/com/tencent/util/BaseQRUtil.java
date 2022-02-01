@@ -24,7 +24,7 @@ public class BaseQRUtil
     return null;
   }
   
-  public static void a(Context paramContext, String paramString)
+  public static void b(Context paramContext, String paramString)
   {
     Object localObject = paramContext.getSharedPreferences("host", 0);
     try
@@ -57,7 +57,7 @@ public class BaseQRUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.BaseQRUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,16 @@ class QQServiceForAV$8
       arrayOfRecvGVideoLevelInfo[i] = ((RecvGVideoLevelInfo)???[i]);
       i += 1;
     }
-    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
+    synchronized (this.a.m)
     {
-      int k = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
+      int k = this.a.m.beginBroadcast();
       i = j;
       for (;;)
       {
         if (i < k) {
           try
           {
-            ((IQQServiceCallback)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(arrayOfRecvGVideoLevelInfo);
+            ((IQQServiceCallback)this.a.m.getBroadcastItem(i)).a(arrayOfRecvGVideoLevelInfo);
             i += 1;
           }
           catch (RemoteException localRemoteException)
@@ -44,7 +44,7 @@ class QQServiceForAV$8
           }
         }
       }
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+      this.a.m.finishBroadcast();
       return;
     }
     for (;;)
@@ -66,7 +66,7 @@ class QQServiceForAV$8
       paramString4.putExtra("grayFlag", paramInt2);
       paramString3.getApp().sendBroadcast(paramString4);
     }
-    paramString3.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    paramString3.removeObserver(this.a.r);
   }
   
   protected void a(boolean paramBoolean1, String paramString, int paramInt1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2, int paramInt3)
@@ -88,7 +88,7 @@ class QQServiceForAV$8
       localIntent.putExtra("startSpeakInterval", paramInt3);
       localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+    localQQAppInterface.removeObserver(this.a.r);
   }
   
   protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
@@ -106,9 +106,9 @@ class QQServiceForAV$8
       QLog.d("nearby.video.follow", 2, ((StringBuilder)localObject).toString());
     }
     label222:
-    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
+    synchronized (this.a.m)
     {
-      int j = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
+      int j = this.a.m.beginBroadcast();
       int i = 0;
       for (;;)
       {
@@ -120,7 +120,7 @@ class QQServiceForAV$8
           localObject = "1";
           try
           {
-            ((IQQServiceCallback)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramBoolean1, paramString, (String)localObject, "getFollowStatus");
+            ((IQQServiceCallback)this.a.m.getBroadcastItem(i)).a(paramBoolean1, paramString, (String)localObject, "getFollowStatus");
             i += 1;
           }
           catch (RemoteException paramString)
@@ -135,7 +135,7 @@ class QQServiceForAV$8
           }
         }
       }
-      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+      this.a.m.finishBroadcast();
       return;
     }
   }

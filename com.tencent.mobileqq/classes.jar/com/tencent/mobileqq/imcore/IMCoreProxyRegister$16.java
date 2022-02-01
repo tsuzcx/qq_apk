@@ -8,12 +8,12 @@ final class IMCoreProxyRegister$16
 {
   public void checkInNextBusiness()
   {
-    ThreadRegulator.a().b();
+    ThreadRegulator.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister.16
  * JD-Core Version:    0.7.0.1
  */

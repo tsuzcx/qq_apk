@@ -23,32 +23,32 @@ class MatchChatMsgListFragment$8
         return false;
       }
       paramMessage = this.a;
-      MatchChatMsgListFragment.a(paramMessage, MatchChatMsgListFragment.a(paramMessage));
+      MatchChatMsgListFragment.a(paramMessage, MatchChatMsgListFragment.b(paramMessage));
       return false;
     }
-    if ((!this.a.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1))
+    if ((!this.a.c()) && (this.a.h.getMode() == -1))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.a.jdField_b_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(21);
+      this.a.j.a(this.a.s);
+      this.a.j.a(21);
       this.a.b();
-      if ((!this.a.c) && (this.a.jdField_b_of_type_JavaUtilList.size() != 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if ((!this.a.t) && (this.a.s.size() != 0)) {
+        this.a.f.setVisibility(0);
       } else {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.a.f.setVisibility(8);
       }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (!this.a.l)
       {
-        this.a.jdField_a_of_type_Boolean = true;
+        this.a.l = true;
         if (QLog.isColorLevel())
         {
-          QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
+          QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.n) }));
           return false;
         }
       }
     }
     else
     {
-      this.a.jdField_b_of_type_Boolean = true;
+      this.a.m = true;
     }
     return false;
   }

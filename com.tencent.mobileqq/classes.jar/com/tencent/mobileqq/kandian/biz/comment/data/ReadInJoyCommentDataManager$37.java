@@ -11,17 +11,17 @@ class ReadInJoyCommentDataManager$37
   public void run()
   {
     int i;
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.b) {
       i = 0;
     } else {
       i = -1;
     }
-    ReadInJoyLogicEngineEventDispatcher.a().a(i, ReadInJoyCommentDataManager.a(this.this$0), this.a.b, this.a.jdField_a_of_type_JavaLangString);
+    ReadInJoyLogicEngineEventDispatcher.a().a(i, ReadInJoyCommentDataManager.k(this.this$0), this.a.f, this.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.37
  * JD-Core Version:    0.7.0.1
  */

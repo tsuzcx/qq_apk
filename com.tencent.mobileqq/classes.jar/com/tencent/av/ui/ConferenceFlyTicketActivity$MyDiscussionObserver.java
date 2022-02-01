@@ -18,7 +18,7 @@ class ConferenceFlyTicketActivity$MyDiscussionObserver
   
   protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    Object localObject = this.a.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onGetFlyTicket, isSuccess[");
     localStringBuilder.append(paramBoolean);
@@ -41,39 +41,39 @@ class ConferenceFlyTicketActivity$MyDiscussionObserver
       if (!TextUtils.isEmpty(this.a.h))
       {
         paramString1 = this.a;
-        paramString1.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask = new ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask(paramString1);
+        paramString1.o = new ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask(paramString1);
         paramString1 = new ArrayList();
         localObject = new DownloadParams();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/createConfCallback?feedkey=");
         localStringBuilder.append(this.a.b);
-        ((DownloadParams)localObject).jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        ((DownloadParams)localObject).a = localStringBuilder.toString();
         this.a.d = paramString2.substring(15, paramString2.length() - 10);
-        paramString2 = this.a.jdField_a_of_type_JavaLangString;
+        paramString2 = this.a.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onGetFlyTicket, mTicket[");
         localStringBuilder.append(this.a.d);
         localStringBuilder.append("]");
         QLog.w(paramString2, 1, localStringBuilder.toString());
         paramString2 = new StringBuilder();
-        paramString2.append(((DownloadParams)localObject).jdField_a_of_type_JavaLangString);
+        paramString2.append(((DownloadParams)localObject).a);
         paramString2.append("&ret=0&ticket=");
         paramString2.append(this.a.d);
-        ((DownloadParams)localObject).jdField_a_of_type_JavaLangString = paramString2.toString();
+        ((DownloadParams)localObject).a = paramString2.toString();
         paramString1.add(localObject);
-        this.a.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask.execute(new ArrayList[] { paramString1 });
+        this.a.o.execute(new ArrayList[] { paramString1 });
       }
     }
     else
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(paramLong2);
+      this.a.n.c(paramLong2);
       this.a.a(1, paramInt);
     }
   }
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    String str = this.a.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onJoinDiscussionByFlyTicket, isSuccess[");
     localStringBuilder.append(paramBoolean);
@@ -100,7 +100,7 @@ class ConferenceFlyTicketActivity$MyDiscussionObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = this.a.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DiscussObserver.onUpdate, type[");
     localStringBuilder.append(paramInt);
@@ -141,7 +141,7 @@ class ConferenceFlyTicketActivity$MyDiscussionObserver
       paramObject = (Long[])paramObject;
       long l = paramObject[1].longValue();
       paramInt = paramObject[0].intValue();
-      paramObject = this.a.jdField_a_of_type_JavaLangString;
+      paramObject = this.a.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("NOTIFY_TYPE_JOIN_DISCUSSION_BY_FLYY_TICKET, discussUin[");
       ((StringBuilder)localObject).append(l);
@@ -156,7 +156,7 @@ class ConferenceFlyTicketActivity$MyDiscussionObserver
         if (TextUtils.equals(String.valueOf(l), this.a.h))
         {
           this.a.c();
-          AudioHelper.b(HardCodeUtil.a(2131702566));
+          AudioHelper.b(HardCodeUtil.a(2131900559));
           ((DiscussionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(l);
           return;
         }

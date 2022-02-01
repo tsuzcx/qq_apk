@@ -18,9 +18,9 @@ public class AnimationUtils
   public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
     SLog.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
-    Object localObject = paramViewGroup.findViewById(2131376809);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362691);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131380826);
+    Object localObject = paramViewGroup.findViewById(2131445137);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131428363);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131449797);
     Drawable localDrawable = paramAnimationParam.a();
     if (localDrawable != null)
     {
@@ -49,9 +49,9 @@ public class AnimationUtils
   public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
     SLog.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
-    Object localObject = paramViewGroup.findViewById(2131376809);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362691);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131380826);
+    Object localObject = paramViewGroup.findViewById(2131445137);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131428363);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131449797);
     paramViewGroup = new ImageView(paramViewGroup.getContext());
     localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
     paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -71,7 +71,7 @@ public class AnimationUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils
  * JD-Core Version:    0.7.0.1
  */

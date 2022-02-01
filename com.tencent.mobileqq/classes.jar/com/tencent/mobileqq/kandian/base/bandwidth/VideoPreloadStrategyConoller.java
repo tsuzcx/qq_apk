@@ -10,11 +10,6 @@ public class VideoPreloadStrategyConoller
 {
   private static VideoPreloadStrategyConoller a;
   
-  private int a(String paramString)
-  {
-    return Math.round(((Float)RIJSPUtils.a(a(paramString), Float.valueOf(0.0F))).floatValue());
-  }
-  
   public static VideoPreloadStrategyConoller a()
   {
     if (a == null) {
@@ -29,7 +24,17 @@ public class VideoPreloadStrategyConoller
     return a;
   }
   
-  private String a(String paramString)
+  private boolean a(String paramString)
+  {
+    return BandWidthConfig.a.b(paramString);
+  }
+  
+  private int b(String paramString)
+  {
+    return Math.round(((Float)RIJSPUtils.b(c(paramString), Float.valueOf(0.0F))).floatValue());
+  }
+  
+  private String c(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
@@ -37,21 +42,11 @@ public class VideoPreloadStrategyConoller
     return localStringBuilder.toString();
   }
   
-  private boolean a(String paramString)
-  {
-    return BandWidthConfig.a.a(paramString);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
   public int a(String paramString, int paramInt)
   {
-    int i = a(paramString);
-    int j = BandWidthConfig.a.e();
-    int k = BandWidthConfig.a.f();
+    int i = b(paramString);
+    int j = BandWidthConfig.a.g();
+    int k = BandWidthConfig.a.h();
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -71,32 +66,11 @@ public class VideoPreloadStrategyConoller
     return j;
   }
   
-  public void a(String paramString, int paramInt)
-  {
-    float f = ((Float)RIJSPUtils.a(a(paramString), Float.valueOf(0.0F))).floatValue();
-    if (f > 0.0F) {
-      f = paramInt * 0.5F + f * 0.5F;
-    } else {
-      f = paramInt;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_watch_length");
-    RIJSPUtils.a(localStringBuilder.toString(), Float.valueOf(f));
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("reoprt: currentPredition=");
-      paramString.append(f);
-      QLog.d("VideoPreloadStrategyConoller", 2, paramString.toString());
-    }
-  }
-  
   public boolean a(int paramInt)
   {
     long l1 = BandwidthPredictor.from().getCurrentPrediction();
-    float f = BandWidthConfig.a.a();
-    int i = BandWidthConfig.a.d();
+    float f = BandWidthConfig.a.e();
+    int i = BandWidthConfig.a.f();
     long l2 = ((float)l1 - paramInt / 8 * f);
     if (QLog.isColorLevel())
     {
@@ -124,17 +98,43 @@ public class VideoPreloadStrategyConoller
   public boolean a(VideoPlayerWrapper paramVideoPlayerWrapper)
   {
     int i;
-    if ((paramVideoPlayerWrapper != null) && (paramVideoPlayerWrapper.b() > 0L)) {
-      i = paramVideoPlayerWrapper.a;
+    if ((paramVideoPlayerWrapper != null) && (paramVideoPlayerWrapper.I() > 0L)) {
+      i = paramVideoPlayerWrapper.d;
     } else {
       i = 0;
     }
     return a(i);
   }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    float f = ((Float)RIJSPUtils.b(c(paramString), Float.valueOf(0.0F))).floatValue();
+    if (f > 0.0F) {
+      f = paramInt * 0.5F + f * 0.5F;
+    } else {
+      f = paramInt;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_watch_length");
+    RIJSPUtils.a(localStringBuilder.toString(), Float.valueOf(f));
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("reoprt: currentPredition=");
+      paramString.append(f);
+      QLog.d("VideoPreloadStrategyConoller", 2, paramString.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.bandwidth.VideoPreloadStrategyConoller
  * JD-Core Version:    0.7.0.1
  */

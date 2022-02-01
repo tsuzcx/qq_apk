@@ -24,73 +24,73 @@ class SelectPermissionPresenter$3$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse != null))
+    if ((this.a) && (this.b != null))
     {
-      SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, true);
-      SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse.c.get(), SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a));
-      SelectPermissionPresenter.b(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse.c.get(), this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse.e.get());
+      SelectPermissionPresenter.a(this.d.a, true);
+      SelectPermissionPresenter.a(this.d.a, this.b.e.get(), SelectPermissionPresenter.b(this.d.a));
+      SelectPermissionPresenter.b(this.d.a, this.b.e.get(), this.b.g.get());
     }
     for (;;)
     {
       try
       {
         long l1 = SystemClock.elapsedRealtime();
-        long l2 = SelectPermissionPresenter.c(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
-        Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse;
-        long l3 = SelectPermissionPresenter.d(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
-        long l4 = SelectPermissionPresenter.e(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
-        if (SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a) == 0L) {
+        long l2 = SelectPermissionPresenter.l(this.d.a);
+        Object localObject1 = this.b;
+        long l3 = SelectPermissionPresenter.m(this.d.a);
+        long l4 = SelectPermissionPresenter.n(this.d.a);
+        if (SelectPermissionPresenter.f(this.d.a) == 0L) {
           break label596;
         }
         bool = true;
         localObject1 = AuthorityUtil.a((AuthResponse)localObject1, l3, l4, l1 - l2, bool);
-        SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse.a.get(), ((JSONObject)localObject1).toString(), null, null);
+        SelectPermissionPresenter.a(this.d.a, this.b.a.get(), ((JSONObject)localObject1).toString(), null, null);
       }
       catch (JSONException localJSONException)
       {
         SSOLog.c("SelectPermissionPresenter", "catch JSONException", localJSONException);
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       Object localObject2;
       if (i == 110509)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onDoAuthorize mAuthRetryCountBy110509=");
-        ((StringBuilder)localObject2).append(SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a));
+        ((StringBuilder)localObject2).append(SelectPermissionPresenter.o(this.d.a));
         SSOLog.a("SelectPermissionPresenter", new Object[] { ((StringBuilder)localObject2).toString() });
-        if (SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a) >= 2)
+        if (SelectPermissionPresenter.o(this.d.a) >= 2)
         {
-          SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
+          SelectPermissionPresenter.p(this.d.a);
         }
         else
         {
-          SelectPermissionPresenter.b(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
-          SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, 3);
+          SelectPermissionPresenter.q(this.d.a);
+          SelectPermissionPresenter.a(this.d.a, 3);
         }
-        SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, false);
+        SelectPermissionPresenter.a(this.d.a, false);
       }
       else if (i == 110537)
       {
         SSOLog.a("SelectPermissionPresenter", new Object[] { "onDoAuthorize 110537" });
-        AuthUIUtil.a(SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a), HardCodeUtil.a(2131707857), false);
-        SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a);
+        AuthUIUtil.a(SelectPermissionPresenter.k(this.d.a), HardCodeUtil.a(2131905671), false);
+        SelectPermissionPresenter.p(this.d.a);
       }
       else if (i == 100044)
       {
-        localObject2 = AuthMemoryCache.a().a(SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a));
-        String str1 = SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a).getIntent().getStringExtra("packagename");
-        String str2 = SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a).getIntent().getStringExtra("packagesign");
-        AuthReporter.a(((AccountInfo)localObject2).a, SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a), str1, str2);
-        localObject2 = AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse, SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a).getResources(), this.jdField_a_of_type_Int);
-        AuthUIUtil.a(SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a), (String)localObject2, new SelectPermissionPresenter.3.1.1(this));
+        localObject2 = AuthMemoryCache.a().d(SelectPermissionPresenter.b(this.d.a));
+        String str1 = SelectPermissionPresenter.k(this.d.a).getIntent().getStringExtra("packagename");
+        String str2 = SelectPermissionPresenter.k(this.d.a).getIntent().getStringExtra("packagesign");
+        AuthReporter.a(((AccountInfo)localObject2).a, SelectPermissionPresenter.b(this.d.a), str1, str2);
+        localObject2 = AuthorityUtil.a(this.b, SelectPermissionPresenter.k(this.d.a).getResources(), this.c);
+        AuthUIUtil.a(SelectPermissionPresenter.k(this.d.a), (String)localObject2, new SelectPermissionPresenter.3.1.1(this));
       }
       else
       {
-        localObject2 = AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthResponse, SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a).getResources(), this.jdField_a_of_type_Int);
-        AuthUIUtil.a(SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a), (String)localObject2, false);
-        SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a, false);
+        localObject2 = AuthorityUtil.a(this.b, SelectPermissionPresenter.k(this.d.a).getResources(), this.c);
+        AuthUIUtil.a(SelectPermissionPresenter.k(this.d.a), (String)localObject2, false);
+        SelectPermissionPresenter.a(this.d.a, false);
       }
-      SelectPermissionPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSelectPermissionPresenter$3.a).b();
+      SelectPermissionPresenter.c(this.d.a).b();
       return;
       label596:
       boolean bool = false;
@@ -99,7 +99,7 @@ class SelectPermissionPresenter$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SelectPermissionPresenter.3.1
  * JD-Core Version:    0.7.0.1
  */

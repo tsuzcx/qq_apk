@@ -22,17 +22,17 @@ public class TroopConfessMsgDecoder
       paramMessage.msg = paramIMessageManager.msg;
       paramIMessageManager = TroopBusinessUtil.a(paramMessage);
       if (paramIMessageManager != null) {
-        paramMessage.nickName = paramIMessageManager.c;
+        paramMessage.nickName = paramIMessageManager.d;
       }
       if (TextUtils.isEmpty(paramMessage.nickName)) {
-        paramMessage.nickName = HardCodeUtil.a(2131701240);
+        paramMessage.nickName = HardCodeUtil.a(2131899250);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.TroopConfessMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

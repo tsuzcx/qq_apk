@@ -10,13 +10,13 @@ public class TroopView$MyAvatarObserver
   protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      this.a.j();
+      this.a.l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

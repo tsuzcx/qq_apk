@@ -18,6 +18,7 @@ import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
+import com.tencent.mobileqq.mini.entry.desktop.GetAppListV2Scene;
 import com.tencent.mobileqq.mini.network.http.HttpCmdManager;
 import com.tencent.mobileqq.mini.servlet.BatchGetUserInfoServlet;
 import com.tencent.mobileqq.mini.servlet.BookShelfInsertServlet;
@@ -28,11 +29,13 @@ import com.tencent.mobileqq.mini.servlet.CheckBindingStateServlet;
 import com.tencent.mobileqq.mini.servlet.CloudStorageServlet;
 import com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgServlet;
 import com.tencent.mobileqq.mini.servlet.DoGameRaffleServlet;
+import com.tencent.mobileqq.mini.servlet.FollowServlet;
 import com.tencent.mobileqq.mini.servlet.GetCMShowInfoServlet;
 import com.tencent.mobileqq.mini.servlet.GetGameRaffleMaterialServlet;
 import com.tencent.mobileqq.mini.servlet.GetPotentialFriendListServlet;
 import com.tencent.mobileqq.mini.servlet.GetReactiveFriendListServlet;
 import com.tencent.mobileqq.mini.servlet.GetUserInteractiveStorageServlet;
+import com.tencent.mobileqq.mini.servlet.GetWeixinSDKAppInfoServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppAddPhoneNumberServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppBatchGetContactServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppBatchQueryAppInfoServlet;
@@ -209,6 +212,11 @@ public class MiniAppCmdUtil
     return instance;
   }
   
+  public static int getReqSeqIndex()
+  {
+    return index.incrementAndGet();
+  }
+  
   private void sendCloudRequest(String paramString1, String[] paramArrayOfString, MiniAppCmdInterface paramMiniAppCmdInterface, String paramString2)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), CloudStorageServlet.class, paramMiniAppCmdInterface, "sendCloudRequest");
@@ -275,6 +283,14 @@ public class MiniAppCmdUtil
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppBatchGetContactServlet.class, paramMiniAppCmdInterface, "batchGetContact");
     paramMiniAppCmdInterface.putStringArrayListExtra("key_app_ids", paramArrayList);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void batchGetFollowingCount(ArrayList<String> paramArrayList, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), FollowServlet.class, paramMiniAppCmdInterface, "batchGetFollowingCount");
+    paramMiniAppCmdInterface.putStringArrayListExtra("key_appid_list", paramArrayList);
+    paramMiniAppCmdInterface.setObserver(this.cmdObserver);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
@@ -908,12 +924,29 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void getUserAppListV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2, ArrayList<String> paramArrayList3, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void getUserAppListV2(COMM.StCommonExt paramStCommonExt, GetAppListV2Scene paramGetAppListV2Scene, ArrayList<RecommendAppInfo> paramArrayList, ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2, ArrayList<String> paramArrayList3, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGetUserAppListServletV2.class, paramMiniAppCmdInterface, "getDowloadAppList");
     if (paramStCommonExt != null) {
-      paramMiniAppCmdInterface.putExtra("key_ext_info", paramStCommonExt.toByteArray());
+      try
+      {
+        paramMiniAppCmdInterface.putExtra("key_ext_info", paramStCommonExt.toByteArray());
+      }
+      catch (Exception paramStCommonExt)
+      {
+        QLog.e(TAG, 1, "extInfoBytes extInfo error!", paramStCommonExt);
+      }
     }
+    paramStCommonExt = paramGetAppListV2Scene;
+    if (paramGetAppListV2Scene == null) {
+      paramStCommonExt = GetAppListV2Scene.UN_KNOWN;
+    }
+    paramGetAppListV2Scene = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getUserAppListV2] scene=");
+    localStringBuilder.append(paramStCommonExt.name());
+    QLog.i(paramGetAppListV2Scene, 2, localStringBuilder.toString());
+    paramMiniAppCmdInterface.putExtra("scene", paramStCommonExt.ordinal());
     paramMiniAppCmdInterface.putIntegerArrayListExtra("key_module_types", paramArrayList1);
     paramMiniAppCmdInterface.putParcelableArrayListExtra("key_old_recommend_list", paramArrayList);
     paramMiniAppCmdInterface.putExtra("key_use_cache", paramInt);
@@ -1004,6 +1037,21 @@ public class MiniAppCmdUtil
     if (paramArrayList != null) {
       paramMiniAppCmdInterface.putStringArrayListExtra("KEY_TEMPLATE_IDS", paramArrayList);
     }
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void getWeixinSDKAppInfo(String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), GetWeixinSDKAppInfoServlet.class, paramMiniAppCmdInterface, "getWeixinSDKAppInfo");
+    try
+    {
+      paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    }
+    catch (Exception localException)
+    {
+      QLog.e(TAG, 1, "getAppInfoByLink ", localException);
+    }
+    paramMiniAppCmdInterface.putExtra("key_code", paramString);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
@@ -1368,7 +1416,7 @@ public class MiniAppCmdUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil
  * JD-Core Version:    0.7.0.1
  */

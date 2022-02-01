@@ -34,7 +34,7 @@ public class DataLineFaceDownloader
     String str = ImageUtil.b(paramContext, paramString, 0);
     ImageInfo localImageInfo = new ImageInfo();
     ImageUtil.a(4, paramContext, paramString, str, true, localImageInfo, 0);
-    return localImageInfo.b;
+    return localImageInfo.f;
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -84,10 +84,15 @@ public class DataLineFaceDownloader
     }
     return null;
   }
+  
+  public boolean useDiskCache()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DataLineFaceDownloader
  * JD-Core Version:    0.7.0.1
  */

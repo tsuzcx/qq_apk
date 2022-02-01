@@ -13,17 +13,17 @@ class AVGameLaunchWebHelper$2
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if (paramActivity == AVGameLaunchWebHelper.a(this.a))
+    if (paramActivity == AVGameLaunchWebHelper.b(this.a))
     {
-      AVGameLaunchWebHelper.c(this.a);
+      AVGameLaunchWebHelper.d(this.a);
       this.a.a();
     }
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    if (paramActivity == AVGameLaunchWebHelper.a(this.a)) {
-      AVGameLaunchWebHelper.b(this.a);
+    if (paramActivity == AVGameLaunchWebHelper.b(this.a)) {
+      AVGameLaunchWebHelper.c(this.a);
     }
   }
   

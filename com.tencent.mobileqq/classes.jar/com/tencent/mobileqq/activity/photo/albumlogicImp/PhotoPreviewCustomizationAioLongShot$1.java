@@ -14,14 +14,14 @@ class PhotoPreviewCustomizationAioLongShot$1
   
   public void onClick(View paramView)
   {
-    AIOLongShotHelper.a(PhotoPreviewCustomizationAioLongShot.a(this.a), (String)this.a.a.selectedPhotoList.get(0), new PhotoPreviewCustomizationAioLongShot.1.1(this));
+    AIOLongShotHelper.a(PhotoPreviewCustomizationAioLongShot.a(this.a), (String)this.a.f.selectedPhotoList.get(0), new PhotoPreviewCustomizationAioLongShot.1.1(this));
     AIOLongShotHelper.a("0X8009DEE");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAioLongShot.1
  * JD-Core Version:    0.7.0.1
  */

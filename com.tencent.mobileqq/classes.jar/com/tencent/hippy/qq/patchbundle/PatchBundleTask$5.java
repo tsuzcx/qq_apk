@@ -15,7 +15,7 @@ class PatchBundleTask$5
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a())
+    if (3 == paramDownloadTask.e())
     {
       if (this.val$file.exists()) {
         synchronized (PatchBundleTask.access$800(this.this$0))
@@ -39,7 +39,7 @@ class PatchBundleTask$5
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("task.getStatus():");
-      ((StringBuilder)???).append(paramDownloadTask.a());
+      ((StringBuilder)???).append(paramDownloadTask.e());
       ((StringBuilder)???).append(" url:");
       ((StringBuilder)???).append(this.val$url);
       QLog.i("PatchBundleTask", 1, ((StringBuilder)???).toString());
@@ -48,7 +48,7 @@ class PatchBundleTask$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchBundleTask.5
  * JD-Core Version:    0.7.0.1
  */

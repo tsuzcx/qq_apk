@@ -8,19 +8,6 @@ import java.lang.reflect.Field;
 
 public class QRUtils
 {
-  public static long a(byte[] paramArrayOfByte)
-  {
-    int j = paramArrayOfByte.length;
-    long l = 0L;
-    int i = 0;
-    while (i < j)
-    {
-      l += ((paramArrayOfByte[(j - i - 1)] & 0xFF) << i * 8);
-      i += 1;
-    }
-    return l;
-  }
-  
   public static short a(byte[] paramArrayOfByte)
   {
     return (short)(((paramArrayOfByte[0] & 0xFF) << 8) + (paramArrayOfByte[1] & 0xFF));
@@ -71,6 +58,19 @@ public class QRUtils
     return new byte[] { (byte)(int)(paramLong >>> 56), (byte)(int)(paramLong >>> 48), (byte)(int)(paramLong >>> 40), (byte)(int)(paramLong >>> 32), (byte)(int)(paramLong >>> 24), (byte)(int)(paramLong >>> 16), (byte)(int)(paramLong >>> 8), (byte)(int)paramLong };
   }
   
+  public static long b(byte[] paramArrayOfByte)
+  {
+    int j = paramArrayOfByte.length;
+    long l = 0L;
+    int i = 0;
+    while (i < j)
+    {
+      l += ((paramArrayOfByte[(j - i - 1)] & 0xFF) << i * 8);
+      i += 1;
+    }
+    return l;
+  }
+  
   public static boolean b(int paramInt)
   {
     return (paramInt & 0x2) == 2;
@@ -78,7 +78,7 @@ public class QRUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.utils.QRUtils
  * JD-Core Version:    0.7.0.1
  */

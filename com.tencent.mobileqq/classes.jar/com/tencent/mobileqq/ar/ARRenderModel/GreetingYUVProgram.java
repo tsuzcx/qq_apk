@@ -9,55 +9,44 @@ import java.nio.FloatBuffer;
 
 public class GreetingYUVProgram
 {
-  public static float[] a;
-  public static float[] b;
-  static float[] jdField_c_of_type_ArrayOfFloat;
-  static float[] jdField_d_of_type_ArrayOfFloat;
-  public static float[] e;
-  static float[] jdField_f_of_type_ArrayOfFloat;
-  public static float[] g;
-  private static float[] jdField_i_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  private static float[] D = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  public static float[] b = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public static float[] c = { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
+  static float[] d = { -1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F };
+  static float[] e = { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  public static float[] f = { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
+  static float[] g = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  public static float[] h = { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
+  private int A = -1;
+  private int B = -1;
+  private boolean C = false;
   public final int a;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private ByteBuffer jdField_b_of_type_JavaNioByteBuffer;
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int e;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int jdField_h_of_type_Int;
-  private float[] jdField_h_of_type_ArrayOfFloat;
-  private int jdField_i_of_type_Int = -1;
-  private int j = -1;
-  private int k = -1;
-  private int l = -1;
-  private int m = -1;
-  private int n = -1;
-  private int o = -1;
-  private int p = -1;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
+  private int o;
+  private float[] p;
   private int q = -1;
   private int r = -1;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
-    jdField_c_of_type_ArrayOfFloat = new float[] { -1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F };
-    jdField_d_of_type_ArrayOfFloat = new float[] { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    jdField_e_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
-    jdField_f_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    jdField_g_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
-  }
+  private int s = -1;
+  private int t = -1;
+  private int u = -1;
+  private int v = -1;
+  private int w = -1;
+  private int x = -1;
+  private ByteBuffer y;
+  private ByteBuffer z;
   
   public GreetingYUVProgram(int paramInt)
   {
     if (((paramInt < 0) || (paramInt > 4)) && (QLog.isColorLevel())) {
       QLog.i("GreetingYUVProgram", 1, "Index can only be 0 to 4");
     }
-    this.jdField_a_of_type_Int = paramInt;
-    a(this.jdField_a_of_type_Int);
+    this.a = paramInt;
+    a(this.a);
   }
   
   private int a(int paramInt, String paramString)
@@ -118,42 +107,9 @@ public class GreetingYUVProgram
     return i1;
   }
   
-  public void a()
-  {
-    if (this.jdField_b_of_type_Int <= 0) {
-      this.jdField_b_of_type_Int = a("attribute vec4 vPosition;\nattribute vec2 a_texCoord;\nvarying vec2 tc;\nvoid main() {\ngl_Position = vPosition;\ntc = a_texCoord;\n}\n", "precision mediump float;\nuniform sampler2D tex_y;\nuniform sampler2D tex_u;\nuniform sampler2D tex_v;\nvarying vec2 tc;\nvoid main() {\nvec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\nvec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\nvec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\nc += V * vec4(1.596, -0.813, 0, 0);\nc += U * vec4(0, -0.392, 2.017, 0);\nc.a = 1.0;\ngl_FragColor = c;\n}\n");
-    }
-    this.jdField_i_of_type_Int = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "vPosition");
-    a("glGetAttribLocation vPosition");
-    if ((this.jdField_i_of_type_Int == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for vPosition");
-    }
-    this.j = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "a_texCoord");
-    a("glGetAttribLocation a_texCoord");
-    if ((this.j == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for a_texCoord");
-    }
-    this.k = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_y");
-    a("glGetUniformLocation tex_y");
-    if ((this.k == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_y");
-    }
-    this.l = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_u");
-    a("glGetUniformLocation tex_u");
-    if ((this.l == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_u");
-    }
-    this.m = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_v");
-    a("glGetUniformLocation tex_v");
-    if ((this.m == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_v");
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
   public void a(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.a;
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -162,67 +118,67 @@ public class GreetingYUVProgram
         {
           if (paramInt != 4)
           {
-            this.jdField_h_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-            this.jdField_c_of_type_Int = 33984;
-            this.jdField_d_of_type_Int = 33985;
-            this.jdField_e_of_type_Int = 33986;
-            this.jdField_f_of_type_Int = 0;
-            this.jdField_g_of_type_Int = 1;
-            this.jdField_h_of_type_Int = 2;
+            this.p = b;
+            this.j = 33984;
+            this.k = 33985;
+            this.l = 33986;
+            this.m = 0;
+            this.n = 1;
+            this.o = 2;
             return;
           }
-          this.jdField_h_of_type_ArrayOfFloat = jdField_f_of_type_ArrayOfFloat;
-          this.jdField_c_of_type_Int = 33993;
-          this.jdField_d_of_type_Int = 33994;
-          this.jdField_e_of_type_Int = 33995;
-          this.jdField_f_of_type_Int = 9;
-          this.jdField_g_of_type_Int = 10;
-          this.jdField_h_of_type_Int = 11;
+          this.p = g;
+          this.j = 33993;
+          this.k = 33994;
+          this.l = 33995;
+          this.m = 9;
+          this.n = 10;
+          this.o = 11;
           return;
         }
-        this.jdField_h_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
-        this.jdField_c_of_type_Int = 33990;
-        this.jdField_d_of_type_Int = 33991;
-        this.jdField_e_of_type_Int = 33992;
-        this.jdField_f_of_type_Int = 6;
-        this.jdField_g_of_type_Int = 7;
-        this.jdField_h_of_type_Int = 8;
+        this.p = f;
+        this.j = 33990;
+        this.k = 33991;
+        this.l = 33992;
+        this.m = 6;
+        this.n = 7;
+        this.o = 8;
         return;
       }
-      this.jdField_h_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33987;
-      this.jdField_d_of_type_Int = 33988;
-      this.jdField_e_of_type_Int = 33989;
-      this.jdField_f_of_type_Int = 3;
-      this.jdField_g_of_type_Int = 4;
-      this.jdField_h_of_type_Int = 5;
+      this.p = e;
+      this.j = 33987;
+      this.k = 33988;
+      this.l = 33989;
+      this.m = 3;
+      this.n = 4;
+      this.o = 5;
       return;
     }
-    this.jdField_h_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_Int = 33984;
-    this.jdField_d_of_type_Int = 33985;
-    this.jdField_e_of_type_Int = 33986;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 1;
-    this.jdField_h_of_type_Int = 2;
+    this.p = d;
+    this.j = 33984;
+    this.k = 33985;
+    this.l = 33986;
+    this.m = 0;
+    this.n = 1;
+    this.o = 2;
   }
   
   public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
   {
     int i1;
-    if ((paramInt1 == this.q) && (paramInt2 == this.r)) {
+    if ((paramInt1 == this.A) && (paramInt2 == this.B)) {
       i1 = 0;
     } else {
       i1 = 1;
     }
     if (i1 != 0)
     {
-      this.q = paramInt1;
-      this.r = paramInt2;
+      this.A = paramInt1;
+      this.B = paramInt2;
     }
-    if ((this.n < 0) || (i1 != 0))
+    if ((this.v < 0) || (i1 != 0))
     {
-      paramInt1 = this.n;
+      paramInt1 = this.v;
       if (paramInt1 >= 0)
       {
         GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
@@ -231,27 +187,27 @@ public class GreetingYUVProgram
       localObject = new int[1];
       GLES20.glGenTextures(1, (int[])localObject, 0);
       a("glGenTextures");
-      this.n = localObject[0];
+      this.v = localObject[0];
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("buildTextures : w=");
-    ((StringBuilder)localObject).append(this.q);
+    ((StringBuilder)localObject).append(this.A);
     ((StringBuilder)localObject).append(" h=");
-    ((StringBuilder)localObject).append(this.r);
+    ((StringBuilder)localObject).append(this.B);
     ((StringBuilder)localObject).append(" yData=");
     ((StringBuilder)localObject).append(paramBuffer1.capacity());
     QLog.d("AVGAmeRender", 1, ((StringBuilder)localObject).toString());
-    GLES20.glBindTexture(3553, this.n);
+    GLES20.glBindTexture(3553, this.v);
     a("glBindTexture");
-    GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
+    GLES20.glTexImage2D(3553, 0, 6409, this.A, this.B, 0, 6409, 5121, paramBuffer1);
     a("glTexImage2D");
     GLES20.glTexParameterf(3553, 10241, 9728.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     GLES20.glTexParameteri(3553, 10242, 33071);
     GLES20.glTexParameteri(3553, 10243, 33071);
-    if ((this.o < 0) || (i1 != 0))
+    if ((this.w < 0) || (i1 != 0))
     {
-      paramInt1 = this.o;
+      paramInt1 = this.w;
       if (paramInt1 >= 0)
       {
         GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
@@ -260,17 +216,17 @@ public class GreetingYUVProgram
       paramBuffer1 = new int[1];
       GLES20.glGenTextures(1, paramBuffer1, 0);
       a("glGenTextures");
-      this.o = paramBuffer1[0];
+      this.w = paramBuffer1[0];
     }
-    GLES20.glBindTexture(3553, this.o);
-    GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
+    GLES20.glBindTexture(3553, this.w);
+    GLES20.glTexImage2D(3553, 0, 6409, this.A / 2, this.B / 2, 0, 6409, 5121, paramBuffer2);
     GLES20.glTexParameterf(3553, 10241, 9728.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     GLES20.glTexParameteri(3553, 10242, 33071);
     GLES20.glTexParameteri(3553, 10243, 33071);
-    if ((this.p < 0) || (i1 != 0))
+    if ((this.x < 0) || (i1 != 0))
     {
-      paramInt1 = this.p;
+      paramInt1 = this.x;
       if (paramInt1 >= 0)
       {
         GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
@@ -279,10 +235,10 @@ public class GreetingYUVProgram
       paramBuffer1 = new int[1];
       GLES20.glGenTextures(1, paramBuffer1, 0);
       a("glGenTextures");
-      this.p = paramBuffer1[0];
+      this.x = paramBuffer1[0];
     }
-    GLES20.glBindTexture(3553, this.p);
-    GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
+    GLES20.glBindTexture(3553, this.x);
+    GLES20.glTexImage2D(3553, 0, 6409, this.A / 2, this.B / 2, 0, 6409, 5121, paramBuffer3);
     GLES20.glTexParameterf(3553, 10241, 9728.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     GLES20.glTexParameteri(3553, 10242, 33071);
@@ -291,86 +247,119 @@ public class GreetingYUVProgram
   
   public void a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioByteBuffer.asFloatBuffer().put(paramArrayOfFloat);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_JavaNioByteBuffer == null)
+    this.y = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
+    this.y.order(ByteOrder.nativeOrder());
+    this.y.asFloatBuffer().put(paramArrayOfFloat);
+    this.y.position(0);
+    if (this.z == null)
     {
-      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_i_of_type_ArrayOfFloat.length * 4);
-      this.jdField_b_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_i_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioByteBuffer.position(0);
+      this.z = ByteBuffer.allocateDirect(D.length * 4);
+      this.z.order(ByteOrder.nativeOrder());
+      this.z.asFloatBuffer().put(D);
+      this.z.position(0);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.C;
   }
   
   public void b()
   {
-    GLES20.glUseProgram(this.jdField_b_of_type_Int);
-    a("glUseProgram");
-    GLES20.glVertexAttribPointer(this.jdField_i_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer mPositionHandle");
-    GLES20.glEnableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glVertexAttribPointer(this.j, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.j);
-    GLES20.glActiveTexture(this.jdField_c_of_type_Int);
-    GLES20.glBindTexture(3553, this.n);
-    GLES20.glUniform1i(this.k, this.jdField_f_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_d_of_type_Int);
-    GLES20.glBindTexture(3553, this.o);
-    GLES20.glUniform1i(this.l, this.jdField_g_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_e_of_type_Int);
-    GLES20.glBindTexture(3553, this.p);
-    GLES20.glUniform1i(this.m, this.jdField_h_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glFinish();
-    GLES20.glDisableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.j);
-    GLES20.glUseProgram(0);
+    if (this.i <= 0) {
+      this.i = a("attribute vec4 vPosition;\nattribute vec2 a_texCoord;\nvarying vec2 tc;\nvoid main() {\ngl_Position = vPosition;\ntc = a_texCoord;\n}\n", "precision mediump float;\nuniform sampler2D tex_y;\nuniform sampler2D tex_u;\nuniform sampler2D tex_v;\nvarying vec2 tc;\nvoid main() {\nvec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\nvec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\nvec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\nc += V * vec4(1.596, -0.813, 0, 0);\nc += U * vec4(0, -0.392, 2.017, 0);\nc.a = 1.0;\ngl_FragColor = c;\n}\n");
+    }
+    this.q = GLES20.glGetAttribLocation(this.i, "vPosition");
+    a("glGetAttribLocation vPosition");
+    if ((this.q == -1) && (QLog.isColorLevel())) {
+      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for vPosition");
+    }
+    this.r = GLES20.glGetAttribLocation(this.i, "a_texCoord");
+    a("glGetAttribLocation a_texCoord");
+    if ((this.r == -1) && (QLog.isColorLevel())) {
+      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for a_texCoord");
+    }
+    this.s = GLES20.glGetUniformLocation(this.i, "tex_y");
+    a("glGetUniformLocation tex_y");
+    if ((this.s == -1) && (QLog.isColorLevel())) {
+      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_y");
+    }
+    this.t = GLES20.glGetUniformLocation(this.i, "tex_u");
+    a("glGetUniformLocation tex_u");
+    if ((this.t == -1) && (QLog.isColorLevel())) {
+      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_u");
+    }
+    this.u = GLES20.glGetUniformLocation(this.i, "tex_v");
+    a("glGetUniformLocation tex_v");
+    if ((this.u == -1) && (QLog.isColorLevel())) {
+      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_v");
+    }
+    this.C = true;
   }
   
   public void c()
   {
-    int i1 = this.n;
+    GLES20.glUseProgram(this.i);
+    a("glUseProgram");
+    GLES20.glVertexAttribPointer(this.q, 2, 5126, false, 8, this.y);
+    a("glVertexAttribPointer mPositionHandle");
+    GLES20.glEnableVertexAttribArray(this.q);
+    GLES20.glVertexAttribPointer(this.r, 2, 5126, false, 8, this.z);
+    a("glVertexAttribPointer maTextureHandle");
+    GLES20.glEnableVertexAttribArray(this.r);
+    GLES20.glActiveTexture(this.j);
+    GLES20.glBindTexture(3553, this.v);
+    GLES20.glUniform1i(this.s, this.m);
+    GLES20.glActiveTexture(this.k);
+    GLES20.glBindTexture(3553, this.w);
+    GLES20.glUniform1i(this.t, this.n);
+    GLES20.glActiveTexture(this.l);
+    GLES20.glBindTexture(3553, this.x);
+    GLES20.glUniform1i(this.u, this.o);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glFinish();
+    GLES20.glDisableVertexAttribArray(this.q);
+    GLES20.glDisableVertexAttribArray(this.r);
+    GLES20.glUseProgram(0);
+  }
+  
+  public void d()
+  {
+    int i1 = this.v;
     if (i1 != -1)
     {
       GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
-      this.n = -1;
+      this.v = -1;
     }
-    i1 = this.o;
+    i1 = this.w;
     if (i1 != -1)
     {
       GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
-      this.o = -1;
+      this.w = -1;
     }
-    i1 = this.p;
+    i1 = this.x;
     if (i1 != -1)
     {
       GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
-      this.p = -1;
+      this.x = -1;
     }
-    i1 = this.jdField_b_of_type_Int;
+    i1 = this.i;
     if (i1 > 0)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.C = false;
       GLES20.glDeleteProgram(i1);
       a("glDeleteProgram");
-      this.jdField_b_of_type_Int = 0;
+      this.i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.GreetingYUVProgram
  * JD-Core Version:    0.7.0.1
  */

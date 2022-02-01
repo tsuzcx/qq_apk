@@ -9,29 +9,29 @@ class AIORevokeMsgHelper$1
 {
   AIORevokeMsgHelper$1(AIORevokeMsgHelper paramAIORevokeMsgHelper, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1) {
-        AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, "0X800A7F6", this.jdField_a_of_type_Boolean);
+        AIORevokeMsgHelper.a(this.c, "0X800A7F6", this.a);
       }
     }
     else
     {
-      if (AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper) != null)
+      if (AIORevokeMsgHelper.a(this.c) != null)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper;
+        paramView = this.c;
         AIORevokeMsgHelper.a(paramView, AIORevokeMsgHelper.a(paramView));
       }
-      AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      AIORevokeMsgHelper.a(this.c, "0X800A7F5", this.a);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ public class PPCLoginAuth
 {
   protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.mAutomator.a.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.k.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastPPCLoginAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      ((PPCLoginAuthHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.PPC_LOGIN_AUTH)).b();
+      ((PPCLoginAuthHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.PPC_LOGIN_AUTH)).b();
       localSharedPreferences.edit().putLong("lastPPCLoginAuthTime", System.currentTimeMillis()).commit();
     }
     return 7;
@@ -26,7 +26,7 @@ public class PPCLoginAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.PPCLoginAuth
  * JD-Core Version:    0.7.0.1
  */

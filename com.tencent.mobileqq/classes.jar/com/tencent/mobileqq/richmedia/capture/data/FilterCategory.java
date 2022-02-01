@@ -11,14 +11,14 @@ public class FilterCategory
 {
   public static final Parcelable.Creator<FilterCategory> CREATOR = new FilterCategory.1();
   public int a;
-  public String a;
-  public List<FilterCategoryItem> a;
+  public String b;
+  public List<FilterCategoryItem> c;
   
   protected FilterCategory(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createTypedArrayList(FilterCategoryItem.CREATOR);
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.createTypedArrayList(FilterCategoryItem.CREATOR);
   }
   
   public int describeContents()
@@ -28,14 +28,14 @@ public class FilterCategory
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeTypedList(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ class SettingActivity2$3$1
   
   protected void onUploadContact(boolean paramBoolean, int paramInt)
   {
-    if (this.a.this$0.c != null)
+    if (this.a.this$0.e != null)
     {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
+      this.a.this$0.app.unRegistObserver(this.a.this$0.e);
+      this.a.this$0.e = null;
     }
     this.a.this$0.dismissProgressDialog();
     if (paramBoolean)
     {
-      if (this.a.this$0.c != null)
+      if (this.a.this$0.e != null)
       {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
+        this.a.this$0.app.unRegistObserver(this.a.this$0.e);
+        this.a.this$0.e = null;
       }
       this.a.this$0.a();
       this.a.this$0.setResult(-1);
@@ -30,7 +30,7 @@ class SettingActivity2$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.3.1
  * JD-Core Version:    0.7.0.1
  */

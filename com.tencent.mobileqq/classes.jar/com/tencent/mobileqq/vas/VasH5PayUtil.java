@@ -11,8 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VasH5PayUtil
 {
-  private static Long a;
-  public static String a;
+  public static String a = "sendUin";
   public static String b = "openMonth";
   public static String c = "aid";
   public static String d = "offerId";
@@ -21,12 +20,7 @@ public class VasH5PayUtil
   public static String g = "type";
   public static String h = "callbacksn";
   public static String i = "payUrl";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    jdField_a_of_type_JavaLangString = "sendUin";
-  }
+  private static Long j = Long.valueOf(0L);
   
   public static String a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
@@ -125,9 +119,9 @@ public class VasH5PayUtil
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    if (System.currentTimeMillis() - j.longValue() > 1000L)
     {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      j = Long.valueOf(System.currentTimeMillis());
       paramString1 = a(paramString1, paramString2, paramInt1, paramBoolean1, paramBoolean2, false);
       paramActivity = new ActivityURIRequest(paramActivity, "/vas/h5pay");
       paramActivity.setRequestCode(paramInt2);
@@ -138,9 +132,9 @@ public class VasH5PayUtil
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    if (System.currentTimeMillis() - j.longValue() > 1000L)
     {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      j = Long.valueOf(System.currentTimeMillis());
       paramString1 = a(paramString1, paramString2, paramString3);
       paramActivity = new ActivityURIRequest(paramActivity, "/vas/h5pay");
       paramActivity.setRequestCode(paramInt);
@@ -158,13 +152,13 @@ public class VasH5PayUtil
       }
       String str1 = paramBundle.getString(c);
       String str2 = paramBundle.getString(g);
-      int j = paramBundle.getInt(b);
-      String str3 = paramBundle.getString(jdField_a_of_type_JavaLangString);
+      int k = paramBundle.getInt(b);
+      String str3 = paramBundle.getString(a);
       paramBundle.getString(d);
       paramBundle.getString(e);
       paramBundle.getString(f);
       paramBundle.getString(h);
-      a(paramContext, str1, str2, j, str3, paramBundle.getString(i));
+      a(paramContext, str1, str2, k, str3, paramBundle.getString(i));
     }
   }
   
@@ -210,9 +204,9 @@ public class VasH5PayUtil
   
   private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    if (System.currentTimeMillis() - j.longValue() > 1000L)
     {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      j = Long.valueOf(System.currentTimeMillis());
       StringBuilder localStringBuilder = new StringBuilder();
       if (TextUtils.isEmpty(paramString4))
       {
@@ -281,9 +275,9 @@ public class VasH5PayUtil
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    if (System.currentTimeMillis() - j.longValue() > 1000L)
     {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      j = Long.valueOf(System.currentTimeMillis());
       paramString1 = a(paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramBoolean4);
       if (!TextUtils.isEmpty(paramString3))
       {
@@ -390,7 +384,7 @@ public class VasH5PayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasH5PayUtil
  * JD-Core Version:    0.7.0.1
  */

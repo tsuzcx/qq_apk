@@ -22,7 +22,7 @@ public final class b
   
   private String a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     int i = paramString.lastIndexOf('.');
@@ -63,7 +63,7 @@ public final class b
   
   public void a(File paramFile)
   {
-    if ((paramFile != null) && (!StringUtil.a(paramFile.toString())))
+    if ((paramFile != null) && (!StringUtil.isEmpty(paramFile.toString())))
     {
       File localFile = new File(com.tencent.mobileqq.microapp.appbrand.b.b.a().a(""));
       if (!localFile.exists()) {
@@ -85,7 +85,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.b
  * JD-Core Version:    0.7.0.1
  */

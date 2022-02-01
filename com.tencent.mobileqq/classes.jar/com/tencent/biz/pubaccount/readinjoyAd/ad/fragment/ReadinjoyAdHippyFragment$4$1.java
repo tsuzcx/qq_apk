@@ -9,13 +9,13 @@ class ReadinjoyAdHippyFragment$4$1
   
   public void run()
   {
-    ReadinjoyAdHippyFragment.a(this.a.a);
-    ReadinjoyAdHippyFragment.a(this.a.a).b();
+    ReadinjoyAdHippyFragment.b(this.a.a);
+    ReadinjoyAdHippyFragment.a(this.a.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,18 +8,18 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AIOTofuMsgHelper
   implements ILifeCycleHelper
 {
-  private int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TofuManager jdField_a_of_type_ComTencentMobileqqTofumsgTofuManager;
-  private String jdField_a_of_type_JavaLangString;
+  BaseChatPie a;
+  Context b;
+  QQAppInterface c;
+  TofuManager d;
+  private int e;
+  private String f;
   
   public AIOTofuMsgHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.e;
+    this.c = paramBaseChatPie.d;
   }
   
   public String getTag()
@@ -39,7 +39,7 @@ public class AIOTofuMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper
  * JD-Core Version:    0.7.0.1
  */

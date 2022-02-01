@@ -10,10 +10,10 @@ class FakerFeedsAdapter$2
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, this.jdField_a_of_type_Int);
-    this.this$0.notifyItemChanged(this.jdField_a_of_type_Int);
+    this.this$0.a(this.a, this.b);
+    this.this$0.notifyItemChanged(this.b);
     if (FakerFeedsAdapter.a(this.this$0) != null) {
-      QQToast.a(FakerFeedsAdapter.b(this.this$0), 0, 2131695280, 0).a();
+      QQToast.makeText(FakerFeedsAdapter.b(this.this$0), 0, 2131893015, 0).show();
     }
   }
 }

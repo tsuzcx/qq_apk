@@ -8,24 +8,24 @@ class SoLoaderServiceImpl$ReportListener
   implements OnLoadListener
 {
   public long a;
-  public OnLoadListener a;
-  public LoadParam a;
+  public OnLoadListener b;
+  public LoadParam c;
   
   SoLoaderServiceImpl$ReportListener(OnLoadListener paramOnLoadListener, long paramLong, LoadParam paramLoadParam)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener = paramOnLoadListener;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam = paramLoadParam;
+    this.a = paramLong;
+    this.b = paramOnLoadListener;
+    this.c = paramLoadParam;
   }
   
   public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    SoLoaderServiceImpl.access$300(paramInt, paramLoadExtResult, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnLoadListener, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam);
+    SoLoaderServiceImpl.access$200(paramInt, paramLoadExtResult, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoLoaderServiceImpl.ReportListener
  * JD-Core Version:    0.7.0.1
  */

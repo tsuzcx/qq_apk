@@ -7,49 +7,48 @@ import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
 import com.tencent.open.agent.report.ReportCenter;
 import java.util.List;
 
 public class TroopAioMsgNavigateGameParty
-  extends BaseTroopAioMsgNavigateBarDelegate
+  extends BaseAioMsgNavigateBarDelegate
 {
   public TroopAioMsgNavigateGameParty(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
-    this.jdField_a_of_type_Int = 19;
+    this.c = 19;
   }
   
   @Nullable
-  public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public BaseAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong1);
+    paramList = this.d.getMessageFacade().b(this.f.b, this.f.a, paramLong1);
     if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, this.jdField_a_of_type_AndroidContentContext.getString(2131692786), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+      return new BaseAioMsgNavigateBarDelegate.Entity(true, this.e.getString(2131889879), AioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
     return null;
   }
   
   public void a(int paramInt, Object paramObject, String paramString)
   {
-    ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2013", "0", false);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_join_team", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
+    ReportCenter.a().a(this.d.getCurrentAccountUin(), "", "", "2000", "2013", "0", false);
+    ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_join_team", 0, 0, this.f.b, "", "", "");
   }
   
   public void b(int paramInt, Object paramObject, String paramString)
   {
-    ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2014", "0", false);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_join_team", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    ReportCenter.a().a(this.d.getCurrentAccountUin(), "", "", "2000", "2014", "0", false);
+    ReportController.b(this.d, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_join_team", 0, 0, this.f.b, "", "", "");
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateGameParty
  * JD-Core Version:    0.7.0.1
  */

@@ -102,7 +102,7 @@ public class ProfileHeaderBaseComponent
   {
     if (this.mAccountInfoComponent == null)
     {
-      View localView = this.mHeaderView.findViewById(2131374035);
+      View localView = this.mHeaderView.findViewById(2131442129);
       this.mAccountInfoComponent = ProfileUtils.create(1024, this.mComponentCenter, (ProfileCardInfo)this.mData, this.mDelegate);
       this.mAccountInfoComponent.setContainerView(localView);
       this.mAccountInfoComponent.attachToComponentCenter();
@@ -114,7 +114,7 @@ public class ProfileHeaderBaseComponent
   {
     if (this.mAccountLevelComponent == null)
     {
-      View localView = this.mHeaderView.findViewById(2131374037);
+      View localView = this.mHeaderView.findViewById(2131442131);
       this.mAccountLevelComponent = ((ProfileAccountLevelHeaderComponent)ProfileUtils.create(1022, this.mComponentCenter, (ProfileCardInfo)this.mData, this.mDelegate));
       this.mAccountLevelComponent.setContainerView(localView);
       this.mAccountLevelComponent.attachToComponentCenter();
@@ -145,10 +145,10 @@ public class ProfileHeaderBaseComponent
     localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
     localIntent.putExtra("default_card_id", i);
     if (TextUtils.isEmpty(this.mHeaderView.mCoverUrl)) {
-      localIntent.putExtra("extra_default", 2130845923);
+      localIntent.putExtra("extra_default", 2130847393);
     }
     this.mActivity.startActivity(localIntent);
-    this.mActivity.overridePendingTransition(2130772351, 0);
+    this.mActivity.overridePendingTransition(2130772443, 0);
   }
   
   private void reportProfileCoverActionSheetItemClick(int paramInt)
@@ -158,18 +158,18 @@ public class ProfileHeaderBaseComponent
   
   private void showProfileCoverActionSheet()
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mActivity, null);
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(this.mHeaderView.mCoverUrl)) {
-      localArrayList.add(new ProfileHeaderBaseComponent.2(this, 2131693285));
+      localArrayList.add(new ProfileHeaderBaseComponent.2(this, 2131890833));
     }
-    localArrayList.add(new ProfileHeaderBaseComponent.3(this, 2131693283));
-    localArrayList.add(new ProfileHeaderBaseComponent.4(this, 2131693281));
+    localArrayList.add(new ProfileHeaderBaseComponent.3(this, 2131890831));
+    localArrayList.add(new ProfileHeaderBaseComponent.4(this, 2131890829));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext()) {
       localActionSheet.addButton(((ProfileHeaderBaseComponent.ActionSheetItem)localIterator.next()).buttonStrId);
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ProfileHeaderBaseComponent.5(this, localArrayList, localActionSheet));
     try
     {
@@ -290,7 +290,7 @@ public class ProfileHeaderBaseComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.ProfileHeaderBaseComponent
  * JD-Core Version:    0.7.0.1
  */

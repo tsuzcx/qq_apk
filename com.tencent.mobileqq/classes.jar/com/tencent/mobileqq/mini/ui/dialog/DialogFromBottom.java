@@ -24,7 +24,7 @@ public class DialogFromBottom
   
   public DialogFromBottom(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755060);
+    super(paramContext, 2131951678);
   }
   
   public DialogFromBottom(@NonNull Context paramContext, int paramInt)
@@ -120,7 +120,7 @@ public class DialogFromBottom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom
  * JD-Core Version:    0.7.0.1
  */

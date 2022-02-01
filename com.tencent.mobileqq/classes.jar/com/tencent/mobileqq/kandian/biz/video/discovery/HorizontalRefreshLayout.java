@@ -14,18 +14,18 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class HorizontalRefreshLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private HorizontalRefreshLayout.OnDraggingListener jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener;
-  private HorizontalRefreshLayout.RefreshHeader jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$RefreshHeader;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private int c;
-  private int d;
+  private HorizontalRefreshLayout.RefreshHeader a;
+  private View b;
+  private View c;
+  private HorizontalRefreshLayout.OnDraggingListener d;
   private int e;
-  private int f = DisplayUtil.a(getContext(), 25.0F);
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private float j = 0.0F;
+  private float k;
+  private int l = DisplayUtil.a(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -42,69 +42,69 @@ public class HorizontalRefreshLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      int i = 0;
-      while (i < getChildCount())
+      int m = 0;
+      while (m < getChildCount())
       {
-        View localView = getChildAt(i);
-        if (!localView.equals(this.jdField_b_of_type_AndroidViewView))
+        View localView = getChildAt(m);
+        if (!localView.equals(this.c))
         {
-          this.jdField_a_of_type_AndroidViewView = localView;
+          this.b = localView;
           return;
         }
-        i += 1;
+        m += 1;
       }
     }
   }
   
-  private void a(View paramView)
+  private void c()
   {
-    if (paramView != null)
+    View localView = this.b;
+    if ((localView != null) && (this.c != null))
     {
-      this.jdField_b_of_type_AndroidViewView = paramView;
-      ((FrameLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).gravity = 8388613;
-      addView(this.jdField_b_of_type_AndroidViewView, 0);
+      localView.animate().translationX(0.0F).setDuration(500L).setListener(new HorizontalRefreshLayout.1(this)).start();
+      this.c.animate().translationX(this.e).setDuration(500L).start();
     }
   }
   
-  private void b()
+  private void setRightHeadView(View paramView)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView != null) && (this.jdField_b_of_type_AndroidViewView != null))
+    if (paramView != null)
     {
-      localView.animate().translationX(0.0F).setDuration(500L).setListener(new HorizontalRefreshLayout.1(this)).start();
-      this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
+      this.c = paramView;
+      ((FrameLayout.LayoutParams)this.c.getLayoutParams()).gravity = 8388613;
+      addView(this.c, 0);
     }
   }
   
   public boolean a()
   {
-    return ViewCompat.canScrollHorizontally(this.jdField_a_of_type_AndroidViewView, 1);
+    return ViewCompat.canScrollHorizontally(this.b, 1);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramMotionEvent.getAction();
-    if (k != 0)
+    int m = (int)paramMotionEvent.getX();
+    int n = (int)paramMotionEvent.getY();
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (k != 2)
+      if (i1 != 2)
       {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
       else
       {
-        k = i - this.c;
-        int m = this.d;
-        this.c = i;
-        this.e = i;
-        if (Math.abs(k) >= Math.abs(j - m))
+        i1 = m - this.g;
+        int i2 = this.h;
+        this.g = m;
+        this.i = m;
+        if (Math.abs(i1) >= Math.abs(n - i2))
         {
-          if ((this.jdField_b_of_type_AndroidViewView != null) && (k < 0) && (!a()))
+          if ((this.c != null) && (i1 < 0) && (!a()))
           {
             getParent().requestDisallowInterceptTouchEvent(true);
             return true;
@@ -119,10 +119,10 @@ public class HorizontalRefreshLayout
     }
     else
     {
-      this.c = i;
-      this.e = i;
-      this.d = j;
-      if (i > this.f) {
+      this.g = m;
+      this.i = m;
+      this.h = n;
+      if (m > this.l) {
         getParent().requestDisallowInterceptTouchEvent(true);
       } else {
         getParent().requestDisallowInterceptTouchEvent(false);
@@ -136,16 +136,16 @@ public class HorizontalRefreshLayout
     if (getChildCount() == 0) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      a();
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      b();
+      if (this.b == null) {
         return;
       }
     }
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView != null) {
-      localView.setTranslationX(this.jdField_a_of_type_Int);
+      localView.setTranslationX(this.e);
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -153,66 +153,66 @@ public class HorizontalRefreshLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView != null)
     {
-      this.jdField_a_of_type_Int = localView.getMeasuredWidth();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.e = localView.getMeasuredWidth();
+      this.f = this.e;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = paramMotionEvent.getAction();
-    if (j != 0)
+    int m = (int)paramMotionEvent.getX();
+    int n = paramMotionEvent.getAction();
+    if (n != 0)
     {
-      if (j != 1) {
-        if (j != 2)
+      if (n != 1) {
+        if (n != 2)
         {
-          if (j != 3) {
+          if (n != 3) {
             break label259;
           }
         }
         else
         {
-          j = this.e;
-          this.e = i;
-          float f1 = i - j;
-          float f2 = Math.abs(this.jdField_a_of_type_Float / this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_Float += f1 * (1.0F - f2);
-          f1 = this.jdField_a_of_type_Float;
+          n = this.i;
+          this.i = m;
+          float f1 = m - n;
+          float f2 = Math.abs(this.j / this.f);
+          this.j += f1 * (1.0F - f2);
+          f1 = this.j;
           if (f1 >= 0.0F)
           {
-            this.jdField_a_of_type_Float = 0.0F;
-            this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+            this.j = 0.0F;
+            this.b.setTranslationX(0.0F);
             return false;
           }
-          i = this.jdField_b_of_type_Int;
-          if (f1 <= -i)
+          m = this.f;
+          if (f1 <= -m)
           {
-            this.jdField_a_of_type_Float = (-i);
-            this.jdField_a_of_type_AndroidViewView.setTranslationX(this.jdField_a_of_type_Float);
-            this.jdField_b_of_type_AndroidViewView.setTranslationX(this.jdField_a_of_type_Int + this.jdField_a_of_type_Float);
+            this.j = (-m);
+            this.b.setTranslationX(this.j);
+            this.c.setTranslationX(this.e + this.j);
             return false;
           }
-          this.jdField_a_of_type_AndroidViewView.setTranslationX(f1);
-          this.jdField_b_of_type_AndroidViewView.setTranslationX(this.jdField_a_of_type_Int + this.jdField_a_of_type_Float);
-          this.jdField_b_of_type_Float = Math.abs(this.jdField_a_of_type_Float / this.jdField_a_of_type_Int);
+          this.b.setTranslationX(f1);
+          this.c.setTranslationX(this.e + this.j);
+          this.k = Math.abs(this.j / this.e);
           return false;
         }
       }
-      this.c = 0;
-      this.e = 0;
-      HorizontalRefreshLayout.OnDraggingListener localOnDraggingListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener;
+      this.g = 0;
+      this.i = 0;
+      HorizontalRefreshLayout.OnDraggingListener localOnDraggingListener = this.d;
       if (localOnDraggingListener != null) {
-        localOnDraggingListener.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+        localOnDraggingListener.a(this.k, this.c, this);
       }
-      b();
+      c();
     }
     else
     {
-      this.e = i;
+      this.i = m;
     }
     label259:
     return super.onTouchEvent(paramMotionEvent);
@@ -220,18 +220,18 @@ public class HorizontalRefreshLayout
   
   public void setOnDraggingListener(HorizontalRefreshLayout.OnDraggingListener paramOnDraggingListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$OnDraggingListener = paramOnDraggingListener;
+    this.d = paramOnDraggingListener;
   }
   
   public void setRefreshHeader(HorizontalRefreshLayout.RefreshHeader paramRefreshHeader)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$RefreshHeader = paramRefreshHeader;
-    a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryHorizontalRefreshLayout$RefreshHeader.a(this));
+    this.a = paramRefreshHeader;
+    setRightHeadView(this.a.a(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.HorizontalRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

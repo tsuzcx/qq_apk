@@ -18,38 +18,38 @@ class AppInterface$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = "";
-    if (paramInt == 2131691631)
+    if (paramInt == 2131888593)
     {
       StaticAnalyz.a("200", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-      paramDialogInterface = CommonDataAdapter.a().a().getSharedPreferences("package_scan", 0).edit();
+      paramDialogInterface = CommonDataAdapter.a().b().getSharedPreferences("package_scan", 0).edit();
       paramDialogInterface.putBoolean("qqsetting_package_scan_flag", false);
       paramDialogInterface.commit();
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
+      if ((this.b.tipDialog != null) && (this.b.tipDialog.isShowing())) {
+        this.b.tipDialog.dismiss();
       }
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(this.a);
       paramDialogInterface.append("','r':'0','data':'0'});}void(0);");
       paramDialogInterface = paramDialogInterface.toString();
     }
-    else if (paramInt == 2131691630)
+    else if (paramInt == 2131888592)
     {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
+      if ((this.b.tipDialog != null) && (this.b.tipDialog.isShowing())) {
+        this.b.tipDialog.dismiss();
       }
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append(this.a);
       paramDialogInterface.append("','r':'0','data':'1'});}void(0);");
       paramDialogInterface = paramDialogInterface.toString();
     }
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.mHandler.post(new AppInterface.1.1(this, paramDialogInterface));
+    this.b.mHandler.post(new AppInterface.1.1(this, paramDialogInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface.1
  * JD-Core Version:    0.7.0.1
  */

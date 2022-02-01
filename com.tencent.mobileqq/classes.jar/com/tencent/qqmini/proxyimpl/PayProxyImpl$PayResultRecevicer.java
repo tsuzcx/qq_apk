@@ -14,17 +14,17 @@ import org.json.JSONObject;
 class PayProxyImpl$PayResultRecevicer
   extends ResultReceiver
 {
-  PayProxy.IPayResultCallBack a;
+  PayProxy.IPayResultCallBack b;
   
   public PayProxyImpl$PayResultRecevicer(PayProxyImpl paramPayProxyImpl, Handler paramHandler, PayProxy.IPayResultCallBack paramIPayResultCallBack)
   {
     super(paramHandler);
-    this.a = paramIPayResultCallBack;
+    this.b = paramIPayResultCallBack;
   }
   
   private void a(int paramInt, Bundle paramBundle, String paramString)
   {
-    paramString = new PayProxy.PayResponse(this.b);
+    paramString = new PayProxy.PayResponse(this.c);
     Object localObject1 = paramBundle.getString("result");
     paramBundle = paramBundle.getString("callbackSn");
     if (!TextUtils.isEmpty(paramBundle)) {
@@ -35,7 +35,7 @@ class PayProxyImpl$PayResultRecevicer
         }
         catch (JSONException localJSONException)
         {
-          QLog.e(PayProxyImpl.a(this.b), 1, localJSONException, new Object[0]);
+          QLog.e(PayProxyImpl.a(this.c), 1, localJSONException, new Object[0]);
           break label110;
         }
       } else {
@@ -45,13 +45,13 @@ class PayProxyImpl$PayResultRecevicer
         }
         catch (NumberFormatException localNumberFormatException)
         {
-          QLog.e(PayProxyImpl.a(this.b), 1, localNumberFormatException, new Object[0]);
+          QLog.e(PayProxyImpl.a(this.c), 1, localNumberFormatException, new Object[0]);
         }
       }
     }
     label110:
     int i = -1;
-    Object localObject2 = PayProxyImpl.a(this.b);
+    Object localObject2 = PayProxyImpl.a(this.c);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("onReceiveResult seq = ");
     ((StringBuilder)localObject3).append(i);
@@ -67,7 +67,7 @@ class PayProxyImpl$PayResultRecevicer
       int j = ((JSONObject)localObject1).optInt("resultCode", -1);
       localObject3 = ((JSONObject)localObject1).optString("resultMsg", "");
       JSONObject localJSONObject = ((JSONObject)localObject1).optJSONObject("data");
-      String str = PayProxyImpl.a(this.b);
+      String str = PayProxyImpl.a(this.c);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceiveResult seq = ");
       localStringBuilder.append(i);
@@ -105,11 +105,11 @@ class PayProxyImpl$PayResultRecevicer
     }
     catch (Throwable paramBundle)
     {
-      QLog.e(PayProxyImpl.a(this.b), 1, paramBundle, new Object[0]);
+      QLog.e(PayProxyImpl.a(this.c), 1, paramBundle, new Object[0]);
       paramString.setResultCode(-1);
       paramString.setPayState(2);
     }
-    paramBundle = this.a;
+    paramBundle = this.b;
     if (paramBundle != null) {
       paramBundle.onPayCallBack(paramString);
     }
@@ -117,7 +117,7 @@ class PayProxyImpl$PayResultRecevicer
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    String str = PayProxyImpl.a(this.b);
+    String str = PayProxyImpl.a(this.c);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onReceiveResult resultCode = ");
     localStringBuilder.append(paramInt);
@@ -147,7 +147,7 @@ class PayProxyImpl$PayResultRecevicer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl.PayResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

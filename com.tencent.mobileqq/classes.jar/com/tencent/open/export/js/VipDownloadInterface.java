@@ -34,21 +34,20 @@ public class VipDownloadInterface
   extends BaseInterface
   implements JavaScriptInterface, IJsCallBack
 {
-  protected final Activity a;
-  protected Handler a;
-  protected UpdateManager.OnCheckUpdateListener a;
-  protected final WebView a;
-  protected final String a;
+  protected final String a = VipDownloadInterface.class.getSimpleName();
   protected String b = "";
+  protected Handler c;
+  protected final WebView d;
+  protected final Activity e;
+  protected UpdateManager.OnCheckUpdateListener f;
   
   public VipDownloadInterface(Activity paramActivity, WebView paramWebView)
   {
-    this.jdField_a_of_type_JavaLangString = VipDownloadInterface.class.getSimpleName();
-    LogUtility.c(this.jdField_a_of_type_JavaLangString, "init in");
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    paramWebView = this.jdField_a_of_type_AndroidAppActivity;
+    LogUtility.c(this.a, "init in");
+    this.d = paramWebView;
+    this.e = paramActivity;
+    this.c = new Handler(Looper.getMainLooper());
+    paramWebView = this.e;
     boolean bool = paramWebView instanceof PublicFragmentActivityForTool;
     paramActivity = null;
     if (bool) {
@@ -56,14 +55,14 @@ public class VipDownloadInterface
     } else if ((paramWebView instanceof BaseActivity)) {
       paramActivity = (AppInterface)((BaseActivity)paramWebView).getAppRuntime();
     }
-    DownloadManager.a().a(paramActivity);
-    DownloadManager.a();
-    LogUtility.c(this.jdField_a_of_type_JavaLangString, "init out");
+    DownloadManager.b().a(paramActivity);
+    DownloadManager.b();
+    LogUtility.c(this.a, "init out");
   }
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VipDownloadInterface.3(this, paramString));
+    this.c.post(new VipDownloadInterface.3(this, paramString));
   }
   
   public boolean cancelDownload(String paramString1, String paramString2)
@@ -80,7 +79,7 @@ public class VipDownloadInterface
     if (!hasRight()) {
       return;
     }
-    DownloadManager.a().a(paramString);
+    DownloadManager.b().a(paramString);
   }
   
   public void checkUpdate(String paramString)
@@ -90,7 +89,7 @@ public class VipDownloadInterface
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("enter checkUpdate json=");
     localStringBuilder.append(paramString1);
@@ -116,32 +115,32 @@ public class VipDownloadInterface
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener == null)
+      if (this.f == null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener = new VipDownloadInterface.JsCheckUpdateCallback(this, paramString1);
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener);
+        this.f = new VipDownloadInterface.JsCheckUpdateCallback(this, paramString1);
+        UpdateManager.b().a(this.f);
       }
-      UpdateManager.a().a(paramString2);
+      UpdateManager.b().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
     {
-      LogUtility.c(this.jdField_a_of_type_JavaLangString, "httpRequest JSONException", paramString1);
+      LogUtility.c(this.a, "httpRequest JSONException", paramString1);
     }
   }
   
   public void destroy()
   {
-    LogUtility.c(this.jdField_a_of_type_JavaLangString, "destroy");
+    LogUtility.c(this.a, "destroy");
     JsCallbackManager.a().b(this);
     if (UpdateManager.a()) {
-      UpdateManager.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener);
+      UpdateManager.b().b(this.f);
     }
   }
   
   public void doDownloadAction(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("enter doDownloadAction json=");
     ((StringBuilder)localObject2).append(paramString);
@@ -158,7 +157,7 @@ public class VipDownloadInterface
       if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals("0"))) {
         localObject1 = "";
       }
-      Object localObject3 = this.jdField_a_of_type_JavaLangString;
+      Object localObject3 = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("finalChannel :");
       localStringBuilder.append((String)localObject1);
@@ -176,23 +175,23 @@ public class VipDownloadInterface
           localObject1 = ((JSONObject)localObject2).optString("sourceType");
           paramString = (String)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramString = DownloadInterface.getSourceInfoFromActivity(this.jdField_a_of_type_AndroidAppActivity);
+            paramString = DownloadInterface.getSourceInfoFromActivity(this.e);
           }
           localObject1 = paramString;
           if (!"biz_src_news".equals(paramString)) {
             localObject1 = "biz_src_jc_vip";
           }
-          paramString = this.jdField_a_of_type_JavaLangString;
+          paramString = this.a;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("doDownloadAction object ");
           ((StringBuilder)localObject3).append(((JSONObject)localObject2).toString());
           LogUtility.a(paramString, ((StringBuilder)localObject3).toString());
-          DownloadApi.a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, null, 0);
+          DownloadApi.a(this.e, localBundle, (String)localObject1, null, 0);
           return;
         }
         catch (NumberFormatException paramString)
         {
-          LogUtility.c(this.jdField_a_of_type_JavaLangString, "Exception", paramString);
+          LogUtility.c(this.a, "Exception", paramString);
           return;
         }
       }
@@ -202,7 +201,7 @@ public class VipDownloadInterface
         {
           localObject3 = new JSONObject(paramString);
           paramString = DownloadConstants.b;
-          label747:
+          label750:
           try
           {
             localBundle.putString(paramString, ((JSONObject)localObject3).optString("appid"));
@@ -218,13 +217,13 @@ public class VipDownloadInterface
             ((JSONObject)localObject3).optString("appid");
             ((JSONObject)localObject3).optInt("actionCode");
             if (((JSONObject)localObject3).optInt("actionCode") != 12) {
-              break label1011;
+              break label1014;
             }
             boolean bool = DownloadInterface.changeIntToBoolean(((JSONObject)localObject3).optInt("updateType"));
             localBundle.putBoolean(DownloadConstants.o, bool);
             bool = ((JSONObject)localObject3).has("updateData");
             if (!bool) {
-              break label1011;
+              break label1014;
             }
           }
           catch (NumberFormatException paramString) {}
@@ -233,26 +232,26 @@ public class VipDownloadInterface
       }
       catch (JSONException paramString)
       {
-        LogUtility.c(this.jdField_a_of_type_JavaLangString, "JSONException", paramString);
+        LogUtility.c(this.a, "JSONException", paramString);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      LogUtility.c(this.jdField_a_of_type_JavaLangString, "JSONException", paramString);
+      LogUtility.c(this.a, "JSONException", paramString);
       return;
     }
     try
     {
       localObject1 = ((JSONObject)localObject3).optString("updateData");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label1011;
+        break label1014;
       }
       paramString = new ApkUpdateDetail();
     }
     catch (Exception paramString)
     {
-      break label750;
+      break label753;
     }
     try
     {
@@ -269,13 +268,13 @@ public class VipDownloadInterface
     }
     catch (Exception localException)
     {
-      break label747;
+      break label750;
     }
-    break label752;
-    label750:
+    break label755;
+    label753:
     paramString = null;
-    label752:
-    LogUtility.c(this.jdField_a_of_type_JavaLangString, "enter doDownloadAction updateData json");
+    label755:
+    LogUtility.c(this.a, "enter doDownloadAction updateData json");
     for (;;)
     {
       localBundle.putString(DownloadConstants.c, ((JSONObject)localObject3).optString("myAppId"));
@@ -287,18 +286,18 @@ public class VipDownloadInterface
       localObject2 = ((JSONObject)localObject3).optString("sourceType");
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = DownloadInterface.getSourceInfoFromActivity(this.jdField_a_of_type_AndroidAppActivity);
+        localObject1 = DownloadInterface.getSourceInfoFromActivity(this.e);
       }
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("doDownloadAction object ");
       localStringBuilder.append(((JSONObject)localObject3).toString());
       LogUtility.c((String)localObject2, localStringBuilder.toString());
-      DownloadApi.a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
+      DownloadApi.a(this.e, localBundle, (String)localObject1, paramString, i);
       return;
-      LogUtility.c(this.jdField_a_of_type_JavaLangString, "Exception", paramString);
+      LogUtility.c(this.a, "Exception", paramString);
       return;
-      label1011:
+      label1014:
       paramString = null;
     }
   }
@@ -323,7 +322,7 @@ public class VipDownloadInterface
   
   public void getQueryDownloadAction(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("enter getQueryDownloadAction = ");
     ((StringBuilder)localObject2).append(paramString);
@@ -341,10 +340,10 @@ public class VipDownloadInterface
         JSONObject localJSONObject = paramString.getJSONObject(i);
         DownloadInfo localDownloadInfo = new DownloadInfo();
         localDownloadInfo.c = localJSONObject.optString("appid");
-        localDownloadInfo.j = localJSONObject.optString("myAppId");
-        localDownloadInfo.k = localJSONObject.optString("apkId");
+        localDownloadInfo.l = localJSONObject.optString("myAppId");
+        localDownloadInfo.m = localJSONObject.optString("apkId");
         localDownloadInfo.e = localJSONObject.optString("packageName");
-        localDownloadInfo.b = localJSONObject.optInt("versionCode");
+        localDownloadInfo.n = localJSONObject.optInt("versionCode");
         ((List)localObject2).add(localDownloadInfo);
         i += 1;
       }
@@ -353,13 +352,13 @@ public class VipDownloadInterface
     }
     catch (JSONException paramString)
     {
-      LogUtility.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString);
+      LogUtility.c(this.a, "getQueryDownloadAction>>>", paramString);
     }
   }
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    paramString2 = this.jdField_a_of_type_JavaLangString;
+    paramString2 = this.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("enter getQueryDownloadAction = ");
     ((StringBuilder)localObject).append(paramString1);
@@ -385,13 +384,13 @@ public class VipDownloadInterface
     }
     catch (JSONException paramString1)
     {
-      LogUtility.c(this.jdField_a_of_type_JavaLangString, "getQueryDownloadAction>>>", paramString1);
+      LogUtility.c(this.a, "getQueryDownloadAction>>>", paramString1);
     }
   }
   
   public WebView getWebview()
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    return this.d;
   }
   
   public void registerDownloadCallBackListener(String paramString)
@@ -402,7 +401,7 @@ public class VipDownloadInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.export.js.VipDownloadInterface
  * JD-Core Version:    0.7.0.1
  */

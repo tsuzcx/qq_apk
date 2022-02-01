@@ -46,7 +46,7 @@ class TroopSettingActivity$55
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = ((ITroopInfoService)localObject1).getTroopInfo(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+        localObject2 = ((ITroopInfoService)localObject1).getTroopInfo(this.a.i.troopUin);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -61,8 +61,8 @@ class TroopSettingActivity$55
       }
       long l1 = 0L;
       label111:
-      String str2 = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin;
-      long l3 = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwGroupClassExt;
+      String str2 = this.a.i.troopUin;
+      long l3 = this.a.t.dwGroupClassExt;
       if (paramView.getTag(-1) == null)
       {
         localObject2 = new StringBuilder();
@@ -81,24 +81,24 @@ class TroopSettingActivity$55
       ReportController.b(null, "dc00898", "", str2, "0X800AFC4", "0X800AFC4", 0, 0, String.valueOf(l3), String.valueOf(l2), (String)localObject2, "");
       if (l2 == 0L)
       {
-        ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).launcherTroopShortcutFragment(this.a.getActivity(), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-        ReportController.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, "0X800AFC6", "0X800AFC6", 0, 0, String.valueOf(l1), "", "", "");
-        ((ITroopAppService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopAppService.class, "all")).setProfileAppListChangedFromWebOperate(true, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+        ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).launcherTroopShortcutFragment(this.a.getActivity(), this.a.i.troopUin);
+        ReportController.b(null, "dc00898", "", this.a.i.troopUin, "0X800AFC6", "0X800AFC6", 0, 0, String.valueOf(l1), "", "", "");
+        ((ITroopAppService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopAppService.class, "all")).setProfileAppListChangedFromWebOperate(true, this.a.i.troopUin);
       }
       if ((!TextUtils.isEmpty(str1)) && (!TroopSettingActivity.a(this.a, l2, (TroopInfo)localObject1)))
       {
         if (l2 == 1101236949L) {
-          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).handleAppClick1101236949(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData, this.a);
+          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).handleAppClick1101236949(this.a.i, this.a);
         }
         if (l2 == 101914115L) {
-          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).reportClockTroopAppShowOrClick(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, false);
+          ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).reportClockTroopAppShowOrClick(this.a.t, false);
         }
         int i = localAppInfo.push_red_point.get();
         if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(str1))
         {
-          localObject1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData, TroopSettingActivity.a(this.a), true);
-          ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.a, (String)localObject1, 2010, ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).createEntryModel(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin), null);
-          ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).reportQunMiniApp(localAppInfo, "click", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+          localObject1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.i, TroopSettingActivity.a(this.a), true);
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.a, (String)localObject1, 2010, ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).createEntryModel(this.a.t, this.a.i.troopUin), null);
+          ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).reportQunMiniApp(localAppInfo, "click", this.a.i.troopUin);
         }
         for (;;)
         {
@@ -107,7 +107,7 @@ class TroopSettingActivity$55
           {
             if (str1.startsWith("mqqapi"))
             {
-              localObject1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData, TroopSettingActivity.a(this.a), true);
+              localObject1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.i, TroopSettingActivity.a(this.a), true);
               if (l2 == 1105981808L)
               {
                 localObject1 = ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).configTroopStoryProfileFromAIO(this.a.getIntent(), (String)localObject1, null);
@@ -121,7 +121,7 @@ class TroopSettingActivity$55
           else
           {
             localObject1 = new Intent();
-            ((Intent)localObject1).putExtra("url", ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData, TroopSettingActivity.a(this.a), true));
+            ((Intent)localObject1).putExtra("url", ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).replaceSpecialTag(str1, l2, i, this.a.i, TroopSettingActivity.a(this.a), true));
             ((Intent)localObject1).putExtra("webStyle", "noBottomBar");
             ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
             TroopSettingActivity.a((Intent)localObject1, l2);
@@ -134,10 +134,10 @@ class TroopSettingActivity$55
         if (i != 0)
         {
           localAppInfo.push_red_point.set(0);
-          ((TextView)paramView.findViewById(2131362859)).setVisibility(8);
-          ((ITroopRedDotHandler)TroopSettingActivity.a(this.a).getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRedDotHandlerName())).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, (int)l2);
+          ((TextView)paramView.findViewById(2131428642)).setVisibility(8);
+          ((ITroopRedDotHandler)TroopSettingActivity.a(this.a).getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopRedDotHandlerName())).a(this.a.i.troopUin, (int)l2);
         }
-        TroopReportor.a("Grp_app_new", "grpData_admin", "app_clk", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData), String.valueOf(l2) });
+        TroopReportor.a("Grp_app_new", "grpData_admin", "app_clk", 0, 0, new String[] { this.a.i.troopUin, TroopReportor.a(this.a.i), String.valueOf(l2) });
         if (l2 == 0L) {
           localObject1 = "app_clk";
         }
@@ -155,9 +155,9 @@ class TroopSettingActivity$55
           }
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          TroopReportor.a("Grp_app_new", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData) });
+          TroopReportor.a("Grp_app_new", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.a.i.troopUin, TroopReportor.a(this.a.i) });
         }
-        ((IStudyRoomReporter)QRoute.api(IStudyRoomReporter.class)).reportForTroopEntry(l2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+        ((IStudyRoomReporter)QRoute.api(IStudyRoomReporter.class)).reportForTroopEntry(l2, this.a.i.troopUin);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -165,7 +165,7 @@ class TroopSettingActivity$55
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.55
  * JD-Core Version:    0.7.0.1
  */

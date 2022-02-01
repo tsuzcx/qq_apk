@@ -10,15 +10,15 @@ class TroopMemberApiService$4
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
-    TroopMemberApiService localTroopMemberApiService = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-    int i = jdField_a_of_type_Int;
+    TroopMemberApiService localTroopMemberApiService = this.a;
+    int i = b;
     String str = getClass().getSuperclass().getName();
     TroopMemberApiService.a(localTroopMemberApiService, i, paramBoolean, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramTroopInfo }, str, "com.tencent.mobileqq:troopmanage");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.4
  * JD-Core Version:    0.7.0.1
  */

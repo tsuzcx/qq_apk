@@ -21,11 +21,11 @@ class HotChatAnnounceActivity$2
       i = 0;
     }
     if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131167138));
+      this.a.e.setTextColor(this.a.getResources().getColor(2131168118));
     } else {
-      this.a.a.setTextColor(-65536);
+      this.a.e.setTextColor(-65536);
     }
-    paramEditable = this.a.a;
+    paramEditable = this.a.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(40 - i);
@@ -38,7 +38,7 @@ class HotChatAnnounceActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HotChatAnnounceActivity.2
  * JD-Core Version:    0.7.0.1
  */

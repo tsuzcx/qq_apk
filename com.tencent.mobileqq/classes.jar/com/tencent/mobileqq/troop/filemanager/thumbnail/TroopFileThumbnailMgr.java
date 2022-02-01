@@ -15,31 +15,21 @@ import java.util.UUID;
 
 public class TroopFileThumbnailMgr
 {
-  private static TroopFileThumbnailMgr jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr;
-  private TroopFileThumbnailFetchMgr jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchMgr = new TroopFileThumbnailFetchMgr();
-  private TroopFileThumbnailGenMgr jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr = new TroopFileThumbnailGenMgr();
+  private static TroopFileThumbnailMgr a;
+  private TroopFileThumbnailGenMgr b = new TroopFileThumbnailGenMgr();
+  private TroopFileThumbnailFetchMgr c = new TroopFileThumbnailFetchMgr();
   
   public static TroopFileThumbnailMgr a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr == null) {
-        jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr = new TroopFileThumbnailMgr();
+      if (a == null) {
+        a = new TroopFileThumbnailMgr();
       }
-      TroopFileThumbnailMgr localTroopFileThumbnailMgr = jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr;
+      TroopFileThumbnailMgr localTroopFileThumbnailMgr = a;
       return localTroopFileThumbnailMgr;
     }
     finally {}
-  }
-  
-  public static final String a()
-  {
-    String str = AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH;
-    VFSFile localVFSFile = new VFSFile(str);
-    if (!localVFSFile.exists()) {
-      localVFSFile.mkdirs();
-    }
-    return str;
   }
   
   public static final void a(TroopFileTransferManager.Item paramItem, int paramInt)
@@ -72,26 +62,12 @@ public class TroopFileThumbnailMgr
     localStringBuilder.append("_");
     localStringBuilder.append(paramInt);
     paramItem = localStringBuilder.toString();
-    paramInt = TroopFileTransferUtil.Log.a;
+    paramInt = TroopFileTransferUtil.Log.b;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
     localStringBuilder.append(paramItem);
     localStringBuilder.append("] setGettingStatus. ");
     TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", paramInt, localStringBuilder.toString());
-  }
-  
-  public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if (paramLong != 0L)
-    {
-      if (paramItem == null) {
-        return false;
-      }
-      if (a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
-        return true;
-      }
-    }
-    return false;
   }
   
   public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
@@ -156,47 +132,6 @@ public class TroopFileThumbnailMgr
     return bool1;
   }
   
-  private void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    String str = paramItem.getThumbnailFile(paramLong, 640);
-    if (paramItem.LocalFile != null)
-    {
-      VFSFile localVFSFile = new VFSFile(paramItem.LocalFile);
-      if (localVFSFile.exists())
-      {
-        int j = 0;
-        int i = j;
-        if (paramItem.origLastModifyTime != 0L)
-        {
-          long l = localVFSFile.lastModified();
-          i = j;
-          if (paramItem.origLastModifyTime != l)
-          {
-            i = j;
-            if (TextUtils.isEmpty(paramItem.FilePath))
-            {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchMgr.a(paramLong, paramItem, paramInt) == 0) {
-                i = 1;
-              }
-            }
-          }
-        }
-        if (i != 0) {
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a(paramLong, paramItem, paramInt, null);
-        return;
-      }
-    }
-    if ((paramInt == 383) && (FileUtil.a(str)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a(paramLong, paramItem, paramInt, str);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchMgr.a(paramLong, paramItem, paramInt);
-  }
-  
   public static final void b(TroopFileTransferManager.Item paramItem, int paramInt)
   {
     if (paramItem == null) {
@@ -219,7 +154,7 @@ public class TroopFileThumbnailMgr
     localStringBuilder.append("_");
     localStringBuilder.append(paramInt);
     paramItem = localStringBuilder.toString();
-    paramInt = TroopFileTransferUtil.Log.a;
+    paramInt = TroopFileTransferUtil.Log.b;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
     localStringBuilder.append(paramItem);
@@ -227,11 +162,69 @@ public class TroopFileThumbnailMgr
     TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", paramInt, localStringBuilder.toString());
   }
   
-  public void a()
+  public static final boolean b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.a, "init");
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchMgr.a();
+    if (paramLong != 0L)
+    {
+      if (paramItem == null) {
+        return false;
+      }
+      if (a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void c(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    String str = paramItem.getThumbnailFile(paramLong, 640);
+    if (paramItem.LocalFile != null)
+    {
+      VFSFile localVFSFile = new VFSFile(paramItem.LocalFile);
+      if (localVFSFile.exists())
+      {
+        int j = 0;
+        int i = j;
+        if (paramItem.origLastModifyTime != 0L)
+        {
+          long l = localVFSFile.lastModified();
+          i = j;
+          if (paramItem.origLastModifyTime != l)
+          {
+            i = j;
+            if (TextUtils.isEmpty(paramItem.FilePath))
+            {
+              i = j;
+              if (this.c.a(paramLong, paramItem, paramInt) == 0) {
+                i = 1;
+              }
+            }
+          }
+        }
+        if (i != 0) {
+          return;
+        }
+        this.b.a(paramLong, paramItem, paramInt, null);
+        return;
+      }
+    }
+    if ((paramInt == 383) && (FileUtil.b(str)))
+    {
+      this.b.a(paramLong, paramItem, paramInt, str);
+      return;
+    }
+    this.c.a(paramLong, paramItem, paramInt);
+  }
+  
+  public static final String d()
+  {
+    String str = AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH;
+    VFSFile localVFSFile = new VFSFile(str);
+    if (!localVFSFile.exists()) {
+      localVFSFile.mkdirs();
+    }
+    return str;
   }
   
   public void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
@@ -256,7 +249,7 @@ public class TroopFileThumbnailMgr
         }
         return;
       }
-      if (a(paramLong, paramItem, paramInt))
+      if (b(paramLong, paramItem, paramInt))
       {
         paramItem.StatusUpdateTimeMs = 0L;
         TroopFileDataCenter.b(paramLong, paramItem);
@@ -268,11 +261,18 @@ public class TroopFileThumbnailMgr
   
   public void b()
   {
-    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.a, "release");
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.b, "init");
+    this.b.a();
+    this.c.a();
+  }
+  
+  public void c()
+  {
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.b, "release");
     if (Build.VERSION.SDK_INT == 19)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.b();
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchMgr.b();
+      this.b.b();
+      this.c.b();
       return;
     }
     TroopFileTransferMgr.a(new TroopFileThumbnailMgr.1(this), true);
@@ -280,7 +280,7 @@ public class TroopFileThumbnailMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -6,50 +6,50 @@ import cooperation.qzone.api.FeedListView.ExpandHead;
 class ExpandCampusNewFragment$3
   implements FeedListView.ExpandHead
 {
-  private long jdField_a_of_type_Long = 0L;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
+  private long c = 0L;
   
   ExpandCampusNewFragment$3(ExpandCampusNewFragment paramExpandCampusNewFragment) {}
   
   private boolean a()
   {
     long l = System.nanoTime();
-    if (l - this.jdField_a_of_type_Long < 400000000L) {
+    if (l - this.c < 400000000L) {
       return true;
     }
-    this.jdField_a_of_type_Long = l;
+    this.c = l;
     return false;
   }
   
   public void hide()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       if (a()) {
         return;
       }
-      ExpandCampusNewFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandCampusNewFragment).b();
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = System.nanoTime();
+      ExpandCampusNewFragment.b(this.a).b();
+      this.b = false;
+      this.c = System.nanoTime();
     }
   }
   
   public void show()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
       if (a()) {
         return;
       }
-      ExpandCampusNewFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandCampusNewFragment).a();
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Long = System.nanoTime();
+      ExpandCampusNewFragment.b(this.a).a();
+      this.b = true;
+      this.c = System.nanoTime();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandCampusNewFragment.3
  * JD-Core Version:    0.7.0.1
  */

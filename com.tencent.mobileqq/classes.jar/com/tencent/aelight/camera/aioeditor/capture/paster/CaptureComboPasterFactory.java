@@ -20,7 +20,7 @@ public class CaptureComboPasterFactory
   
   public static CaptureComboBase a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    FacePackage localFacePackage = ((PasterDataManager)QIMManager.a(4)).a(paramString2);
+    FacePackage localFacePackage = ((PasterDataManager)QIMManager.a(4)).b(paramString2);
     if ((localFacePackage instanceof NormalFacePackage)) {
       return new CaptureComboNormalPaster((NormalFacePackage)localFacePackage, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
     }
@@ -45,7 +45,7 @@ public class CaptureComboPasterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboPasterFactory
  * JD-Core Version:    0.7.0.1
  */

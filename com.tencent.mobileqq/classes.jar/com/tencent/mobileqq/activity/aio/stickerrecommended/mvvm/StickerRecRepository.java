@@ -16,59 +16,59 @@ public class StickerRecRepository
   extends BaseRepository
   implements IStickerRecManager.ImgUpdateListener
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private StickerRecManagerImpl jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl;
-  private StickerRecViewModel jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel;
+  private AppInterface a;
+  private StickerRecManagerImpl b;
+  private StickerRecViewModel c;
   
   public AppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public StickerRecManagerImpl a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl;
-  }
-  
-  public void a()
-  {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-    if (localAppInterface == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl = StickerRecManagerImpl.get(localAppInterface);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl.hasInit()) {
-      ThreadManager.executeOnSubThread(new StickerRecRepository.1(this));
-    }
+    return this.a;
   }
   
   public void a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    this.a = paramAppInterface;
+    this.b = StickerRecManagerImpl.get(this.a);
   }
   
   public void a(StickerRecViewModel paramStickerRecViewModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel = paramStickerRecViewModel;
+    this.c = paramStickerRecViewModel;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl = StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (this.b == null) {
+      this.b = StickerRecManagerImpl.get(this.a);
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl.setImgUpdateListener(this);
+      this.b.setImgUpdateListener(this);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl.setImgUpdateListener(null);
+    this.b.setImgUpdateListener(null);
+  }
+  
+  public StickerRecManagerImpl b()
+  {
+    if (this.b == null) {
+      this.b = StickerRecManagerImpl.get(this.a);
+    }
+    return this.b;
+  }
+  
+  public void c()
+  {
+    AppInterface localAppInterface = this.a;
+    if (localAppInterface == null) {
+      return;
+    }
+    if (this.b == null) {
+      this.b = StickerRecManagerImpl.get(localAppInterface);
+    }
+    if (!this.b.hasInit()) {
+      ThreadManager.executeOnSubThread(new StickerRecRepository.1(this));
+    }
   }
   
   public void onImgUpdated(List<IStickerRecEmoticon> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
@@ -86,7 +86,7 @@ public class StickerRecRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.mvvm.StickerRecRepository
  * JD-Core Version:    0.7.0.1
  */

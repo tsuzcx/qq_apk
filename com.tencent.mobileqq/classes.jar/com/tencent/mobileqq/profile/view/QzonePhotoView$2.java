@@ -21,11 +21,11 @@ class QzonePhotoView$2
       {
         paramContext.setNumColumns(4);
         paramContext.setFadingEdgeLength(0);
-        paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-        paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+        paramContext.setHorizontalSpacing(QzonePhotoView.c(this.a));
+        paramContext.setVerticalSpacing(QzonePhotoView.c(this.a));
         paramContext.setStretchMode(2);
         paramContext.setScrollingCacheEnabled(false);
-        paramContext.setSelector(2131167333);
+        paramContext.setSelector(2131168376);
         ViewPager.LayoutParams localLayoutParams = new ViewPager.LayoutParams();
         localLayoutParams.gravity = 17;
         localLayoutParams.height = -2;
@@ -48,7 +48,7 @@ class QzonePhotoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.2
  * JD-Core Version:    0.7.0.1
  */

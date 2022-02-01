@@ -10,14 +10,14 @@ class ReadInJoyScrollViewSwitcher$2
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher$ScrollItem);
+    if (this.b.a != null) {
+      this.b.a.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyScrollViewSwitcher.2
  * JD-Core Version:    0.7.0.1
  */

@@ -27,32 +27,32 @@ public class PhotoPreviewCustomizationDataline
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (a().getItem(paramInt).baseData.getType() == 101)
+    if (s().getItem(paramInt).baseData.getType() == 101)
     {
-      a().a.setVisibility(8);
-      a().b.setVisibility(8);
-      a().c.setVisibility(8);
+      s().g.setVisibility(8);
+      s().j.setVisibility(8);
+      s().k.setVisibility(8);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.c) {
-      a().a.setVisibility(0);
+    if (this.d.g) {
+      s().g.setVisibility(0);
     } else {
-      a().a.setVisibility(8);
+      s().g.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.b)
+    if (this.d.f)
     {
-      a().b.setVisibility(0);
-      a().c.setVisibility(0);
+      s().j.setVisibility(0);
+      s().k.setVisibility(0);
     }
     else
     {
-      a().b.setVisibility(8);
-      a().c.setVisibility(8);
+      s().j.setVisibility(8);
+      s().k.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.g) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isSingleMode))
+    if ((this.d.l) || (this.f.isSingleMode))
     {
-      a().b.setVisibility(8);
-      a().c.setVisibility(8);
+      s().j.setVisibility(8);
+      s().k.setVisibility(8);
     }
   }
   
@@ -66,14 +66,14 @@ public class PhotoPreviewCustomizationDataline
     super.a(paramView, 10000, paramBundle, paramInt2, paramIntent);
   }
   
-  public boolean a()
+  public boolean g()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.isEmpty());
+    return (this.f.selectedPhotoList != null) && (!this.f.selectedPhotoList.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationDataline
  * JD-Core Version:    0.7.0.1
  */

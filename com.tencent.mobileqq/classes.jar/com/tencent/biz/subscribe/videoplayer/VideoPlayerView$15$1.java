@@ -7,8 +7,8 @@ class VideoPlayerView$15$1
   
   public void run()
   {
-    VideoPlayerView.f(this.a.a);
-    this.a.a.i();
+    VideoPlayerView.q(this.a.a);
+    this.a.a.j();
   }
 }
 

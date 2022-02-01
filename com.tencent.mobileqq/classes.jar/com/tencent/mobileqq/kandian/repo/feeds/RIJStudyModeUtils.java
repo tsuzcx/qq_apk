@@ -10,30 +10,61 @@ import org.json.JSONObject;
 
 public class RIJStudyModeUtils
 {
-  public static int a()
+  public static void a(String paramString)
   {
-    if (StudyModeManager.a()) {
-      return 1;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      RIJSPUtils.a("key_study_mode_grade_choose", paramString);
+      ReadInJoyLogicEngineEventDispatcher.a().a(new RIJStudyModeUtils.1(paramString));
     }
-    if (b()) {
-      return 2;
-    }
-    return 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSelectedGrades ! res= ");
+    localStringBuilder.append(paramString);
+    QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
   }
   
-  public static String a()
+  public static void a(JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    a(localJSONObject);
-    return localJSONObject.toString();
+    if (paramJSONObject == null) {
+      return;
+    }
+    if (!StudyModeManager.h()) {
+      return;
+    }
+    try
+    {
+      paramJSONObject.put("study_mode_selected_grade", b());
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addSelectedGrades error! msg= ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
+    }
   }
   
-  public static JSONArray a()
+  public static boolean a()
+  {
+    boolean bool2 = StudyModeManager.h();
+    boolean bool1 = false;
+    if ((bool2) && (RIJStudyModeClassEntryAladdinConfig.a.a() == 1)) {
+      bool1 = true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showStudyGradeEntry ! enable = ");
+    localStringBuilder.append(RIJStudyModeClassEntryAladdinConfig.a.a());
+    QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
+    return bool1;
+  }
+  
+  public static JSONArray b()
   {
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      Object localObject = (String)RIJSPUtils.a("key_study_mode_grade_choose", "");
+      Object localObject = (String)RIJSPUtils.b("key_study_mode_grade_choose", "");
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("getSelectedGrades error! result= ");
       localStringBuilder.append((String)localObject);
@@ -54,59 +85,28 @@ public class RIJStudyModeUtils
     return localJSONArray;
   }
   
-  public static void a(String paramString)
+  public static String c()
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      RIJSPUtils.a("key_study_mode_grade_choose", paramString);
-      ReadInJoyLogicEngineEventDispatcher.a().a(new RIJStudyModeUtils.1(paramString));
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("updateSelectedGrades ! res= ");
-    localStringBuilder.append(paramString);
-    QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
+    JSONObject localJSONObject = new JSONObject();
+    a(localJSONObject);
+    return localJSONObject.toString();
   }
   
-  public static void a(JSONObject paramJSONObject)
+  public static int d()
   {
-    if (paramJSONObject == null) {
-      return;
+    if (StudyModeManager.h()) {
+      return 1;
     }
-    if (!StudyModeManager.a()) {
-      return;
+    if (e()) {
+      return 2;
     }
-    try
-    {
-      paramJSONObject.put("study_mode_selected_grade", a());
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("addSelectedGrades error! msg= ");
-      localStringBuilder.append(paramJSONObject);
-      QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
-    }
+    return 0;
   }
   
-  public static boolean a()
-  {
-    boolean bool2 = StudyModeManager.a();
-    boolean bool1 = false;
-    if ((bool2) && (RIJStudyModeClassEntryAladdinConfig.a.a() == 1)) {
-      bool1 = true;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showStudyGradeEntry ! enable = ");
-    localStringBuilder.append(RIJStudyModeClassEntryAladdinConfig.a.a());
-    QLog.d("RIJStudyModeUtils", 1, localStringBuilder.toString());
-    return bool1;
-  }
-  
-  public static boolean b()
+  public static boolean e()
   {
     boolean bool = false;
-    if (((Integer)RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue() == 1) {
+    if (((Integer)RIJSPUtils.b("key_sp_is_readinjoy_youngster", Integer.valueOf(0))).intValue() == 1) {
       bool = true;
     }
     return bool;
@@ -114,7 +114,7 @@ public class RIJStudyModeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJStudyModeUtils
  * JD-Core Version:    0.7.0.1
  */

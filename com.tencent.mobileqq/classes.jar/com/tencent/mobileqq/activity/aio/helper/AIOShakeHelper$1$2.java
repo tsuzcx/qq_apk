@@ -19,7 +19,7 @@ class AIOShakeHelper$1$2
       paramAnimation.append(System.currentTimeMillis());
       QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, paramAnimation.toString());
     }
-    AIOShakeHelper.a(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
+    AIOShakeHelper.b(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
@@ -46,7 +46,7 @@ class AIOShakeHelper$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1.2
  * JD-Core Version:    0.7.0.1
  */

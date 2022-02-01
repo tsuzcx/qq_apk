@@ -8,12 +8,11 @@ class FrameBmpCache$CancelAbleRunnable
   implements Runnable
 {
   public int a;
-  volatile boolean a;
+  volatile boolean b = false;
   
   public FrameBmpCache$CancelAbleRunnable(FrameBmpCache paramFrameBmpCache, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a()
@@ -21,37 +20,37 @@ class FrameBmpCache$CancelAbleRunnable
     if (QLog.isColorLevel()) {
       QLog.i("FrameBmpCache", 2, "cancel");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
+    if (!this.b) {}
     try
     {
-      ??? = (String)this.this$0.jdField_a_of_type_JavaUtilList.get(FrameBmpCache.a(this.this$0, this.jdField_a_of_type_Int));
+      ??? = (String)this.this$0.e.get(FrameBmpCache.a(this.this$0, this.a));
       Object localObject2;
-      if (this.this$0.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(???) == null)
+      if (this.this$0.a.get(???) == null)
       {
         localObject2 = FrameBmpCache.a(this.this$0, (String)???);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("decodeBitmap, index=");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.a);
           localStringBuilder.append(", not in cache:");
           localStringBuilder.append((String)???);
           localStringBuilder.append(", after decode=");
           localStringBuilder.append(localObject2);
           QLog.i("FrameBmpCache", 2, localStringBuilder.toString());
         }
-        this.this$0.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(???, localObject2);
+        this.this$0.a.put(???, localObject2);
       }
       else if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("decodeBitmap, index=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(this.a);
         ((StringBuilder)localObject2).append(", is in cache:");
         ((StringBuilder)localObject2).append((String)???);
         QLog.i("FrameBmpCache", 2, ((StringBuilder)localObject2).toString());
@@ -77,7 +76,7 @@ class FrameBmpCache$CancelAbleRunnable
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("decodeBitmap,OutOfMemory Error index:");
-        ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)???).append(this.a);
         QLog.d("FrameBmpCache", 2, ((StringBuilder)???).toString());
       }
     }
@@ -86,11 +85,11 @@ class FrameBmpCache$CancelAbleRunnable
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("decode end......");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)???).append(this.a);
       QLog.i("FrameBmpCache", 2, ((StringBuilder)???).toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    if (!this.b) {
+      synchronized (this.this$0.i)
       {
         FrameBmpCache.a(this.this$0);
         return;
@@ -100,12 +99,12 @@ class FrameBmpCache$CancelAbleRunnable
   
   public String toString()
   {
-    return Integer.toString(this.jdField_a_of_type_Int);
+    return Integer.toString(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.FrameBmpCache.CancelAbleRunnable
  * JD-Core Version:    0.7.0.1
  */

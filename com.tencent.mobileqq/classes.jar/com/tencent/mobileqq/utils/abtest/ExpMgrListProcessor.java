@@ -19,9 +19,9 @@ public class ExpMgrListProcessor
     return a;
   }
   
-  public static void a()
+  public static void b()
   {
-    ExpMgrListProcessor.ExpMgrListData localExpMgrListData = (ExpMgrListProcessor.ExpMgrListData)QConfigManager.a().a(742);
+    ExpMgrListProcessor.ExpMgrListData localExpMgrListData = (ExpMgrListProcessor.ExpMgrListData)QConfigManager.b().b(742);
     if (localExpMgrListData != null) {
       ExpMgrListProcessor.ExpMgrListData.a(localExpMgrListData);
     }
@@ -43,7 +43,7 @@ public class ExpMgrListProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0];
-      paramArrayOfQConfItem = new ExpMgrListProcessor.ExpMgrListData(paramArrayOfQConfItem.jdField_a_of_type_Int, paramArrayOfQConfItem.jdField_a_of_type_JavaLangString);
+      paramArrayOfQConfItem = new ExpMgrListProcessor.ExpMgrListData(paramArrayOfQConfItem.a, paramArrayOfQConfItem.b);
       ExpMgrListProcessor.ExpMgrListData.a(paramArrayOfQConfItem);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed expListContent:");
@@ -59,13 +59,13 @@ public class ExpMgrListProcessor
     if (paramExpMgrListData != null) {
       ExpMgrListProcessor.ExpMgrListData.a(paramExpMgrListData);
     }
-    if (ABTestController.a().a())
+    if (ABTestController.a().b())
     {
       ABTestController.a().a(a);
       return;
     }
     paramExpMgrListData = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    ABTestController.a().a();
+    ABTestController.a().c();
     ABTestController.a().a(MobileQQ.sMobileQQ, paramExpMgrListData.getAccount());
   }
   
@@ -104,7 +104,7 @@ public class ExpMgrListProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.abtest.ExpMgrListProcessor
  * JD-Core Version:    0.7.0.1
  */

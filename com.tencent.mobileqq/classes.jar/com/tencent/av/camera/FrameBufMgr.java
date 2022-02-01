@@ -4,75 +4,39 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FrameBufMgr
 {
-  static int jdField_a_of_type_Int;
-  private static volatile FrameBufMgr jdField_a_of_type_ComTencentAvCameraFrameBufMgr;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private FrameBufMgr.FrameBuf[] jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf = new FrameBufMgr.FrameBuf[4];
+  static int a;
+  private static volatile FrameBufMgr b;
+  private FrameBufMgr.FrameBuf[] c = new FrameBufMgr.FrameBuf[4];
+  private Object d = new Object();
   
   public static FrameBufMgr a()
   {
-    if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {
-          jdField_a_of_type_ComTencentAvCameraFrameBufMgr = new FrameBufMgr();
+        if (b == null) {
+          b = new FrameBufMgr();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvCameraFrameBufMgr;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length;
-  }
-  
-  public void a()
-  {
-    QLog.i("FrameBufMgr", 1, "clear.");
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i] != null)
-          {
-            this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte = null;
-            this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int = 0;
-          }
-        }
-        else {
-          return;
-        }
-      }
-      finally
-      {
-        continue;
-        throw localObject2;
-        continue;
-        i += 1;
-      }
-    }
+    return b;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.d;
     int i = 0;
     int j = 0;
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
+        if (i < this.c.length)
         {
-          if (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int == paramInt1)
+          if (this.c[i].b == paramInt1)
           {
-            this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int = paramInt2;
+            this.c[i].b = paramInt2;
             j = 1;
           }
         }
@@ -102,16 +66,16 @@ public class FrameBufMgr
   
   public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.d;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
+        if (i < this.c.length)
         {
-          if (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
-            this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int = paramInt;
+          if (this.c[i].a == paramArrayOfByte) {
+            this.c[i].b = paramInt;
           }
         }
         else
@@ -141,19 +105,19 @@ public class FrameBufMgr
     ((StringBuilder)localObject1).append("init. bufSize = ");
     ((StringBuilder)localObject1).append(paramInt);
     QLog.i("FrameBufMgr", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_JavaLangObject;
+    localObject1 = this.d;
     int i = 0;
     try
     {
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
+      while (i < this.c.length)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i] == null) {
-          this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i] = new FrameBufMgr.FrameBuf(this);
+        if (this.c[i] == null) {
+          this.c[i] = new FrameBufMgr.FrameBuf(this);
         }
-        if ((this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        if ((this.c[i].a == null) || (this.c[i].a.length != paramInt)) {
+          this.c[i].a = new byte[paramInt];
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int = 0;
+        this.c[i].b = 0;
         i += 1;
       }
       return true;
@@ -165,19 +129,50 @@ public class FrameBufMgr
     }
   }
   
-  public byte[] a(int paramInt)
+  public void b()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    QLog.i("FrameBufMgr", 1, "clear.");
+    Object localObject1 = this.d;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
+        if (i < this.c.length)
         {
-          if (this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_Int == paramInt)
+          if (this.c[i] != null)
           {
-            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf[i].jdField_a_of_type_ArrayOfByte;
+            this.c[i].a = null;
+            this.c[i].b = 0;
+          }
+        }
+        else {
+          return;
+        }
+      }
+      finally
+      {
+        continue;
+        throw localObject2;
+        continue;
+        i += 1;
+      }
+    }
+  }
+  
+  public byte[] b(int paramInt)
+  {
+    Object localObject1 = this.d;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.c.length)
+        {
+          if (this.c[i].b == paramInt)
+          {
+            byte[] arrayOfByte = this.c[i].a;
             return arrayOfByte;
           }
         }
@@ -198,6 +193,11 @@ public class FrameBufMgr
         i += 1;
       }
     }
+  }
+  
+  public int c()
+  {
+    return this.c.length;
   }
 }
 

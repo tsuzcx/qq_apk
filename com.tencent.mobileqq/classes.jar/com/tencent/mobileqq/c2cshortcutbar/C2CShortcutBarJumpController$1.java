@@ -14,9 +14,9 @@ class C2CShortcutBarJumpController$1
   
   public void a(int paramInt, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarJumpController.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramC2CShortcutAppInfo, false);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i = C2CShortcutBarManager.a(localQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.e.a(this.a, this.b, this.c, this.d, paramC2CShortcutAppInfo, false);
+    QQAppInterface localQQAppInterface = this.c;
+    int i = C2CShortcutBarManager.a(localQQAppInterface).a(this.d.b);
     paramC2CShortcutAppInfo = paramC2CShortcutAppInfo.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
@@ -26,7 +26,7 @@ class C2CShortcutBarJumpController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarJumpController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -128,12 +128,12 @@ public class ApolloProfileBusinessProcessor
                   }
                   i = paramByteBuffer.getInt();
                   if (String.valueOf(paramLong).equals(this.appRuntime.getCurrentUin())) {
-                    this.a.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloManagerService.updateUserFlag(i, 1);
+                    this.a.a.updateUserFlag(i, 1);
                   }
-                  if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloManagerService != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloAISwitch != i))
+                  if ((this.a.a != null) && (this.a.c.apolloAISwitch != i))
                   {
-                    this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloAISwitch = i;
-                    this.a.jdField_a_of_type_Boolean = true;
+                    this.a.c.apolloAISwitch = i;
+                    this.a.d = true;
                   }
                   paramBundle = new StringBuilder();
                   paramBundle.append("handleGetDetalInfo apollo AIFlag: ");
@@ -143,12 +143,12 @@ public class ApolloProfileBusinessProcessor
                 }
                 paramLong = paramByteBuffer.getInt();
                 long l = NetConnInfoCenter.getServerTime();
-                if ((paramLong < l) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloSignValidTS != paramLong))
+                if ((paramLong < l) && (this.a.c.apolloSignValidTS != paramLong))
                 {
-                  this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloLocalSignTs = this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloSignValidTS;
-                  this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloSignValidTS = paramLong;
-                  this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloSignStr = "";
-                  this.a.jdField_a_of_type_Boolean = true;
+                  this.a.c.apolloLocalSignTs = this.a.c.apolloSignValidTS;
+                  this.a.c.apolloSignValidTS = paramLong;
+                  this.a.c.apolloSignStr = "";
+                  this.a.d = true;
                 }
                 paramBundle = new StringBuilder();
                 paramBundle.append("handleGetDetalInfo apollo Sign TS: ");
@@ -159,28 +159,28 @@ public class ApolloProfileBusinessProcessor
                 return;
               }
               paramLong = paramByteBuffer.getInt();
-              if (paramLong != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloServerTS)
+              if (paramLong != this.a.c.apolloServerTS)
               {
-                this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloServerTS = paramLong;
-                this.a.jdField_a_of_type_Boolean = true;
+                this.a.c.apolloServerTS = paramLong;
+                this.a.d = true;
               }
               paramBundle = new StringBuilder();
               paramBundle.append("handleGetDetalInfo apollo svr TS: ");
               paramBundle.append(paramLong);
               paramBundle.append(",local TS: ");
-              paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloServerTS);
+              paramBundle.append(this.a.c.apolloServerTS);
               QLog.i("[cmshow]ApolloProfileBusinessProcessor", 1, paramBundle.toString());
               return;
             }
             i = paramByteBuffer.getShort();
-            if (i != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloStatus)
+            if (i != this.a.c.apolloStatus)
             {
-              this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloStatus = i;
-              this.a.jdField_a_of_type_Boolean = true;
+              this.a.c.apolloStatus = i;
+              this.a.d = true;
               paramBundle = (IApolloExtensionHandler)((AppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
               if (paramBundle != null)
               {
-                paramCard = new Pair(this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.uin, Integer.valueOf(i));
+                paramCard = new Pair(this.a.c.uin, Integer.valueOf(i));
                 ((BusinessHandler)paramBundle).notifyUI(3, true, paramCard);
               }
             }
@@ -191,19 +191,19 @@ public class ApolloProfileBusinessProcessor
             return;
           }
           paramShort1 = paramByteBuffer.getShort();
-          if (paramShort1 != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.cmshow3dFlag)
+          if (paramShort1 != this.a.c.cmshow3dFlag)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.cmshow3dFlag = paramShort1;
-            this.a.jdField_a_of_type_Boolean = true;
+            this.a.c.cmshow3dFlag = paramShort1;
+            this.a.d = true;
           }
-          QLog.d("[cmshow]ApolloProfileBusinessProcessor", 1, new Object[] { "handleGetDetalInfo apollo svr cmshow3dFlag: ", Short.valueOf(paramShort1), ", local cmshow3dFlag: ", Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.cmshow3dFlag) });
+          QLog.d("[cmshow]ApolloProfileBusinessProcessor", 1, new Object[] { "handleGetDetalInfo apollo svr cmshow3dFlag: ", Short.valueOf(paramShort1), ", local cmshow3dFlag: ", Integer.valueOf(this.a.c.cmshow3dFlag) });
           return;
         }
         i = paramByteBuffer.getShort();
-        if (i != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloVipFlag)
+        if (i != this.a.c.apolloVipFlag)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloVipFlag = i;
-          this.a.jdField_a_of_type_Boolean = true;
+          this.a.c.apolloVipFlag = i;
+          this.a.d = true;
         }
         paramBundle = new StringBuilder();
         paramBundle.append("handleGetDetalInfo apollo vip flag: ");
@@ -212,10 +212,10 @@ public class ApolloProfileBusinessProcessor
         return;
       }
       i = paramByteBuffer.getShort();
-      if (i != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloVipLevel)
+      if (i != this.a.c.apolloVipLevel)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloVipLevel = i;
-        this.a.jdField_a_of_type_Boolean = true;
+        this.a.c.apolloVipLevel = i;
+        this.a.d = true;
       }
       paramBundle = new StringBuilder();
       paramBundle.append("handleGetDetalInfo apollo vip level: ");
@@ -224,8 +224,8 @@ public class ApolloProfileBusinessProcessor
       return;
     }
     int i = paramByteBuffer.getShort();
-    if (i != this.a.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloManagerService.getWhiteListStatus()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloManagerService.updateWhiteList(i);
+    if (i != this.a.a.getWhiteListStatus()) {
+      this.a.a.updateWhiteList(i);
     }
     paramBundle = new StringBuilder();
     paramBundle.append("handleGetDetalInfo apollo white list: ");
@@ -240,22 +240,22 @@ public class ApolloProfileBusinessProcessor
     paramCard = (IApolloDaoManagerService)this.appRuntime.getRuntimeService(IApolloDaoManagerService.class, "all");
     this.a = new ApolloProfileBusinessProcessor.ProfileApolloInfo(null);
     ApolloProfileBusinessProcessor.ProfileApolloInfo localProfileApolloInfo = this.a;
-    localProfileApolloInfo.jdField_a_of_type_ComTencentMobileqqApolloApiIApolloManagerService = paramBundle;
-    localProfileApolloInfo.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService = paramCard;
-    localProfileApolloInfo.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo = paramCard.getApolloBaseInfo(this.appRuntime.getCurrentAccountUin());
+    localProfileApolloInfo.a = paramBundle;
+    localProfileApolloInfo.b = paramCard;
+    localProfileApolloInfo.c = paramCard.getApolloBaseInfo(this.appRuntime.getCurrentAccountUin());
   }
   
   public void onGetProfileDetailTLVEnd(Bundle paramBundle, long paramLong, Card paramCard)
   {
     super.onGetProfileDetailTLVEnd(paramBundle, paramLong, paramCard);
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService.saveOrUpdateApolloBaseInfo(this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo);
+    if (this.a.d) {
+      this.a.b.saveOrUpdateApolloBaseInfo(this.a.c);
     }
     paramBundle = (IApolloManagerService)this.appRuntime.getRuntimeService(IApolloManagerService.class, "all");
-    if (((paramBundle.isApolloSupport(this.appRuntime.getApp())) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.isApolloStatusOpen()) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloLocalTS != this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.apolloServerTS)) || ((paramBundle.getApolloUserStatus() == 2) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.getApolloDress3D() == null)))
+    if (((paramBundle.isApolloSupport(this.appRuntime.getApp())) && (this.a.c.isApolloStatusOpen()) && (this.a.c.apolloLocalTS != this.a.c.apolloServerTS)) || ((paramBundle.getApolloUserStatus() == 2) && (this.a.c.getApolloDress3D() == null)))
     {
       paramBundle = new ArrayList(1);
-      paramBundle.add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBaseInfo.uin));
+      paramBundle.add(Long.valueOf(this.a.c.uin));
       paramCard = (IApolloExtensionHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
       if (paramCard != null) {
         paramCard.a(paramBundle, "card");
@@ -278,7 +278,7 @@ public class ApolloProfileBusinessProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.ApolloProfileBusinessProcessor
  * JD-Core Version:    0.7.0.1
  */

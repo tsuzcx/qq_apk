@@ -15,10 +15,10 @@ import mqq.manager.Manager;
 public class PhotoListConfigManager
   implements Manager
 {
-  int jdField_a_of_type_Int;
-  Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = false;
+  int a;
   int b;
+  Set<String> c = new HashSet();
+  boolean d = false;
   
   public static int a(Context paramContext, String paramString)
   {
@@ -31,7 +31,7 @@ public class PhotoListConfigManager
   public static PhotoListConfigManager a(QQAppInterface paramQQAppInterface)
   {
     PhotoListConfigManager localPhotoListConfigManager = (PhotoListConfigManager)paramQQAppInterface.getManager(QQManagerFactory.PHOTOLIST_CONFIG_MANAGER);
-    localPhotoListConfigManager.a(paramQQAppInterface);
+    localPhotoListConfigManager.b(paramQQAppInterface);
     return localPhotoListConfigManager;
   }
   
@@ -44,28 +44,28 @@ public class PhotoListConfigManager
   }
   
   @TargetApi(14)
-  private void a(QQAppInterface paramQQAppInterface)
+  private void b(QQAppInterface paramQQAppInterface)
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.d)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.d = true;
         BaseApplication localBaseApplication = paramQQAppInterface.getApp();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("PhotoListConfig");
         localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
         paramQQAppInterface = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-        this.jdField_a_of_type_Int = paramQQAppInterface.getInt("k_s", 0);
+        this.a = paramQQAppInterface.getInt("k_s", 0);
         this.b = paramQQAppInterface.getInt("k_w", 0);
-        this.jdField_a_of_type_JavaUtilSet = paramQQAppInterface.getStringSet("k_b_l", null);
+        this.c = paramQQAppInterface.getStringSet("k_b_l", null);
         paramQQAppInterface = new StringBuilder("init ");
         paramQQAppInterface.append("size:");
-        paramQQAppInterface.append(this.jdField_a_of_type_Int);
+        paramQQAppInterface.append(this.a);
         paramQQAppInterface.append(" width:");
         paramQQAppInterface.append(this.b);
         paramQQAppInterface.append(" black:");
-        paramQQAppInterface.append(this.jdField_a_of_type_JavaUtilSet);
+        paramQQAppInterface.append(this.c);
         QLog.i("PhotoListConfig", 1, paramQQAppInterface.toString());
       }
       return;
@@ -82,9 +82,9 @@ public class PhotoListConfigManager
   {
     try
     {
-      this.jdField_a_of_type_Int = paramInt1;
+      this.a = paramInt1;
       this.b = paramInt2;
-      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      this.c = paramSet;
       BaseApplication localBaseApplication = paramQQAppInterface.getApp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("PhotoListConfig");
@@ -92,7 +92,7 @@ public class PhotoListConfigManager
       localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("k_s", paramInt1).putInt("k_w", paramInt2).putStringSet("k_b_l", paramSet).apply();
       paramQQAppInterface = new StringBuilder("updateConfig ");
       paramQQAppInterface.append("size:");
-      paramQQAppInterface.append(this.jdField_a_of_type_Int);
+      paramQQAppInterface.append(this.a);
       paramQQAppInterface.append(" width:");
       paramQQAppInterface.append(this.b);
       paramQQAppInterface.append(" black:");
@@ -111,7 +111,7 @@ public class PhotoListConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListConfigManager
  * JD-Core Version:    0.7.0.1
  */

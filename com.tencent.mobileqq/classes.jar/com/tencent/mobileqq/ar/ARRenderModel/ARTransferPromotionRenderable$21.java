@@ -12,16 +12,16 @@ class ARTransferPromotionRenderable$21
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("zoomOutWorldCupSparks. hasDrawedFrame = ");
-    localStringBuilder.append(ARTransferPromotionRenderable.e(this.this$0));
+    localStringBuilder.append(ARTransferPromotionRenderable.C(this.this$0));
     QLog.i("ARTransferPromotionRenderable", 1, localStringBuilder.toString());
-    if ((ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.e(this.this$0))) {
-      ARTransferPromotionRenderable.a(this.this$0).native_zoomOutWorldCupSparks();
+    if ((ARTransferPromotionRenderable.c(this.this$0) != null) && (ARTransferPromotionRenderable.C(this.this$0))) {
+      ARTransferPromotionRenderable.c(this.this$0).native_zoomOutWorldCupSparks();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.21
  * JD-Core Version:    0.7.0.1
  */

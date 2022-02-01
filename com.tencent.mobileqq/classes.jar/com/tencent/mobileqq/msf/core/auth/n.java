@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
@@ -437,7 +437,7 @@ public class n
     try
     {
       Object localObject = l.e.GetPictureData(paramFromServiceMsg.getUin(), paramLong);
-      af.a(paramFromServiceMsg);
+      ag.a(paramFromServiceMsg);
       VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
       localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
       localVerifyCodeInfo.verifyimage = ((byte[])localObject);
@@ -512,7 +512,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.n
  * JD-Core Version:    0.7.0.1
  */

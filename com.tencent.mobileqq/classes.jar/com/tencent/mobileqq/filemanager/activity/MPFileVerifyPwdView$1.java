@@ -19,7 +19,7 @@ class MPFileVerifyPwdView$1
     paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
     if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16))
     {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694281));
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131891919));
       return;
     }
     if (!TextUtils.isEmpty(paramEditable))
@@ -35,7 +35,7 @@ class MPFileVerifyPwdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.1
  * JD-Core Version:    0.7.0.1
  */

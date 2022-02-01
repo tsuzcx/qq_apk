@@ -20,32 +20,32 @@ public class CEOffscreenSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback2, Runnable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder = null;
-  private Thread jdField_a_of_type_JavaLangThread = null;
-  private final ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private Thread a = null;
+  private SurfaceHolder b = null;
+  private volatile boolean c = false;
+  private final Lock d = new ReentrantLock();
+  private final ArrayList<Bitmap> e = new ArrayList();
+  private Bitmap f = null;
   
   public CEOffscreenSurfaceView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
+    this.b.setFormat(-2);
+    this.b.addCallback(this);
   }
   
   public void run()
   {
-    while (this.jdField_a_of_type_Boolean) {
-      if ((this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().isValid()) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    while (this.c) {
+      if ((this.b.getSurface().isValid()) && (!this.e.isEmpty()))
       {
         Object localObject = new Paint();
         ((Paint)localObject).setAntiAlias(true);
         ((Paint)localObject).setStyle(Paint.Style.STROKE);
-        Canvas localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_a_of_type_JavaUtilArrayList.remove(0));
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Canvas localCanvas = this.b.lockCanvas();
+        this.d.lock();
+        this.f = ((Bitmap)this.e.remove(0));
+        Iterator localIterator = this.e.iterator();
         while (localIterator.hasNext())
         {
           Bitmap localBitmap = (Bitmap)localIterator.next();
@@ -54,21 +54,21 @@ public class CEOffscreenSurfaceView
           }
           localIterator.remove();
         }
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        this.e.clear();
+        this.d.unlock();
+        if (this.f != null)
         {
           ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
           localCanvas.drawPaint((Paint)localObject);
           ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-          localCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, (Paint)localObject);
+          localCanvas.drawBitmap(this.f, 0.0F, 0.0F, (Paint)localObject);
         }
-        this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(localCanvas);
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        this.b.unlockCanvasAndPost(localCanvas);
+        localObject = this.f;
         if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
         {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+          this.f.recycle();
+          this.f = null;
           System.gc();
         }
       }
@@ -77,9 +77,9 @@ public class CEOffscreenSurfaceView
   
   public void setRenderData(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    this.jdField_a_of_type_JavaUtilArrayList.add(0, paramBitmap);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    this.d.lock();
+    this.e.add(0, paramBitmap);
+    this.d.unlock();
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
@@ -92,7 +92,7 @@ public class CEOffscreenSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.offscreen.CEOffscreenSurfaceView
  * JD-Core Version:    0.7.0.1
  */

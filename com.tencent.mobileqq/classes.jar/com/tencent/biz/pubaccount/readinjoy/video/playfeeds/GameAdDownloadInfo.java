@@ -9,28 +9,28 @@ public class GameAdDownloadInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GameAdDownloadInfo> CREATOR = new GameAdDownloadInfo.1();
-  public int a;
   public String a;
   public String b;
   public String c;
   public String d;
+  public int e;
   
   protected GameAdDownloadInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.e = paramParcel.readInt();
   }
   
   public GameAdDownloadInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sGameDownloadUrl");
+    this.a = paramJSONObject.optString("sGameDownloadUrl");
     this.b = paramJSONObject.optString("lGameSize");
     this.c = paramJSONObject.optString("sApkMd5");
     this.d = paramJSONObject.optString("sVersionCode");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("iGameType");
+    this.e = paramJSONObject.optInt("iGameType");
   }
   
   public int describeContents()
@@ -40,16 +40,16 @@ public class GameAdDownloadInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

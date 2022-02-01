@@ -50,7 +50,7 @@ public class GameCenterUtils
       int i;
       try
       {
-        if ((!TextUtils.isEmpty(paramString)) && (QQGameConstant.a != null))
+        if ((!TextUtils.isEmpty(paramString)) && (QQGameConstant.b != null))
         {
           Object localObject1 = (List)a.get(paramString);
           i = 0;
@@ -75,7 +75,7 @@ public class GameCenterUtils
             if (QLog.isColorLevel()) {
               QLog.d("GameCenterUtils", 1, "get _orted_configs from msg decode");
             }
-            localObject1 = QQGameConstant.a;
+            localObject1 = QQGameConstant.b;
             Object localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(paramString);
             ((StringBuilder)localObject2).append("_orted_configs");
@@ -128,7 +128,7 @@ public class GameCenterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterUtils
  * JD-Core Version:    0.7.0.1
  */

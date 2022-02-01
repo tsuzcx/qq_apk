@@ -5,56 +5,38 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 class SubscribeReportController$ReportData
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
+  public long a = System.currentTimeMillis();
+  public long b = AppSetting.d();
+  public String c = DeviceInfoUtil.b();
+  public String d = "";
   public String e;
   public String f;
   public String g;
   public String h;
-  public String i;
-  public String j;
-  public String k = "8.7.0.5295";
-  public String l = "AND";
-  
-  public SubscribeReportController$ReportData()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = AppSetting.a();
-    this.jdField_a_of_type_JavaLangString = DeviceInfoUtil.a();
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public long i;
+  public long j;
+  public long k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p = "8.8.17.5770";
+  public String q = "AND";
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('|');
     localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
     localStringBuilder.append('|');
     localStringBuilder.append(this.g);
     localStringBuilder.append('|');
@@ -68,12 +50,22 @@ class SubscribeReportController$ReportData
     localStringBuilder.append('|');
     localStringBuilder.append(this.l);
     localStringBuilder.append('|');
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.n);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.o);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.p);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.q);
+    localStringBuilder.append('|');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.SubscribeReportController.ReportData
  * JD-Core Version:    0.7.0.1
  */

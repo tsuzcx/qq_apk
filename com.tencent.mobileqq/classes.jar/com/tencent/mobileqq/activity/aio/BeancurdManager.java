@@ -8,6 +8,8 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.beancurd.IBeancurdBusinessHandler;
+import com.tencent.mobileqq.config.BeancurdConfProcessor;
 import com.tencent.mobileqq.data.MessageForQQStoryFeed;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.Entity;
@@ -16,6 +18,7 @@ import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tofumsg.BeancurdUtil;
 import com.tencent.mobileqq.tofumsg.ITofuManagerNew;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -32,29 +35,24 @@ import org.json.JSONObject;
 public class BeancurdManager
   implements Manager
 {
-  public static final int[] a;
-  public static final int[] b;
-  private static int[] c = { -1034, -2015, -2060, -2062, -2061, -7007, -2074, -7009, -7010, -7011, -7012, -2077, -7015, -7016 };
-  private final int jdField_a_of_type_Int = 10000;
-  private SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ITofuManagerNew jdField_a_of_type_ComTencentMobileqqTofumsgITofuManagerNew;
-  private Map<String, Map<Integer, BeancurdMsg>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 3;
-  private Map<String, Long> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { -7015 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 13 };
-  }
+  public static final int[] a = { -7015 };
+  public static final int[] b = { 13, 1, 3 };
+  public static int[] c = new int[0];
+  private static int[] k = { -1034, -2015, -2060, -2062, -2061, -7007, -2074, -7009, -7010, -7011, -7012, -2077, -7015, -7016 };
+  private QQAppInterface d;
+  private SparseArray<Integer> e = new SparseArray();
+  private Map<String, Map<Integer, BeancurdMsg>> f = new ConcurrentHashMap();
+  private Map<String, Long> g = new ConcurrentHashMap();
+  private final int h = 10000;
+  private boolean i = true;
+  private boolean j;
+  private int l = 3;
+  private ITofuManagerNew m;
   
   public BeancurdManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTofumsgITofuManagerNew = ((ITofuManagerNew)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TOFU_NEW_MANAGER));
+    this.d = paramQQAppInterface;
+    this.m = ((ITofuManagerNew)this.d.getManager(QQManagerFactory.TOFU_NEW_MANAGER));
     a();
   }
   
@@ -62,7 +60,7 @@ public class BeancurdManager
   {
     if (paramInt > 0)
     {
-      int[] arrayOfInt = c;
+      int[] arrayOfInt = k;
       if (paramInt <= arrayOfInt.length) {
         return arrayOfInt[(paramInt - 1)];
       }
@@ -93,18 +91,18 @@ public class BeancurdManager
         if (localObject1 != null) {}
         try
         {
-          int j = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(localObject1.busiid)).intValue();
-          int k = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(((BeancurdMsg)localObject4).busiid)).intValue();
-          int i = j;
+          int i1 = ((Integer)this.e.get(localObject1.busiid)).intValue();
+          int i2 = ((Integer)this.e.get(((BeancurdMsg)localObject4).busiid)).intValue();
+          int n = i1;
           if (localObject1.ispush) {
-            i = j * 100;
+            n = i1 * 100;
           }
           boolean bool = ((BeancurdMsg)localObject4).ispush;
-          j = k;
+          i1 = i2;
           if (bool) {
-            j = k * 100;
+            i1 = i2 * 100;
           }
-          if (i > j) {
+          if (n > i1) {
             localObject1 = localObject4;
           }
         }
@@ -113,7 +111,7 @@ public class BeancurdManager
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("trigger 2 mPriorityMap null...");
           ((StringBuilder)localObject4).append(localException.getMessage());
-          c(((StringBuilder)localObject4).toString());
+          d(((StringBuilder)localObject4).toString());
         }
       }
     }
@@ -123,7 +121,7 @@ public class BeancurdManager
       while (paramMap.hasNext())
       {
         localObject2 = (BeancurdMsg)paramMap.next();
-        b(((BeancurdMsg)localObject2).frienduin, 0, ((BeancurdMsg)localObject2).busiid);
+        c(((BeancurdMsg)localObject2).frienduin, 0, ((BeancurdMsg)localObject2).busiid);
       }
     }
     return localObject1;
@@ -137,12 +135,12 @@ public class BeancurdManager
     } else {
       str = "";
     }
-    int i = a(paramInt2);
-    MessageRecord localMessageRecord = MessageRecordFactory.a(i);
+    int n = a(paramInt2);
+    MessageRecord localMessageRecord = MessageRecordFactory.a(n);
     if (paramLong < 0L) {
-      paramLong = MessageCache.a();
+      paramLong = MessageCache.c();
     }
-    localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString1, paramString1, str, paramLong, i, paramInt1, paramLong);
+    localMessageRecord.init(this.d.getAccount(), paramString1, paramString1, str, paramLong, n, paramInt1, paramLong);
     localMessageRecord.isread = true;
     localMessageRecord.msg = paramString2;
     if (paramInt2 == 5) {}
@@ -161,57 +159,31 @@ public class BeancurdManager
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      int i = paramList.size() - 1;
-      while (i >= 0)
+      int n = paramList.size() - 1;
+      while (n >= 0)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
-        if (c(localMessageRecord.msgtype) > 0) {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.get(n);
+        if (f(localMessageRecord.msgtype) > 0) {
           return localMessageRecord;
         }
-        i -= 1;
+        n -= 1;
       }
     }
     return null;
   }
   
-  private String a()
-  {
-    return "{\n\t\"priority\": {\n\t\t\"1\": 1,\n\t\t\"2\": 2,\n\t\t\"3\": 5,\n\t\t\"4\": 6,\n\t\t\"5\": 7,\n\t\t\"6\": 3,\n\t\t\"7\": 4\n\t},\n\t\"interval\": 3\n}";
-  }
-  
-  @Nullable
-  private List<MessageRecord> a(String paramString, int paramInt)
-  {
-    List localList = b(paramString, paramInt);
-    paramString = localList;
-    if (localList != null)
-    {
-      paramInt = localList.size();
-      paramString = localList;
-      if (paramInt > 0)
-      {
-        int i = this.jdField_b_of_type_Int;
-        paramString = localList;
-        if (paramInt > i) {
-          paramString = localList.subList(paramInt - i, paramInt);
-        }
-      }
-    }
-    return paramString;
-  }
-  
   private void a()
   {
-    Object localObject2 = SharedPreUtils.a();
+    Object localObject2 = SharedPreUtils.r();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = a();
+      localObject1 = b();
     }
     a((String)localObject1);
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.d.getEntityManagerFactory().createEntityManager();
     localObject2 = localEntityManager.query(BeancurdMsg.class, new BeancurdMsg().getTableName(), false, null, null, null, null, null, null);
     if (localObject2 != null) {
-      c(String.format("init.beancurd table count = %d", new Object[] { Integer.valueOf(((List)localObject2).size()) }));
+      d(String.format("init.beancurd table count = %d", new Object[] { Integer.valueOf(((List)localObject2).size()) }));
     }
     if ((localObject2 != null) && (((List)localObject2).size() > 10000))
     {
@@ -220,7 +192,7 @@ public class BeancurdManager
     }
     if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
-      c(String.format("init: has BeancurdMsg  size = %d ", new Object[] { Integer.valueOf(((List)localObject2).size()) }));
+      d(String.format("init: has BeancurdMsg  size = %d ", new Object[] { Integer.valueOf(((List)localObject2).size()) }));
       localObject1 = null;
       Iterator localIterator = ((List)localObject2).iterator();
       while (localIterator.hasNext())
@@ -229,10 +201,10 @@ public class BeancurdManager
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(" the table pending show msg :");
         ((StringBuilder)localObject2).append(localBeancurdMsg);
-        c(((StringBuilder)localObject2).toString());
+        d(((StringBuilder)localObject2).toString());
         if (!c(localBeancurdMsg))
         {
-          c(String.format("init: has invalid msg  ", new Object[0]));
+          d(String.format("init: has invalid msg  ", new Object[0]));
           localObject2 = localObject1;
           if (localObject1 == null) {
             localObject2 = new ArrayList();
@@ -243,13 +215,13 @@ public class BeancurdManager
         else
         {
           String str = localBeancurdMsg.frienduin;
-          Map localMap = (Map)this.jdField_a_of_type_JavaUtilMap.get(str);
+          Map localMap = (Map)this.f.get(str);
           localObject2 = localMap;
           if (localMap == null) {
             localObject2 = new ConcurrentHashMap(6);
           }
           ((Map)localObject2).put(Integer.valueOf(localBeancurdMsg.busiid), localBeancurdMsg);
-          this.jdField_a_of_type_JavaUtilMap.put(str, localObject2);
+          this.f.put(str, localObject2);
         }
       }
       if (localObject1 != null) {
@@ -262,26 +234,20 @@ public class BeancurdManager
       {
         localEntityManager.remove((BeancurdMsg)((Iterator)localObject1).next());
         continue;
-        c(String.format("init: has no BeancurdMsg  ", new Object[0]));
+        d(String.format("init: has no BeancurdMsg  ", new Object[0]));
       }
     }
     localEntityManager.close();
-  }
-  
-  private void a(MessageRecord paramMessageRecord)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.msgtype, paramMessageRecord.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
   }
   
   private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, BeancurdMsg paramBeancurdMsg)
   {
     paramString1 = a(paramString1, paramInt1, paramInt2, paramString2, paramLong);
     paramString1.isread = true;
-    if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, false))
+    if (!MessageHandlerUtils.a(this.d, paramString1, false))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramString1.selfuin);
-      this.jdField_a_of_type_ComTencentMobileqqTofumsgITofuManagerNew.a(paramBeancurdMsg);
+      this.d.getMessageFacade().a(paramString1, paramString1.selfuin);
+      this.m.b(paramBeancurdMsg);
     }
   }
   
@@ -289,113 +255,116 @@ public class BeancurdManager
   {
     if (paramBeancurdMsg != null)
     {
-      c(String.format("triggerInsert: best beancurd id = %d ", new Object[] { Integer.valueOf(paramBeancurdMsg.busiid) }));
-      if (!this.jdField_a_of_type_ComTencentMobileqqTofumsgITofuManagerNew.a(paramBeancurdMsg))
+      d(String.format("triggerInsert: best beancurd id = %d ", new Object[] { Integer.valueOf(paramBeancurdMsg.busiid) }));
+      if (!this.m.a(paramBeancurdMsg))
       {
         QLog.d("TofuNew.TofuManagerNew", 1, new Object[] { "handleBestMsg bug can not insert, bestMsg = ", paramBeancurdMsg.toString() });
         return;
       }
       boolean bool = paramBeancurdMsg.isNeedDelHistory;
-      int i = paramBeancurdMsg.busiid;
+      int n = paramBeancurdMsg.busiid;
       String str = paramBeancurdMsg.buffer;
-      long l = paramBeancurdMsg.msgTime;
+      long l1 = paramBeancurdMsg.msgTime;
       if (paramMessageRecord == null)
       {
         if (bool) {
-          a(paramString, paramInt, i);
+          a(paramString, paramInt, n);
         }
-        b(paramString, paramInt, i);
-        a(paramString, paramInt, i, str, l, paramBeancurdMsg);
+        c(paramString, paramInt, n);
+        a(paramString, paramInt, n, str, l1, paramBeancurdMsg);
       }
       for (;;)
       {
         bool = true;
         break;
-        if ((paramMessageRecord.msgtype != a(i)) && (!paramBeancurdMsg.ispush))
+        if ((paramMessageRecord.msgtype != a(n)) && (!paramBeancurdMsg.ispush))
         {
           bool = false;
           break;
         }
-        a(paramMessageRecord);
+        b(paramMessageRecord);
         if (bool) {
-          a(paramString, paramInt, i);
+          a(paramString, paramInt, n);
         }
-        b(paramString, paramInt, i);
-        a(paramString, paramInt, i, str, l, paramBeancurdMsg);
+        c(paramString, paramInt, n);
+        a(paramString, paramInt, n, str, l1, paramBeancurdMsg);
       }
       if ((bool) && (paramBeancurdMsg.ispush)) {
-        a(1, i);
+        a(1, n);
       }
-      c(String.format("triggerInsert: is inserted = %b ", new Object[] { Boolean.valueOf(bool) }));
+      d(String.format("triggerInsert: is inserted = %b ", new Object[] { Boolean.valueOf(bool) }));
     }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    int[] arrayOfInt = jdField_b_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    int[] arrayOfInt = c;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    int[] arrayOfInt = k;
+    int i1 = arrayOfInt.length;
+    int n = 0;
+    while (n < i1)
     {
-      int k = arrayOfInt[i];
-      if (paramMessageRecord.msgtype == k) {
+      int i2 = arrayOfInt[n];
+      if (paramMessageRecord.msgtype == i2) {
         return true;
       }
-      i += 1;
+      n += 1;
     }
     return false;
   }
   
-  private boolean a(@NonNull String paramString, int paramInt)
+  private String b()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-    return (localQQMessageFacade.a()) && (paramString.equals(localQQMessageFacade.a())) && (localQQMessageFacade.a() == paramInt);
+    return "{\n\t\"priority\": {\n\t\t\"1\": 1,\n\t\t\"2\": 2,\n\t\t\"3\": 5,\n\t\t\"4\": 6,\n\t\t\"5\": 7,\n\t\t\"6\": 3,\n\t\t\"7\": 4\n\t},\n\t\"interval\": 3\n}";
   }
   
+  @Nullable
   private List<MessageRecord> b(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt, null);
+    List localList = c(paramString, paramInt);
+    paramString = localList;
+    if (localList != null)
+    {
+      paramInt = localList.size();
+      paramString = localList;
+      if (paramInt > 0)
+      {
+        int n = this.l;
+        paramString = localList;
+        if (paramInt > n) {
+          paramString = localList.subList(paramInt - n, paramInt);
+        }
+      }
+    }
+    return paramString;
+  }
+  
+  private void b(MessageRecord paramMessageRecord)
+  {
+    this.d.getMessageFacade().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.msgtype, paramMessageRecord.uniseq);
+    this.d.getMessageFacade().h(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
   }
   
   private boolean b(BeancurdMsg paramBeancurdMsg)
   {
     String str1 = paramBeancurdMsg.frienduin;
-    int i = paramBeancurdMsg.busiid;
+    int n = paramBeancurdMsg.busiid;
     boolean bool1 = paramBeancurdMsg.ispush;
     boolean bool2 = paramBeancurdMsg.isNeedDelHistory;
     String str2 = paramBeancurdMsg.buffer;
     long l1 = paramBeancurdMsg.startTime;
     long l2 = paramBeancurdMsg.validTime;
     long l3 = paramBeancurdMsg.originTime;
-    Object localObject2 = (Map)this.jdField_a_of_type_JavaUtilMap.get(str1);
+    Object localObject2 = (Map)this.f.get(str1);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ConcurrentHashMap(6);
     }
-    BeancurdMsg localBeancurdMsg = (BeancurdMsg)((Map)localObject1).get(Integer.valueOf(i));
+    BeancurdMsg localBeancurdMsg = (BeancurdMsg)((Map)localObject1).get(Integer.valueOf(n));
     localObject2 = localBeancurdMsg;
     if (localBeancurdMsg == null) {
       localObject2 = new BeancurdMsg();
     }
-    ((BeancurdMsg)localObject2).busiid = i;
+    ((BeancurdMsg)localObject2).busiid = n;
     ((BeancurdMsg)localObject2).frienduin = str1;
     ((BeancurdMsg)localObject2).ispush = bool1;
     ((BeancurdMsg)localObject2).isNeedDelHistory = bool2;
@@ -404,32 +373,48 @@ public class BeancurdManager
     ((BeancurdMsg)localObject2).validTime = l2;
     ((BeancurdMsg)localObject2).originTime = l3;
     ((BeancurdMsg)localObject2).token = paramBeancurdMsg.token;
-    ((Map)localObject1).put(Integer.valueOf(i), localObject2);
-    this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().persistOrReplace((Entity)localObject2);
+    ((Map)localObject1).put(Integer.valueOf(n), localObject2);
+    this.f.put(str1, localObject1);
+    this.d.getEntityManagerFactory().createEntityManager().persistOrReplace((Entity)localObject2);
     return true;
   }
   
-  private int c(int paramInt)
+  private List<MessageRecord> c(String paramString, int paramInt)
   {
-    int i = 0;
-    for (;;)
-    {
-      int[] arrayOfInt = c;
-      if (i >= arrayOfInt.length) {
-        break;
-      }
-      if (arrayOfInt[i] == paramInt) {
-        return i + 1;
-      }
-      i += 1;
-    }
-    return 0;
+    return this.d.getMessageFacade().a(paramString, paramInt, null);
   }
   
-  private void c(String paramString)
+  public static boolean c(int paramInt)
   {
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Boolean))
+    int[] arrayOfInt = b;
+    int i1 = arrayOfInt.length;
+    int n = 0;
+    while (n < i1)
+    {
+      if (arrayOfInt[n] == paramInt) {
+        return true;
+      }
+      n += 1;
+    }
+    return false;
+  }
+  
+  private boolean c(BeancurdMsg paramBeancurdMsg)
+  {
+    long l1 = MessageCache.c();
+    boolean bool;
+    if (l1 > paramBeancurdMsg.startTime + paramBeancurdMsg.validTime) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    d(String.format("busiID:%d,now:%d,BeancurdMsg.startTime:%d,validTime:%d", new Object[] { Integer.valueOf(paramBeancurdMsg.busiid), Long.valueOf(l1), Long.valueOf(paramBeancurdMsg.startTime), Long.valueOf(paramBeancurdMsg.validTime) }));
+    return bool;
+  }
+  
+  private void d(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (this.i))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("fight: ");
@@ -438,37 +423,60 @@ public class BeancurdManager
     }
   }
   
-  private boolean c(BeancurdMsg paramBeancurdMsg)
+  public static boolean d(int paramInt)
   {
-    long l = MessageCache.a();
-    boolean bool;
-    if (l > paramBeancurdMsg.startTime + paramBeancurdMsg.validTime) {
-      bool = false;
-    } else {
-      bool = true;
+    if (paramInt == 13) {
+      return true;
     }
-    c(String.format("busiID:%d,now:%d,BeancurdMsg.startTime:%d,validTime:%d", new Object[] { Integer.valueOf(paramBeancurdMsg.busiid), Long.valueOf(l), Long.valueOf(paramBeancurdMsg.startTime), Long.valueOf(paramBeancurdMsg.validTime) }));
-    return bool;
-  }
-  
-  public long a(String paramString)
-  {
-    c(String.format(" blockBeancurdForQZone ", new Object[0]));
-    long l = SystemClock.uptimeMillis() + 5000L;
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
-    return l;
-  }
-  
-  public BeancurdMsg a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    if (e(paramInt))
     {
-      paramString = (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (paramString != null) {
-        return (BeancurdMsg)paramString.get(Integer.valueOf(paramInt2));
+      IBeancurdBusinessHandler localIBeancurdBusinessHandler = (IBeancurdBusinessHandler)BeancurdUtil.a().get(Integer.valueOf(paramInt));
+      if (localIBeancurdBusinessHandler != null) {
+        return localIBeancurdBusinessHandler.a();
       }
     }
-    return null;
+    return BeancurdConfProcessor.a();
+  }
+  
+  private boolean d(@NonNull String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    QQMessageFacade localQQMessageFacade = this.d.getMessageFacade();
+    return (localQQMessageFacade.n()) && (paramString.equals(localQQMessageFacade.l())) && (localQQMessageFacade.m() == paramInt);
+  }
+  
+  public static boolean e(int paramInt)
+  {
+    int[] arrayOfInt = c;
+    int i1 = arrayOfInt.length;
+    int n = 0;
+    while (n < i1)
+    {
+      if (arrayOfInt[n] == paramInt) {
+        return true;
+      }
+      n += 1;
+    }
+    return false;
+  }
+  
+  private int f(int paramInt)
+  {
+    int n = 0;
+    for (;;)
+    {
+      int[] arrayOfInt = k;
+      if (n >= arrayOfInt.length) {
+        break;
+      }
+      if (arrayOfInt[n] == paramInt) {
+        return n + 1;
+      }
+      n += 1;
+    }
+    return 0;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -494,7 +502,7 @@ public class BeancurdManager
       continue;
       str = "0x8009431";
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", Integer.toString(paramInt2), "", "");
+    ReportController.b(this.d, "dc00898", "", "", str, str, 0, 0, "", Integer.toString(paramInt2), "", "");
   }
   
   public void a(String paramString)
@@ -514,14 +522,14 @@ public class BeancurdManager
           while (localIterator.hasNext())
           {
             String str = localIterator.next().toString();
-            int i = ((JSONObject)localObject).optInt(str);
-            this.jdField_a_of_type_AndroidUtilSparseArray.append(Integer.parseInt(str), Integer.valueOf(i));
+            int n = ((JSONObject)localObject).optInt(str);
+            this.e.append(Integer.parseInt(str), Integer.valueOf(n));
           }
         }
       }
       if (paramString.has("interval"))
       {
-        this.jdField_b_of_type_Int = paramString.optInt("interval");
+        this.l = paramString.optInt("interval");
         return;
       }
     }
@@ -531,7 +539,7 @@ public class BeancurdManager
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("parseConfig.error:");
       ((StringBuilder)localObject).append(paramString.getMessage());
-      c(((StringBuilder)localObject).toString());
+      d(((StringBuilder)localObject).toString());
     }
   }
   
@@ -543,23 +551,23 @@ public class BeancurdManager
       if (bool) {
         return;
       }
-      bool = this.jdField_b_of_type_Boolean;
+      bool = this.j;
       if (bool) {
         return;
       }
-      this.jdField_b_of_type_JavaUtilMap.remove(paramString);
-      c(String.format("triggerInfsert: start   ", new Object[0]));
-      Object localObject = (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      this.g.remove(paramString);
+      d(String.format("triggerInfsert: start   ", new Object[0]));
+      Object localObject = (Map)this.f.get(paramString);
       if (localObject == null)
       {
-        c(String.format("triggerInsert: no beancurd  ", new Object[0]));
+        d(String.format("triggerInsert: no beancurd  ", new Object[0]));
         return;
       }
-      MessageRecord localMessageRecord = a(a(paramString, paramInt));
+      MessageRecord localMessageRecord = a(b(paramString, paramInt));
       localObject = a((Map)localObject);
-      if (localObject != null)
+      if ((localObject != null) && (c(((BeancurdMsg)localObject).busiid)))
       {
-        bool = a(((BeancurdMsg)localObject).busiid);
+        bool = d(((BeancurdMsg)localObject).busiid);
         if (bool) {
           return;
         }
@@ -572,7 +580,7 @@ public class BeancurdManager
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt1, new int[] { a(paramInt2) });
+    paramString = this.d.getMessageFacade().a(paramString, paramInt1, new int[] { a(paramInt2) });
     if (paramString != null)
     {
       paramString = paramString.iterator();
@@ -581,8 +589,8 @@ public class BeancurdManager
         MessageRecord localMessageRecord = (MessageRecord)paramString.next();
         if (localMessageRecord != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          this.d.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
+          this.d.getMessageFacade().h(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
         }
       }
     }
@@ -592,134 +600,137 @@ public class BeancurdManager
   {
     try
     {
-      bool1 = this.jdField_b_of_type_Boolean;
+      bool1 = this.j;
       if (bool1) {
         return false;
       }
       if (paramBeancurdMsg == null) {
         return false;
       }
-      bool1 = a(paramBeancurdMsg.busiid);
-      if (bool1) {
-        return false;
+      if (c(paramBeancurdMsg.busiid))
+      {
+        bool1 = d(paramBeancurdMsg.busiid);
+        if (bool1) {
+          return false;
+        }
       }
       QLog.d("TofuNew.TofuManagerNew", 1, new Object[] { "receiveBeancurd: msg = ", paramBeancurdMsg.toString() });
-      if (!this.jdField_a_of_type_ComTencentMobileqqTofumsgITofuManagerNew.a(paramBeancurdMsg))
+      if (!this.m.a(paramBeancurdMsg))
       {
         QLog.d("TofuNew.TofuManagerNew", 1, "can not add tofu msg");
         return false;
       }
       String str1 = paramBeancurdMsg.frienduin;
-      i = paramBeancurdMsg.busiid;
+      n = paramBeancurdMsg.busiid;
       bool1 = paramBeancurdMsg.ispush;
       boolean bool2 = paramBeancurdMsg.isNeedDelHistory;
       String str2 = paramBeancurdMsg.buffer;
-      long l = paramBeancurdMsg.msgTime;
-      a(3, i);
-      boolean bool3 = a(str1, 0);
-      if (this.jdField_b_of_type_JavaUtilMap.containsKey(str1))
+      long l1 = paramBeancurdMsg.msgTime;
+      a(3, n);
+      boolean bool3 = d(str1, 0);
+      if (this.g.containsKey(str1))
       {
-        if (((Long)this.jdField_b_of_type_JavaUtilMap.get(str1)).longValue() >= SystemClock.uptimeMillis())
+        if (((Long)this.g.get(str1)).longValue() >= SystemClock.uptimeMillis())
         {
-          c(String.format(" receiveBeancurd blocking status ", new Object[0]));
-          if ((i != 2) && (i != 12))
+          d(String.format(" receiveBeancurd blocking status ", new Object[0]));
+          if ((n != 2) && (n != 12))
           {
             b(paramBeancurdMsg);
             return false;
           }
-          this.jdField_b_of_type_JavaUtilMap.remove(str1);
-          a(b(str1, 0), true);
+          this.g.remove(str1);
+          a(c(str1, 0), true);
           if (bool2) {
-            a(str1, 0, i);
+            a(str1, 0, n);
           }
-          b(str1, 0, i);
-          a(str1, 0, i, str2, l, paramBeancurdMsg);
+          c(str1, 0, n);
+          a(str1, 0, n, str2, l1, paramBeancurdMsg);
           return true;
         }
-        this.jdField_b_of_type_JavaUtilMap.remove(str1);
+        this.g.remove(str1);
       }
       if (TextUtils.isEmpty(str2))
       {
-        b(str1, 0, i);
+        c(str1, 0, n);
         if (bool2) {
-          a(str1, 0, i);
+          a(str1, 0, n);
         }
         return true;
       }
-      c(String.format("receiveBeancurd: msg:%s ", new Object[] { paramBeancurdMsg.toString() }));
-      MessageRecord localMessageRecord = a(a(str1, 0));
+      d(String.format("receiveBeancurd: msg:%s ", new Object[] { paramBeancurdMsg.toString() }));
+      MessageRecord localMessageRecord = a(b(str1, 0));
       if (localMessageRecord == null)
       {
-        c(String.format("receiveBeancurd: lastBean == null ", new Object[0]));
+        d(String.format("receiveBeancurd: lastBean == null ", new Object[0]));
         if (bool2) {
-          a(str1, 0, i);
+          a(str1, 0, n);
         }
-        b(str1, 0, i);
-        a(str1, 0, i, str2, l, paramBeancurdMsg);
+        c(str1, 0, n);
+        a(str1, 0, n, str2, l1, paramBeancurdMsg);
       }
       else
       {
-        c(String.format("receiveBeancurd: isAIOFront:%b", new Object[] { Boolean.valueOf(bool3) }));
+        d(String.format("receiveBeancurd: isAIOFront:%b", new Object[] { Boolean.valueOf(bool3) }));
         if (bool3)
         {
           b(paramBeancurdMsg);
-          break label624;
+          break label633;
         }
-        int j = localMessageRecord.msgtype;
-        int k = a(i);
-        c(String.format("receiveBeancurd: lastBeanMsgType = %d,newBeanMsgType= %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
-        if ((j != k) && (!bool1))
+        int i1 = localMessageRecord.msgtype;
+        int i2 = a(n);
+        d(String.format("receiveBeancurd: lastBeanMsgType = %d,newBeanMsgType= %d ", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2) }));
+        if ((i1 != i2) && (!bool1))
         {
           b(paramBeancurdMsg);
-          break label624;
+          break label633;
         }
-        a(localMessageRecord);
+        b(localMessageRecord);
         if (bool2) {
-          a(str1, 0, i);
+          a(str1, 0, n);
         }
-        b(str1, 0, i);
-        a(str1, 0, i, str2, l, paramBeancurdMsg);
+        c(str1, 0, n);
+        a(str1, 0, n, str2, l1, paramBeancurdMsg);
       }
     }
     finally
     {
       for (;;)
       {
-        int i;
+        int n;
         for (;;)
         {
           throw paramBeancurdMsg;
         }
         boolean bool1 = true;
         continue;
-        label624:
+        label633:
         bool1 = false;
       }
     }
     if ((paramBeancurdMsg.ispush) && (bool1)) {
-      a(1, i);
+      a(1, n);
     }
-    c(String.format("receiveBeancurd: isInsert = %b ", new Object[] { Boolean.valueOf(bool1) }));
+    d(String.format("receiveBeancurd: isInsert = %b ", new Object[] { Boolean.valueOf(bool1) }));
     return bool1;
   }
   
   public boolean a(List<MessageRecord> paramList, boolean paramBoolean)
   {
-    int j = this.jdField_b_of_type_Int;
-    int k = paramList.size();
-    if ((j > 0) && (k > 0))
+    int i1 = this.l;
+    int i2 = paramList.size();
+    if ((i1 > 0) && (i2 > 0))
     {
-      int i = 0;
-      while ((i < Math.min(j, k)) && (c(((MessageRecord)paramList.get(k - i - 1)).msgtype) <= 0)) {
-        i += 1;
+      int n = 0;
+      while ((n < Math.min(i1, i2)) && (f(((MessageRecord)paramList.get(i2 - n - 1)).msgtype) <= 0)) {
+        n += 1;
       }
-      if (i < Math.min(j, k))
+      if (n < Math.min(i1, i2))
       {
-        paramList = (MessageRecord)paramList.remove(k - i - 1);
+        paramList = (MessageRecord)paramList.remove(i2 - n - 1);
         if ((paramList != null) && (paramBoolean))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList.frienduin, paramList.istroop, paramList.msgtype, paramList.uniseq);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramList.frienduin, paramList.istroop, paramList.uniseq);
+          this.d.getMessageFacade().a(paramList.frienduin, paramList.istroop, paramList.msgtype, paramList.uniseq);
+          this.d.getMessageFacade().h(paramList.frienduin, paramList.istroop, paramList.uniseq);
         }
         paramBoolean = true;
         break label163;
@@ -727,53 +738,73 @@ public class BeancurdManager
     }
     paramBoolean = false;
     label163:
-    c(String.format(" filter beancurd is = %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    d(String.format(" filter beancurd is = %b", new Object[] { Boolean.valueOf(paramBoolean) }));
     return paramBoolean;
   }
   
   public int b(int paramInt)
   {
-    return ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, Integer.valueOf(100000))).intValue();
+    return ((Integer)this.e.get(paramInt, Integer.valueOf(100000))).intValue();
   }
   
-  public void b(String paramString)
+  public long b(String paramString)
   {
-    int i = 1;
-    c(String.format(" onDelFriend = %s", new Object[] { paramString }));
-    while (i <= 14)
+    d(String.format(" blockBeancurdForQZone ", new Object[0]));
+    long l1 = SystemClock.uptimeMillis() + 5000L;
+    this.g.put(paramString, Long.valueOf(l1));
+    return l1;
+  }
+  
+  public BeancurdMsg b(String paramString, int paramInt1, int paramInt2)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-      b(paramString, 0, i);
-      i += 1;
+      paramString = (Map)this.f.get(paramString);
+      if (paramString != null) {
+        return (BeancurdMsg)paramString.get(Integer.valueOf(paramInt2));
+      }
+    }
+    return null;
+  }
+  
+  public void c(String paramString)
+  {
+    int n = 1;
+    d(String.format(" onDelFriend = %s", new Object[] { paramString }));
+    while (n <= 14)
+    {
+      c(paramString, 0, n);
+      n += 1;
     }
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2)
+  public void c(String paramString, int paramInt1, int paramInt2)
   {
-    Map localMap = (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    Map localMap = (Map)this.f.get(paramString);
     if (localMap != null)
     {
       BeancurdMsg localBeancurdMsg = (BeancurdMsg)localMap.get(Integer.valueOf(paramInt2));
       if (localBeancurdMsg != null)
       {
         localMap.remove(Integer.valueOf(paramInt2));
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localMap);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().remove(localBeancurdMsg);
+        this.f.put(paramString, localMap);
+        this.d.getEntityManagerFactory().createEntityManager().remove(localBeancurdMsg);
       }
     }
   }
   
   public void onDestroy()
   {
-    c(" onDestory...");
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
+    d(" onDestory...");
+    this.j = true;
+    this.e.clear();
+    this.f.clear();
+    this.g.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BeancurdManager
  * JD-Core Version:    0.7.0.1
  */

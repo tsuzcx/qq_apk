@@ -19,12 +19,12 @@ class ScannerActivity$1
     ScannerActivity.access$100(this.a).setVisibility(8);
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
     if (paramInt == 2) {
-      localQQCustomDialog.setMessage(2131718410);
+      localQQCustomDialog.setMessage(2131915906);
     } else {
-      localQQCustomDialog.setMessage(2131718420);
+      localQQCustomDialog.setMessage(2131915919);
     }
     ScannerActivity.1.1 local1 = new ScannerActivity.1.1(this);
-    localQQCustomDialog.setPositiveButton(2131694583, local1);
+    localQQCustomDialog.setPositiveButton(2131892267, local1);
     localQQCustomDialog.setOnCancelListener(local1);
     localQQCustomDialog.show();
   }
@@ -39,7 +39,7 @@ class ScannerActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.ScannerActivity.1
  * JD-Core Version:    0.7.0.1
  */

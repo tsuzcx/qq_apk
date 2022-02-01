@@ -22,7 +22,7 @@ class Camera2Control$5
     if ((paramCaptureRequest instanceof CameraProxy.FocusData))
     {
       paramCaptureRequest = (CameraProxy.FocusData)paramCaptureRequest;
-      if (!paramCaptureRequest.jdField_a_of_type_Boolean)
+      if (!paramCaptureRequest.f)
       {
         paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
         StringBuilder localStringBuilder = new StringBuilder();
@@ -45,25 +45,25 @@ class Camera2Control$5
   private void a(boolean paramBoolean, CameraProxy.FocusData paramFocusData)
   {
     Camera2Control.d(this.a, false);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    Camera2Control.b(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
     try
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[Camera2] mAfCaptureCallback run, success:");
       ((StringBuilder)localObject).append(paramBoolean);
       Camera2Utils.a(1, ((StringBuilder)localObject).toString());
-      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        localObject = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));
+      Camera2Control.b(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+      CameraCaptureSession localCameraCaptureSession = Camera2Control.m(this.a);
+      if (this.a.d) {
+        localObject = Camera2Control.d(this.a).buildCaptureRequest(Camera2Control.b(this.a));
       } else {
-        localObject = Camera2Control.a(this.a).build();
+        localObject = Camera2Control.b(this.a).build();
       }
       localCameraCaptureSession.setRepeatingRequest((CaptureRequest)localObject, null, null);
-      if ((paramFocusData.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2RequestData.a != null) && (!paramFocusData.jdField_a_of_type_Boolean))
+      if ((paramFocusData.e.b != null) && (!paramFocusData.f))
       {
-        paramFocusData.jdField_a_of_type_Boolean = true;
-        paramFocusData.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2RequestData.a.a(1, paramBoolean);
+        paramFocusData.f = true;
+        paramFocusData.e.b.a(1, paramBoolean);
         return;
       }
     }
@@ -91,7 +91,7 @@ class Camera2Control$5
     if ((paramCameraCaptureSession instanceof CameraProxy.FocusData))
     {
       paramCameraCaptureSession = (CameraProxy.FocusData)paramCameraCaptureSession;
-      if (!paramCameraCaptureSession.jdField_a_of_type_Boolean)
+      if (!paramCameraCaptureSession.f)
       {
         a(false, paramCameraCaptureSession);
         return;
@@ -108,7 +108,7 @@ class Camera2Control$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.5
  * JD-Core Version:    0.7.0.1
  */

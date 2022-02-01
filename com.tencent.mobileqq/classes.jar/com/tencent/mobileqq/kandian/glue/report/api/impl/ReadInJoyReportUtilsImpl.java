@@ -7,13 +7,11 @@ import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.kandian.base.image.ImageRequest;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.GalleryReportedUtils;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.CoreReport;
 import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import java.util.HashMap;
 import kotlin.Metadata;
 import mqq.app.AppRuntime;
@@ -31,7 +29,7 @@ public final class ReadInJoyReportUtilsImpl
   @Nullable
   public String getClickT(long paramLong)
   {
-    return ReadinjoyReportUtils.b(paramLong);
+    return ReadinjoyReportUtils.e(paramLong);
   }
   
   @Nullable
@@ -43,12 +41,12 @@ public final class ReadInJoyReportUtilsImpl
   @Nullable
   public String getReportSessionID()
   {
-    return ReadinjoyReportUtils.a;
+    return ReadinjoyReportUtils.i;
   }
   
   public boolean isKanDianSubscribe(long paramLong)
   {
-    return ReadinjoyReportUtils.a(paramLong);
+    return ReadinjoyReportUtils.d(paramLong);
   }
   
   public void newKanDianOidbReport(@Nullable Object paramObject, int paramInt)
@@ -72,7 +70,7 @@ public final class ReadInJoyReportUtilsImpl
   
   public void reportQualityDataDimension(int paramInt1, int paramInt2, long paramLong, @Nullable HashMap<String, Object> paramHashMap)
   {
-    ReadinjoyReportUtils.a(paramInt1, paramInt2, paramLong, paramHashMap);
+    RIJImageOptReportImpl.a.reportQualityDataDimension(paramInt1, paramInt2, paramLong, paramHashMap);
   }
   
   public void reportSetTopOrCancelSetTop(int paramInt, @Nullable String paramString1, @Nullable String paramString2, @Nullable Resources paramResources)
@@ -87,9 +85,7 @@ public final class ReadInJoyReportUtilsImpl
   
   public void reportSlowImageRequest(@Nullable ImageRequest paramImageRequest)
   {
-    if (paramImageRequest != null) {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800AEF3", "0X800AEF3", 0, 0, "", "", "", paramImageRequest.toString(), false);
-    }
+    RIJImageOptReportImpl.a.reportSlowImageRequest(paramImageRequest);
   }
   
   public void reset68bRespArticlePosReportInfo(@Nullable AppRuntime paramAppRuntime)
@@ -99,7 +95,7 @@ public final class ReadInJoyReportUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.api.impl.ReadInJoyReportUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

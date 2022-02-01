@@ -107,7 +107,7 @@ public final class GetLuxuryGiftVideoConfigByCategoryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protobuf.iliveLuxuryGiftVideoSvr.nano.GetLuxuryGiftVideoConfigByCategoryReq
  * JD-Core Version:    0.7.0.1
  */

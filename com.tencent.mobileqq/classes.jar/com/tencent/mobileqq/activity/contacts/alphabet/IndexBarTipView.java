@@ -25,20 +25,20 @@ import com.tencent.qphone.base.util.QLog;
 public class IndexBarTipView
   extends View
 {
-  private static String jdField_a_of_type_JavaLangString = "IndexBarTipView";
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int c;
-  private int d;
+  private static String a = "IndexBarTipView";
+  private RectF b = new RectF();
+  private String c = "";
+  private Paint d;
   private int e;
+  private int f;
+  private float g;
+  private int h;
+  private int i;
+  private int j;
+  private Drawable k;
+  private Matrix l;
+  private Paint m;
+  private BitmapShader n;
   
   public IndexBarTipView(Context paramContext)
   {
@@ -61,76 +61,76 @@ public class IndexBarTipView
     if ((paramDrawable instanceof BitmapDrawable)) {
       ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    Bitmap localBitmap = a(i, j, Bitmap.Config.ARGB_8888, 1);
+    int i1 = paramDrawable.getIntrinsicWidth();
+    int i2 = paramDrawable.getIntrinsicHeight();
+    Bitmap localBitmap = a(i1, i2, Bitmap.Config.ARGB_8888, 1);
     Canvas localCanvas = new Canvas(localBitmap);
-    paramDrawable.setBounds(0, 0, i, j);
+    paramDrawable.setBounds(0, 0, i1, i2);
     paramDrawable.draw(localCanvas);
     return localBitmap;
   }
   
   private void a()
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.k;
     if (localDrawable == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(a(localDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    this.n = new BitmapShader(a(localDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.c = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297216);
+    this.h = paramContext.getResources().getColor(17170444);
+    this.g = paramContext.getResources().getDimension(2131297647);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
-      this.c = paramContext.getColor(2, this.c);
-      this.jdField_a_of_type_Float = paramContext.getDimension(5, this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(7);
+      this.h = paramContext.getColor(2, this.h);
+      this.g = paramContext.getDimension(5, this.g);
+      this.k = paramContext.getDrawable(7);
       paramContext.recycle();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.d = new Paint(1);
+    this.d.setColor(this.h);
+    this.d.setTypeface(Typeface.DEFAULT);
+    this.d.setTextAlign(Paint.Align.CENTER);
+    this.d.setTextSize(this.g);
+    this.l = new Matrix();
+    this.m = new Paint();
+    this.m.setAntiAlias(true);
     a();
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+    if (this.k == null) {
       return;
     }
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateImagePaint mWidth =  ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.e);
       localStringBuilder.append(", getWidth = ");
       localStringBuilder.append(getWidth());
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    float f1 = i;
-    float f2 = j;
+    int i1 = this.k.getIntrinsicWidth();
+    int i2 = this.k.getIntrinsicHeight();
+    float f1 = i1;
+    float f2 = i2;
     if (f1 * 1.0F / f2 > 1.0F) {
-      f1 = this.jdField_a_of_type_Int * 1.0F / f1;
+      f1 = this.e * 1.0F / f1;
     } else {
-      f1 = this.jdField_a_of_type_Int * 1.0F / f2;
+      f1 = this.e * 1.0F / f2;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-    this.jdField_b_of_type_Int = ((int)(f1 * f2));
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.l.setScale(f1, f1);
+    this.n.setLocalMatrix(this.l);
+    this.m.setShader(this.n);
+    this.f = ((int)(f1 * f2));
+    this.b.set(0.0F, 0.0F, this.e, this.f);
   }
   
   public Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig, int paramInt3)
@@ -155,65 +155,65 @@ public class IndexBarTipView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.c)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
+    if (this.k != null) {
+      paramCanvas.drawRect(this.b, this.m);
     }
-    paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, this.d, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(this.c, this.i, this.j, this.d);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Int != getWidth())
+    if (this.e != getWidth())
     {
-      this.jdField_a_of_type_Int = getWidth();
+      this.e = getWidth();
       b();
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.c))
     {
       Rect localRect = new Rect();
-      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      String str = this.jdField_b_of_type_JavaLangString;
+      Paint localPaint = this.d;
+      String str = this.c;
       localPaint.getTextBounds(str, 0, str.length(), localRect);
-      double d1 = this.jdField_a_of_type_Int;
+      double d1 = this.e;
       Double.isNaN(d1);
       double d2 = localRect.width();
       Double.isNaN(d2);
-      this.d = ((int)(d1 * 0.5D - d2 / 2.0D));
-      d1 = this.jdField_b_of_type_Int;
+      this.i = ((int)(d1 * 0.5D - d2 / 2.0D));
+      d1 = this.f;
       Double.isNaN(d1);
       d2 = localRect.height();
       Double.isNaN(d2);
-      this.e = ((int)(d1 * 0.5D + d2 / 2.0D));
+      this.j = ((int)(d1 * 0.5D + d2 / 2.0D));
     }
   }
   
   public void setText(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
     paramString = new Rect();
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    String str = this.jdField_b_of_type_JavaLangString;
+    Paint localPaint = this.d;
+    String str = this.c;
     localPaint.getTextBounds(str, 0, str.length(), paramString);
-    double d1 = this.jdField_a_of_type_Int;
+    double d1 = this.e;
     Double.isNaN(d1);
     double d2 = paramString.width();
     Double.isNaN(d2);
-    this.d = ((int)(d1 * 0.5D - d2 / 2.0D));
-    d1 = this.jdField_b_of_type_Int;
+    this.i = ((int)(d1 * 0.5D - d2 / 2.0D));
+    d1 = this.f;
     Double.isNaN(d1);
     d2 = paramString.height();
     Double.isNaN(d2);
-    this.e = ((int)(d1 * 0.5D + d2 / 2.0D));
+    this.j = ((int)(d1 * 0.5D + d2 / 2.0D));
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipView
  * JD-Core Version:    0.7.0.1
  */

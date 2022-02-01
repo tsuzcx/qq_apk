@@ -7,7 +7,7 @@ class AvGameLoadingActivity$5$1
   
   public void run()
   {
-    AvGameLoadingActivity.a(this.a.a);
+    AvGameLoadingActivity.m(this.a.b);
   }
 }
 

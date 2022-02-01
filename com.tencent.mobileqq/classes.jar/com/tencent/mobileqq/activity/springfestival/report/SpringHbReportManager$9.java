@@ -20,7 +20,7 @@ class SpringHbReportManager$9
         ((StringBuilder)localObject).append(this.a);
         QLog.i("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = SpringHbReportManager.a(this.this$0).iterator();
+      Object localObject = SpringHbReportManager.e(this.this$0).iterator();
       while (((Iterator)localObject).hasNext())
       {
         SpringHbReportManager.ReportInfo localReportInfo = (SpringHbReportManager.ReportInfo)((Iterator)localObject).next();
@@ -38,7 +38,7 @@ class SpringHbReportManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.9
  * JD-Core Version:    0.7.0.1
  */

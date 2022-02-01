@@ -16,7 +16,7 @@ class HeadsPanelAnimationView$1
     paramAnimation.setDuration(500);
     paramAnimation.setFillAfter(true);
     paramAnimation.setAnimationListener(new HeadsPanelAnimationView.1.1(this));
-    this.a.d.startAnimation(paramAnimation);
+    this.a.i.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -25,7 +25,7 @@ class HeadsPanelAnimationView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.1
  * JD-Core Version:    0.7.0.1
  */

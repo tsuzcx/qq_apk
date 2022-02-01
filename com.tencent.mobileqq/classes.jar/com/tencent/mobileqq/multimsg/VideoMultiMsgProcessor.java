@@ -19,12 +19,7 @@ import java.util.Set;
 public class VideoMultiMsgProcessor
   extends BaseMultiMsgProcessor
 {
-  private static final String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716063);
-  }
+  private static final String b = HardCodeUtil.a(2131913514);
   
   public VideoMultiMsgProcessor(QQAppInterface paramQQAppInterface)
   {
@@ -39,7 +34,7 @@ public class VideoMultiMsgProcessor
     }
     localShortVideoReq.a(paramArrayList1);
     localShortVideoReq.a(new VideoMultiMsgProcessor.1(this, paramArrayList, paramHashMap, paramIMultiMsgRichUploadCallback, paramMultiMsgRequest));
-    ShortVideoBusiManager.a(localShortVideoReq, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ShortVideoBusiManager.a(localShortVideoReq, this.a);
   }
   
   public void a(MultiMsgRequest paramMultiMsgRequest, HashMap<String, ArrayList<MessageRecord>> paramHashMap, IMultiMsgRichUploadCallback paramIMultiMsgRichUploadCallback)
@@ -89,7 +84,7 @@ public class VideoMultiMsgProcessor
           if (localObject1 == null) {
             localObject3 = SVBusiUtil.a(5, 5);
           }
-          localObject1 = ShortVideoBusiManager.a(5, localObject2, (ShortVideoReq)localObject3);
+          localObject1 = ShortVideoBusiManager.b(5, localObject2, (ShortVideoReq)localObject3);
           if (localObject1 != null)
           {
             localArrayList1.add(localObject1);
@@ -126,7 +121,7 @@ public class VideoMultiMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.VideoMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

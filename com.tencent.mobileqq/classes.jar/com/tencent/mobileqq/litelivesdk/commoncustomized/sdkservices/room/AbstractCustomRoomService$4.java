@@ -13,7 +13,7 @@ class AbstractCustomRoomService$4
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomHttpCallbacker.onResponse(paramInt, new JSONObject(paramString));
+      this.a.onResponse(paramInt, new JSONObject(paramString));
       return;
     }
     catch (JSONException paramString)
@@ -24,12 +24,12 @@ class AbstractCustomRoomService$4
   
   public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomHttpCallbacker.onResponse(0, paramJSONObject);
+    this.a.onResponse(0, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.room.AbstractCustomRoomService.4
  * JD-Core Version:    0.7.0.1
  */

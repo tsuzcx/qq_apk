@@ -7,12 +7,12 @@ class VideoFeedsAdapter$10
   
   public void run()
   {
-    this.this$0.b(this.a);
+    this.this$0.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.dinifly.utils;
 
 import android.os.Build.VERSION;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
+import androidx.annotation.FloatRange;
 import androidx.annotation.MainThread;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 
 public class LottieValueAnimator
@@ -73,10 +74,14 @@ public class LottieValueAnimator
       if (!isRunning()) {
         return;
       }
-      paramLong = System.nanoTime();
-      long l = this.lastFrameTimeNs;
+      L.beginSection("LottieValueAnimator#doFrame");
+      long l2 = this.lastFrameTimeNs;
+      long l1 = 0L;
+      if (l2 != 0L) {
+        l1 = paramLong - l2;
+      }
       float f1 = getFrameDurationNs();
-      float f2 = (float)(paramLong - l) / f1;
+      float f2 = (float)l1 / f1;
       float f3 = this.frame;
       f1 = f2;
       if (isReversed()) {
@@ -90,7 +95,12 @@ public class LottieValueAnimator
       if ((bool ^ true)) {
         if ((getRepeatCount() != -1) && (this.repeatCount >= getRepeatCount()))
         {
-          this.frame = getMaxFrame();
+          if (this.speed < 0.0F) {
+            f1 = getMinFrame();
+          } else {
+            f1 = getMaxFrame();
+          }
+          this.frame = f1;
           removeFrameCallback();
           notifyEnd(isReversed());
         }
@@ -116,6 +126,7 @@ public class LottieValueAnimator
         }
       }
       verifyFrame();
+      L.endSection("LottieValueAnimator#doFrame");
     }
   }
   
@@ -232,7 +243,7 @@ public class LottieValueAnimator
       f = getMinFrame();
     }
     setFrame((int)f);
-    this.lastFrameTimeNs = System.nanoTime();
+    this.lastFrameTimeNs = 0L;
     this.repeatCount = 0;
     postFrameCallback();
   }
@@ -272,7 +283,7 @@ public class LottieValueAnimator
   {
     this.running = true;
     postFrameCallback();
-    this.lastFrameTimeNs = System.nanoTime();
+    this.lastFrameTimeNs = 0L;
     if ((isReversed()) && (getFrame() == getMinFrame()))
     {
       this.frame = getMaxFrame();
@@ -305,17 +316,16 @@ public class LottieValueAnimator
     float f = this.frame;
     this.frame = 0.0F;
     setFrame((int)f);
+    notifyUpdate();
   }
   
-  public void setFrame(int paramInt)
+  public void setFrame(float paramFloat)
   {
-    float f1 = this.frame;
-    float f2 = paramInt;
-    if (f1 == f2) {
+    if (this.frame == paramFloat) {
       return;
     }
-    this.frame = MiscUtils.clamp(f2, getMinFrame(), getMaxFrame());
-    this.lastFrameTimeNs = System.nanoTime();
+    this.frame = MiscUtils.clamp(paramFloat, getMinFrame(), getMaxFrame());
+    this.lastFrameTimeNs = 0L;
     notifyUpdate();
   }
   
@@ -372,7 +382,7 @@ public class LottieValueAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.LottieValueAnimator
  * JD-Core Version:    0.7.0.1
  */

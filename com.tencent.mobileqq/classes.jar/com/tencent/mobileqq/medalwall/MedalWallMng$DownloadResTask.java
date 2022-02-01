@@ -21,42 +21,42 @@ public class MedalWallMng$DownloadResTask
   public void run()
   {
     long l3 = SystemClock.elapsedRealtime();
-    boolean bool = TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString);
+    boolean bool = TextUtils.isEmpty(this.a.b);
     long l2 = 0L;
     Object localObject;
     if (bool)
     {
       localObject = this.a;
-      ((MedalWallMng.NeedGuideMedal)localObject).jdField_a_of_type_Int = 2;
-      ((MedalWallMng.NeedGuideMedal)localObject).jdField_b_of_type_Int = 1000;
+      ((MedalWallMng.NeedGuideMedal)localObject).f = 2;
+      ((MedalWallMng.NeedGuideMedal)localObject).g = 1000;
     }
     else
     {
       long l1 = l2;
       try
       {
-        localObject = new File(this.a.jdField_b_of_type_JavaLangString);
+        localObject = new File(this.a.c);
         l1 = l2;
-        this.a.jdField_b_of_type_Int = HttpDownloadUtil.downloadData(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, (File)localObject, 2);
+        this.a.g = HttpDownloadUtil.downloadData(this.this$0.n, this.a.b, (File)localObject, 2);
         l1 = l2;
         l2 = SystemClock.elapsedRealtime() - l3;
         l1 = l2;
-        if (this.a.jdField_b_of_type_Int == 0)
+        if (this.a.g == 0)
         {
           l1 = l2;
-          this.a.jdField_a_of_type_Int = 1;
+          this.a.f = 1;
         }
         else
         {
           l1 = l2;
-          this.a.jdField_a_of_type_Int = 2;
+          this.a.f = 2;
         }
       }
       catch (Throwable localThrowable)
       {
         MedalWallMng.NeedGuideMedal localNeedGuideMedal = this.a;
-        localNeedGuideMedal.jdField_a_of_type_Int = 2;
-        localNeedGuideMedal.jdField_b_of_type_Int = 2000;
+        localNeedGuideMedal.f = 2;
+        localNeedGuideMedal.g = 2000;
         localThrowable.printStackTrace();
         l2 = l1;
         if (QLog.isColorLevel())
@@ -70,7 +70,7 @@ public class MedalWallMng$DownloadResTask
     localMessage.what = 2;
     localMessage.arg1 = ((int)l2);
     localMessage.obj = this.a;
-    this.this$0.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+    this.this$0.p.sendMessage(localMessage);
   }
 }
 

@@ -3,7 +3,6 @@ package com.tencent.open.agent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ActionSheet;
 
 class BaseAuthorityAccountView$4
   implements View.OnClickListener
@@ -12,18 +11,16 @@ class BaseAuthorityAccountView$4
   
   public void onClick(View paramView)
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView.a(this.jdField_a_of_type_JavaLangString, true)) && ((this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity))) {
-      ((QuickLoginAuthorityActivity)this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, true);
+    if ((!this.b.a(this.a, true)) && ((this.b.c instanceof QuickLoginAuthorityActivity))) {
+      ((QuickLoginAuthorityActivity)this.b.c).a(this.a, true);
     }
-    if (this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    this.b.f();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.4
  * JD-Core Version:    0.7.0.1
  */

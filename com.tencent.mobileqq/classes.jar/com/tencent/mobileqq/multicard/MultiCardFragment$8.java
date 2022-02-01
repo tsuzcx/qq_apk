@@ -33,27 +33,27 @@ class MultiCardFragment$8
       }
       MultiCardFragment.b(this.a, true);
       MultiCardFragment.a(this.a, false);
-      if (MultiCardFragment.a(this.a) != null)
+      if (MultiCardFragment.g(this.a) != null)
       {
         localObject = this.a;
-        MultiCardFragment.a((MultiCardFragment)localObject, MultiCardFragment.a((MultiCardFragment)localObject).a());
+        MultiCardFragment.a((MultiCardFragment)localObject, MultiCardFragment.g((MultiCardFragment)localObject).getCurrentItem());
       }
     }
     else
     {
-      MultiCardFragment.a(this.a);
+      MultiCardFragment.e(this.a);
       MultiCardFragment.a(this.a, true);
-      if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
+      if ((MultiCardFragment.g(this.a) != null) && (MultiCardFragment.g(this.a).getCurrentItem() > MultiCardFragment.d(this.a).a()))
       {
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
+        MultiCardFragment.d(this.a).b(MultiCardFragment.g(this.a).getCurrentItem());
+        MultiCardFragment.d(this.a).b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.8
  * JD-Core Version:    0.7.0.1
  */

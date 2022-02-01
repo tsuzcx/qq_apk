@@ -67,7 +67,7 @@ public class AudioDeviceServiceImpl
     while (((Iterator)localObject).hasNext())
     {
       IAudioDeviceService.IAudioDeviceListener localIAudioDeviceListener = (IAudioDeviceService.IAudioDeviceListener)((Iterator)localObject).next();
-      if ((localIAudioDeviceListener.c() & paramInt) == paramInt)
+      if ((localIAudioDeviceListener.t() & paramInt) == paramInt)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("notifyAllDeviceStatusChanged: audioDeviceListener=");
@@ -98,7 +98,7 @@ public class AudioDeviceServiceImpl
   public void onDestroy()
   {
     this.audioDeviceListenerList.clear();
-    this.senorManager.a();
+    this.senorManager.b();
     this.senorManager = null;
     unBindApp();
   }
@@ -314,7 +314,7 @@ public class AudioDeviceServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.impl.AudioDeviceServiceImpl
  * JD-Core Version:    0.7.0.1
  */

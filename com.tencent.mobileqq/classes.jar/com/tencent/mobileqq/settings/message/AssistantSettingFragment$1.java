@@ -24,18 +24,18 @@ class AssistantSettingFragment$1
     if ((paramBoolean1) && (!this.a.getBaseActivity().isFinishing()))
     {
       AssistantSettingFragment localAssistantSettingFragment = this.a;
-      AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).a(), paramBoolean2);
+      AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).getSwitch(), paramBoolean2);
     }
   }
   
   protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
   {
-    if ((paramBoolean) && (AssistantSettingFragment.a(this.a) != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$EntryListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$EntryListAdapter.a(paramArrayOfShort)))
+    if ((paramBoolean) && (AssistantSettingFragment.b(this.a) != null) && (this.a.h != null) && (this.a.h.a(paramArrayOfShort)))
     {
       if (com.tencent.TMG.utils.QLog.isColorLevel()) {
         com.tencent.TMG.utils.QLog.i("AssistantSettingFragment", 0, "onGetCommonSwitchFromDetailInfo");
       }
-      AssistantSettingFragment.a(this.a).a();
+      AssistantSettingFragment.b(this.a).a();
     }
   }
   
@@ -56,7 +56,7 @@ class AssistantSettingFragment$1
     if (paramBoolean)
     {
       localObject = this.a;
-      AssistantSettingFragment.b((AssistantSettingFragment)localObject, ((AssistantSettingFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c() ^ true);
+      AssistantSettingFragment.c((AssistantSettingFragment)localObject, ((AssistantSettingFragment)localObject).i.e() ^ true);
     }
   }
   
@@ -65,17 +65,17 @@ class AssistantSettingFragment$1
     if (!this.a.getBaseActivity().isFinishing())
     {
       AssistantSettingFragment localAssistantSettingFragment = this.a;
-      AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).a(), paramBoolean2);
+      AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).getSwitch(), paramBoolean2);
     }
   }
   
   protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
   {
     CTEntry localCTEntry;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$EntryListAdapter == null) {
+    if (this.a.h == null) {
       localCTEntry = null;
     } else {
-      localCTEntry = this.a.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$EntryListAdapter.a(paramShort1);
+      localCTEntry = this.a.h.a(paramShort1);
     }
     if (localCTEntry == null) {
       return;
@@ -86,10 +86,10 @@ class AssistantSettingFragment$1
     } else {
       bool = false;
     }
-    if ((!paramBoolean) && (bool == localCTEntry.e))
+    if ((!paramBoolean) && (bool == localCTEntry.m))
     {
-      localCTEntry.e ^= true;
-      this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingFragment.1.1(this, bool));
+      localCTEntry.m ^= true;
+      this.a.g.post(new AssistantSettingFragment.1.1(this, bool));
     }
   }
   
@@ -109,9 +109,9 @@ class AssistantSettingFragment$1
     }
     if (!paramBoolean)
     {
-      AssistantSettingFragment.a(this.a, 2131718834, 1);
+      AssistantSettingFragment.a(this.a, 2131916364, 1);
       localObject = this.a;
-      AssistantSettingFragment.b((AssistantSettingFragment)localObject, ((AssistantSettingFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c() ^ true);
+      AssistantSettingFragment.c((AssistantSettingFragment)localObject, ((AssistantSettingFragment)localObject).i.e() ^ true);
     }
   }
   
@@ -119,18 +119,18 @@ class AssistantSettingFragment$1
   {
     if (!this.a.getBaseActivity().isFinishing())
     {
-      if (AssistantSettingFragment.a(this.a) == null) {
+      if (AssistantSettingFragment.c(this.a) == null) {
         return;
       }
       if (!paramBoolean1)
       {
-        AssistantSettingFragment.a(this.a, 2131718834, 1);
+        AssistantSettingFragment.a(this.a, 2131916364, 1);
         localAssistantSettingFragment = this.a;
-        AssistantSettingFragment.a(localAssistantSettingFragment, ((IStickerRecManager)AssistantSettingFragment.a(localAssistantSettingFragment).getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen(), AssistantSettingFragment.a(this.a));
+        AssistantSettingFragment.a(localAssistantSettingFragment, ((IStickerRecManager)AssistantSettingFragment.c(localAssistantSettingFragment).getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen(), AssistantSettingFragment.d(this.a));
         return;
       }
       AssistantSettingFragment localAssistantSettingFragment = this.a;
-      AssistantSettingFragment.a(localAssistantSettingFragment, paramBoolean2, AssistantSettingFragment.a(localAssistantSettingFragment));
+      AssistantSettingFragment.a(localAssistantSettingFragment, paramBoolean2, AssistantSettingFragment.d(localAssistantSettingFragment));
     }
   }
   
@@ -138,18 +138,18 @@ class AssistantSettingFragment$1
   {
     if (!paramBoolean)
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131701001), 0).b(this.a.getBaseActivity().getTitleBarHeight());
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131899023), 0).show(this.a.getBaseActivity().getTitleBarHeight());
       paramBoolean = ((Boolean)paramObject).booleanValue();
       AssistantSettingFragment.a(this.a, true);
-      AssistantSettingFragment.b(this.a).setChecked(paramBoolean);
-      AssistantSettingFragment.a(this.a, paramBoolean);
+      AssistantSettingFragment.e(this.a).setChecked(paramBoolean);
+      AssistantSettingFragment.b(this.a, paramBoolean);
       AssistantSettingFragment.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

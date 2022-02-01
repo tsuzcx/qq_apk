@@ -14,7 +14,6 @@ public class DeviceInfoUtil
   
   static
   {
-    LibraryLoadUtils.loadLibrary("YTCommon");
     LibraryLoadUtils.loadLibrary("light-sdk");
     nativeInit();
   }
@@ -102,7 +101,7 @@ public class DeviceInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.utils.DeviceInfoUtil
  * JD-Core Version:    0.7.0.1
  */

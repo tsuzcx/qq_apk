@@ -64,9 +64,9 @@ class AutoVideoItemBuilder$1
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append((String)localObject2);
             ((StringBuilder)localObject1).append("?width=");
-            ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.e);
-            ((StringBuilder)localObject1).append("&height=");
             ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.f);
+            ((StringBuilder)localObject1).append("&height=");
+            ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.g);
             localObject1 = ((StringBuilder)localObject1).toString();
           }
           else if (k == ((String)localObject2).length() - 1)
@@ -74,9 +74,9 @@ class AutoVideoItemBuilder$1
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append((String)localObject2);
             ((StringBuilder)localObject1).append("width=");
-            ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.e);
-            ((StringBuilder)localObject1).append("&height=");
             ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.f);
+            ((StringBuilder)localObject1).append("&height=");
+            ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.g);
             localObject1 = ((StringBuilder)localObject1).toString();
           }
           else
@@ -87,7 +87,7 @@ class AutoVideoItemBuilder$1
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append((String)localObject2);
               ((StringBuilder)localObject1).append("&width=");
-              ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.e);
+              ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.f);
               localObject3 = ((StringBuilder)localObject1).toString();
             }
             localObject1 = localObject3;
@@ -96,7 +96,7 @@ class AutoVideoItemBuilder$1
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append((String)localObject3);
               ((StringBuilder)localObject1).append("&height=");
-              ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.f);
+              ((StringBuilder)localObject1).append(localAutoVideoMsgViewHolder.g);
               localObject1 = ((StringBuilder)localObject1).toString();
             }
           }
@@ -106,13 +106,13 @@ class AutoVideoItemBuilder$1
         ((StringBuilder)localObject2).append((String)localObject1);
         Log.i("AutoVideoItemBuilder", ((StringBuilder)localObject2).toString());
       }
-      localObject1 = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.jdField_a_of_type_AndroidContentContext, (String)localObject1);
+      localObject1 = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.e, (String)localObject1);
       if (localObject1 != null) {
         ((JumpAction)localObject1).a();
       }
-      if ((localAutoVideoMsgViewHolder.a instanceof MessageForStructing))
+      if ((localAutoVideoMsgViewHolder.q instanceof MessageForStructing))
       {
-        localObject1 = (MessageForStructing)localAutoVideoMsgViewHolder.a;
+        localObject1 = (MessageForStructing)localAutoVideoMsgViewHolder.q;
         if ((((MessageForStructing)localObject1).structingMsg instanceof StructMsgSubImageVideo))
         {
           localObject2 = (StructMsgSubImageVideo)((MessageForStructing)localObject1).structingMsg;
@@ -122,8 +122,8 @@ class AutoVideoItemBuilder$1
           } else if (((StructMsgSubImageVideo)localObject2).getImageItem() != null) {
             localObject1 = ((StructMsgSubImageVideo)localObject2).getImageItem().title;
           }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-            ReportController.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "auth_aio", "clk_content", 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, (String)localObject1);
+          if (this.a.f != null) {
+            ReportController.b(null, "dc00898", "", this.a.f.b, "auth_aio", "clk_content", 0, 0, "", "", this.a.f.e, (String)localObject1);
           }
         }
       }
@@ -133,7 +133,7 @@ class AutoVideoItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AutoVideoItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class PublicAccountProcessor
     return "PublicAccountProcessor";
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     if (BaseApplicationImpl.isInActionS) {
       return true;
@@ -44,12 +44,12 @@ public class PublicAccountProcessor
       }
       return paramBoolean ^ true;
     }
-    return true;
+    return (!ServiceAccountFolderManager.n()) || (!paramBoolean) || (paramRecentUser.getType() != 1008) || (!ServiceAccountFolderManager.c(paramRecentUser.uin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.PublicAccountProcessor
  * JD-Core Version:    0.7.0.1
  */

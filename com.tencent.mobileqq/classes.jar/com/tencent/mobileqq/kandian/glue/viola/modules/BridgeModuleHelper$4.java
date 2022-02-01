@@ -18,10 +18,10 @@ final class BridgeModuleHelper$4
     try
     {
       paramDialogInterface.put("button", 1);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule != null)
+      paramDialogInterface.put("buttonText", this.a.optString("okBtnText", ""));
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+        this.b.invokeCallJS(this.c, paramDialogInterface);
         return;
       }
     }
@@ -39,7 +39,7 @@ final class BridgeModuleHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -17,11 +17,11 @@ class SearchWordHistoryEntryModel$2$2
   
   public void onClick(View paramView)
   {
-    ((SearchWordHistoryManager)SearchWordHistoryEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel$2.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel).getManager(QQManagerFactory.SEARCH_WORD_HISTORY_MANAGER)).a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPopupWindowWithMask.dismiss();
-    SearchWordHistoryEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel$2.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel$2.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_his_del").ver2(UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel$2.jdField_a_of_type_ComTencentMobileqqSearchSearchWordHistoryEntryModel.b));
+    ((SearchWordHistoryManager)SearchWordHistoryEntryModel.a(this.b.c).getManager(QQManagerFactory.SEARCH_WORD_HISTORY_MANAGER)).d();
+    this.a.dismiss();
+    SearchWordHistoryEntryModel.b(this.b.c);
+    QQAppInterface localQQAppInterface = this.b.b;
+    ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_his_del").ver2(UniteSearchReportController.a(this.b.c.i));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{experiment_id:");
     localStringBuilder.append(UniteSearchReportController.b);
@@ -32,7 +32,7 @@ class SearchWordHistoryEntryModel$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchWordHistoryEntryModel.2.2
  * JD-Core Version:    0.7.0.1
  */

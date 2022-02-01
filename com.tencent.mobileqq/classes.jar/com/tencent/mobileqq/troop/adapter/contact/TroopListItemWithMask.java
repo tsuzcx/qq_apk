@@ -5,17 +5,17 @@ import com.tencent.mobileqq.persistence.Entity;
 public class TroopListItemWithMask
 {
   public int a;
-  public Entity a;
+  public Entity b;
   
   public TroopListItemWithMask(int paramInt, Entity paramEntity)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    this.a = paramInt;
+    this.b = paramEntity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.contact.TroopListItemWithMask
  * JD-Core Version:    0.7.0.1
  */

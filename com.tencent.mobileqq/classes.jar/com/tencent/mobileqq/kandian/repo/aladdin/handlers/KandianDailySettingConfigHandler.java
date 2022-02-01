@@ -23,7 +23,7 @@ public class KandianDailySettingConfigHandler
     while (paramList.hasNext())
     {
       ReadInJoyDailySettingModel localReadInJoyDailySettingModel = (ReadInJoyDailySettingModel)paramList.next();
-      if (localReadInJoyDailySettingModel.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      if (localReadInJoyDailySettingModel.a.equals(paramString)) {
         return localReadInJoyDailySettingModel;
       }
     }
@@ -93,24 +93,24 @@ public class KandianDailySettingConfigHandler
         {
           paramInt1 = 1;
         }
-        ((ReadInJoyDailySettingModel)localObject2).jdField_b_of_type_JavaLangString = localObject4[0];
-        ((ReadInJoyDailySettingModel)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject3);
+        ((ReadInJoyDailySettingModel)localObject2).b = localObject4[0];
+        ((ReadInJoyDailySettingModel)localObject2).a = ((String)localObject3);
         localObject3 = localObject4[1].split(",");
         localObject4 = localObject4[2].split(",");
-        ((ReadInJoyDailySettingModel)localObject2).jdField_b_of_type_JavaUtilList = new ArrayList();
-        ((ReadInJoyDailySettingModel)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
-        ((ReadInJoyDailySettingModel)localObject2).jdField_b_of_type_JavaUtilList.add("");
-        ((ReadInJoyDailySettingModel)localObject2).jdField_a_of_type_JavaUtilList.add("");
+        ((ReadInJoyDailySettingModel)localObject2).f = new ArrayList();
+        ((ReadInJoyDailySettingModel)localObject2).e = new ArrayList();
+        ((ReadInJoyDailySettingModel)localObject2).f.add("");
+        ((ReadInJoyDailySettingModel)localObject2).e.add("");
         paramInt2 = 0;
         while (paramInt2 < localObject3.length)
         {
-          ((ReadInJoyDailySettingModel)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
+          ((ReadInJoyDailySettingModel)localObject2).e.add(localObject3[paramInt2]);
           paramInt2 += 1;
         }
         paramInt2 = 0;
         while (paramInt2 < localObject4.length)
         {
-          ((ReadInJoyDailySettingModel)localObject2).jdField_b_of_type_JavaUtilList.add(localObject4[paramInt2]);
+          ((ReadInJoyDailySettingModel)localObject2).f.add(localObject4[paramInt2]);
           paramInt2 += 1;
         }
         if (paramInt1 == 0) {
@@ -135,7 +135,7 @@ public class KandianDailySettingConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.KandianDailySettingConfigHandler
  * JD-Core Version:    0.7.0.1
  */

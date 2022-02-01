@@ -17,13 +17,13 @@ import java.util.ArrayList;
 public class GameQuickWordsPanel
   extends RelativeLayout
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  GameRoomChatPie jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public WerewolvesPluginManager a;
-  XListView jdField_a_of_type_ComTencentWidgetXListView = null;
   public String a;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public WerewolvesPluginManager b;
+  ArrayList<String> c;
+  XListView d = null;
+  SessionInfo e;
+  QQAppInterface f;
+  GameRoomChatPie g;
   
   public GameQuickWordsPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,45 +32,45 @@ public class GameQuickWordsPanel
   
   public void a()
   {
-    ((GameQuickWordsPanel.WordsAdapter)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
+    ((GameQuickWordsPanel.WordsAdapter)this.d.getAdapter()).notifyDataSetChanged();
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, GameRoomChatPie paramGameRoomChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie = paramGameRoomChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager = ((WerewolvesHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.jdField_a_of_type_JavaLangString);
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    this.f = paramQQAppInterface;
+    this.e = paramSessionInfo;
+    this.a = paramSessionInfo.b;
+    this.g = paramGameRoomChatPie;
+    this.b = ((WerewolvesHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.a);
+    paramQQAppInterface = this.b.c();
     if (paramQQAppInterface != null) {
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.h();
     } else {
       paramQQAppInterface = null;
     }
     if ((paramQQAppInterface != null) && (paramQQAppInterface.size() != 0))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = paramQQAppInterface;
+      this.c = paramQQAppInterface;
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilArrayList.add(HardCodeUtil.a(2131705156));
-      this.jdField_a_of_type_JavaUtilArrayList.add(HardCodeUtil.a(2131705157));
-      this.jdField_a_of_type_JavaUtilArrayList.add(HardCodeUtil.a(2131705160));
-      this.jdField_a_of_type_JavaUtilArrayList.add(HardCodeUtil.a(2131705159));
-      this.jdField_a_of_type_JavaUtilArrayList.add(HardCodeUtil.a(2131705158));
+      this.c = new ArrayList();
+      this.c.add(HardCodeUtil.a(2131903046));
+      this.c.add(HardCodeUtil.a(2131903047));
+      this.c.add(HardCodeUtil.a(2131903050));
+      this.c.add(HardCodeUtil.a(2131903049));
+      this.c.add(HardCodeUtil.a(2131903048));
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131367503));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new GameQuickWordsPanel.1(this));
+    this.d = ((XListView)findViewById(2131434021));
+    this.d.setOnItemClickListener(new GameQuickWordsPanel.1(this));
     paramQQAppInterface = new GameQuickWordsPanel.WordsAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramQQAppInterface);
+    this.d.setAdapter(paramQQAppInterface);
     paramQQAppInterface.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.gameroom.GameQuickWordsPanel
  * JD-Core Version:    0.7.0.1
  */

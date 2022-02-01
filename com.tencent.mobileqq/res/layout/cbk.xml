@@ -8,18 +8,18 @@
                     <ImageView android:id="@id/jv2" android:background="@drawable/hzl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 </LinearLayout>
             </RelativeLayout>
-            <FrameLayout android:id="@id/mqv" android:background="@drawable/eou" android:visibility="visible" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="8.0dip" android:layout_below="@id/lyp">
-                <ImageView android:id="@id/ef9" android:background="@drawable/eq0" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="200.0dip" android:scaleType="centerCrop" />
+            <FrameLayout android:id="@id/mwc" android:background="@drawable/geu" android:visibility="visible" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="8.0dip" android:layout_below="@id/lyp">
+                <ImageView android:id="@id/ef9" android:background="@drawable/gey" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="200.0dip" android:scaleType="centerCrop" />
             </FrameLayout>
-            <RelativeLayout android:clipChildren="true" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mqv">
-                <com.tencent.widget.ScrollView android:id="@id/msz" android:fadingEdge="none" android:clipChildren="true" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="false">
+            <RelativeLayout android:clipChildren="true" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mwc">
+                <com.tencent.widget.ScrollView android:id="@id/n04" android:fadingEdge="none" android:clipChildren="true" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="false">
                     <RelativeLayout android:orientation="vertical" android:id="@id/b9w" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
                         <com.tencent.mobileqq.troop.widget.RoundRectUrlImageView android:id="@id/l_u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:scaleType="fitXY" />
-                        <LinearLayout android:orientation="vertical" android:id="@id/oct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/l_u" />
+                        <LinearLayout android:orientation="vertical" android:id="@id/qfp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/l_u" />
                     </RelativeLayout>
                 </com.tencent.widget.ScrollView>
             </RelativeLayout>
         </RelativeLayout>
-        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="bottom|center" android:id="@id/o5y" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="170.0dip" />
+        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="bottom|center" android:id="@id/pzc" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="170.0dip" />
     </FrameLayout>
 </com.tencent.mobileqq.together.ui.TogetherPanelTouchController>

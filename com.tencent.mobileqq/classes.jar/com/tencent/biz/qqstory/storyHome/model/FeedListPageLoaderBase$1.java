@@ -14,9 +14,9 @@ class FeedListPageLoaderBase$1
       FeedListPageLoaderBase.a(this.this$0).cancel();
     }
     FeedListPageLoaderBase localFeedListPageLoaderBase1 = this.this$0;
-    Stream localStream = Stream.of(Integer.valueOf(localFeedListPageLoaderBase1.a.a)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2));
+    Stream localStream = Stream.of(Integer.valueOf(localFeedListPageLoaderBase1.g.c)).map(new ThreadOffFunction("Q.qqstory.home.data.FeedListPageLoaderBase", 2));
     FeedListPageLoaderBase localFeedListPageLoaderBase2 = this.this$0;
-    FeedListPageLoaderBase.a(localFeedListPageLoaderBase1, localStream.map(localFeedListPageLoaderBase2.a(localFeedListPageLoaderBase2.a)).map(this.this$0.a()));
+    FeedListPageLoaderBase.a(localFeedListPageLoaderBase1, localStream.map(localFeedListPageLoaderBase2.a(localFeedListPageLoaderBase2.g)).map(this.this$0.e()));
     FeedListPageLoaderBase.a(this.this$0).subscribe(new FeedListPageLoaderBase.RequestFeedObserver(this.this$0));
   }
 }

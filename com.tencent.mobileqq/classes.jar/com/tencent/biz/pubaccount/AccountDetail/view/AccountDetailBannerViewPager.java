@@ -20,33 +20,33 @@ public class AccountDetailBannerViewPager
   extends ViewPager
   implements Handler.Callback
 {
-  private final int jdField_a_of_type_Int = 2000;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = new AccountDetailBannerViewPager.1(this);
-  private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailBannerIndicator;
-  private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 0;
-  private final int c = 1;
+  private final int a = 2000;
+  private List<ViewPager.OnPageChangeListener> b;
+  private AccountDetailBannerIndicator c;
+  private int d = 0;
+  private boolean e = false;
+  private MqqHandler f = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private final int g = 1;
+  private ViewPager.OnPageChangeListener h = new AccountDetailBannerViewPager.1(this);
   
   public AccountDetailBannerViewPager(Context paramContext)
   {
     super(paramContext);
-    super.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
+    super.setOnPageChangeListener(this.h);
   }
   
   public AccountDetailBannerViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
+    super.setOnPageChangeListener(this.h);
   }
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
+    this.b.add(paramOnPageChangeListener);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -61,8 +61,8 @@ public class AccountDetailBannerViewPager
     if (paramMessage.what != 1) {
       return false;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    if (this.b == 0)
+    this.f.removeMessages(1);
+    if (this.d == 0)
     {
       int i = getCurrentItem() + 1;
       setCurrentItem(i, true);
@@ -74,13 +74,13 @@ public class AccountDetailBannerViewPager
         QLog.d("AccountDetailBannerViewPager", 2, paramMessage.toString());
       }
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 2000L);
+    this.f.sendEmptyMessageDelayed(1, 2000L);
     return true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.b == 1) {
+    if (this.d == 1) {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -88,15 +88,15 @@ public class AccountDetailBannerViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.b == 1) {
+    if (this.d == 1) {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       if ((paramMotionEvent.getActionMasked() != 0) && (paramMotionEvent.getActionMasked() != 2))
       {
         if (paramMotionEvent.getActionMasked() == 1)
         {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 2000L);
+          this.f.sendEmptyMessageDelayed(1, 2000L);
           if (QLog.isDevelopLevel()) {
             QLog.d("AccountDetailBannerViewPager", 2, "onTouchEvent->startAutoScroll");
           }
@@ -104,7 +104,7 @@ public class AccountDetailBannerViewPager
       }
       else
       {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+        this.f.removeMessages(1);
         if (QLog.isDevelopLevel()) {
           QLog.d("AccountDetailBannerViewPager", 2, "onTouchEvent->stopAutoScroll");
         }
@@ -118,21 +118,21 @@ public class AccountDetailBannerViewPager
     super.setAdapter(paramPagerAdapter);
     if ((getAdapter() != null) && (getAdapter().getCount() > 1))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 2000L);
+      this.e = true;
+      this.f.sendEmptyMessageDelayed(1, 2000L);
       if (QLog.isDevelopLevel()) {
         QLog.d("AccountDetailBannerViewPager", 2, "setAdapter->startAutoScroll");
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
     }
   }
   
   public void setIndicator(AccountDetailBannerIndicator paramAccountDetailBannerIndicator)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailBannerIndicator = paramAccountDetailBannerIndicator;
+    this.c = paramAccountDetailBannerIndicator;
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -142,7 +142,7 @@ public class AccountDetailBannerViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerViewPager
  * JD-Core Version:    0.7.0.1
  */

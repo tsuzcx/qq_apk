@@ -15,19 +15,19 @@ class AEPhotoListLogicDefault$7
   {
     if (paramInt == 0)
     {
-      QZLog.d("QQAlbum", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+      QZLog.d("QQAlbum", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.a) });
       ThreadManager.postImmediately(new AEPhotoListLogicDefault.7.1(this), null, true);
       return;
     }
     paramString1 = Message.obtain();
     paramString1.what = 2;
     paramString1.obj = Integer.valueOf(paramInt);
-    ((AENewPhotoListFragment)this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogicDefault.a.get()).a.sendMessage(paramString1);
+    ((AENewPhotoListFragment)this.e.b.get()).C.sendMessage(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicDefault.7
  * JD-Core Version:    0.7.0.1
  */

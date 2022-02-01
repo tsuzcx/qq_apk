@@ -31,6 +31,8 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.NotificationDeleteReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.compatible.TempServlet;
+import com.tencent.mobileqq.guild.message.unread.api.IGuildUnreadCntService;
+import com.tencent.mobileqq.guild.message.unread.api.IGuildUnreadCntService.UnreadCntInfo;
 import com.tencent.mobileqq.managers.LoadingStateManager;
 import com.tencent.mobileqq.managers.PushNoticeManager;
 import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
@@ -63,50 +65,44 @@ import org.jetbrains.annotations.Nullable;
 public class MobileQQServiceExtend
   extends MobileQQService
 {
-  public static HashMap<String, UniPacket> a;
-  private int jdField_a_of_type_Int = 0;
-  private QQNotificationManager jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  public boolean a;
-  boolean b = true;
-  private boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static HashMap<String, UniPacket> d = new HashMap();
+  public boolean e = false;
+  boolean f = true;
+  private QQAppInterface g;
+  private Random h = new Random();
+  private boolean i = false;
+  private int j = 0;
+  private Map<Integer, Integer> k = new HashMap();
+  private QQNotificationManager l;
   
   public MobileQQServiceExtend(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
+    this.g = paramQQAppInterface;
+    d();
   }
   
   private int a(int paramInt1, QQMessageFacade paramQQMessageFacade, int paramInt2)
   {
-    int i = paramInt2;
+    int m = paramInt2;
     if (CommonBadgeUtilImpl.isMIUI6())
     {
       if (paramQQMessageFacade == null) {
         return paramInt2;
       }
       paramQQMessageFacade = (NotificationManager)BaseApplicationImpl.getContext().getSystemService("notification");
-      i = paramInt2;
+      m = paramInt2;
       if (Build.VERSION.SDK_INT >= 23)
       {
         if (paramQQMessageFacade == null) {
           return paramInt2;
         }
         paramQQMessageFacade = paramQQMessageFacade.getActiveNotifications();
-        i = 0;
-        while ((paramQQMessageFacade != null) && (i < paramQQMessageFacade.length))
+        m = 0;
+        while ((paramQQMessageFacade != null) && (m < paramQQMessageFacade.length))
         {
-          Object localObject = paramQQMessageFacade[i];
-          Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localObject.getId()));
+          Object localObject = paramQQMessageFacade[m];
+          Integer localInteger = (Integer)this.k.get(Integer.valueOf(localObject.getId()));
           if (localInteger != null)
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -120,28 +116,20 @@ public class MobileQQServiceExtend
             QLog.i("MobileQQServiceWrapper", 1, localStringBuilder.toString());
             paramInt2 -= localInteger.intValue();
           }
-          i += 1;
+          m += 1;
         }
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-        i = paramInt2;
+        this.k.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+        m = paramInt2;
       }
     }
-    return i;
-  }
-  
-  private int a(Intent paramIntent, int paramInt)
-  {
-    if (paramInt == -1) {
-      return paramIntent.getIntExtra("param_uinType", -1);
-    }
-    return paramInt;
+    return m;
   }
   
   private Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2)
   {
     paramIntent.putExtra("param_notifyid", 275);
     paramIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 134217728);
-    NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_HIDE_BADGE").setSmallIcon(2130841470).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
+    NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_HIDE_BADGE").setSmallIcon(2130842312).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
     localBuilder.setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramIntent);
     if (paramBitmap != null) {
       localBuilder.setLargeIcon(paramBitmap);
@@ -151,10 +139,10 @@ public class MobileQQServiceExtend
   
   private Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3)
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isOpenNoClearNotification();
-    int i = paramIntent.getIntExtra("param_notifyid", 0);
-    if ((i >= 512) && (i <= 522)) {
-      localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), i, paramIntent, 134217728);
+    boolean bool1 = this.g.isOpenNoClearNotification();
+    int m = paramIntent.getIntExtra("param_notifyid", 0);
+    if ((m >= 512) && (m <= 522)) {
+      localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), m, paramIntent, 134217728);
     } else {
       localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 268435456);
     }
@@ -168,68 +156,68 @@ public class MobileQQServiceExtend
     if (QLog.isColorLevel()) {
       QLog.d("CampusNoticeManager", 2, new Object[] { "buildNotification url :", paramIntent.getStringExtra("url") });
     }
-    int k = paramIntent.getIntExtra("uintype", -1);
-    i = 2130841470;
+    int i1 = paramIntent.getIntExtra("uintype", -1);
+    m = 2130842312;
     Object localObject = "CHANNEL_ID_SHOW_BADGE";
-    if (k == 1008)
+    if (i1 == 1008)
     {
       if ((!AppConstants.REMINDER_UIN.equals(paramIntent.getStringExtra("uin"))) && (!paramIntent.getBooleanExtra("activepull_push_flag", false)))
       {
-        i = 2130841838;
-        break label386;
+        m = 2130842755;
+        break label387;
       }
     }
     else
     {
-      if (k == 1030)
+      if (i1 == 1030)
       {
-        j = paramIntent.getIntExtra("campus_notice_id", 100);
-        paramBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130840405);
-        localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), j, paramIntent, 268435456);
+        n = paramIntent.getIntExtra("campus_notice_id", 100);
+        paramBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130841158);
+        localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), n, paramIntent, 268435456);
         if (QLog.isColorLevel()) {
           QLog.d("CampusNoticeManager", 2, new Object[] { "buildNotification UIN_TYPE_CAMPUS_NOTICE url :", paramIntent.getStringExtra("url") });
         }
-        break label386;
+        break label387;
       }
-      if ((k == 1035) || (k == 1041) || (k == 1042)) {
-        break label310;
+      if ((i1 == 1035) || (i1 == 1041) || (i1 == 1042)) {
+        break label311;
       }
     }
-    i = 2130841471;
-    break label386;
-    label310:
-    int j = paramIntent.getIntExtra("param_notifyid", 100);
-    paramBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130840405);
-    PendingIntent localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), j, paramIntent, 268435456);
+    m = 2130842313;
+    break label387;
+    label311:
+    int n = paramIntent.getIntExtra("param_notifyid", 100);
+    paramBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130841158);
+    PendingIntent localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), n, paramIntent, 268435456);
     if (QLog.isColorLevel()) {
       QLog.d("PushNoticeManager", 2, new Object[] { "buildNotification UIN_TYPE_PUSH_NOTICE url :", paramIntent.getStringExtra("url") });
     }
     localObject = "CHANNEL_ID_OTHER";
-    label386:
+    label387:
     boolean bool2 = paramIntent.getBooleanExtra("key_notifycation_oneway_message", false);
-    j = i;
+    n = m;
     if (bool2)
     {
-      j = i;
-      if (k == 1010) {
-        j = 2130845602;
+      n = m;
+      if (i1 == 1010) {
+        n = 2130847066;
       }
     }
-    if ((bool2) && ((k == 1001) || (k == 10002))) {
-      i = 1;
+    if ((bool2) && ((i1 == 1001) || (i1 == 10002))) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if (i != 0) {
-      j = 2130840422;
+    if (m != 0) {
+      n = 2130841178;
     }
     if (paramIntent.getBooleanExtra("qav_notify_flag", false)) {
-      j = 2130842201;
+      n = 2130843136;
     }
-    if ((k != 1045) && (k != 1044))
+    if ((i1 != 1045) && (i1 != 1044))
     {
       paramIntent = (Intent)localObject;
-      if (k == 1)
+      if (i1 == 1)
       {
         SdkInfoUtil.isAndroidQ();
         paramIntent = (Intent)localObject;
@@ -239,16 +227,16 @@ public class MobileQQServiceExtend
     {
       paramIntent = "CHANNEL_ID_LIMIT_CHAT";
     }
-    paramIntent = NotificationFactory.createNotificationCompatBuilder(paramIntent).setSmallIcon(j).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
-    if ((k != 1030) && (k != 1035) && (k != 1041) && (k != 1042) && (bool1)) {
+    paramIntent = NotificationFactory.createNotificationCompatBuilder(paramIntent).setSmallIcon(n).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
+    if ((i1 != 1030) && (i1 != 1035) && (i1 != 1041) && (i1 != 1042) && (bool1)) {
       paramIntent.setOngoing(true);
     }
-    if (NotifyLightUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (NotifyLightUtil.a(BaseApplication.getContext(), this.g))
     {
       Calendar.getInstance().get(11);
       paramIntent.setLights(-16711936, 2000, 2000);
     }
-    if (this.c)
+    if (this.i)
     {
       if (paramBitmap != null) {
         paramIntent.setLargeIcon(paramBitmap);
@@ -262,24 +250,24 @@ public class MobileQQServiceExtend
         paramIntent.setLargeIcon(paramBitmap);
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramBitmap = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      this.e = true;
+      paramBitmap = PreferenceManager.getDefaultSharedPreferences(this.g.getApp());
       paramString1 = new StringBuilder();
-      paramString1.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      paramString1.append(this.g.getAccount());
       paramString1.append("_");
       paramString1.append("heads_up_notify_switch");
-      this.b = paramBitmap.getBoolean(paramString1.toString(), true);
+      this.f = paramBitmap.getBoolean(paramString1.toString(), true);
       if (QLog.isColorLevel())
       {
         paramBitmap = new StringBuilder();
         paramBitmap.append("notify init priority flag, ");
-        paramBitmap.append(this.b);
+        paramBitmap.append(this.f);
         QLog.i("MobileQQServiceWrapper", 2, paramBitmap.toString());
       }
     }
-    if ((Build.VERSION.SDK_INT >= 24) || (this.b)) {
+    if ((Build.VERSION.SDK_INT >= 24) || (this.f)) {
       paramIntent.setPriority(1).setVibrate(new long[0]);
     }
     return paramIntent.build();
@@ -288,22 +276,22 @@ public class MobileQQServiceExtend
   private void a(Intent paramIntent, Notification paramNotification)
   {
     Object localObject = paramIntent.getStringExtra("param_fromuin");
-    int i = paramIntent.getIntExtra("uintype", -1);
-    int j = a(paramIntent, i);
+    int m = paramIntent.getIntExtra("uintype", -1);
+    int n = b(paramIntent, m);
     if (paramIntent.getBooleanExtra("qav_notify_flag", false))
     {
       a(paramIntent, paramNotification, 236);
       return;
     }
-    if (i == 1030)
+    if (m == 1030)
     {
-      a(paramIntent, paramNotification, (String)localObject, j);
+      a(paramIntent, paramNotification, (String)localObject, n);
       return;
     }
-    if ((i != 1035) && (i != 1041) && (i != 1042))
+    if ((m != 1035) && (m != 1041) && (m != 1042))
     {
-      a(paramIntent, i);
-      localObject = this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
+      a(paramIntent, m);
+      localObject = this.l;
       if (localObject != null) {
         ((QQNotificationManager)localObject).cancel("MobileQQServiceWrapper.showMsgNotification", 275);
       }
@@ -319,110 +307,49 @@ public class MobileQQServiceExtend
     a(paramIntent, paramNotification, paramIntent.getIntExtra("campus_notice_id", 0));
   }
   
-  private boolean a(ToServiceMsg paramToServiceMsg)
+  private int b(Intent paramIntent, int paramInt)
   {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("CMD_SHOW_NOTIFIYCATION".equals(str))
-    {
-      if (!((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).shouldBlockMessageTips())
-      {
-        c(paramToServiceMsg);
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileQQServiceWrapper", 2, "pcm blocked msg notification");
-      }
-      return true;
+    if (paramInt == -1) {
+      return paramIntent.getIntExtra("param_uinType", -1);
     }
-    if ("CMD_IDLE_NOTIFIYCATION".equals(str))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.clearMsgCounter();
-      b(paramToServiceMsg);
-      return true;
-    }
-    if ("CMD_STOP_NOTIFIYCATION".equals(str))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.clearMsgCounter();
-      a(275);
-      return true;
-    }
-    if ("CMD_CANCLE_NOTIFIYCATION".equals(str))
-    {
-      b(275);
-      return true;
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) && (this.jdField_a_of_type_Int < 3))
-    {
-      try
-      {
-        this.c = DeviceInfoUtil.a();
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("e = ");
-          localStringBuilder2.append(localException.toString());
-          QLog.d("MobileQQServiceWrapper", 2, localStringBuilder2.toString());
-        }
-      }
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
-      if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
-      }
-      seq = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("MobileQQService has created. mNM=");
-        localStringBuilder1.append(this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager);
-        QLog.i("MobileQQServiceWrapper", 2, localStringBuilder1.toString());
-      }
-    }
-    this.jdField_a_of_type_Int += 1;
+    return paramInt;
   }
   
   private void b(Intent paramIntent, Notification paramNotification)
   {
     Object localObject = paramIntent.getStringExtra("param_fromuin");
-    int i = paramIntent.getIntExtra("uintype", -1);
+    int m = paramIntent.getIntExtra("uintype", -1);
     String str = paramIntent.getStringExtra("KEY_FRIEND_UIN");
-    int j = a(paramIntent, i);
+    int n = b(paramIntent, m);
     boolean bool = paramIntent.getBooleanExtra("key_notifycation_oneway_message", false);
-    if ((bool) && (i == 1010))
+    if ((bool) && (m == 1010))
     {
       a(paramIntent, paramNotification, 272);
       return;
     }
-    if (((bool) && (i == 1001)) || (i == 10002))
+    if (((bool) && (m == 1001)) || (m == 10002))
     {
       a(paramIntent, paramNotification, 268);
       return;
     }
-    if (i == 1030)
+    if (m == 1030)
     {
-      a(paramIntent, paramNotification, (String)localObject, j);
+      a(paramIntent, paramNotification, (String)localObject, n);
       paramNotification = new PushReportController.PushReportItem();
       paramNotification.e = "0X800923F";
       paramNotification.d = "Android系统通知曝光";
       PushReportController.a(paramIntent.getStringExtra("url"), paramNotification);
-      PushReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramNotification);
+      PushReportController.a(this.g, paramNotification);
       return;
     }
-    if ((i != 1035) && (i != 1041) && (i != 1042))
+    if ((m != 1035) && (m != 1041) && (m != 1042))
     {
       if (paramIntent.getBooleanExtra("activepull_push_flag", false))
       {
         a(paramIntent, paramNotification, 269);
         return;
       }
-      if (i == 3001)
+      if (m == 3001)
       {
         a(paramIntent, paramNotification, 271);
         return;
@@ -432,10 +359,10 @@ public class MobileQQServiceExtend
         a(paramIntent, paramNotification, 236);
         return;
       }
-      a(paramIntent, i);
-      if (!NotifyIdManager.a(i, str))
+      a(paramIntent, m);
+      if (!NotifyIdManager.a(m, str))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
+        localObject = this.l;
         if (localObject != null) {
           ((QQNotificationManager)localObject).cancel("MobileQQServiceWrapper.showMsgNotification", 275);
         }
@@ -457,21 +384,45 @@ public class MobileQQServiceExtend
     Bitmap localBitmap = (Bitmap)paramToServiceMsg.extraData.getParcelable("bitmap");
     paramToServiceMsg = a((Intent)paramToServiceMsg.extraData.getParcelable("intent"), localBitmap, localObject[1], localObject[2]);
     paramToServiceMsg.flags = 34;
-    b();
+    d();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("showNotCancelNotification nf=");
     ((StringBuilder)localObject).append(paramToServiceMsg);
     QLog.i("MobileQQServiceWrapper", 1, ((StringBuilder)localObject).toString());
-    a(275, paramToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
+    a(275, paramToServiceMsg, this.g.getCurrentUin(), 0);
+  }
+  
+  private int c()
+  {
+    Object localObject = this.g;
+    int n = 0;
+    if (localObject == null) {
+      return 0;
+    }
+    localObject = (IGuildUnreadCntService)((QQAppInterface)localObject).getRuntimeService(IGuildUnreadCntService.class, "");
+    int m = n;
+    if (localObject != null)
+    {
+      localObject = ((IGuildUnreadCntService)localObject).getAllGuildAtUnreadCntInfo();
+      m = n;
+      if (localObject != null)
+      {
+        m = n;
+        if (((IGuildUnreadCntService.UnreadCntInfo)localObject).b == 1) {
+          m = (int)((IGuildUnreadCntService.UnreadCntInfo)localObject).a;
+        }
+      }
+    }
+    return m;
   }
   
   private void c(Intent paramIntent, Notification paramNotification)
   {
-    int i = paramIntent.getIntExtra("param_notifyid", 0);
-    PushNoticeManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent.getStringExtra("push_notice_service_id"), paramIntent.getStringExtra("push_notice_content_id"), paramIntent.getStringExtra("url"), "0X800923F", "Android系统通知曝光");
-    a(paramIntent, paramNotification, i);
+    int m = paramIntent.getIntExtra("param_notifyid", 0);
+    PushNoticeManager.a(this.g, paramIntent.getStringExtra("push_notice_service_id"), paramIntent.getStringExtra("push_notice_content_id"), paramIntent.getStringExtra("url"), "0X800923F", "Android系统通知曝光");
+    a(paramIntent, paramNotification, m);
     if (Build.VERSION.SDK_INT >= 19) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.vibratorAndAudio();
+      this.g.vibratorAndAudio();
     }
   }
   
@@ -482,12 +433,81 @@ public class MobileQQServiceExtend
     if (paramToServiceMsg == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isShowMsgContent())
+    if (this.g.isShowMsgContent())
     {
       b(localIntent, paramToServiceMsg);
       return;
     }
     a(localIntent, paramToServiceMsg);
+  }
+  
+  private void d()
+  {
+    if ((this.l == null) && (this.j < 3))
+    {
+      try
+      {
+        this.i = DeviceInfoUtil.y();
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("e = ");
+          localStringBuilder2.append(localException.toString());
+          QLog.d("MobileQQServiceWrapper", 2, localStringBuilder2.toString());
+        }
+      }
+      this.l = QQNotificationManager.getInstance();
+      if (this.l == null) {
+        this.l = QQNotificationManager.getInstance();
+      }
+      seq = Math.abs(this.h.nextInt());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("MobileQQService has created. mNM=");
+        localStringBuilder1.append(this.l);
+        QLog.i("MobileQQServiceWrapper", 2, localStringBuilder1.toString());
+      }
+    }
+    this.j += 1;
+  }
+  
+  private boolean d(ToServiceMsg paramToServiceMsg)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if ("CMD_SHOW_NOTIFIYCATION".equals(str))
+    {
+      if (!((IPhoneContactService)this.g.getRuntimeService(IPhoneContactService.class, "")).shouldBlockMessageTips())
+      {
+        c(paramToServiceMsg);
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileQQServiceWrapper", 2, "pcm blocked msg notification");
+      }
+      return true;
+    }
+    if ("CMD_IDLE_NOTIFIYCATION".equals(str))
+    {
+      this.g.clearMsgCounter();
+      b(paramToServiceMsg);
+      return true;
+    }
+    if ("CMD_STOP_NOTIFIYCATION".equals(str))
+    {
+      this.g.clearMsgCounter();
+      a(275);
+      return true;
+    }
+    if ("CMD_CANCLE_NOTIFIYCATION".equals(str))
+    {
+      b(275);
+      return true;
+    }
+    return false;
   }
   
   @Nullable
@@ -504,21 +524,21 @@ public class MobileQQServiceExtend
       localObject = arrayOfString[0];
       String str1 = arrayOfString[1];
       String str2 = arrayOfString[2];
-      bool = this.c;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      bool = this.i;
+      QQAppInterface localQQAppInterface = this.g;
       paramToServiceMsg = paramToServiceMsg.a(paramIntent, localBitmap, (String)localObject, str1, str2, bool, localQQAppInterface, localQQAppInterface.isOpenNoClearNotification());
     }
     else if (MobileIssueSettings.m)
     {
       localObject = a(paramIntent, null, arrayOfString[0], arrayOfString[1], arrayOfString[2]);
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAndroidInternalId("icon");
+      int m = this.g.getAndroidInternalId("icon");
       paramToServiceMsg = (ToServiceMsg)localObject;
-      if (i > 0)
+      if (m > 0)
       {
         paramToServiceMsg = (ToServiceMsg)localObject;
         if (((Notification)localObject).contentView != null)
         {
-          ((Notification)localObject).contentView.setImageViewBitmap(i, localBitmap);
+          ((Notification)localObject).contentView.setImageViewBitmap(m, localBitmap);
           paramToServiceMsg = (ToServiceMsg)localObject;
         }
       }
@@ -528,15 +548,15 @@ public class MobileQQServiceExtend
       paramToServiceMsg = a(paramIntent, localBitmap, arrayOfString[0], arrayOfString[1], arrayOfString[2]);
     }
     paramToServiceMsg.deleteIntent = a(paramIntent);
-    b();
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isShowMsgContent();
+    d();
+    boolean bool = this.g.isShowMsgContent();
     Object localObject = new Intent("com.tencent.msg.newmessage");
     ((Intent)localObject).setPackage("com.tencent.mobileqq");
     ((Intent)localObject).putExtra("cmds", arrayOfString);
     ((Intent)localObject).putExtra("intent", paramIntent);
     ((Intent)localObject).putExtra("type", 0);
     ((Intent)localObject).putExtra("bitmap", localBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast((Intent)localObject);
+    this.g.getApp().sendBroadcast((Intent)localObject);
     OfficialAccountReporter.a.a(bool, paramIntent);
     return paramToServiceMsg;
   }
@@ -546,10 +566,10 @@ public class MobileQQServiceExtend
     if (paramIntent != null)
     {
       String str = paramIntent.getStringExtra("uin");
-      int i = paramIntent.getIntExtra("param_notifyid", 0);
+      int m = paramIntent.getIntExtra("param_notifyid", 0);
       paramIntent = new Intent(BaseApplication.getContext(), NotificationDeleteReceiver.class);
       paramIntent.putExtra("uin", str);
-      paramIntent.putExtra("param_notifyid", i);
+      paramIntent.putExtra("param_notifyid", m);
       return PendingIntent.getBroadcast(BaseApplication.getContext(), 0, paramIntent, 268435456);
     }
     return null;
@@ -557,20 +577,15 @@ public class MobileQQServiceExtend
   
   QQNotificationManager a()
   {
-    return this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
-  }
-  
-  public void a()
-  {
-    a(true);
+    return this.l;
   }
   
   void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication() != null)) {}
+    if ((this.l != null) && (this.g.getApplication() != null)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQServiceWrapper.stopForegroundCompat", paramInt);
+      this.l.cancel("MobileQQServiceWrapper.stopForegroundCompat", paramInt);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -584,28 +599,28 @@ public class MobileQQServiceExtend
   void a(Intent paramIntent, int paramInt)
   {
     if ((paramInt == 0) && (paramIntent.getBooleanExtra("key_reactive_push_tip", false))) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 2, 0, "", "", "", "");
+      ReportController.b(this.g, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 2, 0, "", "", "", "");
     }
   }
   
   public void a(Intent paramIntent, Notification paramNotification, int paramInt)
   {
     String str = paramIntent.getStringExtra("param_fromuin");
-    int i = paramIntent.getIntExtra("uintype", -1);
-    int j = a(paramIntent, i);
-    paramIntent = this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
+    int m = paramIntent.getIntExtra("uintype", -1);
+    int n = b(paramIntent, m);
+    paramIntent = this.l;
     if (paramIntent != null) {
       paramIntent.cancel("MobileQQServiceWrapper.showMsgNotification", paramInt);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("[NotificationRebuild] MobileQQServiceWrapper", 2, new Object[] { "[notify] generateNotificationAfterCancel: invoked. ", " reportUinType: ", Integer.valueOf(j), " uinType: ", Integer.valueOf(i), " notifyId: ", Integer.valueOf(paramInt) });
+      QLog.d("[NotificationRebuild] MobileQQServiceWrapper", 2, new Object[] { "[notify] generateNotificationAfterCancel: invoked. ", " reportUinType: ", Integer.valueOf(n), " uinType: ", Integer.valueOf(m), " notifyId: ", Integer.valueOf(paramInt) });
     }
-    a(paramInt, paramNotification, str, j);
+    a(paramInt, paramNotification, str, n);
   }
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (!((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).shouldBlockMessageTips())
+    if (!((IPhoneContactService)this.g.getRuntimeService(IPhoneContactService.class, "")).shouldBlockMessageTips())
     {
       Intent localIntent = (Intent)paramToServiceMsg.extraData.getParcelable("intent");
       paramToServiceMsg = a(paramToServiceMsg, localIntent);
@@ -614,16 +629,16 @@ public class MobileQQServiceExtend
         if (paramToServiceMsg == null) {
           return;
         }
-        int j = localIntent.getIntExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", -113);
-        int i;
-        if (j != -113) {
-          i = 1;
+        int n = localIntent.getIntExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", -113);
+        int m;
+        if (n != -113) {
+          m = 1;
         } else {
-          i = 0;
+          m = 0;
         }
-        if (i != 0)
+        if (m != 0)
         {
-          a(localIntent, paramToServiceMsg, j);
+          a(localIntent, paramToServiceMsg, n);
           return;
         }
         QQNotificationManager localQQNotificationManager = a();
@@ -643,60 +658,65 @@ public class MobileQQServiceExtend
   
   void a(String paramString1, int paramInt1, Notification paramNotification, String paramString2, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {}
+    if (this.l != null) {}
     for (;;)
     {
       try
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        QCallFacade localQCallFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCallFacade();
+        localObject = this.g.getMessageFacade();
+        QCallFacade localQCallFacade = this.g.getCallFacade();
         if (localQCallFacade == null) {
-          break label339;
+          break label370;
         }
-        i = localQCallFacade.a();
+        m = localQCallFacade.b();
         if (localObject == null) {
-          break label345;
+          break label376;
         }
-        j = ((QQMessageFacade)localObject).b();
+        n = ((QQMessageFacade)localObject).w();
+        int i1 = c();
         if (!TextUtils.isEmpty(paramString1)) {
-          break label361;
+          break label392;
         }
         if (paramInt1 != 265) {
           if ((paramInt1 < 512) || (paramInt1 > 522)) {
-            break label351;
+            break label382;
           }
         }
-        i = a(paramInt1, (QQMessageFacade)localObject, j);
+        m = a(paramInt1, (QQMessageFacade)localObject, n + i1);
       }
       catch (Throwable paramString1)
       {
         Object localObject;
         if (!QLog.isColorLevel()) {
-          break label338;
+          break label369;
         }
+      }
+      int n = m;
+      if (paramInt1 == 527) {
+        n = a(paramInt1, (QQMessageFacade)localObject, m);
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("startForegroundCompat changeMI6Badge count=");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(n);
         QLog.i("BadgeUtilImpl", 2, ((StringBuilder)localObject).toString());
       }
       if (BadgeUtils.a(BaseApplicationImpl.getApplication().getApplicationContext())) {
-        BadgeUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), j, paramNotification);
+        BadgeUtils.a(this.g.getApp(), n, paramNotification);
       }
       if (!TextUtils.isEmpty(paramString1))
       {
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notifyUseTag("MobileQQServiceWrapper.startForegroundCompat", paramString1, paramNotification, this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.createNotifyBundle(paramInt1, paramString2, paramInt2));
+        this.l.notifyUseTag("MobileQQServiceWrapper.startForegroundCompat", paramString1, paramNotification, this.l.createNotifyBundle(paramInt1, paramString2, paramInt2));
         return;
       }
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("MobileQQServiceWrapper.startForegroundCompat", paramNotification, this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.createNotifyBundle(paramInt1, paramString2, paramInt2));
+      this.l.notify("MobileQQServiceWrapper.startForegroundCompat", paramNotification, this.l.createNotifyBundle(paramInt1, paramString2, paramInt2));
       return;
       paramNotification = new StringBuilder();
       paramNotification.append("startForegroundCompat exception. id=");
       paramNotification.append(paramInt1);
       paramNotification.append(", mNM=");
-      paramNotification.append(this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager);
+      paramNotification.append(this.l);
       QLog.i("MobileQQServiceWrapper", 2, paramNotification.toString(), paramString1);
       return;
       if (QLog.isColorLevel())
@@ -705,41 +725,47 @@ public class MobileQQServiceExtend
         paramString1.append("startForegroundCompat. id=");
         paramString1.append(paramInt1);
         paramString1.append(", mNM=");
-        paramString1.append(this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager);
+        paramString1.append(this.l);
         QLog.i("MobileQQServiceWrapper", 2, paramString1.toString());
       }
-      label338:
+      label369:
       return;
-      label339:
-      int i = 0;
+      label370:
+      int m = 0;
       continue;
-      label345:
-      int j = 0;
+      label376:
+      n = 0;
       continue;
-      label351:
+      label382:
       if (paramInt1 != 236) {
-        label361:
-        i = 1;
+        m = 1;
       }
-      j = i;
+      label392:
+      n = m;
       if (paramInt1 >= 482)
       {
-        j = i;
+        n = m;
         if (paramInt1 <= 511) {
-          j = 0;
+          n = 0;
         }
       }
+      m = n;
       if (paramInt1 == 266) {
-        j = 0;
+        m = 0;
       }
     }
   }
   
   public void a(boolean paramBoolean) {}
   
+  public void b()
+  {
+    a(true);
+  }
+  
   void b(int paramInt)
   {
-    QQNotificationManager localQQNotificationManager = this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
+    QQNotificationManager localQQNotificationManager = this.l;
     if (localQQNotificationManager != null) {
       localQQNotificationManager.cancel("MobileQQServiceWrapper.cancelNotification", paramInt);
     }
@@ -757,7 +783,7 @@ public class MobileQQServiceExtend
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return this.g;
   }
   
   protected Map<String, String[]> getCompatibleCmd2HandlerMap()
@@ -778,7 +804,7 @@ public class MobileQQServiceExtend
         QLog.d("MobileQQServiceWrapper", 2, "stream ptt");
       }
       String str = paramToServiceMsg.extraData.getString("filepath");
-      UniPacket localUniPacket = (UniPacket)jdField_a_of_type_JavaUtilHashMap.get(str);
+      UniPacket localUniPacket = (UniPacket)d.get(str);
       Object localObject;
       if (localUniPacket == null)
       {
@@ -790,8 +816,8 @@ public class MobileQQServiceExtend
           QLog.d("MobileQQServiceWrapper", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new PttUniPacket(true);
-        jdField_a_of_type_JavaUtilHashMap.clear();
-        jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+        d.clear();
+        d.put(str, localObject);
       }
       else
       {
@@ -805,18 +831,18 @@ public class MobileQQServiceExtend
           localObject = localUniPacket;
         }
       }
-      int i = paramToServiceMsg.extraData.getShort("PackSeq");
-      int j = StreamDataManager.b(str);
-      if (i <= j)
+      int m = paramToServiceMsg.extraData.getShort("PackSeq");
+      int n = StreamDataManager.g(str);
+      if (m <= n)
       {
-        jdField_a_of_type_JavaUtilHashMap.remove(str);
+        d.remove(str);
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("last stream, remove ");
-          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(n);
           paramToServiceMsg.append(", ");
-          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(m);
           QLog.d("MobileQQServiceWrapper", 2, paramToServiceMsg.toString());
         }
       }
@@ -830,14 +856,14 @@ public class MobileQQServiceExtend
     if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd()))
     {
       QLog.i("MobileQQServiceWrapper", 1, "infoSync error! lookupCoder is null!");
-      paramToServiceMsg = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
+      paramToServiceMsg = (MessageHandler)this.g.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
       if (paramToServiceMsg != null)
       {
         paramToServiceMsg.notifyUI(4004, false, null);
         QLog.i("MobileQQServiceWrapper", 1, "handleNoProtocolCoder, notifyUI");
       }
       paramToServiceMsg = new HashMap();
-      paramToServiceMsg.put("param_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      paramToServiceMsg.put("param_uin", this.g.getAccount());
       if ((this.coderMap != null) && (this.coderMap.keySet().size() > 0)) {
         paramToServiceMsg.put("param_coderMap", this.coderMap.keySet().toString());
       }
@@ -847,7 +873,7 @@ public class MobileQQServiceExtend
   
   public void handleResponse(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
   {
-    LoadingStateManager.a().a(paramFromServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    LoadingStateManager.b().a(paramFromServiceMsg, this.g);
     super.handleResponse(paramBoolean, paramToServiceMsg, paramFromServiceMsg, paramException);
   }
   
@@ -856,7 +882,7 @@ public class MobileQQServiceExtend
     if (paramToServiceMsg == null) {
       return;
     }
-    if (a(paramToServiceMsg)) {
+    if (d(paramToServiceMsg)) {
       return;
     }
     super.realHandleRequest(paramToServiceMsg, TempServlet.class);
@@ -864,7 +890,7 @@ public class MobileQQServiceExtend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.MobileQQServiceExtend
  * JD-Core Version:    0.7.0.1
  */

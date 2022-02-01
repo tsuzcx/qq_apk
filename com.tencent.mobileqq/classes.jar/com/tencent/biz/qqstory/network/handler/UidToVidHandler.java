@@ -23,41 +23,40 @@ public class UidToVidHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetVidListRequest, GetVidListResponse>
 {
-  protected List<String> a;
-  protected int b;
+  protected List<String> c = new ArrayList();
+  protected int d;
   
   public UidToVidHandler(List<String> paramList, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
     }
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
   public void a()
   {
     GetVidListRequest localGetVidListRequest = new GetVidListRequest();
-    localGetVidListRequest.c = this.b;
-    localGetVidListRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localGetVidListRequest.g = this.d;
+    localGetVidListRequest.f = this.c;
     CmdTaskManger.a().a(localGetVidListRequest, this);
   }
   
   public void a(@NonNull GetVidListRequest paramGetVidListRequest, @Nullable GetVidListResponse paramGetVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     UidToVidHandler.GetUserVidListEvent localGetUserVidListEvent = new UidToVidHandler.GetUserVidListEvent();
-    localGetUserVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    localGetUserVidListEvent.jdField_a_of_type_JavaUtilList = paramGetVidListRequest.jdField_a_of_type_JavaUtilList;
-    localGetUserVidListEvent.jdField_a_of_type_Int = paramGetVidListRequest.c;
+    localGetUserVidListEvent.g = paramErrorMessage;
+    localGetUserVidListEvent.b = paramGetVidListRequest.f;
+    localGetUserVidListEvent.a = paramGetVidListRequest.g;
     if ((paramGetVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      b();
+      c();
       paramGetVidListRequest = (StoryManager)SuperManager.a(5);
-      paramErrorMessage = paramGetVidListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      paramErrorMessage = paramGetVidListResponse.a.iterator();
       while (paramErrorMessage.hasNext())
       {
         GetVidListResponse.UserVidList localUserVidList = (GetVidListResponse.UserVidList)paramErrorMessage.next();
-        int i = this.b;
+        int i = this.d;
         if (i != 3)
         {
           if (i != 4)
@@ -69,35 +68,35 @@ public class UidToVidHandler
               }
               else
               {
-                paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 3, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+                paramGetVidListRequest.b(localUserVidList.a, 3, localUserVidList.b, true);
                 continue;
               }
             }
-            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+            paramGetVidListRequest.b(localUserVidList.a, 0, localUserVidList.b, true);
           }
           else
           {
-            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 0, localUserVidList.jdField_a_of_type_JavaUtilList, true);
+            paramGetVidListRequest.b(localUserVidList.a, 0, localUserVidList.b, true);
           }
         }
         else
         {
-          paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localUserVidList.jdField_a_of_type_JavaUtilList, true);
-          StoryItem localStoryItem = paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1);
+          paramGetVidListRequest.b(localUserVidList.a, 1, localUserVidList.b, true);
+          StoryItem localStoryItem = paramGetVidListRequest.a(localUserVidList.a, 1);
           if (localStoryItem != null)
           {
-            i = localUserVidList.jdField_a_of_type_JavaUtilList.size();
-            SLog.a("Q.qqstory.net:UidToVidHandler", "update %s unread count , old : %d , new : %d", localUserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(localStoryItem.unReadCount), Integer.valueOf(i));
+            i = localUserVidList.b.size();
+            SLog.a("Q.qqstory.net:UidToVidHandler", "update %s unread count , old : %d , new : %d", localUserVidList.a, Integer.valueOf(localStoryItem.unReadCount), Integer.valueOf(i));
             localStoryItem.unReadCount = i;
-            paramGetVidListRequest.a(localUserVidList.jdField_a_of_type_JavaLangString, 1, localStoryItem);
+            paramGetVidListRequest.a(localUserVidList.a, 1, localStoryItem);
           }
         }
       }
-      localGetUserVidListEvent.b = paramGetVidListResponse.jdField_a_of_type_JavaUtilList;
+      localGetUserVidListEvent.c = paramGetVidListResponse.a;
       StoryDispatcher.a().dispatch(localGetUserVidListEvent);
       return;
     }
-    c();
+    d();
     StoryDispatcher.a().dispatch(localGetUserVidListEvent);
   }
   
@@ -105,16 +104,16 @@ public class UidToVidHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UidToVidHandler{mUidList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mPullType=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.UidToVidHandler
  * JD-Core Version:    0.7.0.1
  */

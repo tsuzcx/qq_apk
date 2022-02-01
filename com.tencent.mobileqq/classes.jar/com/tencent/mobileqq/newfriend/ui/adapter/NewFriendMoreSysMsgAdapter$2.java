@@ -13,14 +13,14 @@ class NewFriendMoreSysMsgAdapter$2
   
   public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    NewFriendMoreSysMsgAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterNewFriendMoreSysMsgAdapter);
+    ReportController.b(this.a, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
+    NewFriendMoreSysMsgAdapter.a(this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.2
  * JD-Core Version:    0.7.0.1
  */

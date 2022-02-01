@@ -136,7 +136,7 @@ public class TofuItem
     localStringBuilder.append("|");
     localStringBuilder.append("busId");
     localStringBuilder.append("=");
-    localStringBuilder.append(TofuConst.a(this.busId));
+    localStringBuilder.append(TofuConst.b(this.busId));
     localStringBuilder.append("|");
     localStringBuilder.append("eventTs");
     localStringBuilder.append("=");
@@ -170,7 +170,7 @@ public class TofuItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuItem
  * JD-Core Version:    0.7.0.1
  */

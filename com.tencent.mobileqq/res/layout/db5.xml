@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/ppj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="16.0" />
+    <RelativeLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ppa" android:layout_width="wrap_content" android:layout_height="32.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/a4u" android:gravity="center_vertical" android:id="@id/ppe" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:contentDescription="@null" />
+    </RelativeLayout>
+    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="5.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ppk" android:background="@drawable/j6p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="@null" />
+    <View android:id="@id/ppg" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="5.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ppf" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="@null" />
+    <View android:id="@id/ppi" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="5.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/pph" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:contentDescription="@null" />
+    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="16.0" />
+</LinearLayout>

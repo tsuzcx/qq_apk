@@ -5,8 +5,6 @@ import android.os.IInterface;
 public abstract interface IPresendPicMgr
   extends IInterface
 {
-  public abstract int a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
@@ -15,13 +13,15 @@ public abstract interface IPresendPicMgr
   
   public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
   
-  public abstract int[] a();
+  public abstract int b();
   
-  public abstract boolean[] a();
+  public abstract boolean[] c();
+  
+  public abstract int[] d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.IPresendPicMgr
  * JD-Core Version:    0.7.0.1
  */

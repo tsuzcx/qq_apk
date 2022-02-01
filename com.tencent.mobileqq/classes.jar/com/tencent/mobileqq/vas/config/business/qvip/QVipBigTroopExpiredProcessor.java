@@ -11,9 +11,9 @@ import org.json.JSONObject;
 public class QVipBigTroopExpiredProcessor
   extends BaseQVipConfigProcessor<QVipBigTroopExpiredConfig>
 {
-  public static QVipBigTroopExpiredConfig c()
+  public static QVipBigTroopExpiredConfig e()
   {
-    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig2 = (QVipBigTroopExpiredConfig)QConfigManager.a().a(428);
+    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig2 = (QVipBigTroopExpiredConfig)QConfigManager.b().b(428);
     QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig1 = localQVipBigTroopExpiredConfig2;
     if (localQVipBigTroopExpiredConfig2 == null) {
       localQVipBigTroopExpiredConfig1 = new QVipBigTroopExpiredConfig();
@@ -31,7 +31,7 @@ public class QVipBigTroopExpiredProcessor
   public QVipBigTroopExpiredConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig = new QVipBigTroopExpiredConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     for (;;)
     {
       try
@@ -88,7 +88,7 @@ public class QVipBigTroopExpiredProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipBigTroopExpiredProcessor
  * JD-Core Version:    0.7.0.1
  */

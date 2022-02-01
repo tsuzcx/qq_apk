@@ -53,12 +53,12 @@ class TroopMemberApiClient$IncomingHandler
           if (j != 8)
           {
             if ((j == 28) || (j == 29) || (j == 43) || (j == 44) || (j == 75) || (j == 76)) {
-              break label1928;
+              break label1969;
             }
             if (j != 80)
             {
               if ((j == 81) || (j == 86) || (j == 87)) {
-                break label1928;
+                break label1969;
               }
               if (j != 90) {
                 if (j == 91) {}
@@ -78,7 +78,7 @@ class TroopMemberApiClient$IncomingHandler
               if (i == -1) {
                 break;
               }
-              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
               if (paramMessage == null) {
                 break;
               }
@@ -88,7 +88,7 @@ class TroopMemberApiClient$IncomingHandler
               if (i == -1) {
                 break;
               }
-              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
               if (paramMessage == null) {
                 break;
               }
@@ -109,7 +109,7 @@ class TroopMemberApiClient$IncomingHandler
               if (i == -1) {
                 break;
               }
-              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
               if (paramMessage == null) {
                 break;
               }
@@ -125,7 +125,7 @@ class TroopMemberApiClient$IncomingHandler
               if (j == -1) {
                 break;
               }
-              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
+              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.get(Integer.valueOf(j));
               if (paramMessage == null) {
                 break;
               }
@@ -133,13 +133,13 @@ class TroopMemberApiClient$IncomingHandler
               if (i != 11) {
                 break;
               }
-              this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
+              this.a.h.remove(Integer.valueOf(j));
               return;
             case 56: 
               if (i == -1) {
                 break;
               }
-              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+              paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
               if (paramMessage == null) {
                 break;
               }
@@ -155,7 +155,7 @@ class TroopMemberApiClient$IncomingHandler
             if (i == -1) {
               break;
             }
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
             if (paramMessage == null) {
               break;
             }
@@ -169,7 +169,7 @@ class TroopMemberApiClient$IncomingHandler
             if (i == -1) {
               break;
             }
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
             if (paramMessage == null) {
               break;
             }
@@ -183,7 +183,7 @@ class TroopMemberApiClient$IncomingHandler
             if (i == -1) {
               break;
             }
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
             if (paramMessage == null) {
               break;
             }
@@ -197,7 +197,7 @@ class TroopMemberApiClient$IncomingHandler
             if (i == -1) {
               break;
             }
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
             if (paramMessage == null) {
               break;
             }
@@ -205,14 +205,21 @@ class TroopMemberApiClient$IncomingHandler
             return;
           }
           break;
+        case 166: 
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.get(Integer.valueOf(i));
+          if (paramMessage == null) {
+            break;
+          }
+          paramMessage.callback(localBundle);
+          return;
         case 158: 
           if (i == -1) {
             return;
           }
           if (((IStudyRoomUploader)QRoute.api(IStudyRoomUploader.class)).isPicUploadEnd(localBundle)) {
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           } else {
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.get(Integer.valueOf(i));
           }
           if (paramMessage == null) {
             break;
@@ -220,13 +227,13 @@ class TroopMemberApiClient$IncomingHandler
           paramMessage.callback(localBundle);
           return;
         case 147: 
-          this.a.a().a(localBundle);
+          this.a.c().a(localBundle);
           return;
         case 138: 
           if (i == -1) {
             break;
           }
-          this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          this.a.h.remove(Integer.valueOf(i));
           return;
         case 134: 
         case 135: 
@@ -235,7 +242,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.get(Integer.valueOf(i));
           if ((paramMessage == null) || (localBundle == null)) {
             break;
           }
@@ -245,7 +252,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -256,7 +263,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -266,7 +273,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -278,7 +285,7 @@ class TroopMemberApiClient$IncomingHandler
           {
             j = localBundle.getInt("retCode", -1);
             int k = localBundle.getInt("rate", -1);
-            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+            paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.get(Integer.valueOf(i));
             if (paramMessage != null)
             {
               paramMessage.callback(localBundle);
@@ -288,7 +295,7 @@ class TroopMemberApiClient$IncomingHandler
                 paramMessage.append("download finish:");
                 paramMessage.append(localBundle);
                 QLog.d("ReadInJoy", 4, paramMessage.toString());
-                this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+                this.a.h.remove(Integer.valueOf(i));
               }
               if (!QLog.isColorLevel()) {
                 break;
@@ -319,7 +326,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -329,7 +336,7 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -343,14 +350,14 @@ class TroopMemberApiClient$IncomingHandler
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
           paramMessage.callback(localBundle);
           return;
         case 33: 
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if ((i == -1) || (paramMessage == null)) {
             break;
           }
@@ -359,31 +366,31 @@ class TroopMemberApiClient$IncomingHandler
         case 16: 
         case 17: 
         case 18: 
-          localObject = (BusinessObserver)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(localBundle.getInt("req_seq"));
+          localObject = (BusinessObserver)this.a.m.get(localBundle.getInt("req_seq"));
           if (localObject != null)
           {
-            this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(localBundle.getInt("req_seq"));
+            this.a.m.remove(localBundle.getInt("req_seq"));
             ((BusinessObserver)localObject).onUpdate(paramMessage.what, true, localBundle);
             return;
           }
           return;
-          if (TroopMemberApiClient.a(this.a) == null) {
+          if (TroopMemberApiClient.c(this.a) == null) {
             break;
           }
-          TroopMemberApiClient.a(this.a).callback(localBundle);
+          TroopMemberApiClient.c(this.a).callback(localBundle);
           return;
-          if (TroopMemberApiClient.a(this.a) == null) {
+          if (TroopMemberApiClient.c(this.a) == null) {
             break;
           }
-          TroopMemberApiClient.a(this.a).callback(localBundle);
+          TroopMemberApiClient.c(this.a).callback(localBundle);
           return;
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
           paramMessage.callback(localBundle);
           return;
-          this.a.a().a(localBundle);
+          this.a.b().a(localBundle);
           return;
         case 11: 
         case 13: 
@@ -400,12 +407,12 @@ class TroopMemberApiClient$IncomingHandler
         case 110: 
         case 154: 
         case 155: 
-        case 163: 
-          label1928:
+        case 164: 
+          label1969:
           if (i == -1) {
             break;
           }
-          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+          paramMessage = (ITroopMemberApiClientApi.Callback)this.a.h.remove(Integer.valueOf(i));
           if (paramMessage == null) {
             break;
           }
@@ -413,12 +420,12 @@ class TroopMemberApiClient$IncomingHandler
           return;
         }
       }
-      else if (this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null)
+      else if (this.a.n != null)
       {
         paramMessage = localBundle.getString("pageUrl");
         localObject = localBundle.getStringArrayList("lstVideoUrl");
         i = localBundle.getInt("totalTime", 0);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver.onUpdate(localBundle.getInt("type"), true, new Object[] { paramMessage, localObject, Integer.valueOf(i) });
+        this.a.n.onUpdate(localBundle.getInt("type"), true, new Object[] { paramMessage, localObject, Integer.valueOf(i) });
       }
     }
     else
@@ -428,7 +435,7 @@ class TroopMemberApiClient$IncomingHandler
       paramMessage = localBundle.getSerializable("data");
       j = localBundle.getInt("observer_type", -1);
       String str2 = localBundle.getString("observerClassName");
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.e.iterator();
       if (localIterator.hasNext())
       {
         BusinessObserver localBusinessObserver = (BusinessObserver)localIterator.next();
@@ -489,7 +496,7 @@ class TroopMemberApiClient$IncomingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiClient.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

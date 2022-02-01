@@ -22,23 +22,23 @@ class PublicAccountUtilImpl$9$1
   {
     Object localObject1 = new PublicAccountDetailImpl();
     ((PublicAccountDetailImpl)localObject1).init(this.a);
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
+    Object localObject2 = this.this$0.b.getEntityManagerFactory(this.this$0.b.getAccount()).createEntityManager();
     if (localObject2 != null) {
       ((EntityManager)localObject2).persistOrReplace((Entity)localObject1);
     }
-    if ((this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof AppInterface))
+    if ((this.this$0.b instanceof AppInterface))
     {
-      localObject2 = (PublicAccountHandlerImpl)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+      localObject2 = (PublicAccountHandlerImpl)this.this$0.b.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
       if (localObject2 != null) {
         ((PublicAccountHandlerImpl)localObject2).onFollowPublicAccount(localObject1);
       }
     }
-    if (this.this$0.jdField_a_of_type_Int >= 0)
+    if (this.this$0.c >= 0)
     {
       localObject2 = null;
-      if ((this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof AppInterface))
+      if ((this.this$0.b instanceof AppInterface))
       {
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject1 = this.this$0.b;
       }
       else
       {
@@ -52,13 +52,13 @@ class PublicAccountUtilImpl$9$1
           }
         }
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportFollowEvent((AppInterface)localObject1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportFollowEvent((AppInterface)localObject1, this.this$0.d, this.this$0.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.9.1
  * JD-Core Version:    0.7.0.1
  */

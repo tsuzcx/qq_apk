@@ -13,41 +13,12 @@ class Now$2
   
   public View a()
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public ImageView a()
-  {
-    boolean bool;
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    AssertUtils.assertTrue(bool);
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    boolean bool;
-    if (this.a.c != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    AssertUtils.assertTrue(bool);
-    return this.a.c;
-  }
-  
-  public void a()
-  {
-    this.a.a();
+    return this.a.d;
   }
   
   public void a(String paramString)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.a.e.setText(paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -62,7 +33,7 @@ class Now$2
   
   public void b()
   {
-    this.a.c(false);
+    this.a.h();
   }
   
   public void b(boolean paramBoolean)
@@ -73,17 +44,46 @@ class Now$2
     } else {
       i = 8;
     }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+    this.a.f.setVisibility(i);
   }
   
-  public void c()
+  public ImageView c()
+  {
+    boolean bool;
+    if (this.a.g != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtils.assertTrue(bool);
+    return this.a.g;
+  }
+  
+  public TextView d()
+  {
+    boolean bool;
+    if (this.a.h != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtils.assertTrue(bool);
+    return this.a.h;
+  }
+  
+  public void e()
+  {
+    this.a.c(false);
+  }
+  
+  public void f()
   {
     this.a.c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.2
  * JD-Core Version:    0.7.0.1
  */

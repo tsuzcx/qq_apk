@@ -11,103 +11,95 @@ import java.util.Iterator;
 
 public class BaseAnimHolder
 {
-  public float a;
-  public Drawable a;
-  public Transformation a;
-  public ArrayList<Animation> a;
-  public float b = 1.0F;
-  public int j = 0;
-  public int k = 0;
-  public int l;
-  public int m;
-  public int n = 255;
-  
-  public BaseAnimHolder()
-  {
-    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public int A;
+  public Drawable B = null;
+  public float C = 1.0F;
+  public float D = 1.0F;
+  public int E = 255;
+  public ArrayList<Animation> F = new ArrayList();
+  public Transformation w = new Transformation();
+  public int x = 0;
+  public int y = 0;
+  public int z;
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.j = paramInt1;
-    this.k = paramInt2;
-    this.l = paramInt3;
-    this.m = paramInt4;
+    this.x = paramInt1;
+    this.y = paramInt2;
+    this.z = paramInt3;
+    this.A = paramInt4;
   }
   
   public void a(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimation);
+    this.F.add(paramAnimation);
     paramAnimation.start();
   }
   
   public boolean a(Canvas paramCanvas)
   {
-    if ((this.n != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((this.E != 0) && (this.B != null))
     {
       paramCanvas.save();
-      paramCanvas.translate(this.j, this.k);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.n);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.l, this.m);
-      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.l / 2, this.m / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.translate(this.x, this.y);
+      this.B.setAlpha(this.E);
+      this.B.setBounds(0, 0, this.z, this.A);
+      paramCanvas.scale(this.C, this.D, this.z / 2, this.A / 2);
+      this.B.draw(paramCanvas);
       paramCanvas.restore();
     }
-    paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramCanvas = this.F.iterator();
     for (boolean bool = false;; bool = true)
     {
       if (!paramCanvas.hasNext()) {
         return bool;
       }
       Animation localAnimation = (Animation)paramCanvas.next();
-      if ((!bool) && (!localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {
+      if ((!bool) && (!localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.w))) {
         break;
       }
     }
     return bool;
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.F.clear();
   }
   
-  public boolean b()
+  public void d(Canvas paramCanvas)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    if ((this.E != 0) && (this.B != null))
+    {
+      paramCanvas.save();
+      paramCanvas.translate(this.x, this.y);
+      this.B.setAlpha(this.E);
+      this.B.setBounds(0, 0, this.z, this.A);
+      paramCanvas.scale(this.C, this.D, this.z / 2, this.A / 2);
+      this.B.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+  }
+  
+  public boolean i()
+  {
+    Iterator localIterator = this.F.iterator();
     for (boolean bool = false;; bool = true)
     {
       if (!localIterator.hasNext()) {
         return bool;
       }
       Animation localAnimation = (Animation)localIterator.next();
-      if ((!bool) && (!localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {
+      if ((!bool) && (!localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.w))) {
         break;
       }
     }
     return bool;
   }
-  
-  public void c(Canvas paramCanvas)
-  {
-    if ((this.n != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      paramCanvas.save();
-      paramCanvas.translate(this.j, this.k);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.n);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.l, this.m);
-      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.l / 2, this.m / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.BaseAnimHolder
  * JD-Core Version:    0.7.0.1
  */

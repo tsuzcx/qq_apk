@@ -12,14 +12,14 @@ class MultiIncomingCallsActivity$10
   
   public void run()
   {
-    ArrayList localArrayList = this.this$0.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
-    if (MultiIncomingCallsActivity.c(this.this$0) != null)
+    ArrayList localArrayList = this.this$0.f.a(this.a, this.b);
+    if (MultiIncomingCallsActivity.h(this.this$0) != null)
     {
-      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.c(this.this$0));
+      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.h(this.this$0));
       MultiIncomingCallsActivity.b(this.this$0, null);
     }
     MultiIncomingCallsActivity.b(this.this$0, new MultiIncomingCallsActivity.10.1(this, localArrayList));
-    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.c(this.this$0));
+    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.h(this.this$0));
   }
 }
 

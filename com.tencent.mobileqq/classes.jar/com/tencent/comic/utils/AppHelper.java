@@ -14,11 +14,6 @@ public class AppHelper
     return MobileQQ.sMobileQQ;
   }
   
-  public static AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.peekAppRuntime();
-  }
-  
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent();
@@ -28,10 +23,15 @@ public class AppHelper
     localIntent.setData(Uri.parse(paramString1));
     paramActivity.startActivity(localIntent);
   }
+  
+  public static AppRuntime b()
+  {
+    return MobileQQ.sMobileQQ.peekAppRuntime();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.utils.AppHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.liteav.network;
 import android.os.Handler;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.a;
-import com.tencent.liteav.basic.log.TXCLog;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -38,18 +37,18 @@ class TXCStreamDownloader$2
           TXCStreamDownloader.access$700(this.d).postDelayed(TXCStreamDownloader.access$800(this.d), 2000L);
         }
         paramString = TXCStreamDownloader.access$900(this.d).b();
-        TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.at, paramInt, paramString);
+        TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.au, paramInt, paramString);
         return;
       }
-      TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.at, -4, "livePlayer have been stopped");
+      TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.au, -4, "livePlayer have been stopped");
       return;
     }
     this.d.onNotifyEvent(-2302, null);
-    TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.at, paramInt, paramString);
-    TXCLog.e("TXCStreamDownloader", "getAccelerateStreamPlayUrl failed, play stream with raw url");
+    TXCDRApi.txReportDAU(TXCStreamDownloader.access$1000(this.d), a.au, paramInt, paramString);
+    TXCStreamDownloader.access$1100(this.d, "getAccelerateStreamPlayUrl failed, play stream with raw url");
     if (TXCStreamDownloader.access$500(this.d))
     {
-      TXCStreamDownloader.access$1100(this.d, this.a, this.b);
+      TXCStreamDownloader.access$1200(this.d, this.a, this.b);
       if (TXCStreamDownloader.access$700(this.d) != null) {
         TXCStreamDownloader.access$700(this.d).postDelayed(TXCStreamDownloader.access$800(this.d), 2000L);
       }
@@ -58,7 +57,7 @@ class TXCStreamDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamDownloader.2
  * JD-Core Version:    0.7.0.1
  */

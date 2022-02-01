@@ -51,7 +51,7 @@ class ZhituManager$DownloadListener
     if (paramNetResp.mResult == 0)
     {
       localObject2 = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      ZhituManager.a(paramNetResp.mReq.mOutPath);
+      ZhituManager.c(paramNetResp.mReq.mOutPath);
       if (localObject2 != null)
       {
         paramNetResp = this.a.obtainMessage(3);
@@ -81,7 +81,7 @@ class ZhituManager$DownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

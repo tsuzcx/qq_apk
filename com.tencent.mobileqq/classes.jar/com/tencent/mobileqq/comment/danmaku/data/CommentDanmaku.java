@@ -5,41 +5,41 @@ import com.tencent.mobileqq.comment.DanmuItemBean;
 
 public class CommentDanmaku
 {
-  public int a;
   public long a;
-  public String a;
-  public boolean a;
-  public long b;
   public String b;
-  public long c;
   public String c;
   public String d;
+  public long e;
+  public long f;
+  public boolean g;
+  public String h;
+  public int i;
   
   public CommentDanmaku(DanmuItemBean paramDanmuItemBean)
   {
-    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
-    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
-    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
-    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
-    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
+    this.a = paramDanmuItemBean.b;
+    this.b = String.valueOf(paramDanmuItemBean.a);
+    this.c = paramDanmuItemBean.e;
+    this.d = paramDanmuItemBean.d;
+    this.e = paramDanmuItemBean.f;
+    this.f = paramDanmuItemBean.c;
+    this.g = paramDanmuItemBean.g;
+    this.h = paramDanmuItemBean.h;
+    this.i = paramDanmuItemBean.i;
   }
   
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     String str;
-    if (this.jdField_a_of_type_Boolean) {
-      str = this.d;
+    if (this.g) {
+      str = this.h;
     } else {
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.c;
     }
     localStringBuffer.append(str);
     localStringBuffer.append(" : ");
-    localStringBuffer.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuffer.append(this.d);
     return localStringBuffer.toString();
   }
   
@@ -52,22 +52,22 @@ public class CommentDanmaku
     {
       paramObject = (CommentDanmaku)paramObject;
       bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+      if (this.a == paramObject.a)
       {
         bool1 = bool2;
-        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
+        if (this.e == paramObject.e)
         {
           bool1 = bool2;
-          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
+          if (this.f == paramObject.f)
           {
             bool1 = bool2;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(this.b))
             {
               bool1 = bool2;
-              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
+              if (!TextUtils.isEmpty(paramObject.b))
               {
                 bool1 = bool2;
-                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+                if (this.b.equals(paramObject.b)) {
                   bool1 = true;
                 }
               }
@@ -81,12 +81,12 @@ public class CommentDanmaku
   
   public int hashCode()
   {
-    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
+    return String.valueOf(this.a).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.data.CommentDanmaku
  * JD-Core Version:    0.7.0.1
  */

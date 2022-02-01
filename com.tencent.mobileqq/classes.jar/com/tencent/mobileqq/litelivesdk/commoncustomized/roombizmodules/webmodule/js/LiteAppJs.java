@@ -58,7 +58,7 @@ public class LiteAppJs
   
   private String getUin()
   {
-    return BusinessManager.a.a();
+    return BusinessManager.a.f();
   }
   
   public static void handleShareKandianLive(long paramLong, String paramString, Intent paramIntent)
@@ -99,14 +99,14 @@ public class LiteAppJs
   
   private void shareToWX(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt)
   {
-    if (!WXShareHelper.a().a())
-    {
-      QRUtils.a(0, 2131720478);
-      return;
-    }
     if (!WXShareHelper.a().b())
     {
-      QRUtils.a(0, 2131720479);
+      QRUtils.a(0, 2131918154);
+      return;
+    }
+    if (!WXShareHelper.a().c())
+    {
+      QRUtils.a(0, 2131918155);
       return;
     }
     String str = String.valueOf(System.currentTimeMillis());
@@ -221,7 +221,7 @@ public class LiteAppJs
           ((Bundle)localObject).putString("targeturl", str1);
           ((Bundle)localObject).putString("targetUrl", str1);
           ((Bundle)localObject).putString("summary", str3);
-          if (BusinessManager.a.b())
+          if (BusinessManager.a.d())
           {
             ((Bundle)localObject).putString("sourcename", "看点直播");
             ((Bundle)localObject).putString("sourceIcon", "https://nowpic.gtimg.com/feeds_pic/PiajxSqBRaELBTuqnBHfumzaZXAdm0GuZb8C6VaAZIdCEsprHohWPbA/0");
@@ -251,7 +251,7 @@ public class LiteAppJs
       ((StringBuilder)localObject).append("share err ");
       ((StringBuilder)localObject).append(paramMap.getMessage());
       QLog.e("LiteAppJs", 1, ((StringBuilder)localObject).toString());
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131718871), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131916404), 0).show();
     }
   }
   
@@ -334,7 +334,7 @@ public class LiteAppJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs
  * JD-Core Version:    0.7.0.1
  */

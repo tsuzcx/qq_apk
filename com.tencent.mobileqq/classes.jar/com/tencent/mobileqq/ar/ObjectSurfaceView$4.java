@@ -10,9 +10,9 @@ class ObjectSurfaceView$4
   
   public void run()
   {
-    if (ObjectSurfaceView.a(this.this$0).size() > 0)
+    if (ObjectSurfaceView.e(this.this$0).size() > 0)
     {
-      ObjectSurfaceView.a(this.this$0, this.a.c);
+      ObjectSurfaceView.a(this.this$0, this.a.O);
       return;
     }
     QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
@@ -20,7 +20,7 @@ class ObjectSurfaceView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectSurfaceView.4
  * JD-Core Version:    0.7.0.1
  */

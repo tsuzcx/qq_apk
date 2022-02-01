@@ -7,14 +7,14 @@ class UFTUploadTaskQueue$1
   
   protected void a(String paramString, int paramInt)
   {
-    if ((paramInt != this.a.a()) && (this.a.b() > 0) && (!this.a.a())) {
+    if ((paramInt != this.a.b()) && (this.a.c() > 0) && (!this.a.d())) {
       this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.taskqueue.UFTUploadTaskQueue.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ import mqq.os.MqqHandler;
 
 public class StoryVideoUploadProgressManager
 {
-  private static StoryVideoUploadProgressManager jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadProgressManager = new StoryVideoUploadProgressManager();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Map<String, StoryVideoUploadProgressManager.ProgressStatus> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static StoryVideoUploadProgressManager d = new StoryVideoUploadProgressManager();
+  private Map<String, StoryVideoUploadProgressManager.ProgressStatus> a = new HashMap();
   private Map<String, List<StoryVideoUploadProgressManager.UpdateProgressListenerWrapper>> b = new HashMap();
+  private Handler c = new Handler(Looper.getMainLooper());
   
   public static StoryVideoUploadProgressManager a()
   {
-    return jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadProgressManager;
+    return d;
   }
   
   private void a(String paramString, int paramInt)
@@ -45,68 +45,6 @@ public class StoryVideoUploadProgressManager
           localUpdateProgressListener.a(paramString, paramInt);
         }
       }
-    }
-  }
-  
-  public int a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    int j = 0;
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)localIterator.next();
-      if (localProgressStatus.jdField_a_of_type_Boolean)
-      {
-        j += 1;
-        i += localProgressStatus.jdField_b_of_type_Int;
-      }
-    }
-    if (j > 0) {
-      return i / j;
-    }
-    return -1;
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.jdField_b_of_type_Int;
-    }
-    return -1;
-  }
-  
-  public String a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)localIterator.next();
-      if ((localProgressStatus.jdField_b_of_type_JavaLangString != null) && (localProgressStatus.jdField_b_of_type_JavaLangString.equals(paramString))) {
-        return localProgressStatus.jdField_a_of_type_JavaLangString;
-      }
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    try
-    {
-      SLog.b("StoryVideoUploadProgressManager", "startANewUploadSeq");
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((StoryVideoUploadProgressManager.ProgressStatus)((Map.Entry)localIterator.next()).getValue()).b();
-      }
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.b.clear();
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
     }
   }
   
@@ -132,12 +70,12 @@ public class StoryVideoUploadProgressManager
     try
     {
       SLog.a("StoryVideoUploadProgressManager", "preparedSuccess:%s", paramString);
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      if (this.a.containsKey(paramString))
       {
-        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        localProgressStatus.jdField_a_of_type_Int = 1;
-        localProgressStatus.jdField_b_of_type_Int = 0;
-        a(paramString, localProgressStatus.jdField_b_of_type_Int);
+        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
+        localProgressStatus.d = 1;
+        localProgressStatus.e = 0;
+        a(paramString, localProgressStatus.e);
       }
       return;
     }
@@ -191,13 +129,13 @@ public class StoryVideoUploadProgressManager
     try
     {
       SLog.a("StoryVideoUploadProgressManager", "sendProtoSuccess:%s", paramString1);
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString1))
+      if (this.a.containsKey(paramString1))
       {
-        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-        localProgressStatus.jdField_a_of_type_Int = 4;
-        localProgressStatus.jdField_b_of_type_Int = 100;
-        localProgressStatus.jdField_b_of_type_JavaLangString = paramString2;
-        a(paramString1, localProgressStatus.jdField_b_of_type_Int);
+        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString1);
+        localProgressStatus.d = 4;
+        localProgressStatus.e = 100;
+        localProgressStatus.b = paramString2;
+        a(paramString1, localProgressStatus.e);
         localProgressStatus.b();
       }
       return;
@@ -215,21 +153,41 @@ public class StoryVideoUploadProgressManager
     {
       SLog.a("StoryVideoUploadProgressManager", "addUploadTask:%s", paramString);
       StoryVideoUploadProgressManager.ProgressStatus localProgressStatus;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (this.a.containsKey(paramString)) {
+        localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
       } else {
         localProgressStatus = new StoryVideoUploadProgressManager.ProgressStatus(this, null);
       }
-      localProgressStatus.jdField_a_of_type_JavaLangString = paramString;
-      localProgressStatus.jdField_b_of_type_JavaLangString = "";
-      localProgressStatus.jdField_a_of_type_Boolean = paramBoolean;
-      localProgressStatus.jdField_a_of_type_Int = 0;
-      localProgressStatus.jdField_b_of_type_Int = 0;
+      localProgressStatus.a = paramString;
+      localProgressStatus.b = "";
+      localProgressStatus.c = paramBoolean;
+      localProgressStatus.d = 0;
+      localProgressStatus.e = 0;
       localProgressStatus.a();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localProgressStatus);
+      this.a.put(paramString, localProgressStatus);
       return;
     }
     finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      SLog.b("StoryVideoUploadProgressManager", "startANewUploadSeq");
+      Iterator localIterator = this.a.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((StoryVideoUploadProgressManager.ProgressStatus)((Map.Entry)localIterator.next()).getValue()).b();
+      }
+      this.a.clear();
+      this.b.clear();
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void b(String paramString)
@@ -237,12 +195,12 @@ public class StoryVideoUploadProgressManager
     try
     {
       SLog.a("StoryVideoUploadProgressManager", "mergeVideoSuccess:%s", paramString);
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      if (this.a.containsKey(paramString))
       {
-        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        localProgressStatus.jdField_a_of_type_Int = 2;
-        localProgressStatus.jdField_b_of_type_Int = 60;
-        a(paramString, localProgressStatus.jdField_b_of_type_Int);
+        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
+        localProgressStatus.d = 2;
+        localProgressStatus.e = 60;
+        a(paramString, localProgressStatus.e);
       }
       return;
     }
@@ -253,17 +211,37 @@ public class StoryVideoUploadProgressManager
     }
   }
   
+  public int c()
+  {
+    Iterator localIterator = this.a.values().iterator();
+    int j = 0;
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)localIterator.next();
+      if (localProgressStatus.c)
+      {
+        j += 1;
+        i += localProgressStatus.e;
+      }
+    }
+    if (j > 0) {
+      return i / j;
+    }
+    return -1;
+  }
+  
   public void c(String paramString)
   {
     try
     {
       SLog.a("StoryVideoUploadProgressManager", "uploadVideoSuccess:%s", paramString);
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      if (this.a.containsKey(paramString))
       {
-        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        localProgressStatus.jdField_a_of_type_Int = 3;
-        localProgressStatus.jdField_b_of_type_Int = 95;
-        a(paramString, localProgressStatus.jdField_b_of_type_Int);
+        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
+        localProgressStatus.d = 3;
+        localProgressStatus.e = 95;
+        a(paramString, localProgressStatus.e);
       }
       return;
     }
@@ -278,12 +256,12 @@ public class StoryVideoUploadProgressManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      if (this.a.containsKey(paramString))
       {
-        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        localProgressStatus.jdField_a_of_type_Int = 5;
-        localProgressStatus.jdField_b_of_type_Int = 100;
-        a(paramString, localProgressStatus.jdField_b_of_type_Int);
+        StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
+        localProgressStatus.d = 5;
+        localProgressStatus.e = 100;
+        a(paramString, localProgressStatus.e);
         localProgressStatus.b();
       }
       return;
@@ -294,10 +272,32 @@ public class StoryVideoUploadProgressManager
       throw paramString;
     }
   }
+  
+  public String e(String paramString)
+  {
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext())
+    {
+      StoryVideoUploadProgressManager.ProgressStatus localProgressStatus = (StoryVideoUploadProgressManager.ProgressStatus)localIterator.next();
+      if ((localProgressStatus.b != null) && (localProgressStatus.b.equals(paramString))) {
+        return localProgressStatus.a;
+      }
+    }
+    return "";
+  }
+  
+  public int f(String paramString)
+  {
+    paramString = (StoryVideoUploadProgressManager.ProgressStatus)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.e;
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager
  * JD-Core Version:    0.7.0.1
  */

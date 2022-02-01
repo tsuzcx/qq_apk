@@ -20,7 +20,7 @@ class VasProfileTagView$6
   public void onAnimationRepeat(Animation paramAnimation)
   {
     if (VasProfileTagView.access$1500(this.this$0).allInOne.pa != 0) {
-      this.val$tagView.setTagColor(this.this$0.getResources().getColor(2131166617), this.this$0.getResources().getColor(2131166615));
+      this.val$tagView.setTagColor(this.this$0.getResources().getColor(2131167537), this.this$0.getResources().getColor(2131167535));
     }
   }
   
@@ -28,7 +28,7 @@ class VasProfileTagView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.6
  * JD-Core Version:    0.7.0.1
  */

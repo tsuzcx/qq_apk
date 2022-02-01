@@ -19,41 +19,30 @@ import tencent.im.qqwallet.GetRecommendWords.CopyWriter;
 public class ContinueChainBizImpl
   implements IWordChainBiz
 {
-  private long jdField_a_of_type_Long = 0L;
-  private WordChainHbFragment jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment;
-  List<String> jdField_a_of_type_JavaUtilList = new LinkedList();
+  List<String> a = new LinkedList();
   private List<String> b;
+  private WordChainHbFragment c;
+  private long d = 0L;
   
   public ContinueChainBizImpl(WordChainHbFragment paramWordChainHbFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment = paramWordChainHbFragment;
+    this.c = paramWordChainHbFragment;
   }
   
-  private int a(String paramString)
+  private void b(int paramInt)
   {
-    boolean bool = TextUtils.isEmpty(paramString);
-    int j = 2147483647;
-    if (bool) {
-      return 2147483647;
-    }
-    paramString = b(paramString);
-    int i = j;
-    if (!TextUtils.isEmpty(paramString))
+    if (paramInt < this.c.k())
     {
-      paramString = paramString.split("-");
-      i = j;
-      if (paramString.length < 2) {}
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      if (Math.abs(l - this.d) > 1000L)
+      {
+        this.d = l;
+        this.c.c(String.format("该诗词可接龙最大次数是%d，请修改个数", new Object[] { Integer.valueOf(paramInt) }));
+      }
     }
-    try
-    {
-      i = Integer.parseInt(paramString[1]);
-      return i;
-    }
-    catch (Throwable paramString) {}
-    return 2147483647;
   }
   
-  private String a(String paramString)
+  private String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -71,10 +60,10 @@ public class ContinueChainBizImpl
       if (arrayOfString.length >= 2) {
         i = Integer.parseInt(arrayOfString[1]);
       }
-      a(i);
-      this.jdField_a_of_type_JavaUtilList.add(paramString);
-      if (this.jdField_a_of_type_JavaUtilList.size() > 50) {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
+      b(i);
+      this.a.add(paramString);
+      if (this.a.size() > 50) {
+        this.a.remove(0);
       }
       return arrayOfString[0];
       return "";
@@ -88,26 +77,37 @@ public class ContinueChainBizImpl
     }
   }
   
-  private void a(int paramInt)
+  private int d(String paramString)
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment.c())
-    {
-      long l = NetConnInfoCenter.getServerTimeMillis();
-      if (Math.abs(l - this.jdField_a_of_type_Long) > 1000L)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment.b(String.format("该诗词可接龙最大次数是%d，请修改个数", new Object[] { Integer.valueOf(paramInt) }));
-      }
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 2147483647;
+    if (bool) {
+      return 2147483647;
     }
+    paramString = e(paramString);
+    int i = j;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("-");
+      i = j;
+      if (paramString.length < 2) {}
+    }
+    try
+    {
+      i = Integer.parseInt(paramString[1]);
+      return i;
+    }
+    catch (Throwable paramString) {}
+    return 2147483647;
   }
   
-  private String b(String paramString)
+  private String e(String paramString)
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append("-");
     paramString = ((StringBuilder)localObject1).toString();
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject1 = this.a.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
@@ -116,7 +116,7 @@ public class ContinueChainBizImpl
         return localObject2;
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplWordChainHbFragment.a(3).iterator();
+    localObject1 = this.c.a(3).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (GetRecommendWords.CopyWriter)((Iterator)localObject1).next();
@@ -132,7 +132,7 @@ public class ContinueChainBizImpl
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      String str = a(((GetRecommendWords.CopyWriter)paramList.remove(i)).info.get());
+      String str = c(((GetRecommendWords.CopyWriter)paramList.remove(i)).info.get());
       if (!TextUtils.isEmpty(str)) {
         return str;
       }
@@ -160,14 +160,9 @@ public class ContinueChainBizImpl
         paramList.append(this.b.size());
         QLog.i("ContinueChainBizImpl", 2, paramList.toString());
       }
-      return a((String)this.b.get(i));
+      return c((String)this.b.get(i));
     }
     return "";
-  }
-  
-  public void a(String paramString)
-  {
-    a(a(paramString));
   }
   
   public boolean a(String paramString)
@@ -178,7 +173,7 @@ public class ContinueChainBizImpl
   public InputFilter[] a(int paramInt)
   {
     int i;
-    if ((!SystemUtil.d()) && (!SystemUtil.e())) {
+    if ((!SystemUtil.g()) && (!SystemUtil.h())) {
       i = 0;
     } else {
       i = 1;
@@ -188,10 +183,15 @@ public class ContinueChainBizImpl
     }
     return new InputFilter[0];
   }
+  
+  public void b(String paramString)
+  {
+    b(d(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.ContinueChainBizImpl
  * JD-Core Version:    0.7.0.1
  */

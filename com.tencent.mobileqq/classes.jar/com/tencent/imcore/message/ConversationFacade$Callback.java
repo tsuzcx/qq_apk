@@ -10,27 +10,13 @@ import mqq.app.AppRuntime;
 
 public abstract interface ConversationFacade$Callback
 {
-  public abstract int a(AppRuntime paramAppRuntime);
-  
-  public abstract int a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2);
-  
   public abstract long a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, long paramLong);
   
   public abstract BaseMsgProxy a(AppRuntime paramAppRuntime, int paramInt);
   
-  public abstract ConversationFacade a(AppRuntime paramAppRuntime);
-  
-  public abstract ConversationProxy a(AppRuntime paramAppRuntime);
-  
   public abstract Message a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2);
   
-  public abstract RecentUserProxy a(AppRuntime paramAppRuntime);
-  
   public abstract ConversationInfo a(ConversationInfo paramConversationInfo);
-  
-  public abstract BaseApplication a(AppRuntime paramAppRuntime);
   
   public abstract String a();
   
@@ -42,15 +28,11 @@ public abstract interface ConversationFacade$Callback
   
   public abstract void a(AppRuntime paramAppRuntime);
   
-  public abstract void a(AppRuntime paramAppRuntime, int paramInt);
-  
   public abstract void a(AppRuntime paramAppRuntime, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList);
   
   public abstract void a(AppRuntime paramAppRuntime, ConversationFacade paramConversationFacade, String paramString, int paramInt);
   
   public abstract void a(AppRuntime paramAppRuntime, ConversationInfo paramConversationInfo, int paramInt);
-  
-  public abstract void a(AppRuntime paramAppRuntime, String paramString);
   
   public abstract void a(AppRuntime paramAppRuntime, boolean paramBoolean, Object paramObject);
   
@@ -66,27 +48,45 @@ public abstract interface ConversationFacade$Callback
   
   public abstract boolean a(AppRuntime paramAppRuntime, String paramString);
   
+  public abstract int b(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2);
+  
+  public abstract ConversationProxy b(AppRuntime paramAppRuntime);
+  
   public abstract String b();
   
-  public abstract void b(AppRuntime paramAppRuntime);
+  public abstract void b(AppRuntime paramAppRuntime, int paramInt);
+  
+  public abstract void b(AppRuntime paramAppRuntime, String paramString);
   
   public abstract boolean b(MessageRecord paramMessageRecord);
   
-  public abstract boolean b(AppRuntime paramAppRuntime, String paramString);
+  public abstract long c(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2);
+  
+  public abstract RecentUserProxy c(AppRuntime paramAppRuntime);
   
   public abstract boolean c(MessageRecord paramMessageRecord);
   
   public abstract boolean c(AppRuntime paramAppRuntime, String paramString);
   
+  public abstract ConversationFacade d(AppRuntime paramAppRuntime);
+  
   public abstract boolean d(MessageRecord paramMessageRecord);
+  
+  public abstract boolean d(AppRuntime paramAppRuntime, String paramString);
+  
+  public abstract int e(AppRuntime paramAppRuntime);
   
   public abstract boolean e(MessageRecord paramMessageRecord);
   
+  public abstract BaseApplication f(AppRuntime paramAppRuntime);
+  
   public abstract boolean f(MessageRecord paramMessageRecord);
+  
+  public abstract void g(AppRuntime paramAppRuntime);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacade.Callback
  * JD-Core Version:    0.7.0.1
  */

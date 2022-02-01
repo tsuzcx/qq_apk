@@ -22,21 +22,21 @@ class FriendOnlineStatusHelper$1
   
   public void onClick(View paramView)
   {
-    Object localObject = ((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a);
+    Object localObject = ((FriendsManager)this.a.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.a.c.b);
     if ((localObject != null) && ((OnlineStatusUtils.a(((Friends)localObject).detalStatusFlag, ((Friends)localObject).iTermType) != 0) || ((!TextUtils.isEmpty(((Friends)localObject).strTermDesc)) && (((Friends)localObject).strTermDesc.contains("TIM")))))
     {
-      localObject = (IOnlineStatusService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOnlineStatusService.class, "");
+      localObject = (IOnlineStatusService)this.a.b.getRuntimeService(IOnlineStatusService.class, "");
       if (((IOnlineStatusService)localObject).isAIODialogNotShowing()) {
-        ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, false);
+        ((FriendListHandler)this.a.b.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getOnlineInfo(this.a.c.b, false);
       }
-      ((IOnlineStatusService)localObject).showAIOStatusPopupDialog(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+      ((IOnlineStatusService)localObject).showAIOStatusPopupDialog(this.a.c.b, this.a.a.b(), 1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendOnlineStatusHelper.1
  * JD-Core Version:    0.7.0.1
  */

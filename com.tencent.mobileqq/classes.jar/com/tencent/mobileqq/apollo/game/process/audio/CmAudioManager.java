@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.game.process.audio;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.game.process.chanel.CmGameNativeMethodHandler;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderRunner;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,20 +12,6 @@ public class CmAudioManager
   implements ICmGameAudioPlayer
 {
   private CmGameNativeMethodHandler a;
-  
-  public CmAudioManager(CmGameNativeMethodHandler paramCmGameNativeMethodHandler)
-  {
-    this.a = paramCmGameNativeMethodHandler;
-  }
-  
-  public int a()
-  {
-    CmGameNativeMethodHandler localCmGameNativeMethodHandler = this.a;
-    if (localCmGameNativeMethodHandler == null) {
-      return 0;
-    }
-    return localCmGameNativeMethodHandler.b;
-  }
   
   public int a(int paramInt)
   {
@@ -56,7 +42,7 @@ public class CmAudioManager
       while (localIterator.hasNext())
       {
         CmGameAudioPlayer localCmGameAudioPlayer = (CmGameAudioPlayer)localIterator.next();
-        if ((localCmGameAudioPlayer != null) && (localCmGameAudioPlayer.b() == a())) {
+        if ((localCmGameAudioPlayer != null) && (localCmGameAudioPlayer.b() == d())) {
           localCmGameAudioPlayer.b(new JSONObject());
         }
       }
@@ -100,9 +86,9 @@ public class CmAudioManager
         while (localIterator.hasNext())
         {
           CmGameAudioPlayer localCmGameAudioPlayer = (CmGameAudioPlayer)localIterator.next();
-          if ((localCmGameAudioPlayer != null) && (localCmGameAudioPlayer.b() == a()))
+          if ((localCmGameAudioPlayer != null) && (localCmGameAudioPlayer.b() == d()))
           {
-            localCmGameAudioPlayer.a();
+            localCmGameAudioPlayer.d();
             localIterator.remove();
           }
         }
@@ -111,16 +97,25 @@ public class CmAudioManager
     ??? = this.a;
     if (??? != null)
     {
-      ((CmGameNativeMethodHandler)???).a();
+      ((CmGameNativeMethodHandler)???).b();
       this.a = null;
     }
   }
   
   public void c(int paramInt, String paramString) {}
+  
+  public int d()
+  {
+    CmGameNativeMethodHandler localCmGameNativeMethodHandler = this.a;
+    if (localCmGameNativeMethodHandler == null) {
+      return 0;
+    }
+    return localCmGameNativeMethodHandler.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmAudioManager
  * JD-Core Version:    0.7.0.1
  */

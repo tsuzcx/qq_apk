@@ -10,12 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RedPointInfo
 {
   public String a;
-  private ConcurrentHashMap<Integer, RedPointItem> a = new ConcurrentHashMap();
   public String b;
+  private ConcurrentHashMap<Integer, RedPointItem> c = new ConcurrentHashMap();
   
   public RedPointItem a(int paramInt)
   {
-    ConcurrentHashMap localConcurrentHashMap = this.a;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null) {
       return (RedPointItem)localConcurrentHashMap.get(Integer.valueOf(paramInt));
     }
@@ -24,7 +24,7 @@ public class RedPointInfo
   
   public boolean a()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.a;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     boolean bool = true;
     if (localConcurrentHashMap != null)
     {
@@ -47,7 +47,7 @@ public class RedPointInfo
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("RedPointInfo", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a;
+    Object localObject = this.c;
     if (localObject == null) {
       return false;
     }
@@ -58,7 +58,7 @@ public class RedPointInfo
       if (paramInt2 != 0)
       {
         localObject = new RedPointItem(paramInt1, paramInt2);
-        this.a.put(Integer.valueOf(paramInt1), localObject);
+        this.c.put(Integer.valueOf(paramInt1), localObject);
         break label175;
       }
     }
@@ -66,11 +66,11 @@ public class RedPointInfo
     {
       if (paramInt2 == 0)
       {
-        this.a.remove(Integer.valueOf(paramInt1));
+        this.c.remove(Integer.valueOf(paramInt1));
         break label175;
       }
       ((RedPointItem)localObject).unReadNum = paramInt2;
-      this.a.put(Integer.valueOf(paramInt1), localObject);
+      this.c.put(Integer.valueOf(paramInt1), localObject);
       break label175;
     }
     bool = false;
@@ -124,7 +124,7 @@ public class RedPointInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.RedPointInfo
  * JD-Core Version:    0.7.0.1
  */

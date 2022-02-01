@@ -16,31 +16,31 @@ public final class DownloadMd5CheckStep
   extends SuperMaskStep
 {
   @Nullable
-  private final MaterialData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMaterialdownloadMaterialData;
+  private final MaterialData a;
   @Nullable
-  private final File jdField_a_of_type_JavaIoFile;
+  private final File b;
   
   public DownloadMd5CheckStep(@Nullable MaterialData paramMaterialData, @Nullable File paramFile)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMaterialdownloadMaterialData = paramMaterialData;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramMaterialData;
+    this.b = paramFile;
   }
   
-  public boolean a()
+  public boolean c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMaterialdownloadMaterialData != null)
+    if (this.a != null)
     {
-      localObject1 = this.jdField_a_of_type_JavaIoFile;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((File)localObject1).exists();
       }
     }
     boolean bool2 = false;
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMaterialdownloadMaterialData;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((MaterialData)localObject1).bid_mask == 1)) {
       return true;
     }
-    localObject1 = this.jdField_a_of_type_JavaIoFile;
+    localObject1 = this.b;
     Object localObject2 = null;
     if (localObject1 != null) {
       localObject1 = ((File)localObject1).getPath();
@@ -55,7 +55,7 @@ public final class DownloadMd5CheckStep
     {
       localObject3 = ((String)localObject1).toLowerCase((Locale)localObject3);
       Intrinsics.checkExpressionValueIsNotNull(localObject3, "(this as java.lang.String).toLowerCase(locale)");
-      MaterialData localMaterialData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMaterialdownloadMaterialData;
+      MaterialData localMaterialData = this.a;
       localObject1 = localObject2;
       if (localMaterialData != null) {
         localObject1 = localMaterialData.res_md5;
@@ -79,7 +79,7 @@ public final class DownloadMd5CheckStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.DownloadMd5CheckStep
  * JD-Core Version:    0.7.0.1
  */

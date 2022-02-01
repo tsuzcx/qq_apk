@@ -119,8 +119,8 @@ public class ConfessHandler
   
   private void b(QQAppInterface paramQQAppInterface, ConfessConfig paramConfessConfig)
   {
-    long l1 = MessageCache.a();
-    long l2 = ConfessConfig.a(paramQQAppInterface, "redpoint_box_show");
+    long l1 = MessageCache.c();
+    long l2 = ConfessConfig.b(paramQQAppInterface, "redpoint_box_show");
     boolean bool = QLog.isColorLevel();
     int i = 0;
     if (bool) {
@@ -128,9 +128,9 @@ public class ConfessHandler
     }
     ConfessConfig.a(paramQQAppInterface, "redpoint_box_show", l1);
     ConfessMsgUtil.a(paramQQAppInterface, false, true);
-    paramQQAppInterface.getMessageFacade().a().d(AppConstants.CONFESS_UIN, 1032);
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-    RecentUser localRecentUser1 = localRecentUserProxy.b(AppConstants.CONFESS_UIN, 1032);
+    paramQQAppInterface.getMessageFacade().a().m(AppConstants.CONFESS_UIN, 1032);
+    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+    RecentUser localRecentUser1 = localRecentUserProxy.c(AppConstants.CONFESS_UIN, 1032);
     if (localRecentUser1 == null) {
       localRecentUser1 = new RecentUser(AppConstants.CONFESS_UIN, 1032);
     }
@@ -225,7 +225,7 @@ public class ConfessHandler
     if (QLog.isColorLevel()) {
       QLog.i("ConfessHandler", 2, "onNeedShowLebaRedPoint");
     }
-    ConfessConfig.a(paramQQAppInterface, "redpoint_leba_show", MessageCache.a());
+    ConfessConfig.a(paramQQAppInterface, "redpoint_leba_show", MessageCache.c());
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -236,12 +236,12 @@ public class ConfessHandler
   public void a(QQAppInterface paramQQAppInterface, ConfessConfig paramConfessConfig)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, String.format("onGetNewConfig boxEntry:%d contactEntry:%d", new Object[] { Integer.valueOf(paramConfessConfig.h), Integer.valueOf(paramConfessConfig.i) }));
+      QLog.i("ConfessHandler", 2, String.format("onGetNewConfig boxEntry:%d contactEntry:%d", new Object[] { Integer.valueOf(paramConfessConfig.z), Integer.valueOf(paramConfessConfig.A) }));
     }
-    if (paramConfessConfig.h == 2) {
+    if (paramConfessConfig.z == 2) {
       b(paramQQAppInterface, paramConfessConfig);
     }
-    if (paramConfessConfig.i == 2) {
+    if (paramConfessConfig.A == 2) {
       c(paramQQAppInterface, paramConfessConfig);
     }
   }
@@ -252,7 +252,7 @@ public class ConfessHandler
     if (localObject == null) {
       return;
     }
-    if (((QQAppInterface)localObject).getProxyManager().a().b(AppConstants.CONFESS_UIN, 1032) != null)
+    if (((QQAppInterface)localObject).getProxyManager().g().c(AppConstants.CONFESS_UIN, 1032) != null)
     {
       localObject = this.a.getHandler(Conversation.class);
       if (localObject != null) {
@@ -318,17 +318,17 @@ public class ConfessHandler
     if (this.a == null) {
       return;
     }
-    if ((paramFrdConfessInfo != null) && (paramFrdConfessInfo.a()))
+    if ((paramFrdConfessInfo != null) && (paramFrdConfessInfo.c()))
     {
-      RecentUserProxy localRecentUserProxy = this.a.getProxyManager().a();
-      RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.CONFESS_UIN, 1032);
+      RecentUserProxy localRecentUserProxy = this.a.getProxyManager().g();
+      RecentUser localRecentUser = localRecentUserProxy.c(AppConstants.CONFESS_UIN, 1032);
       int i = 0;
       if (localRecentUser == null)
       {
         localRecentUser = new RecentUser();
         localRecentUser.uin = AppConstants.CONFESS_UIN;
         localRecentUser.setType(1032);
-        localRecentUser.lastmsgtime = paramFrdConfessInfo.a;
+        localRecentUser.lastmsgtime = paramFrdConfessInfo.c;
       }
       Object localObject;
       for (paramFrdConfessInfo = localRecentUser;; paramFrdConfessInfo = localRecentUser)
@@ -337,10 +337,10 @@ public class ConfessHandler
         localObject = paramFrdConfessInfo;
         break;
         localObject = localRecentUser;
-        if (localRecentUser.lastmsgtime >= paramFrdConfessInfo.a) {
+        if (localRecentUser.lastmsgtime >= paramFrdConfessInfo.c) {
           break;
         }
-        localRecentUser.lastmsgtime = paramFrdConfessInfo.a;
+        localRecentUser.lastmsgtime = paramFrdConfessInfo.c;
       }
       if (i != 0)
       {
@@ -384,7 +384,7 @@ public class ConfessHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessHandler
  * JD-Core Version:    0.7.0.1
  */

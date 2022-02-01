@@ -15,6 +15,7 @@ import android.os.Message;
 import android.os.Process;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -740,7 +741,7 @@ public class a
   {
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)BaseApplication.getContext().getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)BaseApplication.getContext().getSystemService("wifi"));
       if (localWifiInfo == null) {
         break label76;
       }
@@ -834,7 +835,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.a
  * JD-Core Version:    0.7.0.1
  */

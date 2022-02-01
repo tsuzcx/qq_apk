@@ -19,11 +19,11 @@ public abstract interface IVideoEventListener
   
   public abstract void c(int paramInt, String paramString);
   
-  public abstract void d(String paramString);
+  public abstract void j(String paramString);
   
-  public abstract void e(String paramString);
+  public abstract void k(String paramString);
   
-  public abstract void f(String paramString);
+  public abstract void l(String paramString);
 }
 
 

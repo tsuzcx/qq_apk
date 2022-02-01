@@ -15,14 +15,8 @@ import java.util.Map;
 public class ExpandConfigChannelHandler
   implements MethodChannel.MethodCallHandler
 {
-  private static final Handler a;
-  public static final MethodCodec a;
-  
-  static
-  {
-    jdField_a_of_type_IoFlutterPluginCommonMethodCodec = StandardMethodCodec.INSTANCE;
-    jdField_a_of_type_AndroidOsHandler = new Handler();
-  }
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  private static final Handler b = new Handler();
   
   public static void a(@NonNull MethodCall paramMethodCall, IExpandChannelCallback paramIExpandChannelCallback)
   {
@@ -165,7 +159,7 @@ public class ExpandConfigChannelHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.ExpandConfigChannelHandler
  * JD-Core Version:    0.7.0.1
  */

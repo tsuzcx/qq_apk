@@ -26,18 +26,18 @@ import java.util.List;
 public class VideoForC2C
   implements BaseVideoBiz
 {
-  protected QQAppInterface a;
   protected FileManagerEntity a;
+  protected QQAppInterface b;
   
   public VideoForC2C(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.b = paramQQAppInterface;
+    this.a = paramFileManagerEntity;
   }
   
   private String a(String paramString, int paramInt, List<String> paramList, boolean paramBoolean)
   {
-    if (!FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1)) {
+    if (!FileIPv6StrateyController.b().isConfigEnableIPV6(this.b, 1)) {
       return "";
     }
     int j = 0;
@@ -49,7 +49,7 @@ public class VideoForC2C
       localStringBuilder.append(paramString);
       localStringBuilder.append("]");
       QLog.i("VideoForC2C<QFile>XOXO", 1, localStringBuilder.toString());
-      paramList = FileIPv6StrateyController.a().getIPV6listForMediaPlatfrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramList);
+      paramList = FileIPv6StrateyController.b().getIPV6listForMediaPlatfrom(this.b, 1, paramList);
       if ((paramList != null) && (paramList.size() > 0))
       {
         j = paramList.size();
@@ -84,15 +84,15 @@ public class VideoForC2C
         paramList.append("]");
         QLog.i("VideoForC2C<QFile>XOXO", 1, paramList.toString());
         paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-        paramString = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
+        paramString = FileIPv6StrateyController.b().getIPlistForV6Domain(this.b, paramString, 1);
         if ((paramString != null) && (!paramString.a()))
         {
-          i = paramString.a.size();
+          i = paramString.b.size();
           paramInt = j;
         }
         while (paramInt < i)
         {
-          paramList = (FileIPv6StrateyController.IPInfo)paramString.a.get(paramInt);
+          paramList = (FileIPv6StrateyController.IPInfo)paramString.b.get(paramInt);
           if ((paramList != null) && (!TextUtils.isEmpty(paramList.a)))
           {
             paramString = paramList.a;
@@ -111,90 +111,90 @@ public class VideoForC2C
     return "";
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-  }
-  
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    localStringBuilder.append(this.a.nSessionId);
     localStringBuilder.append("");
     return localStringBuilder.toString();
   }
   
   public void a(long paramLong)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a;
     localFileManagerEntity.status = 2;
     localFileManagerEntity.fProgress = ((float)paramLong / (float)localFileManagerEntity.fileSize);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    this.b.getFileManagerNotifyCenter().a(this.a.uniseq, this.a.nSessionId, this.a.peerUin, this.a.peerType, 16, null, 0, null);
   }
   
   public void a(FileVideoDownloadManager.FileVideoManagerCallback paramFileVideoManagerCallback)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))
+    if (TextUtils.isEmpty(this.a.Uuid))
     {
       a(true);
-      paramFileVideoManagerCallback.a(-6101, BaseApplication.getContext().getResources().getString(2131692751));
+      paramFileVideoManagerCallback.a(-6101, BaseApplication.getContext().getResources().getString(2131889822));
       paramFileVideoManagerCallback = new StringBuilder();
       paramFileVideoManagerCallback.append("[");
-      paramFileVideoManagerCallback.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      paramFileVideoManagerCallback.append(this.a.nSessionId);
       paramFileVideoManagerCallback.append("],[getOnlinePlay]  uuid is null");
       QLog.e("VideoForC2C<QFile>XOXO", 2, paramFileVideoManagerCallback.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, new VideoForC2C.1(this, paramFileVideoManagerCallback));
+    this.a.nOpType = 1;
+    this.b.getFileTransferHandler().a(this.a.Uuid, this.a.fileIdCrc, this.a.bSend, false, new VideoForC2C.1(this, paramFileVideoManagerCallback));
   }
   
   public void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.a;
     ((FileManagerEntity)localObject).status = 1;
     ((FileManagerEntity)localObject).setFilePath(paramString);
-    localObject = new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.localModifyTime = ((File)localObject).lastModified();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localObject = new File(this.a.getFilePath());
+    this.a.localModifyTime = ((File)localObject).lastModified();
+    localObject = this.a;
     ((FileManagerEntity)localObject).nOLfileSessionId = 0L;
     ((FileManagerEntity)localObject).fProgress = 1.0F;
     ((FileManagerEntity)localObject).setCloudType(3);
-    FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 11, new Object[] { paramString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
+    FileManagerUtil.n(this.a);
+    this.b.getFileManagerDataCenter().c(this.a);
+    this.b.getFileManagerNotifyCenter().a(this.a.uniseq, this.a.nSessionId, this.a.peerUin, this.a.peerType, 11, new Object[] { paramString, Long.valueOf(this.a.fileSize), Boolean.valueOf(true), this.a.strServerPath }, 0, null);
     FileVideoDownloadManager.a(this);
   }
   
   public void a(boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a;
     localFileManagerEntity.status = 0;
     if (paramBoolean)
     {
       localFileManagerEntity.status = 16;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.b.getFileManagerDataCenter().c(this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 12, null, 2, null);
+    this.b.getFileManagerNotifyCenter().a(this.a.uniseq, this.a.nSessionId, this.a.peerUin, this.a.peerType, 12, null, 2, null);
     FileVideoDownloadManager.a(this);
   }
   
-  public String b()
+  public long b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
-    localStringBuilder.append(MD5.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid));
-    return localStringBuilder.toString();
+    return this.a.fileSize;
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
+    localStringBuilder.append(MD5.b(this.a.Uuid));
+    return localStringBuilder.toString();
+  }
+  
+  public String d()
+  {
+    return this.a.fileName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForC2C
  * JD-Core Version:    0.7.0.1
  */

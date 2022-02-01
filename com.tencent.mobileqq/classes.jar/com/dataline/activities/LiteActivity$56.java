@@ -1,42 +1,32 @@
 package com.dataline.activities;
 
-import com.tencent.imcore.message.QQMessageFacade;
+import android.animation.Animator;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.MobileQQ;
 
 class LiteActivity$56
-  implements FMDialogUtil.FMDialogInterface
+  extends D8SafeAnimatorListener
 {
-  LiteActivity$56(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
+  LiteActivity$56(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(FileManagerUtil.c(this.jdField_a_of_type_JavaLangString));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692688));
-      FMToastUtil.b(((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = ((FileManagerEntity)localObject).nSessionId;
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getMessageFacade().a(i).d(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
-      return;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(FileManagerUtil.c(this.jdField_a_of_type_JavaLangString));
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692688));
-    FMToastUtil.b(((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
+    LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
+    ((FrameLayout.LayoutParams)this.a.q.getLayoutParams()).setMargins(0, 0, 0, 0);
+    this.a.q.setPadding(AIOUtils.b(24.0F, this.a.app.getApplication().getResources()), AIOUtils.b(10.0F, this.a.app.getApplication().getResources()), AIOUtils.b(24.0F, this.a.app.getApplication().getResources()), 0);
+    LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

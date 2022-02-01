@@ -17,11 +17,11 @@ public class CouponInterface
   
   public void a(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if ((localActivity instanceof CouponActivity))
     {
       Object localObject = (CouponActivity)localActivity;
-      int i = ((CouponActivity)localObject).a;
+      int i = ((CouponActivity)localObject).b;
       if ((i & 0x8) != 0)
       {
         paramString = new Intent();
@@ -55,7 +55,7 @@ public class CouponInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ class TRTCCloudImpl$75
   {
     TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setFaceShortLevel ");
-    localStringBuilder.append(this.val$faceShortlevel);
+    localStringBuilder.append("setEyeScaleLevel ");
+    localStringBuilder.append(this.val$eyeScaleLevel);
     localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    this.this$0.getBeautyManager().setFaceShortLevel(this.val$faceShortlevel);
+    this.this$0.getBeautyManager().setEyeScaleLevel(this.val$eyeScaleLevel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.75
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,8 @@ public class PendantItem
   public static final int CATEGORY_FACE_AND_GESTURE = 2;
   public static final int CATEGORY_GESTURE = 1;
   private int category;
+  private String categoryId;
+  private String categoryName;
   private String desc;
   public Object extraParam = null;
   private String filtername;
@@ -64,6 +66,16 @@ public class PendantItem
   public int getCategory()
   {
     return this.category;
+  }
+  
+  public String getCategoryId()
+  {
+    return this.categoryId;
+  }
+  
+  public String getCategoryName()
+  {
+    return this.categoryName;
   }
   
   public String getDesc()
@@ -154,6 +166,16 @@ public class PendantItem
   public void setCategory(int paramInt)
   {
     this.category = paramInt;
+  }
+  
+  public void setCategoryId(String paramString)
+  {
+    this.categoryId = paramString;
+  }
+  
+  public void setCategoryName(String paramString)
+  {
+    this.categoryName = paramString;
   }
   
   public void setDesc(String paramString)

@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.soload.config;
 
+import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
@@ -13,30 +14,30 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class SoLoaderConfProcessor
   extends IQConfigProcessor<SoLoadConfBean>
 {
-  private final List<SoLoaderConfProcessor.OnGetConfigListener> a = new LinkedList();
+  private static final Handler a = new Handler(ThreadManagerV2.getSubThreadLooper());
+  private final List<SoLoaderConfProcessor.OnGetConfigListener> b = new LinkedList();
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("[notifyListeners]:");
-      ((StringBuilder)???).append(this.a.size());
+      ((StringBuilder)???).append(this.b.size());
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, ((StringBuilder)???).toString());
     }
-    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+    a.removeCallbacksAndMessages(this);
     try
     {
-      synchronized (this.a)
+      synchronized (this.b)
       {
-        if (this.a.size() > 0)
+        if (this.b.size() > 0)
         {
-          Iterator localIterator = this.a.iterator();
+          Iterator localIterator = this.b.iterator();
           while (localIterator.hasNext())
           {
             SoLoaderConfProcessor.OnGetConfigListener localOnGetConfigListener = (SoLoaderConfProcessor.OnGetConfigListener)localIterator.next();
@@ -49,7 +50,7 @@ public class SoLoaderConfProcessor
               QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable2, new Object[0]);
             }
           }
-          this.a.clear();
+          this.b.clear();
         }
         return;
       }
@@ -63,10 +64,10 @@ public class SoLoaderConfProcessor
     }
   }
   
-  private void b(int paramInt)
+  private void c(int paramInt)
   {
-    SoDataUtil.a();
-    a(paramInt);
+    SoDataUtil.b();
+    b(paramInt);
   }
   
   @NonNull
@@ -99,7 +100,7 @@ public class SoLoaderConfProcessor
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
     SoConfigManager.a().a(paramSoLoadConfBean);
-    b(0);
+    c(0);
   }
   
   public void a(SoLoaderConfProcessor.OnGetConfigListener paramOnGetConfigListener)
@@ -112,18 +113,18 @@ public class SoLoaderConfProcessor
     if (QLog.isColorLevel()) {
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[getConfig]");
     }
-    synchronized (this.a)
+    synchronized (this.b)
     {
-      if (this.a.size() > 0)
+      if (this.b.size() > 0)
       {
-        this.a.add(paramOnGetConfigListener);
+        this.b.add(paramOnGetConfigListener);
         return;
       }
-      this.a.add(paramOnGetConfigListener);
-      QConfigManager.a().a(526, 0);
-      QConfigManager.a().a(new int[] { 526 });
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new SoLoaderConfProcessor.1(this), this, SystemClock.uptimeMillis() + 35000L);
+      this.b.add(paramOnGetConfigListener);
+      QConfigManager.b().a(526, 0);
+      QConfigManager.b().a(new int[] { 526 });
+      a.removeCallbacksAndMessages(this);
+      a.postAtTime(new SoLoaderConfProcessor.1(this), this, SystemClock.uptimeMillis() + 35000L);
       return;
     }
   }
@@ -160,7 +161,7 @@ public class SoLoaderConfProcessor
       localStringBuilder.append(paramInt);
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
-    b(paramInt);
+    c(paramInt);
   }
   
   public void onReqNoReceive()
@@ -171,10 +172,10 @@ public class SoLoaderConfProcessor
       localStringBuilder.append("onReqNoReceive: type=");
       localStringBuilder.append(type());
       localStringBuilder.append("curContent:");
-      localStringBuilder.append(QConfigManager.a().a(526));
+      localStringBuilder.append(QConfigManager.b().b(526));
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
-    b(0);
+    c(0);
   }
   
   public int onSend(int paramInt)
@@ -189,7 +190,7 @@ public class SoLoaderConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoLoaderConfProcessor
  * JD-Core Version:    0.7.0.1
  */

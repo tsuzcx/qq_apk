@@ -13,50 +13,50 @@ public class TkdConstraintWidthLayout$LayoutParams
 {
   boolean constrainedWidth;
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, int paramInt1, int paramInt2)
+  public TkdConstraintWidthLayout$LayoutParams(int paramInt1, int paramInt2)
   {
     super(paramInt1, paramInt2);
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, int paramInt1, int paramInt2, float paramFloat)
+  public TkdConstraintWidthLayout$LayoutParams(int paramInt1, int paramInt2, float paramFloat)
   {
     super(paramInt1, paramInt2, paramFloat);
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, Context paramContext, AttributeSet paramAttributeSet)
+  public TkdConstraintWidthLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramTkdConstraintWidthLayout = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt);
-    this.constrainedWidth = paramTkdConstraintWidthLayout.getBoolean(R.styleable.jdField_a_of_type_Int, false);
-    paramTkdConstraintWidthLayout.recycle();
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.a);
+    this.constrainedWidth = paramContext.getBoolean(R.styleable.b, false);
+    paramContext.recycle();
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, ViewGroup.LayoutParams paramLayoutParams)
+  public TkdConstraintWidthLayout$LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     super(paramLayoutParams);
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+  public TkdConstraintWidthLayout$LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
     super(paramMarginLayoutParams);
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, LinearLayout.LayoutParams paramLayoutParams)
+  public TkdConstraintWidthLayout$LayoutParams(LinearLayout.LayoutParams paramLayoutParams)
   {
-    this(paramTkdConstraintWidthLayout, paramLayoutParams);
+    this(paramLayoutParams);
     this.weight = paramLayoutParams.weight;
     this.gravity = paramLayoutParams.gravity;
   }
   
-  public TkdConstraintWidthLayout$LayoutParams(TkdConstraintWidthLayout paramTkdConstraintWidthLayout, LayoutParams paramLayoutParams)
+  public TkdConstraintWidthLayout$LayoutParams(LayoutParams paramLayoutParams)
   {
-    this(paramTkdConstraintWidthLayout, paramLayoutParams);
+    this(paramLayoutParams);
     this.constrainedWidth = paramLayoutParams.constrainedWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdConstraintWidthLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

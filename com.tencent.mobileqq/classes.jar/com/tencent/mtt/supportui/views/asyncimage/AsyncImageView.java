@@ -24,8 +24,8 @@ public class AsyncImageView
   public static final int IMAGE_LOADED = 2;
   public static final int IMAGE_LOADING = 1;
   public static final int IMAGE_UNLOAD = 0;
-  protected static int SOURCE_TYPE_DEFAULT_SRC = 2;
-  protected static int SOURCE_TYPE_SRC = 1;
+  protected static final int SOURCE_TYPE_DEFAULT_SRC = 2;
+  protected static final int SOURCE_TYPE_SRC = 1;
   private ValueAnimator mAlphaAnimator;
   protected BackgroundDrawable mBGDrawable;
   protected Drawable mContentDrawable;
@@ -61,7 +61,7 @@ public class AsyncImageView
       if (shouldUseFetchImageMode(paramString))
       {
         paramString = paramString.trim().replaceAll(" ", "%20");
-        if (paramInt == SOURCE_TYPE_SRC)
+        if (paramInt == 1)
         {
           if (!shouldFetchImage()) {
             return;
@@ -111,7 +111,7 @@ public class AsyncImageView
     if (this.mImageAdapter != null)
     {
       String str;
-      if (paramInt == SOURCE_TYPE_SRC) {
+      if (paramInt == 1) {
         str = this.mUrl;
       } else {
         str = this.mDefaultSourceUrl;
@@ -168,9 +168,8 @@ public class AsyncImageView
   {
     if (paramIDrawableTarget == null)
     {
-      int i = SOURCE_TYPE_SRC;
       paramIDrawableTarget = null;
-      if (paramInt == i)
+      if (paramInt == 1)
       {
         this.mSourceDrawable = null;
         if (this.mDefaultSourceDrawable != null)
@@ -178,7 +177,7 @@ public class AsyncImageView
           if (this.mContentDrawable == null) {
             this.mContentDrawable = generateContentDrawable();
           }
-          setContent(SOURCE_TYPE_DEFAULT_SRC);
+          setContent(2);
         }
         else
         {
@@ -190,19 +189,19 @@ public class AsyncImageView
         handleGetImageFail(paramIDrawableTarget);
         return;
       }
-      if (paramInt == SOURCE_TYPE_DEFAULT_SRC) {
+      if (paramInt == 2) {
         this.mDefaultSourceDrawable = null;
       }
     }
     else
     {
       this.mContentDrawable = generateContentDrawable();
-      if (paramInt == SOURCE_TYPE_SRC)
+      if (paramInt == 1)
       {
         this.mSourceDrawable = paramIDrawableTarget;
         handleGetImageSuccess();
       }
-      else if (paramInt == SOURCE_TYPE_DEFAULT_SRC)
+      else if (paramInt == 2)
       {
         this.mDefaultSourceDrawable = paramIDrawableTarget;
       }
@@ -268,9 +267,9 @@ public class AsyncImageView
     if ((this.mDefaultSourceDrawable != null) && (shouldFetchImage()))
     {
       this.mDefaultSourceDrawable.onDrawableAttached();
-      setContent(SOURCE_TYPE_DEFAULT_SRC);
+      setContent(2);
     }
-    fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
+    fetchImageByUrl(this.mUrl, 1);
     onDrawableAttached();
   }
   
@@ -316,12 +315,12 @@ public class AsyncImageView
   
   protected void performFetchImage()
   {
-    fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
+    fetchImageByUrl(this.mUrl, 1);
   }
   
   protected void performSetContent()
   {
-    setContent(SOURCE_TYPE_SRC);
+    setContent(1);
   }
   
   protected void resetContent()
@@ -393,11 +392,7 @@ public class AsyncImageView
         return;
       }
       onSetContent(this.mUrl);
-      if ((paramInt == SOURCE_TYPE_SRC) && (this.mSourceDrawable != null)) {
-        updateContentDrawableProperty();
-      } else if ((paramInt == SOURCE_TYPE_DEFAULT_SRC) && (this.mDefaultSourceDrawable != null) && ((this.mContentDrawable instanceof ContentDrawable)) && ((this.mUrlFetchState != 2) || (this.mSourceDrawable == null))) {
-        ((ContentDrawable)this.mContentDrawable).setBitmap(this.mDefaultSourceDrawable.getBitmap());
-      }
+      updateContentDrawableProperty(paramInt);
       Object localObject = this.mBGDrawable;
       if (localObject != null)
       {
@@ -431,7 +426,7 @@ public class AsyncImageView
     if (!TextUtils.equals(this.mDefaultSourceUrl, paramString))
     {
       this.mDefaultSourceUrl = paramString;
-      fetchImageByUrl(this.mDefaultSourceUrl, SOURCE_TYPE_DEFAULT_SRC);
+      fetchImageByUrl(this.mDefaultSourceUrl, 2);
     }
   }
   
@@ -515,7 +510,7 @@ public class AsyncImageView
       if (isAttached())
       {
         onDrawableDetached();
-        fetchImageByUrl(this.mUrl, SOURCE_TYPE_SRC);
+        fetchImageByUrl(this.mUrl, 1);
       }
     }
   }
@@ -559,12 +554,47 @@ public class AsyncImageView
     }
   }
   
-  protected void updateContentDrawableProperty()
+  protected void updateContentDrawableProperty(int paramInt)
   {
-    Drawable localDrawable = this.mContentDrawable;
-    if ((localDrawable instanceof ContentDrawable))
+    if (!(this.mContentDrawable instanceof ContentDrawable)) {
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramInt != 1)
     {
-      ((ContentDrawable)localDrawable).setBitmap(getBitmap());
+      if (paramInt != 2)
+      {
+        localObject1 = localObject2;
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if (this.mDefaultSourceDrawable != null) {
+          if (this.mUrlFetchState == 2)
+          {
+            localObject1 = localObject2;
+            if (this.mSourceDrawable != null) {}
+          }
+          else
+          {
+            localObject1 = this.mDefaultSourceDrawable.getBitmap();
+          }
+        }
+      }
+    }
+    else
+    {
+      IDrawableTarget localIDrawableTarget = this.mSourceDrawable;
+      localObject1 = localObject2;
+      if (localIDrawableTarget != null) {
+        localObject1 = localIDrawableTarget.getBitmap();
+      }
+    }
+    if (localObject1 != null)
+    {
+      ((ContentDrawable)this.mContentDrawable).setSourceType(paramInt);
+      ((ContentDrawable)this.mContentDrawable).setBitmap((Bitmap)localObject1);
       ((ContentDrawable)this.mContentDrawable).setTintColor(getTintColor());
       ((ContentDrawable)this.mContentDrawable).setScaleType(this.mScaleType);
       ((ContentDrawable)this.mContentDrawable).setImagePositionX(this.mImagePositionX);
@@ -574,7 +604,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.asyncimage.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

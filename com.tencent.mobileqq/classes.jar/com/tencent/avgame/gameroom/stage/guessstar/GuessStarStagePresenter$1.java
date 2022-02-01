@@ -15,23 +15,23 @@ class GuessStarStagePresenter$1
   
   public void run()
   {
-    if ((GuessStarStagePresenter.a(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter != null) && (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView != null))
+    if ((GuessStarStagePresenter.a(this.this$0)) && (this.this$0.a != null) && (this.this$0.b != null))
     {
-      if (!(this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView instanceof GuessStarStageView)) {
+      if (!(this.this$0.b instanceof GuessStarStageView)) {
         return;
       }
-      if (!((GuessStarStageView)this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStageView).isShown()) {
+      if (!((GuessStarStageView)this.this$0.b).isShown()) {
         return;
       }
-      if (IAVGameBusinessCtrl.f()) {
+      if (IAVGameBusinessCtrl.q()) {
         return;
       }
-      Object localObject = IAVGameBusinessCtrl.a().a();
-      if ((localObject != null) && (!((AVGameSession)localObject).e))
+      Object localObject = IAVGameBusinessCtrl.p().j();
+      if ((localObject != null) && (!((AVGameSession)localObject).i))
       {
         localObject = MobileQQ.sMobileQQ;
-        localObject = MobileQQ.getContext().getResources().getString(2131690405);
-        this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().a((String)localObject);
+        localObject = MobileQQ.getContext().getResources().getString(2131887316);
+        this.this$0.a.a().b((String)localObject);
         GuessStarStagePresenter.a(this.this$0, false);
       }
     }

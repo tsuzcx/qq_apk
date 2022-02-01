@@ -7,9 +7,10 @@ import com.tencent.mobileqq.apollo.model.ApolloDress;
 import com.tencent.mobileqq.apollo.model.CheckApolloInfoResult;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.qphone.base.util.QLog;
 
@@ -75,17 +76,18 @@ public class ApolloDrawerInfoManager
       localCheckApolloInfoResult.threeDressIds = ((int[])localObject2);
       localCheckApolloInfoResult.apolloFeatureFlag = paramApolloBaseInfo.apolloStatus;
       localCheckApolloInfoResult.userStatus = k;
-      localCheckApolloInfoResult.traceFeatureId = TraceReportUtil.a(paramInt);
+      localCheckApolloInfoResult.traceFeatureId = TraceReportUtil.c(paramInt);
       if ((paramInt == 1) && (paramApolloBaseInfo.apolloDrawerStatus == 0))
       {
         QLog.e("[cmshow]ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloDrawerStatus:", Integer.valueOf(paramApolloBaseInfo.apolloDrawerStatus) });
         TraceReportUtil.a(localCheckApolloInfoResult.traceFeatureId, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(paramApolloBaseInfo.apolloDrawerStatus) });
       }
       boolean bool;
+      IApolloResManager localIApolloResManager;
       for (;;)
       {
         bool = true;
-        break label625;
+        break label642;
         if ((paramInt == 2) && (paramApolloBaseInfo.apolloCardStatus == 0))
         {
           QLog.e("[cmshow]ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloCardStatus:", Integer.valueOf(paramApolloBaseInfo.apolloCardStatus) });
@@ -93,7 +95,13 @@ public class ApolloDrawerInfoManager
         }
         else
         {
-          if ((k != 1) || ((i > 0) && (localObject1 != null) && (localObject1.length > 0) && ((i <= 0) || (ApolloActionHelperImpl.isRscValid(paramString, i, (int[])localObject1, paramQQAppInterface))))) {
+          if (paramInt == 1) {
+            paramApolloBaseInfo = Scene.DRAWER;
+          } else {
+            paramApolloBaseInfo = Scene.FRIEND_CARD;
+          }
+          localIApolloResManager = ApolloResManagerFacade.a.a(paramApolloBaseInfo);
+          if ((k != 1) || ((i > 0) && (localObject1 != null) && (localObject1.length > 0) && ((i <= 0) || (localIApolloResManager.a(paramString, i, (int[])localObject1, paramQQAppInterface))))) {
             break;
           }
           QLog.e("[cmshow]ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localCheckApolloInfoResult.toString() });
@@ -104,17 +112,12 @@ public class ApolloDrawerInfoManager
           TraceReportUtil.a(i, 10, 111, new Object[] { paramQQAppInterface.toString() });
         }
       }
-      if ((k == 2) && ((j <= 0) || (localObject2 == null) || (localObject2.length <= 0) || ((j > ApolloConstant.a) && (!ApolloActionHelperImpl.isRscValid(paramString, j, (int[])localObject2, paramQQAppInterface)))))
+      if ((k == 2) && ((j <= 0) || (localObject2 == null) || (localObject2.length <= 0) || ((j > ApolloConstant.f) && (!localIApolloResManager.a(paramString, j, (int[])localObject2, paramQQAppInterface)))))
       {
         QLog.d("[cmshow]ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localCheckApolloInfoResult.toString() });
         TraceReportUtil.a(localCheckApolloInfoResult.traceFeatureId, 10, new Object[] { "3D role/dress not ready but show basic" });
       }
-      if (paramInt == 1) {
-        paramQQAppInterface = Scene.DRAWER;
-      } else {
-        paramQQAppInterface = Scene.FRIEND_CARD;
-      }
-      if (!CMShowPlatform.a.a(paramQQAppInterface))
+      if (!CMShowPlatform.a.a(paramApolloBaseInfo))
       {
         QLog.d("[cmshow]ApolloDrawerInfoManager", 1, "so is not ready");
         TraceReportUtil.a(localCheckApolloInfoResult.traceFeatureId, 10, 102, new Object[] { "so not ready" });
@@ -124,7 +127,7 @@ public class ApolloDrawerInfoManager
       {
         bool = false;
       }
-      label625:
+      label642:
       localCheckApolloInfoResult.needStatic = bool;
       if ((!bool) && (QLog.isColorLevel())) {
         QLog.d("[cmshow]ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localCheckApolloInfoResult.toString() });
@@ -136,22 +139,22 @@ public class ApolloDrawerInfoManager
     return null;
   }
   
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 6;
-  }
-  
   public static int b(int paramInt)
   {
-    if (a(paramInt)) {
+    if (c(paramInt)) {
       return 3;
     }
     return 2;
   }
+  
+  public static boolean c(int paramInt)
+  {
+    return paramInt == 6;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.ApolloDrawerInfoManager
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ import mqq.os.MqqHandler;
 public class MsgPhotoView
   extends BaseMsgView
 {
-  private static final int AVATAR_GAP = ViewUtils.b(36.0F);
+  private static final int AVATAR_GAP = ViewUtils.dpToPx(36.0F);
   private static final int MSG_UPDATE_AVATAR = 10001;
   private static final String TAG = "MsgPhotoView";
   public static final int TEXT_COLOR = -7500397;
@@ -282,14 +282,14 @@ public class MsgPhotoView
       if ((paramMQUserClientShowInfo.unionIconWidth > 0) && (paramMQUserClientShowInfo.unionIconHeight > 0))
       {
         localObject = this.mQQUnionVipIcon.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = ViewUtils.b(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
-        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.b(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).width = ViewUtils.dpToPx(paramMQUserClientShowInfo.unionIconWidth / 2.0F);
+        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.dpToPx(paramMQUserClientShowInfo.unionIconHeight / 2.0F);
         this.mQQUnionVipIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       paramMQUserClientShowInfo = paramMQUserClientShowInfo.unionVipUrl;
       Object localObject = new ZipAnimationDrawable();
       ((ZipAnimationDrawable)localObject).setAnimationRes(paramMQUserClientShowInfo, 10);
-      ((ZipAnimationDrawable)localObject).setScale(ViewUtils.a() / 720.0F);
+      ((ZipAnimationDrawable)localObject).setScale(ViewUtils.getScreenWidth() / 720.0F);
       ((ZipAnimationDrawable)localObject).setRepeatAnimation(true);
       ((ZipAnimationDrawable)localObject).clearFirstFrame();
       ((ZipAnimationDrawable)localObject).start();
@@ -493,7 +493,7 @@ public class MsgPhotoView
           findViewById(2080571532).setVisibility(0);
           if (paramBoolean2)
           {
-            ((ImageView)findViewById(2080571533)).setImageResource(2130848727);
+            ((ImageView)findViewById(2080571533)).setImageResource(2130850394);
             ((TextView)findViewById(2080571534)).setTextColor(-7500397);
           }
           if (((MQMsgBody)localObject1).photolist != null)
@@ -555,15 +555,15 @@ public class MsgPhotoView
         this.mLikeCommentContainer.setVisibility(0);
         if (paramMQMsg.msgInteractData.likeCell.liked)
         {
-          this.mLikeIcon.setImageResource(2130848713);
+          this.mLikeIcon.setImageResource(2130850380);
         }
         else
         {
           localObject1 = this.mLikeIcon;
           if (paramBoolean2) {
-            i = 2130848716;
+            i = 2130850383;
           } else {
-            i = 2130848715;
+            i = 2130850382;
           }
           ((ImageView)localObject1).setImageResource(i);
         }
@@ -578,7 +578,7 @@ public class MsgPhotoView
         }
         else
         {
-          this.mLikeNum.setText(HardCodeUtil.a(2131706990));
+          this.mLikeNum.setText(HardCodeUtil.a(2131904832));
           this.mLikeNum.setVisibility(0);
         }
         if (paramMQMsg.msgInteractData.totalComment > 0)
@@ -592,14 +592,14 @@ public class MsgPhotoView
         }
         else
         {
-          this.mCommentNum.setText(HardCodeUtil.a(2131706991));
+          this.mCommentNum.setText(HardCodeUtil.a(2131904833));
           this.mCommentNum.setVisibility(0);
         }
         if (paramBoolean2)
         {
           this.mLikeNum.setTextColor(-7500397);
           this.mCommentNum.setTextColor(-7500397);
-          this.mCommentIcon.setImageResource(2130848708);
+          this.mCommentIcon.setImageResource(2130850375);
         }
       }
       if (paramMQMsg.msgInteractData.type == 2)
@@ -607,8 +607,8 @@ public class MsgPhotoView
         this.mShareContainer.setVisibility(0);
         if (paramBoolean2)
         {
-          this.mQqshareIcon.setImageResource(2130848721);
-          this.mQzoneshareIcon.setImageResource(2130848724);
+          this.mQqshareIcon.setImageResource(2130850388);
+          this.mQzoneshareIcon.setImageResource(2130850391);
           this.mQqshareText.setTextColor(-7500397);
           this.mQzoneshareText.setTextColor(-7500397);
         }
@@ -643,7 +643,7 @@ public class MsgPhotoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView
  * JD-Core Version:    0.7.0.1
  */

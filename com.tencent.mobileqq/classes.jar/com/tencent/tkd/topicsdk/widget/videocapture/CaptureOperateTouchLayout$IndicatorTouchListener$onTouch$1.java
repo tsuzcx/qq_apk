@@ -21,8 +21,8 @@ final class CaptureOperateTouchLayout$IndicatorTouchListener$onTouch$1
     if (paramValueAnimator != null)
     {
       float f = ((Float)paramValueAnimator).floatValue();
-      this.jdField_a_of_type_AndroidViewView.setX(f);
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorTouchListener.a).setX(f);
+      this.b.setX(f);
+      CaptureOperateTouchLayout.f(this.a.a).setX(f);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
@@ -30,7 +30,7 @@ final class CaptureOperateTouchLayout$IndicatorTouchListener$onTouch$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.IndicatorTouchListener.onTouch.1
  * JD-Core Version:    0.7.0.1
  */

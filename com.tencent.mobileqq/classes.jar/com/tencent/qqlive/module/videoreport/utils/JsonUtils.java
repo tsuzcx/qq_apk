@@ -1,5 +1,6 @@
 package com.tencent.qqlive.module.videoreport.utils;
 
+import com.tencent.qqlive.module.videoreport.Log;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -7,6 +8,8 @@ import org.json.JSONObject;
 
 public class JsonUtils
 {
+  private static final String TAG = "JsonUtils";
+  
   public static String getJsonFromMap(Map<String, Object> paramMap)
   {
     try
@@ -16,7 +19,10 @@ public class JsonUtils
     }
     catch (Throwable paramMap)
     {
-      paramMap.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getJsonFromMap ");
+      localStringBuilder.append(paramMap);
+      Log.e("JsonUtils", localStringBuilder.toString());
     }
     return "";
   }
@@ -26,25 +32,28 @@ public class JsonUtils
     try
     {
       paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
+      localObject = paramString.keys();
       HashMap localHashMap = new HashMap();
-      while (localIterator.hasNext())
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject).next();
         localHashMap.put(str, paramString.get(str));
       }
       return localHashMap;
     }
     catch (Throwable paramString)
     {
-      paramString.printStackTrace();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMapForJson ");
+      ((StringBuilder)localObject).append(paramString);
+      Log.e("JsonUtils", ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

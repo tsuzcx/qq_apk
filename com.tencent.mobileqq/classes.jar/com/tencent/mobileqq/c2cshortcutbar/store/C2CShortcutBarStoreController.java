@@ -11,14 +11,14 @@ import java.util.List;
 public class C2CShortcutBarStoreController
   implements IC2CShortcutBarStoreUIEvent
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private C2CShortcutBarStoreController.IStoreItemClickListener jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener;
-  private C2CShortcutBarStoreView jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView;
+  private C2CShortcutBarStoreView a;
+  private QQAppInterface b;
+  private C2CShortcutBarStoreController.IStoreItemClickListener c;
   
   public C2CShortcutBarStoreController(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, List<C2CShortcutAppInfo> paramList, C2CShortcutBarStoreController.IStoreItemClickListener paramIStoreItemClickListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener = paramIStoreItemClickListener;
+    this.b = paramQQAppInterface;
+    this.c = paramIStoreItemClickListener;
     a(paramContext, paramQQAppInterface, paramString, paramList, paramBoolean);
   }
   
@@ -31,17 +31,17 @@ public class C2CShortcutBarStoreController
     } else {
       paramBoolean = bool1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView = new C2CShortcutBarStoreView(paramQQAppInterface, paramContext, paramString, paramBoolean, bool2, paramList, this);
+    this.a = new C2CShortcutBarStoreView(paramQQAppInterface, paramContext, paramString, paramBoolean, bool2, paramList, this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView.show();
+    this.a.show();
   }
   
   public void a(int paramInt, C2CShortcutAppInfo paramC2CShortcutAppInfo)
   {
-    C2CShortcutBarStoreController.IStoreItemClickListener localIStoreItemClickListener = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreController$IStoreItemClickListener;
+    C2CShortcutBarStoreController.IStoreItemClickListener localIStoreItemClickListener = this.c;
     if (localIStoreItemClickListener != null) {
       localIStoreItemClickListener.a(paramInt, paramC2CShortcutAppInfo);
     }
@@ -50,12 +50,12 @@ public class C2CShortcutBarStoreController
   
   public void a(boolean paramBoolean, String paramString)
   {
-    ((C2CShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.C2C_SHORTCUT_BAR_MANAGER)).a(paramBoolean, paramString);
+    ((C2CShortcutBarManager)this.b.getManager(QQManagerFactory.C2C_SHORTCUT_BAR_MANAGER)).a(paramBoolean, paramString);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView.dismiss();
+    this.a.dismiss();
   }
   
   public void c()
@@ -65,7 +65,7 @@ public class C2CShortcutBarStoreController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreController
  * JD-Core Version:    0.7.0.1
  */

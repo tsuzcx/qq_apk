@@ -14,15 +14,15 @@ class QIMUserManager$1
   public void run()
   {
     Object localObject;
-    if (QIMUserManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0)
+    if (QIMUserManager.a(this.this$0, this.a, this.b) == 0)
     {
       if (QIMUserManager.a(this.this$0, this.b))
       {
         QIMUserManager.a(this.this$0);
         QIMUserManager.a(this.this$0, false);
         QIMUserManager.a(this.this$0, 2);
-        localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        ((SharedPreferences.Editor)localObject).putBoolean("qim_user_special_need_force_download", QIMUserManager.a(this.this$0));
+        localObject = PreferenceManager.getDefaultSharedPreferences(this.c.getApp()).edit();
+        ((SharedPreferences.Editor)localObject).putBoolean("qim_user_special_need_force_download", QIMUserManager.b(this.this$0));
         ((SharedPreferences.Editor)localObject).commit();
       }
       else
@@ -36,16 +36,16 @@ class QIMUserManager$1
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" startDownLoadQimTheme QimIconsState ");
-      ((StringBuilder)localObject).append(QIMUserManager.a(this.this$0));
+      ((StringBuilder)localObject).append(QIMUserManager.c(this.this$0));
       QLog.i("QIMUserManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.1
  * JD-Core Version:    0.7.0.1
  */

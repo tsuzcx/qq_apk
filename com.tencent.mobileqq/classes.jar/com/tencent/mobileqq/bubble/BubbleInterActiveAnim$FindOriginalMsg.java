@@ -5,45 +5,45 @@ import com.tencent.mobileqq.data.MessageRecord;
 
 class BubbleInterActiveAnim$FindOriginalMsg
 {
-  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean a;
+  private MessageRecord b;
+  private boolean c;
+  private ChatMessage d;
   
   public BubbleInterActiveAnim$FindOriginalMsg(MessageRecord paramMessageRecord, boolean paramBoolean, ChatMessage paramChatMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public FindOriginalMsg a()
-  {
-    if (!this.b)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) {
-        this.b = true;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return this;
+    this.b = paramMessageRecord;
+    this.c = paramBoolean;
+    this.d = paramChatMessage;
   }
   
   boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public boolean b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public FindOriginalMsg c()
+  {
+    if (!this.c)
+    {
+      if (this.d.uniseq == this.b.uniseq) {
+        this.c = true;
+      }
+      this.a = true;
+      return this;
+    }
+    this.a = false;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.FindOriginalMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class PhotoListPanel$QueryMediaTask$2
   
   public void run()
   {
-    Iterator localIterator1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$QueryMediaTask.this$0.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$QueryMediaTask.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
+    Iterator localIterator1 = this.b.this$0.d.iterator();
+    this.b.this$0.u.clear();
     while (localIterator1.hasNext())
     {
       String str = (String)localIterator1.next();
       int j = 0;
-      Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator2 = this.a.iterator();
       LocalMediaInfo localLocalMediaInfo;
       do
       {
@@ -30,7 +30,7 @@ class PhotoListPanel$QueryMediaTask$2
         localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
       } while (!str.equals(localLocalMediaInfo.path));
       localLocalMediaInfo.mChecked = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$QueryMediaTask.this$0.jdField_a_of_type_JavaUtilArrayList.add(localLocalMediaInfo.position);
+      this.b.this$0.u.add(localLocalMediaInfo.position);
       int i = 1;
       if (i == 0) {
         localIterator1.remove();
@@ -40,7 +40,7 @@ class PhotoListPanel$QueryMediaTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.QueryMediaTask.2
  * JD-Core Version:    0.7.0.1
  */

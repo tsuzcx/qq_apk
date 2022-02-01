@@ -6,9 +6,9 @@ import java.lang.ref.WeakReference;
 final class TdsReaderGlobal$RunnableImpl
   implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final WeakReference<TdsReaderGlobal> jdField_a_of_type_JavaLangRefWeakReference;
-  private final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  private final WeakReference<TdsReaderGlobal> a;
+  private final int b;
+  private final Object[] c;
   
   private TdsReaderGlobal$RunnableImpl(TdsReaderGlobal paramTdsReaderGlobal, int paramInt, Object... paramVarArgs)
   {
@@ -17,20 +17,20 @@ final class TdsReaderGlobal$RunnableImpl
     } else {
       paramTdsReaderGlobal = new WeakReference(paramTdsReaderGlobal);
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramTdsReaderGlobal;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    this.a = paramTdsReaderGlobal;
+    this.b = paramInt;
+    this.c = paramVarArgs;
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null) {
       localObject = null;
     } else {
       localObject = (TdsReaderGlobal)((WeakReference)localObject).get();
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 1)
     {
       if (i != 2)
@@ -41,16 +41,16 @@ final class TdsReaderGlobal$RunnableImpl
             return;
           }
           if (localObject != null) {
-            TdsReaderGlobal.c((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+            TdsReaderGlobal.c((TdsReaderGlobal)localObject, this.c);
           }
         }
         else if (localObject != null)
         {
-          TdsReaderGlobal.b((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+          TdsReaderGlobal.b((TdsReaderGlobal)localObject, this.c);
         }
       }
       else if (localObject != null) {
-        TdsReaderGlobal.a((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        TdsReaderGlobal.a((TdsReaderGlobal)localObject, this.c);
       }
     }
     else {
@@ -60,7 +60,7 @@ final class TdsReaderGlobal$RunnableImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.RunnableImpl
  * JD-Core Version:    0.7.0.1
  */

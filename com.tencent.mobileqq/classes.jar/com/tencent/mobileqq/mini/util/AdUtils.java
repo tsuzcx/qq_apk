@@ -200,14 +200,14 @@ public class AdUtils
       if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
         localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
       }
-      Object localObject3 = DeviceInfoUtil.a();
+      Object localObject3 = DeviceInfoUtil.b();
       PBStringField localPBStringField = localDeviceInfo.android_imei;
       localObject2 = localObject3;
       if (TextUtils.isEmpty((CharSequence)localObject3)) {
         localObject2 = "";
       }
       localPBStringField.set((String)localObject2);
-      localObject2 = DeviceInfoUtil.f();
+      localObject2 = DeviceInfoUtil.j();
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localDeviceInfo.android_id.set((String)localObject2);
@@ -220,7 +220,7 @@ public class AdUtils
         }
         ((PBStringField)localObject3).set((String)localObject2);
       }
-      paramContext = DeviceInfoUtil.d(paramContext);
+      paramContext = DeviceInfoUtil.e(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
@@ -287,14 +287,14 @@ public class AdUtils
       if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
         localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
       }
-      Object localObject3 = DeviceInfoUtil.a();
+      Object localObject3 = DeviceInfoUtil.b();
       PBStringField localPBStringField = localDeviceInfo.android_imei;
       Object localObject2 = localObject3;
       if (TextUtils.isEmpty((CharSequence)localObject3)) {
         localObject2 = "";
       }
       localPBStringField.set((String)localObject2);
-      localObject2 = DeviceInfoUtil.f();
+      localObject2 = DeviceInfoUtil.j();
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localDeviceInfo.android_id.set((String)localObject2);
@@ -307,7 +307,7 @@ public class AdUtils
         }
         ((PBStringField)localObject3).set((String)localObject2);
       }
-      paramContext = DeviceInfoUtil.d(paramContext);
+      paramContext = DeviceInfoUtil.e(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
@@ -487,7 +487,7 @@ public class AdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.AdUtils
  * JD-Core Version:    0.7.0.1
  */

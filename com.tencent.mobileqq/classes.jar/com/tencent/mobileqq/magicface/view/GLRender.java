@@ -9,9 +9,9 @@ import javax.microedition.khronos.opengles.GL10;
 public class GLRender
   implements GLSurfaceView.Renderer
 {
-  private MagicFaceGLDisplayer jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicFaceGLDisplayer;
-  private GLRender.VideoData jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData = null;
+  private GLRender.VideoData a = null;
   private GLRender.VideoData b = null;
+  private MagicFaceGLDisplayer c;
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
   {
@@ -28,8 +28,8 @@ public class GLRender
     if (this.b.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramFloat, paramBoolean)) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData = null;
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData = this.b;
+        this.a = null;
+        this.a = this.b;
       }
       finally {}
     }
@@ -37,7 +37,7 @@ public class GLRender
     {
       paramArrayOfByte1 = new StringBuilder();
       paramArrayOfByte1.append("func copyFrame2Render ends, mCurData:");
-      paramArrayOfByte1.append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData);
+      paramArrayOfByte1.append(this.a);
       QLog.d("GLRender", 2, paramArrayOfByte1.toString());
     }
   }
@@ -53,14 +53,14 @@ public class GLRender
         localStringBuilder.append(paramGL10);
         QLog.d("GLRender", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData != null)
+      if (this.a != null)
       {
-        paramGL10 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicFaceGLDisplayer;
+        paramGL10 = this.c;
         if (paramGL10 != null)
         {
           try
           {
-            this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicFaceGLDisplayer.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.c, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.d, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData.jdField_a_of_type_Boolean);
+            this.c.a(this.a.a, this.a.b, this.a.e, this.a.f, this.a.c, this.a.d, this.a.g, this.a.h);
           }
           catch (Throwable paramGL10)
           {
@@ -76,9 +76,9 @@ public class GLRender
       {
         paramGL10 = new StringBuilder();
         paramGL10.append("func onDrawFrame ends, NULL data, mCurData:");
-        paramGL10.append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData);
+        paramGL10.append(this.a);
         paramGL10.append(",mBitmapDisplayer:");
-        paramGL10.append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicFaceGLDisplayer);
+        paramGL10.append(this.c);
         QLog.d("GLRender", 2, paramGL10.toString());
       }
       return;
@@ -98,8 +98,8 @@ public class GLRender
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicFaceGLDisplayer = new MagicFaceGLDisplayer();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender$VideoData = null;
+      this.c = new MagicFaceGLDisplayer();
+      this.a = null;
       paramGL10.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
       if (QLog.isColorLevel()) {
         QLog.d("GLRender", 2, "func onSurfaceCreated ends");
@@ -111,7 +111,7 @@ public class GLRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.GLRender
  * JD-Core Version:    0.7.0.1
  */

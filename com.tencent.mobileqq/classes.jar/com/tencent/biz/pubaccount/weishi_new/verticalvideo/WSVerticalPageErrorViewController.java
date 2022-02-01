@@ -7,44 +7,44 @@ import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 public class WSVerticalPageErrorViewController
   extends AbsWsUIGroup
 {
-  private WSVerticalPageFragment a;
+  private WSVerticalPageFragment g;
   
   public WSVerticalPageErrorViewController(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramContext);
-    this.a = paramWSVerticalPageFragment;
+    this.g = paramWSVerticalPageFragment;
   }
   
-  private void f()
+  private void l()
   {
-    WSVerticalPageFragment localWSVerticalPageFragment = this.a;
+    WSVerticalPageFragment localWSVerticalPageFragment = this.g;
     if (localWSVerticalPageFragment != null)
     {
-      localWSVerticalPageFragment.a(false, true);
-      this.a.d();
-      this.a.c();
+      localWSVerticalPageFragment.b(false, true);
+      this.g.s();
+      this.g.r();
     }
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 2131560006;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    a(2131380443).setOnClickListener(new WSVerticalPageErrorViewController.1(this));
+    return 2131626049;
+  }
+  
+  protected void j()
+  {
+    c(2131449395).setOnClickListener(new WSVerticalPageErrorViewController.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageErrorViewController
  * JD-Core Version:    0.7.0.1
  */

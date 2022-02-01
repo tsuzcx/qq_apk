@@ -13,8 +13,8 @@ public class VideoFilterManager$GetFilterListRequest
   extends NetworkRequest<VideoFilterManager.GetFilterListResponse>
 {
   @NonNull
-  public final String a;
-  public final int c;
+  public final String e;
+  public final int f;
   
   public VideoFilterManager$GetFilterListRequest(@NonNull String paramString)
   {
@@ -23,13 +23,8 @@ public class VideoFilterManager$GetFilterListRequest
   
   public VideoFilterManager$GetFilterListRequest(@NonNull String paramString, int paramInt)
   {
-    this.a = paramString;
-    this.c = paramInt;
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
-  {
-    return new VideoFilterManager.GetFilterListResponse(paramArrayOfByte);
+    this.e = paramString;
+    this.f = paramInt;
   }
   
   public String a()
@@ -37,17 +32,22 @@ public class VideoFilterManager$GetFilterListRequest
     return StoryApi.a("StorySvc.video_filter_list");
   }
   
-  protected byte[] a()
+  public BaseResponse b(byte[] paramArrayOfByte)
+  {
+    return new VideoFilterManager.GetFilterListResponse(paramArrayOfByte);
+  }
+  
+  protected byte[] c()
   {
     qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
-    localReqGetFilterList.count.set(this.c);
-    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetFilterList.count.set(this.f);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.e));
     return localReqGetFilterList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager.GetFilterListRequest
  * JD-Core Version:    0.7.0.1
  */

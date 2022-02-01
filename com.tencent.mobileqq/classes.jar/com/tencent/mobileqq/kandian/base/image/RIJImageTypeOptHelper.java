@@ -19,36 +19,23 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/image/RIJImageTypeOptHelper;", "", "()V", "SUFFIX_SHARPP", "", "getSUFFIX_SHARPP", "()Ljava/lang/String;", "SUFFIX_WEBP", "getSUFFIX_WEBP", "TAG", "getTAG", "TYPE_SHARPP", "getTYPE_SHARPP", "TYPE_WEBP", "getTYPE_WEBP", "converToOptImageUrl", "", "imageRequest", "Lcom/tencent/mobileqq/kandian/base/image/ImageRequest;", "originUrl", "convertBackToOriginUrl", "url", "originType", "convertToOptTypeUrl", "convertUrlToOtherType", "type", "decodeSharpP", "Landroid/graphics/Bitmap;", "filePath", "width", "", "height", "reuseBitmap", "decodeSharpPInBounds", "Landroid/graphics/BitmapFactory$Options;", "getTpType", "isSharpP", "", "isWebp", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public final class RIJImageTypeOptHelper
 {
-  public static final RIJImageTypeOptHelper a;
+  public static final RIJImageTypeOptHelper a = new RIJImageTypeOptHelper();
   @NotNull
-  private static final String a = "RIJImageSharpHelper";
+  private static final String b = "RIJImageSharpHelper";
   @NotNull
-  private static final String b = "sharp";
+  private static final String c = "sharp";
   @NotNull
-  private static final String c = "webp";
+  private static final String d = "webp";
   @NotNull
-  private static final String d = "tp=sharp";
+  private static final String e = "tp=sharp";
   @NotNull
-  private static final String e = "tp=webp";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseImageRIJImageTypeOptHelper = new RIJImageTypeOptHelper();
-    jdField_a_of_type_JavaLangString = "RIJImageSharpHelper";
-  }
+  private static final String f = "tp=webp";
   
   @Nullable
   public final Bitmap a(@NotNull String paramString, int paramInt1, int paramInt2, @Nullable Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "filePath");
     return IRIJImageOptConfig.DefaultImpls.a((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class), paramString, paramInt1, paramInt2, paramBitmap, null, 16, null);
-  }
-  
-  @NotNull
-  public final BitmapFactory.Options a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
-    return ((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).decodeSharpPInBounds(paramString);
   }
   
   @NotNull
@@ -59,14 +46,14 @@ public final class RIJImageTypeOptHelper
       return paramString;
     }
     if (((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).useWebp()) {
-      return a(paramString, c);
+      return a(paramString, d);
     }
     String str = paramString;
     if (((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).useSharpP())
     {
       str = paramString;
       if (((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).isSharpPAvailable()) {
-        str = a(paramString, b);
+        str = a(paramString, c);
       }
     }
     return str;
@@ -111,31 +98,21 @@ public final class RIJImageTypeOptHelper
     Intrinsics.checkParameterIsNotNull(paramString, "originUrl");
     try
     {
-      paramImageRequest.c = b(paramString);
+      paramImageRequest.w = c(paramString);
       paramImageRequest.a = new URL(a(paramString));
       return;
     }
     catch (Exception paramImageRequest)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, paramImageRequest.getMessage());
+      QLog.d(b, 1, paramImageRequest.getMessage());
     }
   }
   
-  public final boolean a(@NotNull String paramString)
+  @NotNull
+  public final BitmapFactory.Options b(@NotNull String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)d, false, 2, null);
-  }
-  
-  @Nullable
-  public final String b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    paramString = URLUtil.a(paramString);
-    if (paramString.containsKey("tp")) {
-      return (String)paramString.get("tp");
-    }
-    return "";
+    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
+    return ((IRIJImageOptConfig)QRoute.api(IRIJImageOptConfig.class)).decodeSharpPInBounds(paramString);
   }
   
   @NotNull
@@ -148,10 +125,10 @@ public final class RIJImageTypeOptHelper
     if (((Map)localObject2).containsKey("tp"))
     {
       localObject2 = (String)((Map)localObject2).get("tp");
-      if (!c.equals(localObject2))
+      if (!d.equals(localObject2))
       {
         localObject1 = paramString1;
-        if (!b.equals(localObject2)) {}
+        if (!c.equals(localObject2)) {}
       }
       else
       {
@@ -172,10 +149,27 @@ public final class RIJImageTypeOptHelper
     }
     return localObject1;
   }
+  
+  @Nullable
+  public final String c(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    paramString = URLUtil.a(paramString);
+    if (paramString.containsKey("tp")) {
+      return (String)paramString.get("tp");
+    }
+    return "";
+  }
+  
+  public final boolean d(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)e, false, 2, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RIJImageTypeOptHelper
  * JD-Core Version:    0.7.0.1
  */

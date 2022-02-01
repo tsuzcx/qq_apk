@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import com.tencent.mobileqq.newnearby.NearbyActivityController;
 
 class NearbyActivity$9
   extends NearbyProcObserver
@@ -15,13 +16,18 @@ class NearbyActivity$9
   
   protected void b()
   {
+    if (this.a.mIsNew)
+    {
+      this.a.mNearbyActivityController.c();
+      return;
+    }
     super.b();
     NearbyActivity.access$100(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.9
  * JD-Core Version:    0.7.0.1
  */

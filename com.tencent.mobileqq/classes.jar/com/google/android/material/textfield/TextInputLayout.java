@@ -72,121 +72,121 @@ import java.util.LinkedHashSet;
 public class TextInputLayout
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = R.style.q;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private static final int d = R.style.s;
+  private boolean A;
+  private CharSequence B;
+  private boolean C;
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
+  private MaterialShapeDrawable D;
   @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private final SparseArray<EndIconDelegate> jdField_a_of_type_AndroidUtilSparseArray;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
+  private MaterialShapeDrawable E;
   @NonNull
-  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  @NonNull
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  @Nullable
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  @NonNull
-  private final CheckableImageButton jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-  final CollapsingTextHelper jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper;
-  @Nullable
-  private MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  @NonNull
-  private ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final IndicatorViewController jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private final LinkedHashSet<TextInputLayout.OnEditTextAttachedListener> jdField_a_of_type_JavaUtilLinkedHashSet;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  private PorterDuff.Mode jdField_b_of_type_AndroidGraphicsPorterDuff$Mode;
-  private final Rect jdField_b_of_type_AndroidGraphicsRect;
-  @Nullable
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener;
-  @NonNull
-  private final FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  @NonNull
-  private final LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  @NonNull
-  private final CheckableImageButton jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-  @Nullable
-  private MaterialShapeDrawable jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private final LinkedHashSet<TextInputLayout.OnEndIconChangedListener> jdField_b_of_type_JavaUtilLinkedHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  @Nullable
-  private ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnLongClickListener jdField_c_of_type_AndroidViewView$OnLongClickListener;
-  @NonNull
-  private final TextView jdField_c_of_type_AndroidWidgetTextView;
-  @NonNull
-  private final CheckableImageButton jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-  @Nullable
-  private CharSequence jdField_c_of_type_JavaLangCharSequence;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private ColorStateList jdField_d_of_type_AndroidContentResColorStateList;
-  @NonNull
-  private final TextView jdField_d_of_type_AndroidWidgetTextView;
-  @Nullable
-  private CharSequence jdField_d_of_type_JavaLangCharSequence;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private ColorStateList jdField_e_of_type_AndroidContentResColorStateList;
-  private CharSequence jdField_e_of_type_JavaLangCharSequence;
-  private boolean jdField_e_of_type_Boolean;
-  private final int jdField_f_of_type_Int;
-  private ColorStateList jdField_f_of_type_AndroidContentResColorStateList;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private ColorStateList jdField_g_of_type_AndroidContentResColorStateList;
-  private boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private ColorStateList jdField_h_of_type_AndroidContentResColorStateList;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private ColorStateList jdField_i_of_type_AndroidContentResColorStateList;
-  private boolean jdField_i_of_type_Boolean;
-  private int jdField_j_of_type_Int;
-  private boolean jdField_j_of_type_Boolean;
-  private int jdField_k_of_type_Int;
-  private boolean jdField_k_of_type_Boolean;
+  private ShapeAppearanceModel F;
+  private final int G;
+  private int H;
+  private int I;
+  private int J;
+  private int K;
+  private int L;
   @ColorInt
-  private int jdField_l_of_type_Int;
-  private boolean jdField_l_of_type_Boolean;
+  private int M;
   @ColorInt
-  private int jdField_m_of_type_Int;
-  private boolean jdField_m_of_type_Boolean;
-  private int jdField_n_of_type_Int;
-  private boolean jdField_n_of_type_Boolean;
+  private int N;
+  private final Rect O;
+  private final Rect P;
+  private final RectF Q;
+  private Typeface R;
+  @NonNull
+  private final CheckableImageButton S;
+  private ColorStateList T;
+  private boolean U;
+  private PorterDuff.Mode V;
+  private boolean W;
+  @Nullable
+  private Drawable Z;
+  EditText a;
+  @ColorInt
+  private int aA;
+  @ColorInt
+  private int aB;
+  @ColorInt
+  private int aC;
+  private boolean aD;
+  private boolean aE;
+  private boolean aF;
+  private ValueAnimator aG;
+  private boolean aH;
+  private boolean aI;
+  private int aa;
+  private View.OnLongClickListener ab;
+  private final LinkedHashSet<TextInputLayout.OnEditTextAttachedListener> ac;
+  private int ad;
+  private final SparseArray<EndIconDelegate> ae;
+  @NonNull
+  private final CheckableImageButton af;
+  private final LinkedHashSet<TextInputLayout.OnEndIconChangedListener> ag;
+  private ColorStateList ah;
+  private boolean ai;
+  private PorterDuff.Mode aj;
+  private boolean ak;
+  @Nullable
+  private Drawable al;
+  private int am;
+  private Drawable an;
+  private View.OnLongClickListener ao;
+  private View.OnLongClickListener ap;
+  @NonNull
+  private final CheckableImageButton aq;
+  private ColorStateList ar;
+  private ColorStateList as;
+  private ColorStateList at;
+  @ColorInt
+  private int au;
+  @ColorInt
+  private int av;
+  @ColorInt
+  private int aw;
+  private ColorStateList ax;
+  @ColorInt
+  private int ay;
+  @ColorInt
+  private int az;
+  boolean b;
+  final CollapsingTextHelper c;
+  @NonNull
+  private final FrameLayout e;
+  @NonNull
+  private final LinearLayout f;
+  @NonNull
+  private final LinearLayout g;
+  @NonNull
+  private final FrameLayout h;
+  private CharSequence i;
+  private final IndicatorViewController j;
+  private int k;
+  private boolean l;
+  @Nullable
+  private TextView m;
+  private int n;
   private int o;
-  private int p;
-  @ColorInt
-  private int q;
-  @ColorInt
-  private int r;
-  @ColorInt
-  private int s;
-  @ColorInt
+  private CharSequence p;
+  private boolean q;
+  private TextView r;
+  @Nullable
+  private ColorStateList s;
   private int t;
-  @ColorInt
-  private int u;
-  @ColorInt
-  private int v;
-  @ColorInt
-  private int w;
-  @ColorInt
-  private int x;
+  @Nullable
+  private ColorStateList u;
+  @Nullable
+  private ColorStateList v;
+  @Nullable
+  private CharSequence w;
+  @NonNull
+  private final TextView x;
+  @Nullable
+  private CharSequence y;
+  @NonNull
+  private final TextView z;
   
   public TextInputLayout(@NonNull Context paramContext)
   {
@@ -195,49 +195,325 @@ public class TextInputLayout
   
   public TextInputLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.S);
+    this(paramContext, paramAttributeSet, R.attr.ab);
   }
   
   public TextInputLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt) {}
   
   private void A()
   {
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, this.jdField_f_of_type_Boolean, this.jdField_d_of_type_AndroidContentResColorStateList, this.jdField_g_of_type_Boolean, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+    if (this.a == null) {
+      return;
+    }
+    int i1;
+    if ((!g()) && (!V())) {
+      i1 = ViewCompat.getPaddingEnd(this.a);
+    } else {
+      i1 = 0;
+    }
+    ViewCompat.setPaddingRelative(this.z, getContext().getResources().getDimensionPixelSize(R.dimen.F), this.a.getPaddingTop(), i1, this.a.getPaddingBottom());
   }
   
   private void B()
   {
-    a(this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, this.jdField_h_of_type_Boolean, this.jdField_e_of_type_AndroidContentResColorStateList, this.jdField_i_of_type_Boolean, this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode);
+    Object localObject = this.m;
+    if (localObject != null)
+    {
+      int i1;
+      if (this.l) {
+        i1 = this.n;
+      } else {
+        i1 = this.o;
+      }
+      a((TextView)localObject, i1);
+      if (!this.l)
+      {
+        localObject = this.u;
+        if (localObject != null) {
+          this.m.setTextColor((ColorStateList)localObject);
+        }
+      }
+      if (this.l)
+      {
+        localObject = this.v;
+        if (localObject != null) {
+          this.m.setTextColor((ColorStateList)localObject);
+        }
+      }
+    }
   }
   
-  private void C()
+  private int C()
   {
-    if (!o()) {
+    if (!this.A) {
+      return 0;
+    }
+    int i1 = this.H;
+    if ((i1 != 0) && (i1 != 1)) {
+      if (i1 != 2) {
+        return 0;
+      }
+    }
+    for (float f1 = this.c.c() / 2.0F;; f1 = this.c.c()) {
+      return (int)f1;
+    }
+  }
+  
+  private boolean D()
+  {
+    int i1 = this.H;
+    boolean bool = true;
+    if (i1 == 1)
+    {
+      if (Build.VERSION.SDK_INT < 16) {
+        return bool;
+      }
+      if (this.a.getMinLines() <= 1) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
+  }
+  
+  private int E()
+  {
+    int i1 = this.N;
+    if (this.H == 1) {
+      i1 = MaterialColors.a(MaterialColors.a(this, R.attr.t, 0), this.N);
+    }
+    return i1;
+  }
+  
+  private void F()
+  {
+    MaterialShapeDrawable localMaterialShapeDrawable = this.D;
+    if (localMaterialShapeDrawable == null) {
       return;
     }
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(localRectF, this.jdField_a_of_type_AndroidWidgetEditText.getWidth(), this.jdField_a_of_type_AndroidWidgetEditText.getGravity());
-    a(localRectF);
-    localRectF.offset(-getPaddingLeft(), -getPaddingTop());
-    ((CutoutDrawable)this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable).a(localRectF);
+    localMaterialShapeDrawable.setShapeAppearanceModel(this.F);
+    if (H()) {
+      this.D.a(this.J, this.M);
+    }
+    this.N = E();
+    this.D.g(ColorStateList.valueOf(this.N));
+    if (this.ad == 3) {
+      this.a.getBackground().invalidateSelf();
+    }
+    G();
+    invalidate();
   }
   
-  private void D()
+  private void G()
   {
-    if (o()) {
-      ((CutoutDrawable)this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable).a();
+    if (this.E == null) {
+      return;
     }
+    if (I()) {
+      this.E.g(ColorStateList.valueOf(this.M));
+    }
+    invalidate();
+  }
+  
+  private boolean H()
+  {
+    return (this.H == 2) && (I());
+  }
+  
+  private boolean I()
+  {
+    return (this.J > -1) && (this.M != 0);
+  }
+  
+  private boolean J()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    int i1 = Math.max(this.g.getMeasuredHeight(), this.f.getMeasuredHeight());
+    if (this.a.getMeasuredHeight() < i1)
+    {
+      this.a.setMinimumHeight(i1);
+      return true;
+    }
+    return false;
+  }
+  
+  private void K()
+  {
+    if (this.r != null)
+    {
+      EditText localEditText = this.a;
+      if (localEditText != null)
+      {
+        int i1 = localEditText.getGravity();
+        this.r.setGravity(i1);
+        this.r.setPadding(this.a.getCompoundPaddingLeft(), this.a.getCompoundPaddingTop(), this.a.getCompoundPaddingRight(), this.a.getCompoundPaddingBottom());
+      }
+    }
+  }
+  
+  private void L()
+  {
+    Iterator localIterator = this.ac.iterator();
+    while (localIterator.hasNext()) {
+      ((TextInputLayout.OnEditTextAttachedListener)localIterator.next()).a(this);
+    }
+  }
+  
+  private void M()
+  {
+    a(this.S, this.U, this.T, this.W, this.V);
+  }
+  
+  private boolean N()
+  {
+    return this.ad != 0;
+  }
+  
+  private void O()
+  {
+    a(this.af, this.ai, this.ah, this.ak, this.aj);
+  }
+  
+  private boolean P()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    int i1;
+    Object localObject;
+    Drawable localDrawable1;
+    Drawable localDrawable2;
+    if (Q())
+    {
+      i1 = this.f.getMeasuredWidth() - this.a.getPaddingLeft();
+      if ((this.Z == null) || (this.aa != i1))
+      {
+        this.Z = new ColorDrawable();
+        this.aa = i1;
+        this.Z.setBounds(0, 0, this.aa, 1);
+      }
+      localObject = TextViewCompat.getCompoundDrawablesRelative(this.a);
+      localDrawable1 = localObject[0];
+      localDrawable2 = this.Z;
+      if (localDrawable1 == localDrawable2) {
+        break label175;
+      }
+      TextViewCompat.setCompoundDrawablesRelative(this.a, localDrawable2, localObject[1], localObject[2], localObject[3]);
+    }
+    else
+    {
+      if (this.Z == null) {
+        break label175;
+      }
+      localObject = TextViewCompat.getCompoundDrawablesRelative(this.a);
+      TextViewCompat.setCompoundDrawablesRelative(this.a, null, localObject[1], localObject[2], localObject[3]);
+      this.Z = null;
+    }
+    boolean bool1 = true;
+    break label177;
+    label175:
+    bool1 = false;
+    label177:
+    if (R())
+    {
+      int i2 = this.z.getMeasuredWidth() - this.a.getPaddingRight();
+      localObject = getEndIconToUpdateDummyDrawable();
+      i1 = i2;
+      if (localObject != null) {
+        i1 = i2 + ((View)localObject).getMeasuredWidth() + MarginLayoutParamsCompat.getMarginStart((ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams());
+      }
+      localObject = TextViewCompat.getCompoundDrawablesRelative(this.a);
+      localDrawable1 = this.al;
+      if ((localDrawable1 != null) && (this.am != i1))
+      {
+        this.am = i1;
+        localDrawable1.setBounds(0, 0, this.am, 1);
+        TextViewCompat.setCompoundDrawablesRelative(this.a, localObject[0], localObject[1], this.al, localObject[3]);
+      }
+      for (;;)
+      {
+        return true;
+        if (this.al == null)
+        {
+          this.al = new ColorDrawable();
+          this.am = i1;
+          this.al.setBounds(0, 0, this.am, 1);
+        }
+        localDrawable1 = localObject[2];
+        localDrawable2 = this.al;
+        bool2 = bool1;
+        if (localDrawable1 == localDrawable2) {
+          break;
+        }
+        this.an = localObject[2];
+        TextViewCompat.setCompoundDrawablesRelative(this.a, localObject[0], localObject[1], localDrawable2, localObject[3]);
+      }
+    }
+    boolean bool2 = bool1;
+    if (this.al != null)
+    {
+      localObject = TextViewCompat.getCompoundDrawablesRelative(this.a);
+      if (localObject[2] == this.al)
+      {
+        TextViewCompat.setCompoundDrawablesRelative(this.a, localObject[0], localObject[1], this.an, localObject[3]);
+        bool1 = true;
+      }
+      this.al = null;
+      bool2 = bool1;
+    }
+    return bool2;
+  }
+  
+  private boolean Q()
+  {
+    return ((getStartIconDrawable() != null) || (this.w != null)) && (this.f.getMeasuredWidth() > 0);
+  }
+  
+  private boolean R()
+  {
+    return ((this.aq.getVisibility() == 0) || ((N()) && (g())) || (this.y != null)) && (this.g.getMeasuredWidth() > 0);
+  }
+  
+  private boolean S()
+  {
+    return (this.A) && (!TextUtils.isEmpty(this.B)) && ((this.D instanceof CutoutDrawable));
+  }
+  
+  private void T()
+  {
+    if (!S()) {
+      return;
+    }
+    RectF localRectF = this.Q;
+    this.c.a(localRectF, this.a.getWidth(), this.a.getGravity());
+    a(localRectF);
+    localRectF.offset(-getPaddingLeft(), -getPaddingTop());
+    ((CutoutDrawable)this.D).a(localRectF);
+  }
+  
+  private void U()
+  {
+    if (S()) {
+      ((CutoutDrawable)this.D).b();
+    }
+  }
+  
+  private boolean V()
+  {
+    return this.aq.getVisibility() == 0;
   }
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    int i1 = paramInt + this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingLeft();
+    int i1 = paramInt + this.a.getCompoundPaddingLeft();
     paramInt = i1;
-    if (this.jdField_c_of_type_JavaLangCharSequence != null)
+    if (this.w != null)
     {
       paramInt = i1;
       if (!paramBoolean) {
-        paramInt = i1 - this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredWidth() + this.jdField_c_of_type_AndroidWidgetTextView.getPaddingLeft();
+        paramInt = i1 - this.x.getMeasuredWidth() + this.x.getPaddingLeft();
       }
     }
     return paramInt;
@@ -245,26 +521,26 @@ public class TextInputLayout
   
   private int a(@NonNull Rect paramRect, float paramFloat)
   {
-    if (g()) {
+    if (D()) {
       return (int)(paramRect.centerY() - paramFloat / 2.0F);
     }
-    return paramRect.top + this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingTop();
+    return paramRect.top + this.a.getCompoundPaddingTop();
   }
   
   private int a(@NonNull Rect paramRect1, @NonNull Rect paramRect2, float paramFloat)
   {
-    if (g()) {
+    if (D()) {
       return (int)(paramRect2.top + paramFloat);
     }
-    return paramRect1.bottom - this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingBottom();
+    return paramRect1.bottom - this.a.getCompoundPaddingBottom();
   }
   
   @NonNull
   private Rect a(@NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    if (this.a != null)
     {
-      Rect localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+      Rect localRect = this.P;
       boolean bool;
       if (ViewCompat.getLayoutDirection(this) == 1) {
         bool = true;
@@ -272,7 +548,7 @@ public class TextInputLayout
         bool = false;
       }
       localRect.bottom = paramRect.bottom;
-      int i1 = this.jdField_g_of_type_Int;
+      int i1 = this.H;
       if (i1 != 1)
       {
         if (i1 != 2)
@@ -282,62 +558,43 @@ public class TextInputLayout
           localRect.right = b(paramRect.right, bool);
           return localRect;
         }
-        paramRect.left += this.jdField_a_of_type_AndroidWidgetEditText.getPaddingLeft();
-        paramRect.top -= d();
-        paramRect.right -= this.jdField_a_of_type_AndroidWidgetEditText.getPaddingRight();
+        paramRect.left += this.a.getPaddingLeft();
+        paramRect.top -= C();
+        paramRect.right -= this.a.getPaddingRight();
         return localRect;
       }
       localRect.left = a(paramRect.left, bool);
-      paramRect.top += this.jdField_h_of_type_Int;
+      paramRect.top += this.I;
       localRect.right = b(paramRect.right, bool);
       return localRect;
     }
     throw new IllegalStateException();
   }
   
-  private EndIconDelegate a()
-  {
-    EndIconDelegate localEndIconDelegate = (EndIconDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.o);
-    if (localEndIconDelegate != null) {
-      return localEndIconDelegate;
-    }
-    return (EndIconDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(0);
-  }
-  
   private static void a(@NonNull Context paramContext, @NonNull TextView paramTextView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     int i1;
     if (paramBoolean) {
-      i1 = R.string.jdField_c_of_type_Int;
+      i1 = R.string.c;
     } else {
-      i1 = R.string.jdField_b_of_type_Int;
+      i1 = R.string.b;
     }
     paramTextView.setContentDescription(paramContext.getString(i1, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
   }
   
   private void a(@NonNull Canvas paramCanvas)
   {
-    if (this.jdField_d_of_type_Boolean) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(paramCanvas);
-    }
-  }
-  
-  private void a(@NonNull Rect paramRect)
-  {
-    if (this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable != null)
-    {
-      int i1 = paramRect.bottom;
-      int i2 = this.jdField_k_of_type_Int;
-      this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setBounds(paramRect.left, i1 - i2, paramRect.right, paramRect.bottom);
+    if (this.A) {
+      this.c.a(paramCanvas);
     }
   }
   
   private void a(@NonNull RectF paramRectF)
   {
-    paramRectF.left -= this.jdField_f_of_type_Int;
-    paramRectF.top -= this.jdField_f_of_type_Int;
-    paramRectF.right += this.jdField_f_of_type_Int;
-    paramRectF.bottom += this.jdField_f_of_type_Int;
+    paramRectF.left -= this.G;
+    paramRectF.top -= this.G;
+    paramRectF.right += this.G;
+    paramRectF.bottom += this.G;
   }
   
   private static void a(@NonNull ViewGroup paramViewGroup, boolean paramBoolean)
@@ -353,56 +610,6 @@ public class TextInputLayout
       }
       i1 += 1;
     }
-  }
-  
-  private void a(EditText paramEditText)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null)
-    {
-      if ((this.o != 3) && (!(paramEditText instanceof TextInputEditText))) {
-        Log.i("TextInputLayout", "EditText added is not a TextInputEditText. Please switch to using that class instead.");
-      }
-      this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-      f();
-      setTextInputAccessibilityDelegate(new TextInputLayout.AccessibilityDelegate(this));
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.c(this.jdField_a_of_type_AndroidWidgetEditText.getTypeface());
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(this.jdField_a_of_type_AndroidWidgetEditText.getTextSize());
-      int i1 = this.jdField_a_of_type_AndroidWidgetEditText.getGravity();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(i1 & 0xFFFFFF8F | 0x30);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(i1);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new TextInputLayout.1(this));
-      if (this.jdField_g_of_type_AndroidContentResColorStateList == null) {
-        this.jdField_g_of_type_AndroidContentResColorStateList = this.jdField_a_of_type_AndroidWidgetEditText.getHintTextColors();
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangCharSequence))
-        {
-          this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidWidgetEditText.getHint();
-          setHint(this.jdField_a_of_type_JavaLangCharSequence);
-          this.jdField_a_of_type_AndroidWidgetEditText.setHint(null);
-        }
-        this.jdField_e_of_type_Boolean = true;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        a(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      }
-      a();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.d();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.bringToFront();
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.bringToFront();
-      this.jdField_b_of_type_AndroidWidgetFrameLayout.bringToFront();
-      this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.bringToFront();
-      z();
-      s();
-      u();
-      if (!isEnabled()) {
-        paramEditText.setEnabled(false);
-      }
-      a(false, true);
-      return;
-    }
-    throw new IllegalArgumentException("We already have an EditText, can only have one");
   }
   
   private void a(CheckableImageButton paramCheckableImageButton, ColorStateList paramColorStateList)
@@ -461,90 +668,78 @@ public class TextInputLayout
     }
   }
   
-  private void a(CharSequence paramCharSequence)
-  {
-    if (!TextUtils.equals(paramCharSequence, this.jdField_e_of_type_JavaLangCharSequence))
-    {
-      this.jdField_e_of_type_JavaLangCharSequence = paramCharSequence;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(paramCharSequence);
-      if (!this.jdField_j_of_type_Boolean) {
-        C();
-      }
-    }
-  }
-  
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool1 = isEnabled();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    Object localObject = this.a;
     int i1;
     if ((localObject != null) && (!TextUtils.isEmpty(((EditText)localObject).getText()))) {
       i1 = 1;
     } else {
       i1 = 0;
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    localObject = this.a;
     int i2;
     if ((localObject != null) && (((EditText)localObject).hasFocus())) {
       i2 = 1;
     } else {
       i2 = 0;
     }
-    boolean bool2 = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c();
-    localObject = this.jdField_g_of_type_AndroidContentResColorStateList;
+    boolean bool2 = this.j.g();
+    localObject = this.as;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a((ColorStateList)localObject);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(this.jdField_g_of_type_AndroidContentResColorStateList);
+      this.c.a((ColorStateList)localObject);
+      this.c.b(this.as);
     }
     if (!bool1)
     {
-      localObject = this.jdField_g_of_type_AndroidContentResColorStateList;
+      localObject = this.as;
       int i3;
       if (localObject != null)
       {
-        i3 = this.x;
+        i3 = this.aC;
         i3 = ((ColorStateList)localObject).getColorForState(new int[] { -16842910 }, i3);
       }
       else
       {
-        i3 = this.x;
+        i3 = this.aC;
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(ColorStateList.valueOf(i3));
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(ColorStateList.valueOf(i3));
+      this.c.a(ColorStateList.valueOf(i3));
+      this.c.b(ColorStateList.valueOf(i3));
     }
     else if (bool2)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a());
+      this.c.a(this.j.k());
     }
     else
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.l)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        localObject = this.m;
         if (localObject != null)
         {
-          this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(((TextView)localObject).getTextColors());
+          this.c.a(((TextView)localObject).getTextColors());
           break label259;
         }
       }
       if (i2 != 0)
       {
-        localObject = this.jdField_h_of_type_AndroidContentResColorStateList;
+        localObject = this.at;
         if (localObject != null) {
-          this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a((ColorStateList)localObject);
+          this.c.a((ColorStateList)localObject);
         }
       }
     }
     label259:
-    if ((i1 == 0) && (this.jdField_k_of_type_Boolean) && ((!isEnabled()) || (i2 == 0)))
+    if ((i1 == 0) && (this.aE) && ((!isEnabled()) || (i2 == 0)))
     {
-      if ((paramBoolean2) || (!this.jdField_j_of_type_Boolean)) {
-        f(paramBoolean1);
+      if ((paramBoolean2) || (!this.aD)) {
+        d(paramBoolean1);
       }
     }
-    else if ((paramBoolean2) || (this.jdField_j_of_type_Boolean)) {
-      d(paramBoolean1);
+    else if ((paramBoolean2) || (this.aD)) {
+      c(paramBoolean1);
     }
   }
   
@@ -560,13 +755,13 @@ public class TextInputLayout
   
   private int b(int paramInt, boolean paramBoolean)
   {
-    int i1 = paramInt - this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingRight();
+    int i1 = paramInt - this.a.getCompoundPaddingRight();
     paramInt = i1;
-    if (this.jdField_c_of_type_JavaLangCharSequence != null)
+    if (this.w != null)
     {
       paramInt = i1;
       if (paramBoolean) {
-        paramInt = i1 + (this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredWidth() - this.jdField_c_of_type_AndroidWidgetTextView.getPaddingRight());
+        paramInt = i1 + (this.x.getMeasuredWidth() - this.x.getPaddingRight());
       }
     }
     return paramInt;
@@ -575,49 +770,37 @@ public class TextInputLayout
   @NonNull
   private Rect b(@NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    if (this.a != null)
     {
-      Rect localRect = this.jdField_b_of_type_AndroidGraphicsRect;
-      float f1 = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b();
-      paramRect.left += this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingLeft();
+      Rect localRect = this.P;
+      float f1 = this.c.b();
+      paramRect.left += this.a.getCompoundPaddingLeft();
       localRect.top = a(paramRect, f1);
-      paramRect.right -= this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingRight();
+      paramRect.right -= this.a.getCompoundPaddingRight();
       localRect.bottom = a(paramRect, localRect, f1);
       return localRect;
     }
     throw new IllegalStateException();
   }
   
-  @Nullable
-  private CheckableImageButton b()
-  {
-    if (this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getVisibility() == 0) {
-      return this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-    }
-    if ((k()) && (d())) {
-      return this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-    }
-    return null;
-  }
-  
   private void b(int paramInt)
   {
-    if ((paramInt == 0) && (!this.jdField_j_of_type_Boolean))
+    if ((paramInt == 0) && (!this.aD))
     {
-      n();
+      t();
       return;
     }
-    o();
+    u();
   }
   
   private void b(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    Object localObject = this.E;
     if (localObject != null)
     {
       localObject = ((MaterialShapeDrawable)localObject).getBounds();
-      ((Rect)localObject).top = (((Rect)localObject).bottom - this.jdField_i_of_type_Int);
-      this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.draw(paramCanvas);
+      ((Rect)localObject).top = (((Rect)localObject).bottom - this.J);
+      this.E.draw(paramCanvas);
     }
   }
   
@@ -647,308 +830,224 @@ public class TextInputLayout
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean == paramBoolean) {
+    if ((paramBoolean) && (getEndIconDrawable() != null))
+    {
+      Drawable localDrawable = DrawableCompat.wrap(getEndIconDrawable()).mutate();
+      DrawableCompat.setTint(localDrawable, this.j.j());
+      this.af.setImageDrawable(localDrawable);
       return;
     }
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView = new AppCompatTextView(getContext());
-      this.jdField_b_of_type_AndroidWidgetTextView.setId(R.id.ai);
-      ViewCompat.setAccessibilityLiveRegion(this.jdField_b_of_type_AndroidWidgetTextView, 1);
-      setPlaceholderTextAppearance(this.jdField_e_of_type_Int);
-      setPlaceholderTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-      p();
-    }
-    else
-    {
-      q();
-      this.jdField_b_of_type_AndroidWidgetTextView = null;
-    }
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    O();
   }
   
   private void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i1 = this.jdField_i_of_type_AndroidContentResColorStateList.getDefaultColor();
-    int i2 = this.jdField_i_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16843623, 16842910 }, i1);
-    int i3 = this.jdField_i_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16843518, 16842910 }, i1);
+    int i1 = this.ax.getDefaultColor();
+    int i2 = this.ax.getColorForState(new int[] { 16843623, 16842910 }, i1);
+    int i3 = this.ax.getColorForState(new int[] { 16843518, 16842910 }, i1);
     if (paramBoolean1)
     {
-      this.jdField_l_of_type_Int = i3;
+      this.M = i3;
       return;
     }
     if (paramBoolean2)
     {
-      this.jdField_l_of_type_Int = i2;
+      this.M = i2;
       return;
     }
-    this.jdField_l_of_type_Int = i1;
+    this.M = i1;
   }
   
   private void c(int paramInt)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedHashSet.iterator();
+    Iterator localIterator = this.ag.iterator();
     while (localIterator.hasNext()) {
       ((TextInputLayout.OnEndIconChangedListener)localIterator.next()).a(this, paramInt);
     }
   }
   
-  private void c(boolean paramBoolean)
+  private void c(@NonNull Rect paramRect)
   {
-    if ((paramBoolean) && (c() != null))
+    if (this.E != null)
     {
-      Drawable localDrawable = DrawableCompat.wrap(c()).mutate();
-      DrawableCompat.setTint(localDrawable, this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a());
-      this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(localDrawable);
-      return;
+      int i1 = paramRect.bottom;
+      int i2 = this.L;
+      this.E.setBounds(paramRect.left, i1 - i2, paramRect.right, paramRect.bottom);
     }
-    B();
   }
   
-  private int d()
+  private void c(boolean paramBoolean)
   {
-    if (!this.jdField_d_of_type_Boolean) {
-      return 0;
+    ValueAnimator localValueAnimator = this.aG;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
+      this.aG.cancel();
     }
-    int i1 = this.jdField_g_of_type_Int;
-    if ((i1 != 0) && (i1 != 1)) {
-      if (i1 != 2) {
-        return 0;
-      }
+    if ((paramBoolean) && (this.aF)) {
+      a(1.0F);
+    } else {
+      this.c.b(1.0F);
     }
-    for (float f1 = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.c() / 2.0F;; f1 = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.c()) {
-      return (int)f1;
+    this.aD = false;
+    if (S()) {
+      T();
     }
+    s();
+    x();
+    z();
   }
   
   private void d(boolean paramBoolean)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.aG;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.aG.cancel();
     }
-    if ((paramBoolean) && (this.jdField_l_of_type_Boolean)) {
-      a(1.0F);
-    } else {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(1.0F);
-    }
-    this.jdField_j_of_type_Boolean = false;
-    if (o()) {
-      C();
-    }
-    m();
-    r();
-    t();
-  }
-  
-  private int e()
-  {
-    int i1 = this.jdField_m_of_type_Int;
-    if (this.jdField_g_of_type_Int == 1) {
-      i1 = MaterialColors.a(MaterialColors.a(this, R.attr.jdField_n_of_type_Int, 0), this.jdField_m_of_type_Int);
-    }
-    return i1;
-  }
-  
-  private void e(boolean paramBoolean)
-  {
-    Object localObject = this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-    int i2 = 0;
-    if (paramBoolean) {
-      i1 = 0;
-    } else {
-      i1 = 8;
-    }
-    ((CheckableImageButton)localObject).setVisibility(i1);
-    localObject = this.jdField_b_of_type_AndroidWidgetFrameLayout;
-    int i1 = i2;
-    if (paramBoolean) {
-      i1 = 8;
-    }
-    ((FrameLayout)localObject).setVisibility(i1);
-    u();
-    if (!k()) {
-      l();
-    }
-  }
-  
-  private void f()
-  {
-    g();
-    h();
-    e();
-    i();
-    j();
-    if (this.jdField_g_of_type_Int != 0) {
-      k();
-    }
-  }
-  
-  private void f(boolean paramBoolean)
-  {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-    if ((paramBoolean) && (this.jdField_l_of_type_Boolean)) {
+    if ((paramBoolean) && (this.aF)) {
       a(0.0F);
     } else {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(0.0F);
+      this.c.b(0.0F);
     }
-    if ((o()) && (((CutoutDrawable)this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable).a())) {
-      D();
+    if ((S()) && (((CutoutDrawable)this.D).a())) {
+      U();
     }
-    this.jdField_j_of_type_Boolean = true;
+    this.aD = true;
+    u();
+    x();
+    z();
+  }
+  
+  private EndIconDelegate getEndIconDelegate()
+  {
+    EndIconDelegate localEndIconDelegate = (EndIconDelegate)this.ae.get(this.ad);
+    if (localEndIconDelegate != null) {
+      return localEndIconDelegate;
+    }
+    return (EndIconDelegate)this.ae.get(0);
+  }
+  
+  @Nullable
+  private CheckableImageButton getEndIconToUpdateDummyDrawable()
+  {
+    if (this.aq.getVisibility() == 0) {
+      return this.aq;
+    }
+    if ((N()) && (g())) {
+      return this.af;
+    }
+    return null;
+  }
+  
+  private void k()
+  {
+    l();
+    m();
+    i();
     o();
-    r();
-    t();
+    p();
+    if (this.H != 0) {
+      q();
+    }
   }
   
-  private boolean f()
+  private void l()
   {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-    return (localEditText != null) && (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable != null) && (localEditText.getBackground() == null) && (this.jdField_g_of_type_Int != 0);
-  }
-  
-  private void g()
-  {
-    int i1 = this.jdField_g_of_type_Int;
+    int i1 = this.H;
     if (i1 != 0)
     {
       if (i1 != 1)
       {
         if (i1 == 2)
         {
-          if ((this.jdField_d_of_type_Boolean) && (!(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable instanceof CutoutDrawable))) {
-            this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new CutoutDrawable(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
+          if ((this.A) && (!(this.D instanceof CutoutDrawable))) {
+            this.D = new CutoutDrawable(this.F);
           } else {
-            this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
+            this.D = new MaterialShapeDrawable(this.F);
           }
-          this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = null;
+          this.E = null;
           return;
         }
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_g_of_type_Int);
+        localStringBuilder.append(this.H);
         localStringBuilder.append(" is illegal; only @BoxBackgroundMode constants are supported.");
         throw new IllegalArgumentException(localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
-      this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable();
+      this.D = new MaterialShapeDrawable(this.F);
+      this.E = new MaterialShapeDrawable();
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = null;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = null;
+    this.D = null;
+    this.E = null;
   }
   
-  private boolean g()
+  private void m()
   {
-    int i1 = this.jdField_g_of_type_Int;
-    boolean bool = true;
-    if (i1 == 1)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        return bool;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetEditText.getMinLines() <= 1) {
-        return true;
-      }
-    }
-    bool = false;
-    return bool;
-  }
-  
-  private void h()
-  {
-    if (f()) {
-      ViewCompat.setBackground(this.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable);
+    if (n()) {
+      ViewCompat.setBackground(this.a, this.D);
     }
   }
   
-  private boolean h()
+  private boolean n()
   {
-    return (this.jdField_g_of_type_Int == 2) && (i());
+    EditText localEditText = this.a;
+    return (localEditText != null) && (this.D != null) && (localEditText.getBackground() == null) && (this.H != 0);
   }
   
-  private void i()
+  private void o()
   {
-    if (this.jdField_g_of_type_Int == 1)
+    if (this.H == 1)
     {
       if (MaterialResources.b(getContext()))
       {
-        this.jdField_h_of_type_Int = getResources().getDimensionPixelSize(R.dimen.B);
+        this.I = getResources().getDimensionPixelSize(R.dimen.B);
         return;
       }
       if (MaterialResources.a(getContext())) {
-        this.jdField_h_of_type_Int = getResources().getDimensionPixelSize(R.dimen.A);
+        this.I = getResources().getDimensionPixelSize(R.dimen.A);
       }
     }
   }
   
-  private boolean i()
+  private void p()
   {
-    return (this.jdField_i_of_type_Int > -1) && (this.jdField_l_of_type_Int != 0);
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    if (this.a != null)
     {
-      if (this.jdField_g_of_type_Int != 1) {
+      if (this.H != 1) {
         return;
       }
       EditText localEditText;
       if (MaterialResources.b(getContext()))
       {
-        localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-        ViewCompat.setPaddingRelative(localEditText, ViewCompat.getPaddingStart(localEditText), getResources().getDimensionPixelSize(R.dimen.z), ViewCompat.getPaddingEnd(this.jdField_a_of_type_AndroidWidgetEditText), getResources().getDimensionPixelSize(R.dimen.y));
+        localEditText = this.a;
+        ViewCompat.setPaddingRelative(localEditText, ViewCompat.getPaddingStart(localEditText), getResources().getDimensionPixelSize(R.dimen.z), ViewCompat.getPaddingEnd(this.a), getResources().getDimensionPixelSize(R.dimen.y));
         return;
       }
       if (MaterialResources.a(getContext()))
       {
-        localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-        ViewCompat.setPaddingRelative(localEditText, ViewCompat.getPaddingStart(localEditText), getResources().getDimensionPixelSize(R.dimen.x), ViewCompat.getPaddingEnd(this.jdField_a_of_type_AndroidWidgetEditText), getResources().getDimensionPixelSize(R.dimen.w));
+        localEditText = this.a;
+        ViewCompat.setPaddingRelative(localEditText, ViewCompat.getPaddingStart(localEditText), getResources().getDimensionPixelSize(R.dimen.x), ViewCompat.getPaddingEnd(this.a), getResources().getDimensionPixelSize(R.dimen.w));
       }
     }
   }
   
-  private boolean j()
+  private void q()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return false;
-    }
-    int i1 = Math.max(this.jdField_b_of_type_AndroidWidgetLinearLayout.getMeasuredHeight(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getMeasuredHeight() < i1)
+    if (this.H != 1)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setMinimumHeight(i1);
-      return true;
-    }
-    return false;
-  }
-  
-  private void k()
-  {
-    if (this.jdField_g_of_type_Int != 1)
-    {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-      int i1 = d();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.e.getLayoutParams();
+      int i1 = C();
       if (i1 != localLayoutParams.topMargin)
       {
         localLayoutParams.topMargin = i1;
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+        this.e.requestLayout();
       }
     }
   }
   
-  private boolean k()
+  private void r()
   {
-    return this.o != 0;
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.m != null)
     {
-      EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+      EditText localEditText = this.a;
       int i1;
       if (localEditText == null) {
         i1 = 0;
@@ -959,99 +1058,9 @@ public class TextInputLayout
     }
   }
   
-  private boolean l()
+  private void s()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return false;
-    }
-    int i1;
-    Object localObject;
-    Drawable localDrawable1;
-    Drawable localDrawable2;
-    if (m())
-    {
-      i1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - this.jdField_a_of_type_AndroidWidgetEditText.getPaddingLeft();
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_n_of_type_Int != i1))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
-        this.jdField_n_of_type_Int = i1;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_n_of_type_Int, 1);
-      }
-      localObject = TextViewCompat.getCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText);
-      localDrawable1 = localObject[0];
-      localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (localDrawable1 == localDrawable2) {
-        break label175;
-      }
-      TextViewCompat.setCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText, localDrawable2, localObject[1], localObject[2], localObject[3]);
-    }
-    else
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label175;
-      }
-      localObject = TextViewCompat.getCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText);
-      TextViewCompat.setCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText, null, localObject[1], localObject[2], localObject[3]);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-    boolean bool1 = true;
-    break label177;
-    label175:
-    bool1 = false;
-    label177:
-    if (n())
-    {
-      int i2 = this.jdField_d_of_type_AndroidWidgetTextView.getMeasuredWidth() - this.jdField_a_of_type_AndroidWidgetEditText.getPaddingRight();
-      localObject = b();
-      i1 = i2;
-      if (localObject != null) {
-        i1 = i2 + ((View)localObject).getMeasuredWidth() + MarginLayoutParamsCompat.getMarginStart((ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams());
-      }
-      localObject = TextViewCompat.getCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText);
-      localDrawable1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-      if ((localDrawable1 != null) && (this.p != i1))
-      {
-        this.p = i1;
-        localDrawable1.setBounds(0, 0, this.p, 1);
-        TextViewCompat.setCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText, localObject[0], localObject[1], this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, localObject[3]);
-      }
-      for (;;)
-      {
-        return true;
-        if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)
-        {
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
-          this.p = i1;
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.p, 1);
-        }
-        localDrawable1 = localObject[2];
-        localDrawable2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        bool2 = bool1;
-        if (localDrawable1 == localDrawable2) {
-          break;
-        }
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localObject[2];
-        TextViewCompat.setCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText, localObject[0], localObject[1], localDrawable2, localObject[3]);
-      }
-    }
-    boolean bool2 = bool1;
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      localObject = TextViewCompat.getCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText);
-      if (localObject[2] == this.jdField_b_of_type_AndroidGraphicsDrawableDrawable)
-      {
-        TextViewCompat.setCompoundDrawablesRelative(this.jdField_a_of_type_AndroidWidgetEditText, localObject[0], localObject[1], this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, localObject[3]);
-        bool1 = true;
-      }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-      bool2 = bool1;
-    }
-    return bool2;
-  }
-  
-  private void m()
-  {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.a;
     int i1;
     if (localEditText == null) {
       i1 = 0;
@@ -1061,312 +1070,226 @@ public class TextInputLayout
     b(i1);
   }
   
-  private boolean m()
+  private void setEditText(EditText paramEditText)
   {
-    return ((b() != null) || (this.jdField_c_of_type_JavaLangCharSequence != null)) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() > 0);
-  }
-  
-  private void n()
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if ((localTextView != null) && (this.jdField_c_of_type_Boolean))
+    if (this.a == null)
     {
-      localTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.bringToFront();
+      if ((this.ad != 3) && (!(paramEditText instanceof TextInputEditText))) {
+        Log.i("TextInputLayout", "EditText added is not a TextInputEditText. Please switch to using that class instead.");
+      }
+      this.a = paramEditText;
+      k();
+      setTextInputAccessibilityDelegate(new TextInputLayout.AccessibilityDelegate(this));
+      this.c.c(this.a.getTypeface());
+      this.c.a(this.a.getTextSize());
+      int i1 = this.a.getGravity();
+      this.c.b(i1 & 0xFFFFFF8F | 0x30);
+      this.c.a(i1);
+      this.a.addTextChangedListener(new TextInputLayout.1(this));
+      if (this.as == null) {
+        this.as = this.a.getHintTextColors();
+      }
+      if (this.A)
+      {
+        if (TextUtils.isEmpty(this.B))
+        {
+          this.i = this.a.getHint();
+          setHint(this.i);
+          this.a.setHint(null);
+        }
+        this.C = true;
+      }
+      if (this.m != null) {
+        a(this.a.getText().length());
+      }
+      c();
+      this.j.d();
+      this.f.bringToFront();
+      this.g.bringToFront();
+      this.h.bringToFront();
+      this.aq.bringToFront();
+      L();
+      y();
+      A();
+      if (!isEnabled()) {
+        paramEditText.setEnabled(false);
+      }
+      a(false, true);
+      return;
     }
+    throw new IllegalArgumentException("We already have an EditText, can only have one");
   }
   
-  private boolean n()
+  private void setErrorIconVisible(boolean paramBoolean)
   {
-    return ((this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getVisibility() == 0) || ((k()) && (d())) || (this.jdField_d_of_type_JavaLangCharSequence != null)) && (this.jdField_b_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() > 0);
-  }
-  
-  private void o()
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if ((localTextView != null) && (this.jdField_c_of_type_Boolean))
-    {
-      localTextView.setText(null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
-  }
-  
-  private boolean o()
-  {
-    return (this.jdField_d_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangCharSequence)) && ((this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable instanceof CutoutDrawable));
-  }
-  
-  private void p()
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localTextView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-  }
-  
-  private boolean p()
-  {
-    return this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getVisibility() == 0;
-  }
-  
-  private void q()
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      localTextView.setVisibility(8);
-    }
-  }
-  
-  private void r()
-  {
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    int i1;
-    if ((this.jdField_c_of_type_JavaLangCharSequence != null) && (!e())) {
+    Object localObject = this.aq;
+    int i2 = 0;
+    if (paramBoolean) {
       i1 = 0;
     } else {
       i1 = 8;
     }
-    localTextView.setVisibility(i1);
-    l();
+    ((CheckableImageButton)localObject).setVisibility(i1);
+    localObject = this.h;
+    int i1 = i2;
+    if (paramBoolean) {
+      i1 = 8;
+    }
+    ((FrameLayout)localObject).setVisibility(i1);
+    A();
+    if (!N()) {
+      P();
+    }
   }
   
-  private void s()
+  private void setHintInternal(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
+    if (!TextUtils.equals(paramCharSequence, this.B))
+    {
+      this.B = paramCharSequence;
+      this.c.a(paramCharSequence);
+      if (!this.aD) {
+        T();
+      }
+    }
+  }
+  
+  private void setPlaceholderTextEnabled(boolean paramBoolean)
+  {
+    if (this.q == paramBoolean) {
       return;
     }
-    int i1;
-    if (c()) {
-      i1 = 0;
-    } else {
-      i1 = ViewCompat.getPaddingStart(this.jdField_a_of_type_AndroidWidgetEditText);
+    if (paramBoolean)
+    {
+      this.r = new AppCompatTextView(getContext());
+      this.r.setId(R.id.ai);
+      ViewCompat.setAccessibilityLiveRegion(this.r, 1);
+      setPlaceholderTextAppearance(this.t);
+      setPlaceholderTextColor(this.s);
+      v();
     }
-    ViewCompat.setPaddingRelative(this.jdField_c_of_type_AndroidWidgetTextView, i1, this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingTop(), getContext().getResources().getDimensionPixelSize(R.dimen.F), this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingBottom());
+    else
+    {
+      w();
+      this.r = null;
+    }
+    this.q = paramBoolean;
   }
   
   private void t()
   {
-    int i2 = this.jdField_d_of_type_AndroidWidgetTextView.getVisibility();
-    Object localObject = this.jdField_d_of_type_JavaLangCharSequence;
-    int i1 = 0;
-    boolean bool;
-    if ((localObject != null) && (!e())) {
-      bool = true;
-    } else {
-      bool = false;
+    TextView localTextView = this.r;
+    if ((localTextView != null) && (this.q))
+    {
+      localTextView.setText(this.p);
+      this.r.setVisibility(0);
+      this.r.bringToFront();
     }
-    localObject = this.jdField_d_of_type_AndroidWidgetTextView;
-    if (!bool) {
-      i1 = 8;
-    }
-    ((TextView)localObject).setVisibility(i1);
-    if (i2 != this.jdField_d_of_type_AndroidWidgetTextView.getVisibility()) {
-      a().a(bool);
-    }
-    l();
   }
   
   private void u()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return;
+    TextView localTextView = this.r;
+    if ((localTextView != null) && (this.q))
+    {
+      localTextView.setText(null);
+      this.r.setVisibility(4);
     }
-    int i1;
-    if ((!d()) && (!p())) {
-      i1 = ViewCompat.getPaddingEnd(this.jdField_a_of_type_AndroidWidgetEditText);
-    } else {
-      i1 = 0;
-    }
-    ViewCompat.setPaddingRelative(this.jdField_d_of_type_AndroidWidgetTextView, getContext().getResources().getDimensionPixelSize(R.dimen.F), this.jdField_a_of_type_AndroidWidgetEditText.getPaddingTop(), i1, this.jdField_a_of_type_AndroidWidgetEditText.getPaddingBottom());
   }
   
   private void v()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null)
+    TextView localTextView = this.r;
+    if (localTextView != null)
     {
-      int i1;
-      if (this.jdField_b_of_type_Boolean) {
-        i1 = this.jdField_c_of_type_Int;
-      } else {
-        i1 = this.jdField_d_of_type_Int;
-      }
-      a((TextView)localObject, i1);
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        localObject = this.jdField_b_of_type_AndroidContentResColorStateList;
-        if (localObject != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-        }
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject = this.jdField_c_of_type_AndroidContentResColorStateList;
-        if (localObject != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-        }
-      }
+      this.e.addView(localTextView);
+      this.r.setVisibility(0);
     }
   }
   
   private void w()
   {
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-    if (localMaterialShapeDrawable == null) {
-      return;
+    TextView localTextView = this.r;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
     }
-    localMaterialShapeDrawable.setShapeAppearanceModel(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
-    if (h()) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a(this.jdField_i_of_type_Int, this.jdField_l_of_type_Int);
-    }
-    this.jdField_m_of_type_Int = e();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(ColorStateList.valueOf(this.jdField_m_of_type_Int));
-    if (this.o == 3) {
-      this.jdField_a_of_type_AndroidWidgetEditText.getBackground().invalidateSelf();
-    }
-    x();
-    invalidate();
   }
   
   private void x()
   {
-    if (this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable == null) {
-      return;
+    TextView localTextView = this.x;
+    int i1;
+    if ((this.w != null) && (!j())) {
+      i1 = 0;
+    } else {
+      i1 = 8;
     }
-    if (i()) {
-      this.jdField_b_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(ColorStateList.valueOf(this.jdField_l_of_type_Int));
-    }
-    invalidate();
+    localTextView.setVisibility(i1);
+    P();
   }
   
   private void y()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-    {
-      EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-      if (localEditText != null)
-      {
-        int i1 = localEditText.getGravity();
-        this.jdField_b_of_type_AndroidWidgetTextView.setGravity(i1);
-        this.jdField_b_of_type_AndroidWidgetTextView.setPadding(this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingLeft(), this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingTop(), this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingRight(), this.jdField_a_of_type_AndroidWidgetEditText.getCompoundPaddingBottom());
-      }
+    if (this.a == null) {
+      return;
     }
+    int i1;
+    if (d()) {
+      i1 = 0;
+    } else {
+      i1 = ViewCompat.getPaddingStart(this.a);
+    }
+    ViewCompat.setPaddingRelative(this.x, i1, this.a.getCompoundPaddingTop(), getContext().getResources().getDimensionPixelSize(R.dimen.F), this.a.getCompoundPaddingBottom());
   }
   
   private void z()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashSet.iterator();
-    while (localIterator.hasNext()) {
-      ((TextInputLayout.OnEditTextAttachedListener)localIterator.next()).a(this);
+    int i2 = this.z.getVisibility();
+    Object localObject = this.y;
+    int i1 = 0;
+    boolean bool;
+    if ((localObject != null) && (!j())) {
+      bool = true;
+    } else {
+      bool = false;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_g_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    return this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable();
-  }
-  
-  @Nullable
-  public EditText a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
-  }
-  
-  @NonNull
-  CheckableImageButton a()
-  {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
-  }
-  
-  @NonNull
-  MaterialShapeDrawable a()
-  {
-    int i1 = this.jdField_g_of_type_Int;
-    if ((i1 != 1) && (i1 != 2)) {
-      throw new IllegalStateException();
+    localObject = this.z;
+    if (!bool) {
+      i1 = 8;
     }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      return this.jdField_e_of_type_JavaLangCharSequence;
+    ((TextView)localObject).setVisibility(i1);
+    if (i2 != this.z.getVisibility()) {
+      getEndIconDelegate().a(bool);
     }
-    return null;
-  }
-  
-  void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText;
-    if (localObject1 != null)
-    {
-      if (this.jdField_g_of_type_Int != 0) {
-        return;
-      }
-      Object localObject2 = ((EditText)localObject1).getBackground();
-      if (localObject2 == null) {
-        return;
-      }
-      localObject1 = localObject2;
-      if (DrawableUtils.canSafelyMutateDrawable((Drawable)localObject2)) {
-        localObject1 = ((Drawable)localObject2).mutate();
-      }
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c())
-      {
-        ((Drawable)localObject1).setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(), PorterDuff.Mode.SRC_IN));
-        return;
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject2 != null)
-        {
-          ((Drawable)localObject1).setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(((TextView)localObject2).getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
-          return;
-        }
-      }
-      DrawableCompat.clearColorFilter((Drawable)localObject1);
-      this.jdField_a_of_type_AndroidWidgetEditText.refreshDrawableState();
-    }
+    P();
   }
   
   @VisibleForTesting
   void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.d() == paramFloat) {
+    if (this.c.j() == paramFloat) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    if (this.aG == null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(AnimationUtils.b);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(167L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new TextInputLayout.4(this));
+      this.aG = new ValueAnimator();
+      this.aG.setInterpolator(AnimationUtils.b);
+      this.aG.setDuration(167L);
+      this.aG.addUpdateListener(new TextInputLayout.4(this));
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.d(), paramFloat });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.aG.setFloatValues(new float[] { this.c.j(), paramFloat });
+    this.aG.start();
   }
   
   void a(int paramInt)
   {
-    boolean bool2 = this.jdField_b_of_type_Boolean;
-    int i1 = this.jdField_b_of_type_Int;
+    boolean bool2 = this.l;
+    int i1 = this.k;
     if (i1 == -1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-      this.jdField_b_of_type_Boolean = false;
+      this.m.setText(String.valueOf(paramInt));
+      this.m.setContentDescription(null);
+      this.l = false;
     }
     else
     {
@@ -1376,19 +1299,19 @@ public class TextInputLayout
       } else {
         bool1 = false;
       }
-      this.jdField_b_of_type_Boolean = bool1;
-      a(getContext(), this.jdField_a_of_type_AndroidWidgetTextView, paramInt, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
-      if (bool2 != this.jdField_b_of_type_Boolean) {
-        v();
+      this.l = bool1;
+      a(getContext(), this.m, paramInt, this.k, this.l);
+      if (bool2 != this.l) {
+        B();
       }
       BidiFormatter localBidiFormatter = BidiFormatter.getInstance();
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localBidiFormatter.unicodeWrap(getContext().getString(R.string.jdField_d_of_type_Int, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_b_of_type_Int) })));
+      this.m.setText(localBidiFormatter.unicodeWrap(getContext().getString(R.string.d, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.k) })));
     }
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (bool2 != this.jdField_b_of_type_Boolean))
+    if ((this.a != null) && (bool2 != this.l))
     {
       a(false);
-      e();
-      a();
+      i();
+      c();
     }
   }
   
@@ -1419,22 +1342,22 @@ public class TextInputLayout
     }
     if (paramInt != 0)
     {
-      TextViewCompat.setTextAppearance(paramTextView, R.style.TextAppearance_AppCompat_Caption);
-      paramTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.jdField_b_of_type_Int));
+      TextViewCompat.setTextAppearance(paramTextView, R.style.d);
+      paramTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.b));
     }
   }
   
   public void a(@NonNull TextInputLayout.OnEditTextAttachedListener paramOnEditTextAttachedListener)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramOnEditTextAttachedListener);
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+    this.ac.add(paramOnEditTextAttachedListener);
+    if (this.a != null) {
       paramOnEditTextAttachedListener.a(this);
     }
   }
   
   public void a(@NonNull TextInputLayout.OnEndIconChangedListener paramOnEndIconChangedListener)
   {
-    this.jdField_b_of_type_JavaUtilLinkedHashSet.add(paramOnEndIconChangedListener);
+    this.ag.add(paramOnEndIconChangedListener);
   }
   
   void a(boolean paramBoolean)
@@ -1445,7 +1368,7 @@ public class TextInputLayout
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean a()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.C;
   }
   
   public void addView(@NonNull View paramView, int paramInt, @NonNull ViewGroup.LayoutParams paramLayoutParams)
@@ -1454,100 +1377,65 @@ public class TextInputLayout
     {
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramLayoutParams);
       localLayoutParams.gravity = (localLayoutParams.gravity & 0xFFFFFF8F | 0x10);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(paramLayoutParams);
-      k();
-      a((EditText)paramView);
+      this.e.addView(paramView, localLayoutParams);
+      this.e.setLayoutParams(paramLayoutParams);
+      q();
+      setEditText((EditText)paramView);
       return;
     }
     super.addView(paramView, paramInt, paramLayoutParams);
   }
   
-  public int b()
-  {
-    return this.jdField_m_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable b()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable();
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return this.jdField_b_of_type_JavaLangCharSequence;
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, this.jdField_d_of_type_AndroidContentResColorStateList);
-  }
-  
   public boolean b()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b();
+    return this.j.f();
   }
   
-  public int c()
+  void c()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable c()
-  {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable();
-  }
-  
-  @Nullable
-  public CharSequence c()
-  {
-    return this.jdField_d_of_type_JavaLangCharSequence;
-  }
-  
-  public void c()
-  {
-    a(this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, this.jdField_f_of_type_AndroidContentResColorStateList);
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getVisibility() == 0;
-  }
-  
-  @Nullable
-  CharSequence d()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    Object localObject1 = this.a;
+    if (localObject1 != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (localTextView != null) {
-        return localTextView.getContentDescription();
+      if (this.H != 0) {
+        return;
       }
+      Object localObject2 = ((EditText)localObject1).getBackground();
+      if (localObject2 == null) {
+        return;
+      }
+      localObject1 = localObject2;
+      if (DrawableUtils.canSafelyMutateDrawable((Drawable)localObject2)) {
+        localObject1 = ((Drawable)localObject2).mutate();
+      }
+      if (this.j.g())
+      {
+        ((Drawable)localObject1).setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(this.j.j(), PorterDuff.Mode.SRC_IN));
+        return;
+      }
+      if (this.l)
+      {
+        localObject2 = this.m;
+        if (localObject2 != null)
+        {
+          ((Drawable)localObject1).setColorFilter(AppCompatDrawableManager.getPorterDuffColorFilter(((TextView)localObject2).getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
+          return;
+        }
+      }
+      DrawableCompat.clearColorFilter((Drawable)localObject1);
+      this.a.refreshDrawableState();
     }
-    return null;
-  }
-  
-  public void d()
-  {
-    a(this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, this.jdField_e_of_type_AndroidContentResColorStateList);
   }
   
   public boolean d()
   {
-    return (this.jdField_b_of_type_AndroidWidgetFrameLayout.getVisibility() == 0) && (this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getVisibility() == 0);
+    return this.S.getVisibility() == 0;
   }
   
   protected void dispatchRestoreInstanceState(@NonNull SparseArray<Parcelable> paramSparseArray)
   {
-    this.jdField_n_of_type_Boolean = true;
+    this.aI = true;
     super.dispatchRestoreInstanceState(paramSparseArray);
-    this.jdField_n_of_type_Boolean = false;
+    this.aI = false;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -1559,49 +1447,359 @@ public class TextInputLayout
   
   protected void drawableStateChanged()
   {
-    if (this.jdField_m_of_type_Boolean) {
+    if (this.aH) {
       return;
     }
     boolean bool2 = true;
-    this.jdField_m_of_type_Boolean = true;
+    this.aH = true;
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    CollapsingTextHelper localCollapsingTextHelper = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper;
+    CollapsingTextHelper localCollapsingTextHelper = this.c;
     boolean bool1;
     if (localCollapsingTextHelper != null) {
       bool1 = localCollapsingTextHelper.a(arrayOfInt) | false;
     } else {
       bool1 = false;
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    if (this.a != null)
     {
       if ((!ViewCompat.isLaidOut(this)) || (!isEnabled())) {
         bool2 = false;
       }
       a(bool2);
     }
-    a();
-    e();
+    c();
+    i();
     if (bool1) {
       invalidate();
     }
-    this.jdField_m_of_type_Boolean = false;
+    this.aH = false;
+  }
+  
+  public void e()
+  {
+    a(this.S, this.T);
+  }
+  
+  public void f()
+  {
+    a(this.aq, this.ar);
+  }
+  
+  public boolean g()
+  {
+    return (this.h.getVisibility() == 0) && (this.af.getVisibility() == 0);
+  }
+  
+  public int getBaseline()
+  {
+    EditText localEditText = this.a;
+    if (localEditText != null) {
+      return localEditText.getBaseline() + getPaddingTop() + C();
+    }
+    return super.getBaseline();
+  }
+  
+  @NonNull
+  MaterialShapeDrawable getBoxBackground()
+  {
+    int i1 = this.H;
+    if ((i1 != 1) && (i1 != 2)) {
+      throw new IllegalStateException();
+    }
+    return this.D;
+  }
+  
+  public int getBoxBackgroundColor()
+  {
+    return this.N;
+  }
+  
+  public int getBoxBackgroundMode()
+  {
+    return this.H;
+  }
+  
+  public float getBoxCornerRadiusBottomEnd()
+  {
+    return this.D.ad();
+  }
+  
+  public float getBoxCornerRadiusBottomStart()
+  {
+    return this.D.ae();
+  }
+  
+  public float getBoxCornerRadiusTopEnd()
+  {
+    return this.D.ac();
+  }
+  
+  public float getBoxCornerRadiusTopStart()
+  {
+    return this.D.ab();
+  }
+  
+  public int getBoxStrokeColor()
+  {
+    return this.aw;
   }
   
   @Nullable
-  public CharSequence e()
+  public ColorStateList getBoxStrokeErrorColor()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a()) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a();
+    return this.ax;
+  }
+  
+  public int getBoxStrokeWidth()
+  {
+    return this.K;
+  }
+  
+  public int getBoxStrokeWidthFocused()
+  {
+    return this.L;
+  }
+  
+  public int getCounterMaxLength()
+  {
+    return this.k;
+  }
+  
+  @Nullable
+  CharSequence getCounterOverflowDescription()
+  {
+    if ((this.b) && (this.l))
+    {
+      TextView localTextView = this.m;
+      if (localTextView != null) {
+        return localTextView.getContentDescription();
+      }
     }
     return null;
   }
   
-  void e()
+  @Nullable
+  public ColorStateList getCounterOverflowTextColor()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable != null)
+    return this.u;
+  }
+  
+  @Nullable
+  public ColorStateList getCounterTextColor()
+  {
+    return this.u;
+  }
+  
+  @Nullable
+  public ColorStateList getDefaultHintTextColor()
+  {
+    return this.as;
+  }
+  
+  @Nullable
+  public EditText getEditText()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public CharSequence getEndIconContentDescription()
+  {
+    return this.af.getContentDescription();
+  }
+  
+  @Nullable
+  public Drawable getEndIconDrawable()
+  {
+    return this.af.getDrawable();
+  }
+  
+  public int getEndIconMode()
+  {
+    return this.ad;
+  }
+  
+  @NonNull
+  CheckableImageButton getEndIconView()
+  {
+    return this.af;
+  }
+  
+  @Nullable
+  public CharSequence getError()
+  {
+    if (this.j.e()) {
+      return this.j.h();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public CharSequence getErrorContentDescription()
+  {
+    return this.j.l();
+  }
+  
+  @ColorInt
+  public int getErrorCurrentTextColors()
+  {
+    return this.j.j();
+  }
+  
+  @Nullable
+  public Drawable getErrorIconDrawable()
+  {
+    return this.aq.getDrawable();
+  }
+  
+  @VisibleForTesting
+  final int getErrorTextCurrentColor()
+  {
+    return this.j.j();
+  }
+  
+  @Nullable
+  public CharSequence getHelperText()
+  {
+    if (this.j.f()) {
+      return this.j.i();
+    }
+    return null;
+  }
+  
+  @ColorInt
+  public int getHelperTextCurrentTextColor()
+  {
+    return this.j.m();
+  }
+  
+  @Nullable
+  public CharSequence getHint()
+  {
+    if (this.A) {
+      return this.B;
+    }
+    return null;
+  }
+  
+  @VisibleForTesting
+  final float getHintCollapsedTextHeight()
+  {
+    return this.c.c();
+  }
+  
+  @VisibleForTesting
+  final int getHintCurrentCollapsedTextColor()
+  {
+    return this.c.k();
+  }
+  
+  @Nullable
+  public ColorStateList getHintTextColor()
+  {
+    return this.at;
+  }
+  
+  @Deprecated
+  @Nullable
+  public CharSequence getPasswordVisibilityToggleContentDescription()
+  {
+    return this.af.getContentDescription();
+  }
+  
+  @Deprecated
+  @Nullable
+  public Drawable getPasswordVisibilityToggleDrawable()
+  {
+    return this.af.getDrawable();
+  }
+  
+  @Nullable
+  public CharSequence getPlaceholderText()
+  {
+    if (this.q) {
+      return this.p;
+    }
+    return null;
+  }
+  
+  @StyleRes
+  public int getPlaceholderTextAppearance()
+  {
+    return this.t;
+  }
+  
+  @Nullable
+  public ColorStateList getPlaceholderTextColor()
+  {
+    return this.s;
+  }
+  
+  @Nullable
+  public CharSequence getPrefixText()
+  {
+    return this.w;
+  }
+  
+  @Nullable
+  public ColorStateList getPrefixTextColor()
+  {
+    return this.x.getTextColors();
+  }
+  
+  @NonNull
+  public TextView getPrefixTextView()
+  {
+    return this.x;
+  }
+  
+  @Nullable
+  public CharSequence getStartIconContentDescription()
+  {
+    return this.S.getContentDescription();
+  }
+  
+  @Nullable
+  public Drawable getStartIconDrawable()
+  {
+    return this.S.getDrawable();
+  }
+  
+  @Nullable
+  public CharSequence getSuffixText()
+  {
+    return this.y;
+  }
+  
+  @Nullable
+  public ColorStateList getSuffixTextColor()
+  {
+    return this.z.getTextColors();
+  }
+  
+  @NonNull
+  public TextView getSuffixTextView()
+  {
+    return this.z;
+  }
+  
+  @Nullable
+  public Typeface getTypeface()
+  {
+    return this.R;
+  }
+  
+  public void h()
+  {
+    a(this.af, this.ah);
+  }
+  
+  void i()
+  {
+    if (this.D != null)
     {
-      if (this.jdField_g_of_type_Int == 0) {
+      if (this.H == 0) {
         return;
       }
       boolean bool1 = isFocused();
@@ -1609,7 +1807,7 @@ public class TextInputLayout
       Object localObject;
       if (!bool1)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+        localObject = this.a;
         if ((localObject == null) || (!((EditText)localObject).hasFocus()))
         {
           bool1 = false;
@@ -1620,7 +1818,7 @@ public class TextInputLayout
       label56:
       if (!isHovered())
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+        localObject = this.a;
         if ((localObject == null) || (!((EditText)localObject).isHovered()))
         {
           bool2 = false;
@@ -1631,136 +1829,106 @@ public class TextInputLayout
       label92:
       if (!isEnabled())
       {
-        this.jdField_l_of_type_Int = this.x;
+        this.M = this.aC;
       }
-      else if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c())
+      else if (this.j.g())
       {
-        if (this.jdField_i_of_type_AndroidContentResColorStateList != null) {
+        if (this.ax != null) {
           b(bool1, bool2);
         } else {
-          this.jdField_l_of_type_Int = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a();
+          this.M = this.j.j();
         }
       }
       else
       {
-        if (this.jdField_b_of_type_Boolean)
+        if (this.l)
         {
-          localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+          localObject = this.m;
           if (localObject != null)
           {
-            if (this.jdField_i_of_type_AndroidContentResColorStateList != null)
+            if (this.ax != null)
             {
               b(bool1, bool2);
               break label234;
             }
-            this.jdField_l_of_type_Int = ((TextView)localObject).getCurrentTextColor();
+            this.M = ((TextView)localObject).getCurrentTextColor();
             break label234;
           }
         }
         if (bool1) {
-          this.jdField_l_of_type_Int = this.s;
+          this.M = this.aw;
         } else if (bool2) {
-          this.jdField_l_of_type_Int = this.r;
+          this.M = this.av;
         } else {
-          this.jdField_l_of_type_Int = this.q;
+          this.M = this.au;
         }
       }
       label234:
       boolean bool3 = bool4;
-      if (a() != null)
+      if (getErrorIconDrawable() != null)
       {
         bool3 = bool4;
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a())
+        if (this.j.e())
         {
           bool3 = bool4;
-          if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c()) {
+          if (this.j.g()) {
             bool3 = true;
           }
         }
       }
-      e(bool3);
-      c();
-      b();
-      d();
-      if (a().a()) {
-        c(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c());
+      setErrorIconVisible(bool3);
+      f();
+      e();
+      h();
+      if (getEndIconDelegate().b()) {
+        b(this.j.g());
       }
       if ((bool1) && (isEnabled())) {
-        this.jdField_i_of_type_Int = this.jdField_k_of_type_Int;
+        this.J = this.L;
       } else {
-        this.jdField_i_of_type_Int = this.jdField_j_of_type_Int;
+        this.J = this.K;
       }
-      if (this.jdField_g_of_type_Int == 1) {
+      if (this.H == 1) {
         if (!isEnabled()) {
-          this.jdField_m_of_type_Int = this.u;
+          this.N = this.az;
         } else if ((bool2) && (!bool1)) {
-          this.jdField_m_of_type_Int = this.w;
+          this.N = this.aB;
         } else if (bool1) {
-          this.jdField_m_of_type_Int = this.v;
+          this.N = this.aA;
         } else {
-          this.jdField_m_of_type_Int = this.t;
+          this.N = this.ay;
         }
       }
-      w();
+      F();
     }
   }
   
   @VisibleForTesting
-  final boolean e()
+  final boolean j()
   {
-    return this.jdField_j_of_type_Boolean;
-  }
-  
-  @Nullable
-  public CharSequence f()
-  {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b()) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b();
-    }
-    return null;
-  }
-  
-  @Nullable
-  public CharSequence g()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getContentDescription();
-  }
-  
-  public int getBaseline()
-  {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-    if (localEditText != null) {
-      return localEditText.getBaseline() + getPaddingTop() + d();
-    }
-    return super.getBaseline();
-  }
-  
-  @Nullable
-  public CharSequence h()
-  {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getContentDescription();
+    return this.aD;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.a;
     if (localEditText != null)
     {
-      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      Rect localRect = this.O;
       DescendantOffsetUtils.b(this, localEditText, localRect);
-      a(localRect);
-      if (this.jdField_d_of_type_Boolean)
+      c(localRect);
+      if (this.A)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(this.jdField_a_of_type_AndroidWidgetEditText.getTextSize());
-        paramInt1 = this.jdField_a_of_type_AndroidWidgetEditText.getGravity();
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(paramInt1 & 0xFFFFFF8F | 0x30);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(paramInt1);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(a(localRect));
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(b(localRect));
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b();
-        if ((o()) && (!this.jdField_j_of_type_Boolean)) {
-          C();
+        this.c.a(this.a.getTextSize());
+        paramInt1 = this.a.getGravity();
+        this.c.b(paramInt1 & 0xFFFFFF8F | 0x30);
+        this.c.a(paramInt1);
+        this.c.b(a(localRect));
+        this.c.a(b(localRect));
+        this.c.l();
+        if ((S()) && (!this.aD)) {
+          T();
         }
       }
     }
@@ -1769,14 +1937,14 @@ public class TextInputLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    boolean bool1 = j();
-    boolean bool2 = l();
+    boolean bool1 = J();
+    boolean bool2 = P();
     if ((bool1) || (bool2)) {
-      this.jdField_a_of_type_AndroidWidgetEditText.post(new TextInputLayout.3(this));
+      this.a.post(new TextInputLayout.3(this));
     }
+    K();
     y();
-    s();
-    u();
+    A();
   }
   
   protected void onRestoreInstanceState(@Nullable Parcelable paramParcelable)
@@ -1788,13 +1956,13 @@ public class TextInputLayout
     }
     paramParcelable = (TextInputLayout.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    setError(paramParcelable.jdField_a_of_type_JavaLangCharSequence);
-    if (paramParcelable.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.post(new TextInputLayout.2(this));
+    setError(paramParcelable.a);
+    if (paramParcelable.b) {
+      this.af.post(new TextInputLayout.2(this));
     }
-    setHint(paramParcelable.jdField_b_of_type_JavaLangCharSequence);
-    setHelperText(paramParcelable.jdField_c_of_type_JavaLangCharSequence);
-    setPlaceholderText(paramParcelable.jdField_d_of_type_JavaLangCharSequence);
+    setHint(paramParcelable.c);
+    setHelperText(paramParcelable.d);
+    setPlaceholderText(paramParcelable.e);
     requestLayout();
   }
   
@@ -1802,31 +1970,31 @@ public class TextInputLayout
   public Parcelable onSaveInstanceState()
   {
     TextInputLayout.SavedState localSavedState = new TextInputLayout.SavedState(super.onSaveInstanceState());
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c()) {
-      localSavedState.jdField_a_of_type_JavaLangCharSequence = e();
+    if (this.j.g()) {
+      localSavedState.a = getError();
     }
     boolean bool;
-    if ((k()) && (this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.isChecked())) {
+    if ((N()) && (this.af.isChecked())) {
       bool = true;
     } else {
       bool = false;
     }
-    localSavedState.jdField_a_of_type_Boolean = bool;
-    localSavedState.jdField_b_of_type_JavaLangCharSequence = a();
-    localSavedState.jdField_c_of_type_JavaLangCharSequence = f();
-    localSavedState.jdField_d_of_type_JavaLangCharSequence = b();
+    localSavedState.b = bool;
+    localSavedState.c = getHint();
+    localSavedState.d = getHelperText();
+    localSavedState.e = getPlaceholderText();
     return localSavedState;
   }
   
   public void setBoxBackgroundColor(@ColorInt int paramInt)
   {
-    if (this.jdField_m_of_type_Int != paramInt)
+    if (this.N != paramInt)
     {
-      this.jdField_m_of_type_Int = paramInt;
-      this.t = paramInt;
-      this.v = paramInt;
-      this.w = paramInt;
-      w();
+      this.N = paramInt;
+      this.ay = paramInt;
+      this.aA = paramInt;
+      this.aB = paramInt;
+      F();
     }
   }
   
@@ -1837,32 +2005,32 @@ public class TextInputLayout
   
   public void setBoxBackgroundColorStateList(@NonNull ColorStateList paramColorStateList)
   {
-    this.t = paramColorStateList.getDefaultColor();
-    this.jdField_m_of_type_Int = this.t;
-    this.u = paramColorStateList.getColorForState(new int[] { -16842910 }, -1);
-    this.v = paramColorStateList.getColorForState(new int[] { 16842908, 16842910 }, -1);
-    this.w = paramColorStateList.getColorForState(new int[] { 16843623, 16842910 }, -1);
-    w();
+    this.ay = paramColorStateList.getDefaultColor();
+    this.N = this.ay;
+    this.az = paramColorStateList.getColorForState(new int[] { -16842910 }, -1);
+    this.aA = paramColorStateList.getColorForState(new int[] { 16842908, 16842910 }, -1);
+    this.aB = paramColorStateList.getColorForState(new int[] { 16843623, 16842910 }, -1);
+    F();
   }
   
   public void setBoxBackgroundMode(int paramInt)
   {
-    if (paramInt == this.jdField_g_of_type_Int) {
+    if (paramInt == this.H) {
       return;
     }
-    this.jdField_g_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      f();
+    this.H = paramInt;
+    if (this.a != null) {
+      k();
     }
   }
   
   public void setBoxCornerRadii(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-    if ((localMaterialShapeDrawable == null) || (localMaterialShapeDrawable.n() != paramFloat1) || (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.o() != paramFloat2) || (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.q() != paramFloat4) || (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.p() != paramFloat3))
+    MaterialShapeDrawable localMaterialShapeDrawable = this.D;
+    if ((localMaterialShapeDrawable == null) || (localMaterialShapeDrawable.ab() != paramFloat1) || (this.D.ac() != paramFloat2) || (this.D.ae() != paramFloat4) || (this.D.ad() != paramFloat3))
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.b().b(paramFloat1).c(paramFloat2).d(paramFloat4).e(paramFloat3).a();
-      w();
+      this.F = this.F.n().b(paramFloat1).c(paramFloat2).d(paramFloat4).e(paramFloat3).a();
+      F();
     }
   }
   
@@ -1873,10 +2041,10 @@ public class TextInputLayout
   
   public void setBoxStrokeColor(@ColorInt int paramInt)
   {
-    if (this.s != paramInt)
+    if (this.aw != paramInt)
     {
-      this.s = paramInt;
-      e();
+      this.aw = paramInt;
+      i();
     }
   }
   
@@ -1884,37 +2052,37 @@ public class TextInputLayout
   {
     if (paramColorStateList.isStateful())
     {
-      this.q = paramColorStateList.getDefaultColor();
-      this.x = paramColorStateList.getColorForState(new int[] { -16842910 }, -1);
-      this.r = paramColorStateList.getColorForState(new int[] { 16843623, 16842910 }, -1);
-      this.s = paramColorStateList.getColorForState(new int[] { 16842908, 16842910 }, -1);
+      this.au = paramColorStateList.getDefaultColor();
+      this.aC = paramColorStateList.getColorForState(new int[] { -16842910 }, -1);
+      this.av = paramColorStateList.getColorForState(new int[] { 16843623, 16842910 }, -1);
+      this.aw = paramColorStateList.getColorForState(new int[] { 16842908, 16842910 }, -1);
     }
-    else if (this.s != paramColorStateList.getDefaultColor())
+    else if (this.aw != paramColorStateList.getDefaultColor())
     {
-      this.s = paramColorStateList.getDefaultColor();
+      this.aw = paramColorStateList.getDefaultColor();
     }
-    e();
+    i();
   }
   
   public void setBoxStrokeErrorColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_i_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.ax != paramColorStateList)
     {
-      this.jdField_i_of_type_AndroidContentResColorStateList = paramColorStateList;
-      e();
+      this.ax = paramColorStateList;
+      i();
     }
   }
   
   public void setBoxStrokeWidth(int paramInt)
   {
-    this.jdField_j_of_type_Int = paramInt;
-    e();
+    this.K = paramInt;
+    i();
   }
   
   public void setBoxStrokeWidthFocused(int paramInt)
   {
-    this.jdField_k_of_type_Int = paramInt;
-    e();
+    this.L = paramInt;
+    i();
   }
   
   public void setBoxStrokeWidthFocusedResource(@DimenRes int paramInt)
@@ -1929,87 +2097,87 @@ public class TextInputLayout
   
   public void setCounterEnabled(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.b != paramBoolean)
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView = new AppCompatTextView(getContext());
-        this.jdField_a_of_type_AndroidWidgetTextView.setId(R.id.af);
-        Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+        this.m = new AppCompatTextView(getContext());
+        this.m.setId(R.id.af);
+        Typeface localTypeface = this.R;
         if (localTypeface != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(localTypeface);
+          this.m.setTypeface(localTypeface);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-        MarginLayoutParamsCompat.setMarginStart((ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams(), getResources().getDimensionPixelOffset(R.dimen.au));
-        v();
-        l();
+        this.m.setMaxLines(1);
+        this.j.a(this.m, 2);
+        MarginLayoutParamsCompat.setMarginStart((ViewGroup.MarginLayoutParams)this.m.getLayoutParams(), getResources().getDimensionPixelOffset(R.dimen.au));
+        B();
+        r();
       }
       else
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-        this.jdField_a_of_type_AndroidWidgetTextView = null;
+        this.j.b(this.m, 2);
+        this.m = null;
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.b = paramBoolean;
     }
   }
   
   public void setCounterMaxLength(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.k != paramInt)
     {
       if (paramInt > 0) {
-        this.jdField_b_of_type_Int = paramInt;
+        this.k = paramInt;
       } else {
-        this.jdField_b_of_type_Int = -1;
+        this.k = -1;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        l();
+      if (this.b) {
+        r();
       }
     }
   }
   
   public void setCounterOverflowTextAppearance(int paramInt)
   {
-    if (this.jdField_c_of_type_Int != paramInt)
+    if (this.n != paramInt)
     {
-      this.jdField_c_of_type_Int = paramInt;
-      v();
+      this.n = paramInt;
+      B();
     }
   }
   
   public void setCounterOverflowTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_c_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.v != paramColorStateList)
     {
-      this.jdField_c_of_type_AndroidContentResColorStateList = paramColorStateList;
-      v();
+      this.v = paramColorStateList;
+      B();
     }
   }
   
   public void setCounterTextAppearance(int paramInt)
   {
-    if (this.jdField_d_of_type_Int != paramInt)
+    if (this.o != paramInt)
     {
-      this.jdField_d_of_type_Int = paramInt;
-      v();
+      this.o = paramInt;
+      B();
     }
   }
   
   public void setCounterTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_b_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.u != paramColorStateList)
     {
-      this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-      v();
+      this.u = paramColorStateList;
+      B();
     }
   }
   
   public void setDefaultHintTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_g_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_h_of_type_AndroidContentResColorStateList = paramColorStateList;
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+    this.as = paramColorStateList;
+    this.at = paramColorStateList;
+    if (this.a != null) {
       a(false);
     }
   }
@@ -2022,12 +2190,12 @@ public class TextInputLayout
   
   public void setEndIconActivated(boolean paramBoolean)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setActivated(paramBoolean);
+    this.af.setActivated(paramBoolean);
   }
   
   public void setEndIconCheckable(boolean paramBoolean)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setCheckable(paramBoolean);
+    this.af.setCheckable(paramBoolean);
   }
   
   public void setEndIconContentDescription(@StringRes int paramInt)
@@ -2043,8 +2211,8 @@ public class TextInputLayout
   
   public void setEndIconContentDescription(@Nullable CharSequence paramCharSequence)
   {
-    if (h() != paramCharSequence) {
-      this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setContentDescription(paramCharSequence);
+    if (getEndIconContentDescription() != paramCharSequence) {
+      this.af.setContentDescription(paramCharSequence);
     }
   }
   
@@ -2061,14 +2229,14 @@ public class TextInputLayout
   
   public void setEndIconDrawable(@Nullable Drawable paramDrawable)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(paramDrawable);
-    d();
+    this.af.setImageDrawable(paramDrawable);
+    h();
   }
   
   public void setEndIconMode(int paramInt)
   {
-    int i1 = this.o;
-    this.o = paramInt;
+    int i1 = this.ad;
+    this.ad = paramInt;
     c(i1);
     boolean bool;
     if (paramInt != 0) {
@@ -2077,15 +2245,15 @@ public class TextInputLayout
       bool = false;
     }
     setEndIconVisible(bool);
-    if (a().a(this.jdField_g_of_type_Int))
+    if (getEndIconDelegate().a(this.H))
     {
-      a().a();
-      B();
+      getEndIconDelegate().a();
+      O();
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("The current box background mode ");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.H);
     localStringBuilder.append(" is not supported by the end icon mode ");
     localStringBuilder.append(paramInt);
     throw new IllegalStateException(localStringBuilder.toString());
@@ -2093,40 +2261,40 @@ public class TextInputLayout
   
   public void setEndIconOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
-    a(this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnClickListener, this.jdField_b_of_type_AndroidViewView$OnLongClickListener);
+    a(this.af, paramOnClickListener, this.ao);
   }
   
   public void setEndIconOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_b_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    a(this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnLongClickListener);
+    this.ao = paramOnLongClickListener;
+    a(this.af, paramOnLongClickListener);
   }
   
   public void setEndIconTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_e_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.ah != paramColorStateList)
     {
-      this.jdField_e_of_type_AndroidContentResColorStateList = paramColorStateList;
-      this.jdField_h_of_type_Boolean = true;
-      B();
+      this.ah = paramColorStateList;
+      this.ai = true;
+      O();
     }
   }
   
   public void setEndIconTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode != paramMode)
+    if (this.aj != paramMode)
     {
-      this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-      this.jdField_i_of_type_Boolean = true;
-      B();
+      this.aj = paramMode;
+      this.ak = true;
+      O();
     }
   }
   
   public void setEndIconVisible(boolean paramBoolean)
   {
-    if (d() != paramBoolean)
+    if (g() != paramBoolean)
     {
-      CheckableImageButton localCheckableImageButton = this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
+      CheckableImageButton localCheckableImageButton = this.af;
       int i1;
       if (paramBoolean) {
         i1 = 0;
@@ -2134,14 +2302,14 @@ public class TextInputLayout
         i1 = 8;
       }
       localCheckableImageButton.setVisibility(i1);
-      u();
-      l();
+      A();
+      P();
     }
   }
   
   public void setError(@Nullable CharSequence paramCharSequence)
   {
-    if (!this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a())
+    if (!this.j.e())
     {
       if (TextUtils.isEmpty(paramCharSequence)) {
         return;
@@ -2150,20 +2318,20 @@ public class TextInputLayout
     }
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b(paramCharSequence);
+      this.j.b(paramCharSequence);
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b();
+    this.j.b();
   }
   
   public void setErrorContentDescription(@Nullable CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.c(paramCharSequence);
+    this.j.c(paramCharSequence);
   }
   
   public void setErrorEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(paramBoolean);
+    this.j.a(paramBoolean);
   }
   
   public void setErrorIconDrawable(@DrawableRes int paramInt)
@@ -2175,76 +2343,76 @@ public class TextInputLayout
       localDrawable = null;
     }
     setErrorIconDrawable(localDrawable);
-    c();
+    f();
   }
   
   public void setErrorIconDrawable(@Nullable Drawable paramDrawable)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(paramDrawable);
+    this.aq.setImageDrawable(paramDrawable);
     boolean bool;
-    if ((paramDrawable != null) && (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a())) {
+    if ((paramDrawable != null) && (this.j.e())) {
       bool = true;
     } else {
       bool = false;
     }
-    e(bool);
+    setErrorIconVisible(bool);
   }
   
   public void setErrorIconOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
-    a(this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnClickListener, this.jdField_c_of_type_AndroidViewView$OnLongClickListener);
+    a(this.aq, paramOnClickListener, this.ap);
   }
   
   public void setErrorIconOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_c_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    a(this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnLongClickListener);
+    this.ap = paramOnLongClickListener;
+    a(this.aq, paramOnLongClickListener);
   }
   
   public void setErrorIconTintList(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_f_of_type_AndroidContentResColorStateList = paramColorStateList;
-    Drawable localDrawable2 = this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable();
+    this.ar = paramColorStateList;
+    Drawable localDrawable2 = this.aq.getDrawable();
     Drawable localDrawable1 = localDrawable2;
     if (localDrawable2 != null)
     {
       localDrawable1 = DrawableCompat.wrap(localDrawable2).mutate();
       DrawableCompat.setTintList(localDrawable1, paramColorStateList);
     }
-    if (this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable() != localDrawable1) {
-      this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(localDrawable1);
+    if (this.aq.getDrawable() != localDrawable1) {
+      this.aq.setImageDrawable(localDrawable1);
     }
   }
   
   public void setErrorIconTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    Drawable localDrawable2 = this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable();
+    Drawable localDrawable2 = this.aq.getDrawable();
     Drawable localDrawable1 = localDrawable2;
     if (localDrawable2 != null)
     {
       localDrawable1 = DrawableCompat.wrap(localDrawable2).mutate();
       DrawableCompat.setTintMode(localDrawable1, paramMode);
     }
-    if (this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.getDrawable() != localDrawable1) {
-      this.jdField_c_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(localDrawable1);
+    if (this.aq.getDrawable() != localDrawable1) {
+      this.aq.setImageDrawable(localDrawable1);
     }
   }
   
   public void setErrorTextAppearance(@StyleRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(paramInt);
+    this.j.b(paramInt);
   }
   
   public void setErrorTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(paramColorStateList);
+    this.j.a(paramColorStateList);
   }
   
   public void setExpandedHintEnabled(boolean paramBoolean)
   {
-    if (this.jdField_k_of_type_Boolean != paramBoolean)
+    if (this.aE != paramBoolean)
     {
-      this.jdField_k_of_type_Boolean = paramBoolean;
+      this.aE = paramBoolean;
       a(false);
     }
   }
@@ -2262,23 +2430,23 @@ public class TextInputLayout
       if (!b()) {
         setHelperTextEnabled(true);
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(paramCharSequence);
+      this.j.a(paramCharSequence);
     }
   }
   
   public void setHelperTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b(paramColorStateList);
+    this.j.b(paramColorStateList);
   }
   
   public void setHelperTextEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b(paramBoolean);
+    this.j.b(paramBoolean);
   }
   
   public void setHelperTextTextAppearance(@StyleRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.b(paramInt);
+    this.j.c(paramInt);
   }
   
   public void setHint(@StringRes int paramInt)
@@ -2294,69 +2462,69 @@ public class TextInputLayout
   
   public void setHint(@Nullable CharSequence paramCharSequence)
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.A)
     {
-      a(paramCharSequence);
+      setHintInternal(paramCharSequence);
       sendAccessibilityEvent(2048);
     }
   }
   
   public void setHintAnimationEnabled(boolean paramBoolean)
   {
-    this.jdField_l_of_type_Boolean = paramBoolean;
+    this.aF = paramBoolean;
   }
   
   public void setHintEnabled(boolean paramBoolean)
   {
-    if (paramBoolean != this.jdField_d_of_type_Boolean)
+    if (paramBoolean != this.A)
     {
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      if (!this.jdField_d_of_type_Boolean)
+      this.A = paramBoolean;
+      if (!this.A)
       {
-        this.jdField_e_of_type_Boolean = false;
-        if ((!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangCharSequence)) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getHint()))) {
-          this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_e_of_type_JavaLangCharSequence);
+        this.C = false;
+        if ((!TextUtils.isEmpty(this.B)) && (TextUtils.isEmpty(this.a.getHint()))) {
+          this.a.setHint(this.B);
         }
-        a(null);
+        setHintInternal(null);
       }
       else
       {
-        CharSequence localCharSequence = this.jdField_a_of_type_AndroidWidgetEditText.getHint();
+        CharSequence localCharSequence = this.a.getHint();
         if (!TextUtils.isEmpty(localCharSequence))
         {
-          if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangCharSequence)) {
+          if (TextUtils.isEmpty(this.B)) {
             setHint(localCharSequence);
           }
-          this.jdField_a_of_type_AndroidWidgetEditText.setHint(null);
+          this.a.setHint(null);
         }
-        this.jdField_e_of_type_Boolean = true;
+        this.C = true;
       }
-      if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-        k();
+      if (this.a != null) {
+        q();
       }
     }
   }
   
   public void setHintTextAppearance(@StyleRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.c(paramInt);
-    this.jdField_h_of_type_AndroidContentResColorStateList = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a();
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null)
+    this.c.c(paramInt);
+    this.at = this.c.o();
+    if (this.a != null)
     {
       a(false);
-      k();
+      q();
     }
   }
   
   public void setHintTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_h_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.at != paramColorStateList)
     {
-      if (this.jdField_g_of_type_AndroidContentResColorStateList == null) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.a(paramColorStateList);
+      if (this.as == null) {
+        this.c.a(paramColorStateList);
       }
-      this.jdField_h_of_type_AndroidContentResColorStateList = paramColorStateList;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.at = paramColorStateList;
+      if (this.a != null) {
         a(false);
       }
     }
@@ -2377,7 +2545,7 @@ public class TextInputLayout
   @Deprecated
   public void setPasswordVisibilityToggleContentDescription(@Nullable CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setContentDescription(paramCharSequence);
+    this.af.setContentDescription(paramCharSequence);
   }
   
   @Deprecated
@@ -2395,13 +2563,13 @@ public class TextInputLayout
   @Deprecated
   public void setPasswordVisibilityToggleDrawable(@Nullable Drawable paramDrawable)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(paramDrawable);
+    this.af.setImageDrawable(paramDrawable);
   }
   
   @Deprecated
   public void setPasswordVisibilityToggleEnabled(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.o != 1))
+    if ((paramBoolean) && (this.ad != 1))
     {
       setEndIconMode(1);
       return;
@@ -2414,39 +2582,39 @@ public class TextInputLayout
   @Deprecated
   public void setPasswordVisibilityToggleTintList(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_e_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_h_of_type_Boolean = true;
-    B();
+    this.ah = paramColorStateList;
+    this.ai = true;
+    O();
   }
   
   @Deprecated
   public void setPasswordVisibilityToggleTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    this.jdField_b_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-    this.jdField_i_of_type_Boolean = true;
-    B();
+    this.aj = paramMode;
+    this.ak = true;
+    O();
   }
   
   public void setPlaceholderText(@Nullable CharSequence paramCharSequence)
   {
-    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(paramCharSequence)))
+    if ((this.q) && (TextUtils.isEmpty(paramCharSequence)))
     {
-      b(false);
+      setPlaceholderTextEnabled(false);
     }
     else
     {
-      if (!this.jdField_c_of_type_Boolean) {
-        b(true);
+      if (!this.q) {
+        setPlaceholderTextEnabled(true);
       }
-      this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
+      this.p = paramCharSequence;
     }
-    m();
+    s();
   }
   
   public void setPlaceholderTextAppearance(@StyleRes int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    this.t = paramInt;
+    TextView localTextView = this.r;
     if (localTextView != null) {
       TextViewCompat.setTextAppearance(localTextView, paramInt);
     }
@@ -2454,10 +2622,10 @@ public class TextInputLayout
   
   public void setPlaceholderTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.s != paramColorStateList)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+      this.s = paramColorStateList;
+      TextView localTextView = this.r;
       if ((localTextView != null) && (paramColorStateList != null)) {
         localTextView.setTextColor(paramColorStateList);
       }
@@ -2472,24 +2640,24 @@ public class TextInputLayout
     } else {
       localCharSequence = paramCharSequence;
     }
-    this.jdField_c_of_type_JavaLangCharSequence = localCharSequence;
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    r();
+    this.w = localCharSequence;
+    this.x.setText(paramCharSequence);
+    x();
   }
   
   public void setPrefixTextAppearance(@StyleRes int paramInt)
   {
-    TextViewCompat.setTextAppearance(this.jdField_c_of_type_AndroidWidgetTextView, paramInt);
+    TextViewCompat.setTextAppearance(this.x, paramInt);
   }
   
   public void setPrefixTextColor(@NonNull ColorStateList paramColorStateList)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    this.x.setTextColor(paramColorStateList);
   }
   
   public void setStartIconCheckable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setCheckable(paramBoolean);
+    this.S.setCheckable(paramBoolean);
   }
   
   public void setStartIconContentDescription(@StringRes int paramInt)
@@ -2505,8 +2673,8 @@ public class TextInputLayout
   
   public void setStartIconContentDescription(@Nullable CharSequence paramCharSequence)
   {
-    if (g() != paramCharSequence) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setContentDescription(paramCharSequence);
+    if (getStartIconContentDescription() != paramCharSequence) {
+      this.S.setContentDescription(paramCharSequence);
     }
   }
   
@@ -2523,11 +2691,11 @@ public class TextInputLayout
   
   public void setStartIconDrawable(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.setImageDrawable(paramDrawable);
+    this.S.setImageDrawable(paramDrawable);
     if (paramDrawable != null)
     {
       setStartIconVisible(true);
-      b();
+      e();
       return;
     }
     setStartIconVisible(false);
@@ -2538,40 +2706,40 @@ public class TextInputLayout
   
   public void setStartIconOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+    a(this.S, paramOnClickListener, this.ab);
   }
   
   public void setStartIconOnLongClickListener(@Nullable View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton, paramOnLongClickListener);
+    this.ab = paramOnLongClickListener;
+    a(this.S, paramOnLongClickListener);
   }
   
   public void setStartIconTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_d_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.T != paramColorStateList)
     {
-      this.jdField_d_of_type_AndroidContentResColorStateList = paramColorStateList;
-      this.jdField_f_of_type_Boolean = true;
-      A();
+      this.T = paramColorStateList;
+      this.U = true;
+      M();
     }
   }
   
   public void setStartIconTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode != paramMode)
+    if (this.V != paramMode)
     {
-      this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-      this.jdField_g_of_type_Boolean = true;
-      A();
+      this.V = paramMode;
+      this.W = true;
+      M();
     }
   }
   
   public void setStartIconVisible(boolean paramBoolean)
   {
-    if (c() != paramBoolean)
+    if (d() != paramBoolean)
     {
-      CheckableImageButton localCheckableImageButton = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton;
+      CheckableImageButton localCheckableImageButton = this.S;
       int i1;
       if (paramBoolean) {
         i1 = 0;
@@ -2579,8 +2747,8 @@ public class TextInputLayout
         i1 = 8;
       }
       localCheckableImageButton.setVisibility(i1);
-      s();
-      l();
+      y();
+      P();
     }
   }
   
@@ -2592,24 +2760,24 @@ public class TextInputLayout
     } else {
       localCharSequence = paramCharSequence;
     }
-    this.jdField_d_of_type_JavaLangCharSequence = localCharSequence;
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    t();
+    this.y = localCharSequence;
+    this.z.setText(paramCharSequence);
+    z();
   }
   
   public void setSuffixTextAppearance(@StyleRes int paramInt)
   {
-    TextViewCompat.setTextAppearance(this.jdField_d_of_type_AndroidWidgetTextView, paramInt);
+    TextViewCompat.setTextAppearance(this.z, paramInt);
   }
   
   public void setSuffixTextColor(@NonNull ColorStateList paramColorStateList)
   {
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    this.z.setTextColor(paramColorStateList);
   }
   
   public void setTextInputAccessibilityDelegate(@Nullable TextInputLayout.AccessibilityDelegate paramAccessibilityDelegate)
   {
-    EditText localEditText = this.jdField_a_of_type_AndroidWidgetEditText;
+    EditText localEditText = this.a;
     if (localEditText != null) {
       ViewCompat.setAccessibilityDelegate(localEditText, paramAccessibilityDelegate);
     }
@@ -2617,12 +2785,12 @@ public class TextInputLayout
   
   public void setTypeface(@Nullable Typeface paramTypeface)
   {
-    if (paramTypeface != this.jdField_a_of_type_AndroidGraphicsTypeface)
+    if (paramTypeface != this.R)
     {
-      this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.c(paramTypeface);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldIndicatorViewController.a(paramTypeface);
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      this.R = paramTypeface;
+      this.c.c(paramTypeface);
+      this.j.a(paramTypeface);
+      TextView localTextView = this.m;
       if (localTextView != null) {
         localTextView.setTypeface(paramTypeface);
       }
@@ -2631,7 +2799,7 @@ public class TextInputLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputLayout
  * JD-Core Version:    0.7.0.1
  */

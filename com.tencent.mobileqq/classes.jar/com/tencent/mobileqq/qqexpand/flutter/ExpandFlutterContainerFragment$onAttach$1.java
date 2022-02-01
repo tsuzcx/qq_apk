@@ -18,15 +18,15 @@ final class ExpandFlutterContainerFragment$onAttach$1
     {
       QFlutterContainerDelegate localQFlutterContainerDelegate = ExpandFlutterContainerFragment.a(this.this$0);
       Intrinsics.checkExpressionValueIsNotNull(localQFlutterContainerDelegate, "mDelegate");
-      if ((!localQFlutterContainerDelegate.b()) && (!NetworkUtil.isNetSupport(this.this$0.getContext()))) {
-        ExpandFlutterContainerFragment.a(this.this$0).setVisibility(0);
+      if ((!localQFlutterContainerDelegate.l()) && (!NetworkUtil.isNetSupport(this.this$0.getContext()))) {
+        ExpandFlutterContainerFragment.b(this.this$0).setVisibility(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment.onAttach.1
  * JD-Core Version:    0.7.0.1
  */

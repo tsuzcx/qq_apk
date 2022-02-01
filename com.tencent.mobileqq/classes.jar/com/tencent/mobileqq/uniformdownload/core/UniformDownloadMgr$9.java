@@ -12,23 +12,23 @@ class UniformDownloadMgr$9
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidOsBundle;
+      Object localObject = this.b;
       if (localObject != null)
       {
         int i = ((Bundle)localObject).getInt("_notify_param_Id");
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[UniformDL] >>>onDownloadNotificationBeClean. URL:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append(" nofiyid:");
         ((StringBuilder)localObject).append(i);
         QLog.i("UniformDownloadMgr_Impl", 1, ((StringBuilder)localObject).toString());
-        UniformDownloadMgr.a(this.this$0).a(this.jdField_a_of_type_JavaLangString);
-        UniformDownloadMgr.a(this.this$0).d(this.jdField_a_of_type_JavaLangString);
-        UniformDownloadMgr.a(this.this$0).a(this.jdField_a_of_type_JavaLangString);
-        UniformDownloadMgr.a(this.this$0).a(this.jdField_a_of_type_JavaLangString);
-        UniformDownloadMgr.a(this.this$0).b();
+        UniformDownloadMgr.b(this.this$0).a(this.a);
+        UniformDownloadMgr.b(this.this$0).e(this.a);
+        UniformDownloadMgr.b(this.this$0).b(this.a);
+        UniformDownloadMgr.e(this.this$0).a(this.a);
+        UniformDownloadMgr.b(this.this$0).b();
         return;
       }
     }
@@ -37,7 +37,7 @@ class UniformDownloadMgr$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.9
  * JD-Core Version:    0.7.0.1
  */

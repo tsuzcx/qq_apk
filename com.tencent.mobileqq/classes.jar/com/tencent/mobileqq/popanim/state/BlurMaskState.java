@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
@@ -25,13 +26,14 @@ import mqq.app.MobileQQ;
 public class BlurMaskState
   extends BaseState
 {
-  private static int jdField_a_of_type_Int = 100;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379026);
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView = (URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372948);
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = (DiniFlyAnimationView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377848);
-  private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = (QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363683);
-  private boolean jdField_a_of_type_Boolean;
-  private int b = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+  private static int d = 100;
+  private int e = ImmersiveUtils.getStatusBarHeight(this.a);
+  private URLImageView f = (URLImageView)this.b.findViewById(2131440512);
+  private QQBlurView g = (QQBlurView)this.b.findViewById(2131429598);
+  private LinearLayout h = (LinearLayout)this.b.findViewById(2131447749);
+  private DiniFlyAnimationView i = (DiniFlyAnimationView)this.h.findViewById(2131446324);
+  private TextView j = (TextView)this.h.findViewById(2131445609);
+  private boolean k;
   
   public BlurMaskState(ViewGroup paramViewGroup, StateContext paramStateContext)
   {
@@ -40,57 +42,69 @@ public class BlurMaskState
   
   public void a(BaseState paramBaseState)
   {
-    QLog.d("BlurMaskState", 1, new Object[] { "mHasEverUpperAIO: ", Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_Boolean) });
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_Boolean = false;
-    float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    paramBaseState = this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.getBigDrawable(this.jdField_a_of_type_AndroidContentContext, f);
+    QLog.d("BlurMaskState", 1, new Object[] { "mHasEverUpperAIO: ", Boolean.valueOf(this.c.h) });
+    this.c.h = false;
+    float f1 = this.a.getResources().getDisplayMetrics().density;
+    paramBaseState = this.c.b.getBigDrawable(this.a, f1);
     if (paramBaseState == null) {
       return;
     }
-    paramBaseState.setCallback(this.jdField_a_of_type_ComTencentImageURLImageView);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseState);
-    int i = PopOutEmoticonUtil.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_AndroidWidgetEditText, this.b);
-    PopOutAnimViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView, this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_AndroidViewViewGroup, i);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height = i;
-    PopOutAnimViewHelper.a(0, new View[] { this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView, this.jdField_a_of_type_AndroidWidgetLinearLayout });
-    if (this.jdField_a_of_type_AndroidViewViewGroup.getParent() == null)
+    paramBaseState.setCallback(this.f);
+    this.f.setImageDrawable(paramBaseState);
+    int m = PopOutEmoticonUtil.a(this.c.f, this.e);
+    PopOutAnimViewHelper.a(this.g, this.c.d, m);
+    this.h.getLayoutParams().height = m;
+    PopOutAnimViewHelper.a(0, new View[] { this.g, this.h });
+    if (this.c.b())
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup);
+      this.j.setText(2131902136);
+      PopOutAnimViewHelper.a(8, new View[] { this.i });
+    }
+    else
+    {
+      this.j.setText(2131902137);
+      PopOutAnimViewHelper.a(0, new View[] { this.i });
+    }
+    if (this.b.getParent() == null)
+    {
+      this.b.setVisibility(0);
+      paramBaseState = new RelativeLayout.LayoutParams(-1, -2);
+      paramBaseState.topMargin = ImmersiveUtils.getStatusBarHeight(this.a);
+      this.c.d.addView(this.b, paramBaseState);
     }
     paramBaseState = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.d = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(paramBaseState) ^ true);
-    if (this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.d) {
+    this.c.k = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(paramBaseState) ^ true);
+    if (this.c.k) {
       ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramBaseState, "StickerBubble", true);
     }
-    PopOutAnimViewHelper.a("0X800BBA0", this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo);
+    PopOutAnimViewHelper.a("0X800BBA0", this.c.b);
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.k)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewQQEmoticonPanelLinearLayoutHelper.hidePopupWindow();
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewQQEmoticonPanelLinearLayoutHelper.showStickerMaskOnPanel();
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      this.k = true;
+      this.c.g.hidePopupWindow();
+      this.c.g.showStickerMaskOnPanel();
+      this.f.setVisibility(0);
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-    localLayoutParams.leftMargin = ((int)paramMotionEvent.getRawX() - this.jdField_a_of_type_ComTencentImageURLImageView.getWidth() / 2);
-    localLayoutParams.topMargin = ((int)paramMotionEvent.getRawY() - this.b - this.jdField_a_of_type_ComTencentImageURLImageView.getHeight() - jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLImageView.requestLayout();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    localLayoutParams.leftMargin = ((int)paramMotionEvent.getRawX() - this.f.getWidth() / 2);
+    localLayoutParams.topMargin = ((int)paramMotionEvent.getRawY() - this.e - this.f.getHeight() - d);
+    this.f.requestLayout();
     return true;
   }
   
   public void b(BaseState paramBaseState)
   {
-    this.jdField_a_of_type_Boolean = false;
-    PopOutAnimViewHelper.a(4, new View[] { this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView, this.jdField_a_of_type_AndroidWidgetLinearLayout });
+    this.k = false;
+    PopOutAnimViewHelper.a(4, new View[] { this.i, this.f, this.g, this.h });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.BlurMaskState
  * JD-Core Version:    0.7.0.1
  */

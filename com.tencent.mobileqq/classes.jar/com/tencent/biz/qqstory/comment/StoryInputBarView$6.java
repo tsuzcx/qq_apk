@@ -14,8 +14,8 @@ class StoryInputBarView$6
   
   public void delete()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      TextUtils.backspace(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    if (this.a.e != null) {
+      TextUtils.backspace(this.a.e);
     }
   }
   
@@ -34,8 +34,8 @@ class StoryInputBarView$6
   
   public void send(EmoticonInfo paramEmoticonInfo)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.e != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(QQStoryContext.j(), this.a.a, this.a.e, null);
     }
   }
   
@@ -43,7 +43,7 @@ class StoryInputBarView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryInputBarView.6
  * JD-Core Version:    0.7.0.1
  */

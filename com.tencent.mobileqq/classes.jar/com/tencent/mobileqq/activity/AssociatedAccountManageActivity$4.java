@@ -34,8 +34,8 @@ class AssociatedAccountManageActivity$4
         if ((localObject1 instanceof ShaderAnimLayout)) {
           ((ShaderAnimLayout)localObject1).b();
         }
-        if (AppSetting.d) {
-          paramView.setContentDescription(this.a.getString(2131690858));
+        if (AppSetting.e) {
+          paramView.setContentDescription(this.a.getString(2131887795));
         }
       }
       else if (AssociatedAccountManageActivity.access$800(this.a) == paramView)
@@ -51,8 +51,8 @@ class AssociatedAccountManageActivity$4
           ((ShaderAnimLayout)localObject1).f();
         }
         AssociatedAccountManageActivity.access$802(this.a, null);
-        if (AppSetting.d) {
-          paramView.setContentDescription(this.a.getString(2131720100));
+        if (AppSetting.e) {
+          paramView.setContentDescription(this.a.getString(2131917725));
         }
       }
       else
@@ -75,10 +75,10 @@ class AssociatedAccountManageActivity$4
           localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.access$1300(this.a) * 12.0F + AssociatedAccountManageActivity.access$1400(this.a) * 75.0F));
           localView.setLayoutParams(localLayoutParams);
         }
-        if (AppSetting.d)
+        if (AppSetting.e)
         {
-          paramView.setContentDescription(this.a.getString(2131690858));
-          AssociatedAccountManageActivity.access$800(this.a).setContentDescription(this.a.getString(2131720100));
+          paramView.setContentDescription(this.a.getString(2131887795));
+          AssociatedAccountManageActivity.access$800(this.a).setContentDescription(this.a.getString(2131917725));
         }
         if ((localObject1 instanceof ShaderAnimLayout)) {
           ((ShaderAnimLayout)localObject1).b();
@@ -96,7 +96,7 @@ class AssociatedAccountManageActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.4
  * JD-Core Version:    0.7.0.1
  */

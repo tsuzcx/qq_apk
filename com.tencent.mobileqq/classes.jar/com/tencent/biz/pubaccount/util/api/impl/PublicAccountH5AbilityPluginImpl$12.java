@@ -25,11 +25,11 @@ final class PublicAccountH5AbilityPluginImpl$12
     paramEIPCResult.append("getAppType is ");
     paramEIPCResult.append(i);
     QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.toString());
-    paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallJs;
+    paramEIPCResult = this.a;
     if (paramEIPCResult != null) {
       try
       {
-        paramEIPCResult.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
+        paramEIPCResult.a(this.b, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
         return;
       }
       catch (JSONException paramEIPCResult)
@@ -41,7 +41,7 @@ final class PublicAccountH5AbilityPluginImpl$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.12
  * JD-Core Version:    0.7.0.1
  */

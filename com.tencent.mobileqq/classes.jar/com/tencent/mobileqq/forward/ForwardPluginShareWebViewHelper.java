@@ -30,8 +30,8 @@ public class ForwardPluginShareWebViewHelper
 {
   public static oidb_cmd0xdc2.ReqBody a(SessionInfo paramSessionInfo, Bundle paramBundle)
   {
-    int i = paramSessionInfo.jdField_a_of_type_Int;
-    long l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    int i = paramSessionInfo.a;
+    long l = Long.parseLong(paramSessionInfo.b);
     paramSessionInfo = paramBundle.getString("title");
     Object localObject1 = paramBundle.getString("desc");
     String str1 = paramBundle.getString("detail_url");
@@ -79,8 +79,8 @@ public class ForwardPluginShareWebViewHelper
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       paramSessionInfo = (SessionInfo)localObject1;
-      if (((String)localObject1).contains(HardCodeUtil.a(2131704910))) {
-        paramSessionInfo = ((String)localObject1).replace(HardCodeUtil.a(2131704937), "");
+      if (((String)localObject1).contains(HardCodeUtil.a(2131902802))) {
+        paramSessionInfo = ((String)localObject1).replace(HardCodeUtil.a(2131902829), "");
       }
       ((oidb_cmd0xb77.RichMsgBody)localObject2).summary.set(paramSessionInfo);
     }
@@ -103,13 +103,13 @@ public class ForwardPluginShareWebViewHelper
   
   public static void a(@NonNull QQAppInterface paramQQAppInterface, @NonNull Activity paramActivity, @NonNull SessionInfo paramSessionInfo, @NonNull Intent paramIntent)
   {
-    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
-    localQQProgressDialog.c(2131694668);
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299920));
+    localQQProgressDialog.c(2131892360);
     localQQProgressDialog.show();
     String str = paramIntent.getStringExtra("share_comment_message");
     paramIntent = paramIntent.getExtras();
-    paramIntent.putInt("uintype", paramSessionInfo.jdField_a_of_type_Int);
-    paramIntent.putString("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramIntent.putInt("uintype", paramSessionInfo.a);
+    paramIntent.putString("uin", paramSessionInfo.b);
     paramIntent.putLong("req_share_id", 0L);
     paramIntent.putInt("req_type", 1);
     paramIntent = a(paramSessionInfo, paramIntent);
@@ -119,7 +119,7 @@ public class ForwardPluginShareWebViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareWebViewHelper
  * JD-Core Version:    0.7.0.1
  */

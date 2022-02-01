@@ -12,13 +12,13 @@ class PublicAccountListActivity$8
   
   public void onClick(View paramView)
   {
-    this.a.a.cancel();
+    this.a.t.cancel();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -62,7 +62,7 @@ public class PokeAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839140;
+    return 2130839296;
   }
   
   public int getAppID()
@@ -91,12 +91,12 @@ public class PokeAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698547);
+    return BaseApplicationImpl.getContext().getString(2131896493);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     SharedPreferences localSharedPreferences = localQQAppInterface.getApp().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0);
     if (a(localQQAppInterface, localSharedPreferences))
     {
@@ -104,9 +104,9 @@ public class PokeAppInfo
       localSharedPreferences.edit().putBoolean("chat_tool_poke_clicked", true).apply();
       paramPlusPanelViewModel.b(paramBaseChatPie);
     }
-    paramPlusPanelViewModel = (PokeAndEmoPanelProvider)paramBaseChatPie.a().a(23);
+    paramPlusPanelViewModel = (PokeAndEmoPanelProvider)paramBaseChatPie.bq().f(23);
     if (paramPlusPanelViewModel != null) {
-      paramPlusPanelViewModel.a();
+      paramPlusPanelViewModel.b();
     }
     ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8007F21", "0X8007F21", 0, 0, "", "", "", "");
     if ((paramBaseChatPie instanceof BusinessCmrTmpChatPie)) {
@@ -116,7 +116,7 @@ public class PokeAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.PokeAppInfo
  * JD-Core Version:    0.7.0.1
  */

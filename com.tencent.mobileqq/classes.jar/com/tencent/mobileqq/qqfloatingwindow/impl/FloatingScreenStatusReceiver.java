@@ -11,15 +11,15 @@ import mqq.app.MobileQQ;
 public class FloatingScreenStatusReceiver
   extends BroadcastReceiver
 {
-  private static int jdField_a_of_type_Int = MobileQQ.sProcessId;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IWindowStatusListener jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b;
+  private static int c = MobileQQ.sProcessId;
+  private Context a;
+  private boolean b = false;
+  private IWindowStatusListener d;
+  private int e;
   
   public FloatingScreenStatusReceiver(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     paramContext = new IntentFilter();
     paramContext.addAction("tencent.mobileqq.floatingscreen.statuschange");
     paramContext.addAction("mqq.intent.action.QQ_BACKGROUND");
@@ -30,23 +30,23 @@ public class FloatingScreenStatusReceiver
     paramContext.addAction("mqq.intent.action.FORCE_LOGOUT");
     paramContext.addAction("mqq.intent.action.LOGOUT");
     paramContext.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentContext.getApplicationContext().registerReceiver(this, paramContext);
+    this.a.getApplicationContext().registerReceiver(this, paramContext);
   }
   
   private boolean a(int paramInt)
   {
-    return (paramInt == -1) || (paramInt == this.b);
+    return (paramInt == -1) || (paramInt == this.e);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unregisterReceiver(this);
+    this.a.getApplicationContext().unregisterReceiver(this);
   }
   
   public void a(int paramInt, IWindowStatusListener paramIWindowStatusListener)
   {
-    this.b = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener = paramIWindowStatusListener;
+    this.e = paramInt;
+    this.d = paramIWindowStatusListener;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -67,19 +67,19 @@ public class FloatingScreenStatusReceiver
         if (!a(i))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("FSReceiver", 2, new Object[] { "type not available, concern:", Integer.valueOf(i), " ,curr:", Integer.valueOf(this.b) });
+            QLog.d("FSReceiver", 2, new Object[] { "type not available, concern:", Integer.valueOf(i), " ,curr:", Integer.valueOf(this.e) });
           }
           return;
         }
         i = paramIntent.getIntExtra("param_curr_window_status", 0);
         int j = paramIntent.getIntExtra("param_busitype", -1);
         if (QLog.isColorLevel()) {
-          QLog.d("FSReceiver", 2, new Object[] { "busiType:", Integer.valueOf(j), " ,status:", Integer.valueOf(i), " ,hide:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+          QLog.d("FSReceiver", 2, new Object[] { "busiType:", Integer.valueOf(j), " ,status:", Integer.valueOf(i), " ,hide:", Boolean.valueOf(this.b) });
         }
         if (paramIntent.hasExtra("param_ignored_processid"))
         {
           j = paramIntent.getIntExtra("param_ignored_processid", -1);
-          if (jdField_a_of_type_Int == j) {
+          if (c == j) {
             return;
           }
         }
@@ -88,25 +88,25 @@ public class FloatingScreenStatusReceiver
         default: 
           return;
         case 104: 
-          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
+          this.d.c();
           return;
         case 103: 
-          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(true);
-          this.jdField_a_of_type_Boolean = false;
+          this.d.a(true);
+          this.b = false;
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
-        this.jdField_a_of_type_Boolean = true;
+        this.d.b();
+        this.b = true;
         return;
       }
       if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a();
+        this.d.a();
         return;
       }
       if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
+        this.d.b();
         return;
       }
       if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
@@ -115,8 +115,8 @@ public class FloatingScreenStatusReceiver
         if ((paramContext == null) || (!paramContext.contains("openSdk"))) {
           i = 0;
         }
-        if ((i == 0) && (!this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(false);
+        if ((i == 0) && (!this.b)) {
+          this.d.a(false);
         }
       }
       else if (("mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_KICKED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramIntent.getAction())) || ("mqq.intent.action.FORCE_LOGOUT".equals(paramIntent.getAction())) || ("mqq.intent.action.LOGOUT".equals(paramIntent.getAction())))
@@ -131,14 +131,14 @@ public class FloatingScreenStatusReceiver
           paramContext.append(paramIntent.getAction());
           QLog.d("FSReceiver", 2, paramContext.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
+        this.d.c();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class SearchBaseFragment$ItemViewHolder
 {
-  public int a;
-  public AccountSearchPb.record a;
   public ImageView a;
-  public TextView a;
-  public RichStatus a;
-  public String a;
-  public boolean a = true;
-  public int b;
   public TextView b;
-  public String b;
-  public int c;
   public TextView c;
   public TextView d;
+  public TextView e;
+  public String f;
+  public String g;
+  public boolean h = true;
+  public int i;
+  public int j;
+  public AccountSearchPb.record k;
+  public RichStatus l;
+  public int m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

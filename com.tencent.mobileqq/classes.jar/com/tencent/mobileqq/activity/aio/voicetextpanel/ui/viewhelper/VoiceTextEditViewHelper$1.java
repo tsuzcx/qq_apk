@@ -14,12 +14,12 @@ class VoiceTextEditViewHelper$1
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().f())
+    if (this.a.c.c().f())
     {
       paramEditable = paramEditable.toString();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(paramEditable);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextUserOpListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextUserOpListener.a(paramEditable);
+      this.a.c.d().a(paramEditable);
+      if (this.a.d != null) {
+        this.a.d.a(paramEditable);
       }
     }
   }
@@ -30,7 +30,7 @@ class VoiceTextEditViewHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextEditViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

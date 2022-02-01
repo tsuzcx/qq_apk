@@ -17,20 +17,20 @@ class StoryDetailPresenter$CommentListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if ((paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (!paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
+    if ((paramGetFeedCommentEvent.e.equals(StoryDetailPresenter.f(paramStoryDetailPresenter))) && (!paramGetFeedCommentEvent.g.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
       SLog.a(this.TAG, "receive comment list event. %s.", paramGetFeedCommentEvent.toString());
-      boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
+      boolean bool2 = StoryDetailPresenter.g(paramStoryDetailPresenter);
       boolean bool1 = true;
-      if (paramGetFeedCommentEvent.jdField_a_of_type_Int == 0) {
+      if (paramGetFeedCommentEvent.f == 0) {
         bool1 = false;
       }
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.b);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.jdField_a_of_type_Boolean);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.c, bool1);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).g(bool1);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.i);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.a);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetFeedCommentEvent.k, paramGetFeedCommentEvent.c, bool1);
       if (bool2 == bool1) {
-        paramStoryDetailPresenter.b(paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+        paramStoryDetailPresenter.b(paramGetFeedCommentEvent.g.isSuccess());
       }
       return;
     }

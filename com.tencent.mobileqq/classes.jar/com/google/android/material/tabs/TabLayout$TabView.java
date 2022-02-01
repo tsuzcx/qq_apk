@@ -45,30 +45,30 @@ import com.google.android.material.ripple.RippleUtils;
 public final class TabLayout$TabView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2;
+  private TabLayout.Tab b;
+  private TextView c;
+  private ImageView d;
   @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View e;
   @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private BadgeDrawable f;
   @Nullable
-  private BadgeDrawable jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
-  private TabLayout.Tab jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
+  private View g;
   @Nullable
-  private View jdField_b_of_type_AndroidViewView;
+  private TextView h;
   @Nullable
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private ImageView i;
   @Nullable
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private Drawable j;
+  private int k = 2;
   
   public TabLayout$TabView(TabLayout paramTabLayout, @NonNull Context paramContext)
   {
     super(paramContext);
     a(paramContext);
-    ViewCompat.setPaddingRelative(this, paramTabLayout.jdField_a_of_type_Int, paramTabLayout.jdField_b_of_type_Int, paramTabLayout.jdField_c_of_type_Int, paramTabLayout.d);
+    ViewCompat.setPaddingRelative(this, paramTabLayout.b, paramTabLayout.c, paramTabLayout.d, paramTabLayout.e);
     setGravity(17);
-    setOrientation(paramTabLayout.jdField_a_of_type_Boolean ^ true);
+    setOrientation(paramTabLayout.t ^ true);
     setClickable(true);
     ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), 1002));
   }
@@ -78,57 +78,35 @@ public final class TabLayout$TabView
     return paramLayout.getLineWidth(paramInt) * (paramFloat / paramLayout.getPaint().getTextSize());
   }
   
-  @NonNull
-  private FrameLayout a()
-  {
-    FrameLayout localFrameLayout = new FrameLayout(getContext());
-    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
-    return localFrameLayout;
-  }
-  
-  @Nullable
-  private FrameLayout a(@NonNull View paramView)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    FrameLayout localFrameLayout = null;
-    if ((paramView != localImageView) && (paramView != this.jdField_a_of_type_AndroidWidgetTextView)) {
-      return null;
-    }
-    if (BadgeUtils.jdField_a_of_type_Boolean) {
-      localFrameLayout = (FrameLayout)paramView.getParent();
-    }
-    return localFrameLayout;
-  }
-  
   private void a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.f != 0)
+    if (this.a.n != 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = AppCompatResources.getDrawable(paramContext, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.f);
-      paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      this.j = AppCompatResources.getDrawable(paramContext, this.a.n);
+      paramContext = this.j;
       if ((paramContext != null) && (paramContext.isStateful())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
+        this.j.setState(getDrawableState());
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      this.j = null;
     }
     GradientDrawable localGradientDrawable = new GradientDrawable();
     ((GradientDrawable)localGradientDrawable).setColor(0);
     paramContext = localGradientDrawable;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_c_of_type_AndroidContentResColorStateList != null)
+    if (this.a.i != null)
     {
       paramContext = new GradientDrawable();
       paramContext.setCornerRadius(1.0E-005F);
       paramContext.setColor(-1);
-      ColorStateList localColorStateList = RippleUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_c_of_type_AndroidContentResColorStateList);
+      ColorStateList localColorStateList = RippleUtils.a(this.a.i);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_c_of_type_Boolean) {
+        if (this.a.w) {
           localGradientDrawable = null;
         }
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_c_of_type_Boolean) {
+        if (this.a.w) {
           paramContext = null;
         }
         paramContext = new RippleDrawable(localColorStateList, localGradientDrawable, paramContext);
@@ -141,16 +119,16 @@ public final class TabLayout$TabView
       }
     }
     ViewCompat.setBackground(this, paramContext);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.invalidate();
+    this.a.invalidate();
   }
   
   private void a(@NonNull Canvas paramCanvas)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.j;
     if (localDrawable != null)
     {
       localDrawable.setBounds(getLeft(), getTop(), getRight(), getBottom());
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.j.draw(paramCanvas);
     }
   }
   
@@ -164,17 +142,17 @@ public final class TabLayout$TabView
   
   private void a(@Nullable TextView paramTextView, @Nullable ImageView paramImageView)
   {
-    Object localObject1 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
+    Object localObject1 = this.b;
     Object localObject2 = null;
     Drawable localDrawable;
-    if ((localObject1 != null) && (((TabLayout.Tab)localObject1).a() != null)) {
-      localDrawable = DrawableCompat.wrap(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab.a()).mutate();
+    if ((localObject1 != null) && (((TabLayout.Tab)localObject1).b() != null)) {
+      localDrawable = DrawableCompat.wrap(this.b.b()).mutate();
     } else {
       localDrawable = null;
     }
-    localObject1 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
+    localObject1 = this.b;
     if (localObject1 != null) {
-      localObject1 = ((TabLayout.Tab)localObject1).a();
+      localObject1 = ((TabLayout.Tab)localObject1).d();
     } else {
       localObject1 = null;
     }
@@ -196,7 +174,7 @@ public final class TabLayout$TabView
       if (bool)
       {
         paramTextView.setText((CharSequence)localObject1);
-        if (TabLayout.Tab.b(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab) == 1) {
+        if (TabLayout.Tab.d(this.b) == 1) {
           paramTextView.setVisibility(0);
         } else {
           paramTextView.setVisibility(8);
@@ -212,34 +190,34 @@ public final class TabLayout$TabView
     if (paramImageView != null)
     {
       paramTextView = (ViewGroup.MarginLayoutParams)paramImageView.getLayoutParams();
-      int i;
+      int m;
       if ((bool) && (paramImageView.getVisibility() == 0)) {
-        i = (int)ViewUtils.a(getContext(), 8);
+        m = (int)ViewUtils.a(getContext(), 8);
       } else {
-        i = 0;
+        m = 0;
       }
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_Boolean)
+      if (this.a.t)
       {
-        if (i != MarginLayoutParamsCompat.getMarginEnd(paramTextView))
+        if (m != MarginLayoutParamsCompat.getMarginEnd(paramTextView))
         {
-          MarginLayoutParamsCompat.setMarginEnd(paramTextView, i);
+          MarginLayoutParamsCompat.setMarginEnd(paramTextView, m);
           paramTextView.bottomMargin = 0;
           paramImageView.setLayoutParams(paramTextView);
           paramImageView.requestLayout();
         }
       }
-      else if (i != paramTextView.bottomMargin)
+      else if (m != paramTextView.bottomMargin)
       {
-        paramTextView.bottomMargin = i;
+        paramTextView.bottomMargin = m;
         MarginLayoutParamsCompat.setMarginEnd(paramTextView, 0);
         paramImageView.setLayoutParams(paramTextView);
         paramImageView.requestLayout();
       }
     }
-    paramImageView = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
+    paramImageView = this.b;
     paramTextView = localObject2;
     if (paramImageView != null) {
-      paramTextView = TabLayout.Tab.a(paramImageView);
+      paramTextView = TabLayout.Tab.b(paramImageView);
     }
     if (bool) {
       paramTextView = (TextView)localObject1;
@@ -259,238 +237,177 @@ public final class TabLayout$TabView
     }
   }
   
-  private boolean a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable != null;
-  }
-  
   private void b(@Nullable View paramView)
   {
-    if (!a()) {
+    if (!i()) {
       return;
     }
     if (paramView != null)
     {
       a(false);
-      BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, paramView, a(paramView));
-      this.jdField_a_of_type_AndroidViewView = paramView;
+      BadgeUtils.a(this.f, paramView, d(paramView));
+      this.e = paramView;
     }
   }
   
   private void c(@NonNull View paramView)
   {
-    if ((a()) && (paramView == this.jdField_a_of_type_AndroidViewView)) {
-      BadgeUtils.b(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, paramView, a(paramView));
+    if ((i()) && (paramView == this.e)) {
+      BadgeUtils.b(this.f, paramView, d(paramView));
     }
+  }
+  
+  @Nullable
+  private FrameLayout d(@NonNull View paramView)
+  {
+    ImageView localImageView = this.d;
+    FrameLayout localFrameLayout = null;
+    if ((paramView != localImageView) && (paramView != this.c)) {
+      return null;
+    }
+    if (BadgeUtils.a) {
+      localFrameLayout = (FrameLayout)paramView.getParent();
+    }
+    return localFrameLayout;
   }
   
   private void d()
   {
     Object localObject;
-    if (BadgeUtils.jdField_a_of_type_Boolean)
+    if (BadgeUtils.a)
     {
-      localObject = a();
+      localObject = f();
       addView((View)localObject, 0);
     }
     else
     {
       localObject = this;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)LayoutInflater.from(getContext()).inflate(R.layout.jdField_c_of_type_Int, (ViewGroup)localObject, false));
-    ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
+    this.d = ((ImageView)LayoutInflater.from(getContext()).inflate(R.layout.c, (ViewGroup)localObject, false));
+    ((ViewGroup)localObject).addView(this.d, 0);
   }
   
   private void e()
   {
     Object localObject;
-    if (BadgeUtils.jdField_a_of_type_Boolean)
+    if (BadgeUtils.a)
     {
-      localObject = a();
+      localObject = f();
       addView((View)localObject);
     }
     else
     {
       localObject = this;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(R.layout.d, (ViewGroup)localObject, false));
-    ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.c = ((TextView)LayoutInflater.from(getContext()).inflate(R.layout.d, (ViewGroup)localObject, false));
+    ((ViewGroup)localObject).addView(this.c);
   }
   
-  private void f()
+  @NonNull
+  private FrameLayout f()
   {
-    if (!a()) {
-      return;
-    }
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      g();
-      return;
-    }
-    Object localObject1;
-    Object localObject2;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      localObject1 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
-      if ((localObject1 != null) && (((TabLayout.Tab)localObject1).a() != null))
-      {
-        localObject1 = this.jdField_a_of_type_AndroidViewView;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetImageView;
-        if (localObject1 != localObject2)
-        {
-          g();
-          b(this.jdField_a_of_type_AndroidWidgetImageView);
-          return;
-        }
-        c((View)localObject2);
-        return;
-      }
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      localObject1 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
-      if ((localObject1 != null) && (((TabLayout.Tab)localObject1).b() == 1))
-      {
-        localObject1 = this.jdField_a_of_type_AndroidViewView;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject1 != localObject2)
-        {
-          g();
-          b(this.jdField_a_of_type_AndroidWidgetTextView);
-          return;
-        }
-        c((View)localObject2);
-        return;
-      }
-    }
-    g();
+    FrameLayout localFrameLayout = new FrameLayout(getContext());
+    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
+    return localFrameLayout;
   }
   
   private void g()
   {
-    if (!a()) {
+    if (!i()) {
+      return;
+    }
+    if (this.g != null)
+    {
+      h();
+      return;
+    }
+    Object localObject1;
+    Object localObject2;
+    if (this.d != null)
+    {
+      localObject1 = this.b;
+      if ((localObject1 != null) && (((TabLayout.Tab)localObject1).b() != null))
+      {
+        localObject1 = this.e;
+        localObject2 = this.d;
+        if (localObject1 != localObject2)
+        {
+          h();
+          b(this.d);
+          return;
+        }
+        c((View)localObject2);
+        return;
+      }
+    }
+    if (this.c != null)
+    {
+      localObject1 = this.b;
+      if ((localObject1 != null) && (((TabLayout.Tab)localObject1).e() == 1))
+      {
+        localObject1 = this.e;
+        localObject2 = this.c;
+        if (localObject1 != localObject2)
+        {
+          h();
+          b(this.c);
+          return;
+        }
+        c((View)localObject2);
+        return;
+      }
+    }
+    h();
+  }
+  
+  @Nullable
+  private BadgeDrawable getBadge()
+  {
+    return this.f;
+  }
+  
+  @NonNull
+  private BadgeDrawable getOrCreateBadge()
+  {
+    if (this.f == null) {
+      this.f = BadgeDrawable.a(getContext());
+    }
+    g();
+    BadgeDrawable localBadgeDrawable = this.f;
+    if (localBadgeDrawable != null) {
+      return localBadgeDrawable;
+    }
+    throw new IllegalStateException("Unable to create badge");
+  }
+  
+  private void h()
+  {
+    if (!i()) {
       return;
     }
     a(true);
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.e;
     if (localView != null)
     {
-      BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, localView);
-      this.jdField_a_of_type_AndroidViewView = null;
+      BadgeUtils.a(this.f, localView);
+      this.e = null;
     }
   }
   
-  int a()
+  private boolean i()
   {
-    View[] arrayOfView = new View[3];
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    int k = 0;
-    arrayOfView[0] = localObject;
-    arrayOfView[1] = this.jdField_a_of_type_AndroidWidgetImageView;
-    arrayOfView[2] = this.jdField_b_of_type_AndroidViewView;
-    int i3 = arrayOfView.length;
-    int m = 0;
-    int i = 0;
-    int n;
-    for (int j = 0; k < i3; j = n)
-    {
-      localObject = arrayOfView[k];
-      int i2 = m;
-      int i1 = i;
-      n = j;
-      if (localObject != null)
-      {
-        i2 = m;
-        i1 = i;
-        n = j;
-        if (((View)localObject).getVisibility() == 0)
-        {
-          if (j != 0) {
-            i = Math.min(i, ((View)localObject).getLeft());
-          } else {
-            i = ((View)localObject).getLeft();
-          }
-          if (j != 0) {
-            j = Math.max(m, ((View)localObject).getRight());
-          } else {
-            j = ((View)localObject).getRight();
-          }
-          n = 1;
-          i1 = i;
-          i2 = j;
-        }
-      }
-      k += 1;
-      m = i2;
-      i = i1;
-    }
-    return m - i;
+    return this.f != null;
   }
   
   void a()
   {
-    a(null);
+    setTab(null);
     setSelected(false);
-  }
-  
-  void a(@Nullable TabLayout.Tab paramTab)
-  {
-    if (paramTab != this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab)
-    {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab = paramTab;
-      b();
-    }
-  }
-  
-  int b()
-  {
-    View[] arrayOfView = new View[3];
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    int k = 0;
-    arrayOfView[0] = localObject;
-    arrayOfView[1] = this.jdField_a_of_type_AndroidWidgetImageView;
-    arrayOfView[2] = this.jdField_b_of_type_AndroidViewView;
-    int i3 = arrayOfView.length;
-    int m = 0;
-    int i = 0;
-    int n;
-    for (int j = 0; k < i3; j = n)
-    {
-      localObject = arrayOfView[k];
-      int i2 = m;
-      int i1 = i;
-      n = j;
-      if (localObject != null)
-      {
-        i2 = m;
-        i1 = i;
-        n = j;
-        if (((View)localObject).getVisibility() == 0)
-        {
-          if (j != 0) {
-            i = Math.min(i, ((View)localObject).getTop());
-          } else {
-            i = ((View)localObject).getTop();
-          }
-          if (j != 0) {
-            j = Math.max(m, ((View)localObject).getBottom());
-          } else {
-            j = ((View)localObject).getBottom();
-          }
-          n = 1;
-          i1 = i;
-          i2 = j;
-        }
-      }
-      k += 1;
-      m = i2;
-      i = i1;
-    }
-    return m - i;
   }
   
   final void b()
   {
-    TabLayout.Tab localTab = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab;
+    TabLayout.Tab localTab = this.b;
     Object localObject2 = null;
     Object localObject1;
     if (localTab != null) {
@@ -508,78 +425,78 @@ public final class TabLayout$TabView
         }
         addView((View)localObject1);
       }
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject1);
-      localObject3 = this.jdField_a_of_type_AndroidWidgetTextView;
+      this.g = ((View)localObject1);
+      localObject3 = this.c;
       if (localObject3 != null) {
         ((TextView)localObject3).setVisibility(8);
       }
-      localObject3 = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject3 = this.d;
       if (localObject3 != null)
       {
         ((ImageView)localObject3).setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        this.d.setImageDrawable(null);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(16908308));
-      localObject3 = this.jdField_b_of_type_AndroidWidgetTextView;
+      this.h = ((TextView)((View)localObject1).findViewById(16908308));
+      localObject3 = this.h;
       if (localObject3 != null) {
-        this.jdField_a_of_type_Int = TextViewCompat.getMaxLines((TextView)localObject3);
+        this.k = TextViewCompat.getMaxLines((TextView)localObject3);
       }
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(16908294));
+      this.i = ((ImageView)((View)localObject1).findViewById(16908294));
     }
     else
     {
-      localObject1 = this.jdField_b_of_type_AndroidViewView;
+      localObject1 = this.g;
       if (localObject1 != null)
       {
         removeView((View)localObject1);
-        this.jdField_b_of_type_AndroidViewView = null;
+        this.g = null;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = null;
-      this.jdField_b_of_type_AndroidWidgetImageView = null;
+      this.h = null;
+      this.i = null;
     }
-    if (this.jdField_b_of_type_AndroidViewView == null)
+    if (this.g == null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      if (this.d == null) {
         d();
       }
       localObject1 = localObject2;
       if (localTab != null)
       {
         localObject1 = localObject2;
-        if (localTab.a() != null) {
-          localObject1 = DrawableCompat.wrap(localTab.a()).mutate();
+        if (localTab.b() != null) {
+          localObject1 = DrawableCompat.wrap(localTab.b()).mutate();
         }
       }
       if (localObject1 != null)
       {
-        DrawableCompat.setTintList((Drawable)localObject1, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_b_of_type_AndroidContentResColorStateList);
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode != null) {
-          DrawableCompat.setTintMode((Drawable)localObject1, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+        DrawableCompat.setTintList((Drawable)localObject1, this.a.h);
+        if (this.a.k != null) {
+          DrawableCompat.setTintMode((Drawable)localObject1, this.a.k);
         }
       }
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+      if (this.c == null)
       {
         e();
-        this.jdField_a_of_type_Int = TextViewCompat.getMaxLines(this.jdField_a_of_type_AndroidWidgetTextView);
+        this.k = TextViewCompat.getMaxLines(this.c);
       }
-      TextViewCompat.setTextAppearance(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.e);
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_AndroidContentResColorStateList != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_AndroidContentResColorStateList);
+      TextViewCompat.setTextAppearance(this.c, this.a.f);
+      if (this.a.g != null) {
+        this.c.setTextColor(this.a.g);
       }
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetImageView);
-      f();
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-      a(this.jdField_a_of_type_AndroidWidgetTextView);
+      a(this.c, this.d);
+      g();
+      a(this.d);
+      a(this.c);
     }
-    else if ((this.jdField_b_of_type_AndroidWidgetTextView != null) || (this.jdField_b_of_type_AndroidWidgetImageView != null))
+    else if ((this.h != null) || (this.i != null))
     {
-      a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetImageView);
+      a(this.h, this.i);
     }
-    if ((localTab != null) && (!TextUtils.isEmpty(TabLayout.Tab.a(localTab)))) {
-      setContentDescription(TabLayout.Tab.a(localTab));
+    if ((localTab != null) && (!TextUtils.isEmpty(TabLayout.Tab.b(localTab)))) {
+      setContentDescription(TabLayout.Tab.b(localTab));
     }
     boolean bool;
-    if ((localTab != null) && (localTab.a())) {
+    if ((localTab != null) && (localTab.g())) {
       bool = true;
     } else {
       bool = false;
@@ -589,51 +506,151 @@ public final class TabLayout$TabView
   
   final void c()
   {
-    setOrientation(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_Boolean ^ true);
-    if ((this.jdField_b_of_type_AndroidWidgetTextView == null) && (this.jdField_b_of_type_AndroidWidgetImageView == null))
+    setOrientation(this.a.t ^ true);
+    if ((this.h == null) && (this.i == null))
     {
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetImageView);
+      a(this.c, this.d);
       return;
     }
-    a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetImageView);
+    a(this.h, this.i);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.j;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
       bool1 = bool2;
       if (localDrawable.isStateful()) {
-        bool1 = false | this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+        bool1 = false | this.j.setState(arrayOfInt);
       }
     }
     if (bool1)
     {
       invalidate();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.invalidate();
+      this.a.invalidate();
     }
+  }
+  
+  int getContentHeight()
+  {
+    View[] arrayOfView = new View[3];
+    Object localObject = this.c;
+    int i1 = 0;
+    arrayOfView[0] = localObject;
+    arrayOfView[1] = this.d;
+    arrayOfView[2] = this.g;
+    int i6 = arrayOfView.length;
+    int i2 = 0;
+    int m = 0;
+    int i3;
+    for (int n = 0; i1 < i6; n = i3)
+    {
+      localObject = arrayOfView[i1];
+      int i5 = i2;
+      int i4 = m;
+      i3 = n;
+      if (localObject != null)
+      {
+        i5 = i2;
+        i4 = m;
+        i3 = n;
+        if (((View)localObject).getVisibility() == 0)
+        {
+          if (n != 0) {
+            m = Math.min(m, ((View)localObject).getTop());
+          } else {
+            m = ((View)localObject).getTop();
+          }
+          if (n != 0) {
+            n = Math.max(i2, ((View)localObject).getBottom());
+          } else {
+            n = ((View)localObject).getBottom();
+          }
+          i3 = 1;
+          i4 = m;
+          i5 = n;
+        }
+      }
+      i1 += 1;
+      i2 = i5;
+      m = i4;
+    }
+    return i2 - m;
+  }
+  
+  int getContentWidth()
+  {
+    View[] arrayOfView = new View[3];
+    Object localObject = this.c;
+    int i1 = 0;
+    arrayOfView[0] = localObject;
+    arrayOfView[1] = this.d;
+    arrayOfView[2] = this.g;
+    int i6 = arrayOfView.length;
+    int i2 = 0;
+    int m = 0;
+    int i3;
+    for (int n = 0; i1 < i6; n = i3)
+    {
+      localObject = arrayOfView[i1];
+      int i5 = i2;
+      int i4 = m;
+      i3 = n;
+      if (localObject != null)
+      {
+        i5 = i2;
+        i4 = m;
+        i3 = n;
+        if (((View)localObject).getVisibility() == 0)
+        {
+          if (n != 0) {
+            m = Math.min(m, ((View)localObject).getLeft());
+          } else {
+            m = ((View)localObject).getLeft();
+          }
+          if (n != 0) {
+            n = Math.max(i2, ((View)localObject).getRight());
+          } else {
+            n = ((View)localObject).getRight();
+          }
+          i3 = 1;
+          i4 = m;
+          i5 = n;
+        }
+      }
+      i1 += 1;
+      i2 = i5;
+      m = i4;
+    }
+    return i2 - m;
+  }
+  
+  @Nullable
+  public TabLayout.Tab getTab()
+  {
+    return this.b;
   }
   
   public void onInitializeAccessibilityNodeInfo(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
+    Object localObject = this.f;
     if ((localObject != null) && (((BadgeDrawable)localObject).isVisible()))
     {
       localObject = getContentDescription();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localObject);
       localStringBuilder.append(", ");
-      localStringBuilder.append(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable.a());
+      localStringBuilder.append(this.f.g());
       paramAccessibilityNodeInfo.setContentDescription(localStringBuilder.toString());
     }
     paramAccessibilityNodeInfo = AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(0, 1, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab.a(), 1, false, isSelected()));
+    paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(0, 1, this.b.c(), 1, false, isSelected()));
     if (isSelected())
     {
       paramAccessibilityNodeInfo.setClickable(false);
@@ -644,28 +661,28 @@ public final class TabLayout$TabView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getSize(paramInt1);
-    int k = View.MeasureSpec.getMode(paramInt1);
-    int m = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.c();
-    int i = paramInt1;
-    if (m > 0) {
-      if (k != 0)
+    int n = View.MeasureSpec.getSize(paramInt1);
+    int i1 = View.MeasureSpec.getMode(paramInt1);
+    int i2 = this.a.getTabMaxWidth();
+    int m = paramInt1;
+    if (i2 > 0) {
+      if (i1 != 0)
       {
-        i = paramInt1;
-        if (j <= m) {}
+        m = paramInt1;
+        if (n <= i2) {}
       }
       else
       {
-        i = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.g, -2147483648);
+        m = View.MeasureSpec.makeMeasureSpec(this.a.o, -2147483648);
       }
     }
-    super.onMeasure(i, paramInt2);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    super.onMeasure(m, paramInt2);
+    if (this.c != null)
     {
-      float f2 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_a_of_type_Float;
-      j = this.jdField_a_of_type_Int;
-      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      k = 1;
+      float f2 = this.a.l;
+      n = this.k;
+      Object localObject = this.d;
+      i1 = 1;
       float f1;
       if ((localObject != null) && (((ImageView)localObject).getVisibility() == 0))
       {
@@ -674,52 +691,52 @@ public final class TabLayout$TabView
       }
       else
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        localObject = this.c;
         f1 = f2;
-        paramInt1 = j;
+        paramInt1 = n;
         if (localObject != null)
         {
           f1 = f2;
-          paramInt1 = j;
+          paramInt1 = n;
           if (((TextView)localObject).getLineCount() > 1)
           {
-            f1 = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.jdField_b_of_type_Float;
-            paramInt1 = j;
+            f1 = this.a.m;
+            paramInt1 = n;
           }
         }
       }
-      f2 = this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-      m = this.jdField_a_of_type_AndroidWidgetTextView.getLineCount();
-      j = TextViewCompat.getMaxLines(this.jdField_a_of_type_AndroidWidgetTextView);
-      if ((f1 != f2) || ((j >= 0) && (paramInt1 != j)))
+      f2 = this.c.getTextSize();
+      i2 = this.c.getLineCount();
+      n = TextViewCompat.getMaxLines(this.c);
+      if ((f1 != f2) || ((n >= 0) && (paramInt1 != n)))
       {
-        j = k;
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.k == 1)
+        n = i1;
+        if (this.a.s == 1)
         {
-          j = k;
+          n = i1;
           if (f1 > f2)
           {
-            j = k;
-            if (m == 1)
+            n = i1;
+            if (i2 == 1)
             {
-              localObject = this.jdField_a_of_type_AndroidWidgetTextView.getLayout();
+              localObject = this.c.getLayout();
               if (localObject != null)
               {
-                j = k;
+                n = i1;
                 if (a((Layout)localObject, 0, f1) <= getMeasuredWidth() - getPaddingLeft() - getPaddingRight()) {}
               }
               else
               {
-                j = 0;
+                n = 0;
               }
             }
           }
         }
-        if (j != 0)
+        if (n != 0)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f1);
-          this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(paramInt1);
-          super.onMeasure(i, paramInt2);
+          this.c.setTextSize(0, f1);
+          this.c.setMaxLines(paramInt1);
+          super.onMeasure(m, paramInt2);
         }
       }
     }
@@ -729,12 +746,12 @@ public final class TabLayout$TabView
   {
     boolean bool2 = super.performClick();
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab != null)
+    if (this.b != null)
     {
       if (!bool2) {
         playSoundEffect(0);
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$Tab.a();
+      this.b.f();
       bool1 = true;
     }
     return bool1;
@@ -742,33 +759,42 @@ public final class TabLayout$TabView
   
   public void setSelected(boolean paramBoolean)
   {
-    int i;
+    int m;
     if (isSelected() != paramBoolean) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
     super.setSelected(paramBoolean);
-    if ((i != 0) && (paramBoolean) && (Build.VERSION.SDK_INT < 16)) {
+    if ((m != 0) && (paramBoolean) && (Build.VERSION.SDK_INT < 16)) {
       sendAccessibilityEvent(4);
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setSelected(paramBoolean);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.d;
     if (localObject != null) {
       ((ImageView)localObject).setSelected(paramBoolean);
     }
-    localObject = this.jdField_b_of_type_AndroidViewView;
+    localObject = this.g;
     if (localObject != null) {
       ((View)localObject).setSelected(paramBoolean);
+    }
+  }
+  
+  void setTab(@Nullable TabLayout.Tab paramTab)
+  {
+    if (paramTab != this.b)
+    {
+      this.b = paramTab;
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.TabView
  * JD-Core Version:    0.7.0.1
  */

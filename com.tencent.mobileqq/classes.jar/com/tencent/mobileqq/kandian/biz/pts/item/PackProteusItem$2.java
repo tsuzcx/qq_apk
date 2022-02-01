@@ -18,12 +18,12 @@ class PackProteusItem$2
   
   public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.invalidateProteusTemplateBean();
-        paramTemplateBean = (AbsBaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        ((ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()).a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
+        this.b.invalidateProteusTemplateBean();
+        paramTemplateBean = (AbsBaseArticleInfo)this.a.get(paramInt);
+        ((ReadInJoyBaseAdapter)this.c.u()).y().b().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
         return;
       }
       catch (Exception paramViewBase)
@@ -39,13 +39,13 @@ class PackProteusItem$2
     paramViewBase.append("[onItemClick] position overflow, position = ");
     paramViewBase.append(paramInt);
     paramViewBase.append(", size = ");
-    paramViewBase.append(this.jdField_a_of_type_JavaUtilList.size());
+    paramViewBase.append(this.a.size());
     QLog.i("PackProteusItem", 1, paramViewBase.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PackProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

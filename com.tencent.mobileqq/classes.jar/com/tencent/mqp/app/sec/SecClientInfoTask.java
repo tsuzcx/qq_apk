@@ -5,17 +5,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class SecClientInfoTask
   implements Runnable
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 1L;
+  private static boolean c = false;
+  private static String d;
+  private int a = 1;
   private int b = 1;
+  private long e = 1L;
   
   public SecClientInfoTask(long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   private static byte[] b(int paramInt)
@@ -30,7 +30,7 @@ public class SecClientInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTask
  * JD-Core Version:    0.7.0.1
  */

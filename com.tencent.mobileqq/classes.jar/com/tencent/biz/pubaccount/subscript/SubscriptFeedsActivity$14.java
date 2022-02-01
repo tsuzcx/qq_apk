@@ -56,7 +56,7 @@ class SubscriptFeedsActivity$14
     case 1002: 
       try
       {
-        paramMessage = TroopBarAssistantManager.a().b(this.a.app);
+        paramMessage = TroopBarAssistantManager.a().i(this.a.app);
         this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
         return;
       }
@@ -71,7 +71,7 @@ class SubscriptFeedsActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14
  * JD-Core Version:    0.7.0.1
  */

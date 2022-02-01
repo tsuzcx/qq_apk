@@ -18,65 +18,92 @@ public class AIOFilePictureModel
 {
   public Drawable a(AIOFilePictureData paramAIOFilePictureData)
   {
-    File localFile1 = a(paramAIOFilePictureData, 18);
-    File localFile2 = a(paramAIOFilePictureData, 20);
+    File localFile1 = c(paramAIOFilePictureData, 18);
+    File localFile2 = c(paramAIOFilePictureData, 20);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
     localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     URLDrawable localURLDrawable = null;
-    if ((localFile1 != null) && (GlobalImageCache.a.get(a(paramAIOFilePictureData, 18)) != null))
+    if ((localFile1 != null) && (GlobalImageCache.a.get(b(paramAIOFilePictureData, 18)) != null))
     {
       if (URLDrawableHelper.a(localFile1.getAbsolutePath()) != 0) {
         return null;
       }
-      return URLDrawable.getDrawable(a(paramAIOFilePictureData, 18), localURLDrawableOptions);
+      return URLDrawable.getDrawable(b(paramAIOFilePictureData, 18), localURLDrawableOptions);
     }
-    if ((localFile2 != null) && (GlobalImageCache.a.get(a(paramAIOFilePictureData, 20)) != null))
+    if ((localFile2 != null) && (GlobalImageCache.a.get(b(paramAIOFilePictureData, 20)) != null))
     {
       if (URLDrawableHelper.a(localFile2.getAbsolutePath()) != 0) {
         return null;
       }
-      return URLDrawable.getDrawable(a(paramAIOFilePictureData, 20), localURLDrawableOptions);
+      return URLDrawable.getDrawable(b(paramAIOFilePictureData, 20), localURLDrawableOptions);
     }
-    if (a(paramAIOFilePictureData, 16) != null) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOFilePictureData, 16), localURLDrawableOptions);
+    if (c(paramAIOFilePictureData, 16) != null) {
+      localURLDrawable = URLDrawable.getDrawable(b(paramAIOFilePictureData, 16), localURLDrawableOptions);
     }
     return localURLDrawable;
   }
   
-  public File a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  public void a(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
   {
-    if (paramAIOFilePictureData == null) {
-      return null;
-    }
-    if (paramInt != 16)
+    if (paramAIOFilePictureData != null)
     {
-      if (paramInt != 18)
+      if (paramString == null) {
+        return;
+      }
+      if ("I:E".equals(paramString))
       {
-        if (paramInt != 20) {
-          paramAIOFilePictureData = null;
-        } else {
-          paramAIOFilePictureData = paramAIOFilePictureData.c;
+        if (paramInt != 16)
+        {
+          if (paramInt != 18)
+          {
+            if (paramInt != 20) {
+              return;
+            }
+            paramAIOFilePictureData.p = true;
+            return;
+          }
+          paramAIOFilePictureData.o = true;
+          return;
         }
+        paramAIOFilePictureData.q = true;
+        return;
       }
-      else {
-        paramAIOFilePictureData = paramAIOFilePictureData.b;
+      if (paramInt != 16)
+      {
+        if (paramInt != 18)
+        {
+          if (paramInt != 20) {
+            return;
+          }
+          paramAIOFilePictureData.m = paramString;
+          return;
+        }
+        paramAIOFilePictureData.l = paramString;
+        return;
       }
+      paramAIOFilePictureData.k = paramString;
     }
-    else {
-      paramAIOFilePictureData = paramAIOFilePictureData.a;
-    }
-    if ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
-    {
-      paramAIOFilePictureData = new File(paramAIOFilePictureData);
-      if (paramAIOFilePictureData.exists()) {
-        return paramAIOFilePictureData;
-      }
-    }
-    return null;
   }
   
-  public String a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  public void a(IBaseModelBuilder paramIBaseModelBuilder) {}
+  
+  public boolean a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  {
+    if (paramAIOFilePictureData == null) {
+      return false;
+    }
+    if (paramInt != 16)
+    {
+      if (paramInt != 18) {
+        return paramInt == 20;
+      }
+      return paramAIOFilePictureData.l.equals("I:N") ^ true;
+    }
+    return paramAIOFilePictureData.k.equals("I:N") ^ true;
+  }
+  
+  public String b(AIOFilePictureData paramAIOFilePictureData, int paramInt)
   {
     if (paramAIOFilePictureData == null) {
       return null;
@@ -88,15 +115,15 @@ public class AIOFilePictureModel
         if (paramInt != 20) {
           paramAIOFilePictureData = null;
         } else {
-          paramAIOFilePictureData = paramAIOFilePictureData.c;
+          paramAIOFilePictureData = paramAIOFilePictureData.m;
         }
       }
       else {
-        paramAIOFilePictureData = paramAIOFilePictureData.b;
+        paramAIOFilePictureData = paramAIOFilePictureData.l;
       }
     }
     else {
-      paramAIOFilePictureData = paramAIOFilePictureData.a;
+      paramAIOFilePictureData = paramAIOFilePictureData.k;
     }
     if ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
     {
@@ -120,65 +147,6 @@ public class AIOFilePictureModel
       return localStringBuilder.toString();
     }
     return null;
-  }
-  
-  public void a(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
-  {
-    if (paramAIOFilePictureData != null)
-    {
-      if (paramString == null) {
-        return;
-      }
-      if ("I:E".equals(paramString))
-      {
-        if (paramInt != 16)
-        {
-          if (paramInt != 18)
-          {
-            if (paramInt != 20) {
-              return;
-            }
-            paramAIOFilePictureData.e = true;
-            return;
-          }
-          paramAIOFilePictureData.d = true;
-          return;
-        }
-        paramAIOFilePictureData.f = true;
-        return;
-      }
-      if (paramInt != 16)
-      {
-        if (paramInt != 18)
-        {
-          if (paramInt != 20) {
-            return;
-          }
-          paramAIOFilePictureData.c = paramString;
-          return;
-        }
-        paramAIOFilePictureData.b = paramString;
-        return;
-      }
-      paramAIOFilePictureData.a = paramString;
-    }
-  }
-  
-  public void a(IBaseModelBuilder paramIBaseModelBuilder) {}
-  
-  public boolean a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
-  {
-    if (paramAIOFilePictureData == null) {
-      return false;
-    }
-    if (paramInt != 16)
-    {
-      if (paramInt != 18) {
-        return paramInt == 20;
-      }
-      return paramAIOFilePictureData.b.equals("I:N") ^ true;
-    }
-    return paramAIOFilePictureData.a.equals("I:N") ^ true;
   }
   
   public void b(AIOFilePictureData paramAIOFilePictureData, int paramInt, String paramString)
@@ -222,17 +190,49 @@ public class AIOFilePictureModel
     if (paramInt == 18)
     {
       if ((localObject != null) && (((String)localObject).equals("thumb_download"))) {
-        paramAIOFilePictureData.g = i;
+        paramAIOFilePictureData.z = i;
       }
     }
     else if ((paramInt == 16) && (localObject != null) && (((String)localObject).equals("thumb_download"))) {
-      paramAIOFilePictureData.g = i;
+      paramAIOFilePictureData.z = i;
     }
+  }
+  
+  public File c(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  {
+    if (paramAIOFilePictureData == null) {
+      return null;
+    }
+    if (paramInt != 16)
+    {
+      if (paramInt != 18)
+      {
+        if (paramInt != 20) {
+          paramAIOFilePictureData = null;
+        } else {
+          paramAIOFilePictureData = paramAIOFilePictureData.m;
+        }
+      }
+      else {
+        paramAIOFilePictureData = paramAIOFilePictureData.l;
+      }
+    }
+    else {
+      paramAIOFilePictureData = paramAIOFilePictureData.k;
+    }
+    if ((paramAIOFilePictureData != null) && (!paramAIOFilePictureData.equals("I:N")))
+    {
+      paramAIOFilePictureData = new File(paramAIOFilePictureData);
+      if (paramAIOFilePictureData.exists()) {
+        return paramAIOFilePictureData;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureModel
  * JD-Core Version:    0.7.0.1
  */

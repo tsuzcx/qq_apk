@@ -11,7 +11,6 @@ import com.tencent.imcore.message.BaseMessageManager;
 import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.MsgPool;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQSettingSettingActivity;
@@ -19,7 +18,6 @@ import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.AssistantSettingFragment;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ListUtils;
@@ -35,31 +33,18 @@ import mqq.manager.Manager;
 public class CustomizeGrayTipsManager
   implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
   private int b;
+  private String c;
+  private int d;
   
   public CustomizeGrayTipsManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     paramQQAppInterface = Integer.valueOf(0);
-    this.jdField_a_of_type_Int = ((Integer)SharedPreUtils.a("gray_tips_wording_id", paramQQAppInterface)).intValue();
-    this.jdField_a_of_type_JavaLangString = ((String)SharedPreUtils.a("add_guide_gray_tips_time", ""));
-    this.b = ((Integer)SharedPreUtils.a("add_guide_gray_tips_times", paramQQAppInterface)).intValue();
-  }
-  
-  private static int a(int paramInt)
-  {
-    int i = 1;
-    if (paramInt != 0)
-    {
-      if (paramInt != 1) {
-        return 10;
-      }
-      i = 2;
-    }
-    return i;
+    this.b = ((Integer)SharedPreUtils.c("gray_tips_wording_id", paramQQAppInterface)).intValue();
+    this.c = ((String)SharedPreUtils.c("add_guide_gray_tips_time", ""));
+    this.d = ((Integer)SharedPreUtils.c("add_guide_gray_tips_times", paramQQAppInterface)).intValue();
   }
   
   @NonNull
@@ -77,12 +62,12 @@ public class CustomizeGrayTipsManager
     ((StringBuilder)localObject).append(", shMsgSeq = ");
     ((StringBuilder)localObject).append(paramLong2);
     QLog.d("CustomizeGrayTipsManager", 1, ((StringBuilder)localObject).toString());
-    localObject = HardCodeUtil.a(2131691340);
+    localObject = HardCodeUtil.a(2131888295);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
-    localStringBuilder.append(HardCodeUtil.a(2131691339));
+    localStringBuilder.append(HardCodeUtil.a(2131888294));
     paramString1 = new UniteGrayTipParam(paramString1, paramString2, localStringBuilder.toString(), paramInt, -5020, 3, paramLong1);
-    paramString1.e = true;
+    paramString1.m = true;
     paramString2 = new Bundle();
     paramString2.putInt("key_action", 56);
     paramString1.a(0, ((String)localObject).length(), paramString2);
@@ -92,49 +77,9 @@ public class CustomizeGrayTipsManager
     return paramString2;
   }
   
-  @Nullable
-  private <T extends MessageRecord> MessageForUniteGrayTip a(@NonNull List<T> paramList)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      Object localObject = (MessageRecord)paramList.get(i);
-      if ((localObject instanceof MessageForUniteGrayTip))
-      {
-        localObject = (MessageForUniteGrayTip)localObject;
-        if (a((MessageForUniteGrayTip)localObject)) {
-          return localObject;
-        }
-      }
-      i -= 1;
-    }
-    return null;
-  }
-  
-  private String a()
-  {
-    Object localObject = Calendar.getInstance();
-    int i = ((Calendar)localObject).get(1);
-    int j = ((Calendar)localObject).get(2);
-    int k = ((Calendar)localObject).get(5);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(j + 1);
-    ((StringBuilder)localObject).append(k);
-    return ((StringBuilder)localObject).toString();
-  }
-  
-  private void a()
-  {
-    this.b += 1;
-    this.jdField_a_of_type_JavaLangString = a();
-    SharedPreUtils.a("add_guide_gray_tips_time", this.jdField_a_of_type_JavaLangString);
-    SharedPreUtils.a("add_guide_gray_tips_times", Integer.valueOf(this.b));
-  }
-  
   private void a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, List<MessageRecord> paramList, MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    a();
+    b();
     MessageForUniteGrayTip localMessageForUniteGrayTip = a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin, paramMessageForUniteGrayTip.senderuin, paramInt, paramMessageForUniteGrayTip.time, paramMessageForUniteGrayTip.shmsgseq);
     paramQQAppInterface.getMessageFacade().a(paramInt).a(paramInt, paramMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip, paramList);
     UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
@@ -152,11 +97,7 @@ public class CustomizeGrayTipsManager
     if (TextUtils.equals("1", paramString))
     {
       paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
-      if (SettingsConfigHelper.a(paramQQAppInterface)) {
-        PublicFragmentActivity.a(paramContext, new Intent(), AssistantSettingFragment.class);
-      } else {
-        paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
-      }
+      PublicFragmentActivity.a(paramContext, new Intent(), AssistantSettingFragment.class);
       paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=");
@@ -174,22 +115,22 @@ public class CustomizeGrayTipsManager
       localStringBuilder.append(paramString);
       paramQQAppInterface.putExtra("url", localStringBuilder.toString());
       paramContext.startActivity(paramQQAppInterface);
-      b();
+      d();
     }
   }
   
   private boolean a()
   {
     String str;
-    if ((this.jdField_a_of_type_Int == 0) && (this.b < 3)) {
-      str = a();
+    if ((this.b == 0) && (this.d < 3)) {
+      str = c();
     }
-    return !TextUtils.equals(this.jdField_a_of_type_JavaLangString, str);
+    return !TextUtils.equals(this.c, str);
   }
   
   private boolean a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    return (paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 1) && (!AnonymousChatHelper.a(paramMessageForUniteGrayTip)) && (TextUtils.equals(String.valueOf(0), paramMessageForUniteGrayTip.getExtInfoFromExtStr("revoke_op_type")));
+    return (paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.i == 1) && (!AnonymousChatHelper.c(paramMessageForUniteGrayTip)) && (TextUtils.equals(String.valueOf(0), paramMessageForUniteGrayTip.getExtInfoFromExtStr("revoke_op_type")));
   }
   
   private <T extends MessageRecord> boolean a(@NonNull List<T> paramList)
@@ -201,7 +142,7 @@ public class CustomizeGrayTipsManager
       if ((localObject instanceof MessageForUniteGrayTip))
       {
         localObject = ((MessageForUniteGrayTip)localObject).tipParam;
-        if ((localObject != null) && (((UniteGrayTipParam)localObject).b == 3)) {
+        if ((localObject != null) && (((UniteGrayTipParam)localObject).i == 3)) {
           return true;
         }
       }
@@ -209,24 +150,77 @@ public class CustomizeGrayTipsManager
     return false;
   }
   
-  private static void b()
+  @Nullable
+  private <T extends MessageRecord> MessageForUniteGrayTip b(@NonNull List<T> paramList)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800B25B", "0X800B25B", 0, 0, "", "", "", "");
+    int i = paramList.size() - 1;
+    while (i >= 0)
+    {
+      Object localObject = (MessageRecord)paramList.get(i);
+      if ((localObject instanceof MessageForUniteGrayTip))
+      {
+        localObject = (MessageForUniteGrayTip)localObject;
+        if (a((MessageForUniteGrayTip)localObject)) {
+          return localObject;
+        }
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    this.d += 1;
+    this.c = c();
+    SharedPreUtils.a("add_guide_gray_tips_time", this.c);
+    SharedPreUtils.a("add_guide_gray_tips_times", Integer.valueOf(this.d));
   }
   
   static void b(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800B1FC", "0X800B1FC", a(paramInt), 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B1FC", "0X800B1FC", d(paramInt), 0, "", "", "", "");
+  }
+  
+  private String c()
+  {
+    Object localObject = Calendar.getInstance();
+    int i = ((Calendar)localObject).get(1);
+    int j = ((Calendar)localObject).get(2);
+    int k = ((Calendar)localObject).get(5);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(j + 1);
+    ((StringBuilder)localObject).append(k);
+    return ((StringBuilder)localObject).toString();
   }
   
   private static void c(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800B25A", "0X800B25A", a(paramInt), 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800B25A", "0X800B25A", d(paramInt), 0, "", "", "", "");
+  }
+  
+  private static int d(int paramInt)
+  {
+    int i = 1;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return 10;
+      }
+      i = 2;
+    }
+    return i;
+  }
+  
+  private static void d()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B25B", "0X800B25B", 0, 0, "", "", "", "");
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     SharedPreUtils.a("gray_tips_wording_id", Integer.valueOf(paramInt));
     if (QLog.isColorLevel())
     {
@@ -246,11 +240,11 @@ public class CustomizeGrayTipsManager
       ((StringBuilder)localObject).append("insertGuideCustomizeGrayTipsIfNeed: uinType = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(", mGrayTipsWordingId = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(", mAddGuideGrayTipsTimes = ");
       ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(", mAddGuideGrayTipsTimes = ");
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(", mAddGuideGrayTipsDate = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c);
       QLog.d("CustomizeGrayTipsManager", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool1 = false;
@@ -268,7 +262,7 @@ public class CustomizeGrayTipsManager
     }
     else
     {
-      localObject = paramQQAppInterface.getMessageProxy(paramInt).e(paramString, paramInt);
+      localObject = paramQQAppInterface.getMessageProxy(paramInt).i(paramString, paramInt);
       paramString = paramQQAppInterface.getMessageProxy(paramInt).a().a(paramString, paramInt);
       paramString.lock();
     }
@@ -285,7 +279,7 @@ public class CustomizeGrayTipsManager
       }
       else
       {
-        MessageForUniteGrayTip localMessageForUniteGrayTip = a((List)localObject);
+        MessageForUniteGrayTip localMessageForUniteGrayTip = b((List)localObject);
         if (localMessageForUniteGrayTip == null)
         {
           bool1 = bool2;
@@ -322,7 +316,7 @@ public class CustomizeGrayTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.CustomizeGrayTipsManager
  * JD-Core Version:    0.7.0.1
  */

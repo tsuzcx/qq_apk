@@ -9,11 +9,11 @@ import org.json.JSONObject;
 public class TenDocOCRExportObserver
   implements BusinessObserver
 {
-  public WeakReference<Activity> a;
+  public WeakReference<Activity> b;
   
   public TenDocOCRExportObserver(Activity paramActivity)
   {
-    this.a = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramActivity);
   }
   
   public void a() {}
@@ -89,7 +89,7 @@ public class TenDocOCRExportObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class GetSimpleInfoCheckUpdateItem
   implements CheckUpdateItemInterface
 {
   public static String a = "GetSimpleInfoCheckUpdateItem";
-  private ToServiceMsg a;
+  private ToServiceMsg b;
   
   public GetSimpleInfoCheckUpdateItem(QQAppInterface paramQQAppInterface)
   {
@@ -30,14 +30,14 @@ public class GetSimpleInfoCheckUpdateItem
   public ReqItem a(int paramInt)
   {
     getFriendInfo(this.app.getAccount());
-    if (this.a != null)
+    if (this.b != null)
     {
-      Object localObject = this.app.mqqService.lookupCoder(this.a.getServiceCmd());
+      Object localObject = this.app.mqqService.lookupCoder(this.b.getServiceCmd());
       if (localObject != null)
       {
         UniPacket localUniPacket = new UniPacket(true);
         localUniPacket.setEncodeName("utf-8");
-        if (((BaseProtocolCoder)localObject).encodeReqMsg(this.a, localUniPacket))
+        if (((BaseProtocolCoder)localObject).encodeReqMsg(this.b, localUniPacket))
         {
           localObject = new ReqItem();
           ((ReqItem)localObject).eServiceID = 113;
@@ -56,18 +56,18 @@ public class GetSimpleInfoCheckUpdateItem
       FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetSimpleInfo");
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
-      this.app.receiveToService(this.a, localFromServiceMsg);
+      this.app.receiveToService(this.b, localFromServiceMsg);
     }
   }
   
   public void send(ToServiceMsg paramToServiceMsg)
   {
-    this.a = paramToServiceMsg;
+    this.b = paramToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem
  * JD-Core Version:    0.7.0.1
  */

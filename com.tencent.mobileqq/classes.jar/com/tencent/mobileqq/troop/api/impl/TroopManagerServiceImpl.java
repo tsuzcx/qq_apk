@@ -16,12 +16,12 @@ public class TroopManagerServiceImpl
   
   public void deleteTroop(String paramString)
   {
-    ((TroopManager)this.mAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+    ((TroopManager)this.mAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).d(paramString);
   }
   
   public byte[] getTroopAppListData(String paramString)
   {
-    return ((TroopInfoManager)this.mAppRuntime.getManager(QQManagerFactory.TROOPINFO_MANAGER)).a(paramString);
+    return ((TroopInfoManager)this.mAppRuntime.getManager(QQManagerFactory.TROOPINFO_MANAGER)).c(paramString);
   }
   
   public int getTroopMask(String paramString)
@@ -61,7 +61,7 @@ public class TroopManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

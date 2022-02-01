@@ -19,19 +19,19 @@ class GdtBannerViewWithRectangleStyle$1
     }
     else
     {
-      int j = GdtBannerViewWithRectangleStyle.a(this.a).getVisibility();
+      int j = GdtBannerViewWithRectangleStyle.b(this.a).getVisibility();
       int i = 8;
       if (j == 8) {
         i = 0;
       }
-      GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
+      GdtBannerViewWithRectangleStyle.b(this.a).setVisibility(i);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle.1
  * JD-Core Version:    0.7.0.1
  */

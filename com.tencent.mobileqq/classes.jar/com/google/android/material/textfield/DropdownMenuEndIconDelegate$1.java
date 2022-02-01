@@ -13,8 +13,8 @@ class DropdownMenuEndIconDelegate$1
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = DropdownMenuEndIconDelegate.a(this.a.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a());
-    if ((DropdownMenuEndIconDelegate.a(this.a).isTouchExplorationEnabled()) && (DropdownMenuEndIconDelegate.a(paramEditable)) && (!this.a.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.hasFocus())) {
+    paramEditable = DropdownMenuEndIconDelegate.a(this.a.a.getEditText());
+    if ((DropdownMenuEndIconDelegate.a(this.a).isTouchExplorationEnabled()) && (DropdownMenuEndIconDelegate.b(paramEditable)) && (!this.a.c.hasFocus())) {
       paramEditable.dismissDropDown();
     }
     paramEditable.post(new DropdownMenuEndIconDelegate.1.1(this, paramEditable));
@@ -22,7 +22,7 @@ class DropdownMenuEndIconDelegate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.1
  * JD-Core Version:    0.7.0.1
  */

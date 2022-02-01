@@ -12,18 +12,18 @@ class SubscribeShareHelper$4
   
   public void run()
   {
-    if ((SubscribeShareHelper.a(this.this$0) != null) && (SubscribeShareHelper.a(this.this$0).isShowing())) {
-      SubscribeShareHelper.a(this.this$0).dismiss();
+    if ((SubscribeShareHelper.i(this.this$0) != null) && (SubscribeShareHelper.i(this.this$0).isShowing())) {
+      SubscribeShareHelper.i(this.this$0).dismiss();
     }
     SubscribeShareHelper.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
+    Bitmap localBitmap = (Bitmap)this.a.remove("image");
     WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = SubscribeShareHelper.a(this.this$0);
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    String str3 = this.b;
-    String str4 = this.c;
+    String str1 = SubscribeShareHelper.j(this.this$0);
+    String str2 = this.b;
+    String str3 = this.c;
+    String str4 = this.d;
     int i;
-    if (this.jdField_a_of_type_Int == 9) {
+    if (this.e == 9) {
       i = 0;
     } else {
       i = 1;
@@ -33,7 +33,7 @@ class SubscribeShareHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

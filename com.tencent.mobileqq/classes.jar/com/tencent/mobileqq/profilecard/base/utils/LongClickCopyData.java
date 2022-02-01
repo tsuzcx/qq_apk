@@ -22,7 +22,7 @@ public class LongClickCopyData
       paramQQCustomMenu.a();
       Iterator localIterator = this.mDataList.iterator();
       while (localIterator.hasNext()) {
-        paramQQCustomMenu.a(2131365250, ((LongClickCopyData.CopyItem)localIterator.next()).mMenuTitle, 0);
+        paramQQCustomMenu.a(2131431418, ((LongClickCopyData.CopyItem)localIterator.next()).mMenuTitle, 0);
       }
     }
   }
@@ -47,7 +47,7 @@ public class LongClickCopyData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.utils.LongClickCopyData
  * JD-Core Version:    0.7.0.1
  */

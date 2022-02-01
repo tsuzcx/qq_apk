@@ -3,7 +3,7 @@ package com.tencent.aelight.camera.aeeditor.module.edit;
 import com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerPart.AEEditorTextDialogListener;
 import com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerViewModel;
 import com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 
 class AEEditorVideoEditFragment$18
   implements AEEditorStickerPart.AEEditorTextDialogListener
@@ -17,13 +17,13 @@ class AEEditorVideoEditFragment$18
   
   public void a(TextEditorData paramTextEditorData)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.b(paramTextEditorData);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.b(paramTextEditorData);
+    this.a.v.b(paramTextEditorData);
+    this.a.w.b(paramTextEditorData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.18
  * JD-Core Version:    0.7.0.1
  */

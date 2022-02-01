@@ -13,7 +13,7 @@ final class RIJTabFrameBase$requestUgcAccountCreate$1
   public final void a(int paramInt)
   {
     if (paramInt == 0) {
-      this.a.l();
+      this.a.s();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ugcAccountCreateResult result = ");
@@ -23,7 +23,7 @@ final class RIJTabFrameBase$requestUgcAccountCreate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.requestUgcAccountCreate.1
  * JD-Core Version:    0.7.0.1
  */

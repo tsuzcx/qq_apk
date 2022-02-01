@@ -14,7 +14,7 @@ import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyPageItemCache;
 import com.tencent.mobileqq.kandian.biz.feeds.ReadinjoyFixPosArticleManager;
-import com.tencent.mobileqq.kandian.biz.feeds.api.IRIJChannelStayTimeMonitor;
+import com.tencent.mobileqq.kandian.biz.feeds.api.impl.RIJChannelStayTimeMonitor;
 import com.tencent.mobileqq.kandian.biz.feeds.entity.SerializableMap;
 import com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface;
 import com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface;
@@ -36,7 +36,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
 import com.tencent.mobileqq.kandian.repo.report.BaseReportData;
 import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -53,57 +52,28 @@ public class ReadInJoyChannelWaterFallViewController
   extends ReadInJoyBaseViewController
   implements ReadInjoyXRecyclerView.RefreshCallback
 {
-  private long jdField_a_of_type_Long;
-  protected ReadInJoyPageItemCache a;
-  ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyChannelWaterFallViewController.InnerReadInJoyObserver(this, null);
-  private ArrayList<ChannelCoverInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  private int b;
-  protected boolean b;
-  private int c;
-  protected boolean c;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean = false;
-  private boolean e = false;
+  ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface a;
+  boolean i = false;
+  protected boolean j = false;
+  protected ReadInJoyPageItemCache k;
+  protected boolean l = false;
+  private int m;
+  private boolean n = false;
+  private long o;
+  private int p = 1;
+  private int q = -1;
+  private ReadInJoyObserver r = new ReadInJoyChannelWaterFallViewController.InnerReadInJoyObserver(this, null);
+  private ArrayList<ChannelCoverInfo> s = new ArrayList();
+  private boolean t = false;
   
   public ReadInJoyChannelWaterFallViewController(int paramInt1, int paramInt2, Activity paramActivity, ReadInJoyFragmentWithSubChannel.ReadInjoyViewInterface paramReadInjoyViewInterface)
   {
     super(paramActivity);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface = ((ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface)paramReadInjoyViewInterface);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache = new ReadInJoyPageItemCache();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.jdField_a_of_type_Long = ReadInJoyHelper.a(paramInt1, (QQAppInterface)RIJQQAppInterfaceUtil.a());
-  }
-  
-  private int a()
-  {
-    int i = this.jdField_d_of_type_Int;
-    if (i != -1) {
-      return i;
-    }
-    return a().getIntent().getIntExtra("channel_type", 0);
-  }
-  
-  private long a()
-  {
-    if ((d()) && (a().getIntent().getIntExtra("channel_from", -1) == 4))
-    {
-      Object localObject = (SerializableMap)a().getIntent().getSerializableExtra("channel_map_data");
-      if ((localObject != null) && (((SerializableMap)localObject).getMap() != null))
-      {
-        localObject = ((SerializableMap)localObject).getMap();
-        long l = ((Long)((Map)localObject).get("param_key_ariticle_id")).longValue();
-        if (((Integer)((Map)localObject).get("param_key_channel_cover_style")).intValue() == 1) {
-          return l;
-        }
-      }
-    }
-    return -1L;
+    this.q = paramInt2;
+    this.m = paramInt1;
+    this.a = ((ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface)paramReadInjoyViewInterface);
+    this.k = new ReadInJoyPageItemCache();
+    this.k.b = ReadInJoyHelper.a(paramInt1, (QQAppInterface)RIJQQAppInterfaceUtil.e());
   }
   
   private void a(List<AbsBaseArticleInfo> paramList)
@@ -129,56 +99,56 @@ public class ReadInJoyChannelWaterFallViewController
   {
     a(paramList);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a());
-    paramList = ReadinjoyFixPosArticleManager.getInstant().insertFixPosArticles(this.jdField_b_of_type_Int, paramList, localArrayList, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a(paramList);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a();
+    localArrayList.addAll(this.a.c());
+    paramList = ReadinjoyFixPosArticleManager.getInstant().insertFixPosArticles(this.m, paramList, localArrayList, paramInt);
+    this.a.a(paramList);
+    this.a.a();
   }
   
   private void a(boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.jdField_a_of_type_Long = System.currentTimeMillis();
-    ReadInJoyHelper.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.jdField_a_of_type_Long, (QQAppInterface)RIJQQAppInterfaceUtil.a());
-    Object localObject = (KandianMergeManager)((BaseActivity)a()).app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    long l = a();
-    localObject = (AbsBaseArticleInfo)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a(0);
-    int i;
-    if ((l != -1L) && (localObject != null) && (l != ((AbsBaseArticleInfo)localObject).mArticleID))
+    this.k.b = System.currentTimeMillis();
+    ReadInJoyHelper.a(this.m, this.k.b, (QQAppInterface)RIJQQAppInterfaceUtil.e());
+    Object localObject = (KandianMergeManager)((BaseActivity)cQ_()).app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+    long l1 = w();
+    localObject = (AbsBaseArticleInfo)this.a.a(0);
+    int i1;
+    if ((l1 != -1L) && (localObject != null) && (l1 != ((AbsBaseArticleInfo)localObject).mArticleID))
     {
       localObject = new ArrayList();
-      ((List)localObject).add(Long.valueOf(l));
-      i = 6;
+      ((List)localObject).add(Long.valueOf(l1));
+      i1 = 6;
     }
     else
     {
       localObject = null;
-      i = -1;
+      i1 = -1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a(paramBoolean1);
+    this.a.a(paramBoolean1);
     ArrayList localArrayList = new ArrayList();
-    ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, (List)localObject, i, true, false, this.jdField_c_of_type_Int, null, -1L, null, a(), 0L, 0L, null, paramInt1, false, null, 0, localArrayList);
-    this.jdField_c_of_type_Int += 1;
-    ReadinjoyReportUtils.a(paramInt1, this.jdField_b_of_type_Int, a(), paramBoolean2, paramInt2);
+    ReadInJoyLogicEngine.a().a(this.m, (List)localObject, i1, true, false, this.p, null, -1L, null, y(), 0L, 0L, null, paramInt1, false, null, 0, localArrayList);
+    this.p += 1;
+    ReadinjoyReportUtils.a(paramInt1, this.m, cQ_(), paramBoolean2, paramInt2);
   }
   
-  private boolean a(boolean paramBoolean)
+  private boolean b(boolean paramBoolean)
   {
-    paramBoolean = b();
+    paramBoolean = r();
     Object localObject1 = Boolean.valueOf(false);
     if (!paramBoolean) {
       return false;
     }
-    long l = System.currentTimeMillis();
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a();
-    boolean bool3 = ReadInJoyChannelViewPagerController.a(this.jdField_b_of_type_Int);
-    Object localObject2 = (KandianMergeManager)((BaseActivity)a()).app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+    long l1 = System.currentTimeMillis();
+    boolean bool2 = this.a.b();
+    boolean bool3 = ReadInJoyChannelViewPagerController.e(this.m);
+    Object localObject2 = (KandianMergeManager)((BaseActivity)cQ_()).app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
     boolean bool1;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.d > 300000L) {
+    if (System.currentTimeMillis() - this.k.g > 300000L) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    boolean bool4 = c();
+    boolean bool4 = u();
     if ((!bool2) && (!bool1) && (!bool4)) {
       paramBoolean = false;
     } else {
@@ -186,11 +156,11 @@ public class ReadInJoyChannelWaterFallViewController
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("ReadInJoyChannelWaterFallViewController_");
-    ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject2).append(this.m);
     QLog.d(((StringBuilder)localObject2).toString(), 1, String.format("loadFinishedRefresh forceRefresh=%s, isDBCacheEmpty=%s, isLastExitChannelOverTimeLimit=%s, hasChannelMap=%s, hasPushMsg=%s, needForceInsertFresh=%s, hasRed=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool4), localObject1, localObject1, localObject1 }));
-    if (a())
+    if (n())
     {
-      bool1 = ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).isLastExitChannelOverTimeLimit(this.jdField_b_of_type_Int);
+      bool1 = RIJChannelStayTimeMonitor.INSTANCE.isLastExitChannelOverTimeLimit(this.m);
       if ((!bool2) && (!bool1) && (!bool4) && (!bool3)) {
         paramBoolean = false;
       } else {
@@ -201,18 +171,18 @@ public class ReadInJoyChannelWaterFallViewController
     }
     else
     {
-      i = this.jdField_b_of_type_Int;
+      i1 = this.m;
       bool1 = paramBoolean;
-      if (i != 70)
+      if (i1 != 70)
       {
         bool1 = paramBoolean;
-        if (i != 56)
+        if (i1 != 56)
         {
           bool1 = paramBoolean;
-          if (i != 40677)
+          if (i1 != 40677)
           {
             bool1 = paramBoolean;
-            if (!DailyModeConfigHandler.c(i)) {
+            if (!DailyModeConfigHandler.c(i1)) {
               bool1 = true;
             }
           }
@@ -224,42 +194,56 @@ public class ReadInJoyChannelWaterFallViewController
       a(true, 2);
       return true;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache;
-    if (((ReadInJoyPageItemCache)localObject1).jdField_a_of_type_Long != 0L) {
-      l = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.jdField_a_of_type_Long;
+    localObject1 = this.k;
+    if (((ReadInJoyPageItemCache)localObject1).b != 0L) {
+      l1 = this.k.b;
     }
-    ((ReadInJoyPageItemCache)localObject1).jdField_a_of_type_Long = l;
-    int i = this.jdField_b_of_type_Int;
+    ((ReadInJoyPageItemCache)localObject1).b = l1;
+    int i1 = this.m;
     return false;
   }
   
-  private boolean b()
+  private boolean r()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.l;
   }
   
-  private boolean c()
+  private boolean u()
   {
     return false;
   }
   
-  private boolean d()
-  {
-    return this.jdField_b_of_type_Int != 0;
-  }
+  private void v() {}
   
-  private void o() {}
-  
-  public Set<Long> a(Integer paramInteger)
+  private long w()
   {
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localSet;
-    if (localSet == null)
+    if ((x()) && (cQ_().getIntent().getIntExtra("channel_from", -1) == 4))
     {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+      Object localObject = (SerializableMap)cQ_().getIntent().getSerializableExtra("channel_map_data");
+      if ((localObject != null) && (((SerializableMap)localObject).getMap() != null))
+      {
+        localObject = ((SerializableMap)localObject).getMap();
+        long l1 = ((Long)((Map)localObject).get("param_key_ariticle_id")).longValue();
+        if (((Integer)((Map)localObject).get("param_key_channel_cover_style")).intValue() == 1) {
+          return l1;
+        }
+      }
     }
-    return localObject;
+    return -1L;
+  }
+  
+  private boolean x()
+  {
+    return this.m != 0;
+  }
+  
+  private int y()
+  {
+    int i1 = this.q;
+    if (i1 != -1) {
+      return i1;
+    }
+    return cQ_().getIntent().getIntExtra("channel_type", 0);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -275,41 +259,41 @@ public class ReadInJoyChannelWaterFallViewController
     } else {
       bool = false;
     }
-    this.jdField_d_of_type_Boolean = bool;
-    int i;
-    if (this.jdField_b_of_type_Int == 40830)
+    this.n = bool;
+    int i1;
+    if (this.m == 40830)
     {
-      i = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = (i + 1);
+      i1 = this.p;
+      this.p = (i1 + 1);
     }
     else
     {
-      i = 1;
+      i1 = 1;
     }
-    ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, a(), paramInt, 0, i);
+    ReadInJoyLogicEngine.a().a(this.m, y(), paramInt, 0, i1);
     ThreadManager.executeOnSubThread(new ReadInJoyChannelWaterFallViewController.2(this));
   }
   
   public void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean)
   {
-    if (DailyModeConfigHandler.c(this.jdField_b_of_type_Int)) {
+    if (DailyModeConfigHandler.c(this.m)) {
       KandianDailyReportUtils.a(1);
     }
-    int i;
-    if ((RIJQQAppInterfaceUtil.a()) && (!d()) && (!paramBoolean)) {
-      i = 0;
+    int i1;
+    if ((RIJQQAppInterfaceUtil.g()) && (!x()) && (!paramBoolean)) {
+      i1 = 0;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    if (i != 0) {
-      i = 3;
+    if (i1 != 0) {
+      i1 = 3;
     } else {
-      i = 1001;
+      i1 = 1001;
     }
     if (!paramBoolean)
     {
       ReadInJoyLogicEngineEventDispatcher.a().a(2, null);
-      RIJTabFrameBase localRIJTabFrameBase = (RIJTabFrameBase)RIJJumpUtils.a(a());
+      RIJTabFrameBase localRIJTabFrameBase = (RIJTabFrameBase)RIJJumpUtils.a(cQ_());
       if (localRIJTabFrameBase != null) {
         localRIJTabFrameBase.b(1);
       }
@@ -318,37 +302,37 @@ public class ReadInJoyChannelWaterFallViewController
     else
     {
       ReadInJoyLogicEngineEventDispatcher.a().a(2, null);
-      i = 1;
+      i1 = 1;
     }
-    a(true, i, paramBoolean, -paramReadInjoyXRecyclerView.getScrollY());
+    a(true, i1, paramBoolean, -paramReadInjoyXRecyclerView.getScrollY());
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a(paramAbsBaseArticleInfo, paramInt);
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, -1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699885), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+    this.a.c();
+    this.a.a(paramAbsBaseArticleInfo, paramInt);
+    QQToast.makeText(this.b, -1, this.b.getString(2131897938), 0).show(((BaseActivity)this.b).getTitleBarHeight());
     if (ReadinjoyFixPosArticleManager.isFixPosArticleSeq(paramAbsBaseArticleInfo.mRecommendSeq))
     {
-      ReadinjoyFixPosArticleManager.getInstant().deleteFixPosArticle(this.jdField_b_of_type_Int, paramAbsBaseArticleInfo.mRecommendSeq);
+      ReadinjoyFixPosArticleManager.getInstant().deleteFixPosArticle(this.m, paramAbsBaseArticleInfo.mRecommendSeq);
       return;
     }
-    String str = RIJQQAppInterfaceUtil.a();
+    String str = RIJQQAppInterfaceUtil.d();
     DislikeInfo localDislikeInfo = new DislikeInfo();
-    localDislikeInfo.a = HardCodeUtil.a(2131712665);
-    localDislikeInfo.jdField_c_of_type_Int = 9;
-    localDislikeInfo.b = "";
+    localDislikeInfo.c = HardCodeUtil.a(2131910243);
+    localDislikeInfo.d = 9;
+    localDislikeInfo.f = "";
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localDislikeInfo);
     ReadInJoyLogicEngine.a().a(Long.valueOf(str).longValue(), BaseArticleInfoKt.a(paramAbsBaseArticleInfo, localArrayList));
-    ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, paramAbsBaseArticleInfo);
+    ReadInJoyLogicEngine.a().a(this.m, paramAbsBaseArticleInfo);
     if (paramInt == 0)
     {
-      paramAbsBaseArticleInfo = (KandianMergeManager)((QQAppInterface)RIJQQAppInterfaceUtil.a()).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.a().size() > 0) {
+      paramAbsBaseArticleInfo = (KandianMergeManager)((QQAppInterface)RIJQQAppInterfaceUtil.e()).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+      if (this.a.c().size() > 0) {
         return;
       }
-      ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, 20, 9223372036854775807L, true);
+      ReadInJoyLogicEngine.a().a(this.m, 20, 9223372036854775807L, true);
     }
   }
   
@@ -361,104 +345,109 @@ public class ReadInJoyChannelWaterFallViewController
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.j) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.c();
+    this.a.e();
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.b();
+      this.a.d();
     }
   }
   
-  public boolean a()
+  public void b()
   {
-    return a() instanceof SplashActivity;
+    if (this.i) {
+      return;
+    }
+    this.i = true;
+    super.b();
+    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.a;
+    if (localPicWaterFallViewInterface != null) {
+      localPicWaterFallViewInterface.a(c(Integer.valueOf(this.m)), d(Integer.valueOf(this.m)));
+    }
+    this.k.c = System.currentTimeMillis();
+    this.k.g = ReadInJoyHelper.b((QQAppInterface)RIJQQAppInterfaceUtil.e(), this.m);
+    m();
   }
   
-  public boolean a(Integer paramInteger)
+  public boolean b(Integer paramInteger)
   {
-    paramInteger = (Boolean)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
+    paramInteger = (Boolean)this.d.get(paramInteger);
     if (paramInteger != null) {
       return paramInteger.booleanValue();
     }
     return false;
   }
   
-  public void aw_()
+  public Set<Long> c(Integer paramInteger)
   {
-    super.aw_();
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(true));
-    b();
-  }
-  
-  public Map<Long, BaseReportData> b(Integer paramInteger)
-  {
-    Map localMap = (Map)this.jdField_c_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localMap;
-    if (localMap == null)
+    Set localSet = (Set)this.c.get(paramInteger);
+    Object localObject = localSet;
+    if (localSet == null)
     {
-      localObject = new ConcurrentHashMap();
-      this.jdField_c_of_type_JavaUtilMap.put(paramInteger, localObject);
+      localObject = new HashSet();
+      this.c.put(paramInteger, localObject);
     }
     return localObject;
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    super.b();
-    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface;
-    if (localPicWaterFallViewInterface != null) {
-      localPicWaterFallViewInterface.a(a(Integer.valueOf(this.jdField_b_of_type_Int)), b(Integer.valueOf(this.jdField_b_of_type_Int)));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.b = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyPageItemCache.d = ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.a(), this.jdField_b_of_type_Int);
-    j();
-  }
-  
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.i) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.i = false;
     super.c();
-    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface;
+    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.a;
     if (localPicWaterFallViewInterface != null) {
-      localPicWaterFallViewInterface.a(b(Integer.valueOf(this.jdField_b_of_type_Int)), a(Integer.valueOf(this.jdField_b_of_type_Int)));
+      localPicWaterFallViewInterface.a(d(Integer.valueOf(this.m)), b(Integer.valueOf(this.m)));
     }
   }
   
-  public void d()
+  public void cR_()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int));
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      ReadInJoyLogicEngine.a().c(this.jdField_b_of_type_Int);
+    if (this.a != null)
+    {
+      Map localMap1 = a(Integer.valueOf(this.m));
+      Map localMap2 = ReadinjoyReportUtils.a(this.m);
+      ThreadManager.executeOnSubThread(new ReadInJoyChannelWaterFallViewController.1(this, localMap1, b(Integer.valueOf(this.m)), localMap2, RIJKanDianFolderStatus.getFolderStatus(this.m)));
+      d(Integer.valueOf(this.m)).clear();
+      this.c.clear();
     }
-    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface.c(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void cT_()
+  {
+    super.cT_();
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.r);
+    this.d.put(Integer.valueOf(this.m), Boolean.valueOf(true));
+    b();
+  }
+  
+  public Map<Long, BaseReportData> d(Integer paramInteger)
+  {
+    Map localMap = (Map)this.e.get(paramInteger);
+    Object localObject = localMap;
+    if (localMap == null)
+    {
+      localObject = new ConcurrentHashMap();
+      this.e.put(paramInteger, localObject);
     }
-    ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int);
+    return localObject;
   }
   
   public void e()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface;
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.r);
+    ReadInJoyPicWaterFallFragment.PicWaterFallViewInterface localPicWaterFallViewInterface = this.a;
     if (localPicWaterFallViewInterface != null) {
-      localPicWaterFallViewInterface.a(b(Integer.valueOf(this.jdField_b_of_type_Int)), a(Integer.valueOf(this.jdField_b_of_type_Int)));
+      localPicWaterFallViewInterface.a(d(Integer.valueOf(this.m)), b(Integer.valueOf(this.m)));
     }
     super.e();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_c_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
-    this.jdField_d_of_type_JavaUtilMap.clear();
+    this.c.clear();
+    this.e.clear();
+    this.d.clear();
+    this.f.clear();
   }
   
   public void h()
@@ -469,40 +458,47 @@ public class ReadInJoyChannelWaterFallViewController
   public void i()
   {
     super.i();
-    this.jdField_c_of_type_Boolean = true;
-    j();
-  }
-  
-  public void j()
-  {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, 20, 9223372036854775807L, true);
-      this.jdField_b_of_type_Boolean = true;
-      return;
-    }
-    QLog.d("ReadInJoyChannelWaterFallViewController", 2, new Object[] { "has loaded article, mChannelID = ", Integer.valueOf(this.jdField_b_of_type_Int) });
+    this.l = true;
+    m();
   }
   
   public void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$PicWaterFallViewInterface != null)
-    {
-      Map localMap1 = a(Integer.valueOf(this.jdField_b_of_type_Int));
-      Map localMap2 = ReadinjoyReportUtils.a(this.jdField_b_of_type_Int);
-      ThreadManager.executeOnSubThread(new ReadInJoyChannelWaterFallViewController.1(this, localMap1, a(Integer.valueOf(this.jdField_b_of_type_Int)), localMap2, RIJKanDianFolderStatus.getFolderStatus(this.jdField_b_of_type_Int)));
-      b(Integer.valueOf(this.jdField_b_of_type_Int)).clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    this.s = ((ArrayList)ReadInJoyLogicEngine.a().c(this.m));
+    ArrayList localArrayList = this.s;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      ReadInJoyLogicEngine.a().e(this.m);
     }
+    localArrayList = this.s;
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      this.a.c(this.s);
+    }
+    ReadInJoyLogicEngine.a().a(this.m);
   }
   
-  public void l() {}
+  public void m()
+  {
+    if (!this.j)
+    {
+      ReadInJoyLogicEngine.a().a(this.m, 20, 9223372036854775807L, true);
+      this.j = true;
+      return;
+    }
+    QLog.d("ReadInJoyChannelWaterFallViewController", 2, new Object[] { "has loaded article, mChannelID = ", Integer.valueOf(this.m) });
+  }
   
-  public void n() {}
+  public boolean n()
+  {
+    return cQ_() instanceof SplashActivity;
+  }
+  
+  public void p() {}
+  
+  public void q() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelWaterFallViewController
  * JD-Core Version:    0.7.0.1
  */

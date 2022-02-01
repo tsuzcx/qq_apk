@@ -17,27 +17,24 @@ import com.tencent.qphone.base.util.QLog;
 public class QuickPinyinEditText
   extends EditText
 {
-  private static String jdField_a_of_type_JavaLangString;
-  public int a;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile String b = "";
+  private static String b;
+  public int a = 200;
+  private volatile boolean c = false;
+  private volatile String d = "";
   
   public QuickPinyinEditText(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 200;
   }
   
   public QuickPinyinEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 200;
   }
   
   public QuickPinyinEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 200;
   }
   
   private void a(String paramString)
@@ -51,10 +48,10 @@ public class QuickPinyinEditText
     }
     if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString.trim())))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
   }
   
   private void b(String paramString)
@@ -73,33 +70,21 @@ public class QuickPinyinEditText
     int i = getSelectionStart();
     int j = getSelectionEnd();
     Object localObject = getText();
-    if (((Editable)localObject).length() + paramString.length() > this.jdField_a_of_type_Int) {
+    if (((Editable)localObject).length() + paramString.length() > this.a) {
       return;
     }
     if (j > i)
     {
       ((Editable)localObject).replace(i, j, paramString);
       setSelection(i, paramString.length() + i);
-      jdField_a_of_type_JavaLangString = paramString;
+      b = paramString;
       return;
     }
     if ((j == i) && (j != -1))
     {
       ((Editable)localObject).insert(i, paramString);
       setSelection(i, paramString.length() + i);
-      jdField_a_of_type_JavaLangString = paramString;
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickPinyinEditText", 2, "notifyInputMethodSuggestCommit : ");
-    }
-    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b()))
-    {
-      ((InputMethodManager)BaseApplication.getContext().getSystemService("input_method")).sendAppPrivateCommand(this, "com.sohu.inputmethod.sogou.search.enter", null);
-      setSelection(getText().length());
+      b = paramString;
     }
   }
   
@@ -113,7 +98,7 @@ public class QuickPinyinEditText
       localStringBuilder.append(str);
       localStringBuilder.append("  isInputting=");
       boolean bool;
-      if ((str.startsWith(this.b)) && (!str.equals(this.b))) {
+      if ((str.startsWith(this.d)) && (!str.equals(this.d))) {
         bool = true;
       } else {
         bool = false;
@@ -121,13 +106,25 @@ public class QuickPinyinEditText
       localStringBuilder.append(bool);
       QLog.d("QuickPinyinEditText", 2, localStringBuilder.toString());
     }
-    if (b()) {
-      return this.jdField_a_of_type_Boolean;
+    if (c()) {
+      return this.c;
     }
     return false;
   }
   
-  public boolean b()
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickPinyinEditText", 2, "notifyInputMethodSuggestCommit : ");
+    }
+    if ((!TextUtils.isEmpty(b)) && (c()))
+    {
+      ((InputMethodManager)BaseApplication.getContext().getSystemService("input_method")).sendAppPrivateCommand(this, "com.sohu.inputmethod.sogou.search.enter", null);
+      setSelection(getText().length());
+    }
+  }
+  
+  public boolean c()
   {
     String str = Settings.Secure.getString(getContext().getContentResolver(), "default_input_method");
     return (str != null) && (str.contains("com.sohu.inputmethod.sogou"));
@@ -146,7 +143,7 @@ public class QuickPinyinEditText
     if (paramBundle != null)
     {
       String str = paramBundle.getString("req");
-      if (("com.sohu.inputmethod.sogou.send.input".equals(paramString)) && (b())) {
+      if (("com.sohu.inputmethod.sogou.send.input".equals(paramString)) && (c())) {
         b(str);
       } else {
         a(str);
@@ -160,13 +157,13 @@ public class QuickPinyinEditText
     if (QLog.isColorLevel()) {
       QLog.d("QuickPinyinEditText", 2, "onTouchEvent : ");
     }
-    a();
+    b();
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.QuickPinyinEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -16,31 +16,31 @@ class MessengerService$IncomingHandler$4
   public void a(ColorScreenConfig paramColorScreenConfig, Object paramObject)
   {
     paramObject = new Bundle();
-    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    paramObject.putInt("id", this.a);
     if (paramColorScreenConfig == null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i != 0)
       {
-        VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(i), null, null, 0.0F, 0.0F);
+        VasMonitorHandler.a(this.c, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(i), null, null, 0.0F, 0.0F);
         paramColorScreenConfig = new StringBuilder();
         paramColorScreenConfig.append("id:");
-        paramColorScreenConfig.append(this.jdField_a_of_type_Int);
+        paramColorScreenConfig.append(this.a);
         VasMonitorDT.a("individual_v2_colorscreen_set_fail", paramColorScreenConfig.toString());
         paramObject.putInt("result", 1);
         break label125;
       }
     }
     paramObject.putInt("result", 0);
-    this.jdField_a_of_type_ComTencentMobileqqVasSvipApiISVIPHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+    this.b.a(this.c.getCurrentAccountUin(), this.a);
     label125:
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.d.putBundle("response", paramObject);
+    this.e.a(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4
  * JD-Core Version:    0.7.0.1
  */

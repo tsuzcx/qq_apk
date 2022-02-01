@@ -23,19 +23,19 @@ class VideoPluginInstall$3
         return true;
       }
       VideoPluginInstall.a(this.a, false);
-      VideoPluginInstall.a(this.a).removeMessages(1);
-      if (VideoPluginInstall.a(this.a) != null)
+      VideoPluginInstall.b(this.a).removeMessages(1);
+      if (VideoPluginInstall.d(this.a) != null)
       {
-        VideoPluginInstall.a(this.a).a(false);
+        VideoPluginInstall.d(this.a).a(false);
         return true;
       }
     }
     else
     {
       VideoPluginInstall.a(this.a, false);
-      VideoPluginInstall.a(this.a).removeMessages(0);
-      if (VideoPluginInstall.a(this.a) != null) {
-        VideoPluginInstall.a(this.a).a(true);
+      VideoPluginInstall.b(this.a).removeMessages(0);
+      if (VideoPluginInstall.d(this.a) != null) {
+        VideoPluginInstall.d(this.a).a(true);
       }
     }
     return true;
@@ -43,7 +43,7 @@ class VideoPluginInstall$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.plugin.VideoPluginInstall.3
  * JD-Core Version:    0.7.0.1
  */

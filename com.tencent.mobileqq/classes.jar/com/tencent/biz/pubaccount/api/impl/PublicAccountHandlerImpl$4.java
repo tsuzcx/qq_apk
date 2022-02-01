@@ -16,18 +16,18 @@ class PublicAccountHandlerImpl$4
   {
     QLog.d("PublicAccountHandler", 1, "User requestPermissions denied...");
     ThreadManager.getSubThreadHandler().post(new PublicAccountHandlerImpl.4.1(this));
-    DialogUtil.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.b, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.d("PublicAccountHandler", 1, "User requestPermissions grant...");
-    PublicAccountHandlerImpl.access$400(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountHandlerImpl, this.jdField_a_of_type_Int);
+    PublicAccountHandlerImpl.access$400(this.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountHandlerImpl.4
  * JD-Core Version:    0.7.0.1
  */

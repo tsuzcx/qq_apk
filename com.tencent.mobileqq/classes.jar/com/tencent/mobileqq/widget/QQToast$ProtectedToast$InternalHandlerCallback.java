@@ -7,18 +7,18 @@ import android.os.Message;
 class QQToast$ProtectedToast$InternalHandlerCallback
   implements Handler.Callback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final Handler mHandler;
   
   public QQToast$ProtectedToast$InternalHandlerCallback(QQToast.ProtectedToast paramProtectedToast, Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.mHandler = paramHandler;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.handleMessage(paramMessage);
+      this.mHandler.handleMessage(paramMessage);
     }
     catch (Throwable paramMessage)
     {
@@ -29,7 +29,7 @@ class QQToast$ProtectedToast$InternalHandlerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ProtectedToast.InternalHandlerCallback
  * JD-Core Version:    0.7.0.1
  */

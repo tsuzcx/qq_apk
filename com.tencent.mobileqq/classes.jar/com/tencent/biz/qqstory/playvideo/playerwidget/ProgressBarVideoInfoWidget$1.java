@@ -15,25 +15,25 @@ class ProgressBarVideoInfoWidget$1
 {
   ProgressBarVideoInfoWidget$1(ProgressBarVideoInfoWidget paramProgressBarVideoInfoWidget) {}
   
-  public void d()
+  public void e()
   {
-    super.d();
-    if (LiuHaiUtils.c(this.a.b()))
+    super.e();
+    if (LiuHaiUtils.c(this.a.y()))
     {
-      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363750);
+      LinearLayout localLinearLayout = (LinearLayout)this.a.d().b.findViewById(2131429674);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
       localLayoutParams.height = ProgressBarVideoInfoWidget.a(this.a);
-      if (!ScreenUtil.checkDeviceHasNavigationBar(this.a.a.getContext())) {
+      if (!ScreenUtil.checkDeviceHasNavigationBar(this.a.b.getContext())) {
         localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
       }
       localLinearLayout.setLayoutParams(localLayoutParams);
     }
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
-    ProgressBarVideoInfoWidget.a(this.a).a();
+    super.h();
+    ProgressBarVideoInfoWidget.b(this.a).a();
   }
 }
 

@@ -15,28 +15,28 @@ class VideoController$12
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.c != null)
+    if (this.a.I != null)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvVideoController.c);
-      this.jdField_a_of_type_ComTencentAvVideoController.c = null;
+      this.a.e.a().removeCallbacks(this.a.I);
+      this.a.I = null;
     }
-    AVLog.printAllUserLog(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().z)
+    AVLog.printAllUserLog(VideoController.a, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.a.k().an)
     {
       if (paramMediaPlayer != null) {
         paramMediaPlayer.release();
       }
-      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().f;
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
-      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().e("OnCloseDoubleVideoMeetingListener", false);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().f("OnCloseDoubleVideoMeetingListener", false);
+      long l = this.a.k().aN;
+      this.a.e.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.a.a(3, l, 85);
+      this.a.k().e("OnCloseDoubleVideoMeetingListener", false);
+      this.a.k().f("OnCloseDoubleVideoMeetingListener", false);
     }
     else
     {
-      AVLog.printErrorLog(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+      AVLog.printErrorLog(VideoController.a, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
   }
 }
 

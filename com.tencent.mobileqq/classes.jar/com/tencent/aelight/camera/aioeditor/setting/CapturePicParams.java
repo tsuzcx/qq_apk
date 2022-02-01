@@ -4,76 +4,76 @@ import dov.com.qq.im.ae.current.SessionWrap;
 
 public class CapturePicParams
 {
-  public int a;
-  private SessionWrap jdField_a_of_type_DovComQqImAeCurrentSessionWrap;
-  private String jdField_a_of_type_JavaLangString;
   public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d;
+  public int b;
+  private SessionWrap c;
+  private String d;
   private int e;
   private int f;
+  private int g;
+  private boolean h;
+  private int i;
+  private String j;
+  private int k;
   
   private CapturePicParams(CapturePicParams.CapturePicParamsBuilder paramCapturePicParamsBuilder)
   {
-    this.jdField_a_of_type_DovComQqImAeCurrentSessionWrap = CapturePicParams.CapturePicParamsBuilder.a(paramCapturePicParamsBuilder);
-    this.jdField_a_of_type_JavaLangString = CapturePicParams.CapturePicParamsBuilder.a(paramCapturePicParamsBuilder);
-    this.jdField_b_of_type_Int = CapturePicParams.CapturePicParamsBuilder.a(paramCapturePicParamsBuilder);
-    this.c = CapturePicParams.CapturePicParamsBuilder.b(paramCapturePicParamsBuilder);
-    this.d = CapturePicParams.CapturePicParamsBuilder.c(paramCapturePicParamsBuilder);
-    this.jdField_b_of_type_Boolean = CapturePicParams.CapturePicParamsBuilder.a(paramCapturePicParamsBuilder);
-    this.e = CapturePicParams.CapturePicParamsBuilder.d(paramCapturePicParamsBuilder);
-    this.jdField_b_of_type_JavaLangString = CapturePicParams.CapturePicParamsBuilder.b(paramCapturePicParamsBuilder);
-    this.f = CapturePicParams.CapturePicParamsBuilder.e(paramCapturePicParamsBuilder);
-    this.jdField_a_of_type_Boolean = paramCapturePicParamsBuilder.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = paramCapturePicParamsBuilder.jdField_a_of_type_Int;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
+    this.c = CapturePicParams.CapturePicParamsBuilder.a(paramCapturePicParamsBuilder);
+    this.d = CapturePicParams.CapturePicParamsBuilder.b(paramCapturePicParamsBuilder);
+    this.e = CapturePicParams.CapturePicParamsBuilder.c(paramCapturePicParamsBuilder);
+    this.f = CapturePicParams.CapturePicParamsBuilder.d(paramCapturePicParamsBuilder);
+    this.g = CapturePicParams.CapturePicParamsBuilder.e(paramCapturePicParamsBuilder);
+    this.h = CapturePicParams.CapturePicParamsBuilder.f(paramCapturePicParamsBuilder);
+    this.i = CapturePicParams.CapturePicParamsBuilder.g(paramCapturePicParamsBuilder);
+    this.j = CapturePicParams.CapturePicParamsBuilder.h(paramCapturePicParamsBuilder);
+    this.k = CapturePicParams.CapturePicParamsBuilder.i(paramCapturePicParamsBuilder);
+    this.a = paramCapturePicParamsBuilder.a;
+    this.b = paramCapturePicParamsBuilder.b;
   }
   
   public SessionWrap a()
-  {
-    return this.jdField_a_of_type_DovComQqImAeCurrentSessionWrap;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
   {
     return this.c;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.d;
   }
   
   public int c()
   {
-    return this.d;
+    return this.e;
   }
   
   public int d()
   {
     return this.f;
   }
+  
+  public int e()
+  {
+    return this.g;
+  }
+  
+  public boolean f()
+  {
+    return this.h;
+  }
+  
+  public String g()
+  {
+    return this.j;
+  }
+  
+  public int h()
+  {
+    return this.k;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.setting.CapturePicParams
  * JD-Core Version:    0.7.0.1
  */

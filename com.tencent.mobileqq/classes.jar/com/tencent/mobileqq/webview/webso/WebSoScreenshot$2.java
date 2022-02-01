@@ -15,7 +15,7 @@ final class WebSoScreenshot$2
   {
     try
     {
-      View localView = ((Activity)this.a.getContext()).findViewById(2131370699);
+      View localView = ((Activity)this.a.getContext()).findViewById(2131437976);
       localView.animate().alpha(0.0F).setDuration(300L);
       localView.postDelayed(new WebSoScreenshot.2.1(this, localView), 300L);
       return;
@@ -28,7 +28,7 @@ final class WebSoScreenshot$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoScreenshot.2
  * JD-Core Version:    0.7.0.1
  */

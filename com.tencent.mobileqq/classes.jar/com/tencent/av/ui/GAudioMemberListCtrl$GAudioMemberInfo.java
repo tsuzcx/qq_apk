@@ -5,29 +5,19 @@ import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 final class GAudioMemberListCtrl$GAudioMemberInfo
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public long a = 0L;
+  public boolean b = false;
   public boolean c = false;
-  public boolean d = false;
-  public boolean e = true;
+  public String d = null;
+  public String e = null;
+  public Bitmap f = null;
+  public int g = 0;
+  public AVPhoneUserInfo h = null;
+  public boolean i = false;
+  public boolean j = false;
+  public boolean k = true;
   
-  private GAudioMemberListCtrl$GAudioMemberInfo(GAudioMemberListCtrl paramGAudioMemberListCtrl)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = null;
-  }
+  private GAudioMemberListCtrl$GAudioMemberInfo(GAudioMemberListCtrl paramGAudioMemberListCtrl) {}
 }
 
 

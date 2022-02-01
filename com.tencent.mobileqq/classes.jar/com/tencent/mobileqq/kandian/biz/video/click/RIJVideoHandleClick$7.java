@@ -19,13 +19,13 @@ class RIJVideoHandleClick$7
     if (localAbsBaseArticleInfo == null) {
       return;
     }
-    RIJVideoReportManager.a(localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a).a().a(), RIJVideoHandleClick.a(this.a).a().b());
-    VideoHandler.a(paramView);
+    RIJVideoReportManager.a(localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a).a().A(), RIJVideoHandleClick.b(this.a).a().B());
+    VideoHandler.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.7
  * JD-Core Version:    0.7.0.1
  */

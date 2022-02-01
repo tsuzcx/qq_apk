@@ -9,7 +9,7 @@ class FontManager$9
   
   public void run()
   {
-    if (FontManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComEtrumpMixlayoutFontInfo, this.jdField_a_of_type_Int)) {
+    if (FontManager.a(this.this$0, this.a, this.b, this.c)) {
       VasUtils.a(FontManager.a(this.this$0));
     }
   }

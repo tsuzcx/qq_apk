@@ -12,7 +12,7 @@ class VideoTrackContainerView$5
   
   public void onClick(View paramView)
   {
-    if (VideoTrackContainerView.a(this.a) == null) {
+    if (VideoTrackContainerView.f(this.a) == null) {
       return;
     }
     int i = VideoTrackContainerView.a(this.a, (ImageView)paramView);
@@ -20,12 +20,12 @@ class VideoTrackContainerView$5
       return;
     }
     VideoTrackContainerView.a(this.a, paramView);
-    VideoTrackContainerView.a(this.a).a(i);
+    VideoTrackContainerView.f(this.a).a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView.5
  * JD-Core Version:    0.7.0.1
  */

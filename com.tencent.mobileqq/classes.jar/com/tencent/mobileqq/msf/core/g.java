@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.a.c;
 import com.tencent.mobileqq.msf.core.a.c.a;
 import com.tencent.mobileqq.msf.core.quicksend.QuickSendStrategy;
-import com.tencent.mobileqq.msf.core.quicksend.f;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -26,41 +25,42 @@ public class g
   public static final String a = "send_mode";
   public static final int b = 0;
   public static final int c = 1;
-  public static final String d = "unknown";
-  public static final String e = "pcactive";
-  public static final String f = "quicksend";
-  public static final int g = 0;
-  public static final int h = -1;
-  public static final int i = 1;
-  public static final int j = 2;
-  public static final int k = 3;
-  public static final int l = 4;
-  public static final int m = 5;
-  public static final int n = 6;
-  public static final String o = "light_sender_type";
-  public static final int p = 0;
-  public static final int q = 1;
-  private static final String r = "LightSender";
-  private MsfCore s;
-  private LinkedBlockingQueue t = new LinkedBlockingQueue();
-  private ConcurrentLinkedQueue u = new ConcurrentLinkedQueue();
-  private long v = 0L;
-  private ThreadPoolExecutor w;
-  private int x = com.tencent.mobileqq.msf.core.a.a.ac();
+  public static final String d = "HttpTimeCost";
+  public static final String e = "unknown";
+  public static final String f = "pcactive";
+  public static final String g = "quicksend";
+  public static final int h = 0;
+  public static final int i = -1;
+  public static final int j = 1;
+  public static final int k = 2;
+  public static final int l = 3;
+  public static final int m = 4;
+  public static final int n = 5;
+  public static final int o = 6;
+  public static final String p = "light_sender_type";
+  public static final int q = 0;
+  public static final int r = 1;
+  private static final String s = "LightSender";
+  private int A = 60;
+  private MsfCore t;
+  private LinkedBlockingQueue u = new LinkedBlockingQueue();
+  private ConcurrentLinkedQueue v = new ConcurrentLinkedQueue();
+  private long w = 0L;
+  private ThreadPoolExecutor x;
   private int y = com.tencent.mobileqq.msf.core.a.a.ac();
-  private int z = 60;
+  private int z = com.tencent.mobileqq.msf.core.a.a.ac();
   
   public g(MsfCore paramMsfCore, Context paramContext)
   {
-    this.s = paramMsfCore;
+    this.t = paramMsfCore;
     CodecWarpper.nativeSetKsid(paramMsfCore.getAccountCenter().f());
     if (Build.VERSION.SDK_INT >= 9)
     {
-      this.w = new ThreadPoolExecutor(this.x, this.y, this.z, TimeUnit.SECONDS, this.t, new g.a("LightSender"));
-      this.w.allowCoreThreadTimeOut(true);
+      this.x = new ThreadPoolExecutor(this.y, this.z, this.A, TimeUnit.SECONDS, this.u, new g.a("LightSender"));
+      this.x.allowCoreThreadTimeOut(true);
       return;
     }
-    this.w = new ThreadPoolExecutor(1, 1, this.z, TimeUnit.SECONDS, this.t, new g.a("LightSender"));
+    this.x = new ThreadPoolExecutor(1, 1, this.A, TimeUnit.SECONDS, this.u, new g.a("LightSender"));
   }
   
   private FromServiceMsg a(FromServiceMsg paramFromServiceMsg)
@@ -118,40 +118,40 @@ public class g
     return paramCopyOnWriteArrayList;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, f paramf)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, com.tencent.mobileqq.msf.core.quicksend.g paramg)
   {
-    paramf.f = paramInt;
+    paramg.f = paramInt;
     if (paramFromServiceMsg == null)
     {
       FromServiceMsg localFromServiceMsg = o.a(paramToServiceMsg);
       if (localFromServiceMsg != null)
       {
         localFromServiceMsg.setBusinessFail(paramInt, paramString);
-        this.s.getSsoRespHandler().a(paramToServiceMsg, localFromServiceMsg);
+        this.t.getSsoRespHandler().a(paramToServiceMsg, localFromServiceMsg);
       }
     }
     else
     {
-      this.s.getSsoRespHandler().a(paramToServiceMsg, paramFromServiceMsg);
+      this.t.getSsoRespHandler().a(paramToServiceMsg, paramFromServiceMsg);
     }
-    com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+    com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, paramg);
   }
   
-  private boolean a(com.tencent.mobileqq.msf.core.net.b paramb, String paramString1, int paramInt, f paramf, String paramString2, boolean paramBoolean)
+  private boolean a(com.tencent.mobileqq.msf.core.net.b paramb, String paramString1, int paramInt, com.tencent.mobileqq.msf.core.quicksend.g paramg, String paramString2, boolean paramBoolean)
   {
     Object localObject1;
     if (NetConnInfoCenter.isWifiConn())
     {
       if (paramb.a())
       {
-        localObject1 = this.s.getSsoListManager().a(c.a.a("Quic", "Wifi", "Ipv4"), true);
+        localObject1 = this.t.getSsoListManager().a(c.a.a("Quic", "Wifi", "Ipv4"), true);
       }
       else
       {
-        localObject2 = this.s.getSsoListManager().a(c.a.a("Http", "Wifi", "Ipv4"), true);
-        CopyOnWriteArrayList localCopyOnWriteArrayList = this.s.getSsoListManager().a(c.a.a("Http", "Mobile", "Ipv4"), true);
+        localObject2 = this.t.getSsoListManager().a(c.a.a("Http", "Wifi", "Ipv4"), true);
+        CopyOnWriteArrayList localCopyOnWriteArrayList = this.t.getSsoListManager().a(c.a.a("Http", "Mobile", "Ipv4"), true);
         localObject1 = localObject2;
-        if (paramf.l)
+        if (paramg.l)
         {
           localObject1 = localObject2;
           if (localCopyOnWriteArrayList != null)
@@ -165,9 +165,9 @@ public class g
       }
     }
     else if (paramb.a()) {
-      localObject1 = this.s.getSsoListManager().a(c.a.a("Quic", "Mobile", "Ipv4"), true);
+      localObject1 = this.t.getSsoListManager().a(c.a.a("Quic", "Mobile", "Ipv4"), true);
     } else {
-      localObject1 = this.s.getSsoListManager().a(c.a.a("Http", "Mobile", "Ipv4"), true);
+      localObject1 = this.t.getSsoListManager().a(c.a.a("Http", "Mobile", "Ipv4"), true);
     }
     Object localObject2 = localObject1;
     if (paramBoolean) {
@@ -181,11 +181,11 @@ public class g
         localObject1 = (d)paramString2.next();
         paramb.a(((d)localObject1).g());
         long l1 = SystemClock.elapsedRealtime();
-        paramBoolean = paramb.a(((d)localObject1).c(), ((d)localObject1).f(), paramString1, paramf);
-        paramf.k += 1;
+        paramBoolean = paramb.a(((d)localObject1).c(), ((d)localObject1).f(), paramString1, paramg);
+        paramg.k += 1;
         if (paramBoolean)
         {
-          paramf.j = (SystemClock.elapsedRealtime() - l1);
+          paramg.j = (SystemClock.elapsedRealtime() - l1);
           return true;
         }
       }
@@ -204,7 +204,7 @@ public class g
   
   private boolean c()
   {
-    return this.t.size() + this.w.getActiveCount() >= this.y;
+    return this.u.size() + this.x.getActiveCount() >= this.z;
   }
   
   private void d(ToServiceMsg paramToServiceMsg)
@@ -221,7 +221,7 @@ public class g
         QLog.d("LightSender", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = new g.b(this, paramToServiceMsg);
-      this.w.submit((Runnable)localObject);
+      this.x.submit((Runnable)localObject);
       return;
     }
     catch (Exception localException)
@@ -264,9 +264,9 @@ public class g
         if (b1 == 0)
         {
           long l1 = System.currentTimeMillis();
-          if ((this.v == 0L) || (l1 - this.v > 60000L))
+          if ((this.w == 0L) || (l1 - this.w > 60000L))
           {
-            this.v = l1;
+            this.w = l1;
             try
             {
               NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
@@ -286,7 +286,7 @@ public class g
         }
         try
         {
-          byte[] arrayOfByte2 = ac.b(paramToServiceMsg, b2);
+          byte[] arrayOfByte2 = ad.b(paramToServiceMsg, b2);
         }
         catch (Exception localException)
         {
@@ -297,33 +297,33 @@ public class g
         {
           if (591 == CodecWarpper.getSharedObjectVersion())
           {
-            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
+            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
             paramToServiceMsg = arrayOfByte3;
           }
           else if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion()))
           {
-            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
+            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
             paramToServiceMsg = arrayOfByte3;
           }
           else
           {
-            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
+            arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
             paramToServiceMsg = arrayOfByte3;
           }
         }
         else if (591 == CodecWarpper.getSharedObjectVersion())
         {
-          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
+          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
           paramToServiceMsg = arrayOfByte3;
         }
         else if ((595 != CodecWarpper.getSharedObjectVersion()) && (600 != CodecWarpper.getSharedObjectVersion()))
         {
-          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
+          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
           paramToServiceMsg = arrayOfByte3;
         }
         else
         {
-          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.s.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
+          arrayOfByte3 = CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), o.d(), o.f(), o.g(), "", (String)localObject, null, paramToServiceMsg.getAppId(), this.t.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, arrayOfByte3, null, paramToServiceMsg.getWupBuffer(), true);
           paramToServiceMsg = arrayOfByte3;
         }
       }
@@ -347,9 +347,9 @@ public class g
   
   public void a()
   {
-    if (!this.t.isEmpty())
+    if (!this.u.isEmpty())
     {
-      Iterator localIterator = this.t.iterator();
+      Iterator localIterator = this.u.iterator();
       while (localIterator.hasNext())
       {
         g.b localb = (g.b)localIterator.next();
@@ -401,9 +401,9 @@ public class g
   
   public void b()
   {
-    if (!this.u.isEmpty())
+    if (!this.v.isEmpty())
     {
-      Iterator localIterator = this.u.iterator();
+      Iterator localIterator = this.v.iterator();
       while (localIterator.hasNext())
       {
         ToServiceMsg localToServiceMsg = (ToServiceMsg)localIterator.next();
@@ -416,7 +416,7 @@ public class g
   
   public void b(ToServiceMsg paramToServiceMsg)
   {
-    Iterator localIterator = this.u.iterator();
+    Iterator localIterator = this.v.iterator();
     while (localIterator.hasNext())
     {
       ToServiceMsg localToServiceMsg = (ToServiceMsg)localIterator.next();
@@ -433,7 +433,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.g
  * JD-Core Version:    0.7.0.1
  */

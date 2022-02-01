@@ -11,14 +11,14 @@ public class QavCtrlForGame
     super(paramContext, paramMultiOperatorImplForGame);
   }
   
-  public MultiOperatorImplForGame a()
-  {
-    return (MultiOperatorImplForGame)super.a();
-  }
-  
   protected boolean a()
   {
     return false;
+  }
+  
+  public MultiOperatorImplForGame b()
+  {
+    return (MultiOperatorImplForGame)super.c();
   }
 }
 

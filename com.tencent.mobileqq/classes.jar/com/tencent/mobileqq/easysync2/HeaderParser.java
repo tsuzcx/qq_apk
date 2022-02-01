@@ -2,18 +2,18 @@ package com.tencent.mobileqq.easysync2;
 
 public class HeaderParser
 {
-  int jdField_a_of_type_Int;
-  private char[] jdField_a_of_type_ArrayOfChar;
+  int a;
   int b;
   int c;
+  private char[] d;
   
-  private int a()
+  private int b()
   {
     int i = 0;
     for (;;)
     {
-      int j = this.jdField_a_of_type_Int;
-      char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+      int j = this.a;
+      char[] arrayOfChar = this.d;
       if (j + i >= arrayOfChar.length) {
         break;
       }
@@ -28,16 +28,16 @@ public class HeaderParser
   
   void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfChar = null;
+    this.a = 0;
+    this.d = null;
     this.b = 0;
     this.c = 0;
   }
   
   void a(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfChar = paramString.toCharArray();
-    Object localObject = this.jdField_a_of_type_ArrayOfChar;
+    this.d = paramString.toCharArray();
+    Object localObject = this.d;
     int j = localObject[0];
     int i = 1;
     if ((j != 90) && (localObject[1] != ':'))
@@ -47,16 +47,16 @@ public class HeaderParser
       ((StringBuilder)localObject).append(paramString);
       throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Int += 2;
-    j = a();
+    this.a += 2;
+    j = b();
     if (j > 0)
     {
-      int k = this.jdField_a_of_type_Int;
-      this.b = Changeset.a(paramString.substring(k, k + j));
-      this.jdField_a_of_type_Int += j;
-      localObject = this.jdField_a_of_type_ArrayOfChar;
-      j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (j + 1);
+      int k = this.a;
+      this.b = Changeset.b(paramString.substring(k, k + j));
+      this.a += j;
+      localObject = this.d;
+      j = this.a;
+      this.a = (j + 1);
       j = localObject[j];
       if ((j != 60) && (j != 62))
       {
@@ -68,12 +68,12 @@ public class HeaderParser
       if (62 != j) {
         i = -1;
       }
-      j = a();
+      j = b();
       if (j > 0)
       {
-        k = this.jdField_a_of_type_Int;
-        k = Changeset.a(paramString.substring(k, k + j));
-        this.jdField_a_of_type_Int += j;
+        k = this.a;
+        k = Changeset.b(paramString.substring(k, k + j));
+        this.a += j;
         this.c = (this.b + i * k);
         return;
       }
@@ -90,7 +90,7 @@ public class HeaderParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.HeaderParser
  * JD-Core Version:    0.7.0.1
  */

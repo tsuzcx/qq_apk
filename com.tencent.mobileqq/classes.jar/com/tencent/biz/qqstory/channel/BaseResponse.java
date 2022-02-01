@@ -7,26 +7,26 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class BaseResponse
 {
-  public int a;
-  public String b;
+  public int c;
+  public String d;
   
   public BaseResponse() {}
   
   public BaseResponse(int paramInt, String paramString)
   {
-    this.a = paramInt;
-    this.b = paramString;
+    this.c = paramInt;
+    this.d = paramString;
   }
   
   public BaseResponse(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    this.a = paramErrorInfo.error_code.get();
-    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
+    this.c = paramErrorInfo.error_code.get();
+    this.d = paramErrorInfo.error_desc.get().toStringUtf8();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.BaseResponse
  * JD-Core Version:    0.7.0.1
  */

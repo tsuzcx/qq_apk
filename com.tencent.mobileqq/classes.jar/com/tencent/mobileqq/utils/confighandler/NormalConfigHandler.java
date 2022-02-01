@@ -44,7 +44,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
     if ((this.mConfig == null) && (QQAudioHelper.b()))
     {
       QLog.w(this.TAG, 1, "getConfig, 配置还未初始化", new Throwable("打印调用栈"));
-      throw new IllegalArgumentException(HardCodeUtil.a(2131707604));
+      throw new IllegalArgumentException(HardCodeUtil.a(2131905419));
     }
     return this.mConfig;
   }
@@ -134,7 +134,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
       localObject2 = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("异步加载config[");
-      localStringBuilder.append(((ReadConfigTask)localObject1).TAG);
+      localStringBuilder.append(((ReadConfigTask)localObject1).mTAG);
       localStringBuilder.append("]");
       QLog.w((String)localObject2, 1, localStringBuilder.toString());
       localObject2 = new ArrayList();
@@ -145,7 +145,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
     paramAppInterface = this.TAG;
     paramGetConfigListen = new StringBuilder();
     paramGetConfigListen.append("异步加载config[");
-    paramGetConfigListen.append(((ReadConfigTask)localObject1).TAG);
+    paramGetConfigListen.append(((ReadConfigTask)localObject1).mTAG);
     paramGetConfigListen.append("], 已经在加载中");
     QLog.w(paramAppInterface, 1, paramGetConfigListen.toString());
     return localObject1;
@@ -153,7 +153,7 @@ public abstract class NormalConfigHandler<T extends ConfigInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.NormalConfigHandler
  * JD-Core Version:    0.7.0.1
  */

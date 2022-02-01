@@ -10,6 +10,7 @@ class LiteActivity$49
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    LiteActivity.b(this.a, false);
     this.a.finish();
   }
 }

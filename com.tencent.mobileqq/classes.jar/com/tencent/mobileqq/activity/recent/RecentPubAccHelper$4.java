@@ -19,25 +19,25 @@ class RecentPubAccHelper$4
     if (QLog.isColorLevel()) {
       QLog.d("RecentPubAccHelper", 2, "updateUnfollowInfo");
     }
-    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    Object localObject = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.a, this.b.getRecentUserUin());
+    Object localObject = (IPublicAccountDataManager)this.a.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null)
     {
-      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-      localObject = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.b.getRecentUserUin());
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.b.getRecentUserUin());
+      localObject = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.b.getRecentUserUin());
       if (localObject != null) {
-        RecentPubAccHelper.a(this.this$0, (IPublicAccountDetail)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        RecentPubAccHelper.a(this.this$0, (IPublicAccountDetail)localObject, this.a);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 1008);
-    RecentUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 1008);
-    PAStartupTracker.a(" pubAcc_follow_cancel", null, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
+    this.a.getMessageFacade().c(this.b.getRecentUserUin(), 1008);
+    RecentUtil.b(this.a, this.b.getRecentUserUin(), 1008);
+    PAStartupTracker.a(" pubAcc_follow_cancel", null, this.b.getRecentUserUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.4
  * JD-Core Version:    0.7.0.1
  */

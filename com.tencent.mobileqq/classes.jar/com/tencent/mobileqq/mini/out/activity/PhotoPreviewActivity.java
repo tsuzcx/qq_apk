@@ -51,7 +51,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561968);
+    setContentView(2131628394);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -145,18 +145,18 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131378995);
-    this.backBtn = ((TextView)findViewById(2131363346));
+    this.topBar = findViewById(2131447713);
+    this.backBtn = ((TextView)findViewById(2131429224));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131378784));
-    this.gallery = ((ProGallery)findViewById(2131367431));
+    this.titleView = ((TextView)findViewById(2131447463));
+    this.gallery = ((ProGallery)findViewById(2131433934));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297150));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297535));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }
@@ -174,7 +174,7 @@ public class PhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

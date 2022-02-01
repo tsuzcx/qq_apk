@@ -50,15 +50,15 @@ import tencent.im.oidb.cmd0x777.cmd0x777.RspBody;
 
 public class BatchAddFriendData
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = null;
-  private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final long[] jdField_a_of_type_ArrayOfLong = new long[30];
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString;
-  private final ArrayList<cmd0x777.AddFrdInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int = 0;
-  private String jdField_c_of_type_JavaLangString = null;
+  private final ArrayList<Long> a = new ArrayList();
+  private final ArrayList<cmd0x777.AddFrdInfo> b = new ArrayList();
+  private final long[] c = new long[30];
+  private String d = null;
+  private String e;
+  private int f = 0;
+  private String g = null;
+  private int h = 0;
+  private int i = 0;
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3)
   {
@@ -86,7 +86,7 @@ public class BatchAddFriendData
           localIntent.putExtra("batch_addfrd_recommand_uin", paramString3);
         }
         ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivity(paramContext, localIntent);
-        ((Activity)paramContext).overridePendingTransition(2130772011, 0);
+        ((Activity)paramContext).overridePendingTransition(2130772014, 0);
       }
       ThreadManager.post(new BatchAddFriendData.1(paramInt, paramQQAppInterface, paramString1), 8, null, true);
       if (QLog.isDevelopLevel()) {
@@ -108,11 +108,11 @@ public class BatchAddFriendData
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = paramList.iterator();
+      int i1 = 0;
       int n = 0;
+      int k = 0;
       int m = 0;
       int j = 0;
-      int k = 0;
-      int i = 0;
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
@@ -121,42 +121,42 @@ public class BatchAddFriendData
           if (((cmd0x777.AddFrdInfo)localObject2).uint32_send_req_flag.get() == 1)
           {
             if (((cmd0x777.AddFrdInfo)localObject2).uint32_send_req_result.get() == 0) {
-              n += 1;
+              i1 += 1;
             } else {
-              m += 1;
+              n += 1;
             }
           }
           else if (((cmd0x777.AddFrdInfo)localObject2).uint32_send_req_flag.get() == 2)
           {
-            int i1 = j + 1;
+            int i2 = k + 1;
             if (((cmd0x777.AddFrdInfo)localObject2).uint32_allow_type.get() == 1)
             {
-              i += 1;
-              j = i1;
+              j += 1;
+              k = i2;
             }
             else
             {
-              j = i1;
+              k = i2;
               if (((cmd0x777.AddFrdInfo)localObject2).uint32_allow_type.get() == 2)
               {
                 localArrayList.add(localObject2);
-                j = i1;
+                k = i2;
               }
             }
           }
           else
           {
-            k += 1;
+            m += 1;
           }
         }
       }
       if (QLog.isDevelopLevel()) {
-        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "showResult total: %s, sendOk: %s, sendFail: %s, notSend: %s, clientFail: %s, refuseAdd: %s, answerQuestion: %s", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(localArrayList.size()) }));
+        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "showResult total: %s, sendOk: %s, sendFail: %s, notSend: %s, clientFail: %s, refuseAdd: %s, answerQuestion: %s", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(i1), Integer.valueOf(n), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(localArrayList.size()) }));
       }
-      if (n > 0) {
-        QQToast.a(BaseApplication.getContext(), 0, HardCodeUtil.a(2131701283), 0).a();
-      } else if ((m > 0) || (k > 0)) {
-        QQToast.a(BaseApplication.getContext(), 0, HardCodeUtil.a(2131701286), 0).a();
+      if (i1 > 0) {
+        QQToast.makeText(BaseApplication.getContext(), 0, HardCodeUtil.a(2131899293), 0).show();
+      } else if ((n > 0) || (m > 0)) {
+        QQToast.makeText(BaseApplication.getContext(), 0, HardCodeUtil.a(2131899296), 0).show();
       }
       if (localArrayList.size() > 0)
       {
@@ -198,12 +198,12 @@ public class BatchAddFriendData
             }
           }
         }
-        paramList = DialogUtil.a(paramActivity, String.format(Locale.getDefault(), HardCodeUtil.a(2131701290), new Object[] { paramList }), 0, 0, null, null);
-        paramList.setPositiveButton(2131694583, new BatchAddFriendData.2());
+        paramList = DialogUtil.a(paramActivity, String.format(Locale.getDefault(), HardCodeUtil.a(2131899300), new Object[] { paramList }), 0, 0, null, null);
+        paramList.setPositiveButton(2131892267, new BatchAddFriendData.2());
         if ((paramActivity != null) && (!paramActivity.isFinishing())) {
           paramList.show();
         }
-        ReportController.b(paramQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", "notAdd_exp", 0, 0, paramString, String.valueOf(j), "", "");
+        ReportController.b(paramQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", "notAdd_exp", 0, 0, paramString, String.valueOf(k), "", "");
       }
       return;
     }
@@ -223,37 +223,37 @@ public class BatchAddFriendData
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)))
     {
       Object localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      TroopInfo localTroopInfo = ((TroopManager)localObject2).b(paramString1);
+      TroopInfo localTroopInfo = ((TroopManager)localObject2).f(paramString1);
       if (localTroopInfo == null) {
         return;
       }
       Scene.a(paramQQAppInterface, true, localTroopInfo);
-      Object localObject1 = paramQQAppInterface.getMessageFacade().b(paramString1, 1);
+      Object localObject1 = paramQQAppInterface.getMessageFacade().o(paramString1, 1);
       long l1;
       if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
         l1 = ((ChatMessage)((List)localObject1).get(((List)localObject1).size() - 1)).shmsgseq;
       } else {
         l1 = Math.abs(new Random().nextInt());
       }
-      long l2 = MessageCache.a();
+      long l2 = MessageCache.c();
       if (!TextUtils.isEmpty(paramString3))
       {
-        localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131701284), new Object[] { paramString3, Integer.valueOf(paramInt2) });
+        localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131899294), new Object[] { paramString3, Integer.valueOf(paramInt2) });
         if (paramInt2 == 1) {
-          localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131701287), new Object[] { paramString3 });
+          localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131899297), new Object[] { paramString3 });
         }
         paramInt2 = 1;
         paramString3 = (String)localObject1;
       }
       else
       {
-        localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131701289), new Object[] { Integer.valueOf(paramInt2) });
+        localObject1 = String.format(Locale.getDefault(), HardCodeUtil.a(2131899299), new Object[] { Integer.valueOf(paramInt2) });
         paramString3 = (String)localObject1;
         if (paramInt2 == 1)
         {
           paramString3 = (String)localObject1;
           if (!TextUtils.isEmpty(paramString2)) {
-            paramString3 = String.format(Locale.getDefault(), HardCodeUtil.a(2131701285), new Object[] { paramString2 });
+            paramString3 = String.format(Locale.getDefault(), HardCodeUtil.a(2131899295), new Object[] { paramString2 });
           }
         }
         paramInt2 = 0;
@@ -262,26 +262,26 @@ public class BatchAddFriendData
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramString3);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701291));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899301));
         paramString3 = ((StringBuilder)localObject1).toString();
       }
       else
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramString3);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701282));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899292));
         paramString3 = ((StringBuilder)localObject1).toString();
       }
-      localObject1 = HardCodeUtil.a(2131701288);
-      int i = paramString3.indexOf((String)localObject1);
-      int j = ((String)localObject1).length();
+      localObject1 = HardCodeUtil.a(2131899298);
+      int j = paramString3.indexOf((String)localObject1);
+      int k = ((String)localObject1).length();
       localObject1 = new UniteGrayTipParam(paramString1, paramString1, paramString3, 1, -5020, 135178, l2);
-      ((UniteGrayTipParam)localObject1).jdField_c_of_type_JavaLangString = paramString3;
+      ((UniteGrayTipParam)localObject1).g = paramString3;
       paramString3 = new Bundle();
       paramString3.putInt("key_action", 24);
       paramString3.putString("key_action_DATA", paramString1);
       paramString3.putString("key_a_action_DATA", localTroopInfo.troopcode);
-      ((UniteGrayTipParam)localObject1).a(i, i + j, paramString3);
+      ((UniteGrayTipParam)localObject1).a(j, j + k, paramString3);
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("newJoin-");
       if (paramInt2 != 0) {
@@ -290,7 +290,7 @@ public class BatchAddFriendData
         paramString3 = "";
       }
       ((StringBuilder)localObject3).append(paramString3);
-      ((UniteGrayTipParam)localObject1).d = ((StringBuilder)localObject3).toString();
+      ((UniteGrayTipParam)localObject1).p = ((StringBuilder)localObject3).toString();
       localObject3 = new MessageForUniteGrayTip();
       ((MessageForUniteGrayTip)localObject3).initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
       ((MessageForUniteGrayTip)localObject3).isread = true;
@@ -307,7 +307,7 @@ public class BatchAddFriendData
       } else {
         paramString3 = "1";
       }
-      localObject2 = Scene.a(true, 1);
+      localObject2 = Scene.b(true, 1);
       if (localTroopInfo.wInsertBAFTipCount == 1) {
         localObject1 = "0";
       } else {
@@ -328,16 +328,16 @@ public class BatchAddFriendData
   {
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong2 * 1000L);
-    int i = localCalendar.get(6);
+    int j = localCalendar.get(6);
     boolean bool = true;
-    int j = localCalendar.get(1);
+    int k = localCalendar.get(1);
     localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong1 * 1000L);
-    int k = localCalendar.get(6);
-    int m = localCalendar.get(1);
-    if ((j != m) || (i <= k))
+    int m = localCalendar.get(6);
+    int n = localCalendar.get(1);
+    if ((k != n) || (j <= m))
     {
-      if (j > m) {
+      if (k > n) {
         return true;
       }
       bool = false;
@@ -356,17 +356,17 @@ public class BatchAddFriendData
     }
     TroopManager localTroopManager = (TroopManager)paramFriendListHandler.app.getManager(QQManagerFactory.TROOP_MANAGER);
     FriendsManager localFriendsManager = (FriendsManager)paramFriendListHandler.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone();
-    int i = 0;
+    ArrayList localArrayList = (ArrayList)this.b.clone();
+    int j = 0;
     boolean bool = false;
-    while (i < localArrayList.size())
+    while (j < localArrayList.size())
     {
-      cmd0x777.AddFrdInfo localAddFrdInfo = (cmd0x777.AddFrdInfo)localArrayList.get(i);
+      cmd0x777.AddFrdInfo localAddFrdInfo = (cmd0x777.AddFrdInfo)localArrayList.get(j);
       if (localAddFrdInfo != null)
       {
         if (localAddFrdInfo.uint32_send_req_flag.get() == 2)
         {
-          TroopMemberInfo localTroopMemberInfo = localTroopManager.c(this.jdField_a_of_type_JavaLangString, String.valueOf(localAddFrdInfo.uint64_uin.get()));
+          TroopMemberInfo localTroopMemberInfo = localTroopManager.h(this.d, String.valueOf(localAddFrdInfo.uint64_uin.get()));
           if (localTroopMemberInfo != null)
           {
             if (!TextUtils.isEmpty(localTroopMemberInfo.troopremark)) {
@@ -377,17 +377,17 @@ public class BatchAddFriendData
               localAddFrdInfo.bytes_remark.set(localTroopMemberInfo.friendnick);
             }
             PBUInt32Field localPBUInt32Field = localAddFrdInfo.uint32_send_req_result;
-            int j;
+            int k;
             if (localTroopMemberInfo.commonFrdCnt == -2147483648) {
-              j = 0;
+              k = 0;
             } else {
-              j = localTroopMemberInfo.commonFrdCnt;
+              k = localTroopMemberInfo.commonFrdCnt;
             }
-            localPBUInt32Field.set(j);
+            localPBUInt32Field.set(k);
           }
           else if (QLog.isDevelopLevel())
           {
-            QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "sendResult TroopMemberInfo is null [troopUin: %s, memberUin: %s] ", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(localAddFrdInfo.uint64_uin.get()) }));
+            QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "sendResult TroopMemberInfo is null [troopUin: %s, memberUin: %s] ", new Object[] { this.d, Long.valueOf(localAddFrdInfo.uint64_uin.get()) }));
           }
         }
         if (localAddFrdInfo.uint32_send_req_flag.get() != -2147483648) {
@@ -396,19 +396,19 @@ public class BatchAddFriendData
         if (localAddFrdInfo.uint32_send_req_flag.get() == 1)
         {
           if (localAddFrdInfo.uint32_send_req_result.get() != 0) {
-            localFriendsManager.a(Long.toString(localAddFrdInfo.uint64_uin.get()), false);
+            localFriendsManager.c(Long.toString(localAddFrdInfo.uint64_uin.get()), false);
           }
         }
         else {
-          localFriendsManager.a(Long.toString(localAddFrdInfo.uint64_uin.get()), false);
+          localFriendsManager.c(Long.toString(localAddFrdInfo.uint64_uin.get()), false);
         }
       }
-      i += 1;
+      j += 1;
     }
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    paramFriendListHandler.notifyUI(109, bool, new Object[] { this.jdField_a_of_type_JavaLangString, localArrayList });
+    this.b.clear();
+    paramFriendListHandler.notifyUI(109, bool, new Object[] { this.d, localArrayList });
     if (QLog.isDevelopLevel()) {
-      QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "sendResult isSuc: %s, troop: %s, size: %s", new Object[] { Boolean.valueOf(bool), this.jdField_a_of_type_JavaLangString, Integer.valueOf(localArrayList.size()) }));
+      QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "sendResult isSuc: %s, troop: %s, size: %s", new Object[] { Boolean.valueOf(bool), this.d, Integer.valueOf(localArrayList.size()) }));
     }
   }
   
@@ -425,20 +425,20 @@ public class BatchAddFriendData
     finally
     {
       Object localObject;
-      int i;
+      int j;
       long l1;
       cmd0x777.ReqBody localReqBody;
       break label313;
     }
     localObject = (FriendsManager)paramFriendListHandler.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_ArrayOfLong.length);
-    i = this.jdField_a_of_type_Int;
-    if (i > 0)
+    this.f = Math.min(this.a.size(), this.c.length);
+    j = this.f;
+    if (j > 0)
     {
       l1 = 0L;
       try
       {
-        long l2 = Long.parseLong(this.jdField_b_of_type_JavaLangString);
+        long l2 = Long.parseLong(this.e);
         l1 = l2;
       }
       catch (Throwable localThrowable)
@@ -447,23 +447,23 @@ public class BatchAddFriendData
       }
       localReqBody = new cmd0x777.ReqBody();
       localReqBody.uint64_group_uin.set(l1);
-      localReqBody.bytes_msg.set(this.jdField_c_of_type_JavaLangString);
-      localReqBody.uint32_source_id.set(this.jdField_b_of_type_Int);
-      localReqBody.uint32_sub_source_id.set(this.jdField_c_of_type_Int);
-      i = this.jdField_a_of_type_Int - 1;
-      while (i >= 0)
+      localReqBody.bytes_msg.set(this.g);
+      localReqBody.uint32_source_id.set(this.h);
+      localReqBody.uint32_sub_source_id.set(this.i);
+      j = this.f - 1;
+      while (j >= 0)
       {
-        l1 = ((Long)this.jdField_a_of_type_JavaUtilArrayList.remove(i)).longValue();
-        this.jdField_a_of_type_ArrayOfLong[i] = l1;
+        l1 = ((Long)this.a.remove(j)).longValue();
+        this.c[j] = l1;
         localReqBody.rpt_uint64_uin.add(Long.valueOf(l1));
-        ((FriendsManager)localObject).a(Long.toString(l1), true);
-        i -= 1;
+        ((FriendsManager)localObject).c(Long.toString(l1), true);
+        j -= 1;
       }
       localObject = paramFriendListHandler.makeOIDBPkg("OidbSvc.0x777", 1911, 1, localReqBody.toByteArray());
-      ((ToServiceMsg)localObject).extraData.putLongArray("send_uin_array", this.jdField_a_of_type_ArrayOfLong);
+      ((ToServiceMsg)localObject).extraData.putLongArray("send_uin_array", this.c);
       paramFriendListHandler.sendPbReq((ToServiceMsg)localObject);
       if (QLog.isDevelopLevel()) {
-        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "doSendBatchAddFriendForTroopMember sending: %s pending: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "doSendBatchAddFriendForTroopMember sending: %s pending: %s", new Object[] { Integer.valueOf(this.f), Integer.valueOf(this.a.size()) }));
       }
     }
     else
@@ -488,73 +488,73 @@ public class BatchAddFriendData
       return;
     }
     paramToServiceMsg = paramToServiceMsg.extraData.getLongArray("send_uin_array");
-    int i = this.jdField_a_of_type_Int;
-    int j = 0;
-    if (i <= 0) {}
-    while ((paramToServiceMsg == null) || (paramToServiceMsg.length < i))
+    int j = this.f;
+    int k = 0;
+    if (j <= 0) {}
+    while ((paramToServiceMsg == null) || (paramToServiceMsg.length < j))
     {
-      i = 0;
+      j = 0;
       break;
     }
-    i = 0;
+    j = 0;
     for (;;)
     {
-      if (i >= this.jdField_a_of_type_Int) {
+      if (j >= this.f) {
         break label104;
       }
-      if (paramToServiceMsg[i] != this.jdField_a_of_type_ArrayOfLong[i]) {
+      if (paramToServiceMsg[j] != this.c[j]) {
         break;
       }
-      i += 1;
+      j += 1;
     }
     label104:
-    i = 1;
-    if (i == 0)
+    j = 1;
+    if (j == 0)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("BatchAddFriendData", 4, "handleAddBatchTroopMembers is not cur sending resp!");
       }
       return;
     }
-    int k = this.jdField_a_of_type_Int;
+    int m = this.f;
     paramToServiceMsg = new cmd0x777.RspBody();
-    int m = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (m == 0)
+    int n = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (n == 0)
     {
       paramToServiceMsg = paramToServiceMsg.rpt_add_frd_info.get();
     }
     else
     {
       paramFromServiceMsg = new ArrayList();
-      i = 0;
+      j = 0;
       for (;;)
       {
         paramToServiceMsg = paramFromServiceMsg;
-        if (i >= k) {
+        if (j >= m) {
           break;
         }
         paramToServiceMsg = new cmd0x777.AddFrdInfo();
-        paramToServiceMsg.uint64_uin.set(this.jdField_a_of_type_ArrayOfLong[i]);
+        paramToServiceMsg.uint64_uin.set(this.c[j]);
         paramToServiceMsg.uint32_send_req_flag.set(-2147483648);
         paramFromServiceMsg.add(paramToServiceMsg);
-        i += 1;
+        j += 1;
       }
     }
-    this.jdField_a_of_type_Int = 0;
+    this.f = 0;
     if ((paramToServiceMsg != null) && (paramToServiceMsg.size() > 0)) {
-      this.jdField_b_of_type_JavaUtilArrayList.addAll(paramToServiceMsg);
+      this.b.addAll(paramToServiceMsg);
     }
     if (QLog.isDevelopLevel())
     {
       paramFromServiceMsg = Locale.getDefault();
       if (paramToServiceMsg == null) {
-        i = j;
+        j = k;
       } else {
-        i = paramToServiceMsg.size();
+        j = paramToServiceMsg.size();
       }
-      QLog.d("BatchAddFriendData", 4, String.format(paramFromServiceMsg, "handleAddBatchTroopMembers result: %s sending: %s, cur:%s  total: %s pending: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+      QLog.d("BatchAddFriendData", 4, String.format(paramFromServiceMsg, "handleAddBatchTroopMembers result: %s sending: %s, cur:%s  total: %s pending: %s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(this.b.size()), Integer.valueOf(this.a.size()) }));
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.a.size() > 0)
     {
       a(paramFriendListHandler);
       return;
@@ -568,28 +568,28 @@ public class BatchAddFriendData
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_Int = 0;
+        this.a.clear();
+        this.b.clear();
+        this.f = 0;
       }
-      int i;
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) && (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0) && (this.jdField_a_of_type_Int <= 0)) {
-        i = 0;
+      int j;
+      if ((this.a.size() <= 0) && (this.b.size() <= 0) && (this.f <= 0)) {
+        j = 0;
       } else {
-        i = 1;
+        j = 1;
       }
-      if (i != 0)
+      if (j != 0)
       {
         if (QLog.isDevelopLevel()) {
-          QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "init isSending pending: %s result: %s curSending: ", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+          QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "init isSending pending: %s result: %s curSending: ", new Object[] { Integer.valueOf(this.a.size()), Integer.valueOf(this.b.size()), Integer.valueOf(this.f) }));
         }
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_c_of_type_JavaLangString = paramString3;
-      this.jdField_b_of_type_Int = paramInt1;
-      this.jdField_c_of_type_Int = paramInt2;
+      this.d = paramString1;
+      this.e = paramString2;
+      this.g = paramString3;
+      this.h = paramInt1;
+      this.i = paramInt2;
       paramString1 = paramList.iterator();
       while (paramString1.hasNext())
       {
@@ -598,7 +598,7 @@ public class BatchAddFriendData
           try
           {
             long l = Long.parseLong(paramString2);
-            this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
+            this.a.add(Long.valueOf(l));
           }
           catch (Throwable paramString2)
           {
@@ -607,7 +607,7 @@ public class BatchAddFriendData
         }
       }
       if (QLog.isDevelopLevel()) {
-        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "init pending: %s, troopuin: %s, troopcode: %s, sourceId: %s, subSourceId: %s, msg: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_c_of_type_JavaLangString }));
+        QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "init pending: %s, troopuin: %s, troopcode: %s, sourceId: %s, subSourceId: %s, msg: %s", new Object[] { Integer.valueOf(this.a.size()), this.d, this.e, Integer.valueOf(this.h), Integer.valueOf(this.i), this.g }));
       }
       return true;
     }
@@ -619,7 +619,7 @@ public class BatchAddFriendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.batchAdd.BatchAddFriendData
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ class WriteTogetherWebSocketSender$Worker
   {
     for (;;)
     {
-      if (WriteTogetherWebSocketSender.a(this.this$0).a()) {
+      if (WriteTogetherWebSocketSender.d(this.this$0).a()) {
         break label101;
       }
       try
       {
-        if (this.this$0.a()) {
-          WriteTogetherWebSocketSender.a(this.this$0).a();
+        if (this.this$0.e()) {
+          WriteTogetherWebSocketSender.d(this.this$0).b();
         }
-        WriteTogetherWebSocketSender.a(this.this$0).set(true);
+        WriteTogetherWebSocketSender.e(this.this$0).set(true);
         synchronized (WriteTogetherWebSocketSender.a(this.this$0))
         {
           WriteTogetherWebSocketSender.a(this.this$0).wait(30000L);
@@ -48,7 +48,7 @@ class WriteTogetherWebSocketSender$Worker
       if (!this.this$0.a) {
         return;
       }
-      BaseToWriteTogetherMsg localBaseToWriteTogetherMsg = (BaseToWriteTogetherMsg)WriteTogetherWebSocketSender.a(this.this$0).peek();
+      BaseToWriteTogetherMsg localBaseToWriteTogetherMsg = (BaseToWriteTogetherMsg)WriteTogetherWebSocketSender.c(this.this$0).peek();
       if (!this.this$0.a) {
         return;
       }
@@ -57,8 +57,8 @@ class WriteTogetherWebSocketSender$Worker
       }
       if (localBaseToWriteTogetherMsg != null)
       {
-        WriteTogetherWebSocketSender.a(this.this$0).a(localBaseToWriteTogetherMsg);
-        WriteTogetherWebSocketSender.a(this.this$0).removeFirst();
+        WriteTogetherWebSocketSender.d(this.this$0).a(localBaseToWriteTogetherMsg);
+        WriteTogetherWebSocketSender.c(this.this$0).removeFirst();
       }
       SystemClock.sleep(10L);
     }
@@ -66,7 +66,7 @@ class WriteTogetherWebSocketSender$Worker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketSender.Worker
  * JD-Core Version:    0.7.0.1
  */

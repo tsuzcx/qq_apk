@@ -5,7 +5,38 @@ import java.io.File;
 
 public class UFTTransferUtility
 {
-  public static int a(String paramString)
+  public static long a(String paramString)
+  {
+    long l2 = 0L;
+    if (paramString == null) {
+      return 0L;
+    }
+    try
+    {
+      paramString = new File(paramString);
+      long l1 = l2;
+      if (paramString.exists())
+      {
+        l1 = l2;
+        if (paramString.length() > 0L) {
+          l1 = paramString.length();
+        }
+      }
+      return l1;
+    }
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return new File(paramString).exists();
+  }
+  
+  public static int c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return 0;
@@ -31,30 +62,60 @@ public class UFTTransferUtility
     return 0;
   }
   
-  public static long a(String paramString)
+  public static int d(String paramString)
   {
-    long l2 = 0L;
-    if (paramString == null) {
-      return 0L;
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
     }
+    int i = paramString.indexOf("User-ReturnCode=[");
+    if (i == -1) {
+      return 0;
+    }
+    paramString = paramString.substring(i + 17);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    i = paramString.indexOf("]");
+    if (i == -1) {
+      return 0;
+    }
+    paramString = paramString.substring(0, i);
     try
     {
-      paramString = new File(paramString);
-      long l1 = l2;
-      if (paramString.exists())
-      {
-        l1 = l2;
-        if (paramString.length() > 0L) {
-          l1 = paramString.length();
-        }
-      }
-      return l1;
+      i = Integer.valueOf(paramString).intValue();
+      return i;
     }
     catch (Exception paramString) {}
-    return 0L;
+    return 0;
   }
   
-  public static UFTTransferUtility.UrlHostInfo a(String paramString)
+  public static int e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    if (!paramString.startsWith("H_")) {
+      return 0;
+    }
+    int i = paramString.indexOf("_");
+    if (i == -1) {
+      return 0;
+    }
+    int j = paramString.lastIndexOf("_");
+    if (i == j) {
+      return 0;
+    }
+    paramString = paramString.substring(i, j - 1);
+    try
+    {
+      i = Integer.valueOf(paramString).intValue();
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public static UFTTransferUtility.UrlHostInfo f(String paramString)
   {
     UFTTransferUtility.UrlHostInfo localUrlHostInfo = new UFTTransferUtility.UrlHostInfo();
     if (TextUtils.isEmpty(paramString)) {
@@ -112,16 +173,16 @@ public class UFTTransferUtility
         {
           paramString = str2.substring(0, i);
           str1 = str2.substring(i + 1);
-          localUrlHostInfo.jdField_a_of_type_JavaLangString = paramString;
-          localUrlHostInfo.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
+          localUrlHostInfo.a = paramString;
+          localUrlHostInfo.b = Integer.valueOf(str1).intValue();
         }
         else
         {
-          localUrlHostInfo.jdField_a_of_type_JavaLangString = str2;
-          localUrlHostInfo.jdField_a_of_type_Int = 0;
+          localUrlHostInfo.a = str2;
+          localUrlHostInfo.b = 0;
         }
         if (k != 0) {
-          localUrlHostInfo.b = 1;
+          localUrlHostInfo.c = 1;
         }
         return localUrlHostInfo;
         i += 3;
@@ -131,71 +192,10 @@ public class UFTTransferUtility
     } while (str2 != null);
     return localUrlHostInfo;
   }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return new File(paramString).exists();
-  }
-  
-  public static int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    int i = paramString.indexOf("User-ReturnCode=[");
-    if (i == -1) {
-      return 0;
-    }
-    paramString = paramString.substring(i + 17);
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    i = paramString.indexOf("]");
-    if (i == -1) {
-      return 0;
-    }
-    paramString = paramString.substring(0, i);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public static int c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    if (!paramString.startsWith("H_")) {
-      return 0;
-    }
-    int i = paramString.indexOf("_");
-    if (i == -1) {
-      return 0;
-    }
-    int j = paramString.lastIndexOf("_");
-    if (i == j) {
-      return 0;
-    }
-    paramString = paramString.substring(i, j - 1);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.utility.UFTTransferUtility
  * JD-Core Version:    0.7.0.1
  */

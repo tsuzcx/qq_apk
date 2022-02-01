@@ -13,16 +13,16 @@ class VideoControlUI$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {
+    if (this.b.V()) {
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+    paramDialogInterface = this.b.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showPermissionNormalDialog.gotoSetting, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
-    UITools.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+    UITools.a(this.b.U());
   }
 }
 

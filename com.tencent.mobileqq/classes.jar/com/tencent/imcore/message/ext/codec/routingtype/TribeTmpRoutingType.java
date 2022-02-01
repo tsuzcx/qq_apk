@@ -24,11 +24,6 @@ public class TribeTmpRoutingType
     return 10002;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
@@ -44,7 +39,7 @@ public class TribeTmpRoutingType
       localStringBuilder.append(localMessage.hasReply);
       QLog.d("TribeTmpRoutingType", 2, localStringBuilder.toString());
     }
-    paramMessageRecord = paramAppInterface.getMsgCache().j(paramMessageRecord.frienduin);
+    paramMessageRecord = paramAppInterface.getMsgCache().o(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
       if (QLog.isDevelopLevel())
@@ -62,14 +57,19 @@ public class TribeTmpRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8028;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.TribeTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

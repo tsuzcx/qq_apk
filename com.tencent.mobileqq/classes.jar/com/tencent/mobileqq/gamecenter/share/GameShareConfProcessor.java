@@ -12,25 +12,25 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class GameShareConfProcessor
   extends IQConfigProcessor<GameShareConfBean>
 {
-  private static GameShareConfBean jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean = null;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static GameShareConfBean b = null;
   
   public static GameShareConfBean a()
   {
-    GameShareConfBean localGameShareConfBean = jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean;
+    GameShareConfBean localGameShareConfBean = b;
     if (localGameShareConfBean != null) {
       return localGameShareConfBean;
     }
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+    if (a.compareAndSet(false, true)) {
       ThreadManager.executeOnSubThread(new GameShareConfProcessor.1());
     }
-    return GameShareConfBean.jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean;
+    return GameShareConfBean.a;
   }
   
-  public static void a()
+  public static void b()
   {
-    jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean = null;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    b = null;
+    a.set(false);
   }
   
   @NonNull
@@ -46,11 +46,11 @@ public class GameShareConfProcessor
       QLog.d("GameShare.ConfProcessor", 2, "[onParsed]");
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0) && (paramArrayOfQConfItem[0] != null)) {
-      paramArrayOfQConfItem = GameShareConfBean.a(paramArrayOfQConfItem[0].a);
+      paramArrayOfQConfItem = GameShareConfBean.a(paramArrayOfQConfItem[0].b);
     } else {
       paramArrayOfQConfItem = new GameShareConfBean();
     }
-    jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean = paramArrayOfQConfItem;
+    b = paramArrayOfQConfItem;
     return paramArrayOfQConfItem;
   }
   
@@ -94,19 +94,19 @@ public class GameShareConfProcessor
       localStringBuilder.append(paramInt);
       QLog.d("GameShare.ConfProcessor", 2, localStringBuilder.toString());
     }
-    QConfigManager.a().a(617);
+    QConfigManager.b().b(617);
   }
   
   public void onReqNoReceive()
   {
-    QConfigManager.a().a(617);
+    QConfigManager.b().b(617);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReqNoReceive: type=");
       localStringBuilder.append(type());
       localStringBuilder.append("curContent:");
-      localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean);
+      localStringBuilder.append(b);
       QLog.d("GameShare.ConfProcessor", 2, localStringBuilder.toString());
     }
   }
@@ -118,7 +118,7 @@ public class GameShareConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareConfProcessor
  * JD-Core Version:    0.7.0.1
  */

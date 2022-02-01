@@ -105,7 +105,7 @@ public class ZebraPluginProxy
       Intent localIntent = new Intent();
       localIntent.putExtra("enter_from", 7);
       localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationQzone.a);
-      localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationQzone.a);
+      localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationQzone.j);
       localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationQzone.a);
       localIntent.setClassName("com.tencent.mobileqq", NewPhotoListActivity.class.getName());
       if (paramBundle != null) {
@@ -128,7 +128,7 @@ public class ZebraPluginProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.zebra.ZebraPluginProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -12,19 +12,19 @@ class VideoStoryAIScenePart$9
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoStoryAIScenePart.b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).postDelayed(new VideoStoryAIScenePart.9.1(this), 1000L);
+    VideoStoryAIScenePart.j(this.b).postDelayed(new VideoStoryAIScenePart.9.1(this), 1000L);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    VideoStoryAIScenePart.b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiAisceneVideoStoryAIScenePart).setVisibility(0);
+    VideoStoryAIScenePart.j(this.b).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.9
  * JD-Core Version:    0.7.0.1
  */

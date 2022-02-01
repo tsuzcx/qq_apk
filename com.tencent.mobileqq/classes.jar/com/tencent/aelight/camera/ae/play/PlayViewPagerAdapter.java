@@ -36,7 +36,7 @@ public class PlayViewPagerAdapter
     if (localAEMaterialCategory == null) {
       return 2;
     }
-    return localAEMaterialCategory.b;
+    return localAEMaterialCategory.e;
   }
   
   private List<AEMaterialMetaData> getMaterialList(int paramInt)
@@ -47,8 +47,8 @@ public class PlayViewPagerAdapter
     } else {
       localObject = null;
     }
-    if ((localObject != null) && (((AEMaterialCategory)localObject).jdField_a_of_type_JavaUtilList != null)) {
-      return ((AEMaterialCategory)localObject).jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((AEMaterialCategory)localObject).a != null)) {
+      return ((AEMaterialCategory)localObject).a;
     }
     return new LinkedList();
   }
@@ -57,7 +57,7 @@ public class PlayViewPagerAdapter
   {
     List localList = this.mCategoryList;
     if ((localList != null) && (localList.size() > paramInt)) {
-      return ((AEMaterialCategory)this.mCategoryList.get(paramInt)).jdField_a_of_type_JavaLangString;
+      return ((AEMaterialCategory)this.mCategoryList.get(paramInt)).c;
     }
     return "-1";
   }
@@ -139,9 +139,9 @@ public class PlayViewPagerAdapter
         {
           paramObject = AEBaseReportParam.a();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramViewGroup.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(paramViewGroup.c);
           localStringBuilder.append("");
-          paramObject.n(localStringBuilder.toString());
+          paramObject.r(localStringBuilder.toString());
         }
       }
       if (bool)
@@ -154,7 +154,7 @@ public class PlayViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.PlayViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

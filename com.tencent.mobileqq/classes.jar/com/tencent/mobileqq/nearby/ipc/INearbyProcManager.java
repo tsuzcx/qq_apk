@@ -8,13 +8,9 @@ import java.util.ArrayList;
 
 public abstract interface INearbyProcManager
 {
-  public abstract int a();
-  
   public abstract Bitmap a(String paramString, int paramInt, boolean paramBoolean);
   
   public abstract Message a(Message paramMessage);
-  
-  public abstract NearbyRedNum a();
   
   public abstract BusinessInfoCheckUpdate.RedTypeInfo a(int paramInt);
   
@@ -24,7 +20,7 @@ public abstract interface INearbyProcManager
   
   public abstract void a(byte paramByte);
   
-  public abstract void a(int paramInt);
+  public abstract void a(long paramLong, String paramString, int paramInt);
   
   public abstract void a(INearbyProcObserver paramINearbyProcObserver);
   
@@ -38,31 +34,39 @@ public abstract interface INearbyProcManager
   
   public abstract void a(byte[] paramArrayOfByte);
   
-  public abstract boolean a();
-  
   public abstract boolean a(int paramInt, boolean paramBoolean);
   
   public abstract Object[] a(int paramInt, Object... paramVarArgs);
   
   public abstract int b();
   
-  public abstract NearbyRedNum b();
-  
-  public abstract BusinessInfoCheckUpdate.RedTypeInfo b(int paramInt);
-  
-  public abstract void b();
+  public abstract void b(int paramInt);
   
   public abstract void b(INearbyProcObserver paramINearbyProcObserver);
   
   public abstract void b(Object paramObject);
   
+  public abstract void b(String paramString);
+  
+  public abstract BusinessInfoCheckUpdate.RedTypeInfo c(int paramInt);
+  
   public abstract void c();
   
   public abstract void d();
+  
+  public abstract NearbyRedNum e();
+  
+  public abstract void f();
+  
+  public abstract int g();
+  
+  public abstract boolean h();
+  
+  public abstract NearbyRedNum i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.INearbyProcManager
  * JD-Core Version:    0.7.0.1
  */

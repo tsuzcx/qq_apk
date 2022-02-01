@@ -24,79 +24,79 @@ class LocalFileBrowserActivity$6
   public void onClick(View paramView)
   {
     Object localObject = (LocalFileAdapter.LocalFileItemHolder)paramView.getTag();
-    FileInfo localFileInfo = ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
+    FileInfo localFileInfo = ((LocalFileAdapter.LocalFileItemHolder)localObject).j;
     int i;
-    if (paramView.getId() == 2131366781) {
+    if (paramView.getId() == 2131433103) {
       i = 1;
     } else {
       i = 0;
     }
-    if (localFileInfo.d())
+    if (localFileInfo.k())
     {
-      LocalFileBrowserActivity.a(this.a, localFileInfo.c(), true);
+      LocalFileBrowserActivity.a(this.a, localFileInfo.d(), true);
     }
-    else if ((this.a.f()) && (i == 0))
+    else if ((this.a.D()) && (i == 0))
     {
-      if ((this.a.i()) && (!FMDataCache.a(FMDataCache.b)))
+      if ((this.a.I()) && (!FMDataCache.c(FMDataCache.b)))
       {
-        localObject = DialogUtil.a(this.a, 2131698222);
-        ((QQCustomDialog)localObject).setPositiveButton(2131694583, new DialogUtil.DialogOnClickAdapter());
+        localObject = DialogUtil.a(this.a, 2131896123);
+        ((QQCustomDialog)localObject).setPositiveButton(2131892267, new DialogUtil.DialogOnClickAdapter());
         ((QQCustomDialog)localObject).show();
       }
       else
       {
         if (FMDataCache.a(localFileInfo))
         {
-          FMDataCache.b(localFileInfo);
+          FMDataCache.c(localFileInfo);
         }
         else
         {
-          if (this.a.h) {
-            FMDataCache.b();
+          if (this.a.x) {
+            FMDataCache.d();
           }
-          if (localFileInfo.a() == -1) {
-            localFileInfo.b(QQFileManagerUtil.b(localFileInfo.c()));
+          if (localFileInfo.l() == -1) {
+            localFileInfo.b(QQFileManagerUtil.k(localFileInfo.d()));
           }
-          FMDataCache.a(localFileInfo);
-          if (this.a.h) {
+          FMDataCache.b(localFileInfo);
+          if (this.a.x) {
             LocalFileBrowserActivity.a(this.a);
           }
         }
-        this.a.l();
-        if (this.a.f())
+        this.a.B();
+        if (this.a.D())
         {
-          ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-          ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(FMDataCache.a(localFileInfo));
+          ((LocalFileAdapter.LocalFileItemHolder)localObject).b.setVisibility(0);
+          ((LocalFileAdapter.LocalFileItemHolder)localObject).b.setChecked(FMDataCache.a(localFileInfo));
         }
         else
         {
-          ((LocalFileAdapter.LocalFileItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+          ((LocalFileAdapter.LocalFileItemHolder)localObject).b.setVisibility(8);
         }
       }
     }
-    else if (!this.a.a())
+    else if (!this.a.d())
     {
       if (QLog.isColorLevel()) {
-        QLog.i(LocalFileBrowserActivity.e, 2, "click too fast , wait a minute.");
+        QLog.i(LocalFileBrowserActivity.F, 2, "click too fast , wait a minute.");
       }
     }
     else
     {
-      if (this.a.f()) {
-        ReportController.b(this.a.a, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      if (this.a.D()) {
+        ReportController.b(this.a.p, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
       }
-      this.a.e();
-      if (localFileInfo.a() == -1) {
-        localFileInfo.b(QQFileManagerUtil.b(localFileInfo.c()));
+      this.a.g();
+      if (localFileInfo.l() == -1) {
+        localFileInfo.b(QQFileManagerUtil.k(localFileInfo.d()));
       }
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).openFileBrowserByFileInfo(this.a.getActivity(), localFileInfo, localFileInfo.a(), localFileInfo.c(), paramView);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).openFileBrowserByFileInfo(this.a.getActivity(), localFileInfo, localFileInfo.l(), localFileInfo.d(), paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.6
  * JD-Core Version:    0.7.0.1
  */

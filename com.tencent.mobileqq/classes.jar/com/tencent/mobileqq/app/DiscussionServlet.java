@@ -97,7 +97,7 @@ public class DiscussionServlet
           {
             arrayOfByte = new byte[2];
             paramFromServiceMsg.get(arrayOfByte);
-            int k = Utils.a(arrayOfByte, 0);
+            int k = Utils.b(arrayOfByte, 0);
             int i = 0;
             if (i < k)
             {
@@ -106,13 +106,13 @@ public class DiscussionServlet
               localArrayList2.add(String.valueOf(Utils.a(arrayOfByte, 0)));
               arrayOfByte = new byte[2];
               paramFromServiceMsg.get(arrayOfByte);
-              Utils.a(arrayOfByte, 0);
+              Utils.b(arrayOfByte, 0);
               arrayOfByte = new byte[2];
               paramFromServiceMsg.get(arrayOfByte);
-              Utils.a(arrayOfByte, 0);
+              Utils.b(arrayOfByte, 0);
               arrayOfByte = new byte[2];
               paramFromServiceMsg.get(arrayOfByte);
-              arrayOfByte = new byte[Utils.a(arrayOfByte, 0)];
+              arrayOfByte = new byte[Utils.b(arrayOfByte, 0)];
               paramFromServiceMsg.get(arrayOfByte);
               localArrayList1.add(new String(arrayOfByte, "utf-8"));
               i += 1;
@@ -152,7 +152,7 @@ public class DiscussionServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionServlet
  * JD-Core Version:    0.7.0.1
  */

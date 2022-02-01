@@ -13,19 +13,19 @@ class WsCommentBusiness$4
 {
   public void a(WeishiTask paramWeishiTask)
   {
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stDeleteFeedCommentRsp))
+    if ((paramWeishiTask.m instanceof stDeleteFeedCommentRsp))
     {
-      stDeleteFeedCommentRsp localstDeleteFeedCommentRsp = (stDeleteFeedCommentRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      paramWeishiTask = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.a(new Object[] { Integer.valueOf(5), Integer.valueOf(paramWeishiTask.b), paramWeishiTask.jdField_a_of_type_JavaLangString, localstDeleteFeedCommentRsp, this.jdField_a_of_type_UserGrowthStSimpleMetaComment.id, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.hashCode()) });
+      stDeleteFeedCommentRsp localstDeleteFeedCommentRsp = (stDeleteFeedCommentRsp)paramWeishiTask.m;
+      paramWeishiTask = this.b.a(new Object[] { Integer.valueOf(5), Integer.valueOf(paramWeishiTask.e), paramWeishiTask.c, localstDeleteFeedCommentRsp, this.a.id, Integer.valueOf(this.b.hashCode()) });
       StoryDispatcher.a().dispatch(paramWeishiTask);
       return;
     }
-    WSLog.d(WsCommentBusiness.a(), "删除评论失败new！");
+    WSLog.d("WsCommentBusiness", "删除评论失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.4
  * JD-Core Version:    0.7.0.1
  */

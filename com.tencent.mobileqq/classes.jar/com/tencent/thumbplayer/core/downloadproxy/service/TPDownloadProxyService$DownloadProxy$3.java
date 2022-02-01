@@ -9,6 +9,25 @@ class TPDownloadProxyService$DownloadProxy$3
 {
   TPDownloadProxyService$DownloadProxy$3(TPDownloadProxyService.DownloadProxy paramDownloadProxy, ITPPreLoadListenerAidl paramITPPreLoadListenerAidl) {}
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    try
+    {
+      if (this.val$preloadListener != null)
+      {
+        this.val$preloadListener.onPcdnDownloadFailed(paramString);
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPcdnDownloadFailed failed, error:");
+      localStringBuilder.append(paramString.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", localStringBuilder.toString());
+    }
+  }
+  
   public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
     try
@@ -68,7 +87,7 @@ class TPDownloadProxyService$DownloadProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy.3
  * JD-Core Version:    0.7.0.1
  */

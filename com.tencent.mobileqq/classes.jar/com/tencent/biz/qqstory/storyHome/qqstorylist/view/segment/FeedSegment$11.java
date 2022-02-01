@@ -19,34 +19,34 @@ class FeedSegment$11
 {
   FeedSegment$11(FeedSegment paramFeedSegment, ActionSheet paramActionSheet, int paramInt, StoryHomeFeed paramStoryHomeFeed) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.a.superDismiss();
     if (paramInt != 0) {
       return;
     }
-    FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, this.jdField_a_of_type_Int);
+    FeedSegment.b(this.d, this.b);
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().type == 3)
+    if (this.c.g().type == 3)
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().getOwner() instanceof QQUserUIItem))
+      if ((this.c.g().getOwner() instanceof QQUserUIItem))
       {
-        paramView = ((QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().getOwner()).qq;
+        paramView = ((QQUserUIItem)this.c.g().getOwner()).qq;
         localObject1 = new StringBuilder();
-        localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a(this.jdField_a_of_type_Int);
+        localObject2 = this.d.f(this.b);
         if (localObject2 != null)
         {
-          localObject2 = (VideoListLayout)((BaseViewHolder)localObject2).a(2131374522);
+          localObject2 = (VideoListLayout)((BaseViewHolder)localObject2).a(2131442692);
           if (localObject2 != null)
           {
-            localObject2 = ((VideoListLayout)localObject2).a();
+            localObject2 = ((VideoListLayout)localObject2).getVideoListView();
             if (localObject2 != null)
             {
               paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
               while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
               {
-                List localList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.d();
+                List localList = this.c.j();
                 if ((paramInt >= 0) && (paramInt < localList.size()))
                 {
                   ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
@@ -62,23 +62,23 @@ class FeedSegment$11
         StoryReportor.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().type == 6) && ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().getOwner() instanceof TagUserItem)))
+    else if ((this.c.g().type == 6) && ((this.c.g().getOwner() instanceof TagUserItem)))
     {
-      long l = ((TagUserItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.a().getOwner()).tagId;
+      long l = ((TagUserItem)this.c.g().getOwner()).tagId;
       paramView = new StringBuilder();
-      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a(this.jdField_a_of_type_Int);
+      localObject1 = this.d.f(this.b);
       if (localObject1 != null)
       {
-        localObject1 = (VideoListLayout)((BaseViewHolder)localObject1).a(2131374522);
+        localObject1 = (VideoListLayout)((BaseViewHolder)localObject1).a(2131442692);
         if (localObject1 != null)
         {
-          localObject1 = ((VideoListLayout)localObject1).a();
+          localObject1 = ((VideoListLayout)localObject1).getVideoListView();
           if (localObject1 != null)
           {
             paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
             while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
             {
-              localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed.d();
+              localObject2 = this.c.j();
               if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
               {
                 paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);

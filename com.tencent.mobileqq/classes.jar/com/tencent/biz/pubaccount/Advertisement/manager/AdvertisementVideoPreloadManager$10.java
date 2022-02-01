@@ -7,12 +7,12 @@ class AdvertisementVideoPreloadManager$10
   
   public void run()
   {
-    AdvertisementVideoPreloadManager.b(this.a);
+    AdvertisementVideoPreloadManager.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.10
  * JD-Core Version:    0.7.0.1
  */

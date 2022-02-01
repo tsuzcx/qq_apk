@@ -16,14 +16,14 @@ import mqq.app.NewIntent;
 
 public final class WySender
 {
-  private static Singleton<WySender, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new WySender.1();
-  private long jdField_a_of_type_Long = 1L;
-  private ConcurrentHashMap<Integer, WySender.ICallback> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static Singleton<WySender, Void> d = new WySender.1();
+  private AtomicInteger a = new AtomicInteger(0);
+  private ConcurrentHashMap<Integer, WySender.ICallback> b = new ConcurrentHashMap();
+  private long c = 1L;
   
   public static WySender a()
   {
-    return (WySender)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
+    return (WySender)d.get(null);
   }
   
   private void a(int paramInt, String paramString, byte[] paramArrayOfByte)
@@ -53,7 +53,7 @@ public final class WySender
       }
       paramArrayOfByte = new PBPackage(i, paramArrayOfByte);
       paramString = new ToServiceMsg("mobileqq.service", ((AppRuntime)localObject).getAccount(), paramString);
-      paramString.setTimeout(Math.min(60000L, (Math.pow(this.jdField_a_of_type_Long, 0.15D) * 30000.0D)));
+      paramString.setTimeout(Math.min(60000L, (Math.pow(this.c, 0.15D) * 30000.0D)));
       paramString.setEnableFastResend(true);
       paramString.putWupBuffer(PBSerialization.a(paramArrayOfByte));
       paramString.extraData.putInt("sequence", paramInt);
@@ -80,9 +80,9 @@ public final class WySender
       i = paramFromServiceMsg.getResultCode();
     }
     if (i == 1002) {
-      this.jdField_a_of_type_Long += 1L;
+      this.c += 1L;
     } else {
-      this.jdField_a_of_type_Long = 1L;
+      this.c = 1L;
     }
     Object localObject1 = null;
     PBPackage localPBPackage;
@@ -110,7 +110,7 @@ public final class WySender
       }
       else
       {
-        localObject2 = localPBPackage.a();
+        localObject2 = localPBPackage.b();
         int k = ((WeiyunPB.MsgHead)localObject2).retcode.get();
         j = i;
         paramFromServiceMsg = paramToServiceMsg;
@@ -121,13 +121,13 @@ public final class WySender
         }
       }
     }
-    Object localObject2 = (WySender.ICallback)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(m));
+    Object localObject2 = (WySender.ICallback)this.b.remove(Integer.valueOf(m));
     if (localObject2 != null)
     {
       if (localPBPackage == null) {
         paramToServiceMsg = localObject1;
       } else {
-        paramToServiceMsg = localPBPackage.a();
+        paramToServiceMsg = localPBPackage.c();
       }
       ((WySender.ICallback)localObject2).a(j, paramFromServiceMsg, paramToServiceMsg);
     }
@@ -135,16 +135,16 @@ public final class WySender
   
   public void a(String paramString, byte[] paramArrayOfByte, WySender.ICallback paramICallback)
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.a.incrementAndGet();
     if (paramICallback != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), paramICallback);
+      this.b.put(Integer.valueOf(i), paramICallback);
     }
     a(i, paramString, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.channel.WySender
  * JD-Core Version:    0.7.0.1
  */

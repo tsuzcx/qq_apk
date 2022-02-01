@@ -20,10 +20,7 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.ReportConditionParam;
 
 public class SPEventReportSwitch
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long = -1L;
-  private static SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private static HashMap<Integer, SPEventReportSwitch.SPEventReportCondition> jdField_a_of_type_JavaUtilHashMap;
+  private static int a = -1;
   private static int b = -2;
   private static int c = -1;
   private static int d = -2;
@@ -31,16 +28,19 @@ public class SPEventReportSwitch
   private static int f = -2;
   private static int g = -1;
   private static int h = -2;
-  private static int i = -1;
-  private static int j = 30;
-  private static int k = -1;
-  private static int l = 30;
-  private static int m = -1;
-  private static int n;
+  private static long i = -1L;
+  private static int j = -1;
+  private static int k = 30;
+  private static int l = -1;
+  private static int m = 30;
+  private static int n = -1;
+  private static int o;
+  private static HashMap<Integer, SPEventReportSwitch.SPEventReportCondition> p;
+  private static SparseArray<Boolean> q = new SparseArray();
   
   public SPEventReportSwitch()
   {
-    jdField_a_of_type_JavaUtilHashMap = (HashMap)RIJSPUtils.a(ReadInJoyUtils.a(), "idle_high_frequency_report_condition", true);
+    p = (HashMap)RIJSPUtils.a(ReadInJoyUtils.b(), "idle_high_frequency_report_condition", true);
   }
   
   public static int a()
@@ -63,7 +63,7 @@ public class SPEventReportSwitch
   public static void a(int paramInt)
   {
     if (paramInt == a()) {
-      jdField_a_of_type_Long = System.currentTimeMillis();
+      i = System.currentTimeMillis();
     }
   }
   
@@ -73,9 +73,9 @@ public class SPEventReportSwitch
       return;
     }
     int i1;
-    if (jdField_a_of_type_JavaUtilHashMap == null)
+    if (p == null)
     {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      p = new HashMap();
       i1 = 1;
     }
     else
@@ -89,13 +89,13 @@ public class SPEventReportSwitch
       int i2 = i1;
       if (localReportConditionParam.uint32_event_id.has())
       {
-        Object localObject2 = (SPEventReportSwitch.SPEventReportCondition)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localReportConditionParam.uint32_event_id.get()));
+        Object localObject2 = (SPEventReportSwitch.SPEventReportCondition)p.get(Integer.valueOf(localReportConditionParam.uint32_event_id.get()));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new SPEventReportSwitch.SPEventReportCondition();
           SPEventReportSwitch.SPEventReportCondition.access$102((SPEventReportSwitch.SPEventReportCondition)localObject1, new ArrayList());
-          jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localReportConditionParam.uint32_event_id.get()), localObject1);
+          p.put(Integer.valueOf(localReportConditionParam.uint32_event_id.get()), localObject1);
           i1 = 1;
         }
         boolean bool;
@@ -150,7 +150,7 @@ public class SPEventReportSwitch
       i1 = i2;
     }
     if (i1 != 0) {
-      RIJSPUtils.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
+      RIJSPUtils.a("idle_high_frequency_report_condition", p, true);
     }
   }
   
@@ -177,44 +177,59 @@ public class SPEventReportSwitch
     }
   }
   
-  public static boolean a()
+  public static int b()
   {
-    int i1 = m;
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (i1 == -1)
+    int i2 = j;
+    int i1 = i2;
+    if (i2 == -1)
     {
       SharedPreferences localSharedPreferences = RIJSPUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {
-        m = n;
+        j = k;
       } else {
-        m = localSharedPreferences.getInt("kd_user_idle_report", n);
+        j = localSharedPreferences.getInt("kd_fore_ground_gap_in_seconds", k);
       }
-      if (m == 1) {
-        bool1 = true;
-      }
-      return bool1;
+      i1 = j;
     }
-    bool1 = bool2;
-    if (i1 == 1) {
-      bool1 = true;
-    }
-    return bool1;
+    return i1;
   }
   
-  public static boolean a(int paramInt)
+  public static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    if (b(paramInt)) {
+    paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
+      return;
+    }
+    try
+    {
+      int i1 = Integer.parseInt(paramString);
+      paramAppRuntime = paramAppRuntime.edit();
+      paramAppRuntime.putInt("kd_tab_click_count_limit", i1);
+      RIJSPUtils.a(paramAppRuntime, true);
+      c = i1;
+      return;
+    }
+    catch (NumberFormatException paramAppRuntime)
+    {
+      paramAppRuntime.printStackTrace();
+    }
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    if (c(paramInt)) {
       return true;
     }
-    Object localObject = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = p;
     int i1 = 0;
     if (localObject != null)
     {
       if (((HashMap)localObject).isEmpty()) {
         return false;
       }
-      SPEventReportSwitch.SPEventReportCondition localSPEventReportCondition = (SPEventReportSwitch.SPEventReportCondition)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      SPEventReportSwitch.SPEventReportCondition localSPEventReportCondition = (SPEventReportSwitch.SPEventReportCondition)p.get(Integer.valueOf(paramInt));
       boolean bool1;
       if ((localSPEventReportCondition != null) && ((SPEventReportSwitch.SPEventReportCondition.access$000(localSPEventReportCondition)) || (SPEventReportSwitch.SPEventReportCondition.access$100(localSPEventReportCondition) != null)))
       {
@@ -261,84 +276,26 @@ public class SPEventReportSwitch
         bool1 = false;
       }
       if (bool1) {
-        RIJSPUtils.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
+        RIJSPUtils.a("idle_high_frequency_report_condition", p, true);
       }
       return bool1;
     }
     return false;
   }
   
-  public static int b()
-  {
-    int i2 = i;
-    int i1 = i2;
-    if (i2 == -1)
-    {
-      SharedPreferences localSharedPreferences = RIJSPUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
-      if (localSharedPreferences == null) {
-        i = j;
-      } else {
-        i = localSharedPreferences.getInt("kd_fore_ground_gap_in_seconds", j);
-      }
-      i1 = i;
-    }
-    return i1;
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
-    {
-      QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
-      return;
-    }
-    try
-    {
-      int i1 = Integer.parseInt(paramString);
-      paramAppRuntime = paramAppRuntime.edit();
-      paramAppRuntime.putInt("kd_tab_click_count_limit", i1);
-      RIJSPUtils.a(paramAppRuntime, true);
-      c = i1;
-      return;
-    }
-    catch (NumberFormatException paramAppRuntime)
-    {
-      paramAppRuntime.printStackTrace();
-    }
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    try
-    {
-      if ((Boolean)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
-      {
-        jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Boolean.valueOf(true));
-        return true;
-      }
-      return false;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public static int c()
   {
-    int i2 = k;
+    int i2 = l;
     int i1 = i2;
     if (i2 == -1)
     {
       SharedPreferences localSharedPreferences = RIJSPUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {
-        k = l;
+        l = m;
       } else {
-        k = localSharedPreferences.getInt("kd_screen_switch_in_seconds", l);
+        l = localSharedPreferences.getInt("kd_screen_switch_in_seconds", m);
       }
-      i1 = k;
+      i1 = l;
     }
     return i1;
   }
@@ -366,6 +323,24 @@ public class SPEventReportSwitch
     }
   }
   
+  private static boolean c(int paramInt)
+  {
+    try
+    {
+      if ((Boolean)q.get(paramInt) == null)
+      {
+        q.put(paramInt, Boolean.valueOf(true));
+        return true;
+      }
+      return false;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public static void d(AppRuntime paramAppRuntime, String paramString)
   {
     paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
@@ -389,6 +364,31 @@ public class SPEventReportSwitch
     }
   }
   
+  public static boolean d()
+  {
+    int i1 = n;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (i1 == -1)
+    {
+      SharedPreferences localSharedPreferences = RIJSPUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      if (localSharedPreferences == null) {
+        n = o;
+      } else {
+        n = localSharedPreferences.getInt("kd_user_idle_report", o);
+      }
+      if (n == 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (i1 == 1) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
   public static void e(AppRuntime paramAppRuntime, String paramString)
   {
     paramAppRuntime = RIJSPUtils.a(paramAppRuntime, true, true);
@@ -403,7 +403,7 @@ public class SPEventReportSwitch
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_fore_ground_gap_in_seconds", i1);
       RIJSPUtils.a(paramAppRuntime, true);
-      i = i1;
+      j = i1;
       return;
     }
     catch (NumberFormatException paramAppRuntime)
@@ -426,7 +426,7 @@ public class SPEventReportSwitch
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_screen_switch_in_seconds", i1);
       RIJSPUtils.a(paramAppRuntime, true);
-      k = i1;
+      l = i1;
       return;
     }
     catch (NumberFormatException paramAppRuntime)
@@ -449,7 +449,7 @@ public class SPEventReportSwitch
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_user_idle_report", i1);
       RIJSPUtils.a(paramAppRuntime, true);
-      m = i1;
+      n = i1;
       return;
     }
     catch (NumberFormatException paramAppRuntime)
@@ -460,7 +460,7 @@ public class SPEventReportSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.SPEventReportSwitch
  * JD-Core Version:    0.7.0.1
  */

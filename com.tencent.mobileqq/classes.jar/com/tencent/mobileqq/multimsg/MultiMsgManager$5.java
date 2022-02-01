@@ -17,17 +17,17 @@ class MultiMsgManager$5
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    Object localObject = this.a.getMessageFacade().a(this.b, this.c, this.d);
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = MultiMsgManager.a().a(this.a, this.d);
       if (localObject != null)
       {
         int i = ((List)localObject).size();
         int j = MultiMsgManager.a().a((Collection)localObject);
         localObject = new HashMap();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_Boolean ^ true);
+        localStringBuilder.append(this.e ^ true);
         localStringBuilder.append("");
         ((HashMap)localObject).put("result", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
@@ -38,14 +38,14 @@ class MultiMsgManager$5
         localStringBuilder.append(j);
         localStringBuilder.append("");
         ((HashMap)localObject).put("picCount", localStringBuilder.toString());
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "multiMsgSend", this.e, 30000L, 0L, (HashMap)localObject, "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.ActionMode.Callback;
 import androidx.core.view.KeyEventDispatcher;
@@ -51,7 +52,7 @@ public class AppCompatDialog
     if (paramInt == 0)
     {
       TypedValue localTypedValue = new TypedValue();
-      paramContext.getTheme().resolveAttribute(2131034453, localTypedValue, true);
+      paramContext.getTheme().resolveAttribute(R.attr.dialogTheme, localTypedValue, true);
       i = localTypedValue.resourceId;
     }
     return i;
@@ -60,6 +61,12 @@ public class AppCompatDialog
   public void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
     getDelegate().addContentView(paramView, paramLayoutParams);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    getDelegate().onDestroy();
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)

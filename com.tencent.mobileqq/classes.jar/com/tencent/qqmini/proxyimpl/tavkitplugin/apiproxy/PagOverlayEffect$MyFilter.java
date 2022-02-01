@@ -11,6 +11,7 @@ class PagOverlayEffect$MyFilter
 {
   PagOverlayEffect$MyFilter(List<TAVSticker> paramList)
   {
+    super(new TAVStickerRenderContext());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -27,7 +28,7 @@ class PagOverlayEffect$MyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagOverlayEffect.MyFilter
  * JD-Core Version:    0.7.0.1
  */

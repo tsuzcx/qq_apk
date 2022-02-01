@@ -32,14 +32,14 @@ public class QFileDelDownloadAdapter
   extends QfileLocalImageExpandableListAdapter
   implements View.OnClickListener
 {
-  int jdField_b_of_type_Int = -1;
-  LinkedHashMap<String, List<FileInfo>> jdField_b_of_type_JavaUtilLinkedHashMap = null;
+  LinkedHashMap<String, List<FileInfo>> i = null;
+  int j = -1;
   
   public QFileDelDownloadAdapter(BaseFileAssistantActivity paramBaseFileAssistantActivity, Object paramObject, int paramInt)
   {
     super(paramBaseFileAssistantActivity, paramObject, null, null, null, null, null);
-    this.jdField_b_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
-    this.jdField_b_of_type_Int = paramInt;
+    this.i = ((LinkedHashMap)paramObject);
+    this.j = paramInt;
   }
   
   protected int a()
@@ -64,21 +64,21 @@ public class QFileDelDownloadAdapter
     }
     try
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560795, null);
+      paramView = this.c.inflate(2131627053, null);
       paramViewGroup = paramView;
       DelDownloadHolder localDelDownloadHolder = new DelDownloadHolder();
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131368461));
+      localDelDownloadHolder.a = ((AsyncImageView)paramView.findViewById(2131435357));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368480));
+      localDelDownloadHolder.b = ((ImageView)paramView.findViewById(2131435382));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368477));
+      localDelDownloadHolder.c = ((ImageView)paramView.findViewById(2131435377));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)paramView.findViewById(2131366792));
+      localDelDownloadHolder.d = ((EllipsizingTextView)paramView.findViewById(2131433114));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366795));
+      localDelDownloadHolder.f = ((TextView)paramView.findViewById(2131433117));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131364692));
+      localDelDownloadHolder.e = ((FrameLayout)paramView.findViewById(2131430794));
       paramViewGroup = paramView;
       paramView.setTag(localDelDownloadHolder);
       break label209;
@@ -88,62 +88,62 @@ public class QFileDelDownloadAdapter
       paramViewGroup = paramView;
       ((FileInfo)localObject1).a((String)getGroup(paramInt1));
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo = ((FileInfo)localObject1);
+      localDelDownloadHolder.g = ((FileInfo)localObject1);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_Int = paramInt2;
+      localDelDownloadHolder.h = paramInt2;
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_b_of_type_Int = paramInt1;
+      localDelDownloadHolder.i = paramInt1;
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAdjustViewBounds(false);
+      localDelDownloadHolder.a.setAdjustViewBounds(false);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localDelDownloadHolder.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130848074);
+      localDelDownloadHolder.a.setDefaultImage(2130849738);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+      localDelDownloadHolder.a.setAsyncClipSize(this.d, this.d);
       paramViewGroup = paramView;
-      if (!((FileInfo)localObject1).b())
+      if (!((FileInfo)localObject1).h())
       {
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText(((FileInfo)localObject1).d());
+        localDelDownloadHolder.d.setText(((FileInfo)localObject1).e());
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(2);
+        localDelDownloadHolder.d.setMaxLines(2);
       }
       else
       {
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText(null);
+        localDelDownloadHolder.d.setText(null);
       }
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetTextView.setText(FileUtil.a(((FileInfo)localObject1).a()));
+      localDelDownloadHolder.f.setText(FileUtil.a(((FileInfo)localObject1).f()));
       paramViewGroup = paramView;
       paramView.setOnClickListener(this);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+      localDelDownloadHolder.e.setOnClickListener(this);
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(localDelDownloadHolder);
+      localDelDownloadHolder.e.setTag(localDelDownloadHolder);
       paramViewGroup = paramView;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder != null)
+      if (this.f != null)
       {
         paramViewGroup = paramView;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder.a((FileInfo)localObject1);
+        localObject2 = this.f.a((FileInfo)localObject1);
         paramViewGroup = paramView;
         if (FileUtils.fileExistsAndNotEmpty((String)localObject2))
         {
           paramViewGroup = paramView;
-          localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage((String)localObject2);
+          localDelDownloadHolder.a.setAsyncImage((String)localObject2);
         }
       }
       paramViewGroup = paramView;
       Object localObject2 = new StringBuilder();
       paramViewGroup = paramView;
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692371));
+      ((StringBuilder)localObject2).append(this.b.getString(2131889359));
       paramViewGroup = paramView;
-      ((StringBuilder)localObject2).append(((FileInfo)localObject1).d());
+      ((StringBuilder)localObject2).append(((FileInfo)localObject1).e());
       paramViewGroup = paramView;
       localObject2 = ((StringBuilder)localObject2).toString();
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localDelDownloadHolder.b.setVisibility(0);
       paramViewGroup = paramView;
       if (FMDataCache.a((FileInfo)localObject1))
       {
@@ -152,28 +152,28 @@ public class QFileDelDownloadAdapter
         paramViewGroup = paramView;
         ((StringBuilder)localObject1).append((String)localObject2);
         paramViewGroup = paramView;
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692372));
+        ((StringBuilder)localObject1).append(this.b.getString(2131889360));
         paramViewGroup = paramView;
         localObject1 = ((StringBuilder)localObject1).toString();
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840575);
+        localDelDownloadHolder.b.setImageResource(2130841341);
         paramViewGroup = paramView;
-        paramView.setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getResources().getColor(2131167394));
+        paramView.setBackgroundColor(this.b.getResources().getColor(2131168464));
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        localDelDownloadHolder.c.setVisibility(0);
         paramViewGroup = paramView;
         paramView.setOnLongClickListener(null);
       }
       else
       {
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+        localDelDownloadHolder.c.setVisibility(4);
         paramViewGroup = paramView;
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845862);
+        localDelDownloadHolder.b.setImageResource(2130847332);
         localObject1 = localObject2;
       }
       paramViewGroup = paramView;
-      localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setContentDescription((CharSequence)localObject1);
+      localDelDownloadHolder.a.setContentDescription((CharSequence)localObject1);
       return paramView;
     }
     catch (Exception paramView)
@@ -190,14 +190,14 @@ public class QFileDelDownloadAdapter
     QfileBaseExpandableListAdapter.QfileGroupTag localQfileGroupTag = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
     if (localQfileGroupTag != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g() == 1)
+      if (this.b.L() == 1)
       {
-        localQfileGroupTag.a.setVisibility(8);
+        localQfileGroupTag.c.setVisibility(8);
         paramView.setEnabled(false);
         return;
       }
       paramView.setEnabled(true);
-      localQfileGroupTag.a.setVisibility(0);
+      localQfileGroupTag.c.setVisibility(0);
     }
   }
   
@@ -211,57 +211,57 @@ public class QFileDelDownloadAdapter
     }
     if (paramView != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g() == 1)
+      if (this.b.L() == 1)
       {
-        paramView.a.setVisibility(8);
+        paramView.c.setVisibility(8);
         paramViewGroup.setEnabled(false);
         onGroupExpanded(0);
         return paramViewGroup;
       }
       paramViewGroup.setEnabled(true);
-      paramView.a.setVisibility(0);
+      paramView.c.setVisibility(0);
     }
     return paramViewGroup;
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
+    int k = paramView.getId();
     DelDownloadHolder localDelDownloadHolder = (DelDownloadHolder)paramView.getTag();
-    if (i == 2131364692)
+    if (k == 2131430794)
     {
-      if (FMDataCache.a(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo))
+      if (FMDataCache.a(localDelDownloadHolder.g))
       {
-        FMDataCache.b(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845862);
-        localDelDownloadHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder.a(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo, false);
+        FMDataCache.c(localDelDownloadHolder.g);
+        localDelDownloadHolder.b.setSelected(false);
+        localDelDownloadHolder.b.setImageResource(2130847332);
+        localDelDownloadHolder.c.setVisibility(4);
+        if (this.f != null) {
+          this.f.a(localDelDownloadHolder.g, false);
         }
       }
       else
       {
-        FMDataCache.a(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
-        localDelDownloadHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840575);
-        localDelDownloadHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder.a(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo, true);
+        FMDataCache.b(localDelDownloadHolder.g);
+        localDelDownloadHolder.b.setSelected(true);
+        localDelDownloadHolder.b.setImageResource(2130841341);
+        localDelDownloadHolder.c.setVisibility(0);
+        if (this.f != null) {
+          this.f.a(localDelDownloadHolder.g, true);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.l();
+      this.b.B();
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder != null)
+    else if (this.f != null)
     {
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).openFileBrowserByFileInfo(this.jdField_a_of_type_AndroidContentContext, localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder.a(localDelDownloadHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo), paramView);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).openFileBrowserByFileInfo(this.a, localDelDownloadHolder.g, this.j, this.f.a(localDelDownloadHolder.g), paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QFileDelDownloadAdapter
  * JD-Core Version:    0.7.0.1
  */

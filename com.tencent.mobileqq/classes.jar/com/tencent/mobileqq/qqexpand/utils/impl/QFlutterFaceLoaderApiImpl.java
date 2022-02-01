@@ -15,7 +15,6 @@ public class QFlutterFaceLoaderApiImpl
   implements IQFlutterFaceLoaderApi
 {
   public static final String TAG = "QFlutterQFlutterFaceLoaderApiImpl";
-  private QFlutterFaceLoader mLoader;
   private final Map<Integer, QFlutterFaceLoaderApiImpl.InnerFaceObserver> mObserverList = new HashMap();
   
   public void addFaceObserver(IQFlutterFaceLoaderApi.ApiFaceObserver paramApiFaceObserver)
@@ -27,17 +26,17 @@ public class QFlutterFaceLoaderApiImpl
     }
     QFlutterFaceLoaderApiImpl.InnerFaceObserver localInnerFaceObserver = new QFlutterFaceLoaderApiImpl.InnerFaceObserver(this, paramApiFaceObserver);
     this.mObserverList.put(Integer.valueOf(paramApiFaceObserver.hashCode()), localInnerFaceObserver);
-    this.mLoader.a(localInnerFaceObserver);
+    QFlutterFaceLoader.a().a(localInnerFaceObserver);
   }
   
   public void clearCache()
   {
-    this.mLoader.a();
+    QFlutterFaceLoader.a().b();
   }
   
   public ApiDecodeRequest convert2Api(DecodeRequest paramDecodeRequest)
   {
-    return new ApiDecodeRequest(paramDecodeRequest.jdField_a_of_type_Int, paramDecodeRequest.jdField_a_of_type_JavaLangString, paramDecodeRequest.b);
+    return new ApiDecodeRequest(paramDecodeRequest.b, paramDecodeRequest.a, paramDecodeRequest.c);
   }
   
   public DecodeRequest convert2Rep(ApiDecodeRequest paramApiDecodeRequest)
@@ -47,14 +46,14 @@ public class QFlutterFaceLoaderApiImpl
   
   public com.tencent.mobileqq.qqexpand.bean.common.Pair<Bitmap, Boolean> getBitmap(ApiDecodeRequest paramApiDecodeRequest)
   {
-    paramApiDecodeRequest = this.mLoader.a(convert2Rep(paramApiDecodeRequest));
+    paramApiDecodeRequest = QFlutterFaceLoader.a().a(convert2Rep(paramApiDecodeRequest));
     return new com.tencent.mobileqq.qqexpand.bean.common.Pair(paramApiDecodeRequest.first, paramApiDecodeRequest.second);
   }
   
   public void onDestroy()
   {
     this.mObserverList.clear();
-    this.mLoader.b();
+    QFlutterFaceLoader.a().c();
   }
   
   public void removeFaceObserver(IQFlutterFaceLoaderApi.ApiFaceObserver paramApiFaceObserver)
@@ -66,14 +65,11 @@ public class QFlutterFaceLoaderApiImpl
     }
   }
   
-  public void setContext(Context paramContext)
-  {
-    this.mLoader = new QFlutterFaceLoader(paramContext);
-  }
+  public void setContext(Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.impl.QFlutterFaceLoaderApiImpl
  * JD-Core Version:    0.7.0.1
  */

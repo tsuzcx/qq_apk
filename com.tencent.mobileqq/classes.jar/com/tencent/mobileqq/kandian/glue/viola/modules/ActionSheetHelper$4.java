@@ -16,10 +16,10 @@ class ActionSheetHelper$4
     paramDialogInterface = new JSONObject();
     try
     {
-      paramDialogInterface.put("index", ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesActionSheetHelper));
+      paramDialogInterface.put("index", ActionSheetHelper.c(this.b));
       paramDialogInterface.put("type", 1);
-      if (ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesActionSheetHelper) != null) {
-        ((BridgeModule)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesActionSheetHelper).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      if (ActionSheetHelper.a(this.b) != null) {
+        ((BridgeModule)ActionSheetHelper.a(this.b).get()).invokeCallJS(this.a, paramDialogInterface);
       }
       return;
     }
@@ -28,7 +28,7 @@ class ActionSheetHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.ActionSheetHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,38 +5,32 @@ import java.util.HashMap;
 
 public class TroopCateListProvider$TroopCateInfo
 {
-  public int a;
   public String a;
-  public ArrayList<TroopCateInfo> a;
-  public boolean a;
-  public int b;
   public String b;
   public String c;
-  public String d;
+  public int d = 0;
+  public int e = 0;
+  public String f;
+  public ArrayList<TroopCateInfo> g;
+  public boolean h;
   
-  public TroopCateListProvider$TroopCateInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public TroopCateListProvider$TroopCateInfo() {}
   
   public TroopCateListProvider$TroopCateInfo(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = ((Integer)TroopCateListProvider.a().get(paramString)).intValue();
+    this.a = paramString;
+    this.d = ((Integer)TroopCateListProvider.b().get(paramString)).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.TroopCateListProvider.TroopCateInfo
  * JD-Core Version:    0.7.0.1
  */

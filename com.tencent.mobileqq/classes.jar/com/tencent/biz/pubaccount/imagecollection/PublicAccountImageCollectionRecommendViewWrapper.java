@@ -20,33 +20,32 @@ import java.util.ArrayList;
 
 public class PublicAccountImageCollectionRecommendViewWrapper
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static Context jdField_a_of_type_AndroidContentContext;
-  static ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  static boolean jdField_a_of_type_Boolean = false;
-  private static int b;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  protected AdapterView.OnItemClickListener a;
+  static boolean a = false;
+  static ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> b = new ArrayList();
+  private static Context d;
+  private static int f;
+  private static int g;
+  protected AdapterView.OnItemClickListener c = new PublicAccountImageCollectionRecommendViewWrapper.1(this);
+  private Activity e;
   
   public PublicAccountImageCollectionRecommendViewWrapper(Activity paramActivity, ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new PublicAccountImageCollectionRecommendViewWrapper.1(this);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
-    jdField_a_of_type_Int = paramInt1;
-    b = paramInt2;
-    jdField_a_of_type_Boolean = paramBoolean;
-    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
+    this.e = paramActivity;
+    d = paramActivity.getApplicationContext();
+    f = paramInt1;
+    g = paramInt2;
+    a = paramBoolean;
+    b = b(paramArrayList);
   }
   
   static int a()
   {
-    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = b;
     if (localArrayList == null) {
       return 0;
     }
     int i = localArrayList.size();
-    int j = (jdField_a_of_type_Int - AIOUtils.b(110.0F, jdField_a_of_type_AndroidContentContext.getResources())) / 3;
+    int j = (f - AIOUtils.b(110.0F, d.getResources())) / 3;
     if (i % 2 == 0) {
       i /= 2;
     } else {
@@ -55,7 +54,28 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     return i * j;
   }
   
-  private ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> a(ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> paramArrayList)
+  @TargetApi(9)
+  private void a(RelativeLayout paramRelativeLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "buildView!");
+    }
+    int i = AIOUtils.b(2.0F, d.getResources());
+    int j = (g - i) / 2;
+    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131444447);
+    paramRelativeLayout.setColumnWidth(j);
+    paramRelativeLayout.setStretchMode(0);
+    paramRelativeLayout.setHorizontalSpacing(i);
+    paramRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, a()));
+    paramRelativeLayout.setNumColumns(2);
+    paramRelativeLayout.setOnItemClickListener(this.c);
+    if (Build.VERSION.SDK_INT >= 9) {
+      paramRelativeLayout.setOverScrollMode(2);
+    }
+    paramRelativeLayout.setAdapter(new PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter(this));
+  }
+  
+  private ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> b(ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList == null) {
@@ -75,27 +95,6 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     return localArrayList;
   }
   
-  @TargetApi(9)
-  private void a(RelativeLayout paramRelativeLayout)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "buildView!");
-    }
-    int i = AIOUtils.b(2.0F, jdField_a_of_type_AndroidContentContext.getResources());
-    int j = (b - i) / 2;
-    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131376239);
-    paramRelativeLayout.setColumnWidth(j);
-    paramRelativeLayout.setStretchMode(0);
-    paramRelativeLayout.setHorizontalSpacing(i);
-    paramRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, a()));
-    paramRelativeLayout.setNumColumns(2);
-    paramRelativeLayout.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-    if (Build.VERSION.SDK_INT >= 9) {
-      paramRelativeLayout.setOverScrollMode(2);
-    }
-    paramRelativeLayout.setAdapter(new PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter(this));
-  }
-  
   public View a(Activity paramActivity, View paramView, ViewGroup paramViewGroup)
   {
     if ((paramView != null) && ((paramView instanceof RelativeLayout)))
@@ -113,45 +112,45 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     if (QLog.isDevelopLevel()) {
       QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView new create!");
     }
-    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131559585, paramViewGroup, false);
+    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131625614, paramViewGroup, false);
     paramView = paramActivity.getLayoutParams();
-    paramView.height = jdField_a_of_type_Int;
+    paramView.height = f;
     paramActivity.setLayoutParams(paramView);
     paramView = new PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder();
-    paramView.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramActivity.findViewById(2131376239));
-    paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131370711));
-    paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131376225));
+    paramView.a = ((GridView)paramActivity.findViewById(2131444447));
+    paramView.b = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131437989));
+    paramView.c = ((TextView)paramActivity.findViewById(2131444433));
     paramActivity.setTag(paramView);
-    if ((jdField_a_of_type_JavaUtilArrayList == null) && (jdField_a_of_type_Boolean))
+    if ((b == null) && (a))
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView getRecommendInfo error");
       }
-      paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup = paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView.getLayoutParams();
-      int i = AIOUtils.b(66.0F, jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.height = (jdField_a_of_type_Int - i);
-      paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
+      paramView.a.setVisibility(8);
+      paramView.c.setVisibility(0);
+      paramViewGroup = paramView.b.getLayoutParams();
+      int i = AIOUtils.b(66.0F, d.getResources());
+      paramViewGroup.height = (f - i);
+      paramView.b.setLayoutParams(paramViewGroup);
       return paramActivity;
     }
-    paramViewGroup = paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView.getLayoutParams();
+    paramViewGroup = paramView.b.getLayoutParams();
     paramViewGroup.height = a();
-    paramView.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
-    paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramView.b.setLayoutParams(paramViewGroup);
+    paramView.a.setVisibility(0);
+    paramView.c.setVisibility(8);
     a(paramActivity);
     return paramActivity;
   }
   
   public void a(ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> paramArrayList)
   {
-    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
+    b = b(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionRecommendViewWrapper
  * JD-Core Version:    0.7.0.1
  */

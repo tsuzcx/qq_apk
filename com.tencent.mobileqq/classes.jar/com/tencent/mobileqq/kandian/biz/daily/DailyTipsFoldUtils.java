@@ -13,37 +13,32 @@ import org.json.JSONObject;
 
 public class DailyTipsFoldUtils
 {
-  private static long jdField_a_of_type_Long = 2000L;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static long b = 2000L;
+  private static Runnable c;
   
   public static void a()
   {
     QLog.i("DailyTipsFoldUtils", 2, "[init]");
-    jdField_a_of_type_Boolean = false;
+    a = false;
   }
   
   public static void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
   {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], listView is null.");
+    if (paramReadInJoyXListView == null) {
       return;
     }
-    if (!DailyModeConfigHandler.c(paramInt))
-    {
-      paramReadInJoyXListView = new StringBuilder();
-      paramReadInJoyXListView.append("[cancelFoldDailyTipsRunnable], is not daily feeds, channelID = ");
-      paramReadInJoyXListView.append(paramInt);
-      QLog.i("DailyTipsFoldUtils", 1, paramReadInJoyXListView.toString());
+    if (!DailyModeConfigHandler.c(paramInt)) {
       return;
     }
-    if (jdField_a_of_type_JavaLangRunnable != null)
+    if (c != null)
     {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
-      paramReadInJoyXListView.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+      if (QLog.isColorLevel()) {
+        QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
+      }
+      paramReadInJoyXListView.removeCallbacks(c);
     }
-    jdField_a_of_type_JavaLangRunnable = null;
+    c = null;
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView)
@@ -57,19 +52,19 @@ public class DailyTipsFoldUtils
       }
       if (a(paramAbsBaseArticleInfo))
       {
-        jdField_a_of_type_JavaLangRunnable = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
-        if (!jdField_a_of_type_Boolean)
+        c = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
+        if (!a)
         {
           paramAbsBaseArticleInfo = Aladdin.getConfig(208);
           if (paramAbsBaseArticleInfo != null)
           {
-            jdField_a_of_type_Long = paramAbsBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
+            b = paramAbsBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
             paramAbsBaseArticleInfo = new StringBuilder();
             paramAbsBaseArticleInfo.append("[foldDailyTips], delayFoldTime = ");
-            paramAbsBaseArticleInfo.append(jdField_a_of_type_Long);
+            paramAbsBaseArticleInfo.append(b);
             QLog.i("DailyTipsFoldUtils", 2, paramAbsBaseArticleInfo.toString());
           }
-          paramReadInJoyXListView.postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
+          paramReadInJoyXListView.postDelayed(c, b);
         }
       }
       return;
@@ -168,29 +163,22 @@ public class DailyTipsFoldUtils
   
   public static void b(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
   {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], listView is null.");
+    if (paramReadInJoyXListView == null) {
       return;
     }
-    if (!DailyModeConfigHandler.c(paramInt))
-    {
-      paramReadInJoyXListView = new StringBuilder();
-      paramReadInJoyXListView.append("[touchDailyFeeds], is not daily feeds, channelID = ");
-      paramReadInJoyXListView.append(paramInt);
-      QLog.i("DailyTipsFoldUtils", 1, paramReadInJoyXListView.toString());
+    if (!DailyModeConfigHandler.c(paramInt)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("DailyTipsFoldUtils", 2, "[touchDailyFeeds], cancelFoldDailyTipsRunnable.");
     }
-    jdField_a_of_type_Boolean = true;
+    a = true;
     a(paramReadInJoyXListView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyTipsFoldUtils
  * JD-Core Version:    0.7.0.1
  */

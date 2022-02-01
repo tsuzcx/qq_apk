@@ -8,8 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class WeiyunRemoteCommand
   extends RemoteCommand
 {
-  private static WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunRemoteCommand$OnStateChangeListener;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  private static final AtomicInteger a = new AtomicInteger();
+  private static WeiyunRemoteCommand.OnStateChangeListener b;
   
   public WeiyunRemoteCommand()
   {
@@ -18,19 +18,19 @@ public class WeiyunRemoteCommand
   
   public void a(WeiyunRemoteCommand.OnStateChangeListener paramOnStateChangeListener)
   {
-    jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunRemoteCommand$OnStateChangeListener = paramOnStateChangeListener;
+    b = paramOnStateChangeListener;
   }
   
   public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
     paramOnInvokeFinishLinstener = new Bundle();
-    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    int i = paramBundle.getInt("param_state", a.get());
+    if (i != a.get())
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
-      paramBundle = jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunRemoteCommand$OnStateChangeListener;
+      a.set(i);
+      paramBundle = b;
       if (paramBundle != null) {
-        paramBundle.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        paramBundle.a(a.get());
       }
     }
     return paramOnInvokeFinishLinstener;
@@ -38,7 +38,7 @@ public class WeiyunRemoteCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.WeiyunRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

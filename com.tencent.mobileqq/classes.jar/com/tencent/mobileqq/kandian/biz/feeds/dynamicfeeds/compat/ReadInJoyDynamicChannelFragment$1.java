@@ -20,18 +20,18 @@ class ReadInJoyDynamicChannelFragment$1
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
-      ReadInJoyDynamicChannelFragment.a(this.a).loadMoreComplete(true, true);
+      ReadInJoyDynamicChannelFragment.c(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.b(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.d(this.a).loadMoreComplete(true, true);
     }
     else
     {
-      ReadInJoyDynamicChannelFragment.b(this.a).startMachineRefresh();
+      ReadInJoyDynamicChannelFragment.e(this.a).startMachineRefresh();
     }
-    paramList = ReadInJoyLogicEngine.a().a();
+    paramList = ReadInJoyLogicEngine.a().i();
     if (paramList != null)
     {
       ReadInJoyDynamicChannelFragment localReadInJoyDynamicChannelFragment = this.a;
-      ReadInJoyDynamicChannelFragment.a(localReadInJoyDynamicChannelFragment, paramList.a(ReadInJoyDynamicChannelFragment.c(localReadInJoyDynamicChannelFragment)));
+      ReadInJoyDynamicChannelFragment.a(localReadInJoyDynamicChannelFragment, paramList.a(ReadInJoyDynamicChannelFragment.f(localReadInJoyDynamicChannelFragment)));
     }
   }
   
@@ -42,37 +42,37 @@ class ReadInJoyDynamicChannelFragment$1
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.d(this.a)) {
+    if (paramInt != ReadInJoyDynamicChannelFragment.g(this.a)) {
       return;
     }
-    paramInt = ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt));
+    paramInt = ReadInJoyLogicEngine.a().b(Integer.valueOf(paramInt));
     String str;
     if ((paramBoolean1) && (paramInt > 0)) {
-      str = String.format(this.a.getResources().getString(2131717753), new Object[] { Integer.valueOf(paramInt) });
+      str = String.format(this.a.getResources().getString(2131915228), new Object[] { Integer.valueOf(paramInt) });
     } else {
-      str = this.a.getResources().getString(2131717752);
+      str = this.a.getResources().getString(2131915227);
     }
-    ReadInJoyDynamicChannelFragment.c(this.a).showRefreshResult(paramBoolean1, str);
+    ReadInJoyDynamicChannelFragment.h(this.a).showRefreshResult(paramBoolean1, str);
     if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.e(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.c(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.i(this.a)), paramList));
     }
-    ReadInJoyDynamicChannelFragment.d(this.a).loadMoreComplete(true, true);
+    ReadInJoyDynamicChannelFragment.j(this.a).loadMoreComplete(true, true);
   }
   
   public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if (paramInt != ReadInJoyDynamicChannelFragment.f(this.a)) {
+    if (paramInt != ReadInJoyDynamicChannelFragment.k(this.a)) {
       return;
     }
     if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyDynamicChannelFragment.a(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.g(this.a)), paramList));
+      ReadInJoyDynamicChannelFragment.c(this.a).a(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyDynamicChannelFragment.l(this.a)), paramList));
     }
-    ReadInJoyDynamicChannelFragment.e(this.a).loadMoreComplete(paramBoolean1, true);
+    ReadInJoyDynamicChannelFragment.m(this.a).loadMoreComplete(paramBoolean1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment.1
  * JD-Core Version:    0.7.0.1
  */

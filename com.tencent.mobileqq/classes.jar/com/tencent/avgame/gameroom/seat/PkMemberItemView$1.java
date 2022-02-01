@@ -12,14 +12,14 @@ class PkMemberItemView$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.setVisibility(4);
+    this.a.g.setVisibility(4);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a.setVisibility(0);
+    this.a.g.setVisibility(0);
   }
 }
 

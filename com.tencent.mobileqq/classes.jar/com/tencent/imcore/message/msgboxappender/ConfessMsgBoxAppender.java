@@ -17,9 +17,9 @@ public class ConfessMsgBoxAppender
 {
   public Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, EntityManager paramEntityManager, Map<String, RecentUser> paramMap, RecentUserProxy paramRecentUserProxy, IConversationFacade paramIConversationFacade, String paramString, int paramInt, long paramLong)
   {
-    if (UinTypeUtil.a(paramMessageRecord.istroop) == 1032)
+    if (UinTypeUtil.e(paramMessageRecord.istroop) == 1032)
     {
-      if (ConfessMsgUtil.b(paramMessageRecord)) {
+      if (ConfessMsgUtil.c(paramMessageRecord)) {
         ((C2CMessageManager)paramIMessageManager).a(paramMessageRecord, AppConstants.CONFESS_UIN, paramMessageRecord.frienduin);
       }
       return new Object[] { Boolean.valueOf(true), AppConstants.CONFESS_UIN, Integer.valueOf(1032), Long.valueOf(paramMessageRecord.time) };
@@ -29,7 +29,7 @@ public class ConfessMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.ConfessMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

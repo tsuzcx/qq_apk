@@ -13,17 +13,17 @@ public abstract interface IWSView<M>
   public abstract void a(M paramM);
   
   @UiThread
-  public abstract void c();
+  public abstract void r();
   
   @UiThread
-  public abstract void d();
+  public abstract void s();
   
   @UiThread
-  public abstract void f();
+  public abstract void u();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSView
  * JD-Core Version:    0.7.0.1
  */

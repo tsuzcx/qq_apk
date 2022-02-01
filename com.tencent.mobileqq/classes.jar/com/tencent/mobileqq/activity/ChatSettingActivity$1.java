@@ -12,21 +12,21 @@ class ChatSettingActivity$1
   {
     if (paramBoolean1)
     {
-      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
+      if ((this.a.t != null) && (paramBoolean2 != this.a.t.a()))
       {
-        this.a.f.setOnCheckedChangeListener(null);
-        this.a.f.setChecked(paramBoolean2);
-        this.a.f.setOnCheckedChangeListener(this.a);
+        this.a.t.setOnCheckedChangeListener(null);
+        this.a.t.setChecked(paramBoolean2);
+        this.a.t.setOnCheckedChangeListener(this.a);
       }
     }
     else {
-      ChatSettingActivity.a(this.a, 2131690712, 1);
+      ChatSettingActivity.a(this.a, 2131887632, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

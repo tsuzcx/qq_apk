@@ -23,6 +23,8 @@ public class MethodUpdateElement
   private JSONObject mUpdateData;
   private boolean needReflow = false;
   private volatile boolean sync;
+  private Map<String, Object> updateAttrs;
+  private Map<String, Object> updateStyles;
   
   public MethodUpdateElement(String paramString, JSONObject paramJSONObject)
   {
@@ -35,6 +37,18 @@ public class MethodUpdateElement
     this.mUpdateData = paramJSONObject;
     this.sync = paramBoolean1;
     this.applyLayout = paramBoolean2;
+  }
+  
+  private void bindData(VComponent paramVComponent)
+  {
+    DomObject localDomObject = this.mDomObject;
+    if (localDomObject != null)
+    {
+      if (paramVComponent == null) {
+        return;
+      }
+      paramVComponent.bindData(localDomObject);
+    }
   }
   
   private void tryCompatVR(Map<String, Object> paramMap, VComponent paramVComponent)
@@ -84,14 +98,18 @@ public class MethodUpdateElement
     {
       if (this.mUpdateData.has("style"))
       {
-        localDomObject.updateStyle(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("style")));
-        localDomObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getApplyStyleConsumer() });
+        this.updateStyles = ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("style"));
+        localDomObject.updateStyle(this.updateStyles);
+        if (!ViolaUtils.isBindDataOpmOpen()) {
+          localDomObject.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getApplyStyleConsumer() });
+        }
       }
-      if (this.mUpdateData.has("attr")) {
-        localDomObject.updateAttr(ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr")));
+      if (this.mUpdateData.has("attr"))
+      {
+        this.updateAttrs = ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr"));
+        localDomObject.updateAttr(this.updateAttrs);
       }
       this.mDomObject = localDomObject;
-      paramDOMActionContext.getComponent(this.mRef);
       this.mRootRef = paramDOMActionContext.getRootRef();
       if (!this.sync) {
         paramDOMActionContext.postRenderTask(this);
@@ -104,60 +122,54 @@ public class MethodUpdateElement
   public void executeRender(RenderActionContext paramRenderActionContext)
   {
     VComponent localVComponent = paramRenderActionContext.getComponent(this.mRef);
-    int j;
-    int i;
     if (localVComponent != null)
     {
       if (TextUtils.isEmpty(this.mRootRef)) {
         return;
       }
-      j = 0;
-      i = j;
-    }
-    try
-    {
-      Map localMap;
-      if (this.mUpdateData.has("attr"))
+      int j = 0;
+      Map localMap = this.updateAttrs;
+      int i = j;
+      if (localMap != null)
       {
-        localMap = ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("attr"));
         localVComponent.updateAttrs(localMap);
-        tryCompatVR(localMap, localVComponent);
+        tryCompatVR(this.updateAttrs, localVComponent);
         i = j;
-        if (DomObject.shouldDirty(localMap)) {
+        if (DomObject.shouldDirty(this.updateAttrs)) {
           i = 1;
         }
       }
+      localMap = this.updateStyles;
       j = i;
-      if (this.mUpdateData.has("style"))
+      if (localMap != null)
       {
-        localMap = ViolaUtils.json2HashMap(this.mUpdateData.getJSONObject("style"));
         localVComponent.updateStyle(localMap, true);
         j = i;
-        if (DomObject.shouldDirty(localMap)) {
+        if (DomObject.shouldDirty(this.updateStyles)) {
           j = 1;
         }
       }
       paramRenderActionContext = paramRenderActionContext.getComponent(this.mRootRef);
       if ((paramRenderActionContext != null) && (this.applyLayout)) {
-        paramRenderActionContext.applyLayoutAndEvent();
-      }
-      if (this.mDomObject != null)
-      {
-        localVComponent.bindData(this.mDomObject);
-        if (j != 0) {
-          localVComponent.notifyChange(1, this.mRef);
+        if (ViolaUtils.isLayoutOpmOpen()) {
+          paramRenderActionContext.applyLayout();
+        } else {
+          paramRenderActionContext.applyLayoutAndEvent();
         }
+      }
+      bindData(localVComponent);
+      if (j != 0)
+      {
+        localVComponent.notifyChange(1, this.mRef);
         localVComponent.notifyWhenChange("update", this.mDomObject);
       }
       localVComponent.updateLifeCycle("updated");
-      return;
     }
-    catch (JSONException paramRenderActionContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodUpdateElement
  * JD-Core Version:    0.7.0.1
  */

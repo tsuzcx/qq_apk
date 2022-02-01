@@ -6,50 +6,28 @@ import com.tencent.qg.video.VideoPerformanceMonitor;
 class MediaDecoder$DecodeRunnable
   implements Runnable
 {
-  private final Object a;
   public volatile boolean a;
-  
-  private void a()
-  {
-    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "release");
-    MediaDecoder.a(this.this$0).b();
-    if (MediaDecoder.a(this.this$0)) {
-      MediaDecoder.a(this.this$0).b();
-    }
-    if (MediaDecoder.a(this.this$0) != null) {
-      MediaDecoder.a(this.this$0).interrupt();
-    }
-    MediaDecoder.a(this.this$0, null);
-  }
+  private final Object b;
   
   private boolean a()
   {
     MediaDecoder localMediaDecoder = this.this$0;
     boolean bool;
-    if ((MediaDecoder.c(localMediaDecoder)) && (MediaDecoder.a(this.this$0).a())) {
+    if ((MediaDecoder.h(localMediaDecoder)) && (MediaDecoder.f(this.this$0).d())) {
       bool = true;
     } else {
       bool = false;
     }
     MediaDecoder.b(localMediaDecoder, bool);
-    return MediaDecoder.a(this.this$0).a();
-  }
-  
-  private void b()
-  {
-    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "onPauseFinish");
-    MediaDecoder.a(this.this$0).a();
-    if (MediaDecoder.a(this.this$0)) {
-      MediaDecoder.a(this.this$0).a();
-    }
+    return MediaDecoder.d(this.this$0).d();
   }
   
   private boolean b()
   {
-    if (MediaDecoder.a(this.this$0)) {
-      MediaDecoder.a(this.this$0).b();
+    if (MediaDecoder.e(this.this$0)) {
+      MediaDecoder.f(this.this$0).e();
     }
-    boolean bool = MediaDecoder.a(this.this$0).b();
+    boolean bool = MediaDecoder.d(this.this$0).e();
     SLog.a("Q.qqstory.mediadecoderMediaDecoder", "start finish : %s", Boolean.valueOf(bool));
     return bool;
   }
@@ -57,10 +35,10 @@ class MediaDecoder$DecodeRunnable
   private boolean c()
   {
     int i;
-    if (MediaDecoder.a(this.this$0).a() / 1000L <= System.currentTimeMillis() - MediaDecoder.a(this.this$0).b())
+    if (MediaDecoder.d(this.this$0).h() / 1000L <= System.currentTimeMillis() - MediaDecoder.d(this.this$0).i())
     {
-      MediaDecoder.a(this.this$0).c();
-      MediaDecoder.a(this.this$0).a(MediaDecoder.a(this.this$0).a());
+      MediaDecoder.d(this.this$0).g();
+      MediaDecoder.b(this.this$0).a(MediaDecoder.d(this.this$0).h());
       i = 1;
     }
     else
@@ -68,12 +46,12 @@ class MediaDecoder$DecodeRunnable
       i = 0;
     }
     int j = i;
-    if (MediaDecoder.a(this.this$0))
+    if (MediaDecoder.e(this.this$0))
     {
       j = i;
-      if (MediaDecoder.a(this.this$0).a() <= MediaDecoder.a(this.this$0).a() - 500000L)
+      if (MediaDecoder.f(this.this$0).h() <= MediaDecoder.d(this.this$0).h() - 500000L)
       {
-        MediaDecoder.a(this.this$0).c();
+        MediaDecoder.f(this.this$0).g();
         j = 1;
       }
     }
@@ -88,15 +66,15 @@ class MediaDecoder$DecodeRunnable
         SLog.b("Q.qqstory.mediadecoderMediaDecoder", "decodeFrame sleep error :%s", localInterruptedException);
       }
     }
-    if (MediaDecoder.a(this.this$0).c())
+    if (MediaDecoder.d(this.this$0).f())
     {
-      if (MediaDecoder.d(this.this$0))
+      if (MediaDecoder.i(this.this$0))
       {
-        MediaDecoder.a(this.this$0).a(0L);
-        if (MediaDecoder.a(this.this$0)) {
-          MediaDecoder.a(this.this$0).a(0L);
+        MediaDecoder.d(this.this$0).a(0L);
+        if (MediaDecoder.e(this.this$0)) {
+          MediaDecoder.f(this.this$0).a(0L);
         }
-        MediaDecoder.a(this.this$0).d();
+        MediaDecoder.b(this.this$0).d();
         return false;
       }
       return true;
@@ -104,96 +82,118 @@ class MediaDecoder$DecodeRunnable
     return false;
   }
   
+  private void d()
+  {
+    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "release");
+    MediaDecoder.d(this.this$0).c();
+    if (MediaDecoder.e(this.this$0)) {
+      MediaDecoder.f(this.this$0).c();
+    }
+    if (MediaDecoder.j(this.this$0) != null) {
+      MediaDecoder.j(this.this$0).interrupt();
+    }
+    MediaDecoder.a(this.this$0, null);
+  }
+  
+  private void e()
+  {
+    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "onPauseFinish");
+    MediaDecoder.d(this.this$0).b();
+    if (MediaDecoder.e(this.this$0)) {
+      MediaDecoder.f(this.this$0).b();
+    }
+  }
+  
   public void run()
   {
     try
     {
-      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).a, "[MediaDecoder] decode thread start run");
+      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).b, "[MediaDecoder] decode thread start run");
       MediaDecoder.a(this.this$0, false);
       if (!a())
       {
-        MediaDecoder.a(this.this$0).a(1000, new Exception("init error"));
+        MediaDecoder.b(this.this$0).a(1000, new Exception("init error"));
         MediaDecoder.a(this.this$0, false);
-        if (MediaDecoder.a(this.this$0).c()) {
-          MediaDecoder.a(this.this$0).b();
+        if (MediaDecoder.d(this.this$0).f()) {
+          MediaDecoder.b(this.this$0).b();
         } else {
-          MediaDecoder.a(this.this$0).c();
+          MediaDecoder.b(this.this$0).c();
         }
-        a();
+        d();
         return;
       }
-      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).a, "[MediaDecoder] init decoder finish");
+      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).b, "[MediaDecoder] init decoder finish");
       if (!b())
       {
-        MediaDecoder.a(this.this$0).a(1001, new Exception("start error"));
+        MediaDecoder.b(this.this$0).a(1001, new Exception("start error"));
         MediaDecoder.a(this.this$0, false);
-        if (MediaDecoder.a(this.this$0).c()) {
-          MediaDecoder.a(this.this$0).b();
+        if (MediaDecoder.d(this.this$0).f()) {
+          MediaDecoder.b(this.this$0).b();
         } else {
-          MediaDecoder.a(this.this$0).c();
+          MediaDecoder.b(this.this$0).c();
         }
-        a();
+        d();
         return;
       }
-      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).a, "[MediaDecoder] start decoder finish");
+      VideoPerformanceMonitor.a(MediaDecoder.a(this.this$0).b, "[MediaDecoder] start decoder finish");
       MediaDecoder.a(this.this$0, true);
-      MediaDecoder.a(this.this$0).a();
+      MediaDecoder.b(this.this$0).a();
       for (;;)
       {
-        if ((!Thread.interrupted()) && (!this.jdField_a_of_type_Boolean))
+        if ((!Thread.interrupted()) && (!this.a))
         {
-          if (MediaDecoder.a(this.this$0) >= 0L)
+          if (MediaDecoder.c(this.this$0) >= 0L)
           {
-            MediaDecoder.a(this.this$0).a(MediaDecoder.a(this.this$0) * 1000L);
-            if (MediaDecoder.a(this.this$0)) {
-              MediaDecoder.a(this.this$0).a(MediaDecoder.a(this.this$0) * 1000L);
+            MediaDecoder.d(this.this$0).a(MediaDecoder.c(this.this$0) * 1000L);
+            if (MediaDecoder.e(this.this$0)) {
+              MediaDecoder.f(this.this$0).a(MediaDecoder.c(this.this$0) * 1000L);
             }
             MediaDecoder.a(this.this$0, -1L);
           }
           if (!c())
           {
-            boolean bool = MediaDecoder.b(this.this$0);
+            boolean bool = MediaDecoder.g(this.this$0);
             if (!bool) {
               continue;
             }
             try
             {
-              synchronized (this.jdField_a_of_type_JavaLangObject)
+              synchronized (this.b)
               {
                 MediaDecoder.a(this.this$0, false);
-                if (!this.jdField_a_of_type_Boolean) {
-                  this.jdField_a_of_type_JavaLangObject.wait();
+                if (!this.a) {
+                  this.b.wait();
                 }
                 MediaDecoder.a(this.this$0, true);
-                b();
+                e();
               }
             }
             catch (InterruptedException localInterruptedException)
             {
               SLog.b("Q.qqstory.mediadecoderMediaDecoder", "pause error ! %s", localInterruptedException);
-              this.jdField_a_of_type_Boolean = true;
+              this.a = true;
             }
           }
         }
       }
       MediaDecoder.a(this.this$0, false);
-      if (MediaDecoder.a(this.this$0).c()) {
-        MediaDecoder.a(this.this$0).b();
+      if (MediaDecoder.d(this.this$0).f()) {
+        MediaDecoder.b(this.this$0).b();
       } else {
-        MediaDecoder.a(this.this$0).c();
+        MediaDecoder.b(this.this$0).c();
       }
-      a();
+      d();
       return;
     }
     finally
     {
       MediaDecoder.a(this.this$0, false);
-      if (MediaDecoder.a(this.this$0).c()) {
-        MediaDecoder.a(this.this$0).b();
+      if (MediaDecoder.d(this.this$0).f()) {
+        MediaDecoder.b(this.this$0).b();
       } else {
-        MediaDecoder.a(this.this$0).c();
+        MediaDecoder.b(this.this$0).c();
       }
-      a();
+      d();
     }
     for (;;)
     {
@@ -203,7 +203,7 @@ class MediaDecoder$DecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.video.videodecoder.MediaDecoder.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

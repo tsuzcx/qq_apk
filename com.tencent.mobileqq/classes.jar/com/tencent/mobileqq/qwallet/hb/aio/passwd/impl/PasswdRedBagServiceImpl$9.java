@@ -13,18 +13,18 @@ class PasswdRedBagServiceImpl$9
   
   public void run()
   {
-    Iterator localIterator = PasswdRedBagServiceImpl.access$100(this.this$0).a().iterator();
+    Iterator localIterator = PasswdRedBagServiceImpl.access$400(this.this$0).b().iterator();
     while (localIterator.hasNext())
     {
       PasswdRedBagInfo localPasswdRedBagInfo = (PasswdRedBagInfo)localIterator.next();
-      PasswdRedBagServiceImpl.access$800(this.this$0, localPasswdRedBagInfo);
-      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(PasswdRedBagServiceImpl.access$600(this.this$0), false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
+      PasswdRedBagServiceImpl.access$500(this.this$0, localPasswdRedBagInfo);
+      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PasswdRedBagFoldManager$updateRedBagMapCache(PasswdRedBagServiceImpl.access$200(this.this$0), false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.9
  * JD-Core Version:    0.7.0.1
  */

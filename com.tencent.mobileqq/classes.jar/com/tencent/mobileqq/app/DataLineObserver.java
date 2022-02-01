@@ -37,13 +37,13 @@ public class DataLineObserver
   
   protected void b() {}
   
-  protected void b(long paramLong) {}
-  
   protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2) {}
   
   protected void b(Session paramSession) {}
   
   protected void b(boolean paramBoolean, long paramLong, String paramString) {}
+  
+  protected void c(long paramLong) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -54,7 +54,7 @@ public class DataLineObserver
     default: 
       return;
     case 21: 
-      b(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+      c(((Long)((Object[])(Object[])paramObject)[0]).longValue());
       return;
     case 20: 
       paramObject = (Object[])paramObject;
@@ -132,7 +132,7 @@ public class DataLineObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineObserver
  * JD-Core Version:    0.7.0.1
  */

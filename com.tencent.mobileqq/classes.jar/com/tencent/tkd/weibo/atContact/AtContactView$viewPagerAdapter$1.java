@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import androidx.viewpager.widget.PagerAdapter;
-import com.tencent.tkd.weibo.framework.mvp.BaseListView;
+import com.tencent.tkd.topicsdk.mvp.BaseListView;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -27,8 +27,8 @@ public final class AtContactView$viewPagerAdapter$1
       paramViewGroup.addView((View)AtContactView.a(this.a), new ViewGroup.LayoutParams(-1, -1));
       return (BaseListView)AtContactView.a(this.a);
     }
-    paramViewGroup.addView((View)AtContactView.a(this.a), new ViewGroup.LayoutParams(-1, -1));
-    return (BaseListView)AtContactView.a(this.a);
+    paramViewGroup.addView((View)AtContactView.b(this.a), new ViewGroup.LayoutParams(-1, -1));
+    return (BaseListView)AtContactView.b(this.a);
   }
   
   public boolean isViewFromObject(@NotNull View paramView, @NotNull Object paramObject)
@@ -40,7 +40,7 @@ public final class AtContactView$viewPagerAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.AtContactView.viewPagerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

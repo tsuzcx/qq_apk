@@ -55,14 +55,14 @@ public class IdentificationUtils
     if (paramBoolean)
     {
       QLog.e("IdentificationUtils", 1, "entrance click, has unverified phone");
-      paramErrorRunnable.a(paramActivity.getString(2131698926));
+      paramErrorRunnable.a(paramActivity.getString(2131896900));
       a = 7;
       return;
     }
     if (TextUtils.isEmpty(paramString1))
     {
       QLog.e("IdentificationUtils", 1, "entrance click, phoneNum is null");
-      paramErrorRunnable.a(paramActivity.getString(2131698925));
+      paramErrorRunnable.a(paramActivity.getString(2131896899));
       a = 1;
       return;
     }
@@ -84,13 +84,13 @@ public class IdentificationUtils
       return;
     }
     QLog.e("IdentificationUtils", 1, "entrance click, status error");
-    paramErrorRunnable.a(paramActivity.getString(2131698921));
+    paramErrorRunnable.a(paramActivity.getString(2131896895));
     a = 2;
   }
   
   protected static void a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, IdentificationUtils.ErrorRunnable paramErrorRunnable)
   {
-    if (System.currentTimeMillis() - LoginStaticField.a >= 60000L)
+    if (System.currentTimeMillis() - LoginStaticField.b >= 60000L)
     {
       LoginVerifyServlet.a(paramAppRuntime, new IdentificationUtils.1(paramString1, paramString2, paramContext, paramErrorRunnable));
       a = 3;
@@ -102,7 +102,7 @@ public class IdentificationUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.IdentificationUtils
  * JD-Core Version:    0.7.0.1
  */

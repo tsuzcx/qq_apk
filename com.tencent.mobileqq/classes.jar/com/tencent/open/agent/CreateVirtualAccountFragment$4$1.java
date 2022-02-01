@@ -11,17 +11,17 @@ class CreateVirtualAccountFragment$4$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a.getQBaseActivity(), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.b.getQBaseActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    CreateVirtualAccountFragment.a(this.a.a, QQLiteStatusUtil.a(this.a.a.getActivity()));
+    CreateVirtualAccountFragment.a(this.a.b, QQLiteStatusUtil.b(this.a.b.getActivity()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CreateVirtualAccountFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

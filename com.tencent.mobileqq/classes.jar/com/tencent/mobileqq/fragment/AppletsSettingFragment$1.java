@@ -20,14 +20,14 @@ class AppletsSettingFragment$1
       AppletsSettingFragment localAppletsSettingFragment = this.a;
       AppletsSettingFragment.a(localAppletsSettingFragment, AppletsSettingFragment.a(localAppletsSettingFragment) ^ true);
       localAppletsSettingFragment = this.a;
-      AppletsSettingFragment.a(localAppletsSettingFragment, AppletsSettingFragment.a(localAppletsSettingFragment));
+      AppletsSettingFragment.b(localAppletsSettingFragment, AppletsSettingFragment.a(localAppletsSettingFragment));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.AppletsSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

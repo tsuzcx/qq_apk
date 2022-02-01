@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center" android:layout_gravity="center" android:id="@id/6s" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/an" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/an" android:text="@string/y14" android:maxLines="1" android:drawablePadding="4.0dip" />
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/6r" android:background="@drawable/1v" android:layout_width="251.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/an" android:layout_marginTop="12.0dip" android:layout_marginRight="@dimen/an">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/6n" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/70" android:visibility="visible" android:layout_width="227.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:maxHeight="104.0dip" android:text="@string/y13" android:maxLines="2" />
+                <ViewStub android:layout_gravity="center_horizontal" android:id="@id/71" android:layout="@layout/5i" android:layout_width="227.0dip" android:layout_height="128.0dip" android:layout_marginTop="8.0dip" />
+                <ViewStub android:layout_gravity="center_horizontal" android:id="@id/6z" android:layout="@layout/5h" android:layout_width="227.0dip" android:layout_height="128.0dip" android:layout_marginTop="8.0dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="35.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/ipt" android:scaleType="centerCrop" />
+                <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/6q" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/xw9" android:maxLines="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

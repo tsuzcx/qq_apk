@@ -10,12 +10,12 @@ class AETipsViewController$4
   
   public void onAnimationCancel(PAGView paramPAGView)
   {
-    AETipsViewController.a(this.a).setVisibility(8);
+    AETipsViewController.d(this.a).setVisibility(8);
   }
   
   public void onAnimationEnd(PAGView paramPAGView)
   {
-    AETipsViewController.a(this.a).setVisibility(8);
+    AETipsViewController.d(this.a).setVisibility(8);
   }
   
   public void onAnimationRepeat(PAGView paramPAGView) {}
@@ -24,7 +24,7 @@ class AETipsViewController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.tips.AETipsViewController.4
  * JD-Core Version:    0.7.0.1
  */

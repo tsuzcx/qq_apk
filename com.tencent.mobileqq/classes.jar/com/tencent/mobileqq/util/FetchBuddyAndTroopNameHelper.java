@@ -6,15 +6,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FetchBuddyAndTroopNameHelper
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FetchInfoListManager jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = null;
+  private QQAppInterface a;
+  private FetchInfoListManager b = null;
   
   public FetchBuddyAndTroopNameHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
-  private FetchInfoListManager a()
+  private FetchInfoListManager b()
   {
     FetchInfoListManager localFetchInfoListManager = new FetchInfoListManager(new FetchBuddyAndTroopNameHelper.1(this));
     if (QLog.isColorLevel())
@@ -29,49 +29,49 @@ public class FetchBuddyAndTroopNameHelper
   
   public void a()
   {
-    FetchInfoListManager localFetchInfoListManager = this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager;
+    FetchInfoListManager localFetchInfoListManager = this.b;
     if (localFetchInfoListManager != null)
     {
       localFetchInfoListManager.a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = null;
+      this.b = null;
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = a();
+    if (this.b == null) {
+      this.b = b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager.a(2, paramString, null, null, null);
+    this.b.a(2, paramString, null, null, null);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = a();
+    if (this.b == null) {
+      this.b = b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager.a(3, paramString1, paramString2, paramString3, paramBundle);
+    this.b.a(3, paramString1, paramString2, paramString3, paramBundle);
   }
   
   public void b(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = a();
+    if (this.b == null) {
+      this.b = b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager.a(1, paramString, null, null, null);
+    this.b.a(1, paramString, null, null, null);
   }
   
   public void c(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager = a();
+    if (this.b == null) {
+      this.b = b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilFetchInfoListManager.a(4, paramString, null, null, null);
+    this.b.a(4, paramString, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

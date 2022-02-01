@@ -22,18 +22,18 @@ class RedTouchManager$3
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.this$0.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("8.7.0.5295");
+    localReportReqBody.clientver.set("8.8.17.5770");
     localReportReqBody.platid.set(109);
-    localReportReqBody.appid.set(RedTouchUtil.a(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.path.get()));
+    localReportReqBody.appid.set(RedTouchUtil.a(this.a.path.get()));
     Object localObject1 = localReportReqBody.platver;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
     ((StringBuilder)localObject2).append("");
     ((PBStringField)localObject1).set(((StringBuilder)localObject2).toString());
     localReportReqBody.cmd.set(18);
-    localReportReqBody.extend.set(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.extend.get());
-    if (this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.missions.has()) {
-      localReportReqBody.missionid.set(this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo.missions.get());
+    localReportReqBody.extend.set(this.a.extend.get());
+    if (this.a.missions.has()) {
+      localReportReqBody.missionid.set(this.a.missions.get());
     }
     localObject2 = new JSONObject();
     Object localObject3;
@@ -42,7 +42,7 @@ class RedTouchManager$3
       localObject1 = new JSONObject();
       try
       {
-        ((JSONObject)localObject1).put("time_on_page", this.jdField_a_of_type_Long);
+        ((JSONObject)localObject1).put("time_on_page", this.b);
       }
       catch (Exception localException1) {}
       localStringBuilder = new StringBuilder();
@@ -64,7 +64,7 @@ class RedTouchManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchManager.3
  * JD-Core Version:    0.7.0.1
  */

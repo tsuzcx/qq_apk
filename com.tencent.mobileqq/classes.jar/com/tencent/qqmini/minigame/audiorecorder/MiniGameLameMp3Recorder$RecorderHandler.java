@@ -20,7 +20,7 @@ class MiniGameLameMp3Recorder$RecorderHandler
   public static final int MSG_RECORD_START = 1;
   public static final int MSG_RECORD_STOP = 4;
   public static final int MSG_RECORD_UPDATE = 7;
-  private final long UPDATE_INTERVAL = 100L;
+  private static final long UPDATE_INTERVAL = 100L;
   private final WeakReference<MiniGameLameMp3Recorder> recorder;
   
   public MiniGameLameMp3Recorder$RecorderHandler(MiniGameLameMp3Recorder paramMiniGameLameMp3Recorder)
@@ -178,7 +178,7 @@ class MiniGameLameMp3Recorder$RecorderHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.audiorecorder.MiniGameLameMp3Recorder.RecorderHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class GuessSongGameRecordCtrl$5
       localObject = this.a.getDrawingCache();
       if (localObject != null)
       {
-        Context localContext = (Context)this.this$0.a.get();
+        Context localContext = (Context)this.this$0.e.get();
         if (localContext != null)
         {
           float f = 720.0F / localContext.getResources().getDisplayMetrics().widthPixels;

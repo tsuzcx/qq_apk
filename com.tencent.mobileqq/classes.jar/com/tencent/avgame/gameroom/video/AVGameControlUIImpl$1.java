@@ -10,7 +10,7 @@ class AVGameControlUIImpl$1
   
   public void run()
   {
-    QavSDK.a().a().c();
+    QavSDK.a().c().e();
   }
 }
 

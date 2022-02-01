@@ -19,7 +19,7 @@ class FileTransferHandler$12
       localStringBuilder.append(this.a.nSessionId);
       localStringBuilder.append("]Send CCMsg, but not size and thumb, try download Pic Thumb");
       QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-      this.this$0.a.getFileManagerEngine().b(this.a, 7);
+      this.this$0.a.getFileManagerEngine().d(this.a, 7);
       return;
     }
     if (this.a.nFileType == 2)
@@ -29,13 +29,13 @@ class FileTransferHandler$12
       localStringBuilder.append(this.a.nSessionId);
       localStringBuilder.append("]Send CCMsg, but not size and thumb, try download Video Thumb");
       QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-      this.this$0.a.getFileManagerEngine().b(this.a);
+      this.this$0.a.getFileManagerEngine().c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.12
  * JD-Core Version:    0.7.0.1
  */

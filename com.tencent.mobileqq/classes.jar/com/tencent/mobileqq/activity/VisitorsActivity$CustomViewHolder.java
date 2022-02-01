@@ -7,25 +7,25 @@ import com.tencent.widget.SimpleTextView;
 
 class VisitorsActivity$CustomViewHolder
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SimpleTextView jdField_a_of_type_ComTencentWidgetSimpleTextView;
-  Object jdField_a_of_type_JavaLangObject;
-  int jdField_b_of_type_Int;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  LinearLayout a;
+  ImageView b;
+  TextView c;
+  ImageView d;
   TextView e;
   TextView f;
   TextView g;
+  TextView h;
+  TextView i;
+  ImageView j;
+  TextView k;
+  SimpleTextView l;
+  int m;
+  int n;
+  Object o;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.CustomViewHolder
  * JD-Core Version:    0.7.0.1
  */

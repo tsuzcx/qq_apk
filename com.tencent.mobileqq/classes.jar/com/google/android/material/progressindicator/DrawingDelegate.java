@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 abstract class DrawingDelegate<S extends BaseProgressIndicatorSpec>
 {
   S a;
-  protected DrawableWithAnimatedVisibilityChange a;
+  protected DrawableWithAnimatedVisibilityChange b;
   
   public DrawingDelegate(S paramS)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec = paramS;
+    this.a = paramS;
   }
   
   abstract int a();
@@ -26,20 +26,20 @@ abstract class DrawingDelegate<S extends BaseProgressIndicatorSpec>
   
   protected void a(@NonNull DrawableWithAnimatedVisibilityChange paramDrawableWithAnimatedVisibilityChange)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange = paramDrawableWithAnimatedVisibilityChange;
+    this.b = paramDrawableWithAnimatedVisibilityChange;
   }
   
   abstract int b();
   
   void b(@NonNull Canvas paramCanvas, @FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec.a();
+    this.a.c();
     a(paramCanvas, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.DrawingDelegate
  * JD-Core Version:    0.7.0.1
  */

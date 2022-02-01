@@ -43,22 +43,22 @@ class QQWalletHbItemApiImpl$3
     MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
     QQWalletRedPacketMsg localQQWalletRedPacketMsg = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
     IPasswdRedBagService localIPasswdRedBagService = (IPasswdRedBagService)this.a.mAppInterface.getRuntimeService(IPasswdRedBagService.class, "");
-    if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.a.sessionInfo.jdField_a_of_type_JavaLangString))
+    if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.a.sessionInfo.b))
     {
-      localIPasswdRedBagService.createPasswdRedBagAnonymousTips(this.a.sessionInfo.jdField_a_of_type_JavaLangString, 11);
+      localIPasswdRedBagService.createPasswdRedBagAnonymousTips(this.a.sessionInfo.b, 11);
       if (QLog.isColorLevel()) {
         QLog.d("PasswdRedBagSgervice", 2, "current is in Anonymous, dont show passwdredbag tips");
       }
       return;
     }
-    if (this.a.sessionInfo.jdField_a_of_type_Int == 1)
+    if (this.a.sessionInfo.a == 1)
     {
       localObject = (ITroopGagMgr)this.a.mAppInterface.getRuntimeService(ITroopGagMgr.class);
-      boolean bool = ((ITroopGagMgr)localObject).isTroopMemberGag(this.a.sessionInfo.jdField_a_of_type_JavaLangString, this.a.mAppInterface.getCurrentAccountUin());
-      localObject = ((ITroopGagMgr)localObject).getSelfGagInfo(this.a.sessionInfo.jdField_a_of_type_JavaLangString, false);
-      if ((bool) || ((localObject != null) && (((SelfGagInfo)localObject).jdField_a_of_type_Boolean)))
+      boolean bool = ((ITroopGagMgr)localObject).isTroopMemberGag(this.a.sessionInfo.b, this.a.mAppInterface.getCurrentAccountUin());
+      localObject = ((ITroopGagMgr)localObject).getSelfGagInfo(this.a.sessionInfo.b, false);
+      if ((bool) || ((localObject != null) && (((SelfGagInfo)localObject).b)))
       {
-        localIPasswdRedBagService.createPasswdRedBagBanTips(this.a.sessionInfo.jdField_a_of_type_JavaLangString, 11);
+        localIPasswdRedBagService.createPasswdRedBagBanTips(this.a.sessionInfo.b, 11);
         if (QLog.isColorLevel()) {
           QLog.d("PasswdRedBagSgervice", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
         }
@@ -67,23 +67,23 @@ class QQWalletHbItemApiImpl$3
     }
     Object localObject = localIPasswdRedBagService.getPasswdRedBagInfoById(localQQWalletRedPacketMsg.redPacketId);
     l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    if ((localObject != null) && ((((PasswdRedBagInfo)localObject).jdField_a_of_type_Boolean) || (((PasswdRedBagInfo)localObject).b) || (((PasswdRedBagInfo)localObject).jdField_a_of_type_Long < l)))
+    if ((localObject != null) && ((((PasswdRedBagInfo)localObject).f) || (((PasswdRedBagInfo)localObject).g) || (((PasswdRedBagInfo)localObject).d < l)))
     {
-      localIPasswdRedBagService.setPasswdRedBagOpen(localQQWalletRedPacketMsg.redPacketId, this.a.sessionInfo.jdField_a_of_type_JavaLangString, this.a.sessionInfo.jdField_a_of_type_Int);
+      localIPasswdRedBagService.setPasswdRedBagOpen(localQQWalletRedPacketMsg.redPacketId, this.a.sessionInfo.b, this.a.sessionInfo.a);
       paramView = new StringBuilder();
       paramView.append("msgType=");
       paramView.append(localMessageForQQWalletMsg.messageType);
       l = VACDReportUtil.a(null, "qqwallet", "graphb", "draw.click", paramView.toString(), 0, null);
       paramView = new Bundle();
       paramView.putInt("subchannel", localQQWalletRedPacketMsg.body.subChannel);
-      localIPasswdRedBagService.openPasswdBagByTenpay(this.a.sessionInfo, (PasswdRedBagInfo)localObject, l, 1000001, "", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.i, localMessageForQQWalletMsg.fromHBList, paramView);
+      localIPasswdRedBagService.openPasswdBagByTenpay(this.a.sessionInfo, (PasswdRedBagInfo)localObject, l, 1000001, "", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.v, localMessageForQQWalletMsg.fromHBList, paramView);
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("click open draw redpacket, isPasswdRedBagOpen=");
-        paramView.append(((PasswdRedBagInfo)localObject).jdField_a_of_type_Boolean);
+        paramView.append(((PasswdRedBagInfo)localObject).f);
         paramView.append(",isPasswdRedBagFinish=");
-        paramView.append(((PasswdRedBagInfo)localObject).b);
+        paramView.append(((PasswdRedBagInfo)localObject).g);
         paramView.append(",isPasswdRedBagOverDue=");
         paramView.append(((PasswdRedBagInfo)localObject).a());
         QLog.d("PasswdRedBagSgervice", 2, paramView.toString());
@@ -97,7 +97,7 @@ class QQWalletHbItemApiImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.QQWalletHbItemApiImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -27,20 +27,20 @@ class QQGamePreDownloadServiceImpl$7$1
       localStringBuilder.append(Thread.currentThread());
       QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 1, localStringBuilder.toString());
     }
-    if ((paramDownloadTask.a != null) && (paramDownloadTask.a.containsKey(this.jdField_a_of_type_JavaLangString)))
+    if ((paramDownloadTask.g != null) && (paramDownloadTask.g.containsKey(this.a)))
     {
-      paramDownloadTask = (File)paramDownloadTask.a.get(this.jdField_a_of_type_JavaLangString);
+      paramDownloadTask = (File)paramDownloadTask.g.get(this.a);
       if ((paramDownloadTask != null) && (paramDownloadTask.exists()))
       {
         paramDownloadTask = ((IArkHelper)QRoute.api(IArkHelper.class)).CopyFileToCache(this.b, paramDownloadTask.getAbsolutePath());
-        ((IQQGameResService)QRoute.api(IQQGameResService.class)).saveArkResPreloadName(this.b, this.jdField_a_of_type_JavaLangString, paramDownloadTask);
+        ((IQQGameResService)QRoute.api(IQQGameResService.class)).saveArkResPreloadName(this.b, this.a, paramDownloadTask);
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("CopyFileToCache...fileName:");
           localStringBuilder.append(paramDownloadTask);
           localStringBuilder.append(",url:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.a);
           localStringBuilder.append(",appName:");
           localStringBuilder.append(this.b);
           QLog.i("QQGamePub_QQGamePreDownloadServiceImpl", 1, localStringBuilder.toString());
@@ -51,7 +51,7 @@ class QQGamePreDownloadServiceImpl$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ class VideoUploadManager$1
         default: 
           return;
         case 1003: 
-          paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((FileMsg)localObject).uniseq));
+          paramMessage = (Bundle)this.a.f.remove(Long.valueOf(((FileMsg)localObject).uniseq));
           paramMessage.putLong("uniseq", ((FileMsg)localObject).uniseq);
           paramMessage.putString("pic_server_id", ((FileMsg)localObject).fileUrl);
           localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
@@ -55,7 +55,7 @@ class VideoUploadManager$1
         }
       }
       label202:
-      this.a.a.a(83, paramMessage);
+      this.a.d.a(83, paramMessage);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -66,7 +66,7 @@ class VideoUploadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoUploadManager.1
  * JD-Core Version:    0.7.0.1
  */

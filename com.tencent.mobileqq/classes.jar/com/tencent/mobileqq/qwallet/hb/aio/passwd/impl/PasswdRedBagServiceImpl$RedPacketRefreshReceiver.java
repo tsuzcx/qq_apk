@@ -36,14 +36,14 @@ class PasswdRedBagServiceImpl$RedPacketRefreshReceiver
           if (localPasswdRedBagInfo == null) {
             return;
           }
-          PasswdRedBagServiceImpl.access$400(this.a, paramContext, str1, 1, false);
+          PasswdRedBagServiceImpl.access$000(this.a, paramContext, str1, 1, false);
           this.a.setPasswdRedBagLastedWord(paramContext, str2, str3, j, paramIntent);
           return;
         }
         if (i == 0)
         {
-          if (localPasswdRedBagInfo.a() == 2) {
-            PasswdRedBagServiceImpl.access$400(this.a, paramContext, str1, 1, true);
+          if (localPasswdRedBagInfo.b() == 2) {
+            PasswdRedBagServiceImpl.access$000(this.a, paramContext, str1, 1, true);
           }
         }
         else if (i == 14)
@@ -56,14 +56,14 @@ class PasswdRedBagServiceImpl$RedPacketRefreshReceiver
       }
       else
       {
-        PasswdRedBagServiceImpl.access$400(this.a, paramContext, str1, 1, true);
+        PasswdRedBagServiceImpl.access$000(this.a, paramContext, str1, 1, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.RedPacketRefreshReceiver
  * JD-Core Version:    0.7.0.1
  */

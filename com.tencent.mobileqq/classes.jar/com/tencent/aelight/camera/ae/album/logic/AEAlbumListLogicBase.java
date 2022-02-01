@@ -43,23 +43,23 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
   extends AEAlbumListLogic<K>
   implements AEAlbumListLogic.IalbumListAdapterCallBack
 {
-  protected AEAlbumListAdapter a;
+  protected AEAlbumListAdapter f;
   
   protected AEAlbumListLogicBase(K paramK)
   {
     super(paramK);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack = this;
+    this.e = this;
   }
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Resources localResources = ((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources();
-    AEAlbumListAdapter localAEAlbumListAdapter = b();
+    Resources localResources = ((AEAbstractAlbumListFragment)this.a.get()).getResources();
+    AEAlbumListAdapter localAEAlbumListAdapter = d();
     View localView;
     TextView localTextView;
     if (paramView == null)
     {
-      localView = ((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getLayoutInflater().inflate(2131560958, null);
+      localView = ((AEAbstractAlbumListFragment)this.a.get()).getActivity().getLayoutInflater().inflate(2131627299, null);
       localTextView = (TextView)localView;
     }
     else
@@ -110,13 +110,13 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
     localObject = paramViewGroup;
     if (paramViewGroup == null)
     {
-      localObject = URLDrawableHelper.getDrawable(paramView, AEAlbumListAdapter.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, AEAlbumListAdapter.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+      localObject = URLDrawableHelper.getDrawable(paramView, AEAlbumListAdapter.a, AEAlbumListAdapter.a);
       ((URLDrawable)localObject).setTag(localQQAlbumInfo.mCoverInfo);
-      ((URLDrawable)localObject).setBounds(0, 0, localAEAlbumListAdapter.jdField_a_of_type_Int, localAEAlbumListAdapter.b);
+      ((URLDrawable)localObject).setBounds(0, 0, localAEAlbumListAdapter.d, localAEAlbumListAdapter.e);
     }
-    if ((localQQAlbumInfo.id != null) && (localQQAlbumInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))
+    if ((localQQAlbumInfo.id != null) && (localQQAlbumInfo.id.equals(this.b.albumId)))
     {
-      paramView = localAEAlbumListAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(localResources);
+      paramView = localAEAlbumListAdapter.h.newDrawable(localResources);
       paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
     }
     else
@@ -127,14 +127,9 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
     return localView;
   }
   
-  protected AEAlbumListAdapter a()
-  {
-    return new AEAlbumListAdapter((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get());
-  }
-  
   public String a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
+    Object localObject = this.b.filter;
     boolean bool1 = ((MediaFileFilter)localObject).needHeif;
     boolean bool2 = ((MediaFileFilter)localObject).needWebp;
     localObject = new StringBuffer();
@@ -156,9 +151,9 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
   
   public List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    if (this.a.get() != null)
     {
-      if (((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity() == null) {
+      if (((AEAbstractAlbumListFragment)this.a.get()).getActivity() == null) {
         return null;
       }
       boolean bool = false;
@@ -235,7 +230,7 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
         }
         if (paramInt == -1)
         {
-          paramList1 = b().b(((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), 210, -1, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter, -1, false, null);
+          paramList1 = d().b(((AEAbstractAlbumListFragment)this.a.get()).getActivity(), 210, -1, this.b.filter, -1, false, null);
         }
         else
         {
@@ -245,10 +240,10 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
           paramList1.mCoverInfo = new LocalMediaInfo();
         }
         paramList2.add(0, paramList1);
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.showVideo()))
+        if ((this.b.filter != null) && (this.b.filter.showVideo()))
         {
           paramList1 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-          paramList1 = ((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
+          paramList1 = ((AEAbstractAlbumListFragment)this.a.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
           if (paramList1 != null)
           {
             i = paramList1.getCount();
@@ -270,12 +265,12 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
               i = 0;
             }
           } while (i > 0);
-          b().jdField_a_of_type_Boolean = bool;
+          d().f = bool;
           if (bool)
           {
             if (paramInt == -1)
             {
-              paramList1 = b().a(((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+              paramList1 = d().a(((AEAbstractAlbumListFragment)this.a.get()).getActivity());
             }
             else
             {
@@ -296,14 +291,14 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
   
   public void a(int paramInt)
   {
-    AEAlbumListAdapter localAEAlbumListAdapter = b();
-    MediaFileFilter localMediaFileFilter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
+    AEAlbumListAdapter localAEAlbumListAdapter = d();
+    MediaFileFilter localMediaFileFilter = this.b.filter;
     Object localObject2 = null;
     int i;
     if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
     {
       LogTag.a();
-      localList = localAEAlbumListAdapter.a(((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt);
+      localList = localAEAlbumListAdapter.a(((AEAbstractAlbumListFragment)this.a.get()).getActivity(), paramInt);
       if ((paramInt != -1) && (localList != null) && (localList.size() == paramInt)) {
         i = 1;
       } else {
@@ -325,7 +320,7 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
       if (localMediaFileFilter.showVideo())
       {
         LogTag.a();
-        localObject1 = localAEAlbumListAdapter.a(((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt, localMediaFileFilter);
+        localObject1 = localAEAlbumListAdapter.a(((AEAbstractAlbumListFragment)this.a.get()).getActivity(), paramInt, localMediaFileFilter);
         j = i;
         if (paramInt != -1)
         {
@@ -342,7 +337,7 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
       }
     }
     LogTag.a();
-    List localList = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack.a(localList, (List)localObject1, paramInt);
+    List localList = this.e.a(localList, (List)localObject1, paramInt);
     if (localList != null)
     {
       i = 1;
@@ -378,32 +373,32 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
   {
     Object localObject = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
     if (localObject != null) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.isEmpty())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.putAll((Map)localObject);
+      if ((this.b.selectedMediaInfoHashMap != null) && (!this.b.selectedMediaInfoHashMap.isEmpty())) {
+        this.b.selectedMediaInfoHashMap.putAll((Map)localObject);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap = ((HashMap)localObject);
+        this.b.selectedMediaInfoHashMap = ((HashMap)localObject);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = paramIntent.getStringExtra("ALBUM_ID");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId == null)
+    this.b.albumId = paramIntent.getStringExtra("ALBUM_ID");
+    this.b.albumName = paramIntent.getStringExtra("ALBUM_NAME");
+    if (this.b.albumId == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = "$RecentAlbumId";
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = null;
+      this.b.albumId = "$RecentAlbumId";
+      this.b.albumName = null;
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("passed in albumId=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId);
+      ((StringBuilder)localObject).append(this.b.albumId);
       ((StringBuilder)localObject).append(", albumName=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName);
+      ((StringBuilder)localObject).append(this.b.albumName);
       AEQLog.b("AEAlbumListLogicBase", ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter = MediaFileFilter.getFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.showMediaType);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter = a();
-    ((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter;
+    this.b.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    this.b.filter = MediaFileFilter.getFilter(this.b.showMediaType);
+    this.f = c();
+    ((AEAbstractAlbumListFragment)this.a.get()).e = this.f;
     ThreadManager.getFileThreadHandler().post(new AEAlbumListLogicBase.1(this));
   }
   
@@ -412,15 +407,15 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
     String str = paramIntent.getStringExtra("ALBUM_NAME");
     paramIntent = paramIntent.getStringExtra("ALBUM_ID");
     boolean bool;
-    if (((str != null) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName))) || ((paramIntent != null) && (!paramIntent.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))) {
+    if (((str != null) && (!str.equals(this.b.albumName))) || ((paramIntent != null) && (!paramIntent.equals(this.b.albumId)))) {
       bool = true;
     } else {
       bool = false;
     }
     if (a(bool, paramQQAlbumInfo))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = str;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = paramIntent;
+      this.b.albumName = str;
+      this.b.albumId = paramIntent;
       return true;
     }
     return false;
@@ -432,7 +427,7 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
     paramIntent.putExtra("ALBUM_NAME", paramQQAlbumInfo.name);
     paramInt = 0;
     paramIntent.putExtra("album_enter_directly", false);
-    XListView localXListView = ((AEAbstractAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentWidgetXListView;
+    XListView localXListView = ((AEAbstractAlbumListFragment)this.a.get()).f;
     paramIntent.putExtra("PhotoConst.photo_selection_index", localXListView.getFirstVisiblePosition());
     Object localObject = localXListView.getChildAt(0);
     if (localObject != null) {
@@ -456,16 +451,21 @@ public class AEAlbumListLogicBase<K extends AEAbstractAlbumListFragment>
     return paramBoolean;
   }
   
-  protected AEAlbumListAdapter b()
+  public void b() {}
+  
+  protected AEAlbumListAdapter c()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeAlbumAdapterAEAlbumListAdapter;
+    return new AEAlbumListAdapter((AEAbstractAlbumListFragment)this.a.get());
   }
   
-  public void b() {}
+  protected AEAlbumListAdapter d()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEAlbumListLogicBase
  * JD-Core Version:    0.7.0.1
  */

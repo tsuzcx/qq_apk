@@ -8,15 +8,15 @@ import com.tencent.widget.Switch;
 
 public class AppletsListAdapter$ViewHolder
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  AppletItem a;
+  RelativeLayout b;
+  URLImageView c;
+  TextView d;
+  Switch e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AppletsListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

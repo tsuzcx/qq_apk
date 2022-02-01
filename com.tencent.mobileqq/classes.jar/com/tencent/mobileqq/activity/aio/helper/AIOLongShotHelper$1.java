@@ -13,21 +13,21 @@ class AIOLongShotHelper$1
   
   public void run()
   {
-    BaseActivity localBaseActivity = AIOLongShotHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    BaseActivity localBaseActivity = AIOLongShotHelper.a(this.this$0).f;
     if ((localBaseActivity != null) && (!localBaseActivity.isFinishing()))
     {
-      if ((!this.jdField_a_of_type_Boolean) && (!this.b))
+      if ((!this.a) && (!this.b))
       {
-        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131700327), 0).a();
+        QQToast.makeText(AIOLongShotHelper.a(this.this$0).e, 1, HardCodeUtil.a(2131898367), 0).show();
         AIOLongShotHelper.a("0X800A50D");
       }
-      AIOLongShotHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      AIOLongShotHelper.a(this.this$0, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper.1
  * JD-Core Version:    0.7.0.1
  */

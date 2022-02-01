@@ -4,19 +4,13 @@ import java.util.Random;
 
 public final class MathUtils
 {
-  private static final float jdField_a_of_type_Float;
-  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
-  public static Random a;
-  
-  static
-  {
-    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
+  static final int a = (int)Math.sqrt(16384.0D);
+  public static Random b = new Random();
+  private static final float c = 1.0F / (a - 1);
   
   public static final float a()
   {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat();
+    return b.nextFloat();
   }
   
   public static final float a(float paramFloat)
@@ -37,7 +31,7 @@ public final class MathUtils
   
   public static final int a(int paramInt)
   {
-    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
+    return b.nextInt(paramInt + 1);
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3)
@@ -58,7 +52,7 @@ public final class MathUtils
   
   public static final float c(float paramFloat)
   {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+    return b.nextFloat() * paramFloat;
   }
 }
 

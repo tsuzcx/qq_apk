@@ -11,9 +11,9 @@ class SubscribeQRCodeShareHelper$9
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (SubscribeQRCodeShareHelper.c(this.a) != null)
+    if (SubscribeQRCodeShareHelper.o(this.a) != null)
     {
-      if (!SubscribeQRCodeShareHelper.c(this.a).equals(paramBaseResp.transaction)) {
+      if (!SubscribeQRCodeShareHelper.o(this.a).equals(paramBaseResp.transaction)) {
         return;
       }
       int i = paramBaseResp.errCode;
@@ -21,17 +21,17 @@ class SubscribeQRCodeShareHelper$9
       {
         if (i != 0)
         {
-          QQToast.a(SubscribeQRCodeShareHelper.a(this.a), 1, "分享失败", 0).a();
+          QQToast.makeText(SubscribeQRCodeShareHelper.c(this.a), 1, "分享失败", 0).show();
           return;
         }
-        QQToast.a(SubscribeQRCodeShareHelper.a(this.a), 2, "分享成功", 0).a();
+        QQToast.makeText(SubscribeQRCodeShareHelper.c(this.a), 2, "分享成功", 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.9
  * JD-Core Version:    0.7.0.1
  */

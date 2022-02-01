@@ -11,12 +11,12 @@ class AEPhotoListLogicBase$17
   
   public void run()
   {
-    AEPhotoListLogicBase.a(this.this$0).a(((AEAbstractPhotoListFragment)this.this$0.a.get()).getString(2064515274, new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
+    AEPhotoListLogicBase.h(this.this$0).a(((AEAbstractPhotoListFragment)this.this$0.b.get()).getString(2064187624, new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.17
  * JD-Core Version:    0.7.0.1
  */

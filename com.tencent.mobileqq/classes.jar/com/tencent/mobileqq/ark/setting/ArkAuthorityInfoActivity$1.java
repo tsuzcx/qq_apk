@@ -15,9 +15,9 @@ class ArkAuthorityInfoActivity$1
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     IArkModuleAPIAuthority localIArkModuleAPIAuthority = (IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class);
-    String str1 = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str2 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    String str1 = ArkAuthorityInfoActivity.a(this.b);
+    String str2 = ArkAuthorityInfoActivity.a()[this.a];
+    String str3 = this.b.app.getCurrentAccountUin();
     int i;
     if (paramBoolean) {
       i = 1;
@@ -30,7 +30,7 @@ class ArkAuthorityInfoActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

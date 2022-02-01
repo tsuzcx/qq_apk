@@ -19,12 +19,12 @@ class SubscribeDraftManager$2
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(SubscribeDraftManager.a(this.this$0));
-    ((StringBuilder)localObject1).append(Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject1).append(Md5Utils.getMD5(this.a));
     localObject1 = new File(((StringBuilder)localObject1).toString());
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
-      Object localObject2 = SubscribeDraftManager.jdField_a_of_type_JavaLangString;
+      Object localObject2 = SubscribeDraftManager.a;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("qureyAllSimpleDraft count:");
       ((StringBuilder)localObject3).append(localObject1.length);
@@ -53,20 +53,20 @@ class SubscribeDraftManager$2
           label192:
           break label183;
         }
-        QLog.d(SubscribeDraftManager.jdField_a_of_type_JavaLangString, 4, "readString failed:");
+        QLog.d(SubscribeDraftManager.a, 4, "readString failed:");
         i += 1;
       }
       Collections.sort((List)localObject2);
       if (!((List)localObject2).isEmpty())
       {
-        localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject1 = this.b;
         if (localObject1 != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject1).a(4, true, "", new Object[] { localObject2 });
         }
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject1 = this.b;
         if (localObject1 != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject1).a(4, false, "", null);
         }
@@ -74,7 +74,7 @@ class SubscribeDraftManager$2
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((SubscribeDraftManager.SubDraftListener)localObject1).a(4, false, "", null);
       }

@@ -7,7 +7,7 @@ class NewMyStorySegment$7$1
   
   public void run()
   {
-    this.a.a.c(false);
+    this.a.a.e(false);
   }
 }
 

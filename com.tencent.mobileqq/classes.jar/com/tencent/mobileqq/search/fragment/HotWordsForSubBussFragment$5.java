@@ -19,8 +19,8 @@ class HotWordsForSubBussFragment$5
       if ((localBaseActivity instanceof ActiveEntitySearchActivity))
       {
         ((ActiveEntitySearchActivity)localBaseActivity).b(paramString);
-        if (this.a.a != null) {
-          SearchUtils.a("sub_result", "clk_hot", new String[] { paramString, SearchUtils.a(this.a.a) });
+        if (this.a.h != null) {
+          SearchUtils.a("sub_result", "clk_hot", new String[] { paramString, SearchUtils.a(this.a.h) });
         }
       }
     }
@@ -28,7 +28,7 @@ class HotWordsForSubBussFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment.5
  * JD-Core Version:    0.7.0.1
  */

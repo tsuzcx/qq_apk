@@ -10,7 +10,7 @@ public class LiangHaoDialogView
   extends LinearLayout
 {
   public LiangHaoUinData a;
-  private LiangHaoView a;
+  private LiangHaoView b;
   
   public LiangHaoDialogView(Context paramContext)
   {
@@ -33,19 +33,19 @@ public class LiangHaoDialogView
   private void a()
   {
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561927, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131370000));
+    LayoutInflater.from(getContext()).inflate(2131628351, this, true);
+    this.b = ((LiangHaoView)findViewById(2131437155));
   }
   
   public void a(LiangHaoUinData paramLiangHaoUinData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData = paramLiangHaoUinData;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(paramLiangHaoUinData);
+    this.a = paramLiangHaoUinData;
+    this.b.setUin(paramLiangHaoUinData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView
  * JD-Core Version:    0.7.0.1
  */

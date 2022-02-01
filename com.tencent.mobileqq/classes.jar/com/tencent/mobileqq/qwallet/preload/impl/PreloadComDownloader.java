@@ -14,21 +14,21 @@ import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 
 public class PreloadComDownloader
 {
-  private static volatile PreloadComDownloader jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadComDownloader;
-  private DownloaderInterface jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1);
+  private static volatile PreloadComDownloader b;
+  private DownloaderInterface a = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1);
   
   public static PreloadComDownloader a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadComDownloader == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadComDownloader == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadComDownloader = new PreloadComDownloader();
+        if (b == null) {
+          b = new PreloadComDownloader();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadComDownloader;
+    return b;
   }
   
   private void a(Bundle paramBundle, DownloadListener paramDownloadListener, DownloadParam paramDownloadParam)
@@ -61,7 +61,7 @@ public class PreloadComDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadComDownloader
  * JD-Core Version:    0.7.0.1
  */

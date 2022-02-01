@@ -9,22 +9,20 @@ import com.tencent.qphone.base.util.QLog;
 class DailyFeedsDiandianEntranceManager$2
   implements View.OnClickListener
 {
-  DailyFeedsDiandianEntranceManager$2(DailyFeedsDiandianEntranceManager paramDailyFeedsDiandianEntranceManager, Activity paramActivity) {}
-  
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if (this.a != null)
     {
       QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      ReadInJoyDailyOverScrollListener.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772355);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDiandianDailyFeedsDiandianEntranceManager.b();
+      ReadInJoyDailyOverScrollListener.a(this.a);
+      this.a.overridePendingTransition(0, 2130772447);
+      this.b.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.diandian.DailyFeedsDiandianEntranceManager.2
  * JD-Core Version:    0.7.0.1
  */

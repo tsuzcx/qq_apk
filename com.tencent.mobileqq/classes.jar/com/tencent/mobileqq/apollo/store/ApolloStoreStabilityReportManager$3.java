@@ -31,13 +31,13 @@ class ApolloStoreStabilityReportManager$3
     if ((ApolloStoreStabilityReportManager.a(this.this$0) != null) && (ApolloStoreStabilityReportManager.a(this.this$0).size() != 0))
     {
       ArrayList localArrayList = new ArrayList(ApolloStoreStabilityReportManager.a(this.this$0));
-      ApolloStoreStabilityReportManager.a(this.this$0);
+      ApolloStoreStabilityReportManager.c(this.this$0);
       try
       {
         Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
         Object localObject1 = new WebSSOAgent.UniSsoServerReq();
         ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
         if (localArrayList.size() == 0)
@@ -73,7 +73,7 @@ class ApolloStoreStabilityReportManager$3
           i += 1;
         }
         ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-        localObject2 = ApolloStoreStabilityReportManager.a();
+        localObject2 = ApolloStoreStabilityReportManager.b();
         if (localObject2 != null)
         {
           localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), ProtoServlet.class);
@@ -106,7 +106,7 @@ class ApolloStoreStabilityReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreStabilityReportManager.3
  * JD-Core Version:    0.7.0.1
  */

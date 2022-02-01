@@ -25,7 +25,7 @@ class DownloaderGetCodeServer$GetAuthCodeObserver
     if (paramString2 == null) {
       return;
     }
-    localObject = (Bundle)DownloaderGetCodeServer.a(this.a).get(paramString2);
+    localObject = (Bundle)DownloaderGetCodeServer.c(this.a).get(paramString2);
     if (localObject == null)
     {
       paramString1 = new StringBuilder();
@@ -54,12 +54,12 @@ class DownloaderGetCodeServer$GetAuthCodeObserver
     paramString1.append(" result|");
     paramString1.append(paramString2);
     LogUtility.c("DownloaderWriteCodeIPC", paramString1.toString());
-    DownloaderGetCodeServer.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
+    DownloaderGetCodeServer.d(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeServer.GetAuthCodeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,16 @@ class AddFriendVerifyFragment$14
   {
     try
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a))
       {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.getContext(), this.jdField_a_of_type_JavaLangString, 4018, null);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.c.getContext(), this.a, 4018, null);
         return;
       }
       if (!TextUtils.isEmpty(this.b))
       {
         paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.b));
         paramDialogInterface.putExtra("url", this.b);
-        RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment.getContext(), paramDialogInterface, "/base/browser");
+        RouteUtils.a(this.c.getContext(), paramDialogInterface, "/base/browser");
         return;
       }
       QLog.e("IphoneTitleBarFragment", 1, "showErrorTipsDialogWithHandleAbility, error: url is empty");
@@ -45,7 +45,7 @@ class AddFriendVerifyFragment$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.14
  * JD-Core Version:    0.7.0.1
  */

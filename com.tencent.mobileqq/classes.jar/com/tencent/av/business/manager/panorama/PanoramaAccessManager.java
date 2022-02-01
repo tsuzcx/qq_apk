@@ -1,6 +1,6 @@
 package com.tencent.av.business.manager.panorama;
 
-import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.opengl.effects.EffectCtrlUtils;
 import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
@@ -15,9 +15,9 @@ public class PanoramaAccessManager
   {
     SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
     SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
-    boolean bool1 = PtvFilterSoLoad.e() ^ true;
-    boolean bool2 = PanoramaSensorManager.a().a();
-    boolean bool4 = PanoramaEffectDPC.a();
+    boolean bool1 = PtvFilterSoLoad.h() ^ true;
+    boolean bool2 = PanoramaSensorManager.a().b();
+    boolean bool4 = PanoramaEffectDPC.b();
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -39,10 +39,10 @@ public class PanoramaAccessManager
     }
     if (bool1)
     {
-      localObject = PanoramaEffectDPC.a();
+      localObject = PanoramaEffectDPC.d();
       if (localObject != null)
       {
-        long l = PanoramaEffectDPC.a();
+        long l = PanoramaEffectDPC.c();
         localObject = ((List)localObject).iterator();
         bool4 = false;
         for (;;)
@@ -62,7 +62,7 @@ public class PanoramaAccessManager
               localStringBuilder.append(localDeviceCPUinfo.a);
               QLog.d("PanoramaAccessManager", 2, localStringBuilder.toString());
             }
-            if ((!bool4) && (!EffectsRenderController.a(localDeviceCPUinfo.b, localDeviceCPUinfo.a * 10000, l * 100000000L))) {
+            if ((!bool4) && (!EffectCtrlUtils.a(localDeviceCPUinfo.b, localDeviceCPUinfo.a * 10000, l * 100000000L))) {
               break;
             }
             bool4 = true;

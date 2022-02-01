@@ -2,26 +2,6 @@ package com.tencent.biz.qrcode.logindev;
 
 public class LoginDevicesUtils
 {
-  public static int a(int paramInt)
-  {
-    if (paramInt == 65793) {
-      return 1;
-    }
-    if (paramInt == 5) {
-      return 2;
-    }
-    if (paramInt == 3) {
-      return 3;
-    }
-    if (b(paramInt)) {
-      return 5;
-    }
-    if (paramInt == 77313) {
-      return 6;
-    }
-    return 0;
-  }
-  
   public static boolean a(int paramInt)
   {
     switch (paramInt)
@@ -45,6 +25,26 @@ public class LoginDevicesUtils
   public static boolean b(long paramLong)
   {
     return (paramLong == 72194L) || (paramLong == 68361L) || (paramLong == 65805L) || (paramLong == 68104L);
+  }
+  
+  public static int c(int paramInt)
+  {
+    if (paramInt == 65793) {
+      return 1;
+    }
+    if (paramInt == 5) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
+    if (b(paramInt)) {
+      return 5;
+    }
+    if (paramInt == 77313) {
+      return 6;
+    }
+    return 0;
   }
   
   public static boolean c(long paramLong)

@@ -39,30 +39,30 @@ class MyAppDialog$1
             }
             else
             {
-              localObject = ((Resources)localObject).getString(2131691620);
+              localObject = ((Resources)localObject).getString(2131888582);
               break label176;
             }
           }
           else
           {
-            localObject = ((Resources)localObject).getString(2131691605);
+            localObject = ((Resources)localObject).getString(2131888567);
             i = 100;
             break label176;
           }
         }
         else
         {
-          localObject = ((Resources)localObject).getString(2131691620, new Object[] { Integer.valueOf(i) });
+          localObject = ((Resources)localObject).getString(2131888582, new Object[] { Integer.valueOf(i) });
           break label176;
         }
       }
       else
       {
-        localObject = ((Resources)localObject).getString(2131691610, new Object[] { Integer.valueOf(i) });
+        localObject = ((Resources)localObject).getString(2131888572, new Object[] { Integer.valueOf(i) });
         break label176;
       }
     }
-    localObject = ((Resources)localObject).getString(2131691636);
+    localObject = ((Resources)localObject).getString(2131888598);
     label176:
     if (i < 0)
     {
@@ -75,27 +75,27 @@ class MyAppDialog$1
         j = 100;
       }
     }
-    if (this.this$0.a.getVisibility() != 0)
+    if (this.this$0.f.getVisibility() != 0)
     {
-      this.this$0.a.setVisibility(0);
-      this.this$0.e.setVisibility(0);
+      this.this$0.f.setVisibility(0);
+      this.this$0.g.setVisibility(0);
     }
     if (this.b == 3)
     {
-      this.this$0.c.setVisibility(0);
-      this.this$0.c.setText(null);
+      this.this$0.d.setVisibility(0);
+      this.this$0.d.setText(null);
     }
     else
     {
-      this.this$0.c.setVisibility(4);
+      this.this$0.d.setVisibility(4);
     }
-    this.this$0.a.setProgress(j);
-    this.this$0.e.setText((CharSequence)localObject);
+    this.this$0.f.setProgress(j);
+    this.this$0.g.setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppDialog.1
  * JD-Core Version:    0.7.0.1
  */

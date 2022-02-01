@@ -22,30 +22,25 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/friend/servlet/FriendService;", "", "app", "Lcom/tencent/common/app/AppInterface;", "(Lcom/tencent/common/app/AppInterface;)V", "isCoderInit", "", "mCoderSet", "Ljava/util/HashSet;", "Lcom/tencent/mobileqq/friend/servlet/coder/BaseJCECoder;", "Lkotlin/collections/HashSet;", "seq", "", "getCoder", "cmd", "", "handleResponse", "", "request", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "response", "Lcom/tencent/qphone/base/remote/FromServiceMsg;", "initCoder", "notifyResult", "data", "sendRequest", "Companion", "IMCore_release"}, k=1, mv={1, 1, 16})
 public final class FriendService
 {
-  public static final FriendService.Companion a;
-  private volatile int jdField_a_of_type_Int;
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private HashSet<BaseJCECoder> jdField_a_of_type_JavaUtilHashSet;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqFriendServletFriendService$Companion = new FriendService.Companion(null);
-  }
+  public static final FriendService.Companion a = new FriendService.Companion(null);
+  private volatile int b;
+  private volatile boolean c;
+  private HashSet<BaseJCECoder> d;
+  private final AppInterface e;
   
   public FriendService(@NotNull AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.e = paramAppInterface;
+    this.d = new HashSet();
   }
   
   private final BaseJCECoder a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       a();
     }
     BaseJCECoder localBaseJCECoder2 = (BaseJCECoder)null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    Iterator localIterator = this.d.iterator();
     BaseJCECoder localBaseJCECoder1;
     do
     {
@@ -64,15 +59,15 @@ public final class FriendService
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initJCECoder: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.c);
       QLog.d("IMCore.friend.FriendService", 1, localStringBuilder.toString());
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.c;
       if (bool) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashSet.add(new FriendListJCECoder());
-      this.jdField_a_of_type_JavaUtilHashSet.add(new FriendAddJCECoder());
-      this.jdField_a_of_type_Boolean = true;
+      this.d.add(new FriendListJCECoder());
+      this.d.add(new FriendAddJCECoder());
+      this.c = true;
       return;
     }
     finally {}
@@ -80,7 +75,7 @@ public final class FriendService
   
   private final void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(Reflection.getOrCreateKotlinClass(FriendHandler.class).getQualifiedName()).onReceive(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    this.e.getBusinessHandler(Reflection.getOrCreateKotlinClass(FriendHandler.class).getQualifiedName()).onReceive(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public final void a(@NotNull ToServiceMsg paramToServiceMsg)
@@ -133,7 +128,7 @@ public final class FriendService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.FriendService
  * JD-Core Version:    0.7.0.1
  */

@@ -29,11 +29,6 @@ public class CommonAdBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public IUIDelegate a()
-  {
-    return this.a;
-  }
-  
   public void a()
   {
     removeAllViews();
@@ -43,21 +38,26 @@ public class CommonAdBar
   {
     IUIDelegate localIUIDelegate = this.a;
     if (localIUIDelegate != null) {
-      localIUIDelegate.c();
+      localIUIDelegate.d();
     }
     this.a = paramIUIDelegate;
     this.a.a(this);
-    addView(paramIUIDelegate.a());
+    addView(paramIUIDelegate.i());
   }
   
   public void b()
   {
     setVisibility(8);
   }
+  
+  public IUIDelegate getUIDelegate()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdBar
  * JD-Core Version:    0.7.0.1
  */

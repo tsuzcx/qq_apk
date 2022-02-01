@@ -10,20 +10,35 @@ public class SQLiteOpenHelperImpl
   extends SQLiteOpenHelper
   implements ISQLiteOpenHelper
 {
-  private final SQLiteOpenHelperFacade a;
+  private final SQLiteOpenHelperFacade mFacade;
+  
+  public SQLiteOpenHelperImpl(EntityManagerFactory paramEntityManagerFactory, String paramString1, String paramString2, int paramInt)
+  {
+    this(paramEntityManagerFactory, paramString1, paramString2, paramInt, null);
+  }
   
   @TargetApi(11)
   public SQLiteOpenHelperImpl(EntityManagerFactory paramEntityManagerFactory, String paramString1, String paramString2, int paramInt, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     super(BaseApplication.getContext(), paramString1, new Factory(paramEntityManagerFactory), paramInt, paramDatabaseErrorHandler);
-    this.a = new SQLiteOpenHelperFacade(this, paramString1, paramEntityManagerFactory, paramString2);
+    this.mFacade = new SQLiteOpenHelperFacade(this, paramString1, paramEntityManagerFactory, paramString2);
   }
   
-  public SQLiteDatabase a()
+  public void close()
+  {
+    this.mFacade.close();
+  }
+  
+  public void dropAllTable()
+  {
+    this.mFacade.dropAllTable();
+  }
+  
+  public SQLiteDatabase getReadableDatabase()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = super.getWritableDatabase();
+      SQLiteDatabase localSQLiteDatabase = this.mFacade.getReadableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -33,12 +48,7 @@ public class SQLiteOpenHelperImpl
     }
   }
   
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public SQLiteDatabase b()
+  public SQLiteDatabase getReadableDatabaseInner()
   {
     try
     {
@@ -52,16 +62,11 @@ public class SQLiteOpenHelperImpl
     }
   }
   
-  public void close()
-  {
-    this.a.b();
-  }
-  
-  public SQLiteDatabase getReadableDatabase()
+  public SQLiteDatabase getWritableDatabase()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = this.a.b();
+      SQLiteDatabase localSQLiteDatabase = this.mFacade.getWritableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -71,11 +76,11 @@ public class SQLiteOpenHelperImpl
     }
   }
   
-  public SQLiteDatabase getWritableDatabase()
+  public SQLiteDatabase getWritableDatabaseInner()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = this.a.a();
+      SQLiteDatabase localSQLiteDatabase = super.getWritableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -87,28 +92,28 @@ public class SQLiteOpenHelperImpl
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    this.a.a(paramSQLiteDatabase);
+    this.mFacade.onCreate(paramSQLiteDatabase);
   }
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.a.b(paramSQLiteDatabase, paramInt1, paramInt2);
+    this.mFacade.onDowngrade(paramSQLiteDatabase, paramInt1, paramInt2);
   }
   
   public void onOpen(SQLiteDatabase paramSQLiteDatabase)
   {
     super.onOpen(paramSQLiteDatabase);
-    this.a.b(paramSQLiteDatabase);
+    this.mFacade.onOpen(paramSQLiteDatabase);
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.a.a(paramSQLiteDatabase, paramInt1, paramInt2);
+    this.mFacade.onUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.SQLiteOpenHelperImpl
  * JD-Core Version:    0.7.0.1
  */

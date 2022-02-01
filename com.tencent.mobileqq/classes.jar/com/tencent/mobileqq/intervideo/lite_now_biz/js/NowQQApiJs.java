@@ -40,7 +40,7 @@ public class NowQQApiJs
   
   private String getUin()
   {
-    return BusinessManager.a.a();
+    return BusinessManager.a.f();
   }
   
   private void shareToQQ(Bundle paramBundle)
@@ -56,14 +56,14 @@ public class NowQQApiJs
   
   private void shareToWX(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt)
   {
-    if (!WXShareHelper.a().a())
-    {
-      QRUtils.a(0, 2131720478);
-      return;
-    }
     if (!WXShareHelper.a().b())
     {
-      QRUtils.a(0, 2131720479);
+      QRUtils.a(0, 2131918154);
+      return;
+    }
+    if (!WXShareHelper.a().c())
+    {
+      QRUtils.a(0, 2131918155);
       return;
     }
     String str = String.valueOf(System.currentTimeMillis());
@@ -130,7 +130,7 @@ public class NowQQApiJs
         ((StringBuilder)localObject1).append("share err ");
         ((StringBuilder)localObject1).append(paramMap.getMessage());
         QLog.e("NowQQApiJs", 1, ((StringBuilder)localObject1).toString());
-        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131718871), 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131916404), 0).show();
         return;
       }
       int i = 1;
@@ -139,7 +139,7 @@ public class NowQQApiJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQQApiJs
  * JD-Core Version:    0.7.0.1
  */

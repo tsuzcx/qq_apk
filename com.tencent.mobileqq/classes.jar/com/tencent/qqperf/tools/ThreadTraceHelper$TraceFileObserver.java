@@ -17,7 +17,7 @@ class ThreadTraceHelper$TraceFileObserver
     localStringBuilder.append("dumpTraces onEvent ");
     localStringBuilder.append(???);
     QLog.e("UnifiedMonitor.Trace", 1, localStringBuilder.toString());
-    synchronized (ThreadTraceHelper.a())
+    synchronized (ThreadTraceHelper.c())
     {
       notifyAll();
       return;
@@ -26,7 +26,7 @@ class ThreadTraceHelper$TraceFileObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.ThreadTraceHelper.TraceFileObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class EditorStateMachineController$2
   
   public void a(EditorState paramEditorState)
   {
-    EditorStateMachineController.a(this.a).c();
-    EditorStateMachineController.a(this.a).k_(true);
+    EditorStateMachineController.c(this.a).d();
+    EditorStateMachineController.c(this.a).p_(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.2
  * JD-Core Version:    0.7.0.1
  */

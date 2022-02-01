@@ -5,13 +5,34 @@ import android.graphics.Matrix;
 public class State
 {
   protected float a;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   protected float b;
-  private float c = 1.0F;
-  private float d;
+  private final Matrix c = new Matrix();
+  private final float[] d = new float[9];
+  private float e = 1.0F;
+  private float f;
   
-  public static int a(float paramFloat1, float paramFloat2)
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.c.getValues(this.d);
+    float[] arrayOfFloat = this.d;
+    this.a = arrayOfFloat[2];
+    this.b = arrayOfFloat[5];
+    if (paramBoolean1) {
+      this.e = ((float)Math.hypot(arrayOfFloat[1], arrayOfFloat[4]));
+    }
+    if (paramBoolean2)
+    {
+      arrayOfFloat = this.d;
+      this.f = ((float)Math.toDegrees(Math.atan2(arrayOfFloat[3], arrayOfFloat[4])));
+    }
+  }
+  
+  public static boolean c(float paramFloat1, float paramFloat2)
+  {
+    return (paramFloat1 >= paramFloat2 - 0.001F) && (paramFloat1 <= paramFloat2 + 0.001F);
+  }
+  
+  public static int d(float paramFloat1, float paramFloat2)
   {
     if (paramFloat1 > paramFloat2 + 0.001F) {
       return 1;
@@ -22,137 +43,109 @@ public class State
     return 0;
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    this.jdField_a_of_type_Float = arrayOfFloat[2];
-    this.b = arrayOfFloat[5];
-    if (paramBoolean1) {
-      this.c = ((float)Math.hypot(arrayOfFloat[1], arrayOfFloat[4]));
-    }
-    if (paramBoolean2)
-    {
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      this.d = ((float)Math.toDegrees(Math.atan2(arrayOfFloat[3], arrayOfFloat[4])));
-    }
-  }
-  
-  public static boolean a(float paramFloat1, float paramFloat2)
-  {
-    return (paramFloat1 >= paramFloat2 - 0.001F) && (paramFloat1 <= paramFloat2 + 0.001F);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
   public Matrix a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
-  }
-  
-  public State a()
-  {
-    State localState = new State();
-    localState.a(this);
-    return localState;
+    return this.c;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
+    this.c.postTranslate(paramFloat1, paramFloat2);
     a(false, false);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+    this.c.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
     a(true, false);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    float f;
+    float f1;
     for (;;)
     {
-      f = paramFloat4;
+      f1 = paramFloat4;
       if (paramFloat4 >= -180.0F) {
         break;
       }
       paramFloat4 += 360.0F;
     }
-    while (f > 180.0F) {
-      f -= 360.0F;
+    while (f1 > 180.0F) {
+      f1 -= 360.0F;
     }
-    this.jdField_a_of_type_Float = paramFloat1;
+    this.a = paramFloat1;
     this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = f;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+    this.e = paramFloat3;
+    this.f = f1;
+    this.c.reset();
     if (paramFloat3 != 1.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat3, paramFloat3);
+      this.c.postScale(paramFloat3, paramFloat3);
     }
-    if (f != 0.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(f);
+    if (f1 != 0.0F) {
+      this.c.postRotate(f1);
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
+    this.c.postTranslate(paramFloat1, paramFloat2);
   }
   
   public void a(Matrix paramMatrix)
   {
-    paramMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    paramMatrix.set(this.c);
   }
   
   public void a(State paramState)
   {
-    this.jdField_a_of_type_Float = paramState.jdField_a_of_type_Float;
+    this.a = paramState.a;
     this.b = paramState.b;
-    this.c = paramState.c;
-    this.d = paramState.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramState.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.e = paramState.e;
+    this.f = paramState.f;
+    this.c.set(paramState.c);
   }
   
   public float b()
   {
-    return this.b;
+    return this.a;
   }
   
   public void b(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(-this.jdField_a_of_type_Float + paramFloat1, -this.b + paramFloat2);
+    this.c.postTranslate(-this.a + paramFloat1, -this.b + paramFloat2);
     a(false, false);
   }
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
-    float f = this.c;
-    localMatrix.postScale(paramFloat1 / f, paramFloat1 / f, paramFloat2, paramFloat3);
+    Matrix localMatrix = this.c;
+    float f1 = this.e;
+    localMatrix.postScale(paramFloat1 / f1, paramFloat1 / f1, paramFloat2, paramFloat3);
     a(true, false);
   }
   
   public float c()
   {
-    return this.c;
+    return this.b;
   }
   
   public void c(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(paramFloat1, paramFloat2, paramFloat3);
+    this.c.postRotate(paramFloat1, paramFloat2, paramFloat3);
     a(false, true);
   }
   
   public float d()
   {
-    return this.d;
+    return this.e;
   }
   
   public void d(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(-this.d + paramFloat1, paramFloat2, paramFloat3);
+    this.c.postRotate(-this.f + paramFloat1, paramFloat2, paramFloat3);
     a(false, true);
+  }
+  
+  public float e()
+  {
+    return this.f;
   }
   
   public boolean equals(Object paramObject)
@@ -166,38 +159,45 @@ public class State
         return false;
       }
       paramObject = (State)paramObject;
-      return (a(paramObject.jdField_a_of_type_Float, this.jdField_a_of_type_Float)) && (a(paramObject.b, this.b)) && (a(paramObject.c, this.c)) && (a(paramObject.d, this.d));
+      return (c(paramObject.a, this.a)) && (c(paramObject.b, this.b)) && (c(paramObject.e, this.e)) && (c(paramObject.f, this.f));
     }
     return false;
   }
   
+  public State f()
+  {
+    State localState = new State();
+    localState.a(this);
+    return localState;
+  }
+  
   public int hashCode()
   {
-    float f = this.jdField_a_of_type_Float;
+    float f1 = this.a;
     int m = 0;
     int i;
-    if (f != 0.0F) {
-      i = Float.floatToIntBits(f);
+    if (f1 != 0.0F) {
+      i = Float.floatToIntBits(f1);
     } else {
       i = 0;
     }
-    f = this.b;
+    f1 = this.b;
     int j;
-    if (f != 0.0F) {
-      j = Float.floatToIntBits(f);
+    if (f1 != 0.0F) {
+      j = Float.floatToIntBits(f1);
     } else {
       j = 0;
     }
-    f = this.c;
+    f1 = this.e;
     int k;
-    if (f != 0.0F) {
-      k = Float.floatToIntBits(f);
+    if (f1 != 0.0F) {
+      k = Float.floatToIntBits(f1);
     } else {
       k = 0;
     }
-    f = this.d;
-    if (f != 0.0F) {
-      m = Float.floatToIntBits(f);
+    f1 = this.f;
+    if (f1 != 0.0F) {
+      m = Float.floatToIntBits(f1);
     }
     return ((i * 31 + j) * 31 + k) * 31 + m;
   }
@@ -206,20 +206,20 @@ public class State
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{x=");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",y=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",zoom=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",rotation=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.state.State
  * JD-Core Version:    0.7.0.1
  */

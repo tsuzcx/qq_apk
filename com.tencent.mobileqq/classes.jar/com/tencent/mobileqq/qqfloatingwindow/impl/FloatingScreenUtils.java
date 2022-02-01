@@ -29,42 +29,10 @@ public class FloatingScreenUtils
     return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
-  public static int a(Context paramContext)
-  {
-    Object localObject = new DisplayMetrics();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    int i;
-    try
-    {
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        paramContext.getRealMetrics((DisplayMetrics)localObject);
-        i = ((DisplayMetrics)localObject).heightPixels;
-      }
-      else
-      {
-        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
-        try
-        {
-          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (InvocationTargetException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
-        QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
-        return -1;
-      }
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
-      return -1;
-    }
-    return i;
-  }
-  
   public static boolean a(Context paramContext)
   {
     if (b == 0) {
-      if ((Build.VERSION.SDK_INT >= 26) && (Build.VERSION.SDK_INT < 28) && (LiuHaiUtils.b(paramContext)))
+      if ((Build.VERSION.SDK_INT >= 26) && (Build.VERSION.SDK_INT < 28) && (LiuHaiUtils.c(paramContext)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
@@ -77,23 +45,6 @@ public class FloatingScreenUtils
       }
     }
     return b == 1;
-  }
-  
-  @TargetApi(13)
-  public static int b(Context paramContext)
-  {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    if (Build.VERSION.SDK_INT >= 13)
-    {
-      Point localPoint = new Point();
-      paramContext.getDefaultDisplay().getSize(localPoint);
-      a = localPoint.y;
-    }
-    else
-    {
-      a = paramContext.getDefaultDisplay().getHeight();
-    }
-    return a;
   }
   
   public static boolean b(Context paramContext)
@@ -157,10 +108,59 @@ public class FloatingScreenUtils
     } while (i != 1);
     return false;
   }
+  
+  public static int c(Context paramContext)
+  {
+    Object localObject = new DisplayMetrics();
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    int i;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        paramContext.getRealMetrics((DisplayMetrics)localObject);
+        i = ((DisplayMetrics)localObject).heightPixels;
+      }
+      else
+      {
+        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+        QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
+        return -1;
+      }
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
+      return -1;
+    }
+    return i;
+  }
+  
+  @TargetApi(13)
+  public static int d(Context paramContext)
+  {
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    if (Build.VERSION.SDK_INT >= 13)
+    {
+      Point localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
+      a = localPoint.y;
+    }
+    else
+    {
+      a = paramContext.getDefaultDisplay().getHeight();
+    }
+    return a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenUtils
  * JD-Core Version:    0.7.0.1
  */

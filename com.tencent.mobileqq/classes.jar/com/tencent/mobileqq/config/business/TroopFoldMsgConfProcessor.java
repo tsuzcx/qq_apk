@@ -12,7 +12,7 @@ public class TroopFoldMsgConfProcessor
 {
   public static TroopFoldMsgBean a()
   {
-    return (TroopFoldMsgBean)QConfigManager.a().a(635);
+    return (TroopFoldMsgBean)QConfigManager.b().b(635);
   }
   
   @NonNull
@@ -28,13 +28,13 @@ public class TroopFoldMsgConfProcessor
     Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgBean.a(paramArrayOfQConfItem[0].a);
+      TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgBean.a(paramArrayOfQConfItem[0].b);
       localObject = localTroopFoldMsgBean;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onParsed ");
-        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].b);
         QLog.d("TroopFoldMsgConfProcessor", 2, ((StringBuilder)localObject).toString());
         localObject = localTroopFoldMsgBean;
       }
@@ -98,7 +98,7 @@ public class TroopFoldMsgConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopFoldMsgConfProcessor
  * JD-Core Version:    0.7.0.1
  */

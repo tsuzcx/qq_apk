@@ -35,12 +35,12 @@ final class QZoneWebViewJsHandleLogic$3
     {
       QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localIOException);
     }
-    this.val$runtime.a().runOnUiThread(this.val$r);
+    this.val$runtime.b().runOnUiThread(this.val$r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.3
  * JD-Core Version:    0.7.0.1
  */

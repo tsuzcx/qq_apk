@@ -42,12 +42,15 @@ import cooperation.ilive.util.IlivePreloadHelper.PreloadEnd;
 import eipc.EIPCClient;
 import java.util.HashMap;
 import java.util.Map;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class IliveLaunchFragment
   extends PublicBaseFragment
   implements IliveDownloadCallback, IlivePluginCallback, IlivePreloadHelper.PreloadEnd
 {
+  private static final String ACTION_CLOSE_PREPARE_FRAGMENT = "qqlive_anchor_prepare_fragment";
+  private static final String KEY_BROADCAST_SEND_TIME = "broadcast_send_time";
   private static final String TAG = "IliveLaunchActivity";
   private static EnterCallback mEnterCallback = new IliveLaunchFragment.7();
   private static long mStartTimeMillis;
@@ -78,7 +81,7 @@ public class IliveLaunchFragment
   {
     TimeMonitorManager.a().b("PLUGIN_DOWNLOAD");
     cancelPreDownload();
-    IlivePluginDownloadManager.a().c();
+    IlivePluginDownloadManager.a().l();
   }
   
   private void initData()
@@ -141,10 +144,10 @@ public class IliveLaunchFragment
   {
     ElapseStat.a("IliveLaunch initVideoSDK");
     long l = System.currentTimeMillis();
-    this.mIsSoLoadSuccess = QQVideoPlaySDKManager.b();
+    this.mIsSoLoadSuccess = QQVideoPlaySDKManager.isSoLoadSucess();
     if (!this.mIsSoLoadSuccess)
     {
-      QQVideoPlaySDKManager.a();
+      QQVideoPlaySDKManager.initQQImp();
       LoadSoUtil.loadSo(new IliveLaunchFragment.5(this, l));
     }
   }
@@ -343,7 +346,7 @@ public class IliveLaunchFragment
   {
     TimeMonitorConfig.a = false;
     IlivePluginDownloadManager.a().a(null);
-    IlivePluginDownloadManager.a().a();
+    IlivePluginDownloadManager.a().g();
     IlivePluginManager.getInstance().onDestory();
     IliveShareHelper localIliveShareHelper = this.mIliveShareHelper;
     if (localIliveShareHelper != null) {
@@ -365,7 +368,7 @@ public class IliveLaunchFragment
     localStringBuilder.append(paramInt);
     localStringBuilder.append(str);
     paramString.put("errorCode", localStringBuilder.toString());
-    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
+    TimeMonitorManager.a().d("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
     paramString = new StringBuilder();
     paramString.append("onFail code = ");
     paramString.append(paramInt);
@@ -379,11 +382,22 @@ public class IliveLaunchFragment
   {
     ElapseStat.b("IliveLaunch onPluginLaunch");
     QLog.e("IliveLaunchActivity", 1, "onPluginActivityCreate");
-    TimeMonitorManager.a().a("PLUGIN_ENTER_TOTAL_TIME").b("ilive_plugin_launch_total_time");
+    TimeMonitorManager.a().d("PLUGIN_ENTER_TOTAL_TIME").b("ilive_plugin_launch_total_time");
     TimeMonitorConfig.b();
     ElapseStat.b("IliveLaunch totalLaunch");
     if (getBaseActivity() != null) {
       getBaseActivity().finish();
+    }
+    try
+    {
+      Intent localIntent = new Intent("qqlive_anchor_prepare_fragment");
+      localIntent.putExtra("broadcast_send_time", System.currentTimeMillis());
+      MobileQQ.sMobileQQ.sendBroadcast(localIntent);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("IliveLaunchActivity", 1, localThrowable, new Object[0]);
     }
   }
   
@@ -450,8 +464,8 @@ public class IliveLaunchFragment
     QLog.e("IliveLaunchActivity", 1, ((StringBuilder)localObject).toString());
     localObject = new HashMap();
     ((HashMap)localObject).put("status", "success");
-    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", (HashMap)localObject);
-    if (!IlivePluginDownloadManager.a().b())
+    TimeMonitorManager.a().d("PLUGIN_DOWNLOAD").a("plugin_download_result", (HashMap)localObject);
+    if (!IlivePluginDownloadManager.a().k())
     {
       onFail(101, "download success but local apk file is not exist");
       return;
@@ -468,7 +482,7 @@ public class IliveLaunchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment
  * JD-Core Version:    0.7.0.1
  */

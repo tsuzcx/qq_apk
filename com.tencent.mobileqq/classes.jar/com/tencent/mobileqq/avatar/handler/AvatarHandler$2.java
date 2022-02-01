@@ -7,12 +7,12 @@ class AvatarHandler$2
   
   public void run()
   {
-    AvatarHandler.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Byte, this.jdField_b_of_type_Byte, 0, this.jdField_a_of_type_Boolean);
+    AvatarHandler.a(this.this$0, this.a, this.b, this.c, this.d, this.e, 0, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.handler.AvatarHandler.2
  * JD-Core Version:    0.7.0.1
  */

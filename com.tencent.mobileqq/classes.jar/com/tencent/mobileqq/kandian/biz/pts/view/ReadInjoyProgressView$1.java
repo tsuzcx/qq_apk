@@ -21,19 +21,19 @@ class ReadInjoyProgressView$1
   {
     if (!TextUtils.isEmpty(getText()))
     {
-      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.a.b.set(0.0F, 0.0F, getWidth() * ReadInjoyProgressView.a(this.a) / 100.0F, getHeight());
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(ReadInjoyProgressView.a(this.a)));
-      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, AIOUtils.b(2.0F, getResources()), AIOUtils.b(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(ReadInjoyProgressView.b(this.a)));
-      paramCanvas.drawRoundRect(this.a.b, AIOUtils.b(2.0F, getResources()), AIOUtils.b(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+      this.a.b.set(0.0F, 0.0F, getWidth(), getHeight());
+      this.a.c.set(0.0F, 0.0F, getWidth() * ReadInjoyProgressView.a(this.a) / 100.0F, getHeight());
+      this.a.a.setColor(Color.parseColor(ReadInjoyProgressView.b(this.a)));
+      paramCanvas.drawRoundRect(this.a.b, AIOUtils.b(2.0F, getResources()), AIOUtils.b(2.0F, getResources()), this.a.a);
+      this.a.a.setColor(Color.parseColor(ReadInjoyProgressView.c(this.a)));
+      paramCanvas.drawRoundRect(this.a.c, AIOUtils.b(2.0F, getResources()), AIOUtils.b(2.0F, getResources()), this.a.a);
     }
     super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyProgressView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.dataline.util;
 
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class DatalineMathUtil
@@ -17,7 +18,7 @@ public class DatalineMathUtil
     }
     try
     {
-      int i = localWifiManager.getConnectionInfo().getIpAddress();
+      int i = NetworkMonitor.getConnectionInfo(localWifiManager).getIpAddress();
       return i;
     }
     catch (Exception localException)
@@ -63,29 +64,29 @@ public class DatalineMathUtil
   public static byte[] a(String paramString)
   {
     // Byte code:
-    //   0: ldc 88
-    //   2: invokestatic 94	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   0: ldc 90
+    //   2: invokestatic 96	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore 9
-    //   7: new 96	java/io/FileInputStream
+    //   7: new 98	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 97	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: invokespecial 99	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   15: astore 8
     //   17: aload 8
     //   19: astore 7
-    //   21: new 99	com/tencent/mm/vfs/VFSFile
+    //   21: new 101	com/tencent/mm/vfs/VFSFile
     //   24: dup
     //   25: aload_0
-    //   26: invokespecial 100	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   29: invokevirtual 103	com/tencent/mm/vfs/VFSFile:length	()J
+    //   26: invokespecial 102	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   29: invokevirtual 105	com/tencent/mm/vfs/VFSFile:length	()J
     //   32: lstore 5
     //   34: lload 5
     //   36: lstore_3
     //   37: lload 5
-    //   39: ldc2_w 104
+    //   39: ldc2_w 106
     //   42: lcmp
     //   43: ifle +7 -> 50
-    //   46: ldc2_w 104
+    //   46: ldc2_w 106
     //   49: lstore_3
     //   50: aload 8
     //   52: astore 7
@@ -100,7 +101,7 @@ public class DatalineMathUtil
     //   68: astore 7
     //   70: aload 8
     //   72: aload_0
-    //   73: invokevirtual 111	java/io/InputStream:read	([B)I
+    //   73: invokevirtual 113	java/io/InputStream:read	([B)I
     //   76: istore_2
     //   77: iload_2
     //   78: iconst_m1
@@ -126,24 +127,24 @@ public class DatalineMathUtil
     //   105: aload_0
     //   106: iconst_0
     //   107: iload_1
-    //   108: invokevirtual 115	java/security/MessageDigest:update	([BII)V
+    //   108: invokevirtual 117	java/security/MessageDigest:update	([BII)V
     //   111: goto -51 -> 60
     //   114: aload 8
     //   116: astore 7
     //   118: aload 8
-    //   120: invokevirtual 118	java/io/InputStream:close	()V
+    //   120: invokevirtual 120	java/io/InputStream:close	()V
     //   123: aload 8
     //   125: astore 7
     //   127: aload 9
-    //   129: invokevirtual 122	java/security/MessageDigest:digest	()[B
+    //   129: invokevirtual 124	java/security/MessageDigest:digest	()[B
     //   132: astore_0
     //   133: aload 8
-    //   135: invokevirtual 118	java/io/InputStream:close	()V
+    //   135: invokevirtual 120	java/io/InputStream:close	()V
     //   138: aload_0
     //   139: areturn
     //   140: astore 7
     //   142: aload 7
-    //   144: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   144: invokevirtual 125	java/io/IOException:printStackTrace	()V
     //   147: aload_0
     //   148: areturn
     //   149: astore_0
@@ -162,11 +163,11 @@ public class DatalineMathUtil
     //   172: aload 8
     //   174: astore 7
     //   176: aload_0
-    //   177: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   177: invokevirtual 125	java/io/IOException:printStackTrace	()V
     //   180: aload 8
     //   182: ifnull +63 -> 245
     //   185: aload 8
-    //   187: invokevirtual 118	java/io/InputStream:close	()V
+    //   187: invokevirtual 120	java/io/InputStream:close	()V
     //   190: aconst_null
     //   191: areturn
     //   192: astore_0
@@ -175,11 +176,11 @@ public class DatalineMathUtil
     //   196: aload 8
     //   198: astore 7
     //   200: aload_0
-    //   201: invokevirtual 124	java/io/FileNotFoundException:printStackTrace	()V
+    //   201: invokevirtual 126	java/io/FileNotFoundException:printStackTrace	()V
     //   204: aload 8
     //   206: ifnull +39 -> 245
     //   209: aload 8
-    //   211: invokevirtual 118	java/io/InputStream:close	()V
+    //   211: invokevirtual 120	java/io/InputStream:close	()V
     //   214: aconst_null
     //   215: areturn
     //   216: astore_0
@@ -188,27 +189,27 @@ public class DatalineMathUtil
     //   220: aload 8
     //   222: astore 7
     //   224: aload_0
-    //   225: invokevirtual 125	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   225: invokevirtual 127	java/security/NoSuchAlgorithmException:printStackTrace	()V
     //   228: aload 8
     //   230: ifnull +15 -> 245
     //   233: aload 8
-    //   235: invokevirtual 118	java/io/InputStream:close	()V
+    //   235: invokevirtual 120	java/io/InputStream:close	()V
     //   238: aconst_null
     //   239: areturn
     //   240: astore_0
     //   241: aload_0
-    //   242: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   242: invokevirtual 125	java/io/IOException:printStackTrace	()V
     //   245: aconst_null
     //   246: areturn
     //   247: astore_0
     //   248: aload 7
     //   250: ifnull +18 -> 268
     //   253: aload 7
-    //   255: invokevirtual 118	java/io/InputStream:close	()V
+    //   255: invokevirtual 120	java/io/InputStream:close	()V
     //   258: goto +10 -> 268
     //   261: astore 7
     //   263: aload 7
-    //   265: invokevirtual 123	java/io/IOException:printStackTrace	()V
+    //   265: invokevirtual 125	java/io/IOException:printStackTrace	()V
     //   268: goto +5 -> 273
     //   271: aload_0
     //   272: athrow

@@ -47,7 +47,7 @@ public class WelcomeConfigProcessor
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onParsed item: ");
-            ((StringBuilder)localObject2).append(((QConfItem)localObject1).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((QConfItem)localObject1).b);
             QLog.d("WelcomeConfigProcessor", 2, ((StringBuilder)localObject2).toString());
           }
           i += 1;
@@ -61,19 +61,19 @@ public class WelcomeConfigProcessor
       while (i < j)
       {
         localObject2 = paramArrayOfQConfItem[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((QConfItem)localObject2).jdField_a_of_type_JavaLangString))) {
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((QConfItem)localObject2).b))) {
           try
           {
             localObject1 = new LoginWelcomeManager.WelcomeIntervalConfig();
-            localObject2 = new JSONObject(((QConfItem)localObject2).jdField_a_of_type_JavaLangString);
+            localObject2 = new JSONObject(((QConfItem)localObject2).b);
             if (((JSONObject)localObject2).has("popup_url")) {
-              ((LoginWelcomeManager.WelcomeIntervalConfig)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("popup_url");
+              ((LoginWelcomeManager.WelcomeIntervalConfig)localObject1).a = ((JSONObject)localObject2).getString("popup_url");
             }
             if (((JSONObject)localObject2).has("fixed_entrance_url")) {
               ((LoginWelcomeManager.WelcomeIntervalConfig)localObject1).b = ((JSONObject)localObject2).getString("fixed_entrance_url");
             }
             if (((JSONObject)localObject2).has("request_interval")) {
-              ((LoginWelcomeManager.WelcomeIntervalConfig)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("request_interval");
+              ((LoginWelcomeManager.WelcomeIntervalConfig)localObject1).c = ((JSONObject)localObject2).getInt("request_interval");
             }
             return localObject1;
           }
@@ -139,7 +139,7 @@ public class WelcomeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.WelcomeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

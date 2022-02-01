@@ -13,32 +13,32 @@ class OfflinePlugin$4
   
   public void onCheckOfflineFinish(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.c.l = ((int)(System.currentTimeMillis() - this.a));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onCheckOfflineFinish, cost: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c);
+      ((StringBuilder)localObject).append(this.c.l);
       ((StringBuilder)localObject).append(", url: ");
-      ((StringBuilder)localObject).append(Util.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+      ((StringBuilder)localObject).append(Util.b(this.b, new String[0]));
       QLog.i("OfflinePluginQQ", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a();
+    this.c.a(this.b, paramInt);
+    Object localObject = this.c.mRuntime.a();
     if (localObject != null)
     {
-      ((CustomWebView)localObject).loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
+      ((CustomWebView)localObject).loadUrlOriginal(this.b);
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("error!!!! webview is null, now can not loadUrl ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     QLog.e("OfflinePluginQQ", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.4
  * JD-Core Version:    0.7.0.1
  */

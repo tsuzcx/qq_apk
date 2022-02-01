@@ -21,15 +21,15 @@ public class URLImageLoader
     return new URLImageLoader.URLTask(paramImageView, paramConfig);
   }
   
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
   public void b()
   {
     super.b();
+    c();
+  }
+  
+  public void c()
+  {
+    super.c();
     try
     {
       this.a.evictAll();

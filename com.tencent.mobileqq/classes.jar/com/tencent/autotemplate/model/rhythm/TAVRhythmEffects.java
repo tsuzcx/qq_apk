@@ -1,5 +1,6 @@
 package com.tencent.autotemplate.model.rhythm;
 
+import android.support.annotation.NonNull;
 import com.google.gson.annotations.SerializedName;
 import com.tencent.autotemplate.model.TAVEffectAutomaticEffect;
 import com.tencent.autotemplate.model.TAVTransitionAutomaticEffect;
@@ -79,7 +80,7 @@ public class TAVRhythmEffects
     this.secondEffects = paramList;
   }
   
-  public void setTransitions(List<TAVTransitionAutomaticEffect> paramList)
+  public void setTransitions(@NonNull List<TAVTransitionAutomaticEffect> paramList)
   {
     this.transitions = paramList;
   }

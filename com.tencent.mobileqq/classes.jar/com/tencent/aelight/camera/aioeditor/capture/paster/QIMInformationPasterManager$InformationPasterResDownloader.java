@@ -17,17 +17,17 @@ import mqq.util.WeakReference;
 
 public class QIMInformationPasterManager$InformationPasterResDownloader
 {
-  private QIMInformationPasterManager jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager;
-  private ConcurrentHashMap<String, ArrayList<WeakReference<QIMInformationPasterManager.IInformationPasterResDownloaderCallback>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ArrayList<WeakReference<QIMInformationPasterManager.IInformationPasterResDownloaderCallback>>> a = new ConcurrentHashMap();
+  private QIMInformationPasterManager b;
   
   public QIMInformationPasterManager$InformationPasterResDownloader(QIMInformationPasterManager paramQIMInformationPasterManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager = paramQIMInformationPasterManager;
+    this.b = paramQIMInformationPasterManager;
   }
   
   public void a(@NonNull InformationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback)
   {
-    String str = paramItem.e;
+    String str = paramItem.g;
     if ((str != null) && (!TextUtils.isEmpty(str)))
     {
       if (QLog.isColorLevel())
@@ -37,9 +37,9 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
         ((StringBuilder)???).append(str);
         QLog.i("QIMInformationPasterManager", 2, ((StringBuilder)???).toString());
       }
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      synchronized (this.a)
       {
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        ArrayList localArrayList = (ArrayList)this.a.get(str);
         int j = 0;
         if (localArrayList != null)
         {
@@ -66,7 +66,7 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
         }
         localArrayList = new ArrayList();
         localArrayList.add(new WeakReference(paramIInformationPasterResDownloaderCallback));
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
+        this.a.put(str, localArrayList);
         paramIInformationPasterResDownloaderCallback = new HttpNetReq();
         paramIInformationPasterResDownloaderCallback.mCallback = new QIMInformationPasterManager.InformationPasterResDownloader.1(this);
         paramIInformationPasterResDownloaderCallback.mReqUrl = str;
@@ -85,12 +85,12 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
   
   public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null;
+    return this.a.get(paramString) != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader
  * JD-Core Version:    0.7.0.1
  */

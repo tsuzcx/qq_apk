@@ -56,41 +56,41 @@ import mqq.os.MqqHandler;
 
 public class IntimateInfoShareHelper
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new IntimateInfoShareHelper.2(this);
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IntimateInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
-  private ShareWithPictureActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder = null;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
-  private List<ShareActionSheetBuilder.ActionSheetItem>[] jdField_a_of_type_ArrayOfJavaUtilList;
-  private Bitmap b;
-  private Bitmap c;
-  private Bitmap d;
+  private static String b;
+  AdapterView.OnItemClickListener a = new IntimateInfoShareHelper.2(this);
+  private IntimateInfo c;
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] d;
+  private BaseActivity e;
+  private QQAppInterface f;
+  private QQProgressDialog g;
+  private Bitmap h;
+  private Bitmap i;
+  private Bitmap j;
+  private Bitmap k;
+  private WXShareHelper.WXShareListener l;
+  private ShareWithPictureActionSheetBuilder m = null;
   
   public IntimateInfoShareHelper(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, IntimateInfo paramIntimateInfo, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    this.c = paramBitmap1;
-    this.d = paramBitmap2;
-    this.b = paramBitmap3;
-    paramBaseActivity = this.c;
+    this.e = paramBaseActivity;
+    this.f = paramQQAppInterface;
+    this.c = paramIntimateInfo;
+    this.j = paramBitmap1;
+    this.k = paramBitmap2;
+    this.i = paramBitmap3;
+    paramBaseActivity = this.j;
     if ((paramBaseActivity == null) || (paramBaseActivity.isRecycled())) {
-      this.c = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130846635);
+      this.j = BitmapFactory.decodeResource(this.e.getResources(), 2130848187);
     }
-    paramBaseActivity = this.d;
+    paramBaseActivity = this.k;
     if ((paramBaseActivity == null) || (paramBaseActivity.isRecycled())) {
-      this.d = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130846635);
+      this.k = BitmapFactory.decodeResource(this.e.getResources(), 2130848187);
     }
     paramBaseActivity = new StringBuilder();
-    paramBaseActivity.append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693467));
-    paramBaseActivity.append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693468));
-    paramBaseActivity.append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693469));
-    jdField_a_of_type_JavaLangString = paramBaseActivity.toString();
+    paramBaseActivity.append(this.e.getResources().getString(2131891016));
+    paramBaseActivity.append(this.e.getResources().getString(2131891017));
+    paramBaseActivity.append(this.e.getResources().getString(2131891018));
+    b = paramBaseActivity.toString();
   }
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -98,13 +98,13 @@ public class IntimateInfoShareHelper
     if (paramBitmap == null) {
       return null;
     }
-    int i = paramBitmap.getHeight();
-    int j = paramBitmap.getWidth();
-    float f1 = paramInt1 / j;
-    float f2 = paramInt2 / i;
+    int n = paramBitmap.getHeight();
+    int i1 = paramBitmap.getWidth();
+    float f1 = paramInt1 / i1;
+    float f2 = paramInt2 / n;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
-    return Bitmap.createBitmap(paramBitmap, 0, 0, j, i, localMatrix, false);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i1, n, localMatrix, false);
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -114,16 +114,16 @@ public class IntimateInfoShareHelper
   
   private void a(Bitmap paramBitmap, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+    if (this.l == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new IntimateInfoShareHelper.4(this);
-      WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+      this.l = new IntimateInfoShareHelper.4(this);
+      WXShareHelper.a().a(this.l);
     }
-    String str = a(paramBitmap);
-    e();
+    String str = c(paramBitmap);
+    f();
     if (TextUtils.isEmpty(str))
     {
-      a(1, 2131693453);
+      a(1, 2131891002);
       return;
     }
     if (paramInt == 3)
@@ -141,38 +141,53 @@ public class IntimateInfoShareHelper
     paramCanvas.drawText(paramString, paramFloat1, paramFloat2 - paramPaint.getFontMetrics().top, paramPaint);
   }
   
-  private void b(Bitmap paramBitmap)
+  private void d()
   {
-    paramBitmap = a(paramBitmap);
-    e();
+    this.m = new ShareWithPictureActionSheetBuilder(this.e);
+    this.d = a(this.e);
+    this.m.setActionSheetItems(this.d);
+    this.m.setItemClickListener(this.a);
+  }
+  
+  private void d(Bitmap paramBitmap)
+  {
+    paramBitmap = c(paramBitmap);
+    f();
     if (TextUtils.isEmpty(paramBitmap))
     {
-      a(1, 2131693453);
+      a(1, 2131891002);
       return;
     }
     QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-    localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    QZoneHelper.forwardToPublishMood(localBaseActivity, localUserInfo, paramBitmap, localBaseActivity.getResources().getString(2131693471), "", 20001);
+    localUserInfo.qzone_uin = this.f.getAccount();
+    BaseActivity localBaseActivity = this.e;
+    QZoneHelper.forwardToPublishMood(localBaseActivity, localUserInfo, paramBitmap, localBaseActivity.getResources().getString(2131891020), "", 20001);
   }
   
-  private void c()
+  private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder = new ShareWithPictureActionSheetBuilder(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    this.jdField_a_of_type_ArrayOfJavaUtilList = a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder.setActionSheetItems(this.jdField_a_of_type_ArrayOfJavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder.setItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+    if (this.g == null)
+    {
+      localObject = this.e;
+      this.g = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
+      this.g.c(true);
+    }
+    this.g.c(2131891516);
+    Object localObject = this.g;
+    if ((localObject != null) && (!((QQProgressDialog)localObject).isShowing()) && (!this.e.isFinishing())) {
+      this.g.show();
+    }
   }
   
-  private void c(Bitmap paramBitmap)
+  private void e(Bitmap paramBitmap)
   {
     try
     {
-      Object localObject = a(paramBitmap);
-      e();
+      Object localObject = c(paramBitmap);
+      f();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        a(1, 2131693453);
+        a(1, 2131891002);
         return;
       }
       paramBitmap = new Bundle();
@@ -183,39 +198,40 @@ public class IntimateInfoShareHelper
       paramBitmap.putString("forward_extra", "intimate_share");
       localObject = new Intent();
       ((Intent)localObject).putExtras(paramBitmap);
-      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (Intent)localObject, 21);
+      ForwardBaseOption.a(this.e, (Intent)localObject, 21);
       return;
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      label96:
-      break label96;
+      label100:
+      break label100;
     }
-    a(1, 2131693458);
+    a(1, 2131891007);
   }
   
-  private void d()
+  private void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131693895);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    if ((localObject != null) && (!((QQProgressDialog)localObject).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    QQProgressDialog localQQProgressDialog = this.g;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
+      try
+      {
+        this.g.dismiss();
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
-  private void d(Bitmap paramBitmap)
+  private void f(Bitmap paramBitmap)
   {
-    paramBitmap = a(paramBitmap);
-    e();
+    paramBitmap = c(paramBitmap);
+    f();
     if (TextUtils.isEmpty(paramBitmap))
     {
-      a(1, 2131693453);
+      a(1, 2131891002);
       return;
     }
     Object localObject = BaseApplicationImpl.getContext().getPackageManager();
@@ -229,11 +245,11 @@ public class IntimateInfoShareHelper
       Intent localIntent = new Intent("android.intent.action.SEND");
       localIntent.setFlags(268435456);
       localIntent.setType("image/*");
-      localIntent.putExtra("android.intent.extra.TEXT", jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("android.intent.extra.TEXT", b);
       localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(paramBitmap)));
       FileProvider7Helper.intentCompatForN(BaseApplicationImpl.getContext(), localIntent);
       localIntent.setPackage(((ApplicationInfo)localObject).packageName);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+      this.e.startActivity(localIntent);
       if (!QLog.isColorLevel()) {
         break label175;
       }
@@ -245,103 +261,32 @@ public class IntimateInfoShareHelper
       label167:
       break label167;
     }
-    a(0, 2131693463);
+    a(0, 2131891012);
     label175:
   }
   
-  private void e()
-  {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  private void e(Bitmap paramBitmap)
+  private void g(Bitmap paramBitmap)
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
+      if (this.e.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.requestPermissions(new IntimateInfoShareHelper.5(this, paramBitmap), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        this.e.requestPermissions(new IntimateInfoShareHelper.5(this, paramBitmap), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
-      a(paramBitmap);
+      b(paramBitmap);
       return;
     }
-    a(paramBitmap);
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("https://ti.qq.com/open_qq/newIndex.html?url=mqqapi%3A%2F%2Fuserprofile%2Ffriend_profile_card%3Fsrc_type%3Dweb%26version%3D1.0%26source%3D1%26uin%3D");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new Hashtable();
-    ((Hashtable)localObject2).put(EncodeHintType.MARGIN, Integer.valueOf(0));
-    ((Hashtable)localObject2).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-    int m;
-    int i;
-    int j;
-    try
-    {
-      localObject2 = new QRCodeWriter().a((String)localObject1, 100, 100, (Map)localObject2);
-      k = ((BitMatrix)localObject2).a();
-      m = ((BitMatrix)localObject2).b();
-      localObject1 = new int[k * m];
-      i = 0;
-    }
-    catch (WriterException localWriterException)
-    {
-      int k;
-      break label175;
-    }
-    if (j < k) {
-      if (((BitMatrix)localObject2).a(j, i)) {
-        localObject1[(i * k + j)] = -16777216;
-      }
-    }
-    label175:
-    label221:
-    for (;;)
-    {
-      localObject2 = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-      ((Bitmap)localObject2).setPixels((int[])localObject1, 0, k, 0, 0, k, m);
-      return localObject2;
-      if (QLog.isColorLevel()) {
-        QLog.d("IntimateInfoShareHelper", 2, "Create QRCode fail");
-      }
-      return null;
-      for (;;)
-      {
-        if (i >= m) {
-          break label221;
-        }
-        j = 0;
-        break;
-        j += 1;
-        break;
-        i += 1;
-      }
-    }
+    b(paramBitmap);
   }
   
   public Bitmap a(Bitmap paramBitmap)
   {
     paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    Object localObject = Bitmap.createBitmap(a(this.b, 750, 1272), 0, 1100, 750, 172);
+    Object localObject = Bitmap.createBitmap(a(this.i, 750, 1272), 0, 1100, 750, 172);
     Canvas localCanvas = new Canvas(paramBitmap);
     localCanvas.drawBitmap((Bitmap)localObject, 0.0F, 1100.0F, null);
-    localObject = a();
+    localObject = b();
     if (localObject != null) {
       localCanvas.drawBitmap((Bitmap)localObject, 40.0F, 1125.0F, null);
     }
@@ -349,12 +294,12 @@ public class IntimateInfoShareHelper
     ((TextPaint)localObject).setTextSize(24.0F);
     ((TextPaint)localObject).setTextAlign(Paint.Align.LEFT);
     ((TextPaint)localObject).setColor(Color.parseColor("#878B99"));
-    localObject = new StaticLayout(jdField_a_of_type_JavaLangString.replace("，", "，\r\n"), (TextPaint)localObject, 350, Layout.Alignment.ALIGN_NORMAL, 1.2F, 0.0F, true);
+    localObject = new StaticLayout(b.replace("，", "，\r\n"), (TextPaint)localObject, 350, Layout.Alignment.ALIGN_NORMAL, 1.2F, 0.0F, true);
     localCanvas.save();
     localCanvas.translate(152.0F, 1125.0F);
     ((StaticLayout)localObject).draw(localCanvas);
     localCanvas.restore();
-    localCanvas.drawBitmap(a(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840536), 194, 40), 512.0F, 1185.0F, null);
+    localCanvas.drawBitmap(a(BitmapFactory.decodeResource(this.e.getResources(), 2130841302), 194, 40), 512.0F, 1185.0F, null);
     return paramBitmap;
   }
   
@@ -362,25 +307,25 @@ public class IntimateInfoShareHelper
   {
     Bitmap localBitmap = Bitmap.createBitmap(750, 1272, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
-    localCanvas.drawBitmap(a(this.b, 750, 1272), 0.0F, 0.0F, null);
-    Object localObject2 = a(this.c, 140, 140);
-    Object localObject1 = a(this.d, 140, 140);
+    localCanvas.drawBitmap(a(this.i, 750, 1272), 0.0F, 0.0F, null);
+    Object localObject2 = a(this.j, 140, 140);
+    Object localObject1 = a(this.k, 140, 140);
     localCanvas.drawBitmap((Bitmap)localObject2, 248.0F, 180.0F, null);
     localObject2 = new Paint(1);
     ((Paint)localObject2).setColor(-1);
     localCanvas.drawCircle(223.0F, 250.0F, 75.0F, (Paint)localObject2);
     localCanvas.drawBitmap((Bitmap)localObject1, 153.0F, 180.0F, null);
-    int i = paramIntimateInfo.maskType;
-    int j;
-    if (i != 1) {
-      if (i != 2) {
-        if (i != 3) {
-          if (i != 26)
+    int n = paramIntimateInfo.maskType;
+    int i1;
+    if (n != 1) {
+      if (n != 2) {
+        if (n != 3) {
+          if (n != 26)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693459);
-            i = Color.parseColor("#03081A");
-            j = Color.parseColor("#878B99");
-            localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840532);
+            localObject1 = this.e.getResources().getString(2131891008);
+            n = Color.parseColor("#03081A");
+            i1 = Color.parseColor("#878B99");
+            localObject2 = BitmapFactory.decodeResource(this.e.getResources(), 2130841298);
           }
         }
       }
@@ -388,81 +333,81 @@ public class IntimateInfoShareHelper
     for (;;)
     {
       break;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693466);
-      i = Color.parseColor("#8173FF");
-      j = Color.parseColor("#8173FF");
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840537);
+      localObject1 = this.e.getResources().getString(2131891015);
+      n = Color.parseColor("#8173FF");
+      i1 = Color.parseColor("#8173FF");
+      localObject2 = BitmapFactory.decodeResource(this.e.getResources(), 2130841303);
       continue;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693461);
-      i = Color.parseColor("#2493FF");
-      j = Color.parseColor("#4DA7FF");
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840534);
+      localObject1 = this.e.getResources().getString(2131891010);
+      n = Color.parseColor("#2493FF");
+      i1 = Color.parseColor("#4DA7FF");
+      localObject2 = BitmapFactory.decodeResource(this.e.getResources(), 2130841300);
       continue;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693460);
-      i = Color.parseColor("#FF8A2D");
-      j = Color.parseColor("#FF9F40");
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840533);
+      localObject1 = this.e.getResources().getString(2131891009);
+      n = Color.parseColor("#FF8A2D");
+      i1 = Color.parseColor("#FF9F40");
+      localObject2 = BitmapFactory.decodeResource(this.e.getResources(), 2130841299);
       continue;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693462);
-      i = Color.parseColor("#FF6FA3");
-      j = Color.parseColor("#FF8AB5");
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130840535);
+      localObject1 = this.e.getResources().getString(2131891011);
+      n = Color.parseColor("#FF6FA3");
+      i1 = Color.parseColor("#FF8AB5");
+      localObject2 = BitmapFactory.decodeResource(this.e.getResources(), 2130841301);
     }
     TextPaint localTextPaint = new TextPaint(1);
-    localTextPaint.setColor(i);
+    localTextPaint.setColor(n);
     localTextPaint.setTextSize(80.0F);
     localTextPaint.setTextAlign(Paint.Align.LEFT);
-    a(localCanvas, localTextPaint, 146.0F, 364.0F, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays));
-    float f = Layout.getDesiredWidth(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays), localTextPaint);
+    a(localCanvas, localTextPaint, 146.0F, 364.0F, String.valueOf(this.c.beFriendDays));
+    float f1 = Layout.getDesiredWidth(String.valueOf(this.c.beFriendDays), localTextPaint);
     localTextPaint.setTextSize(34.0F);
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    int m = 0;
-    a(localCanvas, localTextPaint, f + 146.0F + 8.0F, 410.0F, ((Resources)localObject3).getString(2131693401, new Object[] { "" }));
+    Object localObject3 = this.e.getResources();
+    int i3 = 0;
+    a(localCanvas, localTextPaint, f1 + 146.0F + 8.0F, 410.0F, ((Resources)localObject3).getString(2131890950, new Object[] { "" }));
     a(localCanvas, localTextPaint, 152.0F, 468.0F, (String)localObject1);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    localObject1 = this.e.getResources();
     localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693454));
+    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131891003));
     ((StringBuilder)localObject3).append("\r\n");
-    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693455));
+    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131891004));
     ((StringBuilder)localObject3).append("\r\n");
     if ((paramIntimateInfo.commonTroopInfoList != null) && (paramIntimateInfo.commonTroopInfoList.size() > 0))
     {
-      ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693433));
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.commonTroopInfoList.size());
-      ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693416));
+      ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131890982));
+      ((StringBuilder)localObject3).append(this.c.commonTroopInfoList.size());
+      ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131890965));
       ((StringBuilder)localObject3).append("\r\n");
-      i = 2;
+      n = 2;
     }
     else
     {
-      i = 3;
+      n = 3;
     }
-    int k = i;
+    int i2 = n;
     if (paramIntimateInfo.dnaInfoList != null)
     {
-      k = i;
+      i2 = n;
       if (paramIntimateInfo.dnaInfoList.size() > 0)
       {
-        k = i;
-        if (paramIntimateInfo.dnaInfoList.size() < i) {
-          k = paramIntimateInfo.dnaInfoList.size();
+        i2 = n;
+        if (paramIntimateInfo.dnaInfoList.size() < n) {
+          i2 = paramIntimateInfo.dnaInfoList.size();
         }
       }
     }
     if ((paramIntimateInfo.dnaInfoList != null) && (paramIntimateInfo.dnaInfoList.size() > 0))
     {
-      i = m;
-      while (i < k)
+      n = i3;
+      while (n < i2)
       {
-        ((StringBuilder)localObject3).append(((IntimateInfo.DNAInfo)paramIntimateInfo.dnaInfoList.get(i)).wording.replaceAll("，", "，\r\n"));
+        ((StringBuilder)localObject3).append(((IntimateInfo.DNAInfo)paramIntimateInfo.dnaInfoList.get(n)).wording.replaceAll("，", "，\r\n"));
         ((StringBuilder)localObject3).append("\r\n");
-        i += 1;
+        n += 1;
       }
     }
-    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693456));
+    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131891005));
     ((StringBuilder)localObject3).append("\r\n");
-    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131693457));
-    localTextPaint.setColor(j);
+    ((StringBuilder)localObject3).append(((Resources)localObject1).getString(2131891006));
+    localTextPaint.setColor(i1);
     localTextPaint.setTextSize(24.0F);
     paramIntimateInfo = new StaticLayout((CharSequence)localObject3, localTextPaint, 300, Layout.Alignment.ALIGN_NORMAL, 1.7F, 0.0F, true);
     localCanvas.save();
@@ -473,102 +418,236 @@ public class IntimateInfoShareHelper
     return localBitmap;
   }
   
+  public void a()
+  {
+    if (this.m == null) {
+      d();
+    }
+    Bitmap localBitmap = this.h;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      this.m.a(this.h);
+      this.m.show();
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new IntimateInfoShareHelper.1(this));
+  }
+  
+  public void a(int paramInt, Bitmap paramBitmap)
+  {
+    if ((paramInt == 3) || (paramInt == 4))
+    {
+      BaseActivity localBaseActivity;
+      if (!WXShareHelper.a().b())
+      {
+        localBaseActivity = this.e;
+        QQToast.makeText(localBaseActivity, localBaseActivity.getString(2131891013), 0).show(this.e.getTitleBarHeight());
+      }
+      else if (!WXShareHelper.a().c())
+      {
+        localBaseActivity = this.e;
+        QQToast.makeText(localBaseActivity, localBaseActivity.getString(2131891021), 0).show(this.e.getTitleBarHeight());
+      }
+    }
+    e();
+    ThreadManager.getFileThreadHandler().post(new IntimateInfoShareHelper.3(this, paramBitmap, paramInt));
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 1;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 2;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
+    localActionSheetItem.action = 3;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
+    localActionSheetItem.action = 4;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = paramContext.getString(2131891023);
+    localActionSheetItem.icon = 2130840475;
+    localActionSheetItem.iconNeedBg = true;
+    localActionSheetItem.action = 0;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    return new ArrayList[] { localArrayList };
+  }
+  
+  public Bitmap b()
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("https://ti.qq.com/open_qq/newIndex.html?url=mqqapi%3A%2F%2Fuserprofile%2Ffriend_profile_card%3Fsrc_type%3Dweb%26version%3D1.0%26source%3D1%26uin%3D");
+    ((StringBuilder)localObject1).append(this.f.getCurrentUin());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new Hashtable();
+    ((Hashtable)localObject2).put(EncodeHintType.MARGIN, Integer.valueOf(0));
+    ((Hashtable)localObject2).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+    int i3;
+    int n;
+    int i1;
+    try
+    {
+      localObject2 = new QRCodeWriter().a((String)localObject1, 100, 100, (Map)localObject2);
+      i2 = ((BitMatrix)localObject2).a();
+      i3 = ((BitMatrix)localObject2).b();
+      localObject1 = new int[i2 * i3];
+      n = 0;
+    }
+    catch (WriterException localWriterException)
+    {
+      int i2;
+      break label175;
+    }
+    if (i1 < i2) {
+      if (((BitMatrix)localObject2).a(i1, n)) {
+        localObject1[(n * i2 + i1)] = -16777216;
+      }
+    }
+    label175:
+    label221:
+    for (;;)
+    {
+      localObject2 = Bitmap.createBitmap(i2, i3, Bitmap.Config.ARGB_8888);
+      ((Bitmap)localObject2).setPixels((int[])localObject1, 0, i2, 0, 0, i2, i3);
+      return localObject2;
+      if (QLog.isColorLevel()) {
+        QLog.d("IntimateInfoShareHelper", 2, "Create QRCode fail");
+      }
+      return null;
+      for (;;)
+      {
+        if (n >= i3) {
+          break label221;
+        }
+        i1 = 0;
+        break;
+        i1 += 1;
+        break;
+        n += 1;
+      }
+    }
+  }
+  
+  public void b(Bitmap paramBitmap)
+  {
+    ThreadManager.executeOnFileThread(new IntimateInfoShareHelper.6(this, paramBitmap));
+  }
+  
   /* Error */
-  public String a(Bitmap paramBitmap)
+  public String c(Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: new 66	java/lang/StringBuilder
+    //   0: new 75	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   7: astore_2
     //   8: aload_2
-    //   9: ldc_w 690
-    //   12: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: ldc_w 780
+    //   12: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_2
-    //   17: invokestatic 696	java/lang/System:currentTimeMillis	()J
-    //   20: invokevirtual 699	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   17: invokestatic 786	java/lang/System:currentTimeMillis	()J
+    //   20: invokevirtual 789	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_2
     //   25: aload_0
-    //   26: getfield 37	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   29: invokevirtual 702	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   32: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: getfield 46	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper:f	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   29: invokevirtual 792	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   32: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_2
-    //   37: ldc_w 704
-    //   40: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc_w 794
+    //   40: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aload_2
-    //   45: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   48: astore_2
-    //   49: new 359	java/io/File
+    //   49: new 377	java/io/File
     //   52: dup
-    //   53: new 359	java/io/File
+    //   53: new 377	java/io/File
     //   56: dup
-    //   57: getstatic 709	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
-    //   60: ldc_w 711
-    //   63: invokespecial 713	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   66: invokevirtual 716	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   69: invokestatic 722	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   72: invokespecial 360	java/io/File:<init>	(Ljava/lang/String;)V
+    //   57: getstatic 799	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
+    //   60: ldc_w 801
+    //   63: invokespecial 803	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   66: invokevirtual 806	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   69: invokestatic 812	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   72: invokespecial 378	java/io/File:<init>	(Ljava/lang/String;)V
     //   75: astore_3
     //   76: aload_3
-    //   77: invokevirtual 725	java/io/File:mkdirs	()Z
+    //   77: invokevirtual 815	java/io/File:mkdirs	()Z
     //   80: pop
     //   81: aload_3
     //   82: ifnull +204 -> 286
     //   85: aload_3
-    //   86: invokevirtual 728	java/io/File:canWrite	()Z
+    //   86: invokevirtual 818	java/io/File:canWrite	()Z
     //   89: ifeq +197 -> 286
-    //   92: new 359	java/io/File
+    //   92: new 377	java/io/File
     //   95: dup
     //   96: aload_3
-    //   97: invokevirtual 716	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   97: invokevirtual 806	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   100: aload_2
-    //   101: invokespecial 713	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokespecial 803	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: astore_2
     //   105: aload_2
-    //   106: invokevirtual 716	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   106: invokevirtual 806	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   109: astore 4
     //   111: aload_2
-    //   112: invokevirtual 731	java/io/File:exists	()Z
+    //   112: invokevirtual 821	java/io/File:exists	()Z
     //   115: ifeq +8 -> 123
     //   118: aload_2
-    //   119: invokevirtual 734	java/io/File:delete	()Z
+    //   119: invokevirtual 824	java/io/File:delete	()Z
     //   122: pop
-    //   123: new 736	java/io/BufferedOutputStream
+    //   123: new 826	java/io/BufferedOutputStream
     //   126: dup
-    //   127: new 738	java/io/FileOutputStream
+    //   127: new 828	java/io/FileOutputStream
     //   130: dup
     //   131: aload_2
-    //   132: invokespecial 741	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   135: invokespecial 744	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   132: invokespecial 831	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   135: invokespecial 834	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   138: astore_3
     //   139: aload_3
     //   140: astore_2
     //   141: aload_1
-    //   142: getstatic 750	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   142: getstatic 840	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   145: bipush 100
     //   147: aload_3
-    //   148: invokevirtual 754	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   148: invokevirtual 844	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   151: pop
     //   152: aload_3
     //   153: astore_2
     //   154: aload_3
-    //   155: invokevirtual 757	java/io/BufferedOutputStream:flush	()V
+    //   155: invokevirtual 847	java/io/BufferedOutputStream:flush	()V
     //   158: aload_3
-    //   159: invokevirtual 760	java/io/BufferedOutputStream:close	()V
+    //   159: invokevirtual 850	java/io/BufferedOutputStream:close	()V
     //   162: aload 4
     //   164: areturn
     //   165: astore_1
-    //   166: invokestatic 326	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   169: ifeq +14 -> 183
-    //   172: ldc_w 328
+    //   172: ldc_w 346
     //   175: iconst_2
     //   176: aload_1
-    //   177: invokevirtual 763	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   180: invokestatic 333	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: invokevirtual 853	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   180: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   183: aload 4
     //   185: areturn
     //   186: astore_2
@@ -586,45 +665,45 @@ public class IntimateInfoShareHelper
     //   202: astore_1
     //   203: aload_1
     //   204: astore_2
-    //   205: invokestatic 326	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   208: ifeq +16 -> 224
     //   211: aload_1
     //   212: astore_2
-    //   213: ldc_w 328
+    //   213: ldc_w 346
     //   216: iconst_2
     //   217: aload_3
-    //   218: invokevirtual 764	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   221: invokestatic 333	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   218: invokevirtual 854	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   221: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   224: aload_1
     //   225: ifnull +61 -> 286
     //   228: aload_1
-    //   229: invokevirtual 760	java/io/BufferedOutputStream:close	()V
+    //   229: invokevirtual 850	java/io/BufferedOutputStream:close	()V
     //   232: aconst_null
     //   233: areturn
     //   234: astore_1
-    //   235: invokestatic 326	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   235: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   238: ifeq +48 -> 286
-    //   241: ldc_w 328
+    //   241: ldc_w 346
     //   244: iconst_2
     //   245: aload_1
-    //   246: invokevirtual 763	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   249: invokestatic 333	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   246: invokevirtual 853	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   249: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   252: aconst_null
     //   253: areturn
     //   254: astore_1
     //   255: aload_2
     //   256: ifnull +28 -> 284
     //   259: aload_2
-    //   260: invokevirtual 760	java/io/BufferedOutputStream:close	()V
+    //   260: invokevirtual 850	java/io/BufferedOutputStream:close	()V
     //   263: goto +21 -> 284
     //   266: astore_2
-    //   267: invokestatic 326	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   267: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   270: ifeq +14 -> 284
-    //   273: ldc_w 328
+    //   273: ldc_w 346
     //   276: iconst_2
     //   277: aload_2
-    //   278: invokevirtual 763	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   281: invokestatic 333	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: invokevirtual 853	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   281: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   284: aload_1
     //   285: athrow
     //   286: aconst_null
@@ -655,93 +734,14 @@ public class IntimateInfoShareHelper
     //   259	263	266	java/io/IOException
   }
   
-  public void a()
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder == null) {
-      c();
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    if (this.l != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder.show();
-      return;
+      WXShareHelper.a().b(this.l);
+      this.l = null;
     }
-    ThreadManager.getFileThreadHandler().post(new IntimateInfoShareHelper.1(this));
-  }
-  
-  public void a(int paramInt, Bitmap paramBitmap)
-  {
-    if ((paramInt == 3) || (paramInt == 4))
-    {
-      BaseActivity localBaseActivity;
-      if (!WXShareHelper.a().a())
-      {
-        localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-        QQToast.a(localBaseActivity, localBaseActivity.getString(2131693464), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      }
-      else if (!WXShareHelper.a().b())
-      {
-        localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-        QQToast.a(localBaseActivity, localBaseActivity.getString(2131693472), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      }
-    }
-    d();
-    ThreadManager.getFileThreadHandler().post(new IntimateInfoShareHelper.3(this, paramBitmap, paramInt));
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    ThreadManager.executeOnFileThread(new IntimateInfoShareHelper.6(this, paramBitmap));
-  }
-  
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 1;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130839068;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 2;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
-    localActionSheetItem.action = 3;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
-    localActionSheetItem.action = 4;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131693474);
-    localActionSheetItem.icon = 2130840170;
-    localActionSheetItem.iconNeedBg = true;
-    localActionSheetItem.action = 0;
-    localActionSheetItem.argus = "";
-    localArrayList.add(localActionSheetItem);
-    return new ArrayList[] { localArrayList };
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
-    {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
-    }
-    ShareWithPictureActionSheetBuilder localShareWithPictureActionSheetBuilder = this.jdField_a_of_type_ComTencentMobileqqUtilsShareWithPictureActionSheetBuilder;
+    ShareWithPictureActionSheetBuilder localShareWithPictureActionSheetBuilder = this.m;
     if (localShareWithPictureActionSheetBuilder != null) {
       localShareWithPictureActionSheetBuilder.dismiss();
     }
@@ -749,7 +749,7 @@ public class IntimateInfoShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper
  * JD-Core Version:    0.7.0.1
  */

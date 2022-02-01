@@ -6,19 +6,22 @@ import UserGrowth.stPublisherGuide;
 import UserGrowth.stPublisherRsp;
 import UserGrowth.stRedDotMenu;
 import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaPerson;
 import UserGrowth.stTabInfo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import androidx.annotation.Nullable;
 import com.tencent.biz.pubaccount.weishi_new.WSMultiImageManager;
 import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
 import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
+import com.tencent.biz.pubaccount.weishi_new.combo.publisher.WSPublisherFetcher;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
 import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSHomeView;
+import com.tencent.biz.pubaccount.weishi_new.profile.WSProfileFragment;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.biz.pubaccount.weishi_new.request.GetPublisherRequest;
 import com.tencent.biz.pubaccount.weishi_new.request.GetTabsRequest;
 import com.tencent.biz.pubaccount.weishi_new.request.RedDotRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
@@ -29,7 +32,6 @@ import com.tencent.mobileqq.app.guard.guardinterface.IGuardInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
 
 public class WSHomeFragmentPresenter
   extends WSBasePresenter<IWSHomeView>
@@ -38,15 +40,10 @@ public class WSHomeFragmentPresenter
   private List<stNotificationRedDot> a;
   private List<stRedDotMenu> b;
   
-  private int a()
-  {
-    return WSGlobalConfig.a().a();
-  }
-  
   @Nullable
   private stRedDotMenu a(String paramString)
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     Object localObject2 = null;
     if (localObject1 == null) {
       return null;
@@ -63,15 +60,23 @@ public class WSHomeFragmentPresenter
     return localObject1;
   }
   
-  private WeishiTask a()
-  {
-    return new WeishiTask(new RedDotRequest(), null, new WSHomeFragmentPresenter.1(this), 1001);
-  }
-  
   private void a(stGetTabsRsp paramstGetTabsRsp)
   {
     paramstGetTabsRsp = new WeishiTask(new GetTabsRequest(), null, new WSHomeFragmentPresenter.6(this, System.currentTimeMillis(), paramstGetTabsRsp), 4017);
     WeishiBusinessLooper.a().a(paramstGetTabsRsp);
+  }
+  
+  private void a(@Nullable stSimpleMetaPerson paramstSimpleMetaPerson)
+  {
+    if (paramstSimpleMetaPerson == null) {
+      return;
+    }
+    if (!TextUtils.isEmpty(paramstSimpleMetaPerson.id)) {
+      WeishiUtils.k(paramstSimpleMetaPerson.id);
+    }
+    if (!TextUtils.isEmpty(paramstSimpleMetaPerson.nick)) {
+      WeishiUtils.l(paramstSimpleMetaPerson.nick);
+    }
   }
   
   private void a(Context paramContext, stRedDotMenu paramstRedDotMenu, String paramString, int paramInt1, int paramInt2)
@@ -82,9 +87,9 @@ public class WSHomeFragmentPresenter
       if (paramstRedDotMenu.type == 1)
       {
         if (paramInt2 == 1) {
-          WeishiUtils.c("homepage_main");
+          WeishiUtils.m("homepage_main");
         } else if (paramInt2 == 2) {
-          WeishiUtils.c("message");
+          WeishiUtils.m("message");
         }
         a(paramContext, paramstRedDotMenu.miniAppSchema);
         return;
@@ -117,12 +122,12 @@ public class WSHomeFragmentPresenter
   
   private void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    WeishiUtils.a(paramContext, paramString1, paramString2, paramString3, a(), new WSHomeFragmentPresenter.3(this, paramContext, paramInt));
+    WeishiUtils.a(paramContext, paramString1, paramString2, paramString3, i(), new WSHomeFragmentPresenter.3(this, paramContext, paramInt));
   }
   
   private void b(stGetTabsRsp paramstGetTabsRsp)
   {
-    IWSHomeView localIWSHomeView = (IWSHomeView)a();
+    IWSHomeView localIWSHomeView = (IWSHomeView)getView();
     if ((paramstGetTabsRsp != null) && (paramstGetTabsRsp.Tabs != null) && (paramstGetTabsRsp.Tabs.size() >= 1))
     {
       if (localIWSHomeView == null) {
@@ -131,30 +136,28 @@ public class WSHomeFragmentPresenter
       if (TextUtils.isEmpty(((stTabInfo)paramstGetTabsRsp.Tabs.get(0)).displayIcon)) {
         return;
       }
-      localIWSHomeView.c();
+      localIWSHomeView.p();
     }
   }
   
-  public void G_()
+  private WeishiTask h()
   {
-    WSPublicAccReport.getInstance().foregroundPublicAccReport();
+    return new WeishiTask(new RedDotRequest(), null, new WSHomeFragmentPresenter.1(this), 1001);
   }
   
-  public void H_()
+  private int i()
   {
-    WSPublicAccReport.getInstance().backgroundPublicAccReport();
+    return WSGlobalConfig.a().d();
   }
   
-  public List<stRedDotMenu> a()
+  public void a()
   {
-    return this.b;
+    WeishiBusinessLooper.a().a(h());
   }
-  
-  public void a(long paramLong) {}
   
   public void a(Context paramContext)
   {
-    a(paramContext, a("PersonalPage"), "weishi://profile?goto=myself", 603, 1);
+    WSProfileFragment.a(paramContext, WeishiUtils.n(), "my_profile");
   }
   
   public void a(Context paramContext, int paramInt)
@@ -170,7 +173,7 @@ public class WSHomeFragmentPresenter
         return;
       }
       URLImageView localURLImageView = new URLImageView(paramContext);
-      paramContext = paramContext.getResources().getDrawable(2130841770);
+      paramContext = paramContext.getResources().getDrawable(2130842687);
       new WSMultiImageManager().a(localURLImageView, paramContext, paramstPublisherRsp.guide.imageUrl, true, true);
     }
   }
@@ -180,14 +183,10 @@ public class WSHomeFragmentPresenter
     this.a = paramList;
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public List<stNotificationRedDot> b()
+  public List<stRedDotMenu> b()
   {
-    return this.a;
+    return this.b;
   }
-  
-  public void b(long paramLong) {}
   
   public void b(Context paramContext)
   {
@@ -201,17 +200,14 @@ public class WSHomeFragmentPresenter
     }
   }
   
-  public void c()
+  public List<stNotificationRedDot> c()
   {
-    WeishiBusinessLooper.a().a(a());
+    return this.a;
   }
-  
-  public void c(long paramLong) {}
   
   public void d()
   {
-    WeishiTask localWeishiTask = new WeishiTask(new GetPublisherRequest(), null, new WSHomeFragmentPresenter.4(this), 4008);
-    WeishiBusinessLooper.a().a(localWeishiTask);
+    new WSPublisherFetcher().a(new WSHomeFragmentPresenter.4(this));
   }
   
   public void e()
@@ -221,21 +217,39 @@ public class WSHomeFragmentPresenter
   
   public void f()
   {
-    if (GuardManager.a != null) {
-      GuardManager.a.a(this);
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.registerCallBack(this);
     }
   }
   
   public void g()
   {
-    if (GuardManager.a != null) {
-      GuardManager.a.b(this);
+    if (GuardManager.sInstance != null) {
+      GuardManager.sInstance.unregisterCallback(this);
     }
   }
+  
+  public void onApplicationBackground()
+  {
+    WSPublicAccReport.getInstance().backgroundPublicAccReport();
+  }
+  
+  public void onApplicationForeground()
+  {
+    WSPublicAccReport.getInstance().foregroundPublicAccReport();
+  }
+  
+  public void onBackgroundTimeTick(long paramLong) {}
+  
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
+  
+  public void onLiteTimeTick(long paramLong) {}
+  
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSHomeFragmentPresenter
  * JD-Core Version:    0.7.0.1
  */

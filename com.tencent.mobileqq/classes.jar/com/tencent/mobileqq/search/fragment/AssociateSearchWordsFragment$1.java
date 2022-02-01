@@ -17,9 +17,9 @@ class AssociateSearchWordsFragment$1
     if (paramView.getTag() != null)
     {
       BaseActivity localBaseActivity = this.a.getBaseActivity();
-      Object localObject1 = (Integer)paramView.getTag(2131380885);
-      Object localObject2 = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131380884);
-      int i = ((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_Int;
+      Object localObject1 = (Integer)paramView.getTag(2131449868);
+      Object localObject2 = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131449867);
+      int i = ((AssociateSearchWordsFragment.AssociateItem)localObject2).a;
       if (i != 2)
       {
         if ((i == 3) || ((i != 4) && (i == 6)))
@@ -31,14 +31,14 @@ class AssociateSearchWordsFragment$1
             localObject1 = AssociateSearchWordsFragment.a(this.a);
           }
           if (localObject1 != null) {
-            ((AssociateSearchWordsFragment.AssociateWordClickCallback)localObject1).a(((AssociateSearchWordsFragment.AssociateItem)localObject2).jdField_a_of_type_JavaLangString, ((AssociateSearchWordsFragment.AssociateItem)localObject2).d);
+            ((AssociateSearchWordsFragment.AssociateWordClickCallback)localObject1).a(((AssociateSearchWordsFragment.AssociateItem)localObject2).b, ((AssociateSearchWordsFragment.AssociateItem)localObject2).i);
           }
         }
       }
       else if ((localBaseActivity instanceof AssociateSearchWordsFragment.AssociateWordClickCallback))
       {
         Intent localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
-        localObject2 = ((AssociateSearchWordsFragment.AssociateItem)localObject2).e;
+        localObject2 = ((AssociateSearchWordsFragment.AssociateItem)localObject2).h;
         localObject1 = localObject2;
         if (!((String)localObject2).startsWith("http"))
         {
@@ -57,7 +57,7 @@ class AssociateSearchWordsFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.1
  * JD-Core Version:    0.7.0.1
  */

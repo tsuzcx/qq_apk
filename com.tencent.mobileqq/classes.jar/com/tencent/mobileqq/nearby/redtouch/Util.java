@@ -25,13 +25,13 @@ public class Util
     if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
       ((RedTouchItem)localObject).isClosed = paramBoolean;
-      paramQQAppInterface.d(10016);
+      paramQQAppInterface.e(10016);
     }
     localObject = paramQQAppInterface.a(10015);
     if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
       ((RedTouchItem)localObject).isClosed = paramBoolean;
-      paramQQAppInterface.d(10015);
+      paramQQAppInterface.e(10015);
     }
   }
   
@@ -52,7 +52,7 @@ public class Util
       QLog.d("Q.redtouch.util", 2, ((StringBuilder)localObject).toString());
     }
     int i;
-    if (SharedPreUtils.U(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {
+    if (SharedPreUtils.am(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {
       i = 1;
     } else {
       i = 0;
@@ -86,18 +86,18 @@ public class Util
     if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
       ((RedTouchItem)localObject).isClosed = paramBoolean;
-      paramQQAppInterface.d(100601);
+      paramQQAppInterface.e(100601);
     }
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    return ((LikeRankingListManager)paramQQAppInterface.getManager(QQManagerFactory.LIKE_RANKING_LIST_MANAGER)).c();
+    return ((LikeRankingListManager)paramQQAppInterface.getManager(QQManagerFactory.LIKE_RANKING_LIST_MANAGER)).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.Util
  * JD-Core Version:    0.7.0.1
  */

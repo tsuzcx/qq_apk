@@ -8,37 +8,37 @@ public class HapticManagerApiImpl
 {
   public void addEffects()
   {
-    HapticManager.a().a();
+    HapticManager.b().c();
   }
   
   public void pauseEffect(int paramInt)
   {
-    HapticManager.a().a(paramInt);
+    HapticManager.b().b(paramInt);
   }
   
   public int playEffect(String paramString, int paramInt)
   {
-    return HapticManager.a().a(paramString, paramInt);
+    return HapticManager.b().a(paramString, paramInt);
   }
   
   public void resumeEffect(int paramInt)
   {
-    HapticManager.a().b(paramInt);
+    HapticManager.b().c(paramInt);
   }
   
   public void stopEffect(int paramInt)
   {
-    HapticManager.a().c(paramInt);
+    HapticManager.b().d(paramInt);
   }
   
   public void update(int paramInt1, int paramInt2)
   {
-    HapticManager.a().a(paramInt1, paramInt2);
+    HapticManager.b().a(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqcommon.api.impl.HapticManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

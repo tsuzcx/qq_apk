@@ -4,29 +4,29 @@ import com.tencent.mobileqq.activity.aio.core.AIOContext;
 
 public class AIOInputBuilder
 {
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private BaseMessageSender jdField_a_of_type_ComTencentMobileqqActivityAioCoreInputBaseMessageSender;
+  protected AIOContext a;
+  protected BaseMessageSender b;
   
   public AIOInput a()
   {
-    return new AIOInput(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreInputBaseMessageSender);
+    return new AIOInput(this.a, this.b);
   }
   
   public AIOInputBuilder a(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
     return this;
   }
   
   public AIOInputBuilder a(BaseMessageSender paramBaseMessageSender)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreInputBaseMessageSender = paramBaseMessageSender;
+    this.b = paramBaseMessageSender;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.input.AIOInputBuilder
  * JD-Core Version:    0.7.0.1
  */

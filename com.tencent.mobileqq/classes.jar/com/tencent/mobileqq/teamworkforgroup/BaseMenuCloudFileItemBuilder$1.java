@@ -15,7 +15,7 @@ class BaseMenuCloudFileItemBuilder$1
     if (Utils.a("tag_swip_icon_menu_item", paramView.getTag()))
     {
       ICloudFile localICloudFile = (ICloudFile)paramView.getTag(-10);
-      if (paramView.getId() == 2131364746) {
+      if (paramView.getId() == 2131430854) {
         BaseMenuCloudFileItemBuilder.a(this.a, localICloudFile);
       } else if (BaseMenuCloudFileItemBuilder.a(this.a) != null) {
         BaseMenuCloudFileItemBuilder.a(this.a).a(paramView.getId(), localICloudFile);
@@ -26,7 +26,7 @@ class BaseMenuCloudFileItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.BaseMenuCloudFileItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,12 @@ class MessageRoamManager$2
     } else {
       l1 = 0L;
     }
-    this.this$0.a.getProxyManager().transSaveToDatabase();
+    this.this$0.b.getProxyManager().transSaveToDatabase();
     try
     {
       try
       {
-        List localList1 = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, ((Long)this.jdField_a_of_type_AndroidUtilPair.first).longValue(), this.jdField_a_of_type_Long);
+        List localList1 = this.this$0.a(this.a, this.b, this.c, ((Long)this.d.first).longValue(), this.e);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -52,7 +52,7 @@ class MessageRoamManager$2
       int i;
       break label79;
     }
-    localList2 = ((MessageRecordEntityManager)this.this$0.a.getEntityManagerFactory().a()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
+    localList2 = ((MessageRecordEntityManager)this.this$0.b.getEntityManagerFactory().b()).query(MessageRecord.class, this.a, false, this.c, null, null, null, null, null);
     break label143;
     label119:
     QLog.e("Q.roammsg.MessageRoamManager", 1, "handlePBGetRoamMsg OutOfMemoryError ! ", localList2);
@@ -93,7 +93,7 @@ class MessageRoamManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.2
  * JD-Core Version:    0.7.0.1
  */

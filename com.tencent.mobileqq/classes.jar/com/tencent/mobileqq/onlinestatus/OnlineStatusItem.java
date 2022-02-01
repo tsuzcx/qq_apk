@@ -10,34 +10,28 @@ import mqq.app.AppRuntime.Status;
 
 public class OnlineStatusItem
 {
-  public int a;
-  public long a;
   public String a;
-  public AppRuntime.Status a;
-  public boolean a;
-  public int b;
-  public String b;
+  public long b;
   public String c;
   public String d;
   public String e;
-  public String f;
-  public String g;
+  public int f = 1;
+  public AppRuntime.Status g = AppRuntime.Status.online;
+  public int h;
+  public String i;
+  public boolean j = true;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public OnlineStatusItem()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public OnlineStatusItem() {}
   
   public OnlineStatusItem(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
+    this.b = paramLong;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   public OnlineStatusItem(long paramLong, String paramString1, String paramString2, String paramString3)
@@ -48,34 +42,21 @@ public class OnlineStatusItem
     } else {
       paramString2 = paramString3;
     }
-    this.d = paramString2;
+    this.e = paramString2;
   }
   
   public OnlineStatusItem(AppRuntime.Status paramStatus)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getButtonId(paramStatus);
-    this.jdField_b_of_type_JavaLangString = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getStatusName(paramStatus);
+    this.f = 2;
+    this.g = paramStatus;
+    this.b = 0L;
+    this.h = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getButtonId(paramStatus);
+    this.c = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getStatusName(paramStatus);
   }
   
   public static int a(Object... paramVarArgs)
   {
     return Arrays.hashCode(paramVarArgs);
-  }
-  
-  public static String a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramStatus.getValue());
-    localStringBuilder.append("");
-    localStringBuilder.append(paramLong);
-    localStringBuilder.append("");
-    return localStringBuilder.toString();
   }
   
   public static boolean a(long paramLong)
@@ -93,6 +74,16 @@ public class OnlineStatusItem
     return (paramStatus == AppRuntime.Status.online) && (paramLong > 40000L);
   }
   
+  public static String b(AppRuntime.Status paramStatus, long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramStatus.getValue());
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
+  }
+  
   public boolean equals(Object paramObject)
   {
     if (this == paramObject) {
@@ -104,29 +95,29 @@ public class OnlineStatusItem
         return false;
       }
       paramObject = (OnlineStatusItem)paramObject;
-      return (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime$Status == paramObject.jdField_a_of_type_MqqAppAppRuntime$Status) && (a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (a(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (a(this.c, paramObject.c)) && (a(this.e, paramObject.e));
+      return (this.b == paramObject.b) && (this.f == paramObject.f) && (this.h == paramObject.h) && (this.j == paramObject.j) && (this.g == paramObject.g) && (a(this.a, paramObject.a)) && (a(this.c, paramObject.c)) && (a(this.d, paramObject.d)) && (a(this.i, paramObject.i));
     }
     return false;
   }
   
   public int hashCode()
   {
-    return a(new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_MqqAppAppRuntime$Status, Integer.valueOf(this.jdField_b_of_type_Int), this.e, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    return a(new Object[] { this.a, Long.valueOf(this.b), this.c, this.d, Integer.valueOf(this.f), this.g, Integer.valueOf(this.h), this.i, Boolean.valueOf(this.j) });
   }
   
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("id=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" title=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusItem
  * JD-Core Version:    0.7.0.1
  */

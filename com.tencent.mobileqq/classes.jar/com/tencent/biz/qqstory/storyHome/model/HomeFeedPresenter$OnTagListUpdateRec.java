@@ -20,7 +20,7 @@ public class HomeFeedPresenter$OnTagListUpdateRec
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull TagManager.FeedTagListUpdateEvent paramFeedTagListUpdateEvent)
   {
-    Object localObject1 = HomeFeedPresenter.a(paramHomeFeedPresenter);
+    Object localObject1 = HomeFeedPresenter.b(paramHomeFeedPresenter);
     paramFeedTagListUpdateEvent = paramFeedTagListUpdateEvent.a;
     TagManager localTagManager = (TagManager)SuperManager.a(27);
     localObject1 = ((ArrayList)localObject1).iterator();
@@ -30,17 +30,17 @@ public class HomeFeedPresenter$OnTagListUpdateRec
       Object localObject2 = (StoryHomeFeed)((Iterator)localObject1).next();
       if ((localObject2 instanceof VideoListHomeFeed))
       {
-        GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.get(((StoryHomeFeed)localObject2).a().feedId);
+        GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.get(((StoryHomeFeed)localObject2).g().feedId);
         if (localFeedTagInfoList != null)
         {
           localObject2 = (VideoListHomeFeed)localObject2;
-          ((VideoListHomeFeed)localObject2).d = localTagManager.a(((VideoListHomeFeed)localObject2).a(), localFeedTagInfoList.a);
+          ((VideoListHomeFeed)localObject2).j = localTagManager.a(((VideoListHomeFeed)localObject2).a(), localFeedTagInfoList.b);
           i = 1;
         }
       }
     }
     if (i != 0) {
-      HomeFeedPresenter.a(paramHomeFeedPresenter).f();
+      HomeFeedPresenter.c(paramHomeFeedPresenter).j();
     }
   }
   

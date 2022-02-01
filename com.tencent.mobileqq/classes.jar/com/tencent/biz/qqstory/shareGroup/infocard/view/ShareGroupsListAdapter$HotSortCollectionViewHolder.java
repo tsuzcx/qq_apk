@@ -13,41 +13,41 @@ import java.util.List;
 public class ShareGroupsListAdapter$HotSortCollectionViewHolder
   extends BaseStoryTimeLineAdapter.BaseViewHolder
 {
-  public TextView a;
-  public ShareGroupsListAdapter.HotSortCardHolder a;
-  public TextView b;
   public ShareGroupsListAdapter.HotSortCardHolder b;
-  public TextView c;
+  public ShareGroupsListAdapter.HotSortCardHolder c;
   public TextView d;
   public TextView e;
   public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
   
   public ShareGroupsListAdapter$HotSortCollectionViewHolder(View paramView, ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
-    View localView = paramView.findViewById(2131374547);
-    paramView = paramView.findViewById(2131374590);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(localView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(paramView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364348));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364348));
-    this.c = ((TextView)localView.findViewById(2131364327));
-    this.d = ((TextView)paramView.findViewById(2131364327));
-    this.e = ((TextView)localView.findViewById(2131364343));
-    this.f = ((TextView)paramView.findViewById(2131364343));
+    View localView = paramView.findViewById(2131442717);
+    paramView = paramView.findViewById(2131442760);
+    this.b = new ShareGroupsListAdapter.HotSortCardHolder(localView, paramShareGroupsListAdapter.b);
+    this.c = new ShareGroupsListAdapter.HotSortCardHolder(paramView, paramShareGroupsListAdapter.b);
+    this.d = ((TextView)localView.findViewById(2131430376));
+    this.e = ((TextView)paramView.findViewById(2131430376));
+    this.f = ((TextView)localView.findViewById(2131430355));
+    this.g = ((TextView)paramView.findViewById(2131430355));
+    this.h = ((TextView)localView.findViewById(2131430371));
+    this.i = ((TextView)paramView.findViewById(2131430371));
     QQStoryContext.a();
-    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
+    if (ThemeUtil.isInNightMode(QQStoryContext.k()))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.c.setTextColor(Color.parseColor("#6991b8"));
       this.d.setTextColor(Color.parseColor("#6991b8"));
       this.e.setTextColor(Color.parseColor("#6991b8"));
       this.f.setTextColor(Color.parseColor("#6991b8"));
+      this.g.setTextColor(Color.parseColor("#6991b8"));
+      this.h.setTextColor(Color.parseColor("#6991b8"));
+      this.i.setTextColor(Color.parseColor("#6991b8"));
     }
-    if (paramShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener != null)
+    if (paramShareGroupsListAdapter.e != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener);
-      this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener);
+      this.b.a(paramShareGroupsListAdapter.e);
+      this.c.a(paramShareGroupsListAdapter.e);
     }
   }
   
@@ -57,13 +57,13 @@ public class ShareGroupsListAdapter$HotSortCollectionViewHolder
     {
       paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
       paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramView);
+      this.b.a(paramView);
       if (paramVideoCollectionItem == null)
       {
-        this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a();
+        this.c.a();
         return;
       }
-      this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramVideoCollectionItem);
+      this.c.a(paramVideoCollectionItem);
       return;
     }
     SLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");

@@ -1,9 +1,9 @@
 package com.tencent.pts.ui.view;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.widget.FrameLayout;
 import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.vnode.PTSNodeContainer;
 import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 
 public class PTSContainerView
@@ -12,9 +12,9 @@ public class PTSContainerView
 {
   private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
-  public PTSContainerView(PTSNodeContainer paramPTSNodeContainer)
+  public PTSContainerView(Context paramContext)
   {
-    super(paramPTSNodeContainer.getContext());
+    super(paramContext);
   }
   
   public void draw(Canvas paramCanvas)
@@ -32,7 +32,7 @@ public class PTSContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSContainerView
  * JD-Core Version:    0.7.0.1
  */

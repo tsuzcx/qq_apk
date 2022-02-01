@@ -54,23 +54,23 @@ final class FileManagerUtil$1
       return "";
     }
     long l = 0L;
-    paramInt1 = FileManagerUtil.a(paramString3.jdField_a_of_type_JavaLangString);
-    if ((FileUtil.b(paramString3.jdField_a_of_type_JavaLangString)) && ((paramInt1 == 0) || (paramInt1 == 2)))
+    paramInt1 = FileManagerUtil.c(paramString3.k);
+    if ((FileUtil.d(paramString3.k)) && ((paramInt1 == 0) || (paramInt1 == 2)))
     {
       if (paramInt1 == 0)
       {
         paramString1 = new BitmapFactory.Options();
         paramString1.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramString3.jdField_a_of_type_JavaLangString, paramString1);
-        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString3.g, paramString3.c, paramString3.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(paramString3.b), paramLong2, paramString1.outWidth, paramString1.outHeight, paramLong3, paramInt3);
+        BitmapFactory.decodeFile(paramString3.k, paramString1);
+        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString3.t, paramString3.i, paramString3.a.toString(), paramInt2, String.valueOf(paramString3.d), paramLong2, paramString1.outWidth, paramString1.outHeight, paramLong3, paramInt3);
       }
       else
       {
         paramLong1 = l;
         if (paramInt1 == 2)
         {
-          paramString1 = ShortVideoUtils.getVideoFileRtAndTime(paramString3.jdField_a_of_type_JavaLangString);
-          paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString3.g, paramString3.c, paramString3.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(paramString3.b), paramLong2, paramString1[0], paramString1[1], paramString1[2], paramLong3, paramInt3);
+          paramString1 = ShortVideoUtils.getVideoFileRtAndTime(paramString3.k);
+          paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString3.t, paramString3.i, paramString3.a.toString(), paramInt2, String.valueOf(paramString3.d), paramLong2, paramString1[0], paramString1[1], paramString1[2], paramLong3, paramInt3);
         }
       }
     }
@@ -78,9 +78,9 @@ final class FileManagerUtil$1
     {
       paramString1 = localFileManagerEntity;
       if (paramString1 != null) {
-        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString4, paramLong1, paramString3.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(8888L), paramLong2, paramString1.imgWidth, paramString1.imgHeight, 0, paramLong3, paramInt3);
+        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString4, paramLong1, paramString3.a.toString(), paramInt2, String.valueOf(8888L), paramLong2, paramString1.imgWidth, paramString1.imgHeight, 0, paramLong3, paramInt3);
       } else {
-        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString4, paramLong1, paramString3.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(8888L), paramLong2, paramLong3, paramInt3);
+        paramLong1 = TroopFileUtils.a(this.a, paramString2, paramString4, paramLong1, paramString3.a.toString(), paramInt2, String.valueOf(8888L), paramLong2, paramLong3, paramInt3);
       }
     }
     if (localFileManagerEntity != null)
@@ -94,7 +94,7 @@ final class FileManagerUtil$1
         QLog.d("FileManagerUtil<FileAssistant>", 2, paramString1.toString());
       }
     }
-    return paramString3.jdField_a_of_type_JavaUtilUUID.toString();
+    return paramString3.a.toString();
   }
   
   public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4) {}
@@ -129,7 +129,7 @@ final class FileManagerUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.1
  * JD-Core Version:    0.7.0.1
  */

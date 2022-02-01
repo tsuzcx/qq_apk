@@ -19,22 +19,22 @@ class AccountPhoneUnityManager$4
   
   public void onClick(View paramView)
   {
-    AccountPhoneUnityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager).dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    AccountPhoneUnityManager.a(this.d).dismiss();
+    if (this.a)
     {
-      ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).logout(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_MqqAppAppRuntime, true);
+      ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).logout(this.b, this.c, true);
     }
     else
     {
       BannerManager.a().a(BannerTypeCollections.b, 2, null);
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800B3E5", "0X800B3E5", 0, 0, "", "", "", "");
+      ReportController.b(this.c, "dc00898", "", "", "0X800B3E5", "0X800B3E5", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.4
  * JD-Core Version:    0.7.0.1
  */

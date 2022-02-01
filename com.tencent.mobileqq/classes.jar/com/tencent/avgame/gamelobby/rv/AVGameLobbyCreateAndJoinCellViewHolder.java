@@ -15,25 +15,25 @@ public class AVGameLobbyCreateAndJoinCellViewHolder
   extends BaseViewHolder<AVGameLobbyCreateAndJoinContentInfo>
   implements View.OnTouchListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbyCreateAndJoinCellViewHolder";
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AutoResizeAsyncImageView jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
-  private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  private AutoResizeAsyncImageView jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
-  private AsyncImageView jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+  private static final String d = "com.tencent.avgame.gamelobby.rv.AVGameLobbyCreateAndJoinCellViewHolder";
+  private AsyncImageView e;
+  private AsyncImageView f;
+  private AutoResizeAsyncImageView g;
+  private AutoResizeAsyncImageView h;
+  private LinearLayout i;
+  private Context j = null;
   
   public AVGameLobbyCreateAndJoinCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363214));
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363226));
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363212));
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363224));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363211));
-    View localView = paramView.findViewById(2131363213);
-    paramView = paramView.findViewById(2131363225);
+    this.j = paramView.getContext();
+    this.e = ((AsyncImageView)paramView.findViewById(2131429088));
+    this.f = ((AsyncImageView)paramView.findViewById(2131429100));
+    this.g = ((AutoResizeAsyncImageView)paramView.findViewById(2131429086));
+    this.h = ((AutoResizeAsyncImageView)paramView.findViewById(2131429098));
+    this.i = ((LinearLayout)paramView.findViewById(2131429085));
+    View localView = paramView.findViewById(2131429087);
+    paramView = paramView.findViewById(2131429099);
     localView.setOnTouchListener(this);
     paramView.setOnTouchListener(this);
     a(paramView);
@@ -51,32 +51,32 @@ public class AVGameLobbyCreateAndJoinCellViewHolder
     if (paramAVGameLobbyCreateAndJoinContentInfo == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbyCreateAndJoinContentInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbyCreateAndJoinContentInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.c);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.d);
-    int j = ViewUtils.a(16.0F);
-    int i;
-    if (paramAVGameLobbyCreateAndJoinContentInfo.jdField_a_of_type_Boolean)
+    this.g.a(paramAVGameLobbyCreateAndJoinContentInfo.a);
+    this.h.a(paramAVGameLobbyCreateAndJoinContentInfo.b);
+    this.e.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.c);
+    this.f.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.d);
+    int m = ViewUtils.dip2px(16.0F);
+    int k;
+    if (paramAVGameLobbyCreateAndJoinContentInfo.e)
     {
-      paramInt = ViewUtils.a(97.0F);
-      i = ViewUtils.a(27.0F);
+      paramInt = ViewUtils.dip2px(97.0F);
+      k = ViewUtils.dip2px(27.0F);
     }
     else
     {
-      paramInt = ViewUtils.a(83.0F);
-      i = ViewUtils.a(13.0F);
+      paramInt = ViewUtils.dip2px(83.0F);
+      k = ViewUtils.dip2px(13.0F);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height = paramInt;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(j, i, j, 0);
+    this.i.getLayoutParams().height = paramInt;
+    this.i.setPadding(m, k, m, 0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int k = paramMotionEvent.getActionMasked();
+    if (k != 0)
     {
-      if ((i == 1) || (i == 3)) {
+      if ((k == 1) || (k == 3)) {
         paramView.setAlpha(1.0F);
       }
     }

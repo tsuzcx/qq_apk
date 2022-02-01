@@ -26,12 +26,12 @@ class ForwardSdkShareOption$2$1
   public void b(UpCallBack.SendResult paramSendResult)
   {
     ForwardStatisticsReporter.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramSendResult, this.a.b, this.a.c, this.a.d);
+    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.t, paramSendResult, this.a.d, this.a.e, this.a.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.2.1
  * JD-Core Version:    0.7.0.1
  */

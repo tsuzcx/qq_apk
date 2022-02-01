@@ -8,22 +8,17 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 public class FeedLikeDataProvider
   extends LegoDataProvider
 {
-  public static final String a;
+  public static final String a = StoryApi.a("StorySvc.feed_like_list_715");
   public static final String b = StoryApi.a("StorySvc.like_feed");
-  protected FeedLikeLego a;
-  private boolean a;
-  protected String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.feed_like_list_715");
-  }
+  protected FeedLikeLego c;
+  protected String d;
+  private boolean e;
   
   public FeedLikeDataProvider(FeedLikeLego paramFeedLikeLego, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego = paramFeedLikeLego;
-    this.c = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.a.feedId;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramFeedLikeLego;
+    this.d = this.c.b.feedId;
+    this.e = paramBoolean;
   }
   
   public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -33,7 +28,7 @@ public class FeedLikeDataProvider
   
   public void a()
   {
-    a(this.c, this.jdField_a_of_type_Boolean);
+    a(this.d, this.e);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -43,7 +38,7 @@ public class FeedLikeDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeDataProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,8 @@ import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTABConfigurationReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTABConfigurationRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.aelight.camera.ae.util.AECameraPrefsUtil;
@@ -20,16 +22,19 @@ import java.util.HashMap;
 public class CameraDataService
   extends BaseProtocolCoder
 {
-  public static final HashMap<String, String> a;
-  private static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "ShadowBackendSvc" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static final HashMap<String, String> a = new HashMap();
+  private static final String[] b = { "ShadowBackendSvc" };
   
   private boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = new GetTABConfigurationReq();
+    paramUniPacket.setServantName("ShadowBackendSvc");
+    paramUniPacket.setFuncName("ShadowBackendSvc.GetTABConfiguration");
+    paramUniPacket.put("ShadowBackendSvc.GetTABConfiguration", paramToServiceMsg);
+    return true;
+  }
+  
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     paramToServiceMsg = new GetCameraConfigReq();
     paramUniPacket.setServantName("ShadowBackendSvc");
@@ -38,7 +43,7 @@ public class CameraDataService
     return true;
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     GetCategoryMaterialReq localGetCategoryMaterialReq = new GetCategoryMaterialReq();
     localGetCategoryMaterialReq.ServiceId = paramToServiceMsg.extraData.getString("ServiceId");
@@ -53,11 +58,11 @@ public class CameraDataService
     return true;
   }
   
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     paramToServiceMsg = new GetPlayShowCatMatTreeReq();
     paramToServiceMsg.ETag = a("ShadowBackendSvc.GetPlayShowCatMatTree");
-    paramToServiceMsg.MqVersion = "8.7.0";
+    paramToServiceMsg.MqVersion = "8.8.17";
     paramUniPacket.setServantName("ShadowBackendSvc");
     paramUniPacket.setFuncName("ShadowBackendSvc.GetPlayShowCatMatTree");
     paramUniPacket.put("ShadowBackendSvc.GetPlayShowCatMatTree", paramToServiceMsg);
@@ -83,7 +88,7 @@ public class CameraDataService
   
   protected String a(String paramString)
   {
-    return AECameraPrefsUtil.a().a(paramString, "", 4);
+    return AECameraPrefsUtil.a().b(paramString, "", 4);
   }
   
   protected ArrayList<MetaSdkInfo> a()
@@ -92,10 +97,10 @@ public class CameraDataService
     MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
     localMetaSdkInfo.sdk = 0;
     localMetaSdkInfo.sdkVersion = "2.0.0";
-    Object localObject = "2.2.6.40";
-    if (!TextUtils.isEmpty("2.2.6.40"))
+    Object localObject = "2.6.0.23";
+    if (!TextUtils.isEmpty("2.6.0.23"))
     {
-      String[] arrayOfString = "2.2.6.40".split("\\.");
+      String[] arrayOfString = "2.6.0.23".split("\\.");
       if (arrayOfString.length > 3)
       {
         localObject = new StringBuilder();
@@ -114,7 +119,7 @@ public class CameraDataService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return b;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -128,26 +133,32 @@ public class CameraDataService
     if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) {
       return a(paramFromServiceMsg.getWupBuffer(), "ShadowBackendSvc.GetPlayShowCatMatTree", new GetPlayShowCatMatTreeRsp());
     }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTABConfiguration")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "ShadowBackendSvc.GetTABConfiguration", new GetTABConfigurationRsp());
+    }
     return null;
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCameraConfig")) {
-      return a(paramToServiceMsg, paramUniPacket);
-    }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) {
       return b(paramToServiceMsg, paramUniPacket);
     }
-    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) {
       return c(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTABConfiguration")) {
+      return a(paramToServiceMsg, paramUniPacket);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.config.CameraDataService
  * JD-Core Version:    0.7.0.1
  */

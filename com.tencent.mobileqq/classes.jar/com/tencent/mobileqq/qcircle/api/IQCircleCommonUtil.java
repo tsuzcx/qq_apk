@@ -10,19 +10,21 @@ import org.json.JSONObject;
 public abstract interface IQCircleCommonUtil
   extends QRouteApi
 {
-  public abstract String KEY_GPS_INFO();
-  
-  public abstract String KEY_PARSE_DATA_ERROR_MSG();
-  
   public abstract int getColorFromJSON(JSONObject paramJSONObject, String paramString);
   
   public abstract int getDefaultThemeColor(boolean paramBoolean);
   
   public abstract String getQCirclePluginInfo();
   
+  public abstract long getSystemTotalMemory();
+  
   public abstract boolean isInNightMode();
   
   public abstract Bundle jsonToLabel(Bundle paramBundle, String paramString);
+  
+  public abstract String keyGpsInfo();
+  
+  public abstract String keyParseDataErrorMsg();
   
   public abstract String labelToJson(Bundle paramBundle);
   
@@ -30,7 +32,7 @@ public abstract interface IQCircleCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.IQCircleCommonUtil
  * JD-Core Version:    0.7.0.1
  */

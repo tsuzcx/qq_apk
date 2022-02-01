@@ -93,7 +93,7 @@ public class DevLockQuickLoginDecoder
         ((StringBuilder)localObject).append(str);
         QLog.d("DevLock", 2, ((StringBuilder)localObject).toString());
       }
-      EquipmentLockImpl.a().a(paramMessageHandler.a, paramMsgType0x210, paramMsg, str, arrayOfByte);
+      EquipmentLockImpl.a().a(paramMessageHandler.n, paramMsgType0x210, paramMsg, str, arrayOfByte);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
@@ -107,12 +107,12 @@ public class DevLockQuickLoginDecoder
       QLog.d("DevLockQuickLoginDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x51");
     }
     a(paramMsgType0x210, paramMsg, paramMessageHandler);
-    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DevLockQuickLoginDecoder
  * JD-Core Version:    0.7.0.1
  */

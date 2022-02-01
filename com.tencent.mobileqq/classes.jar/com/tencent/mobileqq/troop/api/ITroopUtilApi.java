@@ -45,6 +45,8 @@ public abstract interface ITroopUtilApi
   
   public abstract boolean isNeedReqGameInfo(Activity paramActivity);
   
+  public abstract boolean isUsingCameraOnVideo(AppRuntime paramAppRuntime);
+  
   public abstract void joinRecommendTroop(Context paramContext, Object paramObject, int paramInt);
   
   public abstract void onDestroyForQQGameTroopManager(AppInterface paramAppInterface);
@@ -71,6 +73,10 @@ public abstract interface ITroopUtilApi
   
   public abstract void reqGameInfoWhenIdle(AppInterface paramAppInterface, Object paramObject, Activity paramActivity);
   
+  public abstract void sendReadConfirm(AppRuntime paramAppRuntime, String paramString);
+  
+  public abstract void showGroupQavActionSheet(AppInterface paramAppInterface, Context paramContext, String paramString, boolean paramBoolean);
+  
   public abstract void smallScreenUtils_getTrace(String paramString);
   
   public abstract void sortAndPreloadIfNeed(AppInterface paramAppInterface, String paramString);
@@ -79,7 +85,7 @@ public abstract interface ITroopUtilApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.ITroopUtilApi
  * JD-Core Version:    0.7.0.1
  */

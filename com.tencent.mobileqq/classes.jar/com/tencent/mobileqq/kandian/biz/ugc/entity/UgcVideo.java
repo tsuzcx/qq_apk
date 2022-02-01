@@ -90,6 +90,7 @@ public class UgcVideo
   public String url = "";
   public long userWaitingTotalCostTime = 0L;
   public int videoProgress = 0;
+  public int videoPublishType = 0;
   public String videoUploadKey;
   public int width = 0;
   
@@ -161,6 +162,7 @@ public class UgcVideo
       bool1 = false;
     }
     this.needShowPublishToast = bool1;
+    this.videoPublishType = paramParcel.readInt();
   }
   
   public UgcVideo(oidb_0xe2a.UgcVideoInfo paramUgcVideoInfo)
@@ -179,6 +181,7 @@ public class UgcVideo
     this.height = paramUgcVideoInfo.uint32_height.get();
     this.fileSize = paramUgcVideoInfo.uint64_file_size.get();
     this.fileMd5 = paramUgcVideoInfo.bytes_file_md5.get().toStringUtf8();
+    this.videoPublishType = paramUgcVideoInfo.uint32_type.get();
     if (paramUgcVideoInfo.uint32_reprint_disable.get() != 1) {
       bool = false;
     }
@@ -349,7 +352,7 @@ public class UgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.entity.UgcVideo
  * JD-Core Version:    0.7.0.1
  */

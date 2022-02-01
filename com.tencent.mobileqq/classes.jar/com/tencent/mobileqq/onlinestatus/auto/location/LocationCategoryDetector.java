@@ -13,41 +13,30 @@ import java.util.List;
 
 public class LocationCategoryDetector
 {
-  private AutoStatus jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus = new AutoStatus(40001);
-  private LocationCategoryDetector.Category jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category;
-  private PoiLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader;
-  private Location jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocation;
-  private AutoStatusManager.OnInnerStatusUpdateListener jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener;
-  private String jdField_a_of_type_JavaLangString;
+  private LocationCategoryDetector.Category a;
+  private AutoStatus b = new AutoStatus(40001);
+  private String c;
+  private Location d;
+  private PoiLoader e;
+  private AutoStatusManager.OnInnerStatusUpdateListener f;
   
   LocationCategoryDetector(AutoStatusManager.OnInnerStatusUpdateListener paramOnInnerStatusUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener = paramOnInnerStatusUpdateListener;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader = new PoiLoader("category", Constant.l, Constant.j, Constant.k);
+    this.f = paramOnInnerStatusUpdateListener;
+    this.e = new PoiLoader("category", Constant.m, Constant.k, Constant.l);
   }
   
   int a()
   {
-    AutoStatus localAutoStatus = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus;
+    AutoStatus localAutoStatus = this.b;
     if ((localAutoStatus != null) && (localAutoStatus.a("category"))) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category = null;
+      this.a = null;
     }
-    localAutoStatus = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus;
+    localAutoStatus = this.b;
     if (localAutoStatus == null) {
       return 40001;
     }
     return localAutoStatus.a;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category = null;
   }
   
   public void a(long paramLong)
@@ -58,12 +47,12 @@ public class LocationCategoryDetector
       ((StringBuilder)localObject).append("[status][category] persistPoiData. status: ");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(" category: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("LocationCategoryDetector", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category;
+    Object localObject = this.a;
     if ((localObject != null) && (LocationCategoryDetector.Category.a((LocationCategoryDetector.Category)localObject) == paramLong)) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocation.a);
+      this.e.a(this.d.a);
     }
   }
   
@@ -117,12 +106,12 @@ public class LocationCategoryDetector
             ((StringBuilder)localObject).append(localPoi.category);
             ((StringBuilder)localObject).append("-");
             ((StringBuilder)localObject).append(localPoi._distance);
-            this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+            this.c = ((StringBuilder)localObject).toString();
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("[status][category] onFetchPoi poi: ");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject).append(this.c);
               ((StringBuilder)localObject).append(" category: ");
               ((StringBuilder)localObject).append(localPoi.category);
               QLog.d("LocationCategoryDetector", 2, ((StringBuilder)localObject).toString());
@@ -130,7 +119,7 @@ public class LocationCategoryDetector
             if (localPoi.category != null)
             {
               localObject = localPoi.category.split(":");
-              Iterator localIterator = Constant.b.iterator();
+              Iterator localIterator = Constant.T.iterator();
               while (localIterator.hasNext())
               {
                 LocationCategoryDetector.Category localCategory = (LocationCategoryDetector.Category)localIterator.next();
@@ -142,7 +131,7 @@ public class LocationCategoryDetector
                   }
                   localObject = new StringBuilder();
                   ((StringBuilder)localObject).append("[status][category] onFetchPoi success poi: ");
-                  ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+                  ((StringBuilder)localObject).append(this.c);
                   ((StringBuilder)localObject).append(" category: ");
                   ((StringBuilder)localObject).append(localPoi.category);
                   QLog.d("LocationCategoryDetector", 2, ((StringBuilder)localObject).toString());
@@ -152,12 +141,12 @@ public class LocationCategoryDetector
               }
               localObject = null;
               label506:
-              this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category = ((LocationCategoryDetector.Category)localObject);
-              localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category;
+              this.a = ((LocationCategoryDetector.Category)localObject);
+              localObject = this.a;
               if (localObject != null)
               {
-                this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(LocationCategoryDetector.Category.a((LocationCategoryDetector.Category)localObject));
-                paramPoiBean = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener;
+                this.b.a(LocationCategoryDetector.Category.a((LocationCategoryDetector.Category)localObject));
+                paramPoiBean = this.f;
                 if (paramPoiBean == null) {
                   break;
                 }
@@ -172,19 +161,19 @@ public class LocationCategoryDetector
         {
           paramPoiBean = new StringBuilder();
           paramPoiBean.append("[status][category] getPoiWithLatLng onResult: ");
-          paramPoiBean.append(this.jdField_a_of_type_JavaLangString);
+          paramPoiBean.append(this.c);
           paramPoiBean.append(" category: ");
-          paramPoiBean.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category);
+          paramPoiBean.append(this.a);
           paramPoiBean.append(" status: ");
-          paramPoiBean.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus);
+          paramPoiBean.append(this.b);
           QLog.d("LocationCategoryDetector", 2, paramPoiBean.toString());
         }
         return;
       }
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category = null;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a();
+    this.c = null;
+    this.a = null;
+    this.b.a();
   }
   
   void a(Location paramLocation, double paramDouble)
@@ -198,12 +187,12 @@ public class LocationCategoryDetector
       localStringBuilder.append(paramDouble);
       QLog.d("LocationCategoryDetector", 2, localStringBuilder.toString());
     }
-    if ((paramLocation != null) && (paramDouble <= Constant.a))
+    if ((paramLocation != null) && (paramDouble <= Constant.h))
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocation = paramLocation;
+      this.d = paramLocation;
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader.a(paramLocation.a, new LocationCategoryDetector.1(this));
+        this.e.a(paramLocation.a, new LocationCategoryDetector.1(this));
         return;
       }
       catch (Throwable paramLocation)
@@ -212,15 +201,26 @@ public class LocationCategoryDetector
         return;
       }
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector$Category = null;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocation = null;
+    this.c = null;
+    this.a = null;
+    this.b.a();
+    this.d = null;
+  }
+  
+  void b()
+  {
+    this.c = "";
+    this.a = null;
+  }
+  
+  String c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationCategoryDetector
  * JD-Core Version:    0.7.0.1
  */

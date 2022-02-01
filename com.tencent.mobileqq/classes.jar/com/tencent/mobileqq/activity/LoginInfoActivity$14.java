@@ -12,12 +12,12 @@ class LoginInfoActivity$14
   public void a(String paramString)
   {
     LoginInfoActivity.access$2800(this.a).setClickable(true);
-    QQToast.a(this.a, paramString, 0).a();
+    QQToast.makeText(this.a, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.14
  * JD-Core Version:    0.7.0.1
  */

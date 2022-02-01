@@ -32,24 +32,24 @@ public class PhotoPreviewCustomizationFileAssistant
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (a().getItem(paramInt).baseData.getType() == 101)
+    if (s().getItem(paramInt).baseData.getType() == 101)
     {
-      a().jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      a().jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      a().c.setVisibility(8);
-      a().jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      a().jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      s().g.setVisibility(8);
+      s().j.setVisibility(8);
+      s().k.setVisibility(8);
+      s().h.setVisibility(8);
+      s().i.setVisibility(8);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.c) {
-      a().jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (this.d.g) {
+      s().g.setVisibility(0);
     } else {
-      a().jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      s().g.setVisibility(8);
     }
-    a().jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    a().c.setVisibility(8);
-    a().jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    a().jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    s().j.setVisibility(8);
+    s().k.setVisibility(8);
+    s().h.setVisibility(8);
+    s().i.setVisibility(8);
   }
   
   protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
@@ -62,41 +62,41 @@ public class PhotoPreviewCustomizationFileAssistant
     super.a(paramView, 10000, paramBundle, paramInt2, paramIntent);
   }
   
-  public boolean a()
+  public boolean g()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.isEmpty());
+    return (this.f.selectedPhotoList != null) && (!this.f.selectedPhotoList.isEmpty());
   }
   
-  protected void h()
+  protected void j()
   {
     if (QLog.isColorLevel()) {
       QLog.i("QQAlbum", 2, "sendPicAndVideoToFileAssistant...");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.isFinishing()) {
+      if (this.c.isFinishing()) {
         return;
       }
       Intent localIntent;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent().getParcelableExtra("PhotoConst.sendToAIOIntent") != null) {
-        localIntent = (Intent)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent().getParcelableExtra("PhotoConst.sendToAIOIntent");
+      if (this.c.getIntent().getParcelableExtra("PhotoConst.sendToAIOIntent") != null) {
+        localIntent = (Intent)this.c.getIntent().getParcelableExtra("PhotoConst.sendToAIOIntent");
       } else {
-        localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getIntent();
+        localIntent = this.c.getIntent();
       }
       localIntent.setExtrasClassLoader(PeakConstants.class.getClassLoader());
       localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1052);
       localIntent.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
       localIntent.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", SendPhotoActivity.class.getName());
-      localIntent.putExtra("PhotoConst.PHOTO_PATHS", a().a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
-      AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity, false, false);
+      localIntent.putExtra("PhotoConst.PHOTO_PATHS", s().l());
+      this.c.setResult(-1, localIntent);
+      this.c.finish();
+      AlbumUtil.anim(this.c, false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationFileAssistant
  * JD-Core Version:    0.7.0.1
  */

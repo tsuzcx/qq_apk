@@ -16,15 +16,15 @@ class HomeFeedPresenter$1
   public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
   {
     SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a.get())
+    this.a.b(this);
+    if (this.b.c.get())
     {
       SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
       return;
     }
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a = paramBasicLocation;
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(null, 0);
-    ((FeedManager)SuperManager.a(11)).a = paramBasicLocation;
+    HomeFeedPresenter.a(this.b).i = paramBasicLocation;
+    HomeFeedPresenter.a(this.b).a(null, 0);
+    ((FeedManager)SuperManager.a(11)).i = paramBasicLocation;
   }
 }
 

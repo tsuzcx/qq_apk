@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.service;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,7 +76,7 @@ final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,13 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +22,12 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ActivityConfigurationChangedNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.DispatchTouchEventNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.IEventNotifier;
+import com.tencent.qqlive.module.videoreport.collect.notifier.KeyBoardEditorActionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ListScrollNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewScrollPositionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewClickNotifier;
@@ -226,6 +231,160 @@ public class EventCollector
     this.mNotifyManager.onActivityPaused(paramActivity);
   }
   
+  public void onActivityPostCreated(@NonNull Activity paramActivity, @Nullable Bundle paramBundle)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityPostCreated: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
+    }
+  }
+  
+  public void onActivityPostDestroyed(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPostDestroyed: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPostPaused(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPostPaused: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPostResumed(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPostResumed: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPostSaveInstanceState(@NonNull Activity paramActivity, @NonNull Bundle paramBundle)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityPostSaveInstanceState: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
+    }
+  }
+  
+  public void onActivityPostStarted(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPostStarted: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPostStopped(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPostStopped: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPreCreated(@NonNull Activity paramActivity, @Nullable Bundle paramBundle)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityPreCreated: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
+    }
+  }
+  
+  public void onActivityPreDestroyed(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPreDestroyed: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPrePaused(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPrePaused: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPreResumed(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPreResumed: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPreSaveInstanceState(@NonNull Activity paramActivity, @NonNull Bundle paramBundle)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityPreSaveInstanceState: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
+    }
+  }
+  
+  public void onActivityPreStarted(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPreStarted: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
+  public void onActivityPreStopped(@NonNull Activity paramActivity)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPreStopped: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", localStringBuilder.toString());
+    }
+  }
+  
   public void onActivityResumed(Activity paramActivity)
   {
     if (VideoReportInner.getInstance().isDebugMode())
@@ -242,7 +401,16 @@ public class EventCollector
     this.mNotifyManager.onActivityResumed(paramActivity);
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivitySaveInstanceState: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
+    }
+  }
   
   public void onActivityStarted(Activity paramActivity)
   {
@@ -305,6 +473,40 @@ public class EventCollector
     Object localObject = (ViewClickNotifier)ReusablePool.obtain(3);
     ((ViewClickNotifier)localObject).init(paramRadioGroup);
     this.mNotifyManager.addEventNotifier(paramRadioGroup, (IEventNotifier)localObject);
+  }
+  
+  public void onChildViewAdded(View paramView1, View paramView2)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onChildViewAdded, view = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramView2));
+      Log.i("EventCollector", localStringBuilder.toString());
+    }
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    if ((paramView1 instanceof AbsListView)) {
+      this.mNotifyManager.onChildViewAdded(paramView1, paramView2);
+    }
+  }
+  
+  public void onChildViewRemoved(View paramView1, View paramView2)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onChildViewAdded, view = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramView2));
+      Log.i("EventCollector", localStringBuilder.toString());
+    }
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    if ((paramView1 instanceof AbsListView)) {
+      this.mNotifyManager.onChildViewRemoved(paramView1, paramView2);
+    }
   }
   
   public void onDialogClicked(DialogInterface paramDialogInterface, int paramInt)
@@ -372,6 +574,25 @@ public class EventCollector
     }
     DialogListUtil.onDialogStop(paramDialog);
     this.mNotifyManager.onDialogHide(localActivity, paramDialog);
+  }
+  
+  public void onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onEditorAction, v = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramTextView));
+      ((StringBuilder)localObject).append(" actionId = ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
+    }
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    Object localObject = (KeyBoardEditorActionNotifier)ReusablePool.obtain(11);
+    ((KeyBoardEditorActionNotifier)localObject).init(paramTextView, paramInt, paramKeyEvent, 1);
+    this.mNotifyManager.addEventNotifier(paramTextView, (IEventNotifier)localObject);
   }
   
   public void onFragmentDestroyView(FragmentCompat paramFragmentCompat)
@@ -610,7 +831,7 @@ public class EventCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.collect.EventCollector
  * JD-Core Version:    0.7.0.1
  */

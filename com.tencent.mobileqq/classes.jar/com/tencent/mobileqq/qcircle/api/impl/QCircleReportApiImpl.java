@@ -4,9 +4,13 @@ import android.content.Intent;
 import com.tencent.biz.qcircleshadow.libmanager.QCircleListenerProxyManager;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.constant.QCircleAlphaUserReportDataBuilder;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc010001DataBuilder;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.PageParams;
 import cooperation.qqcircle.report.QCircleAlphaUserReporter;
 import cooperation.qqcircle.report.QCircleLpReportDc010001;
+import cooperation.qqcircle.report.QCircleLpReportDc010001.DataBuilder;
 import cooperation.qqcircle.report.QCircleLpReportDc05504;
 import cooperation.qqcircle.report.QCircleLpReportDc05504.DataBuilder;
 import cooperation.qqcircle.report.QCircleMapReporter;
@@ -17,7 +21,6 @@ import cooperation.qqcircle.report.QCircleReportHelper.LaunchParam;
 import cooperation.qqcircle.report.QCircleReporter;
 import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 import feedcloud.FeedCloudCommon.Entry;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,81 +28,6 @@ public class QCircleReportApiImpl
   implements IQCircleReportApi
 {
   private static final String TAG = "QCircleReportServiceImpl";
-  
-  public String DESC()
-  {
-    return "desc";
-  }
-  
-  public String EXT1()
-  {
-    return "ext1";
-  }
-  
-  public String EXT2()
-  {
-    return "ext2";
-  }
-  
-  public String EXT3()
-  {
-    return "ext3";
-  }
-  
-  public String EXT4()
-  {
-    return "ext4";
-  }
-  
-  public String E_PICKER_ENTER()
-  {
-    return QCirclePublishQualityReporter.E_PICKER_ENTER;
-  }
-  
-  public String E_PICKER_EXPOSE()
-  {
-    return QCirclePublishQualityReporter.E_PICKER_EXPOSE;
-  }
-  
-  public String E_PICKER_READY()
-  {
-    return QCirclePublishQualityReporter.E_PICKER_READY;
-  }
-  
-  public String KEY_RET_CODE()
-  {
-    return "ret_code";
-  }
-  
-  public String P_EXPORT_END()
-  {
-    return QCirclePublishQualityReporter.P_EXPORT_END;
-  }
-  
-  public String P_EXPORT_START()
-  {
-    return QCirclePublishQualityReporter.P_EXPORT_START;
-  }
-  
-  public String P_MATERIAL_COST_END()
-  {
-    return QCirclePublishQualityReporter.P_MATERIAL_COST_END;
-  }
-  
-  public String P_MATERIAL_COST_START()
-  {
-    return QCirclePublishQualityReporter.P_MATERIAL_COST_START;
-  }
-  
-  public String P_MATERIAL_DOWNLOAD_FINISH()
-  {
-    return QCirclePublishQualityReporter.P_MATERIAL_DOWNLOAD_FINISH;
-  }
-  
-  public String TRACEID()
-  {
-    return "traceid";
-  }
   
   public Map<String, Object> buildElementParams()
   {
@@ -111,6 +39,56 @@ public class QCircleReportApiImpl
     return new QCircleDTParamBuilder().buildPageParams(paramString);
   }
   
+  public String desc()
+  {
+    return "desc";
+  }
+  
+  public String ePickerEnter()
+  {
+    return QCirclePublishQualityReporter.E_PICKER_ENTER;
+  }
+  
+  public String ePickerExitCancel()
+  {
+    return QCirclePublishQualityReporter.E_PICKER_EXIT_CANCEL;
+  }
+  
+  public String ePickerExitNormal()
+  {
+    return QCirclePublishQualityReporter.E_PICKER_EXIT_NORMAL;
+  }
+  
+  public String ePickerExpose()
+  {
+    return QCirclePublishQualityReporter.E_PICKER_EXPOSE;
+  }
+  
+  public String ePickerReady()
+  {
+    return QCirclePublishQualityReporter.E_PICKER_READY;
+  }
+  
+  public String ext1()
+  {
+    return "ext1";
+  }
+  
+  public String ext2()
+  {
+    return "ext2";
+  }
+  
+  public String ext3()
+  {
+    return "ext3";
+  }
+  
+  public String ext4()
+  {
+    return "ext4";
+  }
+  
   public int getPageId()
   {
     return QCircleReportHelper.getInstance().getPageStackSize();
@@ -119,6 +97,11 @@ public class QCircleReportApiImpl
   public String getQCircleDaTongBasePageId()
   {
     return "small_world_base";
+  }
+  
+  public String keyRetCode()
+  {
+    return "ret_code";
   }
   
   public FeedCloudCommon.Entry newEntry(String paramString1, String paramString2)
@@ -138,34 +121,39 @@ public class QCircleReportApiImpl
     QCircleListenerProxyManager.getInstance().onQQEnterForeground();
   }
   
-  public void report5504(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public String pExportEnd()
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3));
+    return QCirclePublishQualityReporter.P_EXPORT_END;
   }
   
-  public void report5504(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public String pExportStart()
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString1).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3).setExt6(paramString2));
+    return QCirclePublishQualityReporter.P_EXPORT_START;
   }
   
-  public void report5504(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5)
+  public String pMaterialCostEnd()
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString1).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3).setExt15(paramString2).setExt16(paramString3).setExt17(paramString4).setExt18(paramString5));
+    return QCirclePublishQualityReporter.P_MATERIAL_COST_END;
   }
   
-  public void report5504(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public String pMaterialCostStart()
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString1).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3).setExt15(paramString2).setExt16(paramString3).setExt17(paramString4).setExt18(paramString5).setExt8(paramString6).setExt9(paramString7));
+    return QCirclePublishQualityReporter.P_MATERIAL_COST_START;
   }
   
-  public void report5504(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public String pMaterialDownloadFinish()
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString1).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3).setExt6(paramString2).setExt7(paramString3).setExt9(paramString4).setExt15(paramString5).setExt16(paramString6).setExt17(paramString7).setExt18(paramString8));
+    return QCirclePublishQualityReporter.P_MATERIAL_DOWNLOAD_FINISH;
   }
   
-  public void report5504(String paramString, int paramInt1, int paramInt2, int paramInt3, HashMap<String, String> paramHashMap, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public void report5504(QCircleLpReportDc05504DataBuilder paramQCircleLpReportDc05504DataBuilder)
   {
-    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(paramString).setActionType(paramInt1).setSubActionType(paramInt2).setThrActionType(paramInt3).setFeedReportInfo(paramArrayOfByte1).setMsgReportInfo(paramArrayOfByte2).setExtras(paramHashMap));
+    if (paramQCircleLpReportDc05504DataBuilder == null)
+    {
+      QLog.e("QCircleReportServiceImpl", 1, "reportDc010001: dataBuilder is null");
+      return;
+    }
+    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder(paramQCircleLpReportDc05504DataBuilder));
   }
   
   public void reportCacheDataListToServerWithSession(byte[] paramArrayOfByte)
@@ -178,9 +166,14 @@ public class QCircleReportApiImpl
     QCircleAlphaUserReporter.reportCmdSuccessRateEvent(paramQCircleAlphaUserReportDataBuilder);
   }
   
-  public void reportDc010001(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt4)
+  public void reportDc010001(QCircleLpReportDc010001DataBuilder paramQCircleLpReportDc010001DataBuilder)
   {
-    QCircleLpReportDc010001.report(paramInt1, paramInt2, paramInt3, paramString1, paramString2, paramString3, paramString4, paramInt4);
+    if (paramQCircleLpReportDc010001DataBuilder == null)
+    {
+      QLog.e("QCircleReportServiceImpl", 1, "reportDc010001: dataBuilder is null");
+      return;
+    }
+    QCircleLpReportDc010001.report(new QCircleLpReportDc010001.DataBuilder(paramQCircleLpReportDc010001DataBuilder));
   }
   
   public void reportEnd(String paramString1, String paramString2, List<FeedCloudCommon.Entry> paramList)
@@ -226,10 +219,15 @@ public class QCircleReportApiImpl
   {
     QCircleMapReporter.getInstance().startKey(paramString);
   }
+  
+  public String traceId()
+  {
+    return "traceid";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleReportApiImpl
  * JD-Core Version:    0.7.0.1
  */

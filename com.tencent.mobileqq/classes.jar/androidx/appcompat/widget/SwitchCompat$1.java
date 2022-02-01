@@ -2,7 +2,7 @@ package androidx.appcompat.widget;
 
 import android.util.Property;
 
-final class SwitchCompat$1
+class SwitchCompat$1
   extends Property<SwitchCompat, Float>
 {
   SwitchCompat$1(Class paramClass, String paramString)

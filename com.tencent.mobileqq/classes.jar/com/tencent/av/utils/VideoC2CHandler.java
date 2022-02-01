@@ -29,23 +29,21 @@ import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgB
 public class VideoC2CHandler
   extends BusinessHandler
 {
-  static String jdField_a_of_type_JavaLangString = "VideoC2CHandler";
-  public long a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader a;
+  static String a = "VideoC2CHandler";
   public String b = null;
+  public long c = 0L;
+  public C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader d = new C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader();
+  private QQAppInterface e;
   
   public VideoC2CHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader = new C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = paramQQAppInterface;
   }
   
   private msg_svc.PbSendMsgReq a(int paramInt1, String paramString, TransMsgContext paramTransMsgContext, long paramLong1, int paramInt2, long paramLong2)
   {
-    return MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, paramTransMsgContext, paramLong1, paramInt2);
+    return MessageProtoCodec.a(this.e, paramInt1, paramString, paramTransMsgContext, paramLong1, paramInt2);
   }
   
   private void a(C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader paramMsgHeader)
@@ -53,11 +51,11 @@ public class VideoC2CHandler
     String str = this.b;
     if (str != null)
     {
-      long l = CharacterUtil.a(str);
+      long l = CharacterUtil.b(str);
       paramMsgHeader.uint64_to_uin.set(l);
     }
-    if (this.jdField_a_of_type_Long != 0L) {
-      paramMsgHeader.uint64_room_id.set(this.jdField_a_of_type_Long);
+    if (this.c != 0L) {
+      paramMsgHeader.uint64_room_id.set(this.c);
     }
     paramMsgHeader.setHasFlag(true);
   }
@@ -67,7 +65,7 @@ public class VideoC2CHandler
     paramMsgBody = paramMsgBody.toByteArray();
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("send0x211C2CQavMsg QavMsgRecord:");
       localStringBuilder.append(paramLong2);
@@ -83,20 +81,20 @@ public class VideoC2CHandler
     localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
     localToServiceMsg.extraData.putBoolean("ISFROM_QAV", true);
     localToServiceMsg.addAttribute("cookie", Long.valueOf(paramLong1));
-    paramLong1 = FileManagerUtil.b();
-    long l = FileManagerUtil.a();
+    paramLong1 = FileManagerUtil.g();
+    long l = FileManagerUtil.f();
     Object localObject = new TransMsgContext();
-    ((TransMsgContext)localObject).jdField_a_of_type_Int = paramInt2;
-    ((TransMsgContext)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    ((TransMsgContext)localObject).a = paramInt2;
+    ((TransMsgContext)localObject).b = paramArrayOfByte;
     paramString = a(13, paramString, (TransMsgContext)localObject, l, MessageUtils.b(paramLong1), paramLong2);
     paramArrayOfByte = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(AppSetting.a());
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
+    paramArrayOfByte.uint32_apppid.set(AppSetting.d());
+    paramArrayOfByte.uint32_instid.set(AppSetting.d());
     paramArrayOfByte.setHasFlag(true);
     paramString.routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add(paramArrayOfByte);
     localObject = new im_msg_head.InstInfo();
-    paramArrayOfByte.uint32_apppid.set(AppSetting.a());
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
+    paramArrayOfByte.uint32_apppid.set(AppSetting.d());
+    paramArrayOfByte.uint32_instid.set(AppSetting.d());
     ((im_msg_head.InstInfo)localObject).setHasFlag(true);
     paramString.routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject);
     paramString.routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
@@ -108,10 +106,10 @@ public class VideoC2CHandler
   public void a()
   {
     C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-    a(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader);
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader.uint32_body_type.set(102);
-    this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader.uint32_session_type.set(0);
-    localMsgBody.msg_msg_header.set(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0xbC2CType0x211_SubC2CType0xb$MsgBody$MsgHeader);
+    a(this.d);
+    this.d.uint32_body_type.set(102);
+    this.d.uint32_session_type.set(0);
+    localMsgBody.msg_msg_header.set(this.d);
     localMsgBody.setHasFlag(true);
     a(1L, 102, localMsgBody, 1L);
   }

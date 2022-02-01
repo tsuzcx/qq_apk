@@ -16,17 +16,11 @@ import java.util.concurrent.Executors;
 
 public class JsWebWorker
 {
-  protected static Map<String, JsWebWorker.ReflectClass> a;
-  protected static ExecutorService a;
-  protected Context a;
-  protected Handler a;
-  protected WebView a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newCachedThreadPool();
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  protected static ExecutorService a = ;
+  protected static Map<String, JsWebWorker.ReflectClass> b = new HashMap();
+  protected WebView c;
+  protected Context d;
+  protected Handler e;
   
   protected JsWebWorker.ReflectClass a(String paramString1, String paramString2, String paramString3)
   {
@@ -52,7 +46,7 @@ public class JsWebWorker
           LogUtility.c("JsWebWorker", paramString1.toString());
           return null;
         }
-        paramString1 = new DexClassLoader(((File)localObject1).toString(), paramString1, null, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
+        paramString1 = new DexClassLoader(((File)localObject1).toString(), paramString1, null, this.d.getClassLoader());
         LogUtility.c("JsWebWorker", "classLoader start ");
         paramString1 = paramString1.loadClass(paramString3);
         LogUtility.c("JsWebWorker", "classLoader successed ");
@@ -64,14 +58,14 @@ public class JsWebWorker
         {
           Object localObject2 = localObject1[i];
           if (Modifier.isPublic(localObject2.getModifiers())) {
-            paramString2.b.put(localObject2.getName(), localObject2);
+            paramString2.d.put(localObject2.getName(), localObject2);
           }
         }
         else
         {
-          paramString2.jdField_a_of_type_JavaLangString = paramString3;
-          paramString2.jdField_a_of_type_JavaLangClass = paramString1;
-          jdField_a_of_type_JavaUtilMap.put(paramString3, paramString2);
+          paramString2.a = paramString3;
+          paramString2.b = paramString1;
+          b.put(paramString3, paramString2);
           return paramString2;
         }
       }
@@ -91,16 +85,16 @@ public class JsWebWorker
     try
     {
       i = paramWebView.hashCode();
-      Object localObject2 = paramReflectClass.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      Object localObject2 = paramReflectClass.c.get(Integer.valueOf(i));
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        Constructor localConstructor = paramReflectClass.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
+        Constructor localConstructor = paramReflectClass.b.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
         localObject1 = localObject2;
         if (localConstructor != null)
         {
-          localObject1 = localConstructor.newInstance(new Object[] { paramContext, paramWebView, this.jdField_a_of_type_AndroidOsHandler });
-          paramReflectClass.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject1);
+          localObject1 = localConstructor.newInstance(new Object[] { paramContext, paramWebView, this.e });
+          paramReflectClass.c.put(Integer.valueOf(i), localObject1);
         }
       }
       return localObject1;
@@ -125,10 +119,10 @@ public class JsWebWorker
       ((StringBuilder)localObject).append(">>>");
       ((StringBuilder)localObject).append(paramString3);
       LogUtility.c("JsWebWorker", ((StringBuilder)localObject).toString());
-      JsWebWorker.ReflectClass localReflectClass = (JsWebWorker.ReflectClass)jdField_a_of_type_JavaUtilMap.get(paramString2);
+      JsWebWorker.ReflectClass localReflectClass = (JsWebWorker.ReflectClass)b.get(paramString2);
       localObject = localReflectClass;
       if (localReflectClass == null) {
-        localObject = a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2);
+        localObject = a(this.d.getFilesDir().getAbsolutePath(), paramString1, paramString2);
       }
       if (localObject == null)
       {
@@ -136,10 +130,10 @@ public class JsWebWorker
         return null;
       }
       LogUtility.c("JsWebWorker", "got refC");
-      if ((Method)((JsWebWorker.ReflectClass)localObject).b.get(paramString3) == null)
+      if ((Method)((JsWebWorker.ReflectClass)localObject).d.get(paramString3) == null)
       {
         ((JsWebWorker.ReflectClass)localObject).a();
-        if (a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2) == null)
+        if (a(this.d.getFilesDir().getAbsolutePath(), paramString1, paramString2) == null)
         {
           LogUtility.c("JsWebWorker", "cant find method and refC == NULL return");
           return null;
@@ -148,12 +142,12 @@ public class JsWebWorker
       else
       {
         LogUtility.c("JsWebWorker", "get method");
-        paramString1 = (Method)((JsWebWorker.ReflectClass)localObject).b.get(paramString3);
+        paramString1 = (Method)((JsWebWorker.ReflectClass)localObject).d.get(paramString3);
         if (paramString1 == null) {
           return null;
         }
         LogUtility.c("JsWebWorker", "got method");
-        paramString2 = a((JsWebWorker.ReflectClass)localObject, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView);
+        paramString2 = a((JsWebWorker.ReflectClass)localObject, this.d, this.c);
         if (paramString2 == null) {
           return null;
         }
@@ -172,7 +166,7 @@ public class JsWebWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.JsWebWorker
  * JD-Core Version:    0.7.0.1
  */

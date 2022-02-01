@@ -10,22 +10,22 @@ class VideoFeedsAdapter$13
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseVideoItemHolder != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseVideoItemHolder.a != null)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewholderBaseVideoItemHolder.a.k(this.a);
+    if ((this.this$0.h != null) && (this.this$0.h.aA != null)) {
+      this.this$0.h.aA.l(this.a);
     }
-    if ((this.a) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsPlayManager.d()) && (VideoFeedsAdapter.a(this.this$0) != null))
+    if ((this.a) && (!this.this$0.f.k()) && (VideoFeedsAdapter.r(this.this$0) != null))
     {
-      VideoFeedsAdapter.a(this.this$0).a();
+      VideoFeedsAdapter.r(this.this$0).h();
       return;
     }
-    if ((!this.a) && (VideoFeedsHelper.b())) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsPlayManager.b();
+    if ((!this.a) && (VideoFeedsHelper.e())) {
+      this.this$0.f.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.13
  * JD-Core Version:    0.7.0.1
  */

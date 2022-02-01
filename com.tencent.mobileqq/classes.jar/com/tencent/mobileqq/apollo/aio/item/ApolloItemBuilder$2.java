@@ -2,7 +2,6 @@ package com.tencent.mobileqq.apollo.aio.item;
 
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloMessage;
 import com.tencent.mobileqq.apollo.model.MessageForApollo;
@@ -20,22 +19,22 @@ class ApolloItemBuilder$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.mApolloMessage == null) {
+    if (this.a.mApolloMessage == null) {
       return;
     }
-    Object localObject = ((IApolloDaoManagerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.mApolloMessage.id);
-    if ((localObject != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null) && (!this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.hasPlayed) && (((ApolloActionData)localObject).feeType == 1) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (!ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.msgType)))
+    Object localObject = ((IApolloDaoManagerService)this.this$0.d.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(this.a.mApolloMessage.id);
+    if ((localObject != null) && (this.this$0.f != null) && (this.b != null) && (!this.a.hasPlayed) && (((ApolloActionData)localObject).feeType == 1) && (this.this$0.f.a == 1))
     {
-      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo, 0);
-      ((ApolloItemBuilder.PlusOneManagerTask)localObject).a = this.this$0.b;
+      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.c, this.a, 0);
+      ((ApolloItemBuilder.PlusOneManagerTask)localObject).e = this.this$0.o;
       ThreadManager.getUIHandler().post((Runnable)localObject);
-      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo, 1);
+      localObject = new ApolloItemBuilder.PlusOneManagerTask(this.this$0, this.c, this.a, 1);
       ThreadManager.getUIHandler().postDelayed((Runnable)localObject, 8000L);
-      ApolloAioBubbleReportUtil.a.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidContentContext, ApolloItemBuilder.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo);
-      ApolloItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloModelMessageForApollo.uniseq);
+      ApolloAioBubbleReportUtil.a.a(this.this$0.d, this.this$0.e, ApolloItemBuilder.a(this.this$0), this.this$0.f, this.a);
+      ApolloItemBuilder.a(this.this$0, this.a.uniseq);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null)
+    if (this.b != null)
     {
       ThreadManager.getUIHandler().post(new ApolloItemBuilder.2.1(this));
       return;
@@ -45,7 +44,7 @@ class ApolloItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

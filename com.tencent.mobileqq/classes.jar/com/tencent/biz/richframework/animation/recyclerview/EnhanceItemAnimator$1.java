@@ -14,7 +14,7 @@ class EnhanceItemAnimator$1
     while (localIterator.hasNext())
     {
       EnhanceItemAnimator.MoveInfo localMoveInfo = (EnhanceItemAnimator.MoveInfo)localIterator.next();
-      EnhanceItemAnimator.a(this.this$0, localMoveInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localMoveInfo.jdField_a_of_type_Int, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d);
+      EnhanceItemAnimator.a(this.this$0, localMoveInfo.a, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d, localMoveInfo.e);
     }
     this.a.clear();
     EnhanceItemAnimator.a(this.this$0).remove(this.a);

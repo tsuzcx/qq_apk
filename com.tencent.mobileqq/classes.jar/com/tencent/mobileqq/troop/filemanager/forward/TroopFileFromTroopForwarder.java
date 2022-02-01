@@ -15,51 +15,50 @@ import java.util.UUID;
 
 public class TroopFileFromTroopForwarder
 {
-  protected int a;
   protected long a;
-  TroopFileReqCopyToObserver a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
+  protected TroopFileTransferManager.Item b;
+  protected String c;
+  protected int d;
+  TroopFileReqCopyToObserver e = new TroopFileFromTroopForwarder.1(this);
   
   protected TroopFileFromTroopForwarder(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver = new TroopFileFromTroopForwarder.1(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {
-      paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();
+    this.a = paramLong;
+    this.b = paramItem;
+    if (this.b.Id != null) {
+      paramItem = this.b.Id.toString();
     } else {
       paramItem = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramItem;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramItem;
+    this.d = paramInt;
   }
   
   public static TroopFileFromTroopForwarder a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
     if (paramLong == 0L)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. troopuin=0");
       return null;
     }
     if (paramItem == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. item=null");
       return null;
     }
     if (paramItem.Id == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item.id=null");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. item.id=null");
       return null;
     }
     if (paramItem.ForwardTroopuin == 0L)
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
       return null;
     }
     if (paramItem.BusId != 25)
     {
-      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      int i = TroopFileTransferUtil.Log.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getTroop2WeiyunForwarder. BusId err:");
       localStringBuilder.append(paramItem.BusId);
@@ -68,7 +67,7 @@ public class TroopFileFromTroopForwarder
     }
     if (TextUtils.isEmpty(paramItem.ForwardPath))
     {
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "get2WeiyunForwarder. ForwardPath=null");
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.b, "get2WeiyunForwarder. ForwardPath=null");
       return null;
     }
     return new TroopFileFromTroopForwarder(paramLong, paramItem, 1);
@@ -79,20 +78,20 @@ public class TroopFileFromTroopForwarder
     if (!paramBoolean)
     {
       ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(-1);
-      paramInt1 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramInt1 = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
-      paramString1.append(this.jdField_a_of_type_JavaLangString);
+      paramString1.append(this.c);
       paramString1.append("] onTroop2weiyunResult isSuccess:false ");
       TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", paramInt1, paramString1.toString());
-      paramString1 = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 601);
-      TroopFileDataCenter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+      paramString1 = new TroopFileError.SimpleErrorInfo(this.b.FileName, this.a, 5, 601);
+      TroopFileDataCenter.a(this.a, this.b, 5, paramString1);
       return;
     }
-    paramInt2 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramInt2 = TroopFileTransferUtil.Log.b;
     paramString1 = new StringBuilder();
     paramString1.append("[");
-    paramString1.append(this.jdField_a_of_type_JavaLangString);
+    paramString1.append(this.c);
     paramString1.append("] onTroop2weiyunResult retCode:");
     paramString1.append(paramInt1);
     paramString1.append(" sClientWording:");
@@ -149,58 +148,58 @@ public class TroopFileFromTroopForwarder
       }
       paramInt1 = 702;
       label323:
-      paramString1 = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, paramInt1, paramString3);
-      TroopFileDataCenter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+      paramString1 = new TroopFileError.SimpleErrorInfo(this.b.FileName, this.a, 5, paramInt1, paramString3);
+      TroopFileDataCenter.a(this.a, this.b, 5, paramString1);
       return;
     }
-    paramString1 = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 602);
-    TroopFileDataCenter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+    paramString1 = new TroopFileError.SimpleErrorInfo(this.b.FileName, this.a, 5, 602);
+    TroopFileDataCenter.a(this.a, this.b, 5, paramString1);
   }
   
-  private int b()
+  private int c()
   {
     Object localObject = TroopFileTransferUtil.a();
     if (localObject == null)
     {
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append("] troop2weiyun app=null");
       TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", i, ((StringBuilder)localObject).toString());
       return -1;
     }
-    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    int i = TroopFileTransferUtil.Log.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("] troop2weiyun. BusId:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId);
+    localStringBuilder.append(this.b.BusId);
     localStringBuilder.append(" ForwardBusId:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId);
+    localStringBuilder.append(this.b.ForwardBusId);
     localStringBuilder.append(" ForwardPath:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath);
+    localStringBuilder.append(this.b.ForwardPath);
     TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", i, localStringBuilder.toString());
-    TroopFileProtocol.a((QQAppInterface)localObject, true, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, ((QQAppInterface)localObject).getLongAccountUin(), 0L, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver);
+    TroopFileProtocol.a((QQAppInterface)localObject, true, this.a, this.b, ((QQAppInterface)localObject).getLongAccountUin(), 0L, this.e);
     return 0;
-  }
-  
-  public int a()
-  {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
-    }
-    return -1;
   }
   
   public UUID a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+    return this.b.Id;
+  }
+  
+  public int b()
+  {
+    if (1 == this.d) {
+      return c();
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileFromTroopForwarder
  * JD-Core Version:    0.7.0.1
  */

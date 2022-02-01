@@ -12,47 +12,34 @@ import com.tencent.widget.ThemeURLImageView;
 public class SearchResultView
   implements ISearchResultView
 {
-  public int a;
-  protected ImageView a;
-  protected View b;
-  protected ImageView b;
-  protected View c;
-  protected TextView d;
-  protected TextView e;
+  protected View e;
   protected TextView f;
   protected TextView g;
+  protected TextView h;
+  protected TextView i;
+  protected ImageView j;
+  protected ImageView k;
+  protected View l;
+  public int m;
   
   protected SearchResultView() {}
   
   public SearchResultView(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView;
+    this.e = paramView;
     a();
   }
   
   public SearchResultView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.m = paramInt;
     LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
     if (a(paramInt)) {
-      this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(paramInt, null, false);
+      this.e = localLayoutInflater.inflate(paramInt, null, false);
     } else {
-      this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(paramInt, paramViewGroup, false);
+      this.e = localLayoutInflater.inflate(paramInt, paramViewGroup, false);
     }
     a();
-  }
-  
-  public View a()
-  {
-    return this.jdField_b_of_type_AndroidViewView;
-  }
-  
-  public View a(int paramInt)
-  {
-    if ((paramInt != 2131559800) && (paramInt != 2131559793) && (paramInt != 2131559832) && (paramInt != 2131559817)) {
-      return this.jdField_b_of_type_AndroidViewView;
-    }
-    return this.jdField_b_of_type_AndroidViewView.findViewById(2131377081);
   }
   
   public View a(String paramString)
@@ -60,87 +47,100 @@ public class SearchResultView
     return null;
   }
   
-  public ImageView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.d;
-  }
-  
   protected void a()
   {
-    Object localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131378784);
+    Object localObject = this.e.findViewById(2131447463);
     if (localObject != null)
     {
-      this.d = ((TextView)localObject);
-      this.d.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
-    }
-    localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131378039);
-    if (localObject != null) {
-      this.e = ((TextView)localObject);
-    }
-    localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131365536);
-    if (localObject != null) {
       this.f = ((TextView)localObject);
+      this.f.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     }
-    localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131366816);
+    localObject = this.e.findViewById(2131446539);
     if (localObject != null) {
       this.g = ((TextView)localObject);
     }
-    localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131368461);
+    localObject = this.e.findViewById(2131431757);
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject);
+      this.h = ((TextView)localObject);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.e.findViewById(2131433138);
+    if (localObject != null) {
+      this.i = ((TextView)localObject);
+    }
+    localObject = this.e.findViewById(2131435357);
+    if (localObject != null) {
+      this.j = ((ImageView)localObject);
+    }
+    localObject = this.j;
     if ((localObject instanceof ThemeImageView)) {
       ((ThemeImageView)localObject).setSupportMaskView(false);
     } else if ((localObject instanceof ThemeURLImageView)) {
       ((ThemeURLImageView)localObject).setSupportMaskView(false);
     }
-    localObject = this.jdField_b_of_type_AndroidViewView.findViewById(2131376548);
+    localObject = this.e.findViewById(2131444798);
     if (localObject != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localObject);
+      this.k = ((ImageView)localObject);
     }
-    this.c = this.jdField_b_of_type_AndroidViewView.findViewById(2131365776);
-    b();
+    this.l = this.e.findViewById(2131432033);
+    i();
   }
   
   public boolean a(int paramInt)
   {
-    return (paramInt != 2131562791) && (paramInt != 2131561031) && (paramInt != 2131562790);
+    return (paramInt != 2131629236) && (paramInt != 2131627372) && (paramInt != 2131629235);
   }
   
-  public ImageView b()
+  public View b(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    if ((paramInt != 2131625843) && (paramInt != 2131625836) && (paramInt != 2131625875) && (paramInt != 2131625860)) {
+      return this.e;
+    }
+    return this.e.findViewById(2131445450);
   }
   
   public TextView b()
   {
-    return this.e;
-  }
-  
-  public void b()
-  {
-    a(this.jdField_a_of_type_Int);
+    return this.f;
   }
   
   public TextView c()
   {
-    return this.f;
+    return this.g;
   }
   
   public TextView d()
   {
-    return this.g;
+    return this.h;
+  }
+  
+  public TextView e()
+  {
+    return this.i;
+  }
+  
+  public ImageView f()
+  {
+    return this.k;
+  }
+  
+  public ImageView g()
+  {
+    return this.j;
+  }
+  
+  public View h()
+  {
+    return this.e;
+  }
+  
+  public void i()
+  {
+    a(this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.view.SearchResultView
  * JD-Core Version:    0.7.0.1
  */

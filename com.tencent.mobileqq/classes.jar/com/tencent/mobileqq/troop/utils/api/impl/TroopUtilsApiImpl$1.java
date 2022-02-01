@@ -13,12 +13,12 @@ class TroopUtilsApiImpl$1
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    TroopUtilsApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsApiImplTroopUtilsApiImpl, paramInt, paramArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationUtilsTroopNotificationUtils$TroopPrivilegeCallback);
+    TroopUtilsApiImpl.access$000(this.e, paramInt, paramArrayOfByte, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.api.impl.TroopUtilsApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

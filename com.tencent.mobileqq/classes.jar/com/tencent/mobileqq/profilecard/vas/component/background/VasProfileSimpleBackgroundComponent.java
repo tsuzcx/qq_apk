@@ -60,7 +60,7 @@ public final class VasProfileSimpleBackgroundComponent
       }
       paramVasProfileData.setMaxSize(getContainerView().getWidth() * 2 / 3);
       paramVasProfileData.setVisibility(0);
-      paramVasProfileData.setHiBoom(localVasDiyTextData.getDiyTextFontId(), 1, HiBoomConstants.a);
+      paramVasProfileData.setHiBoom(localVasDiyTextData.getDiyTextFontId(), 1, HiBoomConstants.d);
       paramVasProfileData.setText((CharSequence)localVasDiyTextData.getDiyText());
       paramVasProfileData = this.mDiyTextMask;
       if (paramVasProfileData == null) {
@@ -92,7 +92,7 @@ public final class VasProfileSimpleBackgroundComponent
         Intrinsics.throwNpe();
       }
       paramVasProfileData.setVisibility(0);
-      paramVasProfileData.a((View)this.mDiyTextView);
+      paramVasProfileData.b((View)this.mDiyTextView);
       paramVasProfileData.setImageDegree(localVasDiyTextData.getDiyTextDegree());
       paramVasProfileData.setImageScale(localVasDiyTextData.getDiyTextScale());
       localObject = getContainerView().getContext();
@@ -101,7 +101,7 @@ public final class VasProfileSimpleBackgroundComponent
       Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.context.resources");
       localObject = ((Resources)localObject).getDisplayMetrics();
       paramVasProfileData.setCenterPoint(localVasDiyTextData.getDiyTextLocX() * ((DisplayMetrics)localObject).widthPixels, localVasDiyTextData.getDiyTextLocY() * ((DisplayMetrics)localObject).heightPixels);
-      paramVasProfileData.a();
+      paramVasProfileData.c();
       paramVasProfileData.invalidate();
       return;
     }
@@ -122,7 +122,7 @@ public final class VasProfileSimpleBackgroundComponent
     Object localObject = this.mDiyTextLayout;
     if (localObject != null)
     {
-      localObject = ((SingleTouchLayout)localObject).a();
+      localObject = ((SingleTouchLayout)localObject).getCenterPoint();
       if (localObject != null) {
         return localObject;
       }
@@ -167,7 +167,7 @@ public final class VasProfileSimpleBackgroundComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileSimpleBackgroundComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class NewTroopContactView$2
   protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
+      this.a.y.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.2
  * JD-Core Version:    0.7.0.1
  */

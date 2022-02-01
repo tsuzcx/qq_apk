@@ -10,40 +10,35 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.apollo.player.api.IApolloBrickPlayer;
+import com.tencent.mobileqq.apollo.meme.api.IApolloBrickPlayer;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
   implements URLDrawable.URLDrawableListener, IApolloItemBuilder.Holder
 {
-  public SpannableStringBuilder a;
-  public ImageSpan a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public IApolloBrickPlayer a;
-  public boolean a;
-  public ImageView b;
+  public View A;
+  public TextView B;
+  public boolean C = false;
+  public int a;
   public TextView b;
-  public View c;
-  public ImageView c;
   public TextView c;
   public ImageView d;
-  public TextView d;
-  public int e;
-  public TextView e;
-  public int f;
-  
-  public ApolloItemBuilder$Holder()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public RelativeLayout e;
+  public SpannableStringBuilder f;
+  public ImageSpan g;
+  public int s;
+  public URLImageView t;
+  public ImageView u;
+  public TextView v;
+  public TextView w;
+  public ImageView x;
+  public ImageView y;
+  public IApolloBrickPlayer z;
   
   public void a()
   {
-    IApolloBrickPlayer localIApolloBrickPlayer = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer;
+    IApolloBrickPlayer localIApolloBrickPlayer = this.z;
     if (localIApolloBrickPlayer != null) {
       localIApolloBrickPlayer.pause();
     }
@@ -57,7 +52,7 @@ public class ApolloItemBuilder$Holder
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Object localObject = this.d;
+    Object localObject = this.w;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -72,7 +67,7 @@ public class ApolloItemBuilder$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

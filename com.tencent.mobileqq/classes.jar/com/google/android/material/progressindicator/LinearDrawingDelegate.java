@@ -13,14 +13,13 @@ import com.google.android.material.color.MaterialColors;
 final class LinearDrawingDelegate
   extends DrawingDelegate<LinearProgressIndicatorSpec>
 {
-  private float a;
-  private float b;
-  private float c;
+  private float c = 300.0F;
+  private float d;
+  private float e;
   
   public LinearDrawingDelegate(@NonNull LinearProgressIndicatorSpec paramLinearProgressIndicatorSpec)
   {
     super(paramLinearProgressIndicatorSpec);
-    this.jdField_a_of_type_Float = 300.0F;
   }
   
   private static void a(Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, RectF paramRectF)
@@ -51,38 +50,38 @@ final class LinearDrawingDelegate
   public void a(@NonNull Canvas paramCanvas, @FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
     Rect localRect = paramCanvas.getClipBounds();
-    this.jdField_a_of_type_Float = localRect.width();
-    float f1 = ((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Int;
-    paramCanvas.translate(localRect.width() / 2.0F, localRect.height() / 2.0F + Math.max(0.0F, (localRect.height() - ((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Int) / 2.0F));
-    if (((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Boolean) {
+    this.c = localRect.width();
+    float f1 = ((LinearProgressIndicatorSpec)this.a).a;
+    paramCanvas.translate(localRect.width() / 2.0F, localRect.height() / 2.0F + Math.max(0.0F, (localRect.height() - ((LinearProgressIndicatorSpec)this.a).a) / 2.0F));
+    if (((LinearProgressIndicatorSpec)this.a).i) {
       paramCanvas.scale(-1.0F, 1.0F);
     }
-    if (((this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange.c()) && (((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).d == 1)) || ((this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange.b()) && (((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).e == 2))) {
+    if (((this.b.d()) && (((LinearProgressIndicatorSpec)this.a).e == 1)) || ((this.b.c()) && (((LinearProgressIndicatorSpec)this.a).f == 2))) {
       paramCanvas.scale(1.0F, -1.0F);
     }
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange.c()) || (this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange.b())) {
-      paramCanvas.translate(0.0F, ((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Int * (paramFloat - 1.0F) / 2.0F);
+    if ((this.b.d()) || (this.b.c())) {
+      paramCanvas.translate(0.0F, ((LinearProgressIndicatorSpec)this.a).a * (paramFloat - 1.0F) / 2.0F);
     }
-    float f2 = this.jdField_a_of_type_Float;
+    float f2 = this.c;
     paramCanvas.clipRect(-f2 / 2.0F, -f1 / 2.0F, f2 / 2.0F, f1 / 2.0F);
-    this.b = (((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Int * paramFloat);
-    this.c = (((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).b * paramFloat);
+    this.d = (((LinearProgressIndicatorSpec)this.a).a * paramFloat);
+    this.e = (((LinearProgressIndicatorSpec)this.a).b * paramFloat);
   }
   
   void a(@NonNull Canvas paramCanvas, @NonNull Paint paramPaint)
   {
-    int i = MaterialColors.b(((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).c, this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorDrawableWithAnimatedVisibilityChange.getAlpha());
-    float f1 = -this.jdField_a_of_type_Float / 2.0F + this.c;
+    int i = MaterialColors.b(((LinearProgressIndicatorSpec)this.a).d, this.b.getAlpha());
+    float f1 = -this.c / 2.0F + this.e;
     float f2 = -f1;
     paramPaint.setStyle(Paint.Style.FILL);
     paramPaint.setAntiAlias(true);
     paramPaint.setColor(i);
-    float f3 = this.b;
+    float f3 = this.d;
     paramCanvas.drawRect(f1, -f3 / 2.0F, f2, f3 / 2.0F, paramPaint);
-    f3 = this.c;
+    f3 = this.e;
     RectF localRectF = new RectF(-f3, -f3, f3, f3);
-    a(paramCanvas, paramPaint, this.b, this.c, f1, true, localRectF);
-    a(paramCanvas, paramPaint, this.b, this.c, f2, false, localRectF);
+    a(paramCanvas, paramPaint, this.d, this.e, f1, true, localRectF);
+    a(paramCanvas, paramPaint, this.d, this.e, f2, false, localRectF);
   }
   
   public void a(@NonNull Canvas paramCanvas, @NonNull Paint paramPaint, @FloatRange(from=0.0D, to=1.0D) float paramFloat1, @FloatRange(from=0.0D, to=1.0D) float paramFloat2, @ColorInt int paramInt)
@@ -90,30 +89,30 @@ final class LinearDrawingDelegate
     if (paramFloat1 == paramFloat2) {
       return;
     }
-    float f1 = this.jdField_a_of_type_Float;
+    float f1 = this.c;
     float f3 = -f1 / 2.0F;
-    float f2 = this.c;
+    float f2 = this.e;
     paramFloat1 = f3 + f2 + (f1 - f2 * 2.0F) * paramFloat1;
     paramFloat2 = -f1 / 2.0F + f2 + (f1 - f2 * 2.0F) * paramFloat2;
     paramPaint.setStyle(Paint.Style.FILL);
     paramPaint.setAntiAlias(true);
     paramPaint.setColor(paramInt);
-    f1 = this.b;
+    f1 = this.d;
     paramCanvas.drawRect(paramFloat1, -f1 / 2.0F, paramFloat2, f1 / 2.0F, paramPaint);
-    f1 = this.c;
+    f1 = this.e;
     RectF localRectF = new RectF(-f1, -f1, f1, f1);
-    a(paramCanvas, paramPaint, this.b, this.c, paramFloat1, true, localRectF);
-    a(paramCanvas, paramPaint, this.b, this.c, paramFloat2, false, localRectF);
+    a(paramCanvas, paramPaint, this.d, this.e, paramFloat1, true, localRectF);
+    a(paramCanvas, paramPaint, this.d, this.e, paramFloat2, false, localRectF);
   }
   
   public int b()
   {
-    return ((LinearProgressIndicatorSpec)this.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorBaseProgressIndicatorSpec).jdField_a_of_type_Int;
+    return ((LinearProgressIndicatorSpec)this.a).a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.LinearDrawingDelegate
  * JD-Core Version:    0.7.0.1
  */

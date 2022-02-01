@@ -318,14 +318,14 @@ public class QQEntityManagerFactory
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
         localStringBuilder.append(".db");
-        this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), this.mDBVersion, new QQDBErrorHandler(this.mCorruptionInterceptorList));
+        this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), this.mDBVersion, new QQDBErrorHandler(this.mCorruptionInterceptorList));
       }
       else
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
         localStringBuilder.append(".db");
-        this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), this.mDBVersion);
+        this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), this.mDBVersion);
       }
       paramString = this.tag;
       StringBuilder localStringBuilder = new StringBuilder();
@@ -405,7 +405,7 @@ public class QQEntityManagerFactory
   {
     if (paramInt1 < 20)
     {
-      this.mInnerDbHelper.a();
+      this.mInnerDbHelper.dropAllTable();
       return;
     }
     IOnDBUpgradeListener localIOnDBUpgradeListener = this.mOnDBUpgradeListener;
@@ -418,7 +418,7 @@ public class QQEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

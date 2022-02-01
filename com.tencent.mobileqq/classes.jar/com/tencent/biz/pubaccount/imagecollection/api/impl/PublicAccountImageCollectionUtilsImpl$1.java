@@ -23,9 +23,9 @@ final class PublicAccountImageCollectionUtilsImpl$1
       int i = paramBaseResp.errCode;
       if (i != -2) {
         if (i != 0) {
-          QRUtils.a(1, 2131719009);
+          QRUtils.a(1, 2131916544);
         } else {
-          QRUtils.a(2, 2131719027);
+          QRUtils.a(2, 2131916563);
         }
       }
       WXShareHelper.a().b(this);
@@ -34,7 +34,7 @@ final class PublicAccountImageCollectionUtilsImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

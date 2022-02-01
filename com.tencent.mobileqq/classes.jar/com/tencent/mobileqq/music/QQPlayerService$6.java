@@ -12,7 +12,7 @@ class QQPlayerService$6
   public void run()
   {
     boolean bool;
-    if (QQPlayerService.h() == 5) {
+    if (QQPlayerService.t() == 5) {
       bool = true;
     } else {
       bool = false;
@@ -21,22 +21,22 @@ class QQPlayerService$6
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("===========> timeout retry to check playState:");
-      localStringBuilder.append(QQPlayerService.b(QQPlayerService.h()));
+      localStringBuilder.append(QQPlayerService.d(QQPlayerService.t()));
       localStringBuilder.append(",needRetryPlay:");
       localStringBuilder.append(bool);
       QLog.e("QQPlayerService", 2, localStringBuilder.toString());
     }
     int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "QmusicHlsMaxRetryTimes", 3);
-    if ((bool) && (QQPlayerService.e() != null) && (!TextUtils.isEmpty(QQPlayerService.e().b)) && (QQPlayerService.i() < i))
+    if ((bool) && (QQPlayerService.s() != null) && (!TextUtils.isEmpty(QQPlayerService.s().d)) && (QQPlayerService.u() < i))
     {
-      QQPlayerService.j();
-      QQPlayerService.a(this.this$0, QQPlayerService.e().b);
+      QQPlayerService.v();
+      QQPlayerService.a(this.this$0, QQPlayerService.s().d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.6
  * JD-Core Version:    0.7.0.1
  */

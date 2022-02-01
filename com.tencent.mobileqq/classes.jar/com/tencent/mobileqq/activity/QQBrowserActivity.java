@@ -93,9 +93,10 @@ public class QQBrowserActivity
   public static final String EXTRA_FINISH_ANIMATION_OUT_TO_RIGHT = "finish_animation_out_to_right";
   public static final String EXTRA_FINISH_ANIMATION_OUT_TO_TOP = "finish_animation_out_to_top";
   public static final String EXTRA_FINISH_ANIMATION_UP_DOWN = "finish_animation_up_down";
+  public static final String EXTRA_FINISH_ANIMATION_UP_DOWN_GUILD = "finish_animation_up_down_guild";
   private static final String FLAG_BROWSER_RESTORE = "browserRestoreFlag";
   public static final String FRAGMENT_CLASS = "fragment_class";
-  public static final HashSet<String> HW_FORBINDDEN_LIST = WebViewComUtils.a;
+  public static final HashSet<String> HW_FORBINDDEN_LIST = WebViewComUtils.b;
   public static final String INEWS_HEADLINES_URL = "miniqb://home";
   public static final String INEWS_PUBLIC_UIN = "2909288299";
   public static final String IS_OPENING_QUN_APP = "isOpeningQunApp";
@@ -143,6 +144,29 @@ public class QQBrowserActivity
   public ArrayList<WebViewTabBarData> tabBarConfigData;
   private View tabBarView;
   
+  private void doOverrideAnim()
+  {
+    IWebColorNoteInject localIWebColorNoteInject = this.inject;
+    if ((localIWebColorNoteInject != null) && (localIWebColorNoteInject.c())) {
+      overridePendingTransition(0, 0);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
+      overridePendingTransition(0, 2130771995);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_out_to_right", false)) {
+      overridePendingTransition(0, 2130772324);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_out_to_top", false)) {
+      overridePendingTransition(0, 2130772438);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_none", false)) {
+      overridePendingTransition(0, 0);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_up_down_guild", false)) {
+      overridePendingTransition(0, 2130772135);
+    }
+  }
+  
   private void preInitWebViewFragment(Intent paramIntent)
   {
     String str = SwiftWebViewUtils.a(paramIntent);
@@ -158,7 +182,7 @@ public class QQBrowserActivity
     FragmentTransaction localFragmentTransaction = paramQQBrowserActivity.getSupportFragmentManager().beginTransaction();
     paramQQBrowserActivity.hideCurrentWebViewFragment(localFragmentTransaction);
     if (!localWebViewFragment.isAdded()) {
-      localFragmentTransaction.add(2131365183, localWebViewFragment, localWebViewTabBarData.tag);
+      localFragmentTransaction.add(2131431345, localWebViewFragment, localWebViewTabBarData.tag);
     } else {
       localFragmentTransaction.show(localWebViewFragment);
     }
@@ -177,38 +201,38 @@ public class QQBrowserActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 219	com/tencent/mobileqq/activity/QQBrowserActivity:mFragmentClass	Ljava/lang/Class;
+    //   1: getfield 222	com/tencent/mobileqq/activity/QQBrowserActivity:mFragmentClass	Ljava/lang/Class;
     //   4: astore_2
     //   5: aload_2
     //   6: ifnull +25 -> 31
     //   9: aload_2
-    //   10: invokevirtual 331	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   13: checkcast 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   10: invokevirtual 361	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   13: checkcast 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   16: astore_2
     //   17: goto +145 -> 162
-    //   20: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   20: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   23: dup
-    //   24: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   24: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   27: astore_2
     //   28: goto +134 -> 162
     //   31: aload_1
-    //   32: ldc 83
-    //   34: invokevirtual 338	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   37: invokestatic 344	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   32: ldc 86
+    //   34: invokevirtual 366	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: invokestatic 372	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   40: ifne +114 -> 154
     //   43: aload_1
-    //   44: ldc 83
-    //   46: invokevirtual 338	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: ldc 86
+    //   46: invokevirtual 366	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   49: astore_2
     //   50: aload_2
-    //   51: invokestatic 348	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   54: invokevirtual 331	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   51: invokestatic 376	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   54: invokevirtual 361	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   57: astore_2
     //   58: aload_2
-    //   59: instanceof 288
+    //   59: instanceof 319
     //   62: ifeq +11 -> 73
     //   65: aload_2
-    //   66: checkcast 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   66: checkcast 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   69: astore_3
     //   70: goto +5 -> 75
     //   73: aconst_null
@@ -217,58 +241,58 @@ public class QQBrowserActivity
     //   76: astore_2
     //   77: aload_3
     //   78: ifnonnull +84 -> 162
-    //   81: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   81: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   84: dup
-    //   85: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   85: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   88: astore_2
     //   89: goto +73 -> 162
     //   92: astore_1
     //   93: goto +51 -> 144
     //   96: astore_2
     //   97: aload_2
-    //   98: invokevirtual 351	java/lang/ClassNotFoundException:printStackTrace	()V
-    //   101: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   98: invokevirtual 379	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   101: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   104: dup
-    //   105: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   105: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   108: astore_2
     //   109: goto +53 -> 162
     //   112: astore_2
     //   113: aload_2
-    //   114: invokevirtual 352	java/lang/IllegalAccessException:printStackTrace	()V
-    //   117: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   114: invokevirtual 380	java/lang/IllegalAccessException:printStackTrace	()V
+    //   117: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   120: dup
-    //   121: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   121: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   124: astore_2
     //   125: goto +37 -> 162
     //   128: astore_2
     //   129: aload_2
-    //   130: invokevirtual 353	java/lang/InstantiationException:printStackTrace	()V
-    //   133: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   130: invokevirtual 381	java/lang/InstantiationException:printStackTrace	()V
+    //   133: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   136: dup
-    //   137: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   137: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   140: astore_2
     //   141: goto +21 -> 162
-    //   144: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   144: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   147: dup
-    //   148: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   148: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   151: pop
     //   152: aload_1
     //   153: athrow
-    //   154: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   154: new 319	com/tencent/mobileqq/webview/swift/WebViewFragment
     //   157: dup
-    //   158: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   158: invokespecial 362	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
     //   161: astore_2
-    //   162: new 355	android/os/Bundle
+    //   162: new 383	android/os/Bundle
     //   165: dup
-    //   166: invokespecial 356	android/os/Bundle:<init>	()V
+    //   166: invokespecial 384	android/os/Bundle:<init>	()V
     //   169: astore_3
     //   170: aload_3
-    //   171: ldc_w 358
+    //   171: ldc_w 386
     //   174: aload_1
-    //   175: invokevirtual 362	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
+    //   175: invokevirtual 390	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
     //   178: aload_2
     //   179: aload_3
-    //   180: invokevirtual 366	com/tencent/mobileqq/webview/swift/WebViewFragment:setArguments	(Landroid/os/Bundle;)V
+    //   180: invokevirtual 394	com/tencent/mobileqq/webview/swift/WebViewFragment:setArguments	(Landroid/os/Bundle;)V
     //   183: aload_2
     //   184: areturn
     //   185: astore_2
@@ -304,7 +328,7 @@ public class QQBrowserActivity
     if ((localObject != null) && (((ArrayList)localObject).size() > 1) && (this.tabBarView == null))
     {
       this.tabBarView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.tabBarConfigData, new QQBrowserActivity.MyOnTabChangeListener(this));
-      this.tabBarView.setId(2131378204);
+      this.tabBarView.setId(2131446722);
       localObject = this.fragmentContentView.getParent();
       if ((localObject instanceof FrameLayout))
       {
@@ -346,44 +370,29 @@ public class QQBrowserActivity
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "finish");
     }
-    Object localObject1 = getCurrentWebViewFragment();
-    if (localObject1 != null) {
-      ((WebViewFragment)localObject1).activityFinish();
+    Object localObject = getCurrentWebViewFragment();
+    if (localObject != null) {
+      ((WebViewFragment)localObject).activityFinish();
     }
-    Object localObject2 = (InputMethodManager)getSystemService("input_method");
-    if ((localObject2 != null) && (access$001(this) != null)) {
-      ((InputMethodManager)localObject2).hideSoftInputFromWindow(access$101(this).getWindowToken(), 0);
+    InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
+    if ((localInputMethodManager != null) && (access$001(this) != null)) {
+      localInputMethodManager.hideSoftInputFromWindow(access$101(this).getWindowToken(), 0);
     }
     super.finish();
-    localObject2 = this.inject;
-    if ((localObject2 != null) && (((IWebColorNoteInject)localObject2).b())) {
-      overridePendingTransition(0, 0);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
-      overridePendingTransition(0, 2130771992);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_out_to_right", false)) {
-      overridePendingTransition(0, 2130772258);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_out_to_top", false)) {
-      overridePendingTransition(0, 2130772346);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_none", false)) {
-      overridePendingTransition(0, 0);
-    }
-    if ((localObject1 != null) && (((WebViewFragment)localObject1).getUIStyle() != null)) {
-      if ((((WebViewFragment)localObject1).getUIStyle().d & 0x100) != 0L) {
+    doOverrideAnim();
+    if ((localObject != null) && (((WebViewFragment)localObject).getUIStyle() != null)) {
+      if ((((WebViewFragment)localObject).getUIStyle().g & 0x100) != 0L) {
         overridePendingTransition(0, 0);
-      } else if ((((WebViewFragment)localObject1).getUIStyle().d & 0x200) != 0L) {
-        overridePendingTransition(0, 2130772015);
+      } else if ((((WebViewFragment)localObject).getUIStyle().g & 0x200) != 0L) {
+        overridePendingTransition(0, 2130772018);
       }
     }
     if (getIntent().getBooleanExtra("from_risk_hint", false))
     {
       getIntent().removeExtra("from_risk_hint");
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("from_risk_hint", true);
-      RouteUtils.a(this, (Intent)localObject1, "/base/safe/loginInfo");
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("from_risk_hint", true);
+      RouteUtils.a(this, (Intent)localObject, "/base/safe/loginInfo");
     }
   }
   
@@ -410,7 +419,7 @@ public class QQBrowserActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.C = SystemClock.elapsedRealtime();
+    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.F = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "doOnCreate start");
     }
@@ -428,7 +437,7 @@ public class QQBrowserActivity
     getWindow().setFormat(-3);
     getWindow().setBackgroundDrawable(null);
     this.mNeedStatusTrans = false;
-    SwiftWebAccelerator.TbsAccelerator.a = 0L;
+    SwiftWebAccelerator.TbsAccelerator.b = 0L;
     SwiftWebAccelerator.TbsAccelerator.b();
     Object localObject1 = new FrameLayout(this);
     super.doOnCreate(paramBundle);
@@ -474,14 +483,14 @@ public class QQBrowserActivity
       ((FrameLayout)localObject1).addView(this.fragmentContentView, new FrameLayout.LayoutParams(-1, -1));
       QLog.i("WebLog_QQBrowserActivity", 1, "doOnCreate warning:content is not an instance of FrameLayout.");
     }
-    this.fragmentContentView.setId(2131365183);
+    this.fragmentContentView.setId(2131431345);
     int i = paramBundle.getIntExtra("tabDefaultIndex", 0);
     localObject1 = (WebViewTabBarData)this.tabBarConfigData.get(i);
     paramBundle.removeExtra("tabDefaultIndex");
     paramBundle = getFragmentByTabBarData((WebViewTabBarData)localObject1);
     if (!paramBundle.isAdded())
     {
-      super.getSupportFragmentManager().beginTransaction().add(2131365183, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
+      super.getSupportFragmentManager().beginTransaction().add(2131431345, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
       return true;
     }
     super.getSupportFragmentManager().beginTransaction().show(paramBundle).commitAllowingStateLoss();
@@ -529,6 +538,12 @@ public class QQBrowserActivity
     }
   }
   
+  protected void doOnPause()
+  {
+    super.doOnPause();
+    doOverrideAnim();
+  }
+  
   protected void doOnSaveInstanceState(Bundle paramBundle)
   {
     Bundle localBundle = paramBundle;
@@ -556,7 +571,7 @@ public class QQBrowserActivity
   public void finish()
   {
     IWebColorNoteInject localIWebColorNoteInject = this.inject;
-    if ((localIWebColorNoteInject == null) || (!localIWebColorNoteInject.a())) {
+    if ((localIWebColorNoteInject == null) || (!localIWebColorNoteInject.b())) {
       doFinish();
     }
   }
@@ -760,15 +775,15 @@ public class QQBrowserActivity
     ((StringBuilder)localObject).append("onCreate createTime = ");
     ((StringBuilder)localObject).append(System.currentTimeMillis());
     QLog.d("WebLog_QQBrowserActivity", 1, ((StringBuilder)localObject).toString());
-    SwiftWebAccelerator.a().a();
-    SwiftWebAccelerator.b();
+    SwiftWebAccelerator.a().b();
+    SwiftWebAccelerator.c();
     if (!WebAccelerateHelper.isWebViewCache)
     {
       ThreadManager.postImmediately(new QQBrowserActivity.1(this), null, false);
       if (BaseInnerDns.queryInstance() == null) {
         ThreadManager.postImmediately(new QQBrowserActivity.2(this), null, false);
       }
-      if (!WebViewTitleStyleHelper.a().a) {
+      if (!WebViewTitleStyleHelper.a().b) {
         ThreadManager.postImmediately(new QQBrowserActivity.3(this), null, false);
       }
     }
@@ -883,7 +898,7 @@ public class QQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

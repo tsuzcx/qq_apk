@@ -19,7 +19,7 @@ class MessengerService$11
   {
     try
     {
-      localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
+      localQQAppInterface = (QQAppInterface)MessengerService.l(this.a);
       if (localQQAppInterface == null) {
         break label237;
       }
@@ -33,7 +33,7 @@ class MessengerService$11
       if (arrayOfByte != null) {
         localQQAppInterface.getMsgCache().c(str2, arrayOfByte);
       }
-      i = CrmUtils.b(localQQAppInterface, str2);
+      i = CrmUtils.f(localQQAppInterface, str2);
       if (i == 0)
       {
         paramHashMap = ContactUtils.c(localQQAppInterface, str2);
@@ -76,7 +76,7 @@ class MessengerService$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.11
  * JD-Core Version:    0.7.0.1
  */

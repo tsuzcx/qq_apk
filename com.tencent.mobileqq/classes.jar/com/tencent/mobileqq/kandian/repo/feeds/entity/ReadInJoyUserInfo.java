@@ -14,6 +14,8 @@ public class ReadInJoyUserInfo
   private static final String TAG = "ReadInJoyUserInfo";
   public int accountLevel;
   public int accountType;
+  public boolean addFriendSettingEnable = false;
+  public long addFriendUin = 0L;
   public String authorizeDesc;
   public String decorationIcon;
   public int decorationId;
@@ -142,7 +144,7 @@ public class ReadInJoyUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo
  * JD-Core Version:    0.7.0.1
  */

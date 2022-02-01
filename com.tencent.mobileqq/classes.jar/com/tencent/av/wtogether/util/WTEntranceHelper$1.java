@@ -15,7 +15,7 @@ class WTEntranceHelper$1
   {
     if (paramInt == 1)
     {
-      PlusPanelUtils.a(WTEntranceHelper.a(this.a).a(), WTEntranceHelper.a(this.a).a(), WTEntranceHelper.a(this.a).a(), true, "AIOQAVWatchTogether", null);
+      PlusPanelUtils.a(WTEntranceHelper.a(this.a).i(), WTEntranceHelper.a(this.a).aX(), WTEntranceHelper.a(this.a).aE(), true, "AIOQAVWatchTogether", null);
       return;
     }
     QLog.e(WTEntranceHelper.a, 1, "permission deny");

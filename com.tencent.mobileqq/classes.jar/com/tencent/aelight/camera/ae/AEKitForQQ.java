@@ -34,13 +34,13 @@ public class AEKitForQQ
     if (a) {
       return true;
     }
-    if (AEResUtil.a(AEResInfo.AE_RES_BASE_PACKAGE))
+    if (AEResUtil.c(AEResInfo.AE_RES_BASE_PACKAGE))
     {
-      if (!AEResUtil.a(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
+      if (!AEResUtil.c(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
         return false;
       }
-      LightNode.initResourcePath(AEResUtil.d(), AEResUtil.e());
-      DeviceSupportUtil.init(AEResUtil.d());
+      LightNode.initResourcePath(AEResUtil.k(), AEResUtil.l());
+      DeviceSupportUtil.init(AEResUtil.k());
       if (!b())
       {
         SLog.e("AEKitForQQ", "sdk version Limited!");
@@ -53,7 +53,7 @@ public class AEKitForQQ
       ((StringBuilder)localObject2).append((String)localObject1);
       AEQLog.a("AEKitForQQ", ((StringBuilder)localObject2).toString());
       localObject2 = BaseApplicationImpl.getContext();
-      SharedPreferences localSharedPreferences = AECameraPrefsUtil.a().a();
+      SharedPreferences localSharedPreferences = AECameraPrefsUtil.a().b();
       AEOpenRenderConfig.setEnableStrictMode(false);
       AEModule.initialize((Context)localObject2, AEModuleConfig.newBuilder().setLoadSo(false).setLutDir((String)localObject1).setModelDir((String)localObject1).setSoDir((String)localObject1).setAuthMode(1).setPreferences(localSharedPreferences).setEnableDebug(false).setFramebufferFetchEnable(false).setEnableResourceCheck(false).setEnableProfiler(false).setEnableDefaultBasic3(false).build());
       AECoderFactory.setAEDecoder(new AEKitForQQ.1());
@@ -63,7 +63,7 @@ public class AEKitForQQ
       ((StringBuilder)localObject1).append("[init][material_downgrade] phoneLevel = ");
       ((StringBuilder)localObject1).append(AEMaterialConfigParser.a);
       AEQLog.a("AEKitForQQ", ((StringBuilder)localObject1).toString());
-      QLog.i("AEKitForQQ", 1, "[init][lightSdk] version = 2.2.6.40");
+      QLog.i("AEKitForQQ", 1, "[init][lightSdk] version = 2.6.0.23");
       CfConfig.setDecryptListener(new AEKitForQQ.3());
       a = true;
       return true;
@@ -78,7 +78,7 @@ public class AEKitForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEKitForQQ
  * JD-Core Version:    0.7.0.1
  */

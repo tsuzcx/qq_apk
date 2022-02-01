@@ -11,7 +11,7 @@ class SecurePhoneBannerManager$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.dismiss();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class SecurePhoneBannerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SecurePhoneBannerManager.2
  * JD-Core Version:    0.7.0.1
  */

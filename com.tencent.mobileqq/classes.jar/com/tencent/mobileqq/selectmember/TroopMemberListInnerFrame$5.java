@@ -21,35 +21,35 @@ class TroopMemberListInnerFrame$5
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).iterator();
+    Iterator localIterator = this.a.subList(this.b, this.c).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)localIterator.next();
       Object localObject1;
-      if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_JavaLangString))
+      if (!this.d.equals(this.this$0.c))
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("subThread, curTroopUin != mTroopUin, return, ");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.d);
           ((StringBuilder)localObject1).append(",");
-          ((StringBuilder)localObject1).append(this.this$0.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.this$0.c);
           QLog.d("TroopMemberListInnerFrame.thread", 2, ((StringBuilder)localObject1).toString());
         }
         return;
       }
-      if (((!this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mShowMyself) || (this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mIsPutMySelfFirst)) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = localTroopMemberInfo;
-      } else if ((!this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) && (Utils.d(localTroopMemberInfo.memberuin))) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null) && (this.this$0.jdField_b_of_type_Int == 2) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopAdmin(localTroopMemberInfo.memberuin)) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopOwner(localTroopMemberInfo.memberuin)))
+      if (((!this.this$0.f.mShowMyself) || (this.this$0.f.mIsPutMySelfFirst)) && (this.e.equalsIgnoreCase(localTroopMemberInfo.memberuin))) {
+        this.this$0.n = localTroopMemberInfo;
+      } else if ((!this.this$0.f.mUinsToHide.contains(localTroopMemberInfo.memberuin)) && (Utils.e(localTroopMemberInfo.memberuin))) {
+        if ((this.f != null) && (this.this$0.u == 2) && (!this.f.isTroopAdmin(localTroopMemberInfo.memberuin)) && (!this.f.isTroopOwner(localTroopMemberInfo.memberuin)))
         {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mUinsToHide.add(localTroopMemberInfo.memberuin);
+          this.this$0.f.mUinsToHide.add(localTroopMemberInfo.memberuin);
         }
         else
         {
-          localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(CommonUtils.a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+          localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.b(CommonUtils.a(this.this$0.h, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
           if ((localTroopMemberInfo.displayedNamePinyinFirst != null) && (localTroopMemberInfo.displayedNamePinyinFirst.length() != 0)) {
             localObject1 = localTroopMemberInfo.displayedNamePinyinFirst.substring(0, 1);
           } else {
@@ -61,12 +61,12 @@ class TroopMemberListInnerFrame$5
           } else {
             localObject1 = "#";
           }
-          synchronized (this.jdField_a_of_type_JavaUtilMap)
+          synchronized (this.g)
           {
-            if (this.jdField_a_of_type_JavaUtilMap.get(localObject1) == null) {
-              this.jdField_a_of_type_JavaUtilMap.put(localObject1, new ArrayList());
+            if (this.g.get(localObject1) == null) {
+              this.g.put(localObject1, new ArrayList());
             }
-            ((List)this.jdField_a_of_type_JavaUtilMap.get(localObject1)).add(localTroopMemberInfo);
+            ((List)this.g.get(localObject1)).add(localTroopMemberInfo);
             i += 1;
           }
         }
@@ -79,23 +79,23 @@ class TroopMemberListInnerFrame$5
       ((StringBuilder)localObject3).append("subThread end, id=");
       ((StringBuilder)localObject3).append(Thread.currentThread().getId());
       ((StringBuilder)localObject3).append(", threadCnt=");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      ((StringBuilder)localObject3).append(this.h.get());
       ((StringBuilder)localObject3).append(", curTroopUin=");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.d);
       QLog.d("TroopMemberListInnerFrame.thread", 2, ((StringBuilder)localObject3).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndDecrement() <= 1)
+    if (this.h.getAndDecrement() <= 1)
     {
-      localObject3 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+      localObject3 = this.this$0.C.obtainMessage(3);
       ((Message)localObject3).arg1 = i;
-      ((Message)localObject3).obj = new Object[] { this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString };
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject3);
+      ((Message)localObject3).obj = new Object[] { this.g, this.d };
+      this.this$0.C.sendMessage((Message)localObject3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopMemberListInnerFrame.5
  * JD-Core Version:    0.7.0.1
  */

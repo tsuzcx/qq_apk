@@ -64,7 +64,7 @@ public class AppInterface
     }
     if (paramString1.equals("2"))
     {
-      if (AppUtil.a(this.activity)) {
+      if (AppUtil.c(this.activity)) {
         return "1";
       }
       return "0";
@@ -78,7 +78,7 @@ public class AppInterface
     }
     if (paramString1.equals("1"))
     {
-      paramString1 = CommonDataAdapter.a().a().getSharedPreferences("package_scan", 0).edit();
+      paramString1 = CommonDataAdapter.a().b().getSharedPreferences("package_scan", 0).edit();
       paramString1.putBoolean("qqsetting_package_scan_flag", true);
       paramString1.commit();
       return "1";
@@ -120,7 +120,7 @@ public class AppInterface
       if (!hasRight()) {
         return "baby,you don't have permission";
       }
-      if (StringAddition.a(paramString1)) {
+      if (StringAddition.d(paramString1)) {
         return "[]";
       }
       paramString1 = this.activity.getPackageManager().getPackageInfo(paramString1, 0);
@@ -215,7 +215,7 @@ public class AppInterface
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    if (StringAddition.a(paramString1)) {
+    if (StringAddition.d(paramString1)) {
       return "{}";
     }
     paramString1 = StringAddition.a(paramString1, paramString2);
@@ -353,7 +353,7 @@ public class AppInterface
     if (!hasRight()) {
       return -1;
     }
-    if (AppUtil.b(this.activity, paramString)) {
+    if (AppUtil.d(this.activity, paramString)) {
       return 0;
     }
     return -1;
@@ -361,7 +361,7 @@ public class AppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface
  * JD-Core Version:    0.7.0.1
  */

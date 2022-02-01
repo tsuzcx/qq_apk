@@ -12,16 +12,16 @@ class QQCustomDialogWtihInputAndChoose$7
   
   public void onClick(View paramView)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null)
     {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
+      localOnClickListener.onClick(this.b, 0);
+      this.b.a();
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label44:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -35,7 +35,7 @@ class QQCustomDialogWtihInputAndChoose$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.7
  * JD-Core Version:    0.7.0.1
  */

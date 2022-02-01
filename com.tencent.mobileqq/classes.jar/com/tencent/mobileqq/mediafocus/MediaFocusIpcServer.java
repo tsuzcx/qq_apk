@@ -34,11 +34,11 @@ public class MediaFocusIpcServer
       paramString = (String)localObject;
       if (localMediaFocusStackItem != null)
       {
-        boolean bool = QIPCServerHelper.getInstance().isProcessRunning(localMediaFocusStackItem.b());
+        boolean bool = QIPCServerHelper.getInstance().isProcessRunning(localMediaFocusStackItem.c());
         paramString = (String)localObject;
         if (bool)
         {
-          paramBundle = QIPCServerHelper.getInstance().getServer().callClient(localMediaFocusStackItem.b(), 1, "MediaFocusModuleClient", "actionCheckItemExist", paramBundle);
+          paramBundle = QIPCServerHelper.getInstance().getServer().callClient(localMediaFocusStackItem.c(), 1, "MediaFocusModuleClient", "actionCheckItemExist", paramBundle);
           paramString = (String)localObject;
           if (paramBundle != null)
           {
@@ -57,7 +57,7 @@ public class MediaFocusIpcServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusIpcServer
  * JD-Core Version:    0.7.0.1
  */

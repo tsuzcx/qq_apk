@@ -1,5 +1,6 @@
 package com.tencent.xaction.trigger;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.view.View;
 import androidx.annotation.Keep;
@@ -46,10 +47,7 @@ public final class TextTrigger
     if (localObject1 == null) {
       Intrinsics.throwNpe();
     }
-    localObject1 = ((IView)localObject1).getDecor().getProxy();
-    if (localObject1 == null) {
-      Intrinsics.throwNpe();
-    }
+    localObject1 = ((IView)localObject1).getDecor().b();
     if (localObject1 != null)
     {
       Object localObject2 = DecorDrawable.Companion;
@@ -58,6 +56,14 @@ public final class TextTrigger
         Intrinsics.throwNpe();
       }
       localObject2 = ((DecorDrawable.Companion)localObject2).a((XAEngine)localObject3, paramKeyWord.getDrawableId(), i, (View)localObject1, true, true);
+      if ((localObject2 instanceof Drawable))
+      {
+        localObject3 = getIView();
+        if (localObject3 == null) {
+          Intrinsics.throwNpe();
+        }
+        ((IView)localObject3).getDecor().setDrawable((Drawable)localObject2);
+      }
       if (localObject2 != null)
       {
         localObject3 = ((IDrawable)localObject2).getDecor();
@@ -67,7 +73,7 @@ public final class TextTrigger
           if (localObject3 == null) {
             Intrinsics.throwNpe();
           }
-          ((XATimeline)localObject3).c();
+          ((XATimeline)localObject3).e();
           if (Intrinsics.areEqual(paramString, "$MSG_TEXT"))
           {
             paramString = ((IDrawable)localObject2).getDecor();
@@ -85,7 +91,7 @@ public final class TextTrigger
                 if (paramString == null) {
                   Intrinsics.throwNpe();
                 }
-                paramString.a();
+                paramString.c();
               }
               else
               {
@@ -107,7 +113,7 @@ public final class TextTrigger
       if (paramString == null) {
         Intrinsics.throwNpe();
       }
-      paramString = paramString.getDecor().getProxy();
+      paramString = paramString.getDecor().b();
       if (paramString == null) {
         Intrinsics.throwNpe();
       }
@@ -128,6 +134,7 @@ public final class TextTrigger
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
     Intrinsics.checkParameterIsNotNull(paramObject, "value");
+    super.notifyState(paramString, paramObject);
     if (((paramObject instanceof String)) && (Build.VERSION.SDK_INT >= 16)) {
       return sendText(paramString, (String)paramObject);
     }
@@ -170,7 +177,7 @@ public final class TextTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.TextTrigger
  * JD-Core Version:    0.7.0.1
  */

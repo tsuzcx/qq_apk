@@ -20,7 +20,7 @@ class BrowserBannerProcessor$1
     int i = BrowserBannerProcessor.a;
     Object localObject1 = null;
     ((BannerManager)localObject2).a(i, 0, null);
-    localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
+    localObject2 = (String)this.a.getCharSequence("activity");
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     try
     {
@@ -34,24 +34,24 @@ class BrowserBannerProcessor$1
     }
     if (localObject1 != null)
     {
-      localObject1 = new Intent(BrowserBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).getApplicationContext(), (Class)localObject1);
-      localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
+      localObject1 = new Intent(BrowserBannerProcessor.a(this.b).getApplicationContext(), (Class)localObject1);
+      localObject2 = (String)this.a.getCharSequence("action");
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((Intent)localObject1).setAction((String)localObject2);
       }
-      localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
+      localObject2 = (String)this.a.getCharSequence("category");
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((Intent)localObject1).addCategory((String)localObject2);
       }
-      ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-      BrowserBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).startActivity((Intent)localObject1);
+      ((Intent)localObject1).setFlags(this.a.getInt("flags", 0));
+      BrowserBannerProcessor.b(this.b).startActivity((Intent)localObject1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BrowserBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

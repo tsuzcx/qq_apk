@@ -7,40 +7,34 @@ import mqq.os.MqqHandler;
 public class MultiCardFragment$ReportRunnable
   implements Runnable
 {
-  private int a;
-  public boolean a;
+  public boolean a = true;
   private int b = 0;
   private int c = 0;
-  
-  public MultiCardFragment$ReportRunnable()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  private int d = 0;
   
   public int a()
   {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    ThreadManager.getSubThreadHandler().post(this);
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
     this.b = -1;
-    this.c = paramInt;
+    this.c = -1;
+    this.d = paramInt;
+  }
+  
+  public void b()
+  {
+    ThreadManager.getSubThreadHandler().post(this);
   }
   
   public void b(int paramInt)
   {
     try
     {
-      if (paramInt > this.b) {
-        this.b = paramInt;
+      if (paramInt > this.c) {
+        this.c = paramInt;
       }
       return;
     }
@@ -51,11 +45,11 @@ public class MultiCardFragment$ReportRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Int == this.b) {
+      if (this.b == this.c) {
         return;
       }
-      i = this.b - this.jdField_a_of_type_Int;
-      j = this.c - this.b - 1;
+      i = this.c - this.b;
+      j = this.d - this.c - 1;
       if (j < 5) {
         break label155;
       }
@@ -76,8 +70,8 @@ public class MultiCardFragment$ReportRunnable
         i += j;
       }
     }
-    this.jdField_a_of_type_Int += i;
-    this.b = this.jdField_a_of_type_Int;
+    this.b += i;
+    this.c = this.b;
     j = 0;
     while (j < i)
     {
@@ -90,14 +84,14 @@ public class MultiCardFragment$ReportRunnable
       localStringBuilder.append("0X800A215_report:");
       localStringBuilder.append(i);
       localStringBuilder.append(" pos:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("MultiCardFragment", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

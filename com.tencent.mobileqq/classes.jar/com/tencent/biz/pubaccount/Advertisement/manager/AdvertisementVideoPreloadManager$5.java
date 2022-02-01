@@ -12,11 +12,11 @@ class AdvertisementVideoPreloadManager$5
   
   public void run()
   {
-    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.a(this.this$0);
+    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.c(this.this$0);
     if (localPublicAccountEntityHelper != null)
     {
       localPublicAccountEntityHelper.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = AdvertisementVideoPreloadManager.a(this.this$0).iterator();
+      Iterator localIterator = AdvertisementVideoPreloadManager.d(this.this$0).iterator();
       while (localIterator.hasNext()) {
         localPublicAccountEntityHelper.a((PAAdPreloadTask)localIterator.next());
       }
@@ -25,7 +25,7 @@ class AdvertisementVideoPreloadManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

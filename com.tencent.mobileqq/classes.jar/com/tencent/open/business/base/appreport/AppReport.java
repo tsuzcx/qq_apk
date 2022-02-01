@@ -11,14 +11,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AppReport
 {
-  protected static Lock a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    jdField_a_of_type_Boolean = false;
-  }
+  protected static Lock a = new ReentrantLock();
+  public static boolean b = false;
   
   public static void a(Context paramContext)
   {
@@ -33,9 +27,9 @@ public class AppReport
     ((StringBuilder)localObject).append("appcenter_app_report_storage_file.txt");
     if (new File(((StringBuilder)localObject).toString()).exists())
     {
-      jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+      a.lock();
       paramContext.deleteFile("appcenter_app_report_storage_file.txt");
-      jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      a.unlock();
     }
   }
   
@@ -46,33 +40,33 @@ public class AppReport
     //   0: aload_1
     //   1: ifnonnull +4 -> 5
     //   4: return
-    //   5: new 63	java/lang/StringBuilder
+    //   5: new 64	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   9: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   12: astore_3
     //   13: aload_3
-    //   14: ldc 112
-    //   16: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: ldc 113
+    //   16: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: pop
     //   20: aload_3
     //   21: aload_1
-    //   22: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload_3
-    //   27: ldc 114
-    //   29: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 115
+    //   29: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload_3
     //   34: iload_2
-    //   35: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 118	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload_3
-    //   40: ldc 119
-    //   42: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc 120
+    //   42: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
-    //   46: ldc 121
+    //   46: ldc 122
     //   48: aload_3
-    //   49: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   52: invokestatic 127	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: aconst_null
     //   56: astore 7
@@ -86,8 +80,8 @@ public class AppReport
     //   69: astore 4
     //   71: aload 8
     //   73: astore 5
-    //   75: getstatic 16	com/tencent/open/business/base/appreport/AppReport:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   78: invokeinterface 98 1 0
+    //   75: getstatic 17	com/tencent/open/business/base/appreport/AppReport:a	Ljava/util/concurrent/locks/Lock;
+    //   78: invokeinterface 99 1 0
     //   83: aload 6
     //   85: astore_3
     //   86: aload 7
@@ -95,7 +89,7 @@ public class AppReport
     //   90: aload 8
     //   92: astore 5
     //   94: aload_0
-    //   95: ldc 83
+    //   95: ldc 84
     //   97: ldc 128
     //   99: invokevirtual 132	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   102: astore_0
@@ -105,9 +99,9 @@ public class AppReport
     //   106: astore 4
     //   108: aload_0
     //   109: astore 5
-    //   111: new 63	java/lang/StringBuilder
+    //   111: new 64	java/lang/StringBuilder
     //   114: dup
-    //   115: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   115: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   118: astore 6
     //   120: aload_0
     //   121: astore_3
@@ -117,7 +111,7 @@ public class AppReport
     //   126: astore 5
     //   128: aload 6
     //   130: aload_1
-    //   131: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload_0
     //   136: astore_3
@@ -127,7 +121,7 @@ public class AppReport
     //   141: astore 5
     //   143: aload 6
     //   145: ldc 134
-    //   147: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: pop
     //   151: aload_0
     //   152: astore_3
@@ -137,7 +131,7 @@ public class AppReport
     //   157: astore 5
     //   159: aload 6
     //   161: iload_2
-    //   162: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 118	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload_0
     //   167: astore_3
@@ -147,7 +141,7 @@ public class AppReport
     //   172: astore 5
     //   174: aload 6
     //   176: ldc 136
-    //   178: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: pop
     //   182: aload_0
     //   183: astore_3
@@ -157,7 +151,7 @@ public class AppReport
     //   188: astore 5
     //   190: aload_0
     //   191: aload 6
-    //   193: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   193: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   196: invokevirtual 142	java/lang/String:getBytes	()[B
     //   199: invokevirtual 148	java/io/FileOutputStream:write	([B)V
     //   202: aload_0
@@ -194,8 +188,8 @@ public class AppReport
     //   267: astore_0
     //   268: aload_0
     //   269: invokevirtual 154	java/io/IOException:printStackTrace	()V
-    //   272: getstatic 16	com/tencent/open/business/base/appreport/AppReport:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   275: invokeinterface 105 1 0
+    //   272: getstatic 17	com/tencent/open/business/base/appreport/AppReport:a	Ljava/util/concurrent/locks/Lock;
+    //   275: invokeinterface 106 1 0
     //   280: return
     //   281: aload_3
     //   282: ifnull +15 -> 297
@@ -205,8 +199,8 @@ public class AppReport
     //   292: astore_1
     //   293: aload_1
     //   294: invokevirtual 154	java/io/IOException:printStackTrace	()V
-    //   297: getstatic 16	com/tencent/open/business/base/appreport/AppReport:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   300: invokeinterface 105 1 0
+    //   297: getstatic 17	com/tencent/open/business/base/appreport/AppReport:a	Ljava/util/concurrent/locks/Lock;
+    //   300: invokeinterface 106 1 0
     //   305: aload_0
     //   306: athrow
     // Local variable table:
@@ -269,15 +263,15 @@ public class AppReport
     ((StringBuilder)localObject).append("appcenter_app_report_storage_file.txt");
     if (new File(((StringBuilder)localObject).toString()).exists())
     {
-      jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+      a.lock();
       paramContext.deleteFile("appcenter_app_report_storage_file.txt");
-      jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      a.unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppReport
  * JD-Core Version:    0.7.0.1
  */

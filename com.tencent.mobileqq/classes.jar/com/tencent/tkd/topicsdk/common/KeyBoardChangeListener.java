@@ -17,17 +17,12 @@ import org.jetbrains.annotations.Nullable;
 public final class KeyBoardChangeListener
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final KeyBoardChangeListener.Companion a;
-  private View jdField_a_of_type_AndroidViewView;
-  private Window jdField_a_of_type_AndroidViewWindow;
+  public static final KeyBoardChangeListener.Companion a = new KeyBoardChangeListener.Companion(null);
   @Nullable
-  private KeyBoardChangeListener.KeyboardListener jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$Companion = new KeyBoardChangeListener.Companion(null);
-  }
+  private KeyBoardChangeListener.KeyboardListener b;
+  private boolean c;
+  private Window d;
+  private View e;
   
   private KeyBoardChangeListener(Object paramObject)
   {
@@ -37,24 +32,24 @@ public final class KeyBoardChangeListener
       paramObject = (Activity)paramObject;
       localView = paramObject.findViewById(16908290);
       Intrinsics.checkExpressionValueIsNotNull(localView, "contextObj.findViewById(android.R.id.content)");
-      this.jdField_a_of_type_AndroidViewView = localView;
+      this.e = localView;
       paramObject = paramObject.getWindow();
       Intrinsics.checkExpressionValueIsNotNull(paramObject, "contextObj.window");
-      this.jdField_a_of_type_AndroidViewWindow = paramObject;
+      this.d = paramObject;
     }
     else if ((paramObject instanceof Dialog))
     {
       paramObject = (Dialog)paramObject;
       localView = paramObject.findViewById(16908290);
       Intrinsics.checkExpressionValueIsNotNull(localView, "contextObj.findViewById(android.R.id.content)");
-      this.jdField_a_of_type_AndroidViewView = localView;
+      this.e = localView;
       paramObject = paramObject.getWindow();
       if (paramObject == null) {
         Intrinsics.throwNpe();
       }
-      this.jdField_a_of_type_AndroidViewWindow = paramObject;
+      this.d = paramObject;
     }
-    paramObject = this.jdField_a_of_type_AndroidViewView;
+    paramObject = this.e;
     if (paramObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContentView");
     }
@@ -63,12 +58,12 @@ public final class KeyBoardChangeListener
   
   public final void a(@Nullable KeyBoardChangeListener.KeyboardListener paramKeyboardListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener = paramKeyboardListener;
+    this.b = paramKeyboardListener;
   }
   
   public void onGlobalLayout()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+    Object localObject1 = this.e;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mContentView");
     }
@@ -78,7 +73,7 @@ public final class KeyBoardChangeListener
       return;
     }
     localObject1 = DisplayUtils.a;
-    Object localObject2 = this.jdField_a_of_type_AndroidViewWindow;
+    Object localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mWindow");
     }
@@ -86,7 +81,7 @@ public final class KeyBoardChangeListener
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "mWindow.context");
     int i = ((DisplayUtils)localObject1).b((Context)localObject2);
     localObject1 = new Rect();
-    localObject2 = this.jdField_a_of_type_AndroidViewWindow;
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mWindow");
     }
@@ -105,10 +100,10 @@ public final class KeyBoardChangeListener
     } else {
       bool = false;
     }
-    if (this.jdField_a_of_type_Boolean != bool)
+    if (this.c != bool)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener;
+      this.c = bool;
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((KeyBoardChangeListener.KeyboardListener)localObject1).a(bool, k);
       }
@@ -117,7 +112,7 @@ public final class KeyBoardChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.KeyBoardChangeListener
  * JD-Core Version:    0.7.0.1
  */

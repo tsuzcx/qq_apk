@@ -20,720 +20,30 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class QQOperateManager
 {
-  private static QQOperateManager jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String jdField_a_of_type_JavaLangString;
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private ArrayList<QQOperateTipNativeShowInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private CopyOnWriteArrayList<QQOperationViopTipTask> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private ArrayList<QQOperationViopTipTask> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private CopyOnWriteArrayList<QQOperationTaskRecord> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private CopyOnWriteArrayList<QQOperationVoipTipsTaskExcuteRecord> c = new CopyOnWriteArrayList();
+  private static QQOperateManager b;
+  private static Object i = new Object();
+  private static String j;
+  int a;
+  private CopyOnWriteArrayList<QQOperationViopTipTask> c = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<QQOperationTaskRecord> d = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<QQOperationVoipTipsTaskExcuteRecord> e = new CopyOnWriteArrayList();
+  private ArrayList<QQOperateTipNativeShowInfo> f = new ArrayList();
+  private ArrayList<QQOperationViopTipTask> g = new ArrayList();
+  private long h = System.currentTimeMillis();
   
   public static QQOperateManager a(QQAppInterface paramQQAppInterface)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (i)
     {
-      if ((jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager == null) || (!jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager.a()) || (!paramQQAppInterface.getCurrentAccountUin().equals(jdField_a_of_type_JavaLangString)))
+      if ((b == null) || (!b.a()) || (!paramQQAppInterface.getCurrentAccountUin().equals(j)))
       {
-        jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager = new QQOperateManager();
-        jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-        jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager.a(paramQQAppInterface);
+        b = new QQOperateManager();
+        j = paramQQAppInterface.getCurrentAccountUin();
+        b.b(paramQQAppInterface);
       }
-      paramQQAppInterface = jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager;
+      paramQQAppInterface = b;
       return paramQQAppInterface;
     }
-  }
-  
-  /* Error */
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   4: invokevirtual 80	java/util/concurrent/CopyOnWriteArrayList:clear	()V
-    //   7: aload_0
-    //   8: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   11: invokevirtual 80	java/util/concurrent/CopyOnWriteArrayList:clear	()V
-    //   14: aload_0
-    //   15: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   18: invokevirtual 80	java/util/concurrent/CopyOnWriteArrayList:clear	()V
-    //   21: aload_0
-    //   22: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   25: invokevirtual 81	java/util/ArrayList:clear	()V
-    //   28: aload_0
-    //   29: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   32: invokevirtual 81	java/util/ArrayList:clear	()V
-    //   35: getstatic 65	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   38: invokestatic 87	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   41: ifeq +4 -> 45
-    //   44: return
-    //   45: invokestatic 93	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   48: invokestatic 99	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
-    //   51: astore 5
-    //   53: new 101	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   60: astore 6
-    //   62: aload 6
-    //   64: getstatic 65	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   67: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: aload 6
-    //   73: ldc 108
-    //   75: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: pop
-    //   79: aload_0
-    //   80: aload 5
-    //   82: aload 6
-    //   84: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: iconst_0
-    //   88: invokeinterface 117 3 0
-    //   93: putfield 119	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_Int	I
-    //   96: new 101	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   103: astore 6
-    //   105: aload 6
-    //   107: getstatic 65	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   110: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: pop
-    //   114: aload 6
-    //   116: ldc 121
-    //   118: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: pop
-    //   122: aload 5
-    //   124: aload 6
-    //   126: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: lconst_0
-    //   130: invokeinterface 125 4 0
-    //   135: lstore_3
-    //   136: aload_0
-    //   137: getfield 119	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_Int	I
-    //   140: ifeq +16 -> 156
-    //   143: lload_3
-    //   144: lconst_0
-    //   145: lcmp
-    //   146: ifeq +10 -> 156
-    //   149: lload_3
-    //   150: invokestatic 128	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
-    //   153: ifne +105 -> 258
-    //   156: aload_0
-    //   157: iconst_0
-    //   158: putfield 119	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_Int	I
-    //   161: aload 5
-    //   163: invokeinterface 132 1 0
-    //   168: astore 5
-    //   170: new 101	java/lang/StringBuilder
-    //   173: dup
-    //   174: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   177: astore 6
-    //   179: aload 6
-    //   181: getstatic 65	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   184: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: pop
-    //   188: aload 6
-    //   190: ldc 108
-    //   192: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   195: pop
-    //   196: aload 5
-    //   198: aload 6
-    //   200: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: iconst_0
-    //   204: invokeinterface 138 3 0
-    //   209: astore 5
-    //   211: new 101	java/lang/StringBuilder
-    //   214: dup
-    //   215: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   218: astore 6
-    //   220: aload 6
-    //   222: getstatic 65	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   225: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: pop
-    //   229: aload 6
-    //   231: ldc 121
-    //   233: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: pop
-    //   237: aload 5
-    //   239: aload 6
-    //   241: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: invokestatic 49	java/lang/System:currentTimeMillis	()J
-    //   247: invokeinterface 142 4 0
-    //   252: invokeinterface 145 1 0
-    //   257: pop
-    //   258: aload_1
-    //   259: invokevirtual 149	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   262: invokevirtual 155	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   265: astore_1
-    //   266: aload_1
-    //   267: ldc 157
-    //   269: new 157	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
-    //   272: dup
-    //   273: invokespecial 158	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:<init>	()V
-    //   276: invokevirtual 161	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getTableName	()Ljava/lang/String;
-    //   279: iconst_0
-    //   280: aconst_null
-    //   281: aconst_null
-    //   282: aconst_null
-    //   283: aconst_null
-    //   284: aconst_null
-    //   285: aconst_null
-    //   286: invokevirtual 167	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   289: astore 5
-    //   291: aload 5
-    //   293: ifnull +187 -> 480
-    //   296: aload 5
-    //   298: invokeinterface 173 1 0
-    //   303: ifle +177 -> 480
-    //   306: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   309: ifeq +44 -> 353
-    //   312: new 101	java/lang/StringBuilder
-    //   315: dup
-    //   316: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   319: astore 6
-    //   321: aload 6
-    //   323: ldc 180
-    //   325: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: pop
-    //   329: aload 6
-    //   331: aload 5
-    //   333: invokeinterface 173 1 0
-    //   338: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   341: pop
-    //   342: ldc 185
-    //   344: iconst_4
-    //   345: aload 6
-    //   347: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   350: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   353: aload_0
-    //   354: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   357: aload 5
-    //   359: checkcast 38	java/util/ArrayList
-    //   362: invokevirtual 193	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
-    //   365: pop
-    //   366: aload_0
-    //   367: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   370: invokevirtual 197	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   373: astore 5
-    //   375: aload 5
-    //   377: invokeinterface 202 1 0
-    //   382: ifeq +98 -> 480
-    //   385: aload 5
-    //   387: invokeinterface 206 1 0
-    //   392: checkcast 157	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
-    //   395: astore 6
-    //   397: invokestatic 49	java/lang/System:currentTimeMillis	()J
-    //   400: lstore_3
-    //   401: aload 6
-    //   403: invokevirtual 210	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getEndDate	()Ljava/util/Date;
-    //   406: astore 7
-    //   408: aload 6
-    //   410: invokevirtual 213	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getBeginDate	()Ljava/util/Date;
-    //   413: astore 8
-    //   415: aload 7
-    //   417: ifnull +13 -> 430
-    //   420: lload_3
-    //   421: aload 7
-    //   423: invokevirtual 218	java/util/Date:getTime	()J
-    //   426: lcmp
-    //   427: ifgt +18 -> 445
-    //   430: aload 8
-    //   432: ifnull -57 -> 375
-    //   435: lload_3
-    //   436: aload 8
-    //   438: invokevirtual 218	java/util/Date:getTime	()J
-    //   441: lcmp
-    //   442: ifge -67 -> 375
-    //   445: aload_0
-    //   446: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   449: aload 6
-    //   451: invokevirtual 221	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
-    //   454: pop
-    //   455: aload 7
-    //   457: ifnull -82 -> 375
-    //   460: lload_3
-    //   461: aload 7
-    //   463: invokevirtual 218	java/util/Date:getTime	()J
-    //   466: lcmp
-    //   467: ifle -92 -> 375
-    //   470: aload_1
-    //   471: aload 6
-    //   473: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   476: pop
-    //   477: goto -102 -> 375
-    //   480: aload_1
-    //   481: ldc 226
-    //   483: new 226	com/tencent/mobileqq/config/operation/QQOperationTaskRecord
-    //   486: dup
-    //   487: invokespecial 227	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:<init>	()V
-    //   490: invokevirtual 228	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:getTableName	()Ljava/lang/String;
-    //   493: iconst_0
-    //   494: aconst_null
-    //   495: aconst_null
-    //   496: aconst_null
-    //   497: aconst_null
-    //   498: aconst_null
-    //   499: aconst_null
-    //   500: invokevirtual 167	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   503: astore 5
-    //   505: aload 5
-    //   507: ifnull +162 -> 669
-    //   510: aload 5
-    //   512: invokeinterface 173 1 0
-    //   517: ifle +152 -> 669
-    //   520: aload_0
-    //   521: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   524: aload 5
-    //   526: checkcast 38	java/util/ArrayList
-    //   529: invokevirtual 193	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
-    //   532: pop
-    //   533: aload_0
-    //   534: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   537: invokevirtual 197	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   540: astore 5
-    //   542: aload 5
-    //   544: invokeinterface 202 1 0
-    //   549: ifeq +120 -> 669
-    //   552: aload 5
-    //   554: invokeinterface 206 1 0
-    //   559: checkcast 226	com/tencent/mobileqq/config/operation/QQOperationTaskRecord
-    //   562: astore 6
-    //   564: aload_0
-    //   565: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   568: invokevirtual 197	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   571: astore 7
-    //   573: aload 7
-    //   575: invokeinterface 202 1 0
-    //   580: ifeq +806 -> 1386
-    //   583: aload 7
-    //   585: invokeinterface 206 1 0
-    //   590: checkcast 157	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
-    //   593: astore 8
-    //   595: aload 6
-    //   597: getfield 231	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:taskid	I
-    //   600: aload 8
-    //   602: getfield 232	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:taskid	I
-    //   605: if_icmpne -32 -> 573
-    //   608: iconst_1
-    //   609: istore_2
-    //   610: goto +3 -> 613
-    //   613: iload_2
-    //   614: ifne +20 -> 634
-    //   617: aload_0
-    //   618: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   621: aload 6
-    //   623: invokevirtual 221	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
-    //   626: pop
-    //   627: aload_1
-    //   628: aload 6
-    //   630: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   633: pop
-    //   634: aload 6
-    //   636: getfield 235	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:recordTime	J
-    //   639: invokestatic 128	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
-    //   642: ifne -100 -> 542
-    //   645: aload 6
-    //   647: ldc 237
-    //   649: putfield 240	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:hasShowedUins	Ljava/lang/String;
-    //   652: aload 6
-    //   654: invokestatic 49	java/lang/System:currentTimeMillis	()J
-    //   657: putfield 235	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:recordTime	J
-    //   660: aload_1
-    //   661: aload 6
-    //   663: invokevirtual 244	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   666: goto -124 -> 542
-    //   669: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   672: ifeq +44 -> 716
-    //   675: new 101	java/lang/StringBuilder
-    //   678: dup
-    //   679: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   682: astore 5
-    //   684: aload 5
-    //   686: ldc 246
-    //   688: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   691: pop
-    //   692: aload 5
-    //   694: aload_0
-    //   695: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   698: invokevirtual 247	java/util/concurrent/CopyOnWriteArrayList:size	()I
-    //   701: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   704: pop
-    //   705: ldc 185
-    //   707: iconst_4
-    //   708: aload 5
-    //   710: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   713: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   716: aload_1
-    //   717: ldc 249
-    //   719: new 249	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
-    //   722: dup
-    //   723: invokespecial 250	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:<init>	()V
-    //   726: invokevirtual 251	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:getTableName	()Ljava/lang/String;
-    //   729: iconst_0
-    //   730: aconst_null
-    //   731: aconst_null
-    //   732: aconst_null
-    //   733: aconst_null
-    //   734: aconst_null
-    //   735: aconst_null
-    //   736: invokevirtual 167	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   739: astore 5
-    //   741: aload 5
-    //   743: ifnull +88 -> 831
-    //   746: aload 5
-    //   748: invokeinterface 173 1 0
-    //   753: ifle +78 -> 831
-    //   756: aload_0
-    //   757: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   760: aload 5
-    //   762: checkcast 38	java/util/ArrayList
-    //   765: invokevirtual 193	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
-    //   768: pop
-    //   769: aload_0
-    //   770: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   773: invokevirtual 197	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   776: astore 5
-    //   778: aload 5
-    //   780: invokeinterface 202 1 0
-    //   785: ifeq +46 -> 831
-    //   788: aload 5
-    //   790: invokeinterface 206 1 0
-    //   795: checkcast 249	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
-    //   798: astore 6
-    //   800: aload 6
-    //   802: getfield 254	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:time	J
-    //   805: invokestatic 128	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
-    //   808: ifne -30 -> 778
-    //   811: aload_0
-    //   812: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   815: aload 6
-    //   817: invokevirtual 221	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
-    //   820: pop
-    //   821: aload_1
-    //   822: aload 6
-    //   824: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   827: pop
-    //   828: goto -50 -> 778
-    //   831: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   834: ifeq +45 -> 879
-    //   837: new 101	java/lang/StringBuilder
-    //   840: dup
-    //   841: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   844: astore 5
-    //   846: aload 5
-    //   848: ldc_w 256
-    //   851: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   854: pop
-    //   855: aload 5
-    //   857: aload_0
-    //   858: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   861: invokevirtual 247	java/util/concurrent/CopyOnWriteArrayList:size	()I
-    //   864: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   867: pop
-    //   868: ldc 185
-    //   870: iconst_4
-    //   871: aload 5
-    //   873: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   876: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   879: aload_0
-    //   880: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   883: invokevirtual 197	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
-    //   886: astore 5
-    //   888: aload 5
-    //   890: invokeinterface 202 1 0
-    //   895: ifeq +257 -> 1152
-    //   898: aload 5
-    //   900: invokeinterface 206 1 0
-    //   905: checkcast 249	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
-    //   908: astore 6
-    //   910: aload 6
-    //   912: getfield 257	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:taskid	I
-    //   915: iconst_m1
-    //   916: if_icmpeq +80 -> 996
-    //   919: aload_0
-    //   920: aload 6
-    //   922: getfield 257	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:taskid	I
-    //   925: invokevirtual 260	com/tencent/mobileqq/config/operation/QQOperateManager:a	(I)Lcom/tencent/mobileqq/config/operation/QQOperationViopTipTask;
-    //   928: astore 6
-    //   930: aload 6
-    //   932: ifnull +13 -> 945
-    //   935: aload_0
-    //   936: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   939: aload 6
-    //   941: invokevirtual 263	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   944: pop
-    //   945: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   948: ifeq -60 -> 888
-    //   951: new 101	java/lang/StringBuilder
-    //   954: dup
-    //   955: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   958: astore 6
-    //   960: aload 6
-    //   962: ldc_w 265
-    //   965: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   968: pop
-    //   969: aload 6
-    //   971: aload_0
-    //   972: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   975: invokevirtual 266	java/util/ArrayList:size	()I
-    //   978: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   981: pop
-    //   982: ldc 185
-    //   984: iconst_4
-    //   985: aload 6
-    //   987: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   990: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   993: goto -105 -> 888
-    //   996: aload_0
-    //   997: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1000: invokevirtual 267	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   1003: astore 7
-    //   1005: aload 7
-    //   1007: invokeinterface 202 1 0
-    //   1012: ifeq +379 -> 1391
-    //   1015: aload 7
-    //   1017: invokeinterface 206 1 0
-    //   1022: checkcast 269	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo
-    //   1025: astore 8
-    //   1027: aload 8
-    //   1029: getfield 271	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:b	I
-    //   1032: aload 6
-    //   1034: getfield 274	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:uinType	I
-    //   1037: if_icmpne -32 -> 1005
-    //   1040: aload 8
-    //   1042: getfield 275	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:jdField_a_of_type_Int	I
-    //   1045: aload 6
-    //   1047: getfield 278	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:tipType	I
-    //   1050: if_icmpne -45 -> 1005
-    //   1053: iconst_1
-    //   1054: istore_2
-    //   1055: goto +3 -> 1058
-    //   1058: iload_2
-    //   1059: ifne +42 -> 1101
-    //   1062: new 269	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo
-    //   1065: dup
-    //   1066: invokespecial 279	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:<init>	()V
-    //   1069: astore 7
-    //   1071: aload 7
-    //   1073: aload 6
-    //   1075: getfield 274	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:uinType	I
-    //   1078: putfield 271	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:b	I
-    //   1081: aload 7
-    //   1083: aload 6
-    //   1085: getfield 278	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:tipType	I
-    //   1088: putfield 275	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:jdField_a_of_type_Int	I
-    //   1091: aload_0
-    //   1092: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1095: aload 7
-    //   1097: invokevirtual 263	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1100: pop
-    //   1101: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   1104: ifeq -216 -> 888
-    //   1107: new 101	java/lang/StringBuilder
-    //   1110: dup
-    //   1111: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1114: astore 6
-    //   1116: aload 6
-    //   1118: ldc_w 281
-    //   1121: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1124: pop
-    //   1125: aload 6
-    //   1127: aload_0
-    //   1128: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1131: invokevirtual 266	java/util/ArrayList:size	()I
-    //   1134: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1137: pop
-    //   1138: ldc 185
-    //   1140: iconst_4
-    //   1141: aload 6
-    //   1143: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1146: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1149: goto -261 -> 888
-    //   1152: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   1155: ifeq +213 -> 1368
-    //   1158: new 101	java/lang/StringBuilder
-    //   1161: dup
-    //   1162: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1165: astore 5
-    //   1167: aload 5
-    //   1169: ldc_w 283
-    //   1172: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1175: pop
-    //   1176: aload 5
-    //   1178: aload_0
-    //   1179: getfield 32	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   1182: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1185: pop
-    //   1186: ldc 185
-    //   1188: iconst_4
-    //   1189: aload 5
-    //   1191: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1194: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1197: new 101	java/lang/StringBuilder
-    //   1200: dup
-    //   1201: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1204: astore 5
-    //   1206: aload 5
-    //   1208: ldc_w 288
-    //   1211: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1214: pop
-    //   1215: aload 5
-    //   1217: aload_0
-    //   1218: getfield 34	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   1221: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1224: pop
-    //   1225: ldc 185
-    //   1227: iconst_4
-    //   1228: aload 5
-    //   1230: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1233: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1236: new 101	java/lang/StringBuilder
-    //   1239: dup
-    //   1240: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1243: astore 5
-    //   1245: aload 5
-    //   1247: ldc_w 290
-    //   1250: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1253: pop
-    //   1254: aload 5
-    //   1256: aload_0
-    //   1257: getfield 36	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   1260: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1263: pop
-    //   1264: ldc 185
-    //   1266: iconst_4
-    //   1267: aload 5
-    //   1269: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1272: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1275: new 101	java/lang/StringBuilder
-    //   1278: dup
-    //   1279: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1282: astore 5
-    //   1284: aload 5
-    //   1286: ldc_w 292
-    //   1289: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1292: pop
-    //   1293: aload 5
-    //   1295: aload_0
-    //   1296: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1299: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1302: pop
-    //   1303: ldc 185
-    //   1305: iconst_4
-    //   1306: aload 5
-    //   1308: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1311: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1314: new 101	java/lang/StringBuilder
-    //   1317: dup
-    //   1318: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   1321: astore 5
-    //   1323: aload 5
-    //   1325: ldc_w 294
-    //   1328: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1331: pop
-    //   1332: aload 5
-    //   1334: aload_0
-    //   1335: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1338: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1341: pop
-    //   1342: ldc 185
-    //   1344: iconst_4
-    //   1345: aload 5
-    //   1347: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1350: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1353: goto +15 -> 1368
-    //   1356: astore 5
-    //   1358: goto +15 -> 1373
-    //   1361: astore 5
-    //   1363: aload 5
-    //   1365: invokevirtual 297	java/lang/Exception:printStackTrace	()V
-    //   1368: aload_1
-    //   1369: invokevirtual 300	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   1372: return
-    //   1373: aload_1
-    //   1374: invokevirtual 300	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   1377: goto +6 -> 1383
-    //   1380: aload 5
-    //   1382: athrow
-    //   1383: goto -3 -> 1380
-    //   1386: iconst_0
-    //   1387: istore_2
-    //   1388: goto -775 -> 613
-    //   1391: iconst_0
-    //   1392: istore_2
-    //   1393: goto -335 -> 1058
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1396	0	this	QQOperateManager
-    //   0	1396	1	paramQQAppInterface	QQAppInterface
-    //   609	784	2	i	int
-    //   135	326	3	l	long
-    //   51	1295	5	localObject1	Object
-    //   1356	1	5	localObject2	Object
-    //   1361	20	5	localException	java.lang.Exception
-    //   60	1082	6	localObject3	Object
-    //   406	690	7	localObject4	Object
-    //   413	628	8	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   266	291	1356	finally
-    //   296	353	1356	finally
-    //   353	375	1356	finally
-    //   375	415	1356	finally
-    //   420	430	1356	finally
-    //   435	445	1356	finally
-    //   445	455	1356	finally
-    //   460	477	1356	finally
-    //   480	505	1356	finally
-    //   510	542	1356	finally
-    //   542	573	1356	finally
-    //   573	608	1356	finally
-    //   617	634	1356	finally
-    //   634	666	1356	finally
-    //   669	716	1356	finally
-    //   716	741	1356	finally
-    //   746	778	1356	finally
-    //   778	828	1356	finally
-    //   831	879	1356	finally
-    //   879	888	1356	finally
-    //   888	930	1356	finally
-    //   935	945	1356	finally
-    //   945	993	1356	finally
-    //   996	1005	1356	finally
-    //   1005	1053	1356	finally
-    //   1062	1101	1356	finally
-    //   1101	1149	1356	finally
-    //   1152	1353	1356	finally
-    //   1363	1368	1356	finally
-    //   266	291	1361	java/lang/Exception
-    //   296	353	1361	java/lang/Exception
-    //   353	375	1361	java/lang/Exception
-    //   375	415	1361	java/lang/Exception
-    //   420	430	1361	java/lang/Exception
-    //   435	445	1361	java/lang/Exception
-    //   445	455	1361	java/lang/Exception
-    //   460	477	1361	java/lang/Exception
-    //   480	505	1361	java/lang/Exception
-    //   510	542	1361	java/lang/Exception
-    //   542	573	1361	java/lang/Exception
-    //   573	608	1361	java/lang/Exception
-    //   617	634	1361	java/lang/Exception
-    //   634	666	1361	java/lang/Exception
-    //   669	716	1361	java/lang/Exception
-    //   716	741	1361	java/lang/Exception
-    //   746	778	1361	java/lang/Exception
-    //   778	828	1361	java/lang/Exception
-    //   831	879	1361	java/lang/Exception
-    //   879	888	1361	java/lang/Exception
-    //   888	930	1361	java/lang/Exception
-    //   935	945	1361	java/lang/Exception
-    //   945	993	1361	java/lang/Exception
-    //   996	1005	1361	java/lang/Exception
-    //   1005	1053	1361	java/lang/Exception
-    //   1062	1101	1361	java/lang/Exception
-    //   1101	1149	1361	java/lang/Exception
-    //   1152	1353	1361	java/lang/Exception
   }
   
   public static boolean a(long paramLong)
@@ -745,113 +55,730 @@ public class QQOperateManager
     return localCalendar2.get(5) == localCalendar1.get(5);
   }
   
-  public static void b()
+  /* Error */
+  private void b(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager.a();
-      jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperateManager = null;
-      return;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   4: invokevirtual 102	java/util/concurrent/CopyOnWriteArrayList:clear	()V
+    //   7: aload_0
+    //   8: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   11: invokevirtual 102	java/util/concurrent/CopyOnWriteArrayList:clear	()V
+    //   14: aload_0
+    //   15: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   18: invokevirtual 102	java/util/concurrent/CopyOnWriteArrayList:clear	()V
+    //   21: aload_0
+    //   22: getfield 50	com/tencent/mobileqq/config/operation/QQOperateManager:g	Ljava/util/ArrayList;
+    //   25: invokevirtual 103	java/util/ArrayList:clear	()V
+    //   28: aload_0
+    //   29: getfield 48	com/tencent/mobileqq/config/operation/QQOperateManager:f	Ljava/util/ArrayList;
+    //   32: invokevirtual 103	java/util/ArrayList:clear	()V
+    //   35: getstatic 72	com/tencent/mobileqq/config/operation/QQOperateManager:j	Ljava/lang/String;
+    //   38: invokestatic 109	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   41: ifeq +4 -> 45
+    //   44: return
+    //   45: invokestatic 115	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   48: invokestatic 121	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   51: astore 5
+    //   53: new 123	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   60: astore 6
+    //   62: aload 6
+    //   64: getstatic 72	com/tencent/mobileqq/config/operation/QQOperateManager:j	Ljava/lang/String;
+    //   67: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload 6
+    //   73: ldc 130
+    //   75: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_0
+    //   80: aload 5
+    //   82: aload 6
+    //   84: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: iconst_0
+    //   88: invokeinterface 139 3 0
+    //   93: putfield 141	com/tencent/mobileqq/config/operation/QQOperateManager:a	I
+    //   96: new 123	java/lang/StringBuilder
+    //   99: dup
+    //   100: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   103: astore 6
+    //   105: aload 6
+    //   107: getstatic 72	com/tencent/mobileqq/config/operation/QQOperateManager:j	Ljava/lang/String;
+    //   110: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: pop
+    //   114: aload 6
+    //   116: ldc 143
+    //   118: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: pop
+    //   122: aload 5
+    //   124: aload 6
+    //   126: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: lconst_0
+    //   130: invokeinterface 147 4 0
+    //   135: lstore_3
+    //   136: aload_0
+    //   137: getfield 141	com/tencent/mobileqq/config/operation/QQOperateManager:a	I
+    //   140: ifeq +16 -> 156
+    //   143: lload_3
+    //   144: lconst_0
+    //   145: lcmp
+    //   146: ifeq +10 -> 156
+    //   149: lload_3
+    //   150: invokestatic 149	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
+    //   153: ifne +105 -> 258
+    //   156: aload_0
+    //   157: iconst_0
+    //   158: putfield 141	com/tencent/mobileqq/config/operation/QQOperateManager:a	I
+    //   161: aload 5
+    //   163: invokeinterface 153 1 0
+    //   168: astore 5
+    //   170: new 123	java/lang/StringBuilder
+    //   173: dup
+    //   174: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   177: astore 6
+    //   179: aload 6
+    //   181: getstatic 72	com/tencent/mobileqq/config/operation/QQOperateManager:j	Ljava/lang/String;
+    //   184: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: pop
+    //   188: aload 6
+    //   190: ldc 130
+    //   192: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload 5
+    //   198: aload 6
+    //   200: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: iconst_0
+    //   204: invokeinterface 159 3 0
+    //   209: astore 5
+    //   211: new 123	java/lang/StringBuilder
+    //   214: dup
+    //   215: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   218: astore 6
+    //   220: aload 6
+    //   222: getstatic 72	com/tencent/mobileqq/config/operation/QQOperateManager:j	Ljava/lang/String;
+    //   225: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: pop
+    //   229: aload 6
+    //   231: ldc 143
+    //   233: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: pop
+    //   237: aload 5
+    //   239: aload 6
+    //   241: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: invokestatic 56	java/lang/System:currentTimeMillis	()J
+    //   247: invokeinterface 163 4 0
+    //   252: invokeinterface 166 1 0
+    //   257: pop
+    //   258: aload_1
+    //   259: invokevirtual 170	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   262: invokevirtual 176	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   265: astore_1
+    //   266: aload_1
+    //   267: ldc 178
+    //   269: new 178	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
+    //   272: dup
+    //   273: invokespecial 179	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:<init>	()V
+    //   276: invokevirtual 182	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getTableName	()Ljava/lang/String;
+    //   279: iconst_0
+    //   280: aconst_null
+    //   281: aconst_null
+    //   282: aconst_null
+    //   283: aconst_null
+    //   284: aconst_null
+    //   285: aconst_null
+    //   286: invokevirtual 188	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   289: astore 5
+    //   291: aload 5
+    //   293: ifnull +187 -> 480
+    //   296: aload 5
+    //   298: invokeinterface 194 1 0
+    //   303: ifle +177 -> 480
+    //   306: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   309: ifeq +44 -> 353
+    //   312: new 123	java/lang/StringBuilder
+    //   315: dup
+    //   316: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   319: astore 6
+    //   321: aload 6
+    //   323: ldc 201
+    //   325: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 6
+    //   331: aload 5
+    //   333: invokeinterface 194 1 0
+    //   338: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   341: pop
+    //   342: ldc 206
+    //   344: iconst_4
+    //   345: aload 6
+    //   347: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   353: aload_0
+    //   354: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   357: aload 5
+    //   359: checkcast 45	java/util/ArrayList
+    //   362: invokevirtual 213	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
+    //   365: pop
+    //   366: aload_0
+    //   367: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   370: invokevirtual 217	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   373: astore 5
+    //   375: aload 5
+    //   377: invokeinterface 222 1 0
+    //   382: ifeq +98 -> 480
+    //   385: aload 5
+    //   387: invokeinterface 226 1 0
+    //   392: checkcast 178	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
+    //   395: astore 6
+    //   397: invokestatic 56	java/lang/System:currentTimeMillis	()J
+    //   400: lstore_3
+    //   401: aload 6
+    //   403: invokevirtual 230	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getEndDate	()Ljava/util/Date;
+    //   406: astore 7
+    //   408: aload 6
+    //   410: invokevirtual 233	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:getBeginDate	()Ljava/util/Date;
+    //   413: astore 8
+    //   415: aload 7
+    //   417: ifnull +13 -> 430
+    //   420: lload_3
+    //   421: aload 7
+    //   423: invokevirtual 238	java/util/Date:getTime	()J
+    //   426: lcmp
+    //   427: ifgt +18 -> 445
+    //   430: aload 8
+    //   432: ifnull -57 -> 375
+    //   435: lload_3
+    //   436: aload 8
+    //   438: invokevirtual 238	java/util/Date:getTime	()J
+    //   441: lcmp
+    //   442: ifge -67 -> 375
+    //   445: aload_0
+    //   446: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   449: aload 6
+    //   451: invokevirtual 241	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   454: pop
+    //   455: aload 7
+    //   457: ifnull -82 -> 375
+    //   460: lload_3
+    //   461: aload 7
+    //   463: invokevirtual 238	java/util/Date:getTime	()J
+    //   466: lcmp
+    //   467: ifle -92 -> 375
+    //   470: aload_1
+    //   471: aload 6
+    //   473: invokevirtual 244	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   476: pop
+    //   477: goto -102 -> 375
+    //   480: aload_1
+    //   481: ldc 246
+    //   483: new 246	com/tencent/mobileqq/config/operation/QQOperationTaskRecord
+    //   486: dup
+    //   487: invokespecial 247	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:<init>	()V
+    //   490: invokevirtual 248	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:getTableName	()Ljava/lang/String;
+    //   493: iconst_0
+    //   494: aconst_null
+    //   495: aconst_null
+    //   496: aconst_null
+    //   497: aconst_null
+    //   498: aconst_null
+    //   499: aconst_null
+    //   500: invokevirtual 188	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   503: astore 5
+    //   505: aload 5
+    //   507: ifnull +163 -> 670
+    //   510: aload 5
+    //   512: invokeinterface 194 1 0
+    //   517: ifle +153 -> 670
+    //   520: aload_0
+    //   521: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   524: aload 5
+    //   526: checkcast 45	java/util/ArrayList
+    //   529: invokevirtual 213	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
+    //   532: pop
+    //   533: aload_0
+    //   534: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   537: invokevirtual 217	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   540: astore 5
+    //   542: aload 5
+    //   544: invokeinterface 222 1 0
+    //   549: ifeq +121 -> 670
+    //   552: aload 5
+    //   554: invokeinterface 226 1 0
+    //   559: checkcast 246	com/tencent/mobileqq/config/operation/QQOperationTaskRecord
+    //   562: astore 6
+    //   564: aload_0
+    //   565: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   568: invokevirtual 217	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   571: astore 7
+    //   573: aload 7
+    //   575: invokeinterface 222 1 0
+    //   580: ifeq +809 -> 1389
+    //   583: aload 7
+    //   585: invokeinterface 226 1 0
+    //   590: checkcast 178	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
+    //   593: astore 8
+    //   595: aload 6
+    //   597: getfield 251	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:taskid	I
+    //   600: aload 8
+    //   602: getfield 252	com/tencent/mobileqq/config/operation/QQOperationViopTipTask:taskid	I
+    //   605: if_icmpne -32 -> 573
+    //   608: iconst_1
+    //   609: istore_2
+    //   610: goto +3 -> 613
+    //   613: iload_2
+    //   614: ifne +20 -> 634
+    //   617: aload_0
+    //   618: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   621: aload 6
+    //   623: invokevirtual 241	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   626: pop
+    //   627: aload_1
+    //   628: aload 6
+    //   630: invokevirtual 244	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   633: pop
+    //   634: aload 6
+    //   636: getfield 255	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:recordTime	J
+    //   639: invokestatic 149	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
+    //   642: ifne -100 -> 542
+    //   645: aload 6
+    //   647: ldc_w 257
+    //   650: putfield 260	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:hasShowedUins	Ljava/lang/String;
+    //   653: aload 6
+    //   655: invokestatic 56	java/lang/System:currentTimeMillis	()J
+    //   658: putfield 255	com/tencent/mobileqq/config/operation/QQOperationTaskRecord:recordTime	J
+    //   661: aload_1
+    //   662: aload 6
+    //   664: invokevirtual 264	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   667: goto -125 -> 542
+    //   670: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   673: ifeq +45 -> 718
+    //   676: new 123	java/lang/StringBuilder
+    //   679: dup
+    //   680: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   683: astore 5
+    //   685: aload 5
+    //   687: ldc_w 266
+    //   690: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   693: pop
+    //   694: aload 5
+    //   696: aload_0
+    //   697: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   700: invokevirtual 267	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   703: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   706: pop
+    //   707: ldc 206
+    //   709: iconst_4
+    //   710: aload 5
+    //   712: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   715: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   718: aload_1
+    //   719: ldc_w 269
+    //   722: new 269	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
+    //   725: dup
+    //   726: invokespecial 270	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:<init>	()V
+    //   729: invokevirtual 271	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:getTableName	()Ljava/lang/String;
+    //   732: iconst_0
+    //   733: aconst_null
+    //   734: aconst_null
+    //   735: aconst_null
+    //   736: aconst_null
+    //   737: aconst_null
+    //   738: aconst_null
+    //   739: invokevirtual 188	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   742: astore 5
+    //   744: aload 5
+    //   746: ifnull +88 -> 834
+    //   749: aload 5
+    //   751: invokeinterface 194 1 0
+    //   756: ifle +78 -> 834
+    //   759: aload_0
+    //   760: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   763: aload 5
+    //   765: checkcast 45	java/util/ArrayList
+    //   768: invokevirtual 213	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
+    //   771: pop
+    //   772: aload_0
+    //   773: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   776: invokevirtual 217	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   779: astore 5
+    //   781: aload 5
+    //   783: invokeinterface 222 1 0
+    //   788: ifeq +46 -> 834
+    //   791: aload 5
+    //   793: invokeinterface 226 1 0
+    //   798: checkcast 269	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
+    //   801: astore 6
+    //   803: aload 6
+    //   805: getfield 274	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:time	J
+    //   808: invokestatic 149	com/tencent/mobileqq/config/operation/QQOperateManager:a	(J)Z
+    //   811: ifne -30 -> 781
+    //   814: aload_0
+    //   815: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   818: aload 6
+    //   820: invokevirtual 241	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   823: pop
+    //   824: aload_1
+    //   825: aload 6
+    //   827: invokevirtual 244	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   830: pop
+    //   831: goto -50 -> 781
+    //   834: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   837: ifeq +45 -> 882
+    //   840: new 123	java/lang/StringBuilder
+    //   843: dup
+    //   844: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   847: astore 5
+    //   849: aload 5
+    //   851: ldc_w 276
+    //   854: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   857: pop
+    //   858: aload 5
+    //   860: aload_0
+    //   861: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   864: invokevirtual 267	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   867: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   870: pop
+    //   871: ldc 206
+    //   873: iconst_4
+    //   874: aload 5
+    //   876: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   879: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   882: aload_0
+    //   883: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   886: invokevirtual 217	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   889: astore 5
+    //   891: aload 5
+    //   893: invokeinterface 222 1 0
+    //   898: ifeq +257 -> 1155
+    //   901: aload 5
+    //   903: invokeinterface 226 1 0
+    //   908: checkcast 269	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord
+    //   911: astore 6
+    //   913: aload 6
+    //   915: getfield 277	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:taskid	I
+    //   918: iconst_m1
+    //   919: if_icmpeq +80 -> 999
+    //   922: aload_0
+    //   923: aload 6
+    //   925: getfield 277	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:taskid	I
+    //   928: invokevirtual 280	com/tencent/mobileqq/config/operation/QQOperateManager:a	(I)Lcom/tencent/mobileqq/config/operation/QQOperationViopTipTask;
+    //   931: astore 6
+    //   933: aload 6
+    //   935: ifnull +13 -> 948
+    //   938: aload_0
+    //   939: getfield 50	com/tencent/mobileqq/config/operation/QQOperateManager:g	Ljava/util/ArrayList;
+    //   942: aload 6
+    //   944: invokevirtual 283	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   947: pop
+    //   948: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   951: ifeq -60 -> 891
+    //   954: new 123	java/lang/StringBuilder
+    //   957: dup
+    //   958: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   961: astore 6
+    //   963: aload 6
+    //   965: ldc_w 285
+    //   968: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   971: pop
+    //   972: aload 6
+    //   974: aload_0
+    //   975: getfield 50	com/tencent/mobileqq/config/operation/QQOperateManager:g	Ljava/util/ArrayList;
+    //   978: invokevirtual 286	java/util/ArrayList:size	()I
+    //   981: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   984: pop
+    //   985: ldc 206
+    //   987: iconst_4
+    //   988: aload 6
+    //   990: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   993: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   996: goto -105 -> 891
+    //   999: aload_0
+    //   1000: getfield 48	com/tencent/mobileqq/config/operation/QQOperateManager:f	Ljava/util/ArrayList;
+    //   1003: invokevirtual 287	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   1006: astore 7
+    //   1008: aload 7
+    //   1010: invokeinterface 222 1 0
+    //   1015: ifeq +379 -> 1394
+    //   1018: aload 7
+    //   1020: invokeinterface 226 1 0
+    //   1025: checkcast 289	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo
+    //   1028: astore 8
+    //   1030: aload 8
+    //   1032: getfield 291	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:b	I
+    //   1035: aload 6
+    //   1037: getfield 294	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:uinType	I
+    //   1040: if_icmpne -32 -> 1008
+    //   1043: aload 8
+    //   1045: getfield 295	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:a	I
+    //   1048: aload 6
+    //   1050: getfield 298	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:tipType	I
+    //   1053: if_icmpne -45 -> 1008
+    //   1056: iconst_1
+    //   1057: istore_2
+    //   1058: goto +3 -> 1061
+    //   1061: iload_2
+    //   1062: ifne +42 -> 1104
+    //   1065: new 289	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo
+    //   1068: dup
+    //   1069: invokespecial 299	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:<init>	()V
+    //   1072: astore 7
+    //   1074: aload 7
+    //   1076: aload 6
+    //   1078: getfield 294	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:uinType	I
+    //   1081: putfield 291	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:b	I
+    //   1084: aload 7
+    //   1086: aload 6
+    //   1088: getfield 298	com/tencent/mobileqq/config/operation/QQOperationVoipTipsTaskExcuteRecord:tipType	I
+    //   1091: putfield 295	com/tencent/mobileqq/config/operation/QQOperateTipNativeShowInfo:a	I
+    //   1094: aload_0
+    //   1095: getfield 48	com/tencent/mobileqq/config/operation/QQOperateManager:f	Ljava/util/ArrayList;
+    //   1098: aload 7
+    //   1100: invokevirtual 283	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1103: pop
+    //   1104: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1107: ifeq -216 -> 891
+    //   1110: new 123	java/lang/StringBuilder
+    //   1113: dup
+    //   1114: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1117: astore 6
+    //   1119: aload 6
+    //   1121: ldc_w 301
+    //   1124: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1127: pop
+    //   1128: aload 6
+    //   1130: aload_0
+    //   1131: getfield 48	com/tencent/mobileqq/config/operation/QQOperateManager:f	Ljava/util/ArrayList;
+    //   1134: invokevirtual 286	java/util/ArrayList:size	()I
+    //   1137: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1140: pop
+    //   1141: ldc 206
+    //   1143: iconst_4
+    //   1144: aload 6
+    //   1146: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1149: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1152: goto -261 -> 891
+    //   1155: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1158: ifeq +213 -> 1371
+    //   1161: new 123	java/lang/StringBuilder
+    //   1164: dup
+    //   1165: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1168: astore 5
+    //   1170: aload 5
+    //   1172: ldc_w 303
+    //   1175: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1178: pop
+    //   1179: aload 5
+    //   1181: aload_0
+    //   1182: getfield 39	com/tencent/mobileqq/config/operation/QQOperateManager:c	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   1185: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1188: pop
+    //   1189: ldc 206
+    //   1191: iconst_4
+    //   1192: aload 5
+    //   1194: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1197: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1200: new 123	java/lang/StringBuilder
+    //   1203: dup
+    //   1204: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1207: astore 5
+    //   1209: aload 5
+    //   1211: ldc_w 308
+    //   1214: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1217: pop
+    //   1218: aload 5
+    //   1220: aload_0
+    //   1221: getfield 41	com/tencent/mobileqq/config/operation/QQOperateManager:d	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   1224: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1227: pop
+    //   1228: ldc 206
+    //   1230: iconst_4
+    //   1231: aload 5
+    //   1233: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1236: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1239: new 123	java/lang/StringBuilder
+    //   1242: dup
+    //   1243: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1246: astore 5
+    //   1248: aload 5
+    //   1250: ldc_w 310
+    //   1253: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1256: pop
+    //   1257: aload 5
+    //   1259: aload_0
+    //   1260: getfield 43	com/tencent/mobileqq/config/operation/QQOperateManager:e	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   1263: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1266: pop
+    //   1267: ldc 206
+    //   1269: iconst_4
+    //   1270: aload 5
+    //   1272: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1275: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1278: new 123	java/lang/StringBuilder
+    //   1281: dup
+    //   1282: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1285: astore 5
+    //   1287: aload 5
+    //   1289: ldc_w 312
+    //   1292: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1295: pop
+    //   1296: aload 5
+    //   1298: aload_0
+    //   1299: getfield 50	com/tencent/mobileqq/config/operation/QQOperateManager:g	Ljava/util/ArrayList;
+    //   1302: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1305: pop
+    //   1306: ldc 206
+    //   1308: iconst_4
+    //   1309: aload 5
+    //   1311: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1314: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1317: new 123	java/lang/StringBuilder
+    //   1320: dup
+    //   1321: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   1324: astore 5
+    //   1326: aload 5
+    //   1328: ldc_w 314
+    //   1331: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1334: pop
+    //   1335: aload 5
+    //   1337: aload_0
+    //   1338: getfield 48	com/tencent/mobileqq/config/operation/QQOperateManager:f	Ljava/util/ArrayList;
+    //   1341: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1344: pop
+    //   1345: ldc 206
+    //   1347: iconst_4
+    //   1348: aload 5
+    //   1350: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1353: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1356: goto +15 -> 1371
+    //   1359: astore 5
+    //   1361: goto +15 -> 1376
+    //   1364: astore 5
+    //   1366: aload 5
+    //   1368: invokevirtual 317	java/lang/Exception:printStackTrace	()V
+    //   1371: aload_1
+    //   1372: invokevirtual 320	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   1375: return
+    //   1376: aload_1
+    //   1377: invokevirtual 320	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   1380: goto +6 -> 1386
+    //   1383: aload 5
+    //   1385: athrow
+    //   1386: goto -3 -> 1383
+    //   1389: iconst_0
+    //   1390: istore_2
+    //   1391: goto -778 -> 613
+    //   1394: iconst_0
+    //   1395: istore_2
+    //   1396: goto -335 -> 1061
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1399	0	this	QQOperateManager
+    //   0	1399	1	paramQQAppInterface	QQAppInterface
+    //   609	787	2	k	int
+    //   135	326	3	l	long
+    //   51	1298	5	localObject1	Object
+    //   1359	1	5	localObject2	Object
+    //   1364	20	5	localException	java.lang.Exception
+    //   60	1085	6	localObject3	Object
+    //   406	693	7	localObject4	Object
+    //   413	631	8	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   266	291	1359	finally
+    //   296	353	1359	finally
+    //   353	375	1359	finally
+    //   375	415	1359	finally
+    //   420	430	1359	finally
+    //   435	445	1359	finally
+    //   445	455	1359	finally
+    //   460	477	1359	finally
+    //   480	505	1359	finally
+    //   510	542	1359	finally
+    //   542	573	1359	finally
+    //   573	608	1359	finally
+    //   617	634	1359	finally
+    //   634	667	1359	finally
+    //   670	718	1359	finally
+    //   718	744	1359	finally
+    //   749	781	1359	finally
+    //   781	831	1359	finally
+    //   834	882	1359	finally
+    //   882	891	1359	finally
+    //   891	933	1359	finally
+    //   938	948	1359	finally
+    //   948	996	1359	finally
+    //   999	1008	1359	finally
+    //   1008	1056	1359	finally
+    //   1065	1104	1359	finally
+    //   1104	1152	1359	finally
+    //   1155	1356	1359	finally
+    //   1366	1371	1359	finally
+    //   266	291	1364	java/lang/Exception
+    //   296	353	1364	java/lang/Exception
+    //   353	375	1364	java/lang/Exception
+    //   375	415	1364	java/lang/Exception
+    //   420	430	1364	java/lang/Exception
+    //   435	445	1364	java/lang/Exception
+    //   445	455	1364	java/lang/Exception
+    //   460	477	1364	java/lang/Exception
+    //   480	505	1364	java/lang/Exception
+    //   510	542	1364	java/lang/Exception
+    //   542	573	1364	java/lang/Exception
+    //   573	608	1364	java/lang/Exception
+    //   617	634	1364	java/lang/Exception
+    //   634	667	1364	java/lang/Exception
+    //   670	718	1364	java/lang/Exception
+    //   718	744	1364	java/lang/Exception
+    //   749	781	1364	java/lang/Exception
+    //   781	831	1364	java/lang/Exception
+    //   834	882	1364	java/lang/Exception
+    //   882	891	1364	java/lang/Exception
+    //   891	933	1364	java/lang/Exception
+    //   938	948	1364	java/lang/Exception
+    //   948	996	1364	java/lang/Exception
+    //   999	1008	1364	java/lang/Exception
+    //   1008	1056	1364	java/lang/Exception
+    //   1065	1104	1364	java/lang/Exception
+    //   1104	1152	1364	java/lang/Exception
+    //   1155	1356	1364	java/lang/Exception
   }
   
-  public int a(int paramInt)
+  public static void c()
   {
-    Iterator localIterator = this.c.iterator();
-    int i = 0;
-    while (localIterator.hasNext()) {
-      if (((QQOperationVoipTipsTaskExcuteRecord)localIterator.next()).taskid == paramInt) {
-        i += 1;
-      }
+    if (b == null) {
+      return;
     }
-    return i;
+    synchronized (i)
+    {
+      b.b();
+      b = null;
+      return;
+    }
   }
   
   public int a(int paramInt1, String paramString, int paramInt2)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.e.iterator();
     QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord;
     do
     {
       boolean bool = localIterator.hasNext();
-      i = 0;
+      k = 0;
       if (!bool) {
         break;
       }
       localQQOperationVoipTipsTaskExcuteRecord = (QQOperationVoipTipsTaskExcuteRecord)localIterator.next();
     } while ((localQQOperationVoipTipsTaskExcuteRecord.taskid != paramInt1) || (!localQQOperationVoipTipsTaskExcuteRecord.uin.equals(paramString)) || (localQQOperationVoipTipsTaskExcuteRecord.uinType != paramInt2));
-    int i = 0 + localQQOperationVoipTipsTaskExcuteRecord.count;
-    return i;
-  }
-  
-  public int a(String paramString, int paramInt, QQOperationViopTipTask paramQQOperationViopTipTask, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList)
-  {
-    int i2 = 0;
-    if (paramList == null) {
-      return 0;
-    }
-    paramInt = paramList.size();
-    int i3 = 1;
-    if (paramInt == 1) {
-      return 0;
-    }
-    long l1 = MessageCache.a();
-    long l2 = paramQQOperationViopTipTask.frequencyTime * 60 * 1000;
-    int i4 = paramQQOperationViopTipTask.frequencyMessage;
-    l1 = (l1 * 1000L - l2) / 1000L;
-    int k = paramList.size() - 1;
-    paramInt = 0;
-    int j = 0;
-    int m;
-    for (int i = 0; k >= 0; i = m)
-    {
-      paramString = (ChatMessage)paramList.get(k);
-      if (paramString.time < l1) {
-        break;
-      }
-      int i1 = paramInt;
-      int n = j;
-      m = i;
-      if (MsgProxyUtils.h(paramString.msgtype))
-      {
-        i1 = paramInt;
-        n = j;
-        m = i;
-        if (paramString.extraflag == 0)
-        {
-          if (!paramString.isSend()) {
-            j = 1;
-          } else {
-            i = 1;
-          }
-          i1 = paramInt + 1;
-          m = i;
-          n = j;
-        }
-      }
-      k -= 1;
-      paramInt = i1;
-      j = n;
-    }
-    if ((paramInt >= i4) && (j != 0) && (i != 0)) {
-      i = i3;
-    } else {
-      i = 0;
-    }
-    j = i2;
-    if (i != 0) {
-      j = paramInt;
-    }
-    return j;
+    int k = 0 + localQQOperationVoipTipsTaskExcuteRecord.count;
+    return k;
   }
   
   public QQOperationRequestInfo a(String paramString, int paramInt1, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, boolean paramBoolean, int paramInt2)
   {
     label303:
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (i)
     {
       long l = System.currentTimeMillis();
       Object localObject2 = new ArrayList();
@@ -878,8 +805,8 @@ public class QQOperateManager
         if (paramBoolean)
         {
           break label303;
-          paramString.jdField_a_of_type_Boolean = paramBoolean;
-          paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+          paramString.a = paramBoolean;
+          paramString.b = ((ArrayList)localObject2);
           if (QLog.isDevelopLevel())
           {
             paramQQAppInterface = ((ArrayList)localObject2).iterator();
@@ -888,12 +815,12 @@ public class QQOperateManager
               paramList = (QQOperationRequestTaskInfo)paramQQAppInterface.next();
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("isNeedRequestForTips2 ..request taskid = .... ");
-              ((StringBuilder)localObject2).append(paramList.jdField_a_of_type_Int);
+              ((StringBuilder)localObject2).append(paramList.a);
               QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject2).toString());
             }
           }
-          if (paramString.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Int += 1;
+          if (paramString.a) {
+            this.a += 1;
           }
           return paramString;
         }
@@ -901,22 +828,9 @@ public class QQOperateManager
     }
   }
   
-  public QQOperationTaskRecord a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationTaskRecord localQQOperationTaskRecord = (QQOperationTaskRecord)localIterator.next();
-      if (paramInt == localQQOperationTaskRecord.taskid) {
-        return localQQOperationTaskRecord;
-      }
-    }
-    return null;
-  }
-  
   public QQOperationViopTipTask a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
@@ -927,22 +841,9 @@ public class QQOperateManager
     return null;
   }
   
-  public QQOperationViopTipTask a(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((paramInt1 == localQQOperationViopTipTask.uinType) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
-        return localQQOperationViopTipTask;
-      }
-    }
-    return null;
-  }
-  
   public QQOperationVoipTipsTaskExcuteRecord a(QQOperationVoipTipsTaskExcuteRecord paramQQOperationVoipTipsTaskExcuteRecord)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = (QQOperationVoipTipsTaskExcuteRecord)localIterator.next();
@@ -951,20 +852,6 @@ public class QQOperateManager
       }
     }
     return null;
-  }
-  
-  public ArrayList<QQOperationViopTipTask> a(int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((localQQOperationViopTipTask.uinType == paramInt1) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
-        localArrayList.add(localQQOperationViopTipTask);
-      }
-    }
-    return localArrayList;
   }
   
   public ArrayList<String> a(String paramString, int paramInt, QQOperationViopTipTask paramQQOperationViopTipTask, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList)
@@ -993,11 +880,6 @@ public class QQOperateManager
     return paramQQOperationViopTipTask;
   }
   
-  public void a()
-  {
-    ThreadManager.post(new QQOperateManager.1(this, this.jdField_a_of_type_Int), 8, null, true);
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
     QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = new QQOperationVoipTipsTaskExcuteRecord();
@@ -1015,16 +897,16 @@ public class QQOperateManager
       return;
     }
     Object localObject1;
-    int i;
+    int k;
     label804:
     label809:
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (i)
     {
       localObject1 = a(paramQQOperationVoipTipsTaskExcuteRecord);
-      i = 1;
+      k = 1;
       if (localObject1 == null)
       {
-        this.c.add(paramQQOperationVoipTipsTaskExcuteRecord);
+        this.e.add(paramQQOperationVoipTipsTaskExcuteRecord);
       }
       else
       {
@@ -1037,65 +919,65 @@ public class QQOperateManager
         ((StringBuilder)localObject1).append("addVoipTipTaskExcuteRecord record.taskid = ");
         ((StringBuilder)localObject1).append(paramQQOperationVoipTipsTaskExcuteRecord.taskid);
         ((StringBuilder)localObject1).append(" TodayRecord : ");
-        ((StringBuilder)localObject1).append(this.c);
+        ((StringBuilder)localObject1).append(this.e);
         QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject1).toString());
       }
       EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      int k = paramQQOperationVoipTipsTaskExcuteRecord.taskid;
-      int j = 0;
-      if (k == -1)
+      int n = paramQQOperationVoipTipsTaskExcuteRecord.taskid;
+      int m = 0;
+      if (n == -1)
       {
-        paramQQAppInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        paramQQAppInterface = this.f.iterator();
         for (;;)
         {
           if (!paramQQAppInterface.hasNext()) {
             break label804;
           }
           localObject1 = (QQOperateTipNativeShowInfo)paramQQAppInterface.next();
-          if ((((QQOperateTipNativeShowInfo)localObject1).b == paramQQOperationVoipTipsTaskExcuteRecord.uinType) && (((QQOperateTipNativeShowInfo)localObject1).jdField_a_of_type_Int == paramQQOperationVoipTipsTaskExcuteRecord.tipType)) {
+          if ((((QQOperateTipNativeShowInfo)localObject1).b == paramQQOperationVoipTipsTaskExcuteRecord.uinType) && (((QQOperateTipNativeShowInfo)localObject1).a == paramQQOperationVoipTipsTaskExcuteRecord.tipType)) {
             break;
           }
         }
-        if (i == 0)
+        if (k == 0)
         {
           paramQQAppInterface = new QQOperateTipNativeShowInfo();
           paramQQAppInterface.b = paramQQOperationVoipTipsTaskExcuteRecord.uinType;
-          paramQQAppInterface.jdField_a_of_type_Int = paramQQOperationVoipTipsTaskExcuteRecord.tipType;
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramQQAppInterface);
+          paramQQAppInterface.a = paramQQOperationVoipTipsTaskExcuteRecord.tipType;
+          this.f.add(paramQQAppInterface);
         }
         if (QLog.isDevelopLevel())
         {
           paramQQAppInterface = new StringBuilder();
           paramQQAppInterface.append("Update TodayNativeShow :");
-          paramQQAppInterface.append(this.jdField_a_of_type_JavaUtilArrayList);
+          paramQQAppInterface.append(this.f);
           QLog.d("QQOperateVoIP", 4, paramQQAppInterface.toString());
         }
       }
       else
       {
-        paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        paramQQAppInterface = this.g.iterator();
         do
         {
-          i = j;
+          k = m;
           if (!paramQQAppInterface.hasNext()) {
             break;
           }
         } while (((QQOperationViopTipTask)paramQQAppInterface.next()).taskid != paramQQOperationVoipTipsTaskExcuteRecord.taskid);
-        i = 1;
-        if (i == 0)
+        k = 1;
+        if (k == 0)
         {
           paramQQAppInterface = a(paramQQOperationVoipTipsTaskExcuteRecord.taskid);
-          this.jdField_b_of_type_JavaUtilArrayList.add(paramQQAppInterface);
+          this.g.add(paramQQAppInterface);
         }
         if (QLog.isDevelopLevel())
         {
           paramQQAppInterface = new StringBuilder();
           paramQQAppInterface.append("Update TodayNetShow :");
-          paramQQAppInterface.append(this.jdField_b_of_type_JavaUtilArrayList);
+          paramQQAppInterface.append(this.g);
           QLog.d("QQOperateVoIP", 4, paramQQAppInterface.toString());
         }
         paramQQAppInterface = null;
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        Iterator localIterator = this.d.iterator();
         while (localIterator.hasNext())
         {
           localObject1 = (QQOperationTaskRecord)localIterator.next();
@@ -1146,7 +1028,7 @@ public class QQOperateManager
           paramQQAppInterface.append(paramQQOperationVoipTipsTaskExcuteRecord.uinType);
           paramQQAppInterface.append("|");
           ((QQOperationTaskRecord)localObject1).hasShowedUins = paramQQAppInterface.toString();
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject1);
+          this.d.add(localObject1);
         }
         ((QQOperationTaskRecord)localObject1).setStatus(1000);
         localEntityManager.persistOrReplace((Entity)localObject1);
@@ -1162,93 +1044,93 @@ public class QQOperateManager
   public void a(QQAppInterface paramQQAppInterface, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
     // Byte code:
-    //   0: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   0: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   3: ifeq +35 -> 38
-    //   6: new 101	java/lang/StringBuilder
+    //   6: new 123	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 124	java/lang/StringBuilder:<init>	()V
     //   13: astore_3
     //   14: aload_3
-    //   15: ldc_w 469
-    //   18: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: ldc_w 429
+    //   18: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload_3
     //   23: aload_2
-    //   24: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 306	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   27: pop
-    //   28: ldc 185
+    //   28: ldc 206
     //   30: iconst_4
     //   31: aload_3
-    //   32: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: aload_2
     //   39: ifnull +148 -> 187
     //   42: aload_2
-    //   43: invokevirtual 266	java/util/ArrayList:size	()I
+    //   43: invokevirtual 286	java/util/ArrayList:size	()I
     //   46: ifne +4 -> 50
     //   49: return
     //   50: aload_1
-    //   51: invokevirtual 149	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   54: invokevirtual 155	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   51: invokevirtual 170	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   54: invokevirtual 176	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   57: astore_3
     //   58: aload_3
-    //   59: invokevirtual 473	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   59: invokevirtual 433	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   62: astore_1
     //   63: aload_1
-    //   64: invokevirtual 478	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   64: invokevirtual 438	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   67: aload_3
-    //   68: ldc 157
-    //   70: invokevirtual 482	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   68: ldc 178
+    //   70: invokevirtual 442	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
     //   73: pop
     //   74: aload_2
-    //   75: invokevirtual 267	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   75: invokevirtual 287	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   78: astore 4
     //   80: aload 4
-    //   82: invokeinterface 202 1 0
+    //   82: invokeinterface 222 1 0
     //   87: ifeq +20 -> 107
     //   90: aload_3
     //   91: aload 4
-    //   93: invokeinterface 206 1 0
-    //   98: checkcast 157	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
-    //   101: invokevirtual 244	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   93: invokeinterface 226 1 0
+    //   98: checkcast 178	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
+    //   101: invokevirtual 264	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   104: goto -24 -> 80
-    //   107: invokestatic 178	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   107: invokestatic 199	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   110: ifeq +42 -> 152
-    //   113: new 101	java/lang/StringBuilder
+    //   113: new 123	java/lang/StringBuilder
     //   116: dup
-    //   117: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   117: invokespecial 124	java/lang/StringBuilder:<init>	()V
     //   120: astore 4
     //   122: aload 4
-    //   124: ldc_w 484
-    //   127: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: ldc_w 444
+    //   127: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: pop
     //   131: aload 4
     //   133: aload_2
-    //   134: invokevirtual 266	java/util/ArrayList:size	()I
-    //   137: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 286	java/util/ArrayList:size	()I
+    //   137: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   140: pop
-    //   141: ldc 185
+    //   141: ldc 206
     //   143: iconst_4
     //   144: aload 4
-    //   146: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   152: aload_1
-    //   153: invokevirtual 486	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   153: invokevirtual 446	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   156: goto +12 -> 168
     //   159: astore_2
     //   160: goto +21 -> 181
     //   163: astore_2
     //   164: aload_2
-    //   165: invokevirtual 297	java/lang/Exception:printStackTrace	()V
+    //   165: invokevirtual 317	java/lang/Exception:printStackTrace	()V
     //   168: aload_1
-    //   169: invokevirtual 489	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   169: invokevirtual 449	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   172: aload_3
-    //   173: invokevirtual 300	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   173: invokevirtual 320	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   176: aload_0
-    //   177: invokevirtual 316	com/tencent/mobileqq/config/operation/QQOperateManager:a	()V
+    //   177: invokevirtual 322	com/tencent/mobileqq/config/operation/QQOperateManager:b	()V
     //   180: return
     //   181: aload_1
-    //   182: invokevirtual 489	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   182: invokevirtual 449	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   185: aload_2
     //   186: athrow
     //   187: return
@@ -1279,16 +1161,16 @@ public class QQOperateManager
   
   public boolean a()
   {
-    return a(this.jdField_a_of_type_Long);
+    return a(this.h);
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       QQOperateTipNativeShowInfo localQQOperateTipNativeShowInfo = (QQOperateTipNativeShowInfo)localIterator.next();
-      if ((paramInt1 == localQQOperateTipNativeShowInfo.b) && (paramInt2 == localQQOperateTipNativeShowInfo.jdField_a_of_type_Int)) {
+      if ((paramInt1 == localQQOperateTipNativeShowInfo.b) && (paramInt2 == localQQOperateTipNativeShowInfo.a)) {
         return true;
       }
     }
@@ -1299,7 +1181,7 @@ public class QQOperateManager
   {
     Object localObject2 = paramString;
     Object localObject1 = paramList;
-    if (this.jdField_a_of_type_Int >= 100)
+    if (this.a >= 100)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..requestCount >100 ...... ");
@@ -1309,23 +1191,23 @@ public class QQOperateManager
     if (a(paramInt1, paramInt2)) {
       return false;
     }
-    if (!c(paramInt1, paramInt2)) {
+    if (!d(paramInt1, paramInt2)) {
       return false;
     }
     boolean bool = b(paramInt1, paramInt2);
     Object localObject3 = " request from open aio ,firstUnreadMsgIndex = ";
     Object localObject5;
-    int i;
+    int k;
     if (bool)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..server has xiafa guo ...... ");
       }
-      localObject3 = a(paramInt1, paramInt2);
+      localObject3 = c(paramInt1, paramInt2);
       if (localObject3 == null) {
         return false;
       }
-      localObject4 = a(((QQOperationViopTipTask)localObject3).taskid);
+      localObject4 = b(((QQOperationViopTipTask)localObject3).taskid);
       if ((localObject4 != null) && (QLog.isDevelopLevel()))
       {
         localObject5 = new StringBuilder();
@@ -1339,26 +1221,26 @@ public class QQOperateManager
         paramInt2 = 0;
       }
       if (localObject4 != null) {
-        i = ((QQOperationTaskRecord)localObject4).getUinTotalShowCount((String)localObject2);
+        k = ((QQOperationTaskRecord)localObject4).getUinTotalShowCount((String)localObject2);
       } else {
-        i = 0;
+        k = 0;
       }
-      int j = a(((QQOperationViopTipTask)localObject3).taskid);
-      int k = a(((QQOperationViopTipTask)localObject3).taskid, (String)localObject2, paramInt1);
+      int m = c(((QQOperationViopTipTask)localObject3).taskid);
+      int n = a(((QQOperationViopTipTask)localObject3).taskid, (String)localObject2, paramInt1);
       if (QLog.isDevelopLevel())
       {
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append(" judge showLimit, thisTaskAIOShowedCount = ");
         ((StringBuilder)localObject5).append(paramInt2);
         ((StringBuilder)localObject5).append(",thisTaskTotalShowedCount = ");
-        ((StringBuilder)localObject5).append(i);
-        ((StringBuilder)localObject5).append(",thisTaskTodayAIOShowCount = ");
-        ((StringBuilder)localObject5).append(j);
-        ((StringBuilder)localObject5).append(",thisUinTodayShowedCount");
         ((StringBuilder)localObject5).append(k);
+        ((StringBuilder)localObject5).append(",thisTaskTodayAIOShowCount = ");
+        ((StringBuilder)localObject5).append(m);
+        ((StringBuilder)localObject5).append(",thisUinTodayShowedCount");
+        ((StringBuilder)localObject5).append(n);
         QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject5).toString());
       }
-      if ((localObject3 != null) && ((paramInt2 < ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) || ((paramInt2 == ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) && (localObject4 != null) && (((QQOperationTaskRecord)localObject4).hasShowedUins != null) && (((QQOperationTaskRecord)localObject4).hasShowedUins.contains((CharSequence)localObject2)))) && (i < ((QQOperationViopTipTask)localObject3).limitTotalShowCount) && ((j < ((QQOperationViopTipTask)localObject3).limitDayAIOCount) || ((k > 0) && (j == ((QQOperationViopTipTask)localObject3).limitDayAIOCount))) && (k < ((QQOperationViopTipTask)localObject3).limitDayAIOShowCount))
+      if ((localObject3 != null) && ((paramInt2 < ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) || ((paramInt2 == ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) && (localObject4 != null) && (((QQOperationTaskRecord)localObject4).hasShowedUins != null) && (((QQOperationTaskRecord)localObject4).hasShowedUins.contains((CharSequence)localObject2)))) && (k < ((QQOperationViopTipTask)localObject3).limitTotalShowCount) && ((m < ((QQOperationViopTipTask)localObject3).limitDayAIOCount) || ((n > 0) && (m == ((QQOperationViopTipTask)localObject3).limitDayAIOCount))) && (n < ((QQOperationViopTipTask)localObject3).limitDayAIOShowCount))
       {
         if (paramBoolean)
         {
@@ -1399,7 +1281,7 @@ public class QQOperateManager
             localObject1 = null;
           }
           localObject1 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, (List)localObject1);
-          paramInt1 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, paramList);
+          paramInt1 = b(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, paramList);
           paramString = (String)localObject1;
         }
         else
@@ -1432,7 +1314,7 @@ public class QQOperateManager
         {
           paramQQAppInterface = paramArrayList.iterator();
           while (paramQQAppInterface.hasNext()) {
-            if (((QQOperationRequestTaskInfo)paramQQAppInterface.next()).jdField_a_of_type_Int == ((QQOperationViopTipTask)localObject3).taskid)
+            if (((QQOperationRequestTaskInfo)paramQQAppInterface.next()).a == ((QQOperationViopTipTask)localObject3).taskid)
             {
               paramInt2 = 1;
               break label859;
@@ -1443,9 +1325,9 @@ public class QQOperateManager
           if (paramInt2 == 0)
           {
             paramQQAppInterface = new QQOperationRequestTaskInfo();
-            paramQQAppInterface.jdField_a_of_type_Int = ((QQOperationViopTipTask)localObject3).taskid;
+            paramQQAppInterface.a = ((QQOperationViopTipTask)localObject3).taskid;
             paramQQAppInterface.b = paramInt1;
-            paramQQAppInterface.jdField_a_of_type_JavaUtilArrayList = paramString;
+            paramQQAppInterface.c = paramString;
             paramArrayList.add(paramQQAppInterface);
           }
           return true;
@@ -1455,7 +1337,7 @@ public class QQOperateManager
       return false;
     }
     localObject1 = ",pinfanNum = ";
-    Object localObject4 = a(paramInt1, paramInt2);
+    Object localObject4 = e(paramInt1, paramInt2);
     if (QLog.isDevelopLevel()) {
       QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..server has not xiafa guo  ...... ");
     }
@@ -1472,16 +1354,16 @@ public class QQOperateManager
           break;
         }
         localObject5 = (QQOperationViopTipTask)localIterator.next();
-        QQOperationTaskRecord localQQOperationTaskRecord = a(((QQOperationViopTipTask)localObject5).taskid);
+        QQOperationTaskRecord localQQOperationTaskRecord = b(((QQOperationViopTipTask)localObject5).taskid);
         if (localQQOperationTaskRecord != null) {
           paramInt2 = localQQOperationTaskRecord.aioCount;
         } else {
           paramInt2 = 0;
         }
         if (localQQOperationTaskRecord != null) {
-          i = localQQOperationTaskRecord.getUinTotalShowCount(str);
+          k = localQQOperationTaskRecord.getUinTotalShowCount(str);
         } else {
-          i = 0;
+          k = 0;
         }
         localObject4 = localObject1;
         if (QLog.isDevelopLevel())
@@ -1490,10 +1372,10 @@ public class QQOperateManager
           ((StringBuilder)localObject1).append(" judge showLimit, thisTaskAIOShowedCount = ");
           ((StringBuilder)localObject1).append(paramInt2);
           ((StringBuilder)localObject1).append(",thisTaskTotalShowedCount = ");
-          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(k);
           QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject1).toString());
         }
-        if (((paramInt2 < ((QQOperationViopTipTask)localObject5).limitTotalAIOCount) || ((paramInt2 == ((QQOperationViopTipTask)localObject5).limitTotalAIOCount) && (localQQOperationTaskRecord != null) && (localQQOperationTaskRecord.hasShowedUins != null) && (localQQOperationTaskRecord.hasShowedUins.contains(str)))) && (i < ((QQOperationViopTipTask)localObject5).limitTotalShowCount))
+        if (((paramInt2 < ((QQOperationViopTipTask)localObject5).limitTotalAIOCount) || ((paramInt2 == ((QQOperationViopTipTask)localObject5).limitTotalAIOCount) && (localQQOperationTaskRecord != null) && (localQQOperationTaskRecord.hasShowedUins != null) && (localQQOperationTaskRecord.hasShowedUins.contains(str)))) && (k < ((QQOperationViopTipTask)localObject5).limitTotalShowCount))
         {
           if (paramBoolean)
           {
@@ -1533,7 +1415,7 @@ public class QQOperateManager
               localObject1 = null;
             }
             localObject1 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject5, paramQQAppInterface, (List)localObject1);
-            paramInt2 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject5, paramQQAppInterface, paramList);
+            paramInt2 = b(paramString, paramInt1, (QQOperationViopTipTask)localObject5, paramQQAppInterface, paramList);
           }
           else
           {
@@ -1557,28 +1439,28 @@ public class QQOperateManager
           if ((TextUtils.isEmpty(((QQOperationViopTipTask)localObject5).keywordString)) && (((QQOperationViopTipTask)localObject5).frequencyTime == 0)) {}
           while ((TextUtils.isEmpty(((QQOperationViopTipTask)localObject5).keywordString)) && (((QQOperationViopTipTask)localObject5).frequencyTime != 0) ? paramInt2 > 0 : (!TextUtils.isEmpty(((QQOperationViopTipTask)localObject5).keywordString)) && (((QQOperationViopTipTask)localObject5).frequencyTime == 0) ? ((ArrayList)localObject1).size() > 0 : (((ArrayList)localObject1).size() > 0) && (paramInt2 > 0))
           {
-            i = 1;
+            k = 1;
             break;
           }
-          i = 0;
-          if (i != 0)
+          k = 0;
+          if (k != 0)
           {
             localObject6 = paramArrayList.iterator();
             while (((Iterator)localObject6).hasNext()) {
-              if (((QQOperationRequestTaskInfo)((Iterator)localObject6).next()).jdField_a_of_type_Int == ((QQOperationViopTipTask)localObject5).taskid)
+              if (((QQOperationRequestTaskInfo)((Iterator)localObject6).next()).a == ((QQOperationViopTipTask)localObject5).taskid)
               {
-                i = 1;
+                k = 1;
                 break label1617;
               }
             }
-            i = 0;
+            k = 0;
             label1617:
-            if (i == 0)
+            if (k == 0)
             {
               localObject6 = new QQOperationRequestTaskInfo();
-              ((QQOperationRequestTaskInfo)localObject6).jdField_a_of_type_Int = ((QQOperationViopTipTask)localObject5).taskid;
+              ((QQOperationRequestTaskInfo)localObject6).a = ((QQOperationViopTipTask)localObject5).taskid;
               ((QQOperationRequestTaskInfo)localObject6).b = paramInt2;
-              ((QQOperationRequestTaskInfo)localObject6).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+              ((QQOperationRequestTaskInfo)localObject6).c = ((ArrayList)localObject1);
               paramArrayList.add(localObject6);
             }
             bool = true;
@@ -1595,9 +1477,88 @@ public class QQOperateManager
     return false;
   }
   
+  public int b(String paramString, int paramInt, QQOperationViopTipTask paramQQOperationViopTipTask, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList)
+  {
+    int i4 = 0;
+    if (paramList == null) {
+      return 0;
+    }
+    paramInt = paramList.size();
+    int i5 = 1;
+    if (paramInt == 1) {
+      return 0;
+    }
+    long l1 = MessageCache.c();
+    long l2 = paramQQOperationViopTipTask.frequencyTime * 60 * 1000;
+    int i6 = paramQQOperationViopTipTask.frequencyMessage;
+    l1 = (l1 * 1000L - l2) / 1000L;
+    int n = paramList.size() - 1;
+    paramInt = 0;
+    int m = 0;
+    int i1;
+    for (int k = 0; n >= 0; k = i1)
+    {
+      paramString = (ChatMessage)paramList.get(n);
+      if (paramString.time < l1) {
+        break;
+      }
+      int i3 = paramInt;
+      int i2 = m;
+      i1 = k;
+      if (MsgProxyUtils.h(paramString.msgtype))
+      {
+        i3 = paramInt;
+        i2 = m;
+        i1 = k;
+        if (paramString.extraflag == 0)
+        {
+          if (!paramString.isSend()) {
+            m = 1;
+          } else {
+            k = 1;
+          }
+          i3 = paramInt + 1;
+          i1 = k;
+          i2 = m;
+        }
+      }
+      n -= 1;
+      paramInt = i3;
+      m = i2;
+    }
+    if ((paramInt >= i6) && (m != 0) && (k != 0)) {
+      k = i5;
+    } else {
+      k = 0;
+    }
+    m = i4;
+    if (k != 0) {
+      m = paramInt;
+    }
+    return m;
+  }
+  
+  public QQOperationTaskRecord b(int paramInt)
+  {
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      QQOperationTaskRecord localQQOperationTaskRecord = (QQOperationTaskRecord)localIterator.next();
+      if (paramInt == localQQOperationTaskRecord.taskid) {
+        return localQQOperationTaskRecord;
+      }
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    ThreadManager.post(new QQOperateManager.1(this, this.a), 8, null, true);
+  }
+  
   public boolean b(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
@@ -1608,9 +1569,34 @@ public class QQOperateManager
     return false;
   }
   
-  public boolean c(int paramInt1, int paramInt2)
+  public int c(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.e.iterator();
+    int k = 0;
+    while (localIterator.hasNext()) {
+      if (((QQOperationVoipTipsTaskExcuteRecord)localIterator.next()).taskid == paramInt) {
+        k += 1;
+      }
+    }
+    return k;
+  }
+  
+  public QQOperationViopTipTask c(int paramInt1, int paramInt2)
+  {
+    Iterator localIterator = this.g.iterator();
+    while (localIterator.hasNext())
+    {
+      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
+      if ((paramInt1 == localQQOperationViopTipTask.uinType) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
+        return localQQOperationViopTipTask;
+      }
+    }
+    return null;
+  }
+  
+  public boolean d(int paramInt1, int paramInt2)
+  {
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
@@ -1620,10 +1606,24 @@ public class QQOperateManager
     }
     return false;
   }
+  
+  public ArrayList<QQOperationViopTipTask> e(int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
+      if ((localQQOperationViopTipTask.uinType == paramInt1) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
+        localArrayList.add(localQQOperationViopTipTask);
+      }
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.operation.QQOperateManager
  * JD-Core Version:    0.7.0.1
  */

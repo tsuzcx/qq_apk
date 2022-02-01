@@ -28,23 +28,23 @@ public class PreviewPictureView
   extends BrowserBaseView
   implements IBrowserItemClickEvent
 {
-  private static Map<String, URLDrawable> jdField_a_of_type_JavaUtilMap = new HashMap();
-  int jdField_a_of_type_Int = -1;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private static Map<String, URLDrawable> e = new HashMap();
   protected PreviewPicturePresenter a;
-  protected BrowserScaleView a;
+  protected BrowserScaleView b;
+  URLDrawable c;
+  int d = -1;
   
   public PreviewPictureView(Context paramContext, PreviewPicturePresenter paramPreviewPicturePresenter)
   {
     super(paramContext, paramPreviewPicturePresenter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter = paramPreviewPicturePresenter;
+    this.a = paramPreviewPicturePresenter;
   }
   
   private String a()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("(preview) Actives: ");
-    Iterator localIterator = jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = e.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -58,15 +58,15 @@ public class PreviewPictureView
   
   private void a(int paramInt, BrowserScaleView paramBrowserScaleView, URL paramURL)
   {
-    if ((paramInt == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null))
+    if ((paramInt == this.d) && (this.c != null))
     {
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null)) {
+      if ((QLog.isColorLevel()) && (this.c != null)) {
         QLog.d("QQAlbum", 2, "use exist raw drawable");
       }
     }
     else
     {
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null)) {
+      if ((QLog.isColorLevel()) && (this.c != null)) {
         QLog.d("QQAlbum", 2, "rawDrawable is exist");
       }
       Object localObject = new StringBuilder();
@@ -78,8 +78,8 @@ public class PreviewPictureView
       ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
       paramURL = URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject);
       paramURL.setTag(Integer.valueOf(2));
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      this.jdField_a_of_type_Int = paramInt;
+      this.c = null;
+      this.d = paramInt;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -98,7 +98,7 @@ public class PreviewPictureView
   
   public void bindView(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter.a(paramInt);
+    String str = this.a.a(paramInt);
     if (TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel())
@@ -112,13 +112,13 @@ public class PreviewPictureView
     }
     Object localObject2 = new File(str);
     Object localObject1 = null;
-    Object localObject3 = (URLDrawable)jdField_a_of_type_JavaUtilMap.get(str);
+    Object localObject3 = (URLDrawable)e.get(str);
     Object localObject4 = new File(str);
-    localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter.getFileUrl((File)localObject4);
+    localObject4 = this.a.getFileUrl((File)localObject4);
     if ((localObject3 != null) && (((URLDrawable)localObject3).getStatus() == 1) && (((URLDrawable)localObject3).getURL().equals(localObject4)))
     {
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageDrawable((Drawable)localObject3);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable((Drawable)localObject3, this.mScreenWidthPx, this.mScreenHeightPx, 0);
+      this.b.setImageDrawable((Drawable)localObject3);
+      this.b.initDrawable((Drawable)localObject3, this.mScreenWidthPx, this.mScreenHeightPx, 0);
     }
     else
     {
@@ -127,7 +127,7 @@ public class PreviewPictureView
       ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.mScreenHeightPx;
       ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter.getFileUrl((File)localObject2);
+      localObject2 = this.a.getFileUrl((File)localObject2);
       if (localObject2 != null)
       {
         localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
@@ -154,25 +154,25 @@ public class PreviewPictureView
       }
       if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageDrawable((Drawable)localObject1);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable((Drawable)localObject1, this.mScreenWidthPx, this.mScreenHeightPx, 0);
-        jdField_a_of_type_JavaUtilMap.put(str, localObject1);
+        this.b.setImageDrawable((Drawable)localObject1);
+        this.b.initDrawable((Drawable)localObject1, this.mScreenWidthPx, this.mScreenHeightPx, 0);
+        e.put(str, localObject1);
       }
     }
-    this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setMainBrowserPresenter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter.mainBrowserPresenter);
+    this.b.setMainBrowserPresenter(this.a.mainBrowserPresenter);
   }
   
   public View getView(View paramView, ViewGroup paramViewGroup)
   {
-    this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558601, paramViewGroup, false));
-    this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131372759));
-    this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setOnItemEventListener(this);
+    this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131624162, paramViewGroup, false));
+    this.b = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131440308));
+    this.b.setOnItemEventListener(this);
     return this.mBrowserItemView;
   }
   
   public void onClickEvent()
   {
-    PreviewPicturePresenter localPreviewPicturePresenter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter;
+    PreviewPicturePresenter localPreviewPicturePresenter = this.a;
     if (localPreviewPicturePresenter != null) {
       localPreviewPicturePresenter.a();
     }
@@ -181,7 +181,7 @@ public class PreviewPictureView
   public void onDestroy()
   {
     super.onDestroy();
-    jdField_a_of_type_JavaUtilMap.clear();
+    e.clear();
   }
   
   public void onDestroyView(int paramInt, View paramView)
@@ -194,27 +194,27 @@ public class PreviewPictureView
       paramView.append(a());
       QLog.d("QQAlbum", 2, paramView.toString());
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter;
+    paramView = this.a;
     if (paramView != null)
     {
       paramView = paramView.a(paramInt);
-      URLDrawable localURLDrawable = (URLDrawable)jdField_a_of_type_JavaUtilMap.get(paramView);
+      URLDrawable localURLDrawable = (URLDrawable)e.get(paramView);
       if (localURLDrawable != null)
       {
         if (localURLDrawable.getStatus() == 0) {
           localURLDrawable.cancelDownload(true);
         }
-        jdField_a_of_type_JavaUtilMap.remove(paramView);
+        e.remove(paramView);
       }
     }
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (paramInt == this.d)
     {
-      paramView = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      paramView = this.c;
       if ((paramView != null) && (paramView.getStatus() == 0)) {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.cancelDownload(true);
+        this.c.cancelDownload(true);
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      this.jdField_a_of_type_Int = -1;
+      this.c = null;
+      this.d = -1;
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
@@ -235,8 +235,8 @@ public class PreviewPictureView
   
   public void onScaleBegin(int paramInt)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getDrawable();
-    Object localObject1 = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.mDecoding;
+    Object localObject2 = this.b.getDrawable();
+    Object localObject1 = this.b.mDecoding;
     if ((localObject2 instanceof URLDrawable))
     {
       localObject2 = (URLDrawable)localObject2;
@@ -244,7 +244,7 @@ public class PreviewPictureView
       {
         localObject1 = ((URLDrawable)localObject2).getURL();
         if (("file".equals(((URL)localObject1).getProtocol())) && (((URL)localObject1).getRef() == null)) {
-          a(paramInt, this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView, (URL)localObject1);
+          a(paramInt, this.b, (URL)localObject1);
         }
       }
     }
@@ -264,7 +264,7 @@ public class PreviewPictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.PreviewPictureView
  * JD-Core Version:    0.7.0.1
  */

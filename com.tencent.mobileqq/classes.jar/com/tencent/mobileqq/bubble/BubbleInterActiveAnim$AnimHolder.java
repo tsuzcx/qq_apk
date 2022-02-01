@@ -9,26 +9,20 @@ import java.util.HashMap;
 
 public class BubbleInterActiveAnim$AnimHolder
 {
-  public long a;
-  public AnimatorSet a;
   public Rect a;
-  public View a;
-  public ImageView a;
-  public MessageRecord a;
-  public HashMap<String, BubbleNewAnimConf> a;
-  public long b;
   public Rect b;
-  public MessageRecord b;
-  
-  public BubbleInterActiveAnim$AnimHolder()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-  }
+  public MessageRecord c;
+  public MessageRecord d;
+  public ImageView e;
+  public View f;
+  public long g;
+  public long h;
+  public HashMap<String, BubbleNewAnimConf> i = new HashMap();
+  public AnimatorSet j = new AnimatorSet();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder
  * JD-Core Version:    0.7.0.1
  */

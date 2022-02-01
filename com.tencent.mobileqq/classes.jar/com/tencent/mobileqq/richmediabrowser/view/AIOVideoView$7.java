@@ -12,12 +12,12 @@ class AIOVideoView$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.mVideoView.pauseDownload();
+    this.a.l.mVideoView.pauseDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.7
  * JD-Core Version:    0.7.0.1
  */

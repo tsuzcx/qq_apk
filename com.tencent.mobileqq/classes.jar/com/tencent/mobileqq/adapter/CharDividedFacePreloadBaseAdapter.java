@@ -21,27 +21,26 @@ public abstract class CharDividedFacePreloadBaseAdapter
   extends PinnedDividerListView.DividerAdapter
   implements DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = 0;
-  protected Bitmap a;
-  protected IFaceDecoder a;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean;
+  private XListView a;
   private boolean b;
+  private boolean c;
+  private int d = 0;
+  private Hashtable<String, Bitmap> e = new Hashtable();
+  protected Bitmap n = null;
+  protected IFaceDecoder o;
   
   public CharDividedFacePreloadBaseAdapter(Context paramContext, AppInterface paramAppInterface, XListView paramXListView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    paramContext = this.jdField_a_of_type_ComTencentWidgetXListView;
+    this.a = paramXListView;
+    paramContext = this.a;
     if (paramContext != null) {
       paramContext.setOnScrollListener(this);
     }
-    this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BaseImageUtil.f();
+    this.c = paramBoolean;
+    this.o = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
+    this.o.setDecodeTaskCompletionListener(this);
+    if (this.n == null) {
+      this.n = BaseImageUtil.k();
     }
   }
   
@@ -62,33 +61,33 @@ public abstract class CharDividedFacePreloadBaseAdapter
   
   public Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCacheFrom(paramInt1, paramString, paramInt2);
+    Bitmap localBitmap = this.o.getBitmapFromCacheFrom(paramInt1, paramString, paramInt2);
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_Boolean = false;
+      this.o.cancelPendingRequests();
+      this.b = false;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, paramInt1, true, paramByte);
+    if (!this.o.isPausing()) {
+      this.o.requestDecodeFace(paramString, paramInt1, true, paramByte);
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.n;
   }
   
   protected boolean a(FacePreloadHolder.ViewHolder paramViewHolder)
   {
-    return (paramViewHolder != null) && (paramViewHolder.a != null) && (paramViewHolder.a.length() > 0);
+    return (paramViewHolder != null) && (paramViewHolder.y != null) && (paramViewHolder.y.length() > 0);
   }
   
-  public void c()
+  public void d()
   {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.o;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
+    this.a = null;
   }
   
   public int getCount()
@@ -114,39 +113,39 @@ public abstract class CharDividedFacePreloadBaseAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     paramInt2 = 0;
     if (bool)
     {
       if (paramInt1 == 0) {
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
       }
     }
     else
     {
       if (paramBitmap != null) {
-        this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
+        this.e.put(paramString, paramBitmap);
       }
       if (paramInt1 <= 0)
       {
-        if (this.jdField_a_of_type_Int == 0)
+        if (this.d == 0)
         {
-          paramString = this.jdField_a_of_type_ComTencentWidgetXListView;
+          paramString = this.a;
           if (paramString != null)
           {
             int i = paramString.getChildCount();
             paramInt1 = paramInt2;
             while (paramInt1 < i)
             {
-              paramString = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
+              paramString = this.a.getChildAt(paramInt1).getTag();
               if ((paramString != null) && ((paramString instanceof FacePreloadHolder.ViewHolder)))
               {
                 paramString = (FacePreloadHolder.ViewHolder)paramString;
                 if (a(paramString))
                 {
-                  paramBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString.a);
+                  paramBitmap = (Bitmap)this.e.get(paramString.y);
                   if (paramBitmap != null) {
-                    paramString.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+                    paramString.A.setImageBitmap(paramBitmap);
                   }
                 }
               }
@@ -154,7 +153,7 @@ public abstract class CharDividedFacePreloadBaseAdapter
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilHashtable.clear();
+        this.e.clear();
       }
     }
   }
@@ -163,27 +162,27 @@ public abstract class CharDividedFacePreloadBaseAdapter
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+      this.b = false;
+      this.o.cancelPendingRequests();
+      this.o.pause();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+    if (this.o.isPausing()) {
+      this.o.resume();
     }
-    paramAbsListView = this.jdField_a_of_type_ComTencentWidgetXListView;
+    paramAbsListView = this.a;
     if (paramAbsListView != null)
     {
       int i = paramAbsListView.getChildCount();
       paramInt = 0;
       while (paramInt < i)
       {
-        paramAbsListView = (FacePreloadHolder.ViewHolder)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
+        paramAbsListView = (FacePreloadHolder.ViewHolder)this.a.getChildAt(paramInt).getTag();
         if (a(paramAbsListView)) {
-          paramAbsListView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.a, paramAbsListView.jdField_c_of_type_Int, (byte)0));
+          paramAbsListView.A.setImageBitmap(a(paramAbsListView.y, paramAbsListView.z, (byte)0));
         }
         paramInt += 1;
       }
@@ -192,7 +191,7 @@ public abstract class CharDividedFacePreloadBaseAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.CharDividedFacePreloadBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

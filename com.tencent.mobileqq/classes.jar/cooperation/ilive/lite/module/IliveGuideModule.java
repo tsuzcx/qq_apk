@@ -18,10 +18,27 @@ import cooperation.ilive.lite.event.IliveLiteEventCenter.Observer;
 public class IliveGuideModule
   extends RoomBizModule
 {
-  private static float jdField_a_of_type_Float = 0.09745128F;
-  private IliveLiteEventCenter.Observer jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer = new IliveGuideModule.1(this);
+  private static float a = 0.09745128F;
+  private IliveLiteEventCenter.Observer b = new IliveGuideModule.1(this);
   
-  private int a()
+  private boolean a()
+  {
+    int j = b();
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int i;
+    if (localIAudienceRoomPager != null) {
+      i = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      i = 0;
+    }
+    if (j == i) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private int b()
   {
     if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
       return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
@@ -29,13 +46,13 @@ public class IliveGuideModule
     return 0;
   }
   
-  private void a()
+  private void c()
   {
     if ((a()) && (getAudienceRoomPager() != null))
     {
-      cooperation.ilive.lite.report.IliveLiteDataReport.a = true;
+      cooperation.ilive.lite.report.IliveLiteDataReport.d = true;
       IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
-      int i = (int)(ViewUtils.b() * jdField_a_of_type_Float);
+      int i = (int)(ViewUtils.getScreenHeight() * a);
       int j = localIAudienceRoomPager.getScrollY();
       AnimatorSet localAnimatorSet = new AnimatorSet();
       ValueAnimator localValueAnimator1 = new ValueAnimator();
@@ -55,44 +72,27 @@ public class IliveGuideModule
     QLog.e("IliveGuideModule", 1, "show Guide is not current item");
   }
   
-  private boolean a()
-  {
-    int j = a();
-    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
-    boolean bool = false;
-    int i;
-    if (localIAudienceRoomPager != null) {
-      i = getAudienceRoomPager().getCurrentIndex();
-    } else {
-      i = 0;
-    }
-    if (j == i) {
-      bool = true;
-    }
-    return bool;
-  }
-  
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    IliveLiteEventCenter.a().a(this.jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer);
+    IliveLiteEventCenter.a().a(this.b);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    IliveLiteEventCenter.a().b(this.jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter$Observer);
+    IliveLiteEventCenter.a().b(this.b);
   }
   
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    cooperation.ilive.lite.report.IliveLiteDataReport.a = false;
+    cooperation.ilive.lite.report.IliveLiteDataReport.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveGuideModule
  * JD-Core Version:    0.7.0.1
  */

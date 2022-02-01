@@ -36,19 +36,19 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class TroopArkHelper
 {
-  private static TroopArkHelper jdField_a_of_type_ComTencentMobileqqArkApiSchemeTroopArkHelper = new TroopArkHelper();
-  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopArkHelper.2(this);
-  String jdField_a_of_type_JavaLangString = null;
+  private static List<String> c = new ArrayList();
+  private static TroopArkHelper d = new TroopArkHelper();
+  String a = null;
+  TroopObserver b = new TroopArkHelper.2(this);
   
   public static TroopArkHelper a()
   {
-    return jdField_a_of_type_ComTencentMobileqqArkApiSchemeTroopArkHelper;
+    return d;
   }
   
   private void a(String paramString, TroopInfoData paramTroopInfoData)
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = b();
     Intent localIntent = new Intent();
     localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
     localIntent.putExtra("troop_uin", paramString);
@@ -64,11 +64,6 @@ public class TroopArkHelper
       localPluginCommunicationHandler.register(paramTroopInfoData);
     }
     TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, BaseActivity.sTopActivity, localIntent, paramString, "com.tencent.mobileqq.activity.TroopManageActivity", localQQAppInterface.getCurrentAccountUin(), -1);
-  }
-  
-  public QQAppInterface a()
-  {
-    return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
   }
   
   protected void a(BatchResponse paramBatchResponse, TroopInfoData paramTroopInfoData, TroopInfo paramTroopInfo)
@@ -123,7 +118,7 @@ public class TroopArkHelper
               k = ((oidb_0x88d.RspGroupInfo)localObject2).uint32_result.get();
               if ((k == 72) && (j == 0))
               {
-                QQToast.a(BaseActivity.sTopActivity, 2131693072, 1).b(BaseActivity.sTopActivity.getTitleBarHeight());
+                QQToast.makeText(BaseActivity.sTopActivity, 2131890186, 1).show(BaseActivity.sTopActivity.getTitleBarHeight());
                 paramBatchResponse = (BatchResponse)localObject1;
               }
               else
@@ -202,8 +197,8 @@ public class TroopArkHelper
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("gc");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      this.a = new JSONObject(paramString).optString("gc");
+      if (TextUtils.isEmpty(this.a))
       {
         QLog.e("ark.Troop", 1, "troopUin empty!");
         return;
@@ -212,21 +207,26 @@ public class TroopArkHelper
     catch (Exception paramString)
     {
       QLog.e("ark.Troop", 1, "json error!", paramString);
-      paramString = a();
+      paramString = b();
       TroopPluginManager localTroopPluginManager = (TroopPluginManager)paramString.getManager(QQManagerFactory.TROOP_PLUGIN_MANAGER);
-      TroopInfo localTroopInfo = ((TroopManager)paramString.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString);
+      TroopInfo localTroopInfo = ((TroopManager)paramString.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.a);
       if ((localTroopInfo != null) && (localTroopInfo.isAdmin()))
       {
         localTroopPluginManager.a("troop_manage_plugin.apk", new TroopArkHelper.1(this, paramString));
         return;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131714977), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131912473), 0).show();
     }
+  }
+  
+  public QQAppInterface b()
+  {
+    return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.TroopArkHelper
  * JD-Core Version:    0.7.0.1
  */

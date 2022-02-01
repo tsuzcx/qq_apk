@@ -17,8 +17,8 @@ class GaInviteLockActivity$6
     if (paramDialogInterface != null)
     {
       paramDialogInterface.dismiss();
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.b();
+      if ((this.a.L != null) && (this.a.L.q != null)) {
+        this.a.L.q.b();
       }
     }
   }

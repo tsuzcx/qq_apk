@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.ilive.audiencepages.room.AudienceRoomViewPager android:id="@id/mge" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ImageView android:layout_gravity="center" android:id="@id/mph" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/i4a" android:scaleType="centerCrop"
   xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -19,7 +19,7 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.l), QQPimDefineList.i, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.m), QQPimDefineList.j, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   private static boolean a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, Class<? extends Activity> paramClass, Dialog paramDialog)
@@ -27,21 +27,21 @@ public class QQPimPluginProxyActivity
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qqpim_plugin.apk";
-    localPluginParams.e = "QQ同步助手插件";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
-    localPluginParams.f = paramString2;
-    localPluginParams.jdField_a_of_type_JavaLangClass = paramClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = -1;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localPluginParams.d = 30000;
-    localPluginParams.g = null;
-    localPluginParams.jdField_b_of_type_Boolean = false;
+    localPluginParams.d = "qqpim_plugin.apk";
+    localPluginParams.g = "QQ同步助手插件";
+    localPluginParams.c = paramString1;
+    localPluginParams.h = paramString2;
+    localPluginParams.i = paramClass;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = -1;
+    localPluginParams.l = paramDialog;
+    localPluginParams.r = 30000;
+    localPluginParams.q = null;
+    localPluginParams.p = false;
     IPluginManager.a(paramActivity, localPluginParams);
     if (QLog.isColorLevel())
     {
-      paramActivity = QQPimDefineList.jdField_a_of_type_JavaLangString;
+      paramActivity = QQPimDefineList.a;
       paramIntent = new StringBuilder();
       paramIntent.append("QQPimPluginProxyActivity.openPluginActivityForResult() ");
       paramIntent.append(paramString2);
@@ -56,7 +56,7 @@ public class QQPimPluginProxyActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.l), QQPimDefineList.j, QQPimPluginProxyActivity.class, paramDialog);
+    a(paramActivity, localIntent, paramBundle.getString(QQPimDefineList.m), QQPimDefineList.k, QQPimPluginProxyActivity.class, paramDialog);
   }
   
   @Override
@@ -77,7 +77,7 @@ public class QQPimPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

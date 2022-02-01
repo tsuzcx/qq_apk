@@ -15,17 +15,17 @@ class AEEditorAutoTemplatePanel$6
   public void run()
   {
     Activity localActivity = (Activity)this.this$0.getContext();
-    if ((!localActivity.isDestroyed()) && (!localActivity.isFinishing()) && (AEEditorAutoTemplatePanel.a(this.this$0) != null))
+    if ((!localActivity.isDestroyed()) && (!localActivity.isFinishing()) && (AEEditorAutoTemplatePanel.d(this.this$0) != null))
     {
-      AEEditorAutoTemplatePanel.a(this.this$0).a(true);
-      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2064515202), 1).a();
+      AEEditorAutoTemplatePanel.d(this.this$0).a(true);
+      QQToast.makeText(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(2064187548), 1).show();
       this.this$0.a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.autotemplate.AEEditorAutoTemplatePanel.6
  * JD-Core Version:    0.7.0.1
  */

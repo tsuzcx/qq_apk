@@ -9,12 +9,12 @@ class Share$9
   
   public void run()
   {
-    this.this$0.a.callJs(this.a);
+    this.this$0.A.callJs(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.9
  * JD-Core Version:    0.7.0.1
  */

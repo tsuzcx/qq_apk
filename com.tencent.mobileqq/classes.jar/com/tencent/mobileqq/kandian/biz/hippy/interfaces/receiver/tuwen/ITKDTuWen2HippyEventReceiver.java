@@ -17,11 +17,11 @@ public abstract interface ITKDTuWen2HippyEventReceiver
   
   public abstract void sendCommentReadTime(long paramLong);
   
-  public abstract void updateFollowUI();
+  public abstract void updateFollowUI(long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.interfaces.receiver.tuwen.ITKDTuWen2HippyEventReceiver
  * JD-Core Version:    0.7.0.1
  */

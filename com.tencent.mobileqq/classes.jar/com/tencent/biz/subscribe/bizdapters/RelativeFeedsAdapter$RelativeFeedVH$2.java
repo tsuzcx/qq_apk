@@ -16,29 +16,29 @@ class RelativeFeedsAdapter$RelativeFeedVH$2
   
   public boolean onLongClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+    paramView = this.a;
     if (paramView != null)
     {
       if (paramView.pageType == 7003)
       {
-        RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+        RelativeFeedsAdapter.a(this.c.a, this.b);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002) {
+      if (this.a.pageType == 7002) {
         return true;
       }
     }
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.itemView instanceof RelativeFeedItemView))
+    if ((this.c.itemView instanceof RelativeFeedItemView))
     {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
+      if (this.b == null) {
         return false;
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.a.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new RelativeFeedsAdapter.RelativeFeedVH.2.1(this), new RelativeFeedsAdapter.RelativeFeedVH.2.2(this));
-      paramView = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      this.c.a.a(this.b, new RelativeFeedsAdapter.RelativeFeedVH.2.1(this), new RelativeFeedsAdapter.RelativeFeedVH.2.2(this));
+      paramView = this.b.poster.id.get();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.getAdapterPosition());
+      localStringBuilder.append(this.c.getAdapterPosition());
       localStringBuilder.append("");
-      VSReporter.a(paramView, "auth_feeds", "press", 0, 0, new String[] { "", localStringBuilder.toString(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      VSReporter.a(paramView, "auth_feeds", "press", 0, 0, new String[] { "", localStringBuilder.toString(), this.b.poster.nick.get(), this.b.title.get() });
       return true;
     }
     return false;

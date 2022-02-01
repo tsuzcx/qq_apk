@@ -12,9 +12,9 @@ class PopupWindowWithMask$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (PopupWindowWithMask.a(this.a) != null)
+    if (PopupWindowWithMask.b(this.a) != null)
     {
-      PopupWindowWithMask.a(this.a).removeViewImmediate(PopupWindowWithMask.a(this.a));
+      PopupWindowWithMask.c(this.a).removeViewImmediate(PopupWindowWithMask.b(this.a));
       PopupWindowWithMask.a(this.a, null);
     }
   }
@@ -25,7 +25,7 @@ class PopupWindowWithMask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PopupWindowWithMask.4
  * JD-Core Version:    0.7.0.1
  */

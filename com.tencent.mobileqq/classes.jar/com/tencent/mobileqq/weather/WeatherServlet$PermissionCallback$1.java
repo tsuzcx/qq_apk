@@ -10,13 +10,13 @@ class WeatherServlet$PermissionCallback$1
   
   public void run()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.putExtra("adcode", 0);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+    this.a.putExtra("adcode", 0);
+    this.b.startServlet(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.WeatherServlet.PermissionCallback.1
  * JD-Core Version:    0.7.0.1
  */

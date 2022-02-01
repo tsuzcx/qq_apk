@@ -17,7 +17,7 @@ class OldAuthorityPresenter$8
     Bitmap localBitmap2;
     try
     {
-      Bitmap localBitmap1 = BitmapFactory.decodeResource(this.this$0.jdField_a_of_type_AndroidAppActivity.getResources(), 2130840321);
+      Bitmap localBitmap1 = BitmapFactory.decodeResource(this.this$0.A.getResources(), 2130841060);
     }
     catch (Throwable localThrowable)
     {
@@ -27,14 +27,14 @@ class OldAuthorityPresenter$8
     if (localBitmap2 == null) {
       return;
     }
-    Bitmap localBitmap3 = AuthorityUtil.a(this.this$0.jdField_a_of_type_AndroidAppActivity, localBitmap2, 63, 63);
+    Bitmap localBitmap3 = AuthorityUtil.a(this.this$0.A, localBitmap2, 63, 63);
     localBitmap2.recycle();
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(new OldAuthorityPresenter.8.1(this, localBitmap3));
+    this.this$0.a.post(new OldAuthorityPresenter.8.1(this, localBitmap3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.OldAuthorityPresenter.8
  * JD-Core Version:    0.7.0.1
  */

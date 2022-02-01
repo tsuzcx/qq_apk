@@ -2,23 +2,23 @@ package com.tencent.aelight.camera.aebase.view;
 
 public abstract interface AbsAECaptureButton$CaptureListener
 {
-  public abstract void C();
+  public abstract void aa();
   
-  public abstract void D();
+  public abstract boolean ab();
   
-  public abstract void E();
+  public abstract void ac();
   
-  public abstract void F();
+  public abstract void ad();
   
-  public abstract void G();
+  public abstract void ae();
   
-  public abstract void a();
+  public abstract void af();
   
-  public abstract boolean g();
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.view.AbsAECaptureButton.CaptureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class PerfApiImpl
   
   public String getGuardConfigID()
   {
-    return GuardConfig.a().a();
+    return GuardConfig.a().b();
   }
   
   public String getTopActivityName()
@@ -59,7 +59,7 @@ public class PerfApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqperf.api.impl.PerfApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.app.ActionBar.Tab;
 
 class ScrollingTabContainerView$TabView
@@ -28,9 +29,9 @@ class ScrollingTabContainerView$TabView
   
   public ScrollingTabContainerView$TabView(ScrollingTabContainerView paramScrollingTabContainerView, Context paramContext, ActionBar.Tab paramTab, boolean paramBoolean)
   {
-    super(paramContext, null, 2131034124);
+    super(paramContext, null, R.attr.actionBarTabStyle);
     this.mTab = paramTab;
-    paramScrollingTabContainerView = TintTypedArray.obtainStyledAttributes(paramContext, null, this.BG_ATTRS, 2131034124, 0);
+    paramScrollingTabContainerView = TintTypedArray.obtainStyledAttributes(paramContext, null, this.BG_ATTRS, R.attr.actionBarTabStyle, 0);
     if (paramScrollingTabContainerView.hasValue(0)) {
       setBackgroundDrawable(paramScrollingTabContainerView.getDrawable(0));
     }
@@ -152,7 +153,7 @@ class ScrollingTabContainerView$TabView
       {
         if (this.mTextView == null)
         {
-          localObject3 = new AppCompatTextView(getContext(), null, 2131034125);
+          localObject3 = new AppCompatTextView(getContext(), null, R.attr.actionBarTabTextStyle);
           ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
           localObject4 = new LinearLayout.LayoutParams(-2, -2);
           ((LinearLayout.LayoutParams)localObject4).gravity = 16;

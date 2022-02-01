@@ -10,12 +10,12 @@ class UiApiPlugin$18
   public void a()
   {
     this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    this.a.K = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.18
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,15 @@ import org.json.JSONObject;
 class PathTraceManagerImpl$DataUploadTask
   implements Runnable
 {
-  private final int jdField_a_of_type_Int = 3000;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private String b = "yundong_orbit.datauploadV3";
+  private final int a = 3000;
+  private long b;
+  private String c;
+  private String d = "yundong_orbit.datauploadV3";
   
   public PathTraceManagerImpl$DataUploadTask(PathTraceManagerImpl paramPathTraceManagerImpl, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramLong;
+    this.c = paramString;
   }
   
   private void a(boolean paramBoolean, int paramInt)
@@ -63,7 +63,7 @@ class PathTraceManagerImpl$DataUploadTask
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("callback", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("callback", this.c);
         TracePathData localTracePathData;
         if (PathTraceManagerImpl.access$300(this.this$0) != null)
         {
@@ -72,12 +72,12 @@ class PathTraceManagerImpl$DataUploadTask
         }
         else
         {
-          localTracePathData = this.this$0.getPathTraceByTime(this.jdField_a_of_type_Long);
+          localTracePathData = this.this$0.getPathTraceByTime(this.b);
         }
         if ((this.this$0.mUploadTime != 0L) && (localTracePathData != null)) {
           localTracePathData.totalTime = this.this$0.mUploadTime;
         }
-        List localList = this.this$0.getAllTracePointByStartTime(this.jdField_a_of_type_Long);
+        List localList = this.this$0.getAllTracePointByStartTime(this.b);
         String str = "message";
         localObject1 = "retCode";
         if ((localTracePathData != null) && (localList != null))
@@ -161,7 +161,7 @@ class PathTraceManagerImpl$DataUploadTask
             if ((localObject2 != null) && (localObject2.length != 0))
             {
               localObject1 = new NewIntent(this.this$0.mApp.getApplicationContext(), WebSSOAgentServlet.class);
-              ((NewIntent)localObject1).putExtra("extra_cmd", this.b);
+              ((NewIntent)localObject1).putExtra("extra_cmd", this.d);
               localOrbitReq.num.set(0);
               ((NewIntent)localObject1).putExtra("extra_data", (byte[])localObject2);
               localOrbitReq.tracePath.clear();
@@ -197,7 +197,7 @@ class PathTraceManagerImpl$DataUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl.DataUploadTask
  * JD-Core Version:    0.7.0.1
  */

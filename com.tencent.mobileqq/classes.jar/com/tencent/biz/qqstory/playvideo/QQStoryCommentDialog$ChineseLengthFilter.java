@@ -11,10 +11,10 @@ class QQStoryCommentDialog$ChineseLengthFilter
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog.a(paramSpanned);
-    paramInt3 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog.a(paramSpanned.subSequence(paramInt3, paramInt4));
-    paramInt1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog.a(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramInt4 = this.jdField_a_of_type_Int - (i - paramInt3);
+    int i = this.b.a(paramSpanned);
+    paramInt3 = this.b.a(paramSpanned.subSequence(paramInt3, paramInt4));
+    paramInt1 = this.b.a(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramInt4 = this.a - (i - paramInt3);
     if (paramInt4 <= 0) {
       return "";
     }
@@ -28,7 +28,7 @@ class QQStoryCommentDialog$ChineseLengthFilter
     while (paramInt1 < i)
     {
       char c = paramCharSequence.charAt(paramInt1);
-      if (StringUtil.c(c)) {
+      if (StringUtil.isChinese(c)) {
         paramInt3 = 3;
       } else {
         paramInt3 = 1;
@@ -45,7 +45,7 @@ class QQStoryCommentDialog$ChineseLengthFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryCommentDialog.ChineseLengthFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConditionSearchManager$DownloadTask
   extends AbsPreDownloadTask
 {
-  public File a;
   public GetResourceRespInfo a;
+  public File b;
   
   public ConditionSearchManager$DownloadTask(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
   {
     super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.a = paramGetResourceRespInfo;
+    this.b = paramFile;
   }
   
   protected void realCancel()
@@ -33,8 +33,8 @@ public class ConditionSearchManager$DownloadTask
     }
     String str = this.key;
     BaseQQAppInterface localBaseQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localBaseQQAppInterface, localGetResourceRespInfo), 128, null, true);
+    GetResourceRespInfo localGetResourceRespInfo = this.a;
+    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.b, localBaseQQAppInterface, localGetResourceRespInfo), 128, null, true);
   }
   
   public String toString()
@@ -47,7 +47,7 @@ public class ConditionSearchManager$DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

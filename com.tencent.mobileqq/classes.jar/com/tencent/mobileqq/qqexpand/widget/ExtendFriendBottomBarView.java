@@ -27,15 +27,15 @@ import java.util.List;
 public class ExtendFriendBottomBarView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-  private ArrayList<ImageView> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  boolean jdField_b_of_type_Boolean;
+  boolean a;
+  boolean b;
   boolean c;
+  private BaseQQAppInterface d;
+  private RelativeLayout e;
+  private RelativeLayout f;
+  private ArrayList<ImageView> g;
+  private QQBlurView h;
+  private int i;
   
   public ExtendFriendBottomBarView(Context paramContext)
   {
@@ -50,29 +50,29 @@ public class ExtendFriendBottomBarView
   public ExtendFriendBottomBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131561066, this);
+    inflate(paramContext, 2131627409, this);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Int = DisplayUtil.a(getContext(), 66.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363718));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(UITools.a);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131363722));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setTranslationY(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368074));
-    int i = 0;
-    while (i < this.jdField_b_of_type_AndroidWidgetRelativeLayout.getChildCount())
+    this.i = DisplayUtil.a(getContext(), 66.0F);
+    this.e = ((RelativeLayout)findViewById(2131429641));
+    this.e.setOnTouchListener(UITools.a);
+    this.e.setTranslationY(this.i);
+    this.h = ((QQBlurView)findViewById(2131429645));
+    this.h.setTranslationY(this.i);
+    this.g = new ArrayList();
+    this.f = ((RelativeLayout)findViewById(2131434924));
+    int j = 0;
+    while (j < this.f.getChildCount())
     {
-      localObject = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getChildAt(i);
+      localObject = (ImageView)this.f.getChildAt(j);
       ((ImageView)localObject).setVisibility(8);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      i += 1;
+      this.g.add(localObject);
+      j += 1;
     }
-    ImageView localImageView = (ImageView)findViewById(2131362978);
+    ImageView localImageView = (ImageView)findViewById(2131428779);
     Object localObject = localImageView.getDrawable();
     if ((localObject instanceof SkinnableBitmapDrawable)) {
       localObject = ((SkinnableBitmapDrawable)localObject).mutate2();
@@ -88,16 +88,16 @@ public class ExtendFriendBottomBarView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendBottomBarView", 2, "showBottomBar ");
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.e, "translationY", new float[] { this.i, 0.0F });
     localObjectAnimator.setDuration(500L);
     localObjectAnimator.start();
     if (this.c)
     {
-      localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F });
+      localObjectAnimator = ObjectAnimator.ofFloat(this.h, "translationY", new float[] { this.i, 0.0F });
       localObjectAnimator.setDuration(500L);
       localObjectAnimator.start();
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "0X8009E2E", "0X8009E2E", 0, 0, "", "", "", "");
+    ReportController.b(this.d, "dc00898", "", "", "0X8009E2E", "0X8009E2E", 0, 0, "", "", "", "");
   }
   
   private void c()
@@ -105,12 +105,12 @@ public class ExtendFriendBottomBarView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendBottomBarView", 2, "hideBottomBar ");
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.e, "translationY", new float[] { 0.0F, this.i });
     localObjectAnimator.setDuration(500L);
     localObjectAnimator.start();
     if (this.c)
     {
-      localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
+      localObjectAnimator = ObjectAnimator.ofFloat(this.h, "translationY", new float[] { 0.0F, this.i });
       localObjectAnimator.setDuration(500L);
       localObjectAnimator.start();
     }
@@ -126,25 +126,25 @@ public class ExtendFriendBottomBarView
       } else {
         bool = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(paramView);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      this.h.setVisibility(0);
+      this.h.a(paramView);
+      paramView = this.h;
       paramView.b(paramView);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setEnableBlur(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130851328);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
+      this.h.c(-1);
+      this.h.setEnableBlur(bool);
+      this.h.b(0);
+      this.h.a(8.0F);
+      this.h.a(8);
+      this.h.setDisableBlurDrawableRes(2130853592);
+      this.h.d();
+      this.h.a();
       this.c = true;
     }
   }
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, View paramView)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.d = paramBaseQQAppInterface;
     if (paramView != null) {
       a(paramView);
     }
@@ -157,65 +157,65 @@ public class ExtendFriendBottomBarView
     }
     if (paramList != null)
     {
-      int j = paramList.size();
-      if (j > 0)
+      int k = paramList.size();
+      if (k > 0)
       {
-        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-        int i = 0;
-        while (i < k)
+        int m = this.g.size();
+        int j = 0;
+        while (j < m)
         {
-          ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          ImageView localImageView = (ImageView)this.g.get(j);
           String str;
-          if (i < j) {
-            str = (String)paramList.get(i);
+          if (j < k) {
+            str = (String)paramList.get(j);
           } else {
             str = null;
           }
           if (!TextUtils.isEmpty(str))
           {
-            localImageView.setImageDrawable(((IColdPalaceUtils)QRoute.api(IColdPalaceUtils.class)).getFaceHeadDrawable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, str));
+            localImageView.setImageDrawable(((IColdPalaceUtils)QRoute.api(IColdPalaceUtils.class)).getFaceHeadDrawable(this.d, str));
             localImageView.setVisibility(0);
           }
           else
           {
             localImageView.setVisibility(8);
           }
-          i += 1;
+          j += 1;
         }
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.f.setVisibility(0);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.f.setVisibility(8);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (!this.jdField_a_of_type_Boolean) {
+      this.b = true;
+      this.a = paramBoolean;
+      if (!this.a) {
         b();
       }
     }
     else
     {
-      if ((!this.jdField_a_of_type_Boolean) && (paramBoolean)) {
+      if ((!this.a) && (paramBoolean)) {
         c();
       }
-      if ((this.jdField_a_of_type_Boolean) && (!paramBoolean)) {
+      if ((this.a) && (!paramBoolean)) {
         b();
       }
-      if (this.jdField_a_of_type_Boolean != paramBoolean) {
-        this.jdField_a_of_type_Boolean = paramBoolean;
+      if (this.a != paramBoolean) {
+        this.a = paramBoolean;
       }
     }
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.e;
     if (localRelativeLayout != null) {
       localRelativeLayout.setOnClickListener(paramOnClickListener);
     }
@@ -223,7 +223,7 @@ public class ExtendFriendBottomBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendBottomBarView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class TroopFileModel$9
   {
     MessageRecord localMessageRecord = this.a;
     if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForTroopFile))) {
-      this.this$0.a.b();
+      this.this$0.k.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.9
  * JD-Core Version:    0.7.0.1
  */

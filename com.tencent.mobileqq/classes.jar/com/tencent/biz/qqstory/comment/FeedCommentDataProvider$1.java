@@ -26,15 +26,15 @@ final class FeedCommentDataProvider$1
   {
     paramMessageMicro = (qqstory_service.RspAddFeedComment)paramMessageMicro;
     GamePKCommentEvent localGamePKCommentEvent = new GamePKCommentEvent();
-    localGamePKCommentEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localGamePKCommentEvent.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    localGamePKCommentEvent.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localGamePKCommentEvent.jdField_a_of_type_Int = paramMessageMicro.comment_id.get();
-    localGamePKCommentEvent.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localGamePKCommentEvent.a = this.a;
+    localGamePKCommentEvent.e = this.b;
     localGamePKCommentEvent.c = this.c;
+    localGamePKCommentEvent.b = paramMessageMicro.comment_id.get();
     localGamePKCommentEvent.d = this.d;
-    localGamePKCommentEvent.e = this.e;
-    localGamePKCommentEvent.f = this.f;
+    localGamePKCommentEvent.f = this.e;
+    localGamePKCommentEvent.h = this.f;
+    localGamePKCommentEvent.i = this.g;
+    localGamePKCommentEvent.j = this.h;
     StoryDispatcher.a().dispatch(localGamePKCommentEvent);
   }
   
@@ -50,7 +50,7 @@ final class FeedCommentDataProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.1
  * JD-Core Version:    0.7.0.1
  */

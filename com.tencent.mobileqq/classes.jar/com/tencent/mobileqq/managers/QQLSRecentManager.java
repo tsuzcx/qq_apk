@@ -66,53 +66,39 @@ import mqq.manager.Manager;
 public class QQLSRecentManager
   implements Observer, Manager
 {
-  public static int a = 0;
   public static long a = 0L;
-  public static String a;
-  private static ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static CopyOnWriteArrayList<RecentBaseData> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  public static boolean a = false;
-  private static byte[] jdField_a_of_type_ArrayOfByte;
-  public static int b;
-  public static long b;
-  public static volatile boolean b;
-  public static long c;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g = true;
+  public static long b = 0L;
+  public static int c = 0;
+  public static boolean d = false;
+  public static volatile boolean e = false;
+  public static boolean f = false;
+  public static boolean g = false;
   public static boolean h = false;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  QCallFacade jdField_a_of_type_ComTencentMobileqqQcallQCallFacade = null;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ArrayOfByte = new byte[0];
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Boolean = false;
-    d = false;
-    e = false;
-    f = false;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_c_of_type_Long = -1L;
-    jdField_b_of_type_Int = 0;
-  }
+  public static boolean i = false;
+  public static String k = "";
+  public static long l = -1L;
+  public static int m = 0;
+  public static boolean n = true;
+  public static boolean o = false;
+  private static CopyOnWriteArrayList<RecentBaseData> p = new CopyOnWriteArrayList();
+  private static ConcurrentHashMap<String, Integer> q = new ConcurrentHashMap();
+  private static byte[] r = new byte[0];
+  QCallFacade j = null;
+  private QQAppInterface s;
   
   public QQLSRecentManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    jdField_a_of_type_JavaLangString = AppSetting.c;
+    this.s = paramQQAppInterface;
+    k = AppSetting.u;
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("QQLSRecentManager deviceInfo=");
-      paramQQAppInterface.append(jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(k);
       QLog.d("QQLSActivity", 2, paramQQAppInterface.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade = ((QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE));
+    if (this.j == null) {
+      this.j = ((QCallFacade)this.s.getManager(QQManagerFactory.RECENT_CALL_FACADE));
     }
   }
   
@@ -120,18 +106,18 @@ public class QQLSRecentManager
   {
     if (Build.VERSION.SDK_INT < 16)
     {
-      d = true;
-      return d;
+      g = true;
+      return g;
     }
-    d = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.lock_screen.name());
+    g = ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.lock_screen.name());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isPhoneNeedBright need bright before sensor = ");
-      localStringBuilder.append(d);
+      localStringBuilder.append(g);
       QLog.d("QQLSActivity", 2, localStringBuilder.toString());
     }
-    return d;
+    return g;
   }
   
   public int a(String paramString)
@@ -141,36 +127,22 @@ public class QQLSRecentManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getNotifyIDForUin mNotifyIdList.size = ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      ((StringBuilder)localObject).append(q.size());
       QLog.d("QQLSActivity", 2, ((StringBuilder)localObject).toString());
     }
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-    int i = -1;
-    int j = i;
+    boolean bool = q.containsKey(paramString);
+    int i1 = -1;
+    int i2 = i1;
     if (bool)
     {
-      localObject = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localObject = (Integer)q.get(paramString);
       if (localObject != null) {
-        i = ((Integer)localObject).intValue();
+        i1 = ((Integer)localObject).intValue();
       }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      j = i;
+      q.remove(paramString);
+      i2 = i1;
     }
-    return j;
-  }
-  
-  public CopyOnWriteArrayList<RecentBaseData> a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "mDataList clear");
-    }
+    return i2;
   }
   
   public void a(AppInterface paramAppInterface, String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -195,10 +167,10 @@ public class QQLSRecentManager
     }
     else
     {
-      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("HUAWEI-HUAWEI T8833")) {
+      if (k.equalsIgnoreCase("HUAWEI-HUAWEI T8833")) {
         return;
       }
-      boolean bool = b();
+      boolean bool = d();
       if (QLog.isColorLevel()) {
         QLog.d("QQLSActivity", 2, String.format("needStartQQLS frienduin[%s], uitype[%s], isFromMisscall[%s], isStartTime[%s]", new Object[] { paramString, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) }));
       }
@@ -221,29 +193,29 @@ public class QQLSRecentManager
           }
           if ((((String)localObject).equals("com.tencent.av.ui.VideoInviteLock")) || (((String)localObject).equals("com.tencent.av.gaudio.GaInviteLockActivity")) || (((String)localObject).equals("com.tencent.av.ui.AVActivity")))
           {
-            i = 1;
+            i1 = 1;
             break label287;
           }
         }
-        int i = 0;
+        int i1 = 0;
         label287:
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("QQLSRecentManager.getInstance().isLSalive:");
-          ((StringBuilder)localObject).append(jdField_b_of_type_Boolean);
+          ((StringBuilder)localObject).append(e);
           QLog.d("QQLSActivity", 2, ((StringBuilder)localObject).toString());
         }
         if (paramInt1 == 1) {
-          jdField_c_of_type_Boolean = true;
+          f = true;
         } else {
-          jdField_c_of_type_Boolean = false;
+          f = false;
         }
-        if (i != 0) {
+        if (i1 != 0) {
           return;
         }
       }
-      if ((!PhoneStatusTools.e(BaseApplicationImpl.getApplication())) && ((!jdField_b_of_type_Boolean) || (paramBoolean))) {
+      if ((!PhoneStatusTools.e(BaseApplicationImpl.getApplication())) && ((!e) || (paramBoolean))) {
         if ((a(paramAppInterface, paramString, paramInt1, paramBoolean, paramInt2, true)) && (Build.VERSION.SDK_INT <= 28))
         {
           localObject = new Intent(paramAppInterface.getApp(), QQLSActivity.class);
@@ -254,24 +226,24 @@ public class QQLSRecentManager
           ((Intent)localObject).putExtra("uitype", paramInt1);
           ((Intent)localObject).putExtra("frienduin", paramString);
           paramAppInterface.getApp().startActivity((Intent)localObject);
-          e = true;
-          jdField_b_of_type_Int += 1;
+          h = true;
+          m += 1;
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
             paramString.append("need report  LS report needReport=");
-            paramString.append(g);
+            paramString.append(n);
             paramString.append("hasReport=");
-            paramString.append(h);
+            paramString.append(o);
             paramString.append("startTimes=");
-            paramString.append(jdField_b_of_type_Int);
+            paramString.append(m);
             QLog.d("qqls", 2, paramString.toString());
           }
-          if ((!h) && (jdField_b_of_type_Int > 2))
+          if ((!o) && (m > 2))
           {
             paramString = new HashMap();
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(g);
+            ((StringBuilder)localObject).append(n);
             ((StringBuilder)localObject).append("");
             paramString.put("param_hasshowedLs", ((StringBuilder)localObject).toString());
             StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramAppInterface.getCurrentAccountUin(), "qqlsReprotTag", true, 0L, 0L, paramString, "");
@@ -279,10 +251,10 @@ public class QQLSRecentManager
             {
               paramAppInterface = new StringBuilder();
               paramAppInterface.append("need report  LS report needReport=");
-              paramAppInterface.append(g);
+              paramAppInterface.append(n);
               QLog.d("qqls", 2, paramAppInterface.toString());
             }
-            h = true;
+            o = true;
           }
         }
         else if (QLog.isDevelopLevel())
@@ -304,58 +276,58 @@ public class QQLSRecentManager
   
   public void a(String paramString, int paramInt)
   {
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    synchronized (r)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("removeUnreadMsg mDataList= ");
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+        ((StringBuilder)localObject).append(p.size());
         QLog.d("QQLSActivity", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Object localObject = p.iterator();
       while (((Iterator)localObject).hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)((Iterator)localObject).next();
-        int j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
-        int k = this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade.c(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
-        int i;
+        int i2 = this.s.getConversationFacade().a(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
+        int i3 = this.j.f(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
+        int i1;
         ConcurrentHashMap localConcurrentHashMap;
         StringBuilder localStringBuilder;
         if (localRecentBaseData.getRecentUserUin().equals(AppConstants.LBS_HELLO_UIN))
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.LBS_HELLO_UIN, localRecentBaseData.getRecentUserType());
+          i1 = this.s.getConversationFacade().a(AppConstants.LBS_HELLO_UIN, localRecentBaseData.getRecentUserType());
         }
         else if (localRecentBaseData.getRecentUserUin().equals(AppConstants.RECOMMEND_CONTACT_UIN))
         {
-          i = ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class)).getAllUnreadMessageCount();
+          i1 = ((INewFriendService)this.s.getRuntimeService(INewFriendService.class)).getAllUnreadMessageCount();
         }
         else if (localRecentBaseData.getRecentUserUin().equals(AppConstants.DATE_UIN))
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.DATE_UIN, localRecentBaseData.getRecentUserType());
+          i1 = this.s.getConversationFacade().a(AppConstants.DATE_UIN, localRecentBaseData.getRecentUserType());
         }
         else
         {
-          i = j;
+          i1 = i2;
           if (localRecentBaseData.getRecentUserUin().equals(paramString))
           {
-            i = j;
+            i1 = i2;
             if (paramInt == localRecentBaseData.getRecentUserType())
             {
-              jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localRecentBaseData);
-              localConcurrentHashMap = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+              p.remove(localRecentBaseData);
+              localConcurrentHashMap = q;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append(localRecentBaseData.getRecentUserUin());
               localStringBuilder.append(localRecentBaseData.getRecentUserType());
               localConcurrentHashMap.remove(localStringBuilder.toString());
-              i = j;
+              i1 = i2;
             }
           }
         }
-        if ((i == 0) && (k == 0))
+        if ((i1 == 0) && (i3 == 0))
         {
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localRecentBaseData);
-          localConcurrentHashMap = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+          p.remove(localRecentBaseData);
+          localConcurrentHashMap = q;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(localRecentBaseData.getRecentUserUin());
           localStringBuilder.append(localRecentBaseData.getRecentUserType());
@@ -366,7 +338,7 @@ public class QQLSRecentManager
       {
         paramString = new StringBuilder();
         paramString.append("after removeUnreadMsg mDataList= ");
-        paramString.append(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+        paramString.append(p.size());
         QLog.d("QQLSActivity", 2, paramString.toString());
       }
       return;
@@ -383,12 +355,12 @@ public class QQLSRecentManager
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    int i;
+    int i1;
     boolean bool;
-    int j;
+    int i2;
     label1275:
     label2941:
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    synchronized (r)
     {
       if (QLog.isColorLevel())
       {
@@ -417,19 +389,19 @@ public class QQLSRecentManager
       if ((!AppConstants.LOCK_SCREEN_DATE_UIN.equals(paramString)) && (!AppConstants.LOCK_SCREEN_LBS_HELLO_UIN.equals(paramString)) && (!AppConstants.NEARBY_LBS_HELLO_UIN.equals(paramString)))
       {
         localObject2 = paramString;
-        i = paramInt1;
+        i1 = paramInt1;
         if (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle())
         {
           localObject2 = paramString;
-          i = paramInt1;
+          i1 = paramInt1;
           if (paramInt1 == 7220)
           {
             localObject2 = paramString;
-            i = paramInt1;
+            i1 = paramInt1;
             if (AppConstants.KANDIAN_MERGE_UIN.equals(paramString))
             {
               localObject2 = AppConstants.NEW_KANDIAN_UIN;
-              i = 1008;
+              i1 = 1008;
             }
           }
         }
@@ -437,12 +409,12 @@ public class QQLSRecentManager
         {
           paramString = new StringBuilder();
           paramString.append("updateLSRencentUser size= ");
-          paramString.append(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+          paramString.append(p.size());
           paramString.append("threadId =");
           paramString.append(Thread.currentThread().getId());
           QLog.d("QQLSActivity", 2, paramString.toString());
         }
-        if ((!FriendsStatusUtil.a((String)localObject2, paramAppInterface)) && (!HiddenChatHelper.a((String)localObject2, i, paramAppInterface)))
+        if ((!FriendsStatusUtil.a((String)localObject2, paramAppInterface)) && (!HiddenChatHelper.a((String)localObject2, i1, paramAppInterface)))
         {
           if (TextUtils.equals((CharSequence)localObject2, AppConstants.TROOP_SUSPICIOUS_MSG_UIN))
           {
@@ -452,7 +424,7 @@ public class QQLSRecentManager
             QLog.e("QQLSActivity", 1, paramAppInterface.toString());
             return false;
           }
-          localObject4 = ((QQAppInterface)paramAppInterface).getProxyManager().a();
+          localObject4 = ((QQAppInterface)paramAppInterface).getProxyManager().g();
           localObject1 = ((RecentUserProxy)localObject4).a(true, false).iterator();
           do
           {
@@ -463,17 +435,17 @@ public class QQLSRecentManager
             if ((paramString == null) || (TextUtils.isEmpty(paramString.uin))) {
               break label2930;
             }
-            if ((paramString != null) && (((String)localObject2).equals(paramString.uin)) && (paramString.getType() == i)) {
+            if ((paramString != null) && (((String)localObject2).equals(paramString.uin)) && (paramString.getType() == i1)) {
               break label2927;
             }
-            if ((paramString != null) && (paramString.getType() == i) && (AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(paramString.uin))) {
-              paramString = new RecentUser((String)localObject2, i);
+            if ((paramString != null) && (paramString.getType() == i1) && (AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(paramString.uin))) {
+              paramString = new RecentUser((String)localObject2, i1);
             } else {
-              if (((paramString != null) && (paramString.getType() == i) && (AppConstants.LBS_HELLO_UIN.equals(paramString.uin))) || ((paramString != null) && (paramString.getType() == i) && (AppConstants.DATE_UIN.equals(paramString.uin))) || ((paramString != null) && (AppConstants.RECOMMEND_CONTACT_UIN.equals(paramString.uin)) && ((AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(localObject2)) || (AppConstants.MAYKNOW_RECOMMEND_UIN.equals(localObject2)) || (AppConstants.FRIEND_ANNIVER_UIN.equals(localObject2))))) {
+              if (((paramString != null) && (paramString.getType() == i1) && (AppConstants.LBS_HELLO_UIN.equals(paramString.uin))) || ((paramString != null) && (paramString.getType() == i1) && (AppConstants.DATE_UIN.equals(paramString.uin))) || ((paramString != null) && (AppConstants.RECOMMEND_CONTACT_UIN.equals(paramString.uin)) && ((AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(localObject2)) || (AppConstants.MAYKNOW_RECOMMEND_UIN.equals(localObject2)) || (AppConstants.FRIEND_ANNIVER_UIN.equals(localObject2))))) {
                 break label2927;
               }
             }
-          } while ((paramString == null) || (paramString.getType() != 1032) || (UinTypeUtil.a(i) != 1032));
+          } while ((paramString == null) || (paramString.getType() != 1032) || (UinTypeUtil.e(i1) != 1032));
           break label2927;
           if (!QLog.isColorLevel()) {
             break label2941;
@@ -489,10 +461,10 @@ public class QQLSRecentManager
           ((StringBuilder)localObject1).append(Thread.currentThread().getId());
           QLog.d("QQLSActivity", 2, ((StringBuilder)localObject1).toString());
           break label2941;
-          if (((QCallFacade)paramAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE)).c((String)localObject2, i) == 0) {
+          if (((QCallFacade)paramAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE)).f((String)localObject2, i1) == 0) {
             return false;
           }
-          localObject1 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          localObject1 = p.iterator();
           if (((Iterator)localObject1).hasNext())
           {
             RecentBaseData localRecentBaseData = (RecentBaseData)((Iterator)localObject1).next();
@@ -524,7 +496,7 @@ public class QQLSRecentManager
                 if (localObject5 == null) {
                   break label3023;
                 }
-                paramInt1 = ((DatingProxyManager)localObject5).a().a();
+                paramInt1 = ((DatingProxyManager)localObject5).a().c();
                 break label3020;
               }
               if (TextUtils.equals(localRecentBaseData.getRecentUserUin(), AppConstants.PULL_ACTIVE_PUSH_UIN))
@@ -540,8 +512,8 @@ public class QQLSRecentManager
             }
             if ((localRecentBaseData.getRecentUserType() != 3000) && (localRecentBaseData.getRecentUserType() != 0))
             {
-              j = localRecentBaseData.getRecentUserType();
-              if (j != 8) {
+              i2 = localRecentBaseData.getRecentUserType();
+              if (i2 != 8) {
                 break label1275;
               }
             }
@@ -555,26 +527,26 @@ public class QQLSRecentManager
                 break label1338;
               }
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade == null) {
+            if (this.j == null) {
               break label3028;
             }
-            j = this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade.c(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
+            i2 = this.j.f(localRecentBaseData.getRecentUserUin(), localRecentBaseData.getRecentUserType());
             if (!QLog.isColorLevel()) {
               break label3040;
             }
             Object localObject6 = localRecentBaseData.getRecentUserUin();
-            int k = localRecentBaseData.getRecentUserType();
-            if (this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade == null) {
+            int i3 = localRecentBaseData.getRecentUserType();
+            if (this.j == null) {
               break label3034;
             }
             bool = true;
-            QLog.d("QQLSActivity", 2, String.format("QQLSRecentManager.updateLSRencentUser miscallUnread[%s], Uin[%s], type[%s]", new Object[] { Integer.valueOf(j), localObject6, Integer.valueOf(k), Boolean.valueOf(bool) }));
+            QLog.d("QQLSActivity", 2, String.format("QQLSRecentManager.updateLSRencentUser miscallUnread[%s], Uin[%s], type[%s]", new Object[] { Integer.valueOf(i2), localObject6, Integer.valueOf(i3), Boolean.valueOf(bool) }));
             break label3040;
             if (paramInt1 != 0) {
               break label3045;
             }
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localRecentBaseData);
-            localObject6 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+            p.remove(localRecentBaseData);
+            localObject6 = q;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(localRecentBaseData.getRecentUserUin());
             localStringBuilder.append(localRecentBaseData.getRecentUserType());
@@ -613,44 +585,44 @@ public class QQLSRecentManager
           }
           paramString = ConversationDataFactory.a(paramString, (BaseQQAppInterface)paramAppInterface, paramAppInterface.getApp());
           break label1902;
-          if (i == 1012)
+          if (i1 == 1012)
           {
             paramString = (DatingProxyManager)paramAppInterface.getManager(QQManagerFactory.DATING_PROXY_MANAGER);
             if (paramString == null) {
               break label3108;
             }
-            paramInt1 = paramString.a().a();
+            paramInt1 = paramString.a().c();
             paramString = paramString.a().a();
           }
-          else if (i == 1030)
+          else if (i1 == 1030)
           {
             if (!((QQAppInterface)paramAppInterface).isCreateManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)) {
               break label3108;
             }
             paramString = (CampusNoticeManager)paramAppInterface.getManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER);
-            paramInt1 = paramString.a();
+            paramInt1 = paramString.c();
             paramString = paramString.a();
           }
           else
           {
-            if (i != 9653) {
+            if (i1 != 9653) {
               break label3076;
             }
             paramString = (PullActiveManager)paramAppInterface.getManager(QQManagerFactory.PULL_ACTIVE_MANAGER);
             paramInt1 = paramString.a();
-            paramString = paramString.a;
+            paramString = paramString.c;
             break label1902;
-            paramString = ((RecentUserProxy)localObject4).a((String)localObject2, i);
+            paramString = ((RecentUserProxy)localObject4).b((String)localObject2, i1);
             if (paramString == null) {
               break label3108;
             }
-            paramString.lastmsgtime = MessageCache.a();
+            paramString.lastmsgtime = MessageCache.c();
             localObject1 = ConversationDataFactory.a(paramString, (QQAppInterface)paramAppInterface, paramAppInterface.getApp());
             paramString = (String)localObject1;
-            if (i != 8) {
+            if (i1 != 8) {
               break label3110;
             }
-            localObject2 = ((QQAppInterface)paramAppInterface).getProxyManager().a().a((String)localObject2, i);
+            localObject2 = ((QQAppInterface)paramAppInterface).getProxyManager().i().c((String)localObject2, i1);
             paramString = (String)localObject1;
             if (localObject2 == null) {
               break label3110;
@@ -662,13 +634,13 @@ public class QQLSRecentManager
             if (!((QQAppInterface)paramAppInterface).isCreateManager(QQManagerFactory.PUSH_NOTICE_MANAGER)) {
               break label3108;
             }
-            paramString = ((PushNoticeManager)paramAppInterface.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a();
+            paramString = ((PushNoticeManager)paramAppInterface.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).b();
             paramInt1 = 1;
             break label1902;
-            if (StudyModeManager.a()) {
+            if (StudyModeManager.h()) {
               break label3108;
             }
-            paramInt1 = ((IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "")).getUnreadCount((String)localObject2, i);
+            paramInt1 = ((IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "")).getUnreadCount((String)localObject2, i1);
             if ((localObject3 == null) || (((MessageRecord)localObject3).senderuin == null)) {
               break label3103;
             }
@@ -678,16 +650,16 @@ public class QQLSRecentManager
           if ((paramInt1 > 0) && (paramString != null))
           {
             if ((((INewFriendApi)QRoute.api(INewFriendApi.class)).shouldMergeNewFriendContact(paramAppInterface, paramString.getRecentUserUin())) && (AppConstants.ACTIVATE_FRIENDS_UIN.equals(paramString.getRecentUserUin()))) {
-              paramString.mTitleName = paramAppInterface.getApp().getString(2131689566);
+              paramString.mTitleName = paramAppInterface.getApp().getString(2131886176);
             }
-            localObject1 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+            localObject1 = p.iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (RecentBaseData)((Iterator)localObject1).next();
               if ((((INewFriendApi)QRoute.api(INewFriendApi.class)).shouldMergeNewFriendContact(paramAppInterface, ((RecentBaseData)localObject2).getRecentUserUin())) && (((INewFriendApi)QRoute.api(INewFriendApi.class)).shouldMergeNewFriendContact(paramAppInterface, paramString.getRecentUserUin())))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -695,8 +667,8 @@ public class QQLSRecentManager
               }
               else if ((TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString.getRecentUserUin())) && (((RecentBaseData)localObject2).getRecentUserType() == paramString.getRecentUserType()))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -704,8 +676,8 @@ public class QQLSRecentManager
               }
               else if ((TextUtils.equals(paramString.getRecentUserUin(), AppConstants.LBS_HELLO_UIN)) && (TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString.getRecentUserUin())))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -713,8 +685,8 @@ public class QQLSRecentManager
               }
               else if ((TextUtils.equals(paramString.getRecentUserUin(), AppConstants.SCHEDULE_NOTIFY_UIN)) && (TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString.getRecentUserUin())))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -722,8 +694,8 @@ public class QQLSRecentManager
               }
               else if ((TextUtils.equals(paramString.getRecentUserUin(), AppConstants.DATE_UIN)) && (TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString.getRecentUserUin())))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -731,33 +703,33 @@ public class QQLSRecentManager
               }
               else if ((TextUtils.equals(paramString.getRecentUserUin(), AppConstants.RECOMMEND_CONTACT_UIN)) && (TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString.getRecentUserUin())))
               {
-                jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-                paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                p.remove(localObject2);
+                paramAppInterface = q;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
                 ((StringBuilder)localObject1).append(paramString.getRecentUserType());
                 paramAppInterface.remove(((StringBuilder)localObject1).toString());
               }
             }
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramString);
+            p.add(0, paramString);
             if (paramBoolean2)
             {
-              paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+              paramAppInterface = q;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
               ((StringBuilder)localObject1).append(paramString.getRecentUserType());
               paramAppInterface.put(((StringBuilder)localObject1).toString(), Integer.valueOf(paramInt2));
             }
           }
-          else if ((paramBoolean1) && (paramString != null) && (!jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramString)))
+          else if ((paramBoolean1) && (paramString != null) && (!p.contains(paramString)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("QQLSActivity", 2, "QQLSRecentManager.updateLSRencentUser from misscall");
             }
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramString);
+            p.add(0, paramString);
             if (paramBoolean2)
             {
-              paramAppInterface = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+              paramAppInterface = q;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append(paramString.getRecentUserUin());
               ((StringBuilder)localObject1).append(paramString.getRecentUserType());
@@ -768,10 +740,10 @@ public class QQLSRecentManager
           {
             paramAppInterface = new StringBuilder();
             paramAppInterface.append("QQLSRecentManager.updateLSRencentUser mDataList.size = ");
-            paramAppInterface.append(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+            paramAppInterface.append(p.size());
             QLog.d("QQLSActivity", 2, paramAppInterface.toString());
           }
-          return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0;
+          return p.size() > 0;
         }
         else
         {
@@ -781,14 +753,14 @@ public class QQLSRecentManager
       else
       {
         paramAppInterface = ConversationDataFactory.a(new RecentUser(paramString, paramInt1), (QQAppInterface)paramAppInterface, paramAppInterface.getApp());
-        localObject1 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        localObject1 = p.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (RecentBaseData)((Iterator)localObject1).next();
           if (TextUtils.equals(((RecentBaseData)localObject2).getRecentUserUin(), paramString))
           {
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
-            localObject3 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+            p.remove(localObject2);
+            localObject3 = q;
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append(((RecentBaseData)localObject2).getRecentUserUin());
             ((StringBuilder)localObject4).append(((RecentBaseData)localObject2).getRecentUserType());
@@ -797,10 +769,10 @@ public class QQLSRecentManager
         }
         if (paramAppInterface != null)
         {
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramAppInterface);
+          p.add(0, paramAppInterface);
           if (paramBoolean2)
           {
-            paramString = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+            paramString = q;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append(paramAppInterface.getRecentUserUin());
             ((StringBuilder)localObject1).append(paramAppInterface.getRecentUserType());
@@ -812,10 +784,24 @@ public class QQLSRecentManager
     }
   }
   
-  public boolean b()
+  public CopyOnWriteArrayList<RecentBaseData> b()
+  {
+    return p;
+  }
+  
+  public void c()
+  {
+    p.clear();
+    q.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "mDataList clear");
+    }
+  }
+  
+  public boolean d()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = jdField_c_of_type_Long;
+    long l2 = l;
     if ((l2 > 0L) && (l1 - l2 < 5000L))
     {
       if (QLog.isColorLevel()) {
@@ -828,8 +814,8 @@ public class QQLSRecentManager
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQcallQCallFacade = null;
+    if (this.j != null) {
+      this.j = null;
     }
   }
   
@@ -844,33 +830,33 @@ public class QQLSRecentManager
         paramObservable.append(Thread.currentThread().getId());
         QLog.d("QQLSActivity", 2, paramObservable.toString());
       }
-      if (!QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+      if (!QQUtils.a(this.s.getApp()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "QQLSRecentManager update retrun ");
         }
         return;
       }
-      int i = ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class)).getAllUnreadMessageCount();
+      int i1 = ((INewFriendService)this.s.getRuntimeService(INewFriendService.class)).getAllUnreadMessageCount();
       paramObservable = (NewFriendMessage)paramObject;
-      if (!TextUtils.isEmpty(paramObservable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      if (!TextUtils.isEmpty(paramObservable.b(this.s)))
       {
-        if (paramObservable.a == 0L) {
+        if (paramObservable.d == 0L) {
           return;
         }
-        if ((i != 0) && (!f))
+        if ((i1 != 0) && (!i))
         {
-          boolean bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
-          boolean bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718400), "qqsetting_notify_showcontent_key", true);
+          boolean bool1 = SettingCloneUtil.readValue(this.s.getApp(), this.s.getAccount(), this.s.getApp().getString(2131891413), "qqsetting_lock_screen_whenexit_key", true);
+          boolean bool2 = SettingCloneUtil.readValue(this.s.getApp(), this.s.getAccount(), this.s.getApp().getString(2131915892), "qqsetting_notify_showcontent_key", true);
           if ((Boolean.valueOf(bool1).booleanValue()) && (Boolean.valueOf(bool2).booleanValue())) {
-            a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.RECOMMEND_CONTACT_UIN, 4000, false, MsgPushReportHelper.a(AppConstants.RECOMMEND_CONTACT_UIN, 4000, null));
+            a(this.s, AppConstants.RECOMMEND_CONTACT_UIN, 4000, false, MsgPushReportHelper.a(AppConstants.RECOMMEND_CONTACT_UIN, 4000, null));
           }
         }
         else if (QLog.isColorLevel())
         {
           paramObservable = new StringBuilder();
           paramObservable.append("QQLSRecentManager update retrun because unread =0 || isNewFriendEnterAio");
-          paramObservable.append(f);
+          paramObservable.append(i);
           QLog.d("QQLSActivity", 2, paramObservable.toString());
         }
       }

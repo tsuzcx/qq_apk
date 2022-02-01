@@ -27,95 +27,101 @@ import org.jetbrains.annotations.Nullable;
 public final class MediaDisplayLayout
   extends RelativeLayout
 {
-  public static final MediaDisplayLayout.Companion a;
-  private int jdField_a_of_type_Int = -1;
-  private MediaDisplayLayout.MediaDisplayGridAdapter jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter;
+  public static final MediaDisplayLayout.Companion a = new MediaDisplayLayout.Companion(null);
+  private boolean b = true;
   @NotNull
-  private ArrayList<DisplayItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<DisplayItem> c = new ArrayList();
+  private MediaDisplayLayout.MediaDisplayGridAdapter d;
+  private int e = -1;
   @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  private Function0<Unit> f;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int;
+  private Function1<? super Integer, Unit> g;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1;
-  private final int jdField_c_of_type_Int;
+  private Function1<? super Integer, Unit> h;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_c_of_type_KotlinJvmFunctionsFunction1;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$Companion = new MediaDisplayLayout.Companion(null);
-  }
+  private Function1<? super Integer, Unit> i;
+  private final int j;
+  private final int k;
   
   public MediaDisplayLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = DisplayUtils.a.a(paramContext, 26.0F);
-    this.jdField_c_of_type_Int = ((DisplayUtils.a.a(paramContext) - this.jdField_b_of_type_Int) / 3);
-    LayoutInflater.from(paramContext).inflate(R.layout.C, (ViewGroup)this, true);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter = new MediaDisplayLayout.MediaDisplayGridAdapter(this);
+    this.j = DisplayUtils.a.a(paramContext, 26.0F);
+    this.k = ((DisplayUtils.a.a(paramContext) - this.j) / 3);
+    LayoutInflater.from(paramContext).inflate(R.layout.y, (ViewGroup)this, true);
+    this.d = new MediaDisplayLayout.MediaDisplayGridAdapter(this);
     a();
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private final void a()
   {
-    GridView localGridView = (GridView)findViewById(R.id.O);
+    GridView localGridView = (GridView)findViewById(R.id.v);
     Intrinsics.checkExpressionValueIsNotNull(localGridView, "it");
-    localGridView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter);
+    localGridView.setAdapter((ListAdapter)this.d);
     localGridView.setOnTouchListener((View.OnTouchListener)new MediaDisplayLayout.initGridView..inlined.also.lambda.1(this));
   }
   
-  public final int a()
+  @NotNull
+  public final ArrayList<DisplayItem> getDisplayItems()
   {
-    return this.jdField_c_of_type_Int;
+    return this.c;
+  }
+  
+  public final int getDisplayItemsHeight()
+  {
+    return this.k;
   }
   
   @NotNull
-  public final ArrayList<DisplayItem> a()
+  public final MediaDisplayLayout.MediaDisplayGridAdapter getGridViewAdapter()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.d;
+  }
+  
+  public final int getLastClickPosition()
+  {
+    return this.e;
   }
   
   @Nullable
-  public final Function0<Unit> a()
+  public final Function1<Integer, Unit> getOnCoverSelectListener()
   {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
+    return this.h;
   }
   
   @Nullable
-  public final Function1<Integer, Unit> a()
+  public final Function1<Integer, Unit> getOnItemClickListener()
   {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.g;
   }
   
   @Nullable
-  public final Function1<Integer, Unit> b()
+  public final Function1<Integer, Unit> getOnItemDelListener()
   {
-    return this.jdField_b_of_type_KotlinJvmFunctionsFunction1;
+    return this.i;
   }
   
   @Nullable
-  public final Function1<Integer, Unit> c()
+  public final Function0<Unit> getOnScrollListener()
   {
-    return this.jdField_c_of_type_KotlinJvmFunctionsFunction1;
+    return this.f;
+  }
+  
+  public final boolean getShowDelImage()
+  {
+    return this.b;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    double d1 = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.getCount();
+    double d1 = this.d.getCount();
     double d2 = 3;
     Double.isNaN(d1);
     Double.isNaN(d2);
     d1 = Math.ceil(d1 / d2);
-    d2 = this.jdField_c_of_type_Int + 2;
+    d2 = this.k + 2;
     Double.isNaN(d2);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(d1 * d2), 1073741824));
   }
@@ -123,43 +129,43 @@ public final class MediaDisplayLayout
   public final void setDisplayItems(@NotNull ArrayList<DisplayItem> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "value");
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetMediaDisplayLayout$MediaDisplayGridAdapter.notifyDataSetChanged();
+    this.c = paramArrayList;
+    this.d.notifyDataSetChanged();
   }
   
   public final void setLastClickPosition(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public final void setOnCoverSelectListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.h = paramFunction1;
   }
   
   public final void setOnItemClickListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.g = paramFunction1;
   }
   
   public final void setOnItemDelListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_c_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.i = paramFunction1;
   }
   
   public final void setOnScrollListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.f = paramFunction0;
   }
   
   public final void setShowDelImage(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class FeedItemThumbAdapter$2
     try
     {
       float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      this.a.scrollTo((int)(300.0F - f * 300.0F), 0);
       return;
     }
     catch (Exception paramValueAnimator) {}

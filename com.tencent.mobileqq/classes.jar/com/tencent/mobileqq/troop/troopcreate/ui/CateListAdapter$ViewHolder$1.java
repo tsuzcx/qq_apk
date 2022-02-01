@@ -13,11 +13,11 @@ class CateListAdapter$ViewHolder$1
   public void onClick(View paramView)
   {
     TroopCateListProvider.TroopCateInfo localTroopCateInfo = (TroopCateListProvider.TroopCateInfo)paramView.getTag();
-    int i = localTroopCateInfo.b;
+    int i = localTroopCateInfo.e;
     String str1 = "";
     if (i == 1)
     {
-      this.a.a.a.a(localTroopCateInfo.a, null);
+      this.a.a.e.a(localTroopCateInfo.a, null);
       if (localTroopCateInfo.a != null) {
         str1 = localTroopCateInfo.a;
       }
@@ -25,12 +25,12 @@ class CateListAdapter$ViewHolder$1
     }
     else
     {
-      this.a.a.a.a(localTroopCateInfo.d, localTroopCateInfo.a);
+      this.a.a.e.a(localTroopCateInfo.f, localTroopCateInfo.a);
       String str2;
-      if (localTroopCateInfo.d == null) {
+      if (localTroopCateInfo.f == null) {
         str2 = "";
       } else {
-        str2 = localTroopCateInfo.d;
+        str2 = localTroopCateInfo.f;
       }
       if (localTroopCateInfo.a != null) {
         str1 = localTroopCateInfo.a;
@@ -42,7 +42,7 @@ class CateListAdapter$ViewHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.CateListAdapter.ViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

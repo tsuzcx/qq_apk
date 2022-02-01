@@ -20,7 +20,7 @@ class TroopDisbandActivity$1
       ITroopListHandler localITroopListHandler = (ITroopListHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
       if ((localObject != null) && (localITroopListHandler != null))
       {
-        long l = Long.parseLong(this.this$0.a);
+        long l = Long.parseLong(this.this$0.k);
         ((ITroopMemberListHandler)localObject).a(l, 0L, 5, 6, 1);
         localObject = new ArrayList();
         ((ArrayList)localObject).add(Long.valueOf(l));
@@ -38,7 +38,7 @@ class TroopDisbandActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.1
  * JD-Core Version:    0.7.0.1
  */

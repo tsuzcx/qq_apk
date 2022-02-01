@@ -2,20 +2,27 @@ package com.tencent.qqmini.sdk.core.utils;
 
 import android.net.Uri;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.FileMaterialInfo;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,7 +65,12 @@ public class AppBrandUtil
         }
       }
       localJSONObject.put("entryDataHash", getEntryDataHash(paramMiniAppInfo));
-      return localJSONObject;
+      paramString = getForwardMaterialsInfo(paramMiniAppInfo);
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        localJSONObject.put("forwardMaterials", paramString);
+        return localJSONObject;
+      }
     }
     catch (Throwable paramString)
     {
@@ -110,6 +122,50 @@ public class AppBrandUtil
     return null;
   }
   
+  private static JSONArray getForwardMaterialsInfo(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return null;
+    }
+    Object localObject1 = paramMiniAppInfo.launchParam.fileMaterialInfoList;
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return null;
+      }
+      paramMiniAppInfo = MiniAppFileManager.getMiniAppFileManager(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo == null)
+      {
+        QMLog.e("AppBrandUtil", "getForwardMaterialsInfo: fileManager not ready");
+        return null;
+      }
+      Object localObject2 = ((List)localObject1).iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (FileMaterialInfo)((Iterator)localObject2).next();
+        if (TextUtils.isEmpty(((FileMaterialInfo)localObject3).getTmpPath())) {
+          ((FileMaterialInfo)localObject3).setTmpPath(paramMiniAppInfo.getWxFilePath(((FileMaterialInfo)localObject3).getPath()));
+        }
+      }
+      paramMiniAppInfo = new JSONArray();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (FileMaterialInfo)((Iterator)localObject1).next();
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("type", ((FileMaterialInfo)localObject2).getMimeType());
+        ((JSONObject)localObject3).put("name", ((FileMaterialInfo)localObject2).getName());
+        ((JSONObject)localObject3).put("path", ((FileMaterialInfo)localObject2).getTmpPath());
+        ((JSONObject)localObject3).put("size", ((FileMaterialInfo)localObject2).getSize());
+        paramMiniAppInfo.put(localObject3);
+      }
+      return paramMiniAppInfo;
+    }
+    return null;
+  }
+  
+  @Deprecated
   public static JSONObject getPageLoadInfo(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
     JSONObject localJSONObject = new JSONObject();
@@ -452,10 +508,44 @@ public class AppBrandUtil
     }
     return "";
   }
+  
+  private static void replaceFileMaterialInfo(@NonNull MiniAppInfo paramMiniAppInfo)
+  {
+    Object localObject = paramMiniAppInfo.apkgInfo;
+    if (!(localObject instanceof ApkgInfo)) {
+      return;
+    }
+    localObject = (ApkgInfo)localObject;
+    JSONObject localJSONObject = ((ApkgInfo)localObject).getAppLaunchInfo();
+    if (localJSONObject == null) {
+      return;
+    }
+    try
+    {
+      paramMiniAppInfo = getForwardMaterialsInfo(paramMiniAppInfo);
+      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.length() > 0))
+      {
+        localJSONObject.put("forwardMaterials", paramMiniAppInfo);
+        ((ApkgInfo)localObject).updateAppLaunchInfo(localJSONObject);
+        return;
+      }
+    }
+    catch (JSONException paramMiniAppInfo)
+    {
+      QMLog.e("AppBrandUtil", "updateFileMaterialInfo: error:", paramMiniAppInfo);
+    }
+  }
+  
+  public static void updateAppLaunchInfoForApkgInfo(@NonNull MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramMiniAppInfo.launchParam.fileMaterialInfoList != null) && (!paramMiniAppInfo.launchParam.fileMaterialInfoList.isEmpty())) {
+      replaceFileMaterialInfo(paramMiniAppInfo);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.AppBrandUtil
  * JD-Core Version:    0.7.0.1
  */

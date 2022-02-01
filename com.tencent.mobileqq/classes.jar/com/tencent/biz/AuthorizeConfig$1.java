@@ -16,25 +16,25 @@ class AuthorizeConfig$1
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
+    if (l > AuthorizeConfig.d + 10000L)
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      AuthorizeConfig.jdField_a_of_type_Long = l;
+      this.this$0.v.getSharedPreferences("domainCmdRight", 4);
+      AuthorizeConfig.d = l;
     }
-    FlatBuffersParser.b();
-    l = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != AuthorizeConfig.jdField_b_of_type_Long)
+    FlatBuffersParser.c();
+    l = this.this$0.w.getLong("lastUpdate", 0L);
+    if (l != AuthorizeConfig.e)
     {
-      AuthorizeConfig.jdField_b_of_type_Long = l;
-      this.this$0.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
-      this.this$0.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
+      AuthorizeConfig.e = l;
+      this.this$0.x.g();
+      this.this$0.y.f();
       AuthorizeConfig localAuthorizeConfig = this.this$0;
+      localAuthorizeConfig.r = null;
+      localAuthorizeConfig.g = null;
+      localAuthorizeConfig.h = null;
       localAuthorizeConfig.f = null;
-      localAuthorizeConfig.jdField_b_of_type_OrgJsonJSONObject = null;
-      localAuthorizeConfig.c = null;
-      localAuthorizeConfig.jdField_a_of_type_OrgJsonJSONObject = null;
-      localAuthorizeConfig.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.this$0.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      localAuthorizeConfig.t.clear();
+      this.this$0.u.clear();
     }
   }
 }

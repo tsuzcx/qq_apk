@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class VideoLayerUI$TouchListener
   implements GLView.OnTouchListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private long jdField_a_of_type_Long = 0L;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private boolean jdField_b_of_type_Boolean = false;
+  private float b = 0.0F;
+  private float c = 0.0F;
+  private long d = 0L;
+  private boolean e = false;
+  private boolean f = false;
   
   public VideoLayerUI$TouchListener(VideoLayerUI paramVideoLayerUI) {}
   
@@ -32,73 +32,73 @@ public class VideoLayerUI$TouchListener
   {
     boolean bool = b(paramGLView, paramMotionEvent);
     if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Long = 0L;
+      this.a.R = 0L;
     }
     return bool;
   }
   
   boolean b(GLView paramGLView, MotionEvent paramMotionEvent)
   {
-    if ((paramGLView != null) && (paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    if ((paramGLView != null) && (paramMotionEvent != null) && (this.a.Y != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController == null) {
+      if (this.a.Z == null) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().v == 1) {
+      if (this.a.Z.k().ah == 1) {
         return true;
       }
       if (paramMotionEvent.getAction() == 0)
       {
-        this.jdField_a_of_type_Float = 0.0F;
-        this.jdField_b_of_type_Float = 0.0F;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getY();
+        this.b = 0.0F;
+        this.c = 0.0F;
+        this.d = System.currentTimeMillis();
+        this.b = paramMotionEvent.getX();
+        this.c = paramMotionEvent.getY();
         if (QLog.isColorLevel())
         {
-          localObject = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+          localObject = this.a.U;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("[childLock] touch onDown: ");
-          localStringBuilder.append(this.jdField_a_of_type_Float);
+          localStringBuilder.append(this.b);
           localStringBuilder.append(" x ");
-          localStringBuilder.append(this.jdField_b_of_type_Float);
+          localStringBuilder.append(this.c);
           localStringBuilder.append(" ==========");
           QLog.e((String)localObject, 2, localStringBuilder.toString());
         }
-        if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().w) {
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a();
+        if (this.a.Z.k().af) {
+          this.a.Q.a();
         } else {
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+          this.a.Q.a(this.b, this.c);
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = false;
+        this.e = false;
+        this.f = false;
       }
-      if ((!this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().w) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float) > 70.0F)))))
+      if ((!this.a.Z.k().af) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.b) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.c) > 70.0F)))))
       {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger);
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a()))
+        this.a.Y.a().removeCallbacks(this.a.Q);
+        if ((this.a.Q != null) && (this.a.Q.d()))
         {
           if (paramMotionEvent.getAction() == 1) {
-            this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.c();
+            this.a.Q.c();
           }
           if (QLog.isColorLevel()) {
-            QLog.e(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "[childLock] cancel animation");
+            QLog.e(this.a.U, 2, "[childLock] cancel animation");
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.e(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "[childLock] touch end ==========");
+          QLog.e(this.a.U, 2, "[childLock] touch end ==========");
         }
       }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().w)
+      if (this.a.Z.k().af)
       {
-        if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 200L) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null)) {
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.b();
+        if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.d < 200L) && (this.a.Q != null)) {
+          this.a.Q.b();
         }
         return true;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      ((VideoLayerUI)localObject).t = -1;
-      localObject = ((VideoLayerUI)localObject).jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+      Object localObject = this.a;
+      ((VideoLayerUI)localObject).ah = -1;
+      localObject = ((VideoLayerUI)localObject).ae;
       int k = localObject.length;
       int i = 0;
       int j = 0;
@@ -106,81 +106,81 @@ public class VideoLayerUI$TouchListener
       {
         if (paramGLView == localObject[i])
         {
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t = j;
+          this.a.ah = j;
           break;
         }
         j += 1;
         i += 1;
       }
-      if ((VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI)) && (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController != null) && (VideoLayerUIBase.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a())) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().c != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a().c.size() > 0))
+      if ((VideoLayerUI.k(this.a)) && (VideoLayerUI.l(this.a) != null) && (this.a.Z != null) && (VideoLayerUIBase.c(this.a.Z.k())) && (this.a.Z.k().bi != null) && (this.a.Z.k().bi.size() > 0))
       {
         i = (int)paramMotionEvent.getX();
         j = (int)paramMotionEvent.getY();
-        if ((paramMotionEvent.getAction() == 0) && (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).contains(i, j)))
+        if ((paramMotionEvent.getAction() == 0) && (VideoLayerUI.m(this.a).contains(i, j)))
         {
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Long = paramMotionEvent.getEventTime();
-          this.jdField_a_of_type_Boolean = true;
+          this.a.R = paramMotionEvent.getEventTime();
+          this.e = true;
         }
-        if (this.jdField_a_of_type_Boolean == true) {
-          if (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).contains(i, j))
+        if (this.e == true) {
+          if (VideoLayerUI.m(this.a).contains(i, j))
           {
-            VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).onTouchEvent(paramMotionEvent);
+            VideoLayerUI.l(this.a).onTouchEvent(paramMotionEvent);
             i = paramMotionEvent.getAction();
             if (i != 0)
             {
               if (i == 1) {
-                this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b();
+                this.a.m();
               }
             }
             else
             {
-              paramGLView = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-              VideoLayerUI.c(paramGLView, VideoLayerUI.a(paramGLView).a() ^ true);
-              VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a();
+              paramGLView = this.a;
+              VideoLayerUI.d(paramGLView, VideoLayerUI.n(paramGLView).a() ^ true);
+              VideoLayerUI.n(this.a).b();
             }
           }
-          else if (!this.jdField_b_of_type_Boolean)
+          else if (!this.f)
           {
             paramGLView = MotionEvent.obtain(paramMotionEvent);
             paramGLView.setAction(3);
-            VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).onTouchEvent(paramGLView);
-            this.jdField_b_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Long = paramMotionEvent.getEventTime();
+            VideoLayerUI.l(this.a).onTouchEvent(paramGLView);
+            this.f = true;
+            this.a.R = paramMotionEvent.getEventTime();
           }
         }
       }
-      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t = 0;
+      if ((this.a.ai != null) && (this.a.ai.getVisibility() == 0)) {
+        this.a.ah = 0;
       }
-      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidViewGestureDetector != null) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      if ((this.a.I != null) && (!this.e)) {
+        this.a.I.onTouchEvent(paramMotionEvent);
       }
-      if (VideoLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvVideoController.a()))
+      if (VideoLayerUIBase.b(this.a.Z.k()))
       {
-        paramGLView = SessionMgr.a().a();
+        paramGLView = SessionMgr.a().b();
         if ((paramGLView != null) && (paramGLView.r())) {
           return true;
         }
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) != null))
+        if ((this.a.ah == 1) && (VideoLayerUI.o(this.a) != null))
         {
-          if ((!VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a()) && (paramMotionEvent.getAction() != 0))
+          if ((!VideoLayerUI.o(this.a).b()) && (paramMotionEvent.getAction() != 0))
           {
             paramGLView = MotionEvent.obtain(paramMotionEvent);
             paramGLView.setAction(0);
-            VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a(paramGLView);
+            VideoLayerUI.o(this.a).a(paramGLView);
             paramGLView.recycle();
           }
-          VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a(paramMotionEvent);
-          this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Long = paramMotionEvent.getEventTime();
+          VideoLayerUI.o(this.a).a(paramMotionEvent);
+          this.a.R = paramMotionEvent.getEventTime();
           return true;
         }
       }
-      else if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0) && ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.r == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0)) && (2 == this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].g()) && (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) != null))
+      else if ((this.a.ah == 0) && ((this.a.ac == 0) || (this.a.ab == 0)) && (2 == this.a.ae[0].S()) && (VideoLayerUI.p(this.a) != null))
       {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Long = paramMotionEvent.getEventTime();
-        VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).onTouchEvent(paramMotionEvent);
-        if ((!VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).isInProgress()) && (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI) != null)) {
-          VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI).a(paramMotionEvent);
+        this.a.R = paramMotionEvent.getEventTime();
+        VideoLayerUI.p(this.a).onTouchEvent(paramMotionEvent);
+        if ((!VideoLayerUI.p(this.a).isInProgress()) && (VideoLayerUI.o(this.a) != null)) {
+          VideoLayerUI.o(this.a).a(paramMotionEvent);
         }
       }
       return true;

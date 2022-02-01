@@ -30,13 +30,13 @@ class HiddenChatFragment$2
         String str2 = (String)localIterator.next();
         paramInt2 = ((Integer)paramMap.get(str2)).intValue();
         if (paramInt2 == 4000) {
-          SharedPreUtils.h(paramString, str1, str2);
+          SharedPreUtils.k(paramString, str1, str2);
         } else if (paramInt2 != 0) {
           paramInt1 = 1;
         }
       }
       if (paramInt1 == 0) {
-        SharedPreUtils.j(this.a.getBaseActivity(), HiddenChatFragment.a(this.a).getCurrentAccountUin());
+        SharedPreUtils.ar(this.a.getBaseActivity(), HiddenChatFragment.a(this.a).getCurrentAccountUin());
       }
     }
   }
@@ -53,15 +53,15 @@ class HiddenChatFragment$2
         {
           paramString1 = paramString2;
           if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.getResources().getString(2131694666);
+            paramString1 = this.a.getResources().getString(2131892358);
           }
-          QQToast.a(this.a.getBaseActivity(), 1, paramString1, 0).a();
+          QQToast.makeText(this.a.getBaseActivity(), 1, paramString1, 0).show();
         }
       }
     }
     else
     {
-      this.a.a();
+      this.a.b();
       paramString1 = paramString2;
     }
     if (QLog.isColorLevel())
@@ -77,7 +77,7 @@ class HiddenChatFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.2
  * JD-Core Version:    0.7.0.1
  */

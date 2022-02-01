@@ -9,35 +9,35 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public class StoryDetailPresenter$DetailFeedPushObserver
   extends QQStoryObserver
 {
-  private StoryDetailPresenter.DetailFeedPushObserver.OnPushCallback a;
   public String a;
+  private StoryDetailPresenter.DetailFeedPushObserver.OnPushCallback b;
   
   public StoryDetailPresenter$DetailFeedPushObserver(String paramString, @NonNull StoryDetailPresenter.DetailFeedPushObserver.OnPushCallback paramOnPushCallback)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback = paramOnPushCallback;
+    this.a = paramString;
+    this.b = paramOnPushCallback;
   }
   
   public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPushMsg.d))
+    if (!TextUtils.equals(this.a, paramStoryPushMsg.f))
     {
-      SLog.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
+      SLog.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.f, this.a);
       return;
     }
     if ((paramStoryPushMsg.a != 15) && (paramStoryPushMsg.a != 19))
     {
       if ((paramStoryPushMsg.a != 14) && (paramStoryPushMsg.a != 16) && (paramStoryPushMsg.a != 18))
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(0);
+        this.b.a(0);
         return;
       }
       SLog.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(2);
+      this.b.a(2);
       return;
     }
     SLog.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(1);
+    this.b.a(1);
   }
 }
 

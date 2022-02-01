@@ -16,18 +16,18 @@ class XBubbleAnimation$4
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
+    if ((this.a.p.g()) || (this.a.q.g())) {
+      this.a.r.post(new XBubbleAnimation.4.1(this));
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
+    if ((this.a.p.C) && (this.a.q.C)) {
+      this.a.r.post(new XBubbleAnimation.4.2(this));
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4
  * JD-Core Version:    0.7.0.1
  */

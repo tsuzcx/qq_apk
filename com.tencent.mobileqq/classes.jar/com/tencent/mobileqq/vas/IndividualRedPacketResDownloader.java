@@ -43,75 +43,67 @@ import org.json.JSONObject;
 
 public class IndividualRedPacketResDownloader
 {
-  long jdField_a_of_type_Long;
-  public QQLruCache<String, IndividualRedPacketResDownloader.RedPacketTemplateInfo> a;
-  IndividualRedPacketManager jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public IndividualRedPacketResDownloader.Char300Info a;
-  public IndividualRedPacketResDownloader.RedPacketResInfo a;
-  CallBacker jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker = new IndividualRedPacketResDownloader.1(this);
-  public String a;
-  ArrayList<IndividualRedPacketResDownloader.DownloadHolder> jdField_a_of_type_JavaUtilArrayList;
-  public Map<String, List<String>> a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public IndividualRedPacketResDownloader.Char300Info b;
-  public String b;
-  public AtomicBoolean b;
-  public boolean b;
-  public String c;
+  QQAppInterface a;
+  public QQLruCache<String, IndividualRedPacketResDownloader.RedPacketTemplateInfo> b;
+  public IndividualRedPacketResDownloader.Char300Info c = new IndividualRedPacketResDownloader.Char300Info();
+  public IndividualRedPacketResDownloader.Char300Info d = new IndividualRedPacketResDownloader.Char300Info();
+  public IndividualRedPacketResDownloader.RedPacketResInfo e = new IndividualRedPacketResDownloader.RedPacketResInfo();
+  public String f = null;
+  public String g = null;
+  public String h = null;
+  ArrayList<IndividualRedPacketResDownloader.DownloadHolder> i;
+  public boolean j;
+  public boolean k;
+  public Map<String, List<String>> l = new HashMap();
+  AtomicBoolean m = new AtomicBoolean(false);
+  long n;
+  public AtomicBoolean o = new AtomicBoolean(false);
+  IndividualRedPacketManager p;
+  CallBacker q = new IndividualRedPacketResDownloader.1(this);
   
   public IndividualRedPacketResDownloader(QQAppInterface paramQQAppInterface, IndividualRedPacketManager paramIndividualRedPacketManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info = new IndividualRedPacketResDownloader.Char300Info();
-    this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info = new IndividualRedPacketResDownloader.Char300Info();
-    this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo = new IndividualRedPacketResDownloader.RedPacketResInfo();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager = paramIndividualRedPacketManager;
-    this.jdField_b_of_type_Boolean = paramIndividualRedPacketManager.b().getBoolean("mall_entrance_switch", false);
-    this.jdField_a_of_type_Boolean = paramIndividualRedPacketManager.b().getBoolean("redpacket_is_show_switch", false);
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(1009, 100, 300);
-    this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.f = 8;
-    this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.f = 26;
+    this.a = paramQQAppInterface;
+    this.d.a = "";
+    this.p = paramIndividualRedPacketManager;
+    this.k = paramIndividualRedPacketManager.c().getBoolean("mall_entrance_switch", false);
+    this.j = paramIndividualRedPacketManager.c().getBoolean("redpacket_is_show_switch", false);
+    this.b = new QQLruCache(1009, 100, 300);
+    this.e.k = 8;
+    this.d.k = 26;
     paramQQAppInterface = (IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+      paramQQAppInterface.addCallBacker(this.q);
     }
   }
   
   private int a(int paramInt1, int paramInt2, int paramInt3, JSONArray paramJSONArray, ArrayList<IndividualRedPacketResDownloader.DownloadHolder> paramArrayList)
   {
-    int i = paramInt2;
+    int i1 = paramInt2;
     paramInt2 = 0;
     boolean bool1;
     String str;
-    int j;
+    int i2;
     IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo;
     if (paramInt2 < paramJSONArray.length())
     {
-      if ((paramInt2 < paramInt1) && (i < paramInt3)) {
+      if ((paramInt2 < paramInt1) && (i1 < paramInt3)) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       str = paramJSONArray.optString(paramInt2);
       if (TextUtils.isEmpty(str)) {
-        j = i;
+        i2 = i1;
       } else {
-        localRedPacketTemplateInfo = (IndividualRedPacketResDownloader.RedPacketTemplateInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(str);
+        localRedPacketTemplateInfo = (IndividualRedPacketResDownloader.RedPacketTemplateInfo)this.b.get(str);
       }
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.l)
       {
-        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        if (!this.l.containsKey(str)) {
           break label189;
         }
         bool2 = a(false, str, localRedPacketTemplateInfo);
@@ -120,21 +112,21 @@ public class IndividualRedPacketResDownloader
         {
           bool3 = bool1;
           if (!bool2) {
-            bool3 = a(str);
+            bool3 = b(str);
           }
         }
-        j = i;
+        i2 = i1;
         if (bool3)
         {
-          j = i;
+          i2 = i1;
           if (!bool2) {
-            j = a(i, paramArrayList, str);
+            i2 = a(i1, paramArrayList, str);
           }
         }
         paramInt2 += 1;
-        i = j;
+        i1 = i2;
       }
-      return i;
+      return i1;
       label189:
       boolean bool2 = false;
     }
@@ -143,12 +135,12 @@ public class IndividualRedPacketResDownloader
   private int a(int paramInt, ArrayList<IndividualRedPacketResDownloader.DownloadHolder> paramArrayList, String paramString)
   {
     IndividualRedPacketResDownloader.DownloadHolder localDownloadHolder = new IndividualRedPacketResDownloader.DownloadHolder();
-    localDownloadHolder.jdField_a_of_type_Long = 16L;
+    localDownloadHolder.a = 16L;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("luckyMoney.item.");
     localStringBuilder.append(paramString);
-    localDownloadHolder.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    localDownloadHolder.jdField_b_of_type_JavaLangString = IndividualRedPacketManager.a(paramString, null, 0, 0, 0);
+    localDownloadHolder.b = localStringBuilder.toString();
+    localDownloadHolder.c = IndividualRedPacketManager.a(paramString, null, 0, 0, 0);
     paramArrayList.add(localDownloadHolder);
     return paramInt + 1;
   }
@@ -156,10 +148,10 @@ public class IndividualRedPacketResDownloader
   private IndividualRedPacketResDownloader.RedPacketTemplateInfo a(String paramString, IndividualRedPacketResDownloader.RedPacketTemplateInfo paramRedPacketTemplateInfo)
   {
     IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo;
-    if ((paramRedPacketTemplateInfo != null) && (!a(paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) && (!a(paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)))
+    if ((paramRedPacketTemplateInfo != null) && (!a(paramRedPacketTemplateInfo.b)) && (!a(paramRedPacketTemplateInfo.c)))
     {
       localRedPacketTemplateInfo = paramRedPacketTemplateInfo;
-      if (!a(paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) {}
+      if (!a(paramRedPacketTemplateInfo.d)) {}
     }
     else
     {
@@ -168,135 +160,40 @@ public class IndividualRedPacketResDownloader
     return localRedPacketTemplateInfo;
   }
   
-  @NotNull
-  private ArrayList<IndividualRedPacketResDownloader.DownloadHolder> a(JSONObject paramJSONObject, boolean paramBoolean)
-  {
-    Object localObject1 = paramJSONObject.optJSONArray("isPreload");
-    int i = 5;
-    int j;
-    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
-    {
-      localObject1 = ((JSONArray)localObject1).optJSONObject(0);
-      i = ((JSONObject)localObject1).optInt("isPreload", 5);
-      j = ((JSONObject)localObject1).optInt("preloadTotal", 50);
-    }
-    else
-    {
-      j = 50;
-    }
-    Object localObject2 = paramJSONObject.optJSONArray("templateIdList");
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkAndDownloadBeforeUse ,emergencyDownload:");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(", templateIdList:");
-      if (localObject2 == null) {
-        localObject1 = "null";
-      } else {
-        localObject1 = Integer.valueOf(((JSONArray)localObject2).length());
-      }
-      localStringBuilder.append(localObject1);
-      QLog.d("IndividualRedPacketResDownloader", 2, localStringBuilder.toString());
-    }
-    localObject1 = new ArrayList();
-    int k = 0;
-    if (localObject2 != null) {
-      k = a(j, 0, i, (JSONArray)localObject2, (ArrayList)localObject1);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("checkAndDownloadBeforeUse finish! size = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.size());
-      ((StringBuilder)localObject2).append(", preloadSize=");
-      ((StringBuilder)localObject2).append(k);
-      ((StringBuilder)localObject2).append(", totalCanPreload=");
-      ((StringBuilder)localObject2).append(i);
-      QLog.d("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject2).toString());
-    }
-    a(paramJSONObject.optJSONArray("vipRedPacketURL"));
-    return localObject1;
-  }
-  
   @Nullable
   private JSONObject a(JSONObject paramJSONObject)
   {
-    long l = paramJSONObject.optLong("timestamp", 1L);
+    long l1 = paramJSONObject.optLong("timestamp", 1L);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initAllConfigJson timestamp=");
-      localStringBuilder.append(l);
+      localStringBuilder.append(l1);
       localStringBuilder.append(", mJsonTimestamp:");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.n);
       QLog.d("IndividualRedPacketResDownloader", 2, localStringBuilder.toString());
     }
-    if (l <= this.jdField_a_of_type_Long) {
+    if (l1 <= this.n) {
       return null;
     }
-    this.jdField_a_of_type_Long = l;
+    this.n = l1;
     paramJSONObject = paramJSONObject.optJSONObject("data");
     if (paramJSONObject == null)
     {
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("initAllConfigJson, null == data, timestamp=");
-      paramJSONObject.append(l);
+      paramJSONObject.append(l1);
       paramJSONObject.append(", mJsonTimestamp:");
-      paramJSONObject.append(this.jdField_a_of_type_Long);
+      paramJSONObject.append(this.n);
       QLog.e("IndividualRedPacketResDownloader", 2, paramJSONObject.toString());
       return null;
     }
     return paramJSONObject;
   }
   
-  @Nullable
-  private JSONObject a(boolean paramBoolean1, boolean paramBoolean2, String paramString, File paramFile)
-  {
-    StringBuilder localStringBuilder1;
-    if ((paramFile != null) && (paramFile.exists())) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent(paramFile));
-      }
-      catch (Throwable localThrowable)
-      {
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("initJsonBySCID ,filePath:");
-        localStringBuilder2.append(paramFile.getAbsolutePath());
-        QLog.e("IndividualRedPacketResDownloader", 2, localStringBuilder2.toString(), localThrowable);
-      }
-    } else {
-      localStringBuilder1 = null;
-    }
-    if (localStringBuilder1 == null)
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("initJsonBySCID null == resJson, scid=");
-        localStringBuilder1.append(paramString);
-        localStringBuilder1.append(", isAfterDownload:");
-        localStringBuilder1.append(paramBoolean1);
-        localStringBuilder1.append(", isInit");
-        localStringBuilder1.append(paramBoolean2);
-        localStringBuilder1.append(", file=");
-        if (paramFile != null) {
-          paramString = paramFile.getAbsolutePath();
-        } else {
-          paramString = "null";
-        }
-        localStringBuilder1.append(paramString);
-        QLog.e("IndividualRedPacketResDownloader", 2, localStringBuilder1.toString());
-      }
-      return null;
-    }
-    return localStringBuilder1;
-  }
-  
   private void a(File paramFile, String paramString)
   {
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_b_of_type_JavaLangString)) && (!paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().getString("special_unzip_version_key", ""))))
+    if ((!TextUtils.isEmpty(this.d.b)) && (!paramString.equals(this.p.c().getString("special_unzip_version_key", ""))))
     {
       File localFile = new File(IndividualRedPacketManager.a(null, null, 26, 0, 0));
       Object localObject = new StringBuilder();
@@ -305,7 +202,7 @@ public class IndividualRedPacketResDownloader
       localObject = ((StringBuilder)localObject).toString();
       if (a(localFile.getAbsolutePath(), (String)localObject))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().edit().putString("special_unzip_version_key", paramString).commit();
+        this.p.c().edit().putString("special_unzip_version_key", paramString).commit();
         return;
       }
       if ((!localFile.exists()) && (paramFile != null)) {
@@ -314,23 +211,9 @@ public class IndividualRedPacketResDownloader
     }
   }
   
-  private void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getFilesDir());
-      ((StringBuilder)localObject).append(File.separator);
-      ((StringBuilder)localObject).append("pddata/vas/redpacket/");
-      ((StringBuilder)localObject).append("iRedPacket_v3.char300.json");
-      localObject = ((StringBuilder)localObject).toString();
-      a(true, false, paramString, VasUpdateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", (String)localObject, false, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker));
-    }
-  }
-  
   private void a(String paramString, boolean paramBoolean, int paramInt1, IndividualRedPacketResDownloader.RedPacketResInfo paramRedPacketResInfo, int paramInt2)
   {
-    paramRedPacketResInfo.e = paramInt1;
+    paramRedPacketResInfo.j = paramInt1;
     if (paramBoolean) {
       a(true, false, paramString, new File(IndividualRedPacketManager.a(null, null, paramInt2, 0, 0)));
     }
@@ -353,57 +236,57 @@ public class IndividualRedPacketResDownloader
     Object localObject = paramJSONObject.optJSONArray("aioChar");
     if ((localObject != null) && (((JSONArray)localObject).length() >= 4))
     {
-      paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_AndroidGraphicsRect = new Rect(((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(0) + ((JSONArray)localObject).optInt(2), ((JSONArray)localObject).optInt(1) + ((JSONArray)localObject).optInt(3));
-      paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_Int = ((JSONArray)localObject).optInt(2);
+      paramRedPacketTemplateInfo.b.b = new Rect(((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(0) + ((JSONArray)localObject).optInt(2), ((JSONArray)localObject).optInt(1) + ((JSONArray)localObject).optInt(3));
+      paramRedPacketTemplateInfo.b.a = ((JSONArray)localObject).optInt(2);
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getTemplateByJson aioChar error,name:");
-      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.b.f);
       ((StringBuilder)localObject).append(", id:");
-      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.a);
       ((StringBuilder)localObject).append(", isV710:");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.e("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject).toString());
-      paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_AndroidGraphicsRect = new Rect(1, 1, 1, 1);
-      paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_Int = 1;
-      paramRedPacketTemplateInfo.jdField_a_of_type_Int = IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_c_of_type_Int;
+      paramRedPacketTemplateInfo.b.b = new Rect(1, 1, 1, 1);
+      paramRedPacketTemplateInfo.b.a = 1;
+      paramRedPacketTemplateInfo.e = IndividualRedPacketResDownloader.RedPacketTemplateInfo.g;
     }
     localObject = paramJSONObject.optJSONArray("packetChar");
     if ((localObject != null) && (((JSONArray)localObject).length() >= 4))
     {
-      paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_AndroidGraphicsRect = new Rect(((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(0) + ((JSONArray)localObject).optInt(2), ((JSONArray)localObject).optInt(1) + ((JSONArray)localObject).optInt(3));
-      paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_Int = ((JSONArray)localObject).optInt(2);
+      paramRedPacketTemplateInfo.c.b = new Rect(((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(0) + ((JSONArray)localObject).optInt(2), ((JSONArray)localObject).optInt(1) + ((JSONArray)localObject).optInt(3));
+      paramRedPacketTemplateInfo.c.a = ((JSONArray)localObject).optInt(2);
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getTemplateByJson packetChar error,name:");
-      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.b.f);
       ((StringBuilder)localObject).append(", id:");
-      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRedPacketTemplateInfo.a);
       ((StringBuilder)localObject).append(", isV710:");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.e("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject).toString());
-      paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_AndroidGraphicsRect = new Rect(1, 1, 1, 1);
-      paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_Int = 1;
-      paramRedPacketTemplateInfo.jdField_a_of_type_Int = IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_c_of_type_Int;
+      paramRedPacketTemplateInfo.c.b = new Rect(1, 1, 1, 1);
+      paramRedPacketTemplateInfo.c.a = 1;
+      paramRedPacketTemplateInfo.e = IndividualRedPacketResDownloader.RedPacketTemplateInfo.g;
     }
     paramJSONObject = paramJSONObject.optJSONArray("sendChar");
     if ((paramJSONObject != null) && (paramJSONObject.length() >= 4))
     {
-      paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramJSONObject.optInt(0), paramJSONObject.optInt(1), paramJSONObject.optInt(0) + paramJSONObject.optInt(2), paramJSONObject.optInt(1) + paramJSONObject.optInt(3));
-      paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_Int = paramJSONObject.optInt(2);
+      paramRedPacketTemplateInfo.d.b = new Rect(paramJSONObject.optInt(0), paramJSONObject.optInt(1), paramJSONObject.optInt(0) + paramJSONObject.optInt(2), paramJSONObject.optInt(1) + paramJSONObject.optInt(3));
+      paramRedPacketTemplateInfo.d.a = paramJSONObject.optInt(2);
       return;
     }
     if (QLog.isColorLevel())
     {
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("getTemplateByJson sendChar error,name:");
-      paramJSONObject.append(paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString);
+      paramJSONObject.append(paramRedPacketTemplateInfo.b.f);
       paramJSONObject.append(", id:");
-      paramJSONObject.append(paramRedPacketTemplateInfo.jdField_a_of_type_JavaLangString);
+      paramJSONObject.append(paramRedPacketTemplateInfo.a);
       paramJSONObject.append(", isV710:");
       paramJSONObject.append(paramBoolean);
       QLog.d("IndividualRedPacketResDownloader", 2, paramJSONObject.toString());
@@ -412,31 +295,18 @@ public class IndividualRedPacketResDownloader
   
   private void a(boolean paramBoolean, ArrayList<IndividualRedPacketResDownloader.DownloadHolder> paramArrayList, int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.i;
     if (localArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+      this.i = paramArrayList;
     } else {
       localArrayList.addAll(paramArrayList);
     }
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && ((1 == paramInt) || (paramBoolean)) && (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b()))
+    if ((!this.m.get()) && ((1 == paramInt) || (paramBoolean)) && (this.p.g()))
     {
       a();
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      IndividualRedPacketManager localIndividualRedPacketManager = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
-      if (localIndividualRedPacketManager == null) {
-        return true;
-      }
-      return localIndividualRedPacketManager.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return true;
+    this.i = null;
   }
   
   public static boolean a(IndividualRedPacketResDownloader.RedPacketResInfo paramRedPacketResInfo)
@@ -445,10 +315,10 @@ public class IndividualRedPacketResDownloader
     boolean bool1 = bool2;
     if (paramRedPacketResInfo != null)
     {
-      if (paramRedPacketResInfo.f == 0) {
+      if (paramRedPacketResInfo.k == 0) {
         return false;
       }
-      paramRedPacketResInfo = IndividualRedPacketManager.a(paramRedPacketResInfo.jdField_d_of_type_JavaLangString, paramRedPacketResInfo.jdField_c_of_type_JavaLangString, paramRedPacketResInfo.f, paramRedPacketResInfo.jdField_d_of_type_Int, 0);
+      paramRedPacketResInfo = IndividualRedPacketManager.a(paramRedPacketResInfo.g, paramRedPacketResInfo.f, paramRedPacketResInfo.k, paramRedPacketResInfo.i, 0);
       if (TextUtils.isEmpty(paramRedPacketResInfo)) {
         paramRedPacketResInfo = null;
       } else {
@@ -472,12 +342,12 @@ public class IndividualRedPacketResDownloader
   
   private boolean a(IndividualRedPacketResDownloader.RedPacketTemplateInfo paramRedPacketTemplateInfo)
   {
-    if ((paramRedPacketTemplateInfo != null) && (paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo != null) && (paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo != null))
+    if ((paramRedPacketTemplateInfo != null) && (paramRedPacketTemplateInfo.b != null) && (paramRedPacketTemplateInfo.c != null))
     {
-      if (paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo == null) {
+      if (paramRedPacketTemplateInfo.d == null) {
         return true;
       }
-      return new File(IndividualRedPacketManager.a(paramRedPacketTemplateInfo.jdField_a_of_type_JavaLangString, null, 0, 0, 0)).exists();
+      return new File(IndividualRedPacketManager.a(paramRedPacketTemplateInfo.a, null, 0, 0, 0)).exists();
     }
     return true;
   }
@@ -496,25 +366,25 @@ public class IndividualRedPacketResDownloader
       QLog.e("IndividualRedPacketResDownloader", 2, "updateResVersion templateList fail Err, return");
       return true;
     }
-    int i = 0;
-    while (i < localJSONArray.length())
+    int i1 = 0;
+    while (i1 < localJSONArray.length())
     {
-      Object localObject2 = a(localJSONArray.optJSONObject(i), false);
+      Object localObject2 = a(localJSONArray.optJSONObject(i1), false);
       if (!a((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2))
       {
         paramJSONObject = new StringBuilder();
-        paramJSONObject.append(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).jdField_a_of_type_JavaLangString);
+        paramJSONObject.append(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).a);
         paramJSONObject.append("_");
-        paramJSONObject.append(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).jdField_d_of_type_Int);
+        paramJSONObject.append(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).h);
         Object localObject3 = paramJSONObject.toString();
         paramJSONObject = new StringBuilder();
         paramJSONObject.append(paramFile1.getAbsolutePath());
         paramJSONObject.append(File.separator);
         paramJSONObject.append((String)localObject3);
         Object localObject1 = paramJSONObject.toString();
-        IndividualRedPacketResDownloader.DecorateInfo localDecorateInfo = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
+        IndividualRedPacketResDownloader.DecorateInfo localDecorateInfo = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).b;
         paramJSONObject = (JSONObject)localObject1;
-        if (localDecorateInfo.f == 19)
+        if (localDecorateInfo.k == 19)
         {
           paramJSONObject = new StringBuilder();
           paramJSONObject.append((String)localObject1);
@@ -535,33 +405,33 @@ public class IndividualRedPacketResDownloader
           paramJSONObject.append(File.separator);
           paramJSONObject.append((String)localObject3);
           localObject1[2] = paramJSONObject.toString();
-          paramJSONObject = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
-          localObject3 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
+          paramJSONObject = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).c;
+          localObject3 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject2).d;
           localObject2 = new String[3];
-          localObject2[0] = IndividualRedPacketManager.a(localDecorateInfo.jdField_d_of_type_JavaLangString, localDecorateInfo.jdField_c_of_type_JavaLangString, localDecorateInfo.f, localDecorateInfo.jdField_d_of_type_Int, 0);
-          localObject2[1] = IndividualRedPacketManager.a(paramJSONObject.jdField_d_of_type_JavaLangString, paramJSONObject.jdField_c_of_type_JavaLangString, paramJSONObject.f, paramJSONObject.jdField_d_of_type_Int, 0);
-          localObject2[2] = IndividualRedPacketManager.a(((IndividualRedPacketResDownloader.DecorateInfo)localObject3).jdField_d_of_type_JavaLangString, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).jdField_c_of_type_JavaLangString, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).f, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).jdField_d_of_type_Int, 0);
-          int j = 0;
-          while (j < localObject1.length)
+          localObject2[0] = IndividualRedPacketManager.a(localDecorateInfo.g, localDecorateInfo.f, localDecorateInfo.k, localDecorateInfo.i, 0);
+          localObject2[1] = IndividualRedPacketManager.a(paramJSONObject.g, paramJSONObject.f, paramJSONObject.k, paramJSONObject.i, 0);
+          localObject2[2] = IndividualRedPacketManager.a(((IndividualRedPacketResDownloader.DecorateInfo)localObject3).g, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).f, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).k, ((IndividualRedPacketResDownloader.DecorateInfo)localObject3).i, 0);
+          int i2 = 0;
+          while (i2 < localObject1.length)
           {
-            if (!FileUtils.copyFile(localObject1[j], localObject2[j]))
+            if (!FileUtils.copyFile(localObject1[i2], localObject2[i2]))
             {
               if (!QLog.isColorLevel()) {
                 break;
               }
               paramJSONObject = new StringBuilder();
               paramJSONObject.append("updateResVersion copyFile aio file Err:");
-              paramJSONObject.append(localObject1[j]);
+              paramJSONObject.append(localObject1[i2]);
               paramJSONObject.append(", newPath:");
-              paramJSONObject.append(localObject2[j]);
+              paramJSONObject.append(localObject2[i2]);
               QLog.e("IndividualRedPacketResDownloader", 2, paramJSONObject.toString());
               break;
             }
-            j += 1;
+            i2 += 1;
           }
         }
       }
-      i += 1;
+      i1 += 1;
     }
     return false;
   }
@@ -610,14 +480,6 @@ public class IndividualRedPacketResDownloader
     return bool;
   }
   
-  private boolean a(String paramString)
-  {
-    if (new File(IndividualRedPacketManager.a(paramString, null, 0, 0, 0)).exists()) {
-      return false;
-    }
-    return new File(IndividualRedPacketManager.a(paramString, null, 3, 0, 0)).exists() ^ true;
-  }
-  
   private boolean a(String paramString, int paramInt)
   {
     boolean bool;
@@ -640,9 +502,9 @@ public class IndividualRedPacketResDownloader
     String str;
     if ("iRedPacket_v3.char300.json".equals(paramString))
     {
-      a(paramString, bool);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str = IndividualRedPacketManager.jdField_c_of_type_JavaLangString;
+      b(paramString, bool);
+      localQQAppInterface = this.a;
+      str = IndividualRedPacketManager.G;
       if (bool) {
         paramString = "1";
       } else {
@@ -653,9 +515,9 @@ public class IndividualRedPacketResDownloader
     }
     if ("iRedPacket_v3.font.zip".equals(paramString))
     {
-      a(paramString, bool, paramInt, this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo, 21);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str = IndividualRedPacketManager.jdField_c_of_type_JavaLangString;
+      a(paramString, bool, paramInt, this.e, 21);
+      localQQAppInterface = this.a;
+      str = IndividualRedPacketManager.G;
       if (bool) {
         paramString = "1";
       } else {
@@ -666,11 +528,11 @@ public class IndividualRedPacketResDownloader
     }
     if ("iRedPacket_v3.specialChar.zip".equals(paramString))
     {
-      a(paramString, bool, paramInt, this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info, 25);
+      a(paramString, bool, paramInt, this.d, 25);
       return bool;
     }
     if (paramString.startsWith("luckyMoney.item.")) {
-      b(paramString, bool);
+      c(paramString, bool);
     }
     return bool;
   }
@@ -680,7 +542,7 @@ public class IndividualRedPacketResDownloader
     File localFile = new File(paramString1);
     boolean bool1 = localFile.exists();
     boolean bool3 = true;
-    int i;
+    int i1;
     if ((bool1) && (localFile.isFile()))
     {
       Object localObject;
@@ -698,7 +560,7 @@ public class IndividualRedPacketResDownloader
         if (!((File)localObject).exists()) {
           break label202;
         }
-        i = ThemeUtil.getFileNumInFile((File)localObject);
+        i1 = ThemeUtil.getFileNumInFile((File)localObject);
       }
       catch (IOException localIOException)
       {
@@ -725,8 +587,8 @@ public class IndividualRedPacketResDownloader
       }
       return bool3;
       label202:
-      i = 0;
-      if (i <= 0) {
+      i1 = 0;
+      if (i1 <= 0) {
         break;
       }
     }
@@ -751,78 +613,88 @@ public class IndividualRedPacketResDownloader
     return paramBoolean2;
   }
   
-  private boolean a(JSONObject paramJSONObject, boolean paramBoolean)
-  {
-    Object localObject = paramJSONObject.optString("time");
-    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject);
-    boolean bool2 = true;
-    if (!bool1) {
-      if (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject).getTime() - NetConnInfoCenter.getServerTimeMillis() < 172800000L) {
-        paramBoolean = true;
-      } else {
-        paramBoolean = false;
-      }
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-    if (paramJSONObject.has("androidShowSwitch"))
-    {
-      if (paramJSONObject.getInt("androidShowSwitch") == 1) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      this.jdField_a_of_type_Boolean = bool1;
-    }
-    if (paramJSONObject.has("androidEntrySwitch"))
-    {
-      if (paramJSONObject.getInt("androidEntrySwitch") == 1) {
-        bool1 = bool2;
-      } else {
-        bool1 = false;
-      }
-      this.jdField_b_of_type_Boolean = bool1;
-    }
-    if ((this.jdField_a_of_type_Boolean != ((SharedPreferences)localObject).getBoolean("redpacket_is_show_switch", false)) || (this.jdField_b_of_type_Boolean != ((SharedPreferences)localObject).getBoolean("mall_entrance_switch", false)))
-    {
-      localEditor.putBoolean("redpacket_is_show_switch", this.jdField_a_of_type_Boolean);
-      localEditor.putBoolean("mall_entrance_switch", this.jdField_b_of_type_Boolean);
-      localEditor.commit();
-    }
-    return paramBoolean;
-  }
-  
   private boolean a(boolean paramBoolean, String paramString, IndividualRedPacketResDownloader.RedPacketTemplateInfo paramRedPacketTemplateInfo)
   {
     paramRedPacketTemplateInfo = a(paramString, paramRedPacketTemplateInfo);
-    if ((paramRedPacketTemplateInfo != null) && (a(paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) && (a(paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) && (a(paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)))
+    if ((paramRedPacketTemplateInfo != null) && (a(paramRedPacketTemplateInfo.b)) && (a(paramRedPacketTemplateInfo.c)) && (a(paramRedPacketTemplateInfo.d)))
     {
-      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      int i = 0;
-      while (i < localList.size())
+      List localList = (List)this.l.get(paramString);
+      int i1 = 0;
+      while (i1 < localList.size())
       {
-        String str = (String)localList.get(i);
+        String str = (String)localList.get(i1);
         if (!TextUtils.isEmpty(str))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str, paramRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
-          IndividualRedPacketManager localIndividualRedPacketManager = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
+          this.p.a(str, paramRedPacketTemplateInfo.b.k);
+          IndividualRedPacketManager localIndividualRedPacketManager = this.p;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("_tp");
-          localIndividualRedPacketManager.a(localStringBuilder.toString(), paramRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
-          localIndividualRedPacketManager = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
+          localIndividualRedPacketManager.a(localStringBuilder.toString(), paramRedPacketTemplateInfo.c.k);
+          localIndividualRedPacketManager = this.p;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("_send");
-          localIndividualRedPacketManager.a(localStringBuilder.toString(), paramRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
+          localIndividualRedPacketManager.a(localStringBuilder.toString(), paramRedPacketTemplateInfo.d.k);
         }
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      this.l.remove(paramString);
       return paramBoolean;
     }
     a(16L, paramString, null);
     return true;
+  }
+  
+  @NotNull
+  private ArrayList<IndividualRedPacketResDownloader.DownloadHolder> b(JSONObject paramJSONObject, boolean paramBoolean)
+  {
+    Object localObject1 = paramJSONObject.optJSONArray("isPreload");
+    int i1 = 5;
+    int i2;
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    {
+      localObject1 = ((JSONArray)localObject1).optJSONObject(0);
+      i1 = ((JSONObject)localObject1).optInt("isPreload", 5);
+      i2 = ((JSONObject)localObject1).optInt("preloadTotal", 50);
+    }
+    else
+    {
+      i2 = 50;
+    }
+    Object localObject2 = paramJSONObject.optJSONArray("templateIdList");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndDownloadBeforeUse ,emergencyDownload:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", templateIdList:");
+      if (localObject2 == null) {
+        localObject1 = "null";
+      } else {
+        localObject1 = Integer.valueOf(((JSONArray)localObject2).length());
+      }
+      localStringBuilder.append(localObject1);
+      QLog.d("IndividualRedPacketResDownloader", 2, localStringBuilder.toString());
+    }
+    localObject1 = new ArrayList();
+    int i3 = 0;
+    if (localObject2 != null) {
+      i3 = a(i2, 0, i1, (JSONArray)localObject2, (ArrayList)localObject1);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkAndDownloadBeforeUse finish! size = ");
+      ((StringBuilder)localObject2).append(this.b.size());
+      ((StringBuilder)localObject2).append(", preloadSize=");
+      ((StringBuilder)localObject2).append(i3);
+      ((StringBuilder)localObject2).append(", totalCanPreload=");
+      ((StringBuilder)localObject2).append(i1);
+      QLog.d("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject2).toString());
+    }
+    a(paramJSONObject.optJSONArray("vipRedPacketURL"));
+    return localObject1;
   }
   
   private JSONObject b(JSONObject paramJSONObject)
@@ -830,35 +702,131 @@ public class IndividualRedPacketResDownloader
     if (QLog.isColorLevel()) {
       QLog.d("IndividualRedPacketResDownloader", 2, "updateResVersion null == resJson waiting download");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    String str = ClubContentJsonTask.g.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a.getApplication().getApplicationContext();
+    String str = ClubContentJsonTask.g.a;
     localObject = new File(((Context)localObject).getFilesDir(), str);
-    localObject = new DownloadTask(ClubContentJsonTask.g.jdField_b_of_type_JavaLangString, (File)localObject);
-    ((DownloadTask)localObject).n = true;
-    if (DownloaderFactory.a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
-      return ClubContentJsonTask.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ClubContentJsonTask.g, false);
+    localObject = new DownloadTask(ClubContentJsonTask.g.b, (File)localObject);
+    ((DownloadTask)localObject).J = true;
+    if (DownloaderFactory.a((DownloadTask)localObject, this.a) == 0) {
+      return ClubContentJsonTask.a(this.a, ClubContentJsonTask.g, false);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateResVersion download Err : ");
-    ((StringBuilder)localObject).append(ClubContentJsonTask.g.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(ClubContentJsonTask.g.b);
     QLog.e("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject).toString());
     return paramJSONObject;
   }
   
+  @Nullable
+  private JSONObject b(boolean paramBoolean1, boolean paramBoolean2, String paramString, File paramFile)
+  {
+    StringBuilder localStringBuilder1;
+    if ((paramFile != null) && (paramFile.exists())) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent(paramFile));
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("initJsonBySCID ,filePath:");
+        localStringBuilder2.append(paramFile.getAbsolutePath());
+        QLog.e("IndividualRedPacketResDownloader", 2, localStringBuilder2.toString(), localThrowable);
+      }
+    } else {
+      localStringBuilder1 = null;
+    }
+    if (localStringBuilder1 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("initJsonBySCID null == resJson, scid=");
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append(", isAfterDownload:");
+        localStringBuilder1.append(paramBoolean1);
+        localStringBuilder1.append(", isInit");
+        localStringBuilder1.append(paramBoolean2);
+        localStringBuilder1.append(", file=");
+        if (paramFile != null) {
+          paramString = paramFile.getAbsolutePath();
+        } else {
+          paramString = "null";
+        }
+        localStringBuilder1.append(paramString);
+        QLog.e("IndividualRedPacketResDownloader", 2, localStringBuilder1.toString());
+      }
+      return null;
+    }
+    return localStringBuilder1;
+  }
+  
   private void b(String paramString, boolean paramBoolean)
   {
+    if (paramBoolean)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getFilesDir());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("pddata/vas/redpacket/");
+      ((StringBuilder)localObject).append("iRedPacket_v3.char300.json");
+      localObject = ((StringBuilder)localObject).toString();
+      a(true, false, paramString, VasUpdateUtil.a(this.a, 16L, "iRedPacket_v3.char300.json", (String)localObject, false, this.q));
+    }
+  }
+  
+  private void b(JSONArray paramJSONArray)
+  {
+    int i1 = 0;
+    while (i1 < paramJSONArray.length())
+    {
+      Object localObject = paramJSONArray.optJSONObject(i1);
+      String str = ((JSONObject)localObject).optString("name");
+      localObject = ((JSONObject)localObject).optString("url", null);
+      if ("aioTail".equals(str)) {
+        this.g = ((String)localObject);
+      } else if ("personalityMall".equals(str)) {
+        this.f = ((String)localObject);
+      } else if ("tencentPay".equals(str)) {
+        this.h = ((String)localObject);
+      }
+      i1 += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramJSONArray = new StringBuilder();
+      paramJSONArray.append("checkAndDownloadBeforeUse mAioTailURL:");
+      paramJSONArray.append(this.g);
+      paramJSONArray.append(", mTencentPayURL:");
+      paramJSONArray.append(this.h);
+      paramJSONArray.append(", mPersonalityMallURL:");
+      paramJSONArray.append(this.f);
+      QLog.d("IndividualRedPacketResDownloader", 2, paramJSONArray.toString());
+    }
+  }
+  
+  private boolean b(String paramString)
+  {
+    if (new File(IndividualRedPacketManager.a(paramString, null, 0, 0, 0)).exists()) {
+      return false;
+    }
+    return new File(IndividualRedPacketManager.a(paramString, null, 3, 0, 0)).exists() ^ true;
+  }
+  
+  private void c(String paramString, boolean paramBoolean)
+  {
     String str1 = IndividualRedPacketManager.a(paramString);
-    int i;
+    int i1;
     Object localObject2;
     if (paramBoolean)
     {
       paramString = a(str1);
-      if ((paramString != null) && (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager != null))
+      if ((paramString != null) && (this.p != null))
       {
-        int j = paramString.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f;
-        int k = paramString.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_Int;
-        i = 0;
-        ??? = IndividualRedPacketManager.a(str1, null, j, k, 0);
+        int i2 = paramString.b.k;
+        int i3 = paramString.b.i;
+        i1 = 0;
+        ??? = IndividualRedPacketManager.a(str1, null, i2, i3, 0);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)???);
         ((StringBuilder)localObject2).append("_dir2");
@@ -875,35 +843,35 @@ public class IndividualRedPacketResDownloader
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.l)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1))
+        if (this.l.containsKey(str1))
         {
-          localObject2 = (List)this.jdField_a_of_type_JavaUtilMap.get(str1);
-          if (i < ((List)localObject2).size())
+          localObject2 = (List)this.l.get(str1);
+          if (i1 < ((List)localObject2).size())
           {
-            String str2 = (String)((List)localObject2).get(i);
+            String str2 = (String)((List)localObject2).get(i1);
             if (TextUtils.isEmpty(str2)) {
               break label422;
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str2, paramString.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
-            IndividualRedPacketManager localIndividualRedPacketManager = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
+            this.p.a(str2, paramString.b.k);
+            IndividualRedPacketManager localIndividualRedPacketManager = this.p;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(str2);
             localStringBuilder.append("_tp");
-            localIndividualRedPacketManager.a(localStringBuilder.toString(), paramString.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
-            localIndividualRedPacketManager = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
+            localIndividualRedPacketManager.a(localStringBuilder.toString(), paramString.c.k);
+            localIndividualRedPacketManager = this.p;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append(str2);
             localStringBuilder.append("_send");
-            localIndividualRedPacketManager.a(localStringBuilder.toString(), paramString.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
+            localIndividualRedPacketManager.a(localStringBuilder.toString(), paramString.d.k);
             break label422;
           }
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString.jdField_a_of_type_JavaLangString);
+          this.l.remove(paramString.a);
         }
       }
-      ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject2 = IndividualRedPacketManager.jdField_c_of_type_JavaLangString;
+      ??? = this.a;
+      localObject2 = IndividualRedPacketManager.G;
       if (paramBoolean) {
         paramString = "1";
       } else {
@@ -912,49 +880,73 @@ public class IndividualRedPacketResDownloader
       ReportController.b((AppRuntime)???, "CliOper", "", "", "0X800612E", "0X800612E", 0, 0, (String)localObject2, paramString, "1", str1);
       return;
       label422:
-      i += 1;
+      i1 += 1;
     }
   }
   
-  private void b(JSONArray paramJSONArray)
+  private boolean c(JSONObject paramJSONObject, boolean paramBoolean)
   {
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.optJSONObject(i);
-      String str = ((JSONObject)localObject).optString("name");
-      localObject = ((JSONObject)localObject).optString("url", null);
-      if ("aioTail".equals(str)) {
-        this.jdField_b_of_type_JavaLangString = ((String)localObject);
-      } else if ("personalityMall".equals(str)) {
-        this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      } else if ("tencentPay".equals(str)) {
-        this.jdField_c_of_type_JavaLangString = ((String)localObject);
+    Object localObject = paramJSONObject.optString("time");
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject);
+    boolean bool2 = true;
+    if (!bool1) {
+      if (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject).getTime() - NetConnInfoCenter.getServerTimeMillis() < 172800000L) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
-      i += 1;
     }
-    if (QLog.isColorLevel())
+    localObject = this.p.c();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
+    if (paramJSONObject.has("androidShowSwitch"))
     {
-      paramJSONArray = new StringBuilder();
-      paramJSONArray.append("checkAndDownloadBeforeUse mAioTailURL:");
-      paramJSONArray.append(this.jdField_b_of_type_JavaLangString);
-      paramJSONArray.append(", mTencentPayURL:");
-      paramJSONArray.append(this.jdField_c_of_type_JavaLangString);
-      paramJSONArray.append(", mPersonalityMallURL:");
-      paramJSONArray.append(this.jdField_a_of_type_JavaLangString);
-      QLog.d("IndividualRedPacketResDownloader", 2, paramJSONArray.toString());
+      if (paramJSONObject.getInt("androidShowSwitch") == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.j = bool1;
     }
+    if (paramJSONObject.has("androidEntrySwitch"))
+    {
+      if (paramJSONObject.getInt("androidEntrySwitch") == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      this.k = bool1;
+    }
+    if ((this.j != ((SharedPreferences)localObject).getBoolean("redpacket_is_show_switch", false)) || (this.k != ((SharedPreferences)localObject).getBoolean("mall_entrance_switch", false)))
+    {
+      localEditor.putBoolean("redpacket_is_show_switch", this.j);
+      localEditor.putBoolean("mall_entrance_switch", this.k);
+      localEditor.commit();
+    }
+    return paramBoolean;
   }
   
   private void e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.e == 2) && (this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.e == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b()))
+    if ((this.c.j == 2) && (this.e.j == 2) && (this.p.g()))
     {
       if (QLog.isColorLevel()) {
         QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse goto preCreatePersonalFontImg");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info);
+      this.p.a(this.c);
     }
+  }
+  
+  private boolean f()
+  {
+    if (this.a != null)
+    {
+      IndividualRedPacketManager localIndividualRedPacketManager = this.p;
+      if (localIndividualRedPacketManager == null) {
+        return true;
+      }
+      return localIndividualRedPacketManager.m.get();
+    }
+    return true;
   }
   
   public IndividualRedPacketResDownloader.RedPacketTemplateInfo a(String paramString)
@@ -968,7 +960,7 @@ public class IndividualRedPacketResDownloader
       {
         IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = a(new JSONObject(FileUtils.readFileContent(paramString)), true);
         if (localRedPacketTemplateInfo != null) {
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localRedPacketTemplateInfo.jdField_a_of_type_JavaLangString, localRedPacketTemplateInfo);
+          this.b.put(localRedPacketTemplateInfo.a, localRedPacketTemplateInfo);
         }
         return localRedPacketTemplateInfo;
       }
@@ -985,15 +977,15 @@ public class IndividualRedPacketResDownloader
   
   public IndividualRedPacketResDownloader.RedPacketTemplateInfo a(String paramString, boolean paramBoolean)
   {
-    IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo2 = (IndividualRedPacketResDownloader.RedPacketTemplateInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
+    IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo2 = (IndividualRedPacketResDownloader.RedPacketTemplateInfo)this.b.get(paramString);
     if (!paramBoolean) {
       return localRedPacketTemplateInfo2;
     }
     IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo1;
-    if ((localRedPacketTemplateInfo2 != null) && (localRedPacketTemplateInfo2.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo != null) && (localRedPacketTemplateInfo2.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo != null))
+    if ((localRedPacketTemplateInfo2 != null) && (localRedPacketTemplateInfo2.b != null) && (localRedPacketTemplateInfo2.c != null))
     {
       localRedPacketTemplateInfo1 = localRedPacketTemplateInfo2;
-      if (localRedPacketTemplateInfo2.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo != null) {}
+      if (localRedPacketTemplateInfo2.d != null) {}
     }
     else
     {
@@ -1014,26 +1006,26 @@ public class IndividualRedPacketResDownloader
         return null;
       }
       IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = new IndividualRedPacketResDownloader.RedPacketTemplateInfo();
-      localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo = new IndividualRedPacketResDownloader.DecorateInfo();
-      localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f = 2;
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo = new IndividualRedPacketResDownloader.DecorateInfo();
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f = 3;
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo = new IndividualRedPacketResDownloader.DecorateInfo();
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f = 14;
-      localRedPacketTemplateInfo.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_JavaLangString = ((String)localObject1);
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_JavaLangString = ((String)localObject1);
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_JavaLangString = ((String)localObject1);
-      localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString = paramJSONObject.optString("name");
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString;
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString;
-      localRedPacketTemplateInfo.jdField_a_of_type_Int = paramJSONObject.optInt("customWord", IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_c_of_type_Int);
-      localRedPacketTemplateInfo.e = paramJSONObject.optInt("fontTypeId", 1);
-      localRedPacketTemplateInfo.jdField_d_of_type_Int = paramJSONObject.optInt("version", 0);
-      localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_Int = localRedPacketTemplateInfo.jdField_d_of_type_Int;
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_Int = localRedPacketTemplateInfo.jdField_d_of_type_Int;
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_d_of_type_Int = localRedPacketTemplateInfo.jdField_d_of_type_Int;
-      if (localRedPacketTemplateInfo.jdField_a_of_type_Int == IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_b_of_type_Int)
+      localRedPacketTemplateInfo.b = new IndividualRedPacketResDownloader.DecorateInfo();
+      localRedPacketTemplateInfo.b.k = 2;
+      localRedPacketTemplateInfo.c = new IndividualRedPacketResDownloader.DecorateInfo();
+      localRedPacketTemplateInfo.c.k = 3;
+      localRedPacketTemplateInfo.d = new IndividualRedPacketResDownloader.DecorateInfo();
+      localRedPacketTemplateInfo.d.k = 14;
+      localRedPacketTemplateInfo.a = ((String)localObject1);
+      localRedPacketTemplateInfo.b.g = ((String)localObject1);
+      localRedPacketTemplateInfo.c.g = ((String)localObject1);
+      localRedPacketTemplateInfo.d.g = ((String)localObject1);
+      localRedPacketTemplateInfo.b.f = paramJSONObject.optString("name");
+      localRedPacketTemplateInfo.c.f = localRedPacketTemplateInfo.b.f;
+      localRedPacketTemplateInfo.d.f = localRedPacketTemplateInfo.b.f;
+      localRedPacketTemplateInfo.e = paramJSONObject.optInt("customWord", IndividualRedPacketResDownloader.RedPacketTemplateInfo.g);
+      localRedPacketTemplateInfo.i = paramJSONObject.optInt("fontTypeId", 1);
+      localRedPacketTemplateInfo.h = paramJSONObject.optInt("version", 0);
+      localRedPacketTemplateInfo.b.i = localRedPacketTemplateInfo.h;
+      localRedPacketTemplateInfo.c.i = localRedPacketTemplateInfo.h;
+      localRedPacketTemplateInfo.d.i = localRedPacketTemplateInfo.h;
+      if (localRedPacketTemplateInfo.e == IndividualRedPacketResDownloader.RedPacketTemplateInfo.f)
       {
         a(paramJSONObject, paramBoolean, localRedPacketTemplateInfo);
       }
@@ -1046,9 +1038,9 @@ public class IndividualRedPacketResDownloader
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("getTemplateByJson aioPngZip ,name=");
-            ((StringBuilder)localObject2).append(localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(localRedPacketTemplateInfo.b.f);
             ((StringBuilder)localObject2).append(", id:");
-            ((StringBuilder)localObject2).append(localRedPacketTemplateInfo.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(localRedPacketTemplateInfo.a);
             ((StringBuilder)localObject2).append(", url:");
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append(", isV710:");
@@ -1056,23 +1048,23 @@ public class IndividualRedPacketResDownloader
             QLog.d("IndividualRedPacketResDownloader", 2, ((StringBuilder)localObject2).toString());
           }
           localObject2 = new ICustomizeStrategyFactory.AnimConfig();
-          ((ICustomizeStrategyFactory.AnimConfig)localObject2).jdField_b_of_type_Int = paramJSONObject.optInt("interval", 100);
-          ((ICustomizeStrategyFactory.AnimConfig)localObject2).jdField_a_of_type_Int = paramJSONObject.optInt("flameCount", 0);
-          localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig = ((ICustomizeStrategyFactory.AnimConfig)localObject2);
-          localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f = 19;
+          ((ICustomizeStrategyFactory.AnimConfig)localObject2).c = paramJSONObject.optInt("interval", 100);
+          ((ICustomizeStrategyFactory.AnimConfig)localObject2).b = paramJSONObject.optInt("flameCount", 0);
+          localRedPacketTemplateInfo.b.c = ((ICustomizeStrategyFactory.AnimConfig)localObject2);
+          localRedPacketTemplateInfo.b.d = ((String)localObject1);
+          localRedPacketTemplateInfo.b.k = 19;
         }
       }
-      Object localObject2 = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
-      localObject1 = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig;
+      Object localObject2 = localRedPacketTemplateInfo.b;
+      localObject1 = localRedPacketTemplateInfo.b.c;
       if (localObject1 == null) {
         localObject1 = paramJSONObject.optString("aioImgUrl", "");
       } else {
-        localObject1 = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.jdField_a_of_type_JavaLangString;
+        localObject1 = localRedPacketTemplateInfo.b.d;
       }
-      ((IndividualRedPacketResDownloader.DecorateInfo)localObject2).e = ((String)localObject1);
-      localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.e = paramJSONObject.optString("redEnvelopeImgUrl", "");
-      localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.e = paramJSONObject.optString("sendImgUrl", "");
+      ((IndividualRedPacketResDownloader.DecorateInfo)localObject2).h = ((String)localObject1);
+      localRedPacketTemplateInfo.c.h = paramJSONObject.optString("redEnvelopeImgUrl", "");
+      localRedPacketTemplateInfo.d.h = paramJSONObject.optString("sendImgUrl", "");
       return localRedPacketTemplateInfo;
     }
     catch (Throwable paramJSONObject)
@@ -1110,27 +1102,27 @@ public class IndividualRedPacketResDownloader
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+      if ((this.a != null) && (this.p != null) && (this.i != null))
       {
-        int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-        if (i > 0)
+        int i1 = this.i.size();
+        if (i1 > 0)
         {
           try
           {
-            IndividualRedPacketResDownloader.DownloadHolder localDownloadHolder = (IndividualRedPacketResDownloader.DownloadHolder)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+            IndividualRedPacketResDownloader.DownloadHolder localDownloadHolder = (IndividualRedPacketResDownloader.DownloadHolder)this.i.remove(0);
             if (localDownloadHolder == null)
             {
               a();
               return;
             }
-            if (new File(localDownloadHolder.jdField_b_of_type_JavaLangString).exists())
+            if (new File(localDownloadHolder.c).exists())
             {
               a();
               return;
             }
-            localObject2 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-            ((IVasQuickUpdateService)localObject2).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-            ((IVasQuickUpdateService)localObject2).downloadItem(localDownloadHolder.jdField_a_of_type_Long, localDownloadHolder.jdField_a_of_type_JavaLangString, "silent_download.redbag");
+            localObject2 = (IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "");
+            ((IVasQuickUpdateService)localObject2).addCallBacker(this.q);
+            ((IVasQuickUpdateService)localObject2).downloadItem(localDownloadHolder.a, localDownloadHolder.b, "silent_download.redbag");
           }
           catch (Exception localException)
           {
@@ -1151,7 +1143,7 @@ public class IndividualRedPacketResDownloader
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (0L == paramLong) || (TextUtils.isEmpty(paramString1))) {
+      if ((this.a == null) || (0L == paramLong) || (TextUtils.isEmpty(paramString1))) {
         break label207;
       }
       if ("iRedPacket_v3.specialChar.zip".equals(paramString1))
@@ -1192,7 +1184,7 @@ public class IndividualRedPacketResDownloader
         }
       }
     }
-    VasUpdateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramString1, paramString2, true, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+    VasUpdateUtil.a(this.a, paramLong, paramString1, paramString2, true, this.q);
     return;
     paramString2 = new StringBuilder();
     paramString2.append("downloadResIfNotExsit err filePath, bid=");
@@ -1208,7 +1200,7 @@ public class IndividualRedPacketResDownloader
     {
       try
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager != null))
+        if ((this.a != null) && (this.p != null))
         {
           Object localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append(BaseApplicationImpl.getContext().getFilesDir());
@@ -1216,12 +1208,12 @@ public class IndividualRedPacketResDownloader
           ((StringBuilder)localObject1).append("pddata/vas/redpacket/");
           ((StringBuilder)localObject1).append("iRedPacket_v3.json");
           localObject1 = ((StringBuilder)localObject1).toString();
-          Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          Object localObject4 = this.a;
           boolean bool2 = false;
           if (!paramBoolean1)
           {
             bool1 = true;
-            localObject1 = a(VasUpdateUtil.a((AppRuntime)localObject4, 16L, "iRedPacket_v3.json", (String)localObject1, bool1, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker), null);
+            localObject1 = a(VasUpdateUtil.a((AppRuntime)localObject4, 16L, "iRedPacket_v3.json", (String)localObject1, bool1, this.q), null);
             if (localObject1 == null)
             {
               localObject1 = new StringBuilder();
@@ -1245,15 +1237,15 @@ public class IndividualRedPacketResDownloader
               localObject1 = ((JSONArray)localObject1).optJSONObject(0);
               if (localObject1 != null)
               {
-                paramBoolean1 = a((JSONObject)localObject1, false);
+                paramBoolean1 = c((JSONObject)localObject1, false);
               }
               else
               {
                 QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse ,activityInfoObj0 == null");
                 paramBoolean1 = bool2;
               }
-              a(paramBoolean1, a((JSONObject)localObject4, paramBoolean1), NetworkUtil.getSystemNetwork(null));
-              this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+              a(paramBoolean1, b((JSONObject)localObject4, paramBoolean1), NetworkUtil.getSystemNetwork(null));
+              this.o.set(true);
             }
             catch (Exception localException)
             {
@@ -1262,7 +1254,7 @@ public class IndividualRedPacketResDownloader
             catch (JSONException localJSONException)
             {
               QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config JSONException: ", localJSONException);
-              VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", localJSONException.getMessage(), null, 0.0F);
+              VasMonitorHandler.a(this.a, "individual_v2_redpacket_json_err", "decode_json_err", localJSONException.getMessage(), null, 0.0F);
             }
           }
         }
@@ -1281,12 +1273,12 @@ public class IndividualRedPacketResDownloader
   
   void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, File paramFile)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager == null) {
+      if (this.p == null) {
         return;
       }
-      Object localObject = a(paramBoolean1, paramBoolean2, paramString, paramFile);
+      Object localObject = b(paramBoolean1, paramBoolean2, paramString, paramFile);
       if (localObject == null) {
         return;
       }
@@ -1298,39 +1290,39 @@ public class IndividualRedPacketResDownloader
           if (localJSONArray != null)
           {
             StringBuilder localStringBuilder = new StringBuilder();
-            int i = 0;
-            while (i < localJSONArray.length())
+            int i1 = 0;
+            while (i1 < localJSONArray.length())
             {
-              localStringBuilder.append(localJSONArray.getString(i));
-              i += 1;
+              localStringBuilder.append(localJSONArray.getString(i1));
+              i1 += 1;
             }
-            this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-            this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.e = 2;
+            this.c.a = localStringBuilder.toString();
+            this.c.j = 2;
           }
         }
         paramBoolean1 = "iRedPacket_v3.font.zip".equals(paramString);
         if (paramBoolean1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("id", "");
-          this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("name", "");
-          this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.jdField_d_of_type_Int = ((JSONObject)localObject).optInt("version");
-          this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.e = 2;
-          this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.jdField_d_of_type_JavaLangString);
+          this.e.g = ((JSONObject)localObject).optString("id", "");
+          this.e.f = ((JSONObject)localObject).optString("name", "");
+          this.e.i = ((JSONObject)localObject).optInt("version");
+          this.e.j = 2;
+          this.p.b(this.e.g);
         }
         if ("iRedPacket_v3.specialChar.zip".equals(paramString))
         {
-          this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("id", "0");
-          this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_d_of_type_Int = ((JSONObject)localObject).optInt("version");
-          this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.e = 2;
-          this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("char", "");
-          paramString = this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info;
+          this.d.g = ((JSONObject)localObject).optString("id", "0");
+          this.d.i = ((JSONObject)localObject).optInt("version");
+          this.d.j = 2;
+          this.d.b = ((JSONObject)localObject).optString("char", "");
+          paramString = this.d;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_b_of_type_JavaLangString);
-          paramString.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+          ((StringBuilder)localObject).append(this.d.b);
+          paramString.a = ((StringBuilder)localObject).toString();
           paramString = new StringBuilder();
-          paramString.append(this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_d_of_type_JavaLangString);
-          paramString.append(this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_d_of_type_Int);
+          paramString.append(this.d.g);
+          paramString.append(this.d.i);
           a(paramFile, paramString.toString());
         }
         e();
@@ -1339,51 +1331,51 @@ public class IndividualRedPacketResDownloader
       catch (Throwable paramString)
       {
         QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID parse Json config JSONException: ", paramString);
-        VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", paramString.getMessage(), null, 0.0F);
+        VasMonitorHandler.a(this.a, "individual_v2_redpacket_json_err", "decode_json_err", paramString.getMessage(), null, 0.0F);
       }
     }
   }
   
   public void b()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.a;
     if (localQQAppInterface != null) {
-      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.q);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
-    this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager = null;
+    this.a = null;
+    this.b.evictAll();
+    this.p = null;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.a == null) {
       return;
     }
     a(false, true);
     Object localObject = IndividualRedPacketManager.a(null, null, 8, 0, 0);
-    if (VasUpdateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.font.zip", (String)localObject, true, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker) != null) {
+    if (VasUpdateUtil.a(this.a, 16L, "iRedPacket_v3.font.zip", (String)localObject, true, this.q) != null) {
       a(false, true, "iRedPacket_v3.font.zip", new File(IndividualRedPacketManager.a(null, null, 21, 0, 0)));
     }
     localObject = IndividualRedPacketManager.a(null, null, 25, 0, 0);
-    a(false, true, "iRedPacket_v3.specialChar.zip", VasUpdateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.specialChar.zip", (String)localObject, true, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker));
+    a(false, true, "iRedPacket_v3.specialChar.zip", VasUpdateUtil.a(this.a, 16L, "iRedPacket_v3.specialChar.zip", (String)localObject, true, this.q));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getFilesDir());
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("pddata/vas/redpacket/");
     ((StringBuilder)localObject).append("iRedPacket_v3.char300.json");
     localObject = ((StringBuilder)localObject).toString();
-    a(false, true, "iRedPacket_v3.char300.json", VasUpdateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", (String)localObject, true, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker));
+    a(false, true, "iRedPacket_v3.char300.json", VasUpdateUtil.a(this.a, 16L, "iRedPacket_v3.char300.json", (String)localObject, true, this.q));
   }
   
   public void d()
   {
-    if (a()) {
+    if (f()) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().getBoolean("res_version_has_updated", false)) {
+      if (this.p.c().getBoolean("res_version_has_updated", false)) {
         return;
       }
       Object localObject1 = new StringBuilder();
@@ -1408,10 +1400,10 @@ public class IndividualRedPacketResDownloader
       File localFile3 = new File(VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString()));
       if (!a(localFile1, localFile2, localFile3, false))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().edit().putBoolean("res_version_has_updated", true).commit();
+        this.p.c().edit().putBoolean("res_version_has_updated", true).commit();
         return;
       }
-      localObject2 = ClubContentJsonTask.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ClubContentJsonTask.g, false);
+      localObject2 = ClubContentJsonTask.a(this.a, ClubContentJsonTask.g, false);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = b((JSONObject)localObject2);
@@ -1424,7 +1416,7 @@ public class IndividualRedPacketResDownloader
       if (a(localFile1, localFile2, localFile3, (JSONObject)localObject1)) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().edit();
+      localObject1 = this.p.c().edit();
       ((SharedPreferences.Editor)localObject1).putBoolean("res_version_has_updated", true);
       ((SharedPreferences.Editor)localObject1).commit();
       VasUpdateUtil.a(localFile1);
@@ -1443,7 +1435,7 @@ public class IndividualRedPacketResDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividualRedPacketResDownloader
  * JD-Core Version:    0.7.0.1
  */

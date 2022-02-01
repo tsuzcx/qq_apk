@@ -11,11 +11,11 @@ class OCRPerformFragment$4
 {
   OCRPerformFragment$4(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      OCRPerformUtil.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
+      OCRPerformUtil.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.e(this.a)));
       if (OCRPerformUtil.a) {
         paramView = "0X800B55F";
       } else {
@@ -26,9 +26,9 @@ class OCRPerformFragment$4
     if (paramInt == 1)
     {
       if (OCRPerformUtil.a) {
-        OCRPerformUtil.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+        OCRPerformUtil.a(OCRPerformFragment.a(this.a), OCRPerformFragment.d(this.a));
       } else {
-        ((IShareActivityStartup)QRoute.api(IShareActivityStartup.class)).gotoShareActivity(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+        ((IShareActivityStartup)QRoute.api(IShareActivityStartup.class)).gotoShareActivity(OCRPerformFragment.a(this.a), OCRPerformFragment.b(this.a));
       }
       if (OCRPerformUtil.a) {
         paramView = "0X800B560";
@@ -37,14 +37,14 @@ class OCRPerformFragment$4
       }
       OCRPerformUtil.a(paramView, 0);
     }
-    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
-      OCRPerformFragment.a(this.a).dismiss();
+    if ((OCRPerformFragment.f(this.a) != null) && (OCRPerformFragment.f(this.a).isShowing())) {
+      OCRPerformFragment.f(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.4
  * JD-Core Version:    0.7.0.1
  */

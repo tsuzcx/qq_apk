@@ -8,22 +8,20 @@ import java.util.Queue;
 public abstract class QueuedEggsAnimation<A>
   extends AIOAnimationConatiner.AIOAnimator
 {
-  protected QueuedEggsAnimation<A>.QueueDriver a;
-  protected final Queue<A> a;
-  protected volatile boolean a;
-  protected int b;
-  protected final Queue<A> b;
-  protected int c;
-  protected final Queue<A> c;
+  protected QueuedEggsAnimation<A>.QueueDriver d;
+  protected volatile boolean e;
+  protected final Queue<A> f;
+  protected final Queue<A> g;
+  protected final Queue<A> h;
+  protected int i;
+  protected int j;
   
   private void e()
   {
-    this.jdField_a_of_type_JavaUtilQueue.clear();
-    this.b.clear();
-    this.c.clear();
+    this.f.clear();
+    this.g.clear();
+    this.h.clear();
   }
-  
-  protected abstract A a(Object... paramVarArgs);
   
   protected abstract void a(A paramA);
   
@@ -34,21 +32,23 @@ public abstract class QueuedEggsAnimation<A>
   
   protected boolean a(Object... paramVarArgs)
   {
-    paramVarArgs = a(paramVarArgs);
-    this.jdField_a_of_type_JavaUtilQueue.add(paramVarArgs);
+    paramVarArgs = c(paramVarArgs);
+    this.f.add(paramVarArgs);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[start] prepare animation: ");
     localStringBuilder.append(paramVarArgs.toString());
     QLog.i("QueuedEggsAnimation", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimEggQueuedEggsAnimation$QueueDriver == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimEggQueuedEggsAnimation$QueueDriver = new QueuedEggsAnimation.QueueDriver(this, null);
-      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimEggQueuedEggsAnimation$QueueDriver);
+      this.d = new QueuedEggsAnimation.QueueDriver(this, null);
+      this.b.post(this.d);
     }
     return false;
   }
   
   protected abstract void b(A paramA);
+  
+  protected abstract A c(Object... paramVarArgs);
   
   protected void c()
   {
@@ -58,7 +58,7 @@ public abstract class QueuedEggsAnimation<A>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.egg.QueuedEggsAnimation
  * JD-Core Version:    0.7.0.1
  */

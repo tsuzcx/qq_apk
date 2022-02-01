@@ -14,15 +14,15 @@ class AudioPanelProvider$1
   
   public void run()
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo = this.a.a(AudioPanelProvider.a(this.this$0).a.jdField_a_of_type_JavaLangString, AudioPanelProvider.a(this.this$0).a.jdField_a_of_type_Int, true);
+    NoC2CExtensionInfo localNoC2CExtensionInfo = this.a.b(AudioPanelProvider.a(this.this$0).ah.b, AudioPanelProvider.a(this.this$0).ah.a, true);
     if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.audioPanelType != -1) && (this.this$0.a != null)) {
-      AudioPanelProvider.a(this.this$0).a().obtainMessage(40, localNoC2CExtensionInfo.audioPanelType, AudioPanelProvider.a(this.this$0).a.jdField_a_of_type_Int).sendToTarget();
+      AudioPanelProvider.a(this.this$0).j().obtainMessage(40, localNoC2CExtensionInfo.audioPanelType, AudioPanelProvider.a(this.this$0).ah.a).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelProvider.1
  * JD-Core Version:    0.7.0.1
  */

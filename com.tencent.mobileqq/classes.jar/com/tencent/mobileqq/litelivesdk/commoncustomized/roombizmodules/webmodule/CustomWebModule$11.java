@@ -17,9 +17,9 @@ class CustomWebModule$11
     localStringBuilder.append(";time position = ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(", mPause=");
-    localStringBuilder.append(CustomWebModule.b(this.a));
+    localStringBuilder.append(CustomWebModule.d(this.a));
     QLog.d("IliveCustomWebModule", 1, localStringBuilder.toString());
-    if (CustomWebModule.b(this.a)) {
+    if (CustomWebModule.d(this.a)) {
       return;
     }
     if (paramLong != null) {
@@ -29,7 +29,7 @@ class CustomWebModule$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.11
  * JD-Core Version:    0.7.0.1
  */

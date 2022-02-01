@@ -2,9 +2,9 @@ package com.tencent.avgame.floatwindow;
 
 public class FloatWindowParams
 {
-  public int a;
   public boolean a = true;
   public int b;
+  public int c;
 }
 
 

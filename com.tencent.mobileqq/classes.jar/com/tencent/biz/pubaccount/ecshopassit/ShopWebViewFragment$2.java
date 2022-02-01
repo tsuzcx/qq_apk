@@ -23,26 +23,26 @@ class ShopWebViewFragment$2
         if (i != 2) {
           return false;
         }
-        i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-        if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+        i = (int)(this.c.m - paramMotionEvent.getY());
+        this.c.m = ((int)paramMotionEvent.getY());
+        if ((i < 0) && (this.c.n > 0)) {
+          this.c.n = 0;
         }
-        if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+        if ((i > 0) && (this.c.n < 0)) {
+          this.c.n = 0;
         }
-        paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-        paramView.d += i;
+        paramView = this.c;
+        paramView.n += i;
         return false;
       }
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (ShopWebViewFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment) == null) {
+        this.a.put("y_offset", this.c.n);
+        paramView = WebViewPlugin.toJsScript("onScroll", this.a, this.b);
+        if (ShopWebViewFragment.a(this.c) == null) {
           break label182;
         }
-        ShopWebViewFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment).callJs(paramView);
+        ShopWebViewFragment.b(this.c).callJs(paramView);
         return false;
       }
       catch (JSONException paramView)
@@ -53,7 +53,7 @@ class ShopWebViewFragment$2
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      this.c.m = ((int)paramMotionEvent.getY());
     }
     label182:
     return false;
@@ -61,7 +61,7 @@ class ShopWebViewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment.2
  * JD-Core Version:    0.7.0.1
  */

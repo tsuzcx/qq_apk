@@ -11,12 +11,12 @@ class SimpleHttpInterfaceTransfer$3
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreHttpResponse.onResponse(paramInt, paramJSONObject);
+    this.a.onResponse(paramInt, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.SimpleHttpInterfaceTransfer.3
  * JD-Core Version:    0.7.0.1
  */

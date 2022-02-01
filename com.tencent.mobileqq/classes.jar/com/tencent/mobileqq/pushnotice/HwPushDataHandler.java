@@ -7,7 +7,12 @@ import com.tencent.qphone.base.util.QLog;
 public class HwPushDataHandler
   implements IThirdPushDataHandler
 {
-  public ThirdPushNotifyManager.PushNotificationData a(Intent paramIntent)
+  public boolean a(Intent paramIntent)
+  {
+    return PushNoticeUtil.a(paramIntent);
+  }
+  
+  public ThirdPushNotifyManager.PushNotificationData b(Intent paramIntent)
   {
     String str1 = paramIntent.getStringExtra("third_id");
     String str2 = paramIntent.getStringExtra("type");
@@ -37,15 +42,10 @@ public class HwPushDataHandler
     }
     return null;
   }
-  
-  public boolean a(Intent paramIntent)
-  {
-    return PushNoticeUtil.a(paramIntent);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushnotice.HwPushDataHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ public class XViewPager$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new XViewPager.SavedState.1());
-  int jdField_a_of_type_Int;
-  Parcelable jdField_a_of_type_AndroidOsParcelable;
-  ClassLoader jdField_a_of_type_JavaLangClassLoader;
+  int a;
+  Parcelable b;
+  ClassLoader c;
   
   XViewPager$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
@@ -21,9 +21,9 @@ public class XViewPager$SavedState
     if (paramClassLoader == null) {
       localClassLoader = getClass().getClassLoader();
     }
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_AndroidOsParcelable = paramParcel.readParcelable(localClassLoader);
-    this.jdField_a_of_type_JavaLangClassLoader = localClassLoader;
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readParcelable(localClassLoader);
+    this.c = localClassLoader;
   }
   
   public XViewPager$SavedState(Parcelable paramParcelable)
@@ -37,7 +37,7 @@ public class XViewPager$SavedState
     localStringBuilder.append("FragmentPager.SavedState{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" position=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -45,13 +45,13 @@ public class XViewPager$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_AndroidOsParcelable, paramInt);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeParcelable(this.b, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

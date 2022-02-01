@@ -11,7 +11,7 @@ class PhotoListHelper$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(PhotoListHelper.a(this.a).a);
+    DialogUtil.a(PhotoListHelper.a(this.a).f);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -21,7 +21,7 @@ class PhotoListHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PhotoListHelper.1
  * JD-Core Version:    0.7.0.1
  */

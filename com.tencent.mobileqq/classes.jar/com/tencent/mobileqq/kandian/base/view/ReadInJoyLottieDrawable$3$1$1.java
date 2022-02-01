@@ -13,11 +13,11 @@ class ReadInJoyLottieDrawable$3$1$1
   {
     try
     {
-      localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
+      localObject = BitmapFactory.decodeFile(this.a);
       if (localObject == null) {
         break label94;
       }
-      ReadInJoyLottieDrawable.b().put(this.jdField_a_of_type_JavaLangString, localObject);
+      ReadInJoyLottieDrawable.b().put(this.a, localObject);
       return;
     }
     catch (Exception localException)
@@ -34,18 +34,18 @@ class ReadInJoyLottieDrawable$3$1$1
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("loadLottieAnimation oom: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     QLog.e("ReadInJoyLottieDrawable", 2, ((StringBuilder)localObject).toString());
     return;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("loadLottieAnimation path: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     QLog.e("ReadInJoyLottieDrawable", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.3.1.1
  * JD-Core Version:    0.7.0.1
  */

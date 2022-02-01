@@ -23,7 +23,7 @@ public class WSBlockPage
     if (paramWSVerticalPageFragment == null) {
       return;
     }
-    stJumpInfo localstJumpInfo = WSGlobalConfig.a().a(paramInt2);
+    stJumpInfo localstJumpInfo = WSGlobalConfig.a().f(paramInt2);
     if (localstJumpInfo == null) {
       return;
     }
@@ -42,8 +42,8 @@ public class WSBlockPage
     ((StringBuilder)localObject).append(",jumpurl:");
     ((StringBuilder)localObject).append(localstJumpInfo.url);
     WSLog.b("WSBlockPage", ((StringBuilder)localObject).toString());
-    localObject = paramWSVerticalPageFragment.a();
-    String str3 = paramWSVerticalPageFragment.b();
+    localObject = paramWSVerticalPageFragment.k();
+    String str3 = paramWSVerticalPageFragment.l();
     WeishiUtils.a(paramWSVerticalPageFragment.getBaseActivity(), str2, str1, "", 5, new WSBlockPage.1(this, paramWSVerticalPageFragment, (String)localObject, str3, localstJumpInfo, paramInt1));
     paramWSVerticalPageFragment = new StringBuilder();
     paramWSVerticalPageFragment.append("reportBlockPage, id:");
@@ -55,7 +55,7 @@ public class WSBlockPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSBlockPage
  * JD-Core Version:    0.7.0.1
  */

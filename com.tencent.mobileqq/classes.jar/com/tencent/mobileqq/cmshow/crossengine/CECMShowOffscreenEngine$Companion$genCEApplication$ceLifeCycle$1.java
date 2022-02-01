@@ -13,9 +13,9 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$ceLifeCycl
   {
     QLog.d("[cmshow][CECMShowOffscreenEngine]", 4, "onFirstFrame");
     CECMShowOffscreenEngine.a(true);
-    Iterator localIterator = ((Iterable)CECMShowOffscreenEngine.a()).iterator();
+    Iterator localIterator = ((Iterable)CECMShowOffscreenEngine.h()).iterator();
     while (localIterator.hasNext()) {
-      ((CERenderService)localIterator.next()).a();
+      ((CERenderService)localIterator.next()).c();
     }
   }
   
@@ -32,7 +32,7 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$ceLifeCycl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenEngine.Companion.genCEApplication.ceLifeCycle.1
  * JD-Core Version:    0.7.0.1
  */

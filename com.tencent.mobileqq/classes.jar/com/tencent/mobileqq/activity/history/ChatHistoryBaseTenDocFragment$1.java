@@ -11,22 +11,22 @@ class ChatHistoryBaseTenDocFragment$1
 {
   ChatHistoryBaseTenDocFragment$1(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment);
+    paramView = ChatHistoryBaseTenDocFragment.a(this.b);
     if (paramView.size() > 0)
     {
       ThreadManager.post(new ChatHistoryBaseTenDocFragment.1.1(this, paramView), 8, null, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment.h();
+      this.b.m();
     }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.1
  * JD-Core Version:    0.7.0.1
  */

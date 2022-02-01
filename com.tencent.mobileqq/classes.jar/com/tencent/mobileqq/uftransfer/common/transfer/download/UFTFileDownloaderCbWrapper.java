@@ -6,19 +6,19 @@ import com.tencent.mobileqq.uftransfer.common.transfer.IUFTFileDownloaderCallbac
 public abstract class UFTFileDownloaderCbWrapper
   implements IUFTFileDownloaderCallback
 {
-  protected IUFTFileDownloaderCallback a;
-  protected boolean b = true;
-  protected boolean c = false;
-  protected long d = 0L;
+  protected IUFTFileDownloaderCallback i;
+  protected boolean j = true;
+  protected long k = 0L;
+  protected boolean l = false;
   
   public void a(long paramLong)
   {
     if (a()) {
       return;
     }
-    if (this.b)
+    if (this.j)
     {
-      IUFTFileDownloaderCallback localIUFTFileDownloaderCallback = this.a;
+      IUFTFileDownloaderCallback localIUFTFileDownloaderCallback = this.i;
       if (localIUFTFileDownloaderCallback != null) {
         localIUFTFileDownloaderCallback.a(paramLong);
       }
@@ -30,14 +30,14 @@ public abstract class UFTFileDownloaderCbWrapper
     if (a()) {
       return;
     }
-    if (this.b)
+    if (this.j)
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.d;
+      long l2 = this.k;
       if ((l2 == 0L) || (l1 - l2 >= 1000L))
       {
-        this.d = l1;
-        IUFTFileDownloaderCallback localIUFTFileDownloaderCallback = this.a;
+        this.k = l1;
+        IUFTFileDownloaderCallback localIUFTFileDownloaderCallback = this.i;
         if (localIUFTFileDownloaderCallback != null) {
           localIUFTFileDownloaderCallback.a(paramLong1, paramLong2);
         }
@@ -71,7 +71,7 @@ public abstract class UFTFileDownloaderCbWrapper
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2, Object paramObject)
@@ -94,7 +94,7 @@ public abstract class UFTFileDownloaderCbWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.download.UFTFileDownloaderCbWrapper
  * JD-Core Version:    0.7.0.1
  */

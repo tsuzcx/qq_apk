@@ -8,39 +8,39 @@ import android.graphics.drawable.Drawable;
 
 public class AnimationItem
 {
-  private double jdField_a_of_type_Double;
-  private long jdField_a_of_type_Long;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private AnimationItem.ItemAnimationCallback jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemAnimationItem$ItemAnimationCallback;
-  private Collision jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemCollision;
-  private ItemStatus jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus;
-  private Stretch jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long = 0L;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
+  private Drawable a;
+  private ItemStatus b;
+  private Collision c;
+  private Stretch d;
+  private Rect e;
+  private Rect f;
+  private long g;
+  private long h = 0L;
+  private double i;
+  private String j;
+  private AnimationItem.ItemAnimationCallback k;
   
   public AnimationItem(Drawable paramDrawable, Point paramPoint, ItemStatus.Velocity paramVelocity, ItemStatus.Acceleration paramAcceleration, long paramLong, double paramDouble, boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Double = paramDouble;
-    this.jdField_a_of_type_Long = paramLong;
-    paramDouble = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-    double d1 = this.jdField_a_of_type_Double;
+    this.a = paramDrawable;
+    this.j = paramString;
+    this.i = paramDouble;
+    this.g = paramLong;
+    paramDouble = this.a.getIntrinsicWidth();
+    double d1 = this.i;
     Double.isNaN(paramDouble);
-    double d2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    double d3 = this.jdField_a_of_type_Double;
+    double d2 = this.a.getIntrinsicHeight();
+    double d3 = this.i;
     Double.isNaN(d2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus = new ItemStatus();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.a(paramPoint, paramDouble * d1, d2 * d3, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.a(paramVelocity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.a(paramAcceleration);
+    this.b = new ItemStatus();
+    this.b.a(paramPoint, paramDouble * d1, d2 * d3, paramInt);
+    this.b.b.a(paramVelocity);
+    this.b.c.a(paramAcceleration);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int = 3;
+      this.b.d = 3;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemCollision = new Collision(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch = new Stretch(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Double);
+    this.c = new Collision(this.b);
+    this.d = new Stretch(this.b, this.a, this.i);
   }
   
   private double a(double paramDouble1, double paramDouble2, double paramDouble3)
@@ -50,14 +50,14 @@ public class AnimationItem
   
   private int a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int == 2)
+    if (this.b.d == 2)
     {
-      paramLong = paramLong - this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Long - 2000L;
+      paramLong = paramLong - this.b.f - 2000L;
       if (paramLong > 0L)
       {
         if (paramLong > 700L)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int = 1;
+          this.b.d = 1;
           return 0;
         }
         return (int)(255L - paramLong * 255L / 700L);
@@ -66,25 +66,9 @@ public class AnimationItem
     return 255;
   }
   
-  private void a()
+  private void b(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.left < this.jdField_a_of_type_AndroidGraphicsRect.left) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset(this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.left, 0.0F);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.right > this.jdField_a_of_type_AndroidGraphicsRect.right) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset(this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.right, 0.0F);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.top < this.jdField_a_of_type_AndroidGraphicsRect.top) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset(0.0F, this.jdField_a_of_type_AndroidGraphicsRect.top - this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.top);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.bottom > this.jdField_a_of_type_AndroidGraphicsRect.bottom) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset(0.0F, this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    }
-  }
-  
-  private void a(long paramLong)
-  {
-    long l = this.jdField_b_of_type_Long;
+    long l = this.h;
     if (l > 0L)
     {
       paramLong -= l;
@@ -92,7 +76,7 @@ public class AnimationItem
       double d2;
       if (paramLong > 500L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int = 0;
+        this.b.d = 0;
         d2 = 1.0D;
       }
       else if (paramLong < 100L)
@@ -149,127 +133,143 @@ public class AnimationItem
         d1 += 1.2D;
       }
       label321:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch.a(d1, d2);
-      a();
+      this.d.a(d1, d2);
+      c();
     }
-  }
-  
-  private void b(long paramLong)
-  {
-    double d1 = paramLong - this.jdField_a_of_type_Long;
-    Double.isNaN(d1);
-    double d3 = d1 / 1000.0D;
-    d1 = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.jdField_a_of_type_Double, d3);
-    double d2 = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.b, d3);
-    ItemStatus.Velocity localVelocity = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity;
-    localVelocity.jdField_a_of_type_Double += this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.jdField_a_of_type_Double * d3;
-    localVelocity = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity;
-    localVelocity.b += this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration.b * d3;
-    d3 *= 0.0D;
-    double d4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.jdField_a_of_type_Double;
-    double d5 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity.b;
-    localVelocity = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity;
-    localVelocity.jdField_a_of_type_Double += d4 * d3;
-    localVelocity = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity;
-    localVelocity.b += d3 * d5;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset((float)d1, (float)d2);
   }
   
   private void b(Canvas paramCanvas)
   {
-    float f;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Double > 0.0D)
+    float f1;
+    if (this.b.e > 0.0D)
     {
-      double d1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.left;
-      double d2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Double;
+      double d1 = this.b.a.left;
+      double d2 = this.b.e;
       Double.isNaN(d1);
-      double d3 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      double d3 = this.a.getIntrinsicHeight();
       Double.isNaN(d3);
-      f = (float)((d1 - d2) * 360.0D / (d3 * 3.141592653589793D * this.jdField_a_of_type_Double));
+      f1 = (float)((d1 - d2) * 360.0D / (d3 * 3.141592653589793D * this.i));
     }
     else
     {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    paramCanvas.rotate(f, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerY());
+    paramCanvas.rotate(f1, this.b.a.centerX(), this.b.a.centerY());
   }
   
-  public long a()
+  private void c()
   {
-    return this.jdField_b_of_type_Long;
+    if (this.b.a.left < this.e.left) {
+      this.b.a.offset(this.e.left - this.b.a.left, 0.0F);
+    }
+    if (this.b.a.right > this.e.right) {
+      this.b.a.offset(this.e.right - this.b.a.right, 0.0F);
+    }
+    if (this.b.a.top < this.e.top) {
+      this.b.a.offset(0.0F, this.e.top - this.b.a.top);
+    }
+    if (this.b.a.bottom > this.e.bottom) {
+      this.b.a.offset(0.0F, this.e.bottom - this.b.a.bottom);
+    }
+  }
+  
+  private void c(long paramLong)
+  {
+    double d1 = paramLong - this.g;
+    Double.isNaN(d1);
+    double d3 = d1 / 1000.0D;
+    d1 = a(this.b.b.a, this.b.c.a, d3);
+    double d2 = a(this.b.b.b, this.b.c.b, d3);
+    ItemStatus.Velocity localVelocity = this.b.b;
+    localVelocity.a += this.b.c.a * d3;
+    localVelocity = this.b.b;
+    localVelocity.b += this.b.c.b * d3;
+    d3 *= 0.0D;
+    double d4 = this.b.b.a;
+    double d5 = this.b.b.b;
+    localVelocity = this.b.b;
+    localVelocity.a += d4 * d3;
+    localVelocity = this.b.b;
+    localVelocity.b += d3 * d5;
+    this.b.a.offset((float)d1, (float)d2);
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.j;
   }
   
   public void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+      this.e = new Rect();
+      this.e.set(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
     }
-    if (this.jdField_b_of_type_AndroidGraphicsRect == null) {
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    if (this.f == null) {
+      this.f = new Rect();
     }
   }
   
   public void a(Canvas paramCanvas, long paramLong, Drawable paramDrawable)
   {
     a(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int == 3) {
-      a(paramLong);
-    } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch.a(paramLong, this.jdField_a_of_type_Long);
-    }
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int != 1)
-    {
+    if (this.b.d == 3) {
       b(paramLong);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemCollision.a(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF);
-      if (i != 0)
+    } else {
+      this.d.a(paramLong, this.g);
+    }
+    int m;
+    if (this.b.d != 1)
+    {
+      c(paramLong);
+      m = this.c.a(this.e, this.b.a);
+      if (m != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemCollision.a(this.jdField_a_of_type_AndroidGraphicsRect, paramLong);
-        i = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch.a(i);
-        if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int != 3)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStretch.a(i, paramLong);
+        this.c.a(this.e, paramLong);
+        m = this.d.a(m);
+        if ((m != 0) && (this.b.d != 2) && (this.b.d != 3)) {
+          this.d.a(m, paramLong);
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_Int != 1)
+    if (this.b.d != 1)
     {
-      i = paramCanvas.save();
+      m = paramCanvas.save();
       b(paramCanvas);
-      int j = a(paramLong);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus.jdField_a_of_type_AndroidGraphicsRectF.round(this.jdField_b_of_type_AndroidGraphicsRect);
-      paramDrawable.setAlpha(j);
-      paramDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
+      int n = a(paramLong);
+      this.b.a.round(this.f);
+      paramDrawable.setAlpha(n);
+      paramDrawable.setBounds(this.f);
       paramDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
+      paramCanvas.restoreToCount(m);
     }
     else
     {
-      paramCanvas = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemAnimationItem$ItemAnimationCallback;
+      paramCanvas = this.k;
       if (paramCanvas != null) {
         paramCanvas.a(this);
       }
     }
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = paramLong;
+    this.g = paramLong;
+    if (this.h == 0L) {
+      this.h = paramLong;
     }
   }
   
   public void a(AnimationItem.ItemAnimationCallback paramItemAnimationCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemAnimationItem$ItemAnimationCallback = paramItemAnimationCallback;
+    this.k = paramItemAnimationCallback;
+  }
+  
+  public long b()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.item.AnimationItem
  * JD-Core Version:    0.7.0.1
  */

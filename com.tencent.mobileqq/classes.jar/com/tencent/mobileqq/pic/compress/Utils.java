@@ -54,48 +54,6 @@ public class Utils
     return 0L;
   }
   
-  public static Bitmap a()
-  {
-    Drawable localDrawable = MobileQQ.getContext().getResources().getDrawable(2130838156);
-    if (localDrawable != null)
-    {
-      if ((localDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)localDrawable).getBitmap();
-      }
-      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
-        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
-      }
-    }
-    return null;
-  }
-  
-  static Bitmap a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return paramBitmap;
-    }
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawColor(-1);
-      Paint localPaint = new Paint();
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
-      localPaint.setXfermode(null);
-      paramBitmap.recycle();
-      paramBitmap = localBitmap;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-    }
-    Logger.a("compress.Utils", "compositingWhiteBg()", "compositingWhiteBg is success");
-    return paramBitmap;
-  }
-  
   public static Bitmap a(Bitmap paramBitmap, ThumbWidthHeightDP paramThumbWidthHeightDP)
   {
     int n = paramBitmap.getWidth();
@@ -209,7 +167,7 @@ public class Utils
       int k = paramThumbWidthHeightPx.a;
       int i = 0;
       if (paramBoolean) {
-        i = BaseImageUtil.c(paramString1);
+        i = BaseImageUtil.h(paramString1);
       }
       paramString1 = new StringBuilder();
       paramString1.append(paramString3);
@@ -224,9 +182,9 @@ public class Utils
       paramBitmap = paramString1.a(paramBitmap);
       paramThumbWidthHeightDP = new StringBuilder();
       paramThumbWidthHeightDP.append(" needCut:");
-      paramThumbWidthHeightDP.append(paramString1.b);
+      paramThumbWidthHeightDP.append(paramString1.f);
       paramThumbWidthHeightDP.append(" needScale:");
-      paramThumbWidthHeightDP.append(paramString1.c);
+      paramThumbWidthHeightDP.append(paramString1.g);
       Logger.a("compress.Utils", paramString2, paramThumbWidthHeightDP.toString());
     }
     if (paramBitmap == null)
@@ -293,49 +251,6 @@ public class Utils
       paramInt1 = i;
     }
     return new Utils.ThumbWidthHeightPx(paramInt2, paramInt2, paramInt1, paramInt1);
-  }
-  
-  public static String a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (FileUtils.fileExists(paramString)))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
-      ((StringBuilder)localObject).append("thumb/");
-      String str = RmVFSUtils.getVFSPath(((StringBuilder)localObject).toString());
-      if (paramString.startsWith(str)) {
-        return paramString;
-      }
-      int i = paramString.lastIndexOf("/");
-      int j = paramString.lastIndexOf(".");
-      if (j <= 0) {
-        localObject = paramString.substring(i + 1);
-      } else if (i < j + 1) {
-        localObject = paramString.substring(i + 1, j);
-      } else {
-        localObject = paramString.substring(i + 1);
-      }
-      long l = new File(paramString).lastModified();
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(str);
-      localStringBuffer.append("_");
-      localStringBuffer.append(paramString.hashCode());
-      localStringBuffer.append("_");
-      localStringBuffer.append((String)localObject);
-      localStringBuffer.append("_");
-      localStringBuffer.append(l);
-      localStringBuffer.append(".jpg");
-      paramString = new File(str);
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return localStringBuffer.toString();
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("realpath is empty, or file does not exist, realpath:");
-    ((StringBuilder)localObject).append(paramString);
-    Logger.a("compress.Utils", "getThumbnailPath()", ((StringBuilder)localObject).toString());
-    return "";
   }
   
   public static String a(String paramString, int paramInt)
@@ -426,7 +341,7 @@ public class Utils
   {
     try
     {
-      Bitmap localBitmap = a();
+      Bitmap localBitmap = c();
       if (localBitmap == null) {
         return false;
       }
@@ -453,7 +368,7 @@ public class Utils
   
   static boolean a(Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    paramBitmap = a(paramBitmap);
+    paramBitmap = b(paramBitmap);
     if (paramInt == 3)
     {
       bool = a(paramBitmap);
@@ -612,54 +527,6 @@ public class Utils
       return true;
     }
     Logger.b("compress.Utils", "calculateInSampleSizeThumbnail()", "width == 0 || height ==0");
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool1 = FileUtils.fileExistsAndNotEmpty(paramString);
-    boolean bool2 = false;
-    if ((bool1) && (FileUtils.estimateFileType(paramString).equals("jpg"))) {
-      try
-      {
-        float f = JpegCompressor.getJpegQuality(paramString);
-        long l = FileUtils.getFileSizes(paramString);
-        bool1 = bool2;
-        if (f <= 80.0F)
-        {
-          bool1 = bool2;
-          if (l < 307200L) {
-            bool1 = true;
-          }
-        }
-        paramString = new StringBuilder();
-        paramString.append("getJpegQuality = ");
-        paramString.append(f);
-        paramString.append(",picSize = ");
-        paramString.append(l);
-        paramString.append("result = ");
-        paramString.append(bool1);
-        Logger.a("compress.Utils", "isMatchQualityAndSizeCondition()", paramString.toString());
-        return bool1;
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getJpegQuality OutOfMemoryError error = ");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(",return false!");
-        Logger.b("compress.Utils", "isMatchQualityAndSizeCondition()", localStringBuilder.toString());
-        return false;
-      }
-      catch (RuntimeException paramString)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getJpegQuality RuntimeException error = ");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(",return false!");
-        Logger.b("compress.Utils", "isMatchQualityAndSizeCondition()", localStringBuilder.toString());
-      }
-    }
     return false;
   }
   
@@ -829,6 +696,76 @@ public class Utils
     return false;
   }
   
+  static Bitmap b(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return paramBitmap;
+    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      Paint localPaint = new Paint();
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
+      localPaint.setXfermode(null);
+      paramBitmap.recycle();
+      paramBitmap = localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+    }
+    Logger.a("compress.Utils", "compositingWhiteBg()", "compositingWhiteBg is success");
+    return paramBitmap;
+  }
+  
+  public static String b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (FileUtils.fileExists(paramString)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+      ((StringBuilder)localObject).append("thumb/");
+      String str = RmVFSUtils.getVFSPath(((StringBuilder)localObject).toString());
+      if (paramString.startsWith(str)) {
+        return paramString;
+      }
+      int i = paramString.lastIndexOf("/");
+      int j = paramString.lastIndexOf(".");
+      if (j <= 0) {
+        localObject = paramString.substring(i + 1);
+      } else if (i < j + 1) {
+        localObject = paramString.substring(i + 1, j);
+      } else {
+        localObject = paramString.substring(i + 1);
+      }
+      long l = new File(paramString).lastModified();
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(str);
+      localStringBuffer.append("_");
+      localStringBuffer.append(paramString.hashCode());
+      localStringBuffer.append("_");
+      localStringBuffer.append((String)localObject);
+      localStringBuffer.append("_");
+      localStringBuffer.append(l);
+      localStringBuffer.append(".jpg");
+      paramString = new File(str);
+      if (!paramString.exists()) {
+        paramString.mkdirs();
+      }
+      return localStringBuffer.toString();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("realpath is empty, or file does not exist, realpath:");
+    ((StringBuilder)localObject).append(paramString);
+    Logger.a("compress.Utils", "getThumbnailPath()", ((StringBuilder)localObject).toString());
+    return "";
+  }
+  
   static boolean b()
   {
     Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.pg_switch.name(), "1|1|1");
@@ -916,6 +853,69 @@ public class Utils
     return false;
   }
   
+  public static Bitmap c()
+  {
+    Drawable localDrawable = MobileQQ.getContext().getResources().getDrawable(2130838199);
+    if (localDrawable != null)
+    {
+      if ((localDrawable instanceof BitmapDrawable)) {
+        return ((BitmapDrawable)localDrawable).getBitmap();
+      }
+      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
+      }
+    }
+    return null;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    boolean bool1 = FileUtils.fileExistsAndNotEmpty(paramString);
+    boolean bool2 = false;
+    if ((bool1) && (FileUtils.estimateFileType(paramString).equals("jpg"))) {
+      try
+      {
+        float f = JpegCompressor.getJpegQuality(paramString);
+        long l = FileUtils.getFileSizes(paramString);
+        bool1 = bool2;
+        if (f <= 80.0F)
+        {
+          bool1 = bool2;
+          if (l < 307200L) {
+            bool1 = true;
+          }
+        }
+        paramString = new StringBuilder();
+        paramString.append("getJpegQuality = ");
+        paramString.append(f);
+        paramString.append(",picSize = ");
+        paramString.append(l);
+        paramString.append("result = ");
+        paramString.append(bool1);
+        Logger.a("compress.Utils", "isMatchQualityAndSizeCondition()", paramString.toString());
+        return bool1;
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getJpegQuality OutOfMemoryError error = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",return false!");
+        Logger.b("compress.Utils", "isMatchQualityAndSizeCondition()", localStringBuilder.toString());
+        return false;
+      }
+      catch (RuntimeException paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getJpegQuality RuntimeException error = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",return false!");
+        Logger.b("compress.Utils", "isMatchQualityAndSizeCondition()", localStringBuilder.toString());
+      }
+    }
+    return false;
+  }
+  
   /* Error */
   private static boolean c(String paramString1, Bitmap paramBitmap, int paramInt, String paramString2, CompressInfo paramCompressInfo)
   {
@@ -940,28 +940,28 @@ public class Utils
     //   36: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload 5
-    //   42: ldc_w 616
+    //   42: ldc_w 565
     //   45: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: pop
     //   49: aload 5
     //   51: iload_2
-    //   52: invokevirtual 199	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: ldc 43
-    //   58: ldc_w 672
+    //   58: ldc_w 676
     //   61: aload 5
     //   63: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 148	com/tencent/mobileqq/pic/Logger:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   66: invokestatic 204	com/tencent/mobileqq/pic/Logger:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   69: new 25	java/io/File
     //   72: dup
     //   73: aload_0
     //   74: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
     //   77: astore 9
     //   79: aload 9
-    //   81: invokevirtual 382	java/io/File:exists	()Z
+    //   81: invokevirtual 345	java/io/File:exists	()Z
     //   84: ifeq +9 -> 93
     //   87: aload 9
-    //   89: invokevirtual 621	java/io/File:delete	()Z
+    //   89: invokevirtual 570	java/io/File:delete	()Z
     //   92: pop
     //   93: aconst_null
     //   94: astore 7
@@ -972,66 +972,66 @@ public class Utils
     //   102: aload 6
     //   104: astore 5
     //   106: aload_0
-    //   107: invokestatic 676	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   107: invokestatic 680	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   110: pop
     //   111: aload 6
     //   113: astore 5
-    //   115: new 678	java/io/FileOutputStream
+    //   115: new 682	java/io/FileOutputStream
     //   118: dup
     //   119: aload 9
-    //   121: invokespecial 681	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   121: invokespecial 685	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   124: astore 9
     //   126: aload 6
     //   128: astore 5
-    //   130: new 683	java/io/BufferedOutputStream
+    //   130: new 687	java/io/BufferedOutputStream
     //   133: dup
     //   134: aload 9
-    //   136: invokespecial 686	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   136: invokespecial 690	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   139: astore 6
     //   141: aload_1
-    //   142: getstatic 692	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   142: getstatic 696	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   145: iload_2
     //   146: aload 6
-    //   148: invokevirtual 695	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   148: invokevirtual 699	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   151: pop
     //   152: aload 6
-    //   154: invokevirtual 698	java/io/BufferedOutputStream:flush	()V
+    //   154: invokevirtual 702	java/io/BufferedOutputStream:flush	()V
     //   157: aload 9
-    //   159: invokevirtual 702	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
+    //   159: invokevirtual 706	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
     //   162: astore_1
     //   163: aload_1
     //   164: ifnull +64 -> 228
     //   167: aload_1
-    //   168: invokevirtual 707	java/io/FileDescriptor:valid	()Z
+    //   168: invokevirtual 711	java/io/FileDescriptor:valid	()Z
     //   171: ifeq +57 -> 228
     //   174: aload_1
-    //   175: invokevirtual 710	java/io/FileDescriptor:sync	()V
+    //   175: invokevirtual 714	java/io/FileDescriptor:sync	()V
     //   178: goto +50 -> 228
     //   181: aload 4
     //   183: ifnull +9 -> 192
     //   186: aload 4
     //   188: iconst_1
-    //   189: invokevirtual 715	com/tencent/mobileqq/pic/CompressInfo:b	(Z)V
+    //   189: invokevirtual 719	com/tencent/mobileqq/pic/CompressInfo:b	(Z)V
     //   192: ldc 43
-    //   194: ldc_w 672
-    //   197: ldc_w 717
+    //   194: ldc_w 676
+    //   197: ldc_w 721
     //   200: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   203: goto +25 -> 228
     //   206: aload 4
     //   208: ifnull +9 -> 217
     //   211: aload 4
     //   213: iconst_1
-    //   214: invokevirtual 715	com/tencent/mobileqq/pic/CompressInfo:b	(Z)V
+    //   214: invokevirtual 719	com/tencent/mobileqq/pic/CompressInfo:b	(Z)V
     //   217: ldc 43
-    //   219: ldc_w 672
-    //   222: ldc_w 719
+    //   219: ldc_w 676
+    //   222: ldc_w 723
     //   225: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   228: aload 6
-    //   230: invokevirtual 722	java/io/BufferedOutputStream:close	()V
+    //   230: invokevirtual 726	java/io/BufferedOutputStream:close	()V
     //   233: goto +8 -> 241
     //   236: astore_1
     //   237: aload_1
-    //   238: invokevirtual 663	java/io/IOException:printStackTrace	()V
+    //   238: invokevirtual 614	java/io/IOException:printStackTrace	()V
     //   241: aload_0
     //   242: invokestatic 23	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
     //   245: ifeq +5 -> 250
@@ -1046,11 +1046,11 @@ public class Utils
     //   260: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: pop
     //   264: aload_0
-    //   265: ldc_w 724
+    //   265: ldc_w 728
     //   268: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: pop
     //   272: ldc 43
-    //   274: ldc_w 672
+    //   274: ldc_w 676
     //   277: aload_0
     //   278: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   281: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
@@ -1088,29 +1088,29 @@ public class Utils
     //   338: aload_0
     //   339: astore 5
     //   341: aload 4
-    //   343: ldc_w 726
+    //   343: ldc_w 730
     //   346: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   349: pop
     //   350: aload_0
     //   351: astore 5
     //   353: ldc 43
-    //   355: ldc_w 672
+    //   355: ldc_w 676
     //   358: aload 4
     //   360: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   363: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   366: aload_0
     //   367: astore 5
     //   369: aload_1
-    //   370: invokevirtual 727	java/lang/Exception:printStackTrace	()V
+    //   370: invokevirtual 731	java/lang/Exception:printStackTrace	()V
     //   373: aload_0
     //   374: ifnull +14 -> 388
     //   377: aload_0
-    //   378: invokevirtual 722	java/io/BufferedOutputStream:close	()V
+    //   378: invokevirtual 726	java/io/BufferedOutputStream:close	()V
     //   381: iconst_0
     //   382: ireturn
     //   383: astore_0
     //   384: aload_0
-    //   385: invokevirtual 663	java/io/IOException:printStackTrace	()V
+    //   385: invokevirtual 614	java/io/IOException:printStackTrace	()V
     //   388: iconst_0
     //   389: ireturn
     //   390: astore_1
@@ -1131,39 +1131,39 @@ public class Utils
     //   416: aload_0
     //   417: astore 5
     //   419: aload 4
-    //   421: ldc_w 665
+    //   421: ldc_w 616
     //   424: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: pop
     //   428: aload_0
     //   429: astore 5
     //   431: ldc 43
-    //   433: ldc_w 672
+    //   433: ldc_w 676
     //   436: aload 4
     //   438: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   441: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
     //   444: aload_0
     //   445: astore 5
     //   447: aload_1
-    //   448: invokevirtual 666	java/io/FileNotFoundException:printStackTrace	()V
+    //   448: invokevirtual 617	java/io/FileNotFoundException:printStackTrace	()V
     //   451: aload_0
     //   452: ifnull +14 -> 466
     //   455: aload_0
-    //   456: invokevirtual 722	java/io/BufferedOutputStream:close	()V
+    //   456: invokevirtual 726	java/io/BufferedOutputStream:close	()V
     //   459: iconst_0
     //   460: ireturn
     //   461: astore_0
     //   462: aload_0
-    //   463: invokevirtual 663	java/io/IOException:printStackTrace	()V
+    //   463: invokevirtual 614	java/io/IOException:printStackTrace	()V
     //   466: iconst_0
     //   467: ireturn
     //   468: aload 5
     //   470: ifnull +16 -> 486
     //   473: aload 5
-    //   475: invokevirtual 722	java/io/BufferedOutputStream:close	()V
+    //   475: invokevirtual 726	java/io/BufferedOutputStream:close	()V
     //   478: goto +8 -> 486
     //   481: astore_1
     //   482: aload_1
-    //   483: invokevirtual 663	java/io/IOException:printStackTrace	()V
+    //   483: invokevirtual 614	java/io/IOException:printStackTrace	()V
     //   486: aload_0
     //   487: athrow
     //   488: new 34	java/lang/StringBuilder
@@ -1175,11 +1175,11 @@ public class Utils
     //   498: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   501: pop
     //   502: aload_0
-    //   503: ldc_w 668
+    //   503: ldc_w 619
     //   506: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   509: pop
     //   510: ldc 43
-    //   512: ldc_w 672
+    //   512: ldc_w 676
     //   515: aload_0
     //   516: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   519: invokestatic 55	com/tencent/mobileqq/pic/Logger:b	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
@@ -1255,7 +1255,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.Utils
  * JD-Core Version:    0.7.0.1
  */

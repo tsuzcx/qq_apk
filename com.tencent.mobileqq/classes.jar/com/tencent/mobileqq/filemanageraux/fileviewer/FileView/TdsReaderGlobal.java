@@ -36,45 +36,29 @@ import mqq.os.MqqHandler;
 public final class TdsReaderGlobal
   implements IHostInterface
 {
-  private static final TimeoutParam jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam = new TimeoutParam();
-  private static final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static volatile boolean jdField_b_of_type_Boolean;
+  private static final TimeoutParam a = new TimeoutParam();
+  private static volatile boolean b;
   private static volatile boolean c;
-  private final BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  private volatile IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
-  private volatile Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private volatile Executor jdField_b_of_type_JavaUtilConcurrentExecutor;
+  private static volatile boolean d;
+  private static final Map<String, String> e = new HashMap();
+  private final BaseApplicationImpl f;
+  private volatile Executor g;
+  private volatile Executor h;
+  private volatile IHttpEngineService i;
   
   static
   {
-    TimeoutParam localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
+    TimeoutParam localTimeoutParam = a;
     localTimeoutParam.connectTimeoutFor2G /= 2;
-    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
+    localTimeoutParam = a;
     localTimeoutParam.connectTimeoutFor3G /= 2;
-    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam;
+    localTimeoutParam = a;
     localTimeoutParam.connectTimeoutForWifi /= 2;
   }
   
   private TdsReaderGlobal(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-  }
-  
-  private IHttpEngineService a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null)
-      {
-        localObject1 = new HttpCommunicator(128);
-        ((HttpCommunicator)localObject1).start();
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = new HttpEngineServiceImpl((HttpCommunicator)localObject1, true);
-      }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
-      return localObject1;
-    }
-    finally {}
+    this.f = paramBaseApplicationImpl;
   }
   
   private static String a(String paramString1, String paramString2)
@@ -85,26 +69,13 @@ public final class TdsReaderGlobal
     return localStringBuilder.toString();
   }
   
-  private Executor a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(64);
-      }
-      Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
-      return localExecutor;
-    }
-    finally {}
-  }
-  
   public static void a()
   {
     try
     {
-      if (!jdField_a_of_type_Boolean)
+      if (!b)
       {
-        jdField_a_of_type_Boolean = true;
+        b = true;
         ThreadManager.getFileThreadHandler().post(new TdsReaderGlobal.RunnableImpl(null, 1, new Object[0], null));
       }
       return;
@@ -118,23 +89,23 @@ public final class TdsReaderGlobal
   
   public static void a(boolean paramBoolean)
   {
-    jdField_b_of_type_Boolean = paramBoolean;
+    c = paramBoolean;
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaUtilMap)
+      synchronized (e)
       {
-        if (jdField_a_of_type_JavaUtilMap.size() > 0)
+        if (e.size() > 0)
         {
-          i = 1;
-          if ((paramBoolean) && (!c) && (i != 0))
+          j = 1;
+          if ((paramBoolean) && (!d) && (j != 0))
           {
             TdsReaderView.init(new TdsReaderGlobal(BaseApplicationImpl.getApplication()));
-            c = true;
+            d = true;
           }
           return;
         }
       }
-      int i = 0;
+      int j = 0;
     }
   }
   
@@ -151,13 +122,13 @@ public final class TdsReaderGlobal
     //   10: return
     //   11: iload_0
     //   12: ifeq +28 -> 40
-    //   15: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   15: getstatic 46	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:e	Ljava/util/Map;
     //   18: astore_2
     //   19: aload_2
     //   20: monitorenter
-    //   21: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   21: getstatic 46	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:e	Ljava/util/Map;
     //   24: aload_1
-    //   25: invokeinterface 139 2 0
+    //   25: invokeinterface 117 2 0
     //   30: aload_2
     //   31: monitorexit
     //   32: goto +33 -> 65
@@ -166,15 +137,15 @@ public final class TdsReaderGlobal
     //   37: monitorexit
     //   38: aload_1
     //   39: athrow
-    //   40: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   40: getstatic 46	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:e	Ljava/util/Map;
     //   43: astore_2
     //   44: aload_2
     //   45: monitorenter
-    //   46: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   49: invokeinterface 142 1 0
-    //   54: getstatic 40	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   46: getstatic 46	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:e	Ljava/util/Map;
+    //   49: invokeinterface 120 1 0
+    //   54: getstatic 46	com/tencent/mobileqq/filemanageraux/fileviewer/FileView/TdsReaderGlobal:e	Ljava/util/Map;
     //   57: aload_1
-    //   58: invokeinterface 139 2 0
+    //   58: invokeinterface 117 2 0
     //   63: aload_2
     //   64: monitorexit
     //   65: ldc 2
@@ -217,7 +188,7 @@ public final class TdsReaderGlobal
       boolean bool1 = ((Boolean)paramArrayOfObject[1]).booleanValue();
       boolean bool2 = ((Boolean)paramArrayOfObject[2]).booleanValue();
       IHostInterface.IPreferencesCallback localIPreferencesCallback = (IHostInterface.IPreferencesCallback)paramArrayOfObject[3];
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("tencentdoc_olc_pref", 4);
+      SharedPreferences localSharedPreferences = this.f.getSharedPreferences("tencentdoc_olc_pref", 4);
       paramArrayOfObject = str;
       if (bool2) {
         paramArrayOfObject = a(getUserId(), str);
@@ -229,25 +200,12 @@ public final class TdsReaderGlobal
     }
   }
   
-  private Executor b()
-  {
-    try
-    {
-      if (this.jdField_b_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(128);
-      }
-      Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
-      return localExecutor;
-    }
-    finally {}
-  }
-  
   public static void b()
   {
     try
     {
-      jdField_a_of_type_Boolean = false;
-      jdField_b_of_type_Boolean = false;
+      b = false;
+      c = false;
       return;
     }
     finally
@@ -262,6 +220,19 @@ public final class TdsReaderGlobal
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  private Executor c()
+  {
+    try
+    {
+      if (this.g == null) {
+        this.g = ThreadManagerExecutor.getExecutorService(64);
+      }
+      Executor localExecutor = this.g;
+      return localExecutor;
+    }
+    finally {}
+  }
+  
   private void c(Object[] paramArrayOfObject)
   {
     if (paramArrayOfObject != null)
@@ -273,7 +244,7 @@ public final class TdsReaderGlobal
       String str2 = (String)paramArrayOfObject[1];
       String str3 = (String)paramArrayOfObject[2];
       paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl))
+      if (!NetworkUtil.isNetworkAvailable(this.f))
       {
         if (paramArrayOfObject != null) {
           paramArrayOfObject.onDownloadFinished(str1, false, 9004);
@@ -287,17 +258,46 @@ public final class TdsReaderGlobal
         localHttpNetReq.mHttpMethod = 0;
         localHttpNetReq.mPrioty = 1;
         localHttpNetReq.mUseByteArrayPool = true;
-        localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileTimeoutParam.clone();
+        localHttpNetReq.mTimeoutParam = a.clone();
         localHttpNetReq.mSupportBreakResume = true;
         localHttpNetReq.mCallback = new TdsReaderGlobal.NetEngineListener4Download(str1, paramArrayOfObject, null);
-        a().sendReq(localHttpNetReq);
+        e().sendReq(localHttpNetReq);
       }
     }
   }
   
+  private Executor d()
+  {
+    try
+    {
+      if (this.h == null) {
+        this.h = ThreadManagerExecutor.getExecutorService(128);
+      }
+      Executor localExecutor = this.h;
+      return localExecutor;
+    }
+    finally {}
+  }
+  
+  private IHttpEngineService e()
+  {
+    try
+    {
+      if (this.i == null)
+      {
+        localObject1 = new HttpCommunicator(128);
+        ((HttpCommunicator)localObject1).start();
+        this.i = new HttpEngineServiceImpl((HttpCommunicator)localObject1, true);
+      }
+      Object localObject1 = this.i;
+      return localObject1;
+    }
+    finally {}
+  }
+  
   public void commitPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("tencentdoc_olc_pref", 4).edit();
+    SharedPreferences.Editor localEditor = this.f.getSharedPreferences("tencentdoc_olc_pref", 4).edit();
     String str = paramString;
     if (paramBoolean2) {
       str = a(getUserId(), paramString);
@@ -324,7 +324,7 @@ public final class TdsReaderGlobal
   {
     Object localObject;
     if (paramContext == null) {
-      localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+      localObject = this.f;
     } else {
       localObject = paramContext;
     }
@@ -334,7 +334,7 @@ public final class TdsReaderGlobal
       localProtectedWebView.setWebChromeClient(new TdsReaderGlobal.WebChromeClientImpl(paramIWebClient, null));
       localObject = paramContext;
       if (paramContext == null) {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+        localObject = this.f;
       }
       localProtectedWebView.setWebViewClient(new TdsReaderGlobal.WebViewClientImpl((Context)localObject, paramIWebClient, null));
     }
@@ -352,7 +352,7 @@ public final class TdsReaderGlobal
   {
     if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http")))
     {
-      b().execute(new TdsReaderGlobal.RunnableImpl(this, 4, new Object[] { paramString1, paramString2, paramString3, paramIDownloadListener }, null));
+      d().execute(new TdsReaderGlobal.RunnableImpl(this, 4, new Object[] { paramString1, paramString2, paramString3, paramIDownloadListener }, null));
       return;
     }
     paramString3 = new StringBuilder();
@@ -371,21 +371,21 @@ public final class TdsReaderGlobal
   
   public String getConfig(String paramString)
   {
-    synchronized (jdField_a_of_type_JavaUtilMap)
+    synchronized (e)
     {
-      paramString = (String)jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (String)e.get(paramString);
       return paramString;
     }
   }
   
   public String getUserId()
   {
-    return Long.toString(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getLongAccountUin());
+    return Long.toString(this.f.getRuntime().getLongAccountUin());
   }
   
   public void queryPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2, IHostInterface.IPreferencesCallback paramIPreferencesCallback)
   {
-    a().execute(new TdsReaderGlobal.RunnableImpl(this, 2, new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramIPreferencesCallback }, null));
+    c().execute(new TdsReaderGlobal.RunnableImpl(this, 2, new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramIPreferencesCallback }, null));
   }
   
   public void reportEvent(String paramString1, int paramInt, String paramString2)
@@ -401,7 +401,7 @@ public final class TdsReaderGlobal
   {
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.startsWith("http")))
     {
-      b().execute(new TdsReaderGlobal.RunnableImpl(this, 3, new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, paramIHttpListener }, null));
+      d().execute(new TdsReaderGlobal.RunnableImpl(this, 3, new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, paramIHttpListener }, null));
       return;
     }
     paramString2 = new StringBuilder();
@@ -415,7 +415,7 @@ public final class TdsReaderGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal
  * JD-Core Version:    0.7.0.1
  */

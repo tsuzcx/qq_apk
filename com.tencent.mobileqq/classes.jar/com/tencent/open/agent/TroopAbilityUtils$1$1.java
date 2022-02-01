@@ -14,7 +14,7 @@ class TroopAbilityUtils$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (!this.a.a.isFinishing()) {
       paramDialogInterface.dismiss();
     }
     if (paramInt != 0) {
@@ -24,13 +24,13 @@ class TroopAbilityUtils$1$1
     {
       paramDialogInterface = new Intent();
       paramDialogInterface.addFlags(335544320);
-      if (this.a.jdField_a_of_type_Boolean) {
-        paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+      if (this.a.b) {
+        paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.c), this.a.d })));
       } else {
-        paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+        paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.c), this.a.d })));
       }
-      paramDialogInterface.setPackage(this.a.c);
-      this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+      paramDialogInterface.setPackage(this.a.e);
+      this.a.a.startActivity(paramDialogInterface);
       return;
     }
     catch (Exception paramDialogInterface)
@@ -41,7 +41,7 @@ class TroopAbilityUtils$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

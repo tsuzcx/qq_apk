@@ -20,9 +20,9 @@ class AVRecentFileSelectFragment$3
     paramContext.append(paramIntent.getAction());
     paramContext.append("]");
     QLog.i("AVRecentFileSelectFragment", 1, paramContext.toString());
-    if (!WTBusinessForWebPlugin.a.empty())
+    if (!WTBusinessForWebPlugin.b.empty())
     {
-      paramContext = (Activity)WTBusinessForWebPlugin.a.peek();
+      paramContext = (Activity)WTBusinessForWebPlugin.b.peek();
       paramContext.setResult(-1, new Intent());
       paramContext.finish();
     }
@@ -30,7 +30,7 @@ class AVRecentFileSelectFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVRecentFileSelectFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,25 +12,25 @@ class PicBrowserGalleryScene$1
 {
   PicBrowserGalleryScene$1(PicBrowserGalleryScene paramPicBrowserGalleryScene, ActionSheet paramActionSheet, File paramFile, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
-      PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryScene, this.jdField_a_of_type_JavaLangString);
+      PicBrowserGalleryScene.a(this.d, this.c);
       return;
     }
-    paramView = PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryScene);
-    File localFile = this.jdField_a_of_type_JavaIoFile;
+    paramView = PicBrowserGalleryScene.a(this.d);
+    File localFile = this.b;
     AIOGalleryUtils.a(paramView, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserGalleryScene.1
  * JD-Core Version:    0.7.0.1
  */

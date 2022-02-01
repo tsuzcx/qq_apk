@@ -13,9 +13,9 @@ class TaskThreadPool$2
   {
     try
     {
-      if (TaskThreadPool.a(this.this$0))
+      if (TaskThreadPool.b(this.this$0))
       {
-        TaskThreadPool.a(this.this$0).execute((Runnable)TaskThreadPool.a(this.this$0).poll());
+        TaskThreadPool.c(this.this$0).execute((Runnable)TaskThreadPool.a(this.this$0).poll());
         return;
       }
     }
@@ -27,7 +27,7 @@ class TaskThreadPool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskThreadPool.2
  * JD-Core Version:    0.7.0.1
  */

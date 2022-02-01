@@ -8,19 +8,19 @@ class LocalMultiProcConfigServiceProvider$1
 {
   LocalMultiProcConfigServiceProvider$1(LocalMultiProcConfigServiceProvider paramLocalMultiProcConfigServiceProvider) {}
   
-  public int a(String paramString, int paramInt)
-  {
-    return LocalMultiProcConfig.getInt(paramString, paramInt);
-  }
-  
   public void a(String paramString, int paramInt)
   {
     LocalMultiProcConfig.putInt(paramString, paramInt);
   }
+  
+  public int b(String paramString, int paramInt)
+  {
+    return LocalMultiProcConfig.getInt(paramString, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.statistic.LocalMultiProcConfigServiceProvider.1
  * JD-Core Version:    0.7.0.1
  */

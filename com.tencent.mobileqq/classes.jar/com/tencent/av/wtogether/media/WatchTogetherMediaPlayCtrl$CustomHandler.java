@@ -32,63 +32,63 @@ class WatchTogetherMediaPlayCtrl$CustomHandler
         default: 
           return;
         case 261: 
-          if (WatchTogetherMediaPlayCtrl.a(this.a) == null) {
+          if (WatchTogetherMediaPlayCtrl.d(this.a) == null) {
             return;
           }
-          WatchTogetherMediaPlayCtrl.d(this.a);
+          WatchTogetherMediaPlayCtrl.p(this.a);
           return;
         case 260: 
-          if (WatchTogetherMediaPlayCtrl.a(this.a) != null)
+          if (WatchTogetherMediaPlayCtrl.d(this.a) != null)
           {
-            if ((WatchTogetherMediaPlayCtrl.a(this.a) != null) && (WatchTogetherMediaPlayCtrl.a(this.a).a())) {
+            if ((WatchTogetherMediaPlayCtrl.n(this.a) != null) && (WatchTogetherMediaPlayCtrl.n(this.a).a())) {
               return;
             }
             i = ((Integer)paramMessage.obj).intValue();
-            WatchTogetherMediaPlayCtrl.a(this.a).seekTo(i, 3);
+            WatchTogetherMediaPlayCtrl.d(this.a).seekTo(i, 3);
             if (paramMessage.arg1 == 1) {
               return;
             }
             WatchTogetherMediaPlayCtrl.a(this.a, false);
-            paramMessage = WatchTogetherMediaPlayCtrl.a(this.a).iterator();
+            paramMessage = WatchTogetherMediaPlayCtrl.e(this.a).iterator();
             while (paramMessage.hasNext())
             {
               localObject = (WeakReference)paramMessage.next();
               if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-                ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).a(i, (int)WatchTogetherMediaPlayCtrl.a(this.a).getDurationMs());
+                ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).a(i, (int)WatchTogetherMediaPlayCtrl.d(this.a).getDurationMs());
               }
             }
           }
           return;
         case 259: 
-          if (WatchTogetherMediaPlayCtrl.a(this.a) != null)
+          if (WatchTogetherMediaPlayCtrl.d(this.a) != null)
           {
-            if (WatchTogetherMediaPlayCtrl.b(this.a) == 7) {
+            if (WatchTogetherMediaPlayCtrl.o(this.a) == 7) {
               return;
             }
-            WatchTogetherMediaPlayCtrl.a(this.a).pause();
+            WatchTogetherMediaPlayCtrl.d(this.a).pause();
             WatchTogetherMediaPlayCtrl.a(this.a, 7);
-            paramMessage = WatchTogetherMediaPlayCtrl.a(this.a).iterator();
+            paramMessage = WatchTogetherMediaPlayCtrl.e(this.a).iterator();
             while (paramMessage.hasNext())
             {
               localObject = (WeakReference)paramMessage.next();
               if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-                ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).c();
+                ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).d();
               }
             }
           }
           return;
         case 258: 
-          if (WatchTogetherMediaPlayCtrl.a(this.a) == null) {
+          if (WatchTogetherMediaPlayCtrl.d(this.a) == null) {
             return;
           }
-          WatchTogetherMediaPlayCtrl.a(this.a).start();
+          WatchTogetherMediaPlayCtrl.d(this.a).start();
           WatchTogetherMediaPlayCtrl.a(this.a, 5);
-          paramMessage = WatchTogetherMediaPlayCtrl.a(this.a).iterator();
+          paramMessage = WatchTogetherMediaPlayCtrl.e(this.a).iterator();
           while (paramMessage.hasNext())
           {
             localObject = (WeakReference)paramMessage.next();
             if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-              ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).d();
+              ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).e();
             }
           }
         case 257: 
@@ -104,7 +104,7 @@ class WatchTogetherMediaPlayCtrl$CustomHandler
             return;
           }
           paramMessage = (String)paramMessage.obj;
-          localObject = WatchTogetherMediaPlayCtrl.a(this.a).iterator();
+          localObject = WatchTogetherMediaPlayCtrl.e(this.a).iterator();
           while (((Iterator)localObject).hasNext())
           {
             WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
@@ -118,20 +118,20 @@ class WatchTogetherMediaPlayCtrl$CustomHandler
       }
       float f = ((Float)paramMessage.obj).floatValue();
       WatchTogetherMediaPlayCtrl.a(this.a, f);
-      if (WatchTogetherMediaPlayCtrl.a(this.a) == null) {
+      if (WatchTogetherMediaPlayCtrl.d(this.a) == null) {
         return;
       }
-      WatchTogetherMediaPlayCtrl.a(this.a).setPlaySpeedRatio(f);
-      paramMessage = WatchTogetherMediaPlayCtrl.a(this.a).iterator();
+      WatchTogetherMediaPlayCtrl.d(this.a).setPlaySpeedRatio(f);
+      paramMessage = WatchTogetherMediaPlayCtrl.e(this.a).iterator();
       while (paramMessage.hasNext())
       {
         localObject = (WeakReference)paramMessage.next();
         if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-          ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).a(WatchTogetherMediaPlayCtrl.a(this.a));
+          ((WatchTogetherMediaPlayerStatusCallback)((WeakReference)localObject).get()).a(WatchTogetherMediaPlayCtrl.q(this.a));
         }
       }
     }
-    WatchTogetherMediaPlayCtrl.e(this.a);
+    WatchTogetherMediaPlayCtrl.r(this.a);
   }
 }
 

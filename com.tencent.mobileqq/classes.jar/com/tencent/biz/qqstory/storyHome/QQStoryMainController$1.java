@@ -15,7 +15,7 @@ final class QQStoryMainController$1
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.setImageDrawable(this.b);
     if (QLog.isColorLevel())
     {
       paramURLDrawable = new StringBuilder();

@@ -18,10 +18,6 @@ public abstract class BaseDataReport
   
   protected abstract String a(boolean paramBoolean);
   
-  protected abstract HashMap<String, String> a();
-  
-  public abstract void a();
-  
   public void a(DataReportBasicInfo paramDataReportBasicInfo, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
   {
     paramDataReportBasicInfo = paramDataReportBasicInfo.a();
@@ -44,12 +40,16 @@ public abstract class BaseDataReport
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramDataReportBasicInfo, "");
   }
   
-  public void a(boolean paramBoolean)
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public void b(boolean paramBoolean)
   {
     if (a()) {
-      b(paramBoolean);
+      c(paramBoolean);
     }
-    HashMap localHashMap = a();
+    HashMap localHashMap = b();
     if (localHashMap != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -61,15 +61,11 @@ public abstract class BaseDataReport
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
   }
   
-  protected abstract boolean a();
+  protected abstract HashMap<String, String> c();
   
-  protected abstract HashMap<String, String> b();
-  
-  public abstract void b();
-  
-  public void b(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    HashMap localHashMap = b();
+    HashMap localHashMap = c();
     if (localHashMap != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -80,10 +76,14 @@ public abstract class BaseDataReport
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.BaseDataReport
  * JD-Core Version:    0.7.0.1
  */

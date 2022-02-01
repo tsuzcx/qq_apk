@@ -11,16 +11,16 @@ final class MyAppApi$2
   {
     try
     {
-      if (!ControlPolicyUtil.k()) {
+      if (!ControlPolicyUtil.p()) {
         return;
       }
-      GlobalUtil.getInstance().setContext(CommonDataAdapter.a().a());
-      if (MyAppApi.h())
+      GlobalUtil.getInstance().setContext(CommonDataAdapter.a().b());
+      if (MyAppApi.x())
       {
-        MyAppApi.k();
+        MyAppApi.y();
         return;
       }
-      MyAppApi.l();
+      MyAppApi.z();
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ final class MyAppApi$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.2
  * JD-Core Version:    0.7.0.1
  */

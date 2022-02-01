@@ -16,13 +16,13 @@ import android.widget.ImageView;
 public class LayerImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
-  private LayerImageView.ChildBitmap[] jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
-  private boolean b;
+  private LayerImageView.ChildBitmap[] a;
+  private Bitmap b;
+  private Bitmap.Config c;
+  private boolean d;
+  private Paint e;
+  private int f;
+  private boolean g;
   
   public LayerImageView(Context paramContext)
   {
@@ -42,15 +42,32 @@ public class LayerImageView
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_Int = getResources().getDisplayMetrics().densityDpi;
-    this.b = false;
+    this.d = false;
+    this.e = new Paint();
+    this.f = getResources().getDisplayMetrics().densityDpi;
+    this.g = false;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
+  }
+  
+  private Bitmap.Config getConfig()
+  {
+    if (this.g) {
+      return Bitmap.Config.ARGB_8888;
+    }
+    Bitmap.Config localConfig = this.c;
+    if (localConfig != null) {
+      return localConfig;
+    }
+    return Bitmap.Config.ARGB_8888;
+  }
+  
+  public Bitmap getBitmap()
+  {
+    return this.b;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -63,7 +80,7 @@ public class LayerImageView
     int j = 0;
     if (paramBoolean)
     {
-      LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
+      LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.a;
       if (arrayOfChildBitmap != null)
       {
         int k = arrayOfChildBitmap.length;
@@ -78,13 +95,13 @@ public class LayerImageView
         }
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap = new LayerImageView.ChildBitmap[paramArrayOfBitmap.length];
+    this.a = new LayerImageView.ChildBitmap[paramArrayOfBitmap.length];
     int i = j;
     while (i < paramArrayOfBitmap.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[i] = new LayerImageView.ChildBitmap(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[i]) != null) && (LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[i]);
+      this.a[i] = new LayerImageView.ChildBitmap(paramArrayOfBitmap[i], this.f, null);
+      if ((this.c == null) || ((LayerImageView.ChildBitmap.b(this.a[i]) != null) && (LayerImageView.ChildBitmap.b(this.a[i]).ordinal() > this.c.ordinal()))) {
+        this.c = LayerImageView.ChildBitmap.b(this.a[i]);
       }
       i += 1;
     }
@@ -94,15 +111,15 @@ public class LayerImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     super.setImageBitmap(paramBitmap);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.d = false;
+    this.b = paramBitmap;
   }
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
+    LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.a;
     LayerImageView.ChildBitmap localChildBitmap = arrayOfChildBitmap[paramInt];
-    arrayOfChildBitmap[paramInt] = new LayerImageView.ChildBitmap(paramBitmap, this.jdField_a_of_type_Int, null);
+    arrayOfChildBitmap[paramInt] = new LayerImageView.ChildBitmap(paramBitmap, this.f, null);
     if ((paramBoolean) && (LayerImageView.ChildBitmap.a(localChildBitmap) != null)) {
       LayerImageView.ChildBitmap.a(localChildBitmap).recycle();
     }
@@ -110,18 +127,18 @@ public class LayerImageView
   
   public void setLayerPadding(int paramInt, Rect paramRect)
   {
-    LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[paramInt], paramRect);
+    LayerImageView.ChildBitmap.a(this.a[paramInt], paramRect);
     b();
   }
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length == this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap.length)
+    if (paramArrayOfRect.length == this.a.length)
     {
       int i = 0;
       for (;;)
       {
-        LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap;
+        LayerImageView.ChildBitmap[] arrayOfChildBitmap = this.a;
         if (i >= arrayOfChildBitmap.length) {
           break;
         }
@@ -140,18 +157,18 @@ public class LayerImageView
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
   {
-    LayerImageView.ChildBitmap.a(this.jdField_a_of_type_ArrayOfComTencentWidgetLayerImageView$ChildBitmap[paramInt1], paramInt2);
+    LayerImageView.ChildBitmap.a(this.a[paramInt1], paramInt2);
     b();
   }
   
   public void setNeedTransparent(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.g = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.LayerImageView
  * JD-Core Version:    0.7.0.1
  */

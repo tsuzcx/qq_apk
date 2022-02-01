@@ -12,13 +12,13 @@ final class ExtendFriendSendMsgHelper$5
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() instanceof QQAppInterface))
+    if ((this.a.getAppRuntime() instanceof QQAppInterface))
     {
-      String str = ExtendFriendSendMsgHelper.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime());
-      if (this.jdField_a_of_type_Boolean) {
-        CampusHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqProfileSchoolInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqProfileSchoolInfo.b, this.jdField_a_of_type_ComTencentMobileqqProfileSchoolInfo.jdField_a_of_type_JavaLangString);
+      String str = ExtendFriendSendMsgHelper.a((QQAppInterface)this.a.getAppRuntime());
+      if (this.b) {
+        CampusHelper.a(this.a, this.c.a, this.c.d, this.c.c);
       } else {
-        CampusHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, str);
+        CampusHelper.a(this.a, str);
       }
     }
     paramDialogInterface.dismiss();
@@ -26,7 +26,7 @@ final class ExtendFriendSendMsgHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.ExtendFriendSendMsgHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -89,13 +89,13 @@ public class DevVideoMsgProcessor
           if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.e))
           {
             Object localObject3 = new DevShortVideoSendOperator();
-            ((DevShortVideoSendOperator)localObject3).jdField_c_of_type_JavaLangString = paramSession.strFilePathSrc;
+            ((DevShortVideoSendOperator)localObject3).h = paramSession.strFilePathSrc;
             ((DevShortVideoSendOperator)localObject3).a();
-            ((MessageForDevShortVideo)localObject2).md5 = ((DevShortVideoSendOperator)localObject3).e;
-            ((MessageForDevShortVideo)localObject2).videoFileTime = ((int)(((DevShortVideoSendOperator)localObject3).jdField_b_of_type_Long / 1000L));
-            ((MessageForDevShortVideo)localObject2).thumbWidth = ((DevShortVideoSendOperator)localObject3).jdField_b_of_type_Int;
-            ((MessageForDevShortVideo)localObject2).thumbHeight = ((DevShortVideoSendOperator)localObject3).jdField_c_of_type_Int;
-            ((MessageForDevShortVideo)localObject2).thumbMD5 = ((DevShortVideoSendOperator)localObject3).g;
+            ((MessageForDevShortVideo)localObject2).md5 = ((DevShortVideoSendOperator)localObject3).m;
+            ((MessageForDevShortVideo)localObject2).videoFileTime = ((int)(((DevShortVideoSendOperator)localObject3).j / 1000L));
+            ((MessageForDevShortVideo)localObject2).thumbWidth = ((DevShortVideoSendOperator)localObject3).o;
+            ((MessageForDevShortVideo)localObject2).thumbHeight = ((DevShortVideoSendOperator)localObject3).p;
+            ((MessageForDevShortVideo)localObject2).thumbMD5 = ((DevShortVideoSendOperator)localObject3).q;
             if (paramBoolean) {
               ((MessageForDevShortVideo)localObject2).videoFileStatus = 2003;
             } else {
@@ -152,7 +152,7 @@ public class DevVideoMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DevVideoMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

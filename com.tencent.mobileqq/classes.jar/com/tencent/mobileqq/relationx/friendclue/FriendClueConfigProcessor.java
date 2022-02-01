@@ -31,7 +31,7 @@ public class FriendClueConfigProcessor
       {
         Object localObject = paramArrayOfQConfItem[i];
         if (localObject != null) {
-          localObject = ((QConfItem)localObject).a;
+          localObject = ((QConfItem)localObject).b;
         } else {
           localObject = null;
         }
@@ -103,7 +103,7 @@ public class FriendClueConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

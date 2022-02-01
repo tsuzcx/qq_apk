@@ -1,26 +1,11 @@
 package com.tencent.mobileqq.kandian.repo.aladdin.sp;
 
 import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class RIJMultiVideoConfigSp
 {
-  public static boolean a(int paramInt)
-  {
-    String str = Aladdin.getConfig(286).getString("loop_play_from_type", "");
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getVideoFeedsLoopPlayConfig: ");
-      localStringBuilder.append(str);
-      QLog.d("RIJMultiVideoConfigSp", 2, localStringBuilder.toString());
-    }
-    return a(paramInt, ",", str);
-  }
-  
   public static boolean a(int paramInt, String paramString1, String paramString2)
   {
     try
@@ -63,7 +48,7 @@ public class RIJMultiVideoConfigSp
   public static boolean b(int paramInt, String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      return a(paramInt, paramString1, (String)RIJSPUtils.a(paramString2, ""));
+      return a(paramInt, paramString1, (String)RIJSPUtils.b(paramString2, ""));
     }
     if (QLog.isColorLevel())
     {
@@ -77,7 +62,7 @@ public class RIJMultiVideoConfigSp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJMultiVideoConfigSp
  * JD-Core Version:    0.7.0.1
  */

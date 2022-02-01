@@ -11,35 +11,35 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class NativeSummaryView$MoreSpan
   extends PressedSpan
 {
-  AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  AbsBaseArticleInfo b;
   
   public NativeSummaryView$MoreSpan(NativeSummaryView paramNativeSummaryView, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
     super(-15504151, 13421772, 860716207);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.b = paramAbsBaseArticleInfo;
   }
   
   public void onClick(View paramView)
   {
-    if ((RIJItemViewTypeUtils.h(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeSummaryView.getContext() instanceof Activity)))
+    if ((RIJItemViewTypeUtils.h(this.b)) && ((this.c.getContext() instanceof Activity)))
     {
-      RIJJumpUtils.b((Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      RIJJumpUtils.b((Activity)this.c.getContext(), this.b);
+      paramView = this.b;
       RIJFrameworkReportManager.b(paramView, (int)paramView.mChannelID);
       return;
     }
     int i;
-    if (RIJItemViewTypeUtils.l(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
+    if (RIJItemViewTypeUtils.l(this.b)) {
       i = 2;
     } else {
       i = 3;
     }
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, i);
+    RIJJumpUtils.a(this.c.getContext(), this.b, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeSummaryView.MoreSpan
  * JD-Core Version:    0.7.0.1
  */

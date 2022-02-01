@@ -11,6 +11,7 @@ import com.tencent.viola.ui.context.RenderActionContext;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
+import com.tencent.viola.utils.ViolaUtils;
 import org.json.JSONObject;
 
 public class MethodCreateBody
@@ -25,12 +26,22 @@ public class MethodCreateBody
     this.mData = paramJSONObject;
   }
   
-  private void forceBatch()
+  private void forceBatch(ViolaInstance paramViolaInstance)
   {
     ViolaDomManager localViolaDomManager = ViolaSDKManager.getInstance().getDomManager();
     if (this.createFromNativeVue)
     {
+      if ((ViolaUtils.isLayoutOpmOpen()) && (paramViolaInstance != null))
+      {
+        localViolaDomManager.forceNvBatch(paramViolaInstance.getInstanceId());
+        return;
+      }
       localViolaDomManager.forceNvBatch();
+      return;
+    }
+    if ((ViolaUtils.isLayoutOpmOpen()) && (paramViolaInstance != null))
+    {
+      localViolaDomManager.forceBatch(paramViolaInstance.getInstanceId());
       return;
     }
     localViolaDomManager.forceBatch();
@@ -145,7 +156,7 @@ public class MethodCreateBody
           {
             localVComponent.getDomObject().initRoot(localVComponent.getDomObject().getRef(), f, 750.0F);
             if (f != localVComponent.getDomObject().getLayoutHeight()) {
-              forceBatch();
+              forceBatch(paramRenderActionContext);
             }
             setRootMeasuredExactly(paramRenderActionContext, true);
           }
@@ -180,7 +191,7 @@ public class MethodCreateBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodCreateBody
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class QWalletTempImpl$4
   
   public void run()
   {
-    Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (AppInterface)this.a.get();
     RedDotImageView localRedDotImageView = (RedDotImageView)this.b.get();
     if ((localObject != null) && (localRedDotImageView != null))
     {
-      localObject = (IQWalletRedService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletRedService.class);
+      localObject = (IQWalletRedService)this.c.getRuntimeService(IQWalletRedService.class);
       IQWalletRedService.ShowInfo localShowInfo = ((IQWalletRedService)localObject).getShowInfo("2001");
-      if ((localShowInfo.a) && (QWalletTempImpl.access$000(this.this$0, localShowInfo.b, this.jdField_a_of_type_Int)))
+      if ((localShowInfo.a) && (QWalletTempImpl.access$000(this.this$0, localShowInfo.d, this.d)))
       {
         ((IQWalletRedService)localObject).doShowReport("2001");
         localRedDotImageView.post(new QWalletTempImpl.4.1(this));
@@ -30,7 +30,7 @@ class QWalletTempImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QWalletTempImpl.4
  * JD-Core Version:    0.7.0.1
  */

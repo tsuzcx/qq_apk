@@ -17,7 +17,7 @@ class SubAccountUgActivity$1
   {
     if ((paramBoolean) && (paramSubAccountBackProtocData != null) && (this.a.subUin != null) && (this.a.subUin.length() >= 5))
     {
-      paramSubAccountBackProtocData = paramSubAccountBackProtocData.c();
+      paramSubAccountBackProtocData = paramSubAccountBackProtocData.f();
       if (paramSubAccountBackProtocData != null)
       {
         if (paramSubAccountBackProtocData.contains(this.a.subUin)) {
@@ -45,19 +45,19 @@ class SubAccountUgActivity$1
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("SubAccountUgActivity.onUnBindSubAccount() mainAccount=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
-        ((StringBuilder)localObject).append(" subAccount=");
         ((StringBuilder)localObject).append(paramSubAccountBackProtocData.c);
+        ((StringBuilder)localObject).append(" subAccount=");
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.d);
         ((StringBuilder)localObject).append(" errType=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.a);
         ((StringBuilder)localObject).append(" errMsg=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
         QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
       }
     }
     if ((paramSubAccountBackProtocData != null) && (this.a.subUin != null))
     {
-      if ((this.a.subUin != null) && (!this.a.subUin.equals(paramSubAccountBackProtocData.c))) {
+      if ((this.a.subUin != null) && (!this.a.subUin.equals(paramSubAccountBackProtocData.d))) {
         return;
       }
       this.a.hideJuhua();
@@ -69,10 +69,10 @@ class SubAccountUgActivity$1
         {
           paramSubAccountBackProtocData.bindSwitchUnbind();
           paramSubAccountBackProtocData = this.a;
-          paramSubAccountBackProtocData.showQQToastSuccess(paramSubAccountBackProtocData.getString(2131719350));
+          paramSubAccountBackProtocData.showQQToastSuccess(paramSubAccountBackProtocData.getString(2131916902));
           return;
         }
-        paramSubAccountBackProtocData.showQQToast(paramSubAccountBackProtocData.getString(2131719349));
+        paramSubAccountBackProtocData.showQQToast(paramSubAccountBackProtocData.getString(2131916901));
         return;
       }
       if (paramBoolean)
@@ -86,7 +86,7 @@ class SubAccountUgActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.1
  * JD-Core Version:    0.7.0.1
  */

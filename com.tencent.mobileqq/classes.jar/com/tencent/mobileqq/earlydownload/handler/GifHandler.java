@@ -7,19 +7,9 @@ import com.tencent.qphone.base.util.QLog;
 public class GifHandler
   extends EarlyHandler
 {
-  public int a()
-  {
-    return 10041;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return GifData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyNativeGif";
   }
   
   public void a(XmlData paramXmlData)
@@ -38,19 +28,29 @@ public class GifHandler
     super.a(paramString);
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "actEarlyNativeGif";
+  }
+  
+  public int c()
+  {
+    return 10041;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.GifHandler
  * JD-Core Version:    0.7.0.1
  */

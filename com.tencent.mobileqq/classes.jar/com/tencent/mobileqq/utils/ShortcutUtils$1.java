@@ -14,8 +14,8 @@ final class ShortcutUtils$1
 {
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
-    boolean bool = ShortcutUtils.a((Context)localObject1, new String[] { ((Context)localObject1).getString(2131690092) });
+    Object localObject1 = this.a;
+    boolean bool = ShortcutUtils.a((Context)localObject1, new String[] { ((Context)localObject1).getString(2131886912) });
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -24,35 +24,35 @@ final class ShortcutUtils$1
       ((StringBuilder)localObject2).append("createShortcut ");
       ((StringBuilder)localObject2).append(bool);
       ((StringBuilder)localObject2).append(", ");
-      ((StringBuilder)localObject2).append(ShortcutUtils.a());
+      ((StringBuilder)localObject2).append(ShortcutUtils.b());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     if (bool)
     {
-      if (ShortcutUtils.b() < 3) {
+      if (ShortcutUtils.c() < 3) {
         ThreadManager.getSubThreadHandler().postDelayed(this, 1000L);
       }
     }
     else
     {
       localObject1 = new Intent("android.intent.action.MAIN");
-      ((Intent)localObject1).setClassName(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject1).setClassName(this.a, this.b);
       ((Intent)localObject1).addCategory("android.intent.category.LAUNCHER");
       ((Intent)localObject1).addFlags(268435456);
       ((Intent)localObject1).addFlags(2097152);
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("android.intent.extra.shortcut.INTENT", (Parcelable)localObject1);
-      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690092));
-      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130840405));
+      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.NAME", this.a.getResources().getString(2131886912));
+      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.a.getApplicationContext(), 2130841158));
       ((Intent)localObject2).putExtra("duplicate", false);
       ((Intent)localObject2).setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-      this.jdField_a_of_type_AndroidContentContext.sendOrderedBroadcast((Intent)localObject2, null);
+      this.a.sendOrderedBroadcast((Intent)localObject2, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShortcutUtils.1
  * JD-Core Version:    0.7.0.1
  */

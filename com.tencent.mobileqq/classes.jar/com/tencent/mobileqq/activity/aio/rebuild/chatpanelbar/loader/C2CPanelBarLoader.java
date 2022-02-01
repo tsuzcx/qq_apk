@@ -28,54 +28,80 @@ public class C2CPanelBarLoader
   {
     if ((!ThemeUtil.isNowThemeIsDefault(paramQQAppInterface, false, null)) && (!ThemeUtil.isNowThemeIsNight(paramQQAppInterface, false, null)))
     {
-      AIOPanelUtiles.Y[2] = 2130837935;
+      AIOPanelUtiles.Z[2] = 2130837959;
       return;
     }
-    AIOPanelUtiles.Y[2] = 2130837934;
-  }
-  
-  public List<AIOPanelIconItem> a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    a(paramQQAppInterface);
-    Context localContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a();
-    if (!Utils.b(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.b = PlusPanelUtil.a(localContext);
-    }
-    if ((this.b == null) || (this.b.size() <= 0))
-    {
-      this.jdField_a_of_type_JavaUtilList = b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
-      this.b = a(localContext, this.jdField_a_of_type_JavaUtilList);
-    }
-    return this.b;
+    AIOPanelUtiles.Z[2] = 2130837958;
   }
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.d);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.e);
+    this.a.add(AIOPanelUtiles.p);
     a();
     b();
-    if (AIOPanelUtiles.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.C);
+    if (AIOPanelUtiles.a) {
+      this.a.add(AIOPanelUtiles.D);
     }
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.h);
-    if (Utils.b(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    this.a.add(AIOPanelUtiles.i);
+    if (Utils.c(paramSessionInfo.b))
     {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.U);
+      this.a.add(AIOPanelUtiles.V);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.y);
+    this.a.add(AIOPanelUtiles.z);
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    return (SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo, paramSessionInfo.jdField_a_of_type_Int)) && (!SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo));
+    boolean bool = this.c.a().i();
+    this.a.add(AIOPanelUtiles.b);
+    paramBaseChatPie = this.a;
+    if (bool) {
+      paramQQAppInterface = AIOPanelUtiles.q;
+    } else {
+      paramQQAppInterface = AIOPanelUtiles.m;
+    }
+    paramBaseChatPie.add(paramQQAppInterface);
+    a(this.c.a().j());
+    c();
+    if (AIOPanelUtiles.a) {
+      this.a.add(AIOPanelUtiles.C);
+    }
+    paramBaseChatPie = this.a;
+    if (bool) {
+      paramQQAppInterface = AIOPanelUtiles.j;
+    } else {
+      paramQQAppInterface = AIOPanelUtiles.f;
+    }
+    paramBaseChatPie.add(paramQQAppInterface);
+    if (Utils.c(paramSessionInfo.b))
+    {
+      this.a.add(AIOPanelUtiles.U);
+      return;
+    }
+    this.a.add(AIOPanelUtiles.x);
   }
   
-  public List<int[]> b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  public List<AIOPanelIconItem> d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    a(paramQQAppInterface);
+    Context localContext = this.c.a().j();
+    if (!Utils.c(paramSessionInfo.b)) {
+      this.b = PlusPanelUtil.a(localContext);
+    }
+    if ((this.b == null) || (this.b.size() <= 0))
+    {
+      this.a = e(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
+      this.b = a(localContext, this.a);
+    }
+    return this.b;
+  }
+  
+  public List<int[]> e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    boolean bool = this.c.a().a();
+    this.a = new ArrayList();
     if (bool)
     {
       if ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
@@ -87,43 +113,17 @@ public class C2CPanelBarLoader
     else {
       c(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
-  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.jdField_a_of_type_ArrayOfInt);
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
-    if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.p;
-    } else {
-      paramQQAppInterface = AIOPanelUtiles.l;
-    }
-    paramBaseChatPie.add(paramQQAppInterface);
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().a());
-    c();
-    if (AIOPanelUtiles.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.B);
-    }
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
-    if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.i;
-    } else {
-      paramQQAppInterface = AIOPanelUtiles.e;
-    }
-    paramBaseChatPie.add(paramQQAppInterface);
-    if (Utils.b(paramSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.T);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.w);
+    return (SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo, paramSessionInfo.a)) && (!SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.C2CPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

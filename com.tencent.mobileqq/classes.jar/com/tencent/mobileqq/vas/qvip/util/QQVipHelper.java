@@ -63,7 +63,7 @@ public class QQVipHelper
   public static Intent a(QQAppInterface paramQQAppInterface)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("qqvip_pubaccount_msg_list", a(paramQQAppInterface));
+    localIntent.putExtra("qqvip_pubaccount_msg_list", a(paramQQAppInterface, 4));
     return localIntent;
   }
   
@@ -94,7 +94,7 @@ public class QQVipHelper
     return localObject1;
   }
   
-  public static ArrayList<QQVipMsgInfo> a(QQAppInterface paramQQAppInterface)
+  public static ArrayList<QQVipMsgInfo> a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(AppConstants.QQ_VIP_UIN, 1008, 50);
     ArrayList localArrayList = new ArrayList();
@@ -103,7 +103,7 @@ public class QQVipHelper
       int i = paramQQAppInterface.size() - 1;
       while (i >= 0)
       {
-        if (a(paramQQAppInterface, localArrayList, i)) {
+        if (a(paramQQAppInterface, localArrayList, i, paramInt)) {
           return localArrayList;
         }
         i -= 1;
@@ -142,7 +142,7 @@ public class QQVipHelper
       localIntent.setClass(paramActivity, ChatActivity.class);
       localIntent.putExtra("uin", AppConstants.QQ_VIP_UIN);
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", ResourceUtil.getString(2131695227));
+      localIntent.putExtra("uinname", ResourceUtil.getString(2131892961));
       localIntent.putExtra("entrance", 1);
       localIntent.putExtra("aio_msg_source", 0);
       paramActivity.startActivity(localIntent);
@@ -182,8 +182,8 @@ public class QQVipHelper
       if ((paramActivity instanceof QQVipFeedWedFragment))
       {
         paramActivity = (QQVipFeedWedFragment)paramActivity;
-        i = paramActivity.a();
-        paramActivity = paramActivity.a();
+        i = paramActivity.c();
+        paramActivity = paramActivity.d();
         paramString = MobileReportManager.getInstance();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(i + 1);
@@ -208,23 +208,9 @@ public class QQVipHelper
     PublicFragmentActivityForTool.b((Activity)paramContext, localIntent, QQVipFeedWedFragment.class, 10000);
   }
   
-  public static boolean a(Context paramContext)
+  private static boolean a(List<MessageRecord> paramList, ArrayList<QQVipMsgInfo> paramArrayList, int paramInt1, int paramInt2)
   {
-    Object localObject = (IPublicAccountDataManager)((QQAppInterface)a()).getRuntimeService(IPublicAccountDataManager.class, "all");
-    if (localObject != null)
-    {
-      localObject = ((IPublicAccountDataManager)localObject).findAccountDetailInfoCache(AppConstants.QQ_VIP_UIN);
-      if (localObject != null) {
-        return ((IPublicAccountDetail)localObject).isRecvPush();
-      }
-      c(paramContext);
-    }
-    return false;
-  }
-  
-  private static boolean a(List<MessageRecord> paramList, ArrayList<QQVipMsgInfo> paramArrayList, int paramInt)
-  {
-    paramList = (MessageRecord)paramList.get(paramInt);
+    paramList = (MessageRecord)paramList.get(paramInt1);
     if (AppConstants.QQ_VIP_UIN.equals(paramList.frienduin))
     {
       if (((paramList instanceof MessageForArkApp)) || ((paramList instanceof MessageForPubAccount)) || ((paramList instanceof MessageForStructing)))
@@ -234,7 +220,7 @@ public class QQVipHelper
           paramArrayList.add(paramList);
         }
       }
-      if (paramArrayList.size() == 4) {
+      if ((paramInt2 > 0) && (paramArrayList.size() >= paramInt2)) {
         return true;
       }
     }
@@ -390,18 +376,32 @@ public class QQVipHelper
     PublicFragmentActivityForTool.b(paramContext, a((QQAppInterface)a()), QQVipFeedWedFragment.class);
   }
   
-  public static boolean b(Context paramContext)
+  public static boolean c(Context paramContext)
   {
-    QVipPubAccountConfig localQVipPubAccountConfig = QVipPubAccountProocessor.c();
+    Object localObject = (IPublicAccountDataManager)((QQAppInterface)a()).getRuntimeService(IPublicAccountDataManager.class, "all");
+    if (localObject != null)
+    {
+      localObject = ((IPublicAccountDataManager)localObject).findAccountDetailInfoCache(AppConstants.QQ_VIP_UIN);
+      if (localObject != null) {
+        return ((IPublicAccountDetail)localObject).isRecvPush();
+      }
+      e(paramContext);
+    }
+    return false;
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    QVipPubAccountConfig localQVipPubAccountConfig = QVipPubAccountProocessor.e();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localQVipPubAccountConfig != null)
     {
       bool1 = bool2;
-      if (QVipPubAccountProocessor.c().a().booleanValue())
+      if (QVipPubAccountProocessor.e().e().booleanValue())
       {
         bool1 = bool2;
-        if (a(paramContext)) {
+        if (c(paramContext)) {
           bool1 = true;
         }
       }
@@ -409,14 +409,14 @@ public class QQVipHelper
     return bool1;
   }
   
-  public static void c(Context paramContext)
+  public static void e(Context paramContext)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)a();
     paramContext = new NewIntent(paramContext, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
     paramContext.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.7.0,3,5295");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.8.17,3,5770");
     try
     {
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(AppConstants.QQ_VIP_UIN));
@@ -435,7 +435,7 @@ public class QQVipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.util.QQVipHelper
  * JD-Core Version:    0.7.0.1
  */

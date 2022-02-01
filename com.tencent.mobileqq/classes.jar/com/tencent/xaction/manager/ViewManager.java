@@ -22,20 +22,10 @@ import org.jetbrains.annotations.Nullable;
 public final class ViewManager
   implements IViewManager
 {
-  public static final ViewManager.Companion a;
+  public static final ViewManager.Companion a = new ViewManager.Companion(null);
   @NotNull
-  private static final HashMap<String, IView> b = new HashMap();
-  private final HashMap<String, Class<? extends IView>> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentXactionManagerViewManager$Companion = new ViewManager.Companion(null);
-  }
-  
-  public ViewManager()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static final HashMap<String, IView> c = new HashMap();
+  private final HashMap<String, Class<? extends IView>> b = new HashMap();
   
   private final boolean a(ViewData paramViewData)
   {
@@ -51,7 +41,7 @@ public final class ViewManager
     int i;
     if (a(paramViewData))
     {
-      localObject = b;
+      localObject = c;
       String str = paramViewData.getSingleTag();
       if (str == null) {
         Intrinsics.throwNpe();
@@ -66,7 +56,7 @@ public final class ViewManager
     {
       i = 0;
     }
-    Object localObject = (Class)this.jdField_a_of_type_JavaUtilHashMap.get(paramViewData.getType());
+    Object localObject = (Class)this.b.get(paramViewData.getType());
     if (localObject != null)
     {
       localObject = ((Class)localObject).getDeclaredConstructor(new Class[] { Context.class });
@@ -77,9 +67,10 @@ public final class ViewManager
       if (paramContext != null)
       {
         paramContext = (IView)paramContext;
+        paramContext.getDecor().setStyle(paramViewData);
         if (i != 0)
         {
-          paramViewGroup = (Map)b;
+          paramViewGroup = (Map)c;
           paramViewData = paramViewData.getSingleTag();
           if (paramViewData == null) {
             Intrinsics.throwNpe();
@@ -87,7 +78,7 @@ public final class ViewManager
           paramViewGroup.put(paramViewData, paramContext);
           return paramContext;
         }
-        paramContext.getDecor().init((IXAEngine)paramXAEngine, paramViewGroup);
+        paramContext.getDecor().a((IXAEngine)paramXAEngine, paramViewGroup);
         return paramContext;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.IView");
@@ -99,12 +90,12 @@ public final class ViewManager
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "key");
     Intrinsics.checkParameterIsNotNull(paramString2, "clazzName");
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) {
+    if (this.b.containsKey(paramString1)) {
       return false;
     }
     try
     {
-      Map localMap = (Map)this.jdField_a_of_type_JavaUtilHashMap;
+      Map localMap = (Map)this.b;
       paramString2 = getClass().getClassLoader().loadClass(paramString2);
       if (paramString2 != null) {
         localMap.put(paramString1, paramString2);
@@ -121,7 +112,7 @@ public final class ViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.manager.ViewManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.qwallet.temp.IIndividualRedPacket;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
@@ -24,63 +25,51 @@ import mqq.app.AppRuntime;
 public class VipRedPkgViewHolder
   extends BaseViewHolder
 {
-  IIndividualRedPacket a;
+  IIndividualRedPacket y;
   
-  public VipRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public VipRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
-    this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket = ((IIndividualRedPacket)paramBaseQQAppInterface.getRuntimeService(IIndividualRedPacket.class));
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("会员红包");
-    return false;
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    this.y = ((IIndividualRedPacket)paramBaseQQAppInterface.getRuntimeService(IIndividualRedPacket.class));
   }
   
   public void f()
   {
     super.f();
-    if (this.h > 0) {
+    if (this.n > 0) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket;
+    Object localObject1 = this.y;
     boolean bool;
     if (localObject1 != null) {
       bool = ((IIndividualRedPacket)localObject1).isAllowShowRedpacket();
     } else {
       bool = false;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    Object localObject2 = this.f;
     if (bool) {
       localObject1 = "1";
     } else {
       localObject1 = "0";
     }
     ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8006133", "0X8006133", 0, 0, (String)localObject1, "0", "", "");
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    localObject2 = this.b.mQQWalletRedPacketMsg;
     if (bool)
     {
       if (((QQWalletRedPacketMsg)localObject2).envelopeid == 0) {
         return;
       }
-      bool = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend();
+      bool = this.b.isSend();
       localObject1 = new RedPacketInfo();
-      ((RedPacketInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
-      ((RedPacketInfo)localObject1).jdField_a_of_type_Boolean = bool;
+      ((RedPacketInfo)localObject1).a = this.b;
+      ((RedPacketInfo)localObject1).c = bool;
       ((RedPacketInfo)localObject1).type = 2;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(((QQWalletRedPacketMsg)localObject2).envelopeid);
       ((StringBuilder)localObject3).append("");
       ((RedPacketInfo)localObject1).templateId = ((StringBuilder)localObject3).toString();
-      ((RedPacketInfo)localObject1).jdField_a_of_type_JavaLangString = ((QQWalletRedPacketMsg)localObject2).envelopeName;
-      ((RedPacketInfo)localObject1).jdField_a_of_type_Int = ((QQWalletRedPacketMsg)localObject2).conftype;
+      ((RedPacketInfo)localObject1).d = ((QQWalletRedPacketMsg)localObject2).envelopeName;
+      ((RedPacketInfo)localObject1).f = ((QQWalletRedPacketMsg)localObject2).conftype;
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -89,12 +78,12 @@ public class VipRedPkgViewHolder
         ((StringBuilder)localObject2).append("|");
         ((StringBuilder)localObject2).append(((RedPacketInfo)localObject1).templateId);
         ((StringBuilder)localObject2).append("|");
-        ((StringBuilder)localObject2).append(((RedPacketInfo)localObject1).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(((RedPacketInfo)localObject1).d);
         ((StringBuilder)localObject2).append("|");
         ((StringBuilder)localObject2).append(System.currentTimeMillis());
         QLog.d("VipRedPkgViewHolder", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject1 = CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (RedPacketInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener);
+      localObject1 = CustomizeStrategyFactory.d().a(this.f, (RedPacketInfo)localObject1, this.u);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -106,46 +95,57 @@ public class VipRedPkgViewHolder
       {
         if (((RedPacketInfo)localObject1).a())
         {
-          this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
+          this.a.i().setVisibility(0);
           localObject2 = new AnimationDrawable();
-          localObject3 = ((RedPacketInfo)localObject1).jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+          localObject3 = ((RedPacketInfo)localObject1).i;
           int j = localObject3.length;
           int i = 0;
           while (i < j)
           {
             Drawable localDrawable = localObject3[i];
             if (localDrawable != null) {
-              ((AnimationDrawable)localObject2).addFrame(localDrawable, ((RedPacketInfo)localObject1).jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig.b);
+              ((AnimationDrawable)localObject2).addFrame(localDrawable, ((RedPacketInfo)localObject1).h.c);
             }
             i += 1;
           }
           if (Build.VERSION.SDK_INT < 16) {
-            this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setBackgroundDrawable((Drawable)localObject2);
+            this.a.i().setBackgroundDrawable((Drawable)localObject2);
           } else {
-            this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setBackground((Drawable)localObject2);
+            this.a.i().setBackground((Drawable)localObject2);
           }
           ((AnimationDrawable)localObject2).setOneShot(false);
           ((AnimationDrawable)localObject2).start();
           return;
         }
-        if (((RedPacketInfo)localObject1).jdField_a_of_type_AndroidGraphicsBitmap != null)
+        if (((RedPacketInfo)localObject1).e != null)
         {
-          this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-          localObject1 = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), ((RedPacketInfo)localObject1).jdField_a_of_type_AndroidGraphicsBitmap);
+          this.a.i().setVisibility(0);
+          localObject1 = new BitmapDrawable(this.e.getResources(), ((RedPacketInfo)localObject1).e);
           if (Build.VERSION.SDK_INT < 16)
           {
-            this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setBackgroundDrawable((Drawable)localObject1);
+            this.a.i().setBackgroundDrawable((Drawable)localObject1);
             return;
           }
-          this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setBackground((Drawable)localObject1);
+          this.a.i().setBackground((Drawable)localObject1);
         }
       }
     }
   }
+  
+  public boolean g()
+  {
+    boolean bool = super.g();
+    if (bool) {
+      return bool;
+    }
+    this.a.c().setVisibility(0);
+    this.a.c().setText("会员红包");
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.VipRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

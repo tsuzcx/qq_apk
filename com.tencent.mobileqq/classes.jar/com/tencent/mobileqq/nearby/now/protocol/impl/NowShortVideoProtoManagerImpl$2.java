@@ -16,7 +16,7 @@ class NowShortVideoProtoManagerImpl$2
     ((StringBuilder)localObject).append(" reportPlay code:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("reportPlay", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolINowShortVideoProtoManager$Callback;
+    localObject = this.b;
     if (localObject != null) {
       ((INowShortVideoProtoManager.Callback)localObject).a(paramInt, paramArrayOfByte, paramBundle);
     }
@@ -24,7 +24,7 @@ class NowShortVideoProtoManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.impl.NowShortVideoProtoManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

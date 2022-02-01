@@ -4,9 +4,10 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJDeviceUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGalleryBiu;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
@@ -98,7 +99,7 @@ public class GalleryReportedUtils
   
   public static String a(Context paramContext)
   {
-    paramContext = DeviceInfoUtil.a(paramContext).a;
+    paramContext = DeviceInfoUtil.f(paramContext).a;
     if (!TextUtils.isEmpty(paramContext))
     {
       if (paramContext.equals("WIFI")) {
@@ -153,8 +154,8 @@ public class GalleryReportedUtils
       paramContext.append(paramInt3);
       paramContext.append("");
       localJSONObject.put("card_type", paramContext.toString());
-      localJSONObject.put("imei", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMEIForReport());
-      localJSONObject.put("imsi", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMSIForReport());
+      localJSONObject.put("imei", RIJDeviceUtil.a());
+      localJSONObject.put("imsi", RIJDeviceUtil.b());
       localJSONObject.put("channel_id", paramInt4);
       if (!TextUtils.isEmpty(paramString3)) {
         localJSONObject.put("source_rowkey", paramString3);
@@ -219,8 +220,8 @@ public class GalleryReportedUtils
       paramContext.append(paramInt4);
       paramContext.append("");
       localJSONObject.put("pic_click", paramContext.toString());
-      localJSONObject.put("imei", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMEIForReport());
-      localJSONObject.put("imsi", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMSIForReport());
+      localJSONObject.put("imei", RIJDeviceUtil.a());
+      localJSONObject.put("imsi", RIJDeviceUtil.b());
       localJSONObject.put("channel_id", paramInt5);
       if (!TextUtils.isEmpty(paramString4)) {
         localJSONObject.put("source_rowkey", paramString4);
@@ -253,7 +254,7 @@ public class GalleryReportedUtils
       localJSONObject.put("version", paramContext.toString());
       localJSONObject.put("os", "1");
       paramContext = new StringBuilder();
-      paramContext.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      paramContext.append(RIJQQAppInterfaceUtil.c());
       paramContext.append("");
       localJSONObject.put("uin", paramContext.toString());
       localJSONObject.put("source", String.valueOf(paramInt2));
@@ -261,7 +262,7 @@ public class GalleryReportedUtils
       localJSONObject.put("article_id", paramAbsBaseArticleInfo.mArticleID);
       localJSONObject.put("city", b());
       localJSONObject.put("pos", String.valueOf(paramInt3));
-      localJSONObject.put("rowkey", ReadinjoyReportUtils.a(paramAbsBaseArticleInfo));
+      localJSONObject.put("rowkey", ReadinjoyReportUtils.c(paramAbsBaseArticleInfo));
       localJSONObject.put("channel_id", String.valueOf(paramInt1));
       return localJSONObject;
     }
@@ -336,8 +337,8 @@ public class GalleryReportedUtils
     localReportInfo.mOperation = paramInt1;
     gallery_report.GalleryExpReported localGalleryExpReported = new gallery_report.GalleryExpReported();
     localGalleryExpReported.phone_type.set(1);
-    if (!TextUtils.isEmpty("8.7.0")) {
-      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    if (!TextUtils.isEmpty("8.8.17")) {
+      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     }
     localGalleryExpReported.source.set(paramInt3);
     if (!TextUtils.isEmpty(a())) {
@@ -361,31 +362,30 @@ public class GalleryReportedUtils
   
   public static void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if ((RIJFeedsType.c(paramAbsBaseArticleInfo)) || (RIJFeedsType.l(paramAbsBaseArticleInfo)) || (RIJFeedsType.T(paramAbsBaseArticleInfo)))
+    if ((RIJFeedsType.c(paramAbsBaseArticleInfo)) || (RIJFeedsType.r(paramAbsBaseArticleInfo)) || (RIJFeedsType.ab(paramAbsBaseArticleInfo)))
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-      ((StringBuilder)localObject1).append("");
-      paramContext = a(paramContext, ((StringBuilder)localObject1).toString(), ComponentContentGalleryBiu.a(paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter), paramAbsBaseArticleInfo.mArticleID, paramReadInJoyBaseAdapter.b().indexOf(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo.galleryReprotExdData, a(RIJFeedsType.a(paramAbsBaseArticleInfo)), 0, (int)paramAbsBaseArticleInfo.mChannelID, null);
-      paramReadInJoyBaseAdapter = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo.publishUin);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mArticleID);
-      ((StringBuilder)localObject2).append("");
-      localObject2 = ((StringBuilder)localObject2).toString();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.c());
+      ((StringBuilder)localObject).append("");
+      paramContext = a(paramContext, ((StringBuilder)localObject).toString(), ComponentContentGalleryBiu.a(paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter), paramAbsBaseArticleInfo.mArticleID, paramReadInJoyBaseAdapter.h().indexOf(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo.galleryReprotExdData, a(RIJFeedsType.g(paramAbsBaseArticleInfo)), 0, (int)paramAbsBaseArticleInfo.mChannelID, null);
+      paramReadInJoyBaseAdapter = new StringBuilder();
+      paramReadInJoyBaseAdapter.append("");
+      paramReadInJoyBaseAdapter.append(paramAbsBaseArticleInfo.publishUin);
+      paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mArticleID);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramAbsBaseArticleInfo.mAlgorithmID);
       localStringBuilder.append("");
-      paramReadInJoyBaseAdapter.publicAccountReportClickEvent(null, (String)localObject1, "0X8008E2F", "0X8008E2F", 0, 0, "", (String)localObject2, localStringBuilder.toString(), paramContext, false);
+      PublicAccountReportUtils.a(null, paramReadInJoyBaseAdapter, "0X8008E2F", "0X8008E2F", 0, 0, "", (String)localObject, localStringBuilder.toString(), paramContext, false);
     }
   }
   
   public static void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString, JSONObject paramJSONObject)
   {
-    int i = RIJFeedsType.a(paramAbsBaseArticleInfo);
+    int i = RIJFeedsType.g(paramAbsBaseArticleInfo);
     i = a((int)paramAbsBaseArticleInfo.mChannelID, i);
     if (paramJSONObject == null) {
       paramJSONObject = new JSONObject();
@@ -398,23 +398,22 @@ public class GalleryReportedUtils
     {
       localJSONException.printStackTrace();
     }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-    ((StringBuilder)localObject1).append("");
-    paramContext = a(paramContext, ((StringBuilder)localObject1).toString(), i, paramAbsBaseArticleInfo.mArticleID, 0, paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo.galleryReprotExdData, a(RIJFeedsType.a(paramAbsBaseArticleInfo)), 0, (int)paramAbsBaseArticleInfo.mChannelID, paramJSONObject);
-    paramJSONObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("");
-    ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo.publishUin);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mArticleID);
-    ((StringBuilder)localObject2).append("");
-    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.c());
+    ((StringBuilder)localObject).append("");
+    paramContext = a(paramContext, ((StringBuilder)localObject).toString(), i, paramAbsBaseArticleInfo.mArticleID, 0, paramAbsBaseArticleInfo.innerUniqueID, paramAbsBaseArticleInfo.galleryReprotExdData, a(RIJFeedsType.g(paramAbsBaseArticleInfo)), 0, (int)paramAbsBaseArticleInfo.mChannelID, paramJSONObject);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("");
+    paramJSONObject.append(paramAbsBaseArticleInfo.publishUin);
+    paramJSONObject = paramJSONObject.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mArticleID);
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramAbsBaseArticleInfo.mAlgorithmID);
     localStringBuilder.append("");
-    paramJSONObject.publicAccountReportClickEvent(null, (String)localObject1, paramString, paramString, 0, 0, "", (String)localObject2, localStringBuilder.toString(), paramContext, false);
+    PublicAccountReportUtils.a(null, paramJSONObject, paramString, paramString, 0, 0, "", (String)localObject, localStringBuilder.toString(), paramContext, false);
   }
   
   public static void a(Context paramContext, String paramString, int paramInt1, int paramInt2)
@@ -429,7 +428,7 @@ public class GalleryReportedUtils
       localJSONObject.put("version", paramContext.toString());
       localJSONObject.put("os", "1");
       paramContext = new StringBuilder();
-      paramContext.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      paramContext.append(RIJQQAppInterfaceUtil.c());
       paramContext.append("");
       localJSONObject.put("uin", paramContext.toString());
       localJSONObject.put("mem_size", a());
@@ -441,12 +440,12 @@ public class GalleryReportedUtils
     {
       paramContext.printStackTrace();
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, "", "", "", localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   public static void a(GalleryReportedUtils.ReportData paramReportData)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramReportData.a, paramReportData.b, paramReportData.c, 0, 0, "", paramReportData.e, paramReportData.f, paramReportData.g, false);
+    PublicAccountReportUtils.a(null, paramReportData.b, paramReportData.c, paramReportData.d, 0, 0, "", paramReportData.f, paramReportData.g, paramReportData.h, false);
   }
   
   public static String b()
@@ -471,7 +470,7 @@ public class GalleryReportedUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.GalleryReportedUtils
  * JD-Core Version:    0.7.0.1
  */

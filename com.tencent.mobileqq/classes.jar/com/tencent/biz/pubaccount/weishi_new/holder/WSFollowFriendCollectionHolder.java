@@ -15,10 +15,10 @@ import com.tencent.biz.pubaccount.weishi_new.WSFollowAdapter;
 import com.tencent.biz.pubaccount.weishi_new.WSItemDecoration;
 import com.tencent.biz.pubaccount.weishi_new.WSTipsInfoDialog;
 import com.tencent.biz.pubaccount.weishi_new.follow.WSFriendItemDataUtil;
+import com.tencent.biz.pubaccount.weishi_new.main.WSLauncher.VerticalPageLauncher;
 import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedAdapter;
 import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder;
 import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSFriendFeedDataManager;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
@@ -28,18 +28,18 @@ public class WSFollowFriendCollectionHolder
   extends BaseViewHolder<stFeed>
   implements View.OnClickListener
 {
-  private stFeed jdField_a_of_type_UserGrowthStFeed;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private WSFollowAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter;
-  private WSFollowFriendFeedAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter;
+  private RecyclerView a;
+  private LinearLayout b;
+  private LinearLayoutManager c;
+  private WSFollowAdapter d;
+  private WSFollowFriendFeedAdapter e;
+  private stFeed f;
   
   private WSFollowFriendCollectionHolder(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
   {
-    super(paramViewGroup, 2131560413);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter = paramWSFollowAdapter;
-    c();
+    super(paramViewGroup, 2131626458);
+    this.d = paramWSFollowAdapter;
+    d();
   }
   
   public static WSFollowFriendCollectionHolder a(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
@@ -47,63 +47,44 @@ public class WSFollowFriendCollectionHolder
     return new WSFollowFriendCollectionHolder(paramViewGroup, paramWSFollowAdapter);
   }
   
-  private void c()
+  private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)getView(2131367803));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)getView(2131376226));
-    TextView localTextView1 = (TextView)getView(2131381246);
-    TextView localTextView2 = (TextView)getView(2131381247);
-    ImageView localImageView = (ImageView)getView(2131381219);
+    this.b = ((LinearLayout)getView(2131434378));
+    this.a = ((RecyclerView)getView(2131444434));
+    TextView localTextView1 = (TextView)getView(2131450294);
+    TextView localTextView2 = (TextView)getView(2131450295);
+    ImageView localImageView = (ImageView)getView(2131450267);
     localTextView1.setVisibility(0);
     localImageView.setVisibility(0);
     localTextView1.setOnClickListener(this);
     localImageView.setOnClickListener(this);
-    localTextView2.setText(2131720434);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter = new WSFollowFriendFeedAdapter(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new WSItemDecoration());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.setOnItemClickListener(new WSFollowFriendCollectionHolder.1(this));
+    localTextView2.setText(2131918110);
+    this.c = new LinearLayoutManager(getContext(), 0, false);
+    this.a.setLayoutManager(this.c);
+    this.a.setHasFixedSize(true);
+    this.e = new WSFollowFriendFeedAdapter(getContext(), this.d);
+    this.a.setAdapter(this.e);
+    this.a.addItemDecoration(new WSItemDecoration());
+    this.e.setOnItemClickListener(new WSFollowFriendCollectionHolder.1(this));
   }
   
   public RecyclerView a()
   {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-    if (localObject == null) {
-      return;
-    }
-    int j = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
-    int k = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-    int i = j;
-    while (i <= k - j)
-    {
-      localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
-      if ((localObject instanceof BaseViewHolder)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.a((BaseViewHolder)localObject);
-      }
-      i += 1;
-    }
+    return this.a;
   }
   
   public void a(stFeed paramstFeed)
   {
     if (paramstFeed == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.b.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.f = paramstFeed;
+    this.b.setVisibility(0);
     paramstFeed = paramstFeed.friendFeed;
     List localList = WSFriendItemDataUtil.a(paramstFeed);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSFollowFriendFeedAdapter.fillList(localList);
+    this.e.fillList(localList);
     if (paramstFeed != null) {
       WSFriendFeedDataManager.a().a(paramstFeed.attachInfo);
     }
@@ -111,22 +92,41 @@ public class WSFollowFriendCollectionHolder
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    Object localObject = this.c;
+    if (localObject == null) {
+      return;
+    }
+    int j = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
+    int k = this.c.findLastVisibleItemPosition();
+    int i = j;
+    while (i <= k - j)
+    {
+      localObject = this.a.findViewHolderForAdapterPosition(i);
+      if ((localObject instanceof BaseViewHolder)) {
+        this.e.a((BaseViewHolder)localObject);
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    Object localObject = this.c;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter == null) {
+      if (this.d == null) {
         return;
       }
       int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
-      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      int j = this.c.findLastVisibleItemPosition();
       if (i >= 0)
       {
-        if (j >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSFollowAdapter.getDataList().size()) {
+        if (j >= this.d.getDataList().size()) {
           return;
         }
         while (i <= j)
         {
-          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          localObject = this.a.findViewHolderForAdapterPosition(i);
           if ((localObject instanceof WSFollowFriendFeedHolder)) {
             ((WSFollowFriendFeedHolder)localObject).b();
           }
@@ -139,19 +139,19 @@ public class WSFollowFriendCollectionHolder
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131381219)
+    if (i != 2131450267)
     {
-      if (i != 2131381246) {
+      if (i != 2131450294) {
         return;
       }
-      WSVerticalPageFragment.a(new WSVerticalPageOpenParams(getContext(), "friend_feed", "friend"));
+      WSLauncher.VerticalPageLauncher.a(new WSVerticalPageOpenParams(getContext(), "friend_feed", "friend"));
       WSFollowBeaconReport.b();
       return;
     }
     paramView = new WSTipsInfoDialog(getContext());
-    stFeed localstFeed = this.jdField_a_of_type_UserGrowthStFeed;
-    if ((localstFeed != null) && (localstFeed.friendFeed != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips))) {
-      paramView.a(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips);
+    stFeed localstFeed = this.f;
+    if ((localstFeed != null) && (localstFeed.friendFeed != null) && (!TextUtils.isEmpty(this.f.friendFeed.dialogTips))) {
+      paramView.a(this.f.friendFeed.dialogTips);
     }
     paramView.show();
     WSFollowBeaconReport.a();
@@ -165,7 +165,7 @@ public class WSFollowFriendCollectionHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFriendCollectionHolder
  * JD-Core Version:    0.7.0.1
  */

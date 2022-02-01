@@ -25,38 +25,32 @@ import java.util.List;
 public class FeedLikeLego
   extends LegoBase<LikeEntry>
 {
-  private int jdField_a_of_type_Int;
-  public Activity a;
   public TextView a;
-  protected LikeManager a;
-  private SpannableStringUtils.DefaultClickNickCallback jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$DefaultClickNickCallback;
-  private DetailCommentSegment.CommentTextOnTouchListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener;
-  public CommentLikeFeedItem a;
-  protected FeedManager a;
-  public List<LikeEntry> a;
-  public boolean a;
+  public CommentLikeFeedItem b;
+  public boolean c;
+  public Activity d;
+  public List<LikeEntry> e = new ArrayList();
+  protected LikeManager f;
+  protected FeedManager g;
+  private SpannableStringUtils.DefaultClickNickCallback h;
+  private DetailCommentSegment.CommentTextOnTouchListener i;
+  private int j;
   
   public FeedLikeLego(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
   {
     super(paramContext, paramView);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$DefaultClickNickCallback = new SpannableStringUtils.DefaultClickNickCallback(paramActivity, paramCommentLikeFeedItem, paramInt, false);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener = new DetailCommentSegment.CommentTextOnTouchListener();
+    this.b = paramCommentLikeFeedItem;
+    this.j = paramInt;
+    this.d = paramActivity;
+    this.h = new SpannableStringUtils.DefaultClickNickCallback(paramActivity, paramCommentLikeFeedItem, paramInt, false);
+    this.i = new DetailCommentSegment.CommentTextOnTouchListener();
   }
   
   public static FeedLikeLego a(Context paramContext, Activity paramActivity, View paramView, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt)
   {
     paramContext = new FeedLikeLego(paramContext, paramActivity, paramView, paramCommentLikeFeedItem, paramInt);
-    paramContext.jdField_a_of_type_Boolean = false;
+    paramContext.c = false;
     return paramContext;
-  }
-  
-  public LegoDataProvider a()
-  {
-    return new FeedLikeDataProvider(this, this.jdField_a_of_type_Boolean);
   }
   
   public LegoEvenHandler a()
@@ -66,15 +60,15 @@ public class FeedLikeLego
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370032));
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager = ((LikeManager)SuperManager.a(15));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
+    this.a = ((TextView)paramView.findViewById(2131437188));
+    this.f = ((LikeManager)SuperManager.a(15));
+    this.g = ((FeedManager)SuperManager.a(11));
+    this.a.setOnClickListener(this.s);
   }
   
   public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramCommentLikeFeedItem;
   }
   
   public void a(List<LikeEntry> paramList)
@@ -82,46 +76,46 @@ public class FeedLikeLego
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int k = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-    boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isFriend();
+    this.e = paramList;
+    int m = this.e.size();
+    int n = this.b.mLikeCount;
+    boolean bool = this.b.getOwner().isFriend();
     if (!bool)
     {
-      if ((j == 0) && (k == 0))
+      if ((m == 0) && (n == 0))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.a.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.setVisibility(0);
     }
     else
     {
-      if (j == 0)
+      if (m == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.a.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.setVisibility(0);
     }
-    paramList = SpannableStringUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$DefaultClickNickCallback);
-    int i;
-    if ((!bool) && (j == 0) && (k > 0)) {
-      i = 1;
+    paramList = SpannableStringUtils.a(this.b, this.e, this.h);
+    int k;
+    if ((!bool) && (m == 0) && (n > 0)) {
+      k = 1;
     } else {
-      i = 0;
+      k = 0;
     }
-    if ((paramList.length() == 0) && (i == 0))
+    if ((paramList.length() == 0) && (k == 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.setVisibility(8);
       return;
     }
     if (!bool)
     {
-      if ((j == 0) && (k > 0)) {
-        paramList.append(String.format("%s次赞", new Object[] { UIUtils.a(k) }));
-      } else if ((j < k) && (k > 0)) {
-        paramList.append(String.format("等%s人赞了", new Object[] { UIUtils.a(k) }));
+      if ((m == 0) && (n > 0)) {
+        paramList.append(String.format("%s次赞", new Object[] { UIUtils.a(n) }));
+      } else if ((m < n) && (n > 0)) {
+        paramList.append(String.format("等%s人赞了", new Object[] { UIUtils.a(n) }));
       } else {
         paramList.append("赞了");
       }
@@ -129,9 +123,9 @@ public class FeedLikeLego
     else {
       paramList.append("赞了");
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramList);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
+    this.a.setVisibility(0);
+    this.a.setText(paramList);
+    this.a.setOnTouchListener(this.i);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -140,20 +134,25 @@ public class FeedLikeLego
       localStringBuilder.append(" isFriend:");
       localStringBuilder.append(bool);
       localStringBuilder.append("  likeSize:");
-      localStringBuilder.append(j);
+      localStringBuilder.append(m);
       localStringBuilder.append("  likeCount");
-      localStringBuilder.append(k);
+      localStringBuilder.append(n);
       QLog.d("FeedLikeLego", 2, localStringBuilder.toString());
     }
   }
   
-  public void b() {}
+  public LegoDataProvider b()
+  {
+    return new FeedLikeDataProvider(this, this.c);
+  }
   
-  public void c() {}
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego
  * JD-Core Version:    0.7.0.1
  */

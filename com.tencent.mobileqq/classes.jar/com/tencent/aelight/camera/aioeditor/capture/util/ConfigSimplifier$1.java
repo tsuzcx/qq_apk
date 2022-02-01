@@ -27,7 +27,7 @@ class ConfigSimplifier$1
       ((StringBuilder)localObject).append(Thread.currentThread().getId());
       QLog.i("ConfigSimplifier_PTV", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = new File(this.a, this.b);
     if (!((File)localObject).exists())
     {
       if (QLog.isColorLevel()) {
@@ -44,23 +44,23 @@ class ConfigSimplifier$1
       QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", paramNetResp);
       paramNetResp = "";
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilConfigSimplifier$ZipConfig.c)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilConfigSimplifier$ZipConfig.c.equalsIgnoreCase(paramNetResp))) {
+    if ((!TextUtils.isEmpty(this.c.c)) && (this.c.c.equalsIgnoreCase(paramNetResp))) {
       try
       {
-        ZipUtils.unZipFile((File)localObject, this.c);
+        ZipUtils.unZipFile((File)localObject, this.d);
       }
       catch (IOException paramNetResp)
       {
         QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", paramNetResp);
       }
     } else if (QLog.isColorLevel()) {
-      QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilConfigSimplifier$ZipConfig.c, " ", paramNetResp });
+      QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.c.c, " ", paramNetResp });
     }
-    paramNetResp = new File(this.d);
+    paramNetResp = new File(this.e);
     if (paramNetResp.exists())
     {
       paramNetResp = QIMPtvTemplateManager.a(paramNetResp);
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureUtilConfigSimplifier$ConfigDownloadCallback;
+      localObject = this.f;
       if ((localObject != null) && (paramNetResp != null)) {
         ((ConfigSimplifier.ConfigDownloadCallback)localObject).a(paramNetResp);
       }
@@ -75,7 +75,7 @@ class ConfigSimplifier$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.ConfigSimplifier.1
  * JD-Core Version:    0.7.0.1
  */

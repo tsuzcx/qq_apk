@@ -11,12 +11,12 @@ class DragonKingEggsPlayer$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsDragonKingEggsPlayer$1.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(7, 400, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsDragonKingEggsPlayer$1.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.b), this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimationInfo });
+    this.c.g.a(7, 400, new Object[] { this.a, Integer.valueOf(this.c.d.b), this.b });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DragonKingEggsPlayer.1.1
  * JD-Core Version:    0.7.0.1
  */

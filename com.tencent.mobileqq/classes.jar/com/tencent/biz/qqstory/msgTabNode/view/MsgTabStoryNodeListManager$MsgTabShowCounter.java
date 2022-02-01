@@ -8,60 +8,58 @@ import com.tencent.biz.qqstory.utils.DateUtils;
 
 public class MsgTabStoryNodeListManager$MsgTabShowCounter
 {
-  public int a;
-  public String a;
-  public int b = 0;
+  public int a = 0;
+  public String b = "";
+  public int c = 0;
   
   public MsgTabStoryNodeListManager$MsgTabShowCounter()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
     StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
     String str = DateUtils.a();
-    this.jdField_a_of_type_JavaLangString = ((String)localStoryConfigManager.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_Int = ((Integer)localStoryConfigManager.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
-    this.b = ((Integer)localStoryConfigManager.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
+    this.b = ((String)localStoryConfigManager.c("key_story_msg_tab_autoshow_date", this.b));
+    this.a = ((Integer)localStoryConfigManager.c("key_story_msg_tab_autoshow_count", Integer.valueOf(this.a))).intValue();
+    this.c = ((Integer)localStoryConfigManager.c("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.c))).intValue();
+    if (!TextUtils.equals(this.b, str))
     {
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localStoryConfigManager.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localStoryConfigManager.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+      this.b = str;
+      this.a = 0;
+      localStoryConfigManager.d("key_story_msg_tab_autoshow_date", this.b);
+      localStoryConfigManager.d("key_story_msg_tab_autoshow_count", Integer.valueOf(this.a));
     }
-    SLog.a(MsgTabStoryNodeListManager.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_a_of_type_Int += 1;
-    ((StoryConfigManager)SuperManager.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    SLog.a(MsgTabStoryNodeListManager.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    SLog.a(MsgTabStoryNodeListManager.o(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.a), Integer.valueOf(this.c), this.b);
   }
   
   public boolean a()
   {
-    b();
-    SLog.a(MsgTabStoryNodeListManager.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_Int < this.b;
+    c();
+    SLog.a(MsgTabStoryNodeListManager.o(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.a), Integer.valueOf(this.c), this.b);
+    return this.a < this.c;
   }
   
   public void b()
   {
+    c();
+    this.a += 1;
+    ((StoryConfigManager)SuperManager.a(10)).d("key_story_msg_tab_autoshow_count", Integer.valueOf(this.a));
+    SLog.a(MsgTabStoryNodeListManager.o(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.a), Integer.valueOf(this.c), this.b);
+  }
+  
+  public void c()
+  {
     String str = DateUtils.a();
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.equals(str, this.b))
     {
       StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localStoryConfigManager.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localStoryConfigManager.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+      this.b = str;
+      this.a = 0;
+      localStoryConfigManager.d("key_story_msg_tab_autoshow_date", this.b);
+      localStoryConfigManager.d("key_story_msg_tab_autoshow_count", Integer.valueOf(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.MsgTabShowCounter
  * JD-Core Version:    0.7.0.1
  */

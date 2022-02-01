@@ -12,109 +12,64 @@ public class ItemHolder
   implements Cloneable
 {
   public ImageView a;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  public RelativeLayout a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ItemHolder.FileItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$FileItemHolder = new ItemHolder.FileItemHolder(this);
-  private ItemHolder.GrayTipItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$GrayTipItemHolder = new ItemHolder.GrayTipItemHolder(this);
-  private ItemHolder.ImageItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$ImageItemHolder = new ItemHolder.ImageItemHolder(this);
-  private ItemHolder.MutiImageItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$MutiImageItemHolder = new ItemHolder.MutiImageItemHolder(this);
-  private ItemHolder.NewFileItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$NewFileItemHolder = new ItemHolder.NewFileItemHolder(this);
-  private ItemHolder.TextItemHolder jdField_a_of_type_ComDatalineUtilItemHolder$TextItemHolder = new ItemHolder.TextItemHolder(this);
-  private ItemHolder.TipHolder jdField_a_of_type_ComDatalineUtilItemHolder$TipHolder = new ItemHolder.TipHolder(this);
-  public BubbleInfo a;
-  private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
-  private Object jdField_a_of_type_JavaLangObject;
-  private TextView b;
-  
-  public ProgressBar a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetProgressBar;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public ItemHolder.FileItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$FileItemHolder;
-  }
-  
-  public ItemHolder.GrayTipItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$GrayTipItemHolder;
-  }
-  
-  public ItemHolder.ImageItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$ImageItemHolder;
-  }
-  
-  public ItemHolder.MutiImageItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$MutiImageItemHolder;
-  }
-  
-  public ItemHolder.NewFileItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$NewFileItemHolder;
-  }
-  
-  public ItemHolder.TextItemHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$TextItemHolder;
-  }
-  
-  public ItemHolder.TipHolder a()
-  {
-    return this.jdField_a_of_type_ComDatalineUtilItemHolder$TipHolder;
-  }
+  public RelativeLayout b;
+  public BubbleInfo c;
+  private TextView d;
+  private TextView e;
+  private ProgressBar f;
+  private DataLineMsgSet g;
+  private Object h;
+  private ItemHolder.FileItemHolder i = new ItemHolder.FileItemHolder(this);
+  private ItemHolder.ImageItemHolder j = new ItemHolder.ImageItemHolder(this);
+  private ItemHolder.TextItemHolder k = new ItemHolder.TextItemHolder(this);
+  private ItemHolder.MutiImageItemHolder l = new ItemHolder.MutiImageItemHolder(this);
+  private ItemHolder.GrayTipItemHolder m = new ItemHolder.GrayTipItemHolder(this);
+  private ItemHolder.TipHolder n = new ItemHolder.TipHolder(this);
+  private ItemHolder.NewFileItemHolder o = new ItemHolder.NewFileItemHolder(this);
   
   public DataLineMsgSet a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.g;
   }
   
   public void a(ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.a = paramImageView;
   }
   
   public void a(ProgressBar paramProgressBar)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = paramProgressBar;
+    this.f = paramProgressBar;
   }
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.d = paramTextView;
   }
   
   public void a(DataLineMsgSet paramDataLineMsgSet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
+    this.g = paramDataLineMsgSet;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.h = paramObject;
   }
   
-  public TextView b()
+  public Object b()
   {
-    return this.b;
+    return this.h;
   }
   
   public void b(TextView paramTextView)
   {
-    this.b = paramTextView;
+    this.e = paramTextView;
+  }
+  
+  public ItemHolder.FileItemHolder c()
+  {
+    return this.i;
   }
   
   public Object clone()
@@ -135,6 +90,51 @@ public class ItemHolder
       }
     }
     return this;
+  }
+  
+  public ItemHolder.ImageItemHolder d()
+  {
+    return this.j;
+  }
+  
+  public ItemHolder.MutiImageItemHolder e()
+  {
+    return this.l;
+  }
+  
+  public ItemHolder.TextItemHolder f()
+  {
+    return this.k;
+  }
+  
+  public ItemHolder.GrayTipItemHolder g()
+  {
+    return this.m;
+  }
+  
+  public ItemHolder.TipHolder h()
+  {
+    return this.n;
+  }
+  
+  public ItemHolder.NewFileItemHolder i()
+  {
+    return this.o;
+  }
+  
+  public TextView j()
+  {
+    return this.d;
+  }
+  
+  public TextView k()
+  {
+    return this.e;
+  }
+  
+  public ProgressBar l()
+  {
+    return this.f;
   }
 }
 

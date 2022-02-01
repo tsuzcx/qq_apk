@@ -13,23 +13,23 @@ final class BackgroundAliveTimeStatistic$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("pss", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("downloadLaunched", String.valueOf(this.b));
+    localHashMap.put("time", String.valueOf(this.a));
+    localHashMap.put("pss", String.valueOf(this.b));
+    localHashMap.put("downloadLaunched", String.valueOf(this.c));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("last time = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",last pss = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",downloadLaunched = ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(",downloadLaunched = ");
+    localStringBuilder.append(this.c);
     QLog.d("BackgroundAliveTimeStatistic", 1, localStringBuilder.toString());
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "qq_bg_alive_time", true, this.jdField_a_of_type_Long, 1L, localHashMap, "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "qq_bg_alive_time", true, this.a, 1L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.BackgroundAliveTimeStatistic.1
  * JD-Core Version:    0.7.0.1
  */

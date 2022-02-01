@@ -12,7 +12,7 @@ class TroopMemberListActivityApiImpl$2
   {
     if (paramBoolean)
     {
-      IFriendListObserverForAddFrdProxy localIFriendListObserverForAddFrdProxy = this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFriendListObserverForAddFrdProxy;
+      IFriendListObserverForAddFrdProxy localIFriendListObserverForAddFrdProxy = this.a;
       if (localIFriendListObserverForAddFrdProxy != null) {
         localIFriendListObserverForAddFrdProxy.a(paramBoolean, paramString, paramInt);
       }
@@ -23,7 +23,7 @@ class TroopMemberListActivityApiImpl$2
   {
     if ((paramBoolean1) && (paramBoolean2))
     {
-      IFriendListObserverForAddFrdProxy localIFriendListObserverForAddFrdProxy = this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFriendListObserverForAddFrdProxy;
+      IFriendListObserverForAddFrdProxy localIFriendListObserverForAddFrdProxy = this.a;
       if (localIFriendListObserverForAddFrdProxy != null) {
         localIFriendListObserverForAddFrdProxy.a(paramBoolean1, paramBoolean2);
       }
@@ -32,7 +32,7 @@ class TroopMemberListActivityApiImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopmemberlist.impl.TroopMemberListActivityApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -45,10 +45,10 @@ public class RecentLiveTipItemBuilder
   extends RecentItemBaseBuilder
 {
   public static int a;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
   private int b;
-  private int c;
+  private int h;
+  private List<String> i;
+  private Map<String, Boolean> j = new HashMap();
   
   private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, RecentLiveTipItemBuilder.RecentLiveTipItemHolder paramRecentLiveTipItemHolder)
   {
@@ -59,7 +59,7 @@ public class RecentLiveTipItemBuilder
       localMessageForNearbyLiveTip = ((RecentItemNearbyLiveTipData)paramRecentBaseData).nearbyLiveTipMsg;
       if (localMessageForNearbyLiveTip != null)
       {
-        if (MsgProxyUtils.c(localMessageForNearbyLiveTip.senderuin))
+        if (MsgProxyUtils.d(localMessageForNearbyLiveTip.senderuin))
         {
           if (paramRecentBaseData.getUnreadNum() < 1) {
             localObject1 = "0";
@@ -69,18 +69,18 @@ public class RecentLiveTipItemBuilder
           ReportController.b(null, "dc00899", "grp_lbs", "", "msg_box", "assist_exp", 0, 0, "", "", "", (String)localObject1);
         }
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentWidgetURLThemeImageView.getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentWidgetURLThemeImageView.getWidth();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ImageUtil.e();
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ImageUtil.e();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = paramRecentLiveTipItemHolder.a.getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = paramRecentLiveTipItemHolder.a.getWidth();
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ImageUtil.j();
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ImageUtil.j();
         ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
       }
     }
     try
     {
       localObject1 = URLDrawable.getDrawable(localMessageForNearbyLiveTip.headUrl, (URLDrawable.URLDrawableOptions)localObject1);
-      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.a);
-      paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentWidgetURLThemeImageView.setImageDrawable((Drawable)localObject1);
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.b);
+      paramRecentLiveTipItemHolder.a.setImageDrawable((Drawable)localObject1);
     }
     catch (Exception localException)
     {
@@ -94,7 +94,7 @@ public class RecentLiveTipItemBuilder
       ((StringBuilder)localObject1).append(localMessageForNearbyLiveTip.headUrl);
       QLog.i("Q.nearby.tag_nearby_live_tip", 2, ((StringBuilder)localObject1).toString());
     }
-    paramRecentLiveTipItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageForNearbyLiveTip.nickName);
+    paramRecentLiveTipItemHolder.c.setText(localMessageForNearbyLiveTip.nickName);
     if ((MessageForNearbyLiveTip.isHuayangTip(localMessageForNearbyLiveTip.jumpingUrl)) && (!localMessageForNearbyLiveTip.isLiving)) {
       if (!TextUtils.isEmpty(localMessageForNearbyLiveTip.c2cMsgWording)) {
         localMessageForNearbyLiveTip.msg = localMessageForNearbyLiveTip.c2cMsgWording;
@@ -102,7 +102,7 @@ public class RecentLiveTipItemBuilder
         localMessageForNearbyLiveTip.msg = localMessageForNearbyLiveTip.liveEndWording;
       }
     }
-    paramRecentLiveTipItemHolder.d.setText(localMessageForNearbyLiveTip.msg);
+    paramRecentLiveTipItemHolder.g.setText(localMessageForNearbyLiveTip.msg);
     if (localMessageForNearbyLiveTip.senderuin.equals(String.valueOf(AppConstants.NOW_LIVE_TIP_UIN_BASE + 1822701914L))) {
       localMessageForNearbyLiveTip.isLiving = false;
     }
@@ -114,7 +114,7 @@ public class RecentLiveTipItemBuilder
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
         localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        paramRecentLiveTipItemHolder.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setImageDrawable((Drawable)localObject1);
+        paramRecentLiveTipItemHolder.e.setImageDrawable((Drawable)localObject1);
       }
       catch (MalformedURLException localMalformedURLException)
       {
@@ -127,16 +127,16 @@ public class RecentLiveTipItemBuilder
           QLog.d("Q.nearby.freshNews", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      paramRecentLiveTipItemHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramRecentLiveTipItemHolder.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(0);
-      paramRecentLiveTipItemHolder.c.setVisibility(8);
+      paramRecentLiveTipItemHolder.d.setVisibility(0);
+      paramRecentLiveTipItemHolder.e.setVisibility(0);
+      paramRecentLiveTipItemHolder.f.setVisibility(8);
     }
     else
     {
-      paramRecentLiveTipItemHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramRecentLiveTipItemHolder.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(8);
-      paramRecentLiveTipItemHolder.c.setVisibility(0);
-      paramRecentLiveTipItemHolder.c.setText(paramRecentBaseData.mShowTime);
+      paramRecentLiveTipItemHolder.d.setVisibility(8);
+      paramRecentLiveTipItemHolder.e.setVisibility(8);
+      paramRecentLiveTipItemHolder.f.setVisibility(0);
+      paramRecentLiveTipItemHolder.f.setText(paramRecentBaseData.mShowTime);
     }
     a(paramRecentLiveTipItemHolder, paramContext);
     b(paramView, paramRecentBaseData, paramContext, paramRecentLiveTipItemHolder);
@@ -145,10 +145,10 @@ public class RecentLiveTipItemBuilder
   
   private void a(BaseActivity paramBaseActivity, MessageForNearbyLiveTip paramMessageForNearbyLiveTip)
   {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForNearbyLiveTip.senderuin);
+    Boolean localBoolean = (Boolean)this.j.get(paramMessageForNearbyLiveTip.senderuin);
     if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramMessageForNearbyLiveTip.senderuin, Boolean.valueOf(true));
+      this.j.put(paramMessageForNearbyLiveTip.senderuin, Boolean.valueOf(true));
       paramBaseActivity = paramBaseActivity.app;
       ThreadManagerV2.excute(new RecentLiveTipItemBuilder.1(this, paramBaseActivity, paramMessageForNearbyLiveTip, (INearbyCardManager)paramBaseActivity.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 32, null, false);
     }
@@ -156,42 +156,42 @@ public class RecentLiveTipItemBuilder
   
   private void b(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, RecentLiveTipItemBuilder.RecentLiveTipItemHolder paramRecentLiveTipItemHolder)
   {
-    int j = paramRecentBaseData.mUnreadNum;
-    int i = paramRecentBaseData.mUnreadFlag;
-    if (j > 0) {
-      if (i == 0)
+    int m = paramRecentBaseData.mUnreadNum;
+    int k = paramRecentBaseData.mUnreadFlag;
+    if (m > 0) {
+      if (k == 0)
       {
-        paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
+        paramRecentLiveTipItemHolder.b.setDragViewType(-1, paramView);
       }
       else
       {
-        if (i == 2)
+        if (k == 2)
         {
-          paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, paramView);
-          i = 1;
+          paramRecentLiveTipItemHolder.b.setDragViewType(-1, paramView);
+          k = 1;
           break label144;
         }
-        if (i == 3)
+        if (k == 3)
         {
-          paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
-          paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167188));
-          i = 3;
-          k = 2130850774;
+          paramRecentLiveTipItemHolder.b.setDragViewType(1, paramView);
+          paramRecentLiveTipItemHolder.b.setTextColor(paramContext.getResources().getColor(2131168173));
+          k = 3;
+          n = 2130852596;
           break label150;
         }
-        paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
-        paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTextColor(paramContext.getResources().getColor(2131167189));
-        i = 3;
-        k = 2130850770;
+        paramRecentLiveTipItemHolder.b.setDragViewType(0, paramView);
+        paramRecentLiveTipItemHolder.b.setTextColor(paramContext.getResources().getColor(2131168174));
+        k = 3;
+        n = 2130852592;
         break label150;
       }
     }
-    i = 0;
+    k = 0;
     label144:
-    j = 0;
-    int k = 0;
+    m = 0;
+    int n = 0;
     label150:
-    CustomWidgetUtil.a(paramRecentLiveTipItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+    CustomWidgetUtil.a(paramRecentLiveTipItemHolder.b, k, m, n, 99, null);
   }
   
   public int a()
@@ -210,24 +210,24 @@ public class RecentLiveTipItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new RecentLiveTipItemBuilder.RecentLiveTipItemHolder();
-      paramView = a(paramContext, 2131562735, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetURLThemeImageView = ((URLThemeImageView)paramView.findViewById(2131368343));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380210));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370210));
-      paramViewGroup.jdField_b_of_type_ComTencentWidgetURLThemeImageView = ((URLThemeImageView)paramView.findViewById(2131370208));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131369727));
-      paramViewGroup.d = ((TextView)paramView.findViewById(16908309));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378462);
+      paramView = a(paramContext, 2131629172, paramViewGroup);
+      paramViewGroup.a = ((URLThemeImageView)paramView.findViewById(2131435219));
+      paramViewGroup.b = ((DragTextView)paramView.findViewById(2131449128));
+      paramViewGroup.c = ((TextView)paramView.findViewById(16908308));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131437393));
+      paramViewGroup.e = ((URLThemeImageView)paramView.findViewById(2131437391));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131436844));
+      paramViewGroup.g = ((TextView)paramView.findViewById(16908309));
+      paramViewGroup.h = paramView.findViewById(2131447064);
       paramView.setTag(paramViewGroup);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a());
+      if (this.f != null) {
+        paramViewGroup.b.setOnModeChangeListener(this.f.b());
       }
       this.b = paramContext.getResources().getDisplayMetrics().widthPixels;
-      this.c = ((int)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getText().toString()));
+      this.h = ((int)paramViewGroup.d.getPaint().measureText(paramViewGroup.d.getText().toString()));
     }
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
-    if (AppSetting.d) {
+    paramViewGroup.b.setTag(Integer.valueOf(paramInt));
+    if (AppSetting.e) {
       paramView.setContentDescription(null);
     }
     if ((paramObject instanceof RecentBaseData))
@@ -240,11 +240,11 @@ public class RecentLiveTipItemBuilder
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramViewGroup.jdField_b_of_type_ComTencentWidgetURLThemeImageView.setVisibility(8);
-      paramViewGroup.d.setText("");
       paramViewGroup.c.setText("");
+      paramViewGroup.d.setVisibility(8);
+      paramViewGroup.e.setVisibility(8);
+      paramViewGroup.g.setText("");
+      paramViewGroup.f.setText("");
     }
     a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
     paramView.setOnClickListener(paramOnClickListener);
@@ -258,14 +258,14 @@ public class RecentLiveTipItemBuilder
     if ((paramRecentBaseData != null) && (paramContext != null))
     {
       paramRecentBaseData = paramContext.getResources();
-      paramContext = this.jdField_a_of_type_JavaUtilList;
+      paramContext = this.i;
       if (paramContext == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.i = new ArrayList();
       } else {
         paramContext.clear();
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
-      return this.jdField_a_of_type_JavaUtilList;
+      this.i.add(paramRecentBaseData.getString(c[0]));
+      return this.i;
     }
     return null;
   }
@@ -302,31 +302,31 @@ public class RecentLiveTipItemBuilder
   {
     try
     {
-      TextView localTextView = paramRecentLiveTipItemHolder.c;
-      View localView = paramRecentLiveTipItemHolder.jdField_a_of_type_AndroidViewView;
-      paramRecentLiveTipItemHolder = paramRecentLiveTipItemHolder.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = paramRecentLiveTipItemHolder.f;
+      View localView = paramRecentLiveTipItemHolder.h;
+      paramRecentLiveTipItemHolder = paramRecentLiveTipItemHolder.c;
       if (localTextView.getVisibility() != 0)
       {
-        i = ScreenUtil.dip2px(12.0F);
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), i, localView.getPaddingBottom());
-        paramRecentLiveTipItemHolder.setMaxWidth(this.b - this.c - ScreenUtil.dip2px(113.0F));
+        k = ScreenUtil.dip2px(12.0F);
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), k, localView.getPaddingBottom());
+        paramRecentLiveTipItemHolder.setMaxWidth(this.b - this.h - ScreenUtil.dip2px(113.0F));
         return;
       }
       Object localObject = TimeManager.a().a("000000", 1225168973512L);
       paramRecentLiveTipItemHolder = (RecentLiveTipItemBuilder.RecentLiveTipItemHolder)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramRecentLiveTipItemHolder = TimeManager.a().a();
+        paramRecentLiveTipItemHolder = TimeManager.a().b();
       }
-      int j = 0;
-      int i = j;
+      int m = 0;
+      int k = m;
       if (!TextUtils.isEmpty(paramRecentLiveTipItemHolder))
       {
-        i = j;
+        k = m;
         if (paramRecentLiveTipItemHolder.length() != 10) {
-          i = 1;
+          k = 1;
         }
       }
-      if ((jdField_a_of_type_Int <= 0) || (i != 0))
+      if ((a <= 0) || (k != 0))
       {
         float f2 = paramContext.getResources().getDisplayMetrics().density;
         localObject = localTextView.getPaint();
@@ -336,27 +336,27 @@ public class RecentLiveTipItemBuilder
           paramContext = new TextPaint();
           paramContext.setTextSize(12.0F * f2);
         }
-        if (i != 0)
+        if (k != 0)
         {
           float f1 = paramContext.measureText("yyyy-MM-dd");
           f2 *= 6.0F;
-          i = (int)(f1 + f2);
-          j = (int)(paramContext.measureText(paramRecentLiveTipItemHolder) + f2);
-          if (j > i) {
-            jdField_a_of_type_Int = j;
+          k = (int)(f1 + f2);
+          m = (int)(paramContext.measureText(paramRecentLiveTipItemHolder) + f2);
+          if (m > k) {
+            a = m;
           } else {
-            jdField_a_of_type_Int = i;
+            a = k;
           }
         }
         else
         {
-          jdField_a_of_type_Int = (int)(paramContext.measureText("yyyy-MM-dd") + f2 * 6.0F);
+          a = (int)(paramContext.measureText("yyyy-MM-dd") + f2 * 6.0F);
         }
       }
-      i = localView.getPaddingRight();
-      if (i < jdField_a_of_type_Int)
+      k = localView.getPaddingRight();
+      if (k < a)
       {
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), i, localView.getPaddingBottom());
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), k, localView.getPaddingBottom());
         return;
       }
     }
@@ -370,7 +370,7 @@ public class RecentLiveTipItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentLiveTipItemBuilder
  * JD-Core Version:    0.7.0.1
  */

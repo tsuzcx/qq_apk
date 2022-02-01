@@ -16,7 +16,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.kingkong.DataReport;
 import com.tencent.mobileqq.facetoface.NearbyUser;
 import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils;
@@ -31,17 +30,20 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.IPUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsReq;
 import com.tencent.proto.lbsshare.LBSShare.LocationReq;
 import com.tencent.proto.lbsshare.LBSShare.NearByShopsReq;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -65,22 +67,22 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.NewComeinUserNo
 public class LBSHandler
   extends BusinessHandler
 {
-  public static String a;
+  public static String b;
   public QQAppInterface a;
   
   public LBSHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public static Dialog a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramString = DialogUtil.a(paramContext, 230, null, paramString, 2131690728, 2131718751, paramOnClickListener1, paramOnClickListener2);
+    paramString = DialogUtil.a(paramContext, 230, null, paramString, 2131887648, 2131916257, paramOnClickListener1, paramOnClickListener2);
     if (paramString != null)
     {
-      ((TextView)paramString.findViewById(2131365621)).setVisibility(8);
-      paramOnClickListener1 = (TextView)paramString.findViewById(2131365644);
+      ((TextView)paramString.findViewById(2131431852)).setVisibility(8);
+      paramOnClickListener1 = (TextView)paramString.findViewById(2131431876);
       paramOnClickListener2 = new LinearLayout.LayoutParams(-2, -2);
       paramOnClickListener2.gravity = 17;
       paramOnClickListener1.setLayoutParams(paramOnClickListener2);
@@ -97,12 +99,12 @@ public class LBSHandler
     boolean bool1 = paramToServiceMsg.getBoolean("k_be_share", false);
     if ((paramObject != null) && (((RespSetStateSwitch)paramObject).stHeader.eReplyCode == 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setVisibilityForStatus(bool1, true);
+      this.a.setVisibilityForStatus(bool1, true);
       bool2 = true;
     }
     else
     {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLocVisibilityForStatus();
+      bool1 = this.a.getLocVisibilityForStatus();
     }
     notifyUI(9, bool2, Boolean.valueOf(bool1));
   }
@@ -112,7 +114,7 @@ public class LBSHandler
     if (paramQQAppInterface == null) {
       return false;
     }
-    boolean bool = paramQQAppInterface.getMessageFacade().a(paramString, 1001);
+    boolean bool = paramQQAppInterface.getMessageFacade().d(paramString, 1001);
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();
@@ -172,9 +174,9 @@ public class LBSHandler
           paramFromServiceMsg = new ArrayList();
           paramFromServiceMsg.addAll((Collection)localObject);
           if (j == 0) {
-            ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).addNearbyRecommenderMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRespGetRecommender.strBrief, localRespGetRecommender.uRecommendTime);
+            ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).addNearbyRecommenderMsg(this.a, localRespGetRecommender.strBrief, localRespGetRecommender.uRecommendTime);
           }
-          ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).storeNearbyRecommenderList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), getCurrentAccountUin(), paramFromServiceMsg);
+          ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).storeNearbyRecommenderList(this.a.getApplication(), getCurrentAccountUin(), paramFromServiceMsg);
           notifyUI(27, true, new Object[] { localObject, Integer.valueOf(j) });
           if (localObject != null)
           {
@@ -200,7 +202,7 @@ public class LBSHandler
           } else {
             paramFromServiceMsg = paramToServiceMsg;
           }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FA", "0X80055FA", 0, 0, Integer.toString(localRespGetRecommender.eReasonType), "", paramFromServiceMsg, "");
+          ReportController.b(this.a, "CliOper", "", "", "0X80055FA", "0X80055FA", 0, 0, Integer.toString(localRespGetRecommender.eReasonType), "", paramFromServiceMsg, "");
         }
         else
         {
@@ -233,7 +235,7 @@ public class LBSHandler
           paramFromServiceMsg = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
           paramToServiceMsg.putLong("key_msgbox_pull_time", System.currentTimeMillis());
         }
-        ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).updateConfigs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg);
+        ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).updateConfigs(this.a, paramToServiceMsg);
         return;
       }
       notifyUI(27, false, null);
@@ -256,7 +258,7 @@ public class LBSHandler
           boolean bool;
           if (paramFromServiceMsg.type == 64)
           {
-            paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            paramObject = this.a;
             if (paramFromServiceMsg.is_open == 1) {
               bool = true;
             } else {
@@ -267,7 +269,7 @@ public class LBSHandler
           else if (paramFromServiceMsg.type == 1)
           {
             paramObject = (INearbySPUtil)QRoute.api(INearbySPUtil.class);
-            String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+            String str = this.a.getAccount();
             if (paramFromServiceMsg.is_open == 1) {
               bool = true;
             } else {
@@ -561,6 +563,7 @@ public class LBSHandler
   
   public void a(int paramInt1, int paramInt2)
   {
+    Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -574,27 +577,27 @@ public class LBSHandler
     localReqBody.uint32_max_count.set(1);
     localReqBody.uint32_max_distance.set(1000);
     localReqBody.uint32_loc_type.set(0);
-    Object localObject1 = BaseApplicationImpl.getContext();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     for (;;)
     {
       try
       {
-        if (NetworkUtil.isWifiConnected((Context)localObject1))
+        if (NetworkUtil.isWifiConnected(localBaseApplication))
         {
-          localObject1 = (WifiManager)((Context)localObject1).getSystemService("wifi");
-          localObject3 = ((WifiManager)localObject1).getConnectionInfo().getBSSID();
+          localObject1 = (WifiManager)localBaseApplication.getSystemService("wifi");
+          localObject3 = NetworkMonitor.getConnectionInfo((WifiManager)localObject1).getBSSID();
           localReqBody.bytes_route_mac.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-          localReqBody.uint32_ipv4.set(((WifiManager)localObject1).getConnectionInfo().getIpAddress());
+          localReqBody.uint32_ipv4.set(NetworkMonitor.getConnectionInfo((WifiManager)localObject1).getIpAddress());
         }
-        else if (NetworkUtil.is3Gor4G((Context)localObject1))
+        else if (NetworkUtil.is3Gor4G(localBaseApplication))
         {
-          localObject3 = jdField_a_of_type_JavaLangString;
+          localObject3 = b;
           localObject1 = localObject3;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            localObject1 = DataReport.k();
+            localObject1 = IPUtils.a(localBaseApplication);
           }
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label426;
+            break label428;
           }
           localObject3 = ((String)localObject1).split(Pattern.quote("."));
           int k = localObject3.length;
@@ -606,7 +609,7 @@ public class LBSHandler
             j += 1;
             continue;
           }
-          jdField_a_of_type_JavaLangString = (String)localObject1;
+          b = (String)localObject1;
           if (i != 0) {
             localReqBody.uint32_ipv4.set(i);
           }
@@ -619,7 +622,7 @@ public class LBSHandler
       Object localObject2 = new cmd0x7f5.GPS();
       ((cmd0x7f5.GPS)localObject2).uint32_latitude.set(paramInt1);
       ((cmd0x7f5.GPS)localObject2).uint32_longitude.set(paramInt2);
-      ((cmd0x7f5.GPS)localObject2).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      ((cmd0x7f5.GPS)localObject2).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
       ((cmd0x7f5.GPS)localObject2).uint32_client.set(2);
       localReqBody.msg_gps.set((MessageMicro)localObject2);
       localObject2 = new oidb_sso.OIDBSSOPkg();
@@ -631,7 +634,7 @@ public class LBSHandler
       ((ToServiceMsg)localObject3).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
       sendPbReq((ToServiceMsg)localObject3);
       return;
-      label426:
+      label428:
       int i = 0;
     }
   }
@@ -689,7 +692,7 @@ public class LBSHandler
       localLocationReq.page.set(paramInt4);
       localLocationReq.count.set(paramInt5);
       localLocationReq.requireMyLbs.set(paramInt6);
-      paramString2 = DeviceInfoUtil.a();
+      paramString2 = DeviceInfoUtil.b();
       if (paramString2 == null) {
         paramString2 = (String)localObject;
       }
@@ -842,38 +845,38 @@ public class LBSHandler
     //   7: invokeinterface 196 1 0
     //   12: ifne +6 -> 18
     //   15: goto +296 -> 311
-    //   18: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   21: ifeq +41 -> 62
-    //   24: new 127	java/lang/StringBuilder
+    //   24: new 129	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   28: invokespecial 131	java/lang/StringBuilder:<init>	()V
     //   31: astore_3
     //   32: aload_3
-    //   33: ldc_w 840
-    //   36: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc_w 842
+    //   36: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_3
     //   41: aload_1
     //   42: invokeinterface 196 1 0
     //   47: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   50: pop
-    //   51: ldc_w 842
+    //   51: ldc_w 844
     //   54: iconst_2
     //   55: aload_3
-    //   56: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   62: aload_0
-    //   63: getfield 17	com/tencent/mobileqq/app/LBSHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   63: getfield 18	com/tencent/mobileqq/app/LBSHandler:a	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   66: aload_0
     //   67: invokevirtual 235	com/tencent/mobileqq/app/LBSHandler:getCurrentAccountUin	()Ljava/lang/String;
-    //   70: invokevirtual 846	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	(Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   73: invokevirtual 852	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   70: invokevirtual 848	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	(Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   73: invokevirtual 854	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   76: astore 4
     //   78: aload 4
-    //   80: invokevirtual 858	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   80: invokevirtual 860	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   83: astore_3
     //   84: aload_3
-    //   85: invokevirtual 862	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   85: invokevirtual 864	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   88: iload_2
     //   89: aload_1
     //   90: invokeinterface 196 1 0
@@ -881,96 +884,96 @@ public class LBSHandler
     //   98: aload_1
     //   99: iload_2
     //   100: invokeinterface 247 2 0
-    //   105: checkcast 864	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo
+    //   105: checkcast 866	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo
     //   108: astore 5
-    //   110: new 866	com/tencent/mobileqq/data/NearbyRecommendTroop
+    //   110: new 868	com/tencent/mobileqq/data/NearbyRecommendTroop
     //   113: dup
-    //   114: invokespecial 867	com/tencent/mobileqq/data/NearbyRecommendTroop:<init>	()V
+    //   114: invokespecial 869	com/tencent/mobileqq/data/NearbyRecommendTroop:<init>	()V
     //   117: astore 6
-    //   119: new 127	java/lang/StringBuilder
+    //   119: new 129	java/lang/StringBuilder
     //   122: dup
-    //   123: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   123: invokespecial 131	java/lang/StringBuilder:<init>	()V
     //   126: astore 7
     //   128: aload 7
     //   130: aload 5
-    //   132: getfield 870	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   132: getfield 872	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   135: invokevirtual 446	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   138: invokevirtual 873	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 875	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload 7
     //   144: ldc 243
-    //   146: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: pop
     //   150: aload 6
     //   152: aload 7
-    //   154: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: putfield 876	com/tencent/mobileqq/data/NearbyRecommendTroop:uin	Ljava/lang/String;
+    //   154: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: putfield 878	com/tencent/mobileqq/data/NearbyRecommendTroop:uin	Ljava/lang/String;
     //   160: aload 6
     //   162: aload 5
-    //   164: getfield 879	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   167: invokevirtual 881	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   170: putfield 884	com/tencent/mobileqq/data/NearbyRecommendTroop:name	Ljava/lang/String;
+    //   164: getfield 881	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   167: invokevirtual 883	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   170: putfield 886	com/tencent/mobileqq/data/NearbyRecommendTroop:name	Ljava/lang/String;
     //   173: aload 6
     //   175: aload 5
-    //   177: getfield 887	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:str_group_memo	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   180: invokevirtual 881	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   183: putfield 890	com/tencent/mobileqq/data/NearbyRecommendTroop:intro	Ljava/lang/String;
+    //   177: getfield 889	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:str_group_memo	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   180: invokevirtual 883	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   183: putfield 892	com/tencent/mobileqq/data/NearbyRecommendTroop:intro	Ljava/lang/String;
     //   186: aload 6
     //   188: aload 5
-    //   190: getfield 893	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint32_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   190: getfield 895	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint32_member_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   193: invokevirtual 396	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   196: putfield 896	com/tencent/mobileqq/data/NearbyRecommendTroop:memberNum	I
+    //   196: putfield 898	com/tencent/mobileqq/data/NearbyRecommendTroop:memberNum	I
     //   199: aload 6
     //   201: aload 5
-    //   203: getfield 899	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint32_group_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   203: getfield 901	tencent/im/s2c/msgtype0x210/submsgtype0x67/submsgtype0x67$GroupInfo:uint32_group_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   206: invokevirtual 396	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   209: putfield 902	com/tencent/mobileqq/data/NearbyRecommendTroop:troopType	I
+    //   209: putfield 904	com/tencent/mobileqq/data/NearbyRecommendTroop:troopType	I
     //   212: aload 4
     //   214: aload 6
-    //   216: invokevirtual 906	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   216: invokevirtual 908	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   219: iload_2
     //   220: iconst_1
     //   221: iadd
     //   222: istore_2
     //   223: goto -135 -> 88
     //   226: aload_3
-    //   227: invokevirtual 909	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   227: invokevirtual 911	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   230: aload_0
     //   231: bipush 19
     //   233: iconst_1
     //   234: aload_1
     //   235: invokeinterface 196 1 0
     //   240: invokestatic 175	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   243: invokevirtual 110	com/tencent/mobileqq/app/LBSHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   243: invokevirtual 111	com/tencent/mobileqq/app/LBSHandler:notifyUI	(IZLjava/lang/Object;)V
     //   246: goto +54 -> 300
     //   249: astore_1
     //   250: goto +55 -> 305
     //   253: astore_1
-    //   254: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   254: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   257: ifeq +43 -> 300
-    //   260: new 127	java/lang/StringBuilder
+    //   260: new 129	java/lang/StringBuilder
     //   263: dup
-    //   264: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   264: invokespecial 131	java/lang/StringBuilder:<init>	()V
     //   267: astore 4
     //   269: aload 4
-    //   271: ldc_w 911
-    //   274: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: ldc_w 913
+    //   274: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: pop
     //   278: aload 4
     //   280: aload_1
-    //   281: invokevirtual 912	java/lang/Exception:toString	()Ljava/lang/String;
-    //   284: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 914	java/lang/Exception:toString	()Ljava/lang/String;
+    //   284: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: pop
-    //   288: ldc_w 914
+    //   288: ldc_w 916
     //   291: iconst_2
     //   292: aload 4
-    //   294: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   297: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   297: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   300: aload_3
-    //   301: invokevirtual 917	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   301: invokevirtual 919	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   304: return
     //   305: aload_3
-    //   306: invokevirtual 917	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   306: invokevirtual 919	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   309: aload_1
     //   310: athrow
     //   311: aload_0
@@ -978,7 +981,7 @@ public class LBSHandler
     //   314: iconst_0
     //   315: iconst_0
     //   316: invokestatic 175	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   319: invokevirtual 110	com/tencent/mobileqq/app/LBSHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   319: invokevirtual 111	com/tencent/mobileqq/app/LBSHandler:notifyUI	(IZLjava/lang/Object;)V
     //   322: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1293,7 +1296,7 @@ public class LBSHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.LBSHandler
  * JD-Core Version:    0.7.0.1
  */

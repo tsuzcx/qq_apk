@@ -15,14 +15,14 @@ class AudioPanelAioHelper$2
   
   public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    paramClickableColorSpanTextView = new Intent(AudioPanelAioHelper.a(this.a).a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView = new Intent(AudioPanelAioHelper.a(this.a).e, QQBrowserActivity.class);
     paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/sappfaq/210331qMJbAf210331RZBBba.html");
-    AudioPanelAioHelper.a(this.a).a.startActivity(paramClickableColorSpanTextView);
+    AudioPanelAioHelper.a(this.a).e.startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAioHelper.2
  * JD-Core Version:    0.7.0.1
  */

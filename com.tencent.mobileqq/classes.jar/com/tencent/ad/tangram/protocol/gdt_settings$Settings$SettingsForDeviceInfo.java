@@ -2,8 +2,8 @@ package com.tencent.ad.tangram.protocol;
 
 public final class gdt_settings$Settings$SettingsForDeviceInfo
 {
-  public gdt_settings.Settings.SettingsForDeviceInfo.Switches switches;
-  public gdt_settings.Settings.SettingsForDeviceInfo.UUID uuid;
+  public gdt_settings.Settings.SettingsForDeviceInfo.Switches switches = new gdt_settings.Settings.SettingsForDeviceInfo.Switches();
+  public gdt_settings.Settings.SettingsForDeviceInfo.UUID uuid = new gdt_settings.Settings.SettingsForDeviceInfo.UUID();
 }
 
 

@@ -20,17 +20,17 @@ class PreloadComDownloader$1
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
     super.onDoneFile(paramDownloadTask);
-    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+    if ((paramDownloadTask != null) && (paramDownloadTask.g != null) && (!TextUtils.isEmpty(paramDownloadTask.b)))
     {
-      File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      File localFile = (File)paramDownloadTask.g.get(paramDownloadTask.b);
       if (localFile != null)
       {
         Object localObject = QWalletHelperImpl.getAppRuntime();
         if (localObject != null)
         {
           localObject = (IPreDownloadController)((AppInterface)localObject).getRuntimeService(IPreDownloadController.class, "");
-          String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-          int i = paramDownloadTask.jdField_a_of_type_Int;
+          String str = paramDownloadTask.b;
+          int i = paramDownloadTask.c;
           long l2 = -1L;
           long l1 = l2;
           if (i == 0)
@@ -48,7 +48,7 @@ class PreloadComDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadComDownloader.1
  * JD-Core Version:    0.7.0.1
  */

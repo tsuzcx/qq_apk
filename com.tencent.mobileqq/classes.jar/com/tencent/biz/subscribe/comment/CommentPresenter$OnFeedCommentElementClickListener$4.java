@@ -17,13 +17,13 @@ class CommentPresenter$OnFeedCommentElementClickListener$4
   
   public void onClick(View paramView)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)CommentPresenter.i(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)CommentPresenter.x(this.b.a).getSystemService("clipboard");
     if (localClipboardManager != null)
     {
-      ClipData localClipData = ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get());
+      ClipData localClipData = ClipData.newPlainText("", this.a.content.get());
       ClipboardMonitor.setPrimaryClip(localClipboardManager, localClipData);
       localClipboardManager.setPrimaryClip(localClipData);
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).dismiss();
+      CommentPresenter.r(this.b.a).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

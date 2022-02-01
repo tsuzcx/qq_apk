@@ -11,14 +11,14 @@ class DatalineRemoteManager$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.b = true;
+    paramDialogInterface.f = true;
     DatalineRemoteManager.a(paramDialogInterface, 1);
     DatalineRemoteManager.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.5
  * JD-Core Version:    0.7.0.1
  */

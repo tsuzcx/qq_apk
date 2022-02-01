@@ -8,7 +8,7 @@ public abstract interface IGetInstallPlugins
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.interfaces.IGetInstallPlugins
  * JD-Core Version:    0.7.0.1
  */

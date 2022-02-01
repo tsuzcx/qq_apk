@@ -104,7 +104,7 @@ public class AddPhoneNumberFragment
       getActivity().getWindow().setStatusBarColor(-1);
       ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
     }
-    if (DisplayUtil.isImmersiveSupported)
+    if (DisplayUtil.IS_IMMERSIVE_SUPPORTED)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
@@ -143,7 +143,7 @@ public class AddPhoneNumberFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment
  * JD-Core Version:    0.7.0.1
  */

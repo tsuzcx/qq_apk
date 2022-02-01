@@ -11,23 +11,28 @@ class RecentPubAccHelper$6
 {
   RecentPubAccHelper$6(RecentPubAccHelper paramRecentPubAccHelper, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper)) {
+    if (RecentPubAccHelper.b(this.d)) {
       return;
     }
-    RecentPubAccHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, true);
+    RecentPubAccHelper.a(this.d, true);
     if (paramInt == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
-      RecentPubAccHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccHelper, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (RecentPubAccHelper.a()) {
+        paramView = "0X800BDD8";
+      } else {
+        paramView = "0X800991E";
+      }
+      ReportController.b(this.a, "dc00898", "", this.b.getRecentUserUin(), paramView, paramView, 0, 0, "", "", "", "");
+      RecentPubAccHelper.c(this.d, this.b, this.a);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccHelper.6
  * JD-Core Version:    0.7.0.1
  */

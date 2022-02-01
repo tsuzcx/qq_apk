@@ -14,18 +14,18 @@ class VideoFilterManager$FilterListCallback
   
   public void a(@NonNull VideoFilterManager.GetFilterListRequest paramGetFilterListRequest, @Nullable VideoFilterManager.GetFilterListResponse paramGetFilterListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramGetFilterListResponse != null) && (paramGetFilterListResponse.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    if ((paramGetFilterListResponse != null) && (paramGetFilterListResponse.c == 0) && (paramErrorMessage.isSuccess()))
     {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetFilterListResponse.jdField_a_of_type_JavaUtilList);
-      SLog.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramGetFilterListResponse.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramGetFilterListResponse.jdField_a_of_type_Boolean), paramGetFilterListResponse.jdField_a_of_type_JavaLangString });
-      if ((!paramGetFilterListResponse.jdField_a_of_type_Boolean) && (!paramGetFilterListResponse.jdField_a_of_type_JavaUtilList.isEmpty()))
+      this.a.d.addAll(paramGetFilterListResponse.b);
+      SLog.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramGetFilterListResponse.b.size()), Integer.valueOf(this.a.d.size()), Boolean.valueOf(paramGetFilterListResponse.a), paramGetFilterListResponse.e });
+      if ((!paramGetFilterListResponse.a) && (!paramGetFilterListResponse.b.isEmpty()))
       {
-        this.a.c = paramGetFilterListResponse.jdField_a_of_type_JavaLangString;
+        this.a.c = paramGetFilterListResponse.e;
         this.a.c();
         return;
       }
-      SLog.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramGetFilterListResponse.b) });
-      this.a.a(true, paramGetFilterListResponse.b);
+      SLog.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramGetFilterListResponse.f) });
+      this.a.a(true, paramGetFilterListResponse.f);
       return;
     }
     SLog.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
@@ -34,7 +34,7 @@ class VideoFilterManager$FilterListCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager.FilterListCallback
  * JD-Core Version:    0.7.0.1
  */

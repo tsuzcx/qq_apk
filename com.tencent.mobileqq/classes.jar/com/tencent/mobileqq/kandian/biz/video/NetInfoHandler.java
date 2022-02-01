@@ -13,16 +13,16 @@ import com.tencent.qphone.base.util.QLog;
 public class NetInfoHandler
   implements INetInfoHandler
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private final RIJDataManager jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager;
-  private final ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private final VideoHandler jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler;
+  private final VideoHandler a;
+  private final ReadInJoyBaseAdapter b;
+  private final RIJDataManager c;
+  private final Handler d = new Handler();
   
   public NetInfoHandler(VideoHandler paramVideoHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler = paramVideoHandler;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramVideoHandler.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager = paramVideoHandler.a();
+    this.a = paramVideoHandler;
+    this.b = paramVideoHandler.g();
+    this.c = paramVideoHandler.h();
   }
   
   public void onNetMobile2None()
@@ -30,15 +30,15 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: mobile -> none");
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a().updateNetworkChange(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b())
+    this.a.C().updateNetworkChange(false);
+    if (this.b.r())
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.b()) {
+      if (!this.a.x()) {
         return;
       }
-      VideoPlayManager localVideoPlayManager = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
-      if (localVideoPlayManager.a()) {
-        localVideoPlayManager.a();
+      VideoPlayManager localVideoPlayManager = this.a.A();
+      if (localVideoPlayManager.g()) {
+        localVideoPlayManager.c();
       }
     }
   }
@@ -48,18 +48,18 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: wifi -> mobile");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() == 70)
+    if (this.a.c() == 70)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.9(this));
+      this.d.post(new NetInfoHandler.9(this));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a().updateNetworkChange(true);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b())
+    this.a.C().updateNetworkChange(true);
+    if (this.b.r())
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.b()) {
+      if (!this.a.x()) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.10(this));
+      this.d.post(new NetInfoHandler.10(this));
     }
   }
   
@@ -68,19 +68,19 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: none -> mobile");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() == 70)
+    if (this.a.c() == 70)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.1(this));
+      this.d.post(new NetInfoHandler.1(this));
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+    paramString = this.a.C();
     int j = 0;
     if (paramString != null) {
       paramString.updateNetworkChange(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b())
+    if (this.b.r())
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.b()) {
+      if (!this.a.x()) {
         return;
       }
       int i = j;
@@ -94,35 +94,35 @@ public class NetInfoHandler
       if (i == 0) {
         return;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+      paramString = this.a.A();
       Object localObject = paramString.a();
-      if ((!paramString.a()) && (!paramString.d()))
+      if ((!paramString.g()) && (!paramString.s()))
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.2(this));
+        this.d.post(new NetInfoHandler.2(this));
         return;
       }
-      if ((paramString.d()) && (localObject != null) && (paramString.c() == ((VideoPlayParam)localObject).c))
+      if ((paramString.s()) && (localObject != null) && (paramString.n() == ((VideoPlayParam)localObject).j))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("net change: continue to play before video ,id : ");
-          ((StringBuilder)localObject).append(paramString.c());
+          ((StringBuilder)localObject).append(paramString.n());
           QLog.d("Q.readinjoy.video", 2, ((StringBuilder)localObject).toString());
         }
-        paramString.c();
+        paramString.v();
         return;
       }
-      if ((localObject != null) && (paramString.d()) && (paramString.c() == ((VideoPlayParam)localObject).c))
+      if ((localObject != null) && (paramString.s()) && (paramString.n() == ((VideoPlayParam)localObject).j))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("mVideoPlayParam net change: continue to play before video ,id : ");
-          ((StringBuilder)localObject).append(paramString.c());
+          ((StringBuilder)localObject).append(paramString.n());
           QLog.d("Q.readinjoy.video", 2, ((StringBuilder)localObject).toString());
         }
-        paramString.c();
+        paramString.v();
       }
     }
   }
@@ -132,46 +132,46 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: none -> wifi");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() == 70)
+    if (this.a.c() == 70)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.7(this));
+      this.d.post(new NetInfoHandler.7(this));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a().updateNetworkChange(true);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b())
+    this.a.C().updateNetworkChange(true);
+    if (this.b.r())
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.b()) {
+      if (!this.a.x()) {
         return;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+      paramString = this.a.A();
       Object localObject = paramString.a();
-      if ((!paramString.a()) && (!paramString.d()))
+      if ((!paramString.g()) && (!paramString.s()))
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.8(this));
+        this.d.post(new NetInfoHandler.8(this));
         return;
       }
-      if ((localObject != null) && (paramString.c() == ((VideoPlayParam)localObject).c) && (paramString.d()))
+      if ((localObject != null) && (paramString.n() == ((VideoPlayParam)localObject).j) && (paramString.s()))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("net change: continue to play before video ,id : ");
-          ((StringBuilder)localObject).append(paramString.c());
+          ((StringBuilder)localObject).append(paramString.n());
           QLog.d("Q.readinjoy.video", 2, ((StringBuilder)localObject).toString());
         }
-        paramString.c();
+        paramString.v();
         return;
       }
-      if ((localObject != null) && (paramString.c() == ((VideoPlayParam)localObject).c) && (paramString.d()))
+      if ((localObject != null) && (paramString.n() == ((VideoPlayParam)localObject).j) && (paramString.s()))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("mVideoPlayParam net change: continue to play before video ,id : ");
-          ((StringBuilder)localObject).append(paramString.c());
+          ((StringBuilder)localObject).append(paramString.n());
           QLog.d("Q.readinjoy.video", 2, ((StringBuilder)localObject).toString());
         }
-        paramString.c();
+        paramString.v();
       }
     }
   }
@@ -181,20 +181,20 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: wifi -> mobile,forwarding event to none2mobile handle");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() == 70)
+    if (this.a.c() == 70)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.5(this));
+      this.d.post(new NetInfoHandler.5(this));
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+    paramString = this.a.C();
     int j = 0;
     paramString.updateNetworkChange(false);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+    paramString = this.a.A();
     int i = j;
     if (paramString != null)
     {
       i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() != null)
+      if (this.a.B() != null)
       {
         i = j;
         if (paramString.a() != null) {
@@ -204,10 +204,10 @@ public class NetInfoHandler
     }
     if (i != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().g()) {
+      if (this.c.a().t()) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.6(this, paramString));
+      this.d.post(new NetInfoHandler.6(this, paramString));
     }
   }
   
@@ -216,20 +216,20 @@ public class NetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "net change: wifi -> none.");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() == 70)
+    if (this.a.c() == 70)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.3(this));
+      this.d.post(new NetInfoHandler.3(this));
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+    Object localObject = this.a.C();
     int j = 0;
     ((VideoAutoPlayController)localObject).updateNetworkChange(false);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a();
+    localObject = this.a.A();
     int i = j;
     if (localObject != null)
     {
       i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkHandlersVideoHandler.a() != null)
+      if (this.a.B() != null)
       {
         i = j;
         if (((VideoPlayManager)localObject).a() != null) {
@@ -239,16 +239,16 @@ public class NetInfoHandler
     }
     if (i != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().g()) {
+      if (this.c.a().t()) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new NetInfoHandler.4(this, (VideoPlayManager)localObject));
+      this.d.post(new NetInfoHandler.4(this, (VideoPlayManager)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

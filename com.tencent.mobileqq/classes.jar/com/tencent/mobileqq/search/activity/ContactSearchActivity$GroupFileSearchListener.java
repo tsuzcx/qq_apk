@@ -10,17 +10,17 @@ import com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResul
 public class ContactSearchActivity$GroupFileSearchListener
   implements ContactSearchResultPresenter.OnActionListener
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  String jdField_a_of_type_JavaLangString;
+  int a;
   int b;
+  String c;
+  Activity d;
   
   public ContactSearchActivity$GroupFileSearchListener(Activity paramActivity, int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramActivity;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void onAction(View paramView)
@@ -33,14 +33,14 @@ public class ContactSearchActivity$GroupFileSearchListener
       {
         localObject = (String)localObject;
         paramView = (String)paramView;
-        ((IFileChooser)QRoute.api(IFileChooser.class)).startAVGroupFileSelectFragment(this.jdField_a_of_type_AndroidAppActivity, AVUtil.a(paramView), (String)localObject, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, 2020);
+        ((IFileChooser)QRoute.api(IFileChooser.class)).startAVGroupFileSelectFragment(this.d, AVUtil.c(paramView), (String)localObject, this.a, this.b, this.c, 2020);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity.GroupFileSearchListener
  * JD-Core Version:    0.7.0.1
  */

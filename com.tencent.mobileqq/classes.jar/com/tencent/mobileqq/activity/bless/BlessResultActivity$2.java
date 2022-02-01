@@ -16,12 +16,12 @@ class BlessResultActivity$2
       QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
     }
     BlessResultActivity localBlessResultActivity = this.a;
-    localBlessResultActivity.jdField_a_of_type_Boolean = true;
-    localBlessResultActivity.g = localBlessResultActivity.b(localBlessResultActivity.d);
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
+    localBlessResultActivity.l = true;
+    localBlessResultActivity.m = localBlessResultActivity.b(localBlessResultActivity.f);
+    if (this.a.a.hasMessages(1003)) {
+      this.a.a.removeMessages(1003);
     }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1001);
+    this.a.a.sendEmptyMessage(1001);
   }
   
   public void a(long paramLong)
@@ -29,10 +29,10 @@ class BlessResultActivity$2
     if (QLog.isColorLevel()) {
       QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
     }
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
+    if (this.a.a.hasMessages(1003)) {
+      this.a.a.removeMessages(1003);
     }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
+    this.a.a.sendEmptyMessage(1003);
   }
   
   public void b()
@@ -51,7 +51,7 @@ class BlessResultActivity$2
   
   public void c(long paramLong)
   {
-    long l = FileUtils.getFileSizes(this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoInfo.a);
+    long l = FileUtils.getFileSizes(this.a.j.a);
     int i = (int)(100L * paramLong / l);
     if (QLog.isColorLevel())
     {
@@ -68,7 +68,7 @@ class BlessResultActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessResultActivity.2
  * JD-Core Version:    0.7.0.1
  */

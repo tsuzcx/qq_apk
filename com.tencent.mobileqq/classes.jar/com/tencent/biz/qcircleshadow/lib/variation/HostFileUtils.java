@@ -1,6 +1,6 @@
 package com.tencent.biz.qcircleshadow.lib.variation;
 
-import com.tencent.biz.qcircleshadow.local.util.QCircleFileUtils;
+import cooperation.qqcircle.utils.QCircleFileUtils;
 import java.io.File;
 
 public class HostFileUtils
@@ -52,7 +52,7 @@ public class HostFileUtils
   
   public static boolean moveFile(String paramString1, String paramString2)
   {
-    return QCircleFileUtils.a(paramString1, paramString2);
+    return QCircleFileUtils.moveFile(paramString1, paramString2);
   }
   
   public static String readFileContent(File paramFile)
@@ -67,7 +67,7 @@ public class HostFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostFileUtils
  * JD-Core Version:    0.7.0.1
  */

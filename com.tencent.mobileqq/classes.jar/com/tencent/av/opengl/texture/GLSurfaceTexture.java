@@ -13,90 +13,90 @@ public class GLSurfaceTexture
   extends BasicTexture
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  Surface jdField_a_of_type_AndroidViewSurface;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  SurfaceTexture o;
+  Surface p;
+  private float[] q = new float[16];
   
   @TargetApi(14)
-  private void e()
+  private void v()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    if (this.o != null)
     {
       if (Build.VERSION.SDK_INT >= 14) {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+        this.o.release();
       }
       if (Build.VERSION.SDK_INT >= 11) {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+        this.o.setOnFrameAvailableListener(null);
       }
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+      this.o = null;
     }
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    if (this.p != null)
     {
       if (Build.VERSION.SDK_INT >= 14) {
-        this.jdField_a_of_type_AndroidViewSurface.release();
+        this.p.release();
       }
-      this.jdField_a_of_type_AndroidViewSurface = null;
+      this.p = null;
     }
-  }
-  
-  public void a()
-  {
-    super.a();
-    e();
   }
   
   public void a(GLCanvas paramGLCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    if (this.o != null)
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+        this.o.updateTexImage();
+        this.o.getTransformMatrix(this.q);
       }
-      paramGLCanvas.a(this, this.jdField_a_of_type_ArrayOfFloat, paramInt1, paramInt2, paramInt3, paramInt4);
+      paramGLCanvas.a(this, this.q, paramInt1, paramInt2, paramInt3, paramInt4);
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
   
   @TargetApi(14)
-  public boolean a(GLCanvas paramGLCanvas)
+  public boolean b(GLCanvas paramGLCanvas)
   {
-    if (this.jdField_a_of_type_ArrayOfInt == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ArrayOfInt = new int[1];
-      this.jdField_a_of_type_ArrayOfInt[0] = paramGLCanvas.a().a();
+      this.a = new int[1];
+      this.a[0] = paramGLCanvas.a().a();
       if (Build.VERSION.SDK_INT >= 11)
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_ArrayOfInt[0]);
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+        this.o = new SurfaceTexture(this.a[0]);
+        this.o.setOnFrameAvailableListener(this);
       }
       if (Build.VERSION.SDK_INT >= 14) {
-        this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+        this.p = new Surface(this.o);
       }
-      this.b = 1;
+      this.d = 1;
     }
-    return c();
+    return m();
   }
   
-  public void b()
-  {
-    super.b();
-    e();
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     return true;
   }
   
-  public int g()
+  public boolean k()
+  {
+    return true;
+  }
+  
+  public int l()
   {
     return 36197;
+  }
+  
+  public void n()
+  {
+    super.n();
+    v();
+  }
+  
+  public void o()
+  {
+    super.o();
+    v();
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture) {}

@@ -13,19 +13,19 @@ class MessageHandler$3
   public void run()
   {
     ToServiceMsg localToServiceMsg = this.this$0.createToServiceMsg("MessageSvc.PbReceiptRead", null);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
+    localToServiceMsg.putWupBuffer(this.a.toByteArray());
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
     localToServiceMsg.extraData.putInt("msgtype", 2);
-    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putInt("retryIndex", this.b);
-    localToServiceMsg.setTimeout(this.c);
+    localToServiceMsg.extraData.putString("uin", Long.toString(this.c));
+    localToServiceMsg.extraData.putLong("timeOut", this.g);
+    localToServiceMsg.extraData.putInt("retryIndex", this.m);
+    localToServiceMsg.setTimeout(this.g);
     this.this$0.sendPbReq(localToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.3
  * JD-Core Version:    0.7.0.1
  */

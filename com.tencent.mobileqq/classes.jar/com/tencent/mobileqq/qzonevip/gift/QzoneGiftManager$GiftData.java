@@ -7,10 +7,10 @@ import org.json.JSONObject;
 public class QzoneGiftManager$GiftData
 {
   public int a;
-  public String a;
   public String b;
   public String c;
   public String d;
+  public String e;
   
   public static GiftData a(String paramString)
   {
@@ -21,11 +21,11 @@ public class QzoneGiftManager$GiftData
     try
     {
       paramString = new JSONObject(paramString);
-      localGiftData.jdField_a_of_type_Int = paramString.optInt("animationType");
-      localGiftData.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
-      localGiftData.b = paramString.optString("giftZipUrl", null);
-      localGiftData.c = paramString.optString("giftParticleUrl", null);
-      localGiftData.d = paramString.optString("lottieUrl", null);
+      localGiftData.a = paramString.optInt("animationType");
+      localGiftData.b = paramString.optString("boxZipUrl", null);
+      localGiftData.c = paramString.optString("giftZipUrl", null);
+      localGiftData.d = paramString.optString("giftParticleUrl", null);
+      localGiftData.e = paramString.optString("lottieUrl", null);
       return localGiftData;
     }
     catch (Exception paramString)
@@ -43,17 +43,17 @@ public class QzoneGiftManager$GiftData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" mBoxZipUrl = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mGiftZipUrl = ");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(" mGiftUrl = ");
+    localStringBuilder.append(" mGiftZipUrl = ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" mGiftUrl = ");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.GiftData
  * JD-Core Version:    0.7.0.1
  */

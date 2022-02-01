@@ -39,25 +39,25 @@ import org.json.JSONObject;
 
 public class SceneBuilder
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private SceneBuilder.IActionPositionHandler jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler;
-  private SceneBuilder.IButtonHandle jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IButtonHandle;
-  private SceneBuilder.IImageBitmapHandle jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle;
-  private SceneBuilder.ILabelTextHandle jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
-  private SceneBuilder.ILayoutSizeHandler jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler;
-  private FrameSprite.OnFrameEndListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private String a = "";
+  private boolean b;
+  private int c;
+  private float d;
+  private FrameSprite.OnFrameEndListener e;
+  private SceneBuilder.ILabelTextHandle f;
+  private SceneBuilder.IImageBitmapHandle g;
+  private SceneBuilder.ILayoutSizeHandler h;
+  private SceneBuilder.IActionPositionHandler i;
+  private SceneBuilder.IButtonHandle j;
   
   private BaseNode a(ISpriteView paramISpriteView, JSONObject paramJSONObject)
   {
     boolean bool = paramISpriteView instanceof SpriteGLView;
-    int j;
+    int m;
     if (bool) {
-      j = 4;
+      m = 4;
     } else {
-      j = 1;
+      m = 1;
     }
     Object localObject1 = paramJSONObject.optString("text");
     if (bool) {
@@ -65,31 +65,31 @@ public class SceneBuilder
     } else {
       localObject3 = new com.tencent.mobileqq.surfaceviewaction.nv.Sprite((SpriteNativeView)paramISpriteView);
     }
-    float f4 = j;
+    float f4 = m;
     ((BaseNode)localObject3).c(1.0F / f4);
-    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+    Object localObject4 = this.f;
     Object localObject2 = localObject1;
     if (localObject4 != null) {
       localObject2 = ((SceneBuilder.ILabelTextHandle)localObject4).a((ISprite)localObject3, (String)localObject1);
     }
-    int k = paramJSONObject.optInt("textSize", 20) * j;
-    int i = Color.parseColor(paramJSONObject.optString("textColor"));
+    int n = paramJSONObject.optInt("textSize", 20) * m;
+    int k = Color.parseColor(paramJSONObject.optString("textColor"));
     Object localObject5 = new Paint();
     ((Paint)localObject5).setAntiAlias(true);
-    ((Paint)localObject5).setColor(i);
-    float f1 = k;
+    ((Paint)localObject5).setColor(k);
+    float f1 = n;
     ((Paint)localObject5).setTextSize(f1);
     Object localObject6 = paramJSONObject.optJSONObject("size");
-    i = (int)((Paint)localObject5).measureText((String)localObject2);
+    k = (int)((Paint)localObject5).measureText((String)localObject2);
     String str = paramJSONObject.optString("imageRight");
-    int i2 = paramJSONObject.optInt("imagePadding") * j;
+    int i4 = paramJSONObject.optInt("imagePadding") * m;
     bool = TextUtils.isEmpty(str);
-    int i3 = 0;
+    int i5 = 0;
     if (!bool)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle;
+      localObject1 = this.g;
       if (localObject1 != null) {
-        localObject1 = ((SceneBuilder.IImageBitmapHandle)localObject1).a((ISprite)localObject3, this.jdField_a_of_type_JavaLangString, str);
+        localObject1 = ((SceneBuilder.IImageBitmapHandle)localObject1).a((ISprite)localObject3, this.a, str);
       } else {
         localObject1 = null;
       }
@@ -98,7 +98,7 @@ public class SceneBuilder
       try
       {
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(this.a);
         ((StringBuilder)localObject4).append("/");
         ((StringBuilder)localObject4).append(str);
         localObject4 = ImageUtil.a(((StringBuilder)localObject4).toString(), null);
@@ -118,8 +118,8 @@ public class SceneBuilder
       localObject4 = localObject1;
       if (localObject1 != null)
       {
-        n = ((Bitmap)localObject1).getWidth() * j;
-        m = ((Bitmap)localObject1).getHeight() * j;
+        i2 = ((Bitmap)localObject1).getWidth() * m;
+        i1 = ((Bitmap)localObject1).getHeight() * m;
         break label410;
       }
     }
@@ -127,50 +127,50 @@ public class SceneBuilder
     {
       localObject4 = null;
     }
-    int n = 0;
-    int m = 0;
+    int i2 = 0;
+    int i1 = 0;
     localObject1 = localObject4;
     label410:
     localObject4 = localObject3;
-    int i1;
+    int i3;
     if (localObject6 != null)
     {
       if (((JSONObject)localObject6).optInt("width") != 0) {
-        i = ((JSONObject)localObject6).optInt("width") * j;
+        k = ((JSONObject)localObject6).optInt("width") * m;
       }
       if (((JSONObject)localObject6).optInt("height") != 0) {
-        j = ((JSONObject)localObject6).optInt("height") * j;
+        m = ((JSONObject)localObject6).optInt("height") * m;
       } else {
-        j = k;
+        m = n;
       }
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+      localObject3 = this.f;
       if (localObject3 != null) {
-        ((SceneBuilder.ILabelTextHandle)localObject3).a(i - n - i2, (String)localObject2, (Paint)localObject5);
+        ((SceneBuilder.ILabelTextHandle)localObject3).a(k - i2 - i4, (String)localObject2, (Paint)localObject5);
       }
-      localObject2 = a(i - n - i2, (String)localObject2, (Paint)localObject5);
-      i1 = i;
+      localObject2 = a(k - i2 - i4, (String)localObject2, (Paint)localObject5);
+      i3 = k;
     }
     else
     {
-      j = k;
-      i1 = i;
+      m = n;
+      i3 = k;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+    Object localObject3 = this.f;
     if (localObject3 != null) {
-      i = ((SceneBuilder.ILabelTextHandle)localObject3).a(i1, n, i2, (String)localObject2, (Paint)localObject5);
+      k = ((SceneBuilder.ILabelTextHandle)localObject3).a(i3, i2, i4, (String)localObject2, (Paint)localObject5);
     } else {
-      i = i3;
+      k = i5;
     }
     localObject3 = localObject5;
     localObject5 = localObject1;
-    if (i == 0) {
-      i = (int)((Paint)localObject3).measureText((String)localObject2);
+    if (k == 0) {
+      k = (int)((Paint)localObject3).measureText((String)localObject2);
     }
     localObject1 = localObject3;
-    n = n + i + i2;
+    i2 = i2 + k + i4;
     try
     {
-      localObject3 = Bitmap.createBitmap(i1, j, Bitmap.Config.ARGB_8888);
+      localObject3 = Bitmap.createBitmap(i3, m, Bitmap.Config.ARGB_8888);
       localObject6 = new Canvas((Bitmap)localObject3);
       ((Canvas)localObject6).drawColor(-16777216, PorterDuff.Mode.CLEAR);
       float f5 = f1 * 0.8F;
@@ -180,14 +180,14 @@ public class SceneBuilder
       if (paramJSONObject != null)
       {
         if ((!paramJSONObject.contains("left")) && (paramJSONObject.contains("right"))) {
-          f1 = i1 - n;
+          f1 = i3 - i2;
         } else {
           f1 = 0.0F;
         }
         if ((!paramJSONObject.contains("top")) && (paramJSONObject.contains("bottom")))
         {
-          f2 = j - k;
-          f3 = j - m;
+          f2 = m - n;
+          f3 = m - i1;
         }
         else
         {
@@ -196,17 +196,17 @@ public class SceneBuilder
         }
         if (paramJSONObject.equals("center"))
         {
-          f1 = (i1 - n) / 2;
-          f2 = (j - k) / 2;
-          f3 = (j - m) / 2;
+          f1 = (i3 - i2) / 2;
+          f2 = (m - n) / 2;
+          f3 = (m - i1) / 2;
         }
         if (paramJSONObject.contains("center_horizontal")) {
-          f1 = (i1 - n) / 2;
+          f1 = (i3 - i2) / 2;
         }
         if (paramJSONObject.contains("center_vertical"))
         {
-          f2 = (j - k) / 2;
-          f3 = (j - m) / 2;
+          f2 = (m - n) / 2;
+          f3 = (m - i1) / 2;
         }
       }
       else
@@ -215,11 +215,11 @@ public class SceneBuilder
         f2 = 0.0F;
         f3 = 0.0F;
       }
-      SceneBuilder.ILabelTextHandle localILabelTextHandle = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle;
+      SceneBuilder.ILabelTextHandle localILabelTextHandle = this.f;
       if (localILabelTextHandle != null)
       {
         paramJSONObject = (JSONObject)localObject1;
-        if (localILabelTextHandle.a((Canvas)localObject6, (String)localObject2, f1, f2, f5, i1, j, paramJSONObject))
+        if (localILabelTextHandle.a((Canvas)localObject6, (String)localObject2, f1, f2, f5, i3, m, paramJSONObject))
         {
           localObject1 = paramJSONObject;
           break label902;
@@ -231,7 +231,7 @@ public class SceneBuilder
       {
         paramJSONObject = new Matrix();
         paramJSONObject.postScale(f4, f4);
-        paramJSONObject.postTranslate(f1 + i2 + i, f3);
+        paramJSONObject.postTranslate(f1 + i4 + k, f3);
         ((Canvas)localObject6).drawBitmap((Bitmap)localObject5, paramJSONObject, (Paint)localObject1);
       }
       ((ISprite)localObject4).a(paramISpriteView, (Bitmap)localObject3);
@@ -254,11 +254,11 @@ public class SceneBuilder
   {
     Object localObject1 = paramJSONObject.optString("type");
     boolean bool = "layer".equals(localObject1);
-    int j = 0;
+    int m = 0;
     label194:
     label228:
-    int i;
     int k;
+    int n;
     Object localObject4;
     if (bool)
     {
@@ -299,9 +299,9 @@ public class SceneBuilder
         break label228;
         localObject1 = new com.tencent.mobileqq.surfaceviewaction.nv.ImageButton((SpriteNativeView)localObject1, (String)localObject2);
         ((com.tencent.mobileqq.surfaceviewaction.nv.ImageButton)localObject1).a(new SceneBuilder.3(this, paramILayer, (BaseNode)localObject1, (String)localObject2));
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle;
+        localObject2 = this.g;
         if (localObject2 != null) {
-          localObject3 = ((SceneBuilder.IImageBitmapHandle)localObject2).a((ISprite)localObject1, this.jdField_a_of_type_JavaLangString, str);
+          localObject3 = ((SceneBuilder.IImageBitmapHandle)localObject2).a((ISprite)localObject1, this.a, str);
         } else {
           localObject3 = null;
         }
@@ -310,7 +310,7 @@ public class SceneBuilder
           try
           {
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(this.a);
             ((StringBuilder)localObject2).append("/");
             ((StringBuilder)localObject2).append(str);
             localObject2 = ImageUtil.a(((StringBuilder)localObject2).toString(), null);
@@ -335,11 +335,11 @@ public class SceneBuilder
           localObject3 = localObject2;
           if (localJSONObject != null)
           {
-            i = localJSONObject.optInt("width");
-            k = localJSONObject.optInt("height");
+            k = localJSONObject.optInt("width");
+            n = localJSONObject.optInt("height");
             try
             {
-              localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject2, i, k, true);
+              localObject3 = Bitmap.createScaledBitmap((Bitmap)localObject2, k, n, true);
             }
             catch (OutOfMemoryError localOutOfMemoryError2)
             {
@@ -370,7 +370,7 @@ public class SceneBuilder
         localObject3 = new com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite((SpriteGLView)localObject1, ((SpriteGLView)localObject1).getContext(), true);
         localObject2 = (com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject3;
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(this.a);
         ((StringBuilder)localObject4).append("/");
         ((StringBuilder)localObject4).append(paramJSONObject.optString("path"));
         ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).c(((StringBuilder)localObject4).toString());
@@ -378,7 +378,7 @@ public class SceneBuilder
           ((SpriteGLView)localObject1).setVideoTimeGetter((SpriteGLView.IVideoTimeGetter)localObject2);
         }
         if (paramJSONObject.optBoolean("autoClose", false)) {
-          ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+          ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(this.e);
         }
         ((com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
       }
@@ -387,7 +387,7 @@ public class SceneBuilder
       label670:
       localObject1 = (SpriteNativeView)paramISpriteView;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append("/");
       ((StringBuilder)localObject2).append(paramJSONObject.optString("path"));
       localObject2 = ((StringBuilder)localObject2).toString();
@@ -405,14 +405,14 @@ public class SceneBuilder
     if (localObject1 == null) {
       return null;
     }
-    ((BaseNode)localObject1).a(paramJSONObject.optString("name"));
+    ((BaseNode)localObject1).p_(paramJSONObject.optString("name"));
     ((BaseNode)localObject1).a(paramJSONObject.optInt("tag"));
     ((BaseNode)localObject1).a((float)paramJSONObject.optDouble("x", 0.0D));
     ((BaseNode)localObject1).b((float)paramJSONObject.optDouble("y", 0.0D));
     ((BaseNode)localObject1).b((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-    ((BaseNode)localObject1).c(((BaseNode)localObject1).a() * (float)paramJSONObject.optDouble("scale", 1.0D));
+    ((BaseNode)localObject1).c(((BaseNode)localObject1).b() * (float)paramJSONObject.optDouble("scale", 1.0D));
     ((BaseNode)localObject1).d((float)paramJSONObject.optDouble("rotate", 0.0D));
-    ((BaseNode)localObject1).e(((BaseNode)paramILayer).a());
+    ((BaseNode)localObject1).e(((BaseNode)paramILayer).b());
     Object localObject2 = paramJSONObject.optJSONArray("actions");
     if (localObject2 != null) {
       ((BaseNode)localObject1).a(a((JSONArray)localObject2));
@@ -421,18 +421,18 @@ public class SceneBuilder
     if (localObject3 != null)
     {
       localObject2 = new Frame();
-      ((Frame)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("fps");
+      ((Frame)localObject2).a = ((JSONObject)localObject3).optInt("fps");
       localObject3 = ((JSONObject)localObject3).optJSONArray("datas");
-      k = ((JSONArray)localObject3).length();
-      ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData = new Frame.FrameData[k];
-      i = 0;
-      while (i < k)
+      n = ((JSONArray)localObject3).length();
+      ((Frame)localObject2).b = new Frame.FrameData[n];
+      k = 0;
+      while (k < n)
       {
-        ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i] = new Frame.FrameData();
-        localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-        localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].jdField_a_of_type_Float = ((JSONObject)localObject4).optInt("x");
-        localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].b = ((JSONObject)localObject4).optInt("y");
-        i += 1;
+        ((Frame)localObject2).b[k] = new Frame.FrameData();
+        localObject4 = ((JSONArray)localObject3).optJSONObject(k);
+        localObject2.b[k].a = ((JSONObject)localObject4).optInt("x");
+        localObject2.b[k].b = ((JSONObject)localObject4).optInt("y");
+        k += 1;
       }
       ((BaseNode)localObject1).a((Frame)localObject2);
     }
@@ -460,15 +460,15 @@ public class SceneBuilder
     {
       localObject2 = (ILayer)localObject1;
       paramJSONObject = paramJSONObject.optJSONArray("children");
-      k = paramJSONObject.length();
-      i = j;
-      while (i < k)
+      n = paramJSONObject.length();
+      k = m;
+      while (k < n)
       {
-        localObject3 = a(paramISpriteView, paramJSONObject.getJSONObject(i), paramILayer);
+        localObject3 = a(paramISpriteView, paramJSONObject.getJSONObject(k), paramILayer);
         if (localObject3 != null) {
           ((ILayer)localObject2).a((BaseNode)localObject3);
         }
-        i += 1;
+        k += 1;
       }
     }
     return localObject1;
@@ -488,32 +488,32 @@ public class SceneBuilder
     {
       paramString = new JSONObject(paramString);
       Object localObject2 = paramString.optJSONObject("size");
-      int i = ((JSONObject)localObject2).optInt("width");
-      int j = ((JSONObject)localObject2).optInt("height");
-      this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / i);
-      if (this.jdField_a_of_type_Boolean)
+      int k = ((JSONObject)localObject2).optInt("width");
+      int m = ((JSONObject)localObject2).optInt("height");
+      this.d = (this.c / k);
+      if (this.b)
       {
         localObject2 = ((ViewGroup)paramISpriteView).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
-        ((ViewGroup.LayoutParams)localObject2).height = ((int)(j * this.jdField_a_of_type_Float));
+        ((ViewGroup.LayoutParams)localObject2).width = this.c;
+        ((ViewGroup.LayoutParams)localObject2).height = ((int)(m * this.d));
         ((ViewGroup)paramISpriteView).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((BaseNode)localObject1).c(this.jdField_a_of_type_Float);
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler != null) {
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
+        ((BaseNode)localObject1).c(this.d);
+        if (this.h != null) {
+          this.h.a(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height);
         }
       }
       paramString = paramString.optJSONArray("scene");
       if (paramString != null)
       {
-        j = paramString.length();
-        i = 0;
-        while (i < j)
+        m = paramString.length();
+        k = 0;
+        while (k < m)
         {
-          localObject2 = a(paramISpriteView, paramString.getJSONObject(i), (ILayer)localObject1);
+          localObject2 = a(paramISpriteView, paramString.getJSONObject(k), (ILayer)localObject1);
           if (localObject2 != null) {
             ((ILayer)localObject1).a((BaseNode)localObject2);
           }
-          i += 1;
+          k += 1;
         }
       }
       return localObject1;
@@ -534,7 +534,7 @@ public class SceneBuilder
   {
     Object localObject2 = paramJSONObject.optString("type");
     String str = paramJSONObject.optString("timeType");
-    int j = paramJSONObject.optInt("duration");
+    int m = paramJSONObject.optInt("duration");
     boolean bool = ((String)localObject2).equals("sequence");
     Object localObject1 = null;
     if (bool)
@@ -543,54 +543,54 @@ public class SceneBuilder
     }
     else if (((String)localObject2).equals("delay"))
     {
-      localObject1 = new DelayAction(j);
+      localObject1 = new DelayAction(m);
     }
     else if (((String)localObject2).equals("position"))
     {
       localObject2 = paramJSONObject.optJSONObject("from");
       JSONObject localJSONObject = paramJSONObject.optJSONObject("to");
-      if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler != null) && ("$POSITIONX$".equals(localJSONObject.optString("x"))))
+      if ((this.i != null) && ("$POSITIONX$".equals(localJSONObject.optString("x"))))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IActionPositionHandler.a((JSONObject)localObject2, localJSONObject, this.jdField_a_of_type_Float);
+        localObject1 = this.i.a((JSONObject)localObject2, localJSONObject, this.d);
         if ((localObject1 != null) && (localObject1.length == 2))
         {
-          localObject1 = new MoveToAction(j, localObject1[0].jdField_a_of_type_Float, localObject1[0].b, localObject1[1].jdField_a_of_type_Float, localObject1[1].b);
-          i = 1;
+          localObject1 = new MoveToAction(m, localObject1[0].a, localObject1[0].b, localObject1[1].a, localObject1[1].b);
+          k = 1;
           break label223;
         }
       }
       localObject1 = null;
-      int i = 0;
+      int k = 0;
       label223:
-      if (i == 0) {
-        localObject1 = new MoveToAction(j, (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"), (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"));
+      if (k == 0) {
+        localObject1 = new MoveToAction(m, (float)((JSONObject)localObject2).optDouble("x"), (float)((JSONObject)localObject2).optDouble("y"), (float)localJSONObject.optDouble("x"), (float)localJSONObject.optDouble("y"));
       }
     }
     else if (((String)localObject2).equals("scale"))
     {
-      localObject1 = new ScaleAction(j, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
+      localObject1 = new ScaleAction(m, (float)paramJSONObject.optDouble("from", 1.0D), (float)paramJSONObject.optDouble("to", 1.0D));
     }
     else if (((String)localObject2).equals("alpha"))
     {
-      localObject1 = new OpacityAction(j, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
+      localObject1 = new OpacityAction(m, (int)(paramJSONObject.optDouble("from", 1.0D) * 255.0D), (int)(paramJSONObject.optDouble("to", 1.0D) * 255.0D));
     }
     else if (((String)localObject2).equals("rotate"))
     {
-      localObject1 = new RotateAction(j, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
+      localObject1 = new RotateAction(m, paramJSONObject.optInt("from", 0), paramJSONObject.optInt("to", 0));
     }
     if (localObject1 != null)
     {
-      ((Action)localObject1).jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isRepeat");
+      ((Action)localObject1).i = paramJSONObject.optBoolean("isRepeat");
       if (str != null) {
         if (str.equals("linear")) {
-          ((Action)localObject1).e = 0;
+          ((Action)localObject1).h = 0;
         } else if (str.equals("easeIn")) {
-          ((Action)localObject1).e = 1;
+          ((Action)localObject1).h = 1;
         } else if (str.equals("easeOut")) {
-          ((Action)localObject1).e = 2;
+          ((Action)localObject1).h = 2;
         }
       }
-      if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)) {
+      if ((paramJSONObject.optBoolean("autoClose", false)) && (this.e != null)) {
         ((Action)localObject1).a(new SceneBuilder.4(this));
       }
     }
@@ -602,21 +602,21 @@ public class SceneBuilder
     if (paramInt <= 0) {
       return paramString;
     }
-    float f = paramPaint.measureText("...");
+    float f1 = paramPaint.measureText("...");
     if ((int)Math.ceil(paramPaint.measureText(paramString)) <= paramInt) {
       return paramString;
     }
-    int i = paramString.length() - 1;
-    while (i > 0)
+    int k = paramString.length() - 1;
+    while (k > 0)
     {
-      if ((int)Math.ceil(paramPaint.measureText(paramString, 0, i) + f) <= paramInt)
+      if ((int)Math.ceil(paramPaint.measureText(paramString, 0, k) + f1) <= paramInt)
       {
         paramPaint = new StringBuilder();
-        paramPaint.append(paramString.substring(0, i));
+        paramPaint.append(paramString.substring(0, k));
         paramPaint.append("...");
         return paramPaint.toString();
       }
-      i -= 1;
+      k -= 1;
     }
     return "";
   }
@@ -651,19 +651,19 @@ public class SceneBuilder
         {
           String[] arrayOfString;
           continue;
-          int i = 0;
+          int k = 0;
           continue;
         }
-        if (i >= arrayOfString.length) {
+        if (k >= arrayOfString.length) {
           continue;
         }
-        if (arrayOfString[i].startsWith("﻿")) {
-          arrayOfString[i] = arrayOfString[i].replace("﻿", "");
+        if (arrayOfString[k].startsWith("﻿")) {
+          arrayOfString[k] = arrayOfString[k].replace("﻿", "");
         }
         localStringBuffer.setLength(0);
         localStringBuffer.append(paramFile.getAbsolutePath());
         localStringBuffer.append(File.separator);
-        localStringBuffer.append(arrayOfString[i]);
+        localStringBuffer.append(arrayOfString[k]);
         localObject = new File(localStringBuffer.toString());
         if (!((File)localObject).exists())
         {
@@ -676,7 +676,7 @@ public class SceneBuilder
           }
           return false;
         }
-        i += 1;
+        k += 1;
       }
       return true;
       if (QLog.isColorLevel()) {
@@ -688,61 +688,61 @@ public class SceneBuilder
   
   private Action[] a(JSONArray paramJSONArray)
   {
-    int j = paramJSONArray.length();
-    Action[] arrayOfAction = new Action[j];
-    int i = 0;
-    while (i < j)
+    int m = paramJSONArray.length();
+    Action[] arrayOfAction = new Action[m];
+    int k = 0;
+    while (k < m)
     {
-      arrayOfAction[i] = a(paramJSONArray.optJSONObject(i));
-      i += 1;
+      arrayOfAction[k] = a(paramJSONArray.optJSONObject(k));
+      k += 1;
     }
     return arrayOfAction;
   }
   
   /* Error */
-  private static String b(String paramString)
+  private static String c(String paramString)
   {
     // Byte code:
-    //   0: new 654	java/io/InputStreamReader
+    //   0: new 663	java/io/InputStreamReader
     //   3: dup
-    //   4: new 656	java/io/FileInputStream
+    //   4: new 665	java/io/FileInputStream
     //   7: dup
-    //   8: new 600	java/io/File
+    //   8: new 603	java/io/File
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 619	java/io/File:<init>	(Ljava/lang/String;)V
-    //   16: invokespecial 659	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   19: invokespecial 662	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   13: invokespecial 622	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: invokespecial 668	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 671	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   22: astore_2
-    //   23: new 664	java/io/BufferedReader
+    //   23: new 673	java/io/BufferedReader
     //   26: dup
     //   27: aload_2
-    //   28: invokespecial 667	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   28: invokespecial 676	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
-    //   32: new 123	java/lang/StringBuilder
+    //   32: new 131	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 124	java/lang/StringBuilder:<init>	()V
+    //   36: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   39: astore_0
     //   40: aload_1
-    //   41: invokevirtual 670	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   41: invokevirtual 679	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   44: astore_3
     //   45: aload_3
     //   46: ifnull +19 -> 65
     //   49: aload_0
     //   50: aload_3
-    //   51: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload_0
     //   56: bipush 10
-    //   58: invokevirtual 673	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 682	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: goto -22 -> 40
     //   65: aload_1
-    //   66: invokevirtual 676	java/io/BufferedReader:close	()V
+    //   66: invokevirtual 685	java/io/BufferedReader:close	()V
     //   69: aload_2
-    //   70: invokevirtual 677	java/io/InputStreamReader:close	()V
+    //   70: invokevirtual 686	java/io/InputStreamReader:close	()V
     //   73: aload_0
-    //   74: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   77: astore_0
     //   78: aload_0
     //   79: areturn
@@ -758,24 +758,24 @@ public class SceneBuilder
     //   93: aload_1
     //   94: astore_2
     //   95: aload_0
-    //   96: invokevirtual 680	java/lang/Exception:printStackTrace	()V
+    //   96: invokevirtual 689	java/lang/Exception:printStackTrace	()V
     //   99: aload_1
     //   100: ifnull +15 -> 115
     //   103: aload_1
-    //   104: invokevirtual 676	java/io/BufferedReader:close	()V
+    //   104: invokevirtual 685	java/io/BufferedReader:close	()V
     //   107: goto +8 -> 115
     //   110: astore_0
     //   111: aload_0
-    //   112: invokevirtual 681	java/io/IOException:printStackTrace	()V
+    //   112: invokevirtual 690	java/io/IOException:printStackTrace	()V
     //   115: aload_2
     //   116: ifnull +14 -> 130
     //   119: aload_2
-    //   120: invokevirtual 677	java/io/InputStreamReader:close	()V
+    //   120: invokevirtual 686	java/io/InputStreamReader:close	()V
     //   123: aconst_null
     //   124: areturn
     //   125: astore_0
     //   126: aload_0
-    //   127: invokevirtual 681	java/io/IOException:printStackTrace	()V
+    //   127: invokevirtual 690	java/io/IOException:printStackTrace	()V
     //   130: aconst_null
     //   131: areturn
     // Local variable table:
@@ -798,44 +798,44 @@ public class SceneBuilder
   
   public SceneBuilder a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = true;
+    this.c = paramInt;
     return this;
   }
   
   public SceneBuilder a(SceneBuilder.IButtonHandle paramIButtonHandle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IButtonHandle = paramIButtonHandle;
+    this.j = paramIButtonHandle;
     return this;
   }
   
   public SceneBuilder a(SceneBuilder.IImageBitmapHandle paramIImageBitmapHandle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle = paramIImageBitmapHandle;
+    this.g = paramIImageBitmapHandle;
     return this;
   }
   
   public SceneBuilder a(SceneBuilder.ILabelTextHandle paramILabelTextHandle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILabelTextHandle = paramILabelTextHandle;
+    this.f = paramILabelTextHandle;
     return this;
   }
   
   public SceneBuilder a(SceneBuilder.ILayoutSizeHandler paramILayoutSizeHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$ILayoutSizeHandler = paramILayoutSizeHandler;
+    this.h = paramILayoutSizeHandler;
     return this;
   }
   
   public SceneBuilder a(FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = paramOnFrameEndListener;
+    this.e = paramOnFrameEndListener;
     return this;
   }
   
   public SceneBuilder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
@@ -846,7 +846,7 @@ public class SceneBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder
  * JD-Core Version:    0.7.0.1
  */

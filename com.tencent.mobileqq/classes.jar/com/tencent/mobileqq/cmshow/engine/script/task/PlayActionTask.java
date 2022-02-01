@@ -1,5 +1,13 @@
 package com.tencent.mobileqq.cmshow.engine.script.task;
 
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import com.tencent.mobileqq.cmshow.engine.EngineContext;
+import com.tencent.mobileqq.cmshow.engine.action.PlayActionScript;
+import com.tencent.mobileqq.cmshow.engine.resource.IResourceService;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -8,335 +16,375 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/task/PlayActionTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/AbsScriptTask;", "()V", "actionId", "", "getActionId", "()I", "setActionId", "(I)V", "actionType", "getActionType", "setActionType", "actions", "Lorg/json/JSONArray;", "getActions", "()Lorg/json/JSONArray;", "setActions", "(Lorg/json/JSONArray;)V", "actionsList", "", "getActionsList", "()Ljava/util/List;", "setActionsList", "(Ljava/util/List;)V", "audio", "Lorg/json/JSONObject;", "getAudio", "()Lorg/json/JSONObject;", "setAudio", "(Lorg/json/JSONObject;)V", "audioId", "getAudioId", "setAudioId", "audioStartTime", "", "getAudioStartTime", "()F", "setAudioStartTime", "(F)V", "checkRsc", "", "getCheckRsc", "()Z", "setCheckRsc", "(Z)V", "extraMsg", "", "getExtraMsg", "()Ljava/lang/String;", "setExtraMsg", "(Ljava/lang/String;)V", "frameTime", "getFrameTime", "setFrameTime", "from", "getFrom", "setFrom", "functionName", "getFunctionName", "setFunctionName", "inputText", "getInputText", "setInputText", "isHide", "setHide", "isSender", "setSender", "model", "getModel", "setModel", "msgId", "", "getMsgId", "()J", "setMsgId", "(J)V", "needRecordFrame", "getNeedRecordFrame", "setNeedRecordFrame", "recvUin", "getRecvUin", "setRecvUin", "rscType", "getRscType", "setRscType", "senderUin", "getSenderUin", "setSenderUin", "spriteNum", "getSpriteNum", "setSpriteNum", "sprites", "getSprites", "setSprites", "subType", "getSubType", "setSubType", "taskId", "getTaskId", "setTaskId", "textIsBarrage", "getTextIsBarrage", "setTextIsBarrage", "buildParams", "isWhiteFace", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/task/PlayActionTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/AbsScriptTask;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "(Lcom/tencent/mobileqq/cmshow/engine/EngineContext;)V", "actionId", "", "getActionId", "()I", "setActionId", "(I)V", "actionType", "getActionType", "setActionType", "actions", "Lorg/json/JSONArray;", "getActions", "()Lorg/json/JSONArray;", "setActions", "(Lorg/json/JSONArray;)V", "actionsList", "", "getActionsList", "()Ljava/util/List;", "setActionsList", "(Ljava/util/List;)V", "audio", "Lorg/json/JSONObject;", "getAudio", "()Lorg/json/JSONObject;", "setAudio", "(Lorg/json/JSONObject;)V", "audioId", "getAudioId", "setAudioId", "audioStartTime", "", "getAudioStartTime", "()F", "setAudioStartTime", "(F)V", "checkRsc", "", "getCheckRsc", "()Z", "setCheckRsc", "(Z)V", "extraMsg", "", "getExtraMsg", "()Ljava/lang/String;", "setExtraMsg", "(Ljava/lang/String;)V", "frameTime", "getFrameTime", "setFrameTime", "from", "getFrom", "setFrom", "functionName", "getFunctionName", "setFunctionName", "inputText", "getInputText", "setInputText", "isHide", "setHide", "isSender", "setSender", "model", "getModel", "setModel", "msgId", "", "getMsgId", "()J", "setMsgId", "(J)V", "needRecordFrame", "getNeedRecordFrame", "setNeedRecordFrame", "recvUin", "getRecvUin", "setRecvUin", "rscType", "getRscType", "setRscType", "senderUin", "getSenderUin", "setSenderUin", "spriteNum", "getSpriteNum", "setSpriteNum", "sprites", "getSprites", "setSprites", "subType", "getSubType", "setSubType", "taskId", "getTaskId", "setTaskId", "textIsBarrage", "getTextIsBarrage", "setTextIsBarrage", "buildParams", "buildScript", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "isWhiteFace", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public abstract class PlayActionTask
   extends AbsScriptTask
 {
-  private float jdField_a_of_type_Float = (float)0.1D;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  @Deprecated
+  public static final PlayActionTask.Companion d = new PlayActionTask.Companion(null);
+  private long A;
+  private final EngineContext B;
+  @Nullable
+  private String a;
   @NotNull
-  public String a;
-  @Nullable
-  private List<Integer> jdField_a_of_type_JavaUtilList;
+  public String b;
   @NotNull
-  protected JSONArray a;
-  @Nullable
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private String jdField_b_of_type_JavaLangString;
-  @Nullable
-  private JSONArray jdField_b_of_type_OrgJsonJSONArray;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  @Nullable
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  @Nullable
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int = 1;
-  @Nullable
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int;
-  @Nullable
-  private String jdField_f_of_type_JavaLangString;
+  protected JSONArray c;
+  private int e;
+  private int f;
   private int g;
   private int h;
   private int i;
   private int j;
-  
-  public final float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   @Nullable
-  public final List<Integer> a()
+  private String k;
+  @Nullable
+  private String l;
+  @Nullable
+  private String m;
+  private boolean n;
+  private float o;
+  @Nullable
+  private JSONArray p;
+  @Nullable
+  private List<Integer> q;
+  @Nullable
+  private JSONObject r;
+  private int s;
+  private float t;
+  private boolean u;
+  @Nullable
+  private String v;
+  private boolean w;
+  private int x;
+  private int y;
+  private int z;
+  
+  public PlayActionTask(@NotNull EngineContext paramEngineContext)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    super(paramEngineContext.h().a());
+    this.B = paramEngineContext;
+    this.i = 1;
+    this.o = ((float)0.1D);
   }
   
   @NotNull
-  protected final JSONArray a()
+  public Script a()
   {
-    JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONArray;
-    if (localJSONArray == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("sprites");
+    Object localObject2 = b();
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty((CharSequence)this.a))
+    {
+      localObject1 = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("if (typeof ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" == 'function') {\n");
+      ((StringBuilder)localObject1).append(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("    ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("('");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("');\n");
+      ((StringBuilder)localObject1).append(localStringBuilder.toString());
+      ((StringBuilder)localObject1).append("}");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "StringBuilder().apply(builderAction).toString()");
     }
-    return localJSONArray;
-  }
-  
-  @Nullable
-  protected final JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("buildScript: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.w("[cmshow][ScriptTask][PlayActionTask]", 2, ((StringBuilder)localObject2).toString());
+    }
+    return (Script)new PlayActionScript(this.B, (String)localObject1, this);
   }
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.o = paramFloat;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.A = paramLong;
   }
   
   public final void a(@Nullable List<Integer> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.q = paramList;
   }
   
-  protected final void a(@NotNull JSONArray paramJSONArray)
+  @NotNull
+  public String b()
   {
-    Intrinsics.checkParameterIsNotNull(paramJSONArray, "<set-?>");
-    this.jdField_a_of_type_OrgJsonJSONArray = paramJSONArray;
-  }
-  
-  protected final void a(@Nullable JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected final boolean a(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  public final float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  @Nullable
-  protected final JSONArray b()
-  {
-    return this.jdField_b_of_type_OrgJsonJSONArray;
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject = this.b;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("model");
+    }
+    localJSONObject.put("model", localObject);
+    localJSONObject.put("actionId", this.e);
+    localJSONObject.put("taskId", this.g);
+    localJSONObject.put("actionType", this.f);
+    localJSONObject.put("from", this.h);
+    localJSONObject.put("isHide", this.i);
+    localJSONObject.put("isSender", this.j);
+    if (m(this.f))
+    {
+      localObject = ScriptUtils.a(this);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "ScriptUtils.getWhiteFaceSprites(this)");
+      this.c = ((JSONArray)localObject);
+      localObject = this.c;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("sprites");
+      }
+      localJSONObject.put("sprites", localObject);
+      this.p = ScriptUtils.b(this);
+      localJSONObject.put("actions", this.p);
+    }
+    else
+    {
+      localObject = ScriptUtils.c(this);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "ScriptUtils.getBasicActionJs(this)");
+      this.c = ((JSONArray)localObject);
+      localObject = this.c;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("sprites");
+      }
+      localJSONObject.put("sprites", localObject);
+    }
+    boolean bool;
+    if (i() == 1) {
+      bool = CmShowWnsUtils.U();
+    } else {
+      bool = true;
+    }
+    if (bool)
+    {
+      localObject = ScriptUtils.d(this);
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enableAudio: ");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(" in DRAWER for actionId:");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.w("[cmshow][ScriptTask][PlayActionTask]", 1, ((StringBuilder)localObject).toString());
+      localObject = null;
+    }
+    this.r = ((JSONObject)localObject);
+    localObject = this.r;
+    if (localObject != null) {
+      localJSONObject.put("audio", localObject);
+    }
+    if (!TextUtils.isEmpty((CharSequence)this.m)) {
+      localJSONObject.put("extraMsg", new JSONObject(this.m));
+    }
+    localJSONObject.put("needRecordFrame", this.n);
+    localJSONObject.put("frameTime", Float.valueOf(this.o));
+    localObject = localJSONObject.toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "actionJson.toString()");
+    return localObject;
   }
   
   public final void b(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public final void b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected final void b(@Nullable JSONArray paramJSONArray)
-  {
-    this.jdField_b_of_type_OrgJsonJSONArray = paramJSONArray;
-  }
-  
-  public final void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.t = paramFloat;
   }
   
   public final int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
   public final void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public final void c(@Nullable String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public final void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public final int d()
-  {
-    return this.jdField_b_of_type_Int;
+    this.n = paramBoolean;
   }
   
   public final void d(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
-  public final void d(@Nullable String paramString)
+  public final void d(@NotNull String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
   }
   
-  public final boolean d()
+  public final void d(boolean paramBoolean)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public final int e()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @Nullable
-  public final String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.u = paramBoolean;
   }
   
   public final void e(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public final void e(@Nullable String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
-  public final boolean e()
+  public final void e(boolean paramBoolean)
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public final int f()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  @NotNull
-  public final String f()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (str == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("model");
-    }
-    return str;
+    this.w = paramBoolean;
   }
   
   public final void f(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public final void f(@Nullable String paramString)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
-  
-  public final int g()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  @Nullable
-  public final String g()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    this.l = paramString;
   }
   
   public final void g(int paramInt)
   {
-    this.g = paramInt;
+    this.i = paramInt;
   }
   
-  public final int h()
+  public final void g(@Nullable String paramString)
   {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  @Nullable
-  public final String h()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    this.m = paramString;
   }
   
   public final void h(int paramInt)
   {
-    this.h = paramInt;
+    this.j = paramInt;
   }
   
-  public final int i()
+  public final void h(@Nullable String paramString)
   {
-    return this.g;
-  }
-  
-  @Nullable
-  public final String i()
-  {
-    return this.jdField_e_of_type_JavaLangString;
+    this.v = paramString;
   }
   
   public final void i(int paramInt)
   {
-    this.i = paramInt;
-  }
-  
-  public final int j()
-  {
-    return this.h;
-  }
-  
-  @Nullable
-  public final String j()
-  {
-    return this.jdField_f_of_type_JavaLangString;
+    this.s = paramInt;
   }
   
   public final void j(int paramInt)
   {
-    this.j = paramInt;
+    this.x = paramInt;
   }
   
-  public final int k()
+  public final void k(int paramInt)
   {
-    return this.i;
+    this.y = paramInt;
   }
   
   public final int l()
   {
-    return this.j;
+    return this.f;
+  }
+  
+  public final void l(int paramInt)
+  {
+    this.z = paramInt;
+  }
+  
+  public final int m()
+  {
+    return this.g;
+  }
+  
+  protected final boolean m(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  @Nullable
+  public final String n()
+  {
+    return this.k;
+  }
+  
+  @Nullable
+  public final String o()
+  {
+    return this.l;
+  }
+  
+  @Nullable
+  public final String p()
+  {
+    return this.m;
+  }
+  
+  @Nullable
+  public final List<Integer> q()
+  {
+    return this.q;
+  }
+  
+  public final int r()
+  {
+    return this.s;
+  }
+  
+  public final float s()
+  {
+    return this.t;
+  }
+  
+  public final boolean t()
+  {
+    return this.u;
+  }
+  
+  @Nullable
+  public final String u()
+  {
+    return this.v;
+  }
+  
+  public final boolean v()
+  {
+    return this.w;
+  }
+  
+  public final int w()
+  {
+    return this.x;
+  }
+  
+  public final int x()
+  {
+    return this.y;
+  }
+  
+  public final int y()
+  {
+    return this.z;
+  }
+  
+  public final long z()
+  {
+    return this.A;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.task.PlayActionTask
  * JD-Core Version:    0.7.0.1
  */

@@ -26,15 +26,15 @@ public class LiteUnguard
       QLog.d("GuardManager.LiteUnguard", 2, new Object[] { "onForground onEnter: ", paramString });
     }
     super.b(paramString);
-    this.a.c();
-    this.a.b(0);
-    MobileQQ.getMobileQQ().peekAppRuntime().onGuardEvent(4, GuardConfig.a().a, 0L);
+    this.e.cancelTimer();
+    this.e.updateActiveStatistic(0);
+    MobileQQ.getMobileQQ().peekAppRuntime().onGuardEvent(4, GuardConfig.a().g, 0L);
     CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.LiteUnguard
  * JD-Core Version:    0.7.0.1
  */

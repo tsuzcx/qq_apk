@@ -6,20 +6,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PicPreDownloaderCore$PicPreDownRunner
   implements Runnable
 {
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
+  Runnable a;
+  String b;
   
   PicPreDownloaderCore$PicPreDownRunner(PicPreDownloaderCore paramPicPreDownloaderCore, Runnable paramRunnable, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramRunnable;
+    this.b = paramString;
   }
   
   public void run()
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-    PicPreDownloaderCore.a(this.this$0).decrementAndGet();
-    PicPreDownloaderCore.a(this.this$0);
+    this.a.run();
+    PicPreDownloaderCore.g(this.this$0).decrementAndGet();
+    PicPreDownloaderCore.h(this.this$0);
   }
   
   @NonNull
@@ -27,13 +27,13 @@ public class PicPreDownloaderCore$PicPreDownRunner
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PicPreDownloader ,");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloaderCore.PicPreDownRunner
  * JD-Core Version:    0.7.0.1
  */

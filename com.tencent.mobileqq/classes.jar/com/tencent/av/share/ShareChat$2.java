@@ -19,7 +19,7 @@ class ShareChat$2
   
   public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
   {
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.j = false;
     paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
     paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
     paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
@@ -40,17 +40,17 @@ class ShareChat$2
     if (i == 0)
     {
       paramRspCreateShareUrl = this.a;
-      paramRspCreateShareUrl.c = paramObject;
-      paramRspCreateShareUrl.b = paramReqCreateShareUrl;
-      QAVGroupConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, this.a.b, this.a.c);
+      paramRspCreateShareUrl.g = paramObject;
+      paramRspCreateShareUrl.f = paramReqCreateShareUrl;
+      QAVGroupConfig.a().a(this.a.i.troopUin, this.a.f, this.a.g);
     }
     paramReqCreateShareUrl = this.a;
-    paramReqCreateShareUrl.a(paramReqCreateShareUrl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+    paramReqCreateShareUrl.a(paramReqCreateShareUrl.c, this.a.i.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.2
  * JD-Core Version:    0.7.0.1
  */

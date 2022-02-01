@@ -191,12 +191,12 @@ public class MiniGamePublicAccountWebFragment
     localObject1 = new TextView(getActivity());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = AIOUtils.b(7.0F, getActivity().getResources());
-    ((TextView)localObject1).setText(HardCodeUtil.a(2131710251));
+    ((TextView)localObject1).setText(HardCodeUtil.a(2131907946));
     ((TextView)localObject1).setTextColor(2130706432);
     ImageView localImageView = new ImageView(getActivity());
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = getActivity().getResources().getDrawable(2130847408);
-    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = getActivity().getResources().getDrawable(2130847408);
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = getActivity().getResources().getDrawable(2130849062);
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = getActivity().getResources().getDrawable(2130849062);
     localImageView.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_refresh_small_gray@2x.png", (URLDrawable.URLDrawableOptions)localObject2));
     localImageView.setVisibility(0);
     localObject2 = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
@@ -210,19 +210,19 @@ public class MiniGamePublicAccountWebFragment
   
   private void initHead(View paramView)
   {
-    this.headLayout = ((MiniGamePublicAccountHeadLayout)paramView.findViewById(2030239765));
-    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2030239766));
+    this.headLayout = ((MiniGamePublicAccountHeadLayout)paramView.findViewById(2030305322));
+    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2030305323));
     this.headLayout.attachToRootView();
     this.webView.attachHeaderView(this.headLayout);
-    this.pagerContainer = ((LinearLayout)this.headLayout.findViewById(2030239756));
-    this.viewPager = ((MiniGamePubViewpager)this.headLayout.findViewById(2030239748));
-    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)this.headLayout.findViewById(2030239762));
-    this.moreMsgText = ((TextView)this.headLayout.findViewById(2030239761));
-    this.moreMsgBtn = ((TextView)this.headLayout.findViewById(2030239759));
-    this.moreMsgLayout = ((RelativeLayout)this.headLayout.findViewById(2030239760));
-    this.emptyLayout = ((LinearLayout)this.headLayout.findViewById(2030239746));
-    this.emptyImage = ((URLImageView)this.headLayout.findViewById(2030239747));
-    this.headerLayoutBg = this.headLayout.findViewById(2030239752);
+    this.pagerContainer = ((LinearLayout)this.headLayout.findViewById(2030305311));
+    this.viewPager = ((MiniGamePubViewpager)this.headLayout.findViewById(2030305301));
+    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)this.headLayout.findViewById(2030305318));
+    this.moreMsgText = ((TextView)this.headLayout.findViewById(2030305317));
+    this.moreMsgBtn = ((TextView)this.headLayout.findViewById(2030305315));
+    this.moreMsgLayout = ((RelativeLayout)this.headLayout.findViewById(2030305316));
+    this.emptyLayout = ((LinearLayout)this.headLayout.findViewById(2030305298));
+    this.emptyImage = ((URLImageView)this.headLayout.findViewById(2030305299));
+    this.headerLayoutBg = this.headLayout.findViewById(2030305305);
     this.moreMsgBtn.setOnClickListener(this);
     this.emptyImage.setBackgroundURL("https://sola.gtimg.cn/aoi/sola/20200717141546_FIOiVDF9l3.png");
     this.pagerAdapter = this.mUiController.createAdapter(getActivity());
@@ -242,13 +242,13 @@ public class MiniGamePublicAccountWebFragment
     int i = ((DisplayMetrics)localObject).heightPixels;
     try
     {
-      this.loadLayout = ((LinearLayout)paramView.findViewById(2030239758));
+      this.loadLayout = ((LinearLayout)paramView.findViewById(2030305313));
       int j = AIOUtils.b(418.0F, getActivity().getResources());
       localObject = this.loadLayout.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).height = AIOUtils.b(i - j, getActivity().getResources());
       this.loadLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = (IPreloadServiceProxy)BaseApplicationImpl.getApplication().peekAppRuntime().getRuntimeService(IPreloadServiceProxy.class, "multi");
-      if (TextUtils.isEmpty(PreloadStaticApi.a("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0).filePath))
+      if (TextUtils.isEmpty(PreloadStaticApi.b("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0).filePath))
       {
         handleDefaultLoading();
         ((IPreloadServiceProxy)localObject).getResPath("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.3(this));
@@ -323,7 +323,7 @@ public class MiniGamePublicAccountWebFragment
       localIntent.setClass(getActivity(), ChatActivity.class);
       localIntent.putExtra("uin", AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN);
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", getString(2131694179));
+      localIntent.putExtra("uinname", getString(2131891810));
       localIntent.putExtra("entrance", 1);
       localIntent.putExtra("aio_msg_source", 0);
       getActivity().startActivity(localIntent);
@@ -342,11 +342,11 @@ public class MiniGamePublicAccountWebFragment
   
   public void initTitle(View paramView)
   {
-    this.layoutTitleBar = paramView.findViewById(2030239757);
-    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2030239767));
+    this.layoutTitleBar = paramView.findViewById(2030305312);
+    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2030305324));
     this.titleBar.setTitleBarTransparent();
     this.navTitle = this.titleBar.getTitleTextView();
-    this.navTitle.setText(2131694179);
+    this.navTitle.setText(2131891810);
     this.navTitle.setTextColor(-1);
     this.titleBar.setOnItemSelectListener(new MiniGamePublicAccountWebFragment.6(this));
     initTitleEvent();
@@ -414,7 +414,7 @@ public class MiniGamePublicAccountWebFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2030239759) {
+    if (paramView.getId() != 2030305315) {
       return;
     }
     enterAIO(false);
@@ -436,8 +436,8 @@ public class MiniGamePublicAccountWebFragment
         this.enterQQGamePubTime = (SystemClock.elapsedRealtime() - l);
       }
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(2030305283, paramViewGroup, false);
-    this.rootView = paramLayoutInflater.findViewById(2030239769);
+    paramLayoutInflater = paramLayoutInflater.inflate(2030370824, paramViewGroup, false);
+    this.rootView = paramLayoutInflater.findViewById(2030305326);
     initHead(paramLayoutInflater);
     this.initUiTime = (SystemClock.elapsedRealtime() - this.startTime);
     this.initWebViewTime = initWebView();
@@ -515,7 +515,7 @@ public class MiniGamePublicAccountWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebFragment
  * JD-Core Version:    0.7.0.1
  */

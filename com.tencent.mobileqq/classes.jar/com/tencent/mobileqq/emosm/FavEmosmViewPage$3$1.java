@@ -9,12 +9,12 @@ class FavEmosmViewPage$3$1
   
   public void a()
   {
-    this.a.a.a.a().a();
+    this.a.b.t.b().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.3.1
  * JD-Core Version:    0.7.0.1
  */

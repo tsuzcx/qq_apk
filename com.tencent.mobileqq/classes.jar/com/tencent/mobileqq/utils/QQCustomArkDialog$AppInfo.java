@@ -6,32 +6,30 @@ import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 
 public class QQCustomArkDialog$AppInfo
 {
-  public float a;
-  public SessionInfo a;
-  public ArkAppContainer a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
   public String d;
-  public String e = "";
+  public float e;
+  public SessionInfo f;
+  public ArkAppContainer g = null;
+  public String h = "";
+  public boolean i = false;
   
   public QQCustomArkDialog$AppInfo(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.a = paramBundle.getString("appName");
     this.b = paramBundle.getString("appView");
     this.c = paramBundle.getString("appMinVersion");
     this.d = paramBundle.getString("metaData");
-    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    this.e = paramBundle.getFloat("scale", 1.0F);
+    this.f = new SessionInfo();
     paramBundle = paramBundle.getString("troop_uin");
     if (paramBundle != null)
     {
-      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localSessionInfo.jdField_a_of_type_Int = 1;
-      localSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
+      SessionInfo localSessionInfo = this.f;
+      localSessionInfo.a = 1;
+      localSessionInfo.b = paramBundle;
     }
   }
   
@@ -52,7 +50,7 @@ public class QQCustomArkDialog$AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo
  * JD-Core Version:    0.7.0.1
  */

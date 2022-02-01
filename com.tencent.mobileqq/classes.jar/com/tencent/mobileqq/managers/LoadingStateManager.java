@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.managers;
 
 import android.os.Message;
+import com.tencent.mobileqq.activity.aio.NetStateTipsObserver;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -10,46 +11,36 @@ import mqq.os.MqqHandler;
 
 public class LoadingStateManager
 {
-  private static LoadingStateManager jdField_a_of_type_ComTencentMobileqqManagersLoadingStateManager;
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private static LoadingStateManager a;
+  private int b = 1;
+  private boolean c = false;
+  private boolean d = false;
   
   private LoadingStateManager()
   {
     if (NetConnInfoCenter.socketConnState == 4) {
-      this.jdField_a_of_type_Int = 2;
+      this.b = 2;
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("LoadingStateManager init loadingstate = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("LoadingStateManager", 2, localStringBuilder.toString());
     }
   }
   
-  public static LoadingStateManager a()
+  public static LoadingStateManager b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqManagersLoadingStateManager == null) {
-      jdField_a_of_type_ComTencentMobileqqManagersLoadingStateManager = new LoadingStateManager();
+    if (a == null) {
+      a = new LoadingStateManager();
     }
-    return jdField_a_of_type_ComTencentMobileqqManagersLoadingStateManager;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_ComTencentMobileqqManagersLoadingStateManager = null;
+    return a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
@@ -63,17 +54,18 @@ public class LoadingStateManager
       {
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("notifyIsNotIllegalNetWork mShowIllegalNetworkBar=");
-        paramFromServiceMsg.append(this.jdField_a_of_type_Boolean);
+        paramFromServiceMsg.append(this.c);
         QLog.d("LoadingStateManager", 2, paramFromServiceMsg.toString());
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("changeConversationLoadingState mShowErrorNetworkBar=");
-        paramFromServiceMsg.append(this.b);
+        paramFromServiceMsg.append(this.d);
         QLog.d("LoadingStateManager", 2, paramFromServiceMsg.toString());
       }
-      if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      paramQQAppInterface.notifyObservers(NetStateTipsObserver.class, 1, true, null);
+      if ((!this.c) && (!this.d)) {
         return;
       }
-      if (this.b)
+      if (this.d)
       {
         paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
         if (paramFromServiceMsg != null) {
@@ -81,7 +73,7 @@ public class LoadingStateManager
         }
         return;
       }
-      if (!c()) {
+      if (!d()) {
         a(0);
       }
       if (QLog.isColorLevel()) {
@@ -96,22 +88,22 @@ public class LoadingStateManager
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     boolean bool = true;
     if (i != 1)
     {
@@ -123,14 +115,24 @@ public class LoadingStateManager
     return bool;
   }
   
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 3;
-  }
-  
   public boolean d()
   {
-    return this.jdField_a_of_type_Int == 4;
+    return this.b == 3;
+  }
+  
+  public boolean e()
+  {
+    return this.b == 4;
+  }
+  
+  public int f()
+  {
+    return this.b;
+  }
+  
+  public void g()
+  {
+    a = null;
   }
 }
 

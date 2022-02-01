@@ -7,52 +7,52 @@ import java.lang.ref.WeakReference;
 class BaseMessageManager$RefreshRunnable
   implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final RefreshMessageContext jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<BaseMessageManager> jdField_a_of_type_JavaLangRefWeakReference;
-  private final int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString;
+  private final String a;
+  private final int b;
+  private final int c;
+  private final RefreshMessageContext d;
+  private final String e;
+  private final WeakReference<BaseMessageManager> f;
   
   BaseMessageManager$RefreshRunnable(String paramString1, int paramInt1, int paramInt2, RefreshMessageContext paramRefreshMessageContext, String paramString2, BaseMessageManager paramBaseMessageManager)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext = paramRefreshMessageContext;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseMessageManager);
+    this.a = paramString1;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramRefreshMessageContext;
+    this.e = paramString2;
+    this.f = new WeakReference(paramBaseMessageManager);
   }
   
   public void run()
   {
-    BaseMessageManager localBaseMessageManager = (BaseMessageManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseMessageManager localBaseMessageManager = (BaseMessageManager)this.f.get();
     if (localBaseMessageManager == null) {
       return;
     }
-    IMessageFacade localIMessageFacade = localBaseMessageManager.a;
+    IMessageFacade localIMessageFacade = localBaseMessageManager.b;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("refreshMessageListHead uin = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(", type = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(", count = ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append(", context = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
+    ((StringBuilder)localObject).append(this.d);
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(", timestamp = ");
     localStringBuilder.append(System.currentTimeMillis());
     localIMessageFacade.qLogColor((String)localObject, localStringBuilder.toString());
-    localBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
-    localBaseMessageManager.a(this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
-    localBaseMessageManager.a.getFacadeHandler().post(new BaseMessageManager.RefreshRunnable.RemoveRefreshKeyRunnable(this, localBaseMessageManager));
+    localBaseMessageManager.b(this.a, this.b, this.c, this.d);
+    localBaseMessageManager.a(this.d);
+    localBaseMessageManager.b.getFacadeHandler().post(new BaseMessageManager.RefreshRunnable.RemoveRefreshKeyRunnable(this, localBaseMessageManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.RefreshRunnable
  * JD-Core Version:    0.7.0.1
  */

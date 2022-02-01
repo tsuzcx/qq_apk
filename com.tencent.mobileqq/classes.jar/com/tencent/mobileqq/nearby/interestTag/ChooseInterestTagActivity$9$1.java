@@ -12,22 +12,22 @@ class ChooseInterestTagActivity$9$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int >= 0)
+    if (this.a >= 0)
     {
-      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams()).leftMargin = ((int)(this.jdField_a_of_type_Int + ChooseInterestTagActivity.access$3100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F));
-      ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).requestLayout();
+      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.b.a).getLayoutParams()).leftMargin = ((int)(this.a + ChooseInterestTagActivity.access$3100(this.b.a) * 7.0F));
+      ChooseInterestTagActivity.access$3000(this.b.a).requestLayout();
     }
-    if (ChooseInterestTagActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getChildCount() <= 0)
+    if (ChooseInterestTagActivity.access$600(this.b.a).getChildCount() <= 0)
     {
-      ChooseInterestTagActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setVisibility(8);
-      if (ChooseInterestTagActivity.access$3200(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a))
+      ChooseInterestTagActivity.access$500(this.b.a).setVisibility(8);
+      if (ChooseInterestTagActivity.access$3200(this.b.a))
       {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams();
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.b.a).getLayoutParams();
         localLayoutParams.height = 1;
         int i;
-        if (ChooseInterestTagActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a))
+        if (ChooseInterestTagActivity.access$100(this.b.a))
         {
-          double d = ChooseInterestTagActivity.access$3100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F;
+          double d = ChooseInterestTagActivity.access$3100(this.b.a) * 7.0F;
           Double.isNaN(d);
           i = (int)(d + 0.5D);
         }
@@ -37,14 +37,14 @@ class ChooseInterestTagActivity$9$1
         }
         localLayoutParams.topMargin = i;
         localLayoutParams.bottomMargin = i;
-        ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setLayoutParams(localLayoutParams);
+        ChooseInterestTagActivity.access$3000(this.b.a).setLayoutParams(localLayoutParams);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qwallet.temp.IStructmsgApi;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
@@ -17,6 +18,18 @@ import java.util.List;
 public class StructmsgApiImpl
   implements IStructmsgApi
 {
+  public String getBirthdayReminder(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      paramMessageRecord = (MessageForStructing)paramMessageRecord;
+      if (paramMessageRecord.structingMsg != null) {
+        return paramMessageRecord.structingMsg.mBirthReminder;
+      }
+    }
+    return null;
+  }
+  
   public void handleStructMsgElement(MessageRecord paramMessageRecord)
   {
     paramMessageRecord = (MessageForStructing)paramMessageRecord;
@@ -31,10 +44,10 @@ public class StructmsgApiImpl
       }
       localObject = StructMsgElementFactory.a(0);
       ((AbsStructMsgItem)localObject).a(new StructMsgItemHr());
-      ((AbsStructMsgItem)localObject).a = paramMessageRecord.structingMsg;
+      ((AbsStructMsgItem)localObject).as = paramMessageRecord.structingMsg;
       localList.add(localObject);
       localObject = StructMsgElementFactory.a(31);
-      ((AbsStructMsgItem)localObject).a = paramMessageRecord.structingMsg;
+      ((AbsStructMsgItem)localObject).as = paramMessageRecord.structingMsg;
       localList.add(localObject);
       paramMessageRecord.saveExtInfoToExtStr("wallet_ad_msg", "1");
     }
@@ -47,20 +60,20 @@ public class StructmsgApiImpl
   
   public void notifyAdExposureCheckersDestroy()
   {
-    Iterator localIterator = StructMsgItemLayout31.b.iterator();
+    Iterator localIterator = StructMsgItemLayout31.aA.iterator();
     while (localIterator.hasNext())
     {
       AdExposureChecker localAdExposureChecker = (AdExposureChecker)localIterator.next();
       localAdExposureChecker.onActivityDestroy();
       localAdExposureChecker.setCallback(null);
     }
-    StructMsgItemLayout31.b.clear();
-    StructMsgItemLayout31.a = null;
+    StructMsgItemLayout31.aA.clear();
+    StructMsgItemLayout31.az = null;
   }
   
   public void notifyAdExposureCheckersPause()
   {
-    Iterator localIterator = StructMsgItemLayout31.b.iterator();
+    Iterator localIterator = StructMsgItemLayout31.aA.iterator();
     while (localIterator.hasNext()) {
       ((AdExposureChecker)localIterator.next()).onActivityPause();
     }
@@ -68,7 +81,7 @@ public class StructmsgApiImpl
   
   public void notifyAdExposureCheckersResume()
   {
-    Iterator localIterator = StructMsgItemLayout31.b.iterator();
+    Iterator localIterator = StructMsgItemLayout31.aA.iterator();
     while (localIterator.hasNext()) {
       ((AdExposureChecker)localIterator.next()).onActivityResume();
     }
@@ -76,7 +89,7 @@ public class StructmsgApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.StructmsgApiImpl
  * JD-Core Version:    0.7.0.1
  */

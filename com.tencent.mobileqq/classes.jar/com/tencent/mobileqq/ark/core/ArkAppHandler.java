@@ -14,12 +14,7 @@ public class ArkAppHandler
   extends BusinessHandler
 {
   protected static final String a = "com.tencent.mobileqq.ark.core.ArkAppHandler";
-  protected static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { jdField_a_of_type_JavaLangString };
-  }
+  protected static final String[] b = { a };
   
   public ArkAppHandler(AppInterface paramAppInterface)
   {
@@ -81,7 +76,7 @@ public class ArkAppHandler
       paramBusinessObserver.setTimeout(paramInt1);
     }
     if (!Cmd2HandlerMapHelper.a(paramString)) {
-      Cmd2HandlerMapHelper.a(paramString, jdField_a_of_type_ArrayOfJavaLangString);
+      Cmd2HandlerMapHelper.a(paramString, b);
     }
     super.sendPbReq(paramBusinessObserver);
   }
@@ -99,7 +94,7 @@ public class ArkAppHandler
         paramBusinessObserver.setTimeout(paramInt1);
       }
       if (!Cmd2HandlerMapHelper.a(paramString)) {
-        Cmd2HandlerMapHelper.a(paramString, jdField_a_of_type_ArrayOfJavaLangString);
+        Cmd2HandlerMapHelper.a(paramString, b);
       }
       super.sendPbReq(paramBusinessObserver);
       return true;
@@ -178,7 +173,7 @@ public class ArkAppHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppHandler
  * JD-Core Version:    0.7.0.1
  */

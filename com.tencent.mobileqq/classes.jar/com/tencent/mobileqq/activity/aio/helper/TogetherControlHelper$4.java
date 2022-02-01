@@ -14,20 +14,20 @@ class TogetherControlHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherControlManager.a("video_tab", "clk_joinframe_join", 0, TogetherControlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTogetherControlHelper).b());
+    this.a.a("video_tab", "clk_joinframe_join", 0, TogetherControlHelper.a(this.c).ae());
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherControlManager.a(2, 1, TogetherControlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTogetherControlHelper).b());
-    if ((paramDialogInterface != null) && (paramDialogInterface.h != 3))
+    paramDialogInterface = this.a.a(2, 1, TogetherControlHelper.a(this.c).ae());
+    if ((paramDialogInterface != null) && (paramDialogInterface.p != 3))
     {
-      TogetherControlHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTogetherControlHelper);
+      TogetherControlHelper.i(this.c);
       return;
     }
-    QQToast.a(TogetherControlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTogetherControlHelper), 0, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(TogetherControlHelper.h(this.c), 0, this.b, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper.4
  * JD-Core Version:    0.7.0.1
  */

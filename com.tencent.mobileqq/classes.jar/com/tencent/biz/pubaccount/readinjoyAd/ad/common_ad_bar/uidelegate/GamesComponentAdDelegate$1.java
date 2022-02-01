@@ -17,31 +17,31 @@ class GamesComponentAdDelegate$1
   
   public void onClick(View paramView)
   {
-    boolean bool = FastWeqAdUtils.e(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData);
+    boolean bool = FastWeqAdUtils.e(this.a.g);
     long l = 3010204L;
     if (!bool) {
       for (;;)
       {
-        if (FastWeqAdUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)) {
+        if (FastWeqAdUtils.c(this.a.g)) {
           l = 3010304L;
-        } else if (FastWeqAdUtils.f(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)) {
+        } else if (FastWeqAdUtils.f(this.a.g)) {
           l = 3010404L;
-        } else if (FastWeqAdUtils.g(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)) {
+        } else if (FastWeqAdUtils.g(this.a.g)) {
           l = 3010504L;
         }
       }
     }
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null))
+    if (((this.a.b instanceof Activity)) && (this.a.h != null))
     {
-      paramView = ReadInJoyAdJumpUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.adClickPos = AdClickPos.SoftAdComponent;
-      GameComponentReport.a(paramView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData), GameComponentReport.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData, l, 9L, null, "1"));
+      paramView = ReadInJoyAdJumpUtils.a(this.a.h, (Activity)this.a.b);
+      this.a.h.adClickPos = AdClickPos.SoftAdComponent;
+      GameComponentReport.a(paramView, this.a.h, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(this.a.g), GameComponentReport.a(this.a.g, l, 9L, null, "1"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.1
  * JD-Core Version:    0.7.0.1
  */

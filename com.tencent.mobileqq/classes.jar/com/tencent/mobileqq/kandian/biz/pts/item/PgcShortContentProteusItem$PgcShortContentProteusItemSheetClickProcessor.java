@@ -23,14 +23,14 @@ import org.json.JSONObject;
 class PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor
   extends ReadInJoyShareHelperV2.BaseSheetItemClickProcessor
 {
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private AbsBaseArticleInfo b;
+  private WeakReference<Activity> c;
   
   PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor(AbsBaseArticleInfo paramAbsBaseArticleInfo, WeakReference<Activity> paramWeakReference)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramWeakReference;
+    this.b = paramWeakReference;
     Object localObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = localObject;
+    this.c = localObject;
   }
   
   public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
@@ -41,11 +41,11 @@ class PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor
     Object localObject2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Boolean)
+      if (this.b.mSocialFeedInfo.t.f)
       {
         localObject1 = localObject3;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-          localObject1 = ((PGCPicInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
+        if (this.b.mSocialFeedInfo.t.a.size() > 0) {
+          localObject1 = ((PGCPicInfo)this.b.mSocialFeedInfo.t.a.get(0)).e;
         }
       }
     }
@@ -56,10 +56,10 @@ class PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor
     }
     if (paramActionSheetItem.action == 13)
     {
-      localObject2 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject2 = (Activity)this.c.get();
       if (localObject2 != null)
       {
-        localObject3 = OnBiuClickListener.a((Activity)localObject2, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+        localObject3 = OnBiuClickListener.a((Activity)localObject2, this.b);
         if (BiuBehaviour.a() != 1) {
           bool = false;
         }
@@ -92,31 +92,31 @@ class PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor
       localJSONObject.put("upline", localObject3);
       localJSONObject.put("belowline", new JSONArray());
       localJSONObject.put("shareCallBack", "");
-      localJSONObject.put("title", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("title", this.b.mSocialFeedInfo.t.c);
       localJSONObject.put("back", true);
-      localJSONObject.put("sourceName", HardCodeUtil.a(2131702884));
+      localJSONObject.put("sourceName", HardCodeUtil.a(2131900862));
       localJSONObject.put("WXShareFromQQKandian", 1);
       localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
       localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
       localJSONObject.put("src_action", "plugin");
       localJSONObject.put("src_webActionUrl", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
       localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
-      localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131718042));
-      localJSONObject.put("menu_title", HardCodeUtil.a(2131713504));
-      localJSONObject.put("share_url", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.getShareUrl());
+      localJSONObject.put("desc", ((Activity)this.c.get()).getString(2131915519));
+      localJSONObject.put("menu_title", HardCodeUtil.a(2131911054));
+      localJSONObject.put("share_url", this.b.getShareUrl());
       localJSONObject.put("keepShareUrl", 1);
       localJSONObject.put("image_url", localObject2);
-      localJSONObject.put("weibo_title", HardCodeUtil.a(2131712964));
+      localJSONObject.put("weibo_title", HardCodeUtil.a(2131910530));
       localJSONObject.put("uin", "");
       localJSONObject.put("puin", 0);
-      if (PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem) == null) {
-        PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem, new QShareUtils());
+      if (PgcShortContentProteusItem.b(this.a) == null) {
+        PgcShortContentProteusItem.a(this.a, new QShareUtils());
       }
       localObject2 = null;
       if (paramActionSheetItem.action == 72) {
         localObject2 = paramActionSheetItem.uin;
       }
-      PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem).a(localJSONObject, paramInt, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject2, paramActionSheetItem.uinType, paramActionSheetItem.label);
+      PgcShortContentProteusItem.b(this.a).a(localJSONObject, paramInt, (Activity)this.c.get(), (String)localObject2, paramActionSheetItem.uinType, paramActionSheetItem.label);
     }
     catch (NullPointerException localNullPointerException2)
     {
@@ -131,7 +131,7 @@ class PgcShortContentProteusItem$PgcShortContentProteusItemSheetClickProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.PgcShortContentProteusItemSheetClickProcessor
  * JD-Core Version:    0.7.0.1
  */

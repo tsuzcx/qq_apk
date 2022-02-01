@@ -18,15 +18,15 @@ class ReadInJoyWebDataManager$5$1
       this.a.this$0.a(this.a.b, Integer.toString(ReadInJoyWebDataManager.b));
       try
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoReadInJoyWebDataManager$HttpFetchBizCallback != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoReadInJoyWebDataManager$HttpFetchBizCallback instanceof ReadInJoyWebDataManager.HttpFetchBizCallback))) {
-          this.a.jdField_a_of_type_ComTencentMobileqqKandianBizVideoReadInJoyWebDataManager$HttpFetchBizCallback.a(paramJSONObject);
+        if ((this.a.c != null) && ((this.a.c instanceof ReadInJoyWebDataManager.HttpFetchBizCallback))) {
+          this.a.c.a(paramJSONObject);
         }
         paramBundle = paramJSONObject.toString();
         ReadInJoyWebDataManager.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
+        if (this.a.d != null)
         {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
+          this.a.d.put("data", paramBundle);
+          this.a.this$0.a(this.a.a, this.a.d.toString(), "", this.a.d);
         }
       }
       catch (JSONException paramBundle)
@@ -58,7 +58,7 @@ class ReadInJoyWebDataManager$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager.5.1
  * JD-Core Version:    0.7.0.1
  */

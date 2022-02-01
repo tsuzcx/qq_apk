@@ -13,31 +13,21 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class NewMessageYellowBar
   extends FrameLayout
 {
-  protected int a;
-  protected AlphaAnimation a;
-  protected AnimationSet a;
-  protected TranslateAnimation a;
-  protected TextView a;
+  protected TextView a = null;
+  protected int b = 0;
+  protected TranslateAnimation c = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
+  protected AlphaAnimation d = new AlphaAnimation(1.0F, 0.0F);
+  protected AnimationSet e = new AnimationSet(false);
   
   public NewMessageYellowBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
     a(paramContext, null);
   }
   
   public NewMessageYellowBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
     a(paramContext, paramAttributeSet);
   }
   
@@ -45,10 +35,10 @@ public class NewMessageYellowBar
   {
     if (paramInt2 != 0)
     {
-      if (paramInt2 <= this.jdField_a_of_type_Int) {
+      if (paramInt2 <= this.b) {
         return;
       }
-      this.jdField_a_of_type_Int = paramInt2;
+      this.b = paramInt2;
     }
     if (paramInt1 > 0)
     {
@@ -57,24 +47,24 @@ public class NewMessageYellowBar
       return;
     }
     setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131707530));
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
-    if (!this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.a.setText(HardCodeUtil.a(2131905345));
+    this.a.setAlpha(0.0F);
+    if (!this.e.hasEnded()) {
+      this.a.clearAnimation();
     }
   }
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131561842, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381309));
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(1000L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(1000L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(3000L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new NewMessageYellowBar.1(this));
+    LayoutInflater.from(getContext()).inflate(2131628221, this, true);
+    this.a = ((TextView)findViewById(2131450361));
+    this.c.setDuration(1000L);
+    this.d.setStartOffset(1000L);
+    this.d.setDuration(3000L);
+    this.e.addAnimation(this.c);
+    this.e.addAnimation(this.d);
+    this.e.setFillAfter(true);
+    this.e.setAnimationListener(new NewMessageYellowBar.1(this));
     setVisibility(8);
   }
 }

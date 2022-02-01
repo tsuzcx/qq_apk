@@ -13,21 +13,21 @@ public abstract class ArkQQAPIIPCModule$MethodGetPSKeyAsync
     this.a = paramString;
   }
   
-  public Bundle a()
+  public String a()
+  {
+    return "QQ.GetPSKeyAsync";
+  }
+  
+  public Bundle b()
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("domain", this.a);
     return localBundle;
   }
-  
-  public String a()
-  {
-    return "QQ.GetPSKeyAsync";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.MethodGetPSKeyAsync
  * JD-Core Version:    0.7.0.1
  */

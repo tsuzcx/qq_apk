@@ -14,13 +14,13 @@ import java.util.List;
 public class PluginLoaderService
   implements IPluginLoaderService
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IPluginLoaderServiceAdapter jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginLoaderServiceAdapter;
-  private List<IPlugin> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private IPluginLoaderServiceAdapter b;
+  private List<IPlugin> c = new ArrayList();
   
   private <T> void a(IPlugin paramIPlugin, Class<T> paramClass, String paramString, ClassLoaderListener paramClassLoaderListener)
   {
-    if (paramIPlugin.a())
+    if (paramIPlugin.l())
     {
       LogUtil.b("PluginLoaderService", "load: the plugin has been installed.", new Object[0]);
       b(paramIPlugin, paramClass, paramString, paramClassLoaderListener);
@@ -37,7 +37,7 @@ public class PluginLoaderService
       LogUtil.b("PluginLoaderService", "notifyLoadClassCompile: the listener is null", new Object[0]);
       return;
     }
-    if ((paramIPlugin != null) && (paramIPlugin.a())) {
+    if ((paramIPlugin != null) && (paramIPlugin.l())) {
       try
       {
         paramClass = paramIPlugin.a(paramClass, paramString);
@@ -59,7 +59,7 @@ public class PluginLoaderService
         }
         paramString = String.format("notifyLoadClassCompile: load class [%s] success", new Object[] { paramString });
         LogUtil.b("PluginLoaderService", paramString, new Object[0]);
-        paramClassLoaderListener.a(paramClass, paramIPlugin.a(this.jdField_a_of_type_AndroidContentContext));
+        paramClassLoaderListener.a(paramClass, paramIPlugin.a(this.a));
         DataReport.q(paramString);
         return;
       }
@@ -91,25 +91,25 @@ public class PluginLoaderService
   
   public void a(IPluginLoaderServiceAdapter paramIPluginLoaderServiceAdapter)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginLoaderServiceAdapter = paramIPluginLoaderServiceAdapter;
-    ThreadManagerExecutor.a(paramIPluginLoaderServiceAdapter.a());
-    LogUtil.a("PluginLoaderService", paramIPluginLoaderServiceAdapter.a());
-    DataReport.a(paramIPluginLoaderServiceAdapter.a());
+    this.b = paramIPluginLoaderServiceAdapter;
+    ThreadManagerExecutor.a(paramIPluginLoaderServiceAdapter.b());
+    LogUtil.a("PluginLoaderService", paramIPluginLoaderServiceAdapter.d());
+    DataReport.a(paramIPluginLoaderServiceAdapter.c());
     Downloader.a(paramIPluginLoaderServiceAdapter.a());
     paramIPluginLoaderServiceAdapter = new StringBuilder();
     paramIPluginLoaderServiceAdapter.append("init: need to install plugin size ");
-    paramIPluginLoaderServiceAdapter.append(this.jdField_a_of_type_JavaUtilList.size());
+    paramIPluginLoaderServiceAdapter.append(this.c.size());
     LogUtil.b("PluginLoaderService", paramIPluginLoaderServiceAdapter.toString(), new Object[0]);
   }
   
   public <T> void a(Class<T> paramClass, String paramString, ClassLoaderListener paramClassLoaderListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.c.size() == 0)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginLoaderServiceAdapter.a(new PluginLoaderService.1(this, paramClass, paramString, paramClassLoaderListener));
+      this.b.a(new PluginLoaderService.1(this, paramClass, paramString, paramClassLoaderListener));
       return;
     }
-    IPlugin localIPlugin = (IPlugin)this.jdField_a_of_type_JavaUtilList.get(0);
+    IPlugin localIPlugin = (IPlugin)this.c.get(0);
     if (localIPlugin == null)
     {
       LogUtil.b("PluginLoaderService", "load: the default  plugin is null", new Object[0]);
@@ -117,23 +117,23 @@ public class PluginLoaderService
     }
     else
     {
-      LogUtil.b("PluginLoaderService", "load: the default plugin[%s] load class %s", new Object[] { localIPlugin.c(), paramString });
+      LogUtil.b("PluginLoaderService", "load: the default plugin[%s] load class %s", new Object[] { localIPlugin.e(), paramString });
     }
     a(localIPlugin, paramClass, paramString, paramClassLoaderListener);
   }
   
   public <T> void a(String paramString1, Class<T> paramClass, String paramString2, ClassLoaderListener paramClassLoaderListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.c.size() == 0)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginLoaderServiceAdapter.a(new PluginLoaderService.2(this, paramString1, paramClass, paramString2, paramClassLoaderListener));
+      this.b.a(new PluginLoaderService.2(this, paramString1, paramClass, paramString2, paramClassLoaderListener));
       return;
     }
     IPlugin localIPlugin = null;
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.c.size())
     {
-      localIPlugin = (IPlugin)this.jdField_a_of_type_JavaUtilList.get(i);
+      localIPlugin = (IPlugin)this.c.get(i);
       i += 1;
     }
     if (localIPlugin == null)
@@ -151,19 +151,19 @@ public class PluginLoaderService
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidContentContext == null;
+    return this.a == null;
   }
   
   public void clearEventOutput() {}
   
   public void onCreate(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.a = null;
     LogUtil.a();
     Downloader.a();
     DataReport.a();
@@ -171,7 +171,7 @@ public class PluginLoaderService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginLoaderService
  * JD-Core Version:    0.7.0.1
  */

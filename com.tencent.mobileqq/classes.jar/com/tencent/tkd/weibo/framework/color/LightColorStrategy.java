@@ -9,12 +9,12 @@ public final class LightColorStrategy
   implements IComponentColorStrategy
 {
   private final int a = R.color.b;
-  private final int b = R.color.p;
-  private final int c = R.color.g;
-  private final int d = R.color.e;
-  private final int e = R.color.l;
-  private final int f = R.color.n;
-  private final int g = R.color.j;
+  private final int b = R.color.o;
+  private final int c = R.color.f;
+  private final int d = R.color.d;
+  private final int e = R.color.k;
+  private final int f = R.color.m;
+  private final int g = R.color.i;
   private final int h = R.drawable.b;
   
   public int a()
@@ -49,7 +49,7 @@ public final class LightColorStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.color.LightColorStrategy
  * JD-Core Version:    0.7.0.1
  */

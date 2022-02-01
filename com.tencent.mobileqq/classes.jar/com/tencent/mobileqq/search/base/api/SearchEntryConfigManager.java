@@ -25,10 +25,10 @@ import org.json.JSONObject;
 
 public class SearchEntryConfigManager
 {
-  public static int a = 8;
-  public static String a = "";
   public static boolean a = false;
-  public static String b = "Hot_word";
+  public static String b = "";
+  public static String c = "Hot_word";
+  public static int d = 8;
   
   public static int a()
   {
@@ -44,7 +44,7 @@ public class SearchEntryConfigManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("search_net_config_version_code");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(AppSetting.f());
+    localStringBuilder.append(AppSetting.h());
     return paramContext.getInt(localStringBuilder.toString(), -1);
   }
   
@@ -63,28 +63,6 @@ public class SearchEntryConfigManager
     return i;
   }
   
-  public static String a()
-  {
-    String str = ((AppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).getCurrentAccountUin();
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pref_net_search_function_title");
-    localStringBuilder.append(str);
-    return localSharedPreferences.getString(localStringBuilder.toString(), HardCodeUtil.a(2131713547));
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = "";
-    }
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("net_search_cell_summary");
-    localStringBuilder.append(paramString);
-    return paramContext.getString(localStringBuilder.toString(), "");
-  }
-  
   public static void a(Context paramContext, int paramInt, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -94,7 +72,7 @@ public class SearchEntryConfigManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("search_net_config_version_code");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(AppSetting.f());
+    localStringBuilder.append(AppSetting.h());
     paramContext.putInt(localStringBuilder.toString(), paramInt);
     paramContext.commit();
   }
@@ -150,7 +128,7 @@ public class SearchEntryConfigManager
             int k = ((JSONObject)localObject1).optInt("kFTSNativeFunctionMaxNum");
             int m = ((JSONObject)localObject1).optInt("kDynamicNeedSearchNative");
             int n = ((JSONObject)localObject1).optInt("kFTSNativePubAccountMaxNum");
-            paramConfig = ((JSONObject)localObject1).optString("kFTSNativeFunctionTitleName", HardCodeUtil.a(2131713548));
+            paramConfig = ((JSONObject)localObject1).optString("kFTSNativeFunctionTitleName", HardCodeUtil.a(2131911094));
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("net_search_cell_summary");
             localStringBuilder.append(str);
@@ -353,30 +331,6 @@ public class SearchEntryConfigManager
     return bool;
   }
   
-  public static boolean a(AppInterface paramAppInterface, int paramInt, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
-    if (!paramBoolean)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("search_discovery_sp_prefixrefresh_search_model_list");
-      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-      localStringBuilder.append("_");
-      localStringBuilder.append(paramInt);
-      paramBoolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
-      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "getNeedRefreshModelList");
-      return paramBoolean;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("search_discovery_sp_prefix_unifyrefresh_search_model_list");
-    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramInt);
-    paramBoolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
-    QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "getNeedRefreshModelList");
-    return paramBoolean;
-  }
-  
   public static boolean a(AppInterface paramAppInterface, String paramString, int paramInt)
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
@@ -465,27 +419,57 @@ public class SearchEntryConfigManager
     return localObject1;
   }
   
-  public static int b()
+  public static String b()
   {
-    if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isHippyEngineOn()) {
-      return 7;
-    }
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
-    if (localAladdinConfig != null)
-    {
-      b = localAladdinConfig.getString("SBWord_Source", "Hot_word");
-      if (TextUtils.equals(b, "Recom_word")) {
-        return 7;
-      }
-    }
-    return 1;
+    String str = ((AppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pref_net_search_function_title");
+    localStringBuilder.append(str);
+    return localSharedPreferences.getString(localStringBuilder.toString(), HardCodeUtil.a(2131911093));
   }
   
-  public static String b()
+  public static String b(Context paramContext, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = "";
+    }
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("net_search_cell_summary");
+    localStringBuilder.append(paramString);
+    return paramContext.getString(localStringBuilder.toString(), "");
+  }
+  
+  public static boolean b(AppInterface paramAppInterface, int paramInt, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ);
+    if (!paramBoolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("search_discovery_sp_prefixrefresh_search_model_list");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      paramBoolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
+      QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_old", 2, "getNeedRefreshModelList");
+      return paramBoolean;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("search_discovery_sp_prefix_unifyrefresh_search_model_list");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    paramBoolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
+    QLog.d("Q.uniteSearch.SearchEntryConfigManager818searchProto_new", 2, "getNeedRefreshModelList");
+    return paramBoolean;
+  }
+  
+  public static String c()
   {
     Object localObject3 = (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
     Object localObject2 = ((AppInterface)localObject3).getCurrentAccountUin();
-    Object localObject1 = HardCodeUtil.a(2131718588);
+    Object localObject1 = HardCodeUtil.a(2131916089);
     if (TextUtils.isEmpty(((ISearchConfigUtilFetcher)QRoute.api(ISearchConfigUtilFetcher.class)).getSFtsSearchBarWording()))
     {
       if (((ISearchConfigUtilFetcher)QRoute.api(ISearchConfigUtilFetcher.class)).isSearchEnhanceEnable(((AppInterface)localObject3).getCurrentAccountUin()))
@@ -504,7 +488,7 @@ public class SearchEntryConfigManager
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           ((ISearchConfigUtilFetcher)QRoute.api(ISearchConfigUtilFetcher.class)).setSFtsSearchBarWording((String)localObject1);
         } else {
-          localObject1 = HardCodeUtil.a(2131718588);
+          localObject1 = HardCodeUtil.a(2131916089);
         }
       }
     }
@@ -528,10 +512,26 @@ public class SearchEntryConfigManager
     }
     return localObject1;
   }
+  
+  public static int d()
+  {
+    if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isHippyEngineOn()) {
+      return 7;
+    }
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
+    if (localAladdinConfig != null)
+    {
+      c = localAladdinConfig.getString("SBWord_Source", "Hot_word");
+      if (TextUtils.equals(c, "Recom_word")) {
+        return 7;
+      }
+    }
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.api.SearchEntryConfigManager
  * JD-Core Version:    0.7.0.1
  */

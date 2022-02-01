@@ -16,7 +16,7 @@ public class TroopFileVideoOnlinePlayManager
     paramString4.append("/ftn_handler/");
     paramString4.append(paramString2);
     paramString4.append("/?fname=");
-    paramString4.append(HexUtil.String2HexString(paramString3));
+    paramString4.append(HexUtil.string2HexString(paramString3));
     paramString4.append(paramString5);
     return paramString4.toString();
   }
@@ -29,13 +29,13 @@ public class TroopFileVideoOnlinePlayManager
     oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
     localReqBody.uint64_group_code.set(paramLong);
     localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("8.7.0");
+    localReqBody.str_version.set("8.8.17");
     ProtoUtils.b(paramQQAppInterface, new TroopFileVideoOnlinePlayManager.1(paramTroopFileWhiteListCallback), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileView.TroopFileVideoOnlinePlayManager
  * JD-Core Version:    0.7.0.1
  */

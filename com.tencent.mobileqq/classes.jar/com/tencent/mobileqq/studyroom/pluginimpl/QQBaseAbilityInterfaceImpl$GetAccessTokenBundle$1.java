@@ -17,8 +17,8 @@ class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1
     {
       paramString = new Bundle();
       paramString.putString("authid", this.val$loginKeyHelper.getAccountInfo().b);
-      paramString.putString("authKey", this.val$loginKeyHelper.getAccountInfo().jdField_a_of_type_JavaLangString);
-      paramString.putLong("accountUpdateTime", this.val$loginKeyHelper.getAccountInfo().jdField_a_of_type_Long);
+      paramString.putString("authKey", this.val$loginKeyHelper.getAccountInfo().a);
+      paramString.putLong("accountUpdateTime", this.val$loginKeyHelper.getAccountInfo().e);
       paramString.putString("payToken", this.val$loginKeyHelper.getAccountInfo().c);
       Bundle localBundle = new Bundle();
       localBundle.putBundle("data", paramString);
@@ -38,7 +38,7 @@ class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1
  * JD-Core Version:    0.7.0.1
  */

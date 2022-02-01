@@ -60,14 +60,14 @@ public class HotChatPostListAdapter
       ViewPluginManager localViewPluginManager = this.mViewPluginManager;
       if (localViewPluginManager != null)
       {
-        localViewPluginManager.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
+        localViewPluginManager.b("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
         this.mViewPluginManager = null;
       }
     }
     else
     {
-      HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-      HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
+      HotChatPostItemView.n.clear();
+      HotChatPostItemView.o.clear();
     }
   }
   
@@ -86,7 +86,7 @@ public class HotChatPostListAdapter
     if (localArrayList == null) {
       return null;
     }
-    return (JSONObject)localArrayList.get(paramInt);
+    return localArrayList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -288,7 +288,7 @@ public class HotChatPostListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.adapter.HotChatPostListAdapter
  * JD-Core Version:    0.7.0.1
  */

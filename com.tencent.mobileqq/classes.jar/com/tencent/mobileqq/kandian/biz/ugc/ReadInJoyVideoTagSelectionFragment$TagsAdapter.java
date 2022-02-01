@@ -20,15 +20,6 @@ class ReadInJoyVideoTagSelectionFragment$TagsAdapter
     super(paramContext, paramInt);
   }
   
-  public void a(@Nullable TagInfo paramTagInfo)
-  {
-    if (!this.a.contains(paramTagInfo))
-    {
-      this.a.add(paramTagInfo);
-      super.add(paramTagInfo);
-    }
-  }
-  
   public void a(TagInfo... paramVarArgs)
   {
     addAll(Arrays.asList(paramVarArgs));
@@ -44,6 +35,15 @@ class ReadInJoyVideoTagSelectionFragment$TagsAdapter
   
   public void b(@Nullable TagInfo paramTagInfo)
   {
+    if (!this.a.contains(paramTagInfo))
+    {
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
+    }
+  }
+  
+  public void c(@Nullable TagInfo paramTagInfo)
+  {
     this.a.remove(paramTagInfo);
     super.remove(paramTagInfo);
   }
@@ -56,7 +56,7 @@ class ReadInJoyVideoTagSelectionFragment$TagsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyVideoTagSelectionFragment.TagsAdapter
  * JD-Core Version:    0.7.0.1
  */

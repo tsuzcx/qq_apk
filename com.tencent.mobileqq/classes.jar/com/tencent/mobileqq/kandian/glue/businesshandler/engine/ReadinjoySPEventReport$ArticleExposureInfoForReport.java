@@ -5,22 +5,22 @@ import android.support.annotation.NonNull;
 class ReadinjoySPEventReport$ArticleExposureInfoForReport
   implements Comparable<ArticleExposureInfoForReport>
 {
-  public float a;
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
   public long b;
-  public String b = "nil";
-  public boolean b;
-  public long c = 0L;
+  public long c;
+  public float d;
+  public long e = 0L;
+  public int f;
+  public boolean g;
+  public boolean h;
+  public String i = "nil";
   
   private ReadinjoySPEventReport$ArticleExposureInfoForReport(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
   
   public int a(ArticleExposureInfoForReport paramArticleExposureInfoForReport)
   {
-    long l1 = paramArticleExposureInfoForReport.jdField_a_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
+    long l1 = paramArticleExposureInfoForReport.b;
+    long l2 = this.b;
     if (l1 > l2) {
       return 1;
     }
@@ -38,7 +38,7 @@ class ReadinjoySPEventReport$ArticleExposureInfoForReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ArticleExposureInfoForReport
  * JD-Core Version:    0.7.0.1
  */

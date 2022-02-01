@@ -7,7 +7,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.j.c;
+import com.tencent.mobileqq.msf.core.d.j.c;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -71,7 +71,7 @@ class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.j
  * JD-Core Version:    0.7.0.1
  */

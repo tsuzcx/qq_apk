@@ -19,9 +19,9 @@ class AsyncExitTask$2
     ((StringBuilder)???).append("asyncExitRoom.quitRoom end. quitResult = ");
     ((StringBuilder)???).append(AsyncExitTask.a(this.this$0));
     QLog.d("AsyncExitTask", 1, ((StringBuilder)???).toString());
-    synchronized (AsyncExitTask.a(this.this$0))
+    synchronized (AsyncExitTask.b(this.this$0))
     {
-      AsyncExitTask.a(this.this$0).notify();
+      AsyncExitTask.b(this.this$0).notify();
       return;
     }
   }

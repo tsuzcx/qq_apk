@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/aio_face_favorite_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@null" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0sp" android:textColor="#ff777777" android:gravity="center" android:id="@id/jmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/mel" android:layout_below="@id/aio_face_favorite_default" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<com.tencent.biz.qqcircle.widgets.QCircleRocketView android:id="@id/p4k" android:layout_width="140.0dip" android:layout_height="210.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

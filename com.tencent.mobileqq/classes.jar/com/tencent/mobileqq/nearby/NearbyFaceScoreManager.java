@@ -47,7 +47,7 @@ public class NearbyFaceScoreManager
   {
     cmd0x938.ReqBody localReqBody = new cmd0x938.ReqBody();
     cmd0x938.CommParamReq localCommParamReq = new cmd0x938.CommParamReq();
-    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     localCommParamReq.uint32_platform.set(1);
     localReqBody.msg_comm_param.set(localCommParamReq);
     if (QLog.isColorLevel()) {
@@ -60,7 +60,7 @@ public class NearbyFaceScoreManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager
  * JD-Core Version:    0.7.0.1
  */

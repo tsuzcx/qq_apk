@@ -35,56 +35,48 @@ import java.util.Arrays;
 public class RotateCircleImageView
   extends ImageView
 {
-  private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private static final SparseArray<RotateCircleImageView.BorderStyle> jdField_a_of_type_AndroidUtilSparseArray = new RotateCircleImageView.1(2);
-  private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
-  private static final int jdField_e_of_type_Int;
-  private static final int f;
-  private static final int g;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private DashPathEffect jdField_a_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(new float[] { 10.0F, 10.0F }, 0.0F);
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private RotateCircleImageView.BorderStyle jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle = RotateCircleImageView.BorderStyle.STILL;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = { g };
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private ValueAnimator jdField_c_of_type_AndroidAnimationValueAnimator;
-  private final Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private ValueAnimator jdField_d_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_d_of_type_Boolean;
-  private ValueAnimator jdField_e_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-  private int h = 1200;
-  private int i = 2000;
-  private int j = jdField_e_of_type_Int;
-  private int k = f;
-  private int l = 0;
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-    jdField_e_of_type_Int = Color.parseColor("#4799FE");
-    f = Color.parseColor("#19D7FD");
-    g = jdField_e_of_type_Int;
-  }
+  private static final ImageView.ScaleType a = ImageView.ScaleType.CENTER_CROP;
+  private static final Bitmap.Config b = Bitmap.Config.ARGB_8888;
+  private static final int u = Color.parseColor("#4799FE");
+  private static final int v = Color.parseColor("#19D7FD");
+  private static final int w = u;
+  private static final SparseArray<RotateCircleImageView.BorderStyle> x = new RotateCircleImageView.1(2);
+  private ValueAnimator A;
+  private int B = 1200;
+  private int C = 2000;
+  private int D = u;
+  private int E = v;
+  private ValueAnimator F;
+  private ValueAnimator G;
+  private float H;
+  private Paint I = new Paint();
+  private ValueAnimator J;
+  private ValueAnimator K;
+  private float L;
+  private Paint M = new Paint();
+  private DashPathEffect N = new DashPathEffect(new float[] { 10.0F, 10.0F }, 0.0F);
+  private int[] O = { w };
+  private int P = 0;
+  private final RectF c = new RectF();
+  private final RectF d = new RectF();
+  private final Matrix e = new Matrix();
+  private final Paint f = new Paint();
+  private final Paint g = new Paint();
+  private final Paint h = new Paint();
+  private int i = 0;
+  private int j = 0;
+  private Bitmap k;
+  private BitmapShader l;
+  private int m;
+  private int n;
+  private float o;
+  private ColorFilter p;
+  private boolean q;
+  private boolean r;
+  private boolean s;
+  private boolean t;
+  private RotateCircleImageView.BorderStyle y = RotateCircleImageView.BorderStyle.STILL;
+  private float z;
   
   public RotateCircleImageView(Context paramContext)
   {
@@ -103,18 +95,18 @@ public class RotateCircleImageView
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RotateCircleImageView, paramInt, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(8, 0);
-      this.jdField_c_of_type_Boolean = paramContext.getBoolean(1, false);
-      this.jdField_b_of_type_Int = paramContext.getColor(9, 0);
-      this.l = paramContext.getDimensionPixelSize(2, 0);
-      this.j = paramContext.getColor(7, jdField_e_of_type_Int);
-      this.k = paramContext.getColor(7, f);
-      this.i = paramContext.getInt(5, 2000);
-      this.h = paramContext.getInt(3, 1200);
-      setBorderStyle((RotateCircleImageView.BorderStyle)jdField_a_of_type_AndroidUtilSparseArray.get(paramContext.getInt(4, RotateCircleImageView.BorderStyle.STILL.ordinal())));
+      this.i = paramContext.getDimensionPixelSize(8, 0);
+      this.s = paramContext.getBoolean(1, false);
+      this.j = paramContext.getColor(9, 0);
+      this.P = paramContext.getDimensionPixelSize(2, 0);
+      this.D = paramContext.getColor(7, u);
+      this.E = paramContext.getColor(7, v);
+      this.C = paramContext.getInt(5, 2000);
+      this.B = paramContext.getInt(3, 1200);
+      setBorderStyle((RotateCircleImageView.BorderStyle)x.get(paramContext.getInt(4, RotateCircleImageView.BorderStyle.STILL.ordinal())));
       paramInt = paramContext.getResourceId(0, 0);
       if (paramInt != 0) {
-        this.jdField_a_of_type_ArrayOfInt = paramContext.getResources().getIntArray(paramInt);
+        this.O = paramContext.getResources().getIntArray(paramInt);
       }
       paramContext.recycle();
       a();
@@ -138,9 +130,9 @@ public class RotateCircleImageView
     {
       Bitmap localBitmap;
       if ((paramDrawable instanceof ColorDrawable)) {
-        localBitmap = Bitmap.createBitmap(2, 2, jdField_a_of_type_AndroidGraphicsBitmap$Config);
+        localBitmap = Bitmap.createBitmap(2, 2, b);
       } else {
-        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config);
+        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), b);
       }
       Canvas localCanvas = new Canvas(localBitmap);
       paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
@@ -154,262 +146,282 @@ public class RotateCircleImageView
     return null;
   }
   
-  private RectF a()
-  {
-    int m = getWidth() - getPaddingLeft() - getPaddingRight();
-    int n = getHeight() - getPaddingTop() - getPaddingBottom();
-    int i1 = Math.min(m, n);
-    float f1 = getPaddingLeft() + (m - i1) / 2.0F;
-    float f2 = getPaddingTop() + (n - i1) / 2.0F;
-    float f3 = i1;
-    return new RectF(f1, f2, f1 + f3, f3 + f2);
-  }
-  
   private void a()
   {
-    super.setScaleType(jdField_a_of_type_AndroidWidgetImageView$ScaleType);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean)
+    super.setScaleType(a);
+    this.q = true;
+    if (this.r)
     {
       d();
-      this.jdField_b_of_type_Boolean = false;
+      this.r = false;
     }
   }
   
   private void a(Canvas paramCanvas)
   {
-    paramCanvas.rotate(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY());
-    paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, this.jdField_c_of_type_Float, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, this.jdField_d_of_type_Float, false, this.jdField_e_of_type_AndroidGraphicsPaint);
+    paramCanvas.rotate(this.z, this.d.centerX(), this.d.centerY());
+    paramCanvas.drawArc(this.d, 270.0F, this.H, false, this.I);
+    paramCanvas.drawArc(this.d, 270.0F, this.L, false, this.M);
   }
   
   private void b()
   {
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Paint localPaint = this.f;
     if (localPaint != null) {
-      localPaint.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+      localPaint.setColorFilter(this.p);
     }
   }
   
   private void b(Canvas paramCanvas)
   {
-    int m = 0;
+    int i1 = 0;
     for (;;)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      if (m >= arrayOfInt.length) {
+      int[] arrayOfInt = this.O;
+      if (i1 >= arrayOfInt.length) {
         break;
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(arrayOfInt[m]);
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      this.g.setColor(arrayOfInt[i1]);
+      arrayOfInt = this.O;
       float f2 = 360.0F / arrayOfInt.length;
-      float f3 = m;
+      float f3 = i1;
       float f1;
       if (arrayOfInt.length > 1) {
         f1 = 6.0F;
       } else {
         f1 = 0.0F;
       }
-      paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, f2 * f3 + 270.0F, 360.0F / this.jdField_a_of_type_ArrayOfInt.length - f1, false, this.jdField_b_of_type_AndroidGraphicsPaint);
-      m += 1;
+      paramCanvas.drawArc(this.d, f2 * f3 + 270.0F, 360.0F / this.O.length - f1, false, this.g);
+      i1 += 1;
     }
   }
   
   private void c()
   {
-    if (this.jdField_d_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    if (this.t) {
+      this.k = null;
     } else {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(getDrawable());
+      this.k = a(getDrawable());
     }
     d();
   }
   
   private void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.q)
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.r = true;
       return;
     }
     if ((getWidth() == 0) && (getHeight() == 0)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.k != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.f.setAntiAlias(true);
+      this.l = new BitmapShader(this.k, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      this.f.setShader(this.l);
+      this.n = this.k.getHeight();
+      this.m = this.k.getWidth();
     }
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(a());
-    Object localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
-    int m = this.jdField_a_of_type_Int;
-    ((RectF)localObject).inset(m / 2.0F, m / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(a());
-    m = this.l;
-    if (m > 0) {
-      this.jdField_a_of_type_AndroidGraphicsRectF.inset(m, m);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setAntiAlias(true);
+    this.g.setStrokeWidth(this.i);
+    this.g.setStrokeCap(Paint.Cap.ROUND);
+    this.h.setStyle(Paint.Style.FILL);
+    this.h.setAntiAlias(true);
+    this.h.setColor(this.j);
+    this.d.set(e());
+    Object localObject = this.d;
+    int i1 = this.i;
+    ((RectF)localObject).inset(i1 / 2.0F, i1 / 2.0F);
+    this.c.set(e());
+    i1 = this.P;
+    if (i1 > 0) {
+      this.c.inset(i1, i1);
     }
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.s)
     {
-      m = this.jdField_a_of_type_Int;
-      if (m > 0) {
-        this.jdField_a_of_type_AndroidGraphicsRectF.inset(m - 1.0F, m - 1.0F);
+      i1 = this.i;
+      if (i1 > 0) {
+        this.c.inset(i1 - 1.0F, i1 - 1.0F);
       }
     }
-    this.jdField_a_of_type_Float = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F);
-    localObject = new LinearGradient(0.0F, 0.0F, getWidth(), getHeight(), this.j, this.k, Shader.TileMode.CLAMP);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setShader((Shader)localObject);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_e_of_type_AndroidGraphicsPaint = new Paint(this.jdField_d_of_type_AndroidGraphicsPaint);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setPathEffect(this.jdField_a_of_type_AndroidGraphicsDashPathEffect);
+    this.o = Math.min(this.c.height() / 2.0F, this.c.width() / 2.0F);
+    localObject = new LinearGradient(0.0F, 0.0F, getWidth(), getHeight(), this.D, this.E, Shader.TileMode.CLAMP);
+    this.I.setShader((Shader)localObject);
+    this.I.setStyle(Paint.Style.STROKE);
+    this.I.setAntiAlias(true);
+    this.I.setStrokeWidth(this.i);
+    this.I.setStrokeCap(Paint.Cap.ROUND);
+    this.M = new Paint(this.I);
+    this.M.setPathEffect(this.N);
     b();
-    e();
+    f();
     invalidate();
   }
   
-  private void e()
+  private RectF e()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(null);
-    float f1 = this.jdField_c_of_type_Int;
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-    float f4 = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-    float f5 = this.jdField_d_of_type_Int;
-    float f3 = 0.0F;
-    if (f1 * f2 > f4 * f5)
-    {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_d_of_type_Int;
-      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_c_of_type_Int * f1) * 0.5F;
-    }
-    else
-    {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_c_of_type_Int;
-      f3 = (this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.jdField_d_of_type_Int * f1) * 0.5F;
-      f2 = 0.0F;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.left, (int)(f3 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.top);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    int i1 = getWidth() - getPaddingLeft() - getPaddingRight();
+    int i2 = getHeight() - getPaddingTop() - getPaddingBottom();
+    int i3 = Math.min(i1, i2);
+    float f1 = getPaddingLeft() + (i1 - i3) / 2.0F;
+    float f2 = getPaddingTop() + (i2 - i3) / 2.0F;
+    float f3 = i3;
+    return new RectF(f1, f2, f1 + f3, f3 + f2);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotateCircleImageView.2(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.h);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+    if (this.k == null) {
+      return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
+    this.e.set(null);
+    float f1 = this.m;
+    float f2 = this.c.height();
+    float f4 = this.c.width();
+    float f5 = this.n;
+    float f3 = 0.0F;
+    if (f1 * f2 > f4 * f5)
     {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 216.0F });
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotateCircleImageView.3(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new RotateCircleImageView.4(this));
+      f1 = this.c.height() / this.n;
+      f2 = (this.c.width() - this.m * f1) * 0.5F;
     }
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator == null)
+    else
     {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 216.0F, 36.0F });
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotateCircleImageView.5(this));
+      f1 = this.c.width() / this.m;
+      f3 = (this.c.height() - this.n * f1) * 0.5F;
+      f2 = 0.0F;
     }
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-    if (this.jdField_d_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotateCircleImageView.6(this));
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.addListener(new RotateCircleImageView.7(this));
-    }
-    if (this.jdField_e_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_e_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 360.0F, 108.0F });
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RotateCircleImageView.8(this));
-    }
-    this.jdField_d_of_type_AndroidAnimationValueAnimator.start();
+    this.e.setScale(f1, f1);
+    this.e.postTranslate((int)(f2 + 0.5F) + this.c.left, (int)(f3 + 0.5F) + this.c.top);
+    this.l.setLocalMatrix(this.e);
   }
   
   private void g()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (this.A == null)
+    {
+      this.A = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
+      this.A.addUpdateListener(new RotateCircleImageView.2(this));
+      this.A.setInterpolator(new LinearInterpolator());
+      this.A.setDuration(this.B);
+      this.A.setRepeatCount(-1);
+    }
+    this.A.start();
+    if (this.F == null)
+    {
+      this.F = ValueAnimator.ofFloat(new float[] { 0.0F, 216.0F });
+      this.F.setDuration(this.C);
+      this.F.setRepeatCount(0);
+      this.F.addUpdateListener(new RotateCircleImageView.3(this));
+      this.F.addListener(new RotateCircleImageView.4(this));
+    }
+    if (this.G == null)
+    {
+      this.G = ValueAnimator.ofFloat(new float[] { 216.0F, 36.0F });
+      this.G.setDuration(this.C);
+      this.G.setRepeatCount(-1);
+      this.G.setRepeatMode(2);
+      this.G.addUpdateListener(new RotateCircleImageView.5(this));
+    }
+    this.F.start();
+    if (this.J == null)
+    {
+      this.J = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
+      this.J.setInterpolator(new LinearInterpolator());
+      this.J.setDuration(this.C);
+      this.J.setRepeatCount(0);
+      this.J.addUpdateListener(new RotateCircleImageView.6(this));
+      this.J.addListener(new RotateCircleImageView.7(this));
+    }
+    if (this.K == null)
+    {
+      this.K = ValueAnimator.ofFloat(new float[] { 360.0F, 108.0F });
+      this.K.setInterpolator(new LinearInterpolator());
+      this.K.setDuration(this.C);
+      this.K.setRepeatCount(-1);
+      this.K.setRepeatMode(2);
+      this.K.addUpdateListener(new RotateCircleImageView.8(this));
+    }
+    this.J.start();
+  }
+  
+  private void h()
+  {
+    ValueAnimator localValueAnimator = this.A;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
-    localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.F;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
-    localValueAnimator = this.jdField_c_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.G;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
-    localValueAnimator = this.jdField_d_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.J;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
-    localValueAnimator = this.jdField_e_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.K;
     if (localValueAnimator != null) {
       localValueAnimator.end();
     }
+  }
+  
+  public int getBorderPadding()
+  {
+    return this.P;
+  }
+  
+  public RotateCircleImageView.BorderStyle getBorderStyle()
+  {
+    return this.y;
+  }
+  
+  public int getBorderWidth()
+  {
+    return this.i;
+  }
+  
+  public int getCircleBackgroundColor()
+  {
+    return this.j;
   }
   
   public ColorFilter getColorFilter()
   {
-    return this.jdField_a_of_type_AndroidGraphicsColorFilter;
+    return this.p;
   }
   
   public ImageView.ScaleType getScaleType()
   {
-    return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+    return a;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.t)
     {
       super.onDraw(paramCanvas);
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.k != null)
     {
-      if (this.jdField_b_of_type_Int != 0) {
-        paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_c_of_type_AndroidGraphicsPaint);
+      if (this.j != 0) {
+        paramCanvas.drawCircle(this.c.centerX(), this.c.centerY(), this.o, this.h);
       }
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(this.c.centerX(), this.c.centerY(), this.o, this.f);
     }
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.i > 0)
     {
-      int m = RotateCircleImageView.9.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle.ordinal()];
-      if (m != 1)
+      int i1 = RotateCircleImageView.9.a[this.y.ordinal()];
+      if (i1 != 1)
       {
-        if (m != 2) {
+        if (i1 != 2) {
           return;
         }
         b(paramCanvas);
@@ -430,12 +442,12 @@ public class RotateCircleImageView
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle == RotateCircleImageView.BorderStyle.ROTATE) {
-        f();
+      if (this.y == RotateCircleImageView.BorderStyle.ROTATE) {
+        g();
       }
     }
-    else if (this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle == RotateCircleImageView.BorderStyle.ROTATE) {
-      g();
+    else if (this.y == RotateCircleImageView.BorderStyle.ROTATE) {
+      h();
     }
   }
   
@@ -449,53 +461,53 @@ public class RotateCircleImageView
   
   public void setBorderColors(int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt != null) && (!Arrays.equals(this.jdField_a_of_type_ArrayOfInt, paramArrayOfInt)))
+    if ((paramArrayOfInt != null) && (!Arrays.equals(this.O, paramArrayOfInt)))
     {
       int[] arrayOfInt = paramArrayOfInt;
       if (paramArrayOfInt.length > 50) {
         arrayOfInt = Arrays.copyOfRange(paramArrayOfInt, 0, 50);
       }
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      this.O = arrayOfInt;
       invalidate();
     }
   }
   
   public void setBorderOverlay(boolean paramBoolean)
   {
-    if (paramBoolean == this.jdField_c_of_type_Boolean) {
+    if (paramBoolean == this.s) {
       return;
     }
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
     d();
   }
   
   public void setBorderPadding(int paramInt)
   {
-    if (paramInt == this.l) {
+    if (paramInt == this.P) {
       return;
     }
-    this.l = paramInt;
+    this.P = paramInt;
     d();
   }
   
   public void setBorderRotateDuration(int paramInt)
   {
-    if (this.h != paramInt)
+    if (this.B != paramInt)
     {
-      this.h = paramInt;
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.h);
+      this.B = paramInt;
+      this.A.setDuration(this.B);
     }
   }
   
   public void setBorderStyle(RotateCircleImageView.BorderStyle paramBorderStyle)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle != paramBorderStyle)
+    if (this.y != paramBorderStyle)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle = paramBorderStyle;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView$BorderStyle == RotateCircleImageView.BorderStyle.ROTATE) {
-        f();
-      } else {
+      this.y = paramBorderStyle;
+      if (this.y == RotateCircleImageView.BorderStyle.ROTATE) {
         g();
+      } else {
+        h();
       }
       invalidate();
     }
@@ -503,49 +515,49 @@ public class RotateCircleImageView
   
   public void setBorderTrackDuration(int paramInt)
   {
-    if (this.i != paramInt)
+    if (this.C != paramInt)
     {
-      this.i = paramInt;
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(this.i);
+      this.C = paramInt;
+      this.F.setDuration(this.C);
     }
   }
   
   public void setBorderTrackEndColor(int paramInt)
   {
-    if (paramInt != this.k)
+    if (paramInt != this.E)
     {
-      this.k = paramInt;
-      this.jdField_d_of_type_AndroidGraphicsPaint = null;
-      this.jdField_e_of_type_AndroidGraphicsPaint = null;
+      this.E = paramInt;
+      this.I = null;
+      this.M = null;
     }
   }
   
   public void setBorderTrackStartColor(int paramInt)
   {
-    if (paramInt != this.j)
+    if (paramInt != this.D)
     {
-      this.j = paramInt;
-      this.jdField_d_of_type_AndroidGraphicsPaint = null;
-      this.jdField_e_of_type_AndroidGraphicsPaint = null;
+      this.D = paramInt;
+      this.I = null;
+      this.M = null;
     }
   }
   
   public void setBorderWidth(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (paramInt == this.i) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
     d();
   }
   
   public void setCircleBackgroundColor(int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int) {
+    if (paramInt == this.j) {
       return;
     }
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.j = paramInt;
+    this.h.setColor(paramInt);
     invalidate();
   }
   
@@ -556,20 +568,20 @@ public class RotateCircleImageView
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (paramColorFilter == this.jdField_a_of_type_AndroidGraphicsColorFilter) {
+    if (paramColorFilter == this.p) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    this.p = paramColorFilter;
     b();
     invalidate();
   }
   
   public void setDisableCircularTransformation(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_Boolean == paramBoolean) {
+    if (this.t == paramBoolean) {
       return;
     }
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.t = paramBoolean;
     c();
   }
   
@@ -605,7 +617,7 @@ public class RotateCircleImageView
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (paramScaleType == jdField_a_of_type_AndroidWidgetImageView$ScaleType) {
+    if (paramScaleType == a) {
       return;
     }
     throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));

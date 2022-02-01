@@ -41,10 +41,15 @@ import com.tencent.mobileqq.data.troop.CommonlyUsedTroop;
 import com.tencent.mobileqq.data.troop.TroopMemberCardInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.fts.data.troop.FTSNewTroopSync;
 import com.tencent.mobileqq.fts.data.troop.FTSTroopSync;
 import com.tencent.mobileqq.fts.data.troop.FTSTroopTime;
 import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.msginfo.GameUserInfo;
+import com.tencent.mobileqq.guild.data.ChannelMsgEvent;
+import com.tencent.mobileqq.guild.message.GuildMsgSeqTimeItem;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
 import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.hotpic.HotPicSendData;
 import com.tencent.mobileqq.hotpic.HotPicTagInfo;
@@ -84,7 +89,7 @@ import com.tencent.qzonehub.model.QZoneMsgEntityNew;
 public class CommonTableColumnCheckInterceptor
   extends FindTableClassInterceptor
 {
-  private final Class[] a = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoyActivityDAUInfo(), HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDynamicInfoEntity.class), DiyPendantEntity.class, ApolloObtainedActionData.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getTracePathDataClass(), ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getTracePointDataClass(), HotPicSendData.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, FTSNewTroopSync.class, ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getGuideDataClazz(), FeedInfo.class, BeancurdMsg.class, APIQuotaEntity.class, AppInfo.class, QuestionSquareBean.class, ApolloActionData.class, QZoneMsgEntityNew.class, ApolloPreDownloadData.class, ApolloBaseInfo.class, TraceData.class, PadFaceAd.class, GameNoticeInfo.class, ExtensionInfo.class, ApolloWhiteFaceID.class, ColorNote.class, FrontBackData.class, StickerRecommendEntity.class, StickerRecommendSortEntity.class, TofuItem.class, TroopEssenceMsgItem.class, MaterialData.class, TroopMemberInfo.class, MemberGradeLevelInfo.class, TroopMemberCardInfo.class, CommonlyUsedTroop.class, ShowExternalTroop.class, QQMiniManager.getMiniAppEntityClass(), QQMiniManager.getDesktopCardEntityClass(), QQMiniManager.getDeskTopAppEntityClass(), FullListGroupAppEntity.class, GrayGroupAppEntity.class, TroopAppInfo.class, TroopAIONotifyItem.class, RecentRecommendTroopItem.class, GroupSystemMsgOldData.class, DiscussionMemberInfo.class, DiscussionInfo.class, TofuLimitMsg.class };
+  private final Class[] a = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoyActivityDAUInfo(), HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDynamicInfoEntity.class), DiyPendantEntity.class, ApolloObtainedActionData.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getTracePathDataClass(), ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getTracePointDataClass(), HotPicSendData.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, FTSNewTroopSync.class, ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getGuideDataClazz(), FeedInfo.class, BeancurdMsg.class, APIQuotaEntity.class, AppInfo.class, QuestionSquareBean.class, ApolloActionData.class, QZoneMsgEntityNew.class, ApolloPreDownloadData.class, ApolloBaseInfo.class, TraceData.class, PadFaceAd.class, GameNoticeInfo.class, ExtensionInfo.class, ApolloWhiteFaceID.class, ColorNote.class, FrontBackData.class, StickerRecommendEntity.class, StickerRecommendSortEntity.class, TofuItem.class, TroopEssenceMsgItem.class, MaterialData.class, TroopMemberInfo.class, MemberGradeLevelInfo.class, TroopMemberCardInfo.class, CommonlyUsedTroop.class, ShowExternalTroop.class, QQMiniManager.getMiniAppEntityClass(), QQMiniManager.getDesktopCardEntityClass(), QQMiniManager.getDeskTopAppEntityClass(), FullListGroupAppEntity.class, GrayGroupAppEntity.class, TroopAppInfo.class, TroopAIONotifyItem.class, RecentRecommendTroopItem.class, GroupSystemMsgOldData.class, DiscussionMemberInfo.class, DiscussionInfo.class, GuildMsgSeqTimeItem.class, TofuLimitMsg.class, GameUserInfo.class, ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getGuildMessageNavigateInfoClass(), ChannelMsgEvent.class, FileManagerEntity.class };
   
   private Class a(String paramString)
   {
@@ -127,7 +132,7 @@ public class CommonTableColumnCheckInterceptor
   
   public Class a(Interceptor.Chain paramChain)
   {
-    paramChain = a(paramChain);
+    paramChain = b(paramChain);
     Class localClass = a(paramChain);
     if ((localClass != null) && (QLog.isColorLevel()))
     {
@@ -143,7 +148,7 @@ public class CommonTableColumnCheckInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.CommonTableColumnCheckInterceptor
  * JD-Core Version:    0.7.0.1
  */

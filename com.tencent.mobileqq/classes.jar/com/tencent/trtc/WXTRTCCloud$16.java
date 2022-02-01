@@ -11,7 +11,7 @@ class WXTRTCCloud$16
   {
     WXTRTCCloud.access$800(this.a, "pausePusher");
     if (WXTRTCCloud.access$900(this.a) != null) {
-      WXTRTCCloud.access$1000(this.a).g();
+      WXTRTCCloud.access$1000(this.a).h();
     }
   }
 }

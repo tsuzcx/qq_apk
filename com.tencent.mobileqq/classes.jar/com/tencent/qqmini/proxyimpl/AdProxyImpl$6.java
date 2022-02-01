@@ -15,15 +15,15 @@ class AdProxyImpl$6
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("processSelectAdWithUncachedAd download newCachedAdInfo.url= ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.url);
+    localStringBuilder.append(this.a.url);
     localStringBuilder.append(" start");
     QLog.d("MiniLoadingAdManager", 1, localStringBuilder.toString());
-    MiniappDownloadUtil.getInstance().download(this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.url, this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.filePath, false, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener, Downloader.DownloadMode.OkHttpMode, null);
+    MiniappDownloadUtil.getInstance().download(this.a.url, this.a.filePath, false, this.b, Downloader.DownloadMode.OkHttpMode, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

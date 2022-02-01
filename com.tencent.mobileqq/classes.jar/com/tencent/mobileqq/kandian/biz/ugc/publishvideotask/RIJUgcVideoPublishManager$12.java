@@ -15,14 +15,14 @@ class RIJUgcVideoPublishManager$12
   {
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         UgcVideo localUgcVideo = (UgcVideo)((Iterator)localObject).next();
         if (localUgcVideo.pauseBySwitchNet)
         {
           localUgcVideo.pauseBySwitchNet = false;
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager.a(localUgcVideo, true);
+          this.b.a(localUgcVideo, true);
         }
       }
     }
@@ -34,7 +34,7 @@ class RIJUgcVideoPublishManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.RIJUgcVideoPublishManager.12
  * JD-Core Version:    0.7.0.1
  */

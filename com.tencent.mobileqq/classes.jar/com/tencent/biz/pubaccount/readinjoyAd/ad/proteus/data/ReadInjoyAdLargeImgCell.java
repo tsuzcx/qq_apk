@@ -3,6 +3,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
@@ -66,13 +67,14 @@ public class ReadInjoyAdLargeImgCell
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).bindAdStatus(paramAbsBaseArticleInfo, localJSONObject);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindSeparator(paramAbsBaseArticleInfo, localJSONObject);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindDislikeButton(paramAbsBaseArticleInfo, localJSONObject);
+    ReadInJoyAdUtils.k(paramAbsBaseArticleInfo, localJSONObject);
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).bindLargeImgStyleID(paramAbsBaseArticleInfo, localJSONObject);
     return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInjoyAdLargeImgCell
  * JD-Core Version:    0.7.0.1
  */

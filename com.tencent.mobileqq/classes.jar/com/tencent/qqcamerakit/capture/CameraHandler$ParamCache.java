@@ -4,23 +4,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CameraHandler$ParamCache
 {
-  public int a;
-  public CameraSize a;
-  public AtomicBoolean a;
-  public boolean a;
+  public AtomicBoolean a = new AtomicBoolean(false);
   public int b;
-  public CameraSize b;
   public int c;
-  
-  public CameraHandler$ParamCache()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public int d;
+  public CameraSize e;
+  public boolean f = false;
+  public CameraSize g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.CameraHandler.ParamCache
  * JD-Core Version:    0.7.0.1
  */

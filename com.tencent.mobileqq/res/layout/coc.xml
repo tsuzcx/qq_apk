@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/mvg" android:layout_width="260.0dip" android:layout_height="24.0dip" android:layout_marginTop="12.0dip" android:scaleType="fitCenter" android:layout_centerVertical="true" />
-</RelativeLayout>
+<com.google.android.material.datepicker.MaterialCalendarGridView android:gravity="center" android:id="@id/or7" android:addStatesFromChildren="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:horizontalSpacing="@dimen/bis" android:verticalSpacing="@dimen/bit"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

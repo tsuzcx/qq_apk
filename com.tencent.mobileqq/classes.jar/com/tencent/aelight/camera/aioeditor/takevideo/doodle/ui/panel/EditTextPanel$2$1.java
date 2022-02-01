@@ -13,18 +13,18 @@ class EditTextPanel$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a != null)
+    if (this.c.a.b != null)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a.a == null) {
+      if (this.c.a.b.e == null) {
         return;
       }
-      int j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a.a.getChildCount();
+      int j = this.c.a.b.e.getChildCount();
       int i = 0;
       while (i < j)
       {
-        Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a.a.getChildAt(i);
-        localObject = (EditTextEffectView.EditTextHolder)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextPanel$2.a.a.getChildViewHolder((View)localObject);
-        if ((((EditTextEffectView.EditTextHolder)localObject).a.isContainsResUrl(this.jdField_a_of_type_JavaLangString)) && (((EditTextEffectView.EditTextHolder)localObject).a.text_id == this.jdField_a_of_type_Int)) {
+        Object localObject = this.c.a.b.e.getChildAt(i);
+        localObject = (EditTextEffectView.EditTextHolder)this.c.a.b.getChildViewHolder((View)localObject);
+        if ((((EditTextEffectView.EditTextHolder)localObject).b.isContainsResUrl(this.a)) && (((EditTextEffectView.EditTextHolder)localObject).b.text_id == this.b)) {
           ThreadManager.getUIHandler().post(new EditTextPanel.2.1.1(this, (EditTextEffectView.EditTextHolder)localObject));
         }
         i += 1;
@@ -34,7 +34,7 @@ class EditTextPanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel.2.1
  * JD-Core Version:    0.7.0.1
  */

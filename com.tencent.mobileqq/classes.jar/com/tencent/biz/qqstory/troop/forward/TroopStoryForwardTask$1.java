@@ -17,27 +17,27 @@ class TroopStoryForwardTask$1
   public void run()
   {
     MessageForTroopStory localMessageForTroopStory = (MessageForTroopStory)MessageRecordFactory.a(-2057);
-    MessageRecordFactory.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopStory, this.this$0.k, this.this$0.l, this.this$0.jdField_d_of_type_Int);
-    localMessageForTroopStory.uid = Long.valueOf(this.this$0.jdField_b_of_type_JavaLangString).longValue();
-    localMessageForTroopStory.unionId = this.this$0.jdField_c_of_type_JavaLangString;
-    localMessageForTroopStory.md5 = this.this$0.jdField_d_of_type_JavaLangString;
-    localMessageForTroopStory.thumbUrl = this.this$0.e;
-    localMessageForTroopStory.doodleUrl = this.this$0.f;
-    localMessageForTroopStory.videoWidth = this.this$0.jdField_a_of_type_Int;
-    localMessageForTroopStory.videoHeight = this.this$0.jdField_b_of_type_Int;
-    localMessageForTroopStory.sourceName = this.this$0.g;
-    localMessageForTroopStory.sourceActionType = this.this$0.h;
-    localMessageForTroopStory.sourceActionData = this.this$0.i;
-    localMessageForTroopStory.compatibleText = this.this$0.j;
-    localMessageForTroopStory.ctrVersion = this.this$0.jdField_c_of_type_Int;
+    MessageRecordFactory.a(this.this$0.c, localMessageForTroopStory, this.this$0.q, this.this$0.s, this.this$0.r);
+    localMessageForTroopStory.uid = Long.valueOf(this.this$0.e).longValue();
+    localMessageForTroopStory.unionId = this.this$0.f;
+    localMessageForTroopStory.md5 = this.this$0.g;
+    localMessageForTroopStory.thumbUrl = this.this$0.h;
+    localMessageForTroopStory.doodleUrl = this.this$0.i;
+    localMessageForTroopStory.videoWidth = this.this$0.j;
+    localMessageForTroopStory.videoHeight = this.this$0.k;
+    localMessageForTroopStory.sourceName = this.this$0.l;
+    localMessageForTroopStory.sourceActionType = this.this$0.m;
+    localMessageForTroopStory.sourceActionData = this.this$0.n;
+    localMessageForTroopStory.compatibleText = this.this$0.o;
+    localMessageForTroopStory.ctrVersion = this.this$0.p;
     localMessageForTroopStory.msg = MessageForTroopStory.MSG_CONTENT;
     localMessageForTroopStory.serial();
     TroopStoryForwardTask localTroopStoryForwardTask = this.this$0;
-    localTroopStoryForwardTask.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
-    ((ISVIPHandler)localTroopStoryForwardTask.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForTroopStory);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(localMessageForTroopStory, 0);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForTroopStory, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    localTroopStoryForwardTask.d = localMessageForTroopStory;
+    ((ISVIPHandler)localTroopStoryForwardTask.c.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForTroopStory);
+    this.this$0.c.getMsgCache().a(localMessageForTroopStory, 0);
+    this.this$0.c.getMessageFacade().a(localMessageForTroopStory, this.this$0.c.getCurrentAccountUin());
+    this.this$0.b.sendEmptyMessage(2);
   }
 }
 

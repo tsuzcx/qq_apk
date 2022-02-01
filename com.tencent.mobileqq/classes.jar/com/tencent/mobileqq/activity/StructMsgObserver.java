@@ -13,7 +13,7 @@ public class StructMsgObserver
 {
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (!WebAccelerator.a) {
+    if (!WebAccelerator.b) {
       return;
     }
     String str1;
@@ -35,7 +35,7 @@ public class StructMsgObserver
       paramObservable = (MessageForText)paramObject;
       if ((!paramObservable.isSend()) && (!TextUtils.isEmpty(paramObservable.msg)))
       {
-        paramObject = WebAccelerator.c(paramObservable.msg);
+        paramObject = WebAccelerator.f(paramObservable.msg);
         if (!TextUtils.isEmpty(paramObject))
         {
           str1 = paramObservable.frienduin;
@@ -48,7 +48,7 @@ public class StructMsgObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.StructMsgObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ import android.widget.FrameLayout;
 public class TopBehindLayout
   extends FrameLayout
 {
-  private View a;
+  private View mContent;
   
   public TopBehindLayout(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public TopBehindLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,24 +24,24 @@ public class TopBehindLayout
   public TopBehindLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a(Context paramContext) {}
+  private void init(Context paramContext) {}
   
   public void setContent(View paramView)
   {
-    View localView = this.a;
+    View localView = this.mContent;
     if (localView != null) {
       removeView(localView);
     }
-    this.a = paramView;
-    addView(this.a);
+    this.mContent = paramView;
+    addView(this.mContent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopBehindLayout
  * JD-Core Version:    0.7.0.1
  */

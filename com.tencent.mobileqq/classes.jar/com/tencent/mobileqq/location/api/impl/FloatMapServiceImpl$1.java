@@ -16,8 +16,8 @@ class FloatMapServiceImpl$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a();
+    int i = this.a.a();
+    String str = this.a.b();
     ILocationShareService localILocationShareService = (ILocationShareService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(ILocationShareService.class, "");
     localILocationShareService.requestOperateRoom(3, i, str);
     localILocationShareService.stopLocationSharing(i, str, false);
@@ -27,7 +27,7 @@ class FloatMapServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.FloatMapServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

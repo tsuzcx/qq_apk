@@ -16,24 +16,24 @@ import mqq.app.AppRuntime;
 public class StepAlarmReceiver
   extends BroadcastReceiver
 {
-  static String jdField_a_of_type_JavaLangString;
-  int jdField_a_of_type_Int = 1000;
-  long jdField_a_of_type_Long = 7200000L;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  static String c;
+  long a = 7200000L;
+  int b = 1000;
+  AppRuntime d;
   
   public StepAlarmReceiver(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.d = paramAppRuntime;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
+    this.d = null;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isSupportStepCounter(this.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext()))
+    if (!((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isSupportStepCounter(this.d.getApplicationContext()))
     {
       QLog.e("StepAlarmReceiver", 1, "onReceive:step counter not support");
       return;
@@ -41,7 +41,7 @@ public class StepAlarmReceiver
     paramContext = paramIntent.getAction();
     if ("action_sport_timer1".equals(paramContext))
     {
-      paramContext = this.jdField_a_of_type_MqqAppAppRuntime;
+      paramContext = this.d;
       if (paramContext != null)
       {
         if (!SSOHttpUtils.a(2, paramContext.getAccount())) {
@@ -54,7 +54,7 @@ public class StepAlarmReceiver
     }
     if ("action_sport_timer2".equals(paramContext))
     {
-      paramContext = this.jdField_a_of_type_MqqAppAppRuntime;
+      paramContext = this.d;
       if (paramContext == null) {
         return;
       }
@@ -70,11 +70,11 @@ public class StepAlarmReceiver
         QLog.i("StepAlarmReceiver", 1, "StepAlarmReceiver_long_time_report!");
         if (StepConfigProcessor.a().a() == 2)
         {
-          SSOHttpUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, paramIntent.getExtras());
+          SSOHttpUtils.a(this.d, paramIntent.getExtras());
           return;
         }
         if (!paramIntent.getBooleanExtra("VerifyResult", true)) {
-          SSOHttpUtils.a(-1000, "verifyFailed");
+          SSOHttpUtils.b(-1000, "verifyFailed");
         }
         ThreadManager.post(new StepAlarmReceiver.2(this), 5, null, true);
         return;
@@ -82,21 +82,21 @@ public class StepAlarmReceiver
       if ("action_step_compare_report".equals(paramContext))
       {
         paramContext = (HashMap)paramIntent.getSerializableExtra("health_compare_report_params");
-        paramIntent = SSOHttpUtils.a();
+        paramIntent = SSOHttpUtils.e();
         if (paramIntent[1] != -1)
         {
           paramContext.put("data1", String.valueOf(paramIntent[1]));
-          VSHealthReportUtil.a(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), "qqsport_getbyxiaomi_usersteps", paramContext);
+          VSHealthReportUtil.a(this.d.getCurrentUin(), "qqsport_getbyxiaomi_usersteps", paramContext);
           return;
         }
-        VSHealthReportUtil.a(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), "qqsport_compare_usersteps", paramContext);
+        VSHealthReportUtil.a(this.d.getCurrentUin(), "qqsport_compare_usersteps", paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

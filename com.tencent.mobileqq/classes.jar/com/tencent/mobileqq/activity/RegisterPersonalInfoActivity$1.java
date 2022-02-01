@@ -21,8 +21,8 @@ class RegisterPersonalInfoActivity$1
     } else {
       RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
     }
-    if (RegisterPersonalInfoActivity.a(this.a) != null) {
-      RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
+    if (RegisterPersonalInfoActivity.b(this.a) != null) {
+      RegisterPersonalInfoActivity.b(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
     }
   }
   
@@ -32,7 +32,7 @@ class RegisterPersonalInfoActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPersonalInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

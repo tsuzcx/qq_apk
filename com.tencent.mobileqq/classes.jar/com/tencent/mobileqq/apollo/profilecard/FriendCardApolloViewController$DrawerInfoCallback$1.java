@@ -4,10 +4,10 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
 import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 class FriendCardApolloViewController$DrawerInfoCallback$1
   implements Runnable
@@ -16,25 +16,25 @@ class FriendCardApolloViewController$DrawerInfoCallback$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a == null)
+    if (this.c.a.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a = new FrameGifView(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-      this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.b(45.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources()), AIOUtils.b(45.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources()));
+      this.c.a.c = new FrameGifView(this.a);
+      this.c.a.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(ViewUtils.dip2px(45.0F), ViewUtils.dip2px(45.0F));
       localLayoutParams.addRule(12, -1);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.bottomMargin = AIOUtils.b(45.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-      localLayoutParams.rightMargin = AIOUtils.b(75.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-      ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.getParent()).addView(this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a, localLayoutParams);
+      localLayoutParams.bottomMargin = ViewUtils.dip2px(45.0F);
+      localLayoutParams.rightMargin = ViewUtils.dip2px(75.0F);
+      ((RelativeLayout)this.b.getParent()).addView(this.c.a.c, localLayoutParams);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a.a.setGifData(30, null, FriendCardApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a), QQFrameZipDecoder.a(FriendCardApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a)), true);
-    FriendCardApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloProfilecardFriendCardApolloViewController$DrawerInfoCallback.a, "");
+    this.c.a.c.setVisibility(0);
+    this.c.a.c.setGifData(30, null, FriendCardApolloViewController.e(this.c.a), QQFrameZipDecoder.a(FriendCardApolloViewController.e(this.c.a)), true);
+    FriendCardApolloViewController.a(this.c.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.FriendCardApolloViewController.DrawerInfoCallback.1
  * JD-Core Version:    0.7.0.1
  */

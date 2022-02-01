@@ -22,17 +22,17 @@ class PadFaceManager$1
         localStringBuilder.append("gamecenter_sp");
         localStringBuilder.append(PadFaceManager.a(this.this$0).getCurrentAccountUin());
         PadFaceManager.a(localPadFaceManager2, localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 4));
-        PadFaceManager.a(this.this$0, PadFaceManager.a(this.this$0).getLong("last_pad_face_request_time", 0L));
+        PadFaceManager.a(this.this$0, PadFaceManager.b(this.this$0).getLong("last_pad_face_request_time", 0L));
         localPadFaceManager2 = this.this$0;
-        if (PadFaceManager.a(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
+        if (PadFaceManager.b(this.this$0).getInt("pad_face_ad_enabled", 1) == 1)
         {
           bool = true;
           PadFaceManager.a(localPadFaceManager2, bool);
-          PadFaceManager.a(this.this$0, PadFaceManager.a(this.this$0).getInt("last_id_pad_face_shown", 0));
-          PadFaceManager.b(this.this$0, PadFaceManager.a(this.this$0).getLong("last_time_pad_face_shown", 0L));
-          PadFaceManager.c(this.this$0, PadFaceManager.a(this.this$0).getInt("request_interval", 2) * 3600000L);
+          PadFaceManager.a(this.this$0, PadFaceManager.b(this.this$0).getInt("last_id_pad_face_shown", 0));
+          PadFaceManager.b(this.this$0, PadFaceManager.b(this.this$0).getLong("last_time_pad_face_shown", 0L));
+          PadFaceManager.c(this.this$0, PadFaceManager.b(this.this$0).getInt("request_interval", 2) * 3600000L);
           PadFaceManager.a(this.this$0, PadFaceManager.a(this.this$0).getEntityManagerFactory().createEntityManager());
-          PadFaceManager.a(this.this$0);
+          PadFaceManager.c(this.this$0);
           PadFaceManager.b(this.this$0, true);
           return;
         }
@@ -43,7 +43,7 @@ class PadFaceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.PadFaceManager.1
  * JD-Core Version:    0.7.0.1
  */

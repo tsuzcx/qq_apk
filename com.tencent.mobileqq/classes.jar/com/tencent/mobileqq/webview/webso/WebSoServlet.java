@@ -20,8 +20,8 @@ import wns_proxy.HttpReq;
 public class WebSoServlet
   extends MSFServlet
 {
-  private long jdField_a_of_type_Long = 0L;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+  private ToServiceMsg a;
+  private long b = 0L;
   
   public static Intent a(Intent paramIntent, long paramLong, String paramString1, HttpReq paramHttpReq, String paramString2)
   {
@@ -76,7 +76,7 @@ public class WebSoServlet
       if ((paramFromServiceMsg != null) && (paramFromServiceMsg.length > 0)) {
         paramBundle.putString("key_dns_result", paramFromServiceMsg[0]);
       }
-      paramBundle.putInt("key_time_cost", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      paramBundle.putInt("key_time_cost", (int)(System.currentTimeMillis() - this.b));
     }
   }
   
@@ -133,7 +133,7 @@ public class WebSoServlet
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
       paramIntent = paramFromServiceMsg.getWupBuffer();
-      paramFromServiceMsg = WebSoUtils.h(WebSoUtils.e(str));
+      paramFromServiceMsg = WebSoUtils.n(WebSoUtils.j(str));
       if (TextUtils.isEmpty(paramFromServiceMsg))
       {
         QLog.w("WebSoServlet", 1, "uniKey is EMPTY OR NULL !!!");
@@ -165,7 +165,7 @@ public class WebSoServlet
     String str2 = paramIntent.getStringExtra("refer");
     String str1 = paramIntent.getStringExtra("url");
     int i = paramIntent.getIntExtra("key_time_out", 60000);
-    localObject = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).websoEncode(WebSoUtils.e(str1), l, (HttpReq)localObject, str2);
+    localObject = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).websoEncode(WebSoUtils.j(str1), l, (HttpReq)localObject, str2);
     paramIntent = (Intent)localObject;
     if (localObject == null) {
       paramIntent = new byte[4];
@@ -176,7 +176,7 @@ public class WebSoServlet
       l = i;
     }
     paramPacket.setTimeout(l);
-    paramPacket.setSSOCommand(WebSoUtils.f(str1));
+    paramPacket.setSSOCommand(WebSoUtils.k(str1));
     paramPacket.putSendData(paramIntent);
     if (QLog.isColorLevel())
     {
@@ -185,18 +185,18 @@ public class WebSoServlet
       paramIntent.append(str1);
       QLog.d("WebSoServlet", 2, paramIntent.toString());
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.b = System.currentTimeMillis();
   }
   
   protected void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.a = paramToServiceMsg;
     super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet
  * JD-Core Version:    0.7.0.1
  */

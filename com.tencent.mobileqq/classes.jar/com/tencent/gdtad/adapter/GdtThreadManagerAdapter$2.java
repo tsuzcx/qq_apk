@@ -9,12 +9,12 @@ class GdtThreadManagerAdapter$2
   
   public void run()
   {
-    ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int, null, true);
+    ThreadManager.excute(this.a, this.b, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

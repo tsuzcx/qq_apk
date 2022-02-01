@@ -7,24 +7,24 @@ import io.flutter.plugin.common.MethodCodec;
 public class ReportChannel
   extends BaseMethodChannel
 {
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new ReportChannel.1(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return ReporterChannelHandler.a;
-  }
-  
   public String a()
   {
     return "com.tencent.qflutter/reporter";
   }
+  
+  public MethodCodec b()
+  {
+    return ReporterChannelHandler.b;
+  }
+  
+  public MethodChannel.MethodCallHandler c()
+  {
+    return new ReportChannel.1(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.report.ReportChannel
  * JD-Core Version:    0.7.0.1
  */

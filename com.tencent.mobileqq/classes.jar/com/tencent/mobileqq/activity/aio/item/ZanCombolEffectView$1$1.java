@@ -9,13 +9,13 @@ class ZanCombolEffectView$1$1
   
   public void run()
   {
-    HapticManager.a().a();
-    ZanCombolEffectView.a(this.a.this$0, HapticManager.a().a(ZanCombolEffectView.a(this.a.this$0), 2));
+    HapticManager.b().c();
+    ZanCombolEffectView.a(this.a.this$0, HapticManager.b().a(ZanCombolEffectView.d(this.a.this$0), 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView.1.1
  * JD-Core Version:    0.7.0.1
  */

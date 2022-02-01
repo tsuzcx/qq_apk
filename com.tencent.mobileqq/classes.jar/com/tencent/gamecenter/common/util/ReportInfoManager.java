@@ -45,9 +45,9 @@ public class ReportInfoManager
   public void addReportInfo(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     ReportInfoManager.ReportInfo localReportInfo = new ReportInfoManager.ReportInfo();
-    localReportInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localReportInfo.jdField_b_of_type_JavaLangString = paramString2;
-    localReportInfo.jdField_c_of_type_JavaLangString = paramString3;
+    localReportInfo.a = paramString1;
+    localReportInfo.b = paramString2;
+    localReportInfo.c = paramString3;
     this.reportAdInfoList.add(localReportInfo);
     saveReportInfo(paramContext);
   }
@@ -68,9 +68,9 @@ public class ReportInfoManager
           {
             JSONObject localJSONObject = paramString.getJSONObject(i);
             ReportInfoManager.ReportInfo localReportInfo = new ReportInfoManager.ReportInfo();
-            localReportInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
-            localReportInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
-            localReportInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
+            localReportInfo.a = localJSONObject.getString("appid");
+            localReportInfo.b = localJSONObject.getString("actionname");
+            localReportInfo.c = localJSONObject.getString("timestamp");
             this.reportAdInfoList.add(localReportInfo);
           }
           catch (JSONException localJSONException)
@@ -102,9 +102,9 @@ public class ReportInfoManager
       {
         ReportInfoManager.ReportInfo localReportInfo = (ReportInfoManager.ReportInfo)localIterator.next();
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("appid", localReportInfo.jdField_a_of_type_JavaLangString);
-        localJSONObject2.put("actionname", localReportInfo.jdField_b_of_type_JavaLangString);
-        localJSONObject2.put("timestamp", localReportInfo.jdField_c_of_type_JavaLangString);
+        localJSONObject2.put("appid", localReportInfo.a);
+        localJSONObject2.put("actionname", localReportInfo.b);
+        localJSONObject2.put("timestamp", localReportInfo.c);
         localJSONArray.put(localJSONObject2);
       }
       localJSONObject1.put("items", localJSONArray);
@@ -132,18 +132,18 @@ public class ReportInfoManager
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uin", paramReportPGActInfo.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("entrance_status", paramReportPGActInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("gamecenter_src", paramReportPGActInfo.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("oper_moudle", paramReportPGActInfo.jdField_a_of_type_Int);
-      localJSONObject.put("module_type", paramReportPGActInfo.jdField_b_of_type_Int);
-      localJSONObject.put("oper_id", paramReportPGActInfo.jdField_c_of_type_Int);
-      localJSONObject.put("sq_ver", paramReportPGActInfo.d);
-      localJSONObject.put("gamecenter_ver", paramReportPGActInfo.e);
-      localJSONObject.put("device_type", paramReportPGActInfo.f);
-      localJSONObject.put("net_type", paramReportPGActInfo.g);
-      localJSONObject.put("resolution", paramReportPGActInfo.h);
-      localJSONObject.put("ret_id", paramReportPGActInfo.i);
+      localJSONObject.put("uin", paramReportPGActInfo.a);
+      localJSONObject.put("entrance_status", paramReportPGActInfo.b);
+      localJSONObject.put("gamecenter_src", paramReportPGActInfo.c);
+      localJSONObject.put("oper_moudle", paramReportPGActInfo.d);
+      localJSONObject.put("module_type", paramReportPGActInfo.e);
+      localJSONObject.put("oper_id", paramReportPGActInfo.f);
+      localJSONObject.put("sq_ver", paramReportPGActInfo.g);
+      localJSONObject.put("gamecenter_ver", paramReportPGActInfo.h);
+      localJSONObject.put("device_type", paramReportPGActInfo.i);
+      localJSONObject.put("net_type", paramReportPGActInfo.j);
+      localJSONObject.put("resolution", paramReportPGActInfo.k);
+      localJSONObject.put("ret_id", paramReportPGActInfo.l);
     }
     catch (JSONException paramReportPGActInfo)
     {
@@ -155,17 +155,17 @@ public class ReportInfoManager
   public ReportInfoManager.ReportPGActInfo genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     ReportInfoManager.ReportPGActInfo localReportPGActInfo = new ReportInfoManager.ReportPGActInfo();
-    localReportPGActInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localReportPGActInfo.jdField_b_of_type_JavaLangString = paramString2;
-    localReportPGActInfo.f = Build.MODEL;
-    localReportPGActInfo.jdField_c_of_type_JavaLangString = "1";
-    localReportPGActInfo.e = paramString3;
-    localReportPGActInfo.jdField_b_of_type_Int = 108;
-    localReportPGActInfo.g = paramString4;
-    localReportPGActInfo.jdField_c_of_type_Int = 16001;
-    localReportPGActInfo.jdField_a_of_type_Int = 1;
-    localReportPGActInfo.h = paramString5;
-    localReportPGActInfo.d = CommonDataAdapter.a().d();
+    localReportPGActInfo.a = paramString1;
+    localReportPGActInfo.b = paramString2;
+    localReportPGActInfo.i = Build.MODEL;
+    localReportPGActInfo.c = "1";
+    localReportPGActInfo.h = paramString3;
+    localReportPGActInfo.e = 108;
+    localReportPGActInfo.j = paramString4;
+    localReportPGActInfo.f = 16001;
+    localReportPGActInfo.d = 1;
+    localReportPGActInfo.k = paramString5;
+    localReportPGActInfo.g = CommonDataAdapter.a().j();
     return localReportPGActInfo;
   }
   
@@ -176,7 +176,7 @@ public class ReportInfoManager
     }
     paramReportPGActInfo = convertInfoObjectToJson(paramReportPGActInfo);
     long l = paramReportPGActInfo.getBytes().length;
-    String str = String.format("https://report.gamecenter.qq.com/cgi-bin/gc_pg_act_fcgi?appid=%1$s&tt=1&osv=%2$s", new Object[] { Integer.valueOf(AppSetting.a()), Build.VERSION.RELEASE });
+    String str = String.format("https://report.gamecenter.qq.com/cgi-bin/gc_pg_act_fcgi?appid=%1$s&tt=1&osv=%2$s", new Object[] { Integer.valueOf(AppSetting.d()), Build.VERSION.RELEASE });
     new AsyncHttpConnection(new ReportInfoManager.1(this, l)).a(str, paramReportPGActInfo);
   }
   
@@ -187,7 +187,7 @@ public class ReportInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ReportInfoManager
  * JD-Core Version:    0.7.0.1
  */

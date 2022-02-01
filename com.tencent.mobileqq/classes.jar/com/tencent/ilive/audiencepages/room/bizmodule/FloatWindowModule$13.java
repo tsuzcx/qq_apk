@@ -47,29 +47,29 @@ class FloatWindowModule$13
     return 0;
   }
   
-  public LifecycleOwner a()
-  {
-    return FloatWindowModule.access$4000(this.a);
-  }
-  
   public void a(FloatRoomManager paramFloatRoomManager)
   {
     if ((this.a.floatWindowComponent != null) && (this.a.floatWindowComponent.isReallyShow()) && (paramFloatRoomManager != null)) {
-      paramFloatRoomManager.b();
+      paramFloatRoomManager.c();
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     if (this.a.floatWindowComponent != null) {
       return this.a.floatWindowComponent.isCalledShow();
     }
     return false;
   }
+  
+  public LifecycleOwner c()
+  {
+    return FloatWindowModule.access$4000(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.13
  * JD-Core Version:    0.7.0.1
  */

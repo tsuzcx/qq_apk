@@ -19,7 +19,7 @@ final class ExportReportSession$Bean
   
   public ExportReportSession$Bean()
   {
-    super("TAVFoundation", "android_avfoundation_export", "1.1.-");
+    super("TAVFoundation", "android_avfoundation_export", "2.2.2.5");
   }
   
   public String toString()
@@ -41,7 +41,7 @@ final class ExportReportSession$Bean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.report.ExportReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

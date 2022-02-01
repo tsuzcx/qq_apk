@@ -27,90 +27,44 @@ public class AIOBrowserBasePresenter
   extends BasePresenter
   implements IDecoratorPresenter, IActivityEvent
 {
-  private ImmersionHelper a;
   public AIOBrowserPresenter a;
-  public AIOBrowserBaseView a;
-  public BrowserBasePresenter a;
-  public ConcurrentHashMap<Long, Set<DanmuItemBean>> a;
-  
-  public AIOBrowserBasePresenter()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public AIOBrowserBaseView b;
+  public BrowserBasePresenter c;
+  public ConcurrentHashMap<Long, Set<DanmuItemBean>> d = new ConcurrentHashMap();
+  private ImmersionHelper e;
   
   public int a(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong, paramInt1, paramInt2, paramString);
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null)) {
+      return this.a.b.a(paramLong, paramInt1, paramInt2, paramString);
     }
     return -1;
   }
   
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public CommentDanmakuManager a()
-  {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if (localAIOBrowserPresenter != null) {
-      return localAIOBrowserPresenter.a();
-    }
-    return null;
-  }
-  
-  public ImmersionHelper a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper = new ImmersionHelper(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper;
-  }
-  
-  public RichMediaBrowserInfo a()
-  {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a();
-    }
-    return null;
-  }
-  
   public RichMediaBrowserInfo a(long paramLong)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong);
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null)) {
+      return this.a.b.b(paramLong);
     }
     return null;
   }
   
   public RichMediaBrowserInfo a(long paramLong1, long paramLong2)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong1, paramLong2);
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null)) {
+      return this.a.b.a(paramLong1, paramLong2);
     }
     return null;
   }
   
-  public void a()
-  {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if (localAIOBrowserPresenter != null) {
-      localAIOBrowserPresenter.d();
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong, paramInt1, paramInt2);
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null)) {
+      this.a.b.a(paramLong, paramInt1, paramInt2);
     }
   }
   
@@ -122,7 +76,7 @@ public class AIOBrowserBasePresenter
   
   public void a(AIOBrowserPresenter paramAIOBrowserPresenter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter = paramAIOBrowserPresenter;
+    this.a = paramAIOBrowserPresenter;
   }
   
   public void a(IDecoratorModel paramIDecoratorModel) {}
@@ -130,20 +84,20 @@ public class AIOBrowserBasePresenter
   public void a(IDecoratorView paramIDecoratorView)
   {
     if ((paramIDecoratorView instanceof AIOBrowserBaseView)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView = ((AIOBrowserBaseView)paramIDecoratorView);
+      this.b = ((AIOBrowserBaseView)paramIDecoratorView);
     }
   }
   
   public void a(IBasePresenterBuilder paramIBasePresenterBuilder)
   {
     if ((paramIBasePresenterBuilder instanceof BrowserBasePresenter)) {
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter = ((BrowserBasePresenter)paramIBasePresenterBuilder);
+      this.c = ((BrowserBasePresenter)paramIBasePresenterBuilder);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
     if (localAIOBrowserPresenter != null) {
       localAIOBrowserPresenter.a(paramBoolean);
     }
@@ -151,13 +105,13 @@ public class AIOBrowserBasePresenter
   
   public boolean a()
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    return (localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a());
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    return (localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null) && (this.a.b.b());
   }
   
   public boolean a(int paramInt)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
     if (localAIOBrowserPresenter != null) {
       return localAIOBrowserPresenter.b(paramInt);
     }
@@ -169,7 +123,16 @@ public class AIOBrowserBasePresenter
     return BrowserDanmakuUtils.a(paramRichMediaBrowserInfo);
   }
   
-  public void b() {}
+  public CommentDanmakuManager b()
+  {
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if (localAIOBrowserPresenter != null) {
+      return localAIOBrowserPresenter.d();
+    }
+    return null;
+  }
+  
+  public void b(int paramInt) {}
   
   public void b(IBasePresenterBuilder paramIBasePresenterBuilder)
   {
@@ -180,106 +143,138 @@ public class AIOBrowserBasePresenter
   
   public void b(boolean paramBoolean)
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a(paramBoolean);
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.a != null)) {
+      this.a.a.a(paramBoolean);
     }
-  }
-  
-  public boolean b()
-  {
-    return false;
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBrowserBasePresenter", 2, "onDanmakuDrawFinish");
-    }
-    if ((b()) && (!a().a))
-    {
-      a().b();
-      a().a();
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if (localAIOBrowserPresenter != null) {
+      localAIOBrowserPresenter.f();
     }
   }
   
-  public boolean c()
+  public long d()
+  {
+    return 0L;
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOBrowserBasePresenter", 2, "onDanmakuDrawFinish");
+    }
+    if ((h()) && (!g().a))
+    {
+      g().b();
+      g().a();
+    }
+  }
+  
+  public ImmersionHelper g()
+  {
+    if (this.e == null) {
+      this.e = new ImmersionHelper(this);
+    }
+    return this.e;
+  }
+  
+  public boolean h()
   {
     return false;
   }
   
-  public void d()
+  public boolean i()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    return false;
+  }
+  
+  public void j()
+  {
+    Object localObject = this.a;
     if (localObject != null) {
-      ((AIOBrowserPresenter)localObject).j();
+      ((AIOBrowserPresenter)localObject).l();
     }
-    localObject = this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter;
+    localObject = this.c;
     if (localObject != null) {
       ((BrowserBasePresenter)localObject).back();
     }
   }
   
-  public boolean d()
+  @RequiresApi(api=11)
+  public void k()
   {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a();
+    if (this.c.getContentView() != null) {
+      this.c.getContentView().setAlpha(0.3F);
+    }
+  }
+  
+  public void l()
+  {
+    AIOBrowserBaseView localAIOBrowserBaseView = this.b;
+    if ((localAIOBrowserBaseView != null) && (localAIOBrowserBaseView.g != null)) {
+      this.b.g.setAlpha(0.3F);
+    }
+  }
+  
+  @RequiresApi(api=11)
+  public void m()
+  {
+    if (this.c.getContentView() != null) {
+      this.c.getContentView().setAlpha(1.0F);
+    }
+  }
+  
+  public void n()
+  {
+    AIOBrowserBaseView localAIOBrowserBaseView = this.b;
+    if ((localAIOBrowserBaseView != null) && (localAIOBrowserBaseView.g != null)) {
+      this.b.g.setAlpha(1.0F);
+    }
+  }
+  
+  public boolean o()
+  {
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.a != null)) {
+      return this.a.a.a();
     }
     return false;
   }
   
-  @RequiresApi(api=11)
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getContentView() != null) {
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getContentView().setAlpha(0.3F);
-    }
-  }
-  
-  public void f()
-  {
-    AIOBrowserBaseView localAIOBrowserBaseView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView;
-    if ((localAIOBrowserBaseView != null) && (localAIOBrowserBaseView.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView.a.setAlpha(0.3F);
-    }
-  }
-  
-  @RequiresApi(api=11)
-  public void g()
-  {
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getContentView() != null) {
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getContentView().setAlpha(1.0F);
-    }
-  }
-  
-  public void h()
-  {
-    AIOBrowserBaseView localAIOBrowserBaseView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView;
-    if ((localAIOBrowserBaseView != null) && (localAIOBrowserBaseView.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView.a.setAlpha(1.0F);
-    }
-  }
-  
-  public void i()
-  {
-    AIOBrowserPresenter localAIOBrowserPresenter = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if (localAIOBrowserPresenter != null) {
-      localAIOBrowserPresenter.n();
-    }
-  }
-  
   public void onDestroy()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.d;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.clear();
+    }
+  }
+  
+  public RichMediaBrowserInfo p()
+  {
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if ((localAIOBrowserPresenter != null) && (localAIOBrowserPresenter.b != null)) {
+      return this.a.b.a();
+    }
+    return null;
+  }
+  
+  public void q()
+  {
+    AIOBrowserPresenter localAIOBrowserPresenter = this.a;
+    if (localAIOBrowserPresenter != null) {
+      localAIOBrowserPresenter.p();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserBasePresenter
  * JD-Core Version:    0.7.0.1
  */

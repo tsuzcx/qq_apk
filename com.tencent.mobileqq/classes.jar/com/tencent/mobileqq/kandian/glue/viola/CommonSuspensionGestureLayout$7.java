@@ -11,9 +11,9 @@ class CommonSuspensionGestureLayout$7
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaCommonSuspensionGestureLayout).setVisibility(8);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaCommonSuspensionGestureLayout, this.b);
+    CommonSuspensionGestureLayout.f(this.c).setVisibility(8);
+    CommonSuspensionGestureLayout.g(this.c).a(true, this.a, this.b);
+    CommonSuspensionGestureLayout.d(this.c, this.b);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class CommonSuspensionGestureLayout$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout.7
  * JD-Core Version:    0.7.0.1
  */

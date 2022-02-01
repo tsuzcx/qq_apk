@@ -15,13 +15,13 @@ public class FavoritesProvider
   extends AppContentProvider
   implements Favorites
 {
-  private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
-  private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, Favorites.IProxy> jdField_a_of_type_JavaUtilMap;
+  private UriMatcher c;
+  private Map<Integer, Favorites.IProxy> d;
+  private String e;
   
   private Favorites.IProxy a(Uri paramUri)
   {
-    int i1 = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+    int i1 = this.c.match(paramUri);
     if (i1 == -1)
     {
       if (QLog.isColorLevel())
@@ -44,18 +44,31 @@ public class FavoritesProvider
     }
     Object localObject1 = null;
     int m = 0;
-    while (((localBaseApplicationImpl == null) || (localObject1 == null)) && (k == 0) && (m < 10))
+    Object localObject3;
+    Object localObject4;
+    Object localObject2;
+    for (;;)
     {
-      try
+      if (localBaseApplicationImpl != null)
       {
-        Thread.sleep(30L);
+        localObject3 = localBaseApplicationImpl;
+        localObject4 = localObject1;
+        if (localObject1 != null) {
+          break;
+        }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
+      localObject3 = localBaseApplicationImpl;
+      localObject4 = localObject1;
+      if (k != 0) {
+        break;
+      }
+      localObject3 = localBaseApplicationImpl;
+      localObject4 = localObject1;
+      if (m >= 10) {
+        break;
       }
       localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      Object localObject2 = localObject1;
+      localObject3 = localObject1;
       int n = i;
       if (localBaseApplicationImpl != null)
       {
@@ -65,61 +78,76 @@ public class FavoritesProvider
           QfavHelper.a(false);
           j = 0;
         }
-        localObject2 = localObject1;
+        localObject3 = localObject1;
         n = j;
-        if (QfavHelper.a())
+        if (QfavHelper.b())
         {
-          localObject2 = localBaseApplicationImpl.getRuntime();
+          localObject1 = localBaseApplicationImpl.getRuntime();
+          localObject3 = localObject1;
           n = j;
+          if (localObject1 != null)
+          {
+            localObject3 = localBaseApplicationImpl;
+            localObject4 = localObject1;
+            break;
+          }
         }
       }
+      try
+      {
+        Thread.sleep(30L);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
       m += 1;
-      localObject1 = localObject2;
+      localObject2 = localObject3;
       i = n;
     }
-    if (localBaseApplicationImpl != null)
+    if (localObject3 != null)
     {
-      if (localObject1 == null) {
+      if (localObject4 == null) {
         return null;
       }
       paramUri = paramUri.getLastPathSegment();
-      if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
+      if (this.e.equals(paramUri))
       {
-        localObject1 = (Favorites.IProxy)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i1));
-        if (localObject1 != null)
+        localObject2 = (Favorites.IProxy)this.d.get(Integer.valueOf(i1));
+        if (localObject2 != null)
         {
           if (i1 != 100)
           {
-            if ((i1 == 101) && (localObject1.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$GlobalSearchProxy"))) {
-              return localObject1;
+            if ((i1 == 101) && (localObject2.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$GlobalSearchProxy"))) {
+              return localObject2;
             }
           }
-          else if (localObject1.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$Proxy")) {
-            return localObject1;
+          else if (localObject2.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$Proxy")) {
+            return localObject2;
           }
         }
         else if (QLog.isColorLevel())
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("getProxy|match cacheuin but provider null, match=");
-          ((StringBuilder)localObject1).append(i1);
-          ((StringBuilder)localObject1).append(",uin=");
-          ((StringBuilder)localObject1).append(paramUri);
-          QLog.e("qqfav|FavoritesProvider", 2, ((StringBuilder)localObject1).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getProxy|match cacheuin but provider null, match=");
+          ((StringBuilder)localObject2).append(i1);
+          ((StringBuilder)localObject2).append(",uin=");
+          ((StringBuilder)localObject2).append(paramUri);
+          QLog.e("qqfav|FavoritesProvider", 2, ((StringBuilder)localObject2).toString());
         }
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_JavaLangString = paramUri;
+        this.d.clear();
+        this.e = paramUri;
         if (QLog.isDevelopLevel())
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("getProxy|cache uin unmatch, match=");
-          ((StringBuilder)localObject1).append(i1);
-          ((StringBuilder)localObject1).append(",uin=");
-          ((StringBuilder)localObject1).append(paramUri);
-          QLog.e("qqfav|FavoritesProvider", 4, ((StringBuilder)localObject1).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getProxy|cache uin unmatch, match=");
+          ((StringBuilder)localObject2).append(i1);
+          ((StringBuilder)localObject2).append(",uin=");
+          ((StringBuilder)localObject2).append(paramUri);
+          QLog.e("qqfav|FavoritesProvider", 4, ((StringBuilder)localObject2).toString());
         }
       }
       if (i1 != 100)
@@ -135,7 +163,7 @@ public class FavoritesProvider
       }
       if (paramUri != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i1), paramUri);
+        this.d.put(Integer.valueOf(i1), paramUri);
         return paramUri;
       }
       if (QLog.isColorLevel()) {
@@ -171,11 +199,11 @@ public class FavoritesProvider
   public boolean onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentUriMatcher = new UriMatcher(-1);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.favorites", "biz_related/#", 100);
-    this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.favorites", "global_search/#", 101);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaLangString = "";
+    this.c = new UriMatcher(-1);
+    this.c.addURI("qq.favorites", "biz_related/#", 100);
+    this.c.addURI("qq.favorites", "global_search/#", 101);
+    this.d = new HashMap();
+    this.e = "";
     return true;
   }
   
@@ -210,7 +238,7 @@ public class FavoritesProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.content.FavoritesProvider
  * JD-Core Version:    0.7.0.1
  */

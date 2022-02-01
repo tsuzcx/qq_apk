@@ -18,15 +18,15 @@ import org.json.JSONObject;
 public class GdtQQHippyDemoFragment
   extends PublicBaseFragment
 {
-  private ViewGroup a;
   public HippyQQEngine a;
+  private ViewGroup b;
   
   private void a()
   {
     GdtLog.b("GdtQQHippyDemoFragment", "initHippy");
     JSONObject localJSONObject = new JSONObject();
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380915);
-    this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.initHippyInContainer(localViewGroup, localJSONObject, false, new GdtQQHippyDemoFragment.1(this));
+    ViewGroup localViewGroup = (ViewGroup)this.b.findViewById(2131449905);
+    this.a.initHippyInContainer(localViewGroup, localJSONObject, false, new GdtQQHippyDemoFragment.1(this));
   }
   
   public static void a(Activity paramActivity)
@@ -41,14 +41,14 @@ public class GdtQQHippyDemoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onCreateView");
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131559129, paramViewGroup, false));
-    if (this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine == null)
+    this.b = ((ViewGroup)paramLayoutInflater.inflate(2131624873, paramViewGroup, false));
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = new GdtHippyEngine(this, "tangramHippyPage", null);
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine.setJsBundleType("react");
+      this.a = new GdtHippyEngine(this, "tangramHippyPage", null);
+      this.a.setJsBundleType("react");
     }
     a();
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
+    paramLayoutInflater = this.b;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -57,11 +57,11 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onDestroy");
     super.onDestroy();
-    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    HippyQQEngine localHippyQQEngine = this.a;
     if (localHippyQQEngine != null)
     {
       localHippyQQEngine.onDestroy();
-      this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine = null;
+      this.a = null;
     }
   }
   
@@ -69,7 +69,7 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onPause");
     super.onPause();
-    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    HippyQQEngine localHippyQQEngine = this.a;
     if (localHippyQQEngine != null) {
       localHippyQQEngine.onPause();
     }
@@ -79,7 +79,7 @@ public class GdtQQHippyDemoFragment
   {
     GdtLog.b("GdtQQHippyDemoFragment", "onResume");
     super.onResume();
-    HippyQQEngine localHippyQQEngine = this.jdField_a_of_type_ComTencentHippyQqAppHippyQQEngine;
+    HippyQQEngine localHippyQQEngine = this.a;
     if (localHippyQQEngine != null) {
       localHippyQQEngine.onResume();
     }
@@ -93,7 +93,7 @@ public class GdtQQHippyDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQHippyDemoFragment
  * JD-Core Version:    0.7.0.1
  */

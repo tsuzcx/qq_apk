@@ -17,30 +17,30 @@ import mqq.os.MqqHandler;
 class DiscussionInfoCardActivity$8
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getMessageFacade().a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getMessageFacade().c(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "chat_history_confirm_del_msg");
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getHandler(Conversation.class);
+      this.b.app.getMessageFacade().c(DiscussionInfoCardActivity.c(this.b), 3000);
+      this.b.app.getMessageFacade().g(DiscussionInfoCardActivity.c(this.b), 3000);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.b.app, "chat_history_confirm_del_msg");
+      paramView = this.b.app.getHandler(Conversation.class);
       Message localMessage = paramView.obtainMessage(1017);
-      localMessage.obj = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+      localMessage.obj = DiscussionInfoCardActivity.c(this.b);
       localMessage.arg1 = 3000;
       paramView.sendMessage(localMessage);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity;
-      QQToast.a(paramView, 2, paramView.getString(2131690865), 0).a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a != null) {
-        ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.findViewById(2131378784)).setTextColor(Color.parseColor("#cccccc"));
+      paramView = this.b;
+      QQToast.makeText(paramView, 2, paramView.getString(2131887802), 0).show();
+      if (this.b.b != null) {
+        ((TextView)this.b.b.findViewById(2131447463)).setTextColor(Color.parseColor("#cccccc"));
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.8
  * JD-Core Version:    0.7.0.1
  */

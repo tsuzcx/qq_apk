@@ -12,15 +12,15 @@ class ShareUtils$4
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (ShareUtils.a(this.a) != null)) {
-      ShareUtils.a(this.a).a();
+    if ((paramInt == 4) && (ShareUtils.d(this.a) != null)) {
+      ShareUtils.d(this.a).a();
     }
     return paramInt == 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.ShareUtils.4
  * JD-Core Version:    0.7.0.1
  */

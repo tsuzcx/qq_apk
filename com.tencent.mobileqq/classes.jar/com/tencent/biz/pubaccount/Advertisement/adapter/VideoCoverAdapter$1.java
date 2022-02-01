@@ -19,17 +19,17 @@ class VideoCoverAdapter$1
       VideoCoverItem localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.this$0).get(0);
       if (localVideoCoverItem != null)
       {
-        if (localVideoCoverItem.a == null) {
+        if (localVideoCoverItem.d == null) {
           return;
         }
-        ((VideoCoverView)localVideoCoverItem.a).a(VideoCoverAdapter.a(this.this$0));
+        ((VideoCoverView)localVideoCoverItem.d).a(VideoCoverAdapter.b(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter.1
  * JD-Core Version:    0.7.0.1
  */

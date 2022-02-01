@@ -3,13 +3,14 @@ package androidx.appcompat.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.ViewCompat;
@@ -23,13 +24,11 @@ public class ButtonBarLayout
   private int mLastWidthSize = -1;
   private int mMinimumHeight = 0;
   
-  public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
+  public ButtonBarLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ButtonBarLayout);
-    if (Build.VERSION.SDK_INT >= 29) {
-      saveAttributeDataForStyleable(paramContext, R.styleable.ButtonBarLayout, paramAttributeSet, localTypedArray, 0, 0);
-    }
+    ViewCompat.saveAttributeDataForStyleable(this, paramContext, R.styleable.ButtonBarLayout, paramAttributeSet, localTypedArray, 0, 0);
     this.mAllowStacking = localTypedArray.getBoolean(R.styleable.ButtonBarLayout_allowStacking, true);
     localTypedArray.recycle();
   }

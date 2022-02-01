@@ -45,14 +45,14 @@ public class ShoppingFragment
   implements Handler.Callback
 {
   public static String a = "ShoppingFragment";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  private RelativeFeedsAdapter jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
-  private BlockContainer jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
-  private ShoppingHeadView jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-  private boolean jdField_a_of_type_Boolean;
+  protected View b;
+  private Activity c;
+  private BlockContainer d;
+  private ShoppingHeadView e;
+  private final MqqHandler f = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private QQAppInterface g;
+  private boolean h;
+  private RelativeFeedsAdapter i;
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -72,7 +72,7 @@ public class ShoppingFragment
     }
     if (!paramVacMemberGetOrderCntRsp.order_states.has())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.a();
+      this.e.a();
       return;
     }
     paramVacMemberGetOrderCntRsp = paramVacMemberGetOrderCntRsp.order_states.get().iterator();
@@ -81,28 +81,28 @@ public class ShoppingFragment
       VacAdvGetAccess.OrderStateInfo localOrderStateInfo = (VacAdvGetAccess.OrderStateInfo)paramVacMemberGetOrderCntRsp.next();
       if ((localOrderStateInfo.state.has()) && (localOrderStateInfo.state.has()) && (localOrderStateInfo.total_num.has()))
       {
-        int i = localOrderStateInfo.total_num.get();
-        int j = localOrderStateInfo.state.get();
-        if (j != 0)
+        int j = localOrderStateInfo.total_num.get();
+        int k = localOrderStateInfo.state.get();
+        if (k != 0)
         {
-          if (j != 1)
+          if (k != 1)
           {
-            if (j != 2)
+            if (k != 2)
             {
-              if (j == 4) {
-                this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSaleViewCount(i);
+              if (k == 4) {
+                this.e.setAfterSaleViewCount(j);
               }
             }
             else {
-              this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSendViewCount(i);
+              this.e.setAfterSendViewCount(j);
             }
           }
           else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToSendViewCount(i);
+            this.e.setToSendViewCount(j);
           }
         }
         else {
-          this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToPayViewCount(i);
+          this.e.setToPayViewCount(j);
         }
       }
     }
@@ -128,7 +128,7 @@ public class ShoppingFragment
   
   private void b()
   {
-    String str = getString(2131693796);
+    String str = getString(2131891371);
     Object localObject = getBaseActivity();
     if ((localObject != null) && (((Activity)localObject).getIntent() != null)) {
       localObject = ((Activity)localObject).getIntent().getStringExtra("KEY_TITLE_NAME");
@@ -157,63 +157,63 @@ public class ShoppingFragment
   
   private void c(RelativeFeedsAdapter paramRelativeFeedsAdapter)
   {
-    GetSubscribeFeedListRequest localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(2, null, paramRelativeFeedsAdapter.a().a(), paramRelativeFeedsAdapter.a().b());
+    GetSubscribeFeedListRequest localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(2, null, paramRelativeFeedsAdapter.D().h(), paramRelativeFeedsAdapter.D().i());
     VSNetworkHelper.getInstance().sendRequest(localGetSubscribeFeedListRequest, new ShoppingFragment.6(this, paramRelativeFeedsAdapter));
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setOnClickEventListener(new ShoppingFragment.1(this));
+    this.e.setOnClickEventListener(new ShoppingFragment.1(this));
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.g == null) {
       return;
     }
     VacAdvGetAccess.VacMemberGetOrderCntReq localVacMemberGetOrderCntReq = new VacAdvGetAccess.VacMemberGetOrderCntReq();
     localVacMemberGetOrderCntReq.ware_house_id.set(102);
     localVacMemberGetOrderCntReq.media_type.set(4);
-    localVacMemberGetOrderCntReq.buyer_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    localVacMemberGetOrderCntReq.buyer_id.set(this.g.getCurrentUin());
     PbProtocol.a("QQLive.MemberGetOrderCnt", localVacMemberGetOrderCntReq, VacAdvGetAccess.VacMemberGetOrderCntRsp.class, new ShoppingFragment.2(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131370199));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setLayoutManagerType(3, 2);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView = new ShoppingHeadView(getBaseActivity());
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter = new RelativeFeedsAdapter(null);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b(2);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.c(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b(false);
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a(new ShoppingFragment.3(this));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(new ShoppingFragment.4(this, null));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableRefresh(true);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.c();
+    this.d = ((BlockContainer)this.b.findViewById(2131437376));
+    this.d.setParentFragment(this);
+    this.d.setLayoutManagerType(3, 2);
+    this.d.setEnableLoadMore(true);
+    this.e = new ShoppingHeadView(getBaseActivity());
+    this.i = new RelativeFeedsAdapter(null);
+    this.i.c(2);
+    this.i.c(this.h);
+    this.i.b(false);
+    this.i.a(new ShoppingFragment.3(this));
+    this.d.a(new ShoppingFragment.4(this, null));
+    this.d.a(this.i);
+    this.d.setEnableRefresh(true);
+    this.d.e();
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getBaseActivity()).inflate(2131559311, null, false);
+    if (this.b == null) {
+      this.b = LayoutInflater.from(getBaseActivity()).inflate(2131625260, null, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.g = getBaseActivity().app;
+    QQAppInterface localQQAppInterface = this.g;
     if (localQQAppInterface != null) {
-      localQQAppInterface.setHandler(ShoppingFragment.class, this.jdField_a_of_type_MqqOsMqqHandler);
+      localQQAppInterface.setHandler(ShoppingFragment.class, this.f);
     }
-    this.jdField_a_of_type_AndroidAppActivity = getBaseActivity();
+    this.c = getBaseActivity();
     f();
     d();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131559311;
+    return 2131625260;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -227,11 +227,11 @@ public class ShoppingFragment
   public void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
+    Object localObject = this.d;
     if (localObject != null) {
-      ((BlockContainer)localObject).b();
+      ((BlockContainer)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = this.g;
     if (localObject != null) {
       ((QQAppInterface)localObject).removeHandler(ShoppingFragment.class);
     }
@@ -239,12 +239,12 @@ public class ShoppingFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = SubscribeUtils.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
+    this.b = paramView;
+    this.h = SubscribeUtils.a();
+    if (this.h) {
+      this.b.setBackgroundColor(-16777216);
     } else {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-657670);
+      this.b.setBackgroundColor(-657670);
     }
     b();
     a();
@@ -254,7 +254,7 @@ public class ShoppingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment
  * JD-Core Version:    0.7.0.1
  */

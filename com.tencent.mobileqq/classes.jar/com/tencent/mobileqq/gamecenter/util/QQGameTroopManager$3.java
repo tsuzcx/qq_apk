@@ -41,7 +41,7 @@ class QQGameTroopManager$3
           while (paramString.hasNext())
           {
             paramTrpcInovkeRsp = (sgame_qgroup_datacard.GroupMemberInfo)paramString.next();
-            Map localMap = QQGameTroopManager.a;
+            Map localMap = QQGameTroopManager.d;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(paramTrpcInovkeRsp.uin.get());
             localStringBuilder.append("");
@@ -75,7 +75,7 @@ class QQGameTroopManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.3
  * JD-Core Version:    0.7.0.1
  */

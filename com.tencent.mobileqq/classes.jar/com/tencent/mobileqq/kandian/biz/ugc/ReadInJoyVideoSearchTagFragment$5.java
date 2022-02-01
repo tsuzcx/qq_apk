@@ -15,9 +15,9 @@ class ReadInJoyVideoSearchTagFragment$5
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyVideoSearchTagFragment.getQBaseActivity(), 2131718055, 0).a();
+      QQToast.makeText(this.b.getQBaseActivity(), 2131915532, 0).show();
     }
     else
     {
@@ -26,15 +26,15 @@ class ReadInJoyVideoSearchTagFragment$5
       if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
       {
         paramView.putExtra("SEARCH_TAG_RESULT", (TagInfo)paramAdapterView);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyVideoSearchTagFragment.getQBaseActivity().setResult(-1, paramView);
+        this.b.getQBaseActivity().setResult(-1, paramView);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyVideoSearchTagFragment.getQBaseActivity().finish();
+    this.b.getQBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyVideoSearchTagFragment.5
  * JD-Core Version:    0.7.0.1
  */

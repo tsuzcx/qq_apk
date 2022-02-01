@@ -28,6 +28,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.ChatMsgRedDotInfo;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
@@ -50,14 +51,14 @@ public class QCircleHandler
   
   private ChatAdapter1 a()
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+    if (!(this.d instanceof BaseActivity)) {
       return null;
     }
-    ChatFragment localChatFragment = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    ChatFragment localChatFragment = ((BaseActivity)this.d).getChatFragment();
     if (localChatFragment == null) {
       return null;
     }
-    return localChatFragment.a().a;
+    return localChatFragment.k().V;
   }
   
   private void a(Context paramContext, String paramString1, String paramString2)
@@ -168,7 +169,7 @@ public class QCircleHandler
         if ((paramChatMessage.getChatMsgRedDotInfo().getQcircleRedDotFlag()) && (paramChatMessage.istroop == 1))
         {
           paramViewGroup.setViewVisibility(0);
-          paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          paramViewGroup.setOnClickListener(this.e);
           paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQcircleJumpIconUrl() });
         }
         else
@@ -187,7 +188,7 @@ public class QCircleHandler
           if ((paramChatMessage.getChatMsgRedDotInfo().getQzoneRedDotFlag()) && (paramChatMessage.istroop == 1))
           {
             paramViewGroup.setViewVisibility(0);
-            paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+            paramViewGroup.setOnClickListener(this.e);
             paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQzoneJumpIconUrl() });
             return;
           }
@@ -197,7 +198,7 @@ public class QCircleHandler
     }
   }
   
-  public void a(View paramView)
+  public void b(View paramView)
   {
     if (paramView == null) {
       return;
@@ -205,9 +206,9 @@ public class QCircleHandler
     ChatMessage localChatMessage;
     Object localObject1;
     Object localObject2;
-    if (paramView.getId() == 2131364562)
+    if (paramView.getId() == 2131430621)
     {
-      localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
+      localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.b(paramView)).q;
       localObject1 = a();
       if (localObject1 != null)
       {
@@ -215,21 +216,21 @@ public class QCircleHandler
           return;
         }
         localObject2 = localChatMessage.getChatMsgRedDotInfo().getQcircleRedDotJumpSchema();
-        paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject2);
+        paramView = JumpParser.a(this.b, paramView.getContext(), (String)localObject2);
         if (paramView != null) {
           paramView.a();
         }
         paramView = ((ChatAdapter1)localObject1).a();
         AIOTroopQcircleRedDotManager.a().a(paramView, localChatMessage.senderuin);
         ((ChatAdapter1)localObject1).notifyDataSetChanged();
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(localChatMessage.senderuin, 61, 1, 2);
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setToUin(localChatMessage.senderuin).setActionType(61).setSubActionType(1).setThrActionType(2));
         return;
       }
       return;
     }
-    if (paramView.getId() == 2131364563)
+    if (paramView.getId() == 2131430622)
     {
-      localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
+      localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.b(paramView)).q;
       localObject1 = a();
       if (localObject1 != null)
       {
@@ -246,12 +247,12 @@ public class QCircleHandler
         }
         else
         {
-          paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject1);
+          paramView = JumpParser.a(this.b, paramView.getContext(), (String)localObject1);
           if (paramView != null) {
             paramView.a();
           }
         }
-        if (!AIOTroopQcircleRedDotManager.d())
+        if (!AIOTroopQcircleRedDotManager.e())
         {
           LpReportInfo_pf00064.report(1200, 1, 2, localChatMessage.senderuin);
           return;
@@ -263,7 +264,7 @@ public class QCircleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.QCircleHandler
  * JD-Core Version:    0.7.0.1
  */

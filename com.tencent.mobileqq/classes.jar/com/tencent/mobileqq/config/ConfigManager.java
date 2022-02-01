@@ -21,24 +21,18 @@ import protocol.KQQConfig.GetResourceRespInfoV2;
 public class ConfigManager
   implements CommandListener, IHttpCommunicatorListener
 {
-  private static int jdField_a_of_type_Int = 1;
-  public static final byte[] a;
-  public ConfigManager.UpdateStruct a;
-  private File jdField_a_of_type_JavaIoFile;
-  String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[] { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
-  }
+  public static final byte[] a = { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
+  private static int e = 1;
+  public ConfigManager.UpdateStruct b = new ConfigManager.UpdateStruct(this);
+  String c;
+  private Timer d;
+  private boolean f = false;
+  private int[] g = new int[0];
+  private File h;
+  private String i;
   
   public ConfigManager(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager$UpdateStruct = new ConfigManager.UpdateStruct(this);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(paramContext.getFilesDir().getAbsolutePath());
     ((StringBuilder)localObject1).append("/");
@@ -57,27 +51,27 @@ public class ConfigManager
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append("/");
       ((StringBuilder)localObject2).append("qq_config.dat");
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      this.c = ((StringBuilder)localObject2).toString();
       if (QLog.isDevelopLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("savePointFilePath == ");
-        paramContext.append(this.jdField_a_of_type_JavaLangString);
+        paramContext.append(this.c);
         QLog.i("SPLASH_ConfigServlet", 4, paramContext.toString());
       }
-      this.jdField_a_of_type_JavaIoFile = new File((String)localObject1, "qq_config.dat");
+      this.h = new File((String)localObject1, "qq_config.dat");
       try
       {
-        if (!this.jdField_a_of_type_JavaIoFile.exists()) {
-          this.jdField_a_of_type_JavaIoFile.createNewFile();
+        if (!this.h.exists()) {
+          this.h.createNewFile();
         }
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
-      this.jdField_a_of_type_JavaUtilTimer = ThreadManager.getTimer();
-      this.b = paramString;
+      this.d = ThreadManager.getTimer();
+      this.i = paramString;
       return;
     }
     catch (Exception localException)
@@ -88,9 +82,9 @@ public class ConfigManager
   
   public static final int a()
   {
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    return i;
+    int j = e;
+    e = j + 1;
+    return j;
   }
   
   public static ResourcePluginInfo a(EntityManager paramEntityManager, boolean paramBoolean, GetResourceRespInfoV2 paramGetResourceRespInfoV2)
@@ -114,7 +108,7 @@ public class ConfigManager
       ((StringBuilder)localObject1).append(paramGetResourceRespInfoV2.strResConf);
       QLog.i("ConfigManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = ConfigParser.a(paramGetResourceRespInfoV2.strResConf);
+    Object localObject1 = ConfigParser.b(paramGetResourceRespInfoV2.strResConf);
     if (localObject1 != null)
     {
       localResourcePluginInfo.strGotoUrl = ((String)((HashMap)localObject1).get("pluginEntranceUrl"));
@@ -230,40 +224,45 @@ public class ConfigManager
     paramBaseConf.a(paramDataInputStream);
   }
   
+  public void a(BaseConf paramBaseConf, DataOutputStream paramDataOutputStream)
+  {
+    paramBaseConf.a(paramDataOutputStream);
+  }
+  
   /* Error */
-  public void a()
+  public void b()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   1: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
     //   4: astore 4
     //   6: aconst_null
     //   7: astore 7
     //   9: aload 4
     //   11: ifnull +69 -> 80
     //   14: aload 4
-    //   16: invokevirtual 89	java/io/File:exists	()Z
+    //   16: invokevirtual 96	java/io/File:exists	()Z
     //   19: ifeq +61 -> 80
     //   22: aload_0
-    //   23: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   26: invokevirtual 313	java/io/File:canRead	()Z
+    //   23: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   26: invokevirtual 323	java/io/File:canRead	()Z
     //   29: ifeq +51 -> 80
     //   32: aload_0
-    //   33: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   36: invokevirtual 317	java/io/File:length	()J
+    //   33: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   36: invokevirtual 327	java/io/File:length	()J
     //   39: lconst_0
     //   40: lcmp
     //   41: ifle +39 -> 80
-    //   44: new 319	java/io/FileInputStream
+    //   44: new 329	java/io/FileInputStream
     //   47: dup
     //   48: aload_0
-    //   49: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   52: invokespecial 322	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   49: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   52: invokespecial 332	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   55: astore 5
-    //   57: new 324	java/io/BufferedInputStream
+    //   57: new 334	java/io/BufferedInputStream
     //   60: dup
     //   61: aload 5
-    //   63: invokespecial 327	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   63: invokespecial 337	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   66: astore 4
     //   68: goto +19 -> 87
     //   71: aconst_null
@@ -286,24 +285,24 @@ public class ConfigManager
     //   100: aload 7
     //   102: astore 6
     //   104: aload 4
-    //   106: invokevirtual 330	java/io/BufferedInputStream:available	()I
+    //   106: invokevirtual 340	java/io/BufferedInputStream:available	()I
     //   109: ifle +206 -> 315
-    //   112: new 332	java/io/DataInputStream
+    //   112: new 342	java/io/DataInputStream
     //   115: dup
     //   116: aload 4
-    //   118: invokespecial 333	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   118: invokespecial 343	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   121: astore 6
     //   123: iconst_0
     //   124: istore_1
     //   125: aload 6
     //   127: astore 7
     //   129: iload_1
-    //   130: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   130: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   133: arraylength
     //   134: if_icmpge +79 -> 213
     //   137: aload 6
     //   139: astore 7
-    //   141: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   141: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   144: iload_1
     //   145: aaload
     //   146: astore 8
@@ -312,27 +311,27 @@ public class ConfigManager
     //   152: aload_0
     //   153: aload 8
     //   155: aload 6
-    //   157: invokespecial 340	com/tencent/mobileqq/config/ConfigManager:a	(Lcom/tencent/mobileqq/config/struct/BaseConf;Ljava/io/DataInputStream;)V
+    //   157: invokespecial 350	com/tencent/mobileqq/config/ConfigManager:a	(Lcom/tencent/mobileqq/config/struct/BaseConf;Ljava/io/DataInputStream;)V
     //   160: aload 6
     //   162: astore 7
     //   164: aload 8
-    //   166: getfield 342	com/tencent/mobileqq/config/struct/BaseConf:a	B
+    //   166: getfield 352	com/tencent/mobileqq/config/struct/BaseConf:e	B
     //   169: iconst_1
     //   170: if_icmpeq +15 -> 185
     //   173: aload 6
     //   175: astore 7
     //   177: aload 8
-    //   179: getfield 342	com/tencent/mobileqq/config/struct/BaseConf:a	B
+    //   179: getfield 352	com/tencent/mobileqq/config/struct/BaseConf:e	B
     //   182: ifne +24 -> 206
     //   185: aload 6
     //   187: astore 7
     //   189: aload 8
-    //   191: invokevirtual 344	com/tencent/mobileqq/config/struct/BaseConf:a	()Z
+    //   191: invokevirtual 354	com/tencent/mobileqq/config/struct/BaseConf:c	()Z
     //   194: ifeq +12 -> 206
     //   197: aload 6
     //   199: astore 7
     //   201: aload 8
-    //   203: invokevirtual 346	com/tencent/mobileqq/config/struct/BaseConf:a	()V
+    //   203: invokevirtual 356	com/tencent/mobileqq/config/struct/BaseConf:a	()V
     //   206: iload_1
     //   207: iconst_1
     //   208: iadd
@@ -351,21 +350,21 @@ public class ConfigManager
     //   234: aload 6
     //   236: astore 7
     //   238: aload 8
-    //   240: invokevirtual 120	java/lang/Exception:printStackTrace	()V
+    //   240: invokevirtual 126	java/lang/Exception:printStackTrace	()V
     //   243: aload 5
     //   245: ifnull +8 -> 253
     //   248: aload 5
-    //   250: invokevirtual 349	java/io/FileInputStream:close	()V
+    //   250: invokevirtual 359	java/io/FileInputStream:close	()V
     //   253: aload 4
     //   255: ifnull +8 -> 263
     //   258: aload 4
-    //   260: invokevirtual 350	java/io/BufferedInputStream:close	()V
+    //   260: invokevirtual 360	java/io/BufferedInputStream:close	()V
     //   263: iload_3
     //   264: istore_1
     //   265: aload 6
     //   267: ifnull +80 -> 347
     //   270: aload 6
-    //   272: invokevirtual 351	java/io/DataInputStream:close	()V
+    //   272: invokevirtual 361	java/io/DataInputStream:close	()V
     //   275: iload_3
     //   276: istore_1
     //   277: goto +70 -> 347
@@ -373,29 +372,29 @@ public class ConfigManager
     //   282: aload 5
     //   284: ifnull +8 -> 292
     //   287: aload 5
-    //   289: invokevirtual 349	java/io/FileInputStream:close	()V
+    //   289: invokevirtual 359	java/io/FileInputStream:close	()V
     //   292: aload 4
     //   294: ifnull +8 -> 302
     //   297: aload 4
-    //   299: invokevirtual 350	java/io/BufferedInputStream:close	()V
+    //   299: invokevirtual 360	java/io/BufferedInputStream:close	()V
     //   302: aload 7
     //   304: ifnull +8 -> 312
     //   307: aload 7
-    //   309: invokevirtual 351	java/io/DataInputStream:close	()V
+    //   309: invokevirtual 361	java/io/DataInputStream:close	()V
     //   312: aload 6
     //   314: athrow
     //   315: aload 5
     //   317: ifnull +8 -> 325
     //   320: aload 5
-    //   322: invokevirtual 349	java/io/FileInputStream:close	()V
+    //   322: invokevirtual 359	java/io/FileInputStream:close	()V
     //   325: aload 4
     //   327: ifnull +8 -> 335
     //   330: aload 4
-    //   332: invokevirtual 350	java/io/BufferedInputStream:close	()V
+    //   332: invokevirtual 360	java/io/BufferedInputStream:close	()V
     //   335: aload 6
     //   337: ifnull +8 -> 345
     //   340: aload 6
-    //   342: invokevirtual 351	java/io/DataInputStream:close	()V
+    //   342: invokevirtual 361	java/io/DataInputStream:close	()V
     //   345: iconst_0
     //   346: istore_1
     //   347: iload_1
@@ -403,13 +402,13 @@ public class ConfigManager
     //   351: iload_2
     //   352: istore_1
     //   353: iload_1
-    //   354: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   354: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   357: arraylength
     //   358: if_icmpge +18 -> 376
-    //   361: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   361: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   364: iload_1
     //   365: aaload
-    //   366: invokevirtual 346	com/tencent/mobileqq/config/struct/BaseConf:a	()V
+    //   366: invokevirtual 356	com/tencent/mobileqq/config/struct/BaseConf:a	()V
     //   369: iload_1
     //   370: iconst_1
     //   371: iadd
@@ -443,9 +442,9 @@ public class ConfigManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	434	0	this	ConfigManager
-    //   124	277	1	i	int
-    //   88	264	2	j	int
-    //   90	310	3	k	int
+    //   124	277	1	j	int
+    //   88	264	2	k	int
+    //   90	310	3	m	int
     //   4	327	4	localObject1	Object
     //   377	1	4	localException1	Exception
     //   382	1	4	localException2	Exception
@@ -499,25 +498,14 @@ public class ConfigManager
     //   340	345	429	java/lang/Exception
   }
   
-  public void a(BaseConf paramBaseConf, DataOutputStream paramDataOutputStream)
-  {
-    paramBaseConf.a(paramDataOutputStream);
-  }
-  
-  public boolean a()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager$UpdateStruct.a;
-    return (i == 1) || (i == 2);
-  }
-  
-  public void b()
+  public void c()
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists()))
+      if ((this.h != null) && (this.h.exists()))
       {
-        this.jdField_a_of_type_JavaIoFile.delete();
-        this.jdField_a_of_type_JavaIoFile = null;
+        this.h.delete();
+        this.h = null;
       }
       return;
     }
@@ -525,73 +513,73 @@ public class ConfigManager
   }
   
   /* Error */
-  public void c()
+  public void d()
   {
     // Byte code:
     //   0: aload_0
-    //   1: new 69	java/io/File
+    //   1: new 76	java/io/File
     //   4: dup
     //   5: aload_0
-    //   6: getfield 96	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
-    //   12: putfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   6: getfield 103	com/tencent/mobileqq/config/ConfigManager:c	Ljava/lang/String;
+    //   9: invokespecial 92	java/io/File:<init>	(Ljava/lang/String;)V
+    //   12: putfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
     //   15: aload_0
-    //   16: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   19: invokevirtual 89	java/io/File:exists	()Z
+    //   16: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   19: invokevirtual 96	java/io/File:exists	()Z
     //   22: ifne +19 -> 41
     //   25: aload_0
-    //   26: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   29: invokevirtual 117	java/io/File:createNewFile	()Z
+    //   26: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   29: invokevirtual 123	java/io/File:createNewFile	()Z
     //   32: pop
     //   33: goto +8 -> 41
     //   36: astore_2
     //   37: aload_2
-    //   38: invokevirtual 120	java/lang/Exception:printStackTrace	()V
+    //   38: invokevirtual 126	java/lang/Exception:printStackTrace	()V
     //   41: aload_0
-    //   42: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   42: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
     //   45: astore_2
     //   46: aload_2
     //   47: ifnull +160 -> 207
     //   50: aload_2
-    //   51: invokevirtual 89	java/io/File:exists	()Z
+    //   51: invokevirtual 96	java/io/File:exists	()Z
     //   54: ifeq +153 -> 207
     //   57: aconst_null
     //   58: astore_2
-    //   59: new 362	java/io/BufferedOutputStream
+    //   59: new 366	java/io/BufferedOutputStream
     //   62: dup
-    //   63: new 364	java/io/FileOutputStream
+    //   63: new 368	java/io/FileOutputStream
     //   66: dup
     //   67: aload_0
-    //   68: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   71: invokespecial 365	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   74: invokespecial 368	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   68: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   71: invokespecial 369	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   74: invokespecial 372	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   77: astore_3
-    //   78: new 370	java/io/DataOutputStream
+    //   78: new 374	java/io/DataOutputStream
     //   81: dup
     //   82: aload_3
-    //   83: invokespecial 371	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   83: invokespecial 375	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   86: astore 4
     //   88: iconst_0
     //   89: istore_1
     //   90: iload_1
-    //   91: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   91: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   94: arraylength
     //   95: if_icmpge +21 -> 116
     //   98: aload_0
-    //   99: getstatic 338	com/tencent/mobileqq/config/Config:a	[Lcom/tencent/mobileqq/config/struct/BaseConf;
+    //   99: getstatic 348	com/tencent/mobileqq/config/Config:e	[Lcom/tencent/mobileqq/config/struct/BaseConf;
     //   102: iload_1
     //   103: aaload
     //   104: aload 4
-    //   106: invokevirtual 373	com/tencent/mobileqq/config/ConfigManager:a	(Lcom/tencent/mobileqq/config/struct/BaseConf;Ljava/io/DataOutputStream;)V
+    //   106: invokevirtual 377	com/tencent/mobileqq/config/ConfigManager:a	(Lcom/tencent/mobileqq/config/struct/BaseConf;Ljava/io/DataOutputStream;)V
     //   109: iload_1
     //   110: iconst_1
     //   111: iadd
     //   112: istore_1
     //   113: goto -23 -> 90
     //   116: aload_3
-    //   117: invokevirtual 374	java/io/BufferedOutputStream:close	()V
+    //   117: invokevirtual 378	java/io/BufferedOutputStream:close	()V
     //   120: aload 4
-    //   122: invokevirtual 375	java/io/DataOutputStream:close	()V
+    //   122: invokevirtual 379	java/io/DataOutputStream:close	()V
     //   125: return
     //   126: astore_2
     //   127: aload_3
@@ -618,11 +606,11 @@ public class ConfigManager
     //   161: aload 5
     //   163: ifnull +8 -> 171
     //   166: aload 5
-    //   168: invokevirtual 374	java/io/BufferedOutputStream:close	()V
+    //   168: invokevirtual 378	java/io/BufferedOutputStream:close	()V
     //   171: aload_3
     //   172: ifnull +7 -> 179
     //   175: aload_3
-    //   176: invokevirtual 375	java/io/DataOutputStream:close	()V
+    //   176: invokevirtual 379	java/io/DataOutputStream:close	()V
     //   179: aload_2
     //   180: athrow
     //   181: aconst_null
@@ -630,14 +618,14 @@ public class ConfigManager
     //   183: aload_3
     //   184: ifnull +7 -> 191
     //   187: aload_3
-    //   188: invokevirtual 374	java/io/BufferedOutputStream:close	()V
+    //   188: invokevirtual 378	java/io/BufferedOutputStream:close	()V
     //   191: aload_2
     //   192: ifnull +7 -> 199
     //   195: aload_2
-    //   196: invokevirtual 375	java/io/DataOutputStream:close	()V
+    //   196: invokevirtual 379	java/io/DataOutputStream:close	()V
     //   199: aload_0
-    //   200: getfield 114	com/tencent/mobileqq/config/ConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   203: invokevirtual 359	java/io/File:delete	()Z
+    //   200: getfield 120	com/tencent/mobileqq/config/ConfigManager:h	Ljava/io/File;
+    //   203: invokevirtual 364	java/io/File:delete	()Z
     //   206: pop
     //   207: return
     //   208: astore_3
@@ -661,7 +649,7 @@ public class ConfigManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	244	0	this	ConfigManager
-    //   89	24	1	i	int
+    //   89	24	1	j	int
     //   36	2	2	localException1	Exception
     //   45	14	2	localFile	File
     //   126	1	2	localObject1	Object
@@ -697,10 +685,33 @@ public class ConfigManager
     //   195	199	240	java/lang/Exception
   }
   
-  public void d()
+  public void decode(HttpMsg arg1, HttpMsg paramHttpMsg2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = Config.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShanPing", 2, "config-huibao--decode------------");
+    }
+    paramHttpMsg2 = paramHttpMsg2.getRecvData();
+    try
+    {
+      synchronized (this.g)
+      {
+        if (this.f) {
+          return;
+        }
+        ConfigParser.a(paramHttpMsg2, new ConfigRespStruct(), this.i);
+        f();
+        e();
+        return;
+      }
+      return;
+    }
+    catch (RuntimeException ???) {}
+  }
+  
+  public void e()
+  {
+    this.f = true;
+    Object localObject = Config.d();
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -710,32 +721,15 @@ public class ConfigManager
     }
   }
   
-  public void decode(HttpMsg arg1, HttpMsg paramHttpMsg2)
+  public boolean f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShanPing", 2, "config-huibao--decode------------");
-    }
-    paramHttpMsg2 = paramHttpMsg2.getRecvData();
-    try
-    {
-      synchronized (this.jdField_a_of_type_ArrayOfInt)
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          return;
-        }
-        ConfigParser.a(paramHttpMsg2, new ConfigRespStruct(), this.b);
-        a();
-        d();
-        return;
-      }
-      return;
-    }
-    catch (RuntimeException ???) {}
+    int j = this.b.b;
+    return (j == 1) || (j == 2);
   }
   
   public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    d();
+    e();
   }
   
   public void handleRedirect(String paramString) {}
@@ -747,7 +741,7 @@ public class ConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.ConfigManager
  * JD-Core Version:    0.7.0.1
  */

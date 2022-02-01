@@ -39,14 +39,14 @@ public class GrayTipsReadConfirmCallback
             localStringBuilder.append("graytips lgraymr.hasRead=");
             localStringBuilder.append(((MessageForUniteGrayTip)localObject).hasRead);
             localStringBuilder.append("grayTipId=");
-            localStringBuilder.append(((MessageForUniteGrayTip)localObject).tipParam.b);
+            localStringBuilder.append(((MessageForUniteGrayTip)localObject).tipParam.i);
             localStringBuilder.append("subtype = ");
             localStringBuilder.append(((MessageForUniteGrayTip)localObject).subType);
             QLog.d("FriendReactive", 2, localStringBuilder.toString());
           }
-          if ((((MessageForUniteGrayTip)localObject).tipParam.b == 2097153) && (((MessageForUniteGrayTip)localObject).hasRead == 0))
+          if ((((MessageForUniteGrayTip)localObject).tipParam.i == 2097153) && (((MessageForUniteGrayTip)localObject).hasRead == 0))
           {
-            OldMutualMarkLogicHelper.a(paramAIOContext.a(), paramAIOContext.a(), (MessageForUniteGrayTip)localObject, paramAIOContext.a(), paramAIOContext.a(), ((MessageForUniteGrayTip)localObject).subType);
+            OldMutualMarkLogicHelper.a(paramAIOContext.a(), paramAIOContext.O(), (MessageForUniteGrayTip)localObject, paramAIOContext.g(), paramAIOContext.h(), ((MessageForUniteGrayTip)localObject).subType);
             ((MessageForUniteGrayTip)localObject).hasRead = 1;
             ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(paramAIOContext.a());
           }
@@ -57,8 +57,8 @@ public class GrayTipsReadConfirmCallback
   
   public void b(AIOContext paramAIOContext)
   {
-    Object localObject1 = paramAIOContext.a();
-    localObject1 = paramAIOContext.a().getMessageFacade().b(((BaseSessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((BaseSessionInfo)localObject1).jdField_a_of_type_Int).iterator();
+    Object localObject1 = paramAIOContext.O();
+    localObject1 = paramAIOContext.a().getMessageFacade().o(((BaseSessionInfo)localObject1).b, ((BaseSessionInfo)localObject1).a).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (ChatMessage)((Iterator)localObject1).next();
@@ -73,7 +73,7 @@ public class GrayTipsReadConfirmCallback
           localMessage.setData(localBundle);
           localMessage.what = 78;
           localMessage.arg1 = 0;
-          paramAIOContext.a().sendMessage(localMessage);
+          paramAIOContext.g().sendMessage(localMessage);
         }
       }
     }
@@ -81,7 +81,7 @@ public class GrayTipsReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.GrayTipsReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

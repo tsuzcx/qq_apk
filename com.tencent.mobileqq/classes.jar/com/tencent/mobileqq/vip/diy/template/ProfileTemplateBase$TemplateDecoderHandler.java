@@ -15,42 +15,42 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class ProfileTemplateBase$TemplateDecoderHandler
   implements DownloadParams.DecodeHandler
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  private Paint a;
+  private int b;
+  private boolean c;
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       return null;
     }
-    paramBitmap.setDensity((int)ViewUtils.c());
+    paramBitmap.setDensity((int)ViewUtils.getDensityDpi());
     paramDownloadParams = SquareRoundImageUtils.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
+    this.a.setStrokeWidth(this.b * 2);
     Path localPath = new Path();
     Canvas localCanvas = new Canvas(paramDownloadParams);
     localCanvas.save();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     localPath.moveTo(i, i);
     i = paramDownloadParams.getWidth();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.b;
     localPath.lineTo(i - j, j);
-    localPath.lineTo(paramDownloadParams.getWidth() - this.jdField_a_of_type_Int, paramDownloadParams.getHeight() - this.jdField_a_of_type_Int);
-    localPath.lineTo(this.jdField_a_of_type_Int, paramDownloadParams.getHeight() - this.jdField_a_of_type_Int);
+    localPath.lineTo(paramDownloadParams.getWidth() - this.b, paramDownloadParams.getHeight() - this.b);
+    localPath.lineTo(this.b, paramDownloadParams.getHeight() - this.b);
     localPath.close();
     localPath.setFillType(Path.FillType.EVEN_ODD);
     localCanvas.clipPath(localPath);
-    localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), this.a);
     localCanvas.restore();
-    if (!this.jdField_a_of_type_Boolean) {
-      localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (!this.c) {
+      localCanvas.drawPath(localPath, this.a);
     }
     return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.TemplateDecoderHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,37 +14,37 @@ final class Month
   implements Parcelable, Comparable<Month>
 {
   public static final Parcelable.Creator<Month> CREATOR = new Month.1();
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final Calendar jdField_a_of_type_JavaUtilCalendar;
+  final int a;
   final int b;
   final int c;
   final int d;
+  final long e;
+  @NonNull
+  private final Calendar f;
+  @Nullable
+  private String g;
   
   private Month(@NonNull Calendar paramCalendar)
   {
     paramCalendar.set(5, 1);
-    this.jdField_a_of_type_JavaUtilCalendar = UtcDates.b(paramCalendar);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilCalendar.get(2);
-    this.b = this.jdField_a_of_type_JavaUtilCalendar.get(1);
-    this.c = this.jdField_a_of_type_JavaUtilCalendar.getMaximum(7);
-    this.d = this.jdField_a_of_type_JavaUtilCalendar.getActualMaximum(5);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilCalendar.getTimeInMillis();
+    this.f = UtcDates.b(paramCalendar);
+    this.a = this.f.get(2);
+    this.b = this.f.get(1);
+    this.c = this.f.getMaximum(7);
+    this.d = this.f.getActualMaximum(5);
+    this.e = this.f.getTimeInMillis();
   }
   
   @NonNull
   static Month a()
   {
-    return new Month(UtcDates.a());
+    return new Month(UtcDates.b());
   }
   
   @NonNull
   static Month a(int paramInt1, int paramInt2)
   {
-    Calendar localCalendar = UtcDates.b();
+    Calendar localCalendar = UtcDates.c();
     localCalendar.set(1, paramInt1);
     localCalendar.set(2, paramInt2);
     return new Month(localCalendar);
@@ -53,14 +53,35 @@ final class Month
   @NonNull
   static Month a(long paramLong)
   {
-    Calendar localCalendar = UtcDates.b();
+    Calendar localCalendar = UtcDates.c();
     localCalendar.setTimeInMillis(paramLong);
     return new Month(localCalendar);
   }
   
-  int a()
+  public int a(@NonNull Month paramMonth)
   {
-    int j = this.jdField_a_of_type_JavaUtilCalendar.get(7) - this.jdField_a_of_type_JavaUtilCalendar.getFirstDayOfWeek();
+    return this.f.compareTo(paramMonth.f);
+  }
+  
+  long a(int paramInt)
+  {
+    Calendar localCalendar = UtcDates.b(this.f);
+    localCalendar.set(5, paramInt);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  @NonNull
+  String a(Context paramContext)
+  {
+    if (this.g == null) {
+      this.g = DateStrings.a(paramContext, this.f.getTimeInMillis());
+    }
+    return this.g;
+  }
+  
+  int b()
+  {
+    int j = this.f.get(7) - this.f.getFirstDayOfWeek();
     int i = j;
     if (j < 0) {
       i = j + this.c;
@@ -68,53 +89,32 @@ final class Month
     return i;
   }
   
-  int a(long paramLong)
+  int b(long paramLong)
   {
-    Calendar localCalendar = UtcDates.b(this.jdField_a_of_type_JavaUtilCalendar);
+    Calendar localCalendar = UtcDates.b(this.f);
     localCalendar.setTimeInMillis(paramLong);
     return localCalendar.get(5);
   }
   
-  public int a(@NonNull Month paramMonth)
+  int b(@NonNull Month paramMonth)
   {
-    return this.jdField_a_of_type_JavaUtilCalendar.compareTo(paramMonth.jdField_a_of_type_JavaUtilCalendar);
-  }
-  
-  long a()
-  {
-    return this.jdField_a_of_type_JavaUtilCalendar.getTimeInMillis();
-  }
-  
-  long a(int paramInt)
-  {
-    Calendar localCalendar = UtcDates.b(this.jdField_a_of_type_JavaUtilCalendar);
-    localCalendar.set(5, paramInt);
-    return localCalendar.getTimeInMillis();
+    if ((this.f instanceof GregorianCalendar)) {
+      return (paramMonth.b - this.b) * 12 + (paramMonth.a - this.a);
+    }
+    throw new IllegalArgumentException("Only Gregorian calendars are supported.");
   }
   
   @NonNull
-  Month a(int paramInt)
+  Month b(int paramInt)
   {
-    Calendar localCalendar = UtcDates.b(this.jdField_a_of_type_JavaUtilCalendar);
+    Calendar localCalendar = UtcDates.b(this.f);
     localCalendar.add(2, paramInt);
     return new Month(localCalendar);
   }
   
-  @NonNull
-  String a(Context paramContext)
+  long c()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = DateStrings.a(paramContext, this.jdField_a_of_type_JavaUtilCalendar.getTimeInMillis());
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  int b(@NonNull Month paramMonth)
-  {
-    if ((this.jdField_a_of_type_JavaUtilCalendar instanceof GregorianCalendar)) {
-      return (paramMonth.b - this.b) * 12 + (paramMonth.jdField_a_of_type_Int - this.jdField_a_of_type_Int);
-    }
-    throw new IllegalArgumentException("Only Gregorian calendars are supported.");
+    return this.f.getTimeInMillis();
   }
   
   public int describeContents()
@@ -131,23 +131,23 @@ final class Month
       return false;
     }
     paramObject = (Month)paramObject;
-    return (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b);
+    return (this.a == paramObject.a) && (this.b == paramObject.b);
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) });
   }
   
   public void writeToParcel(@NonNull Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.b);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.Month
  * JD-Core Version:    0.7.0.1
  */

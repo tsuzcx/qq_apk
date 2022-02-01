@@ -11,27 +11,32 @@ import java.util.Set;
 
 class RegisterProxyHandler$CheckDisMsgComplete
 {
-  private int jdField_a_of_type_Int;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private int b;
+  private StringBuilder b;
+  private int c;
+  private int d;
   
   public RegisterProxyHandler$CheckDisMsgComplete(RegisterProxyHandler paramRegisterProxyHandler, StringBuilder paramStringBuilder, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramStringBuilder;
+    this.c = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
-  public CheckDisMsgComplete a()
+  public int b()
+  {
+    return this.d;
+  }
+  
+  public CheckDisMsgComplete c()
   {
     ArrayList localArrayList = new ArrayList();
-    this.b = this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_JavaUtilHashMap.size();
-    MessageCache localMessageCache = (MessageCache)RegisterProxyHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler).a().getMsgCache();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_JavaUtilHashMap.keySet().iterator();
+    this.d = this.a.w.size();
+    MessageCache localMessageCache = (MessageCache)RegisterProxyHandler.a(this.a).b().getMsgCache();
+    Iterator localIterator = this.a.w.keySet().iterator();
     int i;
     for (;;)
     {
@@ -41,53 +46,48 @@ class RegisterProxyHandler$CheckDisMsgComplete
         break;
       }
       String str = (String)localIterator.next();
-      long l2 = localMessageCache.i(str);
-      Object localObject = localMessageCache.a(str);
+      long l2 = localMessageCache.L(str);
+      Object localObject = localMessageCache.A(str);
       long l1;
       if ((localObject != null) && (localObject.length > 0)) {
         l1 = ((Long)localObject[1]).longValue();
       } else {
         l1 = 0L;
       }
-      if (((localMessageCache.a(false)) || (((Boolean)this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_JavaUtilHashMap.get(str)).booleanValue())) && (l2 < l1))
+      if (((localMessageCache.d(false)) || (((Boolean)this.a.w.get(str)).booleanValue())) && (l2 < l1))
       {
         if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+          this.b.setLength(0);
+          localObject = this.b;
           ((StringBuilder)localObject).append("---------checkGroupMsgComplete needToPullDiscuss discussUin: ");
           ((StringBuilder)localObject).append(str);
           ((StringBuilder)localObject).append(",lastSeq:");
           ((StringBuilder)localObject).append(l2);
           ((StringBuilder)localObject).append(",svrSeq:");
           ((StringBuilder)localObject).append(l1);
-          QLog.d("RegisterProxyHandler", 2, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+          QLog.d("RegisterProxyHandler", 2, this.b.toString());
         }
         localArrayList.add(str);
       }
     }
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Int = localArrayList.size();
-      this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
-      while (i < this.jdField_a_of_type_Int)
+      this.c = localArrayList.size();
+      this.a.i = new String[this.c];
+      while (i < this.c)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_ArrayOfJavaLangString[i] = ((String)localArrayList.get(i));
+        this.a.i[i] = ((String)localArrayList.get(i));
         i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler.jdField_b_of_type_JavaUtilHashMap.clear();
+    this.a.w.clear();
     return this;
-  }
-  
-  public int b()
-  {
-    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.RegisterProxyHandler.CheckDisMsgComplete
  * JD-Core Version:    0.7.0.1
  */

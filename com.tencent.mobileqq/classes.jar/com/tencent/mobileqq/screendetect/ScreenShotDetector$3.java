@@ -9,12 +9,12 @@ class ScreenShotDetector$3
   
   public void run()
   {
-    ScreenShotDetector.b(this.a, ScreenShotDetector.a(this.this$0), ScreenShotDetector.b(this.this$0));
+    ScreenShotDetector.b(this.a, ScreenShotDetector.c(this.this$0), ScreenShotDetector.d(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector.3
  * JD-Core Version:    0.7.0.1
  */

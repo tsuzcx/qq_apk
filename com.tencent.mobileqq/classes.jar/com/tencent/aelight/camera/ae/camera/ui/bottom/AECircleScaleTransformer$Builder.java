@@ -4,31 +4,31 @@ import android.support.annotation.FloatRange;
 
 public class AECircleScaleTransformer$Builder
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private AECircleScaleTransformer jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAECircleScaleTransformer = new AECircleScaleTransformer();
+  private AECircleScaleTransformer a = new AECircleScaleTransformer();
+  private float b = 1.0F;
   
   public Builder a(@FloatRange(from=0.01D) float paramFloat)
   {
-    AECircleScaleTransformer.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAECircleScaleTransformer, paramFloat);
+    AECircleScaleTransformer.a(this.a, paramFloat);
     return this;
   }
   
   public AECircleScaleTransformer a()
   {
-    AECircleScaleTransformer localAECircleScaleTransformer = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAECircleScaleTransformer;
-    AECircleScaleTransformer.b(localAECircleScaleTransformer, this.jdField_a_of_type_Float - AECircleScaleTransformer.a(localAECircleScaleTransformer));
-    return this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAECircleScaleTransformer;
+    AECircleScaleTransformer localAECircleScaleTransformer = this.a;
+    AECircleScaleTransformer.b(localAECircleScaleTransformer, this.b - AECircleScaleTransformer.a(localAECircleScaleTransformer));
+    return this.a;
   }
   
   public Builder b(@FloatRange(from=0.01D) float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AECircleScaleTransformer.Builder
  * JD-Core Version:    0.7.0.1
  */

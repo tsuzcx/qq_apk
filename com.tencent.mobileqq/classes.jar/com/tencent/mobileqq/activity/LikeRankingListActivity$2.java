@@ -44,14 +44,14 @@ class LikeRankingListActivity$2
     {
       if ((paramList != null) && ((paramList.size() > 0) || (paramBoolean2)))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
+        this.a.a.a(paramList, paramInt, paramBoolean2);
         if ((paramBoolean2) && (paramList.size() == 0)) {
-          this.a.e.setVisibility(0);
+          this.a.v.setVisibility(0);
         } else {
-          this.a.e.setVisibility(8);
+          this.a.v.setVisibility(8);
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a(paramList, true);
-        if (this.a.jdField_a_of_type_Int == 0) {
+        this.a.n.a(paramList, true);
+        if (this.a.e == 0) {
           if (paramList.size() > 0)
           {
             this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
@@ -66,27 +66,27 @@ class LikeRankingListActivity$2
       else
       {
         this.a.a(null);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a = false;
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.notifyDataSetChanged();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.getCount() <= 1) {
-          this.a.e.setVisibility(0);
+        this.a.n.b = false;
+        this.a.n.notifyDataSetChanged();
+        if (this.a.n.getCount() <= 1) {
+          this.a.v.setVisibility(0);
         }
       }
       paramString = this.a;
       if (paramBoolean2) {
         paramInt = -1;
       }
-      paramString.jdField_a_of_type_Int = paramInt;
+      paramString.e = paramInt;
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.a = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity$LikeRankingListAdapter.notifyDataSetChanged();
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131706187), 0).a();
+    this.a.n.b = false;
+    this.a.n.notifyDataSetChanged();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131904056), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.2
  * JD-Core Version:    0.7.0.1
  */

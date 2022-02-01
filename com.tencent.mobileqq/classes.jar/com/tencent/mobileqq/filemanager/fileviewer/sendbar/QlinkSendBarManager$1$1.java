@@ -9,14 +9,14 @@ class QlinkSendBarManager$1$1
   
   public void a()
   {
-    QlinkSendBarManager.a(this.a.a);
+    QlinkSendBarManager.e(this.a.a);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager.1.1
  * JD-Core Version:    0.7.0.1
  */

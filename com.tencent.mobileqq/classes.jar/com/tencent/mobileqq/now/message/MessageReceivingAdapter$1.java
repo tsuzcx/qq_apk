@@ -12,8 +12,8 @@ class MessageReceivingAdapter$1
   
   public boolean onClick(View paramView)
   {
-    NowQQLiveDataReport.b(this.jdField_a_of_type_Int + 1, ChatMessageHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "2");
-    if (MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare)) {
+    NowQQLiveDataReport.b(this.a + 1, ChatMessageHelper.b(this.b), "2");
+    if (MessageReceivingAdapter.a(this.d, paramView, this.b, this.c)) {
       return true;
     }
     return super.onClick(paramView);
@@ -21,7 +21,7 @@ class MessageReceivingAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingAdapter.1
  * JD-Core Version:    0.7.0.1
  */

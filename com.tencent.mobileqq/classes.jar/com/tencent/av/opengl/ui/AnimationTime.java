@@ -6,14 +6,14 @@ public class AnimationTime
 {
   private static volatile long a;
   
-  public static long a()
-  {
-    return a;
-  }
-  
   public static void a()
   {
     a = SystemClock.uptimeMillis();
+  }
+  
+  public static long b()
+  {
+    return a;
   }
 }
 

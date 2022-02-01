@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qqemoticon.api;
 
-import com.tencent.mobileqq.qroute.annotation.QAPI;
+import com.tencent.mobileqq.qroute.annotation.Service;
 import mqq.app.api.IRuntimeService;
 
-@QAPI(process={"all"})
+@Service(needUin=false, process={"all"})
 public abstract interface ISystemAndEmojiPanelService
   extends IRuntimeService
 {
@@ -11,7 +11,7 @@ public abstract interface ISystemAndEmojiPanelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqemoticon.api.ISystemAndEmojiPanelService
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ final class AEResDownload$2
     if (str2 == null)
     {
       AEQLog.d("AEResDownload", "[onResp] key=null ");
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource.onDownloadFinish("", -1, "");
+      this.a.onDownloadFinish("", -1, "");
       return;
     }
     localObject1 = str1;
@@ -102,7 +102,7 @@ final class AEResDownload$2
           if (FileUtils.rename((String)localObject4, str1))
           {
             localObject1 = str1;
-            localObject3 = ((ShortVideoResourceManager.SVConfigItem)localObject3).name.substring(this.jdField_a_of_type_ComTencentAelightCameraDownloadApiAEResInfo.resPrefix.length());
+            localObject3 = ((ShortVideoResourceManager.SVConfigItem)localObject3).name.substring(this.b.resPrefix.length());
             localObject1 = str1;
             localObject4 = new StringBuilder();
             localObject1 = str1;
@@ -114,7 +114,7 @@ final class AEResDownload$2
             localObject1 = str1;
             localObject2 = ((StringBuilder)localObject4).toString();
             localObject1 = str1;
-            localObject4 = AEResUtil.a();
+            localObject4 = AEResUtil.b();
             localObject1 = str1;
             Object localObject5 = new StringBuilder();
             localObject1 = str1;
@@ -145,7 +145,7 @@ final class AEResDownload$2
               localObject1 = str1;
               AEQLog.d("AEResDownload", "[onResp] unzipFile.exists=false[error]");
               localObject1 = str1;
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource.onDownloadFinish(str2, -118, str1);
+              this.a.onDownloadFinish(str2, -118, str1);
               return;
             }
             localObject1 = str1;
@@ -165,10 +165,10 @@ final class AEResDownload$2
               if (bool)
               {
                 localObject1 = str1;
-                if (AEResUtil.a((String)localObject3))
+                if (AEResUtil.b((String)localObject3))
                 {
                   localObject1 = str1;
-                  if (AEResUtil.a((String)localObject2, this.jdField_a_of_type_ComTencentAelightCameraDownloadApiAEResInfo))
+                  if (AEResUtil.a((String)localObject2, this.b))
                   {
                     localObject1 = str1;
                     AEQLog.d("AEResDownload", "[onResp] copyResFileToFinalDir.SUCCESS");
@@ -274,7 +274,7 @@ final class AEResDownload$2
       IPreDownloadController localIPreDownloadController;
       try
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraDownloadApiAEResInfo.isPredownload)
+        if (this.b.isPredownload)
         {
           localIPreDownloadController = (IPreDownloadController)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getRuntimeService(IPreDownloadController.class);
           if (localIPreDownloadController != null)
@@ -294,7 +294,7 @@ final class AEResDownload$2
       {
         AEQLog.a("AEResDownload", "[onResp] isPredownload callback ERROR", paramNetResp);
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource.onDownloadFinish(str2, i, (String)localObject1);
+      this.a.onDownloadFinish(str2, i, (String)localObject1);
       return;
       localObject1 = localIPreDownloadController;
     }
@@ -308,12 +308,12 @@ final class AEResDownload$2
       AEQLog.d("AEResDownload", "[onUpdateProgeress] key = null");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource.onUpdateProgress(paramNetReq, paramLong1, paramLong2);
+    this.a.onUpdateProgress(paramNetReq, paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEResDownload.2
  * JD-Core Version:    0.7.0.1
  */

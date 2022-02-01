@@ -8,32 +8,26 @@ public class AVGameLobbyRandomMatchContentInfo
   extends AVGameBaseData
 {
   public int a;
-  public String a;
-  public List<Long> a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  private int d;
+  public List<Long> b = new ArrayList();
+  public int c = 0;
+  public String d = null;
+  public String e = null;
+  public String f = null;
+  public int g = 0;
+  private int h;
   
   public AVGameLobbyRandomMatchContentInfo(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.d = paramInt;
+    this.h = paramInt;
   }
   
   public int a()
   {
-    return this.d;
+    return this.h;
   }
   
   @NonNull
-  public int b()
+  public int c()
   {
     return 7;
   }
@@ -43,19 +37,19 @@ public class AVGameLobbyRandomMatchContentInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("titleUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("|");
     localStringBuilder.append("backgroudUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("|");
     localStringBuilder.append("playersNum:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("playerList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("itemType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }

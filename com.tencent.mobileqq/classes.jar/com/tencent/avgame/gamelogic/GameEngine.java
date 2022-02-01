@@ -60,24 +60,35 @@ import mqq.os.MqqHandler;
 public class GameEngine
   extends IGameEngine
 {
-  private int jdField_a_of_type_Int = 0;
-  protected AVGameUIEventCallback a;
-  private GameController jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController;
-  private HeartBeatController jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController;
-  private RoomController jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController;
-  private StatusMonitor jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor;
-  private SurvivalAssistManager jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager;
-  private SyncController jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController;
-  private EngineData jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
-  private BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
-  private List<GameRoomStatusListener> jdField_a_of_type_JavaUtilList;
-  private List<GameStatusListener> b;
-  private List<GameResultListener> c;
-  private List<GameActivityLifeCycleListener> d;
+  protected AVGameUIEventCallback a = new GameEngine.5(this);
+  private HeartBeatController d;
+  private RoomController e;
+  private GameController f;
+  private SyncController g;
+  private StatusMonitor h;
+  private List<GameRoomStatusListener> i;
+  private List<GameStatusListener> j;
+  private List<GameResultListener> k;
+  private List<GameActivityLifeCycleListener> l;
+  private SurvivalAssistManager m;
+  private BaseAVGameAppInterface n;
+  private int o = 0;
+  private EngineData p;
   
-  private GameEngine()
+  private void M()
   {
-    this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback = new GameEngine.5(this);
+    this.d.b();
+    this.e.c();
+    this.i.clear();
+    this.j.clear();
+    this.k.clear();
+    this.g.b();
+    this.h.b();
+    this.m.b();
+    if (IAVGameBusinessCtrl.q()) {
+      return;
+    }
+    IAVGameBusinessCtrl.p().b(this.a);
   }
   
   public static GameEngine a()
@@ -88,121 +99,108 @@ public class GameEngine
   private void a(EngineData paramEngineData, ITopic paramITopic, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[playEffect] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()), ", topic:", paramITopic, ", effect: ", paramString });
+      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[playEffect] survival: ", Boolean.valueOf(paramEngineData.M()), ", avRoom: ", Boolean.valueOf(paramEngineData.O()), ", topic:", paramITopic, ", effect: ", paramString });
     }
-    if ((paramEngineData.f()) && (!paramEngineData.h()))
+    if ((paramEngineData.M()) && (!paramEngineData.O()))
     {
       AvGameSysMusicPlayer.a().a(paramITopic, paramString);
       return;
     }
-    AvGameMusicPlayer.a().a(paramITopic, paramString);
+    AvGameMusicPlayer.b().a(paramITopic, paramString);
   }
   
   private void b(BaseAVGameAppInterface paramBaseAVGameAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = new EngineData();
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.b = new ArrayList(4);
-    this.c = new ArrayList(1);
-    this.d = new ArrayList(1);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController = new SyncController(paramBaseAVGameAppInterface);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController = new RoomController(paramBaseAVGameAppInterface, this, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController, this);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController = new GameController(paramBaseAVGameAppInterface, this, this, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController, this);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController = new HeartBeatController(paramBaseAVGameAppInterface, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController, this, this);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor = new StatusMonitor(paramBaseAVGameAppInterface, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController, this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController, this, this);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager = new SurvivalAssistManager();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager.a();
-    a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager);
+    this.n = paramBaseAVGameAppInterface;
+    this.p = new EngineData();
+    this.i = new CopyOnWriteArrayList();
+    this.j = new ArrayList(4);
+    this.k = new ArrayList(1);
+    this.l = new ArrayList(1);
+    this.g = new SyncController(paramBaseAVGameAppInterface);
+    this.e = new RoomController(paramBaseAVGameAppInterface, this, this.g, this);
+    this.f = new GameController(paramBaseAVGameAppInterface, this, this, this.g, this);
+    this.d = new HeartBeatController(paramBaseAVGameAppInterface, this.g, this, this);
+    this.h = new StatusMonitor(paramBaseAVGameAppInterface, this.d, this.g, this, this);
+    this.m = new SurvivalAssistManager();
+    this.m.a();
+    a(this.m);
   }
   
   private void d(EngineData paramEngineData, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[playBgMusic] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()), ", musicType: ", Integer.valueOf(paramInt) });
+      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[playBgMusic] survival: ", Boolean.valueOf(paramEngineData.M()), ", avRoom: ", Boolean.valueOf(paramEngineData.O()), ", musicType: ", Integer.valueOf(paramInt) });
     }
-    if ((paramEngineData.f()) && (!paramEngineData.h()))
+    if ((paramEngineData.M()) && (!paramEngineData.O()))
     {
-      AvGameSysMusicPlayer.a().a(paramInt, paramEngineData.f());
+      AvGameSysMusicPlayer.a().a(paramInt, paramEngineData.M());
       return;
     }
-    AvGameMusicPlayer.a().a(paramInt, paramEngineData.f());
+    AvGameMusicPlayer.b().a(paramInt, paramEngineData.M());
   }
   
-  private void k(EngineData paramEngineData)
+  private void l(EngineData paramEngineData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[stopPlay] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()) });
+      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "[stopPlay] survival: ", Boolean.valueOf(paramEngineData.M()), ", avRoom: ", Boolean.valueOf(paramEngineData.O()) });
     }
-    if ((paramEngineData.f()) && (!paramEngineData.h()))
+    if ((paramEngineData.M()) && (!paramEngineData.O()))
     {
-      AvGameSysMusicPlayer.a().b();
+      AvGameSysMusicPlayer.a().c();
       return;
     }
-    AvGameMusicPlayer.a().c();
+    AvGameMusicPlayer.b().d();
   }
   
-  private void q()
+  public boolean A()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController.b();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.c();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.b.clear();
-    this.c.clear();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController.a();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.b();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager.b();
-    if (IAVGameBusinessCtrl.f()) {
-      return;
-    }
-    IAVGameBusinessCtrl.a().b(this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback);
+    EngineData localEngineData = this.p;
+    return (localEngineData != null) && (localEngineData.M());
   }
   
-  public int a()
+  public boolean B()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().getPlayers().size();
+    return this.p.O();
   }
   
-  public long a()
+  public boolean C()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.d();
+    return this.p.O();
   }
   
-  public SurvivalAssistCallback a(int paramInt)
+  public boolean D()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager.a(paramInt);
+    return this.p.N();
   }
   
-  public EngineData a()
+  public boolean E()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return this.p.P() != 0;
   }
   
-  public BaseAVGameAppInterface a()
+  public void F()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
+    ThreadManager.getSubThreadHandler().post(new GameEngine.6(this));
   }
   
-  public void a()
+  public void G()
   {
-    if (IAVGameBusinessCtrl.f()) {
-      return;
-    }
-    IAVGameBusinessCtrl.a().a(this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback);
+    this.h.a();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController.a(paramInt);
+    this.d.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    GameRoomHandler localGameRoomHandler = (GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a);
-    Object localObject = a().a();
+    GameRoomHandler localGameRoomHandler = (GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a);
+    Object localObject = s().f();
     if (localObject != null)
     {
-      localGameRoomHandler.a(a().a(), a().a().owner, ((GameItem)localObject).jdField_a_of_type_Int, paramInt2);
+      localGameRoomHandler.a(s().i(), s().e().owner, ((GameItem)localObject).a, paramInt2);
       return;
     }
     localObject = new StringBuilder();
@@ -210,18 +208,18 @@ public class GameEngine
     ((StringBuilder)localObject).append(paramInt1);
     QLog.d("avgame_logic.GameEngine", 2, ((StringBuilder)localObject).toString());
     if (paramInt1 > 0) {
-      localGameRoomHandler.a(a().a(), a().a().owner, paramInt1, paramInt2);
+      localGameRoomHandler.a(s().i(), s().e().owner, paramInt1, paramInt2);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ((GamePlayHandler)a().getBusinessHandler(HandlerFactory.c)).a(a().getLongAccountUin(), a().b(), paramInt1, paramInt2, paramInt3, b());
+    ((GamePlayHandler)f().getBusinessHandler(HandlerFactory.c)).a(f().getLongAccountUin(), s().n(), paramInt1, paramInt2, paramInt3, m());
   }
   
   public void a(int paramInt, Activity paramActivity)
   {
-    Iterator localIterator = this.d.iterator();
+    Iterator localIterator = this.l.iterator();
     while (localIterator.hasNext()) {
       ((GameActivityLifeCycleListener)localIterator.next()).a(paramInt, paramActivity);
     }
@@ -229,7 +227,7 @@ public class GameEngine
   
   public void a(int paramInt, String paramString1, String paramString2, EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramInt, paramString1, paramString2, paramEngineData);
     }
@@ -244,12 +242,12 @@ public class GameEngine
       localStringBuilder.append(paramLong);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.b(paramLong);
+    this.e.b(paramLong);
   }
   
   public void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).a(paramLong, paramInt, paramString1, paramString2);
     }
@@ -273,12 +271,12 @@ public class GameEngine
     localStringBuilder.append(" pbMark");
     localStringBuilder.append(paramLong3);
     QLog.d("avgame_logic.GameEngine", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, paramLong3);
+    this.e.a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, paramLong3);
   }
   
   public void a(long paramLong, String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController.a(paramLong, paramString);
+    this.d.a(paramLong, paramString);
   }
   
   public void a(long paramLong, String paramString, int paramInt1, int paramInt2)
@@ -296,12 +294,12 @@ public class GameEngine
       localStringBuilder.append(paramInt2);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.b(paramLong, paramString, paramInt1, paramInt2);
+    this.e.b(paramLong, paramString, paramInt1, paramInt2);
   }
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).a(paramLong, paramString1, paramString2);
     }
@@ -309,7 +307,7 @@ public class GameEngine
   
   public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramLong, paramString1, paramBoolean, paramString2, paramInt);
     }
@@ -330,12 +328,12 @@ public class GameEngine
       localStringBuilder.append(paramBoolean2);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramLong, paramString, paramBoolean1, paramBoolean2);
+    this.e.a(paramLong, paramString, paramBoolean1, paramBoolean2);
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramLong, paramBoolean);
     }
@@ -343,7 +341,7 @@ public class GameEngine
   
   public void a(EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramEngineData);
     }
@@ -351,11 +349,11 @@ public class GameEngine
   
   public void a(EngineData paramEngineData, int paramInt)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).a(paramEngineData, paramInt);
     }
-    localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramEngineData, paramInt);
     }
@@ -363,8 +361,8 @@ public class GameEngine
   
   public void a(EngineData paramEngineData, String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).a(paramEngineData, paramString);
     }
@@ -372,54 +370,54 @@ public class GameEngine
   
   public void a(EngineData paramEngineData, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a())
+    this.h.a(paramEngineData, false);
+    if (this.h.c())
     {
       QLog.d("avgame_logic.GameEngine", 1, "onGameOverPush NotPlayedYet return.");
     }
     else
     {
-      Iterator localIterator = this.b.iterator();
+      Iterator localIterator = this.j.iterator();
       while (localIterator.hasNext()) {
         ((GameStatusListener)localIterator.next()).a(paramEngineData, paramBoolean);
       }
     }
-    if (paramEngineData.c() == 4)
+    if (paramEngineData.o() == 4)
     {
       QLog.d("avgame_logic.GameEngine", 1, "onGameOverPush disable aec mode");
-      ((MultiOperatorImplForGame)QavSDK.a().a()).a(0);
+      ((MultiOperatorImplForGame)QavSDK.a().c()).a(0);
     }
-    k(paramEngineData);
+    l(paramEngineData);
     AVGameNodeReportUtil.d();
-    p();
+    G();
   }
   
   public void a(RoomInfo paramRoomInfo)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramRoomInfo, true);
+    this.e.a(paramRoomInfo, true);
   }
   
   public void a(GameActivityLifeCycleListener paramGameActivityLifeCycleListener)
   {
-    this.d.add(paramGameActivityLifeCycleListener);
+    this.l.add(paramGameActivityLifeCycleListener);
   }
   
   public void a(GameResultListener paramGameResultListener)
   {
-    this.c.add(paramGameResultListener);
+    this.k.add(paramGameResultListener);
   }
   
   public void a(GameRoomStatusListener paramGameRoomStatusListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramGameRoomStatusListener)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramGameRoomStatusListener);
+    if (!this.i.contains(paramGameRoomStatusListener)) {
+      this.i.add(paramGameRoomStatusListener);
     }
   }
   
   public void a(GameStatusListener paramGameStatusListener)
   {
-    if (!this.b.contains(paramGameStatusListener)) {
-      this.b.add(paramGameStatusListener);
+    if (!this.j.contains(paramGameStatusListener)) {
+      this.j.add(paramGameStatusListener);
     }
   }
   
@@ -430,10 +428,10 @@ public class GameEngine
   
   public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
+    if (!this.p.d()) {
       return;
     }
-    ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface).a().b(paramString);
+    ((IAVGameAppInterface)this.n).a().b(paramString);
   }
   
   public void a(String paramString, int paramInt)
@@ -443,28 +441,28 @@ public class GameEngine
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onRecogCallback gameStatus:");
-      ((StringBuilder)localObject).append(a().a());
+      ((StringBuilder)localObject).append(s().j());
       QLog.d("avgame_logic.GameEngine", 2, ((StringBuilder)localObject).toString());
     }
-    if (a().a() != 4) {
-      a(a().e(), paramString, paramInt);
+    if (s().j() != 4) {
+      a(s().A(), paramString, paramInt);
     }
     AVGamePerfReporter localAVGamePerfReporter = AVGamePerfReporter.a();
-    if (a().a().a() != null) {
-      localObject = a().a().a().b();
+    if (s().h().h() != null) {
+      localObject = s().h().h().d();
     } else {
       localObject = "";
     }
-    localAVGamePerfReporter.a(true, paramString, (String)localObject, paramInt, a().b(), a().getCurrentAccountUin(), AVGamePerfReporter.a().a(), a().a());
+    localAVGamePerfReporter.a(true, paramString, (String)localObject, paramInt, s().n(), f().getCurrentAccountUin(), AVGamePerfReporter.a().c(), s().i());
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).a(paramString, paramInt1, paramInt2);
     }
-    localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramString, paramInt1, paramInt2);
     }
@@ -472,11 +470,11 @@ public class GameEngine
   
   public void a(String paramString, int paramInt, EngineData paramEngineData)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).a(paramString, paramInt, paramEngineData);
     }
-    localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramString, paramInt, paramEngineData);
     }
@@ -484,7 +482,7 @@ public class GameEngine
   
   public void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).a(paramString1, paramLong, paramInt1, paramInt2, paramString2);
     }
@@ -492,7 +490,7 @@ public class GameEngine
   
   public void a(String paramString, EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramString, paramEngineData);
     }
@@ -500,15 +498,15 @@ public class GameEngine
   
   public void a(String paramString1, String paramString2)
   {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
+    if (!this.p.d()) {
       return;
     }
-    ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface).a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b(), paramString1, paramString2);
+    ((IAVGameAppInterface)this.n).a().a(this.p.n(), paramString1, paramString2);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).a(paramString1, paramString2, paramString3);
     }
@@ -516,7 +514,7 @@ public class GameEngine
   
   public void a(HashMap<String, String> paramHashMap)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramHashMap);
     }
@@ -524,11 +522,11 @@ public class GameEngine
   
   public void a(boolean paramBoolean)
   {
-    int i = a().j();
-    if (i > 0) {
-      ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(i, paramBoolean);
+    int i1 = s().P();
+    if (i1 > 0) {
+      ((GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a)).a(i1, paramBoolean);
     }
-    this.jdField_a_of_type_Int = 0;
+    this.o = 0;
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -538,7 +536,7 @@ public class GameEngine
   
   public void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
     }
@@ -546,65 +544,65 @@ public class GameEngine
   
   public void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean1, paramInt, paramString, paramBoolean2);
     }
-    if ((paramBoolean1) && (!g())) {
-      AvGameSysMusicPlayer.a().a();
+    if ((paramBoolean1) && (!B())) {
+      AvGameSysMusicPlayer.a().b();
     }
   }
   
   public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.g())
+    if (this.p.N())
     {
-      int i = CJSurvivalReporterUtil.a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData);
+      int i1 = CJSurvivalReporterUtil.a().a(this.p);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("exitGameRoom CJSurvivalFestivalReporter refer = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       QLog.i("avgame_logic.GameEngine", 1, ((StringBuilder)localObject).toString());
-      if (i == 2)
+      if (i1 == 2)
       {
-        if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.h()) {
-          i = 1;
+        if (this.p.O()) {
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        ReportController.b(null, "dc00898", "", "", "survival_game_quit", "survival_game_quit", i, 0, String.valueOf(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.p()), CJSurvivalReporterUtil.a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData), String.valueOf(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.k()));
+        ReportController.b(null, "dc00898", "", "", "survival_game_quit", "survival_game_quit", i1, 0, String.valueOf(this.p.h().f.a), String.valueOf(this.p.Y()), CJSurvivalReporterUtil.a().b(this.p), String.valueOf(this.p.Q()));
       }
-      else if (i == 1)
+      else if (i1 == 1)
       {
-        if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.h()) {
-          i = 1;
+        if (this.p.O()) {
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        ReportController.b(null, "dc00898", "", "", "survival_game_quit", "survival_game_quit", i, 0, "", "", "", String.valueOf(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.k()));
+        ReportController.b(null, "dc00898", "", "", "survival_game_quit", "survival_game_quit", i1, 0, "", "", "", String.valueOf(this.p.Q()));
       }
     }
     ProcessMonitor.a().b("exitGameRoom");
-    if (IAVGameBusinessCtrl.a() != null)
+    if (IAVGameBusinessCtrl.p() != null)
     {
-      l = System.currentTimeMillis();
-      AVGamePerfReporter.a().a(0, a().a(), a().b(), 0L);
-      AVGameHandler.a().a().post(new GameEngine.1(this, l));
+      l1 = System.currentTimeMillis();
+      AVGamePerfReporter.a().a(0, s().i(), s().n(), 0L);
+      AVGameHandler.a().b().post(new GameEngine.1(this, l1));
     }
     a(paramInt);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController.a();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.b();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSurvivalAssistManager.c();
-    AvGameSysMusicPlayer.a().c();
-    long l = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a();
-    if ((l != 0L) && (!paramBoolean1)) {
-      b(l, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin());
+    this.g.b();
+    this.h.b();
+    this.e.a();
+    this.m.c();
+    AvGameSysMusicPlayer.a().d();
+    long l1 = this.p.i();
+    if ((l1 != 0L) && (!paramBoolean1)) {
+      b(l1, this.n.getCurrentAccountUin());
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.f()) {
+    if (this.p.M()) {
       a().a(paramBoolean2);
     }
-    ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface).a().a(0, String.valueOf(l));
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a();
+    ((IAVGameAppInterface)this.n).a().b(0, String.valueOf(l1));
+    this.p.a();
     ThreadManager.getUIHandler().postDelayed(new GameEngine.2(this), 1000L);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("exitGameRoom svrAlreadyExit = ");
@@ -612,9 +610,9 @@ public class GameEngine
     ((StringBuilder)localObject).append(" exitType =");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(" roomId:");
-    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(l1);
     QLog.i("avgame_logic.GameEngine", 1, ((StringBuilder)localObject).toString(), new Throwable("not crash, print stack"));
-    if (l != 0L)
+    if (l1 != 0L)
     {
       if ((paramInt == 2) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11))
       {
@@ -628,14 +626,14 @@ public class GameEngine
         localStringBuilder.append(paramInt);
         ReportController.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, localStringBuilder.toString(), "", "", "");
       }
-      AVGameNodeReportUtil.b(AVGameNodeReportUtil.a(paramInt));
+      AVGameNodeReportUtil.b(AVGameNodeReportUtil.c(paramInt));
       QualityReporter.a();
     }
   }
   
   public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, SurvivalPkResultInfo paramSurvivalPkResultInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean1, paramInt, paramBoolean2, paramSurvivalPkResultInfo);
     }
@@ -643,7 +641,7 @@ public class GameEngine
   
   public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean, paramLong, paramInt1, paramInt2, paramString);
     }
@@ -651,7 +649,7 @@ public class GameEngine
   
   public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean, paramLong, paramInt, paramString);
     }
@@ -659,7 +657,7 @@ public class GameEngine
   
   public void a(boolean paramBoolean, long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean, paramLong, paramInt1, paramArrayOfByte, paramInt2, paramString);
     }
@@ -667,7 +665,7 @@ public class GameEngine
   
   public void a(boolean paramBoolean, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).a(paramBoolean, paramString);
     }
@@ -675,38 +673,33 @@ public class GameEngine
   
   public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).a(paramBoolean, paramString1, paramInt, paramString2);
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.e(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin());
-  }
-  
   public boolean a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 0L) {
+    if (this.p.i() == 0L) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getAccount(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a(), paramInt, paramString, this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.k(), b(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.p(), c(), ((IAVGameVoiceRecog)QRoute.api(IAVGameVoiceRecog.class)).isLocalVoiceModelReady() ^ true);
+    this.f.a(this.n.getAccount(), this.p.i(), paramInt, paramString, this.p.Q(), m(), this.p.Y(), n(), ((IAVGameVoiceRecog)QRoute.api(IAVGameVoiceRecog.class)).isLocalVoiceModelReady() ^ true);
     return true;
   }
   
   public boolean a(int paramInt1, String paramString, int paramInt2)
   {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
+    if (!this.p.d()) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController.a(paramInt1, paramString, paramInt2, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b(), i(), b());
+    this.f.a(paramInt1, paramString, paramInt2, this.n.getCurrentAccountUin(), this.p.i(), this.p.n(), D(), m());
     return true;
   }
   
   public boolean a(int paramInt, String paramString, EngineData paramEngineData)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.i.iterator();
     for (boolean bool = false;; bool = true)
     {
       if (!((Iterator)localObject).hasNext()) {
@@ -739,28 +732,28 @@ public class GameEngine
     if (bool1) {
       return false;
     }
-    paramGameItem = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a();
+    paramGameItem = this.p.e();
     List localList = paramGameItem.getPlayers();
-    int i = 0;
-    while (i < localList.size())
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      if ((localList.get(i) != null) && (((Player)localList.get(i)).status == 0))
+      if ((localList.get(i1) != null) && (((Player)localList.get(i1)).status == 0))
       {
-        i = 0;
+        i1 = 0;
         break label83;
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 1;
+    i1 = 1;
     label83:
     bool1 = bool2;
-    if (a())
+    if (d())
     {
       bool1 = bool2;
       if (paramGameItem.getPlayers().size() > 1)
       {
         bool1 = bool2;
-        if (i != 0) {
+        if (i1 != 0) {
           bool1 = true;
         }
       }
@@ -768,14 +761,12 @@ public class GameEngine
     return bool1;
   }
   
-  public int b()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
   public void b()
   {
-    q();
+    if (IAVGameBusinessCtrl.q()) {
+      return;
+    }
+    IAVGameBusinessCtrl.p().a(this.a);
   }
   
   public void b(int paramInt)
@@ -787,7 +778,7 @@ public class GameEngine
       localStringBuilder.append(paramInt);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(a().getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a(), paramInt);
+    this.e.a(f().getCurrentAccountUin(), this.p.i(), paramInt);
   }
   
   public void b(long paramLong, String paramString)
@@ -801,12 +792,12 @@ public class GameEngine
       localStringBuilder.append(paramString);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramLong, paramString, a());
+    this.e.a(paramLong, paramString, d());
   }
   
   public void b(long paramLong, String paramString1, String paramString2)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).b(paramLong, paramString1, paramString2);
     }
@@ -814,7 +805,7 @@ public class GameEngine
   
   public void b(EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).b(paramEngineData);
     }
@@ -822,8 +813,8 @@ public class GameEngine
   
   public void b(EngineData paramEngineData, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).b(paramEngineData, paramInt);
     }
@@ -831,27 +822,27 @@ public class GameEngine
   
   public void b(GameActivityLifeCycleListener paramGameActivityLifeCycleListener)
   {
-    this.d.remove(paramGameActivityLifeCycleListener);
+    this.l.remove(paramGameActivityLifeCycleListener);
   }
   
   public void b(GameResultListener paramGameResultListener)
   {
-    this.c.remove(paramGameResultListener);
+    this.k.remove(paramGameResultListener);
   }
   
   public void b(GameRoomStatusListener paramGameRoomStatusListener)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramGameRoomStatusListener);
+    this.i.remove(paramGameRoomStatusListener);
   }
   
   public void b(GameStatusListener paramGameStatusListener)
   {
-    this.b.remove(paramGameStatusListener);
+    this.j.remove(paramGameStatusListener);
   }
   
   public void b(String paramString, EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).b(paramString, paramEngineData);
     }
@@ -859,33 +850,33 @@ public class GameEngine
   
   public void b(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).b(paramBoolean);
     }
-    AvGameSysMusicPlayer.a().c();
+    AvGameSysMusicPlayer.a().d();
   }
   
   public void b(boolean paramBoolean, int paramInt)
   {
     ProcessMonitor.a().b("exitGameRoom");
     a(paramInt);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerSyncController.a();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.b();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.b();
-    AvGameSysMusicPlayer.a().b();
-    long l1 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a();
+    this.g.b();
+    this.h.b();
+    this.e.b();
+    AvGameSysMusicPlayer.a().c();
+    long l1 = this.p.i();
     if ((l1 != 0L) && (!paramBoolean)) {
-      b(l1, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin());
+      b(l1, this.n.getCurrentAccountUin());
     }
-    if (IAVGameBusinessCtrl.a() != null)
+    if (IAVGameBusinessCtrl.p() != null)
     {
       long l2 = System.currentTimeMillis();
-      AVGamePerfReporter.a().a(0, a().a(), a().b(), 0L);
-      AVGameHandler.a().a().post(new GameEngine.3(this, l2));
+      AVGamePerfReporter.a().a(0, s().i(), s().n(), 0L);
+      AVGameHandler.a().b().post(new GameEngine.3(this, l2));
     }
-    ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface).a().a(3, String.valueOf(l1));
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b();
+    ((IAVGameAppInterface)this.n).a().b(3, String.valueOf(l1));
+    this.p.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("exitGameRoomForPk svrAlreadyExit = ");
     localStringBuilder.append(paramBoolean);
@@ -898,7 +889,7 @@ public class GameEngine
   
   public void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).b(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
     }
@@ -906,19 +897,10 @@ public class GameEngine
   
   public void b(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).b(paramBoolean, paramLong, paramInt1, paramInt2, paramString);
     }
-  }
-  
-  public boolean b()
-  {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b());
-    return true;
   }
   
   public boolean b(GameItem paramGameItem)
@@ -928,57 +910,49 @@ public class GameEngine
     if (bool1) {
       return false;
     }
-    paramGameItem = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a();
+    paramGameItem = this.p.e();
     List localList = paramGameItem.getPlayers();
-    int i = 0;
-    while (i < localList.size())
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      if ((localList.get(i) != null) && (((Player)localList.get(i)).status == 0))
+      if ((localList.get(i1) != null) && (((Player)localList.get(i1)).status == 0))
       {
-        i = 0;
+        i1 = 0;
         break label83;
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 1;
+    i1 = 1;
     label83:
     bool1 = bool2;
     if (paramGameItem.getPlayers().size() > 1)
     {
       bool1 = bool2;
-      if (i != 0) {
+      if (i1 != 0) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public int c()
-  {
-    return h() ^ true;
-  }
-  
   public void c()
   {
-    HeartBeatController localHeartBeatController = this.jdField_a_of_type_ComTencentAvgameGamelogicControllerHeartBeatController;
-    if (localHeartBeatController != null) {
-      localHeartBeatController.a();
-    }
+    M();
   }
   
   public void c(int paramInt)
   {
-    int j = AVGameUtil.b();
-    if (j == 0)
+    int i2 = AVGameUtil.b();
+    if (i2 == 0)
     {
-      ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(a().a(), a().a().owner);
+      ((GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a)).a(s().i(), s().e().owner);
       return;
     }
-    int i = 1;
-    if (j == 1) {
-      i = 0;
+    int i1 = 1;
+    if (i2 == 1) {
+      i1 = 0;
     }
-    a(paramInt, i);
+    a(paramInt, i1);
   }
   
   public void c(long paramLong, String paramString1, String paramString2)
@@ -994,36 +968,36 @@ public class GameEngine
       localStringBuilder.append(paramString2);
       QLog.i("avgame_logic.GameEngine", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerRoomController.a(paramLong, paramString1, paramString2);
+    this.e.a(paramLong, paramString1, paramString2);
   }
   
   public void c(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).c(paramEngineData);
     }
-    if (paramEngineData.c() == 4)
+    if (paramEngineData.o() == 4)
     {
       QLog.d("avgame_logic.GameEngine", 1, "onGameStartSuc enable aec mode");
-      ((MultiOperatorImplForGame)QavSDK.a().a()).a(1);
+      ((MultiOperatorImplForGame)QavSDK.a().c()).a(1);
     }
-    a(paramEngineData, paramEngineData.a(), "countdown");
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() != null) {
-      d(paramEngineData, this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a());
+    a(paramEngineData, paramEngineData.s(), "countdown");
+    if (this.p.h() != null) {
+      d(paramEngineData, this.p.h().d());
     }
-    AVGameNodeReportUtil.a(paramEngineData.c(), paramEngineData.a().players.size());
+    AVGameNodeReportUtil.a(paramEngineData.o(), paramEngineData.e().players.size());
   }
   
   public void c(EngineData paramEngineData, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, true);
-    int i = paramEngineData.a();
-    int j = paramEngineData.b();
-    if ((i == 10) && (j == 0))
+    this.h.a(paramEngineData, true);
+    int i1 = paramEngineData.j();
+    int i2 = paramEngineData.m();
+    if ((i1 == 10) && (i2 == 0))
     {
-      localIterator = this.b.iterator();
+      localIterator = this.j.iterator();
       while (localIterator.hasNext())
       {
         GameStatusListener localGameStatusListener = (GameStatusListener)localIterator.next();
@@ -1035,10 +1009,10 @@ public class GameEngine
         }
         localGameStatusListener.a(paramEngineData, bool);
       }
-      k(paramEngineData);
+      l(paramEngineData);
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).c(paramEngineData, paramInt);
     }
@@ -1046,39 +1020,20 @@ public class GameEngine
   
   public void c(String paramString, EngineData paramEngineData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).c(paramString, paramEngineData);
     }
   }
   
-  public boolean c()
-  {
-    if ((h()) && (Build.VERSION.SDK_INT >= 16)) {
-      return AudioProcess.a().startRecog(this);
-    }
-    return false;
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
-      return;
-    }
-    if (QLog.isDebugVersion()) {
-      QLog.i("avgame_logic.GameEngine_GameRC", 1, String.format("onclick share:playId[%s]", new Object[] { this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b() }));
-    }
-    ((IAVGameAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface).a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b());
-  }
-  
   public void d(int paramInt)
   {
-    if ((e()) && (a()))
+    if ((v()) && (d()))
     {
-      GameItem localGameItem = a().a();
+      GameItem localGameItem = s().f();
       if (localGameItem != null)
       {
-        ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(a().a(), a().a().owner, localGameItem.jdField_a_of_type_Int, a().a(), paramInt);
+        ((GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a)).a(s().i(), s().e().owner, localGameItem.a, s().K(), paramInt);
         return;
       }
       QLog.d("avgame_logic.GameEngine", 2, "stopGameMatchV2 no gameItem");
@@ -1089,8 +1044,8 @@ public class GameEngine
   
   public void d(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).d(paramEngineData);
     }
@@ -1098,7 +1053,7 @@ public class GameEngine
   
   public void d(String paramString, EngineData paramEngineData)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).d(paramString, paramEngineData);
     }
@@ -1106,24 +1061,22 @@ public class GameEngine
   
   public boolean d()
   {
-    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a()) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b() == null) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameController.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getAccount(), this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.b());
-    return true;
+    return this.p.g(this.n.getCurrentAccountUin());
   }
   
-  public void e()
+  public int e()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.e();
+    return this.p.e().getPlayers().size();
+  }
+  
+  public SurvivalAssistCallback e(int paramInt)
+  {
+    return this.m.a(paramInt);
   }
   
   public void e(EngineData paramEngineData)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).e(paramEngineData);
     }
@@ -1132,89 +1085,58 @@ public class GameEngine
   
   public void e(String paramString, EngineData paramEngineData)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).e(paramString, paramEngineData);
     }
   }
   
-  public boolean e()
+  public BaseAVGameAppInterface f()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a(a());
-  }
-  
-  public void f()
-  {
-    int j = AVGameUtil.b();
-    if (j == 0)
-    {
-      if ((e()) && (a()))
-      {
-        ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(a().a(), a().i(), a().a().owner);
-        return;
-      }
-      QLog.d("avgame_logic.GameEngine", 2, "stopGameMatch no need");
-      return;
-    }
-    int i = 1;
-    if (j == 1) {
-      i = 0;
-    }
-    d(i);
+    return this.n;
   }
   
   public void f(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).f(paramEngineData);
     }
-    if (paramEngineData.c() == 4)
+    if (paramEngineData.o() == 4)
     {
       QLog.d("avgame_logic.GameEngine", 1, "onGameStartPush enable aec mode");
-      ((MultiOperatorImplForGame)QavSDK.a().a()).a(1);
+      ((MultiOperatorImplForGame)QavSDK.a().c()).a(1);
     }
-    a(paramEngineData, paramEngineData.a(), "countdown");
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() != null) {
-      d(paramEngineData, this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a());
+    a(paramEngineData, paramEngineData.s(), "countdown");
+    if (this.p.h() != null) {
+      d(paramEngineData, this.p.h().d());
     }
-    AVGameNodeReportUtil.a(paramEngineData.c(), paramEngineData.a().players.size());
-  }
-  
-  public boolean f()
-  {
-    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
-    return (localEngineData != null) && (localEngineData.f());
+    AVGameNodeReportUtil.a(paramEngineData.o(), paramEngineData.e().players.size());
   }
   
   public void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((GameRoomStatusListener)localIterator.next()).g();
+    HeartBeatController localHeartBeatController = this.d;
+    if (localHeartBeatController != null) {
+      localHeartBeatController.a();
     }
   }
   
   public void g(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).g(paramEngineData);
     }
-    a(paramEngineData, paramEngineData.a(), "countdown");
-    SecurityPolicyChecker.a().a(paramEngineData, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getCurrentAccountUin());
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.h();
+    a(paramEngineData, paramEngineData.s(), "countdown");
+    SecurityPolicyChecker.a().a(paramEngineData, this.n.getCurrentAccountUin());
   }
   
   public void h()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).h();
     }
@@ -1222,21 +1144,16 @@ public class GameEngine
   
   public void h(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, false);
-    Iterator localIterator = this.b.iterator();
+    this.h.a(paramEngineData, false);
+    Iterator localIterator = this.j.iterator();
     while (localIterator.hasNext()) {
       ((GameStatusListener)localIterator.next()).h(paramEngineData);
     }
   }
   
-  public boolean h()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.h();
-  }
-  
   public void i()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).i();
     }
@@ -1244,20 +1161,15 @@ public class GameEngine
   
   public void i(EngineData paramEngineData)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((GameResultListener)localIterator.next()).i(paramEngineData);
     }
   }
   
-  public boolean i()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.g();
-  }
-  
   public void j()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).j();
     }
@@ -1265,53 +1177,48 @@ public class GameEngine
   
   public void j(EngineData paramEngineData)
   {
-    if ((paramEngineData != null) && (paramEngineData.a() != null))
+    if ((paramEngineData != null) && (paramEngineData.h() != null))
     {
-      if (paramEngineData.c() == 1) {
+      if (paramEngineData.o() == 1) {
         return;
       }
-      if ((paramEngineData.c() == 3) && (!paramEngineData.h()))
+      if ((paramEngineData.o() == 3) && (!paramEngineData.O()))
       {
-        if (paramEngineData.a().d() > paramEngineData.a().f())
+        if (paramEngineData.h().n() > paramEngineData.h().p())
         {
-          i = paramEngineData.s() * 1000;
-          j = paramEngineData.a().d() - paramEngineData.a().f();
+          i1 = paramEngineData.aj() * 1000;
+          i2 = paramEngineData.h().n() - paramEngineData.h().p();
         }
         else
         {
-          i = paramEngineData.a().f() - paramEngineData.a().d() + paramEngineData.s() * 1000;
+          i1 = paramEngineData.h().p() - paramEngineData.h().n() + paramEngineData.aj() * 1000;
           break label128;
         }
       }
       else
       {
-        i = paramEngineData.a().f();
-        j = paramEngineData.a().d();
+        i1 = paramEngineData.h().p();
+        i2 = paramEngineData.h().n();
       }
-      i -= j;
+      i1 -= i2;
       label128:
-      int k = ((AvGameConfBean)QConfigManager.a().a(642)).c();
-      int j = i + k * 1000;
-      int i = j;
-      if (paramEngineData.h()) {
-        i = j + paramEngineData.a().a.f * 1000;
+      int i3 = ((AvGameConfBean)QConfigManager.b().b(642)).m();
+      int i2 = i1 + i3 * 1000;
+      int i1 = i2;
+      if (paramEngineData.O()) {
+        i1 = i2 + paramEngineData.h().f.f * 1000;
       }
-      this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a(paramEngineData, i);
+      this.h.a(paramEngineData, i1);
       paramEngineData = new StringBuilder();
       paramEngineData.append(" questionTimeout:");
-      paramEngineData.append(k);
-      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "startTopicTimeoutMonitor timeoutTs: ", Integer.valueOf(i), paramEngineData.toString() });
+      paramEngineData.append(i3);
+      QLog.d("avgame_logic.GameEngine", 1, new Object[] { "startTopicTimeoutMonitor timeoutTs: ", Integer.valueOf(i1), paramEngineData.toString() });
     }
-  }
-  
-  public boolean j()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.j() != 0;
   }
   
   public void k()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext()) {
       ((GameRoomStatusListener)localIterator.next()).k();
     }
@@ -1319,37 +1226,125 @@ public class GameEngine
   
   public void l()
   {
-    int i = a().j();
+    Iterator localIterator = this.i.iterator();
+    while (localIterator.hasNext()) {
+      ((GameRoomStatusListener)localIterator.next()).l();
+    }
+  }
+  
+  public int m()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public int n()
+  {
+    return C() ^ true;
+  }
+  
+  public boolean o()
+  {
+    if (!this.p.d()) {
+      return false;
+    }
+    this.f.a(this.n.getCurrentAccountUin(), this.p.i(), this.p.n());
+    return true;
+  }
+  
+  public boolean p()
+  {
+    if ((C()) && (Build.VERSION.SDK_INT >= 16)) {
+      return AudioProcess.b().startRecog(this);
+    }
+    return false;
+  }
+  
+  public void q()
+  {
+    if (!this.p.d()) {
+      return;
+    }
+    if (QLog.isDebugVersion()) {
+      QLog.i("avgame_logic.GameEngine_GameRC", 1, String.format("onclick share:playId[%s]", new Object[] { this.p.n() }));
+    }
+    ((IAVGameAppInterface)this.n).a().a(this.p.n());
+  }
+  
+  public boolean r()
+  {
+    if (!this.p.d()) {
+      return false;
+    }
+    if (this.p.n() == null) {
+      return false;
+    }
+    this.f.a(this.n.getAccount(), this.p.n());
+    return true;
+  }
+  
+  public EngineData s()
+  {
+    return this.p;
+  }
+  
+  public void t()
+  {
+    this.p.D();
+  }
+  
+  public long u()
+  {
+    return this.p.G();
+  }
+  
+  public boolean v()
+  {
+    return this.p.a(d());
+  }
+  
+  public void w()
+  {
+    int i2 = AVGameUtil.b();
+    if (i2 == 0)
+    {
+      if ((v()) && (d()))
+      {
+        ((GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a)).a(s().i(), s().J(), s().e().owner);
+        return;
+      }
+      QLog.d("avgame_logic.GameEngine", 2, "stopGameMatch no need");
+      return;
+    }
+    int i1 = 1;
+    if (i2 == 1) {
+      i1 = 0;
+    }
+    d(i1);
+  }
+  
+  public void x()
+  {
+    int i1 = s().P();
     boolean bool;
-    if (i == 0) {
+    if (i1 == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    ((GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.a)).a(bool, a().k(), i, a().p(), ((IAVGameVoiceRecog)QRoute.api(IAVGameVoiceRecog.class)).isLocalVoiceModelReady() ^ true);
+    ((GameRoomHandler)this.n.getBusinessHandler(HandlerFactory.a)).a(bool, s().Q(), i1, s().Y(), ((IAVGameVoiceRecog)QRoute.api(IAVGameVoiceRecog.class)).isLocalVoiceModelReady() ^ true);
     if (bool) {
-      this.jdField_a_of_type_Int = 0;
+      this.o = 0;
     }
   }
   
-  public void m()
+  public void y()
   {
     a(false);
   }
   
-  public void n()
+  public void z()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public void o()
-  {
-    ThreadManager.getSubThreadHandler().post(new GameEngine.6(this));
-  }
-  
-  public void p()
-  {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicControllerStatusMonitor.a();
   }
 }
 

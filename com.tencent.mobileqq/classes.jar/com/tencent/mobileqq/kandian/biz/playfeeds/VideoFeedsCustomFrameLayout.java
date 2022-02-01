@@ -8,10 +8,10 @@ import android.widget.FrameLayout;
 public class VideoFeedsCustomFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = true;
+  private float b;
+  private float c;
+  private boolean d = false;
   
   public VideoFeedsCustomFrameLayout(Context paramContext)
   {
@@ -32,12 +32,12 @@ public class VideoFeedsCustomFrameLayout
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      this.c = paramMotionEvent.getX();
     }
-    else if ((paramMotionEvent.getAction() == 2) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getY() - this.jdField_a_of_type_Float > 300.0F) && (!this.jdField_b_of_type_Boolean))
+    else if ((paramMotionEvent.getAction() == 2) && (!this.a) && (paramMotionEvent.getY() - this.b > 300.0F) && (!this.d))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.d = true;
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -50,12 +50,12 @@ public class VideoFeedsCustomFrameLayout
   
   public void setScrollable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCustomFrameLayout
  * JD-Core Version:    0.7.0.1
  */

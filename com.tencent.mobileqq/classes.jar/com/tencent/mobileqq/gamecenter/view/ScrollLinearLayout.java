@@ -15,10 +15,10 @@ public class ScrollLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = AIOUtils.b(80.0F, getResources());
-  private View jdField_a_of_type_AndroidViewView;
-  private OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
+  private int a = AIOUtils.b(80.0F, getResources());
   private View b;
+  private View c;
+  private OverScroller d;
   
   public ScrollLinearLayout(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class ScrollLinearLayout
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(0, getScrollY(), 0, paramInt, 0, 0, 0, this.jdField_a_of_type_Int);
+    this.d.fling(0, getScrollY(), 0, paramInt, 0, 0, 0, this.a);
     invalidate();
   }
   
@@ -49,21 +49,21 @@ public class ScrollLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.b = findViewById(2131366760);
-    this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
+    this.c = findViewById(2131433082);
+    this.d = new OverScroller(getContext());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.b != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      if (this.b == null) {
         return;
       }
       getChildAt(0).measure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, 0));
-      this.b.getLayoutParams().height = getMeasuredHeight();
-      setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + this.b.getMeasuredHeight());
+      this.c.getLayoutParams().height = getMeasuredHeight();
+      setMeasuredDimension(getMeasuredWidth(), this.b.getMeasuredHeight() + this.c.getMeasuredHeight());
     }
   }
   
@@ -74,7 +74,7 @@ public class ScrollLinearLayout
   
   public boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
-    if (getScrollY() >= this.jdField_a_of_type_Int) {
+    if (getScrollY() >= this.a) {
       return false;
     }
     a((int)paramFloat2);
@@ -83,7 +83,7 @@ public class ScrollLinearLayout
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    if ((paramInt2 > 0) && (getScrollY() < this.jdField_a_of_type_Int)) {
+    if ((paramInt2 > 0) && (getScrollY() < this.a)) {
       paramInt1 = 1;
     } else {
       paramInt1 = 0;
@@ -145,7 +145,7 @@ public class ScrollLinearLayout
     if (paramInt2 < 0) {
       i = 0;
     }
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     paramInt2 = i;
     if (i > j) {
       paramInt2 = j;
@@ -157,7 +157,7 @@ public class ScrollLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ScrollLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class AudioEncoder
   {
     try
     {
-      int i = encode(paramAudioData.jdField_a_of_type_JavaLangString, paramAudioData.jdField_b_of_type_JavaLangString, paramAudioData.jdField_a_of_type_Int, paramAudioData.jdField_b_of_type_Int, paramAudioData.c, paramAudioData.d, paramAudioData.e);
+      int i = encode(paramAudioData.a, paramAudioData.b, paramAudioData.c, paramAudioData.d, paramAudioData.e, paramAudioData.f, paramAudioData.g);
       return i;
     }
     catch (UnsatisfiedLinkError paramAudioData)
@@ -39,22 +39,22 @@ public class AudioEncoder
   public static AudioEncoder.AudioData a(String paramString1, String paramString2, int paramInt)
   {
     AudioEncoder.AudioData localAudioData = new AudioEncoder.AudioData();
-    localAudioData.jdField_a_of_type_JavaLangString = paramString1;
-    localAudioData.jdField_b_of_type_JavaLangString = paramString2;
-    localAudioData.jdField_a_of_type_Int = paramInt;
-    localAudioData.d = CodecParam.mAudioSampleRate;
-    localAudioData.c = CodecParam.mDstAudioEncBitrate;
+    localAudioData.a = paramString1;
+    localAudioData.b = paramString2;
+    localAudioData.c = paramInt;
+    localAudioData.f = CodecParam.mAudioSampleRate;
+    localAudioData.e = CodecParam.mDstAudioEncBitrate;
     if (CodecParam.mAudioFormat == 2) {
-      localAudioData.jdField_b_of_type_Int = 16;
+      localAudioData.d = 16;
     } else {
-      localAudioData.jdField_b_of_type_Int = 8;
+      localAudioData.d = 8;
     }
     if (CodecParam.mAudioChannel == 16)
     {
-      localAudioData.e = 1;
+      localAudioData.g = 1;
       return localAudioData;
     }
-    localAudioData.e = 2;
+    localAudioData.g = 2;
     return localAudioData;
   }
   
@@ -62,7 +62,7 @@ public class AudioEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioEncoder
  * JD-Core Version:    0.7.0.1
  */

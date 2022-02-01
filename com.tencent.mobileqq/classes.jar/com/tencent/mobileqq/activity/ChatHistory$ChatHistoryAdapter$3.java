@@ -12,13 +12,13 @@ class ChatHistory$ChatHistoryAdapter$3
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.vibratorAndAudioForShake(this.jdField_a_of_type_JavaLangString, false);
+    this.b.f.app.vibratorAndAudioForShake(this.a, false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,62 +18,62 @@ import com.tencent.widget.ActionSheet;
 
 public class LocationSheet
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private Context b;
+  private BaseChatPie c;
+  private SessionInfo d;
   
   public LocationSheet(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramQQAppInterface;
+    this.c = paramBaseChatPie;
     b();
   }
   
   private void b()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = localBaseChatPie.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
+      this.b = localBaseChatPie.aX();
+      this.d = this.c.aE();
     }
   }
   
   private void c()
   {
-    LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).launchShareUi(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
+    LocationShareServiceHolder.a(this.a).launchShareUi(this.c.aX(), this.c.ah.a, this.c.ah.b, 1);
     ReportController.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
   }
   
   private void d()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     if (localBaseChatPie != null)
     {
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().setCanLock(false);
+      PlusPanelUtils.a(this.a, localBaseChatPie.aX());
+      this.c.aX().setCanLock(false);
     }
-    AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    AIOPanelUtiles.a(this.a, "0X800407F", this.d.a);
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
+      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.d });
     }
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null))
+    if ((this.b != null) && (this.c != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      if (this.d == null) {
         return;
       }
-      Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof DiscussChatPie)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) || (((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+      Object localObject = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((!(this.c instanceof DiscussChatPie)) && (!this.d.b.equals(this.a.getCurrentUin())) && ((this.d.a != 0) || (((FriendsManager)localObject).n(this.d.b))))
       {
-        localObject = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-        ((ActionSheet)localObject).addButton(2131718744, 0);
-        ((ActionSheet)localObject).addButton(2131719021, 0);
-        ((ActionSheet)localObject).addCancelButton(2131690728);
+        localObject = ActionSheet.create(this.b);
+        ((ActionSheet)localObject).addButton(2131916250, 0);
+        ((ActionSheet)localObject).addButton(2131916557, 0);
+        ((ActionSheet)localObject).addCancelButton(2131887648);
         ((ActionSheet)localObject).setOnButtonClickListener(new LocationSheet.1(this, (ActionSheet)localObject));
         ((ActionSheet)localObject).show();
         return;
@@ -84,7 +84,7 @@ public class LocationSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.pluspanel.LocationSheet
  * JD-Core Version:    0.7.0.1
  */

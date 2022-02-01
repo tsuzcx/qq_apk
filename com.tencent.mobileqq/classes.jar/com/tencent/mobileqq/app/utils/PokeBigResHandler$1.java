@@ -15,7 +15,7 @@ class PokeBigResHandler$1
   
   public void run()
   {
-    PokeBigResHandler.a(true);
+    PokeBigResHandler.b(true);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     Object localObject = PreferenceManager.getDefaultSharedPreferences(PokeBigResHandler.a(this.this$0).getApp());
     String str = PokeBigResHandler.a(this.this$0).getAccount();
@@ -29,16 +29,16 @@ class PokeBigResHandler$1
     localStringBuilder.append("_");
     localStringBuilder.append("aio_poke_res_md5");
     PokeBigResHandler.b(((SharedPreferences)localObject).getString(localStringBuilder.toString(), ""));
-    if (TextUtils.isEmpty(PokeBigResHandler.a()))
+    if (TextUtils.isEmpty(PokeBigResHandler.b()))
     {
-      PokeBigResHandler.a(false);
+      PokeBigResHandler.b(false);
       return;
     }
-    localHttpNetReq.mCallback = PokeBigResHandler.a(this.this$0);
-    localHttpNetReq.mReqUrl = PokeBigResHandler.a();
+    localHttpNetReq.mCallback = PokeBigResHandler.b(this.this$0);
+    localHttpNetReq.mReqUrl = PokeBigResHandler.b();
     localHttpNetReq.mHttpMethod = 0;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(PokeBigResHandler.b());
+    ((StringBuilder)localObject).append(PokeBigResHandler.c());
     ((StringBuilder)localObject).append("poke.zip");
     localHttpNetReq.mOutPath = ((StringBuilder)localObject).toString();
     ((HttpEngineServiceImpl)PokeBigResHandler.a(this.this$0).getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
@@ -46,7 +46,7 @@ class PokeBigResHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.PokeBigResHandler.1
  * JD-Core Version:    0.7.0.1
  */

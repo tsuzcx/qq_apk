@@ -14,42 +14,42 @@ class SwitchAccountActivity$5$1
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!SwitchAccountActivity.access$500(this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity)))
+    if ((Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!SwitchAccountActivity.access$500(this.a.e)))
     {
-      SwitchAccountActivity.access$502(this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity, true);
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      SwitchAccountActivity.access$502(this.a.e, true);
+      if (this.a.a != null) {
+        this.a.a.setPressed(false);
       }
-      if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
+      if ((paramFloat1 < -20.0F) && (this.a.b != null))
       {
-        paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramMotionEvent1 = (View)this.a.b.get();
         if (paramMotionEvent1 != null)
         {
-          paramMotionEvent1 = paramMotionEvent1.findViewById(2131377351);
+          paramMotionEvent1 = paramMotionEvent1.findViewById(2131445741);
           if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
             ((ShaderAnimLayout)paramMotionEvent1).e();
           }
         }
-        this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+        this.a.b = null;
       }
       if (paramFloat1 > 20.0F)
       {
-        if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+        if ((this.a.b != null) && (this.a.b.get() != null))
         {
-          paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
+          paramMotionEvent1 = (View)this.a.b.get();
+          if (paramMotionEvent1 != this.a.a)
           {
-            paramMotionEvent1 = paramMotionEvent1.findViewById(2131377351);
+            paramMotionEvent1 = paramMotionEvent1.findViewById(2131445741);
             if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
               ((ShaderAnimLayout)paramMotionEvent1).e();
             }
           }
-          this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          this.a.b = null;
           return true;
         }
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        if (this.a.a != null)
         {
-          paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131377351);
+          paramMotionEvent1 = this.a.a.findViewById(2131445741);
           if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
           {
             if (QLog.isColorLevel()) {
@@ -57,8 +57,8 @@ class SwitchAccountActivity$5$1
             }
             ((ShaderAnimLayout)paramMotionEvent1).a();
             paramMotionEvent1 = this.a;
-            paramMotionEvent1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMotionEvent1.jdField_a_of_type_AndroidViewView);
-            this.a.jdField_a_of_type_AndroidViewView = null;
+            paramMotionEvent1.b = new WeakReference(paramMotionEvent1.a);
+            this.a.a = null;
           }
         }
       }
@@ -69,7 +69,7 @@ class SwitchAccountActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SwitchAccountActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class MapWidget$1$1
   public void onGlobalLayout()
   {
     this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
+    CameraPosition localCameraPosition = this.a.a.b.getCameraPosition();
     if (localCameraPosition != null) {
       MapWidget.a(this.a.a).a(localCameraPosition.target);
     }
@@ -21,7 +21,7 @@ class MapWidget$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.1.1
  * JD-Core Version:    0.7.0.1
  */

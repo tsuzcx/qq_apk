@@ -12,25 +12,20 @@ import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 public class TroopFileSearchResultView
   implements ISearchResultView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  private View a;
+  private ImageView b;
+  private EllipsizingTextView c;
+  private TextView d;
   
   public TroopFileSearchResultView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560822, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366781));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366792));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365517));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627080, paramViewGroup, false);
+    this.b = ((ImageView)this.a.findViewById(2131433103));
+    this.c = ((EllipsizingTextView)this.a.findViewById(2131433114));
+    this.d = ((TextView)this.a.findViewById(2131431733));
+    this.c.setMaxLines(1);
+    this.c.a();
+    this.c.setEllipsize(TextUtils.TruncateAt.MIDDLE);
   }
   
   public View a(String paramString)
@@ -38,39 +33,44 @@ public class TroopFileSearchResultView
     return null;
   }
   
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
   public TextView b()
   {
-    return null;
+    return this.c;
   }
   
   public TextView c()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return null;
   }
   
   public TextView d()
   {
+    return this.d;
+  }
+  
+  public TextView e()
+  {
     return null;
+  }
+  
+  public ImageView f()
+  {
+    return null;
+  }
+  
+  public ImageView g()
+  {
+    return this.b;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchResultView
  * JD-Core Version:    0.7.0.1
  */

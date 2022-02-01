@@ -21,12 +21,12 @@ final class BarrageController$BarrageBusinessObserver
     if (TextUtils.isEmpty((CharSequence)paramString1)) {
       return;
     }
-    BarrageHandler.SessionParams localSessionParams2 = (BarrageHandler.SessionParams)BarrageController.a(this.a).get(paramString1);
+    BarrageHandler.SessionParams localSessionParams2 = (BarrageHandler.SessionParams)BarrageController.b(this.a).get(paramString1);
     BarrageHandler.SessionParams localSessionParams1 = localSessionParams2;
     if (localSessionParams2 == null)
     {
       localSessionParams1 = new BarrageHandler.SessionParams();
-      ((Map)BarrageController.a(this.a)).put(paramString1, localSessionParams1);
+      ((Map)BarrageController.b(this.a)).put(paramString1, localSessionParams1);
     }
     localSessionParams1.b = paramString3;
     localSessionParams1.a = paramString2;
@@ -48,7 +48,7 @@ final class BarrageController$BarrageBusinessObserver
         BarrageController.a(this.a).clear();
         BarrageController.a(this.a).addAll((Collection)localObject);
         if (this.a.a()) {
-          this.a.a();
+          this.a.c();
         }
       }
     }
@@ -59,7 +59,7 @@ final class BarrageController$BarrageBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageController.BarrageBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

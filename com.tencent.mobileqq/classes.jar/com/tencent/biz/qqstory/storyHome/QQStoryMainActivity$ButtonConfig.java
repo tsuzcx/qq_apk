@@ -8,32 +8,30 @@ import org.json.JSONObject;
 
 public class QQStoryMainActivity$ButtonConfig
 {
-  public int a;
-  public String a;
+  public int a = 3;
   public String b = null;
   public String c = null;
+  public String d = null;
   
   public QQStoryMainActivity$ButtonConfig(String paramString)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = null;
-    paramString = (String)((StoryConfigManager)SuperManager.a(10)).b(paramString, "");
+    paramString = (String)((StoryConfigManager)SuperManager.a(10)).c(paramString, "");
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = paramString.optInt("show", 3);
-        if (this.jdField_a_of_type_Int >= 0)
+        this.a = paramString.optInt("show", 3);
+        if (this.a >= 0)
         {
-          this.c = paramString.optString("url");
-          this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
-          this.b = paramString.optString("text");
+          this.d = paramString.optString("url");
+          this.b = paramString.optString("icon");
+          this.c = paramString.optString("text");
           return;
         }
       }
       catch (Exception paramString)
       {
-        this.jdField_a_of_type_Int = 3;
+        this.a = 3;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -49,13 +47,13 @@ public class QQStoryMainActivity$ButtonConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ButtonConfig: show = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", iconText = ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", iconUrl = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", jumpUrl = ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", iconUrl = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", jumpUrl = ");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }

@@ -103,26 +103,38 @@ public abstract class DragAdapter
       paramInt = paramViewHolder.getLeft();
       i = this.mDragMirrorLayout.getTop();
     }
-    boolean bool1 = isSameModule(this.mDragIndex, this.mIntertTarget);
+    boolean bool3 = isSameModule(this.mDragIndex, this.mIntertTarget);
     int j;
-    if ((!this.mDeletePrepared) && ((bool1) || (this.mIntertTarget < 0))) {
+    if ((!this.mDeletePrepared) && ((bool3) || (this.mIntertTarget < 0))) {
       j = 1;
     } else {
       j = 0;
     }
     boolean bool2 = isDragCancel();
-    if (bool2)
+    boolean bool1 = bool2;
+    if (getTargetDragModuleType(this.mIntertTarget) == 3)
+    {
+      paramViewHolder = this.outsideDragFromInfo;
+      if (paramViewHolder == null) {
+        paramViewHolder = (DesktopAppInfo)this.mData.get(this.mDragIndex);
+      }
+      bool1 = bool2;
+      if (paramViewHolder.mMiniAppInfo.isWxMiniApp()) {
+        bool1 = true;
+      }
+    }
+    if (bool1)
     {
       paramViewHolder = new StringBuilder();
       paramViewHolder.append("Desktop-Drag onDragFinish isDragCancel：");
-      paramViewHolder.append(bool2);
+      paramViewHolder.append(bool1);
       QLog.i("DragAdapter", 1, paramViewHolder.toString());
       int k = 0;
       while (k < this.mData.size())
       {
         if (((DesktopItemInfo)this.mData.get(k)).isTemp)
         {
-          if (bool1)
+          if (bool3)
           {
             ((DesktopItemInfo)this.mData.get(k)).setIsTemp(false);
             notifyItemChanged(k);
@@ -154,7 +166,7 @@ public abstract class DragAdapter
           this.mMainHandler.postDelayed(new DragAdapter.3(this, paramViewHolder), 350L);
         }
       }
-      else if (!bool1)
+      else if (!bool3)
       {
         localObject1 = new AnimationSet(true);
         ((AnimationSet)localObject1).addAnimation(this.mirrorRevertAnimation);
@@ -218,7 +230,7 @@ public abstract class DragAdapter
       }
       else
       {
-        if (getItemCount() > MiniAppConfProcessor.a())
+        if (getItemCount() > MiniAppConfProcessor.f())
         {
           paramInt = this.mIntertTarget;
           this.mMainHandler.post(new DragAdapter.6(this, paramInt));
@@ -318,6 +330,14 @@ public abstract class DragAdapter
     {
       QLog.e("DragAdapter", 1, "exception when doVibrate.", localThrowable);
     }
+  }
+  
+  private int getTargetDragModuleType(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < getItemCount())) {
+      return ((DesktopItemInfo)this.mData.get(paramInt)).mModuleType;
+    }
+    return -1;
   }
   
   private boolean isSameModule(int paramInt1, int paramInt2)
@@ -493,10 +513,13 @@ public abstract class DragAdapter
           else
           {
             this.mIntertTarget = j;
-            localObject1 = new DesktopAppInfo(((DesktopAppInfo)this.mData.get(j)).mModuleType, ((DesktopAppInfo)localObject1).mMiniAppInfo);
-            ((DesktopItemInfo)localObject1).setIsTemp(true);
-            this.mData.add(j, localObject1);
-            notifyItemInserted(j);
+            if ((getTargetDragModuleType(this.mIntertTarget) != 3) || (((DesktopAppInfo)localObject1).mMiniAppInfo == null) || (!((DesktopAppInfo)localObject1).mMiniAppInfo.isWxMiniApp()))
+            {
+              localObject1 = new DesktopAppInfo(((DesktopAppInfo)this.mData.get(j)).mModuleType, ((DesktopAppInfo)localObject1).mMiniAppInfo);
+              ((DesktopItemInfo)localObject1).setIsTemp(true);
+              this.mData.add(j, localObject1);
+              notifyItemInserted(j);
+            }
           }
         }
       }
@@ -551,7 +574,7 @@ public abstract class DragAdapter
         this.mDragMirrorMarkImage.setVisibility(0);
       }
     }
-    if ((Math.abs(paramInt1 - this.lastDragLeft) > ViewUtils.b(5.0F)) || (Math.abs(paramInt2 - this.lastDragTop) > ViewUtils.b(5.0F)))
+    if ((Math.abs(paramInt1 - this.lastDragLeft) > ViewUtils.dpToPx(5.0F)) || (Math.abs(paramInt2 - this.lastDragTop) > ViewUtils.dpToPx(5.0F)))
     {
       this.lastDragLeft = paramInt1;
       this.lastDragTop = paramInt2;
@@ -560,7 +583,7 @@ public abstract class DragAdapter
         if (this.mIntertTarget < 0)
         {
           localObject1 = this.mRecyclerView.findViewHolderForAdapterPosition(getItemCount() - 1);
-          if ((i != 0) || ((localObject1 != null) && (paramInt1 - ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= ViewUtils.b(20.0F)) && (paramInt2 - ((RecyclerView.ViewHolder)localObject1).itemView.getTop() >= ViewUtils.b(5.0F))))
+          if ((i != 0) || ((localObject1 != null) && (paramInt1 - ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= ViewUtils.dpToPx(20.0F)) && (paramInt2 - ((RecyclerView.ViewHolder)localObject1).itemView.getTop() >= ViewUtils.dpToPx(5.0F))))
           {
             localDesktopItemInfo1 = (DesktopItemInfo)this.mData.get(getItemCount() - 1);
             if ((localDesktopItemInfo1.dropEnable) && (!localDesktopItemInfo1.isTemp) && (!isSameModule(this.mDragIndex, getItemCount() - 1)))
@@ -574,12 +597,15 @@ public abstract class DragAdapter
               } else {
                 localObject1 = (DesktopAppInfo)this.mData.get(this.mDragIndex);
               }
-              localObject1 = new DesktopAppInfo(localDesktopItemInfo1.mModuleType, ((DesktopAppInfo)localObject1).mMiniAppInfo);
-              ((DesktopItemInfo)localObject1).setIsTemp(true);
-              this.mData.add(localObject1);
-              this.mIntertTarget = (this.mData.size() - 1);
-              notifyItemInserted(this.mData.size() - 1);
-              return;
+              if ((localDesktopItemInfo1.mModuleType != 3) || (!((DesktopAppInfo)localObject1).mMiniAppInfo.isWxMiniApp()))
+              {
+                localObject1 = new DesktopAppInfo(localDesktopItemInfo1.mModuleType, ((DesktopAppInfo)localObject1).mMiniAppInfo);
+                ((DesktopItemInfo)localObject1).setIsTemp(true);
+                this.mData.add(localObject1);
+                this.mIntertTarget = (this.mData.size() - 1);
+                notifyItemInserted(this.mData.size() - 1);
+                return;
+              }
             }
           }
         }
@@ -595,7 +621,7 @@ public abstract class DragAdapter
   {
     int i = (int)paramFloat1;
     int j = (int)paramFloat2;
-    int k = ViewUtils.a(45.0F);
+    int k = ViewUtils.dip2px(45.0F);
     return this.mRecyclerView.findChildViewUnder(i, j - k);
   }
   
@@ -650,10 +676,10 @@ public abstract class DragAdapter
     if (!this.outsideDragCancel)
     {
       bool1 = bool2;
-      if (Math.abs(this.startDragX - i) < ViewUtils.b(15.0F))
+      if (Math.abs(this.startDragX - i) < ViewUtils.dpToPx(15.0F))
       {
         bool1 = bool2;
-        if (Math.abs(this.startDragY - j) >= ViewUtils.b(15.0F)) {}
+        if (Math.abs(this.startDragY - j) >= ViewUtils.dpToPx(15.0F)) {}
       }
     }
     else
@@ -699,7 +725,7 @@ public abstract class DragAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return paramInt2 >= this.mRecyclerView.getHeight() - ViewUtils.b(60.0F);
+    return paramInt2 >= this.mRecyclerView.getHeight() - ViewUtils.dpToPx(60.0F);
   }
   
   /* Error */
@@ -709,39 +735,39 @@ public abstract class DragAdapter
     //   0: aload_1
     //   1: ifnonnull +4 -> 5
     //   4: return
-    //   5: new 172	java/lang/StringBuilder
+    //   5: new 195	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   9: invokespecial 196	java/lang/StringBuilder:<init>	()V
     //   12: astore_3
     //   13: aload_3
-    //   14: ldc_w 612
-    //   17: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: ldc_w 619
+    //   17: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
     //   21: aload_3
     //   22: iload_2
-    //   23: invokevirtual 522	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 529	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   26: pop
     //   27: aload_3
-    //   28: ldc_w 532
-    //   31: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc_w 539
+    //   31: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload_3
     //   36: aload_0
     //   37: getfield 84	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mIntertTarget	I
-    //   40: invokevirtual 522	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 529	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: ldc 15
     //   46: iconst_1
     //   47: aload_3
-    //   48: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 192	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokestatic 215	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   54: aload_0
     //   55: aload_1
     //   56: iload_2
-    //   57: invokespecial 614	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:doOnDragFinish	(Landroid/support/v7/widget/RecyclerView$ViewHolder;I)V
+    //   57: invokespecial 621	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:doOnDragFinish	(Landroid/support/v7/widget/RecyclerView$ViewHolder;I)V
     //   60: aload_0
     //   61: getfield 126	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mRecyclerView	Lcom/tencent/mobileqq/mini/entry/desktop/widget/DragRecyclerView;
-    //   64: invokevirtual 617	com/tencent/mobileqq/mini/entry/desktop/widget/DragRecyclerView:stopAutoScroll	()V
+    //   64: invokevirtual 624	com/tencent/mobileqq/mini/entry/desktop/widget/DragRecyclerView:stopAutoScroll	()V
     //   67: aload_0
     //   68: iconst_m1
     //   69: putfield 80	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mDragIndex	I
@@ -756,34 +782,34 @@ public abstract class DragAdapter
     //   84: putfield 84	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mIntertTarget	I
     //   87: aload_0
     //   88: getfield 108	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mMoveItemRunnable	Lcom/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable;
-    //   91: invokevirtual 620	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable:reset	()V
+    //   91: invokevirtual 627	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable:reset	()V
     //   94: aload_0
     //   95: getfield 115	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mMoveRunnable	Lcom/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable;
-    //   98: invokevirtual 621	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable:reset	()V
+    //   98: invokevirtual 628	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable:reset	()V
     //   101: aload_0
     //   102: iconst_0
     //   103: putfield 86	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mDeletePrepared	Z
     //   106: aload_0
     //   107: iconst_m1
-    //   108: putfield 623	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartX	I
+    //   108: putfield 630	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartX	I
     //   111: aload_0
     //   112: iconst_m1
-    //   113: putfield 625	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartY	I
+    //   113: putfield 632	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartY	I
     //   116: aload_0
     //   117: aconst_null
-    //   118: putfield 279	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragFromInfo	Lcom/tencent/mobileqq/mini/entry/desktop/item/DesktopAppInfo;
+    //   118: putfield 176	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragFromInfo	Lcom/tencent/mobileqq/mini/entry/desktop/item/DesktopAppInfo;
     //   121: aload_0
     //   122: iconst_0
     //   123: putfield 122	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragCancel	Z
     //   126: aload_0
     //   127: iconst_m1
-    //   128: putfield 253	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragX	I
+    //   128: putfield 270	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragX	I
     //   131: aload_0
     //   132: iconst_m1
-    //   133: putfield 255	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragY	I
+    //   133: putfield 272	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragY	I
     //   136: aload_0
     //   137: iconst_0
-    //   138: putfield 627	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragYDiff	I
+    //   138: putfield 634	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragYDiff	I
     //   141: aload_0
     //   142: iconst_m1
     //   143: putfield 88	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mDeleteTarget	I
@@ -793,9 +819,9 @@ public abstract class DragAdapter
     //   151: astore_1
     //   152: ldc 15
     //   154: iconst_1
-    //   155: ldc_w 629
+    //   155: ldc_w 636
     //   158: aload_1
-    //   159: invokestatic 408	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   159: invokestatic 415	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   162: goto -95 -> 67
     //   165: aload_0
     //   166: iconst_m1
@@ -811,34 +837,34 @@ public abstract class DragAdapter
     //   182: putfield 84	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mIntertTarget	I
     //   185: aload_0
     //   186: getfield 108	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mMoveItemRunnable	Lcom/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable;
-    //   189: invokevirtual 620	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable:reset	()V
+    //   189: invokevirtual 627	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveItemRunnable:reset	()V
     //   192: aload_0
     //   193: getfield 115	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mMoveRunnable	Lcom/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable;
-    //   196: invokevirtual 621	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable:reset	()V
+    //   196: invokevirtual 628	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter$MoveRunnable:reset	()V
     //   199: aload_0
     //   200: iconst_0
     //   201: putfield 86	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mDeletePrepared	Z
     //   204: aload_0
     //   205: iconst_m1
-    //   206: putfield 623	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartX	I
+    //   206: putfield 630	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartX	I
     //   209: aload_0
     //   210: iconst_m1
-    //   211: putfield 625	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartY	I
+    //   211: putfield 632	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:moveStartY	I
     //   214: aload_0
     //   215: aconst_null
-    //   216: putfield 279	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragFromInfo	Lcom/tencent/mobileqq/mini/entry/desktop/item/DesktopAppInfo;
+    //   216: putfield 176	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragFromInfo	Lcom/tencent/mobileqq/mini/entry/desktop/item/DesktopAppInfo;
     //   219: aload_0
     //   220: iconst_0
     //   221: putfield 122	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:outsideDragCancel	Z
     //   224: aload_0
     //   225: iconst_m1
-    //   226: putfield 253	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragX	I
+    //   226: putfield 270	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragX	I
     //   229: aload_0
     //   230: iconst_m1
-    //   231: putfield 255	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragY	I
+    //   231: putfield 272	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragY	I
     //   234: aload_0
     //   235: iconst_0
-    //   236: putfield 627	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragYDiff	I
+    //   236: putfield 634	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:startDragYDiff	I
     //   239: aload_0
     //   240: iconst_m1
     //   241: putfield 88	com/tencent/mobileqq/mini/entry/desktop/widget/DragAdapter:mDeleteTarget	I
@@ -887,7 +913,7 @@ public abstract class DragAdapter
   {
     setDragMirrorPosition(paramInt1, paramInt2);
     this.mMainHandler.removeCallbacks(this.mMoveRunnable);
-    if (paramInt1 >= this.mRecyclerView.getRight() - ViewUtils.a(80.0F))
+    if (paramInt1 >= this.mRecyclerView.getRight() - ViewUtils.dip2px(80.0F))
     {
       if (this.mRecyclerView.computeHorizontalScrollExtent() + this.mRecyclerView.computeHorizontalScrollOffset() < this.mRecyclerView.computeHorizontalScrollRange()) {
         this.mRecyclerView.startAutoScrollX(true);
@@ -895,7 +921,7 @@ public abstract class DragAdapter
     }
     else
     {
-      if (paramInt1 <= ViewUtils.a(5.0F) * -1)
+      if (paramInt1 <= ViewUtils.dip2px(5.0F) * -1)
       {
         this.mRecyclerView.startAutoScrollX(false);
         return;
@@ -930,16 +956,16 @@ public abstract class DragAdapter
       paramInt = getDragParentLeft(paramViewHolder);
       int i = getDragParentTop(paramViewHolder);
       int j = paramViewHolder.itemView.getLeft();
-      int k = ViewUtils.b(8.0F);
+      int k = ViewUtils.dpToPx(8.0F);
       int m = paramViewHolder.itemView.getTop();
-      int n = ViewUtils.b(8.0F);
+      int n = ViewUtils.dpToPx(8.0F);
       this.startDragX = (paramInt + j + k);
       this.startDragY = (i + m - n);
       setDragMirrorPosition(this.startDragX, this.startDragY);
       this.mDragMirrorLayout.clearAnimation();
       paramViewHolder = (DesktopAppInfo)this.mData.get(paramViewHolder.getAdapterPosition());
       this.mDragMirrorImage.setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramViewHolder.mMiniAppInfo.iconUrl, true));
-      this.mDragMirrorMarkImage.setImageResource(2130841014);
+      this.mDragMirrorMarkImage.setImageResource(2130841805);
       this.mDragMirrorLayout.setVisibility(0);
       this.mDragMirrorLayout.setAnimation(this.mirrorZoomAnimation);
       this.mirrorZoomAnimation.start();
@@ -1020,7 +1046,7 @@ public abstract class DragAdapter
         j = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
       }
     }
-    if ((Math.abs(j - this.lastDragMoveLeft) <= ViewUtils.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= ViewUtils.b(20.0F))) {
+    if ((Math.abs(j - this.lastDragMoveLeft) <= ViewUtils.dpToPx(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= ViewUtils.dpToPx(20.0F))) {
       return;
     }
     this.lastDragMoveLeft = i;
@@ -1055,7 +1081,7 @@ public abstract class DragAdapter
         localObject = this.mDragMirrorMarkImage;
         if (localObject != null)
         {
-          ((ImageView)localObject).setImageResource(2130841013);
+          ((ImageView)localObject).setImageResource(2130841804);
           this.mDragMirrorMarkImage.setVisibility(0);
         }
       }
@@ -1070,7 +1096,7 @@ public abstract class DragAdapter
       localObject = this.mDragMirrorMarkImage;
       if (localObject != null)
       {
-        ((ImageView)localObject).setImageResource(2130841014);
+        ((ImageView)localObject).setImageResource(2130841805);
         localObject = this.mDragMirrorMarkImage;
         paramInt = i;
         if (this.mIntertTarget <= 0) {
@@ -1125,8 +1151,8 @@ public abstract class DragAdapter
     this.mDragMirrorLayout = paramView;
     if (paramView != null)
     {
-      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131371095));
-      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131371097));
+      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131438436));
+      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131438438));
       this.mDragMirrorMarkImage.setVisibility(4);
     }
   }
@@ -1146,7 +1172,7 @@ public abstract class DragAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter
  * JD-Core Version:    0.7.0.1
  */

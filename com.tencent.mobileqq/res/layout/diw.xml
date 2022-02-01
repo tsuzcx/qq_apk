@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/ajr" android:clickable="true" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@color/al3" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip">
+            <TextView android:textSize="12.0sp" android:textColor="@color/b58" android:id="@id/qnl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/z0m" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_centerVertical="true" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/qja" android:visibility="gone" android:layout_width="104.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/jvf" android:layout_toLeftOf="@id/qnm" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/b7g" android:gravity="center" android:id="@id/qnm" android:background="@drawable/jve" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginRight="16.0dip" android:text="下一步" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView android:id="@id/py6" android:background="@color/al3" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="20.0dip" android:overScrollMode="never" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:id="@id/ogt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="80.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:background="@drawable/hc_" android:layout_width="146.0dip" android:layout_height="36.0dip" android:text="长按拖拽可调整排序" />
+        <View android:background="@drawable/j6c" android:layout_width="11.0dip" android:layout_height="6.0dip" android:layout_marginLeft="15.0dip" />
+    </LinearLayout>
+</FrameLayout>

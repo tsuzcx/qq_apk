@@ -9,7 +9,7 @@ public class CallbackInvocationHandler
   implements InvocationHandler
 {
   private static final String TAG = "CallbackHandler";
-  private static HashMap<Class<?>, String> sTypeConvert = new CallbackInvocationHandler.1();
+  private static final HashMap<String, String> sBasicTypeConvert = new CallbackInvocationHandler.1();
   
   static native Object hookCallback(long paramLong, String paramString1, int paramInt, String[] paramArrayOfString, Object[] paramArrayOfObject, String paramString2);
   
@@ -19,17 +19,33 @@ public class CallbackInvocationHandler
     ((StringBuilder)localObject).append("invoke method: ");
     ((StringBuilder)localObject).append(paramMethod.getName());
     Log.d("CallbackHandler", ((StringBuilder)localObject).toString());
-    localObject = paramMethod.getParameterTypes();
-    String[] arrayOfString = new String[localObject.length];
-    int i = 0;
-    while (i < localObject.length)
-    {
-      arrayOfString[i] = ((String)sTypeConvert.get(localObject[i]));
-      i += 1;
+    int j = 0;
+    int i;
+    if (paramArrayOfObject == null) {
+      i = 0;
+    } else {
+      i = paramArrayOfObject.length;
     }
-    String str = paramMethod.getName();
-    paramMethod = (String)sTypeConvert.get(paramMethod.getReturnType());
-    return hookCallback(CallbackManager.getInstance().getRegisterDartAddr(paramObject), str, localObject.length, arrayOfString, paramArrayOfObject, paramMethod);
+    String[] arrayOfString = new String[i];
+    while (j < i)
+    {
+      if (paramArrayOfObject[j] != null) {
+        localObject = paramArrayOfObject[j].getClass().getName();
+      } else {
+        localObject = null;
+      }
+      arrayOfString[j] = localObject;
+      j += 1;
+    }
+    localObject = paramMethod.getName();
+    paramMethod = paramMethod.getReturnType().getName();
+    if (sBasicTypeConvert.get(paramMethod) != null) {
+      for (;;)
+      {
+        paramMethod = (String)sBasicTypeConvert.get(paramMethod);
+      }
+    }
+    return hookCallback(CallbackManager.getInstance().getRegisterDartAddr(paramObject), (String)localObject, i, arrayOfString, paramArrayOfObject, paramMethod);
   }
 }
 

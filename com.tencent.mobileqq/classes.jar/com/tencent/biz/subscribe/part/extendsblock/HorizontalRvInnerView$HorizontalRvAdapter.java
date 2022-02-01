@@ -14,24 +14,24 @@ public class HorizontalRvInnerView$HorizontalRvAdapter
   
   public HorizontalRVBlock.CommonRvVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView) != null) {
-      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView).a(paramViewGroup, paramInt);
+    if (HorizontalRvInnerView.a(this.a) != null) {
+      return HorizontalRvInnerView.a(this.a).a(paramViewGroup, paramInt);
     }
     return null;
   }
   
   public int getItemCount()
   {
-    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView) != null) {
-      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView).b();
+    if (HorizontalRvInnerView.a(this.a) != null) {
+      return HorizontalRvInnerView.a(this.a).d();
     }
     return 0;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((!ArrayUtils.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView) != null)) {
-      HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView).a(paramViewHolder, paramInt);
+    if ((!ArrayUtils.isOutOfArrayIndex(paramInt, this.j)) && (HorizontalRvInnerView.a(this.a) != null)) {
+      HorizontalRvInnerView.a(this.a).a(paramViewHolder, paramInt);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }

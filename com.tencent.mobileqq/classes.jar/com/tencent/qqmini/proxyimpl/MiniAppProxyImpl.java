@@ -39,13 +39,13 @@ import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI;
 import com.tencent.mobileqq.mini.appbrand.ui.MiniAppWebviewFragment;
 import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
+import com.tencent.mobileqq.mini.manager.MiniAppDetainManager;
 import com.tencent.mobileqq.mini.out.activity.MapActivity;
 import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
-import com.tencent.mobileqq.minigame.manager.GameCloseManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.minigame.utils.PathUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -116,48 +116,36 @@ import oicq.wlogin_sdk.request.Ticket;
 public class MiniAppProxyImpl
   extends MiniAppProxy
 {
-  private static boolean jdField_b_of_type_Boolean;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new MiniAppProxyImpl.2(this));
-  private MiniAppConfig jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppConfig = null;
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new MiniAppProxyImpl.15(this);
-  private IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppProxyImpl.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = null;
-  private String c = null;
-  
-  private int a(IColorNoteController paramIColorNoteController)
-  {
-    if (paramIColorNoteController.shouldDisplayColorNote())
-    {
-      if (paramIColorNoteController.isColorNoteExist()) {
-        return 2;
-      }
-      return 1;
-    }
-    return 0;
-  }
+  private static boolean d;
+  private boolean a = false;
+  private IMiniAppContext b;
+  private ArrayList<Integer> c = new MiniAppProxyImpl.1(this);
+  private Handler e = new Handler(Looper.getMainLooper(), new MiniAppProxyImpl.2(this));
+  private BroadcastReceiver f = null;
+  private MiniAppInfo g = null;
+  private MiniAppConfig h = null;
+  private String i = null;
+  private String j = null;
+  private String k = null;
+  private DownloadListener l = new MiniAppProxyImpl.15(this);
   
   private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString4;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
+    this.i = paramString4;
+    this.j = paramString1;
+    this.k = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, paramString1);
+    localBundle.putString(DownloadConstants.b, paramString1);
     localBundle.putString(DownloadConstants.j, paramString4);
     localBundle.putString(DownloadConstants.f, paramString2);
     localBundle.putInt(DownloadConstants.k, 2);
     localBundle.putString(DownloadConstants.i, "MiniApp");
     localBundle.putString(DownloadConstants.l, paramString3);
     localBundle.putInt(DownloadConstants.J, 1);
-    DownloadApi.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
+    DownloadApi.a(this.l);
     DownloadApi.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
-    QQToast.a(paramActivity, "开始下载", 1).a();
-    InnerAppReportDc4239.innerAppReport(this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppConfig, null, "launchapp", "downloadapp", "qqdownload");
+    QQToast.makeText(paramActivity, "开始下载", 1).show();
+    InnerAppReportDc4239.innerAppReport(this.h, null, "launchapp", "downloadapp", "qqdownload");
   }
   
   private void a(Context paramContext, String paramString1, String paramString2)
@@ -174,13 +162,13 @@ public class MiniAppProxyImpl
       if ((paramContext instanceof BasePluginActivity))
       {
         AppClient.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
-        InnerAppReportDc4239.innerAppReport(this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppConfig, null, "launchapp", "downloadapp", "yybdownload");
+        InnerAppReportDc4239.innerAppReport(this.h, null, "launchapp", "downloadapp", "yybdownload");
         return;
       }
       if ((paramContext instanceof Activity))
       {
         AppClient.b((Activity)paramContext, localBundle);
-        InnerAppReportDc4239.innerAppReport(this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppConfig, null, "launchapp", "downloadapp", "yybdownload");
+        InnerAppReportDc4239.innerAppReport(this.h, null, "launchapp", "downloadapp", "yybdownload");
         return;
       }
       QLog.e("MiniAppProxyImpl", 2, "onOpenThridApp mContext 必现是一个Activity");
@@ -219,7 +207,7 @@ public class MiniAppProxyImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    MiniAppConfig localMiniAppConfig = MiniSdkUtil.a(paramIMiniAppContext.getMiniAppInfo());
+    MiniAppConfig localMiniAppConfig = MiniSdkUtil.b(paramIMiniAppContext.getMiniAppInfo());
     MiniProgramLpReportDC04239.reportUserClick(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), ActionBridge.PageActionBridge.getPageUrl(paramIMiniAppContext), "user_click", "more_button", paramString);
   }
   
@@ -284,37 +272,16 @@ public class MiniAppProxyImpl
     return false;
   }
   
-  private boolean a(MiniAppInfo paramMiniAppInfo)
+  private int b(IColorNoteController paramIColorNoteController)
   {
-    boolean bool2 = AppNetConnInfo.isMobileConn();
-    boolean bool1 = false;
-    if (!bool2)
+    if (paramIColorNoteController.shouldDisplayColorNote())
     {
-      paramMiniAppInfo = new StringBuilder();
-      paramMiniAppInfo.append("shouldShowKingCardTip network type is wifi + ");
-      paramMiniAppInfo.append(AppNetConnInfo.isWifiConn());
-      QLog.i("MiniAppProxyImpl", 1, paramMiniAppInfo.toString());
-      return false;
+      if (paramIColorNoteController.isColorNoteExist()) {
+        return 2;
+      }
+      return 1;
     }
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i == 0)
-    {
-      QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
-      return false;
-    }
-    int i = CUKingCardUtils.a();
-    paramMiniAppInfo = new StringBuilder();
-    paramMiniAppInfo.append("shouldShowKingCardTip， king card status = ");
-    paramMiniAppInfo.append(i);
-    QLog.i("MiniAppProxyImpl", 1, paramMiniAppInfo.toString());
-    if (i == 1) {
-      bool1 = true;
-    }
-    return bool1;
+    return 0;
   }
   
   private void b(MiniAppInfo paramMiniAppInfo)
@@ -325,14 +292,6 @@ public class MiniAppProxyImpl
       return;
     }
     MiniAppCmdUtil.getInstance().setUserAppTop(paramMiniAppInfo.appId, paramMiniAppInfo.topType, paramMiniAppInfo.verType, null, new MiniAppProxyImpl.7(this, paramMiniAppInfo));
-  }
-  
-  private boolean b(MiniAppInfo paramMiniAppInfo)
-  {
-    if (d(paramMiniAppInfo)) {
-      return paramMiniAppInfo.launchParam.entryModel.isAdmin;
-    }
-    return false;
   }
   
   private void c(IMiniAppContext paramIMiniAppContext)
@@ -356,7 +315,35 @@ public class MiniAppProxyImpl
   
   private boolean c(MiniAppInfo paramMiniAppInfo)
   {
-    return d(paramMiniAppInfo) ^ true;
+    boolean bool2 = AppNetConnInfo.isMobileConn();
+    boolean bool1 = false;
+    if (!bool2)
+    {
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("shouldShowKingCardTip network type is wifi + ");
+      paramMiniAppInfo.append(AppNetConnInfo.isWifiConn());
+      QLog.i("MiniAppProxyImpl", 1, paramMiniAppInfo.toString());
+      return false;
+    }
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.isWangKa)) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    if (m == 0)
+    {
+      QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
+      return false;
+    }
+    int m = CUKingCardUtils.a();
+    paramMiniAppInfo = new StringBuilder();
+    paramMiniAppInfo.append("shouldShowKingCardTip， king card status = ");
+    paramMiniAppInfo.append(m);
+    QLog.i("MiniAppProxyImpl", 1, paramMiniAppInfo.toString());
+    if (m == 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private void d(IMiniAppContext paramIMiniAppContext)
@@ -379,7 +366,10 @@ public class MiniAppProxyImpl
   
   private boolean d(MiniAppInfo paramMiniAppInfo)
   {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (paramMiniAppInfo.launchParam.entryModel != null);
+    if (f(paramMiniAppInfo)) {
+      return paramMiniAppInfo.launchParam.entryModel.isAdmin;
+    }
+    return false;
   }
   
   private void e(IMiniAppContext paramIMiniAppContext)
@@ -409,7 +399,7 @@ public class MiniAppProxyImpl
       ((StringBuilder)localObject).append(MainPageFragment.getUin());
       ((StringBuilder)localObject).append("&avatar=");
       ((StringBuilder)localObject).append(paramIMiniAppContext);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131701565));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131899587));
       localObject = ((StringBuilder)localObject).toString();
       paramIMiniAppContext = new Intent(localActivity, QQBrowserActivity.class);
       paramIMiniAppContext.putExtra("url", (String)localObject);
@@ -417,7 +407,7 @@ public class MiniAppProxyImpl
       ((Bundle)localObject).putBoolean("hide_more_button", true);
       paramIMiniAppContext.putExtras((Bundle)localObject);
       localActivity.startActivity(paramIMiniAppContext);
-      paramIMiniAppContext = MiniSdkUtil.a(localMiniAppInfo);
+      paramIMiniAppContext = MiniSdkUtil.b(localMiniAppInfo);
       MiniProgramLpReportDC04239.reportUserClick(paramIMiniAppContext, MiniProgramLpReportDC04239.getAppType(paramIMiniAppContext), null, "user_click", "more_button", "report");
       QLog.d("MiniAppProxyImpl", 2, "feedback, prepare to upload log ");
       paramIMiniAppContext = new Bundle();
@@ -426,24 +416,29 @@ public class MiniAppProxyImpl
     }
   }
   
-  public boolean VerifyFile(int paramInt, String paramString)
+  private boolean e(MiniAppInfo paramMiniAppInfo)
   {
-    return false;
+    return f(paramMiniAppInfo) ^ true;
+  }
+  
+  private boolean f(MiniAppInfo paramMiniAppInfo)
+  {
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (paramMiniAppInfo.launchParam.entryModel != null);
   }
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
+    Object localObject1 = this.b;
     if (localObject1 == null) {
       return;
     }
     localObject1 = ((IMiniAppContext)localObject1).getAttachedActivity();
     boolean bool3 = localObject1 instanceof GameActivity1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo();
-    ShareState localShareState = (ShareState)this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.performAction(ActionBridge.GetShareStateActionBridge.obtain());
+    Object localObject2 = this.b.getMiniAppInfo();
+    ShareState localShareState = (ShareState)this.b.performAction(ActionBridge.GetShareStateActionBridge.obtain());
     boolean bool4 = ((MiniAppInfo)localObject2).isLimitedAccessApp();
     boolean bool1 = ((MiniAppInfo)localObject2).isEngineTypeMiniGame();
     boolean bool2 = false;
@@ -463,7 +458,7 @@ public class MiniAppProxyImpl
       localObject3 = ((GameActivity1)localObject1).getColorNoteController();
       if ((!bool4) && (localObject3 != null))
       {
-        i = a((IColorNoteController)localObject3);
+        m = b((IColorNoteController)localObject3);
         break label218;
       }
     }
@@ -475,17 +470,17 @@ public class MiniAppProxyImpl
         localObject3 = ((PageGestureProxyImpl)localObject3).a();
         if ((!bool4) && (localObject3 != null))
         {
-          i = a((IColorNoteController)localObject3);
+          m = b((IColorNoteController)localObject3);
           break label218;
         }
       }
     }
-    int i = 0;
+    int m = 0;
     label218:
     Object localObject3 = new Intent();
     ((Intent)localObject3).putExtra("miniAppID", ((MiniAppInfo)localObject2).appId);
     ((Intent)localObject3).putExtra("miniAppName", ((MiniAppInfo)localObject2).name);
-    ((Intent)localObject3).putExtra("isOpenMonitorPanel", jdField_b_of_type_Boolean);
+    ((Intent)localObject3).putExtra("isOpenMonitorPanel", d);
     ((Intent)localObject3).putExtra("debugEnable", DebugUtil.getDebugEnabled((MiniAppInfo)localObject2));
     ((Intent)localObject3).putExtra("showDebug", localShareState.showDebug);
     ((Intent)localObject3).putExtra("showMonitor", localShareState.showMonitor);
@@ -507,27 +502,27 @@ public class MiniAppProxyImpl
     ((Intent)localObject3).putExtra("isSpecialMiniApp", ((MiniAppInfo)localObject2).isSpecialMiniApp());
     ((Intent)localObject3).putExtra("disableAddToMyApp", ((MiniAppInfo)localObject2).appMode.disableAddToMyApp);
     ((Intent)localObject3).putExtra("disableAddToMyFavor", ((MiniAppInfo)localObject2).appMode.disableAddToMyFavor);
-    ((Intent)localObject3).putExtra("showKingcardTip", a((MiniAppInfo)localObject2));
+    ((Intent)localObject3).putExtra("showKingcardTip", c((MiniAppInfo)localObject2));
     ((Intent)localObject3).putExtra("key_mini_msgtab_type", 1);
     ((Intent)localObject3).putExtra("key_mini_msgtab_need_action_sheet", true);
-    ((Intent)localObject3).putExtra("key_mini_app_config", MiniSdkUtil.a((MiniAppInfo)localObject2));
-    ((Intent)localObject3).putExtra("key_color_note", i);
+    ((Intent)localObject3).putExtra("key_mini_app_config", MiniSdkUtil.b((MiniAppInfo)localObject2));
+    ((Intent)localObject3).putExtra("key_color_note", m);
     ((Intent)localObject3).putExtra("key_mini_app_is_game", bool3);
     ((Intent)localObject3).putExtra("key_mini_app_version_type", ((MiniAppInfo)localObject2).verType);
     ((Intent)localObject3).putExtra("showFavorite", true);
     ((Intent)localObject3).putExtra("is_limited_access_app", bool4);
     ((Intent)localObject3).putExtra("showRestartMiniApp", bool1);
-    ((Intent)localObject3).putExtra("setToTroop", c((MiniAppInfo)localObject2));
-    ((Intent)localObject3).putExtra("addToCurrentTroop", b((MiniAppInfo)localObject2));
-    if (QFileAssistantUtils.a()) {
+    ((Intent)localObject3).putExtra("setToTroop", e((MiniAppInfo)localObject2));
+    ((Intent)localObject3).putExtra("addToCurrentTroop", d((MiniAppInfo)localObject2));
+    if (QFileAssistantUtils.b()) {
       ((Intent)localObject3).putExtra("showShareDataline", true);
     }
     localObject2 = AppLoaderFactory.g().getMiniAppEnv().getActivityResultManager();
     ((IActivityResultManager)localObject2).addActivityResultListener(new MiniAppProxyImpl.10(this, (IActivityResultManager)localObject2));
     MiniChatActivity.a((Activity)localObject1, (Intent)localObject3, 9527);
     QLog.d("MiniAppProxyImpl", 1, "set isMiniMsgTabShow true");
-    this.jdField_a_of_type_Boolean = true;
-    a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext, "open");
+    this.a = true;
+    a(this.b, "open");
   }
   
   public void a(Context paramContext, String paramString)
@@ -560,22 +555,22 @@ public class MiniAppProxyImpl
   
   public void b(IMiniAppContext paramIMiniAppContext)
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 500L);
+    this.e.sendEmptyMessageDelayed(1000, 500L);
     MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
-    int i;
+    int m;
     if (localMiniAppInfo != null)
     {
-      i = localMiniAppInfo.verType;
+      m = localMiniAppInfo.verType;
       paramIMiniAppContext = localMiniAppInfo.appId;
     }
     else
     {
-      i = 3;
+      m = 3;
       paramIMiniAppContext = null;
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", paramIMiniAppContext);
-    localBundle.putInt("verType", i);
+    localBundle.putInt("verType", m);
     QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_mini_app_data", localBundle, new MiniAppProxyImpl.9(this, localMiniAppInfo));
   }
   
@@ -591,8 +586,8 @@ public class MiniAppProxyImpl
   
   public boolean downloadApp(Context paramContext, MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-    this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppConfig = MiniSdkUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    this.g = paramMiniAppInfo;
+    this.h = MiniSdkUtil.b(this.g);
     if (!TextUtils.isEmpty(paramString4))
     {
       QLog.d("MiniAppProxyImpl", 1, "手Q下载");
@@ -613,15 +608,15 @@ public class MiniAppProxyImpl
       return true;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("leftViewText", paramContext.getString(2131690706));
-    localIntent.putExtra("selfSet_leftViewText", paramContext.getString(2131690706));
+    localIntent.putExtra("leftViewText", paramContext.getString(2131887625));
+    localIntent.putExtra("selfSet_leftViewText", paramContext.getString(2131887625));
     localIntent.putExtra("start_time", System.currentTimeMillis());
     localIntent.putExtra("from", "mini_app");
     if (paramBoolean) {
       localIntent.putExtra("hide_album", true);
     }
     localIntent.setFlags(67108864);
-    BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    BroadcastReceiver localBroadcastReceiver = this.f;
     if (localBroadcastReceiver != null)
     {
       try
@@ -635,11 +630,11 @@ public class MiniAppProxyImpl
         localStringBuilder.append(localException);
         QLog.e("MiniAppProxyImpl", 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      this.f = null;
     }
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new MiniAppProxyImpl.11(this, paramAsyncResult);
+    this.f = new MiniAppProxyImpl.11(this, paramAsyncResult);
     paramAsyncResult = new IntentFilter("com.tencent.mobileqq.mini.out.plugins.scanResultAction");
-    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramAsyncResult, "com.tencent.msg.permission.pushnotify", null);
+    paramContext.registerReceiver(this.f, paramAsyncResult, "com.tencent.msg.permission.pushnotify", null);
     RouteUtils.a(paramContext, localIntent, "/qrscan/scanner");
     return true;
   }
@@ -688,7 +683,7 @@ public class MiniAppProxyImpl
   
   public String getAppVersion()
   {
-    return "8.7.0.5295";
+    return "8.8.17.5770";
   }
   
   public Drawable getDrawable(Context paramContext, String paramString, int paramInt1, int paramInt2, Drawable paramDrawable)
@@ -872,21 +867,7 @@ public class MiniAppProxyImpl
       if ((!"qq".equalsIgnoreCase(str)) && (!"qi".equalsIgnoreCase(str)) && (!"ssq".equalsIgnoreCase(str))) {
         return false;
       }
-      if (!paramIMiniAppContext.isMiniGame())
-      {
-        QLog.d("MiniAppProxyImpl", 1, "GameCloseManager: miniApp do not need to show retainGuideDialog");
-        return false;
-      }
-      if (GameCloseManager.handleRetainGuideDialog(localActivity, MiniSdkUtil.a(localMiniAppInfo), paramOnClickListener))
-      {
-        QLog.d("MiniAppProxyImpl", 1, "GameCloseManager show retainGuideDialog");
-        return true;
-      }
-      if (GameCloseManager.handleDropGuideDialog(localActivity, MiniSdkUtil.a(localMiniAppInfo), paramOnClickListener))
-      {
-        QLog.d("MiniAppProxyImpl", 1, "GameCloseManager show dropGuideDialog");
-        return true;
-      }
+      return MiniAppDetainManager.INSTANCE.handleOnCloseBtnClick(localActivity, paramIMiniAppContext, localMiniAppInfo, paramOnClickListener);
     }
     return false;
   }
@@ -899,7 +880,7 @@ public class MiniAppProxyImpl
       QLog.w("MiniAppProxyImpl", 1, "miniRuntime is null, no need to response more button");
       return false;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
+    this.b = paramIMiniAppContext;
     Object localObject = paramIMiniAppContext.getAttachedActivity();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
@@ -931,9 +912,9 @@ public class MiniAppProxyImpl
   {
     paramIChoosePhotoListner = new ActivityURIRequest(paramContext, "/base/album/photolist");
     paramIChoosePhotoListner.extra().putInt("enter_from", 4);
-    paramIChoosePhotoListner.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationMiniApp.jdField_a_of_type_JavaLangString);
-    paramIChoosePhotoListner.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationMiniApp.jdField_a_of_type_JavaLangString);
-    paramIChoosePhotoListner.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationMiniApp.jdField_a_of_type_JavaLangString);
+    paramIChoosePhotoListner.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationMiniApp.a);
+    paramIChoosePhotoListner.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationMiniApp.j);
+    paramIChoosePhotoListner.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationMiniApp.a);
     paramIChoosePhotoListner.extra().putInt("PhotoConst.MAXUM_SELECTED_NUM", paramInt);
     paramIChoosePhotoListner.extra().putBoolean("PhotoConst.IS_SINGLE_MODE", false);
     paramIChoosePhotoListner.extra().putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
@@ -1032,10 +1013,15 @@ public class MiniAppProxyImpl
     paramContext.startActivity(paramIntent);
     return true;
   }
+  
+  public boolean verifyFile(int paramInt, String paramString)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ExtendFriendVoiceMatchLoadingFragment$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    ExtendFriendVoiceMatchLoadingFragment.a(paramDialogInterface, ExtendFriendVoiceMatchLoadingFragment.a(paramDialogInterface));
+    ExtendFriendVoiceMatchLoadingFragment.a(paramDialogInterface, ExtendFriendVoiceMatchLoadingFragment.c(paramDialogInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendVoiceMatchLoadingFragment.3
  * JD-Core Version:    0.7.0.1
  */

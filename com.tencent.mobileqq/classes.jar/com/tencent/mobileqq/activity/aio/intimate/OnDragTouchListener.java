@@ -17,25 +17,25 @@ import org.jetbrains.annotations.NotNull;
 public final class OnDragTouchListener
   implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private int e;
-  private int f;
-  private int g;
+  private final int a;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   private int h;
   private int i;
-  private final int j;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private final int n;
   
   public OnDragTouchListener(int paramInt)
   {
-    this.j = paramInt;
-    this.jdField_a_of_type_Int = 2;
+    this.n = paramInt;
+    this.a = 2;
   }
   
   public final int a(@NotNull Resources paramResources, float paramFloat)
@@ -48,56 +48,56 @@ public final class OnDragTouchListener
   {
     Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    int k = paramMotionEvent.getAction();
-    if (k != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k != 2)
+        if (i1 != 2)
         {
-          if (k != 3) {
+          if (i1 != 3) {
             return true;
           }
           paramView.getParent().requestDisallowInterceptTouchEvent(false);
           return true;
         }
-        if (this.h == 0) {
-          this.h = paramView.getWidth();
+        if (this.l == 0) {
+          this.l = paramView.getWidth();
         }
-        if (this.i == 0) {
-          this.i = paramView.getHeight();
+        if (this.m == 0) {
+          this.m = paramView.getHeight();
         }
-        this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getRawX() - this.jdField_c_of_type_Float));
-        this.e = ((int)(paramMotionEvent.getRawY() - this.jdField_d_of_type_Float));
-        k = this.jdField_d_of_type_Int;
-        int m = this.h;
-        this.f = (k + m);
-        this.g = (this.e + this.i);
-        if (k < 0)
+        this.h = ((int)(paramMotionEvent.getRawX() - this.f));
+        this.i = ((int)(paramMotionEvent.getRawY() - this.g));
+        i1 = this.h;
+        int i2 = this.l;
+        this.j = (i1 + i2);
+        this.k = (this.i + this.m);
+        if (i1 < 0)
         {
-          this.jdField_d_of_type_Int = 0;
-          this.f = (this.jdField_d_of_type_Int + m);
+          this.h = 0;
+          this.j = (this.h + i2);
         }
-        k = this.e;
-        m = this.j;
-        if (k < m)
+        i1 = this.i;
+        i2 = this.n;
+        if (i1 < i2)
         {
-          this.e = m;
-          this.g = (this.e + this.i);
+          this.i = i2;
+          this.k = (this.i + this.m);
         }
-        k = this.f;
-        m = this.jdField_b_of_type_Int;
-        if (k > m)
+        i1 = this.j;
+        i2 = this.b;
+        if (i1 > i2)
         {
-          this.f = m;
-          this.jdField_d_of_type_Int = (this.f - this.h);
+          this.j = i2;
+          this.h = (this.j - this.l);
         }
-        k = this.g;
-        m = this.jdField_c_of_type_Int;
-        if (k > m)
+        i1 = this.k;
+        i2 = this.c;
+        if (i1 > i2)
         {
-          this.g = m;
-          this.e = (this.g - this.i);
+          this.k = i2;
+          this.i = (this.k - this.m);
         }
         paramMotionEvent = paramView.getLayoutParams();
         if (paramMotionEvent != null)
@@ -110,8 +110,8 @@ public final class OnDragTouchListener
           localObject = (OnDragTouchListener)this;
           paramMotionEvent.bottomMargin = 0;
           paramMotionEvent.rightMargin = paramMotionEvent.bottomMargin;
-          paramMotionEvent.topMargin = this.e;
-          paramMotionEvent.leftMargin = this.jdField_d_of_type_Int;
+          paramMotionEvent.topMargin = this.i;
+          paramMotionEvent.leftMargin = this.h;
           paramView.setLayoutParams((ViewGroup.LayoutParams)paramMotionEvent);
           return true;
         }
@@ -119,10 +119,10 @@ public final class OnDragTouchListener
       }
       localObject = paramView.getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "v.resources");
-      k = a((Resources)localObject, this.jdField_a_of_type_Int);
-      float f1 = Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float);
-      float f2 = k;
-      if ((f1 < f2) && (Math.abs(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float) < f2)) {
+      i1 = a((Resources)localObject, this.a);
+      float f1 = Math.abs(paramMotionEvent.getRawX() - this.d);
+      float f2 = i1;
+      if ((f1 < f2) && (Math.abs(paramMotionEvent.getRawY() - this.e) < f2)) {
         paramView.performClick();
       }
       paramView.getParent().requestDisallowInterceptTouchEvent(false);
@@ -131,15 +131,15 @@ public final class OnDragTouchListener
     Object localObject = paramView.getParent();
     if (localObject != null)
     {
-      this.jdField_b_of_type_Int = ((View)localObject).getWidth();
+      this.b = ((View)localObject).getWidth();
       localObject = paramView.getParent();
       if (localObject != null)
       {
-        this.jdField_c_of_type_Int = ((View)localObject).getHeight();
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-        this.jdField_c_of_type_Float = (paramMotionEvent.getRawX() - paramView.getLeft());
-        this.jdField_d_of_type_Float = (paramMotionEvent.getRawY() - paramView.getTop());
+        this.c = ((View)localObject).getHeight();
+        this.d = paramMotionEvent.getRawX();
+        this.e = paramMotionEvent.getRawY();
+        this.f = (paramMotionEvent.getRawX() - paramView.getLeft());
+        this.g = (paramMotionEvent.getRawY() - paramView.getTop());
         paramView.getParent().requestDisallowInterceptTouchEvent(true);
         return true;
       }
@@ -150,7 +150,7 @@ public final class OnDragTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.OnDragTouchListener
  * JD-Core Version:    0.7.0.1
  */

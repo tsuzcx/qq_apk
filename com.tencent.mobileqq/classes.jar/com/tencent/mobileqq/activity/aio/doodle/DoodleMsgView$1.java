@@ -33,20 +33,20 @@ class DoodleMsgView$1
     {
       if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight()))
       {
-        if (DoodleMsgView.a(this.a) == null)
+        if (DoodleMsgView.b(this.a) == null)
         {
           DoodleMsgView.a(this.a, new Paint());
-          DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-          DoodleMsgView.a(this.a).setAntiAlias(true);
+          DoodleMsgView.b(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+          DoodleMsgView.b(this.a).setAntiAlias(true);
         }
         synchronized (this.a)
         {
-          DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
+          DoodleMsgView.d(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.c(this.a).getWidth(), DoodleMsgView.c(this.a).getHeight()), DoodleMsgView.b(this.a));
         }
       }
       this.a.postInvalidate();
     }
-    if ((DoodleMsgView.a(this.a)) && (paramLong >= DoodleMsgView.a(this.a).a()) && (DoodleMsgView.a(this.a) >= DoodleMsgView.a(this.a).a()))
+    if ((DoodleMsgView.e(this.a)) && (paramLong >= DoodleMsgView.a(this.a).f()) && (DoodleMsgView.f(this.a) >= DoodleMsgView.a(this.a).f()))
     {
       this.a.d();
       this.a.a(new DoodleMsgView.1.1(this));
@@ -55,7 +55,7 @@ class DoodleMsgView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1
  * JD-Core Version:    0.7.0.1
  */

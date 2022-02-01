@@ -221,56 +221,54 @@ public class OfflineConfig
   private static boolean isMatchPerfLever(Context paramContext, int paramInt)
   {
     int i = sDevicePerfLevel;
-    boolean bool4 = false;
-    boolean bool3 = false;
+    boolean bool1 = true;
     if (i >= 0) {
       return i == paramInt;
     }
-    boolean bool2 = bool4;
     for (;;)
     {
       try
       {
         paramContext = getBenchMarkDeviceList(paramContext, getDeviceTAG(paramInt));
-        boolean bool1 = bool3;
         if (paramContext != null)
         {
-          bool1 = bool3;
-          bool2 = bool4;
-          if (paramContext.contains(Build.MODEL.toLowerCase())) {
-            bool1 = true;
-          }
+          boolean bool2 = paramContext.contains(Build.MODEL.toLowerCase());
+          if (bool2) {}
         }
-        bool2 = bool1;
-        paramContext = new StringBuilder();
-        bool2 = bool1;
-        paramContext.append("DeviceByBenchmark:model:");
-        bool2 = bool1;
-        paramContext.append(paramInt);
-        bool2 = bool1;
-        paramContext.append(Build.MODEL.toLowerCase());
-        bool2 = bool1;
-        paramContext.append(" isInList:");
-        bool2 = bool1;
-        paramContext.append(bool1);
-        bool2 = bool1;
-        LightLogUtil.i("OfflineConfig", paramContext.toString());
-        if (bool1)
+        else
         {
-          bool2 = bool1;
+          bool1 = false;
+        }
+        try
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("DeviceByBenchmark:model:");
+          paramContext.append(paramInt);
+          paramContext.append(Build.MODEL.toLowerCase());
+          paramContext.append(" isInList:");
+          paramContext.append(bool1);
+          LightLogUtil.i("OfflineConfig", paramContext.toString());
+          if (!bool1) {
+            break label176;
+          }
           sDevicePerfLevel = paramInt;
           return bool1;
         }
+        catch (Exception paramContext) {}
+        localStringBuilder = new StringBuilder();
       }
       catch (Exception paramContext)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isMatchPerfLever:");
-        localStringBuilder.append(paramContext.getMessage());
-        LightLogUtil.e("OfflineConfig", localStringBuilder.toString());
-        return bool2;
+        bool1 = false;
       }
-      paramInt = -1;
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("isMatchPerfLever:");
+      localStringBuilder.append(paramContext.getMessage());
+      LightLogUtil.e("OfflineConfig", localStringBuilder.toString());
+      sDevicePerfLevel = 0;
+      return bool1;
+      label176:
+      paramInt = 0;
     }
   }
   
@@ -362,7 +360,7 @@ public class OfflineConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.device.OfflineConfig
  * JD-Core Version:    0.7.0.1
  */

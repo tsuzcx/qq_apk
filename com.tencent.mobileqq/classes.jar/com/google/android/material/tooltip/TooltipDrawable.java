@@ -45,48 +45,48 @@ public class TooltipDrawable
   implements TextDrawableHelper.TextDrawableDelegate
 {
   @StyleRes
-  private static final int jdField_a_of_type_Int = R.style.L;
+  private static final int a = R.style.N;
   @AttrRes
-  private static final int jdField_b_of_type_Int = R.attr.T;
-  private float jdField_a_of_type_Float = 1.0F;
-  @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private static final int b = R.attr.ae;
   @Nullable
-  private final Paint.FontMetrics jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = new Paint.FontMetrics();
+  private CharSequence c;
   @NonNull
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  @NonNull
-  private final View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new TooltipDrawable.1(this);
-  @NonNull
-  private final TextDrawableHelper jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper = new TextDrawableHelper(this);
+  private final Context d;
   @Nullable
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private float jdField_b_of_type_Float = 1.0F;
-  private final float jdField_c_of_type_Float = 0.5F;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float = 0.5F;
-  private int jdField_d_of_type_Int;
-  private float jdField_e_of_type_Float = 1.0F;
-  private int jdField_e_of_type_Int;
-  private int f;
-  private int g;
-  private int h;
+  private final Paint.FontMetrics e = new Paint.FontMetrics();
+  @NonNull
+  private final TextDrawableHelper f = new TextDrawableHelper(this);
+  @NonNull
+  private final View.OnLayoutChangeListener g = new TooltipDrawable.1(this);
+  @NonNull
+  private final Rect h = new Rect();
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
+  private float o = 1.0F;
+  private float p = 1.0F;
+  private final float q = 0.5F;
+  private float r = 0.5F;
+  private float s = 1.0F;
   
   private TooltipDrawable(@NonNull Context paramContext, AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().density = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().setTextAlign(Paint.Align.CENTER);
+    this.d = paramContext;
+    this.f.a().density = paramContext.getResources().getDisplayMetrics().density;
+    this.f.a().setTextAlign(Paint.Align.CENTER);
   }
   
   private float a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRect.right - getBounds().right - this.h - this.f < 0) {}
-    for (int i = this.jdField_a_of_type_AndroidGraphicsRect.right - getBounds().right - this.h - this.f;; i = this.jdField_a_of_type_AndroidGraphicsRect.left - getBounds().left - this.h + this.f)
+    if (this.h.right - getBounds().right - this.n - this.l < 0) {}
+    for (int i1 = this.h.right - getBounds().right - this.n - this.l;; i1 = this.h.left - getBounds().left - this.n + this.l)
     {
-      return i;
-      if (this.jdField_a_of_type_AndroidGraphicsRect.left - getBounds().left - this.h + this.f <= 0) {
+      return i1;
+      if (this.h.left - getBounds().left - this.n + this.l <= 0) {
         break;
       }
     }
@@ -95,20 +95,7 @@ public class TooltipDrawable
   
   private float a(@NonNull Rect paramRect)
   {
-    return paramRect.centerY() - c();
-  }
-  
-  private EdgeTreatment a()
-  {
-    float f1 = -a();
-    double d1 = getBounds().width();
-    double d2 = this.g;
-    double d3 = Math.sqrt(2.0D);
-    Double.isNaN(d2);
-    Double.isNaN(d1);
-    float f2 = (float)(d1 - d2 * d3) / 2.0F;
-    f1 = Math.min(Math.max(f1, -f2), f2);
-    return new OffsetEdgeTreatment(new MarkerEdgeTreatment(this.g), f1);
+    return paramRect.centerY() - d();
   }
   
   @NonNull
@@ -121,73 +108,81 @@ public class TooltipDrawable
   
   private void a(@NonNull Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+    if (this.c == null) {
       return;
     }
     Rect localRect = getBounds();
-    int i = (int)a(localRect);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a() != null)
+    int i1 = (int)a(localRect);
+    if (this.f.b() != null)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().drawableState = getState();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().setAlpha((int)(this.jdField_e_of_type_Float * 255.0F));
+      this.f.a().drawableState = getState();
+      this.f.a(this.d);
+      this.f.a().setAlpha((int)(this.s * 255.0F));
     }
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
-    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), localRect.centerX(), i, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a());
+    CharSequence localCharSequence = this.c;
+    paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), localRect.centerX(), i1, this.f.a());
   }
   
   private void a(@Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
-    paramAttributeSet = ThemeEnforcement.a(this.jdField_a_of_type_AndroidContentContext, paramAttributeSet, R.styleable.aC, paramInt1, paramInt2, new int[0]);
-    this.g = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(R.dimen.av);
-    setShapeAppearanceModel(a().b().b(a()).a());
-    a(paramAttributeSet.getText(R.styleable.gL));
-    a(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, paramAttributeSet, R.styleable.gG));
-    paramInt1 = MaterialColors.a(this.jdField_a_of_type_AndroidContentContext, R.attr.k, TooltipDrawable.class.getCanonicalName());
-    paramInt1 = MaterialColors.a(ColorUtils.setAlphaComponent(MaterialColors.a(this.jdField_a_of_type_AndroidContentContext, 16842801, TooltipDrawable.class.getCanonicalName()), 229), ColorUtils.setAlphaComponent(paramInt1, 153));
-    g(ColorStateList.valueOf(paramAttributeSet.getColor(R.styleable.gM, paramInt1)));
-    h(ColorStateList.valueOf(MaterialColors.a(this.jdField_a_of_type_AndroidContentContext, R.attr.n, TooltipDrawable.class.getCanonicalName())));
-    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.gH, 0);
-    this.jdField_d_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.gJ, 0);
-    this.jdField_e_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.gK, 0);
-    this.f = paramAttributeSet.getDimensionPixelSize(R.styleable.gI, 0);
+    paramAttributeSet = ThemeEnforcement.a(this.d, paramAttributeSet, R.styleable.jq, paramInt1, paramInt2, new int[0]);
+    this.m = this.d.getResources().getDimensionPixelSize(R.dimen.av);
+    setShapeAppearanceModel(getShapeAppearanceModel().n().b(b()).a());
+    a(paramAttributeSet.getText(R.styleable.jw));
+    a(MaterialResources.c(this.d, paramAttributeSet, R.styleable.jr));
+    paramInt1 = MaterialColors.a(this.d, R.attr.p, TooltipDrawable.class.getCanonicalName());
+    paramInt1 = MaterialColors.a(ColorUtils.setAlphaComponent(MaterialColors.a(this.d, 16842801, TooltipDrawable.class.getCanonicalName()), 229), ColorUtils.setAlphaComponent(paramInt1, 153));
+    g(ColorStateList.valueOf(paramAttributeSet.getColor(R.styleable.jx, paramInt1)));
+    h(ColorStateList.valueOf(MaterialColors.a(this.d, R.attr.t, TooltipDrawable.class.getCanonicalName())));
+    this.i = paramAttributeSet.getDimensionPixelSize(R.styleable.js, 0);
+    this.j = paramAttributeSet.getDimensionPixelSize(R.styleable.ju, 0);
+    this.k = paramAttributeSet.getDimensionPixelSize(R.styleable.jv, 0);
+    this.l = paramAttributeSet.getDimensionPixelSize(R.styleable.jt, 0);
     paramAttributeSet.recycle();
   }
   
-  private float b()
+  private EdgeTreatment b()
   {
-    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
-    if (localCharSequence == null) {
-      return 0.0F;
-    }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(localCharSequence.toString());
+    float f1 = -a();
+    double d1 = getBounds().width();
+    double d2 = this.m;
+    double d3 = Math.sqrt(2.0D);
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    float f2 = (float)(d1 - d2 * d3) / 2.0F;
+    f1 = Math.min(Math.max(f1, -f2), f2);
+    return new OffsetEdgeTreatment(new MarkerEdgeTreatment(this.m), f1);
   }
   
   private float c()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().getFontMetrics(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics);
-    return (this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.descent + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.ascent) / 2.0F;
+    CharSequence localCharSequence = this.c;
+    if (localCharSequence == null) {
+      return 0.0F;
+    }
+    return this.f.a(localCharSequence.toString());
   }
   
   private void c(@NonNull View paramView)
   {
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    this.h = arrayOfInt[0];
-    paramView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    this.n = arrayOfInt[0];
+    paramView.getWindowVisibleDisplayFrame(this.h);
   }
   
-  public void a()
+  private float d()
   {
-    invalidateSelf();
+    this.f.a().getFontMetrics(this.e);
+    return (this.e.descent + this.e.ascent) / 2.0F;
   }
   
   public void a(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.jdField_d_of_type_Float = 1.2F;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_e_of_type_Float = AnimationUtils.a(0.0F, 1.0F, 0.19F, 1.0F, paramFloat);
+    this.r = 1.2F;
+    this.o = paramFloat;
+    this.p = paramFloat;
+    this.s = AnimationUtils.a(0.0F, 1.0F, 0.19F, 1.0F, paramFloat);
     invalidateSelf();
   }
   
@@ -197,20 +192,20 @@ public class TooltipDrawable
       return;
     }
     c(paramView);
-    paramView.addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
+    paramView.addOnLayoutChangeListener(this.g);
   }
   
   public void a(@Nullable TextAppearance paramTextAppearance)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(paramTextAppearance, this.jdField_a_of_type_AndroidContentContext);
+    this.f.a(paramTextAppearance, this.d);
   }
   
   public void a(@Nullable CharSequence paramCharSequence)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangCharSequence, paramCharSequence))
+    if (!TextUtils.equals(this.c, paramCharSequence))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(true);
+      this.c = paramCharSequence;
+      this.f.a(true);
       invalidateSelf();
     }
   }
@@ -220,40 +215,45 @@ public class TooltipDrawable
     if (paramView == null) {
       return;
     }
-    paramView.removeOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
+    paramView.removeOnLayoutChangeListener(this.g);
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     paramCanvas.save();
     float f1 = a();
-    double d1 = this.g;
+    double d1 = this.m;
     double d2 = Math.sqrt(2.0D);
     Double.isNaN(d1);
-    double d3 = this.g;
+    double d3 = this.m;
     Double.isNaN(d3);
     float f2 = (float)-(d1 * d2 - d3);
-    paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, getBounds().left + getBounds().width() * 0.5F, getBounds().top + getBounds().height() * this.jdField_d_of_type_Float);
+    paramCanvas.scale(this.o, this.p, getBounds().left + getBounds().width() * 0.5F, getBounds().top + getBounds().height() * this.r);
     paramCanvas.translate(f1, f2);
     super.draw(paramCanvas);
     a(paramCanvas);
     paramCanvas.restore();
   }
   
+  public void f()
+  {
+    invalidateSelf();
+  }
+  
   public int getIntrinsicHeight()
   {
-    return (int)Math.max(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().getTextSize(), this.jdField_e_of_type_Int);
+    return (int)Math.max(this.f.a().getTextSize(), this.k);
   }
   
   public int getIntrinsicWidth()
   {
-    return (int)Math.max(this.jdField_c_of_type_Int * 2 + b(), this.jdField_d_of_type_Int);
+    return (int)Math.max(this.i * 2 + c(), this.j);
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    setShapeAppearanceModel(a().b().b(a()).a());
+    setShapeAppearanceModel(getShapeAppearanceModel().n().b(b()).a());
   }
   
   public boolean onStateChange(int[] paramArrayOfInt)
@@ -263,7 +263,7 @@ public class TooltipDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tooltip.TooltipDrawable
  * JD-Core Version:    0.7.0.1
  */

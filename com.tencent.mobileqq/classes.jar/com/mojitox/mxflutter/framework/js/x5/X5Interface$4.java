@@ -18,19 +18,19 @@ class X5Interface$4
   
   public void notImplemented()
   {
-    MxLog.b("X5Interface", "mxJSBridgeMethodChannelInvokeMethod notImplemented");
+    MxLog.a("X5Interface", "mxJSBridgeMethodChannelInvokeMethod notImplemented");
   }
   
   public void success(@Nullable Object paramObject)
   {
     if (paramObject == null)
     {
-      X5Interface.a(this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5X5Interface).a(this.jdField_a_of_type_ComTencentSmttSdkJsValue, null, false);
+      this.a.a.a(this.b, null, false);
       return;
     }
     if ((paramObject instanceof Map))
     {
-      X5Interface.a(this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5X5Interface).a(this.jdField_a_of_type_ComTencentSmttSdkJsValue, (Map)paramObject);
+      this.a.a.a(this.b, (Map)paramObject);
       return;
     }
     throw new IllegalArgumentException("MethodChannel.Result Must be return Map object");
@@ -38,7 +38,7 @@ class X5Interface$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5Interface.4
  * JD-Core Version:    0.7.0.1
  */

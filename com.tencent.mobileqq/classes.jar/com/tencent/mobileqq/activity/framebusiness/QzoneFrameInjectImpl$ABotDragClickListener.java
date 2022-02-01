@@ -10,44 +10,43 @@ public class QzoneFrameInjectImpl$ABotDragClickListener
   extends FrameFragment.DragViewPunctureClickListener
 {
   public View a;
-  public String a;
-  public boolean a;
+  public String b;
+  public boolean c = true;
   
   public QzoneFrameInjectImpl$ABotDragClickListener(View paramView, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramView;
+    this.b = paramString;
   }
   
   private void a(ABotDragClickListener paramABotDragClickListener)
   {
     try
     {
-      if (QSecFramework.a().a(1001).booleanValue())
+      if (QSecFramework.c().a(1001).booleanValue())
       {
         Object localObject;
-        if (paramABotDragClickListener.jdField_a_of_type_Boolean)
+        if (paramABotDragClickListener.c)
         {
-          localObject = paramABotDragClickListener.jdField_a_of_type_AndroidViewView;
-          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), localObject }, null);
-          paramABotDragClickListener.jdField_a_of_type_Boolean = false;
+          localObject = paramABotDragClickListener.a;
+          QSecFramework.c().a(5, 0, 1, new Object[] { Integer.valueOf(80), localObject }, null);
+          paramABotDragClickListener.c = false;
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("附近人机上报: lebaView onCreate, from=");
-            ((StringBuilder)localObject).append(paramABotDragClickListener.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(paramABotDragClickListener.b);
             QLog.i("FrameControllerInjectImpl", 2, ((StringBuilder)localObject).toString());
           }
         }
         else
         {
-          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+          QSecFramework.c().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("附近人机上报: lebaView onClick, from=");
-            ((StringBuilder)localObject).append(paramABotDragClickListener.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(paramABotDragClickListener.b);
             QLog.i("FrameControllerInjectImpl", 2, ((StringBuilder)localObject).toString());
             return;
           }
@@ -71,7 +70,7 @@ public class QzoneFrameInjectImpl$ABotDragClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QzoneFrameInjectImpl.ABotDragClickListener
  * JD-Core Version:    0.7.0.1
  */

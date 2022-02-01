@@ -14,16 +14,16 @@ class QFileAppStorePromoteManager$2$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("request appInfo. add reqId[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.i("QFileAppStorePromoteManager<QFile>", 1, localStringBuilder.toString());
     }
-    QFileAppStorePromoteManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$2.a);
+    QFileAppStorePromoteManager.b(this.b.this$0).put(Integer.valueOf(this.a), this.b.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2.2
  * JD-Core Version:    0.7.0.1
  */

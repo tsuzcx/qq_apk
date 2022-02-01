@@ -13,17 +13,17 @@ class PgcShortContentProteusItem$2
     super(paramContext);
   }
   
-  protected int b()
+  protected int getClickArea()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a != null)) {
+    if ((this.h.mSocialFeedInfo != null) && (this.h.mSocialFeedInfo.L != null)) {
       return 11;
     }
-    return super.b();
+    return super.getClickArea();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,19 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AVHelper
   implements ILifeCycleHelper
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private AVObserver jdField_a_of_type_ComTencentAvGaudioAVObserver;
-  private final BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
   protected VideoStatusTipsBar a;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final AIOContext b;
+  private final QQAppInterface c;
+  private final BaseSessionInfo d;
+  private final Context e;
+  private AVObserver f;
   
   public AVHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
-    this.jdField_a_of_type_AndroidContentContext = paramAIOContext.a();
+    this.b = paramAIOContext;
+    this.c = paramAIOContext.a();
+    this.d = paramAIOContext.O();
+    this.e = paramAIOContext.b();
   }
   
   @NonNull
@@ -51,29 +51,29 @@ public class AVHelper
           if (paramInt != 15) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVideoStatusTipsBar = null;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentAvGaudioAVObserver);
+          this.a = null;
+          this.c.getAVNotifyCenter().deleteObserver(this.f);
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVideoStatusTipsBar == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(2)))
+        if ((this.a == null) && (this.b.z().a(2)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVideoStatusTipsBar = new VideoStatusTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVideoStatusTipsBar);
+          this.a = new VideoStatusTipsBar(this.c, this.d, this.b.c(), this.b.b(), this.b.g());
+          this.b.c().b(this.a);
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentAvGaudioAVObserver);
+        this.c.getAVNotifyCenter().addObserver(this.f);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAvGaudioAVObserver == null) {
-      this.jdField_a_of_type_ComTencentAvGaudioAVObserver = new AVHelper.MyAVObserver(this, null);
+    else if (this.f == null) {
+      this.f = new AVHelper.MyAVObserver(this, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AVHelper
  * JD-Core Version:    0.7.0.1
  */

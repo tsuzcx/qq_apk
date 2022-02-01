@@ -14,7 +14,7 @@ class VideoController$17
       QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
     }
     VideoController localVideoController = this.this$0;
-    localVideoController.b(localVideoController.a().c, 2);
+    localVideoController.b(localVideoController.k().s, 2);
   }
 }
 

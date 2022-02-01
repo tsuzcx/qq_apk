@@ -149,8 +149,8 @@ public class SubAccountMessageProcessor
       paramLong1 = paramLong4;
     }
     localSubAccountMessage.time = paramLong1;
-    localSubAccountMessage.needNotify = this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundPause;
-    localSubAccountMessage.mTimeString = TimeFormatterUtils.a(paramLong4 * 1000L, true, ((ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "")).getDateFormate());
+    localSubAccountMessage.needNotify = this.q.isBackgroundPause;
+    localSubAccountMessage.mTimeString = TimeFormatterUtils.a(paramLong4 * 1000L, true, ((ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "")).getDateFormate());
     localSubAccountMessage.mEmoRecentMsg = new QQText(localSubAccountMessage.msg, 3, 16);
     if (((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).isRedPacketMsg(paramMessageRecord)) {
       localSubAccountMessage.subExtr = "RED_PACKET";
@@ -200,7 +200,7 @@ public class SubAccountMessageProcessor
         {
           if (localSubAccountMessageProcessor.a(localMsgHead, i, j))
           {
-            if (localSubAccountMessageProcessor.a(j)) {
+            if (localSubAccountMessageProcessor.b(j)) {
               continue;
             }
             try
@@ -228,7 +228,7 @@ public class SubAccountMessageProcessor
             }
             paramList1 = (List<msg_comm.Msg>)localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              paramList1 = localSubAccountMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources().getString(2131691282);
+              paramList1 = localSubAccountMessageProcessor.q.getApp().getResources().getString(2131888232);
             }
             localObject2 = ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).createMsgRecordByMsgType(-2005);
             ((MessageRecord)localObject2).selfuin = String.valueOf(paramLong2);
@@ -282,7 +282,7 @@ public class SubAccountMessageProcessor
         ((MessageRecord)localObject2).msgUid = localMsgHead.msg_uid.get();
         ((MessageRecord)localObject2).time = localMsgHead.msg_time.get();
         ((MessageRecord)localObject2).istroop = 0;
-        ((MessageRecord)localObject2).msg = localSubAccountMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources().getString(2131720194);
+        ((MessageRecord)localObject2).msg = localSubAccountMessageProcessor.q.getApp().getResources().getString(2131917824);
         ((MessageRecord)localObject2).msgtype = 193;
         paramList1.add(localObject2);
         label653:
@@ -341,7 +341,7 @@ public class SubAccountMessageProcessor
         {
           if (String.valueOf(AppConstants.SYSTEM_MSG_UIN).equalsIgnoreCase(paramList1.frienduin))
           {
-            paramList1 = ((ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "")).dealSysMsgContent(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, paramList1.msgtype, paramList1.senderuin);
+            paramList1 = ((ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "")).dealSysMsgContent(this.q, (String)localObject, paramList1.msgtype, paramList1.senderuin);
             if (paramList1 != null) {
               localStringBuffer.append(paramList1);
             }
@@ -360,7 +360,7 @@ public class SubAccountMessageProcessor
               }
             }
           }
-          localObject = ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).buildBaseMsg(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramList1, (String)localObject);
+          localObject = ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).buildBaseMsg(this.q, paramList1, (String)localObject);
           paramList1 = (List<MessageRecord>)localObject;
           if (localObject == null) {
             paramList1 = "";
@@ -390,7 +390,7 @@ public class SubAccountMessageProcessor
       }
     }
     if (bool2) {
-      paramList = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources().getString(2131719404);
+      paramList = this.q.getApp().getResources().getString(2131916963);
     }
     if (QLog.isColorLevel())
     {
@@ -399,15 +399,15 @@ public class SubAccountMessageProcessor
       paramArrayList.append(bool1);
       QLog.d("SUB_ACCOUNT", 2, paramArrayList.toString());
     }
-    paramSubAccountBackProtocData.jdField_c_of_type_Boolean = true;
+    paramSubAccountBackProtocData.l = true;
     a(paramISubAccountService, paramLong1, paramLong2, paramLong3, paramInt, localStringBuffer, bool1, localMessageRecord, l, bool2, paramList);
-    ((ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "")).bindRecentItem(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1, 6);
-    paramSubAccountBackProtocData.d = true;
+    ((ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "")).bindRecentItem(this.q, paramString1, 6);
+    paramSubAccountBackProtocData.m = true;
     paramSubAccountBackProtocData = ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).createMsgRecordByMsgType(localMessageRecord.msgtype);
     MessageRecord.copyMessageRecordBaseField(paramSubAccountBackProtocData, localMessageRecord);
     paramSubAccountBackProtocData.istroop = 7000;
     paramSubAccountBackProtocData.frienduin = paramString1;
-    int i = ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).getUnreadCount(paramSubAccountBackProtocData.frienduin, paramSubAccountBackProtocData.istroop);
+    int i = ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).getUnreadCount(paramSubAccountBackProtocData.frienduin, paramSubAccountBackProtocData.istroop);
     if (paramISubAccountService != null) {
       paramInt = paramISubAccountService.getUnreadAllMsgNum(paramString1);
     } else {
@@ -416,7 +416,7 @@ public class SubAccountMessageProcessor
     int j = paramInt - i;
     if (j != 0)
     {
-      ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramSubAccountBackProtocData.frienduin, paramSubAccountBackProtocData.istroop, j);
+      ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramSubAccountBackProtocData.frienduin, paramSubAccountBackProtocData.istroop, j);
       if (paramISubAccountService != null) {
         paramISubAccountService.updateAnotherSubAccountUnreadMsg(paramString1);
       }
@@ -436,9 +436,9 @@ public class SubAccountMessageProcessor
     }
     paramString1 = new ArrayList();
     paramString1.add(paramSubAccountBackProtocData);
-    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).addMessage(paramString1, paramString2, false, false, true);
+    ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).addMessage(paramString1, paramString2, false, false, true);
     if (!bool1) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.handleReceivedMessage(paramString1.size(), true, true);
+      this.s.handleReceivedMessage(paramString1.size(), true, true);
     }
   }
   
@@ -518,25 +518,25 @@ public class SubAccountMessageProcessor
   
   private void a(SubAccountBackProtocData paramSubAccountBackProtocData, String paramString, msg_svc.PbGetMsgResp paramPbGetMsgResp, ISubAccountService paramISubAccountService, int paramInt)
   {
-    paramSubAccountBackProtocData.jdField_a_of_type_Int = 1004;
-    paramSubAccountBackProtocData.jdField_b_of_type_Int = paramInt;
-    paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString = paramPbGetMsgResp.errmsg.get();
-    paramSubAccountBackProtocData.jdField_c_of_type_Boolean = true;
-    ISubAccountControlService localISubAccountControlService = (ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-    localISubAccountControlService.setBindUinStatus(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (byte)0, paramString);
-    localISubAccountControlService.bindRecentItem(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, 6);
-    paramSubAccountBackProtocData.d = true;
+    paramSubAccountBackProtocData.a = 1004;
+    paramSubAccountBackProtocData.i = paramInt;
+    paramSubAccountBackProtocData.b = paramPbGetMsgResp.errmsg.get();
+    paramSubAccountBackProtocData.l = true;
+    ISubAccountControlService localISubAccountControlService = (ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "");
+    localISubAccountControlService.setBindUinStatus(this.q, (byte)0, paramString);
+    localISubAccountControlService.bindRecentItem(this.q, paramString, 6);
+    paramSubAccountBackProtocData.m = true;
     paramISubAccountService.updateA2(paramString, null, true);
     boolean bool = paramISubAccountService.setStatus(paramString, 3);
     paramISubAccountService.updateServerError(paramString, paramInt, paramPbGetMsgResp.errmsg.get());
     paramISubAccountService.clearUnreadNum(paramString);
     if (bool)
     {
-      paramInt = 1 - ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).getUnreadCount(paramString, 7000);
+      paramInt = 1 - ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).getUnreadCount(paramString, 7000);
       if (paramInt != 0)
       {
-        ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramString, 7000, paramInt);
-        ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, paramString });
+        ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramString, 7000, paramInt);
+        ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, paramString });
       }
       if (QLog.isColorLevel())
       {
@@ -546,8 +546,8 @@ public class SubAccountMessageProcessor
         QLog.d("SUB_ACCOUNT", 2, paramSubAccountBackProtocData.toString());
       }
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.updateSubAccountLogin(paramString, false);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().refreAccountList();
+    this.q.updateSubAccountLogin(paramString, false);
+    this.q.getApplication().refreAccountList();
   }
   
   private void a(String paramString, ISubAccountService paramISubAccountService, boolean paramBoolean, long paramLong, List<SubAccountMessage> paramList, ArrayList<String> paramArrayList, HashMap<String, Integer> paramHashMap)
@@ -576,15 +576,15 @@ public class SubAccountMessageProcessor
           int j = 0;
           label179:
           if ((j != 0) && (paramHashMap.containsKey(localSubAccountMessage.frienduin)) && (paramISubAccountService != null)) {
-            paramISubAccountService.updateUnreadNum(this.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(paramLong), localSubAccountMessage.frienduin, ((Integer)paramHashMap.get(localSubAccountMessage.frienduin)).intValue());
+            paramISubAccountService.updateUnreadNum(this.q, String.valueOf(paramLong), localSubAccountMessage.frienduin, ((Integer)paramHashMap.get(localSubAccountMessage.frienduin)).intValue());
           }
           if ((j == 0) && (paramISubAccountService != null))
           {
             j = paramISubAccountService.removeMessage(String.valueOf(paramLong), localSubAccountMessage.frienduin);
             if (j != 0)
             {
-              ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramString, 7000, j);
-              ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, paramString });
+              ((IConversationFacade)this.q.getRuntimeService(IConversationFacade.class, "")).increaseUnread(paramString, 7000, j);
+              ((IMessageFacade)this.q.getRuntimeService(IMessageFacade.class, "")).setChangeAndNotify(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, paramString });
             }
           }
         }
@@ -654,9 +654,9 @@ public class SubAccountMessageProcessor
     paramMsg.senderuin = String.valueOf(13002L);
     paramMsg.subUin = String.valueOf(l3);
     paramMsg.istroop = 1;
-    paramMsg.sendername = HardCodeUtil.a(2131719336);
+    paramMsg.sendername = HardCodeUtil.a(2131916888);
     paramMsg.msg = "";
-    paramPbPushMsg = (ISubAccountService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountService.class, "");
+    paramPbPushMsg = (ISubAccountService)this.q.getRuntimeService(ISubAccountService.class, "");
     if (paramPbPushMsg != null)
     {
       paramPbPushMsg.updateTroopMsgRedDot(paramMsg);
@@ -667,22 +667,17 @@ public class SubAccountMessageProcessor
       QLog.d("SubAccountMessageProcessor", 2, new Object[] { "processSubAccountTroopMessage bindUin:", Long.valueOf(l3), " fromUin:", Long.valueOf(l1), " msgTime:", Long.valueOf(l2) });
     }
     paramMsg = new SubAccountBackProtocData();
-    paramMsg.jdField_b_of_type_JavaLangString = paramFromServiceMsg.getUin();
-    paramMsg.jdField_c_of_type_JavaLangString = String.valueOf(l3);
-    paramMsg.jdField_c_of_type_Boolean = true;
-    paramMsg.d = true;
-    paramMsg.jdField_a_of_type_Int = 0;
+    paramMsg.c = paramFromServiceMsg.getUin();
+    paramMsg.d = String.valueOf(l3);
+    paramMsg.l = true;
+    paramMsg.m = true;
+    paramMsg.a = 0;
     a(8003, true, paramMsg);
   }
   
   private void a(Oidb_0x5d0.RspBody paramRspBody, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     new SubAccountMessageProcessor.2(this, paramRspBody, paramString2, paramString1, paramInt1, paramInt2).execute(new Void[0]);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 129) || (paramInt == 131) || (paramInt == 133) || (paramInt == 135) || (paramInt == 243);
   }
   
   private boolean a(SubAccountBackProtocData paramSubAccountBackProtocData, long paramLong)
@@ -697,7 +692,7 @@ public class SubAccountMessageProcessor
       paramSubAccountBackProtocData.put("param_FailCode", "12014");
       paramSubAccountBackProtocData.put("fail_step", "selfUin_null");
       paramSubAccountBackProtocData.put("fail_location", "MessageHandler");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramSubAccountBackProtocData, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramSubAccountBackProtocData, "");
       return true;
     }
     return false;
@@ -715,7 +710,7 @@ public class SubAccountMessageProcessor
       paramSubAccountBackProtocData.put("param_FailCode", "12014");
       paramSubAccountBackProtocData.put("fail_step", "backuin_null");
       paramSubAccountBackProtocData.put("fail_location", "MessageHandler");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramSubAccountBackProtocData, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramSubAccountBackProtocData, "");
       return true;
     }
     return false;
@@ -741,7 +736,7 @@ public class SubAccountMessageProcessor
     localStringBuilder.append(j);
     ((HashMap)localObject).put("fail_step", localStringBuilder.toString());
     ((HashMap)localObject).put("fail_location", "MessageHandler");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, (HashMap)localObject, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, (HashMap)localObject, "");
     int i = j;
     if (j > 100) {
       i = j - 100;
@@ -753,34 +748,34 @@ public class SubAccountMessageProcessor
       ((StringBuilder)localObject).append(i);
       QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject).toString());
     }
-    localObject = (ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+    localObject = (ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "");
     if (i != 1)
     {
       if (i != 1000)
       {
         if (i != 1001)
         {
-          if (b(i)) {
+          if (c(i)) {
             a(paramSubAccountBackProtocData, paramString, paramPbGetMsgResp, paramISubAccountService, i);
           } else {
-            paramSubAccountBackProtocData.jdField_a_of_type_Int = 1000;
+            paramSubAccountBackProtocData.a = 1000;
           }
         }
         else
         {
-          paramSubAccountBackProtocData.jdField_a_of_type_Int = 1002;
-          ((ISubAccountControlService)localObject).setBindUinStatus(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (byte)0, paramString);
-          ((ISubAccountControlService)localObject).clearAllData(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString);
+          paramSubAccountBackProtocData.a = 1002;
+          ((ISubAccountControlService)localObject).setBindUinStatus(this.q, (byte)0, paramString);
+          ((ISubAccountControlService)localObject).clearAllData(this.q, paramString);
         }
       }
       else
       {
-        paramSubAccountBackProtocData.jdField_a_of_type_Int = 1008;
-        ((ISubAccountControlService)localObject).clearAllData(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "sub.uin.all");
+        paramSubAccountBackProtocData.a = 1008;
+        ((ISubAccountControlService)localObject).clearAllData(this.q, "sub.uin.all");
       }
     }
     else {
-      paramSubAccountBackProtocData.jdField_a_of_type_Int = 1006;
+      paramSubAccountBackProtocData.a = 1006;
     }
     a(8003, false, paramSubAccountBackProtocData);
     if (QLog.isColorLevel()) {
@@ -797,7 +792,7 @@ public class SubAccountMessageProcessor
       paramPbGetMsgResp.put("param_FailCode", "12014");
       paramPbGetMsgResp.put("fail_step", "getmsgresp_null");
       paramPbGetMsgResp.put("fail_location", "MessageHandler");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramPbGetMsgResp, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "actSBGetMsg", false, 0L, 0L, paramPbGetMsgResp, "");
       a(8003, false, paramSubAccountBackProtocData);
       return true;
     }
@@ -813,7 +808,7 @@ public class SubAccountMessageProcessor
         if (paramToServiceMsg != null)
         {
           a(paramByte, paramInt, String.valueOf(paramLong), paramToServiceMsg, paramArrayList);
-          paramSubAccountBackProtocData.jdField_a_of_type_Boolean = false;
+          paramSubAccountBackProtocData.j = false;
           a(8003, true, paramSubAccountBackProtocData);
           return true;
         }
@@ -840,7 +835,7 @@ public class SubAccountMessageProcessor
   
   private boolean a(msg_comm.MsgHead paramMsgHead, int paramInt1, int paramInt2)
   {
-    return (MessageUtils.c(paramInt1)) && (paramMsgHead.c2c_cmd.has()) && ((paramInt2 == 169) || (paramInt2 == 241) || (paramInt2 == 242) || (paramInt2 == 243) || (paramInt2 == 129) || (paramInt2 == 131) || (paramInt2 == 133));
+    return (MessageUtils.d(paramInt1)) && (paramMsgHead.c2c_cmd.has()) && ((paramInt2 == 169) || (paramInt2 == 241) || (paramInt2 == 242) || (paramInt2 == 243) || (paramInt2 == 129) || (paramInt2 == 131) || (paramInt2 == 133));
   }
   
   private boolean a(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
@@ -871,7 +866,7 @@ public class SubAccountMessageProcessor
   
   private boolean b(int paramInt)
   {
-    return (paramInt == 1200) || (paramInt == 1214) || (paramInt == 1215) || (paramInt == 1218) || (paramInt == 1232) || (paramInt == 1233) || (paramInt == 1240) || (paramInt == 1241) || (paramInt == 1242) || (paramInt == 1221);
+    return (paramInt == 129) || (paramInt == 131) || (paramInt == 133) || (paramInt == 135) || (paramInt == 243);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1010,7 +1005,7 @@ public class SubAccountMessageProcessor
     boolean bool;
     if (j == 0)
     {
-      paramToServiceMsg = (ISubAccountService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountService.class, "");
+      paramToServiceMsg = (ISubAccountService)this.q.getRuntimeService(ISubAccountService.class, "");
       if (paramToServiceMsg != null) {
         paramToServiceMsg.updateCookie(str2, (byte[])localObject2);
       }
@@ -1023,13 +1018,18 @@ public class SubAccountMessageProcessor
     a(8011, bool, new String[] { str2, str1 });
   }
   
+  private boolean c(int paramInt)
+  {
+    return (paramInt == 1200) || (paramInt == 1214) || (paramInt == 1215) || (paramInt == 1218) || (paramInt == 1232) || (paramInt == 1233) || (paramInt == 1240) || (paramInt == 1241) || (paramInt == 1242) || (paramInt == 1221);
+  }
+  
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     SubAccountBackProtocData localSubAccountBackProtocData = new SubAccountBackProtocData();
     String str1 = paramToServiceMsg.extraData.getString("subAccount");
     String str2 = paramToServiceMsg.getUin();
-    localSubAccountBackProtocData.jdField_b_of_type_JavaLangString = str2;
-    localSubAccountBackProtocData.jdField_c_of_type_JavaLangString = str1;
+    localSubAccountBackProtocData.c = str2;
+    localSubAccountBackProtocData.d = str1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -1076,7 +1076,7 @@ public class SubAccountMessageProcessor
     if (a(localSubAccountBackProtocData, localPbGetMsgResp)) {
       return;
     }
-    Object localObject2 = (ISubAccountService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountService.class, "");
+    Object localObject2 = (ISubAccountService)this.q.getRuntimeService(ISubAccountService.class, "");
     if (a(localSubAccountBackProtocData, str1, localPbGetMsgResp, (ISubAccountService)localObject2)) {
       return;
     }
@@ -1163,11 +1163,11 @@ public class SubAccountMessageProcessor
     paramFromServiceMsg.put("param_FailCode", "12016");
     paramFromServiceMsg.put("fail_step", "success");
     paramFromServiceMsg.put("fail_location", "MessageHandler");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "actSBGetMsg", true, 0L, 0L, paramFromServiceMsg, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.q.getCurrentAccountUin(), "actSBGetMsg", true, 0L, 0L, paramFromServiceMsg, "");
     if (a(paramToServiceMsg, localSubAccountBackProtocData, b, i, l3, paramObject)) {
       return;
     }
-    localSubAccountBackProtocData.jdField_a_of_type_Int = 0;
+    localSubAccountBackProtocData.a = 0;
     a(8003, true, localSubAccountBackProtocData);
     if (QLog.isColorLevel()) {
       QLog.d("SUB_ACCOUNT", 2, "subaccount <PbGetMsg><R><---handleGetSubC2CMessageResp_PB end");
@@ -1244,7 +1244,7 @@ public class SubAccountMessageProcessor
           localStringBuilder.append(j);
           QLog.d("SubAccountMessageProcessor", 2, localStringBuilder.toString());
         }
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"0".equals(localObject)) && (TextUtils.equals((CharSequence)localObject, paramToServiceMsg)) && (TextUtils.equals(str, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin())))
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"0".equals(localObject)) && (TextUtils.equals((CharSequence)localObject, paramToServiceMsg)) && (TextUtils.equals(str, this.q.getCurrentUin())))
         {
           a(paramObject, (String)localObject, str, i, j);
           return;
@@ -1280,7 +1280,7 @@ public class SubAccountMessageProcessor
       ((StringBuilder)localObject1).append(paramString1);
       QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("MessageSvc.PbBindUinGetMsg");
+    Object localObject1 = this.r.createToServiceMsg("MessageSvc.PbBindUinGetMsg");
     ((ToServiceMsg)localObject1).extraData.putByte("cChannel", paramByte);
     ((ToServiceMsg)localObject1).extraData.putInt("cSyncFlag", paramInt);
     ((ToServiceMsg)localObject1).extraData.putBoolean("isSubAccount", true);
@@ -1290,7 +1290,7 @@ public class SubAccountMessageProcessor
       ((ToServiceMsg)localObject1).extraData.putStringArrayList("hadGetMsgListUin", paramArrayList);
     }
     paramArrayList = null;
-    Object localObject2 = (ISubAccountService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountService.class, "");
+    Object localObject2 = (ISubAccountService)this.q.getRuntimeService(ISubAccountService.class, "");
     if (localObject2 != null) {
       paramArrayList = ((ISubAccountService)localObject2).getCookie(paramString1);
     }
@@ -1335,7 +1335,7 @@ public class SubAccountMessageProcessor
     }
     ((msg_svc.PbBindUinGetMsgReq)localObject2).sync_flag.set(paramInt);
     ((ToServiceMsg)localObject1).putWupBuffer(((msg_svc.PbBindUinGetMsgReq)localObject2).toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq((ToServiceMsg)localObject1);
+    this.r.sendPbReq((ToServiceMsg)localObject1);
   }
   
   public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -1351,9 +1351,9 @@ public class SubAccountMessageProcessor
     }
     paramFromServiceMsg = new SubAccountBackProtocData();
     String str = paramToServiceMsg.extraData.getString("subAccount");
-    paramFromServiceMsg.jdField_b_of_type_JavaLangString = paramToServiceMsg.getUin();
-    paramFromServiceMsg.jdField_c_of_type_JavaLangString = str;
-    paramFromServiceMsg.jdField_a_of_type_Int = 1001;
+    paramFromServiceMsg.c = paramToServiceMsg.getUin();
+    paramFromServiceMsg.d = str;
+    paramFromServiceMsg.a = 1001;
     a(8003, false, paramFromServiceMsg);
   }
   
@@ -1409,7 +1409,7 @@ public class SubAccountMessageProcessor
   public void a(RequestPushNotify paramRequestPushNotify)
   {
     if (528 == paramRequestPushNotify.stMsgInfo.shMsgType) {
-      ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).processSubAccountRevokeNotify(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramRequestPushNotify);
+      ((ISubAccountMessageProcessorHelper)QRoute.api(ISubAccountMessageProcessorHelper.class)).processSubAccountRevokeNotify(this.q, paramRequestPushNotify);
     }
   }
   
@@ -1419,9 +1419,9 @@ public class SubAccountMessageProcessor
       QLog.d("SubAccountMessageProcessor", 2, "handleGetThirdQQUnreadMsgNumTimeOut");
     }
     paramToServiceMsg = new SubAccountThirdQQBackProtocData();
-    paramToServiceMsg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-    paramToServiceMsg.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(8024, false, paramToServiceMsg);
+    paramToServiceMsg.a = this.q.getAccount();
+    paramToServiceMsg.b = 1;
+    this.r.notifyUI(8024, false, paramToServiceMsg);
   }
   
   public void a(String paramString1, String paramString2)
@@ -1455,11 +1455,11 @@ public class SubAccountMessageProcessor
       return;
     }
     byte[] arrayOfByte = null;
-    Object localObject = (ISubAccountService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountService.class, "");
+    Object localObject = (ISubAccountService)this.q.getRuntimeService(ISubAccountService.class, "");
     if (localObject != null) {
       arrayOfByte = ((ISubAccountService)localObject).getCookie(paramString1);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("PbMessageSvc.PbBindUinMsgReadedConfirm");
+    localObject = this.r.createToServiceMsg("PbMessageSvc.PbBindUinMsgReadedConfirm");
     ((ToServiceMsg)localObject).extraData.putBoolean("isSubAccount", true);
     ((ToServiceMsg)localObject).extraData.putString("subAccount", paramString1);
     ((ToServiceMsg)localObject).extraData.putString("nextAction", paramString2);
@@ -1481,7 +1481,7 @@ public class SubAccountMessageProcessor
       QLog.d("SUB_ACCOUNT", 2, "confirmSubAccountMsgNumReaded() getSubAccoundMsg_PB  cookie = null");
     }
     ((ToServiceMsg)localObject).putWupBuffer(paramString1.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq((ToServiceMsg)localObject);
+    this.r.sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(boolean paramBoolean, ArrayList<SimpleAccount> paramArrayList)
@@ -1506,11 +1506,11 @@ public class SubAccountMessageProcessor
     }
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      localObject1 = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
-      WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(1);
+      localObject1 = (TicketManager)this.q.getManager(2);
+      WtloginManager localWtloginManager = (WtloginManager)this.q.getManager(1);
       msg_svc.PbUnReadMsgSeqReq localPbUnReadMsgSeqReq = new msg_svc.PbUnReadMsgSeqReq();
       msg_svc.PbThirdQQUnReadMsgNumReq localPbThirdQQUnReadMsgNumReq = new msg_svc.PbThirdQQUnReadMsgNumReq();
-      long l1 = MessageCache.a();
+      long l1 = MessageCache.c();
       if ((localObject1 != null) && (localWtloginManager != null))
       {
         Iterator localIterator = paramArrayList.iterator();
@@ -1542,7 +1542,7 @@ public class SubAccountMessageProcessor
                 long l2 = Long.parseLong((String)localObject2);
                 ((msg_svc.PbThirdQQUnReadMsgNumReq.ThirdQQReqInfo)localObject1).third_uin.set(l2);
                 ((msg_svc.PbThirdQQUnReadMsgNumReq.ThirdQQReqInfo)localObject1).third_uin_sig.set(ByteStringMicro.copyFrom(PkgTools.hexToBytes((String)localObject3)));
-                localObject3 = ((ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "")).getThirdQQUnreadNumReqCookie(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2);
+                localObject3 = ((ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "")).getThirdQQUnreadNumReqCookie(this.q, (String)localObject2);
                 if (localObject3 != null) {
                   ((msg_svc.PbThirdQQUnReadMsgNumReq.ThirdQQReqInfo)localObject1).third_uin_cookie.set(ByteStringMicro.copyFrom((byte[])localObject3));
                 }
@@ -1580,27 +1580,27 @@ public class SubAccountMessageProcessor
         }
         paramArrayList.set(i);
         localPbUnReadMsgSeqReq.thirdqq_unread_info.set(localPbThirdQQUnReadMsgNumReq);
-        paramArrayList = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin(), "PbMessageSvc.PbUnReadMsgSeq");
+        paramArrayList = new ToServiceMsg("mobileqq.service", this.q.getCurrentUin(), "PbMessageSvc.PbUnReadMsgSeq");
         paramArrayList.extraData.putString("action", "getThirdQQUnreadNum");
-        paramArrayList.extraData.putString("mainAccount", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount());
+        paramArrayList.extraData.putString("mainAccount", this.q.getAccount());
         paramArrayList.putWupBuffer(localPbUnReadMsgSeqReq.toByteArray());
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq(paramArrayList);
+        this.r.sendPbReq(paramArrayList);
         return;
       }
       paramArrayList = new SubAccountThirdQQBackProtocData();
-      paramArrayList.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+      paramArrayList.a = this.q.getAccount();
       if (QLog.isColorLevel()) {
         QLog.e("SubAccountMessageProcessor", 2, "getThirdQQUnreadMsgNum_PB error no third qq info");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(8024, false, paramArrayList);
+      this.r.notifyUI(8024, false, paramArrayList);
       return;
     }
     paramArrayList = new SubAccountThirdQQBackProtocData();
-    paramArrayList.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
+    paramArrayList.a = this.q.getAccount();
     if (QLog.isColorLevel()) {
       QLog.e("SubAccountMessageProcessor", 2, "getThirdQQUnreadMsgNum_PB error no third account");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(8024, false, paramArrayList);
+    this.r.notifyUI(8024, false, paramArrayList);
   }
   
   public boolean a(SubAccountInfo paramSubAccountInfo)
@@ -1617,8 +1617,8 @@ public class SubAccountMessageProcessor
       Object localObject2 = new ArrayList();
       ((List)localObject2).add(Integer.valueOf(9));
       ((Oidb_0x5d0.ReqBody)localObject1).rpt_uint32_fieldlist.set((List)localObject2);
-      localObject2 = (ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "");
-      ((Oidb_0x5d0.ReqBody)localObject1).uint32_start_time.set(((ISubAccountControlService)localObject2).getReqSubAccountSpecialCareListSysTime(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin(), paramSubAccountInfo.subuin));
+      localObject2 = (ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "");
+      ((Oidb_0x5d0.ReqBody)localObject1).uint32_start_time.set(((ISubAccountControlService)localObject2).getReqSubAccountSpecialCareListSysTime(this.q, this.q.getCurrentUin(), paramSubAccountInfo.subuin));
       try
       {
         long l = Long.parseLong(paramSubAccountInfo.subuin);
@@ -1635,7 +1635,7 @@ public class SubAccountMessageProcessor
           ((StringBuilder)localObject1).append(paramSubAccountInfo.subuin);
           QLog.d("SubAccountMessageProcessor", 2, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("OidbSvc.0x5d0_1");
+        localObject1 = this.r.createToServiceMsg("OidbSvc.0x5d0_1");
         ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
         ((ToServiceMsg)localObject1).setTimeout(60000L);
         ((ToServiceMsg)localObject1).addAttribute("from_where", "subaccount");
@@ -1647,7 +1647,7 @@ public class SubAccountMessageProcessor
           paramSubAccountInfo.append(localObject1);
           QLog.d("SubAccountMessageProcessor", 2, paramSubAccountInfo.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq((ToServiceMsg)localObject1);
+        this.r.sendPbReq((ToServiceMsg)localObject1);
         if (QLog.isColorLevel())
         {
           paramSubAccountInfo = new StringBuilder();
@@ -1681,9 +1681,9 @@ public class SubAccountMessageProcessor
     }
     paramFromServiceMsg = new SubAccountBackProtocData();
     String str = paramToServiceMsg.extraData.getString("subAccount");
-    paramFromServiceMsg.jdField_b_of_type_JavaLangString = paramToServiceMsg.getUin();
-    paramFromServiceMsg.jdField_c_of_type_JavaLangString = str;
-    paramFromServiceMsg.jdField_a_of_type_Int = 1007;
+    paramFromServiceMsg.c = paramToServiceMsg.getUin();
+    paramFromServiceMsg.d = str;
+    paramFromServiceMsg.a = 1007;
     a(8003, false, paramFromServiceMsg);
   }
   
@@ -1693,8 +1693,8 @@ public class SubAccountMessageProcessor
       QLog.d("SubAccountMessageProcessor", 2, "handleGetThirdQQUnreadMsgNumError");
     }
     paramToServiceMsg = new SubAccountThirdQQBackProtocData();
-    paramToServiceMsg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(8024, false, paramToServiceMsg);
+    paramToServiceMsg.a = this.q.getAccount();
+    this.r.notifyUI(8024, false, paramToServiceMsg);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1717,11 +1717,11 @@ public class SubAccountMessageProcessor
           int j = paramObject.result.get();
           paramFromServiceMsg = paramObject.errmsg.get();
           int i = paramObject.interval.get();
-          ((SubAccountThirdQQBackProtocData)localObject1).c = i;
-          ((SubAccountThirdQQBackProtocData)localObject1).jdField_b_of_type_JavaLangString = paramFromServiceMsg;
-          ((SubAccountThirdQQBackProtocData)localObject1).jdField_b_of_type_Int = j;
+          ((SubAccountThirdQQBackProtocData)localObject1).e = i;
+          ((SubAccountThirdQQBackProtocData)localObject1).c = paramFromServiceMsg;
+          ((SubAccountThirdQQBackProtocData)localObject1).d = j;
           paramToServiceMsg = paramToServiceMsg.extraData.getString("mainAccount");
-          ((SubAccountThirdQQBackProtocData)localObject1).jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          ((SubAccountThirdQQBackProtocData)localObject1).a = paramToServiceMsg;
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -1733,8 +1733,8 @@ public class SubAccountMessageProcessor
             ((StringBuilder)localObject2).append(j);
             QLog.d("SubAccountMessageProcessor", 2, ((StringBuilder)localObject2).toString());
           }
-          long l = MessageCache.a();
-          Object localObject2 = (ISubAccountControlService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ISubAccountControlService.class, "");
+          long l = MessageCache.c();
+          Object localObject2 = (ISubAccountControlService)this.q.getRuntimeService(ISubAccountControlService.class, "");
           j = 0;
           paramFromServiceMsg = paramObject;
           while (j < paramFromServiceMsg.thirdqq_resp_info.get().size())
@@ -1747,8 +1747,8 @@ public class SubAccountMessageProcessor
             int n = ((msg_svc.PbThirdQQUnReadMsgNumResp.ThirdQQRespInfo)localObject3).redbag_time.get();
             int i1 = ((msg_svc.PbThirdQQUnReadMsgNumResp.ThirdQQRespInfo)localObject3).status.get();
             int i2 = ((msg_svc.PbThirdQQUnReadMsgNumResp.ThirdQQRespInfo)localObject3).last_msg_time.get();
-            if ((((SubAccountThirdQQBackProtocData)localObject1).d < i2) && (i2 <= l)) {
-              ((SubAccountThirdQQBackProtocData)localObject1).d = i2;
+            if ((((SubAccountThirdQQBackProtocData)localObject1).f < i2) && (i2 <= l)) {
+              ((SubAccountThirdQQBackProtocData)localObject1).f = i2;
             }
             if (QLog.isColorLevel())
             {
@@ -1772,8 +1772,8 @@ public class SubAccountMessageProcessor
             ((ISubAccountControlService)localObject2).storeThirdQQUnreadInfo(paramToServiceMsg, paramObject, arrayOfByte, k, m, n, i1, i2);
             j += 1;
           }
-          ((ISubAccountControlService)localObject2).storeThirdQQUnreadMsgNumInterval(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, i);
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(8024, true, localObject1);
+          ((ISubAccountControlService)localObject2).storeThirdQQUnreadMsgNumInterval(this.q, paramToServiceMsg, i);
+          this.r.notifyUI(8024, true, localObject1);
           return;
         }
         if (QLog.isColorLevel())
@@ -1815,7 +1815,7 @@ public class SubAccountMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SubAccountMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

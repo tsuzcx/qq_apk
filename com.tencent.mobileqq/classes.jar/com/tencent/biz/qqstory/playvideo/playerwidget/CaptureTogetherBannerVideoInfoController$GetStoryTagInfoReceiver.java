@@ -18,10 +18,10 @@ public class CaptureTogetherBannerVideoInfoController$GetStoryTagInfoReceiver
   
   public void a(@NonNull CaptureTogetherBannerVideoInfoController paramCaptureTogetherBannerVideoInfoController, @NonNull GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent paramGetStoryPlayerTagInfoEvent)
   {
-    if ((CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController) != null) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList.contains(CaptureTogetherBannerVideoInfoController.a(paramCaptureTogetherBannerVideoInfoController).a)))
+    if ((CaptureTogetherBannerVideoInfoController.c(paramCaptureTogetherBannerVideoInfoController) != null) && (paramGetStoryPlayerTagInfoEvent.g.isSuccess()) && (paramGetStoryPlayerTagInfoEvent.a.contains(CaptureTogetherBannerVideoInfoController.c(paramCaptureTogetherBannerVideoInfoController).b)))
     {
       SLog.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramGetStoryPlayerTagInfoEvent.b.toString());
-      paramCaptureTogetherBannerVideoInfoController.a.i();
+      paramCaptureTogetherBannerVideoInfoController.a.x();
     }
   }
   

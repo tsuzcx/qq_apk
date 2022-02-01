@@ -1,56 +1,63 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
-import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
-import com.tencent.mobileqq.apollo.handler.ApolloRequest;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.pb.TianShuAccess.RspEntry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class ApolloManagerServiceImpl$7
-  implements Runnable
+  implements TianShuGetAdvCallback
 {
-  ApolloManagerServiceImpl$7(ApolloManagerServiceImpl paramApolloManagerServiceImpl, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  ApolloManagerServiceImpl$7(ApolloManagerServiceImpl paramApolloManagerServiceImpl) {}
   
-  public void run()
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]ApolloManager", 2, new Object[] { "onGetAdvs isSucc:", Boolean.valueOf(paramBoolean) });
+    }
+    if (paramBoolean)
     {
-      AppInterface localAppInterface = ApolloManagerServiceImpl.access$200(this.this$0);
-      if (localAppInterface == null) {
+      if (paramGetAdsRsp == null) {
         return;
       }
-      if (CmShowAioMatcherImpl.judgeSupported(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1))
+      if (paramGetAdsRsp.mapAds.has()) {
+        paramGetAdsRsp = paramGetAdsRsp.mapAds.get();
+      } else {
+        paramGetAdsRsp = null;
+      }
+      if (paramGetAdsRsp == null)
       {
-        this.this$0.checkUserDress(localAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "C2CAIO");
-        if ((CmShowWnsUtils.j()) && (!StudyModeManager.a())) {
-          ApolloRequest.a(localAppInterface, 4021);
+        QLog.w("[cmshow]ApolloManager", 1, "rspEntries == null");
+        return;
+      }
+      HashMap localHashMap = new HashMap();
+      paramGetAdsRsp = paramGetAdsRsp.iterator();
+      while (paramGetAdsRsp.hasNext())
+      {
+        TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+        if ((localRspEntry != null) && (localRspEntry.key.has())) {
+          localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
         }
       }
-      else if (CmShowAioMatcherImpl.judgeSupported(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))
-      {
-        this.this$0.bulkUpdateUserDress();
-        if ((CmShowWnsUtils.k()) && (!StudyModeManager.a())) {
-          ApolloRequest.a(localAppInterface, 4022);
-        }
-      }
-      ApolloMsgPlayController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("[cmshow]ApolloManager", 2, "doAfterOpenAIO error", localException);
-      }
+      ApolloManagerServiceImpl.access$1000(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(364)));
+      ApolloManagerServiceImpl.access$1100(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(367)));
+      ApolloManagerServiceImpl.access$1200(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(366)));
+      ApolloManagerServiceImpl.access$1300(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(365)));
+      ApolloManagerServiceImpl.access$1400(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(393)));
+      ApolloManagerServiceImpl.access$1500(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(501)), true);
+      ApolloManagerServiceImpl.access$1500(this.a, (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(502)), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.7
  * JD-Core Version:    0.7.0.1
  */

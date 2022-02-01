@@ -6,13 +6,12 @@ import java.util.Map;
 public class CircleTransformation
   implements Transformation
 {
-  public Bitmap a;
   public Map<String, Bitmap> a;
+  public Bitmap b = null;
   
   public CircleTransformation(Map<String, Bitmap> paramMap, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.a = paramMap;
   }
   
   /* Error */
@@ -20,55 +19,55 @@ public class CircleTransformation
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 33	android/graphics/Bitmap:getWidth	()I
+    //   1: invokevirtual 34	android/graphics/Bitmap:getWidth	()I
     //   4: aload_1
-    //   5: invokevirtual 36	android/graphics/Bitmap:getHeight	()I
-    //   8: invokestatic 42	java/lang/Math:min	(II)I
+    //   5: invokevirtual 37	android/graphics/Bitmap:getHeight	()I
+    //   8: invokestatic 43	java/lang/Math:min	(II)I
     //   11: istore_3
     //   12: aload_1
-    //   13: invokevirtual 33	android/graphics/Bitmap:getWidth	()I
+    //   13: invokevirtual 34	android/graphics/Bitmap:getWidth	()I
     //   16: iload_3
     //   17: isub
     //   18: iconst_2
     //   19: idiv
     //   20: istore 4
     //   22: aload_1
-    //   23: invokevirtual 36	android/graphics/Bitmap:getHeight	()I
+    //   23: invokevirtual 37	android/graphics/Bitmap:getHeight	()I
     //   26: iload_3
     //   27: isub
     //   28: iconst_2
     //   29: idiv
     //   30: istore 5
     //   32: aload_0
-    //   33: getfield 19	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   33: getfield 20	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:a	Ljava/util/Map;
     //   36: astore 6
     //   38: aload 6
     //   40: ifnull +62 -> 102
-    //   43: new 44	java/lang/StringBuilder
+    //   43: new 45	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   47: invokespecial 46	java/lang/StringBuilder:<init>	()V
     //   50: astore 7
     //   52: aload 7
-    //   54: ldc 47
-    //   56: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: ldc 48
+    //   56: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: pop
     //   60: aload 7
     //   62: iload_3
-    //   63: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: aload 7
-    //   69: ldc 56
-    //   71: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: ldc 57
+    //   71: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload 7
     //   77: iload_3
-    //   78: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   78: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   81: pop
     //   82: aload 6
     //   84: aload 7
-    //   86: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokeinterface 66 2 0
-    //   94: checkcast 29	android/graphics/Bitmap
+    //   86: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokeinterface 67 2 0
+    //   94: checkcast 30	android/graphics/Bitmap
     //   97: astore 6
     //   99: goto +6 -> 105
     //   102: aconst_null
@@ -76,12 +75,12 @@ public class CircleTransformation
     //   105: aload 6
     //   107: ifnull +172 -> 279
     //   110: aload 6
-    //   112: invokevirtual 70	android/graphics/Bitmap:isRecycled	()Z
+    //   112: invokevirtual 71	android/graphics/Bitmap:isRecycled	()Z
     //   115: ifeq +6 -> 121
     //   118: goto +161 -> 279
     //   121: aload 6
     //   123: iconst_0
-    //   124: invokevirtual 74	android/graphics/Bitmap:eraseColor	(I)V
+    //   124: invokevirtual 75	android/graphics/Bitmap:eraseColor	(I)V
     //   127: aload_1
     //   128: aload 6
     //   130: iload 4
@@ -90,48 +89,48 @@ public class CircleTransformation
     //   135: iload_3
     //   136: aconst_null
     //   137: iconst_0
-    //   138: invokestatic 79	com/tencent/biz/qqstory/storyHome/qqstorylist/common/StoryListUtils:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)V
+    //   138: invokestatic 80	com/tencent/biz/qqstory/storyHome/qqstorylist/common/StoryListUtils:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)V
     //   141: goto +127 -> 268
     //   144: aload_1
     //   145: iload 4
     //   147: iload 5
     //   149: iload_3
     //   150: iload_3
-    //   151: invokestatic 83	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   151: invokestatic 84	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   154: astore 7
     //   156: aload 7
     //   158: astore 6
     //   160: aload_0
-    //   161: getfield 19	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   161: getfield 20	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:a	Ljava/util/Map;
     //   164: ifnull -23 -> 141
     //   167: aload_0
-    //   168: getfield 19	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   168: getfield 20	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:a	Ljava/util/Map;
     //   171: astore 6
-    //   173: new 44	java/lang/StringBuilder
+    //   173: new 45	java/lang/StringBuilder
     //   176: dup
-    //   177: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   177: invokespecial 46	java/lang/StringBuilder:<init>	()V
     //   180: astore 8
     //   182: aload 8
-    //   184: ldc 47
-    //   186: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: ldc 48
+    //   186: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: pop
     //   190: aload 8
     //   192: iload_3
-    //   193: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   193: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   196: pop
     //   197: aload 8
-    //   199: ldc 56
-    //   201: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: ldc 57
+    //   201: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: pop
     //   205: aload 8
     //   207: iload_3
-    //   208: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   211: pop
     //   212: aload 6
     //   214: aload 8
-    //   216: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   219: aload 7
-    //   221: invokeinterface 87 3 0
+    //   221: invokeinterface 88 3 0
     //   226: pop
     //   227: aload 7
     //   229: astore 6
@@ -141,20 +140,20 @@ public class CircleTransformation
     //   238: astore 6
     //   240: goto +5 -> 245
     //   243: astore 8
-    //   245: ldc 89
-    //   247: ldc 91
+    //   245: ldc 90
+    //   247: ldc 92
     //   249: iconst_2
     //   250: anewarray 4	java/lang/Object
     //   253: dup
     //   254: iconst_0
     //   255: iload_3
-    //   256: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   256: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   259: aastore
     //   260: dup
     //   261: iconst_1
     //   262: aload 8
     //   264: aastore
-    //   265: invokestatic 103	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   265: invokestatic 104	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   268: aload 6
     //   270: astore 7
     //   272: aload 6
@@ -166,41 +165,41 @@ public class CircleTransformation
     //   282: iload 5
     //   284: iload_3
     //   285: iload_3
-    //   286: invokestatic 83	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   286: invokestatic 84	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   289: astore 7
     //   291: aload 7
     //   293: astore 6
     //   295: aload_0
-    //   296: getfield 19	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   296: getfield 20	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:a	Ljava/util/Map;
     //   299: ifnull +107 -> 406
     //   302: aload_0
-    //   303: getfield 19	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   303: getfield 20	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:a	Ljava/util/Map;
     //   306: astore 6
-    //   308: new 44	java/lang/StringBuilder
+    //   308: new 45	java/lang/StringBuilder
     //   311: dup
-    //   312: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   312: invokespecial 46	java/lang/StringBuilder:<init>	()V
     //   315: astore 8
     //   317: aload 8
-    //   319: ldc 47
-    //   321: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   319: ldc 48
+    //   321: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload 8
     //   327: iload_3
-    //   328: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   328: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload 8
-    //   334: ldc 56
-    //   336: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: ldc 57
+    //   336: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: pop
     //   340: aload 8
     //   342: iload_3
-    //   343: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   343: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   346: pop
     //   347: aload 6
     //   349: aload 8
-    //   351: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   351: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   354: aload 7
-    //   356: invokeinterface 87 3 0
+    //   356: invokeinterface 88 3 0
     //   361: pop
     //   362: aload 7
     //   364: astore 6
@@ -212,20 +211,20 @@ public class CircleTransformation
     //   378: astore 8
     //   380: aconst_null
     //   381: astore 6
-    //   383: ldc 89
-    //   385: ldc 91
+    //   383: ldc 90
+    //   385: ldc 92
     //   387: iconst_2
     //   388: anewarray 4	java/lang/Object
     //   391: dup
     //   392: iconst_0
     //   393: iload_3
-    //   394: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   394: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   397: aastore
     //   398: dup
     //   399: iconst_1
     //   400: aload 8
     //   402: aastore
-    //   403: invokestatic 103	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   403: invokestatic 104	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   406: aload 6
     //   408: astore 7
     //   410: aload 6
@@ -233,34 +232,34 @@ public class CircleTransformation
     //   415: aconst_null
     //   416: areturn
     //   417: aload_0
-    //   418: getfield 17	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   418: getfield 18	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:b	Landroid/graphics/Bitmap;
     //   421: astore 6
     //   423: aload 6
     //   425: ifnull +27 -> 452
     //   428: aload 6
-    //   430: invokevirtual 70	android/graphics/Bitmap:isRecycled	()Z
+    //   430: invokevirtual 71	android/graphics/Bitmap:isRecycled	()Z
     //   433: ifeq +6 -> 439
     //   436: goto +16 -> 452
     //   439: aload_0
-    //   440: getfield 17	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   440: getfield 18	com/tencent/biz/qqstory/storyHome/qqstorylist/AsyncImage/CircleTransformation:b	Landroid/graphics/Bitmap;
     //   443: astore_1
     //   444: aload_1
     //   445: iconst_0
-    //   446: invokevirtual 74	android/graphics/Bitmap:eraseColor	(I)V
+    //   446: invokevirtual 75	android/graphics/Bitmap:eraseColor	(I)V
     //   449: goto +44 -> 493
     //   452: iload_3
     //   453: iload_3
-    //   454: getstatic 109	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   457: invokestatic 112	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   454: getstatic 110	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   457: invokestatic 113	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   460: astore 6
     //   462: aload 6
     //   464: astore_1
     //   465: goto +28 -> 493
     //   468: astore 6
-    //   470: ldc 89
-    //   472: ldc 114
+    //   470: ldc 90
+    //   472: ldc 115
     //   474: aload 6
-    //   476: invokestatic 118	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   476: invokestatic 119	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   479: iload_3
     //   480: iconst_2
     //   481: idiv
@@ -268,47 +267,47 @@ public class CircleTransformation
     //   483: iload_3
     //   484: iload_3
     //   485: aload_1
-    //   486: invokevirtual 122	android/graphics/Bitmap:getConfig	()Landroid/graphics/Bitmap$Config;
-    //   489: invokestatic 112	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   486: invokevirtual 123	android/graphics/Bitmap:getConfig	()Landroid/graphics/Bitmap$Config;
+    //   489: invokestatic 113	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   492: astore_1
     //   493: iload_3
     //   494: i2f
     //   495: fconst_2
     //   496: fdiv
     //   497: fstore_2
-    //   498: new 124	android/graphics/Canvas
+    //   498: new 125	android/graphics/Canvas
     //   501: dup
     //   502: aload_1
-    //   503: invokespecial 127	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   503: invokespecial 128	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   506: astore 6
-    //   508: new 129	android/graphics/Paint
+    //   508: new 130	android/graphics/Paint
     //   511: dup
-    //   512: invokespecial 130	android/graphics/Paint:<init>	()V
+    //   512: invokespecial 131	android/graphics/Paint:<init>	()V
     //   515: astore 8
     //   517: aload 8
-    //   519: new 132	android/graphics/BitmapShader
+    //   519: new 133	android/graphics/BitmapShader
     //   522: dup
     //   523: aload 7
-    //   525: getstatic 138	android/graphics/Shader$TileMode:CLAMP	Landroid/graphics/Shader$TileMode;
-    //   528: getstatic 138	android/graphics/Shader$TileMode:CLAMP	Landroid/graphics/Shader$TileMode;
-    //   531: invokespecial 141	android/graphics/BitmapShader:<init>	(Landroid/graphics/Bitmap;Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V
-    //   534: invokevirtual 145	android/graphics/Paint:setShader	(Landroid/graphics/Shader;)Landroid/graphics/Shader;
+    //   525: getstatic 139	android/graphics/Shader$TileMode:CLAMP	Landroid/graphics/Shader$TileMode;
+    //   528: getstatic 139	android/graphics/Shader$TileMode:CLAMP	Landroid/graphics/Shader$TileMode;
+    //   531: invokespecial 142	android/graphics/BitmapShader:<init>	(Landroid/graphics/Bitmap;Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V
+    //   534: invokevirtual 146	android/graphics/Paint:setShader	(Landroid/graphics/Shader;)Landroid/graphics/Shader;
     //   537: pop
     //   538: aload 8
     //   540: iconst_1
-    //   541: invokevirtual 149	android/graphics/Paint:setAntiAlias	(Z)V
+    //   541: invokevirtual 150	android/graphics/Paint:setAntiAlias	(Z)V
     //   544: aload 6
     //   546: fload_2
     //   547: fload_2
     //   548: fload_2
     //   549: aload 8
-    //   551: invokevirtual 153	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
+    //   551: invokevirtual 154	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
     //   554: aload_1
     //   555: areturn
-    //   556: ldc 89
-    //   558: ldc 155
+    //   556: ldc 90
+    //   558: ldc 156
     //   560: aload 6
-    //   562: invokestatic 118	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   562: invokestatic 119	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   565: aconst_null
     //   566: areturn
     //   567: astore 7

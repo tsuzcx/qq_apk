@@ -12,14 +12,14 @@ class QQValueInfoManage$1
   
   public void onLoadSuccess(UpdateListenerParams paramUpdateListenerParams)
   {
-    QQValueInfoManage.a().b(this.jdField_a_of_type_JavaLangString);
+    QQValueInfoManage.a().b(this.a);
   }
   
   public void onProgress(UpdateListenerParams paramUpdateListenerParams) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.QQValueInfoManage.1
  * JD-Core Version:    0.7.0.1
  */

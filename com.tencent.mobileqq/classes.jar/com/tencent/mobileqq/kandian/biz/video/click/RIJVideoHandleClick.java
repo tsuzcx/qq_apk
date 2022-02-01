@@ -17,65 +17,65 @@ import java.util.HashMap;
 
 public class RIJVideoHandleClick
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RIJDataManager jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager;
-  private ClickHandler jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickClickHandler = new RIJVideoHandleClick.4(this);
-  private HashMap<Integer, ClickHandler> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ClickHandler b = new RIJVideoHandleClick.5(this);
-  private ClickHandler c = new RIJVideoHandleClick.6(this);
-  private ClickHandler d = new RIJVideoHandleClick.7(this);
-  private ClickHandler e = new RIJVideoHandleClick.8(this);
-  private ClickHandler f = new RIJVideoHandleClick.9(this);
-  private ClickHandler g = new RIJVideoHandleClick.10(this);
-  private ClickHandler h = new RIJVideoHandleClick.11(this);
-  private ClickHandler i = new RIJVideoHandleClick.12(this);
-  private ClickHandler j = new RIJVideoHandleClick.13(this);
-  private ClickHandler k = new RIJVideoHandleClick.14(this);
-  private ClickHandler l = new RIJVideoHandleClick.15(this);
+  private RIJDataManager a;
+  private Context b;
+  private HashMap<Integer, ClickHandler> c = new HashMap();
+  private ClickHandler d = new RIJVideoHandleClick.4(this);
+  private ClickHandler e = new RIJVideoHandleClick.5(this);
+  private ClickHandler f = new RIJVideoHandleClick.6(this);
+  private ClickHandler g = new RIJVideoHandleClick.7(this);
+  private ClickHandler h = new RIJVideoHandleClick.8(this);
+  private ClickHandler i = new RIJVideoHandleClick.9(this);
+  private ClickHandler j = new RIJVideoHandleClick.10(this);
+  private ClickHandler k = new RIJVideoHandleClick.11(this);
+  private ClickHandler l = new RIJVideoHandleClick.12(this);
+  private ClickHandler m = new RIJVideoHandleClick.13(this);
+  private ClickHandler n = new RIJVideoHandleClick.14(this);
+  private ClickHandler o = new RIJVideoHandleClick.15(this);
   
   public RIJVideoHandleClick(RIJDataManager paramRIJDataManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager = paramRIJDataManager;
-    this.jdField_a_of_type_AndroidContentContext = paramRIJDataManager.a().a();
+    this.a = paramRIJDataManager;
+    this.b = paramRIJDataManager.a().A();
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376059), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131368583), this.c);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380576), this.j);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131369931), this.d);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376545), this.d);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131369930), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickClickHandler);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376544), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickClickHandler);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131368461), this.e);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380660), this.e);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131366750), this.e);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380736), this.e);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380652), this.f);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131373223), this.g);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131369963), this.h);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376577), this.h);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131367807), this.i);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131367809), this.i);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131368584), this.j);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131362086), this.k);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131362165), this.l);
+    this.c.put(Integer.valueOf(2131444259), this.e);
+    this.c.put(Integer.valueOf(2131435495), this.f);
+    this.c.put(Integer.valueOf(2131449535), this.m);
+    this.c.put(Integer.valueOf(2131437080), this.g);
+    this.c.put(Integer.valueOf(2131444795), this.g);
+    this.c.put(Integer.valueOf(2131437079), this.d);
+    this.c.put(Integer.valueOf(2131444794), this.d);
+    this.c.put(Integer.valueOf(2131435357), this.h);
+    this.c.put(Integer.valueOf(2131449619), this.h);
+    this.c.put(Integer.valueOf(2131433072), this.h);
+    this.c.put(Integer.valueOf(2131449704), this.h);
+    this.c.put(Integer.valueOf(2131449611), this.i);
+    this.c.put(Integer.valueOf(2131440832), this.j);
+    this.c.put(Integer.valueOf(2131437113), this.k);
+    this.c.put(Integer.valueOf(2131444832), this.k);
+    this.c.put(Integer.valueOf(2131434382), this.l);
+    this.c.put(Integer.valueOf(2131434384), this.l);
+    this.c.put(Integer.valueOf(2131435496), this.m);
+    this.c.put(Integer.valueOf(2131427664), this.n);
+    this.c.put(Integer.valueOf(2131427745), this.o);
   }
   
   private void a(View paramView, boolean paramBoolean)
   {
     Object localObject = (VideoFeedsViewHolder)paramView.getTag();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a(((VideoFeedsViewHolder)localObject).a);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), (AbsBaseArticleInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), 56, paramBoolean);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), (AbsBaseArticleInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), 56, paramBoolean, null);
-    VideoHandler.a(paramView);
+    localObject = this.a.c(((VideoFeedsViewHolder)localObject).P);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(this.a.a().A(), (AbsBaseArticleInfo)localObject, this.a.a().v(), 56, paramBoolean);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)this.a.a().A(), (AbsBaseArticleInfo)localObject, this.a.a().v(), 56, paramBoolean, null);
+    VideoHandler.b(paramView);
   }
   
   public void a(View paramView)
   {
-    Object localObject = (ClickHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()));
+    Object localObject = (ClickHandler)this.c.get(Integer.valueOf(paramView.getId()));
     if (localObject != null)
     {
       ((ClickHandler)localObject).onClick(paramView);
@@ -88,29 +88,29 @@ public class RIJVideoHandleClick
     QLog.e("RIJVideoHandleClick", 1, ((StringBuilder)localObject).toString());
   }
   
-  public boolean a(View paramView)
+  public boolean b(View paramView)
   {
-    if (paramView.getId() == 2131368583)
+    if (paramView.getId() == 2131435495)
     {
-      b(paramView);
+      c(paramView);
       return true;
     }
     return false;
   }
   
-  public void b(View paramView)
+  public void c(View paramView)
   {
     paramView = (VideoFeedsViewHolder)paramView.getTag();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a(paramView.a);
+    paramView = this.a.c(paramView.P);
     if (paramView == null) {
       return;
     }
-    RIJUserLevelModule.getInstance().doActionsByUserLevel(this.jdField_a_of_type_AndroidContentContext, 2, new RIJVideoHandleClick.3(this, paramView));
+    RIJUserLevelModule.getInstance().doActionsByUserLevel(this.b, 2, new RIJVideoHandleClick.3(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick
  * JD-Core Version:    0.7.0.1
  */

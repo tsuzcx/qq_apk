@@ -60,6 +60,7 @@ public class MotionScene
   private MotionScene.Transition mDefaultTransition = null;
   private SparseIntArray mDeriveMap = new SparseIntArray();
   private boolean mDisableAutoTransition = false;
+  private boolean mIgnoreTouch = false;
   private MotionEvent mLastTouchDown;
   float mLastTouchX;
   float mLastTouchY;
@@ -516,7 +517,7 @@ public class MotionScene
     while (localIterator.hasNext())
     {
       MotionScene.Transition localTransition = (MotionScene.Transition)localIterator.next();
-      if (MotionScene.Transition.access$600(localTransition) != 0)
+      if ((MotionScene.Transition.access$600(localTransition) != 0) && (this.mCurrentTransition != localTransition))
       {
         if ((paramInt == MotionScene.Transition.access$100(localTransition)) && ((MotionScene.Transition.access$600(localTransition) == 4) || (MotionScene.Transition.access$600(localTransition) == 2)))
         {
@@ -534,6 +535,7 @@ public class MotionScene
           paramMotionLayout.setState(MotionLayout.TransitionState.SETUP);
           paramMotionLayout.setState(MotionLayout.TransitionState.MOVING);
           paramMotionLayout.setState(MotionLayout.TransitionState.FINISHED);
+          paramMotionLayout.onNewStateAttachHandlers();
           return true;
         }
         if ((paramInt == MotionScene.Transition.access$000(localTransition)) && ((MotionScene.Transition.access$600(localTransition) == 3) || (MotionScene.Transition.access$600(localTransition) == 1)))
@@ -552,6 +554,7 @@ public class MotionScene
           paramMotionLayout.setState(MotionLayout.TransitionState.SETUP);
           paramMotionLayout.setState(MotionLayout.TransitionState.MOVING);
           paramMotionLayout.setState(MotionLayout.TransitionState.FINISHED);
+          paramMotionLayout.onNewStateAttachHandlers();
           return true;
         }
       }
@@ -985,7 +988,7 @@ public class MotionScene
       boolean bool2 = false;
       if (i != 0)
       {
-        if (i == 2)
+        if ((i == 2) && (!this.mIgnoreTouch))
         {
           float f1 = paramMotionEvent.getRawY() - this.mLastTouchY;
           float f2 = paramMotionEvent.getRawX() - this.mLastTouchX;
@@ -1021,12 +1024,14 @@ public class MotionScene
         this.mLastTouchX = paramMotionEvent.getRawX();
         this.mLastTouchY = paramMotionEvent.getRawY();
         this.mLastTouchDown = paramMotionEvent;
+        this.mIgnoreTouch = false;
         if (MotionScene.Transition.access$200(this.mCurrentTransition) != null)
         {
           paramMotionEvent = MotionScene.Transition.access$200(this.mCurrentTransition).getLimitBoundsTo(this.mMotionLayout, (RectF)localObject1);
           if ((paramMotionEvent != null) && (!paramMotionEvent.contains(this.mLastTouchDown.getX(), this.mLastTouchDown.getY())))
           {
             this.mLastTouchDown = null;
+            this.mIgnoreTouch = true;
             return;
           }
           paramMotionEvent = MotionScene.Transition.access$200(this.mCurrentTransition).getTouchRegion(this.mMotionLayout, (RectF)localObject1);
@@ -1039,6 +1044,9 @@ public class MotionScene
         }
         return;
       }
+    }
+    if (this.mIgnoreTouch) {
+      return;
     }
     localObject1 = this.mCurrentTransition;
     if ((localObject1 != null) && (MotionScene.Transition.access$200((MotionScene.Transition)localObject1) != null) && (!this.mMotionOutsideRegion)) {
@@ -1237,7 +1245,7 @@ public class MotionScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.MotionScene
  * JD-Core Version:    0.7.0.1
  */

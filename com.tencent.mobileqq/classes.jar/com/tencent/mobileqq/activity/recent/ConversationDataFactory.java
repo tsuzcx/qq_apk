@@ -41,7 +41,7 @@ public class ConversationDataFactory
         }
         return null;
       }
-      paramRecentUser = RecentListConfig.a().a(paramBaseQQAppInterface, paramRecentUser);
+      paramRecentUser = RecentListConfig.b().a(paramBaseQQAppInterface, paramRecentUser);
       if (paramRecentUser == null) {
         return null;
       }
@@ -124,7 +124,7 @@ public class ConversationDataFactory
       if ((i < paramInt) && (i < j))
       {
         Object localObject2 = (RecentUser)paramList.get(i);
-        if ((localObject2 != null) && (!RecentListConfig.a().a((RecentUser)localObject2, j, paramInt)))
+        if ((localObject2 != null) && (!RecentListConfig.e().a((RecentUser)localObject2, j, paramInt)))
         {
           TraceUtils.traceBegin(((RecentUser)localObject2).uin);
           StartupTracker.a(null, "Recent_LoadData_conv_uin_record");
@@ -206,7 +206,7 @@ public class ConversationDataFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationDataFactory
  * JD-Core Version:    0.7.0.1
  */

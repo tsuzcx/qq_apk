@@ -37,7 +37,7 @@ public class b
     this.d = b.b.d(paramb);
     this.e = b.b.e(paramb);
     this.f = b.b.f(paramb);
-    this.g = b.b.a(paramb);
+    this.g = b.b.g(paramb);
   }
   
   private String a(String paramString)
@@ -120,7 +120,7 @@ public class b
       try
       {
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("vc", String.valueOf(com.tencent.tgpa.vendorpd.b.b.a(paramContext, str))).put("vn", com.tencent.tgpa.vendorpd.b.b.a(paramContext, str));
+        localJSONObject2.put("vc", String.valueOf(com.tencent.tgpa.vendorpd.b.b.b(paramContext, str))).put("vn", com.tencent.tgpa.vendorpd.b.b.a(paramContext, str));
         localJSONObject1.put(str, localJSONObject2);
       }
       catch (JSONException localJSONException)
@@ -150,7 +150,7 @@ public class b
     HashMap localHashMap1 = a();
     localHashMap1.put("app_name", paramString);
     String str3 = String.valueOf(System.currentTimeMillis());
-    String str2 = d.a(paramCombinationInfo.predownFilePath);
+    String str2 = d.c(paramCombinationInfo.predownFilePath);
     if (paramCombinationInfo.cdnMD5 == null) {
       localObject = "";
     } else {
@@ -218,7 +218,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.b
  * JD-Core Version:    0.7.0.1
  */

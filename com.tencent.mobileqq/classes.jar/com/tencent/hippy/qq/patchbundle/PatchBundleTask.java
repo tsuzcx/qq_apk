@@ -80,12 +80,12 @@ public class PatchBundleTask
       return;
     }
     DownloadTask localDownloadTask = new DownloadTask(paramString, (File)???);
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "hippy_patch";
-    localDownloadTask.b = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "hippy_patch";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     localDownloaderInterface.startDownload(localDownloadTask, new PatchBundleTask.5(this, (File)???, paramString), null);
   }
   
@@ -137,12 +137,12 @@ public class PatchBundleTask
         return;
       }
       localObject2 = new DownloadTask(paramString, (File)localObject2);
-      ((DownloadTask)localObject2).p = true;
-      ((DownloadTask)localObject2).n = true;
-      ((DownloadTask)localObject2).f = "hippy_patch";
-      ((DownloadTask)localObject2).b = 1;
-      ((DownloadTask)localObject2).q = true;
-      ((DownloadTask)localObject2).r = true;
+      ((DownloadTask)localObject2).N = true;
+      ((DownloadTask)localObject2).J = true;
+      ((DownloadTask)localObject2).L = "hippy_patch";
+      ((DownloadTask)localObject2).e = 1;
+      ((DownloadTask)localObject2).P = true;
+      ((DownloadTask)localObject2).Q = true;
       ((DownloaderInterface)localObject1).startDownload((DownloadTask)localObject2, new PatchBundleTask.4(this, paramString), null);
       return;
     }
@@ -406,7 +406,7 @@ public class PatchBundleTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchBundleTask
  * JD-Core Version:    0.7.0.1
  */

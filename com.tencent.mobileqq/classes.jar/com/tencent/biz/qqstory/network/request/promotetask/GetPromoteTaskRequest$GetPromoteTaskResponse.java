@@ -13,18 +13,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetPromoteTaskRequest$GetPromoteTaskResponse
   extends CommonResponse
 {
-  public qqstory_service.RspGetPromoteTaskList a;
+  public qqstory_service.RspGetPromoteTaskList a = new qqstory_service.RspGetPromoteTaskList();
   
   public GetPromoteTaskRequest$GetPromoteTaskResponse(byte[] paramArrayOfByte)
   {
     super(paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList = new qqstory_service.RspGetPromoteTaskList();
     try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.mergeFrom(paramArrayOfByte);
-      this.b = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.result.error_desc.get().toStringUtf8();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList.result.error_code.get();
-      SLog.a("GetPromoteTaskResponse", "GetPromoteTaskResponse(): %s", PBUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList));
+      this.a.mergeFrom(paramArrayOfByte);
+      this.d = this.a.result.error_desc.get().toStringUtf8();
+      this.c = this.a.result.error_code.get();
+      SLog.a("GetPromoteTaskResponse", "GetPromoteTaskResponse(): %s", PBUtils.b(this.a));
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -35,12 +34,12 @@ public class GetPromoteTaskRequest$GetPromoteTaskResponse
   
   public String toString()
   {
-    return PBUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPromoteTaskList);
+    return PBUtils.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.promotetask.GetPromoteTaskRequest.GetPromoteTaskResponse
  * JD-Core Version:    0.7.0.1
  */

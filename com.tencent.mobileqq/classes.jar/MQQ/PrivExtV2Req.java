@@ -10,6 +10,7 @@ public final class PrivExtV2Req
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
+  static Map<Integer, Integer> cache_mobile_info;
   static Map<String, String> cache_qqvalue_info;
   public int clientLangugeId = 0;
   public Map<String, String> extendInfo = null;
@@ -20,6 +21,7 @@ public final class PrivExtV2Req
   public int iWkOrderState1 = 0;
   public int iWkOrderState2 = 0;
   public long lastVisitTime = 0L;
+  public Map<Integer, Integer> mobile_info = null;
   public long pullPayRuleCfgTime = 0L;
   public Map<String, String> qqvalue_info = null;
   public String qua = "";
@@ -35,11 +37,14 @@ public final class PrivExtV2Req
     cache_extendInfo.put("", "");
     cache_qqvalue_info = new HashMap();
     cache_qqvalue_info.put("", "");
+    cache_mobile_info = new HashMap();
+    Integer localInteger = Integer.valueOf(0);
+    cache_mobile_info.put(localInteger, localInteger);
   }
   
   public PrivExtV2Req() {}
   
-  public PrivExtV2Req(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, long paramLong3, int paramInt6, Map<String, String> paramMap1, String paramString5, String paramString6, Map<String, String> paramMap2, String paramString7)
+  public PrivExtV2Req(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, long paramLong3, int paramInt6, Map<String, String> paramMap1, String paramString5, String paramString6, Map<String, String> paramMap2, String paramString7, Map<Integer, Integer> paramMap)
   {
     this.sUin = paramString1;
     this.sKey = paramString2;
@@ -59,6 +64,7 @@ public final class PrivExtV2Req
     this.trace_info = paramString6;
     this.qqvalue_info = paramMap2;
     this.recom_ext_info = paramString7;
+    this.mobile_info = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -81,6 +87,7 @@ public final class PrivExtV2Req
     this.trace_info = paramJceInputStream.readString(15, false);
     this.qqvalue_info = ((Map)paramJceInputStream.read(cache_qqvalue_info, 16, false));
     this.recom_ext_info = paramJceInputStream.readString(17, false);
+    this.mobile_info = ((Map)paramJceInputStream.read(cache_mobile_info, 18, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -123,6 +130,10 @@ public final class PrivExtV2Req
     localObject = this.recom_ext_info;
     if (localObject != null) {
       paramJceOutputStream.write((String)localObject, 17);
+    }
+    localObject = this.mobile_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 18);
     }
   }
 }

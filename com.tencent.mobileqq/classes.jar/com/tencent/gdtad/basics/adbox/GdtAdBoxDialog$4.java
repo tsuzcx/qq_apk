@@ -11,13 +11,13 @@ class GdtAdBoxDialog$4
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBoxPresenter.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView, this.a.a(paramView), GdtAdBoxDialog.a(this.a), this.a.jdField_a_of_type_ComTencentGdtadBasicsAdboxGdtAdBox.a());
+    this.a.c.a(this.a.a, paramView, this.a.b(paramView), GdtAdBoxDialog.a(this.a), this.a.b.a());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.adbox.GdtAdBoxDialog.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,26 @@ class TroopTeamWorkFileSearchDialog$6$1
   
   public void run()
   {
-    if (this.a.a.c)
+    if (this.a.a.r)
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
+      this.a.a.n = null;
       return;
     }
-    if (this.a.a.jdField_a_of_type_Int > 0)
+    if (this.a.a.u > 0)
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
+      this.a.a.n = null;
       return;
     }
-    this.a.a.jdField_a_of_type_JavaLangString = this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim().toLowerCase();
-    this.a.a.jdField_b_of_type_Int = 0;
-    this.a.a.jdField_b_of_type_Boolean = true;
-    this.a.a.a(this.a.a.jdField_a_of_type_JavaLangString);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
+    this.a.a.t = this.a.a.h.getText().toString().trim().toLowerCase();
+    this.a.a.w = 0;
+    this.a.a.q = true;
+    this.a.a.a(this.a.a.t);
+    this.a.a.n = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.6.1
  * JD-Core Version:    0.7.0.1
  */

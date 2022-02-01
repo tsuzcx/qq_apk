@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/nxz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/mz9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="351.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
-    <com.tencent.image.URLImageView android:id="@id/mza" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
-    <com.tencent.image.URLImageView android:id="@id/e3" android:layout_width="45.0dip" android:layout_height="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <com.tencent.image.URLImageView android:id="@id/aqg" android:background="@drawable/bg2" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" />
-    <com.tencent.image.URLImageView android:id="@id/aqp" android:background="@drawable/bx9" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" />
-    <com.tencent.image.URLImageView android:id="@id/aqa" android:background="@drawable/bg1" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
-    <com.tencent.image.URLImageView android:id="@id/aqk" android:background="@drawable/bx8" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/b64" android:focusable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
+        <View android:layout_gravity="center_vertical" android:id="@id/icon" android:background="@drawable/qq_profilecard_item_fans" android:duplicateParentState="false" style="@style/bw" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:layout_gravity="center" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ylj" android:includeFontPadding="false" android:layout_weight="1.0" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="49.0dip" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" />
+</LinearLayout>

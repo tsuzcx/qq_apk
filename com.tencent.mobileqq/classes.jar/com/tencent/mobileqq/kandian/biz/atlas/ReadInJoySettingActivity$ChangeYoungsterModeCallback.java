@@ -16,11 +16,11 @@ import tencent.kandian.flaginfo.flag_info.FlagInfo;
 class ReadInJoySettingActivity$ChangeYoungsterModeCallback
   extends ProtoUtils.TroopProtocolObserver
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   ReadInJoySettingActivity$ChangeYoungsterModeCallback(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
@@ -72,29 +72,29 @@ class ReadInJoySettingActivity$ChangeYoungsterModeCallback
     }
     else
     {
-      bool2 = this.jdField_a_of_type_Boolean;
+      bool2 = this.b;
       if ((bool2) && (j == 1))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity.getApplicationContext(), 2131718132, 0).a();
+        QQToast.makeText(this.a.getApplicationContext(), 2131915609, 0).show();
         RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
-        ReadInJoySettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity, true);
+        ReadInJoySettingActivity.h(this.a, true);
         return;
       }
-      if ((!this.jdField_a_of_type_Boolean) && (j == 0))
+      if ((!this.b) && (j == 0))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity.getApplicationContext(), 2131718131, 0).a();
+        QQToast.makeText(this.a.getApplicationContext(), 2131915608, 0).show();
         RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
-        ReadInJoySettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity, false);
+        ReadInJoySettingActivity.h(this.a, false);
         return;
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity.getApplicationContext(), 2131718130, 0).a();
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity;
+      QQToast.makeText(this.a.getApplicationContext(), 2131915607, 0).show();
+      paramArrayOfByte = this.a;
       if (j == 1) {
         bool1 = true;
       }
-      ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
-      ReadInJoySettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity).setChecked(ReadInJoySettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity));
-      if (ReadInJoySettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity))
+      ReadInJoySettingActivity.h(paramArrayOfByte, bool1);
+      ReadInJoySettingActivity.g(this.a).setChecked(ReadInJoySettingActivity.h(this.a));
+      if (ReadInJoySettingActivity.h(this.a))
       {
         RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
         return;
@@ -102,29 +102,29 @@ class ReadInJoySettingActivity$ChangeYoungsterModeCallback
       RIJSPUtils.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
       return;
       label319:
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity.getApplicationContext(), 2131718130, 0).a();
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity;
-      if (this.jdField_a_of_type_Boolean) {
+      QQToast.makeText(this.a.getApplicationContext(), 2131915607, 0).show();
+      paramArrayOfByte = this.a;
+      if (this.b) {
         break label528;
       }
       bool1 = true;
-      ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
-      paramArrayOfByte = ReadInJoySettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity);
-      if (this.jdField_a_of_type_Boolean) {
+      ReadInJoySettingActivity.h(paramArrayOfByte, bool1);
+      paramArrayOfByte = ReadInJoySettingActivity.g(this.a);
+      if (this.b) {
         break label534;
       }
       bool1 = bool2;
       paramArrayOfByte.setChecked(bool1);
       return;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity.getApplicationContext(), 2131718130, 0).a();
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity;
-      if (this.jdField_a_of_type_Boolean) {
+      QQToast.makeText(this.a.getApplicationContext(), 2131915607, 0).show();
+      paramArrayOfByte = this.a;
+      if (this.b) {
         break label540;
       }
       bool1 = true;
-      ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
-      paramArrayOfByte = ReadInJoySettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoySettingActivity);
-      if (this.jdField_a_of_type_Boolean) {
+      ReadInJoySettingActivity.h(paramArrayOfByte, bool1);
+      paramArrayOfByte = ReadInJoySettingActivity.g(this.a);
+      if (this.b) {
         break label546;
       }
       bool1 = bool3;
@@ -134,7 +134,7 @@ class ReadInJoySettingActivity$ChangeYoungsterModeCallback
       {
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("requestChangeYoungsterMode, value = ");
-        paramArrayOfByte.append(this.jdField_a_of_type_Boolean);
+        paramArrayOfByte.append(this.b);
         paramArrayOfByte.append("failed.");
         QLog.d("ReadInJoySettingActivity", 2, paramArrayOfByte.toString());
       }
@@ -144,7 +144,7 @@ class ReadInJoySettingActivity$ChangeYoungsterModeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.ChangeYoungsterModeCallback
  * JD-Core Version:    0.7.0.1
  */

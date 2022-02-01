@@ -24,11 +24,11 @@ class AutoRemarkActivity$3
   
   protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    if (!TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramString1)) {
+    if (!TextUtils.equals(this.a.b, paramString1)) {
       return;
     }
     if (paramBoolean) {
-      if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(this.a.b)) && (!this.a.jdField_a_of_type_Boolean))
+      if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(this.a.c)) && (!this.a.l))
       {
         if (QLog.isColorLevel())
         {
@@ -37,12 +37,12 @@ class AutoRemarkActivity$3
           paramString1.append(paramString2);
           QLog.d("AutoRemarkActivity", 2, paramString1.toString());
         }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
+        this.a.g.setText(paramString2);
       }
     }
     try
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.g.setSelection(this.a.g.getText().length());
     }
     catch (IndexOutOfBoundsException paramString1)
     {
@@ -52,26 +52,26 @@ class AutoRemarkActivity$3
     if (QLog.isColorLevel()) {
       QLog.d("AutoRemarkActivity", 2, "onGetAutoInfo | IndexOutOfBoundsException");
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      paramString1 = AutoRemarkActivity.a(this.a);
+      paramString1 = AutoRemarkActivity.f(this.a);
       paramString2 = new StringBuilder();
-      paramString2.append(this.a.getResources().getString(2131693375));
-      paramString2.append(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      paramString2.append(this.a.getResources().getString(2131890924));
+      paramString2.append(this.a.g.getText().toString());
       paramString1.setContentDescription(paramString2.toString());
     }
     paramString1 = this.a;
-    paramString1.c = paramInt;
-    paramString1.jdField_a_of_type_AndroidWidgetTextView.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, this.a.c));
+    paramString1.d = paramInt;
+    paramString1.h.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, this.a.d));
     return;
     paramString1 = this.a;
-    paramString1.c = 0;
-    paramString1.jdField_a_of_type_AndroidWidgetTextView.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, this.a.c));
+    paramString1.d = 0;
+    paramString1.h.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, this.a.d));
   }
   
   protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (!TextUtils.equals(paramString, this.a.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramString, this.a.b)) {
       return;
     }
     if (paramBoolean1)
@@ -86,7 +86,7 @@ class AutoRemarkActivity$3
             if (i != 100)
             {
               AutoRemarkActivity.c(this.a);
-              QQToast.a(this.a, 2, 2131718756, 0).b(this.a.getTitleBarHeight());
+              QQToast.makeText(this.a, 2, 2131916262, 0).show(this.a.getTitleBarHeight());
               this.a.a();
               break label188;
             }
@@ -94,13 +94,13 @@ class AutoRemarkActivity$3
           else
           {
             AutoRemarkActivity.b(this.a);
-            QQToast.a(this.a, 2, 2131718756, 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText(this.a, 2, 2131916262, 0).show(this.a.getTitleBarHeight());
             this.a.a();
             break label188;
           }
         }
         AutoRemarkActivity.a(this.a);
-        QQToast.a(this.a, 2, 2131689599, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 2, 2131886209, 0).show(this.a.getTitleBarHeight());
         this.a.a();
         label188:
         ((BabyQHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER)).a(this.a.getIntent());
@@ -117,14 +117,14 @@ class AutoRemarkActivity$3
       }
       paramString = paramBundle;
       if (TextUtils.isEmpty(paramBundle)) {
-        paramString = this.a.getString(2131718220);
+        paramString = this.a.getString(2131915702);
       }
       AutoRemarkActivity.a(this.a, paramString);
       return;
     }
     AutoRemarkActivity.e(this.a);
     paramString = this.a;
-    AutoRemarkActivity.a(paramString, paramString.getString(2131718220));
+    AutoRemarkActivity.a(paramString, paramString.getString(2131915702));
     if (QLog.isColorLevel()) {
       QLog.d("AutoRemarkActivity", 2, "add friend response error and isSuccuss = NO");
     }
@@ -132,7 +132,7 @@ class AutoRemarkActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoRemarkActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ class AccountOnlineStateRepository$2
       paramStatus.append("onOnlineStatusChanged, isSuccess: ");
       paramStatus.append(paramBoolean1);
       paramStatus.append(" , mIsUpdateStatus: ");
-      paramStatus.append(AccountOnlineStateRepository.a(this.a).a());
+      paramStatus.append(AccountOnlineStateRepository.a(this.a).g());
       paramStatus.append(", isUserSet: ");
       paramStatus.append(paramBoolean2);
       QLog.d("AccountOnlineStateRepository", 2, paramStatus.toString());
     }
-    if (AccountOnlineStateRepository.a(this.a).a())
+    if (AccountOnlineStateRepository.a(this.a).g())
     {
       AccountOnlineStateRepository.a(this.a).a(false);
       if (paramBoolean1)
@@ -39,7 +39,7 @@ class AccountOnlineStateRepository$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.repository.AccountOnlineStateRepository.2
  * JD-Core Version:    0.7.0.1
  */

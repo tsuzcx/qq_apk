@@ -14,64 +14,27 @@ import java.util.List;
 
 public class WebViewPool
 {
-  public static WebViewPool a;
-  private List<WebViewPool.WebviewModel> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebviewWebViewPool = new WebViewPool();
-  }
-  
-  private WebViewPool()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public static WebViewPool a = new WebViewPool();
+  private List<WebViewPool.WebviewModel> b = new ArrayList();
   
   private TouchWebView a(boolean paramBoolean)
   {
     long l = System.currentTimeMillis();
     LogFactory.a().c("WebViewPool", "-------createNewWebview------");
     WebViewPool.WebviewModel localWebviewModel = new WebViewPool.WebviewModel(this);
-    localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(BaseApplicationImpl.getContext());
+    localWebviewModel.a = new TouchWebView(BaseApplicationImpl.getContext());
     LogInterface localLogInterface = LogFactory.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("-------createNewWebview------totalStamp = ");
     localStringBuilder.append(System.currentTimeMillis() - l);
     localLogInterface.c("WebViewPool", localStringBuilder.toString());
     if (paramBoolean) {
-      localWebviewModel.jdField_a_of_type_Boolean = false;
+      localWebviewModel.b = false;
     } else {
-      localWebviewModel.jdField_a_of_type_Boolean = true;
+      localWebviewModel.b = true;
     }
-    this.jdField_a_of_type_JavaUtilList.add(localWebviewModel);
-    return localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView;
-  }
-  
-  public TouchWebView a()
-  {
-    LogFactory.a().c("WebViewPool", "-------getWebView------");
-    if (this.jdField_a_of_type_JavaUtilList.size() != 0)
-    {
-      if (BusinessManager.a.a().jdField_a_of_type_Boolean)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          WebViewPool.WebviewModel localWebviewModel = (WebViewPool.WebviewModel)localIterator.next();
-          if (!localWebviewModel.jdField_a_of_type_Boolean)
-          {
-            localWebviewModel.jdField_a_of_type_Boolean = true;
-            return localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView;
-          }
-        }
-        return a(false);
-      }
-      if (BusinessManager.a.a().b) {
-        a(((WebViewPool.WebviewModel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizUiTouchWebView);
-      }
-      return ((WebViewPool.WebviewModel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizUiTouchWebView;
-    }
-    return a(false);
+    this.b.add(localWebviewModel);
+    return localWebviewModel.a;
   }
   
   public void a()
@@ -83,52 +46,80 @@ public class WebViewPool
   public void a(TouchWebView paramTouchWebView)
   {
     LogFactory.a().c("WebViewPool", "-------recycle------");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       WebViewPool.WebviewModel localWebviewModel = (WebViewPool.WebviewModel)localIterator.next();
-      if (localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.hashCode() == paramTouchWebView.hashCode())
+      if (localWebviewModel.a.hashCode() == paramTouchWebView.hashCode())
       {
         WebViewPluginEngine localWebViewPluginEngine = paramTouchWebView.getPluginEngine();
         if (localWebViewPluginEngine != null)
         {
           localWebViewPluginEngine.a(paramTouchWebView.getUrl(), 8589934596L, null);
-          localWebViewPluginEngine.b();
+          localWebViewPluginEngine.d();
         }
-        localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-        localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
+        localWebviewModel.a.stopLoading();
+        localWebviewModel.a.loadUrlOriginal("about:blank");
         paramTouchWebView.resetForReuse();
         paramTouchWebView.onPause();
-        localWebviewModel.jdField_a_of_type_Boolean = false;
+        localWebviewModel.b = false;
       }
     }
   }
   
-  public void b()
+  public TouchWebView b()
+  {
+    LogFactory.a().c("WebViewPool", "-------getWebView------");
+    if (this.b.size() != 0)
+    {
+      Object localObject = BusinessManager.a.b();
+      if ((localObject != null) && (((BusinessConfig)localObject).k))
+      {
+        localObject = this.b.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          WebViewPool.WebviewModel localWebviewModel = (WebViewPool.WebviewModel)((Iterator)localObject).next();
+          if (!localWebviewModel.b)
+          {
+            localWebviewModel.b = true;
+            return localWebviewModel.a;
+          }
+        }
+        return a(false);
+      }
+      if ((localObject != null) && (((BusinessConfig)localObject).l)) {
+        a(((WebViewPool.WebviewModel)this.b.get(0)).a);
+      }
+      return ((WebViewPool.WebviewModel)this.b.get(0)).a;
+    }
+    return a(false);
+  }
+  
+  public void c()
   {
     LogFactory.a().c("WebViewPool", "-------clear------");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       WebViewPool.WebviewModel localWebviewModel = (WebViewPool.WebviewModel)localIterator.next();
-      WebViewPluginEngine localWebViewPluginEngine = localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+      WebViewPluginEngine localWebViewPluginEngine = localWebviewModel.a.getPluginEngine();
       if (localWebViewPluginEngine != null)
       {
-        localWebViewPluginEngine.a(localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 8589934596L, null);
-        localWebViewPluginEngine.b();
+        localWebViewPluginEngine.a(localWebviewModel.a.getUrl(), 8589934596L, null);
+        localWebViewPluginEngine.d();
       }
-      localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
-      localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
-      localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
-      localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.destroy();
+      localWebviewModel.a.stopLoading();
+      localWebviewModel.a.loadUrlOriginal("about:blank");
+      localWebviewModel.a.clearView();
+      localWebviewModel.a.destroy();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.WebViewPool
  * JD-Core Version:    0.7.0.1
  */

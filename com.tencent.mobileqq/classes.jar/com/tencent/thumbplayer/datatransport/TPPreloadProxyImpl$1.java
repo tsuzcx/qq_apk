@@ -8,11 +8,19 @@ class TPPreloadProxyImpl$1
 {
   TPPreloadProxyImpl$1(TPPreloadProxyImpl paramTPPreloadProxyImpl, ITPPreloadProxy.IPreloadListener paramIPreloadListener) {}
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    ITPPreloadProxy.IPreloadListener localIPreloadListener = this.val$listener;
+    if (localIPreloadListener != null) {
+      localIPreloadListener.onInfo(2101, 0L, 0L, paramString);
+    }
+  }
+  
   public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    paramString = this.val$listener;
-    if (paramString != null) {
-      paramString.onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
+    ITPPreloadProxy.IPreloadListener localIPreloadListener = this.val$listener;
+    if (localIPreloadListener != null) {
+      localIPreloadListener.onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
     }
   }
   
@@ -34,7 +42,7 @@ class TPPreloadProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPreloadProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ class QQMessageFacade$1
     }
     Object localObject = this.this$0;
     QQMessageFacade.a((QQMessageFacade)localObject, DraftTextManager.a(QQMessageFacade.a((QQMessageFacade)localObject)));
-    this.this$0.a().a();
-    this.this$0.h();
-    QQMessageFacade.a(this.this$0);
+    this.this$0.a().b();
+    this.this$0.t();
+    QQMessageFacade.b(this.this$0);
     this.this$0.notifyObservers(new RecentUser());
     if (QLog.isColorLevel())
     {
@@ -39,7 +39,7 @@ class QQMessageFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.QQMessageFacade.1
  * JD-Core Version:    0.7.0.1
  */

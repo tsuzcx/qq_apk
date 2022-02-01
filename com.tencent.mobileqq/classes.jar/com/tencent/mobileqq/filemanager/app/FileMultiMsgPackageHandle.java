@@ -70,20 +70,20 @@ public class FileMultiMsgPackageHandle
     }
   }
   
-  private boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    return !TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
-  }
-  
   private boolean a(hummer_resv_21.ResvAttr paramResvAttr)
   {
     if (paramResvAttr == null) {
       return false;
     }
     return paramResvAttr.forward_ext_file_info.has();
+  }
+  
+  private boolean e(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    return !TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
   }
   
   public TroopFileStatusInfo a(MessageForTroopFile paramMessageForTroopFile)
@@ -151,7 +151,7 @@ public class FileMultiMsgPackageHandle
     Object localObject6;
     int j;
     Object localObject5;
-    if (a(paramMessageRecord))
+    if (e(paramMessageRecord))
     {
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("handleTroopFileMessage: package multi troop file message. ");
@@ -187,7 +187,7 @@ public class FileMultiMsgPackageHandle
       ((StringBuilder)localObject6).append("handleTroopFileMessage fileMd5 is ");
       ((StringBuilder)localObject6).append(str);
       QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject6).toString());
-      i = FileManagerUtil.a((String)localObject4);
+      i = FileManagerUtil.c((String)localObject4);
       localObject4 = new JSONObject();
       if ((i == 0) || (i == 2))
       {
@@ -211,7 +211,7 @@ public class FileMultiMsgPackageHandle
           ((JSONObject)localObject4).put("duration", Integer.parseInt((String)localObject5));
         }
       }
-      ((JSONObject)localObject4).put("ExtInfo", Base64.encodeToString(a(paramMessageRecord).toByteArray(), 2));
+      ((JSONObject)localObject4).put("ExtInfo", Base64.encodeToString(d(paramMessageRecord).toByteArray(), 2));
       break label439;
       label435:
       paramMessageRecord.printStackTrace();
@@ -228,7 +228,7 @@ public class FileMultiMsgPackageHandle
       localObject5 = a((MessageForTroopFile)localObject4);
       if (localObject5 != null)
       {
-        localObject6 = ((TroopFileStatusInfo)localObject5).e;
+        localObject6 = ((TroopFileStatusInfo)localObject5).r;
         if (!TextUtils.isEmpty((CharSequence)localObject6))
         {
           ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(((String)localObject6).getBytes()));
@@ -249,14 +249,14 @@ public class FileMultiMsgPackageHandle
           ((StringBuilder)localObject6).append(QFileUtils.a(this.a, paramMessageRecord));
           QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject6).toString());
         }
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint32_bus_id.set(((TroopFileStatusInfo)localObject5).h);
-        localObject6 = ((TroopFileStatusInfo)localObject5).g;
+        ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint32_bus_id.set(((TroopFileStatusInfo)localObject5).u);
+        localObject6 = ((TroopFileStatusInfo)localObject5).t;
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set((String)localObject6);
-        l = ((TroopFileStatusInfo)localObject5).c;
+        l = ((TroopFileStatusInfo)localObject5).i;
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint64_file_size.set(l);
         l = ((MessageForTroopFile)localObject4).lastTime;
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).int64_dead_time.set(l);
-        localObject5 = ((TroopFileStatusInfo)localObject5).f;
+        localObject5 = ((TroopFileStatusInfo)localObject5).s;
         if (!TextUtils.isEmpty((CharSequence)localObject5))
         {
           ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject5).getBytes()));
@@ -268,7 +268,7 @@ public class FileMultiMsgPackageHandle
           ((StringBuilder)localObject5).append(QFileUtils.a(this.a, paramMessageRecord));
           QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject5).toString());
         }
-        i = FileManagerUtil.a((String)localObject6);
+        i = FileManagerUtil.c((String)localObject6);
         paramMessageRecord = new JSONObject();
         if ((i == 0) || (i == 2))
         {
@@ -315,161 +315,6 @@ public class FileMultiMsgPackageHandle
     paramMessageRecord.elems.add((MessageMicro)localObject1);
     localMsgBody.rich_text.set(paramMessageRecord);
     return localMsgBody;
-  }
-  
-  public hummer_resv_21.ResvAttr a(MessageRecord paramMessageRecord)
-  {
-    hummer_resv_21.ResvAttr localResvAttr = new hummer_resv_21.ResvAttr();
-    hummer_resv_21.ForwardExtFileInfo localForwardExtFileInfo = new hummer_resv_21.ForwardExtFileInfo();
-    int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileType:");
-      ((StringBuilder)localObject).append(i);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
-    }
-    localForwardExtFileInfo.uint32_file_type.set(i);
-    long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSenderUin"));
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handleFrowardExtFileInfo sendUin:");
-      ((StringBuilder)localObject).append(l);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
-    }
-    localForwardExtFileInfo.uint64_sender_uin.set(l);
-    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin"));
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handleFrowardExtFileInfo recvUin:");
-      ((StringBuilder)localObject).append(l);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
-    }
-    localForwardExtFileInfo.uint64_receiver_uin.set(l);
-    Object localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleFrowardExtFileInfo fileUuid:");
-      localStringBuilder.append((String)localObject);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-    }
-    localForwardExtFileInfo.bytes_file_uuid.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleFrowardExtFileInfo fileIdCrc:");
-      localStringBuilder.append((String)localObject);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-    }
-    localForwardExtFileInfo.str_fileidcrc.set((String)localObject);
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleFrowardExtFileInfo fileName:");
-      localStringBuilder.append((String)localObject);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-    }
-    localForwardExtFileInfo.str_file_name.set((String)localObject);
-    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileSize:");
-      ((StringBuilder)localObject).append(l);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
-    }
-    localForwardExtFileInfo.uint64_file_size.set(l);
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleFrowardExtFileInfo strSHA1:");
-      localStringBuilder.append((String)localObject);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-    }
-    localForwardExtFileInfo.bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleFrowardExtFileInfo fileMd5:");
-      localStringBuilder.append((String)localObject);
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-    }
-    localForwardExtFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      l = Long.parseLong((String)localObject);
-      if (QLog.isDevelopLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleFrowardExtFileInfo deadTime:");
-        localStringBuilder.append((String)localObject);
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-      }
-      localForwardExtFileInfo.int64_dead_time.set(l);
-    }
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      i = Integer.parseInt((String)localObject);
-      if (QLog.isDevelopLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
-        localStringBuilder.append((String)localObject);
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-      }
-      localForwardExtFileInfo.uint32_img_width.set(i);
-    }
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      i = Integer.parseInt((String)localObject);
-      if (QLog.isDevelopLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
-        localStringBuilder.append((String)localObject);
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-      }
-      localForwardExtFileInfo.uint32_img_height.set(i);
-    }
-    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      l = Long.parseLong((String)localObject);
-      if (QLog.isDevelopLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleFrowardExtFileInfo videoDur:");
-        localStringBuilder.append((String)localObject);
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
-      }
-      localForwardExtFileInfo.uint64_video_duration.set(l);
-    }
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardBusType");
-    if (!TextUtils.isEmpty(paramMessageRecord))
-    {
-      i = Integer.parseInt(paramMessageRecord);
-      if (QLog.isDevelopLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("handleFrowardExtFileInfo bizId:");
-        ((StringBuilder)localObject).append(paramMessageRecord);
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
-      }
-      localForwardExtFileInfo.uint32_bus_id.set(i);
-    }
-    localResvAttr.forward_ext_file_info.set(localForwardExtFileInfo);
-    return localResvAttr;
   }
   
   public void a(ArrayList<MessageRecord> paramArrayList, ByteStringMicro paramByteStringMicro)
@@ -740,7 +585,7 @@ public class FileMultiMsgPackageHandle
                     }
                     localObject3 = (MessageForTroopFile)MessageRecordFactory.a(-2017);
                     ((MessageForTroopFile)localObject3).msgtype = -2017;
-                    ((MessageForTroopFile)localObject3).msg = HardCodeUtil.a(2131704664);
+                    ((MessageForTroopFile)localObject3).msg = HardCodeUtil.a(2131902568);
                     try
                     {
                       ((MessageForTroopFile)localObject3).msgData = MessagePkgUtils.a((Serializable)localObject2);
@@ -898,7 +743,7 @@ public class FileMultiMsgPackageHandle
     long l;
     int i;
     hummer_resv_21.FileImgInfo localFileImgInfo;
-    if (a(paramMessageRecord))
+    if (e(paramMessageRecord))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("handleDiscFileMessage: package multi disc file message. ");
@@ -910,8 +755,8 @@ public class FileMultiMsgPackageHandle
       localGroupFile.uint64_file_size.set(l);
       localObject1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
       localGroupFile.bytes_file_id.set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
-      localObject1 = a(paramMessageRecord);
-      i = FileManagerUtil.a((String)localObject2);
+      localObject1 = d(paramMessageRecord);
+      i = FileManagerUtil.c((String)localObject2);
       if ((i == 0) || (i == 2))
       {
         localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
@@ -943,7 +788,7 @@ public class FileMultiMsgPackageHandle
         localGroupFile.bytes_file_id.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
         localObject2 = new hummer_resv_21.ResvAttr();
         localFileImgInfo = new hummer_resv_21.FileImgInfo();
-        i = FileManagerUtil.a(paramMessageRecord);
+        i = FileManagerUtil.c(paramMessageRecord);
         if ((i == 0) || (i == 2))
         {
           localFileImgInfo.uint32_file_width.set(((FileManagerEntity)localObject1).imgWidth);
@@ -1128,7 +973,7 @@ public class FileMultiMsgPackageHandle
     Object localObject3;
     Object localObject4;
     int i;
-    if (a(paramMessageRecord))
+    if (e(paramMessageRecord))
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("handleBuddyFileMessage: package multi buddy file message. ");
@@ -1143,7 +988,7 @@ public class FileMultiMsgPackageHandle
         QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
         return null;
       }
-      localObject3 = a(paramMessageRecord);
+      localObject3 = d(paramMessageRecord);
       long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
       ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.set(l);
       localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
@@ -1158,7 +1003,7 @@ public class FileMultiMsgPackageHandle
       localStringBuilder.append(str);
       QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
       localMsgBody.msg_not_online_file.set((MessageMicro)localObject2);
-      i = FileManagerUtil.a((String)localObject4);
+      i = FileManagerUtil.c((String)localObject4);
       if ((i == 0) || (i == 2))
       {
         localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
@@ -1219,7 +1064,7 @@ public class FileMultiMsgPackageHandle
           ((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject3).str10Md5.getBytes()));
         }
         paramMessageRecord = new hummer_resv_21.FileImgInfo();
-        i = FileManagerUtil.a(((FileManagerEntity)localObject3).fileName);
+        i = FileManagerUtil.c(((FileManagerEntity)localObject3).fileName);
         if ((i == 0) || (i == 2))
         {
           paramMessageRecord.uint32_file_width.set(((FileManagerEntity)localObject3).imgWidth);
@@ -1242,10 +1087,165 @@ public class FileMultiMsgPackageHandle
     ((im_msg_body.MsgBody)localObject1).msg_content.set(ByteStringMicro.copyFrom(paramMessageRecord));
     return localObject1;
   }
+  
+  public hummer_resv_21.ResvAttr d(MessageRecord paramMessageRecord)
+  {
+    hummer_resv_21.ResvAttr localResvAttr = new hummer_resv_21.ResvAttr();
+    hummer_resv_21.ForwardExtFileInfo localForwardExtFileInfo = new hummer_resv_21.ForwardExtFileInfo();
+    int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileType:");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+    }
+    localForwardExtFileInfo.uint32_file_type.set(i);
+    long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSenderUin"));
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo sendUin:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+    }
+    localForwardExtFileInfo.uint64_sender_uin.set(l);
+    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin"));
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo recvUin:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+    }
+    localForwardExtFileInfo.uint64_receiver_uin.set(l);
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileUuid:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.bytes_file_uuid.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileIdCrc:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.str_fileidcrc.set((String)localObject);
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileName:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.str_file_name.set((String)localObject);
+    l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileSize:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+    }
+    localForwardExtFileInfo.uint64_file_size.set(l);
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo strSHA1:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileMd5:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      l = Long.parseLong((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo deadTime:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      }
+      localForwardExtFileInfo.int64_dead_time.set(l);
+    }
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      i = Integer.parseInt((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      }
+      localForwardExtFileInfo.uint32_img_width.set(i);
+    }
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      i = Integer.parseInt((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      }
+      localForwardExtFileInfo.uint32_img_height.set(i);
+    }
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      l = Long.parseLong((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo videoDur:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      }
+      localForwardExtFileInfo.uint64_video_duration.set(l);
+    }
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardBusType");
+    if (!TextUtils.isEmpty(paramMessageRecord))
+    {
+      i = Integer.parseInt(paramMessageRecord);
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleFrowardExtFileInfo bizId:");
+        ((StringBuilder)localObject).append(paramMessageRecord);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+      }
+      localForwardExtFileInfo.uint32_bus_id.set(i);
+    }
+    localResvAttr.forward_ext_file_info.set(localForwardExtFileInfo);
+    return localResvAttr;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileMultiMsgPackageHandle
  * JD-Core Version:    0.7.0.1
  */

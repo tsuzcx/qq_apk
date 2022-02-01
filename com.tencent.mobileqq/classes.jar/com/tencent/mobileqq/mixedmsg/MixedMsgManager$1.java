@@ -24,24 +24,24 @@ class MixedMsgManager$1
   
   public void run()
   {
-    Object localObject2 = this.this$0.a.getAccount();
-    int k = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-    localObject1 = MessageRecordFactory.a(this.this$0.a, str, (String)localObject1, k);
-    int j = this.jdField_a_of_type_Int;
+    Object localObject2 = this.this$0.b.getAccount();
+    int k = this.a.a;
+    String str = this.a.b;
+    Object localObject1 = this.a.c;
+    localObject1 = MessageRecordFactory.g(this.this$0.b, str, (String)localObject1, k);
+    int j = this.b;
     int i = j;
     if (j == 0) {
-      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.forwardID;
+      i = this.c.forwardID;
     }
-    ForwardOrderManager.a().a(((MessageForMixedMsg)localObject1).uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, i);
+    ForwardOrderManager.a().a(((MessageForMixedMsg)localObject1).uniseq, this.c.uniseq, i);
     ((MessageForMixedMsg)localObject1).extraflag = 32772;
-    ((MessageForMixedMsg)localObject1).msgData = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData;
-    ((MessageForMixedMsg)localObject1).msgElemList = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList;
-    if (!this.jdField_a_of_type_Boolean)
+    ((MessageForMixedMsg)localObject1).msgData = this.c.msgData;
+    ((MessageForMixedMsg)localObject1).msgElemList = this.c.msgElemList;
+    if (!this.d)
     {
-      ((MessageForMixedMsg)localObject1).mForwardFromIsTroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
-      ((MessageForMixedMsg)localObject1).mForwardFromUin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
+      ((MessageForMixedMsg)localObject1).mForwardFromIsTroop = this.c.istroop;
+      ((MessageForMixedMsg)localObject1).mForwardFromUin = this.c.frienduin;
     }
     else
     {
@@ -56,11 +56,11 @@ class MixedMsgManager$1
       }
     }
     ((MessageForMixedMsg)localObject1).prewrite();
-    ((IOrderMediaMsgService)this.this$0.a.getRuntimeService(IOrderMediaMsgService.class)).updateMediaMsgByUniseq(str, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, ((MessageForMixedMsg)localObject1).uniseq);
-    ((IOrderMediaMsgService)this.this$0.a.getRuntimeService(IOrderMediaMsgService.class)).addOrderMsg((MessageRecord)localObject1, null);
-    this.this$0.a.getMsgHandler().notifyUI(1000, true, str);
+    ((IOrderMediaMsgService)this.this$0.b.getRuntimeService(IOrderMediaMsgService.class)).updateMediaMsgByUniseq(str, this.c.uniseq, ((MessageForMixedMsg)localObject1).uniseq);
+    ((IOrderMediaMsgService)this.this$0.b.getRuntimeService(IOrderMediaMsgService.class)).addOrderMsg((MessageRecord)localObject1, null);
+    this.this$0.b.getMsgHandler().notifyUI(1000, true, str);
     localObject3 = new ArrayList();
-    localObject2 = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageRecord)localObject1, k, (String)localObject2, str, this.this$0.a.getAccount());
+    localObject2 = ((IPicBus)QRoute.api(IPicBus.class)).createForwardPicInfos(7, (MessageRecord)localObject1, k, (String)localObject2, str, this.this$0.b.getAccount());
     if (localObject2 != null) {
       ((ArrayList)localObject3).addAll((Collection)localObject2);
     } else if (QLog.isColorLevel()) {
@@ -77,19 +77,19 @@ class MixedMsgManager$1
         QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject2).toString());
       }
       localObject2 = this.this$0;
-      MixedMsgManager.a((MixedMsgManager)localObject2, ((MixedMsgManager)localObject2).a, str, k, (ArrayList)localObject3, (MessageForMixedMsg)localObject1);
+      MixedMsgManager.a((MixedMsgManager)localObject2, ((MixedMsgManager)localObject2).b, str, k, (ArrayList)localObject3, (MessageForMixedMsg)localObject1);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("MixedMsgManager", 2, "[forwardMixedMsg]There's not any picture messages, goto onPackAndSendMsg");
     }
     localObject2 = this.this$0;
-    MixedMsgManager.a((MixedMsgManager)localObject2, ((MixedMsgManager)localObject2).a, str, k, (MessageForMixedMsg)localObject1, true);
+    MixedMsgManager.a((MixedMsgManager)localObject2, ((MixedMsgManager)localObject2).b, str, k, (MessageForMixedMsg)localObject1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

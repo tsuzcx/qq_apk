@@ -10,32 +10,32 @@ import java.util.HashMap;
 
 public class QavRecordReporter
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  private static Throwable jdField_a_of_type_JavaLangThrowable;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static int jdField_b_of_type_Int;
-  private static long jdField_b_of_type_Long;
-  private static int c;
+  private static int a = 0;
+  private static long b = 0L;
+  private static int c = 0;
+  private static long d = 0L;
+  private static boolean e = false;
+  private static int f;
+  private static Throwable g;
   
   public static void a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_b_of_type_Long = -1L;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
+    a = 0;
+    b = System.currentTimeMillis();
+    d = -1L;
     c = 0;
-    jdField_a_of_type_JavaLangThrowable = null;
+    e = false;
+    f = 0;
+    g = null;
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    long l3 = jdField_b_of_type_Long;
-    int i = jdField_a_of_type_Int;
-    int j = jdField_b_of_type_Int;
+    long l2 = b;
+    long l3 = d;
+    int i = a;
+    int j = c;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -69,9 +69,9 @@ public class QavRecordReporter
       localStringBuilder.append(paramInt);
       QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
-    jdField_a_of_type_Boolean = true;
-    c = paramInt;
-    jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    e = true;
+    f = paramInt;
+    g = paramThrowable;
   }
   
   public static void a(String paramString)
@@ -81,15 +81,15 @@ public class QavRecordReporter
   
   public static void b()
   {
-    jdField_a_of_type_Int += 1;
+    a += 1;
   }
   
   public static void c()
   {
-    if (jdField_b_of_type_Long < 0L) {
-      jdField_b_of_type_Long = System.currentTimeMillis();
+    if (d < 0L) {
+      d = System.currentTimeMillis();
     }
-    jdField_b_of_type_Int += 1;
+    c += 1;
   }
   
   public static void d()
@@ -98,12 +98,12 @@ public class QavRecordReporter
       QLog.i("QavRecordReporter", 2, "reportEnd");
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(c));
-    localHashMap.put("device_model", DeviceInfoUtil.d());
-    localHashMap.put("api", DeviceInfoUtil.e());
-    localHashMap.put("manufacture", DeviceInfoUtil.h());
-    localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
-    jdField_a_of_type_JavaLangThrowable = null;
+    localHashMap.put("param_FailCode", String.valueOf(f));
+    localHashMap.put("device_model", DeviceInfoUtil.f());
+    localHashMap.put("api", DeviceInfoUtil.g());
+    localHashMap.put("manufacture", DeviceInfoUtil.t());
+    localHashMap.put("throwable", String.valueOf(g));
+    g = null;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -111,7 +111,7 @@ public class QavRecordReporter
       localStringBuilder.append(localHashMap);
       QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_report_end", jdField_a_of_type_Boolean ^ true, 0L, 0L, localHashMap, "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_report_end", e ^ true, 0L, 0L, localHashMap, "", false);
   }
   
   public static void e()
@@ -120,9 +120,9 @@ public class QavRecordReporter
       QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", DeviceInfoUtil.d());
-    localHashMap.put("api", DeviceInfoUtil.e());
-    localHashMap.put("manufacture", DeviceInfoUtil.h());
+    localHashMap.put("device_model", DeviceInfoUtil.f());
+    localHashMap.put("api", DeviceInfoUtil.g());
+    localHashMap.put("manufacture", DeviceInfoUtil.t());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -130,7 +130,7 @@ public class QavRecordReporter
       localStringBuilder.append(localHashMap);
       QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_audio_fail", jdField_a_of_type_Boolean ^ true, 0L, 0L, localHashMap, "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_audio_fail", e ^ true, 0L, 0L, localHashMap, "", false);
   }
 }
 

@@ -7,8 +7,8 @@ import com.tencent.util.notification.NotificationLimiterImpl;
 public class MiniMsgTabServerInitStep
   extends AsyncStep
 {
-  private static String a = "MiniMsgTabServerInitStep";
   public static boolean a = false;
+  private static String b = "MiniMsgTabServerInitStep";
   
   private void a()
   {
@@ -26,7 +26,7 @@ public class MiniMsgTabServerInitStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep
  * JD-Core Version:    0.7.0.1
  */

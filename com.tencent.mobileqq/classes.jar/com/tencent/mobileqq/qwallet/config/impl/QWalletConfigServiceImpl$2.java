@@ -24,10 +24,10 @@ class QWalletConfigServiceImpl$2
         {
           paramBundle = new StringBuilder();
           paramBundle.append("fail get rsp:");
-          paramBundle.append(this.jdField_a_of_type_Long);
+          paramBundle.append(this.a);
           QLog.d("QWalletConfigServiceImpl", 2, paramBundle.toString());
         }
-        QWalletConfigServiceImpl.access$102(this.jdField_a_of_type_ComTencentMobileqqQwalletConfigImplQWalletConfigServiceImpl, -1L);
+        QWalletConfigServiceImpl.access$102(this.d, -1L);
         return;
       }
       catch (Throwable paramBundle)
@@ -43,14 +43,14 @@ class QWalletConfigServiceImpl$2
         localStringBuilder.append(paramBundle);
         QLog.d("QWalletConfigServiceImpl", 2, localStringBuilder.toString());
       }
-      QWalletConfigServiceImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqQwalletConfigImplQWalletConfigServiceImpl).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService$ConfigListener, (IQWalletConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      QWalletConfigServiceImpl.access$200(this.d).handleRsp(paramBundle, this.a, this.b, (IQWalletConfigService)this.c.get());
     }
-    QWalletConfigServiceImpl.access$102(this.jdField_a_of_type_ComTencentMobileqqQwalletConfigImplQWalletConfigServiceImpl, -1L);
+    QWalletConfigServiceImpl.access$102(this.d, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.config.impl.QWalletConfigServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

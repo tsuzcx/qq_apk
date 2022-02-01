@@ -6,18 +6,17 @@ import java.lang.reflect.Method;
 
 public final class Unsafe
 {
-  private static final String TAG = "Unsafe";
-  private static Object unsafe;
-  private static Class unsafeClass;
+  private static Object a;
+  private static Class b;
   
   static
   {
     try
     {
-      unsafeClass = Class.forName("sun.misc.Unsafe");
-      localField = unsafeClass.getDeclaredField("theUnsafe");
+      b = Class.forName("sun.misc.Unsafe");
+      localField = b.getDeclaredField("theUnsafe");
       localField.setAccessible(true);
-      unsafe = localField.get(null);
+      a = localField.get(null);
       return;
     }
     catch (Exception localException1)
@@ -29,9 +28,9 @@ public final class Unsafe
     }
     try
     {
-      localField = unsafeClass.getDeclaredField("THE_ONE");
+      localField = b.getDeclaredField("THE_ONE");
       localField.setAccessible(true);
-      unsafe = localField.get(null);
+      a = localField.get(null);
       return;
     }
     catch (Exception localException2)
@@ -41,11 +40,11 @@ public final class Unsafe
     Log.w("Unsafe", "Unsafe not found o.O");
   }
   
-  public static int arrayBaseOffset(Class paramClass)
+  public static int a(Class paramClass)
   {
     try
     {
-      int i = ((Integer)unsafeClass.getDeclaredMethod("arrayBaseOffset", new Class[] { Class.class }).invoke(unsafe, new Object[] { paramClass })).intValue();
+      int i = ((Integer)b.getDeclaredMethod("arrayBaseOffset", new Class[] { Class.class }).invoke(a, new Object[] { paramClass })).intValue();
       return i;
     }
     catch (Exception paramClass)
@@ -55,25 +54,11 @@ public final class Unsafe
     return 0;
   }
   
-  public static int arrayIndexScale(Class paramClass)
+  public static int a(Object paramObject, long paramLong)
   {
     try
     {
-      int i = ((Integer)unsafeClass.getDeclaredMethod("arrayIndexScale", new Class[] { Class.class }).invoke(unsafe, new Object[] { paramClass })).intValue();
-      return i;
-    }
-    catch (Exception paramClass)
-    {
-      Log.w("Unsafe", paramClass);
-    }
-    return 0;
-  }
-  
-  public static int getInt(Object paramObject, long paramLong)
-  {
-    try
-    {
-      int i = ((Integer)unsafeClass.getDeclaredMethod("getInt", new Class[] { Object.class, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong) })).intValue();
+      int i = ((Integer)b.getDeclaredMethod("getInt", new Class[] { Object.class, Long.TYPE }).invoke(a, new Object[] { paramObject, Long.valueOf(paramLong) })).intValue();
       return i;
     }
     catch (Exception paramObject)
@@ -83,42 +68,16 @@ public final class Unsafe
     return 0;
   }
   
-  public static long getLong(Object paramObject, long paramLong)
-  {
-    try
-    {
-      paramLong = ((Long)unsafeClass.getDeclaredMethod("getLong", new Class[] { Object.class, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong) })).longValue();
-      return paramLong;
-    }
-    catch (Exception paramObject)
-    {
-      Log.w("Unsafe", paramObject);
-    }
-    return 0L;
-  }
-  
-  public static Object getObject(long paramLong)
-  {
-    Object[] arrayOfObject = new Object[1];
-    long l = arrayBaseOffset([Ljava.lang.Object.class);
-    if (Runtime.is64Bit()) {
-      putLong(arrayOfObject, l, paramLong);
-    } else {
-      putInt(arrayOfObject, l, (int)paramLong);
-    }
-    return arrayOfObject[0];
-  }
-  
-  public static long getObjectAddress(Object paramObject)
+  public static long a(Object paramObject)
   {
     try
     {
       Object[] arrayOfObject = new Object[1];
       arrayOfObject[0] = paramObject;
-      if (arrayIndexScale([Ljava.lang.Object.class) == 8) {
-        return getLong(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
+      if (b([Ljava.lang.Object.class) == 8) {
+        return b(arrayOfObject, a([Ljava.lang.Object.class));
       }
-      int i = getInt(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
+      int i = a(arrayOfObject, a([Ljava.lang.Object.class));
       return 0xFFFFFFFF & i;
     }
     catch (Exception paramObject)
@@ -128,60 +87,32 @@ public final class Unsafe
     return -1L;
   }
   
-  public static long objectFieldOffset(Field paramField)
+  public static int b(Class paramClass)
   {
     try
     {
-      long l = ((Long)unsafeClass.getDeclaredMethod("objectFieldOffset", new Class[] { Field.class }).invoke(unsafe, new Object[] { paramField })).longValue();
-      return l;
+      int i = ((Integer)b.getDeclaredMethod("arrayIndexScale", new Class[] { Class.class }).invoke(a, new Object[] { paramClass })).intValue();
+      return i;
     }
-    catch (Exception paramField)
+    catch (Exception paramClass)
     {
-      Log.w("Unsafe", paramField);
+      Log.w("Unsafe", paramClass);
+    }
+    return 0;
+  }
+  
+  public static long b(Object paramObject, long paramLong)
+  {
+    try
+    {
+      paramLong = ((Long)b.getDeclaredMethod("getLong", new Class[] { Object.class, Long.TYPE }).invoke(a, new Object[] { paramObject, Long.valueOf(paramLong) })).longValue();
+      return paramLong;
+    }
+    catch (Exception paramObject)
+    {
+      Log.w("Unsafe", paramObject);
     }
     return 0L;
-  }
-  
-  public static void putInt(Object paramObject, long paramLong, int paramInt)
-  {
-    try
-    {
-      unsafeClass.getDeclaredMethod("putIntVolatile", new Class[] { Object.class, Long.TYPE, Integer.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      return;
-    }
-    catch (Exception localException) {}
-    try
-    {
-      unsafeClass.getDeclaredMethod("putIntVolatile", new Class[] { Object.class, Long.TYPE, Integer.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      label120:
-      break label120;
-    }
-    Log.w("Unsafe", localException);
-  }
-  
-  public static void putLong(Object paramObject, long paramLong1, long paramLong2)
-  {
-    try
-    {
-      unsafeClass.getDeclaredMethod("putLongVolatile", new Class[] { Object.class, Long.TYPE, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-      return;
-    }
-    catch (Exception localException) {}
-    try
-    {
-      unsafeClass.getDeclaredMethod("putLong", new Class[] { Object.class, Long.TYPE, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      label120:
-      break label120;
-    }
-    Log.w("Unsafe", localException);
   }
 }
 

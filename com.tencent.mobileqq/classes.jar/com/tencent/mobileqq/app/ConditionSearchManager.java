@@ -37,101 +37,66 @@ import tencent.im.oidb.cmd0x972.oidb_0x972.RspBody;
 public class ConditionSearchManager
   implements Manager
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final int[] c;
-  public static final String[] c;
-  public static final String[] d;
-  public static final String[] e;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private ConditionSearchManager.IFirstLocationReqCancelListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ConditionSearchManager.5(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AddressData jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
-  volatile Card jdField_a_of_type_ComTencentMobileqqDataCard = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  LinkedList<ConditionSearchManager.IConfigListener> jdField_a_of_type_JavaUtilLinkedList = null;
-  List<Object> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-  public boolean a;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString;
-  LinkedList<ConditionSearchManager.ISearchListener> jdField_b_of_type_JavaUtilLinkedList = null;
-  List<CondFitUser> jdField_b_of_type_JavaUtilList;
-  volatile boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  private volatile long jdField_c_of_type_Long = 0L;
-  private final String jdField_c_of_type_JavaLangString = "condation_search_sp";
-  volatile boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int;
-  private volatile long jdField_d_of_type_Long;
-  volatile boolean jdField_d_of_type_Boolean = false;
-  int jdField_e_of_type_Int;
-  boolean jdField_e_of_type_Boolean = false;
-  int jdField_f_of_type_Int = 0;
-  private boolean jdField_f_of_type_Boolean = false;
-  String[] jdField_f_of_type_ArrayOfJavaLangString;
-  int jdField_g_of_type_Int = 0;
-  private boolean jdField_g_of_type_Boolean = false;
-  String[] jdField_g_of_type_ArrayOfJavaLangString;
-  private volatile boolean jdField_h_of_type_Boolean = false;
-  private String[] jdField_h_of_type_ArrayOfJavaLangString;
-  private String[] i;
-  private String[] j;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "不限", "男", "女" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "不限", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "不限", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
-    jdField_e_of_type_ArrayOfJavaLangString = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130846082, 2130844925, 2130844925, 2130844925, 2130845809, 2130845809, 2130846100, 2130846100, 2130845593, 2130845593, 2130845593, 2130846082, 2130846082, 2130845873, 2130846082 };
-    jdField_b_of_type_ArrayOfInt = new int[] { -16777216, -11362561, -11362561, -11362561, -274353, -274353, -893603, -893603, -7745469, -7745469, -7745469, -8291118, -8291118, -16723548, -16777216 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 11, 12 };
-  }
+  public static final String[] i = { "不限", "男", "女" };
+  public static final String[] j = { "不限", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99" };
+  public static final String[] k = { "不限", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
+  public static final String[] l = { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
+  public static final String[] m = { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
+  public static final int[] n = { 2130847552, 2130846359, 2130846359, 2130846359, 2130847279, 2130847279, 2130847570, 2130847570, 2130847057, 2130847057, 2130847057, 2130847552, 2130847552, 2130847343, 2130847552 };
+  public static final int[] o = { -16777216, -11362561, -11362561, -11362561, -274353, -274353, -893603, -893603, -7745469, -7745469, -7745469, -8291118, -8291118, -16723548, -16777216 };
+  public static final int[] p = { 11, 12 };
+  long A = 0L;
+  byte[] B;
+  int C = 0;
+  List<CondFitUser> D;
+  boolean E = false;
+  LinkedList<ConditionSearchManager.IConfigListener> F = null;
+  LinkedList<ConditionSearchManager.ISearchListener> G = null;
+  private QQAppInterface H;
+  private boolean I = false;
+  private boolean J = false;
+  private AddressData K = null;
+  private final String L = "condation_search_sp";
+  private SharedPreferences M;
+  private volatile long N = 0L;
+  private volatile long O;
+  private ConditionSearchManager.IFirstLocationReqCancelListener P;
+  private volatile boolean Q = false;
+  private String[] R;
+  private String[] S;
+  private String[] T;
+  private FriendListObserver U = new ConditionSearchManager.5(this);
+  public String a = null;
+  public boolean b = false;
+  volatile boolean c = false;
+  volatile boolean d = false;
+  List<Object> e = Collections.synchronizedList(new LinkedList());
+  volatile boolean f = false;
+  volatile Card g = null;
+  Object h = new Object();
+  long q = 0L;
+  String r;
+  int s;
+  int t;
+  int u;
+  int v;
+  int w;
+  String[] x;
+  String[] y;
+  int z = 0;
   
   public ConditionSearchManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("condation_search_sp", 0);
-    paramQQAppInterface = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    this.H = paramQQAppInterface;
+    this.M = this.H.getApp().getSharedPreferences("condation_search_sp", 0);
+    paramQQAppInterface = this.M;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_first_run");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    this.jdField_f_of_type_Boolean = paramQQAppInterface.getBoolean(localStringBuilder.toString(), true);
-    this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_config_version", 0L);
-    this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_last_checkup_time", 0L);
-    this.jdField_g_of_type_Boolean = c();
-  }
-  
-  public static final int a(String paramString)
-  {
-    boolean bool = TextUtils.isEmpty(paramString);
-    int k = 0;
-    if (!bool)
-    {
-      if (paramString.equals("0")) {
-        return 0;
-      }
-      int n = paramString.length();
-      int m = 0;
-      while (k < n)
-      {
-        m += (paramString.charAt(k) << (n - 1 - k) * 8);
-        k += 1;
-      }
-      return m;
-    }
-    return 0;
+    localStringBuilder.append(this.H.getCurrentAccountUin());
+    this.I = paramQQAppInterface.getBoolean(localStringBuilder.toString(), true);
+    this.N = this.M.getLong("key_config_version", 0L);
+    this.O = this.M.getLong("key_last_checkup_time", 0L);
+    this.J = n();
   }
   
   public static final String a(long paramLong)
@@ -155,15 +120,6 @@ public class ConditionSearchManager
       }
     }
     return localOutOfMemoryError.reverse().toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
-    localStringBuilder.append("/pddata/prd/condition_search/");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
   }
   
   private List<CondFitUser> a(oidb_0x972.RspBody paramRspBody)
@@ -247,24 +203,24 @@ public class ConditionSearchManager
             try
             {
               paramRspBody = new JSONObject(paramRspBody);
-              int k = paramRspBody.optInt("gender");
-              int m = paramRspBody.optInt("age");
-              int n = paramRspBody.optInt("occupationID");
-              localCondFitUser.cSex = ((byte)k);
-              localCondFitUser.dwAge = m;
-              localCondFitUser.iOccupationId = n;
-              k = paramRspBody.optInt("countryID");
-              m = paramRspBody.optInt("provinceID");
-              n = paramRspBody.optInt("cityID");
-              int i1 = paramRspBody.optInt("constellationID");
-              localCondFitUser.dwCountry = k;
-              localCondFitUser.dwProvince = m;
-              localCondFitUser.dwCity = n;
-              localCondFitUser.cConstellationId = ((byte)i1);
+              int i1 = paramRspBody.optInt("gender");
+              int i2 = paramRspBody.optInt("age");
+              int i3 = paramRspBody.optInt("occupationID");
+              localCondFitUser.cSex = ((byte)i1);
+              localCondFitUser.dwAge = i2;
+              localCondFitUser.iOccupationId = i3;
+              i1 = paramRspBody.optInt("countryID");
+              i2 = paramRspBody.optInt("provinceID");
+              i3 = paramRspBody.optInt("cityID");
+              int i4 = paramRspBody.optInt("constellationID");
+              localCondFitUser.dwCountry = i1;
+              localCondFitUser.dwProvince = i2;
+              localCondFitUser.dwCity = i3;
+              localCondFitUser.cConstellationId = ((byte)i4);
               localObject1 = a(localCondFitUser.dwCountry);
               localObject2 = a(localCondFitUser.dwProvince);
               String str = a(localCondFitUser.dwCity);
-              localCondFitUser.locDesc = ((ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).b(new String[] { localObject1, localObject2, str, "0" });
+              localCondFitUser.locDesc = ((ConditionSearchManager)this.H.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).e(new String[] { localObject1, localObject2, str, "0" });
               localCondFitUser.personalSignature = paramRspBody.optString("longnick");
             }
             catch (JSONException paramRspBody)
@@ -281,70 +237,100 @@ public class ConditionSearchManager
     return localArrayList;
   }
   
-  private void a(boolean paramBoolean)
+  public static String b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
+    localStringBuilder.append("/pddata/prd/condition_search/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  private void b(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, String.format("notifyRemoteUpdateResult isSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ConditionSearchManager.3(this, paramBoolean));
+    this.H.runOnUiThread(new ConditionSearchManager.3(this, paramBoolean));
   }
   
-  private boolean c()
+  public static final int f(String paramString)
   {
-    if (this.jdField_f_of_type_Boolean)
+    boolean bool = TextUtils.isEmpty(paramString);
+    int i1 = 0;
+    if (!bool)
     {
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      if (paramString.equals("0")) {
+        return 0;
+      }
+      int i3 = paramString.length();
+      int i2 = 0;
+      while (i1 < i3)
+      {
+        i2 += (paramString.charAt(i1) << (i3 - 1 - i1) * 8);
+        i1 += 1;
+      }
+      return i2;
+    }
+    return 0;
+  }
+  
+  private boolean n()
+  {
+    if (this.I)
+    {
+      localSharedPreferences = this.M;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_frist_run_add_contact");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.H.getCurrentAccountUin());
       return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    SharedPreferences localSharedPreferences = this.M;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_frist_run_in_5_2");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.H.getCurrentAccountUin());
     if (localSharedPreferences.getBoolean(localStringBuilder.toString(), true))
     {
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localSharedPreferences = this.M;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_sex_index");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.H.getCurrentAccountUin());
       if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 0)
       {
-        localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+        localSharedPreferences = this.M;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("key_age_index_v2_1");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(this.H.getCurrentAccountUin());
         if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 0)
         {
-          localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+          localSharedPreferences = this.M;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("key_age_index_v2_2");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localStringBuilder.append(this.H.getCurrentAccountUin());
           if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 0)
           {
-            localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+            localSharedPreferences = this.M;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("key_job_index");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            localStringBuilder.append(this.H.getCurrentAccountUin());
             if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 0)
             {
-              localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+              localSharedPreferences = this.M;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("key_xingzuo_index");
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+              localStringBuilder.append(this.H.getCurrentAccountUin());
               if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 0)
               {
-                localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+                localSharedPreferences = this.M;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append("key_loc_country_code");
-                localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+                localStringBuilder.append(this.H.getCurrentAccountUin());
                 if (localSharedPreferences.getString(localStringBuilder.toString(), "0").equals("0"))
                 {
-                  localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+                  localSharedPreferences = this.M;
                   localStringBuilder = new StringBuilder();
                   localStringBuilder.append("key_home_country_code");
-                  localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+                  localStringBuilder.append(this.H.getCurrentAccountUin());
                   if (localSharedPreferences.getString(localStringBuilder.toString(), "0").equals("0")) {
                     return true;
                   }
@@ -358,50 +344,30 @@ public class ConditionSearchManager
     return false;
   }
   
-  private int e()
+  private int o()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateLocal | isParsing = ");
-      ((StringBuilder)localObject).append(this.jdField_h_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.Q);
       QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_h_of_type_Boolean) {
+    if (this.Q) {
       return 0;
     }
-    Object localObject = new File(a("admin_region_config"));
+    Object localObject = new File(b("admin_region_config"));
     if (!((File)localObject).exists())
     {
       if (QLog.isColorLevel()) {
         QLog.d("ConditionSearch.Manager", 2, "updateLocal | file is not exist");
       }
-      this.jdField_c_of_type_Long = 0L;
+      this.N = 0L;
       return 3;
     }
-    this.jdField_h_of_type_Boolean = true;
+    this.Q = true;
     ThreadManagerV2.excute(new ConditionSearchManager.2(this, (File)localObject), 128, null, true);
     return 0;
-  }
-  
-  public int a()
-  {
-    int k;
-    if (this.jdField_c_of_type_Long == 0L) {
-      k = 1;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData == null) {
-      k = 2;
-    } else {
-      k = 0;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkUpdate | result = ");
-      localStringBuilder.append(k);
-      QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
-    }
-    return k;
   }
   
   public int a(int paramInt)
@@ -423,29 +389,29 @@ public class ConditionSearchManager
     }
     if (paramInt == 1)
     {
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("update | isCheckingUpdate = ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" | interval is enough ");
         boolean bool;
-        if (Math.abs(l - this.jdField_d_of_type_Long) >= 60000L) {
+        if (Math.abs(l1 - this.O) >= 60000L) {
           bool = true;
         } else {
           bool = false;
         }
         ((StringBuilder)localObject).append(bool);
         ((StringBuilder)localObject).append(" | isNetAvaiable = ");
-        ((StringBuilder)localObject).append(NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+        ((StringBuilder)localObject).append(NetworkUtil.isNetSupport(this.H.getApp()));
         QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.c)
       {
-        if ((paramBoolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        if ((paramBoolean) && (!TextUtils.isEmpty(this.a)))
         {
-          localObject = ((IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class)).cancelPreDownload(this.jdField_a_of_type_JavaLangString);
+          localObject = ((IPreDownloadController)this.H.getRuntimeService(IPreDownloadController.class)).cancelPreDownload(this.a);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -465,24 +431,24 @@ public class ConditionSearchManager
         }
         return 0;
       }
-      if (Math.abs(l - this.jdField_d_of_type_Long) < 60000L) {
+      if (Math.abs(l1 - this.O) < 60000L) {
         return 1;
       }
-      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      if (!NetworkUtil.isNetSupport(this.H.getApp())) {
         return 2;
       }
-      if ((!this.jdField_a_of_type_Boolean) && (!paramBoolean)) {
+      if ((!this.b) && (!paramBoolean)) {
         paramBoolean = false;
       } else {
         paramBoolean = true;
       }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      localObject = (ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-      ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).e() });
+      this.b = paramBoolean;
+      localObject = (ConfigHandler)this.H.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+      ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).k() });
       return 0;
     }
     if (paramInt == 2) {
-      return e();
+      return o();
     }
     return 0;
   }
@@ -491,139 +457,48 @@ public class ConditionSearchManager
   {
     if (paramBoolean)
     {
-      this.jdField_d_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_checkup_time", this.jdField_d_of_type_Long).commit();
-      this.jdField_b_of_type_Boolean = true;
+      this.O = System.currentTimeMillis();
+      this.M.edit().putLong("key_last_checkup_time", this.O).commit();
+      this.c = true;
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getConfigVersion | version = ");
-      localStringBuilder.append(this.jdField_c_of_type_Long);
+      localStringBuilder.append(this.N);
       QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
     }
-    return this.jdField_c_of_type_Long;
+    return this.N;
   }
   
   public BaseAddress a(String paramString)
   {
-    AddressData localAddressData = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
+    AddressData localAddressData = this.K;
     if (localAddressData != null) {
-      return (BaseAddress)localAddressData.a.get(paramString);
+      return (BaseAddress)localAddressData.b.get(paramString);
     }
     return null;
   }
   
-  public String a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("location_string");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      return localSharedPreferences.getString(localStringBuilder.toString(), "不限");
-    }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("home_string");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return localSharedPreferences.getString(localStringBuilder.toString(), "不限");
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (((paramInt1 <= paramInt2) || (paramInt2 == 0)) && (paramInt1 >= 0) && (paramInt2 >= 0))
-    {
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        return jdField_b_of_type_ArrayOfJavaLangString[0];
-      }
-      if ((paramInt1 == 0) && (paramInt2 != 0))
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt2]);
-        localStringBuilder.append("岁及以下");
-        return localStringBuilder.toString();
-      }
-      if ((paramInt1 != 0) && (paramInt2 == 0))
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt1]);
-        localStringBuilder.append("岁及以上");
-        return localStringBuilder.toString();
-      }
-      if (paramInt1 == paramInt2)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt1]);
-        localStringBuilder.append("岁");
-        return localStringBuilder.toString();
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt1]);
-      localStringBuilder.append("-");
-      localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt2]);
-      localStringBuilder.append("岁");
-      return localStringBuilder.toString();
-    }
-    return jdField_b_of_type_ArrayOfJavaLangString[0];
-  }
-  
-  public String a(String[] paramArrayOfString)
-  {
-    String str2 = b(paramArrayOfString);
-    String str1 = str2;
-    if ("1".equals(paramArrayOfString[0]))
-    {
-      str1 = str2;
-      if (str2.split("-").length > 1) {
-        str1 = str2.substring(str2.indexOf("-") + 1, str2.length());
-      }
-    }
-    return str1;
-  }
-  
-  public List<BaseAddress> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    AddressData localAddressData = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
-    if (localAddressData != null)
-    {
-      localArrayList = new ArrayList(localAddressData.a.size());
-      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.values());
-      Collections.sort(localArrayList, new ConditionSearchManager.1(this));
-    }
-    return localArrayList;
-  }
-  
   public void a()
   {
-    ConditionSearchManager.IFirstLocationReqCancelListener localIFirstLocationReqCancelListener = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener;
+    ConditionSearchManager.IFirstLocationReqCancelListener localIFirstLocationReqCancelListener = this.P;
     if (localIFirstLocationReqCancelListener != null) {
       localIFirstLocationReqCancelListener.a();
     }
   }
   
-  public void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_job_index");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.M.edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_age_index_v2_1");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.H.getCurrentAccountUin());
     localEditor.putInt(localStringBuilder.toString(), paramInt1).commit();
-    localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor = this.M.edit();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_age_index_v2_2");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.H.getCurrentAccountUin());
     localEditor.putInt(localStringBuilder.toString(), paramInt2).commit();
   }
   
@@ -645,15 +520,15 @@ public class ConditionSearchManager
     boolean bool2;
     if (paramInt == 0)
     {
-      localObject = new File(a("admin_region_config"));
+      localObject = new File(b("admin_region_config"));
       if ((!paramFile.renameTo((File)localObject)) && (!paramFile.renameTo((File)localObject)) && (!paramFile.renameTo((File)localObject)))
       {
         bool1 = false;
       }
       else
       {
-        this.jdField_c_of_type_Long = paramGetResourceRespInfo.uiNewVer;
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_config_version", this.jdField_c_of_type_Long).commit();
+        this.N = paramGetResourceRespInfo.uiNewVer;
+        this.M.edit().putLong("key_config_version", this.N).commit();
         bool1 = true;
       }
       bool2 = bool1;
@@ -678,56 +553,56 @@ public class ConditionSearchManager
         bool1 = true;
       }
     }
-    a(bool1);
+    b(bool1);
   }
   
   public void a(int paramInt, String paramString)
   {
     if (paramInt == 0)
     {
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor = this.M.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("location_string");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.H.getCurrentAccountUin());
       localEditor.putString(localStringBuilder.toString(), paramString).commit();
       return;
     }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.M.edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("home_string");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.H.getCurrentAccountUin());
     localEditor.putString(localStringBuilder.toString(), paramString).commit();
   }
   
   public void a(ConditionSearchManager.IFirstLocationReqCancelListener paramIFirstLocationReqCancelListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener = paramIFirstLocationReqCancelListener;
+    this.P = paramIFirstLocationReqCancelListener;
   }
   
   public void a(Card paramCard)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-    a(this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ConditionSearchManager.4(this));
+    this.f = true;
+    this.g = paramCard;
+    a(this.h);
+    this.H.runOnUiThread(new ConditionSearchManager.4(this));
   }
   
   public void a(Object paramObject)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramObject))
+      if (!this.e.contains(paramObject))
       {
-        this.jdField_a_of_type_JavaUtilList.add(paramObject);
-        this.jdField_c_of_type_Boolean = true;
-        a(a());
+        this.e.add(paramObject);
+        this.d = true;
+        a(d());
         if ((paramObject instanceof ConditionSearchFriendActivity))
         {
-          this.jdField_f_of_type_Boolean = false;
-          paramObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+          this.I = false;
+          paramObject = this.M.edit();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("key_first_run");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localStringBuilder.append(this.H.getCurrentAccountUin());
           paramObject.putBoolean(localStringBuilder.toString(), false).commit();
         }
       }
@@ -749,15 +624,15 @@ public class ConditionSearchManager
       ((StringBuilder)localObject).append("onCheckupConfig | resp = ");
       ((StringBuilder)localObject).append(paramGetResourceRespInfo);
       ((StringBuilder)localObject).append(" | iResult = ");
-      int k;
+      int i1;
       if (paramGetResourceRespInfo != null) {
-        k = paramGetResourceRespInfo.iResult;
+        i1 = paramGetResourceRespInfo.iResult;
       } else {
-        k = -1000;
+        i1 = -1000;
       }
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(", needDownloadNow=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramGetResourceRespInfo != null) && (paramGetResourceRespInfo.iResult == 0))
@@ -766,32 +641,32 @@ public class ConditionSearchManager
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onCheckupConfig | local version = ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+        ((StringBuilder)localObject).append(this.N);
         ((StringBuilder)localObject).append(" | server version = ");
         ((StringBuilder)localObject).append(paramGetResourceRespInfo.uiNewVer);
         QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_c_of_type_Long != paramGetResourceRespInfo.uiNewVer)
+      if (this.N != paramGetResourceRespInfo.uiNewVer)
       {
         localObject = paramGetResourceRespInfo.strResURL_big;
-        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        this.a = ((String)localObject);
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           if (QLog.isColorLevel()) {
             QLog.e("ConditionSearch.Manager", 2, "onCheckupConfig | url is null");
           }
-          a(false);
+          b(false);
           return;
         }
-        File localFile = new File(a("temp_admin_regin_config"));
-        paramGetResourceRespInfo = new ConditionSearchManager.DownloadTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, paramGetResourceRespInfo, localFile);
-        if (this.jdField_a_of_type_Boolean)
+        File localFile = new File(b("temp_admin_regin_config"));
+        paramGetResourceRespInfo = new ConditionSearchManager.DownloadTask(this.H, (String)localObject, paramGetResourceRespInfo, localFile);
+        if (this.b)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
           paramGetResourceRespInfo.realStart();
           return;
         }
-        boolean bool = ((IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class)).requestPreDownload(10023, "prd", (String)localObject, 0, (String)localObject, localFile.getAbsolutePath(), 2, 0, false, paramGetResourceRespInfo);
+        boolean bool = ((IPreDownloadController)this.H.getRuntimeService(IPreDownloadController.class)).requestPreDownload(10023, "prd", (String)localObject, 0, (String)localObject, localFile.getAbsolutePath(), 2, 0, false, paramGetResourceRespInfo);
         if (QLog.isColorLevel())
         {
           paramGetResourceRespInfo = new StringBuilder();
@@ -800,12 +675,12 @@ public class ConditionSearchManager
           QLog.d("ConditionSearch.Manager", 2, paramGetResourceRespInfo.toString());
         }
         if (!bool) {
-          a(false);
+          b(false);
         }
       }
       return;
     }
-    a(false);
+    b(false);
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt4, int paramInt5, int paramInt6)
@@ -829,56 +704,56 @@ public class ConditionSearchManager
       localStringBuilder.append(paramInt5);
       localStringBuilder.append(" | searchFromMore = ");
       localStringBuilder.append(paramInt6);
-      int k;
+      int i1;
       if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
       {
         localStringBuilder.append(" | locCodes = ");
-        k = 0;
-        while (k < paramArrayOfString1.length)
+        i1 = 0;
+        while (i1 < paramArrayOfString1.length)
         {
-          localStringBuilder.append(paramArrayOfString1[k]);
+          localStringBuilder.append(paramArrayOfString1[i1]);
           localStringBuilder.append("、");
-          k += 1;
+          i1 += 1;
         }
       }
       if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
       {
         localStringBuilder.append(" | homeCodes = ");
-        k = 0;
-        while (k < paramArrayOfString2.length)
+        i1 = 0;
+        while (i1 < paramArrayOfString2.length)
         {
-          localStringBuilder.append(paramArrayOfString2[k]);
+          localStringBuilder.append(paramArrayOfString2[i1]);
           localStringBuilder.append("、");
-          k += 1;
+          i1 += 1;
         }
       }
       QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Long += 1L;
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_c_of_type_Int = paramInt3;
-      this.jdField_f_of_type_ArrayOfJavaLangString = paramArrayOfString1;
-      this.jdField_g_of_type_ArrayOfJavaLangString = paramArrayOfString2;
-      this.jdField_d_of_type_Int = paramInt4;
-      this.jdField_e_of_type_Int = paramInt5;
-      this.jdField_f_of_type_Int = -1;
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_a_of_type_ArrayOfByte = null;
+      this.q += 1L;
+      this.r = paramString;
+      this.s = paramInt1;
+      this.t = paramInt2;
+      this.u = paramInt3;
+      this.x = paramArrayOfString1;
+      this.y = paramArrayOfString2;
+      this.v = paramInt4;
+      this.w = paramInt5;
+      this.z = -1;
+      this.A = 0L;
+      this.B = null;
     }
     else
     {
-      if (!this.jdField_e_of_type_Boolean) {
+      if (!this.E) {
         break label454;
       }
     }
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).condtionalSearchFriendBy0x972(this.jdField_a_of_type_Long, this.jdField_f_of_type_Int + 1, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_f_of_type_ArrayOfJavaLangString, this.jdField_g_of_type_ArrayOfJavaLangString, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt6);
+    this.C = 0;
+    this.D = null;
+    this.H.addObserver(this.U);
+    ((FriendListHandler)this.H.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).condtionalSearchFriendBy0x972(this.q, this.z + 1, this.B, this.r, this.s, this.t, this.u, this.x, this.y, this.v, this.w, paramInt6);
     return;
     label454:
     paramString = new RuntimeException("No more elements");
@@ -890,11 +765,11 @@ public class ConditionSearchManager
   
   void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    if (this.jdField_b_of_type_JavaUtilLinkedList != null)
+    this.H.removeObserver(this.U);
+    if (this.G != null)
     {
       Object localObject = new LinkedList();
-      ((LinkedList)localObject).addAll(this.jdField_b_of_type_JavaUtilLinkedList);
+      ((LinkedList)localObject).addAll(this.G);
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         ((ConditionSearchManager.ISearchListener)((Iterator)localObject).next()).a(paramBoolean1, paramList, paramBoolean2, paramInt);
@@ -909,24 +784,24 @@ public class ConditionSearchManager
     }
     if (paramArrayOfString.length == 4)
     {
-      this.jdField_h_of_type_ArrayOfJavaLangString = ((String[])paramArrayOfString.clone());
-      paramArrayOfString = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      this.R = ((String[])paramArrayOfString.clone());
+      paramArrayOfString = this.M.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_cur_loc_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.jdField_h_of_type_ArrayOfJavaLangString[0]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.R[0]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_cur_loc_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.jdField_h_of_type_ArrayOfJavaLangString[1]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.R[1]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_cur_loc_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.jdField_h_of_type_ArrayOfJavaLangString[2]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.R[2]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_cur_loc_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString.putString(localStringBuilder.toString(), this.jdField_h_of_type_ArrayOfJavaLangString[3]).commit();
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString.putString(localStringBuilder.toString(), this.R[3]).commit();
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -935,224 +810,111 @@ public class ConditionSearchManager
     throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public boolean a()
+  public String b(int paramInt1, int paramInt2)
   {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public int[] a()
-  {
-    Object localObject;
-    int k;
-    int m;
-    StringBuilder localStringBuilder;
-    if (this.jdField_g_of_type_Boolean)
+    if (((paramInt1 <= paramInt2) || (paramInt2 == 0)) && (paramInt1 >= 0) && (paramInt2 >= 0))
     {
-      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if (localObject != null)
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        return j[0];
+      }
+      if ((paramInt1 == 0) && (paramInt2 != 0))
       {
-        k = ((Card)localObject).age;
-        m = 18;
-        if ((k > 5) && (((Card)localObject).age < 60))
-        {
-          if ((((Card)localObject).age >= 6) && (((Card)localObject).age <= 11))
-          {
-            k = 11;
-            m = 6;
-          }
-          else if ((((Card)localObject).age >= 12) && (((Card)localObject).age <= 17))
-          {
-            k = 17;
-            m = 12;
-          }
-          else if ((((Card)localObject).age >= 18) && (((Card)localObject).age <= 21))
-          {
-            k = 21;
-          }
-          else if (((Card)localObject).shGender != 0)
-          {
-            m = ((Card)localObject).age;
-            k = ((Card)localObject).age + 10;
-            m -= 5;
-          }
-          else
-          {
-            k = ((Card)localObject).age + 5;
-          }
-        }
-        else
-        {
-          k = 0;
-          m = 0;
-        }
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append("key_age_index_v2_1");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), m).commit();
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localStringBuilder.append(j[paramInt2]);
+        localStringBuilder.append("岁及以下");
+        return localStringBuilder.toString();
+      }
+      if ((paramInt1 != 0) && (paramInt2 == 0))
+      {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append("key_age_index_v2_2");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), k).commit();
+        localStringBuilder.append(j[paramInt1]);
+        localStringBuilder.append("岁及以上");
+        return localStringBuilder.toString();
       }
-      else
+      if (paramInt1 == paramInt2)
       {
-        k = 0;
-        m = 0;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(j[paramInt1]);
+        localStringBuilder.append("岁");
+        return localStringBuilder.toString();
       }
-    }
-    else
-    {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_age_index_v2_1");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      m = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_age_index_v2_2");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      k = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-    }
-    return new int[] { m, k };
-  }
-  
-  public String[] a()
-  {
-    if (this.jdField_h_of_type_ArrayOfJavaLangString == null)
-    {
-      this.jdField_h_of_type_ArrayOfJavaLangString = new String[4];
-      String[] arrayOfString = this.jdField_h_of_type_ArrayOfJavaLangString;
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_cur_loc_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.jdField_h_of_type_ArrayOfJavaLangString;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_cur_loc_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.jdField_h_of_type_ArrayOfJavaLangString;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_cur_loc_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.jdField_h_of_type_ArrayOfJavaLangString;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_cur_loc_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      localStringBuilder.append(j[paramInt1]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(j[paramInt2]);
+      localStringBuilder.append("岁");
+      return localStringBuilder.toString();
     }
-    return this.jdField_h_of_type_ArrayOfJavaLangString;
+    return j[0];
   }
   
-  public String[] a(String paramString)
+  public void b(int paramInt)
   {
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "不限";
-    arrayOfString[1] = "不限";
-    if ((!TextUtils.isEmpty(paramString)) && (!"不限".equals(paramString)))
+    SharedPreferences.Editor localEditor = this.M.edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_job_index");
+    localStringBuilder.append(this.H.getCurrentAccountUin());
+    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
+  }
+  
+  public void b(Object paramObject)
+  {
+    try
     {
-      int k = paramString.indexOf("-");
-      if (k != -1)
+      this.e.remove(paramObject);
+      if (this.e.size() == 0)
       {
-        arrayOfString[0] = paramString.substring(0, k);
-        arrayOfString[1] = paramString.substring(k + 1);
-        return arrayOfString;
+        this.d = false;
+        this.K = null;
       }
-      arrayOfString[0] = paramString;
+      return;
     }
-    return arrayOfString;
-  }
-  
-  public String[] a(String[] paramArrayOfString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfString != null)
+    finally
     {
-      localObject1 = localObject2;
-      if (paramArrayOfString.length == 4)
-      {
-        boolean bool = false;
-        if ("-1".equals(paramArrayOfString[0])) {
-          return null;
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
-        int k = 1;
-        if (localObject1 == null)
-        {
-          if (QLog.isColorLevel())
-          {
-            paramArrayOfString = new StringBuilder();
-            paramArrayOfString.append("praseCodeArrayToAddress addressData == null is ");
-            if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData == null) {
-              bool = true;
-            }
-            paramArrayOfString.append(bool);
-            QLog.d("ConditionSearch.Manager", 2, paramArrayOfString.toString());
-          }
-          return null;
-        }
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = "";
-        arrayOfString[1] = "";
-        arrayOfString[2] = "";
-        arrayOfString[3] = "";
-        if ("-1".equals(paramArrayOfString[0])) {
-          return arrayOfString;
-        }
-        localObject2 = (BaseAddress)this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.get(paramArrayOfString[0]);
-        if (localObject2 == null) {
-          return arrayOfString;
-        }
-        arrayOfString[0] = ((BaseAddress)localObject2).name;
-        for (;;)
-        {
-          localObject1 = arrayOfString;
-          if (k >= 4) {
-            break;
-          }
-          localObject1 = localObject2;
-          if (!"0".equals(paramArrayOfString[k]))
-          {
-            localObject2 = (BaseAddress)((BaseAddress)localObject2).dataMap.get(paramArrayOfString[k]);
-            localObject1 = arrayOfString;
-            if (localObject2 == null) {
-              break;
-            }
-            arrayOfString[k] = ((BaseAddress)localObject2).name;
-            localObject1 = localObject2;
-          }
-          k += 1;
-          localObject2 = localObject1;
-        }
-      }
+      paramObject = finally;
+      throw paramObject;
     }
-    return localObject1;
   }
   
-  public int b()
+  public void b(String[] paramArrayOfString)
   {
-    boolean bool = this.jdField_g_of_type_Boolean;
-    int k = 0;
-    if (!bool)
-    {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_job_index");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      k = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    if (paramArrayOfString == null) {
+      return;
     }
-    return k;
+    if (paramArrayOfString.length == 4)
+    {
+      this.S = ((String[])paramArrayOfString.clone());
+      paramArrayOfString = this.M.edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_country_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.S[0]);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_prov_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.S[1]);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_city_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.S[2]);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_dist_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString.putString(localStringBuilder.toString(), this.S[3]).commit();
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Error size ");
+    localStringBuilder.append(paramArrayOfString.length);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public String b(String paramString)
+  public boolean b()
+  {
+    return this.J;
+  }
+  
+  public String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -1226,231 +988,25 @@ public class ConditionSearchManager
     return localObject;
   }
   
-  public String b(String[] paramArrayOfString)
+  public List<BaseAddress> c()
   {
-    if ((paramArrayOfString != null) && (paramArrayOfString.length == 4))
+    ArrayList localArrayList = new ArrayList();
+    AddressData localAddressData = this.K;
+    if (localAddressData != null)
     {
-      if ("-1".equals(paramArrayOfString[0])) {
-        return "0";
-      }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ConditionSearch.Manager", 2, "praseCodeArrayToAddress addressData == null is");
-        }
-        return "不限";
-      }
-      if ("-1".equals(paramArrayOfString[0])) {
-        return "不限";
-      }
-      if (((AddressData)localObject1).a != null) {
-        localObject1 = (BaseAddress)((AddressData)localObject1).a.get(paramArrayOfString[0]);
-      } else {
-        localObject1 = null;
-      }
-      if (localObject1 == null) {
-        return "不限";
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((BaseAddress)localObject1).name);
-      int k = 1;
-      while (k < 4)
-      {
-        Object localObject2 = localObject1;
-        if (!"0".equals(paramArrayOfString[k]))
-        {
-          localObject2 = (BaseAddress)((BaseAddress)localObject1).dataMap.get(paramArrayOfString[k]);
-          if (localObject2 == null) {
-            break;
-          }
-          localStringBuilder.append("-");
-          localStringBuilder.append(((BaseAddress)localObject2).name);
-        }
-        k += 1;
-        localObject1 = localObject2;
-      }
-      return localStringBuilder.toString();
+      localArrayList = new ArrayList(localAddressData.b.size());
+      localArrayList.addAll(this.K.b.values());
+      Collections.sort(localArrayList, new ConditionSearchManager.1(this));
     }
-    return "0";
-  }
-  
-  public void b()
-  {
-    if (this.jdField_g_of_type_Boolean)
-    {
-      this.jdField_g_of_type_Boolean = false;
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_frist_run_in_5_2");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localEditor.putBoolean(localStringBuilder.toString(), false).commit();
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_frist_run_add_contact");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localEditor.putBoolean(localStringBuilder.toString(), false).commit();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_xingzuo_index");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
-  }
-  
-  public void b(Object paramObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
-      }
-      return;
-    }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
-    }
-  }
-  
-  public void b(String[] paramArrayOfString)
-  {
-    if (paramArrayOfString == null) {
-      return;
-    }
-    if (paramArrayOfString.length == 4)
-    {
-      this.i = ((String[])paramArrayOfString.clone());
-      paramArrayOfString = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.i[0]);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.i[1]);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.i[2]);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString.putString(localStringBuilder.toString(), this.i[3]).commit();
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Error size ");
-    localStringBuilder.append(paramArrayOfString.length);
-    throw new IllegalArgumentException(localStringBuilder.toString());
-  }
-  
-  public boolean b()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_first_select_location");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    boolean bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true);
-    if (bool)
-    {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_first_select_location");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).commit();
-    }
-    return bool;
-  }
-  
-  public String[] b()
-  {
-    if (this.i == null)
-    {
-      this.i = new String[4];
-      String[] arrayOfString = this.i;
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.i;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.i;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.i;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_loc_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-    }
-    return this.i;
-  }
-  
-  public int c()
-  {
-    boolean bool = this.jdField_g_of_type_Boolean;
-    int k = 0;
-    if (!bool)
-    {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_xingzuo_index");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      k = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-    }
-    return k;
-  }
-  
-  public String c(String paramString)
-  {
-    String str = paramString;
-    if (paramString.startsWith("中国"))
-    {
-      String[] arrayOfString = StringUtil.a(paramString, '-');
-      str = paramString;
-      if (arrayOfString.length >= 2)
-      {
-        paramString = new StringBuilder();
-        int k = 1;
-        while (k < arrayOfString.length)
-        {
-          paramString.append(arrayOfString[k]);
-          if (k != arrayOfString.length - 1) {
-            paramString.append("-");
-          }
-          k += 1;
-        }
-        str = paramString.toString();
-      }
-    }
-    return str;
+    return localArrayList;
   }
   
   public void c(int paramInt)
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.M.edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_sex_index");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("key_xingzuo_index");
+    localStringBuilder.append(this.H.getCurrentAccountUin());
     localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
   }
   
@@ -1458,20 +1014,20 @@ public class ConditionSearchManager
   {
     if ((paramObject instanceof ConditionSearchManager.IConfigListener))
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
-        this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+      if (this.F == null) {
+        this.F = new LinkedList();
       }
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramObject)) {
-        this.jdField_a_of_type_JavaUtilLinkedList.add((ConditionSearchManager.IConfigListener)paramObject);
+      if (!this.F.contains(paramObject)) {
+        this.F.add((ConditionSearchManager.IConfigListener)paramObject);
       }
     }
     else if ((paramObject instanceof ConditionSearchManager.ISearchListener))
     {
-      if (this.jdField_b_of_type_JavaUtilLinkedList == null) {
-        this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
+      if (this.G == null) {
+        this.G = new LinkedList();
       }
-      if (!this.jdField_b_of_type_JavaUtilLinkedList.contains(paramObject)) {
-        this.jdField_b_of_type_JavaUtilLinkedList.add((ConditionSearchManager.ISearchListener)paramObject);
+      if (!this.G.contains(paramObject)) {
+        this.G.add((ConditionSearchManager.ISearchListener)paramObject);
       }
     }
   }
@@ -1483,24 +1039,24 @@ public class ConditionSearchManager
     }
     if (paramArrayOfString.length == 4)
     {
-      this.j = ((String[])paramArrayOfString.clone());
-      paramArrayOfString = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      this.T = ((String[])paramArrayOfString.clone());
+      paramArrayOfString = this.M.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_home_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.j[0]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.T[0]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_home_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.j[1]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.T[1]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_home_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.j[2]);
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString = paramArrayOfString.putString(localStringBuilder.toString(), this.T[2]);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_home_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramArrayOfString.putString(localStringBuilder.toString(), this.j[3]).commit();
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      paramArrayOfString.putString(localStringBuilder.toString(), this.T[3]).commit();
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1509,72 +1065,72 @@ public class ConditionSearchManager
     throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public String[] c()
-  {
-    if (this.j == null)
-    {
-      this.j = new String[4];
-      String[] arrayOfString = this.j;
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_home_country_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.j;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_home_prov_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.j;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_home_city_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-      arrayOfString = this.j;
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_home_dist_code");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
-    }
-    return this.j;
-  }
-  
   public int d()
   {
-    boolean bool = this.jdField_g_of_type_Boolean;
-    int k = 0;
-    int m = 0;
-    Object localObject;
-    StringBuilder localStringBuilder;
-    if (bool)
+    int i1;
+    if (this.N == 0L) {
+      i1 = 1;
+    } else if (this.K == null) {
+      i1 = 2;
+    } else {
+      i1 = 0;
+    }
+    if (QLog.isColorLevel())
     {
-      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if (localObject != null)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpdate | result = ");
+      localStringBuilder.append(i1);
+      QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
+    }
+    return i1;
+  }
+  
+  public String d(String paramString)
+  {
+    String str = paramString;
+    if (paramString.startsWith("中国"))
+    {
+      String[] arrayOfString = StringUtil.split(paramString, '-');
+      str = paramString;
+      if (arrayOfString.length >= 2)
       {
-        k = m;
-        if (((Card)localObject).shGender == 0) {
-          k = 2;
+        paramString = new StringBuilder();
+        int i1 = 1;
+        while (i1 < arrayOfString.length)
+        {
+          paramString.append(arrayOfString[i1]);
+          if (i1 != arrayOfString.length - 1) {
+            paramString.append("-");
+          }
+          i1 += 1;
         }
-        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("key_sex_index");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), k).commit();
-        return k;
+        str = paramString.toString();
       }
     }
-    else
+    return str;
+  }
+  
+  public String d(String[] paramArrayOfString)
+  {
+    String str2 = e(paramArrayOfString);
+    String str1 = str2;
+    if ("1".equals(paramArrayOfString[0]))
     {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("key_sex_index");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      k = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+      str1 = str2;
+      if (str2.split("-").length > 1) {
+        str1 = str2.substring(str2.indexOf("-") + 1, str2.length());
+      }
     }
-    return k;
+    return str1;
+  }
+  
+  public void d(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.M.edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_sex_index");
+    localStringBuilder.append(this.H.getCurrentAccountUin());
+    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
   }
   
   public void d(Object paramObject)
@@ -1582,33 +1138,463 @@ public class ConditionSearchManager
     LinkedList localLinkedList;
     if ((paramObject instanceof ConditionSearchManager.IConfigListener))
     {
-      localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+      localLinkedList = this.F;
       if (localLinkedList != null) {
         localLinkedList.remove(paramObject);
       }
     }
     else if ((paramObject instanceof ConditionSearchManager.ISearchListener))
     {
-      localLinkedList = this.jdField_b_of_type_JavaUtilLinkedList;
+      localLinkedList = this.G;
       if (localLinkedList != null) {
         localLinkedList.remove(paramObject);
       }
     }
   }
   
+  public String e(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("location_string");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      return localSharedPreferences.getString(localStringBuilder.toString(), "不限");
+    }
+    SharedPreferences localSharedPreferences = this.M;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("home_string");
+    localStringBuilder.append(this.H.getCurrentAccountUin());
+    return localSharedPreferences.getString(localStringBuilder.toString(), "不限");
+  }
+  
+  public String e(String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString != null) && (paramArrayOfString.length == 4))
+    {
+      if ("-1".equals(paramArrayOfString[0])) {
+        return "0";
+      }
+      Object localObject1 = this.K;
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ConditionSearch.Manager", 2, "praseCodeArrayToAddress addressData == null is");
+        }
+        return "不限";
+      }
+      if ("-1".equals(paramArrayOfString[0])) {
+        return "不限";
+      }
+      if (((AddressData)localObject1).b != null) {
+        localObject1 = (BaseAddress)((AddressData)localObject1).b.get(paramArrayOfString[0]);
+      } else {
+        localObject1 = null;
+      }
+      if (localObject1 == null) {
+        return "不限";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((BaseAddress)localObject1).name);
+      int i1 = 1;
+      while (i1 < 4)
+      {
+        Object localObject2 = localObject1;
+        if (!"0".equals(paramArrayOfString[i1]))
+        {
+          localObject2 = (BaseAddress)((BaseAddress)localObject1).dataMap.get(paramArrayOfString[i1]);
+          if (localObject2 == null) {
+            break;
+          }
+          localStringBuilder.append("-");
+          localStringBuilder.append(((BaseAddress)localObject2).name);
+        }
+        i1 += 1;
+        localObject1 = localObject2;
+      }
+      return localStringBuilder.toString();
+    }
+    return "0";
+  }
+  
+  public void e()
+  {
+    if (this.J)
+    {
+      this.J = false;
+      SharedPreferences.Editor localEditor = this.M.edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_frist_run_in_5_2");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      localEditor.putBoolean(localStringBuilder.toString(), false).commit();
+      localEditor = this.M.edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_frist_run_add_contact");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      localEditor.putBoolean(localStringBuilder.toString(), false).commit();
+    }
+  }
+  
+  public String[] e(String paramString)
+  {
+    String[] arrayOfString = new String[2];
+    arrayOfString[0] = "不限";
+    arrayOfString[1] = "不限";
+    if ((!TextUtils.isEmpty(paramString)) && (!"不限".equals(paramString)))
+    {
+      int i1 = paramString.indexOf("-");
+      if (i1 != -1)
+      {
+        arrayOfString[0] = paramString.substring(0, i1);
+        arrayOfString[1] = paramString.substring(i1 + 1);
+        return arrayOfString;
+      }
+      arrayOfString[0] = paramString;
+    }
+    return arrayOfString;
+  }
+  
+  public int f()
+  {
+    boolean bool = this.J;
+    int i1 = 0;
+    if (!bool)
+    {
+      SharedPreferences localSharedPreferences = this.M;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_job_index");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      i1 = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    }
+    return i1;
+  }
+  
+  public String[] f(String[] paramArrayOfString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfString != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfString.length == 4)
+      {
+        boolean bool = false;
+        if ("-1".equals(paramArrayOfString[0])) {
+          return null;
+        }
+        localObject1 = this.K;
+        int i1 = 1;
+        if (localObject1 == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("praseCodeArrayToAddress addressData == null is ");
+            if (this.K == null) {
+              bool = true;
+            }
+            paramArrayOfString.append(bool);
+            QLog.d("ConditionSearch.Manager", 2, paramArrayOfString.toString());
+          }
+          return null;
+        }
+        String[] arrayOfString = new String[4];
+        arrayOfString[0] = "";
+        arrayOfString[1] = "";
+        arrayOfString[2] = "";
+        arrayOfString[3] = "";
+        if ("-1".equals(paramArrayOfString[0])) {
+          return arrayOfString;
+        }
+        localObject2 = (BaseAddress)this.K.b.get(paramArrayOfString[0]);
+        if (localObject2 == null) {
+          return arrayOfString;
+        }
+        arrayOfString[0] = ((BaseAddress)localObject2).name;
+        for (;;)
+        {
+          localObject1 = arrayOfString;
+          if (i1 >= 4) {
+            break;
+          }
+          localObject1 = localObject2;
+          if (!"0".equals(paramArrayOfString[i1]))
+          {
+            localObject2 = (BaseAddress)((BaseAddress)localObject2).dataMap.get(paramArrayOfString[i1]);
+            localObject1 = arrayOfString;
+            if (localObject2 == null) {
+              break;
+            }
+            arrayOfString[i1] = ((BaseAddress)localObject2).name;
+            localObject1 = localObject2;
+          }
+          i1 += 1;
+          localObject2 = localObject1;
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public int g()
+  {
+    boolean bool = this.J;
+    int i1 = 0;
+    if (!bool)
+    {
+      SharedPreferences localSharedPreferences = this.M;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_xingzuo_index");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      i1 = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    }
+    return i1;
+  }
+  
+  public int h()
+  {
+    boolean bool = this.J;
+    int i1 = 0;
+    int i2 = 0;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (bool)
+    {
+      localObject = ((FriendsManager)this.H.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.H.getCurrentAccountUin());
+      if (localObject != null)
+      {
+        i1 = i2;
+        if (((Card)localObject).shGender == 0) {
+          i1 = 2;
+        }
+        localObject = this.M.edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_sex_index");
+        localStringBuilder.append(this.H.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i1).commit();
+        return i1;
+      }
+    }
+    else
+    {
+      localObject = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_sex_index");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      i1 = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+    }
+    return i1;
+  }
+  
+  public int[] i()
+  {
+    Object localObject;
+    int i1;
+    int i2;
+    StringBuilder localStringBuilder;
+    if (this.J)
+    {
+      localObject = ((FriendsManager)this.H.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.H.getCurrentAccountUin());
+      if (localObject != null)
+      {
+        i1 = ((Card)localObject).age;
+        i2 = 18;
+        if ((i1 > 5) && (((Card)localObject).age < 60))
+        {
+          if ((((Card)localObject).age >= 6) && (((Card)localObject).age <= 11))
+          {
+            i1 = 11;
+            i2 = 6;
+          }
+          else if ((((Card)localObject).age >= 12) && (((Card)localObject).age <= 17))
+          {
+            i1 = 17;
+            i2 = 12;
+          }
+          else if ((((Card)localObject).age >= 18) && (((Card)localObject).age <= 21))
+          {
+            i1 = 21;
+          }
+          else if (((Card)localObject).shGender != 0)
+          {
+            i2 = ((Card)localObject).age;
+            i1 = ((Card)localObject).age + 10;
+            i2 -= 5;
+          }
+          else
+          {
+            i1 = ((Card)localObject).age + 5;
+          }
+        }
+        else
+        {
+          i1 = 0;
+          i2 = 0;
+        }
+        localObject = this.M.edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_age_index_v2_1");
+        localStringBuilder.append(this.H.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i2).commit();
+        localObject = this.M.edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_age_index_v2_2");
+        localStringBuilder.append(this.H.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i1).commit();
+      }
+      else
+      {
+        i1 = 0;
+        i2 = 0;
+      }
+    }
+    else
+    {
+      localObject = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_age_index_v2_1");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      i2 = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+      localObject = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_age_index_v2_2");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      i1 = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+    }
+    return new int[] { i2, i1 };
+  }
+  
+  public String[] j()
+  {
+    if (this.R == null)
+    {
+      this.R = new String[4];
+      String[] arrayOfString = this.R;
+      SharedPreferences localSharedPreferences = this.M;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_cur_loc_country_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.R;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_cur_loc_prov_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.R;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_cur_loc_city_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.R;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_cur_loc_dist_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+    }
+    return this.R;
+  }
+  
+  public String[] k()
+  {
+    if (this.S == null)
+    {
+      this.S = new String[4];
+      String[] arrayOfString = this.S;
+      SharedPreferences localSharedPreferences = this.M;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_country_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.S;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_prov_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.S;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_city_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.S;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_loc_dist_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+    }
+    return this.S;
+  }
+  
+  public String[] l()
+  {
+    if (this.T == null)
+    {
+      this.T = new String[4];
+      String[] arrayOfString = this.T;
+      SharedPreferences localSharedPreferences = this.M;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_home_country_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[0] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.T;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_home_prov_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[1] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.T;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_home_city_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[2] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+      arrayOfString = this.T;
+      localSharedPreferences = this.M;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_home_dist_code");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      arrayOfString[3] = localSharedPreferences.getString(localStringBuilder.toString(), "0");
+    }
+    return this.T;
+  }
+  
+  public boolean m()
+  {
+    Object localObject = this.M;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_first_select_location");
+    localStringBuilder.append(this.H.getCurrentAccountUin());
+    boolean bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true);
+    if (bool)
+    {
+      localObject = this.M.edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_first_select_location");
+      localStringBuilder.append(this.H.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).commit();
+    }
+    return bool;
+  }
+  
   public void onDestroy()
   {
-    AddressData localAddressData = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
+    AddressData localAddressData = this.K;
     if (localAddressData != null)
     {
       localAddressData.a();
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
+      this.K = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager
  * JD-Core Version:    0.7.0.1
  */

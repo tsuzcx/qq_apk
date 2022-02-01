@@ -7,20 +7,20 @@ import java.util.List;
 
 public class ConversationHelper$LogBuilder
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private StringBuilder a = new StringBuilder();
+  private final String b;
   
   private ConversationHelper$LogBuilder(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   private void a()
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()))
+    if ((this.a != null) && (QLog.isDevelopLevel()))
     {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      this.a.append("]");
+      QLog.i(this.b, 4, this.a.toString());
     }
   }
   
@@ -28,44 +28,44 @@ public class ConversationHelper$LogBuilder
   {
     if (QLog.isDevelopLevel())
     {
-      Object localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+      Object localObject = this.a;
       if (localObject == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+        this.a = new StringBuilder();
       } else {
         ((StringBuilder)localObject).setLength(0);
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
+      this.a.append("checkRUList, src[");
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         localObject = (RecentUser)paramList.next();
         if (localObject == null)
         {
-          this.jdField_a_of_type_JavaLangStringBuilder.append("null | null,");
+          this.a.append("null | null,");
         }
         else
         {
-          StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+          StringBuilder localStringBuilder = this.a;
           localStringBuilder.append(((RecentUser)localObject).uin);
           localStringBuilder.append("|");
           localStringBuilder.append(((RecentUser)localObject).getType());
           localStringBuilder.append(",");
         }
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
+      this.a.append("], [");
     }
   }
   
   private void a(String... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()) && (paramVarArgs != null))
+    if ((this.a != null) && (QLog.isDevelopLevel()) && (paramVarArgs != null))
     {
       int j = paramVarArgs.length;
       int i = 0;
       while (i < j)
       {
         String str = paramVarArgs[i];
-        this.jdField_a_of_type_JavaLangStringBuilder.append(str);
+        this.a.append(str);
         i += 1;
       }
     }
@@ -73,7 +73,7 @@ public class ConversationHelper$LogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationHelper.LogBuilder
  * JD-Core Version:    0.7.0.1
  */

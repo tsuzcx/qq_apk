@@ -3,28 +3,30 @@ package com.tencent.mobileqq.activity.recent.cur;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
 
 class DragFrameLayout$BornRunner
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private int a;
+  private PointF b = new PointF();
   
   public DragFrameLayout$BornRunner(DragFrameLayout paramDragFrameLayout, PointF paramPointF)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
-    this.jdField_a_of_type_Int = -1;
+    this.b.set(paramPointF);
+    this.a = -1;
   }
   
   public Bitmap a()
   {
-    int i = this.jdField_a_of_type_Int;
-    if ((i >= 0) && (i < DragFrameLayout.a().length)) {
+    int i = this.a;
+    if ((i >= 0) && (i < DragFrameLayout.b().length)) {
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.b()[this.a]);
         return localBitmap;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -43,25 +45,38 @@ class DragFrameLayout$BornRunner
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
+    if (this.a == DragFrameLayout.b().length)
     {
-      if (this == DragFrameLayout.a(this.this$0)) {
+      if (this == DragFrameLayout.b(this.this$0)) {
         DragFrameLayout.a(this.this$0, null);
       }
       DragFrameLayout.a(this.this$0, null);
-      if (DragFrameLayout.a(this.this$0) == 2)
+      if (DragFrameLayout.c(this.this$0) == 2)
       {
-        List localList;
-        if (DragFrameLayout.a(this.this$0) != null) {
-          localList = DragFrameLayout.a(this.this$0).a();
-        } else {
-          localList = null;
+        Object localObject;
+        if (DragFrameLayout.d(this.this$0) != null)
+        {
+          localObject = DragFrameLayout.d(this.this$0).g();
         }
-        if ((DragFrameLayout.a(this.this$0) != null) && (localList != null) && (localList.size() > 0))
+        else
+        {
+          if ((!TextUtils.isEmpty(DragFrameLayout.e(this.this$0))) && (DragFrameLayout.f(this.this$0).containsKey(DragFrameLayout.e(this.this$0))))
+          {
+            localObject = (DragFrameLayout.IDragViewProvider)DragFrameLayout.f(this.this$0).get(DragFrameLayout.e(this.this$0));
+            if (localObject != null)
+            {
+              localObject = ((DragFrameLayout.IDragViewProvider)localObject).g();
+              break label147;
+            }
+          }
+          localObject = null;
+        }
+        label147:
+        if ((localObject != null) && (((List)localObject).size() > 0))
         {
           DragFrameLayout.a(this.this$0, 5);
           DragFrameLayout localDragFrameLayout = this.this$0;
-          DragFrameLayout.a(localDragFrameLayout, new DragFrameLayout.AllBornRunner(localDragFrameLayout, localList));
+          DragFrameLayout.a(localDragFrameLayout, new DragFrameLayout.AllBornRunner(localDragFrameLayout, (List)localObject));
         }
         else
         {
@@ -70,6 +85,7 @@ class DragFrameLayout$BornRunner
             QLog.d("Drag", 2, "DONE!");
           }
           DragFrameLayout.a(this.this$0, true);
+          DragFrameLayout.a(this.this$0, null);
         }
       }
       else
@@ -79,19 +95,19 @@ class DragFrameLayout$BornRunner
           QLog.d("Drag", 2, "DONE!");
         }
         DragFrameLayout.a(this.this$0, true);
+        DragFrameLayout.a(this.this$0, null);
       }
-      DragFrameLayout.a(this.this$0, null);
     }
     else
     {
-      this.jdField_a_of_type_Int += 1;
+      this.a += 1;
     }
     this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.BornRunner
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class WSVerticalLinearLayoutManager
       return false;
     }
     int i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-    int j = this.a.b();
+    int j = this.a.getCurrentLayoutPosition();
     return (j >= 0) && ((i == j + 1) || (i == j - 1));
   }
   
@@ -50,7 +50,7 @@ public class WSVerticalLinearLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

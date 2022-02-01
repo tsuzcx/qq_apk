@@ -6,151 +6,148 @@ import java.util.List;
 
 public class DanmuDataHolder$CacheHolder
 {
-  int jdField_a_of_type_Int = 0;
-  public DanmuDataContext a;
-  DanmuDataIPCClient.DanmuPullCallback jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient$DanmuPullCallback;
-  List<Long> jdField_a_of_type_JavaUtilList;
-  public boolean a;
-  int jdField_b_of_type_Int = 30;
-  List<Long> jdField_b_of_type_JavaUtilList = new ArrayList();
-  int jdField_c_of_type_Int = 0;
-  List<DanmuItemBean> jdField_c_of_type_JavaUtilList;
-  int jdField_d_of_type_Int = 0;
-  List<DanmuItemBean> jdField_d_of_type_JavaUtilList = new ArrayList();
-  int e = 0;
-  int f = 60;
+  DanmuDataIPCClient.DanmuPullCallback a;
+  public DanmuDataContext b;
+  public boolean c = false;
+  int d = 0;
+  int e = 30;
+  List<Long> f;
+  List<Long> g = new ArrayList();
+  List<DanmuItemBean> h;
+  List<DanmuItemBean> i = new ArrayList();
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 60;
   
-  public DanmuDataHolder$CacheHolder(DanmuDataHolder paramDanmuDataHolder)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public CacheHolder a()
-  {
-    DanmuDataHolder.a().a(DanmuDataHolder.a().a(this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.b, this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Long), this);
-    return this;
-  }
+  public DanmuDataHolder$CacheHolder(DanmuDataHolder paramDanmuDataHolder) {}
   
   public CacheHolder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     return this;
   }
   
   public CacheHolder a(DanmuDataContext paramDanmuDataContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext = paramDanmuDataContext;
+    this.b = paramDanmuDataContext;
     return this;
   }
   
   public CacheHolder a(DanmuDataIPCClient.DanmuPullCallback paramDanmuPullCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient$DanmuPullCallback = paramDanmuPullCallback;
+    this.a = paramDanmuPullCallback;
     return this;
   }
   
   public CacheHolder a(List<DanmuItemBean> paramList)
   {
-    this.jdField_c_of_type_JavaUtilList = paramList;
+    this.h = paramList;
     return this;
   }
   
   public CacheHolder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
     return this;
   }
   
   public String a()
   {
-    return String.format("CacheHolder - topicUin:%s, groupUin:%s, msgType:%s, peakCached:%s, videoStartTime:%s, videoEndTime:%s, nextStartIdx:%s, count:%s", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.b), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.e), Integer.valueOf(this.f) });
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_d_of_type_JavaUtilList.iterator();
-    DanmuItemBean localDanmuItemBean;
-    while (((Iterator)localObject).hasNext())
-    {
-      localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(localDanmuItemBean.b))) {
-        ((Iterator)localObject).remove();
-      }
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        long l = ((Long)((Iterator)localObject).next()).longValue();
-        if (!this.jdField_b_of_type_JavaUtilList.contains(Long.valueOf(l))) {
-          this.jdField_b_of_type_JavaUtilList.add(Long.valueOf(l));
-        }
-      }
-    }
-    localObject = this.jdField_c_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
-        if (!a(localDanmuItemBean.jdField_a_of_type_Long, localDanmuItemBean.b)) {
-          this.jdField_d_of_type_JavaUtilList.add(localDanmuItemBean);
-        }
-      }
-    }
+    return String.format("CacheHolder - topicUin:%s, groupUin:%s, msgType:%s, peakCached:%s, videoStartTime:%s, videoEndTime:%s, nextStartIdx:%s, count:%s", new Object[] { Long.valueOf(this.b.a), Long.valueOf(this.b.b), Integer.valueOf(this.b.c), Boolean.valueOf(this.b.d), Integer.valueOf(this.j), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m) });
   }
   
   public boolean a(long paramLong1, long paramLong2)
   {
-    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       DanmuItemBean localDanmuItemBean = (DanmuItemBean)localIterator.next();
-      if ((localDanmuItemBean.jdField_a_of_type_Long == paramLong1) && (localDanmuItemBean.b == paramLong2)) {
+      if ((localDanmuItemBean.a == paramLong1) && (localDanmuItemBean.b == paramLong2)) {
         return true;
       }
     }
     return false;
   }
   
+  public CacheHolder b()
+  {
+    DanmuDataHolder.a().a(DanmuDataHolder.a().a(this.b.b, this.b.a), this);
+    return this;
+  }
+  
   public CacheHolder b(int paramInt)
   {
     if (paramInt > 0) {
-      this.jdField_b_of_type_Int = paramInt;
+      this.e = paramInt;
     }
     return this;
   }
   
   public CacheHolder b(List<Long> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.f = paramList;
     return this;
   }
   
   public CacheHolder c(int paramInt)
   {
-    this.e = paramInt;
+    this.l = paramInt;
     return this;
+  }
+  
+  public void c()
+  {
+    Object localObject = this.i.iterator();
+    DanmuItemBean localDanmuItemBean;
+    while (((Iterator)localObject).hasNext())
+    {
+      localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
+      if (this.f.contains(Long.valueOf(localDanmuItemBean.b))) {
+        ((Iterator)localObject).remove();
+      }
+    }
+    localObject = this.f;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = this.f.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        long l1 = ((Long)((Iterator)localObject).next()).longValue();
+        if (!this.g.contains(Long.valueOf(l1))) {
+          this.g.add(Long.valueOf(l1));
+        }
+      }
+    }
+    localObject = this.h;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = this.h.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localDanmuItemBean = (DanmuItemBean)((Iterator)localObject).next();
+        if (!a(localDanmuItemBean.a, localDanmuItemBean.b)) {
+          this.i.add(localDanmuItemBean);
+        }
+      }
+    }
   }
   
   public CacheHolder d(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.j = paramInt;
     return this;
   }
   
   public CacheHolder e(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.k = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataHolder.CacheHolder
  * JD-Core Version:    0.7.0.1
  */

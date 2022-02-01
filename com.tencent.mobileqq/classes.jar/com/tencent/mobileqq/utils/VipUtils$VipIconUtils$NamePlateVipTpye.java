@@ -2,18 +2,18 @@ package com.tencent.mobileqq.utils;
 
 public class VipUtils$VipIconUtils$NamePlateVipTpye
 {
-  static final NamePlateVipTpye jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$VipIconUtils$NamePlateVipTpye = new NamePlateVipTpye(0);
-  static final NamePlateVipTpye b = new NamePlateVipTpye(1);
-  static final NamePlateVipTpye c = new NamePlateVipTpye(257);
-  static final NamePlateVipTpye d = new NamePlateVipTpye(2);
-  static final NamePlateVipTpye e = new NamePlateVipTpye(258);
-  static final NamePlateVipTpye f = new NamePlateVipTpye(3);
-  static final NamePlateVipTpye g = new NamePlateVipTpye(259);
-  final int jdField_a_of_type_Int;
+  static final NamePlateVipTpye b = new NamePlateVipTpye(0);
+  static final NamePlateVipTpye c = new NamePlateVipTpye(1);
+  static final NamePlateVipTpye d = new NamePlateVipTpye(257);
+  static final NamePlateVipTpye e = new NamePlateVipTpye(2);
+  static final NamePlateVipTpye f = new NamePlateVipTpye(258);
+  static final NamePlateVipTpye g = new NamePlateVipTpye(3);
+  static final NamePlateVipTpye h = new NamePlateVipTpye(259);
+  final int a;
   
   public VipUtils$VipIconUtils$NamePlateVipTpye(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public static NamePlateVipTpye a(int paramInt)
@@ -27,39 +27,39 @@ public class VipUtils$VipIconUtils$NamePlateVipTpye
           switch (paramInt)
           {
           default: 
-            return jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$VipIconUtils$NamePlateVipTpye;
+            return b;
           case 259: 
-            return g;
+            return h;
           case 258: 
-            return e;
+            return f;
           }
-          return c;
+          return d;
         }
-        return f;
+        return g;
       }
-      return d;
+      return e;
     }
-    return b;
+    return c;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int & 0xF) == 1;
+    return (this.a & 0xF) == 1;
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int & 0xF) == 3;
+    return (this.a & 0xF) == 3;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Int > 15;
+    return this.a > 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipIconUtils.NamePlateVipTpye
  * JD-Core Version:    0.7.0.1
  */

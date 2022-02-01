@@ -13,7 +13,7 @@ class FullScreenInputHelper$4
     paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
     if (paramInt3 <= 0)
     {
-      FullScreenInputHelper.a(this.a);
+      FullScreenInputHelper.b(this.a);
       return "";
     }
     if (paramInt3 >= paramInt2 - paramInt1) {
@@ -27,17 +27,17 @@ class FullScreenInputHelper$4
       paramInt2 = paramInt3;
       if (paramInt3 == paramInt1)
       {
-        FullScreenInputHelper.a(this.a);
+        FullScreenInputHelper.b(this.a);
         return "";
       }
     }
-    FullScreenInputHelper.a(this.a);
+    FullScreenInputHelper.b(this.a);
     return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.4
  * JD-Core Version:    0.7.0.1
  */

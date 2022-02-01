@@ -39,8 +39,8 @@ class TroopQZoneUploadAlbumHandler$1
               QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
             }
             i = paramMessage.arg1;
-            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.remove(i);
+            this.b.a(paramMessage.what, i, paramMessage.arg2);
+            this.b.d.remove(i);
             return;
           case 1004: 
             if (QLog.isColorLevel())
@@ -52,8 +52,8 @@ class TroopQZoneUploadAlbumHandler$1
               ((StringBuilder)localObject).append(paramMessage.arg2);
               QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
-            this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.clear();
+            this.b.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+            this.b.d.clear();
             return;
           }
           if (QLog.isColorLevel())
@@ -66,7 +66,7 @@ class TroopQZoneUploadAlbumHandler$1
             QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
           }
           i = paramMessage.arg1;
-          this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+          this.b.a(paramMessage.what, i, paramMessage.arg2);
           return;
         }
         if (QLog.isColorLevel())
@@ -79,7 +79,7 @@ class TroopQZoneUploadAlbumHandler$1
           QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
         }
         i = paramMessage.arg1;
-        this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+        this.b.a(paramMessage.what, i, paramMessage.arg2);
         return;
       }
       if (QLog.isColorLevel())
@@ -92,7 +92,7 @@ class TroopQZoneUploadAlbumHandler$1
         QLog.d("UploadPhoto", 2, ((StringBuilder)localObject).toString());
       }
       i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
+      this.b.a(paramMessage.what, i, paramMessage.arg2);
       return;
     }
     paramMessage = (Object[])paramMessage.obj;
@@ -100,13 +100,13 @@ class TroopQZoneUploadAlbumHandler$1
     Object localObject = (TroopQZoneUploadAlbumHandler.MonitorInfo)paramMessage[1];
     int j = ((Integer)paramMessage[2]).intValue();
     int k = ((Integer)paramMessage[3]).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_Long, j, k);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_JavaLangString, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).jdField_a_of_type_Long, j, k);
+    this.b.a(((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).a, j, k);
+    this.b.a(this.a, i, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).b, ((TroopQZoneUploadAlbumHandler.MonitorInfo)localObject).a, j, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.1
  * JD-Core Version:    0.7.0.1
  */

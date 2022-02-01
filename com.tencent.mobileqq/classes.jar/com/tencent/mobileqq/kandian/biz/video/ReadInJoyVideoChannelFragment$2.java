@@ -11,12 +11,12 @@ class ReadInJoyVideoChannelFragment$2
   public void a()
   {
     VideoPlayManager localVideoPlayManager = this.a.a();
-    if ((localVideoPlayManager != null) && (localVideoPlayManager.a() != null))
+    if ((localVideoPlayManager != null) && (localVideoPlayManager.k() != null))
     {
-      if (localVideoPlayManager.a().a()) {
-        localVideoPlayManager.a().j();
+      if (localVideoPlayManager.k().c()) {
+        localVideoPlayManager.k().p();
       }
-      localVideoPlayManager.a().d();
+      localVideoPlayManager.k().j();
     }
   }
   
@@ -24,7 +24,7 @@ class ReadInJoyVideoChannelFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyVideoChannelFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ class DoodleMsgLayout$2$1
   
   public void run()
   {
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0) != null)
+    if (DoodleMsgLayout.e(this.b.this$0) != null)
     {
-      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-      localPhotoProgressDrawable.setBounds(new Rect(0, 0, Utils.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources()), Utils.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0.getResources())));
-      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0).setImageDrawable(localPhotoProgressDrawable);
+      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.a, 0, false);
+      localPhotoProgressDrawable.setBounds(new Rect(0, 0, Utils.a(19.0F, this.b.this$0.getResources()), Utils.a(19.0F, this.b.this$0.getResources())));
+      DoodleMsgLayout.e(this.b.this$0).setImageDrawable(localPhotoProgressDrawable);
     }
-    DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$2.this$0, false);
+    DoodleMsgLayout.b(this.b.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.2.1
  * JD-Core Version:    0.7.0.1
  */

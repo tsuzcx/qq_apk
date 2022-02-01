@@ -22,17 +22,17 @@ class NewFriendServiceImpl$8
     }
     boolean bool1 = paramObject1 instanceof NewFriendMessage;
     if ((bool1) && ((paramObject2 instanceof NewFriendMessage))) {
-      return (int)(((NewFriendMessage)paramObject2).a - ((NewFriendMessage)paramObject1).a);
+      return (int)(((NewFriendMessage)paramObject2).d - ((NewFriendMessage)paramObject1).d);
     }
     if ((bool1) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((NewFriendMessage)paramObject1).a * 1000L);
+      return (int)(((PhoneContact)paramObject2).lastScanTime - ((NewFriendMessage)paramObject1).d * 1000L);
     }
     boolean bool2 = paramObject1 instanceof PhoneContact;
     if ((bool2) && ((paramObject2 instanceof PhoneContact))) {
       return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
     }
     if ((bool2) && ((paramObject2 instanceof NewFriendMessage))) {
-      return (int)(((NewFriendMessage)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
+      return (int)(((NewFriendMessage)paramObject2).d * 1000L - ((PhoneContact)paramObject1).lastScanTime);
     }
     if (!bool2)
     {
@@ -53,7 +53,7 @@ class NewFriendServiceImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

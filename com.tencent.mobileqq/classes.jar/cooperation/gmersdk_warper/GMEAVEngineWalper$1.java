@@ -6,8 +6,6 @@ import mqq.os.MqqHandler;
 class GMEAVEngineWalper$1
   extends TMG_Downloader.TMG_Downloader_DownloadEvent
 {
-  GMEAVEngineWalper$1(GMEAVEngineWalper paramGMEAVEngineWalper) {}
-  
   public void a(int paramInt) {}
   
   public void a(int paramInt, String paramString)
@@ -19,7 +17,7 @@ class GMEAVEngineWalper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,21 @@ import com.tencent.qphone.base.util.QLog;
 public class NickColorEmoticonBuilder
   extends SpannableStringBuilder
 {
-  public static Editable.Factory a;
-  private int a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidTextEditable$Factory = new NickColorEmoticonBuilder.1();
-  }
+  public static Editable.Factory a = new NickColorEmoticonBuilder.1();
+  private int b;
   
   public NickColorEmoticonBuilder(CharSequence paramCharSequence, int paramInt)
   {
     super(a(paramCharSequence, paramInt));
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private static CharSequence a(CharSequence paramCharSequence, int paramInt)
   {
     if ((paramCharSequence instanceof ColorNickText)) {
-      return ((ColorNickText)paramCharSequence).a();
+      return ((ColorNickText)paramCharSequence).b();
     }
-    return new ColorNickText(paramCharSequence, paramInt).a();
+    return new ColorNickText(paramCharSequence, paramInt).b();
   }
   
   public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
@@ -88,7 +83,7 @@ public class NickColorEmoticonBuilder
           {
             i = paramInt2;
             localObject2 = paramCharSequence;
-            localObject1 = new ColorNickText(paramCharSequence, this.jdField_a_of_type_Int).a();
+            localObject1 = new ColorNickText(paramCharSequence, this.b).b();
           }
           i = paramInt2;
           localObject2 = localObject1;
@@ -125,7 +120,7 @@ public class NickColorEmoticonBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.NickColorEmoticonBuilder
  * JD-Core Version:    0.7.0.1
  */

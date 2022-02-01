@@ -18,7 +18,7 @@ final class ReadInJoyLottieDrawable$5
     if (QLog.isColorLevel())
     {
       paramDownloadTask = new StringBuilder();
-      paramDownloadTask.append(this.jdField_a_of_type_Long);
+      paramDownloadTask.append(this.a);
       paramDownloadTask.append(" download lottie resource fail!");
       QLog.e("ReadInJoyLottieDrawable", 1, paramDownloadTask.toString());
     }
@@ -26,13 +26,13 @@ final class ReadInJoyLottieDrawable$5
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if ((paramDownloadTask != null) && (paramDownloadTask.a().getLong("bgLottieResId") == this.jdField_a_of_type_Long) && (paramDownloadTask.a == 0))
+    if ((paramDownloadTask != null) && (paramDownloadTask.b().getLong("bgLottieResId") == this.a) && (paramDownloadTask.c == 0))
     {
       if (QLog.isColorLevel())
       {
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("download success ");
-        paramDownloadTask.append(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask.append(this.b);
         QLog.i("ReadInJoyLottieDrawable", 1, paramDownloadTask.toString());
       }
       ThreadManager.excute(new ReadInJoyLottieDrawable.5.1(this), 64, null, true);
@@ -41,7 +41,7 @@ final class ReadInJoyLottieDrawable$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.5
  * JD-Core Version:    0.7.0.1
  */

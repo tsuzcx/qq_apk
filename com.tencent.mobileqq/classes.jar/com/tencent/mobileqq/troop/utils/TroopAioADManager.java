@@ -15,18 +15,18 @@ public class TroopAioADManager
   implements Manager
 {
   protected QQAppInterface a;
-  protected EntityManager a;
-  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
+  protected EntityManager b;
+  protected ConcurrentHashMap<String, TroopAioTopADInfo> c;
   
   public TroopAioADManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (this.c == null) {
       try
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        if (this.c == null) {
+          this.c = new ConcurrentHashMap();
         }
         return;
       }
@@ -39,7 +39,7 @@ public class TroopAioADManager
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    return (TroopAioTopADInfo)this.c.get(paramString);
   }
   
   public void a()
@@ -51,25 +51,25 @@ public class TroopAioADManager
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
+    this.c.remove(paramString);
+    paramString = (TroopAioTopADInfo)this.b.find(TroopAioTopADInfo.class, paramString);
     if (paramString != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
+      this.b.remove(paramString);
     }
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    Object localObject = this.b;
     if ((localObject != null) && (((EntityManager)localObject).isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+      this.b.close();
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    localObject = this.c;
     if (localObject != null) {
       ((ConcurrentHashMap)localObject).clear();
     }
@@ -77,7 +77,7 @@ public class TroopAioADManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioADManager
  * JD-Core Version:    0.7.0.1
  */

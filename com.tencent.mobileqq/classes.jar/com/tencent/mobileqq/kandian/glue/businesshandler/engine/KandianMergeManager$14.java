@@ -13,22 +13,22 @@ class KandianMergeManager$14
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+    MessageRecord localMessageRecord = this.a.r(AppConstants.KANDIAN_MERGE_UIN, 7220);
     if (localMessageRecord != null) {
-      localMessageRecord = KandianMergeManager.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      localMessageRecord = KandianMergeManager.a(this.this$0, localMessageRecord, this.b, this.c, this.d, this.e);
     } else {
-      localMessageRecord = KandianMergeManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      localMessageRecord = KandianMergeManager.a(this.this$0, this.b, this.c, this.d);
     }
     if (localMessageRecord != null)
     {
       RIJKanDianFolderStatus.updateLastKandianMsgRecord(localMessageRecord);
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.this$0).getCurrentUin());
+      this.a.a(localMessageRecord, KandianMergeManager.c(this.this$0).getCurrentUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.14
  * JD-Core Version:    0.7.0.1
  */

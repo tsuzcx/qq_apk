@@ -11,8 +11,8 @@ class TroopStoryMemoriesListAdapter$VideoItemViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$VideoItemViewHolder.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$VideoItemViewHolder.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$VideoItemViewHolder.jdField_b_of_type_ComTencentImageURLImageView);
+    if (this.b.g.c != null) {
+      this.b.g.c.a(this.a, this.b.f);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

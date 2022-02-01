@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view android:layout_gravity="center" android:id="@id/k94" android:layout_width="wrap_content" android:layout_height="fill_parent" class="androidx.appcompat.widget.ActivityChooserView$InnerLayout" style="?a0m"
+<androidx.appcompat.view.menu.ListMenuItemView android:layout_width="fill_parent" android:layout_height="?a9t"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/mz8" android:background="?zr" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/image" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center" android:id="@id/mum" android:background="?zr" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/image" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-    </FrameLayout>
-</view>
+    <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="?a9v" android:layout_marginRight="?a9w" android:layout_weight="1.0">
+        <TextView android:textAppearance="?ajw" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/q2q" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/title" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</androidx.appcompat.view.menu.ListMenuItemView>

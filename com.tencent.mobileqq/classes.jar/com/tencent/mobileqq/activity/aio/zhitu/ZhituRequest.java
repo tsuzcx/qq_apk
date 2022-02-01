@@ -27,7 +27,7 @@ public class ZhituRequest
     localStringBuilder.append(this.uin);
     localStringBuilder.append('\'');
     localStringBuilder.append(", text='");
-    localStringBuilder.append(MD5.a(this.text));
+    localStringBuilder.append(MD5.b(this.text));
     localStringBuilder.append('\'');
     localStringBuilder.append(", report=");
     localStringBuilder.append(this.report);
@@ -40,7 +40,7 @@ public class ZhituRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituRequest
  * JD-Core Version:    0.7.0.1
  */

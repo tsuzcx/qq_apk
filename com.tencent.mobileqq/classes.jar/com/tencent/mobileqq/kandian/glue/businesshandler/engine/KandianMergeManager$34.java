@@ -11,9 +11,9 @@ class KandianMergeManager$34
   
   public void run()
   {
-    if (KandianMergeManager.a(this.this$0) != null)
+    if (KandianMergeManager.k(this.this$0) != null)
     {
-      Iterator localIterator = KandianMergeManager.a(this.this$0).iterator();
+      Iterator localIterator = KandianMergeManager.k(this.this$0).iterator();
       while (localIterator.hasNext()) {
         ((OnMainVideoTabRedChangeListener)localIterator.next()).a();
       }
@@ -22,7 +22,7 @@ class KandianMergeManager$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.34
  * JD-Core Version:    0.7.0.1
  */

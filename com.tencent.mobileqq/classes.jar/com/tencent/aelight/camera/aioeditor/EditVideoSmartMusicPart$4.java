@@ -11,11 +11,11 @@ class EditVideoSmartMusicPart$4
   
   public void a(int paramInt, SmartMusicAdapter.SmartMusicVH paramSmartMusicVH)
   {
-    if (EditVideoSmartMusicPart.a(this.a)) {
-      EditVideoSmartMusicPart.a(this.a);
+    if (EditVideoSmartMusicPart.g(this.a)) {
+      EditVideoSmartMusicPart.h(this.a);
     }
-    VsMusicItemInfo localVsMusicItemInfo = EditVideoSmartMusicPart.a(this.a).a(paramInt);
-    if ((EditVideoSmartMusicPart.c(this.a) != null) && (localVsMusicItemInfo != null))
+    VsMusicItemInfo localVsMusicItemInfo = EditVideoSmartMusicPart.i(this.a).a(paramInt);
+    if ((EditVideoSmartMusicPart.j(this.a) != null) && (localVsMusicItemInfo != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPositionChange:");
@@ -29,37 +29,37 @@ class EditVideoSmartMusicPart$4
       localStringBuilder.append(", musicUrl:");
       localStringBuilder.append(localVsMusicItemInfo.mUrl);
       QLog.i("EditVideoSmartMusicPart", 1, localStringBuilder.toString());
-      EditVideoSmartMusicPart.b(this.a);
-      EditVideoSmartMusicPart.c(this.a).setText(localVsMusicItemInfo.mMusicName);
+      EditVideoSmartMusicPart.k(this.a);
+      EditVideoSmartMusicPart.j(this.a).setText(localVsMusicItemInfo.mMusicName);
       EditVideoSmartMusicPart.a(this.a, localVsMusicItemInfo, paramInt, paramSmartMusicVH);
     }
-    EditVideoSmartMusicPart.c(this.a);
+    EditVideoSmartMusicPart.l(this.a);
   }
   
   public void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
   {
-    if (paramInt == this.a.a) {
+    if (paramInt == this.a.c) {
       return;
     }
-    EditVideoSmartMusicPart.a(this.a).setHasAutoSet(false);
-    if (EditVideoSmartMusicPart.a(this.a) != null)
+    EditVideoSmartMusicPart.e(this.a).setHasAutoSet(false);
+    if (EditVideoSmartMusicPart.f(this.a) != null)
     {
-      EditVideoSmartMusicPart.a(this.a).a(EditVideoSmartMusicPart.a(this.a) ^ true);
-      EditVideoSmartMusicPart.a(this.a).b();
+      EditVideoSmartMusicPart.f(this.a).a(EditVideoSmartMusicPart.g(this.a) ^ true);
+      EditVideoSmartMusicPart.f(this.a).b();
     }
-    EditVideoSmartMusicPart.a(this.a).smoothScrollToPosition(paramInt);
+    EditVideoSmartMusicPart.e(this.a).smoothScrollToPosition(paramInt);
   }
   
   public void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (EditVideoSmartMusicPart.a(this.a) != null) && (EditVideoSmartMusicPart.a(this.a).mSongMid != null) && (EditVideoSmartMusicPart.a(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
+    if ((paramBoolean) && (EditVideoSmartMusicPart.m(this.a) != null) && (EditVideoSmartMusicPart.m(this.a).mSongMid != null) && (EditVideoSmartMusicPart.m(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
       EditVideoSmartMusicPart.a(this.a, paramVsMusicItemInfo, paramInt, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.EditVideoSmartMusicPart.4
  * JD-Core Version:    0.7.0.1
  */

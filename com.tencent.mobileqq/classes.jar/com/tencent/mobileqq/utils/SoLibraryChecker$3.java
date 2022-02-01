@@ -15,12 +15,12 @@ class SoLibraryChecker$3
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadUpdate loaded json = ");
-      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(paramDownloadTask.h);
       localStringBuilder.append(" code = ");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(paramDownloadTask.c);
       QLog.d("SoLibraryLoader", 2, localStringBuilder.toString());
     }
-    boolean bool = SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    boolean bool = SoLibraryChecker.a(this.d, this.a, this.b, this.c);
     if (QLog.isColorLevel())
     {
       paramDownloadTask = new StringBuilder();
@@ -28,12 +28,12 @@ class SoLibraryChecker$3
       paramDownloadTask.append(bool);
       QLog.d("SoLibraryLoader", 2, paramDownloadTask.toString());
     }
-    SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker);
+    SoLibraryChecker.e(this.d);
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    int i = (int)(paramDownloadTask.jdField_a_of_type_Float * 100.0F);
+    int i = (int)(paramDownloadTask.l * 100.0F);
     if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel()))
     {
       paramDownloadTask = new StringBuilder();
@@ -45,7 +45,7 @@ class SoLibraryChecker$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoLibraryChecker.3
  * JD-Core Version:    0.7.0.1
  */

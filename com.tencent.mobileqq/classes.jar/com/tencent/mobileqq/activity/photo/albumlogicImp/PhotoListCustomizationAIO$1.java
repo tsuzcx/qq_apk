@@ -16,18 +16,18 @@ class PhotoListCustomizationAIO$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ((IAlbumUtils)QRoute.api(IAlbumUtils.class)).sendPhoto(PhotoListCustomizationAIO.a(this.this$0), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, PhotoListCustomizationAIO.a(this.this$0).jdField_a_of_type_JavaUtilHashMap, ((PhotoOtherData)this.this$0.a).jdField_a_of_type_Int, false);
+    if (this.a) {
+      ((IAlbumUtils)QRoute.api(IAlbumUtils.class)).sendPhoto(PhotoListCustomizationAIO.a(this.this$0), this.b, this.c, PhotoListCustomizationAIO.b(this.this$0).b, ((PhotoOtherData)this.this$0.f).d, false);
     } else {
-      PhotoUtils.sendPhoto(PhotoListCustomizationAIO.b(this.this$0), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, ((PhotoOtherData)this.this$0.a).jdField_a_of_type_Int, PhotoListCustomizationAIO.b(this.this$0).jdField_a_of_type_Boolean);
+      PhotoUtils.sendPhoto(PhotoListCustomizationAIO.c(this.this$0), this.b, this.c, ((PhotoOtherData)this.this$0.f).d, PhotoListCustomizationAIO.d(this.this$0).a);
     }
-    ReportController.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "");
-    com.tencent.mobileqq.shortvideo.SVBusiUtil.b = System.currentTimeMillis();
+    ReportController.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", this.d, 0, this.e, this.f, "", "");
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.c = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationAIO.1
  * JD-Core Version:    0.7.0.1
  */

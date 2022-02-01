@@ -40,10 +40,10 @@ class NearbyActivity$10
         localQQCustomDialog.setCancelable(false);
         localObject = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          localObject = HardCodeUtil.a(2131707133);
+          localObject = HardCodeUtil.a(2131904968);
         }
         localQQCustomDialog.setMessage((CharSequence)localObject);
-        localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131707134), new NearbyActivity.10.1(this));
+        localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131904969), new NearbyActivity.10.1(this));
         localQQCustomDialog.show();
         new ReportTask(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.app.getCurrentAccountUin()).a();
         return;
@@ -93,7 +93,7 @@ class NearbyActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.10
  * JD-Core Version:    0.7.0.1
  */

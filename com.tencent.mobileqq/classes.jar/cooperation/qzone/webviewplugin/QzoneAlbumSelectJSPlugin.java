@@ -35,9 +35,9 @@ public class QzoneAlbumSelectJSPlugin
       paramPluginRuntime.putBoolean("key_can_new_album", false);
       paramPluginRuntime.putString("key_from_type", paramArrayOfString.optString("fromType"));
       paramArrayOfString = QZoneHelper.UserInfo.getInstance();
-      paramArrayOfString.qzone_uin = this.parentPlugin.mRuntime.a().getCurrentAccountUin();
+      paramArrayOfString.qzone_uin = this.parentPlugin.mRuntime.b().getCurrentAccountUin();
       paramPluginRuntime.putBoolean("key_need_change_to_jpg", false);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), paramArrayOfString, paramPluginRuntime, QZoneHelperProxyImpl.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
+      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.d(), paramArrayOfString, paramPluginRuntime, QZoneHelperProxyImpl.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
       return;
     }
     catch (Exception paramPluginRuntime)
@@ -100,7 +100,7 @@ public class QzoneAlbumSelectJSPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneAlbumSelectJSPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ final class SignatureHistoryFragment$17
   
   public void delete()
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+    TextUtils.backspace(this.a);
   }
   
   public void emoticonMall() {}
@@ -36,7 +36,7 @@ final class SignatureHistoryFragment$17
     if (paramEmoticonInfo != null) {}
     try
     {
-      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      paramEmoticonInfo.send(this.b, this.c, this.a, null);
       return;
     }
     catch (Throwable paramEmoticonInfo) {}
@@ -46,7 +46,7 @@ final class SignatureHistoryFragment$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.17
  * JD-Core Version:    0.7.0.1
  */

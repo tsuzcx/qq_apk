@@ -7,23 +7,23 @@ import org.json.JSONObject;
 public class SelfInfoModule$BusinessCountInfo
 {
   public int a;
-  public String a;
   public int b;
-  public String b;
-  public int c;
   public String c;
+  public String d;
+  public String e;
+  public int f;
   
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
-      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
-      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      localJSONObject.put("businessId", this.a);
+      localJSONObject.put("businessType", this.b);
+      localJSONObject.put("businessName", this.c);
+      localJSONObject.put("jumpUrl", this.d);
+      localJSONObject.put("businessIconUrl", this.e);
+      localJSONObject.put("fansCount", this.f);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -38,7 +38,7 @@ public class SelfInfoModule$BusinessCountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.SelfInfoModule.BusinessCountInfo
  * JD-Core Version:    0.7.0.1
  */

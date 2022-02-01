@@ -18,7 +18,7 @@ public class AtlasCommonR5Builder
       this.a.put("network", GalleryReportedUtils.a(BaseApplicationImpl.getApplication().getApplicationContext()));
       this.a.put("version", VideoReporter.a);
       this.a.put("os", "1");
-      this.a.put("uin", RIJQQAppInterfaceUtil.a());
+      this.a.put("uin", RIJQQAppInterfaceUtil.d());
       this.a.put("city", GalleryReportedUtils.b());
       return this;
     }
@@ -50,14 +50,14 @@ public class AtlasCommonR5Builder
     return this;
   }
   
-  public String a()
+  public String b()
   {
     return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.AtlasCommonR5Builder
  * JD-Core Version:    0.7.0.1
  */

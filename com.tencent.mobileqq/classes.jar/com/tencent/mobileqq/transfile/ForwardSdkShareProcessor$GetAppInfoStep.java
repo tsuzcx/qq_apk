@@ -116,18 +116,18 @@ class ForwardSdkShareProcessor$GetAppInfoStep
     localStringBuilder.append("GetAppInfoStep|useCachedAppInfo=,time=");
     localStringBuilder.append(System.currentTimeMillis() - ForwardSdkShareProcessor.access$600(this.this$0));
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
-    this.this$0.mAppInfo.sourceIconSmall = paramAppInfo.a();
-    this.this$0.mAppInfo.sourceIconBig = paramAppInfo.e();
+    this.this$0.mAppInfo.sourceIconSmall = paramAppInfo.b();
+    this.this$0.mAppInfo.sourceIconBig = paramAppInfo.f();
     if (paramAppInfo.a())
     {
+      if (!TextUtils.isEmpty(paramAppInfo.e())) {
+        this.this$0.mAppInfo.packName = paramAppInfo.e();
+      }
       if (!TextUtils.isEmpty(paramAppInfo.d())) {
-        this.this$0.mAppInfo.packName = paramAppInfo.d();
+        this.this$0.mAppInfo.sourceName = paramAppInfo.d();
       }
-      if (!TextUtils.isEmpty(paramAppInfo.c())) {
-        this.this$0.mAppInfo.sourceName = paramAppInfo.c();
-      }
-      if ((!TextUtils.isEmpty(paramAppInfo.b())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
-        this.this$0.mAppInfo.sourceUrl = paramAppInfo.b();
+      if ((!TextUtils.isEmpty(paramAppInfo.c())) && (ForwardSdkShareProcessor.access$400(this.this$0) != Long.parseLong("1103584836"))) {
+        this.this$0.mAppInfo.sourceUrl = paramAppInfo.c();
       }
     }
     this.this$0.mAppInfo.status = 1;
@@ -138,7 +138,7 @@ class ForwardSdkShareProcessor$GetAppInfoStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.GetAppInfoStep
  * JD-Core Version:    0.7.0.1
  */

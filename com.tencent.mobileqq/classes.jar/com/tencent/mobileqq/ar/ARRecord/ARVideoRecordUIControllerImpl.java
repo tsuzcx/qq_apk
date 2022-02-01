@@ -18,63 +18,50 @@ import mqq.os.MqqHandler;
 public class ARVideoRecordUIControllerImpl
   implements Handler.Callback, ARVideoRecordViewPresenter.onMonitorUserOperationListener, VideoRecordController.RecordListener
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  private final int jdField_a_of_type_Int = 1;
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  public static final String a = HardCodeUtil.a(2131899010);
+  public static final String b = HardCodeUtil.a(2131899011);
+  public static final String c = HardCodeUtil.a(2131899006);
+  public static final String d = HardCodeUtil.a(2131899007);
+  public static final String e = HardCodeUtil.a(2131899009);
+  public static final String f = HardCodeUtil.a(2131899013);
+  public static final String g = HardCodeUtil.a(2131899008);
+  public static final String h = HardCodeUtil.a(2131899012);
+  private int A = 0;
+  private boolean B = false;
+  private boolean C = false;
+  private int D = -1;
   @Deprecated
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = null;
-  private volatile ARVideoRecordDataSource jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource;
-  private volatile ARVideoRecordViewPresenter jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter;
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int jdField_b_of_type_Int = 2;
-  private boolean jdField_b_of_type_Boolean = false;
-  private final int jdField_c_of_type_Int = 3;
-  private boolean jdField_c_of_type_Boolean = false;
-  private final int jdField_d_of_type_Int = 4;
-  private boolean jdField_d_of_type_Boolean = false;
-  private final int jdField_e_of_type_Int = 5;
-  private boolean jdField_e_of_type_Boolean = true;
-  private final int jdField_f_of_type_Int = 6;
-  private boolean jdField_f_of_type_Boolean = true;
-  private final int jdField_g_of_type_Int = 7;
-  private boolean jdField_g_of_type_Boolean;
-  private final int h;
-  private final int i = 9;
-  private final int j = 10;
-  private final int k = 12;
-  private final int l = 13;
-  private int m = 0;
-  private int n = -1;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131700988);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131700989);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131700984);
-    jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131700985);
-    jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131700987);
-    jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131700991);
-    jdField_g_of_type_JavaLangString = HardCodeUtil.a(2131700986);
-    jdField_h_of_type_JavaLangString = HardCodeUtil.a(2131700990);
-  }
+  private Context E;
+  private boolean F = true;
+  private boolean G = true;
+  private Activity H;
+  private boolean I;
+  private final int i = 1;
+  private final int j = 2;
+  private final int k = 3;
+  private final int l = 4;
+  private final int m = 5;
+  private final int n = 6;
+  private final int o = 7;
+  private final int p = 8;
+  private final int q = 9;
+  private final int r = 10;
+  private final int s = 12;
+  private final int t = 13;
+  private boolean u = false;
+  private boolean v = false;
+  private HandlerThread w = null;
+  private Handler x = null;
+  private volatile ARVideoRecordViewPresenter y;
+  private volatile ARVideoRecordDataSource z;
   
   private ARVideoRecordUIControllerImpl()
   {
-    this.jdField_h_of_type_Int = 8;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ARVideoRecordUIControllerImpl mIsEnableVideoRecord");
-      localStringBuilder.append(this.jdField_e_of_type_Boolean);
+      localStringBuilder.append(this.F);
       QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
     }
   }
@@ -86,7 +73,7 @@ public class ARVideoRecordUIControllerImpl
   
   private void a(Runnable paramRunnable)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.x;
     if (localHandler != null) {
       localHandler.post(paramRunnable);
     }
@@ -95,11 +82,6 @@ public class ARVideoRecordUIControllerImpl
   public static void a(String paramString)
   {
     ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  private boolean c()
-  {
-    return (a()) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a());
   }
   
   private void d(int paramInt)
@@ -111,37 +93,37 @@ public class ARVideoRecordUIControllerImpl
       localStringBuilder.append(paramInt);
       QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
     }
-    if (c())
+    if (p())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null)
+      if (this.y != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(0);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.b();
+        this.y.a(0);
+        this.y.b();
       }
       if ((paramInt != 2) && (paramInt != 4) && (paramInt != 6) && (paramInt != 1) && (paramInt != 3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
+        this.z.a(false, false);
         if (QLog.isColorLevel()) {
           QLog.i("ARVideoRecordUIControllerImpl", 2, "error branch ,should not happen");
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, true);
+        this.z.a(false, true);
       }
-      this.n = paramInt;
-      this.jdField_d_of_type_Boolean = true;
+      this.D = paramInt;
+      this.C = true;
       if (QLog.isColorLevel()) {
         QLog.i("ARVideoRecordUIControllerImpl", 2, "handleInterruptARVideoRecord normal record running");
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.b();
+      if (this.y != null) {
+        this.y.b();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
+      if (this.z != null) {
+        this.z.a(false, false);
       }
       if (QLog.isColorLevel()) {
         QLog.i("ARVideoRecordUIControllerImpl", 2, "handleInterruptARVideoRecord other condition");
@@ -158,102 +140,107 @@ public class ARVideoRecordUIControllerImpl
       localStringBuilder.append(paramInt);
       QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.u)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(0);
-      if (!this.jdField_c_of_type_Boolean)
+      this.y.a(0);
+      if (!this.B)
       {
         if (paramInt == 11) {
-          ARRecordUtils.a(jdField_a_of_type_JavaLangString, false);
+          ARRecordUtils.a(a, false);
         } else {
           ThreadManager.getUIHandler().post(new ARVideoRecordUIControllerImpl.3(this));
         }
       }
       else {
-        this.jdField_c_of_type_Boolean = false;
+        this.B = false;
       }
-      this.jdField_d_of_type_Boolean = false;
+      this.C = false;
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null)
+      if (this.y != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(0);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.b();
+        this.y.a(0);
+        this.y.b();
       }
-      if (!this.jdField_c_of_type_Boolean)
+      if (!this.B)
       {
         if (paramInt == 11) {
-          ARRecordUtils.a(jdField_a_of_type_JavaLangString, false);
+          ARRecordUtils.a(a, false);
         } else {
           ThreadManager.getUIHandler().post(new ARVideoRecordUIControllerImpl.4(this));
         }
       }
       else {
-        this.jdField_c_of_type_Boolean = false;
+        this.B = false;
       }
-      this.jdField_d_of_type_Boolean = false;
-      m();
+      this.C = false;
+      r();
     }
-    this.n = -1;
+    this.D = -1;
     a("0X8008A57");
   }
   
-  private void i()
+  private void m()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleDoOnResume");
     }
-    this.jdField_d_of_type_Boolean = false;
-    this.n = -1;
+    this.C = false;
+    this.D = -1;
   }
   
-  private void j()
+  private void n()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleExternalAnimationStart");
     }
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.F) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, true);
+    if ((this.z != null) && (this.z.a())) {
+      this.z.a(false, true);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.b();
+    if (this.y != null) {
+      this.y.b();
     }
   }
   
-  private void k()
+  private void o()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleExternalAnimationEnd");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a();
+    if (this.y != null) {
+      this.y.a();
     }
   }
   
-  private void l()
+  private boolean p()
+  {
+    return (g()) && (this.z.a());
+  }
+  
+  private void q()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleOnPause");
     }
-    if ((c()) && (this.n == -1))
+    if ((p()) && (this.D == -1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
-      this.n = 5;
-      this.jdField_d_of_type_Boolean = false;
+      this.z.a(false, false);
+      this.D = 5;
+      this.C = false;
       a("0X8008A57");
       if (QLog.isColorLevel()) {
         QLog.i("ARVideoRecordUIControllerImpl", 2, "handleOnPause mInterruptAnimationReason EXTERNAL_INTERRUPT");
       }
     }
-    else if ((this.n == -1) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null))
+    else if ((this.D == -1) && (this.z != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
+      this.z.a(false, false);
     }
-    ARVideoRecordViewPresenter localARVideoRecordViewPresenter = this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter;
+    ARVideoRecordViewPresenter localARVideoRecordViewPresenter = this.y;
     if (localARVideoRecordViewPresenter != null)
     {
       localARVideoRecordViewPresenter.a(0);
@@ -261,7 +248,7 @@ public class ARVideoRecordUIControllerImpl
     }
   }
   
-  private void m()
+  private void r()
   {
     try
     {
@@ -269,32 +256,32 @@ public class ARVideoRecordUIControllerImpl
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("finalizeDestroy ");
-        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append(this.v);
         QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
       }
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+      if ((this.v) && (!this.C))
       {
-        if (this.jdField_a_of_type_AndroidOsHandler != null)
+        if (this.x != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_AndroidOsHandler = null;
+          this.x.removeCallbacksAndMessages(null);
+          this.x = null;
         }
-        if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+        if (this.w != null)
         {
           if (Build.VERSION.SDK_INT >= 18) {
-            this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+            this.w.quitSafely();
           } else {
             try
             {
-              this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
-              this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+              this.w.interrupt();
+              this.w.quit();
             }
             catch (Exception localException)
             {
               localException.printStackTrace();
             }
           }
-          this.jdField_a_of_type_AndroidOsHandlerThread = null;
+          this.w = null;
         }
         return;
       }
@@ -303,47 +290,47 @@ public class ARVideoRecordUIControllerImpl
     finally {}
   }
   
-  private void n()
+  private void s()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleMonitorUserOperationInternal");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter != null))
+    if ((this.z != null) && (this.y != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a() == 0)
+      if (this.y.c() == 0)
       {
         if (!ARRecordUtils.a(104857600L))
         {
-          ARRecordUtils.a(jdField_c_of_type_JavaLangString, jdField_d_of_type_JavaLangString);
+          ARRecordUtils.a(c, d);
           return;
         }
-        if (!this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(true, null))
+        if (!this.z.a(true, null))
         {
-          ARRecordUtils.a(jdField_a_of_type_JavaLangString, false);
+          ARRecordUtils.a(a, false);
           if (QLog.isColorLevel()) {
             QLog.i("ARVideoRecordUIControllerImpl", 2, "startVideoRecord failed");
           }
           return;
         }
         a("0X8008A54");
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(1);
+        this.y.a(1);
         if (QLog.isColorLevel()) {
           QLog.i("ARVideoRecordUIControllerImpl", 2, "startVideoRecord end");
         }
       }
       else
       {
-        if (c())
+        if (p())
         {
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(true, true);
-          this.n = 7;
-          this.jdField_d_of_type_Boolean = true;
+          this.z.a(true, true);
+          this.D = 7;
+          this.C = true;
           a("0X8008A55");
           if (QLog.isColorLevel()) {
             QLog.i("ARVideoRecordUIControllerImpl", 2, "stopVideoRecord and doReport");
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(0);
+        this.y.a(0);
         if (QLog.isColorLevel()) {
           QLog.i("ARVideoRecordUIControllerImpl", 2, "stopVideoRecord end");
         }
@@ -352,32 +339,6 @@ public class ARVideoRecordUIControllerImpl
     }
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "handleMonitorUserOperationInternal with value null");
-    }
-  }
-  
-  @Deprecated
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "doOnResume");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_e_of_type_Boolean)
-    {
-      if (!this.jdField_f_of_type_Boolean) {
-        return;
-      }
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null)
-      {
-        localHandler.removeMessages(12);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(12);
-      }
     }
   }
   
@@ -391,11 +352,11 @@ public class ARVideoRecordUIControllerImpl
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("ARVideoRecordUIControllerImpl", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+    if (this.H == null) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 23) {
-      paramInt = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.RECORD_AUDIO");
+      paramInt = ((QBaseActivity)this.H).checkSelfPermission("android.permission.RECORD_AUDIO");
     } else {
       paramInt = 0;
     }
@@ -405,8 +366,8 @@ public class ARVideoRecordUIControllerImpl
       i1 = paramInt;
       if (Build.VERSION.SDK_INT >= 23)
       {
-        i1 = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
-        int i2 = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
+        i1 = ((QBaseActivity)this.H).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+        int i2 = ((QBaseActivity)this.H).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
         if (i1 == 0)
         {
           i1 = paramInt;
@@ -421,12 +382,12 @@ public class ARVideoRecordUIControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("startPreRecord permission=%s", new Object[] { Integer.valueOf(i1) }));
     }
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_f_of_type_Boolean))
+    if ((this.F) && (this.G))
     {
       if (i1 != 0) {
         return;
       }
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      localObject = this.x;
       if (localObject != null) {
         ((Handler)localObject).sendEmptyMessage(1);
       }
@@ -450,100 +411,101 @@ public class ARVideoRecordUIControllerImpl
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "start");
     }
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.F) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    if (this.w == null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ARVideoRecordThread-P", 0);
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+      this.w = ThreadManager.newFreeHandlerThread("ARVideoRecordThread-P", 0);
+      this.w.start();
+      this.x = new Handler(this.w.getLooper(), this);
     }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_b_of_type_Boolean = false;
+    this.H = paramActivity;
+    this.v = false;
   }
   
   @Deprecated
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.E = paramContext;
   }
   
   public void a(Object paramObject)
   {
     if (paramObject != null)
     {
-      if (!this.jdField_e_of_type_Boolean) {
+      if (!this.F) {
         return;
       }
       if ((paramObject instanceof ARVideoRecordViewPresenter))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter = ((ARVideoRecordViewPresenter)paramObject);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a(this);
+        this.y = ((ARVideoRecordViewPresenter)paramObject);
+        this.y.a(this);
         return;
       }
       if ((paramObject instanceof ARVideoRecordDataSource))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource = ((ARVideoRecordDataSource)paramObject);
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(this);
+        this.z = ((ARVideoRecordDataSource)paramObject);
+        this.z.a(this);
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (!this.jdField_e_of_type_Boolean)
+    if (!this.F)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ARVideoRecordUIControllerImpl", 2, "do nothing apart from return ");
       }
       return;
     }
-    if (paramBoolean == this.jdField_f_of_type_Boolean)
+    if (paramBoolean == this.G)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("value equal return value:");
-        localStringBuilder.append(this.jdField_f_of_type_Boolean);
+        localStringBuilder.append(this.G);
         QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
       }
       return;
     }
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    if (this.jdField_f_of_type_Boolean)
+    this.G = paramBoolean;
+    if (this.G)
     {
-      this.jdField_d_of_type_Boolean = false;
-      this.n = -1;
+      this.C = false;
+      this.D = -1;
       if (QLog.isColorLevel()) {
         QLog.i("ARVideoRecordUIControllerImpl", 2, "call after onResume, from disable to enable");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter = null;
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.y = null;
+    this.z = null;
+    this.E = null;
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "call after onResume, from enable to disable");
     }
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.b());
-  }
-  
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "showVideoRecordButton");
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "doOnResume");
     }
-    if (this.jdField_e_of_type_Boolean)
+    this.u = true;
+    if (this.F)
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
-      a(new ARVideoRecordUIControllerImpl.1(this));
+      Handler localHandler = this.x;
+      if (localHandler != null)
+      {
+        localHandler.removeMessages(12);
+        this.x.sendEmptyMessage(12);
+      }
     }
   }
   
@@ -552,16 +514,16 @@ public class ARVideoRecordUIControllerImpl
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordUIControllerImpl", 2, "interruptARVideoRecordIfNeed");
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.F)
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_AndroidOsHandler;
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandlerThread != null))
+      Object localObject = this.x;
+      if ((localObject != null) && (this.w != null))
       {
         ((Handler)localObject).removeMessages(7);
-        localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(7);
+        localObject = this.x.obtainMessage(7);
         ((Message)localObject).arg1 = paramInt;
         ((Message)localObject).sendToTarget();
       }
@@ -570,45 +532,32 @@ public class ARVideoRecordUIControllerImpl
   
   public void b(Object paramObject)
   {
-    if ((paramObject != null) && (this.jdField_e_of_type_Boolean))
+    if ((paramObject != null) && (this.F))
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
       if ((paramObject instanceof ARVideoRecordViewPresenter))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter = null;
+        this.y = null;
         return;
       }
       if ((paramObject instanceof ARVideoRecordDataSource)) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource = null;
+        this.z = null;
       }
     }
   }
   
-  public boolean b()
+  @Deprecated
+  public Context c()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.b()) && (!this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a());
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "hideVideoRecordButton");
-    }
-    if (this.jdField_e_of_type_Boolean)
-    {
-      if (!this.jdField_f_of_type_Boolean) {
-        return;
-      }
-      a(new ARVideoRecordUIControllerImpl.2(this));
-    }
+    return this.E;
   }
   
   public void c(int paramInt)
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordError errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.x;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage(8);
@@ -620,93 +569,62 @@ public class ARVideoRecordUIControllerImpl
   public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "recordAnimationStartTimeStamp");
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "showVideoRecordButton");
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.F)
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(System.currentTimeMillis());
-      }
+      a(new ARVideoRecordUIControllerImpl.1(this));
     }
   }
   
   public void e()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "doOnPause");
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "hideVideoRecordButton");
     }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_e_of_type_Boolean)
+    if (this.F)
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null)
-      {
-        localHandler.removeMessages(13);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(13);
-      }
+      a(new ARVideoRecordUIControllerImpl.2(this));
     }
   }
   
   public void f()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "stop");
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "recordAnimationStartTimeStamp");
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.F)
     {
-      if (!this.jdField_f_of_type_Boolean) {
+      if (!this.G) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ARVideoRecordUIControllerImpl", 2, "stop has been refused because of ActivityLifeCircle ERROR");
-        }
-        return;
+      if (this.z != null) {
+        this.z.a(System.currentTimeMillis());
       }
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter = null;
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_AndroidAppActivity = null;
-      this.jdField_b_of_type_Boolean = true;
-      m();
     }
   }
   
-  public void g()
+  public boolean g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, "onMonitorUserOperation");
-    }
-    if (this.jdField_e_of_type_Boolean)
-    {
-      if (!this.jdField_f_of_type_Boolean) {
-        return;
-      }
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null) {
-        localHandler.sendEmptyMessage(6);
-      }
-    }
+    return (this.z != null) && (this.z.b());
   }
   
   @QQPermissionGrant(1)
   public void grant()
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, "CheckPermission user grant");
-    boolean bool = this.jdField_g_of_type_Boolean;
+    boolean bool = this.I;
   }
   
-  public void h()
+  public boolean h()
   {
-    QLog.d("ARVideoRecordUIControllerImpl", 2, "onRecordStart");
-    a(new ARVideoRecordUIControllerImpl.6(this));
+    return (this.z != null) && (this.z.b()) && (!this.z.a());
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -725,10 +643,10 @@ public class ARVideoRecordUIControllerImpl
             default: 
               return true;
             case 10: 
-              k();
+              o();
               return true;
             case 9: 
-              j();
+              n();
               return true;
             case 8: 
               e(paramMessage.arg1);
@@ -737,24 +655,24 @@ public class ARVideoRecordUIControllerImpl
               d(paramMessage.arg1);
               return true;
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a() == 0)
+            if (this.y.c() == 0)
             {
-              this.jdField_g_of_type_Boolean = true;
+              this.I = true;
               QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION UI displayMode normal");
               if (Build.VERSION.SDK_INT >= 23) {
-                i1 = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.RECORD_AUDIO");
+                i1 = ((QBaseActivity)this.H).checkSelfPermission("android.permission.RECORD_AUDIO");
               } else {
                 i1 = 0;
               }
               int i2;
               if (Build.VERSION.SDK_INT >= 23) {
-                i2 = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+                i2 = ((QBaseActivity)this.H).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
               } else {
                 i2 = 0;
               }
               int i3;
               if (Build.VERSION.SDK_INT >= 23) {
-                i3 = ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
+                i3 = ((QBaseActivity)this.H).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE");
               } else {
                 i3 = 0;
               }
@@ -766,38 +684,38 @@ public class ARVideoRecordUIControllerImpl
               if (i1 == 0)
               {
                 QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION has permission");
-                n();
+                s();
                 return true;
               }
               QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION need request permission");
-              ((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new ARVideoRecordUIControllerImpl.5(this), 1, new String[] { "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+              ((QBaseActivity)this.H).requestPermissions(new ARVideoRecordUIControllerImpl.5(this), 1, new String[] { "android.permission.RECORD_AUDIO", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
               return true;
             }
             QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION UI displayMode pressed");
-            n();
+            s();
             return true;
           }
-          l();
+          q();
           return true;
         }
-        i();
+        m();
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null)
+      if (this.z != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
+        this.z.a(false, false);
         return true;
       }
     }
-    else if ((((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) && (((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (((QBaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))
+    else if ((((QBaseActivity)this.H).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) && (((QBaseActivity)this.H).checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (((QBaseActivity)this.H).checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))
     {
-      if (a()) {
+      if (g()) {
         return true;
       }
-      this.jdField_g_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource != null)
+      this.I = false;
+      if (this.z != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, null);
+        this.z.a(false, null);
         return true;
       }
     }
@@ -807,10 +725,79 @@ public class ARVideoRecordUIControllerImpl
     }
     return true;
   }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "doOnPause");
+    }
+    this.u = false;
+    if (this.F)
+    {
+      if (!this.G) {
+        return;
+      }
+      Handler localHandler = this.x;
+      if (localHandler != null)
+      {
+        localHandler.removeMessages(13);
+        this.x.sendEmptyMessage(13);
+      }
+    }
+  }
+  
+  public void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "stop");
+    }
+    if (this.F)
+    {
+      if (!this.G) {
+        return;
+      }
+      if (this.u)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ARVideoRecordUIControllerImpl", 2, "stop has been refused because of ActivityLifeCircle ERROR");
+        }
+        return;
+      }
+      this.y = null;
+      this.z = null;
+      this.E = null;
+      this.H = null;
+      this.v = true;
+      r();
+    }
+  }
+  
+  public void k()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARVideoRecordUIControllerImpl", 2, "onMonitorUserOperation");
+    }
+    if (this.F)
+    {
+      if (!this.G) {
+        return;
+      }
+      Handler localHandler = this.x;
+      if (localHandler != null) {
+        localHandler.sendEmptyMessage(6);
+      }
+    }
+  }
+  
+  public void l()
+  {
+    QLog.d("ARVideoRecordUIControllerImpl", 2, "onRecordStart");
+    a(new ARVideoRecordUIControllerImpl.6(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl
  * JD-Core Version:    0.7.0.1
  */

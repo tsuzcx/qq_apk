@@ -17,7 +17,7 @@ public class ShortenUrlJob
   extends Job
 {
   private HashMap<String, String> a;
-  private boolean c;
+  private boolean b;
   
   public ShortenUrlJob()
   {
@@ -27,22 +27,22 @@ public class ShortenUrlJob
   public ShortenUrlJob(HashMap<String, String> paramHashMap, boolean paramBoolean)
   {
     a(false, true);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.c = paramBoolean;
+    this.a = paramHashMap;
+    this.b = paramBoolean;
   }
   
   public void a()
   {
-    Object localObject2 = PlayModeUtils.a();
+    Object localObject2 = PlayModeUtils.b();
     Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
     Object localObject3 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
     localObject2 = new Bundle();
-    localObject1 = HttpUtil.batchUrlExchange(BaseApplication.getContext(), (String)localObject1, (String)localObject3, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
-    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
+    localObject1 = HttpUtil.batchUrlExchange(BaseApplication.getContext(), (String)localObject1, (String)localObject3, 1, this.a, (Bundle)localObject2);
+    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.b))
     {
       if (QLog.isColorLevel())
       {
-        localObject2 = this.b;
+        localObject2 = this.e;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("shortenUrl failed size:");
         ((StringBuilder)localObject3).append(((HashMap)localObject1).size());
@@ -57,14 +57,14 @@ public class ShortenUrlJob
   
   protected void a(Map<String, Object> paramMap)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
-      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)ShareUtils.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.h != null) && (!this.h.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
+      this.a = ((HashMap)ShareUtils.a(this.h, "ShortenUrlJob_shortenedUrls", this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShortenUrlJob
  * JD-Core Version:    0.7.0.1
  */

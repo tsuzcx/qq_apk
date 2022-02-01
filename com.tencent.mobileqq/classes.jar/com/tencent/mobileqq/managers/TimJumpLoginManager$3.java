@@ -31,11 +31,11 @@ class TimJumpLoginManager$3
       localStringBuilder.append(paramInt);
       QLog.d(paramWUserSigInfo, 2, localStringBuilder.toString());
     }
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    paramErrMsg = this.a;
     if ((paramErrMsg != null) && (paramErrMsg.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.a.dismiss();
     }
-    QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719628, 0).a();
+    QQToast.makeText(TimJumpLoginManager.a(this.d).getApp(), 1, 2131917225, 0).show();
   }
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
@@ -48,13 +48,13 @@ class TimJumpLoginManager$3
       paramArrayOfByte2.append(paramInt2);
       QLog.d(paramArrayOfByte1, 2, paramArrayOfByte2.toString());
     }
-    paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    paramArrayOfByte1 = this.a;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.a.dismiss();
     }
     if (paramInt2 != 0)
     {
-      QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131719628, 0).a();
+      QQToast.makeText(TimJumpLoginManager.a(this.d).getApp(), 1, 2131917225, 0).show();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -63,9 +63,9 @@ class TimJumpLoginManager$3
     paramArrayOfByte1 = new Intent();
     paramArrayOfByte1.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.LoginJumpTeamWorkActivity"));
     paramArrayOfByte1.setFlags(268435456);
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp().startActivity(paramArrayOfByte1);
+    paramArrayOfByte1.putExtras(this.b.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.putExtras(this.c);
+    TimJumpLoginManager.a(this.d).getApp().startActivity(paramArrayOfByte1);
   }
 }
 

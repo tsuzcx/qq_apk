@@ -12,7 +12,7 @@ public class PokeTypeSupplier
   public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     paramQQAppInterface = (MessageForPoke)paramChatMessage;
-    if ((paramQQAppInterface.interactType == 126) && (!PokeItemHelper.a(paramQQAppInterface.minVersion))) {
+    if ((paramQQAppInterface.interactType == 126) && (!PokeItemHelper.h(paramQQAppInterface.minVersion))) {
       return 0;
     }
     return 62;
@@ -20,7 +20,7 @@ public class PokeTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.PokeTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

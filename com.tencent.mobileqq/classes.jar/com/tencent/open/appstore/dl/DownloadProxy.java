@@ -31,10 +31,10 @@ import mqq.os.MqqHandler;
 
 public class DownloadProxy
 {
-  private static volatile DownloadProxy jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy;
-  private ITMAssistantExchangeURLListenner jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner = new DownloadProxy.1(this);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static volatile DownloadProxy a;
+  private final Object b = new Object();
+  private ConcurrentHashMap<String, Integer> c = new ConcurrentHashMap();
+  private ITMAssistantExchangeURLListenner d = new DownloadProxy.1(this);
   
   private int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
   {
@@ -61,7 +61,7 @@ public class DownloadProxy
     boolean bool1 = paramBundle.getBoolean(DownloadConstants.o);
     boolean bool2 = paramBundle.getBoolean(DownloadConstants.z, true);
     boolean bool3 = paramBundle.getBoolean("is_qq_self_update_task", false);
-    boolean bool4 = paramBundle.getBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, true);
+    boolean bool4 = paramBundle.getBoolean(DownloadConstants.h, true);
     boolean bool5 = paramBundle.getBoolean(DownloadConstants.y);
     int k = paramBundle.getInt(DownloadConstants.E, 0);
     boolean bool6 = paramBundle.getBoolean(DownloadConstants.L, false);
@@ -96,29 +96,29 @@ public class DownloadProxy
             {
               localObject2 = ((String)localObject1).trim();
               paramString = new DownloadInfo(str15, (String)localObject2, str12, str14, str13, null, paramString, bool2);
-              paramString.jdField_g_of_type_Int = i;
-              paramString.jdField_a_of_type_Boolean = bool4;
-              paramString.jdField_b_of_type_Boolean = bool5;
-              paramString.jdField_d_of_type_Int = 0;
-              paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.jdField_e_of_type_JavaLangString);
-              paramString.o = str10;
-              if ((paramApkUpdateDetail != null) && (paramString.jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
-                paramString.jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
+              paramString.v = i;
+              paramString.w = bool4;
+              paramString.x = bool5;
+              paramString.p = 0;
+              paramString.n = paramBundle.getInt(DownloadConstants.e);
+              paramString.F = str10;
+              if ((paramApkUpdateDetail != null) && (paramString.n != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
+                paramString.n = paramApkUpdateDetail.versioncode;
               }
               if (!TextUtils.isEmpty(str8)) {
-                paramString.jdField_g_of_type_JavaLangString = str8;
+                paramString.g = str8;
               }
-              paramString.k = str1;
-              paramString.q = str2;
-              paramString.r = str4;
-              paramString.s = str3;
-              paramString.t = str5;
-              paramString.u = str6;
-              paramString.v = str7;
-              paramString.jdField_e_of_type_Boolean = bool3;
+              paramString.m = str1;
+              paramString.J = str2;
+              paramString.K = str4;
+              paramString.L = str3;
+              paramString.M = str5;
+              paramString.N = str6;
+              paramString.O = str7;
+              paramString.P = bool3;
               paramString.a("big_brother_ref_source_key", str9);
               paramString.a("hideInstallSuccessPage", str11);
-              paramString.a();
+              paramString.b();
               DownloadManagerV2.a().b(paramString);
               paramBundle = new StringBuilder();
               paramBundle.append("[doDownloadActionBySDK] action == Downloader.ACTION_UPDATE ");
@@ -155,77 +155,77 @@ public class DownloadProxy
           if (localObject2 == null)
           {
             paramString = new DownloadInfo();
-            paramString.jdField_c_of_type_JavaLangString = str15;
-            paramString.jdField_d_of_type_JavaLangString = paramApkUpdateDetail.trim();
-            paramString.jdField_e_of_type_JavaLangString = str12;
+            paramString.c = str15;
+            paramString.d = paramApkUpdateDetail.trim();
+            paramString.e = str12;
             paramString.f = str14;
-            paramString.jdField_h_of_type_JavaLangString = str13;
-            paramString.j = paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString);
-            paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.jdField_e_of_type_JavaLangString);
-            paramString.jdField_c_of_type_Boolean = paramBundle.getBoolean(DownloadConstants.z, true);
-            paramString.jdField_h_of_type_Int = k;
-            paramString.n = str16;
-            paramString.jdField_d_of_type_Int = 0;
-            paramString.o = str10;
+            paramString.h = str13;
+            paramString.l = paramBundle.getString(DownloadConstants.c);
+            paramString.n = paramBundle.getInt(DownloadConstants.e);
+            paramString.A = paramBundle.getBoolean(DownloadConstants.z, true);
+            paramString.z = k;
+            paramString.B = str16;
+            paramString.p = 0;
+            paramString.F = str10;
             if (!TextUtils.isEmpty(str8)) {
-              paramString.jdField_g_of_type_JavaLangString = str8;
+              paramString.g = str8;
             }
-            paramString.k = str1;
-            paramString.q = str2;
-            paramString.r = str4;
-            paramString.s = str3;
-            paramString.t = str5;
-            paramString.u = str6;
-            paramString.v = str7;
-            paramString.a();
+            paramString.m = str1;
+            paramString.J = str2;
+            paramString.K = str4;
+            paramString.L = str3;
+            paramString.M = str5;
+            paramString.N = str6;
+            paramString.O = str7;
+            paramString.b();
           }
-          paramString.jdField_e_of_type_Boolean = bool3;
+          paramString.P = bool3;
           paramString.a("big_brother_ref_source_key", str9);
           paramString.a("hideInstallSuccessPage", str11);
-          DownloadManagerV2.a().a(paramString);
+          DownloadManagerV2.a().d(paramString);
         }
       }
-      return DownloadManagerV2.a().a((String)localObject1);
+      return DownloadManagerV2.a().e((String)localObject1);
     }
     paramApkUpdateDetail = ((String)localObject1).trim();
     paramString = new DownloadInfo(str15, paramApkUpdateDetail, str12, str14, str13, null, paramString, bool2);
-    paramString.jdField_g_of_type_Int = i;
+    paramString.v = i;
     if (bool2)
     {
-      paramString.jdField_a_of_type_Boolean = bool4;
-      paramString.jdField_b_of_type_Boolean = bool5;
+      paramString.w = bool4;
+      paramString.x = bool5;
     }
     else
     {
-      paramString.jdField_a_of_type_Boolean = false;
-      paramString.jdField_b_of_type_Boolean = true;
-      paramString.jdField_a_of_type_Int = 2;
+      paramString.w = false;
+      paramString.x = true;
+      paramString.j = 2;
     }
-    paramString.jdField_h_of_type_Int = k;
-    paramString.n = str16;
-    paramString.i = j;
-    paramString.o = str10;
-    paramString.jdField_d_of_type_Boolean = bool6;
-    paramString.jdField_d_of_type_Int = 0;
+    paramString.z = k;
+    paramString.B = str16;
+    paramString.C = j;
+    paramString.F = str10;
+    paramString.G = bool6;
+    paramString.p = 0;
     try
     {
-      paramString.jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.jdField_e_of_type_JavaLangString);
-      paramString.jdField_d_of_type_Long = paramBundle.getLong(DownloadConstants.I);
+      paramString.n = paramBundle.getInt(DownloadConstants.e);
+      paramString.I = paramBundle.getLong(DownloadConstants.I);
       label1010:
-      paramString.k = str1;
-      paramString.q = str2;
-      paramString.r = str4;
-      paramString.s = str3;
-      paramString.t = str5;
-      paramString.u = str6;
-      paramString.v = str7;
-      paramString.jdField_e_of_type_Boolean = bool3;
+      paramString.m = str1;
+      paramString.J = str2;
+      paramString.K = str4;
+      paramString.L = str3;
+      paramString.M = str5;
+      paramString.N = str6;
+      paramString.O = str7;
+      paramString.P = bool3;
       if (!TextUtils.isEmpty(str8)) {
-        paramString.jdField_g_of_type_JavaLangString = str8;
+        paramString.g = str8;
       }
       paramString.a("big_brother_ref_source_key", str9);
       paramString.a("hideInstallSuccessPage", str11);
-      paramString.a();
+      paramString.b();
       LogUtility.b("DownloadResolver", "[doDownloadActionBySDK] action == Downloader.ACTION_DOWNLOAD");
       DownloadManagerV2.a().b(paramString);
       paramBundle = paramString;
@@ -241,16 +241,16 @@ public class DownloadProxy
   
   public static DownloadProxy a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy == null) {
-          jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy = new DownloadProxy();
+        if (a == null) {
+          a = new DownloadProxy();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentOpenAppstoreDlDownloadProxy;
+    return a;
   }
   
   private String a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
@@ -302,11 +302,6 @@ public class DownloadProxy
     DownloadApi.a(paramActivity, paramBundle);
   }
   
-  public static void a(Bundle paramBundle)
-  {
-    DownloadApi.a(paramBundle);
-  }
-  
   public static boolean a(Bundle paramBundle)
   {
     if (paramBundle.getInt(DownloadConstants.k) == 5)
@@ -336,41 +331,41 @@ public class DownloadProxy
       if (localObject1 == null)
       {
         localObject1 = new DownloadInfo();
-        ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString = str4;
-        ((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString = ((String)localObject2).trim();
-        ((DownloadInfo)localObject1).jdField_e_of_type_JavaLangString = str1;
+        ((DownloadInfo)localObject1).c = str4;
+        ((DownloadInfo)localObject1).d = ((String)localObject2).trim();
+        ((DownloadInfo)localObject1).e = str1;
         ((DownloadInfo)localObject1).f = str3;
-        ((DownloadInfo)localObject1).jdField_h_of_type_JavaLangString = str2;
-        ((DownloadInfo)localObject1).j = paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString);
-        ((DownloadInfo)localObject1).k = paramBundle.getString(DownloadConstants.jdField_d_of_type_JavaLangString);
-        ((DownloadInfo)localObject1).jdField_b_of_type_Int = paramBundle.getInt(DownloadConstants.jdField_e_of_type_JavaLangString);
-        ((DownloadInfo)localObject1).o = paramBundle.getString(DownloadConstants.K);
-        ((DownloadInfo)localObject1).k = str5;
-        ((DownloadInfo)localObject1).q = str6;
-        ((DownloadInfo)localObject1).r = str8;
-        ((DownloadInfo)localObject1).s = str7;
-        ((DownloadInfo)localObject1).t = str9;
-        ((DownloadInfo)localObject1).u = str10;
-        ((DownloadInfo)localObject1).v = str11;
-        ((DownloadInfo)localObject1).m = str13;
+        ((DownloadInfo)localObject1).h = str2;
+        ((DownloadInfo)localObject1).l = paramBundle.getString(DownloadConstants.c);
+        ((DownloadInfo)localObject1).m = paramBundle.getString(DownloadConstants.d);
+        ((DownloadInfo)localObject1).n = paramBundle.getInt(DownloadConstants.e);
+        ((DownloadInfo)localObject1).F = paramBundle.getString(DownloadConstants.K);
+        ((DownloadInfo)localObject1).m = str5;
+        ((DownloadInfo)localObject1).J = str6;
+        ((DownloadInfo)localObject1).K = str8;
+        ((DownloadInfo)localObject1).L = str7;
+        ((DownloadInfo)localObject1).M = str9;
+        ((DownloadInfo)localObject1).N = str10;
+        ((DownloadInfo)localObject1).O = str11;
+        ((DownloadInfo)localObject1).r = str13;
         ((DownloadInfo)localObject1).a("big_brother_ref_source_key", str12);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramBundle.getInt("hideInstallSuccessPage", 0));
         ((StringBuilder)localObject2).append("");
         ((DownloadInfo)localObject1).a("hideInstallSuccessPage", ((StringBuilder)localObject2).toString());
-        ((DownloadInfo)localObject1).a();
+        ((DownloadInfo)localObject1).b();
         paramBundle = (Bundle)localObject1;
       }
       else
       {
         if (!TextUtils.isEmpty(str2)) {
-          ((DownloadInfo)localObject1).jdField_h_of_type_JavaLangString = str2;
+          ((DownloadInfo)localObject1).h = str2;
         }
         if (!TextUtils.isEmpty(str12)) {
           ((DownloadInfo)localObject1).a("big_brother_ref_source_key", str12);
         }
         if (!TextUtils.isEmpty(str13)) {
-          ((DownloadInfo)localObject1).m = str13;
+          ((DownloadInfo)localObject1).r = str13;
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramBundle.getInt("hideInstallSuccessPage", 0));
@@ -378,7 +373,7 @@ public class DownloadProxy
         ((DownloadInfo)localObject1).a("hideInstallSuccessPage", ((StringBuilder)localObject2).toString());
         paramBundle = (Bundle)localObject1;
       }
-      return DownloadManagerV2.a().a(paramBundle);
+      return DownloadManagerV2.a().d(paramBundle);
     }
     return false;
   }
@@ -397,9 +392,9 @@ public class DownloadProxy
     if ("biz_src_jc_update".equals(paramString)) {
       StaticAnalyz.a("300", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(DownloadConstants.K));
     }
-    if (paramBundle.getInt(DownloadConstants.jdField_e_of_type_JavaLangString, -10) < 0)
+    if (paramBundle.getInt(DownloadConstants.e, -10) < 0)
     {
-      ??? = TMAssistantGetAppDetailTool.getInstance(this.jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner, CommonDataAdapter.a().a());
+      ??? = TMAssistantGetAppDetailTool.getInstance(this.d, CommonDataAdapter.a().b());
       localObject1 = paramBundle.getString(DownloadConstants.f);
       Object localObject3 = paramBundle.getString(DownloadConstants.D);
       if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -415,26 +410,26 @@ public class DownloadProxy
         ((TMAssistantGetAppDetailTool)???).exchangeUrlsFromPackageNames((ArrayList)localObject3);
         try
         {
-          synchronized (this.jdField_a_of_type_JavaLangObject)
+          synchronized (this.b)
           {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
+            this.b.wait(5000L);
           }
           localObject1 = (Integer)((ConcurrentHashMap)???).remove(localObject1);
         }
         catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
-          ??? = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+          ??? = this.c;
           if (??? == null) {
             break label316;
           }
         }
         if (localObject1 == null)
         {
-          DownloadManagerV2.a().b(CommonDataAdapter.a().a().getString(2131694621));
+          DownloadManagerV2.a().h(CommonDataAdapter.a().b().getString(2131892305));
           return;
         }
-        paramBundle.putInt(DownloadConstants.jdField_e_of_type_JavaLangString, ((Integer)localObject1).intValue());
+        paramBundle.putInt(DownloadConstants.e, ((Integer)localObject1).intValue());
         break label316;
         throw paramActivity;
       }
@@ -449,24 +444,58 @@ public class DownloadProxy
     {
       paramBundle.putString("source", paramString);
       paramBundle.putInt("dialogType", 1);
-      MyAppApi.a().a(paramActivity, paramBundle, new DownloadProxy.4(this, paramBundle, paramString, paramApkUpdateDetail));
+      MyAppApi.l().a(paramActivity, paramBundle, new DownloadProxy.4(this, paramBundle, paramString, paramApkUpdateDetail));
       return;
     }
     if ((paramInt == 2) || (paramInt == 0)) {
-      MyAppApi.a().b(paramActivity, paramBundle, new DownloadProxy.5(this, paramBundle, paramString, paramApkUpdateDetail));
+      MyAppApi.l().b(paramActivity, paramBundle, new DownloadProxy.5(this, paramBundle, paramString, paramApkUpdateDetail));
     }
   }
   
   public static void b(Bundle paramBundle)
   {
+    DownloadApi.a(paramBundle);
+  }
+  
+  public static void c(Bundle paramBundle)
+  {
     DownloadApi.b(paramBundle);
   }
   
-  public List<DownloadInfo> a()
+  public void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  {
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(CommonDataAdapter.a().b()) >= 6) {
+      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadAction", System.currentTimeMillis());
+    }
+    if ("biz_src_jc_update".equals(paramString)) {
+      StaticAnalyz.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(DownloadConstants.K));
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadProxy.3(this, paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    ThreadManager.excute(new DownloadProxy.6(this, paramString, paramBoolean), 32, null, true);
+  }
+  
+  public void a(List<DownloadInfo> paramList, DownloadQueryListener paramDownloadQueryListener)
+  {
+    if (paramList == null)
+    {
+      LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] infos == null");
+      return;
+    }
+    if (paramDownloadQueryListener == null) {
+      LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] listener == null");
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadProxy.2(this, paramList, paramDownloadQueryListener));
+  }
+  
+  public List<DownloadInfo> b()
   {
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = DownloadManagerV2.a().a();
+    Object localObject2 = DownloadManagerV2.a().d();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("DownloadManagerV2 tasks:");
     Object localObject1;
@@ -490,10 +519,10 @@ public class DownloadProxy
           long l2 = System.currentTimeMillis();
           Object localObject4 = (String)((Map.Entry)localObject3).getKey();
           localObject3 = (DownloadInfo)((Map.Entry)localObject3).getValue();
-          if ((((DownloadInfo)localObject3).jdField_c_of_type_Int == 0) && (!TextUtils.isEmpty(((DownloadInfo)localObject3).jdField_e_of_type_JavaLangString)) && (((DownloadInfo)localObject3).jdField_c_of_type_Boolean))
+          if ((((DownloadInfo)localObject3).o == 0) && (!TextUtils.isEmpty(((DownloadInfo)localObject3).e)) && (((DownloadInfo)localObject3).A))
           {
             localArrayList.add(localObject3);
-            localObject4 = DownloadManagerV2.a().a(((DownloadInfo)localObject3).jdField_d_of_type_JavaLangString);
+            localObject4 = DownloadManagerV2.a().g(((DownloadInfo)localObject3).d);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("\ninfo=");
             localStringBuilder.append(((DownloadInfo)localObject3).toString());
@@ -526,35 +555,6 @@ public class DownloadProxy
     return localArrayList;
   }
   
-  public void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
-  {
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(CommonDataAdapter.a().a()) >= 6) {
-      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadAction", System.currentTimeMillis());
-    }
-    if ("biz_src_jc_update".equals(paramString)) {
-      StaticAnalyz.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(DownloadConstants.K));
-    }
-    ThreadManager.getSubThreadHandler().post(new DownloadProxy.3(this, paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    ThreadManager.excute(new DownloadProxy.6(this, paramString, paramBoolean), 32, null, true);
-  }
-  
-  public void a(List<DownloadInfo> paramList, DownloadQueryListener paramDownloadQueryListener)
-  {
-    if (paramList == null)
-    {
-      LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] infos == null");
-      return;
-    }
-    if (paramDownloadQueryListener == null) {
-      LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] listener == null");
-    }
-    ThreadManager.getSubThreadHandler().post(new DownloadProxy.2(this, paramList, paramDownloadQueryListener));
-  }
-  
   public void b(String paramString, boolean paramBoolean)
   {
     ThreadManager.excute(new DownloadProxy.7(this, paramString, paramBoolean), 32, null, true);
@@ -562,7 +562,7 @@ public class DownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy
  * JD-Core Version:    0.7.0.1
  */

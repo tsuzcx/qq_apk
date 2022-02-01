@@ -13,20 +13,20 @@ class TroopMemberListInnerFrame$8
   
   protected void a(boolean paramBoolean, String paramString, List<String> paramList)
   {
-    if (TextUtils.equals(paramString, this.a.b))
+    if (TextUtils.equals(paramString, this.a.c))
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.isFinishing())) {
+      if ((this.a.f != null) && (this.a.f.isFinishing())) {
         return;
       }
-      if (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isGameClockBusiness(this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity)) {
-        ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).onOnlineRsp(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, paramList);
+      if (((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).isGameClockBusiness(this.a.f)) {
+        ((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).onOnlineRsp(this.a.h, paramList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopMemberListInnerFrame.8
  * JD-Core Version:    0.7.0.1
  */

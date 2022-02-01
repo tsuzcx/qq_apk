@@ -10,8 +10,8 @@ final class DirectForwarder$2
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface;
+    this.a.execute(new Integer[] { Integer.valueOf(this.b) });
+    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.c;
     if (localFMDialogInterface != null) {
       localFMDialogInterface.a();
     }
@@ -19,7 +19,7 @@ final class DirectForwarder$2
   
   public void b()
   {
-    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface;
+    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.c;
     if (localFMDialogInterface != null) {
       localFMDialogInterface.b();
     }

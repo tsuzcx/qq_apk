@@ -21,7 +21,7 @@ class ActiveEntitySearchFragment$1
   {
     if (!this.a.isAdded())
     {
-      paramArrayOfLong = ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString;
+      paramArrayOfLong = ActiveEntitySearchFragment.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Unify handleTabSearchError, fragment is detached ..., reqKeyword=");
       localStringBuilder.append(paramString1);
@@ -36,44 +36,44 @@ class ActiveEntitySearchFragment$1
       QLog.e(paramArrayOfLong, 1, localStringBuilder.toString());
       return;
     }
-    if (!TextUtils.equals(paramString2, this.a.jdField_d_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramString2, this.a.D)) {
       return;
     }
-    if (ActiveEntitySearchFragment.a(this.a.jdField_a_of_type_ArrayOfLong, paramArrayOfLong))
+    if (ActiveEntitySearchFragment.a(this.a.F, paramArrayOfLong))
     {
-      if (!this.a.jdField_b_of_type_JavaLangString.equals(paramString1)) {
+      if (!this.a.b.equals(paramString1)) {
         return;
       }
-      this.a.jdField_e_of_type_AndroidViewView.setVisibility(8);
+      this.a.v.setVisibility(8);
       paramString2 = this.a;
-      paramString2.jdField_e_of_type_Boolean = false;
-      paramString2.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
+      paramString2.E = false;
+      paramString2.q.setVisibility(8);
+      if ((this.a.g != null) && (!this.a.g.isEmpty()))
       {
-        this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ActiveEntitySearchFragment.1.3(this));
+        this.a.P.setVisibility(0);
+        this.a.P.setOnClickListener(new ActiveEntitySearchFragment.1.3(this));
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-        this.a.g.setVisibility(0);
-        if (this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.a.i.setVisibility(8);
+        this.a.x.setVisibility(0);
+        if (this.a.A == null) {
           try
           {
-            this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.a.getResources(), 2130842420);
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+            this.a.A = BitmapFactory.decodeResource(this.a.getResources(), 2130843373);
+            this.a.z.setImageBitmap(this.a.A);
           }
           catch (OutOfMemoryError paramString2)
           {
-            QLog.e(ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString, 1, paramString2, new Object[0]);
+            QLog.e(ActiveEntitySearchFragment.a, 1, paramString2, new Object[0]);
           }
         }
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131699994));
-        this.a.g.setOnClickListener(new ActiveEntitySearchFragment.1.2(this));
+        this.a.B.setText(HardCodeUtil.a(2131898040));
+        this.a.x.setOnClickListener(new ActiveEntitySearchFragment.1.2(this));
       }
       if (QLog.isColorLevel())
       {
-        paramString2 = ActiveEntitySearchFragment.jdField_a_of_type_JavaLangString;
+        paramString2 = ActiveEntitySearchFragment.a;
         paramString3 = new StringBuilder();
         paramString3.append("Unify handleTabSearchError code=");
         paramString3.append(paramInt);
@@ -82,7 +82,7 @@ class ActiveEntitySearchFragment$1
         paramString3.append(" key=");
         paramString3.append(paramString1);
         paramString3.append(" name=");
-        paramString3.append(this.a.jdField_e_of_type_JavaLangString);
+        paramString3.append(this.a.N);
         QLog.w(paramString2, 2, paramString3.toString());
       }
     }
@@ -96,14 +96,14 @@ class ActiveEntitySearchFragment$1
     //   1: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
     //   4: invokevirtual 23	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:isAdded	()Z
     //   7: ifne +117 -> 124
-    //   10: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   10: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
     //   13: astore 4
     //   15: new 28	java/lang/StringBuilder
     //   18: dup
     //   19: invokespecial 29	java/lang/StringBuilder:<init>	()V
     //   22: astore 6
     //   24: aload 6
-    //   26: ldc 198
+    //   26: ldc 209
     //   28: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: pop
     //   32: aload 6
@@ -111,13 +111,13 @@ class ActiveEntitySearchFragment$1
     //   35: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload 6
-    //   41: ldc 200
+    //   41: ldc 211
     //   43: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 6
     //   49: aload_0
     //   50: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   53: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   53: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
     //   56: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: pop
     //   60: aload 6
@@ -129,17 +129,17 @@ class ActiveEntitySearchFragment$1
     //   71: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload 6
-    //   77: ldc 202
+    //   77: ldc 213
     //   79: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: pop
     //   83: aload 6
     //   85: aload_0
     //   86: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   89: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   89: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:D	Ljava/lang/String;
     //   92: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: pop
     //   96: aload 6
-    //   98: ldc 204
+    //   98: ldc 215
     //   100: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload 6
@@ -155,17 +155,17 @@ class ActiveEntitySearchFragment$1
     //   124: aload_3
     //   125: aload_0
     //   126: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   129: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   129: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:D	Ljava/lang/String;
     //   132: invokestatic 68	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   135: ifne +117 -> 252
-    //   138: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   138: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
     //   141: astore 4
     //   143: new 28	java/lang/StringBuilder
     //   146: dup
     //   147: invokespecial 29	java/lang/StringBuilder:<init>	()V
     //   150: astore 6
     //   152: aload 6
-    //   154: ldc 206
+    //   154: ldc 217
     //   156: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload 6
@@ -173,13 +173,13 @@ class ActiveEntitySearchFragment$1
     //   163: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: pop
     //   167: aload 6
-    //   169: ldc 200
+    //   169: ldc 211
     //   171: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload 6
     //   177: aload_0
     //   178: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   181: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   181: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
     //   184: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: pop
     //   188: aload 6
@@ -191,17 +191,17 @@ class ActiveEntitySearchFragment$1
     //   199: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: pop
     //   203: aload 6
-    //   205: ldc 202
+    //   205: ldc 213
     //   207: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: pop
     //   211: aload 6
     //   213: aload_0
     //   214: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   217: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   217: getfield 62	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:D	Ljava/lang/String;
     //   220: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: pop
     //   224: aload 6
-    //   226: ldc 204
+    //   226: ldc 215
     //   228: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: pop
     //   232: aload 6
@@ -212,149 +212,149 @@ class ActiveEntitySearchFragment$1
     //   242: iconst_2
     //   243: aload 6
     //   245: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   248: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   248: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   251: return
     //   252: aload_0
     //   253: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   256: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
+    //   256: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
     //   259: aload 7
-    //   261: invokestatic 74	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	([J[J)Z
-    //   264: ifeq +3482 -> 3746
+    //   261: invokestatic 75	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	([J[J)Z
+    //   264: ifeq +3495 -> 3759
     //   267: aload_1
     //   268: aload_0
     //   269: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   272: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   275: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   272: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   275: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   278: ifne +6 -> 284
-    //   281: goto +3465 -> 3746
+    //   281: goto +3478 -> 3759
     //   284: aload 6
     //   286: ifnonnull +63 -> 349
-    //   289: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   289: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   292: ifeq +44 -> 336
-    //   295: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   295: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
     //   298: astore 4
     //   300: new 28	java/lang/StringBuilder
     //   303: dup
     //   304: invokespecial 29	java/lang/StringBuilder:<init>	()V
     //   307: astore 8
     //   309: aload 8
-    //   311: ldc 210
+    //   311: ldc 222
     //   313: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: pop
     //   317: aload 8
     //   319: aload 6
-    //   321: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload 4
     //   327: iconst_2
     //   328: aload 8
     //   330: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   333: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: invokestatic 227	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   336: aload_0
     //   337: aload_1
     //   338: iload_2
     //   339: aload_3
     //   340: iconst_m1
-    //   341: ldc 218
+    //   341: ldc 229
     //   343: aload 7
-    //   345: invokevirtual 220	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	(Ljava/lang/String;ZLjava/lang/String;ILjava/lang/String;[J)V
+    //   345: invokevirtual 231	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	(Ljava/lang/String;ZLjava/lang/String;ILjava/lang/String;[J)V
     //   348: return
     //   349: iload 12
     //   351: iconst_2
     //   352: if_icmpne +166 -> 518
     //   355: aload_0
     //   356: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   359: getfield 85	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_AndroidViewView	Landroid/view/View;
+    //   359: getfield 87	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:v	Landroid/view/View;
     //   362: bipush 8
-    //   364: invokevirtual 91	android/view/View:setVisibility	(I)V
+    //   364: invokevirtual 93	android/view/View:setVisibility	(I)V
     //   367: aload_0
     //   368: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
     //   371: astore_1
     //   372: aload_1
     //   373: iconst_0
-    //   374: putfield 94	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_Boolean	Z
+    //   374: putfield 97	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:E	Z
     //   377: aload_1
-    //   378: getfield 96	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   378: getfield 100	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:q	Landroid/view/View;
     //   381: bipush 8
-    //   383: invokevirtual 91	android/view/View:setVisibility	(I)V
+    //   383: invokevirtual 93	android/view/View:setVisibility	(I)V
     //   386: aload_0
     //   387: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   390: getfield 222	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
+    //   390: getfield 234	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:y	Lcom/tencent/widget/XListView;
     //   393: bipush 8
-    //   395: invokevirtual 125	com/tencent/widget/XListView:setVisibility	(I)V
+    //   395: invokevirtual 132	com/tencent/widget/XListView:setVisibility	(I)V
     //   398: aload_0
     //   399: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   402: getfield 225	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   402: getfield 238	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:C	Landroid/widget/Button;
     //   405: bipush 8
-    //   407: invokevirtual 228	android/widget/Button:setVisibility	(I)V
+    //   407: invokevirtual 241	android/widget/Button:setVisibility	(I)V
     //   410: aload_0
     //   411: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   414: getfield 231	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	Landroid/widget/TextView;
+    //   414: getfield 244	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:O	Landroid/widget/TextView;
     //   417: bipush 8
-    //   419: invokevirtual 110	android/widget/TextView:setVisibility	(I)V
+    //   419: invokevirtual 116	android/widget/TextView:setVisibility	(I)V
     //   422: aload_0
     //   423: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   426: getfield 128	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Landroid/view/View;
+    //   426: getfield 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:x	Landroid/view/View;
     //   429: iconst_0
-    //   430: invokevirtual 91	android/view/View:setVisibility	(I)V
+    //   430: invokevirtual 93	android/view/View:setVisibility	(I)V
     //   433: aload_0
     //   434: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
     //   437: invokevirtual 23	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:isAdded	()Z
     //   440: ifeq +41 -> 481
     //   443: aload_0
     //   444: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   447: getfield 145	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   447: getfield 154	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:z	Landroid/widget/ImageView;
     //   450: aload_0
     //   451: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   454: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   457: ldc 232
-    //   459: invokestatic 142	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   462: invokevirtual 151	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   454: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   457: ldc 245
+    //   459: invokestatic 150	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   462: invokevirtual 160	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
     //   465: goto +16 -> 481
     //   468: astore_1
-    //   469: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   469: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
     //   472: iconst_1
     //   473: aload_1
     //   474: iconst_0
-    //   475: anewarray 153	java/lang/Object
-    //   478: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   475: anewarray 162	java/lang/Object
+    //   478: invokestatic 165	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   481: iconst_2
     //   482: iload 12
     //   484: if_icmpne +16 -> 500
     //   487: aload_0
     //   488: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   491: ldc 233
-    //   493: invokevirtual 236	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getString	(I)Ljava/lang/String;
+    //   491: ldc 246
+    //   493: invokevirtual 249	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getString	(I)Ljava/lang/String;
     //   496: astore_1
     //   497: goto +9 -> 506
-    //   500: ldc 237
-    //   502: invokestatic 164	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   500: ldc 250
+    //   502: invokestatic 174	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   505: astore_1
     //   506: aload_0
     //   507: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   510: getfield 158	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   510: getfield 168	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:B	Landroid/widget/TextView;
     //   513: aload_1
-    //   514: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   514: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   517: return
-    //   518: new 239	java/util/HashSet
+    //   518: new 252	java/util/HashSet
     //   521: dup
-    //   522: invokespecial 240	java/util/HashSet:<init>	()V
+    //   522: invokespecial 253	java/util/HashSet:<init>	()V
     //   525: astore_3
     //   526: aload 6
-    //   528: invokeinterface 244 1 0
+    //   528: invokeinterface 257 1 0
     //   533: astore 27
-    //   535: ldc2_w 245
+    //   535: ldc2_w 258
     //   538: lstore 19
     //   540: lload 19
     //   542: lstore 21
     //   544: iconst_0
     //   545: istore 12
     //   547: aload 27
-    //   549: invokeinterface 251 1 0
-    //   554: ifeq +351 -> 905
+    //   549: invokeinterface 264 1 0
+    //   554: ifeq +347 -> 901
     //   557: aload 27
-    //   559: invokeinterface 255 1 0
-    //   564: checkcast 257	com/tencent/mobileqq/search/model/ISearchResultGroupModel
+    //   559: invokeinterface 268 1 0
+    //   564: checkcast 270	com/tencent/mobileqq/search/model/ISearchResultGroupModel
     //   567: astore 28
     //   569: iload 12
     //   571: istore 13
@@ -363,1497 +363,1505 @@ class ActiveEntitySearchFragment$1
     //   577: lload 21
     //   579: lstore 23
     //   581: aload 28
-    //   583: invokeinterface 260 1 0
-    //   588: ifnull +302 -> 890
-    //   591: aload 28
-    //   593: instanceof 262
-    //   596: ifeq +269 -> 865
-    //   599: aload 28
-    //   601: checkcast 262	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
-    //   604: astore 29
-    //   606: aload 29
-    //   608: invokevirtual 263	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	()Ljava/util/List;
-    //   611: astore 30
-    //   613: aload 30
-    //   615: invokeinterface 244 1 0
-    //   620: astore 31
-    //   622: aload 31
-    //   624: invokeinterface 251 1 0
-    //   629: ifeq +61 -> 690
-    //   632: aload 31
-    //   634: invokeinterface 255 1 0
-    //   639: checkcast 265	com/tencent/mobileqq/search/model/ISearchResultModel
-    //   642: astore 32
-    //   644: aload 32
-    //   646: instanceof 267
-    //   649: ifeq +38 -> 687
-    //   652: aload 32
-    //   654: checkcast 267	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem
-    //   657: astore 32
-    //   659: getstatic 271	com/tencent/mobileqq/search/activity/ActiveEntitySearchActivity:b	Z
-    //   662: ifeq +9 -> 671
-    //   665: aload 32
-    //   667: iconst_1
-    //   668: putfield 275	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:o	I
-    //   671: aload_3
-    //   672: aload 32
-    //   674: invokevirtual 278	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:d	()I
-    //   677: i2l
-    //   678: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   681: invokeinterface 289 2 0
-    //   686: pop
-    //   687: goto -65 -> 622
-    //   690: lload 19
-    //   692: lstore 21
-    //   694: lload 19
-    //   696: ldc2_w 245
-    //   699: lcmp
-    //   700: ifne +10 -> 710
-    //   703: aload 29
-    //   705: getfield 292	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
-    //   708: lstore 21
-    //   710: aload 29
-    //   712: getfield 292	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
-    //   715: lstore 25
-    //   717: aload 30
-    //   719: invokeinterface 295 1 0
-    //   724: ifle +59 -> 783
-    //   727: aload 29
-    //   729: getfield 292	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
-    //   732: ldc2_w 296
-    //   735: lcmp
-    //   736: ifne +47 -> 783
-    //   739: aconst_null
-    //   740: ldc_w 299
-    //   743: ldc_w 301
-    //   746: ldc_w 301
-    //   749: ldc_w 303
-    //   752: ldc_w 303
-    //   755: iconst_1
-    //   756: iconst_0
-    //   757: ldc_w 301
-    //   760: ldc_w 301
-    //   763: ldc_w 301
-    //   766: ldc_w 301
-    //   769: invokestatic 308	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   772: lload 25
-    //   774: lstore 23
-    //   776: lload 21
-    //   778: lstore 19
-    //   780: goto +89 -> 869
-    //   783: lload 25
-    //   785: lstore 23
-    //   787: lload 21
-    //   789: lstore 19
-    //   791: aload 30
-    //   793: invokeinterface 295 1 0
-    //   798: ifle +71 -> 869
-    //   801: lload 25
-    //   803: lstore 23
-    //   805: lload 21
-    //   807: lstore 19
-    //   809: aload 29
-    //   811: getfield 292	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
-    //   814: ldc2_w 309
-    //   817: lcmp
-    //   818: ifne +51 -> 869
-    //   821: aconst_null
-    //   822: ldc_w 299
-    //   825: ldc_w 301
-    //   828: ldc_w 301
-    //   831: ldc_w 303
-    //   834: ldc_w 303
-    //   837: iconst_2
-    //   838: iconst_0
-    //   839: ldc_w 301
-    //   842: ldc_w 301
-    //   845: ldc_w 301
-    //   848: ldc_w 301
-    //   851: invokestatic 308	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   854: lload 25
-    //   856: lstore 23
-    //   858: lload 21
-    //   860: lstore 19
-    //   862: goto +7 -> 869
-    //   865: lload 21
-    //   867: lstore 23
-    //   869: iload 12
-    //   871: aload 28
-    //   873: invokeinterface 260 1 0
-    //   878: invokeinterface 295 1 0
-    //   883: iadd
-    //   884: istore 13
-    //   886: lload 19
-    //   888: lstore 25
-    //   890: iload 13
-    //   892: istore 12
-    //   894: lload 25
-    //   896: lstore 19
-    //   898: lload 23
-    //   900: lstore 21
-    //   902: goto -355 -> 547
-    //   905: aload_0
-    //   906: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   909: getfield 312	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   912: aload_3
-    //   913: invokeinterface 316 2 0
-    //   918: pop
-    //   919: aload_0
-    //   920: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   923: aload 8
-    //   925: invokestatic 319	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;Ljava/lang/String;)Ljava/lang/String;
-    //   928: pop
-    //   929: aload_0
-    //   930: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   933: aload 9
-    //   935: invokestatic 322	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;Ljava/util/List;)Ljava/util/List;
-    //   938: pop
-    //   939: ldc_w 301
-    //   942: astore 27
-    //   944: iload_2
-    //   945: ifne +77 -> 1022
-    //   948: new 324	java/util/ArrayList
-    //   951: dup
-    //   952: invokespecial 325	java/util/ArrayList:<init>	()V
-    //   955: astore 8
-    //   957: aload 8
-    //   959: aload_3
-    //   960: invokeinterface 316 2 0
-    //   965: pop
-    //   966: ldc_w 327
-    //   969: ldc_w 329
-    //   972: iconst_4
-    //   973: anewarray 79	java/lang/String
-    //   976: dup
-    //   977: iconst_0
-    //   978: aload_0
-    //   979: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   982: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   985: aastore
-    //   986: dup
-    //   987: iconst_1
-    //   988: aload 8
-    //   990: invokestatic 334	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
-    //   993: aastore
-    //   994: dup
-    //   995: iconst_2
-    //   996: ldc_w 301
-    //   999: aastore
-    //   1000: dup
-    //   1001: iconst_3
-    //   1002: ldc_w 336
-    //   1005: aload_0
-    //   1006: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1009: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1012: invokestatic 339	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
-    //   1015: aastore
-    //   1016: invokestatic 342	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   1019: goto +3 -> 1022
-    //   1022: aload_0
-    //   1023: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1026: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   1029: astore_3
-    //   1030: aload_0
-    //   1031: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1034: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1037: astore 8
-    //   1039: aload_0
-    //   1040: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1043: getfield 190	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   1046: astore 9
-    //   1048: aload_0
-    //   1049: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1052: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1055: astore 28
-    //   1057: aload_3
-    //   1058: aload 6
-    //   1060: iload_2
-    //   1061: iconst_1
-    //   1062: ixor
-    //   1063: aload 8
-    //   1065: aload 9
-    //   1067: aload 28
-    //   1069: invokestatic 347	com/tencent/mobileqq/search/util/ReportUtil:a	(Ljava/util/List;Ljava/util/List;Z[JLjava/lang/String;Ljava/lang/String;)V
-    //   1072: iload 12
-    //   1074: ifne +163 -> 1237
+    //   583: invokevirtual 273	com/tencent/mobileqq/search/model/ISearchResultGroupModel:b	()Ljava/util/List;
+    //   586: ifnull +300 -> 886
+    //   589: aload 28
+    //   591: instanceof 275
+    //   594: ifeq +269 -> 863
+    //   597: aload 28
+    //   599: checkcast 275	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
+    //   602: astore 29
+    //   604: aload 29
+    //   606: invokevirtual 276	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:b	()Ljava/util/List;
+    //   609: astore 30
+    //   611: aload 30
+    //   613: invokeinterface 257 1 0
+    //   618: astore 31
+    //   620: aload 31
+    //   622: invokeinterface 264 1 0
+    //   627: ifeq +61 -> 688
+    //   630: aload 31
+    //   632: invokeinterface 268 1 0
+    //   637: checkcast 278	com/tencent/mobileqq/search/model/ISearchResultModel
+    //   640: astore 32
+    //   642: aload 32
+    //   644: instanceof 280
+    //   647: ifeq +38 -> 685
+    //   650: aload 32
+    //   652: checkcast 280	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem
+    //   655: astore 32
+    //   657: getstatic 285	com/tencent/mobileqq/search/activity/ActiveEntitySearchActivity:s	Z
+    //   660: ifeq +9 -> 669
+    //   663: aload 32
+    //   665: iconst_1
+    //   666: putfield 289	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:Y	I
+    //   669: aload_3
+    //   670: aload 32
+    //   672: invokevirtual 293	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:j	()I
+    //   675: i2l
+    //   676: invokestatic 299	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   679: invokeinterface 304 2 0
+    //   684: pop
+    //   685: goto -65 -> 620
+    //   688: lload 19
+    //   690: lstore 21
+    //   692: lload 19
+    //   694: ldc2_w 258
+    //   697: lcmp
+    //   698: ifne +10 -> 708
+    //   701: aload 29
+    //   703: getfield 307	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
+    //   706: lstore 21
+    //   708: aload 29
+    //   710: getfield 307	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
+    //   713: lstore 25
+    //   715: aload 30
+    //   717: invokeinterface 310 1 0
+    //   722: ifle +59 -> 781
+    //   725: aload 29
+    //   727: getfield 307	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
+    //   730: ldc2_w 311
+    //   733: lcmp
+    //   734: ifne +47 -> 781
+    //   737: aconst_null
+    //   738: ldc_w 314
+    //   741: ldc_w 316
+    //   744: ldc_w 316
+    //   747: ldc_w 318
+    //   750: ldc_w 318
+    //   753: iconst_1
+    //   754: iconst_0
+    //   755: ldc_w 316
+    //   758: ldc_w 316
+    //   761: ldc_w 316
+    //   764: ldc_w 316
+    //   767: invokestatic 323	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   770: lload 25
+    //   772: lstore 23
+    //   774: lload 21
+    //   776: lstore 19
+    //   778: goto +89 -> 867
+    //   781: lload 25
+    //   783: lstore 23
+    //   785: lload 21
+    //   787: lstore 19
+    //   789: aload 30
+    //   791: invokeinterface 310 1 0
+    //   796: ifle +71 -> 867
+    //   799: lload 25
+    //   801: lstore 23
+    //   803: lload 21
+    //   805: lstore 19
+    //   807: aload 29
+    //   809: getfield 307	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	J
+    //   812: ldc2_w 324
+    //   815: lcmp
+    //   816: ifne +51 -> 867
+    //   819: aconst_null
+    //   820: ldc_w 314
+    //   823: ldc_w 316
+    //   826: ldc_w 316
+    //   829: ldc_w 318
+    //   832: ldc_w 318
+    //   835: iconst_2
+    //   836: iconst_0
+    //   837: ldc_w 316
+    //   840: ldc_w 316
+    //   843: ldc_w 316
+    //   846: ldc_w 316
+    //   849: invokestatic 323	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   852: lload 25
+    //   854: lstore 23
+    //   856: lload 21
+    //   858: lstore 19
+    //   860: goto +7 -> 867
+    //   863: lload 21
+    //   865: lstore 23
+    //   867: iload 12
+    //   869: aload 28
+    //   871: invokevirtual 273	com/tencent/mobileqq/search/model/ISearchResultGroupModel:b	()Ljava/util/List;
+    //   874: invokeinterface 310 1 0
+    //   879: iadd
+    //   880: istore 13
+    //   882: lload 19
+    //   884: lstore 25
+    //   886: iload 13
+    //   888: istore 12
+    //   890: lload 25
+    //   892: lstore 19
+    //   894: lload 23
+    //   896: lstore 21
+    //   898: goto -351 -> 547
+    //   901: aload_0
+    //   902: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   905: getfield 328	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:G	Ljava/util/List;
+    //   908: aload_3
+    //   909: invokeinterface 332 2 0
+    //   914: pop
+    //   915: aload_0
+    //   916: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   919: aload 8
+    //   921: invokestatic 335	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;Ljava/lang/String;)Ljava/lang/String;
+    //   924: pop
+    //   925: aload_0
+    //   926: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   929: aload 9
+    //   931: invokestatic 338	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;Ljava/util/List;)Ljava/util/List;
+    //   934: pop
+    //   935: ldc_w 316
+    //   938: astore 27
+    //   940: iload_2
+    //   941: ifne +77 -> 1018
+    //   944: new 340	java/util/ArrayList
+    //   947: dup
+    //   948: invokespecial 341	java/util/ArrayList:<init>	()V
+    //   951: astore 8
+    //   953: aload 8
+    //   955: aload_3
+    //   956: invokeinterface 332 2 0
+    //   961: pop
+    //   962: ldc_w 343
+    //   965: ldc_w 345
+    //   968: iconst_4
+    //   969: anewarray 80	java/lang/String
+    //   972: dup
+    //   973: iconst_0
+    //   974: aload_0
+    //   975: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   978: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   981: aastore
+    //   982: dup
+    //   983: iconst_1
+    //   984: aload 8
+    //   986: invokestatic 350	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
+    //   989: aastore
+    //   990: dup
+    //   991: iconst_2
+    //   992: ldc_w 316
+    //   995: aastore
+    //   996: dup
+    //   997: iconst_3
+    //   998: ldc_w 352
+    //   1001: aload_0
+    //   1002: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1005: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1008: invokestatic 355	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1011: aastore
+    //   1012: invokestatic 358	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   1015: goto +3 -> 1018
+    //   1018: aload_0
+    //   1019: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1022: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   1025: astore_3
+    //   1026: aload_0
+    //   1027: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1030: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1033: astore 8
+    //   1035: aload_0
+    //   1036: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1039: getfield 201	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:N	Ljava/lang/String;
+    //   1042: astore 9
+    //   1044: aload_0
+    //   1045: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1048: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   1051: astore 28
+    //   1053: aload_3
+    //   1054: aload 6
+    //   1056: iload_2
+    //   1057: iconst_1
+    //   1058: ixor
+    //   1059: aload 8
+    //   1061: aload 9
+    //   1063: aload 28
+    //   1065: invokestatic 363	com/tencent/mobileqq/search/util/ReportUtil:a	(Ljava/util/List;Ljava/util/List;Z[JLjava/lang/String;Ljava/lang/String;)V
+    //   1068: aload 6
+    //   1070: aload_0
+    //   1071: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1074: invokestatic 366	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)I
     //   1077: aload_0
     //   1078: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1081: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1084: instanceof 353
-    //   1087: ifeq +147 -> 1234
-    //   1090: aload_0
-    //   1091: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1094: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1097: checkcast 353	com/tencent/mobileqq/search/base/api/SearchInfoInterface
-    //   1100: invokeinterface 355 1 0
-    //   1105: istore 13
-    //   1107: iload 13
-    //   1109: iconst_1
-    //   1110: if_icmpeq +68 -> 1178
-    //   1113: iload 13
-    //   1115: iconst_3
-    //   1116: if_icmpeq +6 -> 1122
-    //   1119: goto +115 -> 1234
-    //   1122: ldc_w 327
-    //   1125: ldc_w 357
-    //   1128: iconst_4
-    //   1129: anewarray 79	java/lang/String
-    //   1132: dup
-    //   1133: iconst_0
-    //   1134: aload_0
-    //   1135: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1138: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1141: aastore
-    //   1142: dup
-    //   1143: iconst_1
-    //   1144: aload_0
-    //   1145: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1148: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1151: invokestatic 359	com/tencent/mobileqq/search/util/SearchUtils:a	([J)Ljava/lang/String;
-    //   1154: aastore
-    //   1155: dup
-    //   1156: iconst_2
-    //   1157: ldc_w 301
-    //   1160: aastore
-    //   1161: dup
-    //   1162: iconst_3
-    //   1163: ldc_w 336
-    //   1166: aload 7
-    //   1168: invokestatic 339	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
-    //   1171: aastore
-    //   1172: invokestatic 342	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   1175: goto +235 -> 1410
-    //   1178: ldc_w 361
-    //   1181: ldc_w 363
-    //   1184: iconst_4
-    //   1185: anewarray 79	java/lang/String
-    //   1188: dup
-    //   1189: iconst_0
-    //   1190: aload_0
-    //   1191: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1194: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1197: aastore
-    //   1198: dup
-    //   1199: iconst_1
-    //   1200: aload_0
-    //   1201: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1204: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1207: invokestatic 359	com/tencent/mobileqq/search/util/SearchUtils:a	([J)Ljava/lang/String;
-    //   1210: aastore
-    //   1211: dup
-    //   1212: iconst_2
-    //   1213: ldc_w 301
-    //   1216: aastore
-    //   1217: dup
-    //   1218: iconst_3
-    //   1219: ldc_w 336
-    //   1222: aload 7
-    //   1224: invokestatic 339	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
-    //   1227: aastore
-    //   1228: invokestatic 342	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   1231: goto +179 -> 1410
-    //   1234: goto +176 -> 1410
-    //   1237: aload_0
-    //   1238: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1241: getfield 366	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfByte	[B
-    //   1244: ifnonnull +166 -> 1410
-    //   1247: aload_0
-    //   1248: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1251: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1254: instanceof 353
-    //   1257: ifeq +153 -> 1410
-    //   1260: aload_0
-    //   1261: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1264: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1267: checkcast 353	com/tencent/mobileqq/search/base/api/SearchInfoInterface
-    //   1270: astore_3
-    //   1271: aload_3
-    //   1272: invokeinterface 355 1 0
-    //   1277: istore 13
-    //   1279: iload 13
-    //   1281: iconst_1
-    //   1282: if_icmpeq +71 -> 1353
-    //   1285: iload 13
-    //   1287: iconst_3
-    //   1288: if_icmpeq +6 -> 1294
-    //   1291: goto +119 -> 1410
-    //   1294: ldc_w 327
-    //   1297: ldc_w 368
-    //   1300: iconst_4
-    //   1301: anewarray 79	java/lang/String
-    //   1304: dup
-    //   1305: iconst_0
-    //   1306: aload_3
-    //   1307: invokeinterface 370 1 0
-    //   1312: aastore
-    //   1313: dup
-    //   1314: iconst_1
-    //   1315: aload_0
-    //   1316: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1319: getfield 312	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   1322: invokestatic 334	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
-    //   1325: aastore
-    //   1326: dup
-    //   1327: iconst_2
-    //   1328: ldc_w 301
-    //   1331: aastore
-    //   1332: dup
-    //   1333: iconst_3
-    //   1334: ldc_w 336
-    //   1337: aload_3
-    //   1338: invokeinterface 373 1 0
-    //   1343: invokestatic 339	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1081: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   1084: invokestatic 369	com/tencent/mobileqq/search/util/ReportUtil:a	(Ljava/util/List;ILjava/lang/String;)V
+    //   1087: iload 12
+    //   1089: ifne +163 -> 1252
+    //   1092: aload_0
+    //   1093: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1096: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1099: instanceof 375
+    //   1102: ifeq +147 -> 1249
+    //   1105: aload_0
+    //   1106: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1109: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1112: checkcast 375	com/tencent/mobileqq/search/base/api/SearchInfoInterface
+    //   1115: invokeinterface 377 1 0
+    //   1120: istore 13
+    //   1122: iload 13
+    //   1124: iconst_1
+    //   1125: if_icmpeq +68 -> 1193
+    //   1128: iload 13
+    //   1130: iconst_3
+    //   1131: if_icmpeq +6 -> 1137
+    //   1134: goto +115 -> 1249
+    //   1137: ldc_w 343
+    //   1140: ldc_w 379
+    //   1143: iconst_4
+    //   1144: anewarray 80	java/lang/String
+    //   1147: dup
+    //   1148: iconst_0
+    //   1149: aload_0
+    //   1150: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1153: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   1156: aastore
+    //   1157: dup
+    //   1158: iconst_1
+    //   1159: aload_0
+    //   1160: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1163: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1166: invokestatic 381	com/tencent/mobileqq/search/util/SearchUtils:a	([J)Ljava/lang/String;
+    //   1169: aastore
+    //   1170: dup
+    //   1171: iconst_2
+    //   1172: ldc_w 316
+    //   1175: aastore
+    //   1176: dup
+    //   1177: iconst_3
+    //   1178: ldc_w 352
+    //   1181: aload 7
+    //   1183: invokestatic 355	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1186: aastore
+    //   1187: invokestatic 358	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   1190: goto +235 -> 1425
+    //   1193: ldc_w 383
+    //   1196: ldc_w 385
+    //   1199: iconst_4
+    //   1200: anewarray 80	java/lang/String
+    //   1203: dup
+    //   1204: iconst_0
+    //   1205: aload_0
+    //   1206: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1209: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   1212: aastore
+    //   1213: dup
+    //   1214: iconst_1
+    //   1215: aload_0
+    //   1216: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1219: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1222: invokestatic 381	com/tencent/mobileqq/search/util/SearchUtils:a	([J)Ljava/lang/String;
+    //   1225: aastore
+    //   1226: dup
+    //   1227: iconst_2
+    //   1228: ldc_w 316
+    //   1231: aastore
+    //   1232: dup
+    //   1233: iconst_3
+    //   1234: ldc_w 352
+    //   1237: aload 7
+    //   1239: invokestatic 355	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1242: aastore
+    //   1243: invokestatic 358	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   1246: goto +179 -> 1425
+    //   1249: goto +176 -> 1425
+    //   1252: aload_0
+    //   1253: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1256: getfield 389	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:o	[B
+    //   1259: ifnonnull +166 -> 1425
+    //   1262: aload_0
+    //   1263: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1266: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1269: instanceof 375
+    //   1272: ifeq +153 -> 1425
+    //   1275: aload_0
+    //   1276: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1279: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1282: checkcast 375	com/tencent/mobileqq/search/base/api/SearchInfoInterface
+    //   1285: astore_3
+    //   1286: aload_3
+    //   1287: invokeinterface 377 1 0
+    //   1292: istore 13
+    //   1294: iload 13
+    //   1296: iconst_1
+    //   1297: if_icmpeq +71 -> 1368
+    //   1300: iload 13
+    //   1302: iconst_3
+    //   1303: if_icmpeq +6 -> 1309
+    //   1306: goto +119 -> 1425
+    //   1309: ldc_w 343
+    //   1312: ldc_w 391
+    //   1315: iconst_4
+    //   1316: anewarray 80	java/lang/String
+    //   1319: dup
+    //   1320: iconst_0
+    //   1321: aload_3
+    //   1322: invokeinterface 394 1 0
+    //   1327: aastore
+    //   1328: dup
+    //   1329: iconst_1
+    //   1330: aload_0
+    //   1331: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1334: getfield 328	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:G	Ljava/util/List;
+    //   1337: invokestatic 350	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
+    //   1340: aastore
+    //   1341: dup
+    //   1342: iconst_2
+    //   1343: ldc_w 316
     //   1346: aastore
-    //   1347: invokestatic 342	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   1350: goto +60 -> 1410
-    //   1353: ldc_w 361
-    //   1356: ldc_w 375
-    //   1359: iconst_4
-    //   1360: anewarray 79	java/lang/String
-    //   1363: dup
-    //   1364: iconst_0
-    //   1365: aload_0
-    //   1366: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1369: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1372: aastore
-    //   1373: dup
-    //   1374: iconst_1
-    //   1375: aload_0
-    //   1376: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1379: getfield 312	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   1382: invokestatic 334	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
-    //   1385: aastore
-    //   1386: dup
-    //   1387: iconst_2
-    //   1388: ldc_w 301
-    //   1391: aastore
-    //   1392: dup
-    //   1393: iconst_3
-    //   1394: ldc_w 377
-    //   1397: aload_3
-    //   1398: invokeinterface 373 1 0
-    //   1403: invokestatic 339	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1347: dup
+    //   1348: iconst_3
+    //   1349: ldc_w 352
+    //   1352: aload_3
+    //   1353: invokeinterface 397 1 0
+    //   1358: invokestatic 355	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1361: aastore
+    //   1362: invokestatic 358	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   1365: goto +60 -> 1425
+    //   1368: ldc_w 383
+    //   1371: ldc_w 399
+    //   1374: iconst_4
+    //   1375: anewarray 80	java/lang/String
+    //   1378: dup
+    //   1379: iconst_0
+    //   1380: aload_0
+    //   1381: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1384: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   1387: aastore
+    //   1388: dup
+    //   1389: iconst_1
+    //   1390: aload_0
+    //   1391: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1394: getfield 328	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:G	Ljava/util/List;
+    //   1397: invokestatic 350	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/util/List;)Ljava/lang/String;
+    //   1400: aastore
+    //   1401: dup
+    //   1402: iconst_2
+    //   1403: ldc_w 316
     //   1406: aastore
-    //   1407: invokestatic 342	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   1410: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1413: ifeq +103 -> 1516
-    //   1416: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1419: astore_3
-    //   1420: new 28	java/lang/StringBuilder
-    //   1423: dup
-    //   1424: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   1427: astore 8
-    //   1429: aload 8
-    //   1431: ldc_w 379
-    //   1434: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1437: pop
-    //   1438: aload 8
-    //   1440: iload_2
-    //   1441: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1444: pop
-    //   1445: aload 8
-    //   1447: ldc_w 381
-    //   1450: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1453: pop
-    //   1454: aload 8
-    //   1456: aload_0
-    //   1457: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1460: getfield 383	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_Int	I
-    //   1463: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1466: pop
-    //   1467: aload 8
-    //   1469: ldc_w 385
-    //   1472: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1475: pop
-    //   1476: aload 8
-    //   1478: aload_0
-    //   1479: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1482: getfield 387	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_Int	I
-    //   1485: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1488: pop
-    //   1489: aload 8
-    //   1491: ldc_w 389
-    //   1494: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1497: pop
-    //   1498: aload 8
-    //   1500: iload 12
-    //   1502: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1505: pop
-    //   1506: aload_3
-    //   1507: iconst_2
-    //   1508: aload 8
-    //   1510: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1513: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1516: aload_0
-    //   1517: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1520: getfield 85	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_AndroidViewView	Landroid/view/View;
-    //   1523: bipush 8
-    //   1525: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   1528: aload_0
-    //   1529: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1532: getfield 392	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_f_of_type_AndroidViewView	Landroid/view/View;
-    //   1535: bipush 8
-    //   1537: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   1540: aload_0
-    //   1541: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1544: getfield 122	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
-    //   1547: iconst_0
-    //   1548: invokevirtual 125	com/tencent/widget/XListView:setVisibility	(I)V
-    //   1551: aload_0
-    //   1552: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1555: getfield 96	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   1558: bipush 8
-    //   1560: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   1563: aload_0
-    //   1564: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1567: astore_3
-    //   1568: aload_3
-    //   1569: iconst_0
-    //   1570: putfield 94	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_Boolean	Z
-    //   1573: aload_3
-    //   1574: aload 4
-    //   1576: putfield 366	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfByte	[B
-    //   1579: aload_3
-    //   1580: iload 5
-    //   1582: putfield 394	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_Boolean	Z
-    //   1585: aload 11
-    //   1587: invokestatic 397	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1590: ifne +156 -> 1746
-    //   1593: new 399	org/json/JSONObject
-    //   1596: dup
-    //   1597: aload 11
-    //   1599: invokespecial 402	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1602: astore 4
-    //   1604: aload 4
-    //   1606: ldc_w 404
-    //   1609: invokevirtual 408	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   1612: istore 17
-    //   1614: aload 4
-    //   1616: ldc_w 410
-    //   1619: invokevirtual 414	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1622: astore_3
-    //   1623: aload 4
-    //   1625: ldc_w 416
-    //   1628: invokevirtual 414	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1631: astore 9
-    //   1633: aload_3
-    //   1634: astore 8
-    //   1636: iload 17
-    //   1638: istore 18
-    //   1640: goto +99 -> 1739
-    //   1643: astore 4
-    //   1645: goto +21 -> 1666
-    //   1648: astore 4
-    //   1650: ldc_w 301
-    //   1653: astore_3
-    //   1654: goto +12 -> 1666
-    //   1657: astore 4
-    //   1659: ldc_w 301
-    //   1662: astore_3
-    //   1663: iconst_0
-    //   1664: istore 17
-    //   1666: aload_3
-    //   1667: astore 8
-    //   1669: iload 17
-    //   1671: istore 18
-    //   1673: aload 27
-    //   1675: astore 9
-    //   1677: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1680: ifeq +59 -> 1739
-    //   1683: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1686: astore 8
-    //   1688: new 28	java/lang/StringBuilder
-    //   1691: dup
-    //   1692: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   1695: astore 9
-    //   1697: aload 9
-    //   1699: ldc_w 418
-    //   1702: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1705: pop
-    //   1706: aload 9
-    //   1708: aload 4
-    //   1710: invokestatic 422	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1713: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1716: pop
-    //   1717: aload 8
-    //   1719: iconst_2
-    //   1720: aload 9
-    //   1722: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1725: invokestatic 59	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1728: aload 27
-    //   1730: astore 9
-    //   1732: iload 17
-    //   1734: istore 18
-    //   1736: aload_3
-    //   1737: astore 8
-    //   1739: aload 9
-    //   1741: astore 4
-    //   1743: goto +31 -> 1774
-    //   1746: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1749: ifeq +13 -> 1762
-    //   1752: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1755: iconst_2
-    //   1756: ldc_w 424
-    //   1759: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1762: ldc_w 301
-    //   1765: astore 8
-    //   1767: aload 8
-    //   1769: astore 4
-    //   1771: iconst_0
-    //   1772: istore 18
-    //   1774: iload 5
-    //   1776: ifeq +134 -> 1910
-    //   1779: aload_0
-    //   1780: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1783: getfield 231	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	Landroid/widget/TextView;
+    //   1407: dup
+    //   1408: iconst_3
+    //   1409: ldc_w 401
+    //   1412: aload_3
+    //   1413: invokeinterface 397 1 0
+    //   1418: invokestatic 355	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[J)Ljava/lang/String;
+    //   1421: aastore
+    //   1422: invokestatic 358	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   1425: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1428: ifeq +103 -> 1531
+    //   1431: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   1434: astore_3
+    //   1435: new 28	java/lang/StringBuilder
+    //   1438: dup
+    //   1439: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   1442: astore 8
+    //   1444: aload 8
+    //   1446: ldc_w 403
+    //   1449: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1452: pop
+    //   1453: aload 8
+    //   1455: iload_2
+    //   1456: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1459: pop
+    //   1460: aload 8
+    //   1462: ldc_w 405
+    //   1465: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1468: pop
+    //   1469: aload 8
+    //   1471: aload_0
+    //   1472: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1475: getfield 408	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:K	I
+    //   1478: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1481: pop
+    //   1482: aload 8
+    //   1484: ldc_w 410
+    //   1487: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1490: pop
+    //   1491: aload 8
+    //   1493: aload_0
+    //   1494: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1497: getfield 412	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:J	I
+    //   1500: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1503: pop
+    //   1504: aload 8
+    //   1506: ldc_w 414
+    //   1509: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1512: pop
+    //   1513: aload 8
+    //   1515: iload 12
+    //   1517: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1520: pop
+    //   1521: aload_3
+    //   1522: iconst_2
+    //   1523: aload 8
+    //   1525: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1528: invokestatic 227	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1531: aload_0
+    //   1532: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1535: getfield 87	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:v	Landroid/view/View;
+    //   1538: bipush 8
+    //   1540: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   1543: aload_0
+    //   1544: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1547: getfield 416	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:w	Landroid/view/View;
+    //   1550: bipush 8
+    //   1552: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   1555: aload_0
+    //   1556: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1559: getfield 129	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:i	Lcom/tencent/widget/XListView;
+    //   1562: iconst_0
+    //   1563: invokevirtual 132	com/tencent/widget/XListView:setVisibility	(I)V
+    //   1566: aload_0
+    //   1567: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1570: getfield 100	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:q	Landroid/view/View;
+    //   1573: bipush 8
+    //   1575: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   1578: aload_0
+    //   1579: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1582: astore_3
+    //   1583: aload_3
+    //   1584: iconst_0
+    //   1585: putfield 97	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:E	Z
+    //   1588: aload_3
+    //   1589: aload 4
+    //   1591: putfield 389	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:o	[B
+    //   1594: aload_3
+    //   1595: iload 5
+    //   1597: putfield 419	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:p	Z
+    //   1600: aload 11
+    //   1602: invokestatic 422	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1605: ifne +156 -> 1761
+    //   1608: new 424	org/json/JSONObject
+    //   1611: dup
+    //   1612: aload 11
+    //   1614: invokespecial 427	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1617: astore 4
+    //   1619: aload 4
+    //   1621: ldc_w 429
+    //   1624: invokevirtual 433	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   1627: istore 17
+    //   1629: aload 4
+    //   1631: ldc_w 435
+    //   1634: invokevirtual 439	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1637: astore_3
+    //   1638: aload 4
+    //   1640: ldc_w 441
+    //   1643: invokevirtual 439	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1646: astore 9
+    //   1648: aload_3
+    //   1649: astore 8
+    //   1651: iload 17
+    //   1653: istore 18
+    //   1655: goto +99 -> 1754
+    //   1658: astore 4
+    //   1660: goto +21 -> 1681
+    //   1663: astore 4
+    //   1665: ldc_w 316
+    //   1668: astore_3
+    //   1669: goto +12 -> 1681
+    //   1672: astore 4
+    //   1674: ldc_w 316
+    //   1677: astore_3
+    //   1678: iconst_0
+    //   1679: istore 17
+    //   1681: aload_3
+    //   1682: astore 8
+    //   1684: iload 17
+    //   1686: istore 18
+    //   1688: aload 27
+    //   1690: astore 9
+    //   1692: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1695: ifeq +59 -> 1754
+    //   1698: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   1701: astore 8
+    //   1703: new 28	java/lang/StringBuilder
+    //   1706: dup
+    //   1707: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   1710: astore 9
+    //   1712: aload 9
+    //   1714: ldc_w 443
+    //   1717: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1720: pop
+    //   1721: aload 9
+    //   1723: aload 4
+    //   1725: invokestatic 447	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1728: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1731: pop
+    //   1732: aload 8
+    //   1734: iconst_2
+    //   1735: aload 9
+    //   1737: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1740: invokestatic 59	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1743: aload 27
+    //   1745: astore 9
+    //   1747: iload 17
+    //   1749: istore 18
+    //   1751: aload_3
+    //   1752: astore 8
+    //   1754: aload 9
+    //   1756: astore 4
+    //   1758: goto +31 -> 1789
+    //   1761: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1764: ifeq +13 -> 1777
+    //   1767: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   1770: iconst_2
+    //   1771: ldc_w 449
+    //   1774: invokestatic 227	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1777: ldc_w 316
+    //   1780: astore 8
+    //   1782: aload 8
+    //   1784: astore 4
     //   1786: iconst_0
-    //   1787: invokevirtual 110	android/widget/TextView:setVisibility	(I)V
-    //   1790: aload_0
-    //   1791: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1794: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1797: ifnull +113 -> 1910
-    //   1800: aload_0
-    //   1801: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1804: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1807: arraylength
-    //   1808: iconst_2
-    //   1809: if_icmpne +101 -> 1910
-    //   1812: new 324	java/util/ArrayList
-    //   1815: dup
-    //   1816: invokespecial 325	java/util/ArrayList:<init>	()V
-    //   1819: astore_3
-    //   1820: aload_0
-    //   1821: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1824: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   1827: astore 9
-    //   1829: aload 9
-    //   1831: arraylength
-    //   1832: istore 14
-    //   1834: iconst_0
-    //   1835: istore 13
-    //   1837: iload 13
-    //   1839: iload 14
-    //   1841: if_icmpge +27 -> 1868
-    //   1844: aload_3
-    //   1845: aload 9
-    //   1847: iload 13
-    //   1849: laload
-    //   1850: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1853: invokeinterface 425 2 0
-    //   1858: pop
-    //   1859: iload 13
-    //   1861: iconst_1
-    //   1862: iadd
-    //   1863: istore 13
-    //   1865: goto -28 -> 1837
-    //   1868: aload_3
-    //   1869: ldc2_w 296
-    //   1872: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1875: invokeinterface 428 2 0
-    //   1880: ifeq +30 -> 1910
+    //   1787: istore 18
+    //   1789: iload 5
+    //   1791: ifeq +134 -> 1925
+    //   1794: aload_0
+    //   1795: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1798: getfield 244	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:O	Landroid/widget/TextView;
+    //   1801: iconst_0
+    //   1802: invokevirtual 116	android/widget/TextView:setVisibility	(I)V
+    //   1805: aload_0
+    //   1806: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1809: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1812: ifnull +113 -> 1925
+    //   1815: aload_0
+    //   1816: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1819: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1822: arraylength
+    //   1823: iconst_2
+    //   1824: if_icmpne +101 -> 1925
+    //   1827: new 340	java/util/ArrayList
+    //   1830: dup
+    //   1831: invokespecial 341	java/util/ArrayList:<init>	()V
+    //   1834: astore_3
+    //   1835: aload_0
+    //   1836: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1839: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   1842: astore 9
+    //   1844: aload 9
+    //   1846: arraylength
+    //   1847: istore 14
+    //   1849: iconst_0
+    //   1850: istore 13
+    //   1852: iload 13
+    //   1854: iload 14
+    //   1856: if_icmpge +27 -> 1883
+    //   1859: aload_3
+    //   1860: aload 9
+    //   1862: iload 13
+    //   1864: laload
+    //   1865: invokestatic 299	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1868: invokeinterface 450 2 0
+    //   1873: pop
+    //   1874: iload 13
+    //   1876: iconst_1
+    //   1877: iadd
+    //   1878: istore 13
+    //   1880: goto -28 -> 1852
     //   1883: aload_3
-    //   1884: ldc2_w 309
-    //   1887: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1890: invokeinterface 428 2 0
-    //   1895: ifeq +15 -> 1910
-    //   1898: aload_0
-    //   1899: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1902: getfield 231	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	Landroid/widget/TextView;
-    //   1905: bipush 8
-    //   1907: invokevirtual 110	android/widget/TextView:setVisibility	(I)V
-    //   1910: aload_0
-    //   1911: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1914: invokestatic 431	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/lang/String;
-    //   1917: invokestatic 397	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1920: ifne +507 -> 2427
-    //   1923: aload_0
-    //   1924: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1927: invokestatic 434	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/util/List;
-    //   1930: invokeinterface 295 1 0
-    //   1935: ifle +492 -> 2427
+    //   1884: ldc2_w 311
+    //   1887: invokestatic 299	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1890: invokeinterface 453 2 0
+    //   1895: ifeq +30 -> 1925
+    //   1898: aload_3
+    //   1899: ldc2_w 324
+    //   1902: invokestatic 299	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1905: invokeinterface 453 2 0
+    //   1910: ifeq +15 -> 1925
+    //   1913: aload_0
+    //   1914: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1917: getfield 244	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:O	Landroid/widget/TextView;
+    //   1920: bipush 8
+    //   1922: invokevirtual 116	android/widget/TextView:setVisibility	(I)V
+    //   1925: aload_0
+    //   1926: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1929: invokestatic 456	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/lang/String;
+    //   1932: invokestatic 422	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1935: ifne +507 -> 2442
     //   1938: aload_0
     //   1939: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1942: getfield 436	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   1945: aload_0
-    //   1946: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1949: invokestatic 431	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/lang/String;
-    //   1952: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   1955: aload_0
-    //   1956: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1959: getfield 439	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   1962: invokevirtual 444	android/widget/LinearLayout:removeAllViews	()V
-    //   1965: aload_0
-    //   1966: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   1969: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1972: astore 9
-    //   1974: aload 9
-    //   1976: ifnull +434 -> 2410
-    //   1979: aload 9
-    //   1981: invokevirtual 449	com/tencent/mobileqq/app/BaseActivity:isFinishing	()Z
-    //   1984: ifeq +6 -> 1990
-    //   1987: goto +423 -> 2410
-    //   1990: aload 9
-    //   1992: ldc_w 450
-    //   1995: invokestatic 455	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   1998: istore 14
-    //   2000: aload 9
-    //   2002: ldc_w 456
-    //   2005: invokestatic 455	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   2008: istore 15
-    //   2010: aload 9
-    //   2012: fconst_2
-    //   2013: invokestatic 455	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   2016: istore 16
-    //   2018: new 458	android/graphics/drawable/GradientDrawable
-    //   2021: dup
-    //   2022: invokespecial 459	android/graphics/drawable/GradientDrawable:<init>	()V
-    //   2025: astore 11
-    //   2027: aload 11
-    //   2029: aload_0
-    //   2030: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2033: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2036: ldc_w 460
-    //   2039: invokestatic 455	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   2042: i2f
-    //   2043: invokevirtual 464	android/graphics/drawable/GradientDrawable:setCornerRadius	(F)V
-    //   2046: ldc_w 466
-    //   2049: invokestatic 472	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   2052: istore 13
-    //   2054: invokestatic 478	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   2057: invokevirtual 482	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   2060: invokestatic 488	com/tencent/mobileqq/vas/theme/api/ThemeUtil:isInNightMode	(Lmqq/app/AppRuntime;)Z
-    //   2063: istore 17
-    //   2065: iload 17
-    //   2067: ifeq +11 -> 2078
-    //   2070: ldc_w 490
-    //   2073: invokestatic 472	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   2076: istore 13
-    //   2078: aload 11
-    //   2080: iconst_1
-    //   2081: iload 13
-    //   2083: invokevirtual 494	android/graphics/drawable/GradientDrawable:setStroke	(II)V
-    //   2086: aload_0
-    //   2087: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2090: invokestatic 434	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/util/List;
-    //   2093: invokeinterface 244 1 0
-    //   2098: astore_3
-    //   2099: aload_3
-    //   2100: invokeinterface 251 1 0
-    //   2105: ifeq +207 -> 2312
-    //   2108: aload_3
-    //   2109: invokeinterface 255 1 0
-    //   2114: checkcast 496	tencent/im/oidb/search/DynamicTabSearch$SubHotWord
-    //   2117: astore 27
-    //   2119: aload 27
-    //   2121: getfield 500	tencent/im/oidb/search/DynamicTabSearch$SubHotWord:show_word	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   2124: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   2127: invokevirtual 511	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   2130: astore 28
-    //   2132: aload 28
-    //   2134: invokestatic 397	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2137: ifeq +6 -> 2143
-    //   2140: goto -41 -> 2099
-    //   2143: new 109	android/widget/TextView
-    //   2146: dup
-    //   2147: aload 9
-    //   2149: invokespecial 514	android/widget/TextView:<init>	(Landroid/content/Context;)V
-    //   2152: astore 29
-    //   2154: new 516	android/widget/LinearLayout$LayoutParams
-    //   2157: dup
-    //   2158: bipush 254
-    //   2160: bipush 254
-    //   2162: invokespecial 518	android/widget/LinearLayout$LayoutParams:<init>	(II)V
-    //   2165: astore 30
-    //   2167: aload 30
-    //   2169: iload 14
-    //   2171: putfield 521	android/widget/LinearLayout$LayoutParams:rightMargin	I
-    //   2174: aload 29
-    //   2176: iload 15
-    //   2178: iload 16
-    //   2180: iload 15
-    //   2182: iload 16
-    //   2184: invokevirtual 525	android/widget/TextView:setPadding	(IIII)V
-    //   2187: ldc_w 527
-    //   2190: invokestatic 472	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   2193: istore 13
-    //   2195: iload 17
-    //   2197: ifeq +11 -> 2208
-    //   2200: ldc_w 490
-    //   2203: invokestatic 472	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   2206: istore 13
-    //   2208: aload 29
-    //   2210: iload 13
-    //   2212: invokevirtual 530	android/widget/TextView:setTextColor	(I)V
-    //   2215: getstatic 535	android/os/Build$VERSION:SDK_INT	I
-    //   2218: bipush 16
-    //   2220: if_icmpge +16 -> 2236
+    //   1942: invokestatic 460	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/util/List;
+    //   1945: invokeinterface 310 1 0
+    //   1950: ifle +492 -> 2442
+    //   1953: aload_0
+    //   1954: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1957: getfield 463	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:t	Landroid/widget/TextView;
+    //   1960: aload_0
+    //   1961: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1964: invokestatic 456	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/lang/String;
+    //   1967: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   1970: aload_0
+    //   1971: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1974: getfield 467	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:u	Landroid/widget/LinearLayout;
+    //   1977: invokevirtual 472	android/widget/LinearLayout:removeAllViews	()V
+    //   1980: aload_0
+    //   1981: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   1984: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1987: astore 9
+    //   1989: aload 9
+    //   1991: ifnull +434 -> 2425
+    //   1994: aload 9
+    //   1996: invokevirtual 477	com/tencent/mobileqq/app/BaseActivity:isFinishing	()Z
+    //   1999: ifeq +6 -> 2005
+    //   2002: goto +423 -> 2425
+    //   2005: aload 9
+    //   2007: ldc_w 478
+    //   2010: invokestatic 483	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   2013: istore 14
+    //   2015: aload 9
+    //   2017: ldc_w 484
+    //   2020: invokestatic 483	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   2023: istore 15
+    //   2025: aload 9
+    //   2027: fconst_2
+    //   2028: invokestatic 483	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   2031: istore 16
+    //   2033: new 486	android/graphics/drawable/GradientDrawable
+    //   2036: dup
+    //   2037: invokespecial 487	android/graphics/drawable/GradientDrawable:<init>	()V
+    //   2040: astore 11
+    //   2042: aload 11
+    //   2044: aload_0
+    //   2045: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2048: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2051: ldc_w 488
+    //   2054: invokestatic 483	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   2057: i2f
+    //   2058: invokevirtual 492	android/graphics/drawable/GradientDrawable:setCornerRadius	(F)V
+    //   2061: ldc_w 494
+    //   2064: invokestatic 500	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   2067: istore 13
+    //   2069: invokestatic 506	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   2072: invokevirtual 510	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   2075: invokestatic 516	com/tencent/mobileqq/vas/theme/api/ThemeUtil:isInNightMode	(Lmqq/app/AppRuntime;)Z
+    //   2078: istore 17
+    //   2080: iload 17
+    //   2082: ifeq +11 -> 2093
+    //   2085: ldc_w 518
+    //   2088: invokestatic 500	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   2091: istore 13
+    //   2093: aload 11
+    //   2095: iconst_1
+    //   2096: iload 13
+    //   2098: invokevirtual 522	android/graphics/drawable/GradientDrawable:setStroke	(II)V
+    //   2101: aload_0
+    //   2102: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2105: invokestatic 460	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)Ljava/util/List;
+    //   2108: invokeinterface 257 1 0
+    //   2113: astore_3
+    //   2114: aload_3
+    //   2115: invokeinterface 264 1 0
+    //   2120: ifeq +207 -> 2327
+    //   2123: aload_3
+    //   2124: invokeinterface 268 1 0
+    //   2129: checkcast 524	tencent/im/oidb/search/DynamicTabSearch$SubHotWord
+    //   2132: astore 27
+    //   2134: aload 27
+    //   2136: getfield 528	tencent/im/oidb/search/DynamicTabSearch$SubHotWord:show_word	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   2139: invokevirtual 534	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   2142: invokevirtual 539	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   2145: astore 28
+    //   2147: aload 28
+    //   2149: invokestatic 422	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2152: ifeq +6 -> 2158
+    //   2155: goto -41 -> 2114
+    //   2158: new 115	android/widget/TextView
+    //   2161: dup
+    //   2162: aload 9
+    //   2164: invokespecial 542	android/widget/TextView:<init>	(Landroid/content/Context;)V
+    //   2167: astore 29
+    //   2169: new 544	android/widget/LinearLayout$LayoutParams
+    //   2172: dup
+    //   2173: bipush 254
+    //   2175: bipush 254
+    //   2177: invokespecial 546	android/widget/LinearLayout$LayoutParams:<init>	(II)V
+    //   2180: astore 30
+    //   2182: aload 30
+    //   2184: iload 14
+    //   2186: putfield 549	android/widget/LinearLayout$LayoutParams:rightMargin	I
+    //   2189: aload 29
+    //   2191: iload 15
+    //   2193: iload 16
+    //   2195: iload 15
+    //   2197: iload 16
+    //   2199: invokevirtual 553	android/widget/TextView:setPadding	(IIII)V
+    //   2202: ldc_w 555
+    //   2205: invokestatic 500	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   2208: istore 13
+    //   2210: iload 17
+    //   2212: ifeq +11 -> 2223
+    //   2215: ldc_w 518
+    //   2218: invokestatic 500	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   2221: istore 13
     //   2223: aload 29
-    //   2225: aload 11
-    //   2227: invokevirtual 541	android/graphics/drawable/Drawable:mutate	()Landroid/graphics/drawable/Drawable;
-    //   2230: invokevirtual 545	android/widget/TextView:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   2233: goto +13 -> 2246
-    //   2236: aload 29
-    //   2238: aload 11
-    //   2240: invokevirtual 541	android/graphics/drawable/Drawable:mutate	()Landroid/graphics/drawable/Drawable;
-    //   2243: invokevirtual 548	android/widget/TextView:setBackground	(Landroid/graphics/drawable/Drawable;)V
-    //   2246: aload 29
-    //   2248: aload 28
-    //   2250: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   2253: aload 29
-    //   2255: bipush 17
-    //   2257: invokevirtual 551	android/widget/TextView:setGravity	(I)V
-    //   2260: aload 29
-    //   2262: iconst_1
-    //   2263: ldc_w 552
-    //   2266: invokevirtual 556	android/widget/TextView:setTextSize	(IF)V
-    //   2269: aload 29
-    //   2271: aload 28
-    //   2273: invokevirtual 559	android/widget/TextView:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   2276: aload 29
-    //   2278: aload_0
-    //   2279: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2282: invokevirtual 119	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   2285: aload 29
-    //   2287: ldc_w 560
-    //   2290: aload 27
-    //   2292: invokevirtual 564	android/widget/TextView:setTag	(ILjava/lang/Object;)V
-    //   2295: aload_0
-    //   2296: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2299: getfield 439	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   2302: aload 29
-    //   2304: aload 30
-    //   2306: invokevirtual 568	android/widget/LinearLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-    //   2309: goto -210 -> 2099
-    //   2312: aload_0
-    //   2313: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2316: getfield 439	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   2319: invokevirtual 571	android/widget/LinearLayout:getChildCount	()I
-    //   2322: ifne +22 -> 2344
-    //   2325: aload_0
-    //   2326: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2329: getfield 573	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_AndroidViewView	Landroid/view/View;
-    //   2332: bipush 8
-    //   2334: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   2337: iload 12
-    //   2339: istore 14
-    //   2341: goto +102 -> 2443
-    //   2344: aload_0
-    //   2345: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2348: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2351: ifnull +18 -> 2369
-    //   2354: aload_0
-    //   2355: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2358: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2361: invokeinterface 104 1 0
-    //   2366: ifeq +26 -> 2392
-    //   2369: iload 12
-    //   2371: istore 14
-    //   2373: aload 6
-    //   2375: ifnull +68 -> 2443
-    //   2378: iload 12
-    //   2380: istore 14
-    //   2382: aload 6
-    //   2384: invokeinterface 104 1 0
-    //   2389: ifne +54 -> 2443
-    //   2392: aload_0
-    //   2393: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2396: getfield 573	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_AndroidViewView	Landroid/view/View;
-    //   2399: iconst_0
-    //   2400: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   2403: iload 12
-    //   2405: istore 14
-    //   2407: goto +36 -> 2443
-    //   2410: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2413: ifeq +13 -> 2426
-    //   2416: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2419: iconst_2
-    //   2420: ldc_w 575
-    //   2423: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2426: return
-    //   2427: aload_0
-    //   2428: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2431: getfield 573	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_AndroidViewView	Landroid/view/View;
-    //   2434: bipush 8
-    //   2436: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   2439: iload 12
-    //   2441: istore 14
-    //   2443: aload_0
-    //   2444: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2447: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2450: ifnull +308 -> 2758
-    //   2453: aload_0
-    //   2454: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2457: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2460: invokeinterface 104 1 0
-    //   2465: ifne +293 -> 2758
-    //   2468: aload 6
-    //   2470: iload_2
-    //   2471: aload_0
-    //   2472: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2475: getfield 577	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_f_of_type_Boolean	Z
-    //   2478: invokestatic 582	com/tencent/mobileqq/search/SearchUtil:a	(Ljava/util/List;ZZ)Ljava/util/List;
-    //   2481: astore_3
-    //   2482: iload_2
-    //   2483: ifne +233 -> 2716
-    //   2486: lload 19
-    //   2488: aload_0
-    //   2489: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2492: invokestatic 585	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)J
-    //   2495: lcmp
-    //   2496: ifne +220 -> 2716
-    //   2499: iload 10
-    //   2501: ifne +215 -> 2716
-    //   2504: aload_3
-    //   2505: ifnull +211 -> 2716
-    //   2508: aload_3
-    //   2509: invokeinterface 295 1 0
-    //   2514: ifle +202 -> 2716
-    //   2517: aload_0
-    //   2518: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2521: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2524: aload_0
-    //   2525: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2528: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2531: invokeinterface 295 1 0
-    //   2536: iconst_1
-    //   2537: isub
-    //   2538: invokeinterface 588 2 0
-    //   2543: checkcast 590	com/tencent/mobileqq/search/model/IModel
-    //   2546: astore 4
-    //   2548: aload_3
-    //   2549: iconst_0
-    //   2550: invokeinterface 593 2 0
-    //   2555: pop
-    //   2556: iconst_0
-    //   2557: istore 12
-    //   2559: iconst_0
-    //   2560: istore 13
-    //   2562: iload 13
-    //   2564: aload_3
-    //   2565: invokeinterface 295 1 0
-    //   2570: if_icmpge +40 -> 2610
-    //   2573: aload_3
-    //   2574: iload 13
-    //   2576: invokeinterface 588 2 0
-    //   2581: checkcast 590	com/tencent/mobileqq/search/model/IModel
-    //   2584: instanceof 595
-    //   2587: ifeq +6 -> 2593
-    //   2590: goto +24 -> 2614
-    //   2593: iload 13
-    //   2595: iconst_1
-    //   2596: iadd
-    //   2597: istore 15
-    //   2599: iload 13
-    //   2601: istore 12
-    //   2603: iload 15
-    //   2605: istore 13
-    //   2607: goto -45 -> 2562
-    //   2610: iload 12
-    //   2612: istore 13
-    //   2614: aload 4
-    //   2616: instanceof 265
-    //   2619: ifeq +36 -> 2655
-    //   2622: aload 4
-    //   2624: checkcast 265	com/tencent/mobileqq/search/model/ISearchResultModel
-    //   2627: astore 4
+    //   2225: iload 13
+    //   2227: invokevirtual 558	android/widget/TextView:setTextColor	(I)V
+    //   2230: getstatic 563	android/os/Build$VERSION:SDK_INT	I
+    //   2233: bipush 16
+    //   2235: if_icmpge +16 -> 2251
+    //   2238: aload 29
+    //   2240: aload 11
+    //   2242: invokevirtual 569	android/graphics/drawable/Drawable:mutate	()Landroid/graphics/drawable/Drawable;
+    //   2245: invokevirtual 573	android/widget/TextView:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   2248: goto +13 -> 2261
+    //   2251: aload 29
+    //   2253: aload 11
+    //   2255: invokevirtual 569	android/graphics/drawable/Drawable:mutate	()Landroid/graphics/drawable/Drawable;
+    //   2258: invokevirtual 576	android/widget/TextView:setBackground	(Landroid/graphics/drawable/Drawable;)V
+    //   2261: aload 29
+    //   2263: aload 28
+    //   2265: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   2268: aload 29
+    //   2270: bipush 17
+    //   2272: invokevirtual 579	android/widget/TextView:setGravity	(I)V
+    //   2275: aload 29
+    //   2277: iconst_1
+    //   2278: ldc_w 580
+    //   2281: invokevirtual 584	android/widget/TextView:setTextSize	(IF)V
+    //   2284: aload 29
+    //   2286: aload 28
+    //   2288: invokevirtual 587	android/widget/TextView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   2291: aload 29
+    //   2293: aload_0
+    //   2294: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2297: invokevirtual 125	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   2300: aload 29
+    //   2302: ldc_w 588
+    //   2305: aload 27
+    //   2307: invokevirtual 592	android/widget/TextView:setTag	(ILjava/lang/Object;)V
+    //   2310: aload_0
+    //   2311: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2314: getfield 467	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:u	Landroid/widget/LinearLayout;
+    //   2317: aload 29
+    //   2319: aload 30
+    //   2321: invokevirtual 596	android/widget/LinearLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   2324: goto -210 -> 2114
+    //   2327: aload_0
+    //   2328: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2331: getfield 467	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:u	Landroid/widget/LinearLayout;
+    //   2334: invokevirtual 599	android/widget/LinearLayout:getChildCount	()I
+    //   2337: ifne +22 -> 2359
+    //   2340: aload_0
+    //   2341: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2344: getfield 601	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:s	Landroid/view/View;
+    //   2347: bipush 8
+    //   2349: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   2352: iload 12
+    //   2354: istore 14
+    //   2356: goto +102 -> 2458
+    //   2359: aload_0
+    //   2360: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2363: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2366: ifnull +18 -> 2384
+    //   2369: aload_0
+    //   2370: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2373: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2376: invokeinterface 109 1 0
+    //   2381: ifeq +26 -> 2407
+    //   2384: iload 12
+    //   2386: istore 14
+    //   2388: aload 6
+    //   2390: ifnull +68 -> 2458
+    //   2393: iload 12
+    //   2395: istore 14
+    //   2397: aload 6
+    //   2399: invokeinterface 109 1 0
+    //   2404: ifne +54 -> 2458
+    //   2407: aload_0
+    //   2408: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2411: getfield 601	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:s	Landroid/view/View;
+    //   2414: iconst_0
+    //   2415: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   2418: iload 12
+    //   2420: istore 14
+    //   2422: goto +36 -> 2458
+    //   2425: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2428: ifeq +13 -> 2441
+    //   2431: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   2434: iconst_2
+    //   2435: ldc_w 603
+    //   2438: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2441: return
+    //   2442: aload_0
+    //   2443: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2446: getfield 601	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:s	Landroid/view/View;
+    //   2449: bipush 8
+    //   2451: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   2454: iload 12
+    //   2456: istore 14
+    //   2458: aload_0
+    //   2459: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2462: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2465: ifnull +306 -> 2771
+    //   2468: aload_0
+    //   2469: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2472: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2475: invokeinterface 109 1 0
+    //   2480: ifne +291 -> 2771
+    //   2483: aload 6
+    //   2485: iload_2
+    //   2486: aload_0
+    //   2487: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2490: getfield 606	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:H	Z
+    //   2493: invokestatic 611	com/tencent/mobileqq/search/SearchUtil:a	(Ljava/util/List;ZZ)Ljava/util/List;
+    //   2496: astore_3
+    //   2497: iload_2
+    //   2498: ifne +231 -> 2729
+    //   2501: lload 19
+    //   2503: aload_0
+    //   2504: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2507: invokestatic 614	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:d	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;)J
+    //   2510: lcmp
+    //   2511: ifne +218 -> 2729
+    //   2514: iload 10
+    //   2516: ifne +213 -> 2729
+    //   2519: aload_3
+    //   2520: ifnull +209 -> 2729
+    //   2523: aload_3
+    //   2524: invokeinterface 310 1 0
+    //   2529: ifle +200 -> 2729
+    //   2532: aload_0
+    //   2533: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2536: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2539: aload_0
+    //   2540: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2543: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2546: invokeinterface 310 1 0
+    //   2551: iconst_1
+    //   2552: isub
+    //   2553: invokeinterface 617 2 0
+    //   2558: checkcast 619	com/tencent/mobileqq/search/model/IModel
+    //   2561: astore 4
+    //   2563: aload_3
+    //   2564: iconst_0
+    //   2565: invokeinterface 622 2 0
+    //   2570: pop
+    //   2571: iconst_0
+    //   2572: istore 12
+    //   2574: iconst_0
+    //   2575: istore 13
+    //   2577: iload 13
+    //   2579: aload_3
+    //   2580: invokeinterface 310 1 0
+    //   2585: if_icmpge +40 -> 2625
+    //   2588: aload_3
+    //   2589: iload 13
+    //   2591: invokeinterface 617 2 0
+    //   2596: checkcast 619	com/tencent/mobileqq/search/model/IModel
+    //   2599: instanceof 624
+    //   2602: ifeq +6 -> 2608
+    //   2605: goto +24 -> 2629
+    //   2608: iload 13
+    //   2610: iconst_1
+    //   2611: iadd
+    //   2612: istore 15
+    //   2614: iload 13
+    //   2616: istore 12
+    //   2618: iload 15
+    //   2620: istore 13
+    //   2622: goto -45 -> 2577
+    //   2625: iload 12
+    //   2627: istore 13
     //   2629: aload 4
-    //   2631: invokeinterface 597 1 0
-    //   2636: istore 12
-    //   2638: aload 4
-    //   2640: iload 12
-    //   2642: iload 13
-    //   2644: iadd
-    //   2645: iload 12
-    //   2647: iconst_1
-    //   2648: isub
-    //   2649: invokestatic 602	com/tencent/mobileqq/search/base/util/SearchViewUtils:a	(Lcom/tencent/mobileqq/search/model/ISearchResultModel;II)V
-    //   2652: goto +6 -> 2658
-    //   2655: iconst_0
-    //   2656: istore 12
-    //   2658: iconst_0
-    //   2659: istore 15
-    //   2661: iload 15
-    //   2663: iload 13
-    //   2665: if_icmpge +51 -> 2716
-    //   2668: aload_3
-    //   2669: iload 15
-    //   2671: invokeinterface 588 2 0
-    //   2676: checkcast 590	com/tencent/mobileqq/search/model/IModel
-    //   2679: astore 4
-    //   2681: aload 4
-    //   2683: instanceof 265
-    //   2686: ifeq +21 -> 2707
-    //   2689: aload 4
-    //   2691: checkcast 265	com/tencent/mobileqq/search/model/ISearchResultModel
-    //   2694: iload 12
-    //   2696: iload 13
-    //   2698: iadd
-    //   2699: iload 12
-    //   2701: iload 15
-    //   2703: iadd
-    //   2704: invokestatic 602	com/tencent/mobileqq/search/base/util/SearchViewUtils:a	(Lcom/tencent/mobileqq/search/model/ISearchResultModel;II)V
-    //   2707: iload 15
-    //   2709: iconst_1
-    //   2710: iadd
-    //   2711: istore 15
-    //   2713: goto -52 -> 2661
-    //   2716: aload_0
-    //   2717: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2720: aload_3
-    //   2721: invokevirtual 605	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Ljava/util/List;)V
-    //   2724: aload_0
-    //   2725: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2728: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2731: aload_3
-    //   2732: invokeinterface 316 2 0
-    //   2737: pop
-    //   2738: aload_0
-    //   2739: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2742: getfield 608	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqSearchAdapterSubBusinessSearchAdapter	Lcom/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter;
-    //   2745: aload_0
-    //   2746: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2749: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   2752: invokevirtual 611	com/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter:a	(Ljava/util/List;)V
-    //   2755: goto +642 -> 3397
-    //   2758: aload 6
-    //   2760: ifnull +31 -> 2791
-    //   2763: aload 6
-    //   2765: invokeinterface 104 1 0
-    //   2770: ifeq +6 -> 2776
-    //   2773: goto +18 -> 2791
-    //   2776: aload_0
-    //   2777: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2780: getfield 128	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Landroid/view/View;
-    //   2783: bipush 8
-    //   2785: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   2788: goto +560 -> 3348
-    //   2791: aload_0
-    //   2792: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2795: getfield 128	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Landroid/view/View;
-    //   2798: iconst_0
-    //   2799: invokevirtual 91	android/view/View:setVisibility	(I)V
-    //   2802: aload_0
-    //   2803: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2806: getfield 614	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2809: getstatic 619	com/tencent/mobileqq/app/QQManagerFactory:MAYKNOW_RECOMMEND_MANAGER	I
-    //   2812: invokevirtual 625	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   2815: checkcast 627	com/tencent/mobileqq/app/MayknowRecommendManager
-    //   2818: astore_3
-    //   2819: iload 18
-    //   2821: ifne +316 -> 3137
-    //   2824: aload_3
-    //   2825: getfield 628	com/tencent/mobileqq/app/MayknowRecommendManager:jdField_d_of_type_Boolean	Z
-    //   2828: ifeq +309 -> 3137
-    //   2831: aload_0
-    //   2832: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2835: getfield 631	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
-    //   2838: ifnonnull +275 -> 3113
-    //   2841: aload_0
-    //   2842: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2845: astore_3
-    //   2846: aload_3
-    //   2847: new 633	com/tencent/mobileqq/activity/contact/recommendtroop/RecommendTroopListWrapperForSearchEmpty
-    //   2850: dup
-    //   2851: aload_3
-    //   2852: getfield 614	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2855: aload_0
-    //   2856: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2859: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2862: aload_0
-    //   2863: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2866: getfield 222	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
-    //   2869: aconst_null
-    //   2870: invokespecial 636	com/tencent/mobileqq/activity/contact/recommendtroop/RecommendTroopListWrapperForSearchEmpty:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Lcom/tencent/widget/XListView;Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper$RecommendTroopListWrapperCallback;)V
-    //   2873: putfield 631	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
-    //   2876: aload_0
-    //   2877: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2880: getfield 631	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
-    //   2883: invokevirtual 641	com/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper:a	()Lcom/tencent/widget/XListView;
-    //   2886: astore_3
-    //   2887: new 109	android/widget/TextView
-    //   2890: dup
-    //   2891: aload_0
-    //   2892: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2895: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2898: invokespecial 514	android/widget/TextView:<init>	(Landroid/content/Context;)V
-    //   2901: astore 4
-    //   2903: aload 4
-    //   2905: bipush 17
-    //   2907: invokevirtual 551	android/widget/TextView:setGravity	(I)V
-    //   2910: aload 4
-    //   2912: new 643	com/tencent/widget/AbsListView$LayoutParams
-    //   2915: dup
-    //   2916: iconst_m1
-    //   2917: ldc_w 644
-    //   2920: aload_0
-    //   2921: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2924: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   2927: invokestatic 649	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
-    //   2930: invokespecial 650	com/tencent/widget/AbsListView$LayoutParams:<init>	(II)V
-    //   2933: invokevirtual 654	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   2936: aload 4
-    //   2938: aload_0
-    //   2939: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2942: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   2945: ldc_w 655
-    //   2948: invokevirtual 661	android/content/res/Resources:getColor	(I)I
-    //   2951: invokevirtual 530	android/widget/TextView:setTextColor	(I)V
-    //   2954: aload 4
-    //   2956: iconst_1
-    //   2957: ldc_w 662
-    //   2960: invokevirtual 556	android/widget/TextView:setTextSize	(IF)V
-    //   2963: aload 4
-    //   2965: ldc_w 663
-    //   2968: invokestatic 164	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   2971: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   2974: aload 4
-    //   2976: ldc_w 664
-    //   2979: invokevirtual 667	android/widget/TextView:setBackgroundResource	(I)V
-    //   2982: aload_3
-    //   2983: aload 4
-    //   2985: invokevirtual 673	com/tencent/widget/ListView:addHeaderView	(Landroid/view/View;)V
-    //   2988: new 109	android/widget/TextView
-    //   2991: dup
-    //   2992: aload_0
-    //   2993: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   2996: invokevirtual 351	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   2999: invokespecial 514	android/widget/TextView:<init>	(Landroid/content/Context;)V
-    //   3002: astore 4
-    //   3004: aload 4
-    //   3006: aload_0
-    //   3007: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3010: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   3013: ldc_w 655
-    //   3016: invokevirtual 661	android/content/res/Resources:getColor	(I)I
-    //   3019: invokevirtual 530	android/widget/TextView:setTextColor	(I)V
-    //   3022: aload 4
-    //   3024: iconst_1
-    //   3025: ldc_w 552
-    //   3028: invokevirtual 556	android/widget/TextView:setTextSize	(IF)V
-    //   3031: aload 4
-    //   3033: bipush 16
-    //   3035: invokevirtual 551	android/widget/TextView:setGravity	(I)V
-    //   3038: aload 4
-    //   3040: ldc_w 460
-    //   3043: aload_0
-    //   3044: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3047: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   3050: invokestatic 649	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
-    //   3053: iconst_0
-    //   3054: iconst_0
-    //   3055: iconst_0
-    //   3056: invokevirtual 525	android/widget/TextView:setPadding	(IIII)V
-    //   3059: aload 4
-    //   3061: new 643	com/tencent/widget/AbsListView$LayoutParams
-    //   3064: dup
-    //   3065: iconst_m1
-    //   3066: ldc_w 674
-    //   3069: aload_0
-    //   3070: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3073: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   3076: invokestatic 649	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
-    //   3079: invokespecial 650	com/tencent/widget/AbsListView$LayoutParams:<init>	(II)V
-    //   3082: invokevirtual 654	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   3085: aload 4
-    //   3087: ldc_w 675
-    //   3090: invokestatic 164	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   3093: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   3096: aload 4
-    //   3098: ldc_w 664
-    //   3101: invokevirtual 667	android/widget/TextView:setBackgroundResource	(I)V
-    //   3104: aload_3
-    //   3105: aload 4
-    //   3107: invokevirtual 673	com/tencent/widget/ListView:addHeaderView	(Landroid/view/View;)V
-    //   3110: goto +13 -> 3123
-    //   3113: aload_0
-    //   3114: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3117: getfield 631	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqTroopRecommendRecommendTroopListWrapper	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
-    //   3120: invokevirtual 677	com/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper:d	()V
-    //   3123: aload_0
-    //   3124: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3127: getfield 222	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
-    //   3130: iconst_0
-    //   3131: invokevirtual 125	com/tencent/widget/XListView:setVisibility	(I)V
-    //   3134: goto +187 -> 3321
-    //   3137: aload_0
-    //   3138: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3141: getfield 222	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_ComTencentWidgetXListView	Lcom/tencent/widget/XListView;
-    //   3144: bipush 8
-    //   3146: invokevirtual 125	com/tencent/widget/XListView:setVisibility	(I)V
-    //   3149: aload_0
-    //   3150: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3153: getfield 131	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   3156: ifnonnull +65 -> 3221
-    //   3159: aload_0
-    //   3160: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3163: invokevirtual 23	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:isAdded	()Z
-    //   3166: ifeq +55 -> 3221
-    //   3169: aload_0
-    //   3170: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3173: aload_0
-    //   3174: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3177: invokevirtual 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
-    //   3180: ldc 136
-    //   3182: invokestatic 142	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   3185: putfield 131	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   3188: aload_0
-    //   3189: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3192: getfield 145	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   3195: aload_0
-    //   3196: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3199: getfield 131	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   3202: invokevirtual 151	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
-    //   3205: goto +16 -> 3221
-    //   3208: astore_3
-    //   3209: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3212: iconst_1
-    //   3213: aload_3
-    //   3214: iconst_0
-    //   3215: anewarray 153	java/lang/Object
-    //   3218: invokestatic 156	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   3221: aload_0
-    //   3222: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3225: getfield 158	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   3228: ldc 237
-    //   3230: invokestatic 164	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   3233: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   3236: iload 18
-    //   3238: ifeq +86 -> 3324
-    //   3241: aload_0
-    //   3242: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3245: getfield 225	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   3248: iconst_0
-    //   3249: invokevirtual 228	android/widget/Button:setVisibility	(I)V
-    //   3252: aload_0
-    //   3253: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3256: getfield 225	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   3259: new 679	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1$1
-    //   3262: dup
-    //   3263: aload_0
-    //   3264: aload 4
-    //   3266: invokespecial 682	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1$1:<init>	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1;Ljava/lang/String;)V
-    //   3269: invokevirtual 683	android/widget/Button:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   3272: aload 8
-    //   3274: invokestatic 397	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3277: ifne +44 -> 3321
-    //   3280: aload_0
-    //   3281: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3284: getfield 225	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   3287: aload 8
-    //   3289: invokevirtual 684	android/widget/Button:setText	(Ljava/lang/CharSequence;)V
-    //   3292: aload_0
-    //   3293: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3296: getfield 158	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   3299: iconst_0
-    //   3300: aload_0
-    //   3301: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3304: getfield 158	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   3307: invokevirtual 688	android/widget/TextView:getContext	()Landroid/content/Context;
-    //   3310: ldc_w 460
-    //   3313: invokestatic 455	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
-    //   3316: iconst_0
-    //   3317: iconst_0
-    //   3318: invokevirtual 525	android/widget/TextView:setPadding	(IIII)V
-    //   3321: goto +15 -> 3336
-    //   3324: aload_0
-    //   3325: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3328: getfield 225	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   3331: bipush 8
-    //   3333: invokevirtual 228	android/widget/Button:setVisibility	(I)V
-    //   3336: aload_0
-    //   3337: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3340: getfield 231	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:c	Landroid/widget/TextView;
-    //   3343: bipush 8
-    //   3345: invokevirtual 110	android/widget/TextView:setVisibility	(I)V
-    //   3348: aload 6
-    //   3350: iload_2
-    //   3351: aload_0
-    //   3352: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3355: getfield 577	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_f_of_type_Boolean	Z
-    //   3358: invokestatic 582	com/tencent/mobileqq/search/SearchUtil:a	(Ljava/util/List;ZZ)Ljava/util/List;
-    //   3361: astore_3
-    //   3362: aload_0
-    //   3363: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3366: aload_3
-    //   3367: invokevirtual 605	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Ljava/util/List;)V
-    //   3370: aload_0
-    //   3371: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3374: astore 4
-    //   3376: aload 4
-    //   3378: aload_3
-    //   3379: putfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   3382: aload 4
-    //   3384: getfield 608	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ComTencentMobileqqSearchAdapterSubBusinessSearchAdapter	Lcom/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter;
-    //   3387: aload_0
-    //   3388: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3391: getfield 99	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   3394: invokevirtual 611	com/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter:a	(Ljava/util/List;)V
-    //   3397: aload_0
-    //   3398: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3401: lload 21
-    //   3403: invokestatic 691	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;J)J
-    //   3406: pop2
-    //   3407: aload_0
-    //   3408: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3411: getfield 394	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_Boolean	Z
-    //   3414: ifne +99 -> 3513
-    //   3417: aload_0
-    //   3418: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3421: astore_3
-    //   3422: aload_3
-    //   3423: aload_3
-    //   3424: getfield 383	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_Int	I
-    //   3427: iload 14
-    //   3429: iadd
-    //   3430: putfield 383	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_Int	I
-    //   3433: aload_0
-    //   3434: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3437: astore_3
-    //   3438: aload_3
-    //   3439: aload_3
-    //   3440: getfield 387	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_Int	I
-    //   3443: iconst_1
-    //   3444: iadd
-    //   3445: putfield 387	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_Int	I
-    //   3448: aload_0
-    //   3449: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3452: getfield 383	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_Int	I
-    //   3455: bipush 10
-    //   3457: if_icmple +21 -> 3478
-    //   3460: aload_0
-    //   3461: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3464: astore_3
-    //   3465: aload_3
-    //   3466: iconst_0
-    //   3467: putfield 387	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_Int	I
-    //   3470: aload_3
-    //   3471: iconst_0
-    //   3472: putfield 383	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_Int	I
-    //   3475: goto +38 -> 3513
-    //   3478: aload_0
-    //   3479: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3482: getfield 387	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_Int	I
-    //   3485: iconst_3
-    //   3486: if_icmplt +14 -> 3500
-    //   3489: aload_0
-    //   3490: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3493: iconst_1
-    //   3494: putfield 394	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_d_of_type_Boolean	Z
-    //   3497: goto +16 -> 3513
-    //   3500: aload_0
-    //   3501: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3504: astore_3
-    //   3505: aload_3
-    //   3506: aload_3
-    //   3507: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   3510: invokevirtual 693	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	(Ljava/lang/String;)V
-    //   3513: iload 5
-    //   3515: ifeq +116 -> 3631
-    //   3518: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3521: ifeq +220 -> 3741
-    //   3524: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3527: astore_3
-    //   3528: new 28	java/lang/StringBuilder
-    //   3531: dup
-    //   3532: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   3535: astore 4
-    //   3537: aload 4
-    //   3539: ldc_w 695
-    //   3542: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3545: pop
-    //   3546: aload 4
-    //   3548: aload 7
-    //   3550: invokestatic 184	java/util/Arrays:toString	([J)Ljava/lang/String;
-    //   3553: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3556: pop
-    //   3557: aload 4
-    //   3559: ldc 186
-    //   3561: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3564: pop
-    //   3565: aload 4
-    //   3567: aload_1
-    //   3568: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3571: pop
-    //   3572: aload 4
-    //   3574: ldc 188
-    //   3576: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3579: pop
-    //   3580: aload 4
-    //   3582: aload_0
-    //   3583: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3586: getfield 190	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   2631: instanceof 278
+    //   2634: ifeq +34 -> 2668
+    //   2637: aload 4
+    //   2639: checkcast 278	com/tencent/mobileqq/search/model/ISearchResultModel
+    //   2642: astore 4
+    //   2644: aload 4
+    //   2646: invokevirtual 627	com/tencent/mobileqq/search/model/ISearchResultModel:ck_	()I
+    //   2649: istore 12
+    //   2651: aload 4
+    //   2653: iload 12
+    //   2655: iload 13
+    //   2657: iadd
+    //   2658: iload 12
+    //   2660: iconst_1
+    //   2661: isub
+    //   2662: invokestatic 632	com/tencent/mobileqq/search/base/util/SearchViewUtils:a	(Lcom/tencent/mobileqq/search/model/ISearchResultModel;II)V
+    //   2665: goto +6 -> 2671
+    //   2668: iconst_0
+    //   2669: istore 12
+    //   2671: iconst_0
+    //   2672: istore 15
+    //   2674: iload 15
+    //   2676: iload 13
+    //   2678: if_icmpge +51 -> 2729
+    //   2681: aload_3
+    //   2682: iload 15
+    //   2684: invokeinterface 617 2 0
+    //   2689: checkcast 619	com/tencent/mobileqq/search/model/IModel
+    //   2692: astore 4
+    //   2694: aload 4
+    //   2696: instanceof 278
+    //   2699: ifeq +21 -> 2720
+    //   2702: aload 4
+    //   2704: checkcast 278	com/tencent/mobileqq/search/model/ISearchResultModel
+    //   2707: iload 12
+    //   2709: iload 13
+    //   2711: iadd
+    //   2712: iload 12
+    //   2714: iload 15
+    //   2716: iadd
+    //   2717: invokestatic 632	com/tencent/mobileqq/search/base/util/SearchViewUtils:a	(Lcom/tencent/mobileqq/search/model/ISearchResultModel;II)V
+    //   2720: iload 15
+    //   2722: iconst_1
+    //   2723: iadd
+    //   2724: istore 15
+    //   2726: goto -52 -> 2674
+    //   2729: aload_0
+    //   2730: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2733: aload_3
+    //   2734: invokevirtual 635	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Ljava/util/List;)V
+    //   2737: aload_0
+    //   2738: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2741: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2744: aload_3
+    //   2745: invokeinterface 332 2 0
+    //   2750: pop
+    //   2751: aload_0
+    //   2752: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2755: getfield 638	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:j	Lcom/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter;
+    //   2758: aload_0
+    //   2759: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2762: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   2765: invokevirtual 641	com/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter:a	(Ljava/util/List;)V
+    //   2768: goto +642 -> 3410
+    //   2771: aload 6
+    //   2773: ifnull +31 -> 2804
+    //   2776: aload 6
+    //   2778: invokeinterface 109 1 0
+    //   2783: ifeq +6 -> 2789
+    //   2786: goto +18 -> 2804
+    //   2789: aload_0
+    //   2790: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2793: getfield 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:x	Landroid/view/View;
+    //   2796: bipush 8
+    //   2798: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   2801: goto +560 -> 3361
+    //   2804: aload_0
+    //   2805: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2808: getfield 135	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:x	Landroid/view/View;
+    //   2811: iconst_0
+    //   2812: invokevirtual 93	android/view/View:setVisibility	(I)V
+    //   2815: aload_0
+    //   2816: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2819: getfield 645	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:l	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   2822: getstatic 650	com/tencent/mobileqq/app/QQManagerFactory:MAYKNOW_RECOMMEND_MANAGER	I
+    //   2825: invokevirtual 656	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   2828: checkcast 658	com/tencent/mobileqq/app/MayknowRecommendManager
+    //   2831: astore_3
+    //   2832: iload 18
+    //   2834: ifne +316 -> 3150
+    //   2837: aload_3
+    //   2838: getfield 660	com/tencent/mobileqq/app/MayknowRecommendManager:j	Z
+    //   2841: ifeq +309 -> 3150
+    //   2844: aload_0
+    //   2845: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2848: getfield 663	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:I	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
+    //   2851: ifnonnull +275 -> 3126
+    //   2854: aload_0
+    //   2855: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2858: astore_3
+    //   2859: aload_3
+    //   2860: new 665	com/tencent/mobileqq/activity/contact/recommendtroop/RecommendTroopListWrapperForSearchEmpty
+    //   2863: dup
+    //   2864: aload_3
+    //   2865: getfield 645	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:l	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   2868: aload_0
+    //   2869: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2872: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2875: aload_0
+    //   2876: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2879: getfield 234	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:y	Lcom/tencent/widget/XListView;
+    //   2882: aconst_null
+    //   2883: invokespecial 668	com/tencent/mobileqq/activity/contact/recommendtroop/RecommendTroopListWrapperForSearchEmpty:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;Lcom/tencent/widget/XListView;Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper$RecommendTroopListWrapperCallback;)V
+    //   2886: putfield 663	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:I	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
+    //   2889: aload_0
+    //   2890: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2893: getfield 663	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:I	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
+    //   2896: invokevirtual 673	com/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper:g	()Lcom/tencent/widget/XListView;
+    //   2899: astore_3
+    //   2900: new 115	android/widget/TextView
+    //   2903: dup
+    //   2904: aload_0
+    //   2905: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2908: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   2911: invokespecial 542	android/widget/TextView:<init>	(Landroid/content/Context;)V
+    //   2914: astore 4
+    //   2916: aload 4
+    //   2918: bipush 17
+    //   2920: invokevirtual 579	android/widget/TextView:setGravity	(I)V
+    //   2923: aload 4
+    //   2925: new 675	com/tencent/widget/AbsListView$LayoutParams
+    //   2928: dup
+    //   2929: iconst_m1
+    //   2930: ldc_w 676
+    //   2933: aload_0
+    //   2934: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2937: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   2940: invokestatic 681	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
+    //   2943: invokespecial 682	com/tencent/widget/AbsListView$LayoutParams:<init>	(II)V
+    //   2946: invokevirtual 686	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   2949: aload 4
+    //   2951: aload_0
+    //   2952: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   2955: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   2958: ldc_w 687
+    //   2961: invokevirtual 693	android/content/res/Resources:getColor	(I)I
+    //   2964: invokevirtual 558	android/widget/TextView:setTextColor	(I)V
+    //   2967: aload 4
+    //   2969: iconst_1
+    //   2970: ldc_w 694
+    //   2973: invokevirtual 584	android/widget/TextView:setTextSize	(IF)V
+    //   2976: aload 4
+    //   2978: ldc_w 695
+    //   2981: invokestatic 174	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   2984: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   2987: aload 4
+    //   2989: ldc_w 696
+    //   2992: invokevirtual 699	android/widget/TextView:setBackgroundResource	(I)V
+    //   2995: aload_3
+    //   2996: aload 4
+    //   2998: invokevirtual 705	com/tencent/widget/ListView:addHeaderView	(Landroid/view/View;)V
+    //   3001: new 115	android/widget/TextView
+    //   3004: dup
+    //   3005: aload_0
+    //   3006: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3009: invokevirtual 373	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getBaseActivity	()Lcom/tencent/mobileqq/app/BaseActivity;
+    //   3012: invokespecial 542	android/widget/TextView:<init>	(Landroid/content/Context;)V
+    //   3015: astore 4
+    //   3017: aload 4
+    //   3019: aload_0
+    //   3020: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3023: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   3026: ldc_w 687
+    //   3029: invokevirtual 693	android/content/res/Resources:getColor	(I)I
+    //   3032: invokevirtual 558	android/widget/TextView:setTextColor	(I)V
+    //   3035: aload 4
+    //   3037: iconst_1
+    //   3038: ldc_w 580
+    //   3041: invokevirtual 584	android/widget/TextView:setTextSize	(IF)V
+    //   3044: aload 4
+    //   3046: bipush 16
+    //   3048: invokevirtual 579	android/widget/TextView:setGravity	(I)V
+    //   3051: aload 4
+    //   3053: ldc_w 488
+    //   3056: aload_0
+    //   3057: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3060: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   3063: invokestatic 681	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
+    //   3066: iconst_0
+    //   3067: iconst_0
+    //   3068: iconst_0
+    //   3069: invokevirtual 553	android/widget/TextView:setPadding	(IIII)V
+    //   3072: aload 4
+    //   3074: new 675	com/tencent/widget/AbsListView$LayoutParams
+    //   3077: dup
+    //   3078: iconst_m1
+    //   3079: ldc_w 706
+    //   3082: aload_0
+    //   3083: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3086: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   3089: invokestatic 681	com/tencent/mobileqq/activity/aio/AIOUtils:b	(FLandroid/content/res/Resources;)I
+    //   3092: invokespecial 682	com/tencent/widget/AbsListView$LayoutParams:<init>	(II)V
+    //   3095: invokevirtual 686	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   3098: aload 4
+    //   3100: ldc_w 707
+    //   3103: invokestatic 174	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   3106: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   3109: aload 4
+    //   3111: ldc_w 696
+    //   3114: invokevirtual 699	android/widget/TextView:setBackgroundResource	(I)V
+    //   3117: aload_3
+    //   3118: aload 4
+    //   3120: invokevirtual 705	com/tencent/widget/ListView:addHeaderView	(Landroid/view/View;)V
+    //   3123: goto +13 -> 3136
+    //   3126: aload_0
+    //   3127: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3130: getfield 663	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:I	Lcom/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper;
+    //   3133: invokevirtual 710	com/tencent/mobileqq/troop/recommend/RecommendTroopListWrapper:f	()V
+    //   3136: aload_0
+    //   3137: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3140: getfield 234	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:y	Lcom/tencent/widget/XListView;
+    //   3143: iconst_0
+    //   3144: invokevirtual 132	com/tencent/widget/XListView:setVisibility	(I)V
+    //   3147: goto +187 -> 3334
+    //   3150: aload_0
+    //   3151: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3154: getfield 234	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:y	Lcom/tencent/widget/XListView;
+    //   3157: bipush 8
+    //   3159: invokevirtual 132	com/tencent/widget/XListView:setVisibility	(I)V
+    //   3162: aload_0
+    //   3163: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3166: getfield 139	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:A	Landroid/graphics/Bitmap;
+    //   3169: ifnonnull +65 -> 3234
+    //   3172: aload_0
+    //   3173: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3176: invokevirtual 23	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:isAdded	()Z
+    //   3179: ifeq +55 -> 3234
+    //   3182: aload_0
+    //   3183: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3186: aload_0
+    //   3187: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3190: invokevirtual 143	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:getResources	()Landroid/content/res/Resources;
+    //   3193: ldc 144
+    //   3195: invokestatic 150	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   3198: putfield 139	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:A	Landroid/graphics/Bitmap;
+    //   3201: aload_0
+    //   3202: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3205: getfield 154	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:z	Landroid/widget/ImageView;
+    //   3208: aload_0
+    //   3209: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3212: getfield 139	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:A	Landroid/graphics/Bitmap;
+    //   3215: invokevirtual 160	android/widget/ImageView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   3218: goto +16 -> 3234
+    //   3221: astore_3
+    //   3222: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   3225: iconst_1
+    //   3226: aload_3
+    //   3227: iconst_0
+    //   3228: anewarray 162	java/lang/Object
+    //   3231: invokestatic 165	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   3234: aload_0
+    //   3235: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3238: getfield 168	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:B	Landroid/widget/TextView;
+    //   3241: ldc 250
+    //   3243: invokestatic 174	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   3246: invokevirtual 178	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   3249: iload 18
+    //   3251: ifeq +86 -> 3337
+    //   3254: aload_0
+    //   3255: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3258: getfield 238	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:C	Landroid/widget/Button;
+    //   3261: iconst_0
+    //   3262: invokevirtual 241	android/widget/Button:setVisibility	(I)V
+    //   3265: aload_0
+    //   3266: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3269: getfield 238	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:C	Landroid/widget/Button;
+    //   3272: new 712	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1$1
+    //   3275: dup
+    //   3276: aload_0
+    //   3277: aload 4
+    //   3279: invokespecial 715	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1$1:<init>	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1;Ljava/lang/String;)V
+    //   3282: invokevirtual 716	android/widget/Button:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   3285: aload 8
+    //   3287: invokestatic 422	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3290: ifne +44 -> 3334
+    //   3293: aload_0
+    //   3294: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3297: getfield 238	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:C	Landroid/widget/Button;
+    //   3300: aload 8
+    //   3302: invokevirtual 717	android/widget/Button:setText	(Ljava/lang/CharSequence;)V
+    //   3305: aload_0
+    //   3306: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3309: getfield 168	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:B	Landroid/widget/TextView;
+    //   3312: iconst_0
+    //   3313: aload_0
+    //   3314: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3317: getfield 168	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:B	Landroid/widget/TextView;
+    //   3320: invokevirtual 721	android/widget/TextView:getContext	()Landroid/content/Context;
+    //   3323: ldc_w 488
+    //   3326: invokestatic 483	com/tencent/mobileqq/util/DisplayUtil:a	(Landroid/content/Context;F)I
+    //   3329: iconst_0
+    //   3330: iconst_0
+    //   3331: invokevirtual 553	android/widget/TextView:setPadding	(IIII)V
+    //   3334: goto +15 -> 3349
+    //   3337: aload_0
+    //   3338: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3341: getfield 238	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:C	Landroid/widget/Button;
+    //   3344: bipush 8
+    //   3346: invokevirtual 241	android/widget/Button:setVisibility	(I)V
+    //   3349: aload_0
+    //   3350: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3353: getfield 244	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:O	Landroid/widget/TextView;
+    //   3356: bipush 8
+    //   3358: invokevirtual 116	android/widget/TextView:setVisibility	(I)V
+    //   3361: aload 6
+    //   3363: iload_2
+    //   3364: aload_0
+    //   3365: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3368: getfield 606	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:H	Z
+    //   3371: invokestatic 611	com/tencent/mobileqq/search/SearchUtil:a	(Ljava/util/List;ZZ)Ljava/util/List;
+    //   3374: astore_3
+    //   3375: aload_0
+    //   3376: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3379: aload_3
+    //   3380: invokevirtual 635	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Ljava/util/List;)V
+    //   3383: aload_0
+    //   3384: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3387: astore 4
+    //   3389: aload 4
+    //   3391: aload_3
+    //   3392: putfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   3395: aload 4
+    //   3397: getfield 638	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:j	Lcom/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter;
+    //   3400: aload_0
+    //   3401: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3404: getfield 104	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:g	Ljava/util/List;
+    //   3407: invokevirtual 641	com/tencent/mobileqq/search/adapter/SubBusinessSearchAdapter:a	(Ljava/util/List;)V
+    //   3410: aload_0
+    //   3411: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3414: lload 21
+    //   3416: invokestatic 724	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	(Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;J)J
+    //   3419: pop2
+    //   3420: aload_0
+    //   3421: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3424: getfield 419	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:p	Z
+    //   3427: ifne +99 -> 3526
+    //   3430: aload_0
+    //   3431: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3434: astore_3
+    //   3435: aload_3
+    //   3436: aload_3
+    //   3437: getfield 408	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:K	I
+    //   3440: iload 14
+    //   3442: iadd
+    //   3443: putfield 408	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:K	I
+    //   3446: aload_0
+    //   3447: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3450: astore_3
+    //   3451: aload_3
+    //   3452: aload_3
+    //   3453: getfield 412	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:J	I
+    //   3456: iconst_1
+    //   3457: iadd
+    //   3458: putfield 412	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:J	I
+    //   3461: aload_0
+    //   3462: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3465: getfield 408	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:K	I
+    //   3468: bipush 10
+    //   3470: if_icmple +21 -> 3491
+    //   3473: aload_0
+    //   3474: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3477: astore_3
+    //   3478: aload_3
+    //   3479: iconst_0
+    //   3480: putfield 412	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:J	I
+    //   3483: aload_3
+    //   3484: iconst_0
+    //   3485: putfield 408	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:K	I
+    //   3488: goto +38 -> 3526
+    //   3491: aload_0
+    //   3492: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3495: getfield 412	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:J	I
+    //   3498: iconst_3
+    //   3499: if_icmplt +14 -> 3513
+    //   3502: aload_0
+    //   3503: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3506: iconst_1
+    //   3507: putfield 419	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:p	Z
+    //   3510: goto +16 -> 3526
+    //   3513: aload_0
+    //   3514: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3517: astore_3
+    //   3518: aload_3
+    //   3519: aload_3
+    //   3520: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   3523: invokevirtual 726	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	(Ljava/lang/String;)V
+    //   3526: iload 5
+    //   3528: ifeq +116 -> 3644
+    //   3531: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3534: ifeq +220 -> 3754
+    //   3537: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   3540: astore_3
+    //   3541: new 28	java/lang/StringBuilder
+    //   3544: dup
+    //   3545: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   3548: astore 4
+    //   3550: aload 4
+    //   3552: ldc_w 728
+    //   3555: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3558: pop
+    //   3559: aload 4
+    //   3561: aload 7
+    //   3563: invokestatic 194	java/util/Arrays:toString	([J)Ljava/lang/String;
+    //   3566: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3569: pop
+    //   3570: aload 4
+    //   3572: ldc 196
+    //   3574: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3577: pop
+    //   3578: aload 4
+    //   3580: aload_1
+    //   3581: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3584: pop
+    //   3585: aload 4
+    //   3587: ldc 198
     //   3589: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3592: pop
     //   3593: aload 4
-    //   3595: ldc_w 697
-    //   3598: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3601: pop
-    //   3602: aload 4
-    //   3604: aload_0
-    //   3605: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3608: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   3611: invokestatic 184	java/util/Arrays:toString	([J)Ljava/lang/String;
-    //   3614: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3617: pop
-    //   3618: aload_3
-    //   3619: iconst_2
-    //   3620: aload 4
-    //   3622: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3625: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3628: goto +113 -> 3741
-    //   3631: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3634: ifeq +107 -> 3741
-    //   3637: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3640: astore_3
-    //   3641: new 28	java/lang/StringBuilder
-    //   3644: dup
-    //   3645: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   3648: astore 4
-    //   3650: aload 4
-    //   3652: ldc_w 699
-    //   3655: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3658: pop
-    //   3659: aload 4
-    //   3661: aload 7
-    //   3663: invokestatic 184	java/util/Arrays:toString	([J)Ljava/lang/String;
-    //   3666: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3669: pop
-    //   3670: aload 4
-    //   3672: ldc 186
-    //   3674: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3677: pop
-    //   3678: aload 4
-    //   3680: aload_1
-    //   3681: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3684: pop
-    //   3685: aload 4
-    //   3687: ldc 188
-    //   3689: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3692: pop
-    //   3693: aload 4
-    //   3695: aload_0
-    //   3696: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3699: getfield 190	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   3595: aload_0
+    //   3596: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3599: getfield 201	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:N	Ljava/lang/String;
+    //   3602: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3605: pop
+    //   3606: aload 4
+    //   3608: ldc_w 730
+    //   3611: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3614: pop
+    //   3615: aload 4
+    //   3617: aload_0
+    //   3618: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3621: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   3624: invokestatic 194	java/util/Arrays:toString	([J)Ljava/lang/String;
+    //   3627: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3630: pop
+    //   3631: aload_3
+    //   3632: iconst_2
+    //   3633: aload 4
+    //   3635: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3638: invokestatic 227	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3641: goto +113 -> 3754
+    //   3644: invokestatic 185	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3647: ifeq +107 -> 3754
+    //   3650: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   3653: astore_3
+    //   3654: new 28	java/lang/StringBuilder
+    //   3657: dup
+    //   3658: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   3661: astore 4
+    //   3663: aload 4
+    //   3665: ldc_w 732
+    //   3668: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3671: pop
+    //   3672: aload 4
+    //   3674: aload 7
+    //   3676: invokestatic 194	java/util/Arrays:toString	([J)Ljava/lang/String;
+    //   3679: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3682: pop
+    //   3683: aload 4
+    //   3685: ldc 196
+    //   3687: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3690: pop
+    //   3691: aload 4
+    //   3693: aload_1
+    //   3694: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3697: pop
+    //   3698: aload 4
+    //   3700: ldc 198
     //   3702: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3705: pop
     //   3706: aload 4
-    //   3708: ldc_w 697
-    //   3711: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3714: pop
-    //   3715: aload 4
-    //   3717: aload_0
-    //   3718: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3721: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   3724: invokestatic 184	java/util/Arrays:toString	([J)Ljava/lang/String;
-    //   3727: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3730: pop
-    //   3731: aload_3
-    //   3732: iconst_2
-    //   3733: aload 4
-    //   3735: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3738: invokestatic 216	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3741: iconst_1
-    //   3742: putstatic 701	com/tencent/mobileqq/search/activity/ActiveEntitySearchActivity:a	Z
-    //   3745: return
-    //   3746: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3749: astore_3
-    //   3750: new 28	java/lang/StringBuilder
-    //   3753: dup
-    //   3754: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   3757: astore 4
-    //   3759: aload 4
-    //   3761: ldc_w 703
-    //   3764: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3767: pop
-    //   3768: aload 4
-    //   3770: aload_0
-    //   3771: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3774: getfield 71	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_a_of_type_ArrayOfLong	[J
-    //   3777: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3708: aload_0
+    //   3709: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3712: getfield 201	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:N	Ljava/lang/String;
+    //   3715: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3718: pop
+    //   3719: aload 4
+    //   3721: ldc_w 730
+    //   3724: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3727: pop
+    //   3728: aload 4
+    //   3730: aload_0
+    //   3731: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3734: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   3737: invokestatic 194	java/util/Arrays:toString	([J)Ljava/lang/String;
+    //   3740: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3743: pop
+    //   3744: aload_3
+    //   3745: iconst_2
+    //   3746: aload 4
+    //   3748: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3751: invokestatic 227	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3754: iconst_1
+    //   3755: putstatic 734	com/tencent/mobileqq/search/activity/ActiveEntitySearchActivity:q	Z
+    //   3758: return
+    //   3759: getstatic 26	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:a	Ljava/lang/String;
+    //   3762: astore_3
+    //   3763: new 28	java/lang/StringBuilder
+    //   3766: dup
+    //   3767: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   3770: astore 4
+    //   3772: aload 4
+    //   3774: ldc_w 736
+    //   3777: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3780: pop
     //   3781: aload 4
-    //   3783: ldc_w 705
-    //   3786: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3789: pop
-    //   3790: aload 4
-    //   3792: aload 7
-    //   3794: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3797: pop
-    //   3798: aload 4
-    //   3800: ldc_w 707
-    //   3803: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3806: pop
-    //   3807: aload 4
-    //   3809: aload_1
-    //   3810: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3813: pop
-    //   3814: aload 4
-    //   3816: ldc 200
-    //   3818: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3821: pop
-    //   3822: aload 4
-    //   3824: aload_0
-    //   3825: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
-    //   3828: getfield 77	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   3783: aload_0
+    //   3784: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3787: getfield 72	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:F	[J
+    //   3790: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3793: pop
+    //   3794: aload 4
+    //   3796: ldc_w 738
+    //   3799: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3802: pop
+    //   3803: aload 4
+    //   3805: aload 7
+    //   3807: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3810: pop
+    //   3811: aload 4
+    //   3813: ldc_w 740
+    //   3816: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3819: pop
+    //   3820: aload 4
+    //   3822: aload_1
+    //   3823: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3826: pop
+    //   3827: aload 4
+    //   3829: ldc 211
     //   3831: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3834: pop
     //   3835: aload 4
-    //   3837: ldc 204
-    //   3839: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3842: pop
-    //   3843: aload 4
-    //   3845: iload 5
-    //   3847: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3850: pop
-    //   3851: aload_3
-    //   3852: iconst_2
-    //   3853: aload 4
-    //   3855: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3858: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3861: return
+    //   3837: aload_0
+    //   3838: getfield 10	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment$1:a	Lcom/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment;
+    //   3841: getfield 78	com/tencent/mobileqq/search/fragment/ActiveEntitySearchFragment:b	Ljava/lang/String;
+    //   3844: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3847: pop
+    //   3848: aload 4
+    //   3850: ldc 215
+    //   3852: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3855: pop
+    //   3856: aload 4
+    //   3858: iload 5
+    //   3860: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3863: pop
+    //   3864: aload_3
+    //   3865: iconst_2
+    //   3866: aload 4
+    //   3868: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3871: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3874: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3862	0	this	1
-    //   0	3862	1	paramString1	String
-    //   0	3862	2	paramBoolean1	boolean
-    //   0	3862	3	paramString2	String
-    //   0	3862	4	paramArrayOfByte	byte[]
-    //   0	3862	5	paramBoolean2	boolean
-    //   0	3862	6	paramList	List<com.tencent.mobileqq.search.model.ISearchResultGroupModel>
-    //   0	3862	7	paramArrayOfLong	long[]
-    //   0	3862	8	paramString3	String
-    //   0	3862	9	paramList1	List<tencent.im.oidb.search.DynamicTabSearch.SubHotWord>
-    //   0	3862	10	paramBoolean3	boolean
-    //   0	3862	11	paramString4	String
-    //   0	3862	12	paramInt	int
-    //   571	2128	13	i	int
-    //   1832	1598	14	j	int
-    //   2008	704	15	k	int
-    //   2016	167	16	m	int
-    //   1612	584	17	bool1	boolean
-    //   1638	1599	18	bool2	boolean
-    //   538	1949	19	l1	long
-    //   542	2860	21	l2	long
-    //   579	320	23	l3	long
-    //   575	320	25	l4	long
-    //   533	1758	27	localObject1	Object
-    //   567	1705	28	localObject2	Object
-    //   604	1699	29	localObject3	Object
-    //   611	1694	30	localObject4	Object
-    //   620	13	31	localIterator	java.util.Iterator
-    //   642	31	32	localObject5	Object
+    //   0	3875	0	this	1
+    //   0	3875	1	paramString1	String
+    //   0	3875	2	paramBoolean1	boolean
+    //   0	3875	3	paramString2	String
+    //   0	3875	4	paramArrayOfByte	byte[]
+    //   0	3875	5	paramBoolean2	boolean
+    //   0	3875	6	paramList	List<com.tencent.mobileqq.search.model.ISearchResultGroupModel>
+    //   0	3875	7	paramArrayOfLong	long[]
+    //   0	3875	8	paramString3	String
+    //   0	3875	9	paramList1	List<tencent.im.oidb.search.DynamicTabSearch.SubHotWord>
+    //   0	3875	10	paramBoolean3	boolean
+    //   0	3875	11	paramString4	String
+    //   0	3875	12	paramInt	int
+    //   571	2141	13	i	int
+    //   1847	1596	14	j	int
+    //   2023	702	15	k	int
+    //   2031	167	16	m	int
+    //   1627	584	17	bool1	boolean
+    //   1653	1597	18	bool2	boolean
+    //   538	1964	19	l1	long
+    //   542	2873	21	l2	long
+    //   579	316	23	l3	long
+    //   575	316	25	l4	long
+    //   533	1773	27	localObject1	Object
+    //   567	1720	28	localObject2	Object
+    //   602	1716	29	localObject3	Object
+    //   609	1711	30	localObject4	Object
+    //   618	13	31	localIterator	java.util.Iterator
+    //   640	31	32	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   433	465	468	java/lang/OutOfMemoryError
-    //   1623	1633	1643	org/json/JSONException
-    //   1614	1623	1648	org/json/JSONException
-    //   1593	1614	1657	org/json/JSONException
-    //   3159	3205	3208	java/lang/OutOfMemoryError
+    //   1638	1648	1658	org/json/JSONException
+    //   1629	1638	1663	org/json/JSONException
+    //   1608	1629	1672	org/json/JSONException
+    //   3172	3218	3221	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

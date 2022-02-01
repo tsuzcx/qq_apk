@@ -11,16 +11,10 @@ import org.json.JSONObject;
 
 public class EmoticonTabSortConfBean
 {
-  private int a;
-  public String a;
-  public List<String> a;
+  public List<String> a = new ArrayList();
   public List<String> b = new ArrayList();
-  
-  public EmoticonTabSortConfBean()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public String c = "";
+  private int d;
   
   public static EmoticonTabSortConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -37,7 +31,7 @@ public class EmoticonTabSortConfBean
       boolean bool;
       QLog.d("EmoticonTabSortConfBean", 2, "parse S$EConfBean failed!", paramArrayOfQConfItem);
     }
-    Object localObject = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
+    Object localObject = ((QConfItem)localObject).b;
     bool = TextUtils.isEmpty((CharSequence)localObject);
     if (!bool) {}
     for (;;)
@@ -47,7 +41,7 @@ public class EmoticonTabSortConfBean
       {
         JSONObject localJSONObject = new JSONObject((String)localObject);
         if (localJSONObject.has("setting_change_style")) {
-          localEmoticonTabSortConfBean.jdField_a_of_type_Int = localJSONObject.optInt("setting_change_style", 0);
+          localEmoticonTabSortConfBean.d = localJSONObject.optInt("setting_change_style", 0);
         }
         ArrayList localArrayList;
         JSONArray localJSONArray;
@@ -69,8 +63,8 @@ public class EmoticonTabSortConfBean
               break label377;
             }
           }
-          localEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.clear();
-          localEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+          localEmoticonTabSortConfBean.a.clear();
+          localEmoticonTabSortConfBean.a.addAll(localArrayList);
         }
         if (localJSONObject.has("face_orders"))
         {
@@ -93,7 +87,7 @@ public class EmoticonTabSortConfBean
           localEmoticonTabSortConfBean.b.addAll(localArrayList);
         }
         if (localJSONObject.has("gif_entrance_icon_url")) {
-          localEmoticonTabSortConfBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("gif_entrance_icon_url");
+          localEmoticonTabSortConfBean.c = localJSONObject.optString("gif_entrance_icon_url");
         }
       }
       catch (JSONException localJSONException)
@@ -128,27 +122,27 @@ public class EmoticonTabSortConfBean
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.d == 1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EmoticonTabSortConfBean{mChangeNewSettingStyle=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mSettingOrder=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mEntryOrder=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", mGifEntranceIconUrl=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonTabSortConfBean
  * JD-Core Version:    0.7.0.1
  */

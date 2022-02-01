@@ -13,30 +13,30 @@ class DiscussionInfoCardActivity$14
 {
   DiscussionInfoCardActivity$14(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
+      if (NetworkUtil.isNetSupport(this.b.getActivity()))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity;
-        paramView.a(paramView.getString(2131692086));
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
+        ReportController.b(this.b.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+        ReportController.b(this.b.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
+        DiscussionInfoCardActivity.e(this.b).c(Long.valueOf(DiscussionInfoCardActivity.c(this.b)).longValue());
+        paramView = this.b;
+        paramView.b(paramView.getString(2131889064));
+        DiscussionInfoCardActivity.i(this.b).show();
       }
       else
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity;
-        paramView.a(1, paramView.getString(2131694475));
+        paramView = this.b;
+        paramView.a(1, paramView.getString(2131892157));
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.14
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ class WTogetherRealNameVideoProcessHelper$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (WTogetherRealNameVideoProcessHelper.a(this.a) != null) {
-      WTogetherRealNameVideoProcessHelper.a(this.a).a();
+    if (WTogetherRealNameVideoProcessHelper.b(this.a) != null) {
+      WTogetherRealNameVideoProcessHelper.b(this.a).a();
     }
     if (QLog.isColorLevel()) {
       QLog.i("WTogetherRealNameVideoProcessHelper", 2, "showRealNameDialog click cancel.");

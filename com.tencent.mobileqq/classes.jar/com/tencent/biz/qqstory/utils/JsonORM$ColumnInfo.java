@@ -4,15 +4,15 @@ import java.lang.reflect.Field;
 
 final class JsonORM$ColumnInfo
 {
-  public final int a;
   public final String a;
-  public final Field a;
+  public final int b;
+  public final Field c;
   
   public JsonORM$ColumnInfo(String paramString, int paramInt, Field paramField)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramField;
     paramField.setAccessible(true);
   }
 }

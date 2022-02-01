@@ -22,18 +22,18 @@ class GrayTipsItemBuilder$27
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if ((this.a.c instanceof Activity))
     {
-      int k = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      int k = this.a.d.a;
       int i = 1;
       int j = 0;
       if (k != 0) {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+        if (this.a.d.a == 3000)
         {
-          j = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          j = ((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(this.a.d.b);
           i = 2;
         }
-        else if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+        else if (this.a.d.a == 1)
         {
           i = 3;
         }
@@ -45,8 +45,8 @@ class GrayTipsItemBuilder$27
       paramView = new JSONObject();
       try
       {
-        paramView.put("recv_uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        paramView.put("recv_nick", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        paramView.put("recv_uin", this.a.d.b);
+        paramView.put("recv_nick", this.a.d.e);
         if (j > 0) {
           paramView.put("people_num", j);
         }
@@ -71,7 +71,7 @@ class GrayTipsItemBuilder$27
       paramView.append("groupType=");
       paramView.append(i);
       ((Intent)localObject).putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", paramView.toString(), 0, null));
-      RouteUtils.a(this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, "/qwallet/redpacket/sendhb");
+      RouteUtils.a(this.a.c, (Intent)localObject, "/qwallet/redpacket/sendhb");
     }
   }
   
@@ -82,7 +82,7 @@ class GrayTipsItemBuilder$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.27
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,25 @@ import java.util.List;
 public class CaptureModeAdapter
   extends PagerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private CaptureModeAdapter.OnItemClickListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterCaptureModeAdapter$OnItemClickListener;
-  private List<TextView> jdField_a_of_type_JavaUtilList;
-  private int b;
+  private CaptureModeAdapter.OnItemClickListener a;
+  private List<TextView> b;
+  private int c;
+  private int d;
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    paramViewGroup.removeView((View)this.b.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramViewGroup.addView((View)this.b.get(paramInt));
+    return this.b.get(paramInt);
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -37,7 +37,7 @@ public class CaptureModeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.CaptureModeAdapter
  * JD-Core Version:    0.7.0.1
  */

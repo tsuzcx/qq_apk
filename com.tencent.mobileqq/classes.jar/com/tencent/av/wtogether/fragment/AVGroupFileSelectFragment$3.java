@@ -13,9 +13,9 @@ class AVGroupFileSelectFragment$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    AVGroupFileSelectFragment.a(this.a).show();
-    AVGroupFileSelectFragment.a(this.a).setAnimation(null);
-    AVGroupFileSelectFragment.a(this.a).setVisibility(8);
+    AVGroupFileSelectFragment.d(this.a).show();
+    AVGroupFileSelectFragment.e(this.a).setAnimation(null);
+    AVGroupFileSelectFragment.f(this.a).setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class AVGroupFileSelectFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment.3
  * JD-Core Version:    0.7.0.1
  */

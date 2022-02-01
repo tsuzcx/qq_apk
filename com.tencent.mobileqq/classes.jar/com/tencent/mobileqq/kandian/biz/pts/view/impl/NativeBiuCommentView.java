@@ -29,23 +29,23 @@ public class NativeBiuCommentView
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("bindRecommendCommentHeader | linkTextColor ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.c);
     QLog.d("NativeBiuCommentView", 2, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleViewModel != null)
+    if (this.a != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleViewModel.a();
-      a((AbsBaseArticleInfo)localObject);
+      localObject = this.a.b();
+      b((AbsBaseArticleInfo)localObject);
       setMaxLines(a((AbsBaseArticleInfo)localObject));
-      setSpanText(HardCodeUtil.a(2131707105));
-      setMoreSpan(new NativeBiuCommentView.MoreSpan(this, (AbsBaseArticleInfo)localObject, this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleViewModel.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleViewModel.c();
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a(this);
+      setSpanText(HardCodeUtil.a(2131904943));
+      setMoreSpan(new NativeBiuCommentView.MoreSpan(this, (AbsBaseArticleInfo)localObject, this.c));
+      this.a.a(this.c);
+      this.g = this.a.e();
+      this.g.a(this);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("bindRecommendCommentHeader: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a());
+      ((StringBuilder)localObject).append(this.g.a());
       QLog.d("NativeBiuCommentView", 2, ((StringBuilder)localObject).toString());
-      setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a());
+      setText((CharSequence)this.g.a());
     }
   }
   
@@ -88,29 +88,29 @@ public class NativeBiuCommentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.b(this);
+    if (this.g != null) {
+      this.g.b(this);
     }
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.b(this);
+    if (this.g != null) {
+      this.g.b(this);
     }
   }
   
   public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramIReadInJoyModel);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleViewModel = paramIReadInJoyModel.a().articleViewModel;
+    this.f.a(paramIReadInJoyModel);
+    this.a = paramIReadInJoyModel.k().articleViewModel;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeBiuCommentView
  * JD-Core Version:    0.7.0.1
  */

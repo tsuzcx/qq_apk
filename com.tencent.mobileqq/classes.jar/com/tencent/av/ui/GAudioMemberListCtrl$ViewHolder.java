@@ -6,24 +6,20 @@ import android.widget.TextView;
 
 final class GAudioMemberListCtrl$ViewHolder
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView = null;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  boolean jdField_a_of_type_Boolean = false;
-  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  boolean jdField_b_of_type_Boolean = true;
-  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
-  TextView jdField_c_of_type_AndroidWidgetTextView = null;
-  public boolean c;
+  long a;
+  ImageView b = null;
+  TextView c = null;
+  TextView d = null;
+  ImageView e = null;
+  ImageView f = null;
+  View g = null;
+  TextView h = null;
+  boolean i = false;
+  boolean j = true;
+  public int k = -1;
+  public boolean l = true;
   
-  private GAudioMemberListCtrl$ViewHolder(GAudioMemberListCtrl paramGAudioMemberListCtrl)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
-  }
+  private GAudioMemberListCtrl$ViewHolder(GAudioMemberListCtrl paramGAudioMemberListCtrl) {}
 }
 
 

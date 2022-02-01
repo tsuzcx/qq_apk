@@ -10,7 +10,7 @@ class ClearTextEndIconDelegate$4
   
   public void a(@NonNull TextInputLayout paramTextInputLayout, int paramInt)
   {
-    paramTextInputLayout = paramTextInputLayout.a();
+    paramTextInputLayout = paramTextInputLayout.getEditText();
     if ((paramTextInputLayout != null) && (paramInt == 2))
     {
       paramTextInputLayout.post(new ClearTextEndIconDelegate.4.1(this, paramTextInputLayout));
@@ -22,7 +22,7 @@ class ClearTextEndIconDelegate$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.ClearTextEndIconDelegate.4
  * JD-Core Version:    0.7.0.1
  */

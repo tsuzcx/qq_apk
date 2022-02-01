@@ -30,7 +30,7 @@ public class CMShowAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838394;
+    return 2130838452;
   }
   
   public int getAppID()
@@ -59,12 +59,12 @@ public class CMShowAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690518);
+    return BaseApplicationImpl.getContext().getString(2131887429);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     Object localObject = localQQAppInterface.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("chat_tool_apollo_");
@@ -81,35 +81,35 @@ public class CMShowAppInfo
     {
       i = 0;
     }
-    paramPlusPanelViewModel = paramBaseChatPie.a();
+    paramPlusPanelViewModel = paramBaseChatPie.bq();
     if (paramPlusPanelViewModel != null)
     {
-      paramPlusPanelViewModel = (IApolloPanelProvider)paramPlusPanelViewModel.a(21);
+      paramPlusPanelViewModel = (IApolloPanelProvider)paramPlusPanelViewModel.f(21);
       if (paramPlusPanelViewModel != null) {
         paramPlusPanelViewModel.showApolloStatusPanel(0);
       }
     }
     paramPlusPanelViewModel = (IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    paramBaseChatPie = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    paramBaseChatPie = paramSessionInfo.b;
     int j = paramPlusPanelViewModel.getApolloStatus(localQQAppInterface.getCurrentUin());
     int k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportUserResult(paramPlusPanelViewModel.getApolloUserStatus());
     paramPlusPanelViewModel = new StringBuilder();
     paramPlusPanelViewModel.append("");
     paramPlusPanelViewModel.append(i);
     localObject = paramPlusPanelViewModel.toString();
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+    if (paramSessionInfo.a == 0) {
       paramPlusPanelViewModel = "0";
     } else {
       paramPlusPanelViewModel = "2";
     }
     VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "panel_enter_clk", paramBaseChatPie, j, k, new String[] { localObject, paramPlusPanelViewModel, "", String.valueOf(System.currentTimeMillis() / 1000L) });
     paramPlusPanelViewModel = (IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class);
-    paramPlusPanelViewModel.report("aio", "plus_panel", "click", new DtReportParamsBuilder().a(paramPlusPanelViewModel.getApolloMode(localQQAppInterface)).b(paramPlusPanelViewModel.getReportSessionType(paramSessionInfo.jdField_a_of_type_Int)).b(paramSessionInfo.jdField_a_of_type_JavaLangString).a());
+    paramPlusPanelViewModel.report("aio", "plus_panel", "click", new DtReportParamsBuilder().a(paramPlusPanelViewModel.getApolloMode(localQQAppInterface)).b(paramPlusPanelViewModel.getReportSessionType(paramSessionInfo.a)).c(paramSessionInfo.b).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.CMShowAppInfo
  * JD-Core Version:    0.7.0.1
  */

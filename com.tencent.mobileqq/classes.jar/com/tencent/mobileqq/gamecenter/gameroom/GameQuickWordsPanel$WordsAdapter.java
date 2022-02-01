@@ -15,21 +15,18 @@ import java.util.HashMap;
 class GameQuickWordsPanel$WordsAdapter
   extends BaseAdapter
 {
-  protected int a;
+  protected int a = -1;
   
-  GameQuickWordsPanel$WordsAdapter(GameQuickWordsPanel paramGameQuickWordsPanel)
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  GameQuickWordsPanel$WordsAdapter(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.c.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.b.c.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -42,10 +39,10 @@ class GameQuickWordsPanel$WordsAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.getContext()).inflate(2131558545, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(46.0F, this.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.getResources())));
+      localView = LayoutInflater.from(this.b.getContext()).inflate(2131624099, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(46.0F, this.b.getResources())));
       paramView = new GameQuickWordsPanel.WordsAdapter.ViewHolder(this);
-      paramView.a = ((TextView)localView.findViewById(2131374754));
+      paramView.a = ((TextView)localView.findViewById(2131442943));
       localView.setTag(paramView);
     }
     else
@@ -56,23 +53,23 @@ class GameQuickWordsPanel$WordsAdapter
     }
     Object localObject = (String)getItem(paramInt);
     paramView.a.setText((CharSequence)localObject);
-    paramView.a.setTextColor(this.jdField_a_of_type_Int);
+    paramView.a.setTextColor(this.a);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
   
   public void notifyDataSetChanged()
   {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqGamecenterGameroomGameQuickWordsPanel.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a();
+    HashMap localHashMap = this.b.g.bI();
     if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
+      this.a = ((Integer)localHashMap.get("quickWordColor")).intValue();
     }
     super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.gameroom.GameQuickWordsPanel.WordsAdapter
  * JD-Core Version:    0.7.0.1
  */

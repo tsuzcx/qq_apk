@@ -27,7 +27,7 @@ public class RelativeFeedsAdapter$RelativeFeedVH
     boolean bool1 = bool2;
     if (bool3)
     {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
+      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).getData();
       bool1 = bool2;
       if (localStFeed != null)
       {
@@ -63,18 +63,18 @@ public class RelativeFeedsAdapter$RelativeFeedVH
     }
     if ((this.itemView instanceof RelativeFeedItemView))
     {
-      ((RelativeFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.a(this.a));
+      ((RelativeFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.b(this.a));
       ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
       ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
       ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
     }
     else if ((this.itemView instanceof RelativeAdFeedItemView))
     {
-      ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.a(this.a));
+      ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.b(this.a));
       ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
       ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
     }
-    if (RelativeFeedsAdapter.a(this.a) != null) {
+    if (RelativeFeedsAdapter.e(this.a) != null) {
       this.itemView.setOnClickListener(new RelativeFeedsAdapter.RelativeFeedVH.1(this, paramStFeed));
     }
     this.itemView.setOnLongClickListener(new RelativeFeedsAdapter.RelativeFeedVH.2(this, paramExtraTypeInfo, paramStFeed));

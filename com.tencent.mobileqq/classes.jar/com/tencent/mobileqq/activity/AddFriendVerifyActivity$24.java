@@ -12,25 +12,25 @@ class AddFriendVerifyActivity$24
 {
   AddFriendVerifyActivity$24(AddFriendVerifyActivity paramAddFriendVerifyActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1) {
-        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoList(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoList(this.b, 1);
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity;
+      paramView = this.b;
       AddFriendVerifyActivity.a(paramView, ProfileCardUtils.enterSnapshot(paramView, 1001));
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.24
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,27 @@ import mqq.os.MqqHandler;
 public class ItemShowDispatcher$OneSecondCallbackLoop
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
+  private AbsListView a;
+  private int b;
   
   public ItemShowDispatcher$OneSecondCallbackLoop(ItemShowDispatcher paramItemShowDispatcher, AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramAbsListView;
+    this.b = paramInt;
   }
   
   public void run()
   {
-    QLog.d(ItemShowDispatcher.a(), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
-    if (ItemShowDispatcher.a(this.this$0)) {
+    QLog.d(ItemShowDispatcher.b(), 2, "  1秒到了 ");
+    ItemShowDispatcher.a(this.this$0, this.a, this.b);
+    if (ItemShowDispatcher.b(this.this$0)) {
       ThreadManager.getUIHandler().postDelayed(this, 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.event.ItemShowDispatcher.OneSecondCallbackLoop
  * JD-Core Version:    0.7.0.1
  */

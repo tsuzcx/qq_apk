@@ -39,16 +39,11 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/follow/popup/RIJFollowPackUtils;", "", "()V", "FOLLOW_AVATOR_CLICK_TYPE", "", "FOLLOW_BUTTON_CLICK_TYPE", "FOLLOW_CONTAINER_CLICK_TYPE", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportInfo", "", "", "", "getReportInfo", "()Ljava/util/Map;", "setReportInfo", "(Ljava/util/Map;)V", "addButtonType", "", "recommendFollowInfo", "Lcom/tencent/mobileqq/kandian/repo/follow/RecommendFollowInfo;", "map", "isClick", "", "addExtraReport", "r5Builder", "Lcom/tencent/mobileqq/kandian/glue/report/RIJTransMergeKanDianReport$ReportR5Builder;", "extras", "", "addProteusFollowCards", "context", "Landroid/content/Context;", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "parentLayout", "Landroid/view/ViewGroup;", "dialog", "Lcom/tencent/mobileqq/kandian/biz/follow/popup/RIJBottomDialog;", "addUin", "clickFollowBtn", "followPackData", "Lcom/tencent/mobileqq/kandian/biz/follow/popup/RIJFollowPackUtils$RIJFollowPackData;", "createProteusContext", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "destroy", "doProteusClick", "position", "type", "getFollowReportParams", "source", "(Lcom/tencent/mobileqq/kandian/repo/follow/RecommendFollowInfo;ZLjava/lang/Integer;)Ljava/util/Map;", "getRecommendFollowInfo", "index", "hasReported", "bigT", "uin", "isPGC", "jump", "jump2SelfPage", "refreshProteus", "report", "reportT", "(Ljava/lang/String;Ljava/lang/Integer;Lcom/tencent/mobileqq/kandian/repo/follow/RecommendFollowInfo;Ljava/util/Map;)V", "requestFollow", "setAttachData", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "templateBean", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;", "updateFollowStatus", "recommendFollowInfoList", "", "RIJFollowPackData", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJFollowPackUtils
 {
-  public static final RIJFollowPackUtils a;
+  public static final RIJFollowPackUtils a = new RIJFollowPackUtils();
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "RIJFollowPackUtils";
+  private static final String b = "RIJFollowPackUtils";
   @NotNull
-  private static Map<String, List<Long>> jdField_a_of_type_JavaUtilMap = (Map)new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils = new RIJFollowPackUtils();
-  }
+  private static Map<String, List<Long>> c = (Map)new HashMap();
   
   private final VafContext a(Context paramContext)
   {
@@ -70,8 +65,8 @@ public final class RIJFollowPackUtils
       if (paramInt >= 0)
       {
         paramAbsBaseArticleInfo = localRecommendFollowInfo;
-        if (paramInt < localRecommendFollowInfos.a.size()) {
-          paramAbsBaseArticleInfo = (RecommendFollowInfo)localRecommendFollowInfos.a.get(paramInt);
+        if (paramInt < localRecommendFollowInfos.c.size()) {
+          paramAbsBaseArticleInfo = (RecommendFollowInfo)localRecommendFollowInfos.c.get(paramInt);
         }
       }
     }
@@ -81,7 +76,7 @@ public final class RIJFollowPackUtils
   private final void a(int paramInt, RecommendFollowInfo paramRecommendFollowInfo)
   {
     if (paramRecommendFollowInfo != null) {
-      RIJJumpUtils.a(String.valueOf(paramRecommendFollowInfo.uin), null);
+      RIJJumpUtils.c(String.valueOf(paramRecommendFollowInfo.uin), null);
     }
   }
   
@@ -103,10 +98,10 @@ public final class RIJFollowPackUtils
     {
       if (paramRecommendFollowInfo.isFollowed)
       {
-        RIJJumpUtils.a(String.valueOf(paramRecommendFollowInfo.uin), null);
+        RIJJumpUtils.c(String.valueOf(paramRecommendFollowInfo.uin), null);
         return;
       }
-      jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils.b(paramRIJFollowPackData, paramRecommendFollowInfo);
+      a.b(paramRIJFollowPackData, paramRecommendFollowInfo);
     }
   }
   
@@ -157,12 +152,12 @@ public final class RIJFollowPackUtils
   
   private final boolean a(String paramString, long paramLong)
   {
-    List localList = (List)jdField_a_of_type_JavaUtilMap.get(paramString);
+    List localList = (List)c.get(paramString);
     if (localList == null)
     {
       localList = (List)new ArrayList();
       localList.add(Long.valueOf(paramLong));
-      jdField_a_of_type_JavaUtilMap.put(paramString, localList);
+      c.put(paramString, localList);
     }
     else
     {
@@ -179,10 +174,10 @@ public final class RIJFollowPackUtils
   
   private final void b(RIJFollowPackUtils.RIJFollowPackData paramRIJFollowPackData, RecommendFollowInfo paramRecommendFollowInfo)
   {
-    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().a();
+    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().c();
     if (localUserOperationModule != null)
     {
-      String str1 = RIJQQAppInterfaceUtil.a();
+      String str1 = RIJQQAppInterfaceUtil.d();
       long l = paramRecommendFollowInfo.uin;
       String str2 = paramRecommendFollowInfo.headUrl;
       paramRIJFollowPackData = (Ox978RespCallBack)new RIJFollowPackUtils.requestFollow.1(paramRecommendFollowInfo, paramRIJFollowPackData);
@@ -199,7 +194,7 @@ public final class RIJFollowPackUtils
   @NotNull
   public final String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return b;
   }
   
   @NotNull
@@ -214,36 +209,31 @@ public final class RIJFollowPackUtils
     }
     localMap.put("scene_type", Integer.valueOf(i));
     if (paramRecommendFollowInfo != null) {
-      jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils.a(paramRecommendFollowInfo, localMap, paramBoolean);
+      a.a(paramRecommendFollowInfo, localMap, paramBoolean);
     }
     return localMap;
-  }
-  
-  public final void a()
-  {
-    jdField_a_of_type_JavaUtilMap.clear();
   }
   
   public final void a(int paramInt1, int paramInt2, @NotNull RIJFollowPackUtils.RIJFollowPackData paramRIJFollowPackData)
   {
     Intrinsics.checkParameterIsNotNull(paramRIJFollowPackData, "followPackData");
-    RecommendFollowInfo localRecommendFollowInfo = a(paramRIJFollowPackData.a(), paramInt1);
+    RecommendFollowInfo localRecommendFollowInfo = a(paramRIJFollowPackData.c(), paramInt1);
     if (localRecommendFollowInfo != null) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils.a(paramInt1, paramInt2, paramRIJFollowPackData, localRecommendFollowInfo);
+        a.a(paramInt1, paramInt2, paramRIJFollowPackData, localRecommendFollowInfo);
       }
       catch (Exception paramRIJFollowPackData)
       {
-        jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils.a(paramInt1, localRecommendFollowInfo);
-        localObject = jdField_a_of_type_JavaLangString;
+        a.a(paramInt1, localRecommendFollowInfo);
+        localObject = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doProteusClick! error msg=");
         localStringBuilder.append(paramRIJFollowPackData);
         QLog.d((String)localObject, 1, localStringBuilder.toString());
       }
     }
-    paramRIJFollowPackData = jdField_a_of_type_JavaLangString;
+    paramRIJFollowPackData = b;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doProteusClick! position=");
     ((StringBuilder)localObject).append(paramInt1);
@@ -258,9 +248,9 @@ public final class RIJFollowPackUtils
   {
     Intrinsics.checkParameterIsNotNull(paramRIJFollowPackData, "followPackData");
     Intrinsics.checkParameterIsNotNull(paramRecommendFollowInfo, "recommendFollowInfo");
-    Object localObject = paramRIJFollowPackData.a().mRecommendFollowInfos;
+    Object localObject = paramRIJFollowPackData.c().mRecommendFollowInfos;
     if (localObject != null) {
-      localObject = Integer.valueOf(((RecommendFollowInfos)localObject).b);
+      localObject = Integer.valueOf(((RecommendFollowInfos)localObject).j);
     } else {
       localObject = null;
     }
@@ -312,7 +302,7 @@ public final class RIJFollowPackUtils
     }
     catch (Exception paramContext)
     {
-      paramAbsBaseArticleInfo = jdField_a_of_type_JavaLangString;
+      paramAbsBaseArticleInfo = b;
       paramViewGroup = new StringBuilder();
       paramViewGroup.append("addProteusFollowCards error! msg=");
       paramViewGroup.append(paramContext);
@@ -323,9 +313,9 @@ public final class RIJFollowPackUtils
   public final void a(@NotNull RIJFollowPackUtils.RIJFollowPackData paramRIJFollowPackData)
   {
     Intrinsics.checkParameterIsNotNull(paramRIJFollowPackData, "followPackData");
-    JSONObject localJSONObject = FastWebPTSDataConverter.a(paramRIJFollowPackData.a().mRecommendFollowInfos);
+    JSONObject localJSONObject = FastWebPTSDataConverter.a(paramRIJFollowPackData.c().mRecommendFollowInfos);
     paramRIJFollowPackData.a().bindData(localJSONObject);
-    ProteusSupportUtil.a(paramRIJFollowPackData.a(), paramRIJFollowPackData.a().getViewBean());
+    ProteusSupportUtil.a(paramRIJFollowPackData.b(), paramRIJFollowPackData.a().getViewBean());
   }
   
   public final void a(@NotNull String paramString, @Nullable Integer paramInteger, @NotNull RecommendFollowInfo paramRecommendFollowInfo, @Nullable Map<String, ? extends Object> paramMap)
@@ -354,10 +344,15 @@ public final class RIJFollowPackUtils
       localRecommendFollowInfo.isFollowed = FollowListInfoModule.a(localRecommendFollowInfo.uin, null);
     }
   }
+  
+  public final void b()
+  {
+    c.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJFollowPackUtils
  * JD-Core Version:    0.7.0.1
  */

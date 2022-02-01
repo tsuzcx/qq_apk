@@ -12,11 +12,11 @@ import com.tencent.qphone.base.util.QLog;
 class NearbyProfileEditPanel$OnPicDragListener
   implements View.OnDragListener
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public NearbyProfileEditPanel$OnPicDragListener(NearbyProfileEditPanel paramNearbyProfileEditPanel, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public boolean onDrag(View paramView, DragEvent paramDragEvent)
@@ -29,19 +29,19 @@ class NearbyProfileEditPanel$OnPicDragListener
         if (i != 4) {
           return true;
         }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
+        this.a.i.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
         return true;
       }
-      RelativeLayout localRelativeLayout = NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
-      i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      RelativeLayout localRelativeLayout = NearbyProfileEditPanel.h(this.a);
+      i = this.a.i.indexOfChild(paramView);
+      int j = this.a.i.indexOfChild(localRelativeLayout);
+      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.b / 2)) || ((i < j) && (paramDragEvent.getX() < this.b / 2))))
       {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.addView(localRelativeLayout, i);
-          NearbyProfileEditPanel.e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
+          this.a.i.removeView(localRelativeLayout);
+          this.a.i.addView(localRelativeLayout, i);
+          this.a.o();
           return true;
         }
         catch (Exception paramView)
@@ -67,7 +67,7 @@ class NearbyProfileEditPanel$OnPicDragListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener
  * JD-Core Version:    0.7.0.1
  */

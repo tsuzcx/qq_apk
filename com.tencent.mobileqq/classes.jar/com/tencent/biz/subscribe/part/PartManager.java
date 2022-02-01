@@ -14,23 +14,23 @@ import java.util.Set;
 public class PartManager
   implements Application.ActivityLifecycleCallbacks
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private BasePartFragment jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment;
-  private final LinkedHashMap<String, Part> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private BasePartFragment a;
+  private View b;
+  private final LinkedHashMap<String, Part> c = new LinkedHashMap();
   
   public PartManager(BasePartFragment paramBasePartFragment, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment = paramBasePartFragment;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramBasePartFragment;
+    this.b = paramView;
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).a(paramInt1, paramInt2, paramIntent);
       }
@@ -39,11 +39,11 @@ public class PartManager
   
   public void a(Configuration paramConfiguration)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).a(paramConfiguration);
       }
@@ -52,7 +52,7 @@ public class PartManager
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
   
   public void a(List<Part> paramList)
@@ -61,19 +61,19 @@ public class PartManager
     while (paramList.hasNext())
     {
       Part localPart = (Part)paramList.next();
-      localPart.a(this.jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment, this.jdField_a_of_type_AndroidViewView, this);
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localPart.getClass().getSimpleName(), localPart);
+      localPart.a(this.a, this.b, this);
+      this.c.put(localPart.getClass().getSimpleName(), localPart);
     }
   }
   
   public boolean a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if ((localObject != null) && (((Part)localObject).a())) {
+      localObject = (Part)this.c.get(localObject);
+      if ((localObject != null) && (((Part)localObject).c())) {
         return true;
       }
     }
@@ -82,41 +82,41 @@ public class PartManager
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null)
       {
         ((Part)localObject).onActivityCreated(paramActivity, paramBundle);
-        ((Part)localObject).a(this.jdField_a_of_type_AndroidViewView);
+        ((Part)localObject).a(this.b);
       }
     }
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).onActivityDestroyed(paramActivity);
       }
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment = null;
+    this.c.clear();
+    this.a = null;
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).onActivityPaused(paramActivity);
       }
@@ -125,13 +125,13 @@ public class PartManager
   
   public void onActivityResumed(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    paramActivity = this.c.keySet().iterator();
     while (paramActivity.hasNext())
     {
       Object localObject = (String)paramActivity.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
-        ((Part)localObject).onActivityResumed(this.jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment.getBaseActivity());
+        ((Part)localObject).onActivityResumed(this.a.getBaseActivity());
       }
     }
   }
@@ -140,11 +140,11 @@ public class PartManager
   
   public void onActivityStarted(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).onActivityStarted(paramActivity);
       }
@@ -153,11 +153,11 @@ public class PartManager
   
   public void onActivityStopped(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (Part)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (Part)this.c.get(localObject);
       if (localObject != null) {
         ((Part)localObject).onActivityStopped(paramActivity);
       }

@@ -25,46 +25,41 @@ public class IntimateInfoNavBar
   extends NavigateBar
   implements Animation.AnimationListener
 {
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ImageView g;
+  private Animation h;
   
   public IntimateInfoNavBar(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
     super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
   }
   
-  public long a()
-  {
-    return 15000L;
-  }
-  
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560934, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362982));
-    TextView localTextView = (TextView)localView.findViewById(2131378743);
+    View localView = LayoutInflater.from(this.c).inflate(2131627275, null);
+    this.g = ((ImageView)localView.findViewById(2131428783));
+    TextView localTextView = (TextView)localView.findViewById(2131447416);
     return localView;
   }
   
-  public void a()
+  public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a != null)) {
-      ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a.b(true);
+    if ((this.a != null) && (((ChatDrawerHelper)this.a.q(124)).b != null)) {
+      ((ChatDrawerHelper)this.a.q(124)).b.b(true);
     }
     ReportController.b(null, "dc00898", "", "", "0X800A11D", "0X800A11D", 0, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public boolean c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a != null))
+    if ((this.a != null) && (((ChatDrawerHelper)this.a.q(124)).b != null))
     {
-      Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.a, false);
+      Object localObject = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(this.a.ah.b, false);
       if ((localObject != null) && (((ExtensionInfo)localObject).intimate_type != 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+        localObject = this.b.getApp();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("IntimateInfo");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(this.b.getCurrentAccountUin());
         int i = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getInt("key_aio_score_guide_count", 0);
         if (QLog.isColorLevel()) {
           QLog.d("NavigateBarManager.IntimateInfoNavBar", 2, String.format("needShow score guide count: %s", new Object[] { Integer.valueOf(i) }));
@@ -77,23 +72,28 @@ public class IntimateInfoNavBar
     return false;
   }
   
-  public void b()
+  public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new IntimateInfoNavBar.1(this), 500L);
+    this.g.postDelayed(new IntimateInfoNavBar.1(this), 500L);
     ThreadManager.postImmediately(new IntimateInfoNavBar.2(this), null, false);
   }
   
-  public void c() {}
+  public void e() {}
   
-  public void d()
+  public void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.g.clearAnimation();
+  }
+  
+  public long g()
+  {
+    return 15000L;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.g.clearAnimation();
+    this.g.startAnimation(this.h);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -102,7 +102,7 @@ public class IntimateInfoNavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar
  * JD-Core Version:    0.7.0.1
  */

@@ -38,18 +38,18 @@ public class RegisterSendUpSms
   extends RegisterNewBaseActivity
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RegisterWithNick jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-  private RegisterWithNickAndPwd jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = null;
-  private String jdField_a_of_type_JavaLangString;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new RegisterSendUpSms.2(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new RegisterSendUpSms.1(this);
+  private String a;
   private String b;
   private String c = null;
   private String d = null;
+  private Button e;
+  private TextView f;
+  private Dialog g;
+  private int h = 0;
+  private MqqHandler i = new RegisterSendUpSms.1(this);
+  private RegisterWithNick j = null;
+  private RegisterWithNickAndPwd k = null;
+  private AccountObserver l = new RegisterSendUpSms.2(this);
   
   private CharSequence a(String paramString1, String paramString2)
   {
@@ -63,45 +63,16 @@ public class RegisterSendUpSms
       QLog.d("RegisterSendUpSms", 1, "value is null");
       return paramString1;
     }
-    int i = paramString1.indexOf("%s");
-    if (i == -1)
+    int m = paramString1.indexOf("%s");
+    if (m == -1)
     {
       QLog.d("RegisterSendUpSms", 1, "getColorSpan, no %s tag");
       return paramString1;
     }
     paramString1 = new SpannableString(String.format(paramString1, new Object[] { paramString2 }));
-    paramString1.setSpan(new ForegroundColorSpan(-16777216), i, paramString2.length() + i, 17);
-    paramString1.setSpan(new StyleSpan(1), i, paramString2.length() + i, 17);
+    paramString1.setSpan(new ForegroundColorSpan(-16777216), m, paramString2.length() + m, 17);
+    paramString1.setSpan(new StyleSpan(1), m, paramString2.length() + m, 17);
     return paramString1;
-  }
-  
-  private String a(String paramString, RegisterSendUpSms.SpaceRule paramSpaceRule)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.d("RegisterSendUpSms", 1, "insertSpace charSequence is null");
-      return null;
-    }
-    int j = paramString.length();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(paramString.charAt(i));
-      if (paramSpaceRule.a(i)) {
-        localStringBuilder.append(" ");
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog == null) {
-      this.jdField_a_of_type_AndroidAppDialog = LoginUtils.a(this, 2131701373);
-    }
-    this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   private void a(String paramString)
@@ -109,21 +80,21 @@ public class RegisterSendUpSms
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("upmsg");
+      this.a = paramString.getString("upmsg");
       this.b = paramString.getString("upnum");
-      if ((!TextUtils.isEmpty(this.phoneNum)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+      if ((!TextUtils.isEmpty(this.phoneNum)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)))
       {
-        paramString = (TextView)findViewById(2131379808);
-        TextView localTextView1 = (TextView)findViewById(2131379885);
-        TextView localTextView2 = (TextView)findViewById(2131379836);
-        String str1 = a(this.phoneNum, new RegisterSendUpSms.PhoneRule(null));
-        String str2 = a(this.b, new RegisterSendUpSms.MobileRule(null));
-        paramString.setText(a(getString(2131716614), str1));
-        localTextView1.setText(a(getString(2131716615), this.jdField_a_of_type_JavaLangString));
-        localTextView2.setText(a(getString(2131716613), str2));
+        paramString = (TextView)findViewById(2131448639);
+        TextView localTextView1 = (TextView)findViewById(2131448755);
+        TextView localTextView2 = (TextView)findViewById(2131448689);
+        String str1 = a(this.phoneNum, new RegisterSendUpSms.PhoneRule());
+        String str2 = a(this.b, new RegisterSendUpSms.MobileRule());
+        paramString.setText(a(getString(2131914077), str1));
+        localTextView1.setText(a(getString(2131914078), this.a));
+        localTextView2.setText(a(getString(2131914076), str2));
         return;
       }
-      QLog.e("RegisterSendUpSms", 1, new Object[] { "initView, data is unexpected, phoneNum : ", this.phoneNum, " upMsg : ", this.jdField_a_of_type_JavaLangString, " upNum : ", this.b });
+      QLog.e("RegisterSendUpSms", 1, new Object[] { "initView, data is unexpected, phoneNum : ", this.phoneNum, " upMsg : ", this.a, " upNum : ", this.b });
       return;
     }
     catch (JSONException paramString)
@@ -132,7 +103,15 @@ public class RegisterSendUpSms
     }
   }
   
-  private void a(String paramString1, String paramString2)
+  private void b()
+  {
+    if (this.g == null) {
+      this.g = LoginUtils.a(this, 2131899402);
+    }
+    this.g.show();
+  }
+  
+  private void b(String paramString1, String paramString2)
   {
     try
     {
@@ -160,9 +139,9 @@ public class RegisterSendUpSms
     ReportController.a(this.mRuntime, "new_reg_805", "send_msg", "send_clk", "", 1, "");
   }
   
-  private void b()
+  private void c()
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.g;
     if (localDialog == null)
     {
       QLog.d("RegisterSendUpSms", 1, "hide loading dialog, but dialog is null");
@@ -171,89 +150,64 @@ public class RegisterSendUpSms
     localDialog.dismiss();
   }
   
-  private void c()
+  private void d()
   {
     AccountManager localAccountManager = (AccountManager)this.mRuntime.getManager(0);
     if (localAccountManager != null)
     {
-      localAccountManager.queryUpSmsStat(this.jdField_a_of_type_MqqObserverAccountObserver);
-      a();
-      this.jdField_a_of_type_Int = 2;
+      localAccountManager.queryUpSmsStat(this.l);
+      b();
+      this.h = 2;
     }
   }
   
-  private void d()
+  private void e()
   {
     ReportController.a(this.mRuntime, "new_reg", "send_msg", "next_clk", "", 1, "");
     boolean bool1 = getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false);
     boolean bool2 = TextUtils.isEmpty(this.d);
     if (bool1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = new RegisterWithNickAndPwd(this);
+      if (this.k == null) {
+        this.k = new RegisterWithNickAndPwd(this);
       }
-      getIntent().putExtra("key_register_smscode", this.jdField_a_of_type_JavaLangString);
+      getIntent().putExtra("key_register_smscode", this.a);
       getIntent().putExtra("key_register_autologin", true);
-      this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd.a(getIntent());
+      this.k.a(getIntent());
       return;
     }
     if ((bool2 ^ true))
     {
-      RegisterWithNickAndPwdInfo localRegisterWithNickAndPwdInfo = new RegisterWithNickAndPwdInfoBuilder().a(this.phoneNum).b(this.countryCode).c(this.jdField_a_of_type_JavaLangString).a(true).b(false).d(this.inviteCode).a(4).e("").f("").c(true).d(true).e(false).a();
+      RegisterWithNickAndPwdInfo localRegisterWithNickAndPwdInfo = new RegisterWithNickAndPwdInfoBuilder().a(this.phoneNum).b(this.countryCode).c(this.a).a(true).b(false).d(this.inviteCode).a(4).e("").f("").c(true).d(true).e(false).a();
       RegisterLimitHelperImpl.a().a(this, this.d, localRegisterWithNickAndPwdInfo);
       return;
     }
-    RegisterByNicknameAndPwdActivity.gotoRegisterByNicknameAndPwdActivity(this, this.phoneNum, this.countryCode, this.jdField_a_of_type_JavaLangString, this.mIsPhoneNumRegistered, this.mHasPwd, this.inviteCode, 4, "", "", true, false);
+    RegisterByNicknameAndPwdActivity.gotoRegisterByNicknameAndPwdActivity(this, this.phoneNum, this.countryCode, this.a, this.mIsPhoneNumRegistered, this.mHasPwd, this.inviteCode, 4, "", "", true, false);
   }
   
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  protected String a(String paramString, RegisterSendUpSms.SpaceRule paramSpaceRule)
   {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
-  {
-    super.doOnCreate(paramBundle);
-    setContentView(2131562758);
-    setTitleText(2131716621);
-    setBackListener();
-    if (getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false)) {
-      setBarProgress(90);
-    } else {
-      setBarProgress(50);
-    }
-    LoginUtils.a(this.mRuntime, getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    paramBundle = super.getIntent();
-    if (paramBundle != null)
+    if (TextUtils.isEmpty(paramString))
     {
-      this.phoneNum = paramBundle.getStringExtra("phonenum");
-      this.inviteCode = paramBundle.getStringExtra("invite_code");
-      this.countryCode = paramBundle.getStringExtra("key");
-      this.mIsPhoneNumRegistered = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
-      this.mHasPwd = getIntent().getBooleanExtra("key_register_has_pwd", true);
-      this.c = getIntent().getStringExtra("key_register_binded_qq");
+      QLog.d("RegisterSendUpSms", 1, "insertSpace charSequence is null");
+      return null;
     }
-    if (QLog.isDevelopLevel()) {
-      RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
+    int n = paramString.length();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int m = 0;
+    while (m < n)
+    {
+      localStringBuilder.append(paramString.charAt(m));
+      if (paramSpaceRule.a(m)) {
+        localStringBuilder.append(" ");
+      }
+      m += 1;
     }
-    this.jdField_a_of_type_JavaLangString = super.getString(2131716622);
-    this.b = super.getString(2131716623);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364033));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379569));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    if (paramBundle != null) {
-      paramBundle = paramBundle.getStringExtra("key_register_prompt_info");
-    } else {
-      paramBundle = "";
-    }
-    if (!TextUtils.isEmpty(paramBundle)) {
-      a(paramBundle);
-    }
+    return localStringBuilder.toString();
+  }
+  
+  protected void a()
+  {
     ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007364", "0X8007364", 0, 0, "", "", this.phoneNum, "");
     if (!this.mIsPhoneNumRegistered) {
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007364", "0X8007364", 1, 0, "", "", this.phoneNum, "");
@@ -268,14 +222,70 @@ public class RegisterSendUpSms
     } else {
       ReportController.a(this.mRuntime, "new_reg_805", "send_msg", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
     }
-    ReportController.a(null, "dc00898", "", "", "0X800B8DB", "0X800B8DB", 0, 0, "", "", RegisterOverseaHelper.a().a(), "");
+    ReportController.a(null, "dc00898", "", "", "0X800B8DB", "0X800B8DB", 0, 0, "", "", RegisterOverseaHelper.a().b(), "");
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    if (paramIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)) {
+      setBarProgress(90);
+    } else {
+      setBarProgress(50);
+    }
+    LoginUtils.a(this.mRuntime, getClass(), this.i);
+    if (paramIntent != null)
+    {
+      this.phoneNum = paramIntent.getStringExtra("phonenum");
+      this.inviteCode = paramIntent.getStringExtra("invite_code");
+      this.countryCode = paramIntent.getStringExtra("key");
+      this.mIsPhoneNumRegistered = paramIntent.getBooleanExtra("key_register_is_phone_num_registered", false);
+      this.mHasPwd = paramIntent.getBooleanExtra("key_register_has_pwd", true);
+      this.c = paramIntent.getStringExtra("key_register_binded_qq");
+    }
+    if (QLog.isDevelopLevel()) {
+      RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
+    }
+    a();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    setContentView(2131629195);
+    setTitleText(2131914084);
+    setBackListener();
+    paramBundle = getIntent();
+    a(paramBundle);
+    this.a = super.getString(2131914085);
+    this.b = super.getString(2131914086);
+    this.e = ((Button)findViewById(2131429988));
+    this.f = ((TextView)findViewById(2131448325));
+    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getStringExtra("key_register_prompt_info");
+    } else {
+      paramBundle = "";
+    }
+    if (!TextUtils.isEmpty(paramBundle)) {
+      a(paramBundle);
+    }
     return true;
   }
   
   protected void doOnPause()
   {
     super.doOnPause();
-    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.k;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.c();
     }
@@ -284,14 +294,14 @@ public class RegisterSendUpSms
   protected void doOnResume()
   {
     super.doOnResume();
-    RegisterManager.a().a(2);
+    RegisterManager.b().a(2);
     if (QLog.isColorLevel()) {
-      QLog.i("RegisterSendUpSms", 2, String.format(Locale.getDefault(), "doOnResume mState: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.i("RegisterSendUpSms", 2, String.format(Locale.getDefault(), "doOnResume mState: %s", new Object[] { Integer.valueOf(this.h) }));
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      c();
+    if (this.h == 1) {
+      d();
     }
-    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.k;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.b();
     }
@@ -305,7 +315,7 @@ public class RegisterSendUpSms
   protected void onAccountChanged()
   {
     super.onAccountChanged();
-    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.k;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.d();
     }
@@ -313,24 +323,24 @@ public class RegisterSendUpSms
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131379569)
+    int m = paramView.getId();
+    if (m == 2131448325)
     {
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B4BA", "0X800B4BA", 0, 0, "", "", "", "");
-      if (this.jdField_a_of_type_Int == 2) {
+      if (this.h == 2) {
         QLog.d("RegisterSendUpSms", 1, "check sms, but is querying");
       } else {
-        c();
+        d();
       }
     }
-    else if (i == 2131364033)
+    else if (m == 2131429988)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("RegisterSendUpSms", 2, String.format(Locale.getDefault(), "onClick mState: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+        QLog.i("RegisterSendUpSms", 2, String.format(Locale.getDefault(), "onClick mState: %s", new Object[] { Integer.valueOf(this.h) }));
       }
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B4B9", "0X800B4B9", 0, 0, "", "", "", "");
-      a(this.b, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = 1;
+      b(this.b, this.a);
+      this.h = 1;
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -345,23 +355,23 @@ public class RegisterSendUpSms
   public void onDestroy()
   {
     super.onDestroy();
-    LoginUtils.a(this.mRuntime, getClass());
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick;
+    LoginUtils.b(this.mRuntime, getClass());
+    Object localObject = this.j;
     if (localObject != null) {
       ((RegisterWithNick)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    this.j = null;
+    localObject = this.k;
     if (localObject != null) {
       ((RegisterWithNickAndPwd)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = null;
-    b();
+    this.k = null;
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterSendUpSms
  * JD-Core Version:    0.7.0.1
  */

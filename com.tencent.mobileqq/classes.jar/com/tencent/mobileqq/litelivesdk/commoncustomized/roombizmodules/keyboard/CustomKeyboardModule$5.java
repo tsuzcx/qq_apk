@@ -14,21 +14,21 @@ class CustomKeyboardModule$5
   
   public void onClick(View paramView)
   {
-    if (CustomKeyboardModule.a(this.a) != null)
+    if (CustomKeyboardModule.f(this.a) != null)
     {
       SendChatInputEvent localSendChatInputEvent = new SendChatInputEvent();
       localSendChatInputEvent.mType = 1;
-      localSendChatInputEvent.mContent = CustomKeyboardModule.a(this.a).getText().toString();
+      localSendChatInputEvent.mContent = CustomKeyboardModule.f(this.a).getText().toString();
       this.a.getEvent().post(localSendChatInputEvent);
-      CustomKeyboardModule.b(this.a);
-      CustomKeyboardModule.a(this.a).setText(null);
+      CustomKeyboardModule.c(this.a);
+      CustomKeyboardModule.f(this.a).setText(null);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.keyboard.CustomKeyboardModule.5
  * JD-Core Version:    0.7.0.1
  */

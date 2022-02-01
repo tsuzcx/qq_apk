@@ -38,10 +38,10 @@ class SignatureEditFragment$7
               return;
             }
             i = ((Integer)paramObject.get(1)).intValue();
-            paramObservable = SignatureEditFragment.a(this.a).obtainMessage();
+            paramObservable = SignatureEditFragment.d(this.a).obtainMessage();
             paramObservable.what = 262;
             paramObservable.arg1 = i;
-            SignatureEditFragment.a(this.a).sendMessage(paramObservable);
+            SignatureEditFragment.d(this.a).sendMessage(paramObservable);
             return;
           }
           ((Integer)paramObject.get(1)).intValue();
@@ -52,65 +52,65 @@ class SignatureEditFragment$7
         if ((i == 100) || (i == 0))
         {
           SignatureEditFragment localSignatureEditFragment = this.a;
-          localSignatureEditFragment.jdField_a_of_type_Boolean = false;
+          localSignatureEditFragment.c = false;
           SignatureEditFragment.a(localSignatureEditFragment, true);
           localSignatureEditFragment = this.a;
-          localSignatureEditFragment.jdField_b_of_type_Boolean = false;
+          localSignatureEditFragment.d = false;
           localSignatureEditFragment.getAppRuntime().getAccount();
           if (((Integer)paramObject.get(3)).intValue() == 1)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = RichStatus.getEmptyStatus();
-            SignatureManagerForTool.a().b(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            this.a.a = RichStatus.getEmptyStatus();
+            SignatureManagerForTool.a().b(this.a.a);
           }
           else
           {
-            SignatureManagerForTool.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-            SignatureManagerForTool.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-            SignatureEditFragment.c(this.a);
-            this.a.c();
+            SignatureManagerForTool.a().a = null;
+            SignatureManagerForTool.a().b = null;
+            SignatureEditFragment.f(this.a);
+            this.a.d();
           }
         }
         paramObject = new Message();
         paramObject.what = 259;
         paramObject.obj = paramObservable;
-        SignatureEditFragment.a(this.a).sendMessage(paramObject);
+        SignatureEditFragment.d(this.a).sendMessage(paramObject);
         return;
       }
       paramObservable = (RichStatus)paramObject.get(1);
       paramObject = this.a;
-      paramObject.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramObservable;
-      paramObject.jdField_b_of_type_Boolean = false;
-      if (paramObject.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText != null)
+      paramObject.a = paramObservable;
+      paramObject.d = false;
+      if (paramObject.a.plainText != null)
       {
-        paramObject = SignatureManagerForTool.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus;
+        paramObject = SignatureManagerForTool.a().b;
         if (paramObject != null)
         {
-          paramObject.plainText = ((ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.clone());
+          paramObject.plainText = ((ArrayList)this.a.a.plainText.clone());
           paramObject.topics.clear();
-          paramObject.topics.addAll(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics);
+          paramObject.topics.addAll(this.a.a.topics);
         }
       }
       if (paramObservable != null)
       {
-        this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramObservable);
-        SignatureManagerForTool.a().a(this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+        this.a.b.copyFrom(paramObservable);
+        SignatureManagerForTool.a().a(this.a.b.tplId);
       }
       paramObservable = this.a;
-      paramObservable.jdField_a_of_type_Boolean = false;
-      if (SignatureEditFragment.a(paramObservable) != null) {
-        SignatureEditFragment.a(this.a).sendEmptyMessage(257);
+      paramObservable.c = false;
+      if (SignatureEditFragment.d(paramObservable) != null) {
+        SignatureEditFragment.d(this.a).sendEmptyMessage(257);
       }
-      SignatureEditFragment.b(this.a);
+      SignatureEditFragment.e(this.a);
       return;
     }
-    if (SignatureEditFragment.a(this.a) != null) {
-      SignatureEditFragment.a(this.a).sendEmptyMessage(257);
+    if (SignatureEditFragment.d(this.a) != null) {
+      SignatureEditFragment.d(this.a).sendEmptyMessage(257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment.7
  * JD-Core Version:    0.7.0.1
  */

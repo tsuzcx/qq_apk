@@ -7,7 +7,6 @@ import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 import com.tencent.mobileqq.weather.util.WeatherHelper;
 import com.tencent.mobileqq.weather.webpage.WeatherPreloadHelper;
 import com.tencent.mobileqq.weather.webpage.WeatherWebPageHelper;
-import mqq.app.AppActivity;
 
 public class WeatherCommApiImpl
   implements IWeatherCommApi
@@ -16,7 +15,7 @@ public class WeatherCommApiImpl
   
   public String getGdtDeviceInfoBase64()
   {
-    return WeatherWebPageHelper.a();
+    return WeatherWebPageHelper.b();
   }
   
   public boolean isWeatherArkPageUrl(String paramString)
@@ -32,6 +31,11 @@ public class WeatherCommApiImpl
   public void openWeatherByScheme(Context paramContext, String paramString)
   {
     WeatherWebPageHelper.a(paramContext, paramString);
+  }
+  
+  public void openWeatherWebForHippy(Context paramContext, String paramString)
+  {
+    WeatherWebPageHelper.b(paramContext, paramString);
   }
   
   public void openWeatherWebPage(Context paramContext, String paramString1, String paramString2)
@@ -66,17 +70,17 @@ public class WeatherCommApiImpl
   
   public String transformUrlToScheme(String paramString)
   {
-    return WeatherWebPageHelper.a(paramString);
+    return WeatherWebPageHelper.c(paramString);
   }
   
-  public void translate(AppInterface paramAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity)
+  public void translate(AppInterface paramAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
-    WeatherServlet.a(paramAppInterface, paramInt1, paramInt2, paramAppActivity);
+    WeatherServlet.a(paramAppInterface, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.api.impl.WeatherCommApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,20 @@ import android.content.SharedPreferences.Editor;
 
 public class TroopBarPublishUtils$UserInvokeAction
 {
-  SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private String jdField_a_of_type_JavaLangString;
+  SharedPreferences.Editor a;
+  private String b;
+  private SharedPreferences c;
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+    this.a = this.c.edit();
+    this.a.putBoolean(this.b, true);
+    this.a.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.UserInvokeAction
  * JD-Core Version:    0.7.0.1
  */

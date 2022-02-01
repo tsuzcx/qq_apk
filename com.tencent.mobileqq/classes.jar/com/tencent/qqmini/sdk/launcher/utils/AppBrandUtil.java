@@ -7,16 +7,19 @@ import com.tencent.qqmini.sdk.launcher.annotation.BindClass;
 import com.tencent.qqmini.sdk.launcher.dynamic.MiniAppDexLoader;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.FileMaterialInfo;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -105,7 +108,12 @@ public class AppBrandUtil
         }
       }
       localJSONObject.put("entryDataHash", getEntryDataHash(paramMiniAppInfo));
-      return localJSONObject;
+      paramString = getForwardMaterialsInfo(paramMiniAppInfo);
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        localJSONObject.put("forwardMaterials", paramString);
+        return localJSONObject;
+      }
     }
     catch (Throwable paramString)
     {
@@ -128,6 +136,43 @@ public class AppBrandUtil
       return paramMiniAppInfo.extendData;
     }
     return null;
+  }
+  
+  private static JSONArray getForwardMaterialsInfo(MiniAppInfo paramMiniAppInfo)
+  {
+    JSONArray localJSONArray = null;
+    if (paramMiniAppInfo == null) {
+      return null;
+    }
+    Object localObject = paramMiniAppInfo.launchParam.fileMaterialInfoList;
+    paramMiniAppInfo = localJSONArray;
+    if (localObject != null)
+    {
+      if (((List)localObject).isEmpty()) {
+        return null;
+      }
+      localJSONArray = new JSONArray();
+      localObject = ((List)localObject).iterator();
+      for (;;)
+      {
+        paramMiniAppInfo = localJSONArray;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        paramMiniAppInfo = (FileMaterialInfo)((Iterator)localObject).next();
+        String str = paramMiniAppInfo.getTmpPath();
+        if (!TextUtils.isEmpty(str))
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("type", paramMiniAppInfo.getMimeType());
+          localJSONObject.put("name", paramMiniAppInfo.getName());
+          localJSONObject.put("path", str);
+          localJSONObject.put("size", paramMiniAppInfo.getSize());
+          localJSONArray.put(localJSONObject);
+        }
+      }
+    }
+    return paramMiniAppInfo;
   }
   
   public static JSONObject getPageLoadInfo(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
@@ -431,7 +476,7 @@ public class AppBrandUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil
  * JD-Core Version:    0.7.0.1
  */

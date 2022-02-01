@@ -26,9 +26,9 @@ public class UFTC2CFetchUploadUrlV2HitOp
     if (i != 0) {
       return i;
     }
-    UFTC2CUploadTaskInfo localUFTC2CUploadTaskInfo = (UFTC2CUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
-    paramUFTC2CUploadReq.e(localUFTC2CUploadTaskInfo.a().c());
-    paramUFTC2CUploadReq.d(localUFTC2CUploadTaskInfo.a().d());
+    UFTC2CUploadTaskInfo localUFTC2CUploadTaskInfo = (UFTC2CUploadTaskInfo)this.h;
+    paramUFTC2CUploadReq.e(localUFTC2CUploadTaskInfo.r().d());
+    paramUFTC2CUploadReq.d(localUFTC2CUploadTaskInfo.r().e());
     return 0;
   }
   
@@ -36,20 +36,20 @@ public class UFTC2CFetchUploadUrlV2HitOp
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] request c2c upload url v2hit suc rsp:");
     ((StringBuilder)localObject).append(paramUFTC2CUploadRsp.toString());
     UFTLog.b("[UFTTransfer] UFTFetchC2CUploadUrlV2HitOp", 1, ((StringBuilder)localObject).toString());
     localObject = new UFTBaseOp.OpRetData();
     ((UFTBaseOp.OpRetData)localObject).a(1);
-    if ((paramUFTC2CUploadRsp.a() == 0) && (paramUFTC2CUploadRsp.a() != null) && (paramUFTC2CUploadRsp.a().length > 0))
+    if ((paramUFTC2CUploadRsp.a() == 0) && (paramUFTC2CUploadRsp.e() != null) && (paramUFTC2CUploadRsp.e().length > 0))
     {
       UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = new UFTUploadSrvBusiProp.C2CUploadSrvBusiProp(paramUFTC2CUploadRsp);
       localC2CUploadSrvBusiProp.d(true);
       a(localC2CUploadSrvBusiProp);
       ((UFTBaseOp.OpRetData)localObject).a(0);
     }
-    ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.a());
+    ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.b());
     a((UFTBaseOp.OpRetData)localObject);
   }
   
@@ -59,32 +59,32 @@ public class UFTC2CFetchUploadUrlV2HitOp
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] request c2c upload url v2hit fail. errCode:");
       ((StringBuilder)localObject).append(paramUFTC2CUploadRsp.a());
       UFTLog.d("[UFTTransfer] UFTFetchC2CUploadUrlV2HitOp", 1, ((StringBuilder)localObject).toString());
       localObject = new UFTBaseOp.OpRetData();
       ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.a());
-      ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.a());
+      ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.b());
       a((UFTBaseOp.OpRetData)localObject);
       return;
     }
     a(paramUFTC2CUploadRsp);
   }
   
-  protected boolean a(UFTC2CUploadReq paramUFTC2CUploadReq)
+  protected boolean b(UFTC2CUploadReq paramUFTC2CUploadReq)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] request c2c upload url v2hit.");
     UFTLog.b("[UFTTransfer] UFTFetchC2CUploadUrlV2HitOp", 1, localStringBuilder.toString());
-    return UFTProtoRequestor.a().b(this.jdField_a_of_type_MqqAppAppRuntime, paramUFTC2CUploadReq, new UFTC2CFetchUploadUrlV2HitOp.1(this));
+    return UFTProtoRequestor.a().b(this.g, paramUFTC2CUploadReq, new UFTC2CFetchUploadUrlV2HitOp.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CFetchUploadUrlV2HitOp
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class PublicAccountVoiceAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839143;
+    return 2130839299;
   }
   
   public int getAppID()
@@ -27,19 +27,19 @@ public class PublicAccountVoiceAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698550);
+    return BaseApplicationImpl.getContext().getString(2131896496);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if ((paramBaseChatPie instanceof PublicAccountChatPie)) {
-      ((PublicAccountChatPie)paramBaseChatPie).n.performClick();
+      ((PublicAccountChatPie)paramBaseChatPie).bL.performClick();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.PublicAccountVoiceAppInfo
  * JD-Core Version:    0.7.0.1
  */

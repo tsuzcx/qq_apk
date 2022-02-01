@@ -41,42 +41,6 @@ public class RecentTempMsgBoxItem
     this.mData = paramRecentUser;
   }
   
-  private StringBuilder a(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage)
-  {
-    paramMessage = new StringBuilder();
-    paramMessage.append(this.mTitleName);
-    paramMessage.append(",");
-    if (this.mUnreadNum != 0) {
-      if (this.mUnreadNum == 1) {
-        paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131719470));
-      } else if (this.mUnreadNum == 2) {
-        paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131719471));
-      } else if (this.mUnreadNum > 0) {
-        paramMessage.append(String.format(paramBaseQQAppInterface.getApplication().getString(2131719469), new Object[] { Integer.valueOf(this.mUnreadNum) }));
-      }
-    }
-    if (this.mMsgExtroInfo != null)
-    {
-      paramMessage.append(this.mMsgExtroInfo);
-      paramMessage.append(",");
-    }
-    Integer localInteger = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(getRecentUserType()));
-    if (localInteger != null)
-    {
-      paramBaseQQAppInterface = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(localInteger.intValue()) });
-      paramBaseQQAppInterface = this.mLastMsg.toString().replace(paramBaseQQAppInterface, "");
-      paramMessage.append(((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramBaseQQAppInterface));
-      paramMessage.append(",");
-    }
-    else
-    {
-      paramMessage.append(((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(this.mLastMsg.toString()));
-      paramMessage.append(",");
-    }
-    paramMessage.append(this.mShowTime);
-    return paramMessage;
-  }
-  
   private void a()
   {
     boolean bool;
@@ -111,8 +75,8 @@ public class RecentTempMsgBoxItem
       this.mUnreadNum += i;
       if (i > 0)
       {
-        this.mMsgExtroInfo = localITempMsgBoxCallback.a(paramBaseQQAppInterface, paramMessage.frienduin, paramMessage.istroop, this.mUnreadNum, paramMessage);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mMsgExtroInfo = localITempMsgBoxCallback.b(paramBaseQQAppInterface, paramMessage.frienduin, paramMessage.istroop, this.mUnreadNum, paramMessage);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
     }
   }
@@ -123,13 +87,13 @@ public class RecentTempMsgBoxItem
     Object localObject = ((ITempChatPluginManager)paramBaseQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(getRecentUserType());
     if (localObject != null)
     {
-      paramMsgSummary.prefixOfContent = ((AbstractTempChatPlugin)localObject).a(getRecentUserUin(), TempChatSource.SOURCE_FROM_MAG_TAB);
+      paramMsgSummary.prefixOfContent = ((AbstractTempChatPlugin)localObject).b(getRecentUserUin(), TempChatSource.SOURCE_FROM_MAG_TAB);
     }
     else
     {
       localObject = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(getRecentUserType()));
       if (localObject != null) {
-        paramMsgSummary.prefixOfContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
+        paramMsgSummary.prefixOfContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
       }
     }
     localObject = (String)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getBusinessStringMap().get(Integer.valueOf(paramInt));
@@ -145,8 +109,8 @@ public class RecentTempMsgBoxItem
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage)
   {
-    if (AppSetting.d) {
-      this.mContentDesc = a(paramBaseQQAppInterface, paramMessage).toString();
+    if (AppSetting.e) {
+      this.mContentDesc = b(paramBaseQQAppInterface, paramMessage).toString();
     }
   }
   
@@ -165,7 +129,7 @@ public class RecentTempMsgBoxItem
         localObject = (ITempMsgBoxBusinessHandler)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getBusinessHandlerMap().get(localObject);
         bool1 = bool2;
         if (localObject != null) {
-          bool1 = ((ITempMsgBoxBusinessHandler)localObject).a(paramBaseQQAppInterface, paramString);
+          bool1 = ((ITempMsgBoxBusinessHandler)localObject).b(paramBaseQQAppInterface, paramString);
         }
       }
       if (!bool1) {
@@ -191,13 +155,13 @@ public class RecentTempMsgBoxItem
       Object localObject = ((ITempChatPluginManager)paramBaseQQAppInterface.getRuntimeService(ITempChatPluginManager.class, "")).getTempChatPlugin(getRecentUserType());
       if (localObject != null)
       {
-        paramDraftSummaryInfo = ((AbstractTempChatPlugin)localObject).a(getRecentUserUin(), TempChatSource.SOURCE_FROM_MAG_TAB);
+        paramDraftSummaryInfo = ((AbstractTempChatPlugin)localObject).b(getRecentUserUin(), TempChatSource.SOURCE_FROM_MAG_TAB);
       }
       else
       {
         localObject = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(getRecentUserType()));
         if (localObject != null) {
-          paramDraftSummaryInfo = String.format(paramBaseQQAppInterface.getApplication().getString(2131699395), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
+          paramDraftSummaryInfo = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(((Integer)localObject).intValue()) });
         }
       }
       paramBaseQQAppInterface = new StringBuilder();
@@ -207,14 +171,45 @@ public class RecentTempMsgBoxItem
     }
   }
   
+  private StringBuilder b(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage)
+  {
+    paramMessage = new StringBuilder();
+    paramMessage.append(this.mTitleName);
+    paramMessage.append(",");
+    if (this.mUnreadNum != 0) {
+      if (this.mUnreadNum == 1) {
+        paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131917032));
+      } else if (this.mUnreadNum == 2) {
+        paramMessage.append(paramBaseQQAppInterface.getApplication().getString(2131917033));
+      } else if (this.mUnreadNum > 0) {
+        paramMessage.append(String.format(paramBaseQQAppInterface.getApplication().getString(2131917031), new Object[] { Integer.valueOf(this.mUnreadNum) }));
+      }
+    }
+    if (this.mMsgExtroInfo != null)
+    {
+      paramMessage.append(this.mMsgExtroInfo);
+      paramMessage.append(",");
+    }
+    Integer localInteger = (Integer)((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getSummaryTextMap().get(Integer.valueOf(getRecentUserType()));
+    if (localInteger != null)
+    {
+      paramBaseQQAppInterface = String.format(paramBaseQQAppInterface.getApplication().getString(2131897426), new Object[] { paramBaseQQAppInterface.getApplication().getString(localInteger.intValue()) });
+      paramBaseQQAppInterface = this.mLastMsg.toString().replace(paramBaseQQAppInterface, "");
+      paramMessage.append(((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramBaseQQAppInterface));
+      paramMessage.append(",");
+    }
+    else
+    {
+      paramMessage.append(((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(this.mLastMsg.toString()));
+      paramMessage.append(",");
+    }
+    paramMessage.append(this.mShowTime);
+    return paramMessage;
+  }
+  
   private void c()
   {
     this.mUnreadFlag = 1;
-  }
-  
-  public RecentUser a()
-  {
-    return this.mData;
   }
   
   public void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
@@ -231,6 +226,11 @@ public class RecentTempMsgBoxItem
         }
       }
     }
+  }
+  
+  public RecentUser e()
+  {
+    return this.mData;
   }
   
   public long getLastDraftTime()
@@ -302,7 +302,7 @@ public class RecentTempMsgBoxItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.data.RecentTempMsgBoxItem
  * JD-Core Version:    0.7.0.1
  */

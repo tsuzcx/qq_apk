@@ -19,21 +19,21 @@ class VideoCompositeManager$1
   
   protected String a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start composite vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    paramJobContext = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start composite vid:%s", new Object[] { this.a });
+    paramJobContext = VideoCompositeHelper.a(this.a);
     paramVarArgs = new StringBuilder();
-    paramVarArgs.append(QQStoryConstant.f);
+    paramVarArgs.append(QQStoryConstant.g);
     paramVarArgs.append(System.currentTimeMillis());
     paramVarArgs.append(".mp4");
     paramVarArgs = paramVarArgs.toString();
-    new File(QQStoryConstant.f).mkdirs();
+    new File(QQStoryConstant.g).mkdirs();
     new VideoCompositeHelper().a(paramJobContext, paramVarArgs, false, true, new VideoCompositeManager.1.1(this, paramJobContext));
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.1
  * JD-Core Version:    0.7.0.1
  */

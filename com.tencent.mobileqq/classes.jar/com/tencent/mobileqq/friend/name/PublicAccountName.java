@@ -12,7 +12,7 @@ public class PublicAccountName
 {
   public String a(String paramString, Friends paramFriends, AppInterface paramAppInterface)
   {
-    paramFriends = FriendInjectFactory.a();
+    paramFriends = FriendInjectFactory.c();
     if (paramFriends != null)
     {
       paramString = paramFriends.a(paramAppInterface, paramString);
@@ -29,7 +29,7 @@ public class PublicAccountName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.name.PublicAccountName
  * JD-Core Version:    0.7.0.1
  */

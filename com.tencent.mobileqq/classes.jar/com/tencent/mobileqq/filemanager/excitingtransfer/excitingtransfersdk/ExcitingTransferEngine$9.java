@@ -7,18 +7,18 @@ class ExcitingTransferEngine$9
   
   public void run()
   {
-    ExcitingTransferEngine.ExcitingRecvJobContent localExcitingRecvJobContent = ExcitingTransferEngine.access$200(this.this$0, this.jdField_a_of_type_Long);
+    ExcitingTransferEngine.ExcitingRecvJobContent localExcitingRecvJobContent = ExcitingTransferEngine.access$200(this.this$0, this.a);
     if (localExcitingRecvJobContent == null) {
       return;
     }
     if (localExcitingRecvJobContent.mListener != null) {
-      localExcitingRecvJobContent.mListener.onSpeed(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadSpeedInfo);
+      localExcitingRecvJobContent.mListener.onSpeed(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine.9
  * JD-Core Version:    0.7.0.1
  */

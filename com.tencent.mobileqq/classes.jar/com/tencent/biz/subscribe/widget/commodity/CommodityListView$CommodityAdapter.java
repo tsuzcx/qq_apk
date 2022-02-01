@@ -17,30 +17,30 @@ public class CommodityListView$CommodityAdapter
   
   public BaseListViewAdapter.BaseVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new CommodityItemView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.getContext());
-    paramViewGroup.setIsPublishUI(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
-    paramViewGroup.setCurrentFeed(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
+    paramViewGroup = new CommodityItemView(this.a.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.a));
+    paramViewGroup.setCurrentFeed(CommodityListView.b(this.a));
     return new BaseListViewAdapter.BaseVH(this, paramViewGroup);
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.j.size();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (!ArrayUtils.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList))
+    if (!ArrayUtils.isOutOfArrayIndex(paramInt, this.j))
     {
-      ((CommodityItemView)paramViewHolder.itemView).setData(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new CommodityListView.CommodityAdapter.1(this, paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.j.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).getDeleteBtn().setOnClickListener(new CommodityListView.CommodityAdapter.1(this, paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView.CommodityAdapter
  * JD-Core Version:    0.7.0.1
  */

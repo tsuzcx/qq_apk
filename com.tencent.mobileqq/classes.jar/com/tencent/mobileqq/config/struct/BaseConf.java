@@ -7,28 +7,19 @@ import java.util.ArrayList;
 
 public abstract class BaseConf
 {
-  public byte a;
-  private final int jdField_a_of_type_Int = ConfigManager.a();
-  public long a;
-  protected ArrayList a;
-  public short a;
-  private boolean jdField_a_of_type_Boolean = false;
-  public long b = -1L;
+  public short a = 0;
+  public long b = 0L;
   public long c = -1L;
+  public long d = -1L;
+  public byte e = -1;
+  protected ArrayList f = new ArrayList();
+  private final int g = ConfigManager.a();
+  private boolean h = false;
   
   public BaseConf(short paramShort, byte paramByte)
   {
-    this.jdField_a_of_type_Short = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Byte = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Byte = paramByte;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.a = paramShort;
+    this.e = paramByte;
   }
   
   public abstract void a();
@@ -39,7 +30,7 @@ public abstract class BaseConf
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    this.f.add(paramObject);
   }
   
   public void a(String paramString)
@@ -50,10 +41,10 @@ public abstract class BaseConf
         return;
       }
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.f.size())
       {
-        PicAndAdConf.PicStruct localPicStruct = (PicAndAdConf.PicStruct)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localPicStruct.d != null) && (localPicStruct.d.contains(paramString))) {
+        PicAndAdConf.PicStruct localPicStruct = (PicAndAdConf.PicStruct)this.f.get(i);
+        if ((localPicStruct.f != null) && (localPicStruct.f.contains(paramString))) {
           break label72;
         }
         i += 1;
@@ -61,35 +52,40 @@ public abstract class BaseConf
       i = -1;
       label72:
       if (i != -1) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        this.f.remove(i);
       }
     }
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
-  public final boolean a()
+  public final int b()
   {
-    long l = this.c;
+    return this.f.size();
+  }
+  
+  public final boolean c()
+  {
+    long l = this.d;
     return (l > 0L) && (l <= System.currentTimeMillis());
   }
   
-  public void b()
+  public final boolean d()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    return this.c > System.currentTimeMillis();
   }
   
-  public final boolean b()
+  public void e()
   {
-    return this.b > System.currentTimeMillis();
+    this.f.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.BaseConf
  * JD-Core Version:    0.7.0.1
  */

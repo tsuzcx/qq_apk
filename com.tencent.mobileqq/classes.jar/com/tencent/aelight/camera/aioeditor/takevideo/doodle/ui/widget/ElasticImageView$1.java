@@ -11,19 +11,19 @@ class ElasticImageView$1
   
   public void a(ValueAnimator paramValueAnimator)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = this.a;
-    ElasticImageView.a(paramValueAnimator, paramValueAnimator.d);
+    ElasticImageView.a(paramValueAnimator, paramValueAnimator.e);
     paramValueAnimator = new StringBuilder();
     paramValueAnimator.append("updateAnimator:");
-    paramValueAnimator.append(this.a.d);
+    paramValueAnimator.append(this.a.e);
     SLog.b("ElasticImageView", paramValueAnimator.toString());
     ElasticImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.widget.ElasticImageView.1
  * JD-Core Version:    0.7.0.1
  */

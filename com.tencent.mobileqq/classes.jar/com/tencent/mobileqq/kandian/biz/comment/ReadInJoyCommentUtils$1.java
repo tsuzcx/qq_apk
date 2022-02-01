@@ -13,12 +13,12 @@ final class ReadInJoyCommentUtils$1
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    ReadInJoyCommentUtils.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityCommentInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.c, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$CommentComponetEventListener, this.jdField_b_of_type_Int);
+    ReadInJoyCommentUtils.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils.1
  * JD-Core Version:    0.7.0.1
  */

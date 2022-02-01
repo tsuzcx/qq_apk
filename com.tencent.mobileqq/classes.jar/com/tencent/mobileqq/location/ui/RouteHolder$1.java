@@ -12,7 +12,7 @@ class RouteHolder$1
   
   public void onClick(View paramView)
   {
-    if (!RouteHolder.a(this.a).a())
+    if (!RouteHolder.a(this.a).d())
     {
       RouteHolder.a(this.a).a.c(true);
       RouteHolder.a(this.a).c();
@@ -23,7 +23,7 @@ class RouteHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.RouteHolder.1
  * JD-Core Version:    0.7.0.1
  */

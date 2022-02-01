@@ -12,7 +12,7 @@ class LebaSearchPluginManagerActivity$1
   
   public void onGlobalLayout()
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.p.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     int i = this.a.getWindow().getDecorView().getBottom();
     int j = this.a.getWindow().getDecorView().getTop();
     LebaSearchPluginManagerActivity.a(this.a, i - j);
@@ -20,7 +20,7 @@ class LebaSearchPluginManagerActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity.1
  * JD-Core Version:    0.7.0.1
  */

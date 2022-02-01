@@ -8,54 +8,66 @@ import mqq.app.QQPermissionCallback;
 class VideoControlUI$13
   implements QQPermissionCallback
 {
-  VideoControlUI$13(VideoControlUI paramVideoControlUI, String paramString, long paramLong, View paramView) {}
+  VideoControlUI$13(VideoControlUI paramVideoControlUI, QQPermissionCallback paramQQPermissionCallback, String paramString, long paramLong, View paramView) {}
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onClick_Camera, deny, i[");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("], mRequestPermissionIng[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p);
-    localStringBuilder.append("], permissions[");
-    localStringBuilder.append(AudioHelper.a(paramArrayOfString));
-    localStringBuilder.append("], grantResults[");
-    localStringBuilder.append(AudioHelper.a(paramArrayOfInt));
-    localStringBuilder.append("]");
-    QLog.w(str, 1, localStringBuilder.toString());
-    paramArrayOfString = this.jdField_a_of_type_ComTencentAvUiVideoControlUI;
-    paramArrayOfString.p = false;
-    paramArrayOfString.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = this.e.X;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onClick_Camera, deny, i[");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("], mRequestPermissionIng[");
+    ((StringBuilder)localObject2).append(this.e.bw);
+    ((StringBuilder)localObject2).append("], permissions[");
+    ((StringBuilder)localObject2).append(AudioHelper.a(paramArrayOfString));
+    ((StringBuilder)localObject2).append("], grantResults[");
+    ((StringBuilder)localObject2).append(AudioHelper.a(paramArrayOfInt));
+    ((StringBuilder)localObject2).append("]");
+    QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    localObject1 = this.e;
+    ((VideoControlUI)localObject1).bw = false;
+    localObject2 = this.a;
+    if (localObject2 != null)
+    {
+      ((QQPermissionCallback)localObject2).deny(paramInt, paramArrayOfString, paramArrayOfInt);
+      return;
+    }
+    ((VideoControlUI)localObject1).e(this.c, this.b);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+    Object localObject = this.e.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onClick_Camera, grant, i[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mRequestPermissionIng[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p);
+    localStringBuilder.append(this.e.bw);
     localStringBuilder.append("], permissions[");
     localStringBuilder.append(AudioHelper.a(paramArrayOfString));
     localStringBuilder.append("], grantResults[");
     localStringBuilder.append(AudioHelper.a(paramArrayOfInt));
     localStringBuilder.append("]");
-    QLog.w(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString))
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    this.e.bw = false;
+    localObject = this.a;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+      ((QQPermissionCallback)localObject).grant(paramInt, paramArrayOfString, paramArrayOfInt);
       return;
     }
-    if ("android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString))
+    if ("android.permission.CAMERA".equals(this.b))
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+      this.e.e(this.c, this.d);
       return;
     }
-    if ("android.permission.WRITE_EXTERNAL_STORAGE".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g(this.jdField_a_of_type_Long);
+    if ("android.permission.RECORD_AUDIO".equals(this.b))
+    {
+      this.e.d(this.c, this.d);
+      return;
+    }
+    if ("android.permission.WRITE_EXTERNAL_STORAGE".equals(this.b)) {
+      this.e.g(this.c);
     }
   }
 }

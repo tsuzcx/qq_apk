@@ -29,27 +29,27 @@ public class ZipFilePresenter
   implements FileBrowserModelBase.OnThumbEventListener, FileBrowserModelBase.OnTransEventListener, FileBrowserModelBase.OnZipEventListener
 {
   protected ZipFileViewer a;
-  private List<ZipFilePresenter.FileData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean d = false;
-  private boolean e = false;
+  private List<ZipFilePresenter.FileData> b = new ArrayList();
+  private boolean j;
+  private boolean k = false;
+  private boolean l = false;
   
   public ZipFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
   {
     super(paramFileBrowserModelBase, paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer = new ZipFileViewer(paramActivity);
-    a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer);
+    this.a = new ZipFileViewer(paramActivity);
+    a(this.a);
   }
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.f(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.d(true);
-    b();
-    if (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d()))
+    this.a.f(false);
+    this.a.d(true);
+    i();
+    if (FileUtil.b(this.c.y()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(HardCodeUtil.a(2131692722), new ZipFilePresenter.2(this));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true);
+      this.a.a(HardCodeUtil.a(2131889793), new ZipFilePresenter.2(this));
+      this.a.a(true);
       return;
     }
     if (paramLong == -1000L) {
@@ -57,49 +57,49 @@ public class ZipFilePresenter
     }
     if ((paramLong != -7003L) && (paramLong != -6101L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.e(false);
+      this.a.e(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(16);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.f(this.jdField_a_of_type_AndroidAppActivity.getString(2131692353));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.e(false);
+    this.c.a(16);
+    this.a.f(this.d.getString(2131889341));
+    this.a.e(false);
   }
   
-  private void c()
+  private void j()
   {
     ThreadManagerV2.getUIHandlerV2().postDelayed(new ZipFilePresenter.3(this), 3000L);
   }
   
-  private void q()
+  private void u()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i();
+    int i = this.c.R();
     if (i == 4)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(false);
+      this.a.b(true);
+      this.a.c(false);
       return;
     }
     if (i == 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(false);
+      this.a.c(false);
       return;
     }
     if (i == 6)
     {
-      localZipFileViewer = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer;
+      localZipFileViewer = this.a;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131716513));
+      localStringBuilder.append(HardCodeUtil.a(2131913946));
       localStringBuilder.append("(");
-      localStringBuilder.append(FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()));
+      localStringBuilder.append(FileSizeFormat.a(this.c.x()));
       localStringBuilder.append(")");
       localZipFileViewer.a(true, localStringBuilder.toString(), new ZipFilePresenter.6(this));
       return;
     }
-    ZipFileViewer localZipFileViewer = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer;
+    ZipFileViewer localZipFileViewer = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131716510));
+    localStringBuilder.append(HardCodeUtil.a(2131913943));
     localStringBuilder.append("(");
-    localStringBuilder.append(FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()));
+    localStringBuilder.append(FileSizeFormat.a(this.c.x()));
     localStringBuilder.append(")");
     localZipFileViewer.a(true, localStringBuilder.toString(), new ZipFilePresenter.7(this));
   }
@@ -110,46 +110,46 @@ public class ZipFilePresenter
     if (QLog.isColorLevel()) {
       QLog.i("ZipFilePresenter<QFile>", 1, "FileBrowserPresenter init: type = zip");
     }
-    this.jdField_a_of_type_Boolean = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.h(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.f());
-    ZipFileViewer localZipFileViewer = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer;
+    this.j = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+    this.a.h(this.j);
+    this.a.c(this.c.v());
+    this.a.d(this.c.D());
+    ZipFileViewer localZipFileViewer = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131716509));
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
-    localStringBuilder.append(HardCodeUtil.a(2131716514));
-    localStringBuilder.append(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()));
+    localStringBuilder.append(HardCodeUtil.a(2131913942));
+    localStringBuilder.append(this.b.size());
+    localStringBuilder.append(HardCodeUtil.a(2131913947));
+    localStringBuilder.append(FileUtil.a(this.c.x()));
     localZipFileViewer.e(localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+    this.c.a(this);
+    this.c.a(this);
+    if (!NetworkUtil.isNetworkAvailable(this.d))
     {
       b(-1000L);
     }
-    else if (!this.d)
+    else if (!this.k)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.g();
-      this.d = true;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.f(true);
-      this.e = true;
-      c();
+      this.c.M();
+      this.k = true;
+      this.a.f(true);
+      this.l = true;
+      j();
     }
-    if ((!FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d())) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i()) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() != null))
+    if ((!FileUtil.b(this.c.y())) && (this.c.P()) && (this.c.f() != null))
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().a();
+      b(this.c.J());
+      this.a.b(true);
+      this.a.c(false);
+      this.a.a(false);
+      this.c.f().a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
+    this.c.a(this);
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(true);
+    this.a.c(false);
+    this.a.b(true);
     b(paramFloat);
   }
   
@@ -160,64 +160,38 @@ public class ZipFilePresenter
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(paramString1, paramString2);
+    this.a.b(paramString1, paramString2);
   }
   
   public void a(List<ZipFilePresenter.FileData> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort)
   {
-    if (!this.e) {
+    if (!this.l) {
       return;
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(paramList, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b(), paramString2, paramString3, paramString4, paramString1, paramBoolean, paramString5, paramShort);
-      paramList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer;
+      this.b = paramList;
+      this.a.a(paramList, this.c.y(), this.c.C(), this.c.r(), paramString2, paramString3, paramString4, paramString1, paramBoolean, paramString5, paramShort);
+      paramList = this.a;
       paramString1 = new StringBuilder();
-      paramString1.append(HardCodeUtil.a(2131716511));
-      paramString1.append(this.jdField_a_of_type_JavaUtilList.size());
-      paramString1.append(HardCodeUtil.a(2131716512));
-      paramString1.append(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()));
+      paramString1.append(HardCodeUtil.a(2131913944));
+      paramString1.append(this.b.size());
+      paramString1.append(HardCodeUtil.a(2131913945));
+      paramString1.append(FileUtil.a(this.c.x()));
       paramList.e(paramString1.toString());
-      q();
+      u();
     }
     else
     {
       QLog.e("ZipFilePresenter<QFile>", 1, "onGetZipFileList, mFiles is null");
       b(-1000L);
     }
-    this.e = false;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected void b()
-  {
-    String str;
-    if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d()))
-    {
-      if (QbSdk.isSuportOpenFile(FileManagerUtil.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()), 2))
-      {
-        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131694650);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(str, new ZipFilePresenter.4(this));
-      }
-    }
-    else
-    {
-      str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692718);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(str, new ZipFilePresenter.5(this));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i() == 4) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.e(false);
-    }
+    this.l = false;
   }
   
   public void b(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(paramString1, paramString2);
+    this.a.a(paramString1, paramString2);
   }
   
   public boolean b()
@@ -225,80 +199,106 @@ public class ZipFilePresenter
     return false;
   }
   
+  public boolean c()
+  {
+    return false;
+  }
+  
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(true);
-    b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a());
+    this.a.c(false);
+    this.a.a(false);
+    this.a.b(true);
+    b(this.c.J());
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(false);
-    q();
+    this.a.c(true);
+    this.a.b(false);
+    u();
     h();
-    b();
+    i();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.c();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
+    this.a.e();
+    this.a.b(false);
+    if (this.e != null) {
+      this.e.b();
     }
     h();
-    b();
+    i();
   }
   
   public void g()
   {
-    m();
+    p();
     h();
-    b();
+    i();
   }
   
-  public void j()
+  protected void i()
   {
-    super.j();
-  }
-  
-  public void k()
-  {
-    if (this.d) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b("", "");
+    String str;
+    if (FileUtils.fileExistsAndNotEmpty(this.c.y()))
+    {
+      if (QbSdk.isSuportOpenFile(FileManagerUtil.t(this.c.v()), 2))
+      {
+        str = this.d.getString(2131892336);
+        this.a.b(str, new ZipFilePresenter.4(this));
+      }
+    }
+    else
+    {
+      str = this.d.getString(2131889789);
+      this.a.b(str, new ZipFilePresenter.5(this));
+    }
+    if (this.c.R() == 4) {
+      this.a.e(false);
     }
   }
   
-  protected void m()
+  public void l()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.h();
+    super.l();
+  }
+  
+  public void m()
+  {
+    if (this.k) {
+      this.a.b("", "");
+    }
+  }
+  
+  protected void p()
+  {
+    int i = this.c.O();
     if ((i != 2) && (i != 3))
     {
       if (i == 1)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().b();
+        if (this.c.e() != null) {
+          this.c.e().b();
         }
       }
       else if (QLog.isColorLevel()) {
         QLog.i("ZipFilePresenter<QFile>", 2, "zip file stop trans, but can not handle trans type");
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().b();
+    else if (this.c.f() != null) {
+      this.c.f().b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.b(false);
-    q();
+    this.a.b(false);
+    u();
     h();
-    b();
+    i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter
  * JD-Core Version:    0.7.0.1
  */

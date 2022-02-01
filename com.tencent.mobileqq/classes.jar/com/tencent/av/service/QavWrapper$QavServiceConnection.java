@@ -15,10 +15,10 @@ class QavWrapper$QavServiceConnection
     if (QLog.isColorLevel()) {
       QLog.d("QavWrapper", 2, "Qav Service connected!");
     }
-    this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = IAVServiceForQQ.Stub.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) && (this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener != null))
+    this.a.a = IAVServiceForQQ.Stub.a(paramIBinder);
+    if ((this.a.a != null) && (this.a.c != null))
     {
-      this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener.a(this.a);
+      this.a.c.a(this.a);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -31,7 +31,7 @@ class QavWrapper$QavServiceConnection
     if (QLog.isColorLevel()) {
       QLog.d("QavWrapper", 2, "Qav Service disconnected!");
     }
-    this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
+    this.a.a = null;
   }
 }
 

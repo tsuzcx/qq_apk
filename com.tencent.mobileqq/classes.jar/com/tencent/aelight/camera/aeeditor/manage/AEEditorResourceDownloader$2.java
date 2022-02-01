@@ -17,21 +17,21 @@ class AEEditorResourceDownloader$2
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    AEQLog.b(this.this$0.c, "preDownloadAllRes---BEGIN");
-    this.this$0.a();
-    AEQLog.b(this.this$0.c, "preDownloadAllRes---ensureSetupDownloadConfig finish");
+    AEQLog.b(this.this$0.d, "preDownloadAllRes---BEGIN");
+    this.this$0.b();
+    AEQLog.b(this.this$0.d, "preDownloadAllRes---ensureSetupDownloadConfig finish");
     Object localObject1 = new ArrayList();
     this.this$0.a((List)localObject1);
-    Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Object localObject2 = this.this$0.e.values().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (AEEditorDownloadResBean)((Iterator)localObject2).next();
-      if ((localObject3 != null) && (((AEEditorDownloadResBean)localObject3).getPreDownload() == 1) && (!this.this$0.a((AEEditorDownloadResBean)localObject3))) {
+      if ((localObject3 != null) && (((AEEditorDownloadResBean)localObject3).getPreDownload() == 1) && (!this.this$0.b((AEEditorDownloadResBean)localObject3))) {
         ((List)localObject1).add(localObject3);
       }
     }
     this.this$0.b((List)localObject1);
-    localObject2 = this.this$0.c;
+    localObject2 = this.this$0.d;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("preDownloadAllRes---needDownloads size=");
     ((StringBuilder)localObject3).append(((List)localObject1).size());
@@ -39,13 +39,13 @@ class AEEditorResourceDownloader$2
     int i = 0;
     while (i < ((List)localObject1).size())
     {
-      int k = Math.min(this.this$0.jdField_a_of_type_Int, ((List)localObject1).size() - i);
+      int k = Math.min(this.this$0.c, ((List)localObject1).size() - i);
       localObject2 = new CountDownLatch(k);
       int j = 0;
       while (j < k)
       {
         localObject3 = (AEEditorDownloadResBean)((List)localObject1).get(i);
-        String str = this.this$0.c;
+        String str = this.this$0.d;
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("preDownloadAllRes---[begin] ");
         localStringBuilder2.append(i);
@@ -64,10 +64,10 @@ class AEEditorResourceDownloader$2
       {
         localInterruptedException.printStackTrace();
       }
-      AEQLog.b(this.this$0.c, "preDownloadAllRes--------------------finish a little group---------------------");
+      AEQLog.b(this.this$0.d, "preDownloadAllRes--------------------finish a little group---------------------");
     }
     long l2 = System.currentTimeMillis();
-    localObject1 = this.this$0.c;
+    localObject1 = this.this$0.d;
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("preDownloadAllRes---END cost=");
     localStringBuilder1.append(l2 - l1);
@@ -76,7 +76,7 @@ class AEEditorResourceDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorResourceDownloader.2
  * JD-Core Version:    0.7.0.1
  */

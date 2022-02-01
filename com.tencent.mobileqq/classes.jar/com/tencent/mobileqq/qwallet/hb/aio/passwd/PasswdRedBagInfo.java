@@ -11,42 +11,42 @@ import org.json.JSONObject;
 
 public class PasswdRedBagInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
   public String c;
-  public String d;
+  public long d;
   public String e;
-  public String f;
+  public boolean f;
+  public boolean g;
+  public int h;
+  public String i;
+  public String j;
   
   public PasswdRedBagInfo() {}
   
   public PasswdRedBagInfo(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramString1;
+    this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramLong;
+    this.e = paramString4;
+    this.f = paramBoolean1;
+    this.g = paramBoolean2;
+    this.h = paramInt;
   }
   
   public PasswdRedBagInfo(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString5)
   {
     this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramInt);
-    this.f = paramString5;
+    this.j = paramString5;
   }
   
   public PasswdRedBagInfo(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString5, String paramString6)
   {
     this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramInt);
-    this.e = paramString5;
-    this.f = paramString6;
+    this.i = paramString5;
+    this.j = paramString6;
   }
   
   public static String a(String paramString)
@@ -59,15 +59,15 @@ public class PasswdRedBagInfo
       return "";
     }
     JSONArray localJSONArray = new JSONArray();
-    int i = 0;
+    int k = 0;
     for (;;)
     {
-      if (i < paramString.length) {}
+      if (k < paramString.length) {}
       try
       {
-        localJSONArray.put(Integer.parseInt(paramString[i]));
+        localJSONArray.put(Integer.parseInt(paramString[k]));
         label53:
-        i += 1;
+        k += 1;
         continue;
         if (localJSONArray.length() > 0) {
           return localJSONArray.toString();
@@ -93,7 +93,35 @@ public class PasswdRedBagInfo
     catch (JSONException paramJSONObject) {}
   }
   
-  public int a()
+  public boolean a()
+  {
+    return this.d < NetConnInfoCenter.getServerTime();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool = true;
+    try
+    {
+      List localList = d();
+      if (!localList.contains(Integer.valueOf(paramInt)))
+      {
+        bool = localList.contains(Integer.valueOf(0));
+        if (bool) {
+          return true;
+        }
+        bool = false;
+      }
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("passwdredinfo", 1, localThrowable, new Object[0]);
+    }
+    return false;
+  }
+  
+  public int b()
   {
     try
     {
@@ -101,11 +129,11 @@ public class PasswdRedBagInfo
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[getWordChainSubChannel] ");
-        localStringBuilder.append(this.f);
+        localStringBuilder.append(this.j);
         QLog.i("passwdredinfo", 2, localStringBuilder.toString());
       }
-      int i = new JSONObject(this.f).optInt("key_sub_channel");
-      return i;
+      int k = new JSONObject(this.j).optInt("key_sub_channel");
+      return k;
     }
     catch (Throwable localThrowable)
     {
@@ -114,26 +142,26 @@ public class PasswdRedBagInfo
     return -1;
   }
   
-  public String a()
+  public String c()
   {
-    if (!TextUtils.isEmpty(this.f)) {
+    if (!TextUtils.isEmpty(this.j)) {
       try
       {
-        String str = new JSONObject(this.f).optString("hb_from");
+        String str = new JSONObject(this.j).optString("hb_from");
         return str;
       }
       catch (Throwable localThrowable)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("PasswdRedBagInfo extStr:");
-        localStringBuilder.append(this.f);
+        localStringBuilder.append(this.j);
         QLog.e(localStringBuilder.toString(), 1, QLog.getStackTraceString(localThrowable));
       }
     }
     return "";
   }
   
-  public List<Integer> a()
+  public List<Integer> d()
   {
     for (;;)
     {
@@ -157,31 +185,31 @@ public class PasswdRedBagInfo
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[getWordLenSet] ");
-          ((StringBuilder)localObject1).append(this.f);
+          ((StringBuilder)localObject1).append(this.j);
           QLog.i("passwdredinfo", 2, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = new JSONObject(this.f).optString("key_poem_rule");
+        localObject1 = new JSONObject(this.j).optString("key_poem_rule");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           localObject1 = new JSONArray((String)localObject1);
           if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
           {
-            int i = 0;
-            int j = ((JSONArray)localObject1).length();
-            if (i < j)
+            int k = 0;
+            int m = ((JSONArray)localObject1).length();
+            if (k < m)
             {
               try
               {
-                j = ((JSONArray)localObject1).optInt(i);
-                if (j > 1) {
-                  localLinkedList.add(Integer.valueOf(j));
+                m = ((JSONArray)localObject1).optInt(k);
+                if (m > 1) {
+                  localLinkedList.add(Integer.valueOf(m));
                 }
               }
               catch (Throwable localThrowable2)
               {
                 QLog.e("passwdredinfo", 1, localThrowable2, new Object[0]);
               }
-              i += 1;
+              k += 1;
               continue;
             }
           }
@@ -199,43 +227,15 @@ public class PasswdRedBagInfo
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Long < NetConnInfoCenter.getServerTime();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = true;
-    try
-    {
-      List localList = a();
-      if (!localList.contains(Integer.valueOf(paramInt)))
-      {
-        bool = localList.contains(Integer.valueOf(0));
-        if (bool) {
-          return true;
-        }
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("passwdredinfo", 1, localThrowable, new Object[0]);
-    }
-    return false;
-  }
-  
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof PasswdRedBagInfo))
     {
       paramObject = (PasswdRedBagInfo)paramObject;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.a)) {
         return false;
       }
-      if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+      if (this.a.equals(paramObject.a)) {
         return true;
       }
     }
@@ -244,7 +244,7 @@ public class PasswdRedBagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.PasswdRedBagInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import java.io.IOException;
 class CameraManagerImpl$CameraHandler
   extends Handler
 {
-  private String jdField_a_of_type_JavaLangString = "Q.camera.CameraManagerImpl.CameraHandler";
+  private String b = "Q.camera.CameraManagerImpl.CameraHandler";
   
   CameraManagerImpl$CameraHandler(CameraManagerImpl paramCameraManagerImpl, Looper paramLooper)
   {
@@ -37,12 +37,12 @@ class CameraManagerImpl$CameraHandler
   {
     try
     {
-      CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setPreviewTexture((SurfaceTexture)paramObject);
+      CameraManagerImpl.a(this.a).setPreviewTexture((SurfaceTexture)paramObject);
       return;
     }
     catch (IOException paramObject)
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Could not set preview texture", paramObject);
+      QLog.e(this.b, 2, "Could not set preview texture", paramObject);
     }
   }
   
@@ -93,13 +93,13 @@ class CameraManagerImpl$CameraHandler
         label1084:
         localRuntimeException.printStackTrace();
         label1188:
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localRuntimeException, new Object[0]);
-        if ((paramMessage.what != 2) && (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) != null)) {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera != null, but RuntimeException");
+        QLog.e(this.b, 2, localRuntimeException, new Object[0]);
+        if ((paramMessage.what != 2) && (CameraManagerImpl.a(this.a) != null)) {
+          QLog.e(this.b, 1, "mCamera != null, but RuntimeException");
         }
         try
         {
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).release();
+          CameraManagerImpl.a(this.a).release();
         }
         catch (Exception localException2)
         {
@@ -108,11 +108,11 @@ class CameraManagerImpl$CameraHandler
           StringBuilder localStringBuilder;
           break label1490;
         }
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "Fail to release the camera.");
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, null);
+        QLog.e(this.b, 2, "Fail to release the camera.");
+        CameraManagerImpl.a(this.a, null);
         if (paramMessage.obj != null)
         {
-          str3 = this.jdField_a_of_type_JavaLangString;
+          str3 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("相机已经打开，运行时异常 ");
           ((StringBuilder)localObject2).append(paramMessage.what);
@@ -123,28 +123,28 @@ class CameraManagerImpl$CameraHandler
             return;
           }
           if ((paramMessage.obj instanceof CameraManagerImpl.AFCallbackForward)) {
-            ((CameraManagerImpl.AFCallbackForward)paramMessage.obj).onAutoFocus(false, CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl));
+            ((CameraManagerImpl.AFCallbackForward)paramMessage.obj).onAutoFocus(false, CameraManagerImpl.a(this.a));
           }
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = this.b;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("相机参数设置错误, 请尝试重启机器 ");
           localStringBuilder.append(paramMessage.what);
           QLog.w((String)localObject2, 1, localStringBuilder.toString());
           throw str3;
-          if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null)
+          if (CameraManagerImpl.a(this.a) == null)
           {
             if (paramMessage.what == 1)
             {
-              QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera == null Since Camera is disabled");
+              QLog.e(this.b, 1, "mCamera == null Since Camera is disabled");
               if ((paramMessage.obj != null) && ((paramMessage.obj instanceof CameraManager.CameraOpenErrorCallback))) {
                 ((CameraManager.CameraOpenErrorCallback)paramMessage.obj).a(paramMessage.arg1);
               }
               return;
             }
-            QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mCamera == null, Cannot handle message, 相机运行异常，请尝试重启机器");
+            QLog.e(this.b, 1, "mCamera == null, Cannot handle message, 相机运行异常，请尝试重启机器");
             throw str3;
           }
         }
@@ -165,110 +165,110 @@ class CameraManagerImpl$CameraHandler
     ((StringBuilder)localObject1).append(paramMessage.what);
     throw new RuntimeException(((StringBuilder)localObject1).toString());
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ERROR_CALLBACK");
+      QLog.d(this.b, 2, "[handleMessage] SET_ERROR_CALLBACK");
     }
-    if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) != null)
+    if (CameraManagerImpl.a(this.a) != null)
     {
-      CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setErrorCallback((Camera.ErrorCallback)paramMessage.obj);
+      CameraManagerImpl.a(this.a).setErrorCallback((Camera.ErrorCallback)paramMessage.obj);
       return;
       if (QLog.isColorLevel())
       {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] STOP_FACE_DETECTION");
+        QLog.d(this.b, 2, "[handleMessage] STOP_FACE_DETECTION");
         return;
         if (!QLog.isColorLevel()) {
           break label1841;
         }
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] START_FACE_DETECTION");
+        QLog.d(this.b, 2, "[handleMessage] START_FACE_DETECTION");
         return;
         if (!QLog.isColorLevel()) {
           break label1842;
         }
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_FACE_DETECTION_LISTENER");
+        QLog.d(this.b, 2, "[handleMessage] SET_FACE_DETECTION_LISTENER");
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ZOOM_CHANGE_LISTENER");
+          QLog.d(this.b, 2, "[handleMessage] SET_ZOOM_CHANGE_LISTENER");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1843;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setZoomChangeListener((Camera.OnZoomChangeListener)paramMessage.obj);
+        CameraManagerImpl.a(this.a).setZoomChangeListener((Camera.OnZoomChangeListener)paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_AUTO_FOCUS_MOVE_CALLBACK");
+          QLog.d(this.b, 2, "[handleMessage] SET_AUTO_FOCUS_MOVE_CALLBACK");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1844;
         }
-        a(CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl), paramMessage.obj);
+        a(CameraManagerImpl.a(this.a), paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] CANCEL_AUTO_FOCUS");
+          QLog.d(this.b, 2, "[handleMessage] CANCEL_AUTO_FOCUS");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1845;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).cancelAutoFocus();
+        CameraManagerImpl.a(this.a).cancelAutoFocus();
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] AUTO_FOCUS");
+          QLog.d(this.b, 2, "[handleMessage] AUTO_FOCUS");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1846;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).autoFocus((Camera.AutoFocusCallback)paramMessage.obj);
+        CameraManagerImpl.a(this.a).autoFocus((Camera.AutoFocusCallback)paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] REFRESH_PARAMETERS");
+          QLog.d(this.b, 2, "[handleMessage] REFRESH_PARAMETERS");
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, true);
+        CameraManagerImpl.a(this.a, true);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] GET_PARAMETERS");
+          QLog.d(this.b, 2, "[handleMessage] GET_PARAMETERS");
         }
-        if ((CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) || (!CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl))) {
+        if ((CameraManagerImpl.a(this.a) == null) || (!CameraManagerImpl.c(this.a))) {
           break label1847;
         }
-        CameraManagerImpl.b(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).getParameters());
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, false);
+        CameraManagerImpl.b(this.a, CameraManagerImpl.a(this.a).getParameters());
+        CameraManagerImpl.a(this.a, false);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PARAMETERS");
+          QLog.d(this.b, 2, "[handleMessage] SET_PARAMETERS");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1848;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, true);
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).unflatten((String)paramMessage.obj);
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setParameters(CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl));
+        CameraManagerImpl.a(this.a, true);
+        CameraManagerImpl.b(this.a).unflatten((String)paramMessage.obj);
+        CameraManagerImpl.a(this.a).setParameters(CameraManagerImpl.b(this.a));
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_ONE_SHOT_PREVIEW_CALlBACK");
+          QLog.d(this.b, 2, "[handleMessage] SET_ONE_SHOT_PREVIEW_CALlBACK");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1849;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setOneShotPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
+        CameraManagerImpl.a(this.a).setOneShotPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
         return;
         if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("[handleMessage] SET_PREVIEW_CALLBACK, obj = ");
           ((StringBuilder)localObject2).append(paramMessage.obj);
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1850;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
+        CameraManagerImpl.a(this.a).setPreviewCallback((Camera.PreviewCallback)paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_DISPLAY");
+          QLog.d(this.b, 2, "[handleMessage] SET_PREVIEW_DISPLAY");
         }
         try
         {
-          if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) != null) {
-            CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setPreviewDisplay((SurfaceHolder)paramMessage.obj);
+          if (CameraManagerImpl.a(this.a) != null) {
+            CameraManagerImpl.a(this.a).setPreviewDisplay((SurfaceHolder)paramMessage.obj);
           }
           return;
         }
@@ -277,35 +277,35 @@ class CameraManagerImpl$CameraHandler
           throw new RuntimeException(localIOException1);
         }
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] ADD_CALLBACK_BUFFER");
+          QLog.d(this.b, 2, "[handleMessage] ADD_CALLBACK_BUFFER");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1851;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).addCallbackBuffer((byte[])paramMessage.obj);
+        CameraManagerImpl.a(this.a).addCallbackBuffer((byte[])paramMessage.obj);
         return;
         if (QLog.isColorLevel())
         {
-          str1 = this.jdField_a_of_type_JavaLangString;
+          str1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("[handleMessage] SET_PREVIEW_CALLBACK_WITH_BUFFER, obj = ");
           ((StringBuilder)localObject2).append(paramMessage.obj);
           QLog.d(str1, 2, ((StringBuilder)localObject2).toString());
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1852;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setPreviewCallbackWithBuffer((Camera.PreviewCallback)paramMessage.obj);
+        CameraManagerImpl.a(this.a).setPreviewCallbackWithBuffer((Camera.PreviewCallback)paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] STOP_PREVIEW");
+          QLog.d(this.b, 2, "[handleMessage] STOP_PREVIEW");
         }
         try
         {
-          if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+          if (CameraManagerImpl.a(this.a) == null) {
             break label1853;
           }
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).stopPreview();
+          CameraManagerImpl.a(this.a).stopPreview();
           return;
         }
         catch (Exception localException1)
@@ -314,93 +314,93 @@ class CameraManagerImpl$CameraHandler
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] START_PREVIEW_ASYNC");
+          QLog.d(this.b, 2, "[handleMessage] START_PREVIEW_ASYNC");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1854;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).startPreview();
+        CameraManagerImpl.a(this.a).startPreview();
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_PREVIEW_TEXTURE_ASYNC");
+          QLog.d(this.b, 2, "[handleMessage] SET_PREVIEW_TEXTURE_ASYNC");
         }
         a(paramMessage.obj);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] SET_DISPLAY_ORIENTATION");
+          QLog.d(this.b, 2, "[handleMessage] SET_DISPLAY_ORIENTATION");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1855;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).setDisplayOrientation(paramMessage.arg1);
+        CameraManagerImpl.a(this.a).setDisplayOrientation(paramMessage.arg1);
         return;
         if (!QLog.isColorLevel()) {
           break label1856;
         }
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] ENABLE_SHUTTER_SOUND");
+        QLog.d(this.b, 2, "[handleMessage] ENABLE_SHUTTER_SOUND");
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] LOCK");
+          QLog.d(this.b, 2, "[handleMessage] LOCK");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1857;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).lock();
+        CameraManagerImpl.a(this.a).lock();
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] UNLOCK");
+          QLog.d(this.b, 2, "[handleMessage] UNLOCK");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+        if (CameraManagerImpl.a(this.a) == null) {
           break label1858;
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).unlock();
+        CameraManagerImpl.a(this.a).unlock();
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] RECONNECT");
+          QLog.d(this.b, 2, "[handleMessage] RECONNECT");
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, null);
+        CameraManagerImpl.a(this.a, null);
         try
         {
-          if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null) {
+          if (CameraManagerImpl.a(this.a) == null) {
             return;
           }
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).reconnect();
+          CameraManagerImpl.a(this.a).reconnect();
           return;
         }
         catch (IOException localIOException2)
         {
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, localIOException2);
+          CameraManagerImpl.a(this.a, localIOException2);
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[handleMessage] RELEASE");
+          QLog.d(this.b, 2, "[handleMessage] RELEASE");
         }
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) != null) {
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).release();
+        if (CameraManagerImpl.a(this.a) != null) {
+          CameraManagerImpl.a(this.a).release();
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, null);
+        CameraManagerImpl.a(this.a, null);
         return;
         if (QLog.isColorLevel())
         {
-          str2 = this.jdField_a_of_type_JavaLangString;
+          str2 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("[handleMessage] OPEN_CAMERA ");
           ((StringBuilder)localObject2).append(paramMessage.arg1);
           QLog.d(str2, 2, ((StringBuilder)localObject2).toString());
         }
-        CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, Camera.open(paramMessage.arg1));
-        if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) != null)
+        CameraManagerImpl.a(this.a, Camera.open(paramMessage.arg1));
+        if (CameraManagerImpl.a(this.a) != null)
         {
-          CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, true);
-          if (CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl) == null)
+          CameraManagerImpl.a(this.a, true);
+          if (CameraManagerImpl.b(this.a) == null)
           {
-            CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl, CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl).getParameters());
+            CameraManagerImpl.a(this.a, CameraManagerImpl.a(this.a).getParameters());
             if (QLog.isColorLevel())
             {
-              str2 = this.jdField_a_of_type_JavaLangString;
+              str2 = this.b;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("[handleMessage] OPEN_CAMERA, parameter = ");
-              ((StringBuilder)localObject2).append(CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl));
+              ((StringBuilder)localObject2).append(CameraManagerImpl.b(this.a));
               QLog.d(str2, 2, ((StringBuilder)localObject2).toString());
             }
           }
@@ -411,10 +411,10 @@ class CameraManagerImpl$CameraHandler
         }
         if (QLog.isColorLevel())
         {
-          str2 = this.jdField_a_of_type_JavaLangString;
+          str2 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("[handleMessage] OPEN_CAMERA, open result mCamera = ");
-          ((StringBuilder)localObject2).append(CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl));
+          ((StringBuilder)localObject2).append(CameraManagerImpl.a(this.a));
           QLog.d(str2, 2, ((StringBuilder)localObject2).toString());
         }
       }
@@ -464,7 +464,7 @@ class CameraManagerImpl$CameraHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.CameraHandler
  * JD-Core Version:    0.7.0.1
  */

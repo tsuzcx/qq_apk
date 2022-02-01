@@ -54,8 +54,8 @@ public class DocEnVectorLayout
       if ((paramView instanceof AnimatedVectorDrawable))
       {
         ((AnimatedVectorDrawable)paramView).start();
-        this.a = findViewById(2064122306);
-        this.b = findViewById(2064122758);
+        this.a = findViewById(2063991185);
+        this.b = findViewById(2063991532);
         paramView = this.a;
         if ((paramView != null) && (this.b != null))
         {
@@ -70,7 +70,7 @@ public class DocEnVectorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.DocEnVectorLayout
  * JD-Core Version:    0.7.0.1
  */

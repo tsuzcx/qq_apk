@@ -10,18 +10,18 @@ class DatalineDeviceChooseModel$2
 {
   DatalineDeviceChooseModel$2(DatalineDeviceChooseModel paramDatalineDeviceChooseModel, DatalineDeviceChooseModel.DeviceChooseInterface paramDeviceChooseInterface, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantUtilDatalineDeviceChooseModel$DeviceChooseInterface.c();
+        this.a.c();
       }
       else
       {
-        QFileAssistantUtils.a(1);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantUtilDatalineDeviceChooseModel$DeviceChooseInterface.a();
+        QFileAssistantUtils.b(1);
+        this.a.a();
         if (QLog.isColorLevel()) {
           QLog.d("DatalineDeviceChooseModel<FileAssistant>.ACT", 2, "onClickSend2Pad");
         }
@@ -29,18 +29,18 @@ class DatalineDeviceChooseModel$2
     }
     else
     {
-      QFileAssistantUtils.a(0);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantUtilDatalineDeviceChooseModel$DeviceChooseInterface.a();
+      QFileAssistantUtils.b(0);
+      this.a.a();
       if (QLog.isColorLevel()) {
         QLog.d("DatalineDeviceChooseModel<FileAssistant>.ACT", 2, "onClickSend2Pc");
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.2
  * JD-Core Version:    0.7.0.1
  */

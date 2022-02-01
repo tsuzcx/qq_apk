@@ -9,12 +9,12 @@ class AECMShowCameraUnit$2$1$1
   
   public void run()
   {
-    this.a.a.this$0.a.setMaterial(AECMShowCameraUnit.a(this.a.a.this$0));
+    this.a.a.this$0.h.setMaterial(AECMShowCameraUnit.b(this.a.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.2.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -59,7 +59,7 @@ public class PicEmoticonInfoSender
     {
       if (!paramEditText.isMagicFacePackageIntact(paramEmoticon.epId, Boolean.valueOf(false)))
       {
-        QQToast.a(paramContext, 2131689916, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(paramContext, 2131886557, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
         paramEmoticon = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(paramAppRuntime);
         if (paramEmoticon != null)
         {
@@ -99,7 +99,7 @@ public class PicEmoticonInfoSender
       }
       else
       {
-        QQToast.a(paramContext, 2131689916, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(paramContext, 2131886557, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
         paramEmoticon = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(paramAppRuntime);
         if (paramEmoticon != null)
         {
@@ -143,7 +143,7 @@ public class PicEmoticonInfoSender
       {
         if (!paramParcelable.isMagicFacePackageIntact(paramPicEmoticonInfo.epId, Boolean.valueOf(false)))
         {
-          EmotionUtils.a(paramContext, 2131689916, 0);
+          EmotionUtils.a(paramContext, 2131886557, 0);
           paramPicEmoticonInfo = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(paramAppRuntime);
           if (paramPicEmoticonInfo != null)
           {
@@ -183,7 +183,7 @@ public class PicEmoticonInfoSender
         }
         else
         {
-          EmotionUtils.a(paramContext, 2131689916, 0);
+          EmotionUtils.a(paramContext, 2131886557, 0);
           paramPicEmoticonInfo = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(paramAppRuntime);
           if (paramPicEmoticonInfo != null)
           {
@@ -275,7 +275,7 @@ public class PicEmoticonInfoSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.PicEmoticonInfoSender
  * JD-Core Version:    0.7.0.1
  */

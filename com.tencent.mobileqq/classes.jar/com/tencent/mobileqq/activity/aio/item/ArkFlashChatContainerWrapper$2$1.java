@@ -16,13 +16,13 @@ class ArkFlashChatContainerWrapper$2$1
   {
     Object localObject;
     int i;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localObject = this.jdField_a_of_type_AndroidOsBundle;
+      localObject = this.b;
       if (localObject != null)
       {
         i = ((Bundle)localObject).getInt("resourceId");
-        if ((i != -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a.b == i))
+        if ((i != -1) && (this.c.a.b == i))
         {
           if (QLog.isColorLevel())
           {
@@ -31,23 +31,23 @@ class ArkFlashChatContainerWrapper$2$1
             ((StringBuilder)localObject).append(i);
             QLog.d("ArkApp", 2, ((StringBuilder)localObject).toString());
           }
-          localObject = ArkAppContainer.a();
+          localObject = ArkAppContainer.f();
           if (localObject != null)
           {
             localObject = (FlashChatManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
-            ArkFlashChatContainerWrapper.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a).path = ((FlashChatManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a.b, ArkFlashChatContainerWrapper.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a).name, ArkFlashChatContainerWrapper.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a).appMinVersion);
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a.a(ArkFlashChatContainerWrapper.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a).path, 0, null);
+            ArkFlashChatContainerWrapper.e(this.c.a).path = ((FlashChatManager)localObject).a(this.c.a.b, ArkFlashChatContainerWrapper.f(this.c.a).name, ArkFlashChatContainerWrapper.g(this.c.a).appMinVersion);
+            this.c.a.a(ArkFlashChatContainerWrapper.h(this.c.a).path, 0, null);
           }
         }
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidOsBundle;
+      localObject = this.b;
       if (localObject != null)
       {
         i = ((Bundle)localObject).getInt("resourceId");
-        if ((i != -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a.b == i))
+        if ((i != -1) && (this.c.a.b == i))
         {
           if (QLog.isColorLevel())
           {
@@ -56,7 +56,7 @@ class ArkFlashChatContainerWrapper$2$1
             ((StringBuilder)localObject).append(i);
             QLog.d("ArkApp.ArkAioContainerWrapper", 2, ((StringBuilder)localObject).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a.a(ArkFlashChatContainerWrapper.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkFlashChatContainerWrapper$2.a).path, -2, null);
+          this.c.a.a(ArkFlashChatContainerWrapper.i(this.c.a).path, -2, null);
         }
       }
     }
@@ -64,7 +64,7 @@ class ArkFlashChatContainerWrapper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1
  * JD-Core Version:    0.7.0.1
  */

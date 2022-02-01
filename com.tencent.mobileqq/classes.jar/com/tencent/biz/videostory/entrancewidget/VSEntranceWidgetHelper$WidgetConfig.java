@@ -7,18 +7,17 @@ import java.util.List;
 
 public class VSEntranceWidgetHelper$WidgetConfig
 {
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
+  public String a = "";
   public String b = "";
   public String c = "";
   public String d = "";
   public String e = "";
   public String f = "";
+  private boolean h;
   
   public VSEntranceWidgetHelper$WidgetConfig(VSEntranceWidgetHelper paramVSEntranceWidgetHelper, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
@@ -27,7 +26,7 @@ public class VSEntranceWidgetHelper$WidgetConfig
     Object localObject1 = new File(paramString);
     if (((File)localObject1).exists())
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
       localObject1 = Arrays.asList(((File)localObject1).list());
       Object localObject2;
       if (((List)localObject1).contains("bg@2x.png"))
@@ -40,7 +39,7 @@ public class VSEntranceWidgetHelper$WidgetConfig
         if (new File((String)localObject2).exists()) {
           this.c = ((String)localObject2);
         } else {
-          this.jdField_a_of_type_Boolean = false;
+          this.h = false;
         }
       }
       if (((List)localObject1).contains("camera@2x.png"))
@@ -53,7 +52,7 @@ public class VSEntranceWidgetHelper$WidgetConfig
         if (new File((String)localObject2).exists()) {
           this.d = ((String)localObject2);
         } else {
-          this.jdField_a_of_type_Boolean = false;
+          this.h = false;
         }
       }
       if (((List)localObject1).contains("point@2x.png"))
@@ -68,7 +67,7 @@ public class VSEntranceWidgetHelper$WidgetConfig
           this.e = paramString;
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.h = false;
       }
     }
   }
@@ -77,14 +76,14 @@ public class VSEntranceWidgetHelper$WidgetConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isResourceReady:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.h);
     QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, localStringBuilder.toString());
-    return this.jdField_a_of_type_Boolean;
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper.WidgetConfig
  * JD-Core Version:    0.7.0.1
  */

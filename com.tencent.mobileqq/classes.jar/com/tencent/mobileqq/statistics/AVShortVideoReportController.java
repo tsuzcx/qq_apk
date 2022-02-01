@@ -8,9 +8,9 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AVShortVideoReportController
 {
-  private static Pair<LBSInfo, Long> jdField_a_of_type_AndroidUtilPair;
-  public static String a = "";
-  static boolean jdField_a_of_type_Boolean = false;
+  static boolean a = false;
+  public static String b = "";
+  private static Pair<LBSInfo, Long> c;
   
   private static String a(String paramString1, String paramString2, String paramString3, AVShortVideoReportController.ReportData paramReportData, int paramInt)
   {
@@ -90,7 +90,7 @@ public class AVShortVideoReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.AVShortVideoReportController
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public class QVIPPrettyTroopProcessor
   extends BaseQVipConfigProcessor<QVipPrettyTroopConfig>
 {
   @NonNull
-  public static QVipPrettyTroopConfig c()
+  public static QVipPrettyTroopConfig e()
   {
-    QVipPrettyTroopConfig localQVipPrettyTroopConfig2 = (QVipPrettyTroopConfig)QConfigManager.a().a(527);
+    QVipPrettyTroopConfig localQVipPrettyTroopConfig2 = (QVipPrettyTroopConfig)QConfigManager.b().b(527);
     QVipPrettyTroopConfig localQVipPrettyTroopConfig1 = localQVipPrettyTroopConfig2;
     if (localQVipPrettyTroopConfig2 == null) {
       localQVipPrettyTroopConfig1 = new QVipPrettyTroopConfig();
@@ -27,7 +27,7 @@ public class QVIPPrettyTroopProcessor
   @NonNull
   public QVipPrettyTroopConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    return QVipPrettyTroopConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipPrettyTroopConfig.b(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -48,7 +48,7 @@ public class QVIPPrettyTroopProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVIPPrettyTroopProcessor
  * JD-Core Version:    0.7.0.1
  */

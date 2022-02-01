@@ -43,7 +43,7 @@ public class QzoneUploadPlugin
     }
     else
     {
-      paramTask.localTmpPath = QzoneUploadInterface.toLocal(this.parentPlugin.mRuntime.a(), paramTask.base64);
+      paramTask.localTmpPath = QzoneUploadInterface.toLocal(this.parentPlugin.mRuntime.d(), paramTask.base64);
       if ((!TextUtils.isEmpty(paramTask.localTmpPath)) && (new File(paramTask.localTmpPath).exists()))
       {
         this.pathMap.put(paramTask.localTmpPath, Integer.valueOf(paramTask.id));
@@ -286,7 +286,7 @@ public class QzoneUploadPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUploadPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,24 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetWeatherRequest
   extends NetworkRequest<GetWeatherResponse>
 {
-  private static final String a = StoryApi.a("StorySvc.get_weather");
-  public final int c;
-  public final int d;
+  private static final String h = StoryApi.a("StorySvc.get_weather");
   public final int e;
+  public final int f;
+  public final int g;
   
   public GetWeatherRequest(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return h;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
     try
@@ -39,23 +44,18 @@ public class GetWeatherRequest
     return new GetWeatherResponse(localRspGetWeather);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
-    localReqGetWeather.coordinate.set(this.c);
-    localReqGetWeather.longitude.set(this.d);
-    localReqGetWeather.latitude.set(this.e);
+    localReqGetWeather.coordinate.set(this.e);
+    localReqGetWeather.longitude.set(this.f);
+    localReqGetWeather.latitude.set(this.g);
     return localReqGetWeather.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetWeatherRequest
  * JD-Core Version:    0.7.0.1
  */

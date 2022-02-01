@@ -23,19 +23,19 @@ class FriendProfileMoreInfoActivity$13
     if (paramInt2 == 0)
     {
       localFriendProfileMoreInfoActivity = this.a;
-      paramInt1 = 2131693879;
+      paramInt1 = 2131891484;
     }
     else
     {
       localFriendProfileMoreInfoActivity = this.a;
-      paramInt1 = 2131692259;
+      paramInt1 = 2131889246;
     }
     return localFriendProfileMoreInfoActivity.getString(paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.13
  * JD-Core Version:    0.7.0.1
  */

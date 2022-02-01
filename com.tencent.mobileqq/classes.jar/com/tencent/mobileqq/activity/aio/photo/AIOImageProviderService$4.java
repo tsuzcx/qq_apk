@@ -14,13 +14,13 @@ class AIOImageProviderService$4
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.this$0.h;
     if (localObject != null)
     {
       if (((List)localObject).size() == 0) {
         return;
       }
-      localObject = AIOImageProviderService.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      localObject = AIOImageProviderService.a(this.this$0, this.a, this.b);
       if ((localObject != null) && (MessageForPic.class.isInstance(localObject))) {
         localObject = (MessageForPic)localObject;
       }
@@ -31,12 +31,12 @@ class AIOImageProviderService$4
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("payFlow,id:");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(",subId:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         QLog.d("AIOImageProviderService", 2, localStringBuilder.toString());
       }
-      AIOImageProviderService.a((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.this$0.jdField_a_of_type_JavaLangString), (MessageForPic)localObject);
+      AIOImageProviderService.a((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.this$0.a), (MessageForPic)localObject);
       return;
     }
     catch (AccountNotMatchException localAccountNotMatchException)
@@ -51,7 +51,7 @@ class AIOImageProviderService$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.4
  * JD-Core Version:    0.7.0.1
  */

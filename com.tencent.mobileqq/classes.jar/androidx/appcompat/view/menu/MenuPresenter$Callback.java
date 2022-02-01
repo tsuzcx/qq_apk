@@ -1,10 +1,12 @@
 package androidx.appcompat.view.menu;
 
+import androidx.annotation.NonNull;
+
 public abstract interface MenuPresenter$Callback
 {
-  public abstract void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean);
+  public abstract void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean);
   
-  public abstract boolean onOpenSubMenu(MenuBuilder paramMenuBuilder);
+  public abstract boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder);
 }
 
 

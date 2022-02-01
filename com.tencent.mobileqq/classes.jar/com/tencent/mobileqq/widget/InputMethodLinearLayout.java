@@ -10,64 +10,64 @@ import android.widget.LinearLayout;
 public class InputMethodLinearLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
   protected InputMethodLinearLayout.onSizeChangeListenner a;
-  private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private int c;
   private int d;
+  private int e;
+  private boolean f = false;
   
   public InputMethodLinearLayout(Context paramContext)
   {
     super(paramContext);
     paramContext = ((Activity)paramContext).getWindowManager().getDefaultDisplay();
-    this.c = paramContext.getWidth();
-    this.d = paramContext.getHeight();
+    this.d = paramContext.getWidth();
+    this.e = paramContext.getHeight();
   }
   
   public InputMethodLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = ((Activity)paramContext).getWindowManager().getDefaultDisplay();
-    this.c = paramContext.getWidth();
-    this.d = paramContext.getHeight();
+    this.d = paramContext.getWidth();
+    this.e = paramContext.getHeight();
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
     super.onMeasure(paramInt1, paramInt2);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0))
+    if ((this.a != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0))
     {
-      if ((paramInt2 < paramInt4) && (Math.abs(paramInt2 - paramInt4) > this.d * 1 / 4))
+      if ((paramInt2 < paramInt4) && (Math.abs(paramInt2 - paramInt4) > this.e * 1 / 4))
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
       }
       else
       {
-        if ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4)) {
+        if ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.e * 1 / 4)) {
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.f = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner.onSizeChange(this.jdField_a_of_type_Boolean);
-      measure(this.jdField_a_of_type_Int - paramInt1 + getWidth(), this.b - paramInt2 + getHeight());
+      this.a.onSizeChange(this.f);
+      measure(this.b - paramInt1 + getWidth(), this.c - paramInt2 + getHeight());
     }
   }
   
   public void setOnSizeChangedListenner(InputMethodLinearLayout.onSizeChangeListenner paramonSizeChangeListenner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner = paramonSizeChangeListenner;
+    this.a = paramonSizeChangeListenner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodLinearLayout
  * JD-Core Version:    0.7.0.1
  */

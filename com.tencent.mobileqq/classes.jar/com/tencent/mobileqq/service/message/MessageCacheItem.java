@@ -8,62 +8,38 @@ import mqq.app.AppRuntime;
 
 public class MessageCacheItem
 {
-  public static final String[] a;
-  private int jdField_a_of_type_Int;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private MessageCache.AsyncEditor jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<ConcurrentHashMap<String, Long>> jdField_a_of_type_JavaUtilArrayList = null;
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(2);
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private ConcurrentHashMap<String, ArrayList<Object[]>> b = new ConcurrentHashMap(2);
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "msg_cached_max_seq", "msg_cached_min_seq", "msg_readed_seq", "msg_expired_seq" };
-  }
+  public static final String[] a = { "msg_cached_max_seq", "msg_cached_min_seq", "msg_readed_seq", "msg_expired_seq" };
+  private AppRuntime b;
+  private int c;
+  private String d;
+  private SharedPreferences e;
+  private MessageCache.AsyncEditor f;
+  private ArrayList<ConcurrentHashMap<String, Long>> g = null;
+  private ConcurrentHashMap<String, Integer> h = new ConcurrentHashMap(2);
+  private ConcurrentHashMap<String, ArrayList<Object[]>> i = new ConcurrentHashMap(2);
   
   public MessageCacheItem(AppRuntime paramAppRuntime, int paramInt, String paramString, SharedPreferences paramSharedPreferences, MessageCache.AsyncEditor paramAsyncEditor)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor = paramAsyncEditor;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_a_of_type_ArrayOfJavaLangString.length);
+    this.b = paramAppRuntime;
+    this.c = paramInt;
+    this.d = paramString;
+    this.e = paramSharedPreferences;
+    this.f = paramAsyncEditor;
+    this.g = new ArrayList(a.length);
     paramInt = 0;
     while (paramInt <= 3)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new ConcurrentHashMap(2));
+      this.g.add(new ConcurrentHashMap(2));
       paramInt += 1;
     }
   }
   
   public int a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(2));
+    if (!this.h.containsKey(paramString)) {
+      this.h.put(paramString, Integer.valueOf(2));
     }
-    return ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
-  }
-  
-  public long a(int paramInt, String paramString)
-  {
-    if ((paramInt >= 0) && (paramInt <= 3))
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return 0L;
-      }
-      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-        return 0L;
-      }
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (!localConcurrentHashMap.containsKey(paramString)) {
-        localConcurrentHashMap.put(paramString, Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramInt, paramString), 0L)));
-      }
-      return ((Long)localConcurrentHashMap.get(paramString)).longValue();
-    }
-    return 0L;
+    return ((Integer)this.h.get(paramString)).intValue();
   }
   
   public String a(int paramInt, String paramString)
@@ -71,9 +47,9 @@ public class MessageCacheItem
     if ((paramInt >= 0) && (paramInt <= 3) && (!TextUtils.isEmpty(paramString)))
     {
       StringBuilder localStringBuilder = new StringBuilder(50);
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("_");
-      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      localStringBuilder.append(a[paramInt]);
       localStringBuilder.append("_");
       localStringBuilder.append(paramString);
       return localStringBuilder.toString();
@@ -83,11 +59,11 @@ public class MessageCacheItem
   
   public void a()
   {
-    int i = 0;
-    while (i <= 3)
+    int j = 0;
+    while (j <= 3)
     {
-      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
-      i += 1;
+      ((ConcurrentHashMap)this.g.get(j)).clear();
+      j += 1;
     }
   }
   
@@ -101,30 +77,30 @@ public class MessageCacheItem
       long l1;
       if (paramInt2 == 1)
       {
-        l1 = Math.max(paramLong, a(paramInt1, paramString));
+        l1 = Math.max(paramLong, b(paramInt1, paramString));
       }
       else
       {
         l1 = paramLong;
         if (paramInt2 == 2)
         {
-          long l2 = a(paramInt1, paramString);
+          long l2 = b(paramInt1, paramString);
           l1 = paramLong;
           if (l2 != 0L) {
             l1 = Math.min(paramLong, l2);
           }
         }
       }
-      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).put(paramString, Long.valueOf(l1));
-      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong(a(paramInt1, paramString), l1);
+      ((ConcurrentHashMap)this.g.get(paramInt1)).put(paramString, Long.valueOf(l1));
+      if (this.b.getCurrentAccountUin() != null) {
+        this.f.putLong(a(paramInt1, paramString), l1);
       }
     }
   }
   
   public void a(String paramString, Object[] paramArrayOfObject)
   {
-    ArrayList localArrayList2 = (ArrayList)this.b.get(paramString);
+    ArrayList localArrayList2 = (ArrayList)this.i.get(paramString);
     ArrayList localArrayList1;
     if (localArrayList2 != null)
     {
@@ -136,12 +112,31 @@ public class MessageCacheItem
       localArrayList1 = new ArrayList();
     }
     localArrayList1.add(paramArrayOfObject);
-    this.b.put(paramString, localArrayList1);
+    this.i.put(paramString, localArrayList1);
+  }
+  
+  public long b(int paramInt, String paramString)
+  {
+    if ((paramInt >= 0) && (paramInt <= 3))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return 0L;
+      }
+      if (this.b.getCurrentAccountUin() == null) {
+        return 0L;
+      }
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.g.get(paramInt);
+      if (!localConcurrentHashMap.containsKey(paramString)) {
+        localConcurrentHashMap.put(paramString, Long.valueOf(this.e.getLong(a(paramInt, paramString), 0L)));
+      }
+      return ((Long)localConcurrentHashMap.get(paramString)).longValue();
+    }
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCacheItem
  * JD-Core Version:    0.7.0.1
  */

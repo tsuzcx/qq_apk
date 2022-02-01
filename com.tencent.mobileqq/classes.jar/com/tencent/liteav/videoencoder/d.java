@@ -1,9 +1,10 @@
 package com.tencent.liteav.videoencoder;
 
 import android.media.MediaFormat;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.module.a;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.c;
 import org.json.JSONArray;
 
 public class d
@@ -11,11 +12,11 @@ public class d
 {
   protected boolean mEnableXMirror = false;
   protected JSONArray mEncFmt = null;
-  protected h mEncodeFilter;
+  protected j mEncodeFilter;
   private boolean mEncodeFirstGOP = false;
   protected Object mGLContextExternal = null;
   protected boolean mInit;
-  protected h mInputFilter;
+  protected j mInputFilter;
   protected int mInputHeight = 0;
   protected int mInputTextureID = -1;
   protected int mInputWidth = 0;
@@ -24,6 +25,7 @@ public class d
   protected int mOutputWidth = 0;
   protected int mRotation = 0;
   protected int mStreamType = 2;
+  protected c mThreadPriority = c.b;
   private long mVideoGOPEncode = 0L;
   
   protected void callDelegate(int paramInt)
@@ -91,7 +93,7 @@ public class d
     return this.mOutputWidth;
   }
   
-  public boolean isHevcEncoder()
+  public boolean isH265Encoder()
   {
     return false;
   }
@@ -129,6 +131,8 @@ public class d
   
   public void setFPS(int paramInt) {}
   
+  public void setGLFinishedTextureNeed(boolean paramBoolean) {}
+  
   public void setListener(e parame)
   {
     this.mListener = parame;
@@ -139,6 +143,11 @@ public class d
   public void setRotation(int paramInt)
   {
     this.mRotation = paramInt;
+  }
+  
+  public void setThreadPriority(c paramc)
+  {
+    this.mThreadPriority = paramc;
   }
   
   public void setXMirror(boolean paramBoolean)
@@ -169,7 +178,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.d
  * JD-Core Version:    0.7.0.1
  */

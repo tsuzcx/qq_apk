@@ -11,15 +11,15 @@ public class TroopEffectPicItemBuilder$TroopEffectPicMsgHolder
   extends BaseBubbleBuilder.ViewHolder
 {
   public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public BubbleImageView a;
-  public TextView b;
+  public BubbleImageView b;
+  public URLImageView c;
+  public TextView d;
+  public URLDrawable e;
+  public TextView f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopEffectPicItemBuilder.TroopEffectPicMsgHolder
  * JD-Core Version:    0.7.0.1
  */

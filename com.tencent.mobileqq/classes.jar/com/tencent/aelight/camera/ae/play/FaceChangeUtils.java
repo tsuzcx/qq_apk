@@ -263,7 +263,7 @@ public final class FaceChangeUtils
       localStringBuilder.append(bool);
       AEQLog.b("FaceChangeUtils", localStringBuilder.toString());
     }
-    AEStaticDetector.initDetector(AEResUtil.g());
+    AEStaticDetector.initDetector(AEResUtil.n());
     return AEStaticDetector.detectFace(paramBitmap);
   }
   
@@ -462,7 +462,7 @@ public final class FaceChangeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.FaceChangeUtils
  * JD-Core Version:    0.7.0.1
  */

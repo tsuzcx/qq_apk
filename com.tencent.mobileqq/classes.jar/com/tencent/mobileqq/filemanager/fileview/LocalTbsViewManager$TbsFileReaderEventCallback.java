@@ -8,15 +8,15 @@ import com.tencent.tbs.reader.TbsReaderView.ReaderCallback;
 class LocalTbsViewManager$TbsFileReaderEventCallback
   implements TbsReaderView.ReaderCallback
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private final LocalTbsViewManager.LocalTbsViewManagerCallback jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback;
-  private final String jdField_a_of_type_JavaLangString;
+  private final LocalTbsViewManager.LocalTbsViewManagerCallback b;
+  private final Activity c;
+  private final String d;
   
   public LocalTbsViewManager$TbsFileReaderEventCallback(LocalTbsViewManager paramLocalTbsViewManager, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback, Activity paramActivity, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback = paramLocalTbsViewManagerCallback;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramLocalTbsViewManagerCallback;
+    this.c = paramActivity;
+    this.d = paramString;
   }
   
   public void a(Object paramObject, String paramString, int paramInt)
@@ -60,24 +60,24 @@ class LocalTbsViewManager$TbsFileReaderEventCallback
                 if (i != 5024)
                 {
                   if (i == 5025) {
-                    LocalTbsViewManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager, false, false);
+                    LocalTbsViewManager.a(this.a, false, false);
                   }
                 }
                 else
                 {
-                  localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback;
+                  localObject = this.b;
                   if (localObject != null) {
                     a(paramObject2, "is_bar_show", ((LocalTbsViewManager.LocalTbsViewManagerCallback)localObject).a() ^ true);
                   }
                 }
               }
               else {
-                this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager.a(paramObject1, this.jdField_a_of_type_JavaLangString);
+                this.a.a(paramObject1, this.d);
               }
             }
           }
           else {
-            a(paramObject2, "TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131299168));
+            a(paramObject2, "TitleHeight", (int)this.c.getResources().getDimension(2131299920));
           }
         }
         else {
@@ -86,7 +86,7 @@ class LocalTbsViewManager$TbsFileReaderEventCallback
       }
       else if ((paramObject1 != null) && ((paramObject1 instanceof Integer)))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager;
+        localObject = this.a;
         if (((Integer)paramObject1).intValue() != 0) {
           bool = false;
         }
@@ -95,17 +95,17 @@ class LocalTbsViewManager$TbsFileReaderEventCallback
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager.a(paramObject1, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback);
+      this.a.a(paramObject1, this.c, this.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager.a(paramInteger.intValue(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback);
+    this.a.a(paramInteger.intValue(), this.b);
     if (paramInteger.intValue() == 6001) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager.a(this.jdField_a_of_type_AndroidAppActivity, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback);
+      this.a.a(this.c, paramObject1, paramObject2, this.d, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileview.LocalTbsViewManager.TbsFileReaderEventCallback
  * JD-Core Version:    0.7.0.1
  */

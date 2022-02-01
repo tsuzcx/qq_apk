@@ -11,19 +11,19 @@ class StickerBubbleAnimationViewHolder$2
   public void a()
   {
     StickerBubbleAnimationViewHolder localStickerBubbleAnimationViewHolder = this.a;
-    StickerBubbleAnimationViewHolder.b(localStickerBubbleAnimationViewHolder, StickerBubbleAnimationViewHolder.b(localStickerBubbleAnimationViewHolder));
+    StickerBubbleAnimationViewHolder.b(localStickerBubbleAnimationViewHolder, StickerBubbleAnimationViewHolder.c(localStickerBubbleAnimationViewHolder));
   }
   
   public void a(int paramInt)
   {
     StickerBubbleAnimationViewHolder localStickerBubbleAnimationViewHolder = this.a;
-    StickerBubbleAnimationViewHolder.a(localStickerBubbleAnimationViewHolder, StickerBubbleAnimationViewHolder.b(localStickerBubbleAnimationViewHolder));
+    StickerBubbleAnimationViewHolder.a(localStickerBubbleAnimationViewHolder, StickerBubbleAnimationViewHolder.c(localStickerBubbleAnimationViewHolder));
     ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2
  * JD-Core Version:    0.7.0.1
  */

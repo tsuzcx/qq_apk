@@ -10,6 +10,8 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.string;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.ActionProvider;
 
@@ -54,11 +56,11 @@ public class ShareActionProvider
       localActivityChooserView.setActivityChooserModel(ActivityChooserModel.get(this.mContext, this.mShareHistoryFileName));
     }
     TypedValue localTypedValue = new TypedValue();
-    this.mContext.getTheme().resolveAttribute(2131034142, localTypedValue, true);
+    this.mContext.getTheme().resolveAttribute(R.attr.actionModeShareDrawable, localTypedValue, true);
     localActivityChooserView.setExpandActivityOverflowButtonDrawable(AppCompatResources.getDrawable(this.mContext, localTypedValue.resourceId));
     localActivityChooserView.setProvider(this);
-    localActivityChooserView.setDefaultActionButtonContentDescription(2131689518);
-    localActivityChooserView.setExpandActivityOverflowButtonContentDescription(2131689517);
+    localActivityChooserView.setDefaultActionButtonContentDescription(R.string.abc_shareactionprovider_share_with_application);
+    localActivityChooserView.setExpandActivityOverflowButtonContentDescription(R.string.abc_shareactionprovider_share_with);
     return localActivityChooserView;
   }
   
@@ -79,7 +81,7 @@ public class ShareActionProvider
     }
     if (k < j)
     {
-      paramSubMenu = paramSubMenu.addSubMenu(0, k, k, this.mContext.getString(2131689497));
+      paramSubMenu = paramSubMenu.addSubMenu(0, k, k, this.mContext.getString(R.string.abc_activity_chooser_view_see_all));
       i = 0;
       while (i < j)
       {

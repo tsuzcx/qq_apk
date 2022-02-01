@@ -35,7 +35,7 @@ public class AuthDetailDialog
   
   public AuthDetailDialog(@NonNull Activity paramActivity, INTERFACE.StSubscribeMessage paramStSubscribeMessage, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramActivity, 2131755402);
+    super(paramActivity, 2131952170);
     this.mContext = paramActivity;
     this.mCurSubMsg = paramStSubscribeMessage;
     setCanceledOnTouchOutside(true);
@@ -64,20 +64,20 @@ public class AuthDetailDialog
   
   private void initBottomDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559369, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625335, null);
     setContentView(paramContext);
-    this.ivBack = ((ImageView)paramContext.findViewById(2131369281));
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379523));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370504));
+    this.ivBack = ((ImageView)paramContext.findViewById(2131436265));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131448274));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131437776));
   }
   
   private void initCenterDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559370, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625336, null);
     setContentView(paramContext);
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379523));
-    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379594));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370504));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131448274));
+    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131448351));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131437776));
   }
   
   private void initDetailList()
@@ -94,7 +94,7 @@ public class AuthDetailDialog
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131369281) && (i != 2131379594)) {
+    if ((i != 2131436265) && (i != 2131448351)) {
       return;
     }
     dismiss();
@@ -119,7 +119,7 @@ public class AuthDetailDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDetailDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -49,7 +49,7 @@ public class BusinessCommonConfig
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("BusinessCommonConfig_");
-    ((StringBuilder)localObject).append(QQAudioHelper.b());
+    ((StringBuilder)localObject).append(QQAudioHelper.d());
     this.TAG = ((StringBuilder)localObject).toString();
     localObject = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -81,10 +81,10 @@ public class BusinessCommonConfig
       {
         bool1 = bool2;
         paramSharedPreferences = localObject;
-        if (QQAudioHelper.c())
+        if (QQAudioHelper.f())
         {
           paramSharedPreferences = new StringBuilder();
-          paramSharedPreferences.append(HardCodeUtil.a(2131701489));
+          paramSharedPreferences.append(HardCodeUtil.a(2131899512));
           paramSharedPreferences.append(paramString4);
           paramSharedPreferences.append("]");
           paramSharedPreferences = paramSharedPreferences.toString();
@@ -101,7 +101,7 @@ public class BusinessCommonConfig
     {
       bool1 = bool2;
       paramSharedPreferences = localObject;
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         paramSharedPreferences = new StringBuilder();
         paramSharedPreferences.append("md5不一样，sp_md5[");
@@ -113,7 +113,7 @@ public class BusinessCommonConfig
         bool1 = bool2;
       }
     }
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
       paramString3 = new StringBuilder();
       paramString3.append("isResReady, md5Key[");
@@ -171,7 +171,7 @@ public class BusinessCommonConfig
         ResDownloadControl.a().a(str);
         return;
       }
-      PromotionUtil.a(paramQQAppInterface).a(paramQQAppInterface, str);
+      PromotionUtil.b(paramQQAppInterface).a(paramQQAppInterface, str);
       return;
     }
     GestureMgr.a();
@@ -240,11 +240,11 @@ public class BusinessCommonConfig
     // Byte code:
     //   0: aload 4
     //   2: astore_3
-    //   3: ldc_w 287
+    //   3: ldc_w 288
     //   6: astore 16
     //   8: aload_0
     //   9: iload_2
-    //   10: invokevirtual 291	com/tencent/mobileqq/utils/BusinessCommonConfig:getConfigHandler	(I)Lcom/tencent/mobileqq/utils/confighandler/ConfigHandler;
+    //   10: invokevirtual 292	com/tencent/mobileqq/utils/BusinessCommonConfig:getConfigHandler	(I)Lcom/tencent/mobileqq/utils/confighandler/ConfigHandler;
     //   13: astore 18
     //   15: aload 18
     //   17: ifnonnull +44 -> 61
@@ -253,7 +253,7 @@ public class BusinessCommonConfig
     //   24: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   27: astore_1
     //   28: aload_1
-    //   29: ldc_w 292
+    //   29: ldc_w 293
     //   32: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   35: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
@@ -263,50 +263,50 @@ public class BusinessCommonConfig
     //   44: pop
     //   45: aload_1
     //   46: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 294	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
+    //   49: invokestatic 296	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
     //   52: iconst_0
-    //   53: invokestatic 300	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   53: invokestatic 302	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   56: areturn
     //   57: astore_1
     //   58: goto +1245 -> 1303
     //   61: aload 18
-    //   63: invokevirtual 305	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getTag	()Ljava/lang/String;
+    //   63: invokevirtual 307	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getTag	()Ljava/lang/String;
     //   66: astore 19
     //   68: aload_3
     //   69: ifnonnull +20 -> 89
     //   72: aload 18
-    //   74: invokevirtual 305	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getTag	()Ljava/lang/String;
+    //   74: invokevirtual 307	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getTag	()Ljava/lang/String;
     //   77: iconst_1
-    //   78: ldc_w 307
-    //   81: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   78: ldc_w 309
+    //   81: invokestatic 311	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   84: iconst_0
-    //   85: invokestatic 300	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   85: invokestatic 302	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   88: areturn
     //   89: aload 18
-    //   91: invokevirtual 314	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getConfigVer	()I
+    //   91: invokevirtual 315	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getConfigVer	()I
     //   94: istore 6
     //   96: aload_3
-    //   97: getfield 320	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   97: getfield 321	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   100: astore 11
     //   102: aload 11
     //   104: ifnull +14 -> 118
     //   107: aload_3
-    //   108: getfield 320	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   111: invokevirtual 325	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   108: getfield 321	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   111: invokevirtual 326	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   114: istore_2
     //   115: goto +5 -> 120
     //   118: iconst_m1
     //   119: istore_2
     //   120: aload_3
-    //   121: getfield 329	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   124: invokevirtual 334	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   121: getfield 330	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   124: invokevirtual 335	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   127: istore 7
     //   129: new 47	java/lang/StringBuilder
     //   132: dup
     //   133: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   136: astore_3
     //   137: aload_3
-    //   138: ldc_w 336
+    //   138: ldc_w 337
     //   141: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload_3
@@ -314,7 +314,7 @@ public class BusinessCommonConfig
     //   148: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   151: pop
     //   152: aload_3
-    //   153: ldc_w 338
+    //   153: ldc_w 339
     //   156: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload_3
@@ -322,7 +322,7 @@ public class BusinessCommonConfig
     //   163: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   166: pop
     //   167: aload_3
-    //   168: ldc_w 340
+    //   168: ldc_w 341
     //   171: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload_3
@@ -345,12 +345,12 @@ public class BusinessCommonConfig
     //   207: aload_1
     //   208: aconst_null
     //   209: aconst_null
-    //   210: invokevirtual 344	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
+    //   210: invokevirtual 345	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
     //   213: iconst_1
-    //   214: invokestatic 300	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   214: invokestatic 302	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   217: areturn
     //   218: aload 18
-    //   220: invokevirtual 348	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getConfigInfoClass	()Ljava/lang/Class;
+    //   220: invokevirtual 349	com/tencent/mobileqq/utils/confighandler/ConfigHandler:getConfigInfoClass	()Ljava/lang/Class;
     //   223: astore 20
     //   225: iload_2
     //   226: ifgt +185 -> 411
@@ -359,22 +359,22 @@ public class BusinessCommonConfig
     //   234: aload 18
     //   236: aconst_null
     //   237: iload 7
-    //   239: invokevirtual 352	com/tencent/mobileqq/utils/confighandler/ConfigHandler:saveConfig	(Ljava/lang/String;I)V
+    //   239: invokevirtual 353	com/tencent/mobileqq/utils/confighandler/ConfigHandler:saveConfig	(Ljava/lang/String;I)V
     //   242: aload 20
-    //   244: invokevirtual 357	java/lang/Class:getName	()Ljava/lang/String;
+    //   244: invokevirtual 358	java/lang/Class:getName	()Ljava/lang/String;
     //   247: astore 11
     //   249: aload 20
-    //   251: invokevirtual 361	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   254: checkcast 363	com/tencent/mobileqq/utils/confighandler/ConfigInfo
+    //   251: invokevirtual 362	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   254: checkcast 364	com/tencent/mobileqq/utils/confighandler/ConfigInfo
     //   257: astore_3
     //   258: aload_3
     //   259: aload_1
-    //   260: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   263: invokevirtual 371	com/tencent/mobileqq/utils/confighandler/ConfigInfo:setUin	(Ljava/lang/String;)V
+    //   260: invokevirtual 369	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   263: invokevirtual 372	com/tencent/mobileqq/utils/confighandler/ConfigInfo:setUin	(Ljava/lang/String;)V
     //   266: aload_3
     //   267: iload 7
     //   269: i2l
-    //   270: putfield 375	com/tencent/mobileqq/utils/confighandler/ConfigInfo:serverVer	J
+    //   270: putfield 376	com/tencent/mobileqq/utils/confighandler/ConfigInfo:serverVer	J
     //   273: goto +76 -> 349
     //   276: astore 4
     //   278: goto +18 -> 296
@@ -392,7 +392,7 @@ public class BusinessCommonConfig
     //   300: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   303: astore 12
     //   305: aload 12
-    //   307: ldc_w 377
+    //   307: ldc_w 378
     //   310: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload 12
@@ -408,16 +408,16 @@ public class BusinessCommonConfig
     //   333: aload 12
     //   335: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   338: aload 4
-    //   340: invokestatic 380	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   343: invokestatic 382	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
+    //   340: invokestatic 381	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   343: invokestatic 383	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
     //   346: ifne +16 -> 362
     //   349: aload 18
     //   351: aload_1
     //   352: aconst_null
     //   353: aload_3
-    //   354: invokevirtual 344	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
+    //   354: invokevirtual 345	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
     //   357: iconst_1
-    //   358: invokestatic 300	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   358: invokestatic 302	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   361: areturn
     //   362: new 47	java/lang/StringBuilder
     //   365: dup
@@ -428,7 +428,7 @@ public class BusinessCommonConfig
     //   373: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   376: pop
     //   377: aload_1
-    //   378: ldc_w 377
+    //   378: ldc_w 378
     //   381: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload_1
@@ -439,11 +439,11 @@ public class BusinessCommonConfig
     //   393: ldc 78
     //   395: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: pop
-    //   399: new 384	java/lang/IllegalArgumentException
+    //   399: new 385	java/lang/IllegalArgumentException
     //   402: dup
     //   403: aload_1
     //   404: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokespecial 385	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   407: invokespecial 386	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   410: athrow
     //   411: aconst_null
     //   412: astore 13
@@ -457,35 +457,35 @@ public class BusinessCommonConfig
     //   427: iload_2
     //   428: if_icmpge +947 -> 1375
     //   431: aload 4
-    //   433: getfield 320	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   433: getfield 321	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:msg_content_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   436: iload 5
-    //   438: invokevirtual 388	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   441: checkcast 390	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content
+    //   438: invokevirtual 389	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   441: checkcast 391	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content
     //   444: astore_3
     //   445: aload_3
     //   446: ifnull +777 -> 1223
     //   449: aload_3
-    //   450: getfield 394	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:task_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   453: invokevirtual 397	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   450: getfield 395	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:task_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   453: invokevirtual 398	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   456: istore 8
     //   458: aload_3
-    //   459: getfield 401	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   462: invokevirtual 406	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   459: getfield 402	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:content	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   462: invokevirtual 407	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   465: astore 15
     //   467: aload 15
     //   469: ifnull +692 -> 1161
-    //   472: ldc_w 408
+    //   472: ldc_w 409
     //   475: astore 14
     //   477: aload_3
-    //   478: getfield 411	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:compress	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   481: invokevirtual 397	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   478: getfield 412	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Content:compress	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   481: invokevirtual 398	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   484: istore 9
     //   486: iload 9
     //   488: iconst_1
     //   489: if_icmpne +197 -> 686
     //   492: aload 15
-    //   494: invokevirtual 417	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   497: invokestatic 422	com/tencent/mobileqq/olympic/utils/OlympicUtil:a	([B)[B
+    //   494: invokevirtual 418	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   497: invokestatic 423	com/tencent/mobileqq/olympic/utils/OlympicUtil:a	([B)[B
     //   500: astore 15
     //   502: aload 15
     //   504: ifnull +169 -> 673
@@ -493,35 +493,35 @@ public class BusinessCommonConfig
     //   510: dup
     //   511: aload 15
     //   513: aload 16
-    //   515: invokespecial 425	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   515: invokespecial 426	java/lang/String:<init>	([BLjava/lang/String;)V
     //   518: astore_3
     //   519: goto +181 -> 700
     //   522: astore_3
     //   523: aload_3
-    //   524: invokevirtual 428	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   524: invokevirtual 429	java/lang/OutOfMemoryError:printStackTrace	()V
     //   527: new 47	java/lang/StringBuilder
     //   530: dup
     //   531: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   534: astore 14
     //   536: aload 14
-    //   538: ldc_w 429
+    //   538: ldc_w 430
     //   541: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   544: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   547: pop
     //   548: aload 14
     //   550: aload_3
-    //   551: invokevirtual 432	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   551: invokevirtual 433	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   554: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   557: pop
     //   558: aload 14
     //   560: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   563: astore 14
-    //   565: invokestatic 437	java/lang/System:gc	()V
+    //   565: invokestatic 438	java/lang/System:gc	()V
     //   568: new 119	java/lang/String
     //   571: dup
     //   572: aload 15
     //   574: aload 16
-    //   576: invokespecial 425	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   576: invokespecial 426	java/lang/String:<init>	([BLjava/lang/String;)V
     //   579: astore_3
     //   580: goto +768 -> 1348
     //   583: astore_3
@@ -530,13 +530,13 @@ public class BusinessCommonConfig
     //   588: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   591: astore 14
     //   593: aload 14
-    //   595: ldc_w 438
+    //   595: ldc_w 439
     //   598: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   601: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   604: pop
     //   605: aload 14
     //   607: aload_3
-    //   608: invokevirtual 439	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   608: invokevirtual 440	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   611: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   614: pop
     //   615: aload 14
@@ -547,35 +547,35 @@ public class BusinessCommonConfig
     //   624: goto +724 -> 1348
     //   627: astore_3
     //   628: aload_3
-    //   629: invokevirtual 440	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   629: invokevirtual 441	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   632: new 47	java/lang/StringBuilder
     //   635: dup
     //   636: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   639: astore 14
     //   641: aload 14
-    //   643: ldc_w 441
+    //   643: ldc_w 442
     //   646: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   649: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   652: pop
     //   653: aload 14
     //   655: aload_3
-    //   656: invokevirtual 442	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
+    //   656: invokevirtual 443	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
     //   659: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   662: pop
     //   663: aload 14
     //   665: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   668: astore 14
     //   670: goto +11 -> 681
-    //   673: ldc_w 443
+    //   673: ldc_w 444
     //   676: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   679: astore 14
     //   681: aconst_null
     //   682: astore_3
     //   683: goto +17 -> 700
     //   686: aload 15
-    //   688: invokevirtual 446	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   688: invokevirtual 447	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   691: astore_3
-    //   692: ldc_w 447
+    //   692: ldc_w 448
     //   695: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   698: astore 14
     //   700: aload_3
@@ -585,7 +585,7 @@ public class BusinessCommonConfig
     //   707: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   710: astore_3
     //   711: aload_3
-    //   712: ldc_w 449
+    //   712: ldc_w 450
     //   715: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   718: pop
     //   719: aload_3
@@ -596,7 +596,7 @@ public class BusinessCommonConfig
     //   728: iconst_1
     //   729: aload_3
     //   730: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   733: invokestatic 452	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   733: invokestatic 453	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   736: aload 15
     //   738: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   741: istore 10
@@ -605,26 +605,26 @@ public class BusinessCommonConfig
     //   748: aload 13
     //   750: astore_3
     //   751: aload 20
-    //   753: invokevirtual 357	java/lang/Class:getName	()Ljava/lang/String;
+    //   753: invokevirtual 358	java/lang/Class:getName	()Ljava/lang/String;
     //   756: astore 13
     //   758: aload 13
     //   760: astore_3
     //   761: aload 20
-    //   763: invokevirtual 361	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   766: checkcast 363	com/tencent/mobileqq/utils/confighandler/ConfigInfo
+    //   763: invokevirtual 362	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   766: checkcast 364	com/tencent/mobileqq/utils/confighandler/ConfigInfo
     //   769: astore 14
     //   771: aload 14
     //   773: aload_1
-    //   774: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   777: invokevirtual 371	com/tencent/mobileqq/utils/confighandler/ConfigInfo:setUin	(Ljava/lang/String;)V
+    //   774: invokevirtual 369	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   777: invokevirtual 372	com/tencent/mobileqq/utils/confighandler/ConfigInfo:setUin	(Ljava/lang/String;)V
     //   780: aload 14
     //   782: iload 7
     //   784: i2l
-    //   785: putfield 375	com/tencent/mobileqq/utils/confighandler/ConfigInfo:serverVer	J
+    //   785: putfield 376	com/tencent/mobileqq/utils/confighandler/ConfigInfo:serverVer	J
     //   788: aload 14
     //   790: aload 19
     //   792: aload 15
-    //   794: invokevirtual 456	com/tencent/mobileqq/utils/confighandler/ConfigInfo:tryParse	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   794: invokevirtual 457	com/tencent/mobileqq/utils/confighandler/ConfigInfo:tryParse	(Ljava/lang/String;Ljava/lang/String;)Z
     //   797: istore 10
     //   799: aload 14
     //   801: astore_3
@@ -645,7 +645,7 @@ public class BusinessCommonConfig
     //   830: aload 13
     //   832: astore_3
     //   833: aload 14
-    //   835: ldc_w 457
+    //   835: ldc_w 458
     //   838: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   841: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   844: pop
@@ -653,7 +653,7 @@ public class BusinessCommonConfig
     //   847: astore_3
     //   848: aload 14
     //   850: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   853: invokestatic 294	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
+    //   853: invokestatic 296	com/tencent/mobileqq/utils/QQAudioHelper:c	(Ljava/lang/String;)V
     //   856: aconst_null
     //   857: astore_3
     //   858: goto +71 -> 929
@@ -671,7 +671,7 @@ public class BusinessCommonConfig
     //   880: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   883: astore 14
     //   885: aload 14
-    //   887: ldc_w 459
+    //   887: ldc_w 460
     //   890: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   893: pop
     //   894: aload 14
@@ -687,15 +687,15 @@ public class BusinessCommonConfig
     //   913: aload 14
     //   915: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   918: aload 17
-    //   920: invokestatic 380	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   923: invokestatic 382	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
+    //   920: invokestatic 381	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   923: invokestatic 383	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
     //   926: ifne +118 -> 1044
     //   929: new 47	java/lang/StringBuilder
     //   932: dup
     //   933: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   936: astore 14
     //   938: aload 14
-    //   940: ldc_w 461
+    //   940: ldc_w 462
     //   943: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   946: pop
     //   947: aload 14
@@ -703,7 +703,7 @@ public class BusinessCommonConfig
     //   951: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   954: pop
     //   955: aload 14
-    //   957: ldc_w 463
+    //   957: ldc_w 464
     //   960: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   963: pop
     //   964: aload 14
@@ -711,7 +711,7 @@ public class BusinessCommonConfig
     //   968: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   971: pop
     //   972: aload 14
-    //   974: ldc_w 465
+    //   974: ldc_w 466
     //   977: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   980: pop
     //   981: aload 14
@@ -719,7 +719,7 @@ public class BusinessCommonConfig
     //   984: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   987: pop
     //   988: aload 14
-    //   990: ldc_w 467
+    //   990: ldc_w 468
     //   993: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   996: pop
     //   997: aload 14
@@ -741,7 +741,7 @@ public class BusinessCommonConfig
     //   1029: ifnull +333 -> 1362
     //   1032: iload 8
     //   1034: aload_3
-    //   1035: getfield 470	com/tencent/mobileqq/utils/confighandler/ConfigInfo:taskId	I
+    //   1035: getfield 471	com/tencent/mobileqq/utils/confighandler/ConfigInfo:taskId	I
     //   1038: if_icmpne +313 -> 1351
     //   1041: goto +232 -> 1273
     //   1044: new 47	java/lang/StringBuilder
@@ -753,7 +753,7 @@ public class BusinessCommonConfig
     //   1055: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1058: pop
     //   1059: aload_1
-    //   1060: ldc_w 459
+    //   1060: ldc_w 460
     //   1063: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1066: pop
     //   1067: aload_1
@@ -764,113 +764,113 @@ public class BusinessCommonConfig
     //   1075: ldc 78
     //   1077: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1080: pop
-    //   1081: new 384	java/lang/IllegalArgumentException
+    //   1081: new 385	java/lang/IllegalArgumentException
     //   1084: dup
     //   1085: aload_1
     //   1086: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1089: invokespecial 385	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   1089: invokespecial 386	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   1092: athrow
     //   1093: aload 19
     //   1095: iconst_2
-    //   1096: ldc_w 472
+    //   1096: ldc_w 473
     //   1099: bipush 6
     //   1101: anewarray 4	java/lang/Object
     //   1104: dup
     //   1105: iconst_0
     //   1106: iload 5
-    //   1108: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1108: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1111: aastore
     //   1112: dup
     //   1113: iconst_1
     //   1114: iload 8
-    //   1116: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1116: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1119: aastore
     //   1120: dup
     //   1121: iconst_2
     //   1122: iload 7
-    //   1124: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1124: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1127: aastore
     //   1128: dup
     //   1129: iconst_3
     //   1130: iload 6
-    //   1132: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1132: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1135: aastore
     //   1136: dup
     //   1137: iconst_4
     //   1138: iload_2
-    //   1139: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1139: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1142: aastore
     //   1143: dup
     //   1144: iconst_5
     //   1145: aload 14
     //   1147: aastore
-    //   1148: invokestatic 481	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1151: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1148: invokestatic 482	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1151: invokestatic 311	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1154: aload 13
     //   1156: astore 14
     //   1158: goto +204 -> 1362
     //   1161: aload 19
     //   1163: iconst_1
-    //   1164: ldc_w 483
+    //   1164: ldc_w 484
     //   1167: iconst_5
     //   1168: anewarray 4	java/lang/Object
     //   1171: dup
     //   1172: iconst_0
     //   1173: iload 5
-    //   1175: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1175: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1178: aastore
     //   1179: dup
     //   1180: iconst_1
     //   1181: iload 8
-    //   1183: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1183: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1186: aastore
     //   1187: dup
     //   1188: iconst_2
     //   1189: iload 7
-    //   1191: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1191: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1194: aastore
     //   1195: dup
     //   1196: iconst_3
     //   1197: iload 6
-    //   1199: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1199: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1202: aastore
     //   1203: dup
     //   1204: iconst_4
     //   1205: iload_2
-    //   1206: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1206: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1209: aastore
-    //   1210: invokestatic 481	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1213: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1210: invokestatic 482	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1213: invokestatic 311	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1216: aload 13
     //   1218: astore 14
     //   1220: goto +142 -> 1362
     //   1223: aload 19
     //   1225: iconst_1
-    //   1226: ldc_w 485
+    //   1226: ldc_w 486
     //   1229: iconst_4
     //   1230: anewarray 4	java/lang/Object
     //   1233: dup
     //   1234: iconst_0
     //   1235: iload 5
-    //   1237: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1237: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1240: aastore
     //   1241: dup
     //   1242: iconst_1
     //   1243: iload 7
-    //   1245: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1245: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1248: aastore
     //   1249: dup
     //   1250: iconst_2
     //   1251: iload 6
-    //   1253: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1253: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1256: aastore
     //   1257: dup
     //   1258: iconst_3
     //   1259: iload_2
-    //   1260: invokestatic 477	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1260: invokestatic 478	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1263: aastore
-    //   1264: invokestatic 481	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1267: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1264: invokestatic 482	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1267: invokestatic 311	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1270: goto +96 -> 1366
     //   1273: aload 15
     //   1275: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -878,30 +878,30 @@ public class BusinessCommonConfig
     //   1281: aload 18
     //   1283: aload 15
     //   1285: iload 7
-    //   1287: invokevirtual 352	com/tencent/mobileqq/utils/confighandler/ConfigHandler:saveConfig	(Ljava/lang/String;I)V
+    //   1287: invokevirtual 353	com/tencent/mobileqq/utils/confighandler/ConfigHandler:saveConfig	(Ljava/lang/String;I)V
     //   1290: aload 18
     //   1292: aload_1
     //   1293: aload 15
     //   1295: aload_3
-    //   1296: invokevirtual 344	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
+    //   1296: invokevirtual 345	com/tencent/mobileqq/utils/confighandler/ConfigHandler:onGetConfigFinish	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/utils/confighandler/ConfigInfo;)V
     //   1299: goto +22 -> 1321
     //   1302: astore_1
     //   1303: aload_0
     //   1304: getfield 69	com/tencent/mobileqq/utils/BusinessCommonConfig:TAG	Ljava/lang/String;
     //   1307: iconst_1
-    //   1308: ldc_w 487
+    //   1308: ldc_w 488
     //   1311: aload_1
-    //   1312: invokestatic 380	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1315: invokestatic 382	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
+    //   1312: invokestatic 381	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1315: invokestatic 383	com/tencent/mobileqq/utils/QQAudioHelper:b	()Z
     //   1318: ifne +8 -> 1326
     //   1321: iconst_1
-    //   1322: invokestatic 300	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1322: invokestatic 302	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   1325: areturn
-    //   1326: new 384	java/lang/IllegalArgumentException
+    //   1326: new 385	java/lang/IllegalArgumentException
     //   1329: dup
-    //   1330: ldc_w 488
+    //   1330: ldc_w 489
     //   1333: invokestatic 140	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   1336: invokespecial 385	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   1336: invokespecial 386	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   1339: astore_1
     //   1340: goto +5 -> 1345
     //   1343: aload_1
@@ -1008,7 +1008,7 @@ public class BusinessCommonConfig
       if (localConfigHandler == null)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(HardCodeUtil.a(2131701459));
+        paramQQAppInterface.append(HardCodeUtil.a(2131899484));
         paramQQAppInterface.append(paramInt);
         QQAudioHelper.c(paramQQAppInterface.toString());
         return Boolean.valueOf(false);
@@ -1026,13 +1026,13 @@ public class BusinessCommonConfig
         {
           localObject3 = (ConfigInfo)((Class)localObject1).newInstance();
           ((ConfigInfo)localObject3).setUin(paramQQAppInterface.getAccount());
-          ((ConfigInfo)localObject3).serverVer = QAVConfig.a(paramInt);
+          ((ConfigInfo)localObject3).serverVer = QAVConfig.c(paramInt);
           localObject1 = localObject3;
           if (!((ConfigInfo)localObject3).tryParse(str1, paramString))
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append(str1);
-            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701476));
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899500));
             QQAudioHelper.c(((StringBuilder)localObject1).toString());
             localObject1 = null;
           }
@@ -1077,7 +1077,7 @@ public class BusinessCommonConfig
     }
     return Boolean.valueOf(true);
     label382:
-    throw new IllegalArgumentException(HardCodeUtil.a(2131701487));
+    throw new IllegalArgumentException(HardCodeUtil.a(2131899510));
   }
   
   public void doOnReconnect()
@@ -1094,7 +1094,7 @@ public class BusinessCommonConfig
     String str = localConfigHandler.getTag();
     int j = localConfigHandler.getConfigVer();
     int i = j;
-    if (QQAudioHelper.a(9) == 1)
+    if (QQAudioHelper.b(9) == 1)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("强制拉取配置, 原localVersion[");
@@ -1272,7 +1272,7 @@ public class BusinessCommonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BusinessCommonConfig
  * JD-Core Version:    0.7.0.1
  */

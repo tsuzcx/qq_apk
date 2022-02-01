@@ -10,19 +10,19 @@ class TimeWheelPanel$1
   
   public void run()
   {
-    if ((TimeWheelPanel.a(this.this$0).getLayout().getEllipsisCount(TimeWheelPanel.a(this.this$0).getLineCount() - 1) > 0) && (TimeWheelPanel.a(this.this$0) != null))
+    if ((TimeWheelPanel.a(this.this$0).getLayout().getEllipsisCount(TimeWheelPanel.a(this.this$0).getLineCount() - 1) > 0) && (TimeWheelPanel.b(this.this$0) != null))
     {
-      if (TimeWheelPanel.a(this.this$0).getText().toString().equals(TimeWheelPanel.a(this.this$0))) {
+      if (TimeWheelPanel.a(this.this$0).getText().toString().equals(TimeWheelPanel.b(this.this$0))) {
         return;
       }
       TimeWheelPanel.a(this.this$0, true);
-      TimeWheelPanel.a(this.this$0).setText(TimeWheelPanel.a(this.this$0));
+      TimeWheelPanel.a(this.this$0).setText(TimeWheelPanel.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.TimeWheelPanel.1
  * JD-Core Version:    0.7.0.1
  */

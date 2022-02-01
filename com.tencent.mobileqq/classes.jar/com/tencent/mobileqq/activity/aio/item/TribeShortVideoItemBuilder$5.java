@@ -17,7 +17,7 @@ class TribeShortVideoItemBuilder$5
       paramString2.append(paramString1);
       QLog.i("TribeShortVideoItemBuilder", 2, paramString2.toString());
     }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+    if (!paramString1.equals(this.d)) {}
   }
   
   public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
@@ -29,7 +29,7 @@ class TribeShortVideoItemBuilder$5
       paramString2.append(paramString1);
       QLog.e("TribeShortVideoItemBuilder", 2, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder, this.jdField_a_of_type_Long);
+    this.a.a(this.b, this.c);
   }
   
   public void b(String paramString1, String paramString2, int paramInt)
@@ -41,12 +41,12 @@ class TribeShortVideoItemBuilder$5
       paramString2.append(paramString1);
       QLog.e("TribeShortVideoItemBuilder", 2, paramString2.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder, this.jdField_a_of_type_Long);
+    this.a.a(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

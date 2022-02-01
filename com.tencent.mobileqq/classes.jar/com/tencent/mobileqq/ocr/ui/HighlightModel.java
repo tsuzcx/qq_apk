@@ -27,7 +27,7 @@ public class HighlightModel
     this.a = ((List)localObject);
   }
   
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     return Pattern.compile("[\\s|\\t|\\r|\\n]+").matcher(paramString).replaceAll("");
   }
@@ -123,7 +123,7 @@ public class HighlightModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.HighlightModel
  * JD-Core Version:    0.7.0.1
  */

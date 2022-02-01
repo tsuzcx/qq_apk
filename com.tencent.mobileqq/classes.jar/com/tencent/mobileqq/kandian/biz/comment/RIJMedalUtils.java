@@ -2,13 +2,12 @@ package com.tencent.mobileqq.kandian.biz.comment;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyMedalInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -19,7 +18,7 @@ public class RIJMedalUtils
     if ((paramContext != null) && (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null)) {
       try
       {
-        ReadInJoyMedalInfo localReadInJoyMedalInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.a;
+        ReadInJoyMedalInfo localReadInJoyMedalInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.J;
         b(localReadInJoyMedalInfo, paramAbsBaseArticleInfo);
         a(paramContext, localReadInJoyMedalInfo);
         return;
@@ -33,12 +32,12 @@ public class RIJMedalUtils
   
   public static void a(Context paramContext, ReadInJoyMedalInfo paramReadInJoyMedalInfo)
   {
-    if ((paramContext != null) && (paramReadInJoyMedalInfo != null) && (!TextUtils.isEmpty(paramReadInJoyMedalInfo.jdField_c_of_type_JavaLangString)))
+    if ((paramContext != null) && (paramReadInJoyMedalInfo != null) && (!TextUtils.isEmpty(paramReadInJoyMedalInfo.f)))
     {
-      if (1 == paramReadInJoyMedalInfo.jdField_b_of_type_Int) {
-        RIJJumpUtils.a(paramContext, paramReadInJoyMedalInfo.jdField_c_of_type_JavaLangString);
+      if (1 == paramReadInJoyMedalInfo.e) {
+        RIJJumpUtils.c(paramContext, paramReadInJoyMedalInfo.f);
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009BD5", "0X8009BD5", 0, 0, "", "", "", paramReadInJoyMedalInfo.a(), false);
+      PublicAccountReportUtils.a(null, null, "0X8009BD5", "0X8009BD5", 0, 0, "", "", "", paramReadInJoyMedalInfo.a(), false);
     }
   }
   
@@ -47,7 +46,7 @@ public class RIJMedalUtils
     if (paramReadInJoyMedalInfo == null) {
       return;
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009BD4", "0X8009BD4", 0, 0, "", "", "", paramReadInJoyMedalInfo.a(), false);
+    PublicAccountReportUtils.a(null, null, "0X8009BD4", "0X8009BD4", 0, 0, "", "", "", paramReadInJoyMedalInfo.a(), false);
   }
   
   public static void a(ReadInJoyMedalInfo paramReadInJoyMedalInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -68,16 +67,16 @@ public class RIJMedalUtils
       }
       try
       {
-        if ((!TextUtils.isEmpty(paramReadInJoyMedalInfo.jdField_b_of_type_JavaLangString)) && (paramReadInJoyMedalInfo.jdField_c_of_type_Int > 0) && (paramReadInJoyMedalInfo.jdField_d_of_type_Int > 0))
+        if ((!TextUtils.isEmpty(paramReadInJoyMedalInfo.c)) && (paramReadInJoyMedalInfo.g > 0) && (paramReadInJoyMedalInfo.h > 0))
         {
-          paramJSONObject.put("header_medal_jump_url", paramReadInJoyMedalInfo.jdField_c_of_type_JavaLangString);
-          double d1 = Double.valueOf(paramReadInJoyMedalInfo.jdField_c_of_type_Int).doubleValue();
-          int i = paramReadInJoyMedalInfo.jdField_d_of_type_Int;
+          paramJSONObject.put("header_medal_jump_url", paramReadInJoyMedalInfo.f);
+          double d1 = Double.valueOf(paramReadInJoyMedalInfo.g).doubleValue();
+          int i = paramReadInJoyMedalInfo.h;
           double d2 = i;
           Double.isNaN(d2);
           d1 /= d2;
           paramJSONObject.put("header_medal_wh_rate", d1);
-          paramJSONObject.put("header_medal_image_url", paramReadInJoyMedalInfo.jdField_b_of_type_JavaLangString);
+          paramJSONObject.put("header_medal_image_url", paramReadInJoyMedalInfo.c);
         }
         paramReadInJoyMedalInfo = new StringBuilder();
         paramReadInJoyMedalInfo.append("bindMedalData : ");
@@ -97,21 +96,21 @@ public class RIJMedalUtils
     if (paramReadInJoyMedalInfo != null) {
       try
       {
-        paramReadInJoyMedalInfo.jdField_d_of_type_JavaLangString = String.valueOf(paramAbsBaseArticleInfo.mChannelID);
-        paramReadInJoyMedalInfo.g = String.valueOf(paramAbsBaseArticleInfo.mFeedId);
-        paramReadInJoyMedalInfo.h = String.valueOf(paramAbsBaseArticleInfo.mSubscribeID);
+        paramReadInJoyMedalInfo.i = String.valueOf(paramAbsBaseArticleInfo.mChannelID);
+        paramReadInJoyMedalInfo.l = String.valueOf(paramAbsBaseArticleInfo.mFeedId);
+        paramReadInJoyMedalInfo.m = String.valueOf(paramAbsBaseArticleInfo.mSubscribeID);
         if ((!RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)))
         {
           if (RIJItemViewTypeUtils.d(paramAbsBaseArticleInfo)) {
-            paramReadInJoyMedalInfo.f = "4";
+            paramReadInJoyMedalInfo.k = "4";
           } else {
-            paramReadInJoyMedalInfo.f = "0";
+            paramReadInJoyMedalInfo.k = "0";
           }
         }
         else {
-          paramReadInJoyMedalInfo.f = "5";
+          paramReadInJoyMedalInfo.k = "5";
         }
-        paramReadInJoyMedalInfo.e = "2";
+        paramReadInJoyMedalInfo.j = "2";
         return;
       }
       catch (Exception paramReadInJoyMedalInfo)
@@ -123,7 +122,7 @@ public class RIJMedalUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.RIJMedalUtils
  * JD-Core Version:    0.7.0.1
  */

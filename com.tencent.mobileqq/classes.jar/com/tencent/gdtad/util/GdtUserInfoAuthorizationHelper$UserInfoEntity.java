@@ -7,10 +7,10 @@ import com.tencent.widget.AuthorizationItem.ItemType;
 
 public class GdtUserInfoAuthorizationHelper$UserInfoEntity
 {
-  public int a;
   public final String a;
   public final String b;
   public final String c;
+  public int d;
   
   private GdtUserInfoAuthorizationHelper$UserInfoEntity(String paramString1, String paramString2, String paramString3)
   {
@@ -19,10 +19,10 @@ public class GdtUserInfoAuthorizationHelper$UserInfoEntity
   
   private GdtUserInfoAuthorizationHelper$UserInfoEntity(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   private static UserInfoEntity b()
@@ -33,7 +33,7 @@ public class GdtUserInfoAuthorizationHelper$UserInfoEntity
   public String a(String paramString)
   {
     if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
+      return this.a;
     }
     if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
       return this.b;
@@ -49,20 +49,20 @@ public class GdtUserInfoAuthorizationHelper$UserInfoEntity
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UserInfoEntity : [name -> ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", phone -> ");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", city -> ");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", errCode -> ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.UserInfoEntity
  * JD-Core Version:    0.7.0.1
  */

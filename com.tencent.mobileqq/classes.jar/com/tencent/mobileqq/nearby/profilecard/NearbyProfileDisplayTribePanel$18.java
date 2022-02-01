@@ -45,7 +45,7 @@ class NearbyProfileDisplayTribePanel$18
     {
       try
       {
-        ((INearbyCardManager)this.a.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a().put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+        ((INearbyCardManager)this.a.e.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).f().put(this.a.e.app.getCurrentAccountUin(), Integer.valueOf(1));
         paramBundle = paramBundle.getByteArray("data");
         if (paramBundle != null)
         {
@@ -66,59 +66,59 @@ class NearbyProfileDisplayTribePanel$18
             paramBundle = paramBundle.optString("msg");
             if (!TextUtils.isEmpty(paramBundle))
             {
-              localObject = this.a.a;
+              localObject = this.a.e;
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(paramBundle);
-              QQToast.a((Context)localObject, 1, localStringBuilder.toString(), 1).a();
+              QQToast.makeText((Context)localObject, 1, localStringBuilder.toString(), 1).show();
               return;
             }
-            QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707408), 1).a();
+            QQToast.makeText(this.a.e, 1, HardCodeUtil.a(2131905226), 1).show();
             return;
           }
           if (paramBundle.optInt("retcode") == 0)
           {
             paramBundle = this.a;
-            if (NearbyProfileDisplayTribePanel.a(this.a)) {
+            if (NearbyProfileDisplayTribePanel.m(this.a)) {
               break label646;
             }
             paramBoolean = true;
             NearbyProfileDisplayTribePanel.a(paramBundle, paramBoolean);
-            localObject = this.a.a;
-            if (NearbyProfileDisplayTribePanel.a(this.a)) {
-              paramBundle = HardCodeUtil.a(2131707373);
+            localObject = this.a.e;
+            if (NearbyProfileDisplayTribePanel.m(this.a)) {
+              paramBundle = HardCodeUtil.a(2131905193);
             } else {
-              paramBundle = HardCodeUtil.a(2131707331);
+              paramBundle = HardCodeUtil.a(2131905154);
             }
-            QQToast.a((Context)localObject, 2, paramBundle, 1).a();
+            QQToast.makeText((Context)localObject, 2, paramBundle, 1).show();
             NearbyProfileDisplayTribePanel.a(this.a, 1, 60);
           }
-          if ((!NearbyProfileDisplayTribePanel.a(this.a)) && (NearbyProfileDisplayTribePanel.a(this.a).getChildAt(2).getVisibility() != 0))
+          if ((!NearbyProfileDisplayTribePanel.m(this.a)) && (NearbyProfileDisplayTribePanel.n(this.a).getChildAt(2).getVisibility() != 0))
           {
-            paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131379994);
-            paramBundle.setTextColor(this.a.a.getResources().getColor(2131167089));
-            paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839280));
+            paramBundle = (Button)NearbyProfileDisplayTribePanel.n(this.a).getChildAt(1).findViewById(2131448897);
+            paramBundle.setTextColor(this.a.e.getResources().getColor(2131168041));
+            paramBundle.setBackgroundDrawable(this.a.e.getResources().getDrawable(2130839460));
           }
-          if (!NearbyProfileDisplayTribePanel.a(this.a)) {
+          if (!NearbyProfileDisplayTribePanel.m(this.a)) {
             break label645;
           }
-          paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131379994);
-          paramBundle.setTextColor(this.a.a.getResources().getColor(2131167091));
-          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839319));
+          paramBundle = (Button)NearbyProfileDisplayTribePanel.n(this.a).getChildAt(1).findViewById(2131448897);
+          paramBundle.setTextColor(this.a.e.getResources().getColor(2131168043));
+          paramBundle.setBackgroundDrawable(this.a.e.getResources().getDrawable(2130839499));
           return;
         }
-        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707340), 1).a();
+        QQToast.makeText(this.a.e, 1, HardCodeUtil.a(2131905163), 1).show();
         return;
       }
       catch (Exception paramBundle)
       {
-        QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707344), 1).a();
+        QQToast.makeText(this.a.e, 1, HardCodeUtil.a(2131905166), 1).show();
         if (!QLog.isColorLevel()) {
           break label645;
         }
         QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
       }
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707346), 1).a();
+      QQToast.makeText(this.a.e, 1, HardCodeUtil.a(2131905168), 1).show();
       return;
       label645:
       return;
@@ -129,7 +129,7 @@ class NearbyProfileDisplayTribePanel$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.18
  * JD-Core Version:    0.7.0.1
  */

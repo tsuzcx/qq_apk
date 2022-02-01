@@ -11,7 +11,7 @@ class AdvertisementVideoPreloadManager$PreloadCallback
   
   public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    synchronized (AdvertisementVideoPreloadManager.a(this.a))
+    synchronized (AdvertisementVideoPreloadManager.e(this.a))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPreLoadFailed vid:");
@@ -20,22 +20,22 @@ class AdvertisementVideoPreloadManager$PreloadCallback
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", callbackMsg:");
       localStringBuilder.append(paramString2);
-      AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
-      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+      AdvertisementVideoPreloadManager.f(localStringBuilder.toString());
+      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.f(this.a));
       return;
     }
   }
   
   public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    synchronized (AdvertisementVideoPreloadManager.a(this.a))
+    synchronized (AdvertisementVideoPreloadManager.e(this.a))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPreLoadSucess vid:");
       localStringBuilder.append(paramString1);
       localStringBuilder.append(", detail:");
       localStringBuilder.append(paramString2);
-      AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
+      AdvertisementVideoPreloadManager.f(localStringBuilder.toString());
       try
       {
         paramString2 = new JSONObject(paramString2);
@@ -43,11 +43,11 @@ class AdvertisementVideoPreloadManager$PreloadCallback
         long l2 = paramString2.optLong("offset");
         if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
         {
-          paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
+          paramString2 = new File(AdvertisementVideoPreloadManager.e(paramString1));
           if (paramString2.exists()) {
-            paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
+            paramString2.renameTo(new File(AdvertisementVideoPreloadManager.d(paramString1)));
           }
-          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.f(this.a));
         }
       }
       catch (Exception paramString1)
@@ -61,7 +61,7 @@ class AdvertisementVideoPreloadManager$PreloadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.PreloadCallback
  * JD-Core Version:    0.7.0.1
  */

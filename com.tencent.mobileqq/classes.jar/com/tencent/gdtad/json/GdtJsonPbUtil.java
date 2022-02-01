@@ -36,7 +36,7 @@ public class GdtJsonPbUtil
 {
   private static MessageMicro a(MessageMicro paramMessageMicro, JSONObject paramJSONObject)
   {
-    if ((paramMessageMicro != null) && (c(paramMessageMicro.getClass())) && (paramJSONObject != null) && (!JSONObject.NULL.equals(paramJSONObject))) {
+    if ((paramMessageMicro != null) && (d(paramMessageMicro.getClass())) && (paramJSONObject != null) && (!JSONObject.NULL.equals(paramJSONObject))) {
       try
       {
         paramMessageMicro = paramMessageMicro.getClass().newInstance();
@@ -113,13 +113,13 @@ public class GdtJsonPbUtil
   {
     if ((paramPBField != null) && (paramPBField.getClass() != PBBytesField.class) && (paramObject != null) && (!JSONObject.NULL.equals(paramObject)))
     {
-      if (a(paramPBField.getClass())) {
+      if (b(paramPBField.getClass())) {
         return a((PBPrimitiveField)PBPrimitiveField.class.cast(paramPBField), paramObject);
       }
-      if ((b(paramPBField.getClass())) && ((paramObject instanceof JSONArray))) {
+      if ((c(paramPBField.getClass())) && ((paramObject instanceof JSONArray))) {
         return a(paramPBField, (JSONArray)JSONArray.class.cast(paramObject));
       }
-      if ((c(paramPBField.getClass())) && ((paramObject instanceof JSONObject))) {
+      if ((d(paramPBField.getClass())) && ((paramObject instanceof JSONObject))) {
         return a((MessageMicro)MessageMicro.class.cast(paramPBField), (JSONObject)JSONObject.class.cast(paramObject));
       }
       GdtLog.d("GdtJsonPbUtil", "pbFromJson error");
@@ -190,7 +190,7 @@ public class GdtJsonPbUtil
         GdtLog.d("GdtJsonPbUtil", "pbRepeatFromJsonArray error");
         return null;
       }
-      if (a(paramPBField.getClass()))
+      if (b(paramPBField.getClass()))
       {
         try
         {
@@ -211,7 +211,7 @@ public class GdtJsonPbUtil
           break label327;
         }
       }
-      else if (c(paramPBField.getClass()))
+      else if (d(paramPBField.getClass()))
       {
         localObject2 = PBField.initRepeatMessage(((MessageMicro)MessageMicro.class.cast(paramPBField)).getClass());
         break label327;
@@ -247,7 +247,7 @@ public class GdtJsonPbUtil
   
   private static PBPrimitiveField a(PBPrimitiveField paramPBPrimitiveField, Object paramObject)
   {
-    if ((paramPBPrimitiveField != null) && (a(paramPBPrimitiveField.getClass())) && (paramObject != null) && (!JSONObject.NULL.equals(paramObject)))
+    if ((paramPBPrimitiveField != null) && (b(paramPBPrimitiveField.getClass())) && (paramObject != null) && (!JSONObject.NULL.equals(paramObject)))
     {
       try
       {
@@ -324,13 +324,13 @@ public class GdtJsonPbUtil
       GdtLog.d("GdtJsonPbUtil", "pbToJson error");
       return null;
     }
-    if (a(paramPBField.getClass())) {
+    if (b(paramPBField.getClass())) {
       return a((PBPrimitiveField)PBPrimitiveField.class.cast(paramPBField));
     }
-    if (b(paramPBField.getClass())) {
-      return a(paramPBField);
-    }
     if (c(paramPBField.getClass())) {
+      return b(paramPBField);
+    }
+    if (d(paramPBField.getClass())) {
       return a((MessageMicro)MessageMicro.class.cast(paramPBField));
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -383,50 +383,6 @@ public class GdtJsonPbUtil
       GdtLog.d("GdtJsonPbUtil", "getOfPB", paramObject);
     }
     return null;
-  }
-  
-  private static JSONArray a(PBField paramPBField)
-  {
-    Object localObject = null;
-    if (paramPBField != null)
-    {
-      if (!b(paramPBField.getClass())) {
-        return null;
-      }
-      paramPBField = a(paramPBField);
-      if (paramPBField == null) {
-        return null;
-      }
-      if (!(paramPBField instanceof List))
-      {
-        GdtLog.d("GdtJsonPbUtil", "pbRepeatToJson error");
-        return null;
-      }
-      paramPBField = (List)List.class.cast(paramPBField);
-      if (paramPBField == null)
-      {
-        GdtLog.d("GdtJsonPbUtil", "pbRepeatToJson error");
-        return null;
-      }
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = paramPBField.iterator();
-      for (;;)
-      {
-        localObject = localJSONArray;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = localIterator.next();
-        paramPBField = localObject;
-        if ((localObject instanceof PBField)) {
-          paramPBField = a((PBField)PBField.class.cast(localObject));
-        }
-        if ((paramPBField != null) && (!JSONObject.NULL.equals(paramPBField))) {
-          localJSONArray.put(paramPBField);
-        }
-      }
-    }
-    return localObject;
   }
   
   private static JSONObject a(MessageMicro paramMessageMicro)
@@ -531,24 +487,68 @@ public class GdtJsonPbUtil
     GdtLog.d("GdtJsonPbUtil", "setOfPB error");
   }
   
-  private static boolean a(Class paramClass)
+  private static JSONArray b(PBField paramPBField)
   {
-    return (paramClass == PBBoolField.class) || (paramClass == PBDoubleField.class) || (paramClass == PBEnumField.class) || (paramClass == PBFixed32Field.class) || (paramClass == PBFixed64Field.class) || (paramClass == PBFloatField.class) || (paramClass == PBInt32Field.class) || (paramClass == PBInt64Field.class) || (paramClass == PBSFixed32Field.class) || (paramClass == PBSFixed64Field.class) || (paramClass == PBSInt32Field.class) || (paramClass == PBSInt64Field.class) || (paramClass == PBStringField.class) || (paramClass == PBUInt32Field.class) || (paramClass == PBUInt64Field.class);
+    Object localObject = null;
+    if (paramPBField != null)
+    {
+      if (!c(paramPBField.getClass())) {
+        return null;
+      }
+      paramPBField = a(paramPBField);
+      if (paramPBField == null) {
+        return null;
+      }
+      if (!(paramPBField instanceof List))
+      {
+        GdtLog.d("GdtJsonPbUtil", "pbRepeatToJson error");
+        return null;
+      }
+      paramPBField = (List)List.class.cast(paramPBField);
+      if (paramPBField == null)
+      {
+        GdtLog.d("GdtJsonPbUtil", "pbRepeatToJson error");
+        return null;
+      }
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = paramPBField.iterator();
+      for (;;)
+      {
+        localObject = localJSONArray;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = localIterator.next();
+        paramPBField = localObject;
+        if ((localObject instanceof PBField)) {
+          paramPBField = a((PBField)PBField.class.cast(localObject));
+        }
+        if ((paramPBField != null) && (!JSONObject.NULL.equals(paramPBField))) {
+          localJSONArray.put(paramPBField);
+        }
+      }
+    }
+    return localObject;
   }
   
   private static boolean b(Class paramClass)
   {
-    return (paramClass == PBRepeatField.class) || (paramClass == PBRepeatMessageField.class);
+    return (paramClass == PBBoolField.class) || (paramClass == PBDoubleField.class) || (paramClass == PBEnumField.class) || (paramClass == PBFixed32Field.class) || (paramClass == PBFixed64Field.class) || (paramClass == PBFloatField.class) || (paramClass == PBInt32Field.class) || (paramClass == PBInt64Field.class) || (paramClass == PBSFixed32Field.class) || (paramClass == PBSFixed64Field.class) || (paramClass == PBSInt32Field.class) || (paramClass == PBSInt64Field.class) || (paramClass == PBStringField.class) || (paramClass == PBUInt32Field.class) || (paramClass == PBUInt64Field.class);
   }
   
   private static boolean c(Class paramClass)
   {
-    return (paramClass != null) && (paramClass.getSuperclass() == MessageMicro.class) && (!b(paramClass));
+    return (paramClass == PBRepeatField.class) || (paramClass == PBRepeatMessageField.class);
+  }
+  
+  private static boolean d(Class paramClass)
+  {
+    return (paramClass != null) && (paramClass.getSuperclass() == MessageMicro.class) && (!c(paramClass));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.json.GdtJsonPbUtil
  * JD-Core Version:    0.7.0.1
  */

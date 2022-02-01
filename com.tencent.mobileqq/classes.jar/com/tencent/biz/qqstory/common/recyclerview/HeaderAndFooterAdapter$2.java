@@ -10,16 +10,16 @@ class HeaderAndFooterAdapter$2
   
   public boolean onLongClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition();
+    int i = this.a.getPosition();
     if (i >= 0) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.b(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, i);
+      this.b.e.b(this.a.itemView, i);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter.2
  * JD-Core Version:    0.7.0.1
  */

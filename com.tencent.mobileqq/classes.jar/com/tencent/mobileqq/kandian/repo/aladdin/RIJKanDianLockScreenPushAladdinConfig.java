@@ -14,7 +14,7 @@ public class RIJKanDianLockScreenPushAladdinConfig
   
   public static String a(Context paramContext)
   {
-    return Aladdin.getConfig(264).getString("push_title", paramContext.getResources().getString(2131717943));
+    return Aladdin.getConfig(264).getString("push_title", paramContext.getResources().getString(2131915418));
   }
   
   public static int b()
@@ -24,7 +24,7 @@ public class RIJKanDianLockScreenPushAladdinConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.RIJKanDianLockScreenPushAladdinConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.avgame.ui.AVGamePKPosterView android:id="@id/mhz" android:layout_width="750.0px" android:layout_height="1334.0px" />
+    <RelativeLayout android:id="@id/mi8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:id="@id/mi5" android:background="#cc1d1e20" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_alignParentBottom="true">
+            <Button android:textSize="@dimen/ays" android:textColor="@color/al3" android:id="@id/mj4" android:background="@drawable/3w" android:layout_width="168.0dip" android:layout_height="45.0dip" android:layout_marginRight="3.5dip" android:text="@string/wh7" />
+            <Button android:textSize="@dimen/ays" android:textColor="@color/al3" android:id="@id/mix" android:background="@drawable/3u" android:layout_width="168.0dip" android:layout_height="45.0dip" android:layout_marginLeft="3.5dip" android:text="@string/wh4" />
+        </LinearLayout>
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mi5">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/mj5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip" android:scaleType="fitEnd" app:useApngImage="true" />
+                <android.support.v7.widget.RecyclerView android:id="@id/mj0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_below="@id/miv" />
+                <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/miv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:layout_below="@id/mie">
+                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/miq" android:background="@drawable/3x" android:paddingTop="20.0dip" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+                        <TextView android:textSize="20.0sp" android:textColor="@color/al3" android:id="@id/mir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wh3" />
+                        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/mis" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                            <com.tencent.avgame.ui.AVGameSplitNumberView android:id="@id/mj2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                            <TextView android:textSize="20.0sp" android:textColor="@color/al3" android:layout_gravity="bottom" android:id="@id/miz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" />
+                        </LinearLayout>
+                        <TextView android:textSize="20.0sp" android:textColor="@color/al3" android:id="@id/miu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wh2" />
+                        <TextView android:textSize="16.0sp" android:textColor="#ff40a0ff" android:id="@id/mit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wh5" />
+                    </LinearLayout>
+                    <ImageView android:id="@id/miw" android:layout_width="172.0dip" android:layout_height="40.0dip" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <RelativeLayout android:orientation="vertical" android:id="@id/mie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="86.0dip">
+                    <ImageView android:id="@id/mib" android:layout_width="89.0dip" android:layout_height="89.0dip" android:layout_marginTop="70.0dip" android:layout_centerHorizontal="true" />
+                    <ImageView android:id="@id/mia" android:layout_width="375.0dip" android:layout_height="216.0dip" android:layout_marginTop="34.0dip" android:layout_centerHorizontal="true" />
+                    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/mif" android:layout_width="225.0dip" android:layout_height="220.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" app:useApngImage="true" />
+                    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/mic" android:visibility="gone" android:layout_width="225.0dip" android:layout_height="220.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" app:useApngImage="true" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/mij" android:layout_width="84.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:singleLine="true" android:layout_below="@id/mib" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+        <RelativeLayout android:id="@id/mk3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <com.tencent.mobileqq.widget.AutoBgImageView android:id="@id/mi7" android:background="@drawable/3d" android:padding="6.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/i84" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/wbn" />
+            <com.tencent.mobileqq.widget.AutoBgImageView android:id="@id/mi6" android:background="@drawable/3d" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/i83" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wbk" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

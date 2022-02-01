@@ -13,7 +13,7 @@ class StoryHomeHorizontalListView$1
     if (StoryHomeHorizontalListView.a(this.a) != null) {
       StoryHomeHorizontalListView.a(this.a).onItemScrollNonVisible(paramInt, paramBoolean);
     }
-    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.c(this.a)));
     this.a.a();
   }
 }

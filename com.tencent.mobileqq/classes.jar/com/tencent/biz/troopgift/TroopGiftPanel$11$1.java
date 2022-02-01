@@ -9,28 +9,28 @@ class TroopGiftPanel$11$1
   
   public void run()
   {
-    TextView localTextView = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$11.a.b;
+    TextView localTextView = this.c.b.s;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("");
     localTextView.setText(localStringBuilder.toString());
     if (this.b > 0)
     {
-      localTextView = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$11.a.c;
+      localTextView = this.c.b.t;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("+");
       localStringBuilder.append(this.b);
       localTextView.setText(localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$11.a.c.setVisibility(0);
+      this.c.b.t.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$11.a.c.setText("");
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$11.a.c.setVisibility(8);
+    this.c.b.t.setText("");
+    this.c.b.t.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.11.1
  * JD-Core Version:    0.7.0.1
  */

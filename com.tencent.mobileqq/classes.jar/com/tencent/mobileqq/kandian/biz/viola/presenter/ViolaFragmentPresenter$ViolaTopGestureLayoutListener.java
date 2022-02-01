@@ -11,11 +11,11 @@ class ViolaFragmentPresenter$ViolaTopGestureLayoutListener
   
   private BridgeModule a()
   {
-    ViolaBaseView localViolaBaseView = this.a.a();
+    ViolaBaseView localViolaBaseView = this.a.n();
     if (localViolaBaseView == null) {
       return null;
     }
-    return (BridgeModule)localViolaBaseView.a(BridgeModule.MODULE_NAME);
+    return (BridgeModule)localViolaBaseView.b(BridgeModule.MODULE_NAME);
   }
   
   public void flingLToR()
@@ -24,14 +24,14 @@ class ViolaFragmentPresenter$ViolaTopGestureLayoutListener
     if ((localBridgeModule != null) && (localBridgeModule.onFlingLToR())) {
       return;
     }
-    this.a.i();
+    this.a.o();
   }
   
   public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.ViolaTopGestureLayoutListener
  * JD-Core Version:    0.7.0.1
  */

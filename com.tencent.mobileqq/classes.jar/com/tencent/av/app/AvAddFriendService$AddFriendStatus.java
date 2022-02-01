@@ -2,13 +2,10 @@ package com.tencent.av.app;
 
 class AvAddFriendService$AddFriendStatus
 {
-  public int a;
+  public int a = 0;
   public int b = 0;
   
-  public AvAddFriendService$AddFriendStatus(AvAddFriendService paramAvAddFriendService)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public AvAddFriendService$AddFriendStatus(AvAddFriendService paramAvAddFriendService) {}
 }
 
 

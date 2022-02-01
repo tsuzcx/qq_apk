@@ -65,7 +65,7 @@ class ILaunchManager$Stub$Proxy
     }
   }
   
-  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo)
+  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -76,6 +76,15 @@ class ILaunchManager$Stub$Proxy
       {
         localParcel1.writeInt(1);
         paramMiniAppInfo.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      if (paramResultReceiver != null)
+      {
+        localParcel1.writeInt(1);
+        paramResultReceiver.writeToParcel(localParcel1, 0);
       }
       else
       {
@@ -256,7 +265,7 @@ class ILaunchManager$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

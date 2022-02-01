@@ -12,8 +12,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -107,7 +107,7 @@ public class k
             localStringBuilder.append(",sStartupBroadcast = ");
             localStringBuilder.append(L);
             QLog.i(str, 1, localStringBuilder.toString());
-            com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "update_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), "", "", "", "");
+            com.tencent.mobileqq.msf.core.d.a.a(MsfCore.sCore, "update_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), "", "", "", "");
           }
           R = true;
           return;
@@ -364,7 +364,7 @@ public class k
         ((HashMap)localObject1).put("autoMode", String.valueOf(i1));
         MsfCore.sCore.statReporter.a("EvtMSFServiceBoot", N, l1, 0L, (Map)localObject1, false, false);
         if ((MsfCore.sCore != null) && (N) && (MsfService.core.sender.b.l().c())) {
-          com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "self_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), String.valueOf(i1), "", "", "");
+          com.tencent.mobileqq.msf.core.d.a.a(MsfCore.sCore, "self_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), String.valueOf(i1), "", "", "");
         }
       }
       if (Math.random() < 0.003000000026077032D) {
@@ -497,7 +497,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.k
  * JD-Core Version:    0.7.0.1
  */

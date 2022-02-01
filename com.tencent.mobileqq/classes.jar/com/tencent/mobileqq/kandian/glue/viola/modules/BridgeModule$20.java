@@ -11,12 +11,12 @@ class BridgeModule$20
   
   public void a(UgcVideo paramUgcVideo)
   {
-    RIJUgcUtils.a(paramUgcVideo);
+    RIJUgcUtils.c(paramUgcVideo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.20
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class MiniAppProxyImpl$9$1
   
   public void run()
   {
-    this.a.a.a();
+    this.a.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.9.1
  * JD-Core Version:    0.7.0.1
  */

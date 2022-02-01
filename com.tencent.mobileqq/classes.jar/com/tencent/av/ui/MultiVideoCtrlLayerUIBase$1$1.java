@@ -10,12 +10,12 @@ class MultiVideoCtrlLayerUIBase$1$1
   
   public void run()
   {
-    if ((this.a.a.a() != null) && (this.a.a.a().size() != 0))
+    if ((this.a.b.I() != null) && (this.a.b.I().size() != 0))
     {
-      this.a.a.b(-1017L, "InviteMemberObserver");
+      this.a.b.b(-1017L, "InviteMemberObserver");
       return;
     }
-    QLog.d(this.a.a.d, 1, "InviteMemberObserver null");
+    QLog.d(this.a.b.X, 1, "InviteMemberObserver null");
   }
 }
 

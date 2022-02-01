@@ -19,74 +19,74 @@ class VideoPlayerView$17
   
   public void run()
   {
-    VSReporter.a("subscribe_account_video_play", VSReporter.a(VSReporter.a(0L, 0L, VideoPlayerView.a(this.this$0), 0L)));
-    VSReporter.a("subscribe_account_video_play_first_buffer", VSReporter.a(VSReporter.a(0L, System.currentTimeMillis() - VideoPlayerView.a(this.this$0), VideoPlayerView.a(this.this$0), 0L)));
+    VSReporter.a("subscribe_account_video_play", VSReporter.a(VSReporter.a(0L, 0L, VideoPlayerView.u(this.this$0), 0L)));
+    VSReporter.a("subscribe_account_video_play_first_buffer", VSReporter.a(VSReporter.a(0L, System.currentTimeMillis() - VideoPlayerView.v(this.this$0), VideoPlayerView.u(this.this$0), 0L)));
     VideoPlayerView.a(this.this$0, 10);
     VideoPlayerView.a(this.this$0, false);
-    VideoPlayerView.h(this.this$0);
-    VideoPlayerView.i(this.this$0);
+    VideoPlayerView.w(this.this$0);
+    VideoPlayerView.x(this.this$0);
     Object localObject;
     int i;
-    if (VideoPlayerView.d(this.this$0) != null)
+    if (VideoPlayerView.y(this.this$0) != null)
     {
-      localObject = (FrameLayout.LayoutParams)VideoPlayerView.d(this.this$0).getLayoutParams();
-      if (VideoPlayerView.c(this.this$0)) {
+      localObject = (FrameLayout.LayoutParams)VideoPlayerView.y(this.this$0).getLayoutParams();
+      if (VideoPlayerView.p(this.this$0)) {
         i = 21;
       } else {
         i = 85;
       }
       ((FrameLayout.LayoutParams)localObject).gravity = i;
       int j = ImmersiveUtils.dpToPx(25.0F);
-      if (VideoPlayerView.c(this.this$0)) {
+      if (VideoPlayerView.p(this.this$0)) {
         i = 0;
       } else {
         i = ImmersiveUtils.dpToPx(82.0F);
       }
       ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, j, i);
-      VideoPlayerView.d(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      VideoPlayerView.y(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if ((VideoPlayerView.a(this.this$0) != null) && (this.this$0.d()) && (this.this$0.a() != null))
+    if ((VideoPlayerView.m(this.this$0) != null) && (this.this$0.q()) && (this.this$0.getPlayerVideoView() != null))
     {
-      if (!VideoPlayerView.f(this.this$0)) {
-        VideoPlayerView.a(this.this$0).onOrientationChange(VideoPlayerView.c(this.this$0));
+      if (!VideoPlayerView.z(this.this$0)) {
+        VideoPlayerView.m(this.this$0).onOrientationChange(VideoPlayerView.p(this.this$0));
       }
-      VideoPlayerView.a(this.this$0).onVideoSize(this.this$0.a().getRenderViewWidth(), this.this$0.a().getRenderViewHeight());
+      VideoPlayerView.m(this.this$0).onVideoSize(this.this$0.getPlayerVideoView().getRenderViewWidth(), this.this$0.getPlayerVideoView().getRenderViewHeight());
     }
-    if (VideoPlayerView.e(this.this$0) != null)
+    if (VideoPlayerView.A(this.this$0) != null)
     {
-      VideoPlayerView.e(this.this$0).setVisibility(0);
-      VideoPlayerView.b(this.this$0, false);
+      VideoPlayerView.A(this.this$0).setVisibility(0);
+      VideoPlayerView.f(this.this$0, false);
     }
-    if (VideoPlayerView.f(this.this$0) != null) {
-      VideoPlayerView.f(this.this$0).setVisibility(0);
+    if (VideoPlayerView.B(this.this$0) != null) {
+      VideoPlayerView.B(this.this$0).setVisibility(0);
     }
     long l = this.a.getDurationMs() / 1000L;
-    if (this.this$0.a != null)
+    if (this.this$0.k != null)
     {
-      localObject = this.this$0.a;
+      localObject = this.this$0.k;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("/");
       i = (int)l;
       localStringBuilder.append(String.format("%02d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) }));
       ((TextView)localObject).setText(localStringBuilder.toString());
     }
-    if (((VideoPlayerView.g(this.this$0)) && (NetworkUtils.isWifiConnected(this.this$0.getContext()))) || (VideoPlayerView.i()))
+    if (((VideoPlayerView.C(this.this$0)) && (NetworkUtils.isWifiConnected(this.this$0.getContext()))) || (VideoPlayerView.z()))
     {
-      if (!VideoPlayerView.h(this.this$0))
+      if (!VideoPlayerView.D(this.this$0))
       {
-        this.this$0.f();
+        this.this$0.e();
         VideoPlayerView.a(this.this$0, System.currentTimeMillis());
       }
     }
-    else if (VideoPlayerView.i(this.this$0)) {
-      VideoPlayerView.a(this.this$0).setVisibility(0);
-    } else if (VideoPlayerView.e(this.this$0) != null) {
-      VideoPlayerView.e(this.this$0).setVisibility(0);
+    else if (VideoPlayerView.E(this.this$0)) {
+      VideoPlayerView.b(this.this$0).setVisibility(0);
+    } else if (VideoPlayerView.A(this.this$0) != null) {
+      VideoPlayerView.A(this.this$0).setVisibility(0);
     }
-    if (VideoPlayerView.a(this.this$0) != null) {
-      VideoPlayerView.b(this.this$0).a(this.a);
+    if (VideoPlayerView.F(this.this$0) != null) {
+      VideoPlayerView.G(this.this$0).a(this.a);
     }
-    VideoPlayerView.j(this.this$0);
+    VideoPlayerView.H(this.this$0);
   }
 }
 

@@ -31,8 +31,8 @@ public class StickyNotePublishUtils
     while (localIterator.hasNext())
     {
       BackgroundSelectBean localBackgroundSelectBean = (BackgroundSelectBean)localIterator.next();
-      if (paramInt == localBackgroundSelectBean.jdField_a_of_type_Long) {
-        return localBackgroundSelectBean.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+      if (paramInt == localBackgroundSelectBean.a) {
+        return localBackgroundSelectBean.c.getConstantState().newDrawable();
       }
     }
     return null;
@@ -140,7 +140,7 @@ public class StickyNotePublishUtils
     {
       paramEditText = a(paramEditText);
       if (!TextUtils.isEmpty(paramEditText)) {
-        return QzoneEmotionUtils.splash2Emo(paramEditText.replaceAll(HardCodeUtil.a(2131705865), HardCodeUtil.a(2131705867)).replaceAll(HardCodeUtil.a(2131705864), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131717181), "/chigua"));
+        return QzoneEmotionUtils.splash2Emo(paramEditText.replaceAll(HardCodeUtil.a(2131903750), HardCodeUtil.a(2131903752)).replaceAll(HardCodeUtil.a(2131903749), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131914654), "/chigua"));
       }
     }
     return "";
@@ -148,7 +148,7 @@ public class StickyNotePublishUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishUtils
  * JD-Core Version:    0.7.0.1
  */

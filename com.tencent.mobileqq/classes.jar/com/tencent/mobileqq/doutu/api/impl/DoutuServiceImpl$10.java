@@ -29,14 +29,14 @@ class DoutuServiceImpl$10
       {
         paramNetResp = new StringBuilder();
         paramNetResp.append("checkAndDownloadRes : [onDone] download finished ");
-        paramNetResp.append(this.jdField_a_of_type_JavaLangString);
+        paramNetResp.append(this.a);
         QLog.d("DoutuServiceImpl", 2, paramNetResp.toString());
       }
-      paramNetResp = DoutuServiceImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqDoutuApiImplDoutuServiceImpl, this.b);
+      paramNetResp = DoutuServiceImpl.access$500(this.d, this.b);
       if (this.c.equalsIgnoreCase(paramNetResp))
       {
-        DoutuServiceImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqDoutuApiImplDoutuServiceImpl, this.b);
-        paramNetResp = this.jdField_a_of_type_ComTencentMobileqqDoutuApiImplDoutuServiceImpl;
+        DoutuServiceImpl.access$600(this.d, this.b);
+        paramNetResp = this.d;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(IDoutuUtils.DOUTU_ANIMA_RES_PATH);
         localStringBuilder.append("doutuResInfo");
@@ -84,7 +84,7 @@ class DoutuServiceImpl$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.api.impl.DoutuServiceImpl.10
  * JD-Core Version:    0.7.0.1
  */

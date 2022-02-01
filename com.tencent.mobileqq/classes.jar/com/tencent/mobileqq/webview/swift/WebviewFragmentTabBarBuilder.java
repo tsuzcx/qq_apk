@@ -62,12 +62,12 @@ public class WebviewFragmentTabBarBuilder
       localObject3 = new SwiftFragmentTabBar(paramContext);
     }
     ((IWebViewTabBar)localObject3).a(paramIntent, paramList, paramOnTabChangeListener);
-    return ((IWebViewTabBar)localObject3).a();
+    return ((IWebViewTabBar)localObject3).getTabBarView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebviewFragmentTabBarBuilder
  * JD-Core Version:    0.7.0.1
  */

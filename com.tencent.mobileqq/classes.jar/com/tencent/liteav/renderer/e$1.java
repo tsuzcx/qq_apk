@@ -3,13 +3,13 @@ package com.tencent.liteav.renderer;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.view.TextureView;
-import com.tencent.liteav.basic.c.o;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.p;
 
 class e$1
   implements Runnable
 {
-  e$1(e parame, Matrix paramMatrix, Bitmap paramBitmap, TextureView paramTextureView, o paramo) {}
+  e$1(e parame, Matrix paramMatrix, Bitmap paramBitmap, TextureView paramTextureView, p paramp) {}
   
   public void run()
   {
@@ -33,15 +33,15 @@ class e$1
       localStringBuilder.append(localException);
       TXCLog.w("TXCVideoRender", localStringBuilder.toString());
     }
-    o localo = this.d;
-    if (localo != null) {
-      localo.onTakePhotoComplete(localObject);
+    p localp = this.d;
+    if (localp != null) {
+      localp.onTakePhotoComplete(localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.e.1
  * JD-Core Version:    0.7.0.1
  */

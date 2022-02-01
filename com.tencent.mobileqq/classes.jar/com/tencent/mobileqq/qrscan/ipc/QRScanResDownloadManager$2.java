@@ -7,15 +7,15 @@ final class QRScanResDownloadManager$2
   
   public void run()
   {
-    QRScanResDownloadManager.DownloadCallback localDownloadCallback = this.jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResDownloadManager$DownloadCallback;
+    QRScanResDownloadManager.DownloadCallback localDownloadCallback = this.a;
     if (localDownloadCallback != null) {
-      localDownloadCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      localDownloadCallback.a(this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.QRScanResDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

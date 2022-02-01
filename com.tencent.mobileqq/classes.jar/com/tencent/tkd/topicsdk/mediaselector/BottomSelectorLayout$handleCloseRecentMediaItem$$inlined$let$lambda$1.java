@@ -16,8 +16,8 @@ public final class BottomSelectorLayout$handleCloseRecentMediaItem$$inlined$let$
   
   public void onAnimationEnd(@Nullable Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorBottomSelectorLayout.setRecentMediaSlidingLayout((RecentMediaListView)null);
-    ((FrameLayout)this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorBottomSelectorLayout.a(R.id.ak)).removeView((View)this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorRecentMediaListView);
+    this.b.setRecentMediaSlidingLayout((RecentMediaListView)null);
+    ((FrameLayout)this.b.a(R.id.O)).removeView((View)this.a);
   }
   
   public void onAnimationRepeat(@Nullable Animation paramAnimation) {}
@@ -26,7 +26,7 @@ public final class BottomSelectorLayout$handleCloseRecentMediaItem$$inlined$let$
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.handleCloseRecentMediaItem..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

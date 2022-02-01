@@ -11,26 +11,26 @@ class QStorage$2
   public T a(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: new 32	java/io/ObjectInputStream
+    //   0: new 34	java/io/ObjectInputStream
     //   3: dup
-    //   4: new 34	java/io/BufferedInputStream
+    //   4: new 36	java/io/BufferedInputStream
     //   7: dup
-    //   8: new 36	java/io/FileInputStream
+    //   8: new 38	java/io/FileInputStream
     //   11: dup
     //   12: aload_0
-    //   13: getfield 17	com/tencent/mobileqq/config/QStorage$2:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   16: invokespecial 39	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   19: invokespecial 42	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   22: invokespecial 43	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   13: getfield 19	com/tencent/mobileqq/config/QStorage$2:a	Ljava/io/File;
+    //   16: invokespecial 41	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 44	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 45	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   25: astore_2
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokevirtual 47	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   32: checkcast 49	java/io/Serializable
+    //   29: invokevirtual 49	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   32: checkcast 51	java/io/Serializable
     //   35: astore_3
     //   36: aload_2
-    //   37: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   37: invokevirtual 54	java/io/ObjectInputStream:close	()V
     //   40: aload_3
     //   41: areturn
     //   42: astore_3
@@ -48,35 +48,35 @@ class QStorage$2
     //   62: astore_2
     //   63: aload_2
     //   64: astore_1
-    //   65: new 54	java/lang/StringBuilder
+    //   65: new 56	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   69: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   72: astore 4
     //   74: aload_2
     //   75: astore_1
     //   76: aload 4
-    //   78: ldc 57
-    //   80: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: ldc 59
+    //   80: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: pop
     //   84: aload_2
     //   85: astore_1
     //   86: aload 4
     //   88: aload_0
-    //   89: getfield 19	com/tencent/mobileqq/config/QStorage$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   92: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: getfield 21	com/tencent/mobileqq/config/QStorage$2:b	Ljava/lang/String;
+    //   92: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: pop
     //   96: aload_2
     //   97: astore_1
-    //   98: ldc 63
+    //   98: ldc 65
     //   100: iconst_1
     //   101: aload 4
-    //   103: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   106: aload_3
-    //   107: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   107: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   110: aload_2
     //   111: ifnull +120 -> 231
     //   114: aload_2
-    //   115: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   115: invokevirtual 54	java/io/ObjectInputStream:close	()V
     //   118: aconst_null
     //   119: areturn
     //   120: astore_3
@@ -84,61 +84,61 @@ class QStorage$2
     //   122: astore_2
     //   123: aload_2
     //   124: astore_1
-    //   125: new 54	java/lang/StringBuilder
+    //   125: new 56	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   132: astore 4
     //   134: aload_2
     //   135: astore_1
     //   136: aload 4
-    //   138: ldc 57
-    //   140: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc 59
+    //   140: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: pop
     //   144: aload_2
     //   145: astore_1
     //   146: aload 4
     //   148: aload_0
-    //   149: getfield 19	com/tencent/mobileqq/config/QStorage$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   152: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: getfield 21	com/tencent/mobileqq/config/QStorage$2:b	Ljava/lang/String;
+    //   152: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload_2
     //   157: astore_1
-    //   158: ldc 63
+    //   158: ldc 65
     //   160: iconst_1
     //   161: aload 4
-    //   163: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   166: aload_3
-    //   167: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   167: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   170: aload_2
     //   171: ifnull +60 -> 231
     //   174: goto -60 -> 114
     //   177: aload_2
     //   178: astore_1
-    //   179: new 54	java/lang/StringBuilder
+    //   179: new 56	java/lang/StringBuilder
     //   182: dup
-    //   183: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   183: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   186: astore 4
     //   188: aload_2
     //   189: astore_1
     //   190: aload 4
-    //   192: ldc 57
-    //   194: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: ldc 59
+    //   194: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: pop
     //   198: aload_2
     //   199: astore_1
     //   200: aload 4
     //   202: aload_0
-    //   203: getfield 19	com/tencent/mobileqq/config/QStorage$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   206: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: getfield 21	com/tencent/mobileqq/config/QStorage$2:b	Ljava/lang/String;
+    //   206: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   209: pop
     //   210: aload_2
     //   211: astore_1
-    //   212: ldc 63
+    //   212: ldc 65
     //   214: iconst_1
     //   215: aload 4
-    //   217: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   220: aload_3
-    //   221: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   221: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   224: aload_2
     //   225: ifnull +6 -> 231
     //   228: goto -114 -> 114
@@ -148,7 +148,7 @@ class QStorage$2
     //   234: aload_1
     //   235: ifnull +7 -> 242
     //   238: aload_1
-    //   239: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   239: invokevirtual 54	java/io/ObjectInputStream:close	()V
     //   242: goto +5 -> 247
     //   245: aload_2
     //   246: athrow
@@ -206,7 +206,7 @@ class QStorage$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.QStorage.2
  * JD-Core Version:    0.7.0.1
  */

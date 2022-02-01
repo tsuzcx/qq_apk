@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/htc" android:paddingLeft="@dimen/apm" android:paddingTop="@dimen/apn" android:clipChildren="false" android:layout_width="86.0dip" android:layout_height="86.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/htb" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ihi" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/fp4" android:padding="4.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ihn" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/hta" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/ht_" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/asf" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/hth" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/iht" android:layout_centerInParent="true" android:contentDescription="@string/glo" />
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:id="@id/htg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/htd" android:background="@drawable/ihs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.5dip" android:layout_marginBottom="4.5dip" android:text="@string/s_w" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/ht8" android:background="@drawable/qcircle_skin_publish_take_photo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ee2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/ht7" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/iq6" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a8i" android:id="@id/ht9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/s_i" />
+        </LinearLayout>
+        <View android:id="@id/htf" android:background="@drawable/ihq" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/hte" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/pqo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:background="@drawable/f8f" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="编辑封面" />
+    </RelativeLayout>
+</RelativeLayout>

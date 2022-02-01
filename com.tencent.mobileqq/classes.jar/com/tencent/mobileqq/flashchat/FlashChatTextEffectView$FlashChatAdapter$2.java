@@ -13,22 +13,22 @@ class FlashChatTextEffectView$FlashChatAdapter$2
   
   public void b()
   {
-    FlashChatTextEffectView.a(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView$MyViewHolder);
+    FlashChatTextEffectView.a(this.a);
     Message localMessage = Message.obtain();
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView$MyViewHolder;
-    int i = this.jdField_a_of_type_Int;
+    localMessage.obj = this.a;
+    int i = this.b;
     localMessage.what = i;
-    if (i < FlashChatTextEffectView.a().length)
+    if (i < FlashChatTextEffectView.j().length)
     {
-      FlashChatTextEffectView.FlashChatAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView$FlashChatAdapter).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
+      FlashChatTextEffectView.FlashChatAdapter.a(this.c).sendMessageDelayed(localMessage, FlashChatTextEffectView.j()[this.b]);
       return;
     }
-    FlashChatTextEffectView.FlashChatAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView$FlashChatAdapter).sendMessageDelayed(localMessage, 7000L);
+    FlashChatTextEffectView.FlashChatAdapter.a(this.c).sendMessageDelayed(localMessage, 7000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.FlashChatAdapter.2
  * JD-Core Version:    0.7.0.1
  */

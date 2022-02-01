@@ -10,22 +10,16 @@ import java.util.ArrayList;
 public class EditDialogStrokeStrategy
   implements StrokeStrategy
 {
-  public static final int[] a;
-  public static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#FFFFFF", "#DF382C", "#F09A37", "#83D754", "#3478F6", "#7ED5F8", "#F7E368", "#E8519C" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130847007, 2130847005, 2130847008, 2130847006, 2130847011, 2130847010, 2130847014, 2130847009, 2130847012 };
-  }
+  public static final String[] a = { "#000000", "#FFFFFF", "#DF382C", "#F09A37", "#83D754", "#3478F6", "#7ED5F8", "#F7E368", "#E8519C" };
+  public static final int[] b = { 2130848559, 2130848557, 2130848560, 2130848558, 2130848563, 2130848562, 2130848566, 2130848561, 2130848564 };
   
   public static int a(boolean paramBoolean)
   {
     String str;
     if (paramBoolean) {
-      str = jdField_a_of_type_ArrayOfJavaLangString[2];
+      str = a[2];
     } else {
-      str = jdField_a_of_type_ArrayOfJavaLangString[1];
+      str = a[1];
     }
     return Color.parseColor(str);
   }
@@ -33,16 +27,16 @@ public class EditDialogStrokeStrategy
   public void a(@NonNull ArrayList<HorizontalStroke> paramArrayList, @NonNull Context paramContext)
   {
     int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    while (i < a.length)
     {
-      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(jdField_a_of_type_ArrayOfInt[i]), 0, jdField_a_of_type_ArrayOfJavaLangString[i]));
+      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(b[i]), 0, a[i]));
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.colorbar.strategy.EditDialogStrokeStrategy
  * JD-Core Version:    0.7.0.1
  */

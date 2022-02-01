@@ -15,10 +15,10 @@ final class RemindHelper$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker;
-    if ((paramDialogInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
+    paramDialogInterface = this.a;
+    if ((paramDialogInterface != null) && (this.b != null))
     {
-      long l2 = paramDialogInterface.a() / 1000L;
+      long l2 = paramDialogInterface.getSetcetTimeInMillis() / 1000L;
       long l1 = l2;
       if (Build.MODEL.equals("Coolpad 5890"))
       {
@@ -33,18 +33,18 @@ final class RemindHelper$2
         paramDialogInterface = RemindHelper.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onDismiss Time :");
-        localStringBuilder.append(TimeHelper.a(1000L * l1));
+        localStringBuilder.append(TimeHelper.d(1000L * l1));
         QLog.d(paramDialogInterface, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
-      RemindHelper.a = true;
+      this.a.setOnTimePickerSelectListener(null);
+      this.b.a(Long.valueOf(l1));
+      RemindHelper.c = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ final class QQFileManagerUtilImpl$15
   
   public void run()
   {
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertAIOGrayTips(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, -3014, BaseApplication.getContext().getString(2131692595));
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).insertAIOGrayTips(this.a, this.b.peerUin, this.a.getCurrentAccountUin(), this.b.peerType, -3014, BaseApplication.getContext().getString(2131889618));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.15
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class QavUpdateAvatarViewHelper$1
     }
     if (paramDrawable == null)
     {
-      paramAvatarParam = QavUpdateAvatarViewHelper.a(this.a).a(paramAvatarParam.jdField_a_of_type_Int, paramAvatarParam.jdField_a_of_type_JavaLangString, paramAvatarParam.b, paramAvatarParam.jdField_a_of_type_Boolean, true);
+      paramAvatarParam = QavUpdateAvatarViewHelper.a(this.a).a(paramAvatarParam.a, paramAvatarParam.b, paramAvatarParam.c, paramAvatarParam.d, true);
       ThreadManager.a().post(new QavUpdateAvatarViewHelper.1.1(this, paramAvatarParam));
       return;
     }

@@ -24,22 +24,22 @@ class DoodleSelectModeView$1
       default: 
         paramView = localStringBuilder;
         break;
-      case 2131364071: 
+      case 2131430034: 
         paramView = DoodlePanel.PenMode.RECT;
         break;
-      case 2131364044: 
+      case 2131430002: 
         paramView = DoodlePanel.PenMode.ERASER;
         break;
-      case 2131363997: 
+      case 2131429954: 
         paramView = DoodlePanel.PenMode.FREE_DRAW;
         break;
-      case 2131363968: 
+      case 2131429924: 
         paramView = DoodlePanel.PenMode.LINE;
         break;
-      case 2131363879: 
+      case 2131429829: 
         paramView = DoodlePanel.PenMode.OVAL;
         break;
-      case 2131363857: 
+      case 2131429803: 
         paramView = DoodlePanel.PenMode.ARROW;
       }
       if (paramView != null) {
@@ -50,7 +50,7 @@ class DoodleSelectModeView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleSelectModeView.1
  * JD-Core Version:    0.7.0.1
  */

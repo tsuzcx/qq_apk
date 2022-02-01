@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-rotate android:drawable="@drawable/common_study_mode_general_switch_loading" android:pivotX="50.0%" android:pivotY="50.0%"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<vector android:height="20.0dip" android:width="20.0dip" android:viewportWidth="36.0" android:viewportHeight="36.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffffff" android:pathData="M18,14L18,14A4,4 0,0 1,22 18L22,18A4,4 0,0 1,18 22L18,22A4,4 0,0 1,14 18L14,18A4,4 0,0 1,18 14z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <path android:fillColor="#ffffffff" android:pathData="M4,14L4,14A4,4 0,0 1,8 18L8,18A4,4 0,0 1,4 22L4,22A4,4 0,0 1,0 18L0,18A4,4 0,0 1,4 14z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <path android:fillColor="#ffffffff" android:pathData="M32,14L32,14A4,4 0,0 1,36 18L36,18A4,4 0,0 1,32 22L32,22A4,4 0,0 1,28 18L28,18A4,4 0,0 1,32 14z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+</vector>

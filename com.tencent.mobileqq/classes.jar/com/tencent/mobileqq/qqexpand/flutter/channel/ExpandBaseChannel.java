@@ -10,22 +10,22 @@ public abstract class ExpandBaseChannel
   extends BaseMethodChannel
   implements MethodChannel.MethodCallHandler
 {
-  public MethodChannel.MethodCallHandler a()
-  {
-    return this;
-  }
-  
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.qflutter/expand/");
-    localStringBuilder.append(c());
+    localStringBuilder.append(g());
     return localStringBuilder.toString();
   }
   
   protected abstract void a(@NonNull MethodCall paramMethodCall, @NonNull ExpandBaseChannel.MethodChannelResultWrapper paramMethodChannelResultWrapper);
   
-  protected abstract String c();
+  public MethodChannel.MethodCallHandler c()
+  {
+    return this;
+  }
+  
+  protected abstract String g();
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
@@ -35,7 +35,7 @@ public abstract class ExpandBaseChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.ExpandBaseChannel
  * JD-Core Version:    0.7.0.1
  */

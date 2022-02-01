@@ -3,7 +3,7 @@ package com.tencent.mobileqq.profilecard.bussiness.cmshow;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.apollo.profilecard.api.IProfileCmShowComponentDelegate;
+import com.tencent.mobileqq.apollo.profilecard.api.ICmShowProfileComponent;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileComponent;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
@@ -15,7 +15,7 @@ public class ProfileCmShowComponent
   extends AbsQQProfileComponent<FrameLayout>
 {
   private static final String TAG = "ProfileCmShowComponent";
-  private IProfileCmShowComponentDelegate mProfileCmShowComponentDelegate = (IProfileCmShowComponentDelegate)QRoute.api(IProfileCmShowComponentDelegate.class);
+  private ICmShowProfileComponent mProfileCmShowComponentDelegate = (ICmShowProfileComponent)QRoute.api(ICmShowProfileComponent.class);
   
   public ProfileCmShowComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -50,10 +50,10 @@ public class ProfileCmShowComponent
       QLog.d("ProfileCmShowComponent", 2, "onDataUpdate");
     }
     boolean bool2 = super.onDataUpdate(paramProfileCardInfo);
-    IProfileCmShowComponentDelegate localIProfileCmShowComponentDelegate = this.mProfileCmShowComponentDelegate;
+    ICmShowProfileComponent localICmShowProfileComponent = this.mProfileCmShowComponentDelegate;
     boolean bool1 = bool2;
-    if (localIProfileCmShowComponentDelegate != null) {
-      bool1 = bool2 | localIProfileCmShowComponentDelegate.onDataUpdate(paramProfileCardInfo);
+    if (localICmShowProfileComponent != null) {
+      bool1 = bool2 | localICmShowProfileComponent.onDataUpdate(paramProfileCardInfo);
     }
     return bool1;
   }
@@ -64,9 +64,9 @@ public class ProfileCmShowComponent
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCmShowComponent", 2, "onDestroy");
     }
-    IProfileCmShowComponentDelegate localIProfileCmShowComponentDelegate = this.mProfileCmShowComponentDelegate;
-    if (localIProfileCmShowComponentDelegate != null) {
-      localIProfileCmShowComponentDelegate.onDestroy();
+    ICmShowProfileComponent localICmShowProfileComponent = this.mProfileCmShowComponentDelegate;
+    if (localICmShowProfileComponent != null) {
+      localICmShowProfileComponent.onDestroy();
     }
   }
   
@@ -76,9 +76,9 @@ public class ProfileCmShowComponent
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCmShowComponent", 2, "onPause");
     }
-    IProfileCmShowComponentDelegate localIProfileCmShowComponentDelegate = this.mProfileCmShowComponentDelegate;
-    if (localIProfileCmShowComponentDelegate != null) {
-      localIProfileCmShowComponentDelegate.onPause();
+    ICmShowProfileComponent localICmShowProfileComponent = this.mProfileCmShowComponentDelegate;
+    if (localICmShowProfileComponent != null) {
+      localICmShowProfileComponent.onPause();
     }
   }
   
@@ -88,9 +88,9 @@ public class ProfileCmShowComponent
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCmShowComponent", 2, "onResume");
     }
-    IProfileCmShowComponentDelegate localIProfileCmShowComponentDelegate = this.mProfileCmShowComponentDelegate;
-    if (localIProfileCmShowComponentDelegate != null) {
-      localIProfileCmShowComponentDelegate.onResume();
+    ICmShowProfileComponent localICmShowProfileComponent = this.mProfileCmShowComponentDelegate;
+    if (localICmShowProfileComponent != null) {
+      localICmShowProfileComponent.onResume();
     }
   }
   
@@ -100,9 +100,9 @@ public class ProfileCmShowComponent
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCmShowComponent", 2, "onStop");
     }
-    IProfileCmShowComponentDelegate localIProfileCmShowComponentDelegate = this.mProfileCmShowComponentDelegate;
-    if (localIProfileCmShowComponentDelegate != null) {
-      localIProfileCmShowComponentDelegate.onStop();
+    ICmShowProfileComponent localICmShowProfileComponent = this.mProfileCmShowComponentDelegate;
+    if (localICmShowProfileComponent != null) {
+      localICmShowProfileComponent.onStop();
     }
   }
   
@@ -121,14 +121,14 @@ public class ProfileCmShowComponent
     {
       localObject = this.mProfileCmShowComponentDelegate;
       if (localObject != null) {
-        ((IProfileCmShowComponentDelegate)localObject).onWindowFocusGained();
+        ((ICmShowProfileComponent)localObject).onWindowFocusGained();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.cmshow.ProfileCmShowComponent
  * JD-Core Version:    0.7.0.1
  */

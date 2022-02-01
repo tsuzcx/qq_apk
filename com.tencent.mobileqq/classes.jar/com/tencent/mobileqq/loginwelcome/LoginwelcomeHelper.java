@@ -28,17 +28,17 @@ import mqq.app.AppRuntime;
 
 public class LoginwelcomeHelper
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  private LoginUserGuideHelper.LocationListener jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener;
-  LoginWelcomeManager.ConvListener jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager$ConvListener = new LoginwelcomeHelper.1(this);
-  boolean jdField_a_of_type_Boolean = true;
-  private ViewGroup b;
+  Conversation a;
+  ViewGroup b;
+  boolean c = true;
+  LoginWelcomeManager.ConvListener d = new LoginwelcomeHelper.1(this);
+  private ViewGroup e;
+  private LoginUserGuideHelper.LocationListener f;
   
   public LoginwelcomeHelper(Conversation paramConversation, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-    this.b = paramViewGroup;
+    this.a = paramConversation;
+    this.e = paramViewGroup;
   }
   
   private void a(Context paramContext)
@@ -58,13 +58,13 @@ public class LoginwelcomeHelper
       }
       QLog.i("LoginUserGuideHelper", 2, String.format("requestLocation [%s, %s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener = new LoginUserGuideHelper.LocationListener("Login.Guide");
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener.observerOnUiThread = true;
+      this.f = new LoginUserGuideHelper.LocationListener("Login.Guide");
+      this.f.observerOnUiThread = true;
     }
     if (!bool1) {
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.f);
     }
   }
   
@@ -73,40 +73,40 @@ public class LoginwelcomeHelper
     if (QLog.isColorLevel()) {
       QLog.d("LoginWelcomeManager", 2, "realShowContactsGuideLayer");
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.c())
+    if (!this.a.z())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
       }
       return;
     }
-    Object localObject1 = this.b;
-    if ((localObject1 != null) && (((ViewGroup)localObject1).findViewById(2131365121) == null) && (paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null))
+    Object localObject1 = this.e;
+    if ((localObject1 != null) && (((ViewGroup)localObject1).findViewById(2131431268) == null) && (paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1) && (this.a.aF != null))
     {
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.b.getContext()).inflate(2131558940, null));
-        localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364726);
-        ((ImageView)localObject1).setContentDescription(HardCodeUtil.a(2131706427));
+        this.b = ((ViewGroup)LayoutInflater.from(this.e.getContext()).inflate(2131624571, null));
+        localObject1 = (ImageView)this.b.findViewById(2131430833);
+        ((ImageView)localObject1).setContentDescription(HardCodeUtil.a(2131904286));
         ((ImageView)localObject1).setOnClickListener(new LoginwelcomeHelper.3(this));
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-        Object localObject2 = (Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366848);
-        ((Button)localObject2).setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getString(2131698716));
+        localObject1 = this.a.P();
+        Object localObject2 = (Button)this.b.findViewById(2131433174);
+        ((Button)localObject2).setContentDescription(this.a.P().getString(2131896674));
         ((Button)localObject2).setOnClickListener(new LoginwelcomeHelper.4(this, (Activity)localObject1));
-        localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365785);
-        ((TextView)localObject2).setContentDescription(((Activity)localObject1).getString(2131698715));
+        localObject2 = (TextView)this.b.findViewById(2131432042);
+        ((TextView)localObject2).setContentDescription(((Activity)localObject1).getString(2131896673));
         ((TextView)localObject2).setOnClickListener(new LoginwelcomeHelper.5(this, (Activity)localObject1));
-        localObject1 = (ThemeImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365170);
+        localObject1 = (ThemeImageView)this.b.findViewById(2131431323);
         ((ThemeImageView)localObject1).setMaskShape(ThemeImageWrapper.MODE_SQURE);
         ((ThemeImageView)localObject1).setImageDrawable(paramURLDrawable);
       }
-      this.b.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
-      this.b.addView(this.jdField_a_of_type_AndroidViewViewGroup);
-      LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a());
-      paramURLDrawable = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a());
-      paramURLDrawable.b = false;
-      paramURLDrawable.jdField_a_of_type_Boolean = true;
-      a(this.b.getContext());
+      this.e.removeView(this.b);
+      this.e.addView(this.b);
+      LoginWelcomeManager.c(this.a.s());
+      paramURLDrawable = LoginWelcomeManager.a(this.a.s());
+      paramURLDrawable.i = false;
+      paramURLDrawable.b = true;
+      a(this.e.getContext());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -116,20 +116,20 @@ public class LoginwelcomeHelper
   
   private void a(LoginWelcomeManager.CommonGuideInfo paramCommonGuideInfo)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.c())
+    if (!this.a.z())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
       }
       return;
     }
-    if (TextUtils.isEmpty(paramCommonGuideInfo.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramCommonGuideInfo.b))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Bad url: ");
-        ((StringBuilder)localObject).append(paramCommonGuideInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramCommonGuideInfo.b);
         QLog.d("LoginWelcomeManager", 2, ((StringBuilder)localObject).toString());
       }
       return;
@@ -139,32 +139,32 @@ public class LoginwelcomeHelper
     }
     Object localObject = BaseActivity.sTopActivity;
     Intent localIntent = new Intent((Context)localObject, QQTranslucentBrowserActivity.class);
-    localIntent.putExtra("url", paramCommonGuideInfo.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("url", paramCommonGuideInfo.b);
     localIntent.putExtra("flag_show_loading_dialog", false);
     localIntent.putExtra("hide_left_button", true);
-    localIntent.setData(Uri.parse(paramCommonGuideInfo.jdField_a_of_type_JavaLangString));
+    localIntent.setData(Uri.parse(paramCommonGuideInfo.b));
     ((Activity)localObject).startActivity(localIntent);
-    localObject = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a());
-    ((LoginWelcomeManager)localObject).c = false;
-    ((LoginWelcomeManager)localObject).jdField_a_of_type_Boolean = true;
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), paramCommonGuideInfo.jdField_a_of_type_Int);
-  }
-  
-  private boolean a()
-  {
-    LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a());
-    return (localLoginWelcomeManager.b) || (localLoginWelcomeManager.c);
+    localObject = LoginWelcomeManager.a(this.a.s());
+    ((LoginWelcomeManager)localObject).k = false;
+    ((LoginWelcomeManager)localObject).b = true;
+    LoginWelcomeManager.a(this.a.s(), paramCommonGuideInfo.a);
   }
   
   private void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("isFirstLoginEnter=%s, shouldCheckOnResume=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(a()) }));
+      QLog.d("LoginWelcomeManager", 2, String.format("isFirstLoginEnter=%s, shouldCheckOnResume=%s", new Object[] { Boolean.valueOf(this.c), Boolean.valueOf(i()) }));
     }
-    if ((!this.jdField_a_of_type_Boolean) && (a())) {
+    if ((!this.c) && (i())) {
       ThreadManagerV2.postImmediately(new LoginwelcomeHelper.2(this), null, true);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
+  }
+  
+  private boolean i()
+  {
+    LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.a.s());
+    return (localLoginWelcomeManager.i) || (localLoginWelcomeManager.k);
   }
   
   public void a()
@@ -174,20 +174,20 @@ public class LoginwelcomeHelper
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager$ConvListener);
+    if (this.a.aF != null) {
+      ((LoginWelcomeManager)this.a.aF.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).a(this.d);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).a(null);
+    if (this.a.aF != null) {
+      ((LoginWelcomeManager)this.a.aF.getManager(QQManagerFactory.LOGIN_WELCOME_MANAGER)).a(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener != null)
+    if (this.f != null)
     {
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener = null;
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.f);
+      this.f = null;
     }
   }
   
@@ -195,12 +195,12 @@ public class LoginwelcomeHelper
   {
     g();
     c();
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public void e()
   {
-    LoginWelcomeManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a());
+    LoginWelcomeManager.d(this.a.s());
   }
   
   public void f()
@@ -214,20 +214,20 @@ public class LoginwelcomeHelper
     if (QLog.isColorLevel()) {
       QLog.d("LoginWelcomeManager", 2, "removeContactsGuidelayer");
     }
-    ViewGroup localViewGroup1 = this.b;
+    ViewGroup localViewGroup1 = this.e;
     if (localViewGroup1 != null)
     {
-      ViewGroup localViewGroup2 = this.jdField_a_of_type_AndroidViewViewGroup;
+      ViewGroup localViewGroup2 = this.b;
       if (localViewGroup2 != null) {
         localViewGroup1.removeView(localViewGroup2);
       }
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ public class CommonImageCacheHelper
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
+    if (GlobalImageCache.a != null)
     {
-      paramString = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+      paramString = GlobalImageCache.a.get(paramString);
       if ((paramString != null) && ((paramString instanceof Bitmap))) {
         return (Bitmap)paramString;
       }
@@ -35,8 +35,8 @@ public class CommonImageCacheHelper
     if (paramString == null) {
       str1 = String.valueOf(paramInt);
     }
-    if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      paramString = (Bitmap)GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str1);
+    if (GlobalImageCache.b != null) {
+      paramString = (Bitmap)GlobalImageCache.b.get(str1);
     } else {
       paramString = null;
     }
@@ -48,9 +48,9 @@ public class CommonImageCacheHelper
       if (paramString != null)
       {
         str2 = paramString;
-        if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        if (GlobalImageCache.b != null)
         {
-          GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, paramString);
+          GlobalImageCache.b.put(str1, paramString);
           str2 = paramString;
         }
       }
@@ -61,21 +61,6 @@ public class CommonImageCacheHelper
     return new ColorDrawable();
   }
   
-  public static Sizeable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
-    {
-      paramString = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
-  }
-  
   public static void a(String paramString, Bitmap paramBitmap)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -83,8 +68,8 @@ public class CommonImageCacheHelper
       if (paramBitmap == null) {
         return;
       }
-      if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-        GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, paramBitmap);
+      if (GlobalImageCache.a != null) {
+        GlobalImageCache.a.put(paramString, paramBitmap);
       }
     }
   }
@@ -96,15 +81,30 @@ public class CommonImageCacheHelper
       if (paramSizeable == null) {
         return;
       }
-      if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-        GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, paramSizeable);
+      if (GlobalImageCache.a != null) {
+        GlobalImageCache.a.put(paramString, paramSizeable);
       }
     }
+  }
+  
+  public static Sizeable b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (GlobalImageCache.a != null)
+    {
+      paramString = GlobalImageCache.a.get(paramString);
+      if ((paramString != null) && ((paramString instanceof Sizeable))) {
+        return (Sizeable)paramString;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.CommonImageCacheHelper
  * JD-Core Version:    0.7.0.1
  */

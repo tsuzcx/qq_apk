@@ -11,13 +11,13 @@ class BottomAppBar$5
   
   public void a(@NonNull FloatingActionButton paramFloatingActionButton)
   {
-    paramFloatingActionButton.setTranslationX(BottomAppBar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomappbarBottomAppBar, this.jdField_a_of_type_Int));
+    paramFloatingActionButton.setTranslationX(BottomAppBar.d(this.b, this.a));
     paramFloatingActionButton.a(new BottomAppBar.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.5
  * JD-Core Version:    0.7.0.1
  */

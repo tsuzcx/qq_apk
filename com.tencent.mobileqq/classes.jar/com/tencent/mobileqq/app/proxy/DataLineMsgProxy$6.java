@@ -10,14 +10,14 @@ class DataLineMsgProxy$6
   
   public void run()
   {
-    DataLineMsgProxy.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    DataLineMsgProxy.a(this.this$0, this.a);
+    this.this$0.a(this.a, null);
+    this.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.6
  * JD-Core Version:    0.7.0.1
  */

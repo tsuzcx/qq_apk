@@ -18,13 +18,13 @@ import mqq.app.AppRuntime;
 
 public class TraceUtil
 {
-  private static long jdField_a_of_type_Long = 0L;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static long b;
+  private static long a = 0L;
+  private static long b = 0L;
+  private static boolean c = false;
   
   public static int a()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (c) {
       return 0;
     }
     Object localObject5 = null;
@@ -70,13 +70,13 @@ public class TraceUtil
             f1 = f2;
             l2 = Long.parseLong(arrayOfString[5]);
             f1 = f2;
-            f3 = (float)(l1 - jdField_a_of_type_Long);
+            f3 = (float)(l1 - a);
             f1 = f2;
-            f2 = (float)(l1 - jdField_a_of_type_Long + l2 - b);
+            f2 = (float)(l1 - a + l2 - b);
             f1 = f2;
             f2 = f3 * 100.0F / f2;
             f1 = f2;
-            jdField_a_of_type_Long = l1;
+            a = l1;
             f1 = f2;
             b = l2;
             try
@@ -113,7 +113,7 @@ public class TraceUtil
         localObject4 = localObject6;
       }
     }
-    jdField_a_of_type_Boolean = true;
+    c = true;
     f2 = f1;
     if (localObject3 != null) {
       try
@@ -139,15 +139,6 @@ public class TraceUtil
       }
     }
     throw localException3;
-  }
-  
-  public static TraceConfig a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return new TraceConfig.Builder().a(1).a(((QQAppInterface)localAppRuntime).getCurrentAccountUin()).a();
-    }
-    throw new IllegalArgumentException("config should init in PROCESS_QQ");
   }
   
   private static Map<String, Integer> a(Context paramContext)
@@ -217,10 +208,19 @@ public class TraceUtil
   {
     return 0;
   }
+  
+  public static TraceConfig e()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return new TraceConfig.Builder().a(1).a(((QQAppInterface)localAppRuntime).getCurrentAccountUin()).a();
+    }
+    throw new IllegalArgumentException("config should init in PROCESS_QQ");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ final class GamePAPreloadHelper$1
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("preloadFeedsInfo,findMessage vCost:");
-          ((StringBuilder)localObject1).append(System.currentTimeMillis() - GamePAPreloadHelper.d());
+          ((StringBuilder)localObject1).append(System.currentTimeMillis() - GamePAPreloadHelper.g());
           QLog.i("feedsPreload_QQGamePub_GamePAPreloadHelper", 2, ((StringBuilder)localObject1).toString());
         }
         if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
@@ -81,7 +81,7 @@ final class GamePAPreloadHelper$1
             localObject1 = ((TicketManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(2)).getSkey((String)localObject3);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("uin=");
-            localStringBuilder.append(HttpBaseUtil.b((String)localObject3));
+            localStringBuilder.append(HttpBaseUtil.c((String)localObject3));
             localStringBuilder.append(";skey=");
             localStringBuilder.append((String)localObject1);
             localStringBuilder.append(";o_cookie=");
@@ -90,7 +90,7 @@ final class GamePAPreloadHelper$1
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append((String)localObject2);
             ((StringBuilder)localObject3).append("?g_tk=");
-            ((StringBuilder)localObject3).append(GamePAPreloadHelper.a((String)localObject1));
+            ((StringBuilder)localObject3).append(GamePAPreloadHelper.c((String)localObject1));
             ((StringBuilder)localObject3).append("&x_forward=sg-hippy-android");
             localObject1 = ((StringBuilder)localObject3).toString();
           }
@@ -111,7 +111,7 @@ final class GamePAPreloadHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.GamePAPreloadHelper.1
  * JD-Core Version:    0.7.0.1
  */

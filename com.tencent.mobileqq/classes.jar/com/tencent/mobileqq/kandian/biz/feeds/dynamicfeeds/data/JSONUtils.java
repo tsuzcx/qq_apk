@@ -14,29 +14,6 @@ import org.json.JSONObject;
 
 public class JSONUtils
 {
-  public static Bundle a(JSONObject paramJSONObject)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("PostBodyType", 1);
-    String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getSkey(str1);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=");
-    localStringBuilder.append(str1);
-    localStringBuilder.append(";skey=");
-    localStringBuilder.append(str2);
-    localBundle.putString("Cookie", localStringBuilder.toString());
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = paramJSONObject.optJSONObject("requestBody");
-      if (paramJSONObject != null) {
-        a(paramJSONObject, localBundle);
-      }
-    }
-    QLog.d("JSONUtils", 2, new Object[] { "covertJSONToBundle, params = ", localBundle });
-    return localBundle;
-  }
-  
   public static JSONUtils.SerializableJSONArray a(JSONArray paramJSONArray)
   {
     JSONUtils.SerializableJSONArray localSerializableJSONArray = new JSONUtils.SerializableJSONArray();
@@ -141,10 +118,33 @@ public class JSONUtils
       }
     }
   }
+  
+  public static Bundle b(JSONObject paramJSONObject)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("PostBodyType", 1);
+    String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    String str2 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getSkey(str1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append(str2);
+    localBundle.putString("Cookie", localStringBuilder.toString());
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("requestBody");
+      if (paramJSONObject != null) {
+        a(paramJSONObject, localBundle);
+      }
+    }
+    QLog.d("JSONUtils", 2, new Object[] { "covertJSONToBundle, params = ", localBundle });
+    return localBundle;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.JSONUtils
  * JD-Core Version:    0.7.0.1
  */

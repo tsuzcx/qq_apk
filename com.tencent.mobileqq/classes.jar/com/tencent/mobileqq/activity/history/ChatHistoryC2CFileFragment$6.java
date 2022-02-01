@@ -18,11 +18,11 @@ class ChatHistoryC2CFileFragment$6
   public void a(View paramView)
   {
     paramView = (ChatHistoryC2CFileAdapter.FileItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.h;
     if (5 != localFileManagerEntity.cloudType) {
-      FileManagerUtil.b(localFileManagerEntity);
+      FileManagerUtil.e(localFileManagerEntity);
     }
-    int i = paramView.jdField_a_of_type_Int;
+    int i = paramView.c;
     if (i != 0)
     {
       if (i != 1)
@@ -33,7 +33,7 @@ class ChatHistoryC2CFileFragment$6
           {
             if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
             {
-              FMToastUtil.a(2131692554);
+              FMToastUtil.a(2131889577);
               return;
             }
             this.a.a(localFileManagerEntity);
@@ -47,7 +47,7 @@ class ChatHistoryC2CFileFragment$6
       {
         if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          FMToastUtil.a(2131692554);
+          FMToastUtil.a(2131889577);
           return;
         }
         this.a.c(localFileManagerEntity);
@@ -56,12 +56,12 @@ class ChatHistoryC2CFileFragment$6
     else {
       this.a.d(localFileManagerEntity);
     }
-    this.a.a.notifyDataSetChanged();
+    this.a.s.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment.6
  * JD-Core Version:    0.7.0.1
  */

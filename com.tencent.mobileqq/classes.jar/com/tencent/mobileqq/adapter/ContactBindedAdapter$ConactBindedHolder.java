@@ -9,24 +9,24 @@ import com.tencent.mobileqq.data.PhoneContact;
 public class ContactBindedAdapter$ConactBindedHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public View a;
-  public Button a;
-  public CheckBox a;
   public TextView a;
-  public PhoneContact a;
   public TextView b;
   public TextView c;
-  public TextView d;
+  public Button d;
   public TextView e;
+  public PhoneContact f;
+  public CheckBox g;
+  public View h;
+  public TextView i;
   
   public ContactBindedAdapter$ConactBindedHolder()
   {
-    this.c = 11;
+    this.z = 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ContactBindedAdapter.ConactBindedHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -39,26 +39,26 @@ import java.util.Map;
 
 public class TransitionAnimHelper
 {
-  private static ActivityOptions jdField_a_of_type_AndroidAppActivityOptions;
-  private static final Property<ImageView, Matrix> jdField_a_of_type_AndroidUtilProperty = new TransitionAnimHelper.4(Matrix.class, "animatedTransform");
-  private static final AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator = new AccelerateDecelerateInterpolator();
-  private static Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private int jdField_a_of_type_Int;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TransAnimState jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
-  private TransitionAnimHelper.TransAnimParam jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam;
-  private ITransAnimInitImpl jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimInitImpl;
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private int c;
-  private int d;
+  private static final AccelerateDecelerateInterpolator a = new AccelerateDecelerateInterpolator();
+  private static ActivityOptions r;
+  private static Map<String, String> s;
+  private static final Property<ImageView, Matrix> t = new TransitionAnimHelper.4(Matrix.class, "animatedTransform");
+  private FrameLayout b;
+  private View c;
+  private TransAnimState d;
+  private ITransAnimInitImpl e;
+  private Rect f;
+  private ImageView g;
+  private ImageView h;
+  private TransitionAnimHelper.TransAnimParam i;
+  private File j;
+  private String k;
+  private int l;
+  private int m;
+  private ImageView.ScaleType n;
+  private int o;
+  private int p;
+  private AnimatorSet q;
   
   public TransitionAnimHelper(Bundle paramBundle, ITransAnimInitImpl paramITransAnimInitImpl)
   {
@@ -67,12 +67,12 @@ public class TransitionAnimHelper
       if (paramITransAnimInitImpl == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimInitImpl = paramITransAnimInitImpl;
-      a(paramBundle);
-      a();
-      b();
-      c();
-      e();
+      this.e = paramITransAnimInitImpl;
+      b(paramBundle);
+      d();
+      f();
+      g();
+      i();
     }
   }
   
@@ -90,17 +90,17 @@ public class TransitionAnimHelper
       {
         localObject2 = ((URLDrawable)paramURLImageView.getDrawable()).getFileInLocal().getPath();
         String str = ((URLDrawable)paramURLImageView.getDrawable()).getURL().toString();
-        if (jdField_a_of_type_JavaUtilMap == null) {
-          jdField_a_of_type_JavaUtilMap = new HashMap();
+        if (s == null) {
+          s = new HashMap();
         }
-        jdField_a_of_type_JavaUtilMap.clear();
-        jdField_a_of_type_JavaUtilMap.put(str, localObject2);
+        s.clear();
+        s.put(str, localObject2);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           if (Build.VERSION.SDK_INT >= 16) {
-            jdField_a_of_type_AndroidAppActivityOptions = ActivityOptions.makeScaleUpAnimation(paramURLImageView, 0, 0, paramURLImageView.getWidth(), paramURLImageView.getHeight());
+            r = ActivityOptions.makeScaleUpAnimation(paramURLImageView, 0, 0, paramURLImageView.getWidth(), paramURLImageView.getHeight());
           } else {
-            jdField_a_of_type_AndroidAppActivityOptions = null;
+            r = null;
           }
           ((Bundle)localObject1).putString("bundle_key_source_image_param", new TransitionAnimHelper.TransAnimParam((String)localObject2, paramInt1, paramInt2).a());
           ((Bundle)localObject1).putSerializable("bundle_key_image_scale_type", paramURLImageView.getScaleType());
@@ -118,7 +118,7 @@ public class TransitionAnimHelper
         return localIntent;
       }
     }
-    jdField_a_of_type_AndroidAppActivityOptions = null;
+    r = null;
     return localIntent;
   }
   
@@ -128,20 +128,20 @@ public class TransitionAnimHelper
     ((StringBuilder)localObject1).append("getImageMatrix, imageView ");
     ((StringBuilder)localObject1).append(paramImageView);
     QLog.d("TransitionAnimHelper", 4, ((StringBuilder)localObject1).toString());
-    int i = paramImageView.getLeft();
-    int j = paramImageView.getTop();
-    int k = paramImageView.getRight();
-    int m = paramImageView.getBottom();
-    localObject1 = new Rect(i, j, k, m);
+    int i1 = paramImageView.getLeft();
+    int i2 = paramImageView.getTop();
+    int i3 = paramImageView.getRight();
+    int i4 = paramImageView.getBottom();
+    localObject1 = new Rect(i1, i2, i3, i4);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getImageMatrix, left");
-    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(i1);
     ((StringBuilder)localObject2).append(",top:");
-    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(i2);
     ((StringBuilder)localObject2).append(",right:");
-    ((StringBuilder)localObject2).append(k);
+    ((StringBuilder)localObject2).append(i3);
     ((StringBuilder)localObject2).append(",bottom:");
-    ((StringBuilder)localObject2).append(m);
+    ((StringBuilder)localObject2).append(i4);
     QLog.d("TransitionAnimHelper", 4, ((StringBuilder)localObject2).toString());
     localObject2 = paramImageView.getDrawable();
     ImageView.ScaleType localScaleType = paramImageView.getScaleType();
@@ -155,12 +155,12 @@ public class TransitionAnimHelper
       if (!paramImageView.isIdentity()) {
         return new Matrix(paramImageView);
       }
-      i = ((Drawable)localObject2).getIntrinsicWidth();
-      j = ((Drawable)localObject2).getIntrinsicHeight();
-      if ((i > 0) && (j > 0))
+      i1 = ((Drawable)localObject2).getIntrinsicWidth();
+      i2 = ((Drawable)localObject2).getIntrinsicHeight();
+      if ((i1 > 0) && (i2 > 0))
       {
-        float f1 = ((Rect)localObject1).width() / i;
-        float f2 = ((Rect)localObject1).height() / j;
+        float f1 = ((Rect)localObject1).width() / i1;
+        float f2 = ((Rect)localObject1).height() / i2;
         paramImageView = new Matrix();
         paramImageView.setScale(f1, f2);
         return paramImageView;
@@ -170,83 +170,39 @@ public class TransitionAnimHelper
     return new Matrix(paramImageView.getImageMatrix());
   }
   
-  @RequiresApi(api=16)
-  public static Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    ActivityOptions localActivityOptions = jdField_a_of_type_AndroidAppActivityOptions;
-    if (localActivityOptions != null)
-    {
-      localBundle = localActivityOptions.toBundle();
-      jdField_a_of_type_AndroidAppActivityOptions = null;
-    }
-    return localBundle;
-  }
-  
   public static String a(String paramString)
   {
-    Map localMap = jdField_a_of_type_JavaUtilMap;
+    Map localMap = s;
     if ((localMap != null) && (localMap.containsKey(paramString))) {
-      return (String)jdField_a_of_type_JavaUtilMap.get(paramString);
+      return (String)s.get(paramString);
     }
     return "";
   }
   
-  private void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
-    if ((localObject != null) && (((TransAnimState)localObject).a())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_AndroidViewView = new View(BaseApplicationImpl.getContext());
-    localObject = new FrameLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-  }
-  
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
+    Object localObject1 = this.d;
     if (localObject1 != null) {
       ((TransAnimState)localObject1).a(2);
     }
-    localObject1 = PropertyValuesHolder.ofInt("left", new int[] { this.jdField_a_of_type_AndroidWidgetImageView.getLeft(), paramInt1 });
-    Object localObject2 = PropertyValuesHolder.ofInt("top", new int[] { this.jdField_a_of_type_AndroidWidgetImageView.getTop(), paramInt2 });
-    Object localObject3 = PropertyValuesHolder.ofInt("right", new int[] { this.jdField_a_of_type_AndroidWidgetImageView.getRight(), paramInt1 + paramInt3 });
-    PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofInt("bottom", new int[] { this.jdField_a_of_type_AndroidWidgetImageView.getBottom(), paramInt2 + paramInt4 });
-    localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetImageView, new PropertyValuesHolder[] { localObject1, localObject2, localObject3, localPropertyValuesHolder });
+    localObject1 = PropertyValuesHolder.ofInt("left", new int[] { this.g.getLeft(), paramInt1 });
+    Object localObject2 = PropertyValuesHolder.ofInt("top", new int[] { this.g.getTop(), paramInt2 });
+    Object localObject3 = PropertyValuesHolder.ofInt("right", new int[] { this.g.getRight(), paramInt1 + paramInt3 });
+    PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofInt("bottom", new int[] { this.g.getBottom(), paramInt2 + paramInt4 });
+    localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.g, new PropertyValuesHolder[] { localObject1, localObject2, localObject3, localPropertyValuesHolder });
     ((ObjectAnimator)localObject1).addListener(new TransitionAnimHelper.2(this, paramInt4, paramInt3, paramInt1, paramInt2));
-    localObject2 = a(this.jdField_a_of_type_AndroidWidgetImageView);
-    localObject3 = a(this.jdField_b_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.MATRIX);
-    localObject2 = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidWidgetImageView, jdField_a_of_type_AndroidUtilProperty, new TransitionAnimHelper.MatrixEvaluator(), new Matrix[] { localObject2, localObject3 });
-    localObject3 = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidViewView, "backgroundColor", new int[] { -1, 16777215 });
+    localObject2 = a(this.g);
+    localObject3 = a(this.h);
+    this.g.setScaleType(ImageView.ScaleType.MATRIX);
+    localObject2 = ObjectAnimator.ofObject(this.g, t, new TransitionAnimHelper.MatrixEvaluator(), new Matrix[] { localObject2, localObject3 });
+    localObject3 = ObjectAnimator.ofInt(this.c, "backgroundColor", new int[] { -1, 16777215 });
     ((ValueAnimator)localObject3).setEvaluator(new ArgbEvaluator());
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(200L);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new TransitionAnimHelper.3(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject1, localObject2, localObject3 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState = new TransAnimState();
-    this.jdField_a_of_type_AndroidGraphicsRect = ((Rect)paramBundle.getParcelable("bundle_key_trans_anim_rect"));
-    String str = paramBundle.getString("bundle_key_source_image_param");
-    this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam = new TransitionAnimHelper.TransAnimParam();
-    this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam.a(str);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransitionAnimHelper$TransAnimParam.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = ((ImageView.ScaleType)paramBundle.getSerializable("bundle_key_image_scale_type"));
-    d();
-    if (!b()) {
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState.a();
-    }
+    this.q = new AnimatorSet();
+    this.q.setDuration(200L);
+    this.q.setInterpolator(a);
+    this.q.addListener(new TransitionAnimHelper.3(this));
+    this.q.playTogether(new Animator[] { localObject1, localObject2, localObject3 });
+    this.q.start();
   }
   
   public static boolean a()
@@ -262,93 +218,137 @@ public class TransitionAnimHelper
     return false;
   }
   
-  private void b()
+  @RequiresApi(api=16)
+  public static Bundle b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
-    if ((localObject != null) && (((TransAnimState)localObject).a())) {
-      return;
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
-    if (localObject != null)
+    Bundle localBundle = new Bundle();
+    ActivityOptions localActivityOptions = r;
+    if (localActivityOptions != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(((FrameLayout)localObject).getContext());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-      localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).width = this.jdField_a_of_type_AndroidGraphicsRect.width();
-      ((FrameLayout.LayoutParams)localObject).height = this.jdField_a_of_type_AndroidGraphicsRect.height();
-      ((FrameLayout.LayoutParams)localObject).setMargins(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(this.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageURI(Uri.fromFile(this.jdField_a_of_type_JavaIoFile));
+      localBundle = localActivityOptions.toBundle();
+      r = null;
+    }
+    return localBundle;
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    this.d = new TransAnimState();
+    this.f = ((Rect)paramBundle.getParcelable("bundle_key_trans_anim_rect"));
+    String str = paramBundle.getString("bundle_key_source_image_param");
+    this.i = new TransitionAnimHelper.TransAnimParam();
+    this.i.a(str);
+    this.k = this.i.a;
+    this.j = new File(this.k);
+    this.l = this.i.b;
+    this.m = this.i.c;
+    this.n = ((ImageView.ScaleType)paramBundle.getSerializable("bundle_key_image_scale_type"));
+    h();
+    if (!e()) {
+      this.d.c();
     }
   }
   
-  private boolean b()
+  private void d()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+    Object localObject = this.d;
+    if ((localObject != null) && (((TransAnimState)localObject).a())) {
+      return;
+    }
+    this.b = new FrameLayout(BaseApplicationImpl.getContext());
+    this.c = new View(BaseApplicationImpl.getContext());
+    localObject = new FrameLayout.LayoutParams(-1, -1);
+    this.b.addView(this.c, (ViewGroup.LayoutParams)localObject);
+    this.c.setBackgroundColor(-1);
+  }
+  
+  private boolean e()
+  {
+    if (this.f == null) {
       return false;
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaIoFile.isFile()))
+    if ((!TextUtils.isEmpty(this.k)) && (this.j.isFile()))
     {
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {
+      if (!this.j.exists()) {
         return false;
       }
-      if (this.jdField_a_of_type_Int != 0)
+      if (this.l != 0)
       {
-        if (this.jdField_b_of_type_Int == 0) {
+        if (this.m == 0) {
           return false;
         }
-        if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == null) {
+        if (this.n == null) {
           return false;
         }
-        if (this.c != 0) {
-          return this.d != 0;
+        if (this.o != 0) {
+          return this.p != 0;
         }
       }
     }
     return false;
   }
   
-  private void c()
+  private void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
+    Object localObject = this.d;
     if ((localObject != null) && (((TransAnimState)localObject).a())) {
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    localObject = this.b;
     if (localObject != null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(((FrameLayout)localObject).getContext());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      localObject = new FrameLayout.LayoutParams(this.c, this.d);
-      ((FrameLayout.LayoutParams)localObject).gravity = 1;
-      ((FrameLayout.LayoutParams)localObject).topMargin = this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimInitImpl.a();
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.g = new ImageView(((FrameLayout)localObject).getContext());
+      this.b.addView(this.g);
+      localObject = (FrameLayout.LayoutParams)this.g.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).width = this.f.width();
+      ((FrameLayout.LayoutParams)localObject).height = this.f.height();
+      ((FrameLayout.LayoutParams)localObject).setMargins(this.f.left, this.f.top, 0, 0);
+      this.g.setScaleType(this.n);
+      this.g.setImageURI(Uri.fromFile(this.j));
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(this.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageURI(Uri.fromFile(this.jdField_a_of_type_JavaIoFile));
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
+  }
+  
+  private void g()
+  {
+    Object localObject = this.d;
+    if ((localObject != null) && (((TransAnimState)localObject).a())) {
+      return;
+    }
+    localObject = this.b;
+    if (localObject != null)
+    {
+      this.h = new ImageView(((FrameLayout)localObject).getContext());
+      this.b.addView(this.h);
+      this.h.setVisibility(4);
+      localObject = new FrameLayout.LayoutParams(this.o, this.p);
+      ((FrameLayout.LayoutParams)localObject).gravity = 1;
+      ((FrameLayout.LayoutParams)localObject).topMargin = this.e.h();
+      this.h.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    this.h.setScaleType(this.n);
+    this.h.setImageURI(Uri.fromFile(this.j));
+    localObject = this.d;
     if (localObject != null) {
       ((TransAnimState)localObject).a(1);
     }
   }
   
-  private void d()
+  private void h()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimInitImpl.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    int[] arrayOfInt = this.e.a(this.l, this.m);
     if ((arrayOfInt != null) && (arrayOfInt.length == 2))
     {
-      this.c = arrayOfInt[0];
-      this.d = arrayOfInt[1];
+      this.o = arrayOfInt[0];
+      this.p = arrayOfInt[1];
     }
   }
   
-  private void e()
+  private void i()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
+    Object localObject = this.d;
     if ((localObject != null) && (((TransAnimState)localObject).b()))
     {
-      localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject = this.h;
       if (localObject != null) {
         ((ImageView)localObject).getViewTreeObserver().addOnPreDrawListener(new TransitionAnimHelper.1(this));
       }
@@ -357,17 +357,17 @@ public class TransitionAnimHelper
     QLog.d("TransitionAnimHelper", 1, "initImageEnterAnimation error!");
   }
   
-  public FrameLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
-  }
-  
   public void a(ITransAnimStateListener paramITransAnimStateListener)
   {
-    TransAnimState localTransAnimState = this.jdField_a_of_type_ComTencentBizSubscribeTransitionTransAnimState;
+    TransAnimState localTransAnimState = this.d;
     if (localTransAnimState != null) {
       localTransAnimState.a(paramITransAnimStateListener);
     }
+  }
+  
+  public FrameLayout c()
+  {
+    return this.b;
   }
 }
 

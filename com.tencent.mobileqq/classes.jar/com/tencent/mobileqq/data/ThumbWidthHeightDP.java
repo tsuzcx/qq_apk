@@ -6,6 +6,7 @@ import mqq.app.MobileQQ;
 
 public class ThumbWidthHeightDP
 {
+  public boolean mLimitSizeByGuild;
   public boolean mLimitSizeByServer;
   public int mMaxHeight;
   public int mMaxWidth;
@@ -36,6 +37,11 @@ public class ThumbWidthHeightDP
     return Utils.a((this.mMinWidth + this.mMinHeight) / 2, MobileQQ.getContext().getResources());
   }
   
+  public void setmLimitSizeByGuild(boolean paramBoolean)
+  {
+    this.mLimitSizeByGuild = paramBoolean;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -56,7 +62,7 @@ public class ThumbWidthHeightDP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ThumbWidthHeightDP
  * JD-Core Version:    0.7.0.1
  */

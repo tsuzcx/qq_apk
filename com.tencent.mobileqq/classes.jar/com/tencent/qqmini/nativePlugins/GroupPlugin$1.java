@@ -3,9 +3,10 @@ package com.tencent.qqmini.nativePlugins;
 import android.content.Intent;
 import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +21,7 @@ class GroupPlugin$1
   {
     if (paramInt1 == 20001)
     {
-      ActivityResultManager.g().removeActivityResultListener(this);
+      ((IActivityResultManager)GroupPlugin.a(this.b).getManager(IActivityResultManager.class)).removeActivityResultListener(this);
       JSONArray localJSONArray = new JSONArray();
       if ((paramIntent != null) && (paramInt2 == -1))
       {
@@ -59,17 +60,17 @@ class GroupPlugin$1
       }
       if (paramInt1 != 0)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramIntent);
+        this.a.ok(paramIntent);
         return false;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramIntent, "errDesc");
+      this.a.fail(paramIntent, "errDesc");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.GroupPlugin.1
  * JD-Core Version:    0.7.0.1
  */

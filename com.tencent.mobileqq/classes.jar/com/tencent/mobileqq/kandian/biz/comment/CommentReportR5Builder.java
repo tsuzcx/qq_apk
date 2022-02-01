@@ -17,36 +17,25 @@ import org.json.JSONObject;
 
 public class CommentReportR5Builder
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseCommentData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private JSONObject a = new JSONObject();
+  private AbsBaseArticleInfo b;
+  private BaseCommentData c;
+  private int d = 0;
   
   public CommentReportR5Builder(CommentViewItem paramCommentViewItem)
   {
     if (paramCommentViewItem == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData = paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
-    this.jdField_a_of_type_Int = paramCommentViewItem.b;
+    this.b = paramCommentViewItem.d;
+    this.c = paramCommentViewItem.c;
+    this.d = paramCommentViewItem.b;
   }
   
   public CommentReportR5Builder(AbsBaseArticleInfo paramAbsBaseArticleInfo, BaseCommentData paramBaseCommentData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData = paramBaseCommentData;
-  }
-  
-  private int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData == null) {
-      return 0;
-    }
-    if (ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
-      return 10;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.contentSrc;
+    this.b = paramAbsBaseArticleInfo;
+    this.c = paramBaseCommentData;
   }
   
   private CommentReportR5Builder e(int paramInt)
@@ -56,7 +45,7 @@ public class CommentReportR5Builder
     if (paramInt == 1) {}
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
+      this.a.put("puin_type", 1);
       return this;
     }
     catch (JSONException localJSONException)
@@ -70,10 +59,10 @@ public class CommentReportR5Builder
         paramInt = 2;
       }
     }
-    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null))
+    if ((paramInt == 2) && (this.b != null))
     {
-      localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAccountLess == 0)
+      localJSONObject = this.a;
+      if (this.b.mAccountLess == 0)
       {
         paramInt = i;
         localJSONObject.put("puin_type", paramInt);
@@ -82,10 +71,10 @@ public class CommentReportR5Builder
     }
     else
     {
-      if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null))
+      if ((paramInt == 3) && (this.b != null))
       {
-        localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAccountLess != 0) {
+        localJSONObject = this.a;
+        if (this.b.mAccountLess != 0) {
           break label127;
         }
         paramInt = j;
@@ -97,14 +86,25 @@ public class CommentReportR5Builder
     }
   }
   
-  private CommentReportR5Builder l()
+  private int n()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.c == null) {
+      return 0;
+    }
+    if (ReadInJoyHelper.b(this.b)) {
+      return 10;
+    }
+    return this.c.contentSrc;
+  }
+  
+  private CommentReportR5Builder o()
+  {
+    if (this.d == 0)
     {
-      ReadInJoyCommentDataManager localReadInJoyCommentDataManager = ReadInJoyCommentDataManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      ReadInJoyCommentDataManager localReadInJoyCommentDataManager = ReadInJoyCommentDataManager.a(this.b);
       if (localReadInJoyCommentDataManager != null)
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+        Object localObject = this.c;
         if ((localObject instanceof CommentData)) {
           localObject = ((BaseCommentData)localObject).commentId;
         } else if ((localObject instanceof SubCommentData)) {
@@ -112,12 +112,12 @@ public class CommentReportR5Builder
         } else {
           localObject = "";
         }
-        this.jdField_a_of_type_Int = localReadInJoyCommentDataManager.a((String)localObject);
+        this.d = localReadInJoyCommentDataManager.h((String)localObject);
       }
     }
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("area", this.jdField_a_of_type_Int);
+      this.a.put("area", this.d);
       return this;
     }
     catch (JSONException localJSONException)
@@ -129,11 +129,11 @@ public class CommentReportR5Builder
   
   public CommentReportR5Builder a()
   {
-    l();
-    d();
-    e();
+    o();
     f();
-    j();
+    g();
+    h();
+    l();
     return this;
   }
   
@@ -141,7 +141,7 @@ public class CommentReportR5Builder
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("amount", paramInt);
+      this.a.put("amount", paramInt);
       return this;
     }
     catch (JSONException localJSONException)
@@ -155,7 +155,7 @@ public class CommentReportR5Builder
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", paramString);
+      this.a.put("comment_id", paramString);
       return this;
     }
     catch (JSONException paramString)
@@ -165,89 +165,16 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public String a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAlgorithmID);
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID != -1L) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData != null) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof CommentData)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentId);
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof SubCommentData)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentId);
-        }
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", RIJAppSetting.a());
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this.jdField_a_of_type_OrgJsonJSONObject.toString();
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public CommentReportR5Builder b()
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isAuthorReply();
-      if (bool)
-      {
-        localStringBuilder.append(1);
-        localStringBuilder.append(",");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isAuthorLike)
-      {
-        localStringBuilder.append(2);
-        localStringBuilder.append(",");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isFollowing)
-      {
-        localStringBuilder.append(3);
-        localStringBuilder.append(",");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isAuthorSticky) {
-        localStringBuilder.append(6);
-      }
-      if ((localStringBuilder.length() > 0) && (localStringBuilder.charAt(localStringBuilder.length() - 1) == ',')) {
-        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      }
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("reply_tag_type", localStringBuilder.toString());
-        return this;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("CommentReportR5Builder", 2, localJSONException.getMessage());
-    }
-    return this;
-  }
-  
   public CommentReportR5Builder b(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("actionsheet_choose", paramInt);
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData == null) {
+      this.a.put("actionsheet_choose", paramInt);
+      JSONObject localJSONObject = this.a;
+      if (this.c == null) {
         paramInt = 0;
       } else {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentApp;
+        paramInt = this.c.commentApp;
       }
       localJSONObject.put("comment_app", paramInt);
       return this;
@@ -263,7 +190,7 @@ public class CommentReportR5Builder
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("to_uin", paramString);
+      this.a.put("to_uin", paramString);
       return this;
     }
     catch (JSONException paramString)
@@ -273,29 +200,39 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder c()
+  public String b()
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData instanceof SubCommentData)))
+      if (this.b != null)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", ((SubCommentData)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData).parentCommentId);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentId);
-        return this;
+        this.a.put("algorithm_id", this.b.mAlgorithmID);
+        if (this.b.mArticleID != -1L) {
+          this.a.put("mp_article_id", this.b.mArticleID);
+        }
       }
+      if (this.c != null) {
+        if ((this.c instanceof CommentData)) {
+          this.a.put("comment_id", this.c.commentId);
+        } else if ((this.c instanceof SubCommentData)) {
+          this.a.put("sub_comment_id", this.c.commentId);
+        }
+      }
+      this.a.put("kandian_mode", RIJAppSetting.b());
+      this.a.put("comment_platform", 3);
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    return this;
+    return this.a.toString();
   }
   
   public CommentReportR5Builder c(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_number", paramInt);
+      this.a.put("comment_number", paramInt);
       return this;
     }
     catch (JSONException localJSONException)
@@ -305,25 +242,56 @@ public class CommentReportR5Builder
     return this;
   }
   
+  public JSONObject c()
+  {
+    return this.a;
+  }
+  
   public CommentReportR5Builder d()
   {
-    int i = a();
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      boolean bool = this.c.isAuthorReply();
+      if (bool)
+      {
+        localStringBuilder.append(1);
+        localStringBuilder.append(",");
+      }
+      if (this.c.isAuthorLike)
+      {
+        localStringBuilder.append(2);
+        localStringBuilder.append(",");
+      }
+      if (this.c.isFollowing)
+      {
+        localStringBuilder.append(3);
+        localStringBuilder.append(",");
+      }
+      if (this.c.isAuthorSticky) {
+        localStringBuilder.append(6);
+      }
+      if ((localStringBuilder.length() > 0) && (localStringBuilder.charAt(localStringBuilder.length() - 1) == ',')) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      if (this.a != null)
+      {
+        this.a.put("reply_tag_type", localStringBuilder.toString());
+        return this;
+      }
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
+      QLog.d("CommentReportR5Builder", 2, localJSONException.getMessage());
     }
-    return e(i);
+    return this;
   }
   
   public CommentReportR5Builder d(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("change_into", paramInt);
+      this.a.put("change_into", paramInt);
       return this;
     }
     catch (JSONException localJSONException)
@@ -335,7 +303,39 @@ public class CommentReportR5Builder
   
   public CommentReportR5Builder e()
   {
-    BaseCommentData localBaseCommentData = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+    try
+    {
+      if ((this.c != null) && ((this.c instanceof SubCommentData)))
+      {
+        this.a.put("comment_id", ((SubCommentData)this.c).parentCommentId);
+        this.a.put("sub_comment_id", this.c.commentId);
+        return this;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public CommentReportR5Builder f()
+  {
+    int i = n();
+    try
+    {
+      this.a.put("entry", i);
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return e(i);
+  }
+  
+  public CommentReportR5Builder g()
+  {
+    BaseCommentData localBaseCommentData = this.c;
     int i = 2;
     int j;
     if (localBaseCommentData != null) {
@@ -350,7 +350,7 @@ public class CommentReportR5Builder
     }
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_level", i);
+      this.a.put("comment_level", i);
       return this;
     }
     catch (JSONException localJSONException)
@@ -360,28 +360,28 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder f()
+  public CommentReportR5Builder h()
   {
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData != null)
+        if (this.c != null)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isAuthorSelection())
+          if (this.c.isAuthorSelection())
           {
             i = 1;
           }
           else
           {
-            if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isAwesome()) {
+            if (!this.c.isAwesome()) {
               break label61;
             }
             i = 2;
           }
           if (i > 0)
           {
-            this.jdField_a_of_type_OrgJsonJSONObject.put("comment_type", i);
+            this.a.put("comment_type", i);
             return this;
           }
         }
@@ -396,11 +396,11 @@ public class CommentReportR5Builder
     }
   }
   
-  public CommentReportR5Builder g()
+  public CommentReportR5Builder i()
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("fromuin", RIJQQAppInterfaceUtil.a());
+      this.a.put("fromuin", RIJQQAppInterfaceUtil.d());
       return this;
     }
     catch (JSONException localJSONException)
@@ -410,23 +410,23 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder h()
+  public CommentReportR5Builder j()
   {
-    BaseCommentData localBaseCommentData = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+    BaseCommentData localBaseCommentData = this.c;
     if (localBaseCommentData == null) {
       return this;
     }
     int i = 0;
     if (localBaseCommentData.isBanner()) {
       i = 1;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isActivity()) {
+    } else if (this.c.isActivity()) {
       i = 2;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isFamilyTopEntry()) {
+    } else if (this.c.isFamilyTopEntry()) {
       i = 3;
     }
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", i);
+      this.a.put("type", i);
       return this;
     }
     catch (JSONException localJSONException)
@@ -436,22 +436,22 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder i()
+  public CommentReportR5Builder k()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+    Object localObject = this.c;
     if (localObject == null) {
       return this;
     }
     if (((BaseCommentData)localObject).isActivity()) {
-      localObject = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.activityCfgID);
-    } else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.isBanner()) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentId;
+      localObject = String.valueOf(this.c.activityCfgID);
+    } else if (this.c.isBanner()) {
+      localObject = this.c.commentId;
     } else {
       localObject = "";
     }
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("h5_id", localObject);
+      this.a.put("h5_id", localObject);
       return this;
     }
     catch (JSONException localJSONException)
@@ -461,13 +461,13 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder j()
+  public CommentReportR5Builder l()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
+    Object localObject = this.c;
     if ((localObject != null) && (!TextUtils.isEmpty(((BaseCommentData)localObject).styleData))) {
       try
       {
-        localObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.styleData).optJSONObject("reportJson");
+        localObject = new JSONObject(this.c.styleData).optJSONObject("reportJson");
         if (localObject != null)
         {
           Iterator localIterator = ((JSONObject)localObject).keys();
@@ -475,11 +475,11 @@ public class CommentReportR5Builder
           {
             String str1 = (String)localIterator.next();
             String str2 = ((JSONObject)localObject).getString(str1);
-            this.jdField_a_of_type_OrgJsonJSONObject.put(str1, str2);
+            this.a.put(str1, str2);
           }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("addFamilyReportData r5 ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+          ((StringBuilder)localObject).append(this.a.toString());
           QLog.d("CommentReportR5Builder", 2, ((StringBuilder)localObject).toString());
           return this;
         }
@@ -492,16 +492,16 @@ public class CommentReportR5Builder
     return this;
   }
   
-  public CommentReportR5Builder k()
+  public CommentReportR5Builder m()
   {
     for (;;)
     {
       try
       {
-        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData != null)
+        JSONObject localJSONObject = this.a;
+        if (this.c != null)
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.createSrc;
+          i = this.c.createSrc;
           localJSONObject.put("into_app", i);
           return this;
         }
@@ -517,7 +517,7 @@ public class CommentReportR5Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentReportR5Builder
  * JD-Core Version:    0.7.0.1
  */

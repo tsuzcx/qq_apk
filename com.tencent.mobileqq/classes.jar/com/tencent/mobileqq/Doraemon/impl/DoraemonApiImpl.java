@@ -17,7 +17,7 @@ public class DoraemonApiImpl
 {
   public void bindService()
   {
-    TroopMemberApiClient.a().a();
+    TroopMemberApiClient.a().e();
   }
   
   public MiniAppInfo getAppInfo(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, MiniAppInfoCallback paramMiniAppInfoCallback)
@@ -32,7 +32,7 @@ public class DoraemonApiImpl
   
   public Bundle getUserInfo()
   {
-    return UserInfoModule.a();
+    return UserInfoModule.c();
   }
   
   public void initBosses()
@@ -43,7 +43,7 @@ public class DoraemonApiImpl
   public boolean isLogin(DoraemonAPIModule paramDoraemonAPIModule)
   {
     if ((paramDoraemonAPIModule instanceof UserInfoModule)) {
-      return ((UserInfoModule)paramDoraemonAPIModule).a();
+      return ((UserInfoModule)paramDoraemonAPIModule).d();
     }
     return false;
   }
@@ -55,12 +55,12 @@ public class DoraemonApiImpl
   
   public void unbindService()
   {
-    TroopMemberApiClient.a().b();
+    TroopMemberApiClient.a().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DoraemonApiImpl
  * JD-Core Version:    0.7.0.1
  */

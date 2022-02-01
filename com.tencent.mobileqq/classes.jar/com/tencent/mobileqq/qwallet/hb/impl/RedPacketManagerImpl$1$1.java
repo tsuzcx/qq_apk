@@ -14,12 +14,12 @@ class RedPacketManagerImpl$1$1
   public void run()
   {
     Bundle localBundle = new Bundle();
-    localBundle.putSerializable("rsp", this.jdField_a_of_type_WalletGetSkinListRsp);
+    localBundle.putSerializable("rsp", this.a);
     localBundle.putBoolean("isCache", true);
-    if (RedPacketManagerImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl$1.this$0).isEmpty()) {
+    if (RedPacketManagerImpl.access$000(this.b.this$0).isEmpty()) {
       return;
     }
-    Iterator localIterator = RedPacketManagerImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl$1.this$0).iterator();
+    Iterator localIterator = RedPacketManagerImpl.access$000(this.b.this$0).iterator();
     while (localIterator.hasNext()) {
       ((BusinessObserver)localIterator.next()).onReceive(14, true, localBundle);
     }
@@ -27,7 +27,7 @@ class RedPacketManagerImpl$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

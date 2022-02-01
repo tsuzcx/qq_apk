@@ -25,7 +25,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$2
     {
       try
       {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.skinType;
+        paramInt = this.a.skinType;
         if (paramInt == 1)
         {
           paramPathResult = new StringBuilder();
@@ -44,21 +44,21 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$2
           ((StringBuilder)localObject4).append(paramPathResult);
           ((StringBuilder)localObject4).append("anim_fg");
           localObject4 = ((StringBuilder)localObject4).toString();
-          float f = CustomizeStrategyFactory.a;
+          float f = CustomizeStrategyFactory.d;
           double d = f * 50.0F;
           Double.isNaN(d);
           paramInt = (int)(d + 0.5D);
-          f = CustomizeStrategyFactory.a;
-          f = CustomizeStrategyFactory.a;
+          f = CustomizeStrategyFactory.d;
+          f = CustomizeStrategyFactory.d;
           d = f * 50.0F;
           Double.isNaN(d);
           int i = (int)(d + 0.5D);
           BitmapFactory.Options localOptions = BaseImageUtil.a((String)localObject2, paramInt);
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.corner = SafeBitmapFactory.decodeFile((String)localObject2, localOptions);
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.resPath = ((String)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.background = ((String)localObject3);
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.animInfo = AnimationView.AnimationInfo.loadFromFolder((String)localObject4);
-          localObject1 = SkinRedPkgElem.a;
+          this.a.corner = SafeBitmapFactory.decodeFile((String)localObject2, localOptions);
+          this.a.resPath = ((String)localObject1);
+          this.a.background = ((String)localObject3);
+          this.a.animInfo = AnimationView.AnimationInfo.loadFromFolder((String)localObject4);
+          localObject1 = SkinRedPkgElem.b;
           int j = localObject1.length;
           paramInt = 0;
           if (paramInt < j)
@@ -73,22 +73,22 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$2
             if (localObject3 == null) {
               break label491;
             }
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.attribute.putParcelable((String)localObject2, (Parcelable)localObject3);
+            this.a.attribute.putParcelable((String)localObject2, (Parcelable)localObject3);
             break label491;
           }
           if (QLog.isColorLevel())
           {
             paramPathResult = new StringBuilder();
             paramPathResult.append("TYPE_AIO_REDPACKET background=");
-            paramPathResult.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.background);
+            paramPathResult.append(this.a.background);
             paramPathResult.append(",animInfo=");
-            paramPathResult.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.animInfo);
+            paramPathResult.append(this.a.animInfo);
             QLog.d("CustomizeStrategyFactory", 2, paramPathResult.toString());
           }
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.skinType == 2)
+        else if (this.a.skinType == 2)
         {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.resPath = ((String)localObject1);
+          this.a.resPath = ((String)localObject1);
           if (QLog.isColorLevel())
           {
             paramPathResult = new StringBuilder();
@@ -102,7 +102,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$2
       {
         paramPathResult.printStackTrace();
       }
-      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo);
+      CustomizeStrategyFactory.d().a(this.a);
       return;
       label491:
       paramInt += 1;
@@ -111,7 +111,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.SkinRedPacketStrategy.2
  * JD-Core Version:    0.7.0.1
  */

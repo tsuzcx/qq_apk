@@ -5,100 +5,56 @@ import android.os.Build.VERSION;
 
 public class ComicTechReportParams
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public String g;
-  public long h;
-  public String h;
-  public long i;
-  public String i;
+  public long A = System.currentTimeMillis();
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   public String j = "";
-  public String k = Build.VERSION.RELEASE;
-  public String l = Build.BRAND;
-  public String m = Build.MODEL;
-  public String n = Build.MANUFACTURER;
-  public String o = "8.7.0.5295";
-  public String p = VipComicDataHelper.l;
-  
-  public ComicTechReportParams()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_h_of_type_JavaLangString = "";
-    this.jdField_i_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_d_of_type_Long = -1L;
-    this.jdField_e_of_type_Long = -1L;
-    this.jdField_f_of_type_Long = -1L;
-    this.jdField_g_of_type_Long = -1L;
-    this.jdField_h_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_i_of_type_Long = System.currentTimeMillis();
-  }
+  public long k = -1L;
+  public long l = -1L;
+  public long m = -1L;
+  public long n = -1L;
+  public long o = -1L;
+  public long p = -1L;
+  public long q = -1L;
+  public long r = -1L;
+  public int s = 0;
+  public int t = -1;
+  public String u = Build.VERSION.RELEASE;
+  public String v = Build.BRAND;
+  public String w = Build.MODEL;
+  public String x = Build.MANUFACTURER;
+  public String y = "8.8.17.5770";
+  public String z = VipComicDataHelper.s;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("|");
     localStringBuilder.append(this.j);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_g_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_h_of_type_Long);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
     localStringBuilder.append("|");
     localStringBuilder.append(this.k);
     localStringBuilder.append("|");
@@ -112,13 +68,33 @@ public class ComicTechReportParams
     localStringBuilder.append("|");
     localStringBuilder.append(this.p);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_i_of_type_Long);
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.A);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.comic.data.ComicTechReportParams
  * JD-Core Version:    0.7.0.1
  */

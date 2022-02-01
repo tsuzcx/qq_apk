@@ -32,25 +32,20 @@ import mqq.os.MqqHandler;
 public class TroopMemberRecommendManager
   implements Manager
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public TroopMemRecommendConfBean a;
-  private ConcurrentHashMap<String, List<RecommendPerson>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private SharedPreferences b;
+  private ConcurrentHashMap<String, List<RecommendPerson>> c = new ConcurrentHashMap();
+  private QQAppInterface d;
   
   public TroopMemberRecommendManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TroopMemberRecom");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
+    this.b = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
     ThreadManager.getSubThreadHandler().post(new TroopMemberRecommendManager.1(this));
-  }
-  
-  private TroopMemberRecommendHandler a()
-  {
-    return (TroopMemberRecommendHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_RECOMMED_HANDLER);
   }
   
   public static TroopMemberRecommendManager a(QQAppInterface paramQQAppInterface)
@@ -58,57 +53,21 @@ public class TroopMemberRecommendManager
     return (TroopMemberRecommendManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER);
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean == null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean = TroopMemRecommendConfProcessor.a();
+    if (this.a == null) {
+      this.a = TroopMemRecommendConfProcessor.a();
     }
   }
   
-  public int a(String paramString)
+  private TroopMemberRecommendHandler c()
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager != null)
-    {
-      paramString = localTroopManager.c(paramString);
-      if (paramString != null) {
-        return paramString.wMemberNum;
-      }
-    }
-    return 0;
+    return (TroopMemberRecommendHandler)this.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_RECOMMED_HANDLER);
   }
   
   public SharedPreferences a()
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
-  }
-  
-  List<RecommendPerson> a(List<RecommendPerson> paramList, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = paramList.size();
-    if (i > 0)
-    {
-      int k = ((RecommendPerson)paramList.get(0)).cardMaxDisplayPersonNum;
-      if (i <= k)
-      {
-        localArrayList.addAll(paramList);
-        return localArrayList;
-      }
-      int j = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0);
-      k += j;
-      if (k <= i)
-      {
-        localArrayList.addAll(paramList.subList(j, k));
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, k).commit();
-        return localArrayList;
-      }
-      k %= i;
-      localArrayList.addAll(paramList.subList(j, i));
-      localArrayList.addAll(paramList.subList(0, k));
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, k).commit();
-    }
-    return localArrayList;
+    return this.b;
   }
   
   Map<Integer, List<RecommendPerson>> a(List<RecommendPerson> paramList, String paramString)
@@ -178,7 +137,7 @@ public class TroopMemberRecommendManager
           paramList.append(paramString);
           paramList = paramList.toString();
         }
-        localLinkedHashMap.put(localObject2, a(localList, paramList));
+        localLinkedHashMap.put(localObject2, b(localList, paramList));
       }
     }
     return localLinkedHashMap;
@@ -195,19 +154,19 @@ public class TroopMemberRecommendManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("TroopMemberRecommend.Manager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    Object localObject = (List)this.c.get(paramString);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       a(paramString, false);
-      localObject = a((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString), paramString);
-      a().notifyUI(1, true, new Object[] { localObject, paramString, Integer.valueOf(1) });
+      localObject = a((List)this.c.get(paramString), paramString);
+      c().notifyUI(1, true, new Object[] { localObject, paramString, Integer.valueOf(1) });
     }
     else
     {
       ThreadManager.excute(new TroopMemberRecommendManager.2(this, paramString), 32, null, true);
     }
     if (a(paramInt, paramString)) {
-      a().a(paramString, paramInt, paramList);
+      c().a(paramString, paramInt, paramList);
     }
   }
   
@@ -219,7 +178,7 @@ public class TroopMemberRecommendManager
         return;
       }
       Object localObject = new ArrayList();
-      ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1));
+      ((List)localObject).addAll((Collection)this.c.get(paramString1));
       if (((List)localObject).size() > 0)
       {
         localObject = ((List)localObject).iterator();
@@ -227,11 +186,11 @@ public class TroopMemberRecommendManager
         {
           RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
           if (paramString2.equals(localRecommendPerson.uin)) {
-            ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1)).remove(localRecommendPerson);
+            ((List)this.c.get(paramString1)).remove(localRecommendPerson);
           }
         }
       }
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      paramString1 = this.d.getEntityManagerFactory().createEntityManager();
       if (paramString1 != null) {
         paramString1.delete(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(paramString2) });
       }
@@ -243,19 +202,19 @@ public class TroopMemberRecommendManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject = new ArrayList();
-    ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    ((List)localObject).addAll((Collection)this.c.get(paramString));
+    EntityManager localEntityManager = this.d.getEntityManagerFactory().createEntityManager();
     if (((List)localObject).size() > 0)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
-        if ((localFriendsManager != null) && (localFriendsManager.b(localRecommendPerson.uin)))
+        if ((localFriendsManager != null) && (localFriendsManager.n(localRecommendPerson.uin)))
         {
-          ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).remove(localRecommendPerson);
+          ((List)this.c.get(paramString)).remove(localRecommendPerson);
           if ((paramBoolean) && (localEntityManager != null)) {
             localEntityManager.delete(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(localRecommendPerson.uin) });
           }
@@ -278,35 +237,35 @@ public class TroopMemberRecommendManager
     Object localObject = new LinkedHashMap();
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.b.edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_ActiveMember_ri");
       localStringBuilder.append(paramString);
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 0).commit();
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.b.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_SameUserInfo_ri");
       localStringBuilder.append(paramString);
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 0).commit();
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.b.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_CommonBehavior_ri");
       localStringBuilder.append(paramString);
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 0).commit();
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.b.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_Interactive_ri");
       localStringBuilder.append(paramString);
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 0).commit();
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localObject = this.b.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_GroupKOL_ri");
       localStringBuilder.append(paramString);
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 0).commit();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramList);
+      this.c.put(paramString, paramList);
       localObject = a(paramList, paramString);
     }
-    a().notifyUI(1, paramBoolean, new Object[] { localObject, paramString, Integer.valueOf(3) });
+    c().notifyUI(1, paramBoolean, new Object[] { localObject, paramString, Integer.valueOf(3) });
   }
   
   boolean a(int paramInt, String paramString)
@@ -355,9 +314,9 @@ public class TroopMemberRecommendManager
   
   public boolean a(String paramString)
   {
-    a();
-    int i = a(paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean != null)
+    b();
+    int i = b(paramString);
+    if (this.a != null)
     {
       if (i <= 0) {
         return false;
@@ -368,23 +327,64 @@ public class TroopMemberRecommendManager
         localStringBuilder.append("needShowTroopRecommend() troopUin =");
         localStringBuilder.append(paramString);
         localStringBuilder.append(" troopMemRecommendConfBean = ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean.toString());
+        localStringBuilder.append(this.a.toString());
         localStringBuilder.append(" troopMemCount = ");
         localStringBuilder.append(i);
         QLog.d("TroopMemberRecommend.Manager", 2, localStringBuilder.toString());
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean.a == 1) && (i > this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTroopMemRecommendConfBean.b)) {
+      if ((this.a.a == 1) && (i > this.a.b)) {
         return true;
       }
     }
     return false;
   }
   
+  public int b(String paramString)
+  {
+    TroopManager localTroopManager = (TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (localTroopManager != null)
+    {
+      paramString = localTroopManager.g(paramString);
+      if (paramString != null) {
+        return paramString.wMemberNum;
+      }
+    }
+    return 0;
+  }
+  
+  List<RecommendPerson> b(List<RecommendPerson> paramList, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = paramList.size();
+    if (i > 0)
+    {
+      int k = ((RecommendPerson)paramList.get(0)).cardMaxDisplayPersonNum;
+      if (i <= k)
+      {
+        localArrayList.addAll(paramList);
+        return localArrayList;
+      }
+      int j = this.b.getInt(paramString, 0);
+      k += j;
+      if (k <= i)
+      {
+        localArrayList.addAll(paramList.subList(j, k));
+        this.b.edit().putInt(paramString, k).commit();
+        return localArrayList;
+      }
+      k %= i;
+      localArrayList.addAll(paramList.subList(j, i));
+      localArrayList.addAll(paramList.subList(0, k));
+      this.b.edit().putInt(paramString, k).commit();
+    }
+    return localArrayList;
+  }
+  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager
  * JD-Core Version:    0.7.0.1
  */

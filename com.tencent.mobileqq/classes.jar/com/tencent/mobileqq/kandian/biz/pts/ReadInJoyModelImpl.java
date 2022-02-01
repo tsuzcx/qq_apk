@@ -30,29 +30,29 @@ public class ReadInJoyModelImpl
   implements IReadInJoyModel
 {
   public int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private IReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private boolean jdField_a_of_type_Boolean;
   public int b;
-  private AbsBaseArticleInfo b;
-  private int c;
-  private int d;
-  private int e;
+  private Context c;
+  private AbsBaseArticleInfo d;
+  private AbsBaseArticleInfo e;
+  private int f;
+  private int g;
+  private boolean h;
+  private int i;
+  private IReadInJoyBaseAdapter j;
+  private VafContext k;
   
   public ReadInJoyModelImpl(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, AbsBaseArticleInfo paramAbsBaseArticleInfo2, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo1;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.d = paramInt3;
-    this.jdField_b_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt5;
-    this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter;
+    this.c = paramContext;
+    this.d = paramAbsBaseArticleInfo1;
+    this.f = paramInt1;
+    this.a = paramInt2;
+    this.g = paramInt3;
+    this.b = paramInt4;
+    this.h = paramBoolean;
+    this.i = paramInt5;
+    this.e = paramAbsBaseArticleInfo2;
+    this.j = paramIReadInJoyBaseAdapter;
   }
   
   private int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -92,59 +92,39 @@ public class ReadInJoyModelImpl
         }
       }
     }
-    if ((paramAbsBaseArticleInfo.mGroupId == -1L) && (paramAbsBaseArticleInfo.hasChannelInfo()) && (this.c != 0) && ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (this.jdField_a_of_type_Int == 0)) {
+    if ((paramAbsBaseArticleInfo.mGroupId == -1L) && (paramAbsBaseArticleInfo.hasChannelInfo()) && (this.f != 0) && ((this.c instanceof BaseActivity)) && (this.a == 0)) {
       return 1;
     }
     return 0;
   }
   
-  public int a()
-  {
-    return UtilsForComponent.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-  }
-  
-  public VafContext a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  }
-  
-  public ReadInJoyBaseAdapter a()
-  {
-    return (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter;
-  }
-  
-  public AbsBaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  }
-  
   public void a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.k = paramVafContext;
   }
   
   public boolean a()
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.d;
     boolean bool2 = false;
     if (localAbsBaseArticleInfo == null) {
       return false;
     }
-    if (a() == 3) {
+    if (b() == 3) {
       return true;
     }
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGroupId != -1L)
+    if (this.d.mGroupId != -1L)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedIndexInGroup == 0L)
+      if (this.d.mFeedIndexInGroup == 0L)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGroupCount > 0L) {
-          if (a() != 1)
+        if (this.d.mGroupCount > 0L) {
+          if (b() != 1)
           {
             bool1 = bool2;
-            if (a() != 2) {}
+            if (b() != 2) {}
           }
           else
           {
@@ -158,66 +138,34 @@ public class ReadInJoyModelImpl
   
   public int b()
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-  }
-  
-  public AbsBaseArticleInfo b()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  }
-  
-  public boolean b()
-  {
-    return b() != 0;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
+    return UtilsForComponent.c(this.d);
   }
   
   public boolean c()
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    boolean bool2 = false;
-    if (localAbsBaseArticleInfo == null) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if (!b())
-    {
-      bool1 = bool2;
-      if (!d())
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleFriendLikeText)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return d() != 0;
   }
   
   public int d()
   {
-    return this.c;
+    return a(this.d);
   }
   
-  public boolean d()
+  public boolean e()
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.d;
     boolean bool2 = false;
     if (localAbsBaseArticleInfo == null) {
       return false;
     }
     boolean bool1 = bool2;
-    if (!b())
+    if (!c())
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mCommentsObj != null)
+      if (!f())
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mCommentsObj.size() > 0) {
+        if (!TextUtils.isEmpty(this.d.mArticleFriendLikeText)) {
           bool1 = true;
         }
       }
@@ -225,94 +173,97 @@ public class ReadInJoyModelImpl
     return bool1;
   }
   
-  public int e()
+  public boolean f()
   {
-    int i = this.jdField_b_of_type_Int;
-    if (i == this.e - 1) {
-      return 151;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.getItemViewType(i + 1);
-  }
-  
-  public boolean e()
-  {
-    int i = this.d;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.d;
     boolean bool2 = false;
-    if (i == 7) {
-      return false;
-    }
-    if (i == 3)
-    {
-      if ((RIJFeedsType.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) && (!BaseArticleInfoKt.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))) {
-        return false;
-      }
-      if (BaseArticleInfoKt.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
-        return false;
-      }
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (118 == RIJBaseItemViewType.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))) {
+    if (localAbsBaseArticleInfo == null) {
       return false;
     }
     boolean bool1 = bool2;
-    if (!g())
+    if (!c())
     {
       bool1 = bool2;
-      if (this.jdField_b_of_type_Int != this.e - 1) {
+      if (this.d.mCommentsObj != null)
+      {
+        bool1 = bool2;
+        if (this.d.mCommentsObj.size() > 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean g()
+  {
+    int m = this.g;
+    boolean bool2 = false;
+    if (m == 7) {
+      return false;
+    }
+    if (m == 3)
+    {
+      if ((RIJFeedsType.a(this.d)) && (!BaseArticleInfoKt.b(this.d))) {
+        return false;
+      }
+      if (BaseArticleInfoKt.b(this.d)) {
+        return false;
+      }
+    }
+    if ((this.a == 0) && (118 == RIJBaseItemViewType.c(this.d))) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (!i())
+    {
+      bool1 = bool2;
+      if (this.b != this.i - 1) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public int f()
+  public boolean h()
   {
-    return this.e;
+    return f();
   }
   
-  public boolean f()
+  public boolean i()
   {
-    return d();
-  }
-  
-  public int g()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean g()
-  {
-    int i = this.d;
+    int m = this.g;
     boolean bool2 = false;
-    if (i == 7) {
+    if (m == 7) {
       return false;
     }
-    i = this.jdField_a_of_type_Int;
-    if (i == 41403) {
+    m = this.a;
+    if (m == 41403) {
       return false;
     }
-    if (DailyModeConfigHandler.a(i)) {
+    if (DailyModeConfigHandler.a(m)) {
       return false;
     }
-    if (RIJShowKanDianTabSp.a(this.jdField_a_of_type_Int)) {
+    if (RIJShowKanDianTabSp.a(this.a)) {
       return false;
     }
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.b(this.jdField_a_of_type_Int);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.j.b(this.a);
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      Object localObject = this.d;
       bool1 = bool2;
       if (localObject != null)
       {
         bool1 = bool2;
         if (localAbsBaseArticleInfo != null)
         {
-          if (this.jdField_b_of_type_Int <= 0) {
+          if (this.b <= 0) {
             return false;
           }
-          if (RIJFeedsType.A((AbsBaseArticleInfo)localObject))
+          if (RIJFeedsType.G((AbsBaseArticleInfo)localObject))
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGroupSubArticleList.iterator();
+            localObject = this.d.mGroupSubArticleList.iterator();
             while (((Iterator)localObject).hasNext()) {
               if ((AbsBaseArticleInfo)((Iterator)localObject).next() == localAbsBaseArticleInfo) {
                 return true;
@@ -320,7 +271,7 @@ public class ReadInJoyModelImpl
             }
           }
           bool1 = bool2;
-          if (localAbsBaseArticleInfo == this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo) {
+          if (localAbsBaseArticleInfo == this.d) {
             bool1 = true;
           }
         }
@@ -329,27 +280,76 @@ public class ReadInJoyModelImpl
     return bool1;
   }
   
-  public boolean h()
+  public boolean j()
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.d;
     boolean bool = false;
     if (localAbsBaseArticleInfo == null) {
       return false;
     }
-    if ((RIJShowKanDianTabSp.a(this.d)) || ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGroupId != -1L) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGroupCount > 0L) && ((a() == 1) || (a() == 2))) || (RIJItemViewTypeUtils.c(d()))) {
+    if ((RIJShowKanDianTabSp.b(this.g)) || ((this.d.mGroupId != -1L) && (this.d.mGroupCount > 0L) && ((b() == 1) || (b() == 2))) || (RIJItemViewTypeUtils.c(o()))) {
       bool = true;
     }
     return bool;
   }
   
-  public boolean i()
+  public AbsBaseArticleInfo k()
   {
-    return this.jdField_a_of_type_AndroidContentContext instanceof SplashActivity;
+    return this.d;
+  }
+  
+  public AbsBaseArticleInfo l()
+  {
+    return this.e;
+  }
+  
+  public int m()
+  {
+    return this.a;
+  }
+  
+  public ReadInJoyBaseAdapter n()
+  {
+    return (ReadInJoyBaseAdapter)this.j;
+  }
+  
+  public int o()
+  {
+    return this.f;
+  }
+  
+  public int p()
+  {
+    int m = this.b;
+    if (m == this.i - 1) {
+      return 154;
+    }
+    return this.j.getItemViewType(m + 1);
+  }
+  
+  public int q()
+  {
+    return this.i;
+  }
+  
+  public int r()
+  {
+    return this.b;
+  }
+  
+  public boolean s()
+  {
+    return this.c instanceof SplashActivity;
+  }
+  
+  public VafContext t()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ReadInJoyModelImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,29 +11,24 @@ import java.util.Set;
 public class JoinTroopPreVerificationFragment
   extends TroopAbilityPreVerificationFragment
 {
-  private TroopObserver a;
-  
-  public JoinTroopPreVerificationFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new JoinTroopPreVerificationFragment.1(this);
-  }
+  private TroopObserver p = new JoinTroopPreVerificationFragment.1(this);
   
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.a.addObserver(this.p);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      ((ITroopTokenHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_TOKEN_HANDLER)).b(Integer.valueOf(this.c).intValue(), Integer.valueOf(this.g).intValue());
+      ((ITroopTokenHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_TOKEN_HANDLER)).b(Integer.valueOf(this.h).intValue(), Integer.valueOf(this.l).intValue());
       return;
     }
     d();
-    a(HardCodeUtil.a(2131705956));
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    a(HardCodeUtil.a(2131903836));
+    this.b.finish();
   }
   
   protected boolean a(Set<Integer> paramSet)
@@ -47,12 +42,12 @@ public class JoinTroopPreVerificationFragment
   protected void b()
   {
     super.b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.a.removeObserver(this.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.JoinTroopPreVerificationFragment
  * JD-Core Version:    0.7.0.1
  */

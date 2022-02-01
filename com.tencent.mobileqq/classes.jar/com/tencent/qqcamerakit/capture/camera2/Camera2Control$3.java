@@ -23,11 +23,11 @@ class Camera2Control$3
         localObject = paramImageReader.getPlanes()[0].getBuffer();
         byte[] arrayOfByte = new byte[((ByteBuffer)localObject).remaining()];
         ((ByteBuffer)localObject).get(arrayOfByte);
-        if (Camera2Control.a(this.a) != null)
+        if (Camera2Control.f(this.a) != null)
         {
-          Camera2Control.a(this.a).a = arrayOfByte;
-          Camera2Control.a(this.a).c = 100;
-          new TakePictureTask(Camera2Control.a(this.a)).execute(new Void[0]);
+          Camera2Control.f(this.a).f = arrayOfByte;
+          Camera2Control.f(this.a).g = 100;
+          new TakePictureTask(Camera2Control.f(this.a)).execute(new Void[0]);
         }
         paramImageReader.close();
         return;
@@ -44,7 +44,7 @@ class Camera2Control$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera2.Camera2Control.3
  * JD-Core Version:    0.7.0.1
  */

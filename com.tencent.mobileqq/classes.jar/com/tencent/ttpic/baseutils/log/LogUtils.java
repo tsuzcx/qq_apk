@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class LogUtils
 {
-  private static boolean ENABLED = true;
+  private static boolean ENABLED = false;
   private static boolean ENABLE_PROFILE = true;
   private static long mInitTime;
   private static long mLastTime;
@@ -522,7 +522,7 @@ public class LogUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.log.LogUtils
  * JD-Core Version:    0.7.0.1
  */

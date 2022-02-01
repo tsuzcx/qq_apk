@@ -14,19 +14,19 @@ class MultiVideoEnterPageActivity$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b()) {
+    if (this.b.e()) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity;
-    ((MultiVideoEnterPageActivity)localObject).b = ((MultiVideoEnterPageActivity)localObject).jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    localObject = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString;
+    this.a.setEnabled(false);
+    Object localObject = this.b;
+    ((MultiVideoEnterPageActivity)localObject).D = ((MultiVideoEnterPageActivity)localObject).u.a(this.b.o, this.b.r, this.b.k);
+    localObject = this.b.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("kickOutUsers begin, mGAudioRoomId[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b);
+    localStringBuilder.append(this.b.D);
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
+    this.b.u.a(1, this.b.o, this.b.r, this.b.k);
     ReportController.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
     paramDialogInterface.dismiss();
   }

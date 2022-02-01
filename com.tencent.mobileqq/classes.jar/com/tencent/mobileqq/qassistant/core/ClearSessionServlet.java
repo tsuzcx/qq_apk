@@ -28,15 +28,15 @@ public class ClearSessionServlet
 {
   public void a()
   {
-    Object localObject2 = AssistantUtils.a().getCurrentAccountUin();
+    Object localObject2 = AssistantUtils.c().getCurrentAccountUin();
     Object localObject1 = new oidb_0xebe.CleanSessionReq();
     ((oidb_0xebe.CleanSessionReq)localObject1).uint64_uin.set(Long.parseLong((String)localObject2));
     ((oidb_0xebe.CleanSessionReq)localObject1).uint32_version.set(1);
     localObject2 = new oidb_0xebe.ReqBody();
     ((oidb_0xebe.ReqBody)localObject2).msg_clean_session_req.set((MessageMicro)localObject1);
-    localObject1 = new NewIntent(AssistantUtils.a(), ClearSessionServlet.class);
+    localObject1 = new NewIntent(AssistantUtils.d(), ClearSessionServlet.class);
     ((NewIntent)localObject1).putExtra("reqBody", ((oidb_0xebe.ReqBody)localObject2).toByteArray());
-    AssistantUtils.a().startServlet((NewIntent)localObject1);
+    AssistantUtils.c().startServlet((NewIntent)localObject1);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -93,7 +93,7 @@ public class ClearSessionServlet
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent));
-    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
+    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.h());
     paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
     localObject = new byte[paramIntent.length + 4];
     PkgTools.dWord2Byte((byte[])localObject, 0, paramIntent.length + 4);
@@ -105,7 +105,7 @@ public class ClearSessionServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.ClearSessionServlet
  * JD-Core Version:    0.7.0.1
  */

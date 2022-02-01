@@ -35,6 +35,8 @@ public abstract interface ITabFrameController
   
   public abstract FrameInfoBean getFrameInfoByIndex(int paramInt);
   
+  public abstract int getTabIndexFromName(String paramString);
+  
   public abstract View[] getTabViews(LayoutInflater paramLayoutInflater);
   
   public abstract void handleThemeChanged(FrameFragment paramFrameFragment);
@@ -50,6 +52,8 @@ public abstract interface ITabFrameController
   public abstract void onDrawCompleteAfter(FrameFragment paramFrameFragment);
   
   public abstract void onFragmentDrawerClosed(FrameFragment paramFrameFragment, int paramInt1, int paramInt2);
+  
+  public abstract void onFragmentDrawerInit(boolean paramBoolean);
   
   public abstract void onResumeAfter(FrameFragment paramFrameFragment);
   
@@ -75,11 +79,13 @@ public abstract interface ITabFrameController
   
   public abstract void updateTabRedTouch(FrameFragment paramFrameFragment, int paramInt, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
   
+  public abstract void updateTabSelectStatusOnTabChange(FrameFragment paramFrameFragment, int paramInt);
+  
   public abstract void updateUIAfterTabChange(FrameFragment paramFrameFragment, String paramString1, String paramString2, Frame paramFrame);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.ITabFrameController
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ class AEBottomListPart$13
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView != null) && (!AEBottomListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart)))
+    if ((this.b.b != null) && (!AEBottomListPart.e(this.b)))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setAlpha(1.0F);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(4);
+      this.b.b.setAlpha(1.0F);
+      this.b.b.setVisibility(4);
     }
-    if (AEBottomListPart.b(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart) != null)
+    if (AEBottomListPart.l(this.b) != null)
     {
-      AEBottomListPart.c(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart).a(this.jdField_a_of_type_Int, new Object[0]);
-      AEBottomListPart.d(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart).a(196612, new Object[0]);
+      AEBottomListPart.m(this.b).b(this.a, new Object[0]);
+      AEBottomListPart.n(this.b).b(196612, new Object[0]);
     }
   }
   
@@ -29,12 +29,12 @@ class AEBottomListPart$13
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListPart.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a().a(true, 150);
+    this.b.a.am().a(true, 150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.13
  * JD-Core Version:    0.7.0.1
  */

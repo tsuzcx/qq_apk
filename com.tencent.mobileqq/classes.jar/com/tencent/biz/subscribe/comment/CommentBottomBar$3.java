@@ -11,7 +11,7 @@ class CommentBottomBar$3
   
   public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.f();
     if (CommentBottomBar.a(this.a) != null) {
       CommentBottomBar.a(this.a).onClick(paramView);
     }

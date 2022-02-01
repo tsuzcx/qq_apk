@@ -18,7 +18,7 @@ import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 class PublicAccountChatPie$44
   extends NewPublicAccountObserver.ResponseResultListener
 {
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   
   PublicAccountChatPie$44(PublicAccountChatPie paramPublicAccountChatPie) {}
   
@@ -33,69 +33,69 @@ class PublicAccountChatPie$44
     {
       paramObject = (oidb_cmd0xc96.RspBody)paramObject;
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.b, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+        QLog.d(this.b.c, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "", false);
-      paramObject = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.b.d, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.b.ah.b, "", "", "", false);
+      paramObject = (IPublicAccountDataManager)this.b.d.getRuntimeService(IPublicAccountDataManager.class, "all");
       if (paramObject != null)
       {
-        paramObject = paramObject.findAccountDetailInfo(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        paramObject = paramObject.findAccountDetailInfo(this.b.ah.b);
         if (paramObject != null)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler == null)
+          if (this.b.bo == null)
           {
-            PublicAccountChatPie localPublicAccountChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie;
-            localPublicAccountChatPie.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler = ((IPublicAccountHandler)localPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT));
+            PublicAccountChatPie localPublicAccountChatPie = this.b;
+            localPublicAccountChatPie.bo = ((IPublicAccountHandler)localPublicAccountChatPie.d.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT));
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler.onFollowPublicAccount(paramObject);
+          this.b.bo.onFollowPublicAccount(paramObject);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.t();
-          this.jdField_a_of_type_Boolean = false;
+          this.b.bH();
+          this.a = false;
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.t();
-        this.jdField_a_of_type_Boolean = false;
+        this.b.bH();
+        this.a = false;
       }
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie;
-      paramObject.D = true;
-      paramObject.I = true;
-      paramObject.ap();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.X)
+      paramObject = this.b;
+      paramObject.bn = true;
+      paramObject.bB = true;
+      paramObject.bA();
+      if (this.b.cB)
       {
-        paramObject = (PlusPanel)PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie).b(8);
+        paramObject = (PlusPanel)PublicAccountChatPie.z(this.b).d(8);
         if (paramObject != null) {
           paramObject.a();
         }
       }
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie;
-      paramObject.c(paramObject.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
+      paramObject = this.b;
+      paramObject.d(paramObject.f.getIntent());
     }
   }
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public void b(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.m(2131695217);
+    this.b.t(2131892951);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.ao();
+    if (this.a) {
+      this.b.bz();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.44
  * JD-Core Version:    0.7.0.1
  */

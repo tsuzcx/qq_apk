@@ -10,21 +10,21 @@ class MultiVideoCtrlLayerUI4NewGroupChat$1
   
   protected void a(QAVGroupConfig.GroupInviteFlag paramGroupInviteFlag)
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != paramGroupInviteFlag.a))
+    if ((QLog.isDevelopLevel()) || (this.a.a != paramGroupInviteFlag.b))
     {
-      String str = this.a.d;
+      String str = this.a.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[");
       localStringBuilder.append(this.a.a);
       localStringBuilder.append("->");
-      localStringBuilder.append(paramGroupInviteFlag.a);
+      localStringBuilder.append(paramGroupInviteFlag.b);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    if (this.a.a != paramGroupInviteFlag.a)
+    if (this.a.a != paramGroupInviteFlag.b)
     {
-      this.a.a = paramGroupInviteFlag.a;
-      this.a.i(0L, 16777215);
+      this.a.a = paramGroupInviteFlag.b;
+      this.a.f(0L, 16777215);
     }
   }
 }

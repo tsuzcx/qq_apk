@@ -13,8 +13,8 @@ import com.tencent.mobileqq.R.styleable;
 public class UCropView
   extends FrameLayout
 {
-  private GestureCropImageView jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView;
-  private final OverlayView jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropOverlayView;
+  private GestureCropImageView a;
+  private final OverlayView b;
   
   public UCropView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,41 +24,41 @@ public class UCropView
   public UCropView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131560407, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView = ((GestureCropImageView)findViewById(2131368576));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropOverlayView = ((OverlayView)findViewById(2131380847));
+    LayoutInflater.from(paramContext).inflate(2131626452, this, true);
+    this.a = ((GestureCropImageView)findViewById(2131435487));
+    this.b = ((OverlayView)findViewById(2131449825));
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.UCropView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropOverlayView.a(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView.a(paramContext);
+    this.b.a(paramContext);
+    this.a.a(paramContext);
     paramContext.recycle();
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView.setCropBoundsChangeListener(new UCropView.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropOverlayView.setOverlayViewChangeListener(new UCropView.2(this));
-  }
-  
-  @NonNull
-  public GestureCropImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView;
-  }
-  
-  @NonNull
-  public OverlayView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropOverlayView;
+    this.a.setCropBoundsChangeListener(new UCropView.1(this));
+    this.b.setOverlayViewChangeListener(new UCropView.2(this));
   }
   
   public void a()
   {
-    removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView = new GestureCropImageView(getContext());
+    removeView(this.a);
+    this.a = new GestureCropImageView(getContext());
     b();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView.setCropRect(a().a());
-    addView(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropGestureCropImageView, 0);
+    this.a.setCropRect(getOverlayView().getCropViewRect());
+    addView(this.a, 0);
+  }
+  
+  @NonNull
+  public GestureCropImageView getCropImageView()
+  {
+    return this.a;
+  }
+  
+  @NonNull
+  public OverlayView getOverlayView()
+  {
+    return this.b;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -74,7 +74,7 @@ public class UCropView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.UCropView
  * JD-Core Version:    0.7.0.1
  */

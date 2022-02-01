@@ -11,12 +11,6 @@ public class VipComicProxyActivity
 {
   public static Class<? extends PluginProxyActivity> a(String paramString)
   {
-    if (paramString.equals("com.qqcomic.activity.reader.VipComicLandReadingActivity")) {
-      return VipComicLandReaderProxyActivity.class;
-    }
-    if (paramString.equals("com.qqcomic.activity.reader.VipComicPortraitReadingActivity")) {
-      return VipComicPortraitReaderProxyActivity.class;
-    }
     if (paramString.equals("com.qqcomic.activity.media.VipComicMediaPlayActivity")) {
       return VipComicPlayProxyActivity.class;
     }
@@ -61,7 +55,7 @@ public class VipComicProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicProxyActivity
  * JD-Core Version:    0.7.0.1
  */

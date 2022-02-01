@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.feeds.fragment;
 
-import com.tencent.mobileqq.kandian.biz.feeds.api.IRIJChannelStayTimeMonitor;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.feeds.api.impl.RIJChannelStayTimeMonitor;
 import java.util.Map;
 
 class ReadInJoyPicWaterFallFragment$6$1
@@ -11,20 +10,20 @@ class ReadInJoyPicWaterFallFragment$6$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).isChannelShow(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$6.a.b())) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$6.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+      if (RIJChannelStayTimeMonitor.INSTANCE.isChannelShow(this.f.a.d())) {
+        this.f.a(this.b, this.c, this.d, this.e);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$6.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+      this.f.a(this.b, this.c, this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

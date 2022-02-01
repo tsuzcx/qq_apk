@@ -36,15 +36,15 @@ class ShareProxyImpl$5$1$1
     } else {
       i = 0;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.a.dismiss();
     if (i == 0) {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.jdField_a_of_type_AndroidAppActivity, 1, HardCodeUtil.a(2131702908), 1).b(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.a.b.a, 1, HardCodeUtil.a(2131900886), 1).show(this.a.b.a.getResources().getDimensionPixelSize(2131299920));
     }
     if (i != 0)
     {
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.isLocalPic = true;
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.sharePicPath = paramURLDrawable.getPath();
-      ShareProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.this$0, this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData);
+      this.a.b.b.isLocalPic = true;
+      this.a.b.b.sharePicPath = paramURLDrawable.getPath();
+      ShareProxyImpl.a(this.a.b.this$0, this.a.b.b);
       return;
     }
     QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
@@ -52,7 +52,7 @@ class ShareProxyImpl$5$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ class WSVerticalPageCollectionTopAreaController$1
   {
     if (WSVerticalPageCollectionTopAreaController.a(this.a).getBaseActivity() != null)
     {
-      WSVerticalBeaconReport.d(WSVerticalPageCollectionTopAreaController.a(this.a).a(), WSVerticalPageCollectionTopAreaController.a(this.a).b(), WSVerticalPageCollectionTopAreaController.a(this.a).a());
+      WSVerticalBeaconReport.d(WSVerticalPageCollectionTopAreaController.a(this.a).k(), WSVerticalPageCollectionTopAreaController.a(this.a).l(), WSVerticalPageCollectionTopAreaController.a(this.a).F());
       WSVerticalPageCollectionTopAreaController.a(this.a).getBaseActivity().doOnBackPressed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageCollectionTopAreaController.1
  * JD-Core Version:    0.7.0.1
  */

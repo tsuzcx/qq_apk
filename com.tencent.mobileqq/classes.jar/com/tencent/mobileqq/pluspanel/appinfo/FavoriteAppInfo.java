@@ -23,7 +23,7 @@ public class FavoriteAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844232;
+    return 2130845549;
   }
   
   public int getAppID()
@@ -52,22 +52,22 @@ public class FavoriteAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698534);
+    return BaseApplicationImpl.getContext().getString(2131896480);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_qfav", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    PlusPanelUtils.b(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
-    paramBaseChatPie.a().setCanLock(false);
+    PlusPanelUtils.b(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo);
+    paramBaseChatPie.aX().setCanLock(false);
     AIOPanelUtiles.a(localQQAppInterface, "0X8005CB1", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.FavoriteAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,27 +14,27 @@ class TroopSettingActivity$7
   
   public void run()
   {
-    ((IBizTroopMemberInfoService)TroopSettingActivity.a(this.this$0).getRuntimeService(IBizTroopMemberInfoService.class, "")).saveHomeworkTroopMemberIdentity(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopColorNick = this.b;
-    this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopCard = this.b;
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-    if (this.this$0.e != null)
+    ((IBizTroopMemberInfoService)TroopSettingActivity.a(this.this$0).getRuntimeService(IBizTroopMemberInfoService.class, "")).saveHomeworkTroopMemberIdentity(this.this$0.i.troopUin, this.a, this.b, this.c, this.d, this.e);
+    this.this$0.i.troopColorNick = this.b;
+    this.this$0.i.troopCard = this.b;
+    this.this$0.aD.sendEmptyMessage(6);
+    if (this.this$0.N != null)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onReceive HW_TROOP_IDENTITY_CHANGED_EVENT,memberListForCard.size = ");
-        ((StringBuilder)localObject).append(this.this$0.e.size());
+        ((StringBuilder)localObject).append(this.this$0.N.size());
         QLog.d("Q.chatopttroop", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = this.this$0;
-      ((TroopSettingActivity)localObject).a(((TroopSettingActivity)localObject).e);
+      ((TroopSettingActivity)localObject).a(((TroopSettingActivity)localObject).N);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

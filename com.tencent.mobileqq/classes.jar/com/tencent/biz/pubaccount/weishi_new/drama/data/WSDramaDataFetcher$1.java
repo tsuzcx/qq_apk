@@ -14,13 +14,13 @@ class WSDramaDataFetcher$1
   
   protected WSDramaDataFetcher.ResponseModel a(WSRequest<stGetSimpleRecommendDramaRsp> paramWSRequest, stGetSimpleRecommendDramaRsp paramstGetSimpleRecommendDramaRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSDramaDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaDataFetcher, paramWSRequest, paramstGetSimpleRecommendDramaRsp);
+    return WSDramaDataFetcher.a(this.d, paramWSRequest, paramstGetSimpleRecommendDramaRsp);
   }
   
   protected void a(WSDramaDataFetcher.ResponseModel paramResponseModel)
   {
     super.a(paramResponseModel);
-    WSDramaDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaDataFetcher, paramResponseModel, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSDramaDataFetcher.a(this.d, paramResponseModel, this.a);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -28,12 +28,12 @@ class WSDramaDataFetcher$1
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    WSDramaDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaDataWSDramaDataFetcher, this.jdField_a_of_type_Boolean, this.b, paramWSServiceErrorInfo, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSDramaDataFetcher.a(this.d, this.b, this.c, paramWSServiceErrorInfo, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSDramaDataFetcher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,31 +21,30 @@ import org.jetbrains.annotations.Nullable;
 public final class ExpandRedPointApiChannel
   implements ExpandRedPointApi
 {
-  public static final ExpandRedPointApiChannel.Companion a;
-  private static final MethodCodec jdField_a_of_type_IoFlutterPluginCommonMethodCodec;
-  private static final MethodCodec b;
-  private ExpandRedPointApiChannel.OnRedDotChangeStreamHandler jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelRedpointExpandRedPointApiChannel$OnRedDotChangeStreamHandler;
-  private EventChannel jdField_a_of_type_IoFlutterPluginCommonEventChannel;
-  private MethodChannel jdField_a_of_type_IoFlutterPluginCommonMethodChannel;
+  public static final ExpandRedPointApiChannel.Companion a = new ExpandRedPointApiChannel.Companion(null);
+  private static final MethodCodec e;
+  private static final MethodCodec f;
+  private MethodChannel b;
+  private EventChannel c;
+  private ExpandRedPointApiChannel.OnRedDotChangeStreamHandler d;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelRedpointExpandRedPointApiChannel$Companion = new ExpandRedPointApiChannel.Companion(null);
     StandardMethodCodec localStandardMethodCodec = StandardMethodCodec.INSTANCE;
     Intrinsics.checkExpressionValueIsNotNull(localStandardMethodCodec, "StandardMethodCodec.INSTANCE");
-    jdField_a_of_type_IoFlutterPluginCommonMethodCodec = (MethodCodec)localStandardMethodCodec;
+    e = (MethodCodec)localStandardMethodCodec;
     localStandardMethodCodec = StandardMethodCodec.INSTANCE;
     Intrinsics.checkExpressionValueIsNotNull(localStandardMethodCodec, "StandardMethodCodec.INSTANCE");
-    b = (MethodCodec)localStandardMethodCodec;
+    f = (MethodCodec)localStandardMethodCodec;
   }
   
   public final void a()
   {
-    ExpandRedPointApiChannel.OnRedDotChangeStreamHandler localOnRedDotChangeStreamHandler = this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelRedpointExpandRedPointApiChannel$OnRedDotChangeStreamHandler;
+    ExpandRedPointApiChannel.OnRedDotChangeStreamHandler localOnRedDotChangeStreamHandler = this.d;
     if (localOnRedDotChangeStreamHandler == null) {
       Intrinsics.throwUninitializedPropertyAccessException("onRedDotChangeStreamHandler");
     }
-    localOnRedDotChangeStreamHandler.b();
+    localOnRedDotChangeStreamHandler.c();
   }
   
   public void a(@NotNull IExpandChannelCallback paramIExpandChannelCallback)
@@ -54,7 +53,7 @@ public final class ExpandRedPointApiChannel
     int i;
     try
     {
-      i = ExpandFlutterIPCClient.a().a();
+      i = ExpandFlutterIPCClient.a().d();
     }
     catch (Exception localException)
     {
@@ -70,19 +69,19 @@ public final class ExpandRedPointApiChannel
     if (QLog.isColorLevel()) {
       ((LogUtils)localObject).a().a("ExpandRedPointApiChannel", 2, "init Method Channel com.tencent.qflutter/expand/method.expand_red_dot");
     }
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel = new MethodChannel(paramBinaryMessenger, "com.tencent.qflutter/expand/method.expand_red_dot", jdField_a_of_type_IoFlutterPluginCommonMethodCodec);
-    localObject = this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel;
+    this.b = new MethodChannel(paramBinaryMessenger, "com.tencent.qflutter/expand/method.expand_red_dot", e);
+    localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("methodChannel");
     }
     ((MethodChannel)localObject).setMethodCallHandler((MethodChannel.MethodCallHandler)new ExpandRedPointApiChannel.MethodCallHandler((ExpandRedPointApi)this));
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelRedpointExpandRedPointApiChannel$OnRedDotChangeStreamHandler = new ExpandRedPointApiChannel.OnRedDotChangeStreamHandler();
-    this.jdField_a_of_type_IoFlutterPluginCommonEventChannel = new EventChannel(paramBinaryMessenger, "com.tencent.qflutter/expand/event.expand_red_dot.onRedDotChange", b);
-    paramBinaryMessenger = this.jdField_a_of_type_IoFlutterPluginCommonEventChannel;
+    this.d = new ExpandRedPointApiChannel.OnRedDotChangeStreamHandler();
+    this.c = new EventChannel(paramBinaryMessenger, "com.tencent.qflutter/expand/event.expand_red_dot.onRedDotChange", f);
+    paramBinaryMessenger = this.c;
     if (paramBinaryMessenger == null) {
       Intrinsics.throwUninitializedPropertyAccessException("onRedDotChangeEventChannel");
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelRedpointExpandRedPointApiChannel$OnRedDotChangeStreamHandler;
+    localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("onRedDotChangeStreamHandler");
     }
@@ -96,13 +95,13 @@ public final class ExpandRedPointApiChannel
   public void b(@NotNull IExpandChannelCallback paramIExpandChannelCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramIExpandChannelCallback, "result");
-    ExpandFlutterIPCClient.a().a();
+    ExpandFlutterIPCClient.a().e();
     paramIExpandChannelCallback.success(Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.redpoint.ExpandRedPointApiChannel
  * JD-Core Version:    0.7.0.1
  */

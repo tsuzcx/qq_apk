@@ -101,6 +101,8 @@ public abstract class AbsBaseArticleInfo
   @notColumn
   public boolean hasInsertAnimated = false;
   @notColumn
+  public boolean hasPlayFeedsDataPreloaded;
+  @notColumn
   public boolean hasRequestFollowStatus;
   public boolean hasWalletIcon;
   @notColumn
@@ -150,6 +152,8 @@ public abstract class AbsBaseArticleInfo
   public boolean like;
   public int mAbandonRepeatFlag;
   public int mAccountLess;
+  @notColumn
+  public int mAdScene;
   public long mAlgorithmGroup = -1L;
   public long mAlgorithmID = -1L;
   @notColumn
@@ -379,6 +383,7 @@ public abstract class AbsBaseArticleInfo
   public int subscriptType;
   public String subscriptWording;
   public String subscriptWordingColor;
+  public String tags;
   public String thirdAction;
   public String thirdIcon;
   public String thirdName;
@@ -389,6 +394,7 @@ public abstract class AbsBaseArticleInfo
   @notColumn
   public String titleWithTopicJson;
   public long uin;
+  public String unioChann;
   public boolean unowned;
   public String upIconUrl;
   public String vIconUrl;
@@ -402,8 +408,6 @@ public abstract class AbsBaseArticleInfo
   public String wechatShareUrl;
   @notColumn
   public articlesummary.WeishiUGInfo weishiUGInfo;
-  public String wormholeData;
-  public String wormholeId;
   
   private void ensureFirstFrameInfoNonNull()
   {
@@ -466,7 +470,7 @@ public abstract class AbsBaseArticleInfo
   public int getFirstFrameHeight()
   {
     ensureFirstFrameInfoNonNull();
-    return this.firstFrameInfo.b();
+    return this.firstFrameInfo.d();
   }
   
   public URL getFirstFrameUrl()
@@ -482,7 +486,7 @@ public abstract class AbsBaseArticleInfo
   public int getFirstFrameWidth()
   {
     ensureFirstFrameInfoNonNull();
-    return this.firstFrameInfo.a();
+    return this.firstFrameInfo.c();
   }
   
   public String getInnerUniqueID()
@@ -578,7 +582,7 @@ public abstract class AbsBaseArticleInfo
   public boolean hasFirstFramePreload()
   {
     ensureFirstFrameInfoNonNull();
-    return this.firstFrameInfo.a();
+    return this.firstFrameInfo.b();
   }
   
   public boolean hasSearchWordInfo()
@@ -595,7 +599,7 @@ public abstract class AbsBaseArticleInfo
   {
     SocializeFeedsInfo localSocializeFeedsInfo = this.mSocialFeedInfo;
     boolean bool = true;
-    if ((localSocializeFeedsInfo == null) || (localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo == null) || (!this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a))
+    if ((localSocializeFeedsInfo == null) || (localSocializeFeedsInfo.t == null) || (!this.mSocialFeedInfo.t.f))
     {
       if (this.mArticleType == 1) {
         return true;
@@ -608,7 +612,7 @@ public abstract class AbsBaseArticleInfo
   public boolean isSocialFeed()
   {
     SocializeFeedsInfo localSocializeFeedsInfo = this.mSocialFeedInfo;
-    return (localSocializeFeedsInfo != null) && (localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null);
+    return (localSocializeFeedsInfo != null) && (localSocializeFeedsInfo.c != null);
   }
   
   public boolean isSubscriptFeed()
@@ -961,7 +965,7 @@ public abstract class AbsBaseArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo
  * JD-Core Version:    0.7.0.1
  */

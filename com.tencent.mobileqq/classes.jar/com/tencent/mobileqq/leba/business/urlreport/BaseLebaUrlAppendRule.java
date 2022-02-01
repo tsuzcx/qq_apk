@@ -6,7 +6,7 @@ public abstract class BaseLebaUrlAppendRule
   public String a(String paramString)
   {
     Object localObject = paramString;
-    if (a(paramString))
+    if (b(paramString))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
@@ -18,7 +18,7 @@ public abstract class BaseLebaUrlAppendRule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.urlreport.BaseLebaUrlAppendRule
  * JD-Core Version:    0.7.0.1
  */

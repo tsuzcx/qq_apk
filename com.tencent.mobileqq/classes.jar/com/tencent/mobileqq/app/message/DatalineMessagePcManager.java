@@ -13,23 +13,23 @@ public class DatalineMessagePcManager
   public DatalineMessagePcManager(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
     super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-    this.jdField_a_of_type_Int = 6000;
+    this.c = AppConstants.DATALINE_PC_UIN;
+    this.d = 6000;
   }
   
   protected DataLineMsgProxy a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0);
+    return this.a.getDataLineMsgProxy(0);
   }
   
-  protected void a()
+  protected void b()
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(false);
+    ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessagePcManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.AppOpsManager;
+import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -17,6 +18,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -75,6 +77,7 @@ public class MsfSdkUtils
     {
       try
       {
+        QLog.d("MsfSdkUtils", 1, new Object[] { "add login user ", getShortUin(paramString), "_", Boolean.valueOf(paramBoolean) });
         Object localObject = getNewAppUinStoreFile();
         if (!((File)localObject).exists()) {
           ((File)localObject).mkdirs();
@@ -91,7 +94,7 @@ public class MsfSdkUtils
           localStringBuilder.append("/u_");
           localStringBuilder.append(paramString);
           if (!paramBoolean) {
-            break label170;
+            break label204;
           }
           localObject = "_t";
           localStringBuilder.append((String)localObject);
@@ -116,7 +119,7 @@ public class MsfSdkUtils
         return;
       }
       finally {}
-      label170:
+      label204:
       String str = "_f";
     }
   }
@@ -125,6 +128,7 @@ public class MsfSdkUtils
   {
     try
     {
+      QLog.d("MsfSdkUtils", 1, new Object[] { "add user ", getShortUin(paramString) });
       Object localObject = getNewAppUinStoreFile();
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
@@ -490,7 +494,7 @@ public class MsfSdkUtils
       paramString = localException1;
       try
       {
-        str3 = localTelephonyManager.getDeviceId();
+        str3 = PhoneInfoMonitor.getDeviceId(localTelephonyManager);
       }
       catch (SecurityException localSecurityException)
       {
@@ -693,87 +697,87 @@ public class MsfSdkUtils
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 432	java/util/ArrayList
+    //   3: new 452	java/util/ArrayList
     //   6: dup
-    //   7: invokespecial 433	java/util/ArrayList:<init>	()V
+    //   7: invokespecial 453	java/util/ArrayList:<init>	()V
     //   10: astore 4
     //   12: aload_0
     //   13: ifnull +232 -> 245
     //   16: aload_0
-    //   17: invokevirtual 105	java/io/File:exists	()Z
+    //   17: invokevirtual 125	java/io/File:exists	()Z
     //   20: ifne +6 -> 26
     //   23: goto +222 -> 245
-    //   26: new 391	java/util/Properties
+    //   26: new 408	java/util/Properties
     //   29: dup
-    //   30: invokespecial 484	java/util/Properties:<init>	()V
+    //   30: invokespecial 504	java/util/Properties:<init>	()V
     //   33: astore_2
     //   34: aconst_null
     //   35: astore_3
     //   36: aconst_null
     //   37: astore_1
-    //   38: new 486	java/io/FileInputStream
+    //   38: new 506	java/io/FileInputStream
     //   41: dup
     //   42: aload_0
-    //   43: invokespecial 489	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   43: invokespecial 509	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   46: astore_0
     //   47: aload_2
     //   48: aload_0
-    //   49: invokevirtual 493	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   49: invokevirtual 513	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   52: aload_2
-    //   53: invokevirtual 497	java/util/Properties:keySet	()Ljava/util/Set;
-    //   56: invokeinterface 503 1 0
+    //   53: invokevirtual 517	java/util/Properties:keySet	()Ljava/util/Set;
+    //   56: invokeinterface 523 1 0
     //   61: astore_1
     //   62: aload_1
-    //   63: invokeinterface 508 1 0
+    //   63: invokeinterface 528 1 0
     //   68: ifeq +98 -> 166
     //   71: aload_1
-    //   72: invokeinterface 512 1 0
+    //   72: invokeinterface 532 1 0
     //   77: checkcast 71	java/lang/String
     //   80: astore_3
     //   81: aload_2
     //   82: aload_3
-    //   83: invokevirtual 394	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokevirtual 411	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   86: astore 5
     //   88: aload 5
     //   90: ifnull -28 -> 62
     //   93: aload 5
-    //   95: invokestatic 516	com/tencent/qphone/base/remote/SimpleAccount:parseSimpleAccount	(Ljava/lang/String;)Lcom/tencent/qphone/base/remote/SimpleAccount;
+    //   95: invokestatic 536	com/tencent/qphone/base/remote/SimpleAccount:parseSimpleAccount	(Ljava/lang/String;)Lcom/tencent/qphone/base/remote/SimpleAccount;
     //   98: astore 5
     //   100: aload 5
     //   102: ifnull -40 -> 62
     //   105: aload 5
-    //   107: invokevirtual 517	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
-    //   110: invokestatic 460	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:isUinLong	(Ljava/lang/String;)Z
+    //   107: invokevirtual 537	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
+    //   110: invokestatic 480	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:isUinLong	(Ljava/lang/String;)Z
     //   113: ifeq +14 -> 127
     //   116: aload 4
     //   118: aload 5
-    //   120: invokevirtual 463	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   120: invokevirtual 483	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   123: pop
     //   124: goto -62 -> 62
-    //   127: new 117	java/lang/StringBuilder
+    //   127: new 137	java/lang/StringBuilder
     //   130: dup
-    //   131: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   131: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   134: astore 5
     //   136: aload 5
-    //   138: ldc_w 465
-    //   141: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc_w 485
+    //   141: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload 5
     //   147: aload_3
-    //   148: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: pop
     //   152: ldc 39
     //   154: iconst_1
     //   155: aload 5
-    //   157: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   160: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   160: invokestatic 170	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   163: goto -101 -> 62
     //   166: aload_0
-    //   167: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   167: invokevirtual 540	java/io/FileInputStream:close	()V
     //   170: goto +51 -> 221
     //   173: astore_0
     //   174: aload_0
-    //   175: invokevirtual 521	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 541	java/io/IOException:printStackTrace	()V
     //   178: goto +43 -> 221
     //   181: astore_1
     //   182: goto +45 -> 227
@@ -791,11 +795,11 @@ public class MsfSdkUtils
     //   200: aload_0
     //   201: astore_1
     //   202: aload_2
-    //   203: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   203: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   206: aload_0
     //   207: ifnull +14 -> 221
     //   210: aload_0
-    //   211: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   211: invokevirtual 540	java/io/FileInputStream:close	()V
     //   214: goto +7 -> 221
     //   217: astore_0
     //   218: goto -44 -> 174
@@ -806,11 +810,11 @@ public class MsfSdkUtils
     //   227: aload_0
     //   228: ifnull +15 -> 243
     //   231: aload_0
-    //   232: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   232: invokevirtual 540	java/io/FileInputStream:close	()V
     //   235: goto +8 -> 243
     //   238: astore_0
     //   239: aload_0
-    //   240: invokevirtual 521	java/io/IOException:printStackTrace	()V
+    //   240: invokevirtual 541	java/io/IOException:printStackTrace	()V
     //   243: aload_1
     //   244: athrow
     //   245: ldc 2
@@ -929,42 +933,42 @@ public class MsfSdkUtils
     //   4: astore_2
     //   5: aload_2
     //   6: astore_1
-    //   7: new 117	java/lang/StringBuilder
+    //   7: new 137	java/lang/StringBuilder
     //   10: dup
-    //   11: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   11: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   14: astore_3
     //   15: aload_2
     //   16: astore_1
     //   17: aload_3
-    //   18: ldc_w 540
-    //   21: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: ldc_w 560
+    //   21: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: pop
     //   25: aload_2
     //   26: astore_1
     //   27: aload_3
     //   28: iload_0
-    //   29: invokevirtual 415	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload_2
     //   34: astore_1
     //   35: aload_3
-    //   36: ldc_w 542
-    //   39: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc_w 562
+    //   39: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload_2
     //   44: astore_1
-    //   45: new 544	java/io/FileReader
+    //   45: new 564	java/io/FileReader
     //   48: dup
     //   49: aload_3
-    //   50: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokespecial 545	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   50: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokespecial 565	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   56: astore_2
     //   57: sipush 512
     //   60: newarray char
     //   62: astore_1
     //   63: aload_2
     //   64: aload_1
-    //   65: invokevirtual 549	java/io/FileReader:read	([C)I
+    //   65: invokevirtual 569	java/io/FileReader:read	([C)I
     //   68: pop
     //   69: iconst_0
     //   70: istore_0
@@ -980,13 +984,13 @@ public class MsfSdkUtils
     //   86: new 71	java/lang/String
     //   89: dup
     //   90: aload_1
-    //   91: invokespecial 552	java/lang/String:<init>	([C)V
+    //   91: invokespecial 572	java/lang/String:<init>	([C)V
     //   94: iconst_0
     //   95: iload_0
-    //   96: invokevirtual 440	java/lang/String:substring	(II)Ljava/lang/String;
+    //   96: invokevirtual 460	java/lang/String:substring	(II)Ljava/lang/String;
     //   99: astore_1
     //   100: aload_2
-    //   101: invokevirtual 553	java/io/FileReader:close	()V
+    //   101: invokevirtual 573	java/io/FileReader:close	()V
     //   104: aload_1
     //   105: areturn
     //   106: astore_3
@@ -1006,19 +1010,19 @@ public class MsfSdkUtils
     //   127: astore_1
     //   128: ldc 39
     //   130: iconst_1
-    //   131: ldc_w 555
+    //   131: ldc_w 575
     //   134: aload_3
-    //   135: invokestatic 557	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   135: invokestatic 577	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   138: aload_2
     //   139: ifnull +7 -> 146
     //   142: aload_2
-    //   143: invokevirtual 553	java/io/FileReader:close	()V
-    //   146: ldc_w 559
+    //   143: invokevirtual 573	java/io/FileReader:close	()V
+    //   146: ldc_w 579
     //   149: areturn
     //   150: aload_1
     //   151: ifnull +7 -> 158
     //   154: aload_1
-    //   155: invokevirtual 553	java/io/FileReader:close	()V
+    //   155: invokevirtual 573	java/io/FileReader:close	()V
     //   158: goto +5 -> 163
     //   161: aload_2
     //   162: athrow
@@ -1029,7 +1033,7 @@ public class MsfSdkUtils
     //   169: astore_1
     //   170: goto -32 -> 138
     //   173: astore_1
-    //   174: ldc_w 559
+    //   174: ldc_w 579
     //   177: areturn
     //   178: astore_1
     //   179: goto -21 -> 158
@@ -1128,6 +1132,36 @@ public class MsfSdkUtils
     }
   }
   
+  public static String getProcessNameIfNoPrivacyPolicy(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 28) {
+      return Application.getProcessName();
+    }
+    if (Build.VERSION.SDK_INT < 23) {
+      return getProcessName(paramContext);
+    }
+    try
+    {
+      localClass = Class.forName("android.app.ActivityThread");
+      if (Build.VERSION.SDK_INT < 18) {
+        break label78;
+      }
+      paramContext = "currentProcessName";
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        Class localClass;
+        continue;
+        paramContext = "currentPackageName";
+      }
+    }
+    paramContext = (String)localClass.getDeclaredMethod(paramContext, new Class[0]).invoke(null, new Object[0]);
+    return paramContext;
+    return "unknown";
+  }
+  
   public static String getResolutionString(Context paramContext)
   {
     int k = paramContext.getResources().getDisplayMetrics().widthPixels;
@@ -1150,103 +1184,103 @@ public class MsfSdkUtils
   public static int getRoutingID(Context paramContext)
   {
     // Byte code:
-    //   0: new 117	java/lang/StringBuilder
+    //   0: new 137	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   7: astore_0
     //   8: aload_0
-    //   9: invokestatic 247	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   12: invokevirtual 254	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   15: invokevirtual 122	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   18: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: invokestatic 266	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   12: invokevirtual 273	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   15: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   18: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload_0
-    //   23: ldc_w 621
-    //   26: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc_w 661
+    //   26: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload_0
-    //   31: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   34: astore_0
-    //   35: new 117	java/lang/StringBuilder
+    //   35: new 137	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   39: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   42: astore_2
     //   43: aload_2
     //   44: aload_0
-    //   45: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: pop
     //   49: aload_2
-    //   50: ldc_w 623
-    //   53: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: ldc_w 663
+    //   53: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload_2
-    //   58: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   61: astore_3
-    //   62: new 101	java/io/File
+    //   62: new 121	java/io/File
     //   65: dup
     //   66: aload_3
-    //   67: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   67: invokespecial 154	java/io/File:<init>	(Ljava/lang/String;)V
     //   70: astore_0
     //   71: aload_0
     //   72: astore_2
     //   73: aload_0
-    //   74: invokevirtual 626	java/io/File:canRead	()Z
+    //   74: invokevirtual 666	java/io/File:canRead	()Z
     //   77: ifne +12 -> 89
-    //   80: new 101	java/io/File
+    //   80: new 121	java/io/File
     //   83: dup
     //   84: aload_3
-    //   85: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   85: invokespecial 154	java/io/File:<init>	(Ljava/lang/String;)V
     //   88: astore_2
-    //   89: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   89: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   92: ifeq +89 -> 181
-    //   95: new 117	java/lang/StringBuilder
+    //   95: new 137	java/lang/StringBuilder
     //   98: dup
-    //   99: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   99: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   102: astore_0
     //   103: aload_0
-    //   104: ldc_w 628
-    //   107: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: ldc_w 668
+    //   107: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
     //   111: aload_0
     //   112: aload_2
-    //   113: invokevirtual 122	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   116: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   116: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: aload_0
-    //   121: ldc_w 630
-    //   124: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc_w 670
+    //   124: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: pop
     //   128: aload_0
     //   129: aload_2
-    //   130: invokevirtual 633	java/io/File:isFile	()Z
-    //   133: invokevirtual 636	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   130: invokevirtual 673	java/io/File:isFile	()Z
+    //   133: invokevirtual 676	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   136: pop
     //   137: aload_0
-    //   138: ldc_w 638
-    //   141: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc_w 678
+    //   141: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload_0
     //   146: aload_2
-    //   147: invokevirtual 626	java/io/File:canRead	()Z
-    //   150: invokevirtual 636	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 666	java/io/File:canRead	()Z
+    //   150: invokevirtual 676	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   153: pop
     //   154: aload_0
-    //   155: ldc_w 640
-    //   158: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: ldc_w 680
+    //   158: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: pop
     //   162: aload_0
     //   163: aload_2
-    //   164: invokevirtual 643	java/io/File:length	()J
-    //   167: invokevirtual 646	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   164: invokevirtual 683	java/io/File:length	()J
+    //   167: invokevirtual 686	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   170: pop
     //   171: ldc 39
     //   173: iconst_2
     //   174: aload_0
-    //   175: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 649	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: new 391	java/util/Properties
+    //   175: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 689	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: new 408	java/util/Properties
     //   184: dup
-    //   185: invokespecial 484	java/util/Properties:<init>	()V
+    //   185: invokespecial 504	java/util/Properties:<init>	()V
     //   188: astore 6
     //   190: aconst_null
     //   191: astore 5
@@ -1257,20 +1291,20 @@ public class MsfSdkUtils
     //   198: aload 5
     //   200: astore_0
     //   201: aload_2
-    //   202: invokevirtual 105	java/io/File:exists	()Z
+    //   202: invokevirtual 125	java/io/File:exists	()Z
     //   205: ifeq +42 -> 247
     //   208: aload 5
     //   210: astore_0
-    //   211: new 486	java/io/FileInputStream
+    //   211: new 506	java/io/FileInputStream
     //   214: dup
     //   215: aload_2
-    //   216: invokespecial 489	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   216: invokespecial 509	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   219: astore_2
     //   220: aload 6
     //   222: aload_2
-    //   223: invokevirtual 493	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   223: invokevirtual 513	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   226: aload_2
-    //   227: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   227: invokevirtual 540	java/io/FileInputStream:close	()V
     //   230: aload_2
     //   231: astore_3
     //   232: goto +15 -> 247
@@ -1285,11 +1319,11 @@ public class MsfSdkUtils
     //   247: aload_3
     //   248: ifnull +40 -> 288
     //   251: aload_3
-    //   252: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   252: invokevirtual 540	java/io/FileInputStream:close	()V
     //   255: goto +33 -> 288
     //   258: astore_0
     //   259: aload_0
-    //   260: invokevirtual 521	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 541	java/io/IOException:printStackTrace	()V
     //   263: goto +25 -> 288
     //   266: astore_2
     //   267: goto +96 -> 363
@@ -1299,58 +1333,58 @@ public class MsfSdkUtils
     //   274: aload_2
     //   275: astore_0
     //   276: aload_3
-    //   277: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   277: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   280: aload_2
     //   281: ifnull +7 -> 288
     //   284: aload_2
-    //   285: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   285: invokevirtual 540	java/io/FileInputStream:close	()V
     //   288: aload 6
-    //   290: ldc_w 651
-    //   293: invokevirtual 394	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   290: ldc_w 691
+    //   293: invokevirtual 411	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   296: astore_0
     //   297: aload_0
     //   298: ifnull +63 -> 361
     //   301: aload_0
-    //   302: invokevirtual 654	java/lang/String:trim	()Ljava/lang/String;
-    //   305: invokevirtual 397	java/lang/String:length	()I
+    //   302: invokevirtual 694	java/lang/String:trim	()Ljava/lang/String;
+    //   305: invokevirtual 414	java/lang/String:length	()I
     //   308: ifle +53 -> 361
     //   311: aload_0
-    //   312: invokestatic 657	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   315: invokevirtual 340	java/lang/Integer:intValue	()I
+    //   312: invokestatic 697	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   315: invokevirtual 358	java/lang/Integer:intValue	()I
     //   318: istore_1
     //   319: iload_1
     //   320: ireturn
     //   321: astore_2
-    //   322: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   322: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   325: ifeq +36 -> 361
-    //   328: new 117	java/lang/StringBuilder
+    //   328: new 137	java/lang/StringBuilder
     //   331: dup
-    //   332: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   332: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   335: astore_3
     //   336: aload_3
-    //   337: ldc_w 659
-    //   340: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: ldc_w 699
+    //   340: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   343: pop
     //   344: aload_3
     //   345: aload_0
-    //   346: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   346: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   349: pop
     //   350: ldc 39
     //   352: iconst_2
     //   353: aload_3
-    //   354: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   354: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   357: aload_2
-    //   358: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   358: invokestatic 701	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   361: iconst_m1
     //   362: ireturn
     //   363: aload_0
     //   364: ifnull +15 -> 379
     //   367: aload_0
-    //   368: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   368: invokevirtual 540	java/io/FileInputStream:close	()V
     //   371: goto +8 -> 379
     //   374: astore_0
     //   375: aload_0
-    //   376: invokevirtual 521	java/io/IOException:printStackTrace	()V
+    //   376: invokevirtual 541	java/io/IOException:printStackTrace	()V
     //   379: aload_2
     //   380: athrow
     // Local variable table:
@@ -1408,7 +1442,7 @@ public class MsfSdkUtils
     //   5: anewarray 4	java/lang/Object
     //   8: dup
     //   9: iconst_0
-    //   10: ldc_w 678
+    //   10: ldc_w 715
     //   13: aastore
     //   14: dup
     //   15: iconst_1
@@ -1416,56 +1450,56 @@ public class MsfSdkUtils
     //   17: aastore
     //   18: dup
     //   19: iconst_2
-    //   20: ldc_w 680
+    //   20: ldc_w 717
     //   23: aastore
     //   24: dup
     //   25: iconst_3
     //   26: iload_1
-    //   27: invokestatic 323	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: invokestatic 341	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   30: aastore
     //   31: dup
     //   32: iconst_4
-    //   33: ldc_w 682
+    //   33: ldc_w 719
     //   36: aastore
     //   37: dup
     //   38: iconst_5
     //   39: aload_2
     //   40: aastore
-    //   41: invokestatic 674	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   41: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   44: aload_0
     //   45: iload_1
     //   46: aload_2
-    //   47: invokestatic 686	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getServerConfigFile	(Ljava/lang/String;ILjava/lang/String;)Ljava/io/File;
+    //   47: invokestatic 723	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getServerConfigFile	(Ljava/lang/String;ILjava/lang/String;)Ljava/io/File;
     //   50: astore_2
     //   51: aload_2
     //   52: ifnull +132 -> 184
     //   55: aload_2
-    //   56: invokevirtual 105	java/io/File:exists	()Z
+    //   56: invokevirtual 125	java/io/File:exists	()Z
     //   59: ifne +6 -> 65
     //   62: goto +122 -> 184
-    //   65: new 117	java/lang/StringBuilder
+    //   65: new 137	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   69: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   72: astore 4
     //   74: aconst_null
     //   75: astore_3
     //   76: aconst_null
     //   77: astore_0
-    //   78: new 688	java/io/InputStreamReader
+    //   78: new 725	java/io/InputStreamReader
     //   81: dup
-    //   82: new 486	java/io/FileInputStream
+    //   82: new 506	java/io/FileInputStream
     //   85: dup
     //   86: aload_2
-    //   87: invokespecial 489	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   90: ldc_w 690
-    //   93: invokespecial 693	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   87: invokespecial 509	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   90: ldc_w 727
+    //   93: invokespecial 730	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   96: astore_2
     //   97: sipush 4096
     //   100: newarray char
     //   102: astore_0
     //   103: aload_2
     //   104: aload_0
-    //   105: invokevirtual 694	java/io/InputStreamReader:read	([C)I
+    //   105: invokevirtual 731	java/io/InputStreamReader:read	([C)I
     //   108: istore_1
     //   109: iconst_m1
     //   110: iload_1
@@ -1474,11 +1508,11 @@ public class MsfSdkUtils
     //   116: aload_0
     //   117: iconst_0
     //   118: iload_1
-    //   119: invokevirtual 697	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 734	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   122: pop
     //   123: goto -20 -> 103
     //   126: aload_2
-    //   127: invokevirtual 698	java/io/InputStreamReader:close	()V
+    //   127: invokevirtual 735	java/io/InputStreamReader:close	()V
     //   130: goto +38 -> 168
     //   133: astore_3
     //   134: aload_2
@@ -1498,21 +1532,21 @@ public class MsfSdkUtils
     //   154: aload_2
     //   155: astore_0
     //   156: aload_3
-    //   157: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   157: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   160: aload_2
     //   161: ifnull +7 -> 168
     //   164: aload_2
-    //   165: invokevirtual 698	java/io/InputStreamReader:close	()V
+    //   165: invokevirtual 735	java/io/InputStreamReader:close	()V
     //   168: aload 4
-    //   170: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   173: areturn
     //   174: aload_0
     //   175: ifnull +7 -> 182
     //   178: aload_0
-    //   179: invokevirtual 698	java/io/InputStreamReader:close	()V
+    //   179: invokevirtual 735	java/io/InputStreamReader:close	()V
     //   182: aload_2
     //   183: athrow
-    //   184: ldc_w 365
+    //   184: ldc_w 383
     //   187: areturn
     //   188: astore_0
     //   189: goto -21 -> 168
@@ -1557,8 +1591,8 @@ public class MsfSdkUtils
     }
     catch (Exception paramString1)
     {
-      label33:
-      break label33;
+      label32:
+      break label32;
     }
     paramString1 = "/data/data/com.tencent.mobileqq/files";
     if (paramInt == 0)
@@ -1702,35 +1736,35 @@ public class MsfSdkUtils
     //   1: astore 4
     //   3: aconst_null
     //   4: astore 5
-    //   6: invokestatic 772	java/lang/Thread:getAllStackTraces	()Ljava/util/Map;
+    //   6: invokestatic 806	java/lang/Thread:getAllStackTraces	()Ljava/util/Map;
     //   9: astore 6
     //   11: aload 6
-    //   13: invokeinterface 775 1 0
-    //   18: invokeinterface 503 1 0
+    //   13: invokeinterface 809 1 0
+    //   18: invokeinterface 523 1 0
     //   23: astore 7
     //   25: aload 4
     //   27: astore_3
     //   28: aload 7
-    //   30: invokeinterface 508 1 0
+    //   30: invokeinterface 528 1 0
     //   35: ifeq +105 -> 140
     //   38: aload 7
-    //   40: invokeinterface 512 1 0
-    //   45: checkcast 349	java/lang/Thread
+    //   40: invokeinterface 532 1 0
+    //   45: checkcast 367	java/lang/Thread
     //   48: astore_3
     //   49: aload_0
     //   50: aload_3
-    //   51: invokevirtual 778	java/lang/Thread:getName	()Ljava/lang/String;
-    //   54: invokevirtual 227	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   51: invokevirtual 812	java/lang/Thread:getName	()Ljava/lang/String;
+    //   54: invokevirtual 246	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   57: ifeq -32 -> 25
-    //   60: new 117	java/lang/StringBuilder
+    //   60: new 137	java/lang/StringBuilder
     //   63: dup
     //   64: sipush 1024
-    //   67: invokespecial 358	java/lang/StringBuilder:<init>	(I)V
+    //   67: invokespecial 376	java/lang/StringBuilder:<init>	(I)V
     //   70: astore_0
     //   71: aload 6
     //   73: aload_3
-    //   74: invokeinterface 783 2 0
-    //   79: checkcast 785	[Ljava/lang/StackTraceElement;
+    //   74: invokeinterface 817 2 0
+    //   79: checkcast 819	[Ljava/lang/StackTraceElement;
     //   82: astore 4
     //   84: aload 4
     //   86: arraylength
@@ -1746,12 +1780,12 @@ public class MsfSdkUtils
     //   98: aload 4
     //   100: iload_1
     //   101: aaload
-    //   102: invokevirtual 361	java/lang/StackTraceElement:toString	()Ljava/lang/String;
-    //   105: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 379	java/lang/StackTraceElement:toString	()Ljava/lang/String;
+    //   105: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aload_0
-    //   110: ldc 146
-    //   112: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: ldc 164
+    //   112: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
     //   116: iload_1
     //   117: iconst_1
@@ -1766,13 +1800,13 @@ public class MsfSdkUtils
     //   132: aload 5
     //   134: astore_3
     //   135: aload 4
-    //   137: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   137: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   140: aload_3
     //   141: ifnonnull +7 -> 148
-    //   144: ldc_w 365
+    //   144: ldc_w 383
     //   147: areturn
     //   148: aload_3
-    //   149: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   152: areturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2082,9 +2116,9 @@ public class MsfSdkUtils
   public static Properties loadConfig(String paramString)
   {
     // Byte code:
-    //   0: new 391	java/util/Properties
+    //   0: new 408	java/util/Properties
     //   3: dup
-    //   4: invokespecial 484	java/util/Properties:<init>	()V
+    //   4: invokespecial 504	java/util/Properties:<init>	()V
     //   7: astore_1
     //   8: aload_0
     //   9: ifnonnull +5 -> 14
@@ -2092,16 +2126,16 @@ public class MsfSdkUtils
     //   13: areturn
     //   14: aconst_null
     //   15: astore_2
-    //   16: new 486	java/io/FileInputStream
+    //   16: new 506	java/io/FileInputStream
     //   19: dup
     //   20: aload_0
-    //   21: invokespecial 891	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 923	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   24: astore_0
     //   25: aload_1
     //   26: aload_0
-    //   27: invokevirtual 493	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   27: invokevirtual 513	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   30: aload_0
-    //   31: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   31: invokevirtual 540	java/io/FileInputStream:close	()V
     //   34: aload_1
     //   35: areturn
     //   36: astore_1
@@ -2112,7 +2146,7 @@ public class MsfSdkUtils
     //   43: aload_0
     //   44: ifnull +7 -> 51
     //   47: aload_0
-    //   48: invokevirtual 520	java/io/FileInputStream:close	()V
+    //   48: invokevirtual 540	java/io/FileInputStream:close	()V
     //   51: aload_1
     //   52: athrow
     // Local variable table:
@@ -2139,18 +2173,18 @@ public class MsfSdkUtils
     //   8: return
     //   9: aconst_null
     //   10: astore_2
-    //   11: new 895	java/io/FileOutputStream
+    //   11: new 927	java/io/FileOutputStream
     //   14: dup
     //   15: aload_0
     //   16: iconst_0
-    //   17: invokespecial 897	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
+    //   17: invokespecial 929	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
     //   20: astore_0
     //   21: aload_1
     //   22: aload_0
-    //   23: ldc_w 365
-    //   26: invokevirtual 901	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   23: ldc_w 383
+    //   26: invokevirtual 933	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   29: aload_0
-    //   30: invokevirtual 902	java/io/FileOutputStream:close	()V
+    //   30: invokevirtual 934	java/io/FileOutputStream:close	()V
     //   33: return
     //   34: astore_1
     //   35: goto +6 -> 41
@@ -2160,7 +2194,7 @@ public class MsfSdkUtils
     //   41: aload_0
     //   42: ifnull +7 -> 49
     //   45: aload_0
-    //   46: invokevirtual 902	java/io/FileOutputStream:close	()V
+    //   46: invokevirtual 934	java/io/FileOutputStream:close	()V
     //   49: aload_1
     //   50: athrow
     //   51: return
@@ -2373,7 +2407,7 @@ public class MsfSdkUtils
     //   5: anewarray 4	java/lang/Object
     //   8: dup
     //   9: iconst_0
-    //   10: ldc_w 924
+    //   10: ldc_w 956
     //   13: aastore
     //   14: dup
     //   15: iconst_1
@@ -2381,61 +2415,61 @@ public class MsfSdkUtils
     //   17: aastore
     //   18: dup
     //   19: iconst_2
-    //   20: ldc_w 680
+    //   20: ldc_w 717
     //   23: aastore
     //   24: dup
     //   25: iconst_3
     //   26: iload_1
-    //   27: invokestatic 323	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: invokestatic 341	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   30: aastore
     //   31: dup
     //   32: iconst_4
-    //   33: ldc_w 682
+    //   33: ldc_w 719
     //   36: aastore
     //   37: dup
     //   38: iconst_5
     //   39: aload_3
     //   40: aastore
-    //   41: invokestatic 674	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   41: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   44: aload_0
     //   45: iload_1
     //   46: aload_3
-    //   47: invokestatic 686	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getServerConfigFile	(Ljava/lang/String;ILjava/lang/String;)Ljava/io/File;
+    //   47: invokestatic 723	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getServerConfigFile	(Ljava/lang/String;ILjava/lang/String;)Ljava/io/File;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnull +151 -> 203
     //   55: aload_3
-    //   56: invokevirtual 105	java/io/File:exists	()Z
+    //   56: invokevirtual 125	java/io/File:exists	()Z
     //   59: ifne +8 -> 67
     //   62: aload_3
-    //   63: invokevirtual 137	java/io/File:createNewFile	()Z
+    //   63: invokevirtual 157	java/io/File:createNewFile	()Z
     //   66: pop
     //   67: aload_3
-    //   68: invokevirtual 105	java/io/File:exists	()Z
+    //   68: invokevirtual 125	java/io/File:exists	()Z
     //   71: ifeq +95 -> 166
     //   74: aload_3
-    //   75: invokevirtual 927	java/io/File:canWrite	()Z
+    //   75: invokevirtual 959	java/io/File:canWrite	()Z
     //   78: ifeq +88 -> 166
     //   81: aconst_null
     //   82: astore 4
     //   84: aconst_null
     //   85: astore_0
-    //   86: new 929	java/io/OutputStreamWriter
+    //   86: new 961	java/io/OutputStreamWriter
     //   89: dup
-    //   90: new 895	java/io/FileOutputStream
+    //   90: new 927	java/io/FileOutputStream
     //   93: dup
     //   94: aload_3
-    //   95: invokespecial 930	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   98: ldc_w 690
-    //   101: invokespecial 932	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   95: invokespecial 962	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   98: ldc_w 727
+    //   101: invokespecial 964	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   104: astore_3
     //   105: aload_3
     //   106: aload_2
-    //   107: invokevirtual 935	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
+    //   107: invokevirtual 967	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
     //   110: aload_3
-    //   111: invokevirtual 936	java/io/OutputStreamWriter:flush	()V
+    //   111: invokevirtual 968	java/io/OutputStreamWriter:flush	()V
     //   114: aload_3
-    //   115: invokevirtual 937	java/io/OutputStreamWriter:close	()V
+    //   115: invokevirtual 969	java/io/OutputStreamWriter:close	()V
     //   118: return
     //   119: astore_2
     //   120: aload_3
@@ -2455,41 +2489,41 @@ public class MsfSdkUtils
     //   141: aload_2
     //   142: astore_0
     //   143: aload_3
-    //   144: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   144: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   147: aload_2
     //   148: ifnull +7 -> 155
     //   151: aload_2
-    //   152: invokevirtual 937	java/io/OutputStreamWriter:close	()V
+    //   152: invokevirtual 969	java/io/OutputStreamWriter:close	()V
     //   155: return
     //   156: aload_0
     //   157: ifnull +7 -> 164
     //   160: aload_0
-    //   161: invokevirtual 937	java/io/OutputStreamWriter:close	()V
+    //   161: invokevirtual 969	java/io/OutputStreamWriter:close	()V
     //   164: aload_2
     //   165: athrow
-    //   166: new 117	java/lang/StringBuilder
+    //   166: new 137	java/lang/StringBuilder
     //   169: dup
-    //   170: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   170: invokespecial 138	java/lang/StringBuilder:<init>	()V
     //   173: astore_0
     //   174: aload_0
-    //   175: ldc_w 939
-    //   178: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: ldc_w 971
+    //   178: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: pop
     //   182: aload_0
     //   183: aload_3
-    //   184: invokevirtual 122	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   187: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   187: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: pop
-    //   191: new 483	java/io/IOException
+    //   191: new 503	java/io/IOException
     //   194: dup
     //   195: aload_0
-    //   196: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokespecial 940	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   196: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: invokespecial 972	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   202: athrow
-    //   203: new 483	java/io/IOException
+    //   203: new 503	java/io/IOException
     //   206: dup
-    //   207: ldc_w 942
-    //   210: invokespecial 940	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   207: ldc_w 974
+    //   210: invokespecial 972	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   213: athrow
     //   214: astore_0
     //   215: return
@@ -2516,7 +2550,7 @@ public class MsfSdkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.MsfSdkUtils
  * JD-Core Version:    0.7.0.1
  */

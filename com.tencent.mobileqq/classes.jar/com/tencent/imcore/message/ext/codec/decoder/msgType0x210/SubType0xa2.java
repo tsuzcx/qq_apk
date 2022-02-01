@@ -42,7 +42,7 @@ public class SubType0xa2
         if (paramQQAppInterface.getCurrentAccountUin().equals(str1))
         {
           paramMsgType0x210 = str2;
-          localObject = ((FriendsManager)localObject).e(paramMsgType0x210);
+          localObject = ((FriendsManager)localObject).m(paramMsgType0x210);
           if ((localObject == null) || (!((Friends)localObject).isFriend())) {
             break label296;
           }
@@ -80,7 +80,7 @@ public class SubType0xa2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xa2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class LikeRankingListActivity$5
   
   public void run()
   {
-    Card localCard = this.this$0.a.a(this.a);
+    Card localCard = this.this$0.b.f(this.a);
     if (localCard != null) {
       this.this$0.a(localCard);
     }
@@ -23,7 +23,7 @@ class LikeRankingListActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.5
  * JD-Core Version:    0.7.0.1
  */

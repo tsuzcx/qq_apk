@@ -14,23 +14,23 @@ class PublicAccountManagerImpl$7
   {
     String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
     int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEvent(str, i, 12, -1, null);
-      paramIntent = this.jdField_a_of_type_MqqOsMqqHandler;
+      this.c.reportEventTypeMenuEvent(str, i, 12, -1, null);
+      paramIntent = this.b;
       if (paramIntent != null) {
         paramIntent.sendEmptyMessage(19);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEvent(str, i, 11, -1, null);
+      this.c.reportEventTypeMenuEvent(str, i, 11, -1, null);
     }
     try
     {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver);
+      paramContext.unregisterReceiver(this.c.scanResultReceiver);
       label81:
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.scanResultReceiver = null;
+      this.c.scanResultReceiver = null;
       return;
     }
     catch (Exception paramContext)
@@ -41,7 +41,7 @@ class PublicAccountManagerImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.7
  * JD-Core Version:    0.7.0.1
  */

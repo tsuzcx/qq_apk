@@ -13,15 +13,15 @@ class GameRoomUtilsDelegateImpl$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    paramDialogInterface = new Intent(this.a, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.b);
+    paramDialogInterface.putExtra("roomNum", this.c);
+    this.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.impl.GameRoomUtilsDelegateImpl.2
  * JD-Core Version:    0.7.0.1
  */

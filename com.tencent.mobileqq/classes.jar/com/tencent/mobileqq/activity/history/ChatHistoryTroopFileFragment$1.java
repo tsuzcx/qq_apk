@@ -18,10 +18,10 @@ class ChatHistoryTroopFileFragment$1
   {
     paramView = (PullRefreshHeader)paramView;
     long l;
-    if (this.a.jdField_a_of_type_Long == 0L) {
+    if (this.a.s == 0L) {
       l = System.currentTimeMillis();
     } else {
-      l = this.a.jdField_a_of_type_Long;
+      l = this.a.s;
     }
     paramView.c(l);
   }
@@ -33,10 +33,10 @@ class ChatHistoryTroopFileFragment$1
     }
     paramView = (PullRefreshHeader)paramView;
     long l;
-    if (this.a.jdField_a_of_type_Long == 0L) {
+    if (this.a.s == 0L) {
       l = System.currentTimeMillis();
     } else {
-      l = this.a.jdField_a_of_type_Long;
+      l = this.a.s;
     }
     paramView.b(l);
   }
@@ -48,10 +48,10 @@ class ChatHistoryTroopFileFragment$1
     }
     paramView = (PullRefreshHeader)paramView;
     long l;
-    if (this.a.jdField_a_of_type_Long == 0L) {
+    if (this.a.s == 0L) {
       l = System.currentTimeMillis();
     } else {
-      l = this.a.jdField_a_of_type_Long;
+      l = this.a.s;
     }
     paramView.a(l);
     if (NetworkUtil.isNetworkAvailable(this.a.getBaseActivity()))
@@ -60,7 +60,7 @@ class ChatHistoryTroopFileFragment$1
       return true;
     }
     ChatHistoryTroopFileFragment.a(this.a, 1);
-    TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
+    TroopFileUtils.b(this.a.a, ChatHistoryTroopFileFragment.b(this.a));
     return true;
   }
   
@@ -73,7 +73,7 @@ class ChatHistoryTroopFileFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,49 +12,49 @@ class MultiVideoEnterPageActivity$5
   
   protected void a(int paramInt)
   {
-    if (this.a.b()) {
+    if (this.b.e()) {
       return;
     }
-    this.a.c(paramInt);
+    this.b.c(paramInt);
   }
   
   protected void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
   {
-    if (this.a.b()) {
+    if (this.b.e()) {
       return;
     }
-    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+    this.b.a(paramLong, paramArrayList, paramInt1, paramInt2);
   }
   
   protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (this.a.b()) {
+    if (this.b.e()) {
       return;
     }
-    if (paramLong == this.a.jdField_a_of_type_Long)
+    if (paramLong == this.b.k)
     {
       if (paramBoolean)
       {
-        this.a.b(paramInt);
+        this.b.b(paramInt);
         return;
       }
-      if (((paramInt == 10) || (paramInt == 1)) && (MultiVideoEnterPageActivity.a(this.a))) {
-        this.a.a(paramInt);
+      if (((paramInt == 10) || (paramInt == 1)) && (MultiVideoEnterPageActivity.b(this.b))) {
+        this.b.a(paramInt);
       }
     }
   }
   
   protected void e()
   {
-    if (this.a.b()) {
+    if (this.b.e()) {
       return;
     }
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (!this.b.z)
     {
       super.e();
-      ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-      localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
+      ArrayList localArrayList = this.b.u.W();
+      localArrayList = this.b.u.a(localArrayList.size(), localArrayList);
+      this.b.f.a(localArrayList);
     }
   }
 }

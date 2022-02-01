@@ -2,14 +2,14 @@ package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 public class ZipFilePresenter$FileData
 {
-  public long a;
-  public String a;
   public boolean a;
   public long b;
+  public String c;
+  public long d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter.FileData
  * JD-Core Version:    0.7.0.1
  */

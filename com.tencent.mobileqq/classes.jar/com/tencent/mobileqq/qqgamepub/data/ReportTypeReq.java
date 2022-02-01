@@ -8,7 +8,7 @@ public final class ReportTypeReq
   extends JceStruct
 {
   public String appid = "";
-  public int sub_type = 0;
+  public int subType = 0;
   public int tt = 0;
   public int type = 0;
   
@@ -17,7 +17,7 @@ public final class ReportTypeReq
     this.appid = paramJceInputStream.readString(0, false);
     this.tt = paramJceInputStream.read(this.tt, 1, false);
     this.type = paramJceInputStream.read(this.type, 2, false);
-    this.sub_type = paramJceInputStream.read(this.sub_type, 3, false);
+    this.subType = paramJceInputStream.read(this.subType, 3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -28,12 +28,12 @@ public final class ReportTypeReq
     }
     paramJceOutputStream.write(this.tt, 1);
     paramJceOutputStream.write(this.type, 2);
-    paramJceOutputStream.write(this.sub_type, 3);
+    paramJceOutputStream.write(this.subType, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.data.ReportTypeReq
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public final class StudyModeSwitchDialogConfigProcessor
       }
       if ((i ^ 0x1) != 0)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+        paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
         Intrinsics.checkExpressionValueIsNotNull(paramArrayOfQConfItem, "confFiles[0].content");
         localConfig.a(paramArrayOfQConfItem);
       }
@@ -82,7 +82,7 @@ public final class StudyModeSwitchDialogConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialogConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

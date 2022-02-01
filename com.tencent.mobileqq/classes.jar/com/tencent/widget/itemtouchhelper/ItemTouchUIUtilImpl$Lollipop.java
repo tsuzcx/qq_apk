@@ -37,28 +37,28 @@ public class ItemTouchUIUtilImpl$Lollipop
   
   public void clearView(View paramView)
   {
-    Object localObject = paramView.getTag(2131369164);
+    Object localObject = paramView.getTag(2131436137);
     if ((localObject != null) && ((localObject instanceof Float))) {
       ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
     }
-    paramView.setTag(2131369164, null);
+    paramView.setTag(2131436137, null);
     super.clearView(paramView);
   }
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramView.getTag(2131369164) == null))
+    if ((paramBoolean) && (paramView.getTag(2131436137) == null))
     {
       float f = ViewCompat.getElevation(paramView);
       ViewCompat.setElevation(paramView, findMaxElevation(paramRecyclerView, paramView) + 1.0F);
-      paramView.setTag(2131369164, Float.valueOf(f));
+      paramView.setTag(2131436137, Float.valueOf(f));
     }
     super.onDraw(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchUIUtilImpl.Lollipop
  * JD-Core Version:    0.7.0.1
  */

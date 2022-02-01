@@ -17,26 +17,26 @@ class HongBaoPanel$SpaceItemDecoration
   public HongBaoPanel$SpaceItemDecoration(HongBaoPanel paramHongBaoPanel)
   {
     boolean bool;
-    if (XPanelContainer.a > paramHongBaoPanel.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density * 196.0F) {
+    if (XPanelContainer.a > paramHongBaoPanel.b.getResources().getDisplayMetrics().density * 196.0F) {
       bool = true;
     } else {
       bool = false;
     }
-    paramHongBaoPanel.jdField_a_of_type_Boolean = bool;
+    paramHongBaoPanel.i = bool;
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
     ((GridLayoutManager)paramRecyclerView.getLayoutManager()).getItemCount();
-    if (this.a.jdField_a_of_type_Boolean) {
-      paramRect.top = this.a.b;
+    if (this.a.i) {
+      paramRect.top = this.a.l;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.SpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

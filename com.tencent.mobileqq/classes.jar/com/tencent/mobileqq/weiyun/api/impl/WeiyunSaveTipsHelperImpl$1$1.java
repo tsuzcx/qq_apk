@@ -19,14 +19,14 @@ class WeiyunSaveTipsHelperImpl$1$1
     {
       bool = true;
       QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
-      this.a.this$0.startWeiyunDisk(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+      this.a.this$0.startWeiyunDisk(this.a.c, this.a.a, this.a.a.getApplicationContext());
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunSaveTipsHelperImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

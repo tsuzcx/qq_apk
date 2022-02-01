@@ -12,26 +12,26 @@ import java.util.List;
 class PhotoPlusManager$UpdateTask
   implements Runnable
 {
-  private List<Sticker> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<Sticker> a;
+  private boolean b;
   
   public PhotoPlusManager$UpdateTask(List<Sticker> paramList, boolean paramBoolean)
   {
     if (paramBoolean != null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramBoolean);
+      this.a = new ArrayList(paramBoolean);
     }
     boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      PhotoPlusManager.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+      PhotoPlusManager.a(this.this$0, this.a);
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PhotoPlusManager", 2, "[updateStickerResource] saved stickers = null");
@@ -44,9 +44,9 @@ class PhotoPlusManager$UpdateTask
       return;
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      Object localObject1 = (Sticker)this.jdField_a_of_type_JavaUtilList.get(i);
+      Object localObject1 = (Sticker)this.a.get(i);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -88,14 +88,14 @@ class PhotoPlusManager$UpdateTask
           }
           if (TextUtils.isEmpty(((Sticker)localObject1).md5))
           {
-            this.this$0.a((String)localObject2);
+            this.this$0.b((String)localObject2);
           }
           else
           {
             localObject3 = PortalUtils.a((String)localObject2);
             if (((Sticker)localObject1).md5.equalsIgnoreCase((String)localObject3))
             {
-              this.this$0.a((String)localObject2);
+              this.this$0.b((String)localObject2);
             }
             else
             {
@@ -117,7 +117,7 @@ class PhotoPlusManager$UpdateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusManager.UpdateTask
  * JD-Core Version:    0.7.0.1
  */

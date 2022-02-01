@@ -10,7 +10,7 @@ class ShareHelper$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    DialogInterface.OnDismissListener localOnDismissListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+    DialogInterface.OnDismissListener localOnDismissListener = this.a;
     if (localOnDismissListener != null) {
       localOnDismissListener.onDismiss(paramDialogInterface);
     }
@@ -18,7 +18,7 @@ class ShareHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class QGOfflineDownloader
 {
   public QGOfflineDownloader()
   {
-    HtmlOffline.a();
+    HtmlOffline.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.loader.QGOfflineDownloader
  * JD-Core Version:    0.7.0.1
  */

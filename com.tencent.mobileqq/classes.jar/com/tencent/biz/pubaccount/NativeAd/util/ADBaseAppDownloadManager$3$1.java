@@ -15,10 +15,10 @@ class ADBaseAppDownloadManager$3$1
     if (paramBoolean)
     {
       this.a.this$0.a(this.a.a, 5, 100);
-      this.a.this$0.d(this.a.a);
+      this.a.this$0.f(this.a.a);
       return;
     }
-    if (this.a.a.a)
+    if (this.a.a.l)
     {
       ADBaseAppDownloadManager.a(this.a.this$0, this.a.a);
       return;
@@ -30,7 +30,7 @@ class ADBaseAppDownloadManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ import org.json.JSONObject;
 
 public final class AdUUID
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private long jdField_a_of_type_Long = -2147483648L;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private int a = -2147483648;
+  private long b = -2147483648L;
+  private String c;
+  private String d;
   
   private JSONObject a()
   {
-    if (!a())
+    if (!b())
     {
       GLog.d("toJSONObject error");
       return null;
@@ -21,10 +21,10 @@ public final class AdUUID
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("v", this.jdField_a_of_type_Int);
-      localJSONObject.put("u", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("m", this.b);
+      localJSONObject.put("v", this.a);
+      localJSONObject.put("u", this.c);
+      localJSONObject.put("t", this.b);
+      localJSONObject.put("m", this.d);
       return localJSONObject;
     }
     catch (Throwable localThrowable)
@@ -34,9 +34,9 @@ public final class AdUUID
     return null;
   }
   
-  private boolean a()
+  private boolean b()
   {
-    return (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_Long != -2147483648L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+    return (this.a != -2147483648) && (this.b != -2147483648L) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
   }
   
   public String toString()
@@ -51,7 +51,7 @@ public final class AdUUID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.ad.internal.AdUUID
  * JD-Core Version:    0.7.0.1
  */

@@ -15,30 +15,26 @@ import org.json.JSONObject;
 public class HttpWebCgiAsyncTask
   extends HttpAsyncTask<HashMap<String, Object>, Void, JSONObject>
 {
-  protected int a;
-  protected Bundle a;
-  protected HttpWebCgiAsyncTask.Callback a;
-  protected boolean a;
+  protected HttpWebCgiAsyncTask.Callback a = null;
+  protected int b;
+  protected Bundle c;
+  protected boolean d = false;
   
   public HttpWebCgiAsyncTask(String paramString1, String paramString2, HttpWebCgiAsyncTask.Callback paramCallback, int paramInt, Bundle paramBundle)
   {
     super(paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = paramCallback;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramCallback;
+    this.b = paramInt;
+    this.c = paramBundle;
   }
   
   public HttpWebCgiAsyncTask(String paramString1, String paramString2, HttpWebCgiAsyncTask.Callback paramCallback, int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
     super(paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = paramCallback;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramCallback;
+    this.b = paramInt;
+    this.c = paramBundle;
+    this.d = paramBoolean;
   }
   
   protected JSONObject a(HashMap<String, Object>... paramVarArgs)
@@ -72,8 +68,8 @@ public class HttpWebCgiAsyncTask
           localBundle.putString("Host", str3);
           ((Bundle)localObject).remove(str3);
         }
-        paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
-        if ((!this.jdField_a_of_type_Boolean) && (paramVarArgs.getInt("retcode") == 0))
+        paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.e, this.f, (Bundle)localObject, localBundle));
+        if ((!this.d) && (paramVarArgs.getInt("retcode") == 0))
         {
           paramVarArgs = paramVarArgs.getJSONObject("result");
           return paramVarArgs;
@@ -115,15 +111,15 @@ public class HttpWebCgiAsyncTask
     if (isCancelled()) {
       return;
     }
-    HttpWebCgiAsyncTask.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback;
+    HttpWebCgiAsyncTask.Callback localCallback = this.a;
     if (localCallback != null) {
-      localCallback.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      localCallback.a(paramJSONObject, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask
  * JD-Core Version:    0.7.0.1
  */

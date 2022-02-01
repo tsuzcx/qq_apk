@@ -19,24 +19,24 @@ class MuiltiImageToVideo$1
   private boolean a()
   {
     int i;
-    if (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).size() == 1)
+    if (MuiltiImageToVideo.d(this.e).size() == 1)
     {
       i = 0;
     }
     else
     {
-      int j = (int)(MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) / (Long.valueOf("2").longValue() * 1000L * 1000000L));
+      int j = (int)(MuiltiImageToVideo.g(this.e) / (Long.valueOf("2").longValue() * 1000L * 1000000L));
       i = j;
-      if (j >= MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).size()) {
+      if (j >= MuiltiImageToVideo.d(this.e).size()) {
         return false;
       }
     }
-    long l = MuiltiImageToVideo.c(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) * 1000000;
-    if ((MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) != null) && (((Integer)MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).get(i)).intValue() > 0) && (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) < MuiltiImageToVideo.b(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) * 1000000L))
+    long l = MuiltiImageToVideo.h(this.e) * 1000000;
+    if ((MuiltiImageToVideo.e(this.e) != null) && (((Integer)MuiltiImageToVideo.d(this.e).get(i)).intValue() > 0) && (MuiltiImageToVideo.g(this.e) < MuiltiImageToVideo.i(this.e) * 1000000L))
     {
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).a(3553, ((Integer)MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).get(0)).intValue(), null, null, MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo));
-      MuiltiImageToVideo localMuiltiImageToVideo = this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo;
-      MuiltiImageToVideo.a(localMuiltiImageToVideo, MuiltiImageToVideo.a(localMuiltiImageToVideo) + l);
+      MuiltiImageToVideo.e(this.e).a(3553, ((Integer)MuiltiImageToVideo.d(this.e).get(0)).intValue(), null, null, MuiltiImageToVideo.g(this.e));
+      MuiltiImageToVideo localMuiltiImageToVideo = this.e;
+      MuiltiImageToVideo.a(localMuiltiImageToVideo, MuiltiImageToVideo.g(localMuiltiImageToVideo) + l);
       return true;
     }
     return false;
@@ -51,14 +51,14 @@ class MuiltiImageToVideo$1
       ((StringBuilder)???).append(paramInt);
       QLog.e("MuiltiImageToVideo", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo.notifyAll();
-      if (this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener != null)
+      this.e.notifyAll();
+      if (this.c != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(paramThrowable.getMessage());
-        this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode.a(943001);
-        this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener.b(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode);
+        this.d.a(paramThrowable.getMessage());
+        this.d.a(943001);
+        this.c.b(this.d);
       }
       return;
     }
@@ -71,31 +71,31 @@ class MuiltiImageToVideo$1
     {
       ??? = new StringBuilder();
       ???.append("onEncodeStart encode cost: ");
-      ???.append(l - this.jdField_a_of_type_Long);
+      ???.append(l - this.a);
       ???.append(" ms mGpuBlur:");
-      ???.append(MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo));
+      ???.append(MuiltiImageToVideo.a(this.e));
       QLog.d("MuiltiImageToVideo", 2, ???.toString());
     }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$ConvertListener;
+    ??? = this.c;
     if (??? != null) {
-      ???.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepVideoStoryPicToVideo$RetCode);
+      ???.a(this.d);
     }
-    if (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) != null)
+    if (MuiltiImageToVideo.f(this.e) != null)
     {
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).surfaceDestroyed();
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo, null);
+      MuiltiImageToVideo.f(this.e).surfaceDestroyed();
+      MuiltiImageToVideo.a(this.e, null);
     }
-    if (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) != null)
+    if (MuiltiImageToVideo.e(this.e) != null)
     {
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).c();
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo, null);
+      MuiltiImageToVideo.e(this.e).e();
+      MuiltiImageToVideo.a(this.e, null);
     }
-    if (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) != null) {
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).clear();
+    if (MuiltiImageToVideo.d(this.e) != null) {
+      MuiltiImageToVideo.d(this.e).clear();
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo.notifyAll();
+      this.e.notifyAll();
       return;
     }
   }
@@ -103,31 +103,31 @@ class MuiltiImageToVideo$1
   public void onEncodeFrame()
   {
     QLog.d("MuiltiImageToVideo", 2, "onEncodeFrame() ");
-    if ((!a()) && (MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo) != null)) {
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).b();
+    if ((!a()) && (MuiltiImageToVideo.e(this.e) != null)) {
+      MuiltiImageToVideo.e(this.e).b();
     }
   }
   
   public void onEncodeStart()
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.b.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Bitmap localBitmap = (Bitmap)((Iterator)localObject).next();
       MuiltiImageToVideo localMuiltiImageToVideo;
       int i;
-      if (!MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo))
+      if (!MuiltiImageToVideo.a(this.e))
       {
-        localMuiltiImageToVideo = this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo;
-        i = MuiltiImageToVideo.a(localMuiltiImageToVideo, localBitmap, MuiltiImageToVideo.a(localMuiltiImageToVideo), MuiltiImageToVideo.b(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo));
+        localMuiltiImageToVideo = this.e;
+        i = MuiltiImageToVideo.a(localMuiltiImageToVideo, localBitmap, MuiltiImageToVideo.b(localMuiltiImageToVideo), MuiltiImageToVideo.c(this.e));
       }
       else
       {
-        localMuiltiImageToVideo = this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo;
-        i = MuiltiImageToVideo.b(localMuiltiImageToVideo, localBitmap, MuiltiImageToVideo.a(localMuiltiImageToVideo), MuiltiImageToVideo.b(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo));
+        localMuiltiImageToVideo = this.e;
+        i = MuiltiImageToVideo.b(localMuiltiImageToVideo, localBitmap, MuiltiImageToVideo.b(localMuiltiImageToVideo), MuiltiImageToVideo.c(this.e));
       }
-      MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo).add(Integer.valueOf(i));
+      MuiltiImageToVideo.d(this.e).add(Integer.valueOf(i));
     }
     long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel())
@@ -136,16 +136,16 @@ class MuiltiImageToVideo$1
       ((StringBuilder)localObject).append("onEncodeStart preProcess cost: ");
       ((StringBuilder)localObject).append(l2 - l1);
       ((StringBuilder)localObject).append(" ms mGpuBlur:");
-      ((StringBuilder)localObject).append(MuiltiImageToVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMuiltiImageToVideo));
+      ((StringBuilder)localObject).append(MuiltiImageToVideo.a(this.e));
       QLog.d("MuiltiImageToVideo", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = System.currentTimeMillis();
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.MuiltiImageToVideo.1
  * JD-Core Version:    0.7.0.1
  */

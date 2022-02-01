@@ -17,10 +17,10 @@ class KandianHostProxyBuilder$1$1
   
   public Map<String, String> getHostReportData()
   {
-    if (BusinessManager.a.b())
+    if (BusinessManager.a.d())
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("userid", this.a.a());
+      localHashMap.put("userid", this.a.b());
       String str = "1";
       localHashMap.put("scene", "1");
       localHashMap.put("subscene", "0");
@@ -35,7 +35,7 @@ class KandianHostProxyBuilder$1$1
       localHashMap.put("zt_str5", str);
       localHashMap.put("qua_new", QUA.getQUA3());
       localHashMap.put("mobile_type", "Android");
-      localHashMap.put("host_version", "8.7.0");
+      localHashMap.put("host_version", "8.8.17");
       localHashMap.put("network_type", String.valueOf(NetworkUtil.a(BaseApplicationImpl.getContext())));
       return localHashMap;
     }
@@ -59,7 +59,7 @@ class KandianHostProxyBuilder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.hostproxy.KandianHostProxyBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

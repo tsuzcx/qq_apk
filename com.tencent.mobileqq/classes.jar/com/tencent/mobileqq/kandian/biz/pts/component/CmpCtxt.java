@@ -13,17 +13,12 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class CmpCtxt
 {
-  public FeedItemCell.CellListener a;
   public IReadInJoyModel a;
+  public FeedItemCell.CellListener b;
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return UtilsForComponent.a(paramAbsBaseArticleInfo);
-  }
-  
-  public static boolean a(IReadInJoyModel paramIReadInJoyModel)
-  {
-    return (paramIReadInJoyModel.d() == 49) || (paramIReadInJoyModel.d() == 62) || (paramIReadInJoyModel.d() == 63);
   }
   
   public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -33,18 +28,23 @@ public class CmpCtxt
   
   public static boolean b(IReadInJoyModel paramIReadInJoyModel)
   {
-    return (paramIReadInJoyModel.d() == 39) || (paramIReadInJoyModel.d() == 116) || (paramIReadInJoyModel.d() == 66) || (paramIReadInJoyModel.d() == 115);
+    return (paramIReadInJoyModel.o() == 49) || (paramIReadInJoyModel.o() == 62) || (paramIReadInJoyModel.o() == 63);
   }
   
   public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    int i = RIJBaseItemViewType.a(paramAbsBaseArticleInfo);
+    int i = RIJBaseItemViewType.c(paramAbsBaseArticleInfo);
     return (i == 23) || (i == 26) || (i == 56) || (i == 59);
   }
   
   public static boolean c(IReadInJoyModel paramIReadInJoyModel)
   {
-    switch (paramIReadInJoyModel.d())
+    return (paramIReadInJoyModel.o() == 39) || (paramIReadInJoyModel.o() == 116) || (paramIReadInJoyModel.o() == 66) || (paramIReadInJoyModel.o() == 115);
+  }
+  
+  public static boolean d(IReadInJoyModel paramIReadInJoyModel)
+  {
+    switch (paramIReadInJoyModel.o())
     {
     default: 
       return false;
@@ -52,61 +52,133 @@ public class CmpCtxt
     return true;
   }
   
-  public static boolean d(IReadInJoyModel paramIReadInJoyModel)
-  {
-    return paramIReadInJoyModel.a() == 3;
-  }
-  
   public static boolean e(IReadInJoyModel paramIReadInJoyModel)
   {
-    return paramIReadInJoyModel.d() == 10;
+    return paramIReadInJoyModel.b() == 3;
   }
   
   public static boolean f(IReadInJoyModel paramIReadInJoyModel)
   {
-    return paramIReadInJoyModel.d() == 11;
+    return paramIReadInJoyModel.o() == 10;
   }
   
   public static boolean g(IReadInJoyModel paramIReadInJoyModel)
   {
-    return paramIReadInJoyModel.d() == 12;
+    return paramIReadInJoyModel.o() == 11;
   }
   
   public static boolean h(IReadInJoyModel paramIReadInJoyModel)
   {
-    return paramIReadInJoyModel.d() == 27;
+    return paramIReadInJoyModel.o() == 12;
   }
   
   public static boolean i(IReadInJoyModel paramIReadInJoyModel)
   {
-    return paramIReadInJoyModel.d() == 28;
+    return paramIReadInJoyModel.o() == 27;
   }
   
   public static boolean j(IReadInJoyModel paramIReadInJoyModel)
   {
-    return RIJItemViewTypeUtils.c(paramIReadInJoyModel.d());
+    return paramIReadInJoyModel.o() == 28;
   }
   
   public static boolean k(IReadInJoyModel paramIReadInJoyModel)
   {
-    return UtilsForComponent.a(paramIReadInJoyModel.d());
+    return RIJItemViewTypeUtils.c(paramIReadInJoyModel.o());
   }
   
-  public int a()
+  public static boolean l(IReadInJoyModel paramIReadInJoyModel)
   {
-    if ((m()) && ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a() instanceof AdvertisementInfo))) {
-      return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBigAppAdStyle((AdvertisementInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
-    }
-    return 0;
+    return UtilsForComponent.b(paramIReadInJoyModel.o());
   }
   
-  public long a()
+  public IReadInJoyModel a()
   {
-    IReadInJoyModel localIReadInJoyModel = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-    if ((localIReadInJoyModel != null) && (localIReadInJoyModel.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a != null)) {
+    return this.a;
+  }
+  
+  public void a(FeedItemCell.CellListener paramCellListener)
+  {
+    this.b = paramCellListener;
+  }
+  
+  public void a(IReadInJoyModel paramIReadInJoyModel)
+  {
+    this.a = paramIReadInJoyModel;
+  }
+  
+  public boolean b()
+  {
+    return e(this.a);
+  }
+  
+  public boolean c()
+  {
+    return f(this.a);
+  }
+  
+  public boolean d()
+  {
+    return g(this.a);
+  }
+  
+  public boolean e()
+  {
+    return h(this.a);
+  }
+  
+  public boolean f()
+  {
+    return i(this.a);
+  }
+  
+  public boolean g()
+  {
+    return (this.a.o() == 50) || (this.a.o() == 51) || (this.a.o() == 52);
+  }
+  
+  public boolean h()
+  {
+    return j(this.a);
+  }
+  
+  public boolean i()
+  {
+    return b(this.a);
+  }
+  
+  public boolean j()
+  {
+    return k(this.a);
+  }
+  
+  public boolean k()
+  {
+    return l(this.a);
+  }
+  
+  public boolean l()
+  {
+    return d(this.a);
+  }
+  
+  public boolean m()
+  {
+    return this.a.o() == 16;
+  }
+  
+  public boolean n()
+  {
+    return c(this.a);
+  }
+  
+  public long o()
+  {
+    IReadInJoyModel localIReadInJoyModel = this.a;
+    if ((localIReadInJoyModel != null) && (localIReadInJoyModel.k() != null) && (this.a.k().mSocialFeedInfo != null) && (this.a.k().mSocialFeedInfo.s != null)) {
       try
       {
-        long l = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.a;
+        long l = this.a.k().mSocialFeedInfo.s.e;
         return l;
       }
       catch (Exception localException)
@@ -121,89 +193,17 @@ public class CmpCtxt
     return 0L;
   }
   
-  public IReadInJoyModel a()
+  public int p()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell$CellListener = paramCellListener;
-  }
-  
-  public void a(IReadInJoyModel paramIReadInJoyModel)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-  }
-  
-  public boolean a()
-  {
-    return d(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean b()
-  {
-    return e(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean c()
-  {
-    return f(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean d()
-  {
-    return g(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean e()
-  {
-    return h(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean f()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.d() == 50) || (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.d() == 51) || (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.d() == 52);
-  }
-  
-  public boolean g()
-  {
-    return i(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean h()
-  {
-    return a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean i()
-  {
-    return j(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean j()
-  {
-    return k(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean k()
-  {
-    return c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
-  }
-  
-  public boolean l()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.d() == 16;
-  }
-  
-  public boolean m()
-  {
-    return b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel);
+    if ((n()) && ((this.a.k() instanceof AdvertisementInfo))) {
+      return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBigAppAdStyle((AdvertisementInfo)this.a.k());
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.CmpCtxt
  * JD-Core Version:    0.7.0.1
  */

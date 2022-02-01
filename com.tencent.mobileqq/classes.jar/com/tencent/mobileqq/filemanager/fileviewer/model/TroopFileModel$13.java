@@ -16,27 +16,27 @@ class TroopFileModel$13
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+    Object localObject = this.a;
     if (localObject != null) {
       if (paramInt1 != 0) {
-        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).am_();
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).co_();
       } else {
-        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).an_();
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).cp_();
       }
     }
     if (paramInt1 != 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+      localObject = this.a;
       if (localObject != null) {
-        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).am_();
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).co_();
       }
       ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "0", "", "", "");
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+      localObject = this.a;
       if (localObject != null) {
-        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).an_();
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).cp_();
       }
       if (TbsVideo.canUseYunbo(BaseApplicationImpl.getContext())) {
         localObject = "0";
@@ -45,7 +45,7 @@ class TroopFileModel$13
       }
       ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "-1", (String)localObject, "-1", "-1");
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+    localObject = this.b;
     ((TroopInfo)localObject).mTroopFileVideoIsWhite = paramInt1;
     ((TroopInfo)localObject).mTroopFileVideoReqInterval = (System.currentTimeMillis() + paramInt2 * 1000);
     ThreadManager.post(new TroopFileModel.13.1(this), 5, null, true);
@@ -62,7 +62,7 @@ class TroopFileModel$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.13
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class JoinTroopSecurityTipsItem
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  List<JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn> jdField_a_of_type_JavaUtilList = null;
+  int a = 0;
   String b = "";
+  String c = "";
+  List<JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn> d = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsItem
  * JD-Core Version:    0.7.0.1
  */

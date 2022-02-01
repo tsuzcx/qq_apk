@@ -9,18 +9,18 @@ class ChatHistoryFileActivity$2
 {
   ChatHistoryFileActivity$2(ChatHistoryFileActivity paramChatHistoryFileActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity;
-    paramView.a(3, paramView.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d);
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    paramView = this.b;
+    paramView.a(3, paramView.j, this.b.k, this.b.l, this.b.m);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.2
  * JD-Core Version:    0.7.0.1
  */

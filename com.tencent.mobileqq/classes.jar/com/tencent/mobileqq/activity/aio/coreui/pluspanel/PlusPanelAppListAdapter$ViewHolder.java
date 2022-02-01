@@ -10,23 +10,23 @@ import com.tencent.mobileqq.tianshu.ui.RedTouch;
 public final class PlusPanelAppListAdapter$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+  private ImageView a;
   private ImageView b;
+  private RedTouch c;
+  private TextView d;
   
   public PlusPanelAppListAdapter$ViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368487));
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(paramView.getContext(), this.jdField_a_of_type_AndroidWidgetImageView).b(8388661).a();
-    this.b = ((ImageView)paramView.findViewById(2131366954));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378476));
+    this.a = ((ImageView)paramView.findViewById(2131435389));
+    this.c = new RedTouch(paramView.getContext(), this.a).c(8388661).a();
+    this.b = ((ImageView)paramView.findViewById(2131433314));
+    this.d = ((TextView)paramView.findViewById(2131447090));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanelAppListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

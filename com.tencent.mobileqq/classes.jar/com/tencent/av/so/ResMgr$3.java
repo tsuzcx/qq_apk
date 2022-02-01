@@ -5,7 +5,7 @@ final class ResMgr$3
 {
   public void run()
   {
-    ResMgr.a().a("AVTraeSo");
+    ResMgr.a().a("AVAINSMediaLabGruModel");
   }
 }
 

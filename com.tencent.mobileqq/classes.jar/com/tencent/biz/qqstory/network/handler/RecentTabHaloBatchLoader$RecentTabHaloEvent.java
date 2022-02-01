@@ -7,28 +7,28 @@ import com.tencent.biz.qqstory.network.response.RecentTabHaloResponse;
 public class RecentTabHaloBatchLoader$RecentTabHaloEvent
   extends BaseEvent
 {
-  private RecentTabHaloResponse a;
   public boolean a;
+  private RecentTabHaloResponse b;
   
   public RecentTabHaloBatchLoader$RecentTabHaloEvent(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.g = paramErrorMessage;
   }
   
   public RecentTabHaloBatchLoader$RecentTabHaloEvent(boolean paramBoolean)
   {
     this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  public RecentTabHaloResponse a()
+  public RecentTabHaloResponse b()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseRecentTabHaloResponse;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloBatchLoader.RecentTabHaloEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,7 @@ public class HardCoderJNI
   private static HardCoderJNI.Callback callback;
   public static boolean checkEnv = true;
   public static boolean hcDebug;
-  public static final boolean sHCDEBUG = HardCoderManager.a;
+  public static final boolean sHCDEBUG = HardCoderManager.sDebug;
   
   static
   {
@@ -95,7 +95,7 @@ public class HardCoderJNI
       QLog.i("HardCoder.JNI", 2, localStringBuilder.toString());
     }
     if (paramInt2 == -20001) {
-      HardCoderManager.a().a();
+      HardCoderManager.getInstance().onSocketDisconnect();
     }
     if (callback != null) {}
     try
@@ -108,7 +108,7 @@ public class HardCoderJNI
       break label136;
     }
     paramArrayOfByte = "";
-    callback.a(paramArrayOfByte);
+    callback.onANR(paramArrayOfByte);
   }
   
   public static native int registerANRCallback(int paramInt, long paramLong);
@@ -152,7 +152,7 @@ public class HardCoderJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

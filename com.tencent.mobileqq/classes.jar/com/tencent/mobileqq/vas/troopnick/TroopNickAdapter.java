@@ -11,9 +11,9 @@ import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable.VasResDrawableAdapte
 import com.tencent.mobileqq.vas.ipc.RemoteProxy;
 import com.tencent.mobileqq.vas.ipc.remote.EmoticonManagerIPC;
 import com.tencent.mobileqq.vas.ipc.remote.IEmoticonManager;
-import com.tencent.mobileqq.vas.updatesystem.business.QQVasUpdateBusiness;
 import com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness;
 import com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness.Config;
+import com.tencent.mobileqq.vas.util.QQVasUpdateBusinessUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -23,61 +23,52 @@ public class TroopNickAdapter
   implements VasResAdapter, VasResDrawable.VasResDrawableAdapter
 {
   public int a;
-  private VasResController jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
   public int b;
+  private VasResController c;
+  private String d = "";
+  private boolean e = false;
   
   public TroopNickAdapter(VasResDrawable paramVasResDrawable)
   {
-    this(paramVasResDrawable, null, 2130846313);
+    this(paramVasResDrawable, null, 2130847784);
   }
   
   public TroopNickAdapter(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = paramVasResDrawable.a();
-    paramVasResDrawable.a().jdField_a_of_type_Int = 2130847665;
-    paramVasResDrawable.a().b = paramInt;
-    paramVasResDrawable.a().e = 104;
+    this.c = paramVasResDrawable.a();
+    paramVasResDrawable.d().b = 2130849325;
+    paramVasResDrawable.d().c = paramInt;
+    paramVasResDrawable.d().g = 104;
     if (paramAppRuntime != null) {
-      paramVasResDrawable.a("my_uin", paramAppRuntime.getAccount());
+      paramVasResDrawable.b("my_uin", paramAppRuntime.getAccount());
     }
-  }
-  
-  public String a()
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, "bg.png");
-    if (localFile.exists()) {
-      return localFile.getAbsolutePath();
-    }
-    return new File(this.jdField_a_of_type_JavaLangString, "bg.9.png").getAbsolutePath();
   }
   
   public void a()
   {
-    VasResController localVasResController = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+    VasResController localVasResController = this.c;
     if (localVasResController == null) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController == null) {
+      if (this.c == null) {
         return;
       }
-      int j = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a();
-      boolean bool = ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).a(j);
+      int j = this.c.b();
+      boolean bool = ((TroopNickNameBusiness)QQVasUpdateBusinessUtil.a(TroopNickNameBusiness.class)).d(j);
       int i = -1;
       if (bool)
       {
-        this.jdField_a_of_type_JavaLangString = ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).b(j);
-        TroopNickNameBusiness.Config localConfig = TroopNickNameBusiness.a(this.jdField_a_of_type_JavaLangString);
+        this.d = ((TroopNickNameBusiness)QQVasUpdateBusinessUtil.a(TroopNickNameBusiness.class)).c(j);
+        TroopNickNameBusiness.Config localConfig = TroopNickNameBusiness.a(this.d);
         if (localConfig != null)
         {
-          this.jdField_a_of_type_Int = localConfig.fontId;
+          this.a = localConfig.fontId;
           this.b = localConfig.fontType;
-          String str = this.jdField_a_of_type_JavaLangString;
+          String str = this.d;
           j = localConfig.delay;
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.e) {
             i = localConfig.repeatCount;
           }
           a(str, j, i);
@@ -126,12 +117,7 @@ public class TroopNickAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.e = paramBoolean;
   }
   
   public String[] a(String paramString)
@@ -198,20 +184,34 @@ public class TroopNickAdapter
   
   public void b()
   {
-    VasResController localVasResController = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+    VasResController localVasResController = this.c;
     if (localVasResController != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = null;
+        this.c = null;
         return;
       }
       finally {}
     }
   }
+  
+  public String c()
+  {
+    File localFile = new File(this.d, "bg.png");
+    if (localFile.exists()) {
+      return localFile.getAbsolutePath();
+    }
+    return new File(this.d, "bg.9.png").getAbsolutePath();
+  }
+  
+  public boolean d()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter
  * JD-Core Version:    0.7.0.1
  */

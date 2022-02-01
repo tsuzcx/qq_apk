@@ -10,28 +10,23 @@ import com.tencent.common.app.InnerFrameManager;
 public abstract class TroopDiscussionBaseV
   extends FrameLayout
 {
-  protected Context a;
-  protected LayoutInflater a;
-  protected AppInterface a;
-  protected InnerFrameManager a;
-  protected SelectMemberActivity a;
+  protected SelectMemberActivity d;
+  protected Context e;
+  protected AppInterface f;
+  protected InnerFrameManager g;
+  protected LayoutInflater h;
   
   public TroopDiscussionBaseV(SelectMemberActivity paramSelectMemberActivity)
   {
     super(paramSelectMemberActivity);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)paramSelectMemberActivity.getAppRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity = paramSelectMemberActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramSelectMemberActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSelectMemberActivity.getLayoutInflater();
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramSelectMemberActivity.mInnerFrameManager;
+    this.f = ((AppInterface)paramSelectMemberActivity.getAppRuntime());
+    this.d = paramSelectMemberActivity;
+    this.e = paramSelectMemberActivity;
+    this.h = paramSelectMemberActivity.getLayoutInflater();
+    this.g = paramSelectMemberActivity.mInnerFrameManager;
   }
   
   protected void a() {}
-  
-  protected final void a(int paramInt)
-  {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
-  }
   
   public void a(Bundle paramBundle) {}
   
@@ -42,10 +37,15 @@ public abstract class TroopDiscussionBaseV
   protected void e() {}
   
   protected void f() {}
+  
+  protected final void setContentView(int paramInt)
+  {
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopDiscussionBaseV
  * JD-Core Version:    0.7.0.1
  */

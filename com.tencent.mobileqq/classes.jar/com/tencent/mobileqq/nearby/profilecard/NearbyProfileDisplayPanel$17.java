@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.ActionSheet;
 
 class NearbyProfileDisplayPanel$17
-  implements Runnable
+  implements View.OnClickListener
 {
-  public void run()
+  NearbyProfileDisplayPanel$17(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  
+  public void onClick(View paramView)
   {
-    EntityManager localEntityManager = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.update(NearbyProfileDisplayPanel.a(this.this$0));
-      localEntityManager.close();
-    }
+    paramView = ActionSheet.create(this.a.e);
+    paramView.addButton(2131914943, 1);
+    paramView.addCancelButton(2131887648);
+    paramView.setOnButtonClickListener(new NearbyProfileDisplayPanel.17.1(this, paramView));
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.17
  * JD-Core Version:    0.7.0.1
  */

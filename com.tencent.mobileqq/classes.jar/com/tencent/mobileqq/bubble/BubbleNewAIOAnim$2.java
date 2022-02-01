@@ -9,14 +9,14 @@ class BubbleNewAIOAnim$2
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.start();
+    if (this.this$0.w != null) {
+      this.this$0.w.start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.2
  * JD-Core Version:    0.7.0.1
  */

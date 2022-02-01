@@ -12,56 +12,56 @@ class QQARSession$22
   
   public void run()
   {
-    if (QQARSession.a(this.this$0) == null)
+    if (QQARSession.l(this.this$0) == null)
     {
       QLog.d("AREngine_QQARSession", 1, "onARAnimationComplete mCurARResourceInfo is null!");
       return;
     }
     if (this.a == 0) {
-      if (!QQARSession.a(this.this$0).d())
+      if (!QQARSession.l(this.this$0).d())
       {
-        if ((!QQARSession.a(this.this$0).h()) && (!QQARSession.a(this.this$0).g()) && (!QQARSession.a(this.this$0).k()))
+        if ((!QQARSession.l(this.this$0).h()) && (!QQARSession.l(this.this$0).g()) && (!QQARSession.l(this.this$0).k()))
         {
-          if (!QQARSession.a(this.this$0).j())
+          if (!QQARSession.l(this.this$0).j())
           {
-            if (QQARSession.a(this.this$0) == 1L)
+            if (QQARSession.n(this.this$0) == 1L)
             {
               this.this$0.b(1L);
-              QQARSession.b(this.this$0);
+              QQARSession.j(this.this$0);
             }
-            else if (QQARSession.a(this.this$0) == 2L)
+            else if (QQARSession.n(this.this$0) == 2L)
             {
-              this.this$0.o();
+              this.this$0.B();
             }
-            else if (QQARSession.a(this.this$0) == 2048L)
+            else if (QQARSession.n(this.this$0) == 2048L)
             {
-              this.this$0.q();
+              this.this$0.D();
             }
-            this.this$0.m();
+            this.this$0.x();
           }
         }
         else
         {
-          QQARSession.a(this.this$0).j();
-          if ((QQARSession.a(this.this$0).g()) && (QQARSession.a(this.this$0).j())) {
-            QQARSession.c(this.this$0, true);
+          QQARSession.l(this.this$0).j();
+          if ((QQARSession.l(this.this$0).g()) && (QQARSession.l(this.this$0).j())) {
+            QQARSession.e(this.this$0, true);
           }
         }
       }
-      else if ((QQARSession.a(this.this$0).g()) && (QQARSession.a(this.this$0).j())) {
-        QQARSession.c(this.this$0, true);
+      else if ((QQARSession.l(this.this$0).g()) && (QQARSession.l(this.this$0).j())) {
+        QQARSession.e(this.this$0, true);
       }
     }
-    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.a(this.this$0) != null))
+    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.h(this.this$0) != null))
     {
-      ARTarget localARTarget = new ARTarget(QQARSession.a(this.this$0));
-      QQARSession.a(this.this$0).a(1, localARTarget, this.a);
+      ARTarget localARTarget = new ARTarget(QQARSession.l(this.this$0));
+      QQARSession.h(this.this$0).a(1, localARTarget, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.22
  * JD-Core Version:    0.7.0.1
  */

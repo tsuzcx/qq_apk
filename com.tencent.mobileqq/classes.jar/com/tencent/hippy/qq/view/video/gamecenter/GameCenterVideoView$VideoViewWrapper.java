@@ -60,8 +60,8 @@ class GameCenterVideoView$VideoViewWrapper
   {
     this.mDestroyed = true;
     release();
-    if (GameCenterVideoManager.a().a() == this) {
-      GameCenterVideoManager.a().a();
+    if (GameCenterVideoManager.a().b() == this) {
+      GameCenterVideoManager.a().c();
     }
   }
   
@@ -188,7 +188,7 @@ class GameCenterVideoView$VideoViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView.VideoViewWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ public class WriteTogetherTemplateConfBean$Template
   @SerializedName("id")
   public int a;
   @SerializedName("title")
-  public String a;
-  @SerializedName("templateContent")
   public String b;
+  @SerializedName("templateContent")
+  public String c;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Template{id=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", templateContent='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -28,7 +28,7 @@ public class WriteTogetherTemplateConfBean$Template
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherconfig.WriteTogetherTemplateConfBean.Template
  * JD-Core Version:    0.7.0.1
  */

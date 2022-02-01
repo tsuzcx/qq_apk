@@ -9,14 +9,14 @@ class FriendsManager$6
   
   public void run()
   {
-    if (!FriendsManager.a(this.this$0).a) {
-      FriendsManager.a(this.this$0).a(FriendsManager.a(this.this$0));
+    if (!FriendsManager.b(this.this$0).c) {
+      FriendsManager.b(this.this$0).a(FriendsManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.6
  * JD-Core Version:    0.7.0.1
  */

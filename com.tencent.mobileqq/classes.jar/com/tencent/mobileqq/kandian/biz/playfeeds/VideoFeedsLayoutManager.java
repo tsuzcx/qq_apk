@@ -27,7 +27,7 @@ public class VideoFeedsLayoutManager
       return false;
     }
     int i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-    int j = this.a.b();
+    int j = this.a.getCurrentLayoutPosition();
     boolean bool1 = bool2;
     if (j >= 0) {
       if (i != j + 1)
@@ -80,7 +80,7 @@ public class VideoFeedsLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLayoutManager
  * JD-Core Version:    0.7.0.1
  */

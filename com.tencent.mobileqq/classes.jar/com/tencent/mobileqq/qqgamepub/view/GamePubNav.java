@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -24,48 +23,45 @@ import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
 import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class GamePubNav
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CornerImageView jdField_a_of_type_ComTencentMobileqqQqgamepubViewCornerImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private String jdField_c_of_type_JavaLangString;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private String jdField_d_of_type_JavaLangString;
+  private TextView a;
+  private TextView b;
+  private ImageView c;
+  private ImageView d;
+  private ImageView e;
+  private LinearLayout f;
+  private String g;
+  private String h;
+  private int i;
+  private String j;
   
   public GamePubNav(Context paramContext)
   {
     super(paramContext);
-    b();
+    f();
   }
   
   public GamePubNav(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b();
+    f();
   }
   
   public GamePubNav(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
+    f();
   }
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.i == 1)
     {
       ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).enterGameCenter(paramString);
       return;
@@ -80,134 +76,166 @@ public class GamePubNav
     getContext().startActivity(localIntent);
   }
   
-  private void b()
+  private void a(String paramString1, String paramString2, String paramString3)
   {
-    LayoutInflater.from(getContext()).inflate(2131559144, this);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewCornerImageView = ((CornerImageView)findViewById(2131368650));
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewCornerImageView.setRadius(10.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379698));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368624));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368562));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368651));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368685));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368675));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369794));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369770));
-    a();
-    c();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new GamePubNav.1(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new GamePubNav.2(this));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public View a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.a.setText(paramString1);
     }
-    this.jdField_b_of_type_Int = paramInt2;
-    paramString2 = URLDrawable.URLDrawableOptions.obtain();
-    paramString2.mFailedDrawable = getResources().getDrawable(2130844222);
-    paramString2.mLoadingDrawable = getResources().getDrawable(2130844222);
-    paramString1 = URLDrawable.getDrawable(paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewCornerImageView.setImageDrawable(paramString1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new GamePubNav.3(this, paramString3, paramString4));
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new GamePubNav.4(this, paramString4), paramInt1 * 1000);
+    this.f.setOnClickListener(new GamePubNav.1(this, paramString2, paramString3));
+    ThreadManagerV2.getUIHandlerV2().post(new GamePubNav.2(this, paramString3));
   }
   
-  public void a(boolean paramBoolean)
+  private boolean a(String paramString, int paramInt)
   {
-    if ((paramBoolean) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Int * 1000)) {
+    int k = GamePubAccountHelper.h(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seq: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" currentExposeTime: ");
+    localStringBuilder.append(k);
+    localStringBuilder.append(" exposeTimes: ");
+    localStringBuilder.append(paramInt);
+    QLog.i("QQGamePub_GamePubNav", 1, localStringBuilder.toString());
+    return k >= paramInt;
+  }
+  
+  private void f()
+  {
+    LayoutInflater.from(getContext()).inflate(2131624899, this);
+    this.a = ((TextView)findViewById(2131448487));
+    this.b = ((TextView)findViewById(2131435469));
+    this.c = ((ImageView)findViewById(2131435562));
+    this.d = ((ImageView)findViewById(2131435598));
+    this.e = ((ImageView)findViewById(2131435588));
+    this.f = ((LinearLayout)findViewById(2131436925));
+    this.f.setVisibility(8);
+    e();
+  }
+  
+  private void g() {}
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.j = paramJSONObject.optString("expirement_id");
+    String str1 = paramJSONObject.optString("seq");
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("inner");
+    String str2 = localJSONObject.optString("text");
+    String str3 = localJSONObject.optString("jump_url");
+    paramJSONObject = paramJSONObject.optString("notice_id");
+    int k = localJSONObject.optInt("expose_times");
+    a(true, localJSONObject.optString("icon"), paramJSONObject);
+    if (a(str1, k))
+    {
+      QLog.i("QQGamePub_GamePubNav", 1, "<<<arrive expose times<<<");
+      b();
+      a(true, "", paramJSONObject);
       return;
     }
-    a();
-    d();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().alpha(0.0F).setDuration(500L).setListener(new GamePubNav.5(this)).start();
+    a(str2, str3, paramJSONObject);
+    GamePubAccountHelper.i(str1);
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-    int i = 0;
-    ((ImageView)localObject).setVisibility(0);
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    int k = 0;
+    try
+    {
+      if (!StringUtil.isEmpty(paramString1))
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130847949);
+        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130847949);
+        paramString1 = URLDrawable.getDrawable(paramString1, localURLDrawableOptions);
+        this.c.setImageDrawable(paramString1);
+      }
+      else
+      {
+        this.c.setImageDrawable(getResources().getDrawable(2130847949));
+      }
+      this.c.setVisibility(0);
+      this.c.setOnClickListener(new GamePubNav.3(this, paramString2));
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("QQGamePub_GamePubNav", 1, paramString1, new Object[0]);
+    }
+    paramString1 = this.b;
     if (!paramBoolean) {
-      i = 4;
+      k = 4;
     }
-    ((TextView)localObject).setVisibility(i);
-    if (paramBoolean) {
-      localObject = "1";
-    } else {
-      localObject = "2";
+    paramString1.setVisibility(k);
+    if (!StringUtil.isEmpty(paramString2))
+    {
+      paramString2 = GamePubAccountHelper.d(GamePubAccountHelper.a()).h("770").i(this.j).d("77002").c("209089").a(2, paramString2);
+      if (this.b.getVisibility() == 0) {
+        paramString1 = "1";
+      } else {
+        paramString1 = "2";
+      }
+      paramString2.a(3, paramString1).a(4, "8").a(12, "160").a();
     }
-    GamePubAccountHelper.b(GamePubAccountHelper.a()).h("770").e("1").f("160").d("77002").c("207021").a(2, paramString).a(3, (String)localObject).a(4, "8").i(this.jdField_c_of_type_JavaLangString).b(this.jdField_d_of_type_JavaLangString).a();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0;
+    return this.f.getVisibility() == 0;
   }
   
-  public void setBubbleId(String paramString)
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f.setVisibility(8);
+    g();
+  }
+  
+  public void c()
+  {
+    g();
+    this.f.animate().alpha(0.0F).setDuration(500L).setListener(new GamePubNav.4(this)).start();
+  }
+  
+  public void d()
+  {
+    this.b.setVisibility(0);
+  }
+  
+  public void e()
+  {
+    a(false, "", "");
+  }
+  
+  public View getRightImg()
+  {
+    return this.c;
   }
   
   public void setBubbleJumpUrl(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void setGameAppid(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public void setMoreClick(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.e.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void setNoticeId(String paramString)
+  {
+    this.g = paramString;
   }
   
   public void setReturnClick(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void setTabGrayid(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.d.setOnClickListener(paramOnClickListener);
   }
   
   public void setUrlType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GamePubNav
  * JD-Core Version:    0.7.0.1
  */

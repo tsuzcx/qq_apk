@@ -18,48 +18,48 @@ class WSArkCardDataManager$1
   
   public void a(WeishiTask paramWeishiTask)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l = System.currentTimeMillis() - this.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("请求播放页（推荐)耗时：");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append("毫秒");
     WSLog.a("weishi-beacon", ((StringBuilder)localObject).toString());
-    WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "chat_page", this.jdField_a_of_type_Boolean);
-    if (!paramWeishiTask.a())
+    WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, "chat_page", this.b);
+    if (!paramWeishiTask.b())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSVerticalDataManager.java][onTaskResponse] failed code:");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramWeishiTask.d);
       ((StringBuilder)localObject).append(", msg:");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramWeishiTask.c);
       WSLog.d("WSArkCardDataManagerLog", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      localObject = this.c;
       if (localObject != null) {
-        ((IFetchDataRspListener)localObject).a(paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+        ((IFetchDataRspListener)localObject).a(paramWeishiTask.d, paramWeishiTask.c, this.b, this.d);
       }
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
       return;
     }
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stGetPersonalFeedListRsp))
+    if ((paramWeishiTask.m instanceof stGetPersonalFeedListRsp))
     {
-      stGetPersonalFeedListRsp localstGetPersonalFeedListRsp = (stGetPersonalFeedListRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+      stGetPersonalFeedListRsp localstGetPersonalFeedListRsp = (stGetPersonalFeedListRsp)paramWeishiTask.m;
       localObject = new WSArkCardDataManager.ExtParams();
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager, localstGetPersonalFeedListRsp, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
-        WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager, localstGetPersonalFeedListRsp, (WSArkCardDataManager.ExtParams)localObject);
+        WSArkCardDataManager.a(this.e, localstGetPersonalFeedListRsp, this.c);
+        WSArkCardDataManager.a(this.e, localstGetPersonalFeedListRsp, (WSArkCardDataManager.ExtParams)localObject);
       }
-      WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager, localstGetPersonalFeedListRsp.attach_info);
-      WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager, localstGetPersonalFeedListRsp.is_finished);
+      WSArkCardDataManager.a(this.e, localstGetPersonalFeedListRsp.attach_info);
+      WSArkCardDataManager.a(this.e, localstGetPersonalFeedListRsp.is_finished);
       ArrayList localArrayList = localstGetPersonalFeedListRsp.feeds;
-      List localList = WSVerticalDataUtil.a(localArrayList, WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager));
+      List localList = WSVerticalDataUtil.a(localArrayList, WSArkCardDataManager.a(this.e));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[WSVerticalDataManager.java][onTaskResponse] itemDataList size:");
       localStringBuilder.append(localList.size());
       localStringBuilder.append(", isFirst = ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(", mAttachInfo = ");
-      localStringBuilder.append(WSArkCardDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSArkCardDataManager));
+      localStringBuilder.append(WSArkCardDataManager.b(this.e));
       localStringBuilder.append(", isFinish = ");
       localStringBuilder.append(localstGetPersonalFeedListRsp.is_finished);
       localStringBuilder.append(", size = ");
@@ -71,28 +71,28 @@ class WSArkCardDataManager$1
       }
       localStringBuilder.append(i);
       WSLog.e("WSArkCardDataManagerLog", localStringBuilder.toString());
-      if (paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean != null) {
-        WSRecommendReportManager.a().a(localstGetPersonalFeedListRsp.traceId, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean.a);
+      if (paramWeishiTask.n != null) {
+        WSRecommendReportManager.a().a(localstGetPersonalFeedListRsp.traceId, paramWeishiTask.n.a);
       }
-      paramWeishiTask = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      paramWeishiTask = this.c;
       if (paramWeishiTask != null) {
-        paramWeishiTask.a(localList, this.b, this.jdField_a_of_type_Boolean, localObject);
+        paramWeishiTask.a(localList, this.d, this.b, localObject);
       }
     }
     else
     {
       WSLog.d("WSArkCardDataManagerLog", "[WSVerticalDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      localObject = this.c;
       if (localObject != null) {
-        ((IFetchDataRspListener)localObject).a(paramWeishiTask.b, paramWeishiTask.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+        ((IFetchDataRspListener)localObject).a(paramWeishiTask.e, paramWeishiTask.c, this.b, this.d);
       }
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, -1, "数据无法解析或为空");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSArkCardDataManager.1
  * JD-Core Version:    0.7.0.1
  */

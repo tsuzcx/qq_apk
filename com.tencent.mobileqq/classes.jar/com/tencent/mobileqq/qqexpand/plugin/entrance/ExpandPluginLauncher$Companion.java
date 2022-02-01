@@ -10,14 +10,14 @@ public final class ExpandPluginLauncher$Companion
   @NotNull
   public final ExpandPluginLauncher a()
   {
-    Lazy localLazy = ExpandPluginLauncher.a();
+    Lazy localLazy = ExpandPluginLauncher.c();
     Companion localCompanion = ExpandPluginLauncher.a;
     return (ExpandPluginLauncher)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLauncher.Companion
  * JD-Core Version:    0.7.0.1
  */

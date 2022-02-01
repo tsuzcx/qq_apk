@@ -14,17 +14,17 @@ class TeamWorkShareActionSheetBuilder$2
   
   public void onClick(View paramView)
   {
-    if ((TeamWorkShareActionSheetBuilder.a(this.a) instanceof CustomWebView)) {
-      if (2 == TeamWorkShareActionSheetBuilder.a(this.a).c)
+    if ((TeamWorkShareActionSheetBuilder.g(this.a) instanceof CustomWebView)) {
+      if (2 == TeamWorkShareActionSheetBuilder.h(this.a).h)
       {
-        ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openAdvPermissionsMobile()");
+        ((CustomWebView)TeamWorkShareActionSheetBuilder.g(this.a)).callJs("openAdvPermissionsMobile()");
         this.a.dismiss();
       }
       else
       {
-        ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).callJs("openCooperationMobile()");
+        ((CustomWebView)TeamWorkShareActionSheetBuilder.g(this.a)).callJs("openCooperationMobile()");
         this.a.dismiss();
-        ReportController.b(TeamWorkShareActionSheetBuilder.a(this.a).getAppRuntime(), "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+        ReportController.b(TeamWorkShareActionSheetBuilder.f(this.a).getAppRuntime(), "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -32,7 +32,7 @@ class TeamWorkShareActionSheetBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder.2
  * JD-Core Version:    0.7.0.1
  */

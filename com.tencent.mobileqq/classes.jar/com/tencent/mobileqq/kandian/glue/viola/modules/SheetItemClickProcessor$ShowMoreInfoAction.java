@@ -20,7 +20,7 @@ public class SheetItemClickProcessor$ShowMoreInfoAction
   {
     if (!TextUtils.isEmpty(paramString3))
     {
-      paramString1 = new ActivityURIRequest(this.jdField_a_of_type_AndroidAppActivity, "/pubaccount/detail");
+      paramString1 = new ActivityURIRequest(this.b, "/pubaccount/detail");
       paramString1.extra().putString("uin", paramString3);
       paramString1.extra().putBoolean("from_js", true);
       QRoute.startUri(paramString1, null);
@@ -29,7 +29,7 @@ public class SheetItemClickProcessor$ShowMoreInfoAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.SheetItemClickProcessor.ShowMoreInfoAction
  * JD-Core Version:    0.7.0.1
  */

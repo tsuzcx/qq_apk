@@ -9,12 +9,12 @@ class ReadInJoyScrollViewSwitcher$1
 {
   public View makeView()
   {
-    return LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScrollViewSwitcher.getContext()).inflate(this.jdField_a_of_type_Int, null);
+    return LayoutInflater.from(this.b.getContext()).inflate(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyScrollViewSwitcher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,19 @@ import java.io.File;
 class CapacityCleanStep$FileInfo
   implements Comparable<FileInfo>
 {
-  public final long a;
   public final File a;
+  public final long b;
   
   public CapacityCleanStep$FileInfo(CapacityCleanStep paramCapacityCleanStep, File paramFile)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
+    this.a = paramFile;
+    this.b = paramFile.lastModified();
   }
   
   public int a(FileInfo paramFileInfo)
   {
-    long l1 = this.jdField_a_of_type_Long;
-    long l2 = paramFileInfo.jdField_a_of_type_Long;
+    long l1 = this.b;
+    long l2 = paramFileInfo.b;
     if (l1 < l2) {
       return -1;
     }
@@ -29,7 +29,7 @@ class CapacityCleanStep$FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep.FileInfo
  * JD-Core Version:    0.7.0.1
  */

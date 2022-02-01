@@ -21,7 +21,7 @@ class WeiYunLogicCenter$5
     paramCrossBidProxyCopyFileToOtherBidMsgRsp.append(paramString);
     paramCrossBidProxyCopyFileToOtherBidMsgRsp.append("]");
     QLog.i("WeiYunLogicCenter<FileAssistant>", 1, paramCrossBidProxyCopyFileToOtherBidMsgRsp.toString());
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunCallback;
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.a;
     if (paramCrossBidProxyCopyFileToOtherBidMsgRsp != null) {
       paramCrossBidProxyCopyFileToOtherBidMsgRsp.a(paramInt, paramString);
     }
@@ -33,7 +33,7 @@ class WeiYunLogicCenter$5
     if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
     {
       QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
-      paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunCallback;
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.a;
       if (paramCrossBidProxyCopyFileToOtherBidMsgRsp != null) {
         paramCrossBidProxyCopyFileToOtherBidMsgRsp.a(-3, "copyFileToOtherBid_fail");
       }
@@ -44,7 +44,7 @@ class WeiYunLogicCenter$5
     ((StringBuilder)localObject).append(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
     ((StringBuilder)localObject).append("]");
     QLog.i("WeiYunLogicCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunCallback;
+    localObject = this.a;
     if (localObject != null) {
       ((WeiyunCallback)localObject).a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
     }
@@ -52,7 +52,7 @@ class WeiYunLogicCenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.5
  * JD-Core Version:    0.7.0.1
  */

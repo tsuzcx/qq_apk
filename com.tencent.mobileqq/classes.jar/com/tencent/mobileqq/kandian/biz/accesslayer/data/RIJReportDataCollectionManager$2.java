@@ -10,12 +10,12 @@ final class RIJReportDataCollectionManager$2
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().b(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    ReadInJoyLogicEngine.a().b(this.a.a().B(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJReportDataCollectionManager.2
  * JD-Core Version:    0.7.0.1
  */

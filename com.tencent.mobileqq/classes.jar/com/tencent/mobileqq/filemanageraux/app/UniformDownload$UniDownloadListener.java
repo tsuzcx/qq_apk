@@ -30,19 +30,19 @@ import mqq.os.MqqHandler;
 public class UniformDownload$UniDownloadListener
   implements DialogInterface.OnDismissListener, Handler.Callback, DownloadListener
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<Activity> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean;
-  private WeakReference<TouchWebView> c;
+  final MqqHandler a = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private WeakReference<AppInterface> b;
+  private WeakReference<Activity> c;
+  private WeakReference<TouchWebView> d;
+  private boolean e;
+  private Dialog f;
+  private boolean g;
   
   public UniformDownload$UniDownloadListener(AppInterface paramAppInterface, Activity paramActivity, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.c = new WeakReference(paramTouchWebView);
+    this.b = new WeakReference(paramAppInterface);
+    this.c = new WeakReference(paramActivity);
+    this.d = new WeakReference(paramTouchWebView);
     if (paramTouchWebView == null) {
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "constructor: webview is null");
     }
@@ -51,7 +51,7 @@ public class UniformDownload$UniDownloadListener
   private void a(String paramString1, String paramString2, long paramLong, Activity paramActivity, AppInterface paramAppInterface, boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+      this.a.sendEmptyMessage(1);
     }
     DownloadURLCheck.ReqDownloadUrlCheckRecmd localReqDownloadUrlCheckRecmd = new DownloadURLCheck.ReqDownloadUrlCheckRecmd();
     localReqDownloadUrlCheckRecmd.download_url.set(paramString1);
@@ -73,7 +73,7 @@ public class UniformDownload$UniDownloadListener
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -84,33 +84,33 @@ public class UniformDownload$UniDownloadListener
       if (i != 2) {
         return true;
       }
-      paramMessage = this.jdField_a_of_type_AndroidAppDialog;
+      paramMessage = this.f;
       if ((paramMessage != null) && (paramMessage.isShowing()))
       {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.f.dismiss();
         return true;
       }
     }
     else
     {
-      paramMessage = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      paramMessage = (Activity)this.c.get();
       if (paramMessage != null)
       {
         if (paramMessage.isFinishing()) {
           return true;
         }
-        if (this.jdField_a_of_type_AndroidAppDialog == null)
+        if (this.f == null)
         {
-          this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(paramMessage);
-          this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-          this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-          this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-          this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
-          this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561839);
-          this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363507).setBackgroundColor(0);
-          ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131378460)).setText(HardCodeUtil.a(2131715661));
+          this.f = new ReportDialog(paramMessage);
+          this.f.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+          this.f.setCanceledOnTouchOutside(false);
+          this.f.requestWindowFeature(1);
+          this.f.setOnDismissListener(this);
+          this.f.setContentView(2131628218);
+          this.f.findViewById(2131429409).setBackgroundColor(0);
+          ((TextView)this.f.findViewById(2131447062)).setText(HardCodeUtil.a(2131913129));
         }
-        this.jdField_a_of_type_AndroidAppDialog.show();
+        this.f.show();
       }
     }
     return true;
@@ -118,18 +118,18 @@ public class UniformDownload$UniDownloadListener
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.g = true;
   }
   
   public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    Object localObject1 = (TouchWebView)this.c.get();
-    Activity localActivity = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    Object localObject2 = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (TouchWebView)this.d.get();
+    Activity localActivity = (Activity)this.c.get();
+    Object localObject2 = (AppInterface)this.b.get();
     if ((localObject1 != null) && (localActivity != null) && (localObject2 != null) && (!localActivity.isFinishing()))
     {
       boolean bool2 = false;
-      this.jdField_b_of_type_Boolean = false;
+      this.g = false;
       boolean bool1 = bool2;
       if (((TouchWebView)localObject1).getUrl() != null)
       {
@@ -157,7 +157,7 @@ public class UniformDownload$UniDownloadListener
       ((Bundle)localObject2).putString("param_content_des", paramString3);
       ((Bundle)localObject2).putString("param_mime_type", paramString4);
       ((Bundle)localObject2).putString("param_refer_url", (String)localObject1);
-      ((Bundle)localObject2).putBoolean("fromArkAppDownload", this.jdField_a_of_type_Boolean);
+      ((Bundle)localObject2).putBoolean("fromArkAppDownload", this.e);
       if ((UniformDownload.a(localActivity, paramString1, (Bundle)localObject2)) && (bool1)) {
         localActivity.finish();
       }
@@ -175,7 +175,7 @@ public class UniformDownload$UniDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.UniDownloadListener
  * JD-Core Version:    0.7.0.1
  */

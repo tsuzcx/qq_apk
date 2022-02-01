@@ -22,9 +22,9 @@ class SensorAPIJavaScript$9
   
   public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
+    if (this.a.b != null)
     {
-      AppInterface localAppInterface = this.a.mRuntime.a();
+      AppInterface localAppInterface = this.a.mRuntime.b();
       if (localAppInterface != null)
       {
         ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
@@ -39,7 +39,7 @@ class SensorAPIJavaScript$9
         localUniPacket.setRequestId(paramInt);
         localUniPacket.put("resp", paramSvcRespPushMsg);
         localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), TempServlet.class);
+        paramSvcRespPushMsg = new NewIntent(this.a.b.getApplicationContext(), TempServlet.class);
         paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
         localAppInterface.startServlet(paramSvcRespPushMsg);
         if (QLog.isColorLevel()) {
@@ -51,7 +51,7 @@ class SensorAPIJavaScript$9
   
   public void a(int paramInt, String paramString)
   {
-    String str = SensorAPIJavaScript.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(String.valueOf(paramInt));
+    String str = SensorAPIJavaScript.G.a(String.valueOf(paramInt));
     if (!TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel())
@@ -61,10 +61,10 @@ class SensorAPIJavaScript$9
         localStringBuilder.append(paramInt);
         QLog.d("SensorApi", 2, localStringBuilder.toString());
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      if (this.a.F == null) {
+        this.a.F = new Handler(Looper.getMainLooper());
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
+      this.a.F.post(new SensorAPIJavaScript.9.1(this, str, paramString));
       return;
     }
     if (QLog.isColorLevel())
@@ -79,7 +79,7 @@ class SensorAPIJavaScript$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.9
  * JD-Core Version:    0.7.0.1
  */

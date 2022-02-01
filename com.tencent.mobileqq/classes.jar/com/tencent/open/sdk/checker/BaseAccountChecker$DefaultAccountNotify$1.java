@@ -12,17 +12,17 @@ class BaseAccountChecker$DefaultAccountNotify$1
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$DefaultAccountNotify$DialogBtnClickListener.a();
+      this.a.a();
       return;
     }
     if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$DefaultAccountNotify$DialogBtnClickListener.c();
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.checker.BaseAccountChecker.DefaultAccountNotify.1
  * JD-Core Version:    0.7.0.1
  */

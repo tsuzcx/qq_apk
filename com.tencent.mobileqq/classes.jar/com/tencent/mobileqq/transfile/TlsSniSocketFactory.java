@@ -111,10 +111,10 @@ public class TlsSniSocketFactory
         localStringBuilder.append(((SSLSession)localObject).getCipherSuite());
         QLog.i("SNISocketFactory", 2, localStringBuilder.toString());
       }
-      UtilApi.a.a(i, paramString, paramInt, this.mBusiness);
+      UtilApi.b.a(i, paramString, paramInt, this.mBusiness);
       return paramSocket;
     }
-    UtilApi.a.a(i + 4, paramString, paramInt, this.mBusiness);
+    UtilApi.b.a(i + 4, paramString, paramInt, this.mBusiness);
     paramSocket.close();
     paramSocket = new StringBuilder();
     paramSocket.append("Cannot verify hostname: ");
@@ -132,7 +132,7 @@ public class TlsSniSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TlsSniSocketFactory
  * JD-Core Version:    0.7.0.1
  */

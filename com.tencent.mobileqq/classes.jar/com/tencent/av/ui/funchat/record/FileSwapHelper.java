@@ -55,28 +55,6 @@ public class FileSwapHelper
     return 0L;
   }
   
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("/QQVideo/");
-    str = ((StringBuilder)localObject).toString();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append(new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis())));
-    str = ((StringBuilder)localObject).toString();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append(a);
-    str = ((StringBuilder)localObject).toString();
-    localObject = new File(str).getParentFile();
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return str;
-  }
-  
   public static void a(String paramString, Context paramContext)
   {
     if (QLog.isColorLevel())
@@ -108,6 +86,28 @@ public class FileSwapHelper
         paramString.delete();
       }
     }
+  }
+  
+  public static String b()
+  {
+    String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("/QQVideo/");
+    str = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis())));
+    str = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(a);
+    str = ((StringBuilder)localObject).toString();
+    localObject = new File(str).getParentFile();
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return str;
   }
 }
 

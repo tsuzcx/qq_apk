@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 final class NewPtsViewCreator$PTSLiteItemViewHolder
   extends BaseItemViewHolder
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public NewPtsViewCreator$PTSLiteItemViewHolder(View paramView, @NotNull BaseData paramBaseData)
   {
@@ -29,7 +29,7 @@ final class NewPtsViewCreator$PTSLiteItemViewHolder
     Intrinsics.checkParameterIsNotNull(paramBaseData1, "oldData");
     Intrinsics.checkParameterIsNotNull(paramBaseData2, "data");
     paramBaseData2 = (PtsData)paramBaseData2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       PTSComposer localPTSComposer = paramBaseData2.a;
       paramBaseData1 = null;
@@ -39,27 +39,27 @@ final class NewPtsViewCreator$PTSLiteItemViewHolder
       localPTSComposer = paramBaseData2.a;
       if (localPTSComposer != null)
       {
-        NewPtsViewCreator localNewPtsViewCreator = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemNewPtsViewCreator;
+        NewPtsViewCreator localNewPtsViewCreator = this.a;
         PTSItemData localPTSItemData = paramBaseData2.a();
         if (localPTSItemData != null) {
           paramBaseData1 = localPTSItemData.getJSONData();
         }
         localPTSComposer.setData(NewPtsViewCreator.a(localNewPtsViewCreator, paramBaseData1));
-        paramBaseData1 = this.jdField_a_of_type_AndroidViewView;
+        paramBaseData1 = this.f;
         if (paramBaseData1 != null) {
-          localPTSComposer.layoutToView((PTSItemView)paramBaseData1, (IPTSLiteEventListener)NewPtsViewCreator.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemNewPtsViewCreator), true);
+          localPTSComposer.layoutToView((PTSItemView)paramBaseData1, (IPTSLiteEventListener)NewPtsViewCreator.a(this.a), true);
         } else {
           throw new TypeCastException("null cannot be cast to non-null type com.tencent.pts.core.itemview.PTSItemView");
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemNewPtsViewCreator.a(false, paramBaseData2);
+      this.a.a(false, paramBaseData2);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.NewPtsViewCreator.PTSLiteItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

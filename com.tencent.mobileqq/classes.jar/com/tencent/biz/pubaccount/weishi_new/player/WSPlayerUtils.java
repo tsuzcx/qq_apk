@@ -23,12 +23,7 @@ import java.util.Properties;
 public class WSPlayerUtils
 {
   public static int a = 20191226;
-  public static final String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = String.valueOf(jdField_a_of_type_Int);
-  }
+  public static final String b = String.valueOf(a);
   
   private static int a(int paramInt1, int paramInt2)
   {
@@ -47,8 +42,8 @@ public class WSPlayerUtils
   
   public static int a(WSPlayerUtils.PlayerLayoutParams paramPlayerLayoutParams)
   {
-    b(paramPlayerLayoutParams.jdField_a_of_type_AndroidViewView, 0);
-    b(paramPlayerLayoutParams.jdField_b_of_type_AndroidViewView, a(paramPlayerLayoutParams.jdField_a_of_type_Int, paramPlayerLayoutParams.jdField_b_of_type_Int), 5);
+    b(paramPlayerLayoutParams.a, 0);
+    b(paramPlayerLayoutParams.b, a(paramPlayerLayoutParams.c, paramPlayerLayoutParams.d), 5);
     return 0;
   }
   
@@ -73,56 +68,56 @@ public class WSPlayerUtils
   {
     WSVideoInfo localWSVideoInfo = new WSVideoInfo();
     Object localObject = paramstSimpleMetaFeed.video;
-    localWSVideoInfo.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.id;
-    localWSVideoInfo.jdField_b_of_type_JavaLangString = paramstSimpleMetaFeed.video_url;
-    localWSVideoInfo.jdField_d_of_type_JavaLangString = paramstSimpleMetaFeed.feed_desc;
+    localWSVideoInfo.a = paramstSimpleMetaFeed.id;
+    localWSVideoInfo.e = paramstSimpleMetaFeed.video_url;
+    localWSVideoInfo.g = paramstSimpleMetaFeed.feed_desc;
     int j = 0;
     if (localObject != null) {
       i = ((stMetaUgcVideoSeg)localObject).duration;
     } else {
       i = 0;
     }
-    localWSVideoInfo.jdField_c_of_type_Int = i;
+    localWSVideoInfo.d = i;
     if (localObject != null) {
       i = paramstSimpleMetaFeed.video.width;
     } else {
       i = 0;
     }
-    localWSVideoInfo.jdField_a_of_type_Int = i;
+    localWSVideoInfo.b = i;
     if (localObject != null) {
       i = paramstSimpleMetaFeed.video.height;
     } else {
       i = 0;
     }
-    localWSVideoInfo.jdField_b_of_type_Int = i;
-    localWSVideoInfo.jdField_c_of_type_JavaLangString = WeishiUtils.c(paramstSimpleMetaFeed, false);
-    localWSVideoInfo.jdField_e_of_type_Int = paramstSimpleMetaFeed.video_type;
-    localWSVideoInfo.jdField_d_of_type_Int = paramstSimpleMetaFeed.videoPoolType;
+    localWSVideoInfo.c = i;
+    localWSVideoInfo.f = WeishiUtils.c(paramstSimpleMetaFeed, false);
+    localWSVideoInfo.i = paramstSimpleMetaFeed.video_type;
+    localWSVideoInfo.h = paramstSimpleMetaFeed.videoPoolType;
     if (paramstSimpleMetaFeed.poster != null) {
       localObject = paramstSimpleMetaFeed.poster.id;
     } else {
       localObject = "";
     }
-    localWSVideoInfo.jdField_e_of_type_JavaLangString = ((String)localObject);
-    localWSVideoInfo.jdField_f_of_type_JavaLangString = paramstSimpleMetaFeed.traceId;
-    localWSVideoInfo.jdField_g_of_type_JavaLangString = new Gson().toJson(paramstSimpleMetaFeed.map_ext);
+    localWSVideoInfo.j = ((String)localObject);
+    localWSVideoInfo.k = paramstSimpleMetaFeed.traceId;
+    localWSVideoInfo.l = new Gson().toJson(paramstSimpleMetaFeed.map_ext);
     if (paramstSimpleMetaFeed.opVideo != null) {
       i = paramstSimpleMetaFeed.opVideo.videoType;
     } else {
       i = 0;
     }
-    localWSVideoInfo.jdField_f_of_type_Int = i;
+    localWSVideoInfo.m = i;
     if (paramstSimpleMetaFeed.videoTag != null) {
       i = paramstSimpleMetaFeed.videoTag.tagId;
     } else {
       i = 0;
     }
-    localWSVideoInfo.jdField_g_of_type_Int = i;
+    localWSVideoInfo.n = i;
     int i = j;
     if (paramstSimpleMetaFeed.bottomTag != null) {
       i = paramstSimpleMetaFeed.bottomTag.tagId;
     }
-    localWSVideoInfo.h = i;
+    localWSVideoInfo.o = i;
     return localWSVideoInfo;
   }
   
@@ -153,15 +148,10 @@ public class WSPlayerUtils
   @NonNull
   public static String a(@Nullable WSPlayerParam paramWSPlayerParam)
   {
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.a != null) && (paramWSPlayerParam.a.jdField_a_of_type_JavaLangString != null)) {
-      return paramWSPlayerParam.a.jdField_a_of_type_JavaLangString;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.c != null) && (paramWSPlayerParam.c.a != null)) {
+      return paramWSPlayerParam.c.a;
     }
     return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    return MD5.a(paramString);
   }
   
   public static Properties a(String paramString)
@@ -179,11 +169,6 @@ public class WSPlayerUtils
     return null;
   }
   
-  private static boolean a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 > 0) && (paramInt2 > 0) && (paramInt2 / paramInt1 > 1.555556F);
-  }
-  
   public static boolean a(@Nullable WSPlayerParam paramWSPlayerParam1, @Nullable WSPlayerParam paramWSPlayerParam2)
   {
     String str1 = a(paramWSPlayerParam1);
@@ -197,12 +182,12 @@ public class WSPlayerUtils
   {
     int i3 = WeishiUIUtil.c(paramActivity);
     int i4 = WeishiUIUtil.c();
-    int m = WeishiUIUtil.a(paramActivity) + WeishiUIUtil.jdField_c_of_type_Int;
-    int n = i3 - m - paramPlayerLayoutParams.jdField_d_of_type_Int;
-    int i1 = n - paramPlayerLayoutParams.jdField_c_of_type_Int;
+    int m = WeishiUIUtil.a(paramActivity) + WeishiUIUtil.c;
+    int n = i3 - m - paramPlayerLayoutParams.f;
+    int i1 = n - paramPlayerLayoutParams.e;
     float f1;
-    if ((paramPlayerLayoutParams.jdField_b_of_type_Int > 0) && (paramPlayerLayoutParams.jdField_a_of_type_Int > 0)) {
-      f1 = paramPlayerLayoutParams.jdField_b_of_type_Int / paramPlayerLayoutParams.jdField_a_of_type_Int;
+    if ((paramPlayerLayoutParams.d > 0) && (paramPlayerLayoutParams.c > 0)) {
+      f1 = paramPlayerLayoutParams.d / paramPlayerLayoutParams.c;
     } else {
       f1 = 0.0F;
     }
@@ -212,12 +197,12 @@ public class WSPlayerUtils
     float f4 = i1 / f2;
     float f5 = 0.9F * f4;
     float f6 = 0.95F * f4;
-    int i = paramPlayerLayoutParams.jdField_d_of_type_Int;
+    int i = paramPlayerLayoutParams.f;
     int i2 = 2;
     if (f1 > f3)
     {
       i = 1;
-      j = i3 - paramPlayerLayoutParams.jdField_d_of_type_Int;
+      j = i3 - paramPlayerLayoutParams.f;
     }
     int k;
     for (;;)
@@ -234,7 +219,7 @@ public class WSPlayerUtils
       if ((f1 > f6) && (f1 <= f4))
       {
         i = 3;
-        k = paramPlayerLayoutParams.jdField_c_of_type_Int + m;
+        k = paramPlayerLayoutParams.e + m;
         j = i1;
         break;
       }
@@ -242,7 +227,7 @@ public class WSPlayerUtils
       {
         i = 4;
         j = (int)(f2 * f1);
-        k = paramPlayerLayoutParams.jdField_c_of_type_Int + m;
+        k = paramPlayerLayoutParams.e + m;
         break;
       }
       if (f1 <= f5)
@@ -277,9 +262,9 @@ public class WSPlayerUtils
     paramActivity.append(", h2Rate:");
     paramActivity.append(f3);
     paramActivity.append(", videoWidth:");
-    paramActivity.append(paramPlayerLayoutParams.jdField_a_of_type_Int);
+    paramActivity.append(paramPlayerLayoutParams.c);
     paramActivity.append(", videoHeight:");
-    paramActivity.append(paramPlayerLayoutParams.jdField_b_of_type_Int);
+    paramActivity.append(paramPlayerLayoutParams.d);
     paramActivity.append(", h1:");
     paramActivity.append(i1);
     paramActivity.append(", h2:");
@@ -287,7 +272,7 @@ public class WSPlayerUtils
     paramActivity.append(", statusHeight:");
     paramActivity.append(m);
     paramActivity.append(", bottomBarHeight:");
-    paramActivity.append(paramPlayerLayoutParams.jdField_d_of_type_Int);
+    paramActivity.append(paramPlayerLayoutParams.f);
     paramActivity.append(", screenWidth:");
     paramActivity.append(i4);
     paramActivity.append(", screenHeight:");
@@ -304,16 +289,16 @@ public class WSPlayerUtils
   
   public static int b(WSPlayerUtils.PlayerLayoutParams paramPlayerLayoutParams)
   {
-    boolean bool = a(paramPlayerLayoutParams.jdField_a_of_type_Int, paramPlayerLayoutParams.jdField_b_of_type_Int);
+    boolean bool = b(paramPlayerLayoutParams.c, paramPlayerLayoutParams.d);
     if (bool) {
       i = 1;
     } else {
       i = 5;
     }
-    View localView = paramPlayerLayoutParams.jdField_a_of_type_AndroidViewView;
+    View localView = paramPlayerLayoutParams.a;
     int j = 0;
     b(localView, 0);
-    b(paramPlayerLayoutParams.jdField_b_of_type_AndroidViewView, a(paramPlayerLayoutParams.jdField_a_of_type_Int, paramPlayerLayoutParams.jdField_b_of_type_Int), i);
+    b(paramPlayerLayoutParams.b, a(paramPlayerLayoutParams.c, paramPlayerLayoutParams.d), i);
     int i = j;
     if (bool) {
       i = 2;
@@ -324,10 +309,15 @@ public class WSPlayerUtils
   @NonNull
   public static String b(@Nullable WSPlayerParam paramWSPlayerParam)
   {
-    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.a != null) && (paramWSPlayerParam.a.jdField_b_of_type_JavaLangString != null)) {
-      return paramWSPlayerParam.a.jdField_b_of_type_JavaLangString;
+    if ((paramWSPlayerParam != null) && (paramWSPlayerParam.c != null) && (paramWSPlayerParam.c.e != null)) {
+      return paramWSPlayerParam.c.e;
     }
     return "";
+  }
+  
+  public static String b(String paramString)
+  {
+    return MD5.b(paramString);
   }
   
   private static void b(View paramView, int paramInt)
@@ -358,10 +348,15 @@ public class WSPlayerUtils
       paramView.setLayoutParams(localLayoutParams);
     }
   }
+  
+  private static boolean b(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 > 0) && (paramInt2 > 0) && (paramInt2 / paramInt1 > 1.555556F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerUtils
  * JD-Core Version:    0.7.0.1
  */

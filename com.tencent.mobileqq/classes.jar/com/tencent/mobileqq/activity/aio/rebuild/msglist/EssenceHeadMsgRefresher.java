@@ -17,7 +17,7 @@ public class EssenceHeadMsgRefresher
   {
     if (paramLong2 - paramLong1 > 200L)
     {
-      QQToast.a(paramAIOContext.a(), 2131719843, 0).b(paramAIOContext.a().getTitleBarHeight());
+      QQToast.makeText(paramAIOContext.b(), 2131917448, 0).show(paramAIOContext.b().getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.d("EssenceHeadMsgRefresher", 2, "refreshHeadMessage: invalidate unread count TYPE_TROOP_ESSENCEMSG");
       }
@@ -25,27 +25,27 @@ public class EssenceHeadMsgRefresher
     }
     if ((int)paramLong2 >= 1L + paramLong1)
     {
-      if (!NetworkUtil.isNetworkAvailable(paramAIOContext.a()))
+      if (!NetworkUtil.isNetworkAvailable(paramAIOContext.b()))
       {
-        QQToast.a(paramAIOContext.a(), 2131697226, 0).b(paramAIOContext.a().getTitleBarHeight());
+        QQToast.makeText(paramAIOContext.b(), 2131894999, 0).show(paramAIOContext.b().getTitleBarHeight());
         return;
       }
-      paramAIOContext.a().a().a(paramLong2, paramLong1, false);
-      paramAIOContext.a().a().a(paramInt1, 0, -1, paramRunnable, 6);
+      paramAIOContext.e().d().a(paramLong2, paramLong1, false);
+      paramAIOContext.e().d().a(paramInt1, 0, -1, paramRunnable, 6);
       return;
     }
-    paramInt2 = paramAIOContext.a().a().c(paramLong1);
+    paramInt2 = paramAIOContext.e().b().c(paramLong1);
     if (paramInt2 != -1)
     {
-      paramAIOContext.a().a().a(paramInt1, paramInt2, paramInt2, null, 6);
+      paramAIOContext.e().d().a(paramInt1, paramInt2, paramInt2, null, 6);
       return;
     }
-    QQToast.a(paramAIOContext.a(), 2131719843, 0).b(paramAIOContext.a().getTitleBarHeight());
+    QQToast.makeText(paramAIOContext.b(), 2131917448, 0).show(paramAIOContext.b().getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.EssenceHeadMsgRefresher
  * JD-Core Version:    0.7.0.1
  */

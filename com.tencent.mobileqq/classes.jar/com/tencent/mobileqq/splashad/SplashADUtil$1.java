@@ -14,10 +14,10 @@ final class SplashADUtil$1
   {
     try
     {
-      if ((this.jdField_a_of_type_Int != 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      if ((this.a != 0) && (!TextUtils.isEmpty(this.b)))
       {
-        int i = this.jdField_a_of_type_Int;
-        Object localObject2 = this.jdField_a_of_type_JavaLangString;
+        int i = this.a;
+        Object localObject2 = this.b;
         String str = "";
         if (i != 1)
         {
@@ -37,7 +37,7 @@ final class SplashADUtil$1
               localObject1 = ((String)localObject2).replace("__APP__", MD5Utils.encodeHexStr("android_qq_splash"));
             }
           }
-          localObject2 = Tools.b();
+          localObject2 = Tools.c();
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             str = MD5Utils.encodeHexStr((String)localObject2);
           }
@@ -112,7 +112,7 @@ final class SplashADUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.splashad.SplashADUtil.1
  * JD-Core Version:    0.7.0.1
  */

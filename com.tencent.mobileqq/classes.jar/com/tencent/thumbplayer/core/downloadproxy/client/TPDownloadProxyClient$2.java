@@ -100,6 +100,11 @@ class TPDownloadProxyClient$2
     this.val$playListener.onDownloadStatusUpdate(paramInt);
   }
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    this.val$playListener.onPcdnDownloadFailed(paramString);
+  }
+  
   public int onPlayCallback(int paramInt, List paramList)
   {
     Integer localInteger = Integer.valueOf(0);
@@ -153,7 +158,7 @@ class TPDownloadProxyClient$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.2
  * JD-Core Version:    0.7.0.1
  */

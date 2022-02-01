@@ -11,25 +11,25 @@ class StudyRoomUploaderImpl$1
   
   public void a(int paramInt)
   {
-    StudyRoomPicUploadUtil.a(this.jdField_a_of_type_AndroidOsBundle, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener.a(paramInt);
+    StudyRoomPicUploadUtil.a(this.a, paramInt);
+    this.b.a(paramInt);
   }
   
   public void a(int paramInt, String paramString)
   {
-    StudyRoomPicUploadUtil.a(this.jdField_a_of_type_AndroidOsBundle, paramInt, paramString, true);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener.a(paramInt, paramString);
+    StudyRoomPicUploadUtil.a(this.a, paramInt, paramString, true);
+    this.b.a(paramInt, paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    StudyRoomPicUploadUtil.a(this.jdField_a_of_type_AndroidOsBundle, paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomApiIStudyRoomPicUploadListener.a(paramString1, paramString2);
+    StudyRoomPicUploadUtil.a(this.a, paramString1, paramString2);
+    this.b.a(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.api.impl.StudyRoomUploaderImpl.1
  * JD-Core Version:    0.7.0.1
  */

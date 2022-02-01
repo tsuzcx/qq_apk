@@ -10,7 +10,7 @@ class AudioItem$3
   public void a(int paramInt1, String paramString, int paramInt2)
   {
     paramString = this.a;
-    paramString.b(AudioItem.a(paramString));
+    paramString.b(AudioItem.b(paramString));
   }
   
   public void a(String paramString, int paramInt1, int paramInt2) {}
@@ -19,7 +19,7 @@ class AudioItem$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.3
  * JD-Core Version:    0.7.0.1
  */

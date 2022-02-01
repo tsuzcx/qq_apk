@@ -11,9 +11,9 @@ import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 @TargetApi(18)
 public class SimpleGLThread
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private EglCore jdField_a_of_type_ComTencentTtpicBaseutilsGlesEglCore;
-  private OffscreenSurface jdField_a_of_type_ComTencentTtpicBaseutilsGlesOffscreenSurface;
+  private Handler a;
+  private EglCore b;
+  private OffscreenSurface c;
   
   public SimpleGLThread(EGLContext paramEGLContext, String paramString)
   {
@@ -21,13 +21,13 @@ public class SimpleGLThread
     paramString.start();
     while (!paramString.isAlive()) {}
     QLog.i("SimpleGLThread", 2, "create SimpleGLThread");
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new SimpleGLThread.1(this, paramEGLContext));
+    this.a = new Handler(paramString.getLooper());
+    this.a.post(new SimpleGLThread.1(this, paramEGLContext));
   }
   
   public void a()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null) {
       localHandler.post(new SimpleGLThread.3(this));
     }
@@ -35,7 +35,7 @@ public class SimpleGLThread
   
   public void a(Runnable paramRunnable)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null) {
       localHandler.post(paramRunnable);
     }
@@ -72,7 +72,7 @@ public class SimpleGLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.video.SimpleGLThread
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.pts.utils.PTSDeviceUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 
 public class PTSNodeSwiper
-  extends PTSNodeVirtual<PTSSwiperView>
+  extends PTSNodeVirtual
 {
   private final String ATTRIBUTE_AUTOPLAY = "autoplay";
   private final String ATTRIBUTE_CIRCULAR = "circular";
@@ -36,7 +36,7 @@ public class PTSNodeSwiper
   
   public PTSNodeSwiper(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "swiper", null);
   }
   
   public void onParseValueFinished()
@@ -127,7 +127,7 @@ public class PTSNodeSwiper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeSwiper
  * JD-Core Version:    0.7.0.1
  */

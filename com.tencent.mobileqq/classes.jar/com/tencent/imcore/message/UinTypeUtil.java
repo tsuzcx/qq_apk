@@ -13,83 +13,36 @@ import java.util.Set;
 
 public class UinTypeUtil
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final int[] c;
-  public static final int[] d;
-  public static final int[] e = { -1034, -1042, -2015, -2061, -2003, -2004, -2009, -1001, -2076, -2012, -1013, -2030, -1019, -1018, -1014, -1043, -1045, -5000, -5001, -1024, -1028, 2024, -2042, -5005, -1046, -2027, -2037, -5006, -4011, -4012, -2029, -2034, -2033, -2041, -2060, -2062, -2065, -2063, -2066, -3016, -7007, -7010, -7009, -7011, -7012, -7015 };
-  public static final int[] f = { -4004, -4003, -4009, -4020, -3010, -3011, -1044, -5005, -4021, -4022, -5011, -3014, -2064, -7005, -5022, -7013 };
-  public static final int[] g = new int[0];
-  public static final int[] h = new int[0];
-  public static final int[] i = { 1008 };
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 3000, 1006, 7000, 9501, 10005, 1033, 1034, 1036 };
-    jdField_b_of_type_ArrayOfInt = new int[] { -2006, -1034, -1042, -2015, -2061, -4002, -4003, -4004, -1001, -1047, -1013, -2030, -1019, -1018, -2012, -1014, -1004, -1016, -1017, -1050, -2021, -3011, -4020, -3009, -3010, -1041, -1043, -1044, -1045, -5000, -5001, -1024, -1028, 1018, 2024, -2042, -1012, -1046, -2027, -2029, -2043, -4021, -4022, -2049, -5021, -5023, -2065, -2060, -2062, -4023, -4024, -4025, -4026, -4027, -7007, -2077, -7010, -7009, -7011, -7012, -7013, -7015, -7016 };
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.LBS_HELLO_UIN, AppConstants.SAME_STATE_BOX_UIN, AppConstants.DATE_UIN, AppConstants.LBS_SAY_HELLO_LIST_UIN, AppConstants.DATE_SAY_HELLO_LIST_UIN, AppConstants.RECOMMEND_CONTACT_UIN, AppConstants.SYSTEM_MSG_UIN, AppConstants.CONFESS_UIN };
-    c = new int[] { 0, 1000, 1004, 1020, 1006, 1001, 10002, 10004, 1009, 1003, 1005, 1008, 1023, 1021, 1022, 1024, 1025, 1010, 7400, 1044, 1045, 1032, 1033, 1034, 1036, 1038, 10007, 10008, 10009, 10010, 10011 };
-    d = new int[] { -1004, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -2061, -4008, -4009, -4012, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -7006, -1041, -1043, -1044, -1045, -5000, -5006, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046, -2027, -2037, -3013, -3014, -3015, -5007, -2030, -4021, -4022, -5011, -1013, -5020, -5022, -5023, -2060, -2062, -2023, -2065, -2064, -3016, -2063, -5041, -2073, -7007, -4024, -4026, -4027, -2077, -7010, -7009, -7011, -7012, -7013, -7015, -7016, -1034, -2074 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { AppConstants.KANDIAN_MERGE_UIN };
-  }
-  
-  public static int a(int paramInt)
-  {
-    int k = 1001;
-    int j = k;
-    if (paramInt != 1001)
-    {
-      j = k;
-      if (paramInt != 10002)
-      {
-        j = 1009;
-        if (paramInt != 1009)
-        {
-          j = 1010;
-          if (paramInt != 1010)
-          {
-            k = 1044;
-            j = k;
-            if (paramInt != 1044)
-            {
-              j = k;
-              if (paramInt != 1045)
-              {
-                switch (paramInt)
-                {
-                default: 
-                  return paramInt;
-                }
-                return 1032;
-              }
-            }
-          }
-        }
-      }
-    }
-    return j;
-  }
+  public static final int[] a = { 1, 3000, 1006, 7000, 9501, 10005, 1033, 1034, 1036, 10014 };
+  public static final int[] b = { -2006, -1034, -1042, -2015, -2061, -4002, -4003, -4004, -1001, -1047, -1013, -2030, -1019, -1018, -2012, -1014, -1004, -1016, -1017, -1050, -2021, -3011, -4020, -3009, -3010, -1041, -1043, -1044, -1045, -5000, -5001, -1024, -1028, 1018, 2024, -2042, -1012, -1046, -2027, -2029, -2043, -4021, -4022, -2049, -5021, -5023, -2065, -2060, -2062, -4023, -4024, -4025, -4026, -4027, -7007, -2077, -7010, -7009, -7011, -7012, -7013, -7015, -7016 };
+  public static final String[] c = { AppConstants.LBS_HELLO_UIN, AppConstants.SAME_STATE_BOX_UIN, AppConstants.DATE_UIN, AppConstants.LBS_SAY_HELLO_LIST_UIN, AppConstants.DATE_SAY_HELLO_LIST_UIN, AppConstants.RECOMMEND_CONTACT_UIN, AppConstants.SYSTEM_MSG_UIN, AppConstants.CONFESS_UIN };
+  public static final int[] d = { 0, 1000, 1004, 1020, 1006, 1001, 10002, 10004, 1009, 1003, 1005, 1008, 1023, 1021, 1022, 1024, 1025, 1010, 7400, 1044, 1045, 1032, 1033, 1034, 1036, 1038, 10007, 10008, 10010, 10011, 10013 };
+  public static final int[] e = { -1004, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -2061, -4008, -4009, -4012, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -7006, -1041, -1043, -1044, -1045, -5000, -5006, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046, -2027, -2037, -3013, -3014, -3015, -5007, -2030, -4021, -4022, -5011, -1013, -5020, -5022, -5023, -2060, -2062, -2023, -2065, -2064, -3016, -2063, -5041, -2073, -7007, -4024, -4026, -4027, -2077, -7010, -7009, -7011, -7012, -7013, -7015, -7016, -1034, -2074 };
+  public static final String[] f = { AppConstants.KANDIAN_MERGE_UIN };
+  public static final int[] g = { -1034, -1042, -2015, -2061, -2003, -2004, -2009, -1001, -2076, -2012, -1013, -2030, -1019, -1018, -1014, -1043, -1045, -5000, -5001, -1024, -1028, 2024, -2042, -5005, -1046, -2027, -2037, -5006, -4011, -4012, -2029, -2034, -2033, -2041, -2060, -2062, -2065, -2063, -2066, -3016, -7007, -7010, -7009, -7011, -7012, -7015 };
+  public static final int[] h = { -4004, -4003, -4009, -4020, -3010, -3011, -1044, -5005, -4021, -4022, -5011, -3014, -2064, -7005, -5022, -7013 };
+  public static final int[] i = new int[0];
+  public static final int[] j = new int[0];
+  public static final int[] k = { 1008 };
   
   public static String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(jdField_b_of_type_ArrayOfInt.length * 8);
+    StringBuilder localStringBuilder = new StringBuilder(b.length * 8);
     localStringBuilder.append("not in (");
-    int j = 0;
+    int m = 0;
     for (;;)
     {
-      int[] arrayOfInt = jdField_b_of_type_ArrayOfInt;
-      if (j >= arrayOfInt.length) {
+      int[] arrayOfInt = b;
+      if (m >= arrayOfInt.length) {
         break;
       }
-      localStringBuilder.append(arrayOfInt[j]);
-      if (j == jdField_b_of_type_ArrayOfInt.length - 1) {
+      localStringBuilder.append(arrayOfInt[m]);
+      if (m == b.length - 1) {
         localStringBuilder.append(")");
       } else {
         localStringBuilder.append(",");
       }
-      j += 1;
+      m += 1;
     }
     return localStringBuilder.toString();
   }
@@ -133,20 +86,6 @@ public class UinTypeUtil
     return localStringBuilder.toString();
   }
   
-  public static List<MessageRecord> a(List<MessageRecord> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if ((!d(localMessageRecord.msgtype)) && (((localMessageRecord.istroop != 3000) && (localMessageRecord.istroop != 1)) || (localMessageRecord.shmsgseq > 0L))) {
-        localArrayList.add(localMessageRecord);
-      }
-    }
-    return localArrayList;
-  }
-  
   public static List<MessageRecord> a(List<MessageRecord> paramList1, List<MessageRecord> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
@@ -156,19 +95,19 @@ public class UinTypeUtil
       while (paramList2.hasNext())
       {
         MessageRecord localMessageRecord1 = (MessageRecord)paramList2.next();
-        int k = 0;
+        int n = 0;
         Iterator localIterator = paramList1.iterator();
         MessageRecord localMessageRecord2;
         do
         {
-          j = k;
+          m = n;
           if (!localIterator.hasNext()) {
             break;
           }
           localMessageRecord2 = (MessageRecord)localIterator.next();
         } while ((localMessageRecord1.getId() != localMessageRecord1.getId()) || (localMessageRecord1.shmsgseq != localMessageRecord2.shmsgseq) || (localMessageRecord1.msgtype != localMessageRecord2.msgtype) || (localMessageRecord1.time != localMessageRecord2.time) || (localMessageRecord1.msgUid != localMessageRecord2.msgUid) || (localMessageRecord1.longMsgIndex != localMessageRecord2.longMsgIndex) || (localMessageRecord1.longMsgId != localMessageRecord2.longMsgId));
-        int j = 1;
-        if (j == 0) {
+        int m = 1;
+        if (m == 0) {
           localArrayList.add(localMessageRecord1);
         }
       }
@@ -179,22 +118,17 @@ public class UinTypeUtil
   
   public static boolean a(int paramInt)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
+    int[] arrayOfInt = a;
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      if (arrayOfInt[j] == paramInt) {
+      if (arrayOfInt[m] == paramInt) {
         return true;
       }
-      j += 1;
+      m += 1;
     }
     return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    return ((paramMessageRecord.extLong & 0x1) == 1) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("one_way")));
   }
   
   public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
@@ -204,40 +138,17 @@ public class UinTypeUtil
   
   public static boolean a(String paramString)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int k = arrayOfString.length;
-    int j = 0;
-    while (j < k)
+    String[] arrayOfString = c;
+    int n = arrayOfString.length;
+    int m = 0;
+    while (m < n)
     {
-      if (arrayOfString[j].equals(paramString)) {
+      if (arrayOfString[m].equals(paramString)) {
         return true;
       }
-      j += 1;
+      m += 1;
     }
     return false;
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    boolean bool1 = TextUtils.isEmpty(paramString);
-    boolean bool2 = false;
-    if (bool1) {
-      return false;
-    }
-    if (((a(paramInt) != 1001) && (a(paramInt) != 10002)) || ((!AppConstants.LBS_HELLO_UIN.equals(paramString)) && (((a(paramInt) != 1001) && (a(paramInt) != 10002)) || ((!AppConstants.NEARBY_LBS_HELLO_UIN.equals(paramString)) && ((a(paramInt) != 1009) || (!AppConstants.SAME_STATE_BOX_UIN.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.DATE_UIN.equals(paramString))) && ((a(paramInt) != 1001) || (!AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.DATE_SAY_HELLO_LIST_UIN.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.LBS_HELLO_UIN.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(paramString))) && ((a(paramInt) != 1032) || (!AppConstants.CONFESS_UIN.equals(paramString))) && ((a(paramInt) != 1044) || (!AppConstants.MATCH_CHAT_UIN.equals(paramString)))))))
-    {
-      bool1 = bool2;
-      if (a(paramInt) == 10008)
-      {
-        bool1 = bool2;
-        if (!AppConstants.QCIRCLE_CHAT_UIN.equals(paramString)) {}
-      }
-    }
-    else
-    {
-      bool1 = true;
-    }
-    return bool1;
   }
   
   public static boolean a(String paramString, int paramInt, List<MessageRecord> paramList)
@@ -331,36 +242,36 @@ public class UinTypeUtil
   
   public static String b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(d.length * 8);
+    StringBuilder localStringBuilder = new StringBuilder(e.length * 8);
     localStringBuilder.append("not in (");
-    int j = 0;
+    int m = 0;
     for (;;)
     {
-      int[] arrayOfInt = d;
-      if (j >= arrayOfInt.length) {
+      int[] arrayOfInt = e;
+      if (m >= arrayOfInt.length) {
         break;
       }
-      localStringBuilder.append(arrayOfInt[j]);
-      if (j == d.length - 1) {
+      localStringBuilder.append(arrayOfInt[m]);
+      if (m == e.length - 1) {
         localStringBuilder.append(")");
       } else {
         localStringBuilder.append(",");
       }
-      j += 1;
+      m += 1;
     }
     return localStringBuilder.toString();
   }
   
   public static String b(MessageRecord paramMessageRecord)
   {
-    int k = paramMessageRecord.istroop;
-    int j = 1034;
-    if (k == 1032)
+    int n = paramMessageRecord.istroop;
+    int m = 1034;
+    if (n == 1032)
     {
       if (paramMessageRecord.isSelfConfessor()) {
-        j = 1033;
+        m = 1033;
       }
-      return a(paramMessageRecord.senderuin, j, paramMessageRecord.getConfessTopicId());
+      return a(paramMessageRecord.senderuin, m, paramMessageRecord.getConfessTopicId());
     }
     if ((paramMessageRecord.istroop != 1033) && (paramMessageRecord.istroop != 1034)) {
       return paramMessageRecord.senderuin;
@@ -377,17 +288,31 @@ public class UinTypeUtil
     return localStringBuilder.toString();
   }
   
+  public static List<MessageRecord> b(List<MessageRecord> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if ((!d(localMessageRecord.msgtype)) && (((localMessageRecord.istroop != 3000) && (localMessageRecord.istroop != 1)) || (localMessageRecord.shmsgseq > 0L))) {
+        localArrayList.add(localMessageRecord);
+      }
+    }
+    return localArrayList;
+  }
+  
   public static boolean b(int paramInt)
   {
-    Object localObject = c;
-    int k = localObject.length;
-    int j = 0;
-    while (j < k)
+    Object localObject = d;
+    int n = localObject.length;
+    int m = 0;
+    while (m < n)
     {
-      if (localObject[j] == paramInt) {
+      if (localObject[m] == paramInt) {
         return true;
       }
-      j += 1;
+      m += 1;
     }
     localObject = UinType.valueOf(paramInt);
     if (localObject != null) {
@@ -403,25 +328,25 @@ public class UinTypeUtil
       if (paramString.contains("&")) {
         return false;
       }
-      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      int k = arrayOfString.length;
-      int j = 0;
-      while (j < k)
+      String[] arrayOfString = c;
+      int n = arrayOfString.length;
+      int m = 0;
+      while (m < n)
       {
-        if (paramString.equals(arrayOfString[j])) {
+        if (paramString.equals(arrayOfString[m])) {
           return true;
         }
-        j += 1;
+        m += 1;
       }
-      arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-      k = arrayOfString.length;
-      j = 0;
-      while (j < k)
+      arrayOfString = f;
+      n = arrayOfString.length;
+      m = 0;
+      while (m < n)
       {
-        if (paramString.equals(arrayOfString[j])) {
+        if (paramString.equals(arrayOfString[m])) {
           return true;
         }
-        j += 1;
+        m += 1;
       }
     }
     return false;
@@ -429,39 +354,44 @@ public class UinTypeUtil
   
   public static String c()
   {
-    StringBuilder localStringBuilder = new StringBuilder(e.length * 8);
+    StringBuilder localStringBuilder = new StringBuilder(g.length * 8);
     localStringBuilder.append("not in (");
-    int j = 0;
+    int m = 0;
     for (;;)
     {
-      int[] arrayOfInt = e;
-      if (j >= arrayOfInt.length) {
+      int[] arrayOfInt = g;
+      if (m >= arrayOfInt.length) {
         break;
       }
-      localStringBuilder.append(arrayOfInt[j]);
-      if (j == e.length - 1) {
+      localStringBuilder.append(arrayOfInt[m]);
+      if (m == g.length - 1) {
         localStringBuilder.append(")");
       } else {
         localStringBuilder.append(",");
       }
-      j += 1;
+      m += 1;
     }
     return localStringBuilder.toString();
   }
   
   public static boolean c(int paramInt)
   {
-    int[] arrayOfInt = e;
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
+    int[] arrayOfInt = g;
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      if (arrayOfInt[j] == paramInt) {
+      if (arrayOfInt[m] == paramInt) {
         return false;
       }
-      j += 1;
+      m += 1;
     }
     return true;
+  }
+  
+  public static boolean c(MessageRecord paramMessageRecord)
+  {
+    return ((paramMessageRecord.extLong & 0x1) == 1) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("one_way")));
   }
   
   public static boolean c(String paramString)
@@ -477,43 +407,66 @@ public class UinTypeUtil
     return bool1;
   }
   
+  public static boolean c(String paramString, int paramInt)
+  {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
+      return false;
+    }
+    if (((e(paramInt) != 1001) && (e(paramInt) != 10002)) || ((!AppConstants.LBS_HELLO_UIN.equals(paramString)) && (((e(paramInt) != 1001) && (e(paramInt) != 10002)) || ((!AppConstants.NEARBY_LBS_HELLO_UIN.equals(paramString)) && ((e(paramInt) != 1009) || (!AppConstants.SAME_STATE_BOX_UIN.equals(paramString))) && ((e(paramInt) != 1010) || (!AppConstants.DATE_UIN.equals(paramString))) && ((e(paramInt) != 1001) || (!AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(paramString))) && ((e(paramInt) != 1010) || (!AppConstants.DATE_SAY_HELLO_LIST_UIN.equals(paramString))) && ((e(paramInt) != 1010) || (!AppConstants.LBS_HELLO_UIN.equals(paramString))) && ((e(paramInt) != 1010) || (!AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(paramString))) && ((e(paramInt) != 1032) || (!AppConstants.CONFESS_UIN.equals(paramString))) && ((e(paramInt) != 1044) || (!AppConstants.MATCH_CHAT_UIN.equals(paramString)))))))
+    {
+      bool1 = bool2;
+      if (e(paramInt) == 10008)
+      {
+        bool1 = bool2;
+        if (!AppConstants.QCIRCLE_CHAT_UIN.equals(paramString)) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
   public static String d()
   {
-    Object localObject = h;
+    Object localObject = j;
     if (localObject.length == 0) {
       return null;
     }
     localObject = new StringBuilder(localObject.length * 8);
     ((StringBuilder)localObject).append("not in (");
-    int j = 0;
+    int m = 0;
     for (;;)
     {
-      int[] arrayOfInt = h;
-      if (j >= arrayOfInt.length) {
+      int[] arrayOfInt = j;
+      if (m >= arrayOfInt.length) {
         break;
       }
-      ((StringBuilder)localObject).append(arrayOfInt[j]);
-      if (j == h.length - 1) {
+      ((StringBuilder)localObject).append(arrayOfInt[m]);
+      if (m == j.length - 1) {
         ((StringBuilder)localObject).append(")");
       } else {
         ((StringBuilder)localObject).append(",");
       }
-      j += 1;
+      m += 1;
     }
     return ((StringBuilder)localObject).toString();
   }
   
   public static boolean d(int paramInt)
   {
-    int[] arrayOfInt = f;
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
+    int[] arrayOfInt = h;
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      if (arrayOfInt[j] == paramInt) {
+      if (arrayOfInt[m] == paramInt) {
         return true;
       }
-      j += 1;
+      m += 1;
     }
     return false;
   }
@@ -523,22 +476,41 @@ public class UinTypeUtil
     return (AppConstants.MSG_BOX_INTERACT_UIN.equals(paramString)) || (AppConstants.MSG_BOX_FOLLOW_UIN.equals(paramString));
   }
   
-  public static boolean e(int paramInt)
+  public static int e(int paramInt)
   {
-    int[] arrayOfInt = g;
-    if (arrayOfInt.length == 0) {
-      return false;
-    }
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
+    int n = 1001;
+    int m = n;
+    if (paramInt != 1001)
     {
-      if (arrayOfInt[j] == paramInt) {
-        return true;
+      m = n;
+      if (paramInt != 10002)
+      {
+        m = 1009;
+        if (paramInt != 1009)
+        {
+          m = 1010;
+          if (paramInt != 1010)
+          {
+            n = 1044;
+            m = n;
+            if (paramInt != 1044)
+            {
+              m = n;
+              if (paramInt != 1045)
+              {
+                switch (paramInt)
+                {
+                default: 
+                  return paramInt;
+                }
+                return 1032;
+              }
+            }
+          }
+        }
       }
-      j += 1;
     }
-    return false;
+    return m;
   }
   
   public static boolean e(String paramString)
@@ -548,23 +520,41 @@ public class UinTypeUtil
   
   public static boolean f(int paramInt)
   {
-    int[] arrayOfInt = h;
+    int[] arrayOfInt = i;
     if (arrayOfInt.length == 0) {
       return false;
     }
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      if (arrayOfInt[j] == paramInt) {
+      if (arrayOfInt[m] == paramInt) {
         return true;
       }
-      j += 1;
+      m += 1;
     }
     return false;
   }
   
   public static boolean g(int paramInt)
+  {
+    int[] arrayOfInt = j;
+    if (arrayOfInt.length == 0) {
+      return false;
+    }
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
+    {
+      if (arrayOfInt[m] == paramInt) {
+        return true;
+      }
+      m += 1;
+    }
+    return false;
+  }
+  
+  public static boolean h(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -582,42 +572,47 @@ public class UinTypeUtil
     return bool1;
   }
   
-  public static boolean h(int paramInt)
-  {
-    return (a(paramInt) == 1001) || (a(paramInt) == 10002) || (a(paramInt) == 1009) || (a(paramInt) == 1010) || (a(paramInt) == 1032);
-  }
-  
   public static boolean i(int paramInt)
   {
-    int[] arrayOfInt = i;
-    if (arrayOfInt.length == 0) {
-      return false;
-    }
-    int k = arrayOfInt.length;
-    int j = 0;
-    while (j < k)
-    {
-      if (arrayOfInt[j] == paramInt) {
-        return true;
-      }
-      j += 1;
-    }
-    return false;
+    return paramInt == 10014;
   }
   
   public static boolean j(int paramInt)
   {
-    return (paramInt == 1001) || (paramInt == 10002);
+    return (e(paramInt) == 1001) || (e(paramInt) == 10002) || (e(paramInt) == 1009) || (e(paramInt) == 1010) || (e(paramInt) == 1032);
   }
   
   public static boolean k(int paramInt)
+  {
+    int[] arrayOfInt = k;
+    if (arrayOfInt.length == 0) {
+      return false;
+    }
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
+    {
+      if (arrayOfInt[m] == paramInt) {
+        return true;
+      }
+      m += 1;
+    }
+    return false;
+  }
+  
+  public static boolean l(int paramInt)
+  {
+    return (paramInt == 1001) || (paramInt == 10002);
+  }
+  
+  public static boolean m(int paramInt)
   {
     return paramInt == -2006;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.UinTypeUtil
  * JD-Core Version:    0.7.0.1
  */

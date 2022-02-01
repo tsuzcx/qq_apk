@@ -13,13 +13,13 @@ final class StudyModeSwitchDialog$initView$2
   
   public final void onClick(View paramView)
   {
-    StudyModeSwitchDialog.a(this.a);
+    StudyModeSwitchDialog.b(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.initView.2
  * JD-Core Version:    0.7.0.1
  */

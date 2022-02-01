@@ -11,18 +11,18 @@ public class NetSearchTemplateBannerTitleItem
   extends NetSearchTemplateBaseItem
 {
   public static final String a;
-  public int a;
-  public CharSequence a;
   public CharSequence b;
-  public String b;
-  public CharSequence c;
+  public int c;
+  public CharSequence d;
+  public CharSequence e;
+  public String f;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.uniteSearch.");
     localStringBuilder.append(NetSearchTemplateBannerTitleItem.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public NetSearchTemplateBannerTitleItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
@@ -46,18 +46,23 @@ public class NetSearchTemplateBannerTitleItem
     return i;
   }
   
-  public void a(String paramString)
+  public boolean i()
+  {
+    return true;
+  }
+  
+  public void o_(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_JavaLangString = SearchUtils.a(paramString.optString("leftImageTagText"));
-      this.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("firstLineText"));
-      this.jdField_b_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("secondLineText"));
-      this.c = SearchUtils.a(paramString.optJSONArray("thirdLineText"));
+      this.s = paramString.optString("leftImageURL");
+      this.c = paramString.optInt("leftImageType", 1);
+      this.c = a(this.c);
+      this.f = SearchUtils.b(paramString.optString("leftImageTagText"));
+      this.b = SearchUtils.b(paramString.optString("firstLineText"));
+      this.d = SearchUtils.b(paramString.optString("secondLineText"));
+      this.e = SearchUtils.a(paramString.optJSONArray("thirdLineText"));
       return;
     }
     catch (JSONException paramString)
@@ -65,15 +70,10 @@ public class NetSearchTemplateBannerTitleItem
       paramString.printStackTrace();
     }
   }
-  
-  public boolean b()
-  {
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBannerTitleItem
  * JD-Core Version:    0.7.0.1
  */

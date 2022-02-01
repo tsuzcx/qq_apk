@@ -22,17 +22,17 @@ class PgcShortContentProteusItem$15
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo != null))
+      if ((this.a.k().mSocialFeedInfo.t.f) && (this.a.k().mSocialFeedInfo.L != null))
       {
-        String str = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo.a.h;
+        String str = this.a.k().mSocialFeedInfo.L.c.l;
         paramViewBase = paramViewBase.getNativeView();
-        PgcShortContentProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem, paramViewBase, str);
-        paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+        PgcShortContentProteusItem.a(this.c, paramViewBase, str);
+        paramViewBase = this.a.k();
         if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
         {
           paramViewBase.clickArea = 11;
           paramViewBase.clickJumpTarget = PGCShortContentUtils.a(str, "-1");
-          RIJFrameworkReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
+          RIJFrameworkReportManager.a(this.b.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
           return;
         }
       }
@@ -45,7 +45,7 @@ class PgcShortContentProteusItem$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.15
  * JD-Core Version:    0.7.0.1
  */

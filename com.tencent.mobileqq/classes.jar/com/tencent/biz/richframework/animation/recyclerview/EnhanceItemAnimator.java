@@ -1,15 +1,15 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.animation.AnimatorCompatHelper;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v7.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.SimpleItemAnimator;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.recyclerview.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import androidx.recyclerview.widget.SimpleItemAnimator;
+import com.tencent.biz.richframework.animation.support.AnimatorCompatHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +17,7 @@ import java.util.List;
 public class EnhanceItemAnimator
   extends SimpleItemAnimator
 {
-  private EnhanceItemAnimator.AddAnimationConfig jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig;
-  private ArrayList<RecyclerView.ViewHolder> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<RecyclerView.ViewHolder> a = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> b = new ArrayList();
   private ArrayList<EnhanceItemAnimator.MoveInfo> c = new ArrayList();
   private ArrayList<EnhanceItemAnimator.ChangeInfo> d = new ArrayList();
@@ -29,6 +28,7 @@ public class EnhanceItemAnimator
   private ArrayList<RecyclerView.ViewHolder> i = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> j = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> k = new ArrayList();
+  private EnhanceItemAnimator.AddAnimationConfig l;
   
   private void a()
   {
@@ -81,7 +81,7 @@ public class EnhanceItemAnimator
   
   private void a(EnhanceItemAnimator.ChangeInfo paramChangeInfo)
   {
-    RecyclerView.ViewHolder localViewHolder = paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    RecyclerView.ViewHolder localViewHolder = paramChangeInfo.a;
     Object localObject4 = null;
     Object localObject2;
     if (localViewHolder == null) {
@@ -89,7 +89,7 @@ public class EnhanceItemAnimator
     } else {
       localObject2 = localViewHolder.itemView;
     }
-    Object localObject1 = paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    Object localObject1 = paramChangeInfo.b;
     View localView;
     if (localObject1 != null) {
       localView = ((RecyclerView.ViewHolder)localObject1).itemView;
@@ -103,15 +103,15 @@ public class EnhanceItemAnimator
       } else {
         localObject1 = null;
       }
-      this.k.add(paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      this.k.add(paramChangeInfo.a);
       Object localObject3 = localObject1;
       if (localObject1 == null)
       {
         localObject3 = ViewCompat.animate((View)localObject2).setDuration(getChangeDuration());
-        ((ViewPropertyAnimatorCompat)localObject3).translationX(paramChangeInfo.c - paramChangeInfo.jdField_a_of_type_Int);
+        ((ViewPropertyAnimatorCompat)localObject3).translationX(paramChangeInfo.e - paramChangeInfo.c);
         ((ViewPropertyAnimatorCompat)localObject3).scaleY(1.0F);
         ((ViewPropertyAnimatorCompat)localObject3).scaleX(1.0F);
-        ((ViewPropertyAnimatorCompat)localObject3).translationY(paramChangeInfo.d - paramChangeInfo.jdField_b_of_type_Int);
+        ((ViewPropertyAnimatorCompat)localObject3).translationY(paramChangeInfo.f - paramChangeInfo.d);
         ((ViewPropertyAnimatorCompat)localObject3).alpha(0.0F);
       }
       ((ViewPropertyAnimatorCompat)localObject3).setListener(new EnhanceItemAnimator.7(this, paramChangeInfo, (ViewPropertyAnimatorCompat)localObject3)).start();
@@ -122,7 +122,7 @@ public class EnhanceItemAnimator
       if ((localViewHolder instanceof EnhanceHolderAnimationInterface)) {
         localObject1 = ((EnhanceHolderAnimationInterface)localViewHolder).a(paramChangeInfo, getChangeDuration(), false);
       }
-      this.k.add(paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      this.k.add(paramChangeInfo.b);
       localObject2 = localObject1;
       if (localObject1 == null)
       {
@@ -139,7 +139,7 @@ public class EnhanceItemAnimator
     while (m >= 0)
     {
       EnhanceItemAnimator.ChangeInfo localChangeInfo = (EnhanceItemAnimator.ChangeInfo)paramList.get(m);
-      if ((a(localChangeInfo, paramViewHolder)) && (localChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null) && (localChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)) {
+      if ((a(localChangeInfo, paramViewHolder)) && (localChangeInfo.a == null) && (localChangeInfo.b == null)) {
         paramList.remove(localChangeInfo);
       }
       m -= 1;
@@ -148,18 +148,18 @@ public class EnhanceItemAnimator
   
   private boolean a(EnhanceItemAnimator.ChangeInfo paramChangeInfo, RecyclerView.ViewHolder paramViewHolder)
   {
-    RecyclerView.ViewHolder localViewHolder = paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    RecyclerView.ViewHolder localViewHolder = paramChangeInfo.b;
     boolean bool = false;
     if (localViewHolder == paramViewHolder)
     {
-      paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
+      paramChangeInfo.b = null;
     }
     else
     {
-      if (paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != paramViewHolder) {
+      if (paramChangeInfo.a != paramViewHolder) {
         return false;
       }
-      paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
+      paramChangeInfo.a = null;
       bool = true;
     }
     ViewCompat.setAlpha(paramViewHolder.itemView, 1.0F);
@@ -180,18 +180,23 @@ public class EnhanceItemAnimator
   
   private void b(EnhanceItemAnimator.ChangeInfo paramChangeInfo)
   {
-    if (paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) {
-      a(paramChangeInfo, paramChangeInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    if (paramChangeInfo.a != null) {
+      a(paramChangeInfo, paramChangeInfo.a);
     }
-    if (paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) {
-      a(paramChangeInfo, paramChangeInfo.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    if (paramChangeInfo.b != null) {
+      a(paramChangeInfo, paramChangeInfo.b);
     }
   }
   
   private void c(RecyclerView.ViewHolder paramViewHolder)
   {
-    AnimatorCompatHelper.clearInterpolator(paramViewHolder.itemView);
+    AnimatorCompatHelper.a(paramViewHolder.itemView);
     endAnimation(paramViewHolder);
+  }
+  
+  public void a(EnhanceItemAnimator.AddAnimationConfig paramAddAnimationConfig)
+  {
+    this.l = paramAddAnimationConfig;
   }
   
   void a(List<RecyclerView.ViewHolder> paramList)
@@ -207,21 +212,21 @@ public class EnhanceItemAnimator
   public boolean animateAdd(RecyclerView.ViewHolder paramViewHolder)
   {
     c(paramViewHolder);
-    Object localObject = paramViewHolder.itemView.getTag(2131376522);
+    Object localObject = paramViewHolder.itemView.getTag(2131444770);
     if (Boolean.TRUE.equals(localObject))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig;
+      localObject = this.l;
       if (localObject != null)
       {
-        if (((EnhanceItemAnimator.AddAnimationConfig)localObject).jdField_a_of_type_Int == 2)
+        if (((EnhanceItemAnimator.AddAnimationConfig)localObject).a == 2)
         {
           localObject = new int[2];
           paramViewHolder.itemView.getLocationOnScreen((int[])localObject);
-          int m = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig.jdField_b_of_type_Int;
+          int m = this.l.b;
           m = paramViewHolder.itemView.getWidth() / 2;
-          m = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig.c;
+          m = this.l.c;
           m = paramViewHolder.itemView.getHeight() / 2;
-          animateMove(paramViewHolder, this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator$AddAnimationConfig.c, 0, 0);
+          animateMove(paramViewHolder, this.l.b, this.l.c, 0, 0);
           return true;
         }
       }
@@ -299,7 +304,7 @@ public class EnhanceItemAnimator
   public boolean animateRemove(RecyclerView.ViewHolder paramViewHolder)
   {
     c(paramViewHolder);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramViewHolder);
+    this.a.add(paramViewHolder);
     return true;
   }
   
@@ -315,7 +320,7 @@ public class EnhanceItemAnimator
     int m = this.c.size() - 1;
     while (m >= 0)
     {
-      if (((EnhanceItemAnimator.MoveInfo)this.c.get(m)).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == paramViewHolder)
+      if (((EnhanceItemAnimator.MoveInfo)this.c.get(m)).a == paramViewHolder)
       {
         ViewCompat.setTranslationY(localView, 0.0F);
         ViewCompat.setTranslationX(localView, 0.0F);
@@ -325,7 +330,7 @@ public class EnhanceItemAnimator
       m -= 1;
     }
     a(this.d, paramViewHolder);
-    if (this.jdField_a_of_type_JavaUtilArrayList.remove(paramViewHolder))
+    if (this.a.remove(paramViewHolder))
     {
       ViewCompat.setAlpha(localView, 1.0F);
       dispatchRemoveFinished(paramViewHolder);
@@ -353,7 +358,7 @@ public class EnhanceItemAnimator
       int n = localArrayList.size() - 1;
       while (n >= 0)
       {
-        if (((EnhanceItemAnimator.MoveInfo)localArrayList.get(n)).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == paramViewHolder)
+        if (((EnhanceItemAnimator.MoveInfo)localArrayList.get(n)).a == paramViewHolder)
         {
           ViewCompat.setTranslationY(localView, 0.0F);
           ViewCompat.setTranslationX(localView, 0.0F);
@@ -398,18 +403,18 @@ public class EnhanceItemAnimator
     while (m >= 0)
     {
       localObject1 = (EnhanceItemAnimator.MoveInfo)this.c.get(m);
-      localObject2 = ((EnhanceItemAnimator.MoveInfo)localObject1).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView;
+      localObject2 = ((EnhanceItemAnimator.MoveInfo)localObject1).a.itemView;
       ViewCompat.setTranslationY((View)localObject2, 0.0F);
       ViewCompat.setTranslationX((View)localObject2, 0.0F);
-      dispatchMoveFinished(((EnhanceItemAnimator.MoveInfo)localObject1).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      dispatchMoveFinished(((EnhanceItemAnimator.MoveInfo)localObject1).a);
       this.c.remove(m);
       m -= 1;
     }
-    m = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    m = this.a.size() - 1;
     while (m >= 0)
     {
-      dispatchRemoveFinished((RecyclerView.ViewHolder)this.jdField_a_of_type_JavaUtilArrayList.get(m));
-      this.jdField_a_of_type_JavaUtilArrayList.remove(m);
+      dispatchRemoveFinished((RecyclerView.ViewHolder)this.a.get(m));
+      this.a.remove(m);
       m -= 1;
     }
     m = this.b.size() - 1;
@@ -439,10 +444,10 @@ public class EnhanceItemAnimator
         while (n >= 0)
         {
           localObject2 = (EnhanceItemAnimator.MoveInfo)((ArrayList)localObject1).get(n);
-          View localView = ((EnhanceItemAnimator.MoveInfo)localObject2).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView;
+          View localView = ((EnhanceItemAnimator.MoveInfo)localObject2).a.itemView;
           ViewCompat.setTranslationY(localView, 0.0F);
           ViewCompat.setTranslationX(localView, 0.0F);
-          dispatchMoveFinished(((EnhanceItemAnimator.MoveInfo)localObject2).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+          dispatchMoveFinished(((EnhanceItemAnimator.MoveInfo)localObject2).a);
           ((ArrayList)localObject1).remove(n);
           if (((ArrayList)localObject1).isEmpty()) {
             this.f.remove(localObject1);
@@ -494,50 +499,50 @@ public class EnhanceItemAnimator
   
   public boolean isRunning()
   {
-    return (!this.b.isEmpty()) || (!this.d.isEmpty()) || (!this.c.isEmpty()) || (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.i.isEmpty()) || (!this.j.isEmpty()) || (!this.h.isEmpty()) || (!this.k.isEmpty()) || (!this.f.isEmpty()) || (!this.e.isEmpty()) || (!this.g.isEmpty());
+    return (!this.b.isEmpty()) || (!this.d.isEmpty()) || (!this.c.isEmpty()) || (!this.a.isEmpty()) || (!this.i.isEmpty()) || (!this.j.isEmpty()) || (!this.h.isEmpty()) || (!this.k.isEmpty()) || (!this.f.isEmpty()) || (!this.e.isEmpty()) || (!this.g.isEmpty());
   }
   
   public void onChangeFinished(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
   {
     if ((paramViewHolder.itemView instanceof EnhanceItemAnimationInterface)) {
-      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).b(paramBoolean);
+      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).onChangeFinished(paramBoolean);
     }
   }
   
   public void onChangeStarting(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
   {
     if ((paramViewHolder.itemView instanceof EnhanceItemAnimationInterface)) {
-      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).a(paramBoolean);
+      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).onChangeStarting(paramBoolean);
     }
   }
   
   public void onMoveFinished(RecyclerView.ViewHolder paramViewHolder)
   {
     if ((paramViewHolder.itemView instanceof EnhanceItemAnimationInterface)) {
-      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).b();
+      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).onMoveFinished();
     }
   }
   
   public void onMoveStarting(RecyclerView.ViewHolder paramViewHolder)
   {
     if ((paramViewHolder.itemView instanceof EnhanceItemAnimationInterface)) {
-      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).a();
+      ((EnhanceItemAnimationInterface)paramViewHolder.itemView).onMoveStarting();
     }
   }
   
   public void runPendingAnimations()
   {
-    boolean bool1 = this.jdField_a_of_type_JavaUtilArrayList.isEmpty() ^ true;
+    boolean bool1 = this.a.isEmpty() ^ true;
     boolean bool2 = this.c.isEmpty() ^ true;
     boolean bool3 = this.d.isEmpty() ^ true;
     boolean bool4 = this.b.isEmpty() ^ true;
     if ((bool1) || (bool2) || (bool4) || (bool3))
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject1 = this.a.iterator();
       while (((Iterator)localObject1).hasNext()) {
         a((RecyclerView.ViewHolder)((Iterator)localObject1).next());
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.clear();
       Object localObject2;
       if (bool2)
       {
@@ -547,7 +552,7 @@ public class EnhanceItemAnimator
         this.c.clear();
         localObject2 = new EnhanceItemAnimator.1(this, (ArrayList)localObject1);
         if (bool1) {
-          ViewCompat.postOnAnimationDelayed(((EnhanceItemAnimator.MoveInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView, (Runnable)localObject2, getRemoveDuration());
+          ViewCompat.postOnAnimationDelayed(((EnhanceItemAnimator.MoveInfo)((ArrayList)localObject1).get(0)).a.itemView, (Runnable)localObject2, getRemoveDuration());
         } else {
           ((Runnable)localObject2).run();
         }
@@ -560,7 +565,7 @@ public class EnhanceItemAnimator
         this.d.clear();
         localObject2 = new EnhanceItemAnimator.2(this, (ArrayList)localObject1);
         if (bool1) {
-          ViewCompat.postOnAnimationDelayed(((EnhanceItemAnimator.ChangeInfo)((ArrayList)localObject1).get(0)).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView, (Runnable)localObject2, getRemoveDuration());
+          ViewCompat.postOnAnimationDelayed(((EnhanceItemAnimator.ChangeInfo)((ArrayList)localObject1).get(0)).a.itemView, (Runnable)localObject2, getRemoveDuration());
         } else {
           ((Runnable)localObject2).run();
         }

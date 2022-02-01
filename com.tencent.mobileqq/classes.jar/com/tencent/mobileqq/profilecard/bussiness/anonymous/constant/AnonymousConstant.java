@@ -20,12 +20,12 @@ public class AnonymousConstant
   public static final String KEY_Q_UIN = "key_question_uin";
   public static final String KEY_SHOW_TIMES = "key_show_times";
   public static final int LIKE_IV_COLOR = Color.parseColor("#FF4D94FF");
-  public static final int LIKE_IV_DRAWABLE = 2130845904;
+  public static final int LIKE_IV_DRAWABLE = 2130847374;
   public static final int LIST_MAX_SHOW_ITEM = 10;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.constant.AnonymousConstant
  * JD-Core Version:    0.7.0.1
  */

@@ -44,12 +44,12 @@ class LoginWelcomeManager$1
       QLog.d("LoginWelcomeManager", 2, ((StringBuilder)localObject1).toString());
     }
     this.a.b();
-    LoginWelcomeManager.a(this.a).removeObserver(this);
+    LoginWelcomeManager.b(this.a).removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.1
  * JD-Core Version:    0.7.0.1
  */

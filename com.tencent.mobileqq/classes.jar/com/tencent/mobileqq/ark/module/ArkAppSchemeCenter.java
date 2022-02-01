@@ -17,20 +17,19 @@ import org.json.JSONObject;
 public class ArkAppSchemeCenter
 {
   @ConfigInject(configPath="Business/qqark-impl/src/main/resources/Inject_ArkAppSchemeCenter.yml", version=1)
-  protected static final ArrayList<Class<? extends SchemeInterceptor>> a;
+  protected static final HashMap<String, Class<? extends SchemeHandler>> a = new HashMap();
   @ConfigInject(configPath="Business/qqark-impl/src/main/resources/Inject_ArkAppSchemeCenter.yml", version=1)
-  protected static final HashMap<String, Class<? extends SchemeHandler>> a;
+  protected static final ArrayList<Class<? extends SchemeInterceptor>> b;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("miniapp", MiniAppSchemeHandler.class);
-    jdField_a_of_type_JavaUtilHashMap.put("mqzone", QzoneSchemeHandler.class);
-    jdField_a_of_type_JavaUtilHashMap.put("app", AppSchemeHandler.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tel", TelSchemeHandler.class);
-    jdField_a_of_type_JavaUtilHashMap.put("qq", QQSchemeHandler.class);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(MiniAppSchemeInterceptor.class);
+    a.put("miniapp", MiniAppSchemeHandler.class);
+    a.put("mqzone", QzoneSchemeHandler.class);
+    a.put("app", AppSchemeHandler.class);
+    a.put("tel", TelSchemeHandler.class);
+    a.put("qq", QQSchemeHandler.class);
+    b = new ArrayList();
+    b.add(MiniAppSchemeInterceptor.class);
   }
   
   public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
@@ -50,7 +49,7 @@ public class ArkAppSchemeCenter
     if (paramString2.length <= 1) {
       return false;
     }
-    Object localObject1 = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = b.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Class localClass = (Class)((Iterator)localObject1).next();
@@ -70,7 +69,7 @@ public class ArkAppSchemeCenter
       }
     }
     Object localObject2 = paramString2[0];
-    paramString2 = (Class)jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+    paramString2 = (Class)a.get(localObject2);
     if (paramString2 == null)
     {
       paramString1 = new StringBuilder();
@@ -104,7 +103,7 @@ public class ArkAppSchemeCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppSchemeCenter
  * JD-Core Version:    0.7.0.1
  */

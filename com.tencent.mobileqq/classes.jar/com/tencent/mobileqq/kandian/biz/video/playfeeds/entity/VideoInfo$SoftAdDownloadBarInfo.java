@@ -10,15 +10,15 @@ public class VideoInfo$SoftAdDownloadBarInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoInfo.DownloadBarInfo> CREATOR = new VideoInfo.SoftAdDownloadBarInfo.1();
-  public int a;
-  public SmallMiniGameInfo a;
-  public UrlJumpInfo a;
   public String a;
-  public int b;
   public String b;
   public String c;
   public String d;
-  public String e;
+  public int e;
+  public UrlJumpInfo f;
+  public String g;
+  public int h;
+  public SmallMiniGameInfo i;
   
   public int describeContents()
   {
@@ -29,9 +29,9 @@ public class VideoInfo$SoftAdDownloadBarInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SoftAdDownloadBarInfo{title=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", subTitle='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", smallIconUrl='");
     localStringBuilder.append(this.c);
@@ -40,29 +40,29 @@ public class VideoInfo$SoftAdDownloadBarInfo
     localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", changeBiggerPositionPercent='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", urlJumpInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
-    paramParcel.writeString(this.e);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeParcelable(this.f, paramInt);
+    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.SoftAdDownloadBarInfo
  * JD-Core Version:    0.7.0.1
  */

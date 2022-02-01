@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ListAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AlertDialog.Builder;
 
@@ -40,7 +42,7 @@ class MenuDialogHelper
     this.mMenu.performItemAction((MenuItemImpl)this.mPresenter.getAdapter().getItem(paramInt), 0);
   }
   
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+  public void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
     if ((paramBoolean) || (paramMenuBuilder == this.mMenu)) {
       dismiss();
@@ -98,7 +100,7 @@ class MenuDialogHelper
     return this.mMenu.performShortcut(paramInt, paramKeyEvent, 0);
   }
   
-  public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+  public boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
     MenuPresenter.Callback localCallback = this.mPresenterCallback;
     if (localCallback != null) {
@@ -116,7 +118,7 @@ class MenuDialogHelper
   {
     Object localObject = this.mMenu;
     AlertDialog.Builder localBuilder = new AlertDialog.Builder(((MenuBuilder)localObject).getContext());
-    this.mPresenter = new ListMenuPresenter(localBuilder.getContext(), 2131558416);
+    this.mPresenter = new ListMenuPresenter(localBuilder.getContext(), R.layout.abc_list_menu_item_layout);
     this.mPresenter.setCallback(this);
     this.mMenu.addMenuPresenter(this.mPresenter);
     localBuilder.setAdapter(this.mPresenter.getAdapter(), this);

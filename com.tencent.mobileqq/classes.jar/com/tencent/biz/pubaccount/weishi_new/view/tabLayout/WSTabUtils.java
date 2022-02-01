@@ -15,7 +15,7 @@ public class WSTabUtils
   {
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
     localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().a();
+    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().d();
     localWSDownloadParams.mTestId = WeishiUtils.a(localWSDownloadParams.mScene);
     localWSDownloadParams.mScheme = paramString;
     return localWSDownloadParams;
@@ -23,12 +23,12 @@ public class WSTabUtils
   
   public static void a(Context paramContext, stTabInfo paramstTabInfo, int paramInt, boolean paramBoolean)
   {
-    if (WeishiUtils.c()) {
+    if (WeishiUtils.o()) {
       return;
     }
     if ((paramstTabInfo != null) && (paramContext != null))
     {
-      new WSStSchemaJumpManager(paramContext).a(paramstTabInfo.schema).a(true).a(a(paramstTabInfo.schema.schema)).a(new WSTabUtils.1(paramInt, paramBoolean)).c();
+      new WSStSchemaJumpManager(paramContext).a(paramstTabInfo.schema).a(true).a(a(paramstTabInfo.schema.schema)).a(new WSTabUtils.1(paramInt, paramBoolean)).j();
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -41,7 +41,7 @@ public class WSTabUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabUtils
  * JD-Core Version:    0.7.0.1
  */

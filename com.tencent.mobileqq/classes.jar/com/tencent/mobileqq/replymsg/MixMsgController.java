@@ -53,17 +53,17 @@ public class MixMsgController
   
   private void h(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.a == null) {
       return;
     }
-    Iterator localIterator = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramMultiMsgRequest.b.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (ChatMessage)localIterator.next();
       if ((localObject instanceof MessageForMixedMsg))
       {
-        MixedMsgManager localMixedMsgManager = (MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER);
-        SessionInfo localSessionInfo = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+        MixedMsgManager localMixedMsgManager = (MixedMsgManager)this.a.getManager(QQManagerFactory.MIXED_MSG_MANAGER);
+        SessionInfo localSessionInfo = paramMultiMsgRequest.a;
         localObject = (MessageForMixedMsg)localObject;
         localMixedMsgManager.a(localSessionInfo, (MessageForMixedMsg)localObject, false, ((MessageForMixedMsg)localObject).forwardID);
       }
@@ -77,10 +77,10 @@ public class MixMsgController
   
   protected void d(MultiMsgRequest paramMultiMsgRequest)
   {
-    Object localObject = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList;
+    Object localObject = paramMultiMsgRequest.b;
     ArrayList localArrayList = new ArrayList(1);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int j = paramMultiMsgRequest.jdField_a_of_type_Int;
+    QQAppInterface localQQAppInterface = this.a;
+    int j = paramMultiMsgRequest.h;
     int i = 0;
     boolean bool;
     if (j != 2) {
@@ -88,9 +88,9 @@ public class MixMsgController
     } else {
       bool = false;
     }
-    paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap = a(a(localQQAppInterface, (List)localObject, bool), localArrayList);
-    paramMultiMsgRequest.jdField_a_of_type_JavaUtilList = localArrayList;
-    if (paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    paramMultiMsgRequest.f = a(a(localQQAppInterface, (List)localObject, bool), localArrayList);
+    paramMultiMsgRequest.b = localArrayList;
+    if (paramMultiMsgRequest.f.size() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
@@ -98,10 +98,10 @@ public class MixMsgController
       h(paramMultiMsgRequest);
       return;
     }
-    if ((paramMultiMsgRequest.jdField_a_of_type_Int != 0) && (paramMultiMsgRequest.jdField_a_of_type_Int == 2)) {
+    if ((paramMultiMsgRequest.h != 0) && (paramMultiMsgRequest.h == 2)) {
       i = 1;
     }
-    localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
+    localObject = this.e.obtainMessage(i);
     ((Message)localObject).obj = paramMultiMsgRequest;
     ((Message)localObject).sendToTarget();
   }
@@ -113,7 +113,7 @@ public class MixMsgController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.replymsg.MixMsgController
  * JD-Core Version:    0.7.0.1
  */

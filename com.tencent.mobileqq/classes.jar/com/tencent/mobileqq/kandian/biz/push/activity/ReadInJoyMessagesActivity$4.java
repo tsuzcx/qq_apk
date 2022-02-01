@@ -10,17 +10,17 @@ class ReadInJoyMessagesActivity$4
 {
   ReadInJoyMessagesActivity$4(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizPushActivityReadInJoyMessagesActivity.getActivity());
+      ReadInJoyLogicEngine.a().a(this.a, this.c.getActivity());
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.activity.ReadInJoyMessagesActivity.4
  * JD-Core Version:    0.7.0.1
  */

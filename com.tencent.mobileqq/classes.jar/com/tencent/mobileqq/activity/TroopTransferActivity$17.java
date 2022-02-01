@@ -12,70 +12,70 @@ class TroopTransferActivity$17
   
   public void run()
   {
-    boolean bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j);
+    boolean bool2 = Utils.a(this.a.remark, this.b.l);
     boolean bool1 = true;
     Object localObject;
     if (!bool2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
+      this.b.l = this.a.remark;
+      if (!TextUtils.isEmpty(this.b.o))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).k = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).m, 2);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).l = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).m, 1);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).m = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).o, 2);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).n = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).o, 1);
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).k = "";
-        ((TroopTransferActivity.TroopMemberItem)localObject).l = "";
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).m = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).n = "";
       }
     }
-    if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
+    if (!Utils.a(this.a.name, this.b.i))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
+      this.b.i = this.a.name;
+      if (!TextUtils.isEmpty(this.b.i))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).h = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).g, 2);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).i = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).g, 1);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).j = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).i, 2);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).k = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).i, 1);
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).h = "";
-        ((TroopTransferActivity.TroopMemberItem)localObject).i = "";
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).j = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).k = "";
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j;
-    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m;
-    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g;
-    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a;
+    if (!TextUtils.isEmpty(this.b.l)) {
+      localObject = this.b.l;
+    } else if (!TextUtils.isEmpty(this.b.o)) {
+      localObject = this.b.o;
+    } else if (!TextUtils.isEmpty(this.b.i)) {
+      localObject = this.b.i;
+    } else if (!TextUtils.isEmpty(this.b.c)) {
+      localObject = this.b.c;
     } else {
       localObject = "";
     }
-    if (!Utils.a(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b))
+    if (!Utils.a(localObject, this.b.d))
     {
-      TroopTransferActivity.TroopMemberItem localTroopMemberItem = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-      localTroopMemberItem.b = ((String)localObject);
-      if (!TextUtils.isEmpty(localTroopMemberItem.b))
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = this.b;
+      localTroopMemberItem.d = ((String)localObject);
+      if (!TextUtils.isEmpty(localTroopMemberItem.d))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).c = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).b, 2);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).d = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).b, 1);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).e = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).d, 2);
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).f = ChnToSpell.b(((TroopTransferActivity.TroopMemberItem)localObject).d, 1);
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
-        ((TroopTransferActivity.TroopMemberItem)localObject).c = "";
-        ((TroopTransferActivity.TroopMemberItem)localObject).d = "";
+        localObject = this.b;
+        ((TroopTransferActivity.TroopMemberItem)localObject).e = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).f = "";
       }
     }
     else
@@ -87,7 +87,7 @@ class TroopTransferActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.17
  * JD-Core Version:    0.7.0.1
  */

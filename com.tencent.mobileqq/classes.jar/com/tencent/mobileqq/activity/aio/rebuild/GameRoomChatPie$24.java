@@ -25,9 +25,9 @@ class GameRoomChatPie$24
     if (paramContext.startsWith("10-"))
     {
       ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).stopSpeak();
-      this.a.h.setEnabled(true);
+      this.a.bu.setEnabled(true);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onBind enter room setSoundDisable");
+        QLog.d(this.a.c, 2, "onBind enter room setSoundDisable");
       }
       ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).setSoundEnable(false);
     }
@@ -35,7 +35,7 @@ class GameRoomChatPie$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.24
  * JD-Core Version:    0.7.0.1
  */

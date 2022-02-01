@@ -38,20 +38,20 @@ public class CustomLottieView
   extends DiniFlyAnimationView
   implements LottieViewInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840463);
-  private LottieGiftInfo jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo;
-  private Cancellable jdField_a_of_type_ComTencentMobileqqDiniflyCancellable;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int jdField_b_of_type_Int = 1000000;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private final int jdField_c_of_type_Int = 30;
-  private String jdField_c_of_type_JavaLangString = "LottieView";
-  private final int d = 10;
+  private String a;
+  private String b;
+  private LottieGiftInfo c;
+  private Bitmap d = BitmapFactory.decodeResource(getResources(), 2130841225);
+  private Context e;
+  private String f = "LottieView";
+  private int g = 0;
+  private boolean h = false;
+  private boolean i = false;
+  private final int j = 1000000;
+  private final int k = 30;
+  private final int l = 10;
+  private HashMap<String, Integer> m = new HashMap();
+  private Cancellable n;
   
   public CustomLottieView(Context paramContext)
   {
@@ -66,27 +66,27 @@ public class CustomLottieView
   public CustomLottieView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.e = paramContext;
     b();
   }
   
   private Bitmap a(Context paramContext, Bitmap paramBitmap, LottieImageAsset paramLottieImageAsset)
   {
-    paramContext = this.jdField_c_of_type_JavaLangString;
+    paramContext = this.f;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" aw=");
     ((StringBuilder)localObject).append(paramLottieImageAsset.getWidth());
     ((StringBuilder)localObject).append(" ah=");
     ((StringBuilder)localObject).append(paramLottieImageAsset.getHeight());
     QLog.e(paramContext, 1, ((StringBuilder)localObject).toString());
-    int i = paramLottieImageAsset.getWidth();
-    int j = paramLottieImageAsset.getHeight();
-    paramContext = a(paramBitmap, i, j);
+    int i1 = paramLottieImageAsset.getWidth();
+    int i2 = paramLottieImageAsset.getHeight();
+    paramContext = a(paramBitmap, i1, i2);
     paramBitmap = new Paint();
-    paramLottieImageAsset = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    paramLottieImageAsset = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
     localObject = new Canvas(paramLottieImageAsset);
-    float f = i / 2;
-    ((Canvas)localObject).drawCircle(f, f, f, paramBitmap);
+    float f1 = i1 / 2;
+    ((Canvas)localObject).drawCircle(f1, f1, f1, paramBitmap);
     paramBitmap.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     ((Canvas)localObject).drawBitmap(paramContext, 0.0F, 0.0F, paramBitmap);
     return paramLottieImageAsset;
@@ -96,13 +96,13 @@ public class CustomLottieView
   {
     if ("img_1.png".equals(paramLottieImageAsset.getFileName()))
     {
-      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo.jdField_a_of_type_Long != this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo.b) {
-        return a(this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo, paramLottieImageAsset.getWidth(), paramLottieImageAsset.getHeight());
+      if (this.c.h != this.c.j) {
+        return a(this.c, paramLottieImageAsset.getWidth(), paramLottieImageAsset.getHeight());
       }
-      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo.jdField_a_of_type_JavaLangString == null) {
+      if (this.c.a == null) {
         paramContext = "";
       } else {
-        paramContext = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo.jdField_a_of_type_JavaLangString;
+        paramContext = this.c.a;
       }
       Object localObject = paramContext;
       if (paramContext.length() > 10)
@@ -112,18 +112,18 @@ public class CustomLottieView
         ((StringBuilder)localObject).append("...");
         localObject = ((StringBuilder)localObject).toString();
       }
-      return a((String)localObject, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo.f, paramLottieImageAsset.getWidth(), paramLottieImageAsset.getHeight());
+      return a((String)localObject, this.c.f, paramLottieImageAsset.getWidth(), paramLottieImageAsset.getHeight());
     }
-    return a(paramContext, this.jdField_a_of_type_AndroidGraphicsBitmap, paramLottieImageAsset);
+    return a(paramContext, this.d, paramLottieImageAsset);
   }
   
   private Bitmap a(LottieGiftInfo paramLottieGiftInfo, int paramInt1, int paramInt2)
   {
-    String str = paramLottieGiftInfo.jdField_a_of_type_JavaLangString;
-    int i = str.length();
+    String str = paramLottieGiftInfo.a;
+    int i1 = str.length();
     Object localObject1 = "..";
     Object localObject2 = str;
-    if (i > 3)
+    if (i1 > 3)
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str.substring(0, 3));
@@ -142,14 +142,14 @@ public class CustomLottieView
     {
       localObject1 = str;
     }
-    str = paramLottieGiftInfo.h;
+    str = paramLottieGiftInfo.i;
     if (!TextUtils.isEmpty(str))
     {
-      i = str.lastIndexOf("_") + 1;
-      paramLottieGiftInfo = str.substring(i);
-      return a(str.substring(0, i).replaceFirst("_", (String)localObject2).replace("_", (CharSequence)localObject1), paramLottieGiftInfo, paramInt1, paramInt2);
+      i1 = str.lastIndexOf("_") + 1;
+      paramLottieGiftInfo = str.substring(i1);
+      return a(str.substring(0, i1).replaceFirst("_", (String)localObject2).replace("_", (CharSequence)localObject1), paramLottieGiftInfo, paramInt1, paramInt2);
     }
-    return a(paramLottieGiftInfo.jdField_a_of_type_JavaLangString, paramLottieGiftInfo.f, paramInt1, paramInt2);
+    return a(paramLottieGiftInfo.a, paramLottieGiftInfo.f, paramInt1, paramInt2);
   }
   
   private Bitmap a(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -164,24 +164,24 @@ public class CustomLottieView
     Rect localRect = new Rect();
     localPaint.getTextBounds(paramString1, 0, paramString1.length(), localRect);
     paramInt1 /= 2;
-    int i = localRect.width() / 2;
+    int i1 = localRect.width() / 2;
     localPaint.setFakeBoldText(true);
-    localCanvas.drawText(paramString1, paramInt1 - i, paramInt2, localPaint);
+    localCanvas.drawText(paramString1, paramInt1 - i1, paramInt2, localPaint);
     localPaint.setTextSize(28.0F);
     localPaint.getTextBounds(paramString2, 0, paramString2.length(), localRect);
-    i = localRect.width() / 2;
+    i1 = localRect.width() / 2;
     localPaint.setFakeBoldText(false);
-    int j = localFontMetricsInt.top;
-    localCanvas.drawText(paramString2, paramInt1 - i, paramInt2 - j, localPaint);
+    int i2 = localFontMetricsInt.top;
+    localCanvas.drawText(paramString2, paramInt1 - i1, paramInt2 - i2, localPaint);
     return localBitmap;
   }
   
   private void a(String paramString, LoadToPlayInter paramLoadToPlayInter)
   {
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    this.g = 0;
+    if (this.m.containsKey(paramString))
     {
-      this.jdField_a_of_type_Int = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+      this.g = ((Integer)this.m.get(paramString)).intValue();
       if (paramLoadToPlayInter != null) {
         paramLoadToPlayInter.onPrepareStart();
       }
@@ -219,23 +219,18 @@ public class CustomLottieView
     addAnimatorListener(new CustomLottieView.2(this));
   }
   
-  public Bitmap a()
-  {
-    return BitmapFactory.decodeResource(getResources(), 2130840463);
-  }
-  
   public Bitmap a(Bitmap paramBitmap, double paramDouble1, double paramDouble2)
   {
     Matrix localMatrix = new Matrix();
     Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
-      localBitmap = a();
+      localBitmap = getDefaultIcon();
     }
     float f1 = localBitmap.getWidth();
     float f2 = localBitmap.getHeight();
     float f3 = (float)paramDouble1 / f1;
     float f4 = (float)paramDouble2 / f2;
-    paramBitmap = this.jdField_c_of_type_JavaLangString;
+    paramBitmap = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" sw=");
     localStringBuilder.append(f3);
@@ -255,12 +250,17 @@ public class CustomLottieView
   
   public void cancelLoaderTask()
   {
-    Cancellable localCancellable = this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable;
+    Cancellable localCancellable = this.n;
     if (localCancellable != null)
     {
       localCancellable.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable = null;
+      this.n = null;
     }
+  }
+  
+  public Bitmap getDefaultIcon()
+  {
+    return BitmapFactory.decodeResource(getResources(), 2130841225);
   }
   
   public View getView()
@@ -271,18 +271,18 @@ public class CustomLottieView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    QLog.i(this.jdField_c_of_type_JavaLangString, 1, "onAttachedToWindow");
+    QLog.i(this.f, 1, "onAttachedToWindow");
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    QLog.i(this.jdField_c_of_type_JavaLangString, 1, "onDetachedFromWindow");
+    QLog.i(this.f, 1, "onDetachedFromWindow");
   }
   
   public void onH264End()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.i = false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -293,64 +293,64 @@ public class CustomLottieView
   
   public void onPlayAtTime(long paramLong, boolean paramBoolean)
   {
-    String str = this.jdField_c_of_type_JavaLangString;
+    String str = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPlayAtTime: ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" start time = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" containerShow visibile = ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" isAnimating() = ");
     localStringBuilder.append(isAnimating());
     localStringBuilder.append(" isPlaying = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("  lottie view shown=");
     localStringBuilder.append(isShown());
     QLog.d(str, 1, localStringBuilder.toString());
-    if ((isAnimating()) && (!this.jdField_b_of_type_Boolean)) {
-      this.jdField_b_of_type_Boolean = true;
+    if ((isAnimating()) && (!this.i)) {
+      this.i = true;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.h) && (this.i))
     {
-      int i;
+      int i1;
       if ((isAnimating()) && (paramBoolean)) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 8;
+        i1 = 8;
       }
-      setVisibility(i);
-      if ((!isAnimating()) && (this.jdField_b_of_type_Boolean)) {
-        this.jdField_b_of_type_Boolean = false;
+      setVisibility(i1);
+      if ((!isAnimating()) && (this.i)) {
+        this.i = false;
       }
     }
     if (!paramBoolean) {
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (paramLong > this.jdField_a_of_type_Int))
+    if ((!this.h) && (paramLong > this.g))
     {
       a();
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
     }
   }
   
   public void setAnimState(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void setComposition(LottieCompositionInterface paramLottieCompositionInterface) {}
   
   public void setConfig(String paramString1, String paramString2, LottieGiftInfo paramLottieGiftInfo, Bitmap paramBitmap, LoadToPlayInter paramLoadToPlayInter)
   {
-    String str = this.jdField_c_of_type_JavaLangString;
+    String str = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("title=");
     localStringBuilder.append(paramLottieGiftInfo.d);
     localStringBuilder.append(" subtitle=");
     localStringBuilder.append(paramLottieGiftInfo.f);
     QLog.i(str, 1, localStringBuilder.toString());
-    str = this.jdField_c_of_type_JavaLangString;
+    str = this.f;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("head bitmap is null ?  ");
     boolean bool;
@@ -361,18 +361,18 @@ public class CustomLottieView
     }
     localStringBuilder.append(bool);
     QLog.i(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieGiftInfo = paramLottieGiftInfo;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    a(this.jdField_a_of_type_JavaLangString, paramLoadToPlayInter);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramLottieGiftInfo;
+    this.d = paramBitmap;
+    a(this.a, paramLoadToPlayInter);
   }
   
   public void setImageAssetDelegate(LiveLottieApi.ImageAssetDelegate paramImageAssetDelegate) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieView
  * JD-Core Version:    0.7.0.1
  */

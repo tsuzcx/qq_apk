@@ -15,20 +15,20 @@ class DateCollectionListPageLoader$2
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a.a == null)
+    if (this.a.g == null)
     {
       paramJobContext = this.a;
-      paramJobContext.a = new DateCollectionListPageLoader.CacheContext(paramJobContext, paramJobContext.e);
+      paramJobContext.g = new DateCollectionListPageLoader.CacheContext(paramJobContext, paramJobContext.l);
     }
     paramJobContext = this.a;
-    paramJobContext.b = paramJobContext.a.a;
+    paramJobContext.h = paramJobContext.g.b;
     DateCollectionListPageLoader.a(this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.2
  * JD-Core Version:    0.7.0.1
  */

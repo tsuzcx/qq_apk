@@ -26,47 +26,55 @@ public class WeishiTagVideoInfoWidget
   extends AbsVideoInfoWidget
   implements View.OnClickListener
 {
-  private TextView a;
-  private String c = "";
-  private boolean f = false;
+  private TextView s;
+  private boolean t = false;
+  private String u = "";
   
   public WeishiTagVideoInfoWidget(ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
   }
   
-  public String a()
-  {
-    return "WeishiTagVideoInfoWidget";
-  }
-  
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.s = ((TextView)paramView);
+    this.s.setOnClickListener(this);
   }
   
-  protected void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
+  protected void a(@NonNull Map<Subscriber, String> paramMap)
   {
-    paramStoryPlayerVideoData = paramStoryPlayerVideoData.a();
+    paramMap.put(new WeishiTagVideoInfoWidget.GetUserInfoReceiver(this), "");
+  }
+  
+  protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    if ((paramStoryPlayerVideoData.a != null) && (paramStoryPlayerVideoData.a.b == 13)) {
+      return false;
+    }
+    return paramStoryVideoItem.mSourceTagType == 1;
+  }
+  
+  protected void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    paramStoryPlayerVideoData = paramStoryPlayerVideoData.e();
     if (paramStoryPlayerVideoData == null)
     {
-      k();
+      A();
       return;
     }
-    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
+    if (TextUtils.equals(this.u, paramStoryVideoItem.mVid))
     {
-      this.f = false;
+      this.t = false;
     }
     else
     {
-      this.f = true;
-      this.c = paramStoryVideoItem.mVid;
+      this.t = true;
+      this.u = paramStoryVideoItem.mVid;
     }
     int i = paramStoryPlayerVideoData.mSourceTagType;
     if (i == 1)
     {
-      j();
+      z();
       ReportController.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
       paramStoryVideoItem = VideoSourceTagInfoHelper.b(i);
       if (i != 1)
@@ -80,53 +88,31 @@ public class WeishiTagVideoInfoWidget
           paramStoryPlayerVideoData = "来自微视APP";
         }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStoryPlayerVideoData);
+      this.s.setText(paramStoryPlayerVideoData);
       return;
     }
-    k();
+    A();
   }
-  
-  protected void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new WeishiTagVideoInfoWidget.GetUserInfoReceiver(this), "");
-  }
-  
-  protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    if ((paramStoryPlayerVideoData.a != null) && (paramStoryPlayerVideoData.a.a == 13)) {
-      return false;
-    }
-    return paramStoryVideoItem.mSourceTagType == 1;
-  }
-  
-  protected int b()
-  {
-    return -1;
-  }
-  
-  protected void f() {}
-  
-  protected void g() {}
   
   public void onClick(View paramView)
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+    if (this.p != null) {
+      localObject = this.p.e();
     } else {
       localObject = null;
     }
     if (localObject == null)
     {
-      SLog.e(this.b, "click error , video info not found");
+      SLog.e(this.i, "click error , video info not found");
     }
     else
     {
-      VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
+      VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)d()).r();
       VideoSourceTagInfoHelper.a(((StoryVideoItem)localObject).mSourceTagType);
       if (((StoryVideoItem)localObject).mSourceTagType == 1)
       {
-        Dialog localDialog = WeShiGuideDialog.a(b(), ((StoryVideoItem)localObject).mOwnerUid, "4", ((StoryVideoItem)localObject).mVid, 3, ((StoryVideoItem)localObject).mWsSchema);
+        Dialog localDialog = WeShiGuideDialog.a(y(), ((StoryVideoItem)localObject).mOwnerUid, "4", ((StoryVideoItem)localObject).mVid, 3, ((StoryVideoItem)localObject).mWsSchema);
         if (localDialog != null)
         {
           localDialog.setOnDismissListener(new WeishiTagVideoInfoWidget.1(this, localVideoViewVideoHolder));
@@ -135,13 +121,13 @@ public class WeishiTagVideoInfoWidget
           }
         }
         int i;
-        if (WeishiGuideUtils.a(b())) {
+        if (WeishiGuideUtils.a(y())) {
           i = 2;
         } else {
           i = 1;
         }
         StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { "4", ((StoryVideoItem)localObject).mOwnerUid, "weishi", ((StoryVideoItem)localObject).mVid });
-        if (WeishiGuideUtils.a(b())) {
+        if (WeishiGuideUtils.a(y())) {
           localObject = "story_clk_ws";
         } else {
           localObject = "story_dl_ws";
@@ -150,6 +136,20 @@ public class WeishiTagVideoInfoWidget
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void q() {}
+  
+  protected void r() {}
+  
+  protected int s()
+  {
+    return -1;
+  }
+  
+  public String t()
+  {
+    return "WeishiTagVideoInfoWidget";
   }
 }
 

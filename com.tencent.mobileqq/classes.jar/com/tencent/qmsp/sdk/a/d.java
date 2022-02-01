@@ -18,11 +18,11 @@ public class d
       localJSONObject.put(e.a(4), QmspSDK.getQImeiVer());
       localJSONObject.put(e.a(5), Build.VERSION.SDK_INT);
       localJSONObject.put(e.a(6), c.c());
-      localJSONObject.put(e.a(7), c.d());
+      localJSONObject.put(e.a(7), c.e());
       localJSONObject.put(e.a(8), System.currentTimeMillis());
       localJSONObject.put(e.a(9), 1);
       String str2 = e.a(10);
-      boolean bool = c.g();
+      boolean bool = c.h();
       if (bool) {
         str1 = "1";
       } else {
@@ -42,7 +42,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ public class GiftMessageUtils
           break;
         }
         GiftMessageUtils.GiftInfo localGiftInfo = (GiftMessageUtils.GiftInfo)paramMessageRecord.next();
-        if (localGiftInfo.a == paramInt) {
-          i += localGiftInfo.b;
+        if (localGiftInfo.b == paramInt) {
+          i += localGiftInfo.c;
         }
       }
     }
@@ -54,19 +54,19 @@ public class GiftMessageUtils
           paramMessageRecord = (AbsStructMsgElement)localIterator.next();
           if (paramMessageRecord != null)
           {
-            String str = HardCodeUtil.a(2131705359);
+            String str = HardCodeUtil.a(2131903241);
             int i = 1;
             int m = 1;
             int k = 0;
             int j;
             if ((paramMessageRecord instanceof StructMsgItemLayout12))
             {
-              j = ((StructMsgItemLayout12)paramMessageRecord).a.getInt("count");
+              j = ((StructMsgItemLayout12)paramMessageRecord).az.getInt("count");
               paramMessageRecord = str;
             }
             else
             {
-              Object localObject = paramMessageRecord.h;
+              Object localObject = paramMessageRecord.j;
               paramMessageRecord = str;
               j = k;
               if (localObject != null)
@@ -107,7 +107,7 @@ public class GiftMessageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.GiftMessageUtils
  * JD-Core Version:    0.7.0.1
  */

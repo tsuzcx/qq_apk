@@ -10,7 +10,7 @@ final class TestSSOLoadAD$1
 {
   public void a()
   {
-    QQToast.a(this.a, "onFailded SSoLoadBusinessObserver", 0).a();
+    QQToast.makeText(this.a, "onFailded SSoLoadBusinessObserver", 0).show();
   }
   
   public void a(Bundle paramBundle)
@@ -20,7 +20,7 @@ final class TestSSOLoadAD$1
     localStringBuilder.append("Observer onReceive ");
     localStringBuilder.append(paramBundle);
     GdtLog.b("GdtSSOLoadAD", localStringBuilder.toString());
-    QQToast.a(this.a, "onSucess SSoLoadBusinessObserver", 0).a();
+    QQToast.makeText(this.a, "onSucess SSoLoadBusinessObserver", 0).show();
   }
 }
 

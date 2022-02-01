@@ -24,7 +24,7 @@ public final class im_receipt$MsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.im_receipt.MsgInfo
  * JD-Core Version:    0.7.0.1
  */

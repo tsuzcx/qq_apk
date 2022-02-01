@@ -36,7 +36,7 @@ public class BlessTask
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = HardCodeUtil.a(2131701381);
+  public String pendantCategory = HardCodeUtil.a(2131899409);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;
@@ -239,7 +239,7 @@ public class BlessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessTask
  * JD-Core Version:    0.7.0.1
  */

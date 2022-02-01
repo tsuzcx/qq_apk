@@ -9,20 +9,15 @@ import org.jetbrains.annotations.NotNull;
 public class RIJRewardTaskTimingModelForTool
   implements IRIJRewardTaskTimingContract.IModel
 {
-  public int a()
-  {
-    return RIJAidlClientRedPacketModule.b();
-  }
-  
   public int a(boolean paramBoolean)
   {
-    return RIJAidlClientRedPacketModule.a();
+    return RIJAidlClientRedPacketModule.d();
   }
   
   @Nullable
   public RIJRewardTask a()
   {
-    return RIJAidlClientRedPacketModule.a();
+    return RIJAidlClientRedPacketModule.b();
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -33,11 +28,6 @@ public class RIJRewardTaskTimingModelForTool
   public void a(@Nullable RIJRewardTask paramRIJRewardTask)
   {
     RIJAidlClientRedPacketModule.a(paramRIJRewardTask);
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    RIJAidlClientRedPacketModule.a(paramString);
   }
   
   public void a(String paramString, int paramInt, RIJRewardTaskRemoteRepo.IReportTaskProgressCallback paramIReportTaskProgressCallback)
@@ -53,17 +43,27 @@ public class RIJRewardTaskTimingModelForTool
   @Nullable
   public RIJRewardTask b()
   {
-    return RIJAidlClientRedPacketModule.b();
+    return RIJAidlClientRedPacketModule.c();
   }
   
   public void b(RIJRewardTask paramRIJRewardTask)
   {
     RIJAidlClientRedPacketModule.b(paramRIJRewardTask);
   }
+  
+  public void b(@NotNull String paramString)
+  {
+    RIJAidlClientRedPacketModule.b(paramString);
+  }
+  
+  public int c()
+  {
+    return RIJAidlClientRedPacketModule.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingModelForTool
  * JD-Core Version:    0.7.0.1
  */

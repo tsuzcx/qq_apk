@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat;
 
 public class DateUtil
 {
-  public static final String a = HardCodeUtil.a(2131702969);
-  public static final String b = HardCodeUtil.a(2131702995);
-  public static final String c = HardCodeUtil.a(2131702968);
-  public static final String d = HardCodeUtil.a(2131702967);
+  public static final String a = HardCodeUtil.a(2131900944);
+  public static final String b = HardCodeUtil.a(2131900970);
+  public static final String c = HardCodeUtil.a(2131900943);
+  public static final String d = HardCodeUtil.a(2131900942);
   
   public static String a(long paramLong)
   {
@@ -44,7 +44,7 @@ public class DateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.DateUtil
  * JD-Core Version:    0.7.0.1
  */

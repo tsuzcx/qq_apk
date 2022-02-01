@@ -17,10 +17,10 @@ class GroupCatalogTool$1
       QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
     }
     int i;
-    if ((paramDownloadTask.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool.a(MobileQQ.getContext())) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool.b(MobileQQ.getContext())))
+    if ((paramDownloadTask.c == 0) && (this.a.exists()) && (this.c.b(MobileQQ.getContext())) && (this.c.d(MobileQQ.getContext())))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool.a(MobileQQ.getContext(), System.currentTimeMillis());
-      paramDownloadTask = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool$GetChoiceListCallback;
+      this.c.a(MobileQQ.getContext(), System.currentTimeMillis());
+      paramDownloadTask = this.b;
       if (paramDownloadTask != null) {
         paramDownloadTask.a(true);
       }
@@ -30,16 +30,16 @@ class GroupCatalogTool$1
     {
       i = 0;
     }
-    if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool$GetChoiceListCallback != null))
+    if ((i == 0) && (this.b != null))
     {
       QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogTool$GetChoiceListCallback.a(false);
+      this.b.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcatalog.GroupCatalogTool.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class EncryptUinHandler$3
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(EncryptUinHandler.a(this.this$0).getLongAccountUin()));
+    localArrayList.add(Long.valueOf(EncryptUinHandler.b(this.this$0).getLongAccountUin()));
     EncryptUinHandler.a(this.this$0, localArrayList, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinHandler.3
  * JD-Core Version:    0.7.0.1
  */

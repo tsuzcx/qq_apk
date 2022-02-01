@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class TAVEffectParameter
 {
+  @SerializedName("color")
+  public String color;
   @SerializedName("content")
   public String content;
   @SerializedName("duration")

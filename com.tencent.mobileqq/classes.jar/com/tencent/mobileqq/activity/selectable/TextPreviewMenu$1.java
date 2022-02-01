@@ -13,7 +13,7 @@ class TextPreviewMenu$1
   
   public void a()
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+    TextPreviewMenu.a(this.b);
   }
   
   public void a(String paramString)
@@ -23,26 +23,32 @@ class TextPreviewMenu$1
   
   public void b(String paramString)
   {
-    MenuUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+    int i = this.a.a();
+    if (i >= 0)
+    {
+      MenuUtil.a(this.a, paramString, i);
+      return;
+    }
+    MenuUtil.a(this.a, paramString);
   }
   
   public void c(String paramString)
   {
-    TextPreviewActivity localTextPreviewActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity;
+    TextPreviewActivity localTextPreviewActivity = this.a;
     MenuUtil.a(localTextPreviewActivity, localTextPreviewActivity.app, paramString);
   }
   
   public void d(String paramString)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
     localIntent.putExtra("TranslateText", paramString);
     localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    TextPreviewMenu.a(this.b, localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu.1
  * JD-Core Version:    0.7.0.1
  */

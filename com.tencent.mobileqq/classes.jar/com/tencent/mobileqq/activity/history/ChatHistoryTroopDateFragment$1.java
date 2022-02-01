@@ -34,10 +34,10 @@ class ChatHistoryTroopDateFragment$1
       }
       if (QLog.isColorLevel())
       {
-        String str = ChatHistoryTroopDateFragment.b();
+        String str = ChatHistoryTroopDateFragment.a();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFirstMessageByDate: ");
-        localStringBuilder.append(ChatHistoryTroopDateFragment.a(this.this$0, this.a, this.b + 1, j));
+        localStringBuilder.append(ChatHistoryTroopDateFragment.b(this.this$0, this.a, this.b + 1, j));
         localStringBuilder.append(" | result: ");
         localStringBuilder.append(localMessageRecord);
         QLog.d(str, 2, localStringBuilder.toString());
@@ -50,13 +50,13 @@ class ChatHistoryTroopDateFragment$1
     l = SystemClock.elapsedRealtime() - l;
     TroopTechReportUtils.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(m), String.valueOf(i), "");
     if (QLog.isColorLevel()) {
-      QLog.i(ChatHistoryTroopDateFragment.b(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(l) }));
+      QLog.i(ChatHistoryTroopDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(l) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class WriteTogetherEditorFragment$7$1
   {
     if (this.a.a.a.a() == EditorState.CREATING)
     {
-      WriteTogetherEditorFragment.a(this.a.a).c();
-      WriteTogetherEditorFragment.a(this.a.a).e();
+      WriteTogetherEditorFragment.g(this.a.a).c();
+      WriteTogetherEditorFragment.h(this.a.a).e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

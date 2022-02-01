@@ -8,9 +8,9 @@ class BottomSheetDialog$4
 {
   BottomSheetDialog$4(BottomSheetDialog paramBottomSheetDialog) {}
   
-  public void a(@NonNull View paramView, float paramFloat) {}
+  public void onSlide(@NonNull View paramView, float paramFloat) {}
   
-  public void a(@NonNull View paramView, int paramInt)
+  public void onStateChanged(@NonNull View paramView, int paramInt)
   {
     if (paramInt == 5) {
       this.a.cancel();
@@ -19,7 +19,7 @@ class BottomSheetDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetDialog.4
  * JD-Core Version:    0.7.0.1
  */

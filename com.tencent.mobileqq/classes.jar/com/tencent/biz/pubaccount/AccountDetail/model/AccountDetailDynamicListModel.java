@@ -313,7 +313,7 @@ public class AccountDetailDynamicListModel
     NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), PublicAccountServletImpl.class);
     localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
     Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.7.0,3,5295");
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("8.8.17,3,5770");
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);
@@ -390,7 +390,7 @@ public class AccountDetailDynamicListModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailDynamicListModel
  * JD-Core Version:    0.7.0.1
  */

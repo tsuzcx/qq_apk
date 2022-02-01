@@ -6,6 +6,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.compact.LoadCompactDynamicFeature;
 import com.tencent.mobileqq.pluginsdk.IOUtil;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper;
@@ -21,11 +22,6 @@ import java.util.List;
 
 public class PluginInfoUtil
 {
-  static PluginInfo a(File paramFile)
-  {
-    return (PluginInfo)PluginBaseInfoHelper.createFromFile(paramFile, PluginInfo.class);
-  }
-  
   public static void a(PluginInfo paramPluginInfo, File paramFile)
   {
     try
@@ -40,64 +36,6 @@ public class PluginInfoUtil
       return;
     }
     catch (Exception paramPluginInfo) {}
-  }
-  
-  /* Error */
-  public static void a(File paramFile)
-  {
-    // Byte code:
-    //   0: new 34	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: ldc 53
-    //   7: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   10: astore_0
-    //   11: aload_0
-    //   12: invokevirtual 41	java/io/File:exists	()Z
-    //   15: ifeq +8 -> 23
-    //   18: aload_0
-    //   19: invokevirtual 44	java/io/File:delete	()Z
-    //   22: pop
-    //   23: new 58	java/io/FileOutputStream
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 60	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   31: astore_0
-    //   32: aload_0
-    //   33: invokestatic 66	com/tencent/common/config/AppSetting:g	()Ljava/lang/String;
-    //   36: invokevirtual 72	java/lang/String:getBytes	()[B
-    //   39: invokevirtual 76	java/io/FileOutputStream:write	([B)V
-    //   42: goto +18 -> 60
-    //   45: astore_1
-    //   46: goto +6 -> 52
-    //   49: astore_1
-    //   50: aconst_null
-    //   51: astore_0
-    //   52: aload_0
-    //   53: invokestatic 82	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   56: aload_1
-    //   57: athrow
-    //   58: aconst_null
-    //   59: astore_0
-    //   60: aload_0
-    //   61: invokestatic 82	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   64: return
-    //   65: astore_0
-    //   66: goto -8 -> 58
-    //   69: astore_1
-    //   70: goto -10 -> 60
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	paramFile	File
-    //   45	1	1	localObject1	Object
-    //   49	8	1	localObject2	Object
-    //   69	1	1	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   32	42	45	finally
-    //   23	32	49	finally
-    //   23	32	65	java/lang/Exception
-    //   32	42	69	java/lang/Exception
   }
   
   public static void a(String paramString, File paramFile)
@@ -151,35 +89,35 @@ public class PluginInfoUtil
   
   static boolean a(PluginInfo paramPluginInfo, Context paramContext)
   {
-    if (paramPluginInfo.mSubType == 1) {
-      return QShadow.getInstance().isPluginRunning(PluginIdUtil.convertQPluginId2QShadowId(paramPluginInfo.mID));
-    }
-    Object localObject = "";
-    if ((paramPluginInfo.mProcesses != null) && (paramPluginInfo.mProcesses.length != 0))
+    Object localObject2 = paramPluginInfo.mProcesses;
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject1 = "";
+    if ((localObject2 != null) && (paramPluginInfo.mProcesses.length != 0))
     {
       paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
       if (paramContext != null)
       {
-        Iterator localIterator = paramContext.iterator();
+        localObject2 = paramContext.iterator();
         bool2 = false;
-        paramContext = (Context)localObject;
-        label155:
+        paramContext = (Context)localObject1;
+        label143:
         for (;;)
         {
-          localObject = paramContext;
           bool1 = bool2;
-          if (!localIterator.hasNext()) {
+          localObject1 = paramContext;
+          if (!((Iterator)localObject2).hasNext()) {
             break;
           }
-          localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+          localObject1 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
           int j = paramPluginInfo.mProcesses.length;
           int i = 0;
           for (;;)
           {
             if (i >= j) {
-              break label155;
+              break label143;
             }
-            if (TextUtils.equals(paramPluginInfo.mProcesses[i], ((ActivityManager.RunningAppProcessInfo)localObject).processName))
+            if (TextUtils.equals(paramPluginInfo.mProcesses[i], ((ActivityManager.RunningAppProcessInfo)localObject1).processName))
             {
               paramContext = paramPluginInfo.mProcesses[i];
               bool2 = true;
@@ -192,19 +130,43 @@ public class PluginInfoUtil
     }
     boolean bool1 = false;
     boolean bool2 = bool1;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       bool2 = bool1;
-      if (BaseApplicationImpl.useQIPCStart((String)localObject)) {
+      if (BaseApplicationImpl.useQIPCStart((String)localObject1)) {
         bool2 = QIPCServerHelper.getInstance().isModuleRunning(paramPluginInfo.mID);
       }
+    }
+    if (paramPluginInfo.mSubType == 1)
+    {
+      bool1 = bool3;
+      if (bool2)
+      {
+        bool1 = bool3;
+        if (QShadow.getInstance().isPluginRunning(PluginIdUtil.convertQPluginId2QShadowId(paramPluginInfo.mID))) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    if (paramPluginInfo.mSubType == 2)
+    {
+      bool1 = bool4;
+      if (bool2)
+      {
+        bool1 = bool4;
+        if (LoadCompactDynamicFeature.a().a(paramPluginInfo.mID)) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
     return bool2;
   }
   
   public static boolean a(File paramFile)
   {
-    return IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), AppSetting.g()) ^ true;
+    return IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), AppSetting.i()) ^ true;
   }
   
   /* Error */
@@ -218,23 +180,23 @@ public class PluginInfoUtil
     //   5: aconst_null
     //   6: astore_3
     //   7: aload_1
-    //   8: invokestatic 237	com/tencent/mobileqq/pluginsdk/PluginBaseInfoHelper$PluginInfoParser:pluginToXML	(Lcom/tencent/mobileqq/pluginsdk/PluginBaseInfo;)Ljava/lang/String;
-    //   11: invokevirtual 72	java/lang/String:getBytes	()[B
+    //   8: invokestatic 220	com/tencent/mobileqq/pluginsdk/PluginBaseInfoHelper$PluginInfoParser:pluginToXML	(Lcom/tencent/mobileqq/pluginsdk/PluginBaseInfo;)Ljava/lang/String;
+    //   11: invokevirtual 224	java/lang/String:getBytes	()[B
     //   14: iconst_0
-    //   15: invokestatic 243	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
+    //   15: invokestatic 230	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
     //   18: astore_1
-    //   19: new 58	java/io/FileOutputStream
+    //   19: new 232	java/io/FileOutputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 60	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   24: invokespecial 235	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   27: astore_0
     //   28: aload_0
     //   29: aload_1
-    //   30: invokevirtual 76	java/io/FileOutputStream:write	([B)V
+    //   30: invokevirtual 239	java/io/FileOutputStream:write	([B)V
     //   33: iconst_1
     //   34: istore_2
     //   35: aload_0
-    //   36: invokevirtual 246	java/io/FileOutputStream:close	()V
+    //   36: invokevirtual 242	java/io/FileOutputStream:close	()V
     //   39: iconst_1
     //   40: ireturn
     //   41: astore_3
@@ -250,13 +212,13 @@ public class PluginInfoUtil
     //   55: aload_1
     //   56: ifnull +7 -> 63
     //   59: aload_1
-    //   60: invokevirtual 246	java/io/FileOutputStream:close	()V
+    //   60: invokevirtual 242	java/io/FileOutputStream:close	()V
     //   63: aload_0
     //   64: athrow
     //   65: aload_0
     //   66: ifnull +7 -> 73
     //   69: aload_0
-    //   70: invokevirtual 246	java/io/FileOutputStream:close	()V
+    //   70: invokevirtual 242	java/io/FileOutputStream:close	()V
     //   73: iconst_0
     //   74: ireturn
     //   75: astore_0
@@ -289,14 +251,77 @@ public class PluginInfoUtil
     //   59	63	89	java/io/IOException
   }
   
-  public static File[] a(File paramFile)
+  /* Error */
+  public static void b(File paramFile)
+  {
+    // Byte code:
+    //   0: new 27	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: ldc 198
+    //   7: invokespecial 201	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   10: astore_0
+    //   11: aload_0
+    //   12: invokevirtual 34	java/io/File:exists	()Z
+    //   15: ifeq +8 -> 23
+    //   18: aload_0
+    //   19: invokevirtual 37	java/io/File:delete	()Z
+    //   22: pop
+    //   23: new 232	java/io/FileOutputStream
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 235	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   31: astore_0
+    //   32: aload_0
+    //   33: invokestatic 206	com/tencent/common/config/AppSetting:i	()Ljava/lang/String;
+    //   36: invokevirtual 224	java/lang/String:getBytes	()[B
+    //   39: invokevirtual 239	java/io/FileOutputStream:write	([B)V
+    //   42: goto +18 -> 60
+    //   45: astore_1
+    //   46: goto +6 -> 52
+    //   49: astore_1
+    //   50: aconst_null
+    //   51: astore_0
+    //   52: aload_0
+    //   53: invokestatic 247	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   56: aload_1
+    //   57: athrow
+    //   58: aconst_null
+    //   59: astore_0
+    //   60: aload_0
+    //   61: invokestatic 247	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   64: return
+    //   65: astore_0
+    //   66: goto -8 -> 58
+    //   69: astore_1
+    //   70: goto -10 -> 60
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	paramFile	File
+    //   45	1	1	localObject1	Object
+    //   49	8	1	localObject2	Object
+    //   69	1	1	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   32	42	45	finally
+    //   23	32	49	finally
+    //   23	32	65	java/lang/Exception
+    //   32	42	69	java/lang/Exception
+  }
+  
+  public static File[] c(File paramFile)
   {
     return paramFile.listFiles(new PluginInfoUtil.1());
+  }
+  
+  static PluginInfo d(File paramFile)
+  {
+    return (PluginInfo)PluginBaseInfoHelper.createFromFile(paramFile, PluginInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginInfoUtil
  * JD-Core Version:    0.7.0.1
  */

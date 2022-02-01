@@ -30,7 +30,7 @@ class SwitchAccountActivity$1
     if (paramInt2 == -1000)
     {
       paramBundle = this.a;
-      AuthUIUtil.a(paramBundle, paramBundle.getResources().getString(2131694647));
+      AuthUIUtil.a(paramBundle, paramBundle.getResources().getString(2131892333));
     }
     else if ((paramInt2 != 1) && (paramInt2 != -1004))
     {
@@ -46,7 +46,7 @@ class SwitchAccountActivity$1
       }
       else
       {
-        localObject = this.a.getString(2131720117);
+        localObject = this.a.getString(2131917743);
       }
       AuthUIUtil.a(this.a, (String)localObject);
     }
@@ -101,7 +101,7 @@ class SwitchAccountActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SwitchAccountActivity.1
  * JD-Core Version:    0.7.0.1
  */

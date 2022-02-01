@@ -11,14 +11,14 @@ class AIOGalleryScene$32
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
+    if ((this.a.au != null) && (!this.a.au.p())) {
+      this.a.au.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.32
  * JD-Core Version:    0.7.0.1
  */

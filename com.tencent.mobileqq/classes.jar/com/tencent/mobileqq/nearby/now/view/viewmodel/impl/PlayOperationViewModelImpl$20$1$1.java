@@ -20,24 +20,24 @@ class PlayOperationViewModelImpl$20$1$1
   {
     if (paramBoolean)
     {
-      INearbyMomentManager localINearbyMomentManager = (INearbyMomentManager)this.a.a.a.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER);
+      INearbyMomentManager localINearbyMomentManager = (INearbyMomentManager)this.a.a.c.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER);
       if (localINearbyMomentManager != null) {
         localINearbyMomentManager.c(paramString);
       }
-      PlayOperationViewModelImpl.access$1300(this.a.a.a, paramString);
-      if ((this.a.a.a.mBinding.getContext() instanceof Activity)) {
-        ((BaseActivity)this.a.a.a.mBinding.getContext()).finish();
+      PlayOperationViewModelImpl.access$1300(this.a.a.c, paramString);
+      if ((this.a.a.c.mBinding.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.c.mBinding.getContext()).finish();
       }
     }
     else
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131708250), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131906044), 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.20.1.1
  * JD-Core Version:    0.7.0.1
  */

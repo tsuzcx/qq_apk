@@ -11,13 +11,13 @@ class MsgTabNodeListLoader$11
   
   public void run()
   {
-    synchronized (this.this$0.d)
+    synchronized (this.this$0.j)
     {
-      Iterator localIterator = this.this$0.d.iterator();
+      Iterator localIterator = this.this$0.j.iterator();
       while (localIterator.hasNext()) {
-        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Boolean);
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.a, this.b, this.c, this.d, this.e);
       }
-      if ((QLog.isDevelopLevel()) && (this.this$0.d.isEmpty())) {
+      if ((QLog.isDevelopLevel()) && (this.this$0.j.isEmpty())) {
         QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "mListeners is empty!");
       }
       return;
@@ -30,7 +30,7 @@ class MsgTabNodeListLoader$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.11
  * JD-Core Version:    0.7.0.1
  */

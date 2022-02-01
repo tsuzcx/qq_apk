@@ -7,8 +7,11 @@ import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.report.api.IReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.fastweb.entity.RelatedSearchData.SearchWord;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
@@ -20,10 +23,13 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
 {
   int channelId = -1;
   String channelVersion = null;
+  int guideRedDotStyle = 1;
+  boolean isIconTab = false;
   JSONObject r5 = new JSONObject();
   int refreshCategory = -1;
   boolean reportAntiCheat = false;
   boolean reportFolderStatus = false;
+  boolean reportGuideRedStyle = false;
   boolean reportKandianMode = false;
   boolean reportKandianModeNew = false;
   boolean reportOS = false;
@@ -101,6 +107,12 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
     return this;
   }
   
+  public ReportR5Builder addChannelTabType(boolean paramBoolean)
+  {
+    this.isIconTab = paramBoolean;
+    return this;
+  }
+  
   public ReportR5Builder addChannelVersion(String paramString)
   {
     JSONObject localJSONObject = this.r5;
@@ -138,6 +150,23 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
   public ReportR5Builder addFolderStatus()
   {
     this.reportFolderStatus = true;
+    return this;
+  }
+  
+  public ReportR5Builder addGuideRedStyle(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    this.reportGuideRedStyle = true;
+    if ((RIJXTabBadgeStore.a.d(paramTabChannelCoverInfo.mChannelCoverId)) && (paramTabChannelCoverInfo.needBadgeGuide))
+    {
+      this.guideRedDotStyle = 1;
+      return this;
+    }
+    if (RIJXTabBadgeStore.b(paramTabChannelCoverInfo.mChannelCoverId) != null)
+    {
+      this.guideRedDotStyle = 2;
+      return this;
+    }
+    this.guideRedDotStyle = 0;
     return this;
   }
   
@@ -288,10 +317,10 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
   {
     if (paramSearchWord != null)
     {
-      this.r5.put("modelID", paramSearchWord.jdField_a_of_type_Int);
-      this.r5.put("modelName", paramSearchWord.c);
-      this.r5.put("score", paramSearchWord.jdField_a_of_type_Float);
-      this.r5.put("searchWord", paramSearchWord.jdField_a_of_type_JavaLangString);
+      this.r5.put("modelID", paramSearchWord.e);
+      this.r5.put("modelName", paramSearchWord.d);
+      this.r5.put("score", paramSearchWord.c);
+      this.r5.put("searchWord", paramSearchWord.a);
       this.r5.put("position", paramInt);
     }
     return this;
@@ -481,7 +510,7 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
   
   public ReportR5Builder addVersion()
   {
-    return addStringNotThrow("version", VideoReporter.jdField_a_of_type_JavaLangString);
+    return addStringNotThrow("version", VideoReporter.a);
   }
   
   public ReportR5Builder addWords(int paramInt)
@@ -505,14 +534,15 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
         if (this.channelId != -1) {
           this.r5.put("channel_id", this.channelId);
         }
+        this.r5.put("channel_icon", RIJXTabFrameUtils.INSTANCE.isIconTab(this.isIconTab));
         if (this.reportKandianMode) {
-          this.r5.put("kandian_mode", RIJAppSetting.a());
+          this.r5.put("kandian_mode", RIJAppSetting.b());
         }
         if (this.reportKandianModeNew) {
-          this.r5.put("kandian_mode_new", VideoReporter.a());
+          this.r5.put("kandian_mode_new", VideoReporter.c());
         }
         if (this.reportTabSource) {
-          this.r5.put("tab_source", RIJTransMergeKanDianReport.a());
+          this.r5.put("tab_source", RIJTransMergeKanDianReport.b());
         }
         if (this.reportSessionId) {
           this.r5.put("session_id", RIJKanDianFolderStatus.reportSessionId);
@@ -530,7 +560,7 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
         if (this.reportRedStyle)
         {
           localObject = this.r5;
-          int j = ReadInJoyHelper.x(BaseApplicationImpl.getApplication().getRuntime());
+          int j = ReadInJoyHelper.ah(BaseApplicationImpl.getApplication().getRuntime());
           i = 1;
           if (j == 1) {
             ((JSONObject)localObject).put("reddot_style", i);
@@ -538,6 +568,9 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
         }
         else
         {
+          if (this.reportGuideRedStyle) {
+            this.r5.put("red_dot_type", this.guideRedDotStyle);
+          }
           if (this.reportAntiCheat) {
             VideoReporter.a(this.r5);
           }
@@ -575,7 +608,7 @@ public class RIJTransMergeKanDianReport$ReportR5Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder
  * JD-Core Version:    0.7.0.1
  */

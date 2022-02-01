@@ -92,46 +92,9 @@ public class AppClient
     return "";
   }
   
-  public static String a(String paramString)
-  {
-    boolean bool = TextUtils.isEmpty(paramString);
-    String str = "";
-    if (bool) {
-      return "";
-    }
-    String[] arrayOfString = paramString.split("\\.");
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 2;
-    paramString = str;
-    if (arrayOfString != null)
-    {
-      paramString = str;
-      if (arrayOfString.length > 2)
-      {
-        while (i < arrayOfString.length)
-        {
-          if (i == arrayOfString.length - 1)
-          {
-            localStringBuilder.append(arrayOfString[i]);
-          }
-          else
-          {
-            paramString = new StringBuilder();
-            paramString.append(arrayOfString[i]);
-            paramString.append(".");
-            localStringBuilder.append(paramString.toString());
-          }
-          i += 1;
-        }
-        paramString = localStringBuilder.toString();
-      }
-    }
-    return paramString;
-  }
-  
   public static void a(Activity paramActivity, Bundle paramBundle)
   {
-    Common.a();
+    Common.k();
     int i = paramBundle.getInt("qzoneAppid");
     int k = paramBundle.getInt("qzoneSubId");
     int m = paramBundle.getInt("op_type");
@@ -156,13 +119,13 @@ public class AppClient
           localObject2 = localObject1;
         }
       }
-      HashMap localHashMap = Common.a((String)localObject2);
+      HashMap localHashMap = Common.b((String)localObject2);
       paramActivity = (String)localHashMap.get("appid");
       localObject1 = paramActivity;
       if (TextUtils.isEmpty(paramActivity)) {
         localObject1 = (String)localHashMap.get(DownloadConstants.b);
       }
-      paramActivity = (String)localHashMap.get(DownloadConstants.jdField_c_of_type_JavaLangString);
+      paramActivity = (String)localHashMap.get(DownloadConstants.c);
       localObject3 = paramActivity;
       if (TextUtils.isEmpty(paramActivity)) {
         localObject3 = (String)localHashMap.get("ta");
@@ -228,10 +191,10 @@ public class AppClient
       label525:
       break label525;
     }
-    AppUtil.a(CommonDataAdapter.a().a(), (String)localObject1, paramActivity, paramBundle);
+    AppUtil.b(CommonDataAdapter.a().b(), (String)localObject1, paramActivity, paramBundle);
     return;
     ((Bundle)localObject6).putString(DownloadConstants.b, (String)localObject1);
-    ((Bundle)localObject6).putString(DownloadConstants.jdField_c_of_type_JavaLangString, (String)localObject3);
+    ((Bundle)localObject6).putString(DownloadConstants.c, (String)localObject3);
     ((Bundle)localObject6).putString(DownloadConstants.d, (String)localObject4);
     ((Bundle)localObject6).putString(DownloadConstants.e, (String)localObject7);
     ((Bundle)localObject6).putString(DownloadConstants.f, paramActivity);
@@ -258,7 +221,7 @@ public class AppClient
       if (TextUtils.isEmpty(paramActivity)) {
         localObject1 = StaticAnalyz.a(i, k, j);
       }
-      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().a()), (String)localObject3, (String)localObject1, "200", false);
+      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().c()), (String)localObject3, (String)localObject1, "200", false);
       paramActivity = (Activity)localObject7;
     }
     else
@@ -267,13 +230,13 @@ public class AppClient
       localObject1 = paramActivity;
       paramActivity = (Activity)localObject7;
     }
-    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject6)) && (!"0".equals(localObject4)) && (localObject5 != null) && (MyAppApi.a().c()) && (bool1))
+    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject6)) && (!"0".equals(localObject4)) && (localObject5 != null) && (MyAppApi.l().p()) && (bool1))
     {
       ThreadManager.getSubThreadHandler().post(new AppClient.2(paramBundle, (Bundle)localObject5, (String)localObject3, (String)localObject2, paramActivity, (String)localObject1));
       return;
     }
     localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(Common.g());
+    ((StringBuilder)localObject4).append(Common.h());
     ((StringBuilder)localObject4).append(File.separator);
     ((StringBuilder)localObject4).append("qapp_center_detail.htm");
     localObject4 = ((StringBuilder)localObject4).toString();
@@ -285,7 +248,7 @@ public class AppClient
       ((StringBuilder)localObject6).append((String)localObject4);
       ((StringBuilder)localObject6).append(" not exist copyassets.");
       LogUtility.d("AppClient", ((StringBuilder)localObject6).toString());
-      FileUtils.a("Page/system", Common.h());
+      FileUtils.a("Page/system", Common.i());
     }
     localObject6 = new Intent();
     Object localObject7 = new Bundle();
@@ -299,7 +262,7 @@ public class AppClient
     else
     {
       localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(Common.m());
+      ((StringBuilder)localObject4).append(Common.o());
       ((StringBuilder)localObject4).append(File.separator);
       ((StringBuilder)localObject4).append("qapp_center_detail.htm");
       localObject4 = ((StringBuilder)localObject4).toString();
@@ -325,7 +288,7 @@ public class AppClient
         paramActivity = paramActivity.toString();
       }
     }
-    if (Common.a(paramBundle.getString("schemaUrl")).get("auto_download") != null) {
+    if (Common.b(paramBundle.getString("schemaUrl")).get("auto_download") != null) {
       i = 1;
     } else {
       i = 0;
@@ -342,7 +305,7 @@ public class AppClient
         localObject2 = ((StringBuilder)localObject2).toString();
       }
     }
-    ((Intent)localObject6).setClass(CommonDataAdapter.a().a(), QZoneAppListActivity.class);
+    ((Intent)localObject6).setClass(CommonDataAdapter.a().b(), QZoneAppListActivity.class);
     ((Bundle)localObject7).putString("APP_URL", (String)localObject4);
     ((Bundle)localObject7).putBoolean("FROM_FEED", true);
     ((Bundle)localObject7).putString("APP_PARAMS", (String)localObject2);
@@ -363,7 +326,7 @@ public class AppClient
     ((Intent)localObject6).putExtras((Bundle)localObject7);
     ((Intent)localObject6).putExtra("adapter_action", "action_app_detail");
     ((Intent)localObject6).addFlags(872415232);
-    CommonDataAdapter.a().a().startActivity((Intent)localObject6);
+    CommonDataAdapter.a().b().startActivity((Intent)localObject6);
   }
   
   public static void a(Activity paramActivity, String paramString)
@@ -386,11 +349,11 @@ public class AppClient
   public static void a(Activity paramActivity, String paramString, int paramInt, Bundle paramBundle)
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(Common.g());
+    ((StringBuilder)localObject1).append(Common.h());
     ((StringBuilder)localObject1).append(File.separator);
     ((StringBuilder)localObject1).append("qapp_center_detail.htm");
     localObject1 = ((StringBuilder)localObject1).toString();
-    Common.a();
+    Common.k();
     Object localObject2 = new File((String)localObject1);
     Object localObject3;
     if (!((File)localObject2).exists())
@@ -400,7 +363,7 @@ public class AppClient
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(" not exist copyassets.");
       LogUtility.d("AppClient", ((StringBuilder)localObject3).toString());
-      FileUtils.a("Page/system", Common.h());
+      FileUtils.a("Page/system", Common.i());
     }
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
@@ -414,12 +377,12 @@ public class AppClient
     else
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(Common.m());
+      ((StringBuilder)localObject1).append(Common.o());
       ((StringBuilder)localObject1).append(File.separator);
       ((StringBuilder)localObject1).append("qapp_center_detail.htm");
       localObject3 = ((StringBuilder)localObject1).toString();
     }
-    localIntent.setClass(CommonDataAdapter.a().a(), QZoneAppListActivity.class);
+    localIntent.setClass(CommonDataAdapter.a().b(), QZoneAppListActivity.class);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("&from=-10&id=");
     ((StringBuilder)localObject1).append(paramString);
@@ -502,11 +465,11 @@ public class AppClient
   protected static void a(Activity paramActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4)
   {
     Object localObject2 = paramString2;
-    Common.a();
+    Common.k();
     if (!paramString3.equals("online"))
     {
       paramString2 = new StringBuilder();
-      paramString2.append(Common.g());
+      paramString2.append(Common.h());
       paramString2.append(File.separator);
       paramString2.append(paramString4);
       paramString2 = paramString2.toString();
@@ -518,7 +481,7 @@ public class AppClient
         ((StringBuilder)localObject1).append(paramString2);
         ((StringBuilder)localObject1).append(" not exist copyassets.");
         LogUtility.d("AppClient", ((StringBuilder)localObject1).toString());
-        FileUtils.a("Page/system", Common.h());
+        FileUtils.a("Page/system", Common.i());
       }
       if (paramString4.exists())
       {
@@ -530,7 +493,7 @@ public class AppClient
       else
       {
         paramString2 = new StringBuilder();
-        paramString2.append(Common.m());
+        paramString2.append(Common.o());
         paramString2.append(File.separator);
         paramString2.append("qapp_center_detail.htm");
         localObject1 = paramString2.toString();
@@ -690,22 +653,22 @@ public class AppClient
       {
         if (paramString4.equals("2457"))
         {
-          paramString1 = DownloadManager.a().a(paramString1);
-          if ((MyAppApi.a().c()) && (paramString1 != null) && (paramString1.jdField_c_of_type_Int == 1))
+          paramString1 = DownloadManager.b().d(paramString1);
+          if ((MyAppApi.l().p()) && (paramString1 != null) && (paramString1.o == 1))
           {
             paramString2 = new StringBuilder();
             paramString2.append(">>>appid=");
-            paramString2.append(paramString1.jdField_c_of_type_JavaLangString);
+            paramString2.append(paramString1.c);
             paramString2.append(" myAppid=");
-            paramString2.append(paramString1.j);
+            paramString2.append(paramString1.l);
             LogUtility.d("AppClient", paramString2.toString());
-            localBundle.putString(DownloadConstants.b, paramString1.jdField_c_of_type_JavaLangString);
-            localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, paramString1.j);
-            localBundle.putString(DownloadConstants.d, paramString1.k);
+            localBundle.putString(DownloadConstants.b, paramString1.c);
+            localBundle.putString(DownloadConstants.c, paramString1.l);
+            localBundle.putString(DownloadConstants.d, paramString1.m);
             localBundle.putString(DownloadConstants.i, str1);
             localBundle.putString(DownloadConstants.f, paramString1.e);
-            localBundle.putInt(DownloadConstants.e, paramString1.b);
-            MyAppApi.a().a(paramActivity, localBundle, paramString4.equals("2457"), true);
+            localBundle.putInt(DownloadConstants.e, paramString1.n);
+            MyAppApi.l().a(paramActivity, localBundle, paramString4.equals("2457"), true);
             return;
           }
           paramActivity.startActivityForResult(localIntent, 200);
@@ -749,7 +712,7 @@ public class AppClient
       if (paramString1.length() == 0) {
         return;
       }
-      localObject8 = Common.a(paramString1);
+      localObject8 = Common.b(paramString1);
       str3 = (String)((HashMap)localObject8).get("appid");
       str5 = (String)((HashMap)localObject8).get("sendtime");
       str4 = (String)((HashMap)localObject8).get("packname");
@@ -758,7 +721,7 @@ public class AppClient
       String str9 = (String)((HashMap)localObject8).get("type");
       localObject7 = (String)((HashMap)localObject8).get("downurl");
       str7 = (String)((HashMap)localObject8).get("via");
-      String str10 = a(str7);
+      String str10 = b(str7);
       String str1 = (String)((HashMap)localObject8).get("appCustom");
       localObject1 = (String)((HashMap)localObject8).get("nativepage");
       localObject2 = localObject1;
@@ -780,7 +743,7 @@ public class AppClient
       if (TextUtils.isEmpty((CharSequence)localObject5)) {
         localObject4 = (String)((HashMap)localObject8).get("pt");
       }
-      Object localObject6 = (String)((HashMap)localObject8).get(DownloadConstants.jdField_c_of_type_JavaLangString);
+      Object localObject6 = (String)((HashMap)localObject8).get(DownloadConstants.c);
       localObject5 = localObject6;
       if (TextUtils.isEmpty((CharSequence)localObject6)) {
         localObject5 = (String)((HashMap)localObject8).get("ta");
@@ -820,8 +783,8 @@ public class AppClient
       localStringBuilder.append(" ,backUrl=");
       localStringBuilder.append((String)localObject8);
       LogUtility.b("AppClient", localStringBuilder.toString());
-      i = AppUtil.a(str4);
-      j = AppUtil.b(DownloadManager.a().a(str3));
+      i = AppUtil.d(str4);
+      j = AppUtil.e(DownloadManager.b().b(str3));
       localObject7 = new Bundle();
       ((Bundle)localObject7).putString("installedVersion", String.valueOf(i));
       ((Bundle)localObject7).putString("localVersion", String.valueOf(j));
@@ -842,7 +805,7 @@ public class AppClient
       paramString1 = str1;
       ((Bundle)localObject7).putString("vkey", paramString3);
       ((Bundle)localObject7).putString(DownloadConstants.b, str3);
-      ((Bundle)localObject7).putString(DownloadConstants.jdField_c_of_type_JavaLangString, (String)localObject5);
+      ((Bundle)localObject7).putString(DownloadConstants.c, (String)localObject5);
       ((Bundle)localObject7).putString(DownloadConstants.d, (String)localObject6);
       if (!TextUtils.isEmpty(str4)) {
         ((Bundle)localObject7).putString(DownloadConstants.f, str4);
@@ -886,7 +849,7 @@ public class AppClient
       label988:
       break label988;
     }
-    AppUtil.a(paramActivity, str3, str4, paramString1);
+    AppUtil.b(paramActivity, str3, str4, paramString1);
     return;
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
@@ -897,7 +860,7 @@ public class AppClient
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        i = AppUtil.a("com.tencent.android.qqdownloader");
+        i = AppUtil.d("com.tencent.android.qqdownloader");
         if ((!TextUtils.isEmpty(str2)) && (i > 0) && (i >= Integer.valueOf(str2).intValue()))
         {
           paramString1 = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject1));
@@ -942,11 +905,48 @@ public class AppClient
     localBundle.putString("keytype", "256");
     localBundle.putString("keystr", paramString2);
     localBundle.putString("appid", paramString3);
-    localBundle.putString("platform", CommonDataAdapter.a().g());
+    localBundle.putString("platform", CommonDataAdapter.a().m());
     localBundle.putString("requestkeys", paramString4);
     localBundle.putString("mode", "1");
-    localBundle.putString("v", CommonDataAdapter.a().e());
+    localBundle.putString("v", CommonDataAdapter.a().k());
     new HttpCgiAsyncTask("https://appic.qq.com/cgi-bin/appstage/mapp_setrequest.cgi", "GET", null).execute(new Bundle[] { localBundle });
+  }
+  
+  public static String b(String paramString)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = "";
+    if (bool) {
+      return "";
+    }
+    String[] arrayOfString = paramString.split("\\.");
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 2;
+    paramString = str;
+    if (arrayOfString != null)
+    {
+      paramString = str;
+      if (arrayOfString.length > 2)
+      {
+        while (i < arrayOfString.length)
+        {
+          if (i == arrayOfString.length - 1)
+          {
+            localStringBuilder.append(arrayOfString[i]);
+          }
+          else
+          {
+            paramString = new StringBuilder();
+            paramString.append(arrayOfString[i]);
+            paramString.append(".");
+            localStringBuilder.append(paramString.toString());
+          }
+          i += 1;
+        }
+        paramString = localStringBuilder.toString();
+      }
+    }
+    return paramString;
   }
   
   public static void b(Activity paramActivity, Bundle paramBundle)
@@ -998,7 +998,7 @@ public class AppClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient
  * JD-Core Version:    0.7.0.1
  */

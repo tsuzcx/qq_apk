@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
@@ -16,12 +16,11 @@ class QCircleReporter$3
     if (QCircleReporter.access$200(this.this$0).size() == 0) {
       return;
     }
-    int i = RFLog.USR;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("reportCacheDataListToServer size:");
     ((StringBuilder)localObject).append(QCircleReporter.access$200(this.this$0).size());
-    RFLog.w("QCircleReporter", i, ((StringBuilder)localObject).toString());
-    RFLog.d("QCircleReporter", RFLog.USR, "reportCacheDataListToServerWithSession called");
+    QLog.w("QCircleReporter", 1, ((StringBuilder)localObject).toString());
+    QLog.d("QCircleReporter", 1, "reportCacheDataListToServerWithSession called");
     localObject = QCircleReporter.access$200(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((QQCircleReport.SingleDcData)((Iterator)localObject).next()).byteExtinfo.add(QCircleReportHelper.newEntry("SessionID", this.val$session));
@@ -33,7 +32,7 @@ class QCircleReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
@@ -12,92 +13,60 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class QQToast
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static QQToast.ToastHandler jdField_a_of_type_ComTencentMobileqqWidgetQQToast$ToastHandler = new QQToast.ToastHandler(Looper.getMainLooper(), null);
-  private static BlockingQueue<QQToast.ShowToastMessage> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static boolean jdField_c_of_type_Boolean = true;
-  private static boolean d = QQUIDelegate.jdField_a_of_type_Boolean;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private QQToast.RightActionParams jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams = null;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence = null;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private int jdField_c_of_type_Int = 0;
-  private boolean e = false;
+  public static final int ICON_DEFAULT = 0;
+  public static final int ICON_ERROR = 1;
+  public static final int ICON_NONE = -1;
+  public static final int ICON_QZONE_DEFAULT = 3;
+  public static final int ICON_QZONE_ERROR = 4;
+  public static final int ICON_QZONE_SHARE_MOOD = 6;
+  public static final int ICON_QZONE_SUCCESS = 5;
+  public static final int ICON_SUCCESS = 2;
+  public static final int LENGTH_LONG = 1;
+  public static final int LENGTH_SHORT = 0;
+  public static final String TAG = "QQToast";
+  public static final int UNDERTHE_STATUS_BAR = 6316128;
+  private static QQToast.ToastHandler mHandler = new QQToast.ToastHandler(Looper.getMainLooper(), null);
+  private static boolean mIsNeedShowToast = true;
+  private static BlockingQueue<QQToast.ShowToastMessage> mToastQueue = new LinkedBlockingQueue();
+  private static boolean mUseNewToast = false;
+  private static boolean sTestSwitch = QQUIDelegate.a;
+  private static int sUseCustomToast = 1;
+  private Drawable icon = null;
+  private boolean isUserTouched = false;
+  boolean mAutoTextSize = false;
+  private Context mContext;
+  private int mDuration = 0;
+  private LayoutInflater mInflater;
+  private long mLastShowedTime = 0L;
+  private Resources mResources;
+  private int mToastType = 0;
+  private CharSequence message = null;
+  private QQToast.RightActionParams rightActionParams = null;
   
   public QQToast(Context paramContext)
   {
-    this.b = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.mContext = paramContext.getApplicationContext();
+    this.mResources = this.mContext.getResources();
+    this.mInflater = LayoutInflater.from(this.mContext);
   }
   
-  public static int a(int paramInt)
+  private void addRightActionView(Toast paramToast, LinearLayout paramLinearLayout, QQToast.RightActionParams paramRightActionParams)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 2130839273;
-    case 2: 
-    case 5: 
-      return 2130848044;
-    case 1: 
-    case 4: 
-      return 2130848043;
-    }
-    return 2130839273;
-  }
-  
-  public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    return a(paramContext, 0, paramInt1, paramInt2);
-  }
-  
-  public static QQToast a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramContext = new QQToast(paramContext);
-    paramContext.a(a(paramInt1));
-    paramContext.b(paramInt1);
-    paramContext.c(paramInt2);
-    paramContext.d(paramInt3);
-    return paramContext;
-  }
-  
-  public static QQToast a(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
-  {
-    paramContext = new QQToast(paramContext);
-    paramContext.a(a(paramInt1));
-    paramContext.b(paramInt1);
-    paramContext.a(paramCharSequence);
-    paramContext.d(paramInt2);
-    return paramContext;
-  }
-  
-  public static QQToast a(Context paramContext, CharSequence paramCharSequence, int paramInt)
-  {
-    return a(paramContext, 0, paramCharSequence, paramInt);
-  }
-  
-  private void a(Toast paramToast, LinearLayout paramLinearLayout, QQToast.RightActionParams paramRightActionParams)
-  {
-    if ((paramRightActionParams.jdField_a_of_type_JavaLangString != null) && (!paramRightActionParams.jdField_a_of_type_JavaLangString.isEmpty()))
+    if ((paramRightActionParams.text != null) && (!paramRightActionParams.text.isEmpty()))
     {
       Context localContext = paramLinearLayout.getContext();
       Object localObject = new View(localContext);
@@ -106,15 +75,15 @@ public class QQToast
       paramLinearLayout.addView((View)localObject, localLayoutParams);
       localObject = new TextView(localContext);
       ((TextView)localObject).setOnClickListener(new QQToast.2(this, paramRightActionParams, paramToast));
-      ((TextView)localObject).setText(paramRightActionParams.jdField_a_of_type_JavaLangString);
-      if (paramRightActionParams.jdField_a_of_type_Int == 0) {
-        paramRightActionParams.jdField_a_of_type_Int = localContext.getResources().getColor(2131165501);
+      ((TextView)localObject).setText(paramRightActionParams.text);
+      if (paramRightActionParams.textColor == 0) {
+        paramRightActionParams.textColor = localContext.getResources().getColor(2131165826);
       }
-      ((TextView)localObject).setTextColor(paramRightActionParams.jdField_a_of_type_Int);
-      if (paramRightActionParams.b == 0) {
-        paramRightActionParams.b = 16;
+      ((TextView)localObject).setTextColor(paramRightActionParams.textColor);
+      if (paramRightActionParams.textSizeDp == 0) {
+        paramRightActionParams.textSizeDp = 16;
       }
-      ((TextView)localObject).setTextSize(1, paramRightActionParams.b);
+      ((TextView)localObject).setTextSize(1, paramRightActionParams.textSizeDp);
       paramToast = new LinearLayout.LayoutParams(-2, -2);
       paramToast.rightMargin = QQUIDelegate.a(localContext, 22.0F);
       paramLinearLayout.addView((View)localObject, paramToast);
@@ -123,12 +92,44 @@ public class QQToast
     QLog.e("QQToast", 1, "addRightActionView params isNullOrEmpty");
   }
   
-  public static boolean a()
+  public static boolean canUseCustomToast()
   {
-    return jdField_a_of_type_Int == 1;
+    return sUseCustomToast == 1;
   }
   
-  public static int b(int paramInt)
+  public static int getBgColor(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if (useIOSLikeUI()) {
+        return -1;
+      }
+      break;
+    case 2: 
+    case 5: 
+      if (useIOSLikeUI()) {
+        return -1;
+      }
+      return -452984832;
+    case 1: 
+    case 4: 
+      if (useIOSLikeUI()) {
+        return -103316;
+      }
+      return -436310932;
+    case 0: 
+    case 3: 
+    case 6: 
+      if (useIOSLikeUI()) {
+        return -1;
+      }
+      return -452984832;
+    }
+    return -452984832;
+  }
+  
+  public static int getIconColor(int paramInt)
   {
     switch (paramInt)
     {
@@ -144,12 +145,23 @@ public class QQToast
     return -15550475;
   }
   
-  public static boolean b()
+  public static int getIconRes(int paramInt)
   {
-    return ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("U20"))) && ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("M3s"))) && ((!Build.BRAND.equals("xiaolajiao")) || (!Build.MODEL.equals("HLJ-GM-Q1"))) && ((!Build.BRAND.equals("UOOGOU")) || (!Build.MODEL.equals("UOOGOU"))) && ((!Build.BRAND.equals("samsung")) || (!Build.MODEL.equals("SM-A9000")));
+    switch (paramInt)
+    {
+    default: 
+      return 2130839453;
+    case 2: 
+    case 5: 
+      return 2130849706;
+    case 1: 
+    case 4: 
+      return 2130849705;
+    }
+    return 2130839453;
   }
   
-  private static int c(int paramInt)
+  private static int getTextColorType(int paramInt)
   {
     switch (paramInt)
     {
@@ -164,12 +176,181 @@ public class QQToast
     return -16777216;
   }
   
-  public static boolean c()
+  public static boolean isMX2()
   {
     return Build.BOARD.contains("mx2");
   }
   
-  public int a()
+  public static QQToast makeText(Context paramContext, int paramInt1, int paramInt2)
+  {
+    return makeText(paramContext, 0, paramInt1, paramInt2);
+  }
+  
+  public static QQToast makeText(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramContext = new QQToast(paramContext);
+    paramContext.setToastIcon(getIconRes(paramInt1));
+    paramContext.setType(paramInt1);
+    paramContext.setToastMsg(paramInt2);
+    paramContext.setDuration(paramInt3);
+    return paramContext;
+  }
+  
+  public static QQToast makeText(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
+  {
+    paramContext = new QQToast(paramContext);
+    paramContext.setToastIcon(getIconRes(paramInt1));
+    paramContext.setType(paramInt1);
+    paramContext.setToastMsg(paramCharSequence);
+    paramContext.setDuration(paramInt2);
+    return paramContext;
+  }
+  
+  public static QQToast makeText(Context paramContext, int paramInt1, CharSequence paramCharSequence, QQToast.RightActionParams paramRightActionParams, int paramInt2)
+  {
+    paramContext = new QQToast(paramContext);
+    paramContext.setToastIcon(getIconRes(paramInt1));
+    paramContext.setType(paramInt1);
+    paramContext.setToastMsg(paramCharSequence);
+    paramContext.setDuration(paramInt2);
+    paramContext.setRightActionParams(paramRightActionParams);
+    return paramContext;
+  }
+  
+  public static QQToast makeText(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  {
+    return makeText(paramContext, 0, paramCharSequence, paramInt);
+  }
+  
+  public static void setIsNeedShowToast(boolean paramBoolean)
+  {
+    if (sTestSwitch) {
+      mIsNeedShowToast = paramBoolean;
+    }
+  }
+  
+  public static void setTestSwitch(boolean paramBoolean)
+  {
+    sTestSwitch = paramBoolean;
+  }
+  
+  public static void setUseCustomToast(int paramInt)
+  {
+    sUseCustomToast = paramInt;
+  }
+  
+  public static void setUseNew(int paramInt)
+  {
+    mUseNewToast = true;
+  }
+  
+  public static boolean useIOSLikeUI()
+  {
+    return ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("U20"))) && ((!Build.BRAND.equals("Meizu")) || (!Build.MODEL.equals("M3s"))) && ((!Build.BRAND.equals("xiaolajiao")) || (!Build.MODEL.equals("HLJ-GM-Q1"))) && ((!Build.BRAND.equals("UOOGOU")) || (!Build.MODEL.equals("UOOGOU"))) && ((!Build.BRAND.equals("samsung")) || (!Build.MODEL.equals("SM-A9000")));
+  }
+  
+  public Toast create(int paramInt)
+  {
+    return create(paramInt, 2131627878, null);
+  }
+  
+  public Toast create(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
+  {
+    QQToast.ProtectedToast localProtectedToast = new QQToast.ProtectedToast(this.mContext);
+    boolean bool = QQTheme.isNowSimpleUI();
+    View localView = this.mInflater.inflate(paramInt2, null);
+    Object localObject1 = localView.findViewById(2131447667);
+    if (Build.VERSION.SDK_INT >= 21) {
+      ((View)localObject1).setElevation(6.0F);
+    }
+    if (bool)
+    {
+      localObject2 = new GradientDrawable();
+      ((GradientDrawable)localObject2).setColor(this.mResources.getColor(2131168094));
+      ((GradientDrawable)localObject2).setCornerRadius(DisplayUtil.a(this.mContext, 4.0F));
+      ((View)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    }
+    localObject1 = (LinearLayout)localView.findViewById(2131447671);
+    Object localObject2 = this.rightActionParams;
+    if (localObject2 != null) {
+      addRightActionView(localProtectedToast, (LinearLayout)localObject1, (QQToast.RightActionParams)localObject2);
+    }
+    if (this.icon != null)
+    {
+      localObject1 = (ImageView)localView.findViewById(2131447670);
+      ((ImageView)localObject1).setImageDrawable(this.icon);
+      if (!bool)
+      {
+        ((ImageView)localObject1).setColorFilter(getIconColor(this.mToastType), PorterDuff.Mode.MULTIPLY);
+      }
+      else
+      {
+        paramInt2 = DisplayUtil.a(this.mContext, 28.0F);
+        localObject1 = ((ImageView)localObject1).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).height = paramInt2;
+        ((ViewGroup.LayoutParams)localObject1).width = paramInt2;
+      }
+    }
+    else
+    {
+      ((ImageView)localView.findViewById(2131447670)).setVisibility(8);
+    }
+    if (this.message != null)
+    {
+      localObject1 = (TextView)localView.findViewById(2131447672);
+      if (bool)
+      {
+        ((TextView)localObject1).setTextColor(this.mResources.getColorStateList(2131168056));
+        ((TextView)localObject1).setTextSize(2, 16.0F);
+      }
+      else
+      {
+        ((TextView)localObject1).setTextColor(getTextColorType(this.mToastType));
+      }
+      ((TextView)localObject1).setText(this.message);
+      localObject2 = this.message.toString();
+      TextPaint localTextPaint = ((TextView)localObject1).getPaint();
+      float f1 = localTextPaint.measureText((String)localObject2);
+      DisplayMetrics localDisplayMetrics = this.mResources.getDisplayMetrics();
+      float f2 = localDisplayMetrics.densityDpi / 160 * 50;
+      f2 = localDisplayMetrics.widthPixels - f2;
+      if (f1 > f2) {
+        ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
+      }
+      if (this.mAutoTextSize)
+      {
+        f1 = localTextPaint.measureText((String)localObject2);
+        if (f1 > f2) {
+          ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
+        }
+      }
+    }
+    if (useIOSLikeUI()) {
+      localProtectedToast.setGravity(55, 0, 0);
+    } else if (paramInt1 == 6316128) {
+      localProtectedToast.setGravity(55, 0, getStatusBarHeight());
+    } else {
+      localProtectedToast.setGravity(55, 0, getTitleBarHeight());
+    }
+    localProtectedToast.setView(localView);
+    localProtectedToast.setDuration(this.mDuration);
+    if (useIOSLikeUI())
+    {
+      if (bool)
+      {
+        localObject1 = (TextView)localView.findViewById(2131449842);
+        if (localObject1 != null)
+        {
+          ((TextView)localObject1).setTextColor(this.mResources.getColor(2131168057));
+          ((TextView)localObject1).setTextSize(2, 16.0F);
+        }
+      }
+      localView.setOnTouchListener(new QQToast.1(this, localProtectedToast, paramOnTouchListener));
+    }
+    return localProtectedToast;
+  }
+  
+  public int getStatusBarHeight()
   {
     try
     {
@@ -178,132 +359,16 @@ public class QQToast
     }
     catch (Exception localException)
     {
-      label22:
-      double d1;
-      break label22;
+      label24:
+      double d;
+      break label24;
     }
-    d1 = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 25.0F;
-    Double.isNaN(d1);
-    return (int)(d1 + 0.5D);
+    d = this.mResources.getDisplayMetrics().density * 25.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
-  public Toast a()
-  {
-    Toast localToast;
-    if (c()) {
-      localToast = a(a());
-    } else {
-      localToast = a(0);
-    }
-    if ((d) && (!jdField_c_of_type_Boolean)) {
-      return localToast;
-    }
-    localToast.show();
-    this.e = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    return localToast;
-  }
-  
-  public Toast a(int paramInt)
-  {
-    return a(paramInt, 2131561517, null);
-  }
-  
-  public Toast a(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
-  {
-    QQToast.ProtectedToast localProtectedToast = new QQToast.ProtectedToast(this.jdField_a_of_type_AndroidContentContext);
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject1 = localView.findViewById(2131378958);
-    if (Build.VERSION.SDK_INT >= 21) {
-      ((View)localObject1).setElevation(6.0F);
-    }
-    localObject1 = (LinearLayout)localView.findViewById(2131378962);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams;
-    if (localObject2 != null) {
-      a(localProtectedToast, (LinearLayout)localObject1, (QQToast.RightActionParams)localObject2);
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      localObject1 = (ImageView)localView.findViewById(2131378961);
-      ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((ImageView)localObject1).setColorFilter(b(this.b), PorterDuff.Mode.MULTIPLY);
-    }
-    else
-    {
-      ((ImageView)localView.findViewById(2131378961)).setVisibility(8);
-    }
-    if (this.jdField_a_of_type_JavaLangCharSequence != null)
-    {
-      localObject1 = (TextView)localView.findViewById(2131378963);
-      ((TextView)localObject1).setTextColor(c(this.b));
-      ((TextView)localObject1).setText(this.jdField_a_of_type_JavaLangCharSequence);
-      localObject2 = this.jdField_a_of_type_JavaLangCharSequence.toString();
-      TextPaint localTextPaint = ((TextView)localObject1).getPaint();
-      float f1 = localTextPaint.measureText((String)localObject2);
-      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
-      float f2 = localDisplayMetrics.densityDpi / 160 * 50;
-      f2 = localDisplayMetrics.widthPixels - f2;
-      if (f1 > f2) {
-        ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        f1 = localTextPaint.measureText((String)localObject2);
-        if (f1 > f2) {
-          ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
-        }
-      }
-    }
-    if (b()) {
-      localProtectedToast.setGravity(55, 0, 0);
-    } else if (paramInt1 == 6316128) {
-      localProtectedToast.setGravity(55, 0, a());
-    } else {
-      localProtectedToast.setGravity(55, 0, b());
-    }
-    localProtectedToast.setView(localView);
-    localProtectedToast.setDuration(this.jdField_c_of_type_Int);
-    if (b()) {
-      localView.setOnTouchListener(new QQToast.1(this, localProtectedToast, paramOnTouchListener));
-    }
-    return localProtectedToast;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramInt));
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public void a(QQToast.IToastValidListener paramIToastValidListener)
-  {
-    paramIToastValidListener = new QQToast.ShowToastMessage(this, paramIToastValidListener);
-    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(paramIToastValidListener);
-    jdField_a_of_type_ComTencentMobileqqWidgetQQToast$ToastHandler.sendEmptyMessage(1);
-    if (QLog.isColorLevel())
-    {
-      paramIToastValidListener = new StringBuilder();
-      paramIToastValidListener.append("current queue size is ");
-      paramIToastValidListener.append(jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
-      QLog.d("QQToast", 2, paramIToastValidListener.toString());
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public int b()
+  public int getTitleBarHeight()
   {
     try
     {
@@ -312,68 +377,124 @@ public class QQToast
     }
     catch (Exception localException)
     {
-      label23:
-      double d1;
-      break label23;
+      label24:
+      double d;
+      break label24;
     }
-    d1 = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 44.0F;
-    Double.isNaN(d1);
-    return (int)(d1 + 0.5D);
+    d = this.mResources.getDisplayMetrics().density * 44.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
-  public Toast b(int paramInt)
-  {
-    Toast localToast = a(paramInt);
-    if ((d) && (!jdField_c_of_type_Boolean)) {
-      return localToast;
-    }
-    localToast.show();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.e = false;
-    return localToast;
-  }
-  
-  public Toast b(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
-  {
-    paramOnTouchListener = a(paramInt1, paramInt2, paramOnTouchListener);
-    if ((d) && (!jdField_c_of_type_Boolean)) {
-      return paramOnTouchListener;
-    }
-    paramOnTouchListener.show();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.e = false;
-    return paramOnTouchListener;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    a(this.jdField_a_of_type_AndroidContentResResources.getString(paramInt));
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public boolean d()
+  public boolean isShowing()
   {
     long l;
-    if (this.jdField_c_of_type_Int == 0) {
+    if (this.mDuration == 0) {
       l = 2000L;
     } else {
       l = 3500L;
     }
-    return (System.currentTimeMillis() - this.jdField_a_of_type_Long <= l) && (!this.e);
+    return (System.currentTimeMillis() - this.mLastShowedTime <= l) && (!this.isUserTouched);
+  }
+  
+  public void setAutoTextSize()
+  {
+    this.mAutoTextSize = true;
+  }
+  
+  public void setDuration(int paramInt)
+  {
+    this.mDuration = paramInt;
+  }
+  
+  public void setRightActionParams(QQToast.RightActionParams paramRightActionParams)
+  {
+    this.rightActionParams = paramRightActionParams;
+  }
+  
+  public void setToastIcon(int paramInt)
+  {
+    setToastIcon(this.mResources.getDrawable(paramInt));
+  }
+  
+  public void setToastIcon(Drawable paramDrawable)
+  {
+    this.icon = paramDrawable;
+  }
+  
+  public void setToastMsg(int paramInt)
+  {
+    setToastMsg(this.mResources.getString(paramInt));
+  }
+  
+  public void setToastMsg(CharSequence paramCharSequence)
+  {
+    this.message = paramCharSequence;
+  }
+  
+  public void setType(int paramInt)
+  {
+    this.mToastType = paramInt;
+  }
+  
+  public Toast show()
+  {
+    Toast localToast;
+    if (isMX2()) {
+      localToast = create(getStatusBarHeight());
+    } else {
+      localToast = create(0);
+    }
+    if ((sTestSwitch) && (!mIsNeedShowToast)) {
+      return localToast;
+    }
+    localToast.show();
+    this.isUserTouched = false;
+    this.mLastShowedTime = System.currentTimeMillis();
+    return localToast;
+  }
+  
+  public Toast show(int paramInt)
+  {
+    Toast localToast = create(paramInt);
+    if ((sTestSwitch) && (!mIsNeedShowToast)) {
+      return localToast;
+    }
+    localToast.show();
+    this.mLastShowedTime = System.currentTimeMillis();
+    this.isUserTouched = false;
+    return localToast;
+  }
+  
+  public void showByQueue(QQToast.IToastValidListener paramIToastValidListener)
+  {
+    paramIToastValidListener = new QQToast.ShowToastMessage(this, paramIToastValidListener);
+    mToastQueue.add(paramIToastValidListener);
+    mHandler.sendEmptyMessage(1);
+    if (QLog.isColorLevel())
+    {
+      paramIToastValidListener = new StringBuilder();
+      paramIToastValidListener.append("current queue size is ");
+      paramIToastValidListener.append(mToastQueue.size());
+      QLog.d("QQToast", 2, paramIToastValidListener.toString());
+    }
+  }
+  
+  public Toast showTouchableToast(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
+  {
+    paramOnTouchListener = create(paramInt1, paramInt2, paramOnTouchListener);
+    if ((sTestSwitch) && (!mIsNeedShowToast)) {
+      return paramOnTouchListener;
+    }
+    paramOnTouchListener.show();
+    this.mLastShowedTime = System.currentTimeMillis();
+    this.isUserTouched = false;
+    return paramOnTouchListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast
  * JD-Core Version:    0.7.0.1
  */

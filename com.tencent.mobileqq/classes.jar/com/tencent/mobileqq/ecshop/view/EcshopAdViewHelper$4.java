@@ -27,7 +27,7 @@ class EcshopAdViewHelper$4
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject;
     if (i != 1)
     {
@@ -35,54 +35,54 @@ class EcshopAdViewHelper$4
       {
         if (i == 3)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener;
+          localObject = this.e;
           if (localObject != null) {
-            ((EcshopAdViewHelper.DeleteMsgListener)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+            ((EcshopAdViewHelper.DeleteMsgListener)localObject).a(this.c);
           } else {
-            ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+            ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.c);
           }
-          ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).doArkAppContainerOnEvent(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
-          ((EcshopAdHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(EcshopAdHandler.class.getName())).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-          QQToast.a(paramView.getContext(), paramView.getContext().getResources().getString(2131692247), 1).a();
+          ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).doArkAppContainerOnEvent(this.c, 2);
+          ((EcshopAdHandler)this.f.getBusinessHandler(EcshopAdHandler.class.getName())).a(7, this.c);
+          QQToast.makeText(paramView.getContext(), paramView.getContext().getResources().getString(2131889234), 1).show();
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener;
+        localObject = this.e;
         if (localObject != null) {
-          ((EcshopAdViewHelper.DeleteMsgListener)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+          ((EcshopAdViewHelper.DeleteMsgListener)localObject).a(this.c);
         } else {
-          ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+          ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.c);
         }
-        ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).doArkAppContainerOnEvent(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
-        ((EcshopAdHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(EcshopAdHandler.class.getName())).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        QQToast.a(paramView.getContext(), paramView.getResources().getString(2131692247), 1).a();
+        ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).doArkAppContainerOnEvent(this.c, 2);
+        ((EcshopAdHandler)this.f.getBusinessHandler(EcshopAdHandler.class.getName())).a(8, this.c);
+        QQToast.makeText(paramView.getContext(), paramView.getResources().getString(2131889234), 1).show();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
-      if (!StringUtil.a((String)localObject))
+      localObject = this.b.optString("action_url", "");
+      if (!StringUtil.isEmpty((String)localObject))
       {
         Intent localIntent = new Intent();
         localIntent.putExtra("url", (String)localObject);
         localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId("3046055438");
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-          localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
+        if (this.c != null) {
+          localObject = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.c.frienduin);
         }
         localIntent.putExtra("big_brother_source_key", (String)localObject);
-        RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, localIntent, "/base/browser");
+        RouteUtils.a(this.d, localIntent, "/base/browser");
       }
     }
-    if ((EcshopAdViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper) != null) && (EcshopAdViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper).isShowing())) {
-      EcshopAdViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper).dismiss();
+    if ((EcshopAdViewHelper.a(this.g) != null) && (EcshopAdViewHelper.a(this.g).isShowing())) {
+      EcshopAdViewHelper.a(this.g).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopAdViewHelper.4
  * JD-Core Version:    0.7.0.1
  */

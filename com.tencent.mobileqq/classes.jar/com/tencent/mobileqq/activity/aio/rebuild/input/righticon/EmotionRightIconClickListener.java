@@ -9,7 +9,12 @@ import com.tencent.mobileqq.activity.aio.helper.StickerRecHelper;
 public class EmotionRightIconClickListener
   implements IOnRightIconClickListener
 {
-  public void a(AIOContext paramAIOContext, View paramView)
+  public boolean a(AIOContext paramAIOContext, View paramView)
+  {
+    return false;
+  }
+  
+  public void b(AIOContext paramAIOContext, View paramView)
   {
     if (((AIOZhituHelper)paramAIOContext.a(116)).a)
     {
@@ -19,15 +24,10 @@ public class EmotionRightIconClickListener
       }
     }
   }
-  
-  public boolean a(AIOContext paramAIOContext, View paramView)
-  {
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.righticon.EmotionRightIconClickListener
  * JD-Core Version:    0.7.0.1
  */

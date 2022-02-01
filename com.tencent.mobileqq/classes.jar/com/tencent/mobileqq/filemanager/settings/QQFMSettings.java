@@ -19,17 +19,17 @@ import java.util.Set;
 
 public class QQFMSettings
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  String jdField_a_of_type_JavaLangString = "";
-  Map<String, QQFMSettings.StorageInfo> jdField_a_of_type_JavaUtilMap = null;
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = false;
-  long c = System.currentTimeMillis() / 1000L;
+  QQCustomDialog a;
+  Map<String, QQFMSettings.StorageInfo> b = null;
+  long c = 0L;
   long d = 0L;
+  int e = 0;
+  boolean f = false;
+  String g = "";
+  String h = "";
+  boolean i = false;
+  long j = System.currentTimeMillis() / 1000L;
+  long k = 0L;
   
   public QQFMSettings()
   {
@@ -47,16 +47,16 @@ public class QQFMSettings
       if (paramString.length == 0) {
         return 0L;
       }
-      int i = 0;
+      int m = 0;
       for (;;)
       {
         l2 = l1;
-        if (i >= paramString.length) {
+        if (m >= paramString.length) {
           break;
         }
-        Object localObject = paramString[i];
+        Object localObject = paramString[m];
         if (localObject.isDirectory()) {}
-        for (l2 = a(localObject.getPath(), paramList);; l2 = paramString[i].length())
+        for (l2 = a(localObject.getPath(), paramList);; l2 = paramString[m].length())
         {
           l1 += l2;
           break;
@@ -64,23 +64,10 @@ public class QQFMSettings
             paramList.add(localObject.getAbsolutePath());
           }
         }
-        i += 1;
+        m += 1;
       }
     }
     return l2;
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/");
-    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
-    localObject = new File(paramString);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramString;
   }
   
   public static void a(int paramInt, String paramString) {}
@@ -98,72 +85,72 @@ public class QQFMSettings
     //   9: aconst_null
     //   10: astore 7
     //   12: aload_1
-    //   13: invokevirtual 121	java/io/File:exists	()Z
+    //   13: invokevirtual 124	java/io/File:exists	()Z
     //   16: ifeq +201 -> 217
     //   19: aload_1
-    //   20: invokevirtual 90	java/io/File:length	()J
+    //   20: invokevirtual 97	java/io/File:length	()J
     //   23: lconst_0
     //   24: lcmp
     //   25: ifne +6 -> 31
     //   28: goto +189 -> 217
     //   31: aload_2
-    //   32: invokevirtual 121	java/io/File:exists	()Z
+    //   32: invokevirtual 124	java/io/File:exists	()Z
     //   35: ifeq +8 -> 43
     //   38: aload_2
-    //   39: invokevirtual 144	java/io/File:delete	()Z
+    //   39: invokevirtual 127	java/io/File:delete	()Z
     //   42: pop
-    //   43: new 146	java/io/FileOutputStream
+    //   43: new 129	java/io/FileOutputStream
     //   46: dup
     //   47: aload_2
-    //   48: invokespecial 149	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: invokespecial 132	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   51: astore 5
-    //   53: new 151	java/io/FileInputStream
+    //   53: new 134	java/io/FileInputStream
     //   56: dup
     //   57: aload_1
-    //   58: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   58: invokespecial 135	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   61: astore 6
-    //   63: invokestatic 158	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   63: invokestatic 141	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   66: sipush 4096
-    //   69: invokevirtual 162	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   69: invokevirtual 145	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   72: astore 7
     //   74: aload 6
     //   76: aload 7
-    //   78: invokevirtual 166	java/io/FileInputStream:read	([B)I
+    //   78: invokevirtual 149	java/io/FileInputStream:read	([B)I
     //   81: istore 4
     //   83: iload 4
     //   85: iconst_m1
     //   86: if_icmpeq +38 -> 124
     //   89: aload_0
-    //   90: getfield 29	com/tencent/mobileqq/filemanager/settings/QQFMSettings:jdField_a_of_type_Boolean	Z
+    //   90: getfield 36	com/tencent/mobileqq/filemanager/settings/QQFMSettings:f	Z
     //   93: ifne +31 -> 124
     //   96: aload 5
     //   98: aload 7
     //   100: iconst_0
     //   101: iload 4
-    //   103: invokevirtual 170	java/io/FileOutputStream:write	([BII)V
+    //   103: invokevirtual 153	java/io/FileOutputStream:write	([BII)V
     //   106: aload 5
-    //   108: invokevirtual 173	java/io/FileOutputStream:flush	()V
+    //   108: invokevirtual 156	java/io/FileOutputStream:flush	()V
     //   111: aload_3
     //   112: iload 4
     //   114: i2l
     //   115: lconst_0
-    //   116: invokeinterface 178 5 0
+    //   116: invokeinterface 161 5 0
     //   121: goto -47 -> 74
-    //   124: invokestatic 158	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   124: invokestatic 141	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   127: aload 7
-    //   129: invokevirtual 182	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   129: invokevirtual 165	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   132: aload 5
-    //   134: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   134: invokevirtual 168	java/io/FileOutputStream:close	()V
     //   137: aload 6
-    //   139: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   139: invokevirtual 169	java/io/FileInputStream:close	()V
     //   142: aload_3
     //   143: aload_1
-    //   144: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   144: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   147: aload_2
-    //   148: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   151: invokeinterface 189 3 0
+    //   148: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   151: invokeinterface 172 3 0
     //   156: aload_3
-    //   157: invokeinterface 190 1 0
+    //   157: invokeinterface 173 1 0
     //   162: return
     //   163: astore 8
     //   165: aload 6
@@ -192,16 +179,16 @@ public class QQFMSettings
     //   213: astore_1
     //   214: goto +157 -> 371
     //   217: iconst_1
-    //   218: ldc 192
-    //   220: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   218: ldc 175
+    //   220: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
     //   223: aload_3
     //   224: aload_1
-    //   225: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   225: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   228: aload_2
-    //   229: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   232: invokeinterface 189 3 0
+    //   229: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   232: invokeinterface 172 3 0
     //   237: aload_3
-    //   238: invokeinterface 190 1 0
+    //   238: invokeinterface 173 1 0
     //   243: return
     //   244: astore 6
     //   246: aconst_null
@@ -209,20 +196,20 @@ public class QQFMSettings
     //   249: aload 5
     //   251: ifnull +11 -> 262
     //   254: aload 5
-    //   256: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   256: invokevirtual 168	java/io/FileOutputStream:close	()V
     //   259: goto +3 -> 262
     //   262: aload 7
     //   264: ifnull +8 -> 272
     //   267: aload 7
-    //   269: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   269: invokevirtual 169	java/io/FileInputStream:close	()V
     //   272: aload_3
     //   273: aload_1
-    //   274: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   274: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   277: aload_2
-    //   278: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   281: invokeinterface 189 3 0
+    //   278: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   281: invokeinterface 172 3 0
     //   286: aload_3
-    //   287: invokeinterface 190 1 0
+    //   287: invokeinterface 173 1 0
     //   292: aload 6
     //   294: athrow
     //   295: aconst_null
@@ -232,15 +219,15 @@ public class QQFMSettings
     //   301: aload 5
     //   303: ifnull +11 -> 314
     //   306: aload 5
-    //   308: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   308: invokevirtual 168	java/io/FileOutputStream:close	()V
     //   311: goto +3 -> 314
     //   314: aload_1
     //   315: ifnull +7 -> 322
     //   318: aload_1
-    //   319: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   319: invokevirtual 169	java/io/FileInputStream:close	()V
     //   322: aload_3
     //   323: iconst_m1
-    //   324: invokeinterface 195 2 0
+    //   324: invokeinterface 178 2 0
     //   329: return
     //   330: aconst_null
     //   331: astore 5
@@ -249,15 +236,15 @@ public class QQFMSettings
     //   336: aload 5
     //   338: ifnull +11 -> 349
     //   341: aload 5
-    //   343: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   343: invokevirtual 168	java/io/FileOutputStream:close	()V
     //   346: goto +3 -> 349
     //   349: aload_1
     //   350: ifnull +7 -> 357
     //   353: aload_1
-    //   354: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   354: invokevirtual 169	java/io/FileInputStream:close	()V
     //   357: aload_3
     //   358: iconst_m1
-    //   359: invokeinterface 195 2 0
+    //   359: invokeinterface 178 2 0
     //   364: return
     //   365: aconst_null
     //   366: astore 5
@@ -266,15 +253,15 @@ public class QQFMSettings
     //   371: aload 5
     //   373: ifnull +11 -> 384
     //   376: aload 5
-    //   378: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   378: invokevirtual 168	java/io/FileOutputStream:close	()V
     //   381: goto +3 -> 384
     //   384: aload_1
     //   385: ifnull +7 -> 392
     //   388: aload_1
-    //   389: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   389: invokevirtual 169	java/io/FileInputStream:close	()V
     //   392: aload_3
     //   393: iconst_m1
-    //   394: invokeinterface 195 2 0
+    //   394: invokeinterface 178 2 0
     //   399: return
     //   400: astore_1
     //   401: goto -36 -> 365
@@ -320,7 +307,7 @@ public class QQFMSettings
     //   0	480	1	paramFile1	File
     //   0	480	2	paramFile2	File
     //   0	480	3	paramMoveFileCallback	FMSettingInterface.MoveFileCallback
-    //   81	32	4	i	int
+    //   81	32	4	m	int
     //   51	326	5	localFileOutputStream	java.io.FileOutputStream
     //   436	1	5	localException1	Exception
     //   441	1	5	localException2	Exception
@@ -389,64 +376,64 @@ public class QQFMSettings
     a(1, "moveFileToDefaultPath");
     if ((paramList != null) && (paramList.size() != 0))
     {
-      this.jdField_a_of_type_Long = 0L;
+      this.c = 0L;
       try
       {
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_b_of_type_Long = 0L;
+        this.e = 0;
+        this.d = 0L;
         Object localObject = paramList.iterator();
         while (((Iterator)localObject).hasNext())
         {
           str1 = (String)((Iterator)localObject).next();
-          this.jdField_b_of_type_Long += FileUtil.a(str1);
+          this.d += FileUtil.f(str1);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("moveFileToDefaultPath,total size[");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(this.d);
         ((StringBuilder)localObject).append("]");
         a(1, ((StringBuilder)localObject).toString());
-        if (this.jdField_b_of_type_Long == 0L)
+        if (this.d == 0L)
         {
           paramMoveFileCallback.a();
           return;
         }
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(d().jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(d().c);
+        ((StringBuilder)localObject).append(n().c);
+        ((StringBuilder)localObject).append(n().d);
         String str1 = ((StringBuilder)localObject).toString();
-        int j = paramList.size();
-        int i = 0;
+        int n = paramList.size();
+        int m = 0;
         for (;;)
         {
-          if (i < j)
+          if (m < n)
           {
-            String str2 = (String)paramList.get(i);
+            String str2 = (String)paramList.get(m);
             if (str2.contains("/.tmp/"))
             {
               localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(b(str1));
-              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.b(str2));
+              ((StringBuilder)localObject).append(c(str1));
+              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.n(str2));
               localObject = ((StringBuilder)localObject).toString();
             }
             else if (str2.contains("/.thumbnails/"))
             {
               localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(c(str1));
-              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.b(str2));
+              ((StringBuilder)localObject).append(d(str1));
+              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.n(str2));
               localObject = ((StringBuilder)localObject).toString();
             }
             else
             {
               localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(a(str1));
-              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.b(str2));
+              ((StringBuilder)localObject).append(b(str1));
+              ((StringBuilder)localObject).append(QQFileManagerUtilImpl.n(str2));
               localObject = ((StringBuilder)localObject).toString();
             }
             localObject = new File((String)localObject);
             try
             {
-              ThreadManager.post(new QQFMSettings.4(this, str2, (File)localObject, j, paramMoveFileCallback), 8, null, false);
-              i += 1;
+              ThreadManager.post(new QQFMSettings.4(this, str2, (File)localObject, n, paramMoveFileCallback), 8, null, false);
+              m += 1;
             }
             catch (Exception paramList)
             {
@@ -464,7 +451,46 @@ public class QQFMSettings
     a(1, "moveFileToDefaultPath,lstPath is null or size = 0");
   }
   
-  private boolean a(String paramString)
+  private String b(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/");
+    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
+    localObject = new File(paramString);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return paramString;
+  }
+  
+  private String c(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/.tmp/");
+    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
+    localObject = new File(paramString);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return paramString;
+  }
+  
+  private String d(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/.thumbnails/");
+    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
+    localObject = new File(paramString);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return paramString;
+  }
+  
+  private boolean e(String paramString)
   {
     Object localObject = new File(paramString);
     boolean bool;
@@ -484,145 +510,69 @@ public class QQFMSettings
     return bool;
   }
   
-  private QQFMSettings.StorageInfo b()
+  private QQFMSettings.StorageInfo k()
   {
-    return (QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    return (QQFMSettings.StorageInfo)this.b.get("sdCard");
   }
   
-  private String b(String paramString)
+  private QQFMSettings.StorageInfo l()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/.tmp/");
-    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
-    localObject = new File(paramString);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramString;
-  }
-  
-  private QQFMSettings.StorageInfo c()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {
+    if (this.b.size() == 1) {
       return null;
     }
-    return (QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
+    return (QQFMSettings.StorageInfo)this.b.get("externalSdCard");
   }
   
-  private String c(String paramString)
+  private void m()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append("/Tencent/QQfile_recv/.thumbnails/");
-    paramString = ((StringBuilder)localObject).toString().replace("//", "/");
-    localObject = new File(paramString);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramString;
-  }
-  
-  private void c()
-  {
-    QQFMSettings.StorageInfo localStorageInfo = a();
+    QQFMSettings.StorageInfo localStorageInfo = h();
     if (localStorageInfo == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localStorageInfo.jdField_b_of_type_JavaLangString);
     localStringBuilder.append(localStorageInfo.c);
-    ThreadManager.post(new QQFMSettings.1(this, b(localStringBuilder.toString())), 8, null, false);
+    localStringBuilder.append(localStorageInfo.d);
+    ThreadManager.post(new QQFMSettings.1(this, c(localStringBuilder.toString())), 8, null, false);
   }
   
-  private QQFMSettings.StorageInfo d()
+  private QQFMSettings.StorageInfo n()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("getDefaultStorage[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilMap.size());
+    ((StringBuilder)localObject1).append(this.b.size());
     ((StringBuilder)localObject1).append("]");
     a(2, ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    localObject1 = this.b.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+      localObject2 = (QQFMSettings.StorageInfo)this.b.get(localObject2);
       ((QQFMSettings.StorageInfo)localObject2).a();
-      if (((QQFMSettings.StorageInfo)localObject2).jdField_a_of_type_Boolean)
+      if (((QQFMSettings.StorageInfo)localObject2).a)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getDefaultStorage[");
-        ((StringBuilder)localObject1).append(((QQFMSettings.StorageInfo)localObject2).jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject1).append("] + ext[");
         ((StringBuilder)localObject1).append(((QQFMSettings.StorageInfo)localObject2).c);
+        ((StringBuilder)localObject1).append("] + ext[");
+        ((StringBuilder)localObject1).append(((QQFMSettings.StorageInfo)localObject2).d);
         ((StringBuilder)localObject1).append("]");
         a(2, ((StringBuilder)localObject1).toString());
         return localObject2;
       }
     }
     a(2, "getDefaultStorage nothing is default refresh!");
-    Object localObject2 = (QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    Object localObject2 = (QQFMSettings.StorageInfo)this.b.get("sdCard");
     localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new QQFMSettings.StorageInfo(this, null);
-      ((QQFMSettings.StorageInfo)localObject1).jdField_a_of_type_Boolean = true;
-      ((QQFMSettings.StorageInfo)localObject1).jdField_a_of_type_JavaLangString = "SD卡";
-      ((QQFMSettings.StorageInfo)localObject1).jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath();
-      ((QQFMSettings.StorageInfo)localObject1).c = "";
+      ((QQFMSettings.StorageInfo)localObject1).a = true;
+      ((QQFMSettings.StorageInfo)localObject1).b = "SD卡";
+      ((QQFMSettings.StorageInfo)localObject1).c = Environment.getExternalStorageDirectory().getPath();
+      ((QQFMSettings.StorageInfo)localObject1).d = "";
     }
     ((QQFMSettings.StorageInfo)localObject1).a(BaseApplication.getContext());
     return localObject1;
-  }
-  
-  public long a()
-  {
-    Object localObject = d().jdField_b_of_type_JavaLangString;
-    try
-    {
-      localObject = new StatFs((String)localObject);
-      long l = ((StatFs)localObject).getAvailableBlocks();
-      int i = ((StatFs)localObject).getBlockSize();
-      return l * i;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 2147483647L;
-  }
-  
-  public QQFMSettings.StorageInfo a()
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("getOtherStorage[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilMap.size());
-    ((StringBuilder)localObject1).append("]");
-    a(2, ((StringBuilder)localObject1).toString());
-    localObject1 = d();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (String)localIterator.next();
-      localObject2 = (QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-      if (localObject1 != localObject2) {
-        return localObject2;
-      }
-    }
-    a(2, "getOtherStorage nothing is default refresh!");
-    return null;
-  }
-  
-  public String a()
-  {
-    QQFMSettings.StorageInfo localStorageInfo = a();
-    if (localStorageInfo == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localStorageInfo.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(localStorageInfo.c);
-    return a(localStringBuilder.toString());
   }
   
   /* Error */
@@ -631,304 +581,304 @@ public class QQFMSettings
     // Byte code:
     //   0: aload_0
     //   1: iconst_0
-    //   2: putfield 29	com/tencent/mobileqq/filemanager/settings/QQFMSettings:jdField_a_of_type_Boolean	Z
-    //   5: invokestatic 335	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2: putfield 36	com/tencent/mobileqq/filemanager/settings/QQFMSettings:f	Z
+    //   5: invokestatic 349	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   8: astore 7
     //   10: aload 7
-    //   12: invokestatic 359	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:a	(Landroid/content/Context;)Ljava/util/Map;
+    //   12: invokestatic 355	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl:a	(Landroid/content/Context;)Ljava/util/Map;
     //   15: astore 8
-    //   17: new 98	java/lang/StringBuilder
+    //   17: new 206	java/lang/StringBuilder
     //   20: dup
-    //   21: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   21: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   24: astore 6
     //   26: aload 6
-    //   28: ldc_w 361
-    //   31: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc_w 357
+    //   31: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload 6
     //   37: aload 8
-    //   39: invokeinterface 288 1 0
-    //   44: invokevirtual 304	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   39: invokeinterface 302 1 0
+    //   44: invokevirtual 316	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   47: pop
     //   48: aload 6
-    //   50: ldc 226
-    //   52: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: ldc 218
+    //   52: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: iconst_1
     //   57: aload 6
-    //   59: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   59: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
     //   65: aload 7
-    //   67: ldc_w 363
+    //   67: ldc_w 359
     //   70: iconst_4
-    //   71: invokevirtual 369	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   74: ldc_w 371
-    //   77: getstatic 376	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
-    //   80: invokeinterface 382 3 0
+    //   71: invokevirtual 365	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   74: ldc_w 367
+    //   77: getstatic 372	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
+    //   80: invokeinterface 378 3 0
     //   85: astore 9
-    //   87: new 98	java/lang/StringBuilder
+    //   87: new 206	java/lang/StringBuilder
     //   90: dup
-    //   91: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   91: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   94: astore 6
     //   96: aload 6
-    //   98: ldc_w 384
-    //   101: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: ldc_w 380
+    //   101: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 6
     //   107: aload 9
-    //   109: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: pop
     //   113: aload 6
-    //   115: ldc 226
-    //   117: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: ldc 218
+    //   117: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: pop
     //   121: iconst_1
     //   122: aload 6
-    //   124: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   124: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   127: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
     //   130: aload_0
-    //   131: new 386	java/util/HashMap
+    //   131: new 382	java/util/HashMap
     //   134: dup
-    //   135: invokespecial 387	java/util/HashMap:<init>	()V
-    //   138: putfield 21	com/tencent/mobileqq/filemanager/settings/QQFMSettings:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   135: invokespecial 383	java/util/HashMap:<init>	()V
+    //   138: putfield 28	com/tencent/mobileqq/filemanager/settings/QQFMSettings:b	Ljava/util/Map;
     //   141: aload 8
-    //   143: invokeinterface 308 1 0
-    //   148: invokeinterface 311 1 0
+    //   143: invokeinterface 320 1 0
+    //   148: invokeinterface 323 1 0
     //   153: astore 10
     //   155: aload 10
-    //   157: invokeinterface 210 1 0
-    //   162: ifeq +426 -> 588
+    //   157: invokeinterface 193 1 0
+    //   162: ifeq +427 -> 589
     //   165: aload 10
-    //   167: invokeinterface 214 1 0
-    //   172: checkcast 114	java/lang/String
+    //   167: invokeinterface 197 1 0
+    //   172: checkcast 199	java/lang/String
     //   175: astore 6
     //   177: aload 8
     //   179: aload 6
-    //   181: invokeinterface 285 2 0
-    //   186: checkcast 63	java/io/File
-    //   189: invokevirtual 78	java/io/File:getPath	()Ljava/lang/String;
+    //   181: invokeinterface 300 2 0
+    //   186: checkcast 70	java/io/File
+    //   189: invokevirtual 85	java/io/File:getPath	()Ljava/lang/String;
     //   192: astore 12
-    //   194: new 231	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo
+    //   194: new 227	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo
     //   197: dup
     //   198: aload_0
     //   199: aconst_null
-    //   200: invokespecial 320	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:<init>	(Lcom/tencent/mobileqq/filemanager/settings/QQFMSettings;Lcom/tencent/mobileqq/filemanager/settings/QQFMSettings$1;)V
+    //   200: invokespecial 333	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:<init>	(Lcom/tencent/mobileqq/filemanager/settings/QQFMSettings;Lcom/tencent/mobileqq/filemanager/settings/QQFMSettings$1;)V
     //   203: astore 11
     //   205: aload 11
     //   207: iconst_0
-    //   208: putfield 313	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_Boolean	Z
+    //   208: putfield 326	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	Z
     //   211: aload 6
-    //   213: ldc_w 280
-    //   216: invokevirtual 390	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   213: ldc_w 295
+    //   216: invokevirtual 386	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   219: ifeq +28 -> 247
     //   222: aload 11
-    //   224: ldc_w 322
-    //   227: putfield 323	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   224: ldc_w 335
+    //   227: putfield 337	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:b	Ljava/lang/String;
     //   230: aload 11
     //   232: aload 12
-    //   234: putfield 232	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   234: putfield 229	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
     //   237: aload 11
-    //   239: ldc 31
-    //   241: putfield 234	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
-    //   244: goto +88 -> 332
+    //   239: ldc 38
+    //   241: putfield 231	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:d	Ljava/lang/String;
+    //   244: goto +89 -> 333
     //   247: aload 6
-    //   249: ldc_w 290
-    //   252: invokevirtual 390	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   255: ifeq +77 -> 332
+    //   249: ldc_w 304
+    //   252: invokevirtual 386	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   255: ifeq +78 -> 333
     //   258: aload 11
-    //   260: ldc_w 392
-    //   263: putfield 323	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   260: ldc_w 388
+    //   263: putfield 337	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:b	Ljava/lang/String;
     //   266: aload 7
     //   268: aconst_null
-    //   269: invokevirtual 396	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
+    //   269: invokevirtual 392	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
     //   272: pop
-    //   273: invokestatic 335	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   276: invokevirtual 399	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
+    //   273: invokestatic 349	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   276: invokevirtual 395	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
     //   279: astore 13
     //   281: aload 11
     //   283: aload 12
-    //   285: putfield 232	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   288: new 98	java/lang/StringBuilder
+    //   285: putfield 229	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
+    //   288: new 206	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 207	java/lang/StringBuilder:<init>	()V
     //   295: astore 14
     //   297: aload 14
-    //   299: ldc_w 401
-    //   302: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc_w 397
+    //   302: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 14
     //   308: aload 13
-    //   310: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload 14
-    //   316: ldc 112
-    //   318: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: pop
-    //   322: aload 11
-    //   324: aload 14
-    //   326: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: putfield 234	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
-    //   332: new 98	java/lang/StringBuilder
-    //   335: dup
-    //   336: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   339: astore 13
-    //   341: aload 13
-    //   343: ldc_w 403
-    //   346: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   349: pop
-    //   350: aload 13
-    //   352: aload 11
-    //   354: getfield 232	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   357: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   360: pop
-    //   361: aload 13
-    //   363: ldc_w 405
-    //   366: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   369: pop
-    //   370: aload 13
-    //   372: aload 11
-    //   374: getfield 313	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_Boolean	Z
-    //   377: invokevirtual 408	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   380: pop
-    //   381: aload 13
-    //   383: ldc 226
-    //   385: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: pop
-    //   389: iconst_1
-    //   390: aload 13
-    //   392: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   395: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
-    //   398: new 340	android/os/StatFs
-    //   401: dup
-    //   402: aload 12
-    //   404: invokespecial 341	android/os/StatFs:<init>	(Ljava/lang/String;)V
-    //   407: astore 12
-    //   409: aload 12
-    //   411: invokevirtual 344	android/os/StatFs:getAvailableBlocks	()I
-    //   414: i2l
-    //   415: lstore_2
-    //   416: aload 12
-    //   418: invokevirtual 347	android/os/StatFs:getBlockSize	()I
-    //   421: istore_1
-    //   422: iload_1
-    //   423: i2l
-    //   424: lstore 4
-    //   426: aload 11
-    //   428: lload_2
-    //   429: lload 4
-    //   431: lmul
-    //   432: putfield 409	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_Long	J
-    //   435: new 98	java/lang/StringBuilder
-    //   438: dup
-    //   439: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   442: astore 12
-    //   444: aload 12
-    //   446: ldc_w 411
-    //   449: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   452: pop
-    //   453: aload 12
-    //   455: aload 9
-    //   457: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   460: pop
-    //   461: aload 12
-    //   463: ldc_w 413
-    //   466: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   469: pop
-    //   470: aload 12
-    //   472: aload 11
-    //   474: getfield 232	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   477: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: pop
-    //   481: aload 12
-    //   483: ldc_w 415
-    //   486: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: pop
-    //   490: iconst_4
-    //   491: aload 12
-    //   493: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   496: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
-    //   499: aload 8
-    //   501: invokeinterface 288 1 0
-    //   506: iconst_1
-    //   507: if_icmpeq +19 -> 526
-    //   510: aload 9
-    //   512: aload 11
-    //   514: getfield 232	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   517: invokevirtual 390	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   520: ifeq +69 -> 589
-    //   523: goto +3 -> 526
-    //   526: iconst_4
-    //   527: ldc_w 417
-    //   530: invokestatic 54	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
-    //   533: aload 11
-    //   535: iconst_1
-    //   536: putfield 313	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:jdField_a_of_type_Boolean	Z
-    //   539: aload 11
-    //   541: aload 7
-    //   543: invokevirtual 338	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	(Landroid/content/Context;)V
-    //   546: aload 11
-    //   548: invokevirtual 312	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	()V
-    //   551: aload_0
-    //   552: getfield 21	com/tencent/mobileqq/filemanager/settings/QQFMSettings:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   555: aload 6
-    //   557: aload 11
-    //   559: invokeinterface 421 3 0
-    //   564: pop
-    //   565: goto +20 -> 585
-    //   568: astore 6
-    //   570: goto +10 -> 580
-    //   573: astore 6
-    //   575: goto +5 -> 580
-    //   578: astore 6
-    //   580: aload 6
-    //   582: invokevirtual 350	java/lang/Exception:printStackTrace	()V
-    //   585: goto -430 -> 155
-    //   588: return
-    //   589: goto -43 -> 546
+    //   316: ldc_w 274
+    //   319: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: pop
+    //   323: aload 11
+    //   325: aload 14
+    //   327: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   330: putfield 231	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:d	Ljava/lang/String;
+    //   333: new 206	java/lang/StringBuilder
+    //   336: dup
+    //   337: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   340: astore 13
+    //   342: aload 13
+    //   344: ldc_w 399
+    //   347: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: pop
+    //   351: aload 13
+    //   353: aload 11
+    //   355: getfield 229	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
+    //   358: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: pop
+    //   362: aload 13
+    //   364: ldc_w 401
+    //   367: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   370: pop
+    //   371: aload 13
+    //   373: aload 11
+    //   375: getfield 326	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	Z
+    //   378: invokevirtual 404	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   381: pop
+    //   382: aload 13
+    //   384: ldc 218
+    //   386: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: pop
+    //   390: iconst_1
+    //   391: aload 13
+    //   393: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   396: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   399: new 406	android/os/StatFs
+    //   402: dup
+    //   403: aload 12
+    //   405: invokespecial 407	android/os/StatFs:<init>	(Ljava/lang/String;)V
+    //   408: astore 12
+    //   410: aload 12
+    //   412: invokevirtual 410	android/os/StatFs:getAvailableBlocks	()I
+    //   415: i2l
+    //   416: lstore_2
+    //   417: aload 12
+    //   419: invokevirtual 413	android/os/StatFs:getBlockSize	()I
+    //   422: istore_1
+    //   423: iload_1
+    //   424: i2l
+    //   425: lstore 4
+    //   427: aload 11
+    //   429: lload_2
+    //   430: lload 4
+    //   432: lmul
+    //   433: putfield 415	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:e	J
+    //   436: new 206	java/lang/StringBuilder
+    //   439: dup
+    //   440: invokespecial 207	java/lang/StringBuilder:<init>	()V
+    //   443: astore 12
+    //   445: aload 12
+    //   447: ldc_w 417
+    //   450: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   453: pop
+    //   454: aload 12
+    //   456: aload 9
+    //   458: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   461: pop
+    //   462: aload 12
+    //   464: ldc_w 419
+    //   467: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: pop
+    //   471: aload 12
+    //   473: aload 11
+    //   475: getfield 229	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
+    //   478: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   481: pop
+    //   482: aload 12
+    //   484: ldc_w 421
+    //   487: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   490: pop
+    //   491: iconst_4
+    //   492: aload 12
+    //   494: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   497: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   500: aload 8
+    //   502: invokeinterface 302 1 0
+    //   507: iconst_1
+    //   508: if_icmpeq +19 -> 527
+    //   511: aload 9
+    //   513: aload 11
+    //   515: getfield 229	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:c	Ljava/lang/String;
+    //   518: invokevirtual 386	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   521: ifeq +69 -> 590
+    //   524: goto +3 -> 527
+    //   527: iconst_4
+    //   528: ldc_w 423
+    //   531: invokestatic 61	com/tencent/mobileqq/filemanager/settings/QQFMSettings:a	(ILjava/lang/String;)V
+    //   534: aload 11
+    //   536: iconst_1
+    //   537: putfield 326	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	Z
+    //   540: aload 11
+    //   542: aload 7
+    //   544: invokevirtual 352	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	(Landroid/content/Context;)V
+    //   547: aload 11
+    //   549: invokevirtual 324	com/tencent/mobileqq/filemanager/settings/QQFMSettings$StorageInfo:a	()V
+    //   552: aload_0
+    //   553: getfield 28	com/tencent/mobileqq/filemanager/settings/QQFMSettings:b	Ljava/util/Map;
+    //   556: aload 6
+    //   558: aload 11
+    //   560: invokeinterface 427 3 0
+    //   565: pop
+    //   566: goto +20 -> 586
+    //   569: astore 6
+    //   571: goto +10 -> 581
+    //   574: astore 6
+    //   576: goto +5 -> 581
+    //   579: astore 6
+    //   581: aload 6
+    //   583: invokevirtual 430	java/lang/Exception:printStackTrace	()V
+    //   586: goto -431 -> 155
+    //   589: return
+    //   590: goto -43 -> 547
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	592	0	this	QQFMSettings
-    //   421	2	1	i	int
-    //   415	14	2	l1	long
-    //   424	6	4	l2	long
-    //   24	532	6	localObject1	Object
-    //   568	1	6	localException1	Exception
-    //   573	1	6	localException2	Exception
-    //   578	3	6	localException3	Exception
-    //   8	534	7	localBaseApplication	BaseApplication
-    //   15	485	8	localMap	Map
-    //   85	426	9	str	String
+    //   0	593	0	this	QQFMSettings
+    //   422	2	1	m	int
+    //   416	14	2	l1	long
+    //   425	6	4	l2	long
+    //   24	533	6	localObject1	Object
+    //   569	1	6	localException1	Exception
+    //   574	1	6	localException2	Exception
+    //   579	3	6	localException3	Exception
+    //   8	535	7	localBaseApplication	BaseApplication
+    //   15	486	8	localMap	Map
+    //   85	427	9	str	String
     //   153	13	10	localIterator	Iterator
-    //   203	355	11	localStorageInfo	QQFMSettings.StorageInfo
-    //   192	300	12	localObject2	Object
-    //   279	112	13	localObject3	Object
-    //   295	30	14	localStringBuilder	StringBuilder
+    //   203	356	11	localStorageInfo	QQFMSettings.StorageInfo
+    //   192	301	12	localObject2	Object
+    //   279	113	13	localObject3	Object
+    //   295	31	14	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   539	546	568	java/lang/Exception
-    //   546	565	568	java/lang/Exception
-    //   426	523	573	java/lang/Exception
-    //   526	539	573	java/lang/Exception
-    //   177	244	578	java/lang/Exception
-    //   247	332	578	java/lang/Exception
-    //   332	422	578	java/lang/Exception
+    //   540	547	569	java/lang/Exception
+    //   547	566	569	java/lang/Exception
+    //   427	524	574	java/lang/Exception
+    //   527	540	574	java/lang/Exception
+    //   177	244	579	java/lang/Exception
+    //   247	333	579	java/lang/Exception
+    //   333	423	579	java/lang/Exception
   }
   
   public void a(long paramLong, List<String> arg3, Activity paramActivity, FMSettingInterface.MoveFileCallback paramMoveFileCallback)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.i) {
       return;
     }
     synchronized (BaseApplication.getContext())
     {
-      this.jdField_b_of_type_Boolean = true;
-      long l = b();
-      if (!a())
+      this.i = true;
+      long l = g();
+      if (!i())
       {
         paramMoveFileCallback.a(12);
         synchronized (BaseApplication.getContext())
         {
-          this.jdField_b_of_type_Boolean = false;
+          this.i = false;
           return;
         }
       }
@@ -937,7 +887,7 @@ public class QQFMSettings
         paramMoveFileCallback.a(16);
         synchronized (BaseApplication.getContext())
         {
-          this.jdField_b_of_type_Boolean = false;
+          this.i = false;
           return;
         }
       }
@@ -946,25 +896,25 @@ public class QQFMSettings
       ((StringBuilder)???).append(paramMoveFileCallback);
       ((StringBuilder)???).append("]");
       a(1, ((StringBuilder)???).toString());
-      ??? = b();
-      QQFMSettings.StorageInfo localStorageInfo = c();
-      if (((QQFMSettings.StorageInfo)???).jdField_a_of_type_Boolean)
+      ??? = k();
+      QQFMSettings.StorageInfo localStorageInfo = l();
+      if (((QQFMSettings.StorageInfo)???).a)
       {
-        this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704766);
+        this.g = HardCodeUtil.a(2131902668);
         ??? = new StringBuilder();
-        ((StringBuilder)???).append(a().jdField_b_of_type_JavaLangString);
-        ((StringBuilder)???).append(a().c);
+        ((StringBuilder)???).append(h().c);
+        ((StringBuilder)???).append(h().d);
         ((StringBuilder)???).append("/Tencent/QQfile_recv/");
-        this.jdField_b_of_type_JavaLangString = ((StringBuilder)???).toString().replace("//", "/");
+        this.h = ((StringBuilder)???).toString().replace("//", "/");
       }
-      else if ((localStorageInfo != null) && (localStorageInfo.jdField_a_of_type_Boolean))
+      else if ((localStorageInfo != null) && (localStorageInfo.a))
       {
-        this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704763);
+        this.g = HardCodeUtil.a(2131902665);
         ??? = new StringBuilder();
-        ((StringBuilder)???).append(a().jdField_b_of_type_JavaLangString);
-        ((StringBuilder)???).append(a().c);
+        ((StringBuilder)???).append(h().c);
+        ((StringBuilder)???).append(h().d);
         ((StringBuilder)???).append("/Tencent/QQfile_recv/");
-        this.jdField_b_of_type_JavaLangString = ((StringBuilder)???).toString().replace("//", "/");
+        this.h = ((StringBuilder)???).toString().replace("//", "/");
       }
       if (paramActivity == null) {
         return;
@@ -978,17 +928,17 @@ public class QQFMSettings
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilMap != null)
+      if (this.b != null)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+        if (this.b.size() == 0) {
           return;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
         if (paramString != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+          this.b.remove(paramString);
         }
         if ("externalSdCard".equalsIgnoreCase(paramString)) {
-          ((QQFMSettings.StorageInfo)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplication.getContext());
+          ((QQFMSettings.StorageInfo)this.b.get("sdCard")).a(BaseApplication.getContext());
         }
       }
       return;
@@ -996,27 +946,42 @@ public class QQFMSettings
     catch (Exception paramString) {}
   }
   
-  public boolean a()
+  public String b()
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {
-      return false;
+    QQFMSettings.StorageInfo localStorageInfo = h();
+    if (localStorageInfo == null) {
+      return null;
     }
-    return c() != null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localStorageInfo.c);
+    localStringBuilder.append(localStorageInfo.d);
+    return b(localStringBuilder.toString());
   }
   
-  public long b()
+  public String c()
   {
-    Object localObject = a();
-    if (localObject == null) {
-      return 0L;
-    }
-    localObject = ((QQFMSettings.StorageInfo)localObject).jdField_b_of_type_JavaLangString;
+    return AppConstants.SDCARD_FILE_SAVE_PATH;
+  }
+  
+  public String d()
+  {
+    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH;
+  }
+  
+  public String e()
+  {
+    return AppConstants.SDCARD_FILE_SAVE_THUMB_PATH;
+  }
+  
+  public long f()
+  {
+    Object localObject = n().c;
     try
     {
       localObject = new StatFs((String)localObject);
       long l = ((StatFs)localObject).getAvailableBlocks();
-      int i = ((StatFs)localObject).getBlockSize();
-      return l * i;
+      int m = ((StatFs)localObject).getBlockSize();
+      return l * m;
     }
     catch (Exception localException)
     {
@@ -1025,38 +990,73 @@ public class QQFMSettings
     return 2147483647L;
   }
   
-  public String b()
+  public long g()
   {
-    return AppConstants.SDCARD_FILE_SAVE_PATH;
+    Object localObject = h();
+    if (localObject == null) {
+      return 0L;
+    }
+    localObject = ((QQFMSettings.StorageInfo)localObject).c;
+    try
+    {
+      localObject = new StatFs((String)localObject);
+      long l = ((StatFs)localObject).getAvailableBlocks();
+      int m = ((StatFs)localObject).getBlockSize();
+      return l * m;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 2147483647L;
   }
   
-  public void b()
+  public QQFMSettings.StorageInfo h()
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getOtherStorage[");
+    ((StringBuilder)localObject1).append(this.b.size());
+    ((StringBuilder)localObject1).append("]");
+    a(2, ((StringBuilder)localObject1).toString());
+    localObject1 = n();
+    Iterator localIterator = this.b.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (String)localIterator.next();
+      localObject2 = (QQFMSettings.StorageInfo)this.b.get(localObject2);
+      if (localObject1 != localObject2) {
+        return localObject2;
+      }
+    }
+    a(2, "getOtherStorage nothing is default refresh!");
+    return null;
+  }
+  
+  public boolean i()
+  {
+    if (this.b.size() == 1) {
+      return false;
+    }
+    return l() != null;
+  }
+  
+  public void j()
   {
     try
     {
       a(1, "FMSettings free");
-      Field localField = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getClass().getSuperclass().getDeclaredField("mShowing");
+      Field localField = this.a.getClass().getSuperclass().getDeclaredField("mShowing");
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, Boolean.valueOf(true));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      localField.set(this.a, Boolean.valueOf(true));
+      this.a.dismiss();
       return;
     }
     catch (Exception localException) {}
   }
-  
-  public String c()
-  {
-    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH;
-  }
-  
-  public String d()
-  {
-    return AppConstants.SDCARD_FILE_SAVE_THUMB_PATH;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.QQFMSettings
  * JD-Core Version:    0.7.0.1
  */

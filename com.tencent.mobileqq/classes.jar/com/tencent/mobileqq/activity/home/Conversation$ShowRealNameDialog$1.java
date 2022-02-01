@@ -27,9 +27,9 @@ class Conversation$ShowRealNameDialog$1
         {
           try
           {
-            Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
+            Intent localIntent = new Intent(this.a.a.P(), QQBrowserActivity.class);
             localIntent.putExtra("url", Conversation.ShowRealNameDialog.a(this.a));
-            this.a.a.a().startActivity(localIntent);
+            this.a.a.P().startActivity(localIntent);
           }
           catch (Exception localException)
           {
@@ -41,23 +41,23 @@ class Conversation$ShowRealNameDialog$1
         }
         else if (Conversation.ShowRealNameDialog.a(this.a).startsWith("mqqapi:"))
         {
-          JumpParser.a(this.a.a.a(), this.a.a.a(), Conversation.ShowRealNameDialog.a(this.a)).a();
+          JumpParser.a(this.a.a.s(), this.a.a.P(), Conversation.ShowRealNameDialog.a(this.a)).a();
         }
         label141:
-        ReportController.b(this.a.a.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        ReportController.b(this.a.a.aF, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_MqqAppAppRuntime.getApplication(), this.a.a.jdField_a_of_type_MqqAppAppRuntime.getAccount(), null, "pcactive_config", false)) {
-        this.a.a.jdField_a_of_type_MqqAppAppRuntime.startPCActivePolling(this.a.a.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "logout");
+      if (SettingCloneUtil.readValue(this.a.a.aF.getApplication(), this.a.a.aF.getAccount(), null, "pcactive_config", false)) {
+        this.a.a.aF.startPCActivePolling(this.a.a.aF.getAccount(), "logout");
       }
-      this.a.a.a(this.a.a.a(), this.a.a.a());
+      this.a.a.a(this.a.a.P(), this.a.a.s());
     }
     try
     {
       paramDialogInterface.dismiss();
-      this.a.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.a.z = null;
       return;
     }
     catch (Exception paramDialogInterface) {}
@@ -65,7 +65,7 @@ class Conversation$ShowRealNameDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.ShowRealNameDialog.1
  * JD-Core Version:    0.7.0.1
  */

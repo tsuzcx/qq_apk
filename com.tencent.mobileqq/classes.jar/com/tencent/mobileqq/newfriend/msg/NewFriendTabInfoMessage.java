@@ -7,23 +7,22 @@ public class NewFriendTabInfoMessage
   extends NewFriendMessage
 {
   public ArrayList<ConnectionsTabInfo> a;
-  public boolean a;
+  public boolean b = false;
   
   public NewFriendTabInfoMessage(ArrayList<ConnectionsTabInfo> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramArrayList;
+    this.b = paramBoolean;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.NewFriendTabInfoMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -10,44 +10,40 @@ import java.util.ArrayList;
 
 public class SentenceUI
 {
-  public final int a;
-  public SentenceAttachInfo a;
   public final String a;
-  public final ArrayList<Character> a;
   public final int b;
-  public SentenceAttachInfo b;
   public final int c;
-  private final int d;
+  public final int d;
+  public final ArrayList<Character> e;
+  public SentenceAttachInfo f = new SentenceAttachInfo();
+  public SentenceAttachInfo g = new SentenceAttachInfo();
+  private final int h;
   
   public SentenceUI(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<Character> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-    this.jdField_b_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.c = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.b = paramInt1;
+    this.h = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.a = paramString;
+    this.e = paramArrayList;
   }
   
   public SentenceUI(String paramString, int paramInt1, int paramInt2, ArrayList<Character> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-    this.jdField_b_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo = new SentenceAttachInfo();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.jdField_b_of_type_Int = 0;
+    this.b = paramInt1;
+    this.h = paramInt2;
     this.c = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.d = 0;
+    this.a = paramString;
+    this.e = paramArrayList;
   }
   
   public long a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      return ((Character)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
+      return ((Character)this.e.get(0)).a;
     }
     return 0L;
   }
@@ -59,58 +55,58 @@ public class SentenceUI
   
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt3)
   {
-    paramInt1 += this.jdField_a_of_type_Int;
-    paramBitmap1 = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo;
-    if ((paramBitmap1 != null) && (paramBitmap1.a != null) && (!this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.a.isRecycled()))
+    paramInt1 += this.b;
+    paramBitmap1 = this.f;
+    if ((paramBitmap1 != null) && (paramBitmap1.a != null) && (!this.f.a.isRecycled()))
     {
-      paramBitmap1 = new Rect(paramInt1 - this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.c - this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.a.getWidth(), (int)(paramInt2 - paramPaint1.getTextSize()), paramInt1 - this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.c, (int)(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.a.getHeight() + paramInt2 - paramPaint1.getTextSize()));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceAttachInfo.a, null, paramBitmap1, null);
+      paramBitmap1 = new Rect(paramInt1 - this.f.d - this.f.a.getWidth(), (int)(paramInt2 - paramPaint1.getTextSize()), paramInt1 - this.f.d, (int)(this.f.a.getHeight() + paramInt2 - paramPaint1.getTextSize()));
+      paramCanvas.drawBitmap(this.f.a, null, paramBitmap1, null);
     }
-    paramBitmap1 = this.jdField_a_of_type_JavaLangString;
+    paramBitmap1 = this.a;
     float f1 = paramInt1 - paramInt3;
     float f4 = paramInt2 - paramInt3;
     paramCanvas.drawText(paramBitmap1, f1, f4, paramPaint2);
-    paramBitmap1 = this.jdField_a_of_type_JavaLangString;
+    paramBitmap1 = this.a;
     float f2 = paramInt1;
     paramCanvas.drawText(paramBitmap1, f2, f4, paramPaint2);
-    paramBitmap1 = this.jdField_a_of_type_JavaLangString;
+    paramBitmap1 = this.a;
     float f3 = paramInt1 + paramInt3;
     paramCanvas.drawText(paramBitmap1, f3, f4, paramPaint2);
-    paramBitmap1 = this.jdField_a_of_type_JavaLangString;
+    paramBitmap1 = this.a;
     f4 = paramInt2;
     paramCanvas.drawText(paramBitmap1, f3, f4, paramPaint2);
-    paramBitmap1 = this.jdField_a_of_type_JavaLangString;
+    paramBitmap1 = this.a;
     float f5 = paramInt2 + paramInt3;
     paramCanvas.drawText(paramBitmap1, f3, f5, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f5, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f1, f5, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f1, f4, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f4, paramPaint1);
+    paramCanvas.drawText(this.a, f2, f5, paramPaint2);
+    paramCanvas.drawText(this.a, f1, f5, paramPaint2);
+    paramCanvas.drawText(this.a, f1, f4, paramPaint2);
+    paramCanvas.drawText(this.a, f2, f4, paramPaint1);
   }
   
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, int paramInt3, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat)
   {
-    int i = this.d;
+    int i = this.h;
     paramFloat2 += i;
-    float f = paramInt2;
+    float f1 = paramInt2;
     paramFloat1 = paramFloat2 + paramFloat1;
-    paramPaint3.setShader(new LinearGradient(paramFloat2, f, paramFloat1, f, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
+    paramPaint3.setShader(new LinearGradient(paramFloat2, f1, paramFloat1, f1, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
     if (paramInt3 > 0)
     {
-      paramArrayOfInt = (Character)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 - 1);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(0, paramArrayOfInt.jdField_b_of_type_Int), paramInt1 + i, f, paramPaint2);
+      paramArrayOfInt = (Character)this.e.get(paramInt3 - 1);
+      paramCanvas.drawText(this.a.substring(0, paramArrayOfInt.d), paramInt1 + i, f1, paramPaint2);
     }
-    paramPaint2 = (Character)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3);
-    if (paramInt3 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length());
+    paramPaint2 = (Character)this.e.get(paramInt3);
+    if (paramInt3 == this.e.size() - 1) {
+      paramPaint2 = this.a.substring(paramPaint2.c, this.a.length());
     } else {
-      paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, paramPaint2.jdField_b_of_type_Int);
+      paramPaint2 = this.a.substring(paramPaint2.c, paramPaint2.d);
     }
-    paramCanvas.drawText(paramPaint2, paramFloat2, f, paramPaint3);
-    if (paramInt3 < this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+    paramCanvas.drawText(paramPaint2, paramFloat2, f1, paramPaint3);
+    if (paramInt3 < this.e.size() - 1)
     {
-      paramPaint2 = (Character)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 + 1);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length()), paramFloat1, f, paramPaint1);
+      paramPaint2 = (Character)this.e.get(paramInt3 + 1);
+      paramCanvas.drawText(this.a.substring(paramPaint2.c, this.a.length()), paramFloat1, f1, paramPaint1);
     }
   }
   
@@ -118,28 +114,28 @@ public class SentenceUI
   {
     int i;
     if (paramBoolean) {
-      i = this.d;
+      i = this.h;
     } else {
-      i = this.jdField_a_of_type_Int;
+      i = this.b;
     }
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + i, paramInt2, paramPaint);
+    paramCanvas.drawText(this.a, paramInt1 + i, paramInt2, paramPaint);
   }
   
   public long b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.e;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = this.e;
       localObject = (Character)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-      return ((Character)localObject).jdField_a_of_type_Long + ((Character)localObject).jdField_b_of_type_Long;
+      return ((Character)localObject).a + ((Character)localObject).b;
     }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.data.SentenceUI
  * JD-Core Version:    0.7.0.1
  */

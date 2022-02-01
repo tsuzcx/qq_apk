@@ -10,12 +10,12 @@ class QWalletTempImpl$3
   
   public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComQwalletTempFriendListObserverTemp.a(paramString, paramBoolean);
+    this.a.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QWalletTempImpl.3
  * JD-Core Version:    0.7.0.1
  */

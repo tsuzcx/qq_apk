@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -21,34 +22,37 @@ class InputJsPlugin$7
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
-      return false;
-    }
-    try
+    boolean bool = false;
+    if ((paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6))
     {
-      paramTextView = this.val$currentET.getText().toString();
-      paramKeyEvent = new JSONObject();
-      paramKeyEvent.put("value", paramTextView);
-      this.val$req.jsService.evaluateSubscribeJS("onKeyboardConfirm", paramKeyEvent.toString(), 0);
-      if (this.val$keyboardLayout.getVisibility() != 8) {
-        this.val$keyboardLayout.setVisibility(8);
+      try
+      {
+        String str = this.val$currentET.getText().toString();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("value", str);
+        this.val$req.jsService.evaluateSubscribeJS("onKeyboardConfirm", localJSONObject.toString(), 0);
+        if (this.val$keyboardLayout.getVisibility() != 8) {
+          this.val$keyboardLayout.setVisibility(8);
+        }
+        InputJsPlugin.access$700(this.this$0, this.val$context, this.val$currentET);
+        this.val$req.jsService.evaluateSubscribeJS("onKeyboardComplete", localJSONObject.toString(), 0);
+        if ((this.val$context instanceof Activity)) {
+          DisplayUtil.setActivityFullScreen((Activity)this.val$context);
+        }
       }
-      InputJsPlugin.access$700(this.this$0, this.val$context, this.val$currentET);
-      this.val$req.jsService.evaluateSubscribeJS("onKeyboardComplete", paramKeyEvent.toString(), 0);
-      if ((this.val$context instanceof Activity)) {
-        DisplayUtil.setActivityFullScreen((Activity)this.val$context);
+      catch (JSONException localJSONException)
+      {
+        QMLog.e("InputJsPlugin", "onEditorAction callback exception", localJSONException);
       }
+      bool = true;
     }
-    catch (JSONException paramTextView)
-    {
-      QMLog.e("InputJsPlugin", "onEditorAction callback exception", paramTextView);
-    }
-    return true;
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InputJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.TimeSliceHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListViewGroup;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyListViewGroup;
@@ -34,7 +34,6 @@ import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEvent
 import com.tencent.mobileqq.kandian.glue.report.dt.RIJDtParamBuilder;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.KandianRedDotInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import java.util.HashMap;
@@ -46,109 +45,104 @@ public class ReadInJoyBBCircleFragment
   extends ReadInJoyBaseFragment
   implements IReadInJoyBBCircleFragmentConst, KandianSubscribeManager.KandianSubscribeMessageObserver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TimeSliceHelper jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper = new TimeSliceHelper();
-  protected ReadInJoyChannelViewController a;
-  private boolean e = false;
+  protected ReadInJoyChannelViewController a = null;
+  private Context b;
+  private View c;
+  private TimeSliceHelper d = new TimeSliceHelper();
+  private boolean m = false;
   
-  public ReadInJoyBBCircleFragment()
+  private void w()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = null;
-  }
-  
-  private void i()
-  {
-    Object localObject = a();
+    Object localObject = v();
     if (localObject == null) {
       return;
     }
     localObject = ((Activity)localObject).getIntent();
-    KandianRedDotInfo localKandianRedDotInfo = KandianSubscribeManager.a();
+    KandianRedDotInfo localKandianRedDotInfo = KandianSubscribeManager.c();
     if (localKandianRedDotInfo != null) {
       ((Intent)localObject).putExtra("kandian_feeds_red_pnt_info", localKandianRedDotInfo);
     }
   }
   
-  private void j()
+  private void x()
   {
     try
     {
-      boolean bool = this.e;
+      boolean bool = this.m;
       if (bool) {
         return;
       }
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView != null))
+      if ((this.b != null) && (this.c != null))
       {
-        Object localObject1 = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131376123);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = ((ReadInJoyChannelViewController)ReadInJoyUtils.a.remove(Integer.valueOf(70)));
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController == null)
+        Object localObject1 = (ViewGroup)this.c.findViewById(2131444326);
+        this.a = ((ReadInJoyChannelViewController)ReadInJoyUtils.c.remove(Integer.valueOf(70)));
+        if (this.a == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = new ReadInJoyChannelViewController((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(70);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.b(0);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a((ViewGroup)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.b(true);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.aw_();
+          this.a = new ReadInJoyChannelViewController((Activity)this.b);
+          this.a.a(70);
+          this.a.b(0);
+          this.a.a((ViewGroup)localObject1);
+          this.a.b(true);
+          this.a.cT_();
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a((ViewGroup)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.c();
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.b();
+          this.a.a((ViewGroup)localObject1);
+          this.a.c();
+          this.a.b();
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange, this.jdField_b_of_type_Int);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a();
+        this.a.a(this.j, this.k);
+        localObject1 = this.a.q();
         if ((localObject1 != null) && ((localObject1 instanceof ReadInJoyBaseListViewGroup))) {
           ((ReadInJoyBaseListViewGroup)localObject1).g();
         }
-        ReadinjoySPEventReport.a(0, KandianSubscribeReportUtils.a(), 0);
-        this.e = true;
+        ReadinjoySPEventReport.a(0, KandianSubscribeReportUtils.d(), 0);
+        this.m = true;
       }
       return;
     }
     finally {}
   }
   
-  private void k()
+  private void y()
   {
     ThreadManager.executeOnSubThread(new ReadInJoyBBCircleFragment.1(this));
   }
   
   public void a()
   {
-    i();
+    w();
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null)
     {
       localReadInJoyChannelViewController.a(true);
       return;
     }
-    ReadInJoyChannelViewPagerController.d(b());
+    ReadInJoyChannelViewPagerController.d(d());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (!this.e) {
-      j();
+    if (!this.m) {
+      x();
     }
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    paramActivity = this.a;
     if (paramActivity != null) {
       paramActivity.i();
     }
     QLog.d("ReadInJoyBBCircleFragment", 2, "[notifyShowSelf] show!");
-    i();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
-    if ((paramActivity != null) && ((paramActivity.a() instanceof ReadInJoyListViewGroup)))
+    w();
+    PublicAccountReportUtils.a(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
+    paramActivity = this.a;
+    if ((paramActivity != null) && ((paramActivity.q() instanceof ReadInJoyListViewGroup)))
     {
-      paramActivity = ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a()).a().a().iterator();
+      paramActivity = ((ReadInJoyListViewGroup)this.a.q()).getHeaderViewManager().b().iterator();
       while (paramActivity.hasNext())
       {
         paramBundle = (HeaderViewController)paramActivity.next();
@@ -159,41 +153,41 @@ public class ReadInJoyBBCircleFragment
     }
   }
   
-  public int b()
+  public int d()
   {
     return 70;
   }
   
-  public void e()
+  public void k()
   {
-    super.e();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    super.k();
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.h();
     }
   }
   
-  public void f()
+  public void l()
   {
-    super.f();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    super.l();
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.a(true);
     }
   }
   
-  public void g()
+  public void n()
   {
-    super.g();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    super.n();
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
-      localReadInJoyChannelViewController.k();
+      localReadInJoyChannelViewController.cR_();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.a(paramInt1, paramInt2, paramIntent);
     }
@@ -202,8 +196,8 @@ public class ReadInJoyBBCircleFragment
   
   public boolean onBackEvent()
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a();
-    if (((localView instanceof ReadInJoyListViewGroup)) && (((ReadInJoyListViewGroup)localView).a())) {
+    View localView = this.a.q();
+    if (((localView instanceof ReadInJoyListViewGroup)) && (((ReadInJoyListViewGroup)localView).r())) {
       return true;
     }
     return super.onBackEvent();
@@ -212,48 +206,48 @@ public class ReadInJoyBBCircleFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = a();
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (Build.VERSION.SDK_INT >= 11)) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setFlags(16777216, 16777216);
+    this.b = v();
+    if ((this.b != null) && (Build.VERSION.SDK_INT >= 11)) {
+      ((Activity)this.b).getWindow().setFlags(16777216, 16777216);
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560199, paramViewGroup, false);
-    if ((getUserVisibleHint()) || (!ReadInJoyUtils.a())) {
-      j();
+    this.c = paramLayoutInflater.inflate(2131626246, paramViewGroup, false);
+    if ((getUserVisibleHint()) || (!ReadInJoyUtils.g())) {
+      x();
     }
-    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "14");
-    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new RIJDtParamBuilder().a(Integer.valueOf(70)).a());
-    return this.jdField_a_of_type_AndroidViewView;
+    VideoReport.setPageId(this.c, "14");
+    VideoReport.setPageParams(this.c, new RIJDtParamBuilder().a(Integer.valueOf(70)).b());
+    return this.c;
   }
   
   public void onDestroy()
   {
-    k();
+    y();
     super.onDestroy();
-    ReadInJoyLogicEngine.a().a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyLogicEngine.a().u();
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((ReadInJoyChannelViewController)localObject).e();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a();
+      localObject = this.a.q();
       if ((localObject != null) && ((localObject instanceof ReadInJoyBaseListViewGroup))) {
         ((ReadInJoyBaseListViewGroup)localObject).h();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = null;
-    localObject = (QQAppInterface)ReadInJoyUtils.a();
+    this.a = null;
+    localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if ((localObject != null) && (((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine() != null))
       {
-        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
+        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().e();
         if (localObject != null) {
-          ((ReadInJoyUserInfoModule)localObject).a();
+          ((ReadInJoyUserInfoModule)localObject).c();
         }
       }
     }
@@ -261,14 +255,14 @@ public class ReadInJoyBBCircleFragment
   
   public void onDestroyView()
   {
-    ((KandianSubscribeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER)).a(this);
+    ((KandianSubscribeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER)).a(this);
     super.onDestroyView();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.c();
     }
@@ -277,7 +271,7 @@ public class ReadInJoyBBCircleFragment
   public void onPause()
   {
     super.onPause();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.h();
     }
@@ -286,41 +280,41 @@ public class ReadInJoyBBCircleFragment
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.i();
+    if ((this.a != null) && (this.g)) {
+      this.a.i();
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.f();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper.a();
+    this.d.b();
   }
   
   public void onStop()
   {
     super.onStop();
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.g();
     }
     if (!BaseActivity.mAppForground) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsTimeSliceHelper.b();
+      this.d.c();
     }
-    if (a().isFinishing())
+    if (v().isFinishing())
     {
-      ReadinjoySPEventReport.a(1, KandianSubscribeReportUtils.a(), 0);
+      ReadinjoySPEventReport.a(1, KandianSubscribeReportUtils.d(), 0);
       KandianSubscribeReportUtils.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.ReadInJoyBBCircleFragment
  * JD-Core Version:    0.7.0.1
  */

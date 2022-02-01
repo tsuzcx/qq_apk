@@ -17,23 +17,23 @@ import com.tencent.widget.XPanelContainer;
 public class RichTextPanelProviderHelper
   implements ILifeCycleHelper, PanelProvider<RichTextPanel>
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  RichTextPanel jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+  RichTextPanel a;
+  private BaseChatPie b;
   
   public RichTextPanelProviderHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.b = paramBaseChatPie;
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    Object localObject = (AIOZhituHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a(116);
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().a().a().a().a();
+    Object localObject = (AIOZhituHelper)this.b.bv().a(116);
+    ImageButton localImageButton = this.b.bv().p().d().c().b();
     if (paramInt1 == 28)
     {
       ((AIOZhituHelper)localObject).a = false;
       localImageButton.setActivated(false);
-      RichTextPanel localRichTextPanel = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+      RichTextPanel localRichTextPanel = this.a;
       if (localRichTextPanel != null) {
         localRichTextPanel.a(false);
       }
@@ -42,7 +42,7 @@ public class RichTextPanelProviderHelper
     {
       ((AIOZhituHelper)localObject).a = true;
       localImageButton.setActivated(true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+      localObject = this.a;
       if (localObject != null) {
         ((RichTextPanel)localObject).a(true);
       }
@@ -51,17 +51,17 @@ public class RichTextPanelProviderHelper
   
   public RichTextPanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+    return this.a;
   }
   
   public RichTextPanel a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel = new RichTextPanel(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      this.a = new RichTextPanel(paramContext);
+      this.a.a(this.b);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+    return this.a;
   }
   
   public int getPanelId()
@@ -97,14 +97,14 @@ public class RichTextPanelProviderHelper
         if (paramInt != 15) {
           return;
         }
-        localRichTextPanel = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+        localRichTextPanel = this.a;
         if (localRichTextPanel != null) {
           localRichTextPanel.c();
         }
       }
       else
       {
-        localRichTextPanel = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+        localRichTextPanel = this.a;
         if (localRichTextPanel != null) {
           localRichTextPanel.a();
         }
@@ -112,7 +112,7 @@ public class RichTextPanelProviderHelper
     }
     else
     {
-      localRichTextPanel = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+      localRichTextPanel = this.a;
       if (localRichTextPanel != null) {
         localRichTextPanel.b();
       }
@@ -121,17 +121,17 @@ public class RichTextPanelProviderHelper
   
   public void onPanelChanged(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 28) && (this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel != null))
+    if ((paramInt1 == 28) && (this.a != null))
     {
       boolean bool = true;
       if (paramInt2 != 1) {
         bool = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel.c(bool);
+      this.a.c(bool);
     }
     if (paramInt2 == 28)
     {
-      RichTextPanel localRichTextPanel = this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanel;
+      RichTextPanel localRichTextPanel = this.a;
       if (localRichTextPanel != null) {
         localRichTextPanel.d();
       }
@@ -149,7 +149,7 @@ public class RichTextPanelProviderHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.RichTextPanelProviderHelper
  * JD-Core Version:    0.7.0.1
  */

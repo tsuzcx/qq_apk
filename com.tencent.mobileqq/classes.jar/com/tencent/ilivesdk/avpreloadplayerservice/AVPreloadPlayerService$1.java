@@ -14,44 +14,44 @@ class AVPreloadPlayerService$1
   
   public void a(String paramString, long paramLong, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    paramAVPreloadTaskInterface = AVPreloadPlayerService.h(this.a).getLogger();
+    paramAVPreloadTaskInterface = AVPreloadPlayerService.k(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskGapTime url=");
     localStringBuilder.append(paramString);
     paramAVPreloadTaskInterface.i("AVPreloadPlayerService", localStringBuilder.toString(), new Object[0]);
-    AVPreloadPlayerService.a(this.a).k = paramLong;
+    AVPreloadPlayerService.a(this.a).C = paramLong;
   }
   
   public void a(String paramString, AVPreloadTaskInterface.TaskReportInfo paramTaskReportInfo, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    LogInterface localLogInterface = AVPreloadPlayerService.b(this.a).getLogger();
+    LogInterface localLogInterface = AVPreloadPlayerService.c(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskPreloadFinish url=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AVPreloadPlayerService", localStringBuilder.toString(), new Object[0]);
     if (paramTaskReportInfo != null)
     {
-      AVPreloadPlayerService.a(this.a).j = (paramTaskReportInfo.a() / 1024);
-      AVPreloadPlayerService.a(this.a).h = paramTaskReportInfo.b();
-      AVPreloadPlayerService.a(this.a).g = paramTaskReportInfo.a();
-      AVPreloadPlayerService.a(this.a).jdField_c_of_type_Boolean = paramTaskReportInfo.a();
+      AVPreloadPlayerService.a(this.a).B = (paramTaskReportInfo.d() / 1024);
+      AVPreloadPlayerService.a(this.a).r = paramTaskReportInfo.b();
+      AVPreloadPlayerService.a(this.a).q = paramTaskReportInfo.a();
+      AVPreloadPlayerService.a(this.a).D = paramTaskReportInfo.c();
     }
-    AVPreloadPlayerService.a(this.a).jdField_b_of_type_Long = paramAVPreloadTaskInterface.a();
-    AVPreloadPlayerService.a(this.a).jdField_c_of_type_Long = paramAVPreloadTaskInterface.b();
-    AVPreloadPlayerService.a(this.a).jdField_c_of_type_Int = paramAVPreloadTaskInterface.a();
+    AVPreloadPlayerService.a(this.a).j = paramAVPreloadTaskInterface.b();
+    AVPreloadPlayerService.a(this.a).k = paramAVPreloadTaskInterface.c();
+    AVPreloadPlayerService.a(this.a).u = paramAVPreloadTaskInterface.k();
     paramString = AVPreloadPlayerService.a(this.a);
     paramTaskReportInfo = new StringBuilder();
     paramTaskReportInfo.append("");
-    paramTaskReportInfo.append(paramAVPreloadTaskInterface.j());
-    paramString.jdField_l_of_type_JavaLangString = paramTaskReportInfo.toString();
-    AVPreloadPlayerService.a(this.a).jdField_l_of_type_Long = paramAVPreloadTaskInterface.e();
-    AVPreloadPlayerService.a(this.a).m = (paramAVPreloadTaskInterface.h() / 1024L);
+    paramTaskReportInfo.append(paramAVPreloadTaskInterface.r());
+    paramString.E = paramTaskReportInfo.toString();
+    AVPreloadPlayerService.a(this.a).F = paramAVPreloadTaskInterface.f();
+    AVPreloadPlayerService.a(this.a).G = (paramAVPreloadTaskInterface.i() / 1024L);
   }
   
   public void a(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    AVPreloadPlayerService.a(this.a).jdField_b_of_type_Long = paramAVPreloadTaskInterface.a();
-    paramAVPreloadTaskInterface = AVPreloadPlayerService.a(this.a).getLogger();
+    AVPreloadPlayerService.a(this.a).j = paramAVPreloadTaskInterface.b();
+    paramAVPreloadTaskInterface = AVPreloadPlayerService.b(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskPreloadStart url=");
     localStringBuilder.append(paramString);
@@ -60,17 +60,17 @@ class AVPreloadPlayerService$1
   
   public void b(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    LogInterface localLogInterface = AVPreloadPlayerService.c(this.a).getLogger();
+    LogInterface localLogInterface = AVPreloadPlayerService.d(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskFailed url=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AVPreloadPlayerService", localStringBuilder.toString(), new Object[0]);
-    AVPreloadPlayerService.a(this.a).jdField_d_of_type_Int = paramAVPreloadTaskInterface.d();
+    AVPreloadPlayerService.a(this.a).z = paramAVPreloadTaskInterface.n();
   }
   
   public void c(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    paramAVPreloadTaskInterface = AVPreloadPlayerService.d(this.a).getLogger();
+    paramAVPreloadTaskInterface = AVPreloadPlayerService.e(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskCompleted url=");
     localStringBuilder.append(paramString);
@@ -79,32 +79,32 @@ class AVPreloadPlayerService$1
   
   public void d(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    LogInterface localLogInterface = AVPreloadPlayerService.e(this.a).getLogger();
+    LogInterface localLogInterface = AVPreloadPlayerService.f(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskStop url=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AVPreloadPlayerService", localStringBuilder.toString(), new Object[0]);
-    AVPreloadPlayerService.a(this.a).jdField_d_of_type_Long = paramAVPreloadTaskInterface.c();
+    AVPreloadPlayerService.a(this.a).l = paramAVPreloadTaskInterface.d();
   }
   
   public void e(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    LogInterface localLogInterface = AVPreloadPlayerService.f(this.a).getLogger();
+    LogInterface localLogInterface = AVPreloadPlayerService.g(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskFirstFrame url=");
     localStringBuilder.append(paramString);
     localLogInterface.i("AVPreloadPlayerService", localStringBuilder.toString(), new Object[0]);
-    AVPreloadPlayerService.a(this.a).e = paramAVPreloadTaskInterface.d();
-    AVPreloadPlayerService.a(this.a).a = paramAVPreloadTaskInterface.b();
-    AVPreloadPlayerService.a(this.a).jdField_b_of_type_Int = paramAVPreloadTaskInterface.c();
-    if (AVPreloadPlayerService.a(this.a) != null) {
-      AVPreloadPlayerService.b(this.a).onPreloadFirstFrame(paramAVPreloadTaskInterface);
+    AVPreloadPlayerService.a(this.a).o = paramAVPreloadTaskInterface.e();
+    AVPreloadPlayerService.a(this.a).s = paramAVPreloadTaskInterface.l();
+    AVPreloadPlayerService.a(this.a).t = paramAVPreloadTaskInterface.m();
+    if (AVPreloadPlayerService.h(this.a) != null) {
+      AVPreloadPlayerService.i(this.a).onPreloadFirstFrame(paramAVPreloadTaskInterface);
     }
   }
   
   public void f(String paramString, AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    paramAVPreloadTaskInterface = AVPreloadPlayerService.g(this.a).getLogger();
+    paramAVPreloadTaskInterface = AVPreloadPlayerService.j(this.a).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preload---onTaskCanPlay url=");
     localStringBuilder.append(paramString);
@@ -113,7 +113,7 @@ class AVPreloadPlayerService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.AVPreloadPlayerService.1
  * JD-Core Version:    0.7.0.1
  */

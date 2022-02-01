@@ -9,33 +9,33 @@ import com.tencent.featuretoggle.db.DBManager;
 
 public class HeaderThreadUtil
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private Handler a;
+  private HandlerThread b;
   
   public static HeaderThreadUtil a()
   {
     return HeaderThreadUtil.Holder.a;
   }
   
-  private static void b()
+  private static void e()
   {
-    long l = DBManager.a().a();
+    long l = DBManager.a().c();
     ToggleSetting.c(l);
-    LogUtils.c("[Database] t_f_e count:%d", new Object[] { Long.valueOf(l) });
+    LogUtils.e("[Database] t_f_e count:%d", new Object[] { Long.valueOf(l) });
   }
   
   Looper a(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+        this.b.quit();
+        this.b = null;
       }
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("ToggleThread", paramInt);
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      Looper localLooper = this.jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+      this.b = new HandlerThread("ToggleThread", paramInt);
+      this.b.start();
+      Looper localLooper = this.b.getLooper();
       return localLooper;
     }
     finally {}
@@ -43,8 +43,8 @@ public class HeaderThreadUtil
   
   public Message a(int paramInt, Object paramObject)
   {
-    if (b()) {
-      return this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramObject);
+    if (c()) {
+      return this.a.obtainMessage(paramInt, paramObject);
     }
     Message localMessage = new Message();
     localMessage.what = paramInt;
@@ -52,28 +52,28 @@ public class HeaderThreadUtil
     return localMessage;
   }
   
-  public void a(int paramInt)
-  {
-    if (b()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(paramInt);
-    }
-  }
-  
   public void a(int paramInt, long paramLong)
   {
-    if (b()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, paramLong);
+    if (c()) {
+      this.a.sendEmptyMessageDelayed(paramInt, paramLong);
     }
   }
   
   public void a(Message paramMessage, long paramLong)
   {
-    if (b()) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, paramLong);
+    if (c()) {
+      this.a.sendMessageDelayed(paramMessage, paramLong);
     }
   }
   
-  boolean a()
+  public void b(int paramInt)
+  {
+    if (c()) {
+      this.a.sendEmptyMessage(paramInt);
+    }
+  }
+  
+  boolean b()
   {
     Looper localLooper2 = a(0);
     Looper localLooper1 = localLooper2;
@@ -83,28 +83,28 @@ public class HeaderThreadUtil
     if (localLooper1 == null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidOsHandler = new HeaderThreadUtil.1(this, localLooper1);
+    this.a = new HeaderThreadUtil.1(this, localLooper1);
     return true;
   }
   
-  public void b(int paramInt)
+  public void c(int paramInt)
   {
-    if (b()) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    if (c()) {
+      this.a.removeMessages(paramInt);
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      return a();
+    if (this.a == null) {
+      return b();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.HeaderThreadUtil
  * JD-Core Version:    0.7.0.1
  */

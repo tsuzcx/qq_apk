@@ -14,17 +14,17 @@ import com.tencent.qphone.base.util.QLog;
 public class MostUsedResultPresenter
   extends SearchResultPresenter
 {
-  private ContactSearchResultPresenter jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter;
-  private ActiveEntitySearchResultPresenter jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter;
-  private MiniProgramSearchResultPresenter jdField_a_of_type_ComTencentMobileqqSearchPresenterMiniProgramSearchResultPresenter;
-  private MostUsedResultPresenter.OnActionListener jdField_a_of_type_ComTencentMobileqqSearchPresenterMostUsedResultPresenter$OnActionListener = null;
+  private MostUsedResultPresenter.OnActionListener a = null;
+  private MiniProgramSearchResultPresenter b;
+  private ContactSearchResultPresenter c;
+  private ActiveEntitySearchResultPresenter d;
   
   public MostUsedResultPresenter(IFaceDecoder paramIFaceDecoder)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchPresenterMiniProgramSearchResultPresenter = new MiniProgramSearchResultPresenter(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter = new ContactSearchResultPresenter(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter = new ActiveEntitySearchResultPresenter(paramIFaceDecoder, 268435456);
+    this.b = new MiniProgramSearchResultPresenter(paramIFaceDecoder);
+    this.c = new ContactSearchResultPresenter(paramIFaceDecoder);
+    this.d = new ActiveEntitySearchResultPresenter(paramIFaceDecoder, 268435456);
   }
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
@@ -39,44 +39,44 @@ public class MostUsedResultPresenter
     if (bool)
     {
       localObject = (IContactSearchModel)paramISearchResultModel;
-      int i = MostUseConstants.a(((IContactSearchModel)localObject).e());
+      int i = MostUseConstants.a(((IContactSearchModel)localObject).o());
       if (i == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchPresenterMiniProgramSearchResultPresenter.a(paramISearchResultModel, paramISearchResultView);
+        this.b.a(paramISearchResultModel, paramISearchResultView);
         return;
       }
       if (i == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter.a(paramISearchResultModel, paramISearchResultView);
+        this.c.a(paramISearchResultModel, paramISearchResultView);
         return;
       }
       paramISearchResultModel = new StringBuilder();
       paramISearchResultModel.append("unresolved id type");
-      paramISearchResultModel.append(((IContactSearchModel)localObject).e());
+      paramISearchResultModel.append(((IContactSearchModel)localObject).o());
       QLog.e("MostUsedResultPresenter", 2, paramISearchResultModel.toString());
       return;
     }
     if ((paramISearchResultModel instanceof GroupBaseNetSearchModelItem))
     {
       localObject = (GroupBaseNetSearchModelItem)paramISearchResultModel;
-      if (MostUseConstants.a(((GroupBaseNetSearchModelItem)localObject).e()) == 3)
+      if (MostUseConstants.a(((GroupBaseNetSearchModelItem)localObject).p()) == 3)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter.a(paramISearchResultModel, paramISearchResultView);
+        this.d.a(paramISearchResultModel, paramISearchResultView);
         return;
       }
       paramISearchResultModel = new StringBuilder();
       paramISearchResultModel.append("unresolved id type");
-      paramISearchResultModel.append(((GroupBaseNetSearchModelItem)localObject).e());
+      paramISearchResultModel.append(((GroupBaseNetSearchModelItem)localObject).p());
       QLog.e("MostUsedResultPresenter", 2, paramISearchResultModel.toString());
     }
   }
   
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchPresenterMostUsedResultPresenter$OnActionListener != null)
+    if (this.a != null)
     {
-      if (paramISearchResultView.a() != null) {
-        paramISearchResultView.a().setOnClickListener(new MostUsedResultPresenter.1(this));
+      if (paramISearchResultView.h() != null) {
+        paramISearchResultView.h().setOnClickListener(new MostUsedResultPresenter.1(this));
       }
     }
     else {
@@ -86,7 +86,7 @@ public class MostUsedResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.MostUsedResultPresenter
  * JD-Core Version:    0.7.0.1
  */

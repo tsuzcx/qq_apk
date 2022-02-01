@@ -12,12 +12,12 @@ class SwiftBrowserShareMenuHandler$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ThreadManager.excute(new SwiftBrowserShareMenuHandler.4.1(this), 128, null, false);
-    SwiftBrowserShareMenuHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserShareMenuHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    SwiftBrowserShareMenuHandler.a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.4
  * JD-Core Version:    0.7.0.1
  */

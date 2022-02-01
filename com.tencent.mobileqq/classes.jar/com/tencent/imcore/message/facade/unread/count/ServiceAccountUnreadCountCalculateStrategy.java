@@ -13,9 +13,9 @@ class ServiceAccountUnreadCountCalculateStrategy
 {
   public int a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, StringBuilder paramStringBuilder)
   {
-    if (paramQQAppInterface.getConversationFacade().b(AppConstants.SERVICE_ACCOUNT_FOLDER_UIN, 7230))
+    if (paramQQAppInterface.getConversationFacade().o(AppConstants.SERVICE_ACCOUNT_FOLDER_UIN, 7230))
     {
-      int j = ServiceAccountFolderManager.a().b();
+      int j = ServiceAccountFolderManager.a().h();
       int k = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getNumRedNumByPath("104000.104001", 100);
       int i = j;
       if (k > 0) {
@@ -29,7 +29,7 @@ class ServiceAccountUnreadCountCalculateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.count.ServiceAccountUnreadCountCalculateStrategy
  * JD-Core Version:    0.7.0.1
  */

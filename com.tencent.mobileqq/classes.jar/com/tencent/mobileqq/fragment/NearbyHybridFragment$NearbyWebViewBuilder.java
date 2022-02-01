@@ -12,6 +12,7 @@ import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.newnearby.impl.NearbyReportHelperImpl;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.webview.AbsWebView;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 public final class NearbyHybridFragment$NearbyWebViewBuilder
   extends AbsWebView
 {
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
   boolean c = false;
   public boolean d = false;
@@ -38,23 +39,22 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
   public NearbyHybridFragment$NearbyWebViewBuilder(NearbyHybridFragment paramNearbyHybridFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
     super(paramContext, paramActivity, paramAppInterface);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       if (this.mWebview == null) {
         return;
       }
       long l;
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {
+      if (this.g.a != null) {
         l = System.currentTimeMillis();
       } else {
         l = 0L;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       AuthorizeConfig.a();
       super.buildBaseWebView(this.mInterface);
       onWebViewReady();
@@ -69,11 +69,11 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
       if (QLog.isDevelopLevel()) {
         NearbyUtils.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(getTimeBeforeLoadUrl()) });
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime == 0L))
+      if ((this.g.a != null) && (this.g.a.mInitWebViewTime == 0L))
       {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime = (System.currentTimeMillis() - l);
+        this.g.a.mInitWebViewTime = (System.currentTimeMillis() - l);
         if (QLog.isDevelopLevel()) {
-          NearbyUtils.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitWebViewTime) });
+          NearbyUtils.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.g.a.mInitWebViewTime) });
         }
       }
     }
@@ -91,22 +91,22 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start load url, from attach cost=");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_c_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.g.O);
       localStringBuilder.append(", url=");
       localStringBuilder.append(paramString);
       QLog.w("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_Long = System.currentTimeMillis();
+    this.g.S = System.currentTimeMillis();
     this.mWebview.loadUrl(this.mUrl);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_c_of_type_AndroidViewView.getVisibility() != 0)
+    if (this.g.E.getVisibility() != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.w("nearby.NearbyHybridFragment.webloading", 2, "send MSG_SHOW_LOADING before loadUrl");
       }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
-      paramString.l = false;
-      paramString.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 500L);
+      this.g.l.removeMessages(3);
+      paramString = this.g;
+      paramString.R = false;
+      paramString.l.sendEmptyMessageDelayed(3, 500L);
     }
   }
   
@@ -146,6 +146,10 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
       return;
     }
     this.f = true;
+    QLog.i("NearbyActivity", 1, "Load H5 Success");
+    if ((this.g.ag instanceof NearbyActivity)) {
+      NearbyReportHelperImpl.reportBeginLoadWebview((NearbyActivity)this.g.ag);
+    }
     if (QLog.isColorLevel())
     {
       paramWebView = new StringBuilder();
@@ -153,23 +157,23 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
       paramWebView.append(paramString);
       QLog.w("nearby.NearbyHybridFragment.webloading", 2, paramWebView.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    if (this.g.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.g.aj.c(true);
+      this.g.aj.a();
     }
     this.d = true;
-    paramWebView = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_c_of_type_AndroidViewView;
-    if (!NearbyHybridFragment.k)
+    paramWebView = this.g.E;
+    if (!NearbyHybridFragment.M)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.postDelayed(NearbyHybridFragment.jdField_a_of_type_JavaLangRunnable, 500L);
+      this.g.l.postDelayed(NearbyHybridFragment.N, 500L);
       return;
     }
     if (QLog.isColorLevel())
     {
       paramWebView = new StringBuilder();
       paramWebView.append("already called pre load now plugin!, isCalledNowPreLoad=");
-      paramWebView.append(NearbyHybridFragment.k);
+      paramWebView.append(NearbyHybridFragment.M);
       QLog.w("AbsWebView", 2, paramWebView.toString());
     }
   }
@@ -188,10 +192,10 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
       QLog.w("nearby.NearbyHybridFragment.webloading", 2, paramWebView.toString());
     }
     this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    if (this.g.aj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.g.aj.c(true);
+      this.g.aj.a();
     }
     this.d = false;
   }
@@ -209,14 +213,14 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
       paramWebView.append(paramString2);
       QLog.w("nearby.NearbyHybridFragment.webloading", 2, paramWebView.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d.setVisibility(0);
+    if (this.g.F != null) {
+      this.g.F.setVisibility(0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.g.E != null) {
+      this.g.E.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    if (this.g.H != null) {
+      this.g.H.setVisibility(8);
     }
   }
   
@@ -235,7 +239,7 @@ public final class NearbyHybridFragment$NearbyWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.NearbyWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

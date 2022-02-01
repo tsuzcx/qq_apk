@@ -32,7 +32,7 @@ public class AVGameShareJoinRoomAction
       ((StringBuilder)localObject).append(" shareUin: ");
       ((StringBuilder)localObject).append(paramLong2);
       QLog.d("AVGameShareJoinRoomAction", 1, ((StringBuilder)localObject).toString());
-      localObject = AVGameShareUtil.a().a(this.jdField_a_of_type_AndroidContentContext);
+      localObject = AVGameShareUtil.a().a(this.b);
       if (localObject == null)
       {
         QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: intent is null");
@@ -43,24 +43,24 @@ public class AVGameShareJoinRoomAction
         ((Intent)localObject).putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_join_room");
         ((Intent)localObject).putExtra("thridparty_av_game_share_uin", paramLong2);
         ((Intent)localObject).putExtra("thridparty_av_game_room_id", paramLong1);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        this.b.startActivity((Intent)localObject);
       }
       else
       {
         ((Intent)localObject).putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
         ((Intent)localObject).putExtra("avgame_create_game_type_key", Integer.valueOf(String.valueOf(1)));
         ((Intent)localObject).putExtra("avgame_from_type_key", 4);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        this.b.startActivity((Intent)localObject);
       }
     }
     else
     {
       QLog.e("AVGameShareJoinRoomAction", 1, "doAction fail");
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))
+    if ((this.b instanceof JumpActivity))
     {
-      ((JumpActivity)this.jdField_a_of_type_AndroidContentContext).finish();
-      ((JumpActivity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      ((JumpActivity)this.b).finish();
+      ((JumpActivity)this.b).overridePendingTransition(0, 0);
     }
   }
   
@@ -68,7 +68,7 @@ public class AVGameShareJoinRoomAction
   {
     try
     {
-      if (TextUtils.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("key"))) {
+      if (TextUtils.isEmpty((String)this.f.get("key"))) {
         return c();
       }
       boolean bool = b();
@@ -80,7 +80,7 @@ public class AVGameShareJoinRoomAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("AVGameShareJoinRoomAction", 1, localStringBuilder.toString());
-      b_("AVGameShareJoinRoomAction");
+      h_("AVGameShareJoinRoomAction");
     }
     return true;
   }
@@ -88,24 +88,24 @@ public class AVGameShareJoinRoomAction
   protected boolean b()
   {
     QLog.d("AVGameShareJoinRoomAction", 1, "doAction getRoomInfoAndJoinRoom");
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("key");
+    String str = (String)this.f.get("key");
     if (TextUtils.isEmpty(str))
     {
       QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: key is empty");
       return true;
     }
-    AVGameShareUtil.a().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, str, new AVGameShareJoinRoomAction.1(this));
+    AVGameShareUtil.a().a(this.a, str, new AVGameShareJoinRoomAction.1(this));
     return false;
   }
   
   protected boolean c()
   {
     QLog.d("AVGameShareJoinRoomAction", 1, "doAction directJoinRoom");
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("room");
+    String str1 = (String)this.f.get("uin");
+    String str2 = (String)this.f.get("room");
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
     {
-      IAvGameManager localIAvGameManager = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+      IAvGameManager localIAvGameManager = (IAvGameManager)this.a.getRuntimeService(IAvGameManager.class, "");
       if (localIAvGameManager != null) {
         ThreadManager.getUIHandler().post(new AVGameShareJoinRoomAction.2(this, localIAvGameManager, str2, str1));
       }
@@ -117,7 +117,7 @@ public class AVGameShareJoinRoomAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameShareJoinRoomAction
  * JD-Core Version:    0.7.0.1
  */

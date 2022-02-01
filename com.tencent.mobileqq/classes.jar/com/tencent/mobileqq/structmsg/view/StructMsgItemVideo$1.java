@@ -30,12 +30,12 @@ class StructMsgItemVideo$1
     }
     else if (!NetworkUtil.isNetworkAvailable(localContext))
     {
-      QQToast.a(localContext, 2131692183, 0).a();
+      QQToast.makeText(localContext, 2131889169, 0).show();
     }
     else
     {
       Resources localResources = localContext.getResources();
-      DialogUtil.a(localContext, 232, "", HardCodeUtil.a(2131714390), localResources.getString(2131690728), localResources.getString(2131694583), new StructMsgItemVideo.1.1(this, localContext, paramView), new StructMsgItemVideo.1.2(this)).show();
+      DialogUtil.a(localContext, 232, "", HardCodeUtil.a(2131911902), localResources.getString(2131887648), localResources.getString(2131892267), new StructMsgItemVideo.1.1(this, localContext, paramView), new StructMsgItemVideo.1.2(this)).show();
     }
     ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -43,7 +43,7 @@ class StructMsgItemVideo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.1
  * JD-Core Version:    0.7.0.1
  */

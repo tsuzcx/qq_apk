@@ -15,34 +15,34 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemDa
 public class WSVerticalItemTagController
   extends AbsWsUIGroup<WSVerticalItemData>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalVideoHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
+  private TextView g;
+  private stSimpleMetaFeed h;
+  private WSVerticalVideoHolder i;
   
   public WSVerticalItemTagController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder = paramWSVerticalVideoHolder;
+    this.i = paramWSVerticalVideoHolder;
   }
   
   private boolean a(stVideoTag paramstVideoTag)
   {
-    WSVerticalVideoHolder localWSVerticalVideoHolder = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
+    WSVerticalVideoHolder localWSVerticalVideoHolder = this.i;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localWSVerticalVideoHolder != null)
     {
-      if (localWSVerticalVideoHolder.a == null) {
+      if (localWSVerticalVideoHolder.d == null) {
         return false;
       }
       bool1 = bool2;
       if (paramstVideoTag.tagId == 6)
       {
         bool1 = bool2;
-        if (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a.a(), "recommend_tab"))
+        if (TextUtils.equals(this.i.d.k(), "recommend_tab"))
         {
           bool1 = bool2;
-          if (a() == 0) {
+          if (h() == 0) {
             bool1 = true;
           }
         }
@@ -53,20 +53,15 @@ public class WSVerticalItemTagController
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
+    if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.b() instanceof stSimpleMetaFeed))) {
+      this.h = localWSVerticalItemData.b();
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560045;
   }
   
   protected void b()
   {
-    Object localObject1 = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    Object localObject1 = this.h;
     if (localObject1 != null)
     {
       stVideoTag localstVideoTag = ((stSimpleMetaFeed)localObject1).videoTag;
@@ -101,29 +96,34 @@ public class WSVerticalItemTagController
           localObject2 = "#80000000";
         }
         localGradientDrawable.setColor(Color.parseColor((String)localObject2));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(localstVideoTag.text);
-        Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+        this.g.setText(localstVideoTag.text);
+        Object localObject2 = this.g;
         if (!WeishiUIUtil.a((String)localObject1)) {
           localObject1 = "#FFFFFF";
         }
         ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject1));
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(localGradientDrawable);
+        this.g.setBackgroundDrawable(localGradientDrawable);
         return;
       }
     }
     a(8);
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380474));
+    return 2131626089;
+  }
+  
+  protected void j()
+  {
+    this.g = ((TextView)c(2131449427));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTagController
  * JD-Core Version:    0.7.0.1
  */

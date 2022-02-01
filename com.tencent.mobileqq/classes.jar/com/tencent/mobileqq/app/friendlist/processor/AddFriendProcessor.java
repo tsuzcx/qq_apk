@@ -55,7 +55,7 @@ public class AddFriendProcessor
     }
     try
     {
-      ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a().a(str1);
+      ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).z().a(str1);
       return;
     }
     catch (Throwable paramAddFriendResp)
@@ -66,7 +66,7 @@ public class AddFriendProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.AddFriendProcessor
  * JD-Core Version:    0.7.0.1
  */

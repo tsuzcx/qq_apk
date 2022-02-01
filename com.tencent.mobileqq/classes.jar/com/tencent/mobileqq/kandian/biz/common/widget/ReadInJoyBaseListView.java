@@ -30,23 +30,23 @@ public abstract class ReadInJoyBaseListView
   extends XListView
   implements AbsListView.OnScrollListener
 {
-  protected int a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected ProgressBar a;
-  protected RelativeLayout a;
   protected TextView a;
-  ReadInJoyBaseListView.MultiScrollListener jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$MultiScrollListener = new ReadInJoyBaseListView.MultiScrollListener();
-  private ReadInJoyBaseListView.OnDrawCompleteListener jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$OnDrawCompleteListener;
-  protected ReadInJoyBaseListView.RefreshCallback a;
-  private ReadInJoyBaseListView.ScrollEventCallback jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$ScrollEventCallback = null;
-  private ArrayList<ListView.OnScrollChangeListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected boolean a;
-  protected int b;
-  public boolean b;
-  public int c;
-  protected boolean c;
+  protected ProgressBar b;
+  protected RelativeLayout c;
   protected int d;
-  private boolean d;
+  protected int e = 0;
+  public int f = 0;
+  protected ReadInJoyBaseListView.RefreshCallback g;
+  protected boolean h = false;
+  protected int i;
+  public boolean j;
+  ReadInJoyBaseListView.MultiScrollListener k = new ReadInJoyBaseListView.MultiScrollListener();
+  protected boolean l = false;
+  private boolean m;
+  private ReadInJoyBaseListView.OnDrawCompleteListener n;
+  private ReadInJoyBaseListView.ScrollEventCallback o = null;
+  private ArrayList<ListView.OnScrollChangeListener> p = new ArrayList();
+  private View q;
   
   public ReadInJoyBaseListView(Context paramContext)
   {
@@ -56,24 +56,41 @@ public abstract class ReadInJoyBaseListView
   public ReadInJoyBaseListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
     a(paramContext, paramAttributeSet);
   }
   
   public ReadInJoyBaseListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
     a(paramContext, paramAttributeSet);
   }
   
-  private boolean a()
+  private void b(int paramInt)
+  {
+    RelativeLayout localRelativeLayout = this.c;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setPadding(localRelativeLayout.getPaddingLeft(), 0, this.c.getPaddingRight(), paramInt);
+    }
+  }
+  
+  private void c()
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
+    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, RIJStringUtils.a(62.0F, getResources())));
+    TextView localTextView = new TextView(getContext());
+    localTextView.setText(2131915401);
+    localTextView.setTextColor(-4473925);
+    localTextView.setTextSize(14.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(14);
+    localLayoutParams.addRule(15);
+    localLayoutParams.setMargins(0, 12, 0, 12);
+    localTextView.setLayoutParams(localLayoutParams);
+    localRelativeLayout.addView(localTextView);
+    this.q = localRelativeLayout;
+  }
+  
+  private boolean d()
   {
     ListAdapter localListAdapter = getAdapter();
     boolean bool = false;
@@ -89,69 +106,44 @@ public abstract class ReadInJoyBaseListView
     return bool;
   }
   
-  private void b(int paramInt)
-  {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    if (localRelativeLayout != null) {
-      localRelativeLayout.setPadding(localRelativeLayout.getPaddingLeft(), 0, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), paramInt);
-    }
-  }
-  
-  private void c()
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, RIJStringUtils.a(62.0F, getResources())));
-    TextView localTextView = new TextView(getContext());
-    localTextView.setText(2131717927);
-    localTextView.setTextColor(-4473925);
-    localTextView.setTextSize(14.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(14);
-    localLayoutParams.addRule(15);
-    localLayoutParams.setMargins(0, 12, 0, 12);
-    localTextView.setLayoutParams(localLayoutParams);
-    localRelativeLayout.addView(localTextView);
-    this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-  }
-  
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560393, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373273));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373274));
-    addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.c = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131626438, this, false));
+    this.b = ((ProgressBar)this.c.findViewById(2131440882));
+    this.a = ((TextView)this.c.findViewById(2131440883));
+    addFooterView(this.c);
   }
   
   protected void a(int paramInt)
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.l) {
       return;
     }
     if (paramInt != 4)
     {
-      if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback != null))
+      if ((d()) && (this.g != null))
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699872);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.c.setVisibility(0);
+        this.a.setText(2131897925);
+        this.b.setVisibility(0);
         b(0);
-        this.jdField_c_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback.b(this, paramInt);
+        this.f = 1;
+        this.g.b(this, paramInt);
       }
     }
     else
     {
-      if (a())
+      if (d())
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699872);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.c.setVisibility(0);
+        this.a.setText(2131897925);
+        this.b.setVisibility(0);
         b(0);
       }
-      ReadInJoyBaseListView.RefreshCallback localRefreshCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback;
+      ReadInJoyBaseListView.RefreshCallback localRefreshCallback = this.g;
       if (localRefreshCallback != null)
       {
-        this.jdField_c_of_type_Int = 1;
+        this.f = 1;
         localRefreshCallback.b(this, paramInt);
       }
     }
@@ -159,22 +151,22 @@ public abstract class ReadInJoyBaseListView
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.bc);
-    this.jdField_d_of_type_Boolean = paramContext.getBoolean(R.styleable.jdField_a_of_type_Int, false);
+    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.bk);
+    this.m = paramContext.getBoolean(R.styleable.bl, false);
     paramContext.recycle();
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.m) {
       a();
     }
-    if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.jdField_d_of_type_Int)) {
+    if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.i)) {
       c();
     }
-    super.setOnScrollListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$MultiScrollListener);
+    super.setOnScrollListener(this.k);
     a(this);
   }
   
   public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$MultiScrollListener;
+    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.k;
     if (localMultiScrollListener != null) {
       localMultiScrollListener.a(paramOnScrollListener);
     }
@@ -182,7 +174,7 @@ public abstract class ReadInJoyBaseListView
   
   public void a(ListView.OnScrollChangeListener paramOnScrollChangeListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramOnScrollChangeListener);
+    this.p.add(paramOnScrollChangeListener);
   }
   
   public void a(boolean paramBoolean)
@@ -194,24 +186,24 @@ public abstract class ReadInJoyBaseListView
       localStringBuilder.append(paramBoolean);
       QLog.d("ReadInJoyBaseListView", 2, localStringBuilder.toString());
     }
-    this.jdField_c_of_type_Int = 0;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    this.f = 0;
+    if (this.c != null)
     {
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699871);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      b(-this.jdField_a_of_type_Int);
+      this.e = 0;
+      this.a.setText(2131897924);
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
+      b(-this.d);
     }
     setFooterView(paramBoolean);
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseListView", 2, new Object[] { "loadingMoreComplete mCurrentStatus = ", Integer.valueOf(this.jdField_c_of_type_Int), ", hasMoreData = ", Boolean.valueOf(paramBoolean) });
+      QLog.d("ReadInJoyBaseListView", 2, new Object[] { "loadingMoreComplete mCurrentStatus = ", Integer.valueOf(this.f), ", hasMoreData = ", Boolean.valueOf(paramBoolean) });
     }
   }
   
   public void b()
   {
-    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$MultiScrollListener;
+    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.k;
     if (localMultiScrollListener != null) {
       localMultiScrollListener.a();
     }
@@ -219,7 +211,7 @@ public abstract class ReadInJoyBaseListView
   
   public void b(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$MultiScrollListener;
+    ReadInJoyBaseListView.MultiScrollListener localMultiScrollListener = this.k;
     if (localMultiScrollListener != null) {
       localMultiScrollListener.b(paramOnScrollListener);
     }
@@ -228,34 +220,39 @@ public abstract class ReadInJoyBaseListView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    paramCanvas = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$OnDrawCompleteListener;
+    paramCanvas = this.n;
     if (paramCanvas != null)
     {
       paramCanvas.a(this);
-      paramCanvas = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$ScrollEventCallback;
+      paramCanvas = this.o;
       if (paramCanvas != null) {
         paramCanvas.a();
       }
     }
   }
   
+  public int getChennelId()
+  {
+    return this.i;
+  }
+  
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.jdField_a_of_type_Int < 0))
+    if ((paramBoolean) && (this.d < 0))
     {
-      RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      RelativeLayout localRelativeLayout = this.c;
       if (localRelativeLayout != null)
       {
-        this.jdField_a_of_type_Int = localRelativeLayout.getHeight();
-        b(-this.jdField_a_of_type_Int);
+        this.d = localRelativeLayout.getHeight();
+        b(-this.d);
       }
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_Int < 0) && (this.jdField_c_of_type_Int != 1) && (paramInt1 >= paramInt3 - paramInt2 * 2) && ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.jdField_d_of_type_Int)) || (!this.jdField_b_of_type_Boolean))) {
+    if ((this.c != null) && (this.e < 0) && (this.f != 1) && (paramInt1 >= paramInt3 - paramInt2) && ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.i)) || (!this.j))) {
       a(2);
     }
   }
@@ -263,7 +260,7 @@ public abstract class ReadInJoyBaseListView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.p.iterator();
     while (localIterator.hasNext()) {
       ((ListView.OnScrollChangeListener)localIterator.next()).onScrollChanged(this.mFirstPosition, getChildCount(), this.mItemCount);
     }
@@ -280,7 +277,7 @@ public abstract class ReadInJoyBaseListView
         bool1 = false;
       }
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.h = bool1;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -293,94 +290,94 @@ public abstract class ReadInJoyBaseListView
   
   public void setChannelId(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void setCurrentStatus(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setFooterView(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
     if (paramBoolean)
     {
-      if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.jdField_d_of_type_Int))
+      if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.i))
       {
-        if (this.jdField_a_of_type_AndroidViewView == null) {
+        if (this.q == null) {
           c();
         }
-        removeFooterView(this.jdField_a_of_type_AndroidViewView);
+        removeFooterView(this.q);
       }
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      if (this.c == null) {
         a();
       }
       if (getFooterViewsCount() <= 0) {
-        addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        addFooterView(this.c);
       }
     }
     else
     {
-      if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.jdField_d_of_type_Int))
+      if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.i))
       {
-        removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        if (this.jdField_a_of_type_AndroidViewView == null) {
+        removeFooterView(this.c);
+        if (this.q == null) {
           c();
         }
         if (getFooterViewsCount() <= 0) {
-          addFooterView(this.jdField_a_of_type_AndroidViewView);
+          addFooterView(this.q);
         }
       }
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      if (this.c == null) {
         a();
       }
       if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowKandianTab())
       {
-        int i = this.jdField_d_of_type_Int;
-        if ((i == 0) || (i == 56))
+        int i1 = this.i;
+        if ((i1 == 0) || (i1 == 56))
         {
           QLog.d("ReadInJoyBaseListView", 1, "independent kd recommend and video channel, keep footer view.");
           return;
         }
       }
       if (getFooterViewsCount() > 0) {
-        removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        removeFooterView(this.c);
       }
     }
   }
   
   public void setNeedShowFootView(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
     a();
   }
   
   public void setNoMoreData(boolean paramBoolean)
   {
-    if (paramBoolean != this.jdField_b_of_type_Boolean)
+    if (paramBoolean != this.j)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.j = paramBoolean;
       Object localObject;
-      if (this.jdField_b_of_type_Boolean)
+      if (this.j)
       {
-        if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.jdField_d_of_type_Int))
+        if (((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.i))
         {
-          if (this.jdField_a_of_type_AndroidViewView == null) {
+          if (this.q == null) {
             c();
           }
-          localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+          localObject = this.c;
           if (localObject != null) {
             removeFooterView((View)localObject);
           }
           if (getFooterViewsCount() <= 0) {
-            addFooterView(this.jdField_a_of_type_AndroidViewView);
+            addFooterView(this.q);
           }
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.q;
         if (localObject != null) {
           removeFooterView((View)localObject);
         }
@@ -390,7 +387,7 @@ public abstract class ReadInJoyBaseListView
   
   public void setOnDrawCompleteListener(ReadInJoyBaseListView.OnDrawCompleteListener paramOnDrawCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$OnDrawCompleteListener = paramOnDrawCompleteListener;
+    this.n = paramOnDrawCompleteListener;
   }
   
   public final void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
@@ -400,17 +397,17 @@ public abstract class ReadInJoyBaseListView
   
   public void setRefreshCallback(ReadInJoyBaseListView.RefreshCallback paramRefreshCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback = paramRefreshCallback;
+    this.g = paramRefreshCallback;
   }
   
   public void setScrollEventCallback(ReadInJoyBaseListView.ScrollEventCallback paramScrollEventCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$ScrollEventCallback = paramScrollEventCallback;
+    this.o = paramScrollEventCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListView
  * JD-Core Version:    0.7.0.1
  */

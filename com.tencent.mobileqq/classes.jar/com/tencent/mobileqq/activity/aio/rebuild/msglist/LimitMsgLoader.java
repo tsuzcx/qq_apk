@@ -12,27 +12,27 @@ import java.util.List;
 public class LimitMsgLoader
   extends BaseMsgLoader
 {
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private Comparator<MessageRecord> jdField_a_of_type_JavaUtilComparator = new LimitMsgLoader.1(this);
-  
-  public MessageRecord a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  }
+  private MessageRecord a;
+  private Comparator<MessageRecord> b = new LimitMsgLoader.1(this);
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext, boolean paramBoolean)
   {
     paramAIOContext = super.a(paramAIOContext, paramBoolean);
-    Collections.sort(paramAIOContext, this.jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(paramAIOContext, this.b);
     if ((paramAIOContext != null) && (paramAIOContext.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)paramAIOContext.get(paramAIOContext.size() - 1));
+      this.a = ((MessageRecord)paramAIOContext.get(paramAIOContext.size() - 1));
     }
     return paramAIOContext;
+  }
+  
+  public MessageRecord b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.LimitMsgLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ class TavClipProxy
       f(paramSendMsgTavEvent, paramTAVClip);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("videoConfiguration");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("videoConfiguration");
     if ((paramSendMsgTavEvent instanceof TAVVideoConfiguration))
     {
       paramTAVClip.setVideoConfiguration((TAVVideoConfiguration)paramSendMsgTavEvent);
@@ -75,7 +75,7 @@ class TavClipProxy
       g(paramSendMsgTavEvent, paramTAVClip);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("audioConfiguration");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("audioConfiguration");
     if ((paramSendMsgTavEvent instanceof TAVAudioConfiguration))
     {
       paramTAVClip.setAudioConfiguration((TAVAudioConfiguration)paramSendMsgTavEvent);
@@ -92,7 +92,7 @@ class TavClipProxy
       h(paramSendMsgTavEvent, paramTAVClip);
       return;
     }
-    paramTAVClip.setStartTime(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("startTime")));
+    paramTAVClip.setStartTime(ObjConvector.b(paramSendMsgTavEvent.c().getJSONObject("startTime")));
     a();
   }
   
@@ -103,14 +103,14 @@ class TavClipProxy
       c();
       return;
     }
-    paramTAVClip.putExtraTrackInfo("layerIndex", Integer.valueOf(paramSendMsgTavEvent.a().getInt("layerIndex")));
+    paramTAVClip.putExtraTrackInfo("layerIndex", Integer.valueOf(paramSendMsgTavEvent.c().getInt("layerIndex")));
     a();
   }
   
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
   {
     super.a(paramObjCreateTavEvent);
-    paramObjCreateTavEvent = paramObjCreateTavEvent.a("resource");
+    paramObjCreateTavEvent = paramObjCreateTavEvent.b("resource");
     if (!(paramObjCreateTavEvent instanceof TAVResource))
     {
       a("error params resource");
@@ -122,7 +122,7 @@ class TavClipProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TAVClip))
     {
       b();
@@ -133,7 +133,7 @@ class TavClipProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavClipProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class AVPreloadSwitch$2
   
   public void run()
   {
-    AVPreloadSwitch.a(this.this$0).post(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, new AVPreloadSwitch.2.1(this));
+    AVPreloadSwitch.c(this.this$0).post(this.a, this.b, new AVPreloadSwitch.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadSwitch.2
  * JD-Core Version:    0.7.0.1
  */

@@ -85,7 +85,7 @@ class HippyQQHttpModule$1
       QLog.e(paramHttpResponse, 1, paramMap.toString());
       paramHttpResponse = new HippyMap();
       GamePubAccountHelper.a(this.val$request.url, System.currentTimeMillis());
-      paramMap = GamePubAccountHelper.a(this.val$request.url);
+      paramMap = GamePubAccountHelper.b(this.val$request.url);
       if (paramMap != null) {
         localJSONObject.put("requestCostTime", paramMap);
       }
@@ -101,7 +101,7 @@ class HippyQQHttpModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQHttpModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class ReadinjoyCommentListBaseAdapter$3
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    ReadinjoyCommentListBaseAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    ReadinjoyCommentListBaseAdapter.a(this.d, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadinjoyCommentListBaseAdapter.3
  * JD-Core Version:    0.7.0.1
  */

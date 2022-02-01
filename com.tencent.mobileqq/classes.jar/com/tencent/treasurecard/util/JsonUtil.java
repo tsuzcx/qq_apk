@@ -11,7 +11,28 @@ import org.json.JSONObject;
 
 public class JsonUtil
 {
-  public static List<Map<String, Object>> a(String paramString)
+  public static Map<String, Object> a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      Iterator localIterator = paramString.keys();
+      HashMap localHashMap = new HashMap();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localHashMap.put(str, paramString.get(str));
+      }
+      return localHashMap;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static List<Map<String, Object>> b(String paramString)
   {
     try
     {
@@ -40,31 +61,10 @@ public class JsonUtil
     String str2 = paramString;
     return str2;
   }
-  
-  public static Map<String, Object> a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      HashMap localHashMap = new HashMap();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, paramString.get(str));
-      }
-      return localHashMap;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.util.JsonUtil
  * JD-Core Version:    0.7.0.1
  */

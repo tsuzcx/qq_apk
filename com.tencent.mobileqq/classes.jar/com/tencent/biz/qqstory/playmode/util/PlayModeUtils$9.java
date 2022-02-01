@@ -16,7 +16,7 @@ final class PlayModeUtils$9
 {
   PlayModeUtils$9(StoryVideoItem paramStoryVideoItem, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0) {
       if (paramInt != 1) {
@@ -34,18 +34,18 @@ final class PlayModeUtils$9
       continue;
       paramView = "2";
     }
-    QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+    QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.a.mOwnerUid);
     if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-      new ReportEvilToXinanHandler().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      new ReportEvilToXinanHandler().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.a.mVid, paramView, this.a.getVideoUrl());
     } else {
       SLog.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.9
  * JD-Core Version:    0.7.0.1
  */

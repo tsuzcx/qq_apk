@@ -13,15 +13,15 @@ class ReadInJoyLegacyUtils$2$1
     if ((localObject instanceof OpenID))
     {
       localObject = (OpenID)localObject;
-      if ((ReadInJoyLegacyUtils.a(this.this$0.jdField_a_of_type_AndroidAppActivity, (OpenID)localObject, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams) ^ true)) {
-        ReadInJoyLegacyUtils.b(this.this$0.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+      if ((ReadInJoyLegacyUtils.a(this.this$0.a, (OpenID)localObject, this.this$0.b, this.this$0.c) ^ true)) {
+        ReadInJoyLegacyUtils.b(this.this$0.a, this.this$0.b, this.this$0.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyLegacyUtils.2.1
  * JD-Core Version:    0.7.0.1
  */

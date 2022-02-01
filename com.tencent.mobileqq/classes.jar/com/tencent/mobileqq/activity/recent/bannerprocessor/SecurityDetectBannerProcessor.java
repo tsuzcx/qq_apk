@@ -12,7 +12,7 @@ import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 public class SecurityDetectBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a = BannerTypeCollections.v;
+  public static final int a = BannerTypeCollections.w;
   
   public SecurityDetectBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -41,7 +41,7 @@ public class SecurityDetectBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SecurityDetectBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

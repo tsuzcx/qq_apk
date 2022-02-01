@@ -34,18 +34,6 @@ public class ForwardQzoneArkMsgOption
     super(paramIntent);
   }
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      }
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -53,27 +41,16 @@ public class ForwardQzoneArkMsgOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))) {
+      if ((localRecentUser != null) && (!Utils.b(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.i))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.q, localRecentUser.uin, localRecentUser.getType())))) {
         localArrayList.add(localRecentUser);
       }
     }
     return localArrayList;
   }
   
-  public boolean a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct"))
-    {
-      d();
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    return true;
-  }
-  
   protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("is_ark_display_share")) {
+    if (!this.t.getBoolean("is_ark_display_share")) {
       super.a(paramQQCustomDialog);
     }
     return true;
@@ -82,16 +59,16 @@ public class ForwardQzoneArkMsgOption
   protected boolean a(String paramString1, int paramInt, String paramString2)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    if ((localSessionInfo.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
+    localSessionInfo.a = paramInt;
+    localSessionInfo.b = paramString1;
+    localSessionInfo.c = paramString2;
+    if ((localSessionInfo.a >= 0) && (!TextUtils.isEmpty(localSessionInfo.b)))
     {
-      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_name");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
-      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_meta");
-      String str4 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_config");
-      String str5 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
+      Object localObject2 = this.t.getString("forward_ark_app_name");
+      String str2 = this.t.getString("forward_ark_app_view");
+      String str3 = this.t.getString("forward_ark_app_meta");
+      String str4 = this.t.getString("forward_ark_app_config");
+      String str5 = this.t.getString("forward_ark_app_prompt");
       String str1 = "0.0.0.1";
       Map localMap = ArkAppCacheMgr.getApplicationFromManifest((String)localObject2, "0.0.0.1");
       paramString2 = null;
@@ -118,21 +95,21 @@ public class ForwardQzoneArkMsgOption
       }
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2)))
       {
-        if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-          ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
+        if (this.t.getBoolean("forward_ark_app_direct")) {
+          ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
         }
         paramString2 = new ArkAppMessage(str5, (String)localObject2, paramString1, str2, (String)localObject1, str3, str4, "");
-        localObject1 = (ArkAppMessage)ArkAppCenterCheckEvent.a(2, (String)localObject2, this.jdField_a_of_type_AndroidOsBundle, paramString2);
+        localObject1 = (ArkAppMessage)ArkAppCenterCheckEvent.a(2, (String)localObject2, this.t, paramString2);
         paramString1 = (String)localObject1;
         if (localObject1 == null) {
           paramString1 = paramString2;
         }
-        localObject1 = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle);
-        paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_appId_ark_from_sdk");
-        localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
-        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_action_data");
-        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_a_action_data_from_h5");
-        str3 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_url");
+        localObject1 = StructMsgFactory.a(this.t);
+        paramString2 = this.t.getString("forward_appId_ark_from_sdk");
+        localObject2 = this.t.getString("struct_share_key_source_name");
+        str1 = this.t.getString("struct_share_key_source_action_data");
+        str2 = this.t.getString("struct_share_key_source_a_action_data_from_h5");
+        str3 = this.t.getString("struct_share_key_source_url");
         if (!TextUtils.isEmpty(paramString2))
         {
           paramString1.appId = paramString2;
@@ -143,72 +120,95 @@ public class ForwardQzoneArkMsgOption
         }
         if (localObject1 != null)
         {
-          paramInt = localSessionInfo.jdField_a_of_type_Int;
+          paramInt = localSessionInfo.a;
           if ((paramInt != 1000) && (paramInt != 1004) && (paramInt != 1020)) {}
-          for (paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; paramString2 = localSessionInfo.b) {
+          for (paramString2 = this.q.getCurrentAccountUin();; paramString2 = localSessionInfo.c) {
             break;
           }
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          str2 = localSessionInfo.jdField_a_of_type_JavaLangString;
-          paramInt = localSessionInfo.jdField_a_of_type_Int;
+          localObject2 = this.q;
+          str1 = this.q.getCurrentAccountUin();
+          str2 = localSessionInfo.b;
+          paramInt = localSessionInfo.a;
           int i = MobileQQService.seq;
           MobileQQService.seq = i + 1;
-          paramString1.containStructMsg = MessageRecordFactory.a((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
+          paramString1.containStructMsg = MessageRecordFactory.c((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
         }
-        paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1, paramInt);
+        paramInt = this.t.getInt("KEY_MSG_FORWARD_ID");
+        ChatActivityFacade.a(this.q, localSessionInfo, paramString1, paramInt);
         return true;
       }
-      if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+      if (this.t.getBoolean("forward_ark_app_direct")) {
+        ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
       }
       return false;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+    if (this.t.getBoolean("forward_ark_app_direct")) {
+      ReportCenter.a().a(this.q.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
     }
     return false;
   }
   
-  protected void b()
+  protected void c()
   {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    if (ag()) {
+      this.C.add(e);
     }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
+    if (ah()) {
+      this.C.add(d);
     }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
+    if (ai()) {
+      this.C.add(c);
     }
   }
   
-  protected boolean c()
+  public boolean e()
   {
-    if (j())
+    super.e();
+    if (this.t.getBoolean("forward_ark_app_direct"))
     {
-      Iterator localIterator = b().iterator();
+      o();
+      this.s.finish();
+    }
+    return true;
+  }
+  
+  protected boolean f()
+  {
+    if (K())
+    {
+      Iterator localIterator = M().iterator();
       while (localIterator.hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
         a(localResultRecord.uin, localResultRecord.getUinType(), localResultRecord.groupUin);
       }
-      return super.c();
+      return super.f();
     }
-    d();
-    return super.c();
+    o();
+    return super.f();
   }
   
-  protected boolean d()
+  public String n()
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"));
+    if (TextUtils.isEmpty(this.u))
+    {
+      this.u = this.t.getString("forward_ark_app_prompt");
+      if (TextUtils.isEmpty(this.u)) {
+        this.u = this.t.getString("forward_ark_app_desc");
+      }
+    }
+    return this.u;
+  }
+  
+  protected boolean o()
+  {
+    int i = this.t.getInt("uintype");
+    return a(this.t.getString("uin"), i, this.t.getString("troop_uin"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQzoneArkMsgOption
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.aelight.camera.ae.biz.circle.adapter;
 
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.qcircle.api.IQCircleRFWApi;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -12,37 +12,37 @@ import com.tencent.mobileqq.widget.NumberCheckBox;
 public class PhotoGridAdapter$PhotoVH
   extends RecyclerView.ViewHolder
 {
-  public View a;
   public ImageView a;
-  public TextView a;
-  public PhotoGridAdapter.PhotoItemClickListener a;
-  public URLDrawable a;
-  public NumberCheckBox a;
   public ImageView b;
-  public TextView b;
   public ImageView c;
+  public NumberCheckBox d;
+  public URLDrawable e;
+  public TextView f;
+  public View g;
+  public TextView h;
+  public PhotoGridAdapter.PhotoItemClickListener i;
   
   public PhotoGridAdapter$PhotoVH(PhotoGridAdapter paramPhotoGridAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122494));
-    this.b = ((ImageView)paramView.findViewById(2064122272));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122495);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2064122496));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122498));
-    this.c = ((ImageView)paramView.findViewById(2064122482));
+    this.a = ((ImageView)paramView.findViewById(2063991308));
+    this.b = ((ImageView)paramView.findViewById(2063991146));
+    this.g = paramView.findViewById(2063991309);
+    this.d = ((NumberCheckBox)paramView.findViewById(2063991310));
+    this.f = ((TextView)paramView.findViewById(2063991312));
+    this.c = ((ImageView)paramView.findViewById(2063991296));
     paramPhotoGridAdapter = this.c;
     if (paramPhotoGridAdapter != null) {
       paramPhotoGridAdapter.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null) {
-      ((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).setNumberTypeface(this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, false);
+    if (this.d != null) {
+      ((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).setNumberTypeface(this.d, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PhotoGridAdapter.PhotoVH
  * JD-Core Version:    0.7.0.1
  */

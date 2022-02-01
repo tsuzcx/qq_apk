@@ -33,49 +33,49 @@ class ChatActivityFacade$17$1
 {
   ChatActivityFacade$17$1(ChatActivityFacade.17 param17) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      ChatActivityFacade.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      if ((((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))) && (((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() != null) && (((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a() != null))
+      ChatActivityFacade.b(this.a.c, this.a.b);
+      if ((((this.a.a instanceof SplashActivity)) || ((this.a.a instanceof ChatActivity))) && (((BaseActivity)this.a.a).getChatFragment() != null) && (((BaseActivity)this.a.a).getChatFragment().k() != null))
       {
-        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-        QQGamePubAIOHelper.a(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a(), null, new ChatMessage[] { this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage });
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForArkApp)) {
-          ArkTipsManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+        ((BaseActivity)this.a.a).getChatFragment().k().a(this.a.b);
+        QQGamePubAIOHelper.a(((BaseActivity)this.a.a).getChatFragment().k(), null, new ChatMessage[] { this.a.b });
+        if ((this.a.b instanceof MessageForArkApp)) {
+          ArkTipsManager.b().a(this.a.b.uniseq);
         }
-        if (((StructLongMessageDownloadProcessor.isPALongMsg(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)))
+        if (((StructLongMessageDownloadProcessor.isPALongMsg(this.a.b)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(this.a.b))) && ((this.a.b instanceof MessageForStructing)))
         {
-          paramView = (MessageForStructing)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-          StructLongMessageDownloadProcessor.deleteTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.uniseq);
+          paramView = (MessageForStructing)this.a.b;
+          StructLongMessageDownloadProcessor.deleteTask(this.a.c, paramView.uniseq);
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof IMessageForApollo)) {
-          ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).delMsg(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        if ((this.a.b instanceof IMessageForApollo)) {
+          ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).delMsg(this.a.a, this.a.c, this.a.b);
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForFile))
+        if ((this.a.b instanceof MessageForFile))
         {
-          paramView = FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(paramView.nSessionId);
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "6", "", "", "");
+          paramView = FileManagerUtil.a(this.a.c, (MessageForFile)this.a.b);
+          this.a.c.getFileManagerEngine().c(paramView.nSessionId);
+          ReportController.b(this.a.c, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "6", "", "", "");
         }
-        paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("tim_aio_gary_uniseq");
+        paramView = this.a.b.getExtInfoFromExtStr("tim_aio_gary_uniseq");
         if (QLog.isDebugVersion())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("del garyTips id[");
           localStringBuilder.append(paramView);
           localStringBuilder.append("],targetId[");
-          localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msgUid);
+          localStringBuilder.append(this.a.b.msgUid);
           localStringBuilder.append("], hashCode:");
-          localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.hashCode());
+          localStringBuilder.append(this.a.b.hashCode());
           QLog.i("AIOMessageSpreadManager", 1, localStringBuilder.toString());
         }
         if (!TextUtils.isEmpty(paramView)) {
           try
           {
             long l = Long.parseLong(paramView);
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, l, true);
+            this.a.c.getMessageFacade().b(this.a.b.frienduin, this.a.b.istroop, l, true);
           }
           catch (Exception paramView)
           {
@@ -83,21 +83,21 @@ class ChatActivityFacade$17$1
             QLog.e("ChatActivityFacade", 1, paramView.toString());
           }
         }
-        ((VasExtensionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        ((VasExtensionManager)this.a.c.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d.b(this.a.b);
       }
       else
       {
         ThreadManager.post(new ChatActivityFacade.17.1.1(this), 8, null, true);
       }
     }
-    if (ChatActivityFacade.a != null) {
-      ChatActivityFacade.a.dismiss();
+    if (ChatActivityFacade.c != null) {
+      ChatActivityFacade.c.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.17.1
  * JD-Core Version:    0.7.0.1
  */

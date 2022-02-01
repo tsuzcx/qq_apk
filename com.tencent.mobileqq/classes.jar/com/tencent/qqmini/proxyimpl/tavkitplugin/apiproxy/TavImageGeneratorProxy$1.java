@@ -13,12 +13,12 @@ class TavImageGeneratorProxy$1
   
   public void a(@NonNull CMTime paramCMTime, @Nullable Bitmap paramBitmap)
   {
-    TavImageGeneratorProxy.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavImageGeneratorProxy, paramBitmap, this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginSendMsgTavEvent);
+    TavImageGeneratorProxy.a(this.b, paramBitmap, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavImageGeneratorProxy.1
  * JD-Core Version:    0.7.0.1
  */

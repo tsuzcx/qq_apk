@@ -15,7 +15,7 @@ class MsgBackupDateFragment$2
   {
     if (MsgBackupDateFragment.a(this.a) == 0) {
       MsgBackupReporter.a("0X800A236");
-    } else if (MsgBackupManager.c) {
+    } else if (MsgBackupManager.s) {
       MsgBackupReporter.a("0X800A25B");
     }
     this.a.onBackEvent();
@@ -24,7 +24,7 @@ class MsgBackupDateFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,32 +5,32 @@ import android.view.View;
 public class GdtMvAniData185V
   extends GdtMvAniDataAbs
 {
-  public int a;
   public View a;
+  public int b;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" \nlpcYby ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" videoViewScaleXby ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(" videoViewScaleYby ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(" videoViewScaleXby ");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(" videoViewScaleYby ");
+    localStringBuilder.append(this.t);
     localStringBuilder.append(" videoViewXBy ");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(" videoViewYBy ");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(" btnTopMarginOffset ");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(" btnLeftMarginOffset ");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.q);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.elements.GdtMvAniData185V
  * JD-Core Version:    0.7.0.1
  */

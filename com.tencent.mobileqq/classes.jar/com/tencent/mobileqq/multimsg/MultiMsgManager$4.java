@@ -35,10 +35,10 @@ class MultiMsgManager$4
       for (;;)
       {
         i = paramInt;
-        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (j >= this.a.size()) {
           break;
         }
-        localObject = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localObject = (MessageRecord)this.a.get(j);
         int m = k;
         i = paramInt;
         if ((localObject instanceof MessageForShortVideo)) {
@@ -53,21 +53,21 @@ class MultiMsgManager$4
             ShortVideoResult localShortVideoResult = (ShortVideoResult)paramArrayList.get(k);
             i = paramInt;
             if (localShortVideoResult != null) {
-              if ((localShortVideoResult.jdField_a_of_type_Int == 0) && (localShortVideoResult.jdField_a_of_type_JavaLangObject != null) && ((localShortVideoResult.jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText)))
+              if ((localShortVideoResult.a == 0) && (localShortVideoResult.d != null) && ((localShortVideoResult.d instanceof im_msg_body.RichText)))
               {
-                ((MessageForShortVideo)localObject).richText = ((im_msg_body.RichText)localShortVideoResult.jdField_a_of_type_JavaLangObject);
+                ((MessageForShortVideo)localObject).richText = ((im_msg_body.RichText)localShortVideoResult.d);
                 i = paramInt;
               }
               else
               {
                 i = paramInt;
-                if (localShortVideoResult.jdField_a_of_type_Int == -1)
+                if (localShortVideoResult.a == -1)
                 {
                   i = paramInt;
-                  if (localShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null)
+                  if (localShortVideoResult.b != null)
                   {
                     i = paramInt;
-                    if ("cancel".equals(localShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b)) {
+                    if ("cancel".equals(localShortVideoResult.b.b)) {
                       i = 1;
                     }
                   }
@@ -88,18 +88,18 @@ class MultiMsgManager$4
     int i = 0;
     if (i != 0)
     {
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      MultiMsgManager.a(this.h, this.b, this.c, this.d, this.e);
       return;
     }
-    MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, 2);
-    if (MultiMsgManager.c(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager) == 0) {
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, false, this.b);
+    MultiMsgManager.b(this.h, 2);
+    if (MultiMsgManager.d(this.h) == 0) {
+      MultiMsgManager.a(this.h, this.c, this.d, this.e, this.f, this.b, null, this.a, false, this.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.4
  * JD-Core Version:    0.7.0.1
  */

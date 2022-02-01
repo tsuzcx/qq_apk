@@ -14,14 +14,14 @@ class ProteusSupportUtil$2$1
   {
     try
     {
-      ProteusListenersUtils.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsUtilProteusSupportUtil$2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+      ProteusListenersUtils.a.a(this.a, this.c.a, this.c.f, this.c.e, this.c.g, this.c.h, this.c.c, this.c.d, this.b, this.c.b);
       return;
     }
     catch (Exception paramViewBase)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("invokeListener error! cmd=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" msg=");
       localStringBuilder.append(paramViewBase);
       QLog.d("ProteusSupportUtil", 1, localStringBuilder.toString());
@@ -30,7 +30,7 @@ class ProteusSupportUtil$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil.2.1
  * JD-Core Version:    0.7.0.1
  */

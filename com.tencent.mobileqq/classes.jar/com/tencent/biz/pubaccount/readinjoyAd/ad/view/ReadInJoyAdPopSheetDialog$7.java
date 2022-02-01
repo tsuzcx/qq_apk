@@ -37,19 +37,19 @@ class ReadInJoyAdPopSheetDialog$7
       localStringBuilder.append("loadForm onPageFinished url:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", costTime:");
-      localStringBuilder.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.b(this.a));
+      localStringBuilder.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.f(this.a));
       QLog.d(paramWebView, 2, localStringBuilder.toString());
       paramWebView = ReadInJoyAdPopSheetDialog.a();
       paramString = new StringBuilder();
       paramString.append("onPageFinished: TOTAL costTime=");
-      paramString.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.c(this.a));
+      paramString.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.g(this.a));
       QLog.d(paramWebView, 2, paramString.toString());
     }
-    if (ReadInJoyAdPopSheetDialog.a(this.a) != null) {
-      ReadInJoyAdPopSheetDialog.a(this.a).a((byte)2);
+    if (ReadInJoyAdPopSheetDialog.h(this.a) != null) {
+      ReadInJoyAdPopSheetDialog.h(this.a).a((byte)2);
     }
-    if (ReadInJoyAdPopSheetDialog.a(this.a) != null) {
-      ReadInJoyAdPopSheetDialog.a(this.a).setVisibility(8);
+    if (ReadInJoyAdPopSheetDialog.i(this.a) != null) {
+      ReadInJoyAdPopSheetDialog.i(this.a).setVisibility(8);
     }
   }
   
@@ -97,7 +97,7 @@ class ReadInJoyAdPopSheetDialog$7
     {
       paramString = Uri.parse(paramString);
       localObject = paramString.getScheme();
-      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      if (AuthorizeConfig.a().d(paramWebView.getUrl(), (String)localObject).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", paramString);
         paramWebView.addFlags(268435456);
@@ -118,7 +118,7 @@ class ReadInJoyAdPopSheetDialog$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.7
  * JD-Core Version:    0.7.0.1
  */

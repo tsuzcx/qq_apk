@@ -14,15 +14,15 @@ import android.widget.RelativeLayout;
 public class CoverRoundCornerRelativeLayout
   extends RelativeLayout
 {
-  protected int a;
-  protected Paint a;
-  protected Path a;
-  protected boolean a;
-  protected float[] a;
-  protected int b;
-  protected Path b;
-  protected int c;
-  protected int d;
+  protected boolean a = false;
+  protected float[] b = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  protected int c = 0;
+  protected int d = 0;
+  protected int e;
+  protected int f;
+  protected Path g;
+  protected Path h;
+  protected Paint i = new Paint();
   
   public CoverRoundCornerRelativeLayout(Context paramContext)
   {
@@ -37,13 +37,8 @@ public class CoverRoundCornerRelativeLayout
   public CoverRoundCornerRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.i.setAntiAlias(true);
+    this.i.setStyle(Paint.Style.FILL);
     if (Build.VERSION.SDK_INT < 18) {
       setLayerType(1, null);
     }
@@ -51,39 +46,39 @@ public class CoverRoundCornerRelativeLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (this.jdField_b_of_type_AndroidGraphicsPath == null) || (this.c != getMeasuredWidth()) || (this.d != getMeasuredHeight()))
+    if ((this.g == null) || (this.h == null) || (this.e != getMeasuredWidth()) || (this.f != getMeasuredHeight()))
     {
-      this.c = getMeasuredWidth();
-      this.d = getMeasuredHeight();
-      this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), this.c - getPaddingRight(), this.d - getPaddingBottom());
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
-      this.jdField_b_of_type_AndroidGraphicsPath.addRect(new RectF(0.0F, 0.0F, this.c, this.d), Path.Direction.CCW);
-      this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+      this.e = getMeasuredWidth();
+      this.f = getMeasuredHeight();
+      this.h = new Path();
+      this.g = new Path();
+      RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), this.e - getPaddingRight(), this.f - getPaddingBottom());
+      this.g.addRoundRect(localRectF, this.b, Path.Direction.CW);
+      this.h.addRect(new RectF(0.0F, 0.0F, this.e, this.f), Path.Direction.CCW);
+      this.h.addRoundRect(localRectF, this.b, Path.Direction.CW);
     }
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       paramCanvas.save();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.i.setColor(this.d);
+      paramCanvas.drawPath(this.g, this.i);
       paramCanvas.restore();
     }
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.i.setColor(this.c);
+    paramCanvas.drawPath(this.h, this.i);
     paramCanvas.restore();
   }
   
   public void setIsPressed(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void setPressCoverColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void setRadius(int paramInt, float paramFloat)
@@ -93,8 +88,8 @@ public class CoverRoundCornerRelativeLayout
   
   public void setRadius(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
+    this.c = paramInt;
   }
 }
 

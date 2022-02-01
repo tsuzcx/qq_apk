@@ -14,8 +14,8 @@ class BaseMessageSearchDialog$1
   public void run()
   {
     Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen((int[])localObject);
-    int i = LiuHaiUtils.b(this.jdField_a_of_type_AndroidAppActivity);
+    this.a.getLocationOnScreen((int[])localObject);
+    int i = LiuHaiUtils.e(this.b);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -29,15 +29,15 @@ class BaseMessageSearchDialog$1
     }
     if (localObject[1] < i)
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      ((View)localObject).setPadding(((View)localObject).getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+      localObject = this.a;
+      ((View)localObject).setPadding(((View)localObject).getPaddingLeft(), i, this.a.getPaddingRight(), this.a.getPaddingBottom());
     }
-    BaseAIOUtils.a(this.this$0.findViewById(2131366333));
+    BaseAIOUtils.c(this.this$0.findViewById(2131432634));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.1
  * JD-Core Version:    0.7.0.1
  */

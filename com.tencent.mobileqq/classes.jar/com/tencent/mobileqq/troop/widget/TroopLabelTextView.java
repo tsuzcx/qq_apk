@@ -21,34 +21,34 @@ public class TroopLabelTextView
   implements ThemeImageWrapper.DrawInterface
 {
   protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
-  public ThemeImageWrapper a;
-  int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int c;
-  private int d;
+  int b;
+  public ThemeImageWrapper c;
+  private Context d;
+  private int e;
+  private int f;
+  private Bitmap g;
+  private Paint h;
+  private PorterDuffXfermode i;
+  private Bitmap j;
+  private Canvas k;
   
   public TroopLabelTextView(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     setTextColor(paramInt2);
     setMaxLines(1);
     setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, ViewUtils.a(16.0F));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, ViewUtils.dip2px(16.0F));
     localLayoutParams.rightMargin = 4;
-    paramInt2 = ViewUtils.a(4.0F);
-    int i = ViewUtils.a(4.0F);
-    int j = ViewUtils.a(0.0F);
-    int k = ViewUtils.a(0.0F);
+    paramInt2 = ViewUtils.dip2px(4.0F);
+    int m = ViewUtils.dip2px(4.0F);
+    int n = ViewUtils.dip2px(0.0F);
+    int i1 = ViewUtils.dip2px(0.0F);
     setTextSize(1, 10.0F);
     if (paramInt3 == 2)
     {
-      paramInt1 = ViewUtils.a(10.0F);
+      paramInt1 = ViewUtils.dip2px(10.0F);
     }
     else
     {
@@ -56,40 +56,45 @@ public class TroopLabelTextView
       if (paramInt3 == 1)
       {
         setIncludeFontPadding(false);
-        localLayoutParams.height = ViewUtils.a(14.0F);
+        localLayoutParams.height = ViewUtils.dip2px(14.0F);
         paramInt1 = paramInt2;
       }
     }
     setLayoutParams(localLayoutParams);
-    setPadding(paramInt1, j, i, k);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt3;
-    this.jdField_b_of_type_Int = ViewUtils.a(2.0F);
-    this.d = ViewUtils.a(5.0F);
+    setPadding(paramInt1, n, m, i1);
+    this.d = paramContext;
+    this.e = paramInt3;
+    this.b = ViewUtils.dip2px(2.0F);
+    this.f = ViewUtils.dip2px(5.0F);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper = new ThemeImageWrapper();
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setSupportMaskView(true);
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.setMaskShape(ThemeImageWrapper.MODE_OTHER);
+    this.c = new ThemeImageWrapper();
+    this.c.setSupportMaskView(true);
+    this.c.setMaskShape(ThemeImageWrapper.MODE_OTHER);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComTencentWidgetThemeImageWrapper.onDraw(paramCanvas, this);
+    this.c.onDraw(paramCanvas, this);
+  }
+  
+  public float getExtraWidth()
+  {
+    return 12.0F;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    if ((this.c == 2) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((this.e == 2) && (this.g != null))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.h.setXfermode(this.i);
+      this.k.drawColor(this.a);
+      this.k.drawBitmap(this.g, 0.0F, 0.0F, this.h);
+      this.h.setXfermode(null);
+      paramCanvas.drawBitmap(this.j, 0.0F, 0.0F, this.h);
     }
     super.onDraw(paramCanvas);
   }
@@ -98,17 +103,17 @@ public class TroopLabelTextView
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3 + (getPaddingLeft() + getPaddingRight()), paramInt4);
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    paramInt1 = this.c;
+    paramInt1 = this.e;
     if (paramInt1 == 1)
     {
-      localGradientDrawable.setColor(this.jdField_a_of_type_Int);
-      localGradientDrawable.setCornerRadius(this.jdField_b_of_type_Int);
+      localGradientDrawable.setColor(this.a);
+      localGradientDrawable.setCornerRadius(this.b);
       setBackgroundDrawable(localGradientDrawable);
       return;
     }
     if (paramInt1 == 0)
     {
-      localGradientDrawable.setStroke(2, this.jdField_a_of_type_Int);
+      localGradientDrawable.setStroke(2, this.a);
       localGradientDrawable.setCornerRadius(getHeight() / 2);
       setBackgroundDrawable(localGradientDrawable);
     }
@@ -116,7 +121,7 @@ public class TroopLabelTextView
   
   public void setColor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     setTextColor(paramInt2);
   }
   
@@ -124,11 +129,11 @@ public class TroopLabelTextView
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), paramInt);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+      this.g = BitmapFactory.decodeResource(getResources(), paramInt);
+      this.j = Bitmap.createBitmap(this.g.getWidth(), this.g.getHeight(), Bitmap.Config.ARGB_8888);
+      this.k = new Canvas(this.j);
+      this.h = new Paint(1);
+      this.i = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -148,7 +153,7 @@ public class TroopLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelTextView
  * JD-Core Version:    0.7.0.1
  */

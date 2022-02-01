@@ -50,7 +50,7 @@ public abstract class ColorNoteGenerator
     }
     int i;
     if ((paramList.size() == 1) && (paramInt == 1)) {
-      i = UpComingMsgUtil.a((MessageRecord)paramList.get(0));
+      i = UpComingMsgUtil.b((MessageRecord)paramList.get(0));
     } else {
       i = 8;
     }
@@ -59,7 +59,7 @@ public abstract class ColorNoteGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.ColorNoteGenerator
  * JD-Core Version:    0.7.0.1
  */

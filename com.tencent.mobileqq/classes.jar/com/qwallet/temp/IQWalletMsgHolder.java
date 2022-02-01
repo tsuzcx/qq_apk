@@ -9,19 +9,7 @@ import com.tencent.mobileqq.widget.AnimationView;
 
 public abstract interface IQWalletMsgHolder
 {
-  public abstract long a();
-  
-  public abstract ImageView a();
-  
-  public abstract LinearLayout a();
-  
-  public abstract RelativeLayout a();
-  
-  public abstract TextView a();
-  
   public abstract MessageForQQWalletMsg a();
-  
-  public abstract AnimationView a();
   
   public abstract void a(long paramLong);
   
@@ -37,17 +25,11 @@ public abstract interface IQWalletMsgHolder
   
   public abstract RelativeLayout b();
   
-  public abstract TextView b();
-  
-  public abstract AnimationView b();
-  
   public abstract void b(RelativeLayout paramRelativeLayout);
   
   public abstract void b(TextView paramTextView);
   
   public abstract void b(AnimationView paramAnimationView);
-  
-  public abstract RelativeLayout c();
   
   public abstract TextView c();
   
@@ -59,9 +41,27 @@ public abstract interface IQWalletMsgHolder
   
   public abstract void d(RelativeLayout paramRelativeLayout);
   
+  public abstract RelativeLayout e();
+  
   public abstract void e(RelativeLayout paramRelativeLayout);
   
+  public abstract LinearLayout f();
+  
   public abstract void f(RelativeLayout paramRelativeLayout);
+  
+  public abstract TextView g();
+  
+  public abstract TextView h();
+  
+  public abstract ImageView i();
+  
+  public abstract RelativeLayout j();
+  
+  public abstract AnimationView k();
+  
+  public abstract AnimationView l();
+  
+  public abstract long m();
 }
 
 

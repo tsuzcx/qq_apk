@@ -8,19 +8,19 @@ import java.io.InputStream;
 class Luban$Builder$3
   extends InputStreamAdapter
 {
-  public String a()
-  {
-    return this.jdField_a_of_type_AndroidNetUri.getPath();
-  }
-  
   public InputStream b()
   {
-    return Luban.Builder.a(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressLuban$Builder).getContentResolver().openInputStream(this.jdField_a_of_type_AndroidNetUri);
+    return Luban.Builder.g(this.b).getContentResolver().openInputStream(this.a);
+  }
+  
+  public String e()
+  {
+    return this.a.getPath();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.Luban.Builder.3
  * JD-Core Version:    0.7.0.1
  */

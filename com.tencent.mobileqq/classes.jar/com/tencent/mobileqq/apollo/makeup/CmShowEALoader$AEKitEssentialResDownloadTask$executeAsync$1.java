@@ -17,25 +17,25 @@ final class CmShowEALoader$AEKitEssentialResDownloadTask$executeAsync$1
   {
     if (paramBoolean)
     {
-      CmShowEALoader.AEKitEssentialResDownloadTask localAEKitEssentialResDownloadTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitEssentialResDownloadTask;
+      CmShowEALoader.AEKitEssentialResDownloadTask localAEKitEssentialResDownloadTask = this.a;
       paramHashMap = paramHashMap.get("video_3DFaceFila_kapu_placeholder");
       if (paramHashMap != null)
       {
         localAEKitEssentialResDownloadTask.a((String)paramHashMap);
-        this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitEssentialResDownloadTask.e();
-        ApolloQualityReportUtil.a("aekit_init", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "success");
+        this.a.j();
+        ApolloQualityReportUtil.a("aekit_init", String.valueOf(System.currentTimeMillis() - this.b), "success");
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
     }
-    QLog.e(CmShowEALoader.a.a(), 1, "[AEKit]AECMShowQipcModule downloadEssentialResources error");
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$AEKitEssentialResDownloadTask.a(-5033, "");
-    ApolloQualityReportUtil.a("aekit_essential_res", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "download fail");
+    QLog.e(CmShowEALoader.f.a(), 1, "[AEKit]AECMShowQipcModule downloadEssentialResources error");
+    this.a.a(-5033, "");
+    ApolloQualityReportUtil.a("aekit_essential_res", String.valueOf(System.currentTimeMillis() - this.b), "download fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader.AEKitEssentialResDownloadTask.executeAsync.1
  * JD-Core Version:    0.7.0.1
  */

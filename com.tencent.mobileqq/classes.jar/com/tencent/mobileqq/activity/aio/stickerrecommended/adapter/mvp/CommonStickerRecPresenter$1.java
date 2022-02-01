@@ -82,18 +82,18 @@ class CommonStickerRecPresenter$1
     if (StickerRecManagerImpl.isStickerRecFromRemote((IStickerRecEmoticon)paramView))
     {
       paramView = (StickerRecData)paramView;
-      if ((StickerRecManagerImpl.isStickerRecFromRemote(paramView)) && (!CommonStickerRecPresenter.a().contains(paramView.k())))
+      if ((StickerRecManagerImpl.isStickerRecFromRemote(paramView)) && (!CommonStickerRecPresenter.k().contains(paramView.x())))
       {
-        CommonStickerRecPresenter.a().add(paramView.k());
-        paramURLDrawable = paramView.m();
-        CommonStickerRecPresenter.b().add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.k()));
+        CommonStickerRecPresenter.k().add(paramView.x());
+        paramURLDrawable = paramView.B();
+        CommonStickerRecPresenter.l().add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.x()));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.mvp.CommonStickerRecPresenter.1
  * JD-Core Version:    0.7.0.1
  */

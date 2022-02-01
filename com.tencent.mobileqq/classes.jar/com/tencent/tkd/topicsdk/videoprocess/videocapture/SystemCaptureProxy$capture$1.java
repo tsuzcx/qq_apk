@@ -20,7 +20,7 @@ final class SystemCaptureProxy$capture$1
   
   public final void invoke()
   {
-    if (SystemCaptureProxy.a(this.this$0))
+    if (SystemCaptureProxy.b(this.this$0))
     {
       TLog.b("SystemCaptureProxy", "capture return for released.");
       return;
@@ -29,11 +29,11 @@ final class SystemCaptureProxy$capture$1
     ((StringBuilder)localObject).append("capture captureTask: ");
     ((StringBuilder)localObject).append(this.$captureTask);
     ((StringBuilder)localObject).append(" useScaleAPI: ");
-    ((StringBuilder)localObject).append(SystemCaptureProxy.b(this.this$0));
+    ((StringBuilder)localObject).append(SystemCaptureProxy.c(this.this$0));
     TLog.b("SystemCaptureProxy", ((StringBuilder)localObject).toString());
     localObject = (Bitmap)null;
     int i;
-    if (SystemCaptureProxy.c(this.this$0)) {
+    if (SystemCaptureProxy.d(this.this$0)) {
       i = 3;
     } else {
       i = 2;
@@ -43,7 +43,7 @@ final class SystemCaptureProxy$capture$1
       try
       {
         Bitmap localBitmap;
-        if ((SystemCaptureProxy.b(this.this$0)) && (Build.VERSION.SDK_INT >= 27))
+        if ((SystemCaptureProxy.c(this.this$0)) && (Build.VERSION.SDK_INT >= 27))
         {
           localBitmap = SystemCaptureProxy.a(this.this$0, i, this.$captureTask);
           localObject = localBitmap;
@@ -92,7 +92,7 @@ final class SystemCaptureProxy$capture$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SystemCaptureProxy.capture.1
  * JD-Core Version:    0.7.0.1
  */

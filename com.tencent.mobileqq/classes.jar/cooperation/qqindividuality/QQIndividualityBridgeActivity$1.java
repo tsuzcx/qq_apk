@@ -11,7 +11,7 @@ class QQIndividualityBridgeActivity$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a)
+    if (this.a.e)
     {
       this.a.setResult(1001);
       QQIndividualityBridgeActivity.a(this.a);
@@ -20,14 +20,14 @@ class QQIndividualityBridgeActivity$1
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("dialog dismiss: ");
-      paramDialogInterface.append(this.a.a);
+      paramDialogInterface.append(this.a.e);
       QLog.d("QQIndividuality", 2, paramDialogInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBridgeActivity.1
  * JD-Core Version:    0.7.0.1
  */

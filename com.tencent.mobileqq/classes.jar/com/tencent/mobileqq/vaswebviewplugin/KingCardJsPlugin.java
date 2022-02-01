@@ -22,7 +22,7 @@ public class KingCardJsPlugin
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if (TMSManager.a().a(this.mRuntime.a()))
+        if (TMSManager.a().a(this.mRuntime.d()))
         {
           i = 1;
           localJSONObject.put("result", i);
@@ -47,7 +47,7 @@ public class KingCardJsPlugin
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if (TMSManager.a().c())
+        if (TMSManager.a().e())
         {
           i = 1;
           localJSONObject.put("result", i);
@@ -66,7 +66,7 @@ public class KingCardJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.KingCardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

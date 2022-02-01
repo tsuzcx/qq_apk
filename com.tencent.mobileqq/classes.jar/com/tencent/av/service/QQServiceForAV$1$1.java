@@ -9,7 +9,7 @@ class QQServiceForAV$1$1
   
   public void a(QavWrapper paramQavWrapper)
   {
-    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramQavWrapper.a(this.a, this.b);
     paramQavWrapper.a();
   }
 }

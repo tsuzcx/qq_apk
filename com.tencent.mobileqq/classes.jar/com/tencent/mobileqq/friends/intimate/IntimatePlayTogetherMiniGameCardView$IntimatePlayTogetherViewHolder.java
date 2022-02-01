@@ -10,59 +10,59 @@ import com.tencent.widget.ThemeImageView;
 class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherViewHolder
   extends RecyclerView.ViewHolder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  private URLImageView a;
   private TextView b;
   private TextView c;
+  private ThemeImageView d;
+  private TextView e;
+  private Button f;
+  private View g;
   
   IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368931));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368933));
-    this.b = ((TextView)paramView.findViewById(2131368936));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368929));
-    this.c = ((TextView)paramView.findViewById(2131368935));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368934));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368930);
-  }
-  
-  View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  Button a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.a = ((URLImageView)paramView.findViewById(2131435880));
+    this.b = ((TextView)paramView.findViewById(2131435882));
+    this.c = ((TextView)paramView.findViewById(2131435885));
+    this.d = ((ThemeImageView)paramView.findViewById(2131435878));
+    this.e = ((TextView)paramView.findViewById(2131435884));
+    this.f = ((Button)paramView.findViewById(2131435883));
+    this.g = paramView.findViewById(2131435879);
   }
   
   URLImageView a()
   {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  public ThemeImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
+    return this.a;
   }
   
   TextView b()
   {
-    return this.c;
+    return this.b;
+  }
+  
+  public ThemeImageView c()
+  {
+    return this.d;
+  }
+  
+  TextView d()
+  {
+    return this.e;
+  }
+  
+  Button e()
+  {
+    return this.f;
+  }
+  
+  View f()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder
  * JD-Core Version:    0.7.0.1
  */

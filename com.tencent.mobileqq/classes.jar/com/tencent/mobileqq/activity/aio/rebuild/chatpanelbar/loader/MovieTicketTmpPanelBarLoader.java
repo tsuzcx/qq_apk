@@ -20,47 +20,47 @@ public class MovieTicketTmpPanelBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.d);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.e);
+    this.a.add(AIOPanelUtiles.p);
     b();
     d();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.h);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.y);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return paramSessionInfo.a == 10004;
+    this.a.add(AIOPanelUtiles.i);
+    this.a.add(AIOPanelUtiles.z);
   }
   
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.a);
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = this.c.a().i();
+    this.a.add(AIOPanelUtiles.b);
+    paramBaseChatPie = this.a;
     if (bool) {
-      paramSessionInfo = AIOPanelUtiles.p;
+      paramSessionInfo = AIOPanelUtiles.q;
     } else {
-      paramSessionInfo = AIOPanelUtiles.l;
+      paramSessionInfo = AIOPanelUtiles.m;
     }
     paramBaseChatPie.add(paramSessionInfo);
     c();
-    if (HotPicManager.a(paramQQAppInterface).b()) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
+    if (HotPicManager.a(paramQQAppInterface).j()) {
+      this.a.add(AIOPanelUtiles.O);
     }
-    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    paramSessionInfo = this.a;
     if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.i;
+      paramQQAppInterface = AIOPanelUtiles.j;
     } else {
-      paramQQAppInterface = AIOPanelUtiles.e;
+      paramQQAppInterface = AIOPanelUtiles.f;
     }
     paramSessionInfo.add(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.w);
+    this.a.add(AIOPanelUtiles.x);
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return paramSessionInfo.a == 10004;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.MovieTicketTmpPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

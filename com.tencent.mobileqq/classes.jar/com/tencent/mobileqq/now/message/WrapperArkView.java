@@ -12,52 +12,52 @@ import com.tencent.mobileqq.data.MessageForArkApp;
 public class WrapperArkView
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  ChatItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder;
-  MessageForArkApp jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
-  private OnArkViewTouchListener jdField_a_of_type_ComTencentMobileqqNowMessageOnArkViewTouchListener;
+  int a;
+  MessageForArkApp b;
+  ChatItemBuilder c;
+  private OnArkViewTouchListener d;
   
   public WrapperArkView(@NonNull Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, ChatItemBuilder paramChatItemBuilder, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder = paramChatItemBuilder;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramMessageForArkApp;
+    this.c = paramChatItemBuilder;
+    this.a = paramInt;
     setLayoutParams(paramViewGroup.getLayoutParams());
   }
   
   private View a(ChatMessage paramChatMessage)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemBuilder.a(0, 0, paramChatMessage, null, this, this.jdField_a_of_type_ComTencentMobileqqNowMessageOnArkViewTouchListener);
+    return this.c.a(0, 0, paramChatMessage, null, this, this.d);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof QQLiveArkContainerWrapper)) {
-      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).e();
+    if ((this.b.arkContainer instanceof QQLiveArkContainerWrapper)) {
+      ((QQLiveArkContainerWrapper)this.b.arkContainer).j();
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer = new QQLiveArkContainerWrapper();
+    this.b.arkContainer = new QQLiveArkContainerWrapper();
     removeAllViews();
-    addView(a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp));
+    addView(a(this.b));
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer instanceof QQLiveArkContainerWrapper)) {
-      ((QQLiveArkContainerWrapper)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer).e();
+    if ((this.b.arkContainer instanceof QQLiveArkContainerWrapper)) {
+      ((QQLiveArkContainerWrapper)this.b.arkContainer).j();
     }
   }
   
   public void setOnArkViewTouchListener(OnArkViewTouchListener paramOnArkViewTouchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowMessageOnArkViewTouchListener = paramOnArkViewTouchListener;
+    this.d = paramOnArkViewTouchListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.WrapperArkView
  * JD-Core Version:    0.7.0.1
  */

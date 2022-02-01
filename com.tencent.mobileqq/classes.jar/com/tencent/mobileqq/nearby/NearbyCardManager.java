@@ -37,15 +37,15 @@ import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 public class NearbyCardManager
   implements INearbyCardManager, Manager
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private long jdField_a_of_type_Long = 0L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = -2147483648;
-  private ConcurrentHashMap<String, Long> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Integer> c = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Integer> d = new ConcurrentHashMap();
+  private QQAppInterface a;
+  private boolean b = false;
+  private int c = -2147483648;
+  private int d = -2147483648;
+  private long e = 0L;
+  private ConcurrentHashMap<String, Long> f = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> g = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> h = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> i = new ConcurrentHashMap();
   
   public NearbyCardManager(QQAppInterface paramQQAppInterface)
   {
@@ -65,7 +65,7 @@ public class NearbyCardManager
       }
       paramObject1 = null;
       localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      if (!StringUtil.a(paramString)) {
+      if (!StringUtil.isEmpty(paramString)) {
         paramObject1 = (NearbyPeopleCard)((EntityManager)localObject).find(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
       }
       if (paramObject1 == null) {
@@ -100,18 +100,13 @@ public class NearbyCardManager
       } else if (paramInt == 2) {
         ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "exp_pic", 0, 0, "", "", "", "");
       }
-      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton(HardCodeUtil.a(2131707149), new NearbyCardManager.3()).setPositiveButton(HardCodeUtil.a(2131707152), new NearbyCardManager.2(paramString2, paramInt, paramActivity)).show();
+      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton(HardCodeUtil.a(2131898212), new NearbyCardManager.3()).setPositiveButton(HardCodeUtil.a(2131904986), new NearbyCardManager.2(paramString2, paramInt, paramActivity)).show();
       return true;
     }
     return false;
   }
   
-  public static boolean a(String paramString)
-  {
-    return (paramString != null) && (paramString.length() >= 18);
-  }
-  
-  public static void b(Object paramObject)
+  public static void c(Object paramObject)
   {
     paramObject = (QQAppInterface)paramObject;
     if (QLog.isDevelopLevel()) {
@@ -130,47 +125,34 @@ public class NearbyCardManager
     ThreadManager.getSubThreadHandler().postDelayed(new NearbyCardManager.1(paramObject), 2000L);
   }
   
-  public int a()
+  public static boolean c(String paramString)
   {
-    int j = d();
-    int i = -2147483648;
-    if (j == -2147483648)
-    {
-      Card localCard = ((FriendsManager)a().getManager(QQManagerFactory.FRIENDS_MANAGER)).a(a().getCurrentAccountUin());
-      if ((localCard != null) && ((localCard.age != 0) || (!TextUtils.isEmpty(localCard.strNick))))
-      {
-        if (-2147483648 != localCard.age) {
-          i = localCard.age;
-        }
-        a(i);
-      }
-    }
-    return d();
+    return (paramString != null) && (paramString.length() >= 18);
   }
   
   public int a(int paramInt)
   {
-    int j = 2;
-    int i;
+    int k = 2;
+    int j;
     if ((paramInt == 0) || (paramInt == 1))
     {
-      i = b();
-      if (i == 1) {
-        i = 0;
-      } else if (i == 2) {
-        i = 1;
+      j = c();
+      if (j == 1) {
+        j = 0;
+      } else if (j == 2) {
+        j = 1;
       } else {
-        i = -1;
+        j = -1;
       }
-      if ((i == 0) || (i == 1)) {}
+      if ((j == 0) || (j == 1)) {}
     }
     else
     {
       return 0;
     }
-    if (i == 1)
+    if (j == 1)
     {
-      i = j;
+      j = k;
       if (paramInt == 1) {
         return 3;
       }
@@ -180,40 +162,17 @@ public class NearbyCardManager
       if (paramInt == 1) {
         return 1;
       }
-      i = 4;
+      j = 4;
     }
-    return i;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public long a(String paramString)
-  {
-    if ((b() != null) && (b().contains(paramString))) {
-      return ((Long)b().get(paramString)).longValue();
-    }
-    return 0L;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public ConcurrentHashMap<String, Integer> a()
-  {
-    return this.d;
+    return j;
   }
   
   public void a()
   {
     try
     {
-      if (b() != null) {
-        b().clear();
+      if (k() != null) {
+        k().clear();
       }
       return;
     }
@@ -224,113 +183,24 @@ public class NearbyCardManager
     }
   }
   
-  public void a(int paramInt)
-  {
-    if (paramInt != d())
-    {
-      d(paramInt);
-      NearbySPUtil.a(a().getAccount(), "self_age", Integer.valueOf(d()));
-    }
-  }
-  
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(Object paramObject)
-  {
-    oidb_0x8dd.SelfInfo localSelfInfo = (oidb_0x8dd.SelfInfo)paramObject;
-    if (localSelfInfo == null) {
-      return;
-    }
-    EntityManager localEntityManager = a().getEntityManagerFactory(a().getCurrentAccountUin()).createEntityManager();
-    if (localEntityManager != null)
-    {
-      int j = 1;
-      paramObject = a().getCurrentAccountUin();
-      int k = 0;
-      Object localObject = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { paramObject });
-      paramObject = localObject;
-      if (localObject == null)
-      {
-        paramObject = localObject;
-        if (localSelfInfo.uint64_tinyid.get() > 0L) {
-          paramObject = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(localSelfInfo.uint64_tinyid.get()) });
-        }
-      }
-      localObject = paramObject;
-      if (paramObject == null) {
-        localObject = new NearbyPeopleCard();
-      }
-      if (localSelfInfo.uint64_tinyid.get() > 0L)
-      {
-        ((NearbyPeopleCard)localObject).tinyId = localSelfInfo.uint64_tinyid.get();
-        ((NearbyPeopleCard)localObject).uin = a().getCurrentAccountUin();
-      }
-      int i = localSelfInfo.uint32_vote_num.get();
-      if ((localSelfInfo.uint32_vote_num.has()) && (i > 0)) {
-        ((NearbyPeopleCard)localObject).likeCount = i;
-      }
-      i = localSelfInfo.uint32_vote_increment.get();
-      if ((localSelfInfo.uint32_vote_increment.has()) && (i > 0)) {
-        ((NearbyPeopleCard)localObject).likeCountInc = i;
-      }
-      ((NearbyPeopleCard)localObject).gender = ((byte)localSelfInfo.uint32_gender.get());
-      ((NearbyPeopleCard)localObject).nickname = localSelfInfo.bytes_nick.get().toStringUtf8();
-      ((NearbyPeopleCard)localObject).age = localSelfInfo.uint32_age.get();
-      if (((NearbyPeopleCard)localObject).getStatus() == 1000) {
-        localEntityManager.persistOrReplace((Entity)localObject);
-      } else if ((((NearbyPeopleCard)localObject).getStatus() == 1001) || (((NearbyPeopleCard)localObject).getStatus() == 1002)) {
-        localEntityManager.update((Entity)localObject);
-      }
-      paramObject = ((FriendsManager)a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(a().getCurrentAccountUin());
-      if (paramObject != null)
-      {
-        int m = localSelfInfo.uint32_vote_num.get();
-        i = k;
-        if (localSelfInfo.uint32_vote_num.has())
-        {
-          i = k;
-          if (m > 0)
-          {
-            paramObject.lVoteCount = m;
-            i = 1;
-          }
-        }
-        k = localSelfInfo.uint32_vote_increment.get();
-        if ((localSelfInfo.uint32_vote_increment.has()) && (k > 0))
-        {
-          paramObject.iVoteIncrement = k;
-          i = j;
-        }
-        if (i != 0)
-        {
-          NearbySPUtil.a(a().getAccount(), paramObject.lVoteCount, paramObject.iVoteIncrement);
-          localEntityManager.update(paramObject);
-        }
-      }
-      localEntityManager.close();
-    }
-    b(localSelfInfo.uint32_gender.get());
-    a(localSelfInfo.uint32_age.get());
-    NearbySPUtil.a(a().getAccount(), "self_third_line_info", localSelfInfo.str_third_line_info.get());
-    NearbySPUtil.a(a().getAccount(), "self_third_line_icon", localSelfInfo.str_third_line_icon.get());
+    this.a = paramQQAppInterface;
   }
   
   public void a(String paramString)
   {
     try
     {
-      if ((b() != null) && (!b().isEmpty()) && (paramString != null))
+      if ((k() != null) && (!k().isEmpty()) && (paramString != null))
       {
-        if (b().containsKey(paramString)) {
-          b().remove(paramString);
+        if (k().containsKey(paramString)) {
+          k().remove(paramString);
         }
         return;
       }
@@ -344,7 +214,7 @@ public class NearbyCardManager
     try
     {
       if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L)) {
-        b().put(paramString, Long.valueOf(paramLong));
+        k().put(paramString, Long.valueOf(paramLong));
       }
       return;
     }
@@ -353,20 +223,15 @@ public class NearbyCardManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return ((Boolean)NearbySPUtil.a(a().getCurrentAccountUin(), "self_god_flag", Boolean.valueOf(false))).booleanValue();
+    this.b = paramBoolean;
   }
   
   public boolean a(Object paramObject)
   {
     paramObject = (NearbyPeopleCard)paramObject;
-    if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)) && (a().containsKey(String.valueOf(paramObject.tinyId))))
+    if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)) && (f().containsKey(String.valueOf(paramObject.tinyId))))
     {
-      a().remove(String.valueOf(paramObject.tinyId));
+      f().remove(String.valueOf(paramObject.tinyId));
       return true;
     }
     return false;
@@ -375,22 +240,22 @@ public class NearbyCardManager
   public boolean a(Object paramObject, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
     paramObject = (NearbyPeopleCard)paramObject;
-    boolean bool = b();
+    boolean bool = h();
     a(false);
     if (paramObject == null) {
       return true;
     }
-    int i;
-    if ((paramObject != null) && (!TextUtils.isEmpty(String.valueOf(paramObject.tinyId))) && (a().containsKey(String.valueOf(paramObject.tinyId))))
+    int j;
+    if ((paramObject != null) && (!TextUtils.isEmpty(String.valueOf(paramObject.tinyId))) && (f().containsKey(String.valueOf(paramObject.tinyId))))
     {
-      a().remove(String.valueOf(paramObject.tinyId));
-      i = 1;
+      f().remove(String.valueOf(paramObject.tinyId));
+      j = 1;
     }
     else
     {
-      i = 0;
+      j = 0;
     }
-    if (i != 0) {
+    if (j != 0) {
       return true;
     }
     if (TextUtils.isEmpty(paramObject.uin)) {
@@ -410,12 +275,12 @@ public class NearbyCardManager
       if (51 == paramInt) {}
       try
       {
-        if (!c().containsKey(paramObject.uin)) {
+        if (!l().containsKey(paramObject.uin)) {
           return true;
         }
-        long l = ((Long)c().get(paramObject.uin)).longValue();
+        long l = ((Long)l().get(paramObject.uin)).longValue();
         break label193;
-        l = a(String.valueOf(paramObject.tinyId));
+        l = b(String.valueOf(paramObject.tinyId));
         label193:
         l = SystemClock.elapsedRealtime() - l;
         if (paramObject.isHostSelf)
@@ -427,7 +292,7 @@ public class NearbyCardManager
         else if (l >= 300000L) {
           return true;
         }
-        return (!TextUtils.isEmpty(paramObject.uin)) && (((INearbyLikeLimitManager)a().getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(paramObject.uin));
+        return (!TextUtils.isEmpty(paramObject.uin)) && (((INearbyLikeLimitManager)g().getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(paramObject.uin));
       }
       finally {}
     }
@@ -436,94 +301,229 @@ public class NearbyCardManager
   
   public int b()
   {
-    if (c() == -2147483648)
+    int k = j();
+    int j = -2147483648;
+    if (k == -2147483648)
     {
-      Object localObject = ((FriendsManager)a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(a().getCurrentAccountUin());
-      int i = -1;
-      if (localObject != null)
+      Card localCard = ((FriendsManager)g().getManager(QQManagerFactory.FRIENDS_MANAGER)).f(g().getCurrentAccountUin());
+      if ((localCard != null) && ((localCard.age != 0) || (!TextUtils.isEmpty(localCard.strNick))))
       {
-        i = ((Card)localObject).shGender;
-      }
-      else
-      {
-        localObject = (NearbyPeopleCard)a().getEntityManagerFactory(a().getCurrentAccountUin()).createEntityManager().find(NearbyPeopleCard.class, "uin=?", new String[] { a().getCurrentAccountUin() });
-        if (localObject != null) {
-          i = ((NearbyPeopleCard)localObject).gender;
+        if (-2147483648 != localCard.age) {
+          j = localCard.age;
         }
+        b(j);
       }
-      b(i);
     }
-    return c();
+    return j();
   }
   
-  public ConcurrentHashMap<String, Long> b()
+  public long b(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if ((k() != null) && (k().contains(paramString))) {
+      return ((Long)k().get(paramString)).longValue();
+    }
+    return 0L;
   }
   
   public void b(int paramInt)
   {
-    int i = c();
-    if (paramInt != 0)
+    if (paramInt != j())
     {
-      if (paramInt != 1) {
-        c(0);
-      } else {
-        c(2);
-      }
+      e(paramInt);
+      NearbySPUtil.b(g().getAccount(), "self_age", Integer.valueOf(j()));
     }
-    else {
-      c(1);
+  }
+  
+  public void b(Object paramObject)
+  {
+    oidb_0x8dd.SelfInfo localSelfInfo = (oidb_0x8dd.SelfInfo)paramObject;
+    if (localSelfInfo == null) {
+      return;
     }
-    if (i != c())
+    EntityManager localEntityManager = g().getEntityManagerFactory(g().getCurrentAccountUin()).createEntityManager();
+    if (localEntityManager != null)
     {
-      Object localObject = a().getHotChatMng(false);
-      if (localObject != null)
+      int k = 1;
+      paramObject = g().getCurrentAccountUin();
+      int m = 0;
+      Object localObject = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { paramObject });
+      paramObject = localObject;
+      if (localObject == null)
       {
-        localObject = ((HotChatManager)localObject).a(false);
-        if (localObject != null) {
-          ((PttShowRoomMng)localObject).a(a().getCurrentAccountUin(), null, paramInt, NetConnInfoCenter.getServerTime());
+        paramObject = localObject;
+        if (localSelfInfo.uint64_tinyid.get() > 0L) {
+          paramObject = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(localSelfInfo.uint64_tinyid.get()) });
         }
       }
-      NearbySPUtil.a(a().getAccount(), "self_gender", Integer.valueOf(c()));
+      localObject = paramObject;
+      if (paramObject == null) {
+        localObject = new NearbyPeopleCard();
+      }
+      if (localSelfInfo.uint64_tinyid.get() > 0L)
+      {
+        ((NearbyPeopleCard)localObject).tinyId = localSelfInfo.uint64_tinyid.get();
+        ((NearbyPeopleCard)localObject).uin = g().getCurrentAccountUin();
+      }
+      int j = localSelfInfo.uint32_vote_num.get();
+      if ((localSelfInfo.uint32_vote_num.has()) && (j > 0)) {
+        ((NearbyPeopleCard)localObject).likeCount = j;
+      }
+      j = localSelfInfo.uint32_vote_increment.get();
+      if ((localSelfInfo.uint32_vote_increment.has()) && (j > 0)) {
+        ((NearbyPeopleCard)localObject).likeCountInc = j;
+      }
+      ((NearbyPeopleCard)localObject).gender = ((byte)localSelfInfo.uint32_gender.get());
+      ((NearbyPeopleCard)localObject).nickname = localSelfInfo.bytes_nick.get().toStringUtf8();
+      ((NearbyPeopleCard)localObject).age = localSelfInfo.uint32_age.get();
+      if (((NearbyPeopleCard)localObject).getStatus() == 1000) {
+        localEntityManager.persistOrReplace((Entity)localObject);
+      } else if ((((NearbyPeopleCard)localObject).getStatus() == 1001) || (((NearbyPeopleCard)localObject).getStatus() == 1002)) {
+        localEntityManager.update((Entity)localObject);
+      }
+      paramObject = ((FriendsManager)g().getManager(QQManagerFactory.FRIENDS_MANAGER)).g(g().getCurrentAccountUin());
+      if (paramObject != null)
+      {
+        int n = localSelfInfo.uint32_vote_num.get();
+        j = m;
+        if (localSelfInfo.uint32_vote_num.has())
+        {
+          j = m;
+          if (n > 0)
+          {
+            paramObject.lVoteCount = n;
+            j = 1;
+          }
+        }
+        m = localSelfInfo.uint32_vote_increment.get();
+        if ((localSelfInfo.uint32_vote_increment.has()) && (m > 0))
+        {
+          paramObject.iVoteIncrement = m;
+          j = k;
+        }
+        if (j != 0)
+        {
+          NearbySPUtil.a(g().getAccount(), paramObject.lVoteCount, paramObject.iVoteIncrement);
+          localEntityManager.update(paramObject);
+        }
+      }
+      localEntityManager.close();
     }
+    c(localSelfInfo.uint32_gender.get());
+    b(localSelfInfo.uint32_age.get());
+    NearbySPUtil.b(g().getAccount(), "self_third_line_info", localSelfInfo.str_third_line_info.get());
+    NearbySPUtil.b(g().getAccount(), "self_third_line_icon", localSelfInfo.str_third_line_icon.get());
   }
   
   public void b(String paramString, long paramLong)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L)) {
-      c().put(paramString, Long.valueOf(paramLong));
+      l().put(paramString, Long.valueOf(paramLong));
     }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ConcurrentHashMap<String, Long> c()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (i() == -2147483648)
+    {
+      Object localObject = ((FriendsManager)g().getManager(QQManagerFactory.FRIENDS_MANAGER)).g(g().getCurrentAccountUin());
+      int j = -1;
+      if (localObject != null)
+      {
+        j = ((Card)localObject).shGender;
+      }
+      else
+      {
+        localObject = (NearbyPeopleCard)g().getEntityManagerFactory(g().getCurrentAccountUin()).createEntityManager().find(NearbyPeopleCard.class, "uin=?", new String[] { g().getCurrentAccountUin() });
+        if (localObject != null) {
+          j = ((NearbyPeopleCard)localObject).gender;
+        }
+      }
+      c(j);
+    }
+    return i();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int d()
-  {
-    return this.jdField_b_of_type_Int;
+    int j = i();
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        d(0);
+      } else {
+        d(2);
+      }
+    }
+    else {
+      d(1);
+    }
+    if (j != i())
+    {
+      Object localObject = g().getHotChatMng(false);
+      if (localObject != null)
+      {
+        localObject = ((HotChatManager)localObject).b(false);
+        if (localObject != null) {
+          ((PttShowRoomMng)localObject).a(g().getCurrentAccountUin(), null, paramInt, NetConnInfoCenter.getServerTime());
+        }
+      }
+      NearbySPUtil.b(g().getAccount(), "self_gender", Integer.valueOf(i()));
+    }
   }
   
   public void d(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
+  }
+  
+  public boolean d()
+  {
+    return ((Boolean)NearbySPUtil.a(g().getCurrentAccountUin(), "self_god_flag", Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public long e()
+  {
+    return this.e;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public ConcurrentHashMap<String, Integer> f()
+  {
+    return this.i;
+  }
+  
+  public QQAppInterface g()
+  {
+    return this.a;
+  }
+  
+  public boolean h()
+  {
+    return this.b;
+  }
+  
+  public int i()
+  {
+    return this.c;
+  }
+  
+  public int j()
+  {
+    return this.d;
+  }
+  
+  public ConcurrentHashMap<String, Long> k()
+  {
+    return this.f;
+  }
+  
+  public ConcurrentHashMap<String, Long> l()
+  {
+    return this.g;
   }
   
   public void onDestroy()
@@ -538,7 +538,7 @@ public class NearbyCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyCardManager
  * JD-Core Version:    0.7.0.1
  */

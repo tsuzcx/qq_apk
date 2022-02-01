@@ -9,8 +9,8 @@ class TroopCardBanner$2$1
   
   public void run()
   {
-    int i = this.a.this$0.a.getCurrentItem();
-    this.a.this$0.a.setCurrentItem(i + 1);
+    int i = this.a.this$0.d.getCurrentItem();
+    this.a.this$0.d.setCurrentItem(i + 1);
   }
 }
 

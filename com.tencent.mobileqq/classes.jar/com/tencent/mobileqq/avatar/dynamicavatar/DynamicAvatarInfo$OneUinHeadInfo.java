@@ -9,10 +9,10 @@ import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
 public class DynamicAvatarInfo$OneUinHeadInfo
 {
-  public int a;
   public long a;
-  public ArrayList<DynamicAvatarInfo.UinHeadInfo> a;
-  public long b;
+  public int b;
+  public long c;
+  public ArrayList<DynamicAvatarInfo.UinHeadInfo> d;
   
   public static OneUinHeadInfo a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
@@ -21,14 +21,14 @@ public class DynamicAvatarInfo$OneUinHeadInfo
     }
     OneUinHeadInfo localOneUinHeadInfo = new OneUinHeadInfo();
     if (paramOneUinHeadInfo.uint64_uin.has()) {
-      localOneUinHeadInfo.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+      localOneUinHeadInfo.a = paramOneUinHeadInfo.uint64_uin.get();
     }
     if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-      localOneUinHeadInfo.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      localOneUinHeadInfo.c = paramOneUinHeadInfo.uint64_tinyid.get();
     }
-    localOneUinHeadInfo.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+    localOneUinHeadInfo.b = ((int)(System.currentTimeMillis() / 1000L));
     if (paramOneUinHeadInfo.rpt_msg_head_list.has()) {
-      localOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList = DynamicAvatarInfo.UinHeadInfo.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+      localOneUinHeadInfo.d = DynamicAvatarInfo.UinHeadInfo.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
     }
     return localOneUinHeadInfo;
   }
@@ -53,7 +53,7 @@ public class DynamicAvatarInfo$OneUinHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.OneUinHeadInfo
  * JD-Core Version:    0.7.0.1
  */

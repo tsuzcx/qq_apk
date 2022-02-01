@@ -19,14 +19,14 @@ class ChatSelCurPageForLSSHelper$1
   
   public void run()
   {
-    int i = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-    int j = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
+    int i = ChatSelCurPageForLSSHelper.a(this.this$0).U.getHeaderViewsCount();
+    int j = ChatSelCurPageForLSSHelper.a(this.this$0).U.getFirstVisiblePosition();
     if (j >= i) {
       j -= i;
     } else {
       j = 0;
     }
-    List localList = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+    List localList = ChatSelCurPageForLSSHelper.a(this.this$0).V.a();
     Object localObject1;
     if (j >= localList.size())
     {
@@ -41,17 +41,17 @@ class ChatSelCurPageForLSSHelper$1
       }
       return;
     }
-    int k = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - i;
+    int k = ChatSelCurPageForLSSHelper.a(this.this$0).U.getLastVisiblePosition() - i;
     i = k;
     if (k >= localList.size()) {
       i = localList.size() - 1;
     }
     k = i;
     Object localObject2;
-    if (ChatSelCurPageForLSSHelper.a(this.this$0).c != null)
+    if (ChatSelCurPageForLSSHelper.a(this.this$0).aZ != null)
     {
-      Object localObject3 = ChatSelCurPageForLSSHelper.a(this.this$0).c.findViewById(2131367405);
-      localObject2 = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1);
+      Object localObject3 = ChatSelCurPageForLSSHelper.a(this.this$0).aZ.findViewById(2131433906);
+      localObject2 = ChatSelCurPageForLSSHelper.a(this.this$0).U.getChildAt(ChatSelCurPageForLSSHelper.a(this.this$0).U.getChildCount() - 1);
       k = i;
       if (localObject3 != null)
       {
@@ -95,10 +95,10 @@ class ChatSelCurPageForLSSHelper$1
     if ((j >= 0) && (k >= j))
     {
       localObject1 = (ChatMessage)localList.get(j);
-      localObject2 = (AIOLongShotHelper)ChatSelCurPageForLSSHelper.a(this.this$0).a(15);
-      ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1);
-      ChatSelCurPageForLSSHelper.a(this.this$0).f(true);
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "select_more_msg", true);
+      localObject2 = (AIOLongShotHelper)ChatSelCurPageForLSSHelper.a(this.this$0).q(15);
+      ((AIOLongShotHelper)localObject2).b((ChatMessage)localObject1);
+      ChatSelCurPageForLSSHelper.a(this.this$0).i(true);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(ChatSelCurPageForLSSHelper.a(this.this$0).d, "select_more_msg", true);
       if (k > j) {
         ((AIOLongShotHelper)localObject2).a((ChatMessage)localList.get(k), null, true);
       }
@@ -107,7 +107,7 @@ class ChatSelCurPageForLSSHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper.1
  * JD-Core Version:    0.7.0.1
  */

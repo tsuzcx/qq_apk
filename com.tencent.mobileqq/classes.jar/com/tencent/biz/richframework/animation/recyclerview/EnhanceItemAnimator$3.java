@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 import java.util.Iterator;
 

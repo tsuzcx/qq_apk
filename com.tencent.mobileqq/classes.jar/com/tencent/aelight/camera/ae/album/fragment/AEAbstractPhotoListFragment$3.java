@@ -29,12 +29,12 @@ class AEAbstractPhotoListFragment$3
   {
     if ((!AEAbstractPhotoListFragment.a(this.a)) && (!paramBoolean))
     {
-      if (this.a.a.a.initialHasPickedNum > 0) {
+      if (this.a.a.e.initialHasPickedNum > 0) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
       }
-      AEReportUtils.b(paramBoolean);
+      AEReportUtils.a(paramBoolean);
       AEAbstractPhotoListFragment.a(this.a, true);
     }
   }
@@ -46,7 +46,7 @@ class AEAbstractPhotoListFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AEAbstractPhotoListFragment.3
  * JD-Core Version:    0.7.0.1
  */

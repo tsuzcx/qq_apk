@@ -7,7 +7,7 @@ class BottomVideoInfoWidget$6$3
   
   public void run()
   {
-    this.a.a.l();
+    this.a.e.E();
   }
 }
 

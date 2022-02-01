@@ -14,12 +14,12 @@ class VideoStoryAIScenePart$19
     Intent localIntent = new Intent();
     localIntent.setAction("ae_editor_bottom_tab_show_hide");
     localIntent.putExtra("is_show", true);
-    VideoStoryAIScenePart.a(this.this$0).a().sendBroadcast(localIntent);
+    VideoStoryAIScenePart.m(this.this$0).s().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.19
  * JD-Core Version:    0.7.0.1
  */

@@ -80,24 +80,24 @@ public class TroopAnnouncementHelperApiImpl
     label229:
     int i = 0;
     localObject = new ITroopAnnouncementHelperApi.FeedItem();
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_b_of_type_JavaLangString = paramString;
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_e_of_type_JavaLangString = str;
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_a_of_type_Int = 2;
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_b_of_type_Long = l2;
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_d_of_type_Int = i;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).c = paramString;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).i = arrayOfByte;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).j = str;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).a = 2;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).l = l2;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).k = i;
     if (paramGroupFeedsMessage.opt_uint32_ctl_flag.has()) {
       i = paramGroupFeedsMessage.opt_uint32_ctl_flag.get();
     } else {
       i = 0;
     }
-    ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_e_of_type_Int = i;
+    ((ITroopAnnouncementHelperApi.FeedItem)localObject).m = i;
     if ((paramGroupFeedsMessage.memo_ctrl_info.has()) && (((group_feeds.GroupFeedsMessage.MemoCtrlInfo)paramGroupFeedsMessage.memo_ctrl_info.get()).uint32_need_confirmation.has()))
     {
       if (((group_feeds.GroupFeedsMessage.MemoCtrlInfo)paramGroupFeedsMessage.memo_ctrl_info.get()).uint32_need_confirmation.get() != 1) {
         bool = false;
       }
-      ((ITroopAnnouncementHelperApi.FeedItem)localObject).jdField_a_of_type_Boolean = bool;
+      ((ITroopAnnouncementHelperApi.FeedItem)localObject).n = bool;
     }
     return localObject;
   }
@@ -157,23 +157,23 @@ public class TroopAnnouncementHelperApiImpl
         catch (Exception localException) {}
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new ITroopAnnouncementHelperApi.FeedItem();
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_a_of_type_JavaLangString = str1;
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_b_of_type_JavaLangString = paramString;
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).c = ((String)localObject1);
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_d_of_type_JavaLangString = str2;
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_a_of_type_Int = 1;
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).b = str1;
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).c = paramString;
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).d = ((String)localObject1);
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).e = str2;
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).a = 1;
         if (paramGroupFeedsMessage.opt_uint32_ctl_flag.has()) {
           i = paramGroupFeedsMessage.opt_uint32_ctl_flag.get();
         } else {
           i = 0;
         }
-        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_e_of_type_Int = i;
+        ((ITroopAnnouncementHelperApi.FeedItem)localObject2).m = i;
         if ((paramGroupFeedsMessage.memo_ctrl_info.has()) && (((group_feeds.GroupFeedsMessage.MemoCtrlInfo)paramGroupFeedsMessage.memo_ctrl_info.get()).uint32_need_confirmation.has()))
         {
           if (((group_feeds.GroupFeedsMessage.MemoCtrlInfo)paramGroupFeedsMessage.memo_ctrl_info.get()).uint32_need_confirmation.get() == 1) {
             paramBoolean = true;
           }
-          ((ITroopAnnouncementHelperApi.FeedItem)localObject2).jdField_a_of_type_Boolean = paramBoolean;
+          ((ITroopAnnouncementHelperApi.FeedItem)localObject2).n = paramBoolean;
         }
         return localObject2;
       }
@@ -210,7 +210,7 @@ public class TroopAnnouncementHelperApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.announcement.api.impl.TroopAnnouncementHelperApiImpl
  * JD-Core Version:    0.7.0.1
  */

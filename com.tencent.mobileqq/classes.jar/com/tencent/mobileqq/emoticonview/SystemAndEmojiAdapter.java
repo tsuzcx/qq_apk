@@ -46,6 +46,7 @@ public class SystemAndEmojiAdapter
   private IPanelController mPanelController;
   private IPanelListener mPanelListener;
   private boolean mPopupGuideHided;
+  private boolean showDescribeInPreview = false;
   protected int spaceWidth;
   
   public SystemAndEmojiAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, IPanelListener paramIPanelListener, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback, int paramInt4)
@@ -98,7 +99,7 @@ public class SystemAndEmojiAdapter
         paramView.leftMargin = ((int)(this.density * 18.0F));
         paramViewGroup = new TextView(this.mContext);
         paramViewGroup.setTextSize(8.0F);
-        paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131167142));
+        paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131168122));
         paramViewHolder.addView(paramViewGroup, paramView);
         localSystemAndEmojiHolder.titleTxt = paramViewGroup;
         paramViewHolder.setTag(localSystemAndEmojiHolder);
@@ -137,47 +138,48 @@ public class SystemAndEmojiAdapter
             paramViewHolder.append(";view from inflater");
             QLog.d("SystemAndEmojiAdapter", 2, paramViewHolder.toString());
           }
-          paramView = new EmoticonPanelLinearLayout(this.mContext, ((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).createEmoticonPanelLayoutHelper(this.mContext, this.mPanelListener), this.businessType);
-          paramView.setPanelType(0);
-          paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-          paramView.setOrientation(0);
+          paramViewHolder = ((IEmoticonInfoService)QRoute.api(IEmoticonInfoService.class)).createEmoticonPanelLayoutHelper(this.mContext, this.mPanelListener);
+          paramViewHolder.setShowDescribeInPreview(this.showDescribeInPreview);
+          paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, paramViewHolder, this.businessType);
+          paramViewHolder.setPanelType(0);
+          paramViewHolder.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+          paramViewHolder.setOrientation(0);
           i = this.emojiWidth + (int)(this.density * 12.0F);
           if (paramInt == getCount() - 1) {
             i = this.emojiWidth;
           }
           j = 0;
-          for (;;)
+          while (j < this.columnNum)
           {
-            paramViewHolder = paramView;
-            if (j >= this.columnNum) {
-              break;
-            }
-            paramViewHolder = new EmoticonImageView(this.mContext);
+            paramView = new EmoticonImageView(this.mContext);
             paramViewGroup = new LinearLayout.LayoutParams(this.emojiWidth, i);
             if (j == 0) {
               paramViewGroup.leftMargin = ((int)(this.density * 18.0F));
             } else {
               paramViewGroup.leftMargin = this.spaceWidth;
             }
-            paramViewHolder.setLayoutParams(paramViewGroup);
-            paramViewHolder.setVisibility(8);
-            paramViewHolder.setScaleType(ImageView.ScaleType.FIT_START);
-            paramViewHolder.setAdjustViewBounds(false);
-            paramViewHolder.setFocusable(true);
-            paramViewHolder.setFocusableInTouchMode(true);
-            paramView.addView(paramViewHolder);
+            paramView.setLayoutParams(paramViewGroup);
+            paramView.setVisibility(8);
+            paramView.setScaleType(ImageView.ScaleType.FIT_START);
+            paramView.setAdjustViewBounds(false);
+            paramView.setFocusable(true);
+            paramView.setFocusableInTouchMode(true);
+            paramViewHolder.addView(paramView);
             j += 1;
           }
         }
-        paramViewHolder = paramView;
-        if (QLog.isColorLevel())
+        else
         {
-          paramViewHolder = new StringBuilder();
-          paramViewHolder.append("getEmotionView position = ");
-          paramViewHolder.append(paramInt);
-          paramViewHolder.append(";view from cache");
-          QLog.d("SystemAndEmojiAdapter", 2, paramViewHolder.toString());
           paramViewHolder = paramView;
+          if (QLog.isColorLevel())
+          {
+            paramViewHolder = new StringBuilder();
+            paramViewHolder.append("getEmotionView position = ");
+            paramViewHolder.append(paramInt);
+            paramViewHolder.append(";view from cache");
+            QLog.d("SystemAndEmojiAdapter", 2, paramViewHolder.toString());
+            paramViewHolder = paramView;
+          }
         }
         ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
         recycleView(this.panelType, paramViewHolder);
@@ -200,21 +202,21 @@ public class SystemAndEmojiAdapter
         if (paramInt == 0)
         {
           f = this.density;
-          break label688;
+          break label701;
         }
       }
       else {
         if ((paramInt == 1) || (paramInt == 5)) {
-          break label682;
+          break label695;
         }
       }
       int i = 0;
-      break label697;
-      label682:
+      break label710;
+      label695:
       float f = this.density;
-      label688:
+      label701:
       i = (int)(f * 7.0F);
-      label697:
+      label710:
       paramViewHolder.setPadding(0, i, 0, 0);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel())
@@ -259,9 +261,9 @@ public class SystemAndEmojiAdapter
             else
             {
               localEmoticonImageView.setVisibility(0);
-              if (paramViewGroup != localEmoticonImageView.getTag(2131380884))
+              if (paramViewGroup != localEmoticonImageView.getTag(2131449867))
               {
-                localEmoticonImageView.setTag(2131380884, paramViewGroup);
+                localEmoticonImageView.setTag(2131449867, paramViewGroup);
                 if (((IApolloDependApi)QRoute.api(IApolloDependApi.class)).shouldShowNewIcon(paramView.code))
                 {
                   localEmoticonImageView.setNewIconVisible(true);
@@ -312,7 +314,7 @@ public class SystemAndEmojiAdapter
                 }
                 else
                 {
-                  localEmoticonImageView.setContentDescription(HardCodeUtil.a(2131719434));
+                  localEmoticonImageView.setContentDescription(HardCodeUtil.a(2131916994));
                 }
                 ((IApolloDependApi)QRoute.api(IApolloDependApi.class)).apolloCmEmojiDtReport(paramView.code);
                 paramViewGroup = this.mPanelController;
@@ -394,9 +396,9 @@ public class SystemAndEmojiAdapter
     super.setData(paramList);
     this.dataHasWhiteFace = paramList;
     refreshPanelData();
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17"))
     {
-      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       if ((localList != null) && (localList.size() > 0))
       {
         int i = findEmoticonIndex(paramList, ((Integer)localList.get(0)).intValue());
@@ -453,10 +455,15 @@ public class SystemAndEmojiAdapter
       }
     }
   }
+  
+  public void setShowDescribeInPreview(boolean paramBoolean)
+  {
+    this.showDescribeInPreview = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter
  * JD-Core Version:    0.7.0.1
  */

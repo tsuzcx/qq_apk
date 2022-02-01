@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.pts_bind_action.ArticleBottomAdInfoBindUtils;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerVideoGameCell;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.mobileqq.kandian.biz.pts.api.ITemplateFactory;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -17,18 +17,16 @@ import org.json.JSONObject;
 public class ProteusBannerVideoItemData
   extends AdData
 {
-  public long a;
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
+  public long c = 0L;
   
   public ProteusBannerVideoItemData()
   {
     super(17);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
   }
   
-  private JSONObject a()
+  private JSONObject b()
   {
     JSONObject localJSONObject1 = new JSONObject();
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(this)) {
@@ -37,12 +35,12 @@ public class ProteusBannerVideoItemData
     try
     {
       localJSONObject1.put("style_ID", "ReadInjoy_ad_banner_video_cell");
-      boolean bool = TextUtils.isEmpty(this.j);
+      boolean bool = TextUtils.isEmpty(this.l);
       if (!bool)
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", this.j);
-        i = this.r;
+        ((JSONObject)localObject).put("text", this.l);
+        i = this.aD;
         if (i != 1)
         {
           if (i != 2)
@@ -64,9 +62,9 @@ public class ProteusBannerVideoItemData
         localJSONObject1.put("id_tv_title", localObject);
       }
       JSONObject localJSONObject2;
-      if (!TextUtils.isEmpty(this.l))
+      if (!TextUtils.isEmpty(this.n))
       {
-        localObject = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(this.l, 4);
+        localObject = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(this.n, 4);
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("image_url", ((URL)localObject).toString());
         localJSONObject1.put("id_ad_banner_bottom_imge", localJSONObject2);
@@ -75,11 +73,11 @@ public class ProteusBannerVideoItemData
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("detail ad Bottom Pic adInconText:");
-        ((StringBuilder)localObject).append(this.L);
+        ((StringBuilder)localObject).append(this.ah);
         QLog.d("ProteusBannerVideoItemData", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = new JSONObject();
-      int i = this.r;
+      int i = this.aD;
       if ((i != 1) && (i != 2))
       {
         ((JSONObject)localObject).put("bottom_background_color", "#f8f8f8");
@@ -94,16 +92,16 @@ public class ProteusBannerVideoItemData
       localJSONObject1.put("id_ad_title", new JSONObject());
       localJSONObject1.put("id_ad_title_rl", new JSONObject());
       localObject = null;
-      if (!TextUtils.isEmpty(this.I)) {
-        localObject = this.I;
-      } else if (!TextUtils.isEmpty(this.q)) {
-        localObject = this.q;
+      if (!TextUtils.isEmpty(this.X)) {
+        localObject = this.X;
+      } else if (!TextUtils.isEmpty(this.u)) {
+        localObject = this.u;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("text", localObject);
-        i = this.r;
+        i = this.aD;
         if ((i != 1) && (i != 2)) {
           localJSONObject2.put("text_color", "#000000");
         } else {
@@ -126,11 +124,11 @@ public class ProteusBannerVideoItemData
   
   public void a()
   {
-    this.c = a();
+    this.bb = b();
     Object localObject;
     try
     {
-      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.c);
+      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.bb);
     }
     catch (JSONException localJSONException)
     {
@@ -138,13 +136,13 @@ public class ProteusBannerVideoItemData
       localObject = null;
     }
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localObject;
+      this.bd = localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData
  * JD-Core Version:    0.7.0.1
  */

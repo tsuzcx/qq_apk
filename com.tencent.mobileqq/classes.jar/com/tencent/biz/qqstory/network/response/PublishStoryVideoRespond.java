@@ -16,33 +16,32 @@ public class PublishStoryVideoRespond
   extends BaseResponse
 {
   public long a;
-  public String a;
-  public List<AddGroupVideoResponse.AddGroupFeed> a;
-  public long b;
-  public String c;
-  public String d;
+  public String b = "";
   public String e;
+  public String f;
+  public long g;
+  public String h;
+  public List<AddGroupVideoResponse.AddGroupFeed> i;
   
   public PublishStoryVideoRespond(qqstory_service.RspPublishVideo paramRspPublishVideo)
   {
     super(paramRspPublishVideo.result);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
-    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
-    this.c = String.valueOf(paramRspPublishVideo.date.get());
-    this.b = paramRspPublishVideo.video_index.get();
+    this.a = paramRspPublishVideo.create_time.get();
+    this.b = paramRspPublishVideo.feed_id.get().toStringUtf8();
+    this.e = String.valueOf(paramRspPublishVideo.date.get());
+    this.g = paramRspPublishVideo.video_index.get();
     if (paramRspPublishVideo.story_id.has()) {
-      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
+      this.f = paramRspPublishVideo.story_id.get().toStringUtf8();
     }
     if (paramRspPublishVideo.vid.has()) {
-      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
+      this.h = paramRspPublishVideo.vid.get().toStringUtf8();
     }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.i = new ArrayList();
     paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
     while (paramRspPublishVideo.hasNext())
     {
       qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
-      this.jdField_a_of_type_JavaUtilList.add(new AddGroupVideoResponse.AddGroupFeed(localGroupFeed));
+      this.i.add(new AddGroupVideoResponse.AddGroupFeed(localGroupFeed));
     }
   }
   
@@ -50,29 +49,29 @@ public class PublishStoryVideoRespond
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PublishStoryVideoRespond{createTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", date='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", storyId='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", videoIndex=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", vid=");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", addShareGroupFeeds=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.PublishStoryVideoRespond
  * JD-Core Version:    0.7.0.1
  */

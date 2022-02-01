@@ -2,11 +2,11 @@ package com.tencent.av.ui;
 
 public class VoiceChangeData$VoiceInfo
 {
-  public int a;
   public String a;
-  public int b;
   public String b;
   public String c;
+  public int d;
+  public int e;
 }
 
 

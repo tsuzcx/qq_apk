@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class ScreenShootMonitor$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.render.monitor.ScreenShootMonitor.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -17,18 +17,18 @@ public class ConfessMsgListRefresher
   
   protected boolean a(MessageRecord paramMessageRecord)
   {
-    return (super.a(paramMessageRecord)) && (ConfessMsgUtil.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.a.a().jdField_a_of_type_Int, this.a.a().e));
+    return (super.a(paramMessageRecord)) && (ConfessMsgUtil.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), this.a.O().a, this.a.O().v));
   }
   
   protected boolean b(MessageRecord paramMessageRecord)
   {
-    BaseSessionInfo localBaseSessionInfo = this.a.a();
-    return (paramMessageRecord.frienduin.equals(localBaseSessionInfo.jdField_a_of_type_JavaLangString)) && (ConfessMsgUtil.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), localBaseSessionInfo.jdField_a_of_type_Int, localBaseSessionInfo.e));
+    BaseSessionInfo localBaseSessionInfo = this.a.O();
+    return (paramMessageRecord.frienduin.equals(localBaseSessionInfo.b)) && (ConfessMsgUtil.a(paramMessageRecord.istroop, paramMessageRecord.getConfessTopicId(), localBaseSessionInfo.a, localBaseSessionInfo.v));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public final class QFlutterResConfigProcessor$Companion
   @NotNull
   public final QFlutterResConfig a()
   {
-    QFlutterResConfig localQFlutterResConfig = (QFlutterResConfig)QConfigManager.a().a(706);
+    QFlutterResConfig localQFlutterResConfig = (QFlutterResConfig)QConfigManager.b().b(706);
     if (localQFlutterResConfig == null) {
       localQFlutterResConfig = new QFlutterResConfig();
     }
@@ -42,7 +42,7 @@ public final class QFlutterResConfigProcessor$Companion
   }
   
   @JvmStatic
-  public final boolean a(@NotNull ExpandModuleKey paramExpandModuleKey)
+  public final boolean b(@NotNull ExpandModuleKey paramExpandModuleKey)
   {
     Intrinsics.checkParameterIsNotNull(paramExpandModuleKey, "module");
     return ((Companion)this).a().a(paramExpandModuleKey).contains(PreloadEngineOption.ALWAYS_PRELOAD.getDesc());
@@ -50,7 +50,7 @@ public final class QFlutterResConfigProcessor$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.QFlutterResConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

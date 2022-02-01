@@ -11,6 +11,7 @@ import com.tencent.image.downloader.GalleryDecoder;
 import com.tencent.mobileqq.pic.api.ICompressOperator;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.widget.Gallery;
 import java.io.File;
 import java.util.HashMap;
@@ -70,7 +71,7 @@ public class PhotoDecoder
       label13:
       break label13;
     }
-    return new RoundRectBitmap(paramBitmap, 12.0F);
+    return new RoundRectBitmap(paramBitmap, URLDrawableHelper.getRoundCorner());
   }
   
   protected boolean useJpegTurbo()
@@ -80,7 +81,7 @@ public class PhotoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoDecoder
  * JD-Core Version:    0.7.0.1
  */

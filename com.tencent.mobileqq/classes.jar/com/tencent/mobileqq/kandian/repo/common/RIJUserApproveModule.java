@@ -4,6 +4,7 @@ import android.os.Handler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -88,7 +89,7 @@ public class RIJUserApproveModule
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("requestUserApproveInfo uin: ");
-    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(RIJLogUtil.a.a(paramLong));
     QLog.d("RIJUserApproveModule", 1, ((StringBuilder)localObject).toString());
     if (paramUserApproveCallback != null) {
       this.a = paramUserApproveCallback;
@@ -123,7 +124,7 @@ public class RIJUserApproveModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.RIJUserApproveModule
  * JD-Core Version:    0.7.0.1
  */

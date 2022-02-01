@@ -17,10 +17,10 @@ public class MoreVideoInfoWidget$FeedInfoUpdateReceiver
   
   public void a(@NonNull MoreVideoInfoWidget paramMoreVideoInfoWidget, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramMoreVideoInfoWidget.a != null) && (TextUtils.equals(paramMoreVideoInfoWidget.a.b, paramFeedInfoChangeEvent.a)))
+    if ((paramMoreVideoInfoWidget.p != null) && (TextUtils.equals(paramMoreVideoInfoWidget.p.c, paramFeedInfoChangeEvent.b)))
     {
       SLog.a(this.TAG, "receive feed info change event. %s.", paramFeedInfoChangeEvent.toString());
-      paramMoreVideoInfoWidget.i();
+      paramMoreVideoInfoWidget.x();
     }
   }
   

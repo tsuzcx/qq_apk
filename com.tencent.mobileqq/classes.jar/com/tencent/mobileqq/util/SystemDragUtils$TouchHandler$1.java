@@ -12,12 +12,12 @@ class SystemDragUtils$TouchHandler$1
   
   public void run()
   {
-    UiThreadUtil.a(new SystemDragUtils.TouchHandler.1.1(this, SystemDragUtils.a((Context)this.this$0.a.get(), this.a)));
+    UiThreadUtil.a(new SystemDragUtils.TouchHandler.1.1(this, SystemDragUtils.a((Context)this.this$0.b.get(), this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1
  * JD-Core Version:    0.7.0.1
  */

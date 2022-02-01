@@ -13,7 +13,7 @@ class GetJoinedHotChatListStep$GetJoindedHotChatListObserver
   {
     if (GetJoinedHotChatListStep.a(this.a) != null)
     {
-      this.a.mAutomator.a.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      this.a.mAutomator.k.removeObserver(GetJoinedHotChatListStep.a(this.a));
       GetJoinedHotChatListStep.a(this.a, null);
     }
     if (paramInt == 0)
@@ -26,7 +26,7 @@ class GetJoinedHotChatListStep$GetJoindedHotChatListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.step.GetJoinedHotChatListStep.GetJoindedHotChatListObserver
  * JD-Core Version:    0.7.0.1
  */

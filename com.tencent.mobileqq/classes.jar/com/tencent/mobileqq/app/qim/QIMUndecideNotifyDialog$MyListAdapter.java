@@ -30,37 +30,37 @@ import java.util.List;
 class QIMUndecideNotifyDialog$MyListAdapter
   extends XBaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<QIMNotifyAddFriend> jdField_a_of_type_JavaUtilList = new ArrayList();
-  int b = 0;
+  List<QIMNotifyAddFriend> a = new ArrayList();
+  LayoutInflater b;
+  QQAppInterface c;
+  Context d;
+  int e = 0;
+  int f = 0;
   
   public QIMUndecideNotifyDialog$MyListAdapter(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131298153);
-    this.b = paramContext.getResources().getDimensionPixelOffset(2131298152);
+    this.d = paramContext;
+    this.b = LayoutInflater.from(paramContext);
+    this.c = paramQQAppInterface;
+    this.e = paramContext.getResources().getDimensionPixelOffset(2131298839);
+    this.f = paramContext.getResources().getDimensionPixelOffset(2131298838);
   }
   
   public void a(List<QIMNotifyAddFriend> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -73,13 +73,13 @@ class QIMUndecideNotifyDialog$MyListAdapter
     QIMUndecideNotifyDialog.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560875, null);
-      localViewHolder = new QIMUndecideNotifyDialog.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369350));
-      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364390));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379784));
-      localViewHolder.b = ((TextView)paramView.findViewById(2131379890));
-      localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370239));
+      paramView = this.b.inflate(2131627197, null);
+      localViewHolder = new QIMUndecideNotifyDialog.ViewHolder(this.g);
+      localViewHolder.a = ((ImageView)paramView.findViewById(2131436366));
+      localViewHolder.d = ((CheckBox)paramView.findViewById(2131430416));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131448606));
+      localViewHolder.c = ((TextView)paramView.findViewById(2131448763));
+      localViewHolder.e = ((LinearLayout)paramView.findViewById(2131437433));
       paramView.setTag(localViewHolder);
     }
     else
@@ -87,49 +87,49 @@ class QIMUndecideNotifyDialog$MyListAdapter
       localViewHolder = (QIMUndecideNotifyDialog.ViewHolder)paramView.getTag();
     }
     QIMNotifyAddFriend localQIMNotifyAddFriend = (QIMNotifyAddFriend)getItem(paramInt);
-    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setTag(localQIMNotifyAddFriend);
-    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog);
-    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.b.contains(localQIMNotifyAddFriend));
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localQIMNotifyAddFriend.uin), (byte)3));
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localQIMNotifyAddFriend.nickName);
-    localViewHolder.b.setText(localQIMNotifyAddFriend.wording);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a.a(localQIMNotifyAddFriend.uin, localQIMNotifyAddFriend.qqUin);
+    localViewHolder.d.setTag(localQIMNotifyAddFriend);
+    localViewHolder.d.setOnCheckedChangeListener(this.g);
+    localViewHolder.d.setChecked(this.g.c.contains(localQIMNotifyAddFriend));
+    localViewHolder.a.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.c, String.valueOf(localQIMNotifyAddFriend.uin), (byte)3));
+    localViewHolder.b.setText(localQIMNotifyAddFriend.nickName);
+    localViewHolder.c.setText(localQIMNotifyAddFriend.wording);
+    Object localObject1 = this.g.d.a(localQIMNotifyAddFriend.uin, localQIMNotifyAddFriend.qqUin);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      localViewHolder.b.setText((CharSequence)localObject1);
+      localViewHolder.c.setText((CharSequence)localObject1);
     } else {
-      localViewHolder.b.setVisibility(8);
+      localViewHolder.c.setVisibility(8);
     }
     if (localQIMNotifyAddFriend.videoInfos.size() > 0)
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      localViewHolder.e.removeAllViews();
+      localViewHolder.e.setVisibility(0);
       localObject1 = new ArrayList();
       int i = 0;
       while (i < localQIMNotifyAddFriend.videoInfos.size())
       {
         Object localObject2 = (QIMNotifyAddFriend.VideoInfo)localQIMNotifyAddFriend.videoInfos.get(i);
-        URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+        URLImageView localURLImageView = new URLImageView(this.d);
         localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((ArrayList)localObject1).add(((QIMNotifyAddFriend.VideoInfo)localObject2).videoVid);
         localURLImageView.setOnClickListener(new QIMUndecideNotifyDialog.MyListAdapter.1(this, (ArrayList)localObject1, ((QIMNotifyAddFriend.VideoInfo)localObject2).videoVid));
-        UIUtils.a(localURLImageView, ((QIMNotifyAddFriend.VideoInfo)localObject2).coverUrl, this.jdField_a_of_type_Int, this.b, 8, new ColorDrawable(-1), "Qim_First_Login_Recommend");
-        localObject2 = new LinearLayout.LayoutParams(this.jdField_a_of_type_Int, this.b);
-        if (localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0) {
-          ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0, 0);
+        UIUtils.a(localURLImageView, ((QIMNotifyAddFriend.VideoInfo)localObject2).coverUrl, this.e, this.f, 8, new ColorDrawable(-1), "Qim_First_Login_Recommend");
+        localObject2 = new LinearLayout.LayoutParams(this.e, this.f);
+        if (localViewHolder.e.getChildCount() != 0) {
+          ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.b(5.0F, this.d.getResources()), 0, 0, 0);
         }
-        localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject2);
+        localViewHolder.e.addView(localURLImageView, (ViewGroup.LayoutParams)localObject2);
         i += 1;
       }
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    localViewHolder.jdField_a_of_type_Long = localQIMNotifyAddFriend.uin;
+    localViewHolder.e.setVisibility(8);
+    localViewHolder.f = localQIMNotifyAddFriend.uin;
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog.MyListAdapter
  * JD-Core Version:    0.7.0.1
  */

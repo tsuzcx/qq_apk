@@ -1,15 +1,9 @@
 package com.tencent.mobileqq.qcircle.api.constant;
 
-public class QCircleConstants$PushFromScene
-{
-  public static final int COMMENT_PANEL = 3;
-  public static final int DETAIL_PAGE = 2;
-  public static final int FOLLOW_TAB_PAGE = 1;
-  public static final int PERSONAL_PAGE = 4;
-}
+public class QCircleConstants$PushFromScene {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleConstants.PushFromScene
  * JD-Core Version:    0.7.0.1
  */

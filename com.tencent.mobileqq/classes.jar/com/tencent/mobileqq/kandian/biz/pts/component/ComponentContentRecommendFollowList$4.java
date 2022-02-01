@@ -23,18 +23,18 @@ class ComponentContentRecommendFollowList$4
     }
     if (paramBoolean)
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo;
+      paramString = this.a;
       paramString.isFollowed = true;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList.a(paramString);
-      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList).notifyDataSetChanged();
+      this.b.a(paramString);
+      ComponentContentRecommendFollowList.a(this.b).notifyDataSetChanged();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList.getContext(), 1, 2131717970, 0).a();
+    QQToast.makeText(this.b.getContext(), 1, 2131915450, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommendFollowList.4
  * JD-Core Version:    0.7.0.1
  */

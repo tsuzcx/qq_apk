@@ -9,13 +9,6 @@ import mqq.app.MobileQQ;
 
 public class ArkQQAPIIPCModule
 {
-  public static int a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    ((IArkIPCService)QRoute.api(IArkIPCService.class)).call(new ArkQQAPIIPCModule.8(localArrayList));
-    return ((Integer)localArrayList.get(0)).intValue();
-  }
-  
   public static String a()
   {
     ArrayList localArrayList = new ArrayList();
@@ -56,22 +49,6 @@ public class ArkQQAPIIPCModule
     ((IArkIPCService)QRoute.api(IArkIPCService.class)).call(new ArkQQAPIIPCModule.9(paramString, paramOnGetPSKeyHandler));
   }
   
-  public static boolean a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ((IArkIPCService)QRoute.api(IArkIPCService.class)).call(new ArkQQAPIIPCModule.10(paramString, localArrayList));
-    return ((Boolean)localArrayList.get(0)).booleanValue();
-  }
-  
-  private static QQAppInterface b()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
   public static String b()
   {
     ArrayList localArrayList = new ArrayList();
@@ -92,6 +69,13 @@ public class ArkQQAPIIPCModule
     return "";
   }
   
+  public static int c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    ((IArkIPCService)QRoute.api(IArkIPCService.class)).call(new ArkQQAPIIPCModule.8(localArrayList));
+    return ((Integer)localArrayList.get(0)).intValue();
+  }
+  
   public static String c(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
@@ -101,10 +85,26 @@ public class ArkQQAPIIPCModule
     }
     return null;
   }
+  
+  public static boolean d(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ((IArkIPCService)QRoute.api(IArkIPCService.class)).call(new ArkQQAPIIPCModule.10(paramString, localArrayList));
+    return ((Boolean)localArrayList.get(0)).booleanValue();
+  }
+  
+  private static QQAppInterface e()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule
  * JD-Core Version:    0.7.0.1
  */

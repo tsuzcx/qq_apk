@@ -32,7 +32,7 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemLayout19
   extends AbsStructMsgItem
 {
-  protected String ac;
+  protected String az;
   
   private void a(Context paramContext, AbsStructMsgElement paramAbsStructMsgElement, Bundle paramBundle, ViewGroup paramViewGroup)
   {
@@ -41,15 +41,15 @@ public class StructMsgItemLayout19
     {
       paramBundle = new StringBuilder();
       paramBundle.append("logo url = ");
-      paramBundle.append(paramAbsStructMsgElement.ac);
+      paramBundle.append(paramAbsStructMsgElement.av);
       QLog.d("StructMsgItemLayout19", 2, paramBundle.toString());
     }
-    if (TextUtils.isEmpty(paramAbsStructMsgElement.ac)) {
+    if (TextUtils.isEmpty(paramAbsStructMsgElement.av)) {
       return;
     }
     try
     {
-      new URL(paramAbsStructMsgElement.ac);
+      new URL(paramAbsStructMsgElement.av);
       paramBundle = paramContext.getResources();
       int i = AIOUtils.b(44.0F, paramBundle);
       paramContext = new URLImageView(paramContext);
@@ -63,13 +63,13 @@ public class StructMsgItemLayout19
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
       paramBundle.mRequestWidth = i;
       paramBundle.mRequestHeight = i;
-      paramAbsStructMsgElement = URLDrawable.getDrawable(paramAbsStructMsgElement.ac, paramBundle);
+      paramAbsStructMsgElement = URLDrawable.getDrawable(paramAbsStructMsgElement.av, paramBundle);
       paramAbsStructMsgElement.setAutoDownload(true);
       if (paramAbsStructMsgElement.getStatus() == 2) {
         paramAbsStructMsgElement.restartDownload();
       }
       paramContext.setImageDrawable(paramAbsStructMsgElement);
-      paramContext.setId(2131377958);
+      paramContext.setId(2131446445);
       paramViewGroup.addView(paramContext);
       return;
     }
@@ -82,10 +82,10 @@ public class StructMsgItemLayout19
     paramContext = (TextView)paramAbsStructMsgElement.a(paramContext, null, paramBundle);
     paramAbsStructMsgElement = new RelativeLayout.LayoutParams(-2, -2);
     paramAbsStructMsgElement.setMargins(AIOUtils.b(19.0F, localResources), AIOUtils.b(4.5F, localResources), 0, 0);
-    paramAbsStructMsgElement.addRule(3, 2131377959);
+    paramAbsStructMsgElement.addRule(3, 2131446446);
     if (paramBoolean)
     {
-      paramAbsStructMsgElement.addRule(0, 2131377958);
+      paramAbsStructMsgElement.addRule(0, 2131446445);
       paramAbsStructMsgElement.addRule(9);
     }
     paramContext.setLayoutParams(paramAbsStructMsgElement);
@@ -97,7 +97,7 @@ public class StructMsgItemLayout19
   {
     try
     {
-      i = Color.parseColor(((StructMsgItemRemark)paramAbsStructMsgElement).g());
+      i = Color.parseColor(((StructMsgItemRemark)paramAbsStructMsgElement).q());
     }
     catch (Exception localException)
     {
@@ -107,7 +107,7 @@ public class StructMsgItemLayout19
       break label15;
     }
     i = Color.parseColor("#ffffff");
-    paramQQWalletTransferBubbleView.setBubbleBackground(2130847480, i, true);
+    paramQQWalletTransferBubbleView.setBubbleBackground(2130849134, i, true);
     localResources = paramContext.getResources();
     paramContext = (TextView)paramAbsStructMsgElement.a(paramContext, null, paramBundle);
     paramAbsStructMsgElement = new RelativeLayout.LayoutParams(-2, -2);
@@ -125,12 +125,12 @@ public class StructMsgItemLayout19
     paramAbsStructMsgElement.setMargins(AIOUtils.b(19.0F, localResources), AIOUtils.b(11.0F, localResources), 0, 0);
     if (paramBoolean)
     {
-      paramAbsStructMsgElement.addRule(0, 2131377958);
+      paramAbsStructMsgElement.addRule(0, 2131446445);
       paramAbsStructMsgElement.addRule(9);
     }
     paramContext.setLayoutParams(paramAbsStructMsgElement);
     paramContext.setSingleLine();
-    paramContext.setId(2131377959);
+    paramContext.setId(2131446446);
     paramViewGroup.addView(paramContext);
   }
   
@@ -140,7 +140,7 @@ public class StructMsgItemLayout19
       QLog.d("StructMsgItemLayout19", 2, "read external");
     }
     super.a(paramObjectInput);
-    this.ac = paramObjectInput.readUTF();
+    this.az = paramObjectInput.readUTF();
   }
   
   public void a(ObjectOutput paramObjectOutput)
@@ -149,7 +149,7 @@ public class StructMsgItemLayout19
       QLog.d("StructMsgItemLayout19", 2, "write external");
     }
     super.a(paramObjectOutput);
-    String str2 = this.ac;
+    String str2 = this.az;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -162,8 +162,8 @@ public class StructMsgItemLayout19
     if (QLog.isColorLevel()) {
       QLog.d("StructMsgItemLayout19", 2, "to xml");
     }
-    if (!TextUtils.isEmpty(this.ac)) {
-      paramXmlSerializer.attribute(null, "url", this.ac);
+    if (!TextUtils.isEmpty(this.az)) {
+      paramXmlSerializer.attribute(null, "url", this.az);
     }
     super.a(paramXmlSerializer);
   }
@@ -174,13 +174,8 @@ public class StructMsgItemLayout19
     if (QLog.isColorLevel()) {
       QLog.d("StructMsgItemLayout19", 2, "from xml");
     }
-    this.ac = paramStructMsgNode.a("bgColor");
+    this.az = paramStructMsgNode.a("bgColor");
     return bool;
-  }
-  
-  protected int b()
-  {
-    return 19;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
@@ -200,13 +195,13 @@ public class StructMsgItemLayout19
       localObject2 = new LinearLayout.LayoutParams(-1, -2);
       ((LinearLayout.LayoutParams)localObject2).setMargins(0, AIOUtils.b(3.0F, (Resources)localObject1), 0, 0);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      paramView.setId(2131377957);
+      paramView.setId(2131446444);
     }
     Object localObject2 = new QQWalletTransferBubbleView(paramContext);
     ((QQWalletTransferBubbleView)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-1, AIOUtils.b(74.0F, (Resources)localObject1)));
     try
     {
-      i = Color.parseColor(this.ac);
+      i = Color.parseColor(this.az);
     }
     catch (Exception localException)
     {
@@ -221,16 +216,16 @@ public class StructMsgItemLayout19
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("parse item bg color failure, color = ");
-      ((StringBuilder)localObject3).append(this.ac);
+      ((StringBuilder)localObject3).append(this.az);
       QLog.d("StructMsgItemLayout19", 2, ((StringBuilder)localObject3).toString());
     }
     i = Color.parseColor("#18b4ed");
-    ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130847479, i, true);
+    ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130849133, i, true);
     paramView.addView((View)localObject2);
     localObject3 = new QQWalletTransferBubbleView(paramContext);
     ((QQWalletTransferBubbleView)localObject3).setLayoutParams(new LinearLayout.LayoutParams(-1, AIOUtils.b(25.0F, (Resources)localObject1)));
     paramView.addView((View)localObject3);
-    localObject1 = this.a.iterator();
+    localObject1 = this.ax.iterator();
     bool = false;
     while (((Iterator)localObject1).hasNext())
     {
@@ -241,11 +236,11 @@ public class StructMsgItemLayout19
         bool = true;
       }
     }
-    k = this.a.size();
+    k = this.ax.size();
     i = j;
     while (i < k)
     {
-      localObject1 = (AbsStructMsgElement)this.a.get(i);
+      localObject1 = (AbsStructMsgElement)this.ax.get(i);
       if ((localObject1 instanceof StructMsgItemTitle)) {
         b(paramContext, (AbsStructMsgElement)localObject1, paramBundle, (ViewGroup)localObject2, bool);
       } else if ((localObject1 instanceof StructMsgItemSummary)) {
@@ -258,14 +253,19 @@ public class StructMsgItemLayout19
     return paramView;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 19;
+  }
+  
+  public String e()
   {
     return "Layout19";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout19
  * JD-Core Version:    0.7.0.1
  */

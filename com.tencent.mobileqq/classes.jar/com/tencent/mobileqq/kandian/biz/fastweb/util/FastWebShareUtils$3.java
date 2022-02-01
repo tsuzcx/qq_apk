@@ -18,7 +18,7 @@ class FastWebShareUtils$3
   {
     try
     {
-      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
       if (localObject != null)
       {
         Bitmap localBitmap = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
@@ -30,7 +30,7 @@ class FastWebShareUtils$3
           localObject = localBitmap;
           if (k > 8000)
           {
-            boolean bool = this.jdField_a_of_type_Boolean;
+            boolean bool = this.b;
             localObject = localBitmap;
             if (!bool)
             {
@@ -48,7 +48,7 @@ class FastWebShareUtils$3
               localBitmap.recycle();
             }
           }
-          this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+          this.c.put("image", localObject);
         }
       }
     }
@@ -57,12 +57,12 @@ class FastWebShareUtils$3
       label171:
       break label171;
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.d.runOnUiThread(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebShareUtils.3
  * JD-Core Version:    0.7.0.1
  */

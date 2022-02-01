@@ -39,7 +39,7 @@ public final class ReadInJoyManagerImpl
   {
     ReadInJoyManager localReadInJoyManager = this.readInJoyManager;
     if (localReadInJoyManager != null) {
-      return localReadInJoyManager.a();
+      return localReadInJoyManager.b();
     }
     return null;
   }
@@ -59,7 +59,7 @@ public final class ReadInJoyManagerImpl
   {
     ReadInJoyManager localReadInJoyManager = this.readInJoyManager;
     if (localReadInJoyManager != null) {
-      return localReadInJoyManager.a();
+      return localReadInJoyManager.c();
     }
     return null;
   }
@@ -81,7 +81,7 @@ public final class ReadInJoyManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.msf.api.impl.ReadInJoyManagerImpl
  * JD-Core Version:    0.7.0.1
  */

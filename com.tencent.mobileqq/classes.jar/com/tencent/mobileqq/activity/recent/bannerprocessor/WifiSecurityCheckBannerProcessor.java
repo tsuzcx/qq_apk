@@ -26,17 +26,12 @@ public class WifiSecurityCheckBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.d;
-  }
+  public static final int a = BannerTypeCollections.d;
   
   public WifiSecurityCheckBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -49,15 +44,15 @@ public class WifiSecurityCheckBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "initWiFiSecurityBanner");
     }
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838218));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839452));
     paramBanner.setVisibility(8);
     return paramBanner;
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner = (TipsBar)paramBanner.a;
+    paramBanner = (TipsBar)paramBanner.c;
     if (paramMessage == null) {
       return;
     }
@@ -68,10 +63,10 @@ public class WifiSecurityCheckBannerProcessor
     paramBanner.setTipsText(paramMessage.tips);
     paramBanner.setOnClickListener(new WifiSecurityCheckBannerProcessor.1(this, paramMessage));
     paramBanner.setVisibility(0);
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 6, 0, "", "", "", "");
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 7000L);
-    paramBanner = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getApplicationContext();
+    ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 6, 0, "", "", "", "");
+    this.g.removeMessages(1000);
+    this.g.sendEmptyMessageDelayed(1000, 7000L);
+    paramBanner = this.f.getApplicationContext();
     int i;
     if (paramMessage.tipsType == 2) {
       i = 398680;
@@ -83,15 +78,15 @@ public class WifiSecurityCheckBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -100,14 +95,14 @@ public class WifiSecurityCheckBannerProcessor
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "handler msg MSG_HIDE_WIFI_SECURITY_CHECK");
       }
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
+      BannerManager.a().a(a, 0, paramMessage);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.WifiSecurityCheckBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

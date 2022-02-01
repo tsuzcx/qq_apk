@@ -42,44 +42,83 @@ import java.util.Map;
 public abstract class AbsWSVerticalForDramaPresenter
   extends AbsWSVerticalChoiceVideoPresenter
 {
-  private WSDramaEpisodeDataFetcher a;
-  protected String a;
+  protected String a = "";
   protected String b = "";
-  private String c;
+  private String i;
+  private WSDramaEpisodeDataFetcher j = new WSDramaEpisodeDataFetcher();
   
   public AbsWSVerticalForDramaPresenter(WSVerticalPageContract.View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeDataFetcher = new WSDramaEpisodeDataFetcher();
   }
   
-  private WSDramaEpisodeInfo a()
+  private WSDramaEpisodeInfo O()
   {
-    WSVerticalPageContract.View localView = a();
-    if ((localView != null) && (localView.a() != null) && (localView.a().getItemCount() > 0)) {
-      return ((WSVerticalItemData)localView.a().getItem(0)).a();
+    WSVerticalPageContract.View localView = z();
+    if ((localView != null) && (localView.b() != null) && (localView.b().getItemCount() > 0)) {
+      return ((WSVerticalItemData)localView.b().getItem(0)).g();
     }
     return null;
   }
   
-  private void a(@AbsWSVerticalForDramaPresenter.WatchRecordReportScene int paramInt)
+  private void P()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("reportDramaWatchRecord() scene = ");
-    ((StringBuilder)localObject).append(paramInt);
-    WSLog.a("WSVerticalForDramaPresenterLog", ((StringBuilder)localObject).toString());
-    localObject = (WSVerticalItemData)a().getItem(this.jdField_a_of_type_Int);
-    WSDramaOperationRecordManager.a(this.jdField_a_of_type_JavaLangString, WSVerticalDataUtil.a((WSVerticalItemData)localObject), WSVerticalDataUtil.a((WSVerticalItemData)localObject), (int)(a().a().a() / 1000L));
+    Object localObject1 = K();
+    if (localObject1 != null)
+    {
+      Object localObject2 = (WSVerticalItemData)((WSVerticalVideoHolder)localObject1).e;
+      if (localObject2 != null)
+      {
+        localObject1 = ((WSVerticalItemData)localObject2).g();
+        if (localObject1 != null)
+        {
+          localObject2 = ((WSVerticalItemData)localObject2).b();
+          if (localObject2 != null) {
+            a((WSDramaEpisodeInfo)localObject1, ((stSimpleMetaFeed)localObject2).id);
+          }
+        }
+      }
+    }
+  }
+  
+  private void Q()
+  {
+    if (z() != null)
+    {
+      if (L() == null) {
+        return;
+      }
+      WSVerticalBeaconReport.i(z().k(), z().l(), L().b(), n());
+    }
+  }
+  
+  private void R()
+  {
+    if (z() == null) {
+      return;
+    }
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView = z().c();
+    if (localVideoFeedsRecyclerView == null) {
+      return;
+    }
+    int k = 0;
+    while (k < localVideoFeedsRecyclerView.getChildCount())
+    {
+      RecyclerView.ViewHolder localViewHolder = localVideoFeedsRecyclerView.getChildViewHolder(localVideoFeedsRecyclerView.getChildAt(k));
+      if ((localViewHolder instanceof WSVerticalCommonVideoHolder)) {
+        ((WSVerticalVideoHolder)localViewHolder).c.d(3);
+      }
+      k += 1;
+    }
   }
   
   private void a(WSDramaEpisodeInfo paramWSDramaEpisodeInfo, String paramString)
   {
     WSDramaVideoPlayEvent localWSDramaVideoPlayEvent = new WSDramaVideoPlayEvent();
     localWSDramaVideoPlayEvent.setDramaId(paramWSDramaEpisodeInfo.a());
-    localWSDramaVideoPlayEvent.setEpisodeNum(paramWSDramaEpisodeInfo.a());
+    localWSDramaVideoPlayEvent.setEpisodeNum(paramWSDramaEpisodeInfo.c());
     localWSDramaVideoPlayEvent.setEpisodeId(paramString);
-    localWSDramaVideoPlayEvent.setDramaInfo(paramWSDramaEpisodeInfo.a());
+    localWSDramaVideoPlayEvent.setDramaInfo(paramWSDramaEpisodeInfo.d());
     localWSDramaVideoPlayEvent.setDramaPreviewPage(false);
     WSSimpleEventBus.a().a(localWSDramaVideoPlayEvent);
     paramWSDramaEpisodeInfo = new StringBuilder();
@@ -88,49 +127,32 @@ public abstract class AbsWSVerticalForDramaPresenter
     WSLog.e("WSVerticalForDramaPresenterLog", paramWSDramaEpisodeInfo.toString());
   }
   
-  private void b(int paramInt)
+  private void d(@AbsWSVerticalForDramaPresenter.WatchRecordReportScene int paramInt)
   {
-    WSVerticalPageAdapter localWSVerticalPageAdapter = a().a();
-    if (localWSVerticalPageAdapter == null) {
-      return;
-    }
-    int i = 0;
-    while (i < localWSVerticalPageAdapter.getDataList().size())
-    {
-      Object localObject = (WSVerticalItemData)localWSVerticalPageAdapter.getDataList().get(i);
-      if (localObject != null)
-      {
-        localObject = ((WSVerticalItemData)localObject).a();
-        if ((localObject != null) && (((WSDramaEpisodeInfo)localObject).a() != null))
-        {
-          localObject = ((WSDramaEpisodeInfo)localObject).a().dramaInfo;
-          boolean bool = true;
-          if (paramInt != 1) {
-            bool = false;
-          }
-          ((stDramaInfo)localObject).isFollowed = bool;
-        }
-      }
-      i += 1;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportDramaWatchRecord() scene = ");
+    ((StringBuilder)localObject).append(paramInt);
+    WSLog.a("WSVerticalForDramaPresenterLog", ((StringBuilder)localObject).toString());
+    localObject = (WSVerticalItemData)J().getItem(this.g);
+    WSDramaOperationRecordManager.a(this.a, WSVerticalDataUtil.c((WSVerticalItemData)localObject), WSVerticalDataUtil.a((WSVerticalItemData)localObject), (int)(J().d().a() / 1000L));
   }
   
-  private void b(@Nullable WSVerticalItemData paramWSVerticalItemData)
+  private void d(@Nullable WSVerticalItemData paramWSVerticalItemData)
   {
-    if (a() != null)
+    if (z() != null)
     {
-      TextView localTextView = a().a();
+      TextView localTextView = z().d();
       if (localTextView != null)
       {
         if (paramWSVerticalItemData == null) {
           return;
         }
-        if (paramWSVerticalItemData.b())
+        if (paramWSVerticalItemData.c())
         {
-          if (this.c == null) {
-            this.c = localTextView.getContext().getString(2131691848);
+          if (this.i == null) {
+            this.i = localTextView.getContext().getString(2131888813);
           }
-          paramWSVerticalItemData = this.c;
+          paramWSVerticalItemData = this.i;
         }
         else
         {
@@ -141,84 +163,47 @@ public abstract class AbsWSVerticalForDramaPresenter
     }
   }
   
-  private void k()
+  private void e(int paramInt)
   {
-    Object localObject1 = a();
-    if (localObject1 != null)
+    WSVerticalPageAdapter localWSVerticalPageAdapter = z().b();
+    if (localWSVerticalPageAdapter == null) {
+      return;
+    }
+    int k = 0;
+    while (k < localWSVerticalPageAdapter.getDataList().size())
     {
-      Object localObject2 = (WSVerticalItemData)((WSVerticalVideoHolder)localObject1).jdField_a_of_type_JavaLangObject;
-      if (localObject2 != null)
+      Object localObject = (WSVerticalItemData)localWSVerticalPageAdapter.getDataList().get(k);
+      if (localObject != null)
       {
-        localObject1 = ((WSVerticalItemData)localObject2).a();
-        if (localObject1 != null)
+        localObject = ((WSVerticalItemData)localObject).g();
+        if ((localObject != null) && (((WSDramaEpisodeInfo)localObject).d() != null))
         {
-          localObject2 = ((WSVerticalItemData)localObject2).a();
-          if (localObject2 != null) {
-            a((WSDramaEpisodeInfo)localObject1, ((stSimpleMetaFeed)localObject2).id);
+          localObject = ((WSDramaEpisodeInfo)localObject).d().dramaInfo;
+          boolean bool = true;
+          if (paramInt != 1) {
+            bool = false;
           }
+          ((stDramaInfo)localObject).isFollowed = bool;
         }
       }
+      k += 1;
     }
-  }
-  
-  private void l()
-  {
-    if (a() != null)
-    {
-      if (a() == null) {
-        return;
-      }
-      WSVerticalBeaconReport.h(a().a(), a().b(), a().a(), b());
-    }
-  }
-  
-  private void m()
-  {
-    if (a() == null) {
-      return;
-    }
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView = a().a();
-    if (localVideoFeedsRecyclerView == null) {
-      return;
-    }
-    int i = 0;
-    while (i < localVideoFeedsRecyclerView.getChildCount())
-    {
-      RecyclerView.ViewHolder localViewHolder = localVideoFeedsRecyclerView.getChildViewHolder(localVideoFeedsRecyclerView.getChildAt(i));
-      if ((localViewHolder instanceof WSVerticalCommonVideoHolder)) {
-        ((WSVerticalVideoHolder)localViewHolder).jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.d(3);
-      }
-      i += 1;
-    }
-  }
-  
-  public String a()
-  {
-    if (a() == null) {
-      return "";
-    }
-    return a().b();
-  }
-  
-  public Map<String, String> a()
-  {
-    return a(false);
   }
   
   public Map<String, String> a(WSVerticalItemData paramWSVerticalItemData)
   {
-    Object localObject = a();
-    int i;
+    Object localObject = K();
+    int k;
     if (localObject != null) {
-      i = ((WSVerticalItemData)((WSVerticalVideoHolder)localObject).jdField_a_of_type_JavaLangObject).a().a().dramaInfo.curPublishedFeedNum;
+      k = ((WSVerticalItemData)((WSVerticalVideoHolder)localObject).e).g().d().dramaInfo.curPublishedFeedNum;
     } else {
-      i = -1;
+      k = -1;
     }
     localObject = super.a(paramWSVerticalItemData);
-    ((Map)localObject).put("micro_drama_id", this.jdField_a_of_type_JavaLangString);
-    ((Map)localObject).put("micro_drama_num", String.valueOf(i));
-    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSVerticalItemData.a().a()));
-    ((Map)localObject).put("cover_feedid", paramWSVerticalItemData.a().id);
+    ((Map)localObject).put("micro_drama_id", this.a);
+    ((Map)localObject).put("micro_drama_num", String.valueOf(k));
+    ((Map)localObject).put("cover_drama_num", String.valueOf(paramWSVerticalItemData.g().c()));
+    ((Map)localObject).put("cover_feedid", paramWSVerticalItemData.b().id);
     return localObject;
   }
   
@@ -226,32 +211,32 @@ public abstract class AbsWSVerticalForDramaPresenter
   public Map<String, String> a(boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("micro_drama_id", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("micro_drama_id", this.a);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(WSVerticalDataUtil.a(a()));
+    ((StringBuilder)localObject).append(WSVerticalDataUtil.a(L()));
     ((StringBuilder)localObject).append("");
     localHashMap.put("micro_drama_num", ((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      if (this.e) {
+      if (this.h) {
         localObject = "1";
       } else {
         localObject = "0";
       }
       localHashMap.put("is_clear", localObject);
     }
-    localHashMap.put("ref_feedid", c());
+    localHashMap.put("ref_feedid", y());
     return localHashMap;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("drama_id");
+    this.a = paramBundle.getString("drama_id");
     this.b = paramBundle.getString("current_episode_id");
     paramBundle = new StringBuilder();
     paramBundle.append("mIntentDramaId = ");
-    paramBundle.append(this.jdField_a_of_type_JavaLangString);
+    paramBundle.append(this.a);
     paramBundle.append(", mIntentFeedId = ");
     paramBundle.append(this.b);
     WSLog.a("WSVerticalForDramaPresenterLog", paramBundle.toString());
@@ -263,11 +248,11 @@ public abstract class AbsWSVerticalForDramaPresenter
     if ((paramViewHolder instanceof WSVerticalVideoHolder))
     {
       paramViewHolder = (WSVerticalVideoHolder)paramViewHolder;
-      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.jdField_a_of_type_Int = 1;
-      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.jdField_a_of_type_JavaLangObject });
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.f = 1;
+      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.e });
       StoryDispatcher.a().dispatch(paramViewHolder);
     }
-    b(a());
+    d(L());
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
@@ -275,94 +260,107 @@ public abstract class AbsWSVerticalForDramaPresenter
     super.a(paramWSSimpleBaseEvent);
     if ((paramWSSimpleBaseEvent instanceof WSDramaFollowEvent))
     {
-      b(((WSDramaFollowEvent)paramWSSimpleBaseEvent).getStatus());
-      m();
+      e(((WSDramaFollowEvent)paramWSSimpleBaseEvent).getStatus());
+      R();
     }
   }
   
   public void a(WSPlayerParam paramWSPlayerParam)
   {
     super.a(paramWSPlayerParam);
-    k();
-    a(1);
+    P();
+    d(1);
   }
   
   public void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    a(2);
+    d(2);
   }
   
-  protected boolean a(String paramString)
+  public boolean b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    paramString = new WSDramaEpisodeParams(false, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeDataFetcher.a(paramString, this);
+    paramString = new WSDramaEpisodeParams(paramBoolean2, paramBoolean1, this.a, this.b, true);
+    return this.j.a(paramString, this);
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected boolean c(String paramString)
   {
-    paramString = new WSDramaEpisodeParams(paramBoolean2, paramBoolean1, this.jdField_a_of_type_JavaLangString, this.b, true);
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeDataFetcher.a(paramString, this);
-  }
-  
-  public String b()
-  {
-    WSDramaEpisodeInfo localWSDramaEpisodeInfo = a();
-    if ((localWSDramaEpisodeInfo != null) && (localWSDramaEpisodeInfo.a() != null)) {
-      return WSDramaUtils.a(BaseApplicationImpl.getContext(), localWSDramaEpisodeInfo.a().dramaInfo);
-    }
-    return "";
-  }
-  
-  public Map<String, String> b()
-  {
-    Map localMap = super.b();
-    localMap.putAll(a(true));
-    return localMap;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public boolean d()
-  {
-    return true;
+    paramString = new WSDramaEpisodeParams(false, false, this.a, this.b, false);
+    return this.j.a(paramString, this);
   }
   
   public void e()
   {
-    a().a(WSExpABTestManager.a().g());
-    a().b(true);
-  }
-  
-  public boolean e()
-  {
-    WSDramaEpisodeDataFetcher localWSDramaEpisodeDataFetcher = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeDataFetcher;
-    return (localWSDramaEpisodeDataFetcher == null) || (localWSDramaEpisodeDataFetcher.b);
-  }
-  
-  public boolean f()
-  {
-    WSDramaEpisodeDataFetcher localWSDramaEpisodeDataFetcher = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeDataFetcher;
-    return (localWSDramaEpisodeDataFetcher == null) || (localWSDramaEpisodeDataFetcher.a);
+    J().a(WSExpABTestManager.a().s());
+    J().b(true);
   }
   
   public void g()
   {
     super.g();
-    a(3);
+    d(3);
   }
   
-  public void j()
+  public Map<String, String> m()
   {
-    super.j();
-    l();
+    return a(false);
+  }
+  
+  public Map<String, String> n()
+  {
+    Map localMap = super.n();
+    localMap.putAll(a(true));
+    return localMap;
+  }
+  
+  public boolean p()
+  {
+    return true;
+  }
+  
+  public void q()
+  {
+    super.q();
+    Q();
+  }
+  
+  public boolean u()
+  {
+    WSDramaEpisodeDataFetcher localWSDramaEpisodeDataFetcher = this.j;
+    return (localWSDramaEpisodeDataFetcher == null) || (localWSDramaEpisodeDataFetcher.b);
+  }
+  
+  public boolean v()
+  {
+    WSDramaEpisodeDataFetcher localWSDramaEpisodeDataFetcher = this.j;
+    return (localWSDramaEpisodeDataFetcher == null) || (localWSDramaEpisodeDataFetcher.a);
+  }
+  
+  public String w()
+  {
+    if (O() == null) {
+      return "";
+    }
+    return O().b();
+  }
+  
+  public String x()
+  {
+    WSDramaEpisodeInfo localWSDramaEpisodeInfo = O();
+    if ((localWSDramaEpisodeInfo != null) && (localWSDramaEpisodeInfo.d() != null)) {
+      return WSDramaUtils.a(BaseApplicationImpl.getContext(), localWSDramaEpisodeInfo.d().dramaInfo);
+    }
+    return "";
+  }
+  
+  public String y()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.AbsWSVerticalForDramaPresenter
  * JD-Core Version:    0.7.0.1
  */

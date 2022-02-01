@@ -32,7 +32,7 @@ final class WSVerticalDataManager$2
           localObject1 = (JSONObject)JSONObject.class.cast(localObject2);
           LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
         }
-        localObject2 = new JSONObject(WSVerticalDataManager.b());
+        localObject2 = new JSONObject(WSVerticalDataManager.c());
         if ((localObject1 != null) && (localObject1 != JSONObject.NULL)) {
           WSVerticalDataManager.a((JSONObject)localObject1, (JSONObject)localObject2);
         } else {
@@ -40,7 +40,7 @@ final class WSVerticalDataManager$2
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("setGdtArgs success args =");
-        ((StringBuilder)localObject1).append(WSVerticalDataManager.b());
+        ((StringBuilder)localObject1).append(WSVerticalDataManager.c());
         GdtLog.a("WSVerticalDataManagerLog", ((StringBuilder)localObject1).toString());
         return;
       }
@@ -53,7 +53,7 @@ final class WSVerticalDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.2
  * JD-Core Version:    0.7.0.1
  */

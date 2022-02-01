@@ -12,25 +12,25 @@ class MultiIncomingCallsActivity$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.a != null)
+    if (this.b.b.s != null)
     {
-      MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).clear();
-      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      MultiIncomingCallsActivity.b(this.b.b).clear();
+      Object localObject1 = this.a.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Memberinfo)((Iterator)localObject1).next();
-        if (((Memberinfo)localObject2).a != this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_Long) {
-          MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).add(localObject2);
+        if (((Memberinfo)localObject2).a != this.b.b.c) {
+          MultiIncomingCallsActivity.b(this.b.b).add(localObject2);
         }
       }
-      MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a);
+      MultiIncomingCallsActivity.c(this.b.b);
       if (QLog.isColorLevel())
       {
-        localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a.jdField_b_of_type_JavaLangString;
+        localObject1 = this.b.b.l;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("InviteMemberObserverWithoutCache mMemberChangeEventReceiver size:");
-        ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.a(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$1.a).size());
+        ((StringBuilder)localObject2).append(MultiIncomingCallsActivity.b(this.b.b).size());
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
     }

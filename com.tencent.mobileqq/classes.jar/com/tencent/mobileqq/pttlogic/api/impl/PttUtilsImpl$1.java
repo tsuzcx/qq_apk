@@ -15,14 +15,14 @@ class PttUtilsImpl$1
   
   public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    paramClickableColorSpanTextView = new ActivityURIRequest(this.jdField_a_of_type_AndroidContentContext, "/base/browser");
+    paramClickableColorSpanTextView = new ActivityURIRequest(this.a, "/base/browser");
     paramClickableColorSpanTextView.extra().putString("url", "https://kf.qq.com/touch/sappfaq/210331qMJbAf210331RZBBba.html");
     QRoute.startUri(paramClickableColorSpanTextView, new PttUtilsImpl.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

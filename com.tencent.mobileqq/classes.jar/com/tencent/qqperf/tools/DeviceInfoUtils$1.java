@@ -25,8 +25,8 @@ final class DeviceInfoUtils$1
   
   public void run()
   {
-    DeviceInfoUtils.a(System.currentTimeMillis());
-    this.a.edit().putLong("device_perf_level_timestamps", DeviceInfoUtils.a()).apply();
+    DeviceInfoUtils.access$002(System.currentTimeMillis());
+    this.val$sp.edit().putLong("device_perf_level_timestamps", DeviceInfoUtils.access$000()).apply();
     try
     {
       Object localObject1 = new JSONObject();
@@ -65,9 +65,9 @@ final class DeviceInfoUtils$1
           if (i != 0)
           {
             localObject1 = localObject2;
-            this.a.edit().putInt("device_perf_level", i).apply();
+            this.val$sp.edit().putInt("device_perf_level", i).apply();
             localObject1 = localObject2;
-            DeviceInfoUtils.a(i);
+            DeviceInfoUtils.access$102(i);
           }
         }
       }
@@ -84,13 +84,13 @@ final class DeviceInfoUtils$1
       if (QLog.isColorLevel()) {
         QLog.e("DeviceInfoUtils", 2, localThrowable.toString());
       }
-      DeviceInfoUtils.a().set(false);
+      DeviceInfoUtils.access$200().set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceInfoUtils.1
  * JD-Core Version:    0.7.0.1
  */

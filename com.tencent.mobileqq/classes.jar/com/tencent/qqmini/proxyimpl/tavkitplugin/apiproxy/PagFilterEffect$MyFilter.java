@@ -1,5 +1,6 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy;
 
+import com.tencent.autotemplate.TAVAutomaticRenderContext;
 import com.tencent.tavkit.ciimage.CIImage;
 import com.tencent.tavsticker.core.TAVStickerRenderContext;
 import com.tencent.tavsticker.model.TAVSticker;
@@ -9,6 +10,7 @@ class PagFilterEffect$MyFilter
 {
   PagFilterEffect$MyFilter(TAVSticker paramTAVSticker)
   {
+    super(new TAVAutomaticRenderContext());
     this.a.loadSticker(paramTAVSticker);
   }
   
@@ -19,7 +21,7 @@ class PagFilterEffect$MyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagFilterEffect.MyFilter
  * JD-Core Version:    0.7.0.1
  */

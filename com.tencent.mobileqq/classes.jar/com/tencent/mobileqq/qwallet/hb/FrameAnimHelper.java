@@ -10,24 +10,24 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FrameAnimHelper
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AnimationView.AnimationInfo jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-  private AnimationView jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+  private LinearLayout a;
+  private AnimationView b;
+  private AnimationView.AnimationInfo c;
   
   public FrameAnimHelper(Context paramContext, LinearLayout paramLinearLayout, int paramInt, boolean paramBoolean, AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = new AnimationView(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setmRadius(paramInt, paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationListener(paramMyAnimationListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView, new LinearLayout.LayoutParams(-1, -1));
+    this.a = paramLinearLayout;
+    this.b = new AnimationView(paramContext);
+    this.b.setmRadius(paramInt, paramBoolean);
+    this.b.setAnimationListener(paramMyAnimationListener);
+    this.a.addView(this.b, new LinearLayout.LayoutParams(-1, -1));
   }
   
   public FrameAnimHelper(AnimationView paramAnimationView, int paramInt, boolean paramBoolean, AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = paramAnimationView;
+    this.b = paramAnimationView;
     paramAnimationView.setmRadius(paramInt, paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationListener(paramMyAnimationListener);
+    this.b.setAnimationListener(paramMyAnimationListener);
   }
   
   public static void a(AnimationView paramAnimationView, boolean paramBoolean)
@@ -51,22 +51,22 @@ public class FrameAnimHelper
     if (QLog.isColorLevel()) {
       QLog.i("FrameAnimHelper", 2, "anim stoped...");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.stop();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setImageDrawable(null);
-    AnimationView.AnimationInfo localAnimationInfo = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+    this.b.stop();
+    this.b.setImageDrawable(null);
+    AnimationView.AnimationInfo localAnimationInfo = this.c;
     if (localAnimationInfo != null)
     {
       localAnimationInfo.destoryBitmaps();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = null;
+      this.c = null;
     }
   }
   
   public void a(AnimationView.AnimationInfo paramAnimationInfo)
   {
-    AnimationView localAnimationView = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramAnimationInfo;
+    AnimationView localAnimationView = this.b;
+    this.c = paramAnimationInfo;
     localAnimationView.setAnimationFromInfo(paramAnimationInfo);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+    this.b.play();
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -90,7 +90,7 @@ public class FrameAnimHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.FrameAnimHelper
  * JD-Core Version:    0.7.0.1
  */

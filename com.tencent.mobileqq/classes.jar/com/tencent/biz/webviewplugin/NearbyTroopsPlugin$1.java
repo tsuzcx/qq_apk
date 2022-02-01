@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
 
 class NearbyTroopsPlugin$1
   implements AIOAnimationControlManager.OnAnimationPlayEndListener
@@ -10,10 +10,10 @@ class NearbyTroopsPlugin$1
   
   public void a(String paramString1, String paramString2)
   {
-    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2))
+    if (AIOAnimationControlManager.b.equals(paramString2))
     {
-      paramString1 = this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin;
-      String str = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.b;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("{\"result\":1,\"id\":");
       localStringBuilder.append(paramString2);
@@ -24,7 +24,7 @@ class NearbyTroopsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NearbyTroopsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

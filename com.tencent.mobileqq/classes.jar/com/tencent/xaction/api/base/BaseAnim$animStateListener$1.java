@@ -17,8 +17,8 @@ public final class BaseAnim$animStateListener$1
   public void a()
   {
     FloatViewUtil.Companion localCompanion = FloatViewUtil.a;
-    FloatViewData localFloatViewData = this.jdField_a_of_type_ComTencentXactionApiBaseBaseAnim.getFloatData();
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    FloatViewData localFloatViewData = this.a.getFloatData();
+    View localView = this.b;
     if (localView == null) {
       Intrinsics.throwNpe();
     }
@@ -30,8 +30,8 @@ public final class BaseAnim$animStateListener$1
   public void c()
   {
     FloatViewUtil.Companion localCompanion = FloatViewUtil.a;
-    FloatViewData localFloatViewData = this.jdField_a_of_type_ComTencentXactionApiBaseBaseAnim.getFloatData();
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    FloatViewData localFloatViewData = this.a.getFloatData();
+    View localView = this.b;
     if (localView == null) {
       Intrinsics.throwNpe();
     }
@@ -40,7 +40,7 @@ public final class BaseAnim$animStateListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.base.BaseAnim.animStateListener.1
  * JD-Core Version:    0.7.0.1
  */

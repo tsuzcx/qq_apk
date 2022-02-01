@@ -7,41 +7,41 @@ import com.tencent.mobileqq.uftransfer.depend.UFTLog;
 
 public class UFTLogicThread
 {
-  private static UFTLogicThread jdField_a_of_type_ComTencentMobileqqUftransferUFTLogicThread;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private static UFTLogicThread a;
+  private HandlerThread b;
+  private Handler c;
   
   private UFTLogicThread()
   {
-    a();
+    b();
   }
   
   public static UFTLogicThread a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqUftransferUFTLogicThread == null) {
-        jdField_a_of_type_ComTencentMobileqqUftransferUFTLogicThread = new UFTLogicThread();
+      if (a == null) {
+        a = new UFTLogicThread();
       } else {
-        jdField_a_of_type_ComTencentMobileqqUftransferUFTLogicThread.a();
+        a.b();
       }
-      UFTLogicThread localUFTLogicThread = jdField_a_of_type_ComTencentMobileqqUftransferUFTLogicThread;
+      UFTLogicThread localUFTLogicThread = a;
       return localUFTLogicThread;
     }
     finally {}
   }
   
-  private void a()
+  private void b()
   {
     try
     {
-      HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+      HandlerThread localHandlerThread = this.b;
       if (localHandlerThread != null) {
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("UFTTransferLogicThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.b = new HandlerThread("UFTTransferLogicThread");
+      this.b.start();
+      this.c = new Handler(this.b.getLooper());
       UFTLog.b("[UFTTransfer] UFTLogicThread", 1, "transfer logicThread start...");
       return;
     }
@@ -53,7 +53,7 @@ public class UFTLogicThread
     if (paramRunnable == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    this.c.post(paramRunnable);
   }
   
   public void a(Runnable paramRunnable, long paramLong)
@@ -61,7 +61,7 @@ public class UFTLogicThread
     if (paramRunnable == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+    this.c.postDelayed(paramRunnable, paramLong);
   }
   
   public void b(Runnable paramRunnable)
@@ -69,9 +69,9 @@ public class UFTLogicThread
     if (paramRunnable == null) {
       return;
     }
-    if (Thread.currentThread() != this.jdField_a_of_type_AndroidOsHandler.getLooper().getThread())
+    if (Thread.currentThread() != this.c.getLooper().getThread())
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      this.c.post(paramRunnable);
       return;
     }
     paramRunnable.run();
@@ -79,7 +79,7 @@ public class UFTLogicThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.UFTLogicThread
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 public class AECirclePhotoUnit
   extends QIMCameraLifeCycleBaseUnit
 {
-  private AECirclePhotoListFragment jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
-  private IQIMCameraContainer jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer;
+  private IQIMCameraContainer a;
+  private AECirclePhotoListFragment b;
   
   private void a(View paramView)
   {
@@ -30,48 +30,48 @@ public class AECirclePhotoUnit
     QLog.i("AECirclePhotoUnit", 1, "reportDaTongRegister  subPage: AECirclePhotoUnit");
   }
   
-  public void I()
-  {
-    super.I();
-  }
-  
-  public View a()
-  {
-    View localView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getLayoutInflater().inflate(2064318611, null);
-    a(localView);
-    return localView;
-  }
-  
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
   }
   
-  public void g()
+  public void ai()
   {
-    super.g();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().finish();
+    super.ai();
   }
   
-  public boolean i()
+  public boolean ak()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer == null) {
+    if (this.a == null) {
       return false;
     }
-    AECirclePhotoListFragment localAECirclePhotoListFragment = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
-    if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.a())) {
+    AECirclePhotoListFragment localAECirclePhotoListFragment = this.b;
+    if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.f())) {
       return true;
     }
-    localAECirclePhotoListFragment = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment;
+    localAECirclePhotoListFragment = this.b;
     if ((localAECirclePhotoListFragment != null) && (localAECirclePhotoListFragment.a != null)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListFragment.a.a(null);
+      this.b.a.a(null);
     }
     return true;
+  }
+  
+  public View j()
+  {
+    View localView = this.a.getActivity().getLayoutInflater().inflate(2064056490, null);
+    a(localView);
+    return localView;
+  }
+  
+  public void m()
+  {
+    super.m();
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECirclePhotoUnit
  * JD-Core Version:    0.7.0.1
  */

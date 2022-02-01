@@ -189,7 +189,7 @@ public class IliveShareHelper
       if (localJSONObject != null) {
         localIntent.putExtra("forward_ark_app_config", localJSONObject.toString());
       }
-      localIntent.putExtra("scale", ArkAppCenterUtil.a());
+      localIntent.putExtra("scale", ArkAppCenterUtil.d());
       localIntent.putExtra("appName", str1);
       localIntent.putExtra("appView", str2);
       localIntent.putExtra("appMinVersion", str5);
@@ -246,7 +246,7 @@ public class IliveShareHelper
   
   private String replaceArkData()
   {
-    String str1 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}";
+    String str1 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"QQ直播\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}";
     Object localObject1 = str1;
     for (;;)
     {
@@ -271,7 +271,7 @@ public class IliveShareHelper
         localObject1 = str1;
         str3 = addShareParams(str3, "source", "qqhy");
         localObject1 = str1;
-        str1 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"开播啦鹅\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}".replace("{avatar_jump_url}", "mqqapi://qsubscribe/openhomepage?src_type=ilive&uid={uid}".replace("{uid}", String.valueOf(l1)));
+        str1 = "{\n    \"appName\":\"com.tencent.subscription\",\n    \"appView\":\"baseView\",\n    \"appConfig\":{\n        \"forward\":1,\n        \"autosize\":0,\n        \"type\":\"normal\"\n    },\n \"ver\":\"1.0.0.45\",\n    \"appDesc\":\"QQ直播\",\n    \"promptText\":\"来自QQ直播的分享\",\n    \"metaData\":{\n        \"data\":{\n            \"avatarJumpUrl\":\"{avatar_jump_url}\",\n            \"contentJumpUrl\":\"{h5_jump_url}\",\n            \"iconJumpUrl\":\"{icon_jump_url}\",\n            \"jumpUrl\":{\n                \"8.3.9\":{\n                    \"contentJumpUrl\":\"{content_jump_url}\"\n                },\n                \"pc\":{\n                    \"contentJumpUrl\":\"https://qzs.qzone.qq.com/qzone/hybrid/page/jumpQQ.html?url=https%3A%2F%2Fh5.qzone.qq.comhttps%3A%2F%2Fh5.qzone.qq.com%2Fv2%2Fvip%2Flive%2Froom%3Froomid%3D110008711\"\n                }\n            },\n            \"media\":[\n                {\n                    \"isVideo\":false,\n                    \"height\":2339,\n                    \"width\":1080,\n                    \"url\":\"{cover_url}\"\n                }\n            ],\n            \"title\":\"{title}\",\n            \"nick\":\"{nick_name}\",\n            \"common\":{\n                \"appIcon\":\"https://qzonestyle.gtimg.cn/qzone/qzact/act/external/live/live-icon-new.png\",\n                \"appName\":\"QQ直播\",\n                \"meta\":\"\",\n                \"avatar\":\"{avatar_url}\"\n            }\n        }\n    }\n}".replace("{avatar_jump_url}", "mqqapi://qsubscribe/openhomepage?src_type=ilive&uid={uid}".replace("{uid}", String.valueOf(l1)));
         localObject1 = str1;
         str1 = str1.replace("{content_jump_url}", str3);
         localObject1 = str1;
@@ -344,7 +344,7 @@ public class IliveShareHelper
     {
       localObject = this.mHostActivity;
       if (localObject != null) {
-        QQToast.a((Context)localObject, HardCodeUtil.a(2131714441), 0).a();
+        QQToast.makeText((Context)localObject, HardCodeUtil.a(2131911951), 0).show();
       }
       return;
     }
@@ -475,10 +475,10 @@ public class IliveShareHelper
       if ((str1 != null) && (!str1.isEmpty()))
       {
         int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131720478;
-        } else if (!WXShareHelper.a().b()) {
-          i = 2131720479;
+        if (!WXShareHelper.a().b()) {
+          i = 2131918154;
+        } else if (!WXShareHelper.a().c()) {
+          i = 2131918155;
         } else {
           i = -1;
         }
@@ -495,19 +495,19 @@ public class IliveShareHelper
           return;
         }
         initLoadingDialog(this.mHostActivity);
-        this.mLoadingDialog.c(2131693895);
+        this.mLoadingDialog.c(2131891516);
         this.mLoadingDialog.show();
         ThreadManager.post(new IliveShareHelper.5(this, (Map)localObject2, (Runnable)localObject1), 8, null, false);
         return;
       }
-      QQToast.a(this.mHostActivity, 1, HardCodeUtil.a(2131714438), 0).a();
+      QQToast.makeText(this.mHostActivity, 1, HardCodeUtil.a(2131911948), 0).show();
     }
   }
   
   public static String toJsonsString(String paramString)
   {
     if (paramString == null) {
-      return "null";
+      return "";
     }
     StringBuilder localStringBuilder = new StringBuilder(1024);
     int j = paramString.length();
@@ -601,9 +601,9 @@ public class IliveShareHelper
     if (this.mShare != null)
     {
       this.mDataBundle.putString("share_cover_url", paramShare.getShareUrl());
-      this.mDataBundle.putString("share_title", paramShare.a());
-      this.mDataBundle.putString("share_content", paramShare.b());
-      this.mDataBundle.putString("share_cover_url", paramShare.c());
+      this.mDataBundle.putString("share_title", paramShare.d());
+      this.mDataBundle.putString("share_content", paramShare.e());
+      this.mDataBundle.putString("share_cover_url", paramShare.f());
     }
   }
   
@@ -623,7 +623,7 @@ public class IliveShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.share.IliveShareHelper
  * JD-Core Version:    0.7.0.1
  */

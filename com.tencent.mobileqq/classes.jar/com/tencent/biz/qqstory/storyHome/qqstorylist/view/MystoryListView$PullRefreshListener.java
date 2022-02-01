@@ -4,7 +4,7 @@ public abstract interface MystoryListView$PullRefreshListener
 {
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void i();
+  public abstract void l();
 }
 
 

@@ -7,35 +7,38 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
 import com.tencent.mobileqq.activity.aio.drawer.GameMsgAppDrawer;
+import com.tencent.mobileqq.activity.aio.panel.PanelListener;
 import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameMsgAppHelper
-  implements ILifeCycleHelper
+  implements ILifeCycleHelper, PanelListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private Context b;
+  private Activity c;
+  private BaseChatPie d;
+  private SessionInfo e;
   
   public GameMsgAppHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.a = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.e;
+    this.c = paramBaseChatPie.f;
+    this.d = paramBaseChatPie;
+    this.e = paramBaseChatPie.ah;
   }
   
-  private BaseChatDrawer a()
+  private BaseChatDrawer d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).a)))
+    Object localObject = this.e;
+    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).b)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      localObject = this.d;
       if ((localObject instanceof GameMsgChatPie)) {
         return new GameMsgAppDrawer((GameMsgChatPie)localObject);
       }
@@ -48,11 +51,11 @@ public class GameMsgAppHelper
   
   public void b()
   {
-    if (!TextUtils.isEmpty(((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getAioHippyBundleName()))
+    if (!TextUtils.isEmpty(((IGameMsgManagerService)this.a.getRuntimeService(IGameMsgManagerService.class, "")).getAioHippyBundleName()))
     {
-      BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      BaseChatPie localBaseChatPie = this.d;
       if ((localBaseChatPie instanceof GameMsgChatPie)) {
-        ((ChatDrawerHelper)localBaseChatPie.a(124)).a = a();
+        ((ChatDrawerHelper)localBaseChatPie.q(124)).b = d();
       }
     }
   }
@@ -68,6 +71,8 @@ public class GameMsgAppHelper
   {
     return new int[] { 4, 9, 15 };
   }
+  
+  public void onHideAllPanel() {}
   
   public void onMoveToState(int paramInt)
   {
@@ -86,10 +91,43 @@ public class GameMsgAppHelper
     }
     b();
   }
+  
+  public void onPanelChanged(int paramInt1, int paramInt2) {}
+  
+  public void onPanelIconClickBeforeCreate(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onPanelIconClickBeforeCreate], panelId:");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.i("GameMsgAppHelper", 1, ((StringBuilder)localObject).toString());
+    if (paramInt != 3) {
+      if (paramInt != 4) {
+        if (paramInt != 5) {
+          if (paramInt != 24) {
+            localObject = "5";
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      localObject = "4";
+      continue;
+      localObject = "3";
+      continue;
+      localObject = "2";
+      continue;
+      localObject = "1";
+    }
+    ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.bi, "1", "145", "920", "92005", "208982", "", "", "20", (String)localObject);
+  }
+  
+  public void postOnPanelChanged(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GameMsgAppHelper
  * JD-Core Version:    0.7.0.1
  */

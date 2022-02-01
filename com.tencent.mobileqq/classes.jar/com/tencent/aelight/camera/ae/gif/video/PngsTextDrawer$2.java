@@ -18,16 +18,16 @@ class PngsTextDrawer$2
   public void run()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(PngsTextDrawer.a(this.this$0));
+    ((StringBuilder)localObject1).append(PngsTextDrawer.d(this.this$0));
     ((StringBuilder)localObject1).append(System.currentTimeMillis());
     localObject1 = ((StringBuilder)localObject1).toString();
     try
     {
       new File((String)localObject1).mkdirs();
-      PngsTextDrawer.a(this.this$0).a();
-      localObject2 = PngsTextDrawer.a(this.this$0).a();
+      PngsTextDrawer.c(this.this$0).a();
+      localObject2 = PngsTextDrawer.c(this.this$0).b();
       localObject3 = this.this$0;
-      localObject3 = PngsTextDrawer.a((PngsTextDrawer)localObject3, PngsTextDrawer.b((PngsTextDrawer)localObject3)).iterator();
+      localObject3 = PngsTextDrawer.a((PngsTextDrawer)localObject3, PngsTextDrawer.e((PngsTextDrawer)localObject3)).iterator();
       String str;
       for (;;)
       {
@@ -41,7 +41,7 @@ class PngsTextDrawer$2
         if (localBitmap == null) {
           break;
         }
-        new Canvas(localBitmap).drawBitmap((Bitmap)localObject2, PngsTextDrawer.c(this.this$0), PngsTextDrawer.d(this.this$0), new Paint());
+        new Canvas(localBitmap).drawBitmap((Bitmap)localObject2, PngsTextDrawer.f(this.this$0), PngsTextDrawer.g(this.this$0), new Paint());
         str = new File(str).getName();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
@@ -55,7 +55,7 @@ class PngsTextDrawer$2
       label269:
       int i = 1;
       label271:
-      PngsTextDrawer.a(this.this$0).b();
+      PngsTextDrawer.c(this.this$0).c();
       localObject2 = this.a;
       if (localObject2 != null)
       {
@@ -85,7 +85,7 @@ class PngsTextDrawer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsTextDrawer.2
  * JD-Core Version:    0.7.0.1
  */

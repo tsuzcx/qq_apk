@@ -53,11 +53,6 @@ public class PrecoverUtils
     return null;
   }
   
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext.getSharedPreferences("PRECOVER_SP_NAME", 0).edit().putLong(paramString, System.currentTimeMillis()).commit();
-  }
-  
   public static boolean a(Context paramContext, String paramString)
   {
     long l = System.currentTimeMillis();
@@ -82,10 +77,15 @@ public class PrecoverUtils
     }
     return str;
   }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    paramContext.getSharedPreferences("PRECOVER_SP_NAME", 0).edit().putLong(paramString, System.currentTimeMillis()).commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverUtils
  * JD-Core Version:    0.7.0.1
  */

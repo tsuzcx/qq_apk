@@ -17,14 +17,8 @@ import java.util.ArrayList;
 public class TroopFileProxyActivity
   extends TroopBaseProxyActivity
 {
-  public static String a;
-  public static ArrayList<FileInfo> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaLangString = "key_qun_id";
-  }
+  public static ArrayList<FileInfo> a = new ArrayList();
+  public static String b = "key_qun_id";
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, String paramString)
   {
@@ -38,18 +32,18 @@ public class TroopFileProxyActivity
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "troop_plugin.apk";
-    localPluginParams.e = HardCodeUtil.a(2131715112);
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString2;
-    localPluginParams.f = paramString1;
-    localPluginParams.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localPluginParams.d = "troop_plugin.apk";
+    localPluginParams.g = HardCodeUtil.a(2131912600);
+    localPluginParams.c = paramString2;
+    localPluginParams.h = paramString1;
+    localPluginParams.i = TroopFileProxyActivity.class;
+    localPluginParams.j = paramIntent;
+    localPluginParams.l = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localPluginParams.c = paramInt;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
   }
   
@@ -91,7 +85,7 @@ public class TroopFileProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopFileProxyActivity
  * JD-Core Version:    0.7.0.1
  */

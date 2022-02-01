@@ -11,14 +11,14 @@ public class QVipProfileFootPrintProcessor
 {
   public static QVipProfileFootPrintConfig a()
   {
-    return (QVipProfileFootPrintConfig)QConfigManager.a().a(413);
+    return (QVipProfileFootPrintConfig)QConfigManager.b().b(413);
   }
   
   @NonNull
   public QVipProfileFootPrintConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
     QVipProfileFootPrintConfig localQVipProfileFootPrintConfig = new QVipProfileFootPrintConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     if (paramArrayOfQConfItem != null) {
       try
       {
@@ -45,15 +45,15 @@ public class QVipProfileFootPrintProcessor
     return new QVipProfileFootPrintConfig();
   }
   
-  @NonNull
-  public QVipProfileFootPrintConfig c()
-  {
-    return new QVipProfileFootPrintConfig();
-  }
-  
   public Class<QVipProfileFootPrintConfig> clazz()
   {
     return QVipProfileFootPrintConfig.class;
+  }
+  
+  @NonNull
+  public QVipProfileFootPrintConfig e()
+  {
+    return new QVipProfileFootPrintConfig();
   }
   
   public int type()
@@ -63,7 +63,7 @@ public class QVipProfileFootPrintProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintProcessor
  * JD-Core Version:    0.7.0.1
  */

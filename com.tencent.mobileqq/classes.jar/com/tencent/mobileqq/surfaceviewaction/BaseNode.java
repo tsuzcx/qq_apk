@@ -6,220 +6,242 @@ import java.util.List;
 
 public abstract class BaseNode
 {
-  public float a;
-  public int a;
-  public Frame a;
-  public ILayer a;
   public String a;
-  protected List<Action> a;
-  public boolean a;
   public float b;
-  public int b;
   public float c;
-  public int c;
   public float d;
-  public int d;
   public float e;
-  protected int e;
-  public float f;
-  protected int f;
-  public float g = 0.0F;
-  
-  public BaseNode()
-  {
-    this.jdField_e_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 255;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public float a()
-  {
-    return this.jdField_e_of_type_Float;
-  }
-  
-  public abstract ISpriteView a();
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
+  public float f = 1.0F;
+  public float g = 1.0F;
+  public float h = 0.0F;
+  public int i = 255;
+  public int j = 0;
+  public int k = 1;
+  public boolean l = false;
+  public ILayer m;
+  public Frame n;
+  public int o;
+  protected List<Action> p = new ArrayList();
+  protected int q;
+  protected int r;
   
   public void a(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
+    this.d = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.o = paramInt;
   }
   
   public void a(Frame paramFrame)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame = paramFrame;
+    this.n = paramFrame;
   }
   
   public void a(Point paramPoint)
   {
-    float f1 = this.jdField_c_of_type_Float;
-    float f2 = this.jdField_d_of_type_Float;
-    int i = this.jdField_b_of_type_Int;
-    if (i != 1)
+    float f1 = this.d;
+    float f2 = this.e;
+    int i1 = this.j;
+    if (i1 != 1)
     {
-      if (i == 2) {
-        f1 += this.jdField_e_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
+      if (i1 == 2) {
+        f1 += this.q / this.g / 2.0F;
       }
     }
     else {
-      f1 = this.jdField_e_of_type_Int / this.jdField_f_of_type_Float - f1;
+      f1 = this.q / this.g - f1;
     }
-    i = this.jdField_c_of_type_Int;
-    if (i != 0)
+    i1 = this.k;
+    if (i1 != 0)
     {
-      if (i == 2) {
-        f2 += this.jdField_f_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
+      if (i1 == 2) {
+        f2 += this.r / this.g / 2.0F;
       }
     }
     else {
-      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float - f2;
+      f2 = this.r / this.g - f2;
     }
-    for (BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer)
+    for (BaseNode localBaseNode = (BaseNode)this.m; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.m)
     {
-      f1 += localBaseNode.jdField_c_of_type_Float;
-      f2 += localBaseNode.jdField_d_of_type_Float;
+      f1 += localBaseNode.d;
+      f2 += localBaseNode.e;
     }
-    paramPoint.jdField_a_of_type_Float = f1;
-    paramPoint.jdField_b_of_type_Float = f2;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramPoint.a = f1;
+    paramPoint.b = f2;
   }
   
   public void a(Action... paramVarArgs)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    int i2 = paramVarArgs.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      Action localAction = paramVarArgs[i];
-      localAction.a();
-      this.jdField_a_of_type_JavaUtilList.add(localAction);
-      i += 1;
+      Action localAction = paramVarArgs[i1];
+      localAction.b();
+      this.p.add(localAction);
+      i1 += 1;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public float b()
   {
-    BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
-    float f1 = 1.0F;
-    while (localBaseNode != null)
-    {
-      f1 *= localBaseNode.jdField_e_of_type_Float;
-      localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
-    }
-    return f1;
-  }
-  
-  public int b()
-  {
-    BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
-    float f1 = 1.0F;
-    while (localBaseNode != null)
-    {
-      f1 *= localBaseNode.jdField_a_of_type_Int / 255.0F;
-      localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
-    }
-    return (int)(f1 * 255.0F);
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Action)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
-    }
+    return this.f;
   }
   
   public void b(float paramFloat)
   {
-    this.jdField_d_of_type_Float = paramFloat;
+    this.e = paramFloat;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
-  protected boolean b()
+  public void c(float paramFloat)
   {
-    int i = 0;
-    boolean bool1 = false;
-    int j;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    this.f = paramFloat;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public float d()
+  {
+    BaseNode localBaseNode = (BaseNode)this.m;
+    float f1 = 1.0F;
+    while (localBaseNode != null)
     {
-      Action localAction = (Action)this.jdField_a_of_type_JavaUtilList.get(i);
+      f1 *= localBaseNode.f;
+      localBaseNode = (BaseNode)localBaseNode.m;
+    }
+    return f1;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.h = paramFloat;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int dq_()
+  {
+    return this.o;
+  }
+  
+  public boolean ds_()
+  {
+    return this.l;
+  }
+  
+  public int e()
+  {
+    BaseNode localBaseNode = (BaseNode)this.m;
+    float f1 = 1.0F;
+    while (localBaseNode != null)
+    {
+      f1 *= localBaseNode.i / 255.0F;
+      localBaseNode = (BaseNode)localBaseNode.m;
+    }
+    return (int)(f1 * 255.0F);
+  }
+  
+  public void e(float paramFloat)
+  {
+    this.g = paramFloat;
+  }
+  
+  public void f()
+  {
+    this.p.clear();
+  }
+  
+  public void g()
+  {
+    int i1 = 0;
+    while (i1 < this.p.size())
+    {
+      ((Action)this.p.get(i1)).d();
+      i1 += 1;
+    }
+  }
+  
+  public void h()
+  {
+    int i1 = 0;
+    while (i1 < this.p.size())
+    {
+      ((Action)this.p.get(i1)).e();
+      i1 += 1;
+    }
+  }
+  
+  protected boolean i()
+  {
+    int i1 = 0;
+    boolean bool1 = false;
+    int i2;
+    while (i1 < this.p.size())
+    {
+      Action localAction = (Action)this.p.get(i1);
       if (localAction.a())
       {
-        if ((localAction.jdField_d_of_type_Int & 0x1) != 0)
+        if ((localAction.g & 0x1) != 0)
         {
-          this.jdField_c_of_type_Float = localAction.jdField_a_of_type_Float;
-          this.jdField_d_of_type_Float = localAction.jdField_b_of_type_Float;
+          this.d = localAction.a;
+          this.e = localAction.b;
         }
-        if ((localAction.jdField_d_of_type_Int & 0x2) != 0) {
-          this.jdField_e_of_type_Float = localAction.jdField_c_of_type_Float;
+        if ((localAction.g & 0x2) != 0) {
+          this.f = localAction.c;
         }
-        if ((localAction.jdField_d_of_type_Int & 0x4) != 0) {
-          this.jdField_a_of_type_Int = localAction.jdField_a_of_type_Int;
+        if ((localAction.g & 0x4) != 0) {
+          this.i = localAction.d;
         }
-        if ((localAction.jdField_d_of_type_Int & 0x8) != 0) {
-          this.g = localAction.jdField_b_of_type_Int;
+        if ((localAction.g & 0x8) != 0) {
+          this.h = localAction.e;
         }
         bool1 = true;
       }
-      j = i;
-      if (localAction.jdField_b_of_type_Boolean) {
-        if (localAction.jdField_a_of_type_Boolean)
+      i2 = i1;
+      if (localAction.j) {
+        if (localAction.i)
         {
-          localAction.a();
-          j = i;
+          localAction.b();
+          i2 = i1;
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-          j = i - 1;
+          this.p.remove(i1);
+          i2 = i1 - 1;
         }
       }
-      i = j + 1;
+      i1 = i2 + 1;
     }
     boolean bool2 = bool1;
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame != null)
+    if (this.n != null)
     {
       bool2 = bool1;
-      if (a() != null)
+      if (j() != null)
       {
-        j = a().c() * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame.jdField_a_of_type_Int / 1000;
-        i = j;
-        if (j > 0) {
-          i = j - 1;
+        i2 = j().getCurrentVideoTime() * this.n.a / 1000;
+        i1 = i2;
+        if (i2 > 0) {
+          i1 = i2 - 1;
         }
         bool2 = bool1;
-        if (i < this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData.length)
+        if (i1 < this.n.b.length)
         {
-          this.jdField_c_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].jdField_a_of_type_Float;
-          this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionFrame$FrameData[i].jdField_b_of_type_Float;
+          this.d = this.n.b[i1].a;
+          this.e = this.n.b[i1].b;
           bool2 = true;
         }
       }
@@ -227,49 +249,16 @@ public abstract class BaseNode
     return bool2;
   }
   
-  public void c()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Action)this.jdField_a_of_type_JavaUtilList.get(i)).d();
-      i += 1;
-    }
-  }
+  public abstract ISpriteView j();
   
-  public void c(float paramFloat)
+  public void p_(String paramString)
   {
-    this.jdField_e_of_type_Float = paramFloat;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.g = paramFloat;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void e(float paramFloat)
-  {
-    this.jdField_f_of_type_Float = paramFloat;
-  }
-  
-  public int g_()
-  {
-    return this.jdField_d_of_type_Int;
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.BaseNode
  * JD-Core Version:    0.7.0.1
  */

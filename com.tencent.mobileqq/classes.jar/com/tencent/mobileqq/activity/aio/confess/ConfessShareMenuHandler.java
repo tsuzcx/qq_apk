@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
@@ -42,6 +41,7 @@ import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
@@ -71,69 +71,46 @@ import org.json.JSONObject;
 public class ConfessShareMenuHandler
   implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, RangeButtonView.OnChangeListener
 {
-  public static final int[] a;
-  public static long b;
-  public int a;
-  public long a;
-  public Activity a;
-  public PopupWindow a;
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  public Share a;
-  private ConfessShareMenuHandler.UIParam jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam;
-  public ShareActionSheetBuilder a;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  public String a;
-  public final ArrayList<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public ArrayList<IPublicAccountJavascriptInterface.ActionItem> b;
-  public boolean b;
-  private int c;
-  public String c;
-  public boolean c;
-  public String d;
-  boolean d;
-  private String e;
-  public boolean e;
-  private String f;
-  public boolean f;
-  private boolean g = false;
-  private boolean h = false;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 95, 100, 107, 115, 127 };
-    jdField_b_of_type_Long = -1L;
-  }
+  public static final int[] a = { 95, 100, 107, 115, 127 };
+  public static long s = -1L;
+  private boolean A = false;
+  private WebView B;
+  private ConfessShareMenuHandler.UIParam C;
+  public Activity b;
+  public Share c;
+  public boolean d;
+  public ShareActionSheetBuilder e;
+  public final ArrayList<String> f = new ArrayList();
+  public long g = 4L;
+  public boolean h = false;
+  public boolean i = false;
+  public int j = 0;
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public PopupWindow o = null;
+  TroopMemberApiClient p = null;
+  boolean q = false;
+  public int r = 1;
+  public boolean t = false;
+  public boolean u = false;
+  public ArrayList<IPublicAccountJavascriptInterface.ActionItem> v = null;
+  private String w;
+  private String x = "";
+  private int y;
+  private boolean z = false;
   
   public ConfessShareMenuHandler(Activity paramActivity, WebView paramWebView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 4L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramActivity;
+    this.B = paramWebView;
     a();
   }
   
-  private void c()
+  private void f()
   {
-    if (a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.getShareUrl()))
+    if (b(this.c.getShareUrl()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserShareMenuHandler", 2, "is not need load share js..");
@@ -145,13 +122,13 @@ public class ConfessShareMenuHandler
         QLog.d("SwiftBrowserShareMenuHandler", 2, "loadShareJs");
       }
       a(System.currentTimeMillis());
-      int j = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[2].intValue();
-      int i = j;
-      if (j < 0) {
-        i = 190;
+      int i2 = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[2].intValue();
+      int i1 = i2;
+      if (i2 < 0) {
+        i1 = 190;
       }
-      String str = String.format("function callShare(){\"loading\"==document.readyState?window.addEventListener(\"load\",sharePageInfo(),!1):sharePageInfo()}var readStyleProp=function(a,b){var c,d;return b?(b=b.toLowerCase(),a.style&&a.style[b]?c=a.style[b]:a.currentStyle?(b=b.replace(/\\-([a-z])([a-z]?)/gi,function(a,b,c){return b.toUpperCase()+c.toLowerCase()}),c=a.currentStyle[b]):document.defaultView&&document.defaultView.getComputedStyle&&(d=document.defaultView.getComputedStyle(a,null),c=d.getPropertyValue(b)),-1!=c.indexOf(\"px\")&&(c=c.replace(/(px)/i,\"\")),c):void 0},parsePageInfo=function(){var b,c,d,e,f,g,h,i,j,k,l,a={};for(a[\"shareURL\"]=document.documentURI,b=\"\",c=\"\",d=document.getElementsByTagName(\"meta\"),f=0;f<d.length;f++)e=d[f],!a.title&&e.getAttribute(\"itemprop\")&&\"name\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"title\"]=e.content),a.summary||\"description\"!=e.name||void 0!=e.content&&\"\"!=e.content&&(b=e.content),!a.summary&&e.getAttribute(\"itemprop\")&&\"description\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(c=e.content),!a.image&&e.getAttribute(\"itemprop\")&&\"image\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"image\"]=e.content);if(\"\"!=c?a[\"summary\"]=c:\"\"!=b&&(a[\"summary\"]=b),!a.image)for(g=document.getElementsByTagName(\"img\"),h=%d,i=%d,f=0;f<g.length&&30>f;f++)if(j=g[f],(j.src.startsWith(\"//\")||j.src.startsWith(\"http://\")||j.src.startsWith(\"https://\"))&&(k=j.width,l=j.height,void 0!=j.naturalWidth&&void 0!=j.naturalHeight&&(k=j.naturalWidth,l=j.naturalHeight),k>=h&&10*h>k&&l>=i&&10*i>l&&\"none\"!=readStyleProp(j,\"display\")&&\"hidden\"!=readStyleProp(j,\"visibility\"))){a[\"image\"]=j.src,a.image.startsWith(\"//\")&&(a.image=(document.documentURI.startsWith(\"http:\")?\"http:\":\"https:\")+a.image);break}return a},sharePageInfo=function(){var a,c,d,e;try{a=parsePageInfo()}catch(b){}a||(a=new object),a[\"type\"]=\"share\",a[\"callback\"]=1,c=JSON.stringify(a),d=\"jsbridge://share/setShare?p=\"+encodeURIComponent(c),e=document.createElement(\"iframe\"),e.style.cssText=\"display:none;width:0px;height:0px;\",(document.documentElement||document.body).appendChild(e),e.src=d};callShare();", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
-      WebView localWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      String str = String.format("function callShare(){\"loading\"==document.readyState?window.addEventListener(\"load\",sharePageInfo(),!1):sharePageInfo()}var readStyleProp=function(a,b){var c,d;return b?(b=b.toLowerCase(),a.style&&a.style[b]?c=a.style[b]:a.currentStyle?(b=b.replace(/\\-([a-z])([a-z]?)/gi,function(a,b,c){return b.toUpperCase()+c.toLowerCase()}),c=a.currentStyle[b]):document.defaultView&&document.defaultView.getComputedStyle&&(d=document.defaultView.getComputedStyle(a,null),c=d.getPropertyValue(b)),-1!=c.indexOf(\"px\")&&(c=c.replace(/(px)/i,\"\")),c):void 0},parsePageInfo=function(){var b,c,d,e,f,g,h,i,j,k,l,a={};for(a[\"shareURL\"]=document.documentURI,b=\"\",c=\"\",d=document.getElementsByTagName(\"meta\"),f=0;f<d.length;f++)e=d[f],!a.title&&e.getAttribute(\"itemprop\")&&\"name\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"title\"]=e.content),a.summary||\"description\"!=e.name||void 0!=e.content&&\"\"!=e.content&&(b=e.content),!a.summary&&e.getAttribute(\"itemprop\")&&\"description\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(c=e.content),!a.image&&e.getAttribute(\"itemprop\")&&\"image\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"image\"]=e.content);if(\"\"!=c?a[\"summary\"]=c:\"\"!=b&&(a[\"summary\"]=b),!a.image)for(g=document.getElementsByTagName(\"img\"),h=%d,i=%d,f=0;f<g.length&&30>f;f++)if(j=g[f],(j.src.startsWith(\"//\")||j.src.startsWith(\"http://\")||j.src.startsWith(\"https://\"))&&(k=j.width,l=j.height,void 0!=j.naturalWidth&&void 0!=j.naturalHeight&&(k=j.naturalWidth,l=j.naturalHeight),k>=h&&10*h>k&&l>=i&&10*i>l&&\"none\"!=readStyleProp(j,\"display\")&&\"hidden\"!=readStyleProp(j,\"visibility\"))){a[\"image\"]=j.src,a.image.startsWith(\"//\")&&(a.image=(document.documentURI.startsWith(\"http:\")?\"http:\":\"https:\")+a.image);break}return a},sharePageInfo=function(){var a,c,d,e;try{a=parsePageInfo()}catch(b){}a||(a=new object),a[\"type\"]=\"share\",a[\"callback\"]=1,c=JSON.stringify(a),d=\"jsbridge://share/setShare?p=\"+encodeURIComponent(c),e=document.createElement(\"iframe\"),e.style.cssText=\"display:none;width:0px;height:0px;\",(document.documentElement||document.body).appendChild(e),e.src=d};callShare();", new Object[] { Integer.valueOf(i1), Integer.valueOf(i1) });
+      WebView localWebView = this.B;
       if (localWebView != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -163,46 +140,27 @@ public class ConfessShareMenuHandler
     }
   }
   
-  public TroopMemberApiClient a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
-    }
-    return this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  }
-  
-  public String a()
-  {
-    Share localShare = this.jdField_a_of_type_ComTencentBizWebviewpluginShare;
-    if (localShare == null) {
-      return "";
-    }
-    return localShare.getShareUrl();
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    this.jdField_e_of_type_JavaLangString = ((Intent)localObject).getStringExtra("url");
-    if (this.jdField_e_of_type_JavaLangString == null)
+    Object localObject = this.b.getIntent();
+    this.w = ((Intent)localObject).getStringExtra("url");
+    if (this.w == null)
     {
-      this.jdField_e_of_type_JavaLangString = ((Intent)localObject).getStringExtra("key_params_qq");
-      if (this.jdField_e_of_type_JavaLangString == null) {
-        this.jdField_e_of_type_JavaLangString = "";
+      this.w = ((Intent)localObject).getStringExtra("key_params_qq");
+      if (this.w == null) {
+        this.w = "";
       }
     }
-    localObject = this.jdField_e_of_type_JavaLangString;
-    this.jdField_f_of_type_JavaLangString = ((String)localObject);
+    localObject = this.w;
+    this.x = ((String)localObject);
     a((String)localObject);
   }
   
   public void a(int paramInt)
   {
-    String str2 = a();
+    String str2 = c();
     if (str2 == null) {
-      str2 = this.jdField_e_of_type_JavaLangString;
+      str2 = this.w;
     }
     Object localObject = Uri.parse(str2);
     if ((!"article.mp.qq.com".equalsIgnoreCase(((Uri)localObject).getHost())) && (!"post.mp.qq.com".equalsIgnoreCase(((Uri)localObject).getHost()))) {
@@ -275,8 +233,8 @@ public class ConfessShareMenuHandler
     Object localObject1;
     Object localObject2;
     Object localObject4;
-    int j;
-    int i;
+    int i1;
+    int i2;
     Object localObject5;
     if (paramBundle != null)
     {
@@ -285,8 +243,8 @@ public class ConfessShareMenuHandler
       localObject1 = paramBundle.getString("source_public_uin", "");
       localObject2 = paramBundle.getString("default_url", "");
       localObject4 = paramBundle.getString("msg_id", "");
-      j = paramBundle.getInt("troop_app_id", 0);
-      i = paramBundle.getInt("troop_id", 0);
+      i1 = paramBundle.getInt("troop_app_id", 0);
+      i2 = paramBundle.getInt("troop_id", 0);
       localObject5 = paramBundle.getString("troop_app_info_url", "");
       paramBundle.getInt("uin_type", 0);
     }
@@ -298,12 +256,12 @@ public class ConfessShareMenuHandler
       localObject2 = localObject1;
       localObject3 = localObject2;
       localObject4 = localObject3;
-      j = 0;
-      i = 0;
+      i1 = 0;
+      i2 = 0;
       localObject5 = localObject3;
       localObject3 = str2;
     }
-    String str2 = this.jdField_e_of_type_JavaLangString;
+    String str2 = this.w;
     if (!TextUtils.isEmpty(null)) {
       throw new NullPointerException();
     }
@@ -311,10 +269,10 @@ public class ConfessShareMenuHandler
     boolean bool;
     if (paramInt == 1)
     {
-      ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(str3);
-      QRUtils.a(2, 2131691296);
-      if ((this.h) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))) {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.c();
+      ((ClipboardManager)this.b.getSystemService("clipboard")).setText(str3);
+      QRUtils.a(2, 2131888247);
+      if ((this.A) && (!TextUtils.isEmpty(this.c.S))) {
+        this.c.o();
       }
     }
     else if (paramInt == 11)
@@ -375,10 +333,10 @@ public class ConfessShareMenuHandler
       paramBundle.append("&_wv=7");
       paramString = paramBundle.toString();
     }
-    paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    paramBundle = new Intent(this.b, QQBrowserActivity.class);
     paramBundle.putExtra("url", paramString);
     paramBundle.putExtra("hide_more_button", true);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+    this.b.startActivity(paramBundle);
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_67", "jvbao_click", 0, 1, 0, "", "", "", "");
     if ((localObject1 != null) && (!"".equals(localObject1)))
     {
@@ -387,10 +345,10 @@ public class ConfessShareMenuHandler
       break label3129;
       if (paramInt == 2)
       {
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl())) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
+        if ((!TextUtils.isEmpty(this.B.getUrl())) && (!TextUtils.isEmpty(this.x)) && (!TextUtils.isEmpty(this.x))) {
           if (TextUtils.isEmpty(str2))
           {
-            if (str3.equals(this.jdField_f_of_type_JavaLangString))
+            if (str3.equals(this.x))
             {
               bool = true;
               break label749;
@@ -398,13 +356,13 @@ public class ConfessShareMenuHandler
           }
           else if (!TextUtils.isEmpty(null))
           {
-            paramString = this.jdField_f_of_type_JavaLangString;
+            paramString = this.x;
             throw new NullPointerException();
           }
         }
         bool = false;
         label749:
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.g = bool;
+        this.c.ae = bool;
         a(str3, str2, null);
       }
       else if (paramInt == 4)
@@ -415,7 +373,7 @@ public class ConfessShareMenuHandler
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+      this.b.startActivity(paramString);
     }
     catch (ActivityNotFoundException paramString)
     {
@@ -424,7 +382,7 @@ public class ConfessShareMenuHandler
       long l2;
       break label811;
     }
-    QRUtils.a(1, 2131695222);
+    QRUtils.a(1, 2131892956);
     ReportController.b(null, "P_CliOper", "VIPCOMIC", "", "0X800619F", "0X800619F", 1000, 0, Util.b((String)localObject2, new String[0]), null, null, null);
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_48", "browser_share", 0, 1, 0, "", "", "", "");
     if ((localObject1 != null) && (!"".equals(localObject1)))
@@ -435,26 +393,26 @@ public class ConfessShareMenuHandler
       if (paramInt != 5) {
         if (paramInt == 3)
         {
-          jdField_b_of_type_Long = System.currentTimeMillis();
+          s = System.currentTimeMillis();
           paramString = str2;
           if (TextUtils.isEmpty(str2)) {
             paramString = null;
           }
-          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1002, paramString, this.jdField_c_of_type_Int);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 2, false);
-          } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.s)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.f();
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1002, paramString, this.y);
+          if (!TextUtils.isEmpty(this.c.S)) {
+            this.c.b(str3, 2, false);
+          } else if (!TextUtils.isEmpty(this.c.W)) {
+            this.c.r();
           } else {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a();
+            this.c.c();
           }
           ReportCenter.a().a("", "", "", "1000", "102", "0", false);
           ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_44", "qzone_share", 0, 1, 0, "", "", "", "");
         }
         else if (paramInt == 6)
         {
-          if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.setShareUrl(str3)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 9, false);
+          if (this.c.setShareUrl(str3)) {
+            this.c.a(str3, 9, false);
           }
           if ((localObject1 != null) && (!"".equals(localObject1)))
           {
@@ -466,22 +424,22 @@ public class ConfessShareMenuHandler
         {
           if (paramInt == 13)
           {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 5, true);
+            this.c.a(str3, 5, true);
           }
           else if (paramInt == 16)
           {
-            paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramString = new Intent(this.b, QQBrowserActivity.class);
             paramString.putExtra("url", (String)localObject5);
             paramString.putExtra("hide_operation_bar", true);
             paramString.putExtra("hide_more_button", true);
-            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+            this.b.startActivity(paramString);
             paramString = new StringBuilder();
             paramString.append("");
-            paramString.append(i);
+            paramString.append(i2);
             paramBundle = paramString.toString();
             paramString = new StringBuilder();
             paramString.append("");
-            paramString.append(j);
+            paramString.append(i1);
             ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "detail_menu", 0, 1, 0, paramBundle, paramString.toString(), "", "");
           }
           else if (paramInt == 17)
@@ -491,35 +449,35 @@ public class ConfessShareMenuHandler
             } else {
               paramString = "";
             }
-            paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramBundle = new Intent(this.b, QQBrowserActivity.class);
             paramBundle.putExtra("url", paramString);
             paramBundle.putExtra("hide_operation_bar", true);
             paramBundle.putExtra("hide_more_button", true);
-            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+            this.b.startActivity(paramBundle);
             paramString = new StringBuilder();
             paramString.append("");
-            paramString.append(i);
+            paramString.append(i2);
             paramBundle = paramString.toString();
             paramString = new StringBuilder();
             paramString.append("");
-            paramString.append(j);
+            paramString.append(i1);
             ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "share_menu", 0, 1, 0, paramBundle, paramString.toString(), "", "");
           }
           else if (paramInt == 7)
           {
-            b();
+            d();
           }
           else if ((paramInt != 19) && (paramInt != 20))
           {
             if (paramInt == 12)
             {
-              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 8, false);
+              if (!TextUtils.isEmpty(this.c.S)) {
+                this.c.b(str3, 8, false);
               } else {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 8, false);
+                this.c.a(str3, 8, false);
               }
-              paramBundle = this.jdField_e_of_type_JavaLangString;
-              paramString = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+              paramBundle = this.w;
+              paramString = this.B;
               if (paramString != null) {
                 paramBundle = paramString.getUrl();
               }
@@ -537,12 +495,12 @@ public class ConfessShareMenuHandler
                 paramString = "";
               }
               ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800787A", "0X800787A", 0, 0, paramString, paramBundle, "", "");
-              ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1005, paramBundle, this.jdField_c_of_type_Int);
+              ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1005, paramBundle, this.y);
             }
             else if (paramInt == 34)
             {
-              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.b();
+              if (!TextUtils.isEmpty(this.c.S)) {
+                this.c.n();
               } else if (QLog.isColorLevel()) {
                 QLog.d("diandian", 2, "dian dian is here");
               }
@@ -552,17 +510,17 @@ public class ConfessShareMenuHandler
               l1 = 0L;
               if (paramInt == 35)
               {
-                paramString = this.jdField_b_of_type_JavaUtilArrayList;
+                paramString = this.v;
                 if (paramString != null)
                 {
                   paramString = paramString.iterator();
                   while (paramString.hasNext())
                   {
                     paramBundle = (IPublicAccountJavascriptInterface.ActionItem)paramString.next();
-                    if (paramBundle.jdField_a_of_type_Int == 3) {
+                    if (paramBundle.a == 3) {
                       try
                       {
-                        paramString = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString);
+                        paramString = new JSONObject(paramBundle.c);
                         l1 = paramString.getLong("uin");
                         paramString = paramString.optString("name");
                       }
@@ -575,23 +533,23 @@ public class ConfessShareMenuHandler
                   }
                 }
                 paramString = null;
-                paramBundle = (IAddFriendApi)QRoute.api(IAddFriendApi.class);
-                localObject1 = this.jdField_a_of_type_AndroidAppActivity;
-                localObject2 = new StringBuilder();
-                ((StringBuilder)localObject2).append(l1);
-                ((StringBuilder)localObject2).append("");
-                paramString = paramBundle.startAddFriend((Context)localObject1, 1, ((StringBuilder)localObject2).toString(), null, 3001, 3999, paramString, null, null, null, null);
-                ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.jdField_a_of_type_AndroidAppActivity, paramString);
+                localObject2 = (IAddFriendApi)QRoute.api(IAddFriendApi.class);
+                paramBundle = this.b;
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append(l1);
+                ((StringBuilder)localObject1).append("");
+                paramString = ((IAddFriendApi)localObject2).startAddFriend(paramBundle, 1, ((StringBuilder)localObject1).toString(), null, 3001, 3999, paramString, null, null, null, null);
+                ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.b, paramString);
                 ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008C0F", "0X8008C0F", 0, 0, "", "", "", "", false);
               }
               else if (paramInt == 30)
               {
-                paramString = this.jdField_b_of_type_JavaUtilArrayList;
+                paramString = this.v;
                 l2 = l1;
                 if (paramString != null)
                 {
                   l2 = l1;
-                  if (this.jdField_e_of_type_Boolean)
+                  if (this.t)
                   {
                     paramString = paramString.iterator();
                     do
@@ -601,10 +559,10 @@ public class ConfessShareMenuHandler
                         break;
                       }
                       paramBundle = (IPublicAccountJavascriptInterface.ActionItem)paramString.next();
-                    } while (paramBundle.jdField_a_of_type_Int != 1);
+                    } while (paramBundle.a != 1);
                     try
                     {
-                      l2 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("uin");
+                      l2 = new JSONObject(paramBundle.c).getLong("uin");
                     }
                     catch (JSONException paramString)
                     {
@@ -615,35 +573,35 @@ public class ConfessShareMenuHandler
                 }
                 paramString = new Intent();
                 paramBundle = new Bundle();
-                paramString.setComponent(new ComponentName(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class));
+                paramString.setComponent(new ComponentName(this.b, ChatActivity.class));
                 paramBundle.putString("uin", String.valueOf(l2));
                 paramBundle.putInt("uintype", 1008);
                 paramString.putExtras(paramBundle);
                 paramString.putExtra("is_come_from_readinjoy", true);
                 paramString.setFlags(67108864);
-                this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+                this.b.startActivity(paramString);
                 ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008C3B", "0X8008C3B", 0, 0, "", "", "", "", false);
               }
               else
               {
-                if ((paramInt == 37) && (this.jdField_f_of_type_Boolean))
+                if ((paramInt == 37) && (this.u))
                 {
-                  paramString = this.jdField_b_of_type_JavaUtilArrayList;
+                  paramString = this.v;
                   l2 = l1;
                   if (paramString != null)
                   {
-                    paramBundle = paramString.iterator();
+                    paramString = paramString.iterator();
                     do
                     {
                       l2 = l1;
-                      if (!paramBundle.hasNext()) {
+                      if (!paramString.hasNext()) {
                         break;
                       }
-                      paramString = (IPublicAccountJavascriptInterface.ActionItem)paramBundle.next();
-                    } while (paramString.jdField_a_of_type_Int != 1);
+                      paramBundle = (IPublicAccountJavascriptInterface.ActionItem)paramString.next();
+                    } while (paramBundle.a != 1);
                     try
                     {
-                      l2 = new JSONObject(paramString.jdField_b_of_type_JavaLangString).getLong("uin");
+                      l2 = new JSONObject(paramBundle.c).getLong("uin");
                     }
                     catch (JSONException paramString)
                     {
@@ -651,19 +609,19 @@ public class ConfessShareMenuHandler
                       return;
                     }
                   }
-                  paramString = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+                  paramString = AIOUtils.a(new Intent(this.b, SplashActivity.class), null);
                   paramBundle = new StringBuilder();
                   paramBundle.append(l2);
                   paramBundle.append("");
                   paramString.putExtra("uin", paramBundle.toString());
                   paramString.putExtra("uintype", 0);
-                  this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+                  this.b.startActivity(paramString);
                   ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008C11", "0X8008C11", 0, 0, "", "", "", "", false);
                   return;
                 }
                 if (paramInt == 31)
                 {
-                  paramString = this.jdField_b_of_type_JavaUtilArrayList;
+                  paramString = this.v;
                   l2 = l1;
                   if (paramString != null)
                   {
@@ -675,10 +633,10 @@ public class ConfessShareMenuHandler
                         break;
                       }
                       paramString = (IPublicAccountJavascriptInterface.ActionItem)paramBundle.next();
-                    } while (paramString.jdField_a_of_type_Int != 2);
+                    } while (paramString.a != 2);
                     try
                     {
-                      l2 = new JSONObject(paramString.jdField_b_of_type_JavaLangString).getLong("puin");
+                      l2 = new JSONObject(paramString.c).getLong("puin");
                     }
                     catch (JSONException paramString)
                     {
@@ -686,19 +644,19 @@ public class ConfessShareMenuHandler
                       return;
                     }
                   }
-                  paramBundle = new ActivityURIRequest(this.jdField_a_of_type_AndroidAppActivity, "/pubaccount/detail");
-                  paramString = paramBundle.extra();
-                  localObject1 = new StringBuilder();
-                  ((StringBuilder)localObject1).append(l2);
-                  ((StringBuilder)localObject1).append("");
-                  paramString.putString("uin", ((StringBuilder)localObject1).toString());
-                  paramBundle.extra().putBoolean("from_js", true);
-                  QRoute.startUri(paramBundle, null);
+                  localObject1 = new ActivityURIRequest(this.b, "/pubaccount/detail");
+                  paramString = ((ActivityURIRequest)localObject1).extra();
+                  paramBundle = new StringBuilder();
+                  paramBundle.append(l2);
+                  paramBundle.append("");
+                  paramString.putString("uin", paramBundle.toString());
+                  ((ActivityURIRequest)localObject1).extra().putBoolean("from_js", true);
+                  QRoute.startUri((URIRequest)localObject1, null);
                   ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008C47", "0X8008C47", 0, 0, "", "", "", "", false);
                 }
                 else if (paramInt == 38)
                 {
-                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.d();
+                  this.c.p();
                 }
               }
             }
@@ -706,14 +664,14 @@ public class ConfessShareMenuHandler
           else
           {
             if (paramInt == 19) {
-              i = 6;
+              i1 = 6;
             } else {
-              i = 7;
+              i1 = 7;
             }
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, i, false);
+            if (!TextUtils.isEmpty(this.c.S)) {
+              this.c.b(str3, i1, false);
             } else {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, i, true);
+              this.c.a(str3, i1, true);
             }
           }
         }
@@ -724,29 +682,29 @@ public class ConfessShareMenuHandler
             str2 = paramString;
           }
           if (paramInt == 9) {
-            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1003, str2, this.jdField_c_of_type_Int);
+            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1003, str2, this.y);
           } else {
-            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1004, str2, this.jdField_c_of_type_Int);
+            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1004, str2, this.y);
           }
-          if (!WXShareHelper.a().a()) {
-            i = 2131720478;
-          } else if (!WXShareHelper.a().b()) {
-            i = 2131720479;
+          if (!WXShareHelper.a().b()) {
+            i1 = 2131918154;
+          } else if (!WXShareHelper.a().c()) {
+            i1 = 2131918155;
           } else {
-            i = -1;
+            i1 = -1;
           }
-          if (i != -1)
+          if (i1 != -1)
           {
-            QRUtils.a(0, i);
+            QRUtils.a(0, i1);
           }
           else if (paramInt == 9)
           {
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 3, true);
-            } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.t)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.g();
+            if (!TextUtils.isEmpty(this.c.S)) {
+              this.c.b(str3, 3, true);
+            } else if (!TextUtils.isEmpty(this.c.X)) {
+              this.c.s();
             } else {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 3, true);
+              this.c.a(str3, 3, true);
             }
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_40", "weixin_share", 0, 1, 0, "", "", "", "");
             if ((localObject1 != null) && (!"".equals(localObject1)))
@@ -757,12 +715,12 @@ public class ConfessShareMenuHandler
           }
           else
           {
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 4, true);
-            } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.u)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.h();
+            if (!TextUtils.isEmpty(this.c.S)) {
+              this.c.b(str3, 4, true);
+            } else if (!TextUtils.isEmpty(this.c.Y)) {
+              this.c.t();
             } else {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(str3, 4, true);
+              this.c.a(str3, 4, true);
             }
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_42", "pengyouquan_share", 0, 1, 0, "", "", "", "");
           }
@@ -785,28 +743,28 @@ public class ConfessShareMenuHandler
     if (paramShare == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
         return;
       }
-      localObject = this.jdField_e_of_type_JavaLangString;
+      localObject = this.w;
       ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareButtonEvent((String)localObject);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare = paramShare;
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam.jdField_a_of_type_Long;
+      this.c = paramShare;
+      this.g = this.C.a;
       a();
-      c();
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidAppActivity);
+      f();
+      if (this.e == null) {
+        this.e = new ShareActionSheetBuilder(this.b);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(BaseApplicationImpl.getApplication().getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(this);
+      this.e.setActionSheetTitle(BaseApplicationImpl.getApplication().getString(2131916565));
+      this.e.setActionSheetItems(b());
+      this.e.setItemClickListener(this);
+      this.e.setOnDismissListener(this);
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+        this.e.show();
         return;
       }
       catch (Exception paramShare)
@@ -827,7 +785,7 @@ public class ConfessShareMenuHandler
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam = new ConfessShareMenuHandler.UIParam();
+    this.C = new ConfessShareMenuHandler.UIParam();
     paramString = Uri.parse(paramString);
     if (paramString.isHierarchical())
     {
@@ -836,7 +794,7 @@ public class ConfessShareMenuHandler
       if (str != null) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam.jdField_a_of_type_Long = Long.parseLong(str, 10);
+          this.C.a = Long.parseLong(str, 10);
         }
         catch (NumberFormatException localNumberFormatException1)
         {
@@ -852,7 +810,7 @@ public class ConfessShareMenuHandler
       if (str != null) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam.jdField_b_of_type_Long = Long.parseLong(str, 10);
+          this.C.b = Long.parseLong(str, 10);
         }
         catch (NumberFormatException localNumberFormatException2)
         {
@@ -868,7 +826,7 @@ public class ConfessShareMenuHandler
       if (str != null) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam.c = Long.parseLong(str, 10);
+          this.C.c = Long.parseLong(str, 10);
         }
         catch (NumberFormatException localNumberFormatException3)
         {
@@ -884,7 +842,7 @@ public class ConfessShareMenuHandler
       if (paramString != null) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessShareMenuHandler$UIParam.d = Long.parseLong(paramString, 10);
+          this.C.d = Long.parseLong(paramString, 10);
           return;
         }
         catch (NumberFormatException paramString)
@@ -905,28 +863,43 @@ public class ConfessShareMenuHandler
     if (TextUtils.isEmpty(paramString2)) {
       paramString2 = paramString3;
     }
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1001, paramString2, this.jdField_c_of_type_Int);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramString1, 1, false);
-    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.q)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e();
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).reportPAShareItemEvent(1001, paramString2, this.y);
+    if (!TextUtils.isEmpty(this.c.S)) {
+      this.c.b(paramString1, 1, false);
+    } else if (!TextUtils.isEmpty(this.c.U)) {
+      this.c.q();
     } else {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramString1, 1, false);
+      this.c.a(paramString1, 1, false);
     }
     ReportCenter.a().a("", "", "", "1000", "101", "0", false);
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_38", "qq_share", 0, 1, 0, "", "", "", "");
   }
   
-  public boolean a(String paramString)
+  @TargetApi(14)
+  public void b(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentBizWebviewpluginShare.getShareUrl();
-    boolean bool3 = TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a());
+    WebView localWebView = this.B;
+    if (localWebView != null)
+    {
+      if (this.q) {
+        return;
+      }
+      this.r = paramInt;
+      paramInt = a[paramInt];
+      localWebView.getSettings().setTextZoom(paramInt);
+    }
+  }
+  
+  public boolean b(String paramString)
+  {
+    String str = this.c.getShareUrl();
+    boolean bool3 = TextUtils.isEmpty(this.c.d());
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (!bool3)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.b()))
+      if (!TextUtils.isEmpty(this.c.e()))
       {
         bool1 = bool2;
         if (!TextUtils.isEmpty(str))
@@ -941,7 +914,7 @@ public class ConfessShareMenuHandler
     return bool1;
   }
   
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] b()
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject1;
@@ -951,27 +924,27 @@ public class ConfessShareMenuHandler
       localObject1 = null;
     }
     IPublicAccountH5AbilityPlugin localIPublicAccountH5AbilityPlugin = (IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class);
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:qq")) && ((this.g & 0x8) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696399);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839067;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894171);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839221;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 2;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:QZone")) && ((this.g & 0x10) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696413);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839068;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894185);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839222;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 3;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if (((this.jdField_a_of_type_Long & 0x8000000) != 0L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isOSVersionSupportReadInJoy()) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:kandian")) && (localObject1 != null))
+    if (((this.g & 0x8000000) != 0L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isOSVersionSupportReadInJoy()) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:kandian")) && (localObject1 != null))
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("readinjoy_");
@@ -983,71 +956,71 @@ public class ConfessShareMenuHandler
       if ((localObject2 != null) && (((SharedPreferences)localObject2).getBoolean("share_to_news", false)))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696414);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839066;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894186);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839220;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 13;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
         localArrayList.add(localObject2);
       }
     }
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:appMessage")) && ((this.g & 0x4000) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696420);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839071;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894192);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839225;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 9;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:timeline")) && ((this.g & 0x8000) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696402);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839065;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894174);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839219;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 10;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if ((this.g) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
+    if ((this.z) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:sinaWeibo")))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696417);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894189);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839070;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130839224;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 12;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:openWithQQBrowser")) && ((this.g & 0x200) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696395);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842741;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894167);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130843694;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 5;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:openWithSafari")) && ((this.g & 0x100) == 0L))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696396);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894168);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842737;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130843690;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 4;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
     }
     Object localObject2 = BaseApplicationImpl.getApplication().getPackageManager();
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiDian")) && ((0x10 & this.jdField_a_of_type_Long) == 0L)) {
-      QidianManager.a(this.jdField_a_of_type_AndroidAppActivity, localArrayList);
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:qiDian")) && ((0x10 & this.g) == 0L)) {
+      QidianManager.a(this.b, localArrayList);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject2) != null))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:share:qiYeQQ")) && ((this.g & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject2) != null))
     {
       localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696411);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894183);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130844486;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130845859;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 20;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
       localArrayList.add(localObject2);
@@ -1056,10 +1029,10 @@ public class ConfessShareMenuHandler
     Object localObject3;
     Object localObject4;
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    int i;
-    if (this.jdField_e_of_type_Boolean)
+    int i1;
+    if (this.t)
     {
-      localObject3 = this.jdField_b_of_type_JavaUtilArrayList;
+      localObject3 = this.v;
       if (localObject3 != null)
       {
         localObject3 = ((ArrayList)localObject3).iterator();
@@ -1067,14 +1040,14 @@ public class ConfessShareMenuHandler
         {
           localObject4 = (IPublicAccountJavascriptInterface.ActionItem)((Iterator)localObject3).next();
           localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-          i = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_Int;
-          if (i != 1)
+          i1 = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).a;
+          if (i1 != 1)
           {
-            if (i == 2)
+            if (i1 == 2)
             {
               localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).label = BaseApplicationImpl.getApplication().getString(2131695251);
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).icon = 2130842735;
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).label = BaseApplicationImpl.getApplication().getString(2131892985);
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).icon = 2130843688;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).iconNeedBg = true;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).action = 31;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).argus = "";
@@ -1083,12 +1056,12 @@ public class ConfessShareMenuHandler
           }
           else
           {
-            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {
-              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695194);
+            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject4).b)) {
+              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131892927);
             } else {
-              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString;
+              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).b;
             }
-            localActionSheetItem.icon = 2130842743;
+            localActionSheetItem.icon = 2130843696;
             localActionSheetItem.iconNeedBg = true;
             localActionSheetItem.action = 30;
             localActionSheetItem.argus = "";
@@ -1097,9 +1070,9 @@ public class ConfessShareMenuHandler
         }
       }
     }
-    if (this.jdField_f_of_type_Boolean)
+    if (this.u)
     {
-      localObject3 = this.jdField_b_of_type_JavaUtilArrayList;
+      localObject3 = this.v;
       if (localObject3 != null)
       {
         localObject3 = ((ArrayList)localObject3).iterator();
@@ -1107,14 +1080,14 @@ public class ConfessShareMenuHandler
         {
           localObject4 = (IPublicAccountJavascriptInterface.ActionItem)((Iterator)localObject3).next();
           localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-          i = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_Int;
-          if (i != 1)
+          i1 = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).a;
+          if (i1 != 1)
           {
-            if (i == 3)
+            if (i1 == 3)
             {
               localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).label = BaseApplicationImpl.getApplication().getString(2131696400);
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).icon = 2130842744;
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).label = BaseApplicationImpl.getApplication().getString(2131894172);
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject4).icon = 2130843697;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).iconNeedBg = true;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).action = 35;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject4).argus = "";
@@ -1123,12 +1096,12 @@ public class ConfessShareMenuHandler
           }
           else
           {
-            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {
-              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695194);
+            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject4).b)) {
+              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131892927);
             } else {
-              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString;
+              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject4).b;
             }
-            localActionSheetItem.icon = 2130842743;
+            localActionSheetItem.icon = 2130843696;
             localActionSheetItem.iconNeedBg = true;
             localActionSheetItem.action = 37;
             localActionSheetItem.argus = "";
@@ -1137,41 +1110,41 @@ public class ConfessShareMenuHandler
         }
       }
     }
-    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:favorite")) && ((this.g & 0x2000) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696385);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894157);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844237;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130845554;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 6;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       ((ArrayList)localObject2).add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:setFont")) && (!this.i) && (this.d))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696394);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842739;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894166);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843692;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 7;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       ((ArrayList)localObject2).add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:copyUrl")) && ((this.g & 0x20) == 0L))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696391);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839063;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894163);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839217;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 1;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       ((ArrayList)localObject2).add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle")) && (this.jdField_b_of_type_Boolean))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.f, "menuItem:exposeArticle")) && (this.h))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696397);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842727;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894169);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843680;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 11;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
@@ -1180,45 +1153,49 @@ public class ConfessShareMenuHandler
     return (List[])new ArrayList[] { localArrayList, localObject2 };
   }
   
-  public void b()
+  public String c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131559104, null);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131367100);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131702603), TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131702607), TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
-    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131702606), TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics)));
-    ((RangeButtonView)localObject).setTitleData(localArrayList);
-    ((RangeButtonView)localObject).setOnChangerListener(this);
-    ((RangeButtonView)localObject).setThumbPosition(this.jdField_b_of_type_Int);
-    localArrayList = new ArrayList();
-    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131691120));
-    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131691121));
-    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131691122));
-    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131691123));
-    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131691124));
-    ((RangeButtonView)localObject).setContentDescList(localArrayList);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_ComTencentSmttSdkWebView, 83, 0, 0);
+    Share localShare = this.c;
+    if (localShare == null) {
+      return "";
+    }
+    return localShare.getShareUrl();
   }
   
-  @TargetApi(14)
-  public void b(int paramInt)
+  public void d()
   {
-    WebView localWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    if (localWebView != null)
+    Object localObject = this.b.getLayoutInflater().inflate(2131624765, null);
+    this.o = new PopupWindow((View)localObject, -1, -2);
+    this.o.setBackgroundDrawable(new BitmapDrawable());
+    this.o.setOutsideTouchable(true);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131433554);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131900596), TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131900600), TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131900599), TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics)));
+    ((RangeButtonView)localObject).setTitleData(localArrayList);
+    ((RangeButtonView)localObject).setOnChangerListener(this);
+    ((RangeButtonView)localObject).setThumbPosition(this.r);
+    localArrayList = new ArrayList();
+    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131888066));
+    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131888067));
+    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131888068));
+    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131888069));
+    localArrayList.add(BaseApplicationImpl.getApplication().getString(2131888070));
+    ((RangeButtonView)localObject).setContentDescList(localArrayList);
+    this.o.showAtLocation(this.B, 83, 0, 0);
+  }
+  
+  public TroopMemberApiClient e()
+  {
+    if (this.p == null)
     {
-      if (this.jdField_d_of_type_Boolean) {
-        return;
-      }
-      this.jdField_b_of_type_Int = paramInt;
-      paramInt = jdField_a_of_type_ArrayOfInt[paramInt];
-      localWebView.getSettings().setTextZoom(paramInt);
+      this.p = TroopMemberApiClient.a();
+      this.p.e();
     }
+    return this.p;
   }
   
   public void onChange(int paramInt1, int paramInt2)
@@ -1227,7 +1204,7 @@ public class ConfessShareMenuHandler
       return;
     }
     b(paramInt2);
-    a().a(this.jdField_b_of_type_Int);
+    e().b(this.r);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface) {}
@@ -1250,15 +1227,15 @@ public class ConfessShareMenuHandler
     }
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      a(((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a.action, a(), new Bundle());
+      this.e.dismiss();
+      a(((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).c.action, c(), new Bundle());
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessShareMenuHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -89,36 +89,26 @@ import unify.search.UnifySearchCommon.RootSearcherRequest;
 public class UnifySearchHandler
   extends BusinessHandler
 {
-  public static String a;
-  public static long[] a;
-  public static String b;
-  public static long[] b;
-  public static String c;
-  public static long[] c;
-  private QQAppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfLong = new long[] { 1001L, 1002L, 1003L, 1005L, 2073745984L, 1006L, 1007L };
-    jdField_b_of_type_ArrayOfLong = new long[] { 1004L };
-    jdField_c_of_type_ArrayOfLong = new long[] { 2073745984L, 1073745984L, 1001L, 1002L, 1003L, 1005L, 1006L };
-    jdField_a_of_type_JavaLangString = "hot_word_for_sub_business_unify";
-    jdField_b_of_type_JavaLangString = "hot_word_for_sub_business_req_time_unify";
-    jdField_c_of_type_JavaLangString = "hot_word_for_sub_business_exprire_time_unify";
-  }
+  public static long[] a = { 1001L, 1002L, 1003L, 1005L, 2073745984L, 1006L, 1007L };
+  public static long[] b = { 1004L };
+  public static long[] c = { 2073745984L, 1073745984L, 1001L, 1002L, 1003L, 1005L, 1006L };
+  public static String d = "hot_word_for_sub_business_unify";
+  public static String e = "hot_word_for_sub_business_req_time_unify";
+  public static String f = "hot_word_for_sub_business_exprire_time_unify";
+  private QQAppInterface g;
   
   public UnifySearchHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
     if ((paramAppInterface instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+      this.g = ((QQAppInterface)paramAppInterface);
     }
   }
   
   public UnifySearchHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.g = paramQQAppInterface;
   }
   
   private NetSearchTemplateBaseItem a(int paramInt1, String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt2)
@@ -213,8 +203,8 @@ public class UnifySearchHandler
   private List<BusinessGroupWord> a(List<UnifySearchBusiHotWord.GroupWord> paramList)
   {
     ArrayList localArrayList1 = new ArrayList();
-    FunctionModuleConfigManager.a.clear();
     FunctionModuleConfigManager.b.clear();
+    FunctionModuleConfigManager.c.clear();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
@@ -229,12 +219,12 @@ public class UnifySearchHandler
         UnifySearchBusiHotWord.HotWordItem localHotWordItem = (UnifySearchBusiHotWord.HotWordItem)((Iterator)localObject2).next();
         localArrayList2.add(new BusinessGroupWord.HotWordItem(localHotWordItem.word_id.get().toStringUtf8(), localHotWordItem.word.get().toStringUtf8()));
       }
-      FunctionModuleConfigManager.a.put(FunctionModuleConfigManager.a(localGroupID.a), localArrayList2);
+      FunctionModuleConfigManager.b.put(FunctionModuleConfigManager.a(localGroupID.a), localArrayList2);
       localObject2 = (UnifySearchBusiHotWord.ClueWordItem)((UnifySearchBusiHotWord.GroupWord)localObject1).clue_word_item.get();
       localObject1 = ((UnifySearchBusiHotWord.ClueWordItem)localObject2).word_id.get().toStringUtf8();
       localObject2 = ((UnifySearchBusiHotWord.ClueWordItem)localObject2).word.get().toStringUtf8();
       localObject1 = new BusinessGroupWord.ClueWordItem((String)localObject1, (String)localObject2);
-      FunctionModuleConfigManager.b.put(FunctionModuleConfigManager.a(localGroupID.a), localObject2);
+      FunctionModuleConfigManager.c.put(FunctionModuleConfigManager.a(localGroupID.a), localObject2);
       localArrayList1.add(new BusinessGroupWord(localGroupID, localArrayList2, (BusinessGroupWord.ClueWordItem)localObject1));
     }
     return localArrayList1;
@@ -252,7 +242,7 @@ public class UnifySearchHandler
     localStringBuilder.append(",data=");
     localStringBuilder.append(paramObject);
     QLog.i("Q.uniteSearch.UnifySearchHandler818searchProto_new", 1, localStringBuilder.toString());
-    if (paramInt == 1000)
+    if ((paramInt == 1000) && (paramObject != null))
     {
       ThreadManager.post(new UnifySearchHandler.1(this, paramString1, paramObject), 5, null, true);
       paramObject = BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit();
@@ -370,12 +360,12 @@ public class UnifySearchHandler
         {
           UnifySearchAssociationWord.AssociationItem localAssociationItem = (UnifySearchAssociationWord.AssociationItem)((Iterator)localObject).next();
           AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem.jdField_a_of_type_JavaLangString = localAssociationItem.word.get().toStringUtf8();
-          localAssociateItem.jdField_b_of_type_JavaLangString = localAssociationItem.sub_word.get().toStringUtf8();
-          localAssociateItem.d = localAssociationItem.pic_url.get().toStringUtf8();
-          localAssociateItem.jdField_c_of_type_JavaLangString = localAssociationItem.jmp_url.get().toStringUtf8();
-          localAssociateItem.jdField_b_of_type_Int = localAssociationItem.type.get();
-          localAssociateItem.jdField_c_of_type_Int = localAssociationItem.group_mask.get();
+          localAssociateItem.b = localAssociationItem.word.get().toStringUtf8();
+          localAssociateItem.c = localAssociationItem.sub_word.get().toStringUtf8();
+          localAssociateItem.e = localAssociationItem.pic_url.get().toStringUtf8();
+          localAssociateItem.d = localAssociationItem.jmp_url.get().toStringUtf8();
+          localAssociateItem.f = localAssociationItem.type.get();
+          localAssociateItem.g = localAssociationItem.group_mask.get();
           localArrayList.add(localAssociateItem);
         }
         localObject = paramObject.iterator();
@@ -410,7 +400,7 @@ public class UnifySearchHandler
   
   private boolean b(long paramLong)
   {
-    return (StudyModeManager.a()) && ((paramLong == 1100L) || (paramLong == 1012L) || (paramLong == 1003L));
+    return (StudyModeManager.h()) && ((paramLong == 1100L) || (paramLong == 1012L) || (paramLong == 1003L));
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -495,406 +485,396 @@ public class UnifySearchHandler
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokevirtual 392	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   1: invokevirtual 395	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   4: istore 4
-    //   6: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   9: ifeq +36 -> 45
-    //   12: new 157	java/lang/StringBuilder
+    //   12: new 160	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 158	java/lang/StringBuilder:<init>	()V
+    //   16: invokespecial 161	java/lang/StringBuilder:<init>	()V
     //   19: astore_2
     //   20: aload_2
-    //   21: ldc_w 501
-    //   24: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: ldc_w 506
+    //   24: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
     //   28: aload_2
     //   29: iload 4
-    //   31: invokevirtual 307	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   34: pop
-    //   35: ldc 145
+    //   35: ldc 149
     //   37: iconst_2
     //   38: aload_2
-    //   39: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   45: ldc_w 503
+    //   39: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: ldc_w 508
     //   48: iload 4
-    //   50: invokestatic 508	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   53: invokestatic 512	com/tencent/mobileqq/search/util/SearchCostStat:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   56: ldc_w 514
-    //   59: invokestatic 516	com/tencent/mobileqq/search/util/SearchCostStat:b	(Ljava/lang/String;)V
+    //   50: invokestatic 513	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   53: invokestatic 517	com/tencent/mobileqq/search/util/SearchCostStat:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: ldc_w 519
+    //   59: invokestatic 521	com/tencent/mobileqq/search/util/SearchCostStat:b	(Ljava/lang/String;)V
     //   62: aload_1
-    //   63: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   66: ldc_w 402
-    //   69: ldc_w 354
-    //   72: invokevirtual 406	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   75: astore 12
+    //   63: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   66: ldc_w 405
+    //   69: ldc_w 357
+    //   72: invokevirtual 409	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   75: astore 11
     //   77: aload_1
-    //   78: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   81: ldc_w 518
-    //   84: ldc_w 354
-    //   87: invokevirtual 406	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   90: astore 13
+    //   78: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   81: ldc_w 523
+    //   84: ldc_w 357
+    //   87: invokevirtual 409	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   90: astore 12
     //   92: aload_1
-    //   93: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   96: ldc_w 520
-    //   99: invokevirtual 524	android/os/Bundle:getLongArray	(Ljava/lang/String;)[J
-    //   102: astore_2
-    //   103: aload_1
-    //   104: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   107: ldc_w 526
-    //   110: invokevirtual 530	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-    //   113: istore 6
-    //   115: aload_1
-    //   116: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   119: ldc_w 532
-    //   122: invokevirtual 536	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   125: lstore 7
-    //   127: iload 4
-    //   129: i2l
-    //   130: lstore 9
-    //   132: iconst_5
-    //   133: anewarray 408	java/lang/Object
-    //   136: dup
-    //   137: iconst_0
-    //   138: aload 12
-    //   140: aastore
-    //   141: dup
-    //   142: iconst_1
-    //   143: iload 6
-    //   145: invokestatic 541	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   148: aastore
-    //   149: dup
-    //   150: iconst_2
-    //   151: aload 13
-    //   153: aastore
-    //   154: dup
-    //   155: iconst_3
-    //   156: iconst_m1
-    //   157: invokestatic 414	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   160: aastore
-    //   161: dup
-    //   162: iconst_4
-    //   163: ldc_w 354
-    //   166: aastore
-    //   167: astore 11
+    //   93: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   96: ldc_w 525
+    //   99: invokevirtual 529	android/os/Bundle:getLongArray	(Ljava/lang/String;)[J
+    //   102: astore 14
+    //   104: aload_1
+    //   105: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   108: ldc_w 531
+    //   111: invokevirtual 535	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   114: istore 6
+    //   116: aload_1
+    //   117: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   120: ldc_w 537
+    //   123: invokevirtual 541	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   126: lstore 7
+    //   128: iload 4
+    //   130: i2l
+    //   131: lstore 9
+    //   133: iconst_5
+    //   134: anewarray 411	java/lang/Object
+    //   137: dup
+    //   138: iconst_0
+    //   139: aload 11
+    //   141: aastore
+    //   142: dup
+    //   143: iconst_1
+    //   144: iload 6
+    //   146: invokestatic 546	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   149: aastore
+    //   150: dup
+    //   151: iconst_2
+    //   152: aload 12
+    //   154: aastore
+    //   155: dup
+    //   156: iconst_3
+    //   157: iconst_m1
+    //   158: invokestatic 417	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   161: aastore
+    //   162: dup
+    //   163: iconst_4
+    //   164: ldc_w 357
+    //   167: aastore
+    //   168: astore_2
     //   169: aload_0
-    //   170: ldc_w 543
+    //   170: ldc_w 548
     //   173: lload 7
     //   175: lload 9
-    //   177: aload 12
-    //   179: invokevirtual 377	com/tencent/mobileqq/app/UnifySearchHandler:a	(Ljava/lang/String;JJLjava/lang/String;)V
+    //   177: aload 11
+    //   179: invokevirtual 380	com/tencent/mobileqq/app/UnifySearchHandler:a	(Ljava/lang/String;JJLjava/lang/String;)V
     //   182: iload 4
     //   184: sipush 1000
-    //   187: if_icmpeq +14 -> 201
+    //   187: if_icmpeq +13 -> 200
     //   190: aload_0
     //   191: sipush 1004
     //   194: iconst_0
-    //   195: aload 11
-    //   197: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   200: return
-    //   201: aload_3
-    //   202: ifnonnull +14 -> 216
-    //   205: aload_0
-    //   206: sipush 1004
-    //   209: iconst_0
-    //   210: aload 11
-    //   212: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   215: return
-    //   216: aload_3
-    //   217: instanceof 420
-    //   220: ifne +14 -> 234
-    //   223: aload_0
-    //   224: sipush 1004
-    //   227: iconst_0
-    //   228: aload 11
-    //   230: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   233: return
-    //   234: new 545	pb/unify/search/UnifySearchUnite$RspBody
-    //   237: dup
-    //   238: invokespecial 546	pb/unify/search/UnifySearchUnite$RspBody:<init>	()V
-    //   241: astore 14
-    //   243: aload 14
-    //   245: aload_3
-    //   246: checkcast 420	[B
-    //   249: checkcast 420	[B
-    //   252: invokevirtual 547	pb/unify/search/UnifySearchUnite$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   255: pop
-    //   256: aload 14
-    //   258: getfield 548	pb/unify/search/UnifySearchUnite$RspBody:result_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   261: invokevirtual 435	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   264: istore 4
-    //   266: aload 14
-    //   268: getfield 549	pb/unify/search/UnifySearchUnite$RspBody:error_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   271: invokevirtual 443	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   274: astore_3
-    //   275: iload 4
-    //   277: ifeq +63 -> 340
-    //   280: iload 4
-    //   282: sipush 1000
-    //   285: if_icmplt +6 -> 291
-    //   288: goto +52 -> 340
-    //   291: iconst_5
-    //   292: anewarray 408	java/lang/Object
-    //   295: astore_2
-    //   296: aload_2
-    //   297: iconst_0
-    //   298: aload 12
-    //   300: aastore
-    //   301: aload_2
-    //   302: iconst_1
-    //   303: iload 6
-    //   305: invokestatic 541	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   308: aastore
-    //   309: aload_2
-    //   310: iconst_2
-    //   311: aload 13
-    //   313: aastore
-    //   314: aload_2
-    //   315: iconst_3
-    //   316: iload 4
-    //   318: invokestatic 414	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   321: aastore
-    //   322: aload_2
-    //   323: iconst_4
-    //   324: aload_3
-    //   325: aastore
-    //   326: aload_0
-    //   327: sipush 1004
-    //   330: iconst_0
-    //   331: aload_2
-    //   332: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   335: return
-    //   336: astore_1
-    //   337: goto +350 -> 687
-    //   340: aload 14
-    //   342: getfield 552	pb/unify/search/UnifySearchUnite$RspBody:cookie_topic	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   345: invokevirtual 259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   348: invokevirtual 556	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   351: astore_3
-    //   352: aload 14
-    //   354: getfield 559	pb/unify/search/UnifySearchUnite$RspBody:search_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   357: invokevirtual 562	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   360: ifeq +21 -> 381
-    //   363: ldc_w 543
-    //   366: aload_2
+    //   195: aload_2
+    //   196: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   199: return
+    //   200: aload_3
+    //   201: ifnonnull +13 -> 214
+    //   204: aload_0
+    //   205: sipush 1004
+    //   208: iconst_0
+    //   209: aload_2
+    //   210: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   213: return
+    //   214: aload_3
+    //   215: instanceof 423
+    //   218: ifne +13 -> 231
+    //   221: aload_0
+    //   222: sipush 1004
+    //   225: iconst_0
+    //   226: aload_2
+    //   227: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   230: return
+    //   231: new 550	pb/unify/search/UnifySearchUnite$RspBody
+    //   234: dup
+    //   235: invokespecial 551	pb/unify/search/UnifySearchUnite$RspBody:<init>	()V
+    //   238: astore 13
+    //   240: aload 13
+    //   242: aload_3
+    //   243: checkcast 423	[B
+    //   246: checkcast 423	[B
+    //   249: invokevirtual 552	pb/unify/search/UnifySearchUnite$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   252: pop
+    //   253: aload 13
+    //   255: getfield 553	pb/unify/search/UnifySearchUnite$RspBody:result_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   258: invokevirtual 438	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   261: istore 4
+    //   263: aload 13
+    //   265: getfield 554	pb/unify/search/UnifySearchUnite$RspBody:error_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   268: invokevirtual 446	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   271: astore_3
+    //   272: iload 4
+    //   274: ifeq +67 -> 341
+    //   277: iload 4
+    //   279: sipush 1000
+    //   282: if_icmplt +6 -> 288
+    //   285: goto +56 -> 341
+    //   288: iconst_5
+    //   289: anewarray 411	java/lang/Object
+    //   292: astore_1
+    //   293: aload_1
+    //   294: iconst_0
+    //   295: aload 11
+    //   297: aastore
+    //   298: aload_1
+    //   299: iconst_1
+    //   300: iload 6
+    //   302: invokestatic 546	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   305: aastore
+    //   306: aload_1
+    //   307: iconst_2
+    //   308: aload 12
+    //   310: aastore
+    //   311: aload_1
+    //   312: iconst_3
+    //   313: iload 4
+    //   315: invokestatic 417	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   318: aastore
+    //   319: aload_1
+    //   320: iconst_4
+    //   321: aload_3
+    //   322: aastore
+    //   323: aload_0
+    //   324: sipush 1004
+    //   327: iconst_0
+    //   328: aload_1
+    //   329: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   332: return
+    //   333: astore_3
+    //   334: aload_1
+    //   335: astore_2
+    //   336: aload_3
+    //   337: astore_1
+    //   338: goto +334 -> 672
+    //   341: aload 13
+    //   343: getfield 557	pb/unify/search/UnifySearchUnite$RspBody:cookie_topic	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   346: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   349: invokevirtual 561	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   352: astore_3
+    //   353: aload 13
+    //   355: getfield 564	pb/unify/search/UnifySearchUnite$RspBody:search_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   358: invokevirtual 567	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   361: ifeq +22 -> 383
+    //   364: ldc_w 548
     //   367: aload 14
-    //   369: getfield 559	pb/unify/search/UnifySearchUnite$RspBody:search_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   372: invokevirtual 259	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   375: invokevirtual 264	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   378: invokestatic 567	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[JLjava/lang/String;)V
-    //   381: aload 14
-    //   383: getfield 570	pb/unify/search/UnifySearchUnite$RspBody:is_end_topic	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   386: invokevirtual 435	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   389: iconst_1
-    //   390: if_icmpne +315 -> 705
-    //   393: iconst_1
-    //   394: istore 5
-    //   396: goto +3 -> 399
-    //   399: aload 14
-    //   401: getfield 573	pb/unify/search/UnifySearchUnite$RspBody:tab_groups	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   404: invokevirtual 246	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   407: astore_2
-    //   408: new 178	java/util/ArrayList
-    //   411: dup
-    //   412: aload_2
-    //   413: invokeinterface 212 1 0
-    //   418: invokespecial 215	java/util/ArrayList:<init>	(I)V
-    //   421: astore 15
-    //   423: iconst_0
-    //   424: istore 4
-    //   426: iload 4
-    //   428: aload_2
-    //   429: invokeinterface 212 1 0
-    //   434: if_icmpge +38 -> 472
-    //   437: aload 15
-    //   439: new 575	com/tencent/mobileqq/search/model/GroupTabModel
-    //   442: dup
-    //   443: aload_2
-    //   444: iload 4
-    //   446: invokeinterface 578 2 0
-    //   451: checkcast 580	pb/unify/search/UnifySearchUnite$TabItemGroup
-    //   454: invokespecial 583	com/tencent/mobileqq/search/model/GroupTabModel:<init>	(Lpb/unify/search/UnifySearchUnite$TabItemGroup;)V
-    //   457: invokeinterface 274 2 0
-    //   462: pop
-    //   463: iload 4
-    //   465: iconst_1
-    //   466: iadd
-    //   467: istore 4
-    //   469: goto -43 -> 426
-    //   472: aload 14
-    //   474: getfield 586	pb/unify/search/UnifySearchUnite$RspBody:trigger_netword_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   477: invokevirtual 435	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   480: istore 4
-    //   482: iload 4
-    //   484: iflt +11 -> 495
-    //   487: invokestatic 589	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   490: iload 4
-    //   492: invokestatic 595	com/tencent/mobileqq/utils/SharedPreUtils:s	(Landroid/content/Context;I)V
-    //   495: aload 14
-    //   497: getfield 598	pb/unify/search/UnifySearchUnite$RspBody:item_groups	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   500: invokevirtual 246	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   503: astore_2
-    //   504: invokestatic 497	com/tencent/mobileqq/studymode/StudyModeManager:a	()Z
-    //   507: ifeq +15 -> 522
-    //   510: new 178	java/util/ArrayList
-    //   513: dup
-    //   514: iconst_0
-    //   515: invokespecial 215	java/util/ArrayList:<init>	(I)V
-    //   518: astore_2
-    //   519: goto +36 -> 555
-    //   522: aload_0
-    //   523: iconst_3
-    //   524: anewarray 408	java/lang/Object
-    //   527: dup
-    //   528: iconst_0
-    //   529: aload 12
-    //   531: aastore
-    //   532: dup
-    //   533: iconst_1
-    //   534: aload_2
-    //   535: aastore
-    //   536: dup
-    //   537: iconst_2
-    //   538: aload_1
-    //   539: getfield 400	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   542: ldc 116
-    //   544: invokevirtual 601	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   547: invokestatic 414	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   550: aastore
-    //   551: invokevirtual 604	com/tencent/mobileqq/app/UnifySearchHandler:a	([Ljava/lang/Object;)Ljava/util/List;
-    //   554: astore_2
-    //   555: aload 14
-    //   557: getfield 607	pb/unify/search/UnifySearchUnite$RspBody:exhibition_flags	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   560: invokevirtual 435	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   563: istore 4
-    //   565: bipush 8
-    //   567: anewarray 408	java/lang/Object
-    //   570: astore_1
+    //   369: aload 13
+    //   371: getfield 564	pb/unify/search/UnifySearchUnite$RspBody:search_ver	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   374: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   377: invokevirtual 267	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   380: invokestatic 572	com/tencent/mobileqq/search/util/SearchUtils:a	(Ljava/lang/String;[JLjava/lang/String;)V
+    //   383: aload 13
+    //   385: getfield 575	pb/unify/search/UnifySearchUnite$RspBody:is_end_topic	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   388: invokevirtual 438	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   391: iconst_1
+    //   392: if_icmpne +298 -> 690
+    //   395: iconst_1
+    //   396: istore 5
+    //   398: goto +3 -> 401
+    //   401: aload 13
+    //   403: getfield 578	pb/unify/search/UnifySearchUnite$RspBody:tab_groups	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   406: invokevirtual 249	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   409: astore 15
+    //   411: new 181	java/util/ArrayList
+    //   414: dup
+    //   415: aload 15
+    //   417: invokeinterface 215 1 0
+    //   422: invokespecial 218	java/util/ArrayList:<init>	(I)V
+    //   425: astore 14
+    //   427: iconst_0
+    //   428: istore 4
+    //   430: iload 4
+    //   432: aload 15
+    //   434: invokeinterface 215 1 0
+    //   439: if_icmpge +39 -> 478
+    //   442: aload 14
+    //   444: new 580	com/tencent/mobileqq/search/model/GroupTabModel
+    //   447: dup
+    //   448: aload 15
+    //   450: iload 4
+    //   452: invokeinterface 583 2 0
+    //   457: checkcast 585	pb/unify/search/UnifySearchUnite$TabItemGroup
+    //   460: invokespecial 588	com/tencent/mobileqq/search/model/GroupTabModel:<init>	(Lpb/unify/search/UnifySearchUnite$TabItemGroup;)V
+    //   463: invokeinterface 277 2 0
+    //   468: pop
+    //   469: iload 4
+    //   471: iconst_1
+    //   472: iadd
+    //   473: istore 4
+    //   475: goto -45 -> 430
+    //   478: aload 13
+    //   480: getfield 591	pb/unify/search/UnifySearchUnite$RspBody:trigger_netword_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   483: invokevirtual 438	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   486: istore 4
+    //   488: iload 4
+    //   490: iflt +11 -> 501
+    //   493: invokestatic 594	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   496: iload 4
+    //   498: invokestatic 600	com/tencent/mobileqq/utils/SharedPreUtils:s	(Landroid/content/Context;I)V
+    //   501: aload_0
+    //   502: iconst_3
+    //   503: anewarray 411	java/lang/Object
+    //   506: dup
+    //   507: iconst_0
+    //   508: aload 11
+    //   510: aastore
+    //   511: dup
+    //   512: iconst_1
+    //   513: aload 13
+    //   515: getfield 603	pb/unify/search/UnifySearchUnite$RspBody:item_groups	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   518: invokevirtual 249	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   521: aastore
+    //   522: dup
+    //   523: iconst_2
+    //   524: aload_1
+    //   525: getfield 403	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   528: ldc 120
+    //   530: invokevirtual 606	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   533: invokestatic 417	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   536: aastore
+    //   537: invokevirtual 609	com/tencent/mobileqq/app/UnifySearchHandler:a	([Ljava/lang/Object;)Ljava/util/List;
+    //   540: astore 15
+    //   542: aload 13
+    //   544: getfield 612	pb/unify/search/UnifySearchUnite$RspBody:exhibition_flags	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   547: invokevirtual 438	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   550: istore 4
+    //   552: bipush 8
+    //   554: anewarray 411	java/lang/Object
+    //   557: astore_1
+    //   558: aload_1
+    //   559: iconst_0
+    //   560: aload 11
+    //   562: aastore
+    //   563: aload_1
+    //   564: iconst_1
+    //   565: iload 6
+    //   567: invokestatic 546	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   570: aastore
     //   571: aload_1
-    //   572: iconst_0
+    //   572: iconst_2
     //   573: aload 12
     //   575: aastore
     //   576: aload_1
-    //   577: iconst_1
-    //   578: iload 6
-    //   580: invokestatic 541	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   583: aastore
-    //   584: aload_1
-    //   585: iconst_2
-    //   586: aload 13
-    //   588: aastore
-    //   589: aload_1
-    //   590: iconst_3
-    //   591: aload_3
+    //   577: iconst_3
+    //   578: aload_3
+    //   579: aastore
+    //   580: aload_1
+    //   581: iconst_4
+    //   582: iload 5
+    //   584: invokestatic 546	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   587: aastore
+    //   588: aload_1
+    //   589: iconst_5
+    //   590: aload 14
     //   592: aastore
     //   593: aload_1
-    //   594: iconst_4
-    //   595: iload 5
-    //   597: invokestatic 541	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   600: aastore
-    //   601: aload_1
-    //   602: iconst_5
-    //   603: aload 15
-    //   605: aastore
-    //   606: aload_1
-    //   607: bipush 6
-    //   609: aload_2
-    //   610: aastore
-    //   611: aload_1
-    //   612: bipush 7
-    //   614: iload 4
-    //   616: invokestatic 414	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   619: aastore
-    //   620: invokestatic 143	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   623: ifeq +36 -> 659
-    //   626: new 157	java/lang/StringBuilder
-    //   629: dup
-    //   630: invokespecial 158	java/lang/StringBuilder:<init>	()V
-    //   633: astore_2
-    //   634: aload_2
-    //   635: ldc_w 609
-    //   638: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   641: pop
-    //   642: aload_2
-    //   643: iload 4
-    //   645: invokevirtual 307	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   648: pop
-    //   649: ldc 145
-    //   651: iconst_2
-    //   652: aload_2
-    //   653: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   656: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   659: aload_0
-    //   660: sipush 1004
-    //   663: iconst_1
+    //   594: bipush 6
+    //   596: aload 15
+    //   598: aastore
+    //   599: aload_1
+    //   600: bipush 7
+    //   602: iload 4
+    //   604: invokestatic 417	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   607: aastore
+    //   608: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   611: ifeq +36 -> 647
+    //   614: new 160	java/lang/StringBuilder
+    //   617: dup
+    //   618: invokespecial 161	java/lang/StringBuilder:<init>	()V
+    //   621: astore_2
+    //   622: aload_2
+    //   623: ldc_w 614
+    //   626: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: pop
+    //   630: aload_2
+    //   631: iload 4
+    //   633: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   636: pop
+    //   637: ldc 149
+    //   639: iconst_2
+    //   640: aload_2
+    //   641: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   644: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   647: aload_0
+    //   648: sipush 1004
+    //   651: iconst_1
+    //   652: aload_1
+    //   653: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   656: return
+    //   657: astore_2
+    //   658: aload_1
+    //   659: astore_3
+    //   660: goto +16 -> 676
+    //   663: astore_3
     //   664: aload_1
-    //   665: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   668: return
-    //   669: astore_2
-    //   670: aload_1
-    //   671: astore_3
-    //   672: goto +19 -> 691
-    //   675: astore_3
-    //   676: aload_1
-    //   677: astore_2
-    //   678: aload_3
-    //   679: astore_1
-    //   680: goto +7 -> 687
-    //   683: astore_1
-    //   684: aload 11
-    //   686: astore_2
-    //   687: aload_2
-    //   688: astore_3
-    //   689: aload_1
-    //   690: astore_2
-    //   691: aload_0
-    //   692: sipush 1004
-    //   695: iconst_0
-    //   696: aload_3
-    //   697: invokevirtual 418	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   700: aload_2
-    //   701: invokevirtual 493	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   704: return
-    //   705: iconst_0
-    //   706: istore 5
-    //   708: goto -309 -> 399
+    //   665: astore_2
+    //   666: aload_3
+    //   667: astore_1
+    //   668: goto +4 -> 672
+    //   671: astore_1
+    //   672: aload_2
+    //   673: astore_3
+    //   674: aload_1
+    //   675: astore_2
+    //   676: aload_0
+    //   677: sipush 1004
+    //   680: iconst_0
+    //   681: aload_3
+    //   682: invokevirtual 421	com/tencent/mobileqq/app/UnifySearchHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   685: aload_2
+    //   686: invokevirtual 497	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   689: return
+    //   690: iconst_0
+    //   691: istore 5
+    //   693: goto -292 -> 401
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	711	0	this	UnifySearchHandler
-    //   0	711	1	paramToServiceMsg	ToServiceMsg
-    //   0	711	2	paramFromServiceMsg	FromServiceMsg
-    //   0	711	3	paramObject	Object
-    //   4	640	4	i	int
-    //   394	313	5	bool1	boolean
-    //   113	466	6	bool2	boolean
-    //   125	49	7	l1	long
-    //   130	46	9	l2	long
-    //   167	518	11	arrayOfObject	Object[]
-    //   75	499	12	str1	String
-    //   90	497	13	str2	String
-    //   241	315	14	localRspBody	pb.unify.search.UnifySearchUnite.RspBody
-    //   421	183	15	localArrayList	ArrayList
+    //   0	696	0	this	UnifySearchHandler
+    //   0	696	1	paramToServiceMsg	ToServiceMsg
+    //   0	696	2	paramFromServiceMsg	FromServiceMsg
+    //   0	696	3	paramObject	Object
+    //   4	628	4	i	int
+    //   396	296	5	bool1	boolean
+    //   114	452	6	bool2	boolean
+    //   126	48	7	l1	long
+    //   131	45	9	l2	long
+    //   75	486	11	str1	String
+    //   90	484	12	str2	String
+    //   238	305	13	localRspBody	pb.unify.search.UnifySearchUnite.RspBody
+    //   102	489	14	localObject	Object
+    //   409	188	15	localList	List
     // Exception table:
     //   from	to	target	type
-    //   326	335	336	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   659	668	669	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   620	659	675	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   243	275	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   291	296	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   301	309	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   314	322	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   340	381	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   381	393	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   399	423	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   426	463	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   472	482	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   487	495	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   495	519	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   522	555	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   555	571	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   576	584	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   593	601	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   611	620	683	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   323	332	333	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   647	656	657	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   608	647	663	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   240	272	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   288	293	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   298	306	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   311	319	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   341	383	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   383	395	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   401	427	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   430	469	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   478	488	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   493	501	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   501	558	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   563	571	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   580	588	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   599	608	671	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
   }
   
   public List<ISearchResultGroupModel> a(Object... paramVarArgs)
@@ -918,7 +898,7 @@ public class UnifySearchHandler
       } else {
         i = -1;
       }
-      boolean bool2 = SearchUtils.c(i);
+      boolean bool2 = SearchUtils.d(i);
       boolean bool1;
       if (bool2) {
         bool1 = SearchConfigUtils.b(i);
@@ -947,7 +927,7 @@ public class UnifySearchHandler
     }
     UnifySearchBusiHotWord.ReqBody localReqBody = new UnifySearchBusiHotWord.ReqBody();
     localReqBody.business.set(128);
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ToServiceMsg localToServiceMsg = createToServiceMsg("UnifySearch.BusiHotWord");
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
     sendPbReq(localToServiceMsg);
@@ -975,7 +955,7 @@ public class UnifySearchHandler
       return;
     }
     Object localObject = new UnifySearchDiscovery.ReqBody();
-    ((UnifySearchDiscovery.ReqBody)localObject).version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((UnifySearchDiscovery.ReqBody)localObject).version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ((UnifySearchDiscovery.ReqBody)localObject).business.set(128);
     ((UnifySearchDiscovery.ReqBody)localObject).from_type.set(paramInt);
     paramQQAppInterface = createToServiceMsg("UnifySearch.Discovery");
@@ -1032,7 +1012,7 @@ public class UnifySearchHandler
       if (paramInt == 0)
       {
         paramInt = paramToServiceMsg.expire_time.get();
-        BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0).edit().putInt(jdField_c_of_type_JavaLangString, paramInt).commit();
+        BaseApplication.getContext().getSharedPreferences(d, 0).edit().putInt(f, paramInt).commit();
         paramToServiceMsg = paramToServiceMsg.rpt_item_groups.get();
         notifyUI(1002, true, new Object[] { Integer.valueOf(paramInt), a(paramToServiceMsg) });
         if (QLog.isColorLevel())
@@ -1204,7 +1184,7 @@ public class UnifySearchHandler
   public void a(String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
     long l = System.currentTimeMillis();
-    paramString1 = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_search_engineer").c("search_net").d(paramString1);
+    paramString1 = new ReportTask(this.g).a("dc00899").b("grp_search_engineer").c("search_net").d(paramString1);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(paramLong2);
     ((StringBuilder)localObject1).append("");
@@ -1268,7 +1248,7 @@ public class UnifySearchHandler
       i = paramInt2 - 1;
     }
     ((UnifySearchUnite.ReqBody)localObject1).key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-    ((UnifySearchUnite.ReqBody)localObject1).version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((UnifySearchUnite.ReqBody)localObject1).version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     if (paramBoolean2) {
       ((UnifySearchUnite.ReqBody)localObject1).client_has_people_and_qun.set(1);
     }
@@ -1285,7 +1265,7 @@ public class UnifySearchHandler
     {
       localObject2 = new UnifySearchCommon.RootSearcherRequest();
       ((UnifySearchCommon.RootSearcherRequest)localObject2).business.set(128);
-      ((UnifySearchCommon.RootSearcherRequest)localObject2).rpt_busi_mask.set(SearchUtils.a(jdField_a_of_type_ArrayOfLong));
+      ((UnifySearchCommon.RootSearcherRequest)localObject2).rpt_busi_mask.set(SearchUtils.b(a));
       ((UnifySearchUnite.ReqBody)localObject1).req_entity.set((MessageMicro)localObject2);
     }
     Object localObject2 = new UnifySearchCommon.RootSearcherRequest();
@@ -1298,7 +1278,7 @@ public class UnifySearchHandler
     ((UnifySearchUnite.ReqBody)localObject1).req_topic.set((MessageMicro)localObject2);
     ((UnifySearchUnite.ReqBody)localObject1).from_action.set(i);
     localObject2 = new UnifySearchCommon.ExtensionRequestInfo();
-    Object localObject3 = SharedPreUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    Object localObject3 = SharedPreUtils.n(this.g.getCurrentAccountUin());
     if ((localObject3 != null) && (localObject3.length != 0))
     {
       paramInt2 = localObject3.length;
@@ -1429,7 +1409,7 @@ public class UnifySearchHandler
       return;
     }
     ((UnifyTabSearch.ReqBody)localObject1).key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-    ((UnifyTabSearch.ReqBody)localObject1).version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((UnifyTabSearch.ReqBody)localObject1).version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     Object localObject2 = new UnifySearchCommon.RootSearcherRequest();
     ((UnifySearchCommon.RootSearcherRequest)localObject2).business.set(128);
     ((UnifySearchCommon.RootSearcherRequest)localObject2).page_size.set(paramInt1);
@@ -1461,13 +1441,13 @@ public class UnifySearchHandler
     paramString3.latitude.set((float)paramDouble1);
     paramString3.longitude.set((float)paramDouble2);
     int i;
-    if (FunctionModuleConfigManager.a.isEmpty())
+    if (FunctionModuleConfigManager.b.isEmpty())
     {
       i = 0;
     }
     else
     {
-      localObject2 = FunctionModuleConfigManager.a.values().iterator();
+      localObject2 = FunctionModuleConfigManager.b.values().iterator();
       paramInt1 = 2;
       for (;;)
       {
@@ -1530,13 +1510,13 @@ public class UnifySearchHandler
     Object localObject1 = paramResultItemGroup;
     String str1 = ((UnifySearchCommon.ResultItemGroup)localObject1).group_name.get().toStringUtf8();
     Object localObject2 = ((UnifySearchCommon.ResultItemGroup)localObject1).rpt_highlight_words.get();
-    ArrayList localArrayList = new ArrayList(((List)localObject2).size());
+    ArrayList localArrayList2 = new ArrayList(((List)localObject2).size());
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      localArrayList.add(((ByteStringMicro)((Iterator)localObject2).next()).toStringUtf8());
+      localArrayList2.add(((ByteStringMicro)((Iterator)localObject2).next()).toStringUtf8());
     }
-    Object localObject3 = ((UnifySearchCommon.ResultItemGroup)localObject1).result_items.get();
-    localObject2 = new ArrayList(((List)localObject3).size());
+    localObject2 = ((UnifySearchCommon.ResultItemGroup)localObject1).result_items.get();
+    ArrayList localArrayList1 = new ArrayList(((List)localObject2).size());
     int i = ((UnifySearchCommon.ResultItemGroup)localObject1).hide_title.get();
     boolean bool3 = false;
     boolean bool1;
@@ -1547,64 +1527,64 @@ public class UnifySearchHandler
     }
     String str2 = ((UnifySearchCommon.ResultItemGroup)localObject1).group_footer_name.get().toStringUtf8();
     String str3 = ((UnifySearchCommon.ResultItemGroup)localObject1).group_footer_jump_url.get().toStringUtf8();
-    long l1 = ((List)localObject3).size();
+    long l1 = ((List)localObject2).size();
     i = 0;
-    localObject1 = localObject3;
+    localObject1 = localObject2;
     boolean bool2;
     while (i < ((List)localObject1).size())
     {
-      Object localObject4 = (UnifySearchCommon.ResultItem)((List)localObject1).get(i);
-      Object localObject5 = ((UnifySearchCommon.ResultItem)localObject4).sub_result_items.get();
-      int m = ((List)localObject5).size() + 1;
-      localObject3 = new ArrayList(m);
-      ((List)localObject3).add(localObject4);
-      ((List)localObject3).addAll((Collection)localObject5);
+      Object localObject3 = (UnifySearchCommon.ResultItem)((List)localObject1).get(i);
+      Object localObject4 = ((UnifySearchCommon.ResultItem)localObject3).sub_result_items.get();
+      int m = ((List)localObject4).size() + 1;
+      localObject2 = new ArrayList(m);
+      ((List)localObject2).add(localObject3);
+      ((List)localObject2).addAll((Collection)localObject4);
       int k = 0;
       int j = i;
       i = m;
       for (;;)
       {
-        localObject4 = paramResultItemGroup;
+        localObject3 = paramResultItemGroup;
         if (k >= i) {
           break;
         }
-        localObject5 = (UnifySearchCommon.ResultItem)((List)localObject3).get(k);
-        Object localObject6 = ((UnifySearchCommon.ResultItem)localObject5).result_id.get().toStringUtf8();
-        bool2 = ((UnifySearchCommon.ResultItem)localObject5).layout_id.has();
-        String str4 = ((UnifySearchCommon.ResultItem)localObject5).name.get().toStringUtf8();
+        localObject4 = (UnifySearchCommon.ResultItem)((List)localObject2).get(k);
+        Object localObject5 = ((UnifySearchCommon.ResultItem)localObject4).result_id.get().toStringUtf8();
+        bool2 = ((UnifySearchCommon.ResultItem)localObject4).layout_id.has();
+        String str4 = ((UnifySearchCommon.ResultItem)localObject4).name.get().toStringUtf8();
         long l2;
-        if (((UnifySearchCommon.ResultItem)localObject5).group_mask.has()) {
-          l2 = ((UnifySearchCommon.ResultItem)localObject5).group_mask.get();
+        if (((UnifySearchCommon.ResultItem)localObject4).group_mask.has()) {
+          l2 = ((UnifySearchCommon.ResultItem)localObject4).group_mask.get();
         } else {
           l2 = paramLong;
         }
-        String str5 = ((UnifySearchCommon.ResultItem)localObject5).pic_url.get().toStringUtf8();
-        String str6 = ((UnifySearchCommon.ResultItem)localObject5).jmp_url.get().toStringUtf8();
-        String str7 = ((UnifySearchCommon.ResultItem)localObject5).extension.get().toStringUtf8();
+        String str5 = ((UnifySearchCommon.ResultItem)localObject4).pic_url.get().toStringUtf8();
+        String str6 = ((UnifySearchCommon.ResultItem)localObject4).jmp_url.get().toStringUtf8();
+        String str7 = ((UnifySearchCommon.ResultItem)localObject4).extension.get().toStringUtf8();
         if (bool2)
         {
           if (paramLong == 1100L)
           {
-            if ((((UnifySearchCommon.ResultItemGroup)localObject4).group_extra_flag.has()) && ((((UnifySearchCommon.ResultItemGroup)localObject4).group_extra_flag.get() & 0x1) == 0)) {
+            if ((((UnifySearchCommon.ResultItemGroup)localObject3).group_extra_flag.has()) && ((((UnifySearchCommon.ResultItemGroup)localObject3).group_extra_flag.get() & 0x1) == 0)) {
               bool2 = true;
             } else {
               bool2 = false;
             }
-            localObject4 = new RichSearchModelNode(paramString, paramLong, localArrayList, (UnifySearchCommon.ResultItem)localObject5, paramInt);
-            localObject6 = (RichSearchModelNode)localObject4;
-            ((RichSearchModelNode)localObject6).a(((UnifySearchCommon.ResultItem)localObject5).layout_id.get());
-            ((RichSearchModelNode)localObject6).c(null);
-            ((RichSearchModelNode)localObject6).a(bool2);
+            localObject3 = new RichSearchModelNode(paramString, paramLong, localArrayList2, (UnifySearchCommon.ResultItem)localObject4, paramInt, str1);
+            localObject5 = (RichSearchModelNode)localObject3;
+            ((RichSearchModelNode)localObject5).b(((UnifySearchCommon.ResultItem)localObject4).layout_id.get());
+            ((RichSearchModelNode)localObject5).c(null);
+            ((RichSearchModelNode)localObject5).b(bool2);
           }
           else
           {
-            localObject4 = a(((UnifySearchCommon.ResultItem)localObject5).layout_id.get(), paramString, paramLong, localArrayList, (UnifySearchCommon.ResultItem)localObject5, paramInt);
+            localObject3 = a(((UnifySearchCommon.ResultItem)localObject4).layout_id.get(), paramString, paramLong, localArrayList2, (UnifySearchCommon.ResultItem)localObject4, paramInt);
           }
-          if ((localObject4 != null) && (((NetSearchTemplateBaseItem)localObject4).b()))
+          if ((localObject3 != null) && (((NetSearchTemplateBaseItem)localObject3).i()))
           {
-            ((NetSearchTemplateBaseItem)localObject4).u = ((UnifySearchCommon.ResultItem)localObject5).seporator_type.get();
-            ((NetSearchTemplateBaseItem)localObject4).a = bool1;
-            ((List)localObject2).add(localObject4);
+            ((NetSearchTemplateBaseItem)localObject3).af = ((UnifySearchCommon.ResultItem)localObject4).seporator_type.get();
+            ((NetSearchTemplateBaseItem)localObject3).r = bool1;
+            localArrayList1.add(localObject3);
           }
           else
           {
@@ -1616,25 +1596,25 @@ public class UnifySearchHandler
           break;
           if (!SearchUtils.b(l2))
           {
-            localObject4 = new StringBuilder();
-            ((StringBuilder)localObject4).append("itemGroupMask is not valid. mask=");
-            ((StringBuilder)localObject4).append(l2);
-            QLog.e("Q.uniteSearch.UnifySearchHandler818searchProto_new", 1, ((StringBuilder)localObject4).toString());
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("itemGroupMask is not valid. mask=");
+            ((StringBuilder)localObject3).append(l2);
+            QLog.e("Q.uniteSearch.UnifySearchHandler818searchProto_new", 1, ((StringBuilder)localObject3).toString());
           }
           else if (l2 == 2073745984L)
           {
-            localObject4 = new SearchResultModelForEntrance(paramString, str7, -4, str5);
-            ((SearchResultModelForEntrance)localObject4).u = ((UnifySearchCommon.ResultItem)localObject5).seporator_type.get();
-            ((List)localObject2).add(localObject4);
+            localObject3 = new SearchResultModelForEntrance(paramString, str7, -4, str5);
+            ((SearchResultModelForEntrance)localObject3).af = ((UnifySearchCommon.ResultItem)localObject4).seporator_type.get();
+            localArrayList1.add(localObject3);
           }
           else
           {
-            localObject4 = new GroupBaseNetSearchModelItem(paramString, (String)localObject6, str4, str5, str6, str7, l2, localArrayList, paramInt);
-            ((GroupBaseNetSearchModelItem)localObject4).u = ((UnifySearchCommon.ResultItem)localObject5).seporator_type.get();
-            ((GroupBaseNetSearchModelItem)localObject4).c = bool1;
-            ((GroupBaseNetSearchModelItem)localObject4).j = j;
-            ((GroupBaseNetSearchModelItem)localObject4).a = paramInt;
-            ((List)localObject2).add(localObject4);
+            localObject3 = new GroupBaseNetSearchModelItem(paramString, (String)localObject5, str4, str5, str6, str7, l2, localArrayList2, paramInt);
+            ((GroupBaseNetSearchModelItem)localObject3).af = ((UnifySearchCommon.ResultItem)localObject4).seporator_type.get();
+            ((GroupBaseNetSearchModelItem)localObject3).G = bool1;
+            ((GroupBaseNetSearchModelItem)localObject3).L = j;
+            ((GroupBaseNetSearchModelItem)localObject3).m = paramInt;
+            localArrayList1.add(localObject3);
           }
         }
         k += 1;
@@ -1645,7 +1625,7 @@ public class UnifySearchHandler
     {
       l1 = paramResultItemGroup.total_result_count.get();
       localObject1 = paramResultItemGroup.more_url.get().toStringUtf8();
-      localObject3 = paramResultItemGroup.more_name.get().toStringUtf8();
+      localObject2 = paramResultItemGroup.more_name.get().toStringUtf8();
       if (paramResultItemGroup.highlight_title_keyword.get() == 1) {
         bool2 = true;
       } else {
@@ -1656,18 +1636,13 @@ public class UnifySearchHandler
       }
       if (paramLong == 1100L)
       {
-        paramList.add(new GroupSearchModelRichNode(paramString, paramLong, str1, (List)localObject2, l1, (String)localObject1, (String)localObject3, localArrayList, bool1, bool2, bool3, str2, str3));
+        paramList.add(new GroupSearchModelRichNode(paramString, paramLong, str1, localArrayList1, l1, (String)localObject1, (String)localObject2, localArrayList2, bool1, bool2, bool3, str2, str3));
         return;
       }
-      paramResultItemGroup = new GroupBaseNetSearchModel(paramString, paramLong, str1, (List)localObject2, l1, (String)localObject1, (String)localObject3, localArrayList, bool1, bool2, bool3, str2, str3);
-      paramResultItemGroup.a(paramInt);
+      paramResultItemGroup = new GroupBaseNetSearchModel(paramString, paramLong, str1, localArrayList1, l1, (String)localObject1, (String)localObject2, localArrayList2, bool1, bool2, bool3, str2, str3);
+      paramResultItemGroup.b(paramInt);
       paramList.add(paramResultItemGroup);
     }
-  }
-  
-  public byte[] a(String paramString)
-  {
-    return FileUtils.fileToBytes(BaseApplication.getContext().getFileStreamPath(paramString));
   }
   
   public void b(ToServiceMsg paramToServiceMsg, int paramInt, Object paramObject)
@@ -1699,9 +1674,9 @@ public class UnifySearchHandler
         if (paramInt == 0)
         {
           paramInt = localRspBody.expire_time.get();
-          SharedPreUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i, paramInt);
+          SharedPreUtils.b(this.g.getCurrentAccountUin(), i, paramInt);
           paramToServiceMsg = localRspBody.result_items.get();
-          paramToServiceMsg = SearchEntryDataModel.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, i);
+          paramToServiceMsg = SearchEntryDataModel.b(this.g, paramToServiceMsg, i);
           if (QLog.isColorLevel())
           {
             paramObject = new StringBuilder();
@@ -1734,6 +1709,11 @@ public class UnifySearchHandler
       label403:
       paramToServiceMsg = null;
     }
+  }
+  
+  public byte[] b(String paramString)
+  {
+    return FileUtils.fileToBytes(BaseApplication.getContext().getFileStreamPath(paramString));
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -1797,7 +1777,7 @@ public class UnifySearchHandler
       if ("UnifySearch.BusiHotWord".equals(str))
       {
         i = paramFromServiceMsg.getResultCode();
-        a(i, paramObject, jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString);
+        a(i, paramObject, d, e);
         a(paramToServiceMsg, i, paramObject);
         return;
       }
@@ -1809,7 +1789,7 @@ public class UnifySearchHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.UnifySearchHandler
  * JD-Core Version:    0.7.0.1
  */

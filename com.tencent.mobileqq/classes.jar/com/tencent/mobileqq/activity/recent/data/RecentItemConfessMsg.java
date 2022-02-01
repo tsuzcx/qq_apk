@@ -46,8 +46,8 @@ public class RecentItemConfessMsg
             localObject1 = this.mMsg.msg2;
           }
         }
-        localMsgSummary.strContent = String.format(HardCodeUtil.a(2131713102), new Object[] { localObject1, this.mMsg.msg });
-        this.mTitleName = HardCodeUtil.a(2131713096);
+        localMsgSummary.strContent = String.format(HardCodeUtil.a(2131910661), new Object[] { localObject1, this.mMsg.msg });
+        this.mTitleName = HardCodeUtil.a(2131910655);
         this.mDisplayTime = this.mMsg.time;
         this.mUnreadNum = this.mMsg.longMsgCount;
         this.mUnreadFlag = 3;
@@ -186,7 +186,7 @@ public class RecentItemConfessMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemConfessMsg
  * JD-Core Version:    0.7.0.1
  */

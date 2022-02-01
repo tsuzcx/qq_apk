@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.AssistantSettingFragment;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +26,7 @@ public class PaiYiPaiManager
     this.a = paramQQAppInterface;
   }
   
-  private void a()
+  private void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PaiYiPaiManager", 2, "updateModified() called");
@@ -56,11 +54,7 @@ public class PaiYiPaiManager
       return;
     }
     localContext.startActivity(new Intent(localContext, QQSettingSettingActivity.class));
-    if (SettingsConfigHelper.a(this.a)) {
-      PublicFragmentActivity.a(localContext, new Intent(), AssistantSettingFragment.class);
-    } else {
-      localContext.startActivity(new Intent(localContext, NotifyPushSettingActivity.class));
-    }
+    PublicFragmentActivity.a(localContext, new Intent(), AssistantSettingFragment.class);
     paramHightlightClickableSpan.clickWebMsg("https://zb.vip.qq.com/v2/pages/nudgeMall?_wv=2");
     int i;
     if (paramHightlightClickableSpan.getMessage().istroop == 0) {
@@ -145,7 +139,7 @@ public class PaiYiPaiManager
       ((SharedPreferences.Editor)localObject1).apply();
     }
     if ((paramShort != 0) || (s != 0)) {
-      a();
+      b();
     }
   }
   
@@ -175,7 +169,7 @@ public class PaiYiPaiManager
       ((SharedPreferences.Editor)localObject1).apply();
     }
     if ((paramShort != 0) || (s != 0)) {
-      a();
+      b();
     }
   }
   
@@ -183,7 +177,7 @@ public class PaiYiPaiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.PaiYiPaiManager
  * JD-Core Version:    0.7.0.1
  */

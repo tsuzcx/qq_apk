@@ -11,7 +11,7 @@ public class CaptureVideoFilterManagerImpl
 {
   public FilterDesc getFilterDesc(String paramString)
   {
-    return CaptureVideoFilterManager.a().a(paramString);
+    return CaptureVideoFilterManager.a().b(paramString);
   }
   
   public String getQQFilterConfigpath()
@@ -27,12 +27,12 @@ public class CaptureVideoFilterManagerImpl
   public int getQQShortVideoFilterConfigVersion(Context paramContext)
   {
     CaptureVideoFilterManager.a();
-    return CaptureVideoFilterManager.a(paramContext);
+    return CaptureVideoFilterManager.b(paramContext);
   }
   
   public FilterCategoryItem getSelectFilterCategoryItem()
   {
-    return CaptureVideoFilterManager.a().a();
+    return CaptureVideoFilterManager.a().c();
   }
   
   public boolean needShowRedDot(int paramInt1, int paramInt2, String paramString)
@@ -47,7 +47,7 @@ public class CaptureVideoFilterManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.CaptureVideoFilterManagerImpl
  * JD-Core Version:    0.7.0.1
  */

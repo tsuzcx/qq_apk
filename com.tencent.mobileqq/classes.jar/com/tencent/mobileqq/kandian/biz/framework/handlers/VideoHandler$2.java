@@ -17,14 +17,14 @@ class VideoHandler$2
     if (paramBoolean) {
       return;
     }
-    if ((this.a.a() != 0) && (this.a.a() != 56) && (!VideoAutoPlayController.sPauseScrollToNextVideo)) {
-      this.a.a().a(paramVideoPlayParam);
+    if ((this.a.c() != 0) && (this.a.c() != 56) && (!VideoAutoPlayController.sPauseScrollToNextVideo)) {
+      this.a.g().a(paramVideoPlayParam);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.2
  * JD-Core Version:    0.7.0.1
  */

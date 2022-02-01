@@ -9,20 +9,20 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class GesturePWDCreateActivity$PromptAdapter
   extends BaseAdapter
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private LayoutInflater b;
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length;
+    if (this.a.d != null) {
+      return this.a.d.length;
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (paramInt >= 0)) {
-      return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt]);
+    if ((this.a.d != null) && (paramInt < this.a.d.length) && (paramInt >= 0)) {
+      return Integer.valueOf(this.a.d[paramInt]);
     }
     return null;
   }
@@ -36,13 +36,13 @@ class GesturePWDCreateActivity$PromptAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559202, null);
+      localView = this.b.inflate(2131624958, null);
     }
-    paramView = localView.findViewById(2131367622);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0)) {
-      paramView.setBackgroundResource(2130845249);
+    paramView = localView.findViewById(2131434166);
+    if ((this.a.d != null) && (paramInt >= 0) && (paramInt < this.a.d.length) && (this.a.d[paramInt] > 0)) {
+      paramView.setBackgroundResource(2130846705);
     } else {
-      paramView.setBackgroundResource(2130851078);
+      paramView.setBackgroundResource(2130853309);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -50,7 +50,7 @@ class GesturePWDCreateActivity$PromptAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDCreateActivity.PromptAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,8 @@ import android.media.MediaCodec;
 
 public class DecodeInfo
 {
-  public int a;
-  public MediaCodec a;
-  
-  public DecodeInfo()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-    this.jdField_a_of_type_Int = 1;
-  }
+  public MediaCodec a = null;
+  public int b = 1;
 }
 
 

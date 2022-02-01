@@ -16,42 +16,42 @@ class AECMShowCameraUnit$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Long == -1L) && (this.this$0.d))
+    if ((this.this$0.E == -1L) && (this.this$0.H))
     {
-      if (!AECMShowCameraUnit.b(this.this$0))
+      if (!AECMShowCameraUnit.c(this.this$0))
       {
-        AECMShowCameraUnit.a(this.this$0).setClickable(true);
-        Log.d(this.this$0.jdField_a_of_type_JavaLangString, "tips: 设置为白色背景");
-        AECMShowCameraUnit.a(this.this$0).setBackgroundDrawable(this.this$0.a().getResources().getDrawable(2064056366));
-        AECMShowCameraUnit.a(this.this$0).setTextColor(-16777216);
+        AECMShowCameraUnit.d(this.this$0).setClickable(true);
+        Log.d(this.this$0.a, "tips: 设置为白色背景");
+        AECMShowCameraUnit.d(this.this$0).setBackgroundDrawable(this.this$0.s().getResources().getDrawable(2063925303));
+        AECMShowCameraUnit.d(this.this$0).setTextColor(-16777216);
       }
     }
-    else if (!AECMShowCameraUnit.b(this.this$0))
+    else if (!AECMShowCameraUnit.c(this.this$0))
     {
-      AECMShowCameraUnit.a(this.this$0).setClickable(false);
-      Log.d(this.this$0.jdField_a_of_type_JavaLangString, "tips: 设置为白色背景 disable");
-      AECMShowCameraUnit.a(this.this$0).setBackgroundDrawable(this.this$0.a().getResources().getDrawable(2064056367));
-      AECMShowCameraUnit.a(this.this$0).setTextColor(Color.parseColor("#8F8F91"));
+      AECMShowCameraUnit.d(this.this$0).setClickable(false);
+      Log.d(this.this$0.a, "tips: 设置为白色背景 disable");
+      AECMShowCameraUnit.d(this.this$0).setBackgroundDrawable(this.this$0.s().getResources().getDrawable(2063925304));
+      AECMShowCameraUnit.d(this.this$0).setTextColor(Color.parseColor("#8F8F91"));
     }
-    if (this.this$0.b >= 5000L)
+    if (this.this$0.F >= 5000L)
     {
-      if (!AECMShowCameraUnit.b(this.this$0)) {
-        AECMShowCameraUnit.a(this.this$0).a(1000, AECMShowCameraUnit.a(this.this$0));
+      if (!AECMShowCameraUnit.c(this.this$0)) {
+        AECMShowCameraUnit.f(this.this$0).a(1000, AECMShowCameraUnit.e(this.this$0));
       }
-      AECMShowCameraUnit.a(this.this$0).setText(2064515310);
-      AEBaseDataReporter.a().aF();
+      AECMShowCameraUnit.g(this.this$0).setText(2064187653);
+      AEBaseDataReporter.a().aK();
       return;
     }
-    if (!AECMShowCameraUnit.b(this.this$0))
+    if (!AECMShowCameraUnit.c(this.this$0))
     {
-      AECMShowCameraUnit.a(this.this$0).a(1003, null);
-      AECMShowCameraUnit.a(this.this$0).setText("");
+      AECMShowCameraUnit.f(this.this$0).a(1003, null);
+      AECMShowCameraUnit.g(this.this$0).setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECMShowCameraUnit.3
  * JD-Core Version:    0.7.0.1
  */

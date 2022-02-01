@@ -22,14 +22,14 @@ public class EntityDaoRegister
   {
     mDaoClassMap = new HashMap(10);
     System.nanoTime();
-    mDaoClassMap.put(QZoneCover.class, QZoneCoverDao.class);
-    mDaoClassMap.put(ShieldListInfo.class, ShieldListInfoDao.class);
-    mDaoClassMap.put(SearchHistory.class, SearchHistoryDao.class);
     mDaoClassMap.put(HotChatInfo.class, HotChatInfoDao.class);
-    mDaoClassMap.put(ExpiredPushBanner.class, ExpiredPushBannerDao.class);
-    mDaoClassMap.put(TroopAssistantData.class, TroopAssistantDataDao.class);
-    mDaoClassMap.put(NearbyPeopleCard.class, NearbyPeopleCardDao.class);
     mDaoClassMap.put(ResourcePluginInfo.class, ResourcePluginInfoDao.class);
+    mDaoClassMap.put(ExpiredPushBanner.class, ExpiredPushBannerDao.class);
+    mDaoClassMap.put(ShieldListInfo.class, ShieldListInfoDao.class);
+    mDaoClassMap.put(NearbyPeopleCard.class, NearbyPeopleCardDao.class);
+    mDaoClassMap.put(SearchHistory.class, SearchHistoryDao.class);
+    mDaoClassMap.put(TroopAssistantData.class, TroopAssistantDataDao.class);
+    mDaoClassMap.put(QZoneCover.class, QZoneCoverDao.class);
     mDaoClassMap.put(QQOperationViopTipTask.class, QQOperationViopTipTaskDao.class);
     mDaoClassMap.put(PublicAccountInfo.class, PublicAccountInfoDao.class);
   }
@@ -91,7 +91,7 @@ public class EntityDaoRegister
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.EntityDaoRegister
  * JD-Core Version:    0.7.0.1
  */

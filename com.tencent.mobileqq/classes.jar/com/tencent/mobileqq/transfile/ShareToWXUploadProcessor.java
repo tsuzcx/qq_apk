@@ -159,10 +159,10 @@ public class ShareToWXUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = 0;
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
-      localSendResult.e = this.file.orgiDownUrl;
+      localSendResult.a = 0;
+      localSendResult.e = this.mFileSize;
+      localSendResult.g = this.mMd5Str;
+      localSendResult.m = this.file.orgiDownUrl;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
     else
@@ -235,7 +235,7 @@ public class ShareToWXUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShareToWXUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

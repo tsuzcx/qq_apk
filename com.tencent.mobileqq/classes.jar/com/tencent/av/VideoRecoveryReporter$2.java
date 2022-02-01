@@ -12,7 +12,7 @@ final class VideoRecoveryReporter$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_result2", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_result2", this.a, this.b, 0L, localHashMap, "");
   }
 }
 

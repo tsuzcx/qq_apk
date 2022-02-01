@@ -11,13 +11,13 @@ class VideoAdTimeLoadManager$3
   
   public void run()
   {
-    VideoAdTimeLoadManager.a(this.this$0).add(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo);
-    VideoAdTimeLoadManager.a(this.this$0).notifyItemInserted(this.jdField_a_of_type_Int);
+    VideoAdTimeLoadManager.b(this.this$0).add(this.a, this.b);
+    VideoAdTimeLoadManager.c(this.this$0).notifyItemInserted(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager.3
  * JD-Core Version:    0.7.0.1
  */

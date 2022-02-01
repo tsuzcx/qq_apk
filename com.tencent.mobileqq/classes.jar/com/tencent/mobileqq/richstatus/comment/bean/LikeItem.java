@@ -3,22 +3,22 @@ package com.tencent.mobileqq.richstatus.comment.bean;
 public class LikeItem
 {
   public long a;
-  public User a;
+  public User b;
   
   public LikeItem()
   {
-    this.jdField_a_of_type_Long = 0L;
+    this.a = 0L;
   }
   
   public LikeItem(long paramLong, User paramUser)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanUser = paramUser;
+    this.a = paramLong;
+    this.b = paramUser;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.bean.LikeItem
  * JD-Core Version:    0.7.0.1
  */

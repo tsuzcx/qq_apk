@@ -303,7 +303,7 @@ public class InjectUtils
           break label290;
         }
         localObject1 = ((File)localObject1).getAbsolutePath();
-        localObject1 = SystemClassLoaderInjector.a(paramApplication, new File((String)localObject1, DexReleasor.sExtraJarDexes[i]).getAbsolutePath(), str2, true);
+        localObject1 = SystemClassLoaderInjector.inject(paramApplication, new File((String)localObject1, DexReleasor.sExtraJarDexes[i]).getAbsolutePath(), str2, true);
       }
       QLog.e("DexLoadOat", 1, (String)localObject1);
       bool = "Success".equals(localObject1);
@@ -336,7 +336,7 @@ public class InjectUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.InjectUtils
  * JD-Core Version:    0.7.0.1
  */

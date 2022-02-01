@@ -27,9 +27,9 @@ class ArkAppQQModule$MethodStopSilkAudio
       }
       try
       {
-        if (this.a.a != null)
+        if (this.a.b != null)
         {
-          this.a.a.a();
+          this.a.b.a();
           return;
         }
       }
@@ -43,24 +43,24 @@ class ArkAppQQModule$MethodStopSilkAudio
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
   
-  public String b()
+  public String c()
   {
     return null;
   }
   
-  public boolean b()
+  public boolean d()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.MethodStopSilkAudio
  * JD-Core Version:    0.7.0.1
  */

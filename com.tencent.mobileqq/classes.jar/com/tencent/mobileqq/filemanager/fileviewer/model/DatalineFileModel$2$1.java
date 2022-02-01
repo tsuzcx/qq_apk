@@ -10,8 +10,8 @@ class DatalineFileModel$2$1
   public void a()
   {
     DatalineFileModel.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    if (this.a.a.q != null) {
+      this.a.a.q.d();
     }
   }
   
@@ -19,7 +19,7 @@ class DatalineFileModel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel.2.1
  * JD-Core Version:    0.7.0.1
  */

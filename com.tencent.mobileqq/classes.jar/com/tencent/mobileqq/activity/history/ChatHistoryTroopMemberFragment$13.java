@@ -13,14 +13,14 @@ class ChatHistoryTroopMemberFragment$13
   
   public void onClick(View paramView)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new ReportTask(this.a.getBaseActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    ChatHistoryTroopMemberFragment.e(this.a);
+    new ReportTask(this.a.getBaseActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.w }).a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.13
  * JD-Core Version:    0.7.0.1
  */

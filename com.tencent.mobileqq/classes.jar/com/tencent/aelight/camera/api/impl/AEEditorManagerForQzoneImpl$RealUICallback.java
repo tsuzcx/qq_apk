@@ -13,17 +13,17 @@ class AEEditorManagerForQzoneImpl$RealUICallback
     this.a = new WeakReference(paramIAEEditorUICallbackListener);
   }
   
-  public void a(int paramInt)
+  public void deleteMedia(int paramInt)
   {
     WeakReference localWeakReference = this.a;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((IAEEditorUICallbackListener)this.a.get()).a(paramInt);
+      ((IAEEditorUICallbackListener)this.a.get()).deleteMedia(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.api.impl.AEEditorManagerForQzoneImpl.RealUICallback
  * JD-Core Version:    0.7.0.1
  */

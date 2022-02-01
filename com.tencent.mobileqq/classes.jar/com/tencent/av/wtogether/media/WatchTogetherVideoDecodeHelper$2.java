@@ -15,7 +15,7 @@ final class WatchTogetherVideoDecodeHelper$2
   {
     try
     {
-      WatchTogetherVideoDecodeHelper localWatchTogetherVideoDecodeHelper = new WatchTogetherVideoDecodeHelper(this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglHandlerThread, null);
+      WatchTogetherVideoDecodeHelper localWatchTogetherVideoDecodeHelper = new WatchTogetherVideoDecodeHelper(this.a, this.b, null);
       return localWatchTogetherVideoDecodeHelper;
     }
     catch (RuntimeException localRuntimeException) {}

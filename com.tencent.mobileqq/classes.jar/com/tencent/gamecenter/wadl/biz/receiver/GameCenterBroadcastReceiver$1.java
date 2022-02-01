@@ -27,10 +27,10 @@ final class GameCenterBroadcastReceiver$1
     }
     if ("android.intent.action.BATTERY_CHANGED".equals(paramContext))
     {
-      GameCenterBroadcastReceiver.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      GameCenterBroadcastReceiver.b = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
       paramContext = new StringBuilder();
       paramContext.append("battery cap= ");
-      paramContext.append(GameCenterBroadcastReceiver.a);
+      paramContext.append(GameCenterBroadcastReceiver.b);
       QLog.i("GameCenterBroadcastReceiver", 1, paramContext.toString());
       return;
     }
@@ -45,13 +45,13 @@ final class GameCenterBroadcastReceiver$1
           bool1 = false;
         }
       }
-      GameCenterBroadcastReceiver.b = bool1;
+      GameCenterBroadcastReceiver.c = bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterBroadcastReceiver.1
  * JD-Core Version:    0.7.0.1
  */

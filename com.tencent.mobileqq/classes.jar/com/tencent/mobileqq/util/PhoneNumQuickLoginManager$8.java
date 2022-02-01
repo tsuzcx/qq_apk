@@ -15,15 +15,15 @@ final class PhoneNumQuickLoginManager$8
   public void onClick(View paramView)
   {
     QLog.d("PhoneNumQuickLoginManager", 1, "setQuickLoginView other btn click");
-    PhoneNumQuickLoginManager.a(this.jdField_a_of_type_AndroidAppDialog.getContext(), this.jdField_a_of_type_JavaUtilMap);
+    PhoneNumQuickLoginManager.a(this.a.getContext(), this.b);
     PhoneNumQuickLoginManager.b("0X800B8CE");
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.8
  * JD-Core Version:    0.7.0.1
  */

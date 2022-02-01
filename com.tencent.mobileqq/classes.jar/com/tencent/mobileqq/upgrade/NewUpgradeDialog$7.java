@@ -11,12 +11,12 @@ final class NewUpgradeDialog$7
   
   public void run()
   {
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    MyAppApi.l().a(this.a, this.b, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.7
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class DynamicChannelDataModule$2
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
       localObject = DynamicChannelDataModule.a(this.this$0, this.a, (List)localObject, false);
-      DynamicChannelDataModule.a(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
+      DynamicChannelDataModule.b(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
       return;
     }
     DynamicChannelDataModule.a(this.this$0, this.a, 2);
@@ -27,7 +27,7 @@ class DynamicChannelDataModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelDataModule.2
  * JD-Core Version:    0.7.0.1
  */

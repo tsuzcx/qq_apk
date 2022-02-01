@@ -6,23 +6,23 @@ import com.mojitox.mxflutter.framework.utils.MxLog;
 public abstract class JsTask
   implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
+  private String b;
   
-  private void b() {}
+  private void c() {}
   
   public JsTask a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   protected abstract void a();
+  
+  public String b()
+  {
+    return this.b;
+  }
   
   public void run()
   {
@@ -31,8 +31,8 @@ public abstract class JsTask
       Process.setThreadPriority(0);
       long l = System.currentTimeMillis();
       a();
-      this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      b();
+      this.a = (System.currentTimeMillis() - l);
+      c();
       return;
     }
     catch (Throwable localThrowable)
@@ -41,14 +41,14 @@ public abstract class JsTask
       localStringBuilder.append("Exception:JSMessage:");
       localStringBuilder.append(localThrowable.getMessage());
       localStringBuilder.append("__taskName:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       MxLog.b("MXJsTask", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.executor.JsTask
  * JD-Core Version:    0.7.0.1
  */

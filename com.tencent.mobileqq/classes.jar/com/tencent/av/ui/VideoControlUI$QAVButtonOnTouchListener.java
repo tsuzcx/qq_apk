@@ -19,7 +19,7 @@ class VideoControlUI$QAVButtonOnTouchListener
   {
     paramView = (VideoControlUI)this.a.get();
     if ((paramView != null) && (paramMotionEvent.getAction() == 1)) {
-      paramView.C(0L);
+      paramView.I(0L);
     }
     return false;
   }

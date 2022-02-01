@@ -2,13 +2,13 @@ package com.tencent.util;
 
 public class Thrower<T>
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Thrower.Action<T> jdField_a_of_type_ComTencentUtilThrower$Action;
+  private long a = 0L;
   private long b;
+  private Thrower.Action<T> c;
   
   private Thrower(Thrower.Action<T> paramAction)
   {
-    this.jdField_a_of_type_ComTencentUtilThrower$Action = paramAction;
+    this.c = paramAction;
   }
   
   public static <T> Thrower<T> a(Thrower.Action<T> paramAction)
@@ -25,10 +25,10 @@ public class Thrower<T>
   public Thrower<T> a(T paramT)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > this.b)
+    if (l - this.a > this.b)
     {
-      this.jdField_a_of_type_Long = l;
-      Thrower.Action localAction = this.jdField_a_of_type_ComTencentUtilThrower$Action;
+      this.a = l;
+      Thrower.Action localAction = this.c;
       if (localAction != null) {
         localAction.a(paramT);
       }
@@ -38,7 +38,7 @@ public class Thrower<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.Thrower
  * JD-Core Version:    0.7.0.1
  */

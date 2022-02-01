@@ -19,13 +19,13 @@ final class ForwardUtils$4
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Uri localUri = (Uri)localIterator.next();
       String str1;
       if (localUri != null) {
-        str1 = new UriParserPathHelper(this.jdField_a_of_type_AndroidAppActivity, false, null).a(localUri);
+        str1 = new UriParserPathHelper(this.b, false, null).a(localUri);
       } else {
         str1 = "";
       }
@@ -48,10 +48,10 @@ final class ForwardUtils$4
         }
         QLog.e("ForwardUtils<FileAssistant>", 1, (String)localObject);
       }
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str1, this.jdField_a_of_type_JavaLangString, 0L, this.jdField_b_of_type_Int);
+      if (this.c == 1) {
+        this.d.getFileManagerEngine().a(str1, this.e, 0L, this.f);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, 0L, this.jdField_b_of_type_Int);
+        this.d.getFileManagerEngine().a(str1, this.g, this.e, this.c, true, 0L, this.f);
       }
     }
   }
@@ -60,7 +60,7 @@ final class ForwardUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.4
  * JD-Core Version:    0.7.0.1
  */

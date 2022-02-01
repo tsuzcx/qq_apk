@@ -11,11 +11,11 @@ class GuideHelper$2
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = paramLottieDrawable;
-    if ((paramLottieDrawable != null) && (this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView != null))
+    this.d.b.d = paramLottieDrawable;
+    if ((paramLottieDrawable != null) && (this.d.b.b != null))
     {
-      this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramLottieDrawable);
-      GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+      this.d.b.b.setBackgroundDrawable(paramLottieDrawable);
+      GuideHelper.a(this.d, this.a, this.b, this.c);
     }
   }
 }

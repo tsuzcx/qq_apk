@@ -17,7 +17,7 @@ class VideoView$2
     if (paramMessage.what != -2) {
       return;
     }
-    if ((VideoView.access$300(this.a) != null) && (!VideoView.access$300(this.a).a())) {
+    if ((VideoView.access$300(this.a) != null) && (!VideoView.access$300(this.a).e())) {
       this.a.updateSeekBarImmediately();
     }
     this.a.postPlayProgressMessage();
@@ -25,7 +25,7 @@ class VideoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView.2
  * JD-Core Version:    0.7.0.1
  */

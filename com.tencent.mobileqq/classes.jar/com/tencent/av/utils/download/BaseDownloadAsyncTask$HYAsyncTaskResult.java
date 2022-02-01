@@ -2,13 +2,13 @@ package com.tencent.av.utils.download;
 
 class BaseDownloadAsyncTask$HYAsyncTaskResult<Data>
 {
-  final BaseDownloadAsyncTask jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  final BaseDownloadAsyncTask a;
+  final Data[] b;
   
   BaseDownloadAsyncTask$HYAsyncTaskResult(BaseDownloadAsyncTask paramBaseDownloadAsyncTask, Data... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask = paramBaseDownloadAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    this.a = paramBaseDownloadAsyncTask;
+    this.b = paramVarArgs;
   }
 }
 

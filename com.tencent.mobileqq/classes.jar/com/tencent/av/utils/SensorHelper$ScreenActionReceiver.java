@@ -28,8 +28,8 @@ class SensorHelper$ScreenActionReceiver
       boolean bool4 = VideoController.a(paramContext);
       if (Build.VERSION.SDK_INT >= 20)
       {
-        boolean bool3 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
-        paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
+        boolean bool3 = ((PowerManager)((Context)this.a.m.get()).getSystemService("power")).isInteractive();
+        paramContext = ((WindowManager)((Context)this.a.m.get()).getSystemService("window")).getDefaultDisplay();
         bool1 = bool3;
         if (paramContext != null)
         {
@@ -41,10 +41,10 @@ class SensorHelper$ScreenActionReceiver
       {
         bool1 = true;
       }
-      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramContext = this.a.a;
       paramIntent = new StringBuilder();
       paramIntent.append("ACTION_SCREEN_ON, mVideoController[");
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+      if (this.a.l != null) {
         bool2 = true;
       }
       paramIntent.append(bool2);
@@ -55,51 +55,51 @@ class SensorHelper$ScreenActionReceiver
       paramIntent.append("], inKeyguardRestrictedInputMode[");
       paramIntent.append(bool4);
       paramIntent.append("], mIsStarted[");
-      paramIntent.append(this.a.d);
+      paramIntent.append(this.a.r);
       paramIntent.append("]");
       QLog.d(paramContext, 1, paramIntent.toString());
-      if (this.a.d)
+      if (this.a.r)
       {
         paramContext = this.a;
-        paramContext.jdField_a_of_type_Int = 1;
+        paramContext.k = 1;
         SensorHelper.a(paramContext, SensorHelper.a(paramContext));
       }
     }
     else if (((String)localObject).equals("android.intent.action.SCREEN_OFF"))
     {
       i = paramIntent.getIntExtra("why", 0);
-      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramContext = this.a.a;
       paramIntent = new StringBuilder();
       paramIntent.append("ACTION_SCREEN_OFF, why[");
       paramIntent.append(i);
       paramIntent.append("]");
       QLog.d(paramContext, 1, paramIntent.toString());
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      if (this.a.l != null)
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
-        com.tencent.av.VideoConstants.ProcessInfo.jdField_a_of_type_JavaLangString = "4";
+        this.a.l.b("backgroundReason", "4");
+        com.tencent.av.VideoConstants.ProcessInfo.a = "4";
       }
     }
     else
     {
       if (((String)localObject).equals("android.intent.action.USER_PRESENT"))
       {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
+        QLog.d(this.a.a, 1, "ACTION_USER_PRESENT");
         return;
       }
       if (((String)localObject).equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
       {
         paramContext = paramIntent.getStringExtra("reason");
-        paramIntent = this.a.jdField_a_of_type_JavaLangString;
+        paramIntent = this.a.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ACTION_CLOSE_SYSTEM_DIALOGS, reason[");
         ((StringBuilder)localObject).append(paramContext);
         ((StringBuilder)localObject).append("]");
         QLog.d(paramIntent, 1, ((StringBuilder)localObject).toString());
-        if (("homekey".equalsIgnoreCase(paramContext)) && (this.a.d))
+        if (("homekey".equalsIgnoreCase(paramContext)) && (this.a.r))
         {
           paramContext = this.a;
-          paramContext.jdField_a_of_type_Int = 1;
+          paramContext.k = 1;
           SensorHelper.a(paramContext, SensorHelper.a(paramContext));
         }
       }

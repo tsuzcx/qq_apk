@@ -10,17 +10,17 @@ class QQGamePubAIOHelper$9
   
   public void run()
   {
-    QQGamePubAIOHelper.a().clear();
-    if (QQGamePubAIOHelper.a() != null)
+    QQGamePubAIOHelper.c().clear();
+    if (QQGamePubAIOHelper.d() != null)
     {
-      QQGamePubAIOHelper.a().removeCallbacksAndMessages(null);
+      QQGamePubAIOHelper.d().removeCallbacksAndMessages(null);
       QQGamePubAIOHelper.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.9
  * JD-Core Version:    0.7.0.1
  */

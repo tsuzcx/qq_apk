@@ -15,20 +15,20 @@ final class ChatAVHelper$10
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a)
+    if (this.a.e)
     {
-      paramInt = this.jdField_a_of_type_Int;
+      paramInt = this.b;
       if (paramInt == 2) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
       } else if ((paramInt == 3) || (paramInt == 4)) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
       }
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
-    paramDialogInterface.b = false;
-    paramDialogInterface.c = false;
-    paramDialogInterface.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, paramDialogInterface);
+    paramDialogInterface = this.a;
+    paramDialogInterface.g = false;
+    paramDialogInterface.h = false;
+    paramDialogInterface.l = false;
+    ChatActivityUtils.a(this.c, this.d, this.e, this.f, paramDialogInterface);
     if (QLog.isColorLevel())
     {
       paramDialogInterface = new StringBuilder();
@@ -40,7 +40,7 @@ final class ChatAVHelper$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.10
  * JD-Core Version:    0.7.0.1
  */

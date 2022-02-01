@@ -29,7 +29,6 @@ import com.tencent.mobileqq.utils.JumpToNotificationSettingUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -40,14 +39,14 @@ import mqq.manager.Manager;
 public class NewMsgNotificationManager
   implements Manager
 {
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
+  QQAppInterface a;
+  boolean b = true;
+  CompoundButton.OnCheckedChangeListener c;
   
   public NewMsgNotificationManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = a();
+    this.a = paramQQAppInterface;
+    this.b = a();
   }
   
   public static Bitmap a(String paramString)
@@ -61,9 +60,9 @@ public class NewMsgNotificationManager
     Object localObject = new File(str);
     long l1 = SystemClock.uptimeMillis();
     localObject = new DownloadTask(paramString, (File)localObject);
-    ((DownloadTask)localObject).n = true;
-    ((DownloadTask)localObject).b = 2;
-    ((DownloadTask)localObject).a = str;
+    ((DownloadTask)localObject).J = true;
+    ((DownloadTask)localObject).e = 2;
+    ((DownloadTask)localObject).b = str;
     ((DownloadTask)localObject).b(512);
     int i = DownloaderFactory.a((DownloadTask)localObject, null, null);
     long l2 = SystemClock.uptimeMillis();
@@ -75,7 +74,7 @@ public class NewMsgNotificationManager
       localStringBuilder.append(" result ");
       localStringBuilder.append(i);
       localStringBuilder.append(" key ");
-      localStringBuilder.append(((DownloadTask)localObject).a);
+      localStringBuilder.append(((DownloadTask)localObject).b);
       localStringBuilder.append(" iconUrl: ");
       localStringBuilder.append(paramString);
       QLog.i("NewMsgNotificationManager", 2, localStringBuilder.toString());
@@ -175,10 +174,14 @@ public class NewMsgNotificationManager
                                                           bool1 = bool2;
                                                           if (paramInt != 10008)
                                                           {
-                                                            if (paramInt == 10010) {
-                                                              return true;
+                                                            bool1 = bool2;
+                                                            if (paramInt != 10014)
+                                                            {
+                                                              if (paramInt == 10010) {
+                                                                return true;
+                                                              }
+                                                              bool1 = false;
                                                             }
-                                                            bool1 = false;
                                                           }
                                                         }
                                                       }
@@ -216,18 +219,29 @@ public class NewMsgNotificationManager
     if (QLog.isColorLevel()) {
       QLog.d("NewMsgNotificationManager", 2, new Object[] { "newMsgNotificationEnabled: invoked. ", " systemNotificationEnabled: ", Boolean.valueOf(bool) });
     }
-    if ((!a(paramInt)) && (!a(paramString))) {
+    if ((!a(paramInt)) && (!b(paramString))) {
       return true;
     }
     return b();
   }
   
-  private static boolean a(String paramString)
+  private void b(BaseActivity paramBaseActivity)
+  {
+    Intent localIntent = JumpToNotificationSettingUtil.a(this.a.getApp());
+    if (BaseActivity.sTopActivity != null)
+    {
+      BaseActivity.sTopActivity.startActivity(localIntent);
+      return;
+    }
+    paramBaseActivity.startActivity(localIntent);
+  }
+  
+  private static boolean b(String paramString)
   {
     return AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(paramString);
   }
   
-  private Bitmap b(String paramString)
+  private Bitmap c(String paramString)
   {
     try
     {
@@ -236,7 +250,7 @@ public class NewMsgNotificationManager
         QLog.d("NewMsgNotificationManager", 2, new Object[] { "getBitmapFromLocal: invoked. ", " id: ", Integer.valueOf(i), " iconUrl: ", paramString });
       }
       i = GrowthUtil.a(i);
-      paramString = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), i);
+      paramString = BitmapFactory.decodeResource(this.a.getApp().getResources(), i);
       return paramString;
     }
     catch (OutOfMemoryError paramString)
@@ -252,17 +266,6 @@ public class NewMsgNotificationManager
     return null;
   }
   
-  private void b(BaseActivity paramBaseActivity)
-  {
-    Intent localIntent = JumpToNotificationSettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    if (BaseActivity.sTopActivity != null)
-    {
-      BaseActivity.sTopActivity.startActivity(localIntent);
-      return;
-    }
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
   public Bitmap a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
     if (TextUtils.isEmpty(paramString2)) {
@@ -272,38 +275,27 @@ public class NewMsgNotificationManager
       return a(paramString2);
     }
     if ("1".equals(paramString1)) {
-      return b(paramString2);
+      return c(paramString2);
     }
     return paramBitmap;
-  }
-  
-  public CompoundButton.OnCheckedChangeListener a(BaseActivity paramBaseActivity, FormSwitchItem paramFormSwitchItem1, FormSimpleItem paramFormSimpleItem, FormSwitchItem paramFormSwitchItem2)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new NewMsgNotificationManager.1(this, paramBaseActivity, paramFormSwitchItem1, paramFormSwitchItem2);
-    return this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = null;
   }
   
   public void a(BaseActivity paramBaseActivity)
   {
     NewMsgNotificationManager.3 local3 = new NewMsgNotificationManager.3(this);
     NewMsgNotificationManager.4 local4 = new NewMsgNotificationManager.4(this, paramBaseActivity);
-    DialogUtil.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131693522), paramBaseActivity.getString(2131690728), paramBaseActivity.getString(2131693521), local4, local3).show();
+    DialogUtil.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131891077), paramBaseActivity.getString(2131887648), paramBaseActivity.getString(2131891076), local4, local3).show();
   }
   
   public void a(BaseActivity paramBaseActivity, TextView paramTextView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources();
+    Object localObject = this.a.getApp().getResources();
     int i = paramTextView.getCurrentTextColor();
-    String str = ((Resources)localObject).getString(2131694978);
+    String str = ((Resources)localObject).getString(2131892705);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("允许QQ通知");
-    localStringBuilder.append(((Resources)localObject).getString(2131694979));
+    localStringBuilder.append(((Resources)localObject).getString(2131892706));
     localObject = new SpannableString(localStringBuilder.toString());
     paramBaseActivity = new NewMsgNotificationManager.2(this, paramBaseActivity);
     int j = str.length();
@@ -320,15 +312,15 @@ public class NewMsgNotificationManager
   public void a(FormSwitchItem paramFormSwitchItem1, TextView paramTextView, FormSwitchItem paramFormSwitchItem2, FormSwitchItem paramFormSwitchItem3)
   {
     boolean bool1 = c();
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.b;
     int i = 0;
     if (bool1 != bool2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. ", " curSystemState[系统设置发生了变化]: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. ", " curSystemState[系统设置发生了变化]: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(this.b) });
       }
-      this.jdField_a_of_type_Boolean = bool1;
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "system_notification_enabled_key", bool1);
+      this.b = bool1;
+      SettingCloneUtil.writeValue(this.a.getApp(), this.a.getCurrentUin(), null, "system_notification_enabled_key", bool1);
     }
     else
     {
@@ -337,9 +329,9 @@ public class NewMsgNotificationManager
         QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. [系统设置未变化]", " curSystemState: ", Boolean.valueOf(bool1), " globalSwitchOn: ", Boolean.valueOf(bool2) });
       }
     }
-    paramFormSwitchItem1 = paramFormSwitchItem1.a();
-    paramFormSwitchItem2 = paramFormSwitchItem2.a();
-    paramFormSwitchItem3 = paramFormSwitchItem3.a();
+    paramFormSwitchItem1 = paramFormSwitchItem1.getSwitch();
+    paramFormSwitchItem2 = paramFormSwitchItem2.getSwitch();
+    paramFormSwitchItem3 = paramFormSwitchItem3.getSwitch();
     if (!bool1)
     {
       paramFormSwitchItem1.setAlpha(0.5F);
@@ -360,8 +352,8 @@ public class NewMsgNotificationManager
   
   public boolean a()
   {
-    if (SettingCloneUtil.isContainValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "system_notification_enabled_key")) {
-      return SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "system_notification_enabled_key", true);
+    if (SettingCloneUtil.isContainValue(this.a.getApp(), this.a.getCurrentUin(), null, "system_notification_enabled_key")) {
+      return SettingCloneUtil.readValue(this.a.getApp(), this.a.getCurrentUin(), null, "system_notification_enabled_key", true);
     }
     return c();
   }
@@ -392,7 +384,7 @@ public class NewMsgNotificationManager
   
   public boolean b()
   {
-    boolean bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "new_msg_notification_key", true);
+    boolean bool = SettingCloneUtil.readValue(this.a.getApp(), this.a.getCurrentUin(), null, "new_msg_notification_key", true);
     if (QLog.isColorLevel()) {
       QLog.d("NewMsgNotificationManager", 2, new Object[] { "globalSwitchOn: invoked. ", " enable: ", Boolean.valueOf(bool) });
     }
@@ -408,11 +400,16 @@ public class NewMsgNotificationManager
     return bool;
   }
   
+  public void d()
+  {
+    this.c = null;
+  }
+  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager
  * JD-Core Version:    0.7.0.1
  */

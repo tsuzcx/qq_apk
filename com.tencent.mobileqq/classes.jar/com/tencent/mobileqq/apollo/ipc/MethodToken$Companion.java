@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.apollo.ipc;
 
-import com.tencent.mobileqq.apollo.ipc.reflect.Reflect;
+import com.tencent.mobileqq.apollo.ipc.annotation.RemoteCallBack;
+import com.tencent.mobileqq.apollo.utils.reflect.Reflect;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -16,48 +18,57 @@ public final class MethodToken$Companion
     MethodToken localMethodToken = new MethodToken();
     localMethodToken.a(paramMethod);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
-    Class localClass = paramMethod.getReturnType();
-    Object localObject1 = "";
-    Object localObject2 = localObject1;
+    Object localObject1 = paramMethod.getReturnType();
+    Annotation[][] arrayOfAnnotation = paramMethod.getParameterAnnotations();
+    String str = "";
     if (arrayOfClass != null)
     {
-      int k = arrayOfClass.length;
+      int m = arrayOfClass.length;
+      str = "";
       int i = 0;
       int j = 0;
-      for (;;)
+      while (i < m)
       {
-        localObject2 = localObject1;
-        if (i >= k) {
-          break;
-        }
-        localObject2 = arrayOfClass[i];
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append((String)localObject1);
-        localStringBuilder.append(';');
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "type");
-        localStringBuilder.append(((Class)localObject2).getName());
-        localObject1 = localStringBuilder.toString();
-        if (((Class)localObject2).isInterface())
+        Class localClass = arrayOfClass[i];
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(str);
+        ((StringBuilder)localObject2).append(';');
+        Intrinsics.checkExpressionValueIsNotNull(localClass, "type");
+        ((StringBuilder)localObject2).append(localClass.getName());
+        str = ((StringBuilder)localObject2).toString();
+        if (arrayOfAnnotation[j].length > 0)
         {
-          localMethodToken.a(TypeToken.a.a((Class)localObject2));
-          localMethodToken.a(j);
+          localObject2 = arrayOfAnnotation[j];
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "annotations[id]");
+          int n = localObject2.length;
+          int k = 0;
+          while (k < n)
+          {
+            if ((localObject2[k] instanceof RemoteCallBack))
+            {
+              localMethodToken.a(TypeToken.a.a(localClass));
+              localMethodToken.a(j);
+            }
+            k += 1;
+          }
         }
         j += 1;
         i += 1;
       }
     }
-    if (!Intrinsics.areEqual(Reflect.a(localClass), Void.class)) {
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "retTypes");
+    localMethodToken.a((Class)localObject1);
+    if (!Intrinsics.areEqual(Reflect.a((Class)localObject1), Void.class)) {
       localMethodToken.a(true);
     }
-    Intrinsics.checkExpressionValueIsNotNull(localClass, "retTypes");
-    localObject1 = localClass.getName();
+    localObject1 = ((Class)localObject1).getName();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "retTypes.name");
     localMethodToken.c((String)localObject1);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(paramMethod.getName());
     ((StringBuilder)localObject1).append(';');
-    ((StringBuilder)localObject1).append(localMethodToken.c());
-    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(localMethodToken.d());
+    ((StringBuilder)localObject1).append(str);
     localMethodToken.b(((StringBuilder)localObject1).toString());
     paramMethod = paramMethod.getName();
     Intrinsics.checkExpressionValueIsNotNull(paramMethod, "method.name");
@@ -67,7 +78,7 @@ public final class MethodToken$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.MethodToken.Companion
  * JD-Core Version:    0.7.0.1
  */

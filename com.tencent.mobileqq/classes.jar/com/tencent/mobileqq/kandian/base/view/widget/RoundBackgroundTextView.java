@@ -20,10 +20,10 @@ public class RoundBackgroundTextView
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundBackgroundTextView);
       if (paramContext != null)
       {
-        int i = paramContext.getColor(0, 0);
-        int j = paramContext.getColor(2, 0);
-        int k = paramContext.getInt(3, -1);
-        float f = paramContext.getDimension(1, 0.0F);
+        int i = paramContext.getColor(1, 0);
+        int j = paramContext.getColor(3, 0);
+        int k = paramContext.getInt(4, -1);
+        float f = paramContext.getDimension(2, 0.0F);
         if (Build.VERSION.SDK_INT >= 16)
         {
           paramAttributeSet = new GradientDrawable();
@@ -39,7 +39,7 @@ public class RoundBackgroundTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.RoundBackgroundTextView
  * JD-Core Version:    0.7.0.1
  */

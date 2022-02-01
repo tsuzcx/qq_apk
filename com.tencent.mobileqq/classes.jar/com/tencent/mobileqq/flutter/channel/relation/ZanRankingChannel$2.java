@@ -10,12 +10,12 @@ class ZanRankingChannel$2
   
   public void run()
   {
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(CardCoverData.toMap(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelCardCoverData));
+    this.a.success(CardCoverData.toMap(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.ZanRankingChannel.2
  * JD-Core Version:    0.7.0.1
  */

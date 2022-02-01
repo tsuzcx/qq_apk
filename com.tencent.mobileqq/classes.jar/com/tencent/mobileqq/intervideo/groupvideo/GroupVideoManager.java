@@ -63,22 +63,22 @@ import mqq.manager.TicketManager;
 public class GroupVideoManager
   implements IGroupVideoManager, IWatchTogetherRoomDelegate, Manager
 {
-  private static UpgradeablePluginManager jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager = new UpgradeablePluginManager(HuayangPluginNewDownloaderUtil.a(BaseApplicationImpl.getContext()), "group_video", IVPluginLoader.a());
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private volatile QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final CommunicateWithPluginHandler jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler = new CommunicateWithPluginHandler();
-  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new GroupVideoManager.6(this);
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static UpgradeablePluginManager h = new UpgradeablePluginManager(HuayangPluginNewDownloaderUtil.a(BaseApplicationImpl.getContext()), "group_video", IVPluginLoader.b());
+  private volatile boolean a = false;
+  private long b = 0L;
+  private volatile QQAppInterface c;
+  private Handler d = new Handler(Looper.getMainLooper());
+  private QQProgressDialog e;
+  private int f;
+  private final CommunicateWithPluginHandler g = new CommunicateWithPluginHandler();
+  private INetEventHandler i = new GroupVideoManager.6(this);
   
   public GroupVideoManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
+    this.c = paramQQAppInterface;
+    AppNetConnInfo.registerNetChangeReceiver(this.c.getApp(), this.i);
     PluginManagerInterfaceImpl.a().a(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler.a(paramQQAppInterface);
+    this.g.a(paramQQAppInterface);
   }
   
   private static int a(Context paramContext, String paramString)
@@ -95,24 +95,24 @@ public class GroupVideoManager
     GroupVideoManager.RoomCodeInfo localRoomCodeInfo = new GroupVideoManager.RoomCodeInfo(null);
     if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals("0")))
     {
-      localRoomCodeInfo.jdField_a_of_type_Int = 0;
-      localRoomCodeInfo.jdField_a_of_type_JavaLangString = paramString2;
+      localRoomCodeInfo.b = 0;
+      localRoomCodeInfo.a = paramString2;
       return localRoomCodeInfo;
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals("0")))
     {
-      localRoomCodeInfo.jdField_a_of_type_Int = 2;
-      localRoomCodeInfo.jdField_a_of_type_JavaLangString = paramString1;
+      localRoomCodeInfo.b = 2;
+      localRoomCodeInfo.a = paramString1;
       return localRoomCodeInfo;
     }
     if ((!TextUtils.isEmpty(paramString3)) && (!paramString3.equals("0")))
     {
-      localRoomCodeInfo.jdField_a_of_type_Int = 1;
-      localRoomCodeInfo.jdField_a_of_type_JavaLangString = paramString3;
+      localRoomCodeInfo.b = 1;
+      localRoomCodeInfo.a = paramString3;
       return localRoomCodeInfo;
     }
-    localRoomCodeInfo.jdField_a_of_type_JavaLangString = "0";
-    localRoomCodeInfo.jdField_a_of_type_Int = 0;
+    localRoomCodeInfo.a = "0";
+    localRoomCodeInfo.b = 0;
     QLog.e("GroupVideoManager", 2, "房间号没有给");
     return localRoomCodeInfo;
   }
@@ -127,24 +127,6 @@ public class GroupVideoManager
     return "";
   }
   
-  private void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    if (localObject != null)
-    {
-      ((QQProgressDialog)localObject).dismiss();
-      Context localContext = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.getContext();
-      localObject = localContext;
-      if ((localContext instanceof ContextWrapper)) {
-        localObject = ((ContextWrapper)localContext).getBaseContext();
-      }
-      if ((localObject instanceof JumpActivity)) {
-        ((Activity)localObject).finish();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    }
-  }
-  
   private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
     Object localObject = new Intent(paramContext, HuayangLoadbackgroudActivity.class);
@@ -155,7 +137,7 @@ public class GroupVideoManager
     if (bool) {
       ((Activity)paramContext).overridePendingTransition(0, 0);
     }
-    localObject = (IDynamicNowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
+    localObject = (IDynamicNowManager)this.c.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
     localObject = new Intent(paramContext, ODLoadingActivity.class);
     ((Intent)localObject).putExtra("bizType", "GVideo");
     ((Intent)localObject).putExtra("plugin_id", "Od");
@@ -191,24 +173,24 @@ public class GroupVideoManager
   
   private void a(Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler.a(paramBundle, paramOnOpenCloseRoomCallback);
+    this.g.a(paramBundle, paramOnOpenCloseRoomCallback);
   }
   
   private void a(TogetherEnterRoomParam paramTogetherEnterRoomParam, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler.a(paramOnOpenCloseRoomCallback);
+    this.g.a(paramOnOpenCloseRoomCallback);
     paramOnOpenCloseRoomCallback = new StringBuilder();
     paramOnOpenCloseRoomCallback.append("receive watchTogetherParam: ");
     paramOnOpenCloseRoomCallback.append(paramTogetherEnterRoomParam.toString());
     QLog.i("GroupVideoManager", 2, paramOnOpenCloseRoomCallback.toString());
     paramOnOpenCloseRoomCallback = new JsonObject();
     paramOnOpenCloseRoomCallback.addProperty("isTogetherWatch", Boolean.valueOf(true));
-    paramOnOpenCloseRoomCallback.addProperty("fromGroupId", Long.valueOf(Long.parseLong(paramTogetherEnterRoomParam.g)));
-    paramOnOpenCloseRoomCallback.addProperty("fromGroupOwnerUin", Long.valueOf(Long.parseLong(paramTogetherEnterRoomParam.h)));
-    paramOnOpenCloseRoomCallback.addProperty("fromGroupName", ContactUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramTogetherEnterRoomParam.g, false));
-    paramOnOpenCloseRoomCallback.addProperty("sKey", a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    GroupVideoManager.RoomCodeInfo localRoomCodeInfo = a(paramTogetherEnterRoomParam.jdField_b_of_type_JavaLangString, paramTogetherEnterRoomParam.d, paramTogetherEnterRoomParam.c);
-    a(paramTogetherEnterRoomParam.jdField_a_of_type_AndroidContentContext, paramTogetherEnterRoomParam.jdField_a_of_type_JavaLangString, localRoomCodeInfo.jdField_a_of_type_JavaLangString, paramTogetherEnterRoomParam.e, paramTogetherEnterRoomParam.f, localRoomCodeInfo.jdField_a_of_type_Int, paramOnOpenCloseRoomCallback.toString());
+    paramOnOpenCloseRoomCallback.addProperty("fromGroupId", Long.valueOf(Long.parseLong(paramTogetherEnterRoomParam.h)));
+    paramOnOpenCloseRoomCallback.addProperty("fromGroupOwnerUin", Long.valueOf(Long.parseLong(paramTogetherEnterRoomParam.i)));
+    paramOnOpenCloseRoomCallback.addProperty("fromGroupName", ContactUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramTogetherEnterRoomParam.h, false));
+    paramOnOpenCloseRoomCallback.addProperty("sKey", a(this.c));
+    GroupVideoManager.RoomCodeInfo localRoomCodeInfo = a(paramTogetherEnterRoomParam.c, paramTogetherEnterRoomParam.e, paramTogetherEnterRoomParam.d);
+    a(paramTogetherEnterRoomParam.a, paramTogetherEnterRoomParam.b, localRoomCodeInfo.a, paramTogetherEnterRoomParam.f, paramTogetherEnterRoomParam.g, localRoomCodeInfo.b, paramOnOpenCloseRoomCallback.toString());
   }
   
   public static void a(String paramString, IGroupVideoManager.CheckListener paramCheckListener)
@@ -225,17 +207,35 @@ public class GroupVideoManager
     paramBundle.putString("plugin_id", "Od");
     paramBundle.putString("appid", "1104763709");
     paramBundle.putInt("authtype", 1);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      paramBundle.putString("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    if (this.c != null) {
+      paramBundle.putString("uin", this.c.getCurrentUin());
     }
     paramBundle.putBoolean("preload", true);
     ExecutorService localExecutorService = ThreadManagerExecutor.getExecutorService(192);
     localExecutorService.submit(new GroupVideoManager.3(this, localExecutorService.submit(new GroupVideoManager.2(this)), paramLong, paramBundle));
   }
   
+  private void c()
+  {
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      ((QQProgressDialog)localObject).dismiss();
+      Context localContext = this.e.getContext();
+      localObject = localContext;
+      if ((localContext instanceof ContextWrapper)) {
+        localObject = ((ContextWrapper)localContext).getBaseContext();
+      }
+      if ((localObject instanceof JumpActivity)) {
+        ((Activity)localObject).finish();
+      }
+      this.e = null;
+    }
+  }
+  
   public PushMessageDelegate a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler.a();
+    return this.g.b();
   }
   
   public void a(Context paramContext)
@@ -245,7 +245,7 @@ public class GroupVideoManager
   
   public void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    AVNotifyCenter localAVNotifyCenter = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter();
+    AVNotifyCenter localAVNotifyCenter = this.c.getAVNotifyCenter();
     if (paramInt == 1) {
       localObject = paramString1;
     } else {
@@ -268,7 +268,7 @@ public class GroupVideoManager
     if (bool) {
       ((Activity)paramContext).overridePendingTransition(0, 0);
     }
-    localObject = (IDynamicNowManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
+    localObject = (IDynamicNowManager)this.c.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
     localObject = new Intent(paramContext, ODLoadingActivity.class);
     ((Intent)localObject).putExtra("bizType", "GVideo");
     ((Intent)localObject).putExtra("plugin_id", "Od");
@@ -311,16 +311,16 @@ public class GroupVideoManager
   public void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     JsonObject localJsonObject = new JsonObject();
-    localJsonObject.addProperty("sKey", a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    localJsonObject.addProperty("sKey", a(this.c));
     a(paramContext, paramString1, paramString2, paramString3, paramString4, 1, localJsonObject.toString());
   }
   
   public void a(Bundle paramBundle, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.c == null) {
       return;
     }
-    if (NetworkUtil.isWifiEnabled(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    if (NetworkUtil.isWifiEnabled(this.c.getApp()))
     {
       QLog.e("GroupVideoManager", 2, "preload in wifi");
       b(paramBundle, paramLong);
@@ -333,18 +333,18 @@ public class GroupVideoManager
       return;
     }
     Object localObject = paramConfig.msg_content_list.get();
-    int i = paramConfig.version.get();
-    int j = a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    int j = paramConfig.version.get();
+    int k = a(BaseApplicationImpl.getContext(), this.c.getCurrentAccountUin());
     if (QLog.isColorLevel())
     {
       paramConfig = new StringBuilder();
       paramConfig.append("handleDynamicConfig, version=");
-      paramConfig.append(i);
-      paramConfig.append(", oldversion=");
       paramConfig.append(j);
+      paramConfig.append(", oldversion=");
+      paramConfig.append(k);
       QLog.i("GroupVideoManager", 2, paramConfig.toString());
     }
-    if (i > j)
+    if (j > k)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -387,16 +387,16 @@ public class GroupVideoManager
   
   public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 600000L)
+    if (SystemClock.elapsedRealtime() - this.b < 600000L)
     {
       QLog.w("GroupVideoManager", 2, "preload time less than 10 minutes, return");
       return;
     }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
     long l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(paramNewTogetherRoomMessageData.g);
+      long l2 = Long.parseLong(paramNewTogetherRoomMessageData.l);
       l1 = l2;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -415,32 +415,32 @@ public class GroupVideoManager
   
   public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    paramBundle = new TogetherEnterRoomParam(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    paramBundle.e(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString);
-    paramBundle.f(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
-    paramBundle.d(paramNewTogetherRoomMessageData.g);
-    paramBundle.a(String.valueOf(paramNewTogetherRoomMessageData.jdField_a_of_type_Long));
-    paramBundle.b(paramNewTogetherRoomMessageData.c);
-    paramBundle.c(String.valueOf(paramNewTogetherRoomMessageData.jdField_b_of_type_Int));
+    paramBundle = new TogetherEnterRoomParam(BaseActivity.sTopActivity, this.c.getCurrentUin());
+    paramBundle.e(paramNewTogetherRoomMessageData.a);
+    paramBundle.f(paramNewTogetherRoomMessageData.b);
+    paramBundle.d(paramNewTogetherRoomMessageData.l);
+    paramBundle.a(String.valueOf(paramNewTogetherRoomMessageData.d));
+    paramBundle.b(paramNewTogetherRoomMessageData.f);
+    paramBundle.c(String.valueOf(paramNewTogetherRoomMessageData.e));
     a(paramBundle, paramOnOpenCloseRoomCallback);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.c == null) {
       return;
     }
-    if (NetworkUtil.isWifiEnabled(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new GroupVideoManager.1(this, paramString));
+    if (NetworkUtil.isWifiEnabled(this.c.getApp())) {
+      GVideoGrayConfig.a().a(this.c, paramString, new GroupVideoManager.1(this, paramString));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.c == null) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    Object localObject1 = this.c.getProxyManager().g();
     if (localObject1 == null) {
       return;
     }
@@ -468,12 +468,12 @@ public class GroupVideoManager
         localObject2 = new GroupVideoManager.4(this, paramBoolean);
         if (((List)localObject1).size() > 0)
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject2);
-          this.jdField_a_of_type_Int = 0;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+          this.d.removeCallbacks((Runnable)localObject2);
+          this.f = 0;
+          if (this.c == null) {
             return;
           }
-          localObject2 = (GVideoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
+          localObject2 = (GVideoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
           if (localObject2 != null) {
             ((GVideoHandler)localObject2).a((List)localObject1, new GroupVideoManager.5(this));
           }
@@ -484,17 +484,17 @@ public class GroupVideoManager
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("updateGroupVideoStateList try count:");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject1).append(this.f);
             QLog.d("GroupVideoManager", 2, ((StringBuilder)localObject1).toString());
           }
-          int i = this.jdField_a_of_type_Int;
-          if ((i < 8) && (paramBoolean))
+          int j = this.f;
+          if ((j < 8) && (paramBoolean))
           {
-            this.jdField_a_of_type_Int = (i + 1);
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)localObject2, 1000L);
+            this.f = (j + 1);
+            this.d.postDelayed((Runnable)localObject2, 1000L);
             return;
           }
-          this.jdField_a_of_type_Int = 0;
+          this.f = 0;
         }
         return;
       }
@@ -511,19 +511,19 @@ public class GroupVideoManager
     if (QLog.isColorLevel()) {
       QLog.d("GroupVideoManager", 2, "onDestroy");
     }
-    a();
-    AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    GVideoGrayConfig.a().b();
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCommunicateWithPluginHandler.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    PluginManagerInterfaceImpl.a();
+    c();
+    AppNetConnInfo.unregisterNetEventHandler(this.i);
+    this.d.removeCallbacksAndMessages(null);
+    GVideoGrayConfig.a().c();
+    a(this.c.getApp());
+    this.g.a();
+    this.c = null;
+    PluginManagerInterfaceImpl.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager
  * JD-Core Version:    0.7.0.1
  */

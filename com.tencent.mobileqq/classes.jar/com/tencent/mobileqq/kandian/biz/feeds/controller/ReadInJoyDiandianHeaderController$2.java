@@ -3,11 +3,10 @@ package com.tencent.mobileqq.kandian.biz.feeds.controller;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import com.tencent.mobileqq.kandian.biz.channel.banner.RollViewPager;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.repo.comment.entity.DiandianTopConfig;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -21,29 +20,29 @@ class ReadInJoyDiandianHeaderController$2
   
   public void d(boolean paramBoolean, List<DiandianTopConfig> paramList)
   {
-    if ((paramBoolean) && (paramList != null) && (paramList.size() != 0) && (!ReadInJoyDiandianHeaderController.a(this.a).a()))
+    if ((paramBoolean) && (paramList != null) && (paramList.size() != 0) && (!ReadInJoyDiandianHeaderController.d(this.a).a()))
     {
-      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(0);
+      ReadInJoyDiandianHeaderController.e(this.a).setVisibility(0);
       ReadInJoyDiandianHeaderController.a(this.a, false);
-      ReadInJoyDiandianHeaderController.a(this.a).clear();
-      ReadInJoyDiandianHeaderController.b(this.a).clear();
-      ReadInJoyDiandianHeaderController.b(this.a).addAll(paramList);
+      ReadInJoyDiandianHeaderController.f(this.a).clear();
+      ReadInJoyDiandianHeaderController.g(this.a).clear();
+      ReadInJoyDiandianHeaderController.g(this.a).addAll(paramList);
       int i;
-      if (ReadInJoyDiandianHeaderController.b(this.a).size() % 2 == 0) {
-        i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2;
+      if (ReadInJoyDiandianHeaderController.g(this.a).size() % 2 == 0) {
+        i = ReadInJoyDiandianHeaderController.g(this.a).size() / 2;
       } else {
-        i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2 + 1;
+        i = ReadInJoyDiandianHeaderController.g(this.a).size() / 2 + 1;
       }
       int j = 0;
       while (j < i)
       {
-        Object localObject1 = new MeasureGridView(this.a.jdField_a_of_type_AndroidContentContext);
+        Object localObject1 = new MeasureGridView(this.a.a);
         paramList = this.a;
-        paramList = new ReadInJoyDiandianHeaderController.HeaderListAdapter(paramList, ReadInJoyDiandianHeaderController.b(paramList), j);
+        paramList = new ReadInJoyDiandianHeaderController.HeaderListAdapter(paramList, ReadInJoyDiandianHeaderController.g(paramList), j);
         ((MeasureGridView)localObject1).setNumColumns(2);
         ((MeasureGridView)localObject1).setAdapter(paramList);
         ((MeasureGridView)localObject1).setSelector(new ColorDrawable(0));
-        ReadInJoyDiandianHeaderController.a(this.a).add(localObject1);
+        ReadInJoyDiandianHeaderController.f(this.a).add(localObject1);
         if (j == 0)
         {
           int k = 0;
@@ -62,15 +61,14 @@ class ReadInJoyDiandianHeaderController$2
                   localJSONObject.put("list_URL", "0");
                 }
                 localJSONObject.put("type", ((DiandianTopConfig)localObject1).type);
-                IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
                 Object localObject2 = new StringBuilder();
-                ((StringBuilder)localObject2).append(ReadInJoyDiandianHeaderController.b(this.a).size());
+                ((StringBuilder)localObject2).append(ReadInJoyDiandianHeaderController.g(this.a).size());
                 ((StringBuilder)localObject2).append("");
                 localObject2 = ((StringBuilder)localObject2).toString();
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append(((DiandianTopConfig)localObject1).topicId);
                 localStringBuilder.append("");
-                localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80092FC", "0X80092FC", 0, 0, (String)localObject2, "1", localStringBuilder.toString(), localJSONObject.toString(), false);
+                PublicAccountReportUtils.a(null, "", "0X80092FC", "0X80092FC", 0, 0, (String)localObject2, "1", localStringBuilder.toString(), localJSONObject.toString(), false);
                 ((DiandianTopConfig)localObject1).hasExposeReported = true;
                 paramList.a(k, (DiandianTopConfig)localObject1);
               }
@@ -86,24 +84,24 @@ class ReadInJoyDiandianHeaderController$2
         }
         j += 1;
       }
-      ReadInJoyDiandianHeaderController.a(this.a).a(ReadInJoyDiandianHeaderController.a(this.a));
+      ReadInJoyDiandianHeaderController.b(this.a).a(ReadInJoyDiandianHeaderController.f(this.a));
       if (i > 1)
       {
         paramList = this.a;
-        paramList.jdField_a_of_type_Int = 1;
-        ReadInJoyDiandianHeaderController.a(paramList).setCurrentItem(this.a.jdField_a_of_type_Int, false);
+        paramList.b = 1;
+        ReadInJoyDiandianHeaderController.c(paramList).setCurrentItem(this.a.b, false);
         this.a.f();
       }
     }
     else
     {
-      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(8);
+      ReadInJoyDiandianHeaderController.e(this.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyDiandianHeaderController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,38 +15,14 @@ import java.util.List;
 public class ShareFromMemoryPlayPageLoader
   extends IGroupPageLoader.BaseGroupPageLoader
 {
-  private IDataProvider.GroupId jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
-  private ShareFromMemoryPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo;
-  private String jdField_a_of_type_JavaLangString = "";
+  private ShareFromMemoryPlayInfo a;
+  private IDataProvider.GroupId b;
+  private String c = "";
   
   public ShareFromMemoryPlayPageLoader(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo = paramShareFromMemoryPlayInfo;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = new IDataProvider.GroupId(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
-    {
-      localObject = ((FeedVideoManager)SuperManager.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
-      if ((localObject != null) && (((FeedVideoInfo)localObject).mVideoItemList.size() > 0))
-      {
-        localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;
-        break label68;
-      }
-    }
-    Object localObject = null;
-    label68:
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getStartInfo GroupId=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
-    localStringBuilder.append(",vid=");
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append(",feedId=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-    SLog.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", localStringBuilder.toString());
-    return new IDataProvider.StartInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+    this.a = paramShareFromMemoryPlayInfo;
+    this.b = new IDataProvider.GroupId(this.a.feedId);
   }
   
   public List<IGroupPageLoader.IVidFullSyncer> a(List<IDataProvider.GroupId> paramList)
@@ -63,14 +39,38 @@ public class ShareFromMemoryPlayPageLoader
   
   public void a(int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    paramCallBack.a(new ErrorMessage(), Collections.singletonList(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId), true);
+    paramCallBack.a(new ErrorMessage(), Collections.singletonList(this.b), true);
   }
   
   public void b() {}
+  
+  public IDataProvider.StartInfo c()
+  {
+    if (this.a.videoListOrder == 0)
+    {
+      localObject = ((FeedVideoManager)SuperManager.a(12)).a(this.a.feedId, 1);
+      if ((localObject != null) && (((FeedVideoInfo)localObject).mVideoItemList.size() > 0))
+      {
+        localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;
+        break label68;
+      }
+    }
+    Object localObject = null;
+    label68:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getStartInfo GroupId=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",vid=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",feedId=");
+    localStringBuilder.append(this.a.feedId);
+    SLog.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", localStringBuilder.toString());
+    return new IDataProvider.StartInfo(this.b, (String)localObject, this.a.feedId);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.ShareFromMemoryPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

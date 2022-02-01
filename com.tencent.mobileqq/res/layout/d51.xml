@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/g0n" android:layout_width="296.0dip" android:layout_height="393.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/iwj" android:layout_width="296.0dip" android:layout_height="245.0dip">
+        <RelativeLayout android:id="@id/a31" android:background="@drawable/iwi" android:layout_width="236.0dip" android:layout_height="163.5dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/aag" android:background="@drawable/g07" android:padding="4.0dip" android:layout_width="119.0dip" android:layout_height="119.0dip" android:layout_marginTop="39.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/ayt" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/f9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="@dimen/ms" android:layout_marginRight="28.0dip" android:text="翘派大星BB" android:maxLines="1" android:layout_below="@id/a31" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/aw6" android:textColor="#ff000000" android:layout_gravity="center_horizontal" android:id="@id/jfb" android:layout_width="240.0dip" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="@dimen/n0" android:layout_marginRight="28.0dip" android:text="@string/yb2" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="119.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n2" android:layout_marginBottom="21.0dip">
+        <Button android:textSize="@dimen/aw6" android:textColor="#ff3863fb" android:id="@id/ota" android:background="@drawable/g08" android:layout_width="119.0dip" android:layout_height="45.0dip" android:text="@string/yb3" />
+    </LinearLayout>
+</LinearLayout>

@@ -15,18 +15,6 @@ public abstract interface IPlayer
   
   public abstract float a();
   
-  public abstract int a();
-  
-  public abstract long a();
-  
-  @Nullable
-  public abstract IVideoView a();
-  
-  @Nullable
-  public abstract String a();
-  
-  public abstract void a();
-  
   public abstract void a(float paramFloat);
   
   public abstract void a(int paramInt);
@@ -47,46 +35,58 @@ public abstract interface IPlayer
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  @NotNull
-  public abstract String b();
-  
-  public abstract void b();
-  
   public abstract void b(boolean paramBoolean);
   
   public abstract boolean b();
-  
-  public abstract void c();
   
   public abstract void c(boolean paramBoolean);
   
   public abstract boolean c();
   
-  public abstract void d();
-  
   public abstract boolean d();
   
-  public abstract void e();
-  
   public abstract boolean e();
-  
-  public abstract void f();
   
   public abstract boolean f();
   
   public abstract void g();
   
   public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract boolean j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract long n();
+  
+  public abstract long o();
+  
+  public abstract int p();
+  
+  public abstract int q();
+  
+  @Nullable
+  public abstract String r();
+  
+  public abstract void s();
+  
+  @NotNull
+  public abstract String t();
+  
+  @Nullable
+  public abstract IVideoView u();
+  
+  public abstract void v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.api.IPlayer
  * JD-Core Version:    0.7.0.1
  */

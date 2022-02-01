@@ -13,39 +13,39 @@ class ArkAiDictUpdateMgr$2
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState.jdField_a_of_type_Boolean = false;
+      this.a.b = false;
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState)
+    synchronized (this.a)
     {
-      ArkAiDictUpdateMgr.UpdateState localUpdateState2 = this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState;
-      int i = localUpdateState2.jdField_a_of_type_Int - 1;
-      localUpdateState2.jdField_a_of_type_Int = i;
+      ArkAiDictUpdateMgr.UpdateState localUpdateState2 = this.a;
+      int i = localUpdateState2.a - 1;
+      localUpdateState2.a = i;
       if (i > 0)
       {
-        QLog.i("ArkDict.Update", 1, String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkDictDictInfo.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        QLog.i("ArkDict.Update", 1, String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.b.b, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
         return;
       }
-      QLog.i("ArkDict.Update", 1, String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState.jdField_a_of_type_Boolean) }));
-      if (!this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$UpdateState.jdField_a_of_type_Boolean)
+      QLog.i("ArkDict.Update", 1, String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.a.b) }));
+      if (!this.a.b)
       {
-        FileUtils.deleteDirectory(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$IUpdateDictCallback.a(false);
+        FileUtils.deleteDirectory(this.c);
+        this.d.a(false);
         return;
       }
-      if (!ArkAiDictUpdateMgr.a(ArkAiDictMgr.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
+      if (!ArkAiDictUpdateMgr.a(ArkAiDictMgr.a(this.e), new File(this.c).getParent()))
       {
         QLog.i("ArkDict.Update", 1, "updateWordDict, renameDictDirAfterUpdateSuccess fail");
-        this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$IUpdateDictCallback.a(false);
+        this.d.a(false);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$IUpdateDictCallback.a(true);
+      this.d.a(true);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.2
  * JD-Core Version:    0.7.0.1
  */

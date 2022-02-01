@@ -21,9 +21,9 @@ class OnLineStatusBlurBg$1
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.a != null)
+      if (this.a.a != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.a.isFinishing()) {
+        if (this.a.a.isFinishing()) {
           return;
         }
         if (OnLineStatusBlurBg.a(this.this$0) != null)
@@ -32,17 +32,17 @@ class OnLineStatusBlurBg$1
             return;
           }
           OnLineStatusBlurBg.OnLineStatusBlurBgListener localOnLineStatusBlurBgListener = (OnLineStatusBlurBg.OnLineStatusBlurBgListener)OnLineStatusBlurBg.a(this.this$0).get();
-          Bitmap localBitmap1 = DecorViewHelper.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.a);
+          Bitmap localBitmap1 = DecorViewHelper.a(this.b, this.c, this.a.a);
           if (localBitmap1 == null)
           {
             QLog.e("OnLineStatusBlurBg", 1, "run: decorViewBitmap == null");
-            this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.a.runOnUiThread(new OnLineStatusBlurBg.1.1(this, localOnLineStatusBlurBgListener));
+            this.a.a.runOnUiThread(new OnLineStatusBlurBg.1.1(this, localOnLineStatusBlurBgListener));
             return;
           }
           AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
           if (localAppRuntime == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.a.runOnUiThread(new OnLineStatusBlurBg.1.2(this, localOnLineStatusBlurBgListener));
+            this.a.a.runOnUiThread(new OnLineStatusBlurBg.1.2(this, localOnLineStatusBlurBgListener));
             return;
           }
           localBitmap1 = Bitmap.createScaledBitmap(localBitmap1, (int)(localBitmap1.getWidth() * 0.0625F), (int)(localBitmap1.getHeight() * 0.0625F), false);
@@ -65,14 +65,14 @@ class OnLineStatusBlurBg$1
           localCanvas.setDensity(localBitmap2.getDensity());
           localCanvas.drawColor(0);
           localCanvas.drawBitmap(localBitmap2, 0.0F, 0.0F, null);
-          if ((!"1103".equals(QQTheme.a())) && (!"2920".equals(QQTheme.a()))) {
-            localCanvas.drawColor(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.b);
+          if ((!"1103".equals(QQTheme.getCurrentThemeId())) && (!"2920".equals(QQTheme.getCurrentThemeId()))) {
+            localCanvas.drawColor(this.a.c);
           } else {
-            localCanvas.drawColor(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$BlurBgItem.c);
+            localCanvas.drawColor(this.a.d);
           }
           localCanvas.setBitmap(null);
           OnLineStatusBlurBg.a(this.this$0, localBitmap1);
-          OnLineStatusBlurBg.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+          OnLineStatusBlurBg.a(this.this$0, this.e);
           localAppRuntime.runOnUiThread(new OnLineStatusBlurBg.1.5(this, localOnLineStatusBlurBgListener));
           return;
         }
@@ -88,7 +88,7 @@ class OnLineStatusBlurBg$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg.1
  * JD-Core Version:    0.7.0.1
  */

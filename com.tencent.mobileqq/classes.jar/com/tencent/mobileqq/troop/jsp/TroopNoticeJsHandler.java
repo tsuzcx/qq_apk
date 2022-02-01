@@ -42,31 +42,15 @@ import org.json.JSONObject;
 public class TroopNoticeJsHandler
   extends WebViewPlugin
 {
-  private static int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunShowPictureIntentLimit", 200);
   public static String b = "pic_up";
   public static String c = "pic";
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static int e = QzoneConfig.getInstance().getConfig("QunAlbumSetting", "QunShowPictureIntentLimit", 200);
   protected String a;
+  private BroadcastReceiver d;
   
   public TroopNoticeJsHandler()
   {
     this.mPluginNameSpace = "troopNotice";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    int j = 5381;
-    int i = 0;
-    int k = paramString.length();
-    while (i < k)
-    {
-      j += (j << 5) + paramString.charAt(i);
-      i += 1;
-    }
-    return Integer.toString(0x7FFFFFFF & j);
   }
   
   /* Error */
@@ -75,105 +59,105 @@ public class TroopNoticeJsHandler
     // Byte code:
     //   0: aload_2
     //   1: sipush 640
-    //   4: invokestatic 85	com/tencent/biz/common/util/ImageUtil:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   4: invokestatic 62	com/tencent/biz/common/util/ImageUtil:a	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
     //   7: astore 9
     //   9: aload 9
     //   11: ifnonnull +15 -> 26
     //   14: aload 9
     //   16: ifnull +8 -> 24
     //   19: aload 9
-    //   21: invokevirtual 90	android/graphics/Bitmap:recycle	()V
+    //   21: invokevirtual 67	android/graphics/Bitmap:recycle	()V
     //   24: aconst_null
     //   25: areturn
     //   26: aload 9
     //   28: astore_2
-    //   29: new 92	java/lang/StringBuilder
+    //   29: new 69	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 93	java/lang/StringBuilder:<init>	()V
+    //   33: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   36: astore 10
     //   38: aload 9
     //   40: astore_2
     //   41: aload 10
-    //   43: getstatic 98	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_TROOPTMP_PATH	Ljava/lang/String;
-    //   46: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: getstatic 75	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_TROOPTMP_PATH	Ljava/lang/String;
+    //   46: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: aload 9
     //   52: astore_2
     //   53: aload 10
-    //   55: ldc 104
-    //   57: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc 81
+    //   57: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: pop
     //   61: aload 9
     //   63: astore_2
     //   64: aload 10
-    //   66: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: invokestatic 112	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   66: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 91	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
     //   72: astore 10
     //   74: aload 9
     //   76: astore_2
     //   77: aload 9
-    //   79: new 114	java/io/File
+    //   79: new 93	java/io/File
     //   82: dup
     //   83: aload 10
-    //   85: invokespecial 117	java/io/File:<init>	(Ljava/lang/String;)V
-    //   88: invokestatic 122	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)V
+    //   85: invokespecial 96	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: invokestatic 101	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)V
     //   91: aload 9
     //   93: ifnull +8 -> 101
     //   96: aload 9
-    //   98: invokevirtual 90	android/graphics/Bitmap:recycle	()V
-    //   101: new 124	java/util/HashMap
+    //   98: invokevirtual 67	android/graphics/Bitmap:recycle	()V
+    //   101: new 103	java/util/HashMap
     //   104: dup
-    //   105: invokespecial 125	java/util/HashMap:<init>	()V
+    //   105: invokespecial 104	java/util/HashMap:<init>	()V
     //   108: astore_2
     //   109: aload_2
-    //   110: ldc 127
+    //   110: ldc 106
     //   112: aload 5
-    //   114: invokestatic 129	com/tencent/mobileqq/troop/jsp/TroopNoticeJsHandler:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: invokeinterface 135 3 0
+    //   114: invokestatic 109	com/tencent/mobileqq/troop/jsp/TroopNoticeJsHandler:f	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: invokeinterface 115 3 0
     //   122: pop
     //   123: aload_3
-    //   124: invokestatic 53	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   124: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   127: ifne +61 -> 188
-    //   130: new 137	org/json/JSONObject
+    //   130: new 123	org/json/JSONObject
     //   133: dup
     //   134: aload_3
-    //   135: invokespecial 138	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   135: invokespecial 124	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   138: astore_3
     //   139: aload_3
-    //   140: invokevirtual 142	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   140: invokevirtual 128	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   143: astore 9
     //   145: aload 9
-    //   147: invokeinterface 148 1 0
+    //   147: invokeinterface 134 1 0
     //   152: ifeq +36 -> 188
     //   155: aload 9
-    //   157: invokeinterface 152 1 0
-    //   162: checkcast 57	java/lang/String
+    //   157: invokeinterface 138 1 0
+    //   162: checkcast 140	java/lang/String
     //   165: astore 11
     //   167: aload_2
     //   168: aload 11
     //   170: aload_3
     //   171: aload 11
-    //   173: invokevirtual 156	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   176: invokevirtual 159	java/lang/Object:toString	()Ljava/lang/String;
-    //   179: invokeinterface 135 3 0
+    //   173: invokevirtual 144	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   176: invokevirtual 147	java/lang/Object:toString	()Ljava/lang/String;
+    //   179: invokeinterface 115 3 0
     //   184: pop
     //   185: goto -40 -> 145
-    //   188: new 124	java/util/HashMap
+    //   188: new 103	java/util/HashMap
     //   191: dup
-    //   192: invokespecial 125	java/util/HashMap:<init>	()V
+    //   192: invokespecial 104	java/util/HashMap:<init>	()V
     //   195: astore_3
     //   196: aload_3
     //   197: aload 6
     //   199: aload 10
-    //   201: invokeinterface 135 3 0
+    //   201: invokeinterface 115 3 0
     //   206: pop
     //   207: aload_0
-    //   208: invokevirtual 60	java/lang/String:length	()I
+    //   208: invokevirtual 150	java/lang/String:length	()I
     //   211: istore 8
-    //   213: new 161	java/lang/StringBuffer
+    //   213: new 152	java/lang/StringBuffer
     //   216: dup
-    //   217: ldc 163
-    //   219: invokespecial 164	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   217: ldc 154
+    //   219: invokespecial 155	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   222: astore 6
     //   224: iconst_0
     //   225: istore 7
@@ -183,8 +167,8 @@ public class TroopNoticeJsHandler
     //   233: isub
     //   234: if_icmpge +20 -> 254
     //   237: aload 6
-    //   239: ldc 166
-    //   241: invokevirtual 169	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   239: ldc 157
+    //   241: invokevirtual 160	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   244: pop
     //   245: iload 7
     //   247: iconst_1
@@ -193,150 +177,220 @@ public class TroopNoticeJsHandler
     //   251: goto -24 -> 227
     //   254: aload 6
     //   256: aload_0
-    //   257: invokevirtual 169	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   257: invokevirtual 160	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   260: pop
-    //   261: new 124	java/util/HashMap
+    //   261: new 103	java/util/HashMap
     //   264: dup
-    //   265: invokespecial 125	java/util/HashMap:<init>	()V
+    //   265: invokespecial 104	java/util/HashMap:<init>	()V
     //   268: astore_0
-    //   269: aload_0
-    //   270: ldc 171
-    //   272: new 173	java/net/URL
-    //   275: dup
-    //   276: aload_1
-    //   277: invokespecial 174	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   280: invokevirtual 177	java/net/URL:getRef	()Ljava/lang/String;
-    //   283: invokeinterface 135 3 0
-    //   288: pop
-    //   289: aload 4
-    //   291: invokestatic 53	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   294: ifne +65 -> 359
-    //   297: new 137	org/json/JSONObject
-    //   300: dup
-    //   301: aload 4
-    //   303: invokespecial 138	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   306: astore 4
-    //   308: aload 4
-    //   310: invokevirtual 142	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   313: astore 9
-    //   315: aload 9
-    //   317: invokeinterface 148 1 0
-    //   322: ifeq +37 -> 359
-    //   325: aload 9
-    //   327: invokeinterface 152 1 0
-    //   332: checkcast 57	java/lang/String
-    //   335: astore 10
-    //   337: aload_0
-    //   338: aload 10
-    //   340: aload 4
-    //   342: aload 10
-    //   344: invokevirtual 156	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   347: invokevirtual 159	java/lang/Object:toString	()Ljava/lang/String;
-    //   350: invokeinterface 135 3 0
-    //   355: pop
-    //   356: goto -41 -> 315
-    //   359: aload_1
-    //   360: aload 6
-    //   362: invokevirtual 178	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   365: aload 5
-    //   367: aload_2
-    //   368: aload_3
-    //   369: aload_0
-    //   370: invokestatic 184	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Ljava/lang/String;
-    //   373: areturn
-    //   374: astore_0
-    //   375: aload_0
-    //   376: invokevirtual 187	java/net/MalformedURLException:printStackTrace	()V
-    //   379: aconst_null
-    //   380: areturn
-    //   381: astore_0
-    //   382: goto +17 -> 399
-    //   385: astore_0
-    //   386: goto +36 -> 422
-    //   389: astore_0
-    //   390: aconst_null
-    //   391: astore_2
-    //   392: goto +50 -> 442
-    //   395: astore_0
-    //   396: aconst_null
-    //   397: astore 9
-    //   399: aload 9
-    //   401: astore_2
-    //   402: aload_0
-    //   403: invokevirtual 188	java/io/IOException:printStackTrace	()V
-    //   406: aload 9
-    //   408: ifnull +8 -> 416
-    //   411: aload 9
-    //   413: invokevirtual 90	android/graphics/Bitmap:recycle	()V
-    //   416: aconst_null
-    //   417: areturn
-    //   418: astore_0
-    //   419: aconst_null
-    //   420: astore 9
-    //   422: aload 9
-    //   424: astore_2
-    //   425: aload_0
-    //   426: invokevirtual 189	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   429: aload 9
-    //   431: ifnull +8 -> 439
-    //   434: aload 9
-    //   436: invokevirtual 90	android/graphics/Bitmap:recycle	()V
-    //   439: aconst_null
-    //   440: areturn
-    //   441: astore_0
-    //   442: aload_2
-    //   443: ifnull +7 -> 450
-    //   446: aload_2
-    //   447: invokevirtual 90	android/graphics/Bitmap:recycle	()V
-    //   450: goto +5 -> 455
-    //   453: aload_0
-    //   454: athrow
-    //   455: goto -2 -> 453
-    //   458: astore_3
-    //   459: goto -271 -> 188
-    //   462: astore 4
-    //   464: goto -105 -> 359
+    //   269: new 162	java/net/URL
+    //   272: dup
+    //   273: aload_1
+    //   274: invokespecial 163	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   277: astore 9
+    //   279: aload_0
+    //   280: ldc 165
+    //   282: aload 9
+    //   284: invokevirtual 168	java/net/URL:getRef	()Ljava/lang/String;
+    //   287: invokeinterface 115 3 0
+    //   292: pop
+    //   293: aload 9
+    //   295: invokevirtual 171	java/net/URL:getHost	()Ljava/lang/String;
+    //   298: ldc 173
+    //   300: invokevirtual 177	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   303: ifeq +148 -> 451
+    //   306: aload 9
+    //   308: invokevirtual 180	java/net/URL:getPath	()Ljava/lang/String;
+    //   311: ldc 182
+    //   313: invokevirtual 177	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   316: ifeq +135 -> 451
+    //   319: invokestatic 188	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   322: invokevirtual 192	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   325: iconst_2
+    //   326: invokevirtual 198	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   329: checkcast 200	mqq/manager/TicketManager
+    //   332: invokestatic 188	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   335: invokevirtual 192	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   338: invokevirtual 203	mqq/app/AppRuntime:getCurrentAccountUin	()Ljava/lang/String;
+    //   341: ldc 205
+    //   343: invokeinterface 209 3 0
+    //   348: astore 9
+    //   350: aload 9
+    //   352: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   355: ifne +96 -> 451
+    //   358: new 69	java/lang/StringBuilder
+    //   361: dup
+    //   362: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   365: astore 10
+    //   367: aload 10
+    //   369: ldc 211
+    //   371: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   374: pop
+    //   375: aload 10
+    //   377: aload 6
+    //   379: invokevirtual 212	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   382: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   385: pop
+    //   386: aload 10
+    //   388: ldc 214
+    //   390: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: aload 10
+    //   396: aload 9
+    //   398: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: pop
+    //   402: aload 10
+    //   404: ldc 216
+    //   406: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: pop
+    //   410: aload 10
+    //   412: aload 6
+    //   414: invokevirtual 212	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   417: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: pop
+    //   421: aload 10
+    //   423: ldc 218
+    //   425: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload 10
+    //   431: aload 5
+    //   433: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload_0
+    //   438: ldc 220
+    //   440: aload 10
+    //   442: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   445: invokeinterface 115 3 0
+    //   450: pop
+    //   451: aload 4
+    //   453: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   456: ifne +65 -> 521
+    //   459: new 123	org/json/JSONObject
+    //   462: dup
+    //   463: aload 4
+    //   465: invokespecial 124	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   468: astore 4
+    //   470: aload 4
+    //   472: invokevirtual 128	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   475: astore 9
+    //   477: aload 9
+    //   479: invokeinterface 134 1 0
+    //   484: ifeq +37 -> 521
+    //   487: aload 9
+    //   489: invokeinterface 138 1 0
+    //   494: checkcast 140	java/lang/String
+    //   497: astore 10
+    //   499: aload_0
+    //   500: aload 10
+    //   502: aload 4
+    //   504: aload 10
+    //   506: invokevirtual 144	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   509: invokevirtual 147	java/lang/Object:toString	()Ljava/lang/String;
+    //   512: invokeinterface 115 3 0
+    //   517: pop
+    //   518: goto -41 -> 477
+    //   521: aload_1
+    //   522: aload 6
+    //   524: invokevirtual 212	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   527: aload 5
+    //   529: aload_2
+    //   530: aload_3
+    //   531: aload_0
+    //   532: invokestatic 226	com/tencent/biz/common/util/HttpUtil:uploadImage	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Ljava/lang/String;
+    //   535: areturn
+    //   536: astore_0
+    //   537: aload_0
+    //   538: invokevirtual 229	java/net/MalformedURLException:printStackTrace	()V
+    //   541: aconst_null
+    //   542: areturn
+    //   543: astore_0
+    //   544: goto +17 -> 561
+    //   547: astore_0
+    //   548: goto +36 -> 584
+    //   551: astore_0
+    //   552: aconst_null
+    //   553: astore_2
+    //   554: goto +50 -> 604
+    //   557: astore_0
+    //   558: aconst_null
+    //   559: astore 9
+    //   561: aload 9
+    //   563: astore_2
+    //   564: aload_0
+    //   565: invokevirtual 230	java/io/IOException:printStackTrace	()V
+    //   568: aload 9
+    //   570: ifnull +8 -> 578
+    //   573: aload 9
+    //   575: invokevirtual 67	android/graphics/Bitmap:recycle	()V
+    //   578: aconst_null
+    //   579: areturn
+    //   580: astore_0
+    //   581: aconst_null
+    //   582: astore 9
+    //   584: aload 9
+    //   586: astore_2
+    //   587: aload_0
+    //   588: invokevirtual 231	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   591: aload 9
+    //   593: ifnull +8 -> 601
+    //   596: aload 9
+    //   598: invokevirtual 67	android/graphics/Bitmap:recycle	()V
+    //   601: aconst_null
+    //   602: areturn
+    //   603: astore_0
+    //   604: aload_2
+    //   605: ifnull +7 -> 612
+    //   608: aload_2
+    //   609: invokevirtual 67	android/graphics/Bitmap:recycle	()V
+    //   612: goto +5 -> 617
+    //   615: aload_0
+    //   616: athrow
+    //   617: goto -2 -> 615
+    //   620: astore_3
+    //   621: goto -433 -> 188
+    //   624: astore 4
+    //   626: goto -105 -> 521
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	467	0	paramString1	String
-    //   0	467	1	paramString2	String
-    //   0	467	2	paramString3	String
-    //   0	467	3	paramString4	String
-    //   0	467	4	paramString5	String
-    //   0	467	5	paramString6	String
-    //   0	467	6	paramString7	String
+    //   0	629	0	paramString1	String
+    //   0	629	1	paramString2	String
+    //   0	629	2	paramString3	String
+    //   0	629	3	paramString4	String
+    //   0	629	4	paramString5	String
+    //   0	629	5	paramString6	String
+    //   0	629	6	paramString7	String
     //   225	25	7	i	int
     //   211	23	8	j	int
-    //   7	428	9	localObject1	Object
-    //   36	307	10	localObject2	Object
+    //   7	590	9	localObject1	Object
+    //   36	469	10	localObject2	Object
     //   165	7	11	str	String
     // Exception table:
     //   from	to	target	type
-    //   269	289	374	java/net/MalformedURLException
-    //   29	38	381	java/io/IOException
-    //   41	50	381	java/io/IOException
-    //   53	61	381	java/io/IOException
-    //   64	74	381	java/io/IOException
-    //   77	91	381	java/io/IOException
-    //   29	38	385	java/lang/OutOfMemoryError
-    //   41	50	385	java/lang/OutOfMemoryError
-    //   53	61	385	java/lang/OutOfMemoryError
-    //   64	74	385	java/lang/OutOfMemoryError
-    //   77	91	385	java/lang/OutOfMemoryError
-    //   0	9	389	finally
-    //   0	9	395	java/io/IOException
-    //   0	9	418	java/lang/OutOfMemoryError
-    //   29	38	441	finally
-    //   41	50	441	finally
-    //   53	61	441	finally
-    //   64	74	441	finally
-    //   77	91	441	finally
-    //   402	406	441	finally
-    //   425	429	441	finally
-    //   130	145	458	org/json/JSONException
-    //   145	185	458	org/json/JSONException
-    //   297	315	462	org/json/JSONException
-    //   315	356	462	org/json/JSONException
+    //   269	451	536	java/net/MalformedURLException
+    //   29	38	543	java/io/IOException
+    //   41	50	543	java/io/IOException
+    //   53	61	543	java/io/IOException
+    //   64	74	543	java/io/IOException
+    //   77	91	543	java/io/IOException
+    //   29	38	547	java/lang/OutOfMemoryError
+    //   41	50	547	java/lang/OutOfMemoryError
+    //   53	61	547	java/lang/OutOfMemoryError
+    //   64	74	547	java/lang/OutOfMemoryError
+    //   77	91	547	java/lang/OutOfMemoryError
+    //   0	9	551	finally
+    //   0	9	557	java/io/IOException
+    //   0	9	580	java/lang/OutOfMemoryError
+    //   29	38	603	finally
+    //   41	50	603	finally
+    //   53	61	603	finally
+    //   64	74	603	finally
+    //   77	91	603	finally
+    //   564	568	603	finally
+    //   587	591	603	finally
+    //   130	145	620	org/json/JSONException
+    //   145	185	620	org/json/JSONException
+    //   459	477	624	org/json/JSONException
+    //   477	518	624	org/json/JSONException
   }
   
   public static void a(Activity paramActivity, int paramInt1, ArrayList<MediaPreviewInfo> paramArrayList, boolean paramBoolean, int paramInt2)
@@ -407,7 +461,7 @@ public class TroopNoticeJsHandler
       localBundle.putString("str_data_extra", paramString4);
     }
     if ((paramAbsBaseArticleInfo != null) && (((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).isWendaCardViewType(paramAbsBaseArticleInfo)) && (!TextUtils.isEmpty(paramString2))) {
-      localBundle.putString("btntext", paramActivity.getString(2131717945));
+      localBundle.putString("btntext", paramActivity.getString(2131915420));
     }
     localIntent.putExtras(localBundle);
     paramActivity.startActivityForResult(localIntent, paramInt2);
@@ -426,12 +480,28 @@ public class TroopNoticeJsHandler
     }
   }
   
+  public static String f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    int j = 5381;
+    int i = 0;
+    int k = paramString.length();
+    while (i < k)
+    {
+      j += (j << 5) + paramString.charAt(i);
+      i += 1;
+    }
+    return Integer.toString(0x7FFFFFFF & j);
+  }
+  
   protected void a(String paramString)
   {
     Object localObject8;
-    label1113:
     label1116:
-    label1122:
+    label1119:
+    label1125:
     do
     {
       boolean bool1;
@@ -455,7 +525,7 @@ public class TroopNoticeJsHandler
               i = ((JSONObject)localObject6).optInt("videoWidth");
               k = ((JSONObject)localObject6).optInt("videoHeight");
               ((JSONObject)localObject6).optBoolean("isLike");
-              localObject2 = this.mRuntime.a();
+              localObject2 = this.mRuntime.d();
               if (localObject2 == null) {
                 return;
               }
@@ -485,7 +555,7 @@ public class TroopNoticeJsHandler
               ((Bundle)localObject4).putBoolean("need_clear_cache", true);
               QZoneHelper.forwardToPictureViewer((Activity)localObject2, (QZoneHelper.UserInfo)localObject3, (Bundle)localObject4, 6);
             }
-            this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject6).optString("callback");
+            this.a = ((JSONObject)localObject6).optString("callback");
             Object localObject5 = ((JSONObject)localObject6).optJSONArray("imageIDs");
             localObject8 = ((JSONObject)localObject6).optJSONArray("likes");
             Object localObject7 = ((JSONObject)localObject6).optJSONArray("descs");
@@ -513,10 +583,10 @@ public class TroopNoticeJsHandler
                 if (this.mRuntime.a() == null) {
                   return;
                 }
-                if (this.mRuntime.a() == null) {
+                if (this.mRuntime.b() == null) {
                   return;
                 }
-                localObject3 = this.mRuntime.a();
+                localObject3 = this.mRuntime.d();
                 if (localObject3 == null) {
                   return;
                 }
@@ -534,19 +604,19 @@ public class TroopNoticeJsHandler
                   continue;
                 }
                 if (localObject4 == null) {
-                  break label1116;
+                  break label1119;
                 }
                 localObject3 = new ArrayList();
                 m = ((JSONArray)localObject4).length();
                 i = 0;
                 if (i >= m) {
-                  break label1113;
+                  break label1116;
                 }
                 ((ArrayList)localObject3).add(((JSONArray)localObject4).get(i).toString());
                 i += 1;
                 continue;
                 if (localObject10 == null) {
-                  break label1122;
+                  break label1125;
                 }
                 localObject5 = new ArrayList();
                 m = ((JSONArray)localObject10).length();
@@ -564,7 +634,7 @@ public class TroopNoticeJsHandler
                 if (!QLog.isColorLevel()) {
                   break;
                 }
-                QLog.d(this.TAG, 2, new Object[] { "KANDIAN Grid Image title: ", localObject5, ", articleUrl: ", localObject6, ", showTitle: ", Boolean.valueOf(bool3) });
+                QLog.d(this.mTAG, 2, new Object[] { "KANDIAN Grid Image title: ", localObject5, ", articleUrl: ", localObject6, ", showTitle: ", Boolean.valueOf(bool3) });
                 break;
                 localObject10 = new boolean[((JSONArray)localObject8).length()];
                 i = 0;
@@ -586,11 +656,11 @@ public class TroopNoticeJsHandler
                     continue;
                   }
                 }
-                if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+                if (this.d == null)
                 {
-                  this.jdField_a_of_type_AndroidContentBroadcastReceiver = new TroopNoticeJsHandler.1(this);
+                  this.d = new TroopNoticeJsHandler.1(this);
                   localObject7 = new IntentFilter("android.intent.action.WEBJSCALL");
-                  ((Activity)localObject2).registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject7);
+                  ((Activity)localObject2).registerReceiver(this.d, (IntentFilter)localObject7);
                 }
                 if ((bool3) && (!TextUtils.isEmpty((CharSequence)localObject5)) && (!TextUtils.isEmpty((CharSequence)localObject6)))
                 {
@@ -638,11 +708,11 @@ public class TroopNoticeJsHandler
       if (paramString == null) {
         return;
       }
-      AppInterface localAppInterface = this.mRuntime.a();
+      AppInterface localAppInterface = this.mRuntime.b();
       if (localAppInterface == null) {
         return;
       }
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       if (localActivity == null) {
         return;
       }
@@ -667,7 +737,7 @@ public class TroopNoticeJsHandler
   {
     if ((this.mRuntime != null) && (!TextUtils.isEmpty(paramString)))
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.a)) {
         return;
       }
       CustomWebView localCustomWebView = this.mRuntime.a();
@@ -676,7 +746,7 @@ public class TroopNoticeJsHandler
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("javascript: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("(");
       localStringBuilder.append(paramString);
       localStringBuilder.append(")");
@@ -684,7 +754,7 @@ public class TroopNoticeJsHandler
     }
   }
   
-  protected void f(String paramString)
+  protected void g(String paramString)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -708,10 +778,10 @@ public class TroopNoticeJsHandler
         if (this.mRuntime.a() == null) {
           return;
         }
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.b() == null) {
           return;
         }
-        localObject = this.mRuntime.a();
+        localObject = this.mRuntime.d();
         if (localObject == null) {
           return;
         }
@@ -760,7 +830,7 @@ public class TroopNoticeJsHandler
         return false;
       }
       if (("showMedia".equals(paramString3)) && (paramVarArgs.length == 1)) {
-        f(paramVarArgs[0]);
+        g(paramVarArgs[0]);
       }
     }
     return false;
@@ -781,7 +851,7 @@ public class TroopNoticeJsHandler
         {
           paramIntent = new StringBuilder();
           paramIntent.append("javascript: ");
-          paramIntent.append(this.jdField_a_of_type_JavaLangString);
+          paramIntent.append(this.a);
           paramIntent.append("([])");
           localCustomWebView.loadUrl(paramIntent.toString());
         }
@@ -792,9 +862,9 @@ public class TroopNoticeJsHandler
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (this.mRuntime != null))
+    if ((this.d != null) && (this.mRuntime != null))
     {
-      Activity localActivity2 = this.mRuntime.a();
+      Activity localActivity2 = this.mRuntime.d();
       if (localActivity2 == null) {
         return;
       }
@@ -802,13 +872,13 @@ public class TroopNoticeJsHandler
       if ((localActivity2 instanceof BasePluginActivity)) {
         localActivity1 = ((BasePluginActivity)localActivity2).getOutActivity();
       }
-      localActivity1.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      localActivity1.unregisterReceiver(this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler
  * JD-Core Version:    0.7.0.1
  */

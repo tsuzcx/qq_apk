@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-
 class FMObserver$43
-  implements Runnable
+  implements FMObserver.FileEventOperator
 {
-  FMObserver$43(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
+  FMObserver$43(FMObserver paramFMObserver) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.this$0.a(this.a);
+    FMObserver.y(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FMObserver.43
  * JD-Core Version:    0.7.0.1
  */

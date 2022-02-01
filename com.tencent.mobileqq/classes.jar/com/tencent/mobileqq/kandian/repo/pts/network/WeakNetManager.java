@@ -8,22 +8,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WeakNetManager
 {
-  private static WeakNetManager jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetManager;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private static WeakNetManager a;
+  private Runnable b;
+  private ToServiceMsg c;
   
   public static WeakNetManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetManager = new WeakNetManager();
+        if (a == null) {
+          a = new WeakNetManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetManager;
+    return a;
   }
   
   public void a(ToServiceMsg paramToServiceMsg)
@@ -35,16 +35,16 @@ public class WeakNetManager
         QLog.d("WeakNetManager", 1, "no need to show toast delay.");
         return;
       }
-      long l = WeakNetHelper.a();
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        this.jdField_a_of_type_JavaLangRunnable = new WeakNetManager.1(this, l);
+      long l = WeakNetHelper.b();
+      if (this.b == null) {
+        this.b = new WeakNetManager.1(this, l);
       }
-      RIJThreadHandler.b().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      RIJThreadHandler.b().removeCallbacks(this.b);
       if (QLog.isColorLevel()) {
         QLog.d("WeakNetManager", 2, "removeCallbacks in showToastDelay.");
       }
-      this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-      RIJThreadHandler.b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+      this.c = paramToServiceMsg;
+      RIJThreadHandler.b().postDelayed(this.b, l);
       QLog.d("WeakNetManager", 1, new Object[] { "showToastDelay, delayTime = ", Long.valueOf(l) });
       return;
     }
@@ -55,10 +55,10 @@ public class WeakNetManager
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == paramToServiceMsg)
+      if (this.c == paramToServiceMsg)
       {
-        RIJThreadHandler.b().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = null;
+        RIJThreadHandler.b().removeCallbacks(this.b);
+        this.c = null;
         QLog.d("WeakNetManager", 1, "removeCallbacks in cancelToastRunnable.");
       }
       else
@@ -72,7 +72,7 @@ public class WeakNetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.network.WeakNetManager
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class ArkBrowserFragment
     if (TextUtils.isEmpty(DoraemonUtil.a((String)localObject1))) {
       return;
     }
-    localObject2 = ((WebViewPluginEngine)localObject2).a();
+    localObject2 = ((WebViewPluginEngine)localObject2).e();
     if (localObject2 == null) {
       return;
     }
@@ -47,7 +47,7 @@ public class ArkBrowserFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    getUIStyleHandler().a.a &= 0xFFFFFFFB;
+    getUIStyleHandler().f.c &= 0xFFFFFFFB;
   }
   
   public void showActionSheet()
@@ -56,13 +56,13 @@ public class ArkBrowserFragment
     if (localSwiftBrowserShareMenuHandler != null)
     {
       localSwiftBrowserShareMenuHandler.a(new ArkBrowserFragment.ArkShareToFriendCallback(this));
-      localSwiftBrowserShareMenuHandler.a((Share)getShare(), getUIStyle().a);
+      localSwiftBrowserShareMenuHandler.a((Share)getShare(), getUIStyle().c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

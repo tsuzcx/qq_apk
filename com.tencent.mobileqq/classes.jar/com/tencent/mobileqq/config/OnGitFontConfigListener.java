@@ -15,16 +15,16 @@ public class OnGitFontConfigListener
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append("handleConfigForTag font content = ");
-        paramQQAppInterface.append(paramCfgParseResult.a);
+        paramQQAppInterface.append(paramCfgParseResult.d);
         QLog.d("FontManagerConstants", 2, paramQQAppInterface.toString());
       }
-      FontManagerConstants.updateFontSwitch(paramCfgParseResult.a);
+      FontManagerConstants.updateFontSwitch(paramCfgParseResult.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.OnGitFontConfigListener
  * JD-Core Version:    0.7.0.1
  */

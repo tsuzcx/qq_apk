@@ -14,17 +14,17 @@ class ArkAppItemBubbleBuilder$Holder$1
   {
     if (paramBitmap != null)
     {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.b.d.setVisibility(0);
+      this.a.e.setVisibility(0);
+      this.a.e.setImageBitmap(paramBitmap);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.e.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder.1
  * JD-Core Version:    0.7.0.1
  */

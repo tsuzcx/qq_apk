@@ -10,36 +10,36 @@ import java.util.List;
 
 public class VideoBehaviorsReporter
 {
-  private static VideoBehaviorsReporter jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsReporter = new VideoBehaviorsReporter();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private VideoBehaviorsReportData jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsReportData;
-  private VideoBehaviorsSeqReportData jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsSeqReportData;
-  private List<?> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = -100;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = -100;
-  private long jdField_c_of_type_Long = -1L;
-  private boolean jdField_c_of_type_Boolean = false;
+  private static VideoBehaviorsReporter n = new VideoBehaviorsReporter();
+  private int a;
+  private int b = -100;
+  private long c = -1L;
   private int d = -100;
+  private long e = -1L;
+  private int f = -100;
+  private boolean g = false;
+  private boolean h = false;
+  private List<?> i;
+  private long j = -1L;
+  private boolean k = false;
+  private VideoBehaviorsReportData l;
+  private VideoBehaviorsSeqReportData m;
   
   public static VideoBehaviorsReporter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsReporter;
+    return n;
   }
   
-  private void b()
+  private void c()
   {
-    VideoBehaviorsSeqReportData localVideoBehaviorsSeqReportData = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsSeqReportData;
+    VideoBehaviorsSeqReportData localVideoBehaviorsSeqReportData = this.m;
     if (localVideoBehaviorsSeqReportData != null)
     {
       if (localVideoBehaviorsSeqReportData.a()) {
         return;
       }
-      localVideoBehaviorsSeqReportData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localVideoBehaviorsSeqReportData.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      localVideoBehaviorsSeqReportData.a = this.a;
+      localVideoBehaviorsSeqReportData.b = this.g;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -47,52 +47,38 @@ public class VideoBehaviorsReporter
         localStringBuilder.append(localVideoBehaviorsSeqReportData.toString());
         QLog.d("VideoBehaviorsReporter", 2, localStringBuilder.toString());
       }
-      RIJStatisticCollectorReport.e(BaseApplication.getContext(), RIJQQAppInterfaceUtil.a(), true, localVideoBehaviorsSeqReportData.a());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsSeqReportData.a();
+      RIJStatisticCollectorReport.e(BaseApplication.getContext(), RIJQQAppInterfaceUtil.d(), true, localVideoBehaviorsSeqReportData.c());
+      this.m.b();
     }
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -100;
-    this.jdField_c_of_type_Int = -100;
-    this.d = -100;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsReportData = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoBehaviorsSeqReportData = null;
   }
   
   public void a(int paramInt)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.k) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, List<?> paramList)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.k) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.i == null)
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      if (this.jdField_c_of_type_Long == -1L)
+      this.i = paramList;
+      if (this.j == -1L)
       {
-        paramReadInJoyBaseAdapter = this.jdField_a_of_type_JavaUtilList;
+        paramReadInJoyBaseAdapter = this.i;
         if ((paramReadInJoyBaseAdapter != null) && (paramReadInJoyBaseAdapter.size() > 0))
         {
-          this.jdField_c_of_type_Long = ((AbsBaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(0)).mRecommendSeq;
+          this.j = ((AbsBaseArticleInfo)this.i.get(0)).mRecommendSeq;
           if (QLog.isColorLevel())
           {
             paramReadInJoyBaseAdapter = new StringBuilder();
             paramReadInJoyBaseAdapter.append("bindVideoChannel(): 2,  mFirstVideoSeq = ");
-            paramReadInJoyBaseAdapter.append(this.jdField_c_of_type_Long);
+            paramReadInJoyBaseAdapter.append(this.j);
             QLog.d("VideoBehaviorsReporter", 2, paramReadInJoyBaseAdapter.toString());
           }
         }
@@ -102,38 +88,52 @@ public class VideoBehaviorsReporter
     {
       paramReadInJoyBaseAdapter = new StringBuilder();
       paramReadInJoyBaseAdapter.append("bindVideoChannel(): 1, mFirstVideoSeq = ");
-      paramReadInJoyBaseAdapter.append(this.jdField_c_of_type_Long);
+      paramReadInJoyBaseAdapter.append(this.j);
       QLog.d("VideoBehaviorsReporter", 2, paramReadInJoyBaseAdapter.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
+  }
+  
+  public void b()
+  {
+    c();
+    this.k = false;
+    this.g = false;
+    this.b = -100;
+    this.d = -100;
+    this.f = -100;
+    this.j = -1L;
+    this.i = null;
+    this.l = null;
+    this.m = null;
   }
   
   public void b(boolean paramBoolean)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.k) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.g == paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public void c(boolean paramBoolean)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.k) {
       return;
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoBehaviorsReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class ChatHistoryTroopFileFragment$6
 {
   ChatHistoryTroopFileFragment$6(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    paramView = ChatHistoryTroopFileFragment.a(this.b).b();
     if (paramView != null)
     {
       if (paramView.isEmpty()) {
@@ -23,18 +23,18 @@ class ChatHistoryTroopFileFragment$6
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ChatHistoryTroopFileFragment.6.1(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      ChatHistoryTroopFileFragment.e(this.b).a(localArrayList, 3, new ChatHistoryTroopFileFragment.6.1(this));
+      ChatHistoryTroopFileFragment.a(this.b).a(false);
+      this.b.m();
+      if (this.a.isShowing()) {
+        this.a.dismiss();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.6
  * JD-Core Version:    0.7.0.1
  */

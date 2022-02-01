@@ -3,76 +3,66 @@ package com.tencent.mobileqq.bubble;
 public class BubbleNewAnimConf$PathAnimConf
   extends BubbleNewAnimConf
 {
-  public float a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
-  public float g;
-  public int g;
-  public float h;
-  public int h;
-  public int i = 0;
-  public int j = 1;
-  
-  public BubbleNewAnimConf$PathAnimConf()
-  {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_f_of_type_Int = 100;
-    this.jdField_g_of_type_Int = 100;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-  }
+  public boolean A = false;
+  public int B = 1;
+  public float m;
+  public float n;
+  public float o;
+  public float p;
+  public float q;
+  public float r;
+  public float s;
+  public float t;
+  public int u = 0;
+  public boolean v = false;
+  public int w = 100;
+  public int x = 100;
+  public int y = 0;
+  public int z = 0;
   
   public PathAnimConf a()
   {
     PathAnimConf localPathAnimConf = new PathAnimConf();
-    localPathAnimConf.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-    localPathAnimConf.jdField_b_of_type_Float = this.d;
-    localPathAnimConf.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
-    localPathAnimConf.d = this.jdField_b_of_type_Float;
+    localPathAnimConf.m = this.o;
+    localPathAnimConf.n = this.p;
+    localPathAnimConf.o = this.m;
+    localPathAnimConf.p = this.n;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("reverse");
-    localPathAnimConf.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_b_of_type_Boolean ^= true;
-    localPathAnimConf.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localPathAnimConf.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localPathAnimConf.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
-    localPathAnimConf.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
-    localPathAnimConf.jdField_h_of_type_Int = this.i;
-    localPathAnimConf.i = this.jdField_h_of_type_Int;
-    if (this.jdField_c_of_type_Boolean)
+    localPathAnimConf.a = localStringBuilder.toString();
+    this.v ^= true;
+    localPathAnimConf.d = this.d;
+    localPathAnimConf.e = this.e;
+    localPathAnimConf.w = this.x;
+    localPathAnimConf.x = this.w;
+    localPathAnimConf.y = this.z;
+    localPathAnimConf.z = this.y;
+    if (this.A)
     {
-      localPathAnimConf.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
-      localPathAnimConf.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
-      localPathAnimConf.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
-      localPathAnimConf.jdField_h_of_type_Float = this.jdField_h_of_type_Float;
+      localPathAnimConf.q = this.q;
+      localPathAnimConf.s = this.s;
+      localPathAnimConf.r = this.r;
+      localPathAnimConf.t = this.t;
     }
     else
     {
-      localPathAnimConf.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
-      localPathAnimConf.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
-      localPathAnimConf.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
-      localPathAnimConf.jdField_h_of_type_Float = this.jdField_f_of_type_Float;
+      localPathAnimConf.q = this.s;
+      localPathAnimConf.s = this.q;
+      localPathAnimConf.r = this.t;
+      localPathAnimConf.t = this.r;
     }
-    localPathAnimConf.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
-    localPathAnimConf.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-    localPathAnimConf.j = this.j;
-    localPathAnimConf.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localPathAnimConf.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localPathAnimConf.u = this.u;
+    localPathAnimConf.A = this.A;
+    localPathAnimConf.B = this.B;
+    localPathAnimConf.b = this.b;
+    localPathAnimConf.c = this.c;
     return localPathAnimConf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAnimConf.PathAnimConf
  * JD-Core Version:    0.7.0.1
  */

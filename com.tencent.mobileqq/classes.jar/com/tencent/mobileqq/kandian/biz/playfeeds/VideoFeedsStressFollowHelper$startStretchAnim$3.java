@@ -14,7 +14,7 @@ public final class VideoFeedsStressFollowHelper$startStretchAnim$3
   
   public void onAnimationCancel(@Nullable Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.b;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationCancel(paramAnimator);
     }
@@ -22,9 +22,9 @@ public final class VideoFeedsStressFollowHelper$startStretchAnim$3
   
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    VideoFeedsStressFollowHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper, false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper.a().setStressState(StressState.Stretched);
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    VideoFeedsStressFollowHelper.a(this.a, false);
+    this.a.a().setStressState(StressState.Stretched);
+    Animator.AnimatorListener localAnimatorListener = this.b;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationEnd(paramAnimator);
     }
@@ -32,7 +32,7 @@ public final class VideoFeedsStressFollowHelper$startStretchAnim$3
   
   public void onAnimationRepeat(@Nullable Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.b;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationRepeat(paramAnimator);
     }
@@ -40,7 +40,7 @@ public final class VideoFeedsStressFollowHelper$startStretchAnim$3
   
   public void onAnimationStart(@Nullable Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.b;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationStart(paramAnimator);
     }
@@ -48,7 +48,7 @@ public final class VideoFeedsStressFollowHelper$startStretchAnim$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsStressFollowHelper.startStretchAnim.3
  * JD-Core Version:    0.7.0.1
  */

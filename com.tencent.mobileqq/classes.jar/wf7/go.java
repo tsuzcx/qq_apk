@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.File;
 import java.net.NetworkInterface;
 import java.util.List;
@@ -308,7 +309,7 @@ public class go
   {
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
       if (paramContext != null) {
         paramContext = paramContext.getMacAddress();
       }
@@ -327,7 +328,7 @@ public class go
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.go
  * JD-Core Version:    0.7.0.1
  */

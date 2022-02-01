@@ -2,8 +2,10 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea;
 
 import UserGrowth.stSimpleMetaFeed;
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.weishi_new.WSPublicAccLaunchParams;
 import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
@@ -19,33 +21,38 @@ public class WSVerticalPageShareTopAreaController
   extends AbsWsUIGroup<Object>
   implements View.OnClickListener
 {
-  private final WSVerticalPageFragment a;
+  private final WSVerticalPageFragment g;
   
   public WSVerticalPageShareTopAreaController(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramWSVerticalPageFragment.getContext());
-    this.a = paramWSVerticalPageFragment;
+    this.g = paramWSVerticalPageFragment;
   }
   
-  private void f()
+  private boolean l()
   {
-    if (this.a.getBaseActivity() != null)
+    return TextUtils.equals(this.g.H(), "native");
+  }
+  
+  private void m()
+  {
+    if (this.g.getBaseActivity() != null)
     {
-      WSVerticalBeaconReport.d(this.a.a(), this.a.b(), this.a.a());
-      this.a.getBaseActivity().doOnBackPressed();
+      WSVerticalBeaconReport.d(this.g.k(), this.g.l(), this.g.F());
+      this.g.getBaseActivity().doOnBackPressed();
     }
   }
   
-  private void g()
+  private void n()
   {
-    if (WeishiUtils.c())
+    if (WeishiUtils.o())
     {
       WSLog.a("WSVerticalPageShareTopAreaController", "[launchWSHomePage] fast click, ignored: vertical video top homepage");
       return;
     }
-    Object localObject = this.a.a();
-    WSVerticalBeaconReport.c(this.a.a(), this.a.b(), (stSimpleMetaFeed)localObject);
-    BaseActivity localBaseActivity = this.a.getBaseActivity();
+    Object localObject = this.g.F();
+    WSVerticalBeaconReport.c(this.g.k(), this.g.l(), (stSimpleMetaFeed)localObject);
+    BaseActivity localBaseActivity = this.g.getBaseActivity();
     WSPublicAccLaunchParams localWSPublicAccLaunchParams = new WSPublicAccLaunchParams("from_qq_scheme", 0, false).a(true);
     if (localObject != null) {
       localObject = ((stSimpleMetaFeed)localObject).id;
@@ -58,25 +65,42 @@ public class WSVerticalPageShareTopAreaController
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 1929641988;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    if (this.a == null) {
+    return 1929773071;
+  }
+  
+  protected void j()
+  {
+    if (this.g == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(1929576472);
-    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
-    a(1929576473).setOnClickListener(this);
-    a(1929576474).setOnClickListener(this);
-    a(1929576471).setOnClickListener(this);
+    Object localObject = (RelativeLayout)c(1929707613);
+    WSVerticalUtils.a(this.g.getBaseActivity(), (ViewGroup)localObject);
+    c(1929707614).setOnClickListener(this);
+    localObject = c(1929707615);
+    ((View)localObject).setOnClickListener(this);
+    View localView = c(1929707612);
+    localView.setOnClickListener(this);
+    boolean bool = l();
+    int j = 8;
+    int i;
+    if (bool) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    ((View)localObject).setVisibility(i);
+    if (l()) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    localView.setVisibility(i);
   }
   
   @SuppressLint({"NonConstantResourceId"})
@@ -84,19 +108,19 @@ public class WSVerticalPageShareTopAreaController
   {
     switch (paramView.getId())
     {
-    case 1929576472: 
+    case 1929707613: 
     default: 
       return;
-    case 1929576473: 
-      f();
+    case 1929707614: 
+      m();
       return;
     }
-    g();
+    n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageShareTopAreaController
  * JD-Core Version:    0.7.0.1
  */

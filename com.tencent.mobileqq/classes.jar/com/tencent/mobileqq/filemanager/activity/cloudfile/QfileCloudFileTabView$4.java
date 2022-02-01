@@ -15,16 +15,16 @@ class QfileCloudFileTabView$4
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.this$0.b.clear();
+    Iterator localIterator = this.this$0.i.iterator();
     while (localIterator.hasNext())
     {
       WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      String str = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(localWeiYunFileInfo.b);
-      if (!this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
+      String str = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(localWeiYunFileInfo.e);
+      if (!this.this$0.b.containsKey(str)) {
+        this.this$0.b.put(str, new ArrayList());
       }
-      ((List)this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localWeiYunFileInfo);
+      ((List)this.this$0.b.get(str)).add(localWeiYunFileInfo);
     }
     this.this$0.i();
     this.this$0.setSelect(0);
@@ -33,7 +33,7 @@ class QfileCloudFileTabView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.4
  * JD-Core Version:    0.7.0.1
  */

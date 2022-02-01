@@ -4,88 +4,88 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class MediaDecoder
 {
-  private volatile long jdField_a_of_type_Long;
-  private final MediaCodecAudioRender jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecAudioRender;
-  private MediaCodecRender.MediaContext jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecRender$MediaContext;
-  private final MediaCodecVideoRender jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecVideoRender;
-  private MediaDecoder.DecodeListener jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeListener;
-  private MediaDecoder.DecodeRunnable jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private final boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private volatile boolean c;
-  private volatile boolean d;
-  private volatile boolean e;
+  private Thread a;
+  private MediaDecoder.DecodeRunnable b;
+  private MediaCodecRender.MediaContext c;
+  private MediaDecoder.DecodeListener d;
+  private final MediaCodecVideoRender e;
+  private final MediaCodecAudioRender f;
+  private final boolean g;
+  private boolean h;
+  private volatile long i;
+  private volatile boolean j;
+  private volatile boolean k;
+  private volatile boolean l;
   
-  private boolean d()
+  private boolean g()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.b);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecVideoRender.a() / 1000L;
-  }
-  
-  public void a()
-  {
-    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "stopDecode");
-    this.e = false;
-    MediaDecoder.DecodeRunnable localDecodeRunnable = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
-    if (localDecodeRunnable != null)
-    {
-      localDecodeRunnable.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable = null;
-    }
+    return (this.g) && (this.h);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.i = paramLong;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.e;
+    return this.l;
   }
   
   public void b()
   {
-    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode");
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable != null)
+    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "stopDecode");
+    this.l = false;
+    MediaDecoder.DecodeRunnable localDecodeRunnable = this.b;
+    if (localDecodeRunnable != null)
     {
-      this.d = true;
+      localDecodeRunnable.a = true;
+      this.b = null;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c.a = paramBoolean;
+  }
+  
+  public void c()
+  {
+    SLog.b("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode");
+    if (this.b != null)
+    {
+      this.k = true;
       return;
     }
     SLog.d("Q.qqstory.mediadecoderMediaDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
   
-  public void b(boolean paramBoolean)
+  public boolean d()
   {
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecRender$MediaContext.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable != null) {
-      return this.d;
+    if (this.b != null) {
+      return this.k;
     }
     return false;
   }
   
-  public boolean c()
+  public long e()
   {
-    return this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecRender$MediaContext.jdField_a_of_type_Boolean;
+    return this.e.h() / 1000L;
+  }
+  
+  public boolean f()
+  {
+    return this.c.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.video.videodecoder.MediaDecoder
  * JD-Core Version:    0.7.0.1
  */

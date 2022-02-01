@@ -10,12 +10,12 @@ class CustomHttpService$1$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService$1.a.onResponse(0, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.b.b.onResponse(0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.1.2
  * JD-Core Version:    0.7.0.1
  */

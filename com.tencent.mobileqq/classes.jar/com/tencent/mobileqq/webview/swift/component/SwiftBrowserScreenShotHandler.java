@@ -62,31 +62,31 @@ public class SwiftBrowserScreenShotHandler
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
   implements Handler.Callback, AdapterView.OnItemClickListener, ScreenshotContentObserver.Listener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int;
   public Activity a;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  ScreenshotContentObserver jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = null;
-  ElasticHorScrView jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
-  private IScreenShotShareHelper jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
-  public WebViewProvider a;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  private final String jdField_c_of_type_JavaLangString = "https://post.mp.qq.com/tmpl/default/client/article/html/jump.html?action=openUrl&url=";
-  boolean jdField_c_of_type_Boolean = false;
+  public WebViewProvider c;
+  ElasticHorScrView d;
+  int e;
+  ScreenshotContentObserver f = null;
+  LinearLayout g = null;
+  Bitmap h = null;
+  String i = null;
+  int j = 0;
+  int k = 0;
+  float l = 0.0F;
+  boolean m = false;
+  boolean n = false;
+  boolean o = false;
+  String p;
+  Handler q = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private final String r = "https://post.mp.qq.com/tmpl/default/client/article/html/jump.html?action=openUrl&url=";
+  private IScreenShotShareHelper s;
   
-  private void c()
+  private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper = ((IScreenShotShareHelperFactory)QRoute.api(IScreenShotShareHelperFactory.class)).createScreenShotShareHelper(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.a(this);
-    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+    this.s = ((IScreenShotShareHelperFactory)QRoute.api(IScreenShotShareHelperFactory.class)).createScreenShotShareHelper(this.a);
+    this.s.a(this);
+    Object localObject2 = this.a.getIntent();
+    Object localObject1 = this.c;
     if (localObject1 != null) {
       localObject2 = ((WebViewProvider)localObject1).getIntent();
     }
@@ -100,36 +100,15 @@ public class SwiftBrowserScreenShotHandler
         localObject1 = "";
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.a((String)localObject1);
-  }
-  
-  View a()
-  {
-    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-    int i;
-    if ((!localSwiftBrowserUIStyleHandler.a.jdField_a_of_type_Boolean) && (!localSwiftBrowserUIStyleHandler.a.jdField_b_of_type_Boolean)) {
-      i = 2131378893;
-    } else {
-      i = 2131363807;
-    }
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.findViewById(i);
-    if (localSwiftBrowserUIStyleHandler.d != null) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getContentView();
-    }
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.a();
+    this.s.a((String)localObject1);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-    c();
+    this.a = this.b.b();
+    this.c = this.b.c();
+    f();
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -147,15 +126,15 @@ public class SwiftBrowserScreenShotHandler
           a(paramBundle.getString("url", ""));
           return;
         }
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+        paramBundle = this.s;
         if (paramBundle != null) {
-          paramBundle.h();
+          paramBundle.k();
         }
         paramInt = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().widthPixels;
-        paramBundle = this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
+        paramBundle = this.d;
         if (paramBundle != null)
         {
-          if (paramInt < this.jdField_a_of_type_Int)
+          if (paramInt < this.e)
           {
             paramBundle.setMove(true);
             return;
@@ -165,23 +144,23 @@ public class SwiftBrowserScreenShotHandler
       }
       else
       {
-        b();
-        paramBundle = this.jdField_a_of_type_AndroidOsHandler;
+        c();
+        paramBundle = this.q;
         if (paramBundle != null) {
           paramBundle.removeCallbacksAndMessages(null);
         }
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+        paramBundle = this.s;
         if (paramBundle != null) {
           paramBundle.a();
         }
       }
     }
-    else if (a())
+    else if (e())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserScreenShotHandler", 2, "ScreenshotResume!");
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SwiftBrowserScreenShotHandler.1(this), 1000L);
+      this.q.postDelayed(new SwiftBrowserScreenShotHandler.1(this), 1000L);
     }
   }
   
@@ -194,7 +173,7 @@ public class SwiftBrowserScreenShotHandler
       paramUri.append(paramInt);
       QLog.d("SwiftBrowserScreenShotHandler", 2, paramUri.toString());
     }
-    paramUri = this.jdField_a_of_type_AndroidAppActivity;
+    paramUri = this.a;
     if (((paramUri instanceof QBaseActivity)) && (((QBaseActivity)paramUri).isResume()))
     {
       if (QLog.isDevelopLevel())
@@ -204,9 +183,9 @@ public class SwiftBrowserScreenShotHandler
         paramUri.append(System.currentTimeMillis());
         QLog.d("SwiftBrowserScreenShotHandler", 2, paramUri.toString());
       }
-      paramUri = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+      paramUri = this.s;
       if (paramUri != null) {
-        paramUri = paramUri.c();
+        paramUri = paramUri.m();
       } else {
         paramUri = "";
       }
@@ -233,7 +212,7 @@ public class SwiftBrowserScreenShotHandler
         paramUri.append(System.currentTimeMillis());
         QLog.d("SwiftBrowserScreenShotHandler", 2, paramUri.toString());
       }
-      paramUri = a();
+      paramUri = d();
       if (paramUri == null)
       {
         QLog.e("SwiftBrowserScreenShotHandler", 1, "onDetectScreenshot error, root = null");
@@ -249,31 +228,31 @@ public class SwiftBrowserScreenShotHandler
         ((StringBuilder)localObject).append(System.currentTimeMillis());
         QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject).toString());
       }
-      int i = BaseApplicationImpl.getContext().getResources().getConfiguration().orientation;
+      int i1 = BaseApplicationImpl.getContext().getResources().getConfiguration().orientation;
       if (paramString != null)
       {
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        localObject = this.h;
         if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
         {
-          localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+          localObject = this.g;
           if ((localObject == null) || (((LinearLayout)localObject).getVisibility() == 8)) {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+            this.h = null;
           }
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).getScreenShotBitmap(this.jdField_a_of_type_AndroidAppActivity.getWindow(), paramString);
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        this.h = ((IScreenShotImageUtil)QRoute.api(IScreenShotImageUtil.class)).getScreenShotBitmap(this.a.getWindow(), paramString);
+        if (this.h != null)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+          localObject = this.s;
           if (localObject != null) {
             ((IScreenShotShareHelper)localObject).a(paramInt);
           }
           if (paramInt == 1)
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.m = true;
             localObject = Message.obtain();
             ((Message)localObject).what = 1;
-            ((Message)localObject).arg1 = i;
-            this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+            ((Message)localObject).arg1 = i1;
+            this.q.sendMessage((Message)localObject);
             if (QLog.isDevelopLevel())
             {
               localObject = new StringBuilder();
@@ -284,7 +263,7 @@ public class SwiftBrowserScreenShotHandler
           }
           else if (paramInt == 2)
           {
-            QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695241, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+            QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892975, 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
           }
           ThreadManager.executeOnFileThread(new SwiftBrowserScreenShotHandler.3(this, paramInt));
         }
@@ -300,7 +279,7 @@ public class SwiftBrowserScreenShotHandler
   
   public void a(String paramString)
   {
-    IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+    IScreenShotShareHelper localIScreenShotShareHelper = this.s;
     if (localIScreenShotShareHelper != null) {
       localIScreenShotShareHelper.a(paramString);
     }
@@ -308,7 +287,7 @@ public class SwiftBrowserScreenShotHandler
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+    IScreenShotShareHelper localIScreenShotShareHelper = this.s;
     if (localIScreenShotShareHelper != null) {
       localIScreenShotShareHelper.a(paramString1, paramString2, paramInt);
     }
@@ -335,14 +314,14 @@ public class SwiftBrowserScreenShotHandler
     if (localObject2 != null) {
       ((Bundle)localObject1).putString("Cookie", (String)localObject2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.a().show();
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.s.o().show();
+    this.p = paramString;
     ThreadManager.executeOnSubThread(new SwiftBrowserScreenShotHandler.6(this, paramString, (Bundle)localObject1, paramBoolean));
   }
   
   public void a(JSONArray paramJSONArray)
   {
-    IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+    IScreenShotShareHelper localIScreenShotShareHelper = this.s;
     if (localIScreenShotShareHelper != null) {
       localIScreenShotShareHelper.a(paramJSONArray);
     }
@@ -362,36 +341,36 @@ public class SwiftBrowserScreenShotHandler
     }
     if (paramBoolean)
     {
-      if (this.jdField_c_of_type_Boolean) {
+      if (this.o) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject1 = this.g;
       Object localObject2;
       if ((localObject1 != null) && ((((LinearLayout)localObject1).getTag() instanceof Integer)))
       {
-        int i = ((Integer)this.jdField_a_of_type_AndroidWidgetLinearLayout.getTag()).intValue();
-        if (i != paramInt)
+        int i1 = ((Integer)this.g.getTag()).intValue();
+        if (i1 != paramInt)
         {
           if (QLog.isDevelopLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("showScreenshotPad->orientation change old:");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(i1);
             ((StringBuilder)localObject1).append(", new:");
             ((StringBuilder)localObject1).append(paramInt);
             QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject1).toString());
           }
-          localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363807);
-          localObject2 = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-          if ((localObject2 != null) && (((SwiftBrowserUIStyleHandler)localObject2).d != null)) {
-            ((SwiftBrowserUIStyleHandler)localObject2).d.findViewById(2131363807);
+          localObject1 = (RelativeLayout)this.a.findViewById(2131429740);
+          localObject2 = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+          if ((localObject2 != null) && (((SwiftBrowserUIStyleHandler)localObject2).x != null)) {
+            ((SwiftBrowserUIStyleHandler)localObject2).x.findViewById(2131429740);
           }
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-          ((RelativeLayout)localObject1).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+          this.g.setVisibility(8);
+          ((RelativeLayout)localObject1).removeView(this.g);
+          this.g = null;
         }
       }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
+      if (this.g == null)
       {
         if (QLog.isDevelopLevel())
         {
@@ -400,33 +379,33 @@ public class SwiftBrowserScreenShotHandler
           ((StringBuilder)localObject1).append(System.currentTimeMillis());
           QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559624, null));
-        localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363807);
-        localObject2 = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2);
-        if ((localObject2 != null) && (((SwiftBrowserUIStyleHandler)localObject2).d != null)) {
-          ((SwiftBrowserUIStyleHandler)localObject2).d.findViewById(2131363807);
+        this.g = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131625653, null));
+        localObject1 = (RelativeLayout)this.a.findViewById(2131429740);
+        localObject2 = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+        if ((localObject2 != null) && (((SwiftBrowserUIStyleHandler)localObject2).x != null)) {
+          ((SwiftBrowserUIStyleHandler)localObject2).x.findViewById(2131429740);
         }
         localObject2 = new RelativeLayout.LayoutParams(-2, -2);
         ((RelativeLayout.LayoutParams)localObject2).addRule(11);
         ((RelativeLayout.LayoutParams)localObject2).addRule(12);
         ((RelativeLayout.LayoutParams)localObject2).setMargins(0, 0, AIOUtils.b(10.0F, BaseApplicationImpl.getContext().getResources()), AIOUtils.b(65.0F, BaseApplicationImpl.getContext().getResources()));
-        ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(Integer.valueOf(paramInt));
+        ((RelativeLayout)localObject1).addView(this.g, (ViewGroup.LayoutParams)localObject2);
+        this.g.setTag(Integer.valueOf(paramInt));
         if (paramInt == 2)
         {
-          localObject1 = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376984).getLayoutParams();
-          ((LinearLayout.LayoutParams)localObject1).width = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297641);
-          ((LinearLayout.LayoutParams)localObject1).height = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297642);
+          localObject1 = (LinearLayout.LayoutParams)this.g.findViewById(2131445348).getLayoutParams();
+          ((LinearLayout.LayoutParams)localObject1).width = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298306);
+          ((LinearLayout.LayoutParams)localObject1).height = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298307);
         }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376984).setOnClickListener(new SwiftBrowserScreenShotHandler.4(this));
+        this.g.findViewById(2131445348).setOnClickListener(new SwiftBrowserScreenShotHandler.4(this));
       }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getAnimation() != null)
+      if (this.g.getAnimation() != null)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.getAnimation().cancel();
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+        this.g.getAnimation().cancel();
+        this.g.clearAnimation();
       }
-      ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376984)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      ((ImageView)this.g.findViewById(2131445348)).setImageBitmap(this.h);
+      this.g.setVisibility(0);
       if (QLog.isDevelopLevel())
       {
         localObject1 = new StringBuilder();
@@ -441,23 +420,23 @@ public class SwiftBrowserScreenShotHandler
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("showScreenshotPad->begin hide mScreenshotContainer:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+        ((StringBuilder)localObject1).append(this.g);
         QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject1).toString());
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+        if (this.g != null)
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("showScreenshotPad->begin hide mScreenshotContainerVisibility:");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility());
+          ((StringBuilder)localObject1).append(this.g.getVisibility());
           QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject1).toString());
         }
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      localObject1 = this.g;
       if ((localObject1 != null) && (((LinearLayout)localObject1).getVisibility() == 0))
       {
         localObject1 = new AlphaAnimation(1.0F, 0.0F);
         ((AlphaAnimation)localObject1).setDuration(300L);
         ((AlphaAnimation)localObject1).setAnimationListener(new SwiftBrowserScreenShotHandler.5(this));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation((Animation)localObject1);
+        this.g.startAnimation((Animation)localObject1);
         if (QLog.isDevelopLevel())
         {
           localObject1 = new StringBuilder();
@@ -469,44 +448,24 @@ public class SwiftBrowserScreenShotHandler
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver != null;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver;
-    if (localObject != null)
-    {
-      ((ScreenshotContentObserver)localObject).a();
-      if (this.jdField_a_of_type_AndroidAppActivity != null)
-      {
-        localObject = a();
-        if (localObject != null) {
-          ((View)localObject).setDrawingCacheEnabled(false);
-        }
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserScreenShotHandler", 2, "unregisterScreenshotObserver!");
-      }
-    }
+    return this.s.b();
   }
   
   public void b(String paramString)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver == null) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    if ((this.f == null) && (this.a != null))
     {
       localObject = new DisplayMetrics();
-      this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-      this.jdField_b_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
-      this.jdField_c_of_type_Int = ((DisplayMetrics)localObject).heightPixels;
-      this.jdField_a_of_type_Float = ((DisplayMetrics)localObject).density;
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = new ScreenshotContentObserver(this.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver.a(this);
-      localObject = a();
+      this.a.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+      this.j = ((DisplayMetrics)localObject).widthPixels;
+      this.k = ((DisplayMetrics)localObject).heightPixels;
+      this.l = ((DisplayMetrics)localObject).density;
+      this.f = new ScreenshotContentObserver(this.a, this.j, this.k);
+      this.f.a(this);
+      localObject = d();
       if (localObject != null)
       {
         ((View)localObject).setDrawingCacheEnabled(true);
@@ -516,26 +475,46 @@ public class SwiftBrowserScreenShotHandler
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("registerScreenshotObserver->mScreenWidth:");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(this.j);
         ((StringBuilder)localObject).append(", mScreenHeight:");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(this.k);
         ((StringBuilder)localObject).append(", mScreenDensity:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)localObject).append(this.l);
         QLog.d("SwiftBrowserScreenShotHandler", 2, ((StringBuilder)localObject).toString());
       }
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+      localObject = this.s;
       if (localObject != null)
       {
         ((IScreenShotShareHelper)localObject).c(paramString.replace("|", "｜"));
         return;
       }
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
-    if ((paramString != null) && (TextUtils.isEmpty(paramString.b())) && (this.jdField_a_of_type_AndroidAppActivity != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.c(BaseApplicationImpl.getContext().getResources().getString(2131695239));
+    paramString = this.s;
+    if ((paramString != null) && (TextUtils.isEmpty(paramString.l())) && (this.a != null)) {
+      this.s.c(BaseApplicationImpl.getContext().getResources().getString(2131892973));
+    }
+  }
+  
+  public void c()
+  {
+    Object localObject = this.f;
+    if (localObject != null)
+    {
+      ((ScreenshotContentObserver)localObject).a();
+      if (this.a != null)
+      {
+        localObject = d();
+        if (localObject != null) {
+          ((View)localObject).setDrawingCacheEnabled(false);
+        }
+      }
+      this.f = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserScreenShotHandler", 2, "unregisterScreenshotObserver!");
+      }
     }
   }
   
@@ -543,18 +522,34 @@ public class SwiftBrowserScreenShotHandler
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+      IScreenShotShareHelper localIScreenShotShareHelper = this.s;
       if (localIScreenShotShareHelper != null) {
         localIScreenShotShareHelper.c(paramString.replace("|", "｜"));
       }
     }
   }
   
+  View d()
+  {
+    SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = (SwiftBrowserUIStyleHandler)this.b.d().a(2);
+    int i1;
+    if ((!localSwiftBrowserUIStyleHandler.f.a) && (!localSwiftBrowserUIStyleHandler.f.b)) {
+      i1 = 2131447595;
+    } else {
+      i1 = 2131429740;
+    }
+    Object localObject = this.a.findViewById(i1);
+    if (localSwiftBrowserUIStyleHandler.x != null) {
+      localObject = this.c.getContentView();
+    }
+    return localObject;
+  }
+  
   public void d(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+      IScreenShotShareHelper localIScreenShotShareHelper = this.s;
       if (localIScreenShotShareHelper != null) {
         localIScreenShotShareHelper.b(paramString);
       }
@@ -565,36 +560,41 @@ public class SwiftBrowserScreenShotHandler
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      IScreenShotShareHelper localIScreenShotShareHelper = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper;
+      IScreenShotShareHelper localIScreenShotShareHelper = this.s;
       if (localIScreenShotShareHelper != null) {
-        localIScreenShotShareHelper.e(paramString);
+        localIScreenShotShareHelper.f(paramString);
       }
     }
+  }
+  
+  public boolean e()
+  {
+    return this.f != null;
   }
   
   public void f(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131695244);
+      QRUtils.a(1, 2131892978);
       return;
     }
-    paramString = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
-    paramString.putExtra("EditPicType", this.jdField_a_of_type_ComTencentMobileqqKandianBizShareApiIScreenShotShareHelper.b());
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+    paramString = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.a, paramString, true, true, true, true, true, 4);
+    paramString.putExtra("EditPicType", this.s.n());
+    this.a.startActivity(paramString);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3) {
+        if (i1 != 3) {
           return false;
         }
-        f(this.jdField_a_of_type_JavaLangString);
+        f(this.i);
         return true;
       }
       if (QLog.isDevelopLevel())
@@ -614,9 +614,9 @@ public class SwiftBrowserScreenShotHandler
       localStringBuilder.append(System.currentTimeMillis());
       QLog.d("SwiftBrowserScreenShotHandler", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.q.removeMessages(2);
     a(true, paramMessage.arg1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
+    this.q.sendEmptyMessageDelayed(2, 3000L);
     return true;
   }
   
@@ -634,8 +634,8 @@ public class SwiftBrowserScreenShotHandler
     }
     else
     {
-      int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a.action;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+      int i1 = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).c.action;
+      localObject = this.c;
       if (localObject != null)
       {
         String str3 = ((WebViewProvider)localObject).getWebView().getUrl();
@@ -654,15 +654,15 @@ public class SwiftBrowserScreenShotHandler
         if (str1 == null) {
           str2 = "";
         }
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3)
+          if (i1 != 3)
           {
-            if (i != 9)
+            if (i1 != 9)
             {
-              if (i != 10)
+              if (i1 != 10)
               {
-                if (i == 12)
+                if (i1 == 12)
                 {
                   ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800787A", "0X800787A", 0, 0, str2, str3, "", "");
                   ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1F", "0X8006A1F", 0, 0, "1005", str2, "", "");
@@ -717,7 +717,7 @@ public class SwiftBrowserScreenShotHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler
  * JD-Core Version:    0.7.0.1
  */

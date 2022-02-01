@@ -1,20 +1,21 @@
 package com.dataline.activities;
 
-import com.tencent.mobileqq.startup.step.CheckPermission.SDCardPermissionCallback;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.app.QQPermissionCallback;
 
 class LiteActivity$40
-  implements CheckPermission.SDCardPermissionCallback
+  implements QQPermissionCallback
 {
-  LiteActivity$40(LiteActivity paramLiteActivity) {}
+  LiteActivity$40(LiteActivity paramLiteActivity, Runnable paramRunnable) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LiteActivity.b(this.a);
+    DialogUtil.a(this.b.getActivity());
   }
   
-  public void b()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LiteActivity.b(this.a);
+    this.a.run();
   }
 }
 

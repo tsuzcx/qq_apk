@@ -16,12 +16,12 @@ class VideoShareHelper$ReportDislikeAction$3
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
     }
-    VideoShareHelper.a(this.a.a).getWindow().clearFlags(8);
+    VideoShareHelper.m(this.a.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.ReportDislikeAction.3
  * JD-Core Version:    0.7.0.1
  */

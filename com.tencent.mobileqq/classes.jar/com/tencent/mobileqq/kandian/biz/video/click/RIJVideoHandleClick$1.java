@@ -13,13 +13,13 @@ class RIJVideoHandleClick$1
   @TargetApi(11)
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ClipboardManager)RIJVideoHandleClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoClickRIJVideoHandleClick).getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("article", this.jdField_a_of_type_JavaLangString));
+    ((ClipboardManager)RIJVideoHandleClick.a(this.b).getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("article", this.a));
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.1
  * JD-Core Version:    0.7.0.1
  */

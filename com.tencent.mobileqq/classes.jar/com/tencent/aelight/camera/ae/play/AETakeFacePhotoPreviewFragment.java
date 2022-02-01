@@ -40,8 +40,8 @@ public class AETakeFacePhotoPreviewFragment
   public static final String INTENT_KEY_PHOTO_PATH = "photo_path";
   private static String detectFacePath = "";
   private long faceDetectStartTime;
-  private AppInterface mAppInterface = QQStoryContext.a();
-  private CameraPeakServiceHandler mHandler = (CameraPeakServiceHandler)this.mAppInterface.getBusinessHandler(PeakAppInterface.d);
+  private AppInterface mAppInterface = QQStoryContext.k();
+  private CameraPeakServiceHandler mHandler = (CameraPeakServiceHandler)this.mAppInterface.getBusinessHandler(PeakAppInterface.e);
   private ImageView mImgFacePreview;
   private Dialog mLoadingDialog;
   private CameraPeakServiceObserver mObserver;
@@ -72,13 +72,13 @@ public class AETakeFacePhotoPreviewFragment
       if (paramInt == 0) {
         choosePhotoAndBack();
       } else if (paramInt == -1) {
-        QQToast.a(getBaseActivity(), 2064515241, 0).a();
+        QQToast.makeText(getBaseActivity(), 2064187588, 0).show();
       } else if (paramInt == -2) {
-        QQToast.a(getBaseActivity(), 2131697760, 0).a();
+        QQToast.makeText(getBaseActivity(), 2131895533, 0).show();
       }
     }
     else {
-      QQToast.a(getBaseActivity(), 2131697760, 0).a();
+      QQToast.makeText(getBaseActivity(), 2131895533, 0).show();
     }
     hideLoading();
   }
@@ -125,9 +125,9 @@ public class AETakeFacePhotoPreviewFragment
   
   private void initView(View paramView)
   {
-    this.mImgFacePreview = ((ImageView)paramView.findViewById(2064121906));
-    this.mTvAgain = ((TextView)paramView.findViewById(2064121925));
-    this.mTvConfirm = ((TextView)paramView.findViewById(2064121926));
+    this.mImgFacePreview = ((ImageView)paramView.findViewById(2063990840));
+    this.mTvAgain = ((TextView)paramView.findViewById(2063990859));
+    this.mTvConfirm = ((TextView)paramView.findViewById(2063990860));
   }
   
   public static void jumpToMeForResult(Activity paramActivity, Intent paramIntent, int paramInt)
@@ -145,14 +145,14 @@ public class AETakeFacePhotoPreviewFragment
       AEVideoShelfEditFragment.keepScreenOn(getBaseActivity(), true);
       showLoading();
       Intent localIntent = getBaseActivity().getIntent();
-      if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (AECameraEntryManager.i(localIntent))) && (!FaceChangeUtils.hasFaceInPic(paramBitmap)))
+      if (((!localIntent.getBooleanExtra("key_disable_face_detect", false)) || (AECameraEntryManager.m(localIntent))) && (!FaceChangeUtils.hasFaceInPic(paramBitmap)))
       {
-        QQToast.a(getBaseActivity(), 2064515243, 0).a();
+        QQToast.makeText(getBaseActivity(), 2064187590, 0).show();
         hideLoading();
         onBackPressed();
         return;
       }
-      if ((!localIntent.getBooleanExtra("key_need_check_sensitive", false)) && (!AECameraEntryManager.i(localIntent)))
+      if ((!localIntent.getBooleanExtra("key_need_check_sensitive", false)) && (!AECameraEntryManager.m(localIntent)))
       {
         handleSensitiveFaceDetectResult(true, 0);
         return;
@@ -182,9 +182,9 @@ public class AETakeFacePhotoPreviewFragment
     {
       if (this.mLoadingDialog == null)
       {
-        this.mLoadingDialog = new Dialog(localBaseActivity, 2131756189);
-        this.mLoadingDialog.setContentView(2131559561);
-        ((TextView)this.mLoadingDialog.findViewById(2131372646)).setText(2064515240);
+        this.mLoadingDialog = new Dialog(localBaseActivity, 2131953338);
+        this.mLoadingDialog.setContentView(2131625585);
+        ((TextView)this.mLoadingDialog.findViewById(2131440191)).setText(2064187587);
         this.mLoadingDialog.setCancelable(true);
         this.mLoadingDialog.setCanceledOnTouchOutside(false);
         this.mLoadingDialog.setOnDismissListener(new AETakeFacePhotoPreviewFragment.3(this));
@@ -220,24 +220,24 @@ public class AETakeFacePhotoPreviewFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2064121926)
+    if (i == 2063990860)
     {
       if ((!TextUtils.isEmpty(this.mPhotoPath)) || (this.mPhotoBitmap != null))
       {
-        AEBaseDataReporter.a().ab();
+        AEBaseDataReporter.a().ac();
         onPressConfirmBtn(this.mPhotoBitmap, this.mPhotoPath);
       }
     }
-    else if (i == 2064121925)
+    else if (i == 2063990859)
     {
-      AEBaseDataReporter.a().ac();
+      AEBaseDataReporter.a().ad();
       onBackPressed();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318496, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056363, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -267,7 +267,7 @@ public class AETakeFacePhotoPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AETakeFacePhotoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

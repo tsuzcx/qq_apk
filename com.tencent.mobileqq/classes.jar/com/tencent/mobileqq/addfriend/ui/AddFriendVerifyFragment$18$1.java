@@ -14,14 +14,14 @@ class AddFriendVerifyFragment$18$1
   {
     if (paramInt == 1)
     {
-      this.a.this$0.a.cancel();
+      this.a.this$0.g.cancel();
       this.a.this$0.getActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.18.1
  * JD-Core Version:    0.7.0.1
  */

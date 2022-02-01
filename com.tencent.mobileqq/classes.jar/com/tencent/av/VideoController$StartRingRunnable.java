@@ -9,39 +9,39 @@ import com.tencent.av.core.VcSystemInfo;
 class VideoController$StartRingRunnable
   implements Runnable
 {
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  long b = 0L;
   
   VideoController$StartRingRunnable(VideoController paramVideoController, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void run()
   {
-    if (this.this$0.a().q < 0)
+    if (this.this$0.k().W < 0)
     {
       VcSystemInfo.getCpuInfo();
       long l = VcSystemInfo.getMaxCpuFreq();
       int i = VcSystemInfo.getCpuArchitecture();
       int j = Build.VERSION.SDK_INT;
       if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
-        this.this$0.a().q = 0;
+        this.this$0.k().W = 0;
       }
     }
-    if ((this.this$0.a() != null) && (this.this$0.a().c == 1L) && (!TextUtils.isEmpty(this.this$0.a().n))) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString, this.this$0.a().n });
+    if ((this.this$0.k() != null) && (this.this$0.k().aq == 1L) && (!TextUtils.isEmpty(this.this$0.k().ar))) {
+      this.this$0.e.a(new Object[] { Integer.valueOf(30), this.a, this.this$0.k().ar });
     } else {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString });
+      this.this$0.e.a(new Object[] { Integer.valueOf(30), this.a });
     }
-    this.this$0.b(this.jdField_a_of_type_Long);
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController$StartRingRunnable = null;
+    this.this$0.b(this.b);
+    this.this$0.am = null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("");
     return localStringBuilder.toString();
   }

@@ -22,19 +22,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class QZoneFeedCountPackeger
 {
   public static String a = "hostuin";
-  private static AtomicInteger a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(Math.abs(new Random(65535L).nextInt()));
-  }
+  private static AtomicInteger b = new AtomicInteger(Math.abs(new Random(65535L).nextInt()));
   
   public static JceStruct a(int paramInt, long paramLong)
   {
     String str;
     try
     {
-      str = QZConfigProviderUtil.a();
+      str = QZConfigProviderUtil.c();
       try
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
@@ -145,272 +140,275 @@ public class QZoneFeedCountPackeger
   public static byte[] a(JceStruct paramJceStruct, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
     // Byte code:
-    //   0: new 49	java/lang/StringBuilder
+    //   0: new 51	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   7: astore 9
-    //   9: aload 9
-    //   11: ldc 218
-    //   13: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   7: astore 11
+    //   9: aload 11
+    //   11: ldc 219
+    //   13: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
-    //   17: aload 9
+    //   17: aload 11
     //   19: lload_2
-    //   20: invokevirtual 221	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   23: pop
-    //   24: ldc 58
-    //   26: iconst_1
-    //   27: aload 9
-    //   29: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 67	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   35: new 108	com/qq/jce/wup/UniAttribute
-    //   38: dup
-    //   39: invokespecial 109	com/qq/jce/wup/UniAttribute:<init>	()V
-    //   42: astore 9
-    //   44: aload 9
-    //   46: ldc 223
-    //   48: invokevirtual 121	com/qq/jce/wup/UniAttribute:setEncodeName	(Ljava/lang/String;)V
-    //   51: aload 9
-    //   53: getstatic 225	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: lload_2
-    //   57: invokestatic 231	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   60: invokevirtual 235	com/qq/jce/wup/UniAttribute:put	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   63: aload_0
-    //   64: ifnull +21 -> 85
-    //   67: aload_1
-    //   68: ifnull +17 -> 85
-    //   71: aload_1
-    //   72: invokevirtual 240	java/lang/String:length	()I
-    //   75: ifle +10 -> 85
-    //   78: aload 9
-    //   80: aload_1
-    //   81: aload_0
-    //   82: invokevirtual 235	com/qq/jce/wup/UniAttribute:put	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   85: aload 9
-    //   87: invokevirtual 244	com/qq/jce/wup/UniAttribute:encode	()[B
-    //   90: astore 11
-    //   92: new 49	java/lang/StringBuilder
-    //   95: dup
-    //   96: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   99: astore_0
-    //   100: aload_0
-    //   101: ldc 246
-    //   103: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: aload_0
-    //   108: iload 4
-    //   110: invokevirtual 80	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   113: pop
-    //   114: aload_0
-    //   115: ldc 248
-    //   117: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: pop
-    //   121: aload_0
-    //   122: iload 5
-    //   124: invokevirtual 80	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   127: pop
-    //   128: aload_0
-    //   129: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: astore 10
-    //   134: new 49	java/lang/StringBuilder
-    //   137: dup
-    //   138: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   141: astore 12
-    //   143: aload 12
-    //   145: ldc 250
-    //   147: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: pop
-    //   151: aload 12
-    //   153: invokestatic 256	cooperation/qzone/PlatformInfor:g	()Lcooperation/qzone/PlatformInfor;
-    //   156: invokevirtual 259	cooperation/qzone/PlatformInfor:getDeviceInfor	()Ljava/lang/String;
-    //   159: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: pop
-    //   163: ldc_w 261
-    //   166: invokestatic 266	com/tencent/mobileqq/servlet/QZoneNotifyServlet:a	(Ljava/lang/String;)Lcooperation/qzone/LbsDataV2$GpsInfo;
-    //   169: astore_0
-    //   170: ldc 84
-    //   172: astore 9
-    //   174: aload_0
-    //   175: ifnonnull +15 -> 190
-    //   178: ldc_w 261
-    //   181: invokestatic 268	com/tencent/mobileqq/servlet/QZoneNotifyServlet:a	(Ljava/lang/String;)V
-    //   184: ldc 84
-    //   186: astore_0
-    //   187: goto +70 -> 257
-    //   190: aload_0
-    //   191: getfield 273	cooperation/qzone/LbsDataV2$GpsInfo:lat	I
-    //   194: istore 4
-    //   196: iload 4
-    //   198: i2d
-    //   199: dstore 7
-    //   201: dload 7
-    //   203: invokestatic 279	java/lang/Double:isNaN	(D)Z
-    //   206: pop
-    //   207: dload 7
-    //   209: dconst_1
-    //   210: dmul
-    //   211: ldc2_w 280
-    //   214: ddiv
-    //   215: dstore 7
-    //   217: dload 7
-    //   219: invokestatic 284	java/lang/String:valueOf	(D)Ljava/lang/String;
-    //   222: astore 9
+    //   20: invokestatic 225	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   23: invokestatic 231	mqq/util/LogUtil:getSafePrintUin	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: ldc 60
+    //   32: iconst_1
+    //   33: aload 11
+    //   35: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: new 109	com/qq/jce/wup/UniAttribute
+    //   44: dup
+    //   45: invokespecial 110	com/qq/jce/wup/UniAttribute:<init>	()V
+    //   48: astore 11
+    //   50: aload 11
+    //   52: ldc 233
+    //   54: invokevirtual 122	com/qq/jce/wup/UniAttribute:setEncodeName	(Ljava/lang/String;)V
+    //   57: aload 11
+    //   59: getstatic 235	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:a	Ljava/lang/String;
+    //   62: lload_2
+    //   63: invokestatic 240	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   66: invokevirtual 244	com/qq/jce/wup/UniAttribute:put	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   69: aload_0
+    //   70: ifnull +21 -> 91
+    //   73: aload_1
+    //   74: ifnull +17 -> 91
+    //   77: aload_1
+    //   78: invokevirtual 247	java/lang/String:length	()I
+    //   81: ifle +10 -> 91
+    //   84: aload 11
+    //   86: aload_1
+    //   87: aload_0
+    //   88: invokevirtual 244	com/qq/jce/wup/UniAttribute:put	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   91: aload 11
+    //   93: invokevirtual 251	com/qq/jce/wup/UniAttribute:encode	()[B
+    //   96: astore 13
+    //   98: new 51	java/lang/StringBuilder
+    //   101: dup
+    //   102: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   105: astore_0
+    //   106: aload_0
+    //   107: ldc 253
+    //   109: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload_0
+    //   114: iload 4
+    //   116: invokevirtual 82	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload_0
+    //   121: ldc 255
+    //   123: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload_0
+    //   128: iload 5
+    //   130: invokevirtual 82	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   133: pop
+    //   134: aload_0
+    //   135: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: astore 12
+    //   140: new 51	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   147: astore 14
+    //   149: aload 14
+    //   151: ldc_w 257
+    //   154: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload 14
+    //   160: invokestatic 263	cooperation/qzone/PlatformInfor:g	()Lcooperation/qzone/PlatformInfor;
+    //   163: invokevirtual 266	cooperation/qzone/PlatformInfor:getDeviceInfor	()Ljava/lang/String;
+    //   166: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: pop
+    //   170: ldc_w 268
+    //   173: invokestatic 273	com/tencent/mobileqq/servlet/QZoneNotifyServlet:a	(Ljava/lang/String;)Lcooperation/qzone/LbsDataV2$GpsInfo;
+    //   176: astore_0
+    //   177: ldc 86
+    //   179: astore 11
+    //   181: aload_0
+    //   182: ifnonnull +15 -> 197
+    //   185: ldc_w 268
+    //   188: invokestatic 275	com/tencent/mobileqq/servlet/QZoneNotifyServlet:b	(Ljava/lang/String;)V
+    //   191: ldc 86
+    //   193: astore_0
+    //   194: goto +70 -> 264
+    //   197: aload_0
+    //   198: getfield 280	cooperation/qzone/LbsDataV2$GpsInfo:lat	I
+    //   201: istore 4
+    //   203: iload 4
+    //   205: i2d
+    //   206: dstore 7
+    //   208: dload 7
+    //   210: invokestatic 286	java/lang/Double:isNaN	(D)Z
+    //   213: pop
+    //   214: dload 7
+    //   216: dconst_1
+    //   217: dmul
+    //   218: ldc2_w 287
+    //   221: ddiv
+    //   222: dstore 7
     //   224: aload_0
-    //   225: getfield 287	cooperation/qzone/LbsDataV2$GpsInfo:lon	I
+    //   225: getfield 291	cooperation/qzone/LbsDataV2$GpsInfo:lon	I
     //   228: istore 4
     //   230: iload 4
     //   232: i2d
-    //   233: dstore 7
-    //   235: dload 7
-    //   237: invokestatic 279	java/lang/Double:isNaN	(D)Z
+    //   233: dstore 9
+    //   235: dload 9
+    //   237: invokestatic 286	java/lang/Double:isNaN	(D)Z
     //   240: pop
-    //   241: dload 7
+    //   241: dload 9
     //   243: dconst_1
     //   244: dmul
-    //   245: ldc2_w 280
+    //   245: ldc2_w 287
     //   248: ddiv
-    //   249: dstore 7
-    //   251: dload 7
-    //   253: invokestatic 284	java/lang/String:valueOf	(D)Ljava/lang/String;
-    //   256: astore_0
-    //   257: aload 12
-    //   259: bipush 38
-    //   261: invokevirtual 290	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   264: pop
-    //   265: aload 12
-    //   267: ldc_w 292
-    //   270: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: pop
-    //   274: aload 12
-    //   276: aload_0
-    //   277: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: dstore 9
+    //   251: dload 9
+    //   253: invokestatic 294	java/lang/String:valueOf	(D)Ljava/lang/String;
+    //   256: astore 11
+    //   258: dload 7
+    //   260: invokestatic 294	java/lang/String:valueOf	(D)Ljava/lang/String;
+    //   263: astore_0
+    //   264: aload 14
+    //   266: bipush 38
+    //   268: invokevirtual 297	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: aload 14
+    //   274: ldc_w 299
+    //   277: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   280: pop
-    //   281: aload 12
-    //   283: bipush 38
-    //   285: invokevirtual 290	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   281: aload 14
+    //   283: aload 11
+    //   285: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   288: pop
-    //   289: aload 12
-    //   291: ldc_w 294
-    //   294: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: pop
-    //   298: aload 12
-    //   300: aload 9
-    //   302: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: aload 14
+    //   291: bipush 38
+    //   293: invokevirtual 297	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   296: pop
+    //   297: aload 14
+    //   299: ldc_w 301
+    //   302: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
-    //   306: aload 10
-    //   308: astore_0
-    //   309: aload 12
-    //   311: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   314: invokestatic 193	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   317: ifne +33 -> 350
-    //   320: new 49	java/lang/StringBuilder
-    //   323: dup
-    //   324: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   327: astore_0
-    //   328: aload_0
-    //   329: aload 10
-    //   331: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: pop
+    //   306: aload 14
+    //   308: aload_0
+    //   309: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 12
+    //   315: astore_0
+    //   316: aload 14
+    //   318: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   321: invokestatic 194	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   324: ifne +33 -> 357
+    //   327: new 51	java/lang/StringBuilder
+    //   330: dup
+    //   331: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   334: astore_0
     //   335: aload_0
     //   336: aload 12
-    //   338: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   341: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: pop
-    //   345: aload_0
-    //   346: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   349: astore_0
-    //   350: new 95	cooperation/qzone/WNSStream
-    //   353: dup
-    //   354: ldc 87
-    //   356: invokestatic 299	cooperation/qzone/QZoneHelper:getQUA	()Ljava/lang/String;
-    //   359: lload_2
-    //   360: iconst_0
-    //   361: newarray byte
-    //   363: aload_0
-    //   364: invokespecial 302	cooperation/qzone/WNSStream:<init>	(ILjava/lang/String;J[BLjava/lang/String;)V
-    //   367: astore 9
-    //   369: aload 11
-    //   371: ifnull +82 -> 453
-    //   374: iload 6
-    //   376: lload_2
-    //   377: invokestatic 304	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:a	(IJ)Lcom/qq/taf/jce/JceStruct;
-    //   380: astore_0
-    //   381: goto +17 -> 398
-    //   384: astore_0
-    //   385: ldc 58
-    //   387: iconst_1
-    //   388: aload_0
-    //   389: iconst_0
-    //   390: anewarray 4	java/lang/Object
-    //   393: invokestatic 71	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   396: aconst_null
-    //   397: astore_0
-    //   398: getstatic 36	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   401: invokevirtual 307	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
-    //   404: istore 4
-    //   406: new 49	java/lang/StringBuilder
-    //   409: dup
-    //   410: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   413: astore 10
-    //   415: aload 10
-    //   417: ldc_w 309
-    //   420: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: pop
-    //   424: aload 10
-    //   426: aload_1
-    //   427: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: pop
+    //   342: aload_0
+    //   343: aload 14
+    //   345: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: pop
+    //   352: aload_0
+    //   353: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: astore_0
+    //   357: new 97	cooperation/qzone/WNSStream
+    //   360: dup
+    //   361: ldc 89
+    //   363: invokestatic 306	cooperation/qzone/QZoneHelper:getQUA	()Ljava/lang/String;
+    //   366: lload_2
+    //   367: iconst_0
+    //   368: newarray byte
+    //   370: aload_0
+    //   371: invokespecial 309	cooperation/qzone/WNSStream:<init>	(ILjava/lang/String;J[BLjava/lang/String;)V
+    //   374: astore 11
+    //   376: aload 13
+    //   378: ifnull +82 -> 460
+    //   381: iload 6
+    //   383: lload_2
+    //   384: invokestatic 311	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:a	(IJ)Lcom/qq/taf/jce/JceStruct;
+    //   387: astore_0
+    //   388: goto +17 -> 405
+    //   391: astore_0
+    //   392: ldc 60
+    //   394: iconst_1
+    //   395: aload_0
+    //   396: iconst_0
+    //   397: anewarray 4	java/lang/Object
+    //   400: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   403: aconst_null
+    //   404: astore_0
+    //   405: getstatic 37	com/tencent/mobileqq/service/qzone/QZoneFeedCountPackeger:b	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   408: invokevirtual 314	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
+    //   411: istore 4
+    //   413: new 51	java/lang/StringBuilder
+    //   416: dup
+    //   417: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   420: astore 12
+    //   422: aload 12
+    //   424: ldc_w 316
+    //   427: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   430: pop
-    //   431: aload 9
-    //   433: iload 4
-    //   435: aload 10
-    //   437: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   440: aload 11
-    //   442: iconst_0
-    //   443: aload_0
-    //   444: invokevirtual 313	cooperation/qzone/WNSStream:packForUndeal	(ILjava/lang/String;[BZLcom/qq/taf/jce/JceStruct;)[B
-    //   447: invokestatic 315	com/tencent/mobileqq/utils/WupUtil:a	([B)[B
-    //   450: astore_0
-    //   451: aload_0
-    //   452: areturn
-    //   453: aconst_null
-    //   454: areturn
-    //   455: aconst_null
-    //   456: areturn
+    //   431: aload 12
+    //   433: aload_1
+    //   434: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: aload 11
+    //   440: iload 4
+    //   442: aload 12
+    //   444: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   447: aload 13
+    //   449: iconst_0
+    //   450: aload_0
+    //   451: invokevirtual 320	cooperation/qzone/WNSStream:packForUndeal	(ILjava/lang/String;[BZLcom/qq/taf/jce/JceStruct;)[B
+    //   454: invokestatic 322	com/tencent/mobileqq/utils/WupUtil:a	([B)[B
     //   457: astore_0
-    //   458: goto -3 -> 455
-    //   461: astore_0
-    //   462: goto -299 -> 163
+    //   458: aload_0
+    //   459: areturn
+    //   460: aconst_null
+    //   461: areturn
+    //   462: aconst_null
+    //   463: areturn
+    //   464: astore_0
+    //   465: goto -3 -> 462
+    //   468: astore_0
+    //   469: goto -299 -> 170
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	465	0	paramJceStruct	JceStruct
-    //   0	465	1	paramString	String
-    //   0	465	2	paramLong	long
-    //   0	465	4	paramInt1	int
-    //   0	465	5	paramInt2	int
-    //   0	465	6	paramInt3	int
-    //   199	53	7	d	double
-    //   7	425	9	localObject1	Object
-    //   132	304	10	localObject2	Object
-    //   90	351	11	arrayOfByte	byte[]
-    //   141	196	12	localStringBuilder	StringBuilder
+    //   0	472	0	paramJceStruct	JceStruct
+    //   0	472	1	paramString	String
+    //   0	472	2	paramLong	long
+    //   0	472	4	paramInt1	int
+    //   0	472	5	paramInt2	int
+    //   0	472	6	paramInt3	int
+    //   206	53	7	d1	double
+    //   233	19	9	d2	double
+    //   7	432	11	localObject1	Object
+    //   138	305	12	localObject2	Object
+    //   96	352	13	arrayOfByte	byte[]
+    //   147	197	14	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   374	381	384	java/lang/Error
-    //   0	63	457	java/lang/Throwable
-    //   71	85	457	java/lang/Throwable
-    //   85	143	457	java/lang/Throwable
-    //   143	163	457	java/lang/Throwable
-    //   163	170	457	java/lang/Throwable
-    //   178	184	457	java/lang/Throwable
-    //   190	196	457	java/lang/Throwable
-    //   217	230	457	java/lang/Throwable
-    //   251	257	457	java/lang/Throwable
-    //   257	306	457	java/lang/Throwable
-    //   309	350	457	java/lang/Throwable
-    //   350	369	457	java/lang/Throwable
-    //   374	381	457	java/lang/Throwable
-    //   385	396	457	java/lang/Throwable
-    //   398	451	457	java/lang/Throwable
-    //   143	163	461	java/lang/Exception
+    //   381	388	391	java/lang/Error
+    //   0	69	464	java/lang/Throwable
+    //   77	91	464	java/lang/Throwable
+    //   91	149	464	java/lang/Throwable
+    //   149	170	464	java/lang/Throwable
+    //   170	177	464	java/lang/Throwable
+    //   185	191	464	java/lang/Throwable
+    //   197	203	464	java/lang/Throwable
+    //   224	230	464	java/lang/Throwable
+    //   251	264	464	java/lang/Throwable
+    //   264	313	464	java/lang/Throwable
+    //   316	357	464	java/lang/Throwable
+    //   357	376	464	java/lang/Throwable
+    //   381	388	464	java/lang/Throwable
+    //   392	403	464	java/lang/Throwable
+    //   405	458	464	java/lang/Throwable
+    //   149	170	468	java/lang/Exception
   }
   
   private static void b(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface)
@@ -461,7 +459,7 @@ public class QZoneFeedCountPackeger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger
  * JD-Core Version:    0.7.0.1
  */

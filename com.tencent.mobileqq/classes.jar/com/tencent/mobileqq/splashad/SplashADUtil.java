@@ -17,16 +17,8 @@ import java.util.Set;
 public class SplashADUtil
 {
   public static long a;
-  private static boolean a;
   private static long b;
-  
-  public static int a(Context paramContext)
-  {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return paramContext.getDefaultDisplay().getWidth();
-  }
+  private static boolean c;
   
   public static long a(Context paramContext)
   {
@@ -37,12 +29,6 @@ public class SplashADUtil
   }
   
   private static void a() {}
-  
-  public static void a(Context paramContext)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
-    b = 0L;
-  }
   
   public static void a(Context paramContext, long paramLong)
   {
@@ -88,17 +74,31 @@ public class SplashADUtil
   
   public static void b(Context paramContext)
   {
-    if (!a)
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
+    b = 0L;
+  }
+  
+  public static int c(Context paramContext)
+  {
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+    return paramContext.getDefaultDisplay().getWidth();
+  }
+  
+  public static void d(Context paramContext)
+  {
+    if (!c)
     {
       TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
       a();
-      a = true;
+      c = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.splashad.SplashADUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -78,7 +78,7 @@ public class TempMsgBoxManagerImpl
       return;
     }
     RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    RecentUser localRecentUser = localRecentUserProxy.a(AppConstants.FILTER_MSG_UIN, 10012);
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.FILTER_MSG_UIN, 10012);
     QLog.i("TempMsgBoxManager", 1, "addFilterBoxRecentUser: ");
     localRecentUser.uin = AppConstants.FILTER_MSG_UIN;
     localRecentUser.setType(10012);
@@ -141,7 +141,7 @@ public class TempMsgBoxManagerImpl
     if (!msgBoxSwitch()) {
       return false;
     }
-    localObject = ((TempMsgBoxConfigData)localObject).a();
+    localObject = ((TempMsgBoxConfigData)localObject).b();
     if (localObject == null) {
       return false;
     }
@@ -251,7 +251,7 @@ public class TempMsgBoxManagerImpl
     Object localObject = (String)TempMsgBoxUtil.c().get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
-      localObject = (ITempMsgBoxBusinessHandler)TempMsgBoxUtil.a().get(localObject);
+      localObject = (ITempMsgBoxBusinessHandler)TempMsgBoxUtil.d().get(localObject);
       if ((localObject != null) && (((ITempMsgBoxBusinessHandler)localObject).a(this.mApp, paramInt))) {
         return false;
       }
@@ -295,7 +295,7 @@ public class TempMsgBoxManagerImpl
       return localTempMsgBoxConfigData.a();
     }
     QLog.d("TempMsgBoxManager", 1, "msgBoxSwitch() called loadConObj");
-    localTempMsgBoxConfigData = (TempMsgBoxConfigData)QConfigManager.a().a(704);
+    localTempMsgBoxConfigData = (TempMsgBoxConfigData)QConfigManager.b().b(704);
     if (localTempMsgBoxConfigData != null)
     {
       this.mTempMsgBoxConfigData = localTempMsgBoxConfigData;
@@ -308,7 +308,7 @@ public class TempMsgBoxManagerImpl
   {
     this.mApp = ((AppInterface)paramAppRuntime);
     this.mApp.addObserver(this.mFriendListObserver);
-    TempMsgBoxUtil.a();
+    TempMsgBoxUtil.e();
   }
   
   public void onDestroy()
@@ -373,7 +373,7 @@ public class TempMsgBoxManagerImpl
   public void updateIsTop(String paramString, int paramInt, boolean paramBoolean)
   {
     RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    paramString = localRecentUserProxy.a(paramString, paramInt);
+    paramString = localRecentUserProxy.b(paramString, paramInt);
     long l;
     if (paramBoolean) {
       l = System.currentTimeMillis() / 1000L;
@@ -386,7 +386,7 @@ public class TempMsgBoxManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.api.impl.TempMsgBoxManagerImpl
  * JD-Core Version:    0.7.0.1
  */

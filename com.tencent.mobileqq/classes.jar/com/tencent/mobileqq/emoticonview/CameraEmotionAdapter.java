@@ -53,7 +53,7 @@ public class CameraEmotionAdapter
     if (paramIEmoticonMainPanelApp != null) {
       this.mAIOContext = paramIEmoticonMainPanelApp.getAIOContext();
     }
-    this.mCameraPanelFailedDrawable = paramContext.getResources().getDrawable(2130846446);
+    this.mCameraPanelFailedDrawable = paramContext.getResources().getDrawable(2130847919);
   }
   
   private RelativeLayout getCameraEmoView()
@@ -64,7 +64,7 @@ public class CameraEmotionAdapter
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
     localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.density * 61.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378202);
+    ((URLImageView)localObject).setId(2131446720);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
@@ -73,7 +73,7 @@ public class CameraEmotionAdapter
     ((URLImageView)localObject).setAdjustViewBounds(false);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131374391);
+    ((ImageView)localObject).setId(2131442557);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
@@ -83,15 +83,15 @@ public class CameraEmotionAdapter
     ((ImageView)localObject).setVisibility(8);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131374393);
+    ((ImageView)localObject).setId(2131442559);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject).setBackgroundResource(2130846441);
-    localLayoutParams.addRule(7, 2131378202);
-    localLayoutParams.addRule(8, 2131378202);
+    ((ImageView)localObject).setBackgroundResource(2130847914);
+    localLayoutParams.addRule(7, 2131446720);
+    localLayoutParams.addRule(8, 2131446720);
     localLayoutParams.setMargins(0, 0, (int)(this.density * -5.0F), (int)(this.density * -5.0F));
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     ((ImageView)localObject).setVisibility(8);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localRelativeLayout.setFocusable(true);
     }
     return localRelativeLayout;
@@ -102,7 +102,7 @@ public class CameraEmotionAdapter
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
     localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum * (this.columnNum - 2), (int)(this.density * 199.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378202);
+    ((URLImageView)localObject).setId(2131446720);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 161.0F), (int)(this.density * 127.0F));
     localLayoutParams.addRule(13, -1);
     ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -110,11 +110,11 @@ public class CameraEmotionAdapter
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new TextView(this.mContext);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((TextView)localObject).setText(HardCodeUtil.a(2131699716));
-    ((TextView)localObject).setTextSize(ViewUtils.b(12.0F));
+    ((TextView)localObject).setText(HardCodeUtil.a(2131897749));
+    ((TextView)localObject).setTextSize(ViewUtils.dpToPx(12.0F));
     ((TextView)localObject).setTextColor(-8947849);
     localLayoutParams.addRule(14, -1);
-    localLayoutParams.addRule(3, 2131378202);
+    localLayoutParams.addRule(3, 2131446720);
     return localRelativeLayout;
   }
   
@@ -129,7 +129,7 @@ public class CameraEmotionAdapter
         localURLDrawable.startDownload();
       }
       if (!(paramImageView.getDrawable() instanceof Animatable)) {
-        paramImageView.setImageDrawable((Drawable)paramURLImageView.getContext().getResources().getDrawable(2130846461));
+        paramImageView.setImageDrawable((Drawable)paramURLImageView.getContext().getResources().getDrawable(2130847934));
       }
       paramURLImageView = (Animatable)paramImageView.getDrawable();
       if (!paramURLImageView.isRunning()) {
@@ -157,44 +157,44 @@ public class CameraEmotionAdapter
   {
     if ((paramView != null) && ((paramEmotionPanelData instanceof CameraEmoticonInfo)))
     {
-      Object localObject1 = (URLImageView)paramView.findViewById(2131378202);
+      Object localObject1 = (URLImageView)paramView.findViewById(2131446720);
       CameraEmoticonInfo localCameraEmoticonInfo = (CameraEmoticonInfo)paramEmotionPanelData;
       paramView.setTag(localCameraEmoticonInfo);
       paramView.setVisibility(0);
       Object localObject2;
-      if ((QLog.isColorLevel()) && (!StringUtil.a(localCameraEmoticonInfo.action)))
+      if ((QLog.isColorLevel()) && (!StringUtil.isEmpty(localCameraEmoticonInfo.action)))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("updateUI info = ");
         ((StringBuilder)localObject2).append(localCameraEmoticonInfo.action);
         QLog.d("CameraEmotionAdapter", 2, ((StringBuilder)localObject2).toString());
       }
-      if (((URLImageView)localObject1).getTag(2131374399) == paramEmotionPanelData) {
+      if (((URLImageView)localObject1).getTag(2131442565) == paramEmotionPanelData) {
         return;
       }
-      ((URLImageView)localObject1).setTag(2131374399, paramEmotionPanelData);
-      paramEmotionPanelData = (ImageView)paramView.findViewById(2131374391);
-      paramView = (ImageView)paramView.findViewById(2131374393);
+      ((URLImageView)localObject1).setTag(2131442565, paramEmotionPanelData);
+      paramEmotionPanelData = (ImageView)paramView.findViewById(2131442557);
+      paramView = (ImageView)paramView.findViewById(2131442559);
       ((URLImageView)localObject1).setVisibility(0);
       ((URLImageView)localObject1).setURLDrawableDownListener(null);
       if ("cameraEdit".equals(localCameraEmoticonInfo.action))
       {
         ((URLImageView)localObject1).setImageDrawable(null);
-        ((URLImageView)localObject1).setBackgroundResource(2130846452);
+        ((URLImageView)localObject1).setBackgroundResource(2130847925);
         paramEmotionPanelData.setVisibility(4);
         paramView.setVisibility(4);
-        if (AppSetting.d) {
-          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131699717));
+        if (AppSetting.e) {
+          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131897750));
         }
       }
       else if ("cameraJump".equals(localCameraEmoticonInfo.action))
       {
         ((URLImageView)localObject1).setImageDrawable(null);
-        ((URLImageView)localObject1).setBackgroundResource(2130846442);
+        ((URLImageView)localObject1).setBackgroundResource(2130847915);
         paramEmotionPanelData.setVisibility(4);
         paramView.setVisibility(4);
-        if (AppSetting.d) {
-          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131699718));
+        if (AppSetting.e) {
+          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131897751));
         }
       }
       else
@@ -204,7 +204,7 @@ public class CameraEmotionAdapter
         if (localCameraEmoticonInfo.roamingType.equals("needUpload"))
         {
           ((URLImageView)localObject1).setImageDrawable(new ColorDrawable(-419430401));
-          localObject1 = (Animatable)this.mContext.getResources().getDrawable(2130846461);
+          localObject1 = (Animatable)this.mContext.getResources().getDrawable(2130847934);
           paramEmotionPanelData.setImageDrawable((Drawable)localObject1);
           ((Animatable)localObject1).start();
           paramEmotionPanelData.setVisibility(0);
@@ -354,7 +354,7 @@ public class CameraEmotionAdapter
     BaseAIOContext localBaseAIOContext = this.mAIOContext;
     int i;
     if (localBaseAIOContext != null) {
-      i = localBaseAIOContext.a().a;
+      i = localBaseAIOContext.O().a;
     } else {
       i = -1;
     }
@@ -363,7 +363,7 @@ public class CameraEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

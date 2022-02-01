@@ -11,7 +11,7 @@ class SensorAPIJavaScript$7
   
   public void loaded(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
     if (QLog.isColorLevel())
@@ -21,8 +21,8 @@ class SensorAPIJavaScript$7
       paramString.append(paramInt);
       QLog.d("forceUpdate", 2, paramString.toString());
     }
-    paramString = this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript;
-    paramString.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramString = this.b;
+    paramString.f = this.a;
     paramString.notifyCacheReady(paramInt);
   }
   
@@ -30,7 +30,7 @@ class SensorAPIJavaScript$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.7
  * JD-Core Version:    0.7.0.1
  */

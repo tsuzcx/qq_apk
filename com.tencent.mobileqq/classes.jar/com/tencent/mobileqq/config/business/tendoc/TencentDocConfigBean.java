@@ -29,7 +29,7 @@ public class TencentDocConfigBean
       int i = 0;
       while (i < j)
       {
-        localArrayList.add(paramArrayOfQConfItem[i].a);
+        localArrayList.add(paramArrayOfQConfItem[i].b);
         i += 1;
       }
       if (localArrayList.size() > 0)
@@ -101,7 +101,7 @@ public class TencentDocConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocConfigBean
  * JD-Core Version:    0.7.0.1
  */

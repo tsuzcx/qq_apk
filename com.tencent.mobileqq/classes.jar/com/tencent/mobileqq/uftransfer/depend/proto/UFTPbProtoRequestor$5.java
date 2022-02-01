@@ -22,7 +22,7 @@ class UFTPbProtoRequestor$5
   {
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, "=_= ^> [CS Replay] requestDiscUpload");
     Object localObject = new Bundle();
-    boolean bool2 = UFTPbProtoRequestor.a(this.jdField_a_of_type_ComTencentMobileqqUftransferDependProtoUFTPbProtoRequestor, paramProtoResp, (Bundle)localObject);
+    boolean bool2 = UFTPbProtoRequestor.a(this.b, paramProtoResp, (Bundle)localObject);
     int j = 9045;
     boolean bool1 = false;
     paramProtoReq = null;
@@ -53,7 +53,7 @@ class UFTPbProtoRequestor$5
       else
       {
         paramProtoReq = UFTPbProtoHelper.a((cmd0x345.RspBody.SubCmd0x1RspBody)((cmd0x345.RspBody)localObject).msg_subcmd_0x1_rsp_body.get());
-        paramProtoResp = paramProtoReq.d();
+        paramProtoResp = paramProtoReq.f();
         paramProtoReq.a(i);
       }
     }
@@ -83,7 +83,7 @@ class UFTPbProtoRequestor$5
     ((StringBuilder)localObject).append(" retMsg:");
     ((StringBuilder)localObject).append(paramProtoResp);
     UFTLog.b("[UFTTransfer] UFTPbProtoRequestor", 1, ((StringBuilder)localObject).toString());
-    paramProtoResp = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTProtoRequestor$DiscReqUploadResponseCallback;
+    paramProtoResp = this.a;
     if (paramProtoResp != null) {
       paramProtoResp.a(bool1, paramProtoReq);
     }
@@ -91,7 +91,7 @@ class UFTPbProtoRequestor$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTPbProtoRequestor.5
  * JD-Core Version:    0.7.0.1
  */

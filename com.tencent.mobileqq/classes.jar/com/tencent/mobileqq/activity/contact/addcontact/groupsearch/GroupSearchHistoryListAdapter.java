@@ -22,24 +22,24 @@ public class GroupSearchHistoryListAdapter
   extends BaseAdapter
 {
   protected Context a;
-  protected View a;
-  private GroupSearchHistoryListAdapter.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter$OnItemClickListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  protected View b;
+  private String c;
+  private List<String> d;
+  private GroupSearchHistoryListAdapter.OnItemClickListener e;
   
   public GroupSearchHistoryListAdapter(Context paramContext, View paramView, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = GroupSearchHistoryManager.a().a(paramString);
-    paramContext = this.jdField_a_of_type_JavaUtilList;
+    this.a = paramContext;
+    this.b = paramView;
+    this.c = paramString;
+    this.d = GroupSearchHistoryManager.a().a(paramString);
+    paramContext = this.d;
     if ((paramContext != null) && (paramContext.size() > 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.b.setVisibility(8);
   }
   
   private boolean a(List<String> paramList1, List<String> paramList2)
@@ -55,32 +55,32 @@ public class GroupSearchHistoryListAdapter
   
   public String a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (String)this.d.get(paramInt);
   }
   
   public void a()
   {
-    ArrayList localArrayList = GroupSearchHistoryManager.a().a(this.jdField_a_of_type_JavaLangString);
-    if (a(this.jdField_a_of_type_JavaUtilList, localArrayList)) {
+    ArrayList localArrayList = GroupSearchHistoryManager.a().a(this.c);
+    if (a(this.d, localArrayList)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.d = localArrayList;
+    if (this.d.isEmpty()) {
+      this.b.setVisibility(8);
     } else {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(0);
     }
     notifyDataSetChanged();
   }
   
   public void a(GroupSearchHistoryListAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.e = paramOnItemClickListener;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList == null) {
       return 0;
     }
@@ -98,16 +98,16 @@ public class GroupSearchHistoryListAdapter
     Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559808, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a).inflate(2131625851, paramViewGroup, false);
       paramView = new GroupSearchHistoryListAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368193));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368194));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131376671));
-      paramView.b = localView.findViewById(2131365776);
-      paramView.jdField_a_of_type_AndroidViewView = localView;
-      localObject = (LinearLayout.LayoutParams)paramView.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayHelper.dp2px(this.jdField_a_of_type_AndroidContentContext, 16);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramView.c = ((ImageView)localView.findViewById(2131435058));
+      paramView.d = ((TextView)localView.findViewById(2131435059));
+      paramView.e = ((PressEffectImageView)localView.findViewById(2131444937));
+      paramView.b = localView.findViewById(2131432033);
+      paramView.a = localView;
+      localObject = (LinearLayout.LayoutParams)paramView.c.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayHelper.dp2px(this.a, 16);
+      paramView.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localView.setTag(paramView);
     }
     else
@@ -116,34 +116,34 @@ public class GroupSearchHistoryListAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    paramView.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    paramView.f = paramInt;
+    if (this.d != null) {
+      paramView.d.setText((CharSequence)this.d.get(paramInt));
     }
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A8A8A8"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846425);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839385);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846424);
+      paramView.d.setTextColor(Color.parseColor("#A8A8A8"));
+      paramView.c.setImageResource(2130847898);
+      paramView.a.setBackgroundResource(2130839569);
+      paramView.e.setImageResource(2130847897);
     }
     else
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846214);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839384);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846212);
+      paramView.d.setTextColor(Color.parseColor("#4D4D4D"));
+      paramView.c.setImageResource(2130847684);
+      paramView.a.setBackgroundResource(2130839568);
+      paramView.e.setImageResource(2130847682);
     }
     paramView.b.setVisibility(8);
     localView.setOnClickListener(paramView);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
+    paramView.e.setOnClickListener(paramView);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchHistoryListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -46,10 +46,10 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
       if (this.intent.getIntExtra("key_dialog_type", -1) != -1)
       {
         getActivity().getWindow().setFlags(1024, 1024);
-        getUIStyleHandler().a.setVisibility(8);
+        getUIStyleHandler().v.setVisibility(8);
         getUIStyle().a = true;
         WebViewUIUtils.b(super.getActivity());
-        getWebTitleBarInterface().e(false);
+        getWebTitleBarInterface().f(false);
       }
     }
   }
@@ -58,15 +58,15 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public void onInitUIContent(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
     if ((getIntent() != null) && (getIntent().getBooleanExtra("flag_hide_float_bar", false))) {
-      getUIStyle().c = 0L;
+      getUIStyle().e = 0L;
     }
     paramWebViewKernelCallBack.onInitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167333);
-    if ((getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131168376);
+    if ((getUIStyleHandler().u instanceof RefreshView)) {
+      ((RefreshView)getUIStyleHandler().u).a(false);
     }
-    if (getUIStyleHandler().jdField_c_of_type_AndroidViewView != null) {
-      getUIStyleHandler().jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (getUIStyleHandler().D != null) {
+      getUIStyleHandler().D.setVisibility(8);
     }
     if (this.webView.getX5WebViewExtension() != null) {
       try
@@ -86,7 +86,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

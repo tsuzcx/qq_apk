@@ -29,32 +29,32 @@ import com.tencent.qphone.base.util.QLog;
 public class AudioMediaModule
   extends RoomBizModule
 {
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
-  private LoginServiceInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginServiceInterface;
-  private IAudioMediaService jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService;
-  private AVPlayerBuilderServiceInterface jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface;
-  private RoomServiceInterface jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface;
-  private RoomEngine jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine;
-  private RequestPermission jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionRequestPermission;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private RoomEngine b;
+  private LogInterface c;
+  private LoginServiceInterface d;
+  private IAudioMediaService e;
+  private AVPlayerBuilderServiceInterface f;
+  private RequestPermission g;
+  private QQCustomDialog h;
+  private RoomServiceInterface i;
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService.a(new AudioMediaModule.2(this));
+    this.e.a(new AudioMediaModule.2(this));
   }
   
   private void a(LiveInfo paramLiveInfo)
   {
     AudioEnterRoomParam localAudioEnterRoomParam = new AudioEnterRoomParam();
-    localAudioEnterRoomParam.jdField_a_of_type_Int = NowBizConfigConst.NowLiteConfig.jdField_a_of_type_Int;
-    localAudioEnterRoomParam.jdField_b_of_type_Int = NowBizConfigConst.NowLiteConfig.jdField_b_of_type_Int;
-    localAudioEnterRoomParam.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginServiceInterface.getLoginInfo().uid;
-    localAudioEnterRoomParam.jdField_a_of_type_Long = paramLiveInfo.anchorInfo.uid;
-    localAudioEnterRoomParam.jdField_c_of_type_Long = paramLiveInfo.roomInfo.roomId;
-    localAudioEnterRoomParam.jdField_c_of_type_Int = paramLiveInfo.roomInfo.roomType;
-    localAudioEnterRoomParam.jdField_a_of_type_ArrayOfByte = paramLiveInfo.watchMediaInfo.sig;
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService.a(localAudioEnterRoomParam, new AudioMediaModule.1(this, localAudioEnterRoomParam));
+    localAudioEnterRoomParam.a = NowBizConfigConst.NowLiteConfig.a;
+    localAudioEnterRoomParam.b = NowBizConfigConst.NowLiteConfig.b;
+    localAudioEnterRoomParam.d = this.d.getLoginInfo().uid;
+    localAudioEnterRoomParam.c = paramLiveInfo.anchorInfo.uid;
+    localAudioEnterRoomParam.f = paramLiveInfo.roomInfo.roomId;
+    localAudioEnterRoomParam.e = paramLiveInfo.roomInfo.roomType;
+    localAudioEnterRoomParam.g = paramLiveInfo.watchMediaInfo.sig;
+    this.e.a(localAudioEnterRoomParam, new AudioMediaModule.1(this, localAudioEnterRoomParam));
   }
   
   private void a(boolean paramBoolean)
@@ -64,7 +64,7 @@ public class AudioMediaModule
       c();
       return;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService.a(paramBoolean);
+    this.e.a(paramBoolean);
   }
   
   private void b()
@@ -74,28 +74,28 @@ public class AudioMediaModule
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionRequestPermission != null)
+    if (this.g != null)
     {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioMediaModule", "requestMicPermission", new Object[0]);
+      this.c.i("AudioMediaModule", "requestMicPermission", new Object[0]);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionRequestPermission = new RequestPermission().a(12).a(new String[] { "android.permission.RECORD_AUDIO" }).a(new AudioMediaModule.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizPermissionRequestPermission.a((Activity)this.context);
+    this.g = new RequestPermission().a(12).a(new String[] { "android.permission.RECORD_AUDIO" }).a(new AudioMediaModule.4(this));
+    this.g.a((Activity)this.context);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.context, 230, "", HardCodeUtil.a(2131696373), HardCodeUtil.a(2131690728), HardCodeUtil.a(2131693521), new AudioMediaModule.5(this), new AudioMediaModule.6(this));
+    if (this.h == null) {
+      this.h = DialogUtil.a(this.context, 230, "", HardCodeUtil.a(2131894145), HardCodeUtil.a(2131887648), HardCodeUtil.a(2131891076), new AudioMediaModule.5(this), new AudioMediaModule.6(this));
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if (!this.h.isShowing()) {
+      this.h.show();
     }
   }
   
   private void e()
   {
-    AVPlayerBuilderServiceInterface localAVPlayerBuilderServiceInterface = this.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface;
+    AVPlayerBuilderServiceInterface localAVPlayerBuilderServiceInterface = this.f;
     if (localAVPlayerBuilderServiceInterface != null) {
       localAVPlayerBuilderServiceInterface.uninit();
     }
@@ -112,19 +112,19 @@ public class AudioMediaModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine = getRoomEngine();
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService = ((IAudioMediaService)this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine.getService(IAudioMediaService.class));
-    this.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface = ((AVPlayerBuilderServiceInterface)this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine.getService(AVPlayerBuilderServiceInterface.class));
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginServiceInterface = ((LoginServiceInterface)this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine.getService(LoginServiceInterface.class));
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface = ((RoomServiceInterface)this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine.getService(RoomServiceInterface.class));
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = ((LogSdkServiceInterface)this.jdField_a_of_type_ComTencentLivesdkRoomengineRoomEngine.getService(LogSdkServiceInterface.class)).getLog();
+    this.b = getRoomEngine();
+    this.e = ((IAudioMediaService)this.b.getService(IAudioMediaService.class));
+    this.f = ((AVPlayerBuilderServiceInterface)this.b.getService(AVPlayerBuilderServiceInterface.class));
+    this.d = ((LoginServiceInterface)this.b.getService(LoginServiceInterface.class));
+    this.i = ((RoomServiceInterface)this.b.getService(RoomServiceInterface.class));
+    this.c = ((LogSdkServiceInterface)this.b.getService(LogSdkServiceInterface.class)).getLog();
     b();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaService.a();
+    this.e.a();
   }
   
   public void onEnterRoom(boolean paramBoolean)
@@ -137,12 +137,12 @@ public class AudioMediaModule
       localStringBuilder.append(paramBoolean);
       QLog.i("AudioMediaModule", 1, localStringBuilder.toString());
     }
-    a(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface.getLiveInfo());
+    a(this.i.getLiveInfo());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.AudioMediaModule
  * JD-Core Version:    0.7.0.1
  */

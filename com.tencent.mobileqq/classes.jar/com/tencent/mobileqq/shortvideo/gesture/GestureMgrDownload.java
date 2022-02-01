@@ -8,27 +8,27 @@ import java.util.ArrayList;
 
 public class GestureMgrDownload
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  ArrayList<GestureMgr.GestureStatusListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  DownloadInfo a = null;
+  int b = 0;
+  ArrayList<GestureMgr.GestureStatusListener> c = new ArrayList();
   
   GestureMgrDownload()
   {
     a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = GestureUtil.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.a = DownloadInfo.get();
+    this.b = GestureUtil.a(this.a);
+    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.b) }));
   }
   
   void a(boolean paramBoolean, GestureMgr.GestureStatusListener paramGestureStatusListener)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.c;
     if (paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramGestureStatusListener);
+      this.c.add(paramGestureStatusListener);
       break label32;
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramGestureStatusListener);
+      this.c.remove(paramGestureStatusListener);
       label32:
       return;
     }
@@ -37,14 +37,14 @@ public class GestureMgrDownload
   
   boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = GestureUtil.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    this.a = DownloadInfo.get();
+    this.b = GestureUtil.a(this.a);
     boolean bool2 = QLog.isDevelopLevel();
     boolean bool1 = false;
     if (bool2) {
-      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.b) }));
     }
-    if (11 != this.jdField_a_of_type_Int) {
+    if (11 != this.b) {
       bool1 = true;
     }
     return bool1;
@@ -67,18 +67,18 @@ public class GestureMgrDownload
   
   boolean b()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.b == 1;
   }
   
   boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = GestureUtil.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    this.a = DownloadInfo.get();
+    int i = this.b;
+    this.b = GestureUtil.a(this.a);
     boolean bool;
-    if (this.jdField_a_of_type_Int == 11)
+    if (this.b == 11)
     {
-      this.jdField_a_of_type_Int = 12;
+      this.b = 12;
       BusinessCommonConfig.notifyQQDownload(1, null, 0);
       bool = true;
     }
@@ -87,14 +87,14 @@ public class GestureMgrDownload
       bool = false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.b) }));
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrDownload
  * JD-Core Version:    0.7.0.1
  */

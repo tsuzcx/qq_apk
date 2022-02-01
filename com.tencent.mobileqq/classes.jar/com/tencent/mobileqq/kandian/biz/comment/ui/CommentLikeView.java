@@ -60,8 +60,8 @@ public class CommentLikeView
     if ((paramObject instanceof CommentViewItem))
     {
       paramObject = (CommentViewItem)paramObject;
-      if (paramObject.a != null) {
-        this.a.a(paramObject.a);
+      if (paramObject.c != null) {
+        this.a.a(paramObject.c);
       }
     }
     return true;
@@ -69,7 +69,7 @@ public class CommentLikeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentLikeView
  * JD-Core Version:    0.7.0.1
  */

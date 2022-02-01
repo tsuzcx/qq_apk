@@ -23,17 +23,17 @@ class FastWebActivity$9
     while (paramList.hasNext())
     {
       RIJLiveStatusModule.UserInfoItem localUserInfoItem = (RIJLiveStatusModule.UserInfoItem)paramList.next();
-      if ((localUserInfoItem.jdField_a_of_type_Long == FastWebActivity.a(this.a).e) && (localUserInfoItem.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.a == 1))
+      if ((localUserInfoItem.a == FastWebActivity.d(this.a).y) && (localUserInfoItem.b.a == 1))
       {
         QLog.d("FastWebActivity", 1, "need to show live status");
-        FastWebActivity.d(this.a);
+        FastWebActivity.j(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.9
  * JD-Core Version:    0.7.0.1
  */

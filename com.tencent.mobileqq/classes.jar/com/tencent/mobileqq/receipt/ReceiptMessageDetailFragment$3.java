@@ -24,7 +24,7 @@ class ReceiptMessageDetailFragment$3
     if (QLog.isColorLevel()) {
       QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
     }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.d(this.a).setVisibility(8);
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
@@ -45,19 +45,19 @@ class ReceiptMessageDetailFragment$3
       paramView.append(paramInt);
       QLog.d("ReceiptMessageDetailFragment", 2, paramView.toString());
     }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
+    ReceiptMessageDetailFragment.f(this.a).setLevel(paramInt);
   }
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.d(this.a).setVisibility(8);
     ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    ReceiptMessageDetailFragment.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.3
  * JD-Core Version:    0.7.0.1
  */

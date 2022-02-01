@@ -14,7 +14,7 @@ class FileAssistantExt$3
   {
     if (paramMotionEvent.getAction() == 4)
     {
-      FileAssistantExt.a(this.a).dismiss();
+      FileAssistantExt.b(this.a).dismiss();
       return true;
     }
     return false;
@@ -22,7 +22,7 @@ class FileAssistantExt$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileAssistantExt.3
  * JD-Core Version:    0.7.0.1
  */

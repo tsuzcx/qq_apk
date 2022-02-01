@@ -23,34 +23,34 @@ final class VideoPlayController$destroyPlayer$1
   public final void invoke()
   {
     Object localObject;
-    if (this.this$0.a() != null)
+    if (this.this$0.i() != null)
     {
-      localObject = this.this$0.a();
+      localObject = this.this$0.i();
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      ((IPlayer)localObject).d();
+      ((IPlayer)localObject).k();
     }
     this.this$0.a((IPlayer)null);
     VideoPlayController.a(this.this$0, (IPlayerFactory)null);
     this.this$0.a("");
     this.this$0.a((VideoPlayListener)null);
-    if (VideoPlayController.a(this.this$0) != null)
+    if (VideoPlayController.c(this.this$0) != null)
     {
-      localObject = VideoPlayController.a(this.this$0);
+      localObject = VideoPlayController.c(this.this$0);
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      ((VideoPluginInstall)localObject).b();
+      ((VideoPluginInstall)localObject).c();
       VideoPlayController.a(this.this$0, (VideoPluginInstall)null);
     }
     this.$runnable.invoke();
-    VideoPlayController.a(this.this$0).clear();
+    VideoPlayController.d(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.destroyPlayer.1
  * JD-Core Version:    0.7.0.1
  */

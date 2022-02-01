@@ -41,17 +41,17 @@ class MixedMsgManager$2
   {
     im_msg_body.RichText localRichText = new im_msg_body.RichText();
     im_msg_body.Elem localElem = new im_msg_body.Elem();
-    Object localObject = paramPicResult.jdField_a_of_type_JavaLangObject;
+    Object localObject = paramPicResult.d;
     boolean bool2 = false;
     boolean bool1;
     if (localObject != null)
     {
-      bool1 = paramPicResult.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage;
+      bool1 = paramPicResult.d instanceof im_msg_body.NotOnlineImage;
       localObject = "";
       if (bool1)
       {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramPicResult.jdField_a_of_type_JavaLangObject);
-        if (paramPicResult.b)
+        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramPicResult.d);
+        if (paramPicResult.f)
         {
           if (localElem.not_online_image.res_id.has()) {
             localObject = localElem.not_online_image.res_id.get().toStringUtf8();
@@ -63,7 +63,7 @@ class MixedMsgManager$2
           paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
           paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
           paramMessageForPic.thumbWidth = localElem.not_online_image.uint32_thumb_width.get();
-          paramMessageForPic.md5 = FileUtils.calcMd5(MixedMsgManager.a());
+          paramMessageForPic.md5 = FileUtils.calcMd5(MixedMsgManager.b());
           paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
           if (QLog.isColorLevel())
           {
@@ -82,18 +82,18 @@ class MixedMsgManager$2
       {
         i = 1;
         break label443;
-        if (!(paramPicResult.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace)) {
+        if (!(paramPicResult.d instanceof im_msg_body.CustomFace)) {
           break;
         }
-        localElem.custom_face.set((im_msg_body.CustomFace)paramPicResult.jdField_a_of_type_JavaLangObject);
-        if (paramPicResult.b)
+        localElem.custom_face.set((im_msg_body.CustomFace)paramPicResult.d);
+        if (paramPicResult.f)
         {
           if (localElem.custom_face.str_file_path.has()) {
             localObject = localElem.custom_face.str_file_path.get();
           }
           paramMessageForPic.path = ((String)localObject);
           paramMessageForPic.uuid = ((String)localObject);
-          paramMessageForPic.md5 = FileUtils.calcMd5(MixedMsgManager.a());
+          paramMessageForPic.md5 = FileUtils.calcMd5(MixedMsgManager.b());
           paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
         }
       }
@@ -101,7 +101,7 @@ class MixedMsgManager$2
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("WTF, picResult.mExtraObj is ");
-        ((StringBuilder)localObject).append(paramPicResult.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
+        ((StringBuilder)localObject).append(paramPicResult.d.getClass().getSimpleName());
         QLog.e("MixedMsgManager", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -113,7 +113,7 @@ class MixedMsgManager$2
         QLog.d("MixedMsgManager", 2, "updateMessageForPic success");
       }
       localRichText.elems.add(localElem);
-      if (paramPicResult.jdField_a_of_type_Int == 0)
+      if (paramPicResult.a == 0)
       {
         bool1 = true;
       }
@@ -142,7 +142,7 @@ class MixedMsgManager$2
   
   private boolean a(ArrayList<PicResult> paramArrayList)
   {
-    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    MessageForMixedMsg localMessageForMixedMsg = this.a;
     Object localObject = localMessageForMixedMsg.msgElemList;
     boolean bool1 = true;
     if (localObject != null)
@@ -198,11 +198,11 @@ class MixedMsgManager$2
         if (QLog.isColorLevel()) {
           QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload : isAllPicUploadSuccessful = false ");
         }
-        MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "picUpload fail");
+        MixedMsgManager.a(this.e, this.a, false, "picUpload fail");
         return;
       }
       paramArrayList = new MixedMsg.Msg();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList.iterator();
+      localObject1 = this.a.msgElemList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject3 = (MessageRecord)((Iterator)localObject1).next();
@@ -254,18 +254,18 @@ class MixedMsgManager$2
         }
         paramArrayList.elems.get().add(localObject2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData = paramArrayList.toByteArray();
+      this.a.msgData = paramArrayList.toByteArray();
       if (QLog.isColorLevel()) {
         QLog.d("MixedMsgManager", 2, "updateMsgRecords done, goto onPackAndSendMsg");
       }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, bool);
+      MixedMsgManager.a(this.e, this.b, this.c, this.d, this.a, bool);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("MixedMsgManager", 2, "onForwardMultiMsgPicsUpload failed");
     }
-    paramArrayList = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    paramArrayList = this.e;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("picUpload fail : result = ");
     ((StringBuilder)localObject2).append(paramInt);
@@ -274,7 +274,7 @@ class MixedMsgManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

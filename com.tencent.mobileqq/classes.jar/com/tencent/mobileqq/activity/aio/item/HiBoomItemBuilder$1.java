@@ -16,16 +16,16 @@ class HiBoomItemBuilder$1
     if (QLog.isColorLevel()) {
       QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    if (this.a.a()) {
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    if (this.a.c()) {
       return;
     }
-    ChatActivityUtils.a(this.a.a, paramView, (BaseActivity)this.a.b);
+    ChatActivityUtils.a(this.a.d, paramView, (BaseActivity)this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

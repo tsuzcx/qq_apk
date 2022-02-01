@@ -42,9 +42,9 @@ class CameraPreviewActivity$GalleryImageAdapter
     CameraPreviewActivity.ImagePhotoHolder localImagePhotoHolder;
     if (paramView == null)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131559558, null);
+      paramView = this.a.getLayoutInflater().inflate(2131625582, null);
       localImagePhotoHolder = new CameraPreviewActivity.ImagePhotoHolder();
-      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131373039));
+      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131440621));
       paramView.setTag(localImagePhotoHolder);
     }
     else
@@ -58,7 +58,7 @@ class CameraPreviewActivity$GalleryImageAdapter
       if (((File)localObject).exists()) {
         try
         {
-          localImagePhotoHolder.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+          localImagePhotoHolder.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.c(this.a), CameraPreviewActivity.d(this.a), CameraPreviewActivity.e(this.a), null, true));
         }
         catch (MalformedURLException localMalformedURLException)
         {
@@ -76,7 +76,7 @@ class CameraPreviewActivity$GalleryImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.GalleryImageAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.view.ViewCompat;
+import android.text.SpanWatcher;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -22,46 +26,47 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ParticipleView
   extends View
+  implements Handler.Callback
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#00CAFC");
-  private static final int jdField_b_of_type_Int = Color.parseColor("#FFFFFF");
-  private static final int jdField_c_of_type_Int = Color.parseColor("#FFFFFF");
-  private static final int jdField_d_of_type_Int = Color.parseColor("#03081A");
-  private byte jdField_a_of_type_Byte = 0;
-  private float jdField_a_of_type_Float = 0.0F;
-  private long jdField_a_of_type_Long;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point(0, 0);
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private ParticipleView.OnParticipleSelectChangeListener jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$OnParticipleSelectChangeListener;
-  private ParticipleView.ParticipleEntity jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity;
-  private ParticipleView.ParticipleExploreByTouchHelper jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleExploreByTouchHelper;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  private List<ParticipleView.ParticipleEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private final List<ParticipleView.ParticipleEntity> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean jdField_d_of_type_Boolean;
+  private static final int a = Color.parseColor("#00CAFC");
+  private static final int b = Color.parseColor("#FFFFFF");
+  private static final int c = Color.parseColor("#FFFFFF");
+  private static final int d = Color.parseColor("#03081A");
+  private int A = 0;
+  private boolean B;
+  private boolean C = false;
+  private boolean D = false;
+  private RectF E;
+  private RectF F;
+  private ParticipleView.ParticipleEntity G;
+  private float H;
+  private float I;
+  private long J;
+  private byte K = 0;
+  private ParticipleView.ParticipleExploreByTouchHelper L;
+  private int M;
+  private ScrollView N;
+  private boolean O;
+  private ValueAnimator P;
+  private final List<ParticipleView.ParticipleEntity> Q = new ArrayList();
+  private final Handler R = new WeakReferenceHandler(ThreadManager.getUIHandler().getLooper(), this);
+  private boolean S = false;
   private int e;
   private int f;
   private int g;
@@ -74,11 +79,16 @@ public class ParticipleView
   private int n;
   private int o;
   private int p;
-  private int q = 0;
-  private int r;
-  private int s = 0;
-  private int t = 0;
-  private int u;
+  private List<ParticipleView.ParticipleEntity> q = new ArrayList();
+  private ParticipleView.OnParticipleSelectChangeListener r;
+  private Point s = new Point(0, 0);
+  private Paint t;
+  private Paint u;
+  private Paint v;
+  private int w = 0;
+  private int x;
+  private float y = 0.0F;
+  private int z = 0;
   
   public ParticipleView(Context paramContext)
   {
@@ -98,22 +108,16 @@ public class ParticipleView
     a(paramContext, paramAttributeSet);
   }
   
-  private int a()
-  {
-    a(null);
-    return this.q;
-  }
-  
   private int a(float paramFloat1, float paramFloat2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.q;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       int i1 = 0;
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
+      int i2 = this.q.size();
       while (i1 < i2)
       {
-        localObject = ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1)).iterator();
+        localObject = ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.q.get(i1)).iterator();
         while (((Iterator)localObject).hasNext()) {
           if (((RectF)((Iterator)localObject).next()).contains(paramFloat1, paramFloat2)) {
             return i1;
@@ -146,7 +150,7 @@ public class ParticipleView
         int i5 = paramQQText[(i2 + 1)];
         i2 = i1;
         if (i7 > i4) {
-          i2 = (int)(i1 + this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str.substring(i4, i7)));
+          i2 = (int)(i1 + this.t.measureText(str.substring(i4, i7)));
         }
         i1 = i2 + this.e;
         i3 += 1;
@@ -154,11 +158,11 @@ public class ParticipleView
       }
       i3 = i1;
       if (i2 < str.length()) {
-        i3 = (int)(i1 + this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str.substring(i2)));
+        i3 = (int)(i1 + this.t.measureText(str.substring(i2)));
       }
       return i3;
     }
-    return (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str);
+    return (int)this.t.measureText(str);
   }
   
   private void a(int paramInt1, int paramInt2, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
@@ -166,7 +170,7 @@ public class ParticipleView
     int i2 = a(paramQQText);
     int i1;
     if (getWidth() <= 0) {
-      i1 = this.r;
+      i1 = this.x;
     } else {
       i1 = getWidth();
     }
@@ -181,59 +185,59 @@ public class ParticipleView
       if (i1 != 0)
       {
         c(getPaddingLeft(), this.e + paramInt2 + this.h + this.f * 2, paramQQText, paramParticipleEntity, paramCanvas);
-        this.jdField_a_of_type_AndroidGraphicsPoint.x = (getPaddingLeft() + i2 + this.g * 2 + this.i);
-        this.jdField_a_of_type_AndroidGraphicsPoint.y = (paramInt2 + this.e + this.h + this.f * 2);
+        this.s.x = (getPaddingLeft() + i2 + this.g * 2 + this.i);
+        this.s.y = (paramInt2 + this.e + this.h + this.f * 2);
         return;
       }
       b(paramInt1, paramInt2, paramQQText, paramParticipleEntity, paramCanvas);
       return;
     }
     c(paramInt1, paramInt2, paramQQText, paramParticipleEntity, paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPoint.x = (i3 + this.i + this.g * 2);
+    this.s.x = (i3 + this.i + this.g * 2);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_aA_of_type_ArrayOfInt);
-      this.k = paramAttributeSet.getColor(R.styleable.aC, jdField_a_of_type_Int);
-      this.l = paramAttributeSet.getColor(R.styleable.aD, jdField_b_of_type_Int);
-      this.j = paramAttributeSet.getDimensionPixelSize(R.styleable.aw, DisplayUtil.a(getContext(), 3.0F));
-      this.m = paramAttributeSet.getColor(R.styleable.ax, jdField_c_of_type_Int);
-      this.n = paramAttributeSet.getColor(R.styleable.aB, jdField_d_of_type_Int);
-      this.e = paramAttributeSet.getDimensionPixelSize(R.styleable.az, DisplayUtil.a(getContext(), 27.0F));
-      this.f = paramAttributeSet.getDimensionPixelSize(R.styleable.jdField_aA_of_type_Int, DisplayUtil.a(getContext(), 4.0F));
-      this.g = paramAttributeSet.getDimensionPixelSize(R.styleable.ay, DisplayUtil.a(getContext(), 6.0F));
-      this.h = paramAttributeSet.getDimensionPixelSize(R.styleable.aE, DisplayUtil.a(getContext(), 12.0F));
-      this.i = paramAttributeSet.getDimensionPixelSize(R.styleable.av, DisplayUtil.a(getContext(), 8.0F));
-      this.o = paramAttributeSet.getInteger(R.styleable.at, 200);
-      this.p = paramAttributeSet.getInteger(R.styleable.au, 200);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ce);
+      this.k = paramAttributeSet.getColor(R.styleable.co, a);
+      this.l = paramAttributeSet.getColor(R.styleable.cp, b);
+      this.j = paramAttributeSet.getDimensionPixelSize(R.styleable.ci, DisplayUtil.a(getContext(), 3.0F));
+      this.m = paramAttributeSet.getColor(R.styleable.cj, c);
+      this.n = paramAttributeSet.getColor(R.styleable.cn, d);
+      this.e = paramAttributeSet.getDimensionPixelSize(R.styleable.cl, DisplayUtil.a(getContext(), 27.0F));
+      this.f = paramAttributeSet.getDimensionPixelSize(R.styleable.cm, DisplayUtil.a(getContext(), 4.0F));
+      this.g = paramAttributeSet.getDimensionPixelSize(R.styleable.ck, DisplayUtil.a(getContext(), 6.0F));
+      this.h = paramAttributeSet.getDimensionPixelSize(R.styleable.cq, DisplayUtil.a(getContext(), 12.0F));
+      this.i = paramAttributeSet.getDimensionPixelSize(R.styleable.ch, DisplayUtil.a(getContext(), 8.0F));
+      this.o = paramAttributeSet.getInteger(R.styleable.cf, 200);
+      this.p = paramAttributeSet.getInteger(R.styleable.cg, 200);
       paramAttributeSet.recycle();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.e);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.l);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.k);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleExploreByTouchHelper = new ParticipleView.ParticipleExploreByTouchHelper(this, null);
-    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleExploreByTouchHelper);
-    this.u = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.t = new Paint(1);
+    this.t.setTextSize(this.e);
+    this.u = new Paint(1);
+    this.u.setColor(this.l);
+    this.v = new Paint(1);
+    this.v.setColor(this.k);
+    this.L = new ParticipleView.ParticipleExploreByTouchHelper(this, null);
+    ViewCompat.setAccessibilityDelegate(this, this.L);
+    this.M = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   private void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint.x = getPaddingLeft();
-    this.jdField_a_of_type_AndroidGraphicsPoint.y = getPaddingTop();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    this.s.x = getPaddingLeft();
+    this.s.y = getPaddingTop();
+    Object localObject = this.q;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       int i1 = 0;
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
+      int i2 = this.q.size();
       while (i1 < i2)
       {
-        localObject = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+        localObject = (ParticipleView.ParticipleEntity)this.q.get(i1);
         if ((paramCanvas == null) || (a((ParticipleView.ParticipleEntity)localObject))) {
           a(paramCanvas, (ParticipleView.ParticipleEntity)localObject);
         }
@@ -246,7 +250,7 @@ public class ParticipleView
   {
     if (ParticipleView.ParticipleEntity.a(paramParticipleEntity).isEmpty())
     {
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramParticipleEntity.a, paramParticipleEntity, paramCanvas);
+      a(this.s.x, this.s.y, paramParticipleEntity.a, paramParticipleEntity, paramCanvas);
       return;
     }
     int i1 = 0;
@@ -255,8 +259,8 @@ public class ParticipleView
     {
       RectF localRectF = (RectF)ParticipleView.ParticipleEntity.a(paramParticipleEntity).get(i1);
       a(localRectF, (QQText)ParticipleView.ParticipleEntity.b(paramParticipleEntity).get(i1), paramParticipleEntity, paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPoint.x = ((int)localRectF.right + this.i);
-      this.jdField_a_of_type_AndroidGraphicsPoint.y = ((int)localRectF.top);
+      this.s.x = ((int)localRectF.right + this.i);
+      this.s.y = ((int)localRectF.top);
       i1 += 1;
     }
   }
@@ -268,10 +272,10 @@ public class ParticipleView
       if (paramRectF1 == paramRectF2) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.q;
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        boolean bool2 = a(paramRectF1, paramRectF2);
+        boolean bool2 = b(paramRectF1, paramRectF2);
         boolean bool1 = true;
         RectF localRectF1;
         int i1;
@@ -288,47 +292,47 @@ public class ParticipleView
           i1 = 1;
         }
         RectF localRectF2;
-        if ((a((RectF)localObject, this.jdField_b_of_type_AndroidGraphicsRectF)) && (a(this.jdField_b_of_type_AndroidGraphicsRectF, localRectF1)))
+        if ((b((RectF)localObject, this.F)) && (b(this.F, localRectF1)))
         {
           if (i1 == 2)
           {
-            localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+            localRectF2 = this.F;
             paramRectF1 = (RectF)localObject;
             localObject = localRectF2;
           }
           else
           {
-            paramRectF1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+            paramRectF1 = this.F;
             localRectF2 = localRectF1;
             localRectF1 = paramRectF1;
           }
-          this.jdField_a_of_type_Boolean = ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity);
+          this.B = ParticipleView.ParticipleEntity.c(this.G);
         }
         else
         {
-          if (paramRectF1.equals(this.jdField_b_of_type_AndroidGraphicsRectF))
+          if (paramRectF1.equals(this.F))
           {
-            this.jdField_a_of_type_Boolean = ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity);
+            this.B = ParticipleView.ParticipleEntity.c(this.G);
           }
           else
           {
-            int i2 = this.t;
+            int i2 = this.A;
             if ((i2 != 0) && (i2 != i1)) {
-              this.jdField_a_of_type_Boolean ^= true;
+              this.B ^= true;
             }
           }
           paramRectF1 = null;
           localRectF2 = paramRectF1;
         }
-        this.t = i1;
-        if (paramRectF2.equals(this.jdField_b_of_type_AndroidGraphicsRectF))
+        this.A = i1;
+        if (paramRectF2.equals(this.F))
         {
           if (i1 == 1) {
             bool1 = false;
           }
         }
         else {
-          bool1 = a(this.jdField_b_of_type_AndroidGraphicsRectF, paramRectF2) ^ true;
+          bool1 = b(this.F, paramRectF2) ^ true;
         }
         a(paramRectF1, localRectF2, (RectF)localObject, localRectF1, bool1);
       }
@@ -338,44 +342,44 @@ public class ParticipleView
   private void a(RectF paramRectF1, RectF paramRectF2, RectF paramRectF3, RectF paramRectF4, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    int i2 = this.jdField_a_of_type_JavaUtilList.size();
+    int i2 = this.q.size();
     int i1 = 0;
     while (i1 < i2)
     {
-      ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+      ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.q.get(i1);
       Iterator localIterator = ParticipleView.ParticipleEntity.a(localParticipleEntity).iterator();
       while (localIterator.hasNext())
       {
         RectF localRectF = (RectF)localIterator.next();
-        if ((paramRectF1 != null) && (paramRectF2 != null) && (!localRectF.equals(paramRectF3)) && (!localRectF.equals(paramRectF4)) && (((a(paramRectF1, localRectF)) && (a(localRectF, paramRectF2))) || (localRectF.equals(paramRectF2)) || (localRectF.equals(paramRectF1))))
+        if ((paramRectF1 != null) && (paramRectF2 != null) && (!localRectF.equals(paramRectF3)) && (!localRectF.equals(paramRectF4)) && (((b(paramRectF1, localRectF)) && (b(localRectF, paramRectF2))) || (localRectF.equals(paramRectF2)) || (localRectF.equals(paramRectF1))))
         {
-          if (this.jdField_c_of_type_Boolean)
+          if (this.D)
           {
-            if (ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
+            if (ParticipleView.ParticipleEntity.c(localParticipleEntity)) {
               ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
             }
           }
           else {
-            ParticipleView.ParticipleEntity.a(localParticipleEntity, this.jdField_a_of_type_Boolean ^ true);
+            ParticipleView.ParticipleEntity.a(localParticipleEntity, this.B ^ true);
           }
         }
         else if (((paramRectF3.top < localRectF.top) || ((paramRectF3.top == localRectF.top) && (paramBoolean ? paramRectF3.left <= localRectF.left : paramRectF3.left < localRectF.left))) && ((localRectF.top < paramRectF4.top) || ((localRectF.top == paramRectF4.top) && (paramBoolean ? localRectF.left < paramRectF4.left : localRectF.left <= paramRectF4.left)))) {
-          if (this.jdField_c_of_type_Boolean)
+          if (this.D)
           {
-            if (ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
+            if (ParticipleView.ParticipleEntity.c(localParticipleEntity)) {
               ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
             }
           }
-          else if (this.jdField_a_of_type_Boolean)
+          else if (this.B)
           {
-            if (!ParticipleView.ParticipleEntity.a(localParticipleEntity))
+            if (!ParticipleView.ParticipleEntity.c(localParticipleEntity))
             {
               ParticipleView.ParticipleEntity.a(localParticipleEntity, true);
               ParticipleView.ParticipleEntity.a(localParticipleEntity, System.currentTimeMillis());
               localArrayList.add(localParticipleEntity);
             }
           }
-          else if (ParticipleView.ParticipleEntity.a(localParticipleEntity)) {
+          else if (ParticipleView.ParticipleEntity.c(localParticipleEntity)) {
             ParticipleView.ParticipleEntity.a(localParticipleEntity, false);
           }
         }
@@ -383,7 +387,7 @@ public class ParticipleView
       i1 += 1;
     }
     a(localArrayList);
-    paramRectF1 = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$OnParticipleSelectChangeListener;
+    paramRectF1 = this.r;
     if (paramRectF1 != null) {
       paramRectF1.a();
     }
@@ -400,10 +404,10 @@ public class ParticipleView
       i1 = i1 - i3 - this.g * 2;
       float f1;
       float f2;
-      if (ParticipleView.ParticipleEntity.a(paramParticipleEntity))
+      if (ParticipleView.ParticipleEntity.c(paramParticipleEntity))
       {
-        if (ParticipleView.ParticipleEntity.a(paramParticipleEntity) >= 0.0F) {
-          f1 = ParticipleView.ParticipleEntity.a(paramParticipleEntity);
+        if (ParticipleView.ParticipleEntity.d(paramParticipleEntity) >= 0.0F) {
+          f1 = ParticipleView.ParticipleEntity.d(paramParticipleEntity);
         } else {
           f1 = 0.0F;
         }
@@ -411,7 +415,7 @@ public class ParticipleView
       }
       else
       {
-        f2 = this.jdField_a_of_type_Float;
+        f2 = this.y;
         if (f2 >= 0.0F)
         {
           f1 = 0.0F;
@@ -429,16 +433,16 @@ public class ParticipleView
         i5 = (int)((this.g * 2 + i1) * f2 + f3);
         paramRectF = new RectF(f3, i4, i5, i2);
         i5 = this.j;
-        paramCanvas.drawRoundRect(paramRectF, i5, i5, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRoundRect(paramRectF, i5, i5, this.u);
       }
       if (f1 > 0.0F) {
-        if (this.s == 4)
+        if (this.z == 4)
         {
           f2 = i3;
           i1 = (int)((i1 + this.g * 2) * f1 + f2);
           paramRectF = new RectF(f2, i4, i1, i2);
           i1 = this.j;
-          paramCanvas.drawRoundRect(paramRectF, i1, i1, this.jdField_c_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawRoundRect(paramRectF, i1, i1, this.v);
         }
         else
         {
@@ -446,11 +450,11 @@ public class ParticipleView
           i5 = this.g;
           paramRectF = new RectF((int)(f2 + (i5 * 2 + i1) * (1.0F - f1)), i4, i1 + i3 + i5 * 2, i2);
           i1 = this.j;
-          paramCanvas.drawRoundRect(paramRectF, i1, i1, this.jdField_c_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawRoundRect(paramRectF, i1, i1, this.v);
         }
       }
-      paramRectF = this.jdField_a_of_type_AndroidGraphicsPaint;
-      if (ParticipleView.ParticipleEntity.a(paramParticipleEntity)) {
+      paramRectF = this.t;
+      if (ParticipleView.ParticipleEntity.c(paramParticipleEntity)) {
         i1 = this.m;
       } else {
         i1 = this.n;
@@ -458,21 +462,40 @@ public class ParticipleView
       paramRectF.setColor(i1);
       a(paramQQText, paramCanvas, i3 + this.g, i4);
     }
-    this.q = i2;
+    this.w = i2;
+  }
+  
+  private void a(Message paramMessage, QQText paramQQText, EmoticonSpan[] paramArrayOfEmoticonSpan)
+  {
+    if ((paramArrayOfEmoticonSpan != null) && (paramArrayOfEmoticonSpan.length > 0))
+    {
+      this.S = true;
+      int i2 = paramArrayOfEmoticonSpan.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        EmoticonSpan localEmoticonSpan = paramArrayOfEmoticonSpan[i1];
+        if (localEmoticonSpan.getDrawable() == paramMessage.obj) {
+          a(localEmoticonSpan, paramQQText);
+        }
+        i1 += 1;
+      }
+      this.S = false;
+    }
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
     int i2 = (int)paramMotionEvent.getX();
     int i3 = (int)paramMotionEvent.getY();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.q;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       int i1 = 0;
-      int i4 = this.jdField_a_of_type_JavaUtilList.size();
+      int i4 = this.q.size();
       while (i1 < i4)
       {
-        ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
+        ParticipleView.ParticipleEntity localParticipleEntity = (ParticipleView.ParticipleEntity)this.q.get(i1);
         Iterator localIterator = ParticipleView.ParticipleEntity.a(localParticipleEntity).iterator();
         while (localIterator.hasNext())
         {
@@ -484,23 +507,23 @@ public class ParticipleView
           if (localObject != null) {
             if (paramMotionEvent.getAction() == 0)
             {
-              this.jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-              this.jdField_b_of_type_AndroidGraphicsRectF = localRectF;
-              this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity = localParticipleEntity;
+              this.E = localRectF;
+              this.F = localRectF;
+              this.G = localParticipleEntity;
             }
             else if (paramMotionEvent.getAction() == 2)
             {
-              if (this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity == null)
+              if (this.G == null)
               {
-                this.jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-                this.jdField_b_of_type_AndroidGraphicsRectF = localRectF;
-                this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity = localParticipleEntity;
-                f();
+                this.E = localRectF;
+                this.F = localRectF;
+                this.G = localParticipleEntity;
+                g();
               }
-              else if (!((RectF)localObject).equals(this.jdField_a_of_type_AndroidGraphicsRectF))
+              else if (!((RectF)localObject).equals(this.E))
               {
-                a(this.jdField_a_of_type_AndroidGraphicsRectF, (RectF)localObject);
-                this.jdField_a_of_type_AndroidGraphicsRectF = ((RectF)localObject);
+                a(this.E, (RectF)localObject);
+                this.E = ((RectF)localObject);
               }
             }
           }
@@ -512,7 +535,7 @@ public class ParticipleView
   
   private void a(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetScrollView != null) {
+    if (this.N != null) {
       return;
     }
     if (paramView != null)
@@ -520,7 +543,7 @@ public class ParticipleView
       paramView = (View)paramView.getParent();
       if ((paramView instanceof ScrollView))
       {
-        this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)paramView);
+        this.N = ((ScrollView)paramView);
         return;
       }
       a(paramView);
@@ -550,8 +573,8 @@ public class ParticipleView
         {
           localObject = str.substring(i3, i5);
           float f1 = paramInt1;
-          paramCanvas.drawText((String)localObject, f1, this.e + paramInt2, this.jdField_a_of_type_AndroidGraphicsPaint);
-          i1 = (int)(f1 + this.jdField_a_of_type_AndroidGraphicsPaint.measureText((String)localObject));
+          paramCanvas.drawText((String)localObject, f1, this.e + paramInt2, this.t);
+          i1 = (int)(f1 + this.t.measureText((String)localObject));
         }
         Object localObject = arrayOfObject[i2];
         paramInt1 = i1;
@@ -561,6 +584,7 @@ public class ParticipleView
           paramInt1 = i1;
           if (localObject != null)
           {
+            ((Drawable)localObject).setCallback(this);
             paramInt1 = this.f;
             i5 = this.e;
             ((Drawable)localObject).setBounds(i1, paramInt2 + paramInt1, i1 + i5, paramInt1 + paramInt2 + i5);
@@ -572,28 +596,40 @@ public class ParticipleView
         i1 = i4;
       }
       if (i1 < str.length()) {
-        paramCanvas.drawText(str.substring(i1), paramInt1, paramInt2 + this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(str.substring(i1), paramInt1, paramInt2 + this.e, this.t);
       }
     }
     else
     {
-      paramCanvas.drawText(str, paramInt1, paramInt2 + this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(str, paramInt1, paramInt2 + this.e, this.t);
     }
   }
   
-  private void a(ParticipleView.ParticipleEntity paramParticipleEntity)
+  private void a(Object paramObject, QQText paramQQText)
   {
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramParticipleEntity);
-    b(localArrayList);
-  }
-  
-  private void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    int i2 = paramQQText.getSpanStart(paramObject);
+    int i3 = paramQQText.getSpanEnd(paramObject);
+    SpanWatcher[] arrayOfSpanWatcher = (SpanWatcher[])paramQQText.getSpans(i2, i3, SpanWatcher.class);
+    if ((arrayOfSpanWatcher != null) && (arrayOfSpanWatcher.length > 0))
     {
-      paramString = new QQText(paramString, 3);
-      this.jdField_a_of_type_JavaUtilList.add(new ParticipleView.ParticipleEntity(paramString, null));
+      int i4 = arrayOfSpanWatcher.length;
+      int i1 = 0;
+      while (i1 < i4)
+      {
+        SpanWatcher localSpanWatcher = arrayOfSpanWatcher[i1];
+        try
+        {
+          localSpanWatcher.onSpanChanged(paramQQText, paramObject, i2, i3, i2, i3);
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Exception: ");
+          localStringBuilder.append(localException.getMessage());
+          QLog.e("ParticipleView", 1, localStringBuilder.toString());
+        }
+        i1 += 1;
+      }
     }
   }
   
@@ -610,17 +646,12 @@ public class ParticipleView
     invalidate();
   }
   
-  private boolean a(RectF paramRectF1, RectF paramRectF2)
-  {
-    return (paramRectF1.top < paramRectF2.top) || ((paramRectF1.top == paramRectF2.top) && (paramRectF1.left < paramRectF2.left));
-  }
-  
   private boolean a(ParticipleView.ParticipleEntity paramParticipleEntity)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!ParticipleView.ParticipleEntity.a(paramParticipleEntity).isEmpty()))
+    if ((this.C) && (!ParticipleView.ParticipleEntity.a(paramParticipleEntity).isEmpty()))
     {
       a(this);
-      if (this.jdField_a_of_type_ComTencentWidgetScrollView != null)
+      if (this.N != null)
       {
         paramParticipleEntity = ParticipleView.ParticipleEntity.a(paramParticipleEntity).iterator();
         int i1;
@@ -633,10 +664,10 @@ public class ParticipleView
           }
           int i3 = (int)((RectF)paramParticipleEntity.next()).top;
           i1 = i2;
-          if (this.e + i3 + this.f * 2 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() > 0)
+          if (this.e + i3 + this.f * 2 - this.N.getScrollY() > 0)
           {
             i1 = i2;
-            if (i3 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() < this.jdField_a_of_type_ComTencentWidgetScrollView.getHeight()) {
+            if (i3 - this.N.getScrollY() < this.N.getHeight()) {
               i1 = 1;
             }
           }
@@ -666,7 +697,7 @@ public class ParticipleView
   {
     int i3;
     if (getWidth() <= 0) {
-      i3 = this.r;
+      i3 = this.x;
     } else {
       i3 = getWidth();
     }
@@ -714,20 +745,20 @@ public class ParticipleView
         localObject = str2.substring(0, i1 + 1);
         i6 = i1;
       }
-      if (a(new QQText((CharSequence)localObject, 3)) + paramInt1 + this.g * 2 + getPaddingRight() > i3)
+      if (a(new QQText((CharSequence)localObject, 5)) + paramInt1 + this.g * 2 + getPaddingRight() > i3)
       {
-        this.jdField_a_of_type_AndroidGraphicsPoint.x = getPaddingLeft();
-        localObject = this.jdField_a_of_type_AndroidGraphicsPoint;
+        this.s.x = getPaddingLeft();
+        localObject = this.s;
         ((Point)localObject).y = (paramInt2 + this.e + this.h + this.f * 2);
         if (i1 <= 0)
         {
-          a(((Point)localObject).x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramQQText, paramParticipleEntity, paramCanvas);
+          a(((Point)localObject).x, this.s.y, paramQQText, paramParticipleEntity, paramCanvas);
         }
         else
         {
-          c(paramInt1, paramInt2, new QQText(str2.substring(0, i1), 3), paramParticipleEntity, paramCanvas);
+          c(paramInt1, paramInt2, new QQText(str2.substring(0, i1), 5), paramParticipleEntity, paramCanvas);
           localObject = str2.substring(i1, i10);
-          a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, new QQText((CharSequence)localObject, 3), paramParticipleEntity, paramCanvas);
+          a(this.s.x, this.s.y, new QQText((CharSequence)localObject, 5), paramParticipleEntity, paramCanvas);
         }
         i1 = 1;
         break label396;
@@ -740,25 +771,47 @@ public class ParticipleView
     }
   }
   
+  private void b(ParticipleView.ParticipleEntity paramParticipleEntity)
+  {
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramParticipleEntity);
+    b(localArrayList);
+  }
+  
+  private void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = new QQText(paramString, 5);
+      this.q.add(new ParticipleView.ParticipleEntity(paramString, null));
+    }
+  }
+  
   private void b(List<ParticipleView.ParticipleEntity> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    this.Q.addAll(paramList);
+    if (this.P == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleView", 2, "selectedAnimation create");
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.p);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ParticipleView.1(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.P = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.P.setDuration(this.p);
+      this.P.setRepeatCount(-1);
+      this.P.addUpdateListener(new ParticipleView.1(this));
+      this.P.start();
     }
   }
   
-  private void c()
+  private boolean b(RectF paramRectF1, RectF paramRectF2)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
+    return (paramRectF1.top < paramRectF2.top) || ((paramRectF1.top == paramRectF2.top) && (paramRectF1.left < paramRectF2.left));
+  }
+  
+  private int c()
+  {
+    a(null);
+    return this.w;
   }
   
   private void c(int paramInt1, int paramInt2, QQText paramQQText, ParticipleView.ParticipleEntity paramParticipleEntity, Canvas paramCanvas)
@@ -774,73 +827,47 @@ public class ParticipleView
   
   private void d()
   {
-    f();
-    ParticipleView.ParticipleEntity localParticipleEntity = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity;
-    if ((localParticipleEntity != null) && (ParticipleView.ParticipleEntity.a(localParticipleEntity))) {
-      ReportController.b(null, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
-    }
+    ReportController.b(null, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
   }
   
   private void e()
   {
-    f();
+    g();
+    ParticipleView.ParticipleEntity localParticipleEntity = this.G;
+    if ((localParticipleEntity != null) && (ParticipleView.ParticipleEntity.c(localParticipleEntity))) {
+      ReportController.b(null, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
+    }
   }
   
   private void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity;
+    g();
+  }
+  
+  private void g()
+  {
+    Object localObject = this.G;
     if (localObject != null)
     {
-      this.jdField_c_of_type_Boolean = ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)localObject);
-      if (ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity))
+      this.D = ParticipleView.ParticipleEntity.c((ParticipleView.ParticipleEntity)localObject);
+      if (ParticipleView.ParticipleEntity.c(this.G))
       {
-        ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity, false);
-        this.jdField_a_of_type_Boolean = false;
+        ParticipleView.ParticipleEntity.a(this.G, false);
+        this.B = false;
         invalidate();
       }
       else
       {
-        ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity, true);
-        this.jdField_a_of_type_Boolean = true;
-        ParticipleView.ParticipleEntity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity, System.currentTimeMillis());
-        a(this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity);
+        ParticipleView.ParticipleEntity.a(this.G, true);
+        this.B = true;
+        ParticipleView.ParticipleEntity.a(this.G, System.currentTimeMillis());
+        b(this.G);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$OnParticipleSelectChangeListener;
+      localObject = this.r;
       if (localObject != null) {
         ((ParticipleView.OnParticipleSelectChangeListener)localObject).a();
       }
     }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      int i1 = 0;
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
-      while (i1 < i2)
-      {
-        localObject = (ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)localObject))
-        {
-          localObject = ((ParticipleView.ParticipleEntity)localObject).a.toString();
-          boolean bool1 = a((String)localObject);
-          if (localStringBuilder.length() > 0)
-          {
-            boolean bool2 = this.jdField_d_of_type_Boolean;
-            if ((bool2 != bool1) || (!bool2)) {
-              localStringBuilder.append(" ");
-            }
-          }
-          this.jdField_d_of_type_Boolean = a((String)localObject);
-          localStringBuilder.append((String)localObject);
-        }
-        i1 += 1;
-      }
-    }
-    return localStringBuilder.toString();
   }
   
   public void a()
@@ -850,7 +877,7 @@ public class ParticipleView
     }
     setAlpha(0.0F);
     setVisibility(0);
-    this.jdField_a_of_type_Float = 0.0F;
+    this.y = 0.0F;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(this.o);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
@@ -867,16 +894,16 @@ public class ParticipleView
     if (QLog.isColorLevel()) {
       QLog.d("ParticipleView", 2, "resetState invalidate()");
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.q;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
+      int i2 = this.q.size();
       int i1 = 0;
       while (i1 < i2)
       {
-        ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1), false);
+        ParticipleView.ParticipleEntity.a((ParticipleView.ParticipleEntity)this.q.get(i1), false);
         a(this);
-        localObject = this.jdField_a_of_type_ComTencentWidgetScrollView;
+        localObject = this.N;
         if (localObject != null) {
           ((ScrollView)localObject).scrollTo(0, 0);
         }
@@ -888,14 +915,72 @@ public class ParticipleView
   
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if (AppSetting.jdField_d_of_type_Boolean)
+    if (AppSetting.e)
     {
-      ParticipleView.ParticipleExploreByTouchHelper localParticipleExploreByTouchHelper = this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleExploreByTouchHelper;
+      ParticipleView.ParticipleExploreByTouchHelper localParticipleExploreByTouchHelper = this.L;
       if ((localParticipleExploreByTouchHelper != null) && (localParticipleExploreByTouchHelper.dispatchHoverEvent(paramMotionEvent))) {
         return true;
       }
     }
     return super.dispatchHoverEvent(paramMotionEvent);
+  }
+  
+  public String getSelectedParticiple()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = this.q;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      int i1 = 0;
+      int i2 = this.q.size();
+      while (i1 < i2)
+      {
+        localObject = (ParticipleView.ParticipleEntity)this.q.get(i1);
+        if (ParticipleView.ParticipleEntity.c((ParticipleView.ParticipleEntity)localObject))
+        {
+          localObject = ((ParticipleView.ParticipleEntity)localObject).a.toString();
+          boolean bool1 = a((String)localObject);
+          if (localStringBuilder.length() > 0)
+          {
+            boolean bool2 = this.O;
+            if ((bool2 != bool1) || (!bool2)) {
+              localStringBuilder.append(" ");
+            }
+          }
+          this.O = a((String)localObject);
+          localStringBuilder.append((String)localObject);
+        }
+        i1 += 1;
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what != 1) {
+      return false;
+    }
+    Iterator localIterator1 = this.Q.iterator();
+    while (localIterator1.hasNext())
+    {
+      Iterator localIterator2 = ParticipleView.ParticipleEntity.b((ParticipleView.ParticipleEntity)localIterator1.next()).iterator();
+      while (localIterator2.hasNext())
+      {
+        QQText localQQText = (QQText)localIterator2.next();
+        a(paramMessage, localQQText, (EmoticonSpan[])localQQText.getSpans(0, localQQText.length(), EmoticonSpan.class));
+      }
+    }
+    return true;
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    super.invalidateDrawable(paramDrawable);
+    Message localMessage = this.R.obtainMessage(1);
+    localMessage.obj = paramDrawable;
+    this.R.removeMessages(1);
+    this.R.sendMessageDelayed(localMessage, 100L);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -907,12 +992,12 @@ public class ParticipleView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i2 = getDefaultSize(getSuggestedMinimumWidth(), paramInt1);
-    this.r = i2;
+    this.x = i2;
     int i1 = getDefaultSize(getSuggestedMinimumHeight(), paramInt2);
     if (View.MeasureSpec.getMode(paramInt2) == 1073741824) {
       paramInt1 = View.MeasureSpec.getSize(paramInt2);
     } else {
-      paramInt1 = a();
+      paramInt1 = c();
     }
     if (paramInt1 <= 0) {
       paramInt1 = i1;
@@ -941,59 +1026,59 @@ public class ParticipleView
         {
           float f1 = (int)paramMotionEvent.getX();
           float f3 = (int)paramMotionEvent.getY();
-          if (this.jdField_a_of_type_Byte == 0)
+          if (this.K == 0)
           {
-            float f2 = Math.abs(f1 - this.jdField_b_of_type_Float);
-            f3 = Math.abs(f3 - this.jdField_c_of_type_Float);
-            i2 = this.u;
+            float f2 = Math.abs(f1 - this.H);
+            f3 = Math.abs(f3 - this.I);
+            i2 = this.M;
             if ((f2 > i2) || (f3 > i2)) {
               if (f3 > f2)
               {
-                this.jdField_a_of_type_Byte = 2;
+                this.K = 2;
               }
               else
               {
-                this.jdField_a_of_type_Byte = 1;
-                c();
-                f();
-                if (f1 - this.jdField_b_of_type_Float > 0.0F) {
+                this.K = 1;
+                d();
+                g();
+                if (f1 - this.H > 0.0F) {
                   i1 = 4;
                 }
-                this.s = i1;
+                this.z = i1;
               }
             }
           }
-          if (this.jdField_a_of_type_Byte == 0) {
+          if (this.K == 0) {
             return true;
           }
-          this.jdField_b_of_type_Boolean = true;
+          this.C = true;
           localObject = getParent();
-          if (this.jdField_a_of_type_Byte == 1) {
+          if (this.K == 1) {
             bool = true;
           }
           ((ViewParent)localObject).requestDisallowInterceptTouchEvent(bool);
-          if (this.jdField_a_of_type_Byte != 1) {
+          if (this.K != 1) {
             break label301;
           }
           a(paramMotionEvent);
           return true;
         }
       }
-      else if (!this.jdField_b_of_type_Boolean)
+      else if (!this.C)
       {
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 500L) {
-          e();
+        if (System.currentTimeMillis() - this.J >= 500L) {
+          f();
         } else {
-          d();
+          e();
         }
       }
       getParent().requestDisallowInterceptTouchEvent(false);
-      this.jdField_a_of_type_Byte = 0;
-      this.jdField_a_of_type_AndroidGraphicsRectF = null;
-      this.jdField_b_of_type_AndroidGraphicsRectF = null;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$ParticipleEntity = null;
-      this.t = 0;
-      this.jdField_b_of_type_Boolean = false;
+      this.K = 0;
+      this.E = null;
+      this.F = null;
+      this.G = null;
+      this.A = 0;
+      this.C = false;
       if (QLog.isColorLevel()) {
         QLog.d("ParticipleView", 2, "ACTION_UP invalidate()");
       }
@@ -1002,27 +1087,34 @@ public class ParticipleView
       return super.onTouchEvent(paramMotionEvent);
     }
     getParent().requestDisallowInterceptTouchEvent(true);
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Float = paramMotionEvent.getX();
-    this.jdField_c_of_type_Float = paramMotionEvent.getY();
+    this.K = 0;
+    this.J = System.currentTimeMillis();
+    this.C = false;
+    this.H = paramMotionEvent.getX();
+    this.I = paramMotionEvent.getY();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onTouchEvent ACTION_DOWN  downX -> ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
+      ((StringBuilder)localObject).append(this.H);
       ((StringBuilder)localObject).append(", downY -> ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Float);
+      ((StringBuilder)localObject).append(this.I);
       QLog.d("ParticipleView", 2, ((StringBuilder)localObject).toString());
     }
     a(paramMotionEvent);
     return true;
   }
   
+  public void requestLayout()
+  {
+    if (!this.S) {
+      super.requestLayout();
+    }
+  }
+  
   public void setOnParticipleSelectChangeListener(ParticipleView.OnParticipleSelectChangeListener paramOnParticipleSelectChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView$OnParticipleSelectChangeListener = paramOnParticipleSelectChangeListener;
+    this.r = paramOnParticipleSelectChangeListener;
   }
   
   public void setParticipleItems(List<String> paramList)
@@ -1030,7 +1122,7 @@ public class ParticipleView
     int i2 = 0;
     int i1 = i2;
     if (paramList != null) {
-      if (paramList.size() != this.jdField_a_of_type_JavaUtilList.size())
+      if (paramList.size() != this.q.size())
       {
         i1 = i2;
       }
@@ -1040,7 +1132,7 @@ public class ParticipleView
         i1 = 0;
         while (i1 < i3)
         {
-          if (!TextUtils.equals((CharSequence)paramList.get(i1), ((ParticipleView.ParticipleEntity)this.jdField_a_of_type_JavaUtilList.get(i1)).a.toString()))
+          if (!TextUtils.equals((CharSequence)paramList.get(i1), ((ParticipleView.ParticipleEntity)this.q.get(i1)).a.toString()))
           {
             i1 = i2;
             break label96;
@@ -1055,10 +1147,10 @@ public class ParticipleView
     {
       if ((paramList != null) && (paramList.size() > 0))
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.q.clear();
         paramList = paramList.iterator();
         while (paramList.hasNext()) {
-          a((String)paramList.next());
+          b((String)paramList.next());
         }
       }
     }
@@ -1069,13 +1161,18 @@ public class ParticipleView
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.t.setColor(paramInt);
     invalidate();
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.participle.ParticipleView
  * JD-Core Version:    0.7.0.1
  */

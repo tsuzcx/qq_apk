@@ -13,26 +13,38 @@ class AEEditorVideoEditFragment$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AEQLog.b(AEEditorVideoEditFragment.h(), "[musicBroadcastReceiver.onReceive]");
-    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) {
+    AEQLog.b(AEEditorVideoEditFragment.aj(), "[musicBroadcastReceiver.onReceive]");
+    if (!"action_dispatch_music_event".equals(paramIntent.getAction())) {
       return;
     }
+    paramContext = paramIntent.getStringExtra("event");
     AEEditorVideoEditFragment.a(this.a, AEEditorMusicHelper.a(paramIntent));
-    if (AEEditorVideoEditFragment.a(this.a) == null) {
-      return;
-    }
-    if (!this.a.a)
+    AEEditorVideoEditFragment.a(this.a, paramIntent);
+    if ("kTribeSelectMusic".equals(paramContext))
     {
-      paramContext = this.a;
-      AEEditorVideoEditFragment.a(paramContext, AEEditorVideoEditFragment.a(paramContext));
+      AEEditorVideoEditFragment.a(this.a);
       return;
     }
-    AEQLog.b(AEEditorVideoEditFragment.h(), "[musicBroadcastReceiver.onReceive], fragment not resumed");
+    if ("kTribeClipsMusic".equals(paramContext))
+    {
+      AEEditorVideoEditFragment.b(this.a);
+      return;
+    }
+    if ("kTribeDownloadMusic".equals(paramContext))
+    {
+      AEEditorVideoEditFragment.c(this.a);
+      return;
+    }
+    paramIntent = AEEditorVideoEditFragment.aj();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[musicBroadcastReceiver.onReceive],invalid event = ");
+    localStringBuilder.append(paramContext);
+    AEQLog.b(paramIntent, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

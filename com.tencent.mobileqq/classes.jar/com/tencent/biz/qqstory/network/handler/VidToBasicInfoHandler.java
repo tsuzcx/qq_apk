@@ -24,22 +24,20 @@ public class VidToBasicInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetVideoFullInfoListRequest, GetVideoFullInfoListResponse>
 {
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  protected List<String> a;
-  private final boolean jdField_a_of_type_Boolean;
+  private static ConcurrentHashMap<String, Long> d = new ConcurrentHashMap();
+  protected List<String> c = new ArrayList();
+  private final boolean e;
   
   public VidToBasicInfoHandler(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     a(paramList);
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
   }
   
   public VidToBasicInfoHandler(List<String> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     a(paramList);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   private void a(List<String> paramList)
@@ -51,7 +49,7 @@ public class VidToBasicInfoHandler
       {
         String str = (String)paramList.next();
         if (!StoryVideoItem.isFakeVid(str)) {
-          this.jdField_a_of_type_JavaUtilList.add(str);
+          this.c.add(str);
         }
       }
     }
@@ -68,28 +66,28 @@ public class VidToBasicInfoHandler
     if ((paramGetVideoFullInfoListResponse != null) && (!paramErrorMessage.isFail()))
     {
       paramGetVideoFullInfoListRequest = (StoryManager)SuperManager.a(5);
-      if (paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList != null)
+      if (paramGetVideoFullInfoListResponse.a != null)
       {
-        paramErrorMessage = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+        paramErrorMessage = paramGetVideoFullInfoListResponse.a.iterator();
         while (paramErrorMessage.hasNext()) {
           ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
         }
       }
-      paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList = paramGetVideoFullInfoListRequest.a(paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList);
-      localGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList;
+      paramGetVideoFullInfoListResponse.a = paramGetVideoFullInfoListRequest.a(paramGetVideoFullInfoListResponse.a);
+      localGetVideoBasicInfoListEvent.a = paramGetVideoFullInfoListResponse.a;
       ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
       StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
-      b();
+      c();
       return;
     }
-    c();
-    localGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    d();
+    localGetVideoBasicInfoListEvent.g = paramErrorMessage;
     StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
-    paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListRequest.jdField_a_of_type_JavaUtilList.iterator();
+    paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListRequest.e.iterator();
     while (paramGetVideoFullInfoListRequest.hasNext())
     {
       paramGetVideoFullInfoListResponse = (String)paramGetVideoFullInfoListRequest.next();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramGetVideoFullInfoListResponse);
+      d.remove(paramGetVideoFullInfoListResponse);
     }
   }
   
@@ -97,14 +95,14 @@ public class VidToBasicInfoHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VidToBasicInfoHandler{mVidList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler
  * JD-Core Version:    0.7.0.1
  */

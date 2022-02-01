@@ -14,7 +14,7 @@ class SwiftBrowserOfflineHandler$1
     this.this$0.b();
     long l = System.currentTimeMillis();
     boolean bool;
-    if (SwiftBrowserOfflineHandler.c.get() == 3) {
+    if (SwiftBrowserOfflineHandler.g.get() == 3) {
       bool = HtmlOffline.a(BaseApplication.getContext().getApplicationContext(), this.a, new SwiftBrowserOfflineHandler.1.1(this, l));
     } else {
       bool = false;
@@ -26,7 +26,7 @@ class SwiftBrowserOfflineHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class QQShopFakeUrlHelper
 {
   public static String a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     JSONObject localJSONObject = a();
@@ -21,7 +21,7 @@ public class QQShopFakeUrlHelper
       return "";
     }
     paramString = localJSONObject.optString(paramString);
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     try
@@ -85,7 +85,7 @@ public class QQShopFakeUrlHelper
   public static String b(String paramString)
   {
     paramString = a(paramString);
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     try
@@ -102,7 +102,7 @@ public class QQShopFakeUrlHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.conf.QQShopFakeUrlHelper
  * JD-Core Version:    0.7.0.1
  */

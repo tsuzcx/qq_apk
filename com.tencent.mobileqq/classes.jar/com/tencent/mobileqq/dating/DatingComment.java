@@ -21,17 +21,17 @@ import org.json.JSONObject;
 
 public class DatingComment
 {
-  public int a;
-  public long a;
-  public DatingStranger a;
   public String a;
-  public DatingStranger b;
   public String b;
   public String c;
-  public String d;
+  public long d;
   public String e;
+  public DatingStranger f;
+  public DatingStranger g;
+  public String h;
+  public int i;
   @notColumn
-  public String f;
+  public String j;
   
   public static DatingComment a(appoint_define.DateComment paramDateComment)
   {
@@ -42,34 +42,34 @@ public class DatingComment
         return null;
       }
       DatingComment localDatingComment = new DatingComment();
-      localDatingComment.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
-      localDatingComment.jdField_b_of_type_JavaLangString = DatingUtil.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
-      localDatingComment.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
+      localDatingComment.a = paramDateComment.str_comment_id.get();
+      localDatingComment.b = DatingUtil.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
+      localDatingComment.d = paramDateComment.uint32_time.get();
       if (paramDateComment.msg_content.has()) {
         localObject1 = (appoint_define.RichText)paramDateComment.msg_content.get();
       } else {
         localObject1 = null;
       }
       localDatingComment.c = a((appoint_define.RichText)localObject1);
-      localDatingComment.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
-      int i;
+      localDatingComment.f = DatingStranger.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
+      int k;
       if (paramDateComment.uint32_flag.has()) {
-        i = paramDateComment.uint32_flag.get();
+        k = paramDateComment.uint32_flag.get();
       } else {
-        i = 0;
+        k = 0;
       }
-      localDatingComment.jdField_a_of_type_Int = i;
+      localDatingComment.i = k;
       Object localObject1 = localObject2;
       if (paramDateComment.msg_reply_info.has()) {
         localObject1 = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();
       }
       if (localObject1 != null)
       {
-        localDatingComment.d = ((appoint_define.ReplyInfo)localObject1).str_comment_id.get();
-        localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a((appoint_define.StrangerInfo)((appoint_define.ReplyInfo)localObject1).msg_stranger_info.get());
+        localDatingComment.e = ((appoint_define.ReplyInfo)localObject1).str_comment_id.get();
+        localDatingComment.g = DatingStranger.a((appoint_define.StrangerInfo)((appoint_define.ReplyInfo)localObject1).msg_stranger_info.get());
       }
-      localDatingComment.f = DatingUtil.a(localDatingComment.jdField_a_of_type_Long, true);
-      localDatingComment.e = DatingUtil.a(localDatingComment.jdField_a_of_type_Long, false);
+      localDatingComment.j = DatingUtil.a(localDatingComment.d, true);
+      localDatingComment.h = DatingUtil.a(localDatingComment.d, false);
       return localDatingComment;
     }
     return null;
@@ -83,12 +83,12 @@ public class DatingComment
     DatingComment localDatingComment = new DatingComment();
     try
     {
-      localDatingComment.jdField_a_of_type_JavaLangString = paramJSONObject.getString("commentId");
-      localDatingComment.jdField_b_of_type_JavaLangString = paramJSONObject.getString("datingId");
+      localDatingComment.a = paramJSONObject.getString("commentId");
+      localDatingComment.b = paramJSONObject.getString("datingId");
       localDatingComment.c = paramJSONObject.getString("content");
-      localDatingComment.jdField_a_of_type_Long = paramJSONObject.getLong("time");
-      localDatingComment.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a(paramJSONObject.getJSONObject("puber"));
-      localDatingComment.jdField_a_of_type_Int = paramJSONObject.getInt("flag");
+      localDatingComment.d = paramJSONObject.getLong("time");
+      localDatingComment.f = DatingStranger.a(paramJSONObject.getJSONObject("puber"));
+      localDatingComment.i = paramJSONObject.getInt("flag");
     }
     catch (JSONException localJSONException1)
     {
@@ -96,7 +96,7 @@ public class DatingComment
     }
     try
     {
-      localDatingComment.d = paramJSONObject.getString("replyId");
+      localDatingComment.e = paramJSONObject.getString("replyId");
     }
     catch (JSONException localJSONException2)
     {
@@ -104,7 +104,7 @@ public class DatingComment
     }
     try
     {
-      localDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger = DatingStranger.a(paramJSONObject.getJSONObject("replyer"));
+      localDatingComment.g = DatingStranger.a(paramJSONObject.getJSONObject("replyer"));
       return localDatingComment;
     }
     catch (JSONException paramJSONObject)
@@ -149,16 +149,16 @@ public class DatingComment
           }
           if (paramRichText != null)
           {
-            int i;
+            int k;
             if (paramRichText.uint32_index.has()) {
-              i = paramRichText.uint32_index.get();
+              k = paramRichText.uint32_index.get();
             } else {
-              i = -1;
+              k = -1;
             }
-            if (i >= 0)
+            if (k >= 0)
             {
               localStringBuilder.append('\024');
-              localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
+              localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(k));
             }
           }
         }
@@ -173,23 +173,23 @@ public class DatingComment
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       JSONArray localJSONArray = new JSONArray();
-      int i = 0;
+      int k = 0;
       paramList = paramList.iterator();
-      int j;
+      int m;
       do
       {
         if (!paramList.hasNext()) {
           break;
         }
         JSONObject localJSONObject = a((DatingComment)paramList.next());
-        j = i;
+        m = k;
         if (localJSONObject != null)
         {
           localJSONArray.put(localJSONObject);
-          j = i + 1;
+          m = k + 1;
         }
-        i = j;
-      } while (j < 20);
+        k = m;
+      } while (m < 20);
       return localJSONArray.toString();
     }
     return "";
@@ -203,14 +203,14 @@ public class DatingComment
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("commentId", paramDatingComment.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("datingId", paramDatingComment.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("commentId", paramDatingComment.a);
+      localJSONObject.put("datingId", paramDatingComment.b);
       localJSONObject.put("content", paramDatingComment.c);
-      localJSONObject.put("time", paramDatingComment.jdField_a_of_type_Long);
-      localJSONObject.put("replyId", paramDatingComment.d);
-      localJSONObject.put("puber", DatingStranger.a(paramDatingComment.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger));
-      localJSONObject.put("replyer", DatingStranger.a(paramDatingComment.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger));
-      localJSONObject.put("flag", paramDatingComment.jdField_a_of_type_Int);
+      localJSONObject.put("time", paramDatingComment.d);
+      localJSONObject.put("replyId", paramDatingComment.e);
+      localJSONObject.put("puber", DatingStranger.a(paramDatingComment.f));
+      localJSONObject.put("replyer", DatingStranger.a(paramDatingComment.g));
+      localJSONObject.put("flag", paramDatingComment.i);
       return localJSONObject;
     }
     catch (JSONException paramDatingComment)
@@ -230,15 +230,15 @@ public class DatingComment
       try
       {
         paramString = new JSONArray(paramString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
+        int m = paramString.length();
+        int k = 0;
+        while (k < m)
         {
-          DatingComment localDatingComment = a(paramString.getJSONObject(i));
+          DatingComment localDatingComment = a(paramString.getJSONObject(k));
           if (localDatingComment != null) {
             paramList.add(localDatingComment);
           }
-          i += 1;
+          k += 1;
         }
         return;
       }
@@ -263,14 +263,14 @@ public class DatingComment
     }
     paramObject = (DatingComment)paramObject;
     boolean bool1;
-    if ((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null))
+    if ((this.a != null) || (paramObject.a != null))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       bool1 = bool2;
       if (str != null)
       {
         bool1 = bool2;
-        if (!str.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
+        if (!str.equals(paramObject.a)) {}
       }
     }
     else
@@ -282,31 +282,31 @@ public class DatingComment
   
   public int hashCode()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return "".hashCode();
     }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    return this.a.hashCode();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",");
     localStringBuilder.append(this.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",");
     localStringBuilder.append(this.d);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDatingDatingStranger);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqDatingDatingStranger);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.i);
     localStringBuilder.append(",");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
@@ -314,7 +314,7 @@ public class DatingComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingComment
  * JD-Core Version:    0.7.0.1
  */

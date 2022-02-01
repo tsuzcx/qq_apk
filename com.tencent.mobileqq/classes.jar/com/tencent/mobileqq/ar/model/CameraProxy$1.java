@@ -10,29 +10,29 @@ class CameraProxy$1
   
   public void run()
   {
-    if ((CameraProxy.a(this.this$0) == 1) && (CameraProxy.a(this.this$0) != null)) {}
+    if ((CameraProxy.a(this.this$0) == 1) && (CameraProxy.b(this.this$0) != null)) {}
     for (;;)
     {
       try
       {
         QLog.i("CameraProxy", 2, "openCameraAync.");
         i = -3;
-        if (CameraProxy.b(this.this$0) < 10)
+        if (CameraProxy.c(this.this$0) < 10)
         {
-          CameraProxy.c(this.this$0);
+          CameraProxy.d(this.this$0);
           System.currentTimeMillis();
-          if (CameraProxy.b(this.this$0) == 1) {
-            i = CameraProxy.a(this.this$0).a(this.a);
+          if (CameraProxy.c(this.this$0) == 1) {
+            i = CameraProxy.b(this.this$0).a(this.a);
           } else {
-            i = CameraProxy.a(this.this$0).e();
+            i = CameraProxy.b(this.this$0).e();
           }
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("try to open camera. mCurOpenCameraTryTimes = ");
-          localStringBuilder1.append(CameraProxy.b(this.this$0));
+          localStringBuilder1.append(CameraProxy.c(this.this$0));
           localStringBuilder1.append(", MAX_OPEN_CAMERA_TRY_TIMES = ");
           localStringBuilder1.append(10);
           QLog.i("CameraProxy", 2, localStringBuilder1.toString());
-          if (CameraProxy.a(this.this$0) == null) {
+          if (CameraProxy.b(this.this$0) == null) {
             break label536;
           }
           if (CameraProxy.a(this.this$0) == 1) {
@@ -44,7 +44,7 @@ class CameraProxy$1
           QLog.i("CameraProxy", 2, localStringBuilder1.toString());
           return;
           Thread.currentThread();
-          Thread.sleep(CameraProxy.a(this.this$0));
+          Thread.sleep(CameraProxy.e(this.this$0));
           if (CameraProxy.a(this.this$0) == 1) {
             continue;
           }
@@ -114,7 +114,7 @@ class CameraProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy.1
  * JD-Core Version:    0.7.0.1
  */

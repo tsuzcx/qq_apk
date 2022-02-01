@@ -10,12 +10,12 @@ class FileManagerUtilImpl$2
   
   public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    return (int)(paramFileInfo2.g() / 1000L - paramFileInfo1.g() / 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileManagerUtilImpl.2
  * JD-Core Version:    0.7.0.1
  */

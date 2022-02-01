@@ -17,22 +17,22 @@ class VideoFeedsShareController$AddColorNoteAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (VideoFeedsShareController.a(this.a) != null)
+    if (VideoFeedsShareController.l(this.a) != null)
     {
-      if (VideoFeedsShareController.a(this.a).canAddColorNote())
+      if (VideoFeedsShareController.l(this.a).canAddColorNote())
       {
         QLog.d("VideoFeedsShareController", 2, "mColorNoteController ：add colorNote");
-        VideoFeedsShareController.a(this.a).insertColorNote();
-        QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690892), 5000).a();
+        VideoFeedsShareController.l(this.a).insertColorNote();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131887831), 5000).show();
         return;
       }
-      VideoFeedsShareController.a(this.a).onCannotAdd();
+      VideoFeedsShareController.l(this.a).onCannotAdd();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.AddColorNoteAction
  * JD-Core Version:    0.7.0.1
  */

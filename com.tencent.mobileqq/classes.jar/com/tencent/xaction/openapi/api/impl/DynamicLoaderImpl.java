@@ -14,6 +14,8 @@ import com.tencent.xaction.openapi.api.IDynamicLoader;
 import com.tencent.xaction.openapi.api.IXADownload;
 import dalvik.system.DexClassLoader;
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +27,7 @@ public class DynamicLoaderImpl
   private static final boolean DEBUG = false;
   public static final File INSTALL_ROOT = new File(BaseApplication.getContext().getFilesDir(), "xactionlib");
   private static final File OPTIMIZED_DIRECTORY = new File(INSTALL_ROOT, "opt");
+  private static final String TAG = "DynamicLoader";
   private DexClassLoader classLoader = null;
   private boolean isLoad = false;
   
@@ -55,6 +58,10 @@ public class DynamicLoaderImpl
         this.classLoader = localDexClassLoader;
         this.isLoad = true;
         showTestToast(BaseApplication.getContext(), "XA动态加载成功");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loaded xa version:");
+        localStringBuilder.append(getXAVersion(localDexClassLoader));
+        QLog.d("DynamicLoader", 1, localStringBuilder.toString());
         return;
       }
     }
@@ -67,10 +74,17 @@ public class DynamicLoaderImpl
   @NotNull
   private File getApkFile()
   {
-    if (!QVipSDKProcessor.c().j()) {
+    if (!QVipSDKProcessor.e().m())
+    {
+      QLog.d("DynamicLoader", 1, "xaDynamicEnable:false");
       return new File("none");
     }
-    if (!((IXADownload)QRoute.api(IXADownload.class)).isNoNeedDownload()) {
+    if (!((IXADownload)QRoute.api(IXADownload.class)).isNoNeedDownload())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download xaDynamic package:");
+      localStringBuilder.append(IXADownload.SCID);
+      QLog.d("DynamicLoader", 1, localStringBuilder.toString());
       ((IXADownload)QRoute.api(IXADownload.class)).requestDownload();
     }
     return ((IXADownload)QRoute.api(IXADownload.class)).getDownloadPath();
@@ -115,12 +129,27 @@ public class DynamicLoaderImpl
   
   private void showTestToast(Context paramContext, String paramString)
   {
-    QLog.d("DynamicLoader", 2, paramString);
+    QLog.d("DynamicLoader", 1, paramString);
   }
   
   public ClassLoader getClassLoader()
   {
     return this.classLoader;
+  }
+  
+  public String getXAVersion(DexClassLoader paramDexClassLoader)
+  {
+    try
+    {
+      paramDexClassLoader = paramDexClassLoader.loadClass("com.tencent.xaction.BuildConfig").getConstructor(new Class[0]).newInstance(new Object[0]);
+      paramDexClassLoader = (String)paramDexClassLoader.getClass().getField("VERSION_NAME").get(paramDexClassLoader);
+      return paramDexClassLoader;
+    }
+    catch (Exception paramDexClassLoader)
+    {
+      QLog.d("DynamicLoader", 1, paramDexClassLoader, new Object[0]);
+    }
+    return "";
   }
   
   public boolean isLoaded()
@@ -146,7 +175,7 @@ public class DynamicLoaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.api.impl.DynamicLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

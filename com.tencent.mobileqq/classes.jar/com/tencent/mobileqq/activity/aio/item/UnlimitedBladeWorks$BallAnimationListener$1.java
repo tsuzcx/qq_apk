@@ -9,14 +9,14 @@ class UnlimitedBladeWorks$BallAnimationListener$1
   
   public void a()
   {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
+    UnlimitedBladeWorks.d(this.a.a).e = true;
+    UnlimitedBladeWorks.d(this.a.a).d = false;
+    if (UnlimitedBladeWorks.e(this.a.a) != null)
     {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
+      UnlimitedBladeWorks.e(this.a.a).a();
+      if (UnlimitedBladeWorks.f(this.a.a))
       {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
+        HapticManager.b().d(UnlimitedBladeWorks.g(this.a.a));
         UnlimitedBladeWorks.a(this.a.a, 0);
       }
     }
@@ -24,7 +24,7 @@ class UnlimitedBladeWorks$BallAnimationListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.BallAnimationListener.1
  * JD-Core Version:    0.7.0.1
  */

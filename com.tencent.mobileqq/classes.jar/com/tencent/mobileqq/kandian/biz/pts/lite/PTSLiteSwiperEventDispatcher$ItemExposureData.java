@@ -9,11 +9,11 @@ import org.jetbrains.annotations.Nullable;
 public final class PTSLiteSwiperEventDispatcher$ItemExposureData
 {
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   @NotNull
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, String> b;
   @Nullable
-  private String b;
+  private String c;
   
   public PTSLiteSwiperEventDispatcher$ItemExposureData()
   {
@@ -22,32 +22,32 @@ public final class PTSLiteSwiperEventDispatcher$ItemExposureData
   
   public PTSLiteSwiperEventDispatcher$ItemExposureData(@Nullable String paramString1, @NotNull HashMap<String, String> paramHashMap, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramHashMap;
+    this.c = paramString2;
   }
   
   @Nullable
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   @NotNull
-  public final HashMap<String, String> a()
+  public final HashMap<String, String> b()
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return this.b;
   }
   
   @Nullable
-  public final String b()
+  public final String c()
   {
-    return this.b;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteSwiperEventDispatcher.ItemExposureData
  * JD-Core Version:    0.7.0.1
  */

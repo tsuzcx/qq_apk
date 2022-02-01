@@ -11,14 +11,14 @@ class FabTransformationBehavior$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComGoogleAndroidMaterialCircularrevealCircularRevealWidget.a();
+    paramAnimator = this.a.getRevealInfo();
     paramAnimator.c = 3.4028235E+38F;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCircularrevealCircularRevealWidget.setRevealInfo(paramAnimator);
+    this.a.setRevealInfo(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationBehavior.4
  * JD-Core Version:    0.7.0.1
  */

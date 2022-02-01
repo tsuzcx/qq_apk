@@ -15,7 +15,7 @@ class DownloadManager$20
       localStringBuilder.append(this.a.e);
       localStringBuilder.append(" begin getApkCode ......");
       LogUtility.c("DownloadManager_", localStringBuilder.toString());
-      DownloadManager.a(this.this$0).a(this.a.e, this.a.b, DownloadManager.a(this.this$0));
+      DownloadManager.b(this.this$0).a(this.a.e, this.a.n, DownloadManager.a(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ class DownloadManager$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.20
  * JD-Core Version:    0.7.0.1
  */

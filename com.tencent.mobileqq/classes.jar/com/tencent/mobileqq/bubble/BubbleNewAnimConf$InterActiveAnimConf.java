@@ -10,19 +10,12 @@ import org.json.JSONObject;
 public class BubbleNewAnimConf$InterActiveAnimConf
   extends BubbleNewAnimConf
 {
-  public boolean b = false;
-  public Rect c;
-  public Rect d = null;
-  public int e;
-  public String e;
-  public String f = "";
-  
-  public BubbleNewAnimConf$InterActiveAnimConf()
-  {
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_c_of_type_AndroidGraphicsRect = null;
-  }
+  public int m = -1;
+  public boolean n = false;
+  public String o = "";
+  public String p = "";
+  public Rect q = null;
+  public Rect r = null;
   
   public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
@@ -30,36 +23,36 @@ public class BubbleNewAnimConf$InterActiveAnimConf
     {
       super.a(paramInt, paramString, paramJSONObject);
       paramString = BaseApplicationImpl.getContext();
-      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
-      this.b = paramJSONObject.optBoolean("passive_rotate", false);
-      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-      this.f = paramJSONObject.optString("end_align", "");
+      this.m = paramJSONObject.optInt("passive_type", -1);
+      this.n = paramJSONObject.optBoolean("passive_rotate", false);
+      this.o = paramJSONObject.optString("start_align", this.h);
+      this.h = this.o;
+      this.p = paramJSONObject.optString("end_align", "");
       if (paramJSONObject.has("start_rect"))
       {
         JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
-        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
-        this.jdField_c_of_type_AndroidGraphicsRect.left = AIOUtils.b(localJSONArray.getInt(0) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.top = AIOUtils.b(localJSONArray.getInt(1) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.right = AIOUtils.b(localJSONArray.getInt(2) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.bottom = AIOUtils.b(localJSONArray.getInt(3) / 2, paramString.getResources());
-        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
+        this.q = new Rect();
+        this.q.left = AIOUtils.b(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.q.top = AIOUtils.b(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.q.right = AIOUtils.b(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.q.bottom = AIOUtils.b(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.i = this.q;
       }
       if (paramJSONObject.has("end_rect"))
       {
         paramJSONObject = paramJSONObject.getJSONArray("end_rect");
-        this.d = new Rect();
-        this.d.left = AIOUtils.b(paramJSONObject.getInt(0) / 2, paramString.getResources());
-        this.d.top = AIOUtils.b(paramJSONObject.getInt(1) / 2, paramString.getResources());
-        this.d.right = AIOUtils.b(paramJSONObject.getInt(2) / 2, paramString.getResources());
-        this.d.bottom = AIOUtils.b(paramJSONObject.getInt(3) / 2, paramString.getResources());
+        this.r = new Rect();
+        this.r.left = AIOUtils.b(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.r.top = AIOUtils.b(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.r.right = AIOUtils.b(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.r.bottom = AIOUtils.b(paramJSONObject.getInt(3) / 2, paramString.getResources());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAnimConf.InterActiveAnimConf
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ import javax.microedition.khronos.opengles.GL;
 
 class GLTextureView$EglHelper
 {
-  private WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  EGL10 a;
+  EGLDisplay b;
+  EGLSurface c;
+  EGLConfig d;
+  EGLContext e;
+  private WeakReference<GLTextureView> f;
   
   public GLTextureView$EglHelper(WeakReference<GLTextureView> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.f = paramWeakReference;
   }
   
   public static String a(int paramInt)
@@ -63,28 +63,19 @@ class GLTextureView$EglHelper
     return "EGL_SUCCESS";
   }
   
-  public static String a(String paramString, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" failed: ");
-    localStringBuilder.append(a(paramInt));
-    return localStringBuilder.toString();
-  }
-  
   private void a(String paramString)
   {
-    a(paramString, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+    a(paramString, this.a.eglGetError());
   }
   
   public static void a(String paramString, int paramInt)
   {
-    throw new RuntimeException(a(paramString, paramInt));
+    throw new RuntimeException(b(paramString, paramInt));
   }
   
   public static void a(String paramString1, String paramString2, int paramInt)
   {
-    Log.w(paramString1, a(paramString2, paramInt));
+    Log.w(paramString1, b(paramString2, paramInt));
   }
   
   private static String b(int paramInt)
@@ -95,83 +86,56 @@ class GLTextureView$EglHelper
     return localStringBuilder.toString();
   }
   
-  private void d()
+  public static String b(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" failed: ");
+    localStringBuilder.append(a(paramInt));
+    return localStringBuilder.toString();
+  }
+  
+  private void g()
+  {
+    Object localObject = this.c;
     if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      this.a.eglMakeCurrent(this.b, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      localObject = (GLTextureView)this.f.get();
       if (localObject != null) {
-        GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+        GLTextureView.f((GLTextureView)localObject).a(this.a, this.b, this.c);
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+      this.c = null;
     }
-  }
-  
-  public int a()
-  {
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglSwapBuffers(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface)) {
-      return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
-    }
-    return 12288;
-  }
-  
-  GL a()
-  {
-    GL localGL2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext.getGL();
-    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = localGL2;
-    if (localGLTextureView != null)
-    {
-      GL localGL1 = localGL2;
-      if (GLTextureView.a(localGLTextureView) != null) {
-        localGL1 = GLTextureView.a(localGLTextureView).a(localGL2);
-      }
-      localObject = localGL1;
-      if ((GLTextureView.b(localGLTextureView) & 0x3) != 0)
-      {
-        int i = 0;
-        localObject = null;
-        if ((GLTextureView.b(localGLTextureView) & 0x1) != 0) {
-          i = 1;
-        }
-        if ((GLTextureView.b(localGLTextureView) & 0x2) != 0) {
-          localObject = new GLTextureView.LogWriter();
-        }
-        localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
-      }
-    }
-    return localObject;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
+    this.a = ((EGL10)EGLContext.getEGL());
+    this.b = this.a.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.b != EGL10.EGL_NO_DISPLAY)
     {
       Object localObject = new int[2];
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject))
+      if (this.a.eglInitialize(this.b, (int[])localObject))
       {
-        localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (GLTextureView)this.f.get();
         if (localObject == null)
         {
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+          this.d = null;
+          this.e = null;
         }
         else
         {
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
+          this.d = GLTextureView.d((GLTextureView)localObject).a(this.a, this.b);
+          this.e = GLTextureView.e((GLTextureView)localObject).a(this.a, this.b, this.d);
         }
-        localObject = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+        localObject = this.e;
         if ((localObject == null) || (localObject == EGL10.EGL_NO_CONTEXT))
         {
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+          this.e = null;
           a("createContext");
         }
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+        this.c = null;
         return;
       }
       throw new RuntimeException("eglInitialize failed");
@@ -179,35 +143,35 @@ class GLTextureView$EglHelper
     throw new RuntimeException("eglGetDisplay failed");
   }
   
-  public boolean a()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null)
+      if (this.b != null)
       {
-        if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig != null)
+        if (this.d != null)
         {
-          d();
-          Object localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          g();
+          Object localObject = (GLTextureView)this.f.get();
           if (localObject != null) {
-            this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, ((GLTextureView)localObject).getSurfaceTexture());
+            this.c = GLTextureView.f((GLTextureView)localObject).a(this.a, this.b, this.d, ((GLTextureView)localObject).getSurfaceTexture());
           } else {
-            this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+            this.c = null;
           }
-          localObject = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+          localObject = this.c;
           if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
           {
-            localObject = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-            EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-            EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-            if (!((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext))
+            localObject = this.a;
+            EGLDisplay localEGLDisplay = this.b;
+            EGLSurface localEGLSurface = this.c;
+            if (!((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.e))
             {
-              a("EGLHelper", "eglMakeCurrent", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
+              a("EGLHelper", "eglMakeCurrent", this.a.eglGetError());
               return false;
             }
             return true;
           }
-          if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12299) {
+          if (this.a.eglGetError() == 12299) {
             Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
           }
           return false;
@@ -219,32 +183,68 @@ class GLTextureView$EglHelper
     throw new RuntimeException("egl not initialized");
   }
   
-  public void b()
+  GL c()
   {
-    d();
+    GL localGL2 = this.e.getGL();
+    GLTextureView localGLTextureView = (GLTextureView)this.f.get();
+    Object localObject = localGL2;
+    if (localGLTextureView != null)
+    {
+      GL localGL1 = localGL2;
+      if (GLTextureView.g(localGLTextureView) != null) {
+        localGL1 = GLTextureView.g(localGLTextureView).a(localGL2);
+      }
+      localObject = localGL1;
+      if ((GLTextureView.h(localGLTextureView) & 0x3) != 0)
+      {
+        int i = 0;
+        localObject = null;
+        if ((GLTextureView.h(localGLTextureView) & 0x1) != 0) {
+          i = 1;
+        }
+        if ((GLTextureView.h(localGLTextureView) & 0x2) != 0) {
+          localObject = new GLTextureView.LogWriter();
+        }
+        localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
+      }
+    }
+    return localObject;
   }
   
-  public void c()
+  public int d()
   {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
-    {
-      localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    if (!this.a.eglSwapBuffers(this.b, this.c)) {
+      return this.a.eglGetError();
     }
-    Object localObject = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+    return 12288;
+  }
+  
+  public void e()
+  {
+    g();
+  }
+  
+  public void f()
+  {
+    if (this.e != null)
+    {
+      localObject = (GLTextureView)this.f.get();
+      if (localObject != null) {
+        GLTextureView.e((GLTextureView)localObject).a(this.a, this.b, this.e);
+      }
+      this.e = null;
+    }
+    Object localObject = this.b;
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate((EGLDisplay)localObject);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+      this.a.eglTerminate((EGLDisplay)localObject);
+      this.b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.GLTextureView.EglHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,39 @@
 package com.tencent.mobileqq.leba.entity;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
+import org.json.JSONObject;
 
 public class LebaPluginInfo
   extends Entity
 {
+  static final String EXT_CONF_ALLOW_CHANGE = "allowChange";
+  static final String EXT_CONF_DA_TONG_ID = "daTongID";
+  static final String EXT_CONF_SIMPLE_ICON = "simpleIcon";
+  static final String EXT_CONF_WATERMARK_URL = "waterMarkUrl";
   public static final int STATE_ADD = 3;
   public static final int STATE_DEL = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_UPDATE = 1;
+  public static final String TAG = "Leba.PluginInfo";
   public int cCanChangeState;
   public byte cDataType;
+  @notColumn
+  private JSONObject extConfCache;
+  @notColumn
+  public int groupId;
   public String resConf;
   @notColumn
   public int sPriority;
   public int sResSeq;
   public short sResSubType;
+  @Deprecated
   public int showInSimpleMode;
   @notColumn
   public int state = 0;
@@ -53,6 +66,32 @@ public class LebaPluginInfo
       localObject = Collections.EMPTY_LIST;
     }
     return localObject;
+  }
+  
+  private JSONObject getExtConfCache()
+  {
+    JSONObject localJSONObject = this.extConfCache;
+    if (localJSONObject != null) {
+      return localJSONObject;
+    }
+    if (TextUtils.isEmpty(this.resConf)) {
+      return new JSONObject();
+    }
+    try
+    {
+      this.extConfCache = new JSONObject(this.resConf);
+      return this.extConfCache;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to parse ext conf, conf=");
+      localStringBuilder.append(this.resConf);
+      localStringBuilder.append(", exception=");
+      localStringBuilder.append(localException.toString());
+      QLog.w("Leba.PluginInfo", 1, localStringBuilder.toString());
+    }
+    return new JSONObject();
   }
   
   public static void persistOrReplace(EntityManager paramEntityManager, LebaPluginInfo paramLebaPluginInfo)
@@ -95,6 +134,26 @@ public class LebaPluginInfo
     }
   }
   
+  public boolean getAllowModify()
+  {
+    return getExtConfCache().optBoolean("allowChange", true);
+  }
+  
+  public String getDaTongID()
+  {
+    return getExtConfCache().optString("daTongID", "default");
+  }
+  
+  public String getSimpleIcon()
+  {
+    return getExtConfCache().optString("simpleIcon", "");
+  }
+  
+  public String getWaterMarkUrl()
+  {
+    return getExtConfCache().optString("waterMarkUrl", "");
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -129,7 +188,7 @@ public class LebaPluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.entity.LebaPluginInfo
  * JD-Core Version:    0.7.0.1
  */

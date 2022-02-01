@@ -16,19 +16,19 @@ class VoiceRoomService$2
   
   public void a(int paramInt, String paramString)
   {
-    EnterExitRoomCallback localEnterExitRoomCallback = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceEnterExitRoomCallback;
+    EnterExitRoomCallback localEnterExitRoomCallback = this.a;
     if (localEnterExitRoomCallback != null) {
       localEnterExitRoomCallback.onSuccess();
     }
-    VoiceRoomService.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService, System.currentTimeMillis() - this.jdField_a_of_type_Long, paramInt, paramString);
+    VoiceRoomService.b(this.c, System.currentTimeMillis() - this.b, paramInt, paramString);
   }
   
   public void a(JSONObject paramJSONObject)
   {
     LogFactory.a().c("AbstractCustomRoomService", "----------watchEnterRoom，LiveRoom, onRecv");
-    if (this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceEnterExitRoomCallback == null)
+    if (this.a == null)
     {
-      VoiceRoomService.c(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger().i("AbstractCustomRoomService", "listener live callback canceled...", new Object[0]);
+      VoiceRoomService.d(this.c).getLogger().i("AbstractCustomRoomService", "listener live callback canceled...", new Object[0]);
       return;
     }
     try
@@ -38,30 +38,30 @@ class VoiceRoomService$2
         paramJSONObject = paramJSONObject.getJSONArray("streaming_urls");
         if (paramJSONObject.length() != 0)
         {
-          VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).watchMediaInfo.mUrl = ((String)paramJSONObject.get(0));
-          VoiceRoomService.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).watchMediaInfo.mUrlHigh = ((String)paramJSONObject.get(1));
-          VoiceRoomService.c(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).watchMediaInfo.mUrlLow = ((String)paramJSONObject.get(2));
-          VoiceRoomService.d(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).watchMediaInfo.mUrlLowest = ((String)paramJSONObject.get(3));
-          VoiceRoomService.e(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).roomInfo.roomId = VoiceRoomService.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).roomId;
-          VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+          VoiceRoomService.e(this.c).watchMediaInfo.mUrl = ((String)paramJSONObject.get(0));
+          VoiceRoomService.f(this.c).watchMediaInfo.mUrlHigh = ((String)paramJSONObject.get(1));
+          VoiceRoomService.g(this.c).watchMediaInfo.mUrlLow = ((String)paramJSONObject.get(2));
+          VoiceRoomService.h(this.c).watchMediaInfo.mUrlLowest = ((String)paramJSONObject.get(3));
+          VoiceRoomService.i(this.c).roomInfo.roomId = VoiceRoomService.j(this.c).roomId;
+          VoiceRoomService.a(this.c, System.currentTimeMillis() - this.b);
         }
       }
     }
     catch (Exception paramJSONObject)
     {
-      com.tencent.falco.base.libapi.log.LogInterface localLogInterface = VoiceRoomService.d(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger();
+      com.tencent.falco.base.libapi.log.LogInterface localLogInterface = VoiceRoomService.k(this.c).getLogger();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parseGetLivePlayUrlData JSONException = ");
       localStringBuilder.append(paramJSONObject.getMessage());
       localLogInterface.e("AbstractCustomRoomService", localStringBuilder.toString(), new Object[0]);
-      VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService, System.currentTimeMillis() - this.jdField_a_of_type_Long, -2, "");
+      VoiceRoomService.a(this.c, System.currentTimeMillis() - this.b, -2, "");
     }
-    this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceEnterExitRoomCallback.onSuccess();
+    this.a.onSuccess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomService.2
  * JD-Core Version:    0.7.0.1
  */

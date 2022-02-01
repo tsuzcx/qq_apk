@@ -169,7 +169,7 @@ public class NearbyAppInterfaceImpl
   
   public void addNearbyProcObserver(INearbyProcObserver paramINearbyProcObserver)
   {
-    INearbyProcManager localINearbyProcManager = (INearbyProcManager)getManager(NearbyConstants.e);
+    INearbyProcManager localINearbyProcManager = (INearbyProcManager)getManager(NearbyConstants.g);
     if (localINearbyProcManager != null) {
       localINearbyProcManager.a(paramINearbyProcObserver);
     }
@@ -201,7 +201,7 @@ public class NearbyAppInterfaceImpl
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -273,37 +273,37 @@ public class NearbyAppInterfaceImpl
       {
         localObject1 = new ProxyIpManagerImpl(this);
       }
-      else if (paramInt == NearbyConstants.b)
+      else if (paramInt == NearbyConstants.d)
       {
         localObject1 = new NearbyDataManager(this);
       }
-      else if (paramInt == NearbyConstants.c)
+      else if (paramInt == NearbyConstants.e)
       {
         localObject1 = new NetEngineFactory();
       }
-      else if (paramInt == NearbyConstants.e)
+      else if (paramInt == NearbyConstants.g)
       {
         localObject1 = (Manager)((IFactoryApi)QRoute.api(IFactoryApi.class)).getNearbyProcManager(this);
       }
-      else if (paramInt == NearbyConstants.g)
+      else if (paramInt == NearbyConstants.i)
       {
         localObject1 = (IOldBigDataChannelManager)QRoute.api(IOldBigDataChannelManager.class);
         ((IOldBigDataChannelManager)localObject1).init(this);
         localObject1 = (Manager)localObject1;
       }
-      else if (paramInt == NearbyConstants.h)
+      else if (paramInt == NearbyConstants.j)
       {
         localObject1 = new NearbyReportManager(this);
       }
-      else if (paramInt == NearbyConstants.i)
+      else if (paramInt == NearbyConstants.k)
       {
         localObject1 = new NearbyFaceScoreManager(this);
       }
-      else if (paramInt == NearbyConstants.j)
+      else if (paramInt == NearbyConstants.l)
       {
         localObject1 = new UsingTimeReportManager(this);
       }
-      else if (paramInt == NearbyConstants.k)
+      else if (paramInt == NearbyConstants.m)
       {
         localObject1 = new DownloaderFactory(this);
       }
@@ -362,7 +362,7 @@ public class NearbyAppInterfaceImpl
   
   public INearbyProcManager getNearbyProcManager()
   {
-    return (INearbyProcManager)getManager(NearbyConstants.e);
+    return (INearbyProcManager)getManager(NearbyConstants.g);
   }
   
   public INearbyTransFileController getTransFileController()
@@ -486,7 +486,7 @@ public class NearbyAppInterfaceImpl
   {
     super.onCreate(paramBundle);
     setmService(new ServiceImpl(this));
-    ((INearbyProcManager)getManager(NearbyConstants.e)).a();
+    ((INearbyProcManager)getManager(NearbyConstants.g)).a();
     ThreadManager.post(new NearbyAppInterfaceImpl.2(this), 8, null, true);
   }
   
@@ -561,7 +561,7 @@ public class NearbyAppInterfaceImpl
   {
     NearbyUtils.a("onReceiveAccountAction", new Object[0]);
     if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramString)) {
-      ((UsingTimeReportManager)getManager(NearbyConstants.j)).a();
+      ((UsingTimeReportManager)getManager(NearbyConstants.l)).a();
     }
     return false;
   }
@@ -574,7 +574,7 @@ public class NearbyAppInterfaceImpl
   
   public void removeNearbyProcObserver(INearbyProcObserver paramINearbyProcObserver)
   {
-    INearbyProcManager localINearbyProcManager = (INearbyProcManager)getManager(NearbyConstants.e);
+    INearbyProcManager localINearbyProcManager = (INearbyProcManager)getManager(NearbyConstants.g);
     if (localINearbyProcManager != null) {
       localINearbyProcManager.b(paramINearbyProcObserver);
     }
@@ -642,12 +642,12 @@ public class NearbyAppInterfaceImpl
         if ((bool1) && (bool2))
         {
           bool1 = true;
-          AppSetting.d = bool1;
+          AppSetting.e = bool1;
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("set talkback enable: ");
-            ((StringBuilder)localObject).append(AppSetting.d);
+            ((StringBuilder)localObject).append(AppSetting.e);
             QLog.d("NearbyAppInterface", 2, ((StringBuilder)localObject).toString());
           }
           return;
@@ -739,7 +739,7 @@ public class NearbyAppInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyAppInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

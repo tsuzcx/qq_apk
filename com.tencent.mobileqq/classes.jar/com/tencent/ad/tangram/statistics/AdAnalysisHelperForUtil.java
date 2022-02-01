@@ -11,8 +11,8 @@ import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
 import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
 import com.tencent.ad.tangram.device.AdCarrier;
 import com.tencent.ad.tangram.device.c;
-import com.tencent.ad.tangram.device.q;
-import com.tencent.ad.tangram.device.q.a;
+import com.tencent.ad.tangram.device.r;
+import com.tencent.ad.tangram.device.r.a;
 import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import com.tencent.ad.tangram.net.AdNet;
@@ -21,7 +21,6 @@ import com.tencent.ad.tangram.protocol.gdt_analysis_event;
 import com.tencent.ad.tangram.util.AdClickUtil.Params;
 import com.tencent.ad.tangram.util.AdClickUtil.Result;
 import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.gathererga.tangram.TangramResult;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,29 +75,13 @@ public final class AdAnalysisHelperForUtil
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  public static AdAnalysisEvent createEventForDeviceIdentifierV2(Context paramContext, int paramInt, TangramResult paramTangramResult)
+  public static AdAnalysisEvent createEventForDeviceIdentifierV2(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, paramInt, localgdt_analysis_event);
-    if (paramTangramResult == null) {
-      paramInt = -2147483648;
-    } else {
-      paramInt = (int)paramTangramResult.b();
-    }
-    localgdt_analysis_event.internalErrorCode = paramInt;
-    long l;
-    if (paramTangramResult == null) {
-      l = -2147483648L;
-    } else {
-      l = paramTangramResult.a();
-    }
-    localgdt_analysis_event.duration = l;
-    if (paramTangramResult == null) {
-      paramInt = 0;
-    } else {
-      paramInt = paramTangramResult.a();
-    }
-    localgdt_analysis_event.cached = paramInt;
+    AdAnalysisUtil.initEvent(paramContext, paramInt1, localgdt_analysis_event);
+    localgdt_analysis_event.internalErrorCode = paramInt2;
+    localgdt_analysis_event.duration = paramInt3;
+    localgdt_analysis_event.cached = paramInt4;
     localgdt_analysis_event.phoneType = c.getPhoneType(paramContext);
     localgdt_analysis_event.errorCode1 = 1;
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
@@ -156,13 +139,13 @@ public final class AdAnalysisHelperForUtil
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  private static AdAnalysisEvent createEventForUUID(Context paramContext, int paramInt, q paramq, q.a parama)
+  private static AdAnalysisEvent createEventForUUID(Context paramContext, int paramInt, r paramr, r.a parama)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, paramInt, localgdt_analysis_event);
-    if (paramq == null) {
+    if (paramr == null) {
       localgdt_analysis_event.internalErrorCode = 16;
-    } else if (!paramq.isValid(parama)) {
+    } else if (!paramr.isValid(parama)) {
       localgdt_analysis_event.internalErrorCode = 4;
     } else {
       localgdt_analysis_event.internalErrorCode = 0;
@@ -696,18 +679,18 @@ public final class AdAnalysisHelperForUtil
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 102));
   }
   
-  public static void reportForUUID(Context paramContext, q paramq1, q paramq2, q.a parama)
+  public static void reportForUUID(Context paramContext, r paramr1, r paramr2, r.a parama)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(createEventForUUID(paramContext, 1126, paramq1, parama));
-    localArrayList.add(createEventForUUID(paramContext, 1127, paramq2, parama));
+    localArrayList.add(createEventForUUID(paramContext, 1126, paramr1, parama));
+    localArrayList.add(createEventForUUID(paramContext, 1127, paramr2, parama));
     parama = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, 1128, parama);
-    if ((paramq1 == null) && (paramq2 == null)) {
+    if ((paramr1 == null) && (paramr2 == null)) {
       parama.internalErrorCode = 0;
-    } else if ((paramq1 != null) && (paramq2 != null))
+    } else if ((paramr1 != null) && (paramr2 != null))
     {
-      if (paramq1.equals(paramq2)) {
+      if (paramr1.equals(paramr2)) {
         parama.internalErrorCode = 0;
       } else {
         parama.internalErrorCode = 1;

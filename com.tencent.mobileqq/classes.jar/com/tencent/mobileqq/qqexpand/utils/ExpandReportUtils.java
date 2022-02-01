@@ -31,7 +31,7 @@ public class ExpandReportUtils
   
   private static String a(IExpandManager paramIExpandManager)
   {
-    paramIExpandManager = paramIExpandManager.a();
+    paramIExpandManager = paramIExpandManager.t();
     if (paramIExpandManager != null) {
       paramIExpandManager = paramIExpandManager.getTestId();
     } else {
@@ -93,7 +93,7 @@ public class ExpandReportUtils
       paramMap.put("manage_test_plan", a((IExpandManager)localObject));
     }
     if (!paramMap.containsKey("TAB_test_plan")) {
-      paramMap.put("TAB_test_plan", ((IExpandManager)localObject).b());
+      paramMap.put("TAB_test_plan", ((IExpandManager)localObject).f());
     }
     paramMap.put("uid", a(BaseApplicationImpl.getApplication().getRuntime()));
     QQUserAction.a("0AND0Y11VZ3PFHQD", paramString, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
@@ -120,7 +120,7 @@ public class ExpandReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExpandReportUtils
  * JD-Core Version:    0.7.0.1
  */

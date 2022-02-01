@@ -33,7 +33,7 @@ class ARMusicController$1
       QLog.d("ARMusicController", 2, localStringBuilder.toString());
     }
     ARMusicController.a(this.a, true);
-    if (ARMusicController.a(this.a))
+    if (ARMusicController.b(this.a))
     {
       paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
       return;
@@ -42,7 +42,7 @@ class ARMusicController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.1
  * JD-Core Version:    0.7.0.1
  */

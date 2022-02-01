@@ -17,15 +17,15 @@ class WSHomeFragmentPresenter$5
     } else {
       paramJceStruct = null;
     }
-    if (this.a.a() != null) {
-      ((IWSHomeView)this.a.a()).a(paramJceStruct);
+    if (this.a.getView() != null) {
+      ((IWSHomeView)this.a.getView()).a(paramJceStruct);
     }
     WSHomeFragmentPresenter.a(this.a, paramJceStruct);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSHomeFragmentPresenter.5
  * JD-Core Version:    0.7.0.1
  */

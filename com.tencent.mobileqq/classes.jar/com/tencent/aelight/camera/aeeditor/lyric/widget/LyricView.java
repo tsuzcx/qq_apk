@@ -13,107 +13,103 @@ import com.tencent.aelight.camera.impl.R.styleable;
 public class LyricView
   extends FrameLayout
 {
-  protected PointF a;
-  private Handler a;
-  protected View.OnClickListener a;
-  protected LyricView.OnLineClickListener a;
-  protected LyricView.OnLyricViewLongClickListener a;
-  protected LyricViewAttribute a;
   protected LyricViewInternalBase a;
-  protected LyricViewScroll a;
-  protected boolean a;
-  protected PointF b;
-  protected boolean b;
-  protected boolean c = false;
-  protected boolean d = true;
-  protected boolean e = false;
+  protected LyricViewScroll b;
+  protected LyricViewAttribute c;
+  protected boolean d;
+  protected boolean e = true;
+  protected View.OnClickListener f;
+  protected LyricView.OnLineClickListener g;
+  protected LyricView.OnLyricViewLongClickListener h;
+  protected PointF i = new PointF();
+  protected PointF j = new PointF();
+  protected boolean k = false;
+  protected boolean l = true;
+  protected boolean m = false;
+  private Handler n = new LyricView.1(this);
   
   public LyricView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_b_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_a_of_type_AndroidOsHandler = new LyricView.1(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.e, 0, 0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewAttribute = new LyricViewAttribute();
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewAttribute.a(paramContext);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(19, false);
+    this.c = new LyricViewAttribute();
+    this.c.a(paramContext);
+    this.d = paramContext.getBoolean(19, false);
     paramContext.recycle();
-  }
-  
-  public LyricViewInternalBase a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewInternalBase;
-  }
-  
-  public LyricViewScroll a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.a(paramMotionEvent);
+    return this.b.a(paramMotionEvent);
+  }
+  
+  public LyricViewInternalBase getLyricViewInternal()
+  {
+    return this.a;
+  }
+  
+  public LyricViewScroll getScrollView()
+  {
+    return this.b;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int i1 = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if (i != 0)
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i == 3) {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
+          if (i1 == 3) {
+            this.n.removeMessages(10);
           }
         }
         else
         {
-          this.jdField_b_of_type_AndroidGraphicsPointF.set(f1, f2);
-          if ((Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x - f1) > 10.0F) || (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y - f2) > 10.0F)) {
-            this.c = false;
+          this.j.set(f1, f2);
+          if ((Math.abs(this.i.x - f1) > 10.0F) || (Math.abs(this.i.y - f2) > 10.0F)) {
+            this.k = false;
           }
-          if (Math.abs(f2 - this.jdField_a_of_type_AndroidGraphicsPointF.y) > 10.0F) {
-            this.d = false;
+          if (Math.abs(f2 - this.i.y) > 10.0F) {
+            this.l = false;
           }
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-        if ((!this.e) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x - f1) < 10.0F) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y - f2) < 10.0F))
+        this.n.removeMessages(10);
+        if ((!this.m) && (Math.abs(this.i.x - f1) < 10.0F) && (Math.abs(this.i.y - f2) < 10.0F))
         {
-          View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
-          if ((localOnClickListener != null) && (this.c)) {
+          View.OnClickListener localOnClickListener = this.f;
+          if ((localOnClickListener != null) && (this.k)) {
             localOnClickListener.onClick(this);
           }
         }
-        if ((!this.e) && (this.d) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricView$OnLineClickListener != null))
+        if ((!this.m) && (this.l) && (this.g != null))
         {
-          i = (int)(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.getScrollY() + f2);
-          i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewInternalBase.c(i);
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricView$OnLineClickListener.a(i);
+          i1 = (int)(this.b.getScrollY() + f2);
+          i1 = this.a.c(i1);
+          this.g.a(i1);
         }
-        this.d = true;
-        this.e = false;
-        this.jdField_a_of_type_AndroidGraphicsPointF.set(0.0F, 0.0F);
-        this.jdField_b_of_type_AndroidGraphicsPointF.set(f1, f2);
-        this.c = false;
+        this.l = true;
+        this.m = false;
+        this.i.set(0.0F, 0.0F);
+        this.j.set(f1, f2);
+        this.k = false;
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-      this.jdField_b_of_type_AndroidGraphicsPointF.set(f1, f2);
-      this.c = true;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, 1000L);
+      this.i.set(f1, f2);
+      this.j.set(f1, f2);
+      this.k = true;
+      this.n.sendEmptyMessageDelayed(10, 1000L);
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
       a(paramMotionEvent);
       return true;
@@ -123,27 +119,27 @@ public class LyricView
   
   public void setIsDealTouchEvent(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.f = paramOnClickListener;
   }
   
   public void setOnLineClickListener(LyricView.OnLineClickListener paramOnLineClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricView$OnLineClickListener = paramOnLineClickListener;
+    this.g = paramOnLineClickListener;
   }
   
   public void setOnLyricViewLongClickListener(LyricView.OnLyricViewLongClickListener paramOnLyricViewLongClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricView$OnLyricViewLongClickListener = paramOnLyricViewLongClickListener;
+    this.h = paramOnLyricViewLongClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricView
  * JD-Core Version:    0.7.0.1
  */

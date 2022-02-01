@@ -17,7 +17,7 @@ class QQFMSettings$5$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.jdField_a_of_type_AndroidAppActivity);
+    this.c.this$0.h().a(this.c.a);
     try
     {
       Field localField = paramDialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
@@ -28,18 +28,18 @@ class QQFMSettings$5$1
     {
       paramDialogInterface.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131704764));
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131167093);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0.a.getBtnight().setEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0.a.getBtnight().setTextColor(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0.a.getBtnLeft().setTextColor(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0.a.getBtnLeft().setEnabled(false);
-    QQFMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.this$0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsQQFMSettings$5.jdField_a_of_type_JavaUtilList, new QQFMSettings.5.1.1(this));
+    this.a.setText(HardCodeUtil.a(2131902666));
+    paramDialogInterface = this.c.a.getResources().getColorStateList(2131168045);
+    this.c.this$0.a.getBtnight().setEnabled(false);
+    this.c.this$0.a.getBtnight().setTextColor(paramDialogInterface);
+    this.c.this$0.a.getBtnLeft().setTextColor(paramDialogInterface);
+    this.c.this$0.a.getBtnLeft().setEnabled(false);
+    QQFMSettings.a(this.c.this$0, this.c.b, new QQFMSettings.5.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.QQFMSettings.5.1
  * JD-Core Version:    0.7.0.1
  */

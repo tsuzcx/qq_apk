@@ -24,16 +24,7 @@ public class HippyWebViewController
   public void dispatchFunction(HippyWebView paramHippyWebView, String paramString, HippyArray paramHippyArray)
   {
     super.dispatchFunction(paramHippyWebView, paramString, paramHippyArray);
-    int i;
-    if ((paramString.hashCode() == 336631465) && (paramString.equals("loadUrl"))) {
-      i = 0;
-    } else {
-      i = -1;
-    }
-    if (i != 0) {
-      return;
-    }
-    if (paramHippyArray != null) {
+    if (("loadUrl".equals(paramString)) && (paramHippyArray != null)) {
       loadUrl(paramHippyWebView, paramHippyArray.getString(0));
     }
   }
@@ -43,7 +34,7 @@ public class HippyWebViewController
     return true;
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="url")
+  @HippyControllerProps(defaultType="string", name="url")
   public void loadUrl(HippyWebView paramHippyWebView, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
@@ -99,7 +90,7 @@ public class HippyWebViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.webview.HippyWebViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,6 @@ public class InitState
     this.a = paramVoiceAssistantStateMachine;
   }
   
-  public String a()
-  {
-    return InitState.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
   public boolean a(Message paramMessage)
   {
     if (paramMessage.what == 1)
@@ -29,7 +19,7 @@ public class InitState
       VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.a;
       if (localVoiceAssistantStateMachine != null)
       {
-        localVoiceAssistantStateMachine.c(2);
+        localVoiceAssistantStateMachine.e(2);
         return true;
       }
     }
@@ -40,10 +30,20 @@ public class InitState
   {
     super.b();
   }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public String d()
+  {
+    return InitState.class.getSimpleName();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.InitState
  * JD-Core Version:    0.7.0.1
  */

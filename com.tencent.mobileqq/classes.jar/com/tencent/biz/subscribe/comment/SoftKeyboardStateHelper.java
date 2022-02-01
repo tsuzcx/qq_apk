@@ -12,11 +12,11 @@ import java.util.List;
 public class SoftKeyboardStateHelper
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final List<SoftKeyboardStateHelper.SoftKeyboardStateListener> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 0;
+  private final List<SoftKeyboardStateHelper.SoftKeyboardStateListener> a = new LinkedList();
+  private final View b;
+  private int c;
+  private boolean d;
+  private int e = 0;
   
   public SoftKeyboardStateHelper(View paramView)
   {
@@ -25,15 +25,15 @@ public class SoftKeyboardStateHelper
   
   public SoftKeyboardStateHelper(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramView;
+    this.d = paramBoolean;
     paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
   }
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c = paramInt;
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       SoftKeyboardStateHelper.SoftKeyboardStateListener localSoftKeyboardStateListener = (SoftKeyboardStateHelper.SoftKeyboardStateListener)localIterator.next();
@@ -45,7 +45,7 @@ public class SoftKeyboardStateHelper
   
   private void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       SoftKeyboardStateHelper.SoftKeyboardStateListener localSoftKeyboardStateListener = (SoftKeyboardStateHelper.SoftKeyboardStateListener)localIterator.next();
@@ -57,41 +57,46 @@ public class SoftKeyboardStateHelper
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
     if (Build.VERSION.SDK_INT < 16)
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    this.b.getViewTreeObserver().removeOnGlobalLayoutListener(this);
   }
   
   public void a(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramSoftKeyboardStateListener);
+    this.a.add(paramSoftKeyboardStateListener);
+  }
+  
+  public void b(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
+  {
+    this.a.remove(paramSoftKeyboardStateListener);
   }
   
   public void onGlobalLayout()
   {
     Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    this.b.getWindowVisibleDisplayFrame(localRect);
     int i = localRect.height();
-    int j = this.b;
+    int j = this.e;
     if (j == 0)
     {
-      this.b = i;
+      this.e = i;
       return;
     }
     i = j - i;
-    if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
+    if ((!this.d) && (i >= 250))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
       a(i);
       return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (i < 100))
+    if ((this.d) && (i < 100))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       b();
     }
   }

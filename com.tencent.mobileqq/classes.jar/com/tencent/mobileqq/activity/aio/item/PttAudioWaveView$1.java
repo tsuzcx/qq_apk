@@ -10,16 +10,16 @@ class PttAudioWaveView$1
   public void run()
   {
     PttAudioWaveView localPttAudioWaveView = this.this$0;
-    localPttAudioWaveView.jdField_a_of_type_Boolean = true;
+    localPttAudioWaveView.l = true;
     PttAudioWaveView.a(localPttAudioWaveView, false);
-    if (this.this$0.jdField_a_of_type_AndroidViewView$OnLongClickListener != null) {
-      this.this$0.jdField_a_of_type_AndroidViewView$OnLongClickListener.onLongClick(this.this$0);
+    if (this.this$0.b != null) {
+      this.this$0.b.onLongClick(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioWaveView.1
  * JD-Core Version:    0.7.0.1
  */

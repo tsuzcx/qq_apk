@@ -10,14 +10,14 @@ public class WakeManager$WakeLoadCallBack
   public void a()
   {
     AssistantUtils.a("HelloQQWake", "WakeLoadCallBack,onSuccess()");
-    if (LoadManager.a()) {
+    if (LoadManager.c()) {
       WakeManager.a().a("WakeLoadCallBack onSuccess");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeManager.WakeLoadCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class ReqGetSettingsItem
   implements CheckUpdateItemInterface
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  IReqGetSettingsHandler jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler;
+  QQAppInterface a;
+  IReqGetSettingsHandler b;
   
   public ReqGetSettingsItem(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler = ((IRoamSettingService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRoamSettingService.class, "")).getReqGetSettingsHandler();
+    this.a = paramQQAppInterface;
+    this.b = ((IRoamSettingService)this.a.getRuntimeService(IRoamSettingService.class, "")).getReqGetSettingsHandler();
   }
   
   public int a()
@@ -30,17 +30,17 @@ public class ReqGetSettingsItem
   
   public ReqItem a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.a == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler.a(true);
+    if (this.a.mAutomator.b == 2) {
+      this.b.a(true);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler.a() != null)
+    if (this.b.a() != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mqqService.lookupCoder(this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler.a().getServiceCmd());
+      Object localObject = this.a.mqqService.lookupCoder(this.b.a().getServiceCmd());
       if (localObject != null)
       {
         UniPacket localUniPacket = new UniPacket(true);
         localUniPacket.setEncodeName("utf-8");
-        if (((BaseProtocolCoder)localObject).encodeReqMsg(this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler.a(), localUniPacket))
+        if (((BaseProtocolCoder)localObject).encodeReqMsg(this.b.a(), localUniPacket))
         {
           localObject = new ReqItem();
           ((ReqItem)localObject).eServiceID = 115;
@@ -55,13 +55,13 @@ public class ReqGetSettingsItem
   public void a(RespItem paramRespItem)
   {
     if ((paramRespItem.eServiceID == 115) && (paramRespItem.cResult == 2)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingIReqGetSettingsHandler.a(paramRespItem.vecUpdate);
+      this.b.a(paramRespItem.vecUpdate);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ReqGetSettingsItem
  * JD-Core Version:    0.7.0.1
  */

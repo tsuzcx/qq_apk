@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.qcircle.api.data;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.biz.richframework.delegate.impl.RFApplication;
 import com.tencent.mobileqq.qcircle.api.IQCircleRFWApi;
 import com.tencent.mobileqq.qroute.QRoute;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
 
 public class Option
 {
+  public static final Drawable DEFAULT_FAILED_DRAWABLE = RFApplication.getApplication().getResources().getDrawable(2130845171);
+  public static final Drawable DEFAULT_LOADING_DRAWABLE = RFApplication.getApplication().getResources().getDrawable(2130848395);
   public static final int DEFAULT_PIC_TYPE = 0;
   public static final int LOAD_FROM_CACHE = 0;
   public static final int LOAD_FROM_NET = 2;
@@ -23,17 +26,15 @@ public class Option
   public static final int PRIORITY_DEFAULT = 0;
   public static final int PRIORITY_PRELOAD = 1;
   public static final int SHARE_P_PIC_TYPE = 1;
-  public static final Drawable sDefaultFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844125);
-  public static final Drawable sDefaultLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130846843);
   private String mCacheKey;
   public Long mDecodeStartTime;
   public Long mDownLoadStartTime;
-  private Drawable mFailedDrawable = sDefaultFailedDrawable;
+  private Drawable mFailedDrawable = DEFAULT_FAILED_DRAWABLE;
   private String mIP;
   private boolean mIsFromPreLoad;
   private boolean mIsPreDecode = true;
   public int mLoadType = 2;
-  private Drawable mLoadingDrawable = sDefaultLoadingDrawable;
+  private Drawable mLoadingDrawable = DEFAULT_LOADING_DRAWABLE;
   private String mLocalPath;
   private int mPicType;
   private int mPriority = 0;
@@ -49,8 +50,8 @@ public class Option
   public static Option getDefaultOptions(ImageView paramImageView)
   {
     Option localOption = new Option();
-    localOption.mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130841698);
-    localOption.mFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130844125);
+    localOption.mLoadingDrawable = RFApplication.getApplication().getResources().getDrawable(2130842613);
+    localOption.mFailedDrawable = RFApplication.getApplication().getResources().getDrawable(2130845171);
     if ((paramImageView != null) && (paramImageView.getLayoutParams() != null))
     {
       localOption.mRequestWidth = paramImageView.getLayoutParams().width;
@@ -150,21 +151,19 @@ public class Option
   public boolean isValid()
   {
     Object localObject = this.mTargetView;
-    if ((localObject != null) && ((((ImageView)localObject).getTag(2131373921) instanceof String)))
+    if ((localObject != null) && ((((ImageView)localObject).getTag(2131441767) instanceof String)))
     {
-      localObject = (String)this.mTargetView.getTag(2131373921);
+      localObject = (String)this.mTargetView.getTag(2131441767);
       if (((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl((String)localObject).equals(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getUniKeyFromUrl(this.mUrl)))
       {
-        i = RFLog.USR;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("seq = ");
         ((StringBuilder)localObject).append(this.mSeq);
         ((StringBuilder)localObject).append(" is valid, url:");
         ((StringBuilder)localObject).append(this.mUrl);
-        RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
+        QLog.i("QCircleFeedPicLoader", 1, ((StringBuilder)localObject).toString());
         return true;
       }
-      i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("seq = ");
       localStringBuilder.append(this.mSeq);
@@ -172,16 +171,15 @@ public class Option
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("-----original url:");
       localStringBuilder.append(this.mUrl);
-      RFLog.i("QCircleFeedPicLoader", i, localStringBuilder.toString());
+      QLog.i("QCircleFeedPicLoader", 1, localStringBuilder.toString());
       return false;
     }
-    int i = RFLog.USR;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("seq = ");
     ((StringBuilder)localObject).append(this.mSeq);
     ((StringBuilder)localObject).append(" unValid mTargetView is empty,isFromPreload:");
     ((StringBuilder)localObject).append(this.mIsFromPreLoad);
-    RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
+    QLog.i("QCircleFeedPicLoader", 1, ((StringBuilder)localObject).toString());
     return false;
   }
   
@@ -269,7 +267,7 @@ public class Option
     {
       this.mTargetView = paramImageView;
       if (!TextUtils.isEmpty(this.mUrl)) {
-        paramImageView.setTag(2131373921, this.mUrl);
+        paramImageView.setTag(2131441767, this.mUrl);
       }
     }
     return this;
@@ -283,8 +281,8 @@ public class Option
       if (TextUtils.isEmpty(paramString)) {
         return this;
       }
-      if ((((this.mTargetView.getTag(2131373921) instanceof String)) && (!this.mTargetView.getTag(2131373921).equals(this.mUrl))) || (this.mTargetView.getTag(2131373921) == null)) {
-        this.mTargetView.setTag(2131373921, this.mUrl);
+      if ((((this.mTargetView.getTag(2131441767) instanceof String)) && (!this.mTargetView.getTag(2131441767).equals(this.mUrl))) || (this.mTargetView.getTag(2131441767) == null)) {
+        this.mTargetView.setTag(2131441767, this.mUrl);
       }
     }
     return this;
@@ -298,7 +296,7 @@ public class Option
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.data.Option
  * JD-Core Version:    0.7.0.1
  */

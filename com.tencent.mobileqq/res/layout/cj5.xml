@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="20.0dip"
+<androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/n4c" android:background="@drawable/c_t" android:layout_width="128.5dip" android:layout_height="fill_parent">
-        <TextView android:textSize="13.0dip" android:id="@id/n4f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="剩余" />
-        <TextView android:textSize="13.0dip" android:id="@id/n49" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:text="00" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:text="天" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4a" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:text="00" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="0.5dip" android:text=":" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4d" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="1.5dip" android:text="00" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4e" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="0.5dip" android:text=":" />
-        <TextView android:textSize="13.0dip" android:id="@id/n4g" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="1.5dip" android:text="00" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/nd" android:paddingTop="@dimen/nd" android:paddingRight="@dimen/nd" android:paddingBottom="@dimen/nd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bin" />
+            <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nd" android:text="@string/x6i" />
+        </LinearLayout>
+        <TextView android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/nd" android:text="访问你王者荣耀的数据" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/nd" android:text="不能拒绝授权" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@id/pth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂不" />
+            <Button android:id="@id/pti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="授权" />
+        </LinearLayout>
     </LinearLayout>
-    <ImageView android:layout_width="15.0dip" android:layout_height="fill_parent" android:src="@drawable/c9d" android:layout_toRightOf="@id/n4c" /> /> </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

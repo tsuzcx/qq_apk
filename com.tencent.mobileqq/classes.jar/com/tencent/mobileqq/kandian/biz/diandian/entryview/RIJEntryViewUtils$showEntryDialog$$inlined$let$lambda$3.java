@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.diandian.entryview;
 
-import android.app.Activity;
 import com.tencent.mobileqq.kandian.biz.ugc.selecttopic.SlidingUpDialog;
-import com.tencent.mobileqq.kandian.repo.db.struct.ColumnInfo;
-import com.tencent.tkd.topicsdk.bean.CommunityInfo;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -14,7 +11,7 @@ final class RIJEntryViewUtils$showEntryDialog$$inlined$let$lambda$3
   extends Lambda
   implements Function0<Unit>
 {
-  RIJEntryViewUtils$showEntryDialog$$inlined$let$lambda$3(Activity paramActivity, ColumnInfo paramColumnInfo, CommunityInfo paramCommunityInfo, int paramInt1, String paramString, int paramInt2, SlidingUpDialog paramSlidingUpDialog)
+  RIJEntryViewUtils$showEntryDialog$$inlined$let$lambda$3(Function0 paramFunction01, SlidingUpDialog paramSlidingUpDialog, Function0 paramFunction02)
   {
     super(0);
   }
@@ -26,7 +23,7 @@ final class RIJEntryViewUtils$showEntryDialog$$inlined$let$lambda$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.diandian.entryview.RIJEntryViewUtils.showEntryDialog..inlined.let.lambda.3
  * JD-Core Version:    0.7.0.1
  */

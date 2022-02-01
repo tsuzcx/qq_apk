@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="96px"
+    version="1.1"
+    viewBox="0 0 96 96"
+    width="96px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>back_icon_normal_black</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Symbols"
+        stroke="none"
+        stroke-width="1">
+        <g
+            fill="#000000"
+            fill-rule="nonzero"
+            id="back_icon_normal_black">
+            <path d="M48.0549656,24 C49.4740787,25.4370062 50.8931918,26.8740125 52.2923173,28.3209979 C46.7357901,33.8694387 41.179263,39.4079002 35.6327295,44.956341 C47.755153,44.9663202 59.8775765,44.956341 72,44.9663202 L72,51.0137214 L35.5827608,51.0137214 C41.1292942,56.6120582 46.7257964,62.1505198 52.2923173,67.7288981 C50.8732042,69.1559252 49.4440974,70.572973 48.0149906,72 C40.0099938,64.0066528 32.0049969,56.0133056 24,48.0199584 C32.0149906,40.016632 40.0299813,32.0033264 48.0549656,24 Z"></path>
+        </g>
+    </g>
+</svg>

@@ -313,7 +313,7 @@ public class HippyTKDImageView
     this.mBGDrawable = null;
     if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
     {
-      int i = ResourceUtil.getColor(2131167297);
+      int i = ResourceUtil.getColor(2131168336);
       if (this.mHippyTKDSkinHandler.getBackgroundColors() != null) {
         i = HippyTKDSkinHandler.getColor(this.mHippyTKDSkinHandler.getBackgroundColors());
       }
@@ -626,19 +626,19 @@ public class HippyTKDImageView
     return super.shouldSetContent();
   }
   
-  protected void updateContentDrawableProperty()
+  protected void updateContentDrawableProperty(int paramInt)
   {
     if (this.mFeedsNeedClip)
     {
       ((ContentDrawable)this.mContentDrawable).mSelfClipPath = this.mFeedsClipPath;
       setLayerType(1, null);
     }
-    super.updateContentDrawableProperty();
+    super.updateContentDrawableProperty(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView
  * JD-Core Version:    0.7.0.1
  */

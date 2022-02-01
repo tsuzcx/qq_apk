@@ -13,27 +13,22 @@ import mqq.app.MobileQQ;
 
 public final class QStorage
 {
-  public static ConcurrentHashMap<String, QStorage> a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "flashchat" };
-  Context jdField_a_of_type_AndroidContentContext;
-  File jdField_a_of_type_JavaIoFile;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public static ConcurrentHashMap<String, QStorage> e = new ConcurrentHashMap();
+  private static final String[] f = { "flashchat" };
+  String a;
+  Context b;
+  String c;
+  File d;
   
   private QStorage(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramContext;
+    this.c = paramString2;
     paramContext = new StringBuilder();
-    paramContext.append(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath());
+    paramContext.append(this.b.getFilesDir().getAbsolutePath());
     paramContext.append(File.separator);
-    paramContext.append(this.b);
+    paramContext.append(this.c);
     paramContext.append(File.separator);
     paramContext.append("qstorage");
     paramContext.append(File.separator);
@@ -42,7 +37,7 @@ public final class QStorage
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    this.jdField_a_of_type_JavaIoFile = paramContext;
+    this.d = paramContext;
   }
   
   public static <T extends IQStorageSafable<Y>, Y> T a(Y paramY, Class<T> paramClass)
@@ -62,23 +57,23 @@ public final class QStorage
   
   public static QStorage a(String paramString)
   {
-    if (!a(paramString))
+    if (!b(paramString))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("buildQStorage notRegister ");
       ((StringBuilder)localObject).append(paramString);
       QLog.d("QStorage", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (QStorage)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    Object localObject = (QStorage)e.get(paramString);
     if (localObject == null) {
-      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      synchronized (e)
       {
-        QStorage localQStorage = (QStorage)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        QStorage localQStorage = (QStorage)e.get(paramString);
         localObject = localQStorage;
         if (localQStorage == null)
         {
           localObject = new QStorage(BaseApplication.getContext(), paramString, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+          e.put(paramString, localObject);
         }
         return localObject;
       }
@@ -86,9 +81,9 @@ public final class QStorage
     return localObject;
   }
   
-  private static boolean a(String paramString)
+  private static boolean b(String paramString)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = f;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -103,7 +98,7 @@ public final class QStorage
   
   public File a(String paramString1, String paramString2)
   {
-    File localFile = this.jdField_a_of_type_JavaIoFile;
+    File localFile = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append(paramString2);
@@ -131,7 +126,7 @@ public final class QStorage
       break label16;
     }
     str = null;
-    if ((paramInt != 1) && (str != null) && (QConfigJourney.a().a(this.jdField_a_of_type_JavaLangString, this.b, str)) && (!paramFile.exists())) {
+    if ((paramInt != 1) && (str != null) && (QConfigJourney.a().b(this.a, this.c, str)) && (!paramFile.exists())) {
       throw new QStorageSafeDeleteException();
     }
     try
@@ -157,7 +152,7 @@ public final class QStorage
       paramParam = paramFile;
       if (str != null)
       {
-        QConfigJourney.a().a(this.jdField_a_of_type_JavaLangString, this.b, str);
+        QConfigJourney.a().a(this.a, this.c, str);
         paramParam = paramFile;
       }
     }
@@ -189,8 +184,8 @@ public final class QStorage
       try
       {
         paramDATA = paramFile.getCanonicalPath();
-        QConfigJourney.a().b(this.jdField_a_of_type_JavaLangString, this.b, paramDATA);
-        QConfigJourney.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramDATA);
+        QConfigJourney.a().c(this.a, this.c, paramDATA);
+        QConfigJourney.a().a(this.a, this.c, paramDATA);
         return;
       }
       catch (IOException paramFile) {}
@@ -210,7 +205,7 @@ public final class QStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.QStorage
  * JD-Core Version:    0.7.0.1
  */

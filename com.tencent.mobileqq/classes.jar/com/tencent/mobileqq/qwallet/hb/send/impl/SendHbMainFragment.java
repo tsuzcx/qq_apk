@@ -51,23 +51,18 @@ public class SendHbMainFragment
   extends BaseHbFragment
   implements View.OnClickListener
 {
-  public static final String a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private HbInfo.BundleInfo jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo = new HbInfo.BundleInfo();
-  private ViewPagerTabLayout jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout;
-  private List<SendHbMainFragment.HbHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(R.string.cJ);
-  }
+  public static final String a = HardCodeUtil.a(R.string.cM);
+  private List<SendHbMainFragment.HbHolder> b = new ArrayList();
+  private HbInfo.BundleInfo c = new HbInfo.BundleInfo();
+  private ImageView d;
+  private String l;
+  private ViewPagerTabLayout m;
   
   private BaseHbFragment a(PanelData paramPanelData, Bundle paramBundle, boolean paramBoolean)
   {
     Bundle localBundle = new Bundle(paramBundle);
-    int i = paramPanelData.jdField_a_of_type_Int;
-    localBundle.putString("panel_name", paramPanelData.b);
+    int i = paramPanelData.b;
+    localBundle.putString("panel_name", paramPanelData.c);
     Object localObject = RedPacketManagerImpl.TYPEHBINFOMAP.get(Integer.valueOf(i));
     paramBundle = null;
     if (localObject == null) {
@@ -88,7 +83,7 @@ public class SendHbMainFragment
           default: 
             break;
           case 11: 
-            if ((!paramBoolean) && (!HbInfo.e.contains(this.b))) {
+            if ((!paramBoolean) && (!HbInfo.e.contains(this.l))) {
               break;
             }
             paramBundle = new ExclusiveHbFragment();
@@ -98,18 +93,18 @@ public class SendHbMainFragment
               break;
             }
             paramBundle = new DrawHbFragment();
-            localBundle.putString("skinId", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("skinId"));
-            localBundle.putString("drawParam", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("subjects"));
-            localBundle.putString("recommend", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("recommend"));
-            localBundle.putString("modelList", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("modelList"));
+            localBundle.putString("skinId", paramPanelData.h.optString("skinId"));
+            localBundle.putString("drawParam", paramPanelData.h.optString("subjects"));
+            localBundle.putString("recommend", paramPanelData.h.optString("recommend"));
+            localBundle.putString("modelList", paramPanelData.h.optString("modelList"));
             break;
           case 9: 
             localObject = new WordChainHbFragment();
             paramBundle = (Bundle)localObject;
-            if (paramPanelData.jdField_a_of_type_OrgJsonJSONObject == null) {
+            if (paramPanelData.h == null) {
               break;
             }
-            localBundle.putString("skinId", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("skinId"));
+            localBundle.putString("skinId", paramPanelData.h.optString("skinId"));
             paramBundle = (Bundle)localObject;
             break;
           case 8: 
@@ -117,8 +112,8 @@ public class SendHbMainFragment
               break;
             }
             localObject = new EmojiFragment();
-            localBundle.putString("prefix", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("prefix"));
-            JSONArray localJSONArray = paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("heartList");
+            localBundle.putString("prefix", paramPanelData.h.optString("prefix"));
+            JSONArray localJSONArray = paramPanelData.h.optJSONArray("heartList");
             paramBundle = (Bundle)localObject;
             if (localJSONArray == null) {
               break;
@@ -129,10 +124,10 @@ public class SendHbMainFragment
           case 7: 
             localObject = new KSongFragment();
             paramBundle = (Bundle)localObject;
-            if (paramPanelData.jdField_a_of_type_OrgJsonJSONObject == null) {
+            if (paramPanelData.h == null) {
               break;
             }
-            localBundle.putString("pick_entry", paramPanelData.jdField_a_of_type_OrgJsonJSONObject.optString("pick_entry", "https://h5.qianbao.qq.com/ktvredpacket"));
+            localBundle.putString("pick_entry", paramPanelData.h.optString("pick_entry", "https://h5.qianbao.qq.com/ktvredpacket"));
             paramBundle = (Bundle)localObject;
             break;
             if ((!paramBoolean) && (!RedPacketManagerImpl.verifyShengpiziHbParams(paramPanelData))) {
@@ -147,12 +142,12 @@ public class SendHbMainFragment
             break;
           }
         }
-        else if ((paramBoolean) || (!HbInfo.f.contains(this.b)))
+        else if ((paramBoolean) || (!HbInfo.f.contains(this.l)))
         {
           paramBundle = new LingHbFragment();
         }
       }
-      else if ((paramBoolean) || (HbInfo.d.contains(this.b)))
+      else if ((paramBoolean) || (HbInfo.d.contains(this.l)))
       {
         paramBundle = new UsualHbFragment();
         localBundle.putString("bus_type", "2");
@@ -180,13 +175,13 @@ public class SendHbMainFragment
   
   private String a(PanelData paramPanelData)
   {
-    if ((paramPanelData != null) && (!TextUtils.isEmpty(paramPanelData.b)))
+    if ((paramPanelData != null) && (!TextUtils.isEmpty(paramPanelData.c)))
     {
-      int i = paramPanelData.b.indexOf(jdField_a_of_type_JavaLangString);
+      int i = paramPanelData.c.indexOf(a);
       if (i != -1) {
-        paramPanelData = paramPanelData.b.substring(0, i);
+        paramPanelData = paramPanelData.c.substring(0, i);
       } else {
-        paramPanelData = paramPanelData.b;
+        paramPanelData = paramPanelData.c;
       }
     }
     else
@@ -195,18 +190,18 @@ public class SendHbMainFragment
     }
     Object localObject = paramPanelData;
     if (TextUtils.isEmpty(paramPanelData)) {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
     }
     return localObject;
   }
   
   private void a(View paramView)
   {
-    paramView = (TipsBar)paramView.findViewById(R.id.aa);
+    paramView = (TipsBar)paramView.findViewById(R.id.af);
     paramView.setVisibility(8);
     try
     {
-      Object localObject1 = QWalletTools.a();
+      Object localObject1 = QWalletTools.b();
       if (localObject1 != null)
       {
         localObject1 = (IQWalletConfigService)((BaseQQAppInterface)localObject1).getRuntimeService(IQWalletConfigService.class, "");
@@ -241,9 +236,9 @@ public class SendHbMainFragment
               return;
             }
             paramView.setBarType(2);
-            paramView.setTipsIcon(getResources().getDrawable(R.drawable.jdField_a_of_type_Int));
-            if (paramView.b() != null) {
-              paramView.b().setVisibility(0);
+            paramView.setTipsIcon(getResources().getDrawable(R.drawable.a));
+            if (paramView.getTipsIconView() != null) {
+              paramView.getTipsIconView().setVisibility(0);
             }
             paramView.setVisibility(0);
             paramView.setTipsText(str1);
@@ -264,27 +259,27 @@ public class SendHbMainFragment
   
   private void a(View paramView, Bundle paramBundle)
   {
-    HbInfo.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo);
-    this.b = this.jdField_a_of_type_ComTencentMobileqqQwalletHbHbInfo$BundleInfo.recv_type;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(R.id.aA));
+    HbInfo.a(paramBundle, this.c);
+    this.l = this.c.recv_type;
+    this.d = ((ImageView)paramView.findViewById(R.id.aI));
     b(paramView);
     a(paramView, paramBundle.getString("hbTitle", getString(R.string.F)));
     if (!a(paramBundle))
     {
       QLog.i("SendHbMainFragment", 1, "initHbData failed...");
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, HardCodeUtil.a(R.string.cG), 0).a();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.finish();
+      QQToast.makeText(this.f, HardCodeUtil.a(R.string.cJ), 0).show();
+      this.f.finish();
       return;
     }
-    paramBundle = (ViewPager)paramView.findViewById(R.id.cI);
+    paramBundle = (ViewPager)paramView.findViewById(R.id.cZ);
     paramBundle.setOffscreenPageLimit(1);
     paramBundle.setAdapter(new SendHbMainFragment.3(this, getChildFragmentManager()));
-    paramBundle.setCurrentItem(a(c()), false);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout = ((ViewPagerTabLayout)paramView.findViewById(R.id.cc));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.setBoldStyle(1);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.setScrollOnTabClick(false);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.setViewPager(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.post(new SendHbMainFragment.4(this));
+    paramBundle.setCurrentItem(a(f()), false);
+    this.m = ((ViewPagerTabLayout)paramView.findViewById(R.id.cq));
+    this.m.setBoldStyle(1);
+    this.m.setScrollOnTabClick(false);
+    this.m.setViewPager(paramBundle);
+    this.m.post(new SendHbMainFragment.4(this));
     a(paramView);
   }
   
@@ -292,7 +287,7 @@ public class SendHbMainFragment
   {
     int i = paramBundle.getInt("tabMask", 0);
     boolean bool = paramBundle.getBoolean("isFromPanel");
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -312,8 +307,8 @@ public class SendHbMainFragment
         ((Bundle)localObject1).putString("bus_type", "2");
         localObject2 = new UsualHbFragment();
         ((UsualHbFragment)localObject2).setArguments((Bundle)localObject1);
-        localObject1 = new SendHbMainFragment.HbHolder(1, HardCodeUtil.a(R.string.cH), (BaseHbFragment)localObject2);
-        this.jdField_a_of_type_JavaUtilList.add(localObject1);
+        localObject1 = new SendHbMainFragment.HbHolder(1, HardCodeUtil.a(R.string.cK), (BaseHbFragment)localObject2);
+        this.b.add(localObject1);
       }
       if ((i & 0x1) == 1)
       {
@@ -321,8 +316,8 @@ public class SendHbMainFragment
         paramBundle.putString("bus_type", "1");
         localObject1 = new UsualHbFragment();
         ((UsualHbFragment)localObject1).setArguments(paramBundle);
-        paramBundle = new SendHbMainFragment.HbHolder(0, HardCodeUtil.a(R.string.cI), (BaseHbFragment)localObject1);
-        this.jdField_a_of_type_JavaUtilList.add(paramBundle);
+        paramBundle = new SendHbMainFragment.HbHolder(0, HardCodeUtil.a(R.string.cL), (BaseHbFragment)localObject1);
+        this.b.add(paramBundle);
       }
     }
     else
@@ -351,11 +346,11 @@ public class SendHbMainFragment
         if (localObject2 != null) {
           try
           {
-            if (!TextUtils.isEmpty(((PanelData)localObject2).b))
+            if (!TextUtils.isEmpty(((PanelData)localObject2).c))
             {
               BaseHbFragment localBaseHbFragment = a((PanelData)localObject2, paramBundle, bool);
               if (localBaseHbFragment != null) {
-                this.jdField_a_of_type_JavaUtilList.add(new SendHbMainFragment.HbHolder(((PanelData)localObject2).jdField_a_of_type_Int, a((PanelData)localObject2), localBaseHbFragment));
+                this.b.add(new SendHbMainFragment.HbHolder(((PanelData)localObject2).b, a((PanelData)localObject2), localBaseHbFragment));
               }
             }
           }
@@ -366,7 +361,7 @@ public class SendHbMainFragment
         }
       }
     }
-    return this.jdField_a_of_type_JavaUtilList.isEmpty() ^ true;
+    return this.b.isEmpty() ^ true;
   }
   
   private void b(View paramView)
@@ -374,10 +369,10 @@ public class SendHbMainFragment
     try
     {
       int i = ImmersiveUtils.isSupporImmersive();
-      int j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity);
+      int j = ImmersiveUtils.getStatusBarHeight(this.f);
       if (i == 1)
       {
-        paramView = paramView.findViewById(R.id.cJ);
+        paramView = paramView.findViewById(R.id.da);
         paramView.getLayoutParams().height = j;
         paramView.requestLayout();
         if (QLog.isColorLevel())
@@ -398,20 +393,20 @@ public class SendHbMainFragment
     }
   }
   
-  private int c()
+  private int f()
   {
-    return HbBusiUtils.a(this.jdField_a_of_type_Int, QwUtils.a(this.jdField_a_of_type_AndroidOsBundle.getString("bus_type"), 2));
+    return HbBusiUtils.a(this.i, QwUtils.a(this.e.getString("bus_type"), 2));
   }
   
   public int a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.b.iterator();
     while (((Iterator)localObject).hasNext())
     {
       SendHbMainFragment.HbHolder localHbHolder = (SendHbMainFragment.HbHolder)((Iterator)localObject).next();
-      if (localHbHolder.jdField_a_of_type_Int == paramInt)
+      if (localHbHolder.a == paramInt)
       {
-        i = this.jdField_a_of_type_JavaUtilList.indexOf(localHbHolder);
+        i = this.b.indexOf(localHbHolder);
         break label56;
       }
     }
@@ -429,65 +424,37 @@ public class SendHbMainFragment
     return i;
   }
   
-  public BaseHbFragment a()
-  {
-    try
-    {
-      BaseHbFragment localBaseHbFragment = ((SendHbMainFragment.HbHolder)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.a())).jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplBaseHbFragment;
-      return localBaseHbFragment;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SendHbMainFragment", 1, localThrowable, new Object[0]);
-    }
-    return null;
-  }
-  
   public void a(View paramView, String paramString)
   {
-    paramView.findViewById(R.id.av).setVisibility(4);
-    ((TextView)paramView.findViewById(R.id.aw)).setText(paramString);
-    paramView.findViewById(R.id.at).setOnClickListener(this);
-    paramView.findViewById(R.id.bK).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.getResources().getColor(R.color.g));
+    paramView.findViewById(R.id.aD).setVisibility(4);
+    ((TextView)paramView.findViewById(R.id.aE)).setText(paramString);
+    paramView.findViewById(R.id.aB).setOnClickListener(this);
+    paramView.findViewById(R.id.bW).setBackgroundColor(this.f.getResources().getColor(R.color.g));
     paramView = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { Color.parseColor("#FF6D6D"), Color.parseColor("#FF2151") });
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
+    this.d.setBackgroundDrawable(paramView);
   }
   
-  public int b()
+  public void c()
   {
-    try
-    {
-      int i = ((SendHbMainFragment.HbHolder)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendViewImplViewPagerTabLayout.a())).jdField_a_of_type_Int;
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SendHbMainFragment", 1, localThrowable, new Object[0]);
-    }
-    return 1;
-  }
-  
-  public void b()
-  {
-    int i = b();
+    int i = e();
     switch (i)
     {
     default: 
       break;
     case 11: 
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("only.wrappacket.back");
+      this.f.addHbUploadData("only.wrappacket.back");
       break;
     case 10: 
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("draw.wrappacket.back");
+      this.f.addHbUploadData("draw.wrappacket.back");
       break;
     case 9: 
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("idiom.wrappacket.back");
+      this.f.addHbUploadData("idiom.wrappacket.back");
       break;
     case 8: 
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("phiz.wrappacket.back");
+      this.f.addHbUploadData("phiz.wrappacket.back");
       break;
     case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.addHbUploadData("ksong.wrappacket.back");
+      this.f.addHbUploadData("ksong.wrappacket.back");
     }
     if (QLog.isColorLevel())
     {
@@ -498,10 +465,38 @@ public class SendHbMainFragment
     }
   }
   
+  public BaseHbFragment d()
+  {
+    try
+    {
+      BaseHbFragment localBaseHbFragment = ((SendHbMainFragment.HbHolder)this.b.get(this.m.getCurrentTab())).c;
+      return localBaseHbFragment;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SendHbMainFragment", 1, localThrowable, new Object[0]);
+    }
+    return null;
+  }
+  
+  public int e()
+  {
+    try
+    {
+      int i = ((SendHbMainFragment.HbHolder)this.b.get(this.m.getCurrentTab())).a;
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SendHbMainFragment", 1, localThrowable, new Object[0]);
+    }
+    return 1;
+  }
+  
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    BaseHbFragment localBaseHbFragment = a();
+    BaseHbFragment localBaseHbFragment = d();
     if (localBaseHbFragment != null) {
       localBaseHbFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -520,25 +515,25 @@ public class SendHbMainFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.at)
+    if (paramView.getId() == R.id.aB)
     {
-      b();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.cancelCallBack();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity.finish();
+      c();
+      this.f.cancelCallBack();
+      this.f.finish();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.n, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.q, null);
     a(paramLayoutInflater, getArguments());
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.SendHbMainFragment
  * JD-Core Version:    0.7.0.1
  */

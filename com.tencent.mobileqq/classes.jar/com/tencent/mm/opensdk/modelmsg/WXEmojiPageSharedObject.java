@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXEmojiPageSharedObject
   implements WXMediaMessage.IMediaObject
@@ -33,7 +33,7 @@ public class WXEmojiPageSharedObject
   
   public boolean checkArgs()
   {
-    if ((!d.b(this.title)) && (!d.b(this.iconUrl))) {
+    if ((!b.b(this.title)) && (!b.b(this.iconUrl))) {
       return true;
     }
     Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
@@ -69,7 +69,7 @@ public class WXEmojiPageSharedObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiPageSharedObject
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ class MergeEditVideo$1
     localStringBuilder.append(" Exception = ");
     SLog.c("MergeEditVideo", localStringBuilder.toString(), ???);
     if (paramInt > 10000) {
-      synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo))
+      synchronized (MergeEditVideo.a(this.e))
       {
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo, true);
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo).notifyAll();
+        MergeEditVideo.a(this.e, true);
+        MergeEditVideo.a(this.e).notifyAll();
         return;
       }
     }
@@ -32,11 +32,11 @@ class MergeEditVideo$1
   
   public void onEncodeFinish(String arg1)
   {
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo))
+    synchronized (MergeEditVideo.a(this.e))
     {
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqEditorCompositeStepMergeEditVideo).notifyAll();
-      ??? = this.jdField_a_of_type_ComTencentMobileqqFilterQQEncodeFilterRender;
+      MergeEditVideo.a(this.e, true);
+      MergeEditVideo.a(this.e).notifyAll();
+      ??? = this.a;
       if (??? != null) {
         ???.a();
       }
@@ -47,25 +47,25 @@ class MergeEditVideo$1
   
   public void onEncodeFrame()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.isCancel)
+    if (this.c.isCancel)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecMp4ReEncoder.a();
+      this.d.a();
       QLog.w("MergeEditVideo", 1, "mergeVideo cancel!");
     }
   }
   
   public void onEncodeStart()
   {
-    QQEncodeFilterRender localQQEncodeFilterRender = this.jdField_a_of_type_ComTencentMobileqqFilterQQEncodeFilterRender;
+    QQEncodeFilterRender localQQEncodeFilterRender = this.a;
     if (localQQEncodeFilterRender != null) {
-      localQQEncodeFilterRender.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.a, this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig.b);
+      localQQEncodeFilterRender.a(this.b.c, this.b.d);
     }
     QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.MergeEditVideo.1
  * JD-Core Version:    0.7.0.1
  */

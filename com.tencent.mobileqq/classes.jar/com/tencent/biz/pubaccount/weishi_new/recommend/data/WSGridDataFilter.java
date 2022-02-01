@@ -82,13 +82,13 @@ public class WSGridDataFilter
     if ((paramBoolean1) || (paramBoolean2)) {
       this.a.clear();
     }
-    Object localObject = new ArrayList(paramArrayList);
-    HashSet localHashSet = new HashSet();
+    Object localObject2 = new ArrayList(paramArrayList);
+    Object localObject1 = new HashSet();
     StringBuilder localStringBuilder1 = new StringBuilder();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    localObject2 = ((ArrayList)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((Iterator)localObject).next();
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((Iterator)localObject2).next();
       if (a(localstSimpleMetaFeed))
       {
         paramArrayList.remove(localstSimpleMetaFeed);
@@ -108,7 +108,7 @@ public class WSGridDataFilter
           WSLog.d("WSGridDataFilter", localStringBuilder2.toString());
           localStringBuilder1.append(localstSimpleMetaFeed.id);
           localStringBuilder1.append("_");
-          localHashSet.add(localstSimpleMetaFeed.traceId);
+          ((HashSet)localObject1).add(localstSimpleMetaFeed.traceId);
           paramArrayList.remove(localstSimpleMetaFeed);
         }
         else if (!TextUtils.isEmpty(localstSimpleMetaFeed.id))
@@ -125,12 +125,19 @@ public class WSGridDataFilter
         }
       }
     }
-    WSGridBeaconReport.a(paramBoolean1, paramBoolean2, 0, a(localStringBuilder1), a(localHashSet), paramString);
+    paramArrayList = a(localStringBuilder1);
+    localObject1 = a((HashSet)localObject1);
+    if ((!paramBoolean1) && (!paramBoolean2))
+    {
+      WSGridBeaconReport.a(0, paramArrayList, (String)localObject1, paramString);
+      return;
+    }
+    WSGridBeaconReport.a(paramBoolean1, paramBoolean2, 0, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataFilter
  * JD-Core Version:    0.7.0.1
  */

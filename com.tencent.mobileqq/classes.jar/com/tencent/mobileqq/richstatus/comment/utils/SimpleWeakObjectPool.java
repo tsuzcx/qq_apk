@@ -5,8 +5,8 @@ import mqq.util.WeakReference;
 
 public final class SimpleWeakObjectPool<T>
 {
-  private int jdField_a_of_type_Int = -1;
-  private WeakReference<T>[] jdField_a_of_type_ArrayOfMqqUtilWeakReference;
+  private WeakReference<T>[] a;
+  private int b = -1;
   
   public SimpleWeakObjectPool()
   {
@@ -15,18 +15,18 @@ public final class SimpleWeakObjectPool<T>
   
   public SimpleWeakObjectPool(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfMqqUtilWeakReference = ((WeakReference[])Array.newInstance(WeakReference.class, paramInt));
+    this.a = ((WeakReference[])Array.newInstance(WeakReference.class, paramInt));
   }
   
   public T a()
   {
     try
     {
-      if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ArrayOfMqqUtilWeakReference.length))
+      if ((this.b != -1) && (this.b <= this.a.length))
       {
-        Object localObject1 = this.jdField_a_of_type_ArrayOfMqqUtilWeakReference[this.jdField_a_of_type_Int].get();
-        this.jdField_a_of_type_ArrayOfMqqUtilWeakReference[this.jdField_a_of_type_Int] = null;
-        this.jdField_a_of_type_Int -= 1;
+        Object localObject1 = this.a[this.b].get();
+        this.a[this.b] = null;
+        this.b -= 1;
         return localObject1;
       }
       return null;
@@ -38,16 +38,16 @@ public final class SimpleWeakObjectPool<T>
   {
     try
     {
-      if (this.jdField_a_of_type_Int != -1)
+      if (this.b != -1)
       {
-        int i = this.jdField_a_of_type_Int;
-        int j = this.jdField_a_of_type_ArrayOfMqqUtilWeakReference.length;
+        int i = this.b;
+        int j = this.a.length;
         if (i >= j - 1) {
           return false;
         }
       }
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ArrayOfMqqUtilWeakReference[this.jdField_a_of_type_Int] = new WeakReference(paramT);
+      this.b += 1;
+      this.a[this.b] = new WeakReference(paramT);
       return true;
     }
     finally {}
@@ -55,7 +55,7 @@ public final class SimpleWeakObjectPool<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.utils.SimpleWeakObjectPool
  * JD-Core Version:    0.7.0.1
  */

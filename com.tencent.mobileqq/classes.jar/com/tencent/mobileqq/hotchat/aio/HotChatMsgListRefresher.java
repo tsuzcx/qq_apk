@@ -15,17 +15,17 @@ public class HotChatMsgListRefresher
     super(paramAIOContext);
   }
   
-  public void a()
+  public void e()
   {
-    super.a();
-    if (((HotChatContext)this.a).f() == 2) {
-      this.a.a().a().a(4);
+    super.e();
+    if (((HotChatContext)this.a).Q() == 2) {
+      this.a.e().b().b(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.aio.HotChatMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

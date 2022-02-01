@@ -27,27 +27,26 @@ public class GroupPadTemplateAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  public static int a = 1;
-  public static int b = 2;
-  Context jdField_a_of_type_AndroidContentContext;
-  protected View.OnClickListener a;
-  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Set<String> b;
+  public static int d = 1;
+  public static int e = 2;
+  Context a;
+  final List<GroupPadTemplateInfo> b = new ArrayList();
+  protected View.OnClickListener c;
+  private Set<String> f = new HashSet();
+  private Set<String> g = new HashSet();
   
   public GroupPadTemplateAdapter(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramOnClickListener;
+    this.a = paramContext;
   }
   
   private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
   {
     if (paramGroupPadTemplateInfo != null)
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840307);
-      if (!URLUtil.a(paramGroupPadTemplateInfo.mobThumbUrl))
+      Drawable localDrawable = this.a.getResources().getDrawable(2130840628);
+      if (!URLUtil.e(paramGroupPadTemplateInfo.mobThumbUrl))
       {
         paramAsyncImageView.setImageDrawable(localDrawable);
         return;
@@ -72,7 +71,7 @@ public class GroupPadTemplateAdapter
       }
       if (paramGroupPadTemplateInfo != null)
       {
-        if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
+        if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.g.remove(str))) {
           paramGroupPadTemplateInfo.restartDownload();
         }
         paramGroupPadTemplateInfo.setDownloadListener(new GroupPadTemplateAdapter.1(this, str));
@@ -92,7 +91,7 @@ public class GroupPadTemplateAdapter
     }
     else
     {
-      paramAsyncImageView.setImageResource(2130840307);
+      paramAsyncImageView.setImageResource(2130840628);
     }
   }
   
@@ -100,18 +99,18 @@ public class GroupPadTemplateAdapter
   {
     GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
     localGroupPadTemplateInfo.docOrSheetType = 1;
-    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131693078);
+    localGroupPadTemplateInfo.templateName = this.a.getString(2131890192);
     return localGroupPadTemplateInfo;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.c = paramOnClickListener;
   }
   
   public void a(List<GroupPadTemplateInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
@@ -119,24 +118,24 @@ public class GroupPadTemplateAdapter
       {
         GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
         if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
-          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
+          this.b.add(localGroupPadTemplateInfo);
         }
       }
       paramList = a();
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
+      this.b.add(paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -156,43 +155,43 @@ public class GroupPadTemplateAdapter
     GroupPadTemplateAdapter.GroupPadTemplateItemHolder localGroupPadTemplateItemHolder;
     if (getCount() == paramInt + 1)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559210, null);
+      paramView = LayoutInflater.from(this.a).inflate(2131624967, null);
       localGroupPadTemplateItemHolder = new GroupPadTemplateAdapter.GroupPadTemplateItemHolder(this);
-      localGroupPadTemplateItemHolder.jdField_a_of_type_Int = jdField_b_of_type_Int;
-      localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131367866));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367862));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367860));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      localGroupPadTemplateItemHolder.e = e;
+      localGroupPadTemplateItemHolder.b = ((AsyncImageView)paramView.findViewById(2131434446));
+      localGroupPadTemplateItemHolder.c = ((TextView)paramView.findViewById(2131434442));
+      localGroupPadTemplateItemHolder.d = ((ImageView)paramView.findViewById(2131434440));
+      localGroupPadTemplateItemHolder.a = localGroupPadTemplateInfo;
       paramView.setTag(localGroupPadTemplateItemHolder);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setOnClickListener(this.c);
     }
     else
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559209, null);
+      paramView = LayoutInflater.from(this.a).inflate(2131624966, null);
       localGroupPadTemplateItemHolder = new GroupPadTemplateAdapter.GroupPadTemplateItemHolder(this);
-      localGroupPadTemplateItemHolder.jdField_a_of_type_Int = jdField_a_of_type_Int;
-      localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131367865));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367864));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367859));
-      localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      localGroupPadTemplateItemHolder.e = d;
+      localGroupPadTemplateItemHolder.b = ((AsyncImageView)paramView.findViewById(2131434445));
+      localGroupPadTemplateItemHolder.c = ((TextView)paramView.findViewById(2131434444));
+      localGroupPadTemplateItemHolder.d = ((ImageView)paramView.findViewById(2131434439));
+      localGroupPadTemplateItemHolder.a = localGroupPadTemplateInfo;
       paramView.setTag(localGroupPadTemplateItemHolder);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setOnClickListener(this.c);
     }
-    if (localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo != null)
+    if (localGroupPadTemplateItemHolder.a != null)
     {
-      if (localGroupPadTemplateItemHolder.jdField_a_of_type_Int == jdField_a_of_type_Int) {
-        a(localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
-      } else if (localGroupPadTemplateItemHolder.jdField_a_of_type_Int == jdField_b_of_type_Int) {
-        localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840309);
+      if (localGroupPadTemplateItemHolder.e == d) {
+        a(localGroupPadTemplateItemHolder.b, localGroupPadTemplateInfo);
+      } else if (localGroupPadTemplateItemHolder.e == e) {
+        localGroupPadTemplateItemHolder.b.setImageResource(2130840630);
       }
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
+      localGroupPadTemplateItemHolder.c.setText(localGroupPadTemplateInfo.templateName);
     }
     else
     {
-      localGroupPadTemplateItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840307);
-      localGroupPadTemplateItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      localGroupPadTemplateItemHolder.b.setImageResource(2130840628);
+      localGroupPadTemplateItemHolder.c.setText("");
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       if (localGroupPadTemplateInfo != null) {
         paramView.setContentDescription(localGroupPadTemplateInfo.templateName);
       } else {
@@ -207,7 +206,7 @@ public class GroupPadTemplateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateAdapter
  * JD-Core Version:    0.7.0.1
  */

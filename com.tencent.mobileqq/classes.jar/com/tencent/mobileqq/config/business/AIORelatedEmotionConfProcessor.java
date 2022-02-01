@@ -12,7 +12,7 @@ public class AIORelatedEmotionConfProcessor
 {
   public static AIORelatedEmotionConfProcessor.RelatedEmotionConfigBean a()
   {
-    return (AIORelatedEmotionConfProcessor.RelatedEmotionConfigBean)QConfigManager.a().a(655);
+    return (AIORelatedEmotionConfProcessor.RelatedEmotionConfigBean)QConfigManager.b().b(655);
   }
   
   @NonNull
@@ -71,7 +71,7 @@ public class AIORelatedEmotionConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIORelatedEmotionConfProcessor
  * JD-Core Version:    0.7.0.1
  */

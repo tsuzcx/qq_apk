@@ -4,25 +4,30 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.R.attr;
 
 public class AppCompatSeekBar
   extends SeekBar
 {
-  private final AppCompatSeekBarHelper mAppCompatSeekBarHelper = new AppCompatSeekBarHelper(this);
+  private final AppCompatSeekBarHelper mAppCompatSeekBarHelper;
   
-  public AppCompatSeekBar(Context paramContext)
+  public AppCompatSeekBar(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatSeekBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035148);
+    this(paramContext, paramAttributeSet, R.attr.seekBarStyle);
   }
   
-  public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatSeekBar(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mAppCompatSeekBarHelper = new AppCompatSeekBarHelper(this);
     this.mAppCompatSeekBarHelper.loadFromAttributes(paramAttributeSet, paramInt);
   }
   

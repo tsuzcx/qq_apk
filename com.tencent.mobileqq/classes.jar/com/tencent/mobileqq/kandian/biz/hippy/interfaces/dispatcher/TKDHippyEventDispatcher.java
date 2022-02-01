@@ -363,21 +363,21 @@ public class TKDHippyEventDispatcher
     }
   }
   
-  public void updateFollowUI()
+  public void updateFollowUI(long paramLong, int paramInt)
   {
     Iterator localIterator = this.receivers.iterator();
     while (localIterator.hasNext())
     {
       ITKDHippyEventReceiver localITKDHippyEventReceiver = (ITKDHippyEventReceiver)localIterator.next();
       if ((localITKDHippyEventReceiver instanceof ITKDTuWen2HippyEventReceiver)) {
-        ((ITKDTuWen2HippyEventReceiver)localITKDHippyEventReceiver).updateFollowUI();
+        ((ITKDTuWen2HippyEventReceiver)localITKDHippyEventReceiver).updateFollowUI(paramLong, paramInt);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.interfaces.dispatcher.TKDHippyEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

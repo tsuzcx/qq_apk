@@ -18,37 +18,49 @@ import java.util.ArrayList;
 public class WeiYunFileBrowserParams
   extends IFileBrowserParams
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo;
-  private ArrayList<WeiYunFileInfo> jdField_a_of_type_JavaUtilArrayList;
+  private WeiYunFileInfo f;
+  private Context g;
+  private QQAppInterface h;
+  private ArrayList<WeiYunFileInfo> i;
+  private FileManagerEntity j;
   
   public WeiYunFileBrowserParams(QQAppInterface paramQQAppInterface, Context paramContext, WeiYunFileInfo paramWeiYunFileInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo = paramWeiYunFileInfo;
+    this.h = paramQQAppInterface;
+    this.g = paramContext;
+    this.f = paramWeiYunFileInfo;
   }
   
-  public Intent a()
+  public void a(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if ((localObject1 == null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo != null))
+    this.j = paramFileManagerEntity;
+  }
+  
+  public void b(Bundle paramBundle) {}
+  
+  public boolean d()
+  {
+    return false;
+  }
+  
+  public Intent i()
+  {
+    Object localObject1 = this.j;
+    if ((localObject1 == null) && (this.f != null))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerRSCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+      localObject1 = this.h.getFileManagerRSCenter().a(this.f.a);
       if (localObject1 == null)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+        localObject1 = this.h.getFileManagerDataCenter().c(this.f.a);
         if (localObject1 == null) {
-          localObject1 = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
+          localObject1 = FileManagerUtil.a(this.f);
         }
       }
     }
     if (localObject1 == null)
     {
       QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, "");
-      return new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
+      return new Intent(this.g, FileBrowserActivity.class);
     }
     if (QLog.isColorLevel())
     {
@@ -56,9 +68,9 @@ public class WeiYunFileBrowserParams
       ((StringBuilder)localObject2).append("open a weiyun file with filebrowser, fileSessionId[");
       ((StringBuilder)localObject2).append(((FileManagerEntity)localObject1).nSessionId);
       ((StringBuilder)localObject2).append("] fileName[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c);
+      ((StringBuilder)localObject2).append(this.f.c);
       ((StringBuilder)localObject2).append("]fileId[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a);
+      ((StringBuilder)localObject2).append(this.f.a);
       ((StringBuilder)localObject2).append("]");
       QLog.i("WeiYunFileBrowserParams<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
     }
@@ -70,30 +82,18 @@ public class WeiYunFileBrowserParams
     ((ForwardFileInfo)localObject2).c(((FileManagerEntity)localObject1).WeiYunFileId);
     ((ForwardFileInfo)localObject2).c(((FileManagerEntity)localObject1).nWeiYunSrcType);
     ((ForwardFileInfo)localObject2).d(((FileManagerEntity)localObject1).fileSize);
-    localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
+    localObject1 = new Intent(this.g, FileBrowserActivity.class);
     ((Intent)localObject1).putExtra("fileinfo", (Parcelable)localObject2);
-    localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject2 = this.i;
     if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-      ((Intent)localObject1).putParcelableArrayListExtra("local_weiyun_list", this.jdField_a_of_type_JavaUtilArrayList);
+      ((Intent)localObject1).putParcelableArrayListExtra("local_weiyun_list", this.i);
     }
     return localObject1;
-  }
-  
-  public void a(FileManagerEntity paramFileManagerEntity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public boolean b()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.WeiYunFileBrowserParams
  * JD-Core Version:    0.7.0.1
  */

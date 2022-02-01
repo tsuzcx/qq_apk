@@ -26,7 +26,7 @@ public class BaseMenuUtil
         ClipboardMonitor.setPrimaryClip(localClipboardManager, paramString1);
         localClipboardManager.setPrimaryClip(paramString1);
         if (paramBoolean) {
-          QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131706589), 0).a();
+          QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131904440), 0).show();
         }
       }
     }
@@ -34,7 +34,7 @@ public class BaseMenuUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.textpreview.BaseMenuUtil
  * JD-Core Version:    0.7.0.1
  */

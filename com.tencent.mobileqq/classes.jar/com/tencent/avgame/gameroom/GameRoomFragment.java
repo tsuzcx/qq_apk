@@ -98,115 +98,97 @@ public class GameRoomFragment
   extends GameBaseFragment
   implements View.OnClickListener, View.OnLongClickListener, IGameRoomView
 {
-  AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = null;
-  protected View a;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  protected ImageView a;
-  PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  protected TextView a;
-  private GLRootView jdField_a_of_type_ComTencentAvOpenglUiGLRootView;
+  Runnable A = new GameRoomFragment.2(this);
+  Runnable B = new GameRoomFragment.3(this);
+  private ImageView C;
+  private RelativeLayout D;
+  private TextView E;
+  private String F;
+  private RelativeLayout.LayoutParams G;
+  private String H;
+  private boolean I;
+  private boolean J = false;
+  private boolean K = false;
+  private Button L;
+  private QQCustomDialog M;
+  private boolean N;
+  private GLRootView O;
+  private AVGameBusinessVideoLayer P;
+  private AVGameControlUI Q;
+  private RelativeLayout R = null;
+  private View.OnTouchListener S = null;
+  private View.OnTouchListener T = null;
+  private View.OnClickListener U = null;
+  private View.OnClickListener V = new GameRoomFragment.22(this);
   protected IGameRoomPresenter a;
-  protected GameListView a;
-  protected OverlayView a;
-  protected SurvivalPkStageView a;
-  protected PkSeatView a;
-  protected SeatView a;
-  protected BaseStageView a;
-  private AVGameBusinessVideoLayer jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer;
-  private AVGameControlUI jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
-  protected VideoGLView a;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  protected AutoBgImageView a;
-  protected RoundRectImageView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new GameRoomFragment.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  protected boolean a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new GameRoomFragment.22(this);
-  private View.OnTouchListener jdField_b_of_type_AndroidViewView$OnTouchListener = null;
-  protected View b;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-  protected TextView b;
-  protected AutoBgImageView b;
-  Runnable jdField_b_of_type_JavaLangRunnable = new GameRoomFragment.2(this);
-  private String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  protected View c;
-  protected TextView c;
-  Runnable jdField_c_of_type_JavaLangRunnable = new GameRoomFragment.3(this);
-  private boolean jdField_c_of_type_Boolean;
-  protected View d;
-  protected TextView d;
-  private boolean d;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private boolean jdField_e_of_type_Boolean = false;
-  private boolean f;
-  
-  public GameRoomFragment()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  private RectF a(View paramView)
-  {
-    int[] arrayOfInt = new int[2];
-    GameRoomViewLayoutParamsDef.a(paramView, arrayOfInt);
-    RectF localRectF = new RectF();
-    localRectF.left = arrayOfInt[0];
-    localRectF.top = arrayOfInt[1];
-    localRectF.right = (localRectF.left + paramView.getMeasuredWidth());
-    localRectF.bottom = (localRectF.top + paramView.getMeasuredHeight());
-    return localRectF;
-  }
+  protected VideoGLView b;
+  protected GameListView c;
+  protected BaseStageView d;
+  protected SurvivalPkStageView e;
+  protected PkSeatView f;
+  protected View g;
+  protected View h;
+  protected SeatView i;
+  protected OverlayView j;
+  protected View k;
+  protected TextView l;
+  protected TextView m;
+  protected TextView n;
+  protected TextView o;
+  protected ImageView p;
+  protected RoundRectImageView q;
+  protected AutoBgImageView r;
+  protected AutoBgImageView s;
+  protected View t;
+  protected boolean u = false;
+  AnimatorSet v;
+  boolean w;
+  CountDownTimer x;
+  PopupWindow y;
+  Runnable z = new GameRoomFragment.1(this);
   
   public static GameRoomFragment a()
   {
     GameRoomFragment localGameRoomFragment = new GameRoomFragment();
     localGameRoomFragment.setArguments(new Bundle());
-    localGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = new GameRoomPresenterImp(localGameRoomFragment);
+    localGameRoomFragment.a = new GameRoomPresenterImp(localGameRoomFragment);
     return localGameRoomFragment;
   }
   
   private void a(View paramView)
   {
-    if (GameEngine.a().f())
+    if (GameEngine.a().A())
     {
-      ((ViewStub)paramView.findViewById(2131363114)).inflate();
-      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageSurvivalPkStageView = ((SurvivalPkStageView)paramView.findViewById(2131363246));
-      ((ViewStub)paramView.findViewById(2131363113)).inflate();
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView = ((PkSeatView)paramView.findViewById(2131363309));
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView.a();
+      ((ViewStub)paramView.findViewById(2131428967)).inflate();
+      this.e = ((SurvivalPkStageView)paramView.findViewById(2131429120));
+      ((ViewStub)paramView.findViewById(2131428966)).inflate();
+      this.f = ((PkSeatView)paramView.findViewById(2131429183));
+      this.d.setVisibility(8);
+      this.i.setVisibility(8);
+      this.g = this.f.getMemberItemRootTop();
       RelativeLayout.LayoutParams localLayoutParams;
       ViewGroup localViewGroup;
-      int i;
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      int i1;
+      if (this.g != null)
       {
         localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView.getParent();
-        i = localViewGroup.indexOfChild(this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView);
-        localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i + 1, localLayoutParams);
+        localViewGroup = (ViewGroup)this.f.getParent();
+        i1 = localViewGroup.indexOfChild(this.f);
+        localViewGroup.addView(this.g, i1 + 1, localLayoutParams);
       }
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView.b();
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView != null))
+      this.h = this.f.getCheerRootTop();
+      if ((this.h != null) && (this.g != null))
       {
         localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView.getParent();
-        i = localViewGroup.indexOfChild(this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView);
-        localViewGroup.addView(this.jdField_b_of_type_AndroidViewView, i + 2, localLayoutParams);
+        localViewGroup = (ViewGroup)this.f.getParent();
+        i1 = localViewGroup.indexOfChild(this.f);
+        localViewGroup.addView(this.h, i1 + 2, localLayoutParams);
       }
-      if (GameEngine.a().i())
+      if (GameEngine.a().D())
       {
         b(paramView);
-        if (GameEngine.a().j()) {
-          a(GameEngine.a().a());
+        if (GameEngine.a().E()) {
+          a(GameEngine.a().s());
         }
       }
     }
@@ -214,17 +196,17 @@ public class GameRoomFragment
   
   private void a(View paramView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    int i = (int)(paramFloat1 - paramInt1 / 2);
-    int j = (int)(paramFloat2 - paramInt2 / 2);
+    int i1 = (int)(paramFloat1 - paramInt1 / 2);
+    int i2 = (int)(paramFloat2 - paramInt2 / 2);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(paramView.getLayoutParams());
-    localMarginLayoutParams.setMargins(i, j, paramInt1 + i, paramInt2 + j);
+    localMarginLayoutParams.setMargins(i1, i2, paramInt1 + i1, paramInt2 + i2);
     paramView.setLayoutParams(new RelativeLayout.LayoutParams(localMarginLayoutParams));
     paramView.setVisibility(0);
   }
   
   private void a(RoundRectImageView paramRoundRectImageView)
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
+    if (this.v != null) {
       return;
     }
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofObject(paramRoundRectImageView, "backgroundColor", new ArgbEvaluator(), new Object[] { Integer.valueOf(2147441002), Integer.valueOf(-42646), Integer.valueOf(2147441002) });
@@ -236,29 +218,29 @@ public class GameRoomFragment
     paramRoundRectImageView = ObjectAnimator.ofFloat(paramRoundRectImageView, "scaleY", new float[] { 1.12F, 1.0F, 1.12F });
     paramRoundRectImageView.setDuration(1000L);
     paramRoundRectImageView.setRepeatCount(10);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2).with(paramRoundRectImageView);
+    this.v = new AnimatorSet();
+    this.v.play(localObjectAnimator1).with(localObjectAnimator2).with(paramRoundRectImageView);
   }
   
   private void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = GameEngine.a().a();
-    int i = ((EngineData)localObject).t();
-    boolean bool1 = ((EngineData)localObject).l();
-    boolean bool2 = ((EngineData)localObject).g();
+    Object localObject = GameEngine.a().s();
+    int i1 = ((EngineData)localObject).ak();
+    boolean bool1 = ((EngineData)localObject).al();
+    boolean bool2 = ((EngineData)localObject).N();
     String str;
     if (paramBoolean) {
       str = "0X800BA13";
     } else {
       str = "0X800BA11";
     }
-    if ((bool2) && (((EngineData)localObject).f()))
+    if ((bool2) && (((EngineData)localObject).M()))
     {
       localObject = "6";
     }
     else
     {
-      if (!this.f) {
+      if (!this.N) {
         break label81;
       }
       localObject = "7";
@@ -267,65 +249,48 @@ public class GameRoomFragment
     {
       break;
       label81:
-      if ((bool1) && (AvGameRoomListHandler.a(i) == 2)) {
+      if ((bool1) && (AvGameRoomListHandler.a(i1) == 2)) {
         localObject = "1";
-      } else if (((!bool1) && (AvGameRoomListHandler.b(i) == 3)) || ((bool1) && (AvGameRoomListHandler.a(i) == 3))) {
+      } else if (((!bool1) && (AvGameRoomListHandler.b(i1) == 3)) || ((bool1) && (AvGameRoomListHandler.a(i1) == 3))) {
         localObject = "2";
-      } else if ((!bool1) && (AvGameRoomListHandler.b(i) == 1)) {
+      } else if ((!bool1) && (AvGameRoomListHandler.b(i1) == 1)) {
         localObject = "3";
-      } else if (((!bool1) && (AvGameRoomListHandler.b(i) == 2)) || ((bool1) && (AvGameRoomListHandler.a(i) == 4))) {
+      } else if (((!bool1) && (AvGameRoomListHandler.b(i1) == 2)) || ((bool1) && (AvGameRoomListHandler.a(i1) == 4))) {
         localObject = "4";
-      } else if ((bool1) && (i == 500)) {
+      } else if ((bool1) && (i1 == 500)) {
         localObject = "5";
       } else {
         localObject = "0";
       }
     }
-    if (this.f) {
-      i = 1;
+    if (this.N) {
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
     if (!paramBoolean) {
       paramString = "";
     }
-    ReportController.b(null, "dc00898", "", "", str, str, i, 0, (String)localObject, paramString, "", "");
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    int i;
-    if ((GameEngine.a().f()) && (GameEngine.a().a().a() == 0)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i == 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(paramBoolean);
-      return true;
-    }
-    a(getString(2131690408), getString(2131690409), getString(2131690410), new GameRoomFragment.10(this), new GameRoomFragment.11(this), false);
-    return true;
+    ReportController.b(null, "dc00898", "", "", str, str, i1, 0, (String)localObject, paramString, "", "");
   }
   
   private void b(RectF paramRectF)
   {
-    if (this.jdField_b_of_type_AndroidViewView$OnTouchListener == null) {
-      ((GuideView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363190)).setHoleOnClick(new GameRoomFragment.7(this));
+    if (this.T == null) {
+      ((GuideView)this.R.findViewById(2131429064)).setHoleOnClick(new GameRoomFragment.7(this));
     }
   }
   
   private void b(View paramView)
   {
-    ((ViewStub)paramView.findViewById(2131363099)).inflate();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView = ((FestvialStageView)paramView.findViewById(2131363189));
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363184));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363185));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    Object localObject = AVGameUtil.a("avgame_cj_house_full@2x.png");
+    ((ViewStub)paramView.findViewById(2131428952)).inflate();
+    this.d = ((FestvialStageView)paramView.findViewById(2131429063));
+    this.d.setVisibility(8);
+    this.C = ((ImageView)paramView.findViewById(2131429058));
+    this.C.setVisibility(0);
+    this.D = ((RelativeLayout)paramView.findViewById(2131429059));
+    this.D.setVisibility(0);
+    Object localObject = AVGameUtil.c("avgame_cj_house_full@2x.png");
     if (localObject != null)
     {
       float f3 = ((Bitmap)localObject).getWidth();
@@ -333,22 +298,22 @@ public class GameRoomFragment
       float f1 = GameRoomViewLayoutParamsDef.Q;
       float f2 = GameRoomViewLayoutParamsDef.R;
       f3 = f4 / f3 * f1;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      this.C.setImageBitmap((Bitmap)localObject);
+      localObject = (RelativeLayout.LayoutParams)this.D.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)(f2 - f3));
-      int i = (int)f3;
-      ((RelativeLayout.LayoutParams)localObject).height = i;
-      int j = (int)f1;
-      ((RelativeLayout.LayoutParams)localObject).width = j;
-      localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = i;
-      ((RelativeLayout.LayoutParams)localObject).width = j;
-      paramView = (RelativeLayout.LayoutParams)paramView.findViewById(2131363183).getLayoutParams();
-      f2 = GameRoomViewLayoutParamsDef.jdField_a_of_type_Float / GameRoomViewLayoutParamsDef.jdField_d_of_type_Float;
-      f3 = GameRoomViewLayoutParamsDef.b / GameRoomViewLayoutParamsDef.jdField_d_of_type_Float;
-      i = (int)(GameRoomViewLayoutParamsDef.jdField_c_of_type_Float / GameRoomViewLayoutParamsDef.jdField_d_of_type_Float * f1);
-      paramView.width = i;
-      paramView.height = i;
+      int i1 = (int)f3;
+      ((RelativeLayout.LayoutParams)localObject).height = i1;
+      int i2 = (int)f1;
+      ((RelativeLayout.LayoutParams)localObject).width = i2;
+      localObject = (RelativeLayout.LayoutParams)this.C.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).height = i1;
+      ((RelativeLayout.LayoutParams)localObject).width = i2;
+      paramView = (RelativeLayout.LayoutParams)paramView.findViewById(2131429057).getLayoutParams();
+      f2 = GameRoomViewLayoutParamsDef.S / GameRoomViewLayoutParamsDef.V;
+      f3 = GameRoomViewLayoutParamsDef.T / GameRoomViewLayoutParamsDef.V;
+      i1 = (int)(GameRoomViewLayoutParamsDef.U / GameRoomViewLayoutParamsDef.V * f1);
+      paramView.width = i1;
+      paramView.height = i1;
       paramView.leftMargin = ((int)(f3 * f1));
       paramView.bottomMargin = ((int)(f2 * f1));
     }
@@ -356,17 +321,17 @@ public class GameRoomFragment
   
   private void c(View paramView)
   {
-    ((ViewStub)paramView.findViewById(2131363101)).inflate();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363196));
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363195);
-    Bitmap localBitmap = AVGameUtil.a("avgame_guide_bkg@2x.png");
-    TextView localTextView = (TextView)paramView.findViewById(2131363311);
+    ((ViewStub)paramView.findViewById(2131428954)).inflate();
+    this.R = ((RelativeLayout)paramView.findViewById(2131429070));
+    ImageView localImageView = (ImageView)this.R.findViewById(2131429069);
+    Bitmap localBitmap = AVGameUtil.c("avgame_guide_bkg@2x.png");
+    TextView localTextView = (TextView)paramView.findViewById(2131429185);
     localTextView.setVisibility(0);
     localTextView.setOnClickListener(this);
     if (localBitmap != null) {
       localImageView.setImageBitmap(localBitmap);
     }
-    paramView = (Button)paramView.findViewById(2131363194);
+    paramView = (Button)paramView.findViewById(2131429068);
     paramView.setBackgroundDrawable(AVGameUtil.a(getResources(), "avgame_guide_close_nor@2x.png", "avgame_guide_close_press@2x.png"));
     paramView.setOnClickListener(this);
   }
@@ -378,8 +343,8 @@ public class GameRoomFragment
       {
         if (getQBaseActivity() != null)
         {
-          int i = Build.VERSION.SDK_INT;
-          if (i < 11)
+          int i1 = Build.VERSION.SDK_INT;
+          if (i1 < 11)
           {
             ((android.text.ClipboardManager)getQBaseActivity().getSystemService("clipboard")).setText(paramString);
             return;
@@ -399,58 +364,49 @@ public class GameRoomFragment
   
   private void c(boolean paramBoolean)
   {
-    EngineData localEngineData = GameEngine.a().a();
-    int j = localEngineData.a();
-    int i = 0;
-    if (j == 0)
+    EngineData localEngineData = GameEngine.a().s();
+    int i2 = localEngineData.j();
+    int i1 = 0;
+    if (i2 == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.l.setVisibility(0);
+      this.m.setVisibility(0);
+      this.n.setVisibility(8);
       b(false);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (localEngineData.a() != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(localEngineData.a());
+      this.l.setVisibility(8);
+      this.m.setVisibility(8);
+      if (localEngineData.f() != null) {
+        this.n.setText(localEngineData.g());
       } else {
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.n.setVisibility(8);
       }
-      if (j == 10) {
-        i = 1;
+      if (i2 == 10) {
+        i1 = 1;
       }
-      b(i ^ 0x1);
+      b(i1 ^ 0x1);
     }
-    if (localEngineData.f())
+    if (localEngineData.M())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.l.setVisibility(8);
+      this.m.setVisibility(8);
+      this.n.setVisibility(8);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.i(localEngineData);
+      this.a.i(localEngineData);
     }
-  }
-  
-  private boolean c()
-  {
-    if (GameEngine.a().a() == null) {
-      return false;
-    }
-    this.f = ((AVGameAppInterface)GameEngine.a().a()).a().b();
-    return !this.f;
   }
   
   private void d(View paramView)
   {
-    if (!GameEngine.a().f())
+    if (!GameEngine.a().A())
     {
-      if (GameEngine.a().a().a() != 0) {
+      if (GameEngine.a().s().j() != 0) {
         return;
       }
-      Object localObject = GameEngine.a().a().getCurrentAccountUin();
+      Object localObject = GameEngine.a().f().getCurrentAccountUin();
       BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("av_game_sp");
@@ -464,65 +420,82 @@ public class GameRoomFragment
         c(paramView);
         return;
       }
-      if ((!bool2) && (GameEngine.a().a()) && (!GameEngine.a().e()))
+      if ((!bool2) && (GameEngine.a().d()) && (!GameEngine.a().v()))
       {
-        if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null)
+        if (this.R == null)
         {
-          ((ViewStub)paramView.findViewById(2131363101)).inflate();
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363196));
+          ((ViewStub)paramView.findViewById(2131428954)).inflate();
+          this.R = ((RelativeLayout)paramView.findViewById(2131429070));
         }
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.post(new GameRoomFragment.8(this, paramView));
+        this.R.post(new GameRoomFragment.8(this, paramView));
         return;
       }
-      m();
+      r();
     }
+  }
+  
+  private boolean d(boolean paramBoolean)
+  {
+    int i1;
+    if ((GameEngine.a().A()) && (GameEngine.a().s().j() == 0)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 == 0)
+    {
+      this.a.a(paramBoolean);
+      return true;
+    }
+    a(getString(2131887319), getString(2131887320), getString(2131887321), new GameRoomFragment.10(this), new GameRoomFragment.11(this), false);
+    return true;
   }
   
   private void e(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363195).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363194).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363311).setVisibility(8);
-    a(getString(2131690314), new GameRoomFragment.9(this, paramView));
+    this.R.findViewById(2131429069).setVisibility(8);
+    this.R.findViewById(2131429068).setVisibility(8);
+    this.R.findViewById(2131429185).setVisibility(8);
+    a(getString(2131887225), new GameRoomFragment.9(this, paramView));
   }
   
   private void f(View paramView)
   {
-    paramView = GameEngine.a().a().getCurrentAccountUin();
+    paramView = GameEngine.a().f().getCurrentAccountUin();
     Object localObject = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("av_game_sp");
     localStringBuilder.append(paramView);
     ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 4).edit().putBoolean("_b_show_add_", true).apply();
-    l();
-    paramView = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363170);
+    q();
+    paramView = this.R.findViewById(2131429044);
     localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = GameRoomViewLayoutParamsDef.F;
     ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.F;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363195).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363194).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363311).setVisibility(8);
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.b();
+    this.R.findViewById(2131429069).setVisibility(8);
+    this.R.findViewById(2131429068).setVisibility(8);
+    this.R.findViewById(2131429185).setVisibility(8);
+    localObject = this.i.getAddMemberViewRect();
     if (localObject == null)
     {
       QLog.e("GameRoomFragment", 1, "seatViwe Rect get failed!");
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.R.setVisibility(8);
       return;
     }
-    int i = GameRoomViewLayoutParamsDef.F;
-    int j = GameRoomViewLayoutParamsDef.G;
-    a(paramView, ((RectF)localObject).centerX(), ((RectF)localObject).centerY(), i, j);
-    this.jdField_a_of_type_AndroidWidgetButton.setX(((RectF)localObject).left);
-    this.jdField_a_of_type_AndroidWidgetButton.setY(((RectF)localObject).top);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690351));
-    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(new FrameLayout.LayoutParams(i, j));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(0);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetButton);
-    paramView = (RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363171);
-    i = paramView.getMeasuredWidth();
-    j = paramView.getHeight();
-    a(paramView, ((RectF)localObject).centerX(), ((RectF)localObject).top - AIOUtils.b(15.0F, getResources()), i, j);
+    int i1 = GameRoomViewLayoutParamsDef.F;
+    int i2 = GameRoomViewLayoutParamsDef.G;
+    a(paramView, ((RectF)localObject).centerX(), ((RectF)localObject).centerY(), i1, i2);
+    this.L.setX(((RectF)localObject).left);
+    this.L.setY(((RectF)localObject).top);
+    this.L.setContentDescription(getString(2131887262));
+    this.L.setLayoutParams(new FrameLayout.LayoutParams(i1, i2));
+    this.L.setBackgroundColor(0);
+    this.R.addView(this.L);
+    paramView = (RelativeLayout)this.R.findViewById(2131429045);
+    i1 = paramView.getMeasuredWidth();
+    i2 = paramView.getHeight();
+    a(paramView, ((RectF)localObject).centerX(), ((RectF)localObject).top - AIOUtils.b(15.0F, getResources()), i1, i2);
     localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = -2;
     ((RelativeLayout.LayoutParams)localObject).bottomMargin = 0;
@@ -532,44 +505,44 @@ public class GameRoomFragment
   
   private void g(View paramView)
   {
-    paramView = GameEngine.a().a().getCurrentAccountUin();
+    paramView = GameEngine.a().f().getCurrentAccountUin();
     Object localObject1 = BaseApplicationImpl.getApplication();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("av_game_sp");
     ((StringBuilder)localObject2).append(paramView);
     ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363195).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363194).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363311).setVisibility(8);
-    paramView = a(this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.findViewById(2131367484));
+    this.R.findViewById(2131429069).setVisibility(8);
+    this.R.findViewById(2131429068).setVisibility(8);
+    this.R.findViewById(2131429185).setVisibility(8);
+    paramView = h(this.c.findViewById(2131433993));
     if (paramView == null)
     {
       QLog.e("GameRoomFragment", 1, "gameMatchView Rect get failed!");
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.R.setVisibility(8);
       return;
     }
     localObject1 = new RectF(paramView);
-    int i = GameRoomViewLayoutParamsDef.U;
-    int j = GameRoomViewLayoutParamsDef.V;
+    int i1 = GameRoomViewLayoutParamsDef.Y;
+    int i2 = GameRoomViewLayoutParamsDef.Z;
     float f1 = ((RectF)localObject1).centerY();
-    float f2 = j / 2;
+    float f2 = i2 / 2;
     ((RectF)localObject1).top = (f1 - f2);
     ((RectF)localObject1).bottom = (((RectF)localObject1).centerY() + f2);
     f1 = ((RectF)localObject1).centerX();
-    f2 = i / 2;
+    f2 = i1 / 2;
     ((RectF)localObject1).left = (f1 - f2);
     ((RectF)localObject1).right = (((RectF)localObject1).centerX() + f2);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    localObject2 = (GuideView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363190);
+    this.R.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    localObject2 = (GuideView)this.R.findViewById(2131429064);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new HoleBean((RectF)localObject1, 1));
     ((GuideView)localObject2).setHoleList(localArrayList);
     ((GuideView)localObject2).a();
     b(paramView);
-    localObject1 = (RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131363191);
-    i = ((RelativeLayout)localObject1).getMeasuredWidth();
-    j = ((RelativeLayout)localObject1).getHeight();
-    a((View)localObject1, paramView.centerX(), paramView.top - AIOUtils.b(15.0F, getResources()), i, j);
+    localObject1 = (RelativeLayout)this.R.findViewById(2131429065);
+    i1 = ((RelativeLayout)localObject1).getMeasuredWidth();
+    i2 = ((RelativeLayout)localObject1).getHeight();
+    a((View)localObject1, paramView.centerX(), paramView.top - AIOUtils.b(15.0F, getResources()), i1, i2);
     paramView = (RelativeLayout.LayoutParams)((RelativeLayout)localObject1).getLayoutParams();
     paramView.width = -2;
     paramView.bottomMargin = 0;
@@ -577,62 +550,74 @@ public class GameRoomFragment
     ((RelativeLayout)localObject1).setLayoutParams(paramView);
   }
   
-  private void i()
+  private RectF h(View paramView)
+  {
+    int[] arrayOfInt = new int[2];
+    GameRoomViewLayoutParamsDef.a(paramView, arrayOfInt);
+    RectF localRectF = new RectF();
+    localRectF.left = arrayOfInt[0];
+    localRectF.top = arrayOfInt[1];
+    localRectF.right = (localRectF.left + paramView.getMeasuredWidth());
+    localRectF.bottom = (localRectF.top + paramView.getMeasuredHeight());
+    return localRectF;
+  }
+  
+  private void n()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("refreshCommonBlackTipView ,isShowingTransientTip");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(",permanentTipString");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.F);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.F))
     {
-      this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.E.setVisibility(8);
       return;
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.E.setVisibility(0);
+    this.E.setText(this.F);
   }
   
-  private void j()
+  private void o()
   {
-    Object localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.jdField_a_of_type_Int;
-    this.jdField_c_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.jdField_c_of_type_Int;
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    Object localObject = (RelativeLayout.LayoutParams)this.k.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.a;
+    this.k.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.c;
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (RelativeLayout.LayoutParams)this.p.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.w;
     if (((RelativeLayout.LayoutParams)localObject).height > 0) {
-      k();
+      p();
     }
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.getLayoutParams();
+    localObject = (RelativeLayout.LayoutParams)this.i.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.A;
     ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.B;
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.setPadding(GameRoomViewLayoutParamsDef.C, 0, GameRoomViewLayoutParamsDef.D, 0);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.setHorizontalSpacing(GameRoomViewLayoutParamsDef.E);
-    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.getLayoutParams();
+    this.i.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.i.setVerticalScrollBarEnabled(false);
+    this.i.setPadding(GameRoomViewLayoutParamsDef.C, 0, GameRoomViewLayoutParamsDef.D, 0);
+    this.i.setHorizontalSpacing(GameRoomViewLayoutParamsDef.E);
+    localObject = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.w;
     ((RelativeLayout.LayoutParams)localObject).width = GameRoomViewLayoutParamsDef.z;
     ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.y;
-    int j = ViewUtils.b(2.0F);
-    int i;
+    int i2 = ViewUtils.dpToPx(2.0F);
+    int i1;
     if (((RelativeLayout.LayoutParams)localObject).topMargin > 0) {
-      i = j;
+      i1 = i2;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    ((RelativeLayout.LayoutParams)localObject).height += i + j;
-    ((RelativeLayout.LayoutParams)localObject).topMargin -= i;
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.setPadding(0, i, 0, j);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomPkstageSurvivalPkStageView;
+    ((RelativeLayout.LayoutParams)localObject).height += i1 + i2;
+    ((RelativeLayout.LayoutParams)localObject).topMargin -= i1;
+    this.d.setPadding(0, i1, 0, i2);
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = this.e;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((SurvivalPkStageView)localObject).getLayoutParams();
@@ -640,86 +625,86 @@ public class GameRoomFragment
       ((RelativeLayout.LayoutParams)localObject).width = GameRoomViewLayoutParamsDef.z;
       ((RelativeLayout.LayoutParams)localObject).height = GameRoomViewLayoutParamsDef.y;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView;
+    localObject = this.f;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((PkSeatView)localObject).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.J;
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.a(65.0F);
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dip2px(65.0F);
       ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
       ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.g;
       if (localObject != null)
       {
         localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.J;
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.a(65.0F);
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dip2px(65.0F);
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
         ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
       }
-      localObject = this.jdField_b_of_type_AndroidViewView;
+      localObject = this.h;
       if (localObject != null)
       {
         localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).topMargin = GameRoomViewLayoutParamsDef.J;
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.a(65.0F);
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = ViewUtils.dip2px(65.0F);
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
         ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
       }
     }
   }
   
-  private void k()
+  private void p()
   {
-    Bitmap localBitmap = AVGameUtil.a("avgame_room_bg@2x.png");
+    Bitmap localBitmap = AVGameUtil.c("avgame_room_bg@2x.png");
     if (localBitmap != null)
     {
-      int i = localBitmap.getWidth();
+      int i1 = localBitmap.getWidth();
       Matrix localMatrix = new Matrix();
-      float f1 = GameRoomViewLayoutParamsDef.jdField_d_of_type_Int / i;
+      float f1 = GameRoomViewLayoutParamsDef.d / i1;
       localMatrix.setScale(f1, f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(localMatrix);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.p.setImageMatrix(localMatrix);
+      this.p.setImageBitmap(localBitmap);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(getResources().getColor(2131165310));
+    this.p.setBackgroundColor(getResources().getColor(2131165546));
   }
   
-  private void l()
+  private void q()
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnTouchListener == null)
+    if (this.S == null)
     {
-      this.jdField_a_of_type_AndroidViewView$OnTouchListener = new GameRoomFragment.5(this);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.S = new GameRoomFragment.5(this);
+      this.R.setOnTouchListener(this.S);
     }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    if (this.U == null)
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new GameRoomFragment.6(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.U = new GameRoomFragment.6(this);
+      this.L.setOnClickListener(this.U);
     }
   }
   
-  private void m()
+  private void r()
   {
-    if ((GameEngine.a().a()) && (!GameEngine.a().e())) {
-      AVGameHandler.a().b().postDelayed(this.jdField_c_of_type_JavaLangRunnable, 10000L);
+    if ((GameEngine.a().d()) && (!GameEngine.a().v())) {
+      AVGameHandler.a().c().postDelayed(this.B, 10000L);
     }
   }
   
-  private void n()
+  private void s()
   {
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomFragment", 2, "resetBreath");
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setBackgroundColor(16777215);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setScaleX(1.0F);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setScaleY(1.0F);
+    this.v.cancel();
+    this.q.setBackgroundColor(16777215);
+    this.q.setScaleX(1.0F);
+    this.q.setScaleY(1.0F);
   }
   
-  private void o()
+  private void t()
   {
-    Object localObject = GameEngine.a().a().a();
+    Object localObject = GameEngine.a().s().e();
     if (((RoomInfo)localObject).id != 0L)
     {
       localObject = new StringBuilder(AVGameUtil.a(((RoomInfo)localObject).id));
@@ -728,86 +713,82 @@ public class GameRoomFragment
         ((StringBuilder)localObject).insert(6, "-");
         ((StringBuilder)localObject).insert(3, "-");
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+      this.m.setText(((StringBuilder)localObject).toString());
     }
   }
   
-  private void p()
+  private void u()
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    CountDownTimer localCountDownTimer = this.x;
     if (localCountDownTimer != null)
     {
       localCountDownTimer.cancel();
-      n();
+      s();
     }
   }
   
-  private void q()
+  private void v()
   {
-    boolean bool = c();
-    int i = 2131690329;
+    boolean bool = y();
+    int i1 = 2131887240;
     if (bool)
     {
-      a(getString(2131690329), getString(2131690332), getString(2131690333), new GameRoomFragment.16(this), new GameRoomFragment.17(this), new GameRoomFragment.18(this), true);
+      a(getString(2131887240), getString(2131887243), getString(2131887244), new GameRoomFragment.16(this), new GameRoomFragment.17(this), new GameRoomFragment.18(this), true);
     }
     else
     {
       localObject = DialogUtil.a(getActivity(), 230);
       if (localObject != null)
       {
-        int j = GameEngine.a().a().a();
-        if ((j == 0) || (j == 10)) {
-          i = 2131690330;
+        int i2 = GameEngine.a().s().j();
+        if ((i2 == 0) || (i2 == 10)) {
+          i1 = 2131887241;
         }
-        ((QQCustomDialog)localObject).setMessage(i);
+        ((QQCustomDialog)localObject).setMessage(i1);
         GameRoomFragment.19 local19 = new GameRoomFragment.19(this);
-        ((QQCustomDialog)localObject).setPositiveButton(2131694583, local19);
-        ((QQCustomDialog)localObject).setNegativeButton(2131690728, local19);
+        ((QQCustomDialog)localObject).setPositiveButton(2131892267, local19);
+        ((QQCustomDialog)localObject).setNegativeButton(2131887648, local19);
         ((QQCustomDialog)localObject).show();
       }
     }
-    if (GameEngine.a().a()) {
-      i = 1;
+    if (GameEngine.a().d()) {
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(GameEngine.a().a().a());
-    ReportController.b(null, "dc00898", "", "", "0X800B02F", "0X800B02F", i, 0, "", ((StringBuilder)localObject).toString(), "", "");
+    ((StringBuilder)localObject).append(GameEngine.a().s().i());
+    ReportController.b(null, "dc00898", "", "", "0X800B02F", "0X800B02F", i1, 0, "", ((StringBuilder)localObject).toString(), "", "");
     a(false, "0");
   }
   
-  private void r()
+  private void w()
   {
-    s();
+    x();
     QPublicFragmentActivity.start(getActivity(), AVGameRoomCenterFragment.class);
   }
   
-  private void s()
+  private void x()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(false, 1);
+    this.a.a(false, 1);
     GameRoomViewLayoutParamsDef.H = 0;
     GameRoomViewLayoutParamsDef.I = 0;
-    e();
+    i();
   }
   
-  public Activity a()
+  private boolean y()
   {
-    return getQBaseActivity();
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
-      return;
+    if (GameEngine.a().s() == null) {
+      return false;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    this.N = ((AVGameAppInterface)GameEngine.a().f()).a().d();
+    return !this.N;
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt == 1) && (this.jdField_a_of_type_Boolean)) {
+    if ((paramInt == 1) && (this.u)) {
       c(true);
     }
   }
@@ -827,13 +808,13 @@ public class GameRoomFragment
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      AVGameHandler.a().b().post(new GameRoomFragment.13(this, paramInt, paramString));
+      AVGameHandler.a().c().post(new GameRoomFragment.13(this, paramInt, paramString));
     }
   }
   
   public void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    AVGameControlUI localAVGameControlUI = this.Q;
     if (localAVGameControlUI != null) {
       localAVGameControlUI.a(paramLong, paramInt, paramString1, paramString2);
     }
@@ -850,20 +831,20 @@ public class GameRoomFragment
       ((StringBuilder)localObject).append(paramLong1);
       QLog.d("GameRoomFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    Object localObject = this.x;
     if (localObject != null)
     {
       ((CountDownTimer)localObject).cancel();
-      n();
+      s();
     }
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new GameRoomFragment.12(this, paramLong1 - paramLong2, 1000L);
-    this.jdField_a_of_type_AndroidOsCountDownTimer.start();
+    this.x = new GameRoomFragment.12(this, paramLong1 - paramLong2, 1000L);
+    this.x.start();
     b(true);
   }
   
   public void a(RectF paramRectF)
   {
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    AVGameControlUI localAVGameControlUI = this.Q;
     if (localAVGameControlUI != null) {
       localAVGameControlUI.a(paramRectF);
     }
@@ -874,22 +855,22 @@ public class GameRoomFragment
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomFragment", 2, "onPkUpdateCJLogo ");
     }
-    paramEngineData = AVGameUtil.a(paramEngineData.e(), paramEngineData.f(), null);
+    paramEngineData = AVGameUtil.a(paramEngineData.ad(), paramEngineData.ae(), null);
     Object localObject;
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramEngineData != null))
+    if ((this.D != null) && (paramEngineData != null))
     {
-      int i = (int)(GameRoomViewLayoutParamsDef.jdField_c_of_type_Float / GameRoomViewLayoutParamsDef.jdField_d_of_type_Float * GameRoomViewLayoutParamsDef.Q);
-      paramEngineData.setBounds(0, 0, i, i);
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363183);
+      int i1 = (int)(GameRoomViewLayoutParamsDef.U / GameRoomViewLayoutParamsDef.V * GameRoomViewLayoutParamsDef.Q);
+      paramEngineData.setBounds(0, 0, i1, i1);
+      localObject = this.D.findViewById(2131429057);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-      localLayoutParams.width = i;
-      localLayoutParams.height = i;
+      localLayoutParams.width = i1;
+      localLayoutParams.height = i1;
       ((View)localObject).setBackgroundDrawable(paramEngineData);
     }
-    paramEngineData = this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView;
+    paramEngineData = this.d;
     if ((paramEngineData instanceof FestvialStageView))
     {
-      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter;
+      localObject = this.a;
       if (localObject != null) {
         paramEngineData.a((IGameRoomPresenter)localObject);
       }
@@ -898,41 +879,41 @@ public class GameRoomFragment
   
   public void a(GameActivityCenterEntry paramGameActivityCenterEntry)
   {
-    Object localObject = this.jdField_d_of_type_AndroidViewView;
+    Object localObject = this.t;
     if (localObject == null) {
       return;
     }
-    ImageView localImageView1 = (ImageView)((View)localObject).findViewById(2131363176);
-    ImageView localImageView2 = (ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363178);
-    int i = 8;
+    ImageView localImageView1 = (ImageView)((View)localObject).findViewById(2131429050);
+    ImageView localImageView2 = (ImageView)this.t.findViewById(2131429052);
+    int i1 = 8;
     if ((paramGameActivityCenterEntry != null) && (paramGameActivityCenterEntry.a()))
     {
       localObject = getResources();
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      if (TextUtils.isEmpty(paramGameActivityCenterEntry.jdField_a_of_type_JavaLangString))
+      this.t.setVisibility(0);
+      this.t.setOnClickListener(this.V);
+      if (TextUtils.isEmpty(paramGameActivityCenterEntry.b))
       {
-        localObject = ((Resources)localObject).getDrawable(2130838636);
+        localObject = ((Resources)localObject).getDrawable(2130838765);
       }
       else
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = ((Resources)localObject).getDrawable(2130838636);
-        localURLDrawableOptions.mFailedDrawable = ((Resources)localObject).getDrawable(2130838636);
-        localURLDrawableOptions.mRequestWidth = ((Resources)localObject).getDimensionPixelSize(2131296609);
-        localURLDrawableOptions.mRequestHeight = ((Resources)localObject).getDimensionPixelSize(2131296608);
-        localObject = URLDrawable.getDrawable(paramGameActivityCenterEntry.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+        localURLDrawableOptions.mLoadingDrawable = ((Resources)localObject).getDrawable(2130838765);
+        localURLDrawableOptions.mFailedDrawable = ((Resources)localObject).getDrawable(2130838765);
+        localURLDrawableOptions.mRequestWidth = ((Resources)localObject).getDimensionPixelSize(2131296911);
+        localURLDrawableOptions.mRequestHeight = ((Resources)localObject).getDimensionPixelSize(2131296910);
+        localObject = URLDrawable.getDrawable(paramGameActivityCenterEntry.b, localURLDrawableOptions);
       }
       localImageView1.setImageDrawable((Drawable)localObject);
-      localImageView1.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      localImageView1.setOnClickListener(this.V);
       if (paramGameActivityCenterEntry.b()) {
-        i = 0;
+        i1 = 0;
       }
-      localImageView2.setVisibility(i);
+      localImageView2.setVisibility(i1);
       ReportController.b(null, "dc00898", "", "", "0X800B519", "0X800B519", 0, 0, "", "", "", "");
       return;
     }
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.t.setVisibility(8);
     localImageView1.setOnClickListener(null);
     localImageView2.setVisibility(8);
   }
@@ -948,18 +929,18 @@ public class GameRoomFragment
       localStringBuilder.append("onShowTransientTip tip = ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",isShowingTransientTip");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(",permanentTipString");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.F);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    if (this.jdField_c_of_type_Boolean) {
-      ThreadManager.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.I) {
+      ThreadManager.a().removeCallbacks(this.z);
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+    this.E.setText(paramString);
+    this.E.setVisibility(0);
+    this.I = true;
+    ThreadManager.a().postDelayed(this.z, 3000L);
   }
   
   public void a(String paramString, int paramInt)
@@ -972,14 +953,14 @@ public class GameRoomFragment
       localStringBuilder.append(", delayMs");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(",isShowingTransientTip");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(",permanentTipString");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.F);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
-    AVGameHandler.a().b().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    AVGameHandler.a().b().postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramInt);
+    this.H = paramString;
+    AVGameHandler.a().c().removeCallbacks(this.A);
+    AVGameHandler.a().c().postDelayed(this.A, paramInt);
   }
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
@@ -989,7 +970,7 @@ public class GameRoomFragment
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    a(paramString, getString(2131690280), null, paramOnClickListener, null, paramBoolean);
+    a(paramString, getString(2131887191), null, paramOnClickListener, null, paramBoolean);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3, boolean paramBoolean)
@@ -999,7 +980,7 @@ public class GameRoomFragment
       if (getActivity().isFinishing()) {
         return;
       }
-      AVGameHandler.a().b().post(new GameRoomFragment.15(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnClickListener3, paramBoolean));
+      AVGameHandler.a().c().post(new GameRoomFragment.15(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnClickListener3, paramBoolean));
     }
   }
   
@@ -1007,7 +988,7 @@ public class GameRoomFragment
   {
     if ((getQBaseActivity() != null) && (!getQBaseActivity().isFinishing()) && (!TextUtils.isEmpty(paramString1)))
     {
-      AVGameHandler.a().b().post(new GameRoomFragment.14(this, paramString1, paramOnClickListener2, paramString2, paramString3, paramOnClickListener1, paramBoolean));
+      AVGameHandler.a().c().post(new GameRoomFragment.14(this, paramString1, paramOnClickListener2, paramString2, paramString3, paramOnClickListener1, paramBoolean));
       return;
     }
     QLog.e("GameRoomFragment", 1, "showDialogTip err", new Throwable("not crash, print stack"));
@@ -1015,7 +996,7 @@ public class GameRoomFragment
   
   public void a(List<MemberVideoDisplayInfo> paramList)
   {
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    AVGameControlUI localAVGameControlUI = this.Q;
     if (localAVGameControlUI != null) {
       localAVGameControlUI.a(paramList);
     }
@@ -1030,35 +1011,24 @@ public class GameRoomFragment
       localStringBuilder.append(paramBoolean);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return a(false);
+    this.K = paramBoolean;
   }
   
   public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    AVGameControlUI localAVGameControlUI = this.Q;
     if (localAVGameControlUI != null) {
       return localAVGameControlUI.a(paramInt, paramKeyEvent);
     }
     return false;
   }
   
-  public void b()
+  void b()
   {
-    c(false);
-    b(true);
-    if (GameEngine.a().a().f()) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    } else {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (this.v.isRunning()) {
+      return;
     }
-    if (GameEngine.a().f()) {
-      ReportController.b(null, "dc00898", "", "", "0X800B8C2", "0X800B8C2", 0, 0, "", "", "", "");
-    }
+    this.v.start();
   }
   
   public void b(int paramInt)
@@ -1067,16 +1037,16 @@ public class GameRoomFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onHidePermanentTip ,isShowingTransientTip");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(",permanentTipString");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.F);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_c_of_type_Boolean) {
+    this.F = "";
+    if (this.I) {
       return;
     }
-    i();
+    n();
   }
   
   public void b(int paramInt, String paramString)
@@ -1087,16 +1057,16 @@ public class GameRoomFragment
       localStringBuilder.append("onShowPermanentTip tip = ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",isShowingTransientTip");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.I);
       localStringBuilder.append(",permanentTipString");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.F);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_c_of_type_Boolean) {
+    this.F = paramString;
+    if (this.I) {
       return;
     }
-    i();
+    n();
   }
   
   public void b(String paramString)
@@ -1108,7 +1078,7 @@ public class GameRoomFragment
       localStringBuilder.append(paramString);
       QLog.d("GameRoomFragment", 2, localStringBuilder.toString());
     }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+    this.o.setText(paramString);
   }
   
   public void b(boolean paramBoolean)
@@ -1120,51 +1090,80 @@ public class GameRoomFragment
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("GameRoomFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_d_of_type_AndroidWidgetTextView;
-    int j = 0;
-    int i;
+    Object localObject = this.o;
+    int i2 = 0;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    ((TextView)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_ComTencentWidgetRoundRectImageView;
+    ((TextView)localObject).setVisibility(i1);
+    localObject = this.q;
     if (paramBoolean) {
-      i = j;
+      i1 = i2;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    ((RoundRectImageView)localObject).setVisibility(i);
+    ((RoundRectImageView)localObject).setVisibility(i1);
     if (paramBoolean) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.n.setVisibility(8);
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
     return false;
   }
   
-  public void c()
+  public Activity d()
+  {
+    return getQBaseActivity();
+  }
+  
+  public boolean e()
+  {
+    return d(false);
+  }
+  
+  public void f()
   {
     c(false);
-    p();
+    b(true);
+    if (GameEngine.a().s().M()) {
+      this.n.setVisibility(8);
+    } else {
+      this.n.setVisibility(0);
+    }
+    if (GameEngine.a().A()) {
+      ReportController.b(null, "dc00898", "", "", "0X800B8C2", "0X800B8C2", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void g()
+  {
+    c(false);
+    u();
     b(false);
-    if (a() != null) {
-      a().showResult();
+    if (m() != null) {
+      m().showResult();
     }
   }
   
-  public void d()
+  public View getView()
+  {
+    return super.getView();
+  }
+  
+  public void h()
   {
     c(false);
-    if (a() != null) {
-      a().showRoom();
+    if (m() != null) {
+      m().showRoom();
     }
   }
   
-  public void e()
+  public void i()
   {
     if (QLog.isColorLevel()) {
       QLog.i("GameRoomFragment", 2, "finishActivity trace: ", new Throwable("not crash, print stack"));
@@ -1177,28 +1176,23 @@ public class GameRoomFragment
     QLog.d("GameRoomFragment", 2, "finishActivity aready finished!");
   }
   
-  public void f()
+  public void j()
   {
-    if (a() != null) {
-      a().notifyExitGamed();
+    if (m() != null) {
+      m().notifyExitGamed();
     }
   }
   
-  public void g()
+  public void k()
   {
-    ThreadManager.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_c_of_type_Boolean = false;
-    i();
+    ThreadManager.a().removeCallbacks(this.z);
+    this.I = false;
+    n();
   }
   
-  public View getView()
+  public void l()
   {
-    return super.getView();
-  }
-  
-  public void h()
-  {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.R;
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(8);
     }
@@ -1210,23 +1204,23 @@ public class GameRoomFragment
     {
     default: 
       break;
-    case 2131363194: 
-    case 2131363311: 
+    case 2131429068: 
+    case 2131429185: 
       e(paramView);
-      if (paramView.getId() == 2131363194) {
+      if (paramView.getId() == 2131429068) {
         ReportController.b(null, "dc00898", "", "", "0X800B0A5", "0X800B0A5", 0, 0, "", "", "", "");
       } else {
         ReportController.b(null, "dc00898", "", "", "0X800B0A4", "0X800B0A4", 0, 0, "", "", "", "");
       }
       break;
-    case 2131363180: 
-      q();
+    case 2131429054: 
+      v();
       break;
-    case 2131363175: 
-      a(false);
+    case 2131429049: 
+      d(false);
       break;
-    case 2131363170: 
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    case 2131429044: 
+      this.R.setVisibility(8);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -1234,7 +1228,7 @@ public class GameRoomFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    GlobalExitRoomDialog.a().jdField_a_of_type_Boolean = true;
+    GlobalExitRoomDialog.a().a = true;
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomFragment", 2, "onCreate");
     }
@@ -1242,7 +1236,7 @@ public class GameRoomFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558664, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131624281, null);
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomFragment", 2, "onCreateView");
     }
@@ -1254,34 +1248,34 @@ public class GameRoomFragment
   {
     super.onDestroy();
     QLog.i("GameRoomFragment", 1, "avideo onDestroy");
-    if ((a() != null) && (!a().isExitByFinish()))
+    if ((m() != null) && (!m().isExitByFinish()))
     {
       QLog.i("GameRoomFragment", 1, "doOnDestroy exit not by Finished");
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(true);
+      this.a.a(true);
     }
-    Object localObject = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    Object localObject = this.x;
     if (localObject != null)
     {
       ((CountDownTimer)localObject).cancel();
-      n();
+      s();
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c();
-    long l = QQAudioHelper.b();
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    this.a.c();
+    long l1 = QQAudioHelper.d();
+    localObject = this.Q;
     if (localObject != null)
     {
-      ((AVGameControlUI)localObject).d(l);
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI = null;
+      ((AVGameControlUI)localObject).d(l1);
+      this.Q = null;
     }
-    this.jdField_a_of_type_Boolean = false;
-    AVGameHandler.a().b().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    AVGameHandler.a().b().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
-    GlobalExitRoomDialog.a().jdField_a_of_type_Boolean = false;
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView;
+    this.u = false;
+    AVGameHandler.a().c().removeCallbacks(this.A);
+    AVGameHandler.a().c().removeCallbacks(this.B);
+    GlobalExitRoomDialog.a().a = false;
+    localObject = this.c;
     if (localObject != null)
     {
       ((GameListView)localObject).c();
-      this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.d();
+      this.c.d();
     }
   }
   
@@ -1292,23 +1286,23 @@ public class GameRoomFragment
   
   public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+    if (this.y != null) {
       return true;
     }
     try
     {
-      paramView = ((LayoutInflater)getQBaseActivity().getSystemService("layout_inflater")).inflate(2131558695, null, false);
+      paramView = ((LayoutInflater)getQBaseActivity().getSystemService("layout_inflater")).inflate(2131624312, null, false);
       paramView.measure(0, 0);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramView);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
+      this.y = new PopupWindow(paramView);
+      this.y.setHeight(-2);
+      this.y.setWidth(-2);
+      this.y.setOutsideTouchable(true);
+      this.y.setFocusable(false);
       paramView.setOnClickListener(new GameRoomFragment.20(this));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new GameRoomFragment.21(this));
-      int i = (this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth() - ViewUtils.a(90.0F)) / 2;
-      int j = -ViewUtils.a(4.0F);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.jdField_b_of_type_AndroidWidgetTextView, i, j);
+      this.y.setOnDismissListener(new GameRoomFragment.21(this));
+      int i1 = (this.m.getMeasuredWidth() - ViewUtils.dip2px(90.0F)) / 2;
+      int i2 = -ViewUtils.dip2px(4.0F);
+      this.y.showAsDropDown(this.m, i1, i2);
       return true;
     }
     catch (Exception paramView)
@@ -1322,71 +1316,71 @@ public class GameRoomFragment
   {
     QLog.i("GameRoomFragment", 1, "avideo onPause");
     super.onPause();
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    AVGameControlUI localAVGameControlUI = this.Q;
     if (localAVGameControlUI != null) {
-      localAVGameControlUI.b();
+      localAVGameControlUI.c();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    long l = QQAudioHelper.b();
+    long l1 = QQAudioHelper.d();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("avideo life_onResume, seq[");
-    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(l1);
     ((StringBuilder)localObject).append("]");
     QLog.w("GameRoomFragment", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView;
+    localObject = this.O;
     if (localObject != null)
     {
       ((GLRootView)localObject).onResume();
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.requestRender();
+      this.O.requestRender();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    localObject = this.Q;
     if (localObject != null) {
-      ((AVGameControlUI)localObject).b(l);
+      ((AVGameControlUI)localObject).b(l1);
     }
-    if (this.jdField_d_of_type_Boolean)
+    if (this.J)
     {
-      localObject = this.jdField_d_of_type_AndroidViewView;
+      localObject = this.t;
       if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
         ReportController.b(null, "dc00898", "", "", "0X800B519", "0X800B519", 0, 0, "", "", "", "");
       }
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.J = true;
   }
   
   public void onStart()
   {
     super.onStart();
-    long l = QQAudioHelper.b();
+    long l1 = QQAudioHelper.d();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("avideo life_onStart, seq[");
-    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(l1);
     ((StringBuilder)localObject).append("]");
     QLog.w("GameRoomFragment", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    localObject = this.Q;
     if (localObject != null) {
-      ((AVGameControlUI)localObject).a(l);
+      ((AVGameControlUI)localObject).a(l1);
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
+    this.a.a();
     c(true);
   }
   
   public void onStop()
   {
     super.onStop();
-    long l = QQAudioHelper.b();
-    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView;
+    long l1 = QQAudioHelper.d();
+    Object localObject = this.O;
     if (localObject != null) {
       ((GLRootView)localObject).onPause();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    localObject = this.Q;
     if (localObject != null) {
-      ((AVGameControlUI)localObject).c(l);
+      ((AVGameControlUI)localObject).c(l1);
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.b();
+    this.a.b();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -1395,109 +1389,109 @@ public class GameRoomFragment
     if (QLog.isColorLevel()) {
       QLog.d("GameRoomFragment", 2, "onViewCreated");
     }
-    GameRoomViewLayoutParamsDef.a(getQBaseActivity(), GameEngine.a().f());
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoVideoGLView = ((VideoGLView)paramView.findViewById(2131363326));
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView = ((GameListView)paramView.findViewById(2131363193));
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView = ((BaseStageView)paramView.findViewById(2131363310));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView = ((SeatView)paramView.findViewById(2131363309));
-    this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayView = ((OverlayView)paramView.findViewById(2131363245));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363323);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363304));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363299));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363292));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131363177);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363187));
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)paramView.findViewById(2131363796));
+    GameRoomViewLayoutParamsDef.a(getQBaseActivity(), GameEngine.a().A());
+    this.b = ((VideoGLView)paramView.findViewById(2131429200));
+    this.c = ((GameListView)paramView.findViewById(2131429067));
+    this.d = ((BaseStageView)paramView.findViewById(2131429184));
+    this.i = ((SeatView)paramView.findViewById(2131429183));
+    this.j = ((OverlayView)paramView.findViewById(2131429119));
+    this.k = paramView.findViewById(2131429197);
+    this.l = ((TextView)paramView.findViewById(2131429178));
+    this.m = ((TextView)paramView.findViewById(2131429173));
+    this.n = ((TextView)paramView.findViewById(2131429166));
+    this.t = paramView.findViewById(2131429051);
+    this.o = ((TextView)paramView.findViewById(2131429061));
+    this.q = ((RoundRectImageView)paramView.findViewById(2131429729));
     float f1 = AIOUtils.b(12.0F, getResources());
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setCornerRadiusAndMode((int)f1, 1);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setBackgroundColor(16777215);
+    this.q.setCornerRadiusAndMode((int)f1, 1);
+    this.q.setBackgroundColor(16777215);
     b(false);
-    a(this.jdField_a_of_type_ComTencentWidgetRoundRectImageView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)paramView.findViewById(2131363175));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)paramView.findViewById(2131363180));
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)paramView.findViewById(2131363326));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnLongClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnLongClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363186));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_e_of_type_AndroidWidgetTextView.getLayoutParams());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = GameRoomViewLayoutParamsDef.S;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367446));
-    this.jdField_a_of_type_AndroidWidgetButton = new Button(getQBaseActivity());
+    a(this.q);
+    this.r = ((AutoBgImageView)paramView.findViewById(2131429049));
+    this.s = ((AutoBgImageView)paramView.findViewById(2131429054));
+    this.O = ((GLRootView)paramView.findViewById(2131429200));
+    this.l.setOnLongClickListener(this);
+    this.m.setOnLongClickListener(this);
+    this.E = ((TextView)paramView.findViewById(2131429060));
+    this.G = ((RelativeLayout.LayoutParams)this.E.getLayoutParams());
+    this.G.topMargin = GameRoomViewLayoutParamsDef.W;
+    this.p = ((ImageView)paramView.findViewById(2131433949));
+    this.L = new Button(getQBaseActivity());
     paramBundle = getQBaseActivity();
     if ((paramBundle instanceof IAVGameRootContainer)) {
       if (((IAVGameRootContainer)paramBundle).isNewEnter())
       {
-        this.jdField_b_of_type_Boolean = false;
-        if ((!GameEngine.a().a()) && (!GameEngine.a().e())) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.getViewTreeObserver().addOnGlobalLayoutListener(new GameRoomFragment.4(this));
+        this.w = false;
+        if ((!GameEngine.a().d()) && (!GameEngine.a().v())) {
+          this.i.getViewTreeObserver().addOnGlobalLayoutListener(new GameRoomFragment.4(this));
         }
       }
       else
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.w = true;
       }
     }
     paramBundle = (AVGameAppInterface)getQBaseActivity().getAppRuntime();
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setZOrderOnTop(true);
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setZOrderMediaOverlay(true);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer = new AVGameBusinessVideoLayer(getQBaseActivity(), paramBundle);
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI = new AVGameControlUIImpl(paramBundle, getQBaseActivity(), (ViewGroup)paramView);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer);
+    this.O.setZOrderOnTop(true);
+    this.O.setZOrderMediaOverlay(true);
+    this.P = new AVGameBusinessVideoLayer(getQBaseActivity(), paramBundle);
+    this.O.setContentPane(this.P);
+    this.Q = new AVGameControlUIImpl(paramBundle, getQBaseActivity(), (ViewGroup)paramView);
+    this.Q.a(this.P);
     a(paramView);
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter == null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = new GameRoomPresenterImp(this);
+    if (this.a == null) {
+      this.a = new GameRoomPresenterImp(this);
     }
-    IGameRoomPresenter localIGameRoomPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter;
+    IGameRoomPresenter localIGameRoomPresenter = this.a;
     QBaseActivity localQBaseActivity = getQBaseActivity();
-    IGameListPresenter localIGameListPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.a();
-    IStagePresenter localIStagePresenter = this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.a();
-    paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView;
+    IGameListPresenter localIGameListPresenter = this.c.getPresenter();
+    IStagePresenter localIStagePresenter = this.d.getPresenter();
+    paramBundle = this.f;
     if (paramBundle != null) {
-      paramBundle = paramBundle.a();
+      paramBundle = paramBundle.getPresenter();
     } else {
-      paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
+      paramBundle = this.i.getPresenter();
     }
-    IOverlayPresenter localIOverlayPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayView.a();
-    AVGameControlUI localAVGameControlUI = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
-    IStageRecordPresenter localIStageRecordPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.a();
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomPkstageSurvivalPkStageView;
+    IOverlayPresenter localIOverlayPresenter = this.j.getPresenter();
+    AVGameControlUI localAVGameControlUI = this.Q;
+    IStageRecordPresenter localIStageRecordPresenter = this.P.A();
+    Object localObject = this.e;
     if (localObject != null) {
-      localObject = ((SurvivalPkStageView)localObject).a();
+      localObject = ((SurvivalPkStageView)localObject).getPresenter();
     } else {
       localObject = null;
     }
     localIGameRoomPresenter.a(localQBaseActivity, localIGameListPresenter, localIStagePresenter, paramBundle, localIOverlayPresenter, localAVGameControlUI, localIStageRecordPresenter, (ISurvivalStagePresenter)localObject);
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView.a());
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
-    paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+    this.P.a(this.d.getPresenter());
+    this.Q.a(this.a);
+    paramBundle = this.Q;
     if (paramBundle != null) {
-      paramBundle.a();
+      paramBundle.b();
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoVideoGLView.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter, this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI);
-    paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomStageBaseBaseStageView;
+    this.b.a(this.a);
+    this.c.a(this.a, this.Q);
+    paramBundle = this.d;
     if ((paramBundle instanceof NormalStageView)) {
-      paramBundle.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
+      paramBundle.a(this.a);
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
-    this.jdField_a_of_type_ComTencentAvgameGameroomOverlayOverlayView.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
-    paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkSeatView;
+    this.i.a(this.a);
+    this.j.a(this.a);
+    paramBundle = this.f;
     if (paramBundle != null) {
-      paramBundle.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
+      paramBundle.a(this.a);
     }
-    paramBundle = this.jdField_a_of_type_ComTencentAvgameGameroomPkstageSurvivalPkStageView;
+    paramBundle = this.e;
     if (paramBundle != null) {
-      paramBundle.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter);
+      paramBundle.a(this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(this);
+    this.r.setOnClickListener(this);
+    this.s.setOnClickListener(this);
+    t();
     o();
-    j();
-    FloatWindowController.a().c();
+    FloatWindowController.c().d();
     d(paramView);
-    this.jdField_a_of_type_Boolean = true;
-    if (!GameEngine.a().f()) {
+    this.u = true;
+    if (!GameEngine.a().A()) {
       ReportController.b(null, "dc00898", "", "", "0X800B8AF", "0X800B8AF", AVGameUtil.e(), 0, "", "", "", "");
     }
   }

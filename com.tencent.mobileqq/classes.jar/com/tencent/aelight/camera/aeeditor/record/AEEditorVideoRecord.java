@@ -3,19 +3,21 @@ package com.tencent.aelight.camera.aeeditor.record;
 import android.os.Bundle;
 import android.text.TextUtils;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerViewModel;
+import com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.aelight.camera.util.api.IAECameraPrefsUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.tavcut.aekit.AEKitModel;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.effect.StickerModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.template.MediaTemplateModel;
-import com.tencent.weseevideo.model.template.light.LightMediaTemplateModel;
+import com.tencent.qcircle.tavcut.aekit.AEKitModel;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.effect.StickerModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.template.MediaTemplateModel;
+import com.tencent.qcircle.weseevideo.model.template.light.LightMediaTemplateModel;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
 import java.util.HashMap;
@@ -29,43 +31,38 @@ import org.json.JSONObject;
 public class AEEditorVideoRecord
   extends AEEditorBaseRecord
 {
-  private static AEEditorVideoRecord jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorVideoRecord;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
   public static final String b = "AEEditorVideoRecord";
-  private TAVCutVideoSession jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final byte[] c = new byte[1];
+  private static AEEditorVideoRecord d;
+  private TAVCutVideoSession e;
+  private boolean f = false;
   
   public static AEEditorVideoRecord a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorVideoRecord == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (d == null) {
+      synchronized (c)
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorVideoRecord == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorVideoRecord = new AEEditorVideoRecord();
+        if (d == null) {
+          d = new AEEditorVideoRecord();
         }
       }
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorRecordAEEditorVideoRecord;
-  }
-  
-  public void a()
-  {
-    ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putString("key_ae_editor_record", "", 0);
+    return d;
   }
   
   public void a(IVideoOnRestore paramIVideoOnRestore)
   {
-    if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession == null) {
+    if (this.e == null) {
       return;
     }
     Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       localObject1 = ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).getString("key_ae_editor_record", "", 0);
     }
     else
     {
-      if (AEEditorRecordDataManager.a().a() != 2) {
+      if (AEEditorRecordDataManager.a().d() != 2) {
         return;
       }
       localObject1 = ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).getString("key_ae_editor_record_mid", "", 0);
@@ -76,20 +73,20 @@ public class AEEditorVideoRecord
         localObject1 = new JSONObject((String)localObject1);
         Object localObject2 = ((JSONObject)localObject1).optJSONObject("crop");
         if (localObject2 != null) {
-          a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, (JSONObject)localObject2, paramIVideoOnRestore);
+          a(this.e, (JSONObject)localObject2, paramIVideoOnRestore);
         }
         localObject2 = ((JSONObject)localObject1).optJSONObject("filter");
         if (localObject2 != null) {
-          b(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, (JSONObject)localObject2, paramIVideoOnRestore);
+          b(this.e, (JSONObject)localObject2, paramIVideoOnRestore);
         }
         localObject2 = ((JSONObject)localObject1).optJSONArray("sticker");
         if (localObject2 != null) {
-          a(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, (JSONArray)localObject2);
+          a(this.e, (JSONArray)localObject2);
         }
         localObject1 = ((JSONObject)localObject1).optJSONObject("template");
         if (localObject1 != null)
         {
-          c(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession, (JSONObject)localObject1, paramIVideoOnRestore);
+          c(this.e, (JSONObject)localObject1, paramIVideoOnRestore);
           return;
         }
       }
@@ -100,11 +97,12 @@ public class AEEditorVideoRecord
     }
   }
   
-  public void a(TAVCutVideoSession paramTAVCutVideoSession, Bundle paramBundle)
+  public void a(TAVCutVideoSession paramTAVCutVideoSession, Bundle paramBundle, AEEditorTextViewModel paramAEEditorTextViewModel, AEEditorStickerViewModel paramAEEditorStickerViewModel)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = paramTAVCutVideoSession;
+    super.a(paramAEEditorTextViewModel, paramAEEditorStickerViewModel);
+    this.e = paramTAVCutVideoSession;
     if (paramBundle != null) {
-      this.jdField_a_of_type_Boolean = paramBundle.getBoolean("key_qcircle_publish_back_edit", false);
+      this.f = paramBundle.getBoolean("key_qcircle_publish_back_edit", false);
     }
   }
   
@@ -150,13 +148,13 @@ public class AEEditorVideoRecord
   {
     if (paramList != null)
     {
-      if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession == null) {
+      if (this.e == null) {
         return;
       }
       try
       {
         JSONObject localJSONObject1 = new JSONObject();
-        MediaModel localMediaModel = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel();
+        MediaModel localMediaModel = this.e.getMediaModel();
         Object localObject1 = localMediaModel.getMediaEffectModel();
         Object localObject2 = ((MediaEffectModel)localObject1).getAeKitModel();
         if (localObject2 != null)
@@ -230,7 +228,7 @@ public class AEEditorVideoRecord
   
   public void b()
   {
-    ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putString("key_ae_editor_record_mid", "", 0);
+    ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putString("key_ae_editor_record", "", 0);
   }
   
   public void b(TAVCutVideoSession paramTAVCutVideoSession, JSONObject paramJSONObject, IVideoOnRestore paramIVideoOnRestore)
@@ -245,6 +243,11 @@ public class AEEditorVideoRecord
     {
       AEQLog.a(b, paramTAVCutVideoSession);
     }
+  }
+  
+  public void c()
+  {
+    ((IAECameraPrefsUtil)QRoute.api(IAECameraPrefsUtil.class)).putString("key_ae_editor_record_mid", "", 0);
   }
   
   public void c(TAVCutVideoSession paramTAVCutVideoSession, JSONObject paramJSONObject, IVideoOnRestore paramIVideoOnRestore)
@@ -270,7 +273,7 @@ public class AEEditorVideoRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.record.AEEditorVideoRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ class RedPacketKuaKuaFragment$4$1$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.b())
+    if (this.b.a.a.f())
     {
       if (QLog.isColorLevel()) {
         QLog.i("RedPacketKuaKuaFragment", 2, "getActivity() == null || getActivity().isFinishing()");
@@ -48,7 +48,7 @@ class RedPacketKuaKuaFragment$4$1$1
       ((StringBuilder)localObject).append(",bundle:");
       ((StringBuilder)localObject).append(paramBundle);
       ((StringBuilder)localObject).append(",cost:");
-      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.a);
       QLog.d("RedPacketKuaKuaFragment", 2, ((StringBuilder)localObject).toString());
     }
     try
@@ -61,29 +61,29 @@ class RedPacketKuaKuaFragment$4$1$1
         long l = paramBundle.retCode.get();
         if (l == 1L)
         {
-          RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a, paramBundle.matchToken.get());
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.b();
-          ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.pass", 0, 0, RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a).mQQWalletRedPacketMsg.elem.a, "", "", "");
+          RedPacketKuaKuaFragment.a(this.b.a.a, paramBundle.matchToken.get());
+          this.b.a.a.c();
+          ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.pass", 0, 0, RedPacketKuaKuaFragment.b(this.b.a.a).mQQWalletRedPacketMsg.elem.c, "", "", "");
           return;
         }
         if (l == 99L)
         {
-          RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a, paramBundle.refuseInterval.get());
-          RedPacketKuaKuaFragment.b(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a, NetConnInfoCenter.getServerTime());
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.a(HardCodeUtil.a(R.string.bi));
-          if (RedPacketKuaKuaFragment.c(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a) > 0L)
+          RedPacketKuaKuaFragment.a(this.b.a.a, paramBundle.refuseInterval.get());
+          RedPacketKuaKuaFragment.b(this.b.a.a, NetConnInfoCenter.getServerTime());
+          this.b.a.a.a(HardCodeUtil.a(R.string.bm));
+          if (RedPacketKuaKuaFragment.i(this.b.a.a) > 0L)
           {
-            paramBundle = (ImageView)this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.getQBaseActivity().findViewById(R.id.ao);
-            localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.getResources().getDrawable(R.drawable.q);
+            paramBundle = (ImageView)this.b.a.a.getQBaseActivity().findViewById(R.id.av);
+            localObject = this.b.a.a.getResources().getDrawable(R.drawable.q);
             paramBundle.setBackgroundDrawable((Drawable)localObject);
             paramBundle.setVisibility(0);
             ((Animatable)localObject).start();
-            ThreadManager.getUIHandler().postDelayed(new RedPacketKuaKuaFragment.4.1.1.1(this, (Drawable)localObject, paramBundle), RedPacketKuaKuaFragment.c(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a) * 1000L);
+            ThreadManager.getUIHandler().postDelayed(new RedPacketKuaKuaFragment.4.1.1.1(this, (Drawable)localObject, paramBundle), RedPacketKuaKuaFragment.i(this.b.a.a) * 1000L);
           }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.a(HardCodeUtil.a(R.string.bj));
+          this.b.a.a.a(HardCodeUtil.a(R.string.bn));
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -97,7 +97,7 @@ class RedPacketKuaKuaFragment$4$1$1
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1.a.a.a(HardCodeUtil.a(R.string.bn));
+        this.b.a.a.a(HardCodeUtil.a(R.string.br));
         return;
       }
     }
@@ -113,7 +113,7 @@ class RedPacketKuaKuaFragment$4$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.4.1.1
  * JD-Core Version:    0.7.0.1
  */

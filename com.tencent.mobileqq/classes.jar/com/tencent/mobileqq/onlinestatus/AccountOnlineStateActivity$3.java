@@ -12,12 +12,12 @@ class AccountOnlineStateActivity$3
   {
     ReportHelperKt.a("0X800AF9C", 2);
     paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.a(this.a);
+    AccountOnlineStateActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity.3
  * JD-Core Version:    0.7.0.1
  */

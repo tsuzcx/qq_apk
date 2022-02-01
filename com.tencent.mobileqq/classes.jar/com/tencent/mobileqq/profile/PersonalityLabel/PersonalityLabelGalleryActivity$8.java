@@ -13,20 +13,20 @@ class PersonalityLabelGalleryActivity$8
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$LabelItemViewHolder.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.c.b.remove(Long.valueOf(this.a.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    this.b.setLayoutParams(paramAnimator);
+    this.b.setTag(Boolean.valueOf(false));
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$LabelItemViewHolder.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.c.b.remove(Long.valueOf(this.a.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    this.b.setLayoutParams(paramAnimator);
+    this.b.setTag(Boolean.valueOf(false));
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -35,7 +35,7 @@ class PersonalityLabelGalleryActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.8
  * JD-Core Version:    0.7.0.1
  */

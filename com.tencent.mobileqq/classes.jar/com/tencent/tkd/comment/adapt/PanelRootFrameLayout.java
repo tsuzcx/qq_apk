@@ -9,8 +9,8 @@ import android.widget.FrameLayout;
 public class PanelRootFrameLayout
   extends FrameLayout
 {
-  private PanelFrameLayout jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private final int[] a = new int[2];
+  private PanelFrameLayout b;
   
   public PanelRootFrameLayout(Context paramContext)
   {
@@ -29,12 +29,12 @@ public class PanelRootFrameLayout
   
   private void a(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout != null) {
+    if (this.b != null) {
       return;
     }
     if ((paramViewGroup instanceof PanelFrameLayout))
     {
-      this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout = ((PanelFrameLayout)paramViewGroup);
+      this.b = ((PanelFrameLayout)paramViewGroup);
       return;
     }
     int i = paramViewGroup.getChildCount() - 1;
@@ -50,28 +50,28 @@ public class PanelRootFrameLayout
   
   private boolean a()
   {
-    getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
-    return KeyboardObserver.judgeKeyboardShowingByBottom(this.jdField_a_of_type_ArrayOfInt[1] + getMeasuredHeight());
+    getLocationOnScreen(this.a);
+    return KeyboardObserver.judgeKeyboardShowingByBottom(this.a[1] + getMeasuredHeight());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    PanelFrameLayout localPanelFrameLayout = this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout;
+    PanelFrameLayout localPanelFrameLayout = this.b;
     if (localPanelFrameLayout != null) {
       localPanelFrameLayout.setKeyboardShowing(false);
     }
     super.onMeasure(paramInt1, paramInt2);
     a(this);
-    if ((this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout != null) && (a()) && (this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout.getMeasuredHeight() > 0))
+    if ((this.b != null) && (a()) && (this.b.getMeasuredHeight() > 0))
     {
-      this.jdField_a_of_type_ComTencentTkdCommentAdaptPanelFrameLayout.setKeyboardShowing(true);
+      this.b.setKeyboardShowing(true);
       super.onMeasure(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.PanelRootFrameLayout
  * JD-Core Version:    0.7.0.1
  */

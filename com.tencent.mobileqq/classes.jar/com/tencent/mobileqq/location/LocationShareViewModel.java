@@ -33,23 +33,17 @@ import mqq.app.MobileQQ;
 public class LocationShareViewModel
   extends BaseViewModel<LocationShareRepository>
 {
-  public static ViewModelProvider.Factory a;
-  public MutableLiveData<UserLocationsUpdateBean> a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
+  public static ViewModelProvider.Factory d = new LocationShareViewModel.1();
+  public MutableLiveData<UserLocationsUpdateBean> a = new MutableLiveData();
   public MutableLiveData<Boolean> b = new MutableLiveData();
   public MutableLiveData<VenueOptBean> c = new MutableLiveData();
-  
-  static
-  {
-    jdField_a_of_type_AndroidxLifecycleViewModelProvider$Factory = new LocationShareViewModel.1();
-  }
+  private AppInterface e;
+  private QBaseActivity f;
+  private LocationRoom.RoomKey g;
   
   public LocationShareViewModel(LocationShareRepository paramLocationShareRepository)
   {
     super(paramLocationShareRepository);
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
   }
   
   public static void a(AppInterface paramAppInterface, int paramInt, String paramString)
@@ -64,50 +58,24 @@ public class LocationShareViewModel
     }
     LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(paramInt1, paramString);
     LocationShareLocationManager.a().a(localRoomKey, false);
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.b();
+    LocationShareRoomManager.a().c.c();
     ThreadManager.excute(new LocationShareViewModel.4(paramAppInterface, paramInt1, paramString), 32, null, false);
     LocationHandler.a().b(localRoomKey, paramInt2);
     ((ILocationShareService)paramAppInterface.getRuntimeService(ILocationShareService.class, "")).notifyStateError(paramInt1, paramString, false);
     ReportController.b(null, "CliOper", "", "", "0X800A8BC", "0X800A8BC", 0, 0, "", "0", "0", "");
   }
   
-  public String a(String paramString)
-  {
-    if (Long.parseLong(paramString) <= 0L) {
-      return paramString;
-    }
-    AppRuntime localAppRuntime = a();
-    String str = ((IFriendNameService)localAppRuntime.getRuntimeService(IFriendNameService.class, "")).getFriendNick(paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a() == 0)
-    {
-      paramString = ((IFriendDataService)localAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true, true);
-      if (paramString != null) {
-        return paramString.getFriendNickWithAlias();
-      }
-    }
-    else if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a() == 1)
-    {
-      str = ((ITroopMemberNameService)localAppRuntime.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), paramString);
-    }
-    return str;
-  }
-  
-  protected AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
   public void a()
   {
-    ((LocationShareRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    ((LocationShareRepository)this.z).a();
   }
   
   public void a(AppInterface paramAppInterface, QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
-    ((LocationShareRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramAppInterface, this);
+    this.e = paramAppInterface;
+    this.f = paramQBaseActivity;
+    this.g = paramRoomKey;
+    ((LocationShareRepository)this.z).a(paramAppInterface, this);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey)
@@ -118,27 +86,27 @@ public class LocationShareViewModel
       localStringBuilder.append("[LocationShareController] onKickOff: invoked. roomKey: ");
       localStringBuilder.append(paramRoomKey);
       localStringBuilder.append(" mRoomKey: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+      localStringBuilder.append(this.g);
       QLog.d("Q.LocationShare", 2, localStringBuilder.toString());
     }
-    QQToast.a(BaseApplication.getContext(), "已在其他设备进行共享", 0).a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+    QQToast.makeText(BaseApplication.getContext(), "已在其他设备进行共享", 0).show();
+    this.f.finish();
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, int paramInt)
   {
-    if (!paramRoomKey.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey)) {
+    if (!paramRoomKey.equals(this.g)) {
       return;
     }
     int i;
-    if (LocationShareRoomManager.a().a() != null) {
+    if (LocationShareRoomManager.a().c() != null) {
       i = 1;
     } else {
       i = 0;
     }
     LocationShareRoomManager.a().a(null);
     if ((paramInt != 2) && (paramInt != 1) && (i == 0)) {
-      LocationDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      LocationDialogUtil.a(this.f);
     }
   }
   
@@ -147,33 +115,33 @@ public class LocationShareViewModel
     if (QLog.isColorLevel()) {
       QLog.d("Q.LocationShare", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramRoomKey, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
     }
-    if (!paramRoomKey.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey)) {
+    if (!paramRoomKey.equals(this.g)) {
       return;
     }
     if (paramInt1 == 10100)
     {
-      if ((paramInt2 == 2) && (LocationHandler.a().a() == 1))
+      if ((paramInt2 == 2) && (LocationHandler.a().b() == 1))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null)
+        if (this.g != null)
         {
-          LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(1, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+          LocationShareRoomManager.a().b.a(1, this.g.a(), this.g.b());
           QLog.d("Q.LocationShare", 1, new Object[] { "onOperateRoomResponse: invoked. 兜底处理房间关闭状态，在进房失败后创建房间。 ", " errorCode: ", Integer.valueOf(paramInt1) });
           return;
         }
         QLog.e("Q.LocationShare", 1, "onOperateRoomResponse: failed. not valid room key. ", new RuntimeException());
         return;
       }
-      paramRoomKey = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+      paramRoomKey = this.f;
       if ((paramRoomKey != null) && (!paramRoomKey.isFinishing())) {
-        LocationDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+        LocationDialogUtil.a(this.f);
       }
     }
     else if (paramInt1 == 10101)
     {
-      QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+      QBaseActivity localQBaseActivity = this.f;
       if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing()))
       {
-        LocationDialogUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+        LocationDialogUtil.b(this.f);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -185,58 +153,79 @@ public class LocationShareViewModel
   public void a(LocationRoom.Venue paramVenue)
   {
     VenueOptBean localVenueOptBean = new VenueOptBean();
-    localVenueOptBean.c = 1;
-    localVenueOptBean.b = 1;
+    localVenueOptBean.e = 1;
+    localVenueOptBean.d = 1;
     localVenueOptBean.a = paramVenue;
     this.c.postValue(localVenueOptBean);
-    LocationShareVenueManager.a().a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, paramVenue, new LocationShareViewModel.2(this, paramVenue));
+    LocationShareVenueManager.a().a(this.g, paramVenue, new LocationShareViewModel.2(this, paramVenue));
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a() == 1) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a().equals(paramString)))
+    if ((this.g.a() == 1) && (this.g.b().equals(paramString)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.LocationShare", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
       }
-      QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+      QBaseActivity localQBaseActivity = this.f;
       if (localQBaseActivity != null)
       {
         localQBaseActivity.finish();
-        QQToast.a(BaseApplication.getContext(), 2131693117, 1).a();
+        QQToast.makeText(BaseApplication.getContext(), 2131890656, 1).show();
       }
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1, paramString);
+      a(this.e, 1, paramString);
     }
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a())))
+    if ((paramBoolean) && (paramString.equals(this.g.b())))
     {
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 0, paramString);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+      a(this.e, 0, paramString);
+      paramString = this.f;
       if (paramString != null) {
         paramString.finish();
       }
     }
   }
   
+  public String b(String paramString)
+  {
+    if (Long.parseLong(paramString) <= 0L) {
+      return paramString;
+    }
+    AppRuntime localAppRuntime = d();
+    String str = ((IFriendNameService)localAppRuntime.getRuntimeService(IFriendNameService.class, "")).getFriendNick(paramString);
+    if (this.g.a() == 0)
+    {
+      paramString = ((IFriendDataService)localAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true, true);
+      if (paramString != null) {
+        return paramString.getFriendNickWithAlias();
+      }
+    }
+    else if (this.g.a() == 1)
+    {
+      str = ((ITroopMemberNameService)localAppRuntime.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(this.g.b(), paramString);
+    }
+    return str;
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey != null)
+    if (this.g != null)
     {
-      FloatMapDialogUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), 2);
+      FloatMapDialogUtil.b(this.f);
+      a(this.e, this.g.a(), this.g.b(), 2);
     }
   }
   
   public void b(LocationRoom.Venue paramVenue)
   {
     VenueOptBean localVenueOptBean = new VenueOptBean();
-    localVenueOptBean.b = 2;
-    localVenueOptBean.c = 1;
+    localVenueOptBean.d = 2;
+    localVenueOptBean.e = 1;
     this.c.postValue(localVenueOptBean);
-    LocationShareVenueManager.a().b(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, paramVenue, new LocationShareViewModel.3(this, paramVenue));
+    LocationShareVenueManager.a().b(this.g, paramVenue, new LocationShareViewModel.3(this, paramVenue));
   }
   
   public void c()
@@ -248,15 +237,20 @@ public class LocationShareViewModel
     this.b.setValue(Boolean.valueOf(true));
   }
   
-  public void d()
+  protected AppRuntime d()
   {
-    ((LocationShareRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).c();
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = null;
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public void e()
+  {
+    ((LocationShareRepository)this.z).bN_();
+    this.f = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareViewModel
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class LoginAccountFragment$1
   
   public void onClick(View paramView)
   {
-    LoginAccountFragment.a(this.a).finish();
+    this.a.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LoginAccountFragment.1
  * JD-Core Version:    0.7.0.1
  */

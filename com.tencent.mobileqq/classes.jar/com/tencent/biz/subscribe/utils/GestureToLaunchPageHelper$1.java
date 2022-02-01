@@ -20,13 +20,13 @@ class GestureToLaunchPageHelper$1
     {
       int i = (int)(paramMotionEvent.getX() + 0.5F);
       int j = (int)(paramMotionEvent.getY() + 0.5F);
-      if (GestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper) != null)
+      if (GestureToLaunchPageHelper.a(this.b) != null)
       {
-        paramMotionEvent = GestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper).iterator();
+        paramMotionEvent = GestureToLaunchPageHelper.a(this.b).iterator();
         while (paramMotionEvent.hasNext())
         {
-          ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-          if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j)) {
+          ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.a);
+          if (this.a.contains(i, j)) {
             return false;
           }
         }

@@ -40,7 +40,7 @@ public class ChallengeBragBase$SendChallengeCallback
   
   public void a(Exception paramException)
   {
-    this.a.d();
+    this.a.e();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("SendChallenge exception.");
     ((StringBuilder)localObject).append(paramException.getMessage());
@@ -90,28 +90,28 @@ public class ChallengeBragBase$SendChallengeCallback
     {
       try
       {
-        this.a.d();
+        this.a.e();
         int j = paramJSONObject.getInt("ret");
         String str = paramJSONObject.getString("msg");
         if (j == 0)
         {
           localObject = null;
-          if ("action_brag".equals(this.a.p))
+          if ("action_brag".equals(this.a.B))
           {
             localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-            i = 2131690978;
+            i = 2131887917;
           }
           else
           {
-            if (!"action_challenge".equals(this.a.p)) {
+            if (!"action_challenge".equals(this.a.B)) {
               break label237;
             }
             localObject = "ANDROIDQQ.PK.ASSISTANT";
-            i = 2131690979;
+            i = 2131887918;
           }
           if (localObject != null)
           {
-            StaticAnalyz.a("400", (String)localObject, this.a.c, true);
+            StaticAnalyz.a("400", (String)localObject, this.a.i, true);
             Toast.makeText(this.a, i, 0).show();
           }
         }
@@ -146,7 +146,7 @@ public class ChallengeBragBase$SendChallengeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase.SendChallengeCallback
  * JD-Core Version:    0.7.0.1
  */

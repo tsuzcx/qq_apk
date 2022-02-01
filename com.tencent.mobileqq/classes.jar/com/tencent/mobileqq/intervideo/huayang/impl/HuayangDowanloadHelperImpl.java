@@ -57,22 +57,22 @@ public class HuayangDowanloadHelperImpl
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("开始拉取AI票据：");
-      ((StringBuilder)localObject).append(localIVPluginInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(localIVPluginInfo.g);
       QLog.d("IHuayangPluginNewDownloader", 2, ((StringBuilder)localObject).toString());
     }
     paramInstalledPlugin = new HuayangDowanloadHelperImpl.GetLoginKeyDataListener(this, this.mPluginPackageName, localIVPluginInfo, paramInstalledPlugin, paramBoolean, paramLong);
     this.mGetLoginKeyDataListeners.add(paramInstalledPlugin);
-    if (localIVPluginInfo.jdField_a_of_type_Int == 1)
+    if (localIVPluginInfo.g == 1)
     {
       this.mStartGetHYAITime = System.currentTimeMillis();
-      this.mLoginKeyHelper.getA1(this.mUin, localIVPluginInfo.jdField_a_of_type_JavaLangString, localIVPluginInfo.c, localIVPluginInfo.b, paramInstalledPlugin, true, localIVPluginInfo.k);
+      this.mLoginKeyHelper.getA1(this.mUin, localIVPluginInfo.a, localIVPluginInfo.c, localIVPluginInfo.b, paramInstalledPlugin, true, localIVPluginInfo.p);
       return;
     }
-    if (localIVPluginInfo.jdField_a_of_type_Int == 2)
+    if (localIVPluginInfo.g == 2)
     {
       this.mStartGetODAITime = System.currentTimeMillis();
       localObject = (AppInterface)((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
-      this.mLoginKeyHelper.getAccessToken((AppInterface)localObject, localIVPluginInfo.jdField_a_of_type_JavaLangString, this.mAppContext, localIVPluginInfo.b, paramInstalledPlugin);
+      this.mLoginKeyHelper.getAccessToken((AppInterface)localObject, localIVPluginInfo.a, this.mAppContext, localIVPluginInfo.b, paramInstalledPlugin);
     }
   }
   
@@ -161,12 +161,12 @@ public class HuayangDowanloadHelperImpl
       QLog.i("IHuayangPluginNewDownloader", 2, localStringBuilder1.toString());
       return;
     }
-    throw new RuntimeException(HardCodeUtil.a(2131705719));
+    throw new RuntimeException(HardCodeUtil.a(2131903604));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangDowanloadHelperImpl
  * JD-Core Version:    0.7.0.1
  */

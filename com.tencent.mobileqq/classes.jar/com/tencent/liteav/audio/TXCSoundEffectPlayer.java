@@ -6,8 +6,8 @@ import android.content.res.AssetManager;
 import android.text.TextUtils;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.c;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.h;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ public class TXCSoundEffectPlayer
   implements TXAudioEffectManager.TXMusicPlayObserver
 {
   private static final String TAG = "AudioCenter:TXCSoundEffectPlayer";
-  private static WeakReference<b> mWeakSoundEffectListener;
+  private static WeakReference<c> mWeakSoundEffectListener;
   private List<Integer> mShortEffectorIDList = new ArrayList();
   
   static
   {
-    f.f();
+    h.f();
   }
   
   private String checkIfAssetsFile(String paramString)
@@ -118,10 +118,10 @@ public class TXCSoundEffectPlayer
         }
         str1 = paramString;
         localObject1 = paramString;
-        if (!c.a(paramString))
+        if (!d.a(paramString))
         {
           str1 = paramString;
-          c.a(TXCCommonUtil.getAppContext(), str3, paramString);
+          d.a(TXCCommonUtil.getAppContext(), str3, paramString);
           return paramString;
         }
       }
@@ -162,7 +162,7 @@ public class TXCSoundEffectPlayer
     try
     {
       Object localObject = new File(getEffectCachePath());
-      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()) && (c.a((File)localObject) > 52428800))
+      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()) && (d.a((File)localObject) > 52428800))
       {
         localObject = ((File)localObject).listFiles();
         int j = localObject.length;
@@ -193,7 +193,7 @@ public class TXCSoundEffectPlayer
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", ((StringBuilder)localObject).toString());
     localObject = mWeakSoundEffectListener;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-      ((b)mWeakSoundEffectListener.get()).onEffectPlayFinish(paramInt1);
+      ((c)mWeakSoundEffectListener.get()).onEffectPlayFinish(paramInt1);
     }
   }
   
@@ -209,7 +209,7 @@ public class TXCSoundEffectPlayer
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", ((StringBuilder)localObject).toString());
     localObject = mWeakSoundEffectListener;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-      ((b)mWeakSoundEffectListener.get()).onEffectPlayStart(paramInt1, paramInt2);
+      ((c)mWeakSoundEffectListener.get()).onEffectPlayStart(paramInt1, paramInt2);
     }
   }
   
@@ -271,14 +271,14 @@ public class TXCSoundEffectPlayer
     }
   }
   
-  public void setSoundEffectListener(b paramb)
+  public void setSoundEffectListener(c paramc)
   {
-    if (paramb == null)
+    if (paramc == null)
     {
       mWeakSoundEffectListener = null;
       return;
     }
-    mWeakSoundEffectListener = new WeakReference(paramb);
+    mWeakSoundEffectListener = new WeakReference(paramc);
   }
   
   public void setVolumeOfEffect(int paramInt, float paramFloat)
@@ -321,7 +321,7 @@ public class TXCSoundEffectPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCSoundEffectPlayer
  * JD-Core Version:    0.7.0.1
  */

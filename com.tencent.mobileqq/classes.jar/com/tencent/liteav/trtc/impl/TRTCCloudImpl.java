@@ -14,10 +14,10 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import android.view.Display;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
+import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -37,15 +37,20 @@ import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
 import com.tencent.liteav.basic.module.TXCStatus;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.e.a;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.liteav.d.a;
-import com.tencent.liteav.g;
+import com.tencent.liteav.device.TXDeviceManager;
+import com.tencent.liteav.device.TXDeviceManager.TXAudioRoute;
+import com.tencent.liteav.device.TXDeviceManager.TXSystemVolumeType;
+import com.tencent.liteav.device.TXDeviceManagerImpl;
+import com.tencent.liteav.device.TXDeviceManagerImpl.TXDeviceManagerListener;
 import com.tencent.liteav.g.a;
-import com.tencent.liteav.h;
 import com.tencent.liteav.o;
 import com.tencent.liteav.screencapture.a.a;
 import com.tencent.liteav.videoencoder.b.a;
@@ -55,12 +60,16 @@ import com.tencent.trtc.TRTCCloud.BGMNotify;
 import com.tencent.trtc.TRTCCloud.TRTCViewMargin;
 import com.tencent.trtc.TRTCCloudDef.TRTCAudioEffectParam;
 import com.tencent.trtc.TRTCCloudDef.TRTCAudioFrame;
+import com.tencent.trtc.TRTCCloudDef.TRTCAudioFrameCallbackFormat;
 import com.tencent.trtc.TRTCCloudDef.TRTCAudioRecordingParams;
+import com.tencent.trtc.TRTCCloudDef.TRTCLocalRecordingParams;
 import com.tencent.trtc.TRTCCloudDef.TRTCNetworkQosParam;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
 import com.tencent.trtc.TRTCCloudDef.TRTCPublishCDNParam;
 import com.tencent.trtc.TRTCCloudDef.TRTCQuality;
+import com.tencent.trtc.TRTCCloudDef.TRTCRenderParams;
 import com.tencent.trtc.TRTCCloudDef.TRTCScreenShareParams;
+import com.tencent.trtc.TRTCCloudDef.TRTCSwitchRoomConfig;
 import com.tencent.trtc.TRTCCloudDef.TRTCTexture;
 import com.tencent.trtc.TRTCCloudDef.TRTCTranscodingConfig;
 import com.tencent.trtc.TRTCCloudDef.TRTCVideoEncParam;
@@ -68,13 +77,14 @@ import com.tencent.trtc.TRTCCloudDef.TRTCVideoFrame;
 import com.tencent.trtc.TRTCCloudListener;
 import com.tencent.trtc.TRTCCloudListener.TRTCAudioFrameListener;
 import com.tencent.trtc.TRTCCloudListener.TRTCSnapshotListener;
+import com.tencent.trtc.TRTCCloudListener.TRTCVideoFrameListener;
 import com.tencent.trtc.TRTCCloudListener.TRTCVideoRenderListener;
 import com.tencent.trtc.TRTCStatistics;
 import com.tencent.trtc.TRTCStatistics.TRTCLocalStatistics;
 import com.tencent.trtc.TRTCStatistics.TRTCRemoteStatistics;
 import com.tencent.trtc.TRTCSubCloud;
-import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -82,14 +92,18 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TRTCCloudImpl
   extends TRTCCloud
-  implements SurfaceHolder.Callback, TXCRenderAndDec.b, com.tencent.liteav.audio.b, com.tencent.liteav.audio.c, com.tencent.liteav.audio.d, com.tencent.liteav.audio.e, com.tencent.liteav.audio.f, com.tencent.liteav.basic.b.b, d.a, o, a.a
+  implements SurfaceHolder.Callback, TXCRenderAndDec.b, com.tencent.liteav.audio.c, com.tencent.liteav.audio.d, com.tencent.liteav.audio.e, com.tencent.liteav.audio.f, com.tencent.liteav.audio.g, com.tencent.liteav.audio.h, com.tencent.liteav.basic.c.b, d.a, o, a.a
 {
+  private static final int CURRENT_ENCODE_TYPE_H264 = 0;
+  private static final int CURRENT_ENCODE_TYPE_H265 = 1;
   private static final int DEFAULT_FPS_FOR_SCREEN_CAPTURE = 10;
   private static final int DEFAULT_GOP_FOR_SCREEN_CAPTURE = 3;
   private static final String KEY_CONFIG_ADJUST_RESOLUTION = "config_adjust_resolution";
@@ -104,60 +118,66 @@ public class TRTCCloudImpl
   protected static final int ROOM_STATE_ENTRING = 1;
   private static final int ROOM_STATE_IN = 2;
   protected static final int ROOM_STATE_OUT = 0;
+  private static final int START_LOCAL_RECORDING_FAILED = -1;
   private static final int STATE_INTERVAL = 2000;
   private static final String TAG = "TRTCCloudImpl";
   private static TRTCCloudImpl sInstance;
   protected int mAppScene;
-  private int mAudioCaptureVolume = 100;
-  protected TRTCCloudListener.TRTCAudioFrameListener mAudioFrameListener = null;
-  private int mAudioPlayoutVolume = 100;
-  protected int mAudioVolumeEvalInterval = 0;
+  private int mAudioCaptureVolume;
+  protected TRTCCloudListener.TRTCAudioFrameListener mAudioFrameListener;
+  private int mAudioPlayoutVolume;
+  protected int mAudioVolumeEvalInterval;
   private TRTCCloud.BGMNotify mBGMNotify;
-  private int mBackground = -1;
-  private com.tencent.liteav.basic.b.a mCallback = new TRTCCloudImpl.1(this);
+  private int mBackground;
+  private com.tencent.liteav.basic.c.a mCallback;
   protected com.tencent.liteav.d mCaptureAndEnc;
-  private long mCaptureFrameCount = 0L;
-  private int mCodecType = 2;
-  protected g mConfig;
+  private int mCodecType;
+  protected com.tencent.liteav.g mConfig;
   protected Context mContext;
-  private int mCurrentOrientation = -1;
-  protected HashMap<Integer, TRTCCloudImpl> mCurrentPublishClouds = new HashMap();
-  protected int mCurrentRole = 20;
-  private boolean mCustomRemoteRender = false;
-  private TRTCCustomTextureUtil mCustomVideoUtil = null;
-  protected int mDebugType = 0;
-  private Display mDisplay;
-  private boolean mEnableCustomAudioCapture = false;
-  protected boolean mEnableEosMode = false;
-  private boolean mEnableHighQualityEncode = false;
-  private boolean mEnableHighQualityEncodeFromServer = false;
-  private boolean mEnableSmallStream = false;
-  private boolean mEnableSoftAEC = true;
-  private boolean mEnableSoftAGC = false;
-  private boolean mEnableSoftANS = false;
-  private View mFloatingWindow = null;
-  private int mFramework = 1;
+  private int mCurrentOrientation;
+  protected HashMap<Integer, TRTCCloudImpl> mCurrentPublishClouds;
+  protected int mCurrentRole;
+  private int mCustomCaptureGLSyncMode;
+  private final Object mCustomCaptureLock;
+  private boolean mCustomRemoteRender;
+  private TRTCCustomTextureUtil mCustomSubStreamVideoUtil;
+  private TRTCCustomTextureUtil mCustomVideoUtil;
+  protected int mDebugType;
+  private TXDeviceManagerImpl mDeviceManager;
+  private TXDeviceManagerImpl.TXDeviceManagerListener mDeviceManagerListener;
+  private boolean mEnableCustomAudioCapture;
+  private boolean mEnableCustomVideoCapture;
+  protected boolean mEnableEosMode;
+  private boolean mEnableSmallStream;
+  private boolean mEnableSoftAEC;
+  private boolean mEnableSoftAGC;
+  private boolean mEnableSoftANS;
+  private View mFloatingWindow;
+  private int mFramework;
+  private TRTCEncodeTypeDecision mH265Decision;
   private boolean mIsAudioCapturing;
   protected boolean mIsExitOldRoom;
   private AtomicBoolean mIsSDKThreadAlive;
-  private long mLastCaptureCalculateTS = 0L;
-  private long mLastCaptureFrameCount = 0L;
+  private boolean mIsVideoCapturing;
+  private boolean mKeepAVCaptureWhenEnterRoomFailed;
   private long mLastLogCustomCmdMsgTs;
   private long mLastLogSEIMsgTs;
   private long mLastSendMsgTimeMs;
   protected long mLastStateTimeMs;
-  private final Bundle mLatestParamsOfBigEncoder = new Bundle();
-  private final Bundle mLatestParamsOfSmallEncoder = new Bundle();
+  private final Bundle mLatestParamsOfBigEncoder;
+  private final Bundle mLatestParamsOfSmallEncoder;
   private Handler mListenerHandler;
-  private com.tencent.liteav.basic.util.e mMainHandler;
-  protected Object mNativeLock = new Object();
+  private com.tencent.liteav.basic.util.f mMainHandler;
+  protected Object mNativeLock;
   protected long mNativeRtcContext;
-  private int mNetType = -1;
+  private int mNetType;
   private TRTCCloudImpl.DisplayOrientationDetector mOrientationEventListener;
-  private boolean mOverrideFPSFromUser = false;
-  protected int mPerformanceMode = 0;
-  protected int mPriorStreamType = 2;
-  private int mQosMode = 1;
+  private boolean mOverrideFPSFromUser;
+  protected int mPerformanceMode;
+  private int mPlayoutAudioTunnelId;
+  protected int mPriorStreamType;
+  private int mPublishAudioTunnelId;
+  private int mQosMode;
   private int mQosPreference;
   private long mRecvCustomCmdMsgCountInPeriod;
   protected int mRecvMode;
@@ -165,67 +185,202 @@ public class TRTCCloudImpl
   protected HashMap<String, TRTCCloudImpl.RenderListenerAdapter> mRenderListenerMap;
   protected TRTCRoomInfo mRoomInfo;
   protected int mRoomState;
-  protected Handler mSDKHandler;
+  protected int mRoomType;
+  protected com.tencent.liteav.basic.util.f mSDKHandler;
   private int mSendMsgCount;
   private int mSendMsgSize;
   private int mSensorMode;
-  private final TRTCCloudDef.TRTCVideoEncParam mSmallEncParam = new TRTCCloudDef.TRTCVideoEncParam();
-  private int mSoftAECLevel = 100;
-  private int mSoftAGCLevel = 100;
-  private int mSoftANSLevel = 100;
-  private TRTCCloudImpl.StatusTask mStatusNotifyTask = null;
+  private final TRTCCloudDef.TRTCVideoEncParam mSmallEncParam;
+  private int mSoftAECLevel;
+  private int mSoftAGCLevel;
+  private int mSoftANSLevel;
+  private TRTCCloudImpl.StatusTask mStatusNotifyTask;
   private Set<Integer> mStreamTypes;
-  protected ArrayList<WeakReference<TRTCCloudImpl>> mSubClouds = new ArrayList();
+  protected ArrayList<WeakReference<TRTCCloudImpl>> mSubClouds;
+  protected com.tencent.liteav.d mSubStreamCaptureAndEnc;
+  private Surface mSurfaceFromTextureView;
   protected TRTCCloudListener mTRTCListener;
-  protected int mTargetRole = 20;
-  private int mVideoRenderMirror = 0;
+  protected int mTargetRole;
+  private final TextureView.SurfaceTextureListener mTextureViewListener;
+  private final TRTCVideoPreprocessListenerAdapter mVideoPreprocessListenerAdapter;
+  private int mVideoRenderMirror;
   private TRTCVideoServerConfig mVideoServerConfig;
   private TRTCCloudImpl.VideoSourceType mVideoSourceType;
-  private TRTCCloudImpl.VolumeLevelNotifyTask mVolumeLevelNotifyTask = null;
-  final TXAudioEffectManager.TXVoiceReverbType[] reverbTypes = { TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_0, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_1, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_2, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_3, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_4, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_5, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_6, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_7 };
-  final TXAudioEffectManager.TXVoiceChangerType[] voiceChangerTypes = { TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_0, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_1, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_2, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_3, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_4, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_5, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_6, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_7, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_8, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_9, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_10, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_11 };
+  private TRTCCloudImpl.VolumeLevelNotifyTask mVolumeLevelNotifyTask;
+  final TXAudioEffectManager.TXVoiceReverbType[] reverbTypes;
+  final TXAudioEffectManager.TXVoiceChangerType[] voiceChangerTypes;
   
   static
   {
-    com.tencent.liteav.basic.util.f.f();
+    com.tencent.liteav.basic.util.h.f();
   }
   
   protected TRTCCloudImpl(Context paramContext)
   {
+    Object localObject1 = TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_0;
+    boolean bool2 = false;
+    this.reverbTypes = new TXAudioEffectManager.TXVoiceReverbType[] { localObject1, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_1, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_2, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_3, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_4, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_5, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_6, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_7 };
+    this.voiceChangerTypes = new TXAudioEffectManager.TXVoiceChangerType[] { TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_0, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_1, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_2, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_3, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_4, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_5, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_6, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_7, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_8, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_9, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_10, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_11 };
+    this.mNativeLock = new Object();
+    this.mAudioFrameListener = null;
+    this.mCustomCaptureLock = new Object();
+    this.mCustomSubStreamVideoUtil = null;
+    this.mPublishAudioTunnelId = -1;
+    this.mPlayoutAudioTunnelId = -1;
+    this.mPriorStreamType = 2;
+    this.mEnableSmallStream = false;
+    this.mVideoRenderMirror = 0;
+    this.mCustomRemoteRender = false;
+    this.mAudioVolumeEvalInterval = 0;
+    this.mSmallEncParam = new TRTCCloudDef.TRTCVideoEncParam();
+    this.mQosMode = 1;
+    this.mEnableEosMode = false;
+    this.mCodecType = 2;
+    this.mEnableSoftAEC = true;
+    this.mEnableSoftANS = false;
+    this.mEnableSoftAGC = false;
+    this.mSoftAECLevel = 100;
+    this.mSoftANSLevel = 100;
+    this.mSoftAGCLevel = 100;
+    this.mAudioCaptureVolume = 100;
+    this.mAudioPlayoutVolume = 100;
+    this.mCustomVideoUtil = null;
+    this.mCustomCaptureGLSyncMode = 0;
+    this.mEnableCustomAudioCapture = false;
+    this.mEnableCustomVideoCapture = false;
+    this.mCurrentRole = 20;
+    this.mTargetRole = 20;
+    this.mVideoPreprocessListenerAdapter = new TRTCVideoPreprocessListenerAdapter();
+    this.mPerformanceMode = 0;
+    this.mRoomType = 0;
+    this.mCurrentOrientation = -1;
+    this.mFloatingWindow = null;
+    this.mOverrideFPSFromUser = false;
+    this.mLatestParamsOfBigEncoder = new Bundle();
+    this.mLatestParamsOfSmallEncoder = new Bundle();
+    this.mFramework = 1;
+    this.mTextureViewListener = new TRTCCloudImpl.1(this);
+    this.mKeepAVCaptureWhenEnterRoomFailed = false;
+    this.mCallback = new TRTCCloudImpl.2(this);
+    this.mDeviceManagerListener = new TRTCCloudImpl.3(this);
+    this.mSubClouds = new ArrayList();
+    this.mCurrentPublishClouds = new HashMap();
+    this.mVolumeLevelNotifyTask = null;
+    this.mDebugType = 0;
+    this.mStatusNotifyTask = null;
+    this.mNetType = -1;
+    this.mBackground = -1;
     init(paramContext, null);
     TXCCommonUtil.setAppContext(this.mContext);
     TXCLog.init();
-    TRTCAudioServerConfig localTRTCAudioServerConfig = TRTCAudioServerConfig.loadFromSharedPreferences(paramContext);
-    TXCLog.i("TRTCCloudImpl", "audio config from shared preference: %s", new Object[] { localTRTCAudioServerConfig });
-    String str = TXCAudioEngine.buildTRAEConfig(paramContext, Boolean.valueOf(localTRTCAudioServerConfig.enableOpenSL), localTRTCAudioServerConfig.isLowLatencySampleRateSupported, localTRTCAudioServerConfig.lowLatencySampleRateBlockTime);
-    TXCAudioEngine.CreateInstanceWithoutInitDevice(this.mContext, str);
+    localObject1 = TRTCAudioServerConfig.loadFromSharedPreferences(paramContext);
+    TXCLog.i("TRTCCloudImpl", "audio config from shared preference: %s", new Object[] { localObject1 });
+    Object localObject2 = TXCAudioEngine.buildTRAEConfig(paramContext, Boolean.valueOf(((TRTCAudioServerConfig)localObject1).enableOpenSL), ((TRTCAudioServerConfig)localObject1).isLowLatencySampleRateSupported, ((TRTCAudioServerConfig)localObject1).lowLatencySampleRateBlockTime);
+    TXCAudioEngine.CreateInstanceWithoutInitDevice(this.mContext, (String)localObject2);
     TXCAudioEngine.getInstance().clean();
     TXCAudioEngine.getInstance().setAudioCaptureDataListener(this);
     TXCAudioEngine.getInstance().addEventCallback(new WeakReference(this.mCallback));
-    TXCAudioEngine.getInstance().enableAutoRestartDevice(localTRTCAudioServerConfig.enableAutoRestartDevice);
-    TXCAudioEngine.getInstance().setMaxSelectedPlayStreams(localTRTCAudioServerConfig.maxSelectedPlayStreams);
+    TXCAudioEngine.getInstance().enableAutoRestartDevice(((TRTCAudioServerConfig)localObject1).enableAutoRestartDevice);
+    TXCAudioEngine.getInstance().setMaxSelectedPlayStreams(((TRTCAudioServerConfig)localObject1).maxSelectedPlayStreams);
+    localObject2 = TXCAudioEngine.getInstance();
+    if (((TRTCAudioServerConfig)localObject1).enableInbandFEC != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((TXCAudioEngine)localObject2).enableInbandFEC(bool1);
+    localObject2 = TXCAudioEngine.getInstance();
+    boolean bool1 = bool2;
+    if (((TRTCAudioServerConfig)localObject1).enableDeviceAbnormalDetection != 0) {
+      bool1 = true;
+    }
+    ((TXCAudioEngine)localObject2).enableDeviceAbnormalDetection(bool1);
     TXCAudioEngineJNI.nativeSetAudioPlayoutTunnelEnabled(true);
     this.mCaptureAndEnc = new com.tencent.liteav.d(paramContext);
     this.mCaptureAndEnc.j(2);
     this.mCaptureAndEnc.a(this.mConfig);
-    this.mCaptureAndEnc.i(true);
-    this.mCaptureAndEnc.g(true);
+    this.mCaptureAndEnc.j(true);
+    this.mCaptureAndEnc.h(true);
     this.mCaptureAndEnc.a(this);
     this.mCaptureAndEnc.a(this);
     this.mCaptureAndEnc.setID("18446744073709551615");
-    this.mCaptureAndEnc.h(true);
+    this.mCaptureAndEnc.i(true);
+    this.mDeviceManager.setCaptureAndEnc(this.mCaptureAndEnc);
+    this.mDeviceManager.setDeviceManagerListener(this.mDeviceManagerListener);
     TXCKeyPointReportProxy.a(this.mContext);
     apiLog("reset audio volume");
     setAudioCaptureVolume(100);
     setAudioPlayoutVolume(100);
     TXCSoundEffectPlayer.getInstance().setSoundEffectListener(this);
+    this.mH265Decision = new TRTCEncodeTypeDecision(this);
   }
   
-  protected TRTCCloudImpl(Context paramContext, Handler paramHandler)
+  protected TRTCCloudImpl(Context paramContext, com.tencent.liteav.basic.util.f paramf)
   {
-    init(paramContext, paramHandler);
+    this.reverbTypes = new TXAudioEffectManager.TXVoiceReverbType[] { TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_0, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_1, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_2, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_3, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_4, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_5, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_6, TXAudioEffectManager.TXVoiceReverbType.TXLiveVoiceReverbType_7 };
+    this.voiceChangerTypes = new TXAudioEffectManager.TXVoiceChangerType[] { TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_0, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_1, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_2, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_3, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_4, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_5, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_6, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_7, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_8, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_9, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_10, TXAudioEffectManager.TXVoiceChangerType.TXLiveVoiceChangerType_11 };
+    this.mNativeLock = new Object();
+    this.mAudioFrameListener = null;
+    this.mCustomCaptureLock = new Object();
+    this.mCustomSubStreamVideoUtil = null;
+    this.mPublishAudioTunnelId = -1;
+    this.mPlayoutAudioTunnelId = -1;
+    this.mPriorStreamType = 2;
+    this.mEnableSmallStream = false;
+    this.mVideoRenderMirror = 0;
+    this.mCustomRemoteRender = false;
+    this.mAudioVolumeEvalInterval = 0;
+    this.mSmallEncParam = new TRTCCloudDef.TRTCVideoEncParam();
+    this.mQosMode = 1;
+    this.mEnableEosMode = false;
+    this.mCodecType = 2;
+    this.mEnableSoftAEC = true;
+    this.mEnableSoftANS = false;
+    this.mEnableSoftAGC = false;
+    this.mSoftAECLevel = 100;
+    this.mSoftANSLevel = 100;
+    this.mSoftAGCLevel = 100;
+    this.mAudioCaptureVolume = 100;
+    this.mAudioPlayoutVolume = 100;
+    this.mCustomVideoUtil = null;
+    this.mCustomCaptureGLSyncMode = 0;
+    this.mEnableCustomAudioCapture = false;
+    this.mEnableCustomVideoCapture = false;
+    this.mCurrentRole = 20;
+    this.mTargetRole = 20;
+    this.mVideoPreprocessListenerAdapter = new TRTCVideoPreprocessListenerAdapter();
+    this.mPerformanceMode = 0;
+    this.mRoomType = 0;
+    this.mCurrentOrientation = -1;
+    this.mFloatingWindow = null;
+    this.mOverrideFPSFromUser = false;
+    this.mLatestParamsOfBigEncoder = new Bundle();
+    this.mLatestParamsOfSmallEncoder = new Bundle();
+    this.mFramework = 1;
+    this.mTextureViewListener = new TRTCCloudImpl.1(this);
+    this.mKeepAVCaptureWhenEnterRoomFailed = false;
+    this.mCallback = new TRTCCloudImpl.2(this);
+    this.mDeviceManagerListener = new TRTCCloudImpl.3(this);
+    this.mSubClouds = new ArrayList();
+    this.mCurrentPublishClouds = new HashMap();
+    this.mVolumeLevelNotifyTask = null;
+    this.mDebugType = 0;
+    this.mStatusNotifyTask = null;
+    this.mNetType = -1;
+    this.mBackground = -1;
+    init(paramContext, paramf);
     this.mCurrentRole = 21;
     this.mTargetRole = 21;
+    this.mH265Decision = new TRTCEncodeTypeDecision(this);
+  }
+  
+  private int GetPublishingCloudState(int paramInt)
+  {
+    TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mCurrentPublishClouds.get(Integer.valueOf(paramInt));
+    if (localTRTCCloudImpl != null) {
+      return localTRTCCloudImpl.mRoomState;
+    }
+    return 0;
   }
   
   private void addRemoteStatistics(TXCRenderAndDec paramTXCRenderAndDec, TRTCRoomInfo.UserInfo paramUserInfo, TRTCStatistics paramTRTCStatistics, ArrayList<TRTCCloudDef.TRTCQuality> paramArrayList)
@@ -285,12 +440,12 @@ public class TRTCCloudImpl
     {
       paramString1 = this.mRoomInfo.localView;
     }
-    runOnMainThread(new TRTCCloudImpl.166(this, paramString1, paramString2));
+    runOnMainThread(new TRTCCloudImpl.187(this, paramString1, paramString2));
   }
   
   private void applyRenderConfig(TXCRenderAndDec paramTXCRenderAndDec)
   {
-    h localh = new h();
+    com.tencent.liteav.h localh = new com.tencent.liteav.h();
     localh.h = false;
     if (this.mAppScene == 1) {
       localh.h = true;
@@ -305,21 +460,21 @@ public class TRTCCloudImpl
     applyRenderPlayStrategy(paramTXCRenderAndDec, localh);
   }
   
-  private void applyRenderPlayStrategy(TXCRenderAndDec paramTXCRenderAndDec, h paramh)
+  private void applyRenderPlayStrategy(TXCRenderAndDec paramTXCRenderAndDec, com.tencent.liteav.h paramh)
   {
     paramh.g = true;
     int i = this.mCurrentRole;
     if (i == 20)
     {
-      paramh.a = com.tencent.liteav.basic.a.a.a;
-      paramh.c = com.tencent.liteav.basic.a.a.b;
-      paramh.b = com.tencent.liteav.basic.a.a.c;
+      paramh.a = com.tencent.liteav.basic.b.a.a;
+      paramh.c = com.tencent.liteav.basic.b.a.b;
+      paramh.b = com.tencent.liteav.basic.b.a.c;
     }
     else if (i == 21)
     {
-      paramh.a = com.tencent.liteav.basic.a.a.d;
-      paramh.c = com.tencent.liteav.basic.a.a.e;
-      paramh.b = com.tencent.liteav.basic.a.a.f;
+      paramh.a = com.tencent.liteav.basic.b.a.d;
+      paramh.c = com.tencent.liteav.basic.b.a.e;
+      paramh.b = com.tencent.liteav.basic.b.a.f;
     }
     paramTXCRenderAndDec.setConfig(paramh);
   }
@@ -331,7 +486,7 @@ public class TRTCCloudImpl
       return;
     }
     this.mLastStateTimeMs = l;
-    Object localObject = com.tencent.liteav.basic.util.f.a();
+    Object localObject = com.tencent.liteav.basic.util.h.a();
     ArrayList localArrayList = new ArrayList();
     TRTCStatistics localTRTCStatistics = new TRTCStatistics();
     localTRTCStatistics.appCpu = (localObject[0] / 10);
@@ -349,20 +504,20 @@ public class TRTCCloudImpl
       localObject = getLocalStatistics(3);
       localTRTCStatistics.localArray.add(localObject);
     }
-    this.mRoomInfo.forEachUser(new TRTCCloudImpl.174(this, localTRTCStatistics, localArrayList));
+    this.mRoomInfo.forEachUser(new TRTCCloudImpl.195(this, localTRTCStatistics, localArrayList));
     localObject = new TRTCCloudDef.TRTCQuality();
     ((TRTCCloudDef.TRTCQuality)localObject).userId = this.mRoomInfo.getUserId();
     ((TRTCCloudDef.TRTCQuality)localObject).quality = TXCStatus.c("18446744073709551615", 12005);
-    runOnListenerThread(new TRTCCloudImpl.175(this, localTRTCStatistics, (TRTCCloudDef.TRTCQuality)localObject, localArrayList));
+    runOnListenerThread(new TRTCCloudImpl.196(this, localTRTCStatistics, (TRTCCloudDef.TRTCQuality)localObject, localArrayList));
   }
   
   private void checkRenderRotation(int paramInt)
   {
     int m = getDisplayRotation();
-    int k = (360 - m - (this.mConfig.l - 1) * 90) % 360;
+    int k = (360 - m - (this.mConfig.m - 1) * 90) % 360;
     int i = paramInt % 2;
     int j = m % 2;
-    if (((i == j) && (this.mConfig.l == 1)) || ((i != j) && (this.mConfig.l == 0))) {
+    if (((i == j) && (this.mConfig.m == 1)) || ((i != j) && (this.mConfig.m == 0))) {
       j = 1;
     } else {
       j = 0;
@@ -371,7 +526,7 @@ public class TRTCCloudImpl
     if (n == 1)
     {
       i = k;
-      if (!this.mConfig.m)
+      if (!this.mConfig.n)
       {
         i = k;
         if (j == 0) {}
@@ -388,14 +543,14 @@ public class TRTCCloudImpl
           break;
         }
         i = k;
-        if (!this.mConfig.m) {
+        if (!this.mConfig.n) {
           break;
         }
         i = k;
       } while (j != 0);
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("vrotation rotation-change %d-%d-%d ======= renderRotation %d-%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mConfig.l), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.mRoomInfo.localRenderRotation) }));
+    localStringBuilder.append(String.format("vrotation rotation-change %d-%d-%d ======= renderRotation %d-%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mConfig.m), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.mRoomInfo.localRenderRotation) }));
     localStringBuilder.append(" self:");
     localStringBuilder.append(hashCode());
     TXCLog.d("TRTCCloudImpl", localStringBuilder.toString());
@@ -406,9 +561,9 @@ public class TRTCCloudImpl
   private void checkVideoEncRotation(int paramInt)
   {
     int i;
-    if (this.mConfig.l != 1)
+    if (this.mConfig.m != 1)
     {
-      if (((this.mConfig.S) && (this.mConfig.m)) || ((!this.mConfig.S) && (!this.mConfig.m))) {
+      if (((this.mConfig.T) && (this.mConfig.n)) || ((!this.mConfig.T) && (!this.mConfig.n))) {
         i = 90;
       } else {
         i = 270;
@@ -434,11 +589,11 @@ public class TRTCCloudImpl
         {
           i = (i + 270) % 360;
           j = i;
-          if (!this.mConfig.m) {
+          if (!this.mConfig.n) {
             j = (i + 180) % 360;
           }
           i = j;
-          if (this.mConfig.S) {
+          if (this.mConfig.T) {
             i = (j + 180) % 360;
           }
         }
@@ -451,16 +606,16 @@ public class TRTCCloudImpl
     {
       i = (i + 90) % 360;
       j = i;
-      if (!this.mConfig.m) {
+      if (!this.mConfig.n) {
         j = (i + 180) % 360;
       }
       i = j;
-      if (this.mConfig.S) {
+      if (this.mConfig.T) {
         i = (j + 180) % 360;
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("vrotation rotation-change %d-%d ======= encRotation %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mConfig.l), Integer.valueOf(i) }));
+    localStringBuilder.append(String.format("vrotation rotation-change %d-%d ======= encRotation %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mConfig.m), Integer.valueOf(i) }));
     localStringBuilder.append(" self:");
     localStringBuilder.append(hashCode());
     TXCLog.d("TRTCCloudImpl", localStringBuilder.toString());
@@ -470,28 +625,33 @@ public class TRTCCloudImpl
   
   private void collectCustomCaptureFps()
   {
-    if (this.mVideoSourceType == TRTCCloudImpl.VideoSourceType.CUSTOM)
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - this.mLastCaptureCalculateTS;
-      if (l2 >= 1000L)
-      {
-        long l3 = this.mCaptureFrameCount;
-        double d1 = l3 - this.mLastCaptureFrameCount;
-        Double.isNaN(d1);
-        double d2 = l2;
-        Double.isNaN(d2);
-        d1 = d1 * 1000.0D / d2;
-        this.mLastCaptureFrameCount = l3;
-        this.mLastCaptureCalculateTS = l1;
-        TXCStatus.a("18446744073709551615", 1001, 2, Double.valueOf(d1));
-      }
+    TRTCCustomTextureUtil localTRTCCustomTextureUtil = this.mCustomVideoUtil;
+    if (localTRTCCustomTextureUtil != null) {
+      TXCStatus.a("18446744073709551615", 1001, 2, Double.valueOf(localTRTCCustomTextureUtil.getCurrentFPS()));
+    }
+    localTRTCCustomTextureUtil = this.mCustomSubStreamVideoUtil;
+    if (localTRTCCustomTextureUtil != null) {
+      TXCStatus.a("18446744073709551615", 1001, 7, Double.valueOf(localTRTCCustomTextureUtil.getCurrentFPS()));
     }
   }
   
   private static TRTCAudioServerConfig createAudioServerConfigFromNative()
   {
     return new TRTCAudioServerConfig();
+  }
+  
+  private com.tencent.liteav.d createCaptureAndEnc(int paramInt)
+  {
+    com.tencent.liteav.d locald = new com.tencent.liteav.d(this.mContext);
+    locald.j(paramInt);
+    locald.a(this.mConfig);
+    locald.j(true);
+    locald.h(true);
+    locald.a(this);
+    locald.a(this);
+    locald.setID("18446744073709551615");
+    locald.i(true);
+    return locald;
   }
   
   private TXCRenderAndDec createRender(long paramLong, int paramInt)
@@ -547,56 +707,84 @@ public class TRTCCloudImpl
   
   private void enableAudioAEC(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (!paramJSONObject.has("enable"))) {
-      apiLog("enableAudioAEC[lack parameter or illegal type]: enable");
+    if ((paramJSONObject != null) && (paramJSONObject.has("enable")))
+    {
+      if (paramJSONObject.getInt("enable") == 0) {
+        this.mEnableSoftAEC = false;
+      } else {
+        this.mEnableSoftAEC = true;
+      }
+      if (paramJSONObject.has("level")) {
+        this.mSoftAECLevel = paramJSONObject.getInt("level");
+      } else {
+        this.mSoftAECLevel = 100;
+      }
+      TXCAudioEngine.getInstance().enableSoftAEC(this.mEnableSoftAEC, this.mSoftAECLevel);
+      return;
     }
-    if (paramJSONObject.getInt("enable") == 0) {
-      this.mEnableSoftAEC = false;
-    } else {
-      this.mEnableSoftAEC = true;
-    }
-    if (paramJSONObject.has("level")) {
-      this.mSoftAECLevel = paramJSONObject.getInt("level");
-    } else {
-      this.mSoftAECLevel = 100;
-    }
-    TXCAudioEngine.getInstance().enableSoftAEC(this.mEnableSoftAEC, this.mSoftAECLevel);
+    apiLog("enableAudioAEC[lack parameter or illegal type]: enable");
   }
   
   private void enableAudioAGC(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (!paramJSONObject.has("enable"))) {
-      apiLog("enableAudioAGC[lack parameter or illegal type]: enable");
+    if ((paramJSONObject != null) && (paramJSONObject.has("enable")))
+    {
+      if (paramJSONObject.getInt("enable") == 0) {
+        this.mEnableSoftAGC = false;
+      } else {
+        this.mEnableSoftAGC = true;
+      }
+      if (paramJSONObject.has("level")) {
+        this.mSoftAGCLevel = paramJSONObject.getInt("level");
+      } else {
+        this.mSoftAGCLevel = 100;
+      }
+      TXCAudioEngine.getInstance().enableSoftAGC(this.mEnableSoftAGC, this.mSoftAGCLevel);
+      return;
     }
-    if (paramJSONObject.getInt("enable") == 0) {
-      this.mEnableSoftAGC = false;
-    } else {
-      this.mEnableSoftAGC = true;
-    }
-    if (paramJSONObject.has("level")) {
-      this.mSoftAGCLevel = paramJSONObject.getInt("level");
-    } else {
-      this.mSoftAGCLevel = 100;
-    }
-    TXCAudioEngine.getInstance().enableSoftAGC(this.mEnableSoftAGC, this.mSoftAGCLevel);
+    apiLog("enableAudioAGC[lack parameter or illegal type]: enable");
   }
   
   private void enableAudioANS(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (!paramJSONObject.has("enable"))) {
-      apiLog("enableAudioANS[lack parameter or illegal type]: enable");
+    if ((paramJSONObject != null) && (paramJSONObject.has("enable")))
+    {
+      if (paramJSONObject.getInt("enable") == 0) {
+        this.mEnableSoftANS = false;
+      } else {
+        this.mEnableSoftANS = true;
+      }
+      if (paramJSONObject.has("level")) {
+        this.mSoftANSLevel = paramJSONObject.getInt("level");
+      } else {
+        this.mSoftANSLevel = 100;
+      }
+      TXCAudioEngine.getInstance().enableSoftANS(this.mEnableSoftANS, this.mSoftANSLevel);
+      return;
     }
-    if (paramJSONObject.getInt("enable") == 0) {
-      this.mEnableSoftANS = false;
-    } else {
-      this.mEnableSoftANS = true;
+    apiLog("enableAudioANS[lack parameter or illegal type]: enable");
+  }
+  
+  private void enableBlackStream(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("enable")))
+    {
+      boolean bool = paramJSONObject.getBoolean("enable");
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("enableBlackStream ");
+      paramJSONObject.append(bool);
+      apiLog(paramJSONObject.toString());
+      enableNetworkBlackStream(bool);
+      paramJSONObject = this.mCaptureAndEnc;
+      if (paramJSONObject != null) {
+        paramJSONObject.c(bool);
+      }
+      if (bool) {
+        addUpstream(2);
+      }
+      return;
     }
-    if (paramJSONObject.has("level")) {
-      this.mSoftANSLevel = paramJSONObject.getInt("level");
-    } else {
-      this.mSoftANSLevel = 100;
-    }
-    TXCAudioEngine.getInstance().enableSoftANS(this.mEnableSoftANS, this.mSoftANSLevel);
+    apiLog("callExperimentalAPI[lack parameter or illegal type]: enable");
   }
   
   private void forceCallbackMixedPlayAudioFrame(JSONObject paramJSONObject)
@@ -622,7 +810,7 @@ public class TRTCCloudImpl
   
   private int getDisplayRotation()
   {
-    int j = this.mDisplay.getRotation();
+    int j = com.tencent.liteav.basic.util.h.g(this.mContext);
     int i = 0;
     if (j != 0)
     {
@@ -645,7 +833,7 @@ public class TRTCCloudImpl
   private CharSequence getDownloadStreamInfo(TXCRenderAndDec paramTXCRenderAndDec, TRTCRoomInfo.UserInfo paramUserInfo)
   {
     String str = String.valueOf(paramUserInfo.tinyID);
-    int[] arrayOfInt = com.tencent.liteav.basic.util.f.a();
+    int[] arrayOfInt = com.tencent.liteav.basic.util.h.a();
     int i = paramTXCRenderAndDec.getStreamType();
     long l = TXCStatus.a(str, 17014, i);
     int j = TXCStatus.c(str, 5003, i);
@@ -664,7 +852,7 @@ public class TRTCCloudImpl
     localStringBuilder.append(String.format(Locale.CHINA, "BIT:%d|%dkbps RES:%dx%d FPS:%d-%d\n", new Object[] { Integer.valueOf(TXCStatus.c(str, 17002, i)), Integer.valueOf(TXCStatus.c(str, 18002)), Integer.valueOf(j >> 16), Integer.valueOf(j & 0xFFFF), Integer.valueOf((int)TXCStatus.d(str, 6002, i)), Integer.valueOf((int)TXCStatus.d(str, 17003, i)) }));
     localStringBuilder.append(String.format(Locale.CHINA, "FEC:%d-%d-%d%%|%d-%d-%d%%    ARQ:%d-%d|%d-%d\n", new Object[] { Integer.valueOf(TXCStatus.c(str, 17007, i)), Integer.valueOf(TXCStatus.c(str, 17005, i)), Integer.valueOf(TXCStatus.c(str, 17006, i)), Integer.valueOf(TXCStatus.c(str, 18009)), Integer.valueOf(TXCStatus.c(str, 18007)), Integer.valueOf(TXCStatus.c(str, 18008)), Integer.valueOf(TXCStatus.c(str, 17009, i)), Integer.valueOf(TXCStatus.c(str, 17008, i)), Integer.valueOf(TXCStatus.c(str, 18012)), Integer.valueOf(TXCStatus.c(str, 18010)) }));
     localStringBuilder.append(String.format(Locale.CHINA, "CPU:%d%%|%d%%  RPS:%d  LFR:%d  DERR:%d\n", new Object[] { Integer.valueOf(arrayOfInt[0] / 10), Integer.valueOf(arrayOfInt[1] / 10), Integer.valueOf(TXCStatus.c(str, 17012, i)), Integer.valueOf(TXCStatus.c(str, 17013, i)), Long.valueOf(l) }));
-    localStringBuilder.append(String.format(Locale.CHINA, "Jitter: %d,%d|%d,%d|%d   ADROP: %d\n", new Object[] { Integer.valueOf(TXCStatus.c(str, 2007)), Integer.valueOf(TXCStatus.c(str, 6010, i)), Integer.valueOf(TXCStatus.c(str, 6011, i)), Integer.valueOf(TXCStatus.c(str, 6012, i)), Integer.valueOf(TXCStatus.c(str, 2021)), Integer.valueOf(TXCStatus.c(str, 18015)) }));
+    localStringBuilder.append(String.format(Locale.CHINA, "Jitter: %d,%d|%d,%d|%d  p2pDelay: %d  ADROP: %d\n", new Object[] { Integer.valueOf(TXCStatus.c(str, 2007)), Integer.valueOf(TXCStatus.c(str, 6104, i)), Integer.valueOf(TXCStatus.c(str, 6105, i)), Integer.valueOf(TXCStatus.c(str, 6106, i)), Integer.valueOf(TXCStatus.c(str, 2021)), Integer.valueOf(TXCStatus.c(str, 18042)), Integer.valueOf(TXCStatus.c(str, 18015)) }));
     localStringBuilder.append(String.format(Locale.CHINA, "QUALITY: %d   LEN: %d\n", new Object[] { Integer.valueOf(TXCStatus.c(str, 18023)), Integer.valueOf(TXCStatus.c(str, 18016)) }));
     paramTXCRenderAndDec = localStringBuilder.toString();
     paramUserInfo = new SpannableString(paramTXCRenderAndDec);
@@ -709,10 +897,11 @@ public class TRTCCloudImpl
     localTRTCLocalStatistics.audioSampleRate = TXCStatus.c("18446744073709551615", 14003);
     localTRTCLocalStatistics.audioBitrate = TXCStatus.c("18446744073709551615", 14002);
     localTRTCLocalStatistics.streamType = translateStreamType(paramInt);
+    localTRTCLocalStatistics.audioCaptureState = translateAudioAbnormalDetectState(TXCStatus.c("18446744073709551615", 14032));
     return localTRTCLocalStatistics;
   }
   
-  private com.tencent.liteav.basic.a.b getPixelFormat(int paramInt)
+  private com.tencent.liteav.basic.b.b getPixelFormat(int paramInt)
   {
     if (paramInt != 1)
     {
@@ -720,16 +909,20 @@ public class TRTCCloudImpl
       {
         if (paramInt != 3)
         {
-          if (paramInt != 4) {
-            return com.tencent.liteav.basic.a.b.a;
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return com.tencent.liteav.basic.b.b.a;
+            }
+            return com.tencent.liteav.basic.b.b.f;
           }
-          return com.tencent.liteav.basic.a.b.e;
+          return com.tencent.liteav.basic.b.b.e;
         }
-        return com.tencent.liteav.basic.a.b.d;
+        return com.tencent.liteav.basic.b.b.d;
       }
-      return com.tencent.liteav.basic.a.b.c;
+      return com.tencent.liteav.basic.b.b.c;
     }
-    return com.tencent.liteav.basic.a.b.b;
+    return com.tencent.liteav.basic.b.b.b;
   }
   
   private String getQosValue(int paramInt)
@@ -769,7 +962,38 @@ public class TRTCCloudImpl
     paramTXCRenderAndDec.audioSampleRate = TXCStatus.c(str, 18003);
     paramTXCRenderAndDec.audioBitrate = TXCStatus.c(str, 18002);
     paramTXCRenderAndDec.jitterBufferDelay = TXCStatus.c(str, 2007);
+    paramTXCRenderAndDec.point2PointDelay = TXCStatus.c(str, 18042);
     paramTXCRenderAndDec.streamType = translateStreamType(m);
+    paramTXCRenderAndDec.audioTotalBlockTime = TXCStatus.c(str, 18031);
+    i = TXCStatus.c(str, 18030);
+    j = 0;
+    double d1;
+    double d2;
+    if (i > 0)
+    {
+      d1 = paramTXCRenderAndDec.audioTotalBlockTime;
+      Double.isNaN(d1);
+      d2 = i;
+      Double.isNaN(d2);
+      i = (int)(d1 * 100.0D / d2 + 0.9D);
+    }
+    else
+    {
+      i = 0;
+    }
+    paramTXCRenderAndDec.audioBlockRate = i;
+    paramTXCRenderAndDec.videoTotalBlockTime = TXCStatus.c(str, 6006, m);
+    k = TXCStatus.c(str, 6012, m);
+    i = j;
+    if (k > 0)
+    {
+      d1 = paramTXCRenderAndDec.videoTotalBlockTime;
+      Double.isNaN(d1);
+      d2 = k;
+      Double.isNaN(d2);
+      i = (int)(d1 * 100.0D / d2 + 0.9D);
+    }
+    paramTXCRenderAndDec.videoBlockRate = i;
     return paramTXCRenderAndDec;
   }
   
@@ -880,76 +1104,88 @@ public class TRTCCloudImpl
   
   private void identifyTRTCFrameworkType()
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      Object localObject = Thread.currentThread().getStackTrace();
+      int i = 0;
+      while (i < localObject.length)
       {
-        localObject = Thread.currentThread().getStackTrace();
-        i = 0;
-        if (i < localObject.length)
+        String str = localObject[i].getClassName();
+        boolean bool = str.contains("TUIKitImpl");
+        if (bool)
         {
-          String str = localObject[i].getClassName();
-          boolean bool = str.contains("TRTCMeetingImpl");
-          if ((!bool) && (!str.contains("TRTCLiveRoomImpl")) && (!str.contains("TRTCAudioCallImpl")) && (!str.contains("TRTCVideoCallImpl")) && (!str.contains("TRTCVoiceRoomImpl")) && (!str.contains("TRTCAVCallImpl")))
-          {
-            if (!str.contains("WXTRTCCloud")) {
-              break label222;
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("identifyTRTCFrameworkType callName:");
-            ((StringBuilder)localObject).append(str);
-            TXCLog.i("TRTCCloudImpl", ((StringBuilder)localObject).toString());
-            this.mFramework = 3;
-            return;
-          }
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("identifyTRTCFrameworkType callName:");
           ((StringBuilder)localObject).append(str);
           TXCLog.i("TRTCCloudImpl", ((StringBuilder)localObject).toString());
-          this.mFramework = 5;
+          this.mFramework = 6;
           return;
         }
-      }
-      catch (Exception localException)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("identifyTRTCFrameworkType catch exception:");
-        ((StringBuilder)localObject).append(localException.getCause());
-        TXCLog.e("TRTCCloudImpl", ((StringBuilder)localObject).toString());
+        if (str.contains("WXTRTCCloud"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("identifyTRTCFrameworkType callName:");
+          ((StringBuilder)localObject).append(str);
+          TXCLog.i("TRTCCloudImpl", ((StringBuilder)localObject).toString());
+          this.mFramework = 3;
+          return;
+        }
+        if (str.contains("TRTCCloudPlugin"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("identifyTRTCFrameworkType callName:");
+          ((StringBuilder)localObject).append(str);
+          TXCLog.i("TRTCCloudImpl", ((StringBuilder)localObject).toString());
+          this.mFramework = 7;
+          return;
+        }
+        if ((str.contains("TRTCMeetingImpl")) || (str.contains("TRTCLiveRoomImpl")) || (str.contains("TRTCAudioCallImpl")) || (str.contains("TRTCVideoCallImpl")) || (str.contains("TRTCVoiceRoomImpl")) || (str.contains("TRTCAVCallImpl")))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("identifyTRTCFrameworkType callName:");
+          localStringBuilder.append(str);
+          TXCLog.i("TRTCCloudImpl", localStringBuilder.toString());
+          this.mFramework = 5;
+        }
+        i += 1;
       }
       return;
-      label222:
-      i += 1;
+    }
+    catch (Exception localException)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("identifyTRTCFrameworkType catch exception:");
+      ((StringBuilder)localObject).append(localException.getCause());
+      TXCLog.e("TRTCCloudImpl", ((StringBuilder)localObject).toString());
     }
   }
   
-  private void init(Context paramContext, Handler arg2)
+  private void init(Context paramContext, com.tencent.liteav.basic.util.f arg2)
   {
     this.mCurrentPublishClouds.put(Integer.valueOf(2), this);
     this.mCurrentPublishClouds.put(Integer.valueOf(3), this);
     this.mCurrentPublishClouds.put(Integer.valueOf(7), this);
     this.mCurrentPublishClouds.put(Integer.valueOf(1), this);
     this.mContext = paramContext.getApplicationContext();
-    this.mConfig = new g();
-    this.mConfig.k = com.tencent.liteav.basic.a.c.e;
+    this.mConfig = new com.tencent.liteav.g();
+    this.mConfig.l = com.tencent.liteav.basic.b.c.e;
     Object localObject = this.mConfig;
-    ((g)localObject).X = 90;
-    ((g)localObject).j = 0;
-    ((g)localObject).P = true;
-    ((g)localObject).h = 15;
-    ((g)localObject).K = false;
-    ((g)localObject).T = false;
-    ((g)localObject).U = false;
-    ((g)localObject).a = 368;
-    ((g)localObject).b = 640;
-    ((g)localObject).c = 750;
-    ((g)localObject).e = 0;
-    ((g)localObject).W = false;
+    ((com.tencent.liteav.g)localObject).Y = 90;
+    ((com.tencent.liteav.g)localObject).k = 0;
+    ((com.tencent.liteav.g)localObject).Q = true;
+    ((com.tencent.liteav.g)localObject).i = 15;
+    ((com.tencent.liteav.g)localObject).L = false;
+    ((com.tencent.liteav.g)localObject).U = false;
+    ((com.tencent.liteav.g)localObject).V = false;
+    ((com.tencent.liteav.g)localObject).a = 368;
+    ((com.tencent.liteav.g)localObject).b = 640;
+    ((com.tencent.liteav.g)localObject).c = 750;
+    ((com.tencent.liteav.g)localObject).e = 0;
+    ((com.tencent.liteav.g)localObject).X = false;
     this.mRoomInfo = new TRTCRoomInfo();
     this.mRoomInfo.bigEncSize.a = 368;
     this.mRoomInfo.bigEncSize.b = 640;
-    this.mMainHandler = new com.tencent.liteav.basic.util.e(paramContext.getMainLooper());
+    this.mMainHandler = new com.tencent.liteav.basic.util.f(paramContext.getMainLooper());
     this.mListenerHandler = new Handler(paramContext.getMainLooper());
     this.mIsSDKThreadAlive = new AtomicBoolean(true);
     if (??? != null)
@@ -960,8 +1196,9 @@ public class TRTCCloudImpl
     {
       ??? = new HandlerThread("TRTCCloudApi");
       ???.start();
-      this.mSDKHandler = new Handler(???.getLooper());
+      this.mSDKHandler = new com.tencent.liteav.basic.util.f(???.getLooper());
     }
+    this.mDeviceManager = new TXDeviceManagerImpl(this.mSDKHandler);
     this.mStatusNotifyTask = new TRTCCloudImpl.StatusTask(this);
     this.mLastSendMsgTimeMs = 0L;
     this.mSendMsgCount = 0;
@@ -971,7 +1208,6 @@ public class TRTCCloudImpl
     this.mQosPreference = 2;
     this.mQosMode = 1;
     this.mOrientationEventListener = new TRTCCloudImpl.DisplayOrientationDetector(this.mContext, this);
-    this.mDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     this.mRenderListenerMap = new HashMap();
     this.mStreamTypes = new HashSet();
     for (;;)
@@ -983,11 +1219,11 @@ public class TRTCCloudImpl
         {
           i = localObject[0];
           if (localObject.length < 2) {
-            break label563;
+            break label564;
           }
           j = localObject[1];
           if (localObject.length < 3) {
-            break label569;
+            break label570;
           }
           k = localObject[2];
           this.mNativeRtcContext = nativeCreateContext(i, j, k);
@@ -995,11 +1231,12 @@ public class TRTCCloudImpl
           this.mRoomState = 0;
           this.mVideoSourceType = TRTCCloudImpl.VideoSourceType.NONE;
           this.mIsAudioCapturing = false;
+          this.mIsVideoCapturing = false;
           this.mCurrentRole = 20;
           this.mTargetRole = 20;
           this.mRecvMode = 1;
-          this.mLatestParamsOfBigEncoder.putInt("config_gop", this.mConfig.i);
-          this.mLatestParamsOfSmallEncoder.putInt("config_gop", this.mConfig.i);
+          this.mLatestParamsOfBigEncoder.putInt("config_gop", this.mConfig.j);
+          this.mLatestParamsOfSmallEncoder.putInt("config_gop", this.mConfig.j);
           identifyTRTCFrameworkType();
           this.mVideoServerConfig = TRTCVideoServerConfig.loadFromSharedPreferences(paramContext);
           return;
@@ -1007,12 +1244,17 @@ public class TRTCCloudImpl
       }
       int i = 0;
       continue;
-      label563:
+      label564:
       int j = 0;
       continue;
-      label569:
+      label570:
       int k = 0;
     }
+  }
+  
+  private boolean isNumericRoom(int paramInt)
+  {
+    return (paramInt != 0) && (paramInt != -1);
   }
   
   private void muteUpstream(int paramInt, boolean paramBoolean)
@@ -1047,27 +1289,41 @@ public class TRTCCloudImpl
   
   private native void nativeRequestKeyFrame(long paramLong1, long paramLong2, int paramInt);
   
-  private native void nativeSendCustomCmdMsg(long paramLong, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  private native void nativeSendCustomCmdMsg(long paramLong, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2);
   
   private native void nativeSendJsonCmd(long paramLong, String paramString1, String paramString2);
   
   private native void nativeSendSEIMsg(long paramLong, byte[] paramArrayOfByte, int paramInt);
   
+  private native void nativeSetAVSyncPlaySources(long paramLong, String paramString1, String paramString2);
+  
+  private native void nativeSetAllowSwitchToHighPerformanceMode(long paramLong, boolean paramBoolean);
+  
   private native void nativeSetAudioEncodeConfiguration(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   private native void nativeSetDataReportDeviceInfo(String paramString1, String paramString2, int paramInt);
   
+  private native void nativeSetEncodedDataProcessingListener(long paramLong1, long paramLong2);
+  
+  private native void nativeSetHeartBeatTimeoutSec(long paramLong, int paramInt);
+  
+  private native void nativeSetNetEnv(long paramLong, int paramInt);
+  
   private native boolean nativeSetSEIPayloadType(long paramLong, int paramInt);
   
-  private native void nativeSetVideoEncoderConfiguration(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7);
+  private native void nativeSetVideoEncoderConfiguration(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, boolean paramBoolean2);
   
   private native void nativeSetVideoQuality(long paramLong, int paramInt1, int paramInt2);
+  
+  private native void nativeStartLocalRecording(long paramLong, TRTCCloudDef.TRTCLocalRecordingParams paramTRTCLocalRecordingParams);
   
   private native void nativeStartPublishCDNStream(long paramLong, TRTCCloudDef.TRTCPublishCDNParam paramTRTCPublishCDNParam);
   
   private native void nativeStartPublishing(long paramLong, String paramString, int paramInt);
   
   private native void nativeStartSpeedTest(long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  private native void nativeStopLocalRecording(long paramLong);
   
   private native void nativeStopPublishCDNStream(long paramLong);
   
@@ -1079,7 +1335,7 @@ public class TRTCCloudImpl
   
   private void notifyCaptureStarted(String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.177(this, paramString));
+    runOnListenerThread(new TRTCCloudImpl.198(this, paramString));
     apiLog(paramString);
   }
   
@@ -1099,7 +1355,7 @@ public class TRTCCloudImpl
       if (paramBundle == null) {
         return;
       }
-      this.mRoomInfo.forEachUser(new TRTCCloudImpl.165(this, paramString, paramInt, paramBundle));
+      this.mRoomInfo.forEachUser(new TRTCCloudImpl.186(this, paramString, paramInt, paramBundle));
     }
   }
   
@@ -1121,7 +1377,17 @@ public class TRTCCloudImpl
   
   private void onAVMemberChange(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    runOnSDKThread(new TRTCCloudImpl.136(this, new WeakReference(this), paramLong, paramString, paramInt3, paramInt2));
+    runOnSDKThread(new TRTCCloudImpl.152(this, new WeakReference(this), paramLong, paramString, paramInt3, paramInt2));
+  }
+  
+  private void onAddUpStream(int paramInt1, String paramString, int paramInt2)
+  {
+    apiOnlineLog("onAddUpStream  streamType:%d, err:%d, msg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString });
+    if ((paramInt2 == 7) && (paramInt1 != 0))
+    {
+      runOnSDKThread(new TRTCCloudImpl.146(this));
+      runOnListenerThread(new TRTCCloudImpl.147(this, paramInt1, paramString));
+    }
   }
   
   private void onCallExperimentalAPI(int paramInt, String paramString)
@@ -1132,86 +1398,55 @@ public class TRTCCloudImpl
     localStringBuilder.append(", ");
     localStringBuilder.append(paramString);
     apiLog(localStringBuilder.toString());
-    runOnListenerThread(new TRTCCloudImpl.131(this));
+    runOnListenerThread(new TRTCCloudImpl.145(this));
   }
   
   private void onChangeRole(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.158(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.176(this, paramInt, paramString));
   }
   
   private void onConnectOtherRoom(String paramString1, int paramInt, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onConnectOtherRoom ");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(", ");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(", ");
-    localStringBuilder.append(paramString2);
-    apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("onConnectOtherRoom userId:%s err:%d, msg:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
-    runOnListenerThread(new TRTCCloudImpl.129(this, paramString1, paramInt, paramString2));
+    apiOnlineLog("onConnectOtherRoom userId:%s err:%d, msg:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    runOnListenerThread(new TRTCCloudImpl.142(this, paramString1, paramInt, paramString2));
   }
   
   private void onConnectionLost()
   {
-    Object localObject = this.mRoomInfo;
-    ((TRTCRoomInfo)localObject).networkStatus = 1;
-    notifyEvent(((TRTCRoomInfo)localObject).getUserId(), 0, "Network anomaly.");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onConnectionLost self:");
-    ((StringBuilder)localObject).append(hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
-    runOnListenerThread(new TRTCCloudImpl.143(this));
+    TRTCRoomInfo localTRTCRoomInfo = this.mRoomInfo;
+    localTRTCRoomInfo.networkStatus = 1;
+    notifyEvent(localTRTCRoomInfo.getUserId(), 0, "Network anomaly.");
+    apiOnlineLog("onConnectionLost");
+    resetFeelingBlockReport();
+    runOnListenerThread(new TRTCCloudImpl.161(this));
   }
   
   private void onConnectionRecovery()
   {
-    Object localObject = this.mRoomInfo;
-    ((TRTCRoomInfo)localObject).networkStatus = 3;
-    notifyEvent(((TRTCRoomInfo)localObject).getUserId(), 0, "Network recovered. Successfully re-enter room");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onConnectionRecovery self:");
-    ((StringBuilder)localObject).append(hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
-    runOnListenerThread(new TRTCCloudImpl.145(this));
+    TRTCRoomInfo localTRTCRoomInfo = this.mRoomInfo;
+    localTRTCRoomInfo.networkStatus = 3;
+    notifyEvent(localTRTCRoomInfo.getUserId(), 0, "Network recovered. Successfully re-enter room");
+    apiOnlineLog("onConnectionRecovery");
+    resetFeelingBlockReport();
+    runOnListenerThread(new TRTCCloudImpl.163(this));
   }
   
   private void onDisConnectOtherRoom(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onDisConnectOtherRoom ");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(", ");
-    localStringBuilder.append(paramString);
-    apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("onDisConnectOtherRoom err:%d, msg:%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
-    runOnListenerThread(new TRTCCloudImpl.130(this, paramInt, paramString));
+    apiOnlineLog("onDisConnectOtherRoom err:%d, msg:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    runOnListenerThread(new TRTCCloudImpl.143(this, paramInt, paramString));
   }
   
   private void onExitRoom(int paramInt, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onExitRoom ");
+    localStringBuilder.append("onExitRoom err:");
     localStringBuilder.append(paramInt);
-    localStringBuilder.append(", ");
+    localStringBuilder.append(", msg:");
     localStringBuilder.append(paramString);
-    apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("onExitRoom err:%d msg:%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
-    runOnSDKThread(new TRTCCloudImpl.127(this, paramInt));
+    apiOnlineLog(localStringBuilder.toString());
+    runOnSDKThread(new TRTCCloudImpl.140(this, paramInt));
   }
   
   private void onKickOut(int paramInt, String paramString)
@@ -1222,7 +1457,22 @@ public class TRTCCloudImpl
     localStringBuilder.append(", ");
     localStringBuilder.append(paramString);
     apiLog(localStringBuilder.toString());
-    runOnSDKThread(new TRTCCloudImpl.128(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.141(this, paramString, paramInt));
+  }
+  
+  private void onLocalRecordBegin(int paramInt, String paramString)
+  {
+    runOnListenerThread(new TRTCCloudImpl.180(this, paramInt, paramString));
+  }
+  
+  private void onLocalRecordComplete(int paramInt, String paramString)
+  {
+    runOnListenerThread(new TRTCCloudImpl.181(this, paramInt, paramString));
+  }
+  
+  private void onLocalRecording(long paramLong, String paramString)
+  {
+    runOnListenerThread(new TRTCCloudImpl.182(this, paramLong, paramString));
   }
   
   private void onNotify(long paramLong, int paramInt1, int paramInt2, String paramString)
@@ -1250,13 +1500,29 @@ public class TRTCCloudImpl
   
   private void onRecvAudioServerConfig(TRTCAudioServerConfig paramTRTCAudioServerConfig)
   {
+    boolean bool2 = true;
     TXCLog.i("TRTCCloudImpl", "on receive audio config: [%s]", new Object[] { paramTRTCAudioServerConfig });
     TRTCAudioServerConfig.saveToSharedPreferences(this.mContext, paramTRTCAudioServerConfig);
     TXCAudioEngine.getInstance().enableAutoRestartDevice(paramTRTCAudioServerConfig.enableAutoRestartDevice);
     TXCAudioEngine.getInstance().setMaxSelectedPlayStreams(paramTRTCAudioServerConfig.maxSelectedPlayStreams);
+    TXCAudioEngine localTXCAudioEngine = TXCAudioEngine.getInstance();
+    boolean bool1;
+    if (paramTRTCAudioServerConfig.enableInbandFEC != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    localTXCAudioEngine.enableInbandFEC(bool1);
+    localTXCAudioEngine = TXCAudioEngine.getInstance();
+    if (paramTRTCAudioServerConfig.enableDeviceAbnormalDetection != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    localTXCAudioEngine.enableDeviceAbnormalDetection(bool1);
   }
   
-  private void onRecvCustomCmdMsg(String paramString1, long paramLong1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean, int paramInt3, long paramLong2)
+  private void onRecvCustomCmdMsg(String paramString, long paramLong1, int paramInt1, int paramInt2, byte[] paramArrayOfByte, boolean paramBoolean, int paramInt3, long paramLong2)
   {
     long l = System.currentTimeMillis();
     this.mRecvCustomCmdMsgCountInPeriod += 1L;
@@ -1268,7 +1534,7 @@ public class TRTCCloudImpl
       localStringBuilder.append(", streamId = ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(", msg = ");
-      localStringBuilder.append(paramString2);
+      localStringBuilder.append(paramArrayOfByte);
       localStringBuilder.append(", recvTime = ");
       localStringBuilder.append(paramLong2);
       localStringBuilder.append(", recvCustomMsgCountInPeriod = ");
@@ -1279,32 +1545,32 @@ public class TRTCCloudImpl
       this.mLastLogCustomCmdMsgTs = l;
       this.mRecvCustomCmdMsgCountInPeriod = 0L;
     }
-    runOnListenerThread(new TRTCCloudImpl.146(this, paramString1, paramInt1, paramInt2, paramString2, paramBoolean, paramInt3));
+    runOnListenerThread(new TRTCCloudImpl.164(this, paramString, paramInt1, paramInt2, paramArrayOfByte, paramBoolean, paramInt3));
   }
   
   private void onRecvEnterRoomVideoConfig(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.162(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.183(this, paramBoolean));
   }
   
   private void onRecvFirstAudio(long paramLong)
   {
-    runOnSDKThread(new TRTCCloudImpl.150(this));
+    runOnSDKThread(new TRTCCloudImpl.168(this));
   }
   
   private void onRecvFirstVideo(long paramLong, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.151(this, paramLong));
+    runOnSDKThread(new TRTCCloudImpl.169(this, paramLong));
   }
   
   private void onRecvSEIMsg(long paramLong, byte[] paramArrayOfByte)
   {
-    runOnListenerThread(new TRTCCloudImpl.147(this, paramLong, paramArrayOfByte));
+    runOnListenerThread(new TRTCCloudImpl.165(this, paramLong, paramArrayOfByte));
   }
   
   private void onRecvVideoServerConfig(TRTCVideoServerConfig paramTRTCVideoServerConfig)
   {
-    runOnSDKThread(new TRTCCloudImpl.161(this, paramTRTCVideoServerConfig));
+    runOnSDKThread(new TRTCCloudImpl.179(this, paramTRTCVideoServerConfig));
   }
   
   private void onRequestAccIP(int paramInt, String paramString, boolean paramBoolean)
@@ -1337,10 +1603,10 @@ public class TRTCCloudImpl
   {
     if (paramInt1 != 0)
     {
-      runOnListenerThread(new TRTCCloudImpl.132(this, paramInt1, paramString));
+      runOnListenerThread(new TRTCCloudImpl.148(this, paramInt1, paramString));
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.133(this, paramInt2, paramLong));
+    runOnSDKThread(new TRTCCloudImpl.149(this, paramInt2, paramLong));
   }
   
   private void onRequestToken(int paramInt, String paramString, long paramLong, byte[] paramArrayOfByte)
@@ -1353,66 +1619,70 @@ public class TRTCCloudImpl
     localStringBuilder.append(", ");
     localStringBuilder.append(paramString);
     apiLog(localStringBuilder.toString());
-    runOnSDKThread(new TRTCCloudImpl.124(this, paramLong, paramArrayOfByte));
+    runOnSDKThread(new TRTCCloudImpl.137(this, paramLong, paramArrayOfByte));
   }
   
   private void onSendCustomCmdMsgResult(int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   private void onSpeedTest(String paramString, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3)
   {
-    runOnListenerThread(new TRTCCloudImpl.148(this, paramString, paramInt1, paramFloat1, paramFloat2, paramInt2, paramInt3));
+    runOnListenerThread(new TRTCCloudImpl.166(this, paramString, paramInt1, paramFloat1, paramFloat2, paramInt2, paramInt3));
   }
   
   private void onStartPublishing(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.152(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.170(this, paramInt, paramString));
   }
   
   private void onStopPublishing(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.153(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.171(this, paramInt, paramString));
   }
   
   private void onStreamPublished(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.154(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.172(this, paramInt, paramString));
   }
   
   private void onStreamUnpublished(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.155(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.173(this, paramInt, paramString));
+  }
+  
+  private void onSwitchRoom(int paramInt, String paramString)
+  {
+    apiOnlineLog(String.format("onSwitchRoom err:%d, msg:%s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    runOnListenerThread(new TRTCCloudImpl.144(this, paramInt, paramString));
   }
   
   private void onTranscodingUpdated(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.156(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.174(this, paramInt, paramString));
   }
   
   private void onTryToReconnect()
   {
-    Object localObject = this.mRoomInfo;
-    ((TRTCRoomInfo)localObject).networkStatus = 2;
-    notifyEvent(((TRTCRoomInfo)localObject).getUserId(), 0, "Retry enter room.");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onTryToReconnect self:");
-    ((StringBuilder)localObject).append(hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
-    runOnListenerThread(new TRTCCloudImpl.144(this));
+    TRTCRoomInfo localTRTCRoomInfo = this.mRoomInfo;
+    localTRTCRoomInfo.networkStatus = 2;
+    notifyEvent(localTRTCRoomInfo.getUserId(), 0, "Retry enter room.");
+    apiOnlineLog("onTryToReconnect");
+    resetFeelingBlockReport();
+    runOnListenerThread(new TRTCCloudImpl.162(this));
   }
   
   private void onVideoBlockThresholdChanged(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.142(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.159(this, paramInt));
   }
   
   private void onWholeMemberEnter(long paramLong, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.137(this, new WeakReference(this), paramString));
+    runOnListenerThread(new TRTCCloudImpl.153(this, new WeakReference(this), paramString));
   }
   
   private void onWholeMemberExit(long paramLong, String paramString, int paramInt)
   {
-    runOnListenerThread(new TRTCCloudImpl.138(this, new WeakReference(this), paramString, paramInt));
+    runOnListenerThread(new TRTCCloudImpl.154(this, new WeakReference(this), paramString, paramInt));
   }
   
   private void pushVideoFrame(TXSNALPacket paramTXSNALPacket)
@@ -1451,6 +1721,11 @@ public class TRTCCloudImpl
     }
   }
   
+  private void resetFeelingBlockReport()
+  {
+    runOnSDKThread(new TRTCCloudImpl.160(this));
+  }
+  
   private void runOnListenerThread(Runnable paramRunnable, int paramInt)
   {
     Handler localHandler = this.mListenerHandler;
@@ -1474,10 +1749,55 @@ public class TRTCCloudImpl
   
   private void runOnSDKThread(Runnable paramRunnable, int paramInt)
   {
-    Handler localHandler = this.mSDKHandler;
-    if (localHandler != null) {
-      localHandler.postDelayed(paramRunnable, paramInt);
+    com.tencent.liteav.basic.util.f localf = this.mSDKHandler;
+    if (localf != null) {
+      localf.postDelayed(paramRunnable, paramInt);
     }
+  }
+  
+  private void runOnSDKThreadAndWaitDone(Runnable paramRunnable, long paramLong)
+  {
+    if (this.mSDKHandler != null)
+    {
+      if (Looper.myLooper() != this.mSDKHandler.getLooper())
+      {
+        this.mSDKHandler.a(paramRunnable, paramLong);
+        return;
+      }
+      paramRunnable.run();
+    }
+  }
+  
+  private void setAVSyncPlaySources(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setAVSyncPlaySources param is null");
+      return;
+    }
+    if (!paramJSONObject.has("audioSourceUserID"))
+    {
+      apiLog("setAVSyncPlaySources[lack parameter]: audioSourceUserID");
+      return;
+    }
+    if (!paramJSONObject.has("videoSourceUserID"))
+    {
+      apiLog("setAVSyncPlaySources[lack parameter]: videoSourceUserID");
+      return;
+    }
+    String str = paramJSONObject.getString("audioSourceUserID");
+    if (str == null)
+    {
+      apiLog("setAVSyncPlaySources[illegal type]: audioSourceUserID");
+      return;
+    }
+    paramJSONObject = paramJSONObject.getString("videoSourceUserID");
+    if (paramJSONObject == null)
+    {
+      apiLog("setAVSyncPlaySources[illegal type]: videoSourceUserID");
+      return;
+    }
+    nativeSetAVSyncPlaySources(this.mNativeRtcContext, str, paramJSONObject);
   }
   
   private void setAudioEncodeConfiguration()
@@ -1509,6 +1829,20 @@ public class TRTCCloudImpl
     apiLog("setAudioSampleRate[lack parameter or illegal type]: sampleRate");
   }
   
+  private void setCustomCaptureGLSyncMode(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("callExperimentalAPI[setCustomCaptureGLMode failed, params is null");
+      return;
+    }
+    this.mCustomCaptureGLSyncMode = paramJSONObject.getInt("mode");
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("setCustomCaptureGLMode: mode:");
+    paramJSONObject.append(this.mCustomCaptureGLSyncMode);
+    apiLog(paramJSONObject.toString());
+  }
+  
   private void setCustomRenderMode(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null)
@@ -1531,6 +1865,36 @@ public class TRTCCloudImpl
     this.mCaptureAndEnc.a(this.mRoomInfo.enableCustomPreprocessor);
   }
   
+  private void setEnableH265Encoder(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setEnableH265Encoder param is null");
+      return;
+    }
+    if (paramJSONObject.has("enable"))
+    {
+      boolean bool = false;
+      int i = paramJSONObject.optInt("enable", 0);
+      paramJSONObject = this.mH265Decision;
+      if (i != 0) {
+        bool = true;
+      }
+      paramJSONObject.setEnableH265EncodeByPrivateAPI(bool);
+      if ((this.mCaptureAndEnc != null) && (this.mAppScene == 1))
+      {
+        bool = this.mH265Decision.isVideoEncoderCodecUsingH265();
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("enableH265 = ");
+        paramJSONObject.append(bool);
+        paramJSONObject.append(" ,mRoomState= ");
+        paramJSONObject.append(this.mRoomState);
+        TXCLog.i("TRTCCloudImpl", paramJSONObject.toString());
+        this.mCaptureAndEnc.k(bool);
+      }
+    }
+  }
+  
   private void setFramework(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null)
@@ -1544,6 +1908,40 @@ public class TRTCCloudImpl
       return;
     }
     this.mFramework = paramJSONObject.getInt("framework");
+  }
+  
+  private void setHeartBeatTimeoutSec(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setHeartBeatTimeoutSec param is null");
+      return;
+    }
+    if (!paramJSONObject.has("timeoutSec"))
+    {
+      apiLog("setHeartBeatTimeoutSec[lack parameter]: timeoutSec");
+      return;
+    }
+    int i = paramJSONObject.optInt("timeoutSec", 0);
+    nativeSetHeartBeatTimeoutSec(this.mNativeRtcContext, i);
+  }
+  
+  private void setKeepAVCaptureOption(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setKeepAVCaptureOption param is null");
+      return;
+    }
+    boolean bool = false;
+    if (paramJSONObject.optInt("keepWhenEnterRoomFailed", 0) != 0) {
+      bool = true;
+    }
+    this.mKeepAVCaptureWhenEnterRoomFailed = bool;
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("setKeepAVCaptureOption ");
+    paramJSONObject.append(this.mKeepAVCaptureWhenEnterRoomFailed);
+    apiLog(paramJSONObject.toString());
   }
   
   private void setLocalAudioMuteMode(JSONObject paramJSONObject)
@@ -1573,8 +1971,8 @@ public class TRTCCloudImpl
     } else {
       localObject1 = null;
     }
-    g localg = this.mConfig;
-    localg.Y = ((JSONArray)localObject1);
+    com.tencent.liteav.g localg = this.mConfig;
+    localg.Z = ((JSONArray)localObject1);
     this.mCaptureAndEnc.a(localg);
     Object localObject1 = localObject2;
     if (paramJSONObject.has("decProperties")) {
@@ -1596,12 +1994,28 @@ public class TRTCCloudImpl
     paramJSONObject.enableRestartDecoder = bool1;
   }
   
+  private void setNetEnv(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setNetEnv param is null");
+      return;
+    }
+    if (!paramJSONObject.has("env"))
+    {
+      apiLog("setNetEnv[lack parameter]: env");
+      return;
+    }
+    int i = paramJSONObject.optInt("env", 0);
+    nativeSetNetEnv(this.mNativeRtcContext, i);
+  }
+  
   private void setOrientation(int paramInt)
   {
     if (paramInt == -1) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.176(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.197(this, paramInt));
   }
   
   private void setQoSParams()
@@ -1623,26 +2037,67 @@ public class TRTCCloudImpl
     }
   }
   
-  private void setVideoEncConfig(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, int paramInt6)
+  private void setRemoteViewMirror(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.mRoomState == 0)
+    runOnSDKThread(new TRTCCloudImpl.40(this, paramString, paramInt1, paramInt2));
+  }
+  
+  private void setStartVideoEncodeCodec()
+  {
+    if (this.mCaptureAndEnc != null)
+    {
+      boolean bool = this.mH265Decision.isVideoEncoderStartCodecUsingH265();
+      this.mCaptureAndEnc.k(bool);
+    }
+  }
+  
+  private void setThreadPriority(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("callExperimentalAPI[setThreadPriority failed, params is null]");
+      return;
+    }
+    paramJSONObject = paramJSONObject.optString("priority", "default");
+    int i = -1;
+    int j = paramJSONObject.hashCode();
+    if (j != 3202466)
+    {
+      if ((j == 1544803905) && (paramJSONObject.equals("default"))) {
+        i = 1;
+      }
+    }
+    else if (paramJSONObject.equals("high")) {
+      i = 0;
+    }
+    if (i != 0) {
+      paramJSONObject = com.tencent.liteav.basic.structs.c.b;
+    } else {
+      paramJSONObject = com.tencent.liteav.basic.structs.c.a;
+    }
+    this.mCaptureAndEnc.a(paramJSONObject);
+  }
+  
+  private void setVideoEncConfig(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, int paramInt6, boolean paramBoolean2)
+  {
+    if (GetPublishingCloudState(paramInt1) == 0)
     {
       apiLog("setVideoEncConfig ignore when no in room");
       return;
     }
     if (this.mCodecType != 2)
     {
-      setVideoEncoderConfiguration(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, 1, paramBoolean, paramInt6);
+      setVideoEncoderConfiguration(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, 1, paramBoolean1, paramInt6, paramBoolean2);
       return;
     }
-    setVideoEncoderConfiguration(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, this.mAppScene, paramBoolean, paramInt6);
+    setVideoEncoderConfiguration(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, this.mAppScene, paramBoolean1, paramInt6, paramBoolean2);
   }
   
-  private void setVideoEncoderConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7)
+  private void setVideoEncoderConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean1, int paramInt7, boolean paramBoolean2)
   {
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mCurrentPublishClouds.get(Integer.valueOf(paramInt1));
     if (localTRTCCloudImpl != null) {
-      nativeSetVideoEncoderConfiguration(localTRTCCloudImpl.getNetworkContext(), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramBoolean, paramInt7);
+      nativeSetVideoEncoderConfiguration(localTRTCCloudImpl.getNetworkContext(), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramBoolean1, paramInt7, paramBoolean2);
     }
   }
   
@@ -1663,14 +2118,14 @@ public class TRTCCloudImpl
         JSONObject localJSONObject = paramJSONObject.optJSONObject("softwareCodecParams");
         if (localJSONObject != null)
         {
-          g localg = this.mConfig;
+          com.tencent.liteav.g localg = this.mConfig;
           if (localJSONObject.optInt("enableRealTime") != 0) {
             bool = true;
           } else {
             bool = false;
           }
-          localg.P = bool;
-          this.mConfig.n = localJSONObject.optInt("profile");
+          localg.Q = bool;
+          this.mConfig.o = localJSONObject.optInt("profile");
         }
       }
     }
@@ -1715,13 +2170,14 @@ public class TRTCCloudImpl
       k = paramJSONObject.optInt("streamType", 0);
       if (k == 0)
       {
+        this.mConfig.h = true;
         this.mLatestParamsOfBigEncoder.putInt("config_fps", n);
         if (i <= j) {
           bool = true;
         } else {
           bool = false;
         }
-        updateBigStreamEncoder(bool, i, j, n, i1, this.mConfig.p, i2);
+        updateBigStreamEncoder(bool, i, j, n, i1, this.mConfig.q, i2, this.mConfig.h);
         this.mCaptureAndEnc.n(i3);
       }
       else if (k == 1)
@@ -1751,33 +2207,16 @@ public class TRTCCloudImpl
     {
       this.mLatestParamsOfBigEncoder.putInt("config_fps", paramTRTCVideoEncParam.videoFps);
       this.mLatestParamsOfBigEncoder.putBoolean("config_adjust_resolution", paramTRTCVideoEncParam.enableAdjustRes);
-      Object localObject = getSizeByResolution(paramTRTCVideoEncParam.videoResolution, paramTRTCVideoEncParam.videoResolutionMode);
+      g.a locala = getSizeByResolution(paramTRTCVideoEncParam.videoResolution, paramTRTCVideoEncParam.videoResolutionMode);
+      this.mConfig.h = true;
       boolean bool;
       if (paramTRTCVideoEncParam.videoResolutionMode == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      updateBigStreamEncoder(bool, ((g.a)localObject).a, ((g.a)localObject).b, paramTRTCVideoEncParam.videoFps, paramTRTCVideoEncParam.videoBitrate, paramTRTCVideoEncParam.enableAdjustRes, paramTRTCVideoEncParam.minVideoBitrate);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("vsize setVideoEncoderParam->width:");
-      ((StringBuilder)localObject).append(this.mRoomInfo.bigEncSize.a);
-      ((StringBuilder)localObject).append(", height:");
-      ((StringBuilder)localObject).append(this.mRoomInfo.bigEncSize.b);
-      ((StringBuilder)localObject).append(", fps:");
-      ((StringBuilder)localObject).append(paramTRTCVideoEncParam.videoFps);
-      ((StringBuilder)localObject).append(", bitrate:");
-      ((StringBuilder)localObject).append(paramTRTCVideoEncParam.videoBitrate);
-      ((StringBuilder)localObject).append(", mode:");
-      ((StringBuilder)localObject).append(paramTRTCVideoEncParam.videoResolutionMode);
-      ((StringBuilder)localObject).append(" minVideoBitrate:");
-      ((StringBuilder)localObject).append(paramTRTCVideoEncParam.minVideoBitrate);
-      apiLog(((StringBuilder)localObject).toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(String.format("setVideoEncoderParam width:%d, height:%d, fps:%d, bitrate:%d, mode:%d, minBitrate:%d", new Object[] { Integer.valueOf(this.mRoomInfo.bigEncSize.a), Integer.valueOf(this.mRoomInfo.bigEncSize.b), Integer.valueOf(paramTRTCVideoEncParam.videoFps), Integer.valueOf(paramTRTCVideoEncParam.videoBitrate), Integer.valueOf(paramTRTCVideoEncParam.videoResolutionMode), Integer.valueOf(paramTRTCVideoEncParam.minVideoBitrate) }));
-      ((StringBuilder)localObject).append(" self:");
-      ((StringBuilder)localObject).append(hashCode());
-      Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
+      updateBigStreamEncoder(bool, locala.a, locala.b, paramTRTCVideoEncParam.videoFps, paramTRTCVideoEncParam.videoBitrate, paramTRTCVideoEncParam.enableAdjustRes, paramTRTCVideoEncParam.minVideoBitrate, this.mConfig.h);
+      apiOnlineLog(String.format("setVideoEncoderParam width:%d, height:%d, fps:%d, bitrate:%d, mode:%d, minBitrate:%d", new Object[] { Integer.valueOf(this.mRoomInfo.bigEncSize.a), Integer.valueOf(this.mRoomInfo.bigEncSize.b), Integer.valueOf(paramTRTCVideoEncParam.videoFps), Integer.valueOf(paramTRTCVideoEncParam.videoBitrate), Integer.valueOf(paramTRTCVideoEncParam.videoResolutionMode), Integer.valueOf(paramTRTCVideoEncParam.minVideoBitrate) }));
       updateOrientation();
       TXCEventRecorderProxy.a("18446744073709551615", 4007, this.mRoomInfo.bigEncSize.a, this.mRoomInfo.bigEncSize.b, "", 2);
       TXCEventRecorderProxy.a("18446744073709551615", 4008, paramTRTCVideoEncParam.videoFps, -1L, "", 2);
@@ -1842,6 +2281,24 @@ public class TRTCCloudImpl
     paramTXCRenderAndDec.startVideo();
   }
   
+  private void stopLocalAudioInternal()
+  {
+    if (!this.mIsAudioCapturing)
+    {
+      apiLog("stopLocalAudio when no capturing audio, ignore!!!");
+      return;
+    }
+    apiOnlineLog("stopLocalAudio");
+    TXCEventRecorderProxy.a("18446744073709551615", 3001, 2L, -1L, "", 0);
+    this.mIsAudioCapturing = false;
+    TXCAudioEngine.getInstance().stopLocalAudio();
+    if (!this.mEnableCustomAudioCapture) {
+      enableAudioStream(false);
+    }
+    TXCKeyPointReportProxy.a(40050, 0, 1);
+    TXCLog.i("TRTCCloudImpl", "(%d)stopLocalAudioInternal end", new Object[] { Integer.valueOf(hashCode()) });
+  }
+  
   private void stopRemoteMainRender(TRTCRoomInfo.UserInfo paramUserInfo, Boolean paramBoolean)
   {
     if (paramUserInfo == null) {
@@ -1867,6 +2324,20 @@ public class TRTCCloudImpl
     }
   }
   
+  private int translateAudioAbnormalDetectState(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0) {
+      return 1;
+    }
+    if ((paramInt & 0x2) != 0) {
+      return 2;
+    }
+    if ((paramInt & 0x4) != 0) {
+      return 3;
+    }
+    return 0;
+  }
+  
   private int translateStreamType(int paramInt)
   {
     if (paramInt != 2)
@@ -1883,9 +2354,9 @@ public class TRTCCloudImpl
     return 0;
   }
   
-  private void updateBigStreamEncoder(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, int paramInt5)
+  private void updateBigStreamEncoder(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, int paramInt5, boolean paramBoolean3)
   {
-    g localg;
+    com.tencent.liteav.g localg;
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       this.mRoomInfo.bigEncSize.a = paramInt1;
@@ -1893,35 +2364,35 @@ public class TRTCCloudImpl
       if (this.mVideoSourceType == TRTCCloudImpl.VideoSourceType.SCREEN)
       {
         localg = this.mConfig;
-        localg.l = 1;
+        localg.m = 1;
         localg.a = this.mRoomInfo.bigEncSize.a;
         this.mConfig.b = this.mRoomInfo.bigEncSize.b;
       }
       else if (paramBoolean1)
       {
         localg = this.mConfig;
-        localg.l = 1;
+        localg.m = 1;
         localg.a = this.mRoomInfo.bigEncSize.a;
         this.mConfig.b = this.mRoomInfo.bigEncSize.b;
       }
       else
       {
         localg = this.mConfig;
-        localg.l = 0;
+        localg.m = 0;
         localg.a = this.mRoomInfo.bigEncSize.b;
         this.mConfig.b = this.mRoomInfo.bigEncSize.a;
       }
-      this.mConfig.k = com.tencent.liteav.basic.a.c.a;
+      this.mConfig.l = com.tencent.liteav.basic.b.c.a;
     }
     if (paramInt3 > 0) {
       if (paramInt3 > 30)
       {
         apiLog("setVideoEncoderParam fps > 30, limit fps to 30");
-        this.mConfig.h = 30;
+        this.mConfig.i = 30;
       }
       else
       {
-        this.mConfig.h = paramInt3;
+        this.mConfig.i = paramInt3;
       }
     }
     if (paramInt4 > 0) {
@@ -1933,21 +2404,21 @@ public class TRTCCloudImpl
     if (this.mVideoSourceType == TRTCCloudImpl.VideoSourceType.SCREEN)
     {
       localg = this.mConfig;
-      localg.i = 3;
-      localg.p = false;
+      localg.j = 3;
+      localg.q = false;
       if (this.mOverrideFPSFromUser) {
-        localg.h = 10;
+        localg.i = 10;
       }
     }
     else
     {
-      this.mConfig.p = paramBoolean2;
+      this.mConfig.q = paramBoolean2;
     }
-    setVideoEncConfig(2, this.mRoomInfo.bigEncSize.a, this.mRoomInfo.bigEncSize.b, this.mConfig.h, this.mConfig.c, this.mConfig.p, this.mConfig.e);
+    setVideoEncConfig(2, this.mRoomInfo.bigEncSize.a, this.mRoomInfo.bigEncSize.b, this.mConfig.i, this.mConfig.c, this.mConfig.q, this.mConfig.e, paramBoolean3);
     if ((this.mCodecType == 2) && (this.mConfig.a * this.mConfig.b >= 518400)) {
-      this.mConfig.j = 1;
+      this.mConfig.k = 1;
     }
-    this.mCaptureAndEnc.e(this.mConfig.h);
+    this.mCaptureAndEnc.e(this.mConfig.i);
     this.mCaptureAndEnc.a(this.mConfig);
   }
   
@@ -1957,11 +2428,11 @@ public class TRTCCloudImpl
     if ((i != 0) && (i != 1))
     {
       if (this.mAppScene == 1) {
-        this.mConfig.j = 1;
+        this.mConfig.k = 1;
       }
     }
     else {
-      this.mConfig.j = this.mCodecType;
+      this.mConfig.k = this.mCodecType;
     }
   }
   
@@ -1973,7 +2444,7 @@ public class TRTCCloudImpl
         return;
       }
       if (this.mCurrentOrientation == -1) {
-        if (this.mDisplay.getRotation() == 1) {
+        if (com.tencent.liteav.basic.util.h.g(this.mContext) == 1) {
           this.mCurrentOrientation = 0;
         } else {
           this.mCurrentOrientation = 1;
@@ -2007,7 +2478,7 @@ public class TRTCCloudImpl
     if (paramInt5 >= 0) {
       this.mSmallEncParam.minVideoBitrate = paramInt5;
     }
-    paramInt1 = this.mConfig.i;
+    paramInt1 = this.mConfig.j;
     if (this.mVideoSourceType == TRTCCloudImpl.VideoSourceType.SCREEN)
     {
       TRTCCloudDef.TRTCVideoEncParam localTRTCVideoEncParam = this.mSmallEncParam;
@@ -2018,17 +2489,17 @@ public class TRTCCloudImpl
       paramInt1 = 3;
     }
     this.mCaptureAndEnc.a(this.mEnableSmallStream, this.mRoomInfo.smallEncSize.a, this.mRoomInfo.smallEncSize.b, this.mSmallEncParam.videoFps, this.mSmallEncParam.videoBitrate, paramInt1);
-    setVideoEncConfig(3, this.mRoomInfo.smallEncSize.a, this.mRoomInfo.smallEncSize.b, this.mSmallEncParam.videoFps, this.mSmallEncParam.videoBitrate, this.mConfig.p, this.mSmallEncParam.minVideoBitrate);
+    setVideoEncConfig(3, this.mRoomInfo.smallEncSize.a, this.mRoomInfo.smallEncSize.b, this.mSmallEncParam.videoFps, this.mSmallEncParam.videoBitrate, this.mConfig.q, this.mSmallEncParam.minVideoBitrate, false);
   }
   
   public void ConnectOtherRoom(String paramString)
   {
-    runOnSDKThread(new TRTCCloudImpl.8(this, paramString));
+    runOnSDKThread(new TRTCCloudImpl.11(this, paramString));
   }
   
   public void DisconnectOtherRoom()
   {
-    runOnSDKThread(new TRTCCloudImpl.9(this));
+    runOnSDKThread(new TRTCCloudImpl.12(this));
   }
   
   protected void apiLog(String paramString)
@@ -2041,28 +2512,106 @@ public class TRTCCloudImpl
     TXCLog.i("TRTCCloudImpl", localStringBuilder.toString());
   }
   
+  protected void apiLog(String paramString, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(")trtc_api ");
+    localStringBuilder.append(String.format(paramString, paramVarArgs));
+    TXCLog.i("TRTCCloudImpl", localStringBuilder.toString());
+  }
+  
+  protected void apiOnlineLog(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("(");
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(")trtc_api");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" self:");
+    localStringBuilder.append(hashCode());
+    Monitor.a(1, localStringBuilder.toString(), "", 0, (String)localObject);
+  }
+  
+  protected void apiOnlineLog(String paramString, Object... paramVarArgs)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("(");
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(")trtc_api");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.format(paramString, paramVarArgs));
+    localStringBuilder.append(" self:");
+    localStringBuilder.append(hashCode());
+    Monitor.a(1, localStringBuilder.toString(), "", 0, (String)localObject);
+  }
+  
   public void callExperimentalAPI(String paramString)
   {
     if (paramString != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("callExperimentalAPI  ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(", roomid = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("callExperimentalAPI  ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", roomid = ");
       if (this.mRoomInfo.roomId != -1L) {
-        localObject = Long.valueOf(this.mRoomInfo.roomId);
+        localObject1 = Long.valueOf(this.mRoomInfo.roomId);
       } else {
-        localObject = this.mRoomInfo.strRoomId;
+        localObject1 = this.mRoomInfo.strRoomId;
       }
-      localStringBuilder.append(localObject);
-      apiLog(localStringBuilder.toString());
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(String.format("callExperimentalAPI:%s", new Object[] { paramString }));
-      ((StringBuilder)localObject).append(" self:");
-      ((StringBuilder)localObject).append(hashCode());
-      Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
+      ((StringBuilder)localObject2).append(localObject1);
+      apiOnlineLog(((StringBuilder)localObject2).toString());
     }
-    runOnSDKThread(new TRTCCloudImpl.80(this, paramString));
+    Object localObject2 = "";
+    Object localObject3 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      Object localObject4 = new JSONObject(paramString);
+      localObject1 = localObject2;
+      if (!((JSONObject)localObject4).has("api"))
+      {
+        localObject1 = localObject2;
+        localObject4 = new StringBuilder();
+        localObject1 = localObject2;
+        ((StringBuilder)localObject4).append("callExperimentalAPI[lack api or illegal type]: ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject4).append(paramString);
+        localObject1 = localObject2;
+        apiLog(((StringBuilder)localObject4).toString());
+        return;
+      }
+      localObject1 = localObject2;
+      localObject2 = ((JSONObject)localObject4).getString("api");
+      localObject1 = localObject2;
+      if (!((JSONObject)localObject4).has("params")) {
+        return;
+      }
+      localObject1 = localObject2;
+      localObject4 = ((JSONObject)localObject4).getJSONObject("params");
+      localObject1 = localObject2;
+      localObject2 = localObject4;
+    }
+    catch (Exception localException)
+    {
+      label204:
+      break label204;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("callExperimentalAPI[failed]: ");
+    ((StringBuilder)localObject2).append(paramString);
+    apiLog(((StringBuilder)localObject2).toString());
+    localObject2 = localObject3;
+    if (((String)localObject1).equals("setEncodedDataProcessingListener"))
+    {
+      setEncodedDataProcessingListener((JSONObject)localObject2);
+      return;
+    }
+    runOnSDKThread(new TRTCCloudImpl.88(this, (String)localObject1, (JSONObject)localObject2, paramString));
   }
   
   protected void checkDashBoard()
@@ -2079,10 +2628,10 @@ public class TRTCCloudImpl
         localStringBuilder.append(" self:");
         localStringBuilder.append(hashCode());
         TXCLog.i("TRTCCloudImpl", localStringBuilder.toString());
-        runOnMainThread(new TRTCCloudImpl.172(this, localTXCloudVideoView, localCharSequence));
+        runOnMainThread(new TRTCCloudImpl.193(this, localTXCloudVideoView, localCharSequence));
       }
     }
-    this.mRoomInfo.forEachUser(new TRTCCloudImpl.173(this));
+    this.mRoomInfo.forEachUser(new TRTCCloudImpl.194(this));
   }
   
   protected void checkRemoteDashBoard(TXCloudVideoView paramTXCloudVideoView, TXCRenderAndDec paramTXCRenderAndDec, TRTCRoomInfo.UserInfo paramUserInfo)
@@ -2096,14 +2645,14 @@ public class TRTCCloudImpl
       paramUserInfo.append(" self:");
       paramUserInfo.append(hashCode());
       TXCLog.i("TRTCCloudImpl", paramUserInfo.toString());
-      runOnMainThread(new TRTCCloudImpl.171(this, paramTXCloudVideoView, paramTXCRenderAndDec));
+      runOnMainThread(new TRTCCloudImpl.192(this, paramTXCloudVideoView, paramTXCRenderAndDec));
     }
   }
   
   protected void checkUserState(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    Object localObject = this.mTRTCListener;
-    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    Object localObject1 = this.mTRTCListener;
+    if ((localObject1 != null) && (!TextUtils.isEmpty(paramString)))
     {
       boolean bool1;
       if ((TRTCRoomInfo.hasAudio(paramInt1)) && (!TRTCRoomInfo.isMuteAudio(paramInt1))) {
@@ -2123,16 +2672,16 @@ public class TRTCCloudImpl
       } else {
         i = 0;
       }
-      StringBuilder localStringBuilder;
+      Object localObject2;
       if (i != 0)
       {
-        runOnListenerThread(new TRTCCloudImpl.168(this, (TRTCCloudListener)localObject, paramString, bool1));
+        runOnListenerThread(new TRTCCloudImpl.189(this, (TRTCCloudListener)localObject1, paramString, bool1));
         appendDashboardLog(this.mRoomInfo.getUserId(), 0, String.format("[%s]audio Available[%b]", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(String.format("onUserAudioAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        localStringBuilder.append(" self:");
-        localStringBuilder.append(hashCode());
-        Monitor.a(2, localStringBuilder.toString(), "", 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(String.format("onUserAudioAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
+        ((StringBuilder)localObject2).append(" self:");
+        ((StringBuilder)localObject2).append(hashCode());
+        Monitor.a(2, ((StringBuilder)localObject2).toString(), "", 0);
       }
       if (((TRTCRoomInfo.hasMainVideo(paramInt1)) || (TRTCRoomInfo.hasSmallVideo(paramInt1))) && (!TRTCRoomInfo.isMuteMainVideo(paramInt1))) {
         bool1 = true;
@@ -2155,15 +2704,24 @@ public class TRTCCloudImpl
       } else {
         j = 0;
       }
+      if (i != 0)
+      {
+        localObject2 = this.mRoomInfo.getUser(paramString);
+        if ((localObject2 != null) && (((TRTCRoomInfo.UserInfo)localObject2).mainRender.render != null))
+        {
+          ((TRTCRoomInfo.UserInfo)localObject2).mainRender.render.resetPeriodStatistics();
+          ((TRTCRoomInfo.UserInfo)localObject2).mainRender.render.enableReport(bool1);
+        }
+      }
       if ((i != 0) && ((this.mRoomInfo.hasRecvFirstIFrame(paramLong)) || (j != 0)))
       {
-        runOnListenerThread(new TRTCCloudImpl.169(this, (TRTCCloudListener)localObject, paramString, bool1));
+        runOnListenerThread(new TRTCCloudImpl.190(this, (TRTCCloudListener)localObject1, paramString, bool1));
         appendDashboardLog(this.mRoomInfo.getUserId(), 0, String.format("[%s]video Available[%b]", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(String.format("onUserVideoAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        localStringBuilder.append(" self:");
-        localStringBuilder.append(hashCode());
-        Monitor.a(2, localStringBuilder.toString(), "", 0);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(String.format("onUserVideoAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
+        ((StringBuilder)localObject2).append(" self:");
+        ((StringBuilder)localObject2).append(hashCode());
+        Monitor.a(2, ((StringBuilder)localObject2).toString(), "", 0);
       }
       if ((TRTCRoomInfo.hasSubVideo(paramInt1)) && (!TRTCRoomInfo.isMuteSubVideo(paramInt1))) {
         bool1 = true;
@@ -2182,38 +2740,51 @@ public class TRTCCloudImpl
       }
       if (paramInt1 != 0)
       {
-        runOnListenerThread(new TRTCCloudImpl.170(this, (TRTCCloudListener)localObject, paramString, bool1));
+        localObject2 = this.mRoomInfo.getUser(paramString);
+        if ((localObject2 != null) && (((TRTCRoomInfo.UserInfo)localObject2).subRender.render != null))
+        {
+          ((TRTCRoomInfo.UserInfo)localObject2).subRender.render.resetPeriodStatistics();
+          ((TRTCRoomInfo.UserInfo)localObject2).subRender.render.enableReport(bool1);
+        }
+        runOnListenerThread(new TRTCCloudImpl.191(this, (TRTCCloudListener)localObject1, paramString, bool1));
         appendDashboardLog(this.mRoomInfo.getUserId(), 0, String.format("[%s]subVideo Available[%b]", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(String.format("onUserSubStreamAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
-        ((StringBuilder)localObject).append(" self:");
-        ((StringBuilder)localObject).append(hashCode());
-        Monitor.a(2, ((StringBuilder)localObject).toString(), "", 0);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(String.format("onUserSubStreamAvailable userID:%s, bAvailable:%b", new Object[] { paramString, Boolean.valueOf(bool1) }));
+        ((StringBuilder)localObject1).append(" self:");
+        ((StringBuilder)localObject1).append(hashCode());
+        Monitor.a(2, ((StringBuilder)localObject1).toString(), "", 0);
       }
     }
+  }
+  
+  protected void clearRemoteMuteStates()
+  {
+    this.mRoomInfo.muteRemoteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+    this.mRoomInfo.muteRemoteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+    this.mRoomInfo.forEachUser(new TRTCCloudImpl.9(this));
   }
   
   public TRTCCloud createSubCloud()
   {
     TRTCSubCloud localTRTCSubCloud = new TRTCSubCloud(this.mContext, new WeakReference(this), this.mSDKHandler);
     localTRTCSubCloud.setListenerHandler(this.mListenerHandler);
-    runOnSDKThread(new TRTCCloudImpl.12(this, localTRTCSubCloud));
+    runOnSDKThread(new TRTCCloudImpl.15(this, localTRTCSubCloud));
     return localTRTCSubCloud;
   }
   
   public void destroy()
   {
-    runOnSDKThread(new TRTCCloudImpl.2(this));
+    runOnSDKThread(new TRTCCloudImpl.4(this));
   }
   
   public void destroySubCloud(TRTCCloud paramTRTCCloud)
   {
-    runOnSDKThread(new TRTCCloudImpl.13(this, paramTRTCCloud));
+    runOnSDKThread(new TRTCCloudImpl.16(this, paramTRTCCloud));
   }
   
   public void enableAudioEarMonitoring(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.56(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.60(this, paramBoolean));
   }
   
   protected void enableAudioStream(boolean paramBoolean)
@@ -2228,23 +2799,63 @@ public class TRTCCloudImpl
   
   public void enableAudioVolumeEvaluation(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.61(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.65(this, paramInt));
   }
   
   public void enableCustomAudioCapture(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.83(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.92(this, paramBoolean));
+  }
+  
+  public void enableCustomVideoCapture(int paramInt, boolean paramBoolean)
+  {
+    runOnSDKThread(new TRTCCloudImpl.82(this, paramInt, paramBoolean));
   }
   
   public void enableCustomVideoCapture(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.79(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.83(this, paramBoolean));
   }
   
   public int enableEncSmallVideoStream(boolean paramBoolean, TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam)
   {
-    runOnSDKThread(new TRTCCloudImpl.41(this, paramBoolean, paramTRTCVideoEncParam));
+    runOnSDKThread(new TRTCCloudImpl.47(this, paramBoolean, paramTRTCVideoEncParam));
     return 0;
+  }
+  
+  public void enableMixExternalAudioFrame(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i;
+    if (paramBoolean1)
+    {
+      if (this.mPublishAudioTunnelId < 0) {
+        this.mPublishAudioTunnelId = TXCAudioEngineJNI.nativeOpenAudioTunnel(true);
+      }
+    }
+    else
+    {
+      i = this.mPublishAudioTunnelId;
+      if (i >= 0)
+      {
+        TXCAudioEngineJNI.nativeCloseAudioTunnel(i);
+        this.mPublishAudioTunnelId = -1;
+      }
+    }
+    if (paramBoolean2)
+    {
+      if (this.mPlayoutAudioTunnelId < 0) {
+        this.mPlayoutAudioTunnelId = TXCAudioEngineJNI.nativeOpenAudioTunnel(false);
+      }
+    }
+    else
+    {
+      i = this.mPlayoutAudioTunnelId;
+      if (i >= 0)
+      {
+        TXCAudioEngineJNI.nativeCloseAudioTunnel(i);
+        this.mPlayoutAudioTunnelId = -1;
+      }
+    }
   }
   
   public void enableNetworkBlackStream(boolean paramBoolean)
@@ -2265,28 +2876,21 @@ public class TRTCCloudImpl
   
   public boolean enableTorch(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("enableTorch ");
-    localStringBuilder.append(paramBoolean);
-    apiLog(localStringBuilder.toString());
-    return this.mCaptureAndEnc.e(paramBoolean);
+    return this.mDeviceManager.enableCameraTorch(paramBoolean);
   }
   
   protected void enableVideoStream(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (!this.mRoomInfo.muteLocalVideo)
-      {
-        addUpStreamType(2);
-        if (this.mEnableSmallStream) {
-          addUpStreamType(3);
-        }
+      addUpStreamType(2);
+      if (this.mEnableSmallStream) {
+        addUpStreamType(3);
       }
     }
     else
     {
-      if (!this.mCaptureAndEnc.i()) {
+      if (!this.mCaptureAndEnc.j()) {
         removeUpStreamType(2);
       }
       removeUpStreamType(3);
@@ -2302,67 +2906,75 @@ public class TRTCCloudImpl
       return;
     }
     TRTCCloudDef.TRTCParams localTRTCParams = new TRTCCloudDef.TRTCParams(paramTRTCParams);
-    long l1;
-    String str2;
+    long l;
     if ((localTRTCParams.sdkAppId != 0) && (!TextUtils.isEmpty(localTRTCParams.userId)) && (!TextUtils.isEmpty(localTRTCParams.userSig)))
     {
-      l1 = localTRTCParams.roomId & 0xFFFFFFFF;
-      if (l1 == 0L)
+      l = localTRTCParams.roomId & 0xFFFFFFFF;
+      localObject1 = localTRTCParams.businessInfo;
+      if ((l != 0L) && ((localTRTCParams.roomId != -1) || (TextUtils.isEmpty((CharSequence)localObject1))))
       {
-        paramTRTCParams = new StringBuilder();
-        paramTRTCParams.append("enter room, room id ");
-        paramTRTCParams.append(l1);
-        paramTRTCParams.append(" error");
-        apiLog(paramTRTCParams.toString());
-        onEnterRoom(-3318, "room id invalid.");
-        return;
+        paramTRTCParams = "";
+        localObject2 = localObject1;
       }
-      paramTRTCParams = localTRTCParams.businessInfo;
-      i = localTRTCParams.roomId;
-      str2 = "";
-      if ((i != -1) || (TextUtils.isEmpty(paramTRTCParams))) {}
+      else
+      {
+        if (l == 0L) {
+          paramTRTCParams = localTRTCParams.strRoomId;
+        } else {
+          paramTRTCParams = "";
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+      }
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramTRTCParams);
-      paramTRTCParams = new StringBuilder("");
-      extractBizInfo(localJSONObject, "strGroupId", paramTRTCParams);
-      String str3 = paramTRTCParams.toString();
-      str1 = str3;
-      paramTRTCParams = str2;
-      if (localJSONObject.length() == 0) {
-        break label270;
+      localObject2 = new JSONObject((String)localObject1);
+      localObject1 = new StringBuilder("");
+      extractBizInfo((JSONObject)localObject2, "strGroupId", (StringBuilder)localObject1);
+      if (localTRTCParams.roomId != -1) {
+        break label441;
       }
-      paramTRTCParams = localJSONObject.toString();
-      str1 = str3;
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     catch (Exception paramTRTCParams)
     {
-      String str1;
-      label228:
-      long l2;
-      break label228;
+      for (;;)
+      {
+        label282:
+        int i;
+        continue;
+        localObject1 = paramTRTCParams;
+      }
     }
-    paramTRTCParams = new StringBuilder();
-    paramTRTCParams.append("enter room, room id error, busInfo ");
-    paramTRTCParams.append(localTRTCParams.businessInfo);
-    apiLog(paramTRTCParams.toString());
-    str1 = "";
-    paramTRTCParams = str2;
-    label270:
-    if (TextUtils.isEmpty(str1))
+    if (((JSONObject)localObject2).length() != 0)
+    {
+      paramTRTCParams = ((JSONObject)localObject2).toString();
+    }
+    else
+    {
+      paramTRTCParams = "";
+      break label282;
+      paramTRTCParams = new StringBuilder();
+      paramTRTCParams.append("enter room, room id error, busInfo ");
+      paramTRTCParams.append(localTRTCParams.businessInfo);
+      apiLog(paramTRTCParams.toString());
+      localObject1 = "";
+      paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject1;
+      break label282;
+      localObject2 = localObject1;
+      localObject1 = paramTRTCParams;
+      paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject2;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       onEnterRoom(-3318, "room id invalid.");
       return;
     }
-    break label297;
-    str1 = "";
-    label297:
+    Object localObject2 = paramTRTCParams;
+    paramTRTCParams = (TRTCCloudDef.TRTCParams)localObject1;
     TXCKeyPointReportProxy.a(30001);
-    int i = localTRTCParams.role;
-    l2 = System.currentTimeMillis();
-    this.mEnableHighQualityEncodeFromServer = false;
-    runOnSDKThread(new TRTCCloudImpl.5(this, localTRTCParams, str1, l1, l2, paramInt, paramTRTCParams, i, this));
+    i = localTRTCParams.role;
+    runOnSDKThread(new TRTCCloudImpl.7(this, localTRTCParams, paramTRTCParams, l, System.currentTimeMillis(), paramInt, (String)localObject2, i, this));
     return;
     paramTRTCParams = new StringBuilder();
     paramTRTCParams.append("enterRoom param invalid:");
@@ -2381,27 +2993,29 @@ public class TRTCCloudImpl
   
   public void exitRoom()
   {
-    runOnSDKThread(new TRTCCloudImpl.6(this));
+    runOnSDKThreadAndWaitDone(new TRTCCloudImpl.8(this), TimeUnit.SECONDS.toMillis(2L));
   }
   
   protected void exitRoomInternal(boolean paramBoolean, String paramString)
   {
-    this.mEnableHighQualityEncodeFromServer = false;
+    this.mH265Decision.setEnableH265EncodeByServer(false);
+    this.mH265Decision.setEnableH265EncodeByPrivateAPI(false);
     paramString = String.format(Locale.ENGLISH, "exitRoom %s, self: %d, reason: %s", new Object[] { Long.valueOf(this.mRoomInfo.getRoomId()), Integer.valueOf(hashCode()), paramString });
-    apiLog(paramString);
+    apiOnlineLog(paramString);
     Monitor.a(1, paramString, "", 0);
-    if (this.mRoomState == 0)
+    if ((this.mRoomState == 0) && (!this.mKeepAVCaptureWhenEnterRoomFailed))
     {
+      clearRemoteMuteStates();
       Monitor.a();
       apiLog("exitRoom ignore when no in room.");
       return;
     }
     this.mRoomState = 0;
-    this.mCaptureAndEnc.f();
+    this.mCaptureAndEnc.g();
     TXCSoundEffectPlayer.getInstance().stopAllEffect();
     stopCollectStatus();
     startVolumeLevelCal(false);
-    this.mRoomInfo.forEachUser(new TRTCCloudImpl.7(this));
+    this.mRoomInfo.forEachUser(new TRTCCloudImpl.10(this));
     TXCAudioEngine.getInstance();
     TXCAudioEngine.setPlayoutDataListener(null);
     enableVideoStream(false);
@@ -2410,21 +3024,22 @@ public class TRTCCloudImpl
       nativeExitRoom(this.mNativeRtcContext);
     }
     enableAudioEarMonitoring(false);
-    stopLocalAudio();
+    stopLocalAudioInternal();
     stopBGM();
     TXCKeyPointReportProxy.a(31004);
     stopLocalPreview();
     stopScreenCapture();
     TXCKeyPointReportProxy.b(31004, 0);
     paramString = this.mConfig;
-    paramString.A = null;
-    paramString.C = 10;
+    paramString.B = null;
+    paramString.D = 10;
     this.mRoomInfo.clear();
     this.mRenderListenerMap.clear();
     this.mVideoSourceType = TRTCCloudImpl.VideoSourceType.NONE;
     this.mEnableSmallStream = false;
     this.mEnableEosMode = false;
     this.mCodecType = 2;
+    this.mRoomType = 0;
     this.mEnableSoftAEC = true;
     this.mEnableSoftANS = false;
     this.mEnableSoftAGC = false;
@@ -2432,21 +3047,15 @@ public class TRTCCloudImpl
     TXCAudioEngine.getInstance().muteLocalAudio(false);
     TXCAudioEngine.getInstance().clean();
     enableCustomAudioCapture(false);
-    this.mEnableCustomAudioCapture = false;
-    try
-    {
-      if (this.mCustomVideoUtil != null)
-      {
-        this.mCustomVideoUtil.release();
-        this.mCustomVideoUtil = null;
-      }
-      this.mCaptureAndEnc.a(null, 0);
-      stopAudioRecording();
-      TXCSoundEffectPlayer.getInstance().clearCache();
-      Monitor.a();
-      return;
-    }
-    finally {}
+    enableMixExternalAudioFrame(false, false);
+    enableCustomVideoCapture(0, false);
+    enableCustomVideoCapture(2, false);
+    this.mCaptureAndEnc.a(null, 0);
+    stopAudioRecording();
+    stopLocalRecording();
+    TXCSoundEffectPlayer.getInstance().clearCache();
+    Monitor.a();
+    TXCLog.i("TRTCCloudImpl", "(%d) exitRoomInternal end", new Object[] { Integer.valueOf(hashCode()) });
   }
   
   void extractBizInfo(JSONObject paramJSONObject, String paramString, StringBuilder paramStringBuilder)
@@ -2474,6 +3083,26 @@ public class TRTCCloudImpl
       return;
     }
     catch (Exception|Error localException) {}
+  }
+  
+  public void flushBigVideoEncParamsIntoNetwork()
+  {
+    setVideoEncConfig(2, this.mRoomInfo.bigEncSize.a, this.mRoomInfo.bigEncSize.b, this.mConfig.i, this.mConfig.c, this.mConfig.q, this.mConfig.e, this.mConfig.h);
+  }
+  
+  public void flushSmallVideoEncParamsIntoNetwork()
+  {
+    if (this.mEnableSmallStream)
+    {
+      setVideoEncConfig(3, this.mRoomInfo.smallEncSize.a, this.mRoomInfo.smallEncSize.b, this.mSmallEncParam.videoFps, this.mSmallEncParam.videoBitrate, this.mConfig.q, this.mSmallEncParam.minVideoBitrate, this.mConfig.h);
+      return;
+    }
+    setVideoEncoderConfiguration(3, 0, 0, 0, 0, 0, this.mConfig.q, 0, false);
+  }
+  
+  public long generateCustomPTS()
+  {
+    return TXCTimeUtil.generatePtsMS();
   }
   
   public int getAudioCaptureVolume()
@@ -2504,6 +3133,11 @@ public class TRTCCloudImpl
     return this.mCaptureAndEnc.b();
   }
   
+  public TXDeviceManager getDeviceManager()
+  {
+    return this.mDeviceManager;
+  }
+  
   public long getNetworkContext()
   {
     return this.mNativeRtcContext;
@@ -2511,7 +3145,7 @@ public class TRTCCloudImpl
   
   protected int getNetworkQuality(int paramInt1, int paramInt2)
   {
-    if (!com.tencent.liteav.basic.util.f.d(this.mContext)) {
+    if (!com.tencent.liteav.basic.util.h.d(this.mContext)) {
       return 6;
     }
     if ((paramInt2 <= 50) && (paramInt1 <= 500))
@@ -2538,7 +3172,7 @@ public class TRTCCloudImpl
   
   protected CharSequence getUploadStreamInfo()
   {
-    int[] arrayOfInt = com.tencent.liteav.basic.util.f.a();
+    int[] arrayOfInt = com.tencent.liteav.basic.util.h.a();
     int i = TXCStatus.c("18446744073709551615", 4003, 2);
     String str = TXCStatus.b("18446744073709551615", 10001);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -2553,22 +3187,22 @@ public class TRTCCloudImpl
   
   public boolean isCameraAutoFocusFaceModeSupported()
   {
-    return this.mCaptureAndEnc.p();
+    return this.mCaptureAndEnc.q();
   }
   
   public boolean isCameraFocusPositionInPreviewSupported()
   {
-    return this.mCaptureAndEnc.o();
+    return this.mCaptureAndEnc.p();
   }
   
   public boolean isCameraTorchSupported()
   {
-    return this.mCaptureAndEnc.n();
+    return this.mCaptureAndEnc.o();
   }
   
   public boolean isCameraZoomSupported()
   {
-    return this.mCaptureAndEnc.m();
+    return this.mCaptureAndEnc.n();
   }
   
   public boolean isPublishingInCloud(TRTCCloudImpl paramTRTCCloudImpl, int paramInt)
@@ -2579,39 +3213,68 @@ public class TRTCCloudImpl
     }
   }
   
+  public void makeStreamsEffectiveAfterNetworkInited()
+  {
+    Iterator localIterator = this.mStreamTypes.iterator();
+    while (localIterator.hasNext()) {
+      addUpStreamType(((Integer)localIterator.next()).intValue());
+    }
+    if (this.mRoomInfo.muteLocalVideo) {
+      muteUpstream(2, this.mRoomInfo.muteLocalVideo);
+    }
+    if (this.mRoomInfo.muteLocalAudio) {
+      muteUpstream(1, this.mRoomInfo.muteLocalAudio);
+    }
+  }
+  
+  public void mixExternalAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame)
+  {
+    if (paramTRTCAudioFrame == null) {
+      return;
+    }
+    int i = this.mPublishAudioTunnelId;
+    if (i >= 0) {
+      TXCAudioEngineJNI.nativeWriteDataToTunnel(i, paramTRTCAudioFrame.sampleRate, paramTRTCAudioFrame.channel, 16, paramTRTCAudioFrame.data);
+    }
+    i = this.mPlayoutAudioTunnelId;
+    if (i >= 0) {
+      TXCAudioEngineJNI.nativeWriteDataToTunnel(i, paramTRTCAudioFrame.sampleRate, paramTRTCAudioFrame.channel, 16, paramTRTCAudioFrame.data);
+    }
+  }
+  
   public void muteAllRemoteAudio(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.53(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.58(this, paramBoolean));
   }
   
   public void muteAllRemoteVideoStreams(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.32(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.36(this, paramBoolean));
   }
   
   public void muteLocalAudio(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.50(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.55(this, paramBoolean));
   }
   
   public void muteLocalAudio(boolean paramBoolean, TRTCCloudImpl paramTRTCCloudImpl)
   {
-    runOnSDKThread(new TRTCCloudImpl.51(this, paramBoolean, paramTRTCCloudImpl));
+    runOnSDKThread(new TRTCCloudImpl.56(this, paramBoolean, paramTRTCCloudImpl));
   }
   
   public void muteLocalVideo(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.28(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.32(this, paramBoolean));
   }
   
   public void muteLocalVideo(boolean paramBoolean, TRTCCloudImpl paramTRTCCloudImpl)
   {
-    runOnSDKThread(new TRTCCloudImpl.30(this, paramBoolean, paramTRTCCloudImpl));
+    runOnSDKThread(new TRTCCloudImpl.34(this, paramBoolean, paramTRTCCloudImpl));
   }
   
   public void muteRemoteAudio(String paramString, boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.52(this, paramString, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.57(this, paramString, paramBoolean));
   }
   
   protected void muteRemoteAudioInSpeaker(JSONObject paramJSONObject)
@@ -2672,7 +3335,7 @@ public class TRTCCloudImpl
   
   public void muteRemoteVideoStream(String paramString, boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.31(this, paramString, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.35(this, paramString, paramBoolean));
   }
   
   protected native int nativeAddUpstream(long paramLong, int paramInt);
@@ -2681,11 +3344,11 @@ public class TRTCCloudImpl
   
   protected native void nativeDestroyContext(long paramLong);
   
-  protected native int nativeEnterRoom(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString4, String paramString5, int paramInt6, String paramString6, String paramString7, int paramInt7);
+  protected native int nativeEnterRoom(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString4, String paramString5, int paramInt6, String paramString6, String paramString7, int paramInt7, int paramInt8, int paramInt9);
   
   protected native int nativeExitRoom(long paramLong);
   
-  protected native void nativeFlushC2SVideoCodecConfig(long paramLong, int paramInt);
+  protected native void nativeFlushC2SVideoCodecConfig(long paramLong, int paramInt1, int paramInt2);
   
   protected native void nativeInit(long paramLong, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte);
   
@@ -2693,19 +3356,26 @@ public class TRTCCloudImpl
   
   protected native int nativeSetPriorRemoteVideoStreamType(long paramLong, int paramInt);
   
+  public native void nativeSwitchRoom(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3);
+  
+  public void notifyCurrentEncodeType(boolean paramBoolean)
+  {
+    runOnListenerThread(new TRTCCloudImpl.157(this, paramBoolean));
+  }
+  
   protected void notifyEvent(String paramString, int paramInt, Bundle paramBundle)
   {
-    runOnSDKThread(new TRTCCloudImpl.167(this, paramString, paramBundle, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.188(this, paramString, paramBundle, paramInt));
   }
   
   protected void onAVMemberEnter(long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    runOnSDKThread(new TRTCCloudImpl.134(this, new WeakReference(this), paramString, paramLong, paramInt1, paramInt2));
+    runOnSDKThread(new TRTCCloudImpl.150(this, new WeakReference(this), paramString, paramLong, paramInt1, paramInt2));
   }
   
   protected void onAVMemberExit(long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    runOnSDKThread(new TRTCCloudImpl.135(this, new WeakReference(this), paramString, paramLong, paramInt2));
+    runOnSDKThread(new TRTCCloudImpl.151(this, new WeakReference(this), paramString, paramLong, paramInt2));
     notifyEvent(this.mRoomInfo.getUserId(), 0, String.format("[%s]leave room", new Object[] { paramString }));
   }
   
@@ -2713,7 +3383,7 @@ public class TRTCCloudImpl
   
   public void onAudioJitterBufferNotify(String paramString1, int paramInt, String paramString2)
   {
-    runOnSDKThread(new TRTCCloudImpl.120(this, paramInt, paramString2, paramString1));
+    runOnSDKThread(new TRTCCloudImpl.132(this, paramInt, paramString2, paramString1));
   }
   
   public void onAudioPlayPcmData(String paramString, byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
@@ -2733,7 +3403,7 @@ public class TRTCCloudImpl
     }
     else
     {
-      runOnListenerThread(new TRTCCloudImpl.119(this, paramArrayOfByte, paramLong, paramInt1, paramInt2, paramString));
+      runOnListenerThread(new TRTCCloudImpl.131(this, paramArrayOfByte, paramLong, paramInt1, paramInt2, paramString));
     }
   }
   
@@ -2747,24 +3417,24 @@ public class TRTCCloudImpl
     if (!isPublishingInCloud(paramTRTCCloudImpl, 1)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.139(this, paramInt1, paramInt2, paramInt3));
+    runOnSDKThread(new TRTCCloudImpl.155(this, paramInt1, paramInt2, paramInt3));
   }
   
   public void onBackgroudPushStop() {}
   
   protected void onCancelTranscoding(int paramInt, String paramString)
   {
-    runOnListenerThread(new TRTCCloudImpl.157(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.175(this, paramInt, paramString));
   }
   
   public void onEffectPlayFinish(int paramInt)
   {
-    runOnListenerThread(new TRTCCloudImpl.96(this, paramInt));
+    runOnListenerThread(new TRTCCloudImpl.105(this, paramInt));
   }
   
   public void onEffectPlayStart(int paramInt1, int paramInt2)
   {
-    runOnListenerThread(new TRTCCloudImpl.97(this, paramInt1, paramInt2));
+    runOnListenerThread(new TRTCCloudImpl.106(this, paramInt1, paramInt2));
   }
   
   public void onEncVideo(TXSNALPacket paramTXSNALPacket)
@@ -2784,23 +3454,18 @@ public class TRTCCloudImpl
   protected void onEnterRoom(int paramInt, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onEnterRoom ");
+    localStringBuilder.append("onEnterRoom err:");
     localStringBuilder.append(paramInt);
-    localStringBuilder.append(", ");
+    localStringBuilder.append(", msg:");
     localStringBuilder.append(paramString);
-    apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("onEnterRoom err:%d msg:%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
+    apiOnlineLog(localStringBuilder.toString());
     if (paramInt == 0) {
       TXCEventRecorderProxy.a("18446744073709551615", 5003, 1L, -1L, "", 0);
     } else {
       TXCEventRecorderProxy.a("18446744073709551615", 5003, 0L, -1L, "", 0);
     }
-    runOnSDKThread(new TRTCCloudImpl.125(this, paramInt, paramString));
-    runOnListenerThread(new TRTCCloudImpl.126(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.138(this, paramInt, paramString));
+    runOnListenerThread(new TRTCCloudImpl.139(this, paramInt));
   }
   
   public void onIdrFpsChanged(int paramInt)
@@ -2813,27 +3478,37 @@ public class TRTCCloudImpl
     if (!isPublishingInCloud(paramTRTCCloudImpl, 2)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.141(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.158(this, paramInt));
+  }
+  
+  public void onMixedAllData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    TRTCCloudDef.TRTCAudioFrame localTRTCAudioFrame = new TRTCCloudDef.TRTCAudioFrame();
+    localTRTCAudioFrame.data = paramArrayOfByte;
+    localTRTCAudioFrame.timestamp = 0L;
+    localTRTCAudioFrame.sampleRate = paramInt1;
+    localTRTCAudioFrame.channel = paramInt2;
+    runOnListenerThread(new TRTCCloudImpl.133(this, localTRTCAudioFrame));
   }
   
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
-    runOnSDKThread(new TRTCCloudImpl.117(this, paramBundle, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.129(this, paramBundle, paramInt));
   }
   
   public void onPlayEnd(int paramInt)
   {
-    runOnListenerThread(new TRTCCloudImpl.122(this, paramInt));
+    runOnListenerThread(new TRTCCloudImpl.135(this, paramInt));
   }
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    runOnListenerThread(new TRTCCloudImpl.123(this, paramLong1, paramLong2));
+    runOnListenerThread(new TRTCCloudImpl.136(this, paramLong1, paramLong2));
   }
   
   public void onPlayStart()
   {
-    runOnListenerThread(new TRTCCloudImpl.121(this));
+    runOnListenerThread(new TRTCCloudImpl.134(this));
   }
   
   public void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3) {}
@@ -2945,18 +3620,34 @@ public class TRTCCloudImpl
     {
       if (localTRTCVideoFrame.bufferType == 1)
       {
-        if (paramTXSVideoFrame.buffer == null) {
-          paramTXSVideoFrame.loadYUVBufferFromGL();
+        if (paramTXSVideoFrame.eglContext != null)
+        {
+          localTRTCVideoFrame.buffer = ByteBuffer.allocateDirect(paramTXSVideoFrame.width * paramTXSVideoFrame.height * 4);
+          TXCOpenGlUtils.a(e.a.a, paramTXSVideoFrame.width, paramTXSVideoFrame.height, localTRTCVideoFrame.buffer);
         }
-        localTRTCVideoFrame.buffer = paramTXSVideoFrame.buffer;
+        else
+        {
+          if (paramTXSVideoFrame.buffer == null) {
+            paramTXSVideoFrame.loadYUVBufferFromGL();
+          }
+          localTRTCVideoFrame.buffer = paramTXSVideoFrame.buffer;
+        }
       }
       else if (localTRTCVideoFrame.bufferType == 2)
       {
-        localTRTCVideoFrame.data = paramTXSVideoFrame.data;
-        if (localTRTCVideoFrame.data == null)
+        if (paramTXSVideoFrame.eglContext != null)
         {
-          localTRTCVideoFrame.data = new byte[paramTXSVideoFrame.width * paramTXSVideoFrame.height * 3 / 2];
-          paramTXSVideoFrame.loadYUVArray(localTRTCVideoFrame.data);
+          localTRTCVideoFrame.data = new byte[paramTXSVideoFrame.width * paramTXSVideoFrame.height * 4];
+          TXCOpenGlUtils.a(e.a.a, paramTXSVideoFrame.width, paramTXSVideoFrame.height, localTRTCVideoFrame.data);
+        }
+        else
+        {
+          localTRTCVideoFrame.data = paramTXSVideoFrame.data;
+          if (localTRTCVideoFrame.data == null)
+          {
+            localTRTCVideoFrame.data = new byte[paramTXSVideoFrame.width * paramTXSVideoFrame.height * 3 / 2];
+            paramTXSVideoFrame.loadYUVArray(localTRTCVideoFrame.data);
+          }
         }
       }
       else if (localTRTCVideoFrame.bufferType == 3)
@@ -2992,37 +3683,37 @@ public class TRTCCloudImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.118(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.130(this, paramString, paramInt));
   }
   
   public void onScreenCapturePaused()
   {
-    runOnListenerThread(new TRTCCloudImpl.59(this));
+    runOnListenerThread(new TRTCCloudImpl.63(this));
   }
   
   public void onScreenCaptureResumed()
   {
-    runOnListenerThread(new TRTCCloudImpl.58(this));
+    runOnListenerThread(new TRTCCloudImpl.62(this));
   }
   
   public void onScreenCaptureStarted()
   {
-    runOnListenerThread(new TRTCCloudImpl.57(this));
+    runOnListenerThread(new TRTCCloudImpl.61(this));
   }
   
   public void onScreenCaptureStopped(int paramInt)
   {
-    runOnListenerThread(new TRTCCloudImpl.60(this, paramInt));
+    runOnListenerThread(new TRTCCloudImpl.64(this, paramInt));
   }
   
   protected void onSendFirstLocalAudioFrame()
   {
-    runOnListenerThread(new TRTCCloudImpl.160(this));
+    runOnListenerThread(new TRTCCloudImpl.178(this));
   }
   
   protected void onSendFirstLocalVideoFrame(int paramInt)
   {
-    runOnListenerThread(new TRTCCloudImpl.159(this, paramInt));
+    runOnListenerThread(new TRTCCloudImpl.177(this, paramInt));
   }
   
   public void onVideoConfigChanged(int paramInt, boolean paramBoolean)
@@ -3035,7 +3726,7 @@ public class TRTCCloudImpl
     if (!isPublishingInCloud(paramTRTCCloudImpl, paramInt)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.149(this, paramInt, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.167(this, paramInt, paramBoolean));
   }
   
   public void onVideoQosChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -3048,47 +3739,47 @@ public class TRTCCloudImpl
     if (!isPublishingInCloud(paramTRTCCloudImpl, paramInt1)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.140(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8));
+    runOnSDKThread(new TRTCCloudImpl.156(this, paramInt8, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7));
   }
   
   public void pauseAudioEffect(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.103(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.112(this, paramInt));
   }
   
   public void pauseBGM()
   {
-    runOnSDKThread(new TRTCCloudImpl.87(this));
+    runOnSDKThread(new TRTCCloudImpl.96(this));
   }
   
   public void pauseScreenCapture()
   {
-    runOnSDKThread(new TRTCCloudImpl.26(this));
+    runOnSDKThread(new TRTCCloudImpl.30(this));
   }
   
   public void playAudioEffect(TRTCCloudDef.TRTCAudioEffectParam paramTRTCAudioEffectParam)
   {
-    runOnSDKThread(new TRTCCloudImpl.98(this, paramTRTCAudioEffectParam));
+    runOnSDKThread(new TRTCCloudImpl.107(this, paramTRTCAudioEffectParam));
   }
   
   public void playBGM(String paramString, TRTCCloud.BGMNotify paramBGMNotify)
   {
-    runOnSDKThread(new TRTCCloudImpl.85(this, paramBGMNotify, paramString));
+    runOnSDKThread(new TRTCCloudImpl.94(this, paramBGMNotify, paramString));
   }
   
   public void resumeAudioEffect(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.104(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.113(this, paramInt));
   }
   
   public void resumeBGM()
   {
-    runOnSDKThread(new TRTCCloudImpl.88(this));
+    runOnSDKThread(new TRTCCloudImpl.97(this));
   }
   
   public void resumeScreenCapture()
   {
-    runOnSDKThread(new TRTCCloudImpl.27(this));
+    runOnSDKThread(new TRTCCloudImpl.31(this));
   }
   
   protected void runOnListenerThread(Runnable paramRunnable)
@@ -3155,7 +3846,7 @@ public class TRTCCloudImpl
   
   public void selectMotionTmpl(String paramString)
   {
-    runOnSDKThread(new TRTCCloudImpl.69(this, paramString));
+    runOnSDKThread(new TRTCCloudImpl.72(this, paramString));
   }
   
   public void sendCustomAudioData(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame)
@@ -3176,22 +3867,13 @@ public class TRTCCloudImpl
     } else {
       locala.e = paramTRTCAudioFrame.timestamp;
     }
-    runOnSDKThread(new TRTCCloudImpl.84(this, locala));
+    runOnSDKThread(new TRTCCloudImpl.93(this, locala));
   }
   
   public boolean sendCustomCmdMsg(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramArrayOfByte == null) {
       return false;
-    }
-    try
-    {
-      paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      TXCLog.e("TRTCCloudImpl", "invalid message data", paramArrayOfByte);
-      paramArrayOfByte = null;
     }
     if (this.mCurrentRole == 21)
     {
@@ -3213,8 +3895,8 @@ public class TRTCCloudImpl
         if (j < 8192)
         {
           this.mSendMsgCount = (i + 1);
-          this.mSendMsgSize = (j + paramArrayOfByte.length());
-          break label204;
+          this.mSendMsgSize = (j + paramArrayOfByte.length);
+          break label173;
         }
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -3227,64 +3909,71 @@ public class TRTCCloudImpl
     {
       this.mLastSendMsgTimeMs = l1;
       this.mSendMsgCount = 1;
-      this.mSendMsgSize = paramArrayOfByte.length();
+      this.mSendMsgSize = paramArrayOfByte.length;
     }
-    label204:
+    label173:
     if (bool) {
-      runOnSDKThread(new TRTCCloudImpl.114(this, paramInt, paramArrayOfByte, paramBoolean1, paramBoolean2));
+      runOnSDKThread(new TRTCCloudImpl.123(this, paramInt, paramArrayOfByte, paramBoolean1, paramBoolean2));
     }
     return bool;
   }
   
-  public void sendCustomVideoData(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
+  public void sendCustomVideoData(int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
     if (paramTRTCVideoFrame == null)
     {
       apiLog("sendCustomVideoData parameter is null");
       return;
     }
-    StringBuilder localStringBuilder;
     if ((paramTRTCVideoFrame.pixelFormat != 1) && (paramTRTCVideoFrame.pixelFormat != 4) && (paramTRTCVideoFrame.pixelFormat != 2))
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("sendCustomVideoData parameter error unsupported pixel format ");
-      localStringBuilder.append(paramTRTCVideoFrame.pixelFormat);
-      apiLog(localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendCustomVideoData parameter error unsupported pixel format ");
+      ((StringBuilder)localObject).append(paramTRTCVideoFrame.pixelFormat);
+      apiLog(((StringBuilder)localObject).toString());
       return;
     }
     if ((paramTRTCVideoFrame.bufferType != 2) && (paramTRTCVideoFrame.texture == null))
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("sendCustomVideoData parameter error unsupported buffer type ");
-      localStringBuilder.append(paramTRTCVideoFrame.bufferType);
-      apiLog(localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendCustomVideoData parameter error unsupported buffer type ");
+      ((StringBuilder)localObject).append(paramTRTCVideoFrame.bufferType);
+      apiLog(((StringBuilder)localObject).toString());
       return;
     }
-    if ((this.mVideoSourceType == TRTCCloudImpl.VideoSourceType.CUSTOM) && (this.mRoomState == 2))
+    if ((paramInt == 0) && ((this.mVideoSourceType != TRTCCloudImpl.VideoSourceType.CUSTOM) || (this.mRoomInfo.muteLocalVideo))) {
+      return;
+    }
+    Object localObject = this.mCustomCaptureLock;
+    if (paramInt == 2) {}
+    try
     {
-      if (this.mRoomInfo.muteLocalVideo) {
-        return;
+      if (this.mSubStreamCaptureAndEnc == null) {
+        this.mSubStreamCaptureAndEnc = createCaptureAndEnc(7);
       }
-      try
+      if (this.mCustomSubStreamVideoUtil == null) {
+        this.mCustomSubStreamVideoUtil = new TRTCCustomTextureUtil(this.mSubStreamCaptureAndEnc, this.mCustomCaptureGLSyncMode);
+      }
+      if (this.mCustomSubStreamVideoUtil != null)
       {
+        this.mCustomSubStreamVideoUtil.sendCustomTexture(paramTRTCVideoFrame);
+        break label258;
         if (this.mCustomVideoUtil == null) {
-          this.mCustomVideoUtil = new TRTCCustomTextureUtil(this.mCaptureAndEnc);
+          this.mCustomVideoUtil = new TRTCCustomTextureUtil(this.mCaptureAndEnc, this.mCustomCaptureGLSyncMode);
         }
         if (this.mCustomVideoUtil != null) {
           this.mCustomVideoUtil.sendCustomTexture(paramTRTCVideoFrame);
         }
-        if (this.mLastCaptureCalculateTS == 0L)
-        {
-          this.mLastCaptureCalculateTS = System.currentTimeMillis();
-          this.mLastCaptureFrameCount = 0L;
-          this.mCaptureFrameCount = 0L;
-          return;
-        }
-        this.mCaptureFrameCount += 1L;
-        return;
       }
-      finally {}
+      label258:
+      return;
     }
+    finally {}
+  }
+  
+  public void sendCustomVideoData(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
+  {
+    sendCustomVideoData(0, paramTRTCVideoFrame);
   }
   
   protected void sendJsonCmd(JSONObject paramJSONObject, String paramString)
@@ -3341,14 +4030,14 @@ public class TRTCCloudImpl
     }
     label170:
     if (bool) {
-      runOnSDKThread(new TRTCCloudImpl.115(this, paramArrayOfByte, paramInt));
+      runOnSDKThread(new TRTCCloudImpl.124(this, paramArrayOfByte, paramInt));
     }
     return bool;
   }
   
   public void setAllAudioEffectsVolume(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.102(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.111(this, paramInt));
   }
   
   public void setAudioCaptureVolume(int paramInt)
@@ -3357,26 +4046,22 @@ public class TRTCCloudImpl
     if (paramInt < 0) {
       i = 0;
     }
-    paramInt = i;
-    if (i > 100) {
-      paramInt = 100;
-    }
-    this.mAudioCaptureVolume = paramInt;
+    this.mAudioCaptureVolume = i;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setAudioCaptureVolume:  volume=");
     localStringBuilder.append(this.mAudioCaptureVolume);
     apiLog(localStringBuilder.toString());
-    TXAudioEffectManagerImpl.getInstance().setVoiceCaptureVolume(paramInt);
+    TXAudioEffectManagerImpl.getInstance().setVoiceCaptureVolume(i);
   }
   
   public void setAudioEffectVolume(int paramInt1, int paramInt2)
   {
-    runOnSDKThread(new TRTCCloudImpl.99(this, paramInt1, paramInt2));
+    runOnSDKThread(new TRTCCloudImpl.108(this, paramInt1, paramInt2));
   }
   
   public void setAudioFrameListener(TRTCCloudListener.TRTCAudioFrameListener paramTRTCAudioFrameListener)
   {
-    runOnSDKThread(new TRTCCloudImpl.116(this, paramTRTCAudioFrameListener, this));
+    runOnSDKThread(new TRTCCloudImpl.125(this, paramTRTCAudioFrameListener));
   }
   
   public void setAudioPlayoutVolume(int paramInt)
@@ -3385,57 +4070,73 @@ public class TRTCCloudImpl
     if (paramInt < 0) {
       i = 0;
     }
-    paramInt = i;
-    if (i > 100) {
-      paramInt = 100;
-    }
-    this.mAudioPlayoutVolume = paramInt;
+    this.mAudioPlayoutVolume = i;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setAudioPlayoutVolume:  volume=");
     localStringBuilder.append(this.mAudioPlayoutVolume);
     apiLog(localStringBuilder.toString());
-    TXAudioEffectManagerImpl.getInstance().setAudioPlayoutVolume(paramInt);
+    TXAudioEffectManagerImpl.getInstance().setAudioPlayoutVolume(i);
   }
   
   public void setAudioQuality(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.45(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.51(this, paramInt));
   }
   
   public void setAudioRoute(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.49(this, paramInt));
+    TXDeviceManager.TXAudioRoute localTXAudioRoute = TXDeviceManager.TXAudioRoute.TXAudioRouteEarpiece;
+    if (paramInt != 0)
+    {
+      if (paramInt == 1) {
+        localTXAudioRoute = TXDeviceManager.TXAudioRoute.TXAudioRouteEarpiece;
+      }
+    }
+    else {
+      localTXAudioRoute = TXDeviceManager.TXAudioRoute.TXAudioRouteSpeakerphone;
+    }
+    this.mDeviceManager.setAudioRoute(localTXAudioRoute);
   }
   
   public void setBGMPlayoutVolume(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.92(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.101(this, paramInt));
   }
   
   public int setBGMPosition(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.89(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.98(this, paramInt));
     return 0;
   }
   
   public void setBGMPublishVolume(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.93(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.102(this, paramInt));
   }
   
   public void setBGMVolume(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.91(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.100(this, paramInt));
   }
   
   public void setBeautyStyle(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    runOnSDKThread(new TRTCCloudImpl.66(this, paramInt1, paramInt2, paramInt3, paramInt4));
+    runOnSDKThread(new TRTCCloudImpl.69(this, paramInt1, paramInt2, paramInt3, paramInt4));
+  }
+  
+  public int setCapturedRawAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat)
+  {
+    apiLog(String.format("setCaptureAudioFrameCallbackFormat sample_rate: %d, channel: %d, samplesPerCall %d", new Object[] { Integer.valueOf(paramTRTCAudioFrameCallbackFormat.sampleRate), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.channel), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.samplesPerCall) }));
+    if (TXCAudioEngine.getInstance().IsDataCallbackFormatInvalid(paramTRTCAudioFrameCallbackFormat.sampleRate, paramTRTCAudioFrameCallbackFormat.channel, paramTRTCAudioFrameCallbackFormat.samplesPerCall)) {
+      return -1;
+    }
+    runOnSDKThread(new TRTCCloudImpl.126(this, paramTRTCAudioFrameCallbackFormat));
+    return 0;
   }
   
   public void setChinLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.76(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.79(this, paramInt));
   }
   
   public void setDebugViewMargin(String paramString, TRTCCloud.TRTCViewMargin paramTRTCViewMargin)
@@ -3443,64 +4144,88 @@ public class TRTCCloudImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.106(this, paramString, paramTRTCViewMargin));
+    runOnSDKThread(new TRTCCloudImpl.115(this, paramString, paramTRTCViewMargin));
   }
   
   public void setDefaultStreamRecvMode(boolean paramBoolean1, boolean paramBoolean2)
   {
-    runOnSDKThread(new TRTCCloudImpl.10(this, paramBoolean1, paramBoolean2));
+    runOnSDKThread(new TRTCCloudImpl.13(this, paramBoolean1, paramBoolean2));
+  }
+  
+  public void setEncodedDataProcessingListener(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("listener")))
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = paramJSONObject.getLong("listener");
+        l1 = l2;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("setEncodedDataProcessingListener:");
+      paramJSONObject.append(Long.toHexString(l1));
+      apiLog(paramJSONObject.toString());
+      nativeSetEncodedDataProcessingListener(this.mNativeRtcContext, l1);
+      return;
+    }
+    apiLog("setEncodedDataProcessingListener [lack parameter or illegal type]: listener");
   }
   
   public void setEyeScaleLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.72(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.75(this, paramInt));
   }
   
   public void setFaceShortLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.75(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.78(this, paramInt));
   }
   
   public void setFaceSlimLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.73(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.76(this, paramInt));
   }
   
   public void setFaceVLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.74(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.77(this, paramInt));
   }
   
   public void setFilter(Bitmap paramBitmap)
   {
-    runOnSDKThread(new TRTCCloudImpl.67(this, paramBitmap));
+    runOnSDKThread(new TRTCCloudImpl.70(this, paramBitmap));
   }
   
   public void setFilterConcentration(float paramFloat)
   {
-    runOnSDKThread(new TRTCCloudImpl.68(this, paramFloat));
+    runOnSDKThread(new TRTCCloudImpl.71(this, paramFloat));
   }
   
   public void setFocusPosition(int paramInt1, int paramInt2)
   {
-    runOnSDKThread(new TRTCCloudImpl.65(this, paramInt1, paramInt2));
+    this.mDeviceManager.setCameraFocusPosition(paramInt1, paramInt2);
   }
   
   public void setGSensorMode(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.40(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.46(this, paramInt));
   }
   
   @TargetApi(18)
   public boolean setGreenScreenFile(String paramString)
   {
-    runOnSDKThread(new TRTCCloudImpl.71(this, paramString));
+    runOnSDKThread(new TRTCCloudImpl.74(this, paramString));
     return true;
   }
   
   public void setListener(TRTCCloudListener paramTRTCCloudListener)
   {
-    runOnSDKThread(new TRTCCloudImpl.3(this, paramTRTCCloudListener));
+    runOnSDKThread(new TRTCCloudImpl.5(this, paramTRTCCloudListener));
   }
   
   public void setListenerHandler(Handler paramHandler)
@@ -3514,12 +4239,61 @@ public class TRTCCloudImpl
     } else {
       this.mListenerHandler = paramHandler;
     }
-    runOnSDKThread(new TRTCCloudImpl.4(this));
+    runOnSDKThread(new TRTCCloudImpl.6(this));
+  }
+  
+  public int setLocalProcessedAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat)
+  {
+    apiLog(String.format("setLocalProcessedAudioFrameCallbackFormat sample_rate: %d, channel: %d, samplesPerCall %d", new Object[] { Integer.valueOf(paramTRTCAudioFrameCallbackFormat.sampleRate), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.channel), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.samplesPerCall) }));
+    if (TXCAudioEngine.getInstance().IsDataCallbackFormatInvalid(paramTRTCAudioFrameCallbackFormat.sampleRate, paramTRTCAudioFrameCallbackFormat.channel, paramTRTCAudioFrameCallbackFormat.samplesPerCall)) {
+      return -1;
+    }
+    runOnSDKThread(new TRTCCloudImpl.127(this, paramTRTCAudioFrameCallbackFormat));
+    return 0;
+  }
+  
+  public void setLocalRenderParams(TRTCCloudDef.TRTCRenderParams paramTRTCRenderParams)
+  {
+    setLocalViewFillMode(paramTRTCRenderParams.fillMode);
+    setLocalViewRotation(paramTRTCRenderParams.rotation);
+    setLocalViewMirror(paramTRTCRenderParams.mirrorType);
+  }
+  
+  public void setLocalSurface(Surface paramSurface)
+  {
+    runOnSDKThread(new TRTCCloudImpl.86(this, paramSurface));
+  }
+  
+  public void setLocalSurfaceSize(int paramInt1, int paramInt2)
+  {
+    runOnSDKThread(new TRTCCloudImpl.87(this, paramInt1, paramInt2));
+  }
+  
+  public int setLocalVideoProcessListener(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoFrameListener paramTRTCVideoFrameListener)
+  {
+    if ((paramInt1 != 1) && (paramInt1 != 4) && (paramInt1 != 2))
+    {
+      paramTRTCVideoFrameListener = new StringBuilder();
+      paramTRTCVideoFrameListener.append("setLocalVideoRenderListener unsupported pixelFormat : ");
+      paramTRTCVideoFrameListener.append(paramInt1);
+      apiLog(paramTRTCVideoFrameListener.toString());
+      return -1327;
+    }
+    if ((paramInt2 != 1) && (paramInt2 != 2) && (paramInt2 != 3))
+    {
+      paramTRTCVideoFrameListener = new StringBuilder();
+      paramTRTCVideoFrameListener.append("setLocalVideoRenderListener unsupported bufferType : ");
+      paramTRTCVideoFrameListener.append(paramInt2);
+      apiLog(paramTRTCVideoFrameListener.toString());
+      return -1328;
+    }
+    runOnSDKThread(new TRTCCloudImpl.90(this, paramInt1, paramInt2, paramTRTCVideoFrameListener));
+    return 0;
   }
   
   public int setLocalVideoRenderListener(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener)
   {
-    if ((paramInt1 != 1) && (paramInt1 != 4) && (paramInt1 != 2))
+    if ((paramInt1 != 1) && (paramInt1 != 4) && (paramInt1 != 2) && (paramInt1 != 5))
     {
       paramTRTCVideoRenderListener = new StringBuilder();
       paramTRTCVideoRenderListener.append("setLocalVideoRenderListener unsupported pixelFormat : ");
@@ -3535,48 +4309,58 @@ public class TRTCCloudImpl
       apiLog(paramTRTCVideoRenderListener.toString());
       return -1328;
     }
-    runOnSDKThread(new TRTCCloudImpl.81(this, paramInt1, paramInt2, paramTRTCVideoRenderListener));
+    runOnSDKThread(new TRTCCloudImpl.89(this, paramInt1, paramInt2, paramTRTCVideoRenderListener));
     return 0;
   }
   
   public void setLocalViewFillMode(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.35(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.41(this, paramInt));
   }
   
   public void setLocalViewMirror(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.43(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.49(this, paramInt));
   }
   
   public void setLocalViewRotation(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.37(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.43(this, paramInt));
   }
   
   public void setMicVolumeOnMixing(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.90(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.99(this, paramInt));
   }
   
   public void setMixTranscodingConfig(TRTCCloudDef.TRTCTranscodingConfig paramTRTCTranscodingConfig)
   {
-    runOnSDKThread(new TRTCCloudImpl.113(this, paramTRTCTranscodingConfig));
+    runOnSDKThread(new TRTCCloudImpl.122(this, paramTRTCTranscodingConfig));
+  }
+  
+  public int setMixedPlayAudioFrameCallbackFormat(TRTCCloudDef.TRTCAudioFrameCallbackFormat paramTRTCAudioFrameCallbackFormat)
+  {
+    apiLog(String.format("setMixedPlayAudioFrameCallbackFormat sample_rate: %d, channel: %d, samplesPerCall %d", new Object[] { Integer.valueOf(paramTRTCAudioFrameCallbackFormat.sampleRate), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.channel), Integer.valueOf(paramTRTCAudioFrameCallbackFormat.samplesPerCall) }));
+    if (TXCAudioEngine.getInstance().IsDataCallbackFormatInvalid(paramTRTCAudioFrameCallbackFormat.sampleRate, paramTRTCAudioFrameCallbackFormat.channel, paramTRTCAudioFrameCallbackFormat.samplesPerCall)) {
+      return -1;
+    }
+    runOnSDKThread(new TRTCCloudImpl.128(this, paramTRTCAudioFrameCallbackFormat));
+    return 0;
   }
   
   public void setMotionMute(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.70(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.73(this, paramBoolean));
   }
   
   public void setNetworkQosParam(TRTCCloudDef.TRTCNetworkQosParam paramTRTCNetworkQosParam)
   {
-    runOnSDKThread(new TRTCCloudImpl.34(this, paramTRTCNetworkQosParam));
+    runOnSDKThread(new TRTCCloudImpl.39(this, paramTRTCNetworkQosParam));
   }
   
   public void setNoseSlimLevel(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.77(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.80(this, paramInt));
   }
   
   protected void setPerformanceMode(JSONObject paramJSONObject)
@@ -3591,42 +4375,92 @@ public class TRTCCloudImpl
       apiLog("setPerformanceMode[lack parameter]: mode");
       return;
     }
-    if (paramJSONObject.getInt("mode") == 1)
+    int i = paramJSONObject.getInt("mode");
+    if (i == 1)
     {
       this.mPerformanceMode = 1;
       this.mCaptureAndEnc.b().enableSharpnessEnhancement(false);
-      return;
+      paramJSONObject = (TRTCCloudImpl)this.mCurrentPublishClouds.get(Integer.valueOf(2));
+      if (paramJSONObject != null) {
+        nativeSetAllowSwitchToHighPerformanceMode(paramJSONObject.getNetworkContext(), true);
+      }
     }
-    this.mPerformanceMode = 0;
+    else if (i == 2)
+    {
+      paramJSONObject = (TRTCCloudImpl)this.mCurrentPublishClouds.get(Integer.valueOf(2));
+      if (paramJSONObject != null) {
+        nativeSetAllowSwitchToHighPerformanceMode(paramJSONObject.getNetworkContext(), false);
+      }
+    }
+    else
+    {
+      this.mPerformanceMode = 0;
+      paramJSONObject = (TRTCCloudImpl)this.mCurrentPublishClouds.get(Integer.valueOf(2));
+      if (paramJSONObject != null) {
+        nativeSetAllowSwitchToHighPerformanceMode(paramJSONObject.getNetworkContext(), true);
+      }
+    }
   }
   
   public int setPriorRemoteVideoStreamType(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.42(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.48(this, paramInt));
     return 0;
   }
   
   public void setRemoteAudioVolume(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.54(this, paramInt, paramString));
+    runOnSDKThread(new TRTCCloudImpl.59(this, paramInt, paramString));
+  }
+  
+  public void setRemoteRenderParams(String paramString, int paramInt, TRTCCloudDef.TRTCRenderParams paramTRTCRenderParams)
+  {
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      if (paramInt != 2)
+      {
+        paramString = new StringBuilder();
+        paramString.append("setRemoteRenderParams unsupported streamType:");
+        paramString.append(paramInt);
+        TXCLog.e("TRTCCloudImpl", paramString.toString());
+        return;
+      }
+      setRemoteSubStreamViewFillMode(paramString, paramTRTCRenderParams.fillMode);
+      setRemoteSubStreamViewRotation(paramString, paramTRTCRenderParams.rotation);
+      setRemoteViewMirror(paramString, paramInt, paramTRTCRenderParams.mirrorType);
+      return;
+    }
+    setRemoteViewFillMode(paramString, paramTRTCRenderParams.fillMode);
+    setRemoteViewRotation(paramString, paramTRTCRenderParams.rotation);
+    setRemoteViewMirror(paramString, paramInt, paramTRTCRenderParams.mirrorType);
   }
   
   public void setRemoteSubStreamViewFillMode(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.20(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.24(this, paramString, paramInt));
   }
   
   public void setRemoteSubStreamViewRotation(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.21(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.25(this, paramString, paramInt));
+  }
+  
+  public void setRemoteSurface(String paramString, int paramInt, Surface paramSurface)
+  {
+    runOnSDKThread(new TRTCCloudImpl.84(this, paramString, paramSurface, paramInt));
+  }
+  
+  public void setRemoteSurfaceSize(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    runOnSDKThread(new TRTCCloudImpl.85(this, paramString, paramInt2, paramInt3, paramInt1));
   }
   
   public int setRemoteVideoRenderListener(String paramString, int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener)
   {
-    if ((paramInt1 != 1) && (paramInt1 != 4) && (paramInt1 != 2))
+    if ((paramInt1 != 1) && (paramInt1 != 4) && (paramInt1 != 2) && (paramInt1 != 5))
     {
       paramString = new StringBuilder();
-      paramString.append("setLocalVideoRenderListener unsupported pixelFormat : ");
+      paramString.append("setRemoteVideoRenderListener unsupported pixelFormat : ");
       paramString.append(paramInt1);
       apiLog(paramString.toString());
       return -1327;
@@ -3634,29 +4468,29 @@ public class TRTCCloudImpl
     if ((paramInt2 != 1) && (paramInt2 != 2) && (paramInt2 != 3))
     {
       paramString = new StringBuilder();
-      paramString.append("setLocalVideoRenderListener unsupported bufferType : ");
+      paramString.append("setRemoteVideoRenderListener unsupported bufferType : ");
       paramString.append(paramInt2);
       apiLog(paramString.toString());
       return -1328;
     }
-    runOnSDKThread(new TRTCCloudImpl.82(this, paramString, paramInt1, paramInt2, paramTRTCVideoRenderListener));
+    runOnSDKThread(new TRTCCloudImpl.91(this, paramString, paramInt1, paramInt2, paramTRTCVideoRenderListener));
     return 0;
   }
   
   public int setRemoteVideoStreamType(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.48(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.54(this, paramString, paramInt));
     return 0;
   }
   
   public void setRemoteViewFillMode(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.36(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.42(this, paramString, paramInt));
   }
   
   public void setRemoteViewRotation(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.38(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.44(this, paramString, paramInt));
   }
   
   protected void setRenderView(String paramString, TRTCRoomInfo.RenderInfo paramRenderInfo, TXCloudVideoView paramTXCloudVideoView, TRTCCloud.TRTCViewMargin paramTRTCViewMargin)
@@ -3672,7 +4506,7 @@ public class TRTCCloudImpl
         locale.c(null);
         return;
       }
-      runOnMainThread(new TRTCCloudImpl.163(this, paramTXCloudVideoView, paramRenderInfo, locale, paramString, paramTRTCViewMargin));
+      runOnMainThread(new TRTCCloudImpl.184(this, paramTXCloudVideoView, paramRenderInfo, locale, paramString, paramTRTCViewMargin));
     }
   }
   
@@ -3680,13 +4514,28 @@ public class TRTCCloudImpl
   {
     if ((paramInt >= 0) && (paramInt <= 7))
     {
-      runOnSDKThread(new TRTCCloudImpl.94(this, paramInt));
+      runOnSDKThread(new TRTCCloudImpl.103(this, paramInt));
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reverbType not support :");
     localStringBuilder.append(paramInt);
     TXCLog.e("TRTCCloudImpl", localStringBuilder.toString());
+  }
+  
+  protected void setRoomType(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      apiLog("setRoomType param is null");
+      return;
+    }
+    if (!paramJSONObject.has("type"))
+    {
+      apiLog("setRoomType[lack parameter]: type");
+      return;
+    }
+    this.mRoomType = paramJSONObject.optInt("type", 0);
   }
   
   protected void setSEIPayloadType(JSONObject paramJSONObject)
@@ -3722,36 +4571,57 @@ public class TRTCCloudImpl
     apiLog("callExperimentalAPI[lack parameter or illegal type]: payloadType");
   }
   
+  public void setSubStreamEncoderParam(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam)
+  {
+    runOnSDKThread(new TRTCCloudImpl.38(this, paramTRTCVideoEncParam));
+  }
+  
   public void setSystemVolumeType(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.55(this, paramInt));
+    TXDeviceManager.TXSystemVolumeType localTXSystemVolumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeAuto;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          localTXSystemVolumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeVOIP;
+        }
+      }
+      else {
+        localTXSystemVolumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeMedia;
+      }
+    }
+    else {
+      localTXSystemVolumeType = TXDeviceManager.TXSystemVolumeType.TXSystemVolumeTypeAuto;
+    }
+    this.mDeviceManager.setSystemVolumeType(localTXSystemVolumeType);
   }
   
   public void setVideoEncoderMirror(boolean paramBoolean)
   {
-    runOnSDKThread(new TRTCCloudImpl.44(this, paramBoolean));
+    runOnSDKThread(new TRTCCloudImpl.50(this, paramBoolean));
   }
   
   public void setVideoEncoderParam(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam)
   {
-    runOnSDKThread(new TRTCCloudImpl.33(this, paramTRTCVideoEncParam));
+    runOnSDKThread(new TRTCCloudImpl.37(this, paramTRTCVideoEncParam));
   }
   
   public void setVideoEncoderRotation(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.39(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.45(this, paramInt));
   }
   
   public void setVideoMuteImage(Bitmap paramBitmap, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.29(this, paramBitmap, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.33(this, paramBitmap, paramInt));
   }
   
   public boolean setVoiceChangerType(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt <= 11))
     {
-      runOnSDKThread(new TRTCCloudImpl.95(this, paramInt));
+      runOnSDKThread(new TRTCCloudImpl.104(this, paramInt));
       return true;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -3763,23 +4633,23 @@ public class TRTCCloudImpl
   
   public void setWatermark(Bitmap paramBitmap, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    runOnSDKThread(new TRTCCloudImpl.78(this, paramInt, paramBitmap, paramFloat1, paramFloat2, paramFloat3));
+    runOnSDKThread(new TRTCCloudImpl.81(this, paramInt, paramBitmap, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public void setZoom(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.64(this, paramInt));
+    this.mDeviceManager.setCameraZoomRatio(paramInt);
   }
   
   public void showDebugView(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.105(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.114(this, paramInt));
   }
   
   public void snapshotVideo(String paramString, int paramInt, TRTCCloudListener.TRTCSnapshotListener paramTRTCSnapshotListener)
   {
     apiLog(String.format("snapshotVideo user:%s streamType:%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    runOnSDKThread(new TRTCCloudImpl.23(this, paramString, paramTRTCSnapshotListener, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.27(this, paramString, paramTRTCSnapshotListener, paramInt));
   }
   
   public int startAudioRecording(TRTCCloudDef.TRTCAudioRecordingParams paramTRTCAudioRecordingParams)
@@ -3796,26 +4666,63 @@ public class TRTCCloudImpl
     localStringBuilder.append("startLocalAudioRecord:");
     localStringBuilder.append(paramTRTCAudioRecordingParams.filePath);
     apiLog(localStringBuilder.toString());
-    TXCAudioEngine.getInstance().setAudioDumpingListener(new TRTCCloudImpl.62(this));
+    TXCAudioEngine.getInstance().setAudioDumpingListener(new TRTCCloudImpl.66(this));
     return TXCAudioEngine.getInstance().startLocalAudioDumping(48000, 16, paramTRTCAudioRecordingParams.filePath);
   }
   
   protected void startCollectStatus()
   {
-    Handler localHandler = this.mSDKHandler;
-    if (localHandler != null) {
-      localHandler.postDelayed(this.mStatusNotifyTask, 1000L);
+    com.tencent.liteav.basic.util.f localf = this.mSDKHandler;
+    if (localf != null) {
+      localf.postDelayed(this.mStatusNotifyTask, 1000L);
     }
   }
   
   public void startLocalAudio()
   {
-    runOnSDKThread(new TRTCCloudImpl.46(this));
+    runOnSDKThread(new TRTCCloudImpl.52(this));
+  }
+  
+  public void startLocalAudio(int paramInt)
+  {
+    setAudioQuality(paramInt);
+    startLocalAudio();
   }
   
   public void startLocalPreview(boolean paramBoolean, TXCloudVideoView paramTXCloudVideoView)
   {
-    runOnSDKThread(new TRTCCloudImpl.14(this, paramBoolean, paramTXCloudVideoView));
+    this.mDeviceManager.setFrontCamera(paramBoolean);
+    runOnSDKThread(new TRTCCloudImpl.18(this, paramBoolean, paramTXCloudVideoView));
+  }
+  
+  public void startLocalRecording(TRTCCloudDef.TRTCLocalRecordingParams paramTRTCLocalRecordingParams)
+  {
+    if (paramTRTCLocalRecordingParams == null)
+    {
+      apiLog("startLocalRecording params is null!");
+      onLocalRecordBegin(-1, "");
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if ((paramTRTCLocalRecordingParams.recordType != 0) && (paramTRTCLocalRecordingParams.recordType != 1) && (paramTRTCLocalRecordingParams.recordType != 2))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startLocalRecording recordType invalid: ");
+      localStringBuilder.append(paramTRTCLocalRecordingParams.recordType);
+      apiLog(localStringBuilder.toString());
+      onLocalRecordBegin(-1, paramTRTCLocalRecordingParams.filePath);
+      return;
+    }
+    if (((paramTRTCLocalRecordingParams.interval < 1000) || (paramTRTCLocalRecordingParams.interval > 10000)) && (paramTRTCLocalRecordingParams.interval != -1))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startLocalRecording interval invalid: ");
+      localStringBuilder.append(paramTRTCLocalRecordingParams.interval);
+      apiLog(localStringBuilder.toString());
+      onLocalRecordBegin(-1, paramTRTCLocalRecordingParams.filePath);
+      return;
+    }
+    runOnSDKThread(new TRTCCloudImpl.67(this, paramTRTCLocalRecordingParams));
   }
   
   public void startPublishCDNStream(TRTCCloudDef.TRTCPublishCDNParam paramTRTCPublishCDNParam)
@@ -3825,34 +4732,53 @@ public class TRTCCloudImpl
       apiLog("startPublishCDNStream param is null");
       return;
     }
-    runOnSDKThread(new TRTCCloudImpl.109(this, paramTRTCPublishCDNParam));
+    runOnSDKThread(new TRTCCloudImpl.118(this, paramTRTCPublishCDNParam));
   }
   
   public void startPublishing(String paramString, int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.112(this, paramString, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.121(this, paramString, paramInt));
   }
   
   public void startRemoteSubStreamView(String paramString, TXCloudVideoView paramTXCloudVideoView)
   {
-    runOnSDKThread(new TRTCCloudImpl.18(this, paramString, paramTXCloudVideoView));
+    runOnSDKThread(new TRTCCloudImpl.22(this, paramString, paramTXCloudVideoView));
+  }
+  
+  public void startRemoteView(String paramString, int paramInt, TXCloudVideoView paramTXCloudVideoView)
+  {
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      if (paramInt != 2)
+      {
+        paramString = new StringBuilder();
+        paramString.append("startRemoteView unsupported streamType:");
+        paramString.append(paramInt);
+        TXCLog.e("TRTCCloudImpl", paramString.toString());
+        return;
+      }
+      startRemoteSubStreamView(paramString, paramTXCloudVideoView);
+      return;
+    }
+    startRemoteView(paramString, paramTXCloudVideoView);
+    setRemoteVideoStreamType(paramString, paramInt);
   }
   
   public void startRemoteView(String paramString, TXCloudVideoView paramTXCloudVideoView)
   {
-    runOnSDKThread(new TRTCCloudImpl.16(this, paramString, paramTXCloudVideoView));
+    runOnSDKThread(new TRTCCloudImpl.20(this, paramString, paramTXCloudVideoView));
   }
   
   public void startScreenCapture(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam, TRTCCloudDef.TRTCScreenShareParams paramTRTCScreenShareParams)
   {
-    runOnSDKThread(new TRTCCloudImpl.24(this, paramTRTCVideoEncParam, paramTRTCScreenShareParams));
+    runOnSDKThread(new TRTCCloudImpl.28(this, paramTRTCVideoEncParam, paramTRTCScreenShareParams));
   }
   
   public void startSpeedTest(int paramInt, String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      runOnSDKThread(new TRTCCloudImpl.107(this, paramInt, paramString1, paramString2));
+      runOnSDKThread(new TRTCCloudImpl.116(this, paramInt, paramString1, paramString2));
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -3871,32 +4797,36 @@ public class TRTCCloudImpl
     TXCAudioEngine.enableAudioVolumeEvaluation(paramBoolean, this.mAudioVolumeEvalInterval);
     if (paramBoolean)
     {
-      if (this.mVolumeLevelNotifyTask == null)
-      {
+      if (this.mVolumeLevelNotifyTask == null) {
         this.mVolumeLevelNotifyTask = new TRTCCloudImpl.VolumeLevelNotifyTask(this);
-        this.mSDKHandler.postDelayed(this.mVolumeLevelNotifyTask, this.mAudioVolumeEvalInterval);
       }
+      localVolumeLevelNotifyTask = this.mVolumeLevelNotifyTask;
+      if (localVolumeLevelNotifyTask != null) {
+        this.mSDKHandler.removeCallbacks(localVolumeLevelNotifyTask);
+      }
+      this.mSDKHandler.postDelayed(this.mVolumeLevelNotifyTask, this.mAudioVolumeEvalInterval);
+      return;
     }
-    else
-    {
-      this.mVolumeLevelNotifyTask = null;
-      this.mAudioVolumeEvalInterval = 0;
+    TRTCCloudImpl.VolumeLevelNotifyTask localVolumeLevelNotifyTask = this.mVolumeLevelNotifyTask;
+    if (localVolumeLevelNotifyTask != null) {
+      this.mSDKHandler.removeCallbacks(localVolumeLevelNotifyTask);
     }
+    this.mAudioVolumeEvalInterval = 0;
   }
   
   public void stopAllAudioEffects()
   {
-    runOnSDKThread(new TRTCCloudImpl.101(this));
+    runOnSDKThread(new TRTCCloudImpl.110(this));
   }
   
   public void stopAllRemoteView()
   {
-    runOnSDKThread(new TRTCCloudImpl.22(this));
+    runOnSDKThread(new TRTCCloudImpl.26(this));
   }
   
   public void stopAudioEffect(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.100(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.109(this, paramInt));
   }
   
   public void stopAudioRecording()
@@ -3906,35 +4836,40 @@ public class TRTCCloudImpl
   
   public void stopBGM()
   {
-    runOnSDKThread(new TRTCCloudImpl.86(this));
+    runOnSDKThread(new TRTCCloudImpl.95(this));
   }
   
   protected void stopCollectStatus()
   {
-    Handler localHandler = this.mSDKHandler;
-    if (localHandler != null) {
-      localHandler.removeCallbacks(this.mStatusNotifyTask);
+    com.tencent.liteav.basic.util.f localf = this.mSDKHandler;
+    if (localf != null) {
+      localf.removeCallbacks(this.mStatusNotifyTask);
     }
   }
   
   public void stopLocalAudio()
   {
-    runOnSDKThread(new TRTCCloudImpl.47(this));
+    runOnSDKThread(new TRTCCloudImpl.53(this));
   }
   
   public void stopLocalPreview()
   {
-    runOnSDKThread(new TRTCCloudImpl.15(this));
+    runOnSDKThread(new TRTCCloudImpl.19(this));
+  }
+  
+  public void stopLocalRecording()
+  {
+    runOnSDKThread(new TRTCCloudImpl.68(this));
   }
   
   public void stopPublishCDNStream()
   {
-    runOnSDKThread(new TRTCCloudImpl.111(this));
+    runOnSDKThread(new TRTCCloudImpl.120(this));
   }
   
   public void stopPublishing()
   {
-    runOnSDKThread(new TRTCCloudImpl.110(this));
+    runOnSDKThread(new TRTCCloudImpl.119(this));
   }
   
   protected void stopRemoteRender(TRTCRoomInfo.UserInfo paramUserInfo)
@@ -3943,48 +4878,66 @@ public class TRTCCloudImpl
       return;
     }
     apiLog(String.format("stopRemoteRender userID:%s tinyID:%d streamType:%d", new Object[] { paramUserInfo.userID, Long.valueOf(paramUserInfo.tinyID), Integer.valueOf(paramUserInfo.streamType) }));
-    TXCAudioEngine.getInstance().stopRemoteAudio(String.valueOf(paramUserInfo.tinyID));
+    com.tencent.liteav.audio.a.a().a(String.valueOf(paramUserInfo.tinyID), hashCode());
     TXCloudVideoView localTXCloudVideoView1 = paramUserInfo.mainRender.view;
     TXCloudVideoView localTXCloudVideoView2 = paramUserInfo.subRender.view;
     if (paramUserInfo.mainRender.render != null)
     {
-      paramUserInfo.mainRender.render.setVideoFrameListener(null, com.tencent.liteav.basic.a.b.a);
+      paramUserInfo.mainRender.render.setVideoFrameListener(null, com.tencent.liteav.basic.b.b.a);
       paramUserInfo.mainRender.render.stop();
       if ((localTXCloudVideoView1 == null) && (paramUserInfo.mainRender.render.getVideoRender() != null)) {
-        paramUserInfo.mainRender.render.getVideoRender().e();
+        paramUserInfo.mainRender.render.getVideoRender().d();
       }
     }
     if (paramUserInfo.subRender.render != null)
     {
-      paramUserInfo.subRender.render.setVideoFrameListener(null, com.tencent.liteav.basic.a.b.a);
+      paramUserInfo.subRender.render.setVideoFrameListener(null, com.tencent.liteav.basic.b.b.a);
       paramUserInfo.subRender.render.stop();
       if ((localTXCloudVideoView2 == null) && (paramUserInfo.subRender.render.getVideoRender() != null)) {
-        paramUserInfo.subRender.render.getVideoRender().e();
+        paramUserInfo.subRender.render.getVideoRender().d();
       }
     }
     paramUserInfo.mainRender.stop();
     paramUserInfo.subRender.stop();
-    runOnMainThread(new TRTCCloudImpl.164(this, localTXCloudVideoView1, localTXCloudVideoView2));
+    runOnMainThread(new TRTCCloudImpl.185(this, localTXCloudVideoView1, localTXCloudVideoView2));
   }
   
   public void stopRemoteSubStreamView(String paramString)
   {
-    runOnSDKThread(new TRTCCloudImpl.19(this, paramString));
+    runOnSDKThread(new TRTCCloudImpl.23(this, paramString));
   }
   
   public void stopRemoteView(String paramString)
   {
-    runOnSDKThread(new TRTCCloudImpl.17(this, paramString));
+    runOnSDKThread(new TRTCCloudImpl.21(this, paramString));
+  }
+  
+  public void stopRemoteView(String paramString, int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      if (paramInt != 2)
+      {
+        paramString = new StringBuilder();
+        paramString.append("stopRemoteView unsupported streamType:");
+        paramString.append(paramInt);
+        TXCLog.e("TRTCCloudImpl", paramString.toString());
+        return;
+      }
+      stopRemoteSubStreamView(paramString);
+      return;
+    }
+    stopRemoteView(paramString);
   }
   
   public void stopScreenCapture()
   {
-    runOnSDKThread(new TRTCCloudImpl.25(this));
+    runOnSDKThread(new TRTCCloudImpl.29(this));
   }
   
   public void stopSpeedTest()
   {
-    runOnSDKThread(new TRTCCloudImpl.108(this));
+    runOnSDKThread(new TRTCCloudImpl.117(this));
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -4023,12 +4976,18 @@ public class TRTCCloudImpl
   
   public void switchCamera()
   {
-    runOnSDKThread(new TRTCCloudImpl.63(this));
+    TXDeviceManagerImpl localTXDeviceManagerImpl = this.mDeviceManager;
+    localTXDeviceManagerImpl.switchCamera(localTXDeviceManagerImpl.isFrontCamera() ^ true);
   }
   
   public void switchRole(int paramInt)
   {
-    runOnSDKThread(new TRTCCloudImpl.11(this, paramInt));
+    runOnSDKThread(new TRTCCloudImpl.14(this, paramInt));
+  }
+  
+  public void switchRoom(TRTCCloudDef.TRTCSwitchRoomConfig paramTRTCSwitchRoomConfig)
+  {
+    runOnSDKThread(new TRTCCloudImpl.17(this, paramTRTCSwitchRoomConfig));
   }
   
   protected void updateAppScene(int paramInt)
@@ -4042,7 +5001,7 @@ public class TRTCCloudImpl
       this.mAppScene = 1;
     }
     updateEncType();
-    apiLog(String.format("update appScene[%d] for video enc[%d] source scene[%d]", new Object[] { Integer.valueOf(this.mAppScene), Integer.valueOf(this.mConfig.j), Integer.valueOf(paramInt) }));
+    apiLog(String.format("update appScene[%d] for video enc[%d] source scene[%d]", new Object[] { Integer.valueOf(this.mAppScene), Integer.valueOf(this.mConfig.k), Integer.valueOf(paramInt) }));
   }
   
   protected void updatePrivateMapKey(JSONObject paramJSONObject)
@@ -4063,7 +5022,7 @@ public class TRTCCloudImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl
  * JD-Core Version:    0.7.0.1
  */

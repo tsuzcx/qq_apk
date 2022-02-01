@@ -24,7 +24,7 @@ public class MoreVideoInfoWidget$DownloadStatusUpdateReceiver
   
   public void a(@NonNull MoreVideoInfoWidget paramMoreVideoInfoWidget, @NonNull PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
   {
-    if (TextUtils.equals(String.valueOf(paramMoreVideoInfoWidget.hashCode()), paramDownloadStatusChangeEvent.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.equals(String.valueOf(paramMoreVideoInfoWidget.hashCode()), paramDownloadStatusChangeEvent.a)) {
       b(paramMoreVideoInfoWidget, paramDownloadStatusChangeEvent);
     }
   }
@@ -36,15 +36,15 @@ public class MoreVideoInfoWidget$DownloadStatusUpdateReceiver
   
   public void b(MoreVideoInfoWidget paramMoreVideoInfoWidget, PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
   {
-    paramMoreVideoInfoWidget = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.a()).a();
+    paramMoreVideoInfoWidget = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.d()).r();
     if (paramMoreVideoInfoWidget != null) {
       paramMoreVideoInfoWidget.c(false);
     }
-    if (paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+    if (paramDownloadStatusChangeEvent.c == null) {
       return;
     }
-    boolean bool = PlayModeUtils.a(paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    int i = paramDownloadStatusChangeEvent.jdField_a_of_type_Int;
+    boolean bool = PlayModeUtils.a(paramDownloadStatusChangeEvent.c);
+    int i = paramDownloadStatusChangeEvent.b;
     if (i != 0)
     {
       if (i != 1)
@@ -58,18 +58,18 @@ public class MoreVideoInfoWidget$DownloadStatusUpdateReceiver
           if (!bool) {
             paramMoreVideoInfoWidget = "1";
           }
-          StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { paramMoreVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-          QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131706919), 0).a();
+          StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { paramMoreVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.c.mVid });
+          QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131904762), 0).show();
           return;
         }
         if (!bool) {
           paramMoreVideoInfoWidget = "1";
         }
-        StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { paramMoreVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(BaseApplicationImpl.getContext(), 2, StoryApi.a(2131699938), 0).a();
+        StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { paramMoreVideoInfoWidget, "", "", paramDownloadStatusChangeEvent.c.mVid });
+        QQToast.makeText(BaseApplicationImpl.getContext(), 2, StoryApi.b(2131897991), 0).show();
         return;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131706915), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131904760), 0).show();
     }
   }
 }

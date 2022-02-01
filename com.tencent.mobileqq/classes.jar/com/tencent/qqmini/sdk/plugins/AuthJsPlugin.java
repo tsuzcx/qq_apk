@@ -17,7 +17,7 @@ public class AuthJsPlugin
   private static final String TAG = "AuthJsPlugin";
   private ChannelProxy mChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
   
-  @JsEvent({"login"})
+  @JsEvent(isSync=false, value={"login"})
   public void login(RequestEvent paramRequestEvent)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,7 +29,7 @@ public class AuthJsPlugin
     this.mChannelProxy.login(this.mApkgInfo.appId, new AuthJsPlugin.1(this, paramRequestEvent));
   }
   
-  @JsEvent({"refreshSession"})
+  @JsEvent(isSync=false, value={"refreshSession"})
   public void refreshSession(RequestEvent paramRequestEvent)
   {
     this.mChannelProxy.checkSession(this.mApkgInfo.appId, new AuthJsPlugin.2(this, paramRequestEvent));
@@ -37,7 +37,7 @@ public class AuthJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AuthJsPlugin
  * JD-Core Version:    0.7.0.1
  */

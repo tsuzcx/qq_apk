@@ -22,42 +22,42 @@ import java.util.List;
 class QzonePhotoView$PhotoGridAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  List<QzonePhotoView.PhotoInfo> jdField_a_of_type_JavaUtilList;
+  List<QzonePhotoView.PhotoInfo> a;
   int b;
+  int c;
   
   QzonePhotoView$PhotoGridAdapter(QzonePhotoView paramQzonePhotoView) {}
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public void a(List<QzonePhotoView.PhotoInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     int i = paramList.size();
     if (i < 16)
     {
-      if (QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView)) {
-        this.jdField_a_of_type_JavaUtilList.add(new QzonePhotoView.PhotoInfo(paramList.size(), 101, null));
+      if (QzonePhotoView.e(this.d)) {
+        this.a.add(new QzonePhotoView.PhotoInfo(paramList.size(), 101, null));
       }
     }
     else
     {
-      paramList = this.jdField_a_of_type_JavaUtilList;
+      paramList = this.a;
       i -= 1;
       paramList = (QzonePhotoView.PhotoInfo)paramList.get(i);
-      paramList.d = 102;
-      this.jdField_a_of_type_JavaUtilList.set(i, paramList);
+      paramList.f = 102;
+      this.a.set(i, paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -66,7 +66,7 @@ class QzonePhotoView$PhotoGridAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -80,40 +80,40 @@ class QzonePhotoView$PhotoGridAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = (QzonePhotoView.PhotoInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject1 = (QzonePhotoView.PhotoInfo)this.a.get(paramInt);
     QzonePhotoView.PhotoGridAdapter.ItemHolder localItemHolder;
     if (paramView == null)
     {
       localItemHolder = new QzonePhotoView.PhotoGridAdapter.ItemHolder(this);
-      paramView = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.getContext()).inflate(2131562029, null);
-      int i = this.jdField_a_of_type_Int;
+      paramView = (RelativeLayout)LayoutInflater.from(this.d.getContext()).inflate(2131628455, null);
+      int i = this.b;
       paramView.setLayoutParams(new AbsListView.LayoutParams(i, i));
-      localItemHolder.a = ((URLImageView)paramView.findViewById(2131374934));
+      localItemHolder.a = ((URLImageView)paramView.findViewById(2131443119));
       localItemHolder.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
       String str2 = ProfileCardTemplateUtil.a(-1L);
       Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.b;
-      i = this.jdField_a_of_type_Int;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.c;
+      i = this.b;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
       String str1 = ((QzonePhotoView.PhotoInfo)localObject1).a(i);
-      if (((QzonePhotoView.PhotoInfo)localObject1).d == 100)
+      if (((QzonePhotoView.PhotoInfo)localObject1).f == 100)
       {
         if (!TextUtils.isEmpty(str1))
         {
           localItemHolder.a.setImageDrawable(URLDrawable.getDrawable(str1, (URLDrawable.URLDrawableOptions)localObject2));
           localObject1 = localItemHolder.a;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131712091));
+          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131909713));
           ((StringBuilder)localObject2).append(paramInt + 1);
           ((URLImageView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
         }
       }
-      else if (((QzonePhotoView.PhotoInfo)localObject1).d == 101)
+      else if (((QzonePhotoView.PhotoInfo)localObject1).f == 101)
       {
-        QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).updateViewAttr(localItemHolder.a, "src", QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).currentTemplate, "photoAddSrc");
-        localItemHolder.a.setContentDescription(HardCodeUtil.a(2131712085));
+        QzonePhotoView.f(this.d).updateViewAttr(localItemHolder.a, "src", QzonePhotoView.d(this.d).currentTemplate, "photoAddSrc");
+        localItemHolder.a.setContentDescription(HardCodeUtil.a(2131909708));
       }
-      else if (((QzonePhotoView.PhotoInfo)localObject1).d == 102)
+      else if (((QzonePhotoView.PhotoInfo)localObject1).f == 102)
       {
         if (!TextUtils.isEmpty(str2))
         {
@@ -123,9 +123,9 @@ class QzonePhotoView$PhotoGridAdapter
         if (!TextUtils.isEmpty(str1)) {
           localItemHolder.a.setBackgroundDrawable(URLDrawable.getDrawable(str1, (URLDrawable.URLDrawableOptions)localObject2));
         }
-        localItemHolder.a.setContentDescription(HardCodeUtil.a(2131712094));
+        localItemHolder.a.setContentDescription(HardCodeUtil.a(2131909716));
       }
-      localItemHolder.a.setOnClickListener(QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+      localItemHolder.a.setOnClickListener(QzonePhotoView.g(this.d));
       paramView.setTag(localItemHolder);
     }
     else
@@ -138,7 +138,7 @@ class QzonePhotoView$PhotoGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.PhotoGridAdapter
  * JD-Core Version:    0.7.0.1
  */

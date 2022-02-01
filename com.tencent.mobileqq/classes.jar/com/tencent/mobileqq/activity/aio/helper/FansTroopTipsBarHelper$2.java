@@ -20,7 +20,7 @@ class FansTroopTipsBarHelper$2
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if ((FansTroopTipsBarHelper.a(this.a) != null) && (TextUtils.equals(paramString, FansTroopTipsBarHelper.a(this.a).a))) {
+      if ((FansTroopTipsBarHelper.a(this.a) != null) && (TextUtils.equals(paramString, FansTroopTipsBarHelper.a(this.a).b))) {
         this.a.a();
       }
     }
@@ -28,7 +28,7 @@ class FansTroopTipsBarHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FansTroopTipsBarHelper.2
  * JD-Core Version:    0.7.0.1
  */

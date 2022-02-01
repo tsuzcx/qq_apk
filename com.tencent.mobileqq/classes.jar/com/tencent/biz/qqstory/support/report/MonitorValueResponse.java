@@ -15,9 +15,9 @@ public class MonitorValueResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MonitorValueResponse{errorCode=");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", errorMsg='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

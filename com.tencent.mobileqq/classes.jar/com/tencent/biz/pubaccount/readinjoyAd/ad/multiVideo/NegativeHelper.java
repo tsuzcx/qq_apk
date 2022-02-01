@@ -2,6 +2,8 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.multiVideo;
 
 import android.app.Activity;
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdDislikeInfo;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdEntityConvertService;
 import com.tencent.mobileqq.kandian.ad.api.entity.INegativeHelper;
 import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
@@ -12,54 +14,55 @@ import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.KandianPopupWindowForAd;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class NegativeHelper
   implements INegativeHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private IAdapter jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIAdapter;
-  private KandianPopupWindowForAd jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd;
+  private Activity a;
+  private IAdapter b;
+  private KandianPopupWindowForAd c;
   
   public NegativeHelper(Activity paramActivity, IAdapter paramIAdapter)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIAdapter = paramIAdapter;
-    this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd = new KandianPopupWindowForAd(paramActivity);
+    this.a = paramActivity;
+    this.b = paramIAdapter;
+    this.c = new KandianPopupWindowForAd(paramActivity);
   }
   
   public void a()
   {
-    KandianPopupWindowForAd localKandianPopupWindowForAd = this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd;
+    KandianPopupWindowForAd localKandianPopupWindowForAd = this.c;
     if ((localKandianPopupWindowForAd != null) && (localKandianPopupWindowForAd.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.dismiss();
+      this.c.dismiss();
     }
   }
   
   public void a(View paramView, int paramInt, VideoInfo paramVideoInfo)
   {
-    NegativeHelper.2 local2 = new NegativeHelper.2(this, paramInt, paramVideoInfo);
-    if (!this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.a()) {
-      this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.a();
+    NegativeHelper.3 local3 = new NegativeHelper.3(this, paramInt, paramVideoInfo);
+    if (!this.c.a()) {
+      this.c.b();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd;
+    Object localObject = this.c;
     int i = 0;
-    ((KandianPopupWindowForAd)localObject).b = false;
+    ((KandianPopupWindowForAd)localObject).k = false;
     localObject = new ArrayList();
-    if ((paramVideoInfo.a != null) && (paramVideoInfo.a.e != null)) {
-      while (i < paramVideoInfo.a.e.size())
+    if ((paramVideoInfo.as != null) && (paramVideoInfo.as.P != null)) {
+      while (i < paramVideoInfo.as.P.size())
       {
         DislikeInfo localDislikeInfo = new DislikeInfo();
-        localDislikeInfo.jdField_a_of_type_Long = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_Long;
-        localDislikeInfo.jdField_a_of_type_JavaLangString = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_JavaLangString;
+        localDislikeInfo.e = ((VideoAdInfo.NegFeedback)paramVideoInfo.as.P.get(i)).a;
+        localDislikeInfo.c = ((VideoAdInfo.NegFeedback)paramVideoInfo.as.P.get(i)).b;
         ((ArrayList)localObject).add(localDislikeInfo);
         i += 1;
       }
     }
     if (((ArrayList)localObject).size() > 0)
     {
-      ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.a);
-      if (this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.a(paramInt, (ArrayList)localObject)) {
-        this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.a(paramView, local2);
+      ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+      if (this.c.a(paramInt, (ArrayList)localObject)) {
+        this.c.a(paramView, local3);
       }
     }
   }
@@ -69,18 +72,52 @@ public class NegativeHelper
     a(paramView, paramInt, (VideoInfo)paramObject);
   }
   
+  public void a(View paramView, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramView != null) && (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdDislikeInfos != null))
+    {
+      if (paramAdvertisementInfo.mAdDislikeInfos.size() == 0) {
+        return;
+      }
+      NegativeHelper.1 local1 = new NegativeHelper.1(this, paramAdvertisementInfo);
+      if (!this.c.a()) {
+        this.c.b();
+      }
+      this.c.k = false;
+      ArrayList localArrayList = new ArrayList();
+      paramAdvertisementInfo = paramAdvertisementInfo.mAdDislikeInfos.iterator();
+      while (paramAdvertisementInfo.hasNext())
+      {
+        AdDislikeInfo localAdDislikeInfo = (AdDislikeInfo)paramAdvertisementInfo.next();
+        DislikeInfo localDislikeInfo = new DislikeInfo();
+        localDislikeInfo.g = localAdDislikeInfo.g;
+        localDislikeInfo.d = localAdDislikeInfo.d;
+        localDislikeInfo.e = localAdDislikeInfo.e;
+        localDislikeInfo.f = localAdDislikeInfo.f;
+        localDislikeInfo.c = localAdDislikeInfo.c;
+        localArrayList.add(localDislikeInfo);
+      }
+      if ((localArrayList.size() > 0) && (this.c.a(0, localArrayList)))
+      {
+        this.c.a(new NegativeHelper.2(this));
+        this.c.a(paramView, local1);
+      }
+      this.c.c();
+    }
+  }
+  
   public void b()
   {
-    KandianPopupWindowForAd localKandianPopupWindowForAd = this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd;
+    KandianPopupWindowForAd localKandianPopupWindowForAd = this.c;
     if ((localKandianPopupWindowForAd != null) && (localKandianPopupWindowForAd.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd.dismiss();
+      this.c.dismiss();
     }
-    this.jdField_a_of_type_ComTencentWidgetKandianPopupWindowForAd = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.multiVideo.NegativeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,21 @@ package com.tencent.mobileqq.kandian.repo.video.entity;
 
 public class NowLiveInfo$MixInfo$LiveInfo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private String b;
   private String c;
-  private String d;
+  private int d;
+  private int e;
+  private String f;
   
   public NowLiveInfo$MixInfo$LiveInfo(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.entity.NowLiveInfo.MixInfo.LiveInfo
  * JD-Core Version:    0.7.0.1
  */

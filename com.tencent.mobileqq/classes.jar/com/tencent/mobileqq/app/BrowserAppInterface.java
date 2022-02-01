@@ -74,46 +74,28 @@ public class BrowserAppInterface
   extends BaseToolAppInterface
   implements ITbsDownloader, IToolProcEventListener
 {
-  public static final String a;
-  public static final AtomicBoolean a;
-  public static final AtomicBoolean b;
-  public static final AtomicBoolean c;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  BrowserService jdField_a_of_type_ComTencentMobileqqAppUtilsBrowserService = new BrowserService(this);
-  private IReadInJoyLogicManager jdField_a_of_type_ComTencentMobileqqKandianGlueMsfApiIReadInJoyLogicManager = null;
-  protected IOldBigDataChannelManager a;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
-  Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public boolean b;
-  private int c;
-  public boolean c;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaLangString = EcshopReportHandler.class.getName();
-  }
+  public static final AtomicBoolean c = new AtomicBoolean(false);
+  public static final AtomicBoolean k = new AtomicBoolean(false);
+  public static final AtomicBoolean l = new AtomicBoolean(false);
+  public static final String m = EcshopReportHandler.class.getName();
+  long a;
+  BrowserService b = new BrowserService(this);
+  int d = 0;
+  boolean e = false;
+  int f = -1;
+  Intent g;
+  Map<Integer, Manager> h = new HashMap(20);
+  public boolean i = false;
+  public boolean j = false;
+  protected IOldBigDataChannelManager n = null;
+  private EntityManagerFactory o;
+  private int p = 0;
+  private IReadInJoyLogicManager q = null;
+  private NetEngineFactory r = null;
   
   public BrowserAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager = null;
-  }
-  
-  private void a()
-  {
-    QbSdk.setTbsLogClient(new BrowserAppInterface.2(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
@@ -126,8 +108,8 @@ public class BrowserAppInterface
         if (TextUtils.isEmpty(str1)) {
           break label175;
         }
-        i = Integer.parseInt(str1);
-        if ((i & paramInt) == paramInt)
+        i1 = Integer.parseInt(str1);
+        if ((i1 & paramInt) == paramInt)
         {
           if (Build.VERSION.SDK_INT < 21)
           {
@@ -166,7 +148,7 @@ public class BrowserAppInterface
       }
       return;
       label175:
-      int i = 15;
+      int i1 = 15;
       continue;
       label181:
       String str2 = "session";
@@ -175,14 +157,14 @@ public class BrowserAppInterface
   
   public static void a(String paramString)
   {
-    if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!k.get())
     {
       if (QLog.isColorLevel()) {
         QLog.i("BrowserAppInterface", 2, "try get lock from sHasRemoveLastCookies");
       }
-      synchronized (jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      synchronized (k)
       {
-        if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (!k.get())
         {
           SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("qb_info", 4);
           if (QLog.isColorLevel()) {
@@ -190,17 +172,17 @@ public class BrowserAppInterface
           }
           if (!localSharedPreferences.getString("LastUIN", "").equals(paramString))
           {
-            long l = System.currentTimeMillis();
+            long l1 = System.currentTimeMillis();
             a(1);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("User account changed, need remove all cookies. cost=");
-            localStringBuilder.append(System.currentTimeMillis() - l);
+            localStringBuilder.append(System.currentTimeMillis() - l1);
             QLog.e("BrowserAppInterface", 1, localStringBuilder.toString());
             if (!TextUtils.isEmpty(paramString)) {
               localSharedPreferences.edit().putString("LastUIN", paramString).commit();
             }
           }
-          jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+          k.set(true);
         }
         return;
       }
@@ -245,10 +227,10 @@ public class BrowserAppInterface
           return true;
         }
       }
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      if (c.get())
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+        this.e = true;
+        this.g = paramIntent;
         return true;
       }
       try
@@ -281,9 +263,9 @@ public class BrowserAppInterface
       {
         paramContext = new StringBuilder();
         paramContext.append("ACTION_ACCOUNT_EXPIRED, need remove all cookie: ");
-        paramContext.append(jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+        paramContext.append(l.get());
         QLog.e("BrowserAppInterface", 1, paramContext.toString());
-        if (jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+        if (l.compareAndSet(false, true)) {
           a(1);
         }
         return true;
@@ -297,7 +279,7 @@ public class BrowserAppInterface
   private boolean a(Intent paramIntent)
   {
     boolean bool2 = ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isPreloadWebProcess();
-    int i = BaseApplicationImpl.getApplication().getRuntime().getRunningModuleSize();
+    int i1 = BaseApplicationImpl.getApplication().getRuntime().getRunningModuleSize();
     boolean bool1;
     if ((paramIntent != null) && (paramIntent.getBooleanExtra("qq_mode_foreground", false))) {
       bool1 = true;
@@ -307,11 +289,11 @@ public class BrowserAppInterface
     boolean bool3 = BaseApplicationImpl.getApplication().getRuntime().isModuleRunning("modular_web");
     boolean bool4 = WebAccelerateHelper.isWebViewCache ^ true;
     if (QLog.isColorLevel()) {
-      QLog.d("BrowserAppInterface", 2, String.format("qq_mode_foreground= %b, runningModuleSize: %d, isPreloadWebProcess: %b, isWebModuleExit: %b, isPreloadSucess: %b", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) }));
+      QLog.d("BrowserAppInterface", 2, String.format("qq_mode_foreground= %b, runningModuleSize: %d, isPreloadWebProcess: %b, isWebModuleExit: %b, isPreloadSucess: %b", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) }));
     }
     if (bool1)
     {
-      if ((bool2) && (bool3) && (bool4) && (i <= 1))
+      if ((bool2) && (bool3) && (bool4) && (i1 <= 1))
       {
         if (QLog.isColorLevel()) {
           QLog.d("BrowserAppInterface", 2, "don't need kill web process!");
@@ -320,15 +302,15 @@ public class BrowserAppInterface
       }
       if (SnapshotService.a())
       {
-        i = this.jdField_c_of_type_Int;
-        if (i < 10)
+        i1 = this.p;
+        if (i1 < 10)
         {
-          this.jdField_c_of_type_Int = (i + 1);
+          this.p = (i1 + 1);
           if (QLog.isColorLevel())
           {
             paramIntent = new StringBuilder();
             paramIntent.append("don't kill web process for debug snapshot, ");
-            paramIntent.append(this.jdField_c_of_type_Int);
+            paramIntent.append(this.p);
             paramIntent.append("times");
             QLog.d("BrowserAppInterface", 2, paramIntent.toString());
           }
@@ -338,35 +320,22 @@ public class BrowserAppInterface
       if (QLog.isColorLevel()) {
         QLog.d("BrowserAppInterface", 2, "try restart web process");
       }
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_b_of_type_Boolean = true;
+      this.p = 0;
+      this.i = true;
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.d("BrowserAppInterface", 2, "exit web process");
     }
     if (bool2) {
-      this.jdField_c_of_type_Boolean = true;
+      this.j = true;
     }
     return false;
   }
   
-  public IReadInJoyLogicManager a()
+  private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueMsfApiIReadInJoyLogicManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueMsfApiIReadInJoyLogicManager = ((IReadInJoyLogicManagerFactory)QRoute.api(IReadInJoyLogicManagerFactory.class)).createReadInJoyLogicManager(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianGlueMsfApiIReadInJoyLogicManager;
-  }
-  
-  public IOldBigDataChannelManager a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager = ((IOldBigDataChannelManager)QRoute.api(IOldBigDataChannelManager.class));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager.init(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager;
+    QbSdk.setTbsLogClient(new BrowserAppInterface.2(this, BaseApplicationImpl.getContext()));
   }
   
   public String a()
@@ -400,22 +369,22 @@ public class BrowserAppInterface
       return;
     }
     QbSdk.setUploadCode(BaseApplication.getContext(), 153);
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (c.compareAndSet(false, true))
     {
       QbSdk.setUploadCode(BaseApplication.getContext(), 154);
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(((Context)localObject).getPackageName());
       localStringBuilder.append("_preferences");
       localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 4);
-      QbSdk.setTbsListener(new BrowserAppInterface.3(this, (SharedPreferences)localObject, l));
+      QbSdk.setTbsListener(new BrowserAppInterface.3(this, (SharedPreferences)localObject, l1));
       QLog.d("TBS_update", 1, "tbs start download");
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);
       ((SharedPreferences.Editor)localObject).remove("tbs_download_complete");
       ((SharedPreferences.Editor)localObject).remove("tbs_download_progress");
       ((SharedPreferences.Editor)localObject).commit();
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
       if (AppNetConnInfo.isWifiConn())
       {
         QbSdk.setUploadCode(BaseApplication.getContext(), 155);
@@ -432,10 +401,28 @@ public class BrowserAppInterface
   
   protected void addManager(int paramInt, Manager paramManager)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {
+    if (this.h.get(Integer.valueOf(paramInt)) != null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
+    this.h.put(Integer.valueOf(paramInt), paramManager);
+  }
+  
+  public IOldBigDataChannelManager b()
+  {
+    if (this.n == null)
+    {
+      this.n = ((IOldBigDataChannelManager)QRoute.api(IOldBigDataChannelManager.class));
+      this.n.init(this);
+    }
+    return this.n;
+  }
+  
+  public IReadInJoyLogicManager c()
+  {
+    if (this.q == null) {
+      this.q = ((IReadInJoyLogicManagerFactory)QRoute.api(IReadInJoyLogicManagerFactory.class)).createReadInJoyLogicManager(this);
+    }
+    return this.q;
   }
   
   public BaseApplication getApp()
@@ -455,18 +442,18 @@ public class BrowserAppInterface
   
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
+    if (this.o == null) {
+      this.o = QQEntityManagerFactoryProxy.a(getAccount(), super.getEntityManagerFactory());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+    return this.o;
   }
   
   public Manager getManager(int paramInt)
   {
-    Object localObject1 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    Object localObject1 = (Manager)this.h.get(Integer.valueOf(paramInt));
     Object localObject4 = localObject1;
     if (localObject1 == null) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.h)
       {
         if (paramInt == QQManagerFactory.DOWNLOADER_FACTORY) {
           localObject1 = new DownloaderFactory(this);
@@ -479,16 +466,16 @@ public class BrowserAppInterface
         } else if (paramInt == QQManagerFactory.URL_INTECEPT_MANAGER) {
           localObject1 = new URLInterceptManager();
         }
-        if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null)
+        if (this.h.get(Integer.valueOf(paramInt)) != null)
         {
-          localObject4 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+          localObject4 = (Manager)this.h.get(Integer.valueOf(paramInt));
         }
         else
         {
           localObject4 = localObject1;
           if (localObject1 != null)
           {
-            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject1);
+            this.h.put(Integer.valueOf(paramInt), localObject1);
             localObject4 = localObject1;
           }
         }
@@ -513,7 +500,7 @@ public class BrowserAppInterface
   
   public MobileQQServiceBase getMobileQQService()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppUtilsBrowserService;
+    return this.b;
   }
   
   public String getModuleId()
@@ -529,18 +516,18 @@ public class BrowserAppInterface
     boolean bool = ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isPreloadWebProcess();
     ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).setPreloadWebProcess(false);
     Intent localIntent;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.i = false;
       localIntent = new Intent();
       localIntent.setAction("com.tencent.mobileqq.webprocess.restart_web_process");
       localIntent.putExtra("isPreloadWebProcess", bool);
       BaseApplicationImpl.getContext().sendBroadcast(localIntent);
       return;
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.j)
     {
-      this.jdField_c_of_type_Boolean = false;
+      this.j = false;
       localIntent = new Intent();
       localIntent.setAction("com.tencent.mobileqq.webprocess.report");
       BaseApplicationImpl.getContext().sendBroadcast(localIntent);
@@ -551,7 +538,7 @@ public class BrowserAppInterface
   {
     StartupTracker.a(null, "web_browserAppinterface_onCreate");
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = System.currentTimeMillis();
     try
     {
       if (Build.VERSION.SDK_INT < 28) {
@@ -569,7 +556,7 @@ public class BrowserAppInterface
     QLog.e("BrowserAppInterface", 1, "setDataDirectorySuffix error");
     label45:
     SwiftBrowserIdleTaskHelper.a(this);
-    a();
+    d();
     str = getAccount();
     if (TextUtils.isEmpty(str))
     {
@@ -592,8 +579,8 @@ public class BrowserAppInterface
     } else {
       bool = false;
     }
-    HtmlOffline.jdField_a_of_type_Boolean = bool;
-    if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    HtmlOffline.i = bool;
+    if (!k.get())
     {
       if (QLog.isColorLevel()) {
         QLog.i("BrowserAppInterface", 2, "BrowserAppInterface.onCreate: try removeLastUinCookies!");
@@ -604,14 +591,14 @@ public class BrowserAppInterface
     if (!paramBundle.getBoolean("is_set", false)) {
       paramBundle.edit().putBoolean("hide_back_text", true).putBoolean("is_set", true).commit();
     }
-    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.B = SystemClock.elapsedRealtime();
+    com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.E = SystemClock.elapsedRealtime();
     StartupTracker.a("web_browserAppinterface_onCreate", null);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    IOldBigDataChannelManager localIOldBigDataChannelManager = this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager;
+    IOldBigDataChannelManager localIOldBigDataChannelManager = this.n;
     if (localIOldBigDataChannelManager != null)
     {
       try
@@ -622,25 +609,25 @@ public class BrowserAppInterface
       {
         localException1.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiIOldBigDataChannelManager = null;
+      this.n = null;
     }
-    NetEngineFactory localNetEngineFactory = this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+    NetEngineFactory localNetEngineFactory = this.r;
     if (localNetEngineFactory != null)
     {
       localNetEngineFactory.onDestroy();
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
+        this.r.onDestroy();
       }
       catch (Exception localException2)
       {
         localException2.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
+      this.r = null;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.h)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.keySet();
+      Object localObject2 = this.h.keySet();
       if ((localObject2 != null) && (((Set)localObject2).size() > 0))
       {
         localObject2 = ((Set)localObject2).iterator();
@@ -652,7 +639,7 @@ public class BrowserAppInterface
           }
           try
           {
-            Manager localManager = (Manager)this.jdField_a_of_type_JavaUtilMap.get(((Iterator)localObject2).next());
+            Manager localManager = (Manager)this.h.get(((Iterator)localObject2).next());
             if (localManager == null) {
               continue;
             }
@@ -667,13 +654,13 @@ public class BrowserAppInterface
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.h.clear();
       if (InnerDns.mInstance != null) {
         InnerDns.getInstance().onAppDestroy();
       }
-      EventApiPlugin.a();
-      UiApiPlugin.e();
-      ??? = this.jdField_a_of_type_ComTencentMobileqqKandianGlueMsfApiIReadInJoyLogicManager;
+      EventApiPlugin.b();
+      UiApiPlugin.g();
+      ??? = this.q;
       if (??? != null) {
         ((IReadInJoyLogicManager)???).unInitialize();
       }
@@ -716,7 +703,7 @@ public class BrowserAppInterface
     if (bool) {
       getHandler(BrowserAppInterface.class).postDelayed(new BrowserAppInterface.4(this), 3000L);
     }
-    if ((WebCoreService.jdField_a_of_type_Boolean) && (DeviceInfoUtil.e() >>> 20 < 20L)) {
+    if ((WebCoreService.a) && (DeviceInfoUtil.r() >>> 20 < 20L)) {
       WebCoreService.b();
     }
     try
@@ -724,9 +711,9 @@ public class BrowserAppInterface
       localObject = new HashMap();
       ((HashMap)localObject).put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
       ((HashMap)localObject).put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
-      ((HashMap)localObject).put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
-      ((HashMap)localObject).put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
-      ((HashMap)localObject).put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
+      ((HashMap)localObject).put("param_availableMem", String.valueOf(DeviceInfoUtil.r()));
+      ((HashMap)localObject).put("param_cpuNum", String.valueOf(DeviceInfoUtil.h()));
+      ((HashMap)localObject).put("param_cpuFreq", String.valueOf(DeviceInfoUtil.k()));
       ((HashMap)localObject).put("param_releaseType", String.valueOf(1));
       if (QLog.isColorLevel())
       {
@@ -744,14 +731,14 @@ public class BrowserAppInterface
   protected void onRunningForeground()
   {
     super.onRunningForeground();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentIntent = null;
+    this.e = false;
+    this.g = null;
     AccessibilityUtil.a(getApp());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BrowserAppInterface
  * JD-Core Version:    0.7.0.1
  */

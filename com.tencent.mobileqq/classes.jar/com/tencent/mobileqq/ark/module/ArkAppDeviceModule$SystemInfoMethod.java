@@ -18,7 +18,7 @@ class ArkAppDeviceModule$SystemInfoMethod
   
   public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {
+    if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.DEVICE_INFORMATION")) {
       return false;
     }
     paramArrayOfVariantWrapper = ((IDisplayConfig)QRoute.api(IDisplayConfig.class)).getDisplayMetrics();
@@ -44,7 +44,7 @@ class ArkAppDeviceModule$SystemInfoMethod
     }
     if ("GetIdentifier".equals(paramString))
     {
-      paramArrayOfVariantWrapper = DeviceInfoUtil.a();
+      paramArrayOfVariantWrapper = DeviceInfoUtil.b();
       paramString = paramArrayOfVariantWrapper;
       if (!TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
     }
@@ -66,7 +66,7 @@ class ArkAppDeviceModule$SystemInfoMethod
       paramArrayOfVariantWrapper = "";
     }
     paramString = paramArrayOfVariantWrapper;
-    if (this.a.jdField_a_of_type_Int != 0) {
+    if (this.a.e != 0) {
       paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
     }
     paramVariantWrapper.SetString(paramString);
@@ -76,7 +76,7 @@ class ArkAppDeviceModule$SystemInfoMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.SystemInfoMethod
  * JD-Core Version:    0.7.0.1
  */

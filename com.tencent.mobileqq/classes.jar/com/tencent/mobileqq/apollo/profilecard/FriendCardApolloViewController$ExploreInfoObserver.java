@@ -14,7 +14,7 @@ class FriendCardApolloViewController$ExploreInfoObserver
     this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  protected void e(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean)
     {
@@ -34,7 +34,7 @@ class FriendCardApolloViewController$ExploreInfoObserver
         FriendCardApolloViewController.a(paramObject, ((JSONObject)localObject).optString("icon_url"));
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[onGetExploreMsg] iconUrl:");
-        ((StringBuilder)localObject).append(FriendCardApolloViewController.a(paramObject));
+        ((StringBuilder)localObject).append(FriendCardApolloViewController.e(paramObject));
         QLog.d("[cmshow]FriendCardApolloViewController", 2, ((StringBuilder)localObject).toString());
         return;
       }
@@ -58,7 +58,7 @@ class FriendCardApolloViewController$ExploreInfoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.FriendCardApolloViewController.ExploreInfoObserver
  * JD-Core Version:    0.7.0.1
  */

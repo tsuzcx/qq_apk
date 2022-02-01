@@ -13,15 +13,15 @@ class AIOIceBreakView$1$1
   
   public void run()
   {
-    HotPicMainPanel localHotPicMainPanel = (HotPicMainPanel)AIOIceBreakView.a(this.a.a).b().a().b(24);
+    HotPicMainPanel localHotPicMainPanel = (HotPicMainPanel)AIOIceBreakView.a(this.a.a).bv().q().d(24);
     if (localHotPicMainPanel != null) {
-      localHotPicMainPanel.a.setCurrentItem(localHotPicMainPanel.e, true);
+      localHotPicMainPanel.p.setCurrentItem(localHotPicMainPanel.r, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.1.1
  * JD-Core Version:    0.7.0.1
  */

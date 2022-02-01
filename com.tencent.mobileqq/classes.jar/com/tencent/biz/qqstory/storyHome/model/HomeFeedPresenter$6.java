@@ -20,25 +20,25 @@ class HomeFeedPresenter$6
         if (paramStoryPushMsg.a == 17)
         {
           SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-          ((CommentManager)SuperManager.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+          ((CommentManager)SuperManager.a(17)).a(paramStoryPushMsg.f, paramStoryPushMsg.i);
           return;
         }
         if (paramStoryPushMsg.a == 16)
         {
           SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-          this.a.b(paramStoryPushMsg.d);
+          this.a.c(paramStoryPushMsg.f);
         }
       }
       else
       {
         SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
+        this.a.c(paramStoryPushMsg.f);
       }
     }
     else
     {
       SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
+      this.a.b(paramStoryPushMsg.f);
     }
   }
 }

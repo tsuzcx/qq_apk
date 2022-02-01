@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResDownloader.OnApolloDownLoadListener;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloGuestsPresenter$2
@@ -24,15 +24,15 @@ class ApolloGuestsPresenter$2
       paramString.append(paramArrayOfInt);
       QLog.d("[cmshow]ApolloGuestsPresenter", 2, paramString.toString());
     }
-    if (ApolloGuestsPresenter.a(this.a) != null) {
-      ApolloGuestsPresenter.a(this.a).onDressChange();
+    if (ApolloGuestsPresenter.b(this.a) != null) {
+      ApolloGuestsPresenter.b(this.a).onDressChange();
     }
     this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter.2
  * JD-Core Version:    0.7.0.1
  */

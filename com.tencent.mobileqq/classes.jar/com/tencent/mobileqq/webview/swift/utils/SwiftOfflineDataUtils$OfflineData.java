@@ -4,27 +4,27 @@ import android.os.SystemClock;
 
 public class SwiftOfflineDataUtils$OfflineData
 {
-  final long a;
   public final String a;
   public final String b;
   public final String c;
+  final long d;
   
   SwiftOfflineDataUtils$OfflineData(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.d = SystemClock.elapsedRealtime();
   }
   
   boolean a()
   {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    return SystemClock.elapsedRealtime() - this.d > 300000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData
  * JD-Core Version:    0.7.0.1
  */

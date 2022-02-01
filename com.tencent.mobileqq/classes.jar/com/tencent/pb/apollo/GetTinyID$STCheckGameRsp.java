@@ -46,7 +46,7 @@ public final class GetTinyID$STCheckGameRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.apollo.GetTinyID.STCheckGameRsp
  * JD-Core Version:    0.7.0.1
  */

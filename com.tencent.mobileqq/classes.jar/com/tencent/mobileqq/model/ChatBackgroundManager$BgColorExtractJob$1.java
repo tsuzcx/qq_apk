@@ -9,12 +9,12 @@ class ChatBackgroundManager$BgColorExtractJob$1
   
   public void run()
   {
-    ChatBackgroundManager.BgColorExtractJob.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgColorExtractJob).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilVector);
+    ChatBackgroundManager.BgColorExtractJob.a(this.c).a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.BgColorExtractJob.1
  * JD-Core Version:    0.7.0.1
  */

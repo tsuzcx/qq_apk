@@ -23,19 +23,19 @@ final class RIJUserInfoUtil$requestUserInfo$runnable$1
       QLog.i("RIJUserInfoUtil", 1, "[requestUserInfo] switch is off.");
       return;
     }
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[requestUserInfo] channelId is not recommend, channelId = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.i("RIJUserInfoUtil", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = new ArrayList();
-      Object localObject2 = new ArrayList((Collection)this.jdField_a_of_type_JavaUtilList).iterator();
+      Object localObject2 = new ArrayList((Collection)this.b).iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
       {
@@ -66,7 +66,7 @@ final class RIJUserInfoUtil$requestUserInfo$runnable$1
           ((StringBuilder)localObject2).append(", ");
         }
         QLog.i("RIJUserInfoUtil", 1, ((StringBuilder)localObject2).toString());
-        ReadInJoyUserInfoModule.a((List)localObject1);
+        ReadInJoyUserInfoModule.b((List)localObject1);
       }
       return;
     }
@@ -75,7 +75,7 @@ final class RIJUserInfoUtil$requestUserInfo$runnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.RIJUserInfoUtil.requestUserInfo.runnable.1
  * JD-Core Version:    0.7.0.1
  */

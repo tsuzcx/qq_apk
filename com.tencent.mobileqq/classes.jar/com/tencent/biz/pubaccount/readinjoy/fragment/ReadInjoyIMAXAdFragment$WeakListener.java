@@ -28,9 +28,9 @@ class ReadInjoyIMAXAdFragment$WeakListener
       return;
     }
     ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
-    ReadInjoyIMAXAdFragment.f = true;
-    paramTVK_IMediaPlayer.i();
-    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
+    ReadInjoyIMAXAdFragment.i = true;
+    paramTVK_IMediaPlayer.j();
+    ReadInjoyIMAXAdFragment.u(paramTVK_IMediaPlayer);
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
@@ -47,7 +47,7 @@ class ReadInjoyIMAXAdFragment$WeakListener
       QLog.d("ReadInjoyIMAXAdFragment", 2, paramObject.toString());
     }
     ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
-    paramTVK_IMediaPlayer.i();
+    paramTVK_IMediaPlayer.j();
     if (QLog.isColorLevel()) {
       QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
     }
@@ -73,17 +73,17 @@ class ReadInjoyIMAXAdFragment$WeakListener
     if (paramTVK_IMediaPlayer == null) {
       return;
     }
-    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.s(paramTVK_IMediaPlayer) != null))
     {
-      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      ReadInjoyIMAXAdFragment.s(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
       return;
     }
-    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
+    ReadInjoyIMAXAdFragment.t(paramTVK_IMediaPlayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakListener
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class GameRoomFragment$12
   public void onTick(long paramLong)
   {
     int i = (int)(paramLong / 1000L);
-    Object localObject = this.a.d;
+    Object localObject = this.a.o;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
     localStringBuilder.append("s");
@@ -30,10 +30,10 @@ class GameRoomFragment$12
       QLog.d("GameRoomFragment", 2, ((StringBuilder)localObject).toString());
     }
     if ((i <= 10) && (i > 0)) {
-      this.a.a();
+      this.a.b();
     }
     if (i == 0) {
-      GameRoomFragment.c(this.a);
+      GameRoomFragment.g(this.a);
     }
   }
 }

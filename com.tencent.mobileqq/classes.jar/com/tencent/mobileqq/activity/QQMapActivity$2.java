@@ -20,7 +20,7 @@ class QQMapActivity$2
     } else if (NetworkUtil.isWifiEnabled(this.a)) {
       this.a.jumpToStreetViewMap();
     } else {
-      DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131689979)).setMessage(2131694642).setPositiveButton(2131691065, new QQMapActivity.2.2(this)).setNegativeButton(2131690728, new QQMapActivity.2.1(this)).show();
+      DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131886621)).setMessage(2131892327).setPositiveButton(2131888011, new QQMapActivity.2.2(this)).setNegativeButton(2131887648, new QQMapActivity.2.1(this)).show();
     }
     QQMapRoutingHelper.a("see_streetview");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -28,7 +28,7 @@ class QQMapActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.2
  * JD-Core Version:    0.7.0.1
  */

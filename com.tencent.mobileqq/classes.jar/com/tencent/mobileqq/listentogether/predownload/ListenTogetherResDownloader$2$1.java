@@ -17,15 +17,15 @@ class ListenTogetherResDownloader$2$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mErrCode));
-    localHashMap.put("result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.mResult));
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "listen_together_download_quality", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
-    ((ListenTogetherManager)ListenTogetherResDownloader.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherPredownloadListenTogetherResDownloader$2.a).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqListentogetherDataMusicInfo);
+    localHashMap.put("errCode", String.valueOf(this.a.mErrCode));
+    localHashMap.put("result", String.valueOf(this.a.mResult));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "listen_together_download_quality", this.b, 0L, 0L, localHashMap, "", false);
+    ((ListenTogetherManager)ListenTogetherResDownloader.a(this.d.a).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1
  * JD-Core Version:    0.7.0.1
  */

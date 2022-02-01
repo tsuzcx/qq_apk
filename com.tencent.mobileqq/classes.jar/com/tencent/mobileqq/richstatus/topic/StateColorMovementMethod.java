@@ -12,16 +12,16 @@ import com.tencent.qphone.base.util.QLog;
 public class StateColorMovementMethod
   extends LinkMovementMethod
 {
-  private static StateColorMovementMethod jdField_a_of_type_ComTencentMobileqqRichstatusTopicStateColorMovementMethod;
-  ITopic jdField_a_of_type_ComTencentMobileqqTextITopic;
-  boolean jdField_a_of_type_Boolean;
+  private static StateColorMovementMethod c;
+  ITopic a;
+  boolean b;
   
   public static MovementMethod a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqRichstatusTopicStateColorMovementMethod == null) {
-      jdField_a_of_type_ComTencentMobileqqRichstatusTopicStateColorMovementMethod = new StateColorMovementMethod();
+    if (c == null) {
+      c = new StateColorMovementMethod();
     }
-    return jdField_a_of_type_ComTencentMobileqqRichstatusTopicStateColorMovementMethod;
+    return c;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
@@ -43,15 +43,15 @@ public class StateColorMovementMethod
       }
       if (localObject.length != 0)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
         paramSpannable = localObject[0];
         if (i == 1)
         {
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          paramMotionEvent = this.a;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.setPressed(paramTextView, false);
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+            this.a = null;
           }
           paramSpannable.onClick(paramTextView);
           return true;
@@ -59,38 +59,38 @@ public class StateColorMovementMethod
         if (i == 0)
         {
           paramSpannable.setPressed(paramTextView, true);
-          this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramSpannable;
+          this.a = paramSpannable;
           return true;
         }
         if (i == 3)
         {
-          paramSpannable = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          paramSpannable = this.a;
           if (paramSpannable != null)
           {
             paramSpannable.setPressed(paramTextView, false);
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+            this.a = null;
           }
         }
         return true;
       }
       if (i == 1)
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
           paramTextView.performClick();
         }
       }
       else if (i == 0) {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
       } else if (i == 3) {
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+      localObject = this.a;
       if (localObject != null)
       {
         ((ITopic)localObject).setPressed(paramTextView, false);
-        this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+        this.a = null;
       }
     }
     return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
@@ -98,7 +98,7 @@ public class StateColorMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.StateColorMovementMethod
  * JD-Core Version:    0.7.0.1
  */

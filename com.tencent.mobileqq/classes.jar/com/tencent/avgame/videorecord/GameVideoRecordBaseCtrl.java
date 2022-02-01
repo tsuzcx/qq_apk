@@ -19,34 +19,44 @@ import mqq.util.WeakReference;
 public abstract class GameVideoRecordBaseCtrl
   implements AudioProcessCallback.OnRecord, QavRecordListener, IStageRecordPresenter
 {
-  public int a;
-  private IAudioProcessApi a;
-  protected QavRecordDpc a;
   public String a;
-  protected WeakReference<Context> a;
-  protected volatile boolean a;
+  protected QavRecordDpc b;
+  public int c = 0;
+  protected volatile boolean d = false;
+  protected WeakReference<Context> e;
+  private IAudioProcessApi f;
   
   public GameVideoRecordBaseCtrl(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
     if (paramContext != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
+      this.e = new WeakReference(paramContext);
     }
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc = QavRecordDpc.a();
+    this.b = QavRecordDpc.a();
     paramContext = new StringBuilder();
-    paramContext.append(a());
+    paramContext.append(g());
     paramContext.append("_Base");
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
+    this.a = paramContext.toString();
   }
   
-  protected abstract String a();
+  public void F() {}
   
   public void a() {}
   
   public void a(View paramView) {}
   
-  public boolean a()
+  public void b() {}
+  
+  public void b(View paramView) {}
+  
+  public void c() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  protected abstract String g();
+  
+  public boolean h()
   {
     boolean bool;
     if (Build.VERSION.SDK_INT >= 18) {
@@ -54,7 +64,7 @@ public abstract class GameVideoRecordBaseCtrl
     } else {
       bool = false;
     }
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isDeviceSupport, sdk:");
     localStringBuilder.append(Build.VERSION.SDK_INT);
@@ -62,7 +72,94 @@ public abstract class GameVideoRecordBaseCtrl
     return bool;
   }
   
-  public String b()
+  public boolean i()
+  {
+    boolean bool;
+    if ((h()) && (j())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    String str = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSupportRecord. isSupport = ");
+    localStringBuilder.append(bool);
+    AVLog.d(str, localStringBuilder.toString());
+    return bool;
+  }
+  
+  public boolean j()
+  {
+    int i = this.c;
+    boolean bool = true;
+    if (i == 0)
+    {
+      if (this.b.s > this.b.e) {
+        this.c = 2;
+      } else if ((this.b.s == this.b.e) && (this.b.t >= this.b.f)) {
+        this.c = 2;
+      } else if (this.b.s > this.b.c) {
+        this.c = 1;
+      } else if ((this.b.s == this.b.c) && (this.b.t >= this.b.d)) {
+        this.c = 1;
+      } else {
+        this.c = 3;
+      }
+      if (this.b.b != 1) {
+        this.c = 4;
+      }
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPerformanceSupport=");
+      localStringBuilder.append(this.c);
+      AVLog.d(str, localStringBuilder.toString());
+    }
+    i = this.c;
+    if (i != 2)
+    {
+      if (i == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public boolean k()
+  {
+    return this.d;
+  }
+  
+  public boolean l()
+  {
+    if (!i()) {
+      return false;
+    }
+    AVLog.d(this.a, "startRecord");
+    this.d = true;
+    this.f = AudioProcess.b();
+    this.f.startRecord(7, this);
+    return true;
+  }
+  
+  public void m()
+  {
+    if (!i()) {
+      return;
+    }
+    this.d = false;
+    IAudioProcessApi localIAudioProcessApi = this.f;
+    if (localIAudioProcessApi != null)
+    {
+      localIAudioProcessApi.stopRecord();
+      this.f = null;
+    }
+    AVLog.d(this.a, "endRecord");
+  }
+  
+  public void n() {}
+  
+  public String o()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
@@ -79,27 +176,7 @@ public abstract class GameVideoRecordBaseCtrl
     return localObject;
   }
   
-  public void b() {}
-  
-  public void b(View paramView) {}
-  
-  public boolean b()
-  {
-    boolean bool;
-    if ((a()) && (c())) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isSupportRecord. isSupport = ");
-    localStringBuilder.append(bool);
-    AVLog.d(str, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public String c()
+  public String p()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
@@ -116,92 +193,13 @@ public abstract class GameVideoRecordBaseCtrl
     return localObject;
   }
   
-  public void c() {}
+  public void q() {}
   
-  public boolean c()
-  {
-    int i = this.jdField_a_of_type_Int;
-    boolean bool = true;
-    if (i == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) {
-        this.jdField_a_of_type_Int = 2;
-      } else if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.d) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.e)) {
-        this.jdField_a_of_type_Int = 2;
-      } else if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.b) {
-        this.jdField_a_of_type_Int = 1;
-      } else if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.b) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.c)) {
-        this.jdField_a_of_type_Int = 1;
-      } else {
-        this.jdField_a_of_type_Int = 3;
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_a_of_type_Int != 1) {
-        this.jdField_a_of_type_Int = 4;
-      }
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isPerformanceSupport=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      AVLog.d(str, localStringBuilder.toString());
-    }
-    i = this.jdField_a_of_type_Int;
-    if (i != 2)
-    {
-      if (i == 1) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
-  }
+  public void r() {}
   
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public void s() {}
   
-  public void e() {}
-  
-  public boolean e()
-  {
-    if (!b()) {
-      return false;
-    }
-    AVLog.d(this.jdField_a_of_type_JavaLangString, "startRecord");
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi = AudioProcess.a();
-    this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi.startRecord(7, this);
-    return true;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k()
-  {
-    if (!b()) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    IAudioProcessApi localIAudioProcessApi = this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi;
-    if (localIAudioProcessApi != null)
-    {
-      localIAudioProcessApi.stopRecord();
-      this.jdField_a_of_type_ComTencentAvAudioprocessApiIAudioProcessApi = null;
-    }
-    AVLog.d(this.jdField_a_of_type_JavaLangString, "endRecord");
-  }
-  
-  public void l() {}
-  
-  public void o() {}
+  public void t() {}
 }
 
 

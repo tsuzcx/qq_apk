@@ -11,15 +11,15 @@ import android.view.Surface;
 class MediaCodecVideoDecoder
   extends MediaCodecDecoder
 {
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private boolean jdField_a_of_type_Boolean;
+  private Surface b;
+  private boolean c;
   
   public MediaCodecVideoDecoder(MediaExtractor paramMediaExtractor, boolean paramBoolean1, int paramInt, MediaCodecDecoder.OnDecoderEventListener paramOnDecoderEventListener, Surface paramSurface, boolean paramBoolean2)
   {
     super(paramMediaExtractor, paramBoolean1, paramInt, paramOnDecoderEventListener);
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    a();
+    this.b = paramSurface;
+    this.c = paramBoolean2;
+    f();
   }
   
   @TargetApi(16)
@@ -27,20 +27,20 @@ class MediaCodecVideoDecoder
   {
     paramMediaCodec.flush();
     paramMediaExtractor.a(paramLong, 0);
-    if (paramMediaExtractor.a() == paramLong)
+    if (paramMediaExtractor.f() == paramLong)
     {
-      Log.d(this.jdField_a_of_type_JavaLangString, "skip fastseek, already there");
+      Log.d(this.a, "skip fastseek, already there");
       return paramLong;
     }
-    b();
+    g();
     a(false);
     paramMediaExtractor.a(paramLong, 0);
     long l1 = 9223372036854775807L;
     long l3 = 0L;
     int i = 0;
-    while ((paramMediaExtractor.a()) && (i < 20))
+    while ((paramMediaExtractor.d()) && (i < 20))
     {
-      long l5 = paramLong - paramMediaExtractor.a();
+      long l5 = paramLong - paramMediaExtractor.f();
       long l4 = l3;
       long l2 = l1;
       if (l5 >= 0L)
@@ -49,7 +49,7 @@ class MediaCodecVideoDecoder
         l2 = l1;
         if (l5 < l1)
         {
-          l4 = paramMediaExtractor.a();
+          l4 = paramMediaExtractor.f();
           l2 = l5;
         }
       }
@@ -63,24 +63,15 @@ class MediaCodecVideoDecoder
       }
     }
     paramMediaExtractor.a(l3, 0);
-    while (paramMediaExtractor.a() != l3) {
-      paramMediaExtractor.a();
+    while (paramMediaExtractor.f() != l3) {
+      paramMediaExtractor.d();
     }
-    paramMediaCodec = this.jdField_a_of_type_JavaLangString;
+    paramMediaCodec = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("exact fastseek match:       ");
-    localStringBuilder.append(paramMediaExtractor.a());
+    localStringBuilder.append(paramMediaExtractor.f());
     Log.d(paramMediaCodec, localStringBuilder.toString());
     return l3;
-  }
-  
-  public int a()
-  {
-    MediaFormat localMediaFormat = a();
-    if (localMediaFormat != null) {
-      return (int)(localMediaFormat.getInteger("height") * localMediaFormat.getFloat("mpx-dar"));
-    }
-    return 0;
   }
   
   protected MediaCodecDecoder.FrameInfo a(MediaPlayer.SeekMode paramSeekMode, long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
@@ -104,15 +95,15 @@ class MediaCodecVideoDecoder
         if (paramSeekMode == null) {
           return null;
         }
-        paramMediaExtractor = this.jdField_a_of_type_JavaLangString;
+        paramMediaExtractor = this.a;
         paramMediaCodec = new StringBuilder();
         paramMediaCodec.append("fast_exact seek to ");
         paramMediaCodec.append(paramLong);
         paramMediaCodec.append(" arrived at ");
-        paramMediaCodec.append(paramSeekMode.jdField_a_of_type_Long);
+        paramMediaCodec.append(paramSeekMode.c);
         Log.d(paramMediaExtractor, paramMediaCodec.toString());
-        if (paramSeekMode.jdField_a_of_type_Long < paramLong) {
-          Log.d(this.jdField_a_of_type_JavaLangString, "presentation is behind...");
+        if (paramSeekMode.c < paramLong) {
+          Log.d(this.a, "presentation is behind...");
         }
         return paramSeekMode;
       }
@@ -124,39 +115,39 @@ class MediaCodecVideoDecoder
       }
       else
       {
-        long l1 = localFrameInfo.jdField_a_of_type_Long / 1000L;
+        long l1 = localFrameInfo.c / 1000L;
         long l3 = -1L;
         i = 0;
         paramLong = l2;
         while (l1 < paramLong)
         {
           if (i == 0) {
-            Log.d(this.jdField_a_of_type_JavaLangString, "skipping frames...");
+            Log.d(this.a, "skipping frames...");
           }
           i += 1;
-          if (b()) {
-            paramLong = localFrameInfo.jdField_a_of_type_Long / 1000L;
+          if (d()) {
+            paramLong = localFrameInfo.c / 1000L;
           }
-          if (localFrameInfo.jdField_a_of_type_Boolean)
+          if (localFrameInfo.d)
           {
-            Log.d(this.jdField_a_of_type_JavaLangString, "end of stream reached, seeking to last frame");
+            Log.d(this.a, "end of stream reached, seeking to last frame");
             a(localFrameInfo, false);
             return a(paramSeekMode, l3, paramMediaExtractor, paramMediaCodec);
           }
-          l3 = localFrameInfo.jdField_a_of_type_Long;
+          l3 = localFrameInfo.c;
           a(localFrameInfo, false);
           localFrameInfo = a(true, true);
           if (localFrameInfo == null) {
             return null;
           }
-          l1 = localFrameInfo.jdField_a_of_type_Long / 1000L;
+          l1 = localFrameInfo.c / 1000L;
         }
-        localObject = this.jdField_a_of_type_JavaLangString;
+        localObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("frame new position:         ");
-        localStringBuilder.append(localFrameInfo.jdField_a_of_type_Long);
+        localStringBuilder.append(localFrameInfo.c);
         Log.d((String)localObject, localStringBuilder.toString());
-        localObject = this.jdField_a_of_type_JavaLangString;
+        localObject = this.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("seeking finished, skipped ");
         localStringBuilder.append(i);
@@ -173,14 +164,14 @@ class MediaCodecVideoDecoder
           if (l1 > paramLong) {
             if (i == 0)
             {
-              Log.w(this.jdField_a_of_type_JavaLangString, "this should never happen");
+              Log.w(this.a, "this should never happen");
               l4 = paramLong;
               localObject = localFrameInfo;
               l5 = l1;
             }
             else
             {
-              localObject = this.jdField_a_of_type_JavaLangString;
+              localObject = this.a;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("exact seek: repeat seek for previous frame at ");
               localStringBuilder.append(l3);
@@ -194,33 +185,33 @@ class MediaCodecVideoDecoder
     }
     else
     {
-      paramSeekMode = this.jdField_a_of_type_JavaLangString;
+      paramSeekMode = this.a;
       paramMediaExtractor = new StringBuilder();
       paramMediaExtractor.append("fast seek to ");
       paramMediaExtractor.append(paramLong);
       paramMediaExtractor.append(" arrived at ");
-      paramMediaExtractor.append(localFrameInfo.jdField_a_of_type_Long);
+      paramMediaExtractor.append(localFrameInfo.c);
       Log.d(paramSeekMode, paramMediaExtractor.toString());
       localObject = localFrameInfo;
       l4 = l2;
     }
     if (l5 == l4) {
-      Log.d(this.jdField_a_of_type_JavaLangString, "exact seek match!");
+      Log.d(this.a, "exact seek match!");
     }
     return localObject;
   }
   
   protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
+    paramMediaCodec.configure(paramMediaFormat, this.b, null, 0);
   }
   
   public void a(Surface paramSurface)
   {
     if (paramSurface != null)
     {
-      this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-      a();
+      this.b = paramSurface;
+      f();
       return;
     }
     throw new RuntimeException("surface must not be null");
@@ -234,13 +225,22 @@ class MediaCodecVideoDecoder
   
   public void a(MediaCodecDecoder.FrameInfo paramFrameInfo, boolean paramBoolean)
   {
-    a().releaseOutputBuffer(paramFrameInfo.jdField_a_of_type_Int, paramBoolean);
+    c().releaseOutputBuffer(paramFrameInfo.a, paramBoolean);
     c(paramFrameInfo);
   }
   
-  public int b()
+  public int o()
   {
-    MediaFormat localMediaFormat = a();
+    MediaFormat localMediaFormat = b();
+    if (localMediaFormat != null) {
+      return (int)(localMediaFormat.getInteger("height") * localMediaFormat.getFloat("mpx-dar"));
+    }
+    return 0;
+  }
+  
+  public int p()
+  {
+    MediaFormat localMediaFormat = b();
     if (localMediaFormat != null) {
       return localMediaFormat.getInteger("height");
     }

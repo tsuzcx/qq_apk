@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import com.tencent.hippy.qq.api.IHippyAdapter;
 import com.tencent.hippy.qq.api.IHippyLibrary;
 import com.tencent.hippy.qq.api.IHippyLifeCycleApi;
-import com.tencent.hippy.qq.api.IHippyQQUpdate;
 import com.tencent.hippy.qq.api.IHippySetting;
-import com.tencent.hippy.qq.api.IHippyUtils;
+import com.tencent.hippy.qq.api.IHippyUpdate;
 import com.tencent.hippy.qq.api.INativeProxy;
 import com.tencent.hippy.qq.api.LibraryLoadListener;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleOwner;
@@ -21,6 +20,7 @@ import com.tencent.hippy.qq.module.tkd.TJsCallBack;
 import com.tencent.hippy.qq.module.tkd.TNativeProxy;
 import com.tencent.hippy.qq.utils.HippyDebugUtil;
 import com.tencent.hippy.qq.utils.HippyReporter;
+import com.tencent.hippy.qq.utils.HippyUtils;
 import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -35,7 +35,6 @@ import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.uimanager.HippyCustomViewCreator;
-import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -241,6 +240,9 @@ public class HippyQQEngine
   
   private boolean isPageDestroyed()
   {
+    if (this.mModuleName.equals("TKDADwormhole")) {
+      return false;
+    }
     if ((!isActivityDestroyed()) && (!isFragmentDestroyed())) {
       return false;
     }
@@ -314,7 +316,7 @@ public class HippyQQEngine
     {
       mModuleUpdateTime.put(this.mModuleName, Long.valueOf(System.currentTimeMillis()));
       long l = System.currentTimeMillis();
-      ((IHippyQQUpdate)QRoute.api(IHippyQQUpdate.class)).checkUpdate(this.mModuleName, new HippyQQEngine.1(this, l));
+      ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).commonUpdateJsBundle(this.mModuleName, "oldUpdate", new HippyQQEngine.1(this, l));
     }
   }
   
@@ -331,7 +333,12 @@ public class HippyQQEngine
     }
   }
   
-  public void destoryEngineImmediately()
+  public void destroyEngineImmediately()
+  {
+    destroyEngineImmediately("default");
+  }
+  
+  public void destroyEngineImmediately(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -350,6 +357,9 @@ public class HippyQQEngine
       this.mEngineListener = null;
       destoryEngine();
     }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("from", paramString);
+    HippyReporter.getInstance().reportToDengTa(this.mModuleName, this.mModuleVersion, "hippy_remove_preLoad", -1, (HashMap)localObject);
   }
   
   public boolean doOnBackPressed(HippyEngine.BackPressHandler paramBackPressHandler)
@@ -364,34 +374,52 @@ public class HippyQQEngine
   protected void doUpdatePackageComplete(int paramInt, String paramString1, String paramString2, long paramLong)
   {
     long l = System.currentTimeMillis();
-    Object localObject;
-    if (paramInt == 0)
+    if (this.mModuleVersion <= 0)
     {
-      if ((!TextUtils.isEmpty(paramString2)) && (this.mModuleVersion <= 0))
+      String str = paramString2;
+      if (paramString2 == null)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramString2);
-        ((StringBuilder)localObject).append("/");
-        ((StringBuilder)localObject).append("index.android.jsbundle");
-        loadModule(((StringBuilder)localObject).toString());
+        int i = ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(this.mModuleName);
+        if (i == -1) {
+          paramString2 = null;
+        } else {
+          paramString2 = ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleFile(this.mModuleName, i);
+        }
+        if (paramString2 == null) {
+          str = null;
+        } else {
+          str = paramString2.getAbsolutePath();
+        }
       }
-    }
-    else
-    {
-      paramString2 = new StringBuilder();
-      paramString2.append("check package update error: ");
-      paramString2.append(paramString1);
-      paramString2 = paramString2.toString();
-      LogUtils.e("hippy", paramString2);
-      if (this.mModuleVersion <= 0)
+      if (!TextUtils.isEmpty(str))
       {
-        localObject = this.mEngineListener;
-        if (localObject != null) {
-          ((HippyQQEngine.HippyQQEngineListener)localObject).onError(paramInt, paramString2);
+        paramString2 = new StringBuilder();
+        paramString2.append(str);
+        paramString2.append("/");
+        paramString2.append("index.android.jsbundle");
+        loadModule(paramString2.toString());
+      }
+      else
+      {
+        paramString2 = this.mEngineListener;
+        if (paramString2 != null) {
+          paramString2.onError(paramInt, paramString1);
         }
       }
     }
-    HippyReporter.getInstance().reportCheckUpdate(this.mModuleName, 5, paramInt, paramString1, l - paramLong);
+    HippyReporter.getInstance().reportCheckUpdate(this.mModuleName, 5, paramInt, paramString1, l - paramLong, null);
+  }
+  
+  protected void fillLoadParams(HippyEngine.ModuleLoadParams paramModuleLoadParams) {}
+  
+  public HashMap<String, String> generateReportExtraParams()
+  {
+    HashMap localHashMap = new HashMap();
+    long l1 = ((IHippyLibrary)QRoute.api(IHippyLibrary.class)).getCoreJsFileLength(getCoreJsFileName());
+    long l2 = ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleIndexFileLength(this.mModuleName, this.mModuleVersion);
+    localHashMap.put("coreJsLength", String.valueOf(l1));
+    localHashMap.put("busJsLength", String.valueOf(l2));
+    return localHashMap;
   }
   
   public Activity getActivity()
@@ -405,6 +433,14 @@ public class HippyQQEngine
       return ((QBaseFragment)localObject).getActivity();
     }
     return null;
+  }
+  
+  public String getCoreJsFileName()
+  {
+    if ((!TextUtils.isEmpty(this.mJsBundleType)) && (this.mJsBundleType.equals("react"))) {
+      return "react.android.js";
+    }
+    return "vue.android.js";
   }
   
   public QBaseFragment getFragment()
@@ -504,11 +540,7 @@ public class HippyQQEngine
     ((StringBuilder)localObject).append("Hippy: initHippyEngine:");
     ((StringBuilder)localObject).append(this.mModuleName);
     QLog.d("Hippy", 1, ((StringBuilder)localObject).toString());
-    if ((!TextUtils.isEmpty(this.mJsBundleType)) && (this.mJsBundleType.equals("react"))) {
-      localObject = "react.android.js";
-    } else {
-      localObject = "vue.android.js";
-    }
+    localObject = getCoreJsFileName();
     localObject = ((IHippyLibrary)QRoute.api(IHippyLibrary.class)).getCoreJsFilePath((String)localObject);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -533,7 +565,7 @@ public class HippyQQEngine
     localEngineInitParams.coreJSFilePath = ((String)localObject);
     localEngineInitParams.exceptionHandler = new HippyQQEngine.5(this);
     localEngineInitParams.engineMonitor = ((IHippyAdapter)QRoute.api(IHippyAdapter.class)).createEngineMonitorAdapter();
-    this.providers.add(((IHippyUtils)QRoute.api(IHippyUtils.class)).getBaseHippyAPIProvider());
+    HippyUtils.addBaseApiProvider(this.providers);
     localEngineInitParams.providers = this.providers;
     this.mHippyEngine = HippyEngine.create(localEngineInitParams);
     putEngineInstance(this.mHippyEngine.getId(), this);
@@ -649,6 +681,7 @@ public class HippyQQEngine
     localModuleLoadParams.componentName = str;
     localModuleLoadParams.jsFilePath = paramString;
     localModuleLoadParams.nativeParams = getNativeParams();
+    fillLoadParams(localModuleLoadParams);
     localModuleLoadParams.jsParams = getJsParamsMap(localModuleLoadParams);
     this.mMapLoadStepsTime.put("loadModuleStart", Long.valueOf(System.currentTimeMillis()));
     this.mHippyRootView = this.mHippyEngine.loadModule(localModuleLoadParams, new HippyQQEngine.4(this));
@@ -798,6 +831,11 @@ public class HippyQQEngine
     }
   }
   
+  public void setActivity(Activity paramActivity)
+  {
+    this.activity = paramActivity;
+  }
+  
   public void setBundleUrl(String paramString)
   {
     this.mBundleUrl = paramString;
@@ -851,7 +889,7 @@ public class HippyQQEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQEngine
  * JD-Core Version:    0.7.0.1
  */

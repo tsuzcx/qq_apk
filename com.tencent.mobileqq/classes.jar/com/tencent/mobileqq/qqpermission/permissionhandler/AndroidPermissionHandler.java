@@ -14,47 +14,93 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class AndroidPermissionHandler
   extends BasePermissionHandler
 {
-  private int jdField_a_of_type_Int = 1;
-  private SparseArray<AndroidPermissionHandler.AndroidPermissionCallback> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
+  private static AtomicInteger e = new AtomicInteger(1000);
+  private SparseArray<AndroidPermissionHandler.AndroidPermissionCallback> f = new SparseArray(4);
+  private QQPermissionCallback g;
   
   public AndroidPermissionHandler(QQPermission paramQQPermission)
   {
     super(paramQQPermission);
   }
   
-  @RequiresApi(api=23)
-  private int a(String paramString)
+  private AppActivity a()
   {
-    return this.jdField_a_of_type_AndroidContentContext.checkSelfPermission(paramString);
+    if ((this.b instanceof AppActivity)) {
+      return (AppActivity)this.b;
+    }
+    if ((this.c != null) && ((this.c.getActivity() instanceof AppActivity))) {
+      return (AppActivity)this.c.getActivity();
+    }
+    return null;
   }
   
   @RequiresApi(api=23)
   private void a(@NonNull String[] paramArrayOfString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    AppActivity localAppActivity = a();
+    if (localAppActivity != null)
     {
-      this.jdField_a_of_type_AndroidAppActivity.requestPermissions(paramArrayOfString, paramInt);
+      QPLog.a("AndroidPermissionHandler", "requestSysPermissions: use AppActivity api.");
+      localAppActivity.requestPermissions(b(), paramInt, paramArrayOfString);
       return;
     }
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragment != null) {
-      this.jdField_a_of_type_AndroidxFragmentAppFragment.requestPermissions(paramArrayOfString, paramInt);
+    if (this.b != null)
+    {
+      this.b.requestPermissions(paramArrayOfString, paramInt);
+      return;
+    }
+    if (this.c != null) {
+      this.c.requestPermissions(paramArrayOfString, paramInt);
     }
   }
   
-  @RequiresApi(api=23)
-  private boolean b(String paramString)
+  private QQPermissionCallback b()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      return this.jdField_a_of_type_AndroidAppActivity.shouldShowRequestPermissionRationale(paramString);
+    if (this.g == null) {
+      this.g = new AndroidPermissionHandler.1(this);
     }
-    if (this.jdField_a_of_type_AndroidxFragmentAppFragment != null) {
-      return this.jdField_a_of_type_AndroidxFragmentAppFragment.shouldShowRequestPermissionRationale(paramString);
+    return this.g;
+  }
+  
+  @RequiresApi(api=23)
+  private boolean c(String paramString)
+  {
+    if (this.b != null) {
+      return this.b.shouldShowRequestPermissionRationale(paramString);
+    }
+    if (this.c != null) {
+      return this.c.shouldShowRequestPermissionRationale(paramString);
     }
     return false;
+  }
+  
+  @RequiresApi(api=23)
+  private int d(String paramString)
+  {
+    return this.d.checkSelfPermission(paramString);
+  }
+  
+  public int a(String paramString)
+  {
+    if (Build.VERSION.SDK_INT < 23)
+    {
+      paramString = new StringBuilder();
+      paramString.append("checkPermission: api is ");
+      paramString.append(Build.VERSION.SDK_INT);
+      QPLog.a("AndroidPermissionHandler", paramString.toString());
+      return -2;
+    }
+    if (d(paramString) == 0) {
+      return 0;
+    }
+    return -1;
   }
   
   @RequiresApi(api=23)
@@ -68,10 +114,10 @@ public class AndroidPermissionHandler
     ((StringBuilder)localObject).append(", result: ");
     ((StringBuilder)localObject).append(Arrays.toString(paramArrayOfInt));
     QPLog.a("AndroidPermissionHandler", ((StringBuilder)localObject).toString());
-    localObject = (AndroidPermissionHandler.AndroidPermissionCallback)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    localObject = (AndroidPermissionHandler.AndroidPermissionCallback)this.f.get(paramInt);
+    this.f.delete(paramInt);
     if ((localObject != null) && (paramArrayOfString.length != 0))
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       paramInt = 0;
@@ -85,7 +131,7 @@ public class AndroidPermissionHandler
         }
         else
         {
-          boolean bool1 = b(paramArrayOfString[paramInt]);
+          boolean bool1 = c(paramArrayOfString[paramInt]);
           boolean bool2 = AndroidPermissionHandler.AndroidPermissionCallback.a((AndroidPermissionHandler.AndroidPermissionCallback)localObject, paramArrayOfString[paramInt]);
           if (bool1) {
             localArrayList2.add(Integer.valueOf(1));
@@ -116,11 +162,11 @@ public class AndroidPermissionHandler
   {
     if (paramInt == 2)
     {
-      a(paramList, new AndroidPermissionHandler.DialogPermissionCallback(this, this.jdField_a_of_type_AndroidContentContext, paramBasePermissionsListener));
+      a(paramList, new AndroidPermissionHandler.DialogPermissionCallback(this, this.d, paramBasePermissionsListener));
       return;
     }
     if (paramInt == 1) {
-      a(paramList, new AndroidPermissionHandler.ViewPermissionCallback(this, this.jdField_a_of_type_AndroidContentContext, paramBasePermissionsListener));
+      a(paramList, new AndroidPermissionHandler.ViewPermissionCallback(this, this.d, paramBasePermissionsListener));
     }
   }
   
@@ -141,7 +187,7 @@ public class AndroidPermissionHandler
     while (paramList.hasNext())
     {
       str = (String)paramList.next();
-      if (a(str) == -1) {
+      if (d(str) == -1) {
         ((List)localObject).add(str);
       }
     }
@@ -154,18 +200,13 @@ public class AndroidPermissionHandler
     while (paramList.hasNext())
     {
       str = (String)paramList.next();
-      if (b(str))
+      if (c(str))
       {
         paramAndroidPermissionCallback.a((List)localObject, str);
         return;
       }
     }
     b((List)localObject, paramAndroidPermissionCallback);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return true;
   }
   
   @RequiresApi(api=23)
@@ -176,28 +217,31 @@ public class AndroidPermissionHandler
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      AndroidPermissionHandler.AndroidPermissionCallback.a(paramAndroidPermissionCallback, str, b(str));
+      AndroidPermissionHandler.AndroidPermissionCallback.a(paramAndroidPermissionCallback, str, c(str));
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doRequestPermission: permission=");
     ((StringBuilder)localObject).append(paramList);
     ((StringBuilder)localObject).append(", shouldShowRequestPermissionRationale=");
-    ((StringBuilder)localObject).append(AndroidPermissionHandler.AndroidPermissionCallback.a(paramAndroidPermissionCallback));
+    ((StringBuilder)localObject).append(AndroidPermissionHandler.AndroidPermissionCallback.b(paramAndroidPermissionCallback));
     ((StringBuilder)localObject).append(", requestCode=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(e);
     ((StringBuilder)localObject).append(", size=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidUtilSparseArray.size());
+    ((StringBuilder)localObject).append(this.f.size());
     QPLog.a("AndroidPermissionHandler", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Int, paramAndroidPermissionCallback);
-    paramList = (String[])paramList.toArray(new String[0]);
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    a(paramList, i);
+    int i = e.getAndIncrement();
+    this.f.put(i, paramAndroidPermissionCallback);
+    a((String[])paramList.toArray(new String[0]), i);
+  }
+  
+  public boolean b(String paramString)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler
  * JD-Core Version:    0.7.0.1
  */

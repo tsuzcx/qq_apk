@@ -11,17 +11,17 @@ import android.graphics.drawable.Drawable;
 
 public class GdtCircle
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int = 0;
-  private float c = 0.0F;
+  Bitmap a;
+  private int b = 0;
+  private int c = 0;
+  private float d = 0.0F;
+  private float e = 0.0F;
+  private float f = 0.0F;
+  private Paint g = new Paint();
   
   public GdtCircle()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.g.setAntiAlias(true);
   }
   
   private Bitmap a(Drawable paramDrawable)
@@ -29,30 +29,30 @@ public class GdtCircle
     if ((paramDrawable instanceof BitmapDrawable)) {
       return ((BitmapDrawable)paramDrawable).getBitmap();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+    if (this.a == null) {
+      this.a = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.ARGB_8888);
     }
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    paramDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    Canvas localCanvas = new Canvas(this.a);
+    paramDrawable.setBounds(0, 0, this.b, this.c);
     paramDrawable.draw(localCanvas);
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.a;
   }
   
   public void a(float paramFloat)
   {
-    this.c = paramFloat;
+    this.f = paramFloat;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.d = paramFloat1;
+    this.e = paramFloat2;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public void a(Canvas paramCanvas, Drawable paramDrawable)
@@ -63,14 +63,14 @@ public class GdtCircle
         return;
       }
       paramDrawable = new BitmapShader(a(paramDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(paramDrawable);
-      paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.g.setShader(paramDrawable);
+      paramCanvas.drawCircle(this.d, this.e, this.f, this.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtCircle
  * JD-Core Version:    0.7.0.1
  */

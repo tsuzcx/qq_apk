@@ -59,8 +59,8 @@ class GivingHeartItemBuilder$PokeClickListener
       }
       localBitmap = null;
     }
-    paramString2 = new CustomFrameAnimationDrawable(this.a.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap, PokeItemAnimationManager.a().a(), paramMessageForPoke.mFrameState, paramString2, PokeItemHelper.a(this.a.b));
-    paramString2.i();
+    paramString2 = new CustomFrameAnimationDrawable(this.a.e.getResources(), localBitmap, PokeItemAnimationManager.c().b(), paramMessageForPoke.mFrameState, paramString2, PokeItemHelper.c(this.a.w));
+    paramString2.l();
     int i = 40;
     if (paramMessageForPoke.interactType == 2) {
       i = 30;
@@ -72,7 +72,7 @@ class GivingHeartItemBuilder$PokeClickListener
     if (n == 4)
     {
       j = m;
-      if (paramHolder.jdField_a_of_type_Float == 2.0F)
+      if (paramHolder.t == 2.0F)
       {
         for (j = k;; j = k)
         {
@@ -137,43 +137,43 @@ class GivingHeartItemBuilder$PokeClickListener
   
   private void a(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
   {
-    if ((PokeBigResHandler.a) && (!paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a())) {
-      paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessageForPoke.isSend() ^ true, PokeItemHelper.a(this.a.b), paramHolder.jdField_a_of_type_Float);
+    if ((PokeBigResHandler.e) && (!paramHolder.d.b())) {
+      paramHolder.d.a(this.a.e, paramMessageForPoke.isSend() ^ true, PokeItemHelper.c(this.a.w), paramHolder.t);
     }
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setParams(paramMessageForPoke.isSend() ^ true);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setMirror(paramMessageForPoke.isSend() ^ true);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(0);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new GivingHeartItemBuilder.PokeClickListener.1(this, paramHolder, paramMessageForPoke));
-    if (!paramMessageForPoke.mUnlimitedState.a)
+    paramHolder.d.setParams(paramMessageForPoke.isSend() ^ true);
+    paramHolder.d.setMirror(paramMessageForPoke.isSend() ^ true);
+    paramHolder.d.setVisibility(0);
+    paramHolder.c.clearAnimation();
+    paramHolder.c.setVisibility(8);
+    paramHolder.c.setImageDrawable(null);
+    paramHolder.b.setVisibility(8);
+    paramHolder.g.setVisibility(8);
+    paramHolder.b.clearAnimation();
+    paramHolder.d.setEndListener(new GivingHeartItemBuilder.PokeClickListener.1(this, paramHolder, paramMessageForPoke));
+    if (!paramMessageForPoke.mUnlimitedState.d)
     {
       if (QLog.isColorLevel()) {
         QLog.i("fangdazhao", 2, "[click]start to play");
       }
-      paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.c();
+      paramHolder.d.d();
     }
   }
   
   private void a(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable)
   {
-    if (a(paramHolder, paramMessageForPoke)) {
+    if (b(paramHolder, paramMessageForPoke)) {
       return;
     }
-    paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(paramCustomFrameAnimationDrawable);
-    Object localObject = paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    paramHolder.c.setImageDrawable(paramCustomFrameAnimationDrawable);
+    Object localObject = paramHolder.c;
     boolean bool1 = false;
     ((DiniFlyAnimationView)localObject).setVisibility(0);
-    paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    paramHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    if (paramMessageForPoke.mFrameState.a)
+    paramHolder.b.setVisibility(8);
+    paramHolder.b.clearAnimation();
+    paramHolder.g.setVisibility(8);
+    paramHolder.d.clearAnimation();
+    paramHolder.d.setVisibility(8);
+    if (paramMessageForPoke.mFrameState.d)
     {
       paramCustomFrameAnimationDrawable.d();
       if (QLog.isColorLevel()) {
@@ -183,29 +183,29 @@ class GivingHeartItemBuilder$PokeClickListener
     else
     {
       paramCustomFrameAnimationDrawable.c();
-      if (paramHolder.jdField_a_of_type_Float == 2.0F) {
+      if (paramHolder.t == 2.0F) {
         if (paramMessageForPoke.interactType == 2)
         {
-          PokeItemAnimationManager.a().a(1);
-          PokeItemAnimationManager.a().a(2, 1500L, paramMessageForPoke.isSend());
+          PokeItemAnimationManager.c().a(1);
+          PokeItemAnimationManager.c().a(2, 1500L, paramMessageForPoke.isSend());
         }
         else if (paramMessageForPoke.interactType == 3)
         {
-          PokeItemAnimationManager.a().a(4);
-          PokeItemAnimationManager.a().a(5, 700L);
+          PokeItemAnimationManager.c().a(4);
+          PokeItemAnimationManager.c().a(5, 700L);
         }
         else if (paramMessageForPoke.interactType == 4)
         {
-          PokeItemAnimationManager.a().a(13);
-          PokeItemAnimationManager.a().a(14, 800L);
+          PokeItemAnimationManager.c().a(13);
+          PokeItemAnimationManager.c().a(14, 800L);
         }
       }
       if ((paramMessageForPoke.interactType == 1) || (paramMessageForPoke.interactType == 0))
       {
         paramCustomFrameAnimationDrawable = this.a;
-        localObject = (Activity)paramCustomFrameAnimationDrawable.jdField_a_of_type_AndroidContentContext;
+        localObject = (Activity)paramCustomFrameAnimationDrawable.e;
         boolean bool2 = paramMessageForPoke.isSend();
-        if (paramHolder.jdField_a_of_type_Float == 2.0F) {
+        if (paramHolder.t == 2.0F) {
           bool1 = true;
         }
         GivingHeartItemBuilder.a(paramCustomFrameAnimationDrawable, (Activity)localObject, bool2, bool1);
@@ -223,22 +223,7 @@ class GivingHeartItemBuilder$PokeClickListener
       if (b(paramView, paramHolder, paramMessageForPoke)) {
         return true;
       }
-      return c(paramHolder, paramMessageForPoke);
-    }
-    return false;
-  }
-  
-  private boolean a(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
-  {
-    if ((paramMessageForPoke.interactType == 5) && (paramHolder.jdField_a_of_type_Float == 2.0F))
-    {
-      paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      paramHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramMessageForPoke = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131362288)).a();
-      paramHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      paramMessageForPoke.a(paramHolder, PokeItemHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      paramMessageForPoke.setListener(this.a);
-      return true;
+      return d(paramHolder, paramMessageForPoke);
     }
     return false;
   }
@@ -253,32 +238,32 @@ class GivingHeartItemBuilder$PokeClickListener
         paramCustomFrameAnimationDrawable.a(2);
       }
     }
-    paramCustomFrameAnimationDrawable.h();
+    paramCustomFrameAnimationDrawable.i();
     paramCustomFrameAnimationDrawable.a(new GivingHeartItemBuilder.PokeClickListener.2(this, paramHolder, paramMessageForPoke));
   }
   
   private boolean b(View paramView, GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
   {
     int i;
-    if (paramView.findViewById(2131378280).getVisibility() == 0) {
+    if (paramView.findViewById(2131446799).getVisibility() == 0) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      if (!PokeItemHelper.c.contains(Integer.valueOf(paramMessageForPoke.subId))) {
-        PokeItemHelper.c.add(Integer.valueOf(paramMessageForPoke.subId));
+      if (!PokeItemHelper.i.contains(Integer.valueOf(paramMessageForPoke.subId))) {
+        PokeItemHelper.i.add(Integer.valueOf(paramMessageForPoke.subId));
       }
-      if (!PokeItemHelper.d.contains(Integer.valueOf(paramMessageForPoke.subId))) {
-        PokeItemHelper.d.add(Integer.valueOf(paramMessageForPoke.subId));
+      if (!PokeItemHelper.j.contains(Integer.valueOf(paramMessageForPoke.subId))) {
+        PokeItemHelper.j.add(Integer.valueOf(paramMessageForPoke.subId));
       }
-      if (!PokeItemHelper.b.contains(Integer.valueOf(paramMessageForPoke.subId))) {
-        PokeItemHelper.b.add(Integer.valueOf(paramMessageForPoke.subId));
+      if (!PokeItemHelper.h.contains(Integer.valueOf(paramMessageForPoke.subId))) {
+        PokeItemHelper.h.add(Integer.valueOf(paramMessageForPoke.subId));
       }
-      paramHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      paramHolder.b.setVisibility(8);
-      paramView = (IVasQuickUpdateService)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+      paramHolder.e.setVisibility(0);
+      paramHolder.f.setVisibility(8);
+      paramView = (IVasQuickUpdateService)this.a.d.getRuntimeService(IVasQuickUpdateService.class, "");
       paramHolder = new StringBuilder();
       paramHolder.append("poke.item.effect.");
       paramHolder.append(paramMessageForPoke.subId);
@@ -287,12 +272,12 @@ class GivingHeartItemBuilder$PokeClickListener
       paramHolder.append("poke.item.res.");
       paramHolder.append(paramMessageForPoke.subId);
       paramView.downloadItem(21L, paramHolder.toString(), "getbubbleview");
-      paramView.addCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+      paramView.addCallBacker(this.a.B);
       return true;
     }
     if (!PokeItemHelper.a("bubble", paramMessageForPoke.subId))
     {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 0, HardCodeUtil.a(2131705373), 0).a();
+      QQToast.makeText(this.a.e, 0, HardCodeUtil.a(2131903254), 0).show();
       return true;
     }
     return false;
@@ -300,19 +285,14 @@ class GivingHeartItemBuilder$PokeClickListener
   
   private boolean b(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
   {
-    if (!PokeBigResHandler.a)
+    if ((paramMessageForPoke.interactType == 5) && (paramHolder.t == 2.0F))
     {
-      paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-      paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-      paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 0, HardCodeUtil.a(2131705366), 0).a();
-      paramHolder = (PokeBigResHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.POKE_BIG_RES_HANDLER);
-      if (paramHolder != null) {
-        paramHolder.a(true);
-      }
-      if (paramMessageForPoke.isSend()) {
-        paramMessageForPoke.setPlayed(this.a.b);
-      }
+      paramHolder.b.setVisibility(8);
+      paramHolder.g.setVisibility(8);
+      paramMessageForPoke = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.a.e).getWindow().getDecorView()).getChildAt(0).findViewById(2131427887)).getSixCombolEffectView();
+      paramHolder.s.setVisibility(0);
+      paramMessageForPoke.a(paramHolder, PokeItemHelper.c(this.a.d));
+      paramMessageForPoke.setListener(this.a);
       return true;
     }
     return false;
@@ -320,14 +300,34 @@ class GivingHeartItemBuilder$PokeClickListener
   
   private boolean c(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
   {
-    if ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a() ^ true))
+    if (!PokeBigResHandler.e)
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.b, "vas_poke", true);
+      paramHolder.c.clearAnimation();
+      paramHolder.c.setVisibility(8);
+      paramHolder.b.setVisibility(0);
+      QQToast.makeText(this.a.e, 0, HardCodeUtil.a(2131903248), 0).show();
+      paramHolder = (PokeBigResHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.POKE_BIG_RES_HANDLER);
+      if (paramHolder != null) {
+        paramHolder.a(true);
+      }
+      if (paramMessageForPoke.isSend()) {
+        paramMessageForPoke.setPlayed(this.a.w);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean d(GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke)
+  {
+    if ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.a.d).a() ^ true))
+    {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.w, "vas_poke", true);
       if (QLog.isColorLevel()) {
         QLog.i("GivingHeart.sprite", 2, "hide sprite (normal) in click.");
       }
     }
-    PokeItemHelper.a(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, paramHolder, paramMessageForPoke.subId, "bubble");
+    PokeItemHelper.a(this.a.w, this.a.e, paramHolder.c, paramHolder, paramMessageForPoke.subId, "bubble");
     return true;
   }
   
@@ -335,11 +335,11 @@ class GivingHeartItemBuilder$PokeClickListener
   {
     if (!(paramView.getContext() instanceof ChatHistoryActivity))
     {
-      AIOUtils.o = true;
-      if (!this.a.a())
+      AIOUtils.q = true;
+      if (!this.a.c())
       {
-        GivingHeartItemBuilder.Holder localHolder = (GivingHeartItemBuilder.Holder)AIOUtils.a(paramView);
-        MessageForPoke localMessageForPoke = (MessageForPoke)localHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        GivingHeartItemBuilder.Holder localHolder = (GivingHeartItemBuilder.Holder)AIOUtils.b(paramView);
+        MessageForPoke localMessageForPoke = (MessageForPoke)localHolder.q;
         Object localObject1;
         if (QLog.isColorLevel())
         {
@@ -348,11 +348,11 @@ class GivingHeartItemBuilder$PokeClickListener
           ((StringBuilder)localObject1).append(localMessageForPoke.interactType);
           QLog.d("GivingHeart", 2, ((StringBuilder)localObject1).toString());
         }
-        if ((!a(paramView, localHolder, localMessageForPoke)) && (!b(localHolder, localMessageForPoke)))
+        if ((!a(paramView, localHolder, localMessageForPoke)) && (!c(localHolder, localMessageForPoke)))
         {
-          Object localObject2 = this.a.a(localMessageForPoke);
-          localObject1 = ((GivingHeartItemBuilder.FileNumEntity)localObject2).jdField_a_of_type_JavaLangString;
-          int i = ((GivingHeartItemBuilder.FileNumEntity)localObject2).jdField_a_of_type_Int;
+          Object localObject2 = this.a.b(localMessageForPoke);
+          localObject1 = ((GivingHeartItemBuilder.FileNumEntity)localObject2).a;
+          int i = ((GivingHeartItemBuilder.FileNumEntity)localObject2).b;
           localObject2 = GivingHeartItemBuilder.a(localMessageForPoke.interactType);
           if ((localMessageForPoke.interactType != 1) && (localMessageForPoke.interactType > 0) && (localMessageForPoke.interactType <= 6)) {
             localObject1 = a(localHolder, localMessageForPoke, (String)localObject1, i, (String)localObject2);
@@ -373,7 +373,7 @@ class GivingHeartItemBuilder$PokeClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.PokeClickListener
  * JD-Core Version:    0.7.0.1
  */

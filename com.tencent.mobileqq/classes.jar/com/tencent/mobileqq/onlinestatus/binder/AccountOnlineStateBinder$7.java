@@ -13,13 +13,13 @@ class AccountOnlineStateBinder$7
   
   public void a(OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
   {
-    paramOnlineStatusPermissionItem = (OnlineStatusData)AccountOnlineStateBinder.a(this.a).a().getValue();
-    AccountOnlineStateBinder.a(this.a, paramOnlineStatusPermissionItem.a, true);
+    paramOnlineStatusPermissionItem = (OnlineStatusData)AccountOnlineStateBinder.g(this.a).a().getValue();
+    AccountOnlineStateBinder.a(this.a, paramOnlineStatusPermissionItem.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountOnlineStateBinder.7
  * JD-Core Version:    0.7.0.1
  */

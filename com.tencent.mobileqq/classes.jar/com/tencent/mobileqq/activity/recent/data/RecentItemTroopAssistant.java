@@ -27,21 +27,21 @@ public class RecentItemTroopAssistant
   
   private void a()
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       if (this.mUnreadNum > 0)
       {
-        this.mContentDesc = String.format(HardCodeUtil.a(2131713112), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
+        this.mContentDesc = String.format(HardCodeUtil.a(2131910671), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
         return;
       }
-      this.mContentDesc = String.format(HardCodeUtil.a(2131713118), new Object[] { this.mLastMsg, this.mShowTime });
+      this.mContentDesc = String.format(HardCodeUtil.a(2131910677), new Object[] { this.mLastMsg, this.mShowTime });
     }
   }
   
   private void a(Context paramContext, Message paramMessage, MsgSummary paramMsgSummary)
   {
-    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (AnonymousChatHelper.a(paramMessage))) {
-      this.mLastMsg = paramMsgSummary.a(paramContext, AnonymousChatHelper.a(paramMessage), -1);
+    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (paramMessage != null) && (paramMsgSummary != null) && (AnonymousChatHelper.c(paramMessage))) {
+      this.mLastMsg = paramMsgSummary.a(paramContext, AnonymousChatHelper.d(paramMessage), -1);
     }
   }
   
@@ -71,7 +71,7 @@ public class RecentItemTroopAssistant
         localObject = paramMsgSummary.suffix.toString();
       }
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
-        localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).a();
+        localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).b();
       }
       paramMessage = ColorNickManager.a((String)localObject, paramMessage, 16, 3);
       Object localObject = new SpannableStringBuilder();
@@ -104,7 +104,7 @@ public class RecentItemTroopAssistant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant
  * JD-Core Version:    0.7.0.1
  */

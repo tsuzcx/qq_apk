@@ -15,7 +15,7 @@ final class ApolloScreenshotController$onRecordFrameEnd$2
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource == null) {
+      if (this.a == null) {
         return;
       }
       Executor localExecutor = ApolloScreenshotController.a();
@@ -33,7 +33,7 @@ final class ApolloScreenshotController$onRecordFrameEnd$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.onRecordFrameEnd.2
  * JD-Core Version:    0.7.0.1
  */

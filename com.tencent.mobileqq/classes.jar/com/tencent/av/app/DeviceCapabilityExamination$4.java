@@ -16,7 +16,7 @@ class DeviceCapabilityExamination$4
   
   public void a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("testVideoEffectIfNeed onFinish result: ");
@@ -40,7 +40,7 @@ class DeviceCapabilityExamination$4
     ((HashMap)localObject).put("gpu_model", paramString2);
     ((HashMap)localObject).put("result", String.valueOf(paramInt));
     ((HashMap)localObject).put("time_consuming", String.valueOf(paramLong));
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       paramString1 = new StringBuilder();
       paramString1.append("testVideoEffectIfNeed reportByRoomId ");

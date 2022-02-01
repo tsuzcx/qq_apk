@@ -21,26 +21,26 @@ public class VoiceTextPanel$VoiceTextUserOpListenerImp
   
   public void a()
   {
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setCustomTitleVisiable(VoiceTextPanel.a(this.a), 0);
-    VoiceTextPanel.a(this.a).j();
-    if (!VoiceTextPanel.a(this.a).a().a())
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setCustomTitleVisiable(VoiceTextPanel.b(this.a), 0);
+    VoiceTextPanel.d(this.a).j();
+    if (!VoiceTextPanel.e(this.a).e().a())
     {
-      VoiceTextPanel.a(this.a).a().a(2, false);
-      VoiceTextPanel.a(this.a).a();
+      VoiceTextPanel.b(this.a).q().a(2, false);
+      VoiceTextPanel.g(this.a).b();
     }
     else
     {
-      VoiceTextPanel.a(this.a).a(1);
-      VoiceTextPanel.a(this.a).a().a(true);
+      VoiceTextPanel.g(this.a).a(1);
+      VoiceTextPanel.b(this.a).q().a(true);
     }
-    VoiceTextPanel.a(this.a);
+    VoiceTextPanel.h(this.a);
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() != 2)
     {
-      if (!VoiceTextPanel.a(this.a).a().a()) {
+      if (!VoiceTextPanel.e(this.a).e().a()) {
         return;
       }
       VoiceTextPanel.a(this.a).a(paramMotionEvent);
@@ -49,34 +49,34 @@ public class VoiceTextPanel$VoiceTextUserOpListenerImp
   
   public void a(String paramString)
   {
-    VoiceTextPanel.a(this.a).b(paramString);
-    VoiceTextPanel.a(this.a).a().b(true);
-    VoiceTextPanel.a(this.a).a();
+    VoiceTextPanel.d(this.a).b(paramString);
+    VoiceTextPanel.e(this.a).e().b(true);
+    VoiceTextPanel.f(this.a).a();
     this.a.c();
   }
   
   public void b()
   {
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setCustomTitleVisiable(VoiceTextPanel.a(this.a), 0);
-    if (!VoiceTextPanel.a(this.a).a().a())
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setCustomTitleVisiable(VoiceTextPanel.b(this.a), 0);
+    if (!VoiceTextPanel.e(this.a).e().a())
     {
-      VoiceTextPanel.a(this.a).a().a(2, false);
-      VoiceTextPanel.a(this.a).a();
-      VoiceTextPanel.a(this.a).g();
+      VoiceTextPanel.b(this.a).q().a(2, false);
+      VoiceTextPanel.g(this.a).b();
+      VoiceTextPanel.d(this.a).g();
       ReportUtils.a("0X800A1DB", 1, 0);
     }
     else
     {
-      VoiceTextPanel.a(this.a).a(1);
-      VoiceTextPanel.a(this.a).a().a(true);
+      VoiceTextPanel.g(this.a).a(1);
+      VoiceTextPanel.b(this.a).q().a(true);
       ReportUtils.a("0X800A1DB", 2, 0);
     }
-    VoiceTextPanel.a(this.a);
+    VoiceTextPanel.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel.VoiceTextUserOpListenerImp
  * JD-Core Version:    0.7.0.1
  */

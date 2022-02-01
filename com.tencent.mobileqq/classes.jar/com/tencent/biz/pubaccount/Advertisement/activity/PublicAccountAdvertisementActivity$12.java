@@ -39,23 +39,23 @@ class PublicAccountAdvertisementActivity$12
             paramMessage = this.a.getSupportFragmentManager().beginTransaction();
             localObject = this.a;
             PublicAccountAdvertisementActivity.a((PublicAccountAdvertisementActivity)localObject, WebpageFragment.a(((PublicAccountAdvertisementActivity)localObject).getIntent()));
-            PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
-            paramMessage.add(2131381076, PublicAccountAdvertisementActivity.a(this.a));
+            PublicAccountAdvertisementActivity.t(this.a).a(PublicAccountAdvertisementActivity.h(this.a));
+            paramMessage.add(2131450089, PublicAccountAdvertisementActivity.t(this.a));
             paramMessage.commit();
             if (!ThemeUtil.isInNightMode(this.a.getAppRuntime())) {
               return;
             }
-            paramMessage = this.a.findViewById(2131371885);
+            paramMessage = this.a.findViewById(2131439328);
             if (paramMessage == null) {
               return;
             }
             paramMessage.setVisibility(0);
             return;
           }
-          if (PublicAccountAdvertisementActivity.a(this.a) == null) {
+          if (PublicAccountAdvertisementActivity.l(this.a) == null) {
             return;
           }
-          Object localObject = PublicAccountAdvertisementActivity.a(this.a);
+          Object localObject = PublicAccountAdvertisementActivity.l(this.a);
           if (paramMessage.arg1 == 1) {
             bool = true;
           }
@@ -63,7 +63,7 @@ class PublicAccountAdvertisementActivity$12
           return;
         }
         paramMessage = this.a;
-        paramMessage.b(paramMessage.getString(2131689579));
+        paramMessage.b(paramMessage.getString(2131886189));
         return;
       }
       i = paramMessage.arg1;
@@ -74,24 +74,24 @@ class PublicAccountAdvertisementActivity$12
     switch (i)
     {
     default: 
-      this.a.a(2131689580);
+      this.a.a(2131886190);
       return;
-      this.a.a(2131689581);
+      this.a.a(2131886191);
       return;
       paramMessage = this.a;
-      paramMessage.b(paramMessage.getString(2131689578));
+      paramMessage.b(paramMessage.getString(2131886188));
       return;
       i = paramMessage.arg1;
-      if (PublicAccountAdvertisementActivity.a(this.a) != null)
+      if (PublicAccountAdvertisementActivity.l(this.a) != null)
       {
-        PublicAccountAdvertisementActivity.a(this.a).a(i);
+        PublicAccountAdvertisementActivity.l(this.a).a(i);
         if ((i > 0) && (i < 100))
         {
-          PublicAccountAdvertisementActivity.a(this.a).c(true);
+          PublicAccountAdvertisementActivity.l(this.a).c(true);
           return;
         }
         if (i == 100) {
-          PublicAccountAdvertisementActivity.a(this.a).c(false);
+          PublicAccountAdvertisementActivity.l(this.a).c(false);
         }
       }
       break;
@@ -100,7 +100,7 @@ class PublicAccountAdvertisementActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.12
  * JD-Core Version:    0.7.0.1
  */

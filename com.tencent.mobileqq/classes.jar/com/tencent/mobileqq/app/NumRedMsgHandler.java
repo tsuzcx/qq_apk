@@ -74,7 +74,7 @@ public class NumRedMsgHandler
     NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
     localNumMsgReqBody.i_proto_ver.set(1);
     localNumMsgReqBody.ui_plat_id.set(109);
-    localNumMsgReqBody.str_client_ver.set("8.7.0.5295");
+    localNumMsgReqBody.str_client_ver.set("8.8.17.5770");
     localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(paramList);
@@ -108,7 +108,7 @@ public class NumRedMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NumRedMsgHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -57,38 +57,75 @@ import org.jetbrains.annotations.Nullable;
 public final class ExpandPluginLauncher
   implements INetInfoHandler
 {
-  private static Intent jdField_a_of_type_AndroidContentIntent;
-  public static final ExpandPluginLauncher.Companion a;
+  public static final ExpandPluginLauncher.Companion a = new ExpandPluginLauncher.Companion(null);
+  private static Intent o;
   @NotNull
-  private static final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)ExpandPluginLauncher.Companion.instance.2.INSTANCE);
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ExpandPluginLauncher.PluginServiceState jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
-  private final NetSpeedChecker jdField_a_of_type_ComTencentMobileqqQqexpandUtilsNetSpeedChecker = new NetSpeedChecker();
-  private String jdField_a_of_type_JavaLangString = "";
-  private WeakReference<ExpandPluginLoadingFragment> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
+  private static final Lazy p = LazyKt.lazy((Function0)ExpandPluginLauncher.Companion.instance.2.INSTANCE);
+  private WeakReference<ExpandPluginLoadingFragment> b = new WeakReference(null);
+  private final NetSpeedChecker c = new NetSpeedChecker();
+  private int d;
+  private int e;
+  private ExpandPluginLauncher.PluginServiceState f = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
+  private HashMap<String, Object> g = new HashMap();
+  private String h = "";
+  private long i;
+  private boolean j;
+  private long k;
+  private boolean l;
+  private boolean m;
+  private long n;
   
-  static
+  private final void a(int paramInt, long paramLong)
   {
-    jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$Companion = new ExpandPluginLauncher.Companion(null);
+    double d1 = this.c.a(0.3D, paramInt, paramLong);
+    Object localObject = LogUtils.a;
+    if (QLog.isColorLevel())
+    {
+      localObject = ((LogUtils)localObject).a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("remainTime ");
+      localStringBuilder.append(d1);
+      ((ILog)localObject).a("ExpandPluginLauncher", 2, localStringBuilder.toString());
+    }
+    localObject = (ExpandPluginLoadingFragment)this.b.get();
+    if (localObject != null) {
+      ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject, d1, 0.0D, 2, null);
+    }
   }
   
-  private final Intent a(boolean paramBoolean)
+  private final void a(IQRoutePlugin paramIQRoutePlugin)
+  {
+    paramIQRoutePlugin.install((IQRoutePluginInstallListener)new ExpandPluginLauncher.installPlugin.1(this));
+  }
+  
+  private final void a(boolean paramBoolean)
+  {
+    Object localObject1 = (ExpandPluginLoadingFragment)this.b.get();
+    if (localObject1 != null) {
+      ((ExpandPluginLoadingFragment)localObject1).b(0);
+    }
+    Object localObject2 = new QRoutePluginActivityParams.Builder((Context)QBaseActivity.sTopActivity).setActivityName("com.tencent.mobileqq.shadowplugins.expand.ExpandMainActivity").setSubModule("expand-plugin");
+    localObject1 = o;
+    if (localObject1 == null) {
+      localObject1 = b(paramBoolean);
+    }
+    localObject1 = ((QRoutePluginActivityParams.Builder)localObject2).setIntent((Intent)localObject1).setOpenResultListener((IQRoutePlugin.OnOpenResultListener)new ExpandPluginLauncher.loadPlugin.params.1(this));
+    localObject2 = QRoute.plugin("expand");
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "qrouteModule");
+    if (((IQRoutePlugin)localObject2).isInstalled()) {
+      ((IQRoutePlugin)localObject2).startActivityForResult(((QRoutePluginActivityParams.Builder)localObject1).build());
+    }
+  }
+  
+  private final Intent b(boolean paramBoolean)
   {
     Intent localIntent = new Intent();
-    ExpandManager localExpandManager = a();
+    ExpandManager localExpandManager = i();
     if (localExpandManager == null) {
       Intrinsics.throwNpe();
     }
     HashMap localHashMap = new HashMap();
-    Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.get("sourceType");
+    Object localObject2 = this.g.get("sourceType");
     if ((localObject2 != null) && (Intrinsics.areEqual(localObject2, Integer.valueOf(6)))) {
       ((Map)localHashMap).put("isPresent", Integer.valueOf(1));
     } else {
@@ -125,36 +162,36 @@ public final class ExpandPluginLauncher
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplication.getContext()");
     localObject1 = ((BaseApplication)localObject1).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplication.getContext().resources");
-    localMap.put("screenWidth", Integer.valueOf(ViewUtils.c(((Resources)localObject1).getDisplayMetrics().widthPixels)));
+    localMap.put("screenWidth", Integer.valueOf(ViewUtils.pxToDp(((Resources)localObject1).getDisplayMetrics().widthPixels)));
     localObject1 = BaseApplication.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplication.getContext()");
     localObject1 = ((BaseApplication)localObject1).getResources();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplication.getContext().resources");
-    localMap.put("screenHeight", Integer.valueOf(ViewUtils.c(((Resources)localObject1).getDisplayMetrics().heightPixels)));
-    int i;
-    if (localExpandManager.a() != null)
+    localMap.put("screenHeight", Integer.valueOf(ViewUtils.pxToDp(((Resources)localObject1).getDisplayMetrics().heightPixels)));
+    int i1;
+    if (localExpandManager.t() != null)
     {
-      localObject1 = localExpandManager.a();
+      localObject1 = localExpandManager.t();
       if (localObject1 == null) {
         Intrinsics.throwNpe();
       }
       localObject1 = ((ExpandConfig)localObject1).centerBannerList;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "extendFriendManager.exte…Config!!.centerBannerList");
       localMap.put("centerBannerList", localObject1);
-      localObject1 = localExpandManager.a();
+      localObject1 = localExpandManager.t();
       if (localObject1 == null) {
         Intrinsics.throwNpe();
       }
       localObject1 = (CharSequence)((ExpandConfig)localObject1).testStrId;
       if ((localObject1 != null) && (!StringsKt.isBlank((CharSequence)localObject1))) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 1;
+        i1 = 1;
       }
-      i ^= 0x1;
-      if (i == 1)
+      i1 ^= 0x1;
+      if (i1 == 1)
       {
-        localObject1 = localExpandManager.a();
+        localObject1 = localExpandManager.t();
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
@@ -162,10 +199,10 @@ public final class ExpandPluginLauncher
       }
       else
       {
-        if (i != 0) {
-          break label553;
+        if (i1 != 0) {
+          break label568;
         }
-        localObject1 = localExpandManager.a();
+        localObject1 = localExpandManager.t();
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
@@ -173,23 +210,23 @@ public final class ExpandPluginLauncher
       }
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "when (hasTestStrId) {\n  ….toString()\n            }");
       localMap.put("testId", localObject1);
-      break label561;
-      label553:
+      break label576;
+      label568:
       throw new NoWhenBranchMatchedException();
     }
-    label561:
+    label576:
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("jump2FlutterExpandByWidgetName ");
     ((StringBuilder)localObject1).append(localIntent.getStringExtra("centerBannerList"));
     QLog.d("ExpandPluginLauncher", 4, ((StringBuilder)localObject1).toString());
-    if (localExpandManager.m()) {
+    if (localExpandManager.Z()) {
       localObject1 = "1";
     } else {
       localObject1 = "0";
     }
     localMap.put("isHasPersonalLabels", localObject1);
-    bool1 = localExpandManager.l();
-    boolean bool2 = localExpandManager.n();
+    bool1 = localExpandManager.Y();
+    boolean bool2 = localExpandManager.aa();
     if (bool1 == bool2)
     {
       localObject1 = LogUtils.a;
@@ -200,33 +237,33 @@ public final class ExpandPluginLauncher
     if ((!bool1) && (bool2))
     {
       localMap.put("isUsedNewExpand", "0");
-      localExpandManager.d(false);
+      localExpandManager.e(false);
     }
     else
     {
       localMap.put("isUsedNewExpand", "1");
     }
-    localMap.put("userCategory", String.valueOf(localExpandManager.h()));
+    localMap.put("userCategory", String.valueOf(localExpandManager.X()));
     localObject1 = str;
-    if (localExpandManager.c()) {
+    if (localExpandManager.r()) {
       localObject1 = "1";
     }
     localMap.put("isHasNewUserMoment", localObject1);
-    localMap.put("isHasUpgradeIntroduce", String.valueOf(localExpandManager.b()));
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("sourceType")) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilHashMap.get("sourceType"), Integer.valueOf(2)))) {
-      i = 1;
+    localMap.put("isHasUpgradeIntroduce", String.valueOf(localExpandManager.s()));
+    if ((this.g.containsKey("sourceType")) && (Intrinsics.areEqual(this.g.get("sourceType"), Integer.valueOf(2)))) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
     localObject1 = localObject2;
-    if (i != 0) {
-      localObject1 = localExpandManager.k();
+    if (i1 != 0) {
+      localObject1 = localExpandManager.ab();
     }
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "if (isLebaSource) extend…ndManager.wavesId else \"\"");
     localMap.put("wavesId", localObject1);
     localIntent.putExtra("QFLUTTER_NEEDREPORT", QFlutterReporter.a());
     localIntent.putExtra("isDownloadPlugin", paramBoolean);
-    localMap.put("jump", this.jdField_a_of_type_JavaLangString);
+    localMap.put("jump", this.h);
     localMap.put("serverTime", Long.valueOf(NetConnInfoCenter.getServerTime()));
     if (QLog.isColorLevel())
     {
@@ -252,77 +289,36 @@ public final class ExpandPluginLauncher
     return localIntent;
   }
   
-  private final ExpandManager a()
-  {
-    Object localObject1 = BaseApplicationImpl.sApplication;
-    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.sApplication");
-    Object localObject2 = ((BaseApplicationImpl)localObject1).getRuntime();
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof AppInterface)) {
-      localObject1 = null;
-    }
-    localObject1 = (AppInterface)localObject1;
-    if (localObject1 != null) {
-      localObject1 = ((AppInterface)localObject1).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-    } else {
-      localObject1 = null;
-    }
-    localObject2 = localObject1;
-    if (!(localObject1 instanceof ExpandManager)) {
-      localObject2 = null;
-    }
-    return (ExpandManager)localObject2;
-  }
-  
   @NotNull
-  public static final ExpandPluginLauncher a()
+  public static final ExpandPluginLauncher d()
   {
-    return jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$Companion.a();
+    return a.a();
   }
   
-  private final void a(int paramInt, long paramLong)
+  private final void e()
   {
-    double d = this.jdField_a_of_type_ComTencentMobileqqQqexpandUtilsNetSpeedChecker.a(0.3D, paramInt, paramLong);
-    Object localObject = LogUtils.a;
-    if (QLog.isColorLevel())
+    QLog.d("ExpandPluginLauncher", 2, "checkAndLoadPlugin");
+    f();
+    if (g())
     {
-      localObject = ((LogUtils)localObject).a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("remainTime ");
-      localStringBuilder.append(d);
-      ((ILog)localObject).a("ExpandPluginLauncher", 2, localStringBuilder.toString());
-    }
-    localObject = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject != null) {
-      ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject, d, 0.0D, 2, null);
+      LogUtils localLogUtils = LogUtils.a;
+      if (QLog.isColorLevel()) {
+        localLogUtils.a().a("ExpandPluginLauncher", 2, "load plugin");
+      }
+      a(this, false, 1, null);
     }
   }
   
-  private final void a(IQRoutePlugin paramIQRoutePlugin)
+  private final void f()
   {
-    paramIQRoutePlugin.install((IQRoutePluginInstallListener)new ExpandPluginLauncher.installPlugin.1(this));
+    this.j = false;
+    this.i = 0L;
+    this.k = 0L;
+    this.l = false;
+    this.m = false;
   }
   
-  private final void a(boolean paramBoolean)
-  {
-    Object localObject1 = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject1 != null) {
-      ((ExpandPluginLoadingFragment)localObject1).b(0);
-    }
-    Object localObject2 = new QRoutePluginActivityParams.Builder((Context)QBaseActivity.sTopActivity).setActivityName("com.tencent.mobileqq.shadowplugins.expand.ExpandMainActivity").setSubModule("expand-plugin");
-    localObject1 = jdField_a_of_type_AndroidContentIntent;
-    if (localObject1 == null) {
-      localObject1 = a(paramBoolean);
-    }
-    localObject1 = ((QRoutePluginActivityParams.Builder)localObject2).setIntent((Intent)localObject1).setOpenResultListener((IQRoutePlugin.OnOpenResultListener)new ExpandPluginLauncher.loadPlugin.params.1(this));
-    localObject2 = QRoute.plugin("expand");
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "qrouteModule");
-    if (((IQRoutePlugin)localObject2).isInstalled()) {
-      ((IQRoutePlugin)localObject2).startActivityForResult(((QRoutePluginActivityParams.Builder)localObject1).build());
-    }
-  }
-  
-  private final boolean a()
+  private final boolean g()
   {
     Object localObject1 = BaseApplicationImpl.sApplication;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.sApplication");
@@ -345,11 +341,11 @@ public final class ExpandPluginLauncher
         if (QLog.isColorLevel()) {
           ((LogUtils)localObject2).a().a("ExpandPluginLauncher", 2, "plugin not installed");
         }
-        localObject2 = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject2 = (ExpandPluginLoadingFragment)this.b.get();
         if (localObject2 != null) {
           ((ExpandPluginLoadingFragment)localObject2).a();
         }
-        b();
+        h();
         a((IQRoutePlugin)localObject1);
         return false;
       }
@@ -363,25 +359,25 @@ public final class ExpandPluginLauncher
       localObject2 = (Throwable)null;
       ((LogUtils)localObject1).a().a("ExpandPluginLauncher", 1, "runtime not instance of QQAppInterface", (Throwable)localObject2);
     }
-    localObject1 = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject1 = (ExpandPluginLoadingFragment)this.b.get();
     if (localObject1 != null) {
       ((ExpandPluginLoadingFragment)localObject1).a();
     }
-    localObject1 = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject1 = (ExpandPluginLoadingFragment)this.b.get();
     if (localObject1 != null) {
       ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject1, LoadingStatus.LOADING_ERROR, 1, 0, 4, null);
     }
     return false;
   }
   
-  private final boolean b()
+  private final boolean h()
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
       Object localObject = LogUtils.a;
       Throwable localThrowable = (Throwable)null;
       ((LogUtils)localObject).a().a("ExpandPluginLauncher", 1, "onInstallError network error", localThrowable);
-      localObject = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (ExpandPluginLoadingFragment)this.b.get();
       if (localObject != null) {
         ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject, LoadingStatus.LOADING_ERROR_NETWORK, 0, 0, 6, null);
       }
@@ -390,27 +386,26 @@ public final class ExpandPluginLauncher
     return true;
   }
   
-  private final void c()
+  private final ExpandManager i()
   {
-    QLog.d("ExpandPluginLauncher", 2, "checkAndLoadPlugin");
-    d();
-    if (a())
-    {
-      LogUtils localLogUtils = LogUtils.a;
-      if (QLog.isColorLevel()) {
-        localLogUtils.a().a("ExpandPluginLauncher", 2, "load plugin");
-      }
-      a(this, false, 1, null);
+    Object localObject1 = BaseApplicationImpl.sApplication;
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.sApplication");
+    Object localObject2 = ((BaseApplicationImpl)localObject1).getRuntime();
+    localObject1 = localObject2;
+    if (!(localObject2 instanceof AppInterface)) {
+      localObject1 = null;
     }
-  }
-  
-  private final void d()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    localObject1 = (AppInterface)localObject1;
+    if (localObject1 != null) {
+      localObject1 = ((AppInterface)localObject1).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    } else {
+      localObject1 = null;
+    }
+    localObject2 = localObject1;
+    if (!(localObject1 instanceof ExpandManager)) {
+      localObject2 = null;
+    }
+    return (ExpandManager)localObject2;
   }
   
   public final void a()
@@ -439,14 +434,14 @@ public final class ExpandPluginLauncher
       Object localObject2 = new QRoutePluginServiceParams.Builder((Context)QBaseActivity.sTopActivity);
       ((QRoutePluginServiceParams.Builder)localObject2).setServiceName("com.tencent.plugins.services.ExpandPreloadService");
       ((QRoutePluginServiceParams.Builder)localObject2).setSubModule("expand-plugin");
-      Intent localIntent = a(false);
+      Intent localIntent = b(false);
       localIntent.setClassName("com.tencent.plugins.services", "ExpandPreloadService");
       ((QRoutePluginServiceParams.Builder)localObject2).setIntent(localIntent);
       ((QRoutePluginServiceParams.Builder)localObject2).setOpenResultListener((IQRoutePlugin.OnOpenResultListener)ExpandPluginLauncher.preloadPlugin.params.1.2.a);
       localObject2 = ((QRoutePluginServiceParams.Builder)localObject2).build();
-      int i = this.jdField_b_of_type_Int;
-      if ((i == 0) || (i != ProcessUtils.a("com.tencent.mobileqq:plugins"))) {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = ExpandPluginLauncher.PluginServiceState.STARTING;
+      int i1 = this.e;
+      if ((i1 == 0) || (i1 != ProcessUtils.b("com.tencent.mobileqq:plugins"))) {
+        this.f = ExpandPluginLauncher.PluginServiceState.STARTING;
       }
       ((IQRoutePlugin)localObject1).startService((QRoutePluginServiceParams)localObject2);
       return;
@@ -456,7 +451,7 @@ public final class ExpandPluginLauncher
   
   public final void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public final void a(@NotNull Context paramContext, @NotNull HashMap<String, Object> paramHashMap, @Nullable String paramString)
@@ -464,23 +459,23 @@ public final class ExpandPluginLauncher
     Intrinsics.checkParameterIsNotNull(paramContext, "activityContext");
     Intrinsics.checkParameterIsNotNull(paramHashMap, "params");
     QLog.d("ExpandPluginLauncher", 1, "enterPlugin");
-    if (System.currentTimeMillis() - this.jdField_c_of_type_Long < 1000)
+    if (System.currentTimeMillis() - this.n < 1000)
     {
       QLog.e("ExpandPluginLauncher", 2, "error double enter");
       return;
     }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    this.n = System.currentTimeMillis();
     if (paramString == null) {
       paramString = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    int i = this.jdField_b_of_type_Int;
-    if ((i != 0) && (i == ProcessUtils.a("com.tencent.mobileqq:plugins"))) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = ExpandPluginLauncher.PluginServiceState.STARTED;
+    this.h = paramString;
+    this.g = paramHashMap;
+    int i1 = this.e;
+    if ((i1 != 0) && (i1 == ProcessUtils.b("com.tencent.mobileqq:plugins"))) {
+      this.f = ExpandPluginLauncher.PluginServiceState.STARTED;
     }
     paramHashMap = new Intent();
-    paramHashMap.putExtra("plugin_process_id", this.jdField_a_of_type_Int);
+    paramHashMap.putExtra("plugin_process_id", this.d);
     paramHashMap.putExtra("public_fragment_window_feature", 1);
     QPublicTransFragmentActivity.a(paramContext, paramHashMap, ExpandPluginLoadingFragment.class);
   }
@@ -490,33 +485,33 @@ public final class ExpandPluginLauncher
     Intrinsics.checkParameterIsNotNull(paramBundle, "params");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("closeLoading ");
-    localStringBuilder.append(System.identityHashCode(this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+    localStringBuilder.append(System.identityHashCode(this.b.get()));
     localStringBuilder.append(' ');
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     QLog.d("ExpandPluginLauncher", 2, localStringBuilder.toString());
     boolean bool = false;
-    int i = paramBundle.getInt("pluginPid", 0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState == ExpandPluginLauncher.PluginServiceState.STARTED) && (this.jdField_b_of_type_Int != i)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
+    int i1 = paramBundle.getInt("pluginPid", 0);
+    if ((this.f == ExpandPluginLauncher.PluginServiceState.STARTED) && (this.e != i1)) {
+      this.f = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
     }
-    paramBundle = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramBundle = (ExpandPluginLoadingFragment)this.b.get();
     if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_Int == i) {
+      if (this.d == i1) {
         bool = true;
       }
-      paramBundle.a(bool, this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState);
+      paramBundle.a(bool, this.f);
       paramBundle.d(2);
     }
-    this.jdField_a_of_type_Int = i;
+    this.d = i1;
   }
   
   public final void a(@NotNull ExpandPluginLoadingFragment paramExpandPluginLoadingFragment)
   {
     Intrinsics.checkParameterIsNotNull(paramExpandPluginLoadingFragment, "loadFragment");
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if (this.b.get() != null)
     {
       QLog.e("ExpandPluginLauncher", 2, "loading already exits!!");
       paramExpandPluginLoadingFragment.d(5);
@@ -526,30 +521,30 @@ public final class ExpandPluginLauncher
     localStringBuilder.append("registerLoadingFragment ");
     localStringBuilder.append(System.identityHashCode(paramExpandPluginLoadingFragment));
     QLog.d("ExpandPluginLauncher", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExpandPluginLoadingFragment);
-    paramExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.b = new WeakReference(paramExpandPluginLoadingFragment);
+    paramExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.b.get();
     if (paramExpandPluginLoadingFragment != null) {
       paramExpandPluginLoadingFragment.a((View.OnClickListener)new ExpandPluginLauncher.registerLoadingFragment.1(this));
     }
     AppNetConnInfo.registerConnectionChangeReceiver((Context)BaseApplicationImpl.sApplication, (INetInfoHandler)this);
-    c();
+    e();
   }
   
   public final void b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("unregisterLoadingFragment ");
-    localStringBuilder.append(System.identityHashCode(this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+    localStringBuilder.append(System.identityHashCode(this.b.get()));
     QLog.d("ExpandPluginLauncher", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+    this.b = new WeakReference(null);
     AppNetConnInfo.registerConnectionChangeReceiver((Context)BaseApplicationImpl.sApplication, (INetInfoHandler)this);
   }
   
   public void onNetMobile2None()
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.m)
     {
-      ExpandPluginLoadingFragment localExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ExpandPluginLoadingFragment localExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.b.get();
       if (localExpandPluginLoadingFragment != null) {
         ExpandPluginLoadingFragment.a(localExpandPluginLoadingFragment, LoadingStatus.LOADING_ERROR_NETWORK, 0, 0, 6, null);
       }
@@ -560,10 +555,10 @@ public final class ExpandPluginLauncher
   
   public void onNetNone2Mobile(@Nullable String paramString)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.m)
     {
-      d();
-      paramString = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      f();
+      paramString = (ExpandPluginLoadingFragment)this.b.get();
       if (paramString != null) {
         ExpandPluginLoadingFragment.a(paramString, LoadingStatus.LOADING, 0, 0, 6, null);
       }
@@ -572,10 +567,10 @@ public final class ExpandPluginLauncher
   
   public void onNetNone2Wifi(@Nullable String paramString)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.m)
     {
-      d();
-      paramString = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      f();
+      paramString = (ExpandPluginLoadingFragment)this.b.get();
       if (paramString != null) {
         ExpandPluginLoadingFragment.a(paramString, LoadingStatus.LOADING, 0, 0, 6, null);
       }
@@ -586,9 +581,9 @@ public final class ExpandPluginLauncher
   
   public void onNetWifi2None()
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.m)
     {
-      ExpandPluginLoadingFragment localExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ExpandPluginLoadingFragment localExpandPluginLoadingFragment = (ExpandPluginLoadingFragment)this.b.get();
       if (localExpandPluginLoadingFragment != null) {
         ExpandPluginLoadingFragment.a(localExpandPluginLoadingFragment, LoadingStatus.LOADING_ERROR_NETWORK, 0, 0, 6, null);
       }
@@ -597,7 +592,7 @@ public final class ExpandPluginLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLauncher
  * JD-Core Version:    0.7.0.1
  */

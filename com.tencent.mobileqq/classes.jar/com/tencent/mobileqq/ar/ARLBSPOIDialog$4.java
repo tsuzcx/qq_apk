@@ -11,7 +11,7 @@ class ARLBSPOIDialog$4
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.setVisibility(8);
+    this.a.c.setVisibility(8);
     this.a.dismiss();
   }
   
@@ -21,7 +21,7 @@ class ARLBSPOIDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSPOIDialog.4
  * JD-Core Version:    0.7.0.1
  */

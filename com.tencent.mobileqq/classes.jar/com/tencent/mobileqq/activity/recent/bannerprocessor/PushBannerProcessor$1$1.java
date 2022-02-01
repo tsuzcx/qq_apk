@@ -15,13 +15,13 @@ class PushBannerProcessor$1$1
   
   public void run()
   {
-    EntityManager localEntityManager = PushBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorPushBannerProcessor$1.a).getAppRuntime().getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = PushBannerProcessor.c(this.c.a).getAppRuntime().getEntityManagerFactory().createEntityManager();
     Object localObject = localEntityManager.query(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
     int k = 0;
     int j = k;
     if (localObject != null)
     {
-      int m = ((List)localObject).size() + this.jdField_a_of_type_Int - 10;
+      int m = ((List)localObject).size() + this.a - 10;
       j = k;
       if (m > 0)
       {
@@ -37,9 +37,9 @@ class PushBannerProcessor$1$1
         }
       }
     }
-    while (j < this.jdField_a_of_type_JavaUtilList.size())
+    while (j < this.b.size())
     {
-      localObject = (PushBanner)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = (PushBanner)this.b.get(j);
       if (localObject != null)
       {
         long l2 = 0L;
@@ -53,7 +53,7 @@ class PushBannerProcessor$1$1
         }
         ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
         localExpiredPushBanner.cid = Long.parseLong(((PushBanner)localObject).a);
-        localExpiredPushBanner.md5 = ((PushBanner)localObject).m;
+        localExpiredPushBanner.md5 = ((PushBanner)localObject).o;
         localExpiredPushBanner.endtime = l1;
         localEntityManager.persist(localExpiredPushBanner);
       }
@@ -63,7 +63,7 @@ class PushBannerProcessor$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.1.1
  * JD-Core Version:    0.7.0.1
  */

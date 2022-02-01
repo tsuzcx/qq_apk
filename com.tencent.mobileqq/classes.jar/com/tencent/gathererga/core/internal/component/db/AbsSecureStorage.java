@@ -12,42 +12,16 @@ public abstract class AbsSecureStorage
   implements Storage
 {
   protected String a;
-  private WeakHashMap<String, String> a;
-  
-  public AbsSecureStorage()
-  {
-    this.jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangString == null)
-      {
-        this.jdField_a_of_type_JavaLangString = Md5Util.a(a());
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("mEncryptKey : ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        GLog.b(localStringBuilder.toString());
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  private WeakHashMap<String, String> b = new WeakHashMap();
   
   private String b(String paramString)
   {
     if (paramString != null)
     {
-      a();
+      c();
       try
       {
-        String str = SimpleCrypto.a(this.jdField_a_of_type_JavaLangString, paramString);
+        String str = SimpleCrypto.a(this.a, paramString);
         return str;
       }
       catch (Throwable localThrowable)
@@ -63,8 +37,8 @@ public abstract class AbsSecureStorage
     if (paramString != null) {
       try
       {
-        a();
-        String str = SimpleCrypto.b(this.jdField_a_of_type_JavaLangString, paramString);
+        c();
+        String str = SimpleCrypto.b(this.a, paramString);
         return str;
       }
       catch (Throwable localThrowable)
@@ -75,15 +49,34 @@ public abstract class AbsSecureStorage
     return paramString;
   }
   
-  protected abstract SharedPreferences a();
+  private void c()
+  {
+    try
+    {
+      if (this.a == null)
+      {
+        this.a = Md5Util.a(b());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mEncryptKey : ");
+        localStringBuilder.append(this.a);
+        GLog.b(localStringBuilder.toString());
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
-  protected abstract String a();
+  protected abstract SharedPreferences a();
   
   public final String a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilWeakHashMap;
+    Object localObject = this.b;
     if ((localObject != null) && (((WeakHashMap)localObject).containsKey(paramString))) {
-      return (String)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramString);
+      return (String)this.b.get(paramString);
     }
     localObject = b(paramString);
     localObject = a().getString((String)localObject, "");
@@ -91,7 +84,7 @@ public abstract class AbsSecureStorage
       return null;
     }
     localObject = c((String)localObject);
-    this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramString, localObject);
+    this.b.put(paramString, localObject);
     return localObject;
   }
   
@@ -100,16 +93,18 @@ public abstract class AbsSecureStorage
     Object localObject = b(paramString1);
     String str = b(paramString2);
     a().edit().putString((String)localObject, str).commit();
-    localObject = this.jdField_a_of_type_JavaUtilWeakHashMap;
+    localObject = this.b;
     if (localObject == null) {
       return;
     }
     ((WeakHashMap)localObject).put(paramString1, paramString2);
   }
+  
+  protected abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.component.db.AbsSecureStorage
  * JD-Core Version:    0.7.0.1
  */

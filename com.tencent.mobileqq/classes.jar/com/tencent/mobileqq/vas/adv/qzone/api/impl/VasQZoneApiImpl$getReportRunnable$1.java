@@ -23,17 +23,17 @@ final class VasQZoneApiImpl$getReportRunnable$1
   public final void run()
   {
     adv_report.MobileAdvReportReq localMobileAdvReportReq = new adv_report.MobileAdvReportReq();
-    localMobileAdvReportReq.recomm_cookie.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getRecommendCookie());
-    localMobileAdvReportReq.adv_pos.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getAdvPos());
-    localMobileAdvReportReq.action_type.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getActionType());
-    localMobileAdvReportReq.action_value.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getActionValue());
-    localMobileAdvReportReq.feed_index.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getFeedIndex());
-    localMobileAdvReportReq.qq.set(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getUin());
-    Object localObject = VasAdvSupport.a.a().a("1018ec");
+    localMobileAdvReportReq.recomm_cookie.set(this.a.getRecommendCookie());
+    localMobileAdvReportReq.adv_pos.set(this.a.getAdvPos());
+    localMobileAdvReportReq.action_type.set(this.a.getActionType());
+    localMobileAdvReportReq.action_value.set(this.a.getActionValue());
+    localMobileAdvReportReq.feed_index.set(this.a.getFeedIndex());
+    localMobileAdvReportReq.qq.set(this.a.getUin());
+    Object localObject = VasAdvSupport.a.a().b("1018ec");
     if (localObject != null) {
       localMobileAdvReportReq.device_info.set((MessageMicro)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneDataVasAdMetaReportParam.getSubscribeId();
+    localObject = this.a.getSubscribeId();
     if (localObject != null)
     {
       adv_report.SubscribeInfo localSubscribeInfo1 = localMobileAdvReportReq.subscribe_info;
@@ -41,12 +41,12 @@ final class VasQZoneApiImpl$getReportRunnable$1
       localSubscribeInfo2.id.set((String)localObject);
       localSubscribeInfo1.set((MessageMicro)localSubscribeInfo2);
     }
-    VasQZoneApiImpl.access$reportAd(this.this$0, localMobileAdvReportReq, this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseVasAdvBizCallback);
+    VasQZoneApiImpl.access$reportAd(this.this$0, localMobileAdvReportReq, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.api.impl.VasQZoneApiImpl.getReportRunnable.1
  * JD-Core Version:    0.7.0.1
  */

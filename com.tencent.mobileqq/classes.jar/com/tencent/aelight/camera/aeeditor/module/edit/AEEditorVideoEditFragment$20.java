@@ -5,12 +5,12 @@ import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.session.callback.FrameExtractCallback;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.ModelExtKt;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.effect.MusicModel;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.tavcut.session.callback.FrameExtractCallback;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.ModelExtKt;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.effect.MusicModel;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.Arrays;
 
@@ -21,38 +21,38 @@ class AEEditorVideoEditFragment$20
   
   public void onExtractCanceled()
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_EXPORT_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), AEEditorVideoEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), this.jdField_a_of_type_JavaLangString), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), "-90000002") }));
+    this.a.release();
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pExportEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), AEEditorVideoEditFragment.u(this.e)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), this.b), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), "-90000002") }));
   }
   
   public void onExtractFailed()
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_EXPORT_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), AEEditorVideoEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), this.jdField_a_of_type_JavaLangString), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), "-90000001") }));
+    this.a.release();
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pExportEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), AEEditorVideoEditFragment.u(this.e)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), this.b), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), "-90000001") }));
   }
   
   public void onFrameExtracted(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
-    boolean bool = FileUtils.saveBitmapToFile(paramBitmap, this.jdField_a_of_type_JavaLangString);
-    paramBitmap = AEEditorVideoEditFragment.h();
+    this.a.release();
+    boolean bool = FileUtils.saveBitmapToFile(paramBitmap, this.b);
+    paramBitmap = AEEditorVideoEditFragment.aj();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onGoNext... saveBitmapToFile isSuccess:");
     localStringBuilder.append(bool);
     AEQLog.a(paramBitmap, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.b();
-    if (ModelExtKt.isLightTemplate(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel()))
+    this.e.e();
+    if (ModelExtKt.isLightTemplate(this.e.B.getMediaModel()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.b);
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMediaModel().getMediaEffectModel().getMusicModel().setVolume(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.jdField_a_of_type_Float);
+      this.e.B.getMediaModel().getMediaEffectModel().getMusicModel().setBgmVolume(this.e.K);
+      this.e.B.getMediaModel().getMediaEffectModel().getMusicModel().setVolume(this.e.J);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment.a(this.b, this.jdField_a_of_type_JavaLangString, this.c);
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_EXPORT_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT2(), AEEditorVideoEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorVideoEditFragment)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), this.jdField_a_of_type_JavaLangString), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), "0") }));
+    this.e.a(this.c, this.b, this.d);
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pExportEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), "cover"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext2(), AEEditorVideoEditFragment.u(this.e)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), this.b), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), "0") }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.20
  * JD-Core Version:    0.7.0.1
  */

@@ -16,16 +16,16 @@ import org.json.JSONObject;
 public class TroopFileColorNoteServiceInfo
   implements IServiceInfo
 {
-  private TroopFileStatusInfo jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private TroopFileStatusInfo b;
   
   public TroopFileColorNoteServiceInfo(long paramLong, TroopFileStatusInfo paramTroopFileStatusInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = paramTroopFileStatusInfo;
+    this.a = localStringBuilder.toString();
+    this.b = paramTroopFileStatusInfo;
   }
   
   private String a()
@@ -34,17 +34,17 @@ public class TroopFileColorNoteServiceInfo
     {
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("file_color_note_peerType", 1);
-      ((JSONObject)localObject).put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("file_color_note_fileName", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g);
-      ((JSONObject)localObject).put("file_color_note_fileSize", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c);
-      UUID localUUID = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a;
+      ((JSONObject)localObject).put("file_color_note_peerUin", this.a);
+      ((JSONObject)localObject).put("file_color_note_fileName", this.b.t);
+      ((JSONObject)localObject).put("file_color_note_fileSize", this.b.i);
+      UUID localUUID = this.b.a;
       if (localUUID != null) {
-        ((JSONObject)localObject).put("file_color_note_file_uuid", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a.toString());
+        ((JSONObject)localObject).put("file_color_note_file_uuid", this.b.a.toString());
       } else {
         ((JSONObject)localObject).put("file_color_note_file_uuid", "");
       }
-      ((JSONObject)localObject).put("file_color_note_file_url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
-      ((JSONObject)localObject).put("file_color_note_busId", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h);
+      ((JSONObject)localObject).put("file_color_note_file_url", this.b.r);
+      ((JSONObject)localObject).put("file_color_note_busId", this.b.u);
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
@@ -59,7 +59,7 @@ public class TroopFileColorNoteServiceInfo
   {
     ColorNote.Builder localBuilder = new ColorNote.Builder();
     localBuilder.a(17039360);
-    Object localObject = QFileUtils.a(2, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
+    Object localObject = QFileUtils.a(2, this.b.r);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -69,9 +69,9 @@ public class TroopFileColorNoteServiceInfo
       QLog.i("TroopFileColorNoteServiceInfo", 2, localStringBuilder.toString());
     }
     localBuilder.a((String)localObject);
-    localBuilder.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g);
-    localBuilder.c(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c));
-    int i = FileManagerUtil.a(FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g));
+    localBuilder.b(this.b.t);
+    localBuilder.c(FileUtil.a(this.b.i));
+    int i = FileManagerUtil.c(FileManagerUtil.c(this.b.t));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("resdrawable://");
     ((StringBuilder)localObject).append(i);
@@ -85,7 +85,7 @@ public class TroopFileColorNoteServiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.TroopFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ class FolderFollowTabFragment$1
   
   public void run()
   {
-    this.a.a(FolderFollowTabFragment.a(this.this$0));
+    this.a.c(FolderFollowTabFragment.a(this.this$0));
     Message localMessage = Message.obtain();
     localMessage.what = 100;
-    localMessage.arg1 = FolderFollowTabFragment.c;
-    FolderFollowTabFragment.a(this.this$0).sendMessage(localMessage);
+    localMessage.arg1 = FolderFollowTabFragment.g;
+    FolderFollowTabFragment.b(this.this$0).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

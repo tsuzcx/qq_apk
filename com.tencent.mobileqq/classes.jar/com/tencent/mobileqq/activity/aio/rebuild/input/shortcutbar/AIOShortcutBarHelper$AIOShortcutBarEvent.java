@@ -5,32 +5,32 @@ import android.os.Bundle;
 public class AIOShortcutBarHelper$AIOShortcutBarEvent
 {
   public int a;
-  private Bundle a;
+  private Bundle b;
   
   public AIOShortcutBarHelper$AIOShortcutBarEvent() {}
   
   public AIOShortcutBarHelper$AIOShortcutBarEvent(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public AIOShortcutBarHelper$AIOShortcutBarEvent(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramInt;
+    this.b = paramBundle;
   }
   
   public Bundle a()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if (this.b == null) {
+      this.b = new Bundle();
     }
-    return this.jdField_a_of_type_AndroidOsBundle;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper.AIOShortcutBarEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class SlideActiveAnimController$4
   public void onClick(View paramView)
   {
     paramView = this.a;
-    paramView.d = true;
+    paramView.q = true;
     SlideActiveAnimController.a(paramView, new SlideActiveAnimController.4.1(this));
-    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
+    SlideActiveAnimController.c(this.a).postDelayed(SlideActiveAnimController.b(this.a), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.SlideActiveAnimController.4
  * JD-Core Version:    0.7.0.1
  */

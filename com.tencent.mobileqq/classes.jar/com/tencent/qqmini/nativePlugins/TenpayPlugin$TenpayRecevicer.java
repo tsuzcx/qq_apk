@@ -11,12 +11,12 @@ import org.json.JSONObject;
 final class TenpayPlugin$TenpayRecevicer
   extends ResultReceiver
 {
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+  private RequestEvent b;
   
   TenpayPlugin$TenpayRecevicer(TenpayPlugin paramTenpayPlugin, RequestEvent paramRequestEvent, Handler paramHandler)
   {
     super(paramHandler);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+    this.b = paramRequestEvent;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -29,7 +29,7 @@ final class TenpayPlugin$TenpayRecevicer
     QLog.d("TenpayPlugin", 2, ((StringBuilder)localObject).toString());
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("error unkown!");
+      this.b.fail("error unkown!");
       return;
     }
     paramBundle = paramBundle.getString("result");
@@ -44,22 +44,22 @@ final class TenpayPlugin$TenpayRecevicer
       localObject = paramBundle.optString("retmsg");
       if (paramInt == 0)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
+        this.b.ok(paramBundle);
         return;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramBundle, (String)localObject);
+      this.b.fail(paramBundle, (String)localObject);
       return;
     }
     catch (JSONException paramBundle)
     {
       paramBundle.printStackTrace();
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("error unkown!");
+      this.b.fail("error unkown!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TenpayPlugin.TenpayRecevicer
  * JD-Core Version:    0.7.0.1
  */

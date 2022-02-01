@@ -10,15 +10,16 @@ class LebaSpecificRedTouchBiz$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a();
-    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.this$0.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchINearbyRedInfo, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch);
-    LebaSpecificRedTouchBiz.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch);
-    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$1.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b();
+    this.b.c.b();
+    this.b.c.setUseNewStyle(true);
+    this.b.this$0.a(this.b.a, this.a, this.b.c);
+    LebaSpecificRedTouchBiz.a(this.b.this$0, this.b.d, this.b.c);
+    this.b.c.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.redtouch.LebaSpecificRedTouchBiz.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.cmshow.brickengine.apollo;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,11 +18,8 @@ import com.tencent.mobileqq.apollo.listener.OnApolloViewListener;
 import com.tencent.mobileqq.apollo.model.ApolloDevInfo;
 import com.tencent.mobileqq.apollo.model.ApolloNioSocketInfo;
 import com.tencent.mobileqq.apollo.model.ApolloSkeletonBounding;
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
 import com.tencent.mobileqq.apollo.statistics.CmShowStatUtil;
 import com.tencent.mobileqq.apollo.statistics.product.Apollo644ReportUtil;
-import com.tencent.mobileqq.apollo.task.ApolloActionManager;
 import com.tencent.mobileqq.apollo.utils.ApolloHardWareTester;
 import com.tencent.mobileqq.apollo.utils.ProcessUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
@@ -40,8 +36,8 @@ import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.ScreenUtil;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.SensorUtil;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.WebSocketUtil;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.ZipUtil;
+import com.tencent.mobileqq.cmshow.brickengine.resource.util.BKGetResPathUtil;
 import com.tencent.mobileqq.cmshow.engine.render.IRecordFrameListener;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
 import com.tencent.mobileqq.cmshow.engine.util.FontUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -68,7 +64,12 @@ public class ApolloRender
   public static final String GAME_RES_PREFIX = "GameRes:";
   public static final String GAME_SAND_BOX_PREFIX = "GameSandBox:";
   public static final int LONG_DRAW_COST = 100;
-  private static final String TAG = "[cmshow]sava_ApolloRender";
+  private static final int SP_ANIMATION_COMPLETE = 2;
+  private static final int SP_ANIMATION_END = 1;
+  private static final int SP_ANIMATION_START = 0;
+  private static final String TAG = "[cmshow][ApolloRender]";
+  @NonNull
+  private static volatile ReentrantLock mLock = new ReentrantLock();
   private static String qtaTestResult;
   protected static ThreadLocal<WeakReference<ApolloRender>> sLocalRender = new ThreadLocal();
   public static String sNativeVersion;
@@ -96,8 +97,6 @@ public class ApolloRender
   private boolean mIsNeedReport = false;
   private boolean mIsOffscreen;
   private boolean mIsReadyNotify = false;
-  @NonNull
-  private ReentrantLock mLock;
   private StringBuilder mLogBuffer = new StringBuilder(100);
   private int mLogCount = 0;
   private int mLongCostCount = 0;
@@ -126,25 +125,14 @@ public class ApolloRender
       this.mScale = paramFloat;
     }
     this.mCallbackRef = new WeakReference(paramOnApolloViewListener);
-    this.mLock = ApolloActionManager.a().a();
     this.mApolloTicker = new ApolloTicker();
     if (QLog.isColorLevel())
     {
       paramOnApolloViewListener = new StringBuilder();
       paramOnApolloViewListener.append("[ApolloRender] threadId:");
       paramOnApolloViewListener.append(Thread.currentThread().getId());
-      QLog.d("[cmshow]sava_ApolloRender", 2, paramOnApolloViewListener.toString());
+      QLog.d("[cmshow][ApolloRender]", 2, paramOnApolloViewListener.toString());
     }
-  }
-  
-  @Keep
-  private static void AABBCallback(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, String paramString1, String paramString2, String paramString3, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12, float paramFloat13, float paramFloat14, float paramFloat15, float paramFloat16, float paramFloat17, float paramFloat18, float paramFloat19, float paramFloat20, int paramInt)
-  {
-    ApolloRender localApolloRender = getCurrentRender();
-    if (localApolloRender == null) {
-      return;
-    }
-    localApolloRender.notifyAABBListChange(new ApolloSkeletonBounding(paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9, paramFloat10, paramFloat11, paramFloat12, paramFloat13, paramFloat14, paramFloat15, paramFloat16, paramFloat17, paramFloat18, paramFloat19, paramFloat20), paramInt);
   }
   
   @Keep
@@ -162,9 +150,9 @@ public class ApolloRender
     SensorUtil.a(paramInt);
   }
   
-  private static int correctSizeIfNeed(int paramInt1, int paramInt2)
+  private int correctSizeIfNeed(int paramInt1, int paramInt2)
   {
-    if ((CmShowWnsUtils.o()) && (paramInt1 > 0))
+    if ((CmShowWnsUtils.s()) && (paramInt1 > 0))
     {
       if (paramInt1 == paramInt2) {
         return paramInt2;
@@ -176,7 +164,7 @@ public class ApolloRender
         localStringBuilder.append(paramInt2);
         localStringBuilder.append(" to viewSize:");
         localStringBuilder.append(paramInt1);
-        QLog.w("[cmshow]sava_ApolloRender", 1, localStringBuilder.toString());
+        QLog.w("[cmshow][ApolloRender]", 1, localStringBuilder.toString());
       }
       return paramInt1;
     }
@@ -211,7 +199,7 @@ public class ApolloRender
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(",thread=");
       ((StringBuilder)localObject).append(Thread.currentThread().getId());
-      QLog.d("[cmshow]sava_ApolloRender", 2, ((StringBuilder)localObject).toString());
+      QLog.d("[cmshow][ApolloRender]", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = getCurrentRender();
     if (localObject != null) {
@@ -219,6 +207,7 @@ public class ApolloRender
     }
   }
   
+  @Keep
   public static Bitmap drawTextOnBitmap(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5)
   {
     return FontUtils.a(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramInt5);
@@ -231,7 +220,7 @@ public class ApolloRender
     ApolloTicker localApolloTicker = getApolloTicker(paramLong);
     if ((localApolloTicker != null) && (localApolloRender != null) && (localApolloRender.getSavaWrapper() != null))
     {
-      QLog.d("[cmshow]sava_ApolloRender", 1, new Object[] { "FrameRecorder, driveFirstFrame, ticker:", Long.valueOf(paramLong), ", director:", Long.valueOf(localApolloRender.getSavaWrapper().mDirector) });
+      QLog.d("[cmshow][ApolloRender]", 1, new Object[] { "FrameRecorder, driveFirstFrame, ticker:", Long.valueOf(paramLong), ", director:", Long.valueOf(localApolloRender.getSavaWrapper().mDirector) });
       localApolloTicker.nativeCallbackTicker(paramLong, System.currentTimeMillis(), 0.01666666666666667D);
     }
   }
@@ -243,7 +232,7 @@ public class ApolloRender
     ApolloTicker localApolloTicker = getApolloTicker(paramLong);
     if ((localApolloTicker != null) && (localApolloRender != null) && (localApolloRender.getSavaWrapper() != null))
     {
-      QLog.d("[cmshow]sava_ApolloRender", 1, new Object[] { "FrameRecorder, driveForOffScreen, ticker:", Long.valueOf(paramLong), ", interval:", Float.valueOf(paramFloat), ", director:", Long.valueOf(localApolloRender.getSavaWrapper().mDirector) });
+      QLog.d("[cmshow][ApolloRender]", 1, new Object[] { "FrameRecorder, driveForOffScreen, ticker:", Long.valueOf(paramLong), ", interval:", Float.valueOf(paramFloat), ", director:", Long.valueOf(localApolloRender.getSavaWrapper().mDirector) });
       localApolloTicker.setOffscreenFrameInterval(paramFloat);
       localApolloTicker.driveOffScreenFrame(localApolloRender.getSavaWrapper().mDirector);
     }
@@ -255,7 +244,7 @@ public class ApolloRender
       ApolloManagerServiceImpl.initEngineScript();
     }
     if (TextUtils.isEmpty(ApolloManagerServiceImpl.sEngineScript)) {
-      QLog.e("[cmshow]sava_ApolloRender", 1, "exeEngineJs error: sEngineScript is empty!");
+      QLog.e("[cmshow][ApolloRender]", 1, "exeEngineJs error: sEngineScript is empty!");
     }
     this.mSavaWrapper.execScriptString(ApolloManagerServiceImpl.sEngineScript);
     if (QLog.isColorLevel()) {
@@ -263,6 +252,7 @@ public class ApolloRender
     }
   }
   
+  @Keep
   private static Bitmap getApolloBitmap(String paramString, int paramInt)
   {
     return SavaImageUtil.a(paramString, paramInt);
@@ -291,7 +281,7 @@ public class ApolloRender
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("[cmshow]sava_ApolloRender", 1, "[getCurrentRender], errInfo->renderObj is null");
+        QLog.i("[cmshow][ApolloRender]", 1, "[getCurrentRender], errInfo->renderObj is null");
       }
       return null;
     }
@@ -311,7 +301,7 @@ public class ApolloRender
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("[cmshow]sava_ApolloRender", 1, "[getCurrentRenderView], errInfo->", localOutOfMemoryError);
+      QLog.e("[cmshow][ApolloRender]", 1, "[getCurrentRenderView], errInfo->", localOutOfMemoryError);
     }
     return null;
   }
@@ -319,6 +309,12 @@ public class ApolloRender
   private static void getLocation(long paramLong, int paramInt, String paramString)
   {
     LocationUtil.a(paramLong, paramInt, paramString);
+  }
+  
+  @NonNull
+  public static ReentrantLock getLock()
+  {
+    return mLock;
   }
   
   @Keep
@@ -339,7 +335,7 @@ public class ApolloRender
     Object localObject = getCurrentRender();
     if (localObject == null)
     {
-      QLog.w("[cmshow]sava_ApolloRender", 1, "render is null.");
+      QLog.w("[cmshow][ApolloRender]", 1, "render is null.");
       return null;
     }
     if (paramString.startsWith("GameSandBox:"))
@@ -362,21 +358,25 @@ public class ApolloRender
     return "NOT_SAND_PATH";
   }
   
+  @Keep
   public static Bitmap getTextViewBitmap(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2)
   {
     return FontUtils.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString1, paramString2);
   }
   
+  @Keep
   private static Bitmap getTextViewBitmap(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString2, int paramInt7, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt8)
   {
     return FontUtils.a(paramInt1, paramInt2, paramString1, paramInt3, paramInt4, paramInt5, paramInt6, paramString2, paramInt7, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt8);
   }
   
+  @Keep
   public static int[] getTextViewSize(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     return FontUtils.a(paramInt1, paramInt2, paramString1, paramString2);
   }
   
+  @Keep
   private static int[] getTextViewSize(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString2, int paramInt8, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt9)
   {
     return FontUtils.a(paramInt1, paramString1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramString2, paramInt8, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt9);
@@ -384,7 +384,7 @@ public class ApolloRender
   
   public static String getUserPath(int paramInt)
   {
-    Object localObject = CmGameUtil.a();
+    Object localObject = CmGameUtil.b();
     long l;
     if (localObject != null) {
       l = ((AppInterface)localObject).getLongAccountUin();
@@ -405,6 +405,7 @@ public class ApolloRender
     return localStringBuilder.toString();
   }
   
+  @Keep
   public static void hideKeyBoard(long paramLong)
   {
     KeyBoardUtil.b(paramLong);
@@ -449,30 +450,39 @@ public class ApolloRender
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("java sha1  Error:");
       ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
-      QLog.e("[cmshow]sava_ApolloRender", 2, ((StringBuilder)localObject).toString());
+      QLog.e("[cmshow][ApolloRender]", 2, ((StringBuilder)localObject).toString());
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      QLog.d("[cmshow]sava_ApolloRender", 2, paramArrayOfByte.getMessage());
+      QLog.d("[cmshow][ApolloRender]", 2, paramArrayOfByte.getMessage());
     }
     return null;
   }
   
   @Keep
+  private static void onAABBChange(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, String paramString1, String paramString2, String paramString3, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12, float paramFloat13, float paramFloat14, float paramFloat15, float paramFloat16, float paramFloat17, float paramFloat18, float paramFloat19, float paramFloat20, int paramInt)
+  {
+    ApolloRender localApolloRender = getCurrentRender();
+    if (localApolloRender == null) {
+      return;
+    }
+    localApolloRender.notifyAABBListChange(new ApolloSkeletonBounding(paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9, paramFloat10, paramFloat11, paramFloat12, paramFloat13, paramFloat14, paramFloat15, paramFloat16, paramFloat17, paramFloat18, paramFloat19, paramFloat20), paramInt);
+  }
+  
+  @Keep
   public static boolean onRecordFrame(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    Object localObject = getCurrentRender();
-    if (localObject != null) {
-      localObject = ((ApolloRender)localObject).getRecordFrameListener();
+    ApolloRender localApolloRender = getCurrentRender();
+    IRecordFrameListener localIRecordFrameListener;
+    if (localApolloRender != null) {
+      localIRecordFrameListener = localApolloRender.getRecordFrameListener();
     } else {
-      localObject = null;
+      localIRecordFrameListener = null;
     }
-    if (localObject != null)
-    {
-      Pair localPair = ((IRecordFrameListener)localObject).a();
-      return ((IRecordFrameListener)localObject).a(paramArrayOfByte, correctSizeIfNeed(((Integer)localPair.first).intValue(), paramInt1), correctSizeIfNeed(((Integer)localPair.second).intValue(), paramInt2));
+    if (localIRecordFrameListener != null) {
+      return localIRecordFrameListener.a(paramArrayOfByte, localApolloRender.correctSizeIfNeed(localApolloRender.mWidth, paramInt1), localApolloRender.correctSizeIfNeed(localApolloRender.mHeight, paramInt2));
     }
-    QLog.w("[cmshow]sava_ApolloRender", 1, "onRecordFrame but recordFrameListener null!!");
+    QLog.w("[cmshow][ApolloRender]", 1, "onRecordFrame but recordFrameListener null!!");
     return false;
   }
   
@@ -483,7 +493,7 @@ public class ApolloRender
     if ((localApolloRender != null) && (localApolloRender.getRecordFrameListener() != null)) {
       return localApolloRender.getRecordFrameListener().a(paramBoolean);
     }
-    QLog.w("[cmshow]sava_ApolloRender", 1, "onRecordFrameEnd but recordFrameListener null!!");
+    QLog.w("[cmshow][ApolloRender]", 1, "onRecordFrameEnd but recordFrameListener null!!");
     return false;
   }
   
@@ -494,7 +504,7 @@ public class ApolloRender
     if ((localApolloRender != null) && (localApolloRender.getRecordFrameListener() != null)) {
       return localApolloRender.getRecordFrameListener().a(paramFloat);
     }
-    QLog.w("[cmshow]sava_ApolloRender", 1, "onRecordFrameStart but recordFrameListener null!!");
+    QLog.w("[cmshow][ApolloRender]", 1, "onRecordFrameStart but recordFrameListener null!!");
     return false;
   }
   
@@ -506,7 +516,7 @@ public class ApolloRender
   private static void printNativeVersion(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]sava_ApolloRender", 2, new Object[] { "version:", paramString });
+      QLog.d("[cmshow][ApolloRender]", 2, new Object[] { "version:", paramString });
     }
     sNativeVersion = paramString;
   }
@@ -515,19 +525,20 @@ public class ApolloRender
   private static ApolloDevInfo queryDevInfo()
   {
     ApolloDevInfo localApolloDevInfo = new ApolloDevInfo();
-    localApolloDevInfo.model = DeviceInfoUtil.i();
+    localApolloDevInfo.model = DeviceInfoUtil.u();
     localApolloDevInfo.platform = "android";
-    localApolloDevInfo.version = DeviceInfoUtil.e();
-    localApolloDevInfo.qqVersion = DeviceInfoUtil.c();
-    localApolloDevInfo.pixelRatio = DeviceInfoUtil.a();
-    localApolloDevInfo.screenHeight = ((float)DeviceInfoUtil.l());
-    localApolloDevInfo.screenWidth = ((float)DeviceInfoUtil.k());
+    localApolloDevInfo.version = DeviceInfoUtil.g();
+    localApolloDevInfo.qqVersion = DeviceInfoUtil.e();
+    localApolloDevInfo.pixelRatio = DeviceInfoUtil.A();
+    localApolloDevInfo.screenHeight = ((float)DeviceInfoUtil.G());
+    localApolloDevInfo.screenWidth = ((float)DeviceInfoUtil.F());
     return localApolloDevInfo;
   }
   
   @Keep
   private static void requestRenderView() {}
   
+  @Keep
   protected static void selectPhoto(long paramLong, int paramInt1, int paramInt2)
   {
     SavaImageUtil.a(paramLong, paramInt1, paramInt2);
@@ -551,6 +562,7 @@ public class ApolloRender
     ScreenUtil.a(paramInt);
   }
   
+  @Keep
   private static void setKeyBoardText(long paramLong, String paramString)
   {
     KeyBoardUtil.a(paramLong, paramString);
@@ -593,7 +605,7 @@ public class ApolloRender
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("[cmshow]sava_ApolloRender", 1, localOutOfMemoryError.getMessage());
+      QLog.e("[cmshow][ApolloRender]", 1, localOutOfMemoryError.getMessage());
     }
   }
   
@@ -608,101 +620,101 @@ public class ApolloRender
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 697	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
+    //   1: getfield 686	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
     //   4: ifeq +188 -> 192
     //   7: aload_0
-    //   8: getfield 699	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
+    //   8: getfield 688	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
     //   11: ifnull +181 -> 192
     //   14: aload_0
-    //   15: getfield 701	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
+    //   15: getfield 535	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
     //   18: ifle +174 -> 192
     //   21: aload_0
-    //   22: getfield 703	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
+    //   22: getfield 539	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
     //   25: ifle +167 -> 192
-    //   28: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   28: invokestatic 181	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   31: ifeq +12 -> 43
-    //   34: ldc 24
+    //   34: ldc 28
     //   36: iconst_2
-    //   37: ldc_w 705
-    //   40: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   37: ldc_w 690
+    //   40: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   43: aload_0
-    //   44: getfield 701	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
+    //   44: getfield 535	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
     //   47: aload_0
-    //   48: getfield 703	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
+    //   48: getfield 539	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
     //   51: imul
     //   52: newarray int
     //   54: astore_2
     //   55: aload_2
-    //   56: invokestatic 711	java/nio/IntBuffer:wrap	([I)Ljava/nio/IntBuffer;
+    //   56: invokestatic 696	java/nio/IntBuffer:wrap	([I)Ljava/nio/IntBuffer;
     //   59: astore_3
     //   60: aload_3
     //   61: iconst_0
-    //   62: invokevirtual 715	java/nio/IntBuffer:position	(I)Ljava/nio/Buffer;
+    //   62: invokevirtual 700	java/nio/IntBuffer:position	(I)Ljava/nio/Buffer;
     //   65: pop
     //   66: aload_1
     //   67: iconst_0
     //   68: iconst_0
     //   69: aload_0
-    //   70: getfield 701	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
+    //   70: getfield 535	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
     //   73: aload_0
-    //   74: getfield 703	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
+    //   74: getfield 539	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
     //   77: sipush 6408
     //   80: sipush 5121
     //   83: aload_3
-    //   84: invokeinterface 721 8 0
+    //   84: invokeinterface 706 8 0
     //   89: aload_0
-    //   90: getfield 699	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
+    //   90: getfield 688	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
     //   93: aload_2
     //   94: aload_0
-    //   95: getfield 701	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
+    //   95: getfield 535	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mWidth	I
     //   98: aload_0
-    //   99: getfield 703	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
+    //   99: getfield 539	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mHeight	I
     //   102: aload_0
-    //   103: getfield 723	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mCallBackCode	I
+    //   103: getfield 708	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mCallBackCode	I
     //   106: aload_0
-    //   107: getfield 725	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotSeq	J
-    //   110: invokeinterface 730 7 0
+    //   107: getfield 710	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotSeq	J
+    //   110: invokeinterface 715 7 0
     //   115: aload_0
     //   116: iconst_0
-    //   117: putfield 697	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
+    //   117: putfield 686	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
     //   120: aload_0
     //   121: aconst_null
-    //   122: putfield 699	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
+    //   122: putfield 688	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
     //   125: iconst_1
     //   126: ireturn
     //   127: astore_1
     //   128: goto +52 -> 180
     //   131: astore_1
-    //   132: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   132: invokestatic 181	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   135: ifeq +33 -> 168
-    //   138: ldc 24
+    //   138: ldc 28
     //   140: iconst_2
     //   141: aload_1
-    //   142: invokevirtual 526	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   145: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   142: invokevirtual 516	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   145: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   148: goto +20 -> 168
     //   151: astore_1
-    //   152: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   152: invokestatic 181	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   155: ifeq +13 -> 168
-    //   158: ldc 24
+    //   158: ldc 28
     //   160: iconst_2
     //   161: aload_1
-    //   162: invokevirtual 731	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   165: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: invokevirtual 716	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   165: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   168: aload_0
     //   169: iconst_0
-    //   170: putfield 697	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
+    //   170: putfield 686	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
     //   173: aload_0
     //   174: aconst_null
-    //   175: putfield 699	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
+    //   175: putfield 688	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
     //   178: iconst_0
     //   179: ireturn
     //   180: aload_0
     //   181: iconst_0
-    //   182: putfield 697	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
+    //   182: putfield 686	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShot	Z
     //   185: aload_0
     //   186: aconst_null
-    //   187: putfield 699	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
+    //   187: putfield 688	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSnapShotCallback	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$ISnapShotCallback;
     //   190: aload_1
     //   191: athrow
     //   192: iconst_0
@@ -721,13 +733,6 @@ public class ApolloRender
     //   43	115	131	java/lang/OutOfMemoryError
     //   43	115	151	java/lang/Exception
   }
-  
-  public static void startGyroSensor(int paramInt1, long paramLong, int paramInt2)
-  {
-    SensorUtil.a(paramInt1, paramLong, paramInt2);
-  }
-  
-  public static void stopGyroSensor() {}
   
   public static void tickerPause(long paramLong)
   {
@@ -810,38 +815,38 @@ public class ApolloRender
     //   34: goto -22 -> 12
     //   37: iload_1
     //   38: iload_2
-    //   39: getstatic 789	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   42: invokestatic 795	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   39: getstatic 767	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   42: invokestatic 773	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   45: astore 10
     //   47: aload 10
     //   49: aload 6
-    //   51: invokestatic 800	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   54: invokevirtual 804	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
-    //   57: invokestatic 217	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getCurrentRender	()Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender;
+    //   51: invokestatic 778	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   54: invokevirtual 782	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
+    //   57: invokestatic 219	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getCurrentRender	()Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender;
     //   60: astore_0
     //   61: aload_0
     //   62: ifnonnull +4 -> 66
     //   65: return
     //   66: aload_0
-    //   67: invokevirtual 294	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine;
-    //   70: invokevirtual 807	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine:getLuaState	()J
-    //   73: invokestatic 808	com/tencent/mobileqq/apollo/game/process/CmGameUtil:a	(J)I
+    //   67: invokevirtual 282	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine;
+    //   70: invokevirtual 785	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine:getLuaState	()J
+    //   73: invokestatic 788	com/tencent/mobileqq/apollo/game/process/CmGameUtil:c	(J)I
     //   76: aload_3
-    //   77: invokestatic 810	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getSandBoxPath	(ILjava/lang/String;)Ljava/lang/String;
+    //   77: invokestatic 790	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getSandBoxPath	(ILjava/lang/String;)Ljava/lang/String;
     //   80: astore_0
     //   81: aload_0
     //   82: ifnonnull +4 -> 86
     //   85: return
-    //   86: new 428	java/io/File
+    //   86: new 418	java/io/File
     //   89: dup
     //   90: aload_0
-    //   91: invokespecial 430	java/io/File:<init>	(Ljava/lang/String;)V
+    //   91: invokespecial 420	java/io/File:<init>	(Ljava/lang/String;)V
     //   94: astore 6
     //   96: aload 6
-    //   98: invokevirtual 433	java/io/File:exists	()Z
+    //   98: invokevirtual 423	java/io/File:exists	()Z
     //   101: ifeq +9 -> 110
     //   104: aload 6
-    //   106: invokevirtual 813	java/io/File:delete	()Z
+    //   106: invokevirtual 793	java/io/File:delete	()Z
     //   109: pop
     //   110: aconst_null
     //   111: astore 7
@@ -851,55 +856,55 @@ public class ApolloRender
     //   117: astore 9
     //   119: aconst_null
     //   120: astore_0
-    //   121: new 815	java/io/FileOutputStream
+    //   121: new 795	java/io/FileOutputStream
     //   124: dup
     //   125: aload 6
-    //   127: invokespecial 818	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   127: invokespecial 798	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   130: astore 6
     //   132: aload_3
-    //   133: ldc_w 820
-    //   136: invokevirtual 823	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   133: ldc_w 800
+    //   136: invokevirtual 803	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   139: ifne +300 -> 439
     //   142: aload_3
-    //   143: ldc_w 825
-    //   146: invokevirtual 823	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   143: ldc_w 805
+    //   146: invokevirtual 803	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   149: ifne +290 -> 439
     //   152: aload_3
-    //   153: ldc_w 827
-    //   156: invokevirtual 823	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   153: ldc_w 807
+    //   156: invokevirtual 803	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   159: ifne +280 -> 439
     //   162: aload_3
-    //   163: ldc_w 829
-    //   166: invokevirtual 823	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   163: ldc_w 809
+    //   166: invokevirtual 803	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   169: ifeq +6 -> 175
     //   172: goto +267 -> 439
     //   175: iload 5
-    //   177: invokestatic 834	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   180: invokevirtual 837	java/lang/Boolean:booleanValue	()Z
+    //   177: invokestatic 814	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   180: invokevirtual 817	java/lang/Boolean:booleanValue	()Z
     //   183: ifeq +31 -> 214
     //   186: aload 10
-    //   188: getstatic 843	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   188: getstatic 823	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   191: bipush 50
     //   193: aload 6
-    //   195: invokevirtual 847	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   195: invokevirtual 827	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   198: ifeq +41 -> 239
     //   201: aload 6
-    //   203: invokevirtual 850	java/io/FileOutputStream:flush	()V
+    //   203: invokevirtual 830	java/io/FileOutputStream:flush	()V
     //   206: aload 10
-    //   208: invokevirtual 853	android/graphics/Bitmap:recycle	()V
+    //   208: invokevirtual 833	android/graphics/Bitmap:recycle	()V
     //   211: goto +28 -> 239
     //   214: aload 10
-    //   216: getstatic 856	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   216: getstatic 836	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   219: bipush 100
     //   221: aload 6
-    //   223: invokevirtual 847	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   223: invokevirtual 827	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   226: ifeq +13 -> 239
     //   229: aload 6
-    //   231: invokevirtual 850	java/io/FileOutputStream:flush	()V
+    //   231: invokevirtual 830	java/io/FileOutputStream:flush	()V
     //   234: aload 10
-    //   236: invokevirtual 853	android/graphics/Bitmap:recycle	()V
+    //   236: invokevirtual 833	android/graphics/Bitmap:recycle	()V
     //   239: aload 6
-    //   241: invokevirtual 859	java/io/FileOutputStream:close	()V
+    //   241: invokevirtual 839	java/io/FileOutputStream:close	()V
     //   244: return
     //   245: astore_0
     //   246: goto +147 -> 393
@@ -932,78 +937,78 @@ public class ApolloRender
     //   292: astore_3
     //   293: aload_3
     //   294: astore_0
-    //   295: ldc 24
+    //   295: ldc 28
     //   297: iconst_1
     //   298: aload 6
-    //   300: invokevirtual 526	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   303: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   300: invokevirtual 516	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   303: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   306: aload_3
     //   307: ifnull +85 -> 392
     //   310: aload_3
-    //   311: invokevirtual 859	java/io/FileOutputStream:close	()V
+    //   311: invokevirtual 839	java/io/FileOutputStream:close	()V
     //   314: return
     //   315: astore 6
     //   317: aload 8
     //   319: astore_3
     //   320: aload_3
     //   321: astore_0
-    //   322: ldc 24
+    //   322: ldc 28
     //   324: iconst_1
     //   325: aload 6
-    //   327: invokevirtual 860	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   330: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   327: invokevirtual 840	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   330: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   333: aload_3
     //   334: ifnull +58 -> 392
     //   337: aload_3
-    //   338: invokevirtual 859	java/io/FileOutputStream:close	()V
+    //   338: invokevirtual 839	java/io/FileOutputStream:close	()V
     //   341: return
     //   342: astore 6
     //   344: aload 9
     //   346: astore_3
     //   347: aload_3
     //   348: astore_0
-    //   349: ldc 24
+    //   349: ldc 28
     //   351: iconst_1
     //   352: aload 6
-    //   354: invokevirtual 861	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   357: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   354: invokevirtual 841	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   357: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   360: aload_3
     //   361: ifnull +31 -> 392
     //   364: aload_3
-    //   365: invokevirtual 859	java/io/FileOutputStream:close	()V
+    //   365: invokevirtual 839	java/io/FileOutputStream:close	()V
     //   368: return
     //   369: astore_0
-    //   370: ldc 24
+    //   370: ldc 28
     //   372: iconst_1
     //   373: aload_0
-    //   374: invokevirtual 860	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   377: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   374: invokevirtual 840	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   377: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   380: return
     //   381: astore_0
-    //   382: ldc 24
+    //   382: ldc 28
     //   384: iconst_1
     //   385: aload_0
-    //   386: invokevirtual 526	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   389: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   386: invokevirtual 516	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   389: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   392: return
     //   393: aload 6
     //   395: ifnull +36 -> 431
     //   398: aload 6
-    //   400: invokevirtual 859	java/io/FileOutputStream:close	()V
+    //   400: invokevirtual 839	java/io/FileOutputStream:close	()V
     //   403: goto +28 -> 431
     //   406: astore_3
-    //   407: ldc 24
+    //   407: ldc 28
     //   409: iconst_1
     //   410: aload_3
-    //   411: invokevirtual 860	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   414: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   411: invokevirtual 840	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   414: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: goto +14 -> 431
     //   420: astore_3
-    //   421: ldc 24
+    //   421: ldc 28
     //   423: iconst_1
     //   424: aload_3
-    //   425: invokevirtual 526	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   428: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   425: invokevirtual 516	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   428: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   431: goto +5 -> 436
     //   434: aload_0
     //   435: athrow
@@ -1073,28 +1078,21 @@ public class ApolloRender
   
   public void callbackFromJni(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject;
+    Object localObject = this.mRenderCallbackRef;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (IRenderCallback)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
     if (paramInt1 == 0)
     {
-      localObject = this.mRenderCallbackRef;
-      if (localObject != null)
-      {
-        localObject = (IRenderCallback)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((IRenderCallback)localObject).a(paramInt2, paramString);
-        }
-      }
+      ((IRenderCallback)localObject).b_(paramInt2, paramString);
+      return;
     }
-    else if (2 == paramInt1)
-    {
-      localObject = this.mRenderCallbackRef;
-      if (localObject != null)
-      {
-        localObject = (IRenderCallback)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((IRenderCallback)localObject).a(paramInt2, 0, paramString);
-        }
-      }
+    if (2 == paramInt1) {
+      ((IRenderCallback)localObject).a(paramInt2, 0, paramString);
     }
   }
   
@@ -1139,7 +1137,7 @@ public class ApolloRender
         localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("getRscPath, mGameName is empty, name:");
         localStringBuilder2.append(paramString1);
-        QLog.d("[cmshow]sava_ApolloRender", 2, localStringBuilder2.toString());
+        QLog.d("[cmshow][ApolloRender]", 2, localStringBuilder2.toString());
       }
       else
       {
@@ -1185,7 +1183,7 @@ public class ApolloRender
       localStringBuilder1.append(paramString1);
       return localStringBuilder1.toString();
     }
-    return CMGetResPathUtil.a(paramString1, paramString2);
+    return BKGetResPathUtil.a(paramString1, paramString2);
   }
   
   public ApolloEngine getSavaWrapper()
@@ -1220,189 +1218,186 @@ public class ApolloRender
   public void onDestroy()
   {
     // Byte code:
-    //   0: ldc 24
+    //   0: ldc 28
     //   2: iconst_1
-    //   3: ldc_w 946
-    //   6: invokestatic 383	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc_w 927
+    //   6: invokestatic 371	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
     //   10: iconst_1
-    //   11: putfield 231	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mDestroyed	Z
-    //   14: aload_0
-    //   15: getfield 172	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   18: invokevirtual 951	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   21: aload_0
-    //   22: getfield 145	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSavaWrapper	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine;
-    //   25: invokevirtual 954	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine:disposeDirector	()V
-    //   28: aload_0
-    //   29: getfield 172	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   32: invokevirtual 957	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   35: goto +21 -> 56
-    //   38: astore_2
-    //   39: goto +260 -> 299
-    //   42: astore_2
-    //   43: ldc 24
-    //   45: iconst_1
-    //   46: aload_2
-    //   47: invokevirtual 526	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   50: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   53: goto -25 -> 28
-    //   56: aload_0
-    //   57: iconst_0
-    //   58: putfield 106	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mIsReadyNotify	Z
-    //   61: getstatic 101	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:sLocalRender	Ljava/lang/ThreadLocal;
-    //   64: aconst_null
-    //   65: invokevirtual 960	java/lang/ThreadLocal:set	(Ljava/lang/Object;)V
-    //   68: aload_0
-    //   69: invokevirtual 390	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getRenderView	()Landroid/view/View;
-    //   72: astore_2
-    //   73: aload_2
-    //   74: instanceof 962
-    //   77: ifeq +19 -> 96
-    //   80: new 964	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$3
-    //   83: dup
-    //   84: aload_0
-    //   85: aload_2
-    //   86: invokespecial 967	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$3:<init>	(Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender;Landroid/view/View;)V
-    //   89: bipush 16
-    //   91: aconst_null
-    //   92: iconst_1
-    //   93: invokestatic 973	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   96: aload_0
-    //   97: getfield 116	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mIsNeedReport	Z
-    //   100: ifeq +194 -> 294
-    //   103: aload_0
-    //   104: getfield 110	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalDrawCost	I
-    //   107: i2f
-    //   108: aload_0
-    //   109: getfield 112	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
-    //   112: i2f
-    //   113: fdiv
-    //   114: fstore_1
-    //   115: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +77 -> 195
-    //   121: ldc 24
-    //   123: iconst_2
-    //   124: bipush 8
-    //   126: anewarray 4	java/lang/Object
-    //   129: dup
-    //   130: iconst_0
-    //   131: ldc_w 975
-    //   134: aastore
-    //   135: dup
-    //   136: iconst_1
-    //   137: aload_0
-    //   138: getfield 110	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalDrawCost	I
-    //   141: invokestatic 978	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   144: aastore
-    //   145: dup
-    //   146: iconst_2
-    //   147: ldc_w 980
-    //   150: aastore
-    //   151: dup
-    //   152: iconst_3
-    //   153: aload_0
-    //   154: getfield 112	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
-    //   157: invokestatic 978	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   160: aastore
-    //   161: dup
-    //   162: iconst_4
-    //   163: ldc_w 982
-    //   166: aastore
-    //   167: dup
-    //   168: iconst_5
-    //   169: aload_0
-    //   170: getfield 114	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLongCostCount	I
-    //   173: invokestatic 978	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   176: aastore
-    //   177: dup
-    //   178: bipush 6
-    //   180: ldc_w 984
-    //   183: aastore
-    //   184: dup
-    //   185: bipush 7
-    //   187: fload_1
-    //   188: invokestatic 332	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   191: aastore
-    //   192: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   195: new 986	java/util/HashMap
-    //   198: dup
-    //   199: invokespecial 987	java/util/HashMap:<init>	()V
-    //   202: astore_2
-    //   203: aload_2
-    //   204: ldc_w 989
-    //   207: aload_0
-    //   208: getfield 131	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mGameId	I
-    //   211: invokestatic 991	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   214: invokevirtual 995	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   217: pop
-    //   218: aload_2
-    //   219: ldc_w 997
-    //   222: fload_1
-    //   223: invokestatic 1000	java/lang/Float:toString	(F)Ljava/lang/String;
-    //   226: invokevirtual 995	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   229: pop
-    //   230: aload_2
-    //   231: ldc_w 1002
-    //   234: aload_0
-    //   235: getfield 114	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLongCostCount	I
-    //   238: invokestatic 991	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   241: invokevirtual 995	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   244: pop
-    //   245: aload_2
-    //   246: ldc_w 1004
-    //   249: aload_0
-    //   250: getfield 112	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
-    //   253: invokestatic 991	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   256: invokevirtual 995	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   259: pop
-    //   260: invokestatic 463	com/tencent/mobileqq/apollo/game/process/CmGameUtil:a	()Lcom/tencent/common/app/AppInterface;
-    //   263: astore_3
-    //   264: aload_3
-    //   265: ifnull +29 -> 294
-    //   268: aload_3
-    //   269: invokevirtual 1007	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   272: astore_3
-    //   273: invokestatic 1013	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   276: invokestatic 1018	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   279: aload_3
-    //   280: ldc_w 1020
-    //   283: iconst_1
-    //   284: lconst_0
-    //   285: lconst_0
-    //   286: aload_2
-    //   287: ldc_w 405
-    //   290: iconst_1
-    //   291: invokevirtual 1024	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   294: aconst_null
-    //   295: putstatic 584	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:sNativeVersion	Ljava/lang/String;
-    //   298: return
-    //   299: aload_0
-    //   300: getfield 172	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   303: invokevirtual 957	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   306: goto +5 -> 311
-    //   309: aload_2
-    //   310: athrow
-    //   311: goto -2 -> 309
+    //   11: putfield 213	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mDestroyed	Z
+    //   14: getstatic 105	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   17: invokevirtual 930	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   20: aload_0
+    //   21: getfield 154	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mSavaWrapper	Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine;
+    //   24: invokevirtual 933	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloEngine:disposeDirector	()V
+    //   27: getstatic 105	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   30: invokevirtual 936	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   33: goto +21 -> 54
+    //   36: astore_2
+    //   37: goto +260 -> 297
+    //   40: astore_2
+    //   41: ldc 28
+    //   43: iconst_1
+    //   44: aload_2
+    //   45: invokevirtual 516	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   48: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   51: goto -24 -> 27
+    //   54: aload_0
+    //   55: iconst_0
+    //   56: putfield 115	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mIsReadyNotify	Z
+    //   59: getstatic 110	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:sLocalRender	Ljava/lang/ThreadLocal;
+    //   62: aconst_null
+    //   63: invokevirtual 939	java/lang/ThreadLocal:set	(Ljava/lang/Object;)V
+    //   66: aload_0
+    //   67: invokevirtual 378	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:getRenderView	()Landroid/view/View;
+    //   70: astore_2
+    //   71: aload_2
+    //   72: instanceof 941
+    //   75: ifeq +19 -> 94
+    //   78: new 943	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$3
+    //   81: dup
+    //   82: aload_0
+    //   83: aload_2
+    //   84: invokespecial 946	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender$3:<init>	(Lcom/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender;Landroid/view/View;)V
+    //   87: bipush 16
+    //   89: aconst_null
+    //   90: iconst_1
+    //   91: invokestatic 952	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   94: aload_0
+    //   95: getfield 125	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mIsNeedReport	Z
+    //   98: ifeq +194 -> 292
+    //   101: aload_0
+    //   102: getfield 119	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalDrawCost	I
+    //   105: i2f
+    //   106: aload_0
+    //   107: getfield 121	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
+    //   110: i2f
+    //   111: fdiv
+    //   112: fstore_1
+    //   113: invokestatic 181	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: ifeq +77 -> 193
+    //   119: ldc 28
+    //   121: iconst_2
+    //   122: bipush 8
+    //   124: anewarray 4	java/lang/Object
+    //   127: dup
+    //   128: iconst_0
+    //   129: ldc_w 954
+    //   132: aastore
+    //   133: dup
+    //   134: iconst_1
+    //   135: aload_0
+    //   136: getfield 119	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalDrawCost	I
+    //   139: invokestatic 959	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   142: aastore
+    //   143: dup
+    //   144: iconst_2
+    //   145: ldc_w 961
+    //   148: aastore
+    //   149: dup
+    //   150: iconst_3
+    //   151: aload_0
+    //   152: getfield 121	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
+    //   155: invokestatic 959	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   158: aastore
+    //   159: dup
+    //   160: iconst_4
+    //   161: ldc_w 963
+    //   164: aastore
+    //   165: dup
+    //   166: iconst_5
+    //   167: aload_0
+    //   168: getfield 123	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLongCostCount	I
+    //   171: invokestatic 959	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   174: aastore
+    //   175: dup
+    //   176: bipush 6
+    //   178: ldc_w 965
+    //   181: aastore
+    //   182: dup
+    //   183: bipush 7
+    //   185: fload_1
+    //   186: invokestatic 320	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   189: aastore
+    //   190: invokestatic 298	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   193: new 967	java/util/HashMap
+    //   196: dup
+    //   197: invokespecial 968	java/util/HashMap:<init>	()V
+    //   200: astore_2
+    //   201: aload_2
+    //   202: ldc_w 970
+    //   205: aload_0
+    //   206: getfield 140	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mGameId	I
+    //   209: invokestatic 972	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   212: invokevirtual 976	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   215: pop
+    //   216: aload_2
+    //   217: ldc_w 978
+    //   220: fload_1
+    //   221: invokestatic 981	java/lang/Float:toString	(F)Ljava/lang/String;
+    //   224: invokevirtual 976	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   227: pop
+    //   228: aload_2
+    //   229: ldc_w 983
+    //   232: aload_0
+    //   233: getfield 123	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLongCostCount	I
+    //   236: invokestatic 972	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   239: invokevirtual 976	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   242: pop
+    //   243: aload_2
+    //   244: ldc_w 985
+    //   247: aload_0
+    //   248: getfield 121	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mTotalFrameCount	I
+    //   251: invokestatic 972	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   254: invokevirtual 976	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   257: pop
+    //   258: invokestatic 453	com/tencent/mobileqq/apollo/game/process/CmGameUtil:b	()Lcom/tencent/common/app/AppInterface;
+    //   261: astore_3
+    //   262: aload_3
+    //   263: ifnull +29 -> 292
+    //   266: aload_3
+    //   267: invokevirtual 988	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   270: astore_3
+    //   271: invokestatic 994	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   274: invokestatic 999	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   277: aload_3
+    //   278: ldc_w 1001
+    //   281: iconst_1
+    //   282: lconst_0
+    //   283: lconst_0
+    //   284: aload_2
+    //   285: ldc_w 395
+    //   288: iconst_1
+    //   289: invokevirtual 1005	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   292: aconst_null
+    //   293: putstatic 571	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:sNativeVersion	Ljava/lang/String;
+    //   296: return
+    //   297: getstatic 105	com/tencent/mobileqq/cmshow/brickengine/apollo/ApolloRender:mLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   300: invokevirtual 936	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   303: goto +5 -> 308
+    //   306: aload_2
+    //   307: athrow
+    //   308: goto -2 -> 306
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	314	0	this	ApolloRender
-    //   114	109	1	f	float
-    //   38	1	2	localObject1	Object
-    //   42	5	2	localOutOfMemoryError	OutOfMemoryError
-    //   72	238	2	localObject2	Object
-    //   263	17	3	localObject3	Object
+    //   0	311	0	this	ApolloRender
+    //   112	109	1	f	float
+    //   36	1	2	localObject1	Object
+    //   40	5	2	localOutOfMemoryError	OutOfMemoryError
+    //   70	237	2	localObject2	Object
+    //   261	17	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   21	28	38	finally
-    //   43	53	38	finally
-    //   21	28	42	java/lang/OutOfMemoryError
+    //   20	27	36	finally
+    //   41	51	36	finally
+    //   20	27	40	java/lang/OutOfMemoryError
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
     if (this.mDestroyed)
     {
-      QLog.i("[cmshow]sava_ApolloRender", 1, "onDrawFrame mDestroyed, return");
+      QLog.i("[cmshow][ApolloRender]", 1, "onDrawFrame mDestroyed, return");
       return;
     }
     long l2 = System.currentTimeMillis();
@@ -1430,7 +1425,7 @@ public class ApolloRender
       ((StringBuilder)localObject1).append("|");
       if (this.mLogCount == 30)
       {
-        QLog.d("[cmshow]sava_ApolloRender", 1, this.mLogBuffer.toString());
+        QLog.d("[cmshow][ApolloRender]", 1, this.mLogBuffer.toString());
         localObject1 = this.mLogBuffer;
         ((StringBuilder)localObject1).delete(0, ((StringBuilder)localObject1).length());
         this.mLogCount = 0;
@@ -1460,7 +1455,7 @@ public class ApolloRender
         paramGL10.append(((AtomicInteger)localObject1).get());
         paramGL10.append(" runnableList:");
         paramGL10.append(localList.size());
-        QLog.e("[cmshow]sava_ApolloRender", 1, paramGL10.toString());
+        QLog.e("[cmshow][ApolloRender]", 1, paramGL10.toString());
         return;
       }
       IApolloRunnableTask localIApolloRunnableTask = (IApolloRunnableTask)localList.remove(0);
@@ -1469,7 +1464,7 @@ public class ApolloRender
         this.mDrawTaskRunning = true;
         if (localIApolloRunnableTask.a() == 4)
         {
-          QLog.i("[cmshow]sava_ApolloRender", 1, "onDrawFrame2 dispose preload task continue");
+          QLog.i("[cmshow][ApolloRender]", 1, "onDrawFrame2 dispose preload task continue");
         }
         else
         {
@@ -1495,11 +1490,11 @@ public class ApolloRender
         }
         catch (Exception localException)
         {
-          QLog.e("[cmshow]sava_ApolloRender", 1, localException.getMessage());
+          QLog.e("[cmshow][ApolloRender]", 1, localException.getMessage());
         }
         catch (OutOfMemoryError localOutOfMemoryError2)
         {
-          QLog.e("[cmshow]sava_ApolloRender", 1, localOutOfMemoryError2.getMessage());
+          QLog.e("[cmshow][ApolloRender]", 1, localOutOfMemoryError2.getMessage());
         }
       }
     }
@@ -1516,7 +1511,7 @@ public class ApolloRender
       paramGL10 = new StringBuilder();
       paramGL10.append("onDrawFrame draw Runnable return ! UIState:");
       paramGL10.append(((AtomicInteger)localObject1).get());
-      QLog.e("[cmshow]sava_ApolloRender", 1, paramGL10.toString());
+      QLog.e("[cmshow][ApolloRender]", 1, paramGL10.toString());
       return;
     }
     if (bool1) {}
@@ -1531,17 +1526,17 @@ public class ApolloRender
       }
       else
       {
-        QLog.i("[cmshow]sava_ApolloRender", 1, "mDestroyed || !mSavaWrapper.readyDraw, return");
+        QLog.i("[cmshow][ApolloRender]", 1, "mDestroyed || !mSavaWrapper.readyDraw, return");
         return;
       }
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("[cmshow]sava_ApolloRender", 1, "[onDrawFrame] error：", localThrowable);
+      QLog.e("[cmshow][ApolloRender]", 1, "[onDrawFrame] error：", localThrowable);
     }
     catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      QLog.e("[cmshow]sava_ApolloRender", 1, localOutOfMemoryError1.getMessage());
+      QLog.e("[cmshow][ApolloRender]", 1, localOutOfMemoryError1.getMessage());
     }
     this.lastFrameCost = (System.currentTimeMillis() - l1);
     snapShot(paramGL10);
@@ -1552,7 +1547,7 @@ public class ApolloRender
   {
     if (this.mDestroyed)
     {
-      QLog.i("[cmshow]sava_ApolloRender", 1, "onSurfaceChanged mDestroyed, return");
+      QLog.i("[cmshow][ApolloRender]", 1, "onSurfaceChanged mDestroyed, return");
       return;
     }
     this.mSavaWrapper.setDirectorRenderSize((int)Math.ceil(paramInt1 / this.mScale), (int)Math.ceil(paramInt2 / this.mScale));
@@ -1566,7 +1561,7 @@ public class ApolloRender
       paramGL10.append(paramInt2);
       paramGL10.append(",mSavaWrapper:");
       paramGL10.append(this.mSavaWrapper);
-      QLog.d("[cmshow]sava_ApolloRender", 2, paramGL10.toString());
+      QLog.d("[cmshow][ApolloRender]", 2, paramGL10.toString());
     }
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
@@ -1583,7 +1578,7 @@ public class ApolloRender
   {
     if (this.mDestroyed)
     {
-      QLog.i("[cmshow]sava_ApolloRender", 1, "onSurfaceCreated mDestroyed, return");
+      QLog.i("[cmshow][ApolloRender]", 1, "onSurfaceCreated mDestroyed, return");
       return;
     }
     paramEGLConfig = getRenderView();
@@ -1595,8 +1590,8 @@ public class ApolloRender
     if ((WeakReference)sLocalRender.get() == null) {
       sLocalRender.set(new WeakReference(this));
     }
-    this.mGameId = CmGameUtil.a(getSavaWrapper().getLuaState());
-    paramEGLConfig = CmGameUtil.a();
+    this.mGameId = CmGameUtil.c(getSavaWrapper().getLuaState());
+    paramEGLConfig = CmGameUtil.b();
     if ((paramEGLConfig != null) && (this.mGameId > 0))
     {
       boolean bool;
@@ -1615,7 +1610,7 @@ public class ApolloRender
       }
       catch (Throwable paramEGLConfig)
       {
-        QLog.e("[cmshow]sava_ApolloRender", 1, "nativeSetRecorderMode error=", paramEGLConfig);
+        QLog.e("[cmshow][ApolloRender]", 1, "nativeSetRecorderMode error=", paramEGLConfig);
       }
     }
     this.mIsReadyNotify = false;
@@ -1624,13 +1619,13 @@ public class ApolloRender
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onSurfaceCreated  GL_MAX_TEXTURE_SIZE: ");
     localStringBuilder.append(paramEGLConfig[0]);
-    QLog.i("[cmshow]sava_ApolloRender", 1, localStringBuilder.toString());
+    QLog.i("[cmshow][ApolloRender]", 1, localStringBuilder.toString());
     if (QLog.isColorLevel())
     {
       paramEGLConfig = new StringBuilder();
       paramEGLConfig.append(" TextureView onSurfaceCreated use:");
       paramEGLConfig.append(System.currentTimeMillis() - l);
-      QLog.d("[cmshow]sava_ApolloRender", 2, paramEGLConfig.toString());
+      QLog.d("[cmshow][ApolloRender]", 2, paramEGLConfig.toString());
     }
     Apollo644ReportUtil.a(this.mSavaWrapper.getLuaState(), paramGL10);
   }
@@ -1727,7 +1722,7 @@ public class ApolloRender
       if (!QLog.isColorLevel()) {
         break label211;
       }
-      QLog.d("[cmshow]sava_ApolloRender", 2, localOutOfMemoryError.getMessage());
+      QLog.d("[cmshow][ApolloRender]", 2, localOutOfMemoryError.getMessage());
       return;
     }
     catch (Exception localException)
@@ -1747,7 +1742,7 @@ public class ApolloRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender
  * JD-Core Version:    0.7.0.1
  */

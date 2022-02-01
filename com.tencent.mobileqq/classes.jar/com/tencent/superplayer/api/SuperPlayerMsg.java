@@ -6,6 +6,7 @@ public class SuperPlayerMsg
 {
   public static final int PLAYER_INFO_ALL_DOWNLOAD_FINISH = 201;
   public static final int PLAYER_INFO_ASYNC_CALL_SELECT_PROGRAM = 125;
+  public static final int PLAYER_INFO_ASYNC_CALL_SWITCH_DEFINITION = 3;
   public static final int PLAYER_INFO_AUDIO_DECODER_TYPE = 114;
   public static final int PLAYER_INFO_AUDIO_HW_DECODING_SLOW = 117;
   public static final int PLAYER_INFO_AUDIO_SW_DECODING_SLOW = 116;
@@ -29,6 +30,7 @@ public class SuperPlayerMsg
   public static final int PLAYER_INFO_OBJECT_PLAY_CDN_URL_CHANGED = 203;
   public static final int PLAYER_INFO_OBJECT_VIDEO_SEI = 126;
   public static final int PLAYER_INFO_PACKET_READ = 101;
+  public static final int PLAYER_INFO_PCDN_DOWNLOAD_FAILED = 251;
   public static final int PLAYER_INFO_PLAYER_TYPE = 124;
   public static final int PLAYER_INFO_PRIVATE_HLS_TAG = 123;
   public static final int PLAYER_INFO_PROTOCOL_UPDATE = 205;
@@ -46,6 +48,7 @@ public class SuperPlayerMsg
   static
   {
     sTPPlayerMsgMap.put(-1, 0);
+    sTPPlayerMsgMap.put(3, 3);
     sTPPlayerMsgMap.put(101, 100);
     sTPPlayerMsgMap.put(103, 102);
     sTPPlayerMsgMap.put(104, 103);
@@ -76,6 +79,7 @@ public class SuperPlayerMsg
     sTPPlayerMsgMap.put(6, 125);
     sTPPlayerMsgMap.put(2100, 250);
     sTPPlayerMsgMap.put(503, 126);
+    sTPPlayerMsgMap.put(2101, 251);
   }
   
   public static int convert(int paramInt)
@@ -85,7 +89,7 @@ public class SuperPlayerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

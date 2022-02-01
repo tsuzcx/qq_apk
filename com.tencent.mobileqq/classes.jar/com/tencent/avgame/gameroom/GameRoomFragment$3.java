@@ -14,21 +14,21 @@ class GameRoomFragment$3
   
   public void run()
   {
-    if ((this.this$0.getQBaseActivity() != null) && (!this.this$0.getQBaseActivity().isFinishing()) && (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView != null) && (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView != null))
+    if ((this.this$0.getQBaseActivity() != null) && (!this.this$0.getQBaseActivity().isFinishing()) && (this.this$0.i != null) && (this.this$0.c != null))
     {
       int i;
-      if ((!this.this$0.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a()) && (!this.this$0.jdField_a_of_type_ComTencentAvgameGameroomGamelistGameListView.a())) {
+      if ((!this.this$0.i.b()) && (!this.this$0.c.e())) {
         i = 1;
       } else {
         i = 0;
       }
       if (i != 0)
       {
-        RectF localRectF = this.this$0.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
+        RectF localRectF = this.this$0.i.getAddMemberViewRectInRootView();
         if (localRectF == null) {
           return;
         }
-        this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(this.this$0.getString(2131690349), localRectF, 146);
+        this.this$0.a.e().a(this.this$0.getString(2131887260), localRectF, 146);
         ReportController.b(null, "dc00898", "", "", "0X800B350", "0X800B350", 1, 0, "", "", "", "");
       }
     }

@@ -7,11 +7,11 @@ import org.jetbrains.annotations.NotNull;
 public final class ILifeCycle$Companion
 {
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "ILifeCycle";
+  private static final String b = "ILifeCycle";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.ILifeCycle.Companion
  * JD-Core Version:    0.7.0.1
  */

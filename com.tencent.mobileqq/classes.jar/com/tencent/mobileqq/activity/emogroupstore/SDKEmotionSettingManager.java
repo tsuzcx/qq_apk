@@ -51,97 +51,66 @@ import mqq.os.MqqHandler;
 public class SDKEmotionSettingManager
   implements Handler.Callback, ISDKEmotionSettingManager
 {
-  private final long jdField_a_of_type_Long = 60000L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SDKSetEmotionDialog jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog;
-  protected QQCustomDialog a;
-  protected QQProgressDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SDKEmotionSettingManager.6(this);
-  private String jdField_a_of_type_JavaLangString = null;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
-  protected boolean a;
-  protected QQCustomDialog b;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SDKEmotionSettingManager.7(this);
-  private String jdField_b_of_type_JavaLangString = null;
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  protected boolean b;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new SDKEmotionSettingManager.8(this);
-  private String jdField_c_of_type_JavaLangString;
-  private List<Uri> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_c_of_type_Boolean = false;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  private String e;
-  private String f;
+  protected boolean a = false;
+  protected boolean b = false;
+  protected QQProgressDialog c;
+  protected QQCustomDialog d = null;
+  protected QQCustomDialog e = null;
+  private final long f = 60000L;
+  private Activity g;
+  private String h = null;
+  private String i = null;
+  private String j;
+  private String k;
+  private String l;
+  private boolean m = false;
+  private List<Integer> n;
+  private List<String> o = new ArrayList();
+  private List<Uri> p = new ArrayList();
+  private String q;
+  private final MqqHandler r = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
+  private boolean s = false;
+  private Runnable t = new SDKEmotionSettingManager.6(this);
+  private Runnable u = new SDKEmotionSettingManager.7(this);
+  private Runnable v = new SDKEmotionSettingManager.8(this);
+  private SDKSetEmotionDialog w;
   
   public SDKEmotionSettingManager(Activity paramActivity)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     if (QLog.isColorLevel()) {
       QLog.w("SDKEmotionSettingManager", 2, " onCreateView ");
     }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private String a(List<Integer> paramList)
-  {
-    if ((paramList != null) && (paramList.size() != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      int i = 0;
-      while (i < paramList.size())
-      {
-        int j = ((Integer)paramList.get(i)).intValue();
-        if (j == 0) {
-          localStringBuilder.append("0_");
-        } else if (j == 1) {
-          localStringBuilder.append("102_");
-        } else if (j == 3) {
-          localStringBuilder.append("100_");
-        } else if (j == 2) {
-          localStringBuilder.append("100_");
-        } else {
-          localStringBuilder.append("101_");
-        }
-        i += 1;
-      }
-      return localStringBuilder.toString();
-    }
-    return null;
+    this.g = paramActivity;
   }
   
   private void a(int paramInt, float paramFloat)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.g.isFinishing()) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog;
+    Object localObject = this.w;
     if (localObject != null)
     {
       if (!((SDKSetEmotionDialog)localObject).isShowing()) {
         return;
       }
-      int i = (int)(paramInt * paramFloat);
+      int i1 = (int)(paramInt * paramFloat);
       double d1 = paramFloat;
       Double.isNaN(d1);
-      int j = (int)(d1 * 100.0D);
-      localObject = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131691325), new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      int i2 = (int)(d1 * 100.0D);
+      localObject = String.format(this.g.getResources().getString(2131888280), new Object[] { Integer.valueOf(i1), Integer.valueOf(paramInt) });
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateCurrentDisplay displayStr=");
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(" disPlayProgress=");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         localStringBuilder.append(", currentCount = ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         QLog.d("SDKEmotionSettingManager", 2, localStringBuilder.toString());
       }
-      ThreadManager.getUIHandler().post(new SDKEmotionSettingManager.19(this, (String)localObject, j));
+      ThreadManager.getUIHandler().post(new SDKEmotionSettingManager.19(this, (String)localObject, i2));
     }
   }
   
@@ -165,29 +134,29 @@ public class SDKEmotionSettingManager
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         return;
       }
-      int i = paramInt1 + paramInt2;
+      int i1 = paramInt1 + paramInt2;
       boolean bool = false;
       if ((paramInt1 > 0) && (paramInt2 == 0))
       {
-        localObject1 = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131691328), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1) });
+        localObject1 = String.format(this.g.getResources().getString(2131888283), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1) });
         bool = true;
       }
       else if ((paramInt1 > 0) && (paramInt2 > 0))
       {
-        localObject1 = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131691330), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2) });
+        localObject1 = String.format(this.g.getResources().getString(2131888285), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i1), Integer.valueOf(paramInt2) });
       }
       else if ((paramInt1 == 0) && (paramInt2 > 0))
       {
-        localObject1 = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131691323), new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt2) });
+        localObject1 = String.format(this.g.getResources().getString(2131888278), new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt2) });
       }
       else
       {
         localObject1 = "";
       }
       a(null, (String)localObject1, bool, paramString);
-      paramString = this.jdField_c_of_type_JavaLangString;
+      paramString = this.j;
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       ((StringBuilder)localObject1).append("");
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
@@ -210,7 +179,7 @@ public class SDKEmotionSettingManager
   
   private void a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.g;
     if (localObject == null) {
       return;
     }
@@ -222,21 +191,21 @@ public class SDKEmotionSettingManager
     boolean bool = false;
     if (paramInt == 0)
     {
-      str = ((Resources)localObject).getString(2131691329);
+      str = ((Resources)localObject).getString(2131888284);
       localObject = "";
       bool = true;
     }
     else if ((paramInt != 2) && (paramInt != 3))
     {
       if (paramInt == 1) {
-        localObject = ((Resources)localObject).getString(2131691326);
+        localObject = ((Resources)localObject).getString(2131888281);
       } else {
-        localObject = ((Resources)localObject).getString(2131691324);
+        localObject = ((Resources)localObject).getString(2131888279);
       }
     }
     else
     {
-      localObject = ((Resources)localObject).getString(2131691320);
+      localObject = ((Resources)localObject).getString(2131888275);
     }
     a(str, (String)localObject, bool, paramString);
     localObject = "1";
@@ -248,7 +217,7 @@ public class SDKEmotionSettingManager
     if (bool) {
       localObject = "0";
     }
-    str = this.jdField_c_of_type_JavaLangString;
+    str = this.j;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("");
@@ -279,20 +248,20 @@ public class SDKEmotionSettingManager
       if (paramInt != paramList.size()) {
         return;
       }
-      int i = 0;
-      int k = 0;
-      int j = 0;
-      while (i < paramList.size())
+      int i1 = 0;
+      int i3 = 0;
+      int i2 = 0;
+      while (i1 < paramList.size())
       {
-        if (((Integer)paramList.get(i)).intValue() == 0) {
-          k += 1;
+        if (((Integer)paramList.get(i1)).intValue() == 0) {
+          i3 += 1;
         } else {
-          j += 1;
+          i2 += 1;
         }
-        i += 1;
+        i1 += 1;
       }
-      localObject = a(paramList);
-      ThreadManager.getUIHandler().postDelayed(new SDKEmotionSettingManager.21(this, paramInt, k, (String)localObject, paramList, j), 200L);
+      localObject = d(paramList);
+      ThreadManager.getUIHandler().postDelayed(new SDKEmotionSettingManager.21(this, paramInt, i3, (String)localObject, paramList, i2), 200L);
     }
   }
   
@@ -311,7 +280,7 @@ public class SDKEmotionSettingManager
     Object localObject = new Intent();
     ((Intent)localObject).setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=cancel", new Object[] { Long.valueOf(paramLong), "sdkSetEmotion" })));
     if (paramActivity.getIntent() != null) {
-      ((Intent)localObject).setPackage(this.jdField_b_of_type_JavaLangString);
+      ((Intent)localObject).setPackage(this.i);
     }
     try
     {
@@ -350,7 +319,7 @@ public class SDKEmotionSettingManager
     }
     ((Intent)localObject).setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(paramLong), "sdkSetEmotion" })));
     if (paramActivity.getIntent() != null) {
-      ((Intent)localObject).setPackage(this.jdField_b_of_type_JavaLangString);
+      ((Intent)localObject).setPackage(this.i);
     }
     try
     {
@@ -393,7 +362,7 @@ public class SDKEmotionSettingManager
     }
     localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error&response={\"ret\":%3$d, \"msg\":\"%4$s\"}", new Object[] { Long.valueOf(paramLong), "sdkSetEmotion", Integer.valueOf(-1), localObject })));
     if (paramActivity.getIntent() != null) {
-      localIntent.setPackage(this.jdField_b_of_type_JavaLangString);
+      localIntent.setPackage(this.i);
     }
     try
     {
@@ -416,7 +385,7 @@ public class SDKEmotionSettingManager
   
   private void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    if (this.g.isFinishing())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SDKEmotionSettingManager", 2, "showResultDialog is finishing return");
@@ -424,29 +393,21 @@ public class SDKEmotionSettingManager
       return;
     }
     Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.h))
     {
-      localObject = HardCodeUtil.a(2131713522);
+      localObject = HardCodeUtil.a(2131901576);
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131713522));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131901576));
+      ((StringBuilder)localObject).append(this.h);
       localObject = ((StringBuilder)localObject).toString();
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.g, 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
     localQQCustomDialog.setPositiveButton("留在QQ", new SDKEmotionSettingManager.23(this, paramBoolean, paramString3)).setNegativeButton((String)localObject, new SDKEmotionSettingManager.22(this, paramBoolean, paramString3)).show();
-  }
-  
-  private void a(List<Uri> paramList)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { " openSetEmotion uriList = ", paramList });
-    ((IFavroamingManagerService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IFavroamingManagerService.class)).syncRoaming();
-    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.jdField_c_of_type_JavaLangRunnable, 2000L);
-    new SDKEmotionSettingManager.1(this, paramList).execute(new Void[0]);
   }
   
   private void b(int paramInt)
@@ -457,29 +418,29 @@ public class SDKEmotionSettingManager
       ((StringBuilder)localObject).append("handleStopUpload totalSize =");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(", mCurrentUploadedList = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList);
+      ((StringBuilder)localObject).append(this.n);
       QLog.d("SDKEmotionSettingManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(11);
+    this.r.removeMessages(11);
     k();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    int j = 0;
+    Object localObject = this.n;
+    int i2 = 0;
     if (localObject != null) {
-      for (int i = 0;; i = k)
+      for (int i1 = 0;; i1 = i3)
       {
-        k = i;
-        if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+        i3 = i1;
+        if (i2 >= this.n.size()) {
           break;
         }
-        k = i;
-        if (((Integer)this.jdField_a_of_type_JavaUtilList.get(j)).intValue() == 0) {
-          k = i + 1;
+        i3 = i1;
+        if (((Integer)this.n.get(i2)).intValue() == 0) {
+          i3 = i1 + 1;
         }
-        j += 1;
+        i2 += 1;
       }
     }
-    int k = 0;
-    ThreadManager.getUIHandler().post(new SDKEmotionSettingManager.20(this, paramInt, k, paramInt - k));
+    int i3 = 0;
+    ThreadManager.getUIHandler().post(new SDKEmotionSettingManager.20(this, paramInt, i3, paramInt - i3));
   }
   
   private void b(ArrayList<String> paramArrayList)
@@ -489,46 +450,81 @@ public class SDKEmotionSettingManager
       if (paramArrayList.size() == 0) {
         return;
       }
-      this.jdField_d_of_type_Boolean = false;
-      int i = paramArrayList.size();
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(11);
-      localMessage.arg1 = i;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 60000L);
-      ((IFavroamingManagerService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IFavroamingManagerService.class)).addCustomEmotions(paramArrayList, new SDKEmotionSettingManager.18(this, i));
+      this.s = false;
+      int i1 = paramArrayList.size();
+      Message localMessage = this.r.obtainMessage(11);
+      localMessage.arg1 = i1;
+      this.r.sendMessageDelayed(localMessage, 60000L);
+      ((IFavroamingManagerService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IFavroamingManagerService.class)).addCustomEmotions(paramArrayList, new SDKEmotionSettingManager.18(this, i1));
     }
   }
   
-  private void b(List<Integer> paramList)
+  private void b(List<Uri> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { " openSetEmotion uriList = ", paramList });
+    ((IFavroamingManagerService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IFavroamingManagerService.class)).syncRoaming();
+    this.r.postDelayed(this.v, 2000L);
+    new SDKEmotionSettingManager.1(this, paramList).execute(new Void[0]);
+  }
+  
+  private void c(List<Integer> paramList)
+  {
+    if (this.n == null) {
+      this.n = new ArrayList();
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.n.clear();
+      this.n.addAll(paramList);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.n.clear();
+  }
+  
+  private String d(List<Integer> paramList)
+  {
+    if ((paramList != null) && (paramList.size() != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i1 = 0;
+      while (i1 < paramList.size())
+      {
+        int i2 = ((Integer)paramList.get(i1)).intValue();
+        if (i2 == 0) {
+          localStringBuilder.append("0_");
+        } else if (i2 == 1) {
+          localStringBuilder.append("102_");
+        } else if (i2 == 3) {
+          localStringBuilder.append("100_");
+        } else if (i2 == 2) {
+          localStringBuilder.append("100_");
+        } else {
+          localStringBuilder.append("101_");
+        }
+        i1 += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return null;
   }
   
   private void g()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.a = false;
+    this.b = false;
   }
   
   private void h()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidAppActivity.getString(2131718866));
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.g.getString(2131916399));
+    ((StringBuilder)localObject1).append(this.h);
     String str = ((StringBuilder)localObject1).toString();
     Object localObject3;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(this.i)) {
       try
       {
-        localObject1 = this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo(this.jdField_b_of_type_JavaLangString, 64);
+        localObject1 = this.g.getPackageManager().getPackageInfo(this.i, 64);
         if (localObject1 == null) {
           break label133;
         }
@@ -550,25 +546,25 @@ public class SDKEmotionSettingManager
     }
     label133:
     Object localObject2 = null;
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "checkApiPermission api, mShareAppId=", this.jdField_c_of_type_JavaLangString, ", mPkgName=", this.jdField_b_of_type_JavaLangString, ",signature=", localObject2, ",mSdkVerdion=", this.e });
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "checkApiPermission api, mShareAppId=", this.j, ", mPkgName=", this.i, ",signature=", localObject2, ",mSdkVerdion=", this.l });
+    if ((!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.i)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
       ((IDoraemonService)QRoute.api(IDoraemonService.class)).prepare();
       localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("sdkVersion", this.e);
-      ((Bundle)localObject3).putString("pkgName", this.jdField_b_of_type_JavaLangString);
+      ((Bundle)localObject3).putString("sdkVersion", this.l);
+      ((Bundle)localObject3).putString("pkgName", this.i);
       ((Bundle)localObject3).putString("signature", (String)localObject2);
-      a(2131719039);
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-      ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_c_of_type_JavaLangString, (Bundle)localObject3).a("sdk_face_collection", null, new SDKEmotionSettingManager.3(this, str));
+      a(2131916575);
+      this.r.postDelayed(this.t, 5000L);
+      ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.g, 1, this.j, (Bundle)localObject3).a("sdk_face_collection", null, new SDKEmotionSettingManager.3(this, str));
       return;
     }
-    QLog.e("SDKEmotionSettingManager", 1, new Object[] { "check, invalid param, mShareAppId=", this.jdField_c_of_type_JavaLangString, ", pkgName=", this.jdField_b_of_type_JavaLangString, ", signature=", localObject2 });
+    QLog.e("SDKEmotionSettingManager", 1, new Object[] { "check, invalid param, mShareAppId=", this.j, ", pkgName=", this.i, ", signature=", localObject2 });
     try
     {
-      localObject2 = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-      ((QQCustomDialog)localObject2).setMessage(HardCodeUtil.a(2131713527));
-      ((QQCustomDialog)localObject2).setNegativeButton(2131690728, new SDKEmotionSettingManager.2(this));
+      localObject2 = DialogUtil.a(this.g, 230);
+      ((QQCustomDialog)localObject2).setMessage(HardCodeUtil.a(2131911074));
+      ((QQCustomDialog)localObject2).setNegativeButton(2131887648, new SDKEmotionSettingManager.2(this));
       ((QQCustomDialog)localObject2).setCancelable(false);
       ((QQCustomDialog)localObject2).show();
       return;
@@ -581,42 +577,42 @@ public class SDKEmotionSettingManager
   
   private void i()
   {
-    boolean bool = ForwardUtils.a(this.jdField_a_of_type_AndroidAppActivity);
+    boolean bool = ForwardUtils.a(this.g);
     QLog.d("SDKEmotionSettingManager", 1, new Object[] { "setEmotion hasPermission=", Boolean.valueOf(bool) });
     if (!bool)
     {
-      PermissionUtils.requestStorePermission((AppActivity)this.jdField_a_of_type_AndroidAppActivity, 3, new SDKEmotionSettingManager.4(this));
+      PermissionUtils.requestStorePermission((AppActivity)this.g, 3, new SDKEmotionSettingManager.4(this));
       return;
     }
-    a(this.jdField_c_of_type_JavaUtilList);
+    b(this.p);
   }
   
   private void j()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" checkJumpAction mShareAppId = ");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.j);
     ((StringBuilder)localObject).append("， mShareOpenId =");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.k);
     QLog.i("SDKEmotionSettingManager", 1, ((StringBuilder)localObject).toString());
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      a(this.jdField_a_of_type_AndroidAppActivity, Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), false, "-10");
+      a(this.g, Long.valueOf(this.j).longValue(), false, "-10");
       l();
       return;
     }
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.k)))
     {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      OpenID localOpenID = ((QQAppInterface)localObject).getMsgHandler().a(this.jdField_c_of_type_JavaLangString);
+      OpenID localOpenID = ((QQAppInterface)localObject).getMsgHandler().e(this.j);
       if (localOpenID == null)
       {
-        a(2131719039);
-        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 8000L);
+        a(2131916575);
+        this.r.postDelayed(this.u, 8000L);
         try
         {
-          long l = Long.parseLong(((QQAppInterface)localObject).getCurrentAccountUin());
-          ((QQAppInterface)localObject).getMsgHandler().a(l, this.jdField_d_of_type_JavaLangString, Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), new SDKEmotionSettingManager.5(this));
+          long l1 = Long.parseLong(((QQAppInterface)localObject).getCurrentAccountUin());
+          ((QQAppInterface)localObject).getMsgHandler().a(l1, this.k, Long.valueOf(this.j).longValue(), new SDKEmotionSettingManager.5(this));
           return;
         }
         catch (Exception localException)
@@ -625,7 +621,7 @@ public class SDKEmotionSettingManager
           return;
         }
       }
-      if (!this.jdField_d_of_type_JavaLangString.equals(localOpenID.openID))
+      if (!this.k.equals(localOpenID.openID))
       {
         QLog.i("SDKEmotionSettingManager", 1, "-->preForward--openid doesn't equal current local openid");
         e();
@@ -647,16 +643,16 @@ public class SDKEmotionSettingManager
   
   private void l()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(11);
+    this.r.removeMessages(11);
     f();
-    this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    this.g.moveTaskToBack(true);
   }
   
   private void m()
   {
     try
     {
-      PendingIntent localPendingIntent = (PendingIntent)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("sdk_emotion_pending_intent");
+      PendingIntent localPendingIntent = (PendingIntent)this.g.getIntent().getParcelableExtra("sdk_emotion_pending_intent");
       if (localPendingIntent != null)
       {
         if (QLog.isColorLevel()) {
@@ -690,16 +686,16 @@ public class SDKEmotionSettingManager
     {
       localArrayList.addAll(paramList);
     }
-    else if (!TextUtils.isEmpty(this.f))
+    else if (!TextUtils.isEmpty(this.q))
     {
       try
       {
-        paramList = this.f.split(";");
-        i = 0;
-        while (i < paramList.length)
+        paramList = this.q.split(";");
+        i1 = 0;
+        while (i1 < paramList.length)
         {
-          localArrayList.add(Uri.parse(paramList[i]));
-          i += 1;
+          localArrayList.add(Uri.parse(paramList[i1]));
+          i1 += 1;
         }
         if (!QLog.isColorLevel()) {
           break label130;
@@ -722,15 +718,15 @@ public class SDKEmotionSettingManager
       return null;
     }
     paramList = new ArrayList();
-    UriParserPathHelper localUriParserPathHelper = new UriParserPathHelper(this.jdField_a_of_type_AndroidAppActivity, false, null);
-    int i = 0;
-    while (i < localArrayList.size())
+    UriParserPathHelper localUriParserPathHelper = new UriParserPathHelper(this.g, false, null);
+    int i1 = 0;
+    while (i1 < localArrayList.size())
     {
-      String str = localUriParserPathHelper.a((Uri)localArrayList.get(i), false);
+      String str = localUriParserPathHelper.a((Uri)localArrayList.get(i1), false);
       if (!TextUtils.isEmpty(str)) {
         paramList.add(str);
       }
-      i += 1;
+      i1 += 1;
     }
     return paramList;
   }
@@ -742,30 +738,30 @@ public class SDKEmotionSettingManager
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.c == null)
     {
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299168));
+      Activity localActivity = this.g;
+      this.c = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299920));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.c.c(paramInt);
+    if (!this.g.isFinishing()) {
+      this.c.show();
     }
   }
   
   public void a(Intent paramIntent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog;
+    Object localObject = this.w;
     if ((localObject != null) && (((SDKSetEmotionDialog)localObject).isShowing()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SDKEmotionSettingManager", 2, " onNewIntent return error");
       }
       paramIntent = null;
-      if (this.jdField_b_of_type_JavaUtilList != null)
+      if (this.o != null)
       {
         paramIntent = new StringBuilder();
-        localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+        localObject = this.o.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
@@ -773,30 +769,30 @@ public class SDKEmotionSettingManager
         }
         paramIntent = paramIntent.toString();
       }
-      a(this.jdField_a_of_type_AndroidAppActivity, Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), false, paramIntent);
+      a(this.g, Long.valueOf(this.j).longValue(), false, paramIntent);
       m();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("SDKEmotionSettingManager", 2, " onNewIntent start new");
     }
-    this.jdField_a_of_type_AndroidAppActivity.setIntent(paramIntent);
+    this.g.setIntent(paramIntent);
     b(paramIntent);
     a();
   }
   
   protected void a(String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.d;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString1);
+    this.e = DialogUtil.a(this.g, 230);
+    this.e.setMessage(paramString1);
     paramString1 = new SDKEmotionSettingManager.9(this);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(paramString2, paramString1);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new SDKEmotionSettingManager.10(this));
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.e.setNegativeButton(paramString2, paramString1);
+    this.e.setOnKeyListener(new SDKEmotionSettingManager.10(this));
+    this.e.show();
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -807,22 +803,22 @@ public class SDKEmotionSettingManager
     QLog.i("SDKEmotionSettingManager", 1, localStringBuilder.toString());
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      int i = paramArrayList.size();
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog = new SDKSetEmotionDialog(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.a("收藏为QQ表情");
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.a(2131690728, new SDKEmotionSettingManager.12(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.c(2131691316, new SDKEmotionSettingManager.13(this, paramArrayList, i));
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.b(2131691317, new SDKEmotionSettingManager.14(this, i));
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.a(paramArrayList, new SDKEmotionSettingManager.15(this, i, paramArrayList));
-      if (i > 1)
+      int i1 = paramArrayList.size();
+      this.w = new SDKSetEmotionDialog(this.g);
+      this.w.a("收藏为QQ表情");
+      this.w.a(2131887648, new SDKEmotionSettingManager.12(this));
+      this.w.c(2131888271, new SDKEmotionSettingManager.13(this, paramArrayList, i1));
+      this.w.b(2131888272, new SDKEmotionSettingManager.14(this, i1));
+      this.w.a(paramArrayList, new SDKEmotionSettingManager.15(this, i1, paramArrayList));
+      if (i1 > 1)
       {
-        paramArrayList = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131691322), new Object[] { Integer.valueOf(i) });
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.b(paramArrayList);
+        paramArrayList = String.format(this.g.getResources().getString(2131888277), new Object[] { Integer.valueOf(i1) });
+        this.w.b(paramArrayList);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.setOnDismissListener(new SDKEmotionSettingManager.16(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.setOnKeyListener(new SDKEmotionSettingManager.17(this, i));
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.show();
+      this.w.setOnDismissListener(new SDKEmotionSettingManager.16(this));
+      this.w.setOnKeyListener(new SDKEmotionSettingManager.17(this, i1));
+      this.w.setCanceledOnTouchOutside(false);
+      this.w.show();
       AbstractGifImage.resumeAll();
       return;
     }
@@ -831,25 +827,25 @@ public class SDKEmotionSettingManager
   
   public void b()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(11);
-    SDKSetEmotionDialog localSDKSetEmotionDialog = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog;
+    this.r.removeMessages(11);
+    SDKSetEmotionDialog localSDKSetEmotionDialog = this.w;
     if (localSDKSetEmotionDialog != null) {
       localSDKSetEmotionDialog.dismiss();
     }
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    this.o.clear();
+    this.m = false;
+    this.s = false;
   }
   
   public void b(Intent paramIntent)
   {
-    this.f = paramIntent.getStringExtra("key_from_sdk_set_emotion_uri_list");
-    this.jdField_c_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("key_from_sdk_set_emotion_uri");
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_from_sdk_set_emotion_appname");
-    this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("key_from_sdk_set_emotion_share_id");
-    this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("key_from_sdk_set_emotion_open_id");
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("pkg_name");
-    this.e = paramIntent.getStringExtra("sdk_version");
+    this.q = paramIntent.getStringExtra("key_from_sdk_set_emotion_uri_list");
+    this.p = paramIntent.getParcelableArrayListExtra("key_from_sdk_set_emotion_uri");
+    this.h = paramIntent.getStringExtra("key_from_sdk_set_emotion_appname");
+    this.j = paramIntent.getStringExtra("key_from_sdk_set_emotion_share_id");
+    this.k = paramIntent.getStringExtra("key_from_sdk_set_emotion_open_id");
+    this.i = paramIntent.getStringExtra("pkg_name");
+    this.l = paramIntent.getStringExtra("sdk_version");
     g();
     if (QLog.isColorLevel()) {
       QLog.w("SDKEmotionSettingManager", 2, " initParam ");
@@ -859,52 +855,52 @@ public class SDKEmotionSettingManager
   public void c()
   {
     Intent localIntent = new Intent();
-    PendingIntent localPendingIntent = (PendingIntent)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("sdk_emotion_pending_intent");
+    PendingIntent localPendingIntent = (PendingIntent)this.g.getIntent().getParcelableExtra("sdk_emotion_pending_intent");
     if (localPendingIntent != null)
     {
       QLog.d("SDKEmotionSettingManager", 1, "onBackEvent using PendingIntent");
       localIntent.putExtra("activity_finish_run_pendingIntent", localPendingIntent);
     }
-    localIntent.setClass(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+    localIntent.setClass(this.g, SplashActivity.class);
     localIntent.setFlags(67108864);
     localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.putExtra("fragment_id", 1);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    this.g.startActivity(localIntent);
   }
   
   public void d()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.c;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.c.dismiss();
     }
   }
   
   protected void e()
   {
-    Object localObject = this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.e;
     if (localObject != null)
     {
       if (!((QQCustomDialog)localObject).isShowing()) {
-        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.e.show();
       }
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(HardCodeUtil.a(2131713523));
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131692113);
+    this.e = DialogUtil.a(this.g, 230);
+    this.e.setMessage(HardCodeUtil.a(2131911071));
+    this.e.setTitle(2131889094);
     localObject = new SDKEmotionSettingManager.11(this);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131718876, (DialogInterface.OnClickListener)localObject);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.e.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+    this.e.setPositiveButton(2131916409, (DialogInterface.OnClickListener)localObject);
+    this.e.show();
   }
   
   protected void f()
   {
     m();
     Intent localIntent = new Intent();
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.g.setResult(-1, localIntent);
+    this.g.finish();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -912,14 +908,14 @@ public class SDKEmotionSettingManager
     if (paramMessage.what != 11) {
       return true;
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.s = true;
     b(paramMessage.arg1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager
  * JD-Core Version:    0.7.0.1
  */

@@ -36,32 +36,19 @@ import org.jetbrains.annotations.Nullable;
 
 public class BubbleDiyFetcher
 {
-  public static volatile long a = 0L;
   public static BubbleDiyFetcher a;
-  public static boolean a = false;
-  public final int a;
-  public final Handler a;
-  public final Runnable a;
-  public final Map<String, String> a;
-  public final ConcurrentHashMap<Integer, HashMap<String, DiyBubbleConfig>> a;
-  public final CopyOnWriteArrayList<VipBubbleDrawable> a;
-  public final CopyOnWriteArraySet<String> a;
-  public final Map<String, HashMap<String, String>> b;
-  public final CopyOnWriteArraySet<String> b;
-  public final CopyOnWriteArraySet<String> c = new CopyOnWriteArraySet();
-  
-  private BubbleDiyFetcher()
-  {
-    this.jdField_a_of_type_Int = 64;
-    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(32));
-    this.jdField_b_of_type_JavaUtilMap = Collections.synchronizedMap(new LRULinkedHashMap(64));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangRunnable = new BubbleDiyFetcher.1(this);
-  }
+  public static boolean f = false;
+  public static volatile long l;
+  public final int b = 64;
+  public final Map<String, String> c = Collections.synchronizedMap(new LRULinkedHashMap(32));
+  public final Map<String, HashMap<String, String>> d = Collections.synchronizedMap(new LRULinkedHashMap(64));
+  public final Handler e = new Handler(Looper.getMainLooper());
+  public final CopyOnWriteArrayList<VipBubbleDrawable> g = new CopyOnWriteArrayList();
+  public final CopyOnWriteArraySet<String> h = new CopyOnWriteArraySet();
+  public final CopyOnWriteArraySet<String> i = new CopyOnWriteArraySet();
+  public final CopyOnWriteArraySet<String> j = new CopyOnWriteArraySet();
+  public final ConcurrentHashMap<Integer, HashMap<String, DiyBubbleConfig>> k = new ConcurrentHashMap();
+  public final Runnable m = new BubbleDiyFetcher.1(this);
   
   @Nullable
   private Bitmap a(File paramFile, String paramString, Bitmap paramBitmap)
@@ -90,16 +77,16 @@ public class BubbleDiyFetcher
   
   public static BubbleDiyFetcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher == null) {
-          jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher = new BubbleDiyFetcher();
+        if (a == null) {
+          a = new BubbleDiyFetcher();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher;
+    return a;
   }
   
   private void a(String paramString1, String paramString2)
@@ -115,12 +102,12 @@ public class BubbleDiyFetcher
   
   private void a(Set<String> paramSet)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new BubbleDiyFetcher.3(this, paramSet));
+    this.e.post(new BubbleDiyFetcher.3(this, paramSet));
   }
   
-  private boolean a(VipBubbleDrawable paramVipBubbleDrawable, DiyBubbleConfig.DiyBubblePasterConfig paramDiyBubblePasterConfig)
+  private boolean c(VipBubbleDrawable paramVipBubbleDrawable, DiyBubbleConfig.DiyBubblePasterConfig paramDiyBubblePasterConfig)
   {
-    return (paramVipBubbleDrawable == null) || (paramDiyBubblePasterConfig == null) || (TextUtils.isEmpty(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString));
+    return (paramVipBubbleDrawable == null) || (paramDiyBubblePasterConfig == null) || (TextUtils.isEmpty(paramVipBubbleDrawable.c));
   }
   
   private void d(QQAppInterface paramQQAppInterface)
@@ -137,19 +124,19 @@ public class BubbleDiyFetcher
       }
       paramVipBubbleDrawable = new StringBuilder();
       paramVipBubbleDrawable.append("BubbleDiyFetcher_");
-      paramVipBubbleDrawable.append(paramDiyBubblePasterConfig.jdField_a_of_type_Int);
+      paramVipBubbleDrawable.append(paramDiyBubblePasterConfig.c);
       paramVipBubbleDrawable.append("_");
-      paramVipBubbleDrawable.append(paramDiyBubblePasterConfig.jdField_a_of_type_JavaLangString.toUpperCase());
+      paramVipBubbleDrawable.append(paramDiyBubblePasterConfig.a.toUpperCase());
       paramVipBubbleDrawable.append("_");
       paramVipBubbleDrawable.append("chartlet");
       paramVipBubbleDrawable = paramVipBubbleDrawable.toString();
       paramDiyBubblePasterConfig = (Bitmap)GlobalImageCache.a.get(paramVipBubbleDrawable);
       if (paramDiyBubblePasterConfig != null)
       {
-        this.c.remove(paramVipBubbleDrawable);
+        this.j.remove(paramVipBubbleDrawable);
         return paramDiyBubblePasterConfig;
       }
-      this.c.add(paramVipBubbleDrawable);
+      this.j.add(paramVipBubbleDrawable);
       paramVipBubbleDrawable = BaseApplicationImpl.getApplication().getRuntime();
       if ((paramVipBubbleDrawable instanceof QQAppInterface)) {
         a((QQAppInterface)paramVipBubbleDrawable, 500);
@@ -162,13 +149,13 @@ public class BubbleDiyFetcher
   {
     if ((paramVipBubbleDrawable != null) && (!TextUtils.isEmpty(paramString)))
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      String str = (String)this.c.get(paramString);
       if (str != null) {
         return str;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      this.h.add(paramString);
       a(" and post delay 0.5s to load bubble diy!", "fetchDiyText: put VipBubbleDrawable into mNotRefreshAIODrawables");
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramVipBubbleDrawable);
+      this.g.add(paramVipBubbleDrawable);
       paramVipBubbleDrawable = BaseApplicationImpl.getApplication().getRuntime();
       if ((paramVipBubbleDrawable instanceof QQAppInterface)) {
         a((QQAppInterface)paramVipBubbleDrawable, 500);
@@ -178,30 +165,11 @@ public class BubbleDiyFetcher
     return "";
   }
   
-  @TargetApi(11)
-  public void a()
-  {
-    HashSet localHashSet = new HashSet(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      VipBubbleDrawable localVipBubbleDrawable = (VipBubbleDrawable)localIterator.next();
-      if ((localVipBubbleDrawable != null) && (localVipBubbleDrawable.getCallback() != null) && (a(localVipBubbleDrawable.jdField_a_of_type_JavaLangString))) {
-        localHashSet.add(localVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if (localHashSet.size() > 0)
-    {
-      a(TextUtils.join(",", localHashSet), "refreshDrawableOnUiThread: ");
-      a(localHashSet);
-    }
-  }
-  
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!f)
     {
-      jdField_a_of_type_Boolean = true;
+      f = true;
       ThreadManager.post(new BubbleDiyFetcher.2(this, paramQQAppInterface), 5, null, false);
     }
   }
@@ -211,15 +179,15 @@ public class BubbleDiyFetcher
     if (paramQQAppInterface == null) {
       return;
     }
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.c.isEmpty()))
+    if ((!this.h.isEmpty()) || (!this.i.isEmpty()) || (!this.j.isEmpty()))
     {
       if (paramInt <= 0)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        this.e.removeCallbacks(this.m);
         b(paramQQAppInterface);
         return;
       }
-      if (System.currentTimeMillis() > jdField_a_of_type_Long)
+      if (System.currentTimeMillis() > l)
       {
         if (QLog.isColorLevel())
         {
@@ -228,11 +196,11 @@ public class BubbleDiyFetcher
           paramQQAppInterface.append(paramInt);
           QLog.i("BubbleDiyFetcher", 2, paramQQAppInterface.toString());
         }
-        paramQQAppInterface = this.jdField_a_of_type_AndroidOsHandler;
-        Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
-        long l = paramInt;
-        paramQQAppInterface.postDelayed(localRunnable, l);
-        jdField_a_of_type_Long = System.currentTimeMillis() + l;
+        paramQQAppInterface = this.e;
+        Runnable localRunnable = this.m;
+        long l1 = paramInt;
+        paramQQAppInterface.postDelayed(localRunnable, l1);
+        l = System.currentTimeMillis() + l1;
       }
     }
   }
@@ -245,14 +213,14 @@ public class BubbleDiyFetcher
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, String.format("uinAndDiyId %s, text cache is %b, diy paster cache is %b", new Object[] { paramString, Boolean.valueOf(this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)), Boolean.valueOf(this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) }));
+        QLog.i("BubbleDiyFetcher", 2, String.format("uinAndDiyId %s, text cache is %b, diy paster cache is %b", new Object[] { paramString, Boolean.valueOf(this.c.containsKey(paramString)), Boolean.valueOf(this.d.containsKey(paramString)) }));
       }
-      if ((this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)))
+      if ((this.c.containsKey(paramString)) && (this.d.containsKey(paramString)))
       {
         paramQQAppInterface = new BubbleDiyEntity();
         paramQQAppInterface.uinAndDiyId = paramString;
-        paramQQAppInterface.diyText = ((String)this.jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.uinAndDiyId));
-        BubbleDiyEntity.parsePasterMap(paramQQAppInterface, (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramString));
+        paramQQAppInterface.diyText = ((String)this.c.get(paramQQAppInterface.uinAndDiyId));
+        BubbleDiyEntity.parsePasterMap(paramQQAppInterface, (HashMap)this.d.get(paramString));
         paramString = new ArrayList();
         paramString.add(paramQQAppInterface);
         if (paramBusinessObserver != null) {
@@ -264,8 +232,8 @@ public class BubbleDiyFetcher
       if (localObject != null)
       {
         a(paramString, "query bubbleDiy from database, uinAndDiyId: ");
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, ((BubbleDiyEntity)localObject).diyText);
-        this.jdField_b_of_type_JavaUtilMap.put(paramString, ((BubbleDiyEntity)localObject).convertToPasterMap());
+        this.c.put(paramString, ((BubbleDiyEntity)localObject).diyText);
+        this.d.put(paramString, ((BubbleDiyEntity)localObject).convertToPasterMap());
         paramQQAppInterface = new ArrayList();
         paramQQAppInterface.add(localObject);
         if (paramBusinessObserver != null) {
@@ -274,7 +242,7 @@ public class BubbleDiyFetcher
         return;
       }
       a(paramString, "start request diy id ");
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      this.h.add(paramString);
       localObject = new ArrayList();
       ((List)localObject).add(paramString);
       ((BubbleDiyHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BUBBLE_DIYTEXT_HANDLER)).a((List)localObject, paramBusinessObserver);
@@ -295,9 +263,9 @@ public class BubbleDiyFetcher
         if (paramBoolean) {
           paramQQAppInterface.getEntityManagerFactory().createEntityManager().persistOrReplace(localBubbleDiyEntity);
         }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localBubbleDiyEntity.uinAndDiyId);
-        this.jdField_a_of_type_JavaUtilMap.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
-        this.jdField_b_of_type_JavaUtilMap.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
+        this.h.remove(localBubbleDiyEntity.uinAndDiyId);
+        this.c.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
+        this.d.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
         if (!TextUtils.isEmpty(localBubbleDiyEntity.topLeftId)) {
           a(localBubbleDiyEntity.topLeftId);
         }
@@ -311,7 +279,7 @@ public class BubbleDiyFetcher
           a(localBubbleDiyEntity.bottomRightId);
         }
       }
-      a();
+      b();
     }
   }
   
@@ -319,24 +287,115 @@ public class BubbleDiyFetcher
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      Iterator localIterator = this.i.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         if (str.endsWith(paramString)) {
-          d(str);
+          e(str);
         }
       }
     }
   }
   
-  public boolean a(String paramString)
+  public Bitmap b(VipBubbleDrawable paramVipBubbleDrawable, DiyBubbleConfig.DiyBubblePasterConfig paramDiyBubblePasterConfig)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)))
+    if (c(paramVipBubbleDrawable, paramDiyBubblePasterConfig)) {
+      return null;
+    }
+    if (this.d.containsKey(paramVipBubbleDrawable.c))
     {
-      paramString = (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      Object localObject = (HashMap)this.d.get(paramVipBubbleDrawable.c);
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramDiyBubblePasterConfig.a.toUpperCase())))
+      {
+        localObject = (String)((HashMap)localObject).get(paramDiyBubblePasterConfig.a.toUpperCase());
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("diy id ");
+            ((StringBuilder)localObject).append(paramVipBubbleDrawable.c);
+            ((StringBuilder)localObject).append(" has no pasterId for align: ");
+            ((StringBuilder)localObject).append(paramDiyBubblePasterConfig.a.toUpperCase());
+            QLog.i("BubbleDiyFetcher", 2, ((StringBuilder)localObject).toString());
+          }
+          return null;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("BubbleDiyFetcher_");
+        localStringBuilder.append(paramDiyBubblePasterConfig.c);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramDiyBubblePasterConfig.a.toUpperCase());
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject);
+        paramDiyBubblePasterConfig = localStringBuilder.toString();
+        localObject = (Bitmap)GlobalImageCache.a.get(paramDiyBubblePasterConfig);
+        if (localObject != null)
+        {
+          this.i.remove(paramDiyBubblePasterConfig);
+          return localObject;
+        }
+        a(paramDiyBubblePasterConfig, "can not found bitmap cache in BaseApplicationImpl.sImageCache! ");
+        this.i.add(paramDiyBubblePasterConfig);
+      }
+      else
+      {
+        return null;
+      }
+    }
+    else
+    {
+      a(paramVipBubbleDrawable.c, "can not found cache in diyPasterCache! ");
+      this.h.add(paramVipBubbleDrawable.c);
+    }
+    a(" and post delay 0.5s to load bubble diy!", "fetchDiyPaster: put VipBubbleDrawable into mNotRefreshAIODrawables");
+    this.g.add(paramVipBubbleDrawable);
+    paramVipBubbleDrawable = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramVipBubbleDrawable instanceof QQAppInterface)) {
+      a((QQAppInterface)paramVipBubbleDrawable, 500);
+    }
+    return null;
+  }
+  
+  @TargetApi(11)
+  public void b()
+  {
+    HashSet localHashSet = new HashSet(this.g.size());
+    Iterator localIterator = this.g.iterator();
+    while (localIterator.hasNext())
+    {
+      VipBubbleDrawable localVipBubbleDrawable = (VipBubbleDrawable)localIterator.next();
+      if ((localVipBubbleDrawable != null) && (localVipBubbleDrawable.getCallback() != null) && (b(localVipBubbleDrawable.c))) {
+        localHashSet.add(localVipBubbleDrawable.c);
+      }
+    }
+    if (localHashSet.size() > 0)
+    {
+      a(TextUtils.join(",", localHashSet), "refreshDrawableOnUiThread: ");
+      a(localHashSet);
+    }
+  }
+  
+  @TargetApi(11)
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    a(paramQQAppInterface);
+    if ((!this.h.isEmpty()) || (!this.i.isEmpty()) || (!this.g.isEmpty()) || (!this.j.isEmpty())) {
+      d(paramQQAppInterface);
+    }
+  }
+  
+  public boolean b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (this.c.containsKey(paramString)) && (this.d.containsKey(paramString)))
+    {
+      paramString = (HashMap)this.d.get(paramString);
       boolean bool2 = true;
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      Iterator localIterator = this.i.iterator();
       String[] arrayOfString;
       do
       {
@@ -352,79 +411,19 @@ public class BubbleDiyFetcher
     return false;
   }
   
-  public Bitmap b(VipBubbleDrawable paramVipBubbleDrawable, DiyBubbleConfig.DiyBubblePasterConfig paramDiyBubblePasterConfig)
-  {
-    if (a(paramVipBubbleDrawable, paramDiyBubblePasterConfig)) {
-      return null;
-    }
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = (HashMap)this.jdField_b_of_type_JavaUtilMap.get(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramDiyBubblePasterConfig.jdField_a_of_type_JavaLangString.toUpperCase())))
-      {
-        localObject = (String)((HashMap)localObject).get(paramDiyBubblePasterConfig.jdField_a_of_type_JavaLangString.toUpperCase());
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("diy id ");
-            ((StringBuilder)localObject).append(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-            ((StringBuilder)localObject).append(" has no pasterId for align: ");
-            ((StringBuilder)localObject).append(paramDiyBubblePasterConfig.jdField_a_of_type_JavaLangString.toUpperCase());
-            QLog.i("BubbleDiyFetcher", 2, ((StringBuilder)localObject).toString());
-          }
-          return null;
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("BubbleDiyFetcher_");
-        localStringBuilder.append(paramDiyBubblePasterConfig.jdField_a_of_type_Int);
-        localStringBuilder.append("_");
-        localStringBuilder.append(paramDiyBubblePasterConfig.jdField_a_of_type_JavaLangString.toUpperCase());
-        localStringBuilder.append("_");
-        localStringBuilder.append((String)localObject);
-        paramDiyBubblePasterConfig = localStringBuilder.toString();
-        localObject = (Bitmap)GlobalImageCache.a.get(paramDiyBubblePasterConfig);
-        if (localObject != null)
-        {
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramDiyBubblePasterConfig);
-          return localObject;
-        }
-        a(paramDiyBubblePasterConfig, "can not found bitmap cache in BaseApplicationImpl.sImageCache! ");
-        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramDiyBubblePasterConfig);
-      }
-      else
-      {
-        return null;
-      }
-    }
-    else
-    {
-      a(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString, "can not found cache in diyPasterCache! ");
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-    }
-    a(" and post delay 0.5s to load bubble diy!", "fetchDiyPaster: put VipBubbleDrawable into mNotRefreshAIODrawables");
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramVipBubbleDrawable);
-    paramVipBubbleDrawable = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramVipBubbleDrawable instanceof QQAppInterface)) {
-      a((QQAppInterface)paramVipBubbleDrawable, 500);
-    }
-    return null;
-  }
-  
-  public void b()
+  public void c()
   {
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof QQAppInterface))
     {
-      c();
-      if (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+      d();
+      if (!this.i.isEmpty())
       {
         IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)((AppRuntime)localObject1).getRuntimeService(IVasQuickUpdateService.class, "");
-        ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+        ArrayList localArrayList = new ArrayList(this.i);
         Iterator localIterator = localArrayList.iterator();
         Object localObject2 = null;
-        int i = 0;
+        int n = 0;
         while (localIterator.hasNext())
         {
           Object localObject3 = ((String)localIterator.next()).split("_");
@@ -439,8 +438,8 @@ public class BubbleDiyFetcher
             ((StringBuilder)localObject3).append("bubble.paster.");
             ((StringBuilder)localObject3).append((String)localObject2);
             ((StringBuilder)localObject3).append(".png");
-            localObject1[i] = ((StringBuilder)localObject3).toString();
-            i += 1;
+            localObject1[n] = ((StringBuilder)localObject3).toString();
+            n += 1;
             localObject2 = localObject1;
           }
         }
@@ -457,43 +456,9 @@ public class BubbleDiyFetcher
     }
   }
   
-  @TargetApi(11)
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    a(paramQQAppInterface);
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) || (!this.c.isEmpty())) {
-      d(paramQQAppInterface);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    a(paramString, "notifyPasterDownloadComplete ");
-    if (!TextUtils.isEmpty(paramString))
-    {
-      a(paramString);
-      a();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
-    {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext()) {
-        d((String)localIterator.next());
-      }
-      a();
-    }
-  }
-  
   public void c(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0)
+    if (this.h.size() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("BubbleDiyFetcher", 2, "mUnCacheDiyId size is 0!");
@@ -501,23 +466,23 @@ public class BubbleDiyFetcher
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-    int j = ((ArrayList)localObject1).size();
+    Object localObject1 = new ArrayList(this.h);
+    int i1 = ((ArrayList)localObject1).size();
     Object localObject2 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    int i = 0;
-    while (i < j)
+    int n = 0;
+    while (n < i1)
     {
-      BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((EntityManager)localObject2).find(BubbleDiyEntity.class, (String)((ArrayList)localObject1).get(i));
+      BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((EntityManager)localObject2).find(BubbleDiyEntity.class, (String)((ArrayList)localObject1).get(n));
       if (localBubbleDiyEntity != null) {
         localArrayList.add(localBubbleDiyEntity);
       }
-      i += 1;
+      n += 1;
     }
     localObject1 = localArrayList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (BubbleDiyEntity)((Iterator)localObject1).next();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(((BubbleDiyEntity)localObject2).uinAndDiyId);
+      this.h.remove(((BubbleDiyEntity)localObject2).uinAndDiyId);
     }
     if (!localArrayList.isEmpty()) {
       a(paramQQAppInterface, false, localArrayList);
@@ -525,6 +490,28 @@ public class BubbleDiyFetcher
   }
   
   public void c(String paramString)
+  {
+    a(paramString, "notifyPasterDownloadComplete ");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a(paramString);
+      b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.i.size() > 0)
+    {
+      Iterator localIterator = this.i.iterator();
+      while (localIterator.hasNext()) {
+        e((String)localIterator.next());
+      }
+      b();
+    }
+  }
+  
+  public void d(String paramString)
   {
     Object localObject1 = (BubbleManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
     Object localObject2 = paramString.split("_");
@@ -577,7 +564,7 @@ public class BubbleDiyFetcher
           localObject2 = null;
           try
           {
-            localObject3 = (HashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(Integer.parseInt((String)localObject3)));
+            localObject3 = (HashMap)this.k.get(Integer.valueOf(Integer.parseInt((String)localObject3)));
             localObject2 = localObject3;
           }
           catch (Exception localException)
@@ -587,21 +574,21 @@ public class BubbleDiyFetcher
           if ((localObject2 != null) && (((HashMap)localObject2).containsKey(localObject4)))
           {
             localObject2 = (DiyBubbleConfig)((HashMap)localObject2).get(localObject4);
-            localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.a[2], localObject2.a[3], true);
+            localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.b[2], localObject2.b[3], true);
             GlobalImageCache.a.put(paramString, localObject1);
-            this.c.remove(paramString);
+            this.j.remove(paramString);
           }
         }
       }
     }
   }
   
-  public void d()
+  public void e()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.g.clear();
   }
   
-  public void d(String paramString)
+  public void e(String paramString)
   {
     File localFile = ((BubbleManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).b();
     Object localObject1 = paramString.split("_");
@@ -626,7 +613,7 @@ public class BubbleDiyFetcher
           localFile = null;
           try
           {
-            localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(Integer.parseInt(str1)));
+            localObject2 = (HashMap)this.k.get(Integer.valueOf(Integer.parseInt(str1)));
           }
           catch (Exception localException)
           {
@@ -640,9 +627,9 @@ public class BubbleDiyFetcher
           if ((localObject2 != null) && (((HashMap)localObject2).containsKey(localObject3)))
           {
             localObject2 = (DiyBubbleConfig)((HashMap)localObject2).get(localObject3);
-            localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.a[2], localObject2.a[3], true);
+            localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, localObject2.b[2], localObject2.b[3], true);
             GlobalImageCache.a.put(paramString, localObject1);
-            this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+            this.i.remove(paramString);
           }
         }
       }
@@ -651,7 +638,7 @@ public class BubbleDiyFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher
  * JD-Core Version:    0.7.0.1
  */

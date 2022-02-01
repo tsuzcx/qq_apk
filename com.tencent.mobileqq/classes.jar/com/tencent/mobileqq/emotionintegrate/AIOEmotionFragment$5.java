@@ -21,31 +21,31 @@ class AIOEmotionFragment$5
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (this.jdField_a_of_type_Int == 1)
+      this.c.a("0X800A7E7");
+      this.c.m.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (this.a == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
+        this.c.a("0X800A7E9");
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.c.getBaseActivity(), this.c.c().getAccount(), 8, this.b.picExtraData.emojiPkgId, false, false);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getBaseActivity(), QQBrowserActivity.class);
-        paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getBaseActivity().startActivity(paramView);
+        this.c.a("0X800A7E8");
+        paramView = new Intent(this.c.getBaseActivity(), QQBrowserActivity.class);
+        paramView.putExtra("url", this.b.picExtraData.webUrl);
+        this.c.getBaseActivity().startActivity(paramView);
       }
     }
     else if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+      this.c.m.setBackgroundColor(Color.parseColor("#DEDEDE"));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.5
  * JD-Core Version:    0.7.0.1
  */

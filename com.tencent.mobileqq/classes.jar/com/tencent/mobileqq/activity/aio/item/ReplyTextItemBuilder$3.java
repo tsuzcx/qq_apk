@@ -17,7 +17,7 @@ final class ReplyTextItemBuilder$3
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    Object localObject1 = this.a;
     boolean bool = localObject1 instanceof HasSourceMessage;
     Object localObject2 = null;
     if (bool) {
@@ -28,7 +28,7 @@ final class ReplyTextItemBuilder$3
     if (localObject1 == null) {
       return;
     }
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgTime, ((MessageForReplyText.SourceMsgInfo)localObject1).origUid);
+    List localList = this.b.getMessageFacade().c(this.a.frienduin, this.a.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgTime, ((MessageForReplyText.SourceMsgInfo)localObject1).origUid);
     localObject1 = localObject2;
     if (localList != null)
     {
@@ -42,7 +42,7 @@ final class ReplyTextItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

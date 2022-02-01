@@ -10,7 +10,7 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 public class i
 {
   private HippyHandlerThread a = new HippyHandlerThread("text-warm-thread");
-  private Picture b = new Picture();
+  private final Picture b = new Picture();
   
   private int b(Layout paramLayout)
   {
@@ -94,7 +94,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.i
  * JD-Core Version:    0.7.0.1
  */

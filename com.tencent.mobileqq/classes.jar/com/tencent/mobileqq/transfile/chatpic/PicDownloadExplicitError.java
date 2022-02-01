@@ -31,9 +31,9 @@ public class PicDownloadExplicitError
   
   static
   {
-    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838023, 2131689920));
-    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131689921));
-    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131689922));
+    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838065, 2131886561));
+    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131886562));
+    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131886563));
   }
   
   private PicDownloadExplicitError(int paramInt)
@@ -122,7 +122,7 @@ public class PicDownloadExplicitError
         return BaseApplication.getContext().getResources().getString(i);
       }
     }
-    return BaseApplication.getContext().getResources().getString(2131689920);
+    return BaseApplication.getContext().getResources().getString(2131886561);
   }
   
   public static String getFailedTip(URLDrawable paramURLDrawable)
@@ -154,12 +154,12 @@ public class PicDownloadExplicitError
         return CommonImageCacheHelper.a(null, i);
       }
     }
-    return CommonImageCacheHelper.a("static://CommonFailedDrawable", 2130838025);
+    return CommonImageCacheHelper.a("static://CommonFailedDrawable", 2130838067);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError
  * JD-Core Version:    0.7.0.1
  */

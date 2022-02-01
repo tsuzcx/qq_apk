@@ -28,11 +28,6 @@ public class MsgPool
     this.b = a();
   }
   
-  public Map<String, List<MessageRecord>> a()
-  {
-    return this.c;
-  }
-  
   protected ConcurrentHashMap<String, List<MessageRecord>> a()
   {
     return new ConcurrentHashMap();
@@ -65,10 +60,15 @@ public class MsgPool
   {
     return this.b;
   }
+  
+  public Map<String, List<MessageRecord>> c()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgPool
  * JD-Core Version:    0.7.0.1
  */

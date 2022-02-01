@@ -142,6 +142,13 @@ public class PAGFont
   
   private static native void SetFallbackFontPaths(String[] paramArrayOfString, int[] paramArrayOfInt);
   
+  private static native void UnregisterFont(String paramString1, String paramString2);
+  
+  public static void UnregisterFont(PAGFont paramPAGFont)
+  {
+    UnregisterFont(paramPAGFont.fontFamily, paramPAGFont.fontStyle);
+  }
+  
   private static void addFont(PAGFont.FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
     if (paramArrayList.contains(paramFontConfig.fileName)) {
@@ -391,7 +398,7 @@ public class PAGFont
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGFont
  * JD-Core Version:    0.7.0.1
  */

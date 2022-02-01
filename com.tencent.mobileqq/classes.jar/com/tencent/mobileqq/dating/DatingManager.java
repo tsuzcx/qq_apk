@@ -15,20 +15,20 @@ public class DatingManager
   public static long a;
   public static long b;
   public static long c;
-  private byte jdField_a_of_type_Byte;
-  private int jdField_a_of_type_Int;
-  protected INearbyAppInterface a;
-  protected EntityManager a;
-  private String jdField_a_of_type_JavaLangString;
-  public long d = 0L;
+  protected INearbyAppInterface d;
+  protected EntityManager e;
+  public long f = 0L;
+  private byte g;
+  private String h;
+  private int i;
   
   public DatingManager(INearbyAppInterface paramINearbyAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = paramINearbyAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramINearbyAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = -2147483648;
+    this.d = paramINearbyAppInterface;
+    this.e = paramINearbyAppInterface.getEntityManagerFactory().createEntityManager();
+    this.g = 0;
+    this.h = null;
+    this.i = -2147483648;
   }
   
   public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
@@ -43,14 +43,14 @@ public class DatingManager
       ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
       return;
     }
-    jdField_a_of_type_Long = paramLong1;
+    a = paramLong1;
     b = paramLong2;
     c = paramLong3;
   }
   
   public void onDestroy()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.e;
     if (localEntityManager != null) {
       try
       {
@@ -66,7 +66,7 @@ public class DatingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingManager
  * JD-Core Version:    0.7.0.1
  */

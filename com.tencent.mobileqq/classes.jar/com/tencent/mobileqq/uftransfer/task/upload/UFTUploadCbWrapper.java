@@ -13,22 +13,22 @@ import com.tencent.mobileqq.uftransfer.api.UFTFileUploadBusinessInfo;
 public class UFTUploadCbWrapper
   implements IUFTUploadCallback
 {
-  long jdField_a_of_type_Long = 0L;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  final IUFTUploadCallback jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback;
-  final UFTUploadCbWrapper.IWrapperHost jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTUploadCbWrapper$IWrapperHost;
-  boolean jdField_a_of_type_Boolean = false;
+  final IUFTUploadCallback a;
+  final UFTUploadCbWrapper.IWrapperHost b;
+  final Handler c;
+  long d = 0L;
+  boolean e = false;
   
   public UFTUploadCbWrapper(UFTUploadCbWrapper.IWrapperHost paramIWrapperHost, IUFTUploadCallback paramIUFTUploadCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTUploadCbWrapper$IWrapperHost = paramIWrapperHost;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback = paramIUFTUploadCallback;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.b = paramIWrapperHost;
+    this.a = paramIUFTUploadCallback;
+    this.c = new Handler(Looper.getMainLooper());
   }
   
   private boolean a()
   {
-    UFTUploadCbWrapper.IWrapperHost localIWrapperHost = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTUploadCbWrapper$IWrapperHost;
+    UFTUploadCbWrapper.IWrapperHost localIWrapperHost = this.b;
     if (localIWrapperHost != null) {
       return localIWrapperHost.a();
     }
@@ -37,7 +37,7 @@ public class UFTUploadCbWrapper
   
   public int a(IUFTTransferKey paramIUFTTransferKey, Bundle paramBundle, IUFTUploadSendMsgCallback paramIUFTUploadSendMsgCallback)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.7(this, paramIUFTTransferKey, paramBundle, paramIUFTUploadSendMsgCallback));
+    this.c.post(new UFTUploadCbWrapper.7(this, paramIUFTTransferKey, paramBundle, paramIUFTUploadSendMsgCallback));
     return 0;
   }
   
@@ -46,7 +46,7 @@ public class UFTUploadCbWrapper
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.1(this, paramIUFTTransferKey));
+    this.c.post(new UFTUploadCbWrapper.1(this, paramIUFTTransferKey));
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, int paramInt, Bundle paramBundle)
@@ -54,12 +54,12 @@ public class UFTUploadCbWrapper
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.4(this, paramIUFTTransferKey, paramInt, paramBundle));
+    this.c.post(new UFTUploadCbWrapper.4(this, paramIUFTTransferKey, paramInt, paramBundle));
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, int paramInt, IUFTUploadCompleteInfo paramIUFTUploadCompleteInfo)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.3(this, paramIUFTTransferKey, paramInt, paramIUFTUploadCompleteInfo));
+    this.c.post(new UFTUploadCbWrapper.3(this, paramIUFTTransferKey, paramInt, paramIUFTUploadCompleteInfo));
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, long paramLong1, long paramLong2)
@@ -67,7 +67,7 @@ public class UFTUploadCbWrapper
     if (a()) {
       return;
     }
-    IUFTUploadCallback localIUFTUploadCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback;
+    IUFTUploadCallback localIUFTUploadCallback = this.a;
     if (localIUFTUploadCallback != null) {
       localIUFTUploadCallback.a(paramIUFTTransferKey, paramLong1, paramLong2);
     }
@@ -79,11 +79,11 @@ public class UFTUploadCbWrapper
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.d;
     if ((l2 == 0L) || (l1 - l2 >= 1000L))
     {
-      this.jdField_a_of_type_Long = l1;
-      this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.2(this, paramIUFTTransferKey, paramLong1, paramLong2, paramLong3));
+      this.d = l1;
+      this.c.post(new UFTUploadCbWrapper.2(this, paramIUFTTransferKey, paramLong1, paramLong2, paramLong3));
     }
   }
   
@@ -92,7 +92,7 @@ public class UFTUploadCbWrapper
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.5(this, paramIUFTTransferKey, paramUFTFileLocalInfo));
+    this.c.post(new UFTUploadCbWrapper.5(this, paramIUFTTransferKey, paramUFTFileLocalInfo));
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileUploadBusinessInfo paramUFTFileUploadBusinessInfo)
@@ -100,17 +100,17 @@ public class UFTUploadCbWrapper
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new UFTUploadCbWrapper.6(this, paramIUFTTransferKey, paramUFTFileUploadBusinessInfo));
+    this.c.post(new UFTUploadCbWrapper.6(this, paramIUFTTransferKey, paramUFTFileUploadBusinessInfo));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTUploadCbWrapper
  * JD-Core Version:    0.7.0.1
  */

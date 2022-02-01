@@ -19,20 +19,20 @@ public class WSVerticalItemBottomWidgetViewController
   extends AbsWsUIGroup<WSVerticalItemData>
   implements View.OnClickListener
 {
-  private stNewIconStyle jdField_a_of_type_UserGrowthStNewIconStyle;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private View jdField_b_of_type_AndroidViewView;
-  private KandianUrlImageView jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private KandianUrlImageView c;
+  private KandianUrlImageView g;
+  private KandianUrlImageView h;
+  private KandianUrlImageView i;
+  private TextView j;
+  private View k;
+  private stSimpleMetaFeed l;
+  private stNewIconStyle m;
+  private WSVerticalPageFragment n;
   
   public WSVerticalItemBottomWidgetViewController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.n = paramWSVerticalVideoHolder.d;
     }
   }
   
@@ -40,109 +40,109 @@ public class WSVerticalItemBottomWidgetViewController
   {
     if (paramBoolean1)
     {
-      stNewIconStyle localstNewIconStyle = this.jdField_a_of_type_UserGrowthStNewIconStyle;
+      stNewIconStyle localstNewIconStyle = this.m;
       if ((localstNewIconStyle != null) && (!TextUtils.isEmpty(localstNewIconStyle.title)))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.c.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStNewIconStyle.title);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl)) {
-          this.c.setImage(WeishiUtils.a(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl));
+        this.j.setVisibility(0);
+        this.i.setVisibility(0);
+        this.g.setVisibility(0);
+        this.j.setText(this.m.title);
+        if (!TextUtils.isEmpty(this.m.iconUrl)) {
+          this.i.setImage(WeishiUtils.c(this.m.iconUrl));
         } else {
-          this.c.setImageResource(2130843332);
+          this.i.setImageResource(2130844286);
         }
         if (!paramBoolean2) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImageResource(2130842784);
+        this.g.setImageResource(2130843737);
         return;
       }
     }
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
+    this.i.setVisibility(8);
+    this.j.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
-  private void f()
+  private void l()
   {
     a(true, true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImageResource(2130842784);
+    this.g.setImageResource(2130843737);
   }
   
   protected void a()
   {
-    Object localObject = (WSVerticalItemData)a();
-    if ((localObject != null) && ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed)))
+    Object localObject = (WSVerticalItemData)c();
+    if ((localObject != null) && ((((WSVerticalItemData)localObject).b() instanceof stSimpleMetaFeed)))
     {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((WSVerticalItemData)localObject).a();
-      this.jdField_a_of_type_UserGrowthStNewIconStyle = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.new_icon;
-      localObject = this.jdField_a_of_type_UserGrowthStNewIconStyle;
+      this.l = ((WSVerticalItemData)localObject).b();
+      this.m = this.l.new_icon;
+      localObject = this.m;
       if (localObject != null) {
-        WSReportDC898Vertical.a(((stNewIconStyle)localObject).tag_type, this.jdField_a_of_type_UserGrowthStNewIconStyle.id);
+        WSReportDC898Vertical.a(((stNewIconStyle)localObject).tag_type, this.m.id);
       }
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560038;
   }
   
   protected void b()
   {
-    Object localObject = this.jdField_a_of_type_UserGrowthStNewIconStyle;
-    if ((localObject != null) && ((((stNewIconStyle)localObject).tag_type == 1) || (this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type == 2)))
+    Object localObject = this.m;
+    if ((localObject != null) && ((((stNewIconStyle)localObject).tag_type == 1) || (this.m.tag_type == 2)))
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      int i = this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type;
-      localObject = this.jdField_a_of_type_UserGrowthStNewIconStyle.img_url;
-      if (i == 1)
+      this.k.setVisibility(0);
+      int i1 = this.m.tag_type;
+      localObject = this.m.img_url;
+      if (i1 == 1)
       {
-        this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
-        f();
+        this.h.setVisibility(8);
+        l();
         return;
       }
-      if (i == 2)
+      if (i1 == 2)
       {
         a(false, false);
-        this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
+        this.h.setVisibility(0);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImage(WeishiUtils.a((String)localObject));
+          this.h.setImage(WeishiUtils.c((String)localObject));
           return;
         }
-        this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImage(WeishiUtils.a("https://isee.weishi.qq.com/qq/doudi_ban.png"));
+        this.h.setImage(WeishiUtils.c("https://isee.weishi.qq.com/qq/doudi_ban.png"));
       }
     }
     else
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.k.setVisibility(8);
     }
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131380477);
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131380459));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131380476));
-    this.c = ((KandianUrlImageView)a(2131380479));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380478));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    return 2131626082;
+  }
+  
+  protected void j()
+  {
+    this.k = c(2131449430);
+    this.h = ((KandianUrlImageView)c(2131449412));
+    this.g = ((KandianUrlImageView)c(2131449429));
+    this.i = ((KandianUrlImageView)c(2131449432));
+    this.j = ((TextView)c(2131449431));
+    this.k.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380477) {
-      WSVerticalJumpUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    if (paramView.getId() == 2131449430) {
+      WSVerticalJumpUtils.b(this.n, this.l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomWidgetViewController
  * JD-Core Version:    0.7.0.1
  */

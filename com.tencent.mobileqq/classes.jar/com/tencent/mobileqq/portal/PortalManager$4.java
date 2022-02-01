@@ -22,14 +22,14 @@ class PortalManager$4
       localStringBuilder.append(paramString);
       QLog.d("PortalManagerhead", 2, localStringBuilder.toString());
     }
-    if (this.a.a.containsKey(paramString)) {
+    if (this.a.q.containsKey(paramString)) {
       ThreadManager.getSubThreadHandler().post(new PortalManager.4.1(this, paramString, paramBoolean));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.4
  * JD-Core Version:    0.7.0.1
  */

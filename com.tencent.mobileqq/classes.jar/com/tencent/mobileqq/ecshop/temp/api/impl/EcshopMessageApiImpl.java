@@ -13,7 +13,6 @@ import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.statistics.GdtC2SReporter;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ArkAppMessage;
@@ -24,7 +23,6 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.ecshop.api.IEcshopService;
 import com.tencent.mobileqq.ecshop.api.IEcshopUtilApi;
 import com.tencent.mobileqq.ecshop.conf.EcshopConfBean;
-import com.tencent.mobileqq.ecshop.report.api.IEcshopReportApi;
 import com.tencent.mobileqq.ecshop.temp.api.IEcshopMessageApi;
 import com.tencent.mobileqq.ecshop.view.api.IEcshopRainViewApi;
 import com.tencent.mobileqq.msg.api.IMessageRecordFactory;
@@ -68,7 +66,6 @@ public class EcshopMessageApiImpl
   implements IEcshopMessageApi
 {
   private static final String TAG = "EcshopMessageApi";
-  private static final double VIEW_VISIBLE_PERCENT_RATIO = 0.8D;
   
   public static void enterGDTVideoActivity(BaseQQAppInterface paramBaseQQAppInterface, AbsStructMsgElement paramAbsStructMsgElement, Activity paramActivity)
   {
@@ -76,7 +73,7 @@ public class EcshopMessageApiImpl
       return;
     }
     qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = getAdInfo(paramAbsStructMsgElement);
-    ((IEcshopService)paramBaseQQAppInterface.getRuntimeService(IEcshopService.class)).enterGDTVideoActivity(localAdInfo, paramAbsStructMsgElement.ab, paramAbsStructMsgElement.Y, paramActivity);
+    ((IEcshopService)paramBaseQQAppInterface.getRuntimeService(IEcshopService.class)).enterGDTVideoActivity(localAdInfo, paramAbsStructMsgElement.ap, paramAbsStructMsgElement.ak, paramActivity);
   }
   
   public static boolean enterGdtCanvasActivity(BaseQQAppInterface paramBaseQQAppInterface, AbsStructMsgElement paramAbsStructMsgElement, Activity paramActivity)
@@ -84,13 +81,13 @@ public class EcshopMessageApiImpl
     if (paramAbsStructMsgElement == null) {
       return false;
     }
-    if (((paramAbsStructMsgElement.a instanceof AbsShareMsg)) && (((AbsShareMsg)paramAbsStructMsgElement.a).mStructMsgItemLists != null))
+    if (((paramAbsStructMsgElement.as instanceof AbsShareMsg)) && (((AbsShareMsg)paramAbsStructMsgElement.as).mStructMsgItemLists != null))
     {
-      paramAbsStructMsgElement = (AbsStructMsgElement)((AbsShareMsg)paramAbsStructMsgElement.a).mStructMsgItemLists.get(0);
-      if (((paramAbsStructMsgElement instanceof AbsStructMsgItem)) && (paramAbsStructMsgElement.c == 1))
+      paramAbsStructMsgElement = (AbsStructMsgElement)((AbsShareMsg)paramAbsStructMsgElement.as).mStructMsgItemLists.get(0);
+      if (((paramAbsStructMsgElement instanceof AbsStructMsgItem)) && (paramAbsStructMsgElement.t == 1))
       {
         qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = getAdInfo(paramAbsStructMsgElement);
-        return ((IEcshopService)paramBaseQQAppInterface.getRuntimeService(IEcshopService.class)).enterGdtCanvasActivity(localAdInfo, paramAbsStructMsgElement.ab, paramAbsStructMsgElement.Y, paramActivity);
+        return ((IEcshopService)paramBaseQQAppInterface.getRuntimeService(IEcshopService.class)).enterGdtCanvasActivity(localAdInfo, paramAbsStructMsgElement.ap, paramAbsStructMsgElement.ak, paramActivity);
       }
     }
     return false;
@@ -119,18 +116,18 @@ public class EcshopMessageApiImpl
       return localAdInfo;
     }
     Object localObject1;
-    if (!StringUtil.a(paramAbsStructMsgElement.X))
+    if (!StringUtil.isEmpty(paramAbsStructMsgElement.aj))
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("adinfo<<<<<<<<<<<<<");
-        ((StringBuilder)localObject1).append(paramAbsStructMsgElement.X);
+        ((StringBuilder)localObject1).append(paramAbsStructMsgElement.aj);
         QLog.i("EcshopMessageApi", 2, ((StringBuilder)localObject1).toString());
       }
       try
       {
-        paramAbsStructMsgElement = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramAbsStructMsgElement.X)));
+        paramAbsStructMsgElement = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramAbsStructMsgElement.aj)));
         return paramAbsStructMsgElement;
       }
       catch (JSONException paramAbsStructMsgElement)
@@ -141,120 +138,120 @@ public class EcshopMessageApiImpl
     else
     {
       Object localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.r)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).advertiser_id.set(Long.parseLong(paramAbsStructMsgElement.r));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.u)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).advertiser_id.set(Long.parseLong(paramAbsStructMsgElement.u));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.N)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).corporate_image_name.set(paramAbsStructMsgElement.N);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.T)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).corporate_image_name.set(paramAbsStructMsgElement.T);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.O)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).corporate_logo.set(paramAbsStructMsgElement.O);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.U)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject2).corporate_logo.set(paramAbsStructMsgElement.U);
       }
       Object localObject3 = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.F)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_url.set(paramAbsStructMsgElement.F);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.K)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_url.set(paramAbsStructMsgElement.K);
       }
-      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).media_duration.set(paramAbsStructMsgElement.i);
-      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_file_size.set(paramAbsStructMsgElement.j);
-      if (!StringUtil.a(paramAbsStructMsgElement.U)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).tencent_video_id.set(paramAbsStructMsgElement.U);
+      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).media_duration.set(paramAbsStructMsgElement.aa);
+      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_file_size.set(paramAbsStructMsgElement.ab);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.ag)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).tencent_video_id.set(paramAbsStructMsgElement.ag);
       }
       localObject1 = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo();
       ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject1).advertiser_info.set((MessageMicro)localObject2);
       ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject1).video_info.set((MessageMicro)localObject3);
-      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject1).mini_program_type.set(paramAbsStructMsgElement.f);
+      ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject1).mini_program_type.set(paramAbsStructMsgElement.P);
       localObject3 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.s)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).aid.set(Long.parseLong(paramAbsStructMsgElement.s));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.v)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).aid.set(Long.parseLong(paramAbsStructMsgElement.v));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.D)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).traceid.set(paramAbsStructMsgElement.D);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.I)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).traceid.set(paramAbsStructMsgElement.I);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.E)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).via.set(paramAbsStructMsgElement.E);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.J)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).via.set(paramAbsStructMsgElement.J);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.A)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).product_id.set(paramAbsStructMsgElement.A);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.E)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).product_id.set(paramAbsStructMsgElement.E);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.z)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).noco_id.set(Long.parseLong(paramAbsStructMsgElement.z));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.D)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).noco_id.set(Long.parseLong(paramAbsStructMsgElement.D));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.V)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).view_id.set(paramAbsStructMsgElement.V);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.ah)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject3).view_id.set(paramAbsStructMsgElement.ah);
       }
       localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.q)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).exposure_url.set(paramAbsStructMsgElement.q);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.s)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).exposure_url.set(paramAbsStructMsgElement.s);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.B)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).click_url.set(paramAbsStructMsgElement.B);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.G)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).click_url.set(paramAbsStructMsgElement.G);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.w)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).effect_url.set(paramAbsStructMsgElement.w);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.A)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).effect_url.set(paramAbsStructMsgElement.A);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.y)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).landing_page_report_url.set(paramAbsStructMsgElement.y);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.C)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).landing_page_report_url.set(paramAbsStructMsgElement.C);
       }
       ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).trace_info.set((MessageMicro)localObject3);
-      if (!StringUtil.a(paramAbsStructMsgElement.P)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).negative_feedback_url.set(paramAbsStructMsgElement.P);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.X)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).negative_feedback_url.set(paramAbsStructMsgElement.X);
       }
       localObject3 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls();
-      if (!StringUtil.a(paramAbsStructMsgElement.K)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).api_click_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.K.split("\\|")));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.Q)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).api_click_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.Q.split("\\|")));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.L)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).api_exposure_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.L.split("\\|")));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.R)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).api_exposure_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.R.split("\\|")));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.R)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).sdk_click_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.R.split("\\|")));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.Z)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).sdk_click_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.Z.split("\\|")));
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.Q)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).sdk_exposure_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.Q.split("\\|")));
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.Y)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls)localObject3).sdk_exposure_monitor_url.set(Arrays.asList(paramAbsStructMsgElement.Y.split("\\|")));
       }
       ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).thirdparty_monitor_urls.set((MessageMicro)localObject3);
       localObject3 = new qq_ad_get.QQAdGetRsp.AdInfo.DestInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.x)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).landing_page.set(paramAbsStructMsgElement.x);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.B)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).landing_page.set(paramAbsStructMsgElement.B);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.u)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).canvas_json.set(paramAbsStructMsgElement.u);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.x)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).canvas_json.set(paramAbsStructMsgElement.x);
       }
-      ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).dest_type.set(paramAbsStructMsgElement.d);
-      if (!StringUtil.a(paramAbsStructMsgElement.S)) {
-        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).universal_link.set(paramAbsStructMsgElement.S);
+      ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).dest_type.set(paramAbsStructMsgElement.z);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.ae)) {
+        ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).universal_link.set(paramAbsStructMsgElement.ae);
       }
       qq_ad_get.QQAdGetRsp.AdInfo.AppInfo localAppInfo = new qq_ad_get.QQAdGetRsp.AdInfo.AppInfo();
-      if (!StringUtil.a(paramAbsStructMsgElement.H)) {
-        localAppInfo.customized_invoke_url.set(paramAbsStructMsgElement.H);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.M)) {
+        localAppInfo.customized_invoke_url.set(paramAbsStructMsgElement.M);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.t)) {
-        localAppInfo.pkg_download_schema.set(paramAbsStructMsgElement.t);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.w)) {
+        localAppInfo.pkg_download_schema.set(paramAbsStructMsgElement.w);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.G)) {
-        localAppInfo.app_name.set(paramAbsStructMsgElement.G);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.L)) {
+        localAppInfo.app_name.set(paramAbsStructMsgElement.L);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.I)) {
-        localAppInfo.app_package_name.set(paramAbsStructMsgElement.I);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.N)) {
+        localAppInfo.app_package_name.set(paramAbsStructMsgElement.N);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.J)) {
-        localAppInfo.pkg_url.set(paramAbsStructMsgElement.J);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.O)) {
+        localAppInfo.pkg_url.set(paramAbsStructMsgElement.O);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.A)) {
-        localAppInfo.android_app_id.set(paramAbsStructMsgElement.A);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.E)) {
+        localAppInfo.android_app_id.set(paramAbsStructMsgElement.E);
       }
-      if (!StringUtil.a(paramAbsStructMsgElement.C)) {
-        localAppInfo.channel_id.set(paramAbsStructMsgElement.C);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.H)) {
+        localAppInfo.channel_id.set(paramAbsStructMsgElement.H);
       }
-      localAppInfo.app_score_num.set(paramAbsStructMsgElement.k);
-      localAppInfo.download_num.set(paramAbsStructMsgElement.l);
-      localAdInfo.product_type.set(paramAbsStructMsgElement.e);
+      localAppInfo.app_score_num.set(paramAbsStructMsgElement.ac);
+      localAppInfo.download_num.set(paramAbsStructMsgElement.ad);
+      localAdInfo.product_type.set(paramAbsStructMsgElement.F);
       localAdInfo.display_info.set((MessageMicro)localObject1);
       localAdInfo.report_info.set((MessageMicro)localObject2);
       localAdInfo.dest_info.set((MessageMicro)localObject3);
       localAdInfo.app_info.set(localAppInfo);
-      if (!StringUtil.a(paramAbsStructMsgElement.T)) {
-        localAdInfo.ext_json.set(paramAbsStructMsgElement.T);
+      if (!StringUtil.isEmpty(paramAbsStructMsgElement.af)) {
+        localAdInfo.ext_json.set(paramAbsStructMsgElement.af);
       }
     }
     return localAdInfo;
@@ -269,7 +266,7 @@ public class EcshopMessageApiImpl
     if (!paramView.getGlobalVisibleRect(localRect)) {
       return 0.0D;
     }
-    if ((localRect.left < UIUtils.b(paramView.getContext())) && (localRect.top < UIUtils.c(paramView.getContext())) && (localRect.right > 0))
+    if ((localRect.left < UIUtils.c(paramView.getContext())) && (localRect.top < UIUtils.d(paramView.getContext())) && (localRect.right > 0))
     {
       if (localRect.bottom <= 0) {
         return 0.0D;
@@ -287,7 +284,7 @@ public class EcshopMessageApiImpl
   
   public static View getViewByPosition(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
   {
-    int i = ((ChatAdapter1)((HeaderViewListAdapter)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
+    int i = ((ChatAdapter1)((HeaderViewListAdapter)paramChatXListView.getAdapter()).getWrappedAdapter()).b(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
     if (QLog.isColorLevel())
     {
       paramChatMessage = new StringBuilder();
@@ -314,7 +311,7 @@ public class EcshopMessageApiImpl
       paramChatMessage = (MessageForStructing)paramChatMessage;
       Object localObject = (StructMsgForGeneralShare)paramChatMessage.structingMsg;
       EcshopConfBean localEcshopConfBean = ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean();
-      if (!((IEcshopRainViewApi)QRoute.api(IEcshopRainViewApi.class)).isInPromotionTime(localEcshopConfBean.a, paramChatMessage)) {
+      if (!((IEcshopRainViewApi)QRoute.api(IEcshopRainViewApi.class)).isInPromotionTime(localEcshopConfBean.m, paramChatMessage)) {
         return;
       }
       localObject = ((StructMsgForGeneralShare)localObject).getStructMsgItemLists();
@@ -322,7 +319,7 @@ public class EcshopMessageApiImpl
       {
         AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((List)localObject).get(0);
         StructMsgItemLayoutPromotion localStructMsgItemLayoutPromotion = new StructMsgItemLayoutPromotion();
-        if (localStructMsgItemLayoutPromotion.a(localAbsStructMsgElement, localEcshopConfBean.a))
+        if (localStructMsgItemLayoutPromotion.a(localAbsStructMsgElement, localEcshopConfBean.m))
         {
           ((List)localObject).clear();
           ((List)localObject).add(localStructMsgItemLayoutPromotion);
@@ -355,57 +352,27 @@ public class EcshopMessageApiImpl
     return localArrayList;
   }
   
-  public static void reportArkShow(ChatXListView paramChatXListView, ChatAdapter1 paramChatAdapter1)
+  public void GdtC2SReportArkMsg(MessageRecord paramMessageRecord, int paramInt)
   {
-    if ((paramChatAdapter1 != null) && (!paramChatAdapter1.a().isEmpty()))
-    {
-      int i = 0;
-      while (i < paramChatAdapter1.a().size())
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramChatAdapter1.a().get(i);
-        if ((localChatMessage instanceof MessageForArkApp))
-        {
-          Object localObject1 = (MessageForArkApp)localChatMessage;
-          if (((MessageForArkApp)localObject1).ark_app_message != null)
-          {
-            localObject1 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
-            if (!StringUtil.a((String)localObject1)) {
-              try
-              {
-                Object localObject2 = getViewByPosition(localChatMessage, paramChatXListView);
-                if (localObject2 != null)
-                {
-                  localObject2 = (ArkAppView)((View)localObject2).findViewById(2131362947);
-                  if ((localObject2 != null) && (getPercentageOfGlobalVisibleRect((View)localObject2) >= 0.8D)) {
-                    ((IEcshopReportApi)QRoute.api(IEcshopReportApi.class)).reportArkShow(localChatMessage, (String)localObject1);
-                  }
-                }
-              }
-              catch (Throwable localThrowable)
-              {
-                localThrowable.printStackTrace();
-              }
-            }
-          }
-        }
-        i += 1;
-      }
+    int i = 0;
+    if ((paramInt != 0) && (paramInt == 1)) {
+      i = 1;
     }
-  }
-  
-  public void GdtC2SReportArkMsg(MessageRecord paramMessageRecord)
-  {
     paramMessageRecord = getAdInfoByChatMessage(paramMessageRecord);
     if (paramMessageRecord != null) {
-      GdtC2SReporter.a(0, 2, paramMessageRecord);
+      GdtC2SReporter.a(i, 2, paramMessageRecord);
     }
   }
   
-  public void GdtC2SReportStructMsg(MessageRecord paramMessageRecord)
+  public void GdtC2SReportStructMsg(MessageRecord paramMessageRecord, int paramInt)
   {
+    int i = 0;
+    if ((paramInt != 0) && (paramInt == 1)) {
+      i = 1;
+    }
     paramMessageRecord = getAbsStructMsgElement(paramMessageRecord);
     if (paramMessageRecord != null) {
-      GdtC2SReporter.a(0, 2, getAdInfo(paramMessageRecord));
+      GdtC2SReporter.a(i, 2, getAdInfo(paramMessageRecord));
     }
   }
   
@@ -470,7 +437,7 @@ public class EcshopMessageApiImpl
                 if (!(localObject1 instanceof StructMsgItemLayout5)) {
                   break label165;
                 }
-                localObject1 = ((StructMsgItemLayout5)localObject1).a;
+                localObject1 = ((StructMsgItemLayout5)localObject1).ax;
                 if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
                 {
                   localObject1 = ((ArrayList)localObject1).iterator();
@@ -505,7 +472,7 @@ public class EcshopMessageApiImpl
             {
               paramMessageRecord = paramMessageRecord.metaList;
               localObject1 = localAbsStructMsgElement;
-              if (!StringUtil.a(paramMessageRecord))
+              if (!StringUtil.isEmpty(paramMessageRecord))
               {
                 paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("gdt");
                 localObject1 = localAbsStructMsgElement;
@@ -566,7 +533,7 @@ public class EcshopMessageApiImpl
                     ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).dest_info.universal_link.set(paramMessageRecord.optString("universal_link"));
                     ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).dest_info.dest_type.set(paramMessageRecord.optInt("dest_type"));
                     paramMessageRecord = paramMessageRecord.optString("ext");
-                    if (!StringUtil.a(paramMessageRecord))
+                    if (!StringUtil.isEmpty(paramMessageRecord))
                     {
                       paramMessageRecord = new JSONObject(URLDecoder.decode(paramMessageRecord));
                       ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).ext_json.set(paramMessageRecord.optString("sdk_data"));
@@ -611,7 +578,7 @@ public class EcshopMessageApiImpl
   public boolean getArkMsgReportClick(MessageRecord paramMessageRecord)
   {
     paramMessageRecord = getArkMsgMetaList(paramMessageRecord);
-    if (!StringUtil.a(paramMessageRecord)) {
+    if (!StringUtil.isEmpty(paramMessageRecord)) {
       try
       {
         paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("gdt");
@@ -669,13 +636,13 @@ public class EcshopMessageApiImpl
                   }
                   localObject = (AbsStructMsgElement)paramMessageRecord.next();
                 } while (!(localObject instanceof StructMsgItemLayout5));
-                localObject = ((StructMsgItemLayout5)localObject).a;
+                localObject = ((StructMsgItemLayout5)localObject).ax;
               } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
               localObject = ((ArrayList)localObject).iterator();
             }
             localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
           } while (!(localAbsStructMsgElement instanceof StructMsgItemVideo));
-          return ((StructMsgItemVideo)localAbsStructMsgElement).ax;
+          return ((StructMsgItemVideo)localAbsStructMsgElement).bd;
         }
       }
     }
@@ -697,10 +664,10 @@ public class EcshopMessageApiImpl
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("mGdtActionType ");
-            localStringBuilder.append(((AbsStructMsgElement)localObject).c);
+            localStringBuilder.append(((AbsStructMsgElement)localObject).t);
             QLog.i("EcshopMessageApi", 2, localStringBuilder.toString());
           }
-          if ((((AbsStructMsgElement)localObject).c == 1) && ((((AbsStructMsgElement)localObject).a instanceof StructMsgForGeneralShare))) {
+          if ((((AbsStructMsgElement)localObject).t == 1) && ((((AbsStructMsgElement)localObject).as instanceof StructMsgForGeneralShare))) {
             return localChatMessage;
           }
         }
@@ -725,10 +692,10 @@ public class EcshopMessageApiImpl
     AbsStructMsgElement localAbsStructMsgElement = getAbsStructMsgElement(paramMessageRecord);
     if (localAbsStructMsgElement != null)
     {
-      if (localAbsStructMsgElement.W == null) {
+      if (localAbsStructMsgElement.ai == null) {
         return "";
       }
-      return localAbsStructMsgElement.W;
+      return localAbsStructMsgElement.ai;
     }
     paramMessageRecord = getSourceAdFromArk(paramMessageRecord);
     if (paramMessageRecord == null) {
@@ -746,13 +713,13 @@ public class EcshopMessageApiImpl
       {
         paramMessageRecord = new StringBuilder();
         paramMessageRecord.append("mGdtActionType ");
-        paramMessageRecord.append(localAbsStructMsgElement.c);
+        paramMessageRecord.append(localAbsStructMsgElement.t);
         QLog.i("EcshopMessageApi", 2, paramMessageRecord.toString());
       }
-      if (localAbsStructMsgElement.c == 0) {
+      if (localAbsStructMsgElement.t == 0) {
         return "";
       }
-      return String.valueOf(localAbsStructMsgElement.c);
+      return String.valueOf(localAbsStructMsgElement.t);
     }
     paramMessageRecord = getSourceAdFromArk(paramMessageRecord);
     if (paramMessageRecord == null) {
@@ -786,14 +753,40 @@ public class EcshopMessageApiImpl
         if ((paramMessageRecord != null) && (!paramMessageRecord.isEmpty()))
         {
           paramMessageRecord = paramMessageRecord.iterator();
-          while (paramMessageRecord.hasNext())
+          AbsStructMsgElement localAbsStructMsgElement;
+          do
           {
-            AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramMessageRecord.next();
-            if ((localAbsStructMsgElement instanceof StructMsgItemLayout6)) {
-              return ((StructMsgItemLayout6)localAbsStructMsgElement).b;
+            if (!paramMessageRecord.hasNext()) {
+              break;
+            }
+            localAbsStructMsgElement = (AbsStructMsgElement)paramMessageRecord.next();
+          } while (!(localAbsStructMsgElement instanceof StructMsgItemLayout6));
+          return ((StructMsgItemLayout6)localAbsStructMsgElement).d;
+        }
+      }
+    }
+    else if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      try
+      {
+        paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+        if (paramMessageRecord != null)
+        {
+          paramMessageRecord = paramMessageRecord.metaList;
+          if (!TextUtils.isEmpty(paramMessageRecord))
+          {
+            paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("floorData");
+            if (paramMessageRecord != null)
+            {
+              paramMessageRecord = paramMessageRecord.optString("url");
+              return paramMessageRecord;
             }
           }
         }
+      }
+      catch (Exception paramMessageRecord)
+      {
+        QLog.e("EcshopMessageApi", 1, paramMessageRecord, new Object[0]);
       }
     }
     return "";
@@ -851,7 +844,7 @@ public class EcshopMessageApiImpl
       localObject1 = localObject2;
       try
       {
-        if (StringUtil.a(paramMessageRecord)) {
+        if (StringUtil.isEmpty(paramMessageRecord)) {
           return ???;
         }
         paramMessageRecord = new JSONObject(paramMessageRecord);
@@ -884,11 +877,11 @@ public class EcshopMessageApiImpl
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mGdtActionType ");
-        localStringBuilder.append(paramMessageRecord.c);
+        localStringBuilder.append(paramMessageRecord.t);
         QLog.i("EcshopMessageApi", 2, localStringBuilder.toString());
       }
-      if ((paramMessageRecord.a instanceof StructMsgForGeneralShare)) {
-        return ((StructMsgForGeneralShare)paramMessageRecord.a).mContentTitle;
+      if ((paramMessageRecord.as instanceof StructMsgForGeneralShare)) {
+        return ((StructMsgForGeneralShare)paramMessageRecord.as).mContentTitle;
       }
     }
     return null;
@@ -906,7 +899,7 @@ public class EcshopMessageApiImpl
         {
           paramMessageRecord = (AbsStructMsgElement)paramMessageRecord.mStructMsgItemLists.get(0);
           if (paramMessageRecord != null) {
-            return paramMessageRecord.s;
+            return paramMessageRecord.v;
           }
         }
       }
@@ -918,7 +911,7 @@ public class EcshopMessageApiImpl
   {
     paramMessageRecord = getAbsStructMsgElement(paramMessageRecord);
     if (paramMessageRecord != null) {
-      return paramMessageRecord.Y;
+      return paramMessageRecord.ak;
     }
     return null;
   }
@@ -936,7 +929,7 @@ public class EcshopMessageApiImpl
           if (paramMessageRecord.isEmpty()) {
             return null;
           }
-          return ((AbsStructMsgElement)paramMessageRecord.get(0)).X;
+          return ((AbsStructMsgElement)paramMessageRecord.get(0)).aj;
         }
       }
     }
@@ -980,7 +973,7 @@ public class EcshopMessageApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.temp.api.impl.EcshopMessageApiImpl
  * JD-Core Version:    0.7.0.1
  */

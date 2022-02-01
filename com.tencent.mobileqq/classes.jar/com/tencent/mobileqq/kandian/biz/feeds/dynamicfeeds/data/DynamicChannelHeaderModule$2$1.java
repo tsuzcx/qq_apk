@@ -10,12 +10,12 @@ class DynamicChannelHeaderModule$2$1
   
   public void run()
   {
-    DynamicChannelHeaderModule.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule$2.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule$2.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDynamicChannelHeaderModule$2.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicReadInJoyDynamicChannelBaseFragment$OfflineHeaderConfig);
+    DynamicChannelHeaderModule.a(this.c.c, this.c.a, this.a, this.b, this.c.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelHeaderModule.2.1
  * JD-Core Version:    0.7.0.1
  */

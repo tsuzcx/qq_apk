@@ -11,28 +11,28 @@ class DoubleVideoCtrlUI$5
   
   public void run()
   {
-    SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    String str = this.this$0.d;
+    SessionInfo localSessionInfo = this.this$0.am.k();
+    String str = this.this$0.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[");
-    localStringBuilder.append(this.this$0.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.this$0.a);
     localStringBuilder.append("], SessionType[");
-    localStringBuilder.append(localSessionInfo.d);
+    localStringBuilder.append(localSessionInfo.g);
     localStringBuilder.append("], shutCameraAnswer[");
-    localStringBuilder.append(localSessionInfo.n);
+    localStringBuilder.append(localSessionInfo.M);
     localStringBuilder.append("], cameraPermission[");
-    localStringBuilder.append(localSessionInfo.o);
+    localStringBuilder.append(localSessionInfo.N);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if ((!this.this$0.jdField_a_of_type_Boolean) && (localSessionInfo.d == 2))
+    if ((!this.this$0.a) && (localSessionInfo.g == 2))
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.onPauseVideo(localSessionInfo.c);
-      if ((localSessionInfo.n) || (!localSessionInfo.o))
+      this.this$0.am.onPauseVideo(localSessionInfo.s);
+      if ((localSessionInfo.M) || (!localSessionInfo.N))
       {
         localSessionInfo.a(-1011L, "CheckRemoteCameraRunnable", 1);
         this.this$0.a("CheckRemoteCameraRunnable", 1);
       }
-      this.this$0.C(-1011L);
+      this.this$0.I(-1011L);
     }
   }
 }

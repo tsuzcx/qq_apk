@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="16.5dip" />
-    <stroke android:width="0.0dip" android:color="#40ffffff" />
-    <solid android:color="#40ffffff" />
-</shape>
+    <item android:state_pressed="false" android:drawable="@drawable/skin_background_theme_version2" />
+    <item android:state_pressed="true" android:drawable="@drawable/skin_background_theme_version2" />
+</selector>

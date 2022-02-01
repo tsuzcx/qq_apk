@@ -22,54 +22,49 @@ import java.util.Set;
 public class PlayerCaptureProxy
   implements ICaptureProxy, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener
 {
-  private SparseArray<CaptureTask.OnCaptureCallback> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ISuperPlayer.OnSeekCompleteListener jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer$OnSeekCompleteListener;
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private Set<CapturePreparedListener> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
-  private SparseArray<CaptureTask> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = false;
+  private boolean b = false;
+  private ISuperPlayer c;
+  private SparseArray<CaptureTask.OnCaptureCallback> d = new SparseArray();
+  private SparseArray<CaptureTask> e = new SparseArray();
+  private Set<CapturePreparedListener> f = new HashSet();
+  private ISuperPlayer.OnSeekCompleteListener g;
   
   public PlayerCaptureProxy()
   {
-    d();
+    e();
   }
   
-  public static void d()
+  public static void e()
   {
-    if (!QQVideoPlaySDKManager.a()) {
-      QQVideoPlaySDKManager.a(BaseApplication.getContext(), new PlayerCaptureProxy.1());
+    if (!QQVideoPlaySDKManager.isSDKReady()) {
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplication.getContext(), new PlayerCaptureProxy.1());
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    this.d.clear();
+    ISuperPlayer localISuperPlayer = this.c;
     if (localISuperPlayer != null)
     {
       localISuperPlayer.stop();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
+      this.c.release();
+      this.c = null;
     }
   }
   
   public void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer$OnSeekCompleteListener = paramOnSeekCompleteListener;
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.seekTo(paramInt, 3);
+    this.g = paramOnSeekCompleteListener;
+    if (this.b) {
+      this.c.seekTo(paramInt, 3);
     }
   }
   
   public void a(CapturePreparedListener paramCapturePreparedListener)
   {
-    this.jdField_a_of_type_JavaUtilSet.add(paramCapturePreparedListener);
+    this.f.add(paramCapturePreparedListener);
   }
   
   /* Error */
@@ -79,14 +74,14 @@ public class PlayerCaptureProxy
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 53	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer	Lcom/tencent/superplayer/api/ISuperPlayer;
+    //   3: getfield 57	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:c	Lcom/tencent/superplayer/api/ISuperPlayer;
     //   6: aload_1
-    //   7: getfield 110	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:c	I
+    //   7: getfield 111	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:d	I
     //   10: i2l
     //   11: aload_1
-    //   12: getfield 112	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:d	I
+    //   12: getfield 113	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:e	I
     //   15: aload_1
-    //   16: getfield 115	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:e	I
+    //   16: getfield 115	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:f	I
     //   19: iconst_0
     //   20: iconst_0
     //   21: sipush 300
@@ -96,12 +91,12 @@ public class PlayerCaptureProxy
     //   31: iload_3
     //   32: putfield 121	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/CaptureTask:a	I
     //   35: aload_0
-    //   36: getfield 41	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:jdField_b_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   36: getfield 46	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:e	Landroid/util/SparseArray;
     //   39: iload_3
     //   40: aload_1
     //   41: invokevirtual 125	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   44: aload_0
-    //   45: getfield 39	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   45: getfield 44	com/tencent/mobileqq/kandian/biz/ugc/coverselect/capture/PlayerCaptureProxy:d	Landroid/util/SparseArray;
     //   48: iload_3
     //   49: aload_2
     //   50: invokevirtual 125	android/util/SparseArray:put	(ILjava/lang/Object;)V
@@ -168,30 +163,35 @@ public class PlayerCaptureProxy
     {
       localISPlayerVideoView1 = null;
     }
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplication.getContext(), 104, localISPlayerVideoView1);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(true);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setLoopback(true);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCaptureImageListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
+    this.c = SuperPlayerFactory.createMediaPlayer(BaseApplication.getContext(), 104, localISPlayerVideoView1);
+    this.c.setOutputMute(true);
+    this.c.setLoopback(true);
+    this.c.setOnInfoListener(this);
+    this.c.setOnCaptureImageListener(this);
+    this.c.setOnVideoPreparedListener(this);
+    this.c.setOnSeekCompleteListener(this);
+    this.c.setOnErrorListener(this);
     paramString = SuperPlayerFactory.createVideoInfoForUrl(paramString, 101, null);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplication.getContext(), paramString, 0L);
+    this.c.openMediaPlayer(BaseApplication.getContext(), paramString, 0L);
   }
   
-  public void b()
+  public long b()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if ((localISuperPlayer != null) && (this.jdField_a_of_type_Boolean)) {
-      a((int)localISuperPlayer.getCurrentPositionMs(), null);
-    }
-    this.jdField_a_of_type_Boolean = false;
+    return this.c.getDurationMs();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    ISuperPlayer localISuperPlayer = this.c;
+    if ((localISuperPlayer != null) && (this.a)) {
+      a((int)localISuperPlayer.getCurrentPositionMs(), null);
+    }
+    this.a = false;
+  }
+  
+  public void d()
+  {
+    this.a = true;
   }
   
   public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
@@ -203,15 +203,15 @@ public class PlayerCaptureProxy
     paramISuperPlayer.append(paramInt2);
     QLog.e("PlayerCaptureProxy", 1, paramISuperPlayer.toString());
     paramInt2 = 0;
-    while (paramInt2 < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (paramInt2 < this.d.size())
     {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt2) == paramInt1)
+      if (this.d.keyAt(paramInt2) == paramInt1)
       {
-        paramISuperPlayer = (CaptureTask.OnCaptureCallback)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+        paramISuperPlayer = (CaptureTask.OnCaptureCallback)this.d.get(paramInt1);
         if (paramISuperPlayer != null) {
           paramISuperPlayer.a();
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        this.d.remove(paramInt1);
         return;
       }
       paramInt2 += 1;
@@ -228,21 +228,21 @@ public class PlayerCaptureProxy
       paramISuperPlayer.append(" bitmap:");
       paramISuperPlayer.append(paramBitmap);
       paramISuperPlayer.append(" callbackSparseArray:");
-      paramISuperPlayer.append(this.jdField_a_of_type_AndroidUtilSparseArray);
+      paramISuperPlayer.append(this.d);
       QLog.d("PlayerCaptureProxy", 2, paramISuperPlayer.toString());
     }
     paramInt2 = 0;
-    while (paramInt2 < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (paramInt2 < this.d.size())
     {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt2) == paramInt1)
+      if (this.d.keyAt(paramInt2) == paramInt1)
       {
-        paramISuperPlayer = (CaptureTask.OnCaptureCallback)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-        CaptureTask localCaptureTask = (CaptureTask)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt1);
-        this.jdField_b_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        paramISuperPlayer = (CaptureTask.OnCaptureCallback)this.d.get(paramInt1);
+        CaptureTask localCaptureTask = (CaptureTask)this.e.get(paramInt1);
+        this.e.remove(paramInt1);
         if (paramISuperPlayer != null) {
           paramISuperPlayer.a(paramBitmap, localCaptureTask);
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        this.d.remove(paramInt1);
         return;
       }
       paramInt2 += 1;
@@ -271,7 +271,7 @@ public class PlayerCaptureProxy
   
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
-    ISuperPlayer.OnSeekCompleteListener localOnSeekCompleteListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer$OnSeekCompleteListener;
+    ISuperPlayer.OnSeekCompleteListener localOnSeekCompleteListener = this.g;
     if (localOnSeekCompleteListener != null) {
       localOnSeekCompleteListener.onSeekComplete(paramISuperPlayer);
     }
@@ -284,7 +284,7 @@ public class PlayerCaptureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.capture.PlayerCaptureProxy
  * JD-Core Version:    0.7.0.1
  */

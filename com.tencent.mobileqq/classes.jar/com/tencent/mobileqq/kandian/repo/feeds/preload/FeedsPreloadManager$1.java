@@ -10,7 +10,7 @@ class FeedsPreloadManager$1
   
   public void a()
   {
-    if (!FeedsPreloadHelper.b())
+    if (!FeedsPreloadHelper.d())
     {
       QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
       this.a.a(false);
@@ -19,11 +19,11 @@ class FeedsPreloadManager$1
     QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
   }
   
-  public void ax_() {}
+  public void cU_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

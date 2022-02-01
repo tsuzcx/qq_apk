@@ -65,7 +65,7 @@ public class TroopInfoCheckUtil
   private static void e()
   {
     int i = 0;
-    HashSet localHashSet = new HashSet(Arrays.asList(new String[] { "groupInfoExtSeq", "luckyWordId", "lightCharNum", "luckyWord", "starId", "essenceSwitch" }));
+    HashSet localHashSet = new HashSet(Arrays.asList(new String[] { "groupInfoExtSeq", "luckyWordId", "lightCharNum", "luckyWord", "starId", "essenceSwitch", "temporaryExpireTime", "todoSeq" }));
     Object localObject3 = "";
     try
     {
@@ -106,7 +106,7 @@ public class TroopInfoCheckUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopInfoCheckUtil
  * JD-Core Version:    0.7.0.1
  */

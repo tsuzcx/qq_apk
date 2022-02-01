@@ -7,40 +7,35 @@ import android.util.Log;
 
 public class StateMachine
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private StateMachine.SmHandler jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private StateMachine.SmHandler b;
+  private HandlerThread c;
   
   protected StateMachine(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(paramString);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    a(paramString, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.c = new HandlerThread(paramString);
+    this.c.start();
+    a(paramString, this.c.getLooper());
   }
   
   private void a(String paramString, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler = new StateMachine.SmHandler(paramLooper, this, null);
-  }
-  
-  public final Message a(int paramInt)
-  {
-    return Message.obtain(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramInt);
+    this.a = paramString;
+    this.b = new StateMachine.SmHandler(paramLooper, this, null);
   }
   
   public final Message a(int paramInt, Object paramObject)
   {
-    return Message.obtain(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramInt, paramObject);
+    return Message.obtain(this.b, paramInt, paramObject);
   }
   
   protected final IState a()
   {
-    StateMachine.SmHandler localSmHandler = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
+    StateMachine.SmHandler localSmHandler = this.b;
     if (localSmHandler == null) {
       return null;
     }
-    return StateMachine.SmHandler.a(localSmHandler);
+    return StateMachine.SmHandler.b(localSmHandler);
   }
   
   protected String a(int paramInt)
@@ -48,61 +43,45 @@ public class StateMachine
     return null;
   }
   
-  protected String a(Message paramMessage)
+  protected final void a(Message paramMessage)
   {
-    return "";
+    StateMachine.SmHandler.a(this.b, paramMessage);
   }
   
-  protected void a() {}
-  
-  public final void a(int paramInt)
+  protected final void a(IState paramIState)
   {
-    StateMachine.SmHandler localSmHandler = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
-    if (localSmHandler == null) {
-      return;
-    }
-    localSmHandler.sendMessage(a(paramInt));
+    StateMachine.SmHandler.a(this.b, paramIState);
   }
   
-  public final void a(int paramInt, Object paramObject)
+  protected final void a(State paramState)
   {
-    StateMachine.SmHandler localSmHandler = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
+    StateMachine.SmHandler.a(this.b, paramState, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    Log.d(this.a, paramString);
+  }
+  
+  public final Message b(int paramInt)
+  {
+    return Message.obtain(this.b, paramInt);
+  }
+  
+  protected void b() {}
+  
+  public final void b(int paramInt, Object paramObject)
+  {
+    StateMachine.SmHandler localSmHandler = this.b;
     if (localSmHandler == null) {
       return;
     }
     localSmHandler.sendMessage(a(paramInt, paramObject));
   }
   
-  protected final void a(Message paramMessage)
-  {
-    StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramMessage);
-  }
-  
-  protected final void a(IState paramIState)
-  {
-    StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramIState);
-  }
-  
-  protected final void a(State paramState)
-  {
-    StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramState, null);
-  }
-  
-  protected void a(String paramString)
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, paramString);
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    return true;
-  }
-  
-  protected void b() {}
-  
   protected void b(Message paramMessage)
   {
-    if (StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler))
+    if (StateMachine.SmHandler.c(this.b))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" - unhandledMessage: msg.what=");
@@ -113,37 +92,58 @@ public class StateMachine
   
   protected final void b(State paramState)
   {
-    StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler, paramState);
+    StateMachine.SmHandler.a(this.b, paramState);
   }
   
   protected void b(String paramString)
   {
-    Log.e(this.jdField_a_of_type_JavaLangString, paramString);
+    Log.e(this.a, paramString);
   }
   
-  protected final void c()
+  protected void c() {}
+  
+  public final void c(int paramInt)
   {
-    StateMachine.SmHandler localSmHandler = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
+    StateMachine.SmHandler localSmHandler = this.b;
     if (localSmHandler == null) {
       return;
     }
-    StateMachine.SmHandler.a(localSmHandler);
+    localSmHandler.sendMessage(b(paramInt));
   }
   
   protected void c(Message paramMessage) {}
   
-  public void d()
+  protected final void d()
   {
-    StateMachine.SmHandler localSmHandler = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler;
+    StateMachine.SmHandler localSmHandler = this.b;
     if (localSmHandler == null) {
       return;
     }
-    StateMachine.SmHandler.b(localSmHandler);
+    StateMachine.SmHandler.d(localSmHandler);
+  }
+  
+  protected boolean d(Message paramMessage)
+  {
+    return true;
+  }
+  
+  protected String e(Message paramMessage)
+  {
+    return "";
+  }
+  
+  public void e()
+  {
+    StateMachine.SmHandler localSmHandler = this.b;
+    if (localSmHandler == null) {
+      return;
+    }
+    StateMachine.SmHandler.e(localSmHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.StateMachine
  * JD-Core Version:    0.7.0.1
  */

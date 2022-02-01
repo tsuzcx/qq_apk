@@ -32,14 +32,14 @@ public class QQReaderJsPlugin
       this.mReceiver = new QQReaderJsPlugin.1(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.jsPlugin.AddToBookShelf");
-      this.mRuntime.a().registerReceiver(this.mReceiver, localIntentFilter);
+      this.mRuntime.d().registerReceiver(this.mReceiver, localIntentFilter);
     }
   }
   
   private void unregisterReceiver()
   {
     if (this.mReceiver != null) {
-      this.mRuntime.a().unregisterReceiver(this.mReceiver);
+      this.mRuntime.d().unregisterReceiver(this.mReceiver);
     }
   }
   
@@ -79,7 +79,7 @@ public class QQReaderJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQReaderJsPlugin
  * JD-Core Version:    0.7.0.1
  */

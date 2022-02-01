@@ -36,17 +36,17 @@ class DownloadUrlManager$6
       }
       paramGetVideoFullInfoListResponse.a = paramGetVideoFullInfoListRequest.a(paramGetVideoFullInfoListResponse.a);
       ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.c(this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$PullNewVideoInfoCallBack.a(true);
+      this.c.d(this.b, 0);
+      this.a.a(true);
       return;
     }
     SLog.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$PullNewVideoInfoCallBack.a(true);
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.pubaccount.NativeAd.report.IReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.ReportData;
 import com.tencent.biz.pubaccount.NativeAd.report.bean.AMSReportObj;
+import com.tencent.biz.pubaccount.NativeAd.report.bean.AdInfoObj;
 import com.tencent.biz.pubaccount.NativeAd.report.bean.AdLoadReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.bean.AppReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.bean.CommonReportObj;
@@ -21,11 +22,17 @@ import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AdReportUtil
 {
@@ -68,38 +75,19 @@ public class AdReportUtil
     while (paramMap.hasNext())
     {
       IReportObj localIReportObj = (IReportObj)paramMap.next();
-      if ((localIReportObj != null) && (localIReportObj.a())) {
+      if ((localIReportObj != null) && (localIReportObj.c())) {
         localReportData.a(localIReportObj);
       }
     }
     return localReportData;
   }
   
-  public static ActionEntity a(AdReportData paramAdReportData)
-  {
-    if (paramAdReportData.a() != null) {
-      return paramAdReportData.a();
-    }
-    int i = paramAdReportData.b();
-    if (i == 32) {
-      return ActionEntity.PKMiddlePage;
-    }
-    if ((paramAdReportData.a() != null) && (ReadInJoyAdUtils.h(paramAdReportData.a())))
-    {
-      if (i == 37) {
-        return ActionEntity.OutSuperMask;
-      }
-      return ActionEntity.InnerSuperMask;
-    }
-    return ActionEntity.Default;
-  }
-  
   public static ReportAction a(AdReportData paramAdReportData)
   {
-    if (paramAdReportData.a() != null) {
-      return paramAdReportData.a();
+    if (paramAdReportData.x() != null) {
+      return paramAdReportData.x();
     }
-    int i = paramAdReportData.a();
+    int i = paramAdReportData.c();
     if ((i != 17) && (i != 23))
     {
       if (i != 26)
@@ -120,10 +108,10 @@ public class AdReportUtil
         switch (i)
         {
         default: 
-          if ((paramAdReportData.a() != null) && (paramAdReportData.a().adClickPos != null) && (paramAdReportData.a().adClickPos == AdClickPos.SoftAdClose)) {
+          if ((paramAdReportData.g() != null) && (paramAdReportData.g().adClickPos != null) && (paramAdReportData.g().adClickPos == AdClickPos.SoftAdClose)) {
             return ReportAction.CLOSE;
           }
-          if (paramAdReportData.b() != null) {
+          if (paramAdReportData.w() != null) {
             return ReportAction.CLICK;
           }
           return ReportAction.EXPOSE;
@@ -134,7 +122,7 @@ public class AdReportUtil
         case 2: 
           return ReportAction.EXPOSE;
         case 1: 
-          if (paramAdReportData.d() == 39) {
+          if (paramAdReportData.m() == 39) {
             return ReportAction.CLOSE;
           }
           return ReportAction.CLICK;
@@ -150,60 +138,15 @@ public class AdReportUtil
     return ReportAction.SLIDE;
   }
   
-  public static Integer a(AdReportData paramAdReportData)
+  public static String a()
   {
-    Integer localInteger = Integer.valueOf(0);
-    if (paramAdReportData == null) {
-      return localInteger;
+    Object localObject = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount();
+    String str = ((TicketManager)((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime()).getManager(2)).getSkey((String)localObject);
+    localObject = str;
+    if (str == null) {
+      localObject = "";
     }
-    if (paramAdReportData.b() != null)
-    {
-      if (paramAdReportData.b().intValue() == -1) {
-        return localInteger;
-      }
-      return paramAdReportData.b();
-    }
-    return localInteger;
-  }
-  
-  public static String a(AdReportData paramAdReportData)
-  {
-    if (paramAdReportData == null) {
-      return null;
-    }
-    if (paramAdReportData.a() == null) {
-      return null;
-    }
-    return paramAdReportData.a().getLiujinReportUrl();
-  }
-  
-  public static Map<String, IReportObj> a(AdReportData paramAdReportData)
-  {
-    if (paramAdReportData == null) {
-      return null;
-    }
-    Class[] arrayOfClass = new Class[9];
-    int i = 0;
-    arrayOfClass[0] = AdLoadReportObj.class;
-    arrayOfClass[1] = AMSReportObj.class;
-    arrayOfClass[2] = AppReportObj.class;
-    arrayOfClass[3] = CommonReportObj.class;
-    arrayOfClass[4] = ControlReportObj.class;
-    arrayOfClass[5] = DeviceReportObj.class;
-    arrayOfClass[6] = GameReportObj.class;
-    arrayOfClass[7] = NFBReportObj.class;
-    arrayOfClass[8] = VideoReportObj.class;
-    HashMap localHashMap = new HashMap();
-    int j = arrayOfClass.length;
-    while (i < j)
-    {
-      IReportObj localIReportObj = a(paramAdReportData, arrayOfClass[i]);
-      if ((localIReportObj != null) && (localIReportObj.a())) {
-        localHashMap.put(localIReportObj.a(), localIReportObj);
-      }
-      i += 1;
-    }
-    return localHashMap;
+    return localObject;
   }
   
   public static boolean a(Context paramContext, String paramString)
@@ -223,31 +166,134 @@ public class AdReportUtil
     return false;
   }
   
-  public static String b(AdReportData paramAdReportData)
+  public static ActionEntity b(AdReportData paramAdReportData)
   {
-    if (paramAdReportData == null) {
-      return null;
+    if (paramAdReportData.v() != null) {
+      return paramAdReportData.v();
     }
-    if (paramAdReportData.a() == null) {
-      return null;
+    int i = paramAdReportData.d();
+    if (i == 32) {
+      return ActionEntity.PKMiddlePage;
     }
-    return paramAdReportData.a().getTicket();
+    if ((paramAdReportData.g() != null) && (ReadInJoyAdUtils.l(paramAdReportData.g())))
+    {
+      if (i == 37) {
+        return ActionEntity.OutSuperMask;
+      }
+      return ActionEntity.InnerSuperMask;
+    }
+    return ActionEntity.Default;
   }
   
-  public static String c(AdReportData paramAdReportData)
+  public static Map<String, IReportObj> c(AdReportData paramAdReportData)
   {
     if (paramAdReportData == null) {
       return null;
     }
-    if (paramAdReportData.a() == null) {
+    Class[] arrayOfClass = new Class[10];
+    int i = 0;
+    arrayOfClass[0] = AdInfoObj.class;
+    arrayOfClass[1] = AdLoadReportObj.class;
+    arrayOfClass[2] = AMSReportObj.class;
+    arrayOfClass[3] = AppReportObj.class;
+    arrayOfClass[4] = CommonReportObj.class;
+    arrayOfClass[5] = ControlReportObj.class;
+    arrayOfClass[6] = DeviceReportObj.class;
+    arrayOfClass[7] = GameReportObj.class;
+    arrayOfClass[8] = NFBReportObj.class;
+    arrayOfClass[9] = VideoReportObj.class;
+    HashMap localHashMap = new HashMap();
+    int j = arrayOfClass.length;
+    while (i < j)
+    {
+      IReportObj localIReportObj = a(paramAdReportData, arrayOfClass[i]);
+      if ((localIReportObj != null) && (localIReportObj.c())) {
+        localHashMap.put(localIReportObj.a(), localIReportObj);
+      }
+      i += 1;
+    }
+    return localHashMap;
+  }
+  
+  public static String d(AdReportData paramAdReportData)
+  {
+    if (paramAdReportData == null) {
       return null;
     }
-    return paramAdReportData.a().getAmsNfbUrl();
+    if (paramAdReportData.g() == null) {
+      return null;
+    }
+    return paramAdReportData.g().getLiujinReportUrl();
+  }
+  
+  public static String e(AdReportData paramAdReportData)
+  {
+    if (paramAdReportData == null) {
+      return null;
+    }
+    if (paramAdReportData.g() == null) {
+      return null;
+    }
+    return paramAdReportData.g().getTicket();
+  }
+  
+  public static String f(AdReportData paramAdReportData)
+  {
+    if (paramAdReportData == null) {
+      return null;
+    }
+    if (paramAdReportData.g() == null) {
+      return null;
+    }
+    return paramAdReportData.g().getAmsNfbUrl();
+  }
+  
+  public static Integer g(AdReportData paramAdReportData)
+  {
+    Integer localInteger = Integer.valueOf(0);
+    if (paramAdReportData == null) {
+      return localInteger;
+    }
+    if (paramAdReportData.w() != null)
+    {
+      if (paramAdReportData.w().intValue() == -1) {
+        return localInteger;
+      }
+      return paramAdReportData.w();
+    }
+    return localInteger;
+  }
+  
+  public static String h(AdReportData paramAdReportData)
+  {
+    if (paramAdReportData != null)
+    {
+      if (paramAdReportData.g() == null) {
+        return "";
+      }
+      if (TextUtils.isEmpty(paramAdReportData.g().mAdExtInfo)) {
+        return "";
+      }
+      try
+      {
+        paramAdReportData = new JSONObject(paramAdReportData.g().mAdExtInfo);
+        if (paramAdReportData.has("aindex"))
+        {
+          paramAdReportData = String.valueOf(paramAdReportData.opt("aindex"));
+          return paramAdReportData;
+        }
+      }
+      catch (JSONException paramAdReportData)
+      {
+        paramAdReportData.printStackTrace();
+      }
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil
  * JD-Core Version:    0.7.0.1
  */

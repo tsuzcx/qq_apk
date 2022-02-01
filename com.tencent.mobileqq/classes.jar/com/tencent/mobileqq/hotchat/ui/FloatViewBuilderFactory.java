@@ -5,14 +5,14 @@ import com.tencent.mobileqq.hotchat.anim.HeartAnimator;
 
 public class FloatViewBuilderFactory
 {
-  protected Context a;
   protected BaseFloatViewBuilder a;
   protected BaseFloatViewBuilder b;
   protected BaseFloatViewBuilder c;
+  protected Context d;
   
   public FloatViewBuilderFactory(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = paramContext;
   }
   
   public BaseFloatViewBuilder a(int paramInt, HeartAnimator paramHeartAnimator)
@@ -22,29 +22,29 @@ public class FloatViewBuilderFactory
       {
         if (paramInt != 3)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder == null) {
-            this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846076, paramHeartAnimator);
+          if (this.a == null) {
+            this.a = new FloatViewBuilder(this.d, 2130847546, paramHeartAnimator);
           }
-          return this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder;
+          return this.a;
         }
       }
       else
       {
         if (this.c == null) {
-          this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842689, paramHeartAnimator);
+          this.c = new PayLikeFloatViewBuilder(this.d, 2130843642, paramHeartAnimator);
         }
         return this.c;
       }
     }
     if (this.b == null) {
-      this.b = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846080, paramHeartAnimator);
+      this.b = new FloatViewBuilder(this.d, 2130847550, paramHeartAnimator);
     }
     return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.FloatViewBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

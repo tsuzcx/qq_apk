@@ -19,7 +19,7 @@ class QQValuePagView$1
     if (TextUtils.isEmpty(QQValuePagView.a(this.a))) {
       return false;
     }
-    boolean bool = QQValuePagView.a(this.a);
+    boolean bool = QQValuePagView.b(this.a);
     int i = QQValuePagView.a(this.a, 0, bool);
     if (i == 1) {
       str = "up";
@@ -29,7 +29,7 @@ class QQValuePagView$1
       str = "nochange";
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(QQValuePagView.a(this.a).c);
+    ((StringBuilder)localObject).append(QQValuePagView.c(this.a).h);
     ((StringBuilder)localObject).append(str);
     String str = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
@@ -68,7 +68,7 @@ class QQValuePagView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView.1
  * JD-Core Version:    0.7.0.1
  */

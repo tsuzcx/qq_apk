@@ -9,11 +9,11 @@ import android.widget.TextView;
 public class WaitTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WaitTextView.RefreshListener jdField_a_of_type_ComDatalineUtilWidgetWaitTextView$RefreshListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new WaitTextView.1(this);
-  private String jdField_a_of_type_JavaLangString;
+  private Handler a;
+  private String b;
+  private int c = 0;
+  private WaitTextView.RefreshListener d;
+  private Runnable e = new WaitTextView.1(this);
   
   public WaitTextView(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class WaitTextView
   
   private void c()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.c;
     if (i != 0)
     {
       if (i != 1)
@@ -40,63 +40,63 @@ public class WaitTextView
         if (i != 2)
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.b);
           localStringBuilder.append("...");
           setText(localStringBuilder.toString());
-          this.jdField_a_of_type_Int = 0;
+          this.c = 0;
           return;
         }
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(".. ");
         setText(localStringBuilder.toString());
-        this.jdField_a_of_type_Int += 1;
+        this.c += 1;
         return;
       }
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(".  ");
       setText(localStringBuilder.toString());
-      this.jdField_a_of_type_Int += 1;
+      this.c += 1;
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("   ");
     setText(localStringBuilder.toString());
-    this.jdField_a_of_type_Int += 1;
+    this.c += 1;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+      this.a = new Handler(Looper.getMainLooper());
+      this.a.postDelayed(this.e, 500L);
     }
   }
   
   public void b()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null)
     {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      localHandler.removeCallbacks(this.e);
+      this.a = null;
     }
   }
   
   public void setRefreshListener(WaitTextView.RefreshListener paramRefreshListener)
   {
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView$RefreshListener = paramRefreshListener;
+    this.d = paramRefreshListener;
   }
   
   public void setWaitText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = 0;
+    this.b = paramString;
+    this.c = 0;
     paramString = new StringBuilder();
-    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.b);
     paramString.append("   ");
     setText(paramString.toString());
   }

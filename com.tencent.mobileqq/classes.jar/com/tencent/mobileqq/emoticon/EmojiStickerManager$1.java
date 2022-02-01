@@ -23,7 +23,7 @@ class EmojiStickerManager$1
     if ((localObject1 instanceof QQAppInterface))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-      localObject1 = ((List)((ArrayList)this.this$0.jdField_a_of_type_JavaUtilList).clone()).iterator();
+      localObject1 = ((List)((ArrayList)this.this$0.E).clone()).iterator();
       boolean bool1;
       Object localObject3;
       for (;;)
@@ -34,27 +34,27 @@ class EmojiStickerManager$1
           break;
         }
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        localObject3 = EmojiStickerManager.a((MessageRecord)localObject2);
+        localObject3 = EmojiStickerManager.d((MessageRecord)localObject2);
         if ((localObject3 != null) && (!((StickerInfo)localObject3).isDisplayed))
         {
           ((StickerInfo)localObject3).isDisplayed = true;
           EmojiStickerManager.a(localQQAppInterface, (MessageRecord)localObject2, (StickerInfo)localObject3);
         }
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      localObject1 = this.a;
       if (localObject1 == null) {
-        localObject1 = localQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        localObject1 = localQQAppInterface.getMessageFacade().b(this.b, this.c, this.d);
       }
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        localObject3 = EmojiStickerManager.a((MessageRecord)localObject2);
+        localObject3 = EmojiStickerManager.d((MessageRecord)localObject2);
         if ((localObject3 != null) && (((StickerInfo)localObject3).isShown)) {
           EmojiStickerManager.a(localQQAppInterface, (MessageRecord)localObject2, (StickerInfo)localObject3);
         }
       }
-      Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject2 = this.this$0.m.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Bundle)((Iterator)localObject2).next();
@@ -68,28 +68,28 @@ class EmojiStickerManager$1
         }
         VasWebviewUtil.a("", "Stick", ((Bundle)localObject3).getString("key"), (String)localObject1, 1, 0, 0, null, ((Bundle)localObject3).getString("ext1"), ((Bundle)localObject3).getString("ext2"));
       }
-      this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-      localObject1 = new File(EmojiStickerManager.a());
+      this.this$0.m.clear();
+      localObject1 = new File(EmojiStickerManager.c());
       if (((File)localObject1).exists())
       {
         localObject1 = ((File)localObject1).list();
         if ((localObject1 == null) || (localObject1.length <= 1)) {
           bool1 = false;
         }
-        EmojiStickerManager.h = bool1;
+        EmojiStickerManager.v = bool1;
         return;
       }
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(EmojiStickerManager.a());
+      ((StringBuilder)localObject1).append(EmojiStickerManager.c());
       ((StringBuilder)localObject1).append("emojiStickerGuideZip_v2.zip");
       VasUpdateUtil.a(localQQAppInterface, 1004L, "emojiStickerGuideZip_v2", ((StringBuilder)localObject1).toString(), true, null);
-      EmojiStickerManager.h = false;
+      EmojiStickerManager.v = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,19 +23,19 @@ import org.json.JSONObject;
 public class AdQQMiniGameVideoProteusItem
   implements IAdMiniGamePts, ProteusItem
 {
-  private int jdField_a_of_type_Int;
-  private ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private ViewBase jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  private String jdField_b_of_type_JavaLangString;
+  private int a;
+  private IReadInJoyModel b;
+  private ViewBase c;
+  private boolean d;
+  private String e;
+  private ViewBase f;
+  private String g;
   
   private void a(ViewBase paramViewBase, boolean paramBoolean)
   {
     if (paramViewBase != null)
     {
-      AdMiniGameGuideManager.a.a(paramViewBase, paramBoolean, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), this.jdField_a_of_type_Int);
+      AdMiniGameGuideManager.a.a(paramViewBase, paramBoolean, this.b.k(), this.a);
       if (!paramBoolean) {
         ThreadManager.getUIHandler().post(new AdQQMiniGameVideoProteusItem.1(this));
       }
@@ -46,9 +46,9 @@ public class AdQQMiniGameVideoProteusItem
   {
     if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.smallGameData)) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null))
     {
-      this.jdField_a_of_type_Boolean = (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.t) ^ true);
-      this.jdField_a_of_type_JavaLangString = paramAbsBaseArticleInfo.mSmallMiniGameInfo.s;
-      this.jdField_b_of_type_JavaLangString = paramAbsBaseArticleInfo.mSmallMiniGameInfo.j;
+      this.d = (TextUtils.isEmpty(paramAbsBaseArticleInfo.mSmallMiniGameInfo.w) ^ true);
+      this.e = paramAbsBaseArticleInfo.mSmallMiniGameInfo.v;
+      this.g = paramAbsBaseArticleInfo.mSmallMiniGameInfo.m;
     }
   }
   
@@ -64,18 +64,18 @@ public class AdQQMiniGameVideoProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-    this.jdField_a_of_type_Int = paramInt2;
-    a(paramIReadInJoyModel.a());
+    this.b = paramIReadInJoyModel;
+    this.a = paramInt2;
+    a(paramIReadInJoyModel.k());
     AdMiniGameGuideManager.a.a(this);
     paramContainer = paramContainer.getVirtualView();
     ViewBase localViewBase = paramContainer.findViewBaseByName("id_large_video_icon");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramContainer.findViewBaseByName("id_game_follow_btn");
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramContainer.findViewBaseByName("id_img_container");
+    this.c = paramContainer.findViewBaseByName("id_game_follow_btn");
+    this.f = paramContainer.findViewBaseByName("id_img_container");
     if (localViewBase != null) {
       localViewBase.setVisibility(0);
     }
-    if (ReadInJoyAdUtils.j(paramIReadInJoyModel.a()))
+    if (ReadInJoyAdUtils.k(paramIReadInJoyModel.k()))
     {
       paramIReadInJoyModel = paramContainer.findViewBaseByName("id_large_video_cover");
       if (paramIReadInJoyModel != null) {
@@ -93,7 +93,7 @@ public class AdQQMiniGameVideoProteusItem
         localViewBase.setVisibility(8);
       }
     }
-    else if (ReadInJoyAdUtils.h(paramIReadInJoyModel.a()))
+    else if (ReadInJoyAdUtils.i(paramIReadInJoyModel.k()))
     {
       paramInt1 = Aladdin.getConfig(318).getIntegerFromString("small_game_large_card_new_style", 0);
       boolean bool = true;
@@ -104,7 +104,7 @@ public class AdQQMiniGameVideoProteusItem
       localStringBuilder.append("small game card is new style:");
       localStringBuilder.append(bool);
       QLog.d("AdQQMiniGameVideoProteusItem", 2, localStringBuilder.toString());
-      if ((bool) && (paramIReadInJoyModel.a() != null) && (paramIReadInJoyModel.a().mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramIReadInJoyModel.a().mSmallMiniGameInfo.d)))
+      if ((bool) && (paramIReadInJoyModel.k() != null) && (paramIReadInJoyModel.k().mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramIReadInJoyModel.k().mSmallMiniGameInfo.d)))
       {
         if (localViewBase != null) {
           localViewBase.setVisibility(8);
@@ -140,16 +140,16 @@ public class AdQQMiniGameVideoProteusItem
       localStringBuilder.append("anim move video::animMove::");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("guide ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("gameId");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.g);
       QLog.d("minigame", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, paramBoolean);
+    if ((paramString != null) && (paramString.equals(this.g))) {
+      a(this.f, paramBoolean);
     }
   }
   
@@ -160,7 +160,7 @@ public class AdQQMiniGameVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

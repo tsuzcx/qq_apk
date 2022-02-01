@@ -25,14 +25,14 @@ class YearGridAdapter
   }
   
   @NonNull
-  private View.OnClickListener a(int paramInt)
+  private View.OnClickListener c(int paramInt)
   {
     return new YearGridAdapter.1(this, paramInt);
   }
   
   int a(int paramInt)
   {
-    return paramInt - this.a.a().a().b;
+    return paramInt - this.a.b().b().b;
   }
   
   @NonNull
@@ -47,14 +47,14 @@ class YearGridAdapter
     Object localObject = paramViewHolder.a.getContext().getString(R.string.E);
     paramViewHolder.a.setText(String.format(Locale.getDefault(), "%d", new Object[] { Integer.valueOf(paramInt) }));
     paramViewHolder.a.setContentDescription(String.format((String)localObject, new Object[] { Integer.valueOf(paramInt) }));
-    CalendarStyle localCalendarStyle = this.a.a();
-    Calendar localCalendar = UtcDates.a();
+    CalendarStyle localCalendarStyle = this.a.d();
+    Calendar localCalendar = UtcDates.b();
     if (localCalendar.get(1) == paramInt) {
       localObject = localCalendarStyle.f;
     } else {
       localObject = localCalendarStyle.d;
     }
-    Iterator localIterator = this.a.a().a().iterator();
+    Iterator localIterator = this.a.c().c().iterator();
     while (localIterator.hasNext())
     {
       localCalendar.setTimeInMillis(((Long)localIterator.next()).longValue());
@@ -63,22 +63,22 @@ class YearGridAdapter
       }
     }
     ((CalendarItemStyle)localObject).a(paramViewHolder.a);
-    paramViewHolder.a.setOnClickListener(a(paramInt));
+    paramViewHolder.a.setOnClickListener(c(paramInt));
   }
   
   int b(int paramInt)
   {
-    return this.a.a().a().b + paramInt;
+    return this.a.b().b().b + paramInt;
   }
   
   public int getItemCount()
   {
-    return this.a.a().b();
+    return this.a.b().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.YearGridAdapter
  * JD-Core Version:    0.7.0.1
  */

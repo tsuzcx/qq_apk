@@ -17,17 +17,17 @@ import org.json.JSONObject;
 public final class VideoColumnBusinessObserver
   implements BusinessObserver
 {
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private WeakReference<VideoColumnDataManager> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<VideoColumnDataManager> a;
   @NotNull
   private final String b;
+  @NotNull
+  private final String c;
   
   public VideoColumnBusinessObserver(@NotNull VideoColumnDataManager paramVideoColumnDataManager, @NotNull String paramString1, @NotNull String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoColumnDataManager);
+    this.b = paramString1;
+    this.c = paramString2;
+    this.a = new WeakReference(paramVideoColumnDataManager);
   }
   
   private final JSONObject a(byte[] paramArrayOfByte)
@@ -41,7 +41,7 @@ public final class VideoColumnBusinessObserver
   
   private final void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = (VideoColumnDataManager)((WeakReference)localObject).get();
@@ -53,12 +53,12 @@ public final class VideoColumnBusinessObserver
   
   private final void a(JSONObject paramJSONObject)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = (VideoColumnDataManager)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((VideoColumnDataManager)localObject).a(this.jdField_a_of_type_JavaLangString, paramJSONObject);
+        ((VideoColumnDataManager)localObject).a(this.b, paramJSONObject);
       }
     }
   }
@@ -89,18 +89,18 @@ public final class VideoColumnBusinessObserver
     {
       paramBundle = new StringBuilder();
       paramBundle.append("request error, topicId: ");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
-      paramBundle.append(", rowKey: ");
       paramBundle.append(this.b);
+      paramBundle.append(", rowKey: ");
+      paramBundle.append(this.c);
       QLog.e("VideoColumnDataManager", 1, paramBundle.toString());
     }
     label123:
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

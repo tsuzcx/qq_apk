@@ -9,29 +9,29 @@ class StoryShare$3
 {
   StoryShare$3(StoryShare paramStoryShare) {}
   
-  public void a()
+  public void b(int paramInt)
+  {
+    StoryShare.d(this.a).c(paramInt);
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a(paramInt);
+    }
+  }
+  
+  public void c()
   {
     if (StoryShare.a(this.a) != null) {
       StoryShare.a(this.a).b();
     }
   }
   
-  public void a(int paramInt)
-  {
-    StoryShare.a(this.a).a(paramInt);
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void b()
+  public void d()
   {
     if (StoryShare.a(this.a) != null) {
       StoryShare.a(this.a).c();
     }
   }
   
-  public void c()
+  public void e()
   {
     if (StoryShare.a(this.a) != null) {
       StoryShare.a(this.a).d(-1);
@@ -40,7 +40,7 @@ class StoryShare$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.StoryShare.3
  * JD-Core Version:    0.7.0.1
  */

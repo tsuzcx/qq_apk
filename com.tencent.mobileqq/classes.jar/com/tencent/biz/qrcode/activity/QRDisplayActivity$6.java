@@ -28,11 +28,11 @@ class QRDisplayActivity$6
   public void run()
   {
     int j = (int)(QRDisplayActivity.a(this.this$0) * 20.0F);
-    int i = this.this$0.jdField_c_of_type_AndroidViewView.getWidth();
+    int i = this.this$0.c.getWidth();
     j *= 2;
     int k = i - j;
-    int m = this.this$0.jdField_c_of_type_AndroidViewView.getHeight() - j;
-    i = this.this$0.jdField_c_of_type_Int;
+    int m = this.this$0.c.getHeight() - j;
+    i = this.this$0.t;
     if ((i != 1) && (i != 2))
     {
       i = 540;
@@ -46,8 +46,8 @@ class QRDisplayActivity$6
     if ((k >= i) && (m >= j))
     {
       localObject1 = this.this$0;
-      ((QRDisplayActivity)localObject1).jdField_d_of_type_Int = i;
-      ((QRDisplayActivity)localObject1).jdField_e_of_type_Int = j;
+      ((QRDisplayActivity)localObject1).v = i;
+      ((QRDisplayActivity)localObject1).w = j;
     }
     else
     {
@@ -56,7 +56,7 @@ class QRDisplayActivity$6
       if (k * i < m * i)
       {
         localObject1 = this.this$0;
-        ((QRDisplayActivity)localObject1).jdField_d_of_type_Int = k;
+        ((QRDisplayActivity)localObject1).v = k;
         d1 = k;
         d2 = i;
         Double.isNaN(d1);
@@ -64,7 +64,7 @@ class QRDisplayActivity$6
         d1 /= d2;
         d2 = j;
         Double.isNaN(d2);
-        ((QRDisplayActivity)localObject1).jdField_e_of_type_Int = ((int)(d1 * d2));
+        ((QRDisplayActivity)localObject1).w = ((int)(d1 * d2));
       }
       else
       {
@@ -76,55 +76,55 @@ class QRDisplayActivity$6
         d1 /= d2;
         d2 = i;
         Double.isNaN(d2);
-        ((QRDisplayActivity)localObject1).jdField_d_of_type_Int = ((int)(d1 * d2));
-        ((QRDisplayActivity)localObject1).jdField_e_of_type_Int = m;
+        ((QRDisplayActivity)localObject1).v = ((int)(d1 * d2));
+        ((QRDisplayActivity)localObject1).w = m;
       }
-      localObject1 = this.this$0.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = this.this$0.jdField_d_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject1).height = this.this$0.jdField_e_of_type_Int;
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.this$0.jdField_d_of_type_AndroidViewView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = this.this$0.jdField_d_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject1).height = this.this$0.jdField_e_of_type_Int;
-      this.this$0.jdField_d_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = this.this$0.d.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).width = this.this$0.v;
+      ((ViewGroup.LayoutParams)localObject1).height = this.this$0.w;
+      this.this$0.d.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = this.this$0.I.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).width = this.this$0.v;
+      ((ViewGroup.LayoutParams)localObject1).height = this.this$0.w;
+      this.this$0.I.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject1 = this.this$0.j;
     i = 0;
     if (localObject1 == null) {
       ThreadManager.post(new QRDisplayActivity.6.1(this), 8, null, false);
     }
-    if ((this.this$0.jdField_c_of_type_Int == 2) && (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((this.this$0.t == 2) && (this.this$0.j != null))
     {
       localObject1 = this.this$0;
-      ((QRDisplayActivity)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(((QRDisplayActivity)localObject1).jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);
+      ((QRDisplayActivity)localObject1).j = ImageUtil.a(((QRDisplayActivity)localObject1).j, 50, 50);
     }
-    if (this.this$0.jdField_a_of_type_AndroidOsBundle == null)
+    if (this.this$0.u == null)
     {
-      this.this$0.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
-      this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
+      this.this$0.u = new Bundle();
+      this.this$0.u.putInt("bkgRes", 0);
+      this.this$0.u.putInt("nameClr", -16777216);
+      this.this$0.u.putInt("tipsClr", -8947849);
+      this.this$0.u.putInt("B", -16777216);
+      this.this$0.u.putInt("W", 16777215);
+      this.this$0.u.putParcelable("qrloc", new Rect(45, 76, 495, 526));
+      this.this$0.u.putInt("head", 1);
     }
     Object localObject2;
     Object localObject3;
-    if (this.this$0.jdField_c_of_type_Int != 5)
+    if (this.this$0.t != 5)
     {
-      if (this.this$0.jdField_c_of_type_Int == 11)
+      if (this.this$0.t == 11)
       {
         localObject1 = this.this$0.getIntent().getStringExtra("url");
         localObject2 = this.this$0;
-        ((QRDisplayActivity)localObject2).a(((QRDisplayActivity)localObject2).jdField_c_of_type_JavaLangString, this.this$0.jdField_c_of_type_Int, (String)localObject1);
+        ((QRDisplayActivity)localObject2).a(((QRDisplayActivity)localObject2).n, this.this$0.t, (String)localObject1);
       }
-      if (this.this$0.jdField_a_of_type_ComGoogleZxingCommonBitMatrix == null)
+      if (this.this$0.e == null)
       {
         localObject1 = this.this$0;
-        ((QRDisplayActivity)localObject1).jdField_a_of_type_ComGoogleZxingCommonBitMatrix = ((QRDisplayActivity)localObject1).a(((QRDisplayActivity)localObject1).jdField_c_of_type_JavaLangString, this.this$0.jdField_c_of_type_Int, -1);
+        ((QRDisplayActivity)localObject1).e = ((QRDisplayActivity)localObject1).a(((QRDisplayActivity)localObject1).n, this.this$0.t, -1);
       }
-      if ((this.this$0.jdField_a_of_type_ComGoogleZxingCommonBitMatrix != null) && (this.this$0.jdField_c_of_type_Int != 2))
+      if ((this.this$0.e != null) && (this.this$0.t != 2))
       {
         this.this$0.h();
       }
@@ -134,10 +134,10 @@ class QRDisplayActivity$6
           QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
         }
         localObject2 = this.this$0.getIntent();
-        if (this.this$0.jdField_c_of_type_Boolean)
+        if (this.this$0.i)
         {
           localObject1 = ((Intent)localObject2).getStringExtra("groupOwner");
-          ((QidianHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).b(this.this$0.jdField_c_of_type_JavaLangString, (String)localObject1);
+          ((QidianHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).b(this.this$0.n, (String)localObject1);
           return;
         }
         localObject3 = (TicketManager)this.this$0.app.getManager(2);
@@ -146,9 +146,9 @@ class QRDisplayActivity$6
         String str = ((Intent)localObject2).getStringExtra("uin");
         i = ((Intent)localObject2).getIntExtra("type", 1);
         localObject2 = new QRDisplayActivity.QRCodeEncodeCallbackImp(null);
-        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.this$0);
-        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).jdField_a_of_type_Int = i;
-        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).jdField_a_of_type_JavaLangString = str;
+        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).a = new WeakReference(this.this$0);
+        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).c = i;
+        ((QRDisplayActivity.QRCodeEncodeCallbackImp)localObject2).b = str;
         QRUtils.a(this.this$0.app, this.this$0, str, i, (String)localObject1, (String)localObject3, 0, (QRCodeEncodeCallback)localObject2);
       }
     }
@@ -158,37 +158,37 @@ class QRDisplayActivity$6
       localObject2 = this.this$0;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("discussionvalidtime");
-      ((StringBuilder)localObject3).append(this.this$0.jdField_c_of_type_JavaLangString);
-      ((QRDisplayActivity)localObject2).jdField_b_of_type_Long = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject3).toString(), 0L);
+      ((StringBuilder)localObject3).append(this.this$0.n);
+      ((QRDisplayActivity)localObject2).G = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject3).toString(), 0L);
       localObject2 = this.this$0;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("discussion");
-      ((StringBuilder)localObject3).append(this.this$0.jdField_c_of_type_JavaLangString);
-      ((QRDisplayActivity)localObject2).jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), null);
+      ((StringBuilder)localObject3).append(this.this$0.n);
+      ((QRDisplayActivity)localObject2).o = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), null);
       localObject2 = this.this$0;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("discussionfullSig");
-      ((StringBuilder)localObject3).append(this.this$0.jdField_c_of_type_JavaLangString);
-      ((QRDisplayActivity)localObject2).jdField_e_of_type_JavaLangString = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), null);
-      if (this.this$0.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {
+      ((StringBuilder)localObject3).append(this.this$0.n);
+      ((QRDisplayActivity)localObject2).p = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), null);
+      if (this.this$0.G - System.currentTimeMillis() / 1000L > 0L) {
         i = 1;
       }
-      this.this$0.findViewById(2131374680).setOnClickListener(this.this$0);
-      if ((this.this$0.jdField_d_of_type_JavaLangString == null) || (this.this$0.jdField_e_of_type_JavaLangString == null) || (i == 0)) {
-        break label1202;
+      this.this$0.findViewById(2131442861).setOnClickListener(this.this$0);
+      if ((this.this$0.o == null) || (this.this$0.p == null) || (i == 0)) {
+        break label1203;
       }
-      ((TextView)this.this$0.findViewById(2131373750)).setText(this.this$0.jdField_d_of_type_JavaLangString);
+      ((TextView)this.this$0.findViewById(2131441424)).setText(this.this$0.o);
       localObject1 = this.this$0;
-      ((QRDisplayActivity)localObject1).jdField_a_of_type_ComGoogleZxingCommonBitMatrix = QRUtils.a(((QRDisplayActivity)localObject1).jdField_d_of_type_JavaLangString, -1);
+      ((QRDisplayActivity)localObject1).e = QRUtils.a(((QRDisplayActivity)localObject1).o, -1);
       this.this$0.h();
     }
-    this.this$0.jdField_b_of_type_AndroidViewView.post(this.this$0.jdField_b_of_type_JavaLangRunnable);
+    this.this$0.b.post(this.this$0.aH);
     return;
-    label1202:
+    label1203:
     if (QLog.isDevelopLevel()) {
       QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.this$0.jdField_c_of_type_JavaLangString), true);
+    this.this$0.C.a(Long.parseLong(this.this$0.n), true);
   }
 }
 

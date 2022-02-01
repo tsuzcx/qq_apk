@@ -28,7 +28,7 @@ public class MultiColorNoteGenerator
   
   private String a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     return new QQText(paramString, 5).toPlainText(false);
@@ -37,7 +37,7 @@ public class MultiColorNoteGenerator
   int a(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     if (paramSessionInfo != null) {
-      return ((Integer)RecentFaceDecoder.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString).first).intValue();
+      return ((Integer)RecentFaceDecoder.a(paramQQAppInterface, paramSessionInfo.a, paramSessionInfo.b).first).intValue();
     }
     return 4;
   }
@@ -50,20 +50,20 @@ public class MultiColorNoteGenerator
       if (paramLong != -1L)
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.a.getApplication().getString(2131689969));
+        ((StringBuilder)localObject1).append(this.a.getApplication().getString(2131886610));
         ((StringBuilder)localObject1).append(": ");
         ((StringBuilder)localObject1).append(DateUtils.a(paramLong));
         str = ((StringBuilder)localObject1).toString();
       }
       else
       {
-        str = this.a.getApplication().getString(2131689968);
+        str = this.a.getApplication().getString(2131886609);
       }
       Object localObject4 = (MessageRecord)paramList.get(0);
       Object localObject1 = ((MessageRecord)localObject4).frienduin;
-      int i = paramSessionInfo.jdField_a_of_type_Int;
+      int i = paramSessionInfo.a;
       int j = 1;
-      if ((i != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
+      if ((i != 1) && (paramSessionInfo.a != 3000)) {
         i = 1;
       } else {
         i = 0;
@@ -75,15 +75,15 @@ public class MultiColorNoteGenerator
         localObject2 = localObject1;
       }
       Object localObject3 = localObject2;
-      if (TextUtils.equals(paramSessionInfo.jdField_a_of_type_JavaLangString, QFileAssistantUtils.a(this.a))) {
-        localObject3 = QFileAssistantUtils.a(this.a);
+      if (TextUtils.equals(paramSessionInfo.b, QFileAssistantUtils.b(this.a))) {
+        localObject3 = QFileAssistantUtils.b(this.a);
       }
       if (i != 0) {
         localObject2 = ContactUtils.d(this.a, (String)localObject3);
-      } else if (paramSessionInfo.d == null) {
+      } else if (paramSessionInfo.e == null) {
         localObject2 = localObject1;
       } else {
-        localObject2 = paramSessionInfo.d;
+        localObject2 = paramSessionInfo.e;
       }
       if (paramList.size() != 1)
       {
@@ -103,8 +103,8 @@ public class MultiColorNoteGenerator
         localObject2 = UpComingMsgUtil.a(this.a, (MessageRecord)localObject4);
       }
       label380:
-      if (paramSessionInfo.d != null) {
-        localObject1 = paramSessionInfo.d;
+      if (paramSessionInfo.e != null) {
+        localObject1 = paramSessionInfo.e;
       }
       localObject1 = a(paramSessionInfo, (String)localObject1);
       localObject4 = new Uri.Builder().scheme("uindrawable");
@@ -115,7 +115,7 @@ public class MultiColorNoteGenerator
       }
       localObject3 = ((Uri.Builder)localObject4).appendQueryParameter("type", String.valueOf(i)).appendQueryParameter("uin", (String)localObject3).toString();
       localObject4 = new ColorNote.Builder();
-      ((ColorNote.Builder)localObject4).a(17235968).a(UpComingMsgUtil.a(paramLong)).b(0).b((String)localObject2).c(str).d((String)localObject3).a(a(paramList, paramInt, (String)localObject1, paramSessionInfo.b));
+      ((ColorNote.Builder)localObject4).a(17235968).a(UpComingMsgUtil.a(paramLong)).b(0).b((String)localObject2).c(str).d((String)localObject3).a(a(paramList, paramInt, (String)localObject1, paramSessionInfo.c));
       return ((ColorNote.Builder)localObject4).a();
     }
     return null;
@@ -123,7 +123,7 @@ public class MultiColorNoteGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.MultiColorNoteGenerator
  * JD-Core Version:    0.7.0.1
  */

@@ -35,28 +35,28 @@ public class NewPhotoSelectedThumbAdapter
   extends BaseAdapter
   implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  PhotoPreviewCustomizationDefault jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b;
-  private int c;
-  private int d;
+  PhotoPreviewCustomizationDefault a;
+  private ColorDrawable b;
+  private Drawable c;
+  private ArrayList<String> d = new ArrayList();
   private int e;
   private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
   public NewPhotoSelectedThumbAdapter(PhotoPreviewCustomizationDefault paramPhotoPreviewCustomizationDefault)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault = paramPhotoPreviewCustomizationDefault;
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources().getDrawable(2130848074);
-    this.jdField_a_of_type_Int = Utils.a(63.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
-    this.b = Utils.a(55.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
-    this.c = Utils.a(26.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
-    this.d = Utils.a(19.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
-    this.e = Utils.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
-    this.f = Utils.a(1.0F, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getResources());
+    this.a = paramPhotoPreviewCustomizationDefault;
+    this.b = new ColorDrawable(570425344);
+    this.c = this.a.c.getResources().getDrawable(2130849738);
+    this.e = Utils.a(63.0F, this.a.c.getResources());
+    this.f = Utils.a(55.0F, this.a.c.getResources());
+    this.g = Utils.a(26.0F, this.a.c.getResources());
+    this.h = Utils.a(19.0F, this.a.c.getResources());
+    this.i = Utils.a(8.0F, this.a.c.getResources());
+    this.j = Utils.a(1.0F, this.a.c.getResources());
   }
   
   public static URL a(LocalMediaInfo paramLocalMediaInfo, String paramString)
@@ -85,7 +85,7 @@ public class NewPhotoSelectedThumbAdapter
   
   public LocalMediaInfo a(String paramString)
   {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a(paramString);
+    LocalMediaInfo localLocalMediaInfo = this.a.i.c(paramString);
     paramString = localLocalMediaInfo;
     if (localLocalMediaInfo == null)
     {
@@ -97,20 +97,20 @@ public class NewPhotoSelectedThumbAdapter
   
   public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.d = paramArrayList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.d.size();
   }
   
   public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.d;
     if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
-      return (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return (String)this.d.get(paramInt);
     }
     return null;
   }
@@ -127,24 +127,24 @@ public class NewPhotoSelectedThumbAdapter
     if (paramView == null)
     {
       localHolder = new NewPhotoSelectedThumbAdapter.Holder(this);
-      localObject1 = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity);
-      localHolder.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity);
-      localHolder.jdField_a_of_type_ComTencentImageURLImageView.setPadding(this.e, 0, 0, 0);
+      localObject1 = new RelativeLayout(this.a.c);
+      localHolder.a = new URLImageView(this.a.c);
+      localHolder.a.setPadding(this.i, 0, 0, 0);
       paramView = (RelativeLayout)localObject1;
-      paramView.addView(localHolder.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_Int, this.b);
-      localHolder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity);
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setPadding(this.e, 0, 0, 0);
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841554);
-      paramView.addView(localHolder.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, this.b);
-      localHolder.b = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity);
-      localHolder.b.setImageResource(2130839350);
-      localHolder.b.setPadding(this.e, 0, 0, this.f);
-      localObject2 = new RelativeLayout.LayoutParams(this.c, this.d);
+      paramView.addView(localHolder.a, this.e, this.f);
+      localHolder.b = new ImageView(this.a.c);
+      localHolder.b.setPadding(this.i, 0, 0, 0);
+      localHolder.b.setImageResource(2130842447);
+      paramView.addView(localHolder.b, this.e, this.f);
+      localHolder.c = new ImageView(this.a.c);
+      localHolder.c.setImageResource(2130839532);
+      localHolder.c.setPadding(this.i, 0, 0, this.j);
+      localObject2 = new RelativeLayout.LayoutParams(this.g, this.h);
       ((RelativeLayout.LayoutParams)localObject2).addRule(12);
       ((RelativeLayout.LayoutParams)localObject2).addRule(9);
-      localHolder.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localHolder.b.setVisibility(4);
-      paramView.addView(localHolder.b);
+      localHolder.c.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localHolder.c.setVisibility(4);
+      paramView.addView(localHolder.c);
       ((View)localObject1).setTag(localHolder);
     }
     else
@@ -159,10 +159,10 @@ public class NewPhotoSelectedThumbAdapter
     }
     LocalMediaInfo localLocalMediaInfo = a((String)localObject2);
     localLocalMediaInfo.path = ((String)localObject2);
-    int i = this.b;
-    localLocalMediaInfo.thumbWidth = i;
-    localLocalMediaInfo.thumbHeight = i;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.a().getItem(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.a().a());
+    int k = this.f;
+    localLocalMediaInfo.thumbWidth = k;
+    localLocalMediaInfo.thumbHeight = k;
+    paramView = this.a.s().getItem(this.a.s().m());
     Object localObject4 = null;
     if ((paramView != null) && (paramView.baseData != null)) {
       paramView = paramView.baseData.filePath;
@@ -171,21 +171,21 @@ public class NewPhotoSelectedThumbAdapter
     }
     if (paramView != null)
     {
-      localObject3 = localHolder.jdField_a_of_type_AndroidWidgetImageView;
+      localObject3 = localHolder.b;
       if (paramView.equals(localObject2)) {
-        i = 0;
+        k = 0;
       } else {
-        i = 4;
+        k = 4;
       }
-      ((ImageView)localObject3).setVisibility(i);
+      ((ImageView)localObject3).setVisibility(k);
     }
     else
     {
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localHolder.b.setVisibility(4);
     }
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a((String)localObject2);
-    i = 1;
-    if (j == 1)
+    int m = this.a.i.b((String)localObject2);
+    k = 1;
+    if (m == 1)
     {
       if (localLocalMediaInfo.isSystemMeidaStore) {
         paramView = a(localLocalMediaInfo, "VIDEO");
@@ -206,19 +206,19 @@ public class NewPhotoSelectedThumbAdapter
       }
       paramView = null;
     }
-    i = 0;
+    k = 0;
     Object localObject3 = paramView;
     label531:
-    if ((localObject3 != null) || (i != 0))
+    if ((localObject3 != null) || (k != 0))
     {
-      URLDrawable localURLDrawable = localHolder.jdField_a_of_type_ComTencentImageURLDrawable;
-      if (i != 0)
+      URLDrawable localURLDrawable = localHolder.d;
+      if (k != 0)
       {
         paramView = URLDrawable.URLDrawableOptions.obtain();
-        i = this.b;
-        paramView.mRequestWidth = i;
-        paramView.mRequestHeight = i;
-        paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        k = this.f;
+        paramView.mRequestWidth = k;
+        paramView.mRequestHeight = k;
+        paramView.mLoadingDrawable = this.b;
         paramView = URLDrawable.getDrawable(SharpPUtils.getWebpUrl((String)localObject2), paramView);
       }
       else if (localURLDrawable != null)
@@ -228,18 +228,18 @@ public class NewPhotoSelectedThumbAdapter
       }
       else
       {
-        paramView = QQAlbumUtils.a((URL)localObject3, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramView = QQAlbumUtils.a((URL)localObject3, this.b, this.c);
       }
       if (paramView != null)
       {
         paramView.setTag(localLocalMediaInfo);
-        localHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
-        localHolder.jdField_a_of_type_ComTencentImageURLDrawable = paramView;
+        localHolder.a.setImageDrawable(paramView);
+        localHolder.d = paramView;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.f.containsValue(localObject2)) {
-        localHolder.b.setVisibility(0);
+      if (this.a.d.z.containsValue(localObject2)) {
+        localHolder.c.setVisibility(0);
       } else {
-        localHolder.b.setVisibility(4);
+        localHolder.c.setVisibility(4);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
@@ -248,13 +248,13 @@ public class NewPhotoSelectedThumbAdapter
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.jdField_a_of_type_JavaUtilArrayList.indexOf(str);
-    if (i >= 0)
+    String str = (String)this.d.get(paramInt);
+    int k = this.a.d.y.indexOf(str);
+    if (k >= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.browserModel.setSelectedIndex(i);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a.scrollToCurrentPosition();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewCustomizationDefault.a(i);
+      this.a.i.browserModel.setSelectedIndex(k);
+      this.a.i.a.scrollToCurrentPosition();
+      this.a.a(k);
       notifyDataSetChanged();
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
@@ -262,7 +262,7 @@ public class NewPhotoSelectedThumbAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoSelectedThumbAdapter
  * JD-Core Version:    0.7.0.1
  */

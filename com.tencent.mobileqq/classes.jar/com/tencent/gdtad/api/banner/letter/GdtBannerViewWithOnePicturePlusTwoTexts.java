@@ -16,12 +16,12 @@ final class GdtBannerViewWithOnePicturePlusTwoTexts
   extends LinearLayout
   implements GdtBannerView
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GdtBannerImageView jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView;
-  private int jdField_b_of_type_Int = -2147483648;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int a = -2147483648;
+  private int b = -2147483648;
+  private GdtBannerImageView c;
+  private LinearLayout d;
+  private TextView e;
+  private TextView f;
   
   public GdtBannerViewWithOnePicturePlusTwoTexts(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
@@ -30,82 +30,82 @@ final class GdtBannerViewWithOnePicturePlusTwoTexts
     {
       setOrientation(0);
       setGravity(16);
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView = new GdtBannerImageView(paramContext, paramString1);
-      this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView.setId(2131367549);
-      addView(this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-      addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367552);
-      this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367544);
-      this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
-      this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
+      this.a = paramInt1;
+      this.b = paramInt2;
+      this.c = new GdtBannerImageView(paramContext, paramString1);
+      this.c.setId(2131434091);
+      addView(this.c);
+      this.d = new LinearLayout(paramContext);
+      this.d.setOrientation(1);
+      addView(this.d);
+      this.e = new TextView(paramContext);
+      this.e.setId(2131434094);
+      this.e.setLines(1);
+      this.e.setEllipsize(TextUtils.TruncateAt.END);
+      this.e.setTextColor(Color.parseColor("#333333"));
+      this.e.setText(paramString2);
+      this.d.addView(this.e);
+      this.f = new TextView(paramContext);
+      this.f.setId(2131434086);
+      this.f.setMaxLines(2);
+      this.f.setEllipsize(TextUtils.TruncateAt.END);
+      this.f.setTextColor(Color.parseColor("#666666"));
+      this.f.setText(paramString3);
+      this.d.addView(this.f);
       return;
     }
     GdtLog.d("GdtBannerViewForCreativeSize194", "constructor");
   }
   
-  public View a()
-  {
-    return this;
-  }
-  
-  public AdAntiSpamForClick a()
-  {
-    return null;
-  }
-  
   public void a(Context paramContext) {}
-  
-  public View b()
-  {
-    return null;
-  }
   
   public void b(Context paramContext) {}
   
   public void c(Context paramContext) {}
   
+  public AdAntiSpamForClick getAntiSpamForClick()
+  {
+    return null;
+  }
+  
+  public View getCloseView()
+  {
+    return null;
+  }
+  
+  public View getView()
+  {
+    return this;
+  }
+  
   public void setSize(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    if ((this.a > 0) && (this.b > 0) && (this.c != null) && (this.d != null) && (this.e != null) && (this.f != null) && (paramInt1 > 0) && (paramInt2 > 0))
     {
       GdtBannerViewWithLetterStyle.Params localParams = new GdtBannerViewWithLetterStyle.Params(getContext(), paramInt1, paramInt2);
-      double d1 = paramInt2 - localParams.jdField_b_of_type_Int * 2;
+      double d1 = paramInt2 - localParams.b * 2;
       Double.isNaN(d1);
-      double d2 = this.jdField_b_of_type_Int;
+      double d2 = this.b;
       Double.isNaN(d2);
       d1 = d1 * 1.0D / d2;
-      d2 = this.jdField_a_of_type_Int;
+      d2 = this.a;
       Double.isNaN(d2);
-      double d3 = localParams.jdField_b_of_type_Int * 2;
+      double d3 = localParams.b * 2;
       Double.isNaN(d3);
       paramInt1 = Double.valueOf(d1 * d2 + d3).intValue();
-      this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView.setPadding(localParams.jdField_b_of_type_Int, localParams.jdField_b_of_type_Int, localParams.jdField_b_of_type_Int, localParams.jdField_b_of_type_Int);
+      this.c.setPadding(localParams.b, localParams.b, localParams.b, localParams.b);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentGdtadApiBannerLetterGdtBannerImageView.setLayoutParams(localLayoutParams);
+      this.c.setLayoutParams(localLayoutParams);
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.leftMargin = localParams.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+      localLayoutParams.leftMargin = localParams.a;
+      this.d.setLayoutParams(localLayoutParams);
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localParams.d);
+      this.e.setLayoutParams(localLayoutParams);
+      this.e.setTextSize(0, localParams.d);
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams.topMargin = localParams.c;
-      this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localParams.d);
+      this.f.setLayoutParams(localLayoutParams);
+      this.f.setTextSize(0, localParams.d);
       return;
     }
     GdtLog.d("GdtBannerViewForCreativeSize194", "setSize error");
@@ -113,7 +113,7 @@ final class GdtBannerViewWithOnePicturePlusTwoTexts
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.letter.GdtBannerViewWithOnePicturePlusTwoTexts
  * JD-Core Version:    0.7.0.1
  */

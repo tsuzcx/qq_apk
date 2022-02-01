@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="21.0dip" android:layout_height="21.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.ui.widget.TimiRoundImageView android:id="@id/a2o" android:layout_width="21.0dip" android:layout_height="21.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/enc" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/jhc" />
+</RelativeLayout>

@@ -4,6 +4,7 @@ import android.os.Handler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -61,7 +62,7 @@ public class RIJUserLevelRequestModule
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("requestIconRefreshInfo ,uin=");
-    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(RIJLogUtil.a.a(paramLong));
     ((StringBuilder)localObject).append(" operType=");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("RIJUserLevelRequestModule", 1, ((StringBuilder)localObject).toString());
@@ -87,7 +88,7 @@ public class RIJUserLevelRequestModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.RIJUserLevelRequestModule
  * JD-Core Version:    0.7.0.1
  */

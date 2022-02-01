@@ -11,7 +11,7 @@ class TroopAddFrdsInnerFrame$MyComparator
   
   public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    if (this.a.z == TroopAddFrdsInnerFrame.y)
     {
       int i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
       if (i == 0)
@@ -36,18 +36,18 @@ class TroopAddFrdsInnerFrame$MyComparator
           if (k == 0)
           {
             i = m;
-            if (TroopAddFrdsInnerFrame.a(this.a) != null)
+            if (TroopAddFrdsInnerFrame.d(this.a) != null)
             {
-              boolean bool = TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin);
+              boolean bool = TroopAddFrdsInnerFrame.d(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin);
               k = 1;
-              if ((!bool) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
+              if ((!bool) && (!TroopAddFrdsInnerFrame.d(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
                 i = 0;
               } else {
                 i = 1;
               }
               j = k;
-              if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin)) {
-                if (TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {
+              if (!TroopAddFrdsInnerFrame.d(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin)) {
+                if (TroopAddFrdsInnerFrame.d(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {
                   j = k;
                 } else {
                   j = 0;
@@ -65,7 +65,7 @@ class TroopAddFrdsInnerFrame$MyComparator
       }
       return i;
     }
-    if ((this.a.f == TroopAddFrdsInnerFrame.d) && (paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+    if ((this.a.z == TroopAddFrdsInnerFrame.x) && (paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
       return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
     }
     return 0;
@@ -73,7 +73,7 @@ class TroopAddFrdsInnerFrame$MyComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.MyComparator
  * JD-Core Version:    0.7.0.1
  */

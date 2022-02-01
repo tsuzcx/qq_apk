@@ -2,24 +2,24 @@ package com.tencent.av.wtogether.util;
 
 public class WatchTogetherDataReportHelper$WTFilePlayInfo
 {
-  public int a;
   public String a;
   public int b;
+  public int c;
   
   public WatchTogetherDataReportHelper$WTFilePlayInfo(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WTFilePlayInfo{mVideoKey: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mVideoDurationMs: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mVideoPlayTimeMs: ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", mVideoPlayTimeMs: ");
+    localStringBuilder.append(this.c);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

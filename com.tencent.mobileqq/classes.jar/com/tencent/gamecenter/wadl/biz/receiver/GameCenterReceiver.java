@@ -17,63 +17,22 @@ import mqq.app.MobileQQ;
 public class GameCenterReceiver
   extends BroadcastReceiver
 {
-  private static GameCenterReceiver jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterReceiver = null;
-  private static volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  List<GameCenterListener> jdField_a_of_type_JavaUtilList = null;
+  static byte[] a = new byte[0];
+  private static GameCenterReceiver c = null;
+  private static volatile AtomicBoolean d = new AtomicBoolean(false);
+  List<GameCenterListener> b = null;
   
   public static GameCenterReceiver a()
   {
-    if (jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterReceiver == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (c == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterReceiver == null) {
-          jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterReceiver = new GameCenterReceiver();
+        if (c == null) {
+          c = new GameCenterReceiver();
         }
       }
     }
-    return jdField_a_of_type_ComTencentGamecenterWadlBizReceiverGameCenterReceiver;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("registerReceiver processId=");
-      ((StringBuilder)localObject1).append(MobileQQ.sProcessId);
-      ((StringBuilder)localObject1).append(",mIsRegistered=");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      QLog.d("Wadl_GameCenterReceiver", 1, ((StringBuilder)localObject1).toString());
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-      {
-        localObject1 = a();
-        if (localObject1 != null) {
-          try
-          {
-            IntentFilter localIntentFilter1 = new IntentFilter();
-            if (MobileQQ.sProcessId == 1) {
-              localIntentFilter1.addAction("android.intent.action.SCREEN_OFF");
-            }
-            localIntentFilter1.addAction("com.tencent.gamecenter.action");
-            IntentFilter localIntentFilter2 = new IntentFilter();
-            localIntentFilter2.addDataScheme("package");
-            localIntentFilter2.addAction("android.intent.action.PACKAGE_ADDED");
-            localIntentFilter2.addAction("android.intent.action.PACKAGE_REMOVED");
-            MobileQQ.sMobileQQ.getApplicationContext().registerReceiver((BroadcastReceiver)localObject1, localIntentFilter2);
-            MobileQQ.sMobileQQ.getApplicationContext().registerReceiver((BroadcastReceiver)localObject1, localIntentFilter1);
-            jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          }
-          catch (Throwable localThrowable)
-          {
-            b();
-            QLog.e("Wadl_GameCenterReceiver", 1, "registerReceiver exception", localThrowable);
-          }
-        }
-      }
-      return;
-    }
-    finally {}
+    return c;
   }
   
   private void a(Intent paramIntent)
@@ -94,10 +53,10 @@ public class GameCenterReceiver
       return;
     }
     GameCenterReceiver localGameCenterReceiver = a();
-    synchronized (localGameCenterReceiver.jdField_a_of_type_JavaUtilList)
+    synchronized (localGameCenterReceiver.b)
     {
-      if (!localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramGameCenterListener)) {
-        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramGameCenterListener);
+      if (!localGameCenterReceiver.b.contains(paramGameCenterListener)) {
+        localGameCenterReceiver.b.add(paramGameCenterListener);
       }
       return;
     }
@@ -127,17 +86,38 @@ public class GameCenterReceiver
   {
     try
     {
-      QLog.d("Wadl_GameCenterReceiver", 1, "unRegisterReceiver");
-      GameCenterReceiver localGameCenterReceiver = a();
-      try
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("registerReceiver processId=");
+      ((StringBuilder)localObject1).append(MobileQQ.sProcessId);
+      ((StringBuilder)localObject1).append(",mIsRegistered=");
+      ((StringBuilder)localObject1).append(d.get());
+      QLog.d("Wadl_GameCenterReceiver", 1, ((StringBuilder)localObject1).toString());
+      if (!d.get())
       {
-        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(localGameCenterReceiver);
+        localObject1 = a();
+        if (localObject1 != null) {
+          try
+          {
+            IntentFilter localIntentFilter1 = new IntentFilter();
+            if (MobileQQ.sProcessId == 1) {
+              localIntentFilter1.addAction("android.intent.action.SCREEN_OFF");
+            }
+            localIntentFilter1.addAction("com.tencent.gamecenter.action");
+            IntentFilter localIntentFilter2 = new IntentFilter();
+            localIntentFilter2.addDataScheme("package");
+            localIntentFilter2.addAction("android.intent.action.PACKAGE_ADDED");
+            localIntentFilter2.addAction("android.intent.action.PACKAGE_REMOVED");
+            MobileQQ.sMobileQQ.getApplicationContext().registerReceiver((BroadcastReceiver)localObject1, localIntentFilter2);
+            MobileQQ.sMobileQQ.getApplicationContext().registerReceiver((BroadcastReceiver)localObject1, localIntentFilter1);
+            d.set(true);
+          }
+          catch (Throwable localThrowable)
+          {
+            c();
+            QLog.e("Wadl_GameCenterReceiver", 1, "registerReceiver exception", localThrowable);
+          }
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("Wadl_GameCenterReceiver", 1, "unRegisterReceiver exception", localThrowable);
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
     }
     finally {}
@@ -153,13 +133,33 @@ public class GameCenterReceiver
       return;
     }
     GameCenterReceiver localGameCenterReceiver = a();
-    synchronized (localGameCenterReceiver.jdField_a_of_type_JavaUtilList)
+    synchronized (localGameCenterReceiver.b)
     {
-      if (localGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramGameCenterListener)) {
-        localGameCenterReceiver.jdField_a_of_type_JavaUtilList.remove(paramGameCenterListener);
+      if (localGameCenterReceiver.b.contains(paramGameCenterListener)) {
+        localGameCenterReceiver.b.remove(paramGameCenterListener);
       }
       return;
     }
+  }
+  
+  public static void c()
+  {
+    try
+    {
+      QLog.d("Wadl_GameCenterReceiver", 1, "unRegisterReceiver");
+      GameCenterReceiver localGameCenterReceiver = a();
+      try
+      {
+        MobileQQ.sMobileQQ.getApplicationContext().unregisterReceiver(localGameCenterReceiver);
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("Wadl_GameCenterReceiver", 1, "unRegisterReceiver exception", localThrowable);
+      }
+      d.set(false);
+      return;
+    }
+    finally {}
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -190,7 +190,7 @@ public class GameCenterReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterReceiver
  * JD-Core Version:    0.7.0.1
  */

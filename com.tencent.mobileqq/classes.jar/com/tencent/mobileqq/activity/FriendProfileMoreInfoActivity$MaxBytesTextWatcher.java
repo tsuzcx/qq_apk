@@ -7,43 +7,43 @@ import android.widget.EditText;
 class FriendProfileMoreInfoActivity$MaxBytesTextWatcher
   implements TextWatcher
 {
-  private int jdField_a_of_type_Int;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  private int c;
+  boolean a = false;
+  boolean b = false;
+  private int d;
+  private EditText e;
+  private int f;
+  private int g;
   
   public FriendProfileMoreInfoActivity$MaxBytesTextWatcher(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, int paramInt, EditText paramEditText)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.d = paramInt;
+    this.e = paramEditText;
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    Object localObject2 = this.e.getText().toString();
     paramEditable = (Editable)localObject2;
-    if (((String)localObject2).getBytes().length > this.jdField_a_of_type_Int) {
+    if (((String)localObject2).getBytes().length > this.d) {
       localObject1 = localObject2;
     }
     try
     {
-      String str1 = ((String)localObject2).substring(0, this.jdField_b_of_type_Int);
+      String str1 = ((String)localObject2).substring(0, this.f);
       localObject1 = localObject2;
-      String str2 = ((String)localObject2).substring(this.jdField_b_of_type_Int + this.c, ((String)localObject2).length());
+      String str2 = ((String)localObject2).substring(this.f + this.g, ((String)localObject2).length());
       localObject1 = localObject2;
-      Object localObject3 = ((String)localObject2).substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
+      Object localObject3 = ((String)localObject2).substring(this.f, this.f + this.g);
       paramEditable = (Editable)localObject2;
       localObject1 = localObject2;
-      if (str1.getBytes().length + str2.getBytes().length <= this.jdField_a_of_type_Int)
+      if (str1.getBytes().length + str2.getBytes().length <= this.d)
       {
         paramEditable = (Editable)localObject2;
         localObject2 = localObject3;
         for (;;)
         {
           localObject1 = paramEditable;
-          if (paramEditable.getBytes().length <= this.jdField_a_of_type_Int) {
+          if (paramEditable.getBytes().length <= this.d) {
             break;
           }
           localObject1 = paramEditable;
@@ -64,9 +64,9 @@ class FriendProfileMoreInfoActivity$MaxBytesTextWatcher
           paramEditable = ((StringBuilder)localObject3).toString();
         }
         localObject1 = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
+        this.e.setText(paramEditable);
         localObject1 = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str1.length() + ((String)localObject2).length());
+        this.e.setSelection(str1.length() + ((String)localObject2).length());
       }
     }
     catch (Exception paramEditable)
@@ -76,47 +76,47 @@ class FriendProfileMoreInfoActivity$MaxBytesTextWatcher
         paramEditable = (Editable)localObject1;
       }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.a) {
+      this.a = false;
     } else {
-      this.jdField_b_of_type_Boolean = true;
+      this.b = true;
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText)
+    if (this.e == this.c.f)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity;
-      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.d((FriendProfileMoreInfoActivity)localObject1), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695067), paramEditable);
+      localObject1 = this.c;
+      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.j((FriendProfileMoreInfoActivity)localObject1), this.c.f, this.c.getString(2131892795), paramEditable);
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b)
+    if (this.e == this.c.g)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity;
-      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.e((FriendProfileMoreInfoActivity)localObject1), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695020), paramEditable);
+      localObject1 = this.c;
+      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.k((FriendProfileMoreInfoActivity)localObject1), this.c.g, this.c.getString(2131892748), paramEditable);
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c)
+    if (this.e == this.c.h)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity;
-      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.f((FriendProfileMoreInfoActivity)localObject1), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695116), paramEditable);
+      localObject1 = this.c;
+      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.l((FriendProfileMoreInfoActivity)localObject1), this.c.h, this.c.getString(2131892844), paramEditable);
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d)
+    if (this.e == this.c.i)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity;
-      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.g((FriendProfileMoreInfoActivity)localObject1), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131695050), paramEditable);
+      localObject1 = this.c;
+      ((FriendProfileMoreInfoActivity)localObject1).a(FriendProfileMoreInfoActivity.m((FriendProfileMoreInfoActivity)localObject1), this.c.i, this.c.getString(2131892778), paramEditable);
     }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    this.f = paramInt1;
+    this.g = paramInt3;
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.MaxBytesTextWatcher
  * JD-Core Version:    0.7.0.1
  */

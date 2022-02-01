@@ -2,7 +2,7 @@ package com.tencent.avgame.gamelobby.rv;
 
 public abstract class ViewHolderContext
 {
-  public void a() {}
+  public void b() {}
 }
 
 

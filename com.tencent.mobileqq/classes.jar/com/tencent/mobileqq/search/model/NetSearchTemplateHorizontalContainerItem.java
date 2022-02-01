@@ -16,32 +16,40 @@ public class NetSearchTemplateHorizontalContainerItem
   extends NetSearchTemplateBaseItem
 {
   public static final String a = "NetSearchTemplateHorizontalContainerItem";
-  public ArrayList<NetSearchTemplateHorizontalBaseItem> a;
-  protected final String b;
+  protected final String b = "itemList";
+  public ArrayList<NetSearchTemplateHorizontalBaseItem> c;
   
   public NetSearchTemplateHorizontalContainerItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
   }
   
   public NetSearchTemplateHorizontalContainerItem(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
   }
   
   public void a(View paramView) {}
   
-  public void a(String paramString)
+  public int ck_()
+  {
+    return 2;
+  }
+  
+  public int cl_()
+  {
+    return 1;
+  }
+  
+  public void o_(String paramString)
   {
     try
     {
       localObject1 = new JSONObject(paramString).getJSONArray("itemList");
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (this.c == null) {
+        this.c = new ArrayList();
       } else {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.c.clear();
       }
       if (localObject1 == null) {
         return;
@@ -55,18 +63,18 @@ public class NetSearchTemplateHorizontalContainerItem
           paramString = null;
           int j = ((JSONObject)localObject2).optInt("type");
           if (j == 1) {
-            if ((a() instanceof DynamicSearch.ResultItem)) {
-              paramString = new NetSearchTemplateHorizontalOneItem(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, (JSONObject)localObject2, j, (DynamicSearch.ResultItem)a(), i + 1);
-            } else if ((a() instanceof UnifySearchCommon.ResultItem)) {
-              paramString = new NetSearchTemplateHorizontalOneItem(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, (JSONObject)localObject2, j, (UnifySearchCommon.ResultItem)a(), i + 1);
+            if ((j() instanceof DynamicSearch.ResultItem)) {
+              paramString = new NetSearchTemplateHorizontalOneItem(this.m, this.i, this.k, this.p, (JSONObject)localObject2, j, (DynamicSearch.ResultItem)j(), i + 1);
+            } else if ((j() instanceof UnifySearchCommon.ResultItem)) {
+              paramString = new NetSearchTemplateHorizontalOneItem(this.m, this.i, this.k, this.p, (JSONObject)localObject2, j, (UnifySearchCommon.ResultItem)j(), i + 1);
             }
           }
           if (paramString != null) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+            this.c.add(paramString);
           }
           i += 1;
         }
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
       }
       catch (JSONException paramString)
       {
@@ -86,7 +94,7 @@ public class NetSearchTemplateHorizontalContainerItem
       Object localObject2;
       if (QLog.isColorLevel())
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("parseLayoutExtensions, e = ");
         ((StringBuilder)localObject2).append(paramString);
@@ -94,20 +102,10 @@ public class NetSearchTemplateHorizontalContainerItem
       }
     }
   }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int f_()
-  {
-    return 1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.NetSearchTemplateHorizontalContainerItem
  * JD-Core Version:    0.7.0.1
  */

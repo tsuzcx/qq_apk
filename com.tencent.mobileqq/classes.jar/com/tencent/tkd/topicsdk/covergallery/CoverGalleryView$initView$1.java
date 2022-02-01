@@ -11,20 +11,20 @@ public final class CoverGalleryView$initView$1
 {
   public void a()
   {
-    CoverGalleryView.a(this.a).setVisibility(0);
-    CoverGalleryView.a(this.a).setVisibility(8);
-    CoverGalleryView.a(this.a);
+    CoverGalleryView.b(this.a).setVisibility(0);
+    CoverGalleryView.c(this.a).setVisibility(8);
+    CoverGalleryView.d(this.a);
   }
   
   public void b()
   {
-    CoverGalleryView.a(this.a).setVisibility(8);
-    CoverGalleryView.a(this.a).setVisibility(0);
+    CoverGalleryView.b(this.a).setVisibility(8);
+    CoverGalleryView.c(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.initView.1
  * JD-Core Version:    0.7.0.1
  */

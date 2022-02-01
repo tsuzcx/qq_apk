@@ -13,35 +13,35 @@ import msf.msgcomm.msg_comm.UinPairMsg;
 
 public class DecodeMsg
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private C2CMessageProcessor jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor;
-  private DecodeProtoPkgContext jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  private msg_comm.UinPairMsg jdField_a_of_type_MsfMsgcommMsg_comm$UinPairMsg;
-  private ArrayList<msg_comm.Msg> b;
+  private msg_comm.UinPairMsg a;
+  private long b;
+  private ArrayList<MessageRecord> c;
+  private ArrayList<msg_comm.Msg> d;
+  private StringBuilder e;
+  private DecodeProtoPkgContext f;
+  private int g;
+  private C2CMessageProcessor h;
   
   public DecodeMsg(C2CMessageProcessor paramC2CMessageProcessor, msg_comm.UinPairMsg paramUinPairMsg, long paramLong, ArrayList<MessageRecord> paramArrayList, ArrayList<msg_comm.Msg> paramArrayList1, StringBuilder paramStringBuilder, DecodeProtoPkgContext paramDecodeProtoPkgContext, int paramInt)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$UinPairMsg = paramUinPairMsg;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.b = paramArrayList1;
-    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder;
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext = paramDecodeProtoPkgContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor = paramC2CMessageProcessor;
+    this.a = paramUinPairMsg;
+    this.b = paramLong;
+    this.c = paramArrayList;
+    this.d = paramArrayList1;
+    this.e = paramStringBuilder;
+    this.f = paramDecodeProtoPkgContext;
+    this.g = paramInt;
+    this.h = paramC2CMessageProcessor;
   }
   
   private long a(long paramLong1, long paramLong2)
   {
-    return C2CMessageProcessor.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface, paramLong2, paramLong1, this.jdField_a_of_type_MsfMsgcommMsg_comm$UinPairMsg.peer_uin.get(), this.jdField_a_of_type_MsfMsgcommMsg_comm$UinPairMsg);
+    return C2CMessageProcessor.u.a(this.h.q, paramLong2, paramLong1, this.a.peer_uin.get(), this.a);
   }
   
   private static void a(DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<MessageRecord> paramArrayList, C2CMessageProcessor paramC2CMessageProcessor, long paramLong1, long paramLong2, List<MessageRecord> paramList)
   {
-    C2CMessageProcessor.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramC2CMessageProcessor, paramArrayList, paramLong1, paramLong2, paramList, paramDecodeProtoPkgContext);
+    C2CMessageProcessor.u.a(paramC2CMessageProcessor, paramArrayList, paramLong1, paramLong2, paramList, paramDecodeProtoPkgContext);
   }
   
   public DecodeMsg a()
@@ -50,7 +50,7 @@ public class DecodeMsg
     {
       try
       {
-        Object localObject = (msg_comm.Msg)this.b.get(this.jdField_a_of_type_Int);
+        Object localObject = (msg_comm.Msg)this.d.get(this.g);
         msg_comm.MsgHead localMsgHead = (msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get();
         if (!((msg_comm.Msg)localObject).msg_head.has())
         {
@@ -58,7 +58,7 @@ public class DecodeMsg
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("<---decodeC2CMessagePackage: msgList[");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject).append(this.g);
             ((StringBuilder)localObject).append("] : msg doesn't has msgHead.");
             QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject).toString());
             return this;
@@ -70,23 +70,23 @@ public class DecodeMsg
           long l1 = localMsgHead.from_uin.get();
           long l4 = localMsgHead.from_uin.get();
           long l2 = localMsgHead.msg_time.get();
-          long l5 = this.jdField_a_of_type_Long;
+          long l5 = this.b;
           bool1 = false;
           if (l2 <= l5) {
             break label304;
           }
           bool2 = false;
           l3 = a(l3, l4);
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.i = true;
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.jdField_a_of_type_JavaLangString = String.valueOf(l3);
-          if (C2CMessageProcessor.a(this.jdField_a_of_type_JavaLangStringBuilder, this.jdField_a_of_type_Int, bool1, l2, l3, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
+          this.f.o = true;
+          this.f.t = String.valueOf(l3);
+          if (C2CMessageProcessor.a(this.e, this.g, bool1, l2, l3, this.h.q)) {
             return this;
           }
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.jdField_a_of_type_Boolean = bool1;
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.g = l3;
-          this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext.h = bool2;
-          localObject = this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.a((msg_comm.Msg)localObject, this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext);
-          a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageDecodeProtoPkgContext, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor, l1, l3, (List)localObject);
+          this.f.g = bool1;
+          this.f.x = l3;
+          this.f.n = bool2;
+          localObject = this.h.a((msg_comm.Msg)localObject, this.f);
+          a(this.f, this.c, this.h, l1, l3, (List)localObject);
           return this;
         }
       }
@@ -107,7 +107,7 @@ public class DecodeMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.DecodeMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -27,56 +27,50 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class VideoInviteFloatBar
   implements View.OnClickListener, View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new VideoInviteFloatBar.1(this);
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 2131756203;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
-  boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float;
-  boolean jdField_d_of_type_Boolean = false;
-  private boolean e = false;
+  String a = null;
+  public boolean b = false;
+  boolean c = false;
+  boolean d = true;
+  boolean e = false;
+  Intent f = null;
+  TextView g;
+  TextView h;
+  WindowManager i;
+  private Context j;
+  private int k = 0;
+  private int l = 2131953352;
+  private boolean m = false;
+  private WindowManager.LayoutParams n;
+  private View o;
+  private float p;
+  private float q;
+  private float r;
+  private float s;
+  private Handler t = new Handler();
+  private Runnable u = new VideoInviteFloatBar.1(this);
   
   public VideoInviteFloatBar(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559778, null);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
-  }
-  
-  public TextView a()
-  {
-    return (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371697);
+    this.j = paramContext;
+    this.i = ((WindowManager)paramContext.getSystemService("window"));
+    this.o = ((LayoutInflater)this.j.getSystemService("layout_inflater")).inflate(2131625820, null);
+    this.o.setOnTouchListener(this);
   }
   
   public void a()
   {
     Log.i("VideoInviteFloatBar", "hide");
-    if (!this.e) {
+    if (!this.m) {
       return;
     }
-    this.e = false;
+    this.m = false;
     try
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoInviteFloatBar", 2, "hide removeView start");
       }
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null) {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+      if (this.i != null) {
+        this.i.removeView(this.o);
       }
       if (QLog.isColorLevel())
       {
@@ -98,63 +92,63 @@ public class VideoInviteFloatBar
   
   public void a(Bitmap paramBitmap)
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366401)).setImageBitmap(paramBitmap);
+    ((ImageView)this.o.findViewById(2131432714)).setImageBitmap(paramBitmap);
   }
   
   public void a(Bitmap paramBitmap, String paramString)
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366401)).setImageBitmap(paramBitmap);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371697)).setText(paramString);
+    ((ImageView)this.o.findViewById(2131432714)).setImageBitmap(paramBitmap);
+    ((TextView)this.o.findViewById(2131439121)).setText(paramString);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370825));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.g = ((TextView)this.o.findViewById(2131438149));
+    this.g.setText(paramString);
+    this.o.invalidate();
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_d_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean3;
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
+    this.c = paramBoolean3;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("show, mIsAudioMode[");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("], misMultiCall[");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append("], mIsMultiIncomingCall[");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append("]");
     QLog.w("VideoInviteFloatBar", 1, ((StringBuilder)localObject).toString());
-    if (this.e) {
+    if (this.m) {
       return;
     }
-    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370825);
-    Button localButton1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361821);
-    Button localButton2 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131376380);
+    localObject = (TextView)this.o.findViewById(2131438149);
+    Button localButton1 = (Button)this.o.findViewById(2131427374);
+    Button localButton2 = (Button)this.o.findViewById(2131444596);
     localButton1.setClickable(true);
     localButton2.setClickable(true);
     localButton1.setOnClickListener(this);
     localButton2.setOnClickListener(this);
     if (paramBoolean3)
     {
-      if (this.jdField_c_of_type_Boolean) {
-        ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131695350));
+      if (this.d) {
+        ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131893091));
       } else {
-        ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131695351));
+        ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131893092));
       }
     }
-    else if (this.jdField_c_of_type_Boolean) {
-      ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131695349));
+    else if (this.d) {
+      ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131893090));
     } else {
-      ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131695352));
+      ((TextView)localObject).setText(((TextView)localObject).getResources().getString(2131893093));
     }
     b();
-    int i = this.jdField_a_of_type_Int;
-    if (i > 0) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, i * 1000);
+    int i1 = this.k;
+    if (i1 > 0) {
+      this.t.postDelayed(this.u, i1 * 1000);
     }
   }
   
@@ -165,24 +159,24 @@ public class VideoInviteFloatBar
     }
     try
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 2098088;
+      this.n = new WindowManager.LayoutParams();
+      this.n.height = -2;
+      this.n.width = -1;
+      this.n.flags = 2098088;
       if (Build.VERSION.SDK_INT >= 26) {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;
+        this.n.type = 2038;
       } else {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2010;
+        this.n.type = 2010;
       }
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
+      this.n.format = -3;
       if (Build.VERSION.SDK_INT >= 19)
       {
-        WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+        WindowManager.LayoutParams localLayoutParams = this.n;
         localLayoutParams.flags |= 0x4000000;
       }
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 49;
-      if (this.jdField_b_of_type_Int != -1) {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = this.jdField_b_of_type_Int;
+      this.n.gravity = 49;
+      if (this.l != -1) {
+        this.n.windowAnimations = this.l;
       }
     }
     catch (Exception localException1)
@@ -194,8 +188,8 @@ public class VideoInviteFloatBar
       if (QLog.isColorLevel()) {
         QLog.d("VideoInviteFloatBar", 2, "startHandler addView start");
       }
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      this.e = true;
+      this.i.addView(this.o, this.n);
+      this.m = true;
       if (QLog.isColorLevel())
       {
         QLog.d("VideoInviteFloatBar", 2, "startHandler addView end");
@@ -235,7 +229,7 @@ public class VideoInviteFloatBar
     catch (IllegalStateException localIllegalStateException)
     {
       StringBuilder localStringBuilder;
-      this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      this.i.updateViewLayout(this.o, this.n);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -248,113 +242,118 @@ public class VideoInviteFloatBar
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378731));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.h = ((TextView)this.o.findViewById(2131447402));
+    this.h.setText(paramString);
+    this.o.invalidate();
   }
   
   public void c()
   {
-    Object localObject = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361821);
-    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131376380);
+    Object localObject = (Button)this.o.findViewById(2131427374);
+    Button localButton = (Button)this.o.findViewById(2131444596);
     ((Button)localObject).setVisibility(4);
     localButton.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370825);
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.h.setVisibility(4);
+    localObject = (TextView)this.o.findViewById(2131438149);
+    this.o.invalidate();
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370825));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.g = ((TextView)this.o.findViewById(2131438149));
+    this.g.setText(paramString);
+    this.o.invalidate();
+  }
+  
+  public TextView d()
+  {
+    return (TextView)this.o.findViewById(2131439121);
   }
   
   public void d(String paramString)
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371697)).setText(paramString);
+    ((TextView)this.o.findViewById(2131439121)).setText(paramString);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    long l;
+    int i1 = paramView.getId();
+    long l1;
     Object localObject;
-    if (i != 2131361821)
+    if (i1 != 2131427374)
     {
-      if (i == 2131376380)
+      if (i1 == 2131444596)
       {
-        l = AudioHelper.b();
+        l1 = AudioHelper.c();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onClick reject, mIsMultiIncomingCall[");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append("], misMultiCall[");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append("], seq[");
-        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(l1);
         ((StringBuilder)localObject).append("]");
         QLog.w("VideoInviteFloatBar", 1, ((StringBuilder)localObject).toString());
         localObject = new Intent();
-        SeqUtil.a((Intent)localObject, l);
-        if (this.jdField_b_of_type_Boolean) {
+        SeqUtil.a((Intent)localObject, l1);
+        if (this.c) {
           ((Intent)localObject).setAction("tencent.video.invite.multirefuse");
-        } else if (this.jdField_d_of_type_Boolean) {
+        } else if (this.e) {
           ((Intent)localObject).setAction("tencent.video.invite.gaignore");
         } else {
           ((Intent)localObject).setAction("tencent.video.invite.refuse");
         }
-        ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-        this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
+        ((Intent)localObject).setPackage(this.j.getPackageName());
+        this.j.sendBroadcast((Intent)localObject);
         a();
       }
     }
     else
     {
-      l = AudioHelper.b();
+      l1 = AudioHelper.c();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onClick accept, mIsMultiIncomingCall[");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append("], misMultiCall[");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append("], seq[");
-      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(l1);
       ((StringBuilder)localObject).append("]");
       QLog.w("VideoInviteFloatBar", 1, ((StringBuilder)localObject).toString());
       localObject = new Intent();
-      SeqUtil.a((Intent)localObject, l);
-      if (this.jdField_b_of_type_Boolean) {
+      SeqUtil.a((Intent)localObject, l1);
+      if (this.c) {
         ((Intent)localObject).setAction("tencent.video.invite.multiaccept");
-      } else if (this.jdField_d_of_type_Boolean) {
+      } else if (this.e) {
         ((Intent)localObject).setAction("tencent.video.invite.gaaccept");
       } else {
         ((Intent)localObject).setAction("tencent.video.invite.accept");
       }
-      ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361821)).setClickable(false);
-      ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131376380)).setClickable(false);
-      ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
+      ((Button)this.o.findViewById(2131427374)).setClickable(false);
+      ((Button)this.o.findViewById(2131444596)).setClickable(false);
+      ((Intent)localObject).setPackage(this.j.getPackageName());
+      this.j.sendBroadcast((Intent)localObject);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_c_of_type_Float = paramMotionEvent.getRawX();
-    this.jdField_d_of_type_Float = paramMotionEvent.getRawY();
+    this.r = paramMotionEvent.getRawX();
+    this.s = paramMotionEvent.getRawY();
     paramView = new StringBuilder();
     paramView.append("currX");
-    paramView.append(this.jdField_c_of_type_Float);
+    paramView.append(this.r);
     paramView.append("====currY");
-    paramView.append(this.jdField_d_of_type_Float);
+    paramView.append(this.s);
     Log.i("currP", paramView.toString());
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (i != 1) {
+      if (i1 != 1) {
         return true;
       }
-      if (paramMotionEvent.getY() - this.jdField_b_of_type_Float < 0.0F)
+      if (paramMotionEvent.getY() - this.q < 0.0F)
       {
         a();
         return true;
@@ -362,8 +361,8 @@ public class VideoInviteFloatBar
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      this.p = paramMotionEvent.getX();
+      this.q = paramMotionEvent.getY();
     }
     return true;
   }

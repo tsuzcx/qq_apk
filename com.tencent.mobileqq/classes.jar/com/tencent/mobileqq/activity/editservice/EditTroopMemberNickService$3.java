@@ -16,17 +16,17 @@ class EditTroopMemberNickService$3
   
   public void a(View paramView, int paramInt, PresetWordsListAdapter.ViewHolder paramViewHolder)
   {
-    if ((paramInt >= 0) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > paramInt))
+    if ((paramInt >= 0) && (this.a.o.size() > paramInt))
     {
-      int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getText().insert(i, this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityPresetWordsListAdapter.a(paramInt));
-      ReportController.b(EditTroopMemberNickService.a(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_def_click", 0, 0, String.valueOf(this.a.c), "", "", "");
+      int i = this.a.a.getSelectionStart();
+      this.a.a.getText().insert(i, this.a.n.a(paramInt));
+      ReportController.b(EditTroopMemberNickService.b(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_def_click", 0, 0, String.valueOf(this.a.j), "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.3
  * JD-Core Version:    0.7.0.1
  */

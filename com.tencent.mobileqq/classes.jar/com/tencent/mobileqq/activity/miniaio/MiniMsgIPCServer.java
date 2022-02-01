@@ -22,34 +22,34 @@ public class MiniMsgIPCServer
   extends QIPCModule
   implements Handler.Callback
 {
-  private static MiniMsgIPCServer jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MiniMsgIPCServer.MiniProcInfo jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
-  private boolean jdField_a_of_type_Boolean = false;
-  private MiniMsgIPCServer.MiniProcInfo b;
-  private MiniMsgIPCServer.MiniProcInfo c;
+  private static MiniMsgIPCServer b;
+  private long a;
+  private Handler c;
+  private MiniMsgIPCServer.MiniProcInfo d;
+  private MiniMsgIPCServer.MiniProcInfo e;
+  private MiniMsgIPCServer.MiniProcInfo f;
+  private boolean g = false;
   
   private MiniMsgIPCServer()
   {
     super("MiniMsgIPCServer");
     HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    this.c = new Handler(localHandlerThread.getLooper(), this);
   }
   
   public static MiniMsgIPCServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer = new MiniMsgIPCServer();
+        if (b == null) {
+          b = new MiniMsgIPCServer();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer;
+    return b;
   }
   
   public static void a(int paramInt)
@@ -67,24 +67,24 @@ public class MiniMsgIPCServer
   
   private void a(Bundle paramBundle)
   {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniCreateUpdatableMsgCallback", paramBundle, null);
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniCreateUpdatableMsgCallback", paramBundle, null);
     }
   }
   
   private void b(int paramInt, Bundle paramBundle)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.a;
     if ((l2 > l1) && (l2 - l1 < 5000L)) {
       return;
     }
-    this.jdField_a_of_type_Long = l1;
+    this.a = l1;
     QQAppInterface localQQAppInterface = null;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     if ((localQQAppInterface != null) && (localMiniProcInfo != null))
     {
       Bundle localBundle = paramBundle;
@@ -94,7 +94,7 @@ public class MiniMsgIPCServer
       paramBundle = localQQAppInterface.getMessageFacade();
       int i;
       if (paramBundle != null) {
-        i = paramBundle.c();
+        i = paramBundle.y();
       } else {
         i = 0;
       }
@@ -105,8 +105,8 @@ public class MiniMsgIPCServer
       callbackResult(paramInt, paramBundle);
       localBundle.putInt("param_proc_badge_count", i);
       QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(localMiniProcInfo), MiniMsgIPCServer.MiniProcInfo.b(localMiniProcInfo), "action_sync_unreadcount", localBundle, null);
-      if (this.c != null) {
-        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "action_sync_unreadcount", localBundle, null);
+      if (this.f != null) {
+        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "action_sync_unreadcount", localBundle, null);
       }
       if (QLog.isColorLevel())
       {
@@ -120,20 +120,20 @@ public class MiniMsgIPCServer
   
   private void b(Bundle paramBundle)
   {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniReportEvent", paramBundle, null);
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniReportEvent", paramBundle, null);
     }
   }
   
   private void c(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo != null)
+    if (this.d != null)
     {
       String str1 = paramBundle.getString("param_proc_name");
       String str2 = paramBundle.getString("param_proc_modulename");
       paramBundle.getString("param_proc_businame");
-      if ((str1 != null) && (str1.equals(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo.a())) && (str2 != null) && (str2.equals(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo.b()))) {
-        this.jdField_a_of_type_Boolean = false;
+      if ((str1 != null) && (str1.equals(this.d.a())) && (str2 != null) && (str2.equals(this.d.b()))) {
+        this.g = false;
       }
     }
   }
@@ -143,13 +143,13 @@ public class MiniMsgIPCServer
     String str2 = paramBundle.getString("param_proc_name");
     String str1 = paramBundle.getString("param_proc_modulename");
     int i = paramBundle.getInt("param_proc_businame");
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo = new MiniMsgIPCServer.MiniProcInfo(str2, str1);
-    this.b = new MiniMsgIPCServer.MiniProcInfo(str2, "aio_client_module");
+    this.d = new MiniMsgIPCServer.MiniProcInfo(str2, str1);
+    this.e = new MiniMsgIPCServer.MiniProcInfo(str2, "aio_client_module");
     if (("mini_app_client_module".equals(str1) | "mini_sdk_client_module".equals(str1))) {
-      this.c = new MiniMsgIPCServer.MiniProcInfo(str2, str1);
+      this.f = new MiniMsgIPCServer.MiniProcInfo(str2, str1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo.a = i;
-    this.jdField_a_of_type_Boolean = true;
+    this.d.a = i;
+    this.g = true;
     boolean bool = paramBundle.getBoolean("param_proc_first_start", false);
     if (QLog.isColorLevel())
     {
@@ -164,14 +164,7 @@ public class MiniMsgIPCServer
       QLog.d("MiniMsgIPCServer", 2, paramBundle.toString());
     }
     if (bool) {
-      a();
-    }
-  }
-  
-  private void e()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniDirectShareFailCallback", null, null);
+      c();
     }
   }
   
@@ -186,13 +179,13 @@ public class MiniMsgIPCServer
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.b;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.e;
     if ((paramBundle != null) && (localMiniProcInfo != null))
     {
       paramBundle = paramBundle.getMessageFacade();
       int i;
       if (paramBundle != null) {
-        i = paramBundle.a(j, str);
+        i = paramBundle.b(j, str);
       } else {
         i = 0;
       }
@@ -210,52 +203,59 @@ public class MiniMsgIPCServer
         QLog.d("mini_msg_IPCServer", 2, localStringBuilder.toString());
       }
       QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(localMiniProcInfo), MiniMsgIPCServer.MiniProcInfo.b(localMiniProcInfo), "action_sync_single_con_unread_count", paramBundle, null);
-      if (this.c != null) {
-        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "action_sync_single_con_unread_count", paramBundle, null);
+      if (this.f != null) {
+        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "action_sync_single_con_unread_count", paramBundle, null);
       }
-    }
-  }
-  
-  private void f()
-  {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniDirectShareSucCallback", null, null);
     }
   }
   
   private void g()
   {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniShareSucCallback", null, null);
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniDirectShareFailCallback", null, null);
     }
   }
   
   private void h()
   {
-    if (this.c != null) {
-      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "actionMiniShareFailCallback", null, null);
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniDirectShareSucCallback", null, null);
     }
   }
   
   private void i()
   {
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniShareSucCallback", null, null);
+    }
+  }
+  
+  private void j()
+  {
+    if (this.f != null) {
+      QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "actionMiniShareFailCallback", null, null);
+    }
+  }
+  
+  private void k()
+  {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.a;
     if ((l2 > l1) && (l2 - l1 < 5000L)) {
       return;
     }
-    this.jdField_a_of_type_Long = l1;
+    this.a = l1;
     Object localObject = null;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     if ((localObject != null) && (localMiniProcInfo != null))
     {
       localObject = ((QQAppInterface)localObject).getMessageFacade();
       int i;
       if (localObject != null) {
-        i = ((QQMessageFacade)localObject).c();
+        i = ((QQMessageFacade)localObject).y();
       } else {
         i = 0;
       }
@@ -269,13 +269,13 @@ public class MiniMsgIPCServer
         QLog.d("mini_msg_IPCServer", 2, localStringBuilder.toString());
       }
       QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(localMiniProcInfo), MiniMsgIPCServer.MiniProcInfo.b(localMiniProcInfo), "action_sync_unreadcount", (Bundle)localObject, null);
-      if (this.c != null) {
-        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.c), MiniMsgIPCServer.MiniProcInfo.b(this.c), "action_sync_unreadcount", (Bundle)localObject, null);
+      if (this.f != null) {
+        QIPCServerHelper.getInstance().callClient(MiniMsgIPCServer.MiniProcInfo.a(this.f), MiniMsgIPCServer.MiniProcInfo.b(this.f), "action_sync_unreadcount", (Bundle)localObject, null);
       }
     }
   }
   
-  private void j()
+  private void l()
   {
     Object localObject;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
@@ -283,7 +283,7 @@ public class MiniMsgIPCServer
     } else {
       localObject = null;
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     if ((localObject != null) && (localMiniProcInfo != null))
     {
       localObject = new Bundle();
@@ -294,7 +294,7 @@ public class MiniMsgIPCServer
     }
   }
   
-  private void k()
+  private void m()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -304,11 +304,11 @@ public class MiniMsgIPCServer
     if (localObject == null) {
       return;
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     Object localObject = ((QQAppInterface)localObject).getMessageFacade();
     int i;
     if (localObject != null) {
-      i = ((QQMessageFacade)localObject).c();
+      i = ((QQMessageFacade)localObject).y();
     } else {
       i = 0;
     }
@@ -327,7 +327,7 @@ public class MiniMsgIPCServer
     }
   }
   
-  private void l()
+  private void n()
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -337,11 +337,11 @@ public class MiniMsgIPCServer
     if (localObject == null) {
       return;
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     Object localObject = ((QQAppInterface)localObject).getMessageFacade();
     int i;
     if (localObject != null) {
-      i = ((QQMessageFacade)localObject).c();
+      i = ((QQMessageFacade)localObject).y();
     } else {
       i = 0;
     }
@@ -360,16 +360,6 @@ public class MiniMsgIPCServer
     }
   }
   
-  public MiniMsgIPCServer.MiniProcInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
   void a(String paramString, int paramInt)
   {
     Message localMessage = Message.obtain();
@@ -378,20 +368,30 @@ public class MiniMsgIPCServer
     localBundle.putString("param_proc_uin", paramString);
     localBundle.putInt("param_proc_uin_type", paramInt);
     localMessage.setData(localBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.c.sendMessage(localMessage);
   }
   
-  public void b()
+  public MiniMsgIPCServer.MiniProcInfo b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    return this.d;
   }
   
   public void c()
   {
-    j();
+    this.c.sendEmptyMessage(3);
   }
   
   public void d()
+  {
+    this.c.sendEmptyMessage(5);
+  }
+  
+  public void e()
+  {
+    l();
+  }
+  
+  public void f()
   {
     Object localObject;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
@@ -399,7 +399,7 @@ public class MiniMsgIPCServer
     } else {
       localObject = null;
     }
-    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgIPCServer$MiniProcInfo;
+    MiniMsgIPCServer.MiniProcInfo localMiniProcInfo = this.d;
     if ((localObject != null) && (localMiniProcInfo != null))
     {
       localObject = new Bundle();
@@ -423,10 +423,10 @@ public class MiniMsgIPCServer
       a((Bundle)paramMessage.obj);
       break;
     case 13: 
-      e();
+      g();
       break;
     case 12: 
-      f();
+      h();
       break;
     case 11: 
       e(paramMessage.getData());
@@ -435,22 +435,22 @@ public class MiniMsgIPCServer
       b((Bundle)paramMessage.obj);
       break;
     case 9: 
-      j();
-      break;
-    case 8: 
       l();
       break;
+    case 8: 
+      n();
+      break;
     case 7: 
-      h();
+      j();
       break;
     case 6: 
-      g();
+      i();
       break;
     case 5: 
-      k();
+      m();
       break;
     case 4: 
-      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+      if (MiniMsgTabServerInitStep.a)
       {
         b(paramMessage.arg1, (Bundle)paramMessage.obj);
       }
@@ -458,20 +458,20 @@ public class MiniMsgIPCServer
       {
         paramMessage = new StringBuilder();
         paramMessage.append("isAfterActionB = ");
-        paramMessage.append(MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
+        paramMessage.append(MiniMsgTabServerInitStep.a);
         QLog.d("MiniMsgIPCServer", 2, paramMessage.toString());
       }
       break;
     case 3: 
-      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+      if (MiniMsgTabServerInitStep.a)
       {
-        i();
+        k();
       }
       else if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
         paramMessage.append("isAfterActionB = ");
-        paramMessage.append(MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
+        paramMessage.append(MiniMsgTabServerInitStep.a);
         QLog.d("MiniMsgIPCServer", 2, paramMessage.toString());
       }
       break;
@@ -561,14 +561,14 @@ public class MiniMsgIPCServer
         ((Message)localObject).what = 15;
         ((Message)localObject).arg1 = paramInt;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.c.sendMessage((Message)localObject);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCServer
  * JD-Core Version:    0.7.0.1
  */

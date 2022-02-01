@@ -16,26 +16,26 @@ class ARCloudControl$11
     if (ARCloudControl.a(this.a)) {
       return;
     }
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).removeMessages(2);
+    if (ARCloudControl.d(this.a) != null) {
+      ARCloudControl.d(this.a).removeMessages(2);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onARCloudLBSLocationCheckComplete. retCode = ");
-    localStringBuilder.append(paramARCloudLBSLocationCheckResult.jdField_a_of_type_Int);
+    localStringBuilder.append(paramARCloudLBSLocationCheckResult.a);
     localStringBuilder.append(", imageId = ");
-    localStringBuilder.append(paramARCloudLBSLocationCheckResult.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramARCloudLBSLocationCheckResult.b);
     QLog.i("AREngine_ARCloudControl", 1, localStringBuilder.toString());
-    if (ARCloudControl.a(this.a) != null)
+    if (ARCloudControl.b(this.a) != null)
     {
-      ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramARCloudLBSLocationCheckResult);
-      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
+      ARCloudRecogResult.a(this.a.n.recognitions, ARCloudControl.h(this.a), paramARCloudLBSLocationCheckResult);
+      ARCloudControl.b(this.a).a(0, ARCloudControl.h(this.a));
     }
     ARCloudControl.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.11
  * JD-Core Version:    0.7.0.1
  */

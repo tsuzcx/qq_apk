@@ -7,7 +7,7 @@ import android.view.SurfaceHolder;
 class VipWallpaperService$MyEngine
   extends WallpaperService.Engine
 {
-  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
+  private final WallpaperHelper b = new WallpaperHelper();
   
   private VipWallpaperService$MyEngine(VipWallpaperService paramVipWallpaperService)
   {
@@ -16,7 +16,7 @@ class VipWallpaperService$MyEngine
   
   public WallpaperColors onComputeColors()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
+    return this.b.b();
   }
   
   public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
@@ -27,19 +27,19 @@ class VipWallpaperService$MyEngine
   public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.b.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
   }
   
   public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     super.onSurfaceCreated(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
+    this.b.a(this.a, paramSurfaceHolder);
   }
   
   public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     super.onSurfaceDestroyed(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
+    this.b.a();
   }
   
   public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
@@ -50,12 +50,12 @@ class VipWallpaperService$MyEngine
   public void onVisibilityChanged(boolean paramBoolean)
   {
     super.onVisibilityChanged(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
+    this.b.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.VipWallpaperService.MyEngine
  * JD-Core Version:    0.7.0.1
  */

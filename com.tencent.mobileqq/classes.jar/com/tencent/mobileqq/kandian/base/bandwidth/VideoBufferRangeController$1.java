@@ -9,14 +9,14 @@ class VideoBufferRangeController$1
   
   public void run()
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localVideoPlayerWrapper.a(arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_Int);
+    VideoPlayerWrapper localVideoPlayerWrapper = this.a;
+    int[] arrayOfInt = this.b;
+    localVideoPlayerWrapper.a(arrayOfInt[0], arrayOfInt[1], this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.bandwidth.VideoBufferRangeController.1
  * JD-Core Version:    0.7.0.1
  */

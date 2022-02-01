@@ -10,24 +10,24 @@ import com.tencent.richmedia.videocompress.VideoConverterConfig;
 class VideoCompressTask$HWCompressProcessor
   implements VideoConverter.Processor
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  final int jdField_b_of_type_Int;
-  final long jdField_b_of_type_Long;
+  final String a;
+  final int b;
+  final int c;
+  final long d;
+  final long e;
   
   VideoCompressTask$HWCompressProcessor(VideoCompressTask paramVideoCompressTask, String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.d = paramLong1;
+    this.e = paramLong2;
     if (paramInt2 > 0)
     {
-      this.jdField_b_of_type_Int = paramInt2;
+      this.c = paramInt2;
       return;
     }
-    this.jdField_b_of_type_Int = 30;
+    this.c = 30;
   }
   
   public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
@@ -37,9 +37,9 @@ class VideoCompressTask$HWCompressProcessor
     if (paramInt1 <= paramInt2) {
       i = paramInt2;
     }
-    localVideoConverterConfig.output = this.jdField_a_of_type_JavaLangString;
-    paramInt2 = ReadInJoyConstants.jdField_a_of_type_Int;
-    paramInt1 = ReadInJoyHelper.p(BaseApplicationImpl.getApplication().getRuntime());
+    localVideoConverterConfig.output = this.a;
+    paramInt2 = ReadInJoyConstants.t;
+    paramInt1 = ReadInJoyHelper.N(BaseApplicationImpl.getApplication().getRuntime());
     if (paramInt1 > 0) {
       paramInt2 = paramInt1;
     }
@@ -63,13 +63,13 @@ class VideoCompressTask$HWCompressProcessor
     float f2 = paramInt1;
     localVideoConverterConfig.videoBitRate = ((int)(f1 * f2));
     localVideoConverterConfig.scaleRate = (f2 / i);
-    int j = this.jdField_b_of_type_Int;
+    int j = this.c;
     if (j > 30) {
       j = 30;
     }
     localVideoConverterConfig.videoFrameRate = j;
-    localVideoConverterConfig.beginTime = this.jdField_a_of_type_Long;
-    localVideoConverterConfig.endTime = this.jdField_b_of_type_Long;
+    localVideoConverterConfig.beginTime = this.d;
+    localVideoConverterConfig.endTime = this.e;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -110,8 +110,8 @@ class VideoCompressTask$HWCompressProcessor
   
   public void onProgress(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask.a != null) && (!this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask.isCancelled())) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask.a.a(paramInt / 100.0F);
+    if ((this.f.a != null) && (!this.f.isCancelled())) {
+      this.f.a.a(paramInt / 100.0F);
     }
   }
   
@@ -119,7 +119,7 @@ class VideoCompressTask$HWCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.VideoCompressTask.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

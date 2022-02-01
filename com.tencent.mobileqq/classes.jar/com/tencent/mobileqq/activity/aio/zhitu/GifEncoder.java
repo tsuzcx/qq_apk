@@ -6,10 +6,10 @@ import java.util.Locale;
 
 public class GifEncoder
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 0L;
-  private int b;
+  private long a = 0L;
+  private int b = 1;
   private int c;
+  private int d;
   
   private native void nativeClose(long paramLong);
   
@@ -23,19 +23,19 @@ public class GifEncoder
   
   public void a()
   {
-    nativeClose(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
+    nativeClose(this.a);
+    this.a = 0L;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if (0L != this.jdField_a_of_type_Long) {
+    if (0L != this.a) {
       a();
     }
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Long = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.jdField_a_of_type_Int);
-    if (0L != this.jdField_a_of_type_Long) {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.a = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.b);
+    if (0L != this.a) {
       return;
     }
     throw new FileNotFoundException();
@@ -43,20 +43,20 @@ public class GifEncoder
   
   public boolean a(Bitmap paramBitmap, int paramInt)
   {
-    if (0L == this.jdField_a_of_type_Long) {
+    if (0L == this.a) {
       return false;
     }
-    if ((paramBitmap.getWidth() == this.b) && (paramBitmap.getHeight() == this.c))
+    if ((paramBitmap.getWidth() == this.c) && (paramBitmap.getHeight() == this.d))
     {
-      nativeEncodeFrame(this.jdField_a_of_type_Long, paramBitmap, paramInt);
+      nativeEncodeFrame(this.a, paramBitmap, paramInt);
       return true;
     }
-    throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
+    throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifEncoder
  * JD-Core Version:    0.7.0.1
  */

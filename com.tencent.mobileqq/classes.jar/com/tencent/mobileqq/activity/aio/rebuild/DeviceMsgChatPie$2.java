@@ -25,44 +25,44 @@ class DeviceMsgChatPie$2
   {
     Object localObject1;
     Object localObject2;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(AppConstants.SMARTDEVICE_SEARCH_UIN))
+    if (this.a.ah.b.equals(AppConstants.SMARTDEVICE_SEARCH_UIN))
     {
-      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
+      if (this.a.bl.booleanValue())
       {
-        this.a.q();
+        this.a.L();
       }
       else
       {
         localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        ((Intent)localObject1).putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+        ((Intent)localObject1).putExtra("nickname", this.a.d.getCurrentNickname());
+        ((Intent)localObject1).putExtra("bitmap", this.a.d.getFaceBitmap(this.a.d.getCurrentAccountUin(), (byte)2, false));
         localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("square_url_");
-        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(this.a.d.getCurrentAccountUin());
         localObject2 = ((SharedPreferences)localObject2).getString(localStringBuilder.toString(), "");
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           ((Intent)localObject1).putExtra("url", (String)localObject2);
         } else {
           ((Intent)localObject1).putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
         }
-        SmartDevicePluginLoader.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+        SmartDevicePluginLoader.a().a(this.a.aX(), this.a.d, this.a.d.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
       }
     }
     else
     {
-      localObject1 = (SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-      localObject2 = ((SmartDeviceProxyMgr)localObject1).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
+      localObject1 = (SmartDeviceProxyMgr)this.a.d.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      localObject2 = ((SmartDeviceProxyMgr)localObject1).g(Long.parseLong(this.a.ah.b));
+      if (this.a.bl.booleanValue())
       {
-        if (DeviceMsgChatPie.a(this.a)) {
-          ((SmartDeviceProxyMgr)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (DeviceInfo)localObject2, false);
+        if (DeviceMsgChatPie.b(this.a)) {
+          ((SmartDeviceProxyMgr)localObject1).a(this.a.f, (DeviceInfo)localObject2, false);
         }
-        this.a.q();
+        this.a.L();
       }
       else
       {
-        ((SmartDeviceProxyMgr)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (DeviceInfo)localObject2, false);
+        ((SmartDeviceProxyMgr)localObject1).a(this.a.f, (DeviceInfo)localObject2, false);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -70,7 +70,7 @@ class DeviceMsgChatPie$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ public final class WeiboPublisherChecker
     super(paramPublishArticleInfo, paramGlobalPublisherConfig);
   }
   
-  public int a()
+  public int b()
   {
-    if (a().getOriginContentInfo() != null) {
+    if (d().getOriginContentInfo() != null) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    int i = super.a();
+    int i = super.b();
     if (i != 0)
     {
       if ((i == 2) && (bool1)) {
@@ -33,9 +33,9 @@ public final class WeiboPublisherChecker
     if (bool1) {
       return 0;
     }
-    boolean bool2 = a().hasImage();
-    boolean bool3 = a().hasVideo();
-    boolean bool1 = true ^ a().hasText();
+    boolean bool2 = d().hasImage();
+    boolean bool3 = d().hasVideo();
+    boolean bool1 = true ^ d().hasText();
     if ((bool3) && (bool1)) {
       return 7;
     }
@@ -47,7 +47,7 @@ public final class WeiboPublisherChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.publishChecker.WeiboPublisherChecker
  * JD-Core Version:    0.7.0.1
  */

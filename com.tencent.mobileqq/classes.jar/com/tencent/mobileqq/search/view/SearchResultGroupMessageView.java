@@ -11,32 +11,32 @@ import com.tencent.mobileqq.search.base.view.SearchResultGroupView;
 public class SearchResultGroupMessageView
   extends SearchResultGroupView
 {
-  public ImageView a;
-  public View b;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public View e;
+  public TextView f;
+  public ImageView g;
+  public TextView h;
+  public LinearLayout i;
   
   public SearchResultGroupMessageView() {}
   
   public SearchResultGroupMessageView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562785, paramViewGroup, false);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371492);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369676));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368461));
-    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365536));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370212));
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629230, paramViewGroup, false);
+    this.e = this.a.findViewById(2131438867);
+    this.f = ((TextView)this.e.findViewById(2131436787));
+    this.g = ((ImageView)this.e.findViewById(2131435357));
+    this.h = ((TextView)this.e.findViewById(2131431757));
+    this.i = ((LinearLayout)this.a.findViewById(2131437396));
   }
   
-  public LinearLayout a()
+  public LinearLayout d()
   {
-    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.SearchResultGroupMessageView
  * JD-Core Version:    0.7.0.1
  */

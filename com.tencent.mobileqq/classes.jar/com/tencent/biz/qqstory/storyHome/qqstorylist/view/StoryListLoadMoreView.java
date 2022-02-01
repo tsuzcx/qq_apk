@@ -29,14 +29,14 @@ public class StoryListLoadMoreView
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167056));
+    if (this.d != null) {
+      this.d.setTextColor(getResources().getColor(2131167993));
     }
   }
   
   public int getState()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
 }
 

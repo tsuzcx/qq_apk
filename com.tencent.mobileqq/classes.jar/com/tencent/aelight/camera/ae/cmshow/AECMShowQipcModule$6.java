@@ -15,18 +15,18 @@ class AECMShowQipcModule$6
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a())
+    if (3 == paramDownloadTask.e())
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      if (this.a.exists()) {
         try
         {
-          paramDownloadTask = this.jdField_a_of_type_JavaIoFile;
+          paramDownloadTask = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getParent());
+          localStringBuilder.append(this.a.getParent());
           localStringBuilder.append(File.separator);
           ZipUtils.unZipFile(paramDownloadTask, localStringBuilder.toString());
-          AECMShowQipcModule.b(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule);
-          this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(null));
+          AECMShowQipcModule.b(this.c);
+          this.c.callbackResult(this.b, EIPCResult.createSuccessResult(null));
         }
         catch (OutOfMemoryError paramDownloadTask)
         {
@@ -41,12 +41,12 @@ class AECMShowQipcModule$6
     else {
       AEQLog.d("AECMShowQipcModule", "[doDownloadCrossEngineAssets] download failed");
     }
-    this.jdField_a_of_type_JavaIoFile.delete();
+    this.a.delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowQipcModule.6
  * JD-Core Version:    0.7.0.1
  */

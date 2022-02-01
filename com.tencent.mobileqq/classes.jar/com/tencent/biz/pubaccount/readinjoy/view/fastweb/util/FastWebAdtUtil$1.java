@@ -12,9 +12,9 @@ final class FastWebAdtUtil$1
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = FastWebAdtUtil.a(FastWebAdtUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Boolean, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long), FastWebAdtUtil.a(this.g, this.jdField_b_of_type_Int));
+    Object localObject = FastWebAdtUtil.a(FastWebAdtUtil.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, 2, this.h, this.i), FastWebAdtUtil.a(this.j, this.k));
     boolean bool;
-    if ((localObject != null) && (FastWebAdtUtil.a((String)localObject, this.jdField_b_of_type_JavaLangString, localArrayList, ReadInJoyAdInnerUtils.a(this.jdField_a_of_type_JavaLangString, this.d, this.g))))
+    if ((localObject != null) && (FastWebAdtUtil.a((String)localObject, this.b, localArrayList, ReadInJoyAdInnerUtils.a(this.a, this.d, this.j))))
     {
       FastWebAdtUtil.d(localArrayList);
       bool = true;
@@ -23,7 +23,7 @@ final class FastWebAdtUtil$1
     {
       bool = false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebResponseCallback;
+    localObject = this.l;
     if (localObject != null) {
       ((ResponseCallback)localObject).a(bool, localArrayList, true, 0);
     }
@@ -31,7 +31,7 @@ final class FastWebAdtUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAdtUtil.1
  * JD-Core Version:    0.7.0.1
  */

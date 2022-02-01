@@ -17,16 +17,16 @@ class TroopGiftAnimationController$6$2
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6.this$0.a == null) {
+    if (this.b.this$0.a == null) {
       return;
     }
-    Bitmap localBitmap = TroopUtils.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6.this$0.a.b(new TroopGiftAnimationController.6.2.1(this, localBitmap));
+    Bitmap localBitmap = TroopUtils.a(this.a);
+    this.b.this$0.a.b(new TroopGiftAnimationController.6.2.1(this, localBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.6.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ class WSGridPageFragment$6
 {
   WSGridPageFragment$6(WSGridPageFragment paramWSGridPageFragment) {}
   
-  public void H_()
+  public void onApplicationBackground()
   {
-    super.H_();
-    this.a.l();
+    super.onApplicationBackground();
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridPageFragment.6
  * JD-Core Version:    0.7.0.1
  */

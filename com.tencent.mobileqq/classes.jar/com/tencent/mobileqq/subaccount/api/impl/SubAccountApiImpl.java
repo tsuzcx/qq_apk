@@ -20,7 +20,6 @@ import com.tencent.mobileqq.fts.api.IFTSDBRuntimeService;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi.CardObserverCallback;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi.FriendListObserverCallback;
@@ -126,7 +125,7 @@ public class SubAccountApiImpl
   public AbsSubAccountMessageProcessor getProcessor(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppInterface).getMsgHandler().a();
+      return ((QQAppInterface)paramAppInterface).getMsgHandler().C();
     }
     return null;
   }
@@ -168,11 +167,6 @@ public class SubAccountApiImpl
     return null;
   }
   
-  public boolean getUseNewSettings(AppInterface paramAppInterface)
-  {
-    return SettingsConfigHelper.a(paramAppInterface);
-  }
-  
   public void loginSuccessInit(AppRuntime paramAppRuntime, String paramString)
   {
     BusinessUtils.a(paramAppRuntime, paramString);
@@ -182,7 +176,7 @@ public class SubAccountApiImpl
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)localAppRuntime).getMsgHandler().a().a(paramInt, paramBoolean, paramObject);
+      ((QQAppInterface)localAppRuntime).getMsgHandler().C().a(paramInt, paramBoolean, paramObject);
     }
   }
   
@@ -216,7 +210,7 @@ public class SubAccountApiImpl
   
   public void setDisplayThirdQQSwitch(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    ((CardHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).n(paramBoolean);
+    ((CardHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).m(paramBoolean);
   }
   
   public void startAllSubMessageAccountMsg(boolean paramBoolean)
@@ -243,7 +237,7 @@ public class SubAccountApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountApiImpl
  * JD-Core Version:    0.7.0.1
  */

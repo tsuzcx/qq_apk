@@ -20,17 +20,17 @@ class ActivateFriendActivity$3
     Object localObject = new CopyOnWriteArrayList(paramList);
     paramList = new Bundle();
     paramList.putSerializable("list", (Serializable)localObject);
-    paramList.putSerializable("models", this.jdField_a_of_type_JavaUtilArrayList);
-    paramList.putInt("count", this.jdField_a_of_type_Int);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.obtainMessage();
+    paramList.putSerializable("models", this.a);
+    paramList.putInt("count", this.b);
+    localObject = this.c.a.obtainMessage();
     ((Message)localObject).obj = paramList;
     ((Message)localObject).what = 2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.sendMessage((Message)localObject);
+    this.c.a.sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.3
  * JD-Core Version:    0.7.0.1
  */

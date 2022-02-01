@@ -35,6 +35,7 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GameLoadData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.diversion.DiversionUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComBarConfigure;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -92,40 +93,6 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 public class ReadInJoyAdUtils
 {
   private static HashSet<Integer> a = new HashSet(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(56), Integer.valueOf(40531), Integer.valueOf(14), Integer.valueOf(40174), Integer.valueOf(8), Integer.valueOf(1), Integer.valueOf(13), Integer.valueOf(15), Integer.valueOf(5), Integer.valueOf(11), Integer.valueOf(40466), Integer.valueOf(41541), Integer.valueOf(40013), Integer.valueOf(58), Integer.valueOf(16), Integer.valueOf(53), Integer.valueOf(52), Integer.valueOf(41629), Integer.valueOf(55), Integer.valueOf(40007), Integer.valueOf(59), Integer.valueOf(10), Integer.valueOf(9), Integer.valueOf(54), Integer.valueOf(41504) }));
-  
-  public static int a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo == null) {
-      return 0;
-    }
-    if (paramAdvertisementInfo.gameAdComData != null) {
-      return ParseUtil.a(paramAdvertisementInfo.gameAdComData.s, 0);
-    }
-    return ((Integer)ReadInJoyAdSwitchUtil.a(paramAdvertisementInfo.mAdExtInfo, "game_button_type", Integer.valueOf(0))).intValue();
-  }
-  
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo.mFeedType == 38) {
-      return 2051;
-    }
-    if (paramAbsBaseArticleInfo.mFeedType == 39)
-    {
-      if (g(paramAbsBaseArticleInfo)) {
-        return 2053;
-      }
-      if (i(paramAbsBaseArticleInfo)) {
-        return 2054;
-      }
-      if (j(paramAbsBaseArticleInfo)) {
-        return 2052;
-      }
-      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo)) {
-        return 2057;
-      }
-    }
-    return 2050;
-  }
   
   public static int a(String paramString, boolean paramBoolean)
   {
@@ -293,8 +260,8 @@ public class ReadInJoyAdUtils
     }
     catch (JSONException paramContext)
     {
-      label72:
-      break label72;
+      label67:
+      break label67;
     }
     paramContext = str2;
     if (TextUtils.isEmpty(""))
@@ -319,40 +286,40 @@ public class ReadInJoyAdUtils
     Object localObject3 = str2;
     if (bool)
     {
-      i = paramVideoInfo.a.c;
+      i = paramVideoInfo.as.o;
       localObject1 = "立即下载";
       if (i != 12) {}
     }
     try
     {
-      localObject2 = new JSONObject(paramVideoInfo.a.jdField_r_of_type_JavaLangString);
+      localObject2 = new JSONObject(paramVideoInfo.as.A);
       if (PackageUtil.a(paramContext, ((JSONObject)localObject2).optString("pkg_name")))
       {
         if (paramInt != 1) {
-          break label252;
+          break label248;
         }
         return "打开";
       }
       if (ADBaseAppDownloadManager.a(BaseApplicationImpl.getContext(), ((JSONObject)localObject2).optString("pkg_name")))
       {
         localObject2 = "安装";
-        paramContext = HardCodeUtil.a(2131700144);
+        paramContext = HardCodeUtil.a(2131898189);
         localObject1 = localObject2;
       }
     }
     catch (JSONException paramContext)
     {
-      label124:
-      break label124;
+      label121:
+      break label121;
     }
     localObject2 = "下载";
     paramContext = (Context)localObject1;
     Object localObject1 = localObject2;
-    break label148;
+    break label144;
     paramContext = "查看详情";
     localObject1 = "详情";
-    label148:
-    int i = paramVideoInfo.a.jdField_r_of_type_Int;
+    label144:
+    int i = paramVideoInfo.as.at;
     if (i != 1)
     {
       localObject2 = str1;
@@ -370,28 +337,17 @@ public class ReadInJoyAdUtils
     }
     if (paramInt == 1)
     {
-      if (TextUtils.isEmpty(paramVideoInfo.a.I)) {
+      if (TextUtils.isEmpty(paramVideoInfo.as.au)) {
         return localObject3;
       }
-      return paramVideoInfo.a.I;
+      return paramVideoInfo.as.au;
     }
-    if (TextUtils.isEmpty(paramVideoInfo.a.J)) {
+    if (TextUtils.isEmpty(paramVideoInfo.as.av)) {
       return localObject2;
     }
-    return paramVideoInfo.a.J;
-    label252:
+    return paramVideoInfo.as.av;
+    label248:
     return "立即打开";
-  }
-  
-  public static String a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo == null) {
-      return "";
-    }
-    if (paramAdvertisementInfo.gameAdComData != null) {
-      return paramAdvertisementInfo.gameAdComData.d;
-    }
-    return (String)ReadInJoyAdSwitchUtil.a(paramAdvertisementInfo.mAdExtInfo, "game_pkg_name", "");
   }
   
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -412,20 +368,20 @@ public class ReadInJoyAdUtils
     }
     catch (JSONException localJSONException)
     {
-      label75:
+      label77:
       int j;
       int i;
-      break label75;
+      break label77;
     }
     localObject = str;
     if (QLog.isColorLevel())
     {
       QLog.d("ReadInJoyAdUtils", 2, "cannot get name from app advertisement");
       localObject = str;
-      break label105;
+      break label107;
       localObject = ((AdvertisementInfo)localObject).mAdCorporateImageName;
     }
-    label105:
+    label107:
     j = paramAbsBaseArticleInfo.mSubscribeName.length();
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) {
       i = 9;
@@ -470,7 +426,7 @@ public class ReadInJoyAdUtils
       {
         paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExt).optString("pkg_name");
         if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall(paramContext, paramAdvertisementInfo)) {
-          break label134;
+          break label135;
         }
         i = 2;
         paramJSONObject.put("action_type", i);
@@ -487,14 +443,14 @@ public class ReadInJoyAdUtils
         }
       }
       return paramJSONObject;
-      label134:
+      label135:
       int i = 1;
     }
   }
   
   public static void a()
   {
-    Object localObject1 = ReadinjoyAdCache.a(2);
+    Object localObject1 = ReadinjoyAdCache.b(2);
     if ((localObject1 instanceof GameLoadData)) {
       try
       {
@@ -502,25 +458,25 @@ public class ReadInJoyAdUtils
         if (((GameLoadData)localObject1).a())
         {
           int i = 3;
-          if (((GameLoadData)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mOrigin > 0) {
-            i = ((GameLoadData)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mOrigin;
+          if (((GameLoadData)localObject1).a.mOrigin > 0) {
+            i = ((GameLoadData)localObject1).a.mOrigin;
           }
           localObject2 = new JSONObject();
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("stat_type", 2);
-          localJSONObject.put("webview_click", ((GameLoadData)localObject1).jdField_a_of_type_Long);
-          localJSONObject.put("webview_start", ((GameLoadData)localObject1).b);
-          localJSONObject.put("webview_head", ((GameLoadData)localObject1).c);
-          localJSONObject.put("webview_body", ((GameLoadData)localObject1).d);
+          localJSONObject.put("webview_click", ((GameLoadData)localObject1).c);
+          localJSONObject.put("webview_start", ((GameLoadData)localObject1).d);
+          localJSONObject.put("webview_head", ((GameLoadData)localObject1).e);
+          localJSONObject.put("webview_body", ((GameLoadData)localObject1).f);
           localJSONObject.put("webview_close", System.currentTimeMillis());
-          boolean bool = ((GameLoadData)localObject1).jdField_a_of_type_Boolean;
+          boolean bool = ((GameLoadData)localObject1).g;
           if (bool) {
             localJSONObject.put("wvalive", 1);
           } else {
             localJSONObject.put("wvalive", 0);
           }
           ((JSONObject)localObject2).put("statistics_data_report", localJSONObject.toString());
-          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(25).b(i).a(((GameLoadData)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).e((JSONObject)localObject2));
+          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(25).b(i).a(((GameLoadData)localObject1).a).e((JSONObject)localObject2));
         }
         ReadinjoyAdCache.a(2);
         return;
@@ -573,30 +529,10 @@ public class ReadInJoyAdUtils
     }
   }
   
-  public static void a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo == null) {
-      return;
-    }
-    try
-    {
-      paramAdvertisementInfo = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
-      GdtPreLoader.a().a(paramAdvertisementInfo);
-      return;
-    }
-    catch (Exception paramAdvertisementInfo)
-    {
-      paramAdvertisementInfo.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyAdUtils", 2, "preLoadAdForMiniProgram fail");
-      }
-    }
-  }
-  
   public static void a(AdvertisementInfo paramAdvertisementInfo, int paramInt, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
     if (paramIVideoFeedsPlayManager != null) {
-      paramIVideoFeedsPlayManager = paramIVideoFeedsPlayManager.a();
+      paramIVideoFeedsPlayManager = paramIVideoFeedsPlayManager.v();
     } else {
       paramIVideoFeedsPlayManager = null;
     }
@@ -621,30 +557,30 @@ public class ReadInJoyAdUtils
   
   public static void a(VideoInfo paramVideoInfo, ADVideoItemHolder paramADVideoItemHolder)
   {
-    if ((paramVideoInfo != null) && (paramVideoInfo.r) && (paramADVideoItemHolder != null) && (paramVideoInfo.a != null))
+    if ((paramVideoInfo != null) && (paramVideoInfo.aq) && (paramADVideoItemHolder != null) && (paramVideoInfo.as != null))
     {
-      if (TextUtils.isEmpty(paramVideoInfo.a.v)) {
+      if (TextUtils.isEmpty(paramVideoInfo.as.R)) {
         return;
       }
       try
       {
-        paramVideoInfo = new JSONObject(paramVideoInfo.a.v);
+        paramVideoInfo = new JSONObject(paramVideoInfo.as.R);
         if (paramVideoInfo.has("AdsIconText"))
         {
           if (!TextUtils.isEmpty(paramVideoInfo.optString("AdsIconText")))
           {
-            if (paramADVideoItemHolder.a() != null) {
-              paramADVideoItemHolder.a().setText(paramVideoInfo.optString("AdsIconText"));
+            if (paramADVideoItemHolder.b() != null) {
+              paramADVideoItemHolder.b().setText(paramVideoInfo.optString("AdsIconText"));
             }
           }
-          else if (paramADVideoItemHolder.a == 4)
+          else if (paramADVideoItemHolder.X == 4)
           {
             if (paramADVideoItemHolder.a() != null) {
               paramADVideoItemHolder.a().setVisibility(8);
             }
           }
-          else if (paramADVideoItemHolder.a() != null) {
-            paramADVideoItemHolder.a().setVisibility(8);
+          else if (paramADVideoItemHolder.b() != null) {
+            paramADVideoItemHolder.b().setVisibility(8);
           }
           if (QLog.isColorLevel())
           {
@@ -663,17 +599,10 @@ public class ReadInJoyAdUtils
     }
   }
   
-  public static void a(VideoPlayParam paramVideoPlayParam)
-  {
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.a != null)) {
-      paramVideoPlayParam.a.e = false;
-    }
-  }
-  
   public static void a(VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.a != null)) {
-      paramVideoPlayParam.a.e = paramBoolean;
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.f != null)) {
+      paramVideoPlayParam.f.l = paramBoolean;
     }
   }
   
@@ -686,7 +615,7 @@ public class ReadInJoyAdUtils
       {
         localObject = (IMiniAppService)QRoute.api(IMiniAppService.class);
         if (!((IMiniAppService)localObject).startMiniApp(paramContext, paramAbsBaseArticleInfo.mArticleContentUrl, 2103, null)) {
-          ((IMiniAppService)localObject).startMiniApp(paramContext, paramAbsBaseArticleInfo.mSmallMiniGameInfo.k, 2103, null);
+          ((IMiniAppService)localObject).startMiniApp(paramContext, paramAbsBaseArticleInfo.mSmallMiniGameInfo.n, 2103, null);
         }
         if (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) {
           ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportMiniGameFromArticle(paramContext, paramAbsBaseArticleInfo, paramInt, 1);
@@ -765,20 +694,20 @@ public class ReadInJoyAdUtils
     }
     try
     {
-      boolean bool = TextUtils.isEmpty(paramAdvertisementExtInfo.c);
+      boolean bool = TextUtils.isEmpty(paramAdvertisementExtInfo.n);
       Object localObject;
       if (!bool)
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("iconUrl", paramAdvertisementExtInfo.c);
+        ((JSONObject)localObject).put("iconUrl", paramAdvertisementExtInfo.n);
         paramJSONObject.put("id_pk_icon", localObject);
       }
-      if (paramAdvertisementExtInfo.a != null)
+      if (paramAdvertisementExtInfo.m != null)
       {
-        if (paramAdvertisementExtInfo.c.length() < 2) {
+        if (paramAdvertisementExtInfo.n.length() < 2) {
           return;
         }
-        localObject = (AdPKImageData)paramAdvertisementExtInfo.a.get(0);
+        localObject = (AdPKImageData)paramAdvertisementExtInfo.m.get(0);
         JSONObject localJSONObject;
         if (!TextUtils.isEmpty(((AdPKImageData)localObject).d))
         {
@@ -793,7 +722,7 @@ public class ReadInJoyAdUtils
           localJSONObject.put("text", ((AdPKImageData)localObject).c);
           paramJSONObject.put("id_pk_label_left", localJSONObject);
         }
-        paramAdvertisementExtInfo = (AdPKImageData)paramAdvertisementExtInfo.a.get(1);
+        paramAdvertisementExtInfo = (AdPKImageData)paramAdvertisementExtInfo.m.get(1);
         if (!TextUtils.isEmpty(paramAdvertisementExtInfo.d))
         {
           localObject = new JSONObject();
@@ -819,15 +748,6 @@ public class ReadInJoyAdUtils
         QLog.d("ReadInJoyAdUtils", 2, paramAdvertisementExtInfo.toString());
       }
     }
-  }
-  
-  private static boolean a()
-  {
-    if (DeviceInfoUtil.a() >= 26) {
-      return true;
-    }
-    String str = Aladdin.getConfig(461).getString("expand_card_switch", "1");
-    return (str != null) && (str.equals("1"));
   }
   
   public static boolean a(int paramInt)
@@ -931,7 +851,7 @@ public class ReadInJoyAdUtils
         return true;
       }
       int i = ParseUtil.a(((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getProteusOfflineBid("sp_key_ad_soft_ad_max"), 25);
-      int j = paramVideoFeedsGameAdComBarConfigure.b();
+      int j = paramVideoFeedsGameAdComBarConfigure.c();
       if (QLog.isColorLevel())
       {
         paramVideoFeedsGameAdComBarConfigure = new StringBuilder();
@@ -949,19 +869,92 @@ public class ReadInJoyAdUtils
     return bool1;
   }
   
-  public static boolean a(VideoAdInfo paramVideoAdInfo)
+  public static boolean a(VideoInfo paramVideoInfo)
   {
-    if (!TextUtils.isEmpty(paramVideoAdInfo.D)) {
+    return (paramVideoInfo != null) && (paramVideoInfo.as != null) && (!TextUtils.isEmpty(paramVideoInfo.as.ap));
+  }
+  
+  public static boolean a(VideoPlayParam paramVideoPlayParam)
+  {
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.f != null)) {
+      return paramVideoPlayParam.f.l;
+    }
+    return false;
+  }
+  
+  public static void b(VideoPlayParam paramVideoPlayParam)
+  {
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.f != null)) {
+      paramVideoPlayParam.f.l = false;
+    }
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
+  {
+    if (paramAbsBaseArticleInfo != null)
+    {
+      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+        return;
+      }
+      JSONObject localJSONObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
+      Object localObject = localJSONObject.optJSONArray("ad_bubble_texts");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 1))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("article_model", paramAbsBaseArticleInfo);
+        paramJSONObject.put("id_article_bubble_view", localObject);
+        if (QLog.isColorLevel())
+        {
+          paramAbsBaseArticleInfo = new StringBuilder();
+          paramAbsBaseArticleInfo.append("bindBubble ad_bubble_texts:");
+          paramAbsBaseArticleInfo.append(localJSONObject.optString("ad_bubble_texts"));
+          QLog.d("ReadInJoyAdUtils", 2, paramAbsBaseArticleInfo.toString());
+        }
+        return;
+      }
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdUtils", "bindBubble JSONArray is empty");
+    }
+  }
+  
+  private static boolean b()
+  {
+    if (DeviceInfoUtil.d() >= 26) {
       return true;
     }
-    Object localObject = paramVideoAdInfo.v;
+    String str = Aladdin.getConfig(461).getString("expand_card_switch", "1");
+    return (str != null) && (str.equals("1"));
+  }
+  
+  public static boolean b(AdvertisementInfo paramAdvertisementInfo)
+  {
+    boolean bool2 = false;
+    if (paramAdvertisementInfo == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramAdvertisementInfo.mPopFormH5Url))
+    {
+      bool1 = bool2;
+      if (ReadInJoyAdSwitchUtil.h(paramAdvertisementInfo)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean b(VideoAdInfo paramVideoAdInfo)
+  {
+    if (!TextUtils.isEmpty(paramVideoAdInfo.am)) {
+      return true;
+    }
+    Object localObject = paramVideoAdInfo.R;
     try
     {
       localObject = new JSONObject((String)localObject);
       if (((JSONObject)localObject).has("video_rowkey")) {
-        paramVideoAdInfo.D = ((JSONObject)localObject).optString("video_rowkey", "");
+        paramVideoAdInfo.am = ((JSONObject)localObject).optString("video_rowkey", "");
       }
-      boolean bool = TextUtils.isEmpty(paramVideoAdInfo.D);
+      boolean bool = TextUtils.isEmpty(paramVideoAdInfo.am);
       return bool ^ true;
     }
     catch (JSONException paramVideoAdInfo)
@@ -971,20 +964,12 @@ public class ReadInJoyAdUtils
     return false;
   }
   
-  public static boolean a(VideoInfo paramVideoInfo)
+  public static boolean b(VideoInfo paramVideoInfo)
   {
-    return (paramVideoInfo != null) && (paramVideoInfo.a != null) && (!TextUtils.isEmpty(paramVideoInfo.a.F));
+    return (paramVideoInfo != null) && (paramVideoInfo.as != null) && (!TextUtils.isEmpty(paramVideoInfo.as.ap)) && (!TextUtils.isEmpty(paramVideoInfo.as.ao));
   }
   
-  public static boolean a(VideoPlayParam paramVideoPlayParam)
-  {
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.a != null)) {
-      return paramVideoPlayParam.a.e;
-    }
-    return false;
-  }
-  
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo != null)
@@ -1020,122 +1005,53 @@ public class ReadInJoyAdUtils
     return false;
   }
   
-  public static int b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null)) {
-      return paramAdvertisementInfo.mAdvertisementExtInfo.t;
-    }
-    return 5;
-  }
-  
-  public static String b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    String str = HardCodeUtil.a(2131712768);
-    try
-    {
-      paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
-      if (paramAdvertisementInfo.has("AdsIconText"))
-      {
-        paramAdvertisementInfo = paramAdvertisementInfo.optString("AdsIconText");
-        return paramAdvertisementInfo;
-      }
-    }
-    catch (JSONException paramAdvertisementInfo)
-    {
-      paramAdvertisementInfo.printStackTrace();
-    }
-    return str;
-  }
-  
-  public static void b(AdvertisementInfo paramAdvertisementInfo)
+  public static int c(AdvertisementInfo paramAdvertisementInfo)
   {
     if (paramAdvertisementInfo == null) {
-      return;
+      return 0;
     }
-    try
-    {
-      localObject = new GameLoadData();
-      ((GameLoadData)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-      ((GameLoadData)localObject).jdField_a_of_type_JavaLangString = String.valueOf(paramAdvertisementInfo.mAdAid);
-      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage))
-      {
-        paramAdvertisementInfo = Uri.parse(paramAdvertisementInfo.mAdLandingPage).getQueryParameter("adtag");
-        if (!TextUtils.isEmpty(paramAdvertisementInfo))
-        {
-          int i = paramAdvertisementInfo.lastIndexOf(".");
-          if ((i > 0) && (i < paramAdvertisementInfo.length() - 1)) {
-            ((GameLoadData)localObject).jdField_a_of_type_JavaLangString = paramAdvertisementInfo.substring(i + 1);
-          }
-        }
-      }
-      ((GameLoadData)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
-      ReadinjoyAdCache.a(2, localObject);
-      ThreadManager.getSubThreadHandler().post(new ReadInJoyAdUtils.1());
-      return;
+    if (paramAdvertisementInfo.gameAdComData != null) {
+      return ParseUtil.a(paramAdvertisementInfo.gameAdComData.t, 0);
     }
-    catch (Exception paramAdvertisementInfo)
-    {
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("addGdtWebClickReport fail message:");
-        ((StringBuilder)localObject).append(paramAdvertisementInfo.getMessage());
-        QLog.e("ReadInJoyAdUtils", 2, ((StringBuilder)localObject).toString());
-      }
-    }
+    return ((Integer)ReadInJoyAdSwitchUtil.a(paramAdvertisementInfo.mAdExtInfo, "game_button_type", Integer.valueOf(0))).intValue();
   }
   
-  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
+  public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
   {
     if (paramAbsBaseArticleInfo != null)
     {
       if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
         return;
       }
-      JSONObject localJSONObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
-      Object localObject = localJSONObject.optJSONArray("ad_bubble_texts");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 1))
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      Object localObject = new JSONObject(localAdvertisementInfo.mAdExtInfo);
+      if (e(paramAbsBaseArticleInfo))
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("article_model", paramAbsBaseArticleInfo);
-        paramJSONObject.put("id_article_bubble_view", localObject);
+        localObject = ((JSONObject)localObject).optJSONArray("ad_bg_img");
+        if ((localObject != null) && (((JSONArray)localObject).length() >= 1))
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("atmosphere_image_url", (String)((JSONArray)localObject).get(0));
+          paramJSONObject.put("id_atmosphere_image", localJSONObject);
+        }
+        if ((y(paramAbsBaseArticleInfo)) && (localAdvertisementInfo.mAdvertisementExtInfo != null))
+        {
+          paramAbsBaseArticleInfo = new JSONObject();
+          paramAbsBaseArticleInfo.put("atmosphere_image_url", localAdvertisementInfo.mAdvertisementExtInfo.I);
+          paramJSONObject.put("id_atmosphere_image", paramAbsBaseArticleInfo);
+        }
         if (QLog.isColorLevel())
         {
           paramAbsBaseArticleInfo = new StringBuilder();
-          paramAbsBaseArticleInfo.append("bindBubble ad_bubble_texts:");
-          paramAbsBaseArticleInfo.append(localJSONObject.optString("ad_bubble_texts"));
+          paramAbsBaseArticleInfo.append("ad_bg_img:");
+          paramAbsBaseArticleInfo.append(localAdvertisementInfo.mAdExtInfo);
           QLog.d("ReadInJoyAdUtils", 2, paramAbsBaseArticleInfo.toString());
         }
-        return;
-      }
-      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdUtils", "bindBubble JSONArray is empty");
-    }
-  }
-  
-  public static boolean b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool2 = false;
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramAdvertisementInfo.mPopFormH5Url))
-    {
-      bool1 = bool2;
-      if (ReadInJoyAdSwitchUtil.d(paramAdvertisementInfo)) {
-        bool1 = true;
       }
     }
-    return bool1;
   }
   
-  public static boolean b(VideoInfo paramVideoInfo)
-  {
-    return (paramVideoInfo != null) && (paramVideoInfo.a != null) && (!TextUtils.isEmpty(paramVideoInfo.a.F)) && (!TextUtils.isEmpty(paramVideoInfo.a.E));
-  }
-  
-  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool = false;
     if (paramAbsBaseArticleInfo != null)
@@ -1171,78 +1087,15 @@ public class ReadInJoyAdUtils
     return false;
   }
   
-  public static int c(AdvertisementInfo paramAdvertisementInfo)
+  public static String d(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (e(paramAdvertisementInfo)) {
-      return 116;
+    if (paramAdvertisementInfo == null) {
+      return "";
     }
-    return 39;
-  }
-  
-  public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
-  {
-    if (paramAbsBaseArticleInfo != null)
-    {
-      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
-        return;
-      }
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-      Object localObject = new JSONObject(localAdvertisementInfo.mAdExtInfo);
-      if (d(paramAbsBaseArticleInfo))
-      {
-        localObject = ((JSONObject)localObject).optJSONArray("ad_bg_img");
-        if ((localObject != null) && (((JSONArray)localObject).length() >= 1))
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("atmosphere_image_url", (String)((JSONArray)localObject).get(0));
-          paramJSONObject.put("id_atmosphere_image", localJSONObject);
-        }
-        if ((u(paramAbsBaseArticleInfo)) && (localAdvertisementInfo.mAdvertisementExtInfo != null))
-        {
-          paramAbsBaseArticleInfo = new JSONObject();
-          paramAbsBaseArticleInfo.put("atmosphere_image_url", localAdvertisementInfo.mAdvertisementExtInfo.k);
-          paramJSONObject.put("id_atmosphere_image", paramAbsBaseArticleInfo);
-        }
-        if (QLog.isColorLevel())
-        {
-          paramAbsBaseArticleInfo = new StringBuilder();
-          paramAbsBaseArticleInfo.append("ad_bg_img:");
-          paramAbsBaseArticleInfo.append(localAdvertisementInfo.mAdExtInfo);
-          QLog.d("ReadInJoyAdUtils", 2, paramAbsBaseArticleInfo.toString());
-        }
-      }
+    if (paramAdvertisementInfo.gameAdComData != null) {
+      return paramAdvertisementInfo.gameAdComData.e;
     }
-  }
-  
-  public static boolean c(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return (paramAdvertisementInfo.mInteractType == 2) && (!TextUtils.isEmpty(paramAdvertisementInfo.mInteractImageList));
-  }
-  
-  public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo != null)
-    {
-      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
-        return false;
-      }
-      paramAbsBaseArticleInfo = ((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo;
-      if (paramAbsBaseArticleInfo == null)
-      {
-        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("bindAdColorIcon", "adExtInfo is empty");
-        return false;
-      }
-      return new JSONObject(paramAbsBaseArticleInfo).has("ad_color_tags");
-    }
-    return false;
-  }
-  
-  public static int d(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
-    }
-    return 0;
+    return (String)ReadInJoyAdSwitchUtil.a(paramAdvertisementInfo.mAdExtInfo, "game_pkg_name", "");
   }
   
   public static void d(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1259,18 +1112,13 @@ public class ReadInJoyAdUtils
         paramJSONObject.put("style_ID", "ReadInjoy_ad_education_large_cell");
         return;
       }
-      if (d(paramAbsBaseArticleInfo))
+      if (e(paramAbsBaseArticleInfo))
       {
         paramJSONObject.put("style_ID", "ReadInjoy_ad_large_atmosphere_cell");
         return;
       }
       paramJSONObject.put("style_ID", "ReadInjoy_ad_large_cell");
     }
-  }
-  
-  public static boolean d(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return paramAdvertisementInfo.downloadState != 3;
   }
   
   public static boolean d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -1280,13 +1128,13 @@ public class ReadInJoyAdUtils
       if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
         return false;
       }
-      JSONObject localJSONObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
-      if (u(paramAbsBaseArticleInfo)) {
-        return true;
+      paramAbsBaseArticleInfo = ((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo;
+      if (paramAbsBaseArticleInfo == null)
+      {
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("bindAdColorIcon", "adExtInfo is empty");
+        return false;
       }
-      if (localJSONObject.has("ad_bg_img")) {
-        return true;
-      }
+      return new JSONObject(paramAbsBaseArticleInfo).has("ad_color_tags");
     }
     return false;
   }
@@ -1305,7 +1153,7 @@ public class ReadInJoyAdUtils
         paramJSONObject.put("style_ID", "ReadInjoy_ad_education_video_cell");
         return;
       }
-      if (d(paramAbsBaseArticleInfo))
+      if (e(paramAbsBaseArticleInfo))
       {
         paramJSONObject.put("style_ID", "ReadInjoy_ad_video_atmopsphere_cell");
         return;
@@ -1316,12 +1164,25 @@ public class ReadInJoyAdUtils
   
   public static boolean e(AdvertisementInfo paramAdvertisementInfo)
   {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (5001 == paramAdvertisementInfo.mAdvertisementExtInfo.i);
+    return (paramAdvertisementInfo.mInteractType == 2) && (!TextUtils.isEmpty(paramAdvertisementInfo.mInteractImageList));
   }
   
   public static boolean e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 38) && (paramAbsBaseArticleInfo.smallGameData != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.a());
+    if (paramAbsBaseArticleInfo != null)
+    {
+      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+        return false;
+      }
+      JSONObject localJSONObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
+      if (y(paramAbsBaseArticleInfo)) {
+        return true;
+      }
+      if (localJSONObject.has("ad_bg_img")) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static void f(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1357,12 +1218,31 @@ public class ReadInJoyAdUtils
   
   public static boolean f(AdvertisementInfo paramAdvertisementInfo)
   {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (1003 == paramAdvertisementInfo.mAdvertisementExtInfo.i);
+    return paramAdvertisementInfo.downloadState != 3;
   }
   
   public static boolean f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 38) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!paramAbsBaseArticleInfo.mSmallMiniGameInfo.a());
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 38) && (paramAbsBaseArticleInfo.smallGameData != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.a());
+  }
+  
+  public static String g(AdvertisementInfo paramAdvertisementInfo)
+  {
+    String str = HardCodeUtil.a(2131910342);
+    try
+    {
+      paramAdvertisementInfo = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
+      if (paramAdvertisementInfo.has("AdsIconText"))
+      {
+        paramAdvertisementInfo = paramAdvertisementInfo.optString("AdsIconText");
+        return paramAdvertisementInfo;
+      }
+    }
+    catch (JSONException paramAdvertisementInfo)
+    {
+      paramAdvertisementInfo.printStackTrace();
+    }
+    return str;
   }
   
   public static void g(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1372,49 +1252,71 @@ public class ReadInJoyAdUtils
       if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
         return;
       }
-      JSONObject localJSONObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
+      Object localObject = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo);
       paramJSONObject.put("id_info_operate_parent", new JSONObject());
       paramJSONObject.put("id_large_cell_container", new JSONObject());
-      if (localJSONObject.has("AdsIconText"))
+      boolean bool = DiversionUtil.a();
+      if ((((JSONObject)localObject).has("AdsIconText")) && (!bool))
       {
         paramAbsBaseArticleInfo = new JSONObject();
-        if (!TextUtils.isEmpty(localJSONObject.optString("AdsIconText")))
+        if (!TextUtils.isEmpty(((JSONObject)localObject).optString("AdsIconText")))
         {
-          paramAbsBaseArticleInfo.put("info_status_text", localJSONObject.optString("AdsIconText"));
+          paramAbsBaseArticleInfo.put("info_status_text", ((JSONObject)localObject).optString("AdsIconText"));
           paramJSONObject.put("id_info_status", paramAbsBaseArticleInfo);
         }
         if (QLog.isColorLevel())
         {
           paramAbsBaseArticleInfo = new StringBuilder();
           paramAbsBaseArticleInfo.append("bindAdStatus AdsIconText:");
-          paramAbsBaseArticleInfo.append(localJSONObject.optString("AdsIconText"));
+          paramAbsBaseArticleInfo.append(((JSONObject)localObject).optString("AdsIconText"));
           QLog.d("ReadInJoyAdUtils", 2, paramAbsBaseArticleInfo.toString());
         }
       }
-      else if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleSubscriptText))
+      else if ((!TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleSubscriptText)) && (!bool))
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("info_status_text", paramAbsBaseArticleInfo.mArticleSubscriptText);
-        paramJSONObject.put("id_info_status", localJSONObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("info_status_text", paramAbsBaseArticleInfo.mArticleSubscriptText);
+        paramJSONObject.put("id_info_status", localObject);
         if (QLog.isColorLevel())
         {
-          paramJSONObject = new StringBuilder();
-          paramJSONObject.append("bindAdStatus mArticleSubscriptText:");
-          paramJSONObject.append(paramAbsBaseArticleInfo.mArticleSubscriptText);
-          QLog.d("ReadInJoyAdUtils", 2, paramJSONObject.toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("bindAdStatus mArticleSubscriptText:");
+          ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mArticleSubscriptText);
+          QLog.d("ReadInJoyAdUtils", 2, ((StringBuilder)localObject).toString());
         }
+      }
+      if (bool)
+      {
+        paramAbsBaseArticleInfo = new JSONObject();
+        paramAbsBaseArticleInfo.put("id_ad_diversion_txt", "去广告");
+        paramJSONObject.put("id_ad_diversion", paramAbsBaseArticleInfo);
       }
     }
   }
   
-  public static boolean g(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (1022 == paramAdvertisementInfo.mAdvertisementExtInfo.i);
-  }
-  
   public static boolean g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("1"));
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 38) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (!paramAbsBaseArticleInfo.mSmallMiniGameInfo.a());
+  }
+  
+  public static void h(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo == null) {
+      return;
+    }
+    try
+    {
+      paramAdvertisementInfo = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(paramAdvertisementInfo));
+      GdtPreLoader.a().a(paramAdvertisementInfo);
+      return;
+    }
+    catch (Exception paramAdvertisementInfo)
+    {
+      paramAdvertisementInfo.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("ReadInJoyAdUtils", 2, "preLoadAdForMiniProgram fail");
+      }
+    }
   }
   
   public static void h(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1440,31 +1342,9 @@ public class ReadInJoyAdUtils
     }
   }
   
-  public static boolean h(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdvertisementInfo != null)
-    {
-      if (paramAdvertisementInfo.mAdvertisementExtInfo == null) {
-        return false;
-      }
-      if ((1014 != paramAdvertisementInfo.mAdvertisementExtInfo.i) && (1015 != paramAdvertisementInfo.mAdvertisementExtInfo.i))
-      {
-        bool1 = bool2;
-        if (1034 != paramAdvertisementInfo.mAdvertisementExtInfo.i) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
   public static boolean h(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39);
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("1"));
   }
   
   public static void i(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1486,21 +1366,12 @@ public class ReadInJoyAdUtils
   
   public static boolean i(AdvertisementInfo paramAdvertisementInfo)
   {
-    boolean bool2 = h(paramAdvertisementInfo);
-    boolean bool1 = true;
-    if ((!bool2) || (paramAdvertisementInfo.mAdvertisementExtInfo.jdField_r_of_type_Int != 1))
-    {
-      if (j(paramAdvertisementInfo)) {
-        return true;
-      }
-      bool1 = false;
-    }
-    return bool1;
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (5001 == paramAdvertisementInfo.mAdvertisementExtInfo.l);
   }
   
   public static boolean i(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("5"));
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39);
   }
   
   public static void j(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
@@ -1585,36 +1456,152 @@ public class ReadInJoyAdUtils
   
   public static boolean j(AdvertisementInfo paramAdvertisementInfo)
   {
-    return (h(paramAdvertisementInfo)) && (paramAdvertisementInfo.mAdvertisementExtInfo.s == 1);
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (1003 == paramAdvertisementInfo.mAdvertisementExtInfo.l);
   }
   
   public static boolean j(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("2"));
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("5"));
+  }
+  
+  public static void k(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
+  {
+    if (paramAbsBaseArticleInfo != null) {}
+    for (;;)
+    {
+      int i;
+      Object localObject3;
+      Object localObject4;
+      Object localObject6;
+      try
+      {
+        if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+          return;
+        }
+        paramAbsBaseArticleInfo = new JSONObject(((AdvertisementInfo)paramAbsBaseArticleInfo).mAdExtInfo).getString("floating_tip");
+        boolean bool = TextUtils.isEmpty(paramAbsBaseArticleInfo);
+        if (bool)
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdUtils", "floatingTipString is empty");
+          return;
+        }
+        JSONArray localJSONArray = new JSONArray(paramAbsBaseArticleInfo);
+        if (localJSONArray.length() < 1)
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdUtils", "floatingTips JSONArray is empty");
+          return;
+        }
+        i = 0;
+        localObject5 = "";
+        localObject3 = "";
+        paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject3;
+        localObject1 = paramAbsBaseArticleInfo;
+        localObject2 = paramAbsBaseArticleInfo;
+        paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject3;
+        if (i < localJSONArray.length())
+        {
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          String str = localJSONObject.getString("type");
+          bool = TextUtils.isEmpty(str);
+          localObject4 = localObject5;
+          localObject3 = localObject2;
+          if (!bool)
+          {
+            localObject4 = localObject5;
+            localObject3 = localObject2;
+            if (str.equals("1"))
+            {
+              localObject4 = localJSONObject.getString("text");
+              localObject3 = localJSONObject.getString("icon_url");
+            }
+          }
+          localObject2 = paramAbsBaseArticleInfo;
+          localObject6 = localObject1;
+          if (!TextUtils.isEmpty(str))
+          {
+            localObject2 = paramAbsBaseArticleInfo;
+            localObject6 = localObject1;
+            if (str.equals("2"))
+            {
+              localObject2 = localJSONObject.getString("text");
+              localObject6 = localJSONObject.getString("icon_url");
+            }
+          }
+        }
+        else
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject5))
+          {
+            localObject3 = new JSONObject();
+            ((JSONObject)localObject3).put("ad_left_warning_txt", localObject5);
+            paramJSONObject.put("id_text_left_warning", localObject3);
+          }
+          if (!TextUtils.isEmpty(paramAbsBaseArticleInfo))
+          {
+            localObject3 = new JSONObject();
+            ((JSONObject)localObject3).put("ad_right_warning_txt", paramAbsBaseArticleInfo);
+            paramJSONObject.put("id_txt_right_warning", localObject3);
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            paramAbsBaseArticleInfo = new JSONObject();
+            paramAbsBaseArticleInfo.put("img_left_warning_path", localObject2);
+            paramJSONObject.put("id_img_left_warning", paramAbsBaseArticleInfo);
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            paramAbsBaseArticleInfo = new JSONObject();
+            paramAbsBaseArticleInfo.put("img_right_warning_path", localObject1);
+            paramJSONObject.put("id_img_right_warning", paramAbsBaseArticleInfo);
+          }
+          return;
+        }
+      }
+      catch (Exception paramAbsBaseArticleInfo)
+      {
+        return;
+      }
+      i += 1;
+      Object localObject5 = localObject4;
+      paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject2;
+      Object localObject2 = localObject3;
+      Object localObject1 = localObject6;
+    }
   }
   
   public static boolean k(AdvertisementInfo paramAdvertisementInfo)
   {
-    String str = paramAdvertisementInfo.mAdExtInfo;
-    boolean bool = false;
-    if (str != null) {
-      try
-      {
-        int i = new JSONObject(paramAdvertisementInfo.mAdExtInfo).optInt("AdSource", -1);
-        if (i == 32) {
-          bool = true;
-        }
-        return bool;
-      }
-      catch (JSONException paramAdvertisementInfo)
-      {
-        paramAdvertisementInfo.printStackTrace();
-      }
-    }
-    return false;
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null) && (1022 == paramAdvertisementInfo.mAdvertisementExtInfo.l);
   }
   
   public static boolean k(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("2"));
+  }
+  
+  public static boolean l(AdvertisementInfo paramAdvertisementInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAdvertisementInfo != null)
+    {
+      if (paramAdvertisementInfo.mAdvertisementExtInfo == null) {
+        return false;
+      }
+      if ((1014 != paramAdvertisementInfo.mAdvertisementExtInfo.l) && (1015 != paramAdvertisementInfo.mAdvertisementExtInfo.l))
+      {
+        bool1 = bool2;
+        if (1034 != paramAdvertisementInfo.mAdvertisementExtInfo.l) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -1640,17 +1627,75 @@ public class ReadInJoyAdUtils
     return bool1;
   }
   
-  public static boolean l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean m(AdvertisementInfo paramAdvertisementInfo)
   {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("4"));
+    boolean bool2 = l(paramAdvertisementInfo);
+    boolean bool1 = true;
+    if ((!bool2) || (paramAdvertisementInfo.mAdvertisementExtInfo.A != 1))
+    {
+      if (n(paramAdvertisementInfo)) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public static boolean m(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return (j(paramAbsBaseArticleInfo)) || (g(paramAbsBaseArticleInfo)) || (h(paramAbsBaseArticleInfo)) || (i(paramAbsBaseArticleInfo)) || (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo));
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mFeedType == 39) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.d.equals("4"));
+  }
+  
+  public static boolean n(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return (l(paramAdvertisementInfo)) && (paramAdvertisementInfo.mAdvertisementExtInfo.B == 1);
   }
   
   public static boolean n(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (k(paramAbsBaseArticleInfo)) || (h(paramAbsBaseArticleInfo)) || (i(paramAbsBaseArticleInfo)) || (j(paramAbsBaseArticleInfo)) || (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo));
+  }
+  
+  public static int o(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementExtInfo != null)) {
+      return paramAdvertisementInfo.mAdvertisementExtInfo.C;
+    }
+    return 5;
+  }
+  
+  public static int o(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo.mFeedType == 38) {
+      return 2051;
+    }
+    if (paramAbsBaseArticleInfo.mFeedType == 39)
+    {
+      if (h(paramAbsBaseArticleInfo)) {
+        return 2053;
+      }
+      if (j(paramAbsBaseArticleInfo)) {
+        return 2054;
+      }
+      if (k(paramAbsBaseArticleInfo)) {
+        return 2052;
+      }
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo)) {
+        return 2057;
+      }
+    }
+    return 2050;
+  }
+  
+  public static int p(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (i(paramAdvertisementInfo)) {
+      return 116;
+    }
+    return 39;
+  }
+  
+  public static boolean p(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool2 = false;
     boolean bool1;
@@ -1683,7 +1728,46 @@ public class ReadInJoyAdUtils
     return bool1;
   }
   
-  public static boolean o(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static void q(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo == null) {
+      return;
+    }
+    try
+    {
+      localObject = new GameLoadData();
+      ((GameLoadData)localObject).a = paramAdvertisementInfo;
+      ((GameLoadData)localObject).b = String.valueOf(paramAdvertisementInfo.mAdAid);
+      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage))
+      {
+        paramAdvertisementInfo = Uri.parse(paramAdvertisementInfo.mAdLandingPage).getQueryParameter("adtag");
+        if (!TextUtils.isEmpty(paramAdvertisementInfo))
+        {
+          int i = paramAdvertisementInfo.lastIndexOf(".");
+          if ((i > 0) && (i < paramAdvertisementInfo.length() - 1)) {
+            ((GameLoadData)localObject).b = paramAdvertisementInfo.substring(i + 1);
+          }
+        }
+      }
+      ((GameLoadData)localObject).c = System.currentTimeMillis();
+      ReadinjoyAdCache.a(2, localObject);
+      ThreadManager.getSubThreadHandler().post(new ReadInJoyAdUtils.1());
+      return;
+    }
+    catch (Exception paramAdvertisementInfo)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addGdtWebClickReport fail message:");
+        ((StringBuilder)localObject).append(paramAdvertisementInfo.getMessage());
+        QLog.e("ReadInJoyAdUtils", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+  }
+  
+  public static boolean q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool3 = paramAbsBaseArticleInfo instanceof AdvertisementInfo;
     boolean bool2 = false;
@@ -1707,19 +1791,48 @@ public class ReadInJoyAdUtils
     return bool1;
   }
   
-  public static boolean p(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static boolean r(AdvertisementInfo paramAdvertisementInfo)
+  {
+    String str = paramAdvertisementInfo.mAdExtInfo;
+    boolean bool = false;
+    if (str != null) {
+      try
+      {
+        int i = new JSONObject(paramAdvertisementInfo.mAdExtInfo).optInt("AdSource", -1);
+        if (i == 32) {
+          bool = true;
+        }
+        return bool;
+      }
+      catch (JSONException paramAdvertisementInfo)
+      {
+        paramAdvertisementInfo.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public static boolean r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     return paramAbsBaseArticleInfo instanceof AdvertisementInfo;
   }
   
-  public static boolean q(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int s(AdvertisementInfo paramAdvertisementInfo)
   {
-    boolean bool2 = p(paramAbsBaseArticleInfo);
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(paramAdvertisementInfo)) {
+      return ReadInJoyAdSwitchUtil.c(paramAdvertisementInfo);
+    }
+    return 0;
+  }
+  
+  public static boolean s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool2 = r(paramAbsBaseArticleInfo);
     boolean bool1 = false;
     if (bool2)
     {
       paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-      if ((paramAbsBaseArticleInfo.mAdvertisementSoftInfo != null) && (paramAbsBaseArticleInfo.mAdvertisementSoftInfo.e == 1)) {
+      if ((paramAbsBaseArticleInfo.mAdvertisementSoftInfo != null) && (paramAbsBaseArticleInfo.mAdvertisementSoftInfo.q == 1)) {
         return true;
       }
       if (!RIJAdDownloadExKt.e(paramAbsBaseArticleInfo))
@@ -1737,36 +1850,12 @@ public class ReadInJoyAdUtils
     return false;
   }
   
-  public static boolean r(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()))
-    {
-      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1032 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.i) && (a())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean s(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()))
-    {
-      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1033 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.i) && (a())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public static boolean t(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
+    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()))
     {
       paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1031 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.i)) {
+      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1032 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l) && (b())) {
         return true;
       }
     }
@@ -1775,13 +1864,87 @@ public class ReadInJoyAdUtils
   
   public static boolean u(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && ((!((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) || (!a())))
+    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()))
+    {
+      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1033 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l) && (b())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean v(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
+    {
+      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      if ((paramAbsBaseArticleInfo.mAdvertisementExtInfo != null) && (1031 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean w(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool3 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      if (paramAbsBaseArticleInfo.mAdvertisementExtInfo == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (1025 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean x(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool3 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      if (paramAbsBaseArticleInfo.mAdvertisementExtInfo == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (1035 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean y(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo)) && ((!((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) || (!b())))
     {
       paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
       if (paramAbsBaseArticleInfo == null) {
         return false;
       }
-      if ((1033 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.i) || (1032 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.i)) {
+      if ((1033 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l) || (1032 == paramAbsBaseArticleInfo.mAdvertisementExtInfo.l)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean z(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
+    {
+      paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+      if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mAdMaterialId == 1122)) {
         return true;
       }
     }
@@ -1790,7 +1953,7 @@ public class ReadInJoyAdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils
  * JD-Core Version:    0.7.0.1
  */

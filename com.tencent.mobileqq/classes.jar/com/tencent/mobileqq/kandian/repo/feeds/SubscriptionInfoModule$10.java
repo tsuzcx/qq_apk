@@ -19,19 +19,19 @@ class SubscriptionInfoModule$10
 {
   public void run()
   {
-    Object localObject = TroopBarAssistantManager.a().b((QQAppInterface)SubscriptionInfoModule.m(this.this$0)).iterator();
+    Object localObject = TroopBarAssistantManager.a().i((QQAppInterface)SubscriptionInfoModule.p(this.this$0)).iterator();
     while (((Iterator)localObject).hasNext())
     {
       SubscriptionFeed localSubscriptionFeed = (SubscriptionFeed)((Iterator)localObject).next();
-      if (localSubscriptionFeed.a != null)
+      if (localSubscriptionFeed.c != null)
       {
         localSubscriptionFeed.b = 0;
-        int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType((QQAppInterface)SubscriptionInfoModule.n(this.this$0), localSubscriptionFeed.a);
-        RecentUtil.b((QQAppInterface)SubscriptionInfoModule.o(this.this$0), localSubscriptionFeed.a, i);
-        ((QQAppInterface)SubscriptionInfoModule.p(this.this$0)).getMessageFacade().a(localSubscriptionFeed.a, 1008);
+        int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType((QQAppInterface)SubscriptionInfoModule.q(this.this$0), localSubscriptionFeed.c);
+        RecentUtil.b((QQAppInterface)SubscriptionInfoModule.r(this.this$0), localSubscriptionFeed.c, i);
+        ((QQAppInterface)SubscriptionInfoModule.s(this.this$0)).getMessageFacade().a(localSubscriptionFeed.c, 1008);
       }
     }
-    localObject = RIJSPUtils.a(SubscriptionInfoModule.q(this.this$0), true, true).edit();
+    localObject = RIJSPUtils.a(SubscriptionInfoModule.t(this.this$0), true, true).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("subscribe_unread_clear_status", false);
     ((SharedPreferences.Editor)localObject).commit();
     SubscriptionInfoModule.a(this.this$0, false);
@@ -43,7 +43,7 @@ class SubscriptionInfoModule$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SubscriptionInfoModule.10
  * JD-Core Version:    0.7.0.1
  */

@@ -12,35 +12,26 @@ public class DbCacheDatabase
   extends SQLiteOpenHelper
   implements Sessional
 {
-  protected static HashMap<Long, DbCacheDatabase> a;
-  protected int a;
-  protected Context a;
+  protected static HashMap<Long, DbCacheDatabase> g = new HashMap();
   protected String a;
-  protected HashSet<Integer> a;
-  protected volatile boolean a;
-  protected boolean b = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  protected HashSet<Integer> b = new HashSet();
+  protected Context c = null;
+  protected volatile boolean d = false;
+  protected boolean e = true;
+  protected int f = 0;
   
   protected DbCacheDatabase(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
     super(paramContext, paramString, paramCursorFactory, paramInt);
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramString;
+    this.c = paramContext;
   }
   
   public static DbCacheDatabase a(Context paramContext, long paramLong)
   {
     try
     {
-      DbCacheDatabase localDbCacheDatabase = (DbCacheDatabase)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DbCacheDatabase localDbCacheDatabase = (DbCacheDatabase)g.get(Long.valueOf(paramLong));
       Object localObject = localDbCacheDatabase;
       if (localDbCacheDatabase == null)
       {
@@ -48,7 +39,7 @@ public class DbCacheDatabase
         ((StringBuilder)localObject).append(String.valueOf(paramLong));
         ((StringBuilder)localObject).append("_opensdk");
         localObject = new DbCacheDatabase(paramContext, MD5Utils.encodeHexStr(((StringBuilder)localObject).toString()), null, 74);
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject);
+        g.put(Long.valueOf(paramLong), localObject);
       }
       return localObject;
     }
@@ -57,15 +48,15 @@ public class DbCacheDatabase
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContext.deleteDatabase(this.jdField_a_of_type_JavaLangString);
+    this.c.deleteDatabase(this.a);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt))) {
-        this.jdField_a_of_type_Int += 1;
+      if (this.b.add(Integer.valueOf(paramInt))) {
+        this.f += 1;
       }
       return;
     }
@@ -81,27 +72,27 @@ public class DbCacheDatabase
     //   2: aconst_null
     //   3: astore_2
     //   4: aload_0
-    //   5: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   5: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   8: astore_1
     //   9: aload_1
     //   10: astore_2
     //   11: aload_0
-    //   12: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   12: getfield 43	com/tencent/open/component/cache/database/DbCacheDatabase:d	Z
     //   15: ifeq +61 -> 76
     //   18: aload_1
     //   19: ifnull +7 -> 26
     //   22: aload_1
-    //   23: invokevirtual 111	android/database/sqlite/SQLiteDatabase:close	()V
+    //   23: invokevirtual 116	android/database/sqlite/SQLiteDatabase:close	()V
     //   26: aload_0
-    //   27: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   27: invokevirtual 118	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
     //   30: aload_0
-    //   31: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   31: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   34: astore_2
     //   35: aload_2
     //   36: astore_1
     //   37: aload_0
     //   38: iconst_0
-    //   39: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   39: putfield 43	com/tencent/open/component/cache/database/DbCacheDatabase:d	Z
     //   42: aload_1
     //   43: astore_2
     //   44: goto +32 -> 76
@@ -110,14 +101,14 @@ public class DbCacheDatabase
     //   51: astore_1
     //   52: goto +28 -> 80
     //   55: aload_0
-    //   56: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   56: invokevirtual 118	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
     //   59: aload_0
-    //   60: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   60: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   63: astore_1
     //   64: aload_1
     //   65: astore_2
     //   66: aload_0
-    //   67: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   67: getfield 43	com/tencent/open/component/cache/database/DbCacheDatabase:d	Z
     //   70: ifeq +6 -> 76
     //   73: goto -36 -> 37
     //   76: aload_0
@@ -125,16 +116,16 @@ public class DbCacheDatabase
     //   78: aload_2
     //   79: areturn
     //   80: aload_0
-    //   81: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   81: getfield 43	com/tencent/open/component/cache/database/DbCacheDatabase:d	Z
     //   84: ifeq +17 -> 101
     //   87: aload_0
-    //   88: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   88: invokevirtual 118	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
     //   91: aload_0
-    //   92: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   92: invokespecial 111	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   95: pop
     //   96: aload_0
     //   97: iconst_0
-    //   98: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   98: putfield 43	com/tencent/open/component/cache/database/DbCacheDatabase:d	Z
     //   101: aload_1
     //   102: athrow
     //   103: aload_0
@@ -193,17 +184,17 @@ public class DbCacheDatabase
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheDatabase
  * JD-Core Version:    0.7.0.1
  */

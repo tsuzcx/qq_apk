@@ -12,17 +12,17 @@ class VideoSaveToAlbumHelper$2
     if ((paramInt != 0) && (paramInt != -1)) {
       paramVideoSaveToAlbumHelper = this.val$hflipPath;
     } else {
-      paramVideoSaveToAlbumHelper = this.val$taskInfo.jdField_b_of_type_JavaLangString;
+      paramVideoSaveToAlbumHelper = this.val$taskInfo.b;
     }
     add(paramVideoSaveToAlbumHelper);
-    add(this.val$taskInfo.d);
-    add(Integer.valueOf(this.val$taskInfo.a));
-    add(Integer.valueOf(this.val$taskInfo.jdField_b_of_type_Int));
+    add(this.val$taskInfo.f);
+    add(Integer.valueOf(this.val$taskInfo.d));
+    add(Integer.valueOf(this.val$taskInfo.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.2
  * JD-Core Version:    0.7.0.1
  */

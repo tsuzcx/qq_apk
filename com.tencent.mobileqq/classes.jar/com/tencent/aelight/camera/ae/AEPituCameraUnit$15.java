@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.ae;
 
-import com.tencent.aelight.camera.ae.camera.core.AECameraManager;
+import com.tencent.aelight.camera.ae.camera.ui.AECaptureController;
 
 class AEPituCameraUnit$15
   implements Runnable
@@ -9,14 +9,12 @@ class AEPituCameraUnit$15
   
   public void run()
   {
-    if ((this.this$0.a.isFlashEnabled()) && (!this.this$0.f())) {
-      this.this$0.a.turnFlash(this.this$0.a(), false);
-    }
+    this.this$0.R.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.15
  * JD-Core Version:    0.7.0.1
  */

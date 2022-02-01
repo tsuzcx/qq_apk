@@ -38,7 +38,7 @@ public final class AVGameUtil
 {
   public static int a()
   {
-    int i = AvGameConfigUtil.a().c();
+    int i = AvGameConfigUtil.b().c();
     if (i != 0)
     {
       if (i != 1) {
@@ -64,74 +64,13 @@ public final class AVGameUtil
     return 0;
   }
   
-  public static long a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    try
-    {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (Throwable paramString) {}
-    return 0L;
-  }
-  
-  public static Bitmap a(String paramString)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(AvGameResDownloadUtil.c());
-    ((StringBuilder)localObject1).append(paramString);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("getImageBitmap suc: ");
-        ((StringBuilder)localObject2).append((String)localObject1);
-        QLog.d("AVGameUtils", 2, ((StringBuilder)localObject2).toString());
-      }
-      Object localObject2 = GlobalImageCache.a.get(localObject1);
-      if ((localObject2 != null) && ((localObject2 instanceof Bitmap))) {
-        return (Bitmap)localObject2;
-      }
-      try
-      {
-        localObject2 = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject2).inScaled = false;
-        localObject2 = BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
-        GlobalImageCache.a.put(localObject1, localObject2);
-        return localObject2;
-      }
-      catch (Throwable localThrowable)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("getBitmap error ");
-        ((StringBuilder)localObject2).append(paramString);
-        ((StringBuilder)localObject2).append(localThrowable.getMessage());
-        QLog.i("AVGameUtils", 1, ((StringBuilder)localObject2).toString());
-        return null;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("getImageBitmap fail: ");
-      paramString.append(localThrowable);
-      QLog.d("AVGameUtils", 2, paramString.toString());
-    }
-    return null;
-  }
-  
   public static Drawable a(String paramString1, String paramString2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cjAdLogo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString1);
-    paramString1 = a(localStringBuilder.toString());
+    paramString1 = c(localStringBuilder.toString());
     if (paramString1 != null) {
       return new BitmapDrawable(paramString1);
     }
@@ -152,14 +91,14 @@ public final class AVGameUtil
   
   public static StateListDrawable a(Resources paramResources, String paramString1, String paramString2)
   {
-    paramString2 = a(paramString1);
+    paramString2 = c(paramString1);
     Object localObject = null;
     if (paramString2 != null) {
       paramString2 = new BitmapDrawable(paramResources, paramString2);
     } else {
       paramString2 = null;
     }
-    Bitmap localBitmap = a(paramString1);
+    Bitmap localBitmap = c(paramString1);
     paramString1 = localObject;
     if (localBitmap != null) {
       paramString1 = new BitmapDrawable(paramResources, localBitmap);
@@ -170,17 +109,6 @@ public final class AVGameUtil
     paramResources.addState(new int[] { 16842910 }, paramString2);
     paramResources.addState(new int[0], paramString2);
     return paramResources;
-  }
-  
-  public static FontStyleConfig a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameUtils", 2, "parseFontConfig ");
-    }
-    String str = FileUtils.readFileContent(new File(AvGameResDownloadUtil.e()));
-    FontStyleConfig localFontStyleConfig = new FontStyleConfig();
-    localFontStyleConfig.a(str);
-    return localFontStyleConfig;
   }
   
   public static String a(long paramLong)
@@ -221,7 +149,7 @@ public final class AVGameUtil
       if (paramList.length() > 0) {
         localObject1 = paramList.substring(0, paramList.length() - 1);
       }
-      localObject2 = String.format(paramContext.getString(2131690391), new Object[] { localObject1 });
+      localObject2 = String.format(paramContext.getString(2131887302), new Object[] { localObject1 });
     }
     return localObject2;
   }
@@ -263,12 +191,12 @@ public final class AVGameUtil
         }
       }
       j = 1;
-      break label116;
+      break label112;
     }
     StringBuilder localStringBuilder;
     boolean bool1 = false;
     int j = 0;
-    label116:
+    label112:
     boolean bool2 = bool1;
     int i = j;
     if (!bool1)
@@ -428,17 +356,12 @@ public final class AVGameUtil
   
   public static void a(String paramString, Activity paramActivity)
   {
-    AVGameHandler.a().b().post(new AVGameUtil.1(paramActivity, paramString));
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    return (SmallScreenUtils.a(paramActivity, "miui.intent.action.APP_PERM_EDITOR")) || (SmallScreenUtils.a(paramActivity, "com.meizu.safe.security.SHOW_APPSEC")) || (SmallScreenUtils.a(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER")) || (SmallScreenUtils.a(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"));
+    AVGameHandler.a().c().post(new AVGameUtil.1(paramActivity, paramString));
   }
   
   public static int b()
   {
-    int j = AvGameConfigUtil.a().d();
+    int j = AvGameConfigUtil.b().d();
     if (j != 0)
     {
       int i = 1;
@@ -454,23 +377,100 @@ public final class AVGameUtil
     return 0;
   }
   
+  public static long b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (Throwable paramString) {}
+    return 0L;
+  }
+  
+  public static boolean b(Activity paramActivity)
+  {
+    return (SmallScreenUtils.a(paramActivity, "miui.intent.action.APP_PERM_EDITOR")) || (SmallScreenUtils.a(paramActivity, "com.meizu.safe.security.SHOW_APPSEC")) || (SmallScreenUtils.a(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER")) || (SmallScreenUtils.a(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"));
+  }
+  
   public static int c()
   {
-    return AvGameConfigUtil.a().a();
+    return AvGameConfigUtil.b().a();
+  }
+  
+  public static Bitmap c(String paramString)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(AvGameResDownloadUtil.c());
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getImageBitmap suc: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("AVGameUtils", 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject2 = GlobalImageCache.a.get(localObject1);
+      if ((localObject2 != null) && ((localObject2 instanceof Bitmap))) {
+        return (Bitmap)localObject2;
+      }
+      try
+      {
+        localObject2 = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject2).inScaled = false;
+        localObject2 = BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
+        GlobalImageCache.a.put(localObject1, localObject2);
+        return localObject2;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getBitmap error ");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(localThrowable.getMessage());
+        QLog.i("AVGameUtils", 1, ((StringBuilder)localObject2).toString());
+        return null;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getImageBitmap fail: ");
+      paramString.append(localThrowable);
+      QLog.d("AVGameUtils", 2, paramString.toString());
+    }
+    return null;
   }
   
   public static int d()
   {
-    return AvGameConfigUtil.a().b();
+    return AvGameConfigUtil.b().b();
   }
   
   public static int e()
   {
-    AvGameLobbyConfBean localAvGameLobbyConfBean = AvGameConfigUtil.a();
+    AvGameLobbyConfBean localAvGameLobbyConfBean = AvGameConfigUtil.b();
     if (localAvGameLobbyConfBean == null) {
       return 0;
     }
     return localAvGameLobbyConfBean.d();
+  }
+  
+  public static FontStyleConfig f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameUtils", 2, "parseFontConfig ");
+    }
+    String str = FileUtils.readFileContent(new File(AvGameResDownloadUtil.e()));
+    FontStyleConfig localFontStyleConfig = new FontStyleConfig();
+    localFontStyleConfig.a(str);
+    return localFontStyleConfig;
   }
 }
 

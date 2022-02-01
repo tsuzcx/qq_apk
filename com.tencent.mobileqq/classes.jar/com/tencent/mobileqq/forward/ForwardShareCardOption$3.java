@@ -14,7 +14,7 @@ class ForwardShareCardOption$3
   
   protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.A();
+    this.a.ae();
     if (ForwardShareCardOption.a(this.a) != -1)
     {
       if ((paramBoolean) && (paramHashMap != null))
@@ -27,18 +27,18 @@ class ForwardShareCardOption$3
         {
           paramHashMap = new StringBuilder();
           paramHashMap.append("mTroopVerifyLink=");
-          paramHashMap.append(ForwardShareCardOption.a(this.a));
-          paramHashMap.append(" mTroopNotNeedVefifyLink=");
           paramHashMap.append(ForwardShareCardOption.b(this.a));
+          paramHashMap.append(" mTroopNotNeedVefifyLink=");
+          paramHashMap.append(ForwardShareCardOption.c(this.a));
           QLog.d("ForwardOption.ForwardShareCardOption", 2, paramHashMap.toString());
         }
-        if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
-          ForwardShareCardOption.a(this.a);
+        if ((str != null) && (str.equals(ForwardShareCardOption.d(this.a)))) {
+          ForwardShareCardOption.e(this.a);
         }
       }
       else
       {
-        QQToast.a(this.a.a, 1, this.a.a.getString(2131692928), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+        QQToast.makeText(this.a.s, 1, this.a.s.getString(2131890039), 0).show(((BaseActivity)this.a.s).getTitleBarHeight());
       }
       ForwardShareCardOption.a(this.a, -1);
     }
@@ -46,7 +46,7 @@ class ForwardShareCardOption$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VideoFeedsShuntBarConfigure
 {
-  private static final String jdField_a_of_type_JavaLangString = "VideoFeedsShuntBarConfigure";
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private String jdField_b_of_type_JavaLangString;
+  private static final String a = "VideoFeedsShuntBarConfigure";
+  private SparseIntArray b = new SparseIntArray();
+  private SparseIntArray c = new SparseIntArray();
+  private QQAppInterface d;
+  private String e;
   
   public VideoFeedsShuntBarConfigure(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_JavaLangString = RIJQQAppInterfaceUtil.a();
+    this.d = paramQQAppInterface;
+    this.e = RIJQQAppInterfaceUtil.d();
   }
   
   public void a()
@@ -38,38 +38,38 @@ public class VideoFeedsShuntBarConfigure
     {
       try
       {
-        boolean bool = ReadInJoyHelper.A(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        boolean bool = ReadInJoyHelper.ag(this.d);
         if (!bool)
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-          localStringBuilder.append(paramECommerceEntranceInfo.g);
+          localStringBuilder.append(this.e);
+          localStringBuilder.append(paramECommerceEntranceInfo.n);
           RIJSPUtils.a(localStringBuilder.toString(), localObject);
         }
         if (bool)
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-          localStringBuilder.append(paramECommerceEntranceInfo.g);
-          i = ((Integer)RIJSPUtils.a(localStringBuilder.toString(), localObject)).intValue();
-          int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-          int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-          if ((i + j < paramECommerceEntranceInfo.f) && (k < paramECommerceEntranceInfo.e))
+          localStringBuilder.append(this.e);
+          localStringBuilder.append(paramECommerceEntranceInfo.n);
+          i = ((Integer)RIJSPUtils.b(localStringBuilder.toString(), localObject)).intValue();
+          int k = this.b.get(paramECommerceEntranceInfo.n);
+          int j = this.c.get(paramECommerceEntranceInfo.n);
+          if ((i + j < paramECommerceEntranceInfo.m) && (k < paramECommerceEntranceInfo.l))
           {
             k += 1;
             j += 1;
-            this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, k);
-            this.jdField_b_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, j);
+            this.b.put(paramECommerceEntranceInfo.n, k);
+            this.c.put(paramECommerceEntranceInfo.n, j);
             if (QLog.isColorLevel())
             {
-              localObject = jdField_a_of_type_JavaLangString;
+              localObject = a;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("video_source_id: ");
-              localStringBuilder.append(paramECommerceEntranceInfo.g);
+              localStringBuilder.append(paramECommerceEntranceInfo.n);
               localStringBuilder.append(", one_day_display_counts: ");
-              localStringBuilder.append(paramECommerceEntranceInfo.f);
+              localStringBuilder.append(paramECommerceEntranceInfo.m);
               localStringBuilder.append(", session_display_counts: ");
-              localStringBuilder.append(paramECommerceEntranceInfo.e);
+              localStringBuilder.append(paramECommerceEntranceInfo.l);
               localStringBuilder.append(", session_has_display_counts: ");
               localStringBuilder.append(k);
               localStringBuilder.append(", one_day_has_display_counts: ");
@@ -86,7 +86,7 @@ public class VideoFeedsShuntBarConfigure
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("解析引流条出现的条件出错: ");
           localStringBuilder.append(paramECommerceEntranceInfo.getMessage());
@@ -100,7 +100,7 @@ public class VideoFeedsShuntBarConfigure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShuntBarConfigure
  * JD-Core Version:    0.7.0.1
  */

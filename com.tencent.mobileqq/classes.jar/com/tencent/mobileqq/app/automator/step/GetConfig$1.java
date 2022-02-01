@@ -27,7 +27,7 @@ class GetConfig$1
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
     }
-    Object localObject = (IPreDownloadController)this.this$0.mAutomator.a.getRuntimeService(IPreDownloadController.class);
+    Object localObject = (IPreDownloadController)this.this$0.mAutomator.k.getRuntimeService(IPreDownloadController.class);
     if (((IPreDownloadController)localObject).isEnable()) {
       ((IPreDownloadController)localObject).preDownloadSuccess("http://tvk_sdkmgr/unkown", -1L);
     }
@@ -35,7 +35,7 @@ class GetConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetConfig.1
  * JD-Core Version:    0.7.0.1
  */

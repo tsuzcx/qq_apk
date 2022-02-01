@@ -18,24 +18,6 @@ public final class ColorUtils
     return arrayOfDouble[1] / 100.0D;
   }
   
-  public static double a(@ColorInt int paramInt1, @ColorInt int paramInt2)
-  {
-    if (Color.alpha(paramInt2) == 255)
-    {
-      int i = paramInt1;
-      if (Color.alpha(paramInt1) < 255) {
-        i = a(paramInt1, paramInt2);
-      }
-      double d1 = a(i) + 0.05D;
-      double d2 = a(paramInt2) + 0.05D;
-      return Math.max(d1, d2) / Math.min(d1, d2);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("background can not be translucent: #");
-    localStringBuilder.append(Integer.toHexString(paramInt2));
-    throw new IllegalArgumentException(localStringBuilder.toString());
-  }
-  
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     if (paramFloat1 < paramFloat2) {
@@ -52,7 +34,7 @@ public final class ColorUtils
   {
     int i = Color.alpha(paramInt2);
     int j = Color.alpha(paramInt1);
-    int k = c(j, i);
+    int k = d(j, i);
     return Color.argb(k, a(Color.red(paramInt1), j, Color.red(paramInt2), i, k), a(Color.green(paramInt1), j, Color.green(paramInt2), i, k), a(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
   }
   
@@ -62,7 +44,7 @@ public final class ColorUtils
     int j = 255;
     if (i == 255)
     {
-      double d1 = a(b(paramInt1, 255), paramInt2);
+      double d1 = b(c(paramInt1, 255), paramInt2);
       double d2 = paramFloat;
       if (d1 < d2) {
         return -1;
@@ -72,7 +54,7 @@ public final class ColorUtils
       while ((i <= 10) && (j - k > 1))
       {
         int m = (k + j) / 2;
-        if (a(b(paramInt1, m), paramInt2) < d2) {
+        if (b(c(paramInt1, m), paramInt2) < d2) {
           k = m;
         } else {
           j = m;
@@ -192,8 +174,26 @@ public final class ColorUtils
     return arrayOfDouble1;
   }
   
+  public static double b(@ColorInt int paramInt1, @ColorInt int paramInt2)
+  {
+    if (Color.alpha(paramInt2) == 255)
+    {
+      int i = paramInt1;
+      if (Color.alpha(paramInt1) < 255) {
+        i = a(paramInt1, paramInt2);
+      }
+      double d1 = a(i) + 0.05D;
+      double d2 = a(paramInt2) + 0.05D;
+      return Math.max(d1, d2) / Math.min(d1, d2);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("background can not be translucent: #");
+    localStringBuilder.append(Integer.toHexString(paramInt2));
+    throw new IllegalArgumentException(localStringBuilder.toString());
+  }
+  
   @ColorInt
-  public static int b(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
+  public static int c(@ColorInt int paramInt1, @IntRange(from=0L, to=255L) int paramInt2)
   {
     if ((paramInt2 >= 0) && (paramInt2 <= 255)) {
       return paramInt1 & 0xFFFFFF | paramInt2 << 24;
@@ -201,14 +201,14 @@ public final class ColorUtils
     throw new IllegalArgumentException("alpha must be between 0 and 255.");
   }
   
-  private static int c(int paramInt1, int paramInt2)
+  private static int d(int paramInt1, int paramInt2)
   {
     return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.ColorUtils
  * JD-Core Version:    0.7.0.1
  */

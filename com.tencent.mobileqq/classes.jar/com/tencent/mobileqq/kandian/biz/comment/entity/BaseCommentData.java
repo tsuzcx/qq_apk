@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.comment.entity;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyMedalInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public abstract class BaseCommentData
   public String activityJumpUrl;
   public oidb_cmd0xc46.ActivityLevel activityLevel;
   public String activityPicUrl;
+  public AbsBaseArticleInfo advertisementInfo;
   public int anonymous;
   public String authorComment;
   public int authorSelection;
@@ -46,13 +48,13 @@ public abstract class BaseCommentData
   public boolean isAuthorSticky;
   public boolean isBanner;
   public boolean isDelete;
+  public boolean isFollowButtonShown;
   public boolean isFollowing;
   public int isStar;
   public String ksHomePage;
   public int level;
   public int like;
   public int likeCnt;
-  public String mAdTxt;
   public int maxLine = 9;
   public ReadInJoyMedalInfo medalInfo;
   public List<BaseCommentData.MediaData> mediaDataList;
@@ -87,7 +89,7 @@ public abstract class BaseCommentData
     {
       localObject = (BaseCommentData.MediaData)this.mediaDataList.get(0);
       if (localObject != null) {
-        return ((BaseCommentData.MediaData)localObject).e;
+        return ((BaseCommentData.MediaData)localObject).i;
       }
     }
     return 0;
@@ -101,7 +103,7 @@ public abstract class BaseCommentData
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localStringBuilder.append(((BaseCommentData.CommentRptData)((Iterator)localObject).next()).a);
+        localStringBuilder.append(((BaseCommentData.CommentRptData)((Iterator)localObject).next()).b);
       }
     }
     return localStringBuilder.toString();
@@ -334,7 +336,7 @@ public abstract class BaseCommentData
     localStringBuilder.append(", isAd=");
     localStringBuilder.append(this.isAd);
     localStringBuilder.append(", advertisementInfo=");
-    localStringBuilder.append(this.mAdTxt);
+    localStringBuilder.append(this.advertisementInfo);
     localStringBuilder.append(", commentLinkDataList=");
     localStringBuilder.append(this.commentLinkDataList);
     localStringBuilder.append(", commentRptDataList=");
@@ -345,7 +347,7 @@ public abstract class BaseCommentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData
  * JD-Core Version:    0.7.0.1
  */

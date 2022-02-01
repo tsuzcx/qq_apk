@@ -20,10 +20,10 @@ public class InputStatusObserver
         if (paramInt != 3) {
           return;
         }
-        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        b(paramBoolean, ((Boolean)paramObject).booleanValue());
         return;
       }
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
       return;
     }
     a(paramBoolean, paramObject);
@@ -31,7 +31,7 @@ public class InputStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusObserver
  * JD-Core Version:    0.7.0.1
  */

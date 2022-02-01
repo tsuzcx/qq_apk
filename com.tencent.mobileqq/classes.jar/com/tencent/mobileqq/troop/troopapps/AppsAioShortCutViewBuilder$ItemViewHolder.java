@@ -7,12 +7,12 @@ import android.widget.TextView;
 public class AppsAioShortCutViewBuilder$ItemViewHolder
 {
   public View a;
-  public CheckBox a;
-  public TextView a;
+  public TextView b;
+  public CheckBox c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsAioShortCutViewBuilder.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

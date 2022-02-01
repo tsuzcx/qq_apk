@@ -174,7 +174,7 @@ public class DeviceCheck
     if (Build.VERSION.SDK_INT < 21) {
       return false;
     }
-    Object localObject = ConfigManager.a(BaseApplication.getContext());
+    Object localObject = ConfigManager.c(BaseApplication.getContext());
     ICodecConfigParser localICodecConfigParser = (ICodecConfigParser)QRoute.api(ICodecConfigParser.class);
     localICodecConfigParser.init((IConfigParser)localObject);
     localObject = localICodecConfigParser.getAVCEncoderAbility();

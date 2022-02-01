@@ -1,29 +1,33 @@
 package com.tencent.av.ui;
 
-import android.content.res.Resources;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.wtogether.WTogetherRealNameVideoProcessHelper;
-import com.tencent.av.wtogether.callback.RealNameAuthCallback;
+import android.view.View;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.screenshare.ScreenShareManager;
+import com.tencent.av.screenshare.ScreenShareReportHelper;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class DoubleVideoCtrlUI$21
-  implements RealNameAuthCallback
+  implements ActionSheet.OnButtonClickListener
 {
-  DoubleVideoCtrlUI$21(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, SessionInfo paramSessionInfo, WTogetherRealNameVideoProcessHelper paramWTogetherRealNameVideoProcessHelper) {}
+  DoubleVideoCtrlUI$21(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, View paramView, ActionSheet paramActionSheet) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    if (paramInt != 0)
     {
-      DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvAppSessionInfo);
+      if (paramInt == 1)
+      {
+        ((ScreenShareManager)this.d.al.c(18)).b();
+        ScreenShareReportHelper.b("0X800B8A2");
+      }
     }
     else
     {
-      int i = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.getDimensionPixelSize(2131299168);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(2131696011, 0, i);
+      this.d.f(this.a, this.b);
+      ScreenShareReportHelper.b("0X800AD8D");
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
+    this.c.superDismiss();
   }
 }
 

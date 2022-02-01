@@ -22,13 +22,13 @@ final class SetSplash$1
   {
     try
     {
-      SplashUIdata localSplashUIdata = (SplashUIdata)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
+      SplashUIdata localSplashUIdata = (SplashUIdata)this.b;
+      this.a = true;
+      this.c.l = false;
       if (localSplashUIdata.a != 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+      this.c.d();
       return;
     }
     catch (Exception localException)
@@ -43,39 +43,39 @@ final class SetSplash$1
     {
       try
       {
-        if (this.jdField_a_of_type_JavaLangObject == null) {
+        if (this.b == null) {
           return;
         }
-        SplashUIdata localSplashUIdata = (SplashUIdata)this.jdField_a_of_type_JavaLangObject;
+        SplashUIdata localSplashUIdata = (SplashUIdata)this.b;
         QLog.i("SplashMiniGameStarter", 1, "bindView");
         com.tencent.mobileqq.splashad.SplashADUtil.a = System.currentTimeMillis();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
+        if (!this.c.k)
         {
-          paramStartupDirector.a = 0L;
+          paramStartupDirector.g = 0L;
           return;
         }
-        ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131377782);
+        ViewGroup localViewGroup = (ViewGroup)this.d.findViewById(2131446243);
         if (localViewGroup == null)
         {
           QLog.i("SplashMiniGameStarter", 1, "bindView fail, root is null");
-          paramStartupDirector.a = 0L;
+          paramStartupDirector.g = 0L;
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqMiniApiISplashMiniGameStarterService.setNeedShow(false);
-        localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
+        this.e.setNeedShow(false);
+        localViewGroup.addView(this.c, 0);
         if (localSplashUIdata.a == 2)
         {
           QLog.i("SplashMiniGameStarter", 1, "show video");
-          this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
-          if (this.jdField_a_of_type_ComTencentMobileqqMiniApiISplashMiniGameStarterService.getCurrData() != null)
+          this.c.b();
+          if (this.e.getCurrData() != null)
           {
-            l = this.jdField_a_of_type_ComTencentMobileqqMiniApiISplashMiniGameStarterService.getCurrData().videoDuration * 1000;
-            paramStartupDirector.a = l;
+            l = this.e.getCurrData().videoDuration * 1000;
+            paramStartupDirector.g = l;
           }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqMiniApiISplashMiniGameStarterService.preloadMiniGame();
+          this.e.preloadMiniGame();
           return;
         }
       }
@@ -90,7 +90,7 @@ final class SetSplash$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.1
  * JD-Core Version:    0.7.0.1
  */

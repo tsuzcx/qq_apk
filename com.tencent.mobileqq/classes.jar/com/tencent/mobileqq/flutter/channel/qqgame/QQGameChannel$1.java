@@ -24,8 +24,8 @@ class QQGameChannel$1
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("osVersion", Build.VERSION.RELEASE);
-      localHashMap.put("qqVersion", "8.7.0.5295");
-      localHashMap.put("uin", GameCenterUtil.a());
+      localHashMap.put("qqVersion", "8.8.17.5770");
+      localHashMap.put("uin", GameCenterUtil.b());
       paramResult.success(localHashMap);
     }
   }
@@ -39,8 +39,29 @@ class QQGameChannel$1
     {
       if ((paramObject instanceof JSONObject))
       {
-        paramObject = new JSONObject(((JSONObject)paramObject).getString("reportInfo"));
+        paramObject = new JSONObject(((JSONObject)paramObject).optString("reportInfo"));
         ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramObject, 0);
+        paramResult.success(null);
+        return;
+      }
+    }
+    catch (Throwable paramObject)
+    {
+      paramObject.printStackTrace();
+    }
+  }
+  
+  protected void b(Object paramObject, MethodChannel.Result paramResult)
+  {
+    try
+    {
+      if ((paramObject instanceof JSONObject))
+      {
+        Object localObject = (JSONObject)paramObject;
+        paramObject = ((JSONObject)localObject).optString("eventName");
+        String str = ((JSONObject)localObject).optString("pageName");
+        localObject = ((JSONObject)localObject).optString("extJsonStr");
+        ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportToAtta(str, paramObject, (String)localObject);
         paramResult.success(null);
         return;
       }
@@ -53,7 +74,7 @@ class QQGameChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqgame.QQGameChannel.1
  * JD-Core Version:    0.7.0.1
  */

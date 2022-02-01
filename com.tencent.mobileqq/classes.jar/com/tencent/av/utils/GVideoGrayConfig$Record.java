@@ -2,21 +2,19 @@ package com.tencent.av.utils;
 
 public class GVideoGrayConfig$Record
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  public long a = 0L;
+  public int b = -1;
   public String c;
+  public String d;
+  public String e;
   
   public GVideoGrayConfig$Record(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.a = paramLong;
+    this.b = paramInt;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
   }
 }
 

@@ -10,17 +10,17 @@ final class VideoMaskController$showVideoMaskForAWhile$1
   
   public final void run()
   {
-    if ((VideoMaskController.a(this.this$0).isPlaying()) && (!this.this$0.a()))
+    if ((VideoMaskController.b(this.this$0).isPlaying()) && (!this.this$0.e()))
     {
-      VideoMaskController.d(this.this$0);
+      VideoMaskController.g(this.this$0);
       return;
     }
-    VideoMaskController.e(this.this$0);
+    VideoMaskController.h(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.showVideoMaskForAWhile.1
  * JD-Core Version:    0.7.0.1
  */

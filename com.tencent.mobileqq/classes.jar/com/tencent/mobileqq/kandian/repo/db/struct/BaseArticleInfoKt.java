@@ -25,7 +25,6 @@ import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.viola.utils.ViolaLogUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,11 +34,9 @@ import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
 import tencent.im.oidb.search.RequestSearchWord.Rcmd;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"shouldReportExtraBiuUI", "", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "shouldShowExtraBiuUI", "getSocialCardJumpInfo", "", "getSocialInfo", "getWormholeData", "getWormholeId", "hasOnlyTwoVideoFeeds", "isTwoItemVideoFeed", "isWeishiGridTwoItemFeed", "makeDislikeParam", "Lcom/tencent/mobileqq/kandian/repo/dislike/DislikeParam;", "dislikeInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/kandian/repo/dislike/DislikeInfo;", "rowkey", "setSearchWordInfo", "", "title", "rcmds", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "Ltencent/im/oidb/search/RequestSearchWord$Rcmd;", "sessionId", "Lcom/tencent/mobileqq/pb/PBStringField;", "kandian_feature_impl_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"shouldReportExtraBiuUI", "", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "shouldShowExtraBiuUI", "getSocialCardJumpInfo", "", "getSocialInfo", "hasOnlyTwoVideoFeeds", "isTwoItemVideoFeed", "isWeishiGridTwoItemFeed", "makeDislikeParam", "Lcom/tencent/mobileqq/kandian/repo/dislike/DislikeParam;", "dislikeInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/kandian/repo/dislike/DislikeInfo;", "rowkey", "setSearchWordInfo", "", "title", "rcmds", "Lcom/tencent/mobileqq/pb/PBRepeatMessageField;", "Ltencent/im/oidb/search/RequestSearchWord$Rcmd;", "sessionId", "Lcom/tencent/mobileqq/pb/PBStringField;", "kandian_feature_impl_release"}, k=2, mv={1, 1, 16})
 public final class BaseArticleInfoKt
 {
   @Nullable
@@ -63,50 +60,23 @@ public final class BaseArticleInfoKt
         i = 0;
       }
       if (i != 0) {
-        localDislikeParam.jdField_a_of_type_JavaLangString = paramString;
+        localDislikeParam.g = paramString;
       }
     }
-    localDislikeParam.jdField_a_of_type_Long = paramAbsBaseArticleInfo.mArticleID;
-    localDislikeParam.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localDislikeParam.a = paramAbsBaseArticleInfo.mArticleID;
+    localDislikeParam.d = paramArrayList;
     if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
     {
-      localDislikeParam.b = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long;
-      localDislikeParam.c = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
+      localDislikeParam.e = paramAbsBaseArticleInfo.mSocialFeedInfo.a;
+      localDislikeParam.f = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
     }
-    if (RIJFeedsType.C(paramAbsBaseArticleInfo))
+    if (RIJFeedsType.I(paramAbsBaseArticleInfo))
     {
-      localDislikeParam.c = paramAbsBaseArticleInfo.mPolymericInfo.b;
-      localDislikeParam.d = paramAbsBaseArticleInfo.mPolymericInfo.f;
-      localDislikeParam.jdField_a_of_type_Long = 0L;
+      localDislikeParam.f = paramAbsBaseArticleInfo.mPolymericInfo.f;
+      localDislikeParam.h = paramAbsBaseArticleInfo.mPolymericInfo.m;
+      localDislikeParam.a = 0L;
     }
     return localDislikeParam;
-  }
-  
-  @Nullable
-  public static final String a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "$this$getWormholeData");
-    if (paramAbsBaseArticleInfo.wormholeData != null) {
-      return paramAbsBaseArticleInfo.wormholeData;
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("feeds_type", paramAbsBaseArticleInfo.mFeedType).put("feeds_id", paramAbsBaseArticleInfo.mFeedId).put("rowkey", paramAbsBaseArticleInfo.innerUniqueID).put("article_id", String.valueOf(paramAbsBaseArticleInfo.mArticleID)).put("article_title", paramAbsBaseArticleInfo.mTitle).put("video_json", paramAbsBaseArticleInfo.mJsonVideoList).put("article_content_url", paramAbsBaseArticleInfo.mArticleContentUrl).put("comment_count", paramAbsBaseArticleInfo.mCommentCount).put("share_count", paramAbsBaseArticleInfo.mShareCount).put("video_comment_count", paramAbsBaseArticleInfo.mVideoCommentCount).put("firstpage_pic_url", paramAbsBaseArticleInfo.mFirstPagePicUrl).put("video_logo_url", paramAbsBaseArticleInfo.mVideoLogoUrl).put("socialize_info", c(paramAbsBaseArticleInfo)).put("bind_json", paramAbsBaseArticleInfo.proteusItemsData).put("video_play_count", paramAbsBaseArticleInfo.mVideoPlayCount).put("ads_jump_url", paramAbsBaseArticleInfo.mVideoAdsJumpUrl).put("ads_jump_type", paramAbsBaseArticleInfo.mVideoAdsJumpType).put("ads_source", paramAbsBaseArticleInfo.mVideoAdsSource).put("channel_id", paramAbsBaseArticleInfo.mChannelID).put("algorithm_id", paramAbsBaseArticleInfo.mAlgorithmID).put("strategy_id", paramAbsBaseArticleInfo.mStrategyId).put("article_type", paramAbsBaseArticleInfo.mArticleType).put("recommend_time", paramAbsBaseArticleInfo.mRecommendTime).put("recommend_seq", paramAbsBaseArticleInfo.mRecommendSeq).put("article_time", paramAbsBaseArticleInfo.mTime).put("article_style", b(paramAbsBaseArticleInfo));
-      localJSONObject2 = new JSONObject().put("id", b(paramAbsBaseArticleInfo)).put("param", localJSONObject2);
-      Intrinsics.checkExpressionValueIsNotNull(localJSONObject2, "JSONObject()\n           …     .put(\"param\", param)");
-      localJSONObject1.put("loadInstance", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("createDataError: ");
-      localStringBuilder.append(localJSONException.getMessage());
-      ViolaLogUtils.e("Q.readinjoy.AbsBaseArticleInfo", localStringBuilder.toString());
-    }
-    paramAbsBaseArticleInfo.wormholeData = localJSONObject1.toString();
-    return paramAbsBaseArticleInfo.wormholeData;
   }
   
   public static final void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @Nullable String paramString, @Nullable PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, @Nullable PBStringField paramPBStringField)
@@ -133,7 +103,7 @@ public final class BaseArticleInfoKt
       Object localObject2 = ((QQAppInterface)localObject1).getApp();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "app.app");
       localPaint.setTextSize(AIOUtils.b(14.0F, ((BaseApplication)localObject2).getResources()));
-      int j = (int)DeviceInfoUtil.k();
+      int j = (int)DeviceInfoUtil.F();
       localObject2 = ((QQAppInterface)localObject1).getApp();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "app.app");
       int k = AIOUtils.b(14.0F, ((BaseApplication)localObject2).getResources());
@@ -253,7 +223,7 @@ public final class BaseArticleInfoKt
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "$this$hasOnlyTwoVideoFeeds");
     boolean bool1 = RIJFeedsType.a(paramAbsBaseArticleInfo);
     boolean bool2 = false;
-    if ((!bool1) && (!RIJFeedsType.g(paramAbsBaseArticleInfo))) {
+    if ((!bool1) && (!RIJFeedsType.i(paramAbsBaseArticleInfo))) {
       return false;
     }
     bool1 = bool2;
@@ -268,7 +238,7 @@ public final class BaseArticleInfoKt
         if (!RIJFeedsType.a(paramAbsBaseArticleInfo))
         {
           bool1 = bool2;
-          if (!RIJFeedsType.g(paramAbsBaseArticleInfo)) {}
+          if (!RIJFeedsType.i(paramAbsBaseArticleInfo)) {}
         }
         else
         {
@@ -277,23 +247,6 @@ public final class BaseArticleInfoKt
       }
     }
     return bool1;
-  }
-  
-  @Nullable
-  public static final String b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "$this$getWormholeId");
-    if (paramAbsBaseArticleInfo.wormholeId == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(String.valueOf(paramAbsBaseArticleInfo.mChannelID));
-      localStringBuilder.append("_");
-      localStringBuilder.append(paramAbsBaseArticleInfo.articleStyle);
-      localStringBuilder.append("_");
-      localStringBuilder.append(paramAbsBaseArticleInfo.mArticleID);
-      paramAbsBaseArticleInfo.wormholeId = localStringBuilder.toString();
-    }
-    return paramAbsBaseArticleInfo.wormholeId;
   }
   
   public static final boolean b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -305,16 +258,6 @@ public final class BaseArticleInfoKt
     return a(paramAbsBaseArticleInfo);
   }
   
-  private static final String c(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo.mSocialFeedInfo == null) {
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("like_count", paramAbsBaseArticleInfo.mSocialFeedInfo.b).put("myself_like_status", paramAbsBaseArticleInfo.mSocialFeedInfo.c).put("comments_count", paramAbsBaseArticleInfo.mSocialFeedInfo.d).put("biu_count", paramAbsBaseArticleInfo.mSocialFeedInfo.f).put("follow_status", paramAbsBaseArticleInfo.mSocialFeedInfo.h).put("follow_count", paramAbsBaseArticleInfo.mSocialFeedInfo.i).put("card_jump_info", d(paramAbsBaseArticleInfo));
-    return localJSONObject.toString();
-  }
-  
   public static final boolean c(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "$this$isWeishiGridTwoItemFeed");
@@ -324,19 +267,12 @@ public final class BaseArticleInfoKt
     return false;
   }
   
-  private static final String d(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("card_jump_url", paramAbsBaseArticleInfo.mCardJumpUrl);
-    return localJSONObject.toString();
-  }
-  
   public static final boolean d(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if ((paramAbsBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramAbsBaseArticleInfo.isExtraBiuExpanded) && (paramAbsBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((paramAbsBaseArticleInfo.mExtraBiuBriefInfo != null) && (!paramAbsBaseArticleInfo.isExtraBiuExpanded) && (paramAbsBaseArticleInfo.mExtraBiuBriefInfo.a != null))
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mExtraBiuBriefInfo.a;
       Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "articleInfo.mExtraBiuBriefInfo.biuBriefInfoItems");
       if ((((Collection)paramAbsBaseArticleInfo).isEmpty() ^ true)) {
         return true;
@@ -348,9 +284,9 @@ public final class BaseArticleInfoKt
   public static final boolean e(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if ((paramAbsBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramAbsBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((paramAbsBaseArticleInfo.mExtraBiuBriefInfo != null) && (paramAbsBaseArticleInfo.mExtraBiuBriefInfo.a != null))
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mExtraBiuBriefInfo.jdField_a_of_type_JavaUtilArrayList;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mExtraBiuBriefInfo.a;
       Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "articleInfo.mExtraBiuBriefInfo.biuBriefInfoItems");
       if ((((Collection)paramAbsBaseArticleInfo).isEmpty() ^ true)) {
         return true;
@@ -361,7 +297,7 @@ public final class BaseArticleInfoKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfoKt
  * JD-Core Version:    0.7.0.1
  */

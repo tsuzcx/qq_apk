@@ -635,7 +635,7 @@ public final class NotifyMsgDBHelper
     //   77: aload 7
     //   79: ldc 35
     //   81: aload 6
-    //   83: getfield 193	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_Long	J
+    //   83: getfield 193	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:b	J
     //   86: invokestatic 198	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   89: invokevirtual 202	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   92: aload_3
@@ -643,32 +643,32 @@ public final class NotifyMsgDBHelper
     //   94: aload 7
     //   96: ldc 39
     //   98: aload 6
-    //   100: getfield 205	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:b	I
-    //   103: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   106: invokevirtual 213	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   100: getfield 206	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:c	I
+    //   103: invokestatic 211	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   106: invokevirtual 214	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   109: aload_3
     //   110: astore_1
     //   111: aload 6
-    //   113: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   113: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   116: astore_2
-    //   117: ldc 218
+    //   117: ldc 220
     //   119: astore 4
     //   121: aload_2
     //   122: ifnonnull +9 -> 131
-    //   125: ldc 218
+    //   125: ldc 220
     //   127: astore_2
     //   128: goto +11 -> 139
     //   131: aload_3
     //   132: astore_1
     //   133: aload 6
-    //   135: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   135: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   138: astore_2
     //   139: aload_3
     //   140: astore_1
     //   141: aload 7
     //   143: ldc 43
     //   145: aload_2
-    //   146: invokevirtual 221	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   146: invokevirtual 223	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   149: aload_3
     //   150: astore_1
     //   151: aload 7
@@ -679,7 +679,7 @@ public final class NotifyMsgDBHelper
     //   164: aload_3
     //   165: astore_1
     //   166: aload 6
-    //   168: getfield 224	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   168: getfield 227	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:f	Lorg/json/JSONObject;
     //   171: ifnonnull +9 -> 180
     //   174: aload 4
     //   176: astore_2
@@ -687,22 +687,22 @@ public final class NotifyMsgDBHelper
     //   180: aload_3
     //   181: astore_1
     //   182: aload 6
-    //   184: getfield 224	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   187: invokevirtual 227	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   184: getfield 227	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:f	Lorg/json/JSONObject;
+    //   187: invokevirtual 230	org/json/JSONObject:toString	()Ljava/lang/String;
     //   190: astore_2
     //   191: aload_3
     //   192: astore_1
     //   193: aload 7
     //   195: ldc 49
     //   197: aload_2
-    //   198: invokevirtual 221	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: invokevirtual 223	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   201: aload_3
     //   202: astore_1
     //   203: aload_3
     //   204: ldc 27
     //   206: aconst_null
     //   207: aload 7
-    //   209: invokevirtual 231	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   209: invokevirtual 234	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   212: pop2
     //   213: aload_3
     //   214: astore_1
@@ -717,14 +717,14 @@ public final class NotifyMsgDBHelper
     //   231: aload_3
     //   232: astore_1
     //   233: aload_2
-    //   234: ldc 233
+    //   234: ldc 236
     //   236: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: pop
     //   240: aload_3
     //   241: astore_1
     //   242: aload_2
     //   243: aload 6
-    //   245: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   245: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   248: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: pop
     //   252: aload_3
@@ -749,20 +749,20 @@ public final class NotifyMsgDBHelper
     //   287: aload_3
     //   288: astore_1
     //   289: aload 4
-    //   291: ldc 235
+    //   291: ldc 238
     //   293: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   296: pop
     //   297: aload_3
     //   298: astore_1
     //   299: aload 4
     //   301: aload 6
-    //   303: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   303: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   306: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload_3
     //   311: astore_1
     //   312: aload 4
-    //   314: ldc 237
+    //   314: ldc 240
     //   316: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   319: pop
     //   320: aload_3
@@ -813,7 +813,7 @@ public final class NotifyMsgDBHelper
     //   397: aload_2
     //   398: astore_1
     //   399: aload 4
-    //   401: ldc 239
+    //   401: ldc 242
     //   403: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
     //   407: aload_2
@@ -932,9 +932,9 @@ public final class NotifyMsgDBHelper
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +574 -> 575
+    //   1: ifnull +575 -> 576
     //   4: aload_2
-    //   5: ifnull +570 -> 575
+    //   5: ifnull +571 -> 576
     //   8: aload_2
     //   9: invokeinterface 174 1 0
     //   14: ifgt +4 -> 18
@@ -985,7 +985,7 @@ public final class NotifyMsgDBHelper
     //   108: aload 9
     //   110: ldc 35
     //   112: aload 8
-    //   114: getfield 193	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_Long	J
+    //   114: getfield 193	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:b	J
     //   117: invokestatic 198	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   120: invokevirtual 202	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   123: aload 5
@@ -995,21 +995,21 @@ public final class NotifyMsgDBHelper
     //   130: aload 9
     //   132: ldc 39
     //   134: aload 8
-    //   136: getfield 205	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:b	I
-    //   139: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   142: invokevirtual 213	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   136: getfield 206	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:c	I
+    //   139: invokestatic 211	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   142: invokevirtual 214	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   145: aload 5
     //   147: astore_3
     //   148: aload 5
     //   150: astore 4
     //   152: aload 8
-    //   154: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   154: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   157: astore_2
-    //   158: ldc 218
+    //   158: ldc 220
     //   160: astore 6
     //   162: aload_2
     //   163: ifnonnull +9 -> 172
-    //   166: ldc 218
+    //   166: ldc 220
     //   168: astore_2
     //   169: goto +16 -> 185
     //   172: aload 5
@@ -1017,7 +1017,7 @@ public final class NotifyMsgDBHelper
     //   175: aload 5
     //   177: astore 4
     //   179: aload 8
-    //   181: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   181: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   184: astore_2
     //   185: aload 5
     //   187: astore_3
@@ -1026,13 +1026,13 @@ public final class NotifyMsgDBHelper
     //   192: aload 9
     //   194: ldc 43
     //   196: aload_2
-    //   197: invokevirtual 221	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: invokevirtual 223	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   200: aload 5
     //   202: astore_3
     //   203: aload 5
     //   205: astore 4
     //   207: aload 8
-    //   209: getfield 224	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   209: getfield 227	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:f	Lorg/json/JSONObject;
     //   212: ifnonnull +9 -> 221
     //   215: aload 6
     //   217: astore_2
@@ -1042,8 +1042,8 @@ public final class NotifyMsgDBHelper
     //   224: aload 5
     //   226: astore 4
     //   228: aload 8
-    //   230: getfield 224	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   233: invokevirtual 227	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   230: getfield 227	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:f	Lorg/json/JSONObject;
+    //   233: invokevirtual 230	org/json/JSONObject:toString	()Ljava/lang/String;
     //   236: astore_2
     //   237: aload 5
     //   239: astore_3
@@ -1052,13 +1052,13 @@ public final class NotifyMsgDBHelper
     //   244: aload 9
     //   246: ldc 49
     //   248: aload_2
-    //   249: invokevirtual 221	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: invokevirtual 223	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: aload 5
     //   254: astore_3
     //   255: aload 5
     //   257: ldc 27
     //   259: aload 9
-    //   261: ldc 242
+    //   261: ldc 244
     //   263: iconst_3
     //   264: anewarray 90	java/lang/String
     //   267: dup
@@ -1068,15 +1068,15 @@ public final class NotifyMsgDBHelper
     //   271: dup
     //   272: iconst_1
     //   273: aload 8
-    //   275: getfield 205	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:b	I
-    //   278: invokestatic 245	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   275: getfield 206	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:c	I
+    //   278: invokestatic 247	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   281: aastore
     //   282: dup
     //   283: iconst_2
     //   284: aload 8
-    //   286: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   286: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   289: aastore
-    //   290: invokevirtual 249	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   290: invokevirtual 251	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
     //   293: pop
     //   294: aload 5
     //   296: astore_3
@@ -1091,14 +1091,14 @@ public final class NotifyMsgDBHelper
     //   314: aload 5
     //   316: astore_3
     //   317: aload_2
-    //   318: ldc 251
+    //   318: ldc 253
     //   320: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   323: pop
     //   324: aload 5
     //   326: astore_3
     //   327: aload_2
     //   328: aload 8
-    //   330: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   330: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   333: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   336: pop
     //   337: aload 5
@@ -1129,7 +1129,7 @@ public final class NotifyMsgDBHelper
     //   386: aload 5
     //   388: astore 4
     //   390: aload 6
-    //   392: ldc 253
+    //   392: ldc 255
     //   394: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: pop
     //   398: aload 5
@@ -1138,7 +1138,7 @@ public final class NotifyMsgDBHelper
     //   403: astore 4
     //   405: aload 6
     //   407: aload 8
-    //   409: getfield 216	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   409: getfield 218	com/tencent/mobileqq/qwallet/transaction/impl/NotifyMsgRecord:d	Ljava/lang/String;
     //   412: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: pop
     //   416: aload 5
@@ -1146,7 +1146,7 @@ public final class NotifyMsgDBHelper
     //   419: aload 5
     //   421: astore 4
     //   423: aload 6
-    //   425: ldc 237
+    //   425: ldc 240
     //   427: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   430: pop
     //   431: aload 5
@@ -1169,17 +1169,17 @@ public final class NotifyMsgDBHelper
     //   463: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   466: goto -422 -> 44
     //   469: aload 5
-    //   471: ifnull +85 -> 556
+    //   471: ifnull +86 -> 557
     //   474: aload 5
     //   476: invokevirtual 103	android/database/sqlite/SQLiteDatabase:close	()V
     //   479: return
     //   480: astore_1
-    //   481: goto +76 -> 557
+    //   481: goto +77 -> 558
     //   484: astore_1
     //   485: aload 4
     //   487: astore_3
     //   488: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   491: ifeq +49 -> 540
+    //   491: ifeq +50 -> 541
     //   494: aload 4
     //   496: astore_3
     //   497: new 16	java/lang/StringBuilder
@@ -1189,50 +1189,50 @@ public final class NotifyMsgDBHelper
     //   505: aload 4
     //   507: astore_3
     //   508: aload_2
-    //   509: ldc 255
-    //   511: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   514: pop
-    //   515: aload 4
-    //   517: astore_3
-    //   518: aload_2
-    //   519: aload_1
-    //   520: invokevirtual 114	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   523: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   526: pop
-    //   527: aload 4
-    //   529: astore_3
-    //   530: ldc 116
-    //   532: iconst_2
-    //   533: aload_2
-    //   534: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   537: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   540: aload 4
-    //   542: ifnull +14 -> 556
-    //   545: aload 4
-    //   547: invokevirtual 103	android/database/sqlite/SQLiteDatabase:close	()V
-    //   550: return
-    //   551: astore_1
-    //   552: aload_1
-    //   553: invokevirtual 123	java/lang/Exception:printStackTrace	()V
-    //   556: return
-    //   557: aload_3
-    //   558: ifnull +15 -> 573
-    //   561: aload_3
-    //   562: invokevirtual 103	android/database/sqlite/SQLiteDatabase:close	()V
-    //   565: goto +8 -> 573
-    //   568: astore_2
-    //   569: aload_2
-    //   570: invokevirtual 123	java/lang/Exception:printStackTrace	()V
-    //   573: aload_1
-    //   574: athrow
-    //   575: return
+    //   509: ldc_w 257
+    //   512: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   515: pop
+    //   516: aload 4
+    //   518: astore_3
+    //   519: aload_2
+    //   520: aload_1
+    //   521: invokevirtual 114	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   524: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   527: pop
+    //   528: aload 4
+    //   530: astore_3
+    //   531: ldc 116
+    //   533: iconst_2
+    //   534: aload_2
+    //   535: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   538: invokestatic 120	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   541: aload 4
+    //   543: ifnull +14 -> 557
+    //   546: aload 4
+    //   548: invokevirtual 103	android/database/sqlite/SQLiteDatabase:close	()V
+    //   551: return
+    //   552: astore_1
+    //   553: aload_1
+    //   554: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   557: return
+    //   558: aload_3
+    //   559: ifnull +15 -> 574
+    //   562: aload_3
+    //   563: invokevirtual 103	android/database/sqlite/SQLiteDatabase:close	()V
+    //   566: goto +8 -> 574
+    //   569: astore_2
+    //   570: aload_2
+    //   571: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   574: aload_1
+    //   575: athrow
+    //   576: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	576	0	this	NotifyMsgDBHelper
-    //   0	576	1	paramString	java.lang.String
-    //   0	576	2	paramList	java.util.List<NotifyMsgRecord>
-    //   22	540	3	localObject1	java.lang.Object
-    //   19	527	4	localObject2	java.lang.Object
+    //   0	577	0	this	NotifyMsgDBHelper
+    //   0	577	1	paramString	java.lang.String
+    //   0	577	2	paramList	java.util.List<NotifyMsgRecord>
+    //   22	541	3	localObject1	java.lang.Object
+    //   19	528	4	localObject2	java.lang.Object
     //   27	448	5	localSQLiteDatabase	SQLiteDatabase
     //   160	299	6	localObject3	java.lang.Object
     //   42	27	7	localIterator	java.util.Iterator
@@ -1274,9 +1274,9 @@ public final class NotifyMsgDBHelper
     //   455	466	480	finally
     //   488	494	480	finally
     //   497	505	480	finally
-    //   508	515	480	finally
-    //   518	527	480	finally
-    //   530	540	480	finally
+    //   508	516	480	finally
+    //   519	528	480	finally
+    //   531	541	480	finally
     //   23	29	484	java/lang/Exception
     //   36	44	484	java/lang/Exception
     //   51	61	484	java/lang/Exception
@@ -1297,9 +1297,9 @@ public final class NotifyMsgDBHelper
     //   423	431	484	java/lang/Exception
     //   438	448	484	java/lang/Exception
     //   455	466	484	java/lang/Exception
-    //   474	479	551	java/lang/Exception
-    //   545	550	551	java/lang/Exception
-    //   561	565	568	java/lang/Exception
+    //   474	479	552	java/lang/Exception
+    //   546	551	552	java/lang/Exception
+    //   562	566	569	java/lang/Exception
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
@@ -1311,7 +1311,7 @@ public final class NotifyMsgDBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgDBHelper
  * JD-Core Version:    0.7.0.1
  */

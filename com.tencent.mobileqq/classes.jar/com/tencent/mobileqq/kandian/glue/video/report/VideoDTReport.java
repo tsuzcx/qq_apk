@@ -30,8 +30,8 @@ public class VideoDTReport
       VideoEntity localVideoEntity = (VideoEntity)a.get(Integer.valueOf(paramVideoPlayerWrapper.hashCode()));
       if (localVideoEntity != null)
       {
-        localVideoEntity.getVideoCustomParams().put("backend_info", b(paramString));
-        localVideoEntity.getVideoCustomParams().put("is_short", Integer.valueOf(b(paramString)));
+        localVideoEntity.getVideoCustomParams().put("backend_info", d(paramString));
+        localVideoEntity.getVideoCustomParams().put("is_short", Integer.valueOf(c(paramString)));
         VideoReport.updateVideoPlayerInfo(paramVideoPlayerWrapper, localVideoEntity);
       }
     }
@@ -67,17 +67,17 @@ public class VideoDTReport
   private static void a(Object paramObject1, Object paramObject2, VideoDTReport.Builder paramBuilder)
   {
     paramObject1 = new VideoEntity.Builder().setContentId(VideoDTReport.Builder.a(paramBuilder)).setPage(paramObject1);
-    int i = VideoDTReport.Builder.a(paramBuilder);
+    int i = VideoDTReport.Builder.d(paramBuilder);
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    paramObject1 = paramObject1.ignoreReport(bool).setContentType(VideoDTReport.Builder.a(paramBuilder)).setVideoDuration((int)VideoDTReport.Builder.a(paramBuilder)).addCustomParams(paramBuilder.a()).bizReady(VideoDTReport.Builder.a(paramBuilder)).setIdentifier(VideoDTReport.Builder.a(paramBuilder)).build();
+    paramObject1 = paramObject1.ignoreReport(bool).setContentType(VideoDTReport.Builder.d(paramBuilder)).setVideoDuration((int)VideoDTReport.Builder.c(paramBuilder)).addCustomParams(paramBuilder.a()).bizReady(VideoDTReport.Builder.b(paramBuilder)).setIdentifier(VideoDTReport.Builder.a(paramBuilder)).build();
     a.put(Integer.valueOf(paramObject2.hashCode()), paramObject1);
     VideoReport.bindVideoPlayerInfo(paramObject2, paramObject1);
   }
   
-  private static int b(String paramString)
+  private static int c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return 0;
@@ -94,7 +94,7 @@ public class VideoDTReport
     return 0;
   }
   
-  private static String b(String paramString)
+  private static String d(String paramString)
   {
     if (paramString != null) {
       return paramString;
@@ -104,7 +104,7 @@ public class VideoDTReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.report.VideoDTReport
  * JD-Core Version:    0.7.0.1
  */

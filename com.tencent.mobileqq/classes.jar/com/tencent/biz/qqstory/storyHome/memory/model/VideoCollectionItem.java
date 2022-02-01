@@ -90,7 +90,7 @@ public class VideoCollectionItem
     VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
     localVideoCollectionItem.collectionType = 0;
     localVideoCollectionItem.collectionId = "";
-    localVideoCollectionItem.collectionTime = DateUtils.a();
+    localVideoCollectionItem.collectionTime = DateUtils.b();
     localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, String.valueOf(localVideoCollectionItem.collectionTime), paramString);
     return localVideoCollectionItem;
   }
@@ -100,8 +100,8 @@ public class VideoCollectionItem
     VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
     localVideoCollectionItem.collectionType = 3;
     localVideoCollectionItem.collectionId = "";
-    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().b());
-    localVideoCollectionItem.collectionTime = DateUtils.a();
+    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().i());
+    localVideoCollectionItem.collectionTime = DateUtils.b();
     return localVideoCollectionItem;
   }
   
@@ -110,8 +110,8 @@ public class VideoCollectionItem
     VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
     localVideoCollectionItem.collectionType = 5;
     localVideoCollectionItem.collectionId = "";
-    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().b());
-    localVideoCollectionItem.collectionTime = DateUtils.a();
+    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().i());
+    localVideoCollectionItem.collectionTime = DateUtils.b();
     return localVideoCollectionItem;
   }
   
@@ -120,8 +120,8 @@ public class VideoCollectionItem
     VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
     localVideoCollectionItem.collectionType = 6;
     localVideoCollectionItem.collectionId = "";
-    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().b());
-    localVideoCollectionItem.collectionTime = DateUtils.a();
+    localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, QQStoryContext.a().i());
+    localVideoCollectionItem.collectionTime = DateUtils.b();
     return localVideoCollectionItem;
   }
   
@@ -131,7 +131,7 @@ public class VideoCollectionItem
     localVideoCollectionItem.collectionType = 2;
     localVideoCollectionItem.collectionId = "";
     localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, paramString);
-    localVideoCollectionItem.collectionTime = DateUtils.a();
+    localVideoCollectionItem.collectionTime = DateUtils.b();
     return localVideoCollectionItem;
   }
   
@@ -139,7 +139,7 @@ public class VideoCollectionItem
   {
     VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
     localVideoCollectionItem.collectionId = "";
-    localVideoCollectionItem.collectionTime = DateUtils.b();
+    localVideoCollectionItem.collectionTime = DateUtils.c();
     localVideoCollectionItem.key = VideoCollectionEntry.getCollectionKey(localVideoCollectionItem.collectionType, localVideoCollectionItem.collectionId, paramString);
     localVideoCollectionItem.collectionVideoUIItemList.add(new MemoriesInnerListAdapter.PublishVideoItem());
     return localVideoCollectionItem;

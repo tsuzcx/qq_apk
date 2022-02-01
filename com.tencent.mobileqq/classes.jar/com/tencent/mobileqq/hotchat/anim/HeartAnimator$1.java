@@ -14,10 +14,10 @@ class HeartAnimator$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_AndroidOsHandler.post(new HeartAnimator.1.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-    if (HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator) != null) {
-      HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator).b(paramAnimation);
+    this.c.d.post(new HeartAnimator.1.1(this));
+    this.c.c.decrementAndGet();
+    if (HeartAnimator.a(this.c) != null) {
+      HeartAnimator.a(this.c).b(paramAnimation);
     }
   }
   
@@ -25,15 +25,15 @@ class HeartAnimator$1
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    if (HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator) != null) {
-      HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator).a(paramAnimation);
+    this.c.c.incrementAndGet();
+    if (HeartAnimator.a(this.c) != null) {
+      HeartAnimator.a(this.c).a(paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.anim.HeartAnimator.1
  * JD-Core Version:    0.7.0.1
  */

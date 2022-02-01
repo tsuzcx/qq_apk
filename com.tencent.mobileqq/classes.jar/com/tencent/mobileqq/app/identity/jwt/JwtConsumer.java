@@ -12,7 +12,20 @@ public class JwtConsumer
     this.a = paramSimpleKeyResolver;
   }
   
-  private JwtContext a(String paramString)
+  private boolean a(JwtContext paramJwtContext)
+  {
+    paramJwtContext = paramJwtContext.a();
+    Key localKey = this.a.a();
+    if (localKey == null)
+    {
+      QLog.e("JwtConsumer", 1, "verificationKeyResolver.resolveKey() is null");
+      return false;
+    }
+    paramJwtContext.a(localKey);
+    return paramJwtContext.a();
+  }
+  
+  private JwtContext b(String paramString)
   {
     Object localObject2 = JsonWebSignature.a(paramString);
     Object localObject1 = null;
@@ -29,22 +42,9 @@ public class JwtConsumer
     return paramString;
   }
   
-  private boolean a(JwtContext paramJwtContext)
-  {
-    paramJwtContext = paramJwtContext.a();
-    Key localKey = this.a.a();
-    if (localKey == null)
-    {
-      QLog.e("JwtConsumer", 1, "verificationKeyResolver.resolveKey() is null");
-      return false;
-    }
-    paramJwtContext.a(localKey);
-    return paramJwtContext.a();
-  }
-  
   public String a(String paramString)
   {
-    paramString = a(paramString);
+    paramString = b(paramString);
     if (paramString == null)
     {
       QLog.e("JwtConsumer", 1, "process jwt token error, process is null");
@@ -56,12 +56,12 @@ public class JwtConsumer
       QLog.e("JwtConsumer", 1, "process jwt token error, joseObject is null");
       return null;
     }
-    return paramString.a();
+    return paramString.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JwtConsumer
  * JD-Core Version:    0.7.0.1
  */

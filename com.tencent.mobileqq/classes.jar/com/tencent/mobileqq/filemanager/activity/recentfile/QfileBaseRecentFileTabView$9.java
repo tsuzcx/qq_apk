@@ -11,22 +11,22 @@ class QfileBaseRecentFileTabView$9
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.this$0);
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseRecentFileTabView.c(this.this$0)))
+    this.this$0.C.a(this.this$0);
+    if ((this.this$0.h != null) && (QfileBaseRecentFileTabView.x(this.this$0)))
     {
-      String str = QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString;
+      String str = QfileBaseRecentFileTabView.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setSelect[");
       localStringBuilder.append(this.a);
       localStringBuilder.append("] success mFileListView");
       QLog.e(str, 1, localStringBuilder.toString());
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.expandGroup(this.a);
+      this.this$0.h.expandGroup(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.9
  * JD-Core Version:    0.7.0.1
  */

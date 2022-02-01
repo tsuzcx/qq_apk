@@ -19,16 +19,16 @@ class WSVerticalItemVideoProgressController$3
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((paramSeekBar != null) && (WSVerticalItemVideoProgressController.a(this.a) != null))
+    if ((paramSeekBar != null) && (WSVerticalItemVideoProgressController.f(this.a) != null))
     {
-      if (WSVerticalItemVideoProgressController.a(this.a) == null) {
+      if (WSVerticalItemVideoProgressController.g(this.a) == null) {
         return;
       }
-      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)WSVerticalItemVideoProgressController.a(this.a).a;
-      if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)))
+      WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)WSVerticalItemVideoProgressController.g(this.a).e;
+      if ((localWSVerticalItemData != null) && (localWSVerticalItemData.b() != null))
       {
         float f = paramSeekBar.getProgress();
-        int i = localWSVerticalItemData.a().video.duration;
+        int i = localWSVerticalItemData.b().video.duration;
         int j = (int)(f / 1000.0F * i);
         paramSeekBar = new StringBuilder();
         paramSeekBar.append("WSVerticalItemVideoProgressController onStopTrackingTouch() progress:");
@@ -38,14 +38,14 @@ class WSVerticalItemVideoProgressController$3
         paramSeekBar.append(", position:");
         paramSeekBar.append(j);
         WSLog.a("WS_VIDEO_seekBar", paramSeekBar.toString());
-        WSVerticalItemVideoProgressController.a(this.a).a(j, true);
+        WSVerticalItemVideoProgressController.f(this.a).a(j, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.3
  * JD-Core Version:    0.7.0.1
  */

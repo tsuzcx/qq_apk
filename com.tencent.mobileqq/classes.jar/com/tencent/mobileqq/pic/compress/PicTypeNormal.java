@@ -21,7 +21,7 @@ import mqq.app.MobileQQ;
 public class PicTypeNormal
   extends PicType
 {
-  public static final int l;
+  public static final int n;
   
   static
   {
@@ -32,7 +32,7 @@ public class PicTypeNormal
     if (j > k) {
       i = j;
     }
-    l = i;
+    n = i;
   }
   
   PicTypeNormal(CompressInfo paramCompressInfo)
@@ -42,7 +42,7 @@ public class PicTypeNormal
   
   protected int a(CompressInfo paramCompressInfo)
   {
-    int i = paramCompressInfo.jdField_g_of_type_Int;
+    int i = paramCompressInfo.p;
     if ((i != 0) && (i != 1))
     {
       if (i != 2) {
@@ -53,110 +53,89 @@ public class PicTypeNormal
     return 0;
   }
   
-  protected int[] a()
+  protected boolean f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Int == 2) {
-      return null;
-    }
-    int[] arrayOfInt = new int[2];
-    int j = AbstractPicType.d;
-    int k = l;
-    int i = j;
-    if (j > k) {
-      i = k;
-    }
-    arrayOfInt[0] = i;
-    arrayOfInt[1] = (arrayOfInt[0] * 2);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PicType.SendPhotoMaxLongSide = ");
-    localStringBuilder.append(arrayOfInt[0]);
-    Logger.a("PicTypeNormal", "getScaleLargerSide", localStringBuilder.toString());
-    return arrayOfInt;
-  }
-  
-  protected boolean d()
-  {
-    int i = this.k;
+    int i = this.m;
     int k = 0;
     if (i == 0)
     {
       Object localObject2;
-      if ((this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Boolean) && (Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)))
+      if ((this.l.w) && (Utils.c(this.l.h)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+        this.l.l = this.l.h;
+        localObject1 = this.l;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708180));
-        ((CompressInfo)localObject1).f = ((StringBuilder)localObject2).toString();
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        ((StringBuilder)localObject2).append(this.j);
+        ((StringBuilder)localObject2).append(this.l.a);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905975));
+        ((CompressInfo)localObject1).s = ((StringBuilder)localObject2).toString();
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" compress()");
-        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131708179));
+        Logger.a(localObject1, ((StringBuilder)localObject2).toString(), HardCodeUtil.a(2131905974));
         return true;
       }
-      Object localObject1 = a();
+      Object localObject1 = g();
       if (localObject1 == null)
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" largerSide is null");
         Logger.b(localObject1, "compress()", ((StringBuilder)localObject2).toString());
         return false;
       }
       int j = localObject1[0];
       i = localObject1[1];
-      this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_g_of_type_Int);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+      this.l.l = Utils.a(this.l.h, this.l.p);
+      if (TextUtils.isEmpty(this.l.l))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" destPath is empty");
         Logger.b(localObject1, "compress()", ((StringBuilder)localObject2).toString());
         return false;
       }
-      if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e))
+      if (FileUtils.fileExistsAndNotEmpty(this.l.l))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" destPath exist. return true");
         Logger.b(localObject1, "compress()", ((StringBuilder)localObject2).toString());
         return true;
       }
       localObject1 = new BitmapFactory.Options();
-      if (!Utils.a((BitmapFactory.Options)localObject1, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, i, j))
+      if (!Utils.a((BitmapFactory.Options)localObject1, this.l.h, i, j))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.j;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.l.a);
         ((StringBuilder)localObject2).append(" calculateInSampleSize fail");
         Logger.b(localObject1, "compress()", ((StringBuilder)localObject2).toString());
         return false;
       }
       try
       {
-        localObject2 = BaseImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, (BitmapFactory.Options)localObject1);
+        localObject2 = BaseImageUtil.a(this.l.h, (BitmapFactory.Options)localObject1);
         if (localObject2 == null)
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.j;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.l.a);
           ((StringBuilder)localObject2).append(" bm == null, maybe is broken");
           Logger.b(localObject1, "compress()", ((StringBuilder)localObject2).toString());
           return false;
         }
         m = ((Bitmap)localObject2).getWidth();
-        n = ((Bitmap)localObject2).getHeight();
+        i1 = ((Bitmap)localObject2).getHeight();
         localObject3 = new Matrix();
-        if (m > n) {
+        if (m > i1) {
           i = m;
         } else {
-          i = n;
+          i = i1;
         }
         float f = 1.0F;
         if (i > j)
@@ -168,17 +147,17 @@ public class PicTypeNormal
         {
           i = 0;
         }
-        int i1 = BaseImageUtil.c(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
+        int i2 = BaseImageUtil.h(this.l.h);
         j = k;
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.d)
+        if (this.l.g)
         {
           j = k;
-          if (i1 != 0)
+          if (i2 != 0)
           {
             j = k;
-            if (i1 % 90 == 0)
+            if (i2 % 90 == 0)
             {
-              ((Matrix)localObject3).postRotate(i1, m >> 1, n >> 1);
+              ((Matrix)localObject3).postRotate(i2, m >> 1, i1 >> 1);
               j = 1;
             }
           }
@@ -197,24 +176,24 @@ public class PicTypeNormal
       catch (OutOfMemoryError localOutOfMemoryError1)
       {
         int m;
-        int n;
+        int i1;
         Object localObject3;
         label696:
         boolean bool;
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
+        this.l.a(true);
         localOutOfMemoryError1.printStackTrace();
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.j;
         StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder1.append(this.l.a);
         localStringBuilder1.append(" decodeFile oom, execute commonCompress()");
         Logger.b(str, "compress()", localStringBuilder1.toString());
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e = "";
-        return c();
+        this.l.l = "";
+        return e();
       }
     }
     try
     {
-      localObject1 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, m, n, (Matrix)localObject3, true);
+      localObject1 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, m, i1, (Matrix)localObject3, true);
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
@@ -224,40 +203,40 @@ public class PicTypeNormal
     {
       break label696;
     }
-    localObject1 = this.jdField_a_of_type_JavaLangString;
+    localObject1 = this.j;
     localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.l.a);
     ((StringBuilder)localObject3).append(" scale or rotate createBitmap NullPointerException");
     Logger.b(localObject1, "compress()", ((StringBuilder)localObject3).toString());
     localObject1 = localObject2;
     break label803;
     label751:
-    localObject1 = this.jdField_a_of_type_JavaLangString;
+    localObject1 = this.j;
     localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(this.l.a);
     ((StringBuilder)localObject3).append(" scale or rotate createBitmap OutOfMemoryError");
     Logger.b(localObject1, "compress()", ((StringBuilder)localObject3).toString());
     localObject1 = localObject2;
     label803:
-    bool = Utils.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e, (Bitmap)localObject1, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
-    if (!JpegExifReader.isCrashJpeg(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c)) {
+    bool = Utils.a(this.l.l, (Bitmap)localObject1, c(), this.l.a, this.l);
+    if (!JpegExifReader.isCrashJpeg(this.l.h)) {
       try
       {
-        if (BaseImageUtil.a(new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c), new ExifInterface(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.e), true)) {
+        if (BaseImageUtil.a(new ExifInterface(this.l.h), new ExifInterface(this.l.l), true)) {
           break label956;
         }
-        Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", "Failed to save exif");
+        Logger.b(this.j, "compress()", "Failed to save exif");
       }
       catch (Throwable localThrowable)
       {
-        localObject3 = this.jdField_a_of_type_JavaLangString;
+        localObject3 = this.j;
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("cannot read exif, ");
         localStringBuilder2.append(localThrowable.getMessage());
         Logger.b(localObject3, "compress()", localStringBuilder2.toString());
       }
     } else {
-      Logger.b(this.jdField_a_of_type_JavaLangString, "compress()", "crash jpeg, skip saveExif");
+      Logger.b(this.j, "compress()", "crash jpeg, skip saveExif");
     }
     label956:
     if (localObject1 != null) {
@@ -266,10 +245,31 @@ public class PicTypeNormal
     return bool;
     return false;
   }
+  
+  protected int[] g()
+  {
+    if (this.l.p == 2) {
+      return null;
+    }
+    int[] arrayOfInt = new int[2];
+    int j = AbstractPicType.d;
+    int k = n;
+    int i = j;
+    if (j > k) {
+      i = k;
+    }
+    arrayOfInt[0] = i;
+    arrayOfInt[1] = (arrayOfInt[0] * 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicType.SendPhotoMaxLongSide = ");
+    localStringBuilder.append(arrayOfInt[0]);
+    Logger.a("PicTypeNormal", "getScaleLargerSide", localStringBuilder.toString());
+    return arrayOfInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.PicTypeNormal
  * JD-Core Version:    0.7.0.1
  */

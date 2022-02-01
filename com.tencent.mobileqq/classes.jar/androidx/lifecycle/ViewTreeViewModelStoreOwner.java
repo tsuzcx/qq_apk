@@ -3,13 +3,14 @@ package androidx.lifecycle;
 import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.viewmodel.R.id;
 
 public class ViewTreeViewModelStoreOwner
 {
   @Nullable
   public static ViewModelStoreOwner get(@NonNull View paramView)
   {
-    ViewModelStoreOwner localViewModelStoreOwner = (ViewModelStoreOwner)paramView.getTag(2131380893);
+    ViewModelStoreOwner localViewModelStoreOwner = (ViewModelStoreOwner)paramView.getTag(R.id.view_tree_view_model_store_owner);
     if (localViewModelStoreOwner != null) {
       return localViewModelStoreOwner;
     }
@@ -18,7 +19,7 @@ public class ViewTreeViewModelStoreOwner
     while ((paramView == null) && ((localObject instanceof View)))
     {
       localObject = (View)localObject;
-      paramView = (ViewModelStoreOwner)((View)localObject).getTag(2131380893);
+      paramView = (ViewModelStoreOwner)((View)localObject).getTag(R.id.view_tree_view_model_store_owner);
       localObject = ((View)localObject).getParent();
     }
     return paramView;
@@ -26,7 +27,7 @@ public class ViewTreeViewModelStoreOwner
   
   public static void set(@NonNull View paramView, @Nullable ViewModelStoreOwner paramViewModelStoreOwner)
   {
-    paramView.setTag(2131380893, paramViewModelStoreOwner);
+    paramView.setTag(R.id.view_tree_view_model_store_owner, paramViewModelStoreOwner);
   }
 }
 

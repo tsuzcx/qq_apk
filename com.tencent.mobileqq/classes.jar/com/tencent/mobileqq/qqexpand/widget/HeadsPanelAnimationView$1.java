@@ -24,32 +24,32 @@ class HeadsPanelAnimationView$1
         return false;
       }
       paramMessage = (ArrayList)paramMessage.obj;
-      if (this.a.jdField_a_of_type_Boolean)
+      if (this.a.j)
       {
-        paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+        paramMessage = Message.obtain(this.a.e, 2, paramMessage);
+        this.a.e.sendMessageDelayed(paramMessage, 500L);
         return false;
       }
       HeadsPanelAnimationView.a(this.a, paramMessage);
       return false;
     }
-    if (this.a.b.size() == 0)
+    if (this.a.f.size() == 0)
     {
       QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
       return false;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.a.c();
+    if (this.a.e.hasMessages(1)) {
+      this.a.e.removeMessages(1);
     }
-    Util.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (String)this.a.b.get(this.a.b.size() - 1));
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+    Util.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (String)this.a.f.get(this.a.f.size() - 1));
+    this.a.e.sendEmptyMessageDelayed(1, 3000L);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.HeadsPanelAnimationView.1
  * JD-Core Version:    0.7.0.1
  */

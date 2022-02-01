@@ -34,14 +34,14 @@ class VipVideoPlayActivity$VideoPlayerErrorListener
       QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
     }
     long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
+    long l2 = VipVideoPlayActivity.c(this.a);
     this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerErrorListener
  * JD-Core Version:    0.7.0.1
  */

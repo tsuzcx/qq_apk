@@ -21,7 +21,7 @@ class NotifyPushSettingFragment$22
           if (i != 10004) {
             return false;
           }
-          NotifyPushSettingFragment.g(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+          NotifyPushSettingFragment.r(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
         }
         else
         {
@@ -32,7 +32,7 @@ class NotifyPushSettingFragment$22
       else
       {
         boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-        NotifyPushSettingFragment.f(this.a).setChecked(bool);
+        NotifyPushSettingFragment.n(this.a).setChecked(bool);
       }
       return true;
     }
@@ -41,7 +41,7 @@ class NotifyPushSettingFragment$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.22
  * JD-Core Version:    0.7.0.1
  */

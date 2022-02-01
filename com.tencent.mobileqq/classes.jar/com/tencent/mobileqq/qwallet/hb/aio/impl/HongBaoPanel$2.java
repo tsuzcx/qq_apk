@@ -21,14 +21,14 @@ class HongBaoPanel$2
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable = QWalletPicHelper.getDrawableForAIO(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.resPath, URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    HongBaoPanel.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel).setImageDrawable(paramURLDrawable);
-    ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setURLDrawableListener(null);
+    paramURLDrawable = QWalletPicHelper.getDrawableForAIO(this.a.resPath, URLDrawableHelperConstants.a);
+    HongBaoPanel.a(this.c).setImageDrawable(paramURLDrawable);
+    ((URLDrawable)this.b).setURLDrawableListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.2
  * JD-Core Version:    0.7.0.1
  */

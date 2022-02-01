@@ -12,19 +12,19 @@ class BottomNavigationView$1
   
   public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
-    if ((BottomNavigationView.a(this.a) != null) && (paramMenuItem.getItemId() == this.a.a()))
+    if ((BottomNavigationView.a(this.a) != null) && (paramMenuItem.getItemId() == this.a.getSelectedItemId()))
     {
       BottomNavigationView.a(this.a).a(paramMenuItem);
       return true;
     }
-    return (BottomNavigationView.a(this.a) != null) && (!BottomNavigationView.a(this.a).a(paramMenuItem));
+    return (BottomNavigationView.b(this.a) != null) && (!BottomNavigationView.b(this.a).a(paramMenuItem));
   }
   
   public void onMenuModeChange(MenuBuilder paramMenuBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationView.1
  * JD-Core Version:    0.7.0.1
  */

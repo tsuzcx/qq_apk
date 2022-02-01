@@ -16,11 +16,11 @@ class FolderRecommendTabFragment$3
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(FolderRecommendTabFragment.d))
+    if (!TextUtils.isEmpty(FolderRecommendTabFragment.m))
     {
       MobileReportManager.getInstance().reportActionLive("", "25", "qq_live", "find_page", "bottom_button", 102, 1, System.currentTimeMillis(), "");
       Intent localIntent = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", FolderRecommendTabFragment.d);
+      localIntent.putExtra("url", FolderRecommendTabFragment.m);
       this.a.getBaseActivity().startActivity(localIntent);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -28,7 +28,7 @@ class FolderRecommendTabFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.3
  * JD-Core Version:    0.7.0.1
  */

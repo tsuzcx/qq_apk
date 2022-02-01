@@ -16,7 +16,11 @@ public abstract interface IQZoneApiProxy
 {
   public abstract Fragment createLebaFragment(@NonNull Activity paramActivity, @NonNull AppRuntime paramAppRuntime, @NonNull String paramString);
   
+  public abstract String getExpContentInSimpleUI(AppRuntime paramAppRuntime);
+  
   public abstract AppRuntime getLastRuntime();
+  
+  public abstract boolean getShowQzoneInSimpleUI();
   
   public abstract boolean initEnv(@NonNull Context paramContext, @NonNull AppRuntime paramAppRuntime);
   
@@ -51,10 +55,12 @@ public abstract interface IQZoneApiProxy
   public abstract boolean needShowSubFeedList(@Nullable Activity paramActivity, @Nullable AppRuntime paramAppRuntime);
   
   public abstract void onAccountChange(@NonNull Context paramContext, @NonNull AppRuntime paramAppRuntime);
+  
+  public abstract void setShowQzoneInSimpleUI(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qzonehub.api.IQZoneApiProxy
  * JD-Core Version:    0.7.0.1
  */

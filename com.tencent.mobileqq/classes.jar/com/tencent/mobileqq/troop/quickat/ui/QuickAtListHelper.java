@@ -22,26 +22,14 @@ import java.util.List;
 public class QuickAtListHelper
   implements PopupCardDialog.Listener
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  QuickAtListAdapter jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter;
-  boolean jdField_a_of_type_Boolean;
+  QuickAtListAdapter a;
+  boolean b;
+  private Bitmap c;
   
   public QuickAtListHelper(QuickAtListAdapter paramQuickAtListAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter = paramQuickAtListAdapter;
+    this.a = paramQuickAtListAdapter;
     a();
-  }
-  
-  public static ChatHistoryTroopMemberFragment.ATroopMember a()
-  {
-    ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
-    localATroopMember.jdField_a_of_type_JavaLangString = "0";
-    localATroopMember.b = HardCodeUtil.a(2131711181);
-    localATroopMember.j = HardCodeUtil.a(2131711184);
-    localATroopMember.g = HardCodeUtil.a(2131711182);
-    localATroopMember.l = ChnToSpell.a(localATroopMember.j, 1);
-    localATroopMember.k = ChnToSpell.a(localATroopMember.j, 2);
-    return localATroopMember;
   }
   
   public static ArrayList<ChatHistoryTroopMemberFragment.ATroopMember> a(String paramString, List<ChatHistoryTroopMemberFragment.ATroopMember> paramList, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
@@ -51,23 +39,23 @@ public class QuickAtListHelper
     while (paramList.hasNext())
     {
       ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = (ChatHistoryTroopMemberFragment.ATroopMember)paramList.next();
-      if ((!AtUtil.a(localATroopMember.j, paramString)) && (!AtUtil.a(localATroopMember.k, paramString)) && (!AtUtil.a(localATroopMember.l, paramString)))
+      if ((!AtUtil.a(localATroopMember.k, paramString)) && (!AtUtil.a(localATroopMember.l, paramString)) && (!AtUtil.a(localATroopMember.m, paramString)))
       {
-        if ((!AtUtil.a(localATroopMember.m, paramString)) && (!AtUtil.a(localATroopMember.n, paramString)) && (!AtUtil.a(localATroopMember.o, paramString)))
+        if ((!AtUtil.a(localATroopMember.n, paramString)) && (!AtUtil.a(localATroopMember.p, paramString)) && (!AtUtil.a(localATroopMember.q, paramString)))
         {
-          if ((!AtUtil.a(localATroopMember.g, paramString)) && (!AtUtil.a(localATroopMember.h, paramString)) && (!AtUtil.a(localATroopMember.i, paramString)))
+          if ((!AtUtil.a(localATroopMember.h, paramString)) && (!AtUtil.a(localATroopMember.i, paramString)) && (!AtUtil.a(localATroopMember.j, paramString)))
           {
             String str1;
             String str2;
             String str3;
-            if (AtUtil.a(localATroopMember.jdField_a_of_type_JavaLangString, paramString))
+            if (AtUtil.a(localATroopMember.a, paramString))
             {
               str1 = AtUtil.c(localATroopMember);
               str2 = AtUtil.d(localATroopMember);
               str3 = AtUtil.e(localATroopMember);
-              localATroopMember.v = str1;
-              localATroopMember.w = str3;
-              localATroopMember.x = str2;
+              localATroopMember.S = str1;
+              localATroopMember.T = str3;
+              localATroopMember.U = str2;
               paramQQAppInterface.add(localATroopMember);
             }
             else if (a(localATroopMember, paramString, paramTroopInfo))
@@ -75,9 +63,9 @@ public class QuickAtListHelper
               str1 = AtUtil.c(localATroopMember);
               str2 = AtUtil.d(localATroopMember);
               str3 = AtUtil.e(localATroopMember);
-              localATroopMember.v = str1;
-              localATroopMember.w = str3;
-              localATroopMember.x = str2;
+              localATroopMember.S = str1;
+              localATroopMember.T = str3;
+              localATroopMember.U = str2;
               paramQQAppInterface.add(localATroopMember);
             }
             else if (b(localATroopMember, paramString, paramTroopInfo))
@@ -85,9 +73,9 @@ public class QuickAtListHelper
               str1 = AtUtil.c(localATroopMember);
               str2 = AtUtil.d(localATroopMember);
               str3 = AtUtil.e(localATroopMember);
-              localATroopMember.v = str1;
-              localATroopMember.w = str3;
-              localATroopMember.x = str2;
+              localATroopMember.S = str1;
+              localATroopMember.T = str3;
+              localATroopMember.U = str2;
               paramQQAppInterface.add(localATroopMember);
             }
             else if (c(localATroopMember, paramString, paramTroopInfo))
@@ -95,33 +83,33 @@ public class QuickAtListHelper
               str1 = AtUtil.c(localATroopMember);
               str2 = AtUtil.d(localATroopMember);
               str3 = AtUtil.e(localATroopMember);
-              localATroopMember.v = str1;
-              localATroopMember.w = str3;
-              localATroopMember.x = str2;
+              localATroopMember.S = str1;
+              localATroopMember.T = str3;
+              localATroopMember.U = str2;
               paramQQAppInterface.add(localATroopMember);
             }
           }
           else
           {
-            localATroopMember.v = localATroopMember.g;
-            localATroopMember.w = localATroopMember.i;
-            localATroopMember.x = localATroopMember.h;
+            localATroopMember.S = localATroopMember.h;
+            localATroopMember.T = localATroopMember.j;
+            localATroopMember.U = localATroopMember.i;
             paramQQAppInterface.add(localATroopMember);
           }
         }
         else
         {
-          localATroopMember.v = localATroopMember.m;
-          localATroopMember.w = localATroopMember.o;
-          localATroopMember.x = localATroopMember.n;
+          localATroopMember.S = localATroopMember.n;
+          localATroopMember.T = localATroopMember.q;
+          localATroopMember.U = localATroopMember.p;
           paramQQAppInterface.add(localATroopMember);
         }
       }
       else
       {
-        localATroopMember.v = localATroopMember.j;
-        localATroopMember.w = localATroopMember.l;
-        localATroopMember.x = localATroopMember.k;
+        localATroopMember.S = localATroopMember.k;
+        localATroopMember.T = localATroopMember.m;
+        localATroopMember.U = localATroopMember.l;
         paramQQAppInterface.add(localATroopMember);
       }
     }
@@ -139,7 +127,7 @@ public class QuickAtListHelper
     while (paramList.hasNext())
     {
       ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = (ChatHistoryTroopMemberFragment.ATroopMember)paramList.next();
-      if (!paramQQAppInterface.isRobotUin(localATroopMember.jdField_a_of_type_JavaLangString)) {
+      if (!paramQQAppInterface.isRobotUin(localATroopMember.a)) {
         localArrayList.add(localATroopMember);
       }
     }
@@ -149,21 +137,21 @@ public class QuickAtListHelper
   private static boolean a(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember, String paramString, TroopInfo paramTroopInfo)
   {
     ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
-    if ((paramTroopInfo != null) && (paramATroopMember != null) && (paramTroopInfo.isTroopOwner(paramATroopMember.jdField_a_of_type_JavaLangString)))
+    if ((paramTroopInfo != null) && (paramATroopMember != null) && (paramTroopInfo.isTroopOwner(paramATroopMember.a)))
     {
-      localATroopMember.b = HardCodeUtil.a(2131711183);
-      localATroopMember.j = HardCodeUtil.a(2131711179);
-      paramATroopMember = localATroopMember.j;
+      localATroopMember.c = HardCodeUtil.a(2131908841);
+      localATroopMember.k = HardCodeUtil.a(2131908837);
+      paramATroopMember = localATroopMember.k;
       boolean bool2 = true;
-      localATroopMember.l = ChnToSpell.a(paramATroopMember, 1);
-      localATroopMember.k = ChnToSpell.a(localATroopMember.j, 2);
+      localATroopMember.m = ChnToSpell.b(paramATroopMember, 1);
+      localATroopMember.l = ChnToSpell.b(localATroopMember.k, 2);
       boolean bool1 = bool2;
-      if (!AtUtil.a(localATroopMember.j, paramString))
+      if (!AtUtil.a(localATroopMember.k, paramString))
       {
         bool1 = bool2;
-        if (!AtUtil.a(localATroopMember.k, paramString))
+        if (!AtUtil.a(localATroopMember.l, paramString))
         {
-          if (AtUtil.a(localATroopMember.l, paramString)) {
+          if (AtUtil.a(localATroopMember.m, paramString)) {
             return true;
           }
           bool1 = false;
@@ -194,21 +182,21 @@ public class QuickAtListHelper
   private static boolean b(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember, String paramString, TroopInfo paramTroopInfo)
   {
     ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
-    if ((paramTroopInfo != null) && (paramATroopMember != null) && (paramTroopInfo.isTroopAdmin(paramATroopMember.jdField_a_of_type_JavaLangString)))
+    if ((paramTroopInfo != null) && (paramATroopMember != null) && (paramTroopInfo.isTroopAdmin(paramATroopMember.a)))
     {
-      localATroopMember.b = HardCodeUtil.a(2131711175);
-      localATroopMember.j = HardCodeUtil.a(2131711178);
-      paramATroopMember = localATroopMember.j;
+      localATroopMember.c = HardCodeUtil.a(2131908833);
+      localATroopMember.k = HardCodeUtil.a(2131908836);
+      paramATroopMember = localATroopMember.k;
       boolean bool2 = true;
-      localATroopMember.l = ChnToSpell.a(paramATroopMember, 1);
-      localATroopMember.k = ChnToSpell.a(localATroopMember.j, 2);
+      localATroopMember.m = ChnToSpell.b(paramATroopMember, 1);
+      localATroopMember.l = ChnToSpell.b(localATroopMember.k, 2);
       boolean bool1 = bool2;
-      if (!AtUtil.a(localATroopMember.j, paramString))
+      if (!AtUtil.a(localATroopMember.k, paramString))
       {
         bool1 = bool2;
-        if (!AtUtil.a(localATroopMember.k, paramString))
+        if (!AtUtil.a(localATroopMember.l, paramString))
         {
-          if (AtUtil.a(localATroopMember.l, paramString)) {
+          if (AtUtil.a(localATroopMember.m, paramString)) {
             return true;
           }
           bool1 = false;
@@ -227,16 +215,16 @@ public class QuickAtListHelper
     if (paramATroopMember != null)
     {
       bool1 = bool2;
-      if (paramATroopMember.jdField_a_of_type_Boolean)
+      if (paramATroopMember.A)
       {
-        paramTroopInfo.b = HardCodeUtil.a(2131711176);
-        paramTroopInfo.j = HardCodeUtil.a(2131711180);
-        paramTroopInfo.l = ChnToSpell.a(paramTroopInfo.j, 1);
-        paramTroopInfo.k = ChnToSpell.a(paramTroopInfo.j, 2);
-        if ((!AtUtil.a(paramTroopInfo.j, paramString)) && (!AtUtil.a(paramTroopInfo.k, paramString)))
+        paramTroopInfo.c = HardCodeUtil.a(2131908834);
+        paramTroopInfo.k = HardCodeUtil.a(2131908838);
+        paramTroopInfo.m = ChnToSpell.b(paramTroopInfo.k, 1);
+        paramTroopInfo.l = ChnToSpell.b(paramTroopInfo.k, 2);
+        if ((!AtUtil.a(paramTroopInfo.k, paramString)) && (!AtUtil.a(paramTroopInfo.l, paramString)))
         {
           bool1 = bool2;
-          if (!AtUtil.a(paramTroopInfo.l, paramString)) {}
+          if (!AtUtil.a(paramTroopInfo.m, paramString)) {}
         }
         else
         {
@@ -247,11 +235,23 @@ public class QuickAtListHelper
     return bool1;
   }
   
+  public static ChatHistoryTroopMemberFragment.ATroopMember d()
+  {
+    ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
+    localATroopMember.a = "0";
+    localATroopMember.c = HardCodeUtil.a(2131908839);
+    localATroopMember.k = HardCodeUtil.a(2131908842);
+    localATroopMember.h = HardCodeUtil.a(2131908840);
+    localATroopMember.m = ChnToSpell.b(localATroopMember.k, 1);
+    localATroopMember.l = ChnToSpell.b(localATroopMember.k, 2);
+    return localATroopMember;
+  }
+  
   void a()
   {
-    Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842553);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = QQAppInterface.getRoundFaceBitmap(localBitmap);
+    Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130843506);
+    QQAppInterface localQQAppInterface = this.a.b;
+    this.c = QQAppInterface.getRoundFaceBitmap(localBitmap);
   }
   
   public void a(View paramView)
@@ -259,47 +259,47 @@ public class QuickAtListHelper
     if ((paramView instanceof TextView))
     {
       paramView = (TextView)paramView;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        paramView.setText(2131694356);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelListener.a();
+        paramView.setText(2131892030);
+        if (this.a.d != null) {
+          this.a.d.d();
         }
       }
       else
       {
-        paramView.setText(2131692486);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.b) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.notifyDataSetChanged();
+        paramView.setText(2131889474);
+        if (this.a.f) {
+          this.a.notifyDataSetChanged();
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiAtPanelListener.a(this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_JavaLangString, true);
+          this.a.d.a(this.a.e, true);
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A48F", "0X800A48F", 0, 0, "", "", "", "");
+        ReportController.b(this.a.b, "dc00898", "", "", "0X800A48F", "0X800A48F", 0, 0, "", "", "", "");
       }
-      this.jdField_a_of_type_Boolean ^= true;
+      this.b ^= true;
     }
   }
   
   void a(ImageView paramImageView)
   {
     if (paramImageView != null) {
-      paramImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramImageView.setImageBitmap(this.c);
     }
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 20;
   }
   
   void b()
   {
-    QQToast.a(BaseApplicationImpl.context, 0, HardCodeUtil.a(2131711177), 0).a();
+    QQToast.makeText(BaseApplicationImpl.context, 0, HardCodeUtil.a(2131908835), 0).show();
+  }
+  
+  boolean c()
+  {
+    return this.a.c.size() >= 20;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.QuickAtListHelper
  * JD-Core Version:    0.7.0.1
  */

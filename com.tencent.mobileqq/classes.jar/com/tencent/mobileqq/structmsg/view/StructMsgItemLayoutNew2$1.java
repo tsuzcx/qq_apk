@@ -17,7 +17,7 @@ class StructMsgItemLayoutNew2$1
   {
     super.onLoadCancelled(paramView, paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadCancelled");
+      QLog.d(this.a.aA, 2, "onLoadCancelled");
     }
   }
   
@@ -26,7 +26,7 @@ class StructMsgItemLayoutNew2$1
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     if (QLog.isColorLevel())
     {
-      paramView = this.a.ac;
+      paramView = this.a.aA;
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadFailed ,cause = ");
       paramURLDrawable.append(paramThrowable);
@@ -38,7 +38,7 @@ class StructMsgItemLayoutNew2$1
   {
     super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadInterrupted");
+      QLog.d(this.a.aA, 2, "onLoadInterrupted");
     }
   }
   
@@ -56,13 +56,13 @@ class StructMsgItemLayoutNew2$1
       paramView.requestLayout();
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadSuccessed");
+      QLog.d(this.a.aA, 2, "onLoadSuccessed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,44 +16,42 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   extends AbsWSVerticalPagePresenter
 {
   private WeakReference<IWSEpisodeChoiceView> a;
-  private boolean f;
+  private boolean b;
   
   public AbsWSVerticalChoiceVideoPresenter(WSVerticalPageContract.View paramView)
   {
     super(paramView);
-    a(a().a());
+    a(z().v());
   }
   
-  private IWSEpisodeChoiceView a()
+  private void O()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][handleOnLoadGridDataRefreshFromServer]");
+    IWSEpisodeChoiceView localIWSEpisodeChoiceView = y();
+    if (localIWSEpisodeChoiceView == null) {
+      return;
+    }
+    localIWSEpisodeChoiceView.d();
+  }
+  
+  private void P()
+  {
+    WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][handleOnLoadGridDataMoreFromServer]");
+    IWSEpisodeChoiceView localIWSEpisodeChoiceView = y();
+    if (localIWSEpisodeChoiceView == null) {
+      return;
+    }
+    localIWSEpisodeChoiceView.b(u() ^ true);
+  }
+  
+  private IWSEpisodeChoiceView y()
+  {
+    WeakReference localWeakReference = this.a;
     if (localWeakReference == null) {
       return null;
     }
     return (IWSEpisodeChoiceView)localWeakReference.get();
   }
-  
-  private void k()
-  {
-    WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][handleOnLoadGridDataRefreshFromServer]");
-    IWSEpisodeChoiceView localIWSEpisodeChoiceView = a();
-    if (localIWSEpisodeChoiceView == null) {
-      return;
-    }
-    localIWSEpisodeChoiceView.c();
-  }
-  
-  private void l()
-  {
-    WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][handleOnLoadGridDataMoreFromServer]");
-    IWSEpisodeChoiceView localIWSEpisodeChoiceView = a();
-    if (localIWSEpisodeChoiceView == null) {
-      return;
-    }
-    localIWSEpisodeChoiceView.b(e() ^ true);
-  }
-  
-  public abstract String a();
   
   public Map<String, String> a(WSVerticalItemData paramWSVerticalItemData)
   {
@@ -63,32 +61,32 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   protected void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    paramString = a();
+    paramString = y();
     if (paramString == null) {
       return;
     }
+    paramString.e();
+    paramString.b(u() ^ true);
     paramString.d();
-    paramString.b(e() ^ true);
-    paramString.c();
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.f = paramBundle.getBoolean("auto_show_panel", true);
+    this.b = paramBundle.getBoolean("auto_show_panel", true);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
     WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][onPageSelected]");
-    paramViewHolder = a();
+    paramViewHolder = y();
     if (paramViewHolder != null)
     {
       if (!paramViewHolder.isShowing()) {
         return;
       }
-      paramViewHolder.e();
+      paramViewHolder.f();
     }
   }
   
@@ -98,15 +96,15 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
       return;
     }
     paramIWSEpisodeChoiceView.a(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramIWSEpisodeChoiceView);
+    this.a = new WeakReference(paramIWSEpisodeChoiceView);
     paramIWSEpisodeChoiceView.a(this);
   }
   
   public void a(String paramString)
   {
     super.a(paramString);
-    if (this.jdField_a_of_type_Boolean) {
-      k();
+    if (this.c) {
+      O();
     }
   }
   
@@ -114,7 +112,7 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   {
     super.a(paramList, paramView);
     WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][fillData]");
-    paramView = a();
+    paramView = y();
     if (paramView == null) {
       return;
     }
@@ -123,32 +121,31 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   
   protected void a(boolean paramBoolean, IWSEpisodeChoiceView paramIWSEpisodeChoiceView)
   {
-    List localList = a().a();
-    if ((paramIWSEpisodeChoiceView != null) && (paramBoolean) && (localList != null) && (localList.size() > 0))
+    Object localObject = z();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((WSVerticalPageContract.View)localObject).g();
+    if ((paramIWSEpisodeChoiceView != null) && (paramBoolean) && (localObject != null) && (((List)localObject).size() > 0))
     {
-      ((WSVerticalItemData)localList.get(0)).a(true);
-      paramIWSEpisodeChoiceView.a(localList);
+      ((WSVerticalItemData)((List)localObject).get(0)).a(true);
+      paramIWSEpisodeChoiceView.a((List)localObject);
     }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     super.a(paramBoolean1, paramBoolean2, paramString);
-    if (this.jdField_a_of_type_Boolean) {
-      l();
+    if (this.c) {
+      P();
     }
-  }
-  
-  public String b()
-  {
-    return "";
   }
   
   protected void b(@NonNull List<WSVerticalItemData> paramList, WSVerticalPageContract.View paramView)
   {
     super.b(paramList, paramView);
     WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][setData]");
-    paramView = a();
+    paramView = y();
     if (paramView == null) {
       return;
     }
@@ -158,21 +155,21 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   protected void b(List<WSVerticalItemData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
     WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][handleOnSuccess]");
-    IWSEpisodeChoiceView localIWSEpisodeChoiceView = a();
+    IWSEpisodeChoiceView localIWSEpisodeChoiceView = y();
     if ((paramBoolean2) || (paramBoolean1)) {
-      k();
+      O();
     }
     a(paramBoolean2, localIWSEpisodeChoiceView);
     super.b(paramList, paramBoolean1, paramBoolean2, paramObject);
     if ((paramBoolean2) || (!paramBoolean1)) {
-      l();
+      P();
     }
     if ((paramBoolean2) && (localIWSEpisodeChoiceView != null))
     {
-      if (!this.f) {
+      if (!this.b) {
         return;
       }
-      localIWSEpisodeChoiceView.b();
+      localIWSEpisodeChoiceView.c();
     }
   }
   
@@ -180,27 +177,17 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
   {
     super.c(paramList, paramView);
     WSLog.e("AbsWSVerticalChoiceVideoPresenter", "[AbsWSVerticalChoiceVideoPresenter.java][insertDataToTop]");
-    paramView = a();
+    paramView = y();
     if (paramView == null) {
       return;
     }
     paramView.c(paramList);
   }
   
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public boolean f()
-  {
-    return true;
-  }
-  
   public void h()
   {
     super.h();
-    IWSEpisodeChoiceView localIWSEpisodeChoiceView = a();
+    IWSEpisodeChoiceView localIWSEpisodeChoiceView = y();
     if (localIWSEpisodeChoiceView != null)
     {
       if (!localIWSEpisodeChoiceView.isShowing()) {
@@ -209,10 +196,27 @@ public abstract class AbsWSVerticalChoiceVideoPresenter
       localIWSEpisodeChoiceView.dismiss();
     }
   }
+  
+  public boolean u()
+  {
+    return true;
+  }
+  
+  public boolean v()
+  {
+    return true;
+  }
+  
+  public abstract String w();
+  
+  public String x()
+  {
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.AbsWSVerticalChoiceVideoPresenter
  * JD-Core Version:    0.7.0.1
  */

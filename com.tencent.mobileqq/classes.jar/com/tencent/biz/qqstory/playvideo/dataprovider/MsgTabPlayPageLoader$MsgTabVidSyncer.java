@@ -19,9 +19,9 @@ public class MsgTabPlayPageLoader$MsgTabVidSyncer
   
   public void a(IGroupPageLoader.IVidFullSyncer.CallBack paramCallBack)
   {
-    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new MsgTabNodeVidListPullSegment("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new MsgTabNodeVidListPullSegment("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.d, this.a.e, this.a));
     Stream localStream1 = localStream2;
-    if (this.a.a.a == 5) {
+    if (this.a.a.b == 5) {
       localStream1 = localStream2.map(new MsgTabNodePullVideoBasicInfoSegment()).map(new MsgTabNodeInsertLocalVideoInfoSegment(this.a.a));
     }
     localStream1.subscribe(new MsgTabPlayPageLoader.MsgTabVidSyncer.1(this, paramCallBack));
@@ -29,7 +29,7 @@ public class MsgTabPlayPageLoader$MsgTabVidSyncer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayPageLoader.MsgTabVidSyncer
  * JD-Core Version:    0.7.0.1
  */

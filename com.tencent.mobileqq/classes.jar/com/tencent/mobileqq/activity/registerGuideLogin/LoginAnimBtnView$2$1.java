@@ -15,7 +15,7 @@ class LoginAnimBtnView$2$1
   
   public void onCompositionLoaded(LottieComposition arg1)
   {
-    if ((??? != null) && (!LoginAnimBtnView.a(this.a.this$0)))
+    if ((??? != null) && (!LoginAnimBtnView.b(this.a.this$0)))
     {
       int i = Utils.a(70.0F, this.a.this$0.getResources());
       int j = Utils.a(70.0F, this.a.this$0.getResources());
@@ -50,11 +50,11 @@ class LoginAnimBtnView$2$1
         localStringBuilder.append(", rh:");
         localStringBuilder.append(???.height());
         localStringBuilder.append(" mIsDestroyed:");
-        localStringBuilder.append(LoginAnimBtnView.a(this.a.this$0));
+        localStringBuilder.append(LoginAnimBtnView.b(this.a.this$0));
         QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
       }
       LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
-      if (LoginAnimBtnView.a(this.a.this$0))
+      if (LoginAnimBtnView.b(this.a.this$0))
       {
         ((LottieDrawable)localObject1).cancelAnimation();
         ((LottieDrawable)localObject1).recycleBitmaps();
@@ -64,10 +64,10 @@ class LoginAnimBtnView$2$1
       }
       else if (this.a.this$0.isEnabled())
       {
-        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
-        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.g(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.g(this.a.this$0));
       }
-      synchronized (LoginAnimBtnView.a(this.a.this$0))
+      synchronized (LoginAnimBtnView.h(this.a.this$0))
       {
         LoginAnimBtnView.a(this.a.this$0, null);
         LoginAnimBtnView.a(this.a.this$0, null);
@@ -76,13 +76,13 @@ class LoginAnimBtnView$2$1
     }
     ??? = new StringBuilder();
     ???.append("onCompositionLoaded lottieComposition is null or mIsDestroyed:");
-    ???.append(LoginAnimBtnView.a(this.a.this$0));
+    ???.append(LoginAnimBtnView.b(this.a.this$0));
     QLog.e("LoginAnimBtnView", 1, ???.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2.1
  * JD-Core Version:    0.7.0.1
  */

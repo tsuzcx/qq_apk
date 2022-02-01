@@ -11,23 +11,23 @@ class QcircleTroopRedDotHelper$1
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null))
+    if ((this.this$0.b != null) && (this.this$0.b.V != null))
     {
-      if (this.this$0.a.a.a() == null) {
+      if (this.this$0.b.V.a() == null) {
         return;
       }
-      if (AIOTroopQcircleRedDotManager.a()) {
-        AIOTroopQcircleRedDotManager.a().c(this.this$0.a.d(), this.this$0.a, this.this$0.a.a.a());
-      }
       if (AIOTroopQcircleRedDotManager.b()) {
-        AIOTroopQcircleRedDotManager.a().a(this.this$0.a, this.this$0.a.a.a());
+        AIOTroopQcircleRedDotManager.a().c(this.this$0.b.ag(), this.this$0.b, this.this$0.b.V.a());
+      }
+      if (AIOTroopQcircleRedDotManager.c()) {
+        AIOTroopQcircleRedDotManager.a().a(this.this$0.b, this.this$0.b.V.a());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QcircleTroopRedDotHelper.1
  * JD-Core Version:    0.7.0.1
  */

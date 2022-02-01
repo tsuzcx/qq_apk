@@ -21,14 +21,14 @@ class SystemMsgListView$2
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setStickHead onTabSelected : position = ");
-        localStringBuilder.append(paramTab.a());
+        localStringBuilder.append(paramTab.d());
         localStringBuilder.append(" tabid = ");
         localStringBuilder.append((Integer)paramTab.a());
         QLog.i("Q.newfriendSystemMsgListView", 2, localStringBuilder.toString());
       }
-      SystemMsgListView.a(this.a).a(((Integer)paramTab.a()).intValue(), paramTab.a());
-      int i = SystemMsgListView.a(this.a).b();
-      paramTab = (ListviewScrollStatus)SystemMsgListView.a(this.a).get(i);
+      SystemMsgListView.a(this.a).a(((Integer)paramTab.a()).intValue(), paramTab.d());
+      int i = SystemMsgListView.a(this.a).m();
+      paramTab = (ListviewScrollStatus)SystemMsgListView.c(this.a).get(i);
       int j;
       if (paramTab != null)
       {
@@ -37,10 +37,10 @@ class SystemMsgListView$2
       }
       else
       {
-        i = SystemMsgListView.a(this.a).b;
-        j = SystemMsgListView.a(this.a).c;
+        i = SystemMsgListView.d(this.a).b;
+        j = SystemMsgListView.d(this.a).c;
       }
-      SystemMsgListView.a(this.a).setSelectionFromTop(i, j);
+      SystemMsgListView.e(this.a).setSelectionFromTop(i, j);
       SystemMsgListView.a(this.a).a(0L);
     }
   }
@@ -51,7 +51,7 @@ class SystemMsgListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView.2
  * JD-Core Version:    0.7.0.1
  */

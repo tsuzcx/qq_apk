@@ -5,53 +5,30 @@ import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class VideoController$GAudioFriends
 {
-  public int a;
   public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
+  public boolean b = false;
+  public int c = 0;
+  public boolean d = false;
+  public int e = 0;
+  public boolean f = false;
   public boolean g = false;
-  public boolean h = true;
-  
-  public VideoController$GAudioFriends()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 2000L;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = 0;
-  }
+  public String h = null;
+  public String i = null;
+  public String j = null;
+  public Bitmap k = null;
+  public int l = -1;
+  public long m = 0L;
+  public int n = 0;
+  public AVPhoneUserInfo o;
+  public boolean p = false;
+  public boolean q = false;
+  public boolean r = false;
+  public long s = 0L;
+  public long t = 2000L;
+  public int u = -1;
+  public int v = 0;
+  public boolean w = true;
+  public long x;
 }
 
 

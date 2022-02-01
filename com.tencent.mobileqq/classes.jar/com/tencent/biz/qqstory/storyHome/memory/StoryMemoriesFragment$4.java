@@ -11,7 +11,7 @@ class StoryMemoriesFragment$4
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.a.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}

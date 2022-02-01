@@ -14,20 +14,20 @@ class ChatHistoryC2CAllFragment$3
   {
     if (paramMessage.what == 1)
     {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
+      if ((this.a.Q != null) && (this.a.Q.isShowing())) {
+        this.a.Q.dismiss();
       }
       paramMessage = this.a;
-      paramMessage.a = new QQProgressDialog(paramMessage.getBaseActivity(), this.a.getBaseActivity().getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691498);
-      this.a.a.show();
+      paramMessage.Q = new QQProgressDialog(paramMessage.getBaseActivity(), this.a.getBaseActivity().getTitleBarHeight());
+      this.a.Q.setCancelable(false);
+      this.a.Q.c(2131888457);
+      this.a.Q.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.3
  * JD-Core Version:    0.7.0.1
  */

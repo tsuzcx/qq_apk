@@ -17,7 +17,7 @@ public class TwoLineContentDialog
   
   private void a()
   {
-    this.a = ((AnimationTextView)findViewById(2131377106));
+    this.a = ((AnimationTextView)findViewById(2131445477));
   }
   
   public void a(String paramString)
@@ -36,7 +36,7 @@ public class TwoLineContentDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.TwoLineContentDialog
  * JD-Core Version:    0.7.0.1
  */

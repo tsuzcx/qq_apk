@@ -11,18 +11,18 @@ class GroupFileSearchDialog$1
   {
     Object localObject = TroopFileSearchManager.a();
     GroupFileSearchDialog localGroupFileSearchDialog = this.this$0;
-    localGroupFileSearchDialog.jdField_a_of_type_JavaUtilList = ((TroopFileSearchManager)localObject).a(localGroupFileSearchDialog.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    if (this.this$0.b)
+    localGroupFileSearchDialog.B = ((TroopFileSearchManager)localObject).a(localGroupFileSearchDialog.m, this.this$0.l, 0);
+    if (this.this$0.s)
     {
       localObject = this.this$0;
-      ((GroupFileSearchDialog)localObject).b = false;
-      ((GroupFileSearchDialog)localObject).a(((GroupFileSearchDialog)localObject).jdField_a_of_type_JavaLangString);
+      ((GroupFileSearchDialog)localObject).s = false;
+      ((GroupFileSearchDialog)localObject).a(((GroupFileSearchDialog)localObject).w);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class BiuPgcProteusItem$6
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a;
+    paramView = this.a.k().mSocialFeedInfo.t;
     ArrayList localArrayList = paramView.a;
     if (localArrayList != null)
     {
@@ -26,13 +26,13 @@ class BiuPgcProteusItem$6
         return;
       }
       paramView = (PGCPicInfo)paramView.a.get(0);
-      BiuPgcProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemBiuPgcProteusItem, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), (int)paramView.a, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().innerUniqueID, this.jdField_a_of_type_Int, 0, (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
+      BiuPgcProteusItem.a(this.d, this.b.getContext(), this.a.k(), (int)paramView.h, this.a.k().innerUniqueID, this.c, 0, (ReadInJoyBaseAdapter)this.a.u());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuPgcProteusItem.6
  * JD-Core Version:    0.7.0.1
  */

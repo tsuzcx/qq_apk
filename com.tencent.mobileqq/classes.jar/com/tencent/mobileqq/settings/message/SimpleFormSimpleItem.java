@@ -22,18 +22,18 @@ public class SimpleFormSimpleItem
   extends RelativeLayout
   implements FormItemConstants
 {
-  protected static boolean a;
-  protected int a;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  protected Drawable a;
-  protected TextView a;
+  protected static boolean d;
   protected CharSequence a;
-  protected TextView b;
-  private CharSequence b;
-  private int g;
-  private int h;
-  private int i;
+  protected int b;
+  protected Drawable c;
+  protected TextView e;
+  protected TextView f;
+  private CharSequence l;
+  private int m;
+  private int n;
+  private int o;
+  private final Rect p = new Rect();
+  private final Paint q = new Paint();
   
   public SimpleFormSimpleItem(Context paramContext)
   {
@@ -43,8 +43,8 @@ public class SimpleFormSimpleItem
   public SimpleFormSimpleItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    getResources().getDimensionPixelSize(2131296766);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839270);
+    getResources().getDimensionPixelSize(2131297097);
+    this.c = getResources().getDrawable(2130839446);
     Context localContext1 = null;
     Context localContext2 = null;
     try
@@ -54,25 +54,25 @@ public class SimpleFormSimpleItem
         paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.i = paramContext.getDimensionPixelSize(2, getResources().getDimensionPixelSize(2131298275));
+        this.o = paramContext.getDimensionPixelSize(2, getResources().getDimensionPixelSize(2131298976));
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(9);
+        this.l = paramContext.getString(9);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.g = paramContext.getInt(10, 0);
+        this.m = paramContext.getInt(10, 0);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(16);
+        this.a = paramContext.getString(16);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.jdField_a_of_type_Int = paramContext.getInt(17, 3);
+        this.b = paramContext.getInt(17, 3);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        this.h = paramContext.getInt(0, 0);
+        this.n = paramContext.getInt(0, 0);
         localContext2 = paramContext;
         localContext1 = paramContext;
-        jdField_a_of_type_Boolean = paramContext.getBoolean(11, true);
+        d = paramContext.getBoolean(11, true);
         if (paramContext == null) {
           break label210;
         }
@@ -95,8 +95,8 @@ public class SimpleFormSimpleItem
       paramContext.recycle();
     }
     label210:
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(c);
+    this.q.setAntiAlias(true);
+    this.q.setColor(h);
     a();
   }
   
@@ -104,10 +104,10 @@ public class SimpleFormSimpleItem
   {
     if (paramBoolean)
     {
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839433);
+      if (d) {
+        return paramResources.getDrawable(2130839622);
       }
-      return paramResources.getDrawable(2130850703);
+      return paramResources.getDrawable(2130852507);
     }
     if (paramInt != 0)
     {
@@ -116,35 +116,30 @@ public class SimpleFormSimpleItem
         if (paramInt != 2)
         {
           if (paramInt != 3) {
-            return paramResources.getDrawable(2130839433);
+            return paramResources.getDrawable(2130839622);
           }
-          if (jdField_a_of_type_Boolean) {
-            return paramResources.getDrawable(2130839440);
+          if (d) {
+            return paramResources.getDrawable(2130839629);
           }
-          return paramResources.getDrawable(2130850708);
+          return paramResources.getDrawable(2130852512);
         }
-        if (jdField_a_of_type_Boolean) {
-          return paramResources.getDrawable(2130839443);
+        if (d) {
+          return paramResources.getDrawable(2130839632);
         }
-        return paramResources.getDrawable(2130850717);
+        return paramResources.getDrawable(2130852521);
       }
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839443);
+      if (d) {
+        return paramResources.getDrawable(2130839632);
       }
-      return paramResources.getDrawable(2130850717);
+      return paramResources.getDrawable(2130852521);
     }
-    if (jdField_a_of_type_Boolean) {
-      return paramResources.getDrawable(2130839433);
+    if (d) {
+      return paramResources.getDrawable(2130839622);
     }
-    return paramResources.getDrawable(2130850703);
+    return paramResources.getDrawable(2130852507);
   }
   
-  private boolean a()
-  {
-    return ("1000".equals(ThemeUtil.curThemeId)) || ("999".equals(ThemeUtil.curThemeId));
-  }
-  
-  public static ColorStateList b(Resources paramResources, int paramInt)
+  public static ColorStateList c(Resources paramResources, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -155,139 +150,149 @@ public class SimpleFormSimpleItem
           if (paramInt != 3)
           {
             if (paramInt != 4) {
-              return paramResources.getColorStateList(2131167056);
+              return paramResources.getColorStateList(2131167993);
             }
-            return paramResources.getColorStateList(2131167190);
+            return paramResources.getColorStateList(2131168175);
           }
-          return paramResources.getColorStateList(2131167152);
+          return paramResources.getColorStateList(2131168133);
         }
-        return paramResources.getColorStateList(2131167138);
+        return paramResources.getColorStateList(2131168118);
       }
-      return paramResources.getColorStateList(2131167064);
+      return paramResources.getColorStateList(2131168002);
     }
-    return paramResources.getColorStateList(2131167056);
+    return paramResources.getColorStateList(2131167993);
+  }
+  
+  private boolean c()
+  {
+    return ("1000".equals(ThemeUtil.curThemeId)) || ("999".equals(ThemeUtil.curThemeId));
   }
   
   protected ColorStateList a(Resources paramResources, int paramInt)
   {
-    return b(paramResources, paramInt);
-  }
-  
-  protected Drawable a(Resources paramResources, int paramInt)
-  {
-    return a(paramResources, paramInt, a());
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return c(paramResources, paramInt);
   }
   
   protected void a()
   {
     setFocusable(true);
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence))
+    this.e = new TextView(getContext());
+    if (!TextUtils.isEmpty(this.l))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
+      this.e.setText(this.l);
+      this.e.setContentDescription(this.l);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367173);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.g));
-    int j = getContext().getResources().getDimensionPixelSize(2131296764);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, j);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
+    this.e.setId(2131433629);
+    this.e.setTextColor(a(getResources(), this.m));
+    int i = getContext().getResources().getDimensionPixelSize(2131297095);
+    this.e.setTextSize(0, i);
+    this.e.setGravity(19);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = this.i;
+    localLayoutParams.leftMargin = this.o;
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(15);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
+    addView(this.e, localLayoutParams);
+    this.f = new TextView(getContext());
+    if (!TextUtils.isEmpty(this.a))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+      this.f.setText(this.a);
+      this.f.setContentDescription(this.a);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367175);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.jdField_a_of_type_Int));
-    j = getContext().getResources().getDimensionPixelSize(2131296773);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, j);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(19);
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
+    this.f.setId(2131433631);
+    this.f.setTextColor(a(getResources(), this.b));
+    i = getContext().getResources().getDimensionPixelSize(2131297104);
+    this.f.setTextSize(0, i);
+    this.f.setGravity(19);
+    this.f.setEllipsize(TextUtils.TruncateAt.END);
+    this.f.setDuplicateParentStateEnabled(true);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = this.i;
+    localLayoutParams.rightMargin = this.o;
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(15);
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
+    addView(this.f, localLayoutParams);
     b();
-    setBackgroundDrawable(a(getResources(), this.h));
+    setBackgroundDrawable(b(getResources(), this.n));
+  }
+  
+  protected Drawable b(Resources paramResources, int paramInt)
+  {
+    return a(paramResources, paramInt, c());
   }
   
   protected void b()
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
+    if (this.f == null) {
       return;
     }
+    int i;
     int j;
-    int k;
-    if (a())
+    if (c())
     {
-      j = e;
-      k = f;
+      i = j;
+      j = k;
     }
     else
     {
-      j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-      k = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      i = this.c.getIntrinsicWidth();
+      j = this.c.getIntrinsicHeight();
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
+    if (!TextUtils.isEmpty(this.a))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.jdField_a_of_type_Int));
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-      if (a())
+      this.f.setVisibility(0);
+      this.f.setText(this.a);
+      this.f.setTextColor(a(getResources(), this.b));
+      this.f.setContentDescription(this.a);
+      if (c())
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, j, k);
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+        this.c.setBounds(0, 0, i, j);
+        this.f.setCompoundDrawables(null, null, this.c, null);
       }
       else
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+        this.f.setCompoundDrawablesWithIntrinsicBounds(null, null, this.c, null);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(8);
+      this.f.setCompoundDrawablePadding(8);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (a())
+    this.f.setText("");
+    this.f.setVisibility(0);
+    if (c())
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, j, k);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+      this.c.setBounds(0, 0, i, j);
+      this.f.setCompoundDrawables(null, null, this.c, null);
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+      this.f.setCompoundDrawablesWithIntrinsicBounds(null, null, this.c, null);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.f.setCompoundDrawablePadding(0);
+  }
+  
+  public TextView getLeftTextView()
+  {
+    return this.e;
+  }
+  
+  public TextView getRightTextView()
+  {
+    return this.f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int j = this.h;
-    if ((j == 1) || (j == 2))
+    int i = this.n;
+    if ((i == 1) || (i == 2))
     {
-      if (a()) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(c);
+      if (c()) {
+        this.q.setColor(h);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
+        this.q.setColor(0);
       }
-      j = getMeasuredWidth();
-      int k = getMeasuredHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(d, k - jdField_b_of_type_Int, j, k);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i = getMeasuredWidth();
+      int j = getMeasuredHeight();
+      this.p.set(i, j - g, i, j);
+      paramCanvas.drawRect(this.p, this.q);
     }
   }
   
@@ -295,26 +300,26 @@ public class SimpleFormSimpleItem
   {
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.e;
       if (localTextView != null)
       {
-        this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
-        localTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(getResources(), this.g));
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
+        this.l = paramCharSequence;
+        localTextView.setText(this.l);
+        this.e.setTextColor(a(getResources(), this.m));
+        this.e.setContentDescription(this.l);
       }
     }
   }
   
   public void setRightText(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a = paramCharSequence;
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.SimpleFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

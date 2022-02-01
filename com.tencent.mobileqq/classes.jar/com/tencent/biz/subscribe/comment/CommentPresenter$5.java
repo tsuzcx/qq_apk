@@ -11,12 +11,12 @@ class CommentPresenter$5
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramView = CommentPresenter.a();
+    paramView = CommentPresenter.t();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply");
-    localStringBuilder.append(CommentPresenter.c(this.a));
+    localStringBuilder.append(CommentPresenter.l(this.a));
     QLog.d(paramView, 2, localStringBuilder.toString());
-    if ((CommentPresenter.a(this.a) != null) && (CommentPresenter.c(this.a))) {
+    if ((CommentPresenter.m(this.a) != null) && (CommentPresenter.l(this.a))) {
       CommentPresenter.a(this.a, new CommentPresenter.5.1(this));
     }
   }

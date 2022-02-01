@@ -13,12 +13,12 @@ class WSUserAuthDialog$3
   public void onCancel(DialogInterface paramDialogInterface)
   {
     WSLog.a("WSUserAuthDialog", "dialog cancel");
-    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.jdField_a_of_type_JavaLangString, "authorized_window", 1000001);
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.a, "authorized_window", 1000001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog.3
  * JD-Core Version:    0.7.0.1
  */

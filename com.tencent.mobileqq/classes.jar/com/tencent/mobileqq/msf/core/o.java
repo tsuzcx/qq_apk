@@ -11,6 +11,8 @@ import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -529,7 +531,7 @@ public class o
       localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
       try
       {
-        Object localObject4 = ((TelephonyManager)localObject1).getSubscriberId();
+        Object localObject4 = PhoneInfoMonitor.getSubscriberId((TelephonyManager)localObject1);
         if (localObject4 != null)
         {
           t = (String)localObject4;
@@ -541,10 +543,10 @@ public class o
         }
         o = ((TelephonyManager)localObject1).getNetworkCountryIso();
         p = ((TelephonyManager)localObject1).getSimCountryIso();
-        localObject4 = ((TelephonyManager)localObject1).getCellLocation();
+        localObject4 = PhoneInfoMonitor.getCellLocation((TelephonyManager)localObject1);
         if ((localObject4 instanceof CdmaCellLocation))
         {
-          localObject4 = (CdmaCellLocation)((TelephonyManager)localObject1).getCellLocation();
+          localObject4 = (CdmaCellLocation)PhoneInfoMonitor.getCellLocation((TelephonyManager)localObject1);
           localObject7 = localObject1;
           if (localObject4 != null)
           {
@@ -557,7 +559,7 @@ public class o
           localObject7 = localObject1;
           if ((localObject4 instanceof GsmCellLocation))
           {
-            localObject4 = (GsmCellLocation)((TelephonyManager)localObject1).getCellLocation();
+            localObject4 = (GsmCellLocation)PhoneInfoMonitor.getCellLocation((TelephonyManager)localObject1);
             localObject7 = localObject1;
             if (localObject4 != null)
             {
@@ -650,9 +652,9 @@ public class o
               if (Build.VERSION.SDK_INT > 28) {
                 localObject1 = Settings.System.getString(BaseApplication.getContext().getContentResolver(), "android_id");
               } else if (Build.VERSION.SDK_INT < 26) {
-                localObject1 = ((TelephonyManager)localObject7).getDeviceId();
+                localObject1 = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject7);
               } else {
-                localObject1 = ((TelephonyManager)localObject7).getImei();
+                localObject1 = PhoneInfoMonitor.getImei((TelephonyManager)localObject7);
               }
             }
             catch (SecurityException localSecurityException)
@@ -878,7 +880,7 @@ public class o
     {
       do
       {
-        localObject3 = NetworkInterface.getNetworkInterfaces();
+        localObject3 = NetworkMonitor.getNetworkInterfaces();
         Enumeration localEnumeration;
         while (!localEnumeration.hasMoreElements())
         {
@@ -916,7 +918,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.o
  * JD-Core Version:    0.7.0.1
  */

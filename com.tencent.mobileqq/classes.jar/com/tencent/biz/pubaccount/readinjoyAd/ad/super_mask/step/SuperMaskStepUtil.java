@@ -21,7 +21,7 @@ public final class SuperMaskStepUtil
     {
       SuperMaskStep localSuperMaskStep = paramVarArgs[i];
       localSuperMaskStep.a(paramString);
-      if (!localSuperMaskStep.a()) {
+      if (!localSuperMaskStep.c()) {
         return false;
       }
       i += 1;
@@ -59,7 +59,7 @@ public final class SuperMaskStepUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.SuperMaskStepUtil
  * JD-Core Version:    0.7.0.1
  */

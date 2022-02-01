@@ -14,15 +14,15 @@ class TroopNewGuidePopWindow$3
   
   public void onGlobalLayout()
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - DisplayUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new ColorNickText(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.h, 16).a());
+    int i = this.a.l.getMeasuredWidth();
+    i = (int)(this.a.n.getMeasuredWidth() - i - DisplayUtils.a(this.a.a, 5.0F));
+    this.a.k.setMaxWidth(i);
+    this.a.k.setText(new ColorNickText(this.a.B.i, 16).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.3
  * JD-Core Version:    0.7.0.1
  */

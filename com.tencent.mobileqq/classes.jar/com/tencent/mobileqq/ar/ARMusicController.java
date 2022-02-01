@@ -11,57 +11,57 @@ import java.util.HashSet;
 
 public class ARMusicController
 {
-  private int jdField_a_of_type_Int;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  MediaPlayer a = new MediaPlayer();
+  private SoundPool b;
+  private int c;
   private boolean d;
   private boolean e;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private HashMap<String, Integer> i;
+  private HashSet<Integer> j;
+  private HashSet<Integer> k;
+  private String l;
+  private String m;
   
   public ARMusicController(int paramInt, String... paramVarArgs)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
+    int n = 0;
+    this.c = 0;
     this.d = false;
     this.e = false;
+    this.f = false;
+    this.g = false;
+    this.h = false;
     try
     {
-      this.e = true;
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new ARMusicController.4(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new ARMusicController.5(this));
+      this.h = true;
+      this.i = new HashMap();
+      this.j = new HashSet();
+      this.k = new HashSet();
+      this.b = new SoundPool(paramInt, 3, 0);
+      this.b.setOnLoadCompleteListener(new ARMusicController.4(this));
+      this.a = new MediaPlayer();
+      this.a.setOnPreparedListener(new ARMusicController.5(this));
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        int j = paramVarArgs.length;
-        paramInt = i;
-        while (paramInt < j)
+        int i1 = paramVarArgs.length;
+        paramInt = n;
+        while (paramInt < i1)
         {
           String str = paramVarArgs[paramInt];
           if (!TextUtils.isEmpty(str))
           {
-            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+            n = this.b.load(str, 1);
+            this.i.put(str, Integer.valueOf(n));
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("load file:");
               localStringBuilder.append(str);
               localStringBuilder.append(", id=");
-              localStringBuilder.append(i);
+              localStringBuilder.append(n);
               QLog.d("ARMusicController", 2, localStringBuilder.toString());
             }
           }
@@ -78,26 +78,26 @@ public class ARMusicController
   
   public ARMusicController(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
+    this.c = 0;
     this.d = false;
     this.e = false;
+    this.f = false;
+    this.g = false;
+    this.h = false;
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new ARMusicController.1(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new ARMusicController.2(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new ARMusicController.3(this));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
+      this.l = paramString1;
+      this.m = paramString2;
+      this.b = new SoundPool(1, 3, 0);
+      this.b.setOnLoadCompleteListener(new ARMusicController.1(this));
+      this.a = new MediaPlayer();
+      this.a.setOnPreparedListener(new ARMusicController.2(this));
+      this.a.setOnErrorListener(new ARMusicController.3(this));
+      this.c = this.b.load(paramString2, 1);
       try
       {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+        this.a.setDataSource(paramString1);
+        this.a.prepareAsync();
         return;
       }
       catch (IOException paramString1)
@@ -120,7 +120,7 @@ public class ARMusicController
   
   public void a(String paramString, boolean paramBoolean)
   {
-    int i;
+    int n;
     label168:
     do
     {
@@ -128,13 +128,13 @@ public class ARMusicController
       {
         try
         {
-          if (!this.e) {
+          if (!this.h) {
             return;
           }
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+          if (!this.i.containsKey(paramString)) {
             break label168;
           }
-          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+          n = ((Integer)this.i.get(paramString)).intValue();
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -142,7 +142,7 @@ public class ARMusicController
           localStringBuilder.append("playSound path=");
           localStringBuilder.append(paramString);
           localStringBuilder.append(", id=");
-          localStringBuilder.append(i);
+          localStringBuilder.append(n);
           QLog.d("ARMusicController", 2, localStringBuilder.toString());
         }
         catch (Exception paramString)
@@ -150,21 +150,21 @@ public class ARMusicController
           QLog.e("ARMusicController", 2, paramString, new Object[0]);
           return;
         }
-        if (this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i)))
+        if (this.k.contains(Integer.valueOf(n)))
         {
-          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
+          this.b.play(n, 1.0F, 1.0F, 1, 0, 1.0F);
           return;
         }
         if (paramBoolean)
         {
-          this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
+          this.j.add(Integer.valueOf(n));
           return;
         }
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+        this.j.remove(Integer.valueOf(n));
         return;
-        i = -1;
+        n = -1;
       }
-    } while (i != -1);
+    } while (n != -1);
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -181,15 +181,15 @@ public class ARMusicController
           QLog.d("ARMusicController", 2, localStringBuilder.toString());
           return;
         }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+        if (this.a.isPlaying()) {
+          this.a.stop();
         }
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.d = paramBoolean2;
+        this.l = paramString;
+        this.a.reset();
+        this.a.setDataSource(paramString);
+        this.a.setLooping(paramBoolean1);
+        this.a.prepareAsync();
+        this.g = paramBoolean2;
         return;
       }
     }
@@ -211,16 +211,16 @@ public class ARMusicController
   {
     try
     {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      if (this.e) {
+        this.a.start();
       } else {
-        this.d = true;
+        this.g = true;
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("playBgMusic : ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.l);
         QLog.d("ARMusicController", 2, localStringBuilder.toString());
         return;
       }
@@ -235,9 +235,9 @@ public class ARMusicController
   {
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      this.a.stop();
+      this.e = false;
+      this.a.prepareAsync();
       if (QLog.isColorLevel())
       {
         QLog.d("ARMusicController", 2, "stopAllMusic");
@@ -254,11 +254,11 @@ public class ARMusicController
   {
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-      this.jdField_b_of_type_JavaUtilHashSet = null;
+      this.a.release();
+      this.b.release();
+      this.i = null;
+      this.j = null;
+      this.k = null;
       return;
     }
     catch (Exception localException)
@@ -269,7 +269,7 @@ public class ARMusicController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController
  * JD-Core Version:    0.7.0.1
  */

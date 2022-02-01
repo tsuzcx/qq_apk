@@ -28,30 +28,30 @@ public class VasTroopHonorRichHandler
       switch (paramInt)
       {
       default: 
-        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_4.png";
+        paramTroopMemberRankItem.j = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_4.png";
         str = "#798CBF";
         localObject = "#A9BEF2";
         break;
       case 302: 
-        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_3.png";
+        paramTroopMemberRankItem.j = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_3.png";
         str = "#B766FF";
         localObject = "#FF83D5";
         break;
       case 301: 
-        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_2.png";
+        paramTroopMemberRankItem.j = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_2.png";
         str = "#00BEDB";
         localObject = "#0EE0CE";
         break;
       case 300: 
-        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_1.png";
+        paramTroopMemberRankItem.j = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_1.png";
         str = "#FF9000";
         localObject = "#FFD325";
       }
-      paramTroopMemberRankItem.a = new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
+      paramTroopMemberRankItem.d = new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
     }
     else
     {
-      paramTroopMemberRankItem.b = null;
+      paramTroopMemberRankItem.j = null;
     }
     if (QLog.isColorLevel())
     {
@@ -59,7 +59,7 @@ public class VasTroopHonorRichHandler
       ((StringBuilder)localObject).append("honor_rich_handleRichLevel,");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(paramTroopMemberRankItem.b);
+      ((StringBuilder)localObject).append(paramTroopMemberRankItem.j);
       QLog.d("TroopHonor", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -75,9 +75,9 @@ public class VasTroopHonorRichHandler
       if (paramString != null)
       {
         paramContext = new TroopMemberLevelEffectView(paramContext);
-        paramContext.setLayoutParams(new RelativeLayout.LayoutParams(paramInt, ViewUtils.a(14.0F)));
+        paramContext.setLayoutParams(new RelativeLayout.LayoutParams(paramInt, ViewUtils.dip2px(14.0F)));
         paramContext.setScaleType(ImageView.ScaleType.FIT_START);
-        paramContext.setLeftCropRect(new Rect(0, 0, ViewUtils.a(51.0F), ViewUtils.a(14.0F)));
+        paramContext.setLeftCropRect(new Rect(0, 0, ViewUtils.dip2px(51.0F), ViewUtils.dip2px(14.0F)));
         paramContext.setCurrentDrawable(paramString);
         paramViewGroup.addView(paramContext);
       }
@@ -86,7 +86,7 @@ public class VasTroopHonorRichHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troophonor.VasTroopHonorRichHandler
  * JD-Core Version:    0.7.0.1
  */

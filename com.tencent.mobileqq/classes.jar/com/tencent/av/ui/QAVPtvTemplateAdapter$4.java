@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import com.tencent.av.ui.effect.interfaces.IEffectCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ class QAVPtvTemplateAdapter$4
   public void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase)
   {
     boolean bool;
-    if ((System.currentTimeMillis() - this.a.jdField_a_of_type_Long < 500L) && (paramInt > 0)) {
+    if ((System.currentTimeMillis() - this.a.p < 500L) && (paramInt > 0)) {
       bool = true;
     } else {
       bool = false;
@@ -22,7 +23,7 @@ class QAVPtvTemplateAdapter$4
       paramQavListItemBase.append("onItemClicked begin, position[");
       paramQavListItemBase.append(paramInt);
       paramQavListItemBase.append("], mCurSelectedPosition[");
-      paramQavListItemBase.append(this.a.d);
+      paramQavListItemBase.append(this.a.j);
       paramQavListItemBase.append("], ignore[");
       paramQavListItemBase.append(bool);
       paramQavListItemBase.append("], seq[");
@@ -37,25 +38,25 @@ class QAVPtvTemplateAdapter$4
     paramQavListItemBase.append("onItemClicked valid, position[");
     paramQavListItemBase.append(paramInt);
     paramQavListItemBase.append("], mCurSelectedPosition[");
-    paramQavListItemBase.append(this.a.d);
+    paramQavListItemBase.append(this.a.j);
     paramQavListItemBase.append("], seq[");
     paramQavListItemBase.append(paramLong);
     paramQavListItemBase.append("]");
     QLog.w("QAVPtvTemplateAdapter", 1, paramQavListItemBase.toString());
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    int i = this.a.d;
+    this.a.p = System.currentTimeMillis();
+    int i = this.a.j;
     paramQavListItemBase = this.a;
-    paramQavListItemBase.d = paramInt;
-    paramQavListItemBase.e = paramInt;
-    paramQavListItemBase.a(i, paramQavListItemBase.d);
+    paramQavListItemBase.j = paramInt;
+    paramQavListItemBase.k = paramInt;
+    paramQavListItemBase.a(i, paramQavListItemBase.j);
     paramQavListItemBase = this.a;
-    paramQavListItemBase.a(paramQavListItemBase.d);
+    paramQavListItemBase.c(paramQavListItemBase.j);
     paramQavListItemBase = this.a;
-    paramQavListItemBase.a(paramLong, paramQavListItemBase.d);
-    if (this.a.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback != null)
+    paramQavListItemBase.b(paramLong, paramQavListItemBase.j);
+    if (this.a.l != null)
     {
-      paramQavListItemBase = (QavListItemBase.ItemInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      this.a.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback.a(paramQavListItemBase);
+      paramQavListItemBase = (QavListItemBase.ItemInfo)this.a.a.get(paramInt);
+      this.a.l.a(paramQavListItemBase);
     }
   }
 }

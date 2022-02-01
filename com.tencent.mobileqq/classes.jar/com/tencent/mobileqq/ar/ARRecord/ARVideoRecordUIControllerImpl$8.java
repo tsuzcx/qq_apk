@@ -12,9 +12,9 @@ class ARVideoRecordUIControllerImpl$8
     }
     if (this.a == 0)
     {
-      if (ARVideoRecordUIControllerImpl.a(this.this$0) != -1)
+      if (ARVideoRecordUIControllerImpl.d(this.this$0) != -1)
       {
-        switch (ARVideoRecordUIControllerImpl.a(this.this$0))
+        switch (ARVideoRecordUIControllerImpl.d(this.this$0))
         {
         default: 
           break;
@@ -34,7 +34,7 @@ class ARVideoRecordUIControllerImpl$8
         }
         ARVideoRecordUIControllerImpl.a(this.this$0, -1);
       }
-      else if (ARVideoRecordUIControllerImpl.b(this.this$0) == true)
+      else if (ARVideoRecordUIControllerImpl.e(this.this$0) == true)
       {
         ARVideoRecordUIControllerImpl.a(this.this$0, false);
       }
@@ -54,14 +54,14 @@ class ARVideoRecordUIControllerImpl$8
       }
     }
     ARVideoRecordUIControllerImpl.b(this.this$0, false);
-    if (!ARVideoRecordUIControllerImpl.c(this.this$0)) {
-      ARVideoRecordUIControllerImpl.a(this.this$0);
+    if (!ARVideoRecordUIControllerImpl.f(this.this$0)) {
+      ARVideoRecordUIControllerImpl.g(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.8
  * JD-Core Version:    0.7.0.1
  */

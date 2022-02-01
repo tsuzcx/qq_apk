@@ -10,20 +10,20 @@ class ToastUtil$1
   
   public void run()
   {
-    if (this.this$0.a == null)
+    if (this.this$0.b == null)
     {
-      this.this$0.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.this$0.a.show();
+      this.this$0.b = Toast.makeText(CommonDataAdapter.a().b(), this.a, this.b);
+      this.this$0.b.show();
       return;
     }
-    this.this$0.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.this$0.a.setDuration(this.jdField_a_of_type_Int);
-    this.this$0.a.show();
+    this.this$0.b.setText(this.a);
+    this.this$0.b.setDuration(this.b);
+    this.this$0.b.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.ToastUtil.1
  * JD-Core Version:    0.7.0.1
  */

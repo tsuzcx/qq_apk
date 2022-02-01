@@ -10,18 +10,18 @@ class OcrControl$3
   
   public void run()
   {
-    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.this$0, this.a);
     if ((localARCloudReqInfo != null) && (OcrControl.a(this.this$0) != null))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = localARCloudReqInfo.c;
-      OcrControl.a(this.this$0).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
+      long l2 = localARCloudReqInfo.q;
+      OcrControl.a(this.this$0).a(4, null, this.b.e, l1 - l2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.3
  * JD-Core Version:    0.7.0.1
  */

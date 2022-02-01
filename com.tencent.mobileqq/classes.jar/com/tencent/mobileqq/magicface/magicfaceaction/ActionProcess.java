@@ -6,16 +6,16 @@ import java.util.List;
 
 public class ActionProcess
 {
-  public int a;
   public String a;
-  public List<RecordCondition> a = new ArrayList();
-  public int b = -1;
   public String b;
   public String c;
+  public int d;
+  public int e = -1;
+  public List<RecordCondition> f = new ArrayList();
   
   public int a(int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       RecordCondition localRecordCondition = (RecordCondition)localIterator.next();
@@ -28,7 +28,7 @@ public class ActionProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.ActionProcess
  * JD-Core Version:    0.7.0.1
  */

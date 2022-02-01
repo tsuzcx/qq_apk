@@ -1,13 +1,17 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.model.content.ContentModel;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 import java.util.ArrayList;
 import java.util.List;
 
 class ShapeGroupParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "hd", "it" });
+  
   static ShapeGroup parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     ArrayList localArrayList = new ArrayList();
@@ -15,24 +19,7 @@ class ShapeGroupParser
     boolean bool = false;
     while (paramJsonReader.hasNext())
     {
-      Object localObject = paramJsonReader.nextName();
-      int i = -1;
-      int j = ((String)localObject).hashCode();
-      if (j != 3324)
-      {
-        if (j != 3371)
-        {
-          if ((j == 3519) && (((String)localObject).equals("nm"))) {
-            i = 0;
-          }
-        }
-        else if (((String)localObject).equals("it")) {
-          i = 2;
-        }
-      }
-      else if (((String)localObject).equals("hd")) {
-        i = 1;
-      }
+      int i = paramJsonReader.selectName(NAMES);
       if (i != 0)
       {
         if (i != 1)
@@ -46,9 +33,9 @@ class ShapeGroupParser
             paramJsonReader.beginArray();
             while (paramJsonReader.hasNext())
             {
-              localObject = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
-              if (localObject != null) {
-                localArrayList.add(localObject);
+              ContentModel localContentModel = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
+              if (localContentModel != null) {
+                localArrayList.add(localContentModel);
               }
             }
             paramJsonReader.endArray();
@@ -67,7 +54,7 @@ class ShapeGroupParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeGroupParser
  * JD-Core Version:    0.7.0.1
  */

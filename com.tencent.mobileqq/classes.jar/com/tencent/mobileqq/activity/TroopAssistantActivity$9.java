@@ -23,9 +23,9 @@ class TroopAssistantActivity$9
         {
           paramString1 = paramString2;
           if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.getResources().getString(2131694666);
+            paramString1 = this.a.getResources().getString(2131892358);
           }
-          QQToast.a(this.a, 1, paramString1, 0).a();
+          QQToast.makeText(this.a, 1, paramString1, 0).show();
         }
       }
       if (QLog.isColorLevel())
@@ -46,7 +46,7 @@ class TroopAssistantActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.9
  * JD-Core Version:    0.7.0.1
  */

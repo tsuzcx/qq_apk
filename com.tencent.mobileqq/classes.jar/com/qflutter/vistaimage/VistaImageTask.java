@@ -1,6 +1,5 @@
 package com.qflutter.vistaimage;
 
-import android.text.TextUtils;
 import com.qflutter.superchannel.SuperChannelResult;
 import com.qflutter.superchannel.SuperChannelTask;
 import java.util.Map;
@@ -17,171 +16,183 @@ class VistaImageTask
   static final int UPDATE_TEXTURE_TYPE = 2;
   private int fit;
   private int height;
+  private double radius = 0.0D;
+  private RendererParams.ImageRepeat repeat = RendererParams.ImageRepeat.NO_REPEAT;
+  private String scheme;
   private SuperChannelTask superChannelTask;
-  private long textureId;
+  private long textureId = -1L;
   private int type;
   private String uri;
   private int width;
   
-  private static VistaImageTask parseCreateTask(Map paramMap)
+  private boolean checkCreateType()
   {
-    Object localObject = (String)paramMap.get("uri");
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramMap = new StringBuilder();
-      paramMap.append("[parseCreateTask] invalid uri, uri=");
-      paramMap.append((String)localObject);
-      VistaImageLog.w("VistaImageTask", paramMap.toString());
-      return null;
-    }
-    Integer localInteger1 = (Integer)paramMap.get("width");
-    Integer localInteger2 = (Integer)paramMap.get("height");
-    if ((localInteger1 == null) && (localInteger2 == null))
-    {
-      paramMap = new StringBuilder();
-      paramMap.append("[parseCreateTask] invalid width or height, width=");
-      paramMap.append(localInteger1);
-      paramMap.append(", height=");
-      paramMap.append(localInteger2);
-      VistaImageLog.w("VistaImageTask", paramMap.toString());
-      return null;
-    }
-    paramMap = (Integer)paramMap.get("fit");
-    if (paramMap == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[parseCreateTask] invalid fit, fit=");
-      ((StringBuilder)localObject).append(paramMap);
-      VistaImageLog.w("VistaImageTask", ((StringBuilder)localObject).toString());
-      return null;
-    }
-    VistaImageTask localVistaImageTask = new VistaImageTask();
-    int j = 0;
-    localVistaImageTask.type = 0;
+    Object localObject = this.uri;
     int i;
-    if (localInteger1 == null) {
-      i = 0;
-    } else {
-      i = localInteger1.intValue();
+    if ((localObject != null) && (!((String)localObject).isEmpty()))
+    {
+      if ((this.width <= 0) && (this.height <= 0))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[checkCreateType] invalid size, width=");
+        ((StringBuilder)localObject).append(this.width);
+        ((StringBuilder)localObject).append(", height=");
+        i = this.height;
+        ((StringBuilder)localObject).append(i);
+        label75:
+        VistaImageLog.w("VistaImageTask", ((StringBuilder)localObject).toString());
+        return false;
+      }
+      i = this.fit;
+      if ((i >= 0) && (i <= 6))
+      {
+        localObject = this.scheme;
+        if ((localObject != null) && (!((String)localObject).isEmpty())) {
+          return true;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[checkCreateType] invalid scheme, ");
+      }
     }
-    localVistaImageTask.width = i;
-    if (localInteger2 == null) {
-      i = j;
-    } else {
-      i = localInteger2.intValue();
+    for (String str = this.scheme;; str = this.uri)
+    {
+      ((StringBuilder)localObject).append(str);
+      break label75;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[checkCreateType] invalid fit, ");
+      i = this.fit;
+      break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[checkCreateType] invalid uri, ");
     }
-    localVistaImageTask.height = i;
-    localVistaImageTask.fit = paramMap.intValue();
-    localVistaImageTask.uri = ((String)localObject);
-    return localVistaImageTask;
   }
   
-  private static VistaImageTask parseReleaseTask(Map paramMap)
+  private boolean checkReleaseType()
   {
-    paramMap = (Integer)paramMap.get("texture_id");
-    if (paramMap == null)
+    if (this.textureId < 0L)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[parseReleaseTask] invalid textureId, textureId=");
-      ((StringBuilder)localObject).append(paramMap);
-      VistaImageLog.w("VistaImageTask", ((StringBuilder)localObject).toString());
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[checkUpdateType] invalid textureId, ");
+      localStringBuilder.append(this.textureId);
+      VistaImageLog.w("VistaImageTask", localStringBuilder.toString());
+      return false;
     }
-    Object localObject = new VistaImageTask();
-    ((VistaImageTask)localObject).type = 1;
-    ((VistaImageTask)localObject).textureId = paramMap.intValue();
-    return localObject;
+    return true;
   }
   
-  private static VistaImageTask parseUpdateTask(Map paramMap)
+  private boolean checkUpdateType()
   {
-    Object localObject = (String)paramMap.get("uri");
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramMap = new StringBuilder();
-      paramMap.append("[parseCreateTask] invalid uri, uri=");
-      paramMap.append((String)localObject);
-      VistaImageLog.w("VistaImageTask", paramMap.toString());
-      return null;
-    }
-    Integer localInteger1 = (Integer)paramMap.get("texture_id");
-    if (localInteger1 == null)
-    {
-      paramMap = new StringBuilder();
-      paramMap.append("[parseUpdateTask] invalid textureId, textureId=");
-      paramMap.append(localInteger1);
-      VistaImageLog.w("VistaImageTask", paramMap.toString());
-      return null;
-    }
-    Integer localInteger2 = (Integer)paramMap.get("width");
-    Integer localInteger3 = (Integer)paramMap.get("height");
-    if ((localInteger2 == null) && (localInteger3 == null))
-    {
-      paramMap = new StringBuilder();
-      paramMap.append("[parseUpdateTask] invalid width or height, width=");
-      paramMap.append(localInteger2);
-      paramMap.append(", height=");
-      paramMap.append(localInteger3);
-      VistaImageLog.w("VistaImageTask", paramMap.toString());
-      return null;
-    }
-    paramMap = (Integer)paramMap.get("fit");
-    if (paramMap == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[parseUpdateTask] invalid fit, fit=");
-      ((StringBuilder)localObject).append(paramMap);
-      VistaImageLog.w("VistaImageTask", ((StringBuilder)localObject).toString());
-      return null;
-    }
+    return (checkCreateType()) && (checkReleaseType());
+  }
+  
+  private static VistaImageTask generateTask(String paramString, Map paramMap)
+  {
     VistaImageTask localVistaImageTask = new VistaImageTask();
-    localVistaImageTask.type = 2;
-    localVistaImageTask.textureId = localInteger1.intValue();
-    int j = 0;
+    boolean bool = "createTexture".equals(paramString);
+    int j = -1;
+    int k = 0;
     int i;
-    if (localInteger2 == null) {
+    if (bool)
+    {
+      localVistaImageTask.type = 0;
+    }
+    else
+    {
+      if ("updateTexture".equals(paramString)) {}
+      for (i = 2;; i = 1)
+      {
+        localVistaImageTask.type = i;
+        break label80;
+        if (!"releaseTexture".equals(paramString)) {
+          break;
+        }
+      }
+      localVistaImageTask.type = -1;
+    }
+    label80:
+    localVistaImageTask.uri = ((String)paramMap.get("uri"));
+    paramString = (Integer)paramMap.get("width");
+    if (paramString == null) {
       i = 0;
     } else {
-      i = localInteger2.intValue();
+      i = paramString.intValue();
     }
     localVistaImageTask.width = i;
-    if (localInteger3 == null) {
-      i = j;
+    paramString = (Integer)paramMap.get("height");
+    if (paramString == null) {
+      i = k;
     } else {
-      i = localInteger3.intValue();
+      i = paramString.intValue();
     }
     localVistaImageTask.height = i;
-    localVistaImageTask.fit = paramMap.intValue();
-    localVistaImageTask.uri = ((String)localObject);
+    paramString = (Double)paramMap.get("radius");
+    double d;
+    if (paramString == null) {
+      d = 0.0D;
+    } else {
+      d = paramString.doubleValue();
+    }
+    localVistaImageTask.radius = d;
+    paramString = (Integer)paramMap.get("repeat");
+    if (paramString == null) {
+      paramString = RendererParams.ImageRepeat.NO_REPEAT;
+    } else {
+      paramString = RendererParams.ImageRepeat.fromValue(paramString.intValue());
+    }
+    localVistaImageTask.repeat = paramString;
+    paramString = (Integer)paramMap.get("fit");
+    if (paramString == null) {
+      i = j;
+    } else {
+      i = paramString.intValue();
+    }
+    localVistaImageTask.fit = i;
+    localVistaImageTask.scheme = ((String)paramMap.get("scheme"));
+    paramString = (Integer)paramMap.get("texture_id");
+    long l;
+    if (paramString == null) {
+      l = -1L;
+    } else {
+      l = paramString.intValue();
+    }
+    localVistaImageTask.textureId = l;
     return localVistaImageTask;
   }
   
   static VistaImageTask transformTask(SuperChannelTask paramSuperChannelTask)
   {
-    if ("createTexture".equals(paramSuperChannelTask.getCommand())) {
-      localObject = parseCreateTask(paramSuperChannelTask.getArguments());
-    }
-    for (;;)
+    VistaImageTask localVistaImageTask = generateTask(paramSuperChannelTask.getCommand(), paramSuperChannelTask.getArguments());
+    if (localVistaImageTask.isValid())
     {
-      ((VistaImageTask)localObject).superChannelTask = paramSuperChannelTask;
-      return localObject;
-      if ("releaseTexture".equals(paramSuperChannelTask.getCommand()))
-      {
-        localObject = parseReleaseTask(paramSuperChannelTask.getArguments());
-      }
-      else
-      {
-        if (!"updateTexture".equals(paramSuperChannelTask.getCommand())) {
-          break;
-        }
-        localObject = parseUpdateTask(paramSuperChannelTask.getArguments());
-      }
+      localVistaImageTask.superChannelTask = paramSuperChannelTask;
+      return localVistaImageTask;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[transformTask] invalid command: ");
-    ((StringBuilder)localObject).append(paramSuperChannelTask.getCommand());
-    VistaImageLog.e("VistaImageTask", ((StringBuilder)localObject).toString());
     return null;
+  }
+  
+  public int getFitType()
+  {
+    return this.fit;
+  }
+  
+  public int getHeight()
+  {
+    return this.height;
+  }
+  
+  public double getRadius()
+  {
+    return this.radius;
+  }
+  
+  public RendererParams.ImageRepeat getRepeat()
+  {
+    return this.repeat;
+  }
+  
+  String getScheme()
+  {
+    return this.scheme;
   }
   
   public long getTextureId()
@@ -194,7 +205,39 @@ class VistaImageTask
     return this.type;
   }
   
-  public Observable<TextureRecord> loadImage(IVistaImage paramIVistaImage, float paramFloat)
+  public String getUri()
+  {
+    return this.uri;
+  }
+  
+  public int getWidth()
+  {
+    return this.width;
+  }
+  
+  boolean isValid()
+  {
+    int i = this.type;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[isValid] invalid type, ");
+          localStringBuilder.append(this.type);
+          VistaImageLog.w("VistaImageTask", localStringBuilder.toString());
+          return false;
+        }
+        return checkUpdateType();
+      }
+      return checkReleaseType();
+    }
+    return checkCreateType();
+  }
+  
+  Observable<TextureRecord> loadImage(IVistaImage paramIVistaImage, float paramFloat)
   {
     return Observable.create(new VistaImageTask.1(this, paramIVistaImage, paramFloat));
   }
@@ -245,7 +288,7 @@ class VistaImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageTask
  * JD-Core Version:    0.7.0.1
  */

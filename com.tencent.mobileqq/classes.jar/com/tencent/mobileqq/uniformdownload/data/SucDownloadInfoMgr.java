@@ -13,8 +13,8 @@ import java.util.Map.Entry;
 
 public class SucDownloadInfoMgr
 {
-  private List<SucDownloadInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private List<SucDownloadInfo> b = new ArrayList();
   
   private SucDownloadInfo a(String paramString)
   {
@@ -50,9 +50,9 @@ public class SucDownloadInfoMgr
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(paramSucDownloadInfo.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append(String.valueOf(paramSucDownloadInfo.a));
     localStringBuilder.append("^");
-    localStringBuilder.append(String.valueOf(paramSucDownloadInfo.jdField_a_of_type_Int));
+    localStringBuilder.append(String.valueOf(paramSucDownloadInfo.b));
     return localStringBuilder.toString();
   }
   
@@ -61,15 +61,15 @@ public class SucDownloadInfoMgr
     if (paramString == null) {
       return null;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      a();
-      this.jdField_a_of_type_Boolean = true;
+      b();
+      this.a = true;
     }
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       SucDownloadInfo localSucDownloadInfo;
       while (localIterator.hasNext())
       {
@@ -78,7 +78,7 @@ public class SucDownloadInfoMgr
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("package:");
-          localStringBuilder.append(localSucDownloadInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localSucDownloadInfo.a);
           if (paramString.equalsIgnoreCase(localStringBuilder.toString())) {
             localArrayList.add(localSucDownloadInfo);
           }
@@ -88,7 +88,7 @@ public class SucDownloadInfoMgr
       {
         paramString = new StringBuilder();
         paramString.append("[UniformDL] getSucDownloadInfoOfPkg. remove before size:");
-        paramString.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramString.append(this.b.size());
         QLog.i("SucDownloadInfoMgr", 1, paramString.toString());
         try
         {
@@ -97,7 +97,7 @@ public class SucDownloadInfoMgr
           while (localIterator.hasNext())
           {
             localSucDownloadInfo = (SucDownloadInfo)localIterator.next();
-            this.jdField_a_of_type_JavaUtilList.remove(localSucDownloadInfo);
+            this.b.remove(localSucDownloadInfo);
             paramString.remove(a(localSucDownloadInfo));
           }
           paramString.commit();
@@ -108,7 +108,7 @@ public class SucDownloadInfoMgr
         }
         paramString = new StringBuilder();
         paramString.append("[UniformDL] getSucDownloadInfoOfPkg. remove after size:");
-        paramString.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramString.append(this.b.size());
         QLog.i("SucDownloadInfoMgr", 1, paramString.toString());
       }
       return localArrayList;
@@ -119,7 +119,61 @@ public class SucDownloadInfoMgr
     }
   }
   
-  public void a()
+  public void a(String paramString, int paramInt)
+  {
+    if (paramString == null) {
+      return;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[UniformDL] removeSucDownloadInfo. pkgName:");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" notificationId:");
+    ((StringBuilder)localObject1).append(paramInt);
+    QLog.i("SucDownloadInfoMgr", 1, ((StringBuilder)localObject1).toString());
+    Object localObject2 = null;
+    synchronized (this.b)
+    {
+      Iterator localIterator = this.b.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (SucDownloadInfo)localIterator.next();
+      } while ((localObject1 == null) || (!paramString.equalsIgnoreCase(((SucDownloadInfo)localObject1).a)) || (paramInt != ((SucDownloadInfo)localObject1).b));
+      if (localObject1 != null)
+      {
+        this.b.remove(localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[UniformDL] removeSucDownloadInfo done. pkgName:");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" notificationId:");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append(" size:");
+        ((StringBuilder)localObject1).append(this.b.size());
+        QLog.i("SucDownloadInfoMgr", 1, ((StringBuilder)localObject1).toString());
+      }
+      try
+      {
+        localObject1 = a().edit();
+        ((SharedPreferences.Editor)localObject1).remove(a(new SucDownloadInfo(paramString, paramInt)));
+        ((SharedPreferences.Editor)localObject1).commit();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public void b()
   {
     try
     {
@@ -144,14 +198,14 @@ public class SucDownloadInfoMgr
           {
             ??? = new StringBuilder();
             ((StringBuilder)???).append("[UniformDL] initSucDownloadInfo, pkgName:[");
-            ((StringBuilder)???).append(((SucDownloadInfo)localObject3).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)???).append(((SucDownloadInfo)localObject3).a);
             ((StringBuilder)???).append("]] nId:[");
-            ((StringBuilder)???).append(((SucDownloadInfo)localObject3).jdField_a_of_type_Int);
+            ((StringBuilder)???).append(((SucDownloadInfo)localObject3).b);
             ((StringBuilder)???).append("] ");
             QLog.i("SucDownloadInfoMgr", 1, ((StringBuilder)???).toString());
-            synchronized (this.jdField_a_of_type_JavaUtilList)
+            synchronized (this.b)
             {
-              this.jdField_a_of_type_JavaUtilList.add(localObject3);
+              this.b.add(localObject3);
             }
           }
           QLog.e("SucDownloadInfoMgr", 1, "[UniformDL] initSucDownloadInfo, value error. ");
@@ -165,26 +219,26 @@ public class SucDownloadInfoMgr
     }
   }
   
-  public void a(SucDownloadInfo paramSucDownloadInfo)
+  public void b(SucDownloadInfo paramSucDownloadInfo)
   {
     if (paramSucDownloadInfo == null) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      a();
-      this.jdField_a_of_type_Boolean = true;
+      b();
+      this.a = true;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramSucDownloadInfo);
+      this.b.add(paramSucDownloadInfo);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL] saveSucDownloadInfo. pkgName:");
-      localStringBuilder.append(paramSucDownloadInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramSucDownloadInfo.a);
       localStringBuilder.append(" notificationId:");
-      localStringBuilder.append(paramSucDownloadInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(paramSucDownloadInfo.b);
       localStringBuilder.append(" size:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.b.size());
       QLog.i("SucDownloadInfoMgr", 1, localStringBuilder.toString());
       try
       {
@@ -201,66 +255,12 @@ public class SucDownloadInfoMgr
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public void c()
   {
-    if (paramString == null) {
-      return;
-    }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[UniformDL] removeSucDownloadInfo. pkgName:");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(" notificationId:");
-    ((StringBuilder)localObject1).append(paramInt);
-    QLog.i("SucDownloadInfoMgr", 1, ((StringBuilder)localObject1).toString());
-    Object localObject2 = null;
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (SucDownloadInfo)localIterator.next();
-      } while ((localObject1 == null) || (!paramString.equalsIgnoreCase(((SucDownloadInfo)localObject1).jdField_a_of_type_JavaLangString)) || (paramInt != ((SucDownloadInfo)localObject1).jdField_a_of_type_Int));
-      if (localObject1 != null)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(localObject1);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[UniformDL] removeSucDownloadInfo done. pkgName:");
-        ((StringBuilder)localObject1).append(paramString);
-        ((StringBuilder)localObject1).append(" notificationId:");
-        ((StringBuilder)localObject1).append(paramInt);
-        ((StringBuilder)localObject1).append(" size:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
-        QLog.i("SucDownloadInfoMgr", 1, ((StringBuilder)localObject1).toString());
-      }
-      try
-      {
-        localObject1 = a().edit();
-        ((SharedPreferences.Editor)localObject1).remove(a(new SucDownloadInfo(paramString, paramInt)));
-        ((SharedPreferences.Editor)localObject1).commit();
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-    }
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_JavaUtilList.clear();
+      int i = this.b.size();
+      this.b.clear();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL] clearSucDownloadInfo...size:");
       localStringBuilder.append(i);
@@ -282,7 +282,7 @@ public class SucDownloadInfoMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.SucDownloadInfoMgr
  * JD-Core Version:    0.7.0.1
  */

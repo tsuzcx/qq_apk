@@ -18,14 +18,14 @@ class RewardedVideoAdPlugin$4
       try
       {
         localJSONObject.put("state", "show");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          localJSONObject.put("compId", this.jdField_a_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(this.a)) {
+          localJSONObject.put("compId", this.a);
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
           String str1 = "ok";
           localJSONObject.put("status", str1);
-          RewardedVideoAdPlugin.access$1800(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent, localJSONObject, "onRewardedVideoShowDone");
+          RewardedVideoAdPlugin.access$1800(this.this$0, this.c, localJSONObject, "onRewardedVideoShowDone");
           return;
         }
       }
@@ -40,7 +40,7 @@ class RewardedVideoAdPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RewardedVideoAdPlugin.4
  * JD-Core Version:    0.7.0.1
  */

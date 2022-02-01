@@ -4,17 +4,12 @@ import com.tencent.util.Assert;
 
 public class GLPaint
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 0;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  private float a = 1.0F;
+  private int b = 0;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public void a(float paramFloat)
@@ -26,12 +21,17 @@ public class GLPaint
       bool = false;
     }
     Assert.a(bool);
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
+  }
+  
+  public float b()
+  {
+    return this.a;
   }
 }
 

@@ -15,7 +15,7 @@ class VideoInviteActivity$MyBroadCastReceiver
     String str1 = paramIntent.getAction();
     if (QLog.isColorLevel())
     {
-      String str2 = this.a.jdField_a_of_type_JavaLangString;
+      String str2 = this.a.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceive action = ");
       localStringBuilder.append(str1);
@@ -23,17 +23,17 @@ class VideoInviteActivity$MyBroadCastReceiver
     }
     if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str1))
     {
-      this.a.h();
+      this.a.m();
       return;
     }
     if ("tencent.video.q2v.sdk.onRequestVideo".equals(str1))
     {
-      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramContext = this.a.a;
       paramIntent = new StringBuilder();
       paramIntent.append("onReceive action = ");
       paramIntent.append(str1);
       QLog.d(paramContext, 1, paramIntent.toString());
-      this.a.e();
+      this.a.p();
       return;
     }
     if ("android.intent.action.USER_PRESENT".equals(str1))
@@ -41,8 +41,8 @@ class VideoInviteActivity$MyBroadCastReceiver
       this.a.a("ACTION_USER_PRESENT");
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteUIBase.a(paramContext, str1, paramIntent);
+    if (this.a.W != null) {
+      this.a.W.a(paramContext, str1, paramIntent);
     }
   }
 }

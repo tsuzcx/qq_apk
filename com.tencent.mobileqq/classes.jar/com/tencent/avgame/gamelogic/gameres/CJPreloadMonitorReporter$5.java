@@ -16,14 +16,14 @@ final class CJPreloadMonitorReporter$5
   
   public void run()
   {
-    if (CJPreloadMonitorReporter.a(this.jdField_a_of_type_JavaLangString))
+    if (CJPreloadMonitorReporter.a(this.a))
     {
-      String str = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.jdField_a_of_type_JavaLangString);
+      String str = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.a);
       if (!TextUtils.isEmpty(str))
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("ext1", str);
-        SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap, ReportConstant.Res.a(4));
+        SpringHbReporter.a(ReportConstant.Event.a, 4, this.b, localHashMap, ReportConstant.Res.a(4));
       }
     }
   }

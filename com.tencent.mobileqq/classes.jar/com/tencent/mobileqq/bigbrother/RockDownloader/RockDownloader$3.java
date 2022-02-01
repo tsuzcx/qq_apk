@@ -23,10 +23,10 @@ final class RockDownloader$3
   {
     if (paramDownloadInfo.e != null)
     {
-      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+      if (!paramDownloadInfo.e.equals(this.a.getDownloadInfo().getPackageName())) {
         return;
       }
-      RockDownloader.a(paramDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+      RockDownloader.a(paramDownloadInfo, this.b, this.a);
       DownloadManagerV2.a().b(this);
     }
   }
@@ -35,10 +35,10 @@ final class RockDownloader$3
   {
     if (paramDownloadInfo.e != null)
     {
-      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+      if (!paramDownloadInfo.e.equals(this.a.getDownloadInfo().getPackageName())) {
         return;
       }
-      RockDownloader.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+      RockDownloader.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.b, this.a);
       DownloadManagerV2.a().b(this);
     }
   }
@@ -47,27 +47,27 @@ final class RockDownloader$3
   {
     if (paramDownloadInfo.e != null)
     {
-      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+      if (!paramDownloadInfo.e.equals(this.a.getDownloadInfo().getPackageName())) {
         return;
       }
-      RockDownloader.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
+      RockDownloader.a(this.a, paramDownloadInfo, this.b);
       DownloadManagerV2.a().b(this);
     }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    RockDownloader.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    RockDownloader.a(paramDownloadInfo, this.a);
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    RockDownloader.a(paramList, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    RockDownloader.a(paramList, this.b, this.a);
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    RockDownloader.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, this.jdField_a_of_type_Boolean);
+    RockDownloader.a(paramDownloadInfo, this.a, this.b);
   }
   
   public void packageReplaced(String paramString1, String paramString2)
@@ -86,7 +86,7 @@ final class RockDownloader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.3
  * JD-Core Version:    0.7.0.1
  */

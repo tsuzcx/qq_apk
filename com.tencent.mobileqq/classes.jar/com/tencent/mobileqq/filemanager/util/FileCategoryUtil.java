@@ -46,80 +46,6 @@ public class FileCategoryUtil
 {
   private static Comparator<FileInfo> a = new FileCategoryUtil.1();
   
-  /* Error */
-  public static int a(Context paramContext)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore_3
-    //   4: aconst_null
-    //   5: astore 4
-    //   7: aconst_null
-    //   8: astore 5
-    //   10: aload_0
-    //   11: ldc 23
-    //   13: aconst_null
-    //   14: iconst_0
-    //   15: invokestatic 27	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   18: astore_0
-    //   19: aload_0
-    //   20: astore 5
-    //   22: aload_0
-    //   23: astore 4
-    //   25: aload_0
-    //   26: invokeinterface 33 1 0
-    //   31: istore_1
-    //   32: iload_1
-    //   33: istore_2
-    //   34: aload_0
-    //   35: ifnull +37 -> 72
-    //   38: aload_0
-    //   39: invokeinterface 36 1 0
-    //   44: iload_1
-    //   45: ireturn
-    //   46: astore_0
-    //   47: goto +27 -> 74
-    //   50: astore_0
-    //   51: aload 4
-    //   53: astore 5
-    //   55: aload_0
-    //   56: invokevirtual 39	java/lang/Exception:printStackTrace	()V
-    //   59: aload 4
-    //   61: ifnull +11 -> 72
-    //   64: iload_3
-    //   65: istore_1
-    //   66: aload 4
-    //   68: astore_0
-    //   69: goto -31 -> 38
-    //   72: iload_2
-    //   73: ireturn
-    //   74: aload 5
-    //   76: ifnull +10 -> 86
-    //   79: aload 5
-    //   81: invokeinterface 36 1 0
-    //   86: goto +5 -> 91
-    //   89: aload_0
-    //   90: athrow
-    //   91: goto -2 -> 89
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	94	0	paramContext	Context
-    //   31	35	1	i	int
-    //   1	72	2	j	int
-    //   3	62	3	k	int
-    //   5	62	4	localContext1	Context
-    //   8	72	5	localContext2	Context
-    // Exception table:
-    //   from	to	target	type
-    //   10	19	46	finally
-    //   25	32	46	finally
-    //   55	59	46	finally
-    //   10	19	50	java/lang/Exception
-    //   25	32	50	java/lang/Exception
-  }
-  
   private static Cursor a(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
   {
     return paramContext.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "bucket_display_name", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
@@ -229,38 +155,14 @@ public class FileCategoryUtil
     if (localPackageInfo != null) {
       return localPackageInfo.applicationInfo.loadLabel(localPackageManager).toString();
     }
-    return QQFileManagerUtil.e(paramString);
-  }
-  
-  public static List<PackageInfo> a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext = paramContext.getInstalledPackages(1024);
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        PackageInfo localPackageInfo = (PackageInfo)paramContext.get(i);
-        int j = localPackageInfo.applicationInfo.flags;
-        ApplicationInfo localApplicationInfo = localPackageInfo.applicationInfo;
-        if (((j & 0x1) <= 0) && (FileUtils.fileExists(localPackageInfo.applicationInfo.publicSourceDir))) {
-          localArrayList.add(localPackageInfo);
-        }
-        i += 1;
-      }
-      return localArrayList;
-    }
-    catch (Exception paramContext) {}
-    return localArrayList;
+    return QQFileManagerUtil.n(paramString);
   }
   
   @TargetApi(9)
   public static List<FileInfo> a(Context paramContext, ITabViewEvent paramITabViewEvent)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = a(paramContext);
+    Object localObject = e(paramContext);
     paramContext = paramContext.getPackageManager();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -278,10 +180,10 @@ public class FileCategoryUtil
         if (Build.VERSION.SDK_INT >= 9) {
           localFileInfo.b(localPackageInfo.lastUpdateTime);
         }
-        localFileInfo.a(HardCodeUtil.a(2131692289));
+        localFileInfo.a(HardCodeUtil.a(2131889277));
         localArrayList.add(localFileInfo);
         if (paramITabViewEvent != null) {
-          paramITabViewEvent.a(localFileInfo);
+          paramITabViewEvent.b(localFileInfo);
         }
       }
       catch (Exception localException)
@@ -314,20 +216,20 @@ public class FileCategoryUtil
     //   7: aload_1
     //   8: aconst_null
     //   9: iload_2
-    //   10: invokestatic 27	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: invokestatic 290	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   13: astore_0
     //   14: aload_0
     //   15: astore_1
     //   16: aload_0
     //   17: iconst_0
-    //   18: invokestatic 325	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: invokestatic 293	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   21: astore_3
     //   22: aload_3
     //   23: astore_1
     //   24: aload_0
     //   25: ifnull +47 -> 72
     //   28: aload_0
-    //   29: invokeinterface 36 1 0
+    //   29: invokeinterface 298 1 0
     //   34: aload_3
     //   35: areturn
     //   36: astore_0
@@ -344,7 +246,7 @@ public class FileCategoryUtil
     //   53: aload_0
     //   54: astore_1
     //   55: aload_3
-    //   56: invokevirtual 39	java/lang/Exception:printStackTrace	()V
+    //   56: invokevirtual 271	java/lang/Exception:printStackTrace	()V
     //   59: aload 5
     //   61: astore_1
     //   62: aload_0
@@ -357,7 +259,7 @@ public class FileCategoryUtil
     //   74: aload_1
     //   75: ifnull +9 -> 84
     //   78: aload_1
-    //   79: invokeinterface 36 1 0
+    //   79: invokeinterface 298 1 0
     //   84: goto +5 -> 89
     //   87: aload_0
     //   88: athrow
@@ -453,11 +355,11 @@ public class FileCategoryUtil
         }
       }
       else {
-        localObject1 = HardCodeUtil.a(2131692584);
+        localObject1 = HardCodeUtil.a(2131889607);
       }
       if (localObject2 != null)
       {
-        localObject2 = FileInfo.a((String)localObject2);
+        localObject2 = FileInfo.e((String)localObject2);
         if (localObject2 != null)
         {
           ((FileInfo)localObject2).a(n);
@@ -503,7 +405,7 @@ public class FileCategoryUtil
     if (paramString1 == null) {
       return;
     }
-    if ((paramITabViewEvent != null) && (paramITabViewEvent.d())) {
+    if ((paramITabViewEvent != null) && (paramITabViewEvent.y())) {
       return;
     }
     try
@@ -587,7 +489,7 @@ public class FileCategoryUtil
         }
       }
     }
-    paramString1 = FileInfo.a(paramString1);
+    paramString1 = FileInfo.e(paramString1);
     if (paramString1 == null) {
       return;
     }
@@ -595,7 +497,7 @@ public class FileCategoryUtil
       paramHashMap.put(paramString2, new ArrayList());
     }
     if (paramITabViewEvent != null) {
-      paramITabViewEvent.a(paramString1);
+      paramITabViewEvent.b(paramString1);
     }
     ((List)paramHashMap.get(paramString2)).add(paramString1);
   }
@@ -654,11 +556,6 @@ public class FileCategoryUtil
     return true;
   }
   
-  public static int b(Context paramContext)
-  {
-    return a(paramContext).size();
-  }
-  
   private static Cursor b(Context paramContext, String paramString, String[] paramArrayOfString, int paramInt)
   {
     return paramContext.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "bucket_id", "bucket_display_name" }, paramString, paramArrayOfString, "date_added desc");
@@ -685,20 +582,20 @@ public class FileCategoryUtil
     //   7: aload_1
     //   8: aconst_null
     //   9: iload_2
-    //   10: invokestatic 527	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: invokestatic 506	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   13: astore_0
     //   14: aload_0
     //   15: astore_1
     //   16: aload_0
     //   17: iconst_2
-    //   18: invokestatic 325	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: invokestatic 293	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   21: astore_3
     //   22: aload_3
     //   23: astore_1
     //   24: aload_0
     //   25: ifnull +47 -> 72
     //   28: aload_0
-    //   29: invokeinterface 36 1 0
+    //   29: invokeinterface 298 1 0
     //   34: aload_3
     //   35: areturn
     //   36: astore_0
@@ -715,7 +612,7 @@ public class FileCategoryUtil
     //   53: aload_0
     //   54: astore_1
     //   55: aload_3
-    //   56: invokevirtual 39	java/lang/Exception:printStackTrace	()V
+    //   56: invokevirtual 271	java/lang/Exception:printStackTrace	()V
     //   59: aload 5
     //   61: astore_1
     //   62: aload_0
@@ -728,7 +625,7 @@ public class FileCategoryUtil
     //   74: aload_1
     //   75: ifnull +9 -> 84
     //   78: aload_1
-    //   79: invokeinterface 36 1 0
+    //   79: invokeinterface 298 1 0
     //   84: goto +5 -> 89
     //   87: aload_0
     //   88: athrow
@@ -779,20 +676,20 @@ public class FileCategoryUtil
     //   7: aload_1
     //   8: aconst_null
     //   9: iload_2
-    //   10: invokestatic 536	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   10: invokestatic 517	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:c	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
     //   13: astore_0
     //   14: aload_0
     //   15: astore_1
     //   16: aload_0
     //   17: iconst_1
-    //   18: invokestatic 325	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
+    //   18: invokestatic 293	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:a	(Landroid/database/Cursor;I)Ljava/util/Map;
     //   21: astore_3
     //   22: aload_3
     //   23: astore_1
     //   24: aload_0
     //   25: ifnull +47 -> 72
     //   28: aload_0
-    //   29: invokeinterface 36 1 0
+    //   29: invokeinterface 298 1 0
     //   34: aload_3
     //   35: areturn
     //   36: astore_0
@@ -809,7 +706,7 @@ public class FileCategoryUtil
     //   53: aload_0
     //   54: astore_1
     //   55: aload_3
-    //   56: invokevirtual 39	java/lang/Exception:printStackTrace	()V
+    //   56: invokevirtual 271	java/lang/Exception:printStackTrace	()V
     //   59: aload 5
     //   61: astore_1
     //   62: aload_0
@@ -822,7 +719,7 @@ public class FileCategoryUtil
     //   74: aload_1
     //   75: ifnull +9 -> 84
     //   78: aload_1
-    //   79: invokeinterface 36 1 0
+    //   79: invokeinterface 298 1 0
     //   84: goto +5 -> 89
     //   87: aload_0
     //   88: athrow
@@ -846,10 +743,113 @@ public class FileCategoryUtil
     //   6	14	44	finally
     //   6	14	50	java/lang/Exception
   }
+  
+  /* Error */
+  public static int d(Context paramContext)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_2
+    //   2: iconst_0
+    //   3: istore_3
+    //   4: aconst_null
+    //   5: astore 4
+    //   7: aconst_null
+    //   8: astore 5
+    //   10: aload_0
+    //   11: ldc_w 513
+    //   14: aconst_null
+    //   15: iconst_0
+    //   16: invokestatic 290	com/tencent/mobileqq/filemanager/util/FileCategoryUtil:b	(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   19: astore_0
+    //   20: aload_0
+    //   21: astore 5
+    //   23: aload_0
+    //   24: astore 4
+    //   26: aload_0
+    //   27: invokeinterface 303 1 0
+    //   32: istore_1
+    //   33: iload_1
+    //   34: istore_2
+    //   35: aload_0
+    //   36: ifnull +37 -> 73
+    //   39: aload_0
+    //   40: invokeinterface 298 1 0
+    //   45: iload_1
+    //   46: ireturn
+    //   47: astore_0
+    //   48: goto +27 -> 75
+    //   51: astore_0
+    //   52: aload 4
+    //   54: astore 5
+    //   56: aload_0
+    //   57: invokevirtual 271	java/lang/Exception:printStackTrace	()V
+    //   60: aload 4
+    //   62: ifnull +11 -> 73
+    //   65: iload_3
+    //   66: istore_1
+    //   67: aload 4
+    //   69: astore_0
+    //   70: goto -31 -> 39
+    //   73: iload_2
+    //   74: ireturn
+    //   75: aload 5
+    //   77: ifnull +10 -> 87
+    //   80: aload 5
+    //   82: invokeinterface 298 1 0
+    //   87: goto +5 -> 92
+    //   90: aload_0
+    //   91: athrow
+    //   92: goto -2 -> 90
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	95	0	paramContext	Context
+    //   32	35	1	i	int
+    //   1	73	2	j	int
+    //   3	63	3	k	int
+    //   5	63	4	localContext1	Context
+    //   8	73	5	localContext2	Context
+    // Exception table:
+    //   from	to	target	type
+    //   10	20	47	finally
+    //   26	33	47	finally
+    //   56	60	47	finally
+    //   10	20	51	java/lang/Exception
+    //   26	33	51	java/lang/Exception
+  }
+  
+  public static List<PackageInfo> e(Context paramContext)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext = paramContext.getInstalledPackages(1024);
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        PackageInfo localPackageInfo = (PackageInfo)paramContext.get(i);
+        int j = localPackageInfo.applicationInfo.flags;
+        ApplicationInfo localApplicationInfo = localPackageInfo.applicationInfo;
+        if (((j & 0x1) <= 0) && (FileUtils.fileExists(localPackageInfo.applicationInfo.publicSourceDir))) {
+          localArrayList.add(localPackageInfo);
+        }
+        i += 1;
+      }
+      return localArrayList;
+    }
+    catch (Exception paramContext) {}
+    return localArrayList;
+  }
+  
+  public static int f(Context paramContext)
+  {
+    return e(paramContext).size();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileCategoryUtil
  * JD-Core Version:    0.7.0.1
  */

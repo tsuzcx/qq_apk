@@ -25,63 +25,63 @@ import org.json.JSONObject;
 public class CalendarTimeStickerDrawable
   extends InfoStickerDrawable
 {
-  private static int jdField_c_of_type_Int = 0;
-  private static int jdField_d_of_type_Int = 1;
-  private static int jdField_e_of_type_Int = 2;
-  private static int jdField_h_of_type_Int = 3;
-  private static int jdField_i_of_type_Int = 4;
-  private static int j = 5;
-  private int A;
-  private int B = 0;
+  private static int e = 0;
+  private static int n = 1;
+  private static int o = 2;
+  private static int p = 3;
+  private static int q = 4;
+  private static int r = 5;
+  private Typeface A;
+  private int B;
   private int C;
-  private int D = 4;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int = 0;
-  private Canvas jdField_b_of_type_AndroidGraphicsCanvas;
-  private String jdField_b_of_type_JavaLangString;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_c_of_type_AndroidGraphicsCanvas;
-  private String jdField_c_of_type_JavaLangString;
-  private int[] jdField_c_of_type_ArrayOfInt;
-  private Bitmap jdField_d_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_d_of_type_AndroidGraphicsCanvas;
-  private String jdField_d_of_type_JavaLangString;
-  private Bitmap jdField_e_of_type_AndroidGraphicsBitmap;
-  private String jdField_e_of_type_JavaLangString;
-  private Bitmap f;
-  private Bitmap g;
-  private Bitmap jdField_h_of_type_AndroidGraphicsBitmap;
-  private Bitmap jdField_i_of_type_AndroidGraphicsBitmap;
-  private int k;
-  private int l;
-  private int m;
-  private int n;
-  private int o;
-  private int p;
-  private int q = 4;
-  private int r = 1;
-  private int s = 4;
-  private int t = 22;
-  private int u = 2;
-  private int v = 73;
-  private int w = 62;
-  private int x = 0;
-  private int y = 0;
-  private int z;
+  private int D;
+  private int E;
+  private int F;
+  private int G;
+  private int H = 4;
+  private int I = 1;
+  private int J = 4;
+  private int K = 22;
+  private int L = 2;
+  private int M = 73;
+  private int N = 62;
+  private int O = 0;
+  private int P = 0;
+  private int Q;
+  private int R;
+  private int[] S;
+  private int[] T;
+  private int[] U;
+  private int V = 0;
+  private int W;
+  private int X = 4;
+  private Bitmap Y;
+  private Canvas Z;
+  private Paint a = new Paint();
+  private Bitmap aa;
+  private Canvas ab;
+  private Bitmap ac;
+  private Canvas ad;
+  private Bitmap ae;
+  private Canvas af;
+  private TextPaint b = new TextPaint();
+  private int c = 0;
+  private int d = 0;
+  private String s;
+  private String t;
+  private String u;
+  private String v;
+  private Bitmap w;
+  private Bitmap x;
+  private Bitmap y;
+  private Bitmap z;
   
   public CalendarTimeStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.i);
     b();
-    c();
+    e();
   }
   
   private Matrix a(int paramInt)
@@ -91,21 +91,21 @@ public class CalendarTimeStickerDrawable
     float[] arrayOfFloat = new float[8];
     arrayOfFloat[0] = 0.0F;
     arrayOfFloat[1] = 0.0F;
-    int i2 = this.v;
-    arrayOfFloat[2] = i2;
+    int j = this.M;
+    arrayOfFloat[2] = j;
     arrayOfFloat[3] = 0.0F;
-    arrayOfFloat[4] = i2;
-    int i1 = this.w;
-    arrayOfFloat[5] = i1;
+    arrayOfFloat[4] = j;
+    int i = this.N;
+    arrayOfFloat[5] = i;
     arrayOfFloat[6] = 0.0F;
-    arrayOfFloat[7] = i1;
+    arrayOfFloat[7] = i;
     float f1;
-    int i4;
-    int i7;
+    int m;
     int i3;
-    int i5;
-    int i6;
-    int i8;
+    int k;
+    int i1;
+    int i2;
+    int i4;
     float f2;
     float f3;
     float f4;
@@ -116,51 +116,51 @@ public class CalendarTimeStickerDrawable
       if (paramInt < 50)
       {
         f1 = paramInt / 50.0F;
-        i4 = (int)((this.m - i2) * f1) + i2;
-        i7 = this.k;
-        paramInt = (i7 - i4) / 2;
-        i3 = i7 / 2;
-        i4 /= 2;
-        i5 = i7 / 2;
-        i6 = i2 / 2;
-        i7 /= 2;
-        i2 /= 2;
-        i8 = (int)((1.0F - f1) * i1);
+        m = (int)((this.D - j) * f1) + j;
+        i3 = this.B;
+        paramInt = (i3 - m) / 2;
+        k = i3 / 2;
+        m /= 2;
+        i1 = i3 / 2;
+        i2 = j / 2;
+        i3 /= 2;
+        j /= 2;
+        i4 = (int)((1.0F - f1) * i);
         f1 = paramInt;
-        f2 = i1 - i8;
-        f3 = i3 + i4;
-        f4 = i7 + i2;
-        f5 = i1;
-        f6 = i5 - i6;
+        f2 = i - i4;
+        f3 = k + m;
+        f4 = i3 + j;
+        f5 = i;
+        f6 = i1 - i2;
         paramInt = arrayOfFloat.length / 2;
         localMatrix.setPolyToPoly(arrayOfFloat, 0, new float[] { f1, f2, f3, f2, f4, f5, f6, f5 }, 0, paramInt);
         return localMatrix;
       }
-      i1 = paramInt;
+      i = paramInt;
       if (paramInt > 100) {
-        i1 = 100;
+        i = 100;
       }
-      f1 = (i1 - 50) / 50.0F;
-      i5 = this.v;
-      double d1 = this.m - i5;
+      f1 = (i - 50) / 50.0F;
+      i1 = this.M;
+      double d1 = this.D - i1;
       double d2 = f1;
       Double.isNaN(d2);
       Double.isNaN(d1);
-      i2 = (int)(d1 * (1.0D - d2)) + i5;
-      i6 = this.k;
-      paramInt = (i6 - i2) / 2;
-      i1 = i6 / 2;
+      j = (int)(d1 * (1.0D - d2)) + i1;
+      i2 = this.B;
+      paramInt = (i2 - j) / 2;
+      i = i2 / 2;
+      j /= 2;
+      k = i2 / 2;
+      m = i1 / 2;
       i2 /= 2;
-      i3 = i6 / 2;
-      i4 = i5 / 2;
-      i6 /= 2;
-      i5 /= 2;
-      i7 = (int)(f1 * this.w);
-      f1 = i3 - i4;
+      i1 /= 2;
+      i3 = (int)(f1 * this.N);
+      f1 = k - m;
       f2 = 0;
-      f3 = i6 + i5;
-      f4 = i1 + i2;
-      f5 = i7;
+      f3 = i2 + i1;
+      f4 = i + j;
+      f5 = i3;
       f6 = paramInt;
       paramInt = arrayOfFloat.length / 2;
       localMatrix.setPolyToPoly(arrayOfFloat, 0, new float[] { f1, f2, f3, f2, f4, f5, f6, f5 }, 0, paramInt);
@@ -169,23 +169,23 @@ public class CalendarTimeStickerDrawable
     if (paramInt > -50)
     {
       f1 = (paramInt + 50) / 50.0F;
-      paramInt = this.n;
-      i4 = paramInt + (int)((i2 - paramInt) * f1);
-      i7 = this.k;
-      paramInt = (i7 - i4) / 2;
-      i3 = i7 / 2;
-      i4 /= 2;
-      i5 = i7 / 2;
-      i6 = i2 / 2;
-      i7 /= 2;
-      i2 /= 2;
-      i8 = (int)(f1 * i1);
+      paramInt = this.E;
+      m = paramInt + (int)((j - paramInt) * f1);
+      i3 = this.B;
+      paramInt = (i3 - m) / 2;
+      k = i3 / 2;
+      m /= 2;
+      i1 = i3 / 2;
+      i2 = j / 2;
+      i3 /= 2;
+      j /= 2;
+      i4 = (int)(f1 * i);
       f1 = paramInt;
-      f2 = i1 - i8;
-      f3 = i3 + i4;
-      f4 = i7 + i2;
-      f5 = i1;
-      f6 = i5 - i6;
+      f2 = i - i4;
+      f3 = k + m;
+      f4 = i3 + j;
+      f5 = i;
+      f6 = i1 - i2;
       paramInt = arrayOfFloat.length / 2;
       localMatrix.setPolyToPoly(arrayOfFloat, 0, new float[] { f1, f2, f3, f2, f4, f5, f6, f5 }, 0, paramInt);
     }
@@ -219,261 +219,256 @@ public class CalendarTimeStickerDrawable
     if (paramString.length() != 4) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    int i4 = (int)((Paint.FontMetrics)localObject1).descent;
-    int i5 = (int)((Paint.FontMetrics)localObject1).top;
-    int i6 = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = this.w;
-    int i3 = 0;
-    localObject1 = new Rect(0, 0, 0, i1);
-    i1 = this.w;
-    int i2 = this.u;
-    Rect localRect = new Rect(0, i1 + i2, 0, i1 * 2 + i2);
-    Object localObject2 = this.jdField_d_of_type_AndroidGraphicsBitmap;
+    Object localObject1 = this.b.getFontMetrics();
+    int m = (int)((Paint.FontMetrics)localObject1).descent;
+    int i1 = (int)((Paint.FontMetrics)localObject1).top;
+    int i2 = a(2.0F, this.h.getResources());
+    int i = this.N;
+    int k = 0;
+    localObject1 = new Rect(0, 0, 0, i);
+    i = this.N;
+    int j = this.L;
+    Rect localRect = new Rect(0, i + j, 0, i * 2 + j);
+    Object localObject2 = this.y;
     if (localObject2 != null)
     {
-      i1 = ((Bitmap)localObject2).getWidth();
-      i2 = this.jdField_d_of_type_AndroidGraphicsBitmap.getHeight();
+      i = ((Bitmap)localObject2).getWidth();
+      j = this.y.getHeight();
     }
     else
     {
-      i1 = 0;
-      i2 = 0;
+      i = 0;
+      j = 0;
     }
-    localObject2 = new Rect(0, 0, i1, i2);
-    for (i1 = i3; i1 < 4; i1 = i2)
+    localObject2 = new Rect(0, 0, i, j);
+    for (i = k; i < 4; i = j)
     {
-      i2 = i1 + 1;
-      String str = paramString.substring(i1, i2);
-      int i7 = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str);
-      i3 = this.v;
-      i7 = (i3 - i7) / 2;
-      int i8 = (this.w + (i4 - i5 - i6)) / 2;
-      ((Rect)localObject1).left = (i1 * i3);
-      ((Rect)localObject1).right = (((Rect)localObject1).left + this.v);
-      Bitmap localBitmap = this.jdField_d_of_type_AndroidGraphicsBitmap;
+      j = i + 1;
+      String str = paramString.substring(i, j);
+      int i3 = (int)this.b.measureText(str);
+      k = this.M;
+      i3 = (k - i3) / 2;
+      int i4 = (this.N + (m - i1 - i2)) / 2;
+      ((Rect)localObject1).left = (i * k);
+      ((Rect)localObject1).right = (((Rect)localObject1).left + this.M);
+      Bitmap localBitmap = this.y;
       if (localBitmap != null) {
-        paramCanvas.drawBitmap(localBitmap, (Rect)localObject2, (Rect)localObject1, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(localBitmap, (Rect)localObject2, (Rect)localObject1, this.a);
       }
       localRect.left = ((Rect)localObject1).left;
       localRect.right = ((Rect)localObject1).right;
-      localBitmap = this.jdField_e_of_type_AndroidGraphicsBitmap;
+      localBitmap = this.z;
       if (localBitmap != null) {
-        paramCanvas.drawBitmap(localBitmap, (Rect)localObject2, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(localBitmap, (Rect)localObject2, localRect, this.a);
       }
-      paramCanvas.drawText(str, i1 * i3 + i7, i8, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(str, i * k + i3, i4, this.b);
     }
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
   }
   
   public void a()
   {
-    if (this.jdField_d_of_type_JavaLangString.length() != 4) {
-      this.jdField_d_of_type_JavaLangString = "0000";
+    if (this.u.length() != 4) {
+      this.u = "0000";
     }
-    if (this.jdField_e_of_type_JavaLangString.length() != 4) {
-      this.jdField_e_of_type_JavaLangString = "0000";
+    if (this.v.length() != 4) {
+      this.v = "0000";
     }
-    int i1 = 0;
-    this.r = 0;
-    while (i1 < 4)
+    int i = 0;
+    this.I = 0;
+    while (i < 4)
     {
-      String str = this.jdField_d_of_type_JavaLangString;
-      int i2 = i1 + 1;
-      if (!str.substring(i1, i2).equals(this.jdField_e_of_type_JavaLangString.substring(i1, i2))) {
-        this.r += 1;
+      String str = this.u;
+      int j = i + 1;
+      if (!str.substring(i, j).equals(this.v.substring(i, j))) {
+        this.I += 1;
       }
-      i1 = i2;
+      i = j;
     }
-    if (this.r == 0) {
-      this.r = 1;
+    if (this.I == 0) {
+      this.I = 1;
     }
   }
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int i4 = ((Integer)paramArrayList.get(this.z)).intValue();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i4);
-    int i1;
-    int i3;
-    if (((Integer)paramArrayList.get(this.A)).intValue() >= 1000)
+    int m = ((Integer)paramArrayList.get(this.Q)).intValue();
+    this.a.setAlpha(m);
+    int i;
+    int k;
+    if (((Integer)paramArrayList.get(this.R)).intValue() >= 1000)
     {
-      i1 = j;
+      i = r;
     }
-    else if (i4 < 255)
+    else if (m < 255)
     {
-      i1 = jdField_c_of_type_Int;
+      i = e;
     }
     else
     {
-      i3 = 0;
-      i1 = 1;
-      while (i3 < this.r)
+      k = 0;
+      i = 1;
+      while (k < this.I)
       {
-        i2 = i1;
-        if (((Integer)paramArrayList.get(this.jdField_b_of_type_ArrayOfInt[i3])).intValue() == 100) {
-          i2 = i1 + 1;
+        j = i;
+        if (((Integer)paramArrayList.get(this.T[k])).intValue() == 100) {
+          j = i + 1;
         }
-        i1 = i2;
-        if (i2 == this.r + 1) {
-          i1 = j;
+        i = j;
+        if (j == this.I + 1) {
+          i = r;
         }
-        i3 += 1;
+        k += 1;
       }
     }
-    int i2 = 0;
+    int j = 0;
     Rect localRect1;
-    int i5;
-    while (i2 < 4)
+    int i1;
+    while (j < 4)
     {
       localRect1 = new Rect(0, 0, 0, 0);
       Rect localRect2 = new Rect(0, 0, 0, 0);
-      Rect localRect3 = new Rect(0, 0, 0, this.w);
-      i3 = this.w;
-      i5 = this.u;
-      Rect localRect4 = new Rect(0, i3 + i5, 0, i3 * 2 + i5);
-      localRect1.top = (this.s + this.D);
-      localRect1.bottom = (localRect1.top + this.w);
-      if (i2 > 1) {
-        i3 = this.t - this.s;
+      Rect localRect3 = new Rect(0, 0, 0, this.N);
+      k = this.N;
+      i1 = this.L;
+      Rect localRect4 = new Rect(0, k + i1, 0, k * 2 + i1);
+      localRect1.top = (this.J + this.X);
+      localRect1.bottom = (localRect1.top + this.N);
+      if (j > 1) {
+        k = this.K - this.J;
       } else {
-        i3 = 0;
+        k = 0;
       }
-      localRect1.left = ((this.v + this.s) * i2 + i3 + this.D);
-      i3 = localRect1.left;
-      i5 = this.v;
-      localRect1.right = (i3 + i5);
-      localRect3.left = (i5 * i2);
-      localRect3.right = (localRect3.left + this.v);
-      localRect2.top = (this.s + this.w + this.u + this.D);
-      localRect2.bottom = (localRect2.top + this.w);
+      localRect1.left = ((this.M + this.J) * j + k + this.X);
+      k = localRect1.left;
+      i1 = this.M;
+      localRect1.right = (k + i1);
+      localRect3.left = (i1 * j);
+      localRect3.right = (localRect3.left + this.M);
+      localRect2.top = (this.J + this.N + this.L + this.X);
+      localRect2.bottom = (localRect2.top + this.N);
       localRect2.left = localRect1.left;
       localRect2.right = localRect1.right;
       localRect4.left = localRect3.left;
       localRect4.right = localRect3.right;
-      i3 = 3 - i2;
-      if (i1 == j)
+      k = 3 - j;
+      if (i == r)
       {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect3, localRect1, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect4, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(this.w, localRect3, localRect1, this.a);
+        paramCanvas.drawBitmap(this.w, localRect4, localRect2, this.a);
       }
-      else if (i1 == jdField_c_of_type_Int)
+      else if (i == e)
       {
-        paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect3, localRect1, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect4, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(this.x, localRect3, localRect1, this.a);
+        paramCanvas.drawBitmap(this.x, localRect4, localRect2, this.a);
       }
       else
       {
-        i5 = i1 - 1;
-        if (i5 < i3)
+        i1 = i - 1;
+        if (i1 < k)
         {
-          paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect3, localRect1, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect4, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawBitmap(this.x, localRect3, localRect1, this.a);
+          paramCanvas.drawBitmap(this.x, localRect4, localRect2, this.a);
         }
-        else if (i5 > i3)
+        else if (i1 > k)
         {
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect3, localRect1, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect4, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawBitmap(this.w, localRect3, localRect1, this.a);
+          paramCanvas.drawBitmap(this.w, localRect4, localRect2, this.a);
         }
-        else if (i5 == i3)
+        else if (i1 == k)
         {
-          i3 = ((Integer)paramArrayList.get(this.jdField_c_of_type_ArrayOfInt[i3])).intValue();
-          if (i3 > 0)
+          k = ((Integer)paramArrayList.get(this.U[k])).intValue();
+          if (k > 0)
           {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i3);
-            paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect4, localRect2, this.jdField_a_of_type_AndroidGraphicsPaint);
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i4);
+            this.a.setAlpha(k);
+            paramCanvas.drawBitmap(this.x, localRect4, localRect2, this.a);
+            this.a.setAlpha(m);
           }
         }
       }
-      i2 += 1;
+      j += 1;
     }
-    if ((i1 != jdField_c_of_type_Int) && (i1 != j))
+    if ((i != e) && (i != r))
     {
-      i3 = i1 - 1;
-      i2 = 3 - i3;
-      i1 = ((Integer)paramArrayList.get(this.jdField_a_of_type_ArrayOfInt[i3])).intValue();
-      i3 = ((Integer)paramArrayList.get(this.jdField_b_of_type_ArrayOfInt[i3])).intValue();
-      if (i1 > -50)
+      k = i - 1;
+      j = 3 - k;
+      i = ((Integer)paramArrayList.get(this.S[k])).intValue();
+      k = ((Integer)paramArrayList.get(this.T[k])).intValue();
+      if (i > -50)
       {
-        paramArrayList = a(i1);
-        localRect1 = new Rect(0, 0, 0, this.w);
-        localRect1.left = (this.v * i2);
-        localRect1.right = (localRect1.left + this.v);
-        double d1 = i1 + 50;
+        paramArrayList = a(i);
+        localRect1 = new Rect(0, 0, 0, this.N);
+        localRect1.left = (this.M * j);
+        localRect1.right = (localRect1.left + this.M);
+        double d1 = i + 50;
         Double.isNaN(d1);
-        i5 = (int)(d1 * 255.0D / 50.0D);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_b_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect1, new Rect(0, 0, this.v, this.w), this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_f_of_type_AndroidGraphicsBitmap, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i1 = (int)(d1 * 255.0D / 50.0D);
+        this.Z.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.ab.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.Z.drawBitmap(this.w, localRect1, new Rect(0, 0, this.M, this.N), this.a);
+        this.ab.drawBitmap(this.Y, paramArrayList, this.a);
         paramArrayList = new Rect(0, 0, 0, 0);
-        paramArrayList.top = (this.s + this.D);
-        paramArrayList.bottom = (paramArrayList.top + this.w);
-        if (i2 > 1) {
-          i1 = this.t - this.s;
+        paramArrayList.top = (this.J + this.X);
+        paramArrayList.bottom = (paramArrayList.top + this.N);
+        if (j > 1) {
+          i = this.K - this.J;
         } else {
-          i1 = 0;
+          i = 0;
         }
-        paramArrayList.left = ((this.v + this.s) * i2 + i1 + this.D - this.q);
-        paramArrayList.right = (paramArrayList.left + this.m);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i5);
-        paramCanvas.drawBitmap(this.g, new Rect(0, 0, this.m, this.o), paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i4);
+        paramArrayList.left = ((this.M + this.J) * j + i + this.X - this.H);
+        paramArrayList.right = (paramArrayList.left + this.D);
+        this.a.setAlpha(i1);
+        paramCanvas.drawBitmap(this.aa, new Rect(0, 0, this.D, this.F), paramArrayList, this.a);
+        this.a.setAlpha(m);
       }
-      if (i3 < 50)
+      if (k < 50)
       {
-        paramArrayList = a(i3);
-        localRect1 = new Rect(0, 0, 0, this.w);
-        localRect1.left = (this.v * i2);
-        localRect1.right = (localRect1.left + this.v);
-        this.jdField_c_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_d_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_c_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, localRect1, new Rect(0, 0, this.v, this.w), this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_d_of_type_AndroidGraphicsCanvas.drawBitmap(this.h, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramArrayList = a(k);
+        localRect1 = new Rect(0, 0, 0, this.N);
+        localRect1.left = (this.M * j);
+        localRect1.right = (localRect1.left + this.M);
+        this.ad.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.af.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.ad.drawBitmap(this.x, localRect1, new Rect(0, 0, this.M, this.N), this.a);
+        this.af.drawBitmap(this.ac, paramArrayList, this.a);
         paramArrayList = new Rect(0, 0, 0, 0);
-        paramArrayList.top = (this.s + this.D);
-        paramArrayList.bottom = (paramArrayList.top + this.w);
-        if (i2 > 1) {
-          i1 = this.t - this.s;
+        paramArrayList.top = (this.J + this.X);
+        paramArrayList.bottom = (paramArrayList.top + this.N);
+        if (j > 1) {
+          i = this.K - this.J;
         } else {
-          i1 = 0;
+          i = 0;
         }
-        paramArrayList.left = ((this.v + this.s) * i2 + i1 + this.D - this.q);
-        i1 = paramArrayList.left;
-        i4 = this.m;
-        paramArrayList.right = (i1 + i4);
-        paramCanvas.drawBitmap(this.i, new Rect(0, 0, i4, this.o), paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramArrayList.left = ((this.M + this.J) * j + i + this.X - this.H);
+        i = paramArrayList.left;
+        m = this.D;
+        paramArrayList.right = (i + m);
+        paramCanvas.drawBitmap(this.ae, new Rect(0, 0, m, this.F), paramArrayList, this.a);
       }
-      if (i3 > 50)
+      if (k > 50)
       {
-        paramArrayList = a(i3);
-        i1 = this.w;
-        i3 = this.u;
-        localRect1 = new Rect(0, i1 + i3, 0, i1 * 2 + i3);
-        localRect1.left = (this.v * i2);
-        localRect1.right = (localRect1.left + this.v);
-        this.jdField_c_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_d_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        this.jdField_c_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect1, new Rect(0, 0, this.v, this.w), this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_d_of_type_AndroidGraphicsCanvas.drawBitmap(this.h, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramArrayList = a(k);
+        i = this.N;
+        k = this.L;
+        localRect1 = new Rect(0, i + k, 0, i * 2 + k);
+        localRect1.left = (this.M * j);
+        localRect1.right = (localRect1.left + this.M);
+        this.ad.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.af.drawColor(0, PorterDuff.Mode.CLEAR);
+        this.ad.drawBitmap(this.w, localRect1, new Rect(0, 0, this.M, this.N), this.a);
+        this.af.drawBitmap(this.ac, paramArrayList, this.a);
         paramArrayList = new Rect(0, 0, 0, 0);
-        paramArrayList.top = (this.s + this.w + this.u + this.D);
-        paramArrayList.bottom = (paramArrayList.top + this.w);
-        if (i2 > 1) {
-          i1 = this.t - this.s;
+        paramArrayList.top = (this.J + this.N + this.L + this.X);
+        paramArrayList.bottom = (paramArrayList.top + this.N);
+        if (j > 1) {
+          i = this.K - this.J;
         } else {
-          i1 = 0;
+          i = 0;
         }
-        paramArrayList.left = ((this.v + this.s) * i2 + i1 + this.D - this.q);
-        i1 = paramArrayList.left;
-        i2 = this.m;
-        paramArrayList.right = (i1 + i2);
-        paramCanvas.drawBitmap(this.i, new Rect(0, 0, i2, this.o), paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramArrayList.left = ((this.M + this.J) * j + i + this.X - this.H);
+        i = paramArrayList.left;
+        j = this.D;
+        paramArrayList.right = (i + j);
+        paramCanvas.drawBitmap(this.ae, new Rect(0, 0, j, this.F), paramArrayList, this.a);
       }
     }
   }
@@ -491,127 +486,132 @@ public class CalendarTimeStickerDrawable
     }
     if (paramString != null)
     {
-      this.jdField_f_of_type_Int = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("upFilePath", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("downFilePath", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("nowHhmm", "");
-      this.jdField_e_of_type_JavaLangString = paramString.optString("lastHhmm", "");
+      this.j = paramString.optInt("type", 0);
+      this.s = paramString.optString("upFilePath", "");
+      this.t = paramString.optString("downFilePath", "");
+      this.u = paramString.optString("nowHhmm", "");
+      this.v = paramString.optString("lastHhmm", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString };
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return new String[] { this.s, this.t, this.u };
   }
   
   protected void b()
   {
     a();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator;
-    int i2 = 500;
+    Object localObject = this.f;
+    int j = 500;
     long l1 = 500;
-    this.z = ((AnimStateTypeEvaluator)localObject).a("alpha", 165L, l1, 0, 255, new LinearInterpolator());
-    int i1 = this.r;
-    this.jdField_a_of_type_ArrayOfInt = new int[i1];
-    this.jdField_b_of_type_ArrayOfInt = new int[i1];
-    this.jdField_c_of_type_ArrayOfInt = new int[i1];
-    i1 = 0;
-    while (i1 < this.r)
+    this.Q = ((AnimStateTypeEvaluator)localObject).a("alpha", 165L, l1, 0, 255, new LinearInterpolator());
+    int i = this.I;
+    this.S = new int[i];
+    this.T = new int[i];
+    this.U = new int[i];
+    i = 0;
+    while (i < this.I)
     {
-      localObject = this.jdField_a_of_type_ArrayOfInt;
-      AnimStateTypeEvaluator localAnimStateTypeEvaluator = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator;
-      long l2 = i2;
-      localObject[i1] = localAnimStateTypeEvaluator.a("alpha", l2, l1, -40, 0, new LinearInterpolator());
-      this.jdField_b_of_type_ArrayOfInt[i1] = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("frontFlip", l2, l1, 0, 100, new LinearInterpolator());
-      this.jdField_c_of_type_ArrayOfInt[i1] = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("groundOldFlip", l2, l1, 255, 0, new LinearInterpolator());
+      localObject = this.S;
+      AnimStateTypeEvaluator localAnimStateTypeEvaluator = this.f;
+      long l2 = j;
+      localObject[i] = localAnimStateTypeEvaluator.a("alpha", l2, l1, -40, 0, new LinearInterpolator());
+      this.T[i] = this.f.a("frontFlip", l2, l1, 0, 100, new LinearInterpolator());
+      this.U[i] = this.f.a("groundOldFlip", l2, l1, 255, 0, new LinearInterpolator());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("groundOldFlip[i]: ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_ArrayOfInt[i1]);
+      ((StringBuilder)localObject).append(this.U[i]);
       QLog.e("CalendarTimeStickerDrawable", 2, ((StringBuilder)localObject).toString());
-      i2 += 500;
-      i1 += 1;
+      j += 500;
+      i += 1;
     }
-    this.B = i2;
-    this.A = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("alpha", 0L, this.B, 0, 100, new LinearInterpolator());
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-medium.ttf");
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(255);
+    this.V = j;
+    this.R = this.f.a("alpha", 0L, this.V, 0, 100, new LinearInterpolator());
+    this.A = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-medium.ttf");
+    this.a.setAntiAlias(true);
+    this.a.setDither(true);
+    this.b.setTextSize(a(60.0F, this.h.getResources()));
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
+    this.b.setColor(-1);
+    this.b.setTypeface(this.A);
+    this.b.setAlpha(255);
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(InfoStickerDrawable.g, 0.0F, 0.0F, 1711276032);
+      this.b.setShadowLayer(InfoStickerDrawable.m, 0.0F, 0.0F, 1711276032);
     } else {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+      this.b.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
     }
-    this.D = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.s = a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.t = a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.u = a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.v = a(36.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.w = a(31.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.q = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    i1 = this.v;
-    this.m = (this.q * 2 + i1);
-    double d1 = i1;
+    this.X = a(2.0F, this.h.getResources());
+    this.J = a(1.0F, this.h.getResources());
+    this.K = a(11.0F, this.h.getResources());
+    this.L = a(1.0F, this.h.getResources());
+    this.M = a(36.5F, this.h.getResources());
+    this.N = a(31.0F, this.h.getResources());
+    this.H = a(2.0F, this.h.getResources());
+    i = this.M;
+    this.D = (this.H * 2 + i);
+    double d1 = i;
     Double.isNaN(d1);
-    this.n = ((int)(d1 * 2.0D / 3.0D));
-    i2 = this.w;
-    this.o = i2;
-    this.p = 0;
-    int i3 = this.s;
-    int i4 = this.t;
-    int i5 = this.D;
-    this.jdField_a_of_type_Int = (i3 * 4 + i4 + i1 * 4 + i5 * 2);
-    this.jdField_b_of_type_Int = (i3 * 2 + this.u + i2 * 2 + i5 * 2);
-    this.k = this.m;
-    this.l = i2;
-    this.jdField_f_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_f_of_type_AndroidGraphicsBitmap);
-    this.g = Bitmap.createBitmap(this.k, this.l, Bitmap.Config.ARGB_8888);
-    this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.g);
-    this.h = Bitmap.createBitmap(this.v, this.w, Bitmap.Config.ARGB_8888);
-    this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(this.h);
-    this.i = Bitmap.createBitmap(this.k, this.l, Bitmap.Config.ARGB_8888);
-    this.jdField_d_of_type_AndroidGraphicsCanvas = new Canvas(this.i);
-    if (FileUtils.fileExists(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_d_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
+    this.E = ((int)(d1 * 2.0D / 3.0D));
+    j = this.N;
+    this.F = j;
+    this.G = 0;
+    int k = this.J;
+    int m = this.K;
+    int i1 = this.X;
+    this.c = (k * 4 + m + i * 4 + i1 * 2);
+    this.d = (k * 2 + this.L + j * 2 + i1 * 2);
+    this.B = this.D;
+    this.C = j;
+    this.Y = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    this.Z = new Canvas(this.Y);
+    this.aa = Bitmap.createBitmap(this.B, this.C, Bitmap.Config.ARGB_8888);
+    this.ab = new Canvas(this.aa);
+    this.ac = Bitmap.createBitmap(this.M, this.N, Bitmap.Config.ARGB_8888);
+    this.ad = new Canvas(this.ac);
+    this.ae = Bitmap.createBitmap(this.B, this.C, Bitmap.Config.ARGB_8888);
+    this.af = new Canvas(this.ae);
+    if (FileUtils.fileExists(this.s)) {
+      this.y = BitmapFactory.decodeFile(this.s);
     } else {
       QLog.e("CalendarTimeStickerDrawable", 2, "mUpFilePath not exist");
     }
-    if (FileUtils.fileExists(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_e_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_c_of_type_JavaLangString);
+    if (FileUtils.fileExists(this.t)) {
+      this.z = BitmapFactory.decodeFile(this.t);
     } else {
       QLog.e("CalendarTimeStickerDrawable", 2, "mUpFilePath not exist");
     }
-    this.x = (this.v * 4);
-    this.y = (this.w * 2 + this.u);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.x, this.y, Bitmap.Config.ARGB_8888);
-    localObject = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    a(this.jdField_d_of_type_JavaLangString, (Canvas)localObject);
-    this.jdField_c_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.x, this.y, Bitmap.Config.ARGB_8888);
-    localObject = new Canvas(this.jdField_c_of_type_AndroidGraphicsBitmap);
-    a(this.jdField_e_of_type_JavaLangString, (Canvas)localObject);
-    this.C = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 825L, 1000L, 0, 100, new DecelerateInterpolator());
+    this.O = (this.M * 4);
+    this.P = (this.N * 2 + this.L);
+    this.w = Bitmap.createBitmap(this.O, this.P, Bitmap.Config.ARGB_8888);
+    localObject = new Canvas(this.w);
+    a(this.u, (Canvas)localObject);
+    this.x = Bitmap.createBitmap(this.O, this.P, Bitmap.Config.ARGB_8888);
+    localObject = new Canvas(this.x);
+    a(this.v, (Canvas)localObject);
+    this.W = this.f.a("X", 825L, 1000L, 0, 100, new DecelerateInterpolator());
+  }
+  
+  public String c()
+  {
+    return this.s;
+  }
+  
+  public String d()
+  {
+    return this.t;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.d;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.CalendarTimeStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

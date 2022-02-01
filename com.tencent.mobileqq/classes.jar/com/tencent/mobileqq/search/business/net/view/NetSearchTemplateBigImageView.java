@@ -10,11 +10,11 @@ public class NetSearchTemplateBigImageView
   extends NetSearchTemplateBaseView
 {
   public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
+  public URLImageView b;
   public TextView c;
-  public TextView h;
+  public TextView d;
+  public TextView n;
+  public TextView o;
   
   public NetSearchTemplateBigImageView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -24,18 +24,18 @@ public class NetSearchTemplateBigImageView
   protected void a()
   {
     super.a();
-    View localView = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369736));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363530));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368343));
-    this.b = ((TextView)localView.findViewById(2131366872));
-    this.c = ((TextView)localView.findViewById(2131377106));
-    this.h = ((TextView)localView.findViewById(2131362028));
+    View localView = b(this.m);
+    this.a = ((RelativeLayout)localView.findViewById(2131436854));
+    this.b = ((URLImageView)localView.findViewById(2131429434));
+    this.c = ((TextView)localView.findViewById(2131435219));
+    this.d = ((TextView)localView.findViewById(2131433201));
+    this.n = ((TextView)localView.findViewById(2131445477));
+    this.o = ((TextView)localView.findViewById(2131427606));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBigImageView
  * JD-Core Version:    0.7.0.1
  */

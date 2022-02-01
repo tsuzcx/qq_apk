@@ -20,15 +20,15 @@ import java.util.ArrayList;
 public class ChatTextSizeSettingActivity
   extends IphoneTitleBarActivity
 {
-  private static int jdField_b_of_type_Int;
-  int jdField_a_of_type_Int = 0;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ChatTextSizeSettingActivity.1(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private static int b;
+  int a = 0;
   private ViewGroup c;
   private ViewGroup d;
+  private ViewGroup e;
+  private ViewGroup f;
+  private ArrayList<ViewGroup> g = new ArrayList();
+  private ArrayList<Integer> h = new ArrayList();
+  private View.OnClickListener i = new ChatTextSizeSettingActivity.1(this);
   
   public static int a()
   {
@@ -37,68 +37,68 @@ public class ChatTextSizeSettingActivity
   
   public static int a(Context paramContext)
   {
-    int i = paramContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
-    paramContext.getResources().getDimensionPixelSize(2131296453);
-    if (i != 1)
+    int j = paramContext.getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
+    paramContext.getResources().getDimensionPixelSize(2131296687);
+    if (j != 1)
     {
-      if (i != 2)
+      if (j != 2)
       {
-        if (i != 3) {
-          return paramContext.getResources().getDimensionPixelSize(2131296453);
+        if (j != 3) {
+          return paramContext.getResources().getDimensionPixelSize(2131296687);
         }
-        return paramContext.getResources().getDimensionPixelSize(2131296450);
+        return paramContext.getResources().getDimensionPixelSize(2131296684);
       }
-      return paramContext.getResources().getDimensionPixelSize(2131296451);
+      return paramContext.getResources().getDimensionPixelSize(2131296685);
     }
-    return paramContext.getResources().getDimensionPixelSize(2131296452);
+    return paramContext.getResources().getDimensionPixelSize(2131296686);
   }
   
   public static int b()
   {
-    int i = jdField_b_of_type_Int;
-    if (i != 0) {
-      return i;
+    int j = b;
+    if (j != 0) {
+      return j;
     }
-    i = BaseApplicationImpl.getContext().getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
-    float f;
-    if (i != 1)
+    j = BaseApplicationImpl.getContext().getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
+    float f1;
+    if (j != 1)
     {
-      if (i != 2)
+      if (j != 2)
       {
-        if (i != 3) {
-          f = BaseApplicationImpl.getContext().getResources().getDimension(2131296453);
+        if (j != 3) {
+          f1 = BaseApplicationImpl.getContext().getResources().getDimension(2131296687);
         } else {
-          f = BaseApplicationImpl.getContext().getResources().getDimension(2131296450);
+          f1 = BaseApplicationImpl.getContext().getResources().getDimension(2131296684);
         }
       }
       else {
-        f = BaseApplicationImpl.getContext().getResources().getDimension(2131296451);
+        f1 = BaseApplicationImpl.getContext().getResources().getDimension(2131296685);
       }
     }
     else {
-      f = BaseApplicationImpl.getContext().getResources().getDimension(2131296452);
+      f1 = BaseApplicationImpl.getContext().getResources().getDimension(2131296686);
     }
-    jdField_b_of_type_Int = (int)(f / BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
-    return jdField_b_of_type_Int;
+    b = (int)(f1 / BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    return b;
   }
   
   void a(int paramInt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int j = 0;
+    while (j < this.g.size())
     {
-      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131378596);
-      if (i == paramInt) {
+      localObject = (ImageView)((ViewGroup)this.g.get(j)).findViewById(2131447225);
+      if (j == paramInt) {
         ((ImageView)localObject).setVisibility(0);
       } else {
         ((ImageView)localObject).setVisibility(4);
       }
-      i += 1;
+      j += 1;
     }
     Object localObject = getSharedPreferences("setting_text_size", 0).edit();
     ((SharedPreferences.Editor)localObject).putInt("chat_text_size_type", paramInt);
     ((SharedPreferences.Editor)localObject).commit();
-    jdField_b_of_type_Int = 0;
+    b = 0;
   }
   
   @Override
@@ -120,31 +120,31 @@ public class ChatTextSizeSettingActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131558847);
-    setTitle(getString(2131694955));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378599));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378598));
-    this.c = ((ViewGroup)findViewById(2131378597));
-    this.d = ((ViewGroup)findViewById(2131378595));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.d);
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296453)));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296452)));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296451)));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296450)));
-    this.jdField_a_of_type_Int = getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
-    a(this.jdField_a_of_type_Int);
+    super.setContentView(2131624467);
+    setTitle(getString(2131892682));
+    this.c = ((ViewGroup)findViewById(2131447228));
+    this.d = ((ViewGroup)findViewById(2131447227));
+    this.e = ((ViewGroup)findViewById(2131447226));
+    this.f = ((ViewGroup)findViewById(2131447224));
+    this.g.add(this.c);
+    this.g.add(this.d);
+    this.g.add(this.e);
+    this.g.add(this.f);
+    this.c.setOnClickListener(this.i);
+    this.d.setOnClickListener(this.i);
+    this.e.setOnClickListener(this.i);
+    this.f.setOnClickListener(this.i);
+    this.h.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296687)));
+    this.h.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296686)));
+    this.h.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296685)));
+    this.h.add(Integer.valueOf(getResources().getDimensionPixelSize(2131296684)));
+    this.a = getSharedPreferences("setting_text_size", 0).getInt("chat_text_size_type", 0);
+    a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatTextSizeSettingActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data;
 
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertUtil;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsInsertAction;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import java.util.ArrayList;
@@ -19,38 +21,38 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJFeedsInsertArticle
 {
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private SortedMap<RIJFeedsInsertAction, ArrayList<AbsBaseArticleInfo>> a = Collections.synchronizedSortedMap((SortedMap)new TreeMap());
   @Nullable
-  private SortedMap<RIJFeedsInsertAction, ArrayList<AbsBaseArticleInfo>> jdField_a_of_type_JavaUtilSortedMap = Collections.synchronizedSortedMap((SortedMap)new TreeMap());
-  
-  @Nullable
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private String b;
   
   @Nullable
   public final SortedMap<RIJFeedsInsertAction, ArrayList<AbsBaseArticleInfo>> a()
   {
-    return this.jdField_a_of_type_JavaUtilSortedMap;
+    return this.a;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public final void a(@Nullable SortedMap<RIJFeedsInsertAction, ArrayList<AbsBaseArticleInfo>> paramSortedMap)
   {
-    this.jdField_a_of_type_JavaUtilSortedMap = paramSortedMap;
+    this.a = paramSortedMap;
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    return this.b;
   }
   
   @NotNull
-  public final String b()
+  public final String c()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("RIJFeedsInsertArticle(actionArticleMap=\n");
-    Object localObject2 = this.jdField_a_of_type_JavaUtilSortedMap;
+    Object localObject2 = this.a;
     if (localObject2 != null)
     {
       localObject2 = ((Map)localObject2).entrySet().iterator();
@@ -67,10 +69,14 @@ public final class RIJFeedsInsertArticle
         {
           localObject4 = (AbsBaseArticleInfo)((Iterator)localObject3).next();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append('[');
+          localStringBuilder.append("[title:");
           localStringBuilder.append(((AbsBaseArticleInfo)localObject4).mTitle);
-          localStringBuilder.append("     ");
-          localStringBuilder.append(((AbsBaseArticleInfo)localObject4).innerUniqueID);
+          localStringBuilder.append(" , rowkey:");
+          RIJFeedsInsertUtil localRIJFeedsInsertUtil = RIJFeedsInsertUtil.a;
+          Intrinsics.checkExpressionValueIsNotNull(localObject4, "article");
+          localStringBuilder.append(localRIJFeedsInsertUtil.b((AbsBaseArticleInfo)localObject4));
+          localStringBuilder.append(" ,isAD:");
+          localStringBuilder.append(localObject4 instanceof AdvertisementInfo);
           localStringBuilder.append(']');
           ((StringBuilder)localObject1).append(localStringBuilder.toString());
         }
@@ -88,14 +94,14 @@ public final class RIJFeedsInsertArticle
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJFeedsInsertArticle(actionArticleMap=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilSortedMap);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.RIJFeedsInsertArticle
  * JD-Core Version:    0.7.0.1
  */

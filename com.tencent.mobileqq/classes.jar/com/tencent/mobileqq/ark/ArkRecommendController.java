@@ -16,32 +16,25 @@ import org.w3c.dom.Text;
 
 public class ArkRecommendController
 {
-  public static int a;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-  public static int b;
+  public static int a = 5;
+  public static int b = 3;
   public static int c = 1;
   public static int d = 3;
   public static int e = 3;
   public static int f = 10;
   public static int g = 1;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private ArkAiAppPanel jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
-  protected WeakReference<QQAppInterface> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_Int = 5;
-    jdField_b_of_type_Int = 3;
-  }
+  private static final SimpleDateFormat i = new SimpleDateFormat("yyyyMMdd");
+  protected WeakReference<QQAppInterface> h;
+  private AIOContext j;
+  private ArkAiAppPanel k;
+  private boolean l = false;
+  private boolean m = false;
   
   public ArkRecommendController(AIOContext paramAIOContext)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.j = paramAIOContext;
     if (paramAIOContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAIOContext.a());
+      this.h = new WeakReference(paramAIOContext.a());
     }
     ArkMultiProcUtil.a();
   }
@@ -53,36 +46,36 @@ public class ArkRecommendController
     }
     for (;;)
     {
-      int i;
-      int k;
+      int n;
+      int i2;
       try
       {
         String str = paramNode.getNodeName();
         NodeList localNodeList = paramNode.getChildNodes();
         JSONObject localJSONObject = new JSONObject();
-        i = 0;
-        j = 0;
-        if (i < localNodeList.getLength())
+        n = 0;
+        i1 = 0;
+        if (n < localNodeList.getLength())
         {
-          Node localNode = localNodeList.item(i);
+          Node localNode = localNodeList.item(n);
           if ((localNode instanceof Element))
           {
             a(localNode, localJSONObject);
-            k = 1;
+            i2 = 1;
           }
           else
           {
-            k = j;
+            i2 = i1;
             if ((localNode instanceof Text))
             {
               paramJSONObject.put(str, paramNode.getFirstChild().getNodeValue());
-              k = j;
+              i2 = i1;
             }
           }
         }
         else
         {
-          if (j != 0) {
+          if (i1 != 0) {
             paramJSONObject.put(str, localJSONObject);
           }
           return true;
@@ -92,47 +85,38 @@ public class ArkRecommendController
       {
         return false;
       }
-      i += 1;
-      int j = k;
+      n += 1;
+      int i1 = i2;
     }
-  }
-  
-  public ArkAppRootLayout a()
-  {
-    ArkAiAppPanel localArkAiAppPanel = this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
-    if (localArkAiAppPanel != null) {
-      return localArkAiAppPanel.a();
-    }
-    return null;
   }
   
   public void a()
   {
-    ArkAiAppPanel localArkAiAppPanel = this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
+    ArkAiAppPanel localArkAiAppPanel = this.k;
     if (localArkAiAppPanel != null) {
-      localArkAiAppPanel.a();
+      localArkAiAppPanel.b();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ArkAiAppPanel localArkAiAppPanel = this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
+    ArkAiAppPanel localArkAiAppPanel = this.k;
     if (localArkAiAppPanel != null)
     {
       if ((paramInt2 != 22) && (paramInt1 == 22))
       {
-        localArkAiAppPanel.a();
+        localArkAiAppPanel.b();
         return;
       }
       if ((paramInt2 == 22) && (paramInt1 != 22)) {
-        this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel.b();
+        this.k.c();
       }
     }
   }
   
   public void a(List<ArkAiInfo> paramList, int paramInt)
   {
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    AIOContext localAIOContext = this.j;
     if (localAIOContext == null)
     {
       if (QLog.isColorLevel()) {
@@ -140,32 +124,41 @@ public class ArkRecommendController
       }
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel = new ArkAiAppPanel(localAIOContext);
+    if (this.k == null) {
+      this.k = new ArkAiAppPanel(localAIOContext);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel.a();
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel.a(paramList, paramInt, null);
+    this.k.a();
+    this.k.a(paramList, paramInt, null);
   }
   
   public void b()
   {
-    ArkAiAppPanel localArkAiAppPanel = this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
+    ArkAiAppPanel localArkAiAppPanel = this.k;
     if (localArkAiAppPanel != null)
     {
-      localArkAiAppPanel.c();
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel = null;
+      localArkAiAppPanel.d();
+      this.k = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = null;
+    this.j = null;
   }
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.m = true;
+  }
+  
+  public ArkAppRootLayout d()
+  {
+    ArkAiAppPanel localArkAiAppPanel = this.k;
+    if (localArkAiAppPanel != null) {
+      return localArkAiAppPanel.a();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkRecommendController
  * JD-Core Version:    0.7.0.1
  */

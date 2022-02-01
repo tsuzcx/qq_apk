@@ -7,36 +7,36 @@ import com.tencent.av.business.manager.BusinessManager;
 import com.tencent.av.tips.IAvTipsView;
 import com.tencent.av.tips.data.AVTipsItemFactory;
 import com.tencent.av.tips.data.AvTipsItemBase;
-import com.tencent.av.ui.DeviceTipsController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class TipsManager
   extends BusinessManager
 {
-  private TipsViewTimerRunnable jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable;
-  private volatile AvTipsItemBase jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-  private WeakReference<DeviceTipsController> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile AvTipsItemBase jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-  private WeakReference<IAvTipsView> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<IAvTipsView> d;
+  private final TipsViewTimerRunnable e;
+  private volatile AvTipsItemBase f = null;
+  private volatile AvTipsItemBase g = null;
+  @Deprecated
+  private volatile AvTipsItemBase h = null;
   
   public TipsManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable = new TipsViewTimerRunnable(paramVideoAppInterface);
+    this.e = new TipsViewTimerRunnable(paramVideoAppInterface);
   }
   
-  public static void a(String paramString)
+  public static void b(String paramString)
   {
     if (paramString == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
+    if ((QLog.isColorLevel()) || (QLog.isDebugVersion())) {
       QLog.d("NewTipsManager", 2, paramString);
     }
   }
   
-  private boolean b(AvTipsItemBase paramAvTipsItemBase)
+  private boolean d(AvTipsItemBase paramAvTipsItemBase)
   {
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("showSubTips begin avTipsItem = ");
@@ -46,8 +46,8 @@ public class TipsManager
       localObject1 = "null";
     }
     ((StringBuilder)localObject2).append(localObject1);
-    a(((StringBuilder)localObject2).toString());
-    Object localObject1 = a();
+    b(((StringBuilder)localObject2).toString());
+    Object localObject1 = f();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramAvTipsItemBase != null)
@@ -55,36 +55,36 @@ public class TipsManager
       bool1 = bool2;
       if (localObject1 != null)
       {
-        if (!((IAvTipsView)localObject1).b()) {
+        if (!((IAvTipsView)localObject1).c()) {
           return false;
         }
-        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
+        localObject2 = this.e.d();
         boolean bool3 = AvTipsItemBase.a((AvTipsItemBase)localObject2, paramAvTipsItemBase);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("showSubTips canShow = ");
         localStringBuilder.append(bool3);
-        a(localStringBuilder.toString());
+        b(localStringBuilder.toString());
         bool1 = bool2;
         if (bool3)
         {
           bool1 = bool2;
           if (((IAvTipsView)localObject1).b(paramAvTipsItemBase))
           {
-            a("showSubTips ShowSubTipsView success");
-            this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b(paramAvTipsItemBase);
+            b("showSubTips ShowSubTipsView success");
+            this.e.b(paramAvTipsItemBase);
             bool2 = true;
             bool1 = bool2;
             if (localObject2 != null)
             {
               bool1 = bool2;
-              if (((AvTipsItemBase)localObject2).a())
+              if (((AvTipsItemBase)localObject2).g())
               {
-                if (paramAvTipsItemBase.a())
+                if (paramAvTipsItemBase.g())
                 {
-                  this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
+                  this.h = null;
                   return true;
                 }
-                this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = ((AvTipsItemBase)localObject2);
+                this.h = ((AvTipsItemBase)localObject2);
                 bool1 = bool2;
               }
             }
@@ -95,32 +95,7 @@ public class TipsManager
     return bool1;
   }
   
-  private void c(AvTipsItemBase paramAvTipsItemBase)
-  {
-    if (paramAvTipsItemBase == null) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (paramAvTipsItemBase.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a()))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("hiddenMainTips (avTipsItem.equals(current)) avTipsItem id = ");
-      localStringBuilder.append(paramAvTipsItemBase.b());
-      a(localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
-      return;
-    }
-    if (paramAvTipsItemBase.equals(this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("hiddenMainTips (avTipsItem.equals(mLastShowResidentMainTipsItem)) avTipsItem id = ");
-      localStringBuilder.append(paramAvTipsItemBase.b());
-      a(localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-    }
-  }
-  
-  private boolean c(AvTipsItemBase paramAvTipsItemBase)
+  private boolean e(AvTipsItemBase paramAvTipsItemBase)
   {
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("showMainTips begin avTipsItem = ");
@@ -131,153 +106,182 @@ public class TipsManager
       localObject1 = "null";
     }
     ((StringBuilder)localObject2).append(localObject1);
-    a(((StringBuilder)localObject2).toString());
-    localObject2 = a();
+    b(((StringBuilder)localObject2).toString());
+    localObject2 = f();
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAvTipsItemBase != null)
+    if ((paramAvTipsItemBase != null) && (localObject2 != null))
     {
-      bool1 = bool2;
-      if (localObject2 != null)
+      if (!((IAvTipsView)localObject2).a()) {
+        return false;
+      }
+      localObject1 = this.e.c();
+      boolean bool1 = paramAvTipsItemBase.g();
+      int j;
+      if ((localObject1 != null) && (!((AvTipsItemBase)localObject1).g())) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      int i;
+      if (paramAvTipsItemBase.b() == 1070) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
       {
-        if (!((IAvTipsView)localObject2).a()) {
-          return false;
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
-        bool1 = AvTipsItemBase.a((AvTipsItemBase)localObject1, paramAvTipsItemBase);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("showMainTips canShow = ");
-        localStringBuilder.append(bool1);
-        a(localStringBuilder.toString());
-        if (bool1)
+        this.g = paramAvTipsItemBase;
+        bool1 = bool2;
+        if (localObject1 == null)
         {
           bool1 = bool2;
           if (((IAvTipsView)localObject2).a(paramAvTipsItemBase))
           {
-            a("showMainTips ShowMainTipsView success");
-            this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a(paramAvTipsItemBase);
-            bool2 = true;
-            bool1 = bool2;
-            if (localObject1 != null)
-            {
-              bool1 = bool2;
-              if (((AvTipsItemBase)localObject1).a())
-              {
-                if (paramAvTipsItemBase.a())
-                {
-                  this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-                  return true;
-                }
-                this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = ((AvTipsItemBase)localObject1);
-                return true;
-              }
-            }
+            b("showMainTips ShowMainTipsView success");
+            this.e.a(paramAvTipsItemBase);
+            bool1 = true;
           }
         }
-        else
+        return bool1;
+      }
+      bool2 = AvTipsItemBase.a((AvTipsItemBase)localObject1, paramAvTipsItemBase);
+      if ((bool1) && (j != 0) && (!bool2)) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if (j != 0)
+      {
+        this.f = paramAvTipsItemBase;
+        return false;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showMainTips canShow = ");
+      localStringBuilder.append(bool2);
+      b(localStringBuilder.toString());
+      if (bool2)
+      {
+        if (((IAvTipsView)localObject2).a(paramAvTipsItemBase))
         {
-          paramAvTipsItemBase = new StringBuilder();
-          paramAvTipsItemBase.append("showMainTips canShow is false current = ");
-          paramAvTipsItemBase.append(((AvTipsItemBase)localObject1).b());
-          a(paramAvTipsItemBase.toString());
-          bool1 = bool2;
+          b("showMainTips ShowMainTipsView success");
+          this.e.a(paramAvTipsItemBase);
+          if ((localObject1 != null) && (((AvTipsItemBase)localObject1).g())) {
+            if ((!bool1) && (i == 0)) {
+              this.f = ((AvTipsItemBase)localObject1);
+            } else {
+              this.f = null;
+            }
+          }
+          return true;
         }
       }
+      else
+      {
+        paramAvTipsItemBase = new StringBuilder();
+        paramAvTipsItemBase.append("showMainTips canShow is false current = ");
+        paramAvTipsItemBase.append(((AvTipsItemBase)localObject1).b());
+        b(paramAvTipsItemBase.toString());
+      }
     }
-    return bool1;
+    return false;
   }
   
-  private void d(AvTipsItemBase paramAvTipsItemBase)
+  private void f(AvTipsItemBase paramAvTipsItemBase)
   {
     if (paramAvTipsItemBase == null) {
       return;
     }
+    Object localObject = this.e.c();
     StringBuilder localStringBuilder;
-    if (paramAvTipsItemBase.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b()))
+    if (paramAvTipsItemBase.equals(this.f))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("hiddenSubTips (avTipsItem.equals(current)) avTipsItem id = ");
+      localStringBuilder.append("hiddenMainTips (avTipsItem.equals(mLastShowResidentMainTipsItem)) avTipsItem id = ");
       localStringBuilder.append(paramAvTipsItemBase.b());
-      a(localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
-      return;
+      b(localStringBuilder.toString());
+      this.f = null;
     }
-    if (paramAvTipsItemBase.equals(this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase))
+    if (paramAvTipsItemBase.equals(this.g))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("hiddenSubTips (avTipsItem.equals(mLastShowResidentSubTipsItem)) avTipsItem id = ");
+      localStringBuilder.append("hiddenMainTips (avTipsItem.equals(mLastShowResidentMainTipsItem)) avTipsItem id = ");
       localStringBuilder.append(paramAvTipsItemBase.b());
-      a(localStringBuilder.toString());
-      this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
+      b(localStringBuilder.toString());
+      this.g = null;
+    }
+    if (paramAvTipsItemBase.equals(localObject))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hiddenMainTips (avTipsItem.equals(current)) avTipsItem id = ");
+      ((StringBuilder)localObject).append(paramAvTipsItemBase.b());
+      b(((StringBuilder)localObject).toString());
+      this.e.a();
     }
   }
   
-  private void e()
+  private void g()
   {
-    IAvTipsView localIAvTipsView = a();
-    a("hiddenMainTipsReal");
+    IAvTipsView localIAvTipsView = f();
+    b("hiddenMainTipsReal");
     if (localIAvTipsView != null)
     {
       if (!localIAvTipsView.a()) {
-        return;
-      }
-      localIAvTipsView.a();
-    }
-  }
-  
-  private void f()
-  {
-    IAvTipsView localIAvTipsView = a();
-    a("hiddenSubTipsReal");
-    if (localIAvTipsView != null)
-    {
-      if (!localIAvTipsView.b()) {
         return;
       }
       localIAvTipsView.b();
     }
   }
   
-  public IAvTipsView a()
+  private void g(AvTipsItemBase paramAvTipsItemBase)
   {
-    WeakReference localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
-      return (IAvTipsView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (paramAvTipsItemBase == null) {
+      return;
     }
-    return null;
+    StringBuilder localStringBuilder;
+    if (paramAvTipsItemBase.equals(this.e.d()))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hiddenSubTips (avTipsItem.equals(current)) avTipsItem id = ");
+      localStringBuilder.append(paramAvTipsItemBase.b());
+      b(localStringBuilder.toString());
+      this.e.b();
+      return;
+    }
+    if (paramAvTipsItemBase.equals(this.h))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hiddenSubTips (avTipsItem.equals(mLastShowResidentSubTipsItem)) avTipsItem id = ");
+      localStringBuilder.append(paramAvTipsItemBase.b());
+      b(localStringBuilder.toString());
+      this.h = null;
+    }
+  }
+  
+  private void h()
+  {
+    IAvTipsView localIAvTipsView = f();
+    b("hiddenSubTipsReal");
+    if (localIAvTipsView != null)
+    {
+      if (!localIAvTipsView.c()) {
+        return;
+      }
+      localIAvTipsView.d();
+    }
+  }
+  
+  public int a(long paramLong, boolean paramBoolean)
+  {
+    if ((paramLong != 0L) && (paramLong < 1000L)) {
+      return 3;
+    }
+    if (paramBoolean) {
+      return 0;
+    }
+    return (int)(paramLong / 1000L);
   }
   
   protected void a() {}
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)
-    {
-      a("HiddenTips (mApp == null)");
-      return;
-    }
-    AvTipsItemBase localAvTipsItemBase = AVTipsItemFactory.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (localAvTipsItemBase == null)
-    {
-      a("HiddenTips (tipsItem == null)");
-      return;
-    }
-    paramInt = localAvTipsItemBase.d();
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("HiddenTips tipsItem.getShowType() = ");
-        localStringBuilder.append(localAvTipsItemBase.d());
-        a(localStringBuilder.toString());
-        return;
-      }
-      d(localAvTipsItemBase);
-      return;
-    }
-    c(localAvTipsItemBase);
-  }
   
   public void a(IAvTipsView paramIAvTipsView)
   {
@@ -287,104 +291,89 @@ public class TipsManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setAvTipsView avTipsView is ");
     localStringBuilder.append(paramIAvTipsView.getClass());
-    a(localStringBuilder.toString());
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramIAvTipsView);
-  }
-  
-  public void a(AvTipsItemBase paramAvTipsItemBase)
-  {
-    if (paramAvTipsItemBase == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("NotifyHiddenMainTipsByRunner item");
-    localStringBuilder.append(paramAvTipsItemBase.b());
-    a(localStringBuilder.toString());
-    if ((!paramAvTipsItemBase.a()) && (this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase != null))
-    {
-      c(this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase);
-      return;
-    }
-    e();
-  }
-  
-  public void a(DeviceTipsController paramDeviceTipsController)
-  {
-    if (paramDeviceTipsController == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setDeviceTipsController is ");
-    localStringBuilder.append(paramDeviceTipsController.getClass());
-    a(localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeviceTipsController);
+    b(localStringBuilder.toString());
+    this.d = new WeakReference(paramIAvTipsView);
   }
   
   public void a(boolean paramBoolean)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((DeviceTipsController)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramBoolean);
+    if (!paramBoolean)
+    {
+      AvTipsItemBase localAvTipsItemBase = this.e.c();
+      if (localAvTipsItemBase != null)
+      {
+        if ((localAvTipsItemBase != null) && (localAvTipsItemBase.b() == 1070)) {
+          return;
+        }
+        if ((1075 < localAvTipsItemBase.b()) || (localAvTipsItemBase.b() < 1062)) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hiddenDeviceTips current id = ");
+        localStringBuilder.append(localAvTipsItemBase.b());
+        b(localStringBuilder.toString());
+        b(localAvTipsItemBase.b());
+      }
+    }
+    else
+    {
+      b(1070);
     }
   }
   
   public boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (this.c == null) {
       return false;
     }
-    return a(AVTipsItemFactory.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface));
+    return a(AVTipsItemFactory.a(paramInt, this.c));
   }
   
   public boolean a(int paramInt, long paramLong)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localWeakReference != null)
-    {
-      bool1 = bool2;
-      if (localWeakReference.get() != null)
-      {
-        ((DeviceTipsController)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, paramLong, false);
-        bool1 = true;
-      }
+    if (this.c == null) {
+      return false;
     }
-    return bool1;
+    return a(AVTipsItemFactory.a(paramInt, this.c, a(paramLong, false)));
   }
   
   public boolean a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null))
-    {
-      ((DeviceTipsController)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, paramLong, paramBoolean);
-      return true;
+    if (this.c == null) {
+      return false;
     }
-    return false;
+    return a(AVTipsItemFactory.a(paramInt, this.c, a(paramLong, paramBoolean)));
   }
   
   public boolean a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (this.c == null) {
       return false;
     }
-    return a(AVTipsItemFactory.a(paramInt, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString));
+    return a(AVTipsItemFactory.a(paramInt, this.c, paramString));
   }
   
   public boolean a(int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (this.c == null) {
       return false;
     }
-    return a(AVTipsItemFactory.a(paramInt1, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString, 2, paramDrawable, paramInt2, paramOnClickListener));
+    return a(AVTipsItemFactory.a(paramInt1, this.c, paramString, 2, paramDrawable, paramInt2, paramOnClickListener));
+  }
+  
+  public boolean a(int paramInt1, String paramString1, String paramString2, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (this.c == null) {
+      return false;
+    }
+    return a(AVTipsItemFactory.a(paramInt1, this.c, paramString1, paramString2, 2, paramDrawable, paramInt2, paramOnClickListener));
   }
   
   public boolean a(AvTipsItemBase paramAvTipsItemBase)
   {
     if (paramAvTipsItemBase == null)
     {
-      a("showTips (tipsItem == null)");
+      b("showTips (tipsItem == null)");
       return false;
     }
     int i = paramAvTipsItemBase.d();
@@ -395,12 +384,12 @@ public class TipsManager
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("showTips tipsItem.getShowType() = ");
         localStringBuilder.append(paramAvTipsItemBase.d());
-        a(localStringBuilder.toString());
+        b(localStringBuilder.toString());
         return false;
       }
-      return b(paramAvTipsItemBase);
+      return d(paramAvTipsItemBase);
     }
-    return c(paramAvTipsItemBase);
+    return e(paramAvTipsItemBase);
   }
   
   protected boolean a(String paramString)
@@ -410,27 +399,69 @@ public class TipsManager
   
   public boolean a(String paramString, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject == null) {
-      localObject = null;
-    } else {
-      localObject = (DeviceTipsController)((WeakReference)localObject).get();
+    if (this.c == null) {
+      return false;
     }
-    if (localObject != null)
-    {
-      ((DeviceTipsController)localObject).a(paramString, paramLong, paramBoolean);
-      return true;
-    }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showDeviceTips TTL = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("    resident = ");
+    localStringBuilder.append(paramBoolean);
+    b(localStringBuilder.toString());
+    return a(AVTipsItemFactory.a(1075, this.c, paramString, a(paramLong, paramBoolean)));
+  }
+  
+  public boolean a(String paramString1, String paramString2, View.OnClickListener paramOnClickListener, long paramLong, boolean paramBoolean)
+  {
+    return a(AVTipsItemFactory.a(paramString1, paramString2, this.c, paramOnClickListener, a(paramLong, paramBoolean)));
   }
   
   public void b()
   {
-    a("RemoveAllTips");
-    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.a();
-    this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerTipsTipsViewTimerRunnable.b();
-    this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase = null;
+    AvTipsItemBase localAvTipsItemBase = this.e.c();
+    int i;
+    if ((localAvTipsItemBase != null) && (localAvTipsItemBase.b() == 1070)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (localAvTipsItemBase != null)
+    {
+      if (i != 0) {
+        return;
+      }
+      this.e.a();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.c == null)
+    {
+      b("HiddenTips (mApp == null)");
+      return;
+    }
+    AvTipsItemBase localAvTipsItemBase = AVTipsItemFactory.a(paramInt, this.c);
+    if (localAvTipsItemBase == null)
+    {
+      b("HiddenTips (tipsItem == null)");
+      return;
+    }
+    paramInt = localAvTipsItemBase.d();
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("HiddenTips tipsItem.getShowType() = ");
+        localStringBuilder.append(localAvTipsItemBase.d());
+        b(localStringBuilder.toString());
+        return;
+      }
+      g(localAvTipsItemBase);
+      return;
+    }
+    f(localAvTipsItemBase);
   }
   
   public void b(AvTipsItemBase paramAvTipsItemBase)
@@ -439,41 +470,80 @@ public class TipsManager
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("NotifyHiddenSubTipsByRunner item");
+    localStringBuilder.append("NotifyHiddenMainTipsByRunner item");
     localStringBuilder.append(paramAvTipsItemBase.b());
-    a(localStringBuilder.toString());
-    if ((!paramAvTipsItemBase.a()) && (this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase != null))
+    b(localStringBuilder.toString());
+    if ((!paramAvTipsItemBase.g()) && (this.f != null))
     {
-      b(this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase);
+      e(this.f);
       return;
     }
-    f();
+    g();
+    if (this.g != null) {
+      a(this.g);
+    }
   }
   
   public void c()
   {
-    IAvTipsView localIAvTipsView = a();
-    a("HiddenViewContainer");
-    if (localIAvTipsView != null)
-    {
-      if (!localIAvTipsView.b()) {
-        return;
-      }
-      localIAvTipsView.c();
+    b("RemoveAllTips");
+    this.f = null;
+    this.g = null;
+    this.e.a();
+    this.e.b();
+    this.h = null;
+  }
+  
+  public void c(AvTipsItemBase paramAvTipsItemBase)
+  {
+    if (paramAvTipsItemBase == null) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NotifyHiddenSubTipsByRunner item");
+    localStringBuilder.append(paramAvTipsItemBase.b());
+    b(localStringBuilder.toString());
+    if ((!paramAvTipsItemBase.g()) && (this.h != null))
+    {
+      d(this.h);
+      return;
+    }
+    h();
   }
   
   public void d()
   {
-    IAvTipsView localIAvTipsView = a();
-    a("ShowViewContainer");
+    IAvTipsView localIAvTipsView = f();
+    b("HiddenViewContainer");
     if (localIAvTipsView != null)
     {
-      if (!localIAvTipsView.b()) {
+      if (!localIAvTipsView.c()) {
         return;
       }
-      localIAvTipsView.d();
+      localIAvTipsView.e();
     }
+  }
+  
+  public void e()
+  {
+    IAvTipsView localIAvTipsView = f();
+    b("ShowViewContainer");
+    if (localIAvTipsView != null)
+    {
+      if (!localIAvTipsView.c()) {
+        return;
+      }
+      localIAvTipsView.f();
+    }
+  }
+  
+  public IAvTipsView f()
+  {
+    WeakReference localWeakReference = this.d;
+    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
+      return (IAvTipsView)this.d.get();
+    }
+    return null;
   }
 }
 

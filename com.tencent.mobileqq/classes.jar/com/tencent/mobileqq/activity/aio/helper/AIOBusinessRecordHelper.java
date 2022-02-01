@@ -10,9 +10,9 @@ public class AIOBusinessRecordHelper
   private void a()
   {
     com.tencent.mobileqq.vas.font.api.FontManagerConstants.sHasChatFont = false;
-    com.tencent.mobileqq.vas.AvatarPendantManager.b = false;
+    com.tencent.mobileqq.vas.AvatarPendantManager.d = false;
     com.tencent.mobileqq.bubble.BubbleManager.a = false;
-    BubbleDiyFetcher.a().d();
+    BubbleDiyFetcher.a().e();
     ThreadManager.executeOnSubThread(new AIOBusinessRecordHelper.1(this));
   }
   
@@ -37,7 +37,7 @@ public class AIOBusinessRecordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOBusinessRecordHelper
  * JD-Core Version:    0.7.0.1
  */

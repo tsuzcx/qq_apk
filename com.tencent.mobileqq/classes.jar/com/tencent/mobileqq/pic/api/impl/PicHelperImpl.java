@@ -36,12 +36,12 @@ public class PicHelperImpl
     if (paramMessageForPic.isSendFromLocal())
     {
       paramMessageForPic = paramMessageForPic.getPicUploadInfo();
-      paramMessageForPic.e = paramString;
-      return paramMessageForPic.b();
+      paramMessageForPic.l = paramString;
+      return paramMessageForPic.d();
     }
     paramMessageForPic = paramMessageForPic.getPicDownloadInfo();
-    paramMessageForPic.e = paramString;
-    return paramMessageForPic.b();
+    paramMessageForPic.l = paramString;
+    return paramMessageForPic.d();
   }
   
   public static boolean hasRawFile(MessageForPic paramMessageForPic)
@@ -95,7 +95,18 @@ public class PicHelperImpl
     if (paramPicUiInterface == null) {
       return null;
     }
-    paramString = URLDrawable.getDrawable(getURL(paramPicUiInterface, paramInt, paramString), paramURLDrawableOptions);
+    URL localURL = getURL(paramPicUiInterface, paramInt, paramString);
+    String str = getMemoryCacheKeySuffix(paramPicUiInterface, paramInt, paramString);
+    paramString = paramURLDrawableOptions;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramString = paramURLDrawableOptions;
+      if (paramURLDrawableOptions == null) {
+        paramString = URLDrawable.URLDrawableOptions.obtain();
+      }
+      paramString.mMemoryCacheKeySuffix = str;
+    }
+    paramString = URLDrawable.getDrawable(localURL, paramString);
     paramString.setTag(paramPicUiInterface);
     if (paramPicUiInterface.isSendFromLocal()) {
       return paramString;
@@ -107,7 +118,7 @@ public class PicHelperImpl
       paramString.setAutoDownload(true);
       return paramString;
     }
-    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694986), "qqsetting_auto_receive_pic_key", true);
+    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131892713), "qqsetting_auto_receive_pic_key", true);
     bool1 = bool2;
     if (NetworkUtil.getNetworkType(BaseApplication.getContext()) != 1) {
       if (bool3) {
@@ -142,7 +153,7 @@ public class PicHelperImpl
     if (paramPicBaseInfo == null) {
       return null;
     }
-    int i = paramPicBaseInfo.jdField_b_of_type_Int;
+    int i = paramPicBaseInfo.c;
     if (i != 0)
     {
       if (i != 1)
@@ -168,6 +179,27 @@ public class PicHelperImpl
     return "C2C";
   }
   
+  public String getMemoryCacheKeySuffix(PicBaseInfo paramPicBaseInfo, int paramInt, String paramString)
+  {
+    if ((paramPicBaseInfo.c == 10014) && (paramInt == 65537)) {
+      return "guildStuff";
+    }
+    return null;
+  }
+  
+  public String getMemoryCacheKeySuffix(PicUiInterface paramPicUiInterface, int paramInt, String paramString)
+  {
+    if (paramPicUiInterface == null) {
+      return null;
+    }
+    if (paramPicUiInterface.isSendFromLocal()) {
+      paramPicUiInterface = paramPicUiInterface.getPicUploadInfo();
+    } else {
+      paramPicUiInterface = paramPicUiInterface.getPicDownloadInfo();
+    }
+    return getMemoryCacheKeySuffix(paramPicUiInterface, paramInt, paramString);
+  }
+  
   public String getMsgSummaryForAnimationPic(MessageForPic paramMessageForPic)
   {
     if (paramMessageForPic == null) {
@@ -189,10 +221,10 @@ public class PicHelperImpl
       }
     }
     if ((paramMessageForPic.picExtraData != null) && (paramMessageForPic.picExtraData.isEmotion())) {
-      return MobileQQ.getContext().getString(2131691279);
+      return MobileQQ.getContext().getString(2131888229);
     }
     if (paramMessageForPic.checkGif()) {
-      return MobileQQ.getContext().getString(2131691279);
+      return MobileQQ.getContext().getString(2131888229);
     }
     return null;
   }
@@ -207,7 +239,7 @@ public class PicHelperImpl
     } else if (paramInt == 131075) {
       str = "chatraw";
     }
-    if (paramPicBaseInfo.jdField_b_of_type_Int != 8000) {
+    if (paramPicBaseInfo.c != 8000) {
       return str;
     }
     return "favimage";
@@ -218,15 +250,15 @@ public class PicHelperImpl
     if (paramPicDownloadInfo == null) {
       return null;
     }
-    Object localObject1 = paramPicDownloadInfo.f;
+    Object localObject1 = paramPicDownloadInfo.m;
     if ((localObject1 == null) || ("null".equals(localObject1)) || ("".equals(localObject1))) {
-      if ((paramPicDownloadInfo.jdField_b_of_type_Int == 8000) && (paramInt == 65537)) {
-        localObject1 = paramPicDownloadInfo.h;
+      if ((paramPicDownloadInfo.c == 8000) && (paramInt == 65537)) {
+        localObject1 = paramPicDownloadInfo.p;
       } else {
-        localObject1 = paramPicDownloadInfo.g;
+        localObject1 = paramPicDownloadInfo.n;
       }
     }
-    if (paramPicDownloadInfo.jdField_b_of_type_Boolean) {
+    if (paramPicDownloadInfo.x) {
       paramInt = 1;
     }
     if (paramString == null) {
@@ -250,16 +282,16 @@ public class PicHelperImpl
         localObject2 = localObject1;
       }
       if (paramString == null) {
-        break label222;
+        break label224;
       }
       paramPicDownloadInfo = new URL(paramString, null, (String)localObject2);
       return paramPicDownloadInfo;
     }
     catch (MalformedURLException paramPicDownloadInfo)
     {
-      label211:
-      label222:
-      break label211;
+      label213:
+      label224:
+      break label213;
     }
     QLog.e("PicBaseInfo", 1, "getURL error ", paramPicDownloadInfo);
     return null;
@@ -282,21 +314,21 @@ public class PicHelperImpl
       return null;
     }
     String str2;
-    if (paramPicUploadInfo.d < 4) {
+    if (paramPicUploadInfo.j < 4) {
       str2 = getHost(paramPicUploadInfo);
     } else {
       str2 = null;
     }
     String str3 = getProtocol(paramPicUploadInfo, paramInt);
     String str1;
-    if ((paramPicUploadInfo.jdField_b_of_type_Int == 8000) && (paramInt == 65537)) {
-      str1 = paramPicUploadInfo.h;
-    } else if ((paramPicUploadInfo.f != null) && (!"".equals(paramPicUploadInfo.f))) {
-      str1 = paramPicUploadInfo.f;
+    if ((paramPicUploadInfo.c == 8000) && (paramInt == 65537)) {
+      str1 = paramPicUploadInfo.o;
+    } else if ((paramPicUploadInfo.m != null) && (!"".equals(paramPicUploadInfo.m))) {
+      str1 = paramPicUploadInfo.m;
     } else if ((paramPicUploadInfo.a != null) && (!"".equals(paramPicUploadInfo.a))) {
       str1 = paramPicUploadInfo.a;
-    } else if ((paramPicUploadInfo.g != null) && (!"".equals(paramPicUploadInfo.g))) {
-      str1 = paramPicUploadInfo.g;
+    } else if ((paramPicUploadInfo.n != null) && (!"".equals(paramPicUploadInfo.n))) {
+      str1 = paramPicUploadInfo.n;
     } else {
       str1 = "";
     }
@@ -378,7 +410,7 @@ public class PicHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicHelperImpl
  * JD-Core Version:    0.7.0.1
  */

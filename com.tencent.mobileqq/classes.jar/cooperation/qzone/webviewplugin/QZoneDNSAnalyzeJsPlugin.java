@@ -51,7 +51,7 @@ public class QZoneDNSAnalyzeJsPlugin
       if (paramArrayOfString.length == 0) {
         return;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -116,7 +116,7 @@ public class QZoneDNSAnalyzeJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

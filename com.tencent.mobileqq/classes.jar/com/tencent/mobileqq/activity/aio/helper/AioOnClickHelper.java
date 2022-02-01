@@ -15,7 +15,7 @@ public class AioOnClickHelper
   public AioOnClickHelper(AIOContext paramAIOContext)
   {
     this.a = paramAIOContext;
-    paramAIOContext.a().a(this);
+    paramAIOContext.d().a(this);
   }
   
   @NonNull
@@ -27,15 +27,15 @@ public class AioOnClickHelper
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131369202) && (i != 2131369563) && (i != 2131379476) && (i != 2131369985)) {
-      com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
+    if ((i != 2131436180) && (i != 2131436666) && (i != 2131448219) && (i != 2131437136)) {
+      com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AioOnClickHelper
  * JD-Core Version:    0.7.0.1
  */

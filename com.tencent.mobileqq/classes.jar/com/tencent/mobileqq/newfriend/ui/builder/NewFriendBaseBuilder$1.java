@@ -18,7 +18,7 @@ class NewFriendBaseBuilder$1
       if (paramArrayOfSwipRightMenuItem.length <= 0) {
         return;
       }
-      int i = this.a.a();
+      int i = this.a.b();
       int j = paramArrayOfSwipRightMenuItem.length;
       paramInt = 1;
       if ((j > 0) && ((i & 0xF) == 1))
@@ -41,7 +41,7 @@ class NewFriendBaseBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBaseBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,23 +20,23 @@ class ApolloPanel$9
       ((StringBuilder)localObject).append(Thread.currentThread().getId());
       QLog.d("[cmshow]ApolloPanel", 2, ((StringBuilder)localObject).toString());
     }
-    if (ApolloPanel.b(this.this$0).size() == 0) {
+    if (ApolloPanel.r(this.this$0).size() == 0) {
       return;
     }
-    Object localObject = (ApolloViewBinder)ApolloPanel.b(this.this$0).get(0);
-    if ((ApolloPanel.a(this.this$0) != null) && ((localObject instanceof ApolloRecentViewBinder)))
+    Object localObject = (ApolloViewBinder)ApolloPanel.r(this.this$0).get(0);
+    if ((ApolloPanel.g(this.this$0) != null) && ((localObject instanceof ApolloRecentViewBinder)))
     {
-      if (((ApolloViewBinder)localObject).b == 2) {
-        ((ApolloViewBinder)localObject).b = 0;
+      if (((ApolloViewBinder)localObject).k == 2) {
+        ((ApolloViewBinder)localObject).k = 0;
       }
-      ((ApolloRecentViewBinder)localObject).a(ApolloPanel.a(this.this$0).a, ApolloPanel.a(this.this$0));
+      ((ApolloRecentViewBinder)localObject).a(ApolloPanel.g(this.this$0).d, ApolloPanel.o(this.this$0));
       this.this$0.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.9
  * JD-Core Version:    0.7.0.1
  */

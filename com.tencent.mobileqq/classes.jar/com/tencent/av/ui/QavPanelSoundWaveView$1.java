@@ -17,18 +17,18 @@ class QavPanelSoundWaveView$1
   {
     if (this.this$0.getVisibility() != 0)
     {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 200L);
+      this.this$0.f.postDelayed(this.this$0.h, 200L);
       return;
     }
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    if (!this.this$0.e)
     {
       localObject = this.this$0;
-      ((QavPanelSoundWaveView)localObject).c += -this.this$0.jdField_a_of_type_Float * 0.00048F;
+      ((QavPanelSoundWaveView)localObject).c += -this.this$0.a * 0.00048F;
     }
     else
     {
       localObject = this.this$0;
-      ((QavPanelSoundWaveView)localObject).c += -this.this$0.jdField_a_of_type_Float * 0.00067F;
+      ((QavPanelSoundWaveView)localObject).c += -this.this$0.a * 0.00067F;
     }
     Object localObject = this.this$0.getContext();
     if ((localObject instanceof BaseActivity))
@@ -36,9 +36,9 @@ class QavPanelSoundWaveView$1
       localObject = ((BaseActivity)localObject).getAppRuntime();
       if ((localObject instanceof VideoAppInterface))
       {
-        localObject = ((VideoAppInterface)localObject).a();
-        f1 = ((VideoController)localObject).h() * 0.05F;
-        if ((((VideoController)localObject).a().d != 3) && (!((VideoController)localObject).a().j()))
+        localObject = ((VideoAppInterface)localObject).b();
+        f1 = ((VideoController)localObject).ak() * 0.05F;
+        if ((((VideoController)localObject).k().g != 3) && (!((VideoController)localObject).k().j()))
         {
           i = 0;
           break label196;
@@ -54,13 +54,13 @@ class QavPanelSoundWaveView$1
     if (i != 0)
     {
       f2 = f1;
-      if (!this.this$0.jdField_a_of_type_Boolean)
+      if (!this.this$0.e)
       {
         this.this$0.c = 0.0F;
         f2 = 0.0F;
       }
     }
-    localObject = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.this$0.d.iterator();
     int j = 1;
     for (;;)
     {
@@ -71,7 +71,7 @@ class QavPanelSoundWaveView$1
       localQavPanelWave.a(this.this$0.c, f2);
       if (j != 0)
       {
-        if (Float.compare(localQavPanelWave.d, 0.0F) == 0) {
+        if (Float.compare(localQavPanelWave.e, 0.0F) == 0) {
           break;
         }
         j = 0;
@@ -79,7 +79,7 @@ class QavPanelSoundWaveView$1
     }
     label302:
     if ((i == 0) || (j == 0)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 66L);
+      this.this$0.f.postDelayed(this.this$0.h, 66L);
     }
     this.this$0.invalidate();
   }

@@ -13,10 +13,15 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class GetBlackStatusRequest
   extends NetworkRequest<GetBlackListStatusResponse>
 {
-  public static final String a = StoryApi.a("StorySvc.get_user_black_status");
-  public String b;
+  public static final String e = StoryApi.a("StorySvc.get_user_black_status");
+  public String f;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
     try
@@ -31,21 +36,16 @@ public class GetBlackStatusRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
-    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.f));
     return localReqGetBlackList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetBlackStatusRequest
  * JD-Core Version:    0.7.0.1
  */

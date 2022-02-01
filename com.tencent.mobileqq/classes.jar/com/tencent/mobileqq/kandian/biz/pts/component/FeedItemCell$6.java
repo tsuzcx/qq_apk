@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.kandian.biz.pts.component;
 
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.glue.video.VideoPlayManager;
-import com.tencent.widget.KandianNegativeWindow;
+import android.view.View;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
+import com.tencent.widget.KandianNegativeWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 class FeedItemCell$6
-  implements PopupWindow.OnDismissListener
+  implements KandianNegativeWindow.OnUninterestConfirmListener
 {
-  FeedItemCell$6(FeedItemCell paramFeedItemCell, KandianNegativeWindow paramKandianNegativeWindow) {}
+  FeedItemCell$6(FeedItemCell paramFeedItemCell) {}
   
-  public void onDismiss()
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow.a(1.0F);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.c())
+    if (this.a.c != null)
     {
-      VideoPlayManager localVideoPlayManager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.a();
-      if (localVideoPlayManager != null)
-      {
-        localVideoPlayManager.c();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell.a.b(false);
-      }
+      paramView = this.a;
+      FeedItemCell.a(paramView, paramView.c, paramInt, paramArrayList, paramObject);
+      return;
     }
+    paramView = this.a;
+    FeedItemCell.a(paramView, (IReadInJoyModel)paramView.b, paramInt, paramArrayList, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.6
  * JD-Core Version:    0.7.0.1
  */

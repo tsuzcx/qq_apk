@@ -24,15 +24,15 @@ import org.json.JSONObject;
 public class CmGameSubRscHandler
   implements ICmGameRscDownloadListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Map<String, CmGameSubRscHandler.SubpackTask> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap());
+  private long a;
+  private int b;
+  private Context c;
+  private Map<String, CmGameSubRscHandler.SubpackTask> d = Collections.synchronizedMap(new LinkedHashMap());
   
   public CmGameSubRscHandler(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b = paramInt;
+    this.d.clear();
     ThreadManager.excute(new CmGameSubRscHandler.1(this), 64, null, true);
   }
   
@@ -42,7 +42,7 @@ public class CmGameSubRscHandler
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(File.separator);
       localStringBuilder.append(paramString2);
       localStringBuilder.append(File.separator);
@@ -52,9 +52,9 @@ public class CmGameSubRscHandler
         return -1;
       }
       int i = (int)new JSONObject(FileUtils.readFileToString(paramString2)).optDouble("version");
-      paramString1 = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+      paramString1 = (CmGameSubRscHandler.SubpackTask)this.d.get(paramString1);
       if (paramString1 != null) {
-        paramString1.jdField_a_of_type_Int = i;
+        paramString1.c = i;
       }
       return i;
     }
@@ -69,7 +69,7 @@ public class CmGameSubRscHandler
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("/");
     localStringBuilder.append(a(paramString));
     return localStringBuilder.toString();
@@ -77,19 +77,19 @@ public class CmGameSubRscHandler
   
   public String a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+    if (this.d.size() == 0) {
       a();
     }
-    CmGameSubRscHandler.SubpackTask localSubpackTask = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    CmGameSubRscHandler.SubpackTask localSubpackTask = (CmGameSubRscHandler.SubpackTask)this.d.get(paramString);
     if (localSubpackTask == null) {
       return "";
     }
-    String str2 = localSubpackTask.jdField_b_of_type_JavaLangString;
+    String str2 = localSubpackTask.b;
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
       a();
-      str1 = localSubpackTask.jdField_b_of_type_JavaLangString;
+      str1 = localSubpackTask.b;
     }
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "name:", paramString, ",root:", str1 });
@@ -103,55 +103,55 @@ public class CmGameSubRscHandler
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 106
+    //   2: ldc 110
     //   4: iconst_1
-    //   5: ldc 154
-    //   7: invokestatic 158	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   10: new 52	java/lang/StringBuilder
+    //   5: ldc 156
+    //   7: invokestatic 160	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   10: new 55	java/lang/StringBuilder
     //   13: dup
     //   14: bipush 100
-    //   16: invokespecial 54	java/lang/StringBuilder:<init>	(I)V
+    //   16: invokespecial 57	java/lang/StringBuilder:<init>	(I)V
     //   19: astore_2
     //   20: aload_2
-    //   21: ldc 56
-    //   23: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: ldc 59
+    //   23: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: pop
     //   27: aload_2
     //   28: aload_0
-    //   29: getfield 30	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:jdField_a_of_type_Int	I
-    //   32: invokevirtual 63	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   29: getfield 33	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:b	I
+    //   32: invokevirtual 66	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_2
-    //   37: getstatic 69	java/io/File:separator	Ljava/lang/String;
-    //   40: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: getstatic 72	java/io/File:separator	Ljava/lang/String;
+    //   40: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aload_2
-    //   45: ldc 160
-    //   47: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: ldc 162
+    //   47: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
-    //   51: new 65	java/io/File
+    //   51: new 68	java/io/File
     //   54: dup
     //   55: aload_2
-    //   56: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
+    //   56: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
     //   62: astore_2
     //   63: aload_2
-    //   64: invokevirtual 82	java/io/File:exists	()Z
+    //   64: invokevirtual 85	java/io/File:exists	()Z
     //   67: ifne +14 -> 81
-    //   70: ldc 106
+    //   70: ldc 110
     //   72: iconst_1
-    //   73: ldc 162
-    //   75: invokestatic 165	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   73: ldc 164
+    //   75: invokestatic 167	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aload_0
     //   79: monitorexit
     //   80: return
-    //   81: new 84	org/json/JSONObject
+    //   81: new 87	org/json/JSONObject
     //   84: dup
     //   85: aload_2
-    //   86: invokestatic 90	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
-    //   89: invokespecial 91	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   92: ldc 167
-    //   94: invokevirtual 171	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   86: invokestatic 93	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
+    //   89: invokespecial 94	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   92: ldc 169
+    //   94: invokevirtual 173	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   97: astore 4
     //   99: aload 4
     //   101: ifnonnull +6 -> 107
@@ -162,70 +162,70 @@ public class CmGameSubRscHandler
     //   108: istore_1
     //   109: iload_1
     //   110: aload 4
-    //   112: invokevirtual 176	org/json/JSONArray:length	()I
+    //   112: invokevirtual 178	org/json/JSONArray:length	()I
     //   115: if_icmpge +96 -> 211
     //   118: aload 4
     //   120: iload_1
-    //   121: invokevirtual 180	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   121: invokevirtual 182	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
     //   124: astore_2
     //   125: aload_2
-    //   126: ldc 182
-    //   128: invokevirtual 185	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: ldc 184
+    //   128: invokevirtual 187	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   131: astore 5
     //   133: aload_2
-    //   134: ldc 187
-    //   136: invokevirtual 185	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   134: ldc 189
+    //   136: invokevirtual 187	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   139: astore 6
     //   141: aload_0
-    //   142: getfield 28	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   142: getfield 31	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:d	Ljava/util/Map;
     //   145: aload 5
-    //   147: invokeinterface 101 2 0
-    //   152: checkcast 103	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask
+    //   147: invokeinterface 104 2 0
+    //   152: checkcast 106	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask
     //   155: astore_3
     //   156: aload_3
     //   157: astore_2
     //   158: aload_3
     //   159: ifnonnull +11 -> 170
-    //   162: new 103	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask
+    //   162: new 106	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask
     //   165: dup
-    //   166: invokespecial 188	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:<init>	()V
+    //   166: invokespecial 190	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:<init>	()V
     //   169: astore_2
     //   170: aload_2
     //   171: aload 5
-    //   173: putfield 190	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   173: putfield 192	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:a	Ljava/lang/String;
     //   176: aload_2
     //   177: aload 6
-    //   179: putfield 135	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   179: putfield 138	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler$SubpackTask:b	Ljava/lang/String;
     //   182: aload_0
-    //   183: getfield 28	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   183: getfield 31	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:d	Ljava/util/Map;
     //   186: aload 5
     //   188: aload_2
-    //   189: invokeinterface 194 3 0
+    //   189: invokeinterface 196 3 0
     //   194: pop
     //   195: aload_0
     //   196: aload 5
     //   198: aload 6
-    //   200: invokespecial 196	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   200: invokespecial 198	com/tencent/mobileqq/apollo/game/process/download/CmGameSubRscHandler:a	(Ljava/lang/String;Ljava/lang/String;)I
     //   203: pop
     //   204: iload_1
     //   205: iconst_1
     //   206: iadd
     //   207: istore_1
     //   208: goto -99 -> 109
-    //   211: ldc 106
+    //   211: ldc 110
     //   213: iconst_1
-    //   214: ldc 198
-    //   216: invokestatic 158	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: ldc 200
+    //   216: invokestatic 160	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   219: goto +19 -> 238
     //   222: astore_2
     //   223: goto +18 -> 241
     //   226: astore_2
-    //   227: ldc 106
+    //   227: ldc 110
     //   229: iconst_1
     //   230: aload_2
     //   231: iconst_0
     //   232: anewarray 4	java/lang/Object
-    //   235: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   235: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   238: aload_0
     //   239: monitorexit
     //   240: return
@@ -270,7 +270,7 @@ public class CmGameSubRscHandler
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("packName", paramString);
       localJSONObject.put("percentage", paramInt1);
-      ApolloCmdChannel.getInstance().callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.load_percentage_nofity.local", localJSONObject.toString());
+      ApolloCmdChannel.getInstance().callbackFromRequest(this.a, 0, "sc.load_percentage_nofity.local", localJSONObject.toString());
       return;
     }
     catch (Throwable paramString)
@@ -279,22 +279,12 @@ public class CmGameSubRscHandler
     }
   }
   
-  public void a(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[onStartDownload], gameId:");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(",packN:");
-    localStringBuilder.append(paramString);
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, localStringBuilder.toString());
-  }
-  
   public void a(long paramLong, String paramString)
   {
     try
     {
-      this.jdField_a_of_type_Long = paramLong;
-      CmGameSSoHandler localCmGameSSoHandler = CmGameUtil.a();
+      this.a = paramLong;
+      CmGameSSoHandler localCmGameSSoHandler = CmGameUtil.d();
       if (localCmGameSSoHandler == null)
       {
         paramString = new StringBuilder();
@@ -306,44 +296,44 @@ public class CmGameSubRscHandler
       String str = new JSONObject(paramString).optString("packName");
       if (TextUtils.isEmpty(str))
       {
-        c(-10003, "");
+        d(-10003, "");
         return;
       }
       CmGameResUpdateInfo localCmGameResUpdateInfo = new CmGameResUpdateInfo();
-      localCmGameResUpdateInfo.jdField_a_of_type_Int = 10001;
+      localCmGameResUpdateInfo.a = 10001;
       paramString = new StringBuilder();
-      paramString.append(this.jdField_a_of_type_Int);
+      paramString.append(this.b);
       paramString.append("_");
       paramString.append(str);
-      localCmGameResUpdateInfo.jdField_a_of_type_JavaLangString = paramString.toString();
-      paramString = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(str);
+      localCmGameResUpdateInfo.b = paramString.toString();
+      paramString = (CmGameSubRscHandler.SubpackTask)this.d.get(str);
       if (paramString != null)
       {
-        if ((paramString.jdField_a_of_type_ComTencentMobileqqApolloGameProcessDownloadCmGameRscDownloader != null) && (paramString.jdField_a_of_type_ComTencentMobileqqApolloGameProcessDownloadCmGameRscDownloader.a() == 1))
+        if ((paramString.e != null) && (paramString.e.a() == 1))
         {
-          c(-1004, str);
+          d(-1004, str);
           return;
         }
-        localCmGameResUpdateInfo.jdField_b_of_type_Int = paramString.jdField_a_of_type_Int;
-        paramString.jdField_a_of_type_JavaLangString = str;
+        localCmGameResUpdateInfo.c = paramString.c;
+        paramString.a = str;
       }
       else
       {
         paramString = new CmGameSubRscHandler.SubpackTask();
-        paramString.jdField_a_of_type_JavaLangString = str;
-        localCmGameResUpdateInfo.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+        paramString.a = str;
+        localCmGameResUpdateInfo.c = 0;
+        this.d.put(str, paramString);
       }
-      if (paramString.jdField_a_of_type_Boolean)
+      if (paramString.d)
       {
         paramString = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("apollo_sp_game_rsc_verify_");
-        localStringBuilder.append(localCmGameResUpdateInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(localCmGameResUpdateInfo.b);
         if (!paramString.getBoolean(localStringBuilder.toString(), false))
         {
           QLog.i("cmgame_process.CmGameSubRscHandler", 1, "each pack requst only once in game.");
-          b(this.jdField_a_of_type_Int, str);
+          c(this.b, str);
           return;
         }
       }
@@ -351,11 +341,11 @@ public class CmGameSubRscHandler
       paramString.append("[cmgame_pack_sub], request, packname:");
       paramString.append(str);
       paramString.append(",ver:");
-      paramString.append(localCmGameResUpdateInfo.jdField_b_of_type_Int);
+      paramString.append(localCmGameResUpdateInfo.c);
       QLog.i("cmgame_process.CmGameSubRscHandler", 1, paramString.toString());
       paramString = new ArrayList();
       paramString.add(localCmGameResUpdateInfo);
-      localCmGameSSoHandler.a(this.jdField_a_of_type_Int, str, paramString);
+      localCmGameSSoHandler.a(this.b, str, paramString);
       return;
     }
     catch (Throwable paramString)
@@ -366,16 +356,16 @@ public class CmGameSubRscHandler
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
   public void a(CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, long paramLong)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) && (paramICmGameConfirmListener != null))
+    if ((this.c == null) && (paramICmGameConfirmListener != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onDownloadConfirm], ctx:");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext);
+      localStringBuilder.append(this.c);
       QLog.w("cmgame_process.CmGameSubRscHandler", 1, localStringBuilder.toString());
       paramICmGameConfirmListener.a(null);
       return;
@@ -386,38 +376,31 @@ public class CmGameSubRscHandler
   public void a(CmGameRscSvrInfo paramCmGameRscSvrInfo)
   {
     CmGameRscDownloader localCmGameRscDownloader = new CmGameRscDownloader(paramCmGameRscSvrInfo, this);
-    Object localObject = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(paramCmGameRscSvrInfo.jdField_b_of_type_JavaLangString);
+    Object localObject = (CmGameSubRscHandler.SubpackTask)this.d.get(paramCmGameRscSvrInfo.i);
     if (localObject != null) {
-      ((CmGameSubRscHandler.SubpackTask)localObject).jdField_a_of_type_ComTencentMobileqqApolloGameProcessDownloadCmGameRscDownloader = localCmGameRscDownloader;
+      ((CmGameSubRscHandler.SubpackTask)localObject).e = localCmGameRscDownloader;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[cmgame_pack_sub], response, isUpdate:");
-    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.a);
     ((StringBuilder)localObject).append(",svrVer:");
-    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.c);
     ((StringBuilder)localObject).append(",isPatch:");
-    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append(paramCmGameRscSvrInfo.b);
     QLog.i("cmgame_process.CmGameSubRscHandler", 1, ((StringBuilder)localObject).toString());
-    if (!localCmGameRscDownloader.a()) {
-      b(paramCmGameRscSvrInfo.jdField_b_of_type_Int, paramCmGameRscSvrInfo.jdField_b_of_type_JavaLangString);
+    if (!localCmGameRscDownloader.b()) {
+      c(paramCmGameRscSvrInfo.g, paramCmGameRscSvrInfo.i);
     }
   }
   
   public void b(int paramInt, String paramString)
   {
-    c(0, paramString);
-    Object localObject = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject != null)
-    {
-      ((CmGameSubRscHandler.SubpackTask)localObject).jdField_a_of_type_Boolean = true;
-      paramInt = a(paramString, ((CmGameSubRscHandler.SubpackTask)localObject).jdField_b_of_type_JavaLangString);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[onDownloadSuccess], newV:");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(",packName:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, ((StringBuilder)localObject).toString());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onStartDownload], gameId:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",packN:");
+    localStringBuilder.append(paramString);
+    QLog.i("cmgame_process.CmGameSubRscHandler", 1, localStringBuilder.toString());
   }
   
   public void b(long paramLong, String paramString)
@@ -428,14 +411,14 @@ public class CmGameSubRscHandler
         QLog.d("cmgame_process.CmGameSubRscHandler", 2, "[verifyRsc]");
       }
       paramString = new JSONObject(paramString).optString("packName");
-      Object localObject = (CmGameSubRscHandler.SubpackTask)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Object localObject = (CmGameSubRscHandler.SubpackTask)this.d.get(paramString);
       if (localObject == null) {
         return;
       }
-      if (TextUtils.isEmpty(((CmGameSubRscHandler.SubpackTask)localObject).jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((CmGameSubRscHandler.SubpackTask)localObject).b)) {
         a();
       }
-      localObject = new ApolloGameRscVerify(this.jdField_a_of_type_Int, 1, paramString, ((CmGameSubRscHandler.SubpackTask)localObject).jdField_b_of_type_JavaLangString);
+      localObject = new ApolloGameRscVerify(this.b, 1, paramString, ((CmGameSubRscHandler.SubpackTask)localObject).b);
       ((ApolloGameRscVerify)localObject).a(new CmGameSubRscHandler.3(this, paramString));
       ((ApolloGameRscVerify)localObject).a();
       return;
@@ -448,6 +431,23 @@ public class CmGameSubRscHandler
   
   public void c(int paramInt, String paramString)
   {
+    d(0, paramString);
+    Object localObject = (CmGameSubRscHandler.SubpackTask)this.d.get(paramString);
+    if (localObject != null)
+    {
+      ((CmGameSubRscHandler.SubpackTask)localObject).d = true;
+      paramInt = a(paramString, ((CmGameSubRscHandler.SubpackTask)localObject).b);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onDownloadSuccess], newV:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",packName:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("cmgame_process.CmGameSubRscHandler", 1, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void d(int paramInt, String paramString)
+  {
     try
     {
       Object localObject = new StringBuilder();
@@ -459,7 +459,7 @@ public class CmGameSubRscHandler
       localObject = new JSONObject();
       ((JSONObject)localObject).put("packName", paramString);
       ((JSONObject)localObject).put("result", paramInt);
-      ApolloCmdChannel.getInstance().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.load_subpackage.local", ((JSONObject)localObject).toString());
+      ApolloCmdChannel.getInstance().callbackFromRequest(this.a, 0, "cs.load_subpackage.local", ((JSONObject)localObject).toString());
       return;
     }
     catch (Throwable paramString)
@@ -470,7 +470,7 @@ public class CmGameSubRscHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.download.CmGameSubRscHandler
  * JD-Core Version:    0.7.0.1
  */

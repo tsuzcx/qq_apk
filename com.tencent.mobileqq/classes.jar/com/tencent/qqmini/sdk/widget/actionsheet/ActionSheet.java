@@ -132,7 +132,7 @@ public class ActionSheet
     this.mInflater = LayoutInflater.from(paramContext);
     this.mResources = paramContext.getResources();
     this.mHandler = new Handler(Looper.getMainLooper());
-    if ((paramBoolean3) && (DisplayUtil.isImmersiveSupported)) {
+    if ((paramBoolean3) && (DisplayUtil.IS_IMMERSIVE_SUPPORTED)) {
       getWindow().addFlags(67108864);
     }
     if (paramBoolean2)
@@ -1062,7 +1062,7 @@ public class ActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.actionsheet.ActionSheet
  * JD-Core Version:    0.7.0.1
  */

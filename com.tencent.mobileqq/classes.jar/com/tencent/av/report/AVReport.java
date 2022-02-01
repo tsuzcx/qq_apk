@@ -15,51 +15,51 @@ public class AVReport
   public long G;
   public long H;
   public long I;
-  public long J;
-  public long K;
+  public boolean J;
+  public boolean K;
   public long L;
-  public long M;
+  public boolean M;
   public long N;
-  public long O;
+  public boolean O;
   public long P;
-  public long Q;
+  public boolean Q;
   public long R;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
+  public boolean S;
+  public long T;
+  public boolean U;
+  public long V;
+  public boolean W;
+  public long X;
+  public boolean Y;
+  public long Z;
+  public boolean aa;
+  public long ab;
+  public boolean ac;
+  public long ad;
+  public boolean ae;
+  public long af;
+  public boolean ag;
+  public long ah;
+  public String ai = "";
+  public boolean aj;
+  public String ak = "";
+  public boolean al;
+  public long am;
   public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
+  public int c;
   public boolean d;
   public long e;
-  public boolean e;
   public long f;
-  public boolean f;
   public long g;
-  public boolean g;
   public long h;
-  public boolean h;
   public long i;
-  public boolean i;
   public long j;
-  public boolean j;
   public long k;
-  public boolean k;
   public long l;
-  public boolean l;
   public long m;
-  public boolean m;
   public long n;
-  public boolean n;
   public long o;
-  public boolean o;
   public long p;
-  public boolean p;
   public long q;
   public long r;
   public long s;
@@ -71,46 +71,54 @@ public class AVReport
   public long y;
   public long z;
   
-  private AVReport()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
   public static AVReport a()
   {
-    if (jdField_a_of_type_ComTencentAvReportAVReport == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvReportAVReport == null) {
-          jdField_a_of_type_ComTencentAvReportAVReport = new AVReport();
+        if (a == null) {
+          a = new AVReport();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvReportAVReport;
+    return a;
   }
   
-  public void a()
+  public void a(Intent paramIntent, String paramString)
   {
-    this.jdField_p_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_i_of_type_Long = 0L;
-    this.jdField_j_of_type_Long = 0L;
-    this.jdField_k_of_type_Long = 0L;
-    this.jdField_l_of_type_Long = 0L;
-    this.jdField_m_of_type_Long = 0L;
-    this.jdField_n_of_type_Long = 0L;
-    this.jdField_o_of_type_Long = 0L;
-    this.jdField_p_of_type_Long = 0L;
+    this.ai = paramString;
+    if (paramIntent != null)
+    {
+      this.l = SystemClock.elapsedRealtime();
+      this.d = paramIntent.getBooleanExtra("isSender", false);
+      if (this.d)
+      {
+        this.l = SystemClock.elapsedRealtime();
+        this.m = 0L;
+        this.e = paramIntent.getLongExtra("senderStartTime", 0L);
+        return;
+      }
+      this.A = SystemClock.elapsedRealtime();
+    }
+  }
+  
+  public void b()
+  {
+    this.al = false;
+    this.d = false;
+    this.e = 0L;
+    this.f = 0L;
+    this.g = 0L;
+    this.h = 0L;
+    this.i = 0L;
+    this.j = 0L;
+    this.k = 0L;
+    this.l = 0L;
+    this.m = 0L;
+    this.n = 0L;
+    this.o = 0L;
+    this.p = 0L;
     this.q = 0L;
     this.r = 0L;
     this.s = 0L;
@@ -126,50 +134,36 @@ public class AVReport
     this.C = 0L;
     this.D = 0L;
     this.E = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_o_of_type_Boolean = false;
     this.F = 0L;
-    this.jdField_d_of_type_Boolean = false;
     this.G = 0L;
-    this.jdField_e_of_type_Boolean = false;
     this.H = 0L;
-    this.jdField_f_of_type_Boolean = false;
     this.I = 0L;
-    this.jdField_g_of_type_Boolean = false;
-    this.J = 0L;
-    this.jdField_h_of_type_Boolean = false;
-    this.K = 0L;
-    this.jdField_i_of_type_Boolean = false;
+    this.J = false;
+    this.K = false;
+    this.aj = false;
     this.L = 0L;
-    this.jdField_j_of_type_Boolean = false;
-    this.M = 0L;
-    this.jdField_k_of_type_Boolean = false;
+    this.M = false;
     this.N = 0L;
-    this.jdField_l_of_type_Boolean = false;
-    this.O = 0L;
-    this.jdField_m_of_type_Boolean = false;
+    this.O = false;
     this.P = 0L;
-    this.jdField_n_of_type_Boolean = false;
-    this.Q = 0L;
-  }
-  
-  public void a(Intent paramIntent, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramIntent != null)
-    {
-      this.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isSender", false);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
-        this.jdField_i_of_type_Long = 0L;
-        this.jdField_a_of_type_Long = paramIntent.getLongExtra("senderStartTime", 0L);
-        return;
-      }
-      this.w = SystemClock.elapsedRealtime();
-    }
+    this.Q = false;
+    this.R = 0L;
+    this.S = false;
+    this.T = 0L;
+    this.U = false;
+    this.V = 0L;
+    this.W = false;
+    this.X = 0L;
+    this.Y = false;
+    this.Z = 0L;
+    this.aa = false;
+    this.ab = 0L;
+    this.ac = false;
+    this.ad = 0L;
+    this.ae = false;
+    this.af = 0L;
+    this.ag = false;
+    this.ah = 0L;
   }
 }
 

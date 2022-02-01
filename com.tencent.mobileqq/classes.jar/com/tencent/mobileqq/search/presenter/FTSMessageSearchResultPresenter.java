@@ -24,12 +24,12 @@ public class FTSMessageSearchResultPresenter
     {
       paramISearchResultModel = (FTSEntitySearchResultModel)paramISearchResultModel;
       Object localObject = (FTSMessageSearchResultView)paramISearchResultView;
-      TextView localTextView = ((FTSMessageSearchResultView)localObject).e();
-      paramISearchResultView = ((FTSMessageSearchResultView)localObject).f();
-      localObject = ((FTSMessageSearchResultView)localObject).g();
+      TextView localTextView = ((FTSMessageSearchResultView)localObject).j();
+      paramISearchResultView = ((FTSMessageSearchResultView)localObject).k();
+      localObject = ((FTSMessageSearchResultView)localObject).l();
       if (localTextView != null)
       {
-        CharSequence localCharSequence = paramISearchResultModel.e();
+        CharSequence localCharSequence = paramISearchResultModel.i();
         if (localCharSequence == null)
         {
           localTextView.setText("");
@@ -47,7 +47,7 @@ public class FTSMessageSearchResultPresenter
       }
       if (paramISearchResultView != null)
       {
-        paramISearchResultModel = paramISearchResultModel.f();
+        paramISearchResultModel = paramISearchResultModel.j();
         if (paramISearchResultModel == null)
         {
           paramISearchResultView.setText("");
@@ -59,10 +59,10 @@ public class FTSMessageSearchResultPresenter
     else if ((paramISearchResultModel instanceof FTSEntitySearchResultDetailModel))
     {
       paramISearchResultModel = (FTSEntitySearchResultDetailModel)paramISearchResultModel;
-      paramISearchResultView = ((FTSMessageSearchResultView)paramISearchResultView).h();
+      paramISearchResultView = ((FTSMessageSearchResultView)paramISearchResultView).m();
       if (paramISearchResultView != null)
       {
-        paramISearchResultModel = paramISearchResultModel.e();
+        paramISearchResultModel = paramISearchResultModel.i();
         if (paramISearchResultModel == null)
         {
           paramISearchResultView.setText("");
@@ -75,7 +75,7 @@ public class FTSMessageSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

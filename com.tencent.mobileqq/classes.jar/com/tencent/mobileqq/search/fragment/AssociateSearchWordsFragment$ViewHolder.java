@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 public class AssociateSearchWordsFragment$ViewHolder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
   TextView b;
   TextView c;
   
@@ -12,7 +12,7 @@ public class AssociateSearchWordsFragment$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

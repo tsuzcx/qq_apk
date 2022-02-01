@@ -14,7 +14,7 @@ class PTSEngineLoader$3
     PTSEngineLoader.3.1 local1 = new PTSEngineLoader.3.1(this);
     try
     {
-      HtmlOffline.a();
+      HtmlOffline.b();
     }
     catch (Throwable localThrowable2)
     {
@@ -39,7 +39,7 @@ class PTSEngineLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSEngineLoader.3
  * JD-Core Version:    0.7.0.1
  */

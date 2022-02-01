@@ -52,8 +52,8 @@ public class CommentBiuProteusItem
       }
       paramView.setAlpha(1.0F);
       QLog.d("CommentBiuProteusItem", 2, "bindView | start CommentBiu Header Anim");
-      Animation localAnimation1 = AnimationUtils.loadAnimation(paramActivity, 2130772353);
-      Animation localAnimation2 = AnimationUtils.loadAnimation(paramActivity, 2130772354);
+      Animation localAnimation1 = AnimationUtils.loadAnimation(paramActivity, 2130772445);
+      Animation localAnimation2 = AnimationUtils.loadAnimation(paramActivity, 2130772446);
       localAnimation1.setFillAfter(true);
       localAnimation1.setAnimationListener(new CommentBiuProteusItem.1(this, paramView, localAnimation2));
       localAnimation2.setAnimationListener(new CommentBiuProteusItem.2(this, paramView, paramBoolean, paramActivity, paramAbsBaseArticleInfo));
@@ -106,14 +106,14 @@ public class CommentBiuProteusItem
   
   private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject, MobileQQ paramMobileQQ)
   {
-    if (RIJFeedsType.P(paramAbsBaseArticleInfo)) {
+    if (RIJFeedsType.X(paramAbsBaseArticleInfo)) {
       b(paramAbsBaseArticleInfo, paramJSONObject, paramMobileQQ);
     } else {
       c(paramAbsBaseArticleInfo, paramJSONObject, paramMobileQQ);
     }
     paramMobileQQ = new StringBuilder();
     paramMobileQQ.append("getVideoDataJson | isSmallVideoType ");
-    paramMobileQQ.append(RIJFeedsType.P(paramAbsBaseArticleInfo));
+    paramMobileQQ.append(RIJFeedsType.X(paramAbsBaseArticleInfo));
     paramMobileQQ.append(" ; ");
     paramMobileQQ.append(paramJSONObject.toString());
     QLog.d("CommentBiuProteusItem", 2, paramMobileQQ.toString());
@@ -135,9 +135,9 @@ public class CommentBiuProteusItem
           paramJSONObject.put("comment_small_video_duration", ReadInJoyDisplayUtils.a(paramAbsBaseArticleInfo.mVideoDuration));
           paramJSONObject.put("small_video_title", paramAbsBaseArticleInfo.mTitle);
           paramJSONObject.put("comment_small_original_label", "原视频");
-          if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$ColumnTopicInfo != null))
+          if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.M != null))
           {
-            localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$ColumnTopicInfo.str_title.get();
+            localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.M.str_title.get();
           }
           else
           {
@@ -149,8 +149,8 @@ public class CommentBiuProteusItem
               {
                 VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)paramAbsBaseArticleInfo.columnEntrances.get(0);
                 localObject1 = localObject2;
-                if (localVideoColumnInfo.a != 0) {
-                  localObject1 = localVideoColumnInfo.b;
+                if (localVideoColumnInfo.b != 0) {
+                  localObject1 = localVideoColumnInfo.c;
                 }
               }
             }
@@ -159,7 +159,7 @@ public class CommentBiuProteusItem
           {
             paramJSONObject.put("column_title", localObject1);
             if (paramMobileQQ != null) {
-              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131717792));
+              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131915267));
             }
             paramJSONObject.put("column_title_icon", "column_icon.png");
           }
@@ -202,9 +202,9 @@ public class CommentBiuProteusItem
           paramJSONObject.put("comment_big_video_duration", ReadInJoyDisplayUtils.a(paramAbsBaseArticleInfo.mVideoDuration));
           paramJSONObject.put("big_video_title", paramAbsBaseArticleInfo.mTitle);
           paramJSONObject.put("comment_big_original_label", "原视频");
-          if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$ColumnTopicInfo != null))
+          if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.M != null))
           {
-            localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$ColumnTopicInfo.str_title.get();
+            localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.M.str_title.get();
           }
           else
           {
@@ -216,8 +216,8 @@ public class CommentBiuProteusItem
               {
                 VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)paramAbsBaseArticleInfo.columnEntrances.get(0);
                 localObject1 = localObject2;
-                if (localVideoColumnInfo.a != 0) {
-                  localObject1 = localVideoColumnInfo.b;
+                if (localVideoColumnInfo.b != 0) {
+                  localObject1 = localVideoColumnInfo.c;
                 }
               }
             }
@@ -226,7 +226,7 @@ public class CommentBiuProteusItem
           {
             paramJSONObject.put("column_title", localObject1);
             if (paramMobileQQ != null) {
-              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131717792));
+              paramJSONObject.put("column_name_text", paramMobileQQ.getString(2131915267));
             }
             paramJSONObject.put("column_title_icon", "column_icon.png");
           }
@@ -259,18 +259,18 @@ public class CommentBiuProteusItem
     try
     {
       int i;
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a != null))
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.a != null))
       {
-        i = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size();
+        i = paramAbsBaseArticleInfo.mSocialFeedInfo.t.a.size();
       }
       else
       {
         i = j;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
         {
           i = j;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a != null) {
-            i = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a.size();
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.s.b != null) {
+            i = paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.size();
           }
         }
       }
@@ -278,7 +278,7 @@ public class CommentBiuProteusItem
       {
         paramAbsBaseArticleInfo = new StringBuilder();
         paramAbsBaseArticleInfo.append(i);
-        paramAbsBaseArticleInfo.append(paramMobileQQ.getString(2131717811));
+        paramAbsBaseArticleInfo.append(paramMobileQQ.getString(2131915286));
         paramJSONObject.put("count_text", paramAbsBaseArticleInfo.toString());
       }
       paramAbsBaseArticleInfo = new StringBuilder();
@@ -306,7 +306,7 @@ public class CommentBiuProteusItem
     Object localObject2 = new JSONObject();
     if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null))
     {
-      Object localObject3 = ReadInJoyUtils.a();
+      Object localObject3 = ReadInJoyUtils.b();
       Object localObject1 = null;
       if (localObject3 != null) {
         localObject1 = ((AppRuntime)localObject3).getApplication();
@@ -317,23 +317,23 @@ public class CommentBiuProteusItem
       if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
       {
         l1 = l2;
-        if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null) {
-          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a;
+        if (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null) {
+          l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
         }
       }
-      ((ProteusItemDataBuilder)localObject3).v(paramAbsBaseArticleInfo).a("RIJ_biucomment_with_social_header").n(paramAbsBaseArticleInfo).f(paramAbsBaseArticleInfo).g(paramAbsBaseArticleInfo).i(paramAbsBaseArticleInfo).b(paramAbsBaseArticleInfo).h(paramAbsBaseArticleInfo).k(paramAbsBaseArticleInfo).C(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).w(paramAbsBaseArticleInfo).u(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, l1).a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131717793));
+      ((ProteusItemDataBuilder)localObject3).v(paramAbsBaseArticleInfo).a("RIJ_biucomment_with_social_header").n(paramAbsBaseArticleInfo).f(paramAbsBaseArticleInfo).g(paramAbsBaseArticleInfo).i(paramAbsBaseArticleInfo).b(paramAbsBaseArticleInfo).h(paramAbsBaseArticleInfo).k(paramAbsBaseArticleInfo).C(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).w(paramAbsBaseArticleInfo).u(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, l1).a(paramAbsBaseArticleInfo, HardCodeUtil.a(2131915268));
       Util.a(paramAbsBaseArticleInfo, (JSONObject)localObject2);
-      Util.x(paramAbsBaseArticleInfo, (JSONObject)localObject2);
+      Util.y(paramAbsBaseArticleInfo, (JSONObject)localObject2);
       ((ProteusItemDataBuilder)localObject3).j(paramAbsBaseArticleInfo);
-      if ((!paramAbsBaseArticleInfo.isPGCShortContent()) && (!RIJFeedsType.O(paramAbsBaseArticleInfo)))
+      if ((!paramAbsBaseArticleInfo.isPGCShortContent()) && (!RIJFeedsType.W(paramAbsBaseArticleInfo)))
       {
-        if (RIJFeedsType.Q(paramAbsBaseArticleInfo))
+        if (RIJFeedsType.Y(paramAbsBaseArticleInfo))
         {
           localObject2 = ((ProteusItemDataBuilder)localObject3).o(paramAbsBaseArticleInfo).a();
           a(paramAbsBaseArticleInfo, (JSONObject)localObject2, (MobileQQ)localObject1);
           return localObject2;
         }
-        if (RIJFeedsType.N(paramAbsBaseArticleInfo))
+        if (RIJFeedsType.V(paramAbsBaseArticleInfo))
         {
           localObject1 = ((ProteusItemDataBuilder)localObject3).a();
           a(paramAbsBaseArticleInfo, (JSONObject)localObject1);
@@ -360,8 +360,8 @@ public class CommentBiuProteusItem
     {
       ViewBase localViewBase = paramContainer.getVirtualView();
       Object localObject = (ImageBase)localViewBase.findViewBaseByName("id_background_imageView");
-      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (paramIReadInJoyModel.a().showBreathAnimation) && (paramIReadInJoyModel.a() != null) && (paramIReadInJoyModel.a().getCurActivity() != null)) {
-        a(((ImageBase)localObject).getNativeView(), paramIReadInJoyModel.a().getCurActivity(), paramIReadInJoyModel.a(), true);
+      if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (paramIReadInJoyModel.k().showBreathAnimation) && (paramIReadInJoyModel.t() != null) && (paramIReadInJoyModel.t().getCurActivity() != null)) {
+        a(((ImageBase)localObject).getNativeView(), paramIReadInJoyModel.t().getCurActivity(), paramIReadInJoyModel.k(), true);
       }
       localObject = (ArticleCommentView)localViewBase.findViewBaseByName("id_biu_comment");
       if ((localObject != null) && (paramIReadInJoyModel != null)) {
@@ -369,17 +369,17 @@ public class CommentBiuProteusItem
       }
       BindViewHelper.f(localViewBase, paramIReadInJoyModel);
       if (paramIReadInJoyModel != null) {
-        BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+        BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
       }
       BindViewHelper.a(localViewBase, paramIReadInJoyModel);
       Util.a(localViewBase, paramIReadInJoyModel);
       a(paramContainer, paramIReadInJoyModel);
       if (paramIReadInJoyModel != null)
       {
-        paramContainer = paramIReadInJoyModel.a();
-        if ((paramContainer != null) && (!paramContainer.isPGCShortContent()) && (!RIJFeedsType.Q(paramContainer)))
+        paramContainer = paramIReadInJoyModel.k();
+        if ((paramContainer != null) && (!paramContainer.isPGCShortContent()) && (!RIJFeedsType.Y(paramContainer)))
         {
-          RIJFeedsType.O(paramContainer);
+          RIJFeedsType.W(paramContainer);
           return;
         }
       }
@@ -396,10 +396,10 @@ public class CommentBiuProteusItem
   public void a(IReadInJoyModel paramIReadInJoyModel, Container paramContainer)
   {
     QLog.d("CommentBiuProteusItem", 1, "middlewrapper click");
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null) && (paramContainer != null) && (paramIReadInJoyModel.a() != null))
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.k() != null) && (paramContainer != null) && (paramIReadInJoyModel.u() != null))
     {
-      RIJJumpUtils.b(paramIReadInJoyModel.a().a(), paramIReadInJoyModel.a());
-      RIJJumpUtils.a(paramIReadInJoyModel.a().a(), paramIReadInJoyModel.a(), (ReadInJoyBaseAdapter)paramIReadInJoyModel.a(), paramIReadInJoyModel.c());
+      RIJJumpUtils.b(paramIReadInJoyModel.u().a(), paramIReadInJoyModel.k());
+      RIJJumpUtils.a(paramIReadInJoyModel.u().a(), paramIReadInJoyModel.k(), (ReadInJoyBaseAdapter)paramIReadInJoyModel.u(), paramIReadInJoyModel.m());
     }
   }
   
@@ -410,7 +410,7 @@ public class CommentBiuProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.CommentBiuProteusItem
  * JD-Core Version:    0.7.0.1
  */

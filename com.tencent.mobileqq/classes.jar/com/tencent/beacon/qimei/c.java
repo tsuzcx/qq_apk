@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.beacon.a.c.f;
 import com.tencent.beacon.base.net.RequestType;
 import com.tencent.beacon.base.net.a.i;
 import com.tencent.beacon.base.net.a.k;
@@ -55,13 +56,16 @@ public final class c
   
   public void a(String paramString)
   {
-    Qimei localQimei = a.a().b();
-    HashMap localHashMap = f.a(paramString);
-    paramString = localQimei;
+    Object localObject = a.a().b();
+    HashMap localHashMap = e.a(paramString);
+    paramString = (String)localObject;
     if (localHashMap != null)
     {
       paramString = new Qimei((String)localHashMap.get("A3"), (String)localHashMap.get("A153"), localHashMap);
-      f.b(this.a, paramString.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[qimei] showQimei: ");
+      ((StringBuilder)localObject).append(paramString.toString());
+      com.tencent.beacon.base.util.c.a(((StringBuilder)localObject).toString(), new Object[0]);
     }
     a.a().a(paramString);
     a(localHashMap);
@@ -79,8 +83,8 @@ public final class c
     {
       com.tencent.beacon.base.util.c.a("[Qimei]", 3, "dispatch qimei to listener and save qimei!", new Object[0]);
       a(paramArrayOfByte);
-      f.a(this.a, paramArrayOfByte);
-      f.a(System.currentTimeMillis());
+      e.a(this.a, paramArrayOfByte);
+      e.a(System.currentTimeMillis());
       d();
     }
   }
@@ -104,7 +108,7 @@ public final class c
       return;
     }
     Object localObject = QimeiSDK.getInstance();
-    localObject = k.a().a(RequestType.QIMEI).a(com.tencent.beacon.base.net.c.b.b(true), 8081).b(com.tencent.beacon.base.net.c.b.b(false)).a(((QimeiSDK)localObject).getAppKey()).a(102).b(103).a(a.a().c()).b("A141", ((QimeiSDK)localObject).getBeaconIdInfo()).b("A142", String.valueOf(((QimeiSDK)localObject).getContext().getApplicationInfo().targetSdkVersion)).b("A143", ((QimeiSDK)localObject).getOmgID()).b("A144", com.tencent.beacon.a.c.f.p().y()).b("A23", com.tencent.beacon.a.c.c.d().a()).a();
+    localObject = k.a().a(RequestType.QIMEI).a(com.tencent.beacon.base.net.c.b.b(true), 8081).b(com.tencent.beacon.base.net.c.b.b(false)).a(((QimeiSDK)localObject).getAppKey()).a(102).b(103).a(a.a().c()).b("A141", ((QimeiSDK)localObject).getBeaconIdInfo()).b("A142", String.valueOf(((QimeiSDK)localObject).getContext().getApplicationInfo().targetSdkVersion)).b("A143", ((QimeiSDK)localObject).getOmgID()).b("A144", f.p().y()).b("A23", com.tencent.beacon.a.c.c.d().a()).a();
     com.tencent.beacon.base.net.d.c().a((k)localObject).a(this);
     com.tencent.beacon.base.util.c.a("[Qimei]", 0, "QimeiQueryTask start. RequestEntity: %s", new Object[] { ((k)localObject).toString() });
   }

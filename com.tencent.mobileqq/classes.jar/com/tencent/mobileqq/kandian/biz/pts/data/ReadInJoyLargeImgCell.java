@@ -31,19 +31,19 @@ public class ReadInJoyLargeImgCell
     {
       Util.f(paramAbsBaseArticleInfo, localJSONObject1);
     }
-    Util.n(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject1);
     Util.g(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.i(paramAbsBaseArticleInfo, localJSONObject1);
-    Util.ab(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.j(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.ac(paramAbsBaseArticleInfo, localJSONObject1);
     localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
     Util.a(localJSONObject1, paramAbsBaseArticleInfo);
-    Util.ae(paramAbsBaseArticleInfo, localJSONObject1);
+    Util.af(paramAbsBaseArticleInfo, localJSONObject1);
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoyLargeImgCell
  * JD-Core Version:    0.7.0.1
  */

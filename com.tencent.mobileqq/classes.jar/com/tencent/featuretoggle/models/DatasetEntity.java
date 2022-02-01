@@ -14,11 +14,15 @@ public final class DatasetEntity
 {
   public static final String DATA = "data";
   public static final String DATASETID = "datasetId";
+  public static final String TYPE = "type";
+  public static final String VALUE = "value";
   public static final String VERSIONID = "versionId";
   public static final String WEIGHT = "weight";
   static Map<String, String> cache_data = new HashMap();
   public Map<String, String> data = null;
   public int datasetId = 0;
+  public String type = "";
+  public String value = "";
   public int versionId = 0;
   public int weight = 0;
   
@@ -29,12 +33,14 @@ public final class DatasetEntity
   
   public DatasetEntity() {}
   
-  public DatasetEntity(int paramInt1, int paramInt2, Map<String, String> paramMap, int paramInt3)
+  public DatasetEntity(int paramInt1, int paramInt2, Map<String, String> paramMap, int paramInt3, String paramString1, String paramString2)
   {
     this.datasetId = paramInt1;
     this.versionId = paramInt2;
     this.data = paramMap;
     this.weight = paramInt3;
+    this.type = paramString1;
+    this.value = paramString2;
   }
   
   public String className()
@@ -64,6 +70,8 @@ public final class DatasetEntity
     paramStringBuilder.display(this.versionId, "versionId");
     paramStringBuilder.display(this.data, "data");
     paramStringBuilder.display(this.weight, "weight");
+    paramStringBuilder.display(this.type, "type");
+    paramStringBuilder.display(this.value, "value");
   }
   
   public void displaySimple(StringBuilder paramStringBuilder, int paramInt)
@@ -73,6 +81,8 @@ public final class DatasetEntity
     paramStringBuilder.displaySimple(this.versionId, true);
     paramStringBuilder.displaySimple(this.data, true);
     paramStringBuilder.displaySimple(this.weight, false);
+    paramStringBuilder.displaySimple(this.type, true);
+    paramStringBuilder.displaySimple(this.value, false);
   }
   
   public boolean equals(Object paramObject)
@@ -92,8 +102,16 @@ public final class DatasetEntity
         if (JceUtil.equals(this.data, paramObject.data))
         {
           bool1 = bool2;
-          if (JceUtil.equals(this.weight, paramObject.weight)) {
-            bool1 = true;
+          if (JceUtil.equals(this.weight, paramObject.weight))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.type, paramObject.type))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.value, paramObject.value)) {
+                bool1 = true;
+              }
+            }
           }
         }
       }
@@ -114,6 +132,16 @@ public final class DatasetEntity
   public int getDatasetId()
   {
     return this.datasetId;
+  }
+  
+  public String getType()
+  {
+    return this.type;
+  }
+  
+  public String getValue()
+  {
+    return this.value;
   }
   
   public int getVersionId()
@@ -145,6 +173,8 @@ public final class DatasetEntity
     this.versionId = paramJceInputStream.read(this.versionId, 1, false);
     this.data = ((Map)paramJceInputStream.read(cache_data, 2, false));
     this.weight = paramJceInputStream.read(this.weight, 3, false);
+    this.type = paramJceInputStream.readString(4, false);
+    this.value = paramJceInputStream.readString(5, false);
   }
   
   public void setData(Map<String, String> paramMap)
@@ -155,6 +185,16 @@ public final class DatasetEntity
   public void setDatasetId(int paramInt)
   {
     this.datasetId = paramInt;
+  }
+  
+  public void setType(String paramString)
+  {
+    this.type = paramString;
+  }
+  
+  public void setValue(String paramString)
+  {
+    this.value = paramString;
   }
   
   public void setVersionId(int paramInt)
@@ -171,16 +211,24 @@ public final class DatasetEntity
   {
     paramJceOutputStream.write(this.datasetId, 0);
     paramJceOutputStream.write(this.versionId, 1);
-    Map localMap = this.data;
-    if (localMap != null) {
-      paramJceOutputStream.write(localMap, 2);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.weight, 3);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
+    }
+    localObject = this.value;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.models.DatasetEntity
  * JD-Core Version:    0.7.0.1
  */

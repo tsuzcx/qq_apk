@@ -1,35 +1,20 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 class NavigationJsPlugin$5
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements Runnable
 {
-  NavigationJsPlugin$5(NavigationJsPlugin paramNavigationJsPlugin, Activity paramActivity) {}
+  NavigationJsPlugin$5(NavigationJsPlugin paramNavigationJsPlugin, MiniAppInfo paramMiniAppInfo) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_AndroidAppActivity;
-      if ((paramBundle != null) && (!paramBundle.isFinishing()))
-      {
-        QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-    }
-    else
-    {
-      QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
-    }
+    MiniAppInfo.saveMiniAppShowInfoEntity(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

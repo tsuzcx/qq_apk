@@ -20,14 +20,14 @@ class QQAppInterface$20
       localStringBuilder.append(l1 - l2);
       QLog.i("Q.qqhead.broadcast", 2, localStringBuilder.toString());
     }
-    QQAppInterface.access$2800(this.this$0, this.val$intent);
+    QQAppInterface.access$2900(this.this$0, this.val$intent);
     this.this$0.mRunningTaskNum.decrementAndGet();
-    QQAppInterface.access$2900(this.this$0);
+    QQAppInterface.access$3000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.20
  * JD-Core Version:    0.7.0.1
  */

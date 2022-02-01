@@ -10,12 +10,12 @@ class TroopSettingActivity$22$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+    this.a.setBackgroundDrawable(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.22.1
  * JD-Core Version:    0.7.0.1
  */

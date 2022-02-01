@@ -6,71 +6,64 @@ public class PicFowardInfo
   extends PicInfoInterface
   implements PicUiInterface
 {
-  public int a;
-  public PicDownloadInfo a;
-  public PicUploadInfo a;
   public boolean a;
-  public boolean b = true;
-  
-  public PicFowardInfo()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo = new PicUploadInfo();
-    this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo = new PicDownloadInfo();
-  }
+  public PicUploadInfo b = new PicUploadInfo();
+  public PicDownloadInfo c = new PicDownloadInfo();
+  public boolean d = true;
+  public int e = -1;
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nPicFowardInfo");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = ((PicUploadInfo)localObject).a();
     } else {
       localObject = "\n |-upInfo=null";
     }
     localStringBuilder.append((String)localObject);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
   
-  public boolean a()
+  public boolean b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    Object localObject = this.b;
     if (localObject == null)
     {
       a("PicFowardInfo.check", "upInfo == null");
       return false;
     }
-    if (((((PicUploadInfo)localObject).b == 1000) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1020) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1004)) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d == null))
+    if (((((PicUploadInfo)localObject).c == 1000) || (this.b.c == 1020) || (this.b.c == 1004)) && (this.b.f == null))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("secondId invalid,uinType:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b);
+      ((StringBuilder)localObject).append(this.b.c);
       ((StringBuilder)localObject).append(",secondId:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d);
+      ((StringBuilder)localObject).append(this.b.f);
       a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int == -1)
+    if (this.b.s == -1)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("protocolType invalid,protocolType:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int);
+      ((StringBuilder)localObject).append(this.b.s);
       a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
       return false;
     }
-    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.b.n))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo;
+      localObject = this.c;
       if (localObject == null)
       {
         a("PicFowardInfo.check", "downInfo == null");
         return false;
       }
-      if (!((PicDownloadInfo)localObject).a())
+      if (!((PicDownloadInfo)localObject).b())
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo;
+        this.H = this.c.H;
         return false;
       }
     }
@@ -79,17 +72,17 @@ public class PicFowardInfo
   
   public PicDownloadInfo getPicDownloadInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo;
+    return this.c;
   }
   
   public PicUploadInfo getPicUploadInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    return this.b;
   }
   
   public boolean isSendFromLocal()
   {
-    return this.b;
+    return this.d;
   }
   
   public String toString()
@@ -99,7 +92,7 @@ public class PicFowardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicFowardInfo
  * JD-Core Version:    0.7.0.1
  */

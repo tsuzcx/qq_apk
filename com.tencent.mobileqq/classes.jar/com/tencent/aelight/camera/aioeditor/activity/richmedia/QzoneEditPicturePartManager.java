@@ -22,75 +22,38 @@ import java.util.List;
 public class QzoneEditPicturePartManager
   extends EditPicPartManager
 {
-  public int a;
   public View a;
-  private final QzoneEditPictureActivity jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity;
-  private QzoneEditPicturePartComment jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartComment;
-  private QzoneEditPicturePartSave jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartSave;
-  private QzoneEditPicturePartScheduleDelete jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartScheduleDelete;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d = -1;
+  public ArrayList<String> b = null;
+  public int c = 1;
   public String d;
-  public boolean d;
   public String e;
-  public boolean e = true;
-  private boolean f;
-  private boolean g;
+  public String f = "";
+  public boolean g = true;
+  public boolean h;
+  public boolean i = true;
+  public boolean j;
+  public boolean k = true;
+  public int l = -1;
+  public int m = -1;
+  public String n;
+  public int o = -1;
+  public String p;
+  private QzoneEditPicturePartComment q;
+  private QzoneEditPicturePartScheduleDelete r;
+  private QzoneEditPicturePartSave s;
+  private boolean t;
+  private final QzoneEditPictureActivity u;
+  private boolean v;
   
   public QzoneEditPicturePartManager(QzoneEditPictureActivity paramQzoneEditPictureActivity, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity = paramQzoneEditPictureActivity;
-    this.g = paramBoolean;
+    this.u = paramQzoneEditPictureActivity;
+    this.v = paramBoolean;
   }
   
-  private void A()
+  private QzoneEditPicturePartReport Z()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity.findViewById(2064122499);
-    Object localObject = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity).inflate(2131562251, null);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, LiuHaiUtils.jdField_a_of_type_Int, 0, 0);
-    localLayoutParams.addRule(11);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    ((LinearLayout)localObject).findViewById(2131375363).setVisibility(0);
-    ((LinearLayout)localObject).findViewById(2131375361).setVisibility(0);
-    ((LinearLayout)localObject).findViewById(2131375364).setVisibility(8);
-    localObject = (RelativeLayout)this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity.getLayoutInflater().inflate(2131562249, localRelativeLayout, false);
-    localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, a().getContext().getResources()));
-    ((RelativeLayout)localObject).setVisibility(0);
-    localLayoutParams.addRule(12);
-    int i;
-    if (LiuHaiUtils.e > 0) {
-      i = LiuHaiUtils.e;
-    } else {
-      i = AIOUtils.b(60.0F, this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity.getResources());
-    }
-    localLayoutParams.bottomMargin = i;
-    View localView = new View(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPictureActivity);
-    localView.setBackgroundColor(Color.argb(128, 0, 0, 0));
-    localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localView.setVisibility(8);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localRelativeLayout.addView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView;
-  }
-  
-  private QzoneEditPicturePartReport a()
-  {
-    Iterator localIterator = a().iterator();
+    Iterator localIterator = W().iterator();
     while (localIterator.hasNext())
     {
       EditVideoPart localEditVideoPart = (EditVideoPart)localIterator.next();
@@ -101,9 +64,40 @@ public class QzoneEditPicturePartManager
     return null;
   }
   
+  private void aa()
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.u.findViewById(2063991313);
+    Object localObject = (LinearLayout)LayoutInflater.from(this.u).inflate(2131628679, null);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, LiuHaiUtils.d, 0, 0);
+    localLayoutParams.addRule(11);
+    localRelativeLayout.addView((View)localObject, localLayoutParams);
+    ((LinearLayout)localObject).findViewById(2131443549).setVisibility(0);
+    ((LinearLayout)localObject).findViewById(2131443547).setVisibility(0);
+    ((LinearLayout)localObject).findViewById(2131443550).setVisibility(8);
+    localObject = (RelativeLayout)this.u.getLayoutInflater().inflate(2131628677, localRelativeLayout, false);
+    localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, M().getContext().getResources()));
+    ((RelativeLayout)localObject).setVisibility(0);
+    localLayoutParams.addRule(12);
+    int i1;
+    if (LiuHaiUtils.j > 0) {
+      i1 = LiuHaiUtils.j;
+    } else {
+      i1 = AIOUtils.b(60.0F, this.u.getResources());
+    }
+    localLayoutParams.bottomMargin = i1;
+    View localView = new View(this.u);
+    localView.setBackgroundColor(Color.argb(128, 0, 0, 0));
+    localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localView.setVisibility(8);
+    localRelativeLayout.addView((View)localObject, localLayoutParams);
+    localRelativeLayout.addView(localView);
+    this.a = localView;
+  }
+  
   public void a(int paramInt)
   {
-    QzoneEditPicturePartReport localQzoneEditPicturePartReport = a();
+    QzoneEditPicturePartReport localQzoneEditPicturePartReport = Z();
     if (localQzoneEditPicturePartReport != null) {
       localQzoneEditPicturePartReport.a(paramInt, null);
     }
@@ -117,29 +111,29 @@ public class QzoneEditPicturePartManager
   
   protected void a(@NonNull EditVideoParams paramEditVideoParams)
   {
-    int i = (paramEditVideoParams.jdField_c_of_type_Int | 0x2000) & 0xFFFFEFFF;
-    if (a())
+    int i1 = (paramEditVideoParams.c | 0x2000) & 0xFFFFEFFF;
+    if (d())
     {
-      super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, i & 0xFFFFFDFF, paramEditVideoParams.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
-      a(this.jdField_a_of_type_JavaUtilList);
+      super.a(new EditVideoParams(paramEditVideoParams.a, i1 & 0xFFFFFDFF, paramEditVideoParams.e, paramEditVideoParams.d));
+      a(this.J);
       return;
     }
-    super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, i, paramEditVideoParams.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
+    super.a(new EditVideoParams(paramEditVideoParams.a, i1, paramEditVideoParams.e, paramEditVideoParams.d));
   }
   
   protected void a(List<EditVideoPart> paramList)
   {
     super.a(paramList);
-    if (a())
+    if (d())
     {
       Object localObject = new QzoneEditPicturePartComment(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartComment = ((QzoneEditPicturePartComment)localObject);
+      this.q = ((QzoneEditPicturePartComment)localObject);
       paramList.add(localObject);
       localObject = new QzoneEditPicturePartScheduleDelete(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartScheduleDelete = ((QzoneEditPicturePartScheduleDelete)localObject);
+      this.r = ((QzoneEditPicturePartScheduleDelete)localObject);
       paramList.add(localObject);
       localObject = new QzoneEditPicturePartSave(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaQzoneEditPicturePartSave = ((QzoneEditPicturePartSave)localObject);
+      this.s = ((QzoneEditPicturePartSave)localObject);
       paramList.add(localObject);
     }
     try
@@ -157,12 +151,7 @@ public class QzoneEditPicturePartManager
   
   public void a(boolean paramBoolean)
   {
-    this.f = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.g;
+    this.t = paramBoolean;
   }
   
   public void b()
@@ -171,22 +160,27 @@ public class QzoneEditPicturePartManager
     a(3006);
   }
   
-  public boolean b()
-  {
-    return this.f;
-  }
-  
   public void c()
   {
-    if (a()) {
-      A();
+    if (d()) {
+      aa();
     }
     super.c();
+  }
+  
+  public boolean d()
+  {
+    return this.v;
+  }
+  
+  public boolean e()
+  {
+    return this.t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPicturePartManager
  * JD-Core Version:    0.7.0.1
  */

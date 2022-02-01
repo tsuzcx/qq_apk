@@ -16,15 +16,15 @@ class QFlutterFace$1
     localQQFaceNativeData.setBitmap(paramBitmap);
     localQQFaceNativeData.setPath(paramString);
     paramBitmap = new QQFaceParam();
-    paramBitmap.account = paramDecodeRequest.jdField_a_of_type_JavaLangString;
-    paramBitmap.faceType = paramDecodeRequest.jdField_a_of_type_Int;
-    paramBitmap.faceShape = paramDecodeRequest.b;
+    paramBitmap.account = paramDecodeRequest.a;
+    paramBitmap.faceType = paramDecodeRequest.b;
+    paramBitmap.faceShape = paramDecodeRequest.c;
     QQFaceLoader.instance().onUpdate(paramBitmap, localQQFaceNativeData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFace.1
  * JD-Core Version:    0.7.0.1
  */

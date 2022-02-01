@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaRenderManager;
-import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.action.IRenderTask;
 import com.tencent.viola.ui.action.RenderAction;
 import com.tencent.viola.ui.action.RenderActionTask;
@@ -56,14 +55,6 @@ public class DOMActionContextImpl
     this.mAddDOMConsumer = new DOMActionContextImpl.AddDOMConsumer(this, this.mRegistry);
     this.mUnregisterDomConsumer = new DOMActionContextImpl.RemoveElementConsumer(this.mRegistry);
     this.mApplyStyleConsumer = new DOMActionContextImpl.ApplyStyleConsumer(this, this.mRegistry);
-  }
-  
-  private void parseAnimation()
-  {
-    Iterator localIterator = this.animations.iterator();
-    while (localIterator.hasNext()) {
-      TextUtils.isEmpty((CharSequence)((Pair)localIterator.next()).first);
-    }
   }
   
   private void updateDomObj()
@@ -206,16 +197,10 @@ public class DOMActionContextImpl
     if (paramDomObject == null) {
       return;
     }
-    System.currentTimeMillis();
     paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.1(this) });
-    System.currentTimeMillis();
     paramDomObject.calculateLayout(this.mLayoutContext);
-    ViolaSDKManager.getInstance().getViolaInstance(this.mInstanceId);
-    System.currentTimeMillis();
     paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.2(this), new DOMActionContextImpl.ApplyUpdateConsumer(this, null) });
-    System.currentTimeMillis();
     updateDomObj();
-    parseAnimation();
     consumeRenderTasks();
     this.mAddDom.clear();
     this.animations.clear();
@@ -283,7 +268,7 @@ public class DOMActionContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl
  * JD-Core Version:    0.7.0.1
  */

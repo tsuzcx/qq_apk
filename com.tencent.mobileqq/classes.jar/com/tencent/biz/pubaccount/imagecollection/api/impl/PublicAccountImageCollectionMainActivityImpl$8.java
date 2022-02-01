@@ -11,8 +11,8 @@ class PublicAccountImageCollectionMainActivityImpl$8
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131380312);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131380313);
+    paramAnimation = (ImageView)this.a.findViewById(2131449242);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131449243);
     PublicAccountImageCollectionMainActivityImpl.access$2100(this.a, localImageView, paramAnimation, 100L, 240L);
   }
   
@@ -22,7 +22,7 @@ class PublicAccountImageCollectionMainActivityImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.8
  * JD-Core Version:    0.7.0.1
  */

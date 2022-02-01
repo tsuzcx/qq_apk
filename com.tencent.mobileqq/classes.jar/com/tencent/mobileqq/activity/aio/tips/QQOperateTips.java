@@ -26,63 +26,63 @@ import java.util.List;
 public class QQOperateTips
   implements GrayTipsTask, TipsBarTask
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   protected List<QQOperationViopTipTask> a;
   private long b = -1L;
+  private long c = -1L;
+  private int d = -1;
+  private QQAppInterface e;
+  private TipsManager f;
+  private WeakReference<Context> g;
+  private BaseSessionInfo h;
+  private final AIOContext i;
   
   public QQOperateTips(AIOContext paramAIOContext, List<QQOperationViopTipTask> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramAIOContext.a();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAIOContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-  }
-  
-  private void a()
-  {
-    ThreadManager.excute(new QQOperateTips.1(this), 16, null, true);
-  }
-  
-  private void b()
-  {
-    ThreadManager.excute(new QQOperateTips.2(this), 16, null, true);
+    this.e = paramAIOContext.a();
+    this.h = paramAIOContext.O();
+    this.a = paramList;
+    this.f = paramAIOContext.c();
+    this.g = new WeakReference(paramAIOContext.b());
+    this.i = paramAIOContext;
   }
   
   private void b(QQOperationViopTipTask paramQQOperationViopTipTask)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+    List localList = this.i.e().b().d();
     if (localList == null) {
       return;
     }
-    int j = localList.size();
-    int i = j - 1;
-    while ((i >= 0) && (i >= j - 10))
+    int k = localList.size();
+    int j = k - 1;
+    while ((j >= 0) && (j >= k - 10))
     {
-      if (((ChatMessage)localList.get(i)).msgtype == -1043)
+      if (((ChatMessage)localList.get(j)).msgtype == -1043)
       {
-        i = 1;
+        j = 1;
         break label82;
       }
-      i -= 1;
+      j -= 1;
     }
-    i = 0;
+    j = 0;
     label82:
-    if (i != 0)
+    if (j != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQOperateTips", 2, " findExcludeMsg, just return ");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[] { paramQQOperationViopTipTask });
+    this.f.a(this, new Object[] { paramQQOperationViopTipTask });
+  }
+  
+  private void d()
+  {
+    ThreadManager.excute(new QQOperateTips.1(this), 16, null, true);
+  }
+  
+  private void e()
+  {
+    ThreadManager.excute(new QQOperateTips.2(this), 16, null, true);
   }
   
   public int a()
@@ -95,15 +95,15 @@ public class QQOperateTips
     if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
     {
       paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.g;
       if (localObject != null)
       {
         if (((WeakReference)localObject).get() == null) {
           return null;
         }
-        localObject = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131560946, null);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131374123);
-        Button localButton = (Button)((View)localObject).findViewById(2131374120);
+        localObject = LayoutInflater.from((Context)this.g.get()).inflate(2131627287, null);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131442218);
+        Button localButton = (Button)((View)localObject).findViewById(2131442215);
         localTextView.setText(paramVarArgs.adwords);
         localButton.setText(paramVarArgs.clickableWord);
         localButton.setOnClickListener(new QQOperateTips.3(this, paramVarArgs));
@@ -113,16 +113,88 @@ public class QQOperateTips
     return null;
   }
   
-  public MessageRecord a(Object... paramVarArgs)
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if ((this.h.a != 0) && (this.h.a != 3000)) {
+      return;
+    }
+    if (paramInt == 1000)
+    {
+      d();
+      return;
+    }
+    if (paramInt == 1001)
+    {
+      e();
+      return;
+    }
+    if (paramInt == 2000)
+    {
+      paramVarArgs = this.a;
+      if (paramVarArgs != null) {
+        paramVarArgs.clear();
+      }
+    }
+  }
+  
+  public void a(QQOperationViopTipTask paramQQOperationViopTipTask)
+  {
+    this.f.a(this, new Object[] { paramQQOperationViopTipTask });
+  }
+  
+  public void a(List<QQOperationViopTipTask> paramList)
+  {
+    QQOperateManager localQQOperateManager = QQOperateManager.a(this.e);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      int j = ((QQOperationViopTipTask)paramList.next()).taskid;
+      QQOperationViopTipTask localQQOperationViopTipTask = localQQOperateManager.a(j);
+      Object localObject;
+      if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("on showTips, voipTask is null, taskId=");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject).toString());
+      }
+      if (this.i.k() == 0) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if (localQQOperationViopTipTask != null) {
+        if (localQQOperationViopTipTask.isBlueTipsTask())
+        {
+          if (j != 0)
+          {
+            a(localQQOperationViopTipTask);
+          }
+          else
+          {
+            localObject = this.a;
+            if (localObject != null) {
+              ((List)localObject).add(localQQOperationViopTipTask);
+            }
+          }
+        }
+        else if ((localQQOperationViopTipTask.isGryTipsTask()) && (!localQQOperateManager.a(this.h.a, 2))) {
+          b(localQQOperationViopTipTask);
+        }
+      }
+    }
+  }
+  
+  public MessageRecord a_(Object... paramVarArgs)
   {
     if ((paramVarArgs[0] instanceof QQOperationViopTipTask))
     {
       paramVarArgs = (QQOperationViopTipTask)paramVarArgs[0];
       MessageRecord localMessageRecord = MessageRecordFactory.a(-1041);
-      long l = MessageCache.a();
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString;
-      String str3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+      long l = MessageCache.c();
+      String str1 = this.e.getCurrentAccountUin();
+      String str2 = this.h.b;
+      String str3 = this.e.getAccount();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramVarArgs.adwords);
       localStringBuilder.append("|");
@@ -133,89 +205,12 @@ public class QQOperateTips
       localStringBuilder.append(paramVarArgs.url);
       localStringBuilder.append("|");
       localStringBuilder.append(paramVarArgs.taskid);
-      localMessageRecord.init(str1, str2, str3, localStringBuilder.toString(), l, -1041, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
+      localMessageRecord.init(str1, str2, str3, localStringBuilder.toString(), l, -1041, this.h.a, l);
       localMessageRecord.isread = true;
-      if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false)) {
+      if (!MessageHandlerUtils.a(this.e, localMessageRecord, false)) {
         return localMessageRecord;
       }
     }
-    return null;
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 3000)) {
-      return;
-    }
-    if (paramInt == 1000)
-    {
-      a();
-      return;
-    }
-    if (paramInt == 1001)
-    {
-      b();
-      return;
-    }
-    if (paramInt == 2000)
-    {
-      paramVarArgs = this.jdField_a_of_type_JavaUtilList;
-      if (paramVarArgs != null) {
-        paramVarArgs.clear();
-      }
-    }
-  }
-  
-  public void a(QQOperationViopTipTask paramQQOperationViopTipTask)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[] { paramQQOperationViopTipTask });
-  }
-  
-  public void a(List<QQOperationViopTipTask> paramList)
-  {
-    QQOperateManager localQQOperateManager = QQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      int i = ((QQOperationViopTipTask)paramList.next()).taskid;
-      QQOperationViopTipTask localQQOperationViopTipTask = localQQOperateManager.a(i);
-      Object localObject;
-      if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("on showTips, voipTask is null, taskId=");
-        ((StringBuilder)localObject).append(i);
-        QLog.d("QQOperateVoIP", 4, ((StringBuilder)localObject).toString());
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() == 0) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (localQQOperationViopTipTask != null) {
-        if (localQQOperationViopTipTask.isBlueTipsTask())
-        {
-          if (i != 0)
-          {
-            a(localQQOperationViopTipTask);
-          }
-          else
-          {
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            if (localObject != null) {
-              ((List)localObject).add(localQQOperationViopTipTask);
-            }
-          }
-        }
-        else if ((localQQOperationViopTipTask.isGryTipsTask()) && (!localQQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, 2))) {
-          b(localQQOperationViopTipTask);
-        }
-      }
-    }
-  }
-  
-  public int[] a()
-  {
     return null;
   }
   
@@ -223,10 +218,15 @@ public class QQOperateTips
   {
     return 6;
   }
+  
+  public int[] c()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.QQOperateTips
  * JD-Core Version:    0.7.0.1
  */

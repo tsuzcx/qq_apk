@@ -24,7 +24,7 @@ class QuickInstaller
   {
     long l = SystemClock.uptimeMillis();
     Object localObject3 = new QFlutterEngineData();
-    Object localObject2 = QFlutterInstaller.a((XmlData)localObject3);
+    Object localObject2 = QFlutterInstaller.c((XmlData)localObject3);
     Object localObject4 = ((QFlutterEngineData)localObject3).getStrResName();
     Object localObject1 = "(null)";
     localObject2 = ((SharedPreferences)localObject2).getString((String)localObject4, "(null)");
@@ -34,7 +34,7 @@ class QuickInstaller
     if (bool4)
     {
       localObject3 = new QFlutterAppData();
-      localObject1 = QFlutterInstaller.a((XmlData)localObject3).getString(((QFlutterAppData)localObject3).getStrResName(), "(null)");
+      localObject1 = QFlutterInstaller.c((XmlData)localObject3).getString(((QFlutterAppData)localObject3).getStrResName(), "(null)");
       bool1 = a((XmlData)localObject3);
     }
     else
@@ -85,7 +85,7 @@ class QuickInstaller
     }
     String str1 = paramXmlData.getStrResName();
     String[] arrayOfString = ((FilesListHolder)paramXmlData).filesList();
-    paramXmlData = QFlutterInstaller.a(paramXmlData);
+    paramXmlData = QFlutterInstaller.c(paramXmlData);
     SharedPreferences.Editor localEditor = paramXmlData.edit();
     int j = arrayOfString.length;
     int i = 0;
@@ -93,7 +93,7 @@ class QuickInstaller
     {
       String str2 = arrayOfString[i];
       String str3 = QFlutterInstaller.a(str2);
-      if (!FileUtil.b(str3))
+      if (!FileUtil.d(str3))
       {
         QLog.d("QFlutter.QuickInstaller", 1, String.format("checkPackageValid [%s] %s is not exist", new Object[] { str1, str3 }));
         break label324;
@@ -101,11 +101,11 @@ class QuickInstaller
       String str6 = QFlutterInstaller.a(str2, true);
       String str4 = QFlutterInstaller.a(str2, false);
       long l1 = paramXmlData.getLong(str4, 0L);
-      long l2 = QFlutterInstaller.a(str3);
+      long l2 = QFlutterInstaller.b(str3);
       String str5;
       if ((l1 > 0L) && (l1 == l2))
       {
-        QLog.d("QFlutter.QuickInstaller", 1, String.format("checkPackageValid lastModifiedTs suc [%s], ts=%s path = %s", new Object[] { str2, TimeFormatterUtils.b(l2), str3 }));
+        QLog.d("QFlutter.QuickInstaller", 1, String.format("checkPackageValid lastModifiedTs suc [%s], ts=%s path = %s", new Object[] { str2, TimeFormatterUtils.f(l2), str3 }));
       }
       else
       {
@@ -137,7 +137,7 @@ class QuickInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QuickInstaller
  * JD-Core Version:    0.7.0.1
  */

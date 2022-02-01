@@ -18,19 +18,19 @@ import java.lang.ref.WeakReference;
 class GrayTipsItemBuilder$SpecialCareTipClickableSpan
   extends ClickableSpan
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  private WeakReference<QQAppInterface> b;
+  private WeakReference<Context> c;
   
   GrayTipsItemBuilder$SpecialCareTipClickableSpan(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramContext);
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Context localContext = (Context)this.b.get();
+    paramView = (QQAppInterface)this.b.get();
+    Context localContext = (Context)this.c.get();
     if (paramView != null)
     {
       if (localContext == null) {
@@ -40,11 +40,11 @@ class GrayTipsItemBuilder$SpecialCareTipClickableSpan
       {
         if (!NetworkUtil.isNetSupport(localContext))
         {
-          QQToast.a(localContext, 2131692183, 0).b(localContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(localContext, 2131889169, 0).show(localContext.getResources().getDimensionPixelSize(2131299920));
           return;
         }
         Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
-        localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
+        localIntent.putExtra("key_friend_uin", this.a.d.b);
         localContext.startActivity(localIntent);
         VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
       }
@@ -55,7 +55,7 @@ class GrayTipsItemBuilder$SpecialCareTipClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.SpecialCareTipClickableSpan
  * JD-Core Version:    0.7.0.1
  */

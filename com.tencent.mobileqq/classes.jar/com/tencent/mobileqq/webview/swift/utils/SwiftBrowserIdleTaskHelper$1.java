@@ -13,24 +13,24 @@ class SwiftBrowserIdleTaskHelper$1
     int i;
     do
     {
-      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
+      if (SwiftBrowserIdleTaskHelper.c().isEmpty()) {
         break;
       }
-      SwiftBrowserIdleTaskHelper.IdleTask localIdleTask = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
+      SwiftBrowserIdleTaskHelper.IdleTask localIdleTask = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.c().remove(0);
       i = localIdleTask.a();
       if (2 == i)
       {
-        SwiftBrowserIdleTaskHelper.a().add(localIdleTask);
+        SwiftBrowserIdleTaskHelper.c().add(localIdleTask);
         break;
       }
     } while (1 != i);
-    this.a.a = (true ^ SwiftBrowserIdleTaskHelper.a().isEmpty());
-    return this.a.a;
+    this.a.b = (true ^ SwiftBrowserIdleTaskHelper.c().isEmpty());
+    return this.a.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.1
  * JD-Core Version:    0.7.0.1
  */

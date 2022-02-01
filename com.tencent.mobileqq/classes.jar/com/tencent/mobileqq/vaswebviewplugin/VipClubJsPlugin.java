@@ -35,7 +35,7 @@ public class VipClubJsPlugin
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if (GLDrawableDownloadHelper.b())
+        if (GLDrawableDownloadHelper.c())
         {
           String str1 = "0";
           localJSONObject.put("result", str1);
@@ -107,7 +107,7 @@ public class VipClubJsPlugin
           }
           i = ((Number)paramObject).intValue();
         }
-        paramObject = this.mRuntime.a();
+        paramObject = this.mRuntime.b();
         if (i != 1) {
           break label119;
         }
@@ -182,7 +182,7 @@ public class VipClubJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      VipWallpaperService.WallpaperConfig localWallpaperConfig = VipWallpaperService.a(this.mRuntime.a(), true);
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = VipWallpaperService.a(this.mRuntime.d(), true);
       localJSONObject.put("result", "0");
       localJSONObject.put("id", localWallpaperConfig.a);
       super.callJs(paramString, new String[] { localJSONObject.toString() });
@@ -203,7 +203,7 @@ public class VipClubJsPlugin
       boolean bool = "0".equals(paramString2);
       if (bool)
       {
-        VipWallpaperService.a(this.mRuntime.a(), new VipWallpaperService.WallpaperConfig(), null);
+        VipWallpaperService.a(this.mRuntime.d(), new VipWallpaperService.WallpaperConfig(), null);
         paramString3.put("result", "0");
         paramString3.put("msg", "恢复系统壁纸");
       }
@@ -214,7 +214,7 @@ public class VipClubJsPlugin
         {
           AtomicBoolean localAtomicBoolean = new AtomicBoolean();
           paramString2 = new VipWallpaperService.WallpaperConfig(paramString2, str, "");
-          VipWallpaperService.a(this.mRuntime.a(), paramString2, localAtomicBoolean);
+          VipWallpaperService.a(this.mRuntime.d(), paramString2, localAtomicBoolean);
           paramString3.put("result", "0");
           paramString3.put("msg", "设置成功");
           if (localAtomicBoolean.get()) {
@@ -254,7 +254,7 @@ public class VipClubJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipClubJsPlugin
  * JD-Core Version:    0.7.0.1
  */

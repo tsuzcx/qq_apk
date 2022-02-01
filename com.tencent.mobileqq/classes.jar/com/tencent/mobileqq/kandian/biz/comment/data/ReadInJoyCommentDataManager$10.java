@@ -12,7 +12,7 @@ class ReadInJoyCommentDataManager$10
   
   void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 1)
     {
       paramOnDataChangeListener.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
@@ -25,7 +25,7 @@ class ReadInJoyCommentDataManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.10
  * JD-Core Version:    0.7.0.1
  */

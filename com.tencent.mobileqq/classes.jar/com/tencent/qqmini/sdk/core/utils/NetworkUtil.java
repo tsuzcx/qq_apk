@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 public class NetworkUtil
@@ -50,7 +51,7 @@ public class NetworkUtil
   {
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
       if (paramContext != null)
       {
         if (paramContext.getSSID() == null) {
@@ -113,7 +114,7 @@ public class NetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

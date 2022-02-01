@@ -18,97 +18,97 @@ import org.jetbrains.annotations.NotNull;
 public final class TiktokVideoItemHolder
   extends ShortVideoItemHolder
 {
-  @NotNull
-  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView;
   @JvmField
   @NotNull
-  public VideoFeedsStressFollowHelper a;
+  public VideoFeedsStressFollowHelper m;
   @NotNull
-  private VideoFeedsStressFollowLayout jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout;
+  private ReadInJoyHeadImageView n;
   @NotNull
-  private View d;
+  private ViewGroup o;
   @NotNull
-  private View e;
+  private VideoFeedsStressFollowLayout p;
   @NotNull
-  private TextView f;
+  private View q;
   @NotNull
-  private ViewGroup z;
+  private View r;
+  @NotNull
+  private TextView s;
   
   public TiktokVideoItemHolder(@NotNull View paramView)
   {
     super(paramView);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView;
+    Object localObject = this.aJ;
     if (localObject != null) {
       ((AbsReadInJoyNickNameTextView)localObject).setPrefix("@");
     }
-    localObject = paramView.findViewById(2131380611);
+    localObject = paramView.findViewById(2131449569);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "view.findViewById(R.id.v…_iv_write_comment_avator)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)localObject);
-    localObject = paramView.findViewById(2131380613);
+    this.n = ((ReadInJoyHeadImageView)localObject);
+    localObject = paramView.findViewById(2131449571);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "view.findViewById(R.id.v…eo_feeds_ll_account_name)");
-    this.z = ((ViewGroup)localObject);
-    localObject = paramView.findViewById(2131377945);
+    this.o = ((ViewGroup)localObject);
+    localObject = paramView.findViewById(2131446431);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "view.findViewById(R.id.stress_follow_layout)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout = ((VideoFeedsStressFollowLayout)localObject);
-    localObject = paramView.findViewById(2131380618);
+    this.p = ((VideoFeedsStressFollowLayout)localObject);
+    localObject = paramView.findViewById(2131449576);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "view.findViewById(R.id.v…o_feeds_ll_inner_content)");
-    this.e = ((View)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout;
-    ViewGroup localViewGroup = this.j;
+    this.r = ((View)localObject);
+    localObject = this.p;
+    ViewGroup localViewGroup = this.aH;
     if (localViewGroup == null) {
       Intrinsics.throwNpe();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper = new VideoFeedsStressFollowHelper((VideoFeedsStressFollowLayout)localObject, (View)localViewGroup);
-    localObject = paramView.findViewById(2131380620);
+    this.m = new VideoFeedsStressFollowHelper((VideoFeedsStressFollowLayout)localObject, (View)localViewGroup);
+    localObject = paramView.findViewById(2131449578);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "view.findViewById(R.id.video_feeds_sidebar_mask)");
-    this.d = ((View)localObject);
-    a(this.e);
-    paramView = paramView.findViewById(2131367145);
+    this.q = ((View)localObject);
+    a(this.r);
+    paramView = paramView.findViewById(2131433599);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.footer_share_count_text)");
-    this.f = ((TextView)paramView);
-    float f1 = Aladdin.getConfig(263).getFloatFromString("tiktok_bar_mask_alpha", 0.4F);
-    this.d.setAlpha(f1);
+    this.s = ((TextView)paramView);
+    float f = Aladdin.getConfig(263).getFloatFromString("tiktok_bar_mask_alpha", 0.4F);
+    this.q.setAlpha(f);
   }
   
   @NotNull
-  public final ReadInJoyHeadImageView a()
+  public final ReadInJoyHeadImageView F()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView;
+    return this.n;
   }
   
   @NotNull
-  public final VideoFeedsStressFollowLayout a()
+  public final ViewGroup G()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout;
+    return this.o;
   }
   
   @NotNull
-  public final View c()
+  public final VideoFeedsStressFollowLayout H()
   {
-    return this.d;
+    return this.p;
   }
   
   @NotNull
-  public final View d()
+  public final View I()
   {
-    return this.e;
+    return this.q;
   }
   
   @NotNull
-  public final ViewGroup f()
+  public final View J()
   {
-    return this.z;
+    return this.r;
   }
   
   @NotNull
-  public final TextView k()
+  public final TextView K()
   {
-    return this.f;
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.videofeeds.TiktokVideoItemHolder
  * JD-Core Version:    0.7.0.1
  */

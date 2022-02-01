@@ -19,9 +19,9 @@ public final class CoverGalleryView$confirmClick$1
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView.getContext();
+    Object localObject = this.a.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-    localObject = ((Context)localObject).getResources().getString(R.string.ad);
+    localObject = ((Context)localObject).getResources().getString(R.string.R);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…g.tips_image_crop_failed)");
     TopicSDKHelperKt.a((String)localObject, true, null, 4, null);
   }
@@ -33,12 +33,12 @@ public final class CoverGalleryView$confirmClick$1
     localStringBuilder.append("相册封面裁剪获取 coverPath = ");
     localStringBuilder.append(paramString);
     TLog.d("CoverGalleryView", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureOutputPicListener.a(paramString);
+    this.b.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.confirmClick.1
  * JD-Core Version:    0.7.0.1
  */

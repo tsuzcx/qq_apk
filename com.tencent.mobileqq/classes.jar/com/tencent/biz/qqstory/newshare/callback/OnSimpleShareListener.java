@@ -17,7 +17,7 @@ public class OnSimpleShareListener
   public void b(int paramInt)
   {
     if (paramInt == 6) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131689993, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2131886635, 0).show();
     }
   }
   
@@ -25,7 +25,7 @@ public class OnSimpleShareListener
   
   public void c(int paramInt)
   {
-    QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131707844), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131905658), 0).show();
   }
   
   public void d() {}
@@ -34,7 +34,7 @@ public class OnSimpleShareListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener
  * JD-Core Version:    0.7.0.1
  */

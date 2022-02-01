@@ -2,7 +2,6 @@ package com.tencent.mobileqq.ecshop.report.api.impl;
 
 import android.text.TextUtils;
 import com.tencent.common.app.business.BaseQQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.ecshop.ad.EcshopAdHandler;
 import com.tencent.mobileqq.ecshop.ad.IEcshopAdHandler.ReportInfo;
@@ -20,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/report/api/impl/EcshopReportApiImpl;", "Lcom/tencent/mobileqq/ecshop/report/api/IEcshopReportApi;", "()V", "TAG", "", "doArrivalArkReport", "", "record", "Lcom/tencent/mobileqq/data/MessageRecord;", "doArrivalReport", "app", "Lcom/tencent/common/app/business/BaseQQAppInterface;", "doClickReport", "index", "", "isReportForClick", "", "reportForClick", "report", "opName", "reportArkShow", "chatMessage", "Lcom/tencent/mobileqq/data/ChatMessage;", "metaList", "reportEcshopTo644", "opType", "d2", "d1", "reportEcshopToBeacon", "reportSetTopOrCancleSetTop", "uinType", "uin", "isSetTop", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/report/api/impl/EcshopReportApiImpl;", "Lcom/tencent/mobileqq/ecshop/report/api/IEcshopReportApi;", "()V", "TAG", "", "doArrivalArkReport", "", "record", "Lcom/tencent/mobileqq/data/MessageRecord;", "doArrivalReport", "app", "Lcom/tencent/common/app/business/BaseQQAppInterface;", "doClickReport", "index", "", "isReportForClick", "", "reportForClick", "report", "opName", "reportEcshopTo644", "opType", "d2", "d1", "reportEcshopToBeacon", "reportSetTopOrCancleSetTop", "uinType", "uin", "isSetTop", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class EcshopReportApiImpl
   implements IEcshopReportApi
 {
@@ -34,7 +33,7 @@ public final class EcshopReportApiImpl
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "QRoute.api(IEcshopMessageApi::class.java)");
       localObject1 = (IEcshopMessageApi)localObject1;
       localObject2 = ((IEcshopMessageApi)localObject1).getArkMsgSourceAd(paramMessageRecord);
-      if (!StringUtil.a((String)localObject2))
+      if (!StringUtil.isEmpty((String)localObject2))
       {
         localObject2 = new JSONObject((String)localObject2);
         if (QLog.isColorLevel())
@@ -100,15 +99,13 @@ public final class EcshopReportApiImpl
         paramBaseQQAppInterface = QRoute.api(IEcshopMessageApi.class);
         Intrinsics.checkExpressionValueIsNotNull(paramBaseQQAppInterface, "QRoute.api(IEcshopMessageApi::class.java)");
         paramBaseQQAppInterface = (IEcshopMessageApi)paramBaseQQAppInterface;
-        i = 0;
       }
     }
     catch (Exception paramBaseQQAppInterface)
     {
       Object localObject;
       int i;
-      int j;
-      label105:
+      label102:
       boolean bool;
       return;
     }
@@ -116,17 +113,17 @@ public final class EcshopReportApiImpl
     {
       localObject = paramBaseQQAppInterface.getLastMsgType(paramMessageRecord);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "messageApi.getLastMsgType(record)");
-      j = Integer.parseInt((String)localObject);
-      i = j;
+      i = Integer.parseInt((String)localObject);
     }
     catch (Exception localException)
     {
-      break label105;
+      break label102;
     }
+    i = 0;
     bool = paramBaseQQAppInterface.isMessageForStructing(paramMessageRecord);
     if (bool)
     {
-      paramBaseQQAppInterface.GdtC2SReportStructMsg(paramMessageRecord);
+      paramBaseQQAppInterface.GdtC2SReportStructMsg(paramMessageRecord, 0);
       paramBaseQQAppInterface = paramBaseQQAppInterface.getStructMsgContentTitle(paramMessageRecord);
       if (!TextUtils.isEmpty((CharSequence)paramBaseQQAppInterface))
       {
@@ -142,9 +139,9 @@ public final class EcshopReportApiImpl
     }
     else if (paramBaseQQAppInterface.isMessageForArkApp(paramMessageRecord))
     {
-      paramBaseQQAppInterface.GdtC2SReportArkMsg(paramMessageRecord);
+      paramBaseQQAppInterface.GdtC2SReportArkMsg(paramMessageRecord, 0);
       localObject = paramBaseQQAppInterface.getArkMsgSourceAd(paramMessageRecord);
-      if ((!StringUtil.a((String)localObject)) && (Intrinsics.areEqual("gw", new JSONObject((String)localObject).optString("from"))))
+      if ((!StringUtil.isEmpty((String)localObject)) && (Intrinsics.areEqual("gw", new JSONObject((String)localObject).optString("from"))))
       {
         localObject = ReportUtil.a(paramMessageRecord);
         paramBaseQQAppInterface = paramBaseQQAppInterface.getArkMsgMsg(paramMessageRecord);
@@ -188,7 +185,7 @@ public final class EcshopReportApiImpl
         ((IEcshopAdHandler.ReportInfo)localObject).a = 3;
         paramMessageRecord = EcshopAdHandler.a((IEcshopAdHandler.ReportInfo)localObject, paramMessageRecord);
         Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "EcshopAdHandler.rebuildReportParam(info, record)");
-        paramMessageRecord.f = paramInt;
+        paramMessageRecord.r = paramInt;
         paramBaseQQAppInterface = paramBaseQQAppInterface.getBusinessHandler(EcshopAdHandler.class.getName());
         if (paramBaseQQAppInterface != null)
         {
@@ -212,11 +209,6 @@ public final class EcshopReportApiImpl
     ReportUtil.a(paramString);
   }
   
-  public void reportArkShow(@Nullable ChatMessage paramChatMessage, @Nullable String paramString)
-  {
-    ReportUtil.a().a(paramChatMessage, paramString);
-  }
-  
   public void reportEcshopTo644(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, @Nullable String paramString4)
   {
     ReportUtil.a(paramString1, paramString2, paramString3, paramString4);
@@ -235,7 +227,7 @@ public final class EcshopReportApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.report.api.impl.EcshopReportApiImpl
  * JD-Core Version:    0.7.0.1
  */

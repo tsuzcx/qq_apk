@@ -13,13 +13,13 @@ class AECircleBottomListPart$2
   
   public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    AEBottomListAdapter.a(VideoStoryPiecesPart.a(paramRatio).f);
-    this.a.a.notifyDataSetChanged();
+    AEBottomListAdapter.b(VideoStoryPiecesPart.a(paramRatio).n);
+    this.a.c.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AECircleBottomListPart.2
  * JD-Core Version:    0.7.0.1
  */

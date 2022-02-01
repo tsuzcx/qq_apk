@@ -11,27 +11,17 @@ import com.tencent.qphone.base.util.QLog;
 public class QavImageHandler
   extends EarlyHandler
 {
-  QQAppInterface a = null;
+  QQAppInterface h = null;
   
   public QavImageHandler(QQAppInterface paramQQAppInterface)
   {
     super("qq.android.qav.image2", paramQQAppInterface);
-    this.a = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10047;
+    this.h = paramQQAppInterface;
   }
   
   public Class<? extends XmlData> a()
   {
     return QavImageData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadImageDuration";
   }
   
   public void a(String paramString)
@@ -56,7 +46,7 @@ public class QavImageHandler
   
   public void a(boolean paramBoolean)
   {
-    QavImageData localQavImageData = (QavImageData)a();
+    QavImageData localQavImageData = (QavImageData)h();
     if ((localQavImageData != null) && (!localQavImageData.autoDownload))
     {
       localQavImageData.autoDownload = true;
@@ -65,24 +55,34 @@ public class QavImageHandler
     super.a(paramBoolean);
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "qavDownloadImageDuration";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10047;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public boolean h()
+  public boolean e()
   {
-    return ((QavImageData)a()).autoDownload;
+    return true;
+  }
+  
+  public boolean v()
+  {
+    return ((QavImageData)h()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavImageHandler
  * JD-Core Version:    0.7.0.1
  */

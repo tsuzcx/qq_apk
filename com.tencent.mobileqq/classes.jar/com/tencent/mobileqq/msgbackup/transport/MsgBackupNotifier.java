@@ -20,7 +20,7 @@ public class MsgBackupNotifier
     }
     try
     {
-      paramString = MsgBackupTransportProcessor.a().a(paramString);
+      paramString = MsgBackupTransportProcessor.a().e(paramString);
       return paramString;
     }
     catch (Exception paramString)
@@ -309,7 +309,7 @@ public class MsgBackupNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class HomeworkTroopController$1
   public void run()
   {
     Object localObject = (TroopManager)HomeworkTroopController.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((localObject != null) && (HomeworkTroopController.a(this.this$0) != null))
+    if ((localObject != null) && (HomeworkTroopController.b(this.this$0) != null))
     {
-      localObject = ((TroopManager)localObject).c(HomeworkTroopController.b(this.this$0).a);
+      localObject = ((TroopManager)localObject).g(HomeworkTroopController.c(this.this$0).b);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
@@ -31,7 +31,7 @@ class HomeworkTroopController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.HomeworkTroopController.1
  * JD-Core Version:    0.7.0.1
  */

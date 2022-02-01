@@ -18,14 +18,14 @@ class SubscribePermissionSettingFragment$5
     }
     if (!SubscribePermissionSettingFragment.access$700(this.this$0).isShowing())
     {
-      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getBaseActivity().getResources().getString(2131694640));
+      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getBaseActivity().getResources().getString(2131892324));
       SubscribePermissionSettingFragment.access$700(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

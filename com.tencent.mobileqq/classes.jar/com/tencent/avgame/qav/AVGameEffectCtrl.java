@@ -17,42 +17,37 @@ import mqq.util.WeakReference;
 public class AVGameEffectCtrl
   extends EffectCtrlBase
 {
-  private final int jdField_a_of_type_Int;
-  private final BeautyConfig jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig = new BeautyConfig();
-  private final WeakReference<CameraDataProcess> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean b = false;
-  private boolean c = true;
+  private final BeautyConfig h = new BeautyConfig();
+  private boolean j = false;
+  private final int k;
+  private boolean l = true;
+  private final WeakReference<CameraDataProcess> m;
   
   public AVGameEffectCtrl(CameraDataProcess paramCameraDataProcess)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCameraDataProcess);
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig.a("BEAUTY_SKIN", 60);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender = new FilterProcessRender(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig);
+    this.m = new WeakReference(paramCameraDataProcess);
+    this.a = BaseApplicationImpl.getContext();
+    this.h.a("BEAUTY_SKIN", 60);
+    this.b = new FilterProcessRender(this.a, this.h);
     int i = AvGameMachineLevelUtils.a();
     if (i == 3) {
-      this.jdField_a_of_type_Int = 0;
+      this.k = 0;
     } else {
-      this.jdField_a_of_type_Int = 1;
+      this.k = 1;
     }
-    this.b = GraphicRenderMgr.soloadedPTV;
+    this.j = GraphicRenderMgr.soloadedPTV;
     if (QLog.isColorLevel())
     {
       paramCameraDataProcess = new StringBuilder();
       paramCameraDataProcess.append("AVGameEffectCtrl, line[");
       paramCameraDataProcess.append(i);
       paramCameraDataProcess.append("], mode[");
-      paramCameraDataProcess.append(this.jdField_a_of_type_Int);
+      paramCameraDataProcess.append(this.k);
       paramCameraDataProcess.append("], PtvSoReady[");
-      paramCameraDataProcess.append(this.b);
+      paramCameraDataProcess.append(this.j);
       paramCameraDataProcess.append("]");
       QLog.i("AVGameEffectCtrl", 2, paramCameraDataProcess.toString());
     }
-  }
-  
-  protected int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public void a(int paramInt) {}
@@ -60,8 +55,8 @@ public class AVGameEffectCtrl
   protected void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams)
   {
     paramRenderParams.a();
-    if (!paramRenderParams.c) {
-      paramRenderParams.c = this.b;
+    if (!paramRenderParams.g) {
+      paramRenderParams.g = this.j;
     }
   }
   
@@ -75,38 +70,33 @@ public class AVGameEffectCtrl
       localStringBuilder.append("]");
       QLog.i("AVGameEffectCtrl", 2, localStringBuilder.toString());
     }
-    c();
-  }
-  
-  public boolean a()
-  {
-    return this.c;
+    h();
   }
   
   public boolean a(AVGameAppInterface paramAVGameAppInterface)
   {
     if (paramAVGameAppInterface == null) {
-      return this.b;
+      return this.j;
     }
-    if (!this.b)
+    if (!this.j)
     {
       paramAVGameAppInterface = paramAVGameAppInterface.a();
       if (paramAVGameAppInterface != null) {
-        this.b = paramAVGameAppInterface.a();
+        this.j = paramAVGameAppInterface.b();
       } else {
-        g();
+        o();
       }
-      if (!this.b)
+      if (!this.j)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isLoadedSO, load ptv so fail, proxy[");
         localStringBuilder.append(paramAVGameAppInterface);
         localStringBuilder.append("]");
         QLog.w("AVGameEffectCtrl", 1, localStringBuilder.toString());
-        return this.b;
+        return this.j;
       }
     }
-    return g();
+    return o();
   }
   
   protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
@@ -114,21 +104,31 @@ public class AVGameEffectCtrl
     return null;
   }
   
-  protected float[] a()
+  public boolean b()
   {
-    CameraDataProcess localCameraDataProcess = (CameraDataProcess)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    return this.l;
+  }
+  
+  protected float[] i()
+  {
+    CameraDataProcess localCameraDataProcess = (CameraDataProcess)this.m.get();
     if (localCameraDataProcess != null) {
       return localCameraDataProcess.a();
     }
     return null;
   }
   
-  public boolean f()
+  protected int l()
   {
-    return this.b;
+    return this.k;
   }
   
-  public boolean g()
+  public boolean m()
+  {
+    return this.j;
+  }
+  
+  public boolean o()
   {
     StringBuilder localStringBuilder;
     boolean bool1;
@@ -144,14 +144,14 @@ public class AVGameEffectCtrl
       bool1 = bool2;
       if (bool2)
       {
-        this.b = true;
-        d();
+        this.j = true;
+        j();
         bool1 = bool2;
       }
     }
     else
     {
-      this.b = true;
+      this.j = true;
       bool1 = true;
     }
     if (QLog.isColorLevel())

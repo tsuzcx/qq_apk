@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="154.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/r0p" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/jsc" />
+    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/al3" android:layout_width="24.0dip" android:layout_height="17.0dip" android:layout_marginLeft="22.0dip" android:layout_marginTop="21.0dip" android:text="推荐" android:layout_toRightOf="@id/r0p" />
+    <ImageView android:id="@id/r0n" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/jrv" android:layout_alignParentRight="true" />
+    <android.support.v7.widget.RecyclerView android:id="@id/py5" android:layout_width="fill_parent" android:layout_height="94.0dip" android:layout_marginTop="60.0dip" />
+</RelativeLayout>

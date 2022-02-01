@@ -12,9 +12,9 @@ public class FeedItemCellArk
   
   public FeedItemCellArk(ArkAppMessage paramArkAppMessage, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (ReadInJoyUtils.a() != null)
+    if (ReadInJoyUtils.b() != null)
     {
-      paramArkAppMessage = ReadInJoyUtils.a().getApplication();
+      paramArkAppMessage = ReadInJoyUtils.b().getApplication();
       if (paramArkAppMessage == null) {
         return;
       }
@@ -30,7 +30,7 @@ public class FeedItemCellArk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ark.FeedItemCellArk
  * JD-Core Version:    0.7.0.1
  */

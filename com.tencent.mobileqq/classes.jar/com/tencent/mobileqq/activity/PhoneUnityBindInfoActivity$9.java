@@ -14,7 +14,7 @@ class PhoneUnityBindInfoActivity$9
 {
   PhoneUnityBindInfoActivity$9(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     paramView = paramView.getContext();
     if (paramInt != 0)
@@ -24,65 +24,65 @@ class PhoneUnityBindInfoActivity$9
         if (paramInt != 2) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.mCloseThisActivity = true;
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
+        this.b.mCloseThisActivity = true;
+        this.a.dismiss();
+        this.b.finish();
         return;
       }
       if (!NetworkUtil.isNetSupport(paramView))
       {
-        PhoneUnityBindInfoActivity.access$1700(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131694475);
+        PhoneUnityBindInfoActivity.access$1700(this.b, 2131892157);
         return;
       }
-      PhoneUnityBindInfoActivity.access$002(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity;
-      PhoneUnityBindInfoActivity.access$1800(paramView, PhoneUnityBindInfoActivity.access$800(paramView).jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X800B325", "0X800B325", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.mCloseThisActivity = false;
+      PhoneUnityBindInfoActivity.access$002(this.b, 2);
+      paramView = this.b;
+      PhoneUnityBindInfoActivity.access$1800(paramView, PhoneUnityBindInfoActivity.access$800(paramView).g);
+      this.a.dismiss();
+      ReportController.b(this.b.app, "dc00898", "", "", "0X800B325", "0X800B325", 0, 0, "", "", "", "");
+      this.b.mCloseThisActivity = false;
       return;
     }
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity;
-      QQToast.a(paramView, paramView.getString(2131692183), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
+      paramView = this.b;
+      QQToast.makeText(paramView, paramView.getString(2131889169), 0).show(this.b.getTitleBarHeight());
     }
     else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      PhoneUnityBindInfoActivity.access$1600(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131718766, 0L, true);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity;
+      this.a.dismiss();
+      PhoneUnityBindInfoActivity.access$1600(this.b, 2131916272, 0L, true);
+      paramView = this.b;
       paramView.mUnBindedNum = 2;
       PhoneUnityBindInfoActivity.access$1002(paramView, true);
-      if (PhoneUnityBindInfoActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity).jdField_c_of_type_Boolean)
+      if (PhoneUnityBindInfoActivity.access$800(this.b).c)
       {
         QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info, unBindContactsMobile");
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.unBindContactsMobile();
+        this.b.unBindContactsMobile();
       }
       else
       {
-        PhoneUnityBindInfoActivity.access$900(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.resetContactSwitch(false);
+        PhoneUnityBindInfoActivity.access$900(this.b);
+        this.b.resetContactSwitch(false);
       }
-      if (PhoneUnityBindInfoActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity).a)
+      if (PhoneUnityBindInfoActivity.access$800(this.b).a)
       {
         QLog.i("PhoneUnityBindInfoActivity", 1, "phone_unity_info, unbindPhoneNumLoginOnPhoneUnity");
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.unbindPhoneNumLoginOnPhoneUnity();
+        this.b.unbindPhoneNumLoginOnPhoneUnity();
       }
       else
       {
-        PhoneUnityBindInfoActivity.access$900(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.resetLoginSwitch(false);
+        PhoneUnityBindInfoActivity.access$900(this.b);
+        this.b.resetLoginSwitch(false);
       }
-      PhoneUnityBindInfoActivity.access$1200(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.mCloseThisActivity = false;
+      PhoneUnityBindInfoActivity.access$1200(this.b);
+      this.b.mCloseThisActivity = false;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "dc00898", "", "", "0X800B323", "0X800B323", 0, 0, "", "", "", "");
+    ReportController.b(this.b.app, "dc00898", "", "", "0X800B323", "0X800B323", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -211,7 +211,7 @@ public class QQReminderDataServiceImpl
       }
       else
       {
-        QQReminderUtil.a(paramAcsMsg);
+        QQReminderUtil.b(paramAcsMsg);
       }
       Object localObject = (IMessageFacade)this.mApp.getRuntimeService(IMessageFacade.class, "");
       if (localObject != null)
@@ -224,7 +224,7 @@ public class QQReminderDataServiceImpl
       }
       else
       {
-        QQReminderUtil.b(paramAcsMsg);
+        QQReminderUtil.c(paramAcsMsg);
       }
     }
   }
@@ -443,7 +443,7 @@ public class QQReminderDataServiceImpl
       AcsMsg localAcsMsg = ((ReminderEntity)((Map.Entry)localObject3).getValue()).getAcsMsg();
       if (localAcsMsg.type == 0)
       {
-        if (!QQReminderUtil.a(localAcsMsg.notice_time * 1000L)) {
+        if (!QQReminderUtil.b(localAcsMsg.notice_time * 1000L)) {
           ((ArrayList)localObject2).add(((Map.Entry)localObject3).getKey());
         }
       }
@@ -493,7 +493,7 @@ public class QQReminderDataServiceImpl
   
   private void updateCache(AcsMsg paramAcsMsg, int paramInt)
   {
-    if (((paramAcsMsg.type == 0) && (!QQReminderUtil.a(paramAcsMsg.notice_time * 1000L))) || ((paramAcsMsg.type == 1) && (paramAcsMsg.notice_time - NetConnInfoCenter.getServerTime() > 86400L)))
+    if (((paramAcsMsg.type == 0) && (!QQReminderUtil.b(paramAcsMsg.notice_time * 1000L))) || ((paramAcsMsg.type == 1) && (paramAcsMsg.notice_time - NetConnInfoCenter.getServerTime() > 86400L)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 1, new Object[] { "updateCache msg notice time is not today: ", Long.valueOf(paramAcsMsg.notice_time) });
@@ -588,7 +588,7 @@ public class QQReminderDataServiceImpl
         if (((List)localObject).size() <= 0)
         {
           localObject = (IRecentUserProxyService)this.mApp.getRuntimeService(IRecentUserProxyService.class, "");
-          RecentUser localRecentUser = ((IRecentUserProxyService)localObject).getRecentUserCache().b(QQConstants.a, 9002);
+          RecentUser localRecentUser = ((IRecentUserProxyService)localObject).getRecentUserCache().c(QQConstants.a, 9002);
           if (localRecentUser != null)
           {
             ((IRecentUserProxyService)localObject).getRecentUserCache().a(localRecentUser);
@@ -819,7 +819,7 @@ public class QQReminderDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface NeedParcel {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.util.NeedParcel
  * JD-Core Version:    0.7.0.1
  */

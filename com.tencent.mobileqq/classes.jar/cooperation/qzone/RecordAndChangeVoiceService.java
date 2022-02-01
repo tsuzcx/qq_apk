@@ -34,7 +34,7 @@ public class RecordAndChangeVoiceService
   private QZonePublishSecretShuoShuoH5Plugin mQZonePublishSecretShuoShuoH5Plugin;
   private String recordPath;
   private long recordTime;
-  private String sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
+  private String sVCSoPath = TraeHelper.b(BaseApplicationImpl.getContext());
   public VoiceChangeBasicParams voiceChangeParams;
   
   private RecordAndChangeVoiceService()
@@ -217,11 +217,11 @@ public class RecordAndChangeVoiceService
   {
     if (TextUtils.isEmpty(this.sVCSoPath))
     {
-      this.sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
+      this.sVCSoPath = TraeHelper.b(BaseApplicationImpl.getContext());
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713204), 1);
+        QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131910758), 1);
       }
       return;
     }
@@ -324,11 +324,11 @@ public class RecordAndChangeVoiceService
   {
     if (TextUtils.isEmpty(this.sVCSoPath))
     {
-      this.sVCSoPath = TraeHelper.a(BaseApplicationImpl.getContext());
+      this.sVCSoPath = TraeHelper.b(BaseApplicationImpl.getContext());
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713203), 1);
+        QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131910757), 1);
       }
       return;
     }
@@ -336,7 +336,7 @@ public class RecordAndChangeVoiceService
     if (localVoiceChangeBasicParams != null)
     {
       this.currentVoiceID = paramInt;
-      localVoiceChangeBasicParams.f = paramInt;
+      localVoiceChangeBasicParams.g = paramInt;
       ((IVoiceChangeManager)QRoute.api(IVoiceChangeManager.class)).requestToStart(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
     }
   }
@@ -375,7 +375,7 @@ public class RecordAndChangeVoiceService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.RecordAndChangeVoiceService
  * JD-Core Version:    0.7.0.1
  */

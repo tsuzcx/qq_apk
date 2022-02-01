@@ -6,9 +6,9 @@ import android.view.MotionEvent;
 class ShapeEffect$RotatePoint
   extends ShapeEffect.ControlPoint
 {
-  private float a;
-  private float jdField_b_of_type_Float;
   private float c;
+  private float d;
+  private float e;
   
   private ShapeEffect$RotatePoint(ShapeEffect paramShapeEffect)
   {
@@ -17,9 +17,9 @@ class ShapeEffect$RotatePoint
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    float f1 = (paramMotionEvent.getX() - ShapeEffect.b(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect)) / ShapeEffect.a(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect);
-    float f2 = (paramMotionEvent.getY() - ShapeEffect.c(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect)) / ShapeEffect.a(this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect);
-    PointF localPointF = this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect.a();
+    float f1 = (paramMotionEvent.getX() - ShapeEffect.f(this.b)) / ShapeEffect.a(this.b);
+    float f2 = (paramMotionEvent.getY() - ShapeEffect.g(this.b)) / ShapeEffect.a(this.b);
+    PointF localPointF = this.b.e();
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
@@ -35,30 +35,30 @@ class ShapeEffect$RotatePoint
           f1 -= localPointF.x;
           f2 -= localPointF.y;
           float f3 = (float)Math.sqrt(f1 * f1 + f2 * f2);
-          float f4 = this.a;
-          float f5 = this.jdField_b_of_type_Float;
+          float f4 = this.c;
+          float f5 = this.d;
           f4 = (float)Math.sqrt(f4 * f4 + f5 * f5);
           if (f3 != 0.0F)
           {
-            f4 = (float)(Math.asin((this.a * f2 - this.jdField_b_of_type_Float * f1) / (f4 * f3)) * 180.0D / 3.141592653589793D);
-            if (this.c != 0.0F) {
-              this.jdField_b_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleShapeEffect.a(f4);
+            f4 = (float)(Math.asin((this.c * f2 - this.d * f1) / (f4 * f3)) * 180.0D / 3.141592653589793D);
+            if (this.e != 0.0F) {
+              this.b.a(f4);
             }
           }
-          this.a = f1;
-          this.jdField_b_of_type_Float = f2;
-          this.c = f3;
+          this.c = f1;
+          this.d = f2;
+          this.e = f3;
         }
       }
       return true;
     }
-    this.c = 0.0F;
+    this.e = 0.0F;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.ShapeEffect.RotatePoint
  * JD-Core Version:    0.7.0.1
  */

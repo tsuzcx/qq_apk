@@ -15,7 +15,7 @@ class ComboAnimation3$ComboView
   
   public void draw(Canvas paramCanvas)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
+    Drawable[] arrayOfDrawable = this.a.d;
     int j = arrayOfDrawable.length;
     int i = 0;
     while (i < j)
@@ -28,7 +28,7 @@ class ComboAnimation3$ComboView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
+    Drawable[] arrayOfDrawable = this.a.d;
     paramInt4 = arrayOfDrawable.length;
     paramInt1 = 0;
     paramInt2 = 0;
@@ -43,7 +43,7 @@ class ComboAnimation3$ComboView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.ComboView
  * JD-Core Version:    0.7.0.1
  */

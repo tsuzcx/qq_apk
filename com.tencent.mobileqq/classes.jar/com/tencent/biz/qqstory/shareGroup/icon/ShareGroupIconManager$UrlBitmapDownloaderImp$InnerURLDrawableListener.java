@@ -12,34 +12,34 @@ import java.util.concurrent.ConcurrentHashMap;
 class ShareGroupIconManager$UrlBitmapDownloaderImp$InnerURLDrawableListener
   implements URLDrawable.URLDrawableListener
 {
-  private final int jdField_a_of_type_Int;
-  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private final String jdField_a_of_type_JavaLangString;
-  private final int b;
+  private final String b;
+  private final int c;
+  private final int d;
+  private final URLDrawable e;
   
   public ShareGroupIconManager$UrlBitmapDownloaderImp$InnerURLDrawableListener(ShareGroupIconManager.UrlBitmapDownloaderImp paramUrlBitmapDownloaderImp, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.b = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramURLDrawable;
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.a).remove(this.e);
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    SLog.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_JavaLangString);
+    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.a).remove(this.e);
+    SLog.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.b });
+    paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.b(this.a).remove(this.b);
     if (paramURLDrawable != null)
     {
       paramURLDrawable = paramURLDrawable.iterator();
       while (paramURLDrawable.hasNext()) {
-        ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+        ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.b, paramThrowable);
       }
     }
   }
@@ -48,17 +48,17 @@ class ShareGroupIconManager$UrlBitmapDownloaderImp$InnerURLDrawableListener
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    SLog.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap = ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.a).remove(this.e);
+    SLog.a("story.icon.ShareGroupIconManager", "download url success. %s", this.b);
+    Bitmap localBitmap = ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.a, paramURLDrawable, this.c, this.d);
     if (localBitmap != null)
     {
-      paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.b(this.a).remove(this.b);
       if (paramURLDrawable != null)
       {
         paramURLDrawable = paramURLDrawable.iterator();
         while (paramURLDrawable.hasNext()) {
-          ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+          ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.b, localBitmap);
         }
       }
     }

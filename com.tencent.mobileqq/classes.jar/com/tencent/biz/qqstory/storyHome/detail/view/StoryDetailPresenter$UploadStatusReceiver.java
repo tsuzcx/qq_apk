@@ -20,23 +20,23 @@ public class StoryDetailPresenter$UploadStatusReceiver
   
   private void c(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((StoryDetailPresenter.a(paramStoryDetailPresenter) != null) && (StoryDetailPresenter.a(paramStoryDetailPresenter).a.date.equals(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
+    if ((StoryDetailPresenter.a(paramStoryDetailPresenter) != null) && (StoryDetailPresenter.a(paramStoryDetailPresenter).a.date.equals(paramStoryVideoPublishStatusEvent.e.date)))
     {
       SLog.a(this.TAG, "receive upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
       int i = 0;
       while (i < StoryDetailPresenter.a(paramStoryDetailPresenter).a().size())
       {
         StoryVideoItem localStoryVideoItem = (StoryVideoItem)StoryDetailPresenter.a(paramStoryDetailPresenter).a().get(i);
-        if (localStoryVideoItem.equals(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem))
+        if (localStoryVideoItem.equals(paramStoryVideoPublishStatusEvent.c))
         {
-          if (paramStoryVideoPublishStatusEvent.b == null)
+          if (paramStoryVideoPublishStatusEvent.d == null)
           {
-            localStoryVideoItem.copy(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+            localStoryVideoItem.copy(paramStoryVideoPublishStatusEvent.c);
           }
           else
           {
             StoryDetailPresenter.a(paramStoryDetailPresenter).a(localStoryVideoItem);
-            StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramStoryVideoPublishStatusEvent.b, i);
+            StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramStoryVideoPublishStatusEvent.d, i);
           }
           paramStoryDetailPresenter.a();
           break;
@@ -51,17 +51,17 @@ public class StoryDetailPresenter$UploadStatusReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.a())
+    if (paramStoryVideoPublishStatusEvent.b())
     {
       SLog.b(this.TAG, "ignore this upload status event, because it's a troop video.");
       return;
     }
-    if (paramStoryVideoPublishStatusEvent.c())
+    if (paramStoryVideoPublishStatusEvent.d())
     {
       SLog.a(this.TAG, "receive share group video upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
       return;
     }
-    if (paramStoryVideoPublishStatusEvent.b())
+    if (paramStoryVideoPublishStatusEvent.c())
     {
       SLog.a(this.TAG, "receive personal video upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
       c(paramStoryDetailPresenter, paramStoryVideoPublishStatusEvent);

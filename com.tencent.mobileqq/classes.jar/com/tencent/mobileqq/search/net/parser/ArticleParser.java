@@ -25,25 +25,25 @@ public class ArticleParser
     if (paramList != null)
     {
       GroupNetSearchModelArticleItem localGroupNetSearchModelArticleItem = (GroupNetSearchModelArticleItem)paramList.get(0);
-      if ((localGroupNetSearchModelArticleItem != null) && (localGroupNetSearchModelArticleItem.a() != null))
+      if ((localGroupNetSearchModelArticleItem != null) && (localGroupNetSearchModelArticleItem.j() != null))
       {
-        String str1 = localGroupNetSearchModelArticleItem.a().hotword.get();
-        String str2 = localGroupNetSearchModelArticleItem.b();
-        int i = localGroupNetSearchModelArticleItem.a().hotword_type.get();
+        String str1 = localGroupNetSearchModelArticleItem.j().hotword.get();
+        String str2 = localGroupNetSearchModelArticleItem.g();
+        int i = localGroupNetSearchModelArticleItem.j().hotword_type.get();
         ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, str2, str1, String.valueOf(i), "");
       }
-      if ((localGroupNetSearchModelArticleItem == null) || (localGroupNetSearchModelArticleItem.a() == null)) {
+      if ((localGroupNetSearchModelArticleItem == null) || (localGroupNetSearchModelArticleItem.i() == null)) {
         if (paramList.size() > 1) {
           localGroupNetSearchModelArticleItem = (GroupNetSearchModelArticleItem)paramList.get(1);
         } else {
           localGroupNetSearchModelArticleItem = null;
         }
       }
-      if ((localGroupNetSearchModelArticleItem != null) && (localGroupNetSearchModelArticleItem.a() != null)) {
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localGroupNetSearchModelArticleItem.a().account_id.get()));
+      if ((localGroupNetSearchModelArticleItem != null) && (localGroupNetSearchModelArticleItem.i() != null)) {
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localGroupNetSearchModelArticleItem.i().account_id.get()));
       }
     }
-    SearchStatisticsConstants.a(110);
+    SearchStatisticsConstants.b(110);
     this.a = paramString2;
     return new GroupNetSearchModelArticle(paramSearchResult, paramList, paramString1, paramString2);
   }
@@ -60,7 +60,7 @@ public class ArticleParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.ArticleParser
  * JD-Core Version:    0.7.0.1
  */

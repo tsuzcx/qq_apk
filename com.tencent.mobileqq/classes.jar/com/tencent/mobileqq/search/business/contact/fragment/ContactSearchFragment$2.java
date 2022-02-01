@@ -29,46 +29,46 @@ class ContactSearchFragment$2
   
   protected IPresenter<ISearchResultModel, ISearchResultView> a(int paramInt)
   {
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == -1) {
-      return new SelectMemberContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment), ContactSearchFragment.b(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment));
+    if (ContactSearchFragment.a(this.a) == -1) {
+      return new SelectMemberContactSearchResultPresenter(this.b, ContactSearchFragment.b(this.a), ContactSearchFragment.c(this.a), ContactSearchFragment.d(this.a));
     }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 17) {
-      return new ContactSearchResultMobilePresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment));
+    if (ContactSearchFragment.a(this.a) == 17) {
+      return new ContactSearchResultMobilePresenter(this.b, ContactSearchFragment.b(this.a));
     }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 19) {
-      return new ContactSearchResultMobileMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment));
+    if (ContactSearchFragment.a(this.a) == 19) {
+      return new ContactSearchResultMobileMultiPresenter(this.b, ContactSearchFragment.b(this.a), ContactSearchFragment.e(this.a));
     }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 23) {
-      return new TroopAddFrdsSrchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, null);
+    if (ContactSearchFragment.a(this.a) == 23) {
+      return new TroopAddFrdsSrchResultPresenter(this.b, null);
     }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 24) {
-      return new TroopAddFrdsSrchResultMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment));
+    if (ContactSearchFragment.a(this.a) == 24) {
+      return new TroopAddFrdsSrchResultMultiPresenter(this.b, ContactSearchFragment.b(this.a), ContactSearchFragment.c(this.a));
     }
-    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment));
+    return new ContactSearchResultPresenter(this.b, ContactSearchFragment.b(this.a), ContactSearchFragment.c(this.a));
   }
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    if ((!SearchUtils.a(ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment))) && (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) != 5) && (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) != 8))
+    if ((!SearchUtils.b(ContactSearchFragment.a(this.a))) && (ContactSearchFragment.a(this.a) != 5) && (ContactSearchFragment.a(this.a) != 8))
     {
-      if ((ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) != -1) && (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) != 19) && (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) != 24))
+      if ((ContactSearchFragment.a(this.a) != -1) && (ContactSearchFragment.a(this.a) != 19) && (ContactSearchFragment.a(this.a) != 24))
       {
-        if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 17) {
-          return new ContactSearchResultMobileView(paramViewGroup, 2131561031);
+        if (ContactSearchFragment.a(this.a) == 17) {
+          return new ContactSearchResultMobileView(paramViewGroup, 2131627372);
         }
-        if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactFragmentContactSearchFragment) == 23) {
-          return new TroopAddFrdsSrchResultView(paramViewGroup, 2131561031);
+        if (ContactSearchFragment.a(this.a) == 23) {
+          return new TroopAddFrdsSrchResultView(paramViewGroup, 2131627372);
         }
-        return new ContactSearchResultView(paramViewGroup, 2131562790);
+        return new ContactSearchResultView(paramViewGroup, 2131629235);
       }
-      return new ContactSearchResultView(paramViewGroup, 2131562791);
+      return new ContactSearchResultView(paramViewGroup, 2131629236);
     }
-    return new ContactSearchResultView(paramViewGroup, 2131562792);
+    return new ContactSearchResultView(paramViewGroup, 2131629237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.fragment.ContactSearchFragment.2
  * JD-Core Version:    0.7.0.1
  */

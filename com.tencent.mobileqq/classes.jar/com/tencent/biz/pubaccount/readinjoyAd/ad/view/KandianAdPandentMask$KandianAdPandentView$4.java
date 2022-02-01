@@ -14,13 +14,13 @@ class KandianAdPandentMask$KandianAdPandentView$4
     if (paramInt == 7)
     {
       QLog.d("ReadInJoySuperMaskAd", 2, "Vpng play completion!");
-      KandianAdPandentMask.KandianAdPandentView.a(this.a).sendEmptyMessage(2);
+      KandianAdPandentMask.KandianAdPandentView.b(this.a).sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.4
  * JD-Core Version:    0.7.0.1
  */

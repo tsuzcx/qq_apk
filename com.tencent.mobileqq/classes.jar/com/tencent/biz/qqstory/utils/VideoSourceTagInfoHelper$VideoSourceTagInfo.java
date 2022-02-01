@@ -3,14 +3,14 @@ package com.tencent.biz.qqstory.utils;
 class VideoSourceTagInfoHelper$VideoSourceTagInfo
 {
   public final int a;
-  public final String a;
   public final String b;
+  public final String c;
   
   public VideoSourceTagInfoHelper$VideoSourceTagInfo(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = paramInt;
+    this.b = paramString1;
+    this.c = paramString2;
   }
 }
 

@@ -16,24 +16,24 @@ class OfflineFileBubbleModel$2
 {
   OfflineFileBubbleModel$2(OfflineFileBubbleModel paramOfflineFileBubbleModel, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerRSCenter().a(OfflineFileBubbleModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel).uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L);
-    paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, OfflineFileBubbleModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel));
+    this.b.b.getFileManagerRSCenter().a(OfflineFileBubbleModel.a(this.b).uniseq, this.b.d.b, this.b.d.a, -1L);
+    paramView = FileManagerUtil.a(this.b.b, OfflineFileBubbleModel.a(this.b));
     if (paramView.status == 16)
     {
-      FMToastUtil.a(2131692717);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      FMToastUtil.a(2131889788);
+      this.a.cancel();
       return;
     }
-    OfflineFileBubbleModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel).status = 1002;
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    OfflineFileBubbleModel.a(this.b).status = 1002;
+    FileManagerUtil.a(this.b.c, paramView, this.b.b, true);
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.2
  * JD-Core Version:    0.7.0.1
  */

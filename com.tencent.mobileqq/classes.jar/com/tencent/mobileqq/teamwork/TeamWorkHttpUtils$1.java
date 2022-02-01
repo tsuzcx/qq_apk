@@ -9,19 +9,19 @@ final class TeamWorkHttpUtils$1
   
   public void run()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.a;
     if (arrayOfInt[0] >= 99)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTenDocOCRExportHandler.notifyUI(4, true, new Object[] { Integer.valueOf(99) });
+      this.b.notifyUI(4, true, new Object[] { Integer.valueOf(99) });
       return;
     }
     arrayOfInt[0] += 2;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTenDocOCRExportHandler.notifyUI(4, true, new Object[] { Integer.valueOf(arrayOfInt[0]) });
+    this.b.notifyUI(4, true, new Object[] { Integer.valueOf(arrayOfInt[0]) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkHttpUtils.1
  * JD-Core Version:    0.7.0.1
  */

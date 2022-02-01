@@ -443,15 +443,18 @@ public class MiniLoadingAdManager
     return true;
   }
   
-  public void updateLoadingAdLayoutAndShow(MiniAppInfo paramMiniAppInfo, Activity paramActivity, boolean paramBoolean, String paramString, long paramLong1, long paramLong2, MiniLoadingAdManager.OnDismissListener paramOnDismissListener)
+  public void updateLoadingAdLayoutAndShow(MiniAppInfo paramMiniAppInfo, Activity paramActivity, boolean paramBoolean, String paramString, long paramLong1, long paramLong2, @NonNull MiniLoadingAdManager.OnDismissListener paramOnDismissListener)
   {
     if ((AdProxy)ProxyManager.get(AdProxy.class) == null)
     {
       QMLog.i("MiniLoadingAdManager", "start create, null");
+      paramOnDismissListener.onDismiss();
       return;
     }
     String str = (String)cachedAidFilePathMap.get(Long.valueOf(paramLong1));
-    if (TextUtils.isEmpty(str)) {
+    if (TextUtils.isEmpty(str))
+    {
+      paramOnDismissListener.onDismiss();
       return;
     }
     SDKMiniProgramLpReportDC04239.reportMiniAppEvent(paramMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(paramMiniAppInfo), null, "ad", "ad_loading", "expo_call", null);
@@ -460,7 +463,7 @@ public class MiniLoadingAdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager
  * JD-Core Version:    0.7.0.1
  */

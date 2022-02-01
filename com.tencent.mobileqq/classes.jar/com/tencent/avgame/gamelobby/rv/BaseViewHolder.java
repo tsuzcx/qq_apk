@@ -11,14 +11,13 @@ public abstract class BaseViewHolder<T extends IBaseData>
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  protected int a;
   protected T a;
-  protected BaseViewHolder.OnClickListener a;
+  protected int b;
+  protected BaseViewHolder.OnClickListener c = null;
   
   public BaseViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener = null;
   }
   
   protected void a() {}
@@ -32,7 +31,7 @@ public abstract class BaseViewHolder<T extends IBaseData>
   
   public void a(BaseViewHolder.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener = paramOnClickListener;
+    this.c = paramOnClickListener;
   }
   
   public void a(ViewHolderContext paramViewHolderContext, T paramT, int paramInt) {}
@@ -41,22 +40,22 @@ public abstract class BaseViewHolder<T extends IBaseData>
   {
     if (paramIBaseData != null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData = paramIBaseData;
-      a(paramViewHolderContext, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData, paramInt);
+      this.a = paramIBaseData;
+      a(paramViewHolderContext, this.a, paramInt);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData = null;
+      this.a = null;
       a(paramViewHolderContext, null, paramInt);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    BaseViewHolder.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener;
+    BaseViewHolder.OnClickListener localOnClickListener = this.c;
     if (localOnClickListener != null) {
-      localOnClickListener.a(paramView, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData, this.jdField_a_of_type_Int);
+      localOnClickListener.a(paramView, this.a, this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

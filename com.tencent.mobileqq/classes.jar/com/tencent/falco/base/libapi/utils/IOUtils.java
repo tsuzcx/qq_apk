@@ -6,20 +6,19 @@ import java.io.StringWriter;
 
 class IOUtils
 {
-  public static final char a;
-  public static final String a;
+  public static final char a = File.separatorChar;
+  public static final String b;
   
   static
   {
-    jdField_a_of_type_Char = File.separatorChar;
     StringWriter localStringWriter = new StringWriter(4);
     new PrintWriter(localStringWriter).println();
-    jdField_a_of_type_JavaLangString = localStringWriter.toString();
+    b = localStringWriter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.falco.base.libapi.utils.IOUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -17,16 +17,16 @@ public class MusicDanceDrawable
   extends Drawable
   implements FloatingWindowDrawable, Runnable
 {
-  private static List<Double>[] jdField_a_of_type_ArrayOfJavaUtilList;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<MusicDanceDrawable.MusicBar> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private static List<Double>[] i;
+  private Paint a;
+  private List<MusicDanceDrawable.MusicBar> b;
   private int c;
   private int d;
   private int e;
-  private int f = 0;
+  private int f;
+  private int g;
+  private boolean h;
+  private int j = 0;
   
   private static int a(float paramFloat, Resources paramResources)
   {
@@ -38,27 +38,27 @@ public class MusicDanceDrawable
   
   public void a(int paramInt)
   {
-    if (jdField_a_of_type_ArrayOfJavaUtilList == null)
+    if (i == null)
     {
-      jdField_a_of_type_ArrayOfJavaUtilList = new ArrayList[3];
+      i = new ArrayList[3];
       paramInt = 0;
       while (paramInt < 3)
       {
-        jdField_a_of_type_ArrayOfJavaUtilList[paramInt] = new ArrayList();
+        i[paramInt] = new ArrayList();
         paramInt += 1;
       }
       for (double d1 = 0.0D; d1 < 3.141592653589793D; d1 += 0.05D)
       {
-        jdField_a_of_type_ArrayOfJavaUtilList[0].add(Double.valueOf(Math.abs(Math.sin(d1 + 0.0D))));
-        jdField_a_of_type_ArrayOfJavaUtilList[1].add(Double.valueOf(Math.abs(Math.sin(1.0D + d1))));
-        jdField_a_of_type_ArrayOfJavaUtilList[2].add(Double.valueOf(Math.abs(Math.sin(2.0D + d1))));
+        i[0].add(Double.valueOf(Math.abs(Math.sin(d1 + 0.0D))));
+        i[1].add(Double.valueOf(Math.abs(Math.sin(1.0D + d1))));
+        i[2].add(Double.valueOf(Math.abs(Math.sin(2.0D + d1))));
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
       scheduleSelf(this, 0L);
       invalidateSelf();
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("MusicDanceView", 2, "start music animation");
@@ -67,7 +67,7 @@ public class MusicDanceDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new MusicDanceDrawable.MusicBar(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.b.add(new MusicDanceDrawable.MusicBar(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2)
@@ -77,21 +77,21 @@ public class MusicDanceDrawable
   
   public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt3);
-    this.b = paramInt2;
-    this.c = a(2.0F, paramContext.getResources());
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.b = new ArrayList();
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setColor(paramInt3);
+    this.d = paramInt2;
+    this.e = a(2.0F, paramContext.getResources());
     paramContext = (IAppSettingApi)QRoute.api(IAppSettingApi.class);
-    if ((this.c < 0) && (paramContext.isDebugVersion())) {
+    if ((this.e < 0) && (paramContext.isDebugVersion())) {
       throw new IllegalStateException("MusicDanceView#mBarPadding mast > 0");
     }
-    paramInt3 = (paramInt1 - this.c * 2) / 3;
+    paramInt3 = (paramInt1 - this.e * 2) / 3;
     paramInt1 = 0;
-    while ((this.jdField_a_of_type_JavaUtilList.size() < 3) && (paramInt1 < 3))
+    while ((this.b.size() < 3) && (paramInt1 < 3))
     {
       a(0, paramInt2, paramInt3, -1);
       paramInt1 += 1;
@@ -100,25 +100,25 @@ public class MusicDanceDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int k = 0;
+    this.c = 0;
+    while (k < this.b.size())
     {
-      MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - MusicDanceDrawable.MusicBar.a(localMusicBar), this.jdField_a_of_type_Int + MusicDanceDrawable.MusicBar.b(localMusicBar), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_Int += MusicDanceDrawable.MusicBar.b(localMusicBar) + this.c;
-      i += 1;
+      MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.b.get(k);
+      paramCanvas.drawRect(this.c, this.d - MusicDanceDrawable.MusicBar.a(localMusicBar), this.c + MusicDanceDrawable.MusicBar.b(localMusicBar), this.d, this.a);
+      this.c += MusicDanceDrawable.MusicBar.b(localMusicBar) + this.e;
+      k += 1;
     }
   }
   
   public int getIntrinsicHeight()
   {
-    return this.e;
+    return this.g;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.d;
+    return this.f;
   }
   
   public int getOpacity()
@@ -128,23 +128,23 @@ public class MusicDanceDrawable
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      int k = 0;
+      while (k < this.b.size())
       {
-        double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
-        MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.jdField_a_of_type_JavaUtilList.get(i);
+        double d1 = ((Double)i[k].get(this.j)).doubleValue();
+        MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.b.get(k);
         double d2 = MusicDanceDrawable.MusicBar.c(localMusicBar);
         Double.isNaN(d2);
         localMusicBar.a((int)(d2 * d1));
-        i += 1;
+        k += 1;
       }
       scheduleSelf(this, 50L);
       invalidateSelf();
-      this.f += 1;
-      if (this.f >= jdField_a_of_type_ArrayOfJavaUtilList[0].size()) {
-        this.f = 0;
+      this.j += 1;
+      if (this.j >= i[0].size()) {
+        this.j = 0;
       }
     }
   }
@@ -155,12 +155,12 @@ public class MusicDanceDrawable
   
   public void stop()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.h = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.MusicDanceDrawable
  * JD-Core Version:    0.7.0.1
  */

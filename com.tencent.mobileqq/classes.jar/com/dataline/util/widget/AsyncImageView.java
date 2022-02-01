@@ -21,13 +21,13 @@ import java.net.URL;
 public class AsyncImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a = 0;
+  private int b = 0;
   private int c = 0;
-  private int d = Color.parseColor("#C8C8C8");
+  private Drawable d = null;
+  private boolean e = true;
+  private int f = Color.parseColor("#C8C8C8");
+  private boolean g = false;
   
   public AsyncImageView(Context paramContext)
   {
@@ -49,7 +49,7 @@ public class AsyncImageView
     if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
       Object localObject;
-      if (FileManagerUtil.a(paramString) == 2)
+      if (FileManagerUtil.c(paramString) == 2)
       {
         localObject = "videothumb";
       }
@@ -97,13 +97,13 @@ public class AsyncImageView
   
   public void setAsyncClipSize(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   public void setAsyncImage(String paramString)
   {
-    URL localURL = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    URL localURL = a(paramString, this.a, this.b, this.e);
     if ((getDrawable() instanceof URLDrawable))
     {
       paramString = (URLDrawable)getDrawable();
@@ -115,10 +115,10 @@ public class AsyncImageView
         return;
       }
     }
-    paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramString = this.d;
     if (paramString == null) {
-      if (this.jdField_b_of_type_Boolean) {
-        paramString = new ColorDrawable(this.d);
+      if (this.g) {
+        paramString = new ColorDrawable(this.f);
       } else {
         paramString = getResources().getDrawable(this.c);
       }
@@ -129,10 +129,10 @@ public class AsyncImageView
     localURLDrawableOptions.mPlayGifImage = false;
     localURLDrawableOptions.mGifRoundCorner = 0.0F;
     localURLDrawableOptions.mDecodeFileStrategy = 3;
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i > 0)
     {
-      int j = this.jdField_b_of_type_Int;
+      int j = this.b;
       if (j > 0)
       {
         localURLDrawableOptions.mRequestWidth = i;
@@ -150,42 +150,42 @@ public class AsyncImageView
   
   public void setDefaultColorDrawable(int paramInt)
   {
-    this.d = paramInt;
-    this.jdField_b_of_type_Boolean = true;
+    this.f = paramInt;
+    this.g = true;
   }
   
   public void setDefaultImage(int paramInt)
   {
     this.c = paramInt;
-    this.jdField_b_of_type_Boolean = false;
+    this.g = false;
   }
   
   public void setDefaultImageByMargin()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
+    int i = this.a;
+    int j = this.b;
     Resources localResources = getResources();
     if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.d = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
     if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+      this.d = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.getLoadingDrawable();
+    this.d = URLDrawableHelper.getLoadingDrawable();
   }
   
   public void setImageDrawableDefault()
   {
-    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    setImageDrawable(this.d);
   }
   
   public void setIsDrawRound(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 

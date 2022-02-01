@@ -26,48 +26,48 @@ public class WSMarqueeDirector
   extends WSViewDirector
   implements View.OnClickListener, View.OnTouchListener, ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static int jdField_a_of_type_Int = ScreenUtil.dip2px(60.0F);
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final HorizontalScrollView jdField_a_of_type_AndroidWidgetHorizontalScrollView;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final WSMarqueeDirector.MarqueeAnimAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$MarqueeAnimAdapter = new WSMarqueeDirector.MarqueeAnimAdapter(this, null);
-  private WSMarqueeDirector.OnTextContentListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private final TextView c;
-  private final TextView d;
+  private static int b = ScreenUtil.dip2px(60.0F);
+  private Context c;
+  private final HorizontalScrollView d;
+  private final LinearLayout e;
+  private final TextView f;
+  private final TextView g;
+  private final TextView h;
+  private final TextView i;
+  private final WSMarqueeDirector.MarqueeAnimAdapter j = new WSMarqueeDirector.MarqueeAnimAdapter(this, null);
+  private WSMarqueeDirector.OnTextContentListener k;
+  private ValueAnimator l;
+  private int m;
+  private boolean n = false;
+  private boolean o = false;
   
   public WSMarqueeDirector(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)a(2131368322));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131370275));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131370693));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131370694));
-    this.c = ((TextView)a(2131370695));
-    this.d = ((TextView)a(2131370696));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c.setOnClickListener(this);
-    this.d.setOnClickListener(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.c = paramView.getContext();
+    this.d = ((HorizontalScrollView)a(2131435197));
+    this.e = ((LinearLayout)a(2131437494));
+    this.f = ((TextView)a(2131437970));
+    this.g = ((TextView)a(2131437971));
+    this.h = ((TextView)a(2131437972));
+    this.i = ((TextView)a(2131437973));
+    this.d.setOnTouchListener(this);
+    this.f.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    this.n = false;
     if (Build.VERSION.SDK_INT > 15) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
+      this.e.getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.c.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.c.setVisibility(8);
+    this.f.setText("");
+    this.h.setText("");
+    this.f.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   public void a(int paramInt, String paramString, Object paramObject)
@@ -77,31 +77,31 @@ public class WSMarqueeDirector
       a();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.c.setVisibility(8);
-    Drawable localDrawable = a().getResources().getDrawable(paramInt);
+    this.f.setVisibility(0);
+    this.h.setVisibility(8);
+    Drawable localDrawable = g().getResources().getDrawable(paramInt);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(WeishiUIUtil.c);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(paramObject);
-    this.c.setCompoundDrawables(localDrawable, null, null, null);
-    this.c.setCompoundDrawablePadding(WeishiUIUtil.c);
-    this.c.setText(paramString);
-    this.c.setTag(paramObject);
+    this.f.setCompoundDrawables(localDrawable, null, null, null);
+    this.f.setCompoundDrawablePadding(WeishiUIUtil.c);
+    this.f.setText(paramString);
+    this.f.setTag(paramObject);
+    this.h.setCompoundDrawables(localDrawable, null, null, null);
+    this.h.setCompoundDrawablePadding(WeishiUIUtil.c);
+    this.h.setText(paramString);
+    this.h.setTag(paramObject);
   }
   
   public void a(WSMarqueeDirector.OnTextContentListener paramOnTextContentListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener = paramOnTextContentListener;
+    this.k = paramOnTextContentListener;
   }
   
   public void b()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.d.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d.setVisibility(8);
+    this.g.setText("");
+    this.i.setText("");
+    this.g.setVisibility(8);
+    this.i.setVisibility(8);
   }
   
   public void b(int paramInt, String paramString, Object paramObject)
@@ -111,86 +111,86 @@ public class WSMarqueeDirector
       b();
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.d.setVisibility(8);
-    Drawable localDrawable = a().getResources().getDrawable(paramInt);
+    this.g.setVisibility(0);
+    this.i.setVisibility(8);
+    Drawable localDrawable = g().getResources().getDrawable(paramInt);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(WeishiUIUtil.c);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTag(paramObject);
-    this.d.setCompoundDrawables(localDrawable, null, null, null);
-    this.d.setCompoundDrawablePadding(WeishiUIUtil.c);
-    this.d.setText(paramString);
-    this.d.setTag(paramObject);
+    this.g.setCompoundDrawables(localDrawable, null, null, null);
+    this.g.setCompoundDrawablePadding(WeishiUIUtil.c);
+    this.g.setText(paramString);
+    this.g.setTag(paramObject);
+    this.i.setCompoundDrawables(localDrawable, null, null, null);
+    this.i.setCompoundDrawablePadding(WeishiUIUtil.c);
+    this.i.setText(paramString);
+    this.i.setTag(paramObject);
   }
   
   public void c()
   {
     f();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.n)
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.o = true;
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
-    int i = this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getWidth();
-    this.jdField_b_of_type_Int = 0;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) {
-      this.jdField_b_of_type_Int += this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
+    this.o = false;
+    int i1 = this.d.getWidth();
+    this.m = 0;
+    if (!TextUtils.isEmpty(this.f.getText())) {
+      this.m += this.f.getWidth();
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
-      this.jdField_b_of_type_Int += this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
+    if (!TextUtils.isEmpty(this.g.getText())) {
+      this.m += this.g.getWidth();
     }
-    if (this.jdField_b_of_type_Int - i < 1)
+    if (this.m - i1 < 1)
     {
-      this.c.setVisibility(8);
-      this.d.setVisibility(8);
+      this.h.setVisibility(8);
+      this.i.setVisibility(8);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startAnim:  A text:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    localStringBuilder.append(this.f.getText());
     localStringBuilder.append(",B text:");
-    localStringBuilder.append(this.jdField_b_of_type_AndroidWidgetTextView.getText());
+    localStringBuilder.append(this.g.getText());
     localStringBuilder.append(" , A width:");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getWidth());
+    localStringBuilder.append(this.f.getWidth());
     localStringBuilder.append(" , B width:");
-    localStringBuilder.append(this.jdField_b_of_type_AndroidWidgetTextView.getWidth());
+    localStringBuilder.append(this.g.getWidth());
     localStringBuilder.append(" , ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.m);
     WSLog.a("WSMarqueeDirector", localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView.isShown()) {
-        this.c.setVisibility(0);
+      if (this.f.isShown()) {
+        this.h.setVisibility(0);
       } else {
-        this.c.setVisibility(8);
+        this.h.setVisibility(8);
       }
-      if (this.jdField_b_of_type_AndroidWidgetTextView.isShown()) {
-        this.d.setVisibility(0);
+      if (this.g.isShown()) {
+        this.i.setVisibility(0);
       } else {
-        this.d.setVisibility(8);
+        this.i.setVisibility(8);
       }
-      i = this.jdField_b_of_type_Int * 2;
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, i });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(i * 1000 / jdField_a_of_type_Int + 1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$MarqueeAnimAdapter);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$MarqueeAnimAdapter);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      i1 = this.m * 2;
+      this.l = ValueAnimator.ofInt(new int[] { 0, i1 });
+      this.l.setDuration(i1 * 1000 / b + 1);
+      this.l.addListener(this.j);
+      this.l.addUpdateListener(this.j);
+      this.l.setRepeatCount(-1);
+      this.l.setInterpolator(new LinearInterpolator());
+      this.l.start();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
+    if (this.l == null) {
       return;
     }
     if (Build.VERSION.SDK_INT > 19)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
+      this.l.pause();
       return;
     }
     f();
@@ -198,12 +198,12 @@ public class WSMarqueeDirector
   
   public void e()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
+    if (this.l == null) {
       return;
     }
     if (Build.VERSION.SDK_INT > 19)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();
+      this.l.resume();
       return;
     }
     c();
@@ -211,12 +211,12 @@ public class WSMarqueeDirector
   
   public void f()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.l;
     if (localValueAnimator == null) {
       return;
     }
     localValueAnimator.cancel();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    this.l = null;
   }
   
   public void onClick(View paramView)
@@ -225,16 +225,16 @@ public class WSMarqueeDirector
     {
     default: 
       return;
-    case 2131370694: 
-    case 2131370696: 
-      localOnTextContentListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener;
+    case 2131437971: 
+    case 2131437973: 
+      localOnTextContentListener = this.k;
       if (localOnTextContentListener == null) {
         return;
       }
       localOnTextContentListener.b(paramView.getTag());
       return;
     }
-    WSMarqueeDirector.OnTextContentListener localOnTextContentListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener;
+    WSMarqueeDirector.OnTextContentListener localOnTextContentListener = this.k;
     if (localOnTextContentListener == null) {
       return;
     }
@@ -244,11 +244,11 @@ public class WSMarqueeDirector
   public void onGlobalLayout()
   {
     if (Build.VERSION.SDK_INT > 15) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.e.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
     WSLog.a("WSMarqueeDirector", "onGlobalLayout: ");
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean) {
+    this.n = true;
+    if (this.o) {
       c();
     }
   }
@@ -260,7 +260,7 @@ public class WSMarqueeDirector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSMarqueeDirector
  * JD-Core Version:    0.7.0.1
  */

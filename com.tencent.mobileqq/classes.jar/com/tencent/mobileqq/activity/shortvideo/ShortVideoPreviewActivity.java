@@ -460,7 +460,7 @@ public class ShortVideoPreviewActivity
     this.mVideoSize = new File(this.mVideoPath).length();
     if ((NetworkUtil.isNetworkAvailable(this)) && (!NetworkUtil.isWifiConnected(this)) && (this.mVideoSize > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      FMDialogUtil.a(this, 2131692561, 2131692566, new ShortVideoPreviewActivity.17(this));
+      FMDialogUtil.a(this, 2131889584, 2131889589, new ShortVideoPreviewActivity.17(this));
       return;
     }
     sendVideo();
@@ -547,25 +547,25 @@ public class ShortVideoPreviewActivity
         QLog.d("ShortVideoPreviewActivity", 2, ((StringBuilder)localObject).toString());
       }
     }
-    super.setContentView(2131561486);
-    this.mSurfaceView = ((SurfaceView)findViewById(2131378132));
+    super.setContentView(2131627843);
+    this.mSurfaceView = ((SurfaceView)findViewById(2131446641));
     this.mSurfaceView.getHolder().setType(3);
     this.mSurfaceView.getHolder().addCallback(this.mCallback);
     this.mSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new ShortVideoPreviewActivity.2(this));
-    this.mCover = ((ImageView)findViewById(2131365284));
-    this.mCancelBtn = ((TextView)findViewById(2131364260));
+    this.mCover = ((ImageView)findViewById(2131431458));
+    this.mCancelBtn = ((TextView)findViewById(2131430273));
     this.mCancelBtn.setOnClickListener(this);
-    this.mSendBtn = ((TextView)findViewById(2131377189));
+    this.mSendBtn = ((TextView)findViewById(2131445570));
     this.mSendBtn.setOnClickListener(this);
-    this.mOperatorBtn = ((ImageView)findViewById(2131372192));
+    this.mOperatorBtn = ((ImageView)findViewById(2131439679));
     this.mOperatorBtn.setOnClickListener(this);
-    this.seekBarLayout = ((LinearLayout)findViewById(2131371937));
-    this.progressTimeMp = ((TextView)findViewById(2131373131));
-    this.totalTimeMp = ((TextView)findViewById(2131379064));
-    this.operatorBtnSeekBar = ((ImageView)findViewById(2131372193));
-    this.operatorBtnSeekBar.setImageResource(2130846309);
+    this.seekBarLayout = ((LinearLayout)findViewById(2131439382));
+    this.progressTimeMp = ((TextView)findViewById(2131440736));
+    this.totalTimeMp = ((TextView)findViewById(2131447788));
+    this.operatorBtnSeekBar = ((ImageView)findViewById(2131439680));
+    this.operatorBtnSeekBar.setImageResource(2130847780);
     this.operatorBtnSeekBar.setOnClickListener(this);
-    this.seekBarMp = ((SeekBar)findViewById(2131377125));
+    this.seekBarMp = ((SeekBar)findViewById(2131445498));
     this.seekBarMp.setVisibility(0);
     this.seekBarMp.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
     this.mCover.getViewTreeObserver().addOnGlobalLayoutListener(new ShortVideoPreviewActivity.3(this));
@@ -612,12 +612,12 @@ public class ShortVideoPreviewActivity
   
   int getPlayState()
   {
-    return this.mMediaPlayer.a();
+    return this.mMediaPlayer.c();
   }
   
   String getPlayStateStr(int paramInt)
   {
-    return LocalVideoMediaPlayer.a(paramInt);
+    return LocalVideoMediaPlayer.b(paramInt);
   }
   
   void handleSendVideo()
@@ -637,10 +637,10 @@ public class ShortVideoPreviewActivity
     this.mVideoSize = new File(this.mVideoPath).length();
     if (i != 0)
     {
-      if (Utils.b() > 512000L)
+      if (Utils.c() > 512000L)
       {
         boolean bool;
-        if ((SVBusiUtil.b != 0L) && (System.currentTimeMillis() - SVBusiUtil.b < 300000L)) {
+        if ((SVBusiUtil.c != 0L) && (System.currentTimeMillis() - SVBusiUtil.c < 300000L)) {
           bool = true;
         } else {
           bool = false;
@@ -651,7 +651,7 @@ public class ShortVideoPreviewActivity
           ((StringBuilder)localObject).append("upload video isConfirmed=");
           ((StringBuilder)localObject).append(bool);
           ((StringBuilder)localObject).append(" allowUploadInXGTime=");
-          ((StringBuilder)localObject).append(SVBusiUtil.b);
+          ((StringBuilder)localObject).append(SVBusiUtil.c);
           QLog.d("ShortVideoPreviewActivity", 2, ((StringBuilder)localObject).toString());
         }
         if ((NetworkUtil.isMobileNetWork(this)) && (!bool))
@@ -660,7 +660,7 @@ public class ShortVideoPreviewActivity
           if (l >= 1048576L)
           {
             localObject = ShortVideoUtils.stringForFileSize(this, l);
-            localObject = String.format(getResources().getString(2131719084), new Object[] { localObject });
+            localObject = String.format(getResources().getString(2131916620), new Object[] { localObject });
             ShortVideoPreviewActivity.13 local13 = new ShortVideoPreviewActivity.13(this);
             if (!FreeWifiHelper.a(this, 4, new ShortVideoPreviewActivity.14(this, local13))) {
               break label299;
@@ -673,12 +673,12 @@ public class ShortVideoPreviewActivity
       }
       else
       {
-        showAlertDialog(this, 2131719108);
+        showAlertDialog(this, 2131916644);
       }
       label299:
       return;
     }
-    QQToast.a(this, 1, 2131718574, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, 1, 2131916075, 0).show(getTitleBarHeight());
   }
   
   void initData(Intent paramIntent)
@@ -747,7 +747,7 @@ public class ShortVideoPreviewActivity
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoPreviewActivity", 2, "ShortVideoPreviewActivity initData(),mVideoPath or mUin is empty or mVideoPath not exits, just finish.");
       }
-      QQToast.a(this, 2131719091, 0).a();
+      QQToast.makeText(this, 2131916627, 0).show();
       super.finish();
     }
   }
@@ -761,7 +761,7 @@ public class ShortVideoPreviewActivity
     {
     default: 
       break;
-    case 2131377189: 
+    case 2131445570: 
       i = this.mDestType;
       if (i != 0)
       {
@@ -794,7 +794,7 @@ public class ShortVideoPreviewActivity
                 localArrayList.add(this.mVideoPath);
                 d = this.mVideoSize;
                 Double.isNaN(d);
-                DialogUtil.a(this, 232, null, getString(2131697746, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(d / 1024.0D / 1024.0D) }) }), new ShortVideoPreviewActivity.9(this, (Intent)localObject, localArrayList), new ShortVideoPreviewActivity.10(this)).show();
+                DialogUtil.a(this, 232, null, getString(2131895519, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(d / 1024.0D / 1024.0D) }) }), new ShortVideoPreviewActivity.9(this, (Intent)localObject, localArrayList), new ShortVideoPreviewActivity.10(this)).show();
                 break;
               }
               handleSendVideo2Dataline();
@@ -805,7 +805,7 @@ public class ShortVideoPreviewActivity
           {
             d = this.mVideoSize;
             Double.isNaN(d);
-            DialogUtil.a(this, 232, null, getString(2131697746, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(d / 1024.0D / 1024.0D) }) }), new ShortVideoPreviewActivity.11(this), new ShortVideoPreviewActivity.12(this)).show();
+            DialogUtil.a(this, 232, null, getString(2131895519, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(d / 1024.0D / 1024.0D) }) }), new ShortVideoPreviewActivity.11(this), new ShortVideoPreviewActivity.12(this)).show();
             localObject = new Intent("key_video_select_apply_click");
             ((Intent)localObject).putExtra("className", super.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME"));
             sendBroadcast((Intent)localObject);
@@ -825,7 +825,7 @@ public class ShortVideoPreviewActivity
         handleSendVideo();
       }
       break;
-    case 2131372193: 
+    case 2131439680: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -857,23 +857,23 @@ public class ShortVideoPreviewActivity
           }
           else
           {
-            this.operatorBtnSeekBar.setImageResource(2130846309);
+            this.operatorBtnSeekBar.setImageResource(2130847780);
             resume();
           }
         }
         else
         {
-          this.operatorBtnSeekBar.setImageResource(2130846308);
+          this.operatorBtnSeekBar.setImageResource(2130847779);
           pause();
         }
       }
       else if (this.app.isVideoChatting()) {
-        QQToast.a(this, 0, 2131719097, 0).a();
+        QQToast.makeText(this, 0, 2131916633, 0).show();
       } else {
         play(0);
       }
       break;
-    case 2131372192: 
+    case 2131439679: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -912,12 +912,12 @@ public class ShortVideoPreviewActivity
         }
       }
       else if (this.app.isVideoChatting()) {
-        QQToast.a(this, 0, 2131719097, 0).a();
+        QQToast.makeText(this, 0, 2131916633, 0).show();
       } else {
         play(0);
       }
       break;
-    case 2131364260: 
+    case 2131430273: 
       super.finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -934,7 +934,7 @@ public class ShortVideoPreviewActivity
   {
     super.onSaveInstanceState(paramBundle);
     if ((getPlayState() == 1) || (getPlayState() == 2)) {
-      this.mSavedCurPosition = this.mMediaPlayer.b();
+      this.mSavedCurPosition = this.mMediaPlayer.g();
     }
     this.mSavedPlayState = getPlayState();
     paramBundle.putInt("state_play_state", getPlayState());
@@ -968,14 +968,14 @@ public class ShortVideoPreviewActivity
     if (VersionUtils.b()) {
       ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
     }
-    this.mMediaPlayer.b();
+    this.mMediaPlayer.e();
   }
   
   void play(int paramInt)
   {
     if (!FileUtils.fileExistsAndNotEmpty(this.mVideoPath))
     {
-      QQToast.a(this, 2131719091, 0).a();
+      QQToast.makeText(this, 2131916627, 0).show();
       return;
     }
     this.mMediaPlayer.a(this.mCompleteListener);
@@ -1000,14 +1000,14 @@ public class ShortVideoPreviewActivity
         return;
       }
     }
-    DialogUtil.a(this, 232, null, getString(2131719117), new ShortVideoPreviewActivity.5(this), null).show();
+    DialogUtil.a(this, 232, null, getString(2131916653), new ShortVideoPreviewActivity.5(this), null).show();
   }
   
   void releaseMediaPlayer()
   {
     IMediaPlayer localIMediaPlayer = this.mMediaPlayer;
     if (localIMediaPlayer != null) {
-      localIMediaPlayer.c();
+      localIMediaPlayer.f();
     }
   }
   
@@ -1021,7 +1021,7 @@ public class ShortVideoPreviewActivity
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPreviewActivity", 2, "#resume#");
     }
-    this.mMediaPlayer.a();
+    this.mMediaPlayer.b();
     if (VersionUtils.b()) {
       ((AudioManager)getSystemService("audio")).requestAudioFocus(null, 3, 2);
     }
@@ -1044,18 +1044,18 @@ public class ShortVideoPreviewActivity
         if (i != 1)
         {
           if (i != 2) {
-            ((TextView)localObject).setText(2131694583);
+            ((TextView)localObject).setText(2131892267);
           } else {
-            ((TextView)localObject).setText(2131697277);
+            ((TextView)localObject).setText(2131895050);
           }
         }
         else {
-          ((TextView)localObject).setText(2131694583);
+          ((TextView)localObject).setText(2131892267);
         }
       }
       else
       {
-        localObject = new StringBuilder(HardCodeUtil.a(2131713963));
+        localObject = new StringBuilder(HardCodeUtil.a(2131911494));
         if (this.mIsSupportVideoCheckbox)
         {
           ArrayList localArrayList = this.mSelectedVideoAndPhotoList;
@@ -1073,7 +1073,7 @@ public class ShortVideoPreviewActivity
         this.mSendBtn.setVisibility(8);
         localObject = this.mCancelBtn;
         if (localObject != null) {
-          ((TextView)localObject).setText(2131718866);
+          ((TextView)localObject).setText(2131916399);
         }
       }
     }
@@ -1081,7 +1081,7 @@ public class ShortVideoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

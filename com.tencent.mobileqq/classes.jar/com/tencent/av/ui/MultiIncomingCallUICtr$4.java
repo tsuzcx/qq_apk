@@ -24,24 +24,24 @@ class MultiIncomingCallUICtr$4
       localStringBuilder.append("]");
       QLog.w("MultiIncomingCallUICtr", 1, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.d();
-    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
+    this.b.D.p();
+    SmallScreenActivityPlugin.a(this.b.c).a(paramLong, false);
+    if (this.b.o != null) {
+      this.b.o.c();
     }
-    if (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;";
+    if (this.b.l.g == 1) {
+      this.b.E = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;";
     }
-    TraeHelper.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+    TraeHelper.a().a(this.b.E);
+    this.b.c.a().postDelayed(this.b.H, 1000L);
   }
   
   protected void a(long paramLong, int paramInt, String paramString)
   {
-    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
+    if ((this.b.m != null) && (this.b.m.equals(paramString)))
     {
-      this.a.a(paramLong, paramInt);
-      this.a.a();
+      this.b.a(paramLong, paramInt);
+      this.b.a();
     }
     if (QLog.isColorLevel())
     {
@@ -51,7 +51,7 @@ class MultiIncomingCallUICtr$4
       localStringBuilder.append("], peerUin[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("], mPeerUin[");
-      localStringBuilder.append(this.a.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.b.m);
       localStringBuilder.append("], seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("]");
@@ -62,10 +62,10 @@ class MultiIncomingCallUICtr$4
   protected void a(String paramString, boolean paramBoolean)
   {
     super.a(paramString, paramBoolean);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
+    if (this.b.o != null) {
+      this.b.o.a();
     }
-    this.a.a();
+    this.b.a();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -74,7 +74,7 @@ class MultiIncomingCallUICtr$4
       localStringBuilder.append(", isQuit:");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", mPeerUin:");
-      localStringBuilder.append(this.a.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.b.m);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
   }

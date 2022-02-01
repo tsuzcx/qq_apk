@@ -17,25 +17,25 @@ import java.util.List;
 public class DigitsProviderAdapter
   extends RecyclerView.Adapter<DigitsProviderAdapter.ViewHolder>
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  List<DigitInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<DigitInfo> a = new ArrayList();
+  private Context b;
+  private int c = 0;
   
   public DigitsProviderAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramContext;
+    this.c = paramInt;
   }
   
   public DigitsProviderAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new DigitsProviderAdapter.ViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558657, paramViewGroup, false));
+    return new DigitsProviderAdapter.ViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624274, paramViewGroup, false));
   }
   
   public DigitInfo a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (DigitInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (paramInt < this.a.size()) {
+      return (DigitInfo)this.a.get(paramInt);
     }
     return null;
   }
@@ -53,10 +53,10 @@ public class DigitsProviderAdapter
     else
     {
       localObject = (RecyclerView.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-      ((RecyclerView.LayoutParams)localObject).leftMargin = ViewUtils.a(20.0F);
+      ((RecyclerView.LayoutParams)localObject).leftMargin = ViewUtils.dip2px(20.0F);
       paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if ((localDigitInfo != null) && (localDigitInfo.a()))
+    if ((localDigitInfo != null) && (localDigitInfo.b()))
     {
       localObject = DigitsProviderAdapter.ViewHolder.a(paramViewHolder);
       StringBuilder localStringBuilder = new StringBuilder();
@@ -65,23 +65,23 @@ public class DigitsProviderAdapter
       ((TextView)localObject).setText(localStringBuilder.toString());
       DigitsProviderAdapter.ViewHolder.a(paramViewHolder).setVisibility(0);
       paramViewHolder.itemView.setTag(localDigitInfo);
-      DigitsProviderAdapter.ViewHolder.a(paramViewHolder).setVisibility(4);
+      DigitsProviderAdapter.ViewHolder.b(paramViewHolder).setVisibility(4);
       return;
     }
     DigitsProviderAdapter.ViewHolder.a(paramViewHolder).setVisibility(8);
-    DigitsProviderAdapter.ViewHolder.a(paramViewHolder).setImageResource(2130845242);
-    DigitsProviderAdapter.ViewHolder.a(paramViewHolder).setVisibility(0);
+    DigitsProviderAdapter.ViewHolder.b(paramViewHolder).setImageResource(2130846684);
+    DigitsProviderAdapter.ViewHolder.b(paramViewHolder).setVisibility(0);
   }
   
   public void a(List<DigitInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public long getItemId(int paramInt)

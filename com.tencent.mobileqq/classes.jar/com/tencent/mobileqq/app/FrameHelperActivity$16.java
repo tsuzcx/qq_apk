@@ -10,12 +10,12 @@ class FrameHelperActivity$16
   
   public void a(AppRuntime.Status paramStatus)
   {
-    this.a.a("AccountPanel.OnlineStatusChangedListener");
+    this.a.b("AccountPanel.OnlineStatusChangedListener");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.16
  * JD-Core Version:    0.7.0.1
  */

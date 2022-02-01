@@ -16,12 +16,12 @@ class LocalPhoneModule$3
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$PhoneNumCallback.a(paramInt, new Exception(paramString));
+    this.a.a(paramInt, new Exception(paramString));
   }
   
   public void a(String paramString)
   {
-    paramString = LocalPhoneModule.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule, paramString);
+    paramString = LocalPhoneModule.a(this.b, paramString);
     if (paramString == null)
     {
       QLog.e("LocalPhoneModule", 1, "get phone token success, but parse phone rsp error");
@@ -32,8 +32,8 @@ class LocalPhoneModule$3
     if (i == 0)
     {
       paramString = (GetLocalPhone.EncryptPhoneData)paramString.msg_get_phone_rsp_body.msg_encrypt_phone_data.get();
-      LocalPhoneModule.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule, paramString.str_encypt_phone.get());
-      this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$PhoneNumCallback.a(paramString);
+      LocalPhoneModule.b(this.b, paramString.str_encypt_phone.get());
+      this.a.a(paramString);
       return;
     }
     a(i, paramString.msg_head.str_err_msg.get());
@@ -41,7 +41,7 @@ class LocalPhoneModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.LocalPhoneModule.3
  * JD-Core Version:    0.7.0.1
  */

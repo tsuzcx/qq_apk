@@ -11,24 +11,8 @@ import org.xmlpull.v1.XmlPullParser;
 public class QBarModelLoader
   extends BaseQRScanResLoader
 {
-  private static final Object a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static byte a(String paramString)
-  {
-    return a(3, paramString);
-  }
-  
-  public static Object a()
-  {
-    return jdField_a_of_type_JavaLangObject;
-  }
+  public static boolean a = false;
+  private static final Object b = new Object();
   
   public static String a()
   {
@@ -62,23 +46,7 @@ public class QBarModelLoader
   
   protected static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if ((a("detect_model.bin")) && (a("detect_model.param")) && (a("srnet.bin")) && (a("srnet.param"))) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.QBarModelLoader", 2, "model res is not exist!");
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(3, jdField_a_of_type_Boolean, paramString);
+    a = paramBoolean;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -131,14 +99,40 @@ public class QBarModelLoader
     }
   }
   
+  public static Object b()
+  {
+    return b;
+  }
+  
   public static String b(String paramString)
   {
     return paramString;
   }
+  
+  public static byte c(String paramString)
+  {
+    return d(3, paramString);
+  }
+  
+  public static boolean c()
+  {
+    if ((d("detect_model.bin")) && (d("detect_model.param")) && (d("srnet.bin")) && (d("srnet.param"))) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.QBarModelLoader", 2, "model res is not exist!");
+    }
+    return false;
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return a(3, a, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.QBarModelLoader
  * JD-Core Version:    0.7.0.1
  */

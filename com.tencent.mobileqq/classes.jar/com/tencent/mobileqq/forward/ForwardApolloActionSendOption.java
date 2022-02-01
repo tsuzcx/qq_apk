@@ -28,7 +28,7 @@ public class ForwardApolloActionSendOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
+      if ((localRecentUser != null) && (!Utils.b(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -37,43 +37,43 @@ public class ForwardApolloActionSendOption
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+    if ((this.A != null) && (this.A.isShowing())) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
-    this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("apollo_forward_key", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
-    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    this.jdField_a_of_type_AndroidContentIntent = AIOUtils.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
-    this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    this.t.putString("uin", paramBundle.getString("uin"));
+    this.t.putInt("uintype", paramBundle.getInt("uintype"));
+    this.t.putBoolean("apollo_forward_key", true);
+    this.t.putBoolean("isBack2Root", true);
+    this.r = new Intent(this.s, SplashActivity.class);
+    this.r = AIOUtils.a(this.r, new int[] { 2 });
+    this.r.putExtras(this.t);
+    this.s.startActivity(this.r);
   }
   
-  public boolean a()
+  protected void c()
   {
-    super.a();
+    if (ah()) {
+      this.C.add(d);
+    }
+    if (ai()) {
+      this.C.add(c);
+    }
+  }
+  
+  public boolean e()
+  {
+    super.e();
     return true;
   }
   
-  protected void b()
+  public void m()
   {
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
+    super.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardApolloActionSendOption
  * JD-Core Version:    0.7.0.1
  */

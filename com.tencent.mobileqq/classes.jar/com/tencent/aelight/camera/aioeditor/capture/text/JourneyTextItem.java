@@ -29,59 +29,59 @@ import java.util.List;
 public class JourneyTextItem
   extends DynamicTextItem
 {
-  private Resources jdField_a_of_type_AndroidContentResResources = BaseApplicationImpl.getContext().getResources();
-  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter = null;
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705958);
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int = 16;
-  private NinePatch jdField_b_of_type_AndroidGraphicsNinePatch;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  private int jdField_c_of_type_Int = 8;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_c_of_type_AndroidTextTextPaint;
-  private int jdField_d_of_type_Int = -1;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF = new RectF();
-  private int jdField_e_of_type_Int = 12;
-  private RectF jdField_e_of_type_AndroidGraphicsRectF = new RectF();
-  private int f = 10;
-  private int g = 15;
-  private int h = 25;
-  private int i = 20;
-  private int j = 5;
-  private int k = 3;
-  private int l = -5;
-  private int m;
-  private int n;
+  private RectF A = new RectF();
+  private RectF B = new RectF();
+  private List<String> C = new ArrayList();
+  private String D = HardCodeUtil.a(2131903838);
+  private int E;
+  private Resources F = BaseApplicationImpl.getContext().getResources();
+  private InputFilter G = null;
+  private int a = 16;
+  private int b = 8;
+  private int c = -1;
+  private int d = 12;
+  private int e = 10;
+  private int f = 15;
+  private int g = 25;
+  private int h = 20;
+  private int i = 5;
+  private int j = 3;
+  private int p = -5;
+  private int q;
+  private TextPaint r;
+  private TextPaint s;
+  private TextPaint t;
+  private NinePatch u;
+  private NinePatch v;
+  private RectF w = new RectF();
+  private RectF x = new RectF();
+  private RectF y = new RectF();
+  private StaticLayout z;
   
   public JourneyTextItem(int paramInt, List<String> paramList, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(paramBitmap1, paramBitmap1.getNinePatchChunk(), null);
-    this.jdField_b_of_type_AndroidGraphicsNinePatch = new NinePatch(paramBitmap2, paramBitmap2.getNinePatchChunk(), null);
-    d();
-    this.m = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131705959)));
-    this.n = ((int)(this.jdField_b_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131705957)) * 10.0F));
-    int i1 = 0;
+    this.u = new NinePatch(paramBitmap1, paramBitmap1.getNinePatchChunk(), null);
+    this.v = new NinePatch(paramBitmap2, paramBitmap2.getNinePatchChunk(), null);
+    u();
+    this.q = ((int)this.r.measureText(HardCodeUtil.a(2131903839)));
+    this.E = ((int)(this.s.measureText(HardCodeUtil.a(2131903837)) * 10.0F));
+    int k = 0;
     if (paramList == null) {
       paramInt = 0;
     } else {
       paramInt = paramList.size();
     }
-    while (i1 < paramInt)
+    while (k < paramInt)
     {
-      a(i1, (String)paramList.get(i1));
+      a(k, (String)paramList.get(k));
       paramBitmap1 = new StringBuilder();
       paramBitmap1.append("JourneyTextItem index: ");
-      paramBitmap1.append(i1);
+      paramBitmap1.append(k);
       paramBitmap1.append(" text: ");
-      paramBitmap1.append((String)paramList.get(i1));
+      paramBitmap1.append((String)paramList.get(k));
       QLog.i("JourneyTextItem", 2, paramBitmap1.toString());
-      i1 += 1;
+      k += 1;
     }
   }
   
@@ -100,41 +100,31 @@ public class JourneyTextItem
     return false;
   }
   
-  private void d()
+  private void u()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_d_of_type_Int);
-    this.jdField_c_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_c_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_c_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Int * 0.8F);
-    this.jdField_c_of_type_AndroidTextTextPaint.setColor(this.jdField_d_of_type_Int);
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(this.jdField_d_of_type_Int);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_c_of_type_Int);
-  }
-  
-  public float a()
-  {
-    return (int)Math.max(this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_b_of_type_AndroidGraphicsRectF.width());
-  }
-  
-  public int a()
-  {
-    return 2;
+    this.r = new TextPaint();
+    this.r.setTypeface(Typeface.DEFAULT);
+    this.r.setTextAlign(Paint.Align.CENTER);
+    this.r.setAntiAlias(true);
+    this.r.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.r.setTextSize(this.a);
+    this.r.setColor(this.c);
+    this.t = new TextPaint();
+    this.t.setTypeface(Typeface.DEFAULT);
+    this.t.setAntiAlias(true);
+    this.t.setTextSize(this.a * 0.8F);
+    this.t.setColor(this.c);
+    this.s = new TextPaint();
+    this.s.setAntiAlias(true);
+    this.s.setColor(this.c);
+    this.s.setTextSize(this.b);
   }
   
   public int a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    float f1 = paramFloat1 / a();
-    RectF localRectF1 = new RectF(this.jdField_a_of_type_AndroidGraphicsRectF.left * f1, this.jdField_a_of_type_AndroidGraphicsRectF.top * f1, this.jdField_a_of_type_AndroidGraphicsRectF.right * f1, this.jdField_a_of_type_AndroidGraphicsRectF.bottom * f1);
-    RectF localRectF2 = new RectF(this.jdField_e_of_type_AndroidGraphicsRectF.left * f1, this.jdField_e_of_type_AndroidGraphicsRectF.top * f1, this.jdField_e_of_type_AndroidGraphicsRectF.right * f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom * f1);
+    float f1 = paramFloat1 / c();
+    RectF localRectF1 = new RectF(this.w.left * f1, this.w.top * f1, this.w.right * f1, this.w.bottom * f1);
+    RectF localRectF2 = new RectF(this.B.left * f1, this.B.top * f1, this.B.right * f1, this.B.bottom * f1);
     PointF localPointF = new PointF(-paramFloat1 / 2.0F, -paramFloat2 / 2.0F);
     if (a(paramFloat3, paramFloat4, localRectF1, localPointF)) {
       return 0;
@@ -152,29 +142,21 @@ public class JourneyTextItem
     if (paramTextItem != null) {
       return paramGestureHelper.a(paramTextItem, f1, f2);
     }
-    paramMotionEvent = new PointF((paramFloat1 - a()) / 2.0F, (paramFloat2 - b()) / 2.0F);
-    if (a(f1, f2, this.jdField_a_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+    paramMotionEvent = new PointF((paramFloat1 - c()) / 2.0F, (paramFloat2 - d()) / 2.0F);
+    if (a(f1, f2, this.w, paramMotionEvent)) {
       return 0;
     }
-    if (a(f1, f2, this.jdField_e_of_type_AndroidGraphicsRectF, paramMotionEvent)) {
+    if (a(f1, f2, this.B, paramMotionEvent)) {
       return 1;
     }
     return -1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new JourneyTextItem.3(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
   }
   
   public void a(int paramInt, String paramString)
   {
     if (paramInt >= 0)
     {
-      if (paramInt >= a()) {
+      if (paramInt >= b()) {
         return;
       }
       super.a(paramInt, paramString);
@@ -190,43 +172,43 @@ public class JourneyTextItem
       }
       if (paramInt == 0)
       {
-        paramString = TroopFileUtils.b(str);
-        this.jdField_a_of_type_JavaUtilList.clear();
+        paramString = TroopFileUtils.c(str);
+        this.C.clear();
       }
       else
       {
-        this.jdField_a_of_type_JavaLangString = str;
-        if (this.jdField_a_of_type_JavaLangString.length() >= 20) {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.substring(0, 20);
+        this.D = str;
+        if (this.D.length() >= 20) {
+          this.D = this.D.substring(0, 20);
         }
         paramString = "";
       }
-      float f5 = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-      float f4 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-      float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      this.jdField_b_of_type_AndroidGraphicsRectF.height();
-      float f2 = this.jdField_d_of_type_AndroidGraphicsRectF.width();
-      float f3 = this.jdField_d_of_type_AndroidGraphicsRectF.height();
+      float f5 = this.w.width();
+      float f4 = this.w.height();
+      float f1 = this.x.width();
+      this.x.height();
+      float f2 = this.A.width();
+      float f3 = this.A.height();
       if (paramInt == 0)
       {
         paramString = paramString.split("\n");
-        int i3 = paramString.length;
-        int i2 = 0;
+        int n = paramString.length;
+        int m = 0;
         paramInt = 0;
-        int i1;
+        int k;
         for (;;)
         {
-          i1 = paramInt;
-          if (i2 >= i3) {
+          k = paramInt;
+          if (m >= n) {
             break;
           }
-          str = paramString[i2];
+          str = paramString[m];
           if (str.length() >= 20)
           {
-            this.jdField_a_of_type_JavaUtilList.add(str.substring(0, 5));
-            this.jdField_a_of_type_JavaUtilList.add(str.substring(5, 10));
-            this.jdField_a_of_type_JavaUtilList.add(str.substring(10, 15));
-            this.jdField_a_of_type_JavaUtilList.add(str.substring(15, 20));
+            this.C.add(str.substring(0, 5));
+            this.C.add(str.substring(5, 10));
+            this.C.add(str.substring(10, 15));
+            this.C.add(str.substring(15, 20));
           }
           for (;;)
           {
@@ -234,121 +216,121 @@ public class JourneyTextItem
             break label561;
             if (str.length() > 15)
             {
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(0, 5));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(5, 10));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(10, 15));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(15, str.length()));
+              this.C.add(str.substring(0, 5));
+              this.C.add(str.substring(5, 10));
+              this.C.add(str.substring(10, 15));
+              this.C.add(str.substring(15, str.length()));
             }
             else if (str.length() > 10)
             {
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(0, 5));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(5, 10));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(10, str.length()));
+              this.C.add(str.substring(0, 5));
+              this.C.add(str.substring(5, 10));
+              this.C.add(str.substring(10, str.length()));
             }
             else
             {
               if (str.length() <= 5) {
                 break;
               }
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(0, 5));
-              this.jdField_a_of_type_JavaUtilList.add(str.substring(5, str.length()));
+              this.C.add(str.substring(0, 5));
+              this.C.add(str.substring(5, str.length()));
             }
           }
-          this.jdField_a_of_type_JavaUtilList.add(str.substring(0, str.length()));
+          this.C.add(str.substring(0, str.length()));
           paramInt = Math.max(paramInt, str.length());
           label561:
-          if (this.jdField_a_of_type_JavaUtilList.size() > 4)
+          if (this.C.size() > 4)
           {
-            this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(0, 4);
-            i1 = paramInt;
+            this.C = this.C.subList(0, 4);
+            k = paramInt;
             break;
           }
-          i2 += 1;
+          m += 1;
         }
-        paramInt = this.jdField_a_of_type_JavaUtilList.size();
-        i2 = this.h;
-        i3 = this.g;
-        int i4 = this.jdField_b_of_type_Int;
-        f5 = i2 * 2 + (paramInt - 1) * i3 + paramInt * i4;
-        f4 = this.i * 2 + (i1 - 1) * this.f + i1 * i4;
+        paramInt = this.C.size();
+        m = this.g;
+        n = this.f;
+        int i1 = this.a;
+        f5 = m * 2 + (paramInt - 1) * n + paramInt * i1;
+        f4 = this.h * 2 + (k - 1) * this.e + k * i1;
       }
       else
       {
-        this.jdField_a_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(str, 0, str.length(), this.jdField_b_of_type_AndroidTextTextPaint, this.n, Layout.Alignment.ALIGN_NORMAL, 1.5F, 0.0F, false, null, 0, 2);
-        f2 = this.jdField_a_of_type_AndroidTextStaticLayout.getLineWidth(0);
-        f3 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
-        f1 = f2 + this.j;
+        this.z = StaticLayoutWithMaxLines.a(str, 0, str.length(), this.s, this.E, Layout.Alignment.ALIGN_NORMAL, 1.5F, 0.0F, false, null, 0, 2);
+        f2 = this.z.getLineWidth(0);
+        f3 = this.z.getHeight();
+        f1 = f2 + this.i;
       }
-      paramInt = this.jdField_e_of_type_Int;
+      paramInt = this.d;
       if (f5 > f1)
       {
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f5, f4);
-        paramString = this.jdField_d_of_type_AndroidGraphicsRectF;
+        this.w.set(0.0F, 0.0F, f5, f4);
+        paramString = this.A;
         f5 = (f5 - f2) * 0.5F;
         f4 += paramInt;
-        paramInt = this.k;
+        paramInt = this.j;
         paramString.set(f5, paramInt + f4, f2 + f5, f4 + f3 + paramInt);
       }
       else
       {
         float f6 = (f1 - f5) * 0.5F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(f6, 0.0F, f5 + f6, f4);
-        paramString = this.jdField_d_of_type_AndroidGraphicsRectF;
+        this.w.set(f6, 0.0F, f5 + f6, f4);
+        paramString = this.A;
         f5 = (f1 - f2) * 0.5F;
         f4 += paramInt;
-        paramInt = this.k;
+        paramInt = this.j;
         paramString.set(f5, paramInt + f4, f2 + f5, f4 + f3 + paramInt);
       }
-      this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF.left + this.h * 0.8F, this.jdField_a_of_type_AndroidGraphicsRectF.top + this.i * 0.7F, this.jdField_a_of_type_AndroidGraphicsRectF.right - this.h * 0.8F, this.jdField_a_of_type_AndroidGraphicsRectF.bottom - this.i * 0.7F);
-      this.jdField_e_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_AndroidGraphicsRectF.left - this.h * 0.3F, this.jdField_d_of_type_AndroidGraphicsRectF.top - this.i * 0.2F, this.jdField_d_of_type_AndroidGraphicsRectF.right + this.h * 0.3F, this.jdField_d_of_type_AndroidGraphicsRectF.bottom + this.i * 0.2F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.bottom + this.l, this.jdField_e_of_type_AndroidGraphicsRectF.left + f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom + f3 + this.l);
+      this.y.set(this.w.left + this.g * 0.8F, this.w.top + this.h * 0.7F, this.w.right - this.g * 0.8F, this.w.bottom - this.h * 0.7F);
+      this.B.set(this.A.left - this.g * 0.3F, this.A.top - this.h * 0.2F, this.A.right + this.g * 0.3F, this.A.bottom + this.h * 0.2F);
+      this.x.set(this.B.left, this.B.bottom + this.p, this.B.left + f1, this.B.bottom + f3 + this.p);
     }
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (b(0)) {
-      paramCanvas.drawRoundRect(this.jdField_c_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    if (f(0)) {
+      paramCanvas.drawRoundRect(this.y, 6.0F, 6.0F, s());
     }
-    if (b(1)) {
-      paramCanvas.drawRoundRect(this.jdField_e_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    if (f(1)) {
+      paramCanvas.drawRoundRect(this.B, 6.0F, 6.0F, s());
     }
-    this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_b_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, this.jdField_b_of_type_AndroidGraphicsRectF);
-    double d1 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    double d2 = this.h;
+    this.u.draw(paramCanvas, this.w);
+    this.v.draw(paramCanvas, this.x);
+    double d1 = this.w.left;
+    double d2 = this.g;
     Double.isNaN(d2);
     Double.isNaN(d1);
-    int i3 = (int)(d1 + d2 * 1.3D);
-    d1 = this.i;
-    d2 = this.m;
+    int n = (int)(d1 + d2 * 1.3D);
+    d1 = this.h;
+    d2 = this.q;
     Double.isNaN(d2);
     Double.isNaN(d1);
-    int i1 = (int)(d1 + d2 * 0.8D);
-    int i2 = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i2 >= 0)
+    int k = (int)(d1 + d2 * 0.8D);
+    int m = this.C.size() - 1;
+    while (m >= 0)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilList.get(i2);
-      int i6 = ((String)localObject).length();
-      int i5 = 0;
-      int i4 = i1;
-      for (i1 = i5; i1 < i6; i1 = i5)
+      localObject = (String)this.C.get(m);
+      int i3 = ((String)localObject).length();
+      int i2 = 0;
+      int i1 = k;
+      for (k = i2; k < i3; k = i2)
       {
-        i5 = i1 + 1;
-        paramCanvas.drawText(((String)localObject).substring(i1, i5), i3, i4, this.jdField_a_of_type_AndroidTextTextPaint);
-        i4 += this.m + this.f;
+        i2 = k + 1;
+        paramCanvas.drawText(((String)localObject).substring(k, i2), n, i1, this.r);
+        i1 += this.q + this.e;
       }
-      i1 = this.m;
-      i3 += this.g + i1;
-      d1 = this.i;
-      d2 = i1;
+      k = this.q;
+      n += this.f + k;
+      d1 = this.h;
+      d2 = k;
       Double.isNaN(d2);
       Double.isNaN(d1);
-      i1 = (int)(d1 + d2 * 0.8D);
-      i2 -= 1;
+      k = (int)(d1 + d2 * 0.8D);
+      m -= 1;
     }
-    paramCanvas.translate(this.jdField_d_of_type_AndroidGraphicsRectF.left, this.jdField_d_of_type_AndroidGraphicsRectF.top);
-    Object localObject = this.jdField_a_of_type_AndroidTextStaticLayout;
+    paramCanvas.translate(this.A.left, this.A.top);
+    Object localObject = this.z;
     if (localObject != null) {
       ((StaticLayout)localObject).draw(paramCanvas);
     }
@@ -359,26 +341,44 @@ public class JourneyTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_b_of_type_AndroidGraphicsRectF.bottom - this.jdField_a_of_type_AndroidGraphicsRectF.top;
+    return 2;
   }
   
-  public boolean b()
+  public float c()
+  {
+    return (int)Math.max(this.w.width(), this.x.width());
+  }
+  
+  public float d()
+  {
+    return this.x.bottom - this.w.top;
+  }
+  
+  public boolean e()
   {
     Object localObject = new JourneyTextItem.2(this);
     boolean bool = false;
     localObject = a(0, (DynamicTextItem.PreHandleTextHandler)localObject);
-    String str = b(1);
-    if (((TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(str))) || (super.b())) {
+    String str = c(1);
+    if (((TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(str))) || (super.e())) {
       bool = true;
     }
     return bool;
   }
+  
+  public InputFilter f()
+  {
+    if (this.G == null) {
+      this.G = new JourneyTextItem.3(this, 20);
+    }
+    return this.G;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.JourneyTextItem
  * JD-Core Version:    0.7.0.1
  */

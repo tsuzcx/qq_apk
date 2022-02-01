@@ -18,7 +18,7 @@ public class RequestHistoryDataMethod
   
   public static String getHistoryListStr()
   {
-    Object localObject = SearchWordHistoryManager.a().a();
+    Object localObject = SearchWordHistoryManager.a().c();
     try
     {
       localObject = new Gson().toJson(localObject);
@@ -44,7 +44,7 @@ public class RequestHistoryDataMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,18 @@ import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class StructPicLimitConfigProcessor
   extends IQConfigProcessor<StructPicLimitDataBean>
 {
   public static StructPicLimitDataBean a()
   {
-    return (StructPicLimitDataBean)QConfigManager.a().a(724);
+    if (!MobileQQ.sMobileQQ.waitAppRuntime(null).isLogin()) {
+      return new StructPicLimitDataBean();
+    }
+    return (StructPicLimitDataBean)QConfigManager.b().b(724);
   }
   
   @NonNull
@@ -28,13 +33,13 @@ public class StructPicLimitConfigProcessor
     Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      StructPicLimitDataBean localStructPicLimitDataBean = StructPicLimitDataBean.a(paramArrayOfQConfItem[0].a);
+      StructPicLimitDataBean localStructPicLimitDataBean = StructPicLimitDataBean.a(paramArrayOfQConfItem[0].b);
       localObject = localStructPicLimitDataBean;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onParsed ");
-        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].b);
         QLog.d("StructPicLimitConfigProcessor", 2, ((StringBuilder)localObject).toString());
         return localStructPicLimitDataBean;
       }
@@ -94,7 +99,7 @@ public class StructPicLimitConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.StructPicLimitConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

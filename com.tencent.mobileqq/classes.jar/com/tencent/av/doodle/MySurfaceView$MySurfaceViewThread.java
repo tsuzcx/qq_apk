@@ -6,18 +6,18 @@ import com.tencent.qphone.base.util.QLog;
 class MySurfaceView$MySurfaceViewThread
   extends Thread
 {
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private boolean b = true;
+  private SurfaceHolder c;
   
   public MySurfaceView$MySurfaceViewThread(MySurfaceView paramMySurfaceView)
   {
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = paramMySurfaceView.getHolder();
+    this.c = paramMySurfaceView.getHolder();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,27 +32,27 @@ class MySurfaceView$MySurfaceViewThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   1: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
     //   4: iconst_1
-    //   5: invokevirtual 65	com/tencent/av/doodle/MySurfaceView:a	(Z)V
+    //   5: invokevirtual 66	com/tencent/av/doodle/MySurfaceView:a	(Z)V
     //   8: aload_0
-    //   9: getfield 19	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_Boolean	Z
+    //   9: getfield 20	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:a	Z
     //   12: ifeq +356 -> 368
     //   15: aconst_null
     //   16: astore 6
     //   18: aconst_null
     //   19: astore 5
     //   21: aload_0
-    //   22: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   22: getfield 30	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:c	Landroid/view/SurfaceHolder;
     //   25: aconst_null
-    //   26: invokeinterface 71 2 0
+    //   26: invokeinterface 72 2 0
     //   31: astore 7
     //   33: aload 7
     //   35: astore 5
     //   37: aload 7
     //   39: astore 6
     //   41: aload_0
-    //   42: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   42: getfield 30	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:c	Landroid/view/SurfaceHolder;
     //   45: astore 8
     //   47: aload 7
     //   49: astore 5
@@ -61,59 +61,59 @@ class MySurfaceView$MySurfaceViewThread
     //   55: aload 8
     //   57: monitorenter
     //   58: aload_0
-    //   59: getfield 21	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:b	Z
+    //   59: getfield 22	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:b	Z
     //   62: ifeq +33 -> 95
-    //   65: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
+    //   65: invokestatic 78	android/os/SystemClock:elapsedRealtime	()J
     //   68: lstore_1
     //   69: aload_0
-    //   70: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
-    //   73: getfield 80	com/tencent/av/doodle/MySurfaceView:a	J
+    //   70: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   73: getfield 81	com/tencent/av/doodle/MySurfaceView:b	J
     //   76: lstore_3
     //   77: aload_0
-    //   78: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   78: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
     //   81: lload_1
-    //   82: putfield 80	com/tencent/av/doodle/MySurfaceView:a	J
+    //   82: putfield 81	com/tencent/av/doodle/MySurfaceView:b	J
     //   85: aload_0
-    //   86: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   86: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
     //   89: lload_1
     //   90: lload_3
     //   91: lsub
-    //   92: invokevirtual 83	com/tencent/av/doodle/MySurfaceView:a	(J)V
+    //   92: invokevirtual 84	com/tencent/av/doodle/MySurfaceView:a	(J)V
     //   95: aload 7
     //   97: ifnull +12 -> 109
     //   100: aload_0
-    //   101: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   101: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
     //   104: aload 7
-    //   106: invokevirtual 86	com/tencent/av/doodle/MySurfaceView:a	(Landroid/graphics/Canvas;)V
+    //   106: invokevirtual 87	com/tencent/av/doodle/MySurfaceView:a	(Landroid/graphics/Canvas;)V
     //   109: aload 8
     //   111: monitorexit
     //   112: aload 7
     //   114: ifnull -106 -> 8
     //   117: aload_0
-    //   118: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   118: getfield 30	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:c	Landroid/view/SurfaceHolder;
     //   121: aload 7
-    //   123: invokeinterface 89 2 0
+    //   123: invokeinterface 90 2 0
     //   128: goto -120 -> 8
     //   131: astore 5
-    //   133: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   133: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   136: ifeq -128 -> 8
-    //   139: new 40	java/lang/StringBuilder
+    //   139: new 41	java/lang/StringBuilder
     //   142: dup
-    //   143: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   143: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   146: astore 6
     //   148: aload 6
-    //   150: ldc 91
-    //   152: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc 92
+    //   152: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload 6
     //   158: aload 5
-    //   160: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   160: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   163: pop
-    //   164: ldc 52
+    //   164: ldc 53
     //   166: iconst_2
     //   167: aload 6
-    //   169: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   169: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: goto -167 -> 8
     //   178: astore 9
     //   180: aload 8
@@ -129,81 +129,81 @@ class MySurfaceView$MySurfaceViewThread
     //   199: astore 7
     //   201: aload 6
     //   203: astore 5
-    //   205: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   208: ifeq +55 -> 263
     //   211: aload 6
     //   213: astore 5
-    //   215: new 40	java/lang/StringBuilder
+    //   215: new 41	java/lang/StringBuilder
     //   218: dup
-    //   219: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   219: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   222: astore 8
     //   224: aload 6
     //   226: astore 5
     //   228: aload 8
-    //   230: ldc 91
-    //   232: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: ldc 92
+    //   232: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   235: pop
     //   236: aload 6
     //   238: astore 5
     //   240: aload 8
     //   242: aload 7
-    //   244: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   247: pop
     //   248: aload 6
     //   250: astore 5
-    //   252: ldc 52
+    //   252: ldc 53
     //   254: iconst_2
     //   255: aload 8
-    //   257: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   257: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   260: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   263: aload 6
     //   265: ifnull -257 -> 8
     //   268: aload_0
-    //   269: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   269: getfield 30	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:c	Landroid/view/SurfaceHolder;
     //   272: aload 6
-    //   274: invokeinterface 89 2 0
+    //   274: invokeinterface 90 2 0
     //   279: goto -271 -> 8
     //   282: astore 5
-    //   284: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   284: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   287: ifeq -279 -> 8
-    //   290: new 40	java/lang/StringBuilder
+    //   290: new 41	java/lang/StringBuilder
     //   293: dup
-    //   294: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   294: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   297: astore 6
     //   299: goto -151 -> 148
     //   302: aload 5
     //   304: ifnull +61 -> 365
     //   307: aload_0
-    //   308: getfield 29	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:jdField_a_of_type_AndroidViewSurfaceHolder	Landroid/view/SurfaceHolder;
+    //   308: getfield 30	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:c	Landroid/view/SurfaceHolder;
     //   311: aload 5
-    //   313: invokeinterface 89 2 0
+    //   313: invokeinterface 90 2 0
     //   318: goto +47 -> 365
     //   321: astore 5
-    //   323: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   323: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   326: ifeq +39 -> 365
-    //   329: new 40	java/lang/StringBuilder
+    //   329: new 41	java/lang/StringBuilder
     //   332: dup
-    //   333: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   333: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   336: astore 7
     //   338: aload 7
-    //   340: ldc 91
-    //   342: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: ldc 92
+    //   342: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: pop
     //   346: aload 7
     //   348: aload 5
-    //   350: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   350: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   353: pop
-    //   354: ldc 52
+    //   354: ldc 53
     //   356: iconst_2
     //   357: aload 7
-    //   359: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   362: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   359: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   362: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   365: aload 6
     //   367: athrow
     //   368: aload_0
-    //   369: getfield 14	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
+    //   369: getfield 15	com/tencent/av/doodle/MySurfaceView$MySurfaceViewThread:this$0	Lcom/tencent/av/doodle/MySurfaceView;
     //   372: iconst_0
-    //   373: invokevirtual 65	com/tencent/av/doodle/MySurfaceView:a	(Z)V
+    //   373: invokevirtual 66	com/tencent/av/doodle/MySurfaceView:a	(Z)V
     //   376: return
     // Local variable table:
     //   start	length	slot	name	signature

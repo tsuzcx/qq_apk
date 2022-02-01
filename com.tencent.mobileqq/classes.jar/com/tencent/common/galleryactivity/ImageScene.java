@@ -8,14 +8,24 @@ import android.view.ViewGroup;
 
 public abstract class ImageScene
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected GalleryManager a;
+  ViewGroup B;
+  protected GalleryManager C;
+  private Handler a = new Handler();
   
-  public ViewGroup a()
+  public ViewGroup C()
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    return this.B;
   }
+  
+  public void D()
+  {
+    GalleryManager localGalleryManager = this.C;
+    if (localGalleryManager != null) {
+      localGalleryManager.f();
+    }
+  }
+  
+  public void L_() {}
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -23,7 +33,7 @@ public abstract class ImageScene
   
   void a(GalleryManager paramGalleryManager)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = paramGalleryManager;
+    this.C = paramGalleryManager;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2) {}
@@ -35,39 +45,29 @@ public abstract class ImageScene
   
   public void b(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.B = paramViewGroup;
   }
   
   public void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void c() {}
+  public void d() {}
   
-  public void e() {}
+  public void k() {}
   
-  public boolean e()
+  public void l() {}
+  
+  public void t() {}
+  
+  public void u() {}
+  
+  public boolean x()
   {
     return false;
-  }
-  
-  public void h_() {}
-  
-  public void j() {}
-  
-  public void m() {}
-  
-  public void n() {}
-  
-  public void t()
-  {
-    GalleryManager localGalleryManager = this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager;
-    if (localGalleryManager != null) {
-      localGalleryManager.a();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.ImageScene
  * JD-Core Version:    0.7.0.1
  */

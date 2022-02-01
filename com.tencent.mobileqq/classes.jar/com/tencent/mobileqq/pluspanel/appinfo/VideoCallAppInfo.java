@@ -27,7 +27,7 @@ public class VideoCallAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839155;
+    return 2130839311;
   }
   
   public int getAppID()
@@ -56,38 +56,38 @@ public class VideoCallAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698685);
+    return BaseApplicationImpl.getContext().getString(2131896643);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface1 = paramBaseChatPie.a;
-    if (localQQAppInterface1.getAVNotifyCenter().a(paramBaseChatPie.a(), 2, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+    QQAppInterface localQQAppInterface1 = paramBaseChatPie.d;
+    if (localQQAppInterface1.getAVNotifyCenter().a(paramBaseChatPie.aX(), 2, paramSessionInfo.a, paramSessionInfo.b)) {
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
       showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 10, true, null);
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 3000)
+    if (paramSessionInfo.a == 3000)
     {
       paramPlusPanelViewModel.a("chat_tool_gaudio", localQQAppInterface1.getCurrentAccountUin());
       showSelGAudioChatEntryActionSheet(paramBaseChatPie, paramSessionInfo, 1, true, null);
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      paramBaseChatPie.a().setCanLock(false);
-      long l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if (localQQAppInterface1.getAVNotifyCenter().b() != l) {
+      paramBaseChatPie.aX().setCanLock(false);
+      long l = Long.parseLong(paramSessionInfo.b);
+      if (localQQAppInterface1.getAVNotifyCenter().g() != l) {
         ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X8005676", "0X8005676", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      if ((paramSessionInfo.jdField_a_of_type_Int != 1001) && (paramSessionInfo.jdField_a_of_type_Int != 10002))
+      if ((paramSessionInfo.a != 1001) && (paramSessionInfo.a != 10002))
       {
-        if ((paramSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(localQQAppInterface1, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+        if ((paramSessionInfo.a == 1010) && (!DatingUtil.a(localQQAppInterface1, paramSessionInfo.b)))
         {
-          paramBaseChatPie.b(BaseApplicationImpl.getContext().getString(2131694403));
+          paramBaseChatPie.c(BaseApplicationImpl.getContext().getString(2131892082));
           return;
         }
       }
@@ -95,12 +95,12 @@ public class VideoCallAppInfo
       {
         QQAppInterface localQQAppInterface2 = localQQAppInterface1;
         ReportController.b(localQQAppInterface1, "CliOper", "", "", "0X8005153", "0X8005153", 0, 0, "", "", "", "");
-        if (!LBSHandler.a(localQQAppInterface2, paramSessionInfo.jdField_a_of_type_JavaLangString))
+        if (!LBSHandler.a(localQQAppInterface2, paramSessionInfo.b))
         {
-          paramBaseChatPie.b(BaseApplicationImpl.getContext().getString(2131694403));
+          paramBaseChatPie.c(BaseApplicationImpl.getContext().getString(2131892082));
           ReportController.b(localQQAppInterface2, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
           ReportController.b(localQQAppInterface2, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
-          if (paramSessionInfo.jdField_a_of_type_Int == 1001) {
+          if (paramSessionInfo.a == 1001) {
             paramPlusPanelViewModel = "0";
           } else {
             paramPlusPanelViewModel = "1";
@@ -109,16 +109,16 @@ public class VideoCallAppInfo
           return;
         }
       }
-      PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.a(), paramSessionInfo, false, null, null);
-      paramBaseChatPie.Q();
-      paramBaseChatPie.a().setCanLock(false);
-      AIOPanelUtiles.a(localQQAppInterface1, "0X8004086", paramSessionInfo.jdField_a_of_type_Int);
+      PlusPanelUtils.a(localQQAppInterface1, paramBaseChatPie.aX(), paramSessionInfo, false, null, null);
+      paramBaseChatPie.aw();
+      paramBaseChatPie.aX().setCanLock(false);
+      AIOPanelUtiles.a(localQQAppInterface1, "0X8004086", paramSessionInfo.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.VideoCallAppInfo
  * JD-Core Version:    0.7.0.1
  */

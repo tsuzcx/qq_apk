@@ -11,12 +11,7 @@ public class MessageFactorySenderCallback
 {
   public int a(String paramString)
   {
-    return StreamDataManager.b(paramString);
-  }
-  
-  public short a(String paramString)
-  {
-    return StreamDataManager.a(paramString);
+    return StreamDataManager.d(paramString);
   }
   
   public void a(SvcRequestSendVideoMsg paramSvcRequestSendVideoMsg, String paramString)
@@ -31,34 +26,39 @@ public class MessageFactorySenderCallback
     ReportLog.a("Video", localStringBuilder.toString());
   }
   
-  public boolean a(String paramString)
-  {
-    return StreamDataManager.a(paramString);
-  }
-  
-  public byte[] a(String paramString)
-  {
-    return EmotionCodecUtils.a(paramString);
-  }
-  
   public byte[] a(String paramString, short paramShort)
   {
-    return StreamDataManager.a(paramString, paramShort);
+    return StreamDataManager.b(paramString, paramShort);
   }
   
   public short b(String paramString)
   {
-    return StreamDataManager.b(paramString);
+    return StreamDataManager.e(paramString);
   }
   
-  public boolean b(String paramString)
+  public short c(String paramString)
+  {
+    return StreamDataManager.g(paramString);
+  }
+  
+  public boolean d(String paramString)
+  {
+    return StreamDataManager.i(paramString);
+  }
+  
+  public boolean e(String paramString)
   {
     return ((IStreamDataManager)QRoute.api(IStreamDataManager.class)).removeStreamTaskToMemoryPool(paramString);
+  }
+  
+  public byte[] f(String paramString)
+  {
+    return EmotionCodecUtils.b(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageFactorySenderCallback
  * JD-Core Version:    0.7.0.1
  */

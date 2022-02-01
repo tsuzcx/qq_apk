@@ -13,10 +13,10 @@ class GameCenterAPIJavaScript$5
     GameCenterAPIJavaScript.VideoViewInfo localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
     if (localVideoViewInfo != null)
     {
-      localVideoViewInfo.a = paramBoolean;
+      localVideoViewInfo.k = paramBoolean;
       GameCenterAPIJavaScript localGameCenterAPIJavaScript = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localVideoViewInfo.e);
+      localStringBuilder.append(localVideoViewInfo.q);
       localStringBuilder.append("(");
       localStringBuilder.append(localVideoViewInfo.a());
       localStringBuilder.append(");");
@@ -29,10 +29,10 @@ class GameCenterAPIJavaScript$5
     GameCenterAPIJavaScript.VideoViewInfo localVideoViewInfo = (GameCenterAPIJavaScript.VideoViewInfo)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
     if (localVideoViewInfo != null)
     {
-      localVideoViewInfo.c = paramBoolean;
+      localVideoViewInfo.m = paramBoolean;
       GameCenterAPIJavaScript localGameCenterAPIJavaScript = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localVideoViewInfo.d);
+      localStringBuilder.append(localVideoViewInfo.p);
       localStringBuilder.append("(");
       localStringBuilder.append(localVideoViewInfo.a());
       localStringBuilder.append(");");
@@ -52,7 +52,7 @@ class GameCenterAPIJavaScript$5
       {
         localGameCenterAPIJavaScript = this.a;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localVideoViewInfo.g);
+        localStringBuilder.append(localVideoViewInfo.s);
         localStringBuilder.append("(");
         localStringBuilder.append(localVideoViewInfo.a());
         localStringBuilder.append(");");
@@ -66,7 +66,7 @@ class GameCenterAPIJavaScript$5
       {
         localGameCenterAPIJavaScript = this.a;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localVideoViewInfo.f);
+        localStringBuilder.append(localVideoViewInfo.r);
         localStringBuilder.append("(");
         localStringBuilder.append(localVideoViewInfo.a());
         localStringBuilder.append(");");
@@ -80,7 +80,7 @@ class GameCenterAPIJavaScript$5
       {
         localGameCenterAPIJavaScript = this.a;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localVideoViewInfo.h);
+        localStringBuilder.append(localVideoViewInfo.t);
         localStringBuilder.append("(");
         localStringBuilder.append(localVideoViewInfo.a());
         localStringBuilder.append(");");
@@ -94,7 +94,7 @@ class GameCenterAPIJavaScript$5
       {
         localGameCenterAPIJavaScript = this.a;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localVideoViewInfo.i);
+        localStringBuilder.append(localVideoViewInfo.u);
         localStringBuilder.append("(");
         localStringBuilder.append(localVideoViewInfo.a());
         localStringBuilder.append(");");
@@ -105,7 +105,7 @@ class GameCenterAPIJavaScript$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.5
  * JD-Core Version:    0.7.0.1
  */

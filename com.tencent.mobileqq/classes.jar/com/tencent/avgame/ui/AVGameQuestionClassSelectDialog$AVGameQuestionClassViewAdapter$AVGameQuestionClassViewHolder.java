@@ -10,16 +10,16 @@ public class AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter$AVGa
   extends RecyclerView.ViewHolder
 {
   public ImageView a;
-  public TextView a;
-  public QuestionClassInfoItem a;
   public ImageView b;
+  public TextView c;
+  public QuestionClassInfoItem d;
   
   public AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter$AVGameQuestionClassViewHolder(AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter paramAVGameQuestionClassViewAdapter, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
+    this.a = paramImageView1;
     this.b = paramImageView2;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
 }
 

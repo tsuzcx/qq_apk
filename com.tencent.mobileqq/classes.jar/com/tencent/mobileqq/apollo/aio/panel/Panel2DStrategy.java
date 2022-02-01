@@ -12,6 +12,7 @@ import com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinde
 import com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloViewBinder;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.model.ApolloActionPackage;
 import com.tencent.mobileqq.apollo.script.SpriteActionScript;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
@@ -20,7 +21,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.util.List;
 
 public class Panel2DStrategy
@@ -31,41 +31,15 @@ public class Panel2DStrategy
     super(paramQQAppInterface, paramContext, paramSessionInfo);
   }
   
-  public ApolloViewBinder a(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      if (paramInt != 2)
-      {
-        if (paramInt != 4) {
-          return new ApolloSecondaryViewBinder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        }
-        return new ApolloSlaveViewBinder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      }
-      return new ApolloFavViewBinder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    return new ApolloSecondaryViewBinder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
   public ApolloViewBinder a(int paramInt1, int paramInt2)
   {
     if (paramInt2 == 10) {
-      return new ApolloBattleGameViewBinder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return new ApolloBattleGameViewBinder(this.a, this.b, this.c);
     }
-    if (((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 9)) && (QzoneConfig.getInstance().getConfig("CMShow", "CMShowAIOPanelTag", 0) != 0)) {
-      return new ApolloTagActionViewBinder(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 9)) && (CmShowWnsUtils.ad())) {
+      return new ApolloTagActionViewBinder(this.b, this.a, this.c);
     }
-    return a(paramInt1);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    QLog.d("[cmshow]Panel2DStrategy", 1, new Object[] { "saveCurrentIndex-2D, index:", Integer.valueOf(paramInt1), ", packageId:", Integer.valueOf(paramInt2) });
-    ApolloPanelUtil.a(1, paramInt1, paramInt2);
-    SpriteActionScript localSpriteActionScript = SpriteUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localSpriteActionScript != null) {
-      localSpriteActionScript.a(String.valueOf(paramInt2), "tabStatusChange");
-    }
+    return b(paramInt1);
   }
   
   public void a(List<ApolloViewBinder> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean1, boolean paramBoolean2)
@@ -73,15 +47,15 @@ public class Panel2DStrategy
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]Panel2DStrategy", 2, new Object[] { "[setCurrentIndex] mShouldShowActionFloatView=", Boolean.valueOf(paramBoolean2), ", refreshByGetUserAction=", Boolean.valueOf(paramBoolean1) });
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    Object localObject1 = this.a.getApp();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("apollo_sp");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    ((StringBuilder)localObject2).append(this.a.getCurrentUin());
     localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
     if (!paramBoolean1)
     {
-      this.jdField_a_of_type_Int = -1;
-      if (((ApolloManagerServiceImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).mIsBubbleTab)
+      this.d = -1;
+      if (((ApolloManagerServiceImpl)this.a.getRuntimeService(IApolloManagerService.class, "all")).mIsBubbleTab)
       {
         k = ((SharedPreferences)localObject1).getInt("key_panel_bubble_tab", -1);
         j = paramList1.size();
@@ -148,7 +122,7 @@ public class Panel2DStrategy
       if ((bool) && (m < paramList.size()))
       {
         k = a(paramList, m);
-        this.jdField_a_of_type_Int = m;
+        this.d = m;
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]Panel2DStrategy", 2, new Object[] { "[setCurrentIndex] hasNewAction, pagerIndex=", Integer.valueOf(k) });
         }
@@ -163,7 +137,7 @@ public class Panel2DStrategy
     int i2 = 0;
     while (i < paramList.size())
     {
-      i2 += ((ApolloViewBinder)paramList.get(i)).a();
+      i2 += ((ApolloViewBinder)paramList.get(i)).c();
       i += 1;
     }
     int j = k;
@@ -172,13 +146,13 @@ public class Panel2DStrategy
     {
       int n = k;
       int i1 = m;
-      if (this.jdField_a_of_type_Int >= 0)
+      if (this.d >= 0)
       {
         n = k;
         i1 = m;
-        if (this.jdField_a_of_type_Int < paramList.size())
+        if (this.d < paramList.size())
         {
-          n = a(paramList, this.jdField_a_of_type_Int);
+          n = a(paramList, this.d);
           i1 = 1;
         }
       }
@@ -259,9 +233,9 @@ public class Panel2DStrategy
     }
     if (i < i2)
     {
-      ApolloPanel.jdField_a_of_type_Int = i;
+      ApolloPanel.a = i;
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]Panel2DStrategy", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+        QLog.d("[cmshow]Panel2DStrategy", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.a) });
       }
     }
   }
@@ -270,10 +244,36 @@ public class Panel2DStrategy
   {
     return ApolloActionPackage.is3DPackage(paramInt) ^ true;
   }
+  
+  public ApolloViewBinder b(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 4) {
+          return new ApolloSecondaryViewBinder(this.b, this.a, this.c);
+        }
+        return new ApolloSlaveViewBinder(this.b, this.a, this.c);
+      }
+      return new ApolloFavViewBinder(this.b, this.c);
+    }
+    return new ApolloSecondaryViewBinder(this.b, this.a, this.c);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    QLog.d("[cmshow]Panel2DStrategy", 1, new Object[] { "saveCurrentIndex-2D, index:", Integer.valueOf(paramInt1), ", packageId:", Integer.valueOf(paramInt2) });
+    ApolloPanelUtil.a(1, paramInt1, paramInt2);
+    SpriteActionScript localSpriteActionScript = SpriteUtil.i(this.a);
+    if (localSpriteActionScript != null) {
+      localSpriteActionScript.a(String.valueOf(paramInt2), "tabStatusChange");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.Panel2DStrategy
  * JD-Core Version:    0.7.0.1
  */

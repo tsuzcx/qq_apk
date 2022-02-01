@@ -150,7 +150,7 @@ public class VideoListAdapter
   
   public VideoListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2064318502, paramViewGroup, false));
+    return new VideoListAdapter.ViewHolder(this, LayoutInflater.from(this.context).inflate(2064056369, paramViewGroup, false));
   }
   
   public void setMaterialPath(String paramString)
@@ -191,7 +191,7 @@ public class VideoListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.VideoListAdapter
  * JD-Core Version:    0.7.0.1
  */

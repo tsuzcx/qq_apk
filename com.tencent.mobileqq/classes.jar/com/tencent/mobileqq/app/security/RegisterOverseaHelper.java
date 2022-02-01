@@ -18,21 +18,21 @@ import tencent.im.wireless_reg.CaptchaVerifyInfo.captchaVerifyInfo;
 
 public class RegisterOverseaHelper
 {
-  private static volatile RegisterOverseaHelper jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper;
-  private String jdField_a_of_type_JavaLangString = "CN";
+  private static volatile RegisterOverseaHelper b;
+  private String a = "CN";
   
   public static RegisterOverseaHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper = new RegisterOverseaHelper();
+        if (b == null) {
+          b = new RegisterOverseaHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper;
+    return b;
   }
   
   private void a(String paramString, RegisterNewBaseActivity paramRegisterNewBaseActivity)
@@ -67,14 +67,9 @@ public class RegisterOverseaHelper
     QLog.e("RegisterOverseaHelper", 1, "jumpWithCaptchaUrl error: params wrong");
   }
   
-  private boolean a(AppRuntime paramAppRuntime, RegisterNewBaseActivity paramRegisterNewBaseActivity, byte[] paramArrayOfByte)
+  private boolean b(AppRuntime paramAppRuntime, RegisterNewBaseActivity paramRegisterNewBaseActivity, byte[] paramArrayOfByte)
   {
     return (paramAppRuntime == null) || (paramRegisterNewBaseActivity == null) || (paramRegisterNewBaseActivity.handler == null) || (paramArrayOfByte == null);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   public HashMap<String, Object> a(Bundle paramBundle)
@@ -97,12 +92,12 @@ public class RegisterOverseaHelper
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(AppRuntime paramAppRuntime, RegisterNewBaseActivity paramRegisterNewBaseActivity, byte[] paramArrayOfByte)
   {
-    if (a(paramAppRuntime, paramRegisterNewBaseActivity, paramArrayOfByte))
+    if (b(paramAppRuntime, paramRegisterNewBaseActivity, paramArrayOfByte))
     {
       QLog.e("RegisterOverseaHelper", 1, "handleIframe error: params invalid");
       return;
@@ -126,10 +121,15 @@ public class RegisterOverseaHelper
       QLog.e("RegisterOverseaHelper", 1, paramRegisterNewBaseActivity.toString());
     }
   }
+  
+  public String b()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.security.RegisterOverseaHelper
  * JD-Core Version:    0.7.0.1
  */

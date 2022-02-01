@@ -9,34 +9,26 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class BusinessDataItem
   extends MessageNano
 {
-  private static volatile BusinessDataItem[] a;
+  private static volatile BusinessDataItem[] c;
   public long a;
-  public String a;
+  public String b;
   
   public BusinessDataItem()
   {
-    a();
+    b();
   }
   
   public static BusinessDataItem[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoBusinessDataItem == null) {
+    if (c == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoBusinessDataItem == null) {
-          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoBusinessDataItem = new BusinessDataItem[0];
+        if (c == null) {
+          c = new BusinessDataItem[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoBusinessDataItem;
-  }
-  
-  public BusinessDataItem a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.cachedSize = -1;
-    return this;
+    return c;
   }
   
   public BusinessDataItem a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -56,46 +48,54 @@ public final class BusinessDataItem
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          this.b = paramCodedInputByteBufferNano.readString();
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
+    return this;
+  }
+  
+  public BusinessDataItem b()
+  {
+    this.a = 0L;
+    this.b = "";
+    this.cachedSize = -1;
     return this;
   }
   
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
     return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.BusinessDataItem
  * JD-Core Version:    0.7.0.1
  */

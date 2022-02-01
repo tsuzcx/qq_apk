@@ -19,9 +19,9 @@ import java.lang.reflect.Method;
 
 public class DisplayUtils
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean = true;
+  private static int a = -1;
+  private static String b;
+  private static boolean c = true;
   
   public static float a(Context paramContext, float paramFloat)
   {
@@ -69,9 +69,9 @@ public class DisplayUtils
     return -1;
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
-    int i = jdField_a_of_type_Int;
+    int i = a;
     if (i != -1) {
       return i == 1;
     }
@@ -80,9 +80,9 @@ public class DisplayUtils
     if (i != 0)
     {
       bool = localResources.getBoolean(i);
-      if (!"1".equals(jdField_a_of_type_JavaLangString))
+      if (!"1".equals(b))
       {
-        if (!"0".equals(jdField_a_of_type_JavaLangString)) {
+        if (!"0".equals(b)) {
           break label97;
         }
         bool = true;
@@ -105,29 +105,14 @@ public class DisplayUtils
     }
     if (bool)
     {
-      jdField_a_of_type_Int = 1;
+      a = 1;
       return bool;
     }
-    jdField_a_of_type_Int = 0;
+    a = 0;
     return bool;
   }
   
-  public static int b(Context paramContext)
-  {
-    Resources localResources = paramContext.getResources();
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      if (jdField_a_of_type_Boolean) {
-        paramContext = "navigation_bar_height";
-      } else {
-        paramContext = "navigation_bar_height_landscape";
-      }
-      return a(localResources, paramContext);
-    }
-    return 0;
-  }
-  
-  public static boolean b(@NonNull Context paramContext)
+  public static boolean c(@NonNull Context paramContext)
   {
     Object localObject = paramContext.getResources();
     int i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
@@ -163,10 +148,25 @@ public class DisplayUtils
     catch (Exception paramContext) {}
     return bool1;
   }
+  
+  public static int d(Context paramContext)
+  {
+    Resources localResources = paramContext.getResources();
+    if (Build.VERSION.SDK_INT >= 14)
+    {
+      if (c) {
+        paramContext = "navigation_bar_height";
+      } else {
+        paramContext = "navigation_bar_height_landscape";
+      }
+      return a(localResources, paramContext);
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

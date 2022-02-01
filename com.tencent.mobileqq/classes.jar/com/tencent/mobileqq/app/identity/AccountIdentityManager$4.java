@@ -18,26 +18,26 @@ class AccountIdentityManager$4
   public void onClick(View paramView)
   {
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, "/base/browser");
-    if (AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager) == null)
+    ((Intent)localObject).putExtra("url", this.a);
+    RouteUtils.a(this.b, (Intent)localObject, "/base/browser");
+    if (AccountIdentityManager.b(this.e) == null)
     {
-      AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager, new AccountIdentityManager.AccountIdentityFinishReceiver(null));
+      AccountIdentityManager.a(this.e, new AccountIdentityManager.AccountIdentityFinishReceiver(null));
       localObject = new IntentFilter("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager), (IntentFilter)localObject);
+      this.b.registerReceiver(AccountIdentityManager.b(this.e), (IntentFilter)localObject);
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       localObject = "0X800B277";
     } else {
       localObject = "0X800B274";
     }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+    ReportController.b(this.d, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountIdentityManager.4
  * JD-Core Version:    0.7.0.1
  */

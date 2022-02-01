@@ -30,61 +30,56 @@ import org.jetbrains.annotations.Nullable;
 public final class PreviewPhotoPage
   extends BaseSDKPage
 {
-  public static final PreviewPhotoPage.Companion a;
-  private int a;
-  @NotNull
-  public View a;
+  public static final PreviewPhotoPage.Companion f = new PreviewPhotoPage.Companion(null);
   @NotNull
   public TextView a;
   @NotNull
-  public ArrayList<String> a;
-  private int b;
+  public View c;
   @NotNull
-  public ArrayList<String> b;
+  public ArrayList<String> d;
+  @NotNull
+  public ArrayList<String> e;
+  private int g;
+  private int h;
   
-  static
+  private final void q()
   {
-    jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPreviewPhotoPage$Companion = new PreviewPhotoPage.Companion(null);
-  }
-  
-  private final void f()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selectedPhotoList");
     }
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if (localArrayList == null) {
       Intrinsics.throwUninitializedPropertyAccessException("photoList");
     }
-    int i = ((ArrayList)localObject).indexOf(localArrayList.get(this.jdField_a_of_type_Int));
-    if (this.jdField_b_of_type_Int == 1)
+    int i = ((ArrayList)localObject).indexOf(localArrayList.get(this.g));
+    if (this.h == 1)
     {
       if (i >= 0)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        localObject = this.a;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("selectView");
         }
-        ((TextView)localObject).setBackgroundResource(R.drawable.l);
+        ((TextView)localObject).setBackgroundResource(R.drawable.g);
       }
       else
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+        localObject = this.a;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("selectView");
         }
-        ((TextView)localObject).setBackgroundResource(R.drawable.m);
+        ((TextView)localObject).setBackgroundResource(R.drawable.h);
       }
     }
     else if (i >= 0)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("selectView");
       }
-      ((TextView)localObject).setBackgroundResource(R.drawable.k);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      ((TextView)localObject).setBackgroundResource(R.drawable.f);
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("selectView");
       }
@@ -92,12 +87,12 @@ public final class PreviewPhotoPage
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("selectView");
       }
-      ((TextView)localObject).setBackgroundResource(R.drawable.m);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      ((TextView)localObject).setBackgroundResource(R.drawable.h);
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("selectView");
       }
@@ -105,18 +100,18 @@ public final class PreviewPhotoPage
     }
     if (i < 0)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = this.d;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("selectedPhotoList");
       }
-      if (((ArrayList)localObject).size() >= this.jdField_b_of_type_Int)
+      if (((ArrayList)localObject).size() >= this.h)
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.c;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("selectLayout");
         }
         ((View)localObject).setClickable(false);
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.c;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("selectLayout");
         }
@@ -124,28 +119,23 @@ public final class PreviewPhotoPage
         return;
       }
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selectLayout");
     }
     ((View)localObject).setClickable(true);
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selectLayout");
     }
     ((View)localObject).setEnabled(true);
   }
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   @Nullable
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    int i = R.layout.E;
+    int i = R.layout.A;
     int j = 0;
     paramViewGroup = paramLayoutInflater.inflate(i, paramViewGroup, false);
     paramLayoutInflater = a();
@@ -158,8 +148,8 @@ public final class PreviewPhotoPage
     {
       paramLayoutInflater = new ArrayList();
     }
-    this.jdField_b_of_type_JavaUtilArrayList = paramLayoutInflater;
-    paramLayoutInflater = this.jdField_b_of_type_JavaUtilArrayList;
+    this.e = paramLayoutInflater;
+    paramLayoutInflater = this.e;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("photoList");
     }
@@ -182,16 +172,16 @@ public final class PreviewPhotoPage
       while (((Iterator)localObject).hasNext()) {
         paramLayoutInflater.add(((Media)((Iterator)localObject).next()).getFilePath());
       }
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList((Collection)paramLayoutInflater);
+      this.e = new ArrayList((Collection)paramLayoutInflater);
     }
-    paramLayoutInflater = this.jdField_b_of_type_JavaUtilArrayList;
+    paramLayoutInflater = this.e;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("photoList");
     }
     if (paramLayoutInflater.isEmpty())
     {
       TLog.d("PreviewPhotoPage", "open PreviewPhotoPage failed, photoList is Empty");
-      paramLayoutInflater = a();
+      paramLayoutInflater = b();
       if (paramLayoutInflater != null) {
         paramLayoutInflater.finish();
       }
@@ -203,13 +193,13 @@ public final class PreviewPhotoPage
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_Int = i;
+    this.g = i;
     paramLayoutInflater = a();
     i = j;
     if (paramLayoutInflater != null) {
       i = paramLayoutInflater.getInt("max_select_num");
     }
-    this.jdField_b_of_type_Int = i;
+    this.h = i;
     paramLayoutInflater = a();
     if (paramLayoutInflater != null)
     {
@@ -220,87 +210,92 @@ public final class PreviewPhotoPage
     {
       paramLayoutInflater = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList = paramLayoutInflater;
-    if (e())
+    this.d = paramLayoutInflater;
+    if (h())
     {
-      paramLayoutInflater = paramViewGroup.findViewById(R.id.am);
+      paramLayoutInflater = paramViewGroup.findViewById(R.id.P);
       Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view.findViewById<View>(R.id.previewElement)");
-      ViewExtensionsKt.a(paramLayoutInflater);
+      ViewExtensionsKt.b(paramLayoutInflater);
     }
-    paramLayoutInflater = paramViewGroup.findViewById(R.id.aH);
+    paramLayoutInflater = paramViewGroup.findViewById(R.id.aj);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view.findViewById(R.id.selectedView)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater);
-    paramLayoutInflater = paramViewGroup.findViewById(R.id.aG);
+    this.a = ((TextView)paramLayoutInflater);
+    paramLayoutInflater = paramViewGroup.findViewById(R.id.ai);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view.findViewById<View>(R.id.selectedLayout)");
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.c = paramLayoutInflater;
+    paramLayoutInflater = this.c;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selectLayout");
     }
     paramLayoutInflater.setOnClickListener((View.OnClickListener)new PreviewPhotoPage.onCreateView.2(this));
-    paramViewGroup.findViewById(R.id.Y).setOnClickListener((View.OnClickListener)new PreviewPhotoPage.onCreateView.3(this));
-    paramLayoutInflater = (GalleryView)paramViewGroup.findViewById(R.id.M);
+    paramViewGroup.findViewById(R.id.D).setOnClickListener((View.OnClickListener)new PreviewPhotoPage.onCreateView.3(this));
+    paramLayoutInflater = (GalleryView)paramViewGroup.findViewById(R.id.t);
     paramLayoutInflater.setPicLoader((Function2)new PreviewPhotoPage.onCreateView.4(paramLayoutInflater));
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject = this.e;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("photoList");
     }
-    paramLayoutInflater.setPhotos((ArrayList)localObject, this.jdField_a_of_type_Int);
+    paramLayoutInflater.setPhotos((ArrayList)localObject, this.g);
     paramLayoutInflater.setOnPageSelectListener((Function1)new PreviewPhotoPage.onCreateView.5(this));
-    f();
+    q();
     return paramViewGroup;
-  }
-  
-  @NotNull
-  public final ArrayList<String> a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("selectedPhotoList");
-    }
-    return localArrayList;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
-  @NotNull
-  public final ArrayList<String> b()
+  public boolean g()
   {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    if (localArrayList == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("photoList");
-    }
-    return localArrayList;
+    return true;
   }
   
-  public void e()
+  public void m()
   {
-    super.e();
+    super.m();
     Intent localIntent = new Intent();
     Object localObject = new Bundle();
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.d;
     if (localArrayList == null) {
       Intrinsics.throwUninitializedPropertyAccessException("selectedPhotoList");
     }
     ((Bundle)localObject).putStringArrayList("selected_photo_list", localArrayList);
     localIntent.putExtras((Bundle)localObject);
-    localObject = a();
+    localObject = b();
     if (localObject != null) {
       ((Activity)localObject).setResult(2, localIntent);
     }
   }
   
-  public boolean p_()
+  public final int n()
   {
-    return true;
+    return this.g;
+  }
+  
+  @NotNull
+  public final ArrayList<String> o()
+  {
+    ArrayList localArrayList = this.d;
+    if (localArrayList == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("selectedPhotoList");
+    }
+    return localArrayList;
+  }
+  
+  @NotNull
+  public final ArrayList<String> p()
+  {
+    ArrayList localArrayList = this.e;
+    if (localArrayList == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("photoList");
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PreviewPhotoPage
  * JD-Core Version:    0.7.0.1
  */

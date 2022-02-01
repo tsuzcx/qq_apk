@@ -12,40 +12,40 @@ class FriendChatPie$13
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.a.a)))
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.ah.b)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onBandIntimateRelationship");
+        QLog.d(this.a.c, 2, "onBandIntimateRelationship");
       }
-      this.a.t();
+      this.a.bz();
     }
   }
   
   protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.a.a)))
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.ah.b)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onUpdateIntimateRelationship");
+        QLog.d(this.a.c, 2, "onUpdateIntimateRelationship");
       }
-      this.a.t();
+      this.a.bz();
     }
   }
   
   protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.a.a)))
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.ah.b)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onDisbandIntimateRelationship");
+        QLog.d(this.a.c, 2, "onDisbandIntimateRelationship");
       }
-      this.a.t();
+      this.a.bz();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.13
  * JD-Core Version:    0.7.0.1
  */

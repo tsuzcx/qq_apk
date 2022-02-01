@@ -22,7 +22,7 @@ class UpdateFriend$MyFriendListObserver
       }
       if ((paramBoolean1) && (paramBoolean2))
       {
-        this.a.mAutomator.a.edit().putBoolean("isFriendlistok", true).commit();
+        this.a.mAutomator.d.edit().putBoolean("isFriendlistok", true).commit();
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
         }
@@ -49,7 +49,7 @@ class UpdateFriend$MyFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateFriend.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

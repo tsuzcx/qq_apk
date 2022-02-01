@@ -20,7 +20,30 @@ import com.tencent.qphone.base.util.BaseApplication;
 class StoryPlayerCommentDialog$2
   implements FeedSegment.InputViewHideListener
 {
-  public CommentEntry a(String paramString, CommentEntry paramCommentEntry)
+  public void a(String paramString, CommentEntry paramCommentEntry)
+  {
+    this.a.dismiss();
+    paramString = b(paramString, paramCommentEntry);
+    if (paramString == null) {
+      return;
+    }
+    paramString.pbType = this.a.a.b.getCommentLikeType();
+    ((CommentManager)SuperManager.a(17)).b(paramString);
+    if (this.a.a.b.mDenyComment == 1)
+    {
+      QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131911855), 0).show();
+      if (this.a.b != null) {
+        this.a.b.a(false, paramString);
+      }
+    }
+    else
+    {
+      StoryQQTextCacher.a().a = "";
+      FeedCommentLego.a(this.a.a.b, paramString, false, 1, new StoryPlayerCommentDialog.2.1(this, paramString));
+    }
+  }
+  
+  public CommentEntry b(String paramString, CommentEntry paramCommentEntry)
   {
     if (paramString.length() <= 0) {
       return null;
@@ -38,41 +61,18 @@ class StoryPlayerCommentDialog$2
       localCommentEntry.replierName = paramCommentEntry.authorName;
       localCommentEntry.replierRole = paramCommentEntry.authorRole;
     }
-    localCommentEntry.authorUin = QQStoryContext.a().getCurrentUin();
-    localCommentEntry.authorUnionId = QQStoryContext.a().b();
+    localCommentEntry.authorUin = QQStoryContext.j().getCurrentUin();
+    localCommentEntry.authorUnionId = QQStoryContext.a().i();
     localCommentEntry.status = 1;
-    localCommentEntry.feedId = this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a.feedId;
-    localCommentEntry.pbType = this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a.getCommentLikeType();
-    if (((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue() == 1) {
+    localCommentEntry.feedId = this.a.a.b.feedId;
+    localCommentEntry.pbType = this.a.a.b.getCommentLikeType();
+    if (((Integer)((StoryConfigManager)SuperManager.a(10)).c("qqstory_i_am_vip", Integer.valueOf(-1))).intValue() == 1) {
       localCommentEntry.authorRole = 2;
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a.mDenyComment == 1) {
+    if (this.a.a.b.mDenyComment == 1) {
       localCommentEntry.status = 2;
     }
     return localCommentEntry;
-  }
-  
-  public void a(String paramString, CommentEntry paramCommentEntry)
-  {
-    this.a.dismiss();
-    paramString = a(paramString, paramCommentEntry);
-    if (paramString == null) {
-      return;
-    }
-    paramString.pbType = this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a.getCommentLikeType();
-    ((CommentManager)SuperManager.a(17)).b(paramString);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a.mDenyComment == 1)
-    {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714341), 0).a();
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$CommentDialogListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryPlayerCommentDialog$CommentDialogListener.a(false, paramString);
-      }
-    }
-    else
-    {
-      StoryQQTextCacher.a().a = "";
-      FeedCommentLego.a(this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramString, false, 1, new StoryPlayerCommentDialog.2.1(this, paramString));
-    }
   }
   
   public void b() {}

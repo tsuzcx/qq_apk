@@ -10,14 +10,14 @@ class StickerBubbleReceiverAnimationRunnable$1
     if (StickerBubbleReceiverAnimationRunnable.a(this.this$0))
     {
       StickerBubbleReceiverAnimationRunnable localStickerBubbleReceiverAnimationRunnable = this.this$0;
-      StickerBubbleAnimationHelper.a(localStickerBubbleReceiverAnimationRunnable, StickerBubbleReceiverAnimationRunnable.a(localStickerBubbleReceiverAnimationRunnable));
+      StickerBubbleAnimationHelper.a(localStickerBubbleReceiverAnimationRunnable, StickerBubbleReceiverAnimationRunnable.b(localStickerBubbleReceiverAnimationRunnable));
       StickerBubbleReceiverAnimationRunnable.a(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ class FastWebActivity$27
   
   public void run()
   {
-    if (FastWebActivity.a(this.this$0) != null)
+    if (FastWebActivity.l(this.this$0) != null)
     {
-      ItemDatasListUtils.a(FastWebActivity.a(this.this$0), this.a);
-      FastWebActivity.e(this.this$0);
+      ItemDatasListUtils.a(FastWebActivity.m(this.this$0), this.a);
+      FastWebActivity.n(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.27
  * JD-Core Version:    0.7.0.1
  */

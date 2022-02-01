@@ -21,11 +21,11 @@ public class VSStickyNoteProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      VSStickyNoteConfBean localVSStickyNoteConfBean = VSStickyNoteConfBean.a(paramArrayOfQConfItem[0].a);
+      VSStickyNoteConfBean localVSStickyNoteConfBean = VSStickyNoteConfBean.a(paramArrayOfQConfItem[0].b);
       a(localVSStickyNoteConfBean);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed ");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, localStringBuilder.toString());
       return localVSStickyNoteConfBean;
     }
@@ -41,7 +41,7 @@ public class VSStickyNoteProcessor
       localStringBuilder.append("onUpdate ");
       localStringBuilder.append(paramVSStickyNoteConfBean.toString());
       QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, localStringBuilder.toString());
-      VSConfigManager.a().a("sticky_note_publish_entrance_config", paramVSStickyNoteConfBean.a());
+      VSConfigManager.a().b("sticky_note_publish_entrance_config", paramVSStickyNoteConfBean.a());
     }
   }
   
@@ -79,7 +79,7 @@ public class VSStickyNoteProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSStickyNoteProcessor
  * JD-Core Version:    0.7.0.1
  */

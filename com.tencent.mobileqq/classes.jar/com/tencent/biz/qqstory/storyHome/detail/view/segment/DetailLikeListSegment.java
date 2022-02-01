@@ -19,33 +19,23 @@ public class DetailLikeListSegment
   extends SegmentView<DetailFeedItem>
 {
   public static final String KEY = "DetailLikeListSegment";
-  private DetailEventCallback jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailEventCallback;
-  private DetailFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-  private DetailCommentSegment.ClickNickCallback jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback = new DetailCommentSegment.ClickNickCallback(2);
-  private DetailCommentSegment.CommentTextOnTouchListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener = new DetailCommentSegment.CommentTextOnTouchListener();
+  private DetailFeedItem a;
   private boolean b;
+  private DetailCommentSegment.ClickNickCallback c = new DetailCommentSegment.ClickNickCallback(2);
+  private DetailCommentSegment.CommentTextOnTouchListener d = new DetailCommentSegment.CommentTextOnTouchListener();
+  private DetailEventCallback e;
   
   public DetailLikeListSegment(Context paramContext)
   {
     super(paramContext);
   }
   
-  public void P_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-      if ((localDetailFeedItem != null) && (localDetailFeedItem.b(this.b).size() > 0)) {
+      DetailFeedItem localDetailFeedItem = this.a;
+      if ((localDetailFeedItem != null) && (localDetailFeedItem.e(this.b).size() > 0)) {
         return 1;
       }
     }
@@ -54,46 +44,56 @@ public class DetailLikeListSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131370032);
-    SpannableStringBuilder localSpannableStringBuilder = SpannableStringUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131437188);
+    SpannableStringBuilder localSpannableStringBuilder = SpannableStringUtils.a(this.a.a, this.a.e(this.b), this.c);
     if (localSpannableStringBuilder.length() == 0)
     {
       paramViewGroup.setVisibility(8);
     }
     else
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) >= 30) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) > this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b).size())) {
-        localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b)) }));
+      if ((this.a.f(this.b) >= 30) && (this.a.f(this.b) > this.a.e(this.b).size())) {
+        localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { UIUtils.a(this.a.f(this.b)) }));
       } else {
         localSpannableStringBuilder.append("赞了");
       }
       paramViewGroup.setVisibility(0);
       paramViewGroup.setText(localSpannableStringBuilder);
-      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
+      paramViewGroup.setOnTouchListener(this.d);
     }
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561646, paramViewGroup, false));
-  }
-  
-  public String a()
-  {
-    return "DetailLikeListSegment";
+    return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628025, paramViewGroup, false));
   }
   
   public void a(DetailEventCallback paramDetailEventCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailEventCallback = paramDetailEventCallback;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback.a(paramDetailEventCallback);
+    this.e = paramDetailEventCallback;
+    this.c.a(paramDetailEventCallback);
   }
   
   public void a(DetailFeedItem paramDetailFeedItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+    this.a = paramDetailFeedItem;
     this.b = paramBoolean;
+  }
+  
+  public String b()
+  {
+    return "DetailLikeListSegment";
+  }
+  
+  public void br_()
+  {
+    if (((StoryDetailListView)w()).b())
+    {
+      this.m = true;
+      return;
+    }
+    this.m = false;
   }
 }
 

@@ -29,9 +29,9 @@ import java.util.Set;
 
 public class UnreadCountUtil
 {
-  private static final Provider<List<UnreadMsgFilter>> jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider = new UnreadMsgFilterProvider();
-  private static String jdField_a_of_type_JavaLangString;
+  private static final Provider<List<UnreadMsgFilter>> a = new UnreadMsgFilterProvider();
   private static final Provider<List<UnreadCountCalculateStrategy>> b = new UnreadCountProvider();
+  private static String c;
   
   public static int a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -39,7 +39,7 @@ public class UnreadCountUtil
     int i = 0;
     if (!bool)
     {
-      Object localObject = paramQQAppInterface.getProxyManager().a().a(false);
+      Object localObject = paramQQAppInterface.getProxyManager().g().a(false);
       new ConversationHelper(paramQQAppInterface).a((List)localObject);
       ArrayList localArrayList = new ArrayList();
       if (localObject != null) {
@@ -64,7 +64,7 @@ public class UnreadCountUtil
     }
     paramQQAppInterface = paramQQAppInterface.getMessageFacade();
     if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.b();
+      i = paramQQAppInterface.w();
     }
     return i;
   }
@@ -80,21 +80,25 @@ public class UnreadCountUtil
     if (i != 0) {
       localStringBuilder.append(String.format(Locale.US, "(%s,%d,%d) ", new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i) }));
     }
+    localStringBuilder.append(",strategyList=");
     Iterator localIterator = ((List)b.get()).iterator();
-    while (localIterator.hasNext()) {
+    while (localIterator.hasNext())
+    {
       i += ((UnreadCountCalculateStrategy)localIterator.next()).a(paramQQAppInterface, paramQQMessageFacade, localStringBuilder);
+      localStringBuilder.append(",");
+      localStringBuilder.append(i);
     }
     localStringBuilder.append(",costTime=[");
     localStringBuilder.append(System.currentTimeMillis() - l);
     localStringBuilder.append("]");
     paramQQAppInterface = localStringBuilder.toString();
-    if (!paramQQAppInterface.equals(jdField_a_of_type_JavaLangString))
+    if (!paramQQAppInterface.equals(c))
     {
       paramQQMessageFacade = new StringBuilder();
       paramQQMessageFacade.append("Recent Msg Unread: ");
       paramQQMessageFacade.append(paramQQAppInterface);
       QLog.d("UnreadCountUtil_UnreadMonitor", 1, paramQQMessageFacade.toString());
-      jdField_a_of_type_JavaLangString = paramQQAppInterface;
+      c = paramQQAppInterface;
     }
     return i;
   }
@@ -102,7 +106,7 @@ public class UnreadCountUtil
   public static int a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, int paramInt)
   {
     long l1 = SystemClock.elapsedRealtime();
-    Object localObject = paramQQMessageFacade.a();
+    Object localObject = paramQQMessageFacade.x();
     int j = 0;
     int i = 0;
     if (localObject != null)
@@ -188,7 +192,7 @@ public class UnreadCountUtil
       i = paramInt;
       if (paramInt > 0)
       {
-        int j = paramQQAppInterface.getConversationFacade().g(paramConversationInfo.uin, 1008);
+        int j = paramQQAppInterface.getConversationFacade().h(paramConversationInfo.uin, 1008);
         i = paramInt;
         if (j > 0) {
           i = paramInt - 1;
@@ -220,7 +224,7 @@ public class UnreadCountUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, ConversationInfo paramConversationInfo, StringBuilder paramStringBuilder)
   {
-    Object localObject = (List)jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider.get();
+    Object localObject = (List)a.get();
     boolean bool2 = false;
     boolean bool3 = false;
     if (localObject != null)
@@ -256,7 +260,7 @@ public class UnreadCountUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.count.UnreadCountUtil
  * JD-Core Version:    0.7.0.1
  */

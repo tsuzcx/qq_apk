@@ -14,21 +14,21 @@ final class VideoFeedsHelper$15
     {
       paramString = new StringBuilder();
       paramString.append("followPubAccount() onFollowPublicAccount uin=");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       paramString.append(", isSuccess=");
       paramString.append(paramBoolean);
       paramString.append(", isUGC=");
-      paramString.append(this.jdField_a_of_type_Boolean);
+      paramString.append(this.b);
       paramString.append(", data=");
       paramString.append(paramInt);
       QLog.d("VideoFeedsHelper", 2, paramString.toString());
     }
-    VideoFeedsHelper.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    VideoFeedsHelper.a(paramBoolean, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper.15
  * JD-Core Version:    0.7.0.1
  */

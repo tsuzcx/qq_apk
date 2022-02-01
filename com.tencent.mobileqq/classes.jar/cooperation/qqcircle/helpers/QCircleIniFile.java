@@ -2,10 +2,6 @@ package cooperation.qqcircle.helpers;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,34 +18,14 @@ import java.util.Set;
 public class QCircleIniFile
 {
   private String charSet = "UTF-8";
-  private File file = null;
   private String lineSeparator = null;
   private Map<String, QCircleIniFile.Section> sections = new LinkedHashMap();
   
   public QCircleIniFile() {}
   
-  public QCircleIniFile(File paramFile)
-  {
-    this.file = paramFile;
-    initFromFile(paramFile);
-  }
-  
   public QCircleIniFile(InputStream paramInputStream)
   {
     initFromInputStream(paramInputStream);
-  }
-  
-  private void initFromFile(File paramFile)
-  {
-    try
-    {
-      toIniFile(new BufferedReader(new FileReader(paramFile)));
-      return;
-    }
-    catch (FileNotFoundException paramFile)
-    {
-      paramFile.printStackTrace();
-    }
   }
   
   private void initFromInputStream(InputStream paramInputStream)
@@ -116,49 +92,49 @@ public class QCircleIniFile
   private void toIniFile(BufferedReader paramBufferedReader)
   {
     // Byte code:
-    //   0: ldc 158
-    //   2: invokestatic 164	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   0: ldc 143
+    //   2: invokestatic 149	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   5: astore_3
     //   6: aconst_null
     //   7: astore_2
     //   8: aload_1
-    //   9: invokevirtual 167	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   9: invokevirtual 152	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   12: astore 4
     //   14: aload 4
     //   16: ifnull +97 -> 113
     //   19: aload_3
     //   20: aload 4
-    //   22: invokevirtual 171	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   25: invokevirtual 176	java/util/regex/Matcher:matches	()Z
+    //   22: invokevirtual 156	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   25: invokevirtual 161	java/util/regex/Matcher:matches	()Z
     //   28: ifeq +54 -> 82
     //   31: aload 4
-    //   33: invokevirtual 74	java/lang/String:trim	()Ljava/lang/String;
+    //   33: invokevirtual 59	java/lang/String:trim	()Ljava/lang/String;
     //   36: astore 4
-    //   38: new 104	cooperation/qqcircle/helpers/QCircleIniFile$Section
+    //   38: new 89	cooperation/qqcircle/helpers/QCircleIniFile$Section
     //   41: dup
-    //   42: invokespecial 177	cooperation/qqcircle/helpers/QCircleIniFile$Section:<init>	()V
+    //   42: invokespecial 162	cooperation/qqcircle/helpers/QCircleIniFile$Section:<init>	()V
     //   45: astore_2
     //   46: aload_2
     //   47: aload 4
     //   49: iconst_1
     //   50: aload 4
-    //   52: invokevirtual 181	java/lang/String:length	()I
+    //   52: invokevirtual 166	java/lang/String:length	()I
     //   55: iconst_1
     //   56: isub
-    //   57: invokevirtual 185	java/lang/String:substring	(II)Ljava/lang/String;
-    //   60: invokestatic 189	cooperation/qqcircle/helpers/QCircleIniFile$Section:access$002	(Lcooperation/qqcircle/helpers/QCircleIniFile$Section;Ljava/lang/String;)Ljava/lang/String;
+    //   57: invokevirtual 170	java/lang/String:substring	(II)Ljava/lang/String;
+    //   60: invokestatic 174	cooperation/qqcircle/helpers/QCircleIniFile$Section:access$002	(Lcooperation/qqcircle/helpers/QCircleIniFile$Section;Ljava/lang/String;)Ljava/lang/String;
     //   63: pop
     //   64: aload_0
-    //   65: getfield 27	cooperation/qqcircle/helpers/QCircleIniFile:sections	Ljava/util/Map;
+    //   65: getfield 25	cooperation/qqcircle/helpers/QCircleIniFile:sections	Ljava/util/Map;
     //   68: aload_2
-    //   69: invokestatic 193	cooperation/qqcircle/helpers/QCircleIniFile$Section:access$000	(Lcooperation/qqcircle/helpers/QCircleIniFile$Section;)Ljava/lang/String;
+    //   69: invokestatic 178	cooperation/qqcircle/helpers/QCircleIniFile$Section:access$000	(Lcooperation/qqcircle/helpers/QCircleIniFile$Section;)Ljava/lang/String;
     //   72: aload_2
-    //   73: invokeinterface 197 3 0
+    //   73: invokeinterface 182 3 0
     //   78: pop
     //   79: goto -71 -> 8
     //   82: aload 4
-    //   84: ldc 148
-    //   86: invokevirtual 201	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   84: ldc 133
+    //   86: invokevirtual 186	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   89: astore 4
     //   91: aload 4
     //   93: arraylength
@@ -171,29 +147,29 @@ public class QCircleIniFile
     //   103: aload 4
     //   105: iconst_1
     //   106: aaload
-    //   107: invokevirtual 205	cooperation/qqcircle/helpers/QCircleIniFile$Section:set	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   107: invokevirtual 190	cooperation/qqcircle/helpers/QCircleIniFile$Section:set	(Ljava/lang/String;Ljava/lang/Object;)V
     //   110: goto -102 -> 8
     //   113: aload_1
-    //   114: invokevirtual 206	java/io/BufferedReader:close	()V
+    //   114: invokevirtual 191	java/io/BufferedReader:close	()V
     //   117: return
     //   118: astore_1
     //   119: aload_1
-    //   120: invokevirtual 156	java/io/IOException:printStackTrace	()V
+    //   120: invokevirtual 141	java/io/IOException:printStackTrace	()V
     //   123: return
     //   124: astore_2
     //   125: goto +13 -> 138
     //   128: astore_2
     //   129: aload_2
-    //   130: invokevirtual 156	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 141	java/io/IOException:printStackTrace	()V
     //   133: aload_1
-    //   134: invokevirtual 206	java/io/BufferedReader:close	()V
+    //   134: invokevirtual 191	java/io/BufferedReader:close	()V
     //   137: return
     //   138: aload_1
-    //   139: invokevirtual 206	java/io/BufferedReader:close	()V
+    //   139: invokevirtual 191	java/io/BufferedReader:close	()V
     //   142: goto +8 -> 150
     //   145: astore_1
     //   146: aload_1
-    //   147: invokevirtual 156	java/io/IOException:printStackTrace	()V
+    //   147: invokevirtual 141	java/io/IOException:printStackTrace	()V
     //   150: goto +5 -> 155
     //   153: aload_2
     //   154: athrow
@@ -249,12 +225,6 @@ public class QCircleIniFile
     return null;
   }
   
-  public void load(File paramFile)
-  {
-    this.file = paramFile;
-    initFromFile(paramFile);
-  }
-  
   public void load(InputStream paramInputStream)
   {
     initFromInputStream(paramInputStream);
@@ -270,24 +240,6 @@ public class QCircleIniFile
     paramString1 = (QCircleIniFile.Section)this.sections.get(paramString1);
     if (paramString1 != null) {
       paramString1.getValues().remove(paramString2);
-    }
-  }
-  
-  public void save()
-  {
-    save(this.file);
-  }
-  
-  public void save(File paramFile)
-  {
-    try
-    {
-      saveConfig(new BufferedWriter(new FileWriter(paramFile)));
-      return;
-    }
-    catch (IOException paramFile)
-    {
-      paramFile.printStackTrace();
     }
   }
   
@@ -328,7 +280,7 @@ public class QCircleIniFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.helpers.QCircleIniFile
  * JD-Core Version:    0.7.0.1
  */

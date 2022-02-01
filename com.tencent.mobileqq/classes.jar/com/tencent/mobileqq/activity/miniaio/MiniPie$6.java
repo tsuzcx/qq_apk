@@ -9,14 +9,14 @@ class MiniPie$6
   
   public void run()
   {
-    if (this.this$0.a.getCount() > 0) {
-      this.this$0.a.setSelectionFromBottom(this.this$0.a.getCount() - 1, 0);
+    if (this.this$0.i.getCount() > 0) {
+      this.this$0.i.setSelectionFromBottom(this.this$0.i.getCount() - 1, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.6
  * JD-Core Version:    0.7.0.1
  */

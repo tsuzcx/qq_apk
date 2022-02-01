@@ -39,163 +39,62 @@ import mqq.app.AppRuntime;
 public final class AIOShortcutBarHelper
   implements ILifeCycleHelper, IAIOShortcutBarHelper
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private AIOShortcutBarLogic jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic;
+  private View a;
+  private int b = 0;
+  private AIOContext c;
+  private AIOShortcutBarLogic d;
   
   public AIOShortcutBarHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic = new AIOShortcutBarLogic(this);
+    this.c = paramAIOContext;
+    this.d = new AIOShortcutBarLogic(this);
   }
   
-  private void i()
+  private void A()
   {
-    a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_Int = 0;
+    a(this.a);
+    this.a = null;
+    this.b = 0;
   }
   
   public int a()
   {
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    AIOContext localAIOContext = this.c;
     if ((localAIOContext instanceof TroopAIOContext)) {
       return 3;
     }
     if ((localAIOContext instanceof RobotContext)) {
       return 6;
     }
-    if (a()) {
+    if (b()) {
       return 4;
     }
-    localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    localAIOContext = this.c;
     if ((localAIOContext instanceof LimitContext)) {
       return 5;
     }
     if ((localAIOContext instanceof StrangerContext)) {
       return 7;
     }
-    if (b()) {
+    if (c()) {
       return 2;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext instanceof FriendAIOContext)) {
+    if ((this.c instanceof FriendAIOContext)) {
       return 1;
     }
     return 0;
   }
   
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    if (c() == 0)
-    {
-      int j = b();
-      i = paramInt;
-      if (j != 0) {
-        i = paramInt + j;
-      }
-    }
-    return i;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-  }
-  
-  public ViewGroup.LayoutParams a()
-  {
-    QQBlurView localQQBlurView = (QQBlurView)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131380356);
-    if (localQQBlurView != null) {
-      return localQQBlurView.getLayoutParams();
-    }
-    return null;
-  }
-  
-  public SessionInfo a()
-  {
-    return (SessionInfo)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-  }
-  
-  public <T extends IHelper> T a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(paramInt);
-  }
-  
-  public NavigateBarManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-  }
-  
-  public XEditTextEx a()
-  {
-    return (XEditTextEx)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131368874);
-  }
-  
-  public AppRuntime a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject == null) {
-      return;
-    }
-    int k = ((View)localObject).getId();
-    localObject = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
-    int j = 0;
-    int i = j;
-    if (localObject != null)
-    {
-      TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131371572);
-      i = j;
-      if (localTextView != null)
-      {
-        i = j;
-        if (localTextView.getVisibility() == 0) {
-          i = 1;
-        }
-      }
-    }
-    localObject = ((ViewGroup)localObject).findViewById(2131362489);
-    if (localObject != null)
-    {
-      localObject = ((View)localObject).getLayoutParams();
-      if ((localObject instanceof RelativeLayout.LayoutParams))
-      {
-        if (i != 0)
-        {
-          ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131371572);
-          return;
-        }
-        ((RelativeLayout.LayoutParams)localObject).addRule(2, k);
-      }
-    }
-  }
-  
   public void a(int paramInt)
   {
-    if ((((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).a instanceof TroopAppShortcutDrawer)) {
-      ((TroopAppShortcutDrawer)((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).a).c(paramInt);
+    if ((((ChatDrawerHelper)this.c.a(124)).b instanceof TroopAppShortcutDrawer)) {
+      ((TroopAppShortcutDrawer)((ChatDrawerHelper)this.c.a(124)).b).c(paramInt);
     }
   }
   
   protected void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.a(paramInt, paramBundle);
+    this.d.a(paramInt, paramBundle);
   }
   
   public void a(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
@@ -203,25 +102,25 @@ public final class AIOShortcutBarHelper
     if (paramView == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+    ViewGroup localViewGroup = (ViewGroup)this.c.d(2131430542);
     if (localViewGroup == null) {
       return;
     }
-    a(this.jdField_a_of_type_AndroidViewView);
+    a(this.a);
     a(paramView);
     if (paramLayoutParams != null) {
       localViewGroup.addView(paramView, paramLayoutParams);
     } else {
       localViewGroup.addView(paramView);
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
+    this.a = paramView;
+    this.b = paramInt;
+    d();
   }
   
   public void a(int paramInt, AIOShortcutBarHelper.OnVisibilityChangedListener paramOnVisibilityChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.a(paramInt, paramOnVisibilityChangedListener);
+    this.d.a(paramInt, paramOnVisibilityChangedListener);
   }
   
   public void a(View paramView)
@@ -229,7 +128,7 @@ public final class AIOShortcutBarHelper
     if (paramView == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+    ViewGroup localViewGroup = (ViewGroup)this.c.d(2131430542);
     if (localViewGroup == null) {
       return;
     }
@@ -241,7 +140,7 @@ public final class AIOShortcutBarHelper
   
   public void a(ViewGroup.LayoutParams paramLayoutParams)
   {
-    QQBlurView localQQBlurView = (QQBlurView)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131380356);
+    QQBlurView localQQBlurView = (QQBlurView)this.c.d(2131449300);
     if (localQQBlurView != null) {
       localQQBlurView.setLayoutParams(paramLayoutParams);
     }
@@ -252,17 +151,17 @@ public final class AIOShortcutBarHelper
     if (paramAIOShortcutBarEvent == null) {
       return;
     }
-    a(paramAIOShortcutBarEvent.jdField_a_of_type_Int, paramAIOShortcutBarEvent.a());
+    a(paramAIOShortcutBarEvent.a, paramAIOShortcutBarEvent.a());
   }
   
   public void a(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
   {
-    ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).a(paramTouchEventConsumer);
+    ((ChatDrawerHelper)this.c.a(124)).a(paramTouchEventConsumer);
   }
   
   public void a(String paramString)
   {
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    AIOContext localAIOContext = this.c;
     if ((localAIOContext instanceof LimitContext)) {
       ((LimitContext)localAIOContext).b(paramString);
     }
@@ -270,7 +169,7 @@ public final class AIOShortcutBarHelper
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    AIOContext localAIOContext = this.c;
     if ((localAIOContext instanceof TroopAIOContext)) {
       ((TroopAIOContext)localAIOContext).a(paramString1, paramString2, paramBoolean, paramInt);
     }
@@ -278,87 +177,135 @@ public final class AIOShortcutBarHelper
   
   public void a(boolean paramBoolean)
   {
-    BaseChatDrawer localBaseChatDrawer = ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).a;
+    BaseChatDrawer localBaseChatDrawer = ((ChatDrawerHelper)this.c.a(124)).b;
     if (localBaseChatDrawer != null) {
       localBaseChatDrawer.b(paramBoolean);
     }
   }
   
-  public boolean a()
-  {
-    return a().jdField_a_of_type_Int == 3000;
-  }
-  
   public boolean a(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.a(paramMotionEvent);
+    return this.d.a(paramMotionEvent);
   }
   
-  public int b()
+  public <T extends IHelper> T b(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.a(this.jdField_a_of_type_Int);
+    return this.c.a(paramInt);
   }
   
-  public void b()
+  public void b(int paramInt, AIOShortcutBarHelper.OnVisibilityChangedListener paramOnVisibilityChangedListener)
   {
-    Object localObject = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
-    if (localObject != null) {
-      return;
-    }
-    localObject = ((ViewGroup)localObject).findViewById(2131362489);
-    if (localObject != null)
-    {
-      localObject = ((View)localObject).getLayoutParams();
-      if ((localObject instanceof RelativeLayout.LayoutParams)) {
-        ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368875);
-      }
-    }
+    this.d.b(paramInt, paramOnVisibilityChangedListener);
   }
   
-  public void b(int paramInt)
+  public void b(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    ((ChatDrawerHelper)this.c.a(124)).b(paramTouchEventConsumer);
+  }
+  
+  public boolean b()
+  {
+    return h().a == 3000;
+  }
+  
+  public void c(int paramInt)
+  {
+    View localView = this.a;
     if (localView != null) {
       localView.setVisibility(paramInt);
     }
   }
   
-  public void b(int paramInt, AIOShortcutBarHelper.OnVisibilityChangedListener paramOnVisibilityChangedListener)
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.b(paramInt, paramOnVisibilityChangedListener);
+    return h().a == 1;
   }
   
-  public void b(DrawerFrame.TouchEventConsumer paramTouchEventConsumer)
+  public void d()
   {
-    ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).b(paramTouchEventConsumer);
-  }
-  
-  public boolean b()
-  {
-    return a().jdField_a_of_type_Int == 1;
-  }
-  
-  public int c()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView == null) {
-      return 8;
+    Object localObject = this.a;
+    if (localObject == null) {
+      return;
     }
-    return localView.getVisibility();
+    int k = ((View)localObject).getId();
+    localObject = (ViewGroup)this.c.d(2131430542);
+    int j = 0;
+    int i = j;
+    if (localObject != null)
+    {
+      TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131438953);
+      i = j;
+      if (localTextView != null)
+      {
+        i = j;
+        if (localTextView.getVisibility() == 0) {
+          i = 1;
+        }
+      }
+    }
+    localObject = ((ViewGroup)localObject).findViewById(2131428098);
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).getLayoutParams();
+      if ((localObject instanceof RelativeLayout.LayoutParams))
+      {
+        if (i != 0)
+        {
+          ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131438953);
+          return;
+        }
+        ((RelativeLayout.LayoutParams)localObject).addRule(2, k);
+      }
+    }
   }
   
-  public void c()
+  public void d(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    a(paramInt, null);
+  }
+  
+  public int e(int paramInt)
+  {
+    int i = paramInt;
+    if (v() == 0)
+    {
+      int j = u();
+      i = paramInt;
+      if (j != 0) {
+        i = paramInt + j;
+      }
+    }
+    return i;
+  }
+  
+  public void e()
+  {
+    Object localObject = (ViewGroup)this.c.d(2131430542);
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((ViewGroup)localObject).findViewById(2131428098);
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).getLayoutParams();
+      if ((localObject instanceof RelativeLayout.LayoutParams)) {
+        ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131435809);
+      }
+    }
+  }
+  
+  public void f()
+  {
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
     int i = ((View)localObject).getId();
-    localObject = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+    localObject = (ViewGroup)this.c.d(2131430542);
     if (localObject == null) {
       return;
     }
-    localObject = (TextView)((ViewGroup)localObject).findViewById(2131371572);
+    localObject = (TextView)((ViewGroup)localObject).findViewById(2131438953);
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -370,31 +317,16 @@ public final class AIOShortcutBarHelper
     if ((localObject instanceof RelativeLayout.LayoutParams)) {
       ((RelativeLayout.LayoutParams)localObject).addRule(2, i);
     }
-    a();
+    d();
   }
   
-  public void c(int paramInt)
+  public void g()
   {
-    a(paramInt, null);
-  }
-  
-  public boolean c()
-  {
-    return ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(124)).a();
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void d()
-  {
-    Object localObject = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+    Object localObject = (ViewGroup)this.c.d(2131430542);
     if (localObject == null) {
       return;
     }
-    localObject = (TextView)((ViewGroup)localObject).findViewById(2131371572);
+    localObject = (TextView)((ViewGroup)localObject).findViewById(2131438953);
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -404,39 +336,8 @@ public final class AIOShortcutBarHelper
     }
     localObject = ((TextView)localObject).getLayoutParams();
     if ((localObject instanceof RelativeLayout.LayoutParams)) {
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368875);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131435809);
     }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.g();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().c();
-  }
-  
-  public boolean e()
-  {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131365819);
-    return (localView != null) && (localView.getVisibility() == 0);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().g();
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic.a();
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().b();
   }
   
   @NonNull
@@ -445,9 +346,14 @@ public final class AIOShortcutBarHelper
     return "AIOShortcutBarHelper";
   }
   
-  public void h()
+  public SessionInfo h()
   {
-    i();
+    return (SessionInfo)this.c.O();
+  }
+  
+  public AppRuntime i()
+  {
+    return this.c.a();
   }
   
   public int[] interestedIn()
@@ -455,9 +361,39 @@ public final class AIOShortcutBarHelper
     return new int[] { 4, 8, 7, 14, 15 };
   }
   
+  public Activity j()
+  {
+    return this.c.b();
+  }
+  
+  public Context k()
+  {
+    return this.c.b();
+  }
+  
+  public void l()
+  {
+    this.c.p().d().e().h();
+  }
+  
+  public void m()
+  {
+    this.c.e().b().r();
+  }
+  
+  public boolean n()
+  {
+    return ((ChatDrawerHelper)this.c.a(124)).b();
+  }
+  
+  public NavigateBarManager o()
+  {
+    return this.c.E();
+  }
+  
   public void onMoveToState(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarLogic == null) {
+    if (this.d == null) {
       return;
     }
     if (paramInt != 4)
@@ -471,24 +407,88 @@ public final class AIOShortcutBarHelper
             if (paramInt != 15) {
               return;
             }
-            c(4);
-            h();
+            d(4);
+            y();
           }
-          c(5);
+          d(5);
           return;
         }
-        c(2);
+        d(2);
         return;
       }
-      c(3);
+      d(3);
       return;
     }
-    c(1);
+    d(1);
+  }
+  
+  public ViewGroup.LayoutParams p()
+  {
+    QQBlurView localQQBlurView = (QQBlurView)this.c.d(2131449300);
+    if (localQQBlurView != null) {
+      return localQQBlurView.getLayoutParams();
+    }
+    return null;
+  }
+  
+  public Drawable q()
+  {
+    return this.c.p().d().e().f();
+  }
+  
+  public XEditTextEx r()
+  {
+    return (XEditTextEx)this.c.d(2131435808);
+  }
+  
+  public void s()
+  {
+    this.c.p().a().b();
+  }
+  
+  public boolean t()
+  {
+    return this.c.A();
+  }
+  
+  public int u()
+  {
+    return this.d.c(this.b);
+  }
+  
+  public int v()
+  {
+    View localView = this.a;
+    if (localView == null) {
+      return 8;
+    }
+    return localView.getVisibility();
+  }
+  
+  public boolean w()
+  {
+    View localView = this.c.d(2131432077);
+    return (localView != null) && (localView.getVisibility() == 0);
+  }
+  
+  public int x()
+  {
+    return this.b;
+  }
+  
+  public void y()
+  {
+    A();
+  }
+  
+  public boolean z()
+  {
+    return this.d.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper
  * JD-Core Version:    0.7.0.1
  */

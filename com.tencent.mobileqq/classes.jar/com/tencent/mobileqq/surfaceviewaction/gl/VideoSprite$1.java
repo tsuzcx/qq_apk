@@ -7,14 +7,14 @@ class VideoSprite$1
   
   public void run()
   {
-    this.this$0.i();
+    this.this$0.v();
     VideoSprite.a(this.this$0);
     VideoSprite.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleHybirdStyleFactory
 {
@@ -29,7 +29,7 @@ public class QCircleHybirdStyleFactory
   {
     if (paramIntent == null)
     {
-      RFLog.e("QCircleHybirdStyleFactory", RFLog.USR, "getIntentByParseUrl intent is null");
+      QLog.e("QCircleHybirdStyleFactory", 1, "getIntentByParseUrl intent is null");
       return;
     }
     try
@@ -49,11 +49,10 @@ public class QCircleHybirdStyleFactory
     }
     catch (Exception paramIntent)
     {
-      int i = RFLog.USR;
       paramString = new StringBuilder();
       paramString.append("getStyleFromUrl error ");
       paramString.append(paramIntent.getMessage());
-      RFLog.e("QCircleHybirdStyleFactory", i, paramString.toString());
+      QLog.e("QCircleHybirdStyleFactory", 1, paramString.toString());
       paramIntent.printStackTrace();
     }
   }
@@ -81,11 +80,10 @@ public class QCircleHybirdStyleFactory
     }
     catch (Exception paramString)
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getStyleFromUrl error ");
       localStringBuilder.append(paramString.getMessage());
-      RFLog.e("QCircleHybirdStyleFactory", i, localStringBuilder.toString());
+      QLog.e("QCircleHybirdStyleFactory", 1, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return false;
@@ -96,13 +94,13 @@ public class QCircleHybirdStyleFactory
     QCircleWebViewTitleStyle localQCircleWebViewTitleStyle = new QCircleWebViewTitleStyle();
     if (paramContext == null)
     {
-      RFLog.d("QCircleHybirdStyleFactory", RFLog.USR, "context is null return default");
+      QLog.d("QCircleHybirdStyleFactory", 1, "context is null return default");
       return localQCircleWebViewTitleStyle;
     }
-    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131166279);
-    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131166279);
-    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165327);
-    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165327);
+    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131167016);
+    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131167016);
+    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165564);
+    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165564);
     return localQCircleWebViewTitleStyle;
   }
   
@@ -124,11 +122,10 @@ public class QCircleHybirdStyleFactory
     }
     catch (Exception paramString)
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getStyleFromUrl error ");
       localStringBuilder.append(paramString.getMessage());
-      RFLog.e("QCircleHybirdStyleFactory", i, localStringBuilder.toString());
+      QLog.e("QCircleHybirdStyleFactory", 1, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return paramContext;
@@ -136,7 +133,7 @@ public class QCircleHybirdStyleFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdStyleFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,13 @@ class MsgTabStoryNodeDelegate$4
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = MsgTabStoryNodeDelegate.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, this.jdField_a_of_type_JavaLangString);
-    if ((paramJobContext != null) && (!TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.e, paramJobContext.mVid)))
+    paramJobContext = MsgTabStoryNodeDelegate.a(this.c, this.a, this.b);
+    if ((paramJobContext != null) && (!TextUtils.equals(this.a.n, paramJobContext.mVid)))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.g = paramJobContext.mVideoThumbnailUrl;
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.e = paramJobContext.mVid;
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.f = paramJobContext.mAttachedFeedId;
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.i = "";
+      this.a.p = paramJobContext.mVideoThumbnailUrl;
+      this.a.n = paramJobContext.mVid;
+      this.a.o = paramJobContext.mAttachedFeedId;
+      this.a.x = "";
       ThreadManager.getUIHandler().post(new MsgTabStoryNodeDelegate.4.1(this));
     }
     return null;
@@ -34,7 +34,7 @@ class MsgTabStoryNodeDelegate$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.4
  * JD-Core Version:    0.7.0.1
  */

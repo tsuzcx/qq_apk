@@ -6,17 +6,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UECPageStayTimeReport$ReportItem
 {
-  public long a;
   public String a;
-  public long b;
   public String b;
+  public long c;
+  public long d;
   
-  public long a()
+  public void a()
   {
-    long l1 = this.jdField_a_of_type_Long;
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public long b()
+  {
+    long l1 = this.c;
     if (l1 != 0L)
     {
-      long l2 = this.jdField_b_of_type_Long;
+      long l2 = this.d;
       if ((l2 != 0L) && (l2 - l1 > 0L)) {
         return l2 - l1;
       }
@@ -28,31 +33,26 @@ public class UECPageStayTimeReport$ReportItem
     return 0L;
   }
   
-  public void a()
+  public void c()
   {
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    this.d = NetConnInfoCenter.getServerTimeMillis();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportItem{mPageKey='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mExtraInfo='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mEnterTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mExitTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", Timelong=");
-    localStringBuilder.append(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d - this.c);
     localStringBuilder.append(", Process=");
     localStringBuilder.append(BaseApplicationImpl.processName);
     localStringBuilder.append('}');
@@ -61,7 +61,7 @@ public class UECPageStayTimeReport$ReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayTimeReport.ReportItem
  * JD-Core Version:    0.7.0.1
  */

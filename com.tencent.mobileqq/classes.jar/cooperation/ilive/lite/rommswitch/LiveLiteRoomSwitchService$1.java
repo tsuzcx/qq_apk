@@ -46,14 +46,15 @@ class LiveLiteRoomSwitchService$1
           ((StringBuilder)localObject2).append("onCallback return feeds size = ");
           ((StringBuilder)localObject2).append(paramEIPCResult.size());
           QLog.e("LiveLiteRoomSwitchService", 1, ((StringBuilder)localObject2).toString());
-          paramEIPCResult = LiveLiteRoomSwitchService.a(paramEIPCResult, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
-          LiveLiteRoomSwitchService.a().clear();
-          LiveLiteRoomSwitchService.a().addAll(paramEIPCResult);
+          paramEIPCResult = LiveLiteRoomSwitchService.a(paramEIPCResult, this.b, this.c);
+          LiveLiteRoomSwitchService.c().clear();
+          LiveLiteRoomSwitchService.c().addAll(paramEIPCResult);
+          LiveLiteRoomSwitchService.a(this.d);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("on getfeed list newlist ");
           ((StringBuilder)localObject2).append(paramEIPCResult.size());
           ((StringBuilder)localObject2).append(" old size ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+          ((StringBuilder)localObject2).append(this.b.size());
           QLog.d("LiveLiteRoomSwitchService", 1, ((StringBuilder)localObject2).toString());
           ThreadManager.getUIHandler().post(new LiveLiteRoomSwitchService.1.3(this, paramEIPCResult));
           LiveLiteRoomSwitchService.a = (LiveRoomList.GetFeedsListRsp)localObject1;
@@ -78,7 +79,7 @@ class LiveLiteRoomSwitchService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.rommswitch.LiveLiteRoomSwitchService.1
  * JD-Core Version:    0.7.0.1
  */

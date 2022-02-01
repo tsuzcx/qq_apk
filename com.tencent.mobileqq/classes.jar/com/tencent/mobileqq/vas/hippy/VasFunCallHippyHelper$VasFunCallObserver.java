@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 public class VasFunCallHippyHelper$VasFunCallObserver
   extends VipFunCallObserver
 {
-  Promise jdField_a_of_type_ComTencentMttHippyModulesPromise;
+  Promise a;
   
   public VasFunCallHippyHelper$VasFunCallObserver(VasFunCallHippyHelper paramVasFunCallHippyHelper) {}
   
   public void a(Promise paramPromise)
   {
-    this.jdField_a_of_type_ComTencentMttHippyModulesPromise = paramPromise;
+    this.a = paramPromise;
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -24,20 +24,20 @@ public class VasFunCallHippyHelper$VasFunCallObserver
     try
     {
       localObject = (Bundle)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFunCallHippyHelper.a(false, 0);
+      this.b.a(false, 0);
       if (localObject == null)
       {
         QLog.e("VasFunCallHippyHelper", 1, "fcObserver.onUpdate dataBundle=null");
-        this.jdField_a_of_type_ComTencentMttHippyModulesPromise.reject("fcObserver.onUpdate dataBundle=null");
+        this.a.reject("fcObserver.onUpdate dataBundle=null");
         return;
       }
       int i = ((Bundle)localObject).getInt("result", -1);
       if (i != 0)
       {
-        this.jdField_a_of_type_ComTencentMttHippyModulesPromise.reject(VasHippyUtils.a(i, "fcObserver.onUpdate dataBundle is null", null));
+        this.a.reject(VasHippyUtils.a(i, "fcObserver.onUpdate dataBundle is null", null));
         return;
       }
-      this.jdField_a_of_type_ComTencentMttHippyModulesPromise.resolve(VasHippyUtils.a(0, "success", paramObject));
+      this.a.resolve(VasHippyUtils.a(0, "success", paramObject));
       if (QLog.isColorLevel())
       {
         paramObject = new StringBuilder();
@@ -67,7 +67,7 @@ public class VasFunCallHippyHelper$VasFunCallObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasFunCallHippyHelper.VasFunCallObserver
  * JD-Core Version:    0.7.0.1
  */

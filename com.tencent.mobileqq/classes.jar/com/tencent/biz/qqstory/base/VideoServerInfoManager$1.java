@@ -21,19 +21,19 @@ class VideoServerInfoManager$1
   
   protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    Object localObject = (String)((StoryConfigManager)SuperManager.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
-    synchronized (this.a.b)
+    Object localObject = (String)((StoryConfigManager)SuperManager.a(10)).c("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.d)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        long l = this.a.a.jdField_a_of_type_Long;
+        long l = this.a.a.g;
         if (l == 0L) {
           try
           {
             paramVarArgs = new VideoServerInfoManager.ServerInfo();
             localObject = new JSONObject((String)localObject);
-            paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-            paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
+            paramVarArgs.g = ((JSONObject)localObject).getLong("t");
+            paramVarArgs.f = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
             this.a.a = paramVarArgs;
             SLog.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
           }
@@ -49,7 +49,7 @@ class VideoServerInfoManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.VideoServerInfoManager.1
  * JD-Core Version:    0.7.0.1
  */

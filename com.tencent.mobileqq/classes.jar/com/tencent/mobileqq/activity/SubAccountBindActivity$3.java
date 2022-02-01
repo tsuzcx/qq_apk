@@ -8,6 +8,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
 import com.tencent.mobileqq.subaccount.SubAccountControllUtil;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
@@ -29,16 +30,23 @@ class SubAccountBindActivity$3
   
   public void onClick(View paramView)
   {
-    Object localObject1 = paramView.findViewById(2131364592);
+    Object localObject1 = paramView.findViewById(2131430661);
     if ((localObject1 == null) || (((View)localObject1).getVisibility() != 0))
     {
       int i = ((Integer)paramView.getTag()).intValue();
       localObject1 = (SimpleAccount)SubAccountBindActivity.access$000(this.a).get(i);
-      Object localObject2 = (SubAccountServiceImpl)this.a.app.getRuntimeService(ISubAccountService.class, null);
+      i = this.a.getIntent().getIntExtra("fromWhereExactly", 0);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("selectAccountClick fromWhereExactly = ");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, ((StringBuilder)localObject2).toString());
+      ReportController.b(this.a.app, "dc00898", "", "", "0X800BDE8", "0X800BDE8", i, 0, "", "", "", "");
+      localObject2 = (SubAccountServiceImpl)this.a.app.getRuntimeService(ISubAccountService.class, null);
       if (((SubAccountServiceImpl)localObject2).isSubAccountUin(((SimpleAccount)localObject1).getUin()))
       {
         localObject1 = this.a;
-        ((SubAccountBindActivity)localObject1).showQQToastSuccess(((SubAccountBindActivity)localObject1).getString(2131719305));
+        ((SubAccountBindActivity)localObject1).showQQToastSuccess(((SubAccountBindActivity)localObject1).getString(2131916857));
+        ReportController.b(this.a.app, "dc00898", "", "", "0X800BDE9", "0X800BDE9", 0, 0, "", "", "", "");
         SubAccountAssistantForward.a(this.a.app);
         this.a.setTitle("");
         localObject1 = new Intent();
@@ -65,11 +73,12 @@ class SubAccountBindActivity$3
       else if (this.a.isNetConnToast())
       {
         localObject2 = ((SubAccountServiceImpl)localObject2).getA2(((SimpleAccount)localObject1).getUin());
-        this.a.showJuhua(2131719307);
+        this.a.showJuhua(2131916859);
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject2 = new SubAccountBindActivity.3.1(this, (SimpleAccount)localObject1);
           this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), ((SimpleAccount)localObject1).getUin(), (SubAccountObserver)localObject2);
+          ReportController.b(this.a.app, "dc00898", "", "", "0X800BDE9", "0X800BDE9", i, 0, "", "", "", "");
         }
         else
         {
@@ -85,7 +94,7 @@ class SubAccountBindActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.3
  * JD-Core Version:    0.7.0.1
  */

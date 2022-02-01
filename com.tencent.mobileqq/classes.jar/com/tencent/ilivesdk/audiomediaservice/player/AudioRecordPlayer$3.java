@@ -11,13 +11,13 @@ class AudioRecordPlayer$3
   
   public void onInitCompleted()
   {
-    AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer).i("AudioRecordPlayer", "initOpenSdk: the openSdk init completed.", new Object[0]);
-    AudioRecordPlayer.b(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam);
+    AudioRecordPlayer.a(this.b).i("AudioRecordPlayer", "initOpenSdk: the openSdk init completed.", new Object[0]);
+    AudioRecordPlayer.b(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.3
  * JD-Core Version:    0.7.0.1
  */

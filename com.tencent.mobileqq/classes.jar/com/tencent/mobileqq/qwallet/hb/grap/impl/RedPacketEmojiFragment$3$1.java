@@ -14,23 +14,23 @@ class RedPacketEmojiFragment$3$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("face config doLoading result:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(",pathres=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult);
+      localStringBuilder.append(this.b);
       QLog.i("RedPacketEmojiFragment", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketEmojiFragment$3.a.b = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath;
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketEmojiFragment$3.a.a();
+      this.c.a.n = this.b.filePath;
+      this.c.a.d();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketEmojiFragment$3.a.b();
+    this.c.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketEmojiFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

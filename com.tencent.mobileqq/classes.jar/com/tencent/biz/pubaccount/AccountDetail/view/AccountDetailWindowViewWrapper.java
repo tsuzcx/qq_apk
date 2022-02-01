@@ -51,7 +51,7 @@ public class AccountDetailWindowViewWrapper
     if (QLog.isDevelopLevel()) {
       QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
     }
-    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558438, paramViewGroup, false);
+    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131623974, paramViewGroup, false);
     paramView.setPadding(0, AIOUtils.b(20.0F, paramViewGroup.getResources()), 0, 0);
     paramContext = new AccountDetailWindowViewWrapper(paramContext, paramPublicAccountConfigAttrImpl, paramAccountDetailBaseItemClickHandler, paramString1, paramString2);
     paramView.setTag(paramContext);
@@ -65,21 +65,21 @@ public class AccountDetailWindowViewWrapper
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+    Object localObject = this.b.getResources();
     int i = AIOUtils.b(140.0F, (Resources)localObject);
     int j = AIOUtils.b(10.0F, (Resources)localObject);
     if (Build.VERSION.SDK_INT >= 9) {
-      ((HorizontalScrollView)paramLinearLayout.findViewById(2131381153)).setOverScrollMode(2);
+      ((HorizontalScrollView)paramLinearLayout.findViewById(2131450172)).setOverScrollMode(2);
     }
-    localObject = (GridView)paramLinearLayout.findViewById(2131381144);
+    localObject = (GridView)paramLinearLayout.findViewById(2131450163);
     ((GridView)localObject).setClickable(true);
     ((GridView)localObject).setColumnWidth(i);
     ((GridView)localObject).setStretchMode(0);
     ((GridView)localObject).setHorizontalSpacing(j);
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int k = this.a.size();
     ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
     ((GridView)localObject).setNumColumns(k);
-    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+    ((GridView)localObject).setOnItemClickListener(this.g);
     if (Build.VERSION.SDK_INT >= 9) {
       ((GridView)localObject).setOverScrollMode(2);
     }
@@ -90,7 +90,7 @@ public class AccountDetailWindowViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailWindowViewWrapper
  * JD-Core Version:    0.7.0.1
  */

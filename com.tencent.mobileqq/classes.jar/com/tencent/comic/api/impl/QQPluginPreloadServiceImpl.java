@@ -29,7 +29,7 @@ public class QQPluginPreloadServiceImpl
   {
     QQComicPreloadManager localQQComicPreloadManager = this.manager;
     if (localQQComicPreloadManager != null) {
-      localQQComicPreloadManager.a(paramInt);
+      localQQComicPreloadManager.b(paramInt);
     }
   }
   
@@ -48,7 +48,7 @@ public class QQPluginPreloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQPluginPreloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

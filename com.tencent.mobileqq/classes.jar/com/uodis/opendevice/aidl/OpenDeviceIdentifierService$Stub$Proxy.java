@@ -32,7 +32,12 @@ class OpenDeviceIdentifierService$Stub$Proxy
     }
   }
   
-  public boolean a()
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public boolean b()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -55,15 +60,10 @@ class OpenDeviceIdentifierService$Stub$Proxy
       localParcel1.recycle();
     }
   }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.uodis.opendevice.aidl.OpenDeviceIdentifierService.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

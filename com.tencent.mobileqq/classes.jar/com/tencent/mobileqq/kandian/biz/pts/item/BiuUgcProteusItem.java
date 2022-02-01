@@ -36,7 +36,7 @@ public class BiuUgcProteusItem
   {
     if ((paramViewBase != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
@@ -47,7 +47,7 @@ public class BiuUgcProteusItem
         }
         paramViewBase = paramViewBase.getNativeView();
         Context localContext = paramViewBase.getContext();
-        paramViewBase.setOnClickListener(new BiuUgcProteusItem.1(this, paramIReadInJoyModel.a(), localContext));
+        paramViewBase.setOnClickListener(new BiuUgcProteusItem.1(this, paramIReadInJoyModel.k(), localContext));
       }
     }
   }
@@ -86,8 +86,8 @@ public class BiuUgcProteusItem
   public JSONObject a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     long l;
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null)) {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.a.a;
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)) {
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
     } else {
       l = 0L;
     }
@@ -107,7 +107,7 @@ public class BiuUgcProteusItem
     if (localReadInJoyMiddleBodyView != null)
     {
       NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localReadInJoyMiddleBodyView.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (localNativeMiddleBodyView.getContent() == null)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localReadInJoyMiddleBodyView.a(localLayoutParams);
@@ -131,7 +131,7 @@ public class BiuUgcProteusItem
     if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
       ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
     }
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     Util.a(localViewBase, paramIReadInJoyModel);
     a(localViewBase, paramIReadInJoyModel);
     Util.b(localViewBase, paramIReadInJoyModel);
@@ -141,12 +141,12 @@ public class BiuUgcProteusItem
   
   protected void a(int paramInt, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if (paramInt != 25) {
         if (paramInt != 26)
         {
@@ -156,7 +156,7 @@ public class BiuUgcProteusItem
             {
               if (paramInt == 108)
               {
-                ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+                ((ComponentContentUGCVoice)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
                 return;
               }
               paramIReadInJoyModel = new StringBuilder();
@@ -167,22 +167,22 @@ public class BiuUgcProteusItem
           }
           else
           {
-            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+            paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
             ComponentContentGridImage localComponentContentGridImage = (ComponentContentGridImage)paramNativeMiddleBodyView;
             localComponentContentGridImage.setMIReadInJoyModel(paramIReadInJoyModel);
-            paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel.a()));
+            paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel.k()));
             localComponentContentGridImage.setOnNoItemClickListener(new BiuUgcProteusItem.2(this, paramIReadInJoyModel, localReadInJoyBaseAdapter));
           }
         }
         else
         {
-          paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
+          paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.getContent();
           paramNativeMiddleBodyView.a(paramIReadInJoyModel);
           ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new BiuUgcProteusItem.3(this, paramIReadInJoyModel, localReadInJoyBaseAdapter));
           return;
         }
       }
-      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+      ((ComponentContentUgcImage)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
     }
   }
   
@@ -193,7 +193,7 @@ public class BiuUgcProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuUgcProteusItem
  * JD-Core Version:    0.7.0.1
  */

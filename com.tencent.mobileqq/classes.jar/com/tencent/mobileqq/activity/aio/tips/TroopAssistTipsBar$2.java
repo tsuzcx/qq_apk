@@ -15,14 +15,14 @@ class TroopAssistTipsBar$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a())
+    if (this.a.d())
     {
-      TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-      TroopAssistTipsBar.a(this.a).a();
-      QQAppInterface localQQAppInterface = TroopAssistTipsBar.a(this.a);
-      String str2 = TroopAssistTipsBar.a(this.a).a;
+      TroopAssistantManager.a().d(TroopAssistTipsBar.b(this.a), TroopAssistTipsBar.a(this.a).b);
+      TroopAssistTipsBar.c(this.a).c();
+      QQAppInterface localQQAppInterface = TroopAssistTipsBar.b(this.a);
+      String str2 = TroopAssistTipsBar.a(this.a).b;
       String str1;
-      if (TroopAssistTipsBar.a(this.a).getTroopMask(TroopAssistTipsBar.a(this.a).a) == 3) {
+      if (TroopAssistTipsBar.b(this.a).getTroopMask(TroopAssistTipsBar.a(this.a).b) == 3) {
         str1 = "1";
       } else {
         str1 = "0";
@@ -34,7 +34,7 @@ class TroopAssistTipsBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.2
  * JD-Core Version:    0.7.0.1
  */

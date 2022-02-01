@@ -18,15 +18,15 @@ class ARReport$1
       localHashMap.put("total_render_success_time", String.valueOf(this.b));
     }
     localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(ARReport.a()));
+    localHashMap.put("cpuNumber", String.valueOf(ARReport.b()));
     localHashMap.put("totalram", ARReport.a(BaseApplication.getContext()));
-    localHashMap.put("cpuname", this.this$0.a());
+    localHashMap.put("cpuname", this.this$0.c());
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidactARTotal", true, this.a, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.1
  * JD-Core Version:    0.7.0.1
  */

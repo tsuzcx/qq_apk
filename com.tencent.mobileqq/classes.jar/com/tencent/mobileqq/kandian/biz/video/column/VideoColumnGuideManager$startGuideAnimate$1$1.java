@@ -11,22 +11,22 @@ public final class VideoColumnGuideManager$startGuideAnimate$1$1
 {
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    if (VideoColumnGuideManager.a(this.a.this$0)) {
+    if (VideoColumnGuideManager.g(this.a.this$0)) {
       return;
     }
-    if (VideoColumnGuideManager.a(this.a.this$0) >= 1)
+    if (VideoColumnGuideManager.h(this.a.this$0) >= 1)
     {
       VideoColumnGuideManager.a(this.a.this$0);
       return;
     }
     paramAnimator = this.a.this$0;
-    VideoColumnGuideManager.a(paramAnimator, VideoColumnGuideManager.a(paramAnimator) + 1);
-    VideoColumnGuideManager.c(this.a.this$0);
+    VideoColumnGuideManager.a(paramAnimator, VideoColumnGuideManager.h(paramAnimator) + 1);
+    VideoColumnGuideManager.f(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.column.VideoColumnGuideManager.startGuideAnimate.1.1
  * JD-Core Version:    0.7.0.1
  */

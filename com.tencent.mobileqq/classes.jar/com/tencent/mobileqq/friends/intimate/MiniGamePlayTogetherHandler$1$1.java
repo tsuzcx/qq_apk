@@ -10,12 +10,12 @@ class MiniGamePlayTogetherHandler$1$1
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(this.a, this.b, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

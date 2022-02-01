@@ -10,7 +10,7 @@ class QQServiceForAV$QQServiceForAVBinder$3
   
   public void run()
   {
-    QQServiceForAV.a((QQAppInterface)this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a(), this.jdField_a_of_type_AndroidOsBundle);
+    QQServiceForAV.a((QQAppInterface)this.b.a.a(), this.a);
   }
 }
 

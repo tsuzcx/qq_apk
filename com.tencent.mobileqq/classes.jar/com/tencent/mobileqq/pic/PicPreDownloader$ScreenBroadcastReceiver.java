@@ -26,26 +26,26 @@ public class PicPreDownloader$ScreenBroadcastReceiver
     paramIntent = paramIntent.getAction();
     if ("android.intent.action.SCREEN_ON".equals(paramIntent))
     {
-      PicPreDownloader.a(PicPreDownloader.a);
-      PicPreDownloader.a = a(paramContext) ^ true;
+      PicPreDownloader.a(PicPreDownloader.b);
+      PicPreDownloader.b = a(paramContext) ^ true;
     }
     else if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
     {
-      PicPreDownloader.a(PicPreDownloader.a);
-      PicPreDownloader.a = false;
+      PicPreDownloader.a(PicPreDownloader.b);
+      PicPreDownloader.b = false;
     }
     else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
     {
-      PicPreDownloader.a(PicPreDownloader.a);
-      PicPreDownloader.a = true;
+      PicPreDownloader.a(PicPreDownloader.b);
+      PicPreDownloader.b = true;
     }
     paramContext = new StringBuilder();
     paramContext.append("isScreenOn:");
-    paramContext.append(PicPreDownloader.a);
+    paramContext.append(PicPreDownloader.b);
     paramContext.append(",lastScreenOnState:");
-    paramContext.append(PicPreDownloader.a());
+    paramContext.append(PicPreDownloader.e());
     Logger.a("PIC_TAG_PRELOAD", "onReceive", paramContext.toString());
-    if ((PicPreDownloader.a() == PicPreDownloader.a) && (!PicPreDownloader.a)) {
+    if ((PicPreDownloader.e() == PicPreDownloader.b) && (!PicPreDownloader.b)) {
       return;
     }
     ThreadManager.excute(new PicPreDownloader.ScreenBroadcastReceiver.1(this), 128, null, true);
@@ -53,7 +53,7 @@ public class PicPreDownloader$ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

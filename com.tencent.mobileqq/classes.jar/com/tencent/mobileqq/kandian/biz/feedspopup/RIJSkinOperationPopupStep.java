@@ -41,34 +41,34 @@ import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 public class RIJSkinOperationPopupStep
   extends BasePopupStep
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Activity a;
+  private boolean b = false;
   @Nullable
-  private ReadInJoySkinGuideView jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView;
-  private ReadInJoySkinHandler.ReadInJoySkinObserver jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinHandler$ReadInJoySkinObserver = new RIJSkinOperationPopupStep.5(this);
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new RIJSkinOperationPopupStep.7(this);
+  private String c = null;
   @Nullable
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ReadInJoySkinGuideView d;
+  private ReadInJoySkinHandler.ReadInJoySkinObserver e = new RIJSkinOperationPopupStep.5(this);
+  private ReadInJoyObserver f = new RIJSkinOperationPopupStep.7(this);
   
   public RIJSkinOperationPopupStep(@NotNull RIJPopupAutomator paramRIJPopupAutomator, Activity paramActivity)
   {
     super(paramRIJPopupAutomator, "RIJSkinOperationPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   @UiThread
   private void a(GuideData paramGuideData, String paramString, int paramInt)
   {
-    if (!a()) {
+    if (!g()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView == null)
+    if (this.d == null)
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131365172);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView = new ReadInJoySkinGuideView(0, this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface, paramGuideData.id, paramString, paramInt, new RIJSkinOperationPopupStep.3(this, localFrameLayout, paramInt, localQQAppInterface), new RIJSkinOperationPopupStep.4(this, localQQAppInterface, localFrameLayout, paramGuideData));
-      if (a() == 0) {
-        localFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView, -1, -1);
+      FrameLayout localFrameLayout = (FrameLayout)this.a.findViewById(2131431325);
+      this.d = new ReadInJoySkinGuideView(0, this.a, localQQAppInterface, paramGuideData.id, paramString, paramInt, new RIJSkinOperationPopupStep.3(this, localFrameLayout, paramInt, localQQAppInterface), new RIJSkinOperationPopupStep.4(this, localQQAppInterface, localFrameLayout, paramGuideData));
+      if (j() == 0) {
+        localFrameLayout.addView(this.d, -1, -1);
       }
     }
   }
@@ -91,7 +91,7 @@ public class RIJSkinOperationPopupStep
     } else {
       paramRefreshInfo = null;
     }
-    RefreshData localRefreshData = localReadInJoyRefreshManager.a(this.jdField_a_of_type_AndroidAppActivity, paramInt);
+    RefreshData localRefreshData = localReadInJoyRefreshManager.a(this.a, paramInt);
     if (QLog.isColorLevel())
     {
       QLog.d("Q.readinjoy.4tab", 2, "onReqGuideInfo 5bd回包 ");
@@ -129,7 +129,7 @@ public class RIJSkinOperationPopupStep
     {
       if (localRefreshData != null)
       {
-        SharedPreUtils.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null, paramInt);
+        SharedPreUtils.f(this.a, localQQAppInterface.getCurrentAccountUin(), null, paramInt);
         FileUtils.deleteFilesInDirectory(RefreshRes.a());
         localReadInJoyRefreshManager.a(0, "", -1L, paramInt);
       }
@@ -149,7 +149,7 @@ public class RIJSkinOperationPopupStep
       if (localRefreshData != null) {
         paramRefreshInfo.isShown = localRefreshData.isShown;
       }
-      SharedPreUtils.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt);
+      SharedPreUtils.f(this.a, localQQAppInterface.getCurrentAccountUin(), paramRefreshInfo.toJson().toString(), paramInt);
     }
   }
   
@@ -157,23 +157,23 @@ public class RIJSkinOperationPopupStep
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     ReadInJoyBaseResManager localReadInJoyBaseResManager = (ReadInJoyBaseResManager)localQQAppInterface.getManager(paramInt);
-    if (localReadInJoyBaseResManager.a(paramString, paramBaseResData))
+    if (localReadInJoyBaseResManager.b(paramString, paramBaseResData))
     {
       String str = localReadInJoyBaseResManager.a(paramString, paramBaseResData.id);
-      if (localReadInJoyBaseResManager.b(paramString, paramBaseResData))
+      if (localReadInJoyBaseResManager.c(paramString, paramBaseResData))
       {
         if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == paramInt)
         {
-          if (SharedPreUtils.d(this.jdField_a_of_type_AndroidAppActivity, paramBaseResData.id) != paramBaseResData.seq)
+          if (SharedPreUtils.bt(this.a, paramBaseResData.id) != paramBaseResData.seq)
           {
             FileUtils.deleteDirectory(str);
-            localReadInJoyBaseResManager.c(paramString, paramBaseResData);
+            localReadInJoyBaseResManager.e(paramString, paramBaseResData);
             return false;
           }
-          SharedPreUtils.p(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramBaseResData.id);
-          SharedPreUtils.r(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin());
+          SharedPreUtils.w(this.a, localQQAppInterface.getCurrentAccountUin(), paramBaseResData.id);
+          SharedPreUtils.bv(this.a, localQQAppInterface.getCurrentAccountUin());
         }
-        localReadInJoyBaseResManager.b(paramString, paramBaseResData);
+        localReadInJoyBaseResManager.d(paramString, paramBaseResData);
         if (QLog.isColorLevel())
         {
           paramString = new StringBuilder();
@@ -190,7 +190,7 @@ public class RIJSkinOperationPopupStep
       }
       else
       {
-        localReadInJoyBaseResManager.c(paramString, paramBaseResData);
+        localReadInJoyBaseResManager.e(paramString, paramBaseResData);
       }
     }
     return false;
@@ -199,7 +199,7 @@ public class RIJSkinOperationPopupStep
   private boolean a(int paramInt, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    RefreshData localRefreshData = ((ReadInJoyRefreshManager)localQQAppInterface.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER)).a(this.jdField_a_of_type_AndroidAppActivity, paramInt);
+    RefreshData localRefreshData = ((ReadInJoyRefreshManager)localQQAppInterface.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER)).a(this.a, paramInt);
     int i = (int)(System.currentTimeMillis() / 1000L);
     if (paramSkinInfo.has()) {
       paramSkinInfo = new SkinData(paramSkinInfo);
@@ -215,7 +215,7 @@ public class RIJSkinOperationPopupStep
       QLog.d("Q.readinjoy.4tab", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (ReadInJoySkinManager)localQQAppInterface.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
-    if ((!this.jdField_a_of_type_Boolean) && (i >= paramGuideInfo.beginTime) && (i <= paramGuideInfo.endTime))
+    if ((!this.b) && (i >= paramGuideInfo.beginTime) && (i <= paramGuideInfo.endTime))
     {
       if (a(QQManagerFactory.READ_INJOY_SKIN_MANAGER, "", paramGuideInfo))
       {
@@ -223,31 +223,31 @@ public class RIJSkinOperationPopupStep
         break label211;
       }
     }
-    else if ((i <= paramGuideInfo.endTime) && (NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidAppActivity)))
+    else if ((i <= paramGuideInfo.endTime) && (NetworkUtil.isWifiConnected(this.a)))
     {
       ((ReadInJoySkinManager)localObject).a(paramGuideInfo);
       ((ReadInJoySkinManager)localObject).a(paramGuideInfo.skinData);
     }
     boolean bool = false;
     label211:
-    paramGuideInfo = ((ReadInJoySkinManager)localObject).a(this.jdField_a_of_type_AndroidAppActivity);
-    if ((paramSkinInfo == null) && (((ReadInJoySkinManager)localObject).a() == 1))
+    paramGuideInfo = ((ReadInJoySkinManager)localObject).a(this.a);
+    if ((paramSkinInfo == null) && (((ReadInJoySkinManager)localObject).c() == 1))
     {
-      this.jdField_a_of_type_JavaLangString = ((ReadInJoySkinManager)localObject).a();
-      SharedPreUtils.o(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), null);
+      this.c = ((ReadInJoySkinManager)localObject).b();
+      SharedPreUtils.u(this.a, localQQAppInterface.getCurrentAccountUin(), null);
       if ((localRefreshData != null) && (i <= localRefreshData.endTime))
       {
         localRefreshData.isShown = true;
-        SharedPreUtils.f(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), localRefreshData.toJson().toString(), paramInt);
+        SharedPreUtils.f(this.a, localQQAppInterface.getCurrentAccountUin(), localRefreshData.toJson().toString(), paramInt);
         return bool;
       }
     }
     else if ((paramSkinInfo != null) && (paramGuideInfo != null) && (paramGuideInfo.id.equals(paramSkinInfo.id)) && (paramGuideInfo.seq != paramSkinInfo.seq))
     {
-      SharedPreUtils.o(this.jdField_a_of_type_AndroidAppActivity, localQQAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
-      if (paramSkinInfo.id.equals(((ReadInJoySkinManager)localObject).a()))
+      SharedPreUtils.u(this.a, localQQAppInterface.getCurrentAccountUin(), paramSkinInfo.toJson().toString());
+      if (paramSkinInfo.id.equals(((ReadInJoySkinManager)localObject).b()))
       {
-        this.jdField_a_of_type_JavaLangString = paramSkinInfo.id;
+        this.c = paramSkinInfo.id;
         return bool;
       }
       FileUtils.deleteDirectory(CommonSkinRes.a(paramSkinInfo.id));
@@ -283,7 +283,7 @@ public class RIJSkinOperationPopupStep
       if ((localObject2 == null) || (((GuideData)localObject2).showTime == 0)) {
         ((EntityManager)localObject1).persistOrReplace(paramGuideInfo);
       }
-      paramGuideInfo = localReadInJoyOperationManager.a("operation_guide", paramGuideInfo.id);
+      paramGuideInfo = localReadInJoyOperationManager.b("operation_guide", paramGuideInfo.id);
       if (paramGuideInfo != null)
       {
         paramGuideInfo = paramGuideInfo.iterator();
@@ -300,7 +300,7 @@ public class RIJSkinOperationPopupStep
             if (a(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER, "operation_guide", (BaseResData)localObject1)) {
               bool1 = true;
             }
-            this.jdField_a_of_type_Boolean = true;
+            this.b = true;
             bool2 = bool1;
           }
           else
@@ -309,9 +309,9 @@ public class RIJSkinOperationPopupStep
             if (j <= ((GuideData)localObject1).endTime)
             {
               bool2 = bool1;
-              if (NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidAppActivity))
+              if (NetworkUtil.isWifiConnected(this.a))
               {
-                localReadInJoyOperationManager.c("operation_guide", (BaseResData)localObject1);
+                localReadInJoyOperationManager.e("operation_guide", (BaseResData)localObject1);
                 bool2 = bool1;
               }
             }
@@ -328,64 +328,64 @@ public class RIJSkinOperationPopupStep
     return bool2;
   }
   
-  private void i()
+  private void l()
   {
     ThreadManager.excute(new RIJSkinOperationPopupStep.1(this), 16, null, true);
   }
   
-  private void j()
+  private void m()
   {
-    ReadInJoySkinGuideView localReadInJoySkinGuideView = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView;
+    ReadInJoySkinGuideView localReadInJoySkinGuideView = this.d;
     if (localReadInJoySkinGuideView != null)
     {
       localReadInJoySkinGuideView.a();
-      ((FrameLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131365172)).removeView(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinGuideView = null;
+      ((FrameLayout)this.a.findViewById(2131431325)).removeView(this.d);
+      this.d = null;
     }
-  }
-  
-  public int a()
-  {
-    return 0;
   }
   
   public void a()
   {
     super.a();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinHandler$ReadInJoySkinObserver);
-    localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    localQQAppInterface.addObserver(this.e);
+    localQQAppInterface.addObserver(this.f);
   }
   
   public void b()
   {
     super.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinHandler$ReadInJoySkinObserver);
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    localQQAppInterface.removeObserver(this.e);
+    localQQAppInterface.removeObserver(this.f);
   }
   
   public void d()
   {
     super.d();
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.c;
     if (str != null)
     {
       FileUtils.deleteDirectory(CommonSkinRes.a(str));
-      this.jdField_a_of_type_JavaLangString = null;
+      this.c = null;
     }
   }
   
-  protected void g() {}
+  protected void h() {}
   
-  protected void h()
+  protected void i()
   {
-    i();
+    l();
+  }
+  
+  public int j()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep
  * JD-Core Version:    0.7.0.1
  */

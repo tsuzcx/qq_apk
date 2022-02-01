@@ -19,7 +19,7 @@ class GamePartyManager$3
   
   public void a(String paramString)
   {
-    localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager).get();
+    localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.e).get();
     if (localQQAppInterface == null) {
       return;
     }
@@ -46,7 +46,7 @@ class GamePartyManager$3
         localStringBuilder.append(paramString);
         QLog.d("GamePartyManager", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
         ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "1", false);
         return;
@@ -72,14 +72,14 @@ class GamePartyManager$3
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("handlePushMsg_StartGame, getTeamContext finished, deltaTime = ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", expire = ");
       localStringBuilder.append(j);
       localStringBuilder.append(", status = ");
       localStringBuilder.append(i);
       QLog.d("GamePartyManager", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Long < j)
+    if (this.a < j)
     {
       paramString = paramString.getJSONObject("leader");
       bool = localQQAppInterface.getCurrentAccountUin().equals(paramString.getString("uin"));
@@ -87,16 +87,16 @@ class GamePartyManager$3
       {
         paramString = new Intent(localQQAppInterface.getApp().getApplicationContext(), PromptDialogActivity.class);
         paramString.addFlags(268435456);
-        paramString.putExtra("title", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_title.get());
-        paramString.putExtra("summary", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_summary.get());
-        paramString.putExtra("picUrl", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_picUrl.get());
-        paramString.putExtra("appid", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_appid.get());
-        paramString.putExtra("packageName", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_packageName.get());
-        paramString.putExtra("gamedata", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_gamedata.get());
+        paramString.putExtra("title", this.b.str_title.get());
+        paramString.putExtra("summary", this.b.str_summary.get());
+        paramString.putExtra("picUrl", this.b.str_picUrl.get());
+        paramString.putExtra("appid", this.b.str_appid.get());
+        paramString.putExtra("packageName", this.b.str_packageName.get());
+        paramString.putExtra("gamedata", this.b.str_gamedata.get());
         paramString.putExtra("leader", bool);
-        paramString.putExtra("createMsgTime", this.b);
+        paramString.putExtra("createMsgTime", this.c);
         localQQAppInterface.getApp().startActivity(paramString);
-        if (this.jdField_a_of_type_Boolean)
+        if (this.d)
         {
           ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "0", false);
           return;
@@ -109,7 +109,7 @@ class GamePartyManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.3
  * JD-Core Version:    0.7.0.1
  */

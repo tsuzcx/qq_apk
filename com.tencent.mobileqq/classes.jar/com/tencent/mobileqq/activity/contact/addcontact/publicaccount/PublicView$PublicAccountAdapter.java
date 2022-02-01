@@ -29,16 +29,16 @@ class PublicView$PublicAccountAdapter
   
   public PublicRecommendAccountInfo a(int paramInt)
   {
-    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
-      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
+    if ((PublicView.f(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.f(this.a).size())) {
+      return (PublicRecommendAccountInfo)PublicView.f(this.a).get(paramInt);
     }
     return null;
   }
   
   public int getCount()
   {
-    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
-      return PublicView.a(this.a).size();
+    if ((PublicView.f(this.a) != null) && (PublicView.f(this.a).size() > 0)) {
+      return PublicView.f(this.a).size();
     }
     return 0;
   }
@@ -48,12 +48,12 @@ class PublicView$PublicAccountAdapter
     Object localObject1;
     if (paramView == null)
     {
-      localObject1 = new FormMultiLineItem(this.a.a);
-      ((View)localObject1).setId(2131374038);
+      localObject1 = new FormMultiLineItem(this.a.F);
+      ((View)localObject1).setId(2131442132);
       paramView = new PublicView.ViewHolder();
       localObject2 = (FormMultiLineItem)localObject1;
-      paramView.c = ((FormMultiLineItem)localObject2).a();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)localObject2).a(0);
+      paramView.A = ((FormMultiLineItem)localObject2).getHeaderView();
+      paramView.a = ((FormMultiLineItem)localObject2).a(0);
       paramView.b = ((FormMultiLineItem)localObject2).a(1);
       ((View)localObject1).setTag(paramView);
       ((View)localObject1).setOnClickListener(this.a);
@@ -68,37 +68,37 @@ class PublicView$PublicAccountAdapter
     if (localObject2 != null)
     {
       if (((PublicRecommendAccountInfo)localObject2).mSource == 1) {
-        paramView.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject2).mEqqNameAccount;
+        paramView.y = ((PublicRecommendAccountInfo)localObject2).mEqqNameAccount;
       } else {
-        paramView.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject2).mPublicuin);
+        paramView.y = String.valueOf(((PublicRecommendAccountInfo)localObject2).mPublicuin);
       }
-      paramView.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject2);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramView.c = ((PublicRecommendAccountInfo)localObject2);
+      paramView.a.setVisibility(0);
       paramView.b.setVisibility(0);
-      paramView.c.setImageBitmap(a(1, paramView.jdField_a_of_type_JavaLangString));
+      paramView.A.setImageBitmap(a(1, paramView.y));
       if (((PublicRecommendAccountInfo)localObject2).mSource == 1)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mEqqCs);
+        paramView.a.setText(((PublicRecommendAccountInfo)localObject2).mEqqCs);
         paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mEqqSi);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mPublicname);
+        paramView.a.setText(((PublicRecommendAccountInfo)localObject2).mPublicname);
         paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mPublicdesc);
       }
       if ((((PublicRecommendAccountInfo)localObject2).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject2).mIsVerified.equalsIgnoreCase("1")))
       {
-        localObject2 = this.a.getResources().getDrawable(2130841838);
-        int i = (int)DisplayUtils.a(this.a.a, 15.0F);
+        localObject2 = this.a.getResources().getDrawable(2130842755);
+        int i = (int)DisplayUtils.a(this.a.F, 15.0F);
         ((Drawable)localObject2).setBounds(0, 0, i, i);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject2, i, i);
-        ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).c();
+        ((MultiImageTextView)paramView.a).a(6.0F);
+        ((MultiImageTextView)paramView.a).a((Drawable)localObject2, i, i);
+        ((MultiImageTextView)paramView.a).c();
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramView.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+        ((StringBuilder)localObject2).append(paramView.a.getText().toString());
         ((StringBuilder)localObject2).append(paramView.b.getText().toString());
         ((View)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
@@ -109,7 +109,7 @@ class PublicView$PublicAccountAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView.PublicAccountAdapter
  * JD-Core Version:    0.7.0.1
  */

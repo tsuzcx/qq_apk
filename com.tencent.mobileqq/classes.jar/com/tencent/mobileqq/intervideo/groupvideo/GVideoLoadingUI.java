@@ -11,17 +11,17 @@ import android.widget.TextView;
 public class GVideoLoadingUI
   implements View.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private LinearLayout a;
+  private TextView b;
   private TextView c;
   private TextView d;
   private TextView e;
-  private TextView f;
+  private LinearLayout f;
+  private TextView g;
+  private TextView h;
+  private ProgressBar i;
+  private Button j;
+  private Activity k;
   
   public static String a(long paramLong)
   {
@@ -37,74 +37,74 @@ public class GVideoLoadingUI
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.setVisibility(0);
+    this.b.setVisibility(8);
   }
   
   public void a(int paramInt, long paramLong)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.f.setVisibility(0);
+    this.j.setVisibility(8);
     if (paramLong == 0L) {
-      this.e.setVisibility(4);
+      this.g.setVisibility(4);
     } else {
-      this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
+      this.g.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
     }
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    this.i.setProgress(paramInt);
   }
   
   public void a(Activity paramActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367940));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367947));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367948));
-    this.c = ((TextView)paramView.findViewById(2131367941));
-    this.d = ((TextView)paramView.findViewById(2131367946));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367942));
-    this.e = ((TextView)paramView.findViewById(2131367943));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367944));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367945));
-    this.f = ((TextView)paramView.findViewById(2131367939));
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.a = ((LinearLayout)paramView.findViewById(2131434778));
+    this.b = ((TextView)paramView.findViewById(2131434785));
+    this.c = ((TextView)paramView.findViewById(2131434786));
+    this.d = ((TextView)paramView.findViewById(2131434779));
+    this.e = ((TextView)paramView.findViewById(2131434784));
+    this.f = ((LinearLayout)paramView.findViewById(2131434780));
+    this.g = ((TextView)paramView.findViewById(2131434781));
+    this.i = ((ProgressBar)paramView.findViewById(2131434782));
+    this.j = ((Button)paramView.findViewById(2131434783));
+    this.h = ((TextView)paramView.findViewById(2131434777));
+    this.k = paramActivity;
+    this.a.setOnClickListener(this);
+    this.b.setOnClickListener(this);
   }
   
   public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+    this.f.setVisibility(8);
+    this.j.setVisibility(0);
+    this.j.setText(paramString);
+    this.j.setOnClickListener(paramOnClickListener);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.c.setText(paramString1);
-    this.d.setText(paramString2);
+    this.d.setText(paramString1);
+    this.e.setText(paramString2);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setVisibility(8);
+    this.b.setVisibility(0);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.j.setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    if ((paramView == this.a) || (paramView == this.b)) {
+      this.k.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI
  * JD-Core Version:    0.7.0.1
  */

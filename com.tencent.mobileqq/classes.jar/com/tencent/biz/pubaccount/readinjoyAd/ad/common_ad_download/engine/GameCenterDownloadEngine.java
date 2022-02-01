@@ -18,17 +18,17 @@ public final class GameCenterDownloadEngine
 {
   public static final GameCenterDownloadEngine a = new GameCenterDownloadEngine();
   
-  private final WadlParams a(ADVideoAppDownloadData paramADVideoAppDownloadData)
+  private final WadlParams c(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams == null) {
-      paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams = RIJAdDownloadExKt.a(paramADVideoAppDownloadData);
+    if (paramADVideoAppDownloadData.m == null) {
+      paramADVideoAppDownloadData.m = RIJAdDownloadExKt.b(paramADVideoAppDownloadData);
     }
-    return paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;
+    return paramADVideoAppDownloadData.m;
   }
   
-  private final boolean c(ADVideoAppDownloadData paramADVideoAppDownloadData)
+  private final boolean d(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    return (paramADVideoAppDownloadData.jdField_a_of_type_Boolean) && (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null);
+    return (paramADVideoAppDownloadData.l) && (paramADVideoAppDownloadData.m != null);
   }
   
   public void a(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -40,7 +40,7 @@ public final class GameCenterDownloadEngine
   {
     String str;
     if (paramADVideoAppDownloadData != null) {
-      str = paramADVideoAppDownloadData.i;
+      str = paramADVideoAppDownloadData.n;
     } else {
       str = null;
     }
@@ -49,7 +49,7 @@ public final class GameCenterDownloadEngine
     }
     if (paramADVideoAppDownloadData != null)
     {
-      paramADVideoAppDownloadData = paramADVideoAppDownloadData.i;
+      paramADVideoAppDownloadData = paramADVideoAppDownloadData.n;
       if (paramADVideoAppDownloadData != null) {}
     }
     else
@@ -67,11 +67,11 @@ public final class GameCenterDownloadEngine
   public boolean b(@Nullable ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
     if (paramADVideoAppDownloadData != null) {
-      a.a(paramADVideoAppDownloadData);
+      a.c(paramADVideoAppDownloadData);
     }
     WadlProxyServiceWrap localWadlProxyServiceWrap = WadlProxyServiceUtil.a();
     if (paramADVideoAppDownloadData != null) {
-      paramADVideoAppDownloadData = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;
+      paramADVideoAppDownloadData = paramADVideoAppDownloadData.m;
     } else {
       paramADVideoAppDownloadData = null;
     }
@@ -81,7 +81,7 @@ public final class GameCenterDownloadEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine
  * JD-Core Version:    0.7.0.1
  */

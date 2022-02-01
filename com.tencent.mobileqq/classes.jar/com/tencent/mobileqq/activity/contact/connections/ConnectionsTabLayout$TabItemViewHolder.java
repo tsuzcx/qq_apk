@@ -6,40 +6,40 @@ import android.widget.TextView;
 
 public class ConnectionsTabLayout$TabItemViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TriangleView jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView a;
+  ImageView b;
+  TextView c;
+  TextView d;
+  TriangleView e;
   
   public ConnectionsTabLayout$TabItemViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371840));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371837));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371841));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371839));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131379123));
+    this.a = ((ImageView)paramView.findViewById(2131439278));
+    this.b = ((ImageView)paramView.findViewById(2131439275));
+    this.c = ((TextView)paramView.findViewById(2131439279));
+    this.d = ((TextView)paramView.findViewById(2131439277));
+    this.e = ((TriangleView)paramView.findViewById(2131447858));
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ImageView)localObject).setSelected(true);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    localObject = this.b;
     if (localObject != null) {
       ((ImageView)localObject).setSelected(true);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setSelected(true);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.d;
     if (localObject != null) {
       ((TextView)localObject).setSelected(true);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView;
+    localObject = this.e;
     if (localObject != null) {
       ((TriangleView)localObject).setVisibility(0);
     }
@@ -47,23 +47,23 @@ public class ConnectionsTabLayout$TabItemViewHolder
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ImageView)localObject).setSelected(false);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    localObject = this.b;
     if (localObject != null) {
       ((ImageView)localObject).setSelected(false);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setSelected(false);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.d;
     if (localObject != null) {
       ((TextView)localObject).setSelected(false);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView;
+    localObject = this.e;
     if (localObject != null) {
       ((TriangleView)localObject).setVisibility(4);
     }
@@ -71,7 +71,7 @@ public class ConnectionsTabLayout$TabItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsTabLayout.TabItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

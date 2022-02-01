@@ -45,6 +45,12 @@ public class QVipHippyConfig
     return isCanOpenHippyPage("QQVip");
   }
   
+  public static boolean isContainsModule(String paramString)
+  {
+    LinkedTreeMap localLinkedTreeMap = QVipHippyProcessor.a().map;
+    return (!TextUtils.isEmpty(paramString)) && (localLinkedTreeMap != null) && (localLinkedTreeMap.containsKey(paramString));
+  }
+  
   public static boolean isEnableUin(QVipHippyConfig.HippyInfo paramHippyInfo, QQAppInterface paramQQAppInterface)
   {
     if (paramHippyInfo != null)
@@ -142,7 +148,7 @@ public class QVipHippyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.QVipHippyConfig
  * JD-Core Version:    0.7.0.1
  */

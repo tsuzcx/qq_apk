@@ -31,6 +31,7 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.util.InputMethodUtil;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
 
@@ -38,15 +39,15 @@ public class AESelectLocationFragment
   extends PublicBaseFragment
   implements TextWatcher, View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AESelectionLocationAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  private View b;
+  private AESelectionLocationAdapter a;
+  private RecyclerView b;
+  private View c;
+  private EditText d;
+  private View e;
+  private TextView f;
+  private ImageView g;
+  private ProgressBar h;
+  private String i;
   
   public static void a(Context paramContext, int paramInt)
   {
@@ -55,27 +56,27 @@ public class AESelectLocationFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2064122587));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064121971);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2064122604));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122754));
-    this.b = paramView.findViewById(2064122091);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122045));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2064122163));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null)
+    this.b = ((RecyclerView)paramView.findViewById(2063991404));
+    this.c = paramView.findViewById(2063990901);
+    this.d = ((EditText)paramView.findViewById(2063991412));
+    this.f = ((TextView)paramView.findViewById(2063991528));
+    this.e = paramView.findViewById(2063991005);
+    this.g = ((ImageView)paramView.findViewById(2063990968));
+    this.h = ((ProgressBar)paramView.findViewById(2063991052));
+    this.g.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.d.addTextChangedListener(this);
+    if (this.b == null)
     {
       AEQLog.a("AESelectLocationFragment", "mRecycleView is null ");
       return;
     }
     paramView = new LinearLayoutManager(getBaseActivity(), 1, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter = new AESelectionLocationAdapter(getBaseActivity());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter.a(new AESelectLocationFragment.2(this));
+    this.b.setLayoutManager(paramView);
+    this.a = new AESelectionLocationAdapter(getBaseActivity());
+    this.b.setAdapter(this.a);
+    this.a.a(new AESelectLocationFragment.2(this));
   }
   
   private void a(String paramString)
@@ -86,8 +87,8 @@ public class AESelectLocationFragment
       ThreadManager.getUIHandler().post(new AESelectLocationFragment.3(this));
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    this.b.setVisibility(8);
+    this.h.setVisibility(0);
     ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new AESelectLocationFragment.4(this, "qzone_address_select", false, paramString));
   }
   
@@ -103,7 +104,7 @@ public class AESelectLocationFragment
     } else {
       localObject = paramString;
     }
-    localAEBaseDataReporter.p((String)localObject);
+    localAEBaseDataReporter.r((String)localObject);
     localObject = new Intent();
     ((Intent)localObject).putExtra("key_select_poi", paramString);
     getBaseActivity().setResult(-1, (Intent)localObject);
@@ -127,19 +128,19 @@ public class AESelectLocationFragment
     localStringBuilder.append("onTextChanged :");
     localStringBuilder.append(paramEditable);
     AEQLog.a("AESelectLocationFragment", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramEditable);
-    this.jdField_a_of_type_JavaLangString = paramEditable.toString();
-    if ((this.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (!this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().equals("")))
+    this.f.setText(paramEditable);
+    this.i = paramEditable.toString();
+    if ((this.d.getText() != null) && (!this.d.getText().toString().equals("")))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.b.setVisibility(0);
+      this.g.setVisibility(0);
+      this.e.setVisibility(0);
     }
     else
     {
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.e.setVisibility(8);
+      this.g.setVisibility(4);
     }
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.i);
   }
   
   @TargetApi(23)
@@ -158,21 +159,21 @@ public class AESelectLocationFragment
   public void onClick(View paramView)
   {
     paramView.getId();
-    int i = paramView.getId();
-    if (i != 2064121971)
+    int j = paramView.getId();
+    if (j != 2063990901)
     {
-      if (i != 2064122045)
+      if (j != 2063990968)
       {
-        if (i != 2064122091) {
+        if (j != 2063991005) {
           return;
         }
-        b(this.jdField_a_of_type_JavaLangString);
+        b(this.i);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      this.d.setText("");
       return;
     }
-    AEBaseDataReporter.a().aA();
+    AEBaseDataReporter.a().aF();
     getBaseActivity().finish();
   }
   
@@ -186,17 +187,23 @@ public class AESelectLocationFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2064318473, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2064056333, paramViewGroup, false);
     a(paramLayoutInflater);
     ViewCompat.setOnApplyWindowInsetsListener(paramLayoutInflater, new AESelectLocationFragment.1(this));
     ViewCompat.requestApplyInsets(paramLayoutInflater);
     return paramLayoutInflater;
   }
   
+  public void onPause()
+  {
+    super.onPause();
+    InputMethodUtil.b(this.d);
+  }
+  
   public void onResume()
   {
     super.onResume();
-    AEBaseDataReporter.a().az();
+    AEBaseDataReporter.a().aE();
     a();
   }
   
@@ -210,7 +217,7 @@ public class AESelectLocationFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.poi.AESelectLocationFragment
  * JD-Core Version:    0.7.0.1
  */

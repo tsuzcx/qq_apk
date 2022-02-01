@@ -21,16 +21,16 @@ public class FriendSystemMessage
   
   public FriendSystemMessage(MessageForSystemMsg paramMessageForSystemMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg = paramMessageForSystemMsg;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.extStr;
-    this.jdField_a_of_type_Long = paramMessageForSystemMsg.time;
-    this.b = a(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.getSystemMsg());
+    this.a = paramMessageForSystemMsg;
+    this.c = this.a.extStr;
+    this.d = paramMessageForSystemMsg.time;
+    this.e = a(this.a.getSystemMsg());
   }
   
   public FriendSystemMessage(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString;
+    this.d = paramLong;
   }
   
   public static String a(Context paramContext, structmsg.StructMsg paramStructMsg)
@@ -57,8 +57,8 @@ public class FriendSystemMessage
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             paramStructMsg = new StringBuilder();
-            paramStructMsg.append(paramContext.getString(2131693385));
-            paramStructMsg.append(paramContext.getString(2131693384));
+            paramStructMsg.append(paramContext.getString(2131890934));
+            paramStructMsg.append(paramContext.getString(2131890933));
             paramStructMsg.append((String)localObject1);
             paramStructMsg = paramStructMsg.toString();
           }
@@ -74,8 +74,8 @@ public class FriendSystemMessage
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             paramStructMsg = new StringBuilder();
-            paramStructMsg.append(paramContext.getString(2131693383));
-            paramStructMsg.append(paramContext.getString(2131693384));
+            paramStructMsg.append(paramContext.getString(2131890932));
+            paramStructMsg.append(paramContext.getString(2131890933));
             paramStructMsg.append((String)localObject1);
             paramStructMsg = paramStructMsg.toString();
           }
@@ -195,46 +195,46 @@ public class FriendSystemMessage
   
   public String a()
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.req_uin.get());
+    return String.valueOf(this.a.structMsg.req_uin.get());
   }
   
   public String a(Context paramContext)
   {
-    MessageForSystemMsg localMessageForSystemMsg = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg;
+    MessageForSystemMsg localMessageForSystemMsg = this.a;
     if (localMessageForSystemMsg != null) {
       return a(paramContext, localMessageForSystemMsg.structMsg);
     }
     return null;
   }
   
-  public String a(AppRuntime paramAppRuntime)
+  public String b(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg;
+    paramAppRuntime = this.a;
     if ((paramAppRuntime != null) && (TextUtils.isEmpty(paramAppRuntime.msg)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.parse();
-      this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.msg = MessageForSystemMsg.getSysMsgDesc(BaseApplication.getContext().getResources(), this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg);
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.msg;
+      this.a.parse();
+      this.a.msg = MessageForSystemMsg.getSysMsgDesc(BaseApplication.getContext().getResources(), this.a.structMsg);
+      this.c = this.a.msg;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.isread;
+    return this.a.isread;
   }
   
-  public String b()
+  public String c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.req_uin_nick.has()) {
-      return this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.req_uin_nick.get();
+    if (this.a.structMsg.msg.req_uin_nick.has()) {
+      return this.a.structMsg.msg.req_uin_nick.get();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.FriendSystemMessage
  * JD-Core Version:    0.7.0.1
  */

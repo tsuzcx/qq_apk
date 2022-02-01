@@ -18,44 +18,27 @@ import mqq.os.MqqHandler;
 public class OrderMediaMsgStatusCallback
   implements Callback
 {
-  private OrderMediaMsgStatusCallback.IStatusErrorListener jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgStatusCallback$IStatusErrorListener;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<Long, OrderMediaMsgStatusCallback.CallbackWrapper> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private ConcurrentLinkedQueue<Long> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private ConcurrentHashMap<Long, OrderMediaMsgStatusCallback.CallbackWrapper> a;
+  private ConcurrentLinkedQueue<Long> b = new ConcurrentLinkedQueue();
+  private OrderMediaMsgStatusCallback.IStatusErrorListener c;
+  private String d;
+  private Long e;
   
   public OrderMediaMsgStatusCallback(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private FileMsg a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
-    {
-      this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
-      Object localObject = this.jdField_a_of_type_JavaLangLong;
-      if ((localObject != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject)))
-      {
-        localObject = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_JavaLangLong);
-        if (localObject != null) {
-          return ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject).a();
-        }
-      }
-    }
-    return null;
+    this.d = paramString;
   }
   
   private void a(FileMsg paramFileMsg)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).containsKey(Long.valueOf(paramFileMsg.uniseq))))
     {
-      Object localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramFileMsg.uniseq));
+      Object localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(Long.valueOf(paramFileMsg.uniseq));
       if (localObject2 != null)
       {
-        localObject1 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a();
-        localObject2 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a();
+        localObject1 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).b();
+        localObject2 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).c();
         if ((localObject1 != null) && (localObject2 != null))
         {
           if (QLog.isColorLevel())
@@ -70,10 +53,10 @@ public class OrderMediaMsgStatusCallback
           ((Callback)localObject2).handleMessage((View)localObject1, paramFileMsg, paramFileMsg.status, paramFileMsg.errorCode);
           return;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramFileMsg.uniseq));
+        this.a.remove(Long.valueOf(paramFileMsg.uniseq));
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramFileMsg.uniseq));
+      this.a.remove(Long.valueOf(paramFileMsg.uniseq));
     }
   }
   
@@ -82,27 +65,27 @@ public class OrderMediaMsgStatusCallback
     if (paramFileMsg == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
-    if ((this.jdField_a_of_type_JavaLangLong != null) && (paramFileMsg.uniseq == this.jdField_a_of_type_JavaLangLong.longValue()))
+    this.e = ((Long)this.b.peek());
+    if ((this.e != null) && (paramFileMsg.uniseq == this.e.longValue()))
     {
       a(paramFileMsg);
       if (paramFileMsg.status == 1003)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(this.jdField_a_of_type_JavaLangLong);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_JavaLangLong);
+        this.b.remove(this.e);
+        this.a.remove(this.e);
         if (QLog.isColorLevel())
         {
           paramFileMsg = new StringBuilder();
           paramFileMsg.append("remove callback:");
-          paramFileMsg.append(this.jdField_a_of_type_JavaLangLong);
+          paramFileMsg.append(this.e);
           QLog.d("OrderMediaMsgStatusCallback", 2, paramFileMsg.toString());
         }
-        a(a(), false);
+        a(b(), false);
       }
     }
-    else if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramFileMsg.uniseq))))
+    else if ((paramBoolean) && (this.a.containsKey(Long.valueOf(paramFileMsg.uniseq))))
     {
-      Object localObject = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramFileMsg.uniseq));
+      Object localObject = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(Long.valueOf(paramFileMsg.uniseq));
       if (localObject != null)
       {
         ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject).a(paramFileMsg);
@@ -130,8 +113,8 @@ public class OrderMediaMsgStatusCallback
     }
     if (bool)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgStatusCallback$IStatusErrorListener;
+      this.b.remove(Long.valueOf(paramLong));
+      localObject = this.c;
       if (localObject != null) {
         ((OrderMediaMsgStatusCallback.IStatusErrorListener)localObject).a(paramLong, paramInt);
       }
@@ -148,16 +131,33 @@ public class OrderMediaMsgStatusCallback
     return bool;
   }
   
-  private void c(long paramLong)
+  private FileMsg b()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (!this.b.isEmpty())
+    {
+      this.e = ((Long)this.b.peek());
+      Object localObject = this.e;
+      if ((localObject != null) && (this.a.containsKey(localObject)))
+      {
+        localObject = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(this.e);
+        if (localObject != null) {
+          return ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject).a();
+        }
+      }
+    }
+    return null;
+  }
+  
+  private void d(long paramLong)
+  {
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).containsKey(Long.valueOf(paramLong))))
     {
-      Object localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      Object localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(Long.valueOf(paramLong));
       if (localObject2 != null)
       {
-        localObject1 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a();
-        Callback localCallback = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a();
+        localObject1 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).b();
+        Callback localCallback = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).c();
         localObject2 = ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a();
         if ((localObject1 != null) && (localCallback != null) && (localObject2 != null))
         {
@@ -175,7 +175,7 @@ public class OrderMediaMsgStatusCallback
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+        this.a.remove(Long.valueOf(paramLong));
       }
     }
     else if (QLog.isColorLevel())
@@ -189,9 +189,9 @@ public class OrderMediaMsgStatusCallback
   
   public int a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    if (this.b.contains(Long.valueOf(paramLong)))
     {
-      if (((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek()).longValue() == paramLong) {
+      if (((Long)this.b.peek()).longValue() == paramLong) {
         return 1;
       }
       return 2;
@@ -201,46 +201,39 @@ public class OrderMediaMsgStatusCallback
   
   public void a()
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.a;
     if (localConcurrentHashMap != null)
     {
       localConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+      this.a = null;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgStatusCallback$IStatusErrorListener = null;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(Long.valueOf(paramLong));
-    }
+    this.b.clear();
+    this.c = null;
   }
   
   public void a(OrderMediaMsgStatusCallback.IStatusErrorListener paramIStatusErrorListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgStatusCallback$IStatusErrorListener = paramIStatusErrorListener;
+    this.c = paramIStatusErrorListener;
   }
   
   public boolean a(AppRuntime paramAppRuntime, long paramLong, View paramView, Callback paramCallback)
   {
     if (paramAppRuntime != null)
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+      Object localObject1 = this.b;
       if ((localObject1 != null) && (((ConcurrentLinkedQueue)localObject1).contains(Long.valueOf(paramLong))))
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        if (this.a == null) {
+          this.a = new ConcurrentHashMap();
         }
         int j = -1;
         localObject1 = "";
         ((IOrderMediaMsgService)paramAppRuntime.getRuntimeService(IOrderMediaMsgService.class, "")).getMsgController().a(paramView, this);
         Object localObject2;
         int i;
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
+        if (!this.a.containsKey(Long.valueOf(paramLong)))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), new OrderMediaMsgStatusCallback.CallbackWrapper(this, paramView, paramCallback));
+          this.a.put(Long.valueOf(paramLong), new OrderMediaMsgStatusCallback.CallbackWrapper(this, paramView, paramCallback));
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -248,7 +241,7 @@ public class OrderMediaMsgStatusCallback
             ((StringBuilder)localObject2).append(paramLong);
             QLog.d("OrderMediaMsgStatusCallback", 2, ((StringBuilder)localObject2).toString());
           }
-          paramAppRuntime = ((ITransFileController)paramAppRuntime.getRuntimeService(ITransFileController.class, "")).findProcessor(this.jdField_a_of_type_JavaLangString, paramLong);
+          paramAppRuntime = ((ITransFileController)paramAppRuntime.getRuntimeService(ITransFileController.class, "")).findProcessor(this.d, paramLong);
           if (paramAppRuntime == null)
           {
             if (QLog.isColorLevel())
@@ -258,7 +251,7 @@ public class OrderMediaMsgStatusCallback
               paramAppRuntime.append(paramLong);
               QLog.d("OrderMediaMsgStatusCallback", 2, paramAppRuntime.toString());
             }
-            paramAppRuntime = this.jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendOrderMediaMsgStatusCallback$IStatusErrorListener;
+            paramAppRuntime = this.c;
             i = j;
             if (paramAppRuntime != null)
             {
@@ -275,16 +268,16 @@ public class OrderMediaMsgStatusCallback
               i = (int)paramAppRuntime.getFileStatus();
               if (!a(paramLong, i))
               {
-                this.jdField_a_of_type_JavaLangLong = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek());
+                this.e = ((Long)this.b.peek());
                 if (paramLong != 0L)
                 {
-                  localObject2 = this.jdField_a_of_type_JavaLangLong;
+                  localObject2 = this.e;
                   if ((localObject2 != null) && (paramLong != ((Long)localObject2).longValue()))
                   {
                     if (paramCallback != null)
                     {
                       paramCallback.handleMessage(paramView, paramAppRuntime.getFileMsg(), i, paramAppRuntime.mProcessorReport.errCode);
-                      localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+                      localObject2 = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(Long.valueOf(paramLong));
                       if (localObject2 != null) {
                         ((OrderMediaMsgStatusCallback.CallbackWrapper)localObject2).a(paramAppRuntime.getFileMsg());
                       }
@@ -306,7 +299,7 @@ public class OrderMediaMsgStatusCallback
         }
         else
         {
-          paramAppRuntime = (OrderMediaMsgStatusCallback.CallbackWrapper)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+          paramAppRuntime = (OrderMediaMsgStatusCallback.CallbackWrapper)this.a.get(Long.valueOf(paramLong));
           paramAppRuntime.a = new WeakReference(paramView);
           paramAppRuntime.b = new WeakReference(paramCallback);
           i = j;
@@ -342,9 +335,16 @@ public class OrderMediaMsgStatusCallback
   
   public void b(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramLong)))
+    if (!this.b.contains(Long.valueOf(paramLong))) {
+      this.b.offer(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (this.b.contains(Long.valueOf(paramLong)))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Long.valueOf(paramLong));
+      this.b.remove(Long.valueOf(paramLong));
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -352,13 +352,13 @@ public class OrderMediaMsgStatusCallback
         localStringBuilder.append(paramLong);
         QLog.d("OrderMediaMsgStatusCallback", 2, localStringBuilder.toString());
       }
-      c(paramLong);
+      d(paramLong);
     }
   }
   
   public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Long.valueOf(paramFileMsg.uniseq)))
+    if (!this.b.contains(Long.valueOf(paramFileMsg.uniseq)))
     {
       a(paramFileMsg);
       if (QLog.isColorLevel())
@@ -375,7 +375,7 @@ public class OrderMediaMsgStatusCallback
     if (a(paramFileMsg.uniseq, paramInt1))
     {
       a(paramFileMsg);
-      paramView = a();
+      paramView = b();
       bool = false;
     }
     a(paramView, bool);
@@ -383,7 +383,7 @@ public class OrderMediaMsgStatusCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgStatusCallback
  * JD-Core Version:    0.7.0.1
  */

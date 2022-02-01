@@ -10,16 +10,16 @@ import com.tencent.widget.ActionSheet;
 public class QQLiteBridgeParam
 {
   public int a;
-  public Activity a;
-  public Context a;
-  public Intent a;
-  public Uri a;
-  public Bundle a;
-  public ActionSheet a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public Activity b;
+  public Context c;
+  public Bundle d;
+  public String e;
+  public Intent f;
+  public ActionSheet g;
+  public Uri h;
+  public int i;
+  public int j;
+  public String k;
   
   public QQLiteBridgeParam(int paramInt)
   {
@@ -28,7 +28,7 @@ public class QQLiteBridgeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.entity.QQLiteBridgeParam
  * JD-Core Version:    0.7.0.1
  */

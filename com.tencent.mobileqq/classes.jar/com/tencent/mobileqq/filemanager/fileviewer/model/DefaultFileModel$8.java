@@ -14,19 +14,19 @@ class DefaultFileModel$8
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.a != null)
+    if (this.b.k != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i == 1)
       {
-        ReportController.b(null, "dc00898", "", "", "0X800A745", "0X800A745", QFileUtils.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.e()), 0, "", "", "", "");
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.a.d()) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.a.b();
+        ReportController.b(null, "dc00898", "", "", "0X800A745", "0X800A745", QFileUtils.c(this.b.z()), 0, "", "", "", "");
+        if (this.b.k.j()) {
+          this.b.k.d();
         }
       }
       else if (i == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.a.g();
+        this.b.k.n();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -34,7 +34,7 @@ class DefaultFileModel$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.8
  * JD-Core Version:    0.7.0.1
  */

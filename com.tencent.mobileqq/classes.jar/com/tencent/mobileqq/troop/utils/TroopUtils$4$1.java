@@ -9,14 +9,14 @@ class TroopUtils$4$1
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      QQToast.a(this.this$0.a, 2131699539, 0).a();
+    if (this.this$0.e != null) {
+      QQToast.makeText(this.this$0.e, 2131897570, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ class VasProfileTagView$13
       this.this$0.checkTagUpdateFlag();
     }
     paramAnimator = this.this$0;
-    VasProfileTagView.access$2300(paramAnimator, VasProfileTagView.access$2200(paramAnimator));
+    VasProfileTagView.access$2100(paramAnimator, VasProfileTagView.access$2000(paramAnimator));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.13
  * JD-Core Version:    0.7.0.1
  */

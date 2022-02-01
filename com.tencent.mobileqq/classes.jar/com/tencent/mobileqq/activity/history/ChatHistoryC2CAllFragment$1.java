@@ -82,23 +82,23 @@ class ChatHistoryC2CAllFragment$1
         if (paramMessage.obj != null)
         {
           ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
-          BaseApplication localBaseApplication = localChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+          BaseApplication localBaseApplication = localChatHistoryC2CAllFragment.a.getApp();
           if (((Boolean)paramMessage.obj).booleanValue() == true) {
-            i = 2131692093;
+            i = 2131889071;
           } else {
-            i = 2131692092;
+            i = 2131889070;
           }
           localChatHistoryC2CAllFragment.c(localBaseApplication.getString(i));
           return true;
           if (QLog.isColorLevel()) {
             QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
           }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.f())
+          if (this.a.G.A())
           {
             this.a.c(false);
             return true;
           }
-          this.a.u();
+          this.a.y();
           return true;
         }
         break;
@@ -118,7 +118,7 @@ class ChatHistoryC2CAllFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,9 +17,9 @@ import java.util.List;
 public class ReportUtil
 {
   public static int a;
-  public static String a;
-  public static long[] a;
-  public static String b;
+  public static long[] b;
+  public static String c;
+  public static String d;
   
   public static int a(ArrayList<SearchResult> paramArrayList, String paramString)
   {
@@ -37,15 +37,15 @@ public class ReportUtil
         if (localObject1 != null)
         {
           int j = i;
-          if (((SearchResult)localObject1).jdField_a_of_type_Int == 80000001)
+          if (((SearchResult)localObject1).a == 80000001)
           {
             j = i;
-            if (((SearchResult)localObject1).b != null)
+            if (((SearchResult)localObject1).e != null)
             {
               j = i;
-              if (((SearchResult)localObject1).b.size() > 0)
+              if (((SearchResult)localObject1).e.size() > 0)
               {
-                Iterator localIterator2 = ((SearchResult)localObject1).b.iterator();
+                Iterator localIterator2 = ((SearchResult)localObject1).e.iterator();
                 for (;;)
                 {
                   j = i;
@@ -67,7 +67,7 @@ public class ReportUtil
               }
             }
           }
-          switch (((SearchResult)localObject1).jdField_a_of_type_Int)
+          switch (((SearchResult)localObject1).a)
           {
           default: 
             i = j;
@@ -141,34 +141,6 @@ public class ReportUtil
     return 2;
   }
   
-  public static int a(List<ISearchResultModel> paramList, String paramString)
-  {
-    int j = 2;
-    int i = j;
-    if (paramList != null)
-    {
-      if (paramList.size() == 0) {
-        return 2;
-      }
-      paramList = paramList.iterator();
-      Object localObject;
-      do
-      {
-        do
-        {
-          i = j;
-          if (!paramList.hasNext()) {
-            break;
-          }
-          localObject = (ISearchResultModel)paramList.next();
-        } while (!(localObject instanceof GroupBaseNetSearchModelItem));
-        localObject = (GroupBaseNetSearchModelItem)localObject;
-      } while ((((GroupBaseNetSearchModelItem)localObject).d() != 1002) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(((GroupBaseNetSearchModelItem)localObject).a())));
-      i = 1;
-    }
-    return i;
-  }
-  
   public static String a(List<ISearchResultModel> paramList, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -188,7 +160,7 @@ public class ReportUtil
           if ((localISearchResultModel instanceof GroupBaseNetSearchModelItem)) {
             str = ((GroupBaseNetSearchModelItem)localISearchResultModel).b;
           } else if ((localISearchResultModel instanceof PublicAccountSearchResultModel)) {
-            str = ((PublicAccountSearchResultModel)localISearchResultModel).a();
+            str = ((PublicAccountSearchResultModel)localISearchResultModel).c();
           }
           if (!TextUtils.isEmpty(str))
           {
@@ -207,31 +179,31 @@ public class ReportUtil
   
   public static void a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_ArrayOfLong = null;
-    jdField_a_of_type_JavaLangString = null;
+    a = 0;
     b = null;
+    c = null;
+    d = null;
   }
   
   public static void a(int paramInt, long[] paramArrayOfLong, String paramString1, String paramString2)
   {
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-    jdField_a_of_type_JavaLangString = paramString1;
-    b = paramString2;
+    a = paramInt;
+    b = paramArrayOfLong;
+    c = paramString1;
+    d = paramString2;
   }
   
   public static void a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem)
   {
     if (paramGroupBaseNetSearchModelItem != null)
     {
-      if (paramGroupBaseNetSearchModelItem.d() != 1002) {
+      if (paramGroupBaseNetSearchModelItem.j() != 1002) {
         return;
       }
-      String str1 = paramGroupBaseNetSearchModelItem.b();
-      String str2 = paramGroupBaseNetSearchModelItem.a();
-      String str3 = paramGroupBaseNetSearchModelItem.d();
-      int i = paramGroupBaseNetSearchModelItem.k;
+      String str1 = paramGroupBaseNetSearchModelItem.g();
+      String str2 = paramGroupBaseNetSearchModelItem.c();
+      String str3 = paramGroupBaseNetSearchModelItem.n();
+      int i = paramGroupBaseNetSearchModelItem.M;
       paramGroupBaseNetSearchModelItem = new StringBuilder();
       paramGroupBaseNetSearchModelItem.append(i + 1);
       paramGroupBaseNetSearchModelItem.append("");
@@ -241,7 +213,7 @@ public class ReportUtil
       } else {
         i = 2;
       }
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      long[] arrayOfLong = b;
       if ((arrayOfLong != null) && (arrayOfLong.length == 2) && (arrayOfLong[0] == 1001L) && (arrayOfLong[1] == 1002L))
       {
         SearchUtils.a("all_search", "user_grp", "clk_grp", 0, i, new String[] { str2, paramGroupBaseNetSearchModelItem, str1, str3 });
@@ -253,6 +225,42 @@ public class ReportUtil
     }
   }
   
+  public static void a(List<ISearchResultGroupModel> paramList, int paramInt, String paramString)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      if (paramInt == 99) {
+        paramInt = 2;
+      } else {
+        paramInt = 1;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramString = (ISearchResultGroupModel)paramList.next();
+        if (((paramString instanceof GroupBaseNetSearchModel)) && (paramString.b() != null))
+        {
+          paramString = (GroupBaseNetSearchModel)paramString;
+          if (paramString.a == 1107L)
+          {
+            paramList = paramString.b().iterator();
+            while (paramList.hasNext())
+            {
+              paramString = (ISearchResultModel)paramList.next();
+              if ((paramString instanceof GroupBaseNetSearchModelItem))
+              {
+                paramString = (GroupBaseNetSearchModelItem)paramString;
+                if (paramString.j() == 1107) {
+                  SearchUtils.a("Sgrp", "search_result", "exp", paramInt, 0, new String[] { paramString.b });
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
   public static void a(List<ISearchResultModel> paramList, String paramString)
   {
     if (paramList != null)
@@ -260,9 +268,9 @@ public class ReportUtil
       if (paramList.size() == 0) {
         return;
       }
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      long[] arrayOfLong = b;
       if ((arrayOfLong != null) && (arrayOfLong.length == 2) && (arrayOfLong[0] == 1001L) && (arrayOfLong[1] == 1002L)) {
-        SearchUtils.a("all_search", "user_grp", "clk_more_grp", 0, a(paramList, paramString), new String[] { "", "", paramString, "" });
+        SearchUtils.a("all_search", "user_grp", "clk_more_grp", 0, b(paramList, paramString), new String[] { "", "", paramString, "" });
       }
     }
   }
@@ -294,7 +302,7 @@ public class ReportUtil
           {
             paramList = paramList1;
             j = i;
-            if (paramString1.a() != null)
+            if (paramString1.b() != null)
             {
               paramString1 = (GroupBaseNetSearchModel)paramString1;
               if (paramString1.a == 1001L)
@@ -330,8 +338,8 @@ public class ReportUtil
                     paramList.append("::2");
                     paramList = paramList.toString();
                   }
-                  paramList1 = paramString1.a();
-                  j = a(paramList1, paramString2);
+                  paramList1 = paramString1.b();
+                  j = b(paramList1, paramString2);
                   paramList1 = paramList1.iterator();
                   while (paramList1.hasNext())
                   {
@@ -339,14 +347,14 @@ public class ReportUtil
                     if ((paramString1 instanceof GroupBaseNetSearchModelItem))
                     {
                       paramString1 = (GroupBaseNetSearchModelItem)paramString1;
-                      if (paramString1.d() == 1002)
+                      if (paramString1.j() == 1002)
                       {
-                        i = paramString1.k;
+                        i = paramString1.M;
                         Object localObject = new StringBuilder();
                         ((StringBuilder)localObject).append(i + 1);
                         ((StringBuilder)localObject).append("");
                         localObject = ((StringBuilder)localObject).toString();
-                        SearchUtils.a("all_search", "user_grp", "exp_grp", 0, j, new String[] { paramString1.a(), localObject, paramString2, paramString1.d() });
+                        SearchUtils.a("all_search", "user_grp", "exp_grp", 0, j, new String[] { paramString1.c(), localObject, paramString2, paramString1.n() });
                       }
                     }
                   }
@@ -389,13 +397,13 @@ public class ReportUtil
         while (paramList.hasNext())
         {
           paramList1 = (ISearchResultGroupModel)paramList.next();
-          if (((paramList1 instanceof GroupBaseNetSearchModel)) && (paramList1.a() != null))
+          if (((paramList1 instanceof GroupBaseNetSearchModel)) && (paramList1.b() != null))
           {
             paramList1 = (GroupBaseNetSearchModel)paramList1;
             if (paramList1.a == 1002L)
             {
-              paramList = paramList1.a();
-              i = a(paramList, paramString2);
+              paramList = paramList1.b();
+              i = b(paramList, paramString2);
               if (paramList != null)
               {
                 paramList = paramList.iterator();
@@ -405,26 +413,26 @@ public class ReportUtil
                   if ((paramList1 instanceof GroupBaseNetSearchModelItem))
                   {
                     paramList1 = (GroupBaseNetSearchModelItem)paramList1;
-                    if (paramList1.d() == 1002)
+                    if (paramList1.j() == 1002)
                     {
-                      paramList1.k += j;
-                      int k = paramList1.k;
+                      paramList1.M += j;
+                      int k = paramList1.M;
                       paramArrayOfLong = new StringBuilder();
                       paramArrayOfLong.append(k + 1);
                       paramArrayOfLong.append("");
                       paramArrayOfLong = paramArrayOfLong.toString();
-                      SearchUtils.a("all_search", "more_grp", "exp_grp", 0, i, new String[] { paramList1.a(), paramArrayOfLong, paramString2, paramList1.d() });
+                      SearchUtils.a("all_search", "more_grp", "exp_grp", 0, i, new String[] { paramList1.c(), paramArrayOfLong, paramString2, paramList1.n() });
                     }
                   }
                 }
               }
-              break label785;
+              break label781;
             }
           }
         }
       }
       i = 2;
-      label785:
+      label781:
       if (paramBoolean)
       {
         SearchUtils.a("all_search", "more_grp", "load_more", 0, i, new String[] { paramString1, "", paramString2, "" });
@@ -432,6 +440,34 @@ public class ReportUtil
       }
       SearchUtils.a("all_search", "more_grp", "exp", 0, i, new String[] { paramString1, "", paramString2, "" });
     }
+  }
+  
+  public static int b(List<ISearchResultModel> paramList, String paramString)
+  {
+    int j = 2;
+    int i = j;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return 2;
+      }
+      paramList = paramList.iterator();
+      Object localObject;
+      do
+      {
+        do
+        {
+          i = j;
+          if (!paramList.hasNext()) {
+            break;
+          }
+          localObject = (ISearchResultModel)paramList.next();
+        } while (!(localObject instanceof GroupBaseNetSearchModelItem));
+        localObject = (GroupBaseNetSearchModelItem)localObject;
+      } while ((((GroupBaseNetSearchModelItem)localObject).j() != 1002) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(((GroupBaseNetSearchModelItem)localObject).c())));
+      i = 1;
+    }
+    return i;
   }
   
   public static void b(int paramInt, long[] paramArrayOfLong, String paramString1, String paramString2)
@@ -454,7 +490,7 @@ public class ReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

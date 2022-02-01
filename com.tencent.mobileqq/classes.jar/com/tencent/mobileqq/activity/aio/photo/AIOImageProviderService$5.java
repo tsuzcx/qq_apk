@@ -30,12 +30,12 @@ class AIOImageProviderService$5
         Object localObject = localQQAppInterface.getMessageFacade();
         if (HotChatHelper.a(localChatMessage))
         {
-          HotChatHelper.a(localChatMessage);
+          HotChatHelper.c(localChatMessage);
         }
         else
         {
           ((IPicFlash)QRoute.api(IPicFlash.class)).setFlashPicMsgReaded(localChatMessage);
-          Iterator localIterator = ((QQMessageFacade)localObject).a(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
+          Iterator localIterator = ((QQMessageFacade)localObject).h(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
           while (localIterator.hasNext())
           {
             MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
@@ -70,7 +70,7 @@ class AIOImageProviderService$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.5
  * JD-Core Version:    0.7.0.1
  */

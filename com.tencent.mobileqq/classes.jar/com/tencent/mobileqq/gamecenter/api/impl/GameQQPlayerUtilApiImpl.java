@@ -4,13 +4,14 @@ import android.content.Context;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.gamecenter.api.IGameQQPlayerUtilApi;
 import com.tencent.mobileqq.gamecenter.data.GameQQPlayerUtils;
+import mqq.app.AppRuntime;
 
 public class GameQQPlayerUtilApiImpl
   implements IGameQQPlayerUtilApi
 {
-  public String getMsgExtraString(AppInterface paramAppInterface, String paramString)
+  public String getMsgExtraString(AppRuntime paramAppRuntime, String paramString)
   {
-    return GameQQPlayerUtils.a(paramAppInterface, paramString);
+    return GameQQPlayerUtils.a(paramAppRuntime, paramString);
   }
   
   public void openGameMsgAIO(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7, String paramString8, int paramInt1, int paramInt2)
@@ -20,7 +21,7 @@ public class GameQQPlayerUtilApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameQQPlayerUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

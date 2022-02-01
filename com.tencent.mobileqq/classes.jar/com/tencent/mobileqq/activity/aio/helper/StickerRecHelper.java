@@ -25,39 +25,39 @@ import mqq.os.MqqHandler;
 public class StickerRecHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  private long jdField_a_of_type_Long;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private IStickerRecViewBinder jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewBinder;
-  private IStickerRecViewModel jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private QQAppInterface a;
+  private BaseActivity b;
+  private BaseChatPie c;
+  private SessionInfo d;
+  private MqqHandler e;
+  private IStickerRecViewModel f;
+  private IStickerRecViewBinder g;
+  private long h;
   
   public StickerRecHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramBaseChatPie.a();
-    paramBaseChatPie.b().a().a(this);
-    d();
+    this.c = paramBaseChatPie;
+    this.a = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.f;
+    this.d = paramBaseChatPie.ah;
+    this.e = paramBaseChatPie.j();
+    paramBaseChatPie.bv().d().a(this);
+    e();
   }
   
-  private void d()
+  private void e()
   {
-    LifeCycleAndViewModelStoreOwner localLifeCycleAndViewModelStoreOwner = LifeCycleFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel = ((IStickerRecMvvmCreator)QRoute.api(IStickerRecMvvmCreator.class)).createViewModel(localLifeCycleAndViewModelStoreOwner);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewBinder = ((IStickerRecMvvmCreator)QRoute.api(IStickerRecMvvmCreator.class)).createViewBinder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewBinder.a(localLifeCycleAndViewModelStoreOwner);
+    LifeCycleAndViewModelStoreOwner localLifeCycleAndViewModelStoreOwner = LifeCycleFragment.a(this.b);
+    this.f = ((IStickerRecMvvmCreator)QRoute.api(IStickerRecMvvmCreator.class)).createViewModel(localLifeCycleAndViewModelStoreOwner);
+    this.g = ((IStickerRecMvvmCreator)QRoute.api(IStickerRecMvvmCreator.class)).createViewBinder(this.a, this.c.aX(), this.c.bv(), this.f);
+    this.f.a(this.a);
+    this.f.a(new LayoutStatusLiveData());
+    this.g.a(localLifeCycleAndViewModelStoreOwner);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeMessages(67);
+    this.c.j().removeMessages(67);
     b();
     a(true);
     a(12);
@@ -65,17 +65,17 @@ public class StickerRecHelper
   
   void a(int paramInt)
   {
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(52);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.c.q(52);
     if (localAIOShortcutBarHelper != null) {
-      localAIOShortcutBarHelper.c(paramInt);
+      localAIOShortcutBarHelper.d(paramInt);
     }
   }
   
   public void a(Editable paramEditable)
   {
-    String str = ((SpecWordEmotionThinkHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(41)).a();
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(paramEditable, str);
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long - 3000L;
+    String str = ((SpecWordEmotionThinkHelper)this.c.q(41)).d();
+    boolean bool = this.f.a(paramEditable, str);
+    long l = System.currentTimeMillis() - this.h - 3000L;
     if (!bool)
     {
       if (l > 0L)
@@ -83,26 +83,21 @@ public class StickerRecHelper
         a();
         return;
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, -l);
+      this.e.sendEmptyMessageDelayed(67, -l);
     }
   }
   
   void a(boolean paramBoolean)
   {
-    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(8);
+    IApolloAIOHelper localIApolloAIOHelper = (IApolloAIOHelper)this.c.q(8);
     if (localIApolloAIOHelper != null) {
       localIApolloAIOHelper.showApolloView(paramBoolean);
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a();
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData(2));
+    this.f.a(new LayoutStatusLiveData(2));
   }
   
   public void b(Editable paramEditable)
@@ -112,9 +107,14 @@ public class StickerRecHelper
     }
   }
   
-  public void c()
+  public boolean c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+    return this.f.a();
+  }
+  
+  public void d()
+  {
+    if (this.c == null) {
       return;
     }
     b();
@@ -129,7 +129,7 @@ public class StickerRecHelper
   
   public boolean handleMessage(Message paramMessage)
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.c;
     int i = paramMessage.what;
     if (i != 67)
     {
@@ -138,9 +138,9 @@ public class StickerRecHelper
         if (i != 92) {
           return false;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData(2));
+        this.f.a(new LayoutStatusLiveData(2));
         if (localBaseChatPie != null) {
-          localBaseChatPie.a().removeMessages(67);
+          localBaseChatPie.j().removeMessages(67);
         }
         a(true);
         a(12);
@@ -151,26 +151,26 @@ public class StickerRecHelper
         str = (String)paramMessage.obj;
       }
       paramMessage = new LayoutStatusLiveData(1);
-      paramMessage.a = str;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(paramMessage);
+      paramMessage.b = str;
+      this.f.a(paramMessage);
       if (localBaseChatPie != null)
       {
         a(false);
-        paramMessage = (IDoutuService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IDoutuService.class, "");
+        paramMessage = (IDoutuService)this.a.getRuntimeService(IDoutuService.class, "");
         if (paramMessage != null) {
           paramMessage.hideDoutuEmotionLayout();
         }
         a(11);
         EmojiStickerManager.a().c(localBaseChatPie);
-        localBaseChatPie.a().removeMessages(67);
-        localBaseChatPie.a().sendEmptyMessageDelayed(67, 6000L);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        localBaseChatPie.j().removeMessages(67);
+        localBaseChatPie.j().sendEmptyMessageDelayed(67, 6000L);
+        this.h = System.currentTimeMillis();
       }
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeMessages(67);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData(3));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.b(true);
+    this.c.j().removeMessages(67);
+    this.f.a(new LayoutStatusLiveData(3));
+    this.f.b(true);
     a(true);
     a(12);
     return true;
@@ -194,32 +194,32 @@ public class StickerRecHelper
             if (paramInt != 15) {
               return;
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData(3));
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(false);
+            this.f.a(new LayoutStatusLiveData(3));
+            this.f.a(false);
             return;
           }
-          BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-          if ((localBaseChatPie != null) && (localBaseChatPie.l())) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+          BaseChatPie localBaseChatPie = this.c;
+          if ((localBaseChatPie != null) && (localBaseChatPie.aY())) {
+            this.g.a(this.c.aW(), this.c.bl(), this.c.Y);
           }
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          this.f.a(this.d);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(true);
+        this.f.a(true);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmIStickerRecViewModel.a(new LayoutStatusLiveData(4));
+      this.f.a(new LayoutStatusLiveData(4));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StickerRecHelper
  * JD-Core Version:    0.7.0.1
  */

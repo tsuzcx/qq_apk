@@ -10,8 +10,6 @@ import org.json.JSONObject;
 
 public abstract interface ISecControllerInterface
 {
-  public abstract ArrayList<String> a(BaseQQAppInterface paramBaseQQAppInterface);
-  
   public abstract void a(Activity paramActivity, String paramString);
   
   public abstract void a(Activity paramActivity, JSONObject paramJSONObject);
@@ -27,10 +25,12 @@ public abstract interface ISecControllerInterface
   public abstract void a(QBaseActivity paramQBaseActivity);
   
   public abstract void a(QBaseActivity paramQBaseActivity, boolean paramBoolean, String paramString);
+  
+  public abstract ArrayList<String> b(BaseQQAppInterface paramBaseQQAppInterface);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqsec.api.ISecControllerInterface
  * JD-Core Version:    0.7.0.1
  */

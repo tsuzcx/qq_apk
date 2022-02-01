@@ -14,10 +14,10 @@ class TroopAssistantManager$2
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    List localList = this.this$0.k(this.a);
     cmd0x72d.ReqBody localReqBody = new cmd0x72d.ReqBody();
     localReqBody.rpt_uint64_groupcode.set(localList);
-    ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver, localReqBody.toByteArray(), "OidbSvc.0x72d_0", 1837, 0);
+    ProtoUtils.b(this.a, this.b, localReqBody.toByteArray(), "OidbSvc.0x72d_0", 1837, 0);
   }
 }
 

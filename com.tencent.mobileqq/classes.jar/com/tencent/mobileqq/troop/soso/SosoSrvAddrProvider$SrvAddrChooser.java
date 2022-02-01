@@ -5,7 +5,7 @@ import java.util.List;
 
 class SosoSrvAddrProvider$SrvAddrChooser
 {
-  private int[] jdField_a_of_type_ArrayOfInt;
+  private int[] b;
   
   SosoSrvAddrProvider$SrvAddrChooser(SosoSrvAddrProvider paramSosoSrvAddrProvider) {}
   
@@ -19,7 +19,7 @@ class SosoSrvAddrProvider$SrvAddrChooser
       for (int j = 5; i < paramArrayOfInt.length; j = k)
       {
         k = j;
-        if (((ISvrAddr)paramList.get(i)).a() == paramBoolean) {
+        if (((ISvrAddr)paramList.get(i)).c() == paramBoolean) {
           if (paramArrayOfInt[i] < j)
           {
             k = paramArrayOfInt[i];
@@ -51,7 +51,7 @@ class SosoSrvAddrProvider$SrvAddrChooser
   
   ISvrAddr a(int paramInt, boolean paramBoolean)
   {
-    List localList = SosoSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTroopSosoSosoSrvAddrProvider, paramInt);
+    List localList = SosoSrvAddrProvider.a(this.a, paramInt);
     if ((localList != null) && (localList.size() > 0)) {
       return a(localList, a(paramInt), paramBoolean);
     }
@@ -61,21 +61,21 @@ class SosoSrvAddrProvider$SrvAddrChooser
   void a(List<ISvrAddr> paramList)
   {
     if ((paramList != null) && (paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[paramList.size()];
+      this.b = new int[paramList.size()];
     }
   }
   
   int[] a(int paramInt)
   {
     if (paramInt == 0) {
-      return this.jdField_a_of_type_ArrayOfInt;
+      return this.b;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.soso.SosoSrvAddrProvider.SrvAddrChooser
  * JD-Core Version:    0.7.0.1
  */

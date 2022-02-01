@@ -27,7 +27,7 @@ class GamePKResultFragment$4
       ThreadManager.getUIHandler().post(new GamePKResultFragment.4.1(this, paramString));
       return;
     }
-    QQToast.a(this.a.a(), 1, 2131690527, 0).a();
+    QQToast.makeText(this.a.d(), 1, 2131887438, 0).show();
   }
 }
 

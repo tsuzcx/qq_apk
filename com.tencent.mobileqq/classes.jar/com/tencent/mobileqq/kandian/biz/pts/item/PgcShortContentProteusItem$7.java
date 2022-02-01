@@ -9,23 +9,9 @@ class PgcShortContentProteusItem$7
 {
   PgcShortContentProteusItem$7(PgcShortContentProteusItem paramPgcShortContentProteusItem, View paramView, PgcShortContentProteusItem.Bool paramBool, VideoView paramVideoView) {}
   
-  public void a()
-  {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.getLocationInWindow(arrayOfInt);
-    if ((arrayOfInt[0] != this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.lastLocation[0]) || (arrayOfInt[1] != this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.lastLocation[1]))
-    {
-      VideoView localVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-      localVideoView.lastLocation = arrayOfInt;
-      if ((localVideoView.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.getAction() != 3)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.startPlay();
-      }
-    }
-  }
-  
   public boolean a()
   {
-    View localView1 = (View)this.jdField_a_of_type_AndroidViewView.getParent();
+    View localView1 = (View)this.a.getParent();
     View localView2 = (View)((View)localView1.getParent()).getParent();
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -42,7 +28,7 @@ class PgcShortContentProteusItem$7
         int n = localView2.getTop();
         int i1 = localView1.getBottom();
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem$Bool.a())
+        if (this.b.a())
         {
           double d1 = i + j - k;
           double d2 = -localView1.getHeight();
@@ -66,15 +52,29 @@ class PgcShortContentProteusItem$7
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.onScrollFromList(false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.getAction() != 6)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.stop();
+    int[] arrayOfInt = new int[2];
+    this.c.getLocationInWindow(arrayOfInt);
+    if ((arrayOfInt[0] != this.c.lastLocation[0]) || (arrayOfInt[1] != this.c.lastLocation[1]))
+    {
+      VideoView localVideoView = this.c;
+      localVideoView.lastLocation = arrayOfInt;
+      if ((localVideoView.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.c.getAction() != 3)) {
+        this.c.startPlay();
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.c.onScrollFromList(false);
+    if ((this.c.getPlayMode() == VideoView.PLAYMODE_AUTO) && (this.c.getAction() != 6)) {
+      this.c.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.7
  * JD-Core Version:    0.7.0.1
  */

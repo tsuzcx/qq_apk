@@ -1,16 +1,16 @@
 package com.tencent.aelight.camera.aeeditor.module.edit;
 
-import com.tencent.tavcut.util.Logger;
-import com.tencent.tavcut.view.ext.OnViewDragListener;
+import com.tencent.qcircle.tavcut.util.Logger;
+import com.tencent.qcircle.tavcut.view.ext.OnViewDragListener;
 
 class AEEditorImagePagerAdapter$2
   implements OnViewDragListener
 {
   AEEditorImagePagerAdapter$2(AEEditorImagePagerAdapter paramAEEditorImagePagerAdapter) {}
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void onDrag(float paramFloat1, float paramFloat2)
   {
-    String str = AEEditorImagePagerAdapter.a();
+    String str = AEEditorImagePagerAdapter.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onDrag--- dx = ");
     localStringBuilder.append(paramFloat1);
@@ -24,7 +24,7 @@ class AEEditorImagePagerAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImagePagerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,43 @@
 package com.tencent.av.smallscreen;
 
+import android.os.Handler;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.GAudioUIObserver;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.GInviteTimeOutHelper;
 
 class SmallScreenVideoController$3
-  implements Runnable
+  extends GAudioUIObserver
 {
   SmallScreenVideoController$3(SmallScreenVideoController paramSmallScreenVideoController) {}
   
-  public void run()
+  protected void a(long paramLong, int paramInt)
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof SmallScreenDoubleVideoControlUI))
-    {
-      String str = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P;
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
+    if (this.b.t != null) {
+      this.b.t.f(paramInt);
     }
-    this.this$0.a();
+    GInviteTimeOutHelper.a().b();
+    Handler localHandler = this.b.r.a();
+    if (localHandler != null) {
+      localHandler.postDelayed(new SmallScreenVideoController.3.1(this), 1500L);
+    }
+  }
+  
+  protected void g()
+  {
+    if (this.b.t != null) {
+      this.b.t.f(0);
+    }
+    Handler localHandler = this.b.r.a();
+    if (localHandler != null) {
+      localHandler.postDelayed(new SmallScreenVideoController.3.2(this, this.b.s.k().aQ, this.b.s.k().aN), 1500L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.3
  * JD-Core Version:    0.7.0.1
  */

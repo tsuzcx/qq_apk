@@ -9,29 +9,29 @@ import org.jetbrains.annotations.NotNull;
 public final class Engine
   implements IEngine
 {
-  private final InputStreamProvider jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider;
-  private final File jdField_a_of_type_JavaIoFile;
-  private final boolean jdField_a_of_type_Boolean;
+  private final InputStreamProvider a;
+  private final File b;
+  private final boolean c;
   
   public Engine(@NotNull InputStreamProvider paramInputStreamProvider, @NotNull File paramFile, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider = paramInputStreamProvider;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramInputStreamProvider;
+    this.b = paramFile;
+    this.c = paramBoolean;
   }
   
   @NotNull
   public File a()
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a()) {
-      return new GifEngine(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider, this.jdField_a_of_type_JavaIoFile).a();
+    if (this.a.d()) {
+      return new GifEngine(this.a, this.b).a();
     }
-    return new ImageEngine(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean).a();
+    return new ImageEngine(this.a, this.b, this.c).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.Engine
  * JD-Core Version:    0.7.0.1
  */

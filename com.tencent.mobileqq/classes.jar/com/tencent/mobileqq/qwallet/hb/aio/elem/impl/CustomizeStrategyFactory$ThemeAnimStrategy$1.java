@@ -24,12 +24,12 @@ class CustomizeStrategyFactory$ThemeAnimStrategy$1
       CustomizeStrategyFactory.ThemeAnimStrategy.a(this.this$0).getUnzipFolderPath((String)localObject, "", new CustomizeStrategyFactory.ThemeAnimStrategy.1.1(this));
       return;
     }
-    CustomizeStrategyFactory.a().a(this.a);
+    CustomizeStrategyFactory.d().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.ThemeAnimStrategy.1
  * JD-Core Version:    0.7.0.1
  */

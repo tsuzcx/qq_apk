@@ -23,53 +23,53 @@ public final class BadgeDrawable$SavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new BadgeDrawable.SavedState.1();
   @ColorInt
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
   @ColorInt
   private int b;
   private int c = 255;
   private int d = -1;
   private int e;
+  @Nullable
+  private CharSequence f;
   @PluralsRes
-  private int f;
-  @StringRes
   private int g;
+  @StringRes
   private int h;
-  @Dimension(unit=1)
   private int i;
+  private boolean j;
   @Dimension(unit=1)
-  private int j;
+  private int k;
+  @Dimension(unit=1)
+  private int l;
   
   public BadgeDrawable$SavedState(@NonNull Context paramContext)
   {
-    this.b = new TextAppearance(paramContext, R.style.f).a.getDefaultColor();
-    this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(R.string.s);
-    this.f = R.plurals.jdField_a_of_type_Int;
-    this.g = R.string.u;
-    this.jdField_a_of_type_Boolean = true;
+    this.b = new TextAppearance(paramContext, R.style.g).a.getDefaultColor();
+    this.f = paramContext.getString(R.string.s);
+    this.g = R.plurals.a;
+    this.h = R.string.u;
+    this.j = true;
   }
   
   protected BadgeDrawable$SavedState(@NonNull Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();
     this.c = paramParcel.readInt();
     this.d = paramParcel.readInt();
     this.e = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangCharSequence = paramParcel.readString();
-    this.f = paramParcel.readInt();
-    this.h = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readInt();
     this.i = paramParcel.readInt();
-    this.j = paramParcel.readInt();
+    this.k = paramParcel.readInt();
+    this.l = paramParcel.readInt();
     boolean bool;
     if (paramParcel.readInt() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.j = bool;
   }
   
   public int describeContents()
@@ -84,7 +84,7 @@ public final class BadgeDrawable$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.badge.BadgeDrawable.SavedState
  * JD-Core Version:    0.7.0.1
  */

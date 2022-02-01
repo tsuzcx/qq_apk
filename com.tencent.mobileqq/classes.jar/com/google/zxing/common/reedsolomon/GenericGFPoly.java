@@ -2,14 +2,14 @@ package com.google.zxing.common.reedsolomon;
 
 final class GenericGFPoly
 {
-  private final GenericGF jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF;
-  private final int[] jdField_a_of_type_ArrayOfInt;
+  private final GenericGF a;
+  private final int[] b;
   
   GenericGFPoly(GenericGF paramGenericGF, int[] paramArrayOfInt)
   {
     if (paramArrayOfInt.length != 0)
     {
-      this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF = paramGenericGF;
+      this.a = paramGenericGF;
       int j = paramArrayOfInt.length;
       int i = 1;
       if ((j > 1) && (paramArrayOfInt[0] == 0))
@@ -19,15 +19,15 @@ final class GenericGFPoly
         }
         if (i == j)
         {
-          this.jdField_a_of_type_ArrayOfInt = paramGenericGF.a().jdField_a_of_type_ArrayOfInt;
+          this.b = paramGenericGF.a().b;
           return;
         }
-        this.jdField_a_of_type_ArrayOfInt = new int[j - i];
-        paramGenericGF = this.jdField_a_of_type_ArrayOfInt;
+        this.b = new int[j - i];
+        paramGenericGF = this.b;
         System.arraycopy(paramArrayOfInt, i, paramGenericGF, 0, paramGenericGF.length);
         return;
       }
-      this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+      this.b = paramArrayOfInt;
       return;
     }
     paramGenericGF = new IllegalArgumentException();
@@ -37,14 +37,9 @@ final class GenericGFPoly
     }
   }
   
-  int a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt.length - 1;
-  }
-  
   int a(int paramInt)
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.b;
     return arrayOfInt[(arrayOfInt.length - 1 - paramInt)];
   }
   
@@ -53,17 +48,17 @@ final class GenericGFPoly
     if (paramInt1 >= 0)
     {
       if (paramInt2 == 0) {
-        return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
+        return this.a.a();
       }
-      int i = this.jdField_a_of_type_ArrayOfInt.length;
+      int i = this.b.length;
       localObject = new int[paramInt1 + i];
       paramInt1 = 0;
       while (paramInt1 < i)
       {
-        localObject[paramInt1] = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(this.jdField_a_of_type_ArrayOfInt[paramInt1], paramInt2);
+        localObject[paramInt1] = this.a.c(this.b[paramInt1], paramInt2);
         paramInt1 += 1;
       }
-      return new GenericGFPoly(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, (int[])localObject);
+      return new GenericGFPoly(this.a, (int[])localObject);
     }
     Object localObject = new IllegalArgumentException();
     for (;;)
@@ -74,16 +69,16 @@ final class GenericGFPoly
   
   GenericGFPoly a(GenericGFPoly paramGenericGFPoly)
   {
-    if (this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramGenericGFPoly.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF))
+    if (this.a.equals(paramGenericGFPoly.a))
     {
-      if (a()) {
+      if (c()) {
         return paramGenericGFPoly;
       }
-      if (paramGenericGFPoly.a()) {
+      if (paramGenericGFPoly.c()) {
         return this;
       }
-      int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-      int[] arrayOfInt3 = paramGenericGFPoly.jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt1 = this.b;
+      int[] arrayOfInt3 = paramGenericGFPoly.b;
       int[] arrayOfInt2 = arrayOfInt1;
       paramGenericGFPoly = arrayOfInt3;
       if (arrayOfInt1.length > arrayOfInt3.length)
@@ -97,10 +92,10 @@ final class GenericGFPoly
       int i = j;
       while (i < paramGenericGFPoly.length)
       {
-        arrayOfInt1[i] = GenericGF.a(arrayOfInt2[(i - j)], paramGenericGFPoly[i]);
+        arrayOfInt1[i] = GenericGF.b(arrayOfInt2[(i - j)], paramGenericGFPoly[i]);
         i += 1;
       }
-      return new GenericGFPoly(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt1);
+      return new GenericGFPoly(this.a, arrayOfInt1);
     }
     paramGenericGFPoly = new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
     for (;;)
@@ -109,9 +104,54 @@ final class GenericGFPoly
     }
   }
   
-  boolean a()
+  int[] a()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    return this.b;
+  }
+  
+  int b()
+  {
+    return this.b.length - 1;
+  }
+  
+  GenericGFPoly b(GenericGFPoly paramGenericGFPoly)
+  {
+    if (this.a.equals(paramGenericGFPoly.a))
+    {
+      if ((!c()) && (!paramGenericGFPoly.c()))
+      {
+        int[] arrayOfInt1 = this.b;
+        int k = arrayOfInt1.length;
+        paramGenericGFPoly = paramGenericGFPoly.b;
+        int m = paramGenericGFPoly.length;
+        int[] arrayOfInt2 = new int[k + m - 1];
+        int i = 0;
+        while (i < k)
+        {
+          int n = arrayOfInt1[i];
+          int j = 0;
+          while (j < m)
+          {
+            int i1 = i + j;
+            arrayOfInt2[i1] = GenericGF.b(arrayOfInt2[i1], this.a.c(n, paramGenericGFPoly[j]));
+            j += 1;
+          }
+          i += 1;
+        }
+        return new GenericGFPoly(this.a, arrayOfInt2);
+      }
+      return this.a.a();
+    }
+    paramGenericGFPoly = new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
+    for (;;)
+    {
+      throw paramGenericGFPoly;
+    }
+  }
+  
+  boolean c()
+  {
+    int[] arrayOfInt = this.b;
     boolean bool = false;
     if (arrayOfInt[0] == 0) {
       bool = true;
@@ -119,27 +159,22 @@ final class GenericGFPoly
     return bool;
   }
   
-  int[] a()
+  GenericGFPoly[] c(GenericGFPoly paramGenericGFPoly)
   {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  GenericGFPoly[] a(GenericGFPoly paramGenericGFPoly)
-  {
-    if (this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramGenericGFPoly.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF))
+    if (this.a.equals(paramGenericGFPoly.a))
     {
-      if (!paramGenericGFPoly.a())
+      if (!paramGenericGFPoly.c())
       {
-        GenericGFPoly localGenericGFPoly2 = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
-        int i = paramGenericGFPoly.a(paramGenericGFPoly.a());
-        i = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.c(i);
+        GenericGFPoly localGenericGFPoly2 = this.a.a();
+        int i = paramGenericGFPoly.a(paramGenericGFPoly.b());
+        i = this.a.c(i);
         GenericGFPoly localGenericGFPoly3;
-        for (GenericGFPoly localGenericGFPoly1 = this; (localGenericGFPoly1.a() >= paramGenericGFPoly.a()) && (!localGenericGFPoly1.a()); localGenericGFPoly1 = localGenericGFPoly1.a(localGenericGFPoly3))
+        for (GenericGFPoly localGenericGFPoly1 = this; (localGenericGFPoly1.b() >= paramGenericGFPoly.b()) && (!localGenericGFPoly1.c()); localGenericGFPoly1 = localGenericGFPoly1.a(localGenericGFPoly3))
         {
-          int j = localGenericGFPoly1.a() - paramGenericGFPoly.a();
-          int k = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(localGenericGFPoly1.a(localGenericGFPoly1.a()), i);
+          int j = localGenericGFPoly1.b() - paramGenericGFPoly.b();
+          int k = this.a.c(localGenericGFPoly1.a(localGenericGFPoly1.b()), i);
           localGenericGFPoly3 = paramGenericGFPoly.a(j, k);
-          localGenericGFPoly2 = localGenericGFPoly2.a(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a(j, k));
+          localGenericGFPoly2 = localGenericGFPoly2.a(this.a.a(j, k));
         }
         return new GenericGFPoly[] { localGenericGFPoly2, localGenericGFPoly1 };
       }
@@ -152,45 +187,10 @@ final class GenericGFPoly
     }
   }
   
-  GenericGFPoly b(GenericGFPoly paramGenericGFPoly)
-  {
-    if (this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramGenericGFPoly.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF))
-    {
-      if ((!a()) && (!paramGenericGFPoly.a()))
-      {
-        int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-        int k = arrayOfInt1.length;
-        paramGenericGFPoly = paramGenericGFPoly.jdField_a_of_type_ArrayOfInt;
-        int m = paramGenericGFPoly.length;
-        int[] arrayOfInt2 = new int[k + m - 1];
-        int i = 0;
-        while (i < k)
-        {
-          int n = arrayOfInt1[i];
-          int j = 0;
-          while (j < m)
-          {
-            int i1 = i + j;
-            arrayOfInt2[i1] = GenericGF.a(arrayOfInt2[i1], this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(n, paramGenericGFPoly[j]));
-            j += 1;
-          }
-          i += 1;
-        }
-        return new GenericGFPoly(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt2);
-      }
-      return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.a();
-    }
-    paramGenericGFPoly = new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
-    for (;;)
-    {
-      throw paramGenericGFPoly;
-    }
-  }
-  
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(a() * 8);
-    int i = a();
+    StringBuilder localStringBuilder = new StringBuilder(b() * 8);
+    int i = b();
     while (i >= 0)
     {
       int k = a(i);
@@ -213,7 +213,7 @@ final class GenericGFPoly
         }
         if ((i == 0) || (j != 1))
         {
-          j = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.b(j);
+          j = this.a.b(j);
           if (j == 0)
           {
             localStringBuilder.append('1');
@@ -247,7 +247,7 @@ final class GenericGFPoly
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.common.reedsolomon.GenericGFPoly
  * JD-Core Version:    0.7.0.1
  */

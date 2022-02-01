@@ -7,15 +7,15 @@ class DoubleVideoMeetingCtrlUI$5
   
   public void a()
   {
-    DoubleVideoMeetingCtrlUI localDoubleVideoMeetingCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI;
-    localDoubleVideoMeetingCtrlUI.j = true;
-    localDoubleVideoMeetingCtrlUI.O();
+    DoubleVideoMeetingCtrlUI localDoubleVideoMeetingCtrlUI = this.c;
+    localDoubleVideoMeetingCtrlUI.aU = true;
+    localDoubleVideoMeetingCtrlUI.aj();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
+    this.c.d(this.a, this.b);
+    this.c.aU = false;
   }
 }
 

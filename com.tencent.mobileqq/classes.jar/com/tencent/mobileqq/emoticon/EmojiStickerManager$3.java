@@ -26,20 +26,20 @@ final class EmojiStickerManager$3
   
   protected Integer a(Void... paramVarArgs)
   {
-    int i = this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus();
+    int i = this.c.getStatus();
     Integer localInteger = Integer.valueOf(1);
     if (i != 1) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
+      this.c.downloadImediatly(false);
     }
-    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
-    paramVarArgs = EmojiStickerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramVarArgs);
+    URLDrawable.removeMemoryCacheByUrl(this.c.getURL().toString());
+    paramVarArgs = ((MessageForPic)this.c.getTag()).path;
+    paramVarArgs = EmojiStickerManager.a(this.d, paramVarArgs);
     if (paramVarArgs != null)
     {
-      AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, paramVarArgs);
+      AIOGalleryUtils.a(this.d, null, paramVarArgs);
       return Integer.valueOf(2);
     }
-    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    paramVarArgs = this.c.getURL().toString();
     if (!AbsDownloader.hasFile(paramVarArgs)) {
       return localInteger;
     }
@@ -59,8 +59,8 @@ final class EmojiStickerManager$3
       ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_FAVORITE);
       ((StringBuilder)localObject1).append(".nomedia");
       FileUtils.createFileIfNotExits(((StringBuilder)localObject1).toString());
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
+      localObject1 = this.d.getCurrentAccountUin();
+      Object localObject2 = this.e;
       if ((localObject2 != null) && (((PicMessageExtraData)localObject2).isDiyDouTu())) {
         i = 1;
       } else {
@@ -70,10 +70,10 @@ final class EmojiStickerManager$3
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("_diydoutu@");
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+        if (TextUtils.isEmpty(this.e.emojiId)) {
           str = "0";
         } else {
-          str = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+          str = this.e.emojiId;
         }
         ((StringBuilder)localObject2).append(str);
         str = ((StringBuilder)localObject2).toString();
@@ -87,8 +87,8 @@ final class EmojiStickerManager$3
       paramVarArgs = ((StringBuilder)localObject2).toString();
       try
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
-        return Integer.valueOf(EmojiStickerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramVarArgs, null, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+        this.c.saveTo(paramVarArgs);
+        return Integer.valueOf(EmojiStickerManager.a(this.d, paramVarArgs, null, this.e));
       }
       catch (IOException paramVarArgs)
       {
@@ -110,13 +110,13 @@ final class EmojiStickerManager$3
     }
     paramInteger = new Bundle();
     paramInteger.putInt("result", i);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramInteger);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.a.putBundle("response", paramInteger);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.3
  * JD-Core Version:    0.7.0.1
  */

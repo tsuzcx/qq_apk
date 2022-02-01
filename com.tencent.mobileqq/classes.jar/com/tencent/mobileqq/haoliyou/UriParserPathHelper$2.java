@@ -16,30 +16,30 @@ class UriParserPathHelper$2
   {
     try
     {
-      UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.jdField_a_of_type_Boolean = false;
+      UriParserPathHelper.a(this.e, this.a, this.b, this.c, this.d);
+      this.e.c = false;
       return;
     }
     catch (Exception paramDialogInterface)
     {
       QLog.e("UriParserPathHelper", 1, "system share.copy file error", paramDialogInterface);
-      if (UriParserPathHelper.jdField_a_of_type_JavaLangString == null) {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.jdField_a_of_type_AndroidContentContext.getString(2131719013);
+      if (UriParserPathHelper.b == null) {
+        paramDialogInterface = this.e.a.getString(2131916548);
       } else {
-        paramDialogInterface = UriParserPathHelper.jdField_a_of_type_JavaLangString;
+        paramDialogInterface = UriParserPathHelper.b;
       }
-      UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper, paramDialogInterface);
-      if (UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper) != null)
+      UriParserPathHelper.a(this.e, paramDialogInterface);
+      if (UriParserPathHelper.b(this.e) != null)
       {
-        UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper).a(this.jdField_a_of_type_AndroidNetUri);
-        UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper, null);
+        UriParserPathHelper.b(this.e).a(this.a);
+        UriParserPathHelper.a(this.e, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.UriParserPathHelper.2
  * JD-Core Version:    0.7.0.1
  */

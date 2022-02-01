@@ -15,7 +15,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
 import java.util.List;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
 
@@ -23,14 +22,13 @@ public class ReadInJoyChannelGuidingManager
 {
   private static SparseArray<ReadInJoyChannelGuidingManager.InsertedArticleInfo> a = new SparseArray();
   private static SparseArray<String> b = new SparseArray();
+  private static SparseArray<RIJDailyJumpParser.RIJDailyScheme> c = new SparseArray();
   
-  private static void a(int paramInt)
+  public static void a(int paramInt, RIJDailyJumpParser.RIJDailyScheme paramRIJDailyScheme)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[clearInsertedArticleInfo], channelID = ");
-    localStringBuilder.append(paramInt);
-    QLog.i("ReadInJoyChannelGuidingManager", 1, localStringBuilder.toString());
-    a.remove(paramInt);
+    if (paramRIJDailyScheme != null) {
+      c.put(paramInt, paramRIJDailyScheme);
+    }
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
@@ -63,12 +61,23 @@ public class ReadInJoyChannelGuidingManager
   {
     if ((paramRequest0x68bParams != null) && (paramList != null))
     {
-      if (paramRequest0x68bParams.a != -1L)
+      if (paramRequest0x68bParams.c != -1L)
       {
         QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], is not pull down refresh, do not insert.");
         return;
       }
       int i = paramRequest0x68bParams.b;
+      paramRequest0x68bParams = (RIJDailyJumpParser.RIJDailyScheme)c.get(i);
+      if ((paramRequest0x68bParams != null) && (TextUtils.equals("0", paramRequest0x68bParams.g())))
+      {
+        paramRequest0x68bParams = new StringBuilder();
+        paramRequest0x68bParams.append("[addRequestParams] channelId = ");
+        paramRequest0x68bParams.append(i);
+        paramRequest0x68bParams.append(", insert_card = 0");
+        QLog.i("ReadInJoyChannelGuidingManager", 1, paramRequest0x68bParams.toString());
+        b(i);
+        return;
+      }
       if (a(i))
       {
         paramRequest0x68bParams = (ReadInJoyChannelGuidingManager.InsertedArticleInfo)a.get(i);
@@ -94,7 +103,7 @@ public class ReadInJoyChannelGuidingManager
         localStringBuilder1.append(paramRequest0x68bParams);
         QLog.i("ReadInJoyChannelGuidingManager", 1, localStringBuilder1.toString());
         paramList.add(0, localInnerMsg);
-        a(i);
+        b(i);
       }
       return;
     }
@@ -106,36 +115,30 @@ public class ReadInJoyChannelGuidingManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    paramString = Uri.parse(paramString);
-    Object localObject1 = paramString.getQueryParameter("channelid");
-    Object localObject2 = paramString.getQueryParameter("algorithmid");
-    String str = paramString.getQueryParameter("rowkey");
+    Object localObject2 = Uri.parse(paramString);
+    paramString = ((Uri)localObject2).getQueryParameter("channelid");
+    Object localObject1 = ((Uri)localObject2).getQueryParameter("algorithmid");
+    localObject2 = ((Uri)localObject2).getQueryParameter("rowkey");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[parseJumpToChannelScheme], channelid = ");
-    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(paramString);
     localStringBuilder.append(", algorithmID = ");
-    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append((String)localObject1);
     localStringBuilder.append(", rowKey = ");
-    localStringBuilder.append(str);
+    localStringBuilder.append((String)localObject2);
     QLog.i("ReadInJoyChannelGuidingManager", 1, localStringBuilder.toString());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str)))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
-      localObject2 = new ReadInJoyChannelGuidingManager.InsertedArticleInfo((String)localObject2, str);
+      localObject1 = new ReadInJoyChannelGuidingManager.InsertedArticleInfo((String)localObject1, (String)localObject2);
       try
       {
-        int i = Integer.valueOf((String)localObject1).intValue();
-        a.put(i, localObject2);
-        b.put(i, str);
+        int i = Integer.valueOf(paramString).intValue();
+        a.put(i, localObject1);
+        b.put(i, localObject2);
         try
         {
-          localObject1 = paramString.getQueryParameter("article_url");
-          paramString = paramString.getQueryParameter("show_floating_window");
-          str = URLDecoder.decode((String)localObject1, "utf-8");
-          if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (TextUtils.equals("1", paramString)) && (RIJShowKanDianTabSp.c()))
-          {
-            b.remove(i);
-            QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
-          }
+          b.remove(i);
+          QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
           if ((i == 0) && (!RIJShowKanDianTabSp.c()))
           {
             a.remove(i);
@@ -182,10 +185,19 @@ public class ReadInJoyChannelGuidingManager
     QLog.i("ReadInJoyChannelGuidingManager", 1, ((StringBuilder)localObject).toString());
     return false;
   }
+  
+  private static void b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[clearInsertedArticleInfo], channelID = ");
+    localStringBuilder.append(paramInt);
+    QLog.i("ReadInJoyChannelGuidingManager", 1, localStringBuilder.toString());
+    a.remove(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.ReadInJoyChannelGuidingManager
  * JD-Core Version:    0.7.0.1
  */

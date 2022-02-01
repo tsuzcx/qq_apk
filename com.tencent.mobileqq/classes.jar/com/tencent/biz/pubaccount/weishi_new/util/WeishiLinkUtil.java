@@ -12,27 +12,14 @@ import mqq.os.MqqHandler;
 
 public class WeishiLinkUtil
 {
-  private static int a()
-  {
-    if (!a(b(), c(), 0)) {
-      return 0;
-    }
-    return WSSharePreferencesUtil.a(b(), 0);
-  }
-  
   public static stLinkStragegyArgs a()
   {
     stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
     localstLinkStragegyArgs.hasInstalledWeish = WeishiGuideUtils.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    localstLinkStragegyArgs.todayClickCount = b();
-    localstLinkStragegyArgs.todayEnterCount = a();
-    localstLinkStragegyArgs.todayLastLinkId = c();
+    localstLinkStragegyArgs.todayClickCount = f();
+    localstLinkStragegyArgs.todayEnterCount = e();
+    localstLinkStragegyArgs.todayLastLinkId = g();
     return localstLinkStragegyArgs;
-  }
-  
-  public static void a()
-  {
-    a(b(), c());
   }
   
   public static void a(int paramInt)
@@ -47,7 +34,7 @@ public class WeishiLinkUtil
   
   private static boolean a(String paramString1, String paramString2, int paramInt)
   {
-    long l = WSSharePreferencesUtil.a(paramString2, 0L);
+    long l = WSSharePreferencesUtil.b(paramString2, 0L);
     boolean bool = DateUtils.isSameDay(System.currentTimeMillis(), l);
     if (!bool) {
       ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
@@ -55,81 +42,94 @@ public class WeishiLinkUtil
     return bool;
   }
   
-  private static int b()
-  {
-    if (!a(d(), e(), 0)) {
-      return 0;
-    }
-    return WSSharePreferencesUtil.a(d(), 0);
-  }
-  
-  private static String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_open_recommend_page_count_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
-  }
-  
   public static void b()
   {
-    a(d(), e());
+    a(h(), i());
   }
   
-  private static int c()
+  public static void c()
   {
-    if (!a(f(), g(), -1)) {
+    a(j(), k());
+  }
+  
+  private static int e()
+  {
+    if (!a(h(), i(), 0)) {
+      return 0;
+    }
+    return WSSharePreferencesUtil.b(h(), 0);
+  }
+  
+  private static int f()
+  {
+    if (!a(j(), k(), 0)) {
+      return 0;
+    }
+    return WSSharePreferencesUtil.b(j(), 0);
+  }
+  
+  private static int g()
+  {
+    if (!a(l(), m(), -1)) {
       return -1;
     }
-    return WSSharePreferencesUtil.a(f(), -1);
-  }
-  
-  private static String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_open_recommend_page_time_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
-  }
-  
-  private static String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_click_recommend_card_count_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
-  }
-  
-  private static String e()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_click_recommend_card_time_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
-  }
-  
-  private static String f()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_last_link_type_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
-  }
-  
-  private static String g()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_last_link_time_");
-    localStringBuilder.append(h());
-    return localStringBuilder.toString();
+    return WSSharePreferencesUtil.b(l(), -1);
   }
   
   private static String h()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_open_recommend_page_count_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String i()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_open_recommend_page_time_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String j()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_click_recommend_card_count_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String k()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_click_recommend_card_time_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String l()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_last_link_type_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String m()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_last_link_time_");
+    localStringBuilder.append(n());
+    return localStringBuilder.toString();
+  }
+  
+  private static String n()
+  {
     String str = WSDeviceUtils.a(BaseApplicationImpl.getContext());
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && (!TextUtils.isEmpty(((AppRuntime)localObject).getAccount()))) {
-      localObject = MD5.a(((AppRuntime)localObject).getAccount());
+      localObject = MD5.b(((AppRuntime)localObject).getAccount());
     } else {
       localObject = "";
     }
@@ -142,7 +142,7 @@ public class WeishiLinkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.DynamicDrawableSpan;
 import android.util.SparseIntArray;
@@ -45,126 +46,76 @@ import org.json.JSONObject;
 public class AtTroopMemberSpan
   extends DynamicDrawableSpan
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ColorClearableEditText.SpanComparator jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator = new ColorClearableEditText.SpanComparator();
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private String c = "";
-  private String d;
+  protected String a = "";
+  protected int b = -4331268;
+  protected Context c;
+  protected Drawable d;
+  private String e = "";
+  private String f = "";
+  private int g = -1;
+  private int h = 0;
+  private String i;
+  private ColorClearableEditText.SpanComparator j = new ColorClearableEditText.SpanComparator();
   
-  private AtTroopMemberSpan(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint)
+  protected AtTroopMemberSpan(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint)
   {
     super(0);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString2, 32).a() }));
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.e = paramString1;
+    this.a = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString2, 32).b() }));
+    this.h = paramInt;
+    this.c = paramContext;
     a(paramPaint);
   }
   
-  private AtTroopMemberSpan(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint, String paramString3)
+  protected AtTroopMemberSpan(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint, String paramString3)
   {
     this(paramContext, paramString1, paramString2, paramInt, paramPaint);
-    this.d = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString3, 32).a() }));
+    this.i = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString3, 32).b() }));
   }
   
-  public static Spannable a(Spannable paramSpannable, ArrayList<AtTroopMemberInfo> paramArrayList)
+  protected AtTroopMemberSpan(Context paramContext, String paramString1, String paramString2, int paramInt1, Paint paramPaint, String paramString3, int paramInt2)
   {
-    if ((paramArrayList != null) && (paramSpannable != null))
-    {
-      paramArrayList.clear();
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
-      int m = localSpannableStringBuilder.length();
-      AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramSpannable.getSpans(0, m - 1, AtTroopMemberSpan.class);
-      if (arrayOfAtTroopMemberSpan.length == 0) {
-        return localSpannableStringBuilder;
-      }
-      if (arrayOfAtTroopMemberSpan.length > 1) {
-        Arrays.sort(arrayOfAtTroopMemberSpan, new AtTroopMemberSpan.1(paramSpannable));
-      }
-      int i = 0;
-      for (int j = 0; i < arrayOfAtTroopMemberSpan.length; j = k)
-      {
-        AtTroopMemberSpan localAtTroopMemberSpan = arrayOfAtTroopMemberSpan[i];
-        int n = paramSpannable.getSpanStart(localAtTroopMemberSpan) + j;
-        int i1 = paramSpannable.getSpanEnd(localAtTroopMemberSpan) + j;
-        Object localObject = localAtTroopMemberSpan.jdField_b_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(localAtTroopMemberSpan.d)) {
-          localObject = localAtTroopMemberSpan.d;
-        }
-        try
-        {
-          localSpannableStringBuilder.replace(n, i1, (CharSequence)localObject);
-          AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
-          String str = localAtTroopMemberSpan.jdField_a_of_type_JavaLangString;
-          if (str != null)
-          {
-            localAtTroopMemberInfo.uin = Long.valueOf(str).longValue();
-            if (localAtTroopMemberSpan.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")) {
-              localAtTroopMemberInfo.flag = 1;
-            }
-          }
-          localAtTroopMemberInfo.startPos = ((short)n);
-          localAtTroopMemberInfo.textLen = ((short)((String)localObject).length());
-          paramArrayList.add(localAtTroopMemberInfo);
-          k = j + (localAtTroopMemberInfo.textLen - (i1 - n));
-        }
-        catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-        {
-          int k;
-          label254:
-          break label254;
-        }
-        k = j;
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(localSpannableStringBuilder.toString());
-          ((StringBuilder)localObject).append(",IndexOutOfBoundsException, convertToSendMsg, start:%d | end:%d | msgBLen:%d");
-          QLog.e("AtTroopMemberSpan", 2, String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m) }));
-          k = j;
-        }
-        i += 1;
-      }
-      return localSpannableStringBuilder;
-    }
-    else
-    {
-      return new SpannableStringBuilder();
-    }
+    super(0);
+    this.e = paramString1;
+    this.a = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString2, 32).b() }));
+    this.h = paramInt1;
+    this.c = paramContext;
+    this.b = paramInt2;
+    a(paramPaint);
+    this.i = a(String.format("%s%s", new Object[] { "@", new ColorNickText(paramString3, 32).b() }));
   }
   
   public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, EditText paramEditText)
   {
-    int i;
-    int j;
     int k;
+    int m;
+    int n;
     if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (paramEditText == null) {
         return null;
       }
-      i = paramEditText.getWidth();
-      j = paramEditText.getPaddingLeft();
-      k = paramEditText.getPaddingRight();
+      if (paramEditText.getPaint() != null) {
+        paramEditText.getPaint().setColor(-16777216);
+      }
+      k = paramEditText.getWidth();
+      m = paramEditText.getPaddingLeft();
+      n = paramEditText.getPaddingRight();
     }
     try
     {
-      paramAppRuntime = new AtTroopMemberSpan(paramContext, paramString2, paramString3, i - j - k, paramEditText.getPaint(), paramString4);
+      paramAppRuntime = new AtTroopMemberSpan(paramContext, paramString2, paramString3, k - m - n, paramEditText.getPaint(), paramString4);
     }
     catch (OutOfMemoryError paramAppRuntime)
     {
-      label80:
-      break label80;
+      label98:
+      break label98;
     }
     paramAppRuntime = null;
     if (paramAppRuntime == null) {
       return null;
     }
-    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramContext = paramAppRuntime.a;
     paramString1 = new StringBuilder();
     paramString1.append(paramContext);
     paramString1.append(" ");
@@ -181,22 +132,22 @@ public class AtTroopMemberSpan
   
   public static SpannableString a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i;
-    int j;
     int k;
+    int m;
+    int n;
     if ((paramAppRuntime != null) && (paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (paramEditText == null) {
         return null;
       }
       AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramEditText.getEditableText().getSpans(0, paramEditText.getEditableText().toString().length(), AtTroopMemberSpan.class);
-      i = paramEditText.getWidth();
-      j = paramEditText.getPaddingLeft();
-      k = paramEditText.getPaddingRight();
+      k = paramEditText.getWidth();
+      m = paramEditText.getPaddingLeft();
+      n = paramEditText.getPaddingRight();
     }
     try
     {
-      paramAppRuntime = a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, i - j - k, paramEditText.getPaint(), paramBoolean2);
+      paramAppRuntime = a(paramAppRuntime, paramContext, paramString1, paramString2, paramString3, paramBoolean1, k - m - n, paramEditText.getPaint(), paramBoolean2);
     }
     catch (OutOfMemoryError paramAppRuntime)
     {
@@ -207,7 +158,7 @@ public class AtTroopMemberSpan
     if (paramAppRuntime == null) {
       return null;
     }
-    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramContext = paramAppRuntime.a;
     paramString1 = new StringBuilder();
     paramString1.append(paramContext);
     paramString1.append(" ");
@@ -237,7 +188,7 @@ public class AtTroopMemberSpan
     if (paramAppRuntime == null) {
       return null;
     }
-    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramContext = paramAppRuntime.a;
     paramString1 = new StringBuilder();
     paramString1.append(paramContext);
     paramString1.append(" ");
@@ -267,7 +218,7 @@ public class AtTroopMemberSpan
     if (paramAppRuntime == null) {
       return null;
     }
-    paramContext = paramAppRuntime.jdField_b_of_type_JavaLangString;
+    paramContext = paramAppRuntime.a;
     paramString1 = new StringBuilder();
     paramString1.append(paramString4);
     paramString1.append(paramContext);
@@ -336,38 +287,38 @@ public class AtTroopMemberSpan
   
   public static String a(Spannable paramSpannable, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
-    return a(paramSpannable, paramArrayList).toString();
+    return b(paramSpannable, paramArrayList).toString();
   }
   
   private static String a(CharSequence paramCharSequence)
   {
     paramCharSequence = new StringBuffer(paramCharSequence);
-    int j;
-    for (int i = 0; i < paramCharSequence.length(); i = j + 1)
+    int m;
+    for (int k = 0; k < paramCharSequence.length(); k = m + 1)
     {
-      int k = paramCharSequence.codePointAt(i);
-      if ((k == 20) && (i < paramCharSequence.length() - 1)) {
-        paramCharSequence.delete(i, i + 2);
+      int n = paramCharSequence.codePointAt(k);
+      if ((n == 20) && (k < paramCharSequence.length() - 1)) {
+        paramCharSequence.delete(k, k + 2);
       }
       for (;;)
       {
-        j = i - 1;
+        m = k - 1;
         break;
-        j = i;
-        if (EmotcationConstants.EMOJI_MAP.get(k, -1) < 0) {
+        m = k;
+        if (EmotcationConstants.EMOJI_MAP.get(n, -1) < 0) {
           break;
         }
-        if (k > 65535)
+        if (n > 65535)
         {
-          j = paramCharSequence.length();
-          k = i + 2;
-          if (j >= k)
+          m = paramCharSequence.length();
+          n = k + 2;
+          if (m >= n)
           {
-            paramCharSequence.delete(i, k);
+            paramCharSequence.delete(k, n);
             continue;
           }
         }
-        paramCharSequence.delete(i, i + 1);
+        paramCharSequence.delete(k, k + 1);
       }
     }
     return paramCharSequence.toString();
@@ -378,12 +329,12 @@ public class AtTroopMemberSpan
     try
     {
       JSONArray localJSONArray = new JSONArray();
-      int i = 0;
+      int k = 0;
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        localJSONArray.put(i, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
-        i += 1;
+        localJSONArray.put(k, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
+        k += 1;
       }
       paramArrayList = localJSONArray.toString();
       return paramArrayList;
@@ -403,35 +354,35 @@ public class AtTroopMemberSpan
       try
       {
         JSONArray localJSONArray = new JSONArray(paramString1);
-        int m = localJSONArray.length();
-        int i = 0;
-        int j = 0;
+        int i1 = localJSONArray.length();
+        int k = 0;
+        int m = 0;
         for (;;)
         {
           localStringBuilder = paramStringBuilder;
-          if (i >= m) {
-            break label307;
+          if (k >= i1) {
+            break label305;
           }
           paramString1 = paramStringBuilder;
           localStringBuilder = paramStringBuilder;
           try
           {
-            Object localObject = localJSONArray.getJSONObject(i);
+            Object localObject = localJSONArray.getJSONObject(k);
             paramString1 = paramStringBuilder;
             localStringBuilder = paramStringBuilder;
-            int i1 = (byte)((JSONObject)localObject).optInt("flag", 1);
+            int i3 = (byte)((JSONObject)localObject).optInt("flag", 1);
             paramString1 = paramStringBuilder;
             localStringBuilder = paramStringBuilder;
             String str = ((JSONObject)localObject).optString("uin");
             paramString1 = paramStringBuilder;
             localStringBuilder = paramStringBuilder;
-            int i2 = ((JSONObject)localObject).optInt("startPos", 0);
+            int i4 = ((JSONObject)localObject).optInt("startPos", 0);
             paramString1 = paramStringBuilder;
             localStringBuilder = paramStringBuilder;
-            int n = ((JSONObject)localObject).optInt("textLen", 0);
+            int i2 = ((JSONObject)localObject).optInt("textLen", 0);
             paramString1 = paramStringBuilder;
-            int k = j;
-            if (i1 == 0)
+            int n = m;
+            if (i3 == 0)
             {
               paramString1 = paramStringBuilder;
               localStringBuilder = paramStringBuilder;
@@ -447,16 +398,16 @@ public class AtTroopMemberSpan
               str = ((StringBuilder)localObject).toString();
               paramString1 = paramStringBuilder;
               localStringBuilder = paramStringBuilder;
-              paramStringBuilder = paramStringBuilder.replace(i2 + j, i2 + n + j, str);
+              paramStringBuilder = paramStringBuilder.replace(i4 + m, i4 + i2 + m, str);
               paramString1 = paramStringBuilder;
               localStringBuilder = paramStringBuilder;
-              k = str.length();
-              k = j + (k - n);
+              n = str.length();
+              n = m + (n - i2);
               paramString1 = paramStringBuilder;
             }
-            i += 1;
+            k += 1;
             paramStringBuilder = paramString1;
-            j = k;
+            m = n;
           }
           catch (Exception paramQQAppInterface)
           {
@@ -475,7 +426,7 @@ public class AtTroopMemberSpan
       {
         localStringBuilder = paramStringBuilder;
       }
-      label307:
+      label305:
       return localStringBuilder;
     }
     if (QLog.isColorLevel())
@@ -488,15 +439,6 @@ public class AtTroopMemberSpan
     return paramStringBuilder;
   }
   
-  private List<ColorClearableEditText.Paragraph> a(Paint paramPaint)
-  {
-    int i = (int)Math.ceil(paramPaint.measureText(" "));
-    List localList = ColorNickManager.a(this.jdField_b_of_type_Int - i * 2, this.jdField_b_of_type_JavaLangString, paramPaint, this.jdField_a_of_type_ComTencentMobileqqWidgetColorClearableEditText$SpanComparator, 16);
-    localList.add(new ColorClearableEditText.Paragraph(1, 0, 0, "  ", null));
-    this.jdField_a_of_type_Int = ColorNickManager.a(localList, paramPaint, new Rect());
-    return localList;
-  }
-  
   public static void a(int paramInt, String paramString, ChatMessage paramChatMessage)
   {
     if (paramInt == 1)
@@ -504,34 +446,44 @@ public class AtTroopMemberSpan
       paramChatMessage.saveExtInfoToExtStr("troop_at_info_list", paramString);
       return;
     }
-    if (paramInt == 3000) {
+    if (paramInt == 3000)
+    {
       paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", paramString);
+      return;
+    }
+    if (paramInt == 10014) {
+      paramChatMessage.saveExtInfoToExtStr("guild_at_info_list", paramString);
     }
   }
   
   public static void a(int paramInt, ArrayList<AtTroopMemberInfo> paramArrayList, ChatMessage paramChatMessage)
   {
-    if (((paramInt == 3000) || (paramInt == 1)) && (paramArrayList.size() > 0))
+    if (((paramInt == 3000) || (paramInt == 1) || (paramInt == 10014)) && (paramArrayList.size() > 0))
     {
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        int i = 0;
+        int k = 0;
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
-          localJSONArray.put(i, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
-          i += 1;
+          localJSONArray.put(k, ((AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
+          k += 1;
         }
         if (paramInt == 1)
         {
           paramChatMessage.saveExtInfoToExtStr("troop_at_info_list", localJSONArray.toString());
           return;
         }
-        if (paramInt != 3000) {
+        if (paramInt == 3000)
+        {
+          paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", localJSONArray.toString());
           return;
         }
-        paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", localJSONArray.toString());
+        if (paramInt != 10014) {
+          return;
+        }
+        paramChatMessage.saveExtInfoToExtStr("guild_at_info_list", localJSONArray.toString());
         return;
       }
       catch (JSONException paramArrayList)
@@ -540,66 +492,22 @@ public class AtTroopMemberSpan
         return;
       }
     }
-    else if (((paramInt == 3000) || (paramInt == 1)) && (paramArrayList.size() == 0))
+    else if (((paramInt == 3000) || (paramInt == 1) || (paramInt == 10014)) && (paramArrayList.size() == 0))
     {
       if (paramInt == 1)
       {
         paramChatMessage.removeExtInfoToExtStr("troop_at_info_list");
         return;
       }
-      if (paramInt == 3000) {
+      if (paramInt == 3000)
+      {
         paramChatMessage.removeExtInfoToExtStr("disc_at_info_list");
+        return;
+      }
+      if (paramInt == 10014) {
+        paramChatMessage.removeExtInfoToExtStr("guild_at_info_list");
       }
     }
-  }
-  
-  private void a(Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return;
-    }
-    Object localObject2 = a(paramPaint);
-    Object localObject1 = paramPaint.getFontMetrics();
-    float f3 = -((Paint.FontMetrics)localObject1).top;
-    int i = (int)Math.ceil(((Paint.FontMetrics)localObject1).bottom - ((Paint.FontMetrics)localObject1).top);
-    Object localObject3 = new RectF(0.0F, ((Paint.FontMetrics)localObject1).ascent - ((Paint.FontMetrics)localObject1).top, this.jdField_a_of_type_Int - 2, ((Paint.FontMetrics)localObject1).descent + f3);
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, i, Bitmap.Config.ARGB_8888);
-    localObject1 = new Canvas(localBitmap);
-    int j = paramPaint.getColor();
-    paramPaint.setColor(-4331268);
-    ((Canvas)localObject1).drawRect((RectF)localObject3, paramPaint);
-    paramPaint.setColor(j);
-    localObject2 = ((List)localObject2).iterator();
-    float f1 = 0.0F;
-    label294:
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (ColorClearableEditText.Paragraph)((Iterator)localObject2).next();
-      j = ((ColorClearableEditText.Paragraph)localObject3).c;
-      float f2;
-      if (j != 1)
-      {
-        if (j != 2) {
-          break label294;
-        }
-        localObject3 = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        int k = ((EmoticonSpan)localObject3).getDrawable().getBounds().height();
-        j = (i - k) / 2;
-        k = (k + i) / 2;
-        ((EmoticonSpan)localObject3).draw((Canvas)localObject1, "", 0, 0, f1, j, k, k, paramPaint);
-        f2 = ((EmoticonSpan)localObject3).getDrawable().getBounds().width();
-      }
-      else
-      {
-        ((Canvas)localObject1).drawText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString, f1, f3, paramPaint);
-        f2 = paramPaint.measureText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString);
-      }
-      f1 += f2;
-    }
-    ((Canvas)localObject1).save();
-    ((Canvas)localObject1).restore();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, i);
   }
   
   private static boolean a(String paramString1, String paramString2, String paramString3)
@@ -610,19 +518,143 @@ public class AtTroopMemberSpan
     return TextUtils.isEmpty(paramString3) ^ true;
   }
   
+  public static Spannable b(Spannable paramSpannable, ArrayList<AtTroopMemberInfo> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramSpannable != null))
+    {
+      paramArrayList.clear();
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
+      int i1 = localSpannableStringBuilder.length();
+      AtTroopMemberSpan[] arrayOfAtTroopMemberSpan = (AtTroopMemberSpan[])paramSpannable.getSpans(0, i1 - 1, AtTroopMemberSpan.class);
+      if (arrayOfAtTroopMemberSpan.length == 0) {
+        return localSpannableStringBuilder;
+      }
+      if (arrayOfAtTroopMemberSpan.length > 1) {
+        Arrays.sort(arrayOfAtTroopMemberSpan, new AtTroopMemberSpan.1(paramSpannable));
+      }
+      int k = 0;
+      for (int m = 0; k < arrayOfAtTroopMemberSpan.length; m = n)
+      {
+        AtTroopMemberSpan localAtTroopMemberSpan = arrayOfAtTroopMemberSpan[k];
+        int i2 = paramSpannable.getSpanStart(localAtTroopMemberSpan) + m;
+        int i3 = paramSpannable.getSpanEnd(localAtTroopMemberSpan) + m;
+        Object localObject = localAtTroopMemberSpan.a;
+        if (!TextUtils.isEmpty(localAtTroopMemberSpan.i)) {
+          localObject = localAtTroopMemberSpan.i;
+        }
+        try
+        {
+          localSpannableStringBuilder.replace(i2, i3, (CharSequence)localObject);
+          AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
+          String str = localAtTroopMemberSpan.e;
+          if (str != null)
+          {
+            localAtTroopMemberInfo.uin = Long.valueOf(str).longValue();
+            if (localAtTroopMemberSpan.e.equalsIgnoreCase("0")) {
+              localAtTroopMemberInfo.flag = 1;
+            }
+          }
+          localAtTroopMemberInfo.startPos = ((short)i2);
+          localAtTroopMemberInfo.textLen = ((short)((String)localObject).length());
+          paramArrayList.add(localAtTroopMemberInfo);
+          n = m + (localAtTroopMemberInfo.textLen - (i3 - i2));
+        }
+        catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+        {
+          int n;
+          label254:
+          break label254;
+        }
+        n = m;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(localSpannableStringBuilder.toString());
+          ((StringBuilder)localObject).append(",IndexOutOfBoundsException, convertToSendMsg, start:%d | end:%d | msgBLen:%d");
+          QLog.e("AtTroopMemberSpan", 2, String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i1) }));
+          n = m;
+        }
+        k += 1;
+      }
+      return localSpannableStringBuilder;
+    }
+    else
+    {
+      return new SpannableStringBuilder();
+    }
+  }
+  
+  private List<ColorClearableEditText.Paragraph> b(Paint paramPaint)
+  {
+    int k = (int)Math.ceil(paramPaint.measureText(" "));
+    List localList = ColorNickManager.a(this.h - k * 2, this.a, paramPaint, this.j, 16);
+    localList.add(new ColorClearableEditText.Paragraph(1, 0, 0, "  ", null));
+    this.g = ColorNickManager.a(localList, paramPaint, new Rect());
+    return localList;
+  }
+  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.e;
+  }
+  
+  protected void a(Paint paramPaint)
+  {
+    if (this.d != null) {
+      return;
+    }
+    Object localObject2 = b(paramPaint);
+    Object localObject1 = paramPaint.getFontMetrics();
+    float f3 = -((Paint.FontMetrics)localObject1).top;
+    int k = (int)Math.ceil(((Paint.FontMetrics)localObject1).bottom - ((Paint.FontMetrics)localObject1).top);
+    Object localObject3 = new RectF(0.0F, ((Paint.FontMetrics)localObject1).ascent - ((Paint.FontMetrics)localObject1).top, this.g - 2, ((Paint.FontMetrics)localObject1).descent + f3);
+    Bitmap localBitmap = Bitmap.createBitmap(this.g, k, Bitmap.Config.ARGB_8888);
+    localObject1 = new Canvas(localBitmap);
+    int m = paramPaint.getColor();
+    paramPaint.setColor(this.b);
+    ((Canvas)localObject1).drawRect((RectF)localObject3, paramPaint);
+    paramPaint.setColor(m);
+    localObject2 = ((List)localObject2).iterator();
+    float f1 = 0.0F;
+    label295:
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (ColorClearableEditText.Paragraph)((Iterator)localObject2).next();
+      m = ((ColorClearableEditText.Paragraph)localObject3).e;
+      float f2;
+      if (m != 1)
+      {
+        if (m != 2) {
+          break label295;
+        }
+        localObject3 = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject3).d;
+        int n = ((EmoticonSpan)localObject3).getDrawable().getBounds().height();
+        m = (k - n) / 2;
+        n = (n + k) / 2;
+        ((EmoticonSpan)localObject3).draw((Canvas)localObject1, "", 0, 0, f1, m, n, n, paramPaint);
+        f2 = ((EmoticonSpan)localObject3).getDrawable().getBounds().width();
+      }
+      else
+      {
+        ((Canvas)localObject1).drawText(((ColorClearableEditText.Paragraph)localObject3).c, f1, f3, paramPaint);
+        f2 = paramPaint.measureText(((ColorClearableEditText.Paragraph)localObject3).c);
+      }
+      f1 += f2;
+    }
+    ((Canvas)localObject1).save();
+    ((Canvas)localObject1).restore();
+    this.d = new BitmapDrawable(this.c.getResources(), localBitmap);
+    this.d.setBounds(0, 0, this.g, k);
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.a;
   }
   
   public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    if ((paramInt2 - paramInt1 == 1) && (this.c.length() != 1) && (paramInt1 != 0)) {
+    if ((paramInt2 - paramInt1 == 1) && (this.f.length() != 1) && (paramInt1 != 0)) {
       return;
     }
     super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
@@ -630,20 +662,20 @@ public class AtTroopMemberSpan
   
   public Drawable getDrawable()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.d;
   }
   
   public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((paramInt2 - paramInt1 != 1) || (this.c.length() == 1) || (paramInt1 == 0))) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().right;
+    if ((this.d != null) && ((paramInt2 - paramInt1 != 1) || (this.f.length() == 1) || (paramInt1 == 0))) {
+      return this.d.getBounds().right;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.AtTroopMemberSpan
  * JD-Core Version:    0.7.0.1
  */

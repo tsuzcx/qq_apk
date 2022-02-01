@@ -11,12 +11,12 @@ class JumpConfirmFragment$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a), JumpConfirmFragment.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.JumpConfirmFragment.1
  * JD-Core Version:    0.7.0.1
  */

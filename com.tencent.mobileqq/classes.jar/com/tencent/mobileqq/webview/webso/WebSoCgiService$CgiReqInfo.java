@@ -2,21 +2,21 @@ package com.tencent.mobileqq.webview.webso;
 
 public class WebSoCgiService$CgiReqInfo
 {
-  public int a;
-  public Object a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
   public String d;
   public String e;
   public String f;
+  public boolean g;
+  public int h;
+  public Object i;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" ,method=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" ,jsonHeader=");
@@ -26,17 +26,17 @@ public class WebSoCgiService$CgiReqInfo
     localStringBuilder.append(" ,");
     localStringBuilder.append(this.e);
     localStringBuilder.append(" ,rspBase64=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" ,timeout=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" ,userInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append(this.i);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoCgiService.CgiReqInfo
  * JD-Core Version:    0.7.0.1
  */

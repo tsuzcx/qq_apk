@@ -1,43 +1,34 @@
 package com.tencent.biz.pubaccount.weishi_new.holder;
 
-import UserGrowth.stFeed;
-import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
-import com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class WSFollowFeedHolder$9
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  WSFollowFeedHolder$9(WSFollowFeedHolder paramWSFollowFeedHolder) {}
+  WSFollowFeedHolder$9(WSFollowFeedHolder paramWSFollowFeedHolder, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public void run()
+  public void onClick(View paramView, int paramInt)
   {
-    boolean bool1;
-    if (WSFollowFeedHolder.c(this.this$0).getVisibility() == 0) {
-      bool1 = true;
-    } else {
-      bool1 = false;
+    if (!NetworkUtil.a(WSFollowFeedHolder.h(this.b)))
+    {
+      ToastUtil.a().a(2131918123);
+      return;
     }
-    boolean bool2;
-    if ((WSFollowFeedHolder.a(this.this$0) != null) && (WSFollowFeedHolder.a(this.this$0))) {
-      bool2 = true;
-    } else {
-      bool2 = false;
-    }
-    int i = WSFollowFeedHolder.a(this.this$0);
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    if (WSFollowFeedHolder.a(this.this$0) != null) {
-      localstSimpleMetaFeed = WSFollowFeedHolder.a(this.this$0).feed;
-    } else {
-      localstSimpleMetaFeed = null;
-    }
-    WSFollowBeaconReport.a(i, localstSimpleMetaFeed, bool1, WSFollowFeedHolder.b(this.this$0), WSFollowFeedHolder.c(this.this$0), WSFollowFeedHolder.d(this.this$0), bool2, WSFollowFeedHolder.a(this.this$0).a(), WSFollowFeedHolder.a(this.this$0).b());
+    WSFollowFeedHolder.i(this.b).a(this.a.id, 2);
+    this.a.followStatus = 2;
+    WSFollowFeedHolder.j(this.b).setVisibility(0);
+    WSFollowFeedHolder.k(this.b).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder.9
  * JD-Core Version:    0.7.0.1
  */

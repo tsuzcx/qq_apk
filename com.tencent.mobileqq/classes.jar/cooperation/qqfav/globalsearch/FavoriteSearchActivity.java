@@ -20,14 +20,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment<FavoriteSearchResultModel> a()
+  protected BaseSearchFragment<FavoriteSearchResultModel> c()
   {
     return new FavoriteSearchFragment();
   }
   
-  protected String a()
+  protected String d()
   {
-    return HardCodeUtil.a(2131704499);
+    return HardCodeUtil.a(2131902411);
   }
   
   @Override
@@ -43,7 +43,7 @@ public class FavoriteSearchActivity
   {
     super.doOnResume();
     if ((getIntent() != null) && (UniteSearchActivity.class.getSimpleName().equals(getIntent().getStringExtra("preAct")))) {
-      overridePendingTransition(2130772006, 2130772007);
+      overridePendingTransition(2130772009, 2130772010);
     }
   }
   
@@ -56,7 +56,7 @@ public class FavoriteSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchActivity
  * JD-Core Version:    0.7.0.1
  */

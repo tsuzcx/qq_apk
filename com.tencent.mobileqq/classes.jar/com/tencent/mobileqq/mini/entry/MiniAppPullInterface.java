@@ -28,11 +28,13 @@ public abstract interface MiniAppPullInterface
   
   public abstract void onStop();
   
+  public abstract void replaceTopRefresh(Object paramObject);
+  
   public abstract boolean showMicroAppEntry();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppPullInterface
  * JD-Core Version:    0.7.0.1
  */

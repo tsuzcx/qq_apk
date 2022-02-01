@@ -15,27 +15,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SignatureManagerForTool
   extends Observable
 {
-  private static SignatureManagerForTool jdField_a_of_type_ComTencentMobileqqRichstatusSignatureManagerForTool;
+  private static SignatureManagerForTool d;
   public RichStatus a;
-  public EIPCResultCallback a;
-  private ConcurrentHashMap<Integer, SignatureTemplateInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public RichStatus b;
-  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new SignatureManagerForTool.2(this);
-  private ConcurrentHashMap<Integer, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  
-  private SignatureManagerForTool()
-  {
-    this.jdField_a_of_type_EipcEIPCResultCallback = new SignatureManagerForTool.3(this);
-  }
+  public EIPCResultCallback c = new SignatureManagerForTool.3(this);
+  private ConcurrentHashMap<Integer, SignatureTemplateInfo> e = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, String> f = new ConcurrentHashMap();
+  private EIPCResultCallback g = new SignatureManagerForTool.2(this);
   
   public static SignatureManagerForTool a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqRichstatusSignatureManagerForTool == null) {
-        jdField_a_of_type_ComTencentMobileqqRichstatusSignatureManagerForTool = new SignatureManagerForTool();
+      if (d == null) {
+        d = new SignatureManagerForTool();
       }
-      SignatureManagerForTool localSignatureManagerForTool = jdField_a_of_type_ComTencentMobileqqRichstatusSignatureManagerForTool;
+      SignatureManagerForTool localSignatureManagerForTool = d;
       return localSignatureManagerForTool;
     }
     finally {}
@@ -58,7 +53,7 @@ public class SignatureManagerForTool
   
   public SignatureTemplateInfo a(int paramInt, boolean paramBoolean)
   {
-    SignatureTemplateInfo localSignatureTemplateInfo2 = (SignatureTemplateInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    SignatureTemplateInfo localSignatureTemplateInfo2 = (SignatureTemplateInfo)this.e.get(Integer.valueOf(paramInt));
     Object localObject;
     if ((localSignatureTemplateInfo2 != null) && (!localSignatureTemplateInfo2.a.get()))
     {
@@ -71,7 +66,7 @@ public class SignatureManagerForTool
       if (localSignatureTemplateInfo2 == null)
       {
         localSignatureTemplateInfo1 = new SignatureTemplateInfo(Integer.toString(paramInt));
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localSignatureTemplateInfo1);
+        this.e.put(Integer.valueOf(paramInt), localSignatureTemplateInfo1);
       }
       localObject = localSignatureTemplateInfo1;
       if (paramInt != 0)
@@ -87,33 +82,33 @@ public class SignatureManagerForTool
     return localObject;
   }
   
-  public String a(int paramInt)
-  {
-    String str = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(str))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt);
-      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.g, localBundle, this.jdField_b_of_type_EipcEIPCResultCallback);
-    }
-    return str;
-  }
-  
   public void a(RichStatus paramRichStatus)
   {
     if (paramRichStatus == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    if (this.a == null) {
+      this.a = new RichStatus(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    this.a.copyFrom(paramRichStatus);
     paramRichStatus = new StringBuilder();
     paramRichStatus.append("updateHandleStatus: tpdId=");
-    paramRichStatus.append(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    paramRichStatus.append(this.a.tplId);
     paramRichStatus.append(" fontId=");
-    paramRichStatus.append(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    paramRichStatus.append(this.a.fontId);
     QLog.d("Signature.TOOL", 2, paramRichStatus.toString());
+  }
+  
+  public String b(int paramInt)
+  {
+    String str = (String)this.f.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(str))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.g, localBundle, this.g);
+    }
+    return str;
   }
   
   public void b(RichStatus paramRichStatus)
@@ -121,22 +116,22 @@ public class SignatureManagerForTool
     if (paramRichStatus == null) {
       return;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
-      this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    if (this.b == null) {
+      this.b = new RichStatus(null);
     }
-    this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    this.b.copyFrom(paramRichStatus);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateSaveStatus: tpdId=");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    localStringBuilder.append(this.b.tplId);
     localStringBuilder.append(" fontId=");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    localStringBuilder.append(this.b.fontId);
     QLog.d("Signature.TOOL", 2, localStringBuilder.toString());
     a(paramRichStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool
  * JD-Core Version:    0.7.0.1
  */

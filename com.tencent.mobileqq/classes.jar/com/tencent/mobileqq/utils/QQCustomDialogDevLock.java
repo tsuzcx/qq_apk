@@ -8,13 +8,13 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class QQCustomDialogDevLock
   extends ReportDialog
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView a;
+  TextView b;
   TextView c;
   TextView d;
   TextView e;
+  ImageView f;
+  ImageView g;
   
   public void dismiss()
   {
@@ -29,18 +29,18 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365680));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368388));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378461));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368389));
-    this.c = ((TextView)findViewById(2131378463));
-    this.d = ((TextView)findViewById(2131365633));
-    this.e = ((TextView)findViewById(2131365639));
+    this.a = ((TextView)findViewById(2131431914));
+    this.f = ((ImageView)findViewById(2131435270));
+    this.b = ((TextView)findViewById(2131447063));
+    this.g = ((ImageView)findViewById(2131435271));
+    this.c = ((TextView)findViewById(2131447065));
+    this.d = ((TextView)findViewById(2131431864));
+    this.e = ((TextView)findViewById(2131431870));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogDevLock
  * JD-Core Version:    0.7.0.1
  */

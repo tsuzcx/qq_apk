@@ -28,13 +28,13 @@ class EmosmActivity$13
     if (!NetworkUtil.isNetSupport(this.a))
     {
       localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130839548);
-      ((QQToast)localObject).d(1500);
-      ((QQToast)localObject).a(HardCodeUtil.a(2131704149));
-      ((QQToast)localObject).b(0);
+      ((QQToast)localObject).setToastIcon(2130839752);
+      ((QQToast)localObject).setDuration(1500);
+      ((QQToast)localObject).setToastMsg(HardCodeUtil.a(2131902071));
+      ((QQToast)localObject).show(0);
       return;
     }
-    this.a.progressDialog.a(this.a.getString(2131691928));
+    this.a.progressDialog.a(this.a.getString(2131888895));
     this.a.progressDialog.show();
     ((EmoticonHandler)this.a.app.getBusinessHandler(EmoticonHandler.a)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
     URLDrawable.clearMemoryCache();
@@ -48,7 +48,7 @@ class EmosmActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.13
  * JD-Core Version:    0.7.0.1
  */

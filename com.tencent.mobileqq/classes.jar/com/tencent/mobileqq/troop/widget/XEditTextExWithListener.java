@@ -8,7 +8,7 @@ import com.tencent.widget.XEditTextEx;
 public class XEditTextExWithListener
   extends XEditTextEx
 {
-  private XEditTextExWithListener.KeyPreImeListener a;
+  private XEditTextExWithListener.KeyPreImeListener b;
   
   public XEditTextExWithListener(Context paramContext)
   {
@@ -23,7 +23,7 @@ public class XEditTextExWithListener
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
     boolean bool = super.onKeyPreIme(paramInt, paramKeyEvent);
-    XEditTextExWithListener.KeyPreImeListener localKeyPreImeListener = this.a;
+    XEditTextExWithListener.KeyPreImeListener localKeyPreImeListener = this.b;
     if (localKeyPreImeListener != null) {
       localKeyPreImeListener.a(paramInt, paramKeyEvent);
     }
@@ -32,12 +32,12 @@ public class XEditTextExWithListener
   
   public void setOnKeyPreImeListener(XEditTextExWithListener.KeyPreImeListener paramKeyPreImeListener)
   {
-    this.a = paramKeyPreImeListener;
+    this.b = paramKeyPreImeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.XEditTextExWithListener
  * JD-Core Version:    0.7.0.1
  */

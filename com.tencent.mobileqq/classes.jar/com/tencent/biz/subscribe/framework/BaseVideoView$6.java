@@ -15,13 +15,13 @@ class BaseVideoView$6
   {
     Message localMessage = Message.obtain();
     localMessage.what = -1001;
-    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizSubscribeFrameworkBaseVideoView.a().getDurationMs());
+    localMessage.arg1 = this.a.getProgress();
+    localMessage.arg2 = ((int)this.b.getSuperPlayer().getDurationMs());
     localMessage.obj = Boolean.valueOf(false);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeFrameworkBaseVideoView.b()) {
-      this.jdField_a_of_type_ComTencentBizSubscribeFrameworkBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
+    if (this.b.o()) {
+      this.b.a(this.a.getProgress());
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeFrameworkBaseVideoView.a().sendMessage(localMessage);
+    this.b.getMainHandler().sendMessage(localMessage);
   }
 }
 
